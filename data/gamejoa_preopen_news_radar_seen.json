@@ -8951,6 +8951,29 @@
       "telegram_core_fact": "편의점업계에 따르면 세븐일레븐이 운영하는 아이돌 포토카드 뽑기 서비스 '포카아이'와 캐릭터·K굿즈 가챠 서비스 '액션플레이존'의 누적 판매량은 최근 5만개를 넘어섰다. 후발 오픈한 2개점을 제외한 서비스 운영 점포 4곳의 올해 1~9월 전체 매출은 전년비 31% 증가했다.",
       "title": "\"포카·가챠 뽑아볼까\"…'뽑파민'에 놀이터 된 편의점"
     },
+    "core:6d5dfb29f164d4203f932990": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172485",
+      "source": "매일경제",
+      "source_body_digest": "ac890da7533a4af9f35903e20861c971feaca2fdb5f4e6e910f1cd7c601191c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:29540a10f21988d69849eda3b1bca39e7c125eb2de50a896a7469fe0ae8fe40c",
+      "source_fact_keys": [
+        "source_fact:v1:6a6f52f2982c429bbe2fd136d5667f66b0558d4f0264f0ae964794d1b29532bf",
+        "source_fact:v1:94c715a273b1fffc7c70ffd82b18fc0980369008ec5a9cdd81b9f81d3616a6a4",
+        "source_fact:v1:a9b8f6b2a79878ebf2f673eb28cd26d3fd025df6cff18e9c10c366fcf5876d02",
+        "source_fact:v1:d9659318c10124be48e0893294fcffe182588a7bfb908f85fed5af915acc6c4a",
+        "source_fact:v1:f82a1a21efd563c935f719dd016faa131b1613ea019937875758d92fc0161a8a"
+      ],
+      "source_published_kst": "2026-10-11T07:33+09:00",
+      "source_title": "“내년엔 1200원대도 가능”…‘반도체 달러’ 덕에 원화 강세 계속될까",
+      "telegram_core_fact": "반도체 수출 호황에 달러 수급 여건이 크게 개선되며, 원화의 펀더멘털이 강해졌다는 분석이 나온다.",
+      "title": "“내년엔 1200원대도 가능”…‘반도체 달러’ 덕에 원화 강세 계속될까"
+    },
     "core:6d8d71bb1f6eb00a97bac1c7": {
       "first_seen_kst": "2026-10-10T10:34:18+09:00",
       "lanes": {
@@ -10421,6 +10444,30 @@
       "source_title": "미래운용, '스테이트타워 남산' 매각 추진…KIC 등 입주 | 연합뉴스",
       "telegram_core_fact": "투자은행(IB) 업계에 따르면 미래에셋자산운용은 최근 스테이트타워 남산 매각 가능성을 검토 중인 것으로 알려졌다. 미래에셋자산운용이 서울 도심권(CBD)의 대형 오피스인 스테이트타워 남산을 인수한 지 7년여 만에 매각한다.",
       "title": "미래운용, '스테이트타워 남산' 매각 추진…KIC 등 입주 | 연합뉴스"
+    },
+    "core:8017e53d66d5c6408a74d312": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634260",
+      "source": "이투데이",
+      "source_body_digest": "860a3e70d3dad2180b09be6aa7bbc435525cd5ffd3f3f79309e2834d65dfcb3f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a556de2d42c5adcf71bca11d0c227fa6c87b0e66d29837881aed5db3704cebaa",
+      "source_fact_keys": [
+        "source_fact:v1:0987870d75e4754d1f3145116a0c9ea1204cf77742e825ab5d2b2a400bf35fc9",
+        "source_fact:v1:3b5f77be92a62490f604eca5edb75bc8e67bf0d382ae3a2e1cc7acd75538bcc2",
+        "source_fact:v1:7997a2fae38b2a043a3f59a4d54dfac1a2cd54abfb43ad7cd3c50c0ec8f41a9a",
+        "source_fact:v1:7b1513148f491ad7fe514c8029e326a10250d35a95f0ffe3ecfceb8b1ef4584a",
+        "source_fact:v1:9495f0110da4b1dd96a1e79b612d337751fb1a587fb3642ee496ad43e3b08e3c",
+        "source_fact:v1:b7bb9747d9da910cf799c64a7b241a6685d799ffc9fee9a7f937e95532a734e9"
+      ],
+      "source_published_kst": "2026-10-11T08:37+09:00",
+      "source_title": "사우디 리야드 공항 또 공격 받아⋯12명 사망ㆍ300명 이상 부상",
+      "telegram_core_fact": "킹칼리드 공항은 5일 예멘의 친이란 반군 후티가 사우디의 공항·정유시설 등을 겨냥한 대대적인 공격을 발표한 이후 일주일간 세 차례 공격받았다.",
+      "title": "사우디 리야드 공항 또 공격 받아⋯12명 사망ㆍ300명 이상 부상"
     },
     "core:8024e3d4f68a26a8b37f7aa8": {
       "first_seen_kst": "2026-10-09T20:02:39+09:00",
@@ -15887,6 +15934,28 @@
       "telegram_core_fact": "BGF가 자회사인 BGF에코머티리얼즈가 보유한 케이엔더블유(KNW) 지분 전량을 인수하며 반도체 소재 사업에 대한 지배력을 강화한다. BGF는 7일 케이엔더블유 보통주 911만3891주(지분율 56.9%)를 매입한다고 공시했다.",
       "title": "BGF, KNW 지분 전량 인수로 지배구조 단순화…'반도체 소재' 직접 챙긴다"
     },
+    "core:c25456a3c1b0a2c100b2a30f": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820750",
+      "source": "뉴시스",
+      "source_body_digest": "67af3a6129ddc03f3a30c8c824a06d27b17502aa729455ec23be15f3cea5aa7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3cd264e8c1deb852d9e82cc5e8b13df460b0000af470014378bcf6a3f72636d5",
+      "source_fact_keys": [
+        "source_fact:v1:7c04aab2f23db0e0ebf684ee8aa06b572ac5a4b3d1e33b8694def50c53f542fc",
+        "source_fact:v1:a0fc2db92564eaee931e0e7b2a526ece777ee857f8467bf971f92f694bf67584",
+        "source_fact:v1:b695cd34dbbcfd845ecb18a8c89e7c0bc66b0fbcece152bf9b302f43c0e900f9",
+        "source_fact:v1:f5cef7cd435f21af4ba00ef33f869e146bc9a3c45516242a4e01ecb2d9a89733"
+      ],
+      "source_published_kst": "2026-10-11T08:28+09:00",
+      "source_title": "미 남동부 허리케인 이사이아스로 4명 사망.. 플로리다 큰 피해",
+      "telegram_core_fact": "허리케인 이사이아스(ISAIAS)가 미국 남동부 플로리다 팬핸들 지역을 공격한 뒤 10일 북쪽으로 빠져 나가면서 폭우와 홍수, 토네이도로 최소 4명의 사망자가 발생했다. 사망자 4명 가운데 2명은 플로리다주와 앨라배마에서 허리케인으로 인해 거대한 나무가 집 위로 쓰러지는 사고로 사망했다.",
+      "title": "미 남동부 허리케인 이사이아스로 4명 사망.. 플로리다 큰 피해"
+    },
     "core:c26b5bbc043ec74e21ce31ea": {
       "first_seen_kst": "2026-10-08T13:07:52+09:00",
       "lanes": {
@@ -18955,6 +19024,26 @@
       ],
       "source_published_kst": "2026-10-07T12:00+09:00",
       "title": "'44조원대' 유가 담합…공정위, SK에너지·현대오일뱅크 제재 착수"
+    },
+    "core:e7f5dcb4edd23758894c52f1": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634258",
+      "source": "이투데이",
+      "source_body_digest": "7992cb8f554b792c67d67bd8e6be164ec94f425eaa728b4e9b2415475af26722",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5a86e1c0ce8592563491f26c373f0ea74de4a98de732be38ea0fd6884162f3e",
+      "source_fact_keys": [
+        "source_fact:v1:7258cc2ec17aa1fa5106294bc5a05a0a83106422955d595431d3e945e5f859e5",
+        "source_fact:v1:af59fcd9af106b6b4fface6c65b38321e35e05fc2dc9e9d10c2342aab570817e"
+      ],
+      "source_published_kst": "2026-10-11T08:20+09:00",
+      "source_title": "추미애 \"보육예산 임의삭감 아냐\"…어린이집 지원단가는 1만2600원→6000원",
+      "telegram_core_fact": "추미애 경기도지사가 보육예산 '임의삭감'을 공개 부인하면서 어린이집 운영지원비의 원아당 도 지원단가를 1만2600원에서 6000원으로 조정한 내역을 직접 밝혔다. 추 지사는 보육예산 임의 삭감을 부인하면서 어린이집 운영지원비 원아당 도 지원단가를 1만2600원에서 6000원으로 조정했다고 밝혔다.",
+      "title": "추미애 \"보육예산 임의삭감 아냐\"…어린이집 지원단가는 1만2600원→6000원"
     },
     "core:e87d283ce2311cba38a87b2b": {
       "first_seen_kst": "2026-10-07T20:28:48+09:00",
@@ -25929,6 +26018,29 @@
       "telegram_core_fact": "일본 주요 전자재료 업체인 레조낙은 지난 3월부터 기판에 필수적인 동박적층판(CCL)과 프리프레그 전 제품의 가격을 30% 이상 인상했다. 세계 최대 반도체 조립·검사 전문 기업인 대만 ASE는 첨단 패키징 공급 견적 가격을 20% 이상 높인 것으로 알려졌다.",
       "title": "기판 20%·동박판 30% 껑충 … 日·대만 소부장 영향력 커져"
     },
+    "event:7e3069cf32ab92e164cf3871": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172485",
+      "source": "매일경제",
+      "source_body_digest": "ac890da7533a4af9f35903e20861c971feaca2fdb5f4e6e910f1cd7c601191c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:29540a10f21988d69849eda3b1bca39e7c125eb2de50a896a7469fe0ae8fe40c",
+      "source_fact_keys": [
+        "source_fact:v1:6a6f52f2982c429bbe2fd136d5667f66b0558d4f0264f0ae964794d1b29532bf",
+        "source_fact:v1:94c715a273b1fffc7c70ffd82b18fc0980369008ec5a9cdd81b9f81d3616a6a4",
+        "source_fact:v1:a9b8f6b2a79878ebf2f673eb28cd26d3fd025df6cff18e9c10c366fcf5876d02",
+        "source_fact:v1:d9659318c10124be48e0893294fcffe182588a7bfb908f85fed5af915acc6c4a",
+        "source_fact:v1:f82a1a21efd563c935f719dd016faa131b1613ea019937875758d92fc0161a8a"
+      ],
+      "source_published_kst": "2026-10-11T07:33+09:00",
+      "source_title": "“내년엔 1200원대도 가능”…‘반도체 달러’ 덕에 원화 강세 계속될까",
+      "telegram_core_fact": "반도체 수출 호황에 달러 수급 여건이 크게 개선되며, 원화의 펀더멘털이 강해졌다는 분석이 나온다.",
+      "title": "“내년엔 1200원대도 가능”…‘반도체 달러’ 덕에 원화 강세 계속될까"
+    },
     "event:7e3fbb8cd304a004176216ae": {
       "event_alias_evidence_message_id": 2295,
       "event_alias_evidence_run_id": 37409273145,
@@ -26449,6 +26561,30 @@
       "link": "https://www.asiae.co.kr/article/2026091810125426598",
       "source": "아시아경제",
       "title": "화웨이, \"AI 속도 조절 아닌 가속\"‥엔비디아 도전장"
+    },
+    "event:8c1daa9dcc2d04f302cb3cbf": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634260",
+      "source": "이투데이",
+      "source_body_digest": "860a3e70d3dad2180b09be6aa7bbc435525cd5ffd3f3f79309e2834d65dfcb3f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a556de2d42c5adcf71bca11d0c227fa6c87b0e66d29837881aed5db3704cebaa",
+      "source_fact_keys": [
+        "source_fact:v1:0987870d75e4754d1f3145116a0c9ea1204cf77742e825ab5d2b2a400bf35fc9",
+        "source_fact:v1:3b5f77be92a62490f604eca5edb75bc8e67bf0d382ae3a2e1cc7acd75538bcc2",
+        "source_fact:v1:7997a2fae38b2a043a3f59a4d54dfac1a2cd54abfb43ad7cd3c50c0ec8f41a9a",
+        "source_fact:v1:7b1513148f491ad7fe514c8029e326a10250d35a95f0ffe3ecfceb8b1ef4584a",
+        "source_fact:v1:9495f0110da4b1dd96a1e79b612d337751fb1a587fb3642ee496ad43e3b08e3c",
+        "source_fact:v1:b7bb9747d9da910cf799c64a7b241a6685d799ffc9fee9a7f937e95532a734e9"
+      ],
+      "source_published_kst": "2026-10-11T08:37+09:00",
+      "source_title": "사우디 리야드 공항 또 공격 받아⋯12명 사망ㆍ300명 이상 부상",
+      "telegram_core_fact": "킹칼리드 공항은 5일 예멘의 친이란 반군 후티가 사우디의 공항·정유시설 등을 겨냥한 대대적인 공격을 발표한 이후 일주일간 세 차례 공격받았다.",
+      "title": "사우디 리야드 공항 또 공격 받아⋯12명 사망ㆍ300명 이상 부상"
     },
     "event:8c7584f27ffff7fb17fb0b10": {
       "first_seen_kst": "2026-10-02T12:58:52+09:00",
@@ -47432,6 +47568,30 @@
       "telegram_core_fact": "특히 인공지능(AI)·반도체·방위산업 등 미래산업 학습과 전문가 자문, 성공사례 분석은 구미라면 축제·기업 투자유치 성공 등 행정성과의 밑바탕이 됐다고 시는 설명했다. 경북 구미시는 직원 역량 강화와 조직 혁신을 위해 운영해 온 '굿모닝 수요특강'이 200회를 맞았다고 10일 밝혔다.",
       "title": "구미시 '굿모닝 수요특강' 200회…\"축제·투자유치 성과 밑바탕\" | 연합뉴스"
     },
+    "fact:737c36747dc5979cb48f4f79": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634260",
+      "source": "이투데이",
+      "source_body_digest": "860a3e70d3dad2180b09be6aa7bbc435525cd5ffd3f3f79309e2834d65dfcb3f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a556de2d42c5adcf71bca11d0c227fa6c87b0e66d29837881aed5db3704cebaa",
+      "source_fact_keys": [
+        "source_fact:v1:0987870d75e4754d1f3145116a0c9ea1204cf77742e825ab5d2b2a400bf35fc9",
+        "source_fact:v1:3b5f77be92a62490f604eca5edb75bc8e67bf0d382ae3a2e1cc7acd75538bcc2",
+        "source_fact:v1:7997a2fae38b2a043a3f59a4d54dfac1a2cd54abfb43ad7cd3c50c0ec8f41a9a",
+        "source_fact:v1:7b1513148f491ad7fe514c8029e326a10250d35a95f0ffe3ecfceb8b1ef4584a",
+        "source_fact:v1:9495f0110da4b1dd96a1e79b612d337751fb1a587fb3642ee496ad43e3b08e3c",
+        "source_fact:v1:b7bb9747d9da910cf799c64a7b241a6685d799ffc9fee9a7f937e95532a734e9"
+      ],
+      "source_published_kst": "2026-10-11T08:37+09:00",
+      "source_title": "사우디 리야드 공항 또 공격 받아⋯12명 사망ㆍ300명 이상 부상",
+      "telegram_core_fact": "킹칼리드 공항은 5일 예멘의 친이란 반군 후티가 사우디의 공항·정유시설 등을 겨냥한 대대적인 공격을 발표한 이후 일주일간 세 차례 공격받았다.",
+      "title": "사우디 리야드 공항 또 공격 받아⋯12명 사망ㆍ300명 이상 부상"
+    },
     "fact:73d235d451a48b9d4120917c": {
       "first_seen_kst": "2026-10-07T00:23:09+09:00",
       "lanes": {
@@ -49145,6 +49305,29 @@
       ],
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "외환보유액, 넉 달 만에 감소…대미투자 자산위탁 영향"
+    },
+    "fact:8313b333eefe97d8d202b2cc": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172485",
+      "source": "매일경제",
+      "source_body_digest": "ac890da7533a4af9f35903e20861c971feaca2fdb5f4e6e910f1cd7c601191c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:29540a10f21988d69849eda3b1bca39e7c125eb2de50a896a7469fe0ae8fe40c",
+      "source_fact_keys": [
+        "source_fact:v1:6a6f52f2982c429bbe2fd136d5667f66b0558d4f0264f0ae964794d1b29532bf",
+        "source_fact:v1:94c715a273b1fffc7c70ffd82b18fc0980369008ec5a9cdd81b9f81d3616a6a4",
+        "source_fact:v1:a9b8f6b2a79878ebf2f673eb28cd26d3fd025df6cff18e9c10c366fcf5876d02",
+        "source_fact:v1:d9659318c10124be48e0893294fcffe182588a7bfb908f85fed5af915acc6c4a",
+        "source_fact:v1:f82a1a21efd563c935f719dd016faa131b1613ea019937875758d92fc0161a8a"
+      ],
+      "source_published_kst": "2026-10-11T07:33+09:00",
+      "source_title": "“내년엔 1200원대도 가능”…‘반도체 달러’ 덕에 원화 강세 계속될까",
+      "telegram_core_fact": "반도체 수출 호황에 달러 수급 여건이 크게 개선되며, 원화의 펀더멘털이 강해졌다는 분석이 나온다.",
+      "title": "“내년엔 1200원대도 가능”…‘반도체 달러’ 덕에 원화 강세 계속될까"
     },
     "fact:8348dbc70a47ab248425b303": {
       "first_seen_kst": "2026-10-11T08:19:03+09:00",
@@ -52476,6 +52659,26 @@
       ],
       "source_published_kst": "2026-10-06T10:57+09:00",
       "title": "오텍캐리어, AI 데이터센터용 CDU 제품 라인업 강화"
+    },
+    "fact:96fedd44bde85ee6e2e00fe4": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634258",
+      "source": "이투데이",
+      "source_body_digest": "7992cb8f554b792c67d67bd8e6be164ec94f425eaa728b4e9b2415475af26722",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5a86e1c0ce8592563491f26c373f0ea74de4a98de732be38ea0fd6884162f3e",
+      "source_fact_keys": [
+        "source_fact:v1:7258cc2ec17aa1fa5106294bc5a05a0a83106422955d595431d3e945e5f859e5",
+        "source_fact:v1:af59fcd9af106b6b4fface6c65b38321e35e05fc2dc9e9d10c2342aab570817e"
+      ],
+      "source_published_kst": "2026-10-11T08:20+09:00",
+      "source_title": "추미애 \"보육예산 임의삭감 아냐\"…어린이집 지원단가는 1만2600원→6000원",
+      "telegram_core_fact": "추미애 경기도지사가 보육예산 '임의삭감'을 공개 부인하면서 어린이집 운영지원비의 원아당 도 지원단가를 1만2600원에서 6000원으로 조정한 내역을 직접 밝혔다. 추 지사는 보육예산 임의 삭감을 부인하면서 어린이집 운영지원비 원아당 도 지원단가를 1만2600원에서 6000원으로 조정했다고 밝혔다.",
+      "title": "추미애 \"보육예산 임의삭감 아냐\"…어린이집 지원단가는 1만2600원→6000원"
     },
     "fact:97037534b51df7edc536dd37": {
       "first_seen_kst": "2026-10-09T18:34:32+09:00",
@@ -63503,6 +63706,28 @@
       ],
       "source_published_kst": "2026-10-07T11:00+09:00",
       "title": "폴스타, 9월 역대 최대 판매…年 판매목표 달성 성큼"
+    },
+    "fact:e49c90561995e4a790539bf4": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820750",
+      "source": "뉴시스",
+      "source_body_digest": "67af3a6129ddc03f3a30c8c824a06d27b17502aa729455ec23be15f3cea5aa7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3cd264e8c1deb852d9e82cc5e8b13df460b0000af470014378bcf6a3f72636d5",
+      "source_fact_keys": [
+        "source_fact:v1:7c04aab2f23db0e0ebf684ee8aa06b572ac5a4b3d1e33b8694def50c53f542fc",
+        "source_fact:v1:a0fc2db92564eaee931e0e7b2a526ece777ee857f8467bf971f92f694bf67584",
+        "source_fact:v1:b695cd34dbbcfd845ecb18a8c89e7c0bc66b0fbcece152bf9b302f43c0e900f9",
+        "source_fact:v1:f5cef7cd435f21af4ba00ef33f869e146bc9a3c45516242a4e01ecb2d9a89733"
+      ],
+      "source_published_kst": "2026-10-11T08:28+09:00",
+      "source_title": "미 남동부 허리케인 이사이아스로 4명 사망.. 플로리다 큰 피해",
+      "telegram_core_fact": "허리케인 이사이아스(ISAIAS)가 미국 남동부 플로리다 팬핸들 지역을 공격한 뒤 10일 북쪽으로 빠져 나가면서 폭우와 홍수, 토네이도로 최소 4명의 사망자가 발생했다. 사망자 4명 가운데 2명은 플로리다주와 앨라배마에서 허리케인으로 인해 거대한 나무가 집 위로 쓰러지는 사고로 사망했다.",
+      "title": "미 남동부 허리케인 이사이아스로 4명 사망.. 플로리다 큰 피해"
     },
     "fact:e4b57b7a2e6249b02df5dfcd": {
       "first_seen_kst": "2026-10-08T16:54:07+09:00",
@@ -92125,6 +92350,28 @@
       "source": "연합뉴스",
       "title": "상품공급 부족했나…'조각투자' 신종증권시장 개장 연기(종합) | 연합뉴스"
     },
+    "link:6facd73de170f15e594351d7": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820750",
+      "source": "뉴시스",
+      "source_body_digest": "67af3a6129ddc03f3a30c8c824a06d27b17502aa729455ec23be15f3cea5aa7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3cd264e8c1deb852d9e82cc5e8b13df460b0000af470014378bcf6a3f72636d5",
+      "source_fact_keys": [
+        "source_fact:v1:7c04aab2f23db0e0ebf684ee8aa06b572ac5a4b3d1e33b8694def50c53f542fc",
+        "source_fact:v1:a0fc2db92564eaee931e0e7b2a526ece777ee857f8467bf971f92f694bf67584",
+        "source_fact:v1:b695cd34dbbcfd845ecb18a8c89e7c0bc66b0fbcece152bf9b302f43c0e900f9",
+        "source_fact:v1:f5cef7cd435f21af4ba00ef33f869e146bc9a3c45516242a4e01ecb2d9a89733"
+      ],
+      "source_published_kst": "2026-10-11T08:28+09:00",
+      "source_title": "미 남동부 허리케인 이사이아스로 4명 사망.. 플로리다 큰 피해",
+      "telegram_core_fact": "허리케인 이사이아스(ISAIAS)가 미국 남동부 플로리다 팬핸들 지역을 공격한 뒤 10일 북쪽으로 빠져 나가면서 폭우와 홍수, 토네이도로 최소 4명의 사망자가 발생했다. 사망자 4명 가운데 2명은 플로리다주와 앨라배마에서 허리케인으로 인해 거대한 나무가 집 위로 쓰러지는 사고로 사망했다.",
+      "title": "미 남동부 허리케인 이사이아스로 4명 사망.. 플로리다 큰 피해"
+    },
     "link:6fcc56dc70dcbb0d8f1d54d9": {
       "first_seen_kst": "2026-10-07T17:10:43+09:00",
       "lanes": {
@@ -96740,6 +96987,29 @@
       "telegram_core_fact": "실제로 주성엔지니어링의 수주 잔고는 올해 1분기 말 약 746억원에서 2분기 말 2336억원으로 한 분기 만에 3배 넘게 급증했다.",
       "title": "삼성자산운용, 하루 만에 '주성엔지니어링' 2000억 쓸어담았다… 왜?"
     },
+    "link:85875d971dcf94149b877cbf": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172485",
+      "source": "매일경제",
+      "source_body_digest": "ac890da7533a4af9f35903e20861c971feaca2fdb5f4e6e910f1cd7c601191c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:29540a10f21988d69849eda3b1bca39e7c125eb2de50a896a7469fe0ae8fe40c",
+      "source_fact_keys": [
+        "source_fact:v1:6a6f52f2982c429bbe2fd136d5667f66b0558d4f0264f0ae964794d1b29532bf",
+        "source_fact:v1:94c715a273b1fffc7c70ffd82b18fc0980369008ec5a9cdd81b9f81d3616a6a4",
+        "source_fact:v1:a9b8f6b2a79878ebf2f673eb28cd26d3fd025df6cff18e9c10c366fcf5876d02",
+        "source_fact:v1:d9659318c10124be48e0893294fcffe182588a7bfb908f85fed5af915acc6c4a",
+        "source_fact:v1:f82a1a21efd563c935f719dd016faa131b1613ea019937875758d92fc0161a8a"
+      ],
+      "source_published_kst": "2026-10-11T07:33+09:00",
+      "source_title": "“내년엔 1200원대도 가능”…‘반도체 달러’ 덕에 원화 강세 계속될까",
+      "telegram_core_fact": "반도체 수출 호황에 달러 수급 여건이 크게 개선되며, 원화의 펀더멘털이 강해졌다는 분석이 나온다.",
+      "title": "“내년엔 1200원대도 가능”…‘반도체 달러’ 덕에 원화 강세 계속될까"
+    },
     "link:858a2a586e38a9fa45338a5d": {
       "first_seen_kst": "2026-10-08T04:45:20+09:00",
       "lanes": {
@@ -99194,6 +99464,30 @@
       "telegram_core_fact": "도널드 트럼프 미국 행정부는 2기 출범 후 연방정부 인력 감축, 친환경 에너지 세액공제 축소 등 지출 삭감, 고율 관세 부과 정책으로 재정적자 문제 해결에 나섰다.",
       "title": "관세 수입 줄고, 국채 이자 늘어…美 재정적자 2조달러 문턱"
     },
+    "link:91c0312888816692c7415cb6": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634260",
+      "source": "이투데이",
+      "source_body_digest": "860a3e70d3dad2180b09be6aa7bbc435525cd5ffd3f3f79309e2834d65dfcb3f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a556de2d42c5adcf71bca11d0c227fa6c87b0e66d29837881aed5db3704cebaa",
+      "source_fact_keys": [
+        "source_fact:v1:0987870d75e4754d1f3145116a0c9ea1204cf77742e825ab5d2b2a400bf35fc9",
+        "source_fact:v1:3b5f77be92a62490f604eca5edb75bc8e67bf0d382ae3a2e1cc7acd75538bcc2",
+        "source_fact:v1:7997a2fae38b2a043a3f59a4d54dfac1a2cd54abfb43ad7cd3c50c0ec8f41a9a",
+        "source_fact:v1:7b1513148f491ad7fe514c8029e326a10250d35a95f0ffe3ecfceb8b1ef4584a",
+        "source_fact:v1:9495f0110da4b1dd96a1e79b612d337751fb1a587fb3642ee496ad43e3b08e3c",
+        "source_fact:v1:b7bb9747d9da910cf799c64a7b241a6685d799ffc9fee9a7f937e95532a734e9"
+      ],
+      "source_published_kst": "2026-10-11T08:37+09:00",
+      "source_title": "사우디 리야드 공항 또 공격 받아⋯12명 사망ㆍ300명 이상 부상",
+      "telegram_core_fact": "킹칼리드 공항은 5일 예멘의 친이란 반군 후티가 사우디의 공항·정유시설 등을 겨냥한 대대적인 공격을 발표한 이후 일주일간 세 차례 공격받았다.",
+      "title": "사우디 리야드 공항 또 공격 받아⋯12명 사망ㆍ300명 이상 부상"
+    },
     "link:91d71d86a4dd7fcec6724d46": {
       "first_seen_kst": "2026-09-20T18:25:16+09:00",
       "lanes": {
@@ -100094,6 +100388,26 @@
       "source_title": "그린서클디카보나이즈, AI 데이터센터 냉각 진출 발표에도 구체성 부족 부각",
       "telegram_core_fact": "AI 데이터센터 액체냉각 시장 진출 계획을 발표했지만 계약, 투자 규모, 출시 일정이 공개되지 않았고 초기 협의 단계에 머물러 있습니다. 매출 기여 시점이 불확실해 실적 영향이 제한적이라는 평가가 나오며 실망 매물이 나온 것으로 보입니다.",
       "title": "그린서클디카보나이즈, AI 데이터센터 냉각 진출 발표에도 구체성 부족 부각"
+    },
+    "link:94f51ca353bcff66153289fe": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634258",
+      "source": "이투데이",
+      "source_body_digest": "7992cb8f554b792c67d67bd8e6be164ec94f425eaa728b4e9b2415475af26722",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5a86e1c0ce8592563491f26c373f0ea74de4a98de732be38ea0fd6884162f3e",
+      "source_fact_keys": [
+        "source_fact:v1:7258cc2ec17aa1fa5106294bc5a05a0a83106422955d595431d3e945e5f859e5",
+        "source_fact:v1:af59fcd9af106b6b4fface6c65b38321e35e05fc2dc9e9d10c2342aab570817e"
+      ],
+      "source_published_kst": "2026-10-11T08:20+09:00",
+      "source_title": "추미애 \"보육예산 임의삭감 아냐\"…어린이집 지원단가는 1만2600원→6000원",
+      "telegram_core_fact": "추미애 경기도지사가 보육예산 '임의삭감'을 공개 부인하면서 어린이집 운영지원비의 원아당 도 지원단가를 1만2600원에서 6000원으로 조정한 내역을 직접 밝혔다. 추 지사는 보육예산 임의 삭감을 부인하면서 어린이집 운영지원비 원아당 도 지원단가를 1만2600원에서 6000원으로 조정했다고 밝혔다.",
+      "title": "추미애 \"보육예산 임의삭감 아냐\"…어린이집 지원단가는 1만2600원→6000원"
     },
     "link:94fc2d79f7abeabcb2d07434": {
       "first_seen_kst": "2026-10-08T02:12:43+09:00",
@@ -131992,6 +132306,30 @@
       "source_published_kst": "2026-10-05T09:00+09:00",
       "title": "\"현대차, 미국서 가성비 브랜드 넘어 선도적 주류 목표\" | 연합뉴스"
     },
+    "original:2a3ddfd434ddab0904cee1ca": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634260",
+      "source": "이투데이",
+      "source_body_digest": "860a3e70d3dad2180b09be6aa7bbc435525cd5ffd3f3f79309e2834d65dfcb3f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a556de2d42c5adcf71bca11d0c227fa6c87b0e66d29837881aed5db3704cebaa",
+      "source_fact_keys": [
+        "source_fact:v1:0987870d75e4754d1f3145116a0c9ea1204cf77742e825ab5d2b2a400bf35fc9",
+        "source_fact:v1:3b5f77be92a62490f604eca5edb75bc8e67bf0d382ae3a2e1cc7acd75538bcc2",
+        "source_fact:v1:7997a2fae38b2a043a3f59a4d54dfac1a2cd54abfb43ad7cd3c50c0ec8f41a9a",
+        "source_fact:v1:7b1513148f491ad7fe514c8029e326a10250d35a95f0ffe3ecfceb8b1ef4584a",
+        "source_fact:v1:9495f0110da4b1dd96a1e79b612d337751fb1a587fb3642ee496ad43e3b08e3c",
+        "source_fact:v1:b7bb9747d9da910cf799c64a7b241a6685d799ffc9fee9a7f937e95532a734e9"
+      ],
+      "source_published_kst": "2026-10-11T08:37+09:00",
+      "source_title": "사우디 리야드 공항 또 공격 받아⋯12명 사망ㆍ300명 이상 부상",
+      "telegram_core_fact": "킹칼리드 공항은 5일 예멘의 친이란 반군 후티가 사우디의 공항·정유시설 등을 겨냥한 대대적인 공격을 발표한 이후 일주일간 세 차례 공격받았다.",
+      "title": "사우디 리야드 공항 또 공격 받아⋯12명 사망ㆍ300명 이상 부상"
+    },
     "original:2a416ff6936cd48986f0c0dc": {
       "first_seen_kst": "2026-10-01T17:02:50+09:00",
       "lanes": {
@@ -133348,6 +133686,29 @@
       ],
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "[ETF업&다운]3분기 엇갈린 반도체…삼전닉스 빠지고 소부장 버텼다"
+    },
+    "original:2ffc62e154ca52bf32eb3ccc": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172485",
+      "source": "매일경제",
+      "source_body_digest": "ac890da7533a4af9f35903e20861c971feaca2fdb5f4e6e910f1cd7c601191c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:29540a10f21988d69849eda3b1bca39e7c125eb2de50a896a7469fe0ae8fe40c",
+      "source_fact_keys": [
+        "source_fact:v1:6a6f52f2982c429bbe2fd136d5667f66b0558d4f0264f0ae964794d1b29532bf",
+        "source_fact:v1:94c715a273b1fffc7c70ffd82b18fc0980369008ec5a9cdd81b9f81d3616a6a4",
+        "source_fact:v1:a9b8f6b2a79878ebf2f673eb28cd26d3fd025df6cff18e9c10c366fcf5876d02",
+        "source_fact:v1:d9659318c10124be48e0893294fcffe182588a7bfb908f85fed5af915acc6c4a",
+        "source_fact:v1:f82a1a21efd563c935f719dd016faa131b1613ea019937875758d92fc0161a8a"
+      ],
+      "source_published_kst": "2026-10-11T07:33+09:00",
+      "source_title": "“내년엔 1200원대도 가능”…‘반도체 달러’ 덕에 원화 강세 계속될까",
+      "telegram_core_fact": "반도체 수출 호황에 달러 수급 여건이 크게 개선되며, 원화의 펀더멘털이 강해졌다는 분석이 나온다.",
+      "title": "“내년엔 1200원대도 가능”…‘반도체 달러’ 덕에 원화 강세 계속될까"
     },
     "original:301211214e8c40532cbc3678": {
       "first_seen_kst": "2026-10-02T12:38:28+09:00",
@@ -140725,6 +141086,28 @@
       ],
       "source_published_kst": "2026-10-07T15:11+09:00",
       "title": "파라마운트, 1100억달러 규모 워너 인수 완료⋯‘스카이댄스’ 출범 [新미디어제국 탄생①]"
+    },
+    "original:5028004f47e3833a5e601bed": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820750",
+      "source": "뉴시스",
+      "source_body_digest": "67af3a6129ddc03f3a30c8c824a06d27b17502aa729455ec23be15f3cea5aa7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3cd264e8c1deb852d9e82cc5e8b13df460b0000af470014378bcf6a3f72636d5",
+      "source_fact_keys": [
+        "source_fact:v1:7c04aab2f23db0e0ebf684ee8aa06b572ac5a4b3d1e33b8694def50c53f542fc",
+        "source_fact:v1:a0fc2db92564eaee931e0e7b2a526ece777ee857f8467bf971f92f694bf67584",
+        "source_fact:v1:b695cd34dbbcfd845ecb18a8c89e7c0bc66b0fbcece152bf9b302f43c0e900f9",
+        "source_fact:v1:f5cef7cd435f21af4ba00ef33f869e146bc9a3c45516242a4e01ecb2d9a89733"
+      ],
+      "source_published_kst": "2026-10-11T08:28+09:00",
+      "source_title": "미 남동부 허리케인 이사이아스로 4명 사망.. 플로리다 큰 피해",
+      "telegram_core_fact": "허리케인 이사이아스(ISAIAS)가 미국 남동부 플로리다 팬핸들 지역을 공격한 뒤 10일 북쪽으로 빠져 나가면서 폭우와 홍수, 토네이도로 최소 4명의 사망자가 발생했다. 사망자 4명 가운데 2명은 플로리다주와 앨라배마에서 허리케인으로 인해 거대한 나무가 집 위로 쓰러지는 사고로 사망했다.",
+      "title": "미 남동부 허리케인 이사이아스로 4명 사망.. 플로리다 큰 피해"
     },
     "original:502a08c90319f9e004132b94": {
       "first_seen_kst": "2026-10-07T17:23:27+09:00",
@@ -153510,6 +153893,26 @@
       "link": "https://www.etnews.com/20260929000120",
       "source": "전자신문",
       "title": "中 CXMT, D램 추격에 7조원 베팅…후공정 역량 확대"
+    },
+    "original:8f4583e7052d746f381d2ab0": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634258",
+      "source": "이투데이",
+      "source_body_digest": "7992cb8f554b792c67d67bd8e6be164ec94f425eaa728b4e9b2415475af26722",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5a86e1c0ce8592563491f26c373f0ea74de4a98de732be38ea0fd6884162f3e",
+      "source_fact_keys": [
+        "source_fact:v1:7258cc2ec17aa1fa5106294bc5a05a0a83106422955d595431d3e945e5f859e5",
+        "source_fact:v1:af59fcd9af106b6b4fface6c65b38321e35e05fc2dc9e9d10c2342aab570817e"
+      ],
+      "source_published_kst": "2026-10-11T08:20+09:00",
+      "source_title": "추미애 \"보육예산 임의삭감 아냐\"…어린이집 지원단가는 1만2600원→6000원",
+      "telegram_core_fact": "추미애 경기도지사가 보육예산 '임의삭감'을 공개 부인하면서 어린이집 운영지원비의 원아당 도 지원단가를 1만2600원에서 6000원으로 조정한 내역을 직접 밝혔다. 추 지사는 보육예산 임의 삭감을 부인하면서 어린이집 운영지원비 원아당 도 지원단가를 1만2600원에서 6000원으로 조정했다고 밝혔다.",
+      "title": "추미애 \"보육예산 임의삭감 아냐\"…어린이집 지원단가는 1만2600원→6000원"
     },
     "original:8f5a4886ac7eaf6306cc7b36": {
       "first_seen_kst": "2026-10-07T12:28:05+09:00",
@@ -179052,6 +179455,26 @@
       "source_published_kst": "2026-10-07T05:30+09:00",
       "title": "“주가 일희일비할 것 없어, 반도체 공급난 지속은 명확한 사실”"
     },
+    "source_fact:030ee26a734449a0d67b690d": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634258",
+      "source": "이투데이",
+      "source_body_digest": "7992cb8f554b792c67d67bd8e6be164ec94f425eaa728b4e9b2415475af26722",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5a86e1c0ce8592563491f26c373f0ea74de4a98de732be38ea0fd6884162f3e",
+      "source_fact_keys": [
+        "source_fact:v1:7258cc2ec17aa1fa5106294bc5a05a0a83106422955d595431d3e945e5f859e5",
+        "source_fact:v1:af59fcd9af106b6b4fface6c65b38321e35e05fc2dc9e9d10c2342aab570817e"
+      ],
+      "source_published_kst": "2026-10-11T08:20+09:00",
+      "source_title": "추미애 \"보육예산 임의삭감 아냐\"…어린이집 지원단가는 1만2600원→6000원",
+      "telegram_core_fact": "추미애 경기도지사가 보육예산 '임의삭감'을 공개 부인하면서 어린이집 운영지원비의 원아당 도 지원단가를 1만2600원에서 6000원으로 조정한 내역을 직접 밝혔다. 추 지사는 보육예산 임의 삭감을 부인하면서 어린이집 운영지원비 원아당 도 지원단가를 1만2600원에서 6000원으로 조정했다고 밝혔다.",
+      "title": "추미애 \"보육예산 임의삭감 아냐\"…어린이집 지원단가는 1만2600원→6000원"
+    },
     "source_fact:0323220767bca9e935d6e129": {
       "first_seen_kst": "2026-10-06T02:00:06+09:00",
       "lanes": {
@@ -193577,6 +194000,29 @@
       "source_published_kst": "2026-10-07T05:00+09:00",
       "title": "헬스케어 제2의 먹거리…디지털 사업 키우는 제약사들"
     },
+    "source_fact:19d70f403c0ef4a8805cfa99": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172485",
+      "source": "매일경제",
+      "source_body_digest": "ac890da7533a4af9f35903e20861c971feaca2fdb5f4e6e910f1cd7c601191c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:29540a10f21988d69849eda3b1bca39e7c125eb2de50a896a7469fe0ae8fe40c",
+      "source_fact_keys": [
+        "source_fact:v1:6a6f52f2982c429bbe2fd136d5667f66b0558d4f0264f0ae964794d1b29532bf",
+        "source_fact:v1:94c715a273b1fffc7c70ffd82b18fc0980369008ec5a9cdd81b9f81d3616a6a4",
+        "source_fact:v1:a9b8f6b2a79878ebf2f673eb28cd26d3fd025df6cff18e9c10c366fcf5876d02",
+        "source_fact:v1:d9659318c10124be48e0893294fcffe182588a7bfb908f85fed5af915acc6c4a",
+        "source_fact:v1:f82a1a21efd563c935f719dd016faa131b1613ea019937875758d92fc0161a8a"
+      ],
+      "source_published_kst": "2026-10-11T07:33+09:00",
+      "source_title": "“내년엔 1200원대도 가능”…‘반도체 달러’ 덕에 원화 강세 계속될까",
+      "telegram_core_fact": "반도체 수출 호황에 달러 수급 여건이 크게 개선되며, 원화의 펀더멘털이 강해졌다는 분석이 나온다.",
+      "title": "“내년엔 1200원대도 가능”…‘반도체 달러’ 덕에 원화 강세 계속될까"
+    },
     "source_fact:19d908f30fb80575e8c619f4": {
       "first_seen_kst": "2026-10-07T23:36:14+09:00",
       "lanes": {
@@ -201935,6 +202381,30 @@
       ],
       "source_published_kst": "2026-10-06T18:09+09:00",
       "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어(종합) | 연합뉴스"
+    },
+    "source_fact:253ad62f543b850711600444": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634260",
+      "source": "이투데이",
+      "source_body_digest": "860a3e70d3dad2180b09be6aa7bbc435525cd5ffd3f3f79309e2834d65dfcb3f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a556de2d42c5adcf71bca11d0c227fa6c87b0e66d29837881aed5db3704cebaa",
+      "source_fact_keys": [
+        "source_fact:v1:0987870d75e4754d1f3145116a0c9ea1204cf77742e825ab5d2b2a400bf35fc9",
+        "source_fact:v1:3b5f77be92a62490f604eca5edb75bc8e67bf0d382ae3a2e1cc7acd75538bcc2",
+        "source_fact:v1:7997a2fae38b2a043a3f59a4d54dfac1a2cd54abfb43ad7cd3c50c0ec8f41a9a",
+        "source_fact:v1:7b1513148f491ad7fe514c8029e326a10250d35a95f0ffe3ecfceb8b1ef4584a",
+        "source_fact:v1:9495f0110da4b1dd96a1e79b612d337751fb1a587fb3642ee496ad43e3b08e3c",
+        "source_fact:v1:b7bb9747d9da910cf799c64a7b241a6685d799ffc9fee9a7f937e95532a734e9"
+      ],
+      "source_published_kst": "2026-10-11T08:37+09:00",
+      "source_title": "사우디 리야드 공항 또 공격 받아⋯12명 사망ㆍ300명 이상 부상",
+      "telegram_core_fact": "킹칼리드 공항은 5일 예멘의 친이란 반군 후티가 사우디의 공항·정유시설 등을 겨냥한 대대적인 공격을 발표한 이후 일주일간 세 차례 공격받았다.",
+      "title": "사우디 리야드 공항 또 공격 받아⋯12명 사망ㆍ300명 이상 부상"
     },
     "source_fact:25432ebde4937bba89a0bcf2": {
       "first_seen_kst": "2026-10-08T08:12:34+09:00",
@@ -210637,6 +211107,30 @@
       "telegram_core_fact": "해성디에스는 약 1900억원을 투자해 패널 공법 기반 패키지 기판 생산능력을 구축하고 있으며, 2029년에는 연간 2000~3000억원 신규 생산능력(CAPA) 확보가 예상된다고 부연했다.",
       "title": "\"반도체 기판 가격 또 오른다…대덕전자·심텍 등 수천억 투자\"-하나"
     },
+    "source_fact:31b13b3a8931f9860c1f672c": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634260",
+      "source": "이투데이",
+      "source_body_digest": "860a3e70d3dad2180b09be6aa7bbc435525cd5ffd3f3f79309e2834d65dfcb3f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a556de2d42c5adcf71bca11d0c227fa6c87b0e66d29837881aed5db3704cebaa",
+      "source_fact_keys": [
+        "source_fact:v1:0987870d75e4754d1f3145116a0c9ea1204cf77742e825ab5d2b2a400bf35fc9",
+        "source_fact:v1:3b5f77be92a62490f604eca5edb75bc8e67bf0d382ae3a2e1cc7acd75538bcc2",
+        "source_fact:v1:7997a2fae38b2a043a3f59a4d54dfac1a2cd54abfb43ad7cd3c50c0ec8f41a9a",
+        "source_fact:v1:7b1513148f491ad7fe514c8029e326a10250d35a95f0ffe3ecfceb8b1ef4584a",
+        "source_fact:v1:9495f0110da4b1dd96a1e79b612d337751fb1a587fb3642ee496ad43e3b08e3c",
+        "source_fact:v1:b7bb9747d9da910cf799c64a7b241a6685d799ffc9fee9a7f937e95532a734e9"
+      ],
+      "source_published_kst": "2026-10-11T08:37+09:00",
+      "source_title": "사우디 리야드 공항 또 공격 받아⋯12명 사망ㆍ300명 이상 부상",
+      "telegram_core_fact": "킹칼리드 공항은 5일 예멘의 친이란 반군 후티가 사우디의 공항·정유시설 등을 겨냥한 대대적인 공격을 발표한 이후 일주일간 세 차례 공격받았다.",
+      "title": "사우디 리야드 공항 또 공격 받아⋯12명 사망ㆍ300명 이상 부상"
+    },
     "source_fact:31b7cbd985aa272244855b29": {
       "first_seen_kst": "2026-10-10T20:30:39+09:00",
       "lanes": {
@@ -215380,6 +215874,30 @@
       ],
       "source_published_kst": "2026-10-06T11:19+09:00",
       "title": "디스플레이 규제합리화 브리핑하는 김민성 부단장 | 연합뉴스"
+    },
+    "source_fact:38e92a8eeb57c357d2e6f604": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634260",
+      "source": "이투데이",
+      "source_body_digest": "860a3e70d3dad2180b09be6aa7bbc435525cd5ffd3f3f79309e2834d65dfcb3f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a556de2d42c5adcf71bca11d0c227fa6c87b0e66d29837881aed5db3704cebaa",
+      "source_fact_keys": [
+        "source_fact:v1:0987870d75e4754d1f3145116a0c9ea1204cf77742e825ab5d2b2a400bf35fc9",
+        "source_fact:v1:3b5f77be92a62490f604eca5edb75bc8e67bf0d382ae3a2e1cc7acd75538bcc2",
+        "source_fact:v1:7997a2fae38b2a043a3f59a4d54dfac1a2cd54abfb43ad7cd3c50c0ec8f41a9a",
+        "source_fact:v1:7b1513148f491ad7fe514c8029e326a10250d35a95f0ffe3ecfceb8b1ef4584a",
+        "source_fact:v1:9495f0110da4b1dd96a1e79b612d337751fb1a587fb3642ee496ad43e3b08e3c",
+        "source_fact:v1:b7bb9747d9da910cf799c64a7b241a6685d799ffc9fee9a7f937e95532a734e9"
+      ],
+      "source_published_kst": "2026-10-11T08:37+09:00",
+      "source_title": "사우디 리야드 공항 또 공격 받아⋯12명 사망ㆍ300명 이상 부상",
+      "telegram_core_fact": "킹칼리드 공항은 5일 예멘의 친이란 반군 후티가 사우디의 공항·정유시설 등을 겨냥한 대대적인 공격을 발표한 이후 일주일간 세 차례 공격받았다.",
+      "title": "사우디 리야드 공항 또 공격 받아⋯12명 사망ㆍ300명 이상 부상"
     },
     "source_fact:38f4c5c2dd6cb760254af29c": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
@@ -231654,21 +232172,25 @@
     "source_fact:51d1bdcb1375013ff6fac0db": {
       "first_seen_kst": "2026-10-11T06:52:52+09:00",
       "lanes": {
+        "live": "2026-10-11T08:42:16+09:00",
         "preopen": "2026-10-11T06:52:52+09:00"
       },
-      "last_seen_kst": "2026-10-11T06:52:52+09:00",
-      "link": "https://www.newsis.com/view/NISX20261011_0003820749",
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820750",
       "source": "뉴시스",
-      "source_body_digest": "b6112f98a4960a1eac9b10c61ad617903bf2010cd5f48708247b0027ce71c5fc",
+      "source_body_digest": "67af3a6129ddc03f3a30c8c824a06d27b17502aa729455ec23be15f3cea5aa7e",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:210651db0b1c6aa110b8c042d2e93efbd404a18615cf3b81ff400f7a8290f114",
+      "source_fact_identity": "source_facts:v1:3cd264e8c1deb852d9e82cc5e8b13df460b0000af470014378bcf6a3f72636d5",
       "source_fact_keys": [
+        "source_fact:v1:7c04aab2f23db0e0ebf684ee8aa06b572ac5a4b3d1e33b8694def50c53f542fc",
+        "source_fact:v1:a0fc2db92564eaee931e0e7b2a526ece777ee857f8467bf971f92f694bf67584",
+        "source_fact:v1:b695cd34dbbcfd845ecb18a8c89e7c0bc66b0fbcece152bf9b302f43c0e900f9",
         "source_fact:v1:f5cef7cd435f21af4ba00ef33f869e146bc9a3c45516242a4e01ecb2d9a89733"
       ],
-      "source_published_kst": "2026-10-11T06:50+09:00",
-      "source_title": "[속보] 허리케인 이사이아스(ISAIAS)로 미 남동부서 사망자 4 명",
-      "telegram_core_fact": "허리케인 이사이아스(ISAIAS)가 미국 남동부 플로리다 팬핸들 지역을 공격한 뒤 10일 북쪽으로 빠져 나가면서 폭우와 홍수, 토네이도로 최소 4명의 사망자가 발생했다. 이사이아스는 ‘2등급(카테고리 2)’ 허리케인으로 상륙한 뒤 풍속은 약화하면서 앨라배마주를 거쳐 빠르게 북쪽으로 이동했다.",
-      "title": "[속보] 허리케인 이사이아스(ISAIAS)로 미 남동부서 사망자 4 명"
+      "source_published_kst": "2026-10-11T08:28+09:00",
+      "source_title": "미 남동부 허리케인 이사이아스로 4명 사망.. 플로리다 큰 피해",
+      "telegram_core_fact": "허리케인 이사이아스(ISAIAS)가 미국 남동부 플로리다 팬핸들 지역을 공격한 뒤 10일 북쪽으로 빠져 나가면서 폭우와 홍수, 토네이도로 최소 4명의 사망자가 발생했다. 사망자 4명 가운데 2명은 플로리다주와 앨라배마에서 허리케인으로 인해 거대한 나무가 집 위로 쓰러지는 사고로 사망했다.",
+      "title": "미 남동부 허리케인 이사이아스로 4명 사망.. 플로리다 큰 피해"
     },
     "source_fact:51d733e100244e49ff9a8cdb": {
       "first_seen_kst": "2026-10-08T01:26:16+09:00",
@@ -232741,6 +233263,30 @@
       ],
       "source_published_kst": "2026-10-06T11:09+09:00",
       "title": "재정부담에 재협상까지…고금리에 상업용 부동산 비상"
+    },
+    "source_fact:533424f7a908570fe1803528": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634260",
+      "source": "이투데이",
+      "source_body_digest": "860a3e70d3dad2180b09be6aa7bbc435525cd5ffd3f3f79309e2834d65dfcb3f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a556de2d42c5adcf71bca11d0c227fa6c87b0e66d29837881aed5db3704cebaa",
+      "source_fact_keys": [
+        "source_fact:v1:0987870d75e4754d1f3145116a0c9ea1204cf77742e825ab5d2b2a400bf35fc9",
+        "source_fact:v1:3b5f77be92a62490f604eca5edb75bc8e67bf0d382ae3a2e1cc7acd75538bcc2",
+        "source_fact:v1:7997a2fae38b2a043a3f59a4d54dfac1a2cd54abfb43ad7cd3c50c0ec8f41a9a",
+        "source_fact:v1:7b1513148f491ad7fe514c8029e326a10250d35a95f0ffe3ecfceb8b1ef4584a",
+        "source_fact:v1:9495f0110da4b1dd96a1e79b612d337751fb1a587fb3642ee496ad43e3b08e3c",
+        "source_fact:v1:b7bb9747d9da910cf799c64a7b241a6685d799ffc9fee9a7f937e95532a734e9"
+      ],
+      "source_published_kst": "2026-10-11T08:37+09:00",
+      "source_title": "사우디 리야드 공항 또 공격 받아⋯12명 사망ㆍ300명 이상 부상",
+      "telegram_core_fact": "킹칼리드 공항은 5일 예멘의 친이란 반군 후티가 사우디의 공항·정유시설 등을 겨냥한 대대적인 공격을 발표한 이후 일주일간 세 차례 공격받았다.",
+      "title": "사우디 리야드 공항 또 공격 받아⋯12명 사망ㆍ300명 이상 부상"
     },
     "source_fact:53368acf9af07debe7f63a71": {
       "first_seen_kst": "2026-10-06T12:10:48+09:00",
@@ -264156,6 +264702,28 @@
       "telegram_core_fact": "지난 6월 상장한 'ACE 고배당주Plus커버드콜액티브 ETF'도 순자산 1445억원 규모로 성장했다.",
       "title": "'순자산 30조' 커버드콜 ETF 변동장에 꾸준히 인기"
     },
+    "source_fact:82544e054846162b01bb4076": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820750",
+      "source": "뉴시스",
+      "source_body_digest": "67af3a6129ddc03f3a30c8c824a06d27b17502aa729455ec23be15f3cea5aa7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3cd264e8c1deb852d9e82cc5e8b13df460b0000af470014378bcf6a3f72636d5",
+      "source_fact_keys": [
+        "source_fact:v1:7c04aab2f23db0e0ebf684ee8aa06b572ac5a4b3d1e33b8694def50c53f542fc",
+        "source_fact:v1:a0fc2db92564eaee931e0e7b2a526ece777ee857f8467bf971f92f694bf67584",
+        "source_fact:v1:b695cd34dbbcfd845ecb18a8c89e7c0bc66b0fbcece152bf9b302f43c0e900f9",
+        "source_fact:v1:f5cef7cd435f21af4ba00ef33f869e146bc9a3c45516242a4e01ecb2d9a89733"
+      ],
+      "source_published_kst": "2026-10-11T08:28+09:00",
+      "source_title": "미 남동부 허리케인 이사이아스로 4명 사망.. 플로리다 큰 피해",
+      "telegram_core_fact": "허리케인 이사이아스(ISAIAS)가 미국 남동부 플로리다 팬핸들 지역을 공격한 뒤 10일 북쪽으로 빠져 나가면서 폭우와 홍수, 토네이도로 최소 4명의 사망자가 발생했다. 사망자 4명 가운데 2명은 플로리다주와 앨라배마에서 허리케인으로 인해 거대한 나무가 집 위로 쓰러지는 사고로 사망했다.",
+      "title": "미 남동부 허리케인 이사이아스로 4명 사망.. 플로리다 큰 피해"
+    },
     "source_fact:825ae96e9db940365374bad1": {
       "first_seen_kst": "2026-10-08T05:17:22+09:00",
       "lanes": {
@@ -268532,6 +269100,30 @@
       ],
       "source_published_kst": "2026-10-06T13:21+09:00",
       "title": "유럽 로봇 유니콘도 미국행…로브코, 현지 생산·시장 공략"
+    },
+    "source_fact:8945736e9413c8bd7d5855d2": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634260",
+      "source": "이투데이",
+      "source_body_digest": "860a3e70d3dad2180b09be6aa7bbc435525cd5ffd3f3f79309e2834d65dfcb3f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a556de2d42c5adcf71bca11d0c227fa6c87b0e66d29837881aed5db3704cebaa",
+      "source_fact_keys": [
+        "source_fact:v1:0987870d75e4754d1f3145116a0c9ea1204cf77742e825ab5d2b2a400bf35fc9",
+        "source_fact:v1:3b5f77be92a62490f604eca5edb75bc8e67bf0d382ae3a2e1cc7acd75538bcc2",
+        "source_fact:v1:7997a2fae38b2a043a3f59a4d54dfac1a2cd54abfb43ad7cd3c50c0ec8f41a9a",
+        "source_fact:v1:7b1513148f491ad7fe514c8029e326a10250d35a95f0ffe3ecfceb8b1ef4584a",
+        "source_fact:v1:9495f0110da4b1dd96a1e79b612d337751fb1a587fb3642ee496ad43e3b08e3c",
+        "source_fact:v1:b7bb9747d9da910cf799c64a7b241a6685d799ffc9fee9a7f937e95532a734e9"
+      ],
+      "source_published_kst": "2026-10-11T08:37+09:00",
+      "source_title": "사우디 리야드 공항 또 공격 받아⋯12명 사망ㆍ300명 이상 부상",
+      "telegram_core_fact": "킹칼리드 공항은 5일 예멘의 친이란 반군 후티가 사우디의 공항·정유시설 등을 겨냥한 대대적인 공격을 발표한 이후 일주일간 세 차례 공격받았다.",
+      "title": "사우디 리야드 공항 또 공격 받아⋯12명 사망ㆍ300명 이상 부상"
     },
     "source_fact:894be6b1c566b046d942ddc2": {
       "first_seen_kst": "2026-10-08T20:58:15+09:00",
@@ -280524,6 +281116,29 @@
       "source_published_kst": "2026-10-06T16:27+09:00",
       "title": "[올댓차이나] 中 AI 스타트업 문샷, 내년 1분기 홍콩 상장…\"기업가치 500억＄\""
     },
+    "source_fact:9c7048585a0a0157bf086577": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172485",
+      "source": "매일경제",
+      "source_body_digest": "ac890da7533a4af9f35903e20861c971feaca2fdb5f4e6e910f1cd7c601191c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:29540a10f21988d69849eda3b1bca39e7c125eb2de50a896a7469fe0ae8fe40c",
+      "source_fact_keys": [
+        "source_fact:v1:6a6f52f2982c429bbe2fd136d5667f66b0558d4f0264f0ae964794d1b29532bf",
+        "source_fact:v1:94c715a273b1fffc7c70ffd82b18fc0980369008ec5a9cdd81b9f81d3616a6a4",
+        "source_fact:v1:a9b8f6b2a79878ebf2f673eb28cd26d3fd025df6cff18e9c10c366fcf5876d02",
+        "source_fact:v1:d9659318c10124be48e0893294fcffe182588a7bfb908f85fed5af915acc6c4a",
+        "source_fact:v1:f82a1a21efd563c935f719dd016faa131b1613ea019937875758d92fc0161a8a"
+      ],
+      "source_published_kst": "2026-10-11T07:33+09:00",
+      "source_title": "“내년엔 1200원대도 가능”…‘반도체 달러’ 덕에 원화 강세 계속될까",
+      "telegram_core_fact": "반도체 수출 호황에 달러 수급 여건이 크게 개선되며, 원화의 펀더멘털이 강해졌다는 분석이 나온다.",
+      "title": "“내년엔 1200원대도 가능”…‘반도체 달러’ 덕에 원화 강세 계속될까"
+    },
     "source_fact:9c7d9da7a52a728944182e40": {
       "first_seen_kst": "2026-10-07T10:23:42+09:00",
       "lanes": {
@@ -289483,6 +290098,28 @@
       "telegram_core_fact": "\"세컨더리 시장은 자금만 공급한다고 거래가 이뤄지는 구조가 아니다\"라며 \"실제 매도 물량과 매수자의 가격 제시, 거래 성사 사례가 축적돼 시장에서 신뢰할 수 있는 가격 정보가 형성돼야 한다\"고 강조했다.",
       "title": "\"벤처투자 늘어도 회수는 제자리…세컨더리 시장 활성화 시급\""
     },
+    "source_fact:aa8f27e946fb495173391824": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820750",
+      "source": "뉴시스",
+      "source_body_digest": "67af3a6129ddc03f3a30c8c824a06d27b17502aa729455ec23be15f3cea5aa7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3cd264e8c1deb852d9e82cc5e8b13df460b0000af470014378bcf6a3f72636d5",
+      "source_fact_keys": [
+        "source_fact:v1:7c04aab2f23db0e0ebf684ee8aa06b572ac5a4b3d1e33b8694def50c53f542fc",
+        "source_fact:v1:a0fc2db92564eaee931e0e7b2a526ece777ee857f8467bf971f92f694bf67584",
+        "source_fact:v1:b695cd34dbbcfd845ecb18a8c89e7c0bc66b0fbcece152bf9b302f43c0e900f9",
+        "source_fact:v1:f5cef7cd435f21af4ba00ef33f869e146bc9a3c45516242a4e01ecb2d9a89733"
+      ],
+      "source_published_kst": "2026-10-11T08:28+09:00",
+      "source_title": "미 남동부 허리케인 이사이아스로 4명 사망.. 플로리다 큰 피해",
+      "telegram_core_fact": "허리케인 이사이아스(ISAIAS)가 미국 남동부 플로리다 팬핸들 지역을 공격한 뒤 10일 북쪽으로 빠져 나가면서 폭우와 홍수, 토네이도로 최소 4명의 사망자가 발생했다. 사망자 4명 가운데 2명은 플로리다주와 앨라배마에서 허리케인으로 인해 거대한 나무가 집 위로 쓰러지는 사고로 사망했다.",
+      "title": "미 남동부 허리케인 이사이아스로 4명 사망.. 플로리다 큰 피해"
+    },
     "source_fact:aaa1125757dd87b078bc0c21": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
       "lanes": {
@@ -295333,6 +295970,26 @@
       "source_published_kst": "2026-10-06T17:46+09:00",
       "title": "메모리 반도체 호황 속 삼성전자 완제품은 '고전'…DX부문 3분기 실적 어떻게"
     },
+    "source_fact:b2f59cbefd47852b75543caf": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634258",
+      "source": "이투데이",
+      "source_body_digest": "7992cb8f554b792c67d67bd8e6be164ec94f425eaa728b4e9b2415475af26722",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5a86e1c0ce8592563491f26c373f0ea74de4a98de732be38ea0fd6884162f3e",
+      "source_fact_keys": [
+        "source_fact:v1:7258cc2ec17aa1fa5106294bc5a05a0a83106422955d595431d3e945e5f859e5",
+        "source_fact:v1:af59fcd9af106b6b4fface6c65b38321e35e05fc2dc9e9d10c2342aab570817e"
+      ],
+      "source_published_kst": "2026-10-11T08:20+09:00",
+      "source_title": "추미애 \"보육예산 임의삭감 아냐\"…어린이집 지원단가는 1만2600원→6000원",
+      "telegram_core_fact": "추미애 경기도지사가 보육예산 '임의삭감'을 공개 부인하면서 어린이집 운영지원비의 원아당 도 지원단가를 1만2600원에서 6000원으로 조정한 내역을 직접 밝혔다. 추 지사는 보육예산 임의 삭감을 부인하면서 어린이집 운영지원비 원아당 도 지원단가를 1만2600원에서 6000원으로 조정했다고 밝혔다.",
+      "title": "추미애 \"보육예산 임의삭감 아냐\"…어린이집 지원단가는 1만2600원→6000원"
+    },
     "source_fact:b2fac63857acf57d7eedab97": {
       "first_seen_kst": "2026-10-08T11:49:03+09:00",
       "lanes": {
@@ -298246,6 +298903,29 @@
       "source_title": "올해 쌀 생산량 0.6% 감소 전망…재배면적 축소 영향",
       "telegram_core_fact": "올해 쌀 생산량이 지난해보다 0.6%, 벼 재배면적은 1.1% 가량 감소할 것으로 전망됐다. 8일 국가데이터가 발표한 '2026년 쌀 예상생산량조사 결과'를 보면 올해 쌀 생산량은 351만8000t으로 전년(353만9000t)보다 2만1000t(0.6%) 감소할 것으로 전망됐다.",
       "title": "올해 쌀 생산량 0.6% 감소 전망…재배면적 축소 영향"
+    },
+    "source_fact:b7c5c6156ef2995dad6db34a": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172485",
+      "source": "매일경제",
+      "source_body_digest": "ac890da7533a4af9f35903e20861c971feaca2fdb5f4e6e910f1cd7c601191c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:29540a10f21988d69849eda3b1bca39e7c125eb2de50a896a7469fe0ae8fe40c",
+      "source_fact_keys": [
+        "source_fact:v1:6a6f52f2982c429bbe2fd136d5667f66b0558d4f0264f0ae964794d1b29532bf",
+        "source_fact:v1:94c715a273b1fffc7c70ffd82b18fc0980369008ec5a9cdd81b9f81d3616a6a4",
+        "source_fact:v1:a9b8f6b2a79878ebf2f673eb28cd26d3fd025df6cff18e9c10c366fcf5876d02",
+        "source_fact:v1:d9659318c10124be48e0893294fcffe182588a7bfb908f85fed5af915acc6c4a",
+        "source_fact:v1:f82a1a21efd563c935f719dd016faa131b1613ea019937875758d92fc0161a8a"
+      ],
+      "source_published_kst": "2026-10-11T07:33+09:00",
+      "source_title": "“내년엔 1200원대도 가능”…‘반도체 달러’ 덕에 원화 강세 계속될까",
+      "telegram_core_fact": "반도체 수출 호황에 달러 수급 여건이 크게 개선되며, 원화의 펀더멘털이 강해졌다는 분석이 나온다.",
+      "title": "“내년엔 1200원대도 가능”…‘반도체 달러’ 덕에 원화 강세 계속될까"
     },
     "source_fact:b7d19022c092ab7157e43030": {
       "first_seen_kst": "2026-10-08T07:12:10+09:00",
@@ -317035,6 +317715,30 @@
       "source_title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주",
       "telegram_core_fact": "회사 매출은 2억2000만 달러 전망입니다.",
       "title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주"
+    },
+    "source_fact:d453ee3fa10a3589f38bb7f5": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634260",
+      "source": "이투데이",
+      "source_body_digest": "860a3e70d3dad2180b09be6aa7bbc435525cd5ffd3f3f79309e2834d65dfcb3f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a556de2d42c5adcf71bca11d0c227fa6c87b0e66d29837881aed5db3704cebaa",
+      "source_fact_keys": [
+        "source_fact:v1:0987870d75e4754d1f3145116a0c9ea1204cf77742e825ab5d2b2a400bf35fc9",
+        "source_fact:v1:3b5f77be92a62490f604eca5edb75bc8e67bf0d382ae3a2e1cc7acd75538bcc2",
+        "source_fact:v1:7997a2fae38b2a043a3f59a4d54dfac1a2cd54abfb43ad7cd3c50c0ec8f41a9a",
+        "source_fact:v1:7b1513148f491ad7fe514c8029e326a10250d35a95f0ffe3ecfceb8b1ef4584a",
+        "source_fact:v1:9495f0110da4b1dd96a1e79b612d337751fb1a587fb3642ee496ad43e3b08e3c",
+        "source_fact:v1:b7bb9747d9da910cf799c64a7b241a6685d799ffc9fee9a7f937e95532a734e9"
+      ],
+      "source_published_kst": "2026-10-11T08:37+09:00",
+      "source_title": "사우디 리야드 공항 또 공격 받아⋯12명 사망ㆍ300명 이상 부상",
+      "telegram_core_fact": "킹칼리드 공항은 5일 예멘의 친이란 반군 후티가 사우디의 공항·정유시설 등을 겨냥한 대대적인 공격을 발표한 이후 일주일간 세 차례 공격받았다.",
+      "title": "사우디 리야드 공항 또 공격 받아⋯12명 사망ㆍ300명 이상 부상"
     },
     "source_fact:d45825da426f0edc61f40358": {
       "first_seen_kst": "2026-10-10T14:48:12+09:00",
@@ -340826,6 +341530,28 @@
       "source_published_kst": "2026-10-05T13:09+09:00",
       "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
     },
+    "source_fact:f7dee3cc70dcdb535875c446": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820750",
+      "source": "뉴시스",
+      "source_body_digest": "67af3a6129ddc03f3a30c8c824a06d27b17502aa729455ec23be15f3cea5aa7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3cd264e8c1deb852d9e82cc5e8b13df460b0000af470014378bcf6a3f72636d5",
+      "source_fact_keys": [
+        "source_fact:v1:7c04aab2f23db0e0ebf684ee8aa06b572ac5a4b3d1e33b8694def50c53f542fc",
+        "source_fact:v1:a0fc2db92564eaee931e0e7b2a526ece777ee857f8467bf971f92f694bf67584",
+        "source_fact:v1:b695cd34dbbcfd845ecb18a8c89e7c0bc66b0fbcece152bf9b302f43c0e900f9",
+        "source_fact:v1:f5cef7cd435f21af4ba00ef33f869e146bc9a3c45516242a4e01ecb2d9a89733"
+      ],
+      "source_published_kst": "2026-10-11T08:28+09:00",
+      "source_title": "미 남동부 허리케인 이사이아스로 4명 사망.. 플로리다 큰 피해",
+      "telegram_core_fact": "허리케인 이사이아스(ISAIAS)가 미국 남동부 플로리다 팬핸들 지역을 공격한 뒤 10일 북쪽으로 빠져 나가면서 폭우와 홍수, 토네이도로 최소 4명의 사망자가 발생했다. 사망자 4명 가운데 2명은 플로리다주와 앨라배마에서 허리케인으로 인해 거대한 나무가 집 위로 쓰러지는 사고로 사망했다.",
+      "title": "미 남동부 허리케인 이사이아스로 4명 사망.. 플로리다 큰 피해"
+    },
     "source_fact:f7e95e2a1a4b722fbf3f4dae": {
       "first_seen_kst": "2026-10-06T18:58:43+09:00",
       "lanes": {
@@ -344861,6 +345587,29 @@
       "source_published_kst": "2026-10-05T06:17+09:00",
       "title": "올해 사우디산 원유 도입 비중 30% 하회…2021년 이후 처음 | 연합뉴스"
     },
+    "source_fact:feaf7c316c5ff9802a5e492a": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172485",
+      "source": "매일경제",
+      "source_body_digest": "ac890da7533a4af9f35903e20861c971feaca2fdb5f4e6e910f1cd7c601191c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:29540a10f21988d69849eda3b1bca39e7c125eb2de50a896a7469fe0ae8fe40c",
+      "source_fact_keys": [
+        "source_fact:v1:6a6f52f2982c429bbe2fd136d5667f66b0558d4f0264f0ae964794d1b29532bf",
+        "source_fact:v1:94c715a273b1fffc7c70ffd82b18fc0980369008ec5a9cdd81b9f81d3616a6a4",
+        "source_fact:v1:a9b8f6b2a79878ebf2f673eb28cd26d3fd025df6cff18e9c10c366fcf5876d02",
+        "source_fact:v1:d9659318c10124be48e0893294fcffe182588a7bfb908f85fed5af915acc6c4a",
+        "source_fact:v1:f82a1a21efd563c935f719dd016faa131b1613ea019937875758d92fc0161a8a"
+      ],
+      "source_published_kst": "2026-10-11T07:33+09:00",
+      "source_title": "“내년엔 1200원대도 가능”…‘반도체 달러’ 덕에 원화 강세 계속될까",
+      "telegram_core_fact": "반도체 수출 호황에 달러 수급 여건이 크게 개선되며, 원화의 펀더멘털이 강해졌다는 분석이 나온다.",
+      "title": "“내년엔 1200원대도 가능”…‘반도체 달러’ 덕에 원화 강세 계속될까"
+    },
     "source_fact:feb46d305c04120321b68ca4": {
       "first_seen_kst": "2026-10-09T23:03:47+09:00",
       "lanes": {
@@ -345324,6 +346073,29 @@
       ],
       "source_published_kst": "2026-10-05T22:31+09:00",
       "title": "메틀렌: 일본 주요 화학 기업과 신규 갈륨 공급 계약 체결"
+    },
+    "source_fact:ff3cf0812d49ef4e13df767f": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172485",
+      "source": "매일경제",
+      "source_body_digest": "ac890da7533a4af9f35903e20861c971feaca2fdb5f4e6e910f1cd7c601191c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:29540a10f21988d69849eda3b1bca39e7c125eb2de50a896a7469fe0ae8fe40c",
+      "source_fact_keys": [
+        "source_fact:v1:6a6f52f2982c429bbe2fd136d5667f66b0558d4f0264f0ae964794d1b29532bf",
+        "source_fact:v1:94c715a273b1fffc7c70ffd82b18fc0980369008ec5a9cdd81b9f81d3616a6a4",
+        "source_fact:v1:a9b8f6b2a79878ebf2f673eb28cd26d3fd025df6cff18e9c10c366fcf5876d02",
+        "source_fact:v1:d9659318c10124be48e0893294fcffe182588a7bfb908f85fed5af915acc6c4a",
+        "source_fact:v1:f82a1a21efd563c935f719dd016faa131b1613ea019937875758d92fc0161a8a"
+      ],
+      "source_published_kst": "2026-10-11T07:33+09:00",
+      "source_title": "“내년엔 1200원대도 가능”…‘반도체 달러’ 덕에 원화 강세 계속될까",
+      "telegram_core_fact": "반도체 수출 호황에 달러 수급 여건이 크게 개선되며, 원화의 펀더멘털이 강해졌다는 분석이 나온다.",
+      "title": "“내년엔 1200원대도 가능”…‘반도체 달러’ 덕에 원화 강세 계속될까"
     },
     "source_fact:ff47084e20568f4405ebb2ee": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
@@ -354853,6 +355625,30 @@
       "source_published_kst": "2026-10-05T09:00+09:00",
       "title": "\"현대차, 미국서 가성비 브랜드 넘어 선도적 주류 목표\" | 연합뉴스"
     },
+    "title:2a3ddfd434ddab0904cee1ca": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634260",
+      "source": "이투데이",
+      "source_body_digest": "860a3e70d3dad2180b09be6aa7bbc435525cd5ffd3f3f79309e2834d65dfcb3f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a556de2d42c5adcf71bca11d0c227fa6c87b0e66d29837881aed5db3704cebaa",
+      "source_fact_keys": [
+        "source_fact:v1:0987870d75e4754d1f3145116a0c9ea1204cf77742e825ab5d2b2a400bf35fc9",
+        "source_fact:v1:3b5f77be92a62490f604eca5edb75bc8e67bf0d382ae3a2e1cc7acd75538bcc2",
+        "source_fact:v1:7997a2fae38b2a043a3f59a4d54dfac1a2cd54abfb43ad7cd3c50c0ec8f41a9a",
+        "source_fact:v1:7b1513148f491ad7fe514c8029e326a10250d35a95f0ffe3ecfceb8b1ef4584a",
+        "source_fact:v1:9495f0110da4b1dd96a1e79b612d337751fb1a587fb3642ee496ad43e3b08e3c",
+        "source_fact:v1:b7bb9747d9da910cf799c64a7b241a6685d799ffc9fee9a7f937e95532a734e9"
+      ],
+      "source_published_kst": "2026-10-11T08:37+09:00",
+      "source_title": "사우디 리야드 공항 또 공격 받아⋯12명 사망ㆍ300명 이상 부상",
+      "telegram_core_fact": "킹칼리드 공항은 5일 예멘의 친이란 반군 후티가 사우디의 공항·정유시설 등을 겨냥한 대대적인 공격을 발표한 이후 일주일간 세 차례 공격받았다.",
+      "title": "사우디 리야드 공항 또 공격 받아⋯12명 사망ㆍ300명 이상 부상"
+    },
     "title:2a416ff6936cd48986f0c0dc": {
       "first_seen_kst": "2026-10-01T17:02:50+09:00",
       "lanes": {
@@ -356231,6 +357027,29 @@
       ],
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "[ETF업&다운]3분기 엇갈린 반도체…삼전닉스 빠지고 소부장 버텼다"
+    },
+    "title:2ffc62e154ca52bf32eb3ccc": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172485",
+      "source": "매일경제",
+      "source_body_digest": "ac890da7533a4af9f35903e20861c971feaca2fdb5f4e6e910f1cd7c601191c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:29540a10f21988d69849eda3b1bca39e7c125eb2de50a896a7469fe0ae8fe40c",
+      "source_fact_keys": [
+        "source_fact:v1:6a6f52f2982c429bbe2fd136d5667f66b0558d4f0264f0ae964794d1b29532bf",
+        "source_fact:v1:94c715a273b1fffc7c70ffd82b18fc0980369008ec5a9cdd81b9f81d3616a6a4",
+        "source_fact:v1:a9b8f6b2a79878ebf2f673eb28cd26d3fd025df6cff18e9c10c366fcf5876d02",
+        "source_fact:v1:d9659318c10124be48e0893294fcffe182588a7bfb908f85fed5af915acc6c4a",
+        "source_fact:v1:f82a1a21efd563c935f719dd016faa131b1613ea019937875758d92fc0161a8a"
+      ],
+      "source_published_kst": "2026-10-11T07:33+09:00",
+      "source_title": "“내년엔 1200원대도 가능”…‘반도체 달러’ 덕에 원화 강세 계속될까",
+      "telegram_core_fact": "반도체 수출 호황에 달러 수급 여건이 크게 개선되며, 원화의 펀더멘털이 강해졌다는 분석이 나온다.",
+      "title": "“내년엔 1200원대도 가능”…‘반도체 달러’ 덕에 원화 강세 계속될까"
     },
     "title:301211214e8c40532cbc3678": {
       "first_seen_kst": "2026-10-02T12:38:28+09:00",
@@ -363708,6 +364527,28 @@
       ],
       "source_published_kst": "2026-10-07T15:11+09:00",
       "title": "파라마운트, 1100억달러 규모 워너 인수 완료⋯‘스카이댄스’ 출범 [新미디어제국 탄생①]"
+    },
+    "title:5028004f47e3833a5e601bed": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820750",
+      "source": "뉴시스",
+      "source_body_digest": "67af3a6129ddc03f3a30c8c824a06d27b17502aa729455ec23be15f3cea5aa7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3cd264e8c1deb852d9e82cc5e8b13df460b0000af470014378bcf6a3f72636d5",
+      "source_fact_keys": [
+        "source_fact:v1:7c04aab2f23db0e0ebf684ee8aa06b572ac5a4b3d1e33b8694def50c53f542fc",
+        "source_fact:v1:a0fc2db92564eaee931e0e7b2a526ece777ee857f8467bf971f92f694bf67584",
+        "source_fact:v1:b695cd34dbbcfd845ecb18a8c89e7c0bc66b0fbcece152bf9b302f43c0e900f9",
+        "source_fact:v1:f5cef7cd435f21af4ba00ef33f869e146bc9a3c45516242a4e01ecb2d9a89733"
+      ],
+      "source_published_kst": "2026-10-11T08:28+09:00",
+      "source_title": "미 남동부 허리케인 이사이아스로 4명 사망.. 플로리다 큰 피해",
+      "telegram_core_fact": "허리케인 이사이아스(ISAIAS)가 미국 남동부 플로리다 팬핸들 지역을 공격한 뒤 10일 북쪽으로 빠져 나가면서 폭우와 홍수, 토네이도로 최소 4명의 사망자가 발생했다. 사망자 4명 가운데 2명은 플로리다주와 앨라배마에서 허리케인으로 인해 거대한 나무가 집 위로 쓰러지는 사고로 사망했다.",
+      "title": "미 남동부 허리케인 이사이아스로 4명 사망.. 플로리다 큰 피해"
     },
     "title:502a08c90319f9e004132b94": {
       "first_seen_kst": "2026-10-07T17:23:27+09:00",
@@ -376744,6 +377585,26 @@
       "link": "https://www.etnews.com/20260929000120",
       "source": "전자신문",
       "title": "中 CXMT, D램 추격에 7조원 베팅…후공정 역량 확대"
+    },
+    "title:8f4583e7052d746f381d2ab0": {
+      "first_seen_kst": "2026-10-11T08:42:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T08:42:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T08:42:16+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634258",
+      "source": "이투데이",
+      "source_body_digest": "7992cb8f554b792c67d67bd8e6be164ec94f425eaa728b4e9b2415475af26722",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5a86e1c0ce8592563491f26c373f0ea74de4a98de732be38ea0fd6884162f3e",
+      "source_fact_keys": [
+        "source_fact:v1:7258cc2ec17aa1fa5106294bc5a05a0a83106422955d595431d3e945e5f859e5",
+        "source_fact:v1:af59fcd9af106b6b4fface6c65b38321e35e05fc2dc9e9d10c2342aab570817e"
+      ],
+      "source_published_kst": "2026-10-11T08:20+09:00",
+      "source_title": "추미애 \"보육예산 임의삭감 아냐\"…어린이집 지원단가는 1만2600원→6000원",
+      "telegram_core_fact": "추미애 경기도지사가 보육예산 '임의삭감'을 공개 부인하면서 어린이집 운영지원비의 원아당 도 지원단가를 1만2600원에서 6000원으로 조정한 내역을 직접 밝혔다. 추 지사는 보육예산 임의 삭감을 부인하면서 어린이집 운영지원비 원아당 도 지원단가를 1만2600원에서 6000원으로 조정했다고 밝혔다.",
+      "title": "추미애 \"보육예산 임의삭감 아냐\"…어린이집 지원단가는 1만2600원→6000원"
     },
     "title:8f5a4886ac7eaf6306cc7b36": {
       "first_seen_kst": "2026-10-07T12:28:05+09:00",
@@ -401044,5 +401905,5 @@
       "title": "AI 데이터센터가 살린 철강…관세 50%에도 대미 수출 급증"
     }
   },
-  "updated_at_kst": "2026-10-11T08:19:03+09:00"
+  "updated_at_kst": "2026-10-11T08:42:16+09:00"
 }
