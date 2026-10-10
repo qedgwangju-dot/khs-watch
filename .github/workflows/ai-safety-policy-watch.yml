@@ -350,6 +350,7 @@ jobs:
           import hashlib
           import html
           import json
+          import os
           import pathlib
           import re
           import urllib.parse
@@ -700,10 +701,42 @@ jobs:
                   "first_seen_at":now.isoformat(),
                   "semantic_key":key,
               }
-              pending.write_text(json.dumps(state,ensure_ascii=False,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+              stage_count=1
               print(f"ai_policy_sif_new_stage={st} semantic_key={key} source={row['source']}")
           else:
+              stage_count=0
               print(f"ai_policy_sif_new_stage=none trusted_rows={len(rows)}")
+
+          # SIF is an enrichment step after the base policy watch. The base
+          # new_events=0 cannot be left in the committed state when this step
+          # appends a real Telegram alert. Reconcile the final event count.
+          collection=state.setdefault("last_collection",{})
+          previous_count=int(collection.get("new_events") or 0)
+          collection["sif_new_stages"]=stage_count
+          collection["new_events"]=previous_count+stage_count
+          pending.write_text(
+              json.dumps(state,ensure_ascii=False,indent=2,sort_keys=True)+"\n",
+              encoding="utf-8",
+          )
+
+          status_file=pathlib.Path("out/ai_safety_policy_watch_status.md")
+          if status_file.exists():
+              status_text=status_file.read_text(encoding="utf-8")
+              status_text=re.sub(
+                  r"(- 신규 중요 사건: )\d+건",
+                  lambda m: m.group(1)+str(collection["new_events"])+"건",
+                  status_text,
+                  count=1,
+              )
+              status_text += f"- SIF 신규 정책 단계: {stage_count}건\n"
+              status_file.write_text(status_text,encoding="utf-8")
+
+          with open(os.environ["GITHUB_STEP_SUMMARY"],"a",encoding="utf-8") as summary:
+              summary.write(
+                  f"\n- SIF 신규 정책 단계 {stage_count}건 · 최종 신규 사건 "
+                  f"{collection['new_events']}건\n"
+              )
+          print(f"ai_policy_sif_merged_new_events={collection['new_events']}")
           PY
 
       - name: Build one-shot Telegram test
