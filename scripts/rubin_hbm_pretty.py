@@ -7,6 +7,7 @@ import re
 ALERT = pathlib.Path("out/rubin_hbm_alert.md")
 MESSAGE_BREAK = "<<<TELEGRAM_MESSAGE_BREAK>>>"
 HYBRID_TITLE = "🚨 HBM 하이브리드 본딩 · 삼성전자 vs SK하이닉스"
+NVHBM_FOUNDRY_TITLE = "🚨 NVHBM 베이스 다이 · 삼성전자·SK하이닉스·Micron"
 
 
 def find(pattern: str, text: str, default: str = "") -> str:
@@ -231,6 +232,15 @@ def format_hybrid_alert(original: str) -> str:
         "Counterpoint": ("counterpointresearch.com", "www.counterpointresearch.com"),
         "변화 공식원문": ("news.skhynix.com", "news.skhynix.co.kr", "www.skhynix.com",
                            "news.samsung.com", "semiconductor.samsung.com", "www.samsung.com"),
+        "NVIDIA 공식": ("developer.nvidia.com",),
+        "TSMC 공식": ("tsmc.com", "www.tsmc.com"),
+        "삼성전자 이원화 보도": ("zdnet.co.kr", "www.zdnet.co.kr"),
+        "SK하이닉스 3나노 보도": ("www1.edaily.co.kr", "www.edaily.co.kr", "edaily.co.kr"),
+        "Micron 임원 인용 보도": ("thelec.kr", "www.thelec.kr"),
+        "TrendForce 재정리": ("trendforce.com", "www.trendforce.com"),
+        "Amazon 협력 공식": ("blogs.nvidia.com",),
+        "SK하이닉스 공식": ("news.skhynix.com","news.skhynix.co.kr","www.skhynix.com","www.skhynix.co.kr"),
+        "삼성전자 공식": ("news.samsung.com",),
     }
     out: list[str] = []
     for raw in original.splitlines():
@@ -239,7 +249,7 @@ def format_hybrid_alert(original: str) -> str:
             out.append("")
             continue
         m = re.fullmatch(
-            r"(Damnang|TechPowerUp|SK하이닉스 공식|삼성전자 공식|Counterpoint|변화 공식원문)\s+(https?://\S+)",
+            r"(Damnang|TechPowerUp|SK하이닉스 공식|삼성전자 공식|Counterpoint|변화 공식원문|NVIDIA 공식|TSMC 공식|삼성전자 이원화 보도|SK하이닉스 3나노 보도|Micron 임원 인용 보도|TrendForce 재정리|Amazon 협력 공식)\s+(https?://\S+)",
             line,
         )
         if m:
@@ -278,16 +288,15 @@ def main() -> None:
     sections = [part.strip() for part in original.split(MESSAGE_BREAK) if part.strip()]
     if not sections:
         return
-    if any(part.startswith(HYBRID_TITLE) for part in sections):
-        # A hybrid event is always its own notification. Ignore neither its
-        # source text nor its verified provenance in favour of the Rubin
-        # generic fallback.
-        normal = [part for part in sections if not part.startswith(HYBRID_TITLE)]
-        hybrid = [part for part in sections if part.startswith(HYBRID_TITLE)]
+    if any(part.startswith((HYBRID_TITLE, NVHBM_FOUNDRY_TITLE)) for part in sections):
+        # Each subject is independently formatted; generic demand assumptions
+        # must never be appended to foundry or hybrid-bonding risk notices.
+        normal = [part for part in sections if not part.startswith((HYBRID_TITLE, NVHBM_FOUNDRY_TITLE))]
+        subject = [part for part in sections if part.startswith((HYBRID_TITLE, NVHBM_FOUNDRY_TITLE))]
         pretty_sections = []
         if normal:
             pretty_sections.append(format_generic_alert(("\n" + MESSAGE_BREAK + "\n").join(normal)))
-        pretty_sections += [format_hybrid_alert(part) for part in hybrid]
+        pretty_sections += [format_hybrid_alert(part) for part in subject]
         formatted = ("\n\n" + MESSAGE_BREAK + "\n\n").join(
             part.strip() for part in pretty_sections if part.strip()
         ) + "\n"
