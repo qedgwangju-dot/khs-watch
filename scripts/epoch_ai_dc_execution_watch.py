@@ -24,6 +24,7 @@ STATUS = OUT / "epoch_ai_dc_execution_status.md"
 KST = ZoneInfo("Asia/Seoul")
 HEADERS = {"User-Agent": "khs-watch/1.0 (+https://github.com/qedgwangju-dot/khs-watch)"}
 FORMAT_VERSION = 4
+CENSUS_STATE = Path("data/data_center_growth_state.json")
 
 
 def fetch_text(url: str, timeout: int = 40) -> str:
@@ -74,6 +75,74 @@ def load_state() -> dict:
 
 def pct_change(new: float, old: float) -> float:
     return (new / old - 1) * 100 if old else 0.0
+
+
+
+def census_context() -> dict | None:
+    """Read the existing Census state, not an estimated monthly cash outlay."""
+    try:
+        d = json.loads(CENSUS_STATE.read_text(encoding="utf-8"))
+        year, month = map(int, str(d["last_period"]).split("-"))
+        now = datetime.now(KST)
+        months_old = (now.year - year) * 12 + now.month - month
+        yoy, mom = float(d["last_yoy_pct"]), float(d["last_mom_pct"])
+        if not (0 <= months_old <= 3 and -100 <= yoy <= 2000 and -100 <= mom <= 2000):
+            return None
+        return {"period": d["last_period"], "yoy": yoy, "mom": mom}
+    except (OSError, ValueError, TypeError, KeyError):
+        return None
+
+
+def pipeline_flow(old: dict, new: dict) -> dict:
+    """Never equate falling not-yet-online capacity with falling new project plans."""
+    if not old:
+        return {"kind": "기준선", "plan": 0.0, "live": 0.0, "gap": 0.0,
+                "added": None, "removed": None, "matched": None}
+    plan = float(new["planned_it_mw_2030"]) - float(old.get("planned_it_mw_2030") or 0)
+    live = float(new["current_it_mw"]) - float(old.get("current_it_mw") or 0)
+    gap = float(new["remaining_it_mw"]) - float(old.get("remaining_it_mw") or 0)
+    past_sites = old.get("site_capacity_snapshot_mw") or {}
+    next_sites = new.get("site_capacity_snapshot_mw") or {}
+    added = removed = matched = None
+    if past_sites and next_sites:
+        new_names = next_sites.keys() - past_sites.keys()
+        lost_names = past_sites.keys() - next_sites.keys()
+        both_names = past_sites.keys() & next_sites.keys()
+        added = sum(float(next_sites[k]["planned"]) for k in new_names)
+        removed = sum(float(past_sites[k]["planned"]) for k in lost_names)
+        matched = sum(float(next_sites[k]["planned"]) - float(past_sites[k]["planned"]) for k in both_names)
+        if abs((added - removed + matched) - plan) > 2:
+            raise ValueError("Epoch aggregate and site-level plan revision mismatch")
+    if plan <= -1000:
+        kind = "계획 축소·자료 재분류 가능성 추가 검증 필요"
+    elif plan >= 1000:
+        kind = "추정 계획 용량 확대"
+    elif abs(plan) < 200 and live >= 500 and gap <= -500:
+        kind = "기존 계획의 가동 전환(사업 취소 신호 아님)"
+    elif live <= -500:
+        kind = "가동 추정치 감소·자료 재확인 필요"
+    else:
+        kind = "새로운 대규모 변화 미확인"
+    return {"kind": kind, "plan": round(plan, 1), "live": round(live, 1),
+            "gap": round(gap, 1), "added": added, "removed": removed, "matched": matched}
+
+
+def regression_checks() -> None:
+    """Test unit- and cohort-safe pipeline classification on each run."""
+    old = {"planned_it_mw_2030": 10000, "current_it_mw": 2000, "remaining_it_mw": 8000}
+    online = {"planned_it_mw_2030": 10000, "current_it_mw": 3000, "remaining_it_mw": 7000}
+    cut = {"planned_it_mw_2030": 8500, "current_it_mw": 2000, "remaining_it_mw": 6500}
+    assert pipeline_flow(old, online)["kind"].startswith("기존 계획의 가동 전환")
+    assert pipeline_flow(old, cut)["kind"].startswith("계획 축소")
+    assert pipeline_flow(old, online)["plan"] == 0
+    try:
+        pipeline_flow(
+            {**old, "site_capacity_snapshot_mw": {"A": {"planned": 10000}}},
+            {**online, "site_capacity_snapshot_mw": {"A": {"planned": 8500}}})
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("Unreconciled site/aggregate IT capacities slipped through")
 
 
 def ko_visible(value: str) -> str:
@@ -190,6 +259,10 @@ def build_snapshot() -> dict:
         "remaining_it_mw": round(gap_mw, 1),
         "execution_ratio_pct": round(ratio, 2),
         "top_remaining_sites": top_gap[:12],
+        "site_capacity_snapshot_mw": {
+            name: {"planned": round(v["planned"], 1), "current": round(v["current"], 1)}
+            for name, v in sorted(eligible.items())
+        },
     }
 
 
@@ -211,7 +284,7 @@ def material_changes(old: dict, new: dict) -> list[str]:
     if abs(new_current - old_current) >= 500 or (old_current and abs(pct_change(new_current, old_current)) >= 5):
         changes.append(f"현재 가동 IT 전력 {old_current:,.0f}MW → {new_current:,.0f}MW")
     if abs(new_plan - old_plan) >= 1000 or (old_plan and abs(pct_change(new_plan, old_plan)) >= 5):
-        changes.append(f"2030 계획 IT 전력 {old_plan:,.0f}MW → {new_plan:,.0f}MW")
+        changes.append(f"2030 계획 IT전력 추정치 {old_plan:,.0f}→{new_plan:,.0f}MW (착공 전 물량과 구분)")
     if abs(new_ratio - old_ratio) >= 2.0:
         changes.append(f"계획 대비 가동률 {old_ratio:.1f}% → {new_ratio:.1f}%")
     if abs(new_sites - old_sites) >= 2:
@@ -219,8 +292,8 @@ def material_changes(old: dict, new: dict) -> list[str]:
     return changes
 
 
-def build_alert(new: dict, changes: list[str], first: bool) -> str:
-    title = "✅ 미국 AI 데이터센터 실제 가동률 감시 연결 완료" if first else "⚡ 미국 AI 데이터센터 실제 가동률 변화"
+def build_alert(new: dict, changes: list[str], first: bool, flow: dict, census: dict | None) -> str:
+    title = "미국 AI 데이터센터 추정 IT전력 기준선" if first else "미국 AI 데이터센터 계획·가동 추정치 변화"
     current = float(new["current_it_mw"])
     planned = float(new["planned_it_mw_2030"])
     remaining = float(new["remaining_it_mw"])
@@ -232,8 +305,8 @@ def build_alert(new: dict, changes: list[str], first: bool) -> str:
         "▶ 한눈에 보기",
         f"• 현재 가동 IT 전력: {current:,.0f}MW",
         f"• 2030년까지 계획 IT 전력: {planned:,.0f}MW",
-        f"• 실제 가동률: {ratio:.1f}%",
-        f"• 아직 미가동: {remaining:,.0f}MW ({100-ratio:.1f}%)",
+        f"• 추정 가동/2030 계획 IT전력 비율: {ratio:.1f}% (건설 공정률 아님)",
+        f"• 미가동 계획량: {remaining:,.0f}MW ({100-ratio:.1f}%) · 착공 전/건설 중 미분리",
         f"• 추적 미국 AI 데이터센터: {int(new['site_count'])}곳",
         "",
         "■ 이번 변화",
@@ -243,10 +316,32 @@ def build_alert(new: dict, changes: list[str], first: bool) -> str:
 
     lines += [
         "",
+        "■ 신규 투자와 기존 사업 가동 전환 구분",
+        f"• Epoch 가동 IT전력 변화: {flow['live']:+,.0f}MW",
+        f"• Epoch 2030 계획 IT전력 변화: {flow['plan']:+,.0f}MW",
+        f"• 아직 미가동인 계획량 변화: {flow['gap']:+,.0f}MW",
+        f"• 단계 판정: {flow['kind']}",
+    ]
+    if flow["matched"] is not None:
+        lines.append(
+            f"• 신규 포착 프로젝트 +{flow['added']:,.0f}MW"
+            f" / 추적 제외 프로젝트 -{flow['removed']:,.0f}MW"
+            f" / 기존 프로젝트 계획 수정 {flow['matched']:+,.0f}MW"
+        )
+    if census:
+        lines.append(
+            f"• Census 민간 데이터센터 건설지출({census['period']}, 계절조정 연율):"
+            f" 전월 {census['mom']:+.1f}%, 전년 {census['yoy']:+.1f}%"
+        )
+    lines += [
+        "• BNEF의 미국 전체 착공 전/건설 중/가동 GW와 Epoch의"
+        " 일부 AI 프로젝트 IT전력 MW는 표본·범위가 달라 합산하지 않습니다.",
+        "• 미가동 계획 감소만으로 착공 전 계획 감소·취소를 확정하지 않습니다.",
+        "",
         "■ 해석",
-        "• 계획 GW가 아니라 실제 IT 전력이 켜진 비율을 추적합니다.",
-        "• 이 비율이 올라가면 전력망·변전소·냉각·서버 반입이 실제 운영 단계로 넘어간 것으로 봅니다.",
-        "• 계획 전력만 커지고 가동률이 정체되면 전원 인가·건설·냉각 병목이 더 커진 것으로 봅니다.",
+        "• Epoch 추정 가동 IT전력 ÷ 2030 추정 계획 IT전력의 비율을 봅니다.",
+        "• 비율 상승은 추정 가동 증가이나 공식 전원 인가·계통 접속·고객 검수의 증거는 아닙니다.",
+        "• 계획만 커지고 추정 가동이 정체되면 전원 인가·건설·냉각 병목을 별도 확인합니다.",
         "",
         "■ 미가동 전력 상위 프로젝트",
     ]
@@ -274,15 +369,34 @@ def main() -> int:
     for p in (ALERT, PENDING, STATUS):
         p.unlink(missing_ok=True)
 
+    regression_checks()
     old = load_state()
-    new = build_snapshot()
+    try:
+        new = build_snapshot()
+        if old.get("site_count") and new["site_count"] < 0.7 * old["site_count"]:
+            raise ValueError("Epoch 추적 사이트 수가 30% 넘게 급감: 원천 품질 저하 가능")
+        flow = pipeline_flow(old, new)
+    except Exception as exc:
+        # Preserve the baseline and allow the other live monitors to run.
+        if not old or not all(k in old for k in ("site_count", "current_it_mw", "planned_it_mw_2030")):
+            raise
+        PENDING.write_text(json.dumps(old, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        STATUS.write_text(
+            "# Epoch AI 투자 사이클 감시\n\n"
+            f"- 원천 오류: {type(exc).__name__}: {exc}\n"
+            "- 기준선 유지·신규 알림 미발송·다른 감시는 계속 진행\n",
+            encoding="utf-8",
+        )
+        print(f"epoch_ai_dc_execution source_error={type(exc).__name__} baseline_held=True alert=False")
+        return 0
+    census = census_context()
     changes = material_changes(old, new)
     first = not bool(old)
     should_alert = bool(changes)
 
     PENDING.write_text(json.dumps(new, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     if should_alert:
-        ALERT.write_text(build_alert(new, changes, first), encoding="utf-8")
+        ALERT.write_text(build_alert(new, changes, first, flow, census), encoding="utf-8")
 
     STATUS.write_text(
         "# 미국 AI 데이터센터 실제 가동률 감시\n\n"
@@ -290,7 +404,9 @@ def main() -> int:
         f"- 현재 IT 전력: **{new['current_it_mw']:,.1f}MW**\n"
         f"- 2030 계획 IT 전력: **{new['planned_it_mw_2030']:,.1f}MW**\n"
         f"- 실행률: **{new['execution_ratio_pct']:.2f}%**\n"
-        f"- 잔여: **{new['remaining_it_mw']:,.1f}MW**\n"
+        f"- 미가동 계획량(착공 전/건설 중 구분 불가): **{new['remaining_it_mw']:,.1f}MW**\n"
+        f"- 계획 증감: **{flow['plan']:+,.1f}MW**, 가동 증감: **{flow['live']:+,.1f}MW**\n"
+        f"- 투자 사이클 판정: **{flow['kind']}**\n"
         f"- 중요 변화: **{len(changes)}건**\n"
         f"- 알림: **{'예' if should_alert else '아니오'}**\n",
         encoding="utf-8",
