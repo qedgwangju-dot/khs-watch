@@ -147,6 +147,21 @@ def parsed_date(body: str, url: str) -> str | None:
         if len(m.groups()) == 1:
             return m.group(1)
         return "-".join(m.groups())
+    # Drupal/White House primary pages may lack schema.org metadata:
+    # accept a visible date ONLY from the article header after the first h1.
+    article = re.split(r"<h1[^>]*>", body, maxsplit=1, flags=re.I)
+    if len(article) > 1:
+        header = article[1][:2200]
+        visible = re.search(
+            r"(January|February|March|April|May|June|July|August|September|"
+            r"October|November|December)\\s+(\\d{1,2}),\\s+(20\\d{2})",
+            re.sub(r"<[^>]+>", " ", header), re.I,
+        )
+        if visible:
+            months = {m.lower(): i for i, m in enumerate(
+                ("January","February","March","April","May","June",
+                 "July","August","September","October","November","December"), 1)}
+            return f"{visible.group(3)}-{months[visible.group(1).lower()]:02d}-{int(visible.group(2)):02d}"
     # Undated static index pages / OMB legacy budget items must never be
     # mistaken for a newly released fiscal plan.
     return None
