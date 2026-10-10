@@ -110,6 +110,8 @@ NEWS_QUERIES = [
     'site:whitehouse.gov "Super Intelligence" safety regulation accord',
     'site:federalregister.gov "Super Intelligence" executive order regulation',
     'site:congress.gov "Super Intelligence" AI safety bill',
+    '"Super Intelligence Force" "incident" "notification" "remediation" AI',
+    '(Federal Register OR NIST OR FTC) "AI model" "incident" "reporting" "remediation" rule',
     '(Anthropic "Cyber Mission" OR "Critical Infrastructure Defense Program" OR "OSS Scanner") (partners OR deployments OR customers OR scanner OR funding)',
     '"Thomas Lind" OpenAI ONCD cyber strategic risk',
     '"Dean Ball" OpenAI OSTP Strategic Futures AI Action Plan',
@@ -144,6 +146,8 @@ AI_TOPIC_TERMS = (
     "ai security", "foundation model", "preparedness framework", "model evaluation",
     "joint commitment on frontier responsibilities", "white house accord on super intelligence",
     "frontier responsibilities", "super intelligence", "superintelligence",
+    "super intelligence force", "incident disclosure", "incident reporting",
+    "notification and remediation", "ai model incidents",
     "인공지능", "ai", "사이버보안", "보안 ai", "파운데이션 모델", "안전연구소",
     "프런티어 책임", "공동 서약", "공동 합의", "감독위원회",
     "anthropic cyber mission", "critical infrastructure defense program",
@@ -155,6 +159,7 @@ ACTION_TERMS = (
     "standard", "standards", "adopt", "adopts", "adopted", "mandatory",
     "regulation", "regulatory", "law", "legislation", "bill", "requirement",
     "incident reporting", "reporting requirement", "audit", "auditor",
+    "notify", "notification", "remediate", "remediation", "disclose", "disclosure",
     "evaluation standard", "benchmark", "framework", "threshold",
     "guidance", "guideline", "memorandum", "agreement",
     # Funding / procurement / pilots / contracts.
@@ -174,6 +179,7 @@ ACTION_TERMS = (
     "autonomous security", "security agent", "runtime firewall", "bluefield", "nemotron",
     "safety case", "training approval gate", "senior leadership veto",
     "independent review", "independent audit", "external evaluator",
+    "immediately disclose", "swift remedial action", "incident notification",
     "external evaluation", "governance gate", "fail-closed", "fail closed",
     "joint commitment", "accord", "signatory", "signatories", "oversight board",
     "board committee", "independent board", "self-police", "self-regulation",
@@ -226,6 +232,12 @@ CONCRETE_ACTION_TERMS = (
 )
 
 CATEGORY_PATTERNS = [
+    ("미국 AI 사고 신고·시정 요구 발표", (
+        "white house ai reporting mandate", "anthropic breaches spark",
+        "notification and remediation process", "immediately disclose incidents",
+        "report and remediate", "si force incident reporting",
+        "백악관 인공지능 사고 신고", "사고 즉시 신고", "신고·시정 요구",
+    )),
     ("Anthropic 핵심 기반시설·오픈소스 방어 사업", (
         "anthropic cyber mission", "critical infrastructure defense program",
         "cidp", "oss scanner", "핵심 기반시설 방어", "오픈소스 취약점 검사",
@@ -370,6 +382,7 @@ CATEGORY_PATTERNS = [
 WATCH_ENTITIES = (
     "openai", "anthropic", "google", "meta", "microsoft", "nvidia", "xai",
     "white house", "trump", "joint commitment on frontier responsibilities",
+    "super intelligence force", "incident notification", "model incident reporting",
     "white house accord on super intelligence",
     "anthropic cyber mission", "critical infrastructure defense program",
     "oss scanner", "oncd", "office of the national cyber director", "ostp",
@@ -574,6 +587,9 @@ def detect_category(text: str) -> str:
 def detect_entity(text: str) -> str:
     low = text.lower()
     mapping = (
+        ("백악관 Super Intelligence Force", (
+            "super intelligence force", "si force", "anthropic breaches spark white house ai reporting mandate",
+        )),
         ("백악관·프런티어 AI 공동서약", (
             "joint commitment on frontier responsibilities",
             "white house accord on super intelligence",
@@ -628,8 +644,17 @@ def is_anthropic_mission_launch_baseline(item: dict) -> bool:
     )
 
 
+def is_reported_si_original(item: dict) -> bool:
+    """The original Axios report is handled by the existing SIF stage monitor."""
+    text = f"{item.get('title','')} {item.get('description','')}".lower()
+    return (
+        "anthropic breaches spark white house ai reporting mandate" in text
+        or "axios.com/2026/10/09/anthropic-ai-security-white-house" in str(item.get("url", "")).lower()
+    )
+
+
 def material(item: dict) -> bool:
-    if is_anthropic_mission_launch_baseline(item):
+    if is_anthropic_mission_launch_baseline(item) or is_reported_si_original(item):
         return False
     combined = f" {item.get('title','')} {item.get('description','')} "
     low = combined.lower()
@@ -1028,7 +1053,10 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
             f"<b>{idx}. {html.escape(rep['entity'])} · {html.escape(rep['category'])}</b>",
             f"• {html.escape(concise_fact(rep))}",
         ]
-        if rep["category"] == "Anthropic 핵심 기반시설·오픈소스 방어 사업":
+        if rep["category"] == "미국 AI 사고 신고·시정 요구 발표":
+            lines.append("• <b>현재 단계</b>: 백악관 Super Intelligence Force 발언·요구 보도. 법률·최종 규정 성문화 여부는 별도 확인")
+            lines.append("• <b>다음 확인</b>: 사고 유형·신고 대상·기한·수신 기관·정부 공식 고시·집행 근거·벌칙·실제 시정조치")
+        elif rep["category"] == "Anthropic 핵심 기반시설·오픈소스 방어 사업":
             lines.append("• <b>의미</b>: 핵심 기반시설 방어 프로그램(CIDP)의 실제 참여기관·현장 적용과 OSS Scanner의 무료 보안검사 채택량을 추적. 무료 서비스·연구지원과 확인된 유료 계약·반복매출을 구분")
         elif rep["category"] == "프런티어 AI 국가안보·정책 핵심인사 이동":
             lines.append("• <b>의미</b>: 정부의 AI·사이버·정보기관 정책 설계자가 프런티어 AI 기업의 국가안보 조직으로 이동해 규제 대응·정부 사전검토·사이버 전략과 기업 의사결정의 연결이 강화되는지 확인")
