@@ -342,15 +342,24 @@ def check() -> int:
             status.append("공식 문서 목록 조회 실패: " + source + " " + type(exc).__name__)
     candidates = official_plan_links(pages)
     status.append(f"공식 문서 후보 수: {len(candidates)}")
+    dated = 0
+    verified_docs = 0
     for title, url in candidates:
         try:
-            found = classify_plan(title, fetch_text(url, timeout=12), url)
+            page = fetch_text(url, timeout=12)
+            verified_docs += 1
+            if parsed_date(page, url):
+                dated += 1
+            found = classify_plan(title, page, url)
         except Exception as exc:
             status.append("후보 원문 검증 실패: " + url[:80] + " " + type(exc).__name__)
             continue
         if found and found["id"] not in already:
             plan = found
             break
+    status.append(f"공식 후보 직접검증 {verified_docs}개, 게시일 식별 {dated}개")
+    if candidates and dated == 0:
+        status.append("주의: 공식 문서 게시일 파싱 결과 0건 — 계획 발표 감시 정확도 점검 필요")
 
     event_id = None
     kind = None
