@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - "scripts/qra_recurring_alert.py"
+      - "scripts/qra_recurring_state_commit.py"
       - "scripts/treasury_fiscal_plan_watch.py"
       - "scripts/treasury_fiscal_plan_state_commit.py"
       - "tests/test_treasury_fiscal_plan_watch.py"
@@ -51,6 +52,7 @@ jobs:
       - name: Validate watcher
         run: |
           python -m py_compile scripts/qra_recurring_alert.py
+          python -m py_compile scripts/qra_recurring_state_commit.py
           if [ -f tests/test_qra_recurring_alert.py ]; then
             python -m unittest tests/test_qra_recurring_alert.py -v
           fi
