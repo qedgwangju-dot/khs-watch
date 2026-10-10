@@ -131,11 +131,17 @@ jobs:
               forced_official_page_entity,
               advance_official_page_state,
               is_anthropic_mission_launch_baseline,
+              is_reported_si_original,
               material,
               concise_fact,
           )
 
           cases = [
+              (
+                  "Exclusive: Anthropic breaches spark White House AI reporting mandate; SI Force requires notification and remediation",
+                  "미국 AI 사고 신고·시정 요구 발표",
+                  "백악관 Super Intelligence Force",
+              ),
               (
                   "Anthropic Cyber Mission expands Critical Infrastructure Defense Program and OSS Scanner",
                   "Anthropic 핵심 기반시설·오픈소스 방어 사업",
@@ -194,6 +200,17 @@ jobs:
               if actual != expected:
                   raise RuntimeError(f"Official page source mismatch: {name} -> {actual}, expected {expected}")
 
+          axios_item = {
+              "source": "Axios",
+              "title": "Exclusive: Anthropic breaches spark White House AI reporting mandate",
+              "description": "The Super Intelligence Force demands immediate incident notification and remediation",
+              "url": "https://www.axios.com/2026/10/09/anthropic-ai-security-white-house",
+          }
+          if not is_reported_si_original(axios_item) or material(axios_item):
+              raise RuntimeError("Axios original must use only the SIF stage channel")
+          if source_official("Axios"):
+              raise RuntimeError("Axios attribution was incorrectly elevated to official rule publication")
+          print("ai_policy_si_statement_regression=PASS")
           launch = {
               "source": "Anthropic",
               "title": "Introducing the Anthropic Cyber Mission",
