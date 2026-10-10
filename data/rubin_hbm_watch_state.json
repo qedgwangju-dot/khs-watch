@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-11T00:29:16+09:00",
+  "updated_at_kst": "2026-10-11T08:41:39+09:00",
   "seen_ids": [
     "00315ac822df3f19f0f17bfd",
     "01899de42b17bb25951592cf",
@@ -96,6 +96,7 @@
     "9af0c97ae622942047f61887",
     "9ccd14cf2278388157bd44a6",
     "9f0710c26cd3d933f1e6120f",
+    "a0d6bc689687de8435706e85",
     "a1a690013aa0ea680246e633",
     "a1f202951bc6ed71f25e0b03",
     "a6929e533932abf2c07f5238",
@@ -115,6 +116,7 @@
     "c1ede00bdbacc4e73f3e3732",
     "c3d140a064e98999aa4ea37b",
     "c3fdc10b0f54b88815487911",
+    "c4b8ad2c2e0ed61e954595fe",
     "c52ba12d096d753cd04c7820",
     "c66bcba5501ce4414506b0e6",
     "c7de4375db090e66cbc97fc5",
@@ -181,13 +183,13 @@
     "rubin_ultra_spec_192gb_288gb_1tb",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 0,
+  "last_unseen_raw_count": 2,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1341.49,
-    "date": "2026-10-09 일일 기준 · ECB/Frankfurter · 조회 2026-10-11 00:29 KST · 보조 API 2026-10-10 · 차이 0.01% · 일중 기준시각 차이 가능",
+    "date": "2026-10-09 일일 기준 · ECB/Frankfurter · 조회 2026-10-11 08:41 KST · 보조 API 2026-10-10 · 차이 0.01% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
@@ -315,13 +317,13 @@
       "https://www.trendforce.com/news/",
       "https://www.trendforce.com/research"
     ],
-    "last_checked_at_kst": "2026-10-11T00:29:30+09:00",
+    "last_checked_at_kst": "2026-10-11T08:41:53+09:00",
     "candidate_count": 3,
     "errors": []
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-10-11T00:30:07+09:00",
+    "checked_at_kst": "2026-10-11T08:42:31+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-10-10T14:30:35+09:00",
@@ -389,7 +391,7 @@
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
     "last_validation_cutoff": "2026-10-11",
-    "last_checked_at_kst": "2026-10-11T00:29:57+09:00",
+    "last_checked_at_kst": "2026-10-11T08:42:22+09:00",
     "cpu_structure": {
       "bnpp_public": {
         "as_of": "2026-10-05",
@@ -484,7 +486,7 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
     "last_checked_cutoff": "2026-10-11",
-    "last_checked_at_kst": "2026-10-11T00:30:02+09:00",
+    "last_checked_at_kst": "2026-10-11T08:42:26+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -528,7 +530,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-10-11T00:30:03+09:00",
+    "last_checked_at_kst": "2026-10-11T08:42:27+09:00",
     "candidate_count": 0,
     "event_count": 0,
     "area_structure": {
