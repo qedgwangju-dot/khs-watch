@@ -264,6 +264,14 @@ def build_financing_alert(current: ReleaseSection, previous: ReleaseSection | No
         raise RuntimeError("민간보유 순시장성 차입 두 분기 금액 확인 전")
     prior_link = financing_estimates_link(previous) if previous else None
     prior = extract_financing_estimates(fetch_clean(prior_link)) if prior_link else {}
+    fx = None
+    fx_basis = "공식 환율 조회 실패, 원화 환산 보류"
+    try:
+        from fx_api import daily_krw
+        quote = daily_krw()
+        fx, fx_basis = quote.rate, str(quote.basis)
+    except Exception:
+        pass
     rows = []
     for quarter, billion in amounts.items():
         if quarter in prior:
