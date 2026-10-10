@@ -41,7 +41,7 @@
     "source_url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxPajJaUi1GNlkzMXlpRm5LSHhacVVoS2U4XzRYeW9XWXRvMHhlQW0zS3ZlZ2lfT0pzVEV5LThIblpydzYwOFNHcW1JTzNFbEZXNE11NnBSVVNSUXBVb0hnV1NMYVJqUm92cmptN25laTNSTmNJd19SQXh6STlRUDdleWdEOURCaThqM0pzYjY2VEptZXBwc3hUeGRBNlpLdGIyM0RBMnFmRW02QnBpOEs0Q3NHSDB0OVprZjUxRmZWdFBRa24xRlJ0MWJXZWU2N0ZnQmZjR3VyR2wyT3hET1pEelhNQTdfa28?oc=5",
     "source_rank": 3
   },
-  "updated_at_kst": "2026-10-10T15:21:15+09:00",
+  "updated_at_kst": "2026-10-10T17:25:35+09:00",
   "last_scan_count": 2,
   "last_typed_change_count": 0,
   "last_new_event_count": 0,
@@ -49,5 +49,27 @@
     "3bc9abb89edc22ce016b6951",
     "6e05d9d92bab88a66b33c239"
   ],
-  "delivered_event_keys": []
+  "delivered_event_keys": [],
+  "semicap_watch": {
+    "delivered_keys": [
+      "ASML|spares|10|2027-01|reported"
+    ],
+    "baseline_source": "https://www.thelec.kr/news/articleView.html?idxno=63515",
+    "source_status": "ASML 부품 인상: 보도 단계 / 신규 장비: 협의 단계"
+  },
+  "last_successful_delivery_kst": "2026-10-10T17:25:37+09:00",
+  "telegram_message_ids": [
+    277
+  ],
+  "telegram_message_id": 277,
+  "bot_username": "khs88798879887988798879_bot",
+  "delivery_receipt": {
+    "status": "confirmed",
+    "bot_username": "khs88798879887988798879_bot",
+    "message_ids": [
+      277
+    ],
+    "confirmed_at_kst": "2026-10-10T17:25:37+09:00",
+    "alert_signature": "d38353d863e8f317ebf515d1c8301a57628e809be6e46011156540660176c016"
+  }
 }
