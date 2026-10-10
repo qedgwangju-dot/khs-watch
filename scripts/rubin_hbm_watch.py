@@ -2503,10 +2503,33 @@ def merge_nvhbm_foundry_milestone(current: dict, obs: dict) -> dict:
         return out
     stages = dict(out.get("vendor_stage") or {})
     current_stage = stages.get(vendor) or "reported_strategy"
-    if NVHBM_FOUNDRY_PROGRESSION[stage] <= NVHBM_FOUNDRY_PROGRESSION.get(current_stage,-1):
+    scope = obs.get("product_scope") or ""
+    if scope not in ("nvhbm", "custom_hbm", "standard_hbm4e"):
         return out
-    stages[vendor] = stage
+    # A customer's standard HBM4E acceptance must not erase, imply or
+    # suppress a different custom-HBM / NVHBM project milestone.
+    product_stages = dict(out.get("vendor_product_stage") or {})
+    per_vendor = dict(product_stages.get(vendor) or {})
+    prior_scope_stage = per_vendor.get(scope) or "reported_strategy"
+    if NVHBM_FOUNDRY_PROGRESSION[stage] <= NVHBM_FOUNDRY_PROGRESSION.get(prior_scope_stage,-1):
+        return out
+    per_vendor[scope] = stage
+    product_stages[vendor] = per_vendor
+    out["vendor_product_stage"] = product_stages
+    if NVHBM_FOUNDRY_PROGRESSION[stage] > NVHBM_FOUNDRY_PROGRESSION.get(current_stage,-1):
+        stages[vendor] = stage
     out["vendor_stage"] = stages
+    scoped_proofs = dict(out.get("confirmed_official_product_milestones") or {})
+    vendor_proofs = dict(scoped_proofs.get(vendor) or {})
+    vendor_proofs[scope] = {
+        "stage": stage,
+        "product_scope": scope,
+        "foundry": obs.get("foundry") or "실명 미확인",
+        "source_url": obs["source_url"],
+        "observed_at": obs.get("observed_at") or "",
+    }
+    scoped_proofs[vendor] = vendor_proofs
+    out["confirmed_official_product_milestones"] = scoped_proofs
     confirmed = dict(out.get("confirmed_official_milestones") or {})
     confirmed[vendor] = {
         "stage": stage,
@@ -2524,30 +2547,36 @@ def merge_nvhbm_foundry_milestone(current: dict, obs: dict) -> dict:
     return out
 
 
-def nvhbm_foundry_stage_changes(old: dict, new: dict) -> list[tuple[str,str]]:
+def nvhbm_foundry_stage_changes(old: dict, new: dict) -> list[tuple[str,str,str]]:
     changes = []
+    old_product = old.get("vendor_product_stage") or {}
+    new_product = new.get("vendor_product_stage") or {}
+    scope_names = {"nvhbm":"NVHBM", "custom_hbm":"맞춤형 HBM", "standard_hbm4e":"표준 HBM4E"}
     for vendor, ko in (("samsung","삼성전자"),("skhynix","SK하이닉스"),("micron","Micron")):
-        before = (old.get("vendor_stage") or {}).get(vendor) or "reported_strategy"
-        after = (new.get("vendor_stage") or {}).get(vendor) or "reported_strategy"
-        if NVHBM_FOUNDRY_PROGRESSION.get(after,-1) > NVHBM_FOUNDRY_PROGRESSION.get(before,-1):
-            changes.append((vendor, f"{ko}: {NVHBM_FOUNDRY_STAGE_KO[before]} → {NVHBM_FOUNDRY_STAGE_KO[after]}"))
+        for scope, after in (new_product.get(vendor) or {}).items():
+            if scope not in scope_names or after not in NVHBM_FOUNDRY_PROGRESSION:
+                continue
+            before = (old_product.get(vendor) or {}).get(scope) or "reported_strategy"
+            if NVHBM_FOUNDRY_PROGRESSION[after] > NVHBM_FOUNDRY_PROGRESSION.get(before,-1):
+                changes.append((vendor, scope, f"{ko} {scope_names[scope]}: {NVHBM_FOUNDRY_STAGE_KO[before]} → {NVHBM_FOUNDRY_STAGE_KO[after]}"))
     return changes
 
 
-def nvhbm_foundry_strategy_event(state: dict, reasons: list[str], *, initial: bool=False, vendor: str="") -> dict:
-    links = state.get("confirmed_official_milestones") or {}
-    source = links.get(vendor,{}).get("source_url") if vendor else None
-    src_date = (links.get(vendor,{}).get("observed_at") if vendor else None) or "2026-10-09T09:00:00+09:00"
+def nvhbm_foundry_strategy_event(state: dict, reasons: list[str], *, initial: bool=False, vendor: str="", scope: str="") -> dict:
+    links = state.get("confirmed_official_product_milestones") or {}
+    evidence = (links.get(vendor) or {}).get(scope) or {}
+    source = evidence.get("source_url")
+    src_date = evidence.get("observed_at") or "2026-10-09T09:00:00+09:00"
     return {
         "category":"nvhbm_foundry_strategy",
         "fact_key": ("nvhbm_foundry_editorial_20261009" if initial else
-                     f"nvhbm_foundry_official_{vendor}_{src_date}"),
+                     f"nvhbm_foundry_official_{vendor}_{scope}_{src_date}"),
         "headline_ko": "NVHBM 베이스 다이 파운드리 전략 비교",
         "published_at_kst": src_date,
         "origin_source": ("TrendForce News(원보도 재정리)" if initial else "메모리 업체 공식"),
         "source": ("TrendForce News(원보도 재정리)" if initial else "메모리 업체 공식"),
         "direct_link": source or NVHBM_FOUNDRY_NEWS_SOURCE,
-        "fact_bullets": reasons, "vendor":vendor,
+        "fact_bullets": reasons, "vendor":vendor, "scope":scope,
         "foundry_strategy_state":json.loads(json.dumps(state)),
         "verification": ("NVIDIA·TSMC·삼성전자·SK하이닉스 공식자료와 개별 전문매체 보도 단계 분리"
                          if initial else "실제 제조업체 원문 직접 확인"),
@@ -2612,7 +2641,8 @@ def render_nvhbm_foundry_notice(e:dict,now:datetime)->str:
     if e.get("fact_bullets") and not initial:
         out.insert(4,"• 신규 공식 변화: "+" / ".join(e["fact_bullets"]))
         vendor = e.get("vendor") or ""
-        proof = (st.get("confirmed_official_milestones") or {}).get(vendor) or {}
+        scope = e.get("scope") or ""
+        proof = ((st.get("confirmed_official_product_milestones") or {}).get(vendor) or {}).get(scope) or {}
         if proof.get("source_url"):
             out.append("신규 제조사 공식원문 "+ proof["source_url"])
     out.extend([
@@ -4021,9 +4051,9 @@ def main() -> None:
             initial=True,
         ))
     if foundry_changes and not first_run:
-        for vendor, reason in foundry_changes:
+        for vendor, scope, reason in foundry_changes:
             verified_events.append(nvhbm_foundry_strategy_event(
-                foundry_state, [reason], initial=False, vendor=vendor,
+                foundry_state, [reason], initial=False, vendor=vendor, scope=scope,
             ))
 
     thermal_state = dict(state.get("samsung_hbm4e_thermal_package") or {})
