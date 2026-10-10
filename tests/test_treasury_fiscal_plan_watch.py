@@ -54,6 +54,11 @@ class FiscalPolicyTests(unittest.TestCase):
         self.assertEqual(len(r), 1)
         self.assertIn("home.treasury.gov", r[0][1])
 
+    def test_global_navigation_does_not_count_as_press_release(self):
+        nav = '<a href="/about/budget-financial-reporting-planning-and-performance/">Budget and Finance</a>'
+        urls = watch.official_plan_links({watch.SOURCE_INDEXES[0]: nav})
+        self.assertEqual(urls, [])
+
     def test_past_generic_budget_never_triggers(self):
         html_page = '''
         <meta property="article:published_time" content="2026-06-01T09:00:00Z">
