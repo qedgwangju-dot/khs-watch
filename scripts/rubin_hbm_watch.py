@@ -168,6 +168,84 @@ SAMSUNG_NEXTGEN_HBM_BASELINE = {
     "note": "삼성 Custom HBM은 2027년부터 고객사별 사양에 맞춰 순차 샘플링을 시작한다는 공식 계획. HBM5 맞춤형 본격화는 업계 전망 단계. zHBM은 공식 콘셉트·개발 단계이며 확정 고객·계약·양산으로 승격하지 않음.",
 }
 
+NVHBM_FOUNDRY_TRACK_VERSION = 1
+NVHBM_FOUNDRY_NEWS_SOURCE = "https://www.trendforce.com/news/2026/10/09/news-nvidias-nvhbm-reshapes-memory-makers-base-die-strategies-as-micron-samsung-turn-to-external-foundries/"
+NVHBM_FOUNDRY_NVIDIA_SOURCE = "https://developer.nvidia.com/blog/nvidia-nvlink-fusion-brings-nvhbm-to-next-generation-ai-infrastructure/"
+NVHBM_FOUNDRY_TSMC_SOURCE = "https://www.tsmc.com/english/node/233"
+NVHBM_FOUNDRY_MICRON_REPORT = "https://www.thelec.kr/news/articleView.html?idxno=63114"
+NVHBM_FOUNDRY_SAMSUNG_REPORT = "https://zdnet.co.kr/view/?no=20260915100431"
+NVHBM_FOUNDRY_SK_REPORT = "https://www1.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=05762966645478440"
+NVHBM_FOUNDRY_SK_OFFICIAL = "https://news.skhynix.co.kr/tsmc-technology-symposium-2026/"
+NVHBM_FOUNDRY_SAMSUNG_OFFICIAL = "https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing"
+NVHBM_FOUNDRY_AWS_OFFICIAL = "https://blogs.nvidia.com/blog/nvlink-fusion-nvhbm-custom-high-bandwidth-memory/"
+NVHBM_FOUNDRY_PROGRESSION = {
+    "reported_strategy": 0,
+    "official_foundry_selection": 1,
+    "official_customer_sample": 2,
+    "official_customer_qualification": 3,
+    "official_mass_production": 4,
+}
+NVHBM_FOUNDRY_STAGE_KO = {
+    "reported_strategy": "제조 전략 보도·고객 검증 미확인",
+    "official_foundry_selection": "제조업체 공식 선정 확인",
+    "official_customer_sample": "해당 베이스 다이 고객 샘플 공식 확인",
+    "official_customer_qualification": "해당 베이스 다이 고객 인증 공식 확인",
+    "official_mass_production": "해당 베이스 다이 양산 공식 확인",
+}
+NVHBM_FOUNDRY_BASELINE = {
+    "source_editorial": "TrendForce News 편집 기사(독자 취재/독립 원출처로 중복 계산 금지)",
+    "source_date": "2026-10-09",
+    "vendor_stage": {
+        "samsung": "reported_strategy",
+        "skhynix": "reported_strategy",
+        "micron": "reported_strategy",
+    },
+    "reported_core_nodes": {
+        "samsung": {"hbm4":"1c", "next_hbm4e":"1c"},
+        "skhynix": {"hbm4":"1b", "next_hbm4e":"1c"},
+        "micron": {"hbm4":"1beta", "next_hbm4e":"1gamma"},
+    },
+    "reported_base_die_manufacturing": {
+        "samsung": {"hbm4":"Samsung Foundry 4nm (official)",
+                    "next_custom":"Samsung Foundry or TSMC (reported dual track)",
+                    "nvhbm_tsmc_contract_official":False},
+        "skhynix": {"hbm4":"TSMC 12nm (official TSMC collaboration, node per reported sources)",
+                    "next_custom":"TSMC 3nm under consideration (reported)",
+                    "nvhbm_tsmc_contract_official":False},
+        "micron": {"hbm4":"in-house",
+                   "next_custom":"external foundry per COO quote (The Elec); TSMC and 3nm anticipated",
+                   "nvhbm_tsmc_contract_official":False},
+    },
+    "samsung_memory_division_design_role_reported": True,
+    "micron_100pct_all_hbm_outsourced": False,
+    "trainium4_nvlink_fusion_official": True,
+    "annapurna_nvhbm_collaboration_official": True,
+    "trainium4_nvhbm_mass_production_confirmed": False,
+    "memory_vendor_nvhbm_mass_production_confirmed": [],
+    "phy_support_area_reduction_pct_max_official": 67.0,
+    "entire_package_area_reduction_pct": None,
+    "bandwidth_gain_pct_max_official": 30.0,
+    "hbm_power_reduction_pct_max_official": 15.0,
+    "compute_die_area_gain_pct_max_official": 25.0,
+    "tsmc_n12_base_die_technology_official": True,
+    "tsmc_n3p_custom_hbm4e_technology_official": True,
+    "tsmc_n3p_samsung_or_micron_customer_confirmed": False,
+    "underlying_sources": {
+        "nvidia": NVHBM_FOUNDRY_NVIDIA_SOURCE,
+        "tsmc": NVHBM_FOUNDRY_TSMC_SOURCE,
+        "samsung_hbm4": NVHBM_FOUNDRY_SAMSUNG_OFFICIAL,
+        "skhynix_tsmc": NVHBM_FOUNDRY_SK_OFFICIAL,
+        "micron": NVHBM_FOUNDRY_MICRON_REPORT,
+        "samsung_dual": NVHBM_FOUNDRY_SAMSUNG_REPORT,
+        "skhynix_n3": NVHBM_FOUNDRY_SK_REPORT,
+        "trendforce_editorial": NVHBM_FOUNDRY_NEWS_SOURCE,
+        "aws_nvhbm": NVHBM_FOUNDRY_AWS_OFFICIAL,
+    },
+    "confirmed_new_nv_hbm_wafer_orders": None,
+    "confirmed_new_nv_hbm_fab_revenue_krw": None,
+    "reported_strategy_as_of": "2026-10-09",
+}
+
 NVHBM_ARCH_TRACK_VERSION = 1
 NVHBM_ARCH_BASELINE = {
     "nvidia_stage": "official_announced",
@@ -357,6 +435,14 @@ QUERIES = [
         'Samsung ("Custom HBM" OR "custom HBM" OR HBM5 OR zHBM OR "커스텀 HBM" OR "맞춤형 HBM") (sample OR sampling OR customer-specific OR interface OR custom OR validation OR contract OR mass production OR performance OR power efficiency OR thermal OR 샘플 OR 샘플링 OR 고객사별 OR 인터페이스 OR 검증 OR 계약 OR 양산 OR 성능 OR 전력효율 OR 열저항)',
     ),
     (
+        "nvhbm_foundry_strategy",
+        '("NVHBM" OR "custom HBM" OR "커스텀 HBM") ("base die" OR "베이스 다이") (TSMC OR Samsung OR 삼성전자 OR Micron OR 마이크론 OR "SK hynix" OR SK하이닉스) (foundry OR 파운드리 OR qualified OR 인증 OR design OR 설계 OR production OR 양산)',
+    ),
+    (
+        "nvhbm_foundry_strategy",
+        '("HBM4E" OR "NVHBM") ("TSMC" OR "Samsung Foundry") ("3nm" OR "N3P" OR "12nm" OR "N12") (contract OR sample OR shipment OR customer OR 수주 OR 샘플 OR 고객)',
+    ),
+    (
         "nvhbm_architecture",
         '(NVHBM OR "custom HBM" OR "Custom HBM") (NVIDIA OR Feynman OR Rubin OR "Annapurna Labs" OR Samsung OR "SK hynix" OR Micron OR "memory controller" OR "base die" OR PHY OR "NV-HBI")',
     ),
@@ -406,6 +492,7 @@ CATEGORY_KO = {
     "samsung_hbm4_price": "삼성전자 2027 HBM4 계약가격·협상력",
     "samsung_nextgen_hbm": "별도 알림 · 삼성 Custom HBM·HBM5·zHBM 맞춤형 로드맵",
     "nvhbm_architecture": "별도 알림 · NVIDIA NVHBM·Custom HBM 구조 전환",
+    "nvhbm_foundry_strategy": "별도 알림 · NVHBM 삼성·SK하이닉스·Micron 베이스 다이 파운드리 전략",
     "hbm_2027_contract": "2027 HBM 계약가격·물량",
     "morgan_stanley_nvidia_hbm_margin": "별도 알림 · Morgan Stanley NVIDIA HBM 가격 감내력·마진",
     "jpm_hbm_structural": "별도 알림 · J.P. Morgan HBM 구조적 수급·가격",
@@ -534,6 +621,13 @@ def relevant(category: str, text: str) -> bool:
                 "contract", "mass production", "performance", "power efficiency", "thermal", "interface",
                 "맞춤형", "커스텀", "콘셉트", "목업", "샘플", "샘플링", "검증", "계약", "양산", "성능", "전력효율", "열저항", "인터페이스",
             ))
+        )
+    if category == "nvhbm_foundry_strategy":
+        return (
+            ("nvhbm" in low or "custom hbm" in low or "커스텀 hbm" in low or "hbm4e" in low)
+            and any(v in low for v in ("base die", "베이스 다이", "base-die"))
+            and any(v in low for v in ("tsmc", "samsung", "삼성", "sk hynix", "sk하이닉스", "micron", "마이크론"))
+            and any(v in low for v in ("foundry", "파운드리", "design", "설계", "qualif", "인증", "sample", "샘플", "mass production", "양산", "contract", "수주", "customer", "고객", "n3p", "3nm"))
         )
     if category == "nvhbm_architecture":
         return (
@@ -3062,7 +3156,7 @@ def choose_verified_events(fresh_unseen: list[dict], raw_events: list[dict], see
     errors: list[str] = []
     candidates: list[dict] = []
     for raw in fresh_unseen:
-        if raw.get("category") in ("citi_hbm_outlook", "jpm_hbm_structural", "micron_sca_visibility", "samsung_hbm4_price", "hbm4e_thermal_package", "hbm_hybrid_bonding", "samsung_nextgen_hbm", "nvhbm_architecture", "morgan_stanley_nvidia_hbm_margin", "rubin_hbm_option_set"):
+        if raw.get("category") in ("citi_hbm_outlook", "jpm_hbm_structural", "micron_sca_visibility", "samsung_hbm4_price", "hbm4e_thermal_package", "hbm_hybrid_bonding", "samsung_nextgen_hbm", "nvhbm_architecture", "nvhbm_foundry_strategy", "morgan_stanley_nvidia_hbm_margin", "rubin_hbm_option_set"):
             continue
         source_low = (raw.get("source") or "").lower()
         if any(k in source_low for k in LOW_VALUE_SOURCE_HINTS):
