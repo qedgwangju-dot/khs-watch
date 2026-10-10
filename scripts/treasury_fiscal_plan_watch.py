@@ -402,7 +402,12 @@ def check() -> int:
                         encoding="utf-8")
         status.append("새 공식 사건: " + event_id)
     else:
-        status.append("신규 공식 계획·41조달러 임계값 없음 → 무알림")
+        if debt is None:
+            status.append("국가채무 41조달러 돌파 판정 보류 — 공식 API 응답 없음")
+        if not pages:
+            status.append("재정건전화 계획 공개 여부 판정 보류 — 공식 목록 조회 실패")
+        if debt is not None and pages:
+            status.append("신규 공식 계획·41조달러 임계값 없음 → 무알림")
     STATUS.write_text(
         "# 미국 재정건전화 계획·채무 임계값 점검\n\n" +
         "조회: " + datetime.now(KST).isoformat(timespec="seconds") + "\n" +
