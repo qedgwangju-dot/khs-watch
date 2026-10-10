@@ -182,7 +182,17 @@ jobs:
           print("nuclear_regression_tests=passed")
           PY
 
-      # Maintenance pushes validate only; they do not enable, resume, or dispatch the live watch.
+      # One-time, commit-message-gated verification dispatch for the existing
+      # production watch. All other pushes stay validation-only.
+      - name: Verify Treasury OISP on the existing live policy watch once
+        if: github.event_name == 'push' && github.event.head_commit.message == 'One-time live verification of Treasury OISP alert'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh workflow run khs-policy-watch.yml --ref main -f telegram_test=false -f telegram_dry_run=false
+          echo "One-time existing policy watch dispatch requested."
+
+      # Maintenance pushes otherwise validate only; they do not enable or resume the live watch.
 
   watch:
     if: github.event_name != 'push'
