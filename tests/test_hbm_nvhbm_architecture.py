@@ -1,9 +1,18 @@
+import copy
 import pathlib
+import re
 import sys
+import tempfile
 import unittest
+from datetime import datetime
+from unittest.mock import patch
+from zoneinfo import ZoneInfo
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "scripts"))
 import rubin_hbm_watch as w
+import rubin_hbm_pretty as pretty
+import rubin_hbm_leverage as leverage
+import hbm_delivery as delivery
 
 
 class NVHBMArchitectureWatchTests(unittest.TestCase):
@@ -72,6 +81,190 @@ class NVHBMArchitectureWatchTests(unittest.TestCase):
     def test_baseline_same_state_is_silent(self):
         old = dict(w.NVHBM_ARCH_BASELINE)
         self.assertEqual(w.nvhbm_architecture_changes(old, dict(old)), [])
+
+
+class NVHBMFoundryStrategyTests(unittest.TestCase):
+    def good_source(self, sentence, vendor="samsung", fetched=True):
+        urls={
+            "samsung":"https://news.samsung.com/global/hbm4e-fab-update",
+            "skhynix":"https://news.skhynix.co.kr/hbm4e-custom-logic-update/",
+            "micron":"https://www.micron.com/about/blog/hbm4e-base-die-update",
+            "nvidia":"https://developer.nvidia.com/blog/custom-hbm4e-update",
+            "media":w.NVHBM_FOUNDRY_SAMSUNG_REPORT,
+            "tsmc":"https://www.tsmc.com/english/node/233",
+        }
+        return {
+            "direct_link":urls[vendor],
+            "article_fetch_succeeded":fetched,
+            "official_article_title":"",
+            "official_article_description":"",
+            "official_article_text":sentence,
+            "title":"News",
+            "description":sentence,
+            "source":"Company official" if vendor not in ("media",) else "ZDNet",
+            "published_at_kst":"2026-10-10T11:00:00+09:00",
+        }
+
+    def test_67pct_scope_and_three_vendors_are_not_confused(self):
+        s=w.NVHBM_FOUNDRY_BASELINE
+        self.assertEqual(s["phy_support_area_reduction_pct_max_official"],67.0)
+        self.assertIsNone(s["entire_package_area_reduction_pct"])
+        self.assertEqual(s["bandwidth_gain_pct_max_official"],30.0)
+        self.assertEqual(s["hbm_power_reduction_pct_max_official"],15.0)
+        self.assertEqual(s["reported_core_nodes"]["samsung"]["hbm4"],"1c")
+        self.assertEqual(s["reported_core_nodes"]["skhynix"]["hbm4"],"1b")
+        self.assertEqual(s["reported_core_nodes"]["micron"]["next_hbm4e"],"1gamma")
+        self.assertFalse(s["micron_100pct_all_hbm_outsourced"])
+        self.assertFalse(s["trainium4_nvhbm_mass_production_confirmed"])
+        self.assertFalse(s["tsmc_n3p_samsung_or_micron_customer_confirmed"])
+        self.assertIsNone(s["confirmed_new_nv_hbm_fab_revenue_krw"])
+        self.assertEqual(w.nvhbm_foundry_stage_changes(s,copy.deepcopy(s)),[])
+
+    def test_reported_sources_or_generic_tsmc_N3P_cannot_confirm_vendor_contract(self):
+        statement="Samsung has selected TSMC foundry to produce its NVHBM HBM4E base die."
+        for source in ("media","nvidia","tsmc"):
+            with self.subTest(source=source):
+                self.assertIsNone(w.extract_nvhbm_foundry_official_milestone(
+                    self.good_source(statement, vendor=source)))
+        self.assertIsNone(w.extract_nvhbm_foundry_official_milestone(
+            self.good_source(statement,vendor="samsung",fetched=False)))
+        fake={
+            "vendor":"samsung","stage":"official_mass_production",
+            "evidence":"company_official_original_fetched",
+            "source_url":"https://www.tsmc.com/english/news/fabrication",
+        }
+        self.assertEqual(w.merge_nvhbm_foundry_milestone(w.NVHBM_FOUNDRY_BASELINE,fake),
+                         w.NVHBM_FOUNDRY_BASELINE)
+
+    def test_future_intention_and_denial_cannot_become_production(self):
+        for phrase in (
+            "Samsung plans to select TSMC foundry for custom HBM4E base die.",
+            "Samsung may have the TSMC foundry manufacture its NVHBM base die.",
+            "Samsung has not begun mass production of NVHBM base die at TSMC foundry.",
+            "삼성전자 NVHBM 베이스 다이 TSMC 파운드리 양산 목표.",
+            "삼성전자 커스텀 HBM4E 베이스 다이를 TSMC 파운드리에서 양산할 예정이다.",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIsNone(w.extract_nvhbm_foundry_official_milestone(
+                    self.good_source(phrase)))
+
+    def test_official_samsung_foundry_selection_and_upgrade_once(self):
+        obs=w.extract_nvhbm_foundry_official_milestone(self.good_source(
+            "Samsung has selected TSMC foundry for its custom HBM4E base die."
+        ))
+        self.assertIsNotNone(obs)
+        self.assertEqual(obs["stage"],"official_foundry_selection")
+        self.assertEqual(obs["foundry"],"TSMC")
+        baseline=copy.deepcopy(w.NVHBM_FOUNDRY_BASELINE)
+        newer=w.merge_nvhbm_foundry_milestone(baseline,obs)
+        self.assertEqual(newer["vendor_stage"]["samsung"],"official_foundry_selection")
+        self.assertEqual(newer["vendor_stage"]["micron"],"reported_strategy")
+        self.assertEqual(len(w.nvhbm_foundry_stage_changes(baseline,newer)),1)
+        self.assertEqual(w.nvhbm_foundry_stage_changes(newer,w.merge_nvhbm_foundry_milestone(newer,obs)),[])
+        lower=dict(obs,stage="reported_strategy")
+        self.assertEqual(w.merge_nvhbm_foundry_milestone(newer,lower),newer)
+
+    def test_no_automatic_micron_outsource_all_or_trainium4_sales(self):
+        initial=copy.deepcopy(w.NVHBM_FOUNDRY_BASELINE)
+        self.assertFalse(initial["micron_100pct_all_hbm_outsourced"])
+        self.assertFalse(initial["trainium4_nvhbm_mass_production_confirmed"])
+        self.assertFalse(initial["reported_base_die_manufacturing"]["micron"]["nvhbm_tsmc_contract_official"])
+
+    def _pipeline(self,events):
+        now=datetime(2026,10,10,14,30,tzinfo=ZoneInfo("Asia/Seoul"))
+        raw=w.build_alert(now,events,{"rate":1350.0,"date":"2026-10-10","error":""})
+        with tempfile.TemporaryDirectory() as temp:
+            p=pathlib.Path(temp)/"rubin_hbm_alert.md"
+            p.write_text(raw,encoding="utf-8")
+            with patch.object(pretty,"ALERT",p),patch.object(leverage,"ALERT",p):
+                pretty.main()
+                leverage.main()
+                formatted=p.read_text(encoding="utf-8")
+        return raw,formatted,delivery.chunks(formatted)
+
+    def test_foundry_notice_links_scope_and_telegram_gate(self):
+        e=w.nvhbm_foundry_strategy_event(w.NVHBM_FOUNDRY_BASELINE,["새 공급망 보도"],initial=True)
+        raw,final,parts=self._pipeline([e])
+        self.assertIn("NVHBM 베이스 다이",final)
+        self.assertIn("PHY·지원 면적 최대 -67%",final)
+        self.assertIn("전체 반도체 패키지 면적 -67%가 아닙니다",final)
+        self.assertIn("대역폭 최대 +30%",final)
+        self.assertIn("HBM 전력 소비 최대 -15%",final)
+        self.assertIn("TSMC 이원화 추진",final)
+        self.assertIn("우선 검토 보도",final)
+        self.assertIn("100% 외주 전환했다는 뜻은 아닙니다",final)
+        self.assertIn("실제 수율 아님",final)
+        self.assertNotIn("[이번 변화]",final)
+        self.assertNotIn("[HBM 수요·가격 레버리지]",final)
+        self.assertNotIn("288GB HBM4",final)
+        self.assertNotIn("<b>2026</b>",final)
+        self.assertNotIn("확정 매출",final)
+        self.assertIsNone(delivery.validate_rubin_nvhbm_foundry_notification(final))
+        self.assertGreaterEqual(len(parts),1)
+        links=re.findall(r'<a href="([^"]+)">원문 보기</a>',final)
+        self.assertEqual(len(links),9)
+        self.assertIn(w.NVHBM_FOUNDRY_NEWS_SOURCE,links)
+        self.assertIn(w.NVHBM_FOUNDRY_TSMC_SOURCE,links)
+
+    def test_alert_hard_gate_blocks_metric_scope_or_links_corruption(self):
+        e=w.nvhbm_foundry_strategy_event(w.NVHBM_FOUNDRY_BASELINE,["보도"],initial=True)
+        _,final,_=self._pipeline([e])
+        corruptions={
+            "package_area":final.replace("PHY·지원 면적 최대 -67%","전체 패키지 면적 최대 -67%"),
+            "rubin_leverage":final+"\n[HBM 수요·가격 레버리지]\n",
+            "source_host":final.replace(w.NVHBM_FOUNDRY_NVIDIA_SOURCE,"https://example.com/fake-nvidia"),
+            "broken_year":final.replace("2026-10-10","<b>2026</b>-10-10"),
+            "missing_sources":re.sub(r'<a href="[^"]+">원문 보기</a>',"원문 미확인",final),
+            "raw_encoded_url":final+"\n• 긴 주소 "+w.NVHBM_FOUNDRY_SAMSUNG_REPORT,
+        }
+        for kind,corrupt in corruptions.items():
+            with self.subTest(kind=kind):
+                with self.assertRaises(ValueError):
+                    delivery.validate_rubin_nvhbm_foundry_notification(corrupt)
+
+    def test_mixed_rubin_and_foundry_do_not_merge(self):
+        e=w.nvhbm_foundry_strategy_event(w.NVHBM_FOUNDRY_BASELINE,["신규"],initial=True)
+        rubin={
+            "category":"rubin_spec", "headline_ko":"Rubin 사양 확인",
+            "origin_source":"NVIDIA", "source":"NVIDIA",
+            "verification":"공식", "published_at_kst":"2026-10-10T13:00:00+09:00",
+            "fact_bullets":["고객 사양 확인"], "verdict":"검증 필요",
+            "direct_link":"https://developer.nvidia.com/blog/example",
+        }
+        _,final,parts=self._pipeline([rubin,e])
+        self.assertIn(delivery.MESSAGE_BREAK,final)
+        self.assertIn("NVHBM 베이스 다이",final)
+        self.assertGreaterEqual(len(parts),2)
+        supply="".join(p for p in parts if "NVHBM 베이스 다이" in p)
+        self.assertNotIn("[HBM 수요·가격 레버리지]",supply)
+        self.assertIsNone(delivery.validate_rubin_nvhbm_foundry_notification(final))
+
+    def test_one_time_baseline_and_followup_silence(self):
+        memory={"data":{
+            "seen_ids":[],"seen_fact_keys":[],
+            "structure_baseline_version":w.STRUCTURE_BASELINE_VERSION,
+            "nvhbm_architecture_track_version":w.NVHBM_ARCH_TRACK_VERSION,
+            "nvhbm_architecture":copy.deepcopy(w.NVHBM_ARCH_BASELINE),
+        }}
+        def load():
+            return copy.deepcopy(memory["data"]),False
+        def write(path,value):
+            if "rubin_hbm_pending_state.json" in str(path):
+                memory["data"].update(copy.deepcopy(value))
+        with tempfile.TemporaryDirectory() as temp:
+            with (
+                patch.object(w,"OUT",pathlib.Path(temp)),
+                patch.object(w,"load_state",side_effect=load),
+                patch.object(w,"read_feed",return_value=([],[])),
+                patch.object(w,"fetch_fx",return_value={"rate":1350.0,"date":"2026-10-10","error":""}),
+                patch.object(w,"write_json",side_effect=write),
+            ):
+                w.main()
+                self.assertEqual(memory["data"]["nvhbm_foundry_track_version"],1)
+                self.assertEqual(memory["data"]["last_send_event_count"],1)
+                self.assertEqual(memory["data"]["nvhbm_foundry_strategy"]["vendor_stage"]["samsung"],"reported_strategy")
+                w.main()
+                self.assertEqual(memory["data"]["last_send_event_count"],0)
 
 
 if __name__ == "__main__":
