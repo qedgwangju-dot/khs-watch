@@ -661,6 +661,26 @@ def main() -> None:
                 f"{signed_millions(etf.get('total_usd_m', 0.0))}"
             )
 
+        # One-time upgrade notice is explicitly a new indicator, not a new
+        # market-flow event. Revisions to older dates still affect monthly sums.
+        old_windows = old_etf.get("windows") or {}
+        new_windows = etf.get("windows") or {}
+        if not old_windows and all((new_windows.get(key) or {}).get("valid") for key in ("1m", "3m")):
+            triggers.append("BTC 현물 ETF 1개월·3개월 누적 지표 검증 완료(신규 표시)")
+        elif new_date == old_date and not same_day_value_changed and not partial_to_complete:
+            for key, amount in (("1m", 20.0), ("3m", 50.0)):
+                old_window = old_windows.get(key) or {}
+                new_window = new_windows.get(key) or {}
+                if (old_window.get("valid") and new_window.get("valid")
+                        and old_window.get("start") == new_window.get("start")):
+                    before = float(old_window["value_usd_m"])
+                    after = float(new_window["value_usd_m"])
+                    if abs(after - before) >= amount or before * after < 0:
+                        triggers.append(
+                            f"BTC 현물 ETF {key.upper()} 과거 누적 재계산: "
+                            f"{signed_millions(before)} → {signed_millions(after)}"
+                        )
+
         old_values = dated_values(old_etf)
         new_values = dated_values(etf)
         revisions = []
@@ -733,6 +753,22 @@ def main() -> None:
                     lines += ["• 5거래일 변화율: 부호 전환 구간이라 % 비교하지 않음"]
             else:
                 lines += ["• 5거래일 구간 대비: 검증된 10개 거래일이 확보될 때까지 계산 보류"]
+            # Rolling 1M/3M = literal calendar-month windows, not 21/63 assumed sessions.
+            for label in ("1m", "3m"):
+                item = ((etf.get("windows") or {}).get(label) or {})
+                if item.get("valid"):
+                    lines.append(
+                        f"• 최근 {label.upper()} 달력기간({item['start']}~{item['end']}, "
+                        f"{item['trading_days']}거래일): {signed_millions(item['value_usd_m'])} "
+                        f"({item['status']}, 미보고 거래일 {item['partial_days']}일)"
+                    )
+                    lines.append(
+                        f"• 직전 {label.upper()} 달력기간({item['prev_start']}~{item['prev_end']}, "
+                        f"{item['prev_trading_days']}거래일): {signed_millions(item['prev_value_usd_m'])} "
+                        f"| 차이 {signed_millions(item['change_usd_m'])} · {item['direction']}"
+                    )
+                else:
+                    lines.append(f"• {label.upper()} 누적: 원자료 미확보 · 계산 보류")
             if etf.get("pending_date"):
                 lines += [f"※ {etf.get('pending_date')}: 전 ETF 미보고(-) → 0.0으로 간주하지 않고 미집계 처리"]
             lines += [""]
@@ -757,6 +793,9 @@ def main() -> None:
         f"- 바이백 XML 변경: {'예' if (buyback and old_buyback and buyback.get('sha256') != old_buyback.get('sha256')) else '아니오'}",
         f"- 미 국채 10Y/30Y: {rates.get('10y', 'N/A')}% / {rates.get('30y', 'N/A')}% ({rates.get('date', 'N/A')})",
         f"- BTC 현물 ETF: {signed_millions(etf.get('total_usd_m', 0.0)) if etf else 'N/A'} ({etf.get('date', 'N/A') if etf else 'N/A'})",
+        f"- ETF 1M: {((etf.get('windows') or {}).get('1m') or {}).get('value_usd_m', 'unavailable')} (status: {((etf.get('windows') or {}).get('1m') or {}).get('status', 'unknown')})",
+        f"- ETF 3M: {((etf.get('windows') or {}).get('3m') or {}).get('value_usd_m', 'unavailable')} (status: {((etf.get('windows') or {}).get('3m') or {}).get('status', 'unknown')})",
+        f"- ETF history: {etf.get('history_row_count', 0)} rows; {etf.get('history_error') or 'OK'}",
         f"- 오류: {'; '.join(errors) if errors else '없음'}",
     ]
     atomic_write(STATUS_PATH, "\n".join(status) + "\n")
