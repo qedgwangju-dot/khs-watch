@@ -3,12 +3,12 @@
   "last_collection": {
     "errors": [],
     "material_items": 0,
-    "new_articles": 0,
-    "new_events": 0,
-    "raw_items": 23,
+    "new_articles": 1,
+    "new_events": 1,
+    "raw_items": 20,
     "stale_backfill_suppressed": 0
   },
-  "news_watermark_utc": "2026-10-10T01:03:07.702201+00:00",
+  "news_watermark_utc": "2026-10-10T07:21:52.574410+00:00",
   "official_pages": {
     "OpenAI GPT-5.6 Sol Ultrafast 미리보기": {
       "candidate_count": 0,
@@ -50,10 +50,12 @@
       "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol"
     },
     "OpenAI Ultrafast 모드": {
-      "candidate_count": 1,
-      "candidate_digest": "2363998d6f56b13c3250321d9caa66709e037cadc71866e4680fc6a17933805c",
-      "candidate_first_seen_at": "2026-10-10T01:03:07.702201+00:00",
-      "candidate_semantic": {
+      "candidate_count": 0,
+      "candidate_digest": null,
+      "candidate_first_seen_at": null,
+      "candidate_semantic": null,
+      "digest": "2363998d6f56b13c3250321d9caa66709e037cadc71866e4680fc6a17933805c",
+      "semantic": {
         "astra_ultrafast_eu_residency": false,
         "gpt_5_6_sol_preview": false,
         "gpt_6_1_sol_ultrafast_supported": true,
@@ -62,17 +64,7 @@
         "service_tier_ultrafast": true,
         "sol_ultrafast_eu_residency": true
       },
-      "digest": "fa1afe1da848c2b4acbe5a777165d0d4ffc776a7da408c936e9bab65e91e88d0",
-      "semantic": {
-        "astra_ultrafast_eu_residency": false,
-        "gpt_5_6_sol_preview": true,
-        "gpt_6_1_sol_ultrafast_supported": true,
-        "gpt_6_astra_supported": true,
-        "kind": "openai_ultrafast",
-        "service_tier_ultrafast": true,
-        "sol_ultrafast_eu_residency": true
-      },
-      "updated_at": "2026-10-09T04:29:38.550144+00:00",
+      "updated_at": "2026-10-10T07:21:52.574410+00:00",
       "url": "https://developers.openai.com/api/docs/guides/ultrafast-mode"
     },
     "OpenAI·Cerebras 750MW 계약": {
@@ -153,5 +145,5 @@
       "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9KcU1JWEFGdV96M2o5aF9HdU14SzRNTU5PVWh3RnRQUUJTa3RZT05YZkJNTHZ0RnpveXBhODdoSnNxcU1DSmg2dUFpWGV6c2FPR1FoV3B4QnB2MWJkXzhNbWdTdjVZaW5adDV2SlFYWXAwQQ?oc=5"
     }
   },
-  "updated_at_kst": "2026-10-10T10:03:07+09:00"
+  "updated_at_kst": "2026-10-10T16:21:52+09:00"
 }
