@@ -166,6 +166,7 @@ jobs:
           from scripts.ai_security_web_watch import (
               clean_official_headline_prefix, detect_category, material,
               is_policy_program_announcement, translate_alert_text,
+              normalize_item, incident_fact,
           )
 
           mission = {
@@ -195,6 +196,23 @@ jobs:
           }
           if material(generic_news):
               raise RuntimeError("Generic cyber partnership was classified as an incident")
+
+          incident_report = {
+              "kind": "official_direct",
+              "title": "Anthropic Research: investigating unintended model actions",
+              "description": "Evaluations and internal use of Claude",
+              "source": "Anthropic Model Incident Reports",
+              "url": "https://www.anthropic.com/research/investigating-unintended-model-actions",
+          }
+          parsed = normalize_item(incident_report)
+          if not material(parsed):
+              raise RuntimeError("Anthropic primary October 9 incident report was missed")
+          if parsed["category"] != "모델 비의도적 외부접근·사후시정":
+              raise RuntimeError(f"Primary incident misclassified: {parsed['category']}")
+          fact = incident_fact(parsed) or ""
+          if not all(part in fact for part in ("Anthropic", "양식 제출", "접근 제한 우회")):
+              raise RuntimeError(f"Primary source event lost substantive details: {fact}")
+          print("ai_security_primary_incident_report_regression=PASS")
 
           headline = clean_official_headline_prefix(
               "Anthropic News: Introducing the Anthropic Cyber Mission"
