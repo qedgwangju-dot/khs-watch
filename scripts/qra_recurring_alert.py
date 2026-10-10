@@ -217,6 +217,49 @@ def format_billion(value: float) -> str:
     return f"{value:,.0f}억달러" if False else f"{value:g}0억달러"  # kept for compatibility; not used
 
 
+def financing_estimates_link(section: ReleaseSection) -> LinkItem | None:
+    return next((x for x in section.links if "financing estimate" in x.text.lower()
+                 or "marketable borrowing estimate" in x.text.lower()), None)
+
+
+def extract_financing_estimates(text: str) -> dict[str, float]:
+    amounts = {}
+    pat = (
+        r"During the\\s+([A-Za-z]+\\s*[–—-]\\s*[A-Za-z]+\\s+20\\d{2})\\s+quarter"
+        r".{0,220}?expects\\s+to\\s+borrow\\s+\\$\\s*([\\d,]+)\\s+billion"
+    )
+    for match in re.finditer(pat.replace("\\\\", "\\"), text, re.I):
+        amounts[match.group(1)] = float(match.group(2).replace(",", ""))
+    return amounts
+
+
+def build_financing_alert(current: ReleaseSection, previous: ReleaseSection | None):
+    link = financing_estimates_link(current)
+    if not link:
+        raise RuntimeError("공식 3시 차입추정 발표 링크 확인 불가")
+    text = fetch_clean(link)
+    amounts = extract_financing_estimates(text)
+    if len(amounts) < 2:
+        raise RuntimeError("민간보유 순시장성 차입 두 분기 금액 확인 전")
+    prior_link = financing_estimates_link(previous) if previous else None
+    prior = extract_financing_estimates(fetch_clean(prior_link)) if prior_link else {}
+    rows = []
+    for quarter, billion in amounts.items():
+        compare = (f" (직전 동일 분기 {prior[quarter]:,.0f}억달러" +
+                   f", 변경 {billion-prior[quarter]:+,.0f}억달러)")
+        if quarter in prior else " (동일 분기 직전 추정 확인 불가)"
+        rows.append(f"• {quarter}: {billion:,.0f}십억달러{compare}")
+    title = "미 재무부 분기 순차입 추정 신규 발표"
+    body = "\n".join([
+        "새 3시 공식 차입추정 자료 확인", *rows,
+        "• 분기 순차입 추정과 정부 총부채 잔액은 서로 다릅니다.",
+        "• 만기별 국채 발행정책은 별도 QRA에서 확정·교차검증합니다.",
+        f"미 재무부 원문: {link.url}",
+    ])
+    return title, body, {"heading": current.heading, "type": "financing_estimate",
+                          "source": link.url, "amounts_bn_usd": amounts}
+
+
 def build_alert(current: ReleaseSection, previous: ReleaseSection | None) -> tuple[str, str, dict[str, object]]:
     current_policy_item = policy_link(current)
     previous_policy_item = policy_link(previous) if previous else None
