@@ -138,7 +138,10 @@ class CryptoLiquidityDataIntegrityTest(unittest.TestCase):
                              "status":"complete"})
             day+=dt.timedelta(days=1)
         periods=watch.calendar_windows(rows,end)
-        self.assertTrue(periods["1m"]["valid"])
+        self.assertFalse(periods["1m"]["valid"])  # previous 1M also includes the source gap
+        self.assertTrue(watch.calendar_period(
+            rows, dt.date(2026, 9, 10), end, 12
+        )["valid"])  # current 1M alone has real observations
         self.assertFalse(periods["3m"]["valid"])
 
     def test_full_history_upgrades_incomplete_live_snapshot(self):
