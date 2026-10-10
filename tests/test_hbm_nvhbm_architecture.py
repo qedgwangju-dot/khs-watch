@@ -256,6 +256,91 @@ class NVHBMFoundryStrategyTests(unittest.TestCase):
         self.assertNotIn("[HBM 수요·가격 레버리지]",supply)
         self.assertIsNone(delivery.validate_rubin_nvhbm_foundry_notification(final))
 
+
+    def test_standard_hbm4e_mass_production_does_not_prove_nvhbm(self):
+        standard=self.good_source(
+            "Samsung started mass production of standard HBM4E base die at Samsung Foundry."
+        )
+        obs=w.extract_nvhbm_foundry_official_milestone(standard)
+        self.assertIsNotNone(obs)
+        self.assertEqual(obs["stage"],"official_mass_production")
+        self.assertEqual(obs["product_scope"],"standard_hbm4e")
+        original=copy.deepcopy(w.NVHBM_FOUNDRY_BASELINE)
+        updated=w.merge_nvhbm_foundry_milestone(original,obs)
+        self.assertEqual(updated.get("memory_vendor_nvhbm_mass_production_confirmed"),[])
+        self.assertEqual(
+            updated["vendor_product_stage"]["samsung"]["standard_hbm4e"],
+            "official_mass_production"
+        )
+        self.assertEqual(len(w.nvhbm_foundry_stage_changes(original,updated)),1)
+
+    def test_later_nvhbm_same_stage_is_new_fact_not_swallowed_by_standard_hbm4e(self):
+        standard=self.good_source(
+            "Samsung started mass production of standard HBM4E base die at Samsung Foundry."
+        )
+        specialized=self.good_source(
+            "Samsung started mass production of NVHBM base die at Samsung Foundry."
+        )
+        specialized["direct_link"]="https://news.samsung.com/global/specific-nvhbm"
+        original=copy.deepcopy(w.NVHBM_FOUNDRY_BASELINE)
+        first=w.merge_nvhbm_foundry_milestone(
+            original,w.extract_nvhbm_foundry_official_milestone(standard)
+        )
+        obs=w.extract_nvhbm_foundry_official_milestone(specialized)
+        self.assertEqual(obs["product_scope"],"nvhbm")
+        newer=w.merge_nvhbm_foundry_milestone(first,obs)
+        self.assertEqual(newer["vendor_stage"]["samsung"],"official_mass_production")
+        self.assertEqual(newer["memory_vendor_nvhbm_mass_production_confirmed"],["samsung"])
+        change=w.nvhbm_foundry_stage_changes(first,newer)
+        self.assertEqual(len(change),1)
+        self.assertEqual(change[0][0:2],("samsung","nvhbm"))
+        event=w.nvhbm_foundry_strategy_event(newer,[change[0][2]],vendor="samsung",scope="nvhbm")
+        self.assertEqual(event["direct_link"], specialized["direct_link"])
+        self.assertIn("_samsung_nvhbm_",event["fact_key"])
+        self.assertEqual(
+            w.nvhbm_foundry_stage_changes(newer,w.merge_nvhbm_foundry_milestone(newer,obs)),
+            []
+        )
+        self.assertEqual(first.get("memory_vendor_nvhbm_mass_production_confirmed"),[])
+
+    def test_standard_custom_nvhbm_source_links_stay_distinct(self):
+        original=copy.deepcopy(w.NVHBM_FOUNDRY_BASELINE)
+        sentences=(
+            ("standard_hbm4e","Samsung selected TSMC foundry for standard HBM4E base die."),
+            ("custom_hbm","Samsung selected TSMC foundry for custom HBM4E base die."),
+            ("nvhbm","Samsung selected TSMC foundry for NVHBM base die."),
+        )
+        new=original
+        evidence={}
+        for scope,sentence in sentences:
+            item=self.good_source(sentence)
+            item["direct_link"]=f"https://news.samsung.com/global/{scope}"
+            parsed=w.extract_nvhbm_foundry_official_milestone(item)
+            self.assertEqual(parsed["product_scope"],scope)
+            new=w.merge_nvhbm_foundry_milestone(new,parsed)
+            evidence[scope]=item["direct_link"]
+        changed=w.nvhbm_foundry_stage_changes(original,new)
+        self.assertEqual(len(changed),3)
+        events=[
+            w.nvhbm_foundry_strategy_event(new,[reason],vendor=vendor,scope=scope)
+            for vendor,scope,reason in changed
+        ]
+        self.assertEqual(len({x["fact_key"] for x in events}),3)
+        self.assertEqual({x["direct_link"] for x in events},set(evidence.values()))
+
+    def test_verified_micron_reprint_link_passes_pretty_and_delivery_guards(self):
+        self.assertEqual(
+            w.NVHBM_FOUNDRY_MICRON_REPORT,
+            "https://www.thelec.net/news/articleView.html?idxno=14372"
+        )
+        item=w.nvhbm_foundry_strategy_event(
+            w.NVHBM_FOUNDRY_BASELINE,["출처 링크 검산"],initial=True
+        )
+        _,final,_=self._pipeline([item])
+        self.assertIn(w.NVHBM_FOUNDRY_MICRON_REPORT,final)
+        self.assertIn('Micron 임원 인용 보도: <a href=',final)
+        self.assertIsNone(delivery.validate_rubin_nvhbm_foundry_notification(final))
+
     def test_one_time_baseline_and_followup_silence(self):
         memory={"data":{
             "seen_ids":[],"seen_fact_keys":[],
