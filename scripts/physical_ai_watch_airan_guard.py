@@ -259,6 +259,100 @@ def _tesla_touch_patent_recovery() -> list[dict]:
         'user_supplied_publication': True,
     }]
 
+
+# Digital Optimus is a screen-driven software agent. It is not the
+# electromechanical Optimus humanoid, and a CEO gaming-progress statement
+# is not an independently reproduced robot or general-computer benchmark.
+DIGITAL_OPTIMUS_GAME_RECOVERY = 'DIRECT_DIGITAL_OPTIMUS_GAME_MUSK_2108823477071303109_20261010'
+DIGITAL_OPTIMUS_POST_ID = '2108823477071303109'
+DIGITAL_OPTIMUS_CANONICAL_URL = 'https://x.com/elonmusk/status/2108823477071303109'
+DIGITAL_OPTIMUS_ID = re.compile(r'Digital\s+Optimus|디지털\s*옵티머스|\bMacrohard\b', re.I)
+DIGITAL_OPTIMUS_GAMES = re.compile(
+    r'\bDiablo\b|디아블로|Counter[-\s]*Strike|카운터\s*스트라이크|'
+    r'League\s+of\s+Legends|리그\s*오브\s*레전드|'
+    r'(?:real[-\s]*time|실시간).{0,30}(?:games?|게임)|'
+    r'(?:games?|게임).{0,50}(?:agent|에이전트|play|플레이|학습)',
+    re.I,
+)
+DIGITAL_OPTIMUS_TESLA_SOURCES = {'Tesla', 'Tesla AI', 'Tesla Official', '테슬라'}
+DIGITAL_OPTIMUS_CEO_SOURCES = {'Elon Musk (X)', '일론 머스크 (X)'}
+DIGITAL_OPTIMUS_BENCHMARK = re.compile(
+    r'(?:benchmark|벤치마크|실험\s*검증|평가\s*시험).{0,150}'
+    r'(?:\d{1,3}(?:\.\d+)?\s*%|성공률|episodes?|에피소드|지연시간|latency)|'
+    r'(?:\d{1,3}(?:\.\d+)?\s*%|성공률|episodes?|에피소드).{0,150}'
+    r'(?:benchmark|벤치마크|재현|reproduced|independent|독립)',
+    re.I,
+)
+DIGITAL_OPTIMUS_BENCHMARK_NOT = re.compile(
+    r'(?:no|without|not|없음|미공개|아직).{0,35}(?:benchmark|벤치마크|성공률|실험\s*검증)|'
+    r'(?:benchmark|벤치마크|성공률).{0,35}(?:없음|미공개|미확인|not\s+available)',
+    re.I,
+)
+DIGITAL_OPTIMUS_COMMERCIAL = re.compile(
+    r'(?:Digital\s+Optimus|디지털\s*옵티머스).{0,100}'
+    r'(?:paid\s+customer|commercial\s+launch|production\s+deployment|'
+    r'유료\s*고객|정식\s*상용\s*출시|상용\s*계약|매출\s*발생)|'
+    r'(?:정식\s*상용\s*출시|commercial\s+launch).{0,90}'
+    r'(?:Digital\s+Optimus|디지털\s*옵티머스)',
+    re.I,
+)
+
+
+def _is_digital_optimus_game(text: str) -> bool:
+    return bool(
+        DIGITAL_OPTIMUS_ID.search(text)
+        and (DIGITAL_OPTIMUS_GAMES.search(text) or
+             (DIGITAL_OPTIMUS_POST_ID in text))
+    )
+
+
+def _digital_optimus_stage(text: str, source: str = '') -> str:
+    if not _is_digital_optimus_game(text):
+        return ''
+    if DIGITAL_OPTIMUS_COMMERCIAL.search(text) and source in DIGITAL_OPTIMUS_TESLA_SOURCES:
+        return 'commercial_launch'
+    if (DIGITAL_OPTIMUS_BENCHMARK.search(text)
+            and not DIGITAL_OPTIMUS_BENCHMARK_NOT.search(text)
+            and source in DIGITAL_OPTIMUS_TESLA_SOURCES):
+        return 'tesla_benchmark'
+    if (DIGITAL_OPTIMUS_POST_ID in text and
+            source in DIGITAL_OPTIMUS_CEO_SOURCES and
+            re.search(r'halfway|half\s*the|절반|50\s*%', text, re.I)):
+        return 'musk_game_progress'
+    return 'background'
+
+
+def _digital_optimus_game_recovery() -> list[dict]:
+    # A single 2026-10-10 Musk post, reported as CEO's progress claim.
+    # Verified via unchanged X post ID in public tweet archive and Tesla's
+    # official Digital Optimus recruiting; not a formal independent benchmark.
+    if base.NOW.astimezone(base.KST).date() > dt.date(2026, 10, 14):
+        return []
+    return [{
+        'title': '일론 머스크 Digital Optimus 게임 진행 발언: Diablo 절반·Counter-Strike',
+        'link': DIGITAL_OPTIMUS_CANONICAL_URL,
+        'description': (
+            '2026-10-10 16:34 KST Elon Musk X 게시글 '
+            '2108823477071303109 아카이브 확인. Digital Optimus는 사람이 보듯 '
+            '게임 화면만 보고 Diablo 캠페인의 약 절반까지 진행한다고 머스크가 주장했고, '
+            'Counter-Strike와 반응이 빠른 다른 게임에서도 플레이 능력이 좋다고 언급했다. '
+            'League of Legends는 아직 학습 중이며 여러 게임으로 일반화가 목표다. '
+            '이 수치는 경영진의 자기보고이고 독립 검증된 승률·정량 벤치마크는 아니다. '
+            '테슬라의 공식 채용목록에 실시간 게임용 Digital Optimus 머신러닝 엔지니어가 '
+            '올라와 있으며 장기 기억·실시간 제어·다른 게임으로의 성능 전이와 '
+            '일반 컴퓨터 사용을 개발과제로 명시한다. '
+            'Digital Optimus는 화면·소프트웨어 조작 에이전트이며 '
+            '물리 휴머노이드 Optimus의 공장 투입·작업 성공률·양산 실적과 다르다. '
+            '모델 구조, 지연시간, 인간 개입률, 학습비, 상용 계약·매출은 공개되지 않았다. '
+            'X 직접 열람은 제한되었고 같은 게시물 번호를 공개 아카이브로 대조했다.'
+        ),
+        'source': 'Elon Musk (X)',
+        'published': '2026-10-10T07:34:00+00:00',
+        'direct_recovery': True,
+        'ceo_reported_gameplay': True,
+    }]
+
+
 _orig_query_news = base.query_news
 
 
@@ -269,6 +363,8 @@ def query_news(q: str) -> list[dict]:
         return _dkt_humanoid_recovery()
     if q == TESLA_TOUCH_PATENT_RECOVERY:
         return _tesla_touch_patent_recovery()
+    if q == DIGITAL_OPTIMUS_GAME_RECOVERY:
+        return _digital_optimus_game_recovery()
     return _orig_query_news(q)
 
 
@@ -279,6 +375,18 @@ if DKT_HUMANOID_RECOVERY not in base.QUERIES:
     base.QUERIES.append(DKT_HUMANOID_RECOVERY)
 if TESLA_TOUCH_PATENT_RECOVERY not in base.QUERIES:
     base.QUERIES.append(TESLA_TOUCH_PATENT_RECOVERY)
+if DIGITAL_OPTIMUS_GAME_RECOVERY not in base.QUERIES:
+    base.QUERIES.append(DIGITAL_OPTIMUS_GAME_RECOVERY)
+for q in (
+    '("Digital Optimus" OR "Macrohard" OR 디지털옵티머스) '
+    '(Diablo OR 디아블로 OR "Counter Strike" OR Counter-Strike OR 게임 OR games) '
+    '(Elon Musk OR 일론머스크 OR CEO OR Tesla)',
+    '("Digital Optimus" OR 디지털옵티머스) '
+    '(게임 간 성능 전이 OR 벤치마크 OR 성공률 OR 독립평가 OR 유료고객 OR 매출 OR 출시 '
+    'OR transfer OR benchmark OR commercial launch)',
+):
+    if q not in base.QUERIES:
+        base.QUERIES.append(q)
 for q in (
     '(Tesla OR 테슬라) ("US 2026/0310299" OR US20260310299A1 '
     'OR "three-dimensional soft compliant array tactile sensor") '
@@ -354,6 +462,8 @@ def _is_airan(text: str) -> bool:
 
 
 def topic_group(text: str) -> str | None:
+    if _is_digital_optimus_game(text):
+        return 'digital_optimus_games'
     if _tesla_touch_patent_match(text):
         return 'tesla_touch_patent'
     if _is_dkt_humanoid(text):
@@ -377,6 +487,13 @@ def _stage(text: str) -> str:
 
 def score(item: dict) -> int:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    if topic_group(text) == 'digital_optimus_games':
+        return {
+            'musk_game_progress': 43,
+            'tesla_benchmark': 55,
+            'commercial_launch': 60,
+            'background': 0,
+        }.get(_digital_optimus_stage(text, item.get('source') or ''), 0)
     if topic_group(text) == 'tesla_touch_patent':
         stage = _tesla_touch_patent_stage(text, item.get('source') or '')
         return {
@@ -415,6 +532,14 @@ def score(item: dict) -> int:
 
 
 def category(text: str, group: str) -> str:
+    if group == 'digital_optimus_games':
+        if DIGITAL_OPTIMUS_COMMERCIAL.search(text):
+            return 'Digital Optimus · 정식 상용화·유료 계약'
+        if DIGITAL_OPTIMUS_BENCHMARK.search(text) and not DIGITAL_OPTIMUS_BENCHMARK_NOT.search(text):
+            return 'Digital Optimus · 회사 공식 다중게임 성능 검증'
+        if DIGITAL_OPTIMUS_POST_ID in text:
+            return 'Digital Optimus · 게임 수행 경영진 진전 발언'
+        return 'Digital Optimus · 개발 단계'
     if group == 'tesla_touch_patent':
         # Renderer omits item['source'], while score() verifies source.
         # A press claim of "grant" scores zero; only an official source can
@@ -460,6 +585,27 @@ def category(text: str, group: str) -> str:
 
 
 def meaning(cat: str) -> str:
+    if cat == 'Digital Optimus · 게임 수행 경영진 진전 발언':
+        return (
+            '10/10 머스크 X: 게임 화면을 보며 Diablo 캠페인의 약 절반까지 진행한다고 주장. '
+            'Counter-Strike는 좋은 플레이 능력을 언급했지만 수치가 없고 '
+            'League of Legends는 학습 단계입니다. '
+            '테슬라의 게임용 실시간 에이전트 채용도 확인되지만 '
+            '이는 독립 성능 검증도 물리 Optimus 양산도 아닙니다. '
+            '게임 간 범용성·실시간 행동 제어의 연구개발 진전 가능성을 보는 초기 지표입니다.'
+        )
+    if cat == 'Digital Optimus · 회사 공식 다중게임 성능 검증':
+        return (
+            '경영진 자기보고에서 회사의 재현 가능한 평가 지표 단계로 상승한 신호입니다. '
+            '훈련·평가 게임 분리, 성공률·지연시간·사람 개입·학습비용·평가 반복횟수를 검증합니다.'
+        )
+    if cat == 'Digital Optimus · 정식 상용화·유료 계약':
+        return (
+            'Digital Optimus가 연구개발을 넘어 실제 고객·사용료·계약 매출로 이동한 경우입니다. '
+            '판매량·반복 사용권·운영비·계약 기간·매출 인식을 검증합니다.'
+        )
+    if cat == 'Digital Optimus · 개발 단계':
+        return '현재 단계는 연구개발이며 아직 유료 계약과 독립 성능 검증을 뜻하지 않습니다.'
     if cat == '테슬라 촉각센서 · 특허 등록 공식확인 단계':
         return (
             '미국 특허청의 후속 등록 상태 변화가 2026-10-08 공개출원 A1과 '
@@ -523,6 +669,17 @@ def meaning(cat: str) -> str:
 
 
 def risk(cat: str) -> str:
+    if cat.startswith('Digital Optimus · '):
+        return (
+            '실패 경로는 게임별 단기 시연에는 성공해도 새로운 게임·긴 작업·일반 컴퓨터 '
+            '환경에서 기억·계획·반응지연·오작동 문제가 드러나는 경우입니다. '
+            'Diablo 약 절반은 검증된 성공률 50%가 아니며 게임 난이도·재시도·'
+            '사람 개입량이 공개되지 않았습니다. Counter-Strike도 승률·평균 지연시간은 '
+            '미공개이고 League는 학습 중입니다. 6~12개월 동안 독립 평가·'
+            '처음 보는 게임 성능·사람 개입률·작업 완료시간과 실제 고객 결제를 확인합니다. '
+            '디지털 에이전트의 성능이 물리적 Optimus 손·이동·안전 성능으로 '
+            '즉시 이전된다는 근거도 없습니다.'
+        )
     if cat == '테슬라 촉각센서 · 특허 등록 공식확인 단계':
         return (
             '등록돼도 어떤 청구항이 유지됐는지, 권리범위가 실제 제품을 덮는지 '
@@ -555,6 +712,19 @@ def risk(cat: str) -> str:
 
 
 def verification(item: dict, group: str, text: str) -> str:
+    if group == 'digital_optimus_games':
+        stage = _digital_optimus_stage(text, item.get('source') or '')
+        if stage == 'musk_game_progress':
+            return (
+                '10/10 일론 머스크 X 게시물 번호·공개 아카이브 교차확인 · '
+                'X 직접 열람 제한 · Tesla 공식 채용자료 별도 확인 · '
+                '게임 성능·범용성은 경영진 자기보고이며 독립 검증 없음'
+            )
+        if stage == 'tesla_benchmark':
+            return 'Tesla 공식 평가자료 기반 · 평가 조건·독립 재현·게임 간 전이 별도 확인'
+        if stage == 'commercial_launch':
+            return 'Tesla 공식 상용화 발표 · 유료 고객·실제 매출 별도 확인'
+        return '개발·채용 단계 보도, 정량 성능 미확인'
     if group == 'tesla_touch_patent':
         if _tesla_touch_patent_stage(text, item.get('source') or '') == 'official_grant':
             return 'USPTO 공식자료의 등록 상태 · 등록번호·청구항·제품 채택 별도 확인 필요'
@@ -594,6 +764,11 @@ def verification(item: dict, group: str, text: str) -> str:
 
 def clean_title(title: str, source: str) -> str:
     text = f'{title} {source}'
+    if _is_digital_optimus_game(text):
+        if DIGITAL_OPTIMUS_POST_ID in text:
+            return '머스크: Digital Optimus 게임 수행 진전…Diablo 캠페인 약 절반'
+        if source in DIGITAL_OPTIMUS_TESLA_SOURCES:
+            return 'Tesla Digital Optimus 게임 수행·컴퓨터 사용 성능 후속 진전'
     if _tesla_touch_patent_match(text):
         if source in TESLA_TOUCH_PATENT_OFFICIAL and TESLA_TOUCH_PATENT_GRANT.search(text) and not TESLA_TOUCH_PATENT_GRANT_DENIAL.search(text):
             return '테슬라, US 2026/0310299 A1 관련 특허 등록 상태 공식 확인'
@@ -639,6 +814,8 @@ def clean_title(title: str, source: str) -> str:
 
 
 def tag_for(group: str) -> str:
+    if group == 'digital_optimus_games':
+        return '테슬라 디지털 에이전트'
     if group == 'tesla_touch_patent':
         return '테슬라 촉각센서 특허'
     if group == 'dkt_humanoid':
@@ -652,6 +829,13 @@ def tag_for(group: str) -> str:
 
 def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    if topic_group(text) == 'digital_optimus_games':
+        stage = _digital_optimus_stage(text, item.get('source') or '')
+        if stage == 'musk_game_progress':
+            return hashlib.sha256(b'digital-optimus|musk-x|2108823477071303109|games-self-report').hexdigest()
+        return hashlib.sha256(
+            f'digital-optimus|{stage}|{item.get("link", "")}|2026'.encode()
+        ).hexdigest()
     if topic_group(text) == 'tesla_touch_patent':
         stage = _tesla_touch_patent_stage(text, item.get('source') or '')
         return hashlib.sha256(
@@ -695,6 +879,9 @@ def key(item: dict) -> str:
 def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -> list[dict]:
     chosen = _orig_select_diverse(items, seen, force, limit)
     candidates = items if force else [x for x in items if x.get('key') not in seen]
+    digital = next((x for x in candidates if x.get('group') == 'digital_optimus_games'), None)
+    if digital and not any(x.get('key') == digital.get('key') for x in chosen):
+        chosen = ([digital, *chosen] if len(chosen) < limit else [digital, *chosen[:-1]])
     patent = next((x for x in candidates if x.get('group') == 'tesla_touch_patent'), None)
     if patent and not any(x.get('key') == patent.get('key') for x in chosen):
         chosen = ([patent, *chosen] if len(chosen) < limit else [patent, *chosen[:-1]])
