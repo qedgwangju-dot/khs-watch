@@ -7,6 +7,7 @@ on:
     paths:
       - ".github/workflows/ai-safety-policy-watch.yml"
       - "scripts/ai_safety_policy_watch.py"
+      - "scripts/ai_sif_regulatory_validation.py"
   schedule:
     - cron: "14,44 * * * *"
   workflow_run:
@@ -357,6 +358,7 @@ jobs:
           import urllib.request
           import xml.etree.ElementTree as ET
           from zoneinfo import ZoneInfo
+          from scripts.ai_sif_regulatory_validation import verify_formal_instrument
 
           KST=ZoneInfo("Asia/Seoul")
           pending=pathlib.Path("out/ai_safety_policy_watch_pending_state.json")
@@ -594,11 +596,50 @@ jobs:
               "text":"the super intelligence force request for proposals issued for a federal procurement",
           })[0]=="procurement"
 
+          # A news source label and a made-up FR number never establish
+          # a legal reporting duty. Require a real official FR document.
+          fake_row={
+              "title":"Federal Register final rule 2026-20999 published on AI model incident reporting",
+              "text":"final rule 2026-20999 published on AI model incident reporting",
+              "source":"Federal Register",
+          }
+          invalid=verify_formal_instrument(
+              "rule_final",fake_row,fetch_document=lambda _num: {}
+          )
+          assert invalid[0] is False
+          valid_doc={
+              "document_number":"2026-20999",
+              "type":"Rule",
+              "publication_date":"2026-10-09",
+              "title":"AI Model Security Incident Reporting",
+              "abstract":"Artificial intelligence model incident notification and reporting",
+              "html_url":"https://www.federalregister.gov/d/2026-20999",
+          }
+          valid=verify_formal_instrument(
+              "rule_final",fake_row,fetch_document=lambda _num: valid_doc
+          )
+          assert valid[0] is True
+          assert valid[1]=="https://www.federalregister.gov/d/2026-20999"
+          wrong_type=verify_formal_instrument(
+              "rule_final",fake_row,
+              fetch_document=lambda _num: dict(valid_doc,type="Proposed Rule")
+          )
+          assert wrong_type[0] is False
+          assert verify_formal_instrument("statement",fake_row)[0] is True
+          print("ai_policy_sif_official_instrument_guard=PASS")
+
           candidates=[]
           for row in rows:
               st,key=stage(row)
               if st=="ignore" or not key:
                   continue
+              if st in {"rule_final","rule_proposal","executive_instrument"}:
+                  verified,verified_url,reason=verify_formal_instrument(st,row)
+                  if not verified:
+                      print("ai_policy_sif_rule_candidate_rejected="+reason)
+                      continue
+                  row["link"]=verified_url
+                  print("ai_policy_sif_regulatory_instrument_verified="+verified_url)
               digest=hashlib.sha256(("sif-semantic-v1:"+key).encode()).hexdigest()[:24]
               if digest in seen:
                   continue
