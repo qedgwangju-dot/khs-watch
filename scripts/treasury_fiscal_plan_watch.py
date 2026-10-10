@@ -154,7 +154,7 @@ def parsed_date(body: str, url: str) -> str | None:
         header = article[1][:2200]
         visible = re.search(
             r"(January|February|March|April|May|June|July|August|September|"
-            r"October|November|December)\\s+(\\d{1,2}),\\s+(20\\d{2})",
+            r"October|November|December)\s+(\d{1,2}),\s+(20\d{2})",
             re.sub(r"<[^>]+>", " ", header), re.I,
         )
         if visible:
