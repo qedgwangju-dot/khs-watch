@@ -438,17 +438,31 @@ def compact_judgement(state: dict) -> tuple[str, str]:
         day_text = "당일 ETF 수급 중립"
 
     if r10 > 0 and r30 > 0:
-        rate_text = "장기금리 상승"
+        rate_text = "10Y·30Y 동반 상승"
     elif r10 < 0 and r30 < 0:
-        rate_text = "장기금리 하락"
+        rate_text = "10Y·30Y 동반 하락"
+    elif r10 > 0 and r30 == 0:
+        rate_text = "10Y 상승·30Y 보합"
+    elif r10 == 0 and r30 > 0:
+        rate_text = "10Y 보합·30Y 상승"
+    elif r10 < 0 and r30 == 0:
+        rate_text = "10Y 하락·30Y 보합"
+    elif r10 == 0 and r30 < 0:
+        rate_text = "10Y 보합·30Y 하락"
+    elif r10 == 0 and r30 == 0:
+        rate_text = "10Y·30Y 보합"
     else:
-        rate_text = "장기금리 혼조"
+        rate_text = "10Y·30Y 방향 엇갈림"
 
     if last5 is not None and prev5 is not None:
-        if last5 > prev5:
+        if prev5 >= 0 > last5:
+            five_text = "5거래일 수급은 순유입에서 순유출로 전환"
+        elif prev5 <= 0 < last5:
+            five_text = "5거래일 수급은 순유출에서 순유입으로 전환"
+        elif last5 > prev5:
             five_text = "5거래일 누적 흐름은 개선"
         elif last5 < prev5:
-            five_text = "5거래일 누적 흐름은 둔화"
+            five_text = "5거래일 순유입 둔화 또는 순유출 확대"
         else:
             five_text = "5거래일 누적 흐름은 보합"
     else:
@@ -456,7 +470,7 @@ def compact_judgement(state: dict) -> tuple[str, str]:
 
     if flow < 0 and r10 > 0 and r30 > 0:
         if last5 is not None and prev5 is not None and last5 < prev5:
-            reason = f"{day_text}과 {rate_text}은 부담이고, 5거래일 순유입 강도도 둔화."
+            reason = f"{day_text}과 {rate_text}은 부담. {five_text}."
         else:
             reason = f"{day_text}과 {rate_text}은 부담. {five_text}."
     elif flow > 0 and r10 < 0 and r30 < 0:
@@ -608,6 +622,10 @@ def format_alert(text: str) -> str:
         if buyback:
             links.insert(1, buyback)
 
+    if any(((etf.get("windows") or {}).get(key) or {}).get("valid") for key in ("1m", "3m")):
+        history_link = etf.get("history_source") or "https://farside.co.uk/bitcoin-etf-flow-all-data/"
+        if history_link == "https://farside.co.uk/bitcoin-etf-flow-all-data/":
+            links.append(f'<a href="{history_link}">전체 과거자료</a>')
     if links:
         out += ["<b>원문</b> · " + " · ".join(links)]
 
