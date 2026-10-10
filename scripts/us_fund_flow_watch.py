@@ -987,6 +987,35 @@ assert signed_flow_sentence("US equity had $5 billion in inflows and $4 billion 
 assert signed_flow_sentence("US equity saw both inflows and $5 billion in outflows", r"US equity")[0] is None
 
 
+def report_reference_week(text, pub_day):
+    """Only an explicitly stated 'week ended/ending' can identify media fund-flow dates."""
+    hits=[]
+    pattern=(
+        r"\bweek\s+(?:ended|ending|through|to)\s+(?:on\s+)?"
+        r"(?:(?:Monday|Tuesday|Wednesday|Thursday|Friday),?\s+)?"
+        r"(January|February|March|April|May|June|July|August|September|October|November|December|"
+        r"Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)"
+        r"\s+(\d{1,2})(?:,?\s+(20\d{2}))?"
+    )
+    for m in re.finditer(pattern, text, re.I):
+        mon=m.group(1).title()
+        mon="Sep" if mon.lower()=="sept" else mon
+        year=int(m.group(3)) if m.group(3) else pub_day.year
+        try:
+            d=datetime.strptime(f"{mon} {int(m.group(2))} {year}", "%B %d %Y").date()
+        except ValueError:
+            try: d=datetime.strptime(f"{mon} {int(m.group(2))} {year}", "%b %d %Y").date()
+            except ValueError: continue
+        if 0 <= (pub_day-d).days <= 14:
+            hits.append(d)
+    # Multiple competing recent weeks in one story are ambiguous; fail closed.
+    return hits[0] if hits and len(set(hits))==1 else None
+
+assert report_reference_week("In the week ended October 7, money funds...", datetime(2026,10,9).date()) == datetime(2026,10,7).date()
+assert report_reference_week("Funds rose on October 7.", datetime(2026,10,9).date()) is None
+assert report_reference_week("in the week ended October 7 and week ended September 30", datetime(2026,10,9).date()) is None
+
+
 def parse_reuters(kind):
     query = BING_Bofa if kind == "bofa" else BING_LIPPER
     seeds = {
@@ -997,10 +1026,11 @@ def parse_reuters(kind):
             "desc": "BofA EPFR fund flows Reuters",
         }],
         "lipper": [{
-            "title": "Global equity fund outflows hit nine-month high on inflation fears - Reuters",
-            "link": "https://www.reuters.com/business/us-equity-funds-post-fourth-weekly-outflow-inflation-worries-rate-concerns-2026-09-18/",
-            "pub": "Fri, 18 Sep 2026 00:00:00 GMT",
-            "desc": "LSEG Lipper global equity fund flows Reuters",
+            # Official Reuters reporting republished by Channel NewsAsia; use only while fresh.
+            "title": "Money market funds attract massive inflows as bond selloff bit - Reuters",
+            "link": "https://www.channelnewsasia.com/business/money-market-funds-attract-massive-inflows-bond-selloff-bit-6445901",
+            "pub": "Fri, 09 Oct 2026 10:00:00 GMT",
+            "desc": "LSEG Lipper week ended October 7 Reuters",
         }],
     }
     items = seeds.get(kind, []) + news_items(query)
@@ -1036,17 +1066,21 @@ def parse_reuters(kind):
 
         if us is None and glob is None and mmf is None:
             continue
-
+        # Media publication date alone is never a weekly fund-flow observation.
+        observed=report_reference_week(combined,pub_day)
+        if observed is None:
+            continue
+        # Underlying scope differs across providers. Do not infer direct asset transfers.
         payload = {
             "source": "BofA/EPFR via Reuters" if kind == "bofa" else "LSEG Lipper via Reuters",
             "kind": kind,
-            "period": it["pub"],
+            "period": observed.strftime("%B %d, %Y"),
             "published": it["pub"],
             "url": final or it["link"],
             "title": it["title"],
-            "reference_week_verified": False,
-            "reference_week": None,
-            "comparison_note": "기사 게시일은 수급 집계 기준일이 아니므로 다른 출처와 직접 비교 금지",
+            "reference_week_verified": True,
+            "reference_week": observed.isoformat(),
+            "comparison_note": "기사에 명시된 기준주간 확인; 통계 모집단별 순유입·순유출은 직접 자금 이전이 아님",
             "metrics": {"us_equity_bn": us, "global_equity_bn": glob, "mmf_bn": mmf},
             "evidence": {"us": us_sent, "global": glob_sent, "mmf": mmf_sent},
         }
@@ -1429,13 +1463,13 @@ def direction_word(v, up="증가", down="감소"):
 
 stock_signals = []
 if ici and ici["metrics"].get("domestic") is not None:
-    stock_signals.append(("ICI", ici["metrics"]["domestic"]))
+    stock_signals.append(("ICI", ici["metrics"]["domestic"], ici["period"]))
 # A press publication date alone cannot qualify as a current investor-flow week.
 # The underlying reference week must be verified and recent before use in the headline.
 if bofa and recent_official_week(bofa, new_york_date) and bofa["metrics"].get("us_equity_bn") is not None:
-    stock_signals.append(("BofA/EPFR", bofa["metrics"]["us_equity_bn"]))
+    stock_signals.append(("BofA/EPFR", bofa["metrics"]["us_equity_bn"], bofa["period"]))
 if lipper and recent_official_week(lipper, new_york_date) and lipper["metrics"].get("us_equity_bn") is not None:
-    stock_signals.append(("LSEG Lipper", lipper["metrics"]["us_equity_bn"]))
+    stock_signals.append(("LSEG Lipper", lipper["metrics"]["us_equity_bn"], lipper["period"]))
 
 mmf_change = ici_mmf["metrics"].get("weekly_change_bn") if ici_mmf else None
 margin_change = finra["metrics"].get("margin_debt_mom_bn") if finra else None
@@ -1446,12 +1480,14 @@ if cross:
         "모집단과 기준기간이 다를 수 있어 합산·평균하지 않고 각 출처를 따로 봅니다."
     )
 elif bofa and bofa.get("reference_week_verified") and bofa["metrics"].get("us_equity_bn") is not None and bofa["metrics"].get("mmf_bn") is not None:
-    overall_easy = "BofA/EPFR 집계 기준주간 검증 후 같은 출처 내 판정: " + flow_direction(
-        bofa["metrics"].get("us_equity_bn"), bofa["metrics"].get("mmf_bn")
+    overall_easy = (
+        "BofA/EPFR 자료에서 주식형과 MMF 방향이 함께 관찰됐습니다. "
+        "집계 대상이 다를 수 있어 같은 돈의 직접 이동·주식 매수 전환으로 단정하지 않습니다."
     )
 elif lipper and lipper.get("reference_week_verified") and lipper["metrics"].get("us_equity_bn") is not None and lipper["metrics"].get("mmf_bn") is not None:
-    overall_easy = "LSEG Lipper 집계 기준주간 검증 후 같은 출처 내 판정: " + flow_direction(
-        lipper["metrics"].get("us_equity_bn"), lipper["metrics"].get("mmf_bn")
+    overall_easy = (
+        "LSEG Lipper 동일 기준주간에 미국 주식형 자금과 글로벌 MMF 자금이 반대 방향을 보였습니다. "
+        "집계 지역이 달라 직접 이동이나 전체 미국증시 순매도로 단정하지 않습니다."
     )
 elif ici and ici_mmf and same_reference_week(ici, ici_mmf):
     overall_easy = "ICI 같은 주간 판정: " + flow_direction(
@@ -1549,8 +1585,9 @@ if should_alert:
         )
     if stock_signals:
         stock_text = " / ".join(
-            f"{name} {fmt_usd_bn_kr(value, fx)}({'유입' if value > 0 else '유출' if value < 0 else '보합'})"
-            for name, value in stock_signals
+            f"{name}({reference}) {fmt_usd_bn_kr(value, fx)}"
+            f"({'유입' if value > 0 else '유출' if value < 0 else '보합'})"
+            for name, value, reference in stock_signals
         )
         body.append("• 미국 주식형: " + stock_text)
     else:
