@@ -1030,7 +1030,7 @@ def parse_reuters(kind):
             "title": "Money market funds attract massive inflows as bond selloff bit - Reuters",
             "link": "https://www.channelnewsasia.com/business/money-market-funds-attract-massive-inflows-bond-selloff-bit-6445901",
             "pub": "Fri, 09 Oct 2026 10:00:00 GMT",
-            "desc": "LSEG Lipper week ended October 7 Reuters",
+            "desc": "LSEG Lipper Reuters syndicated report",
         }],
     }
     items = seeds.get(kind, []) + news_items(query)
@@ -1067,7 +1067,7 @@ def parse_reuters(kind):
         if us is None and glob is None and mmf is None:
             continue
         # Media publication date alone is never a weekly fund-flow observation.
-        observed=report_reference_week(combined,pub_day)
+        observed=report_reference_week(body,pub_day)
         if observed is None:
             continue
         # Underlying scope differs across providers. Do not infer direct asset transfers.
@@ -1215,8 +1215,9 @@ def source_block(x, fx):
         if m.get("global_equity_bn") is not None:
             lines.append(f"• 글로벌 주식형 {fmt_usd_bn_kr(m.get('global_equity_bn'), fx)}")
         if m.get("mmf_bn") is not None:
-            mmf_label="글로벌 MMF 순유입·순유출" if x["kind"]=="lipper" else "MMF(해당 보고서 집계)"
-            lines.append(f"• {mmf_label} {fmt_usd_bn_kr(m.get('mmf_bn'), fx)}")
+            mmf_label="글로벌 MMF" if x["kind"]=="lipper" else "MMF(해당 보고서 집계)"
+            direction="순유입" if m["mmf_bn"]>0 else "순유출" if m["mmf_bn"]<0 else "보합"
+            lines.append(f"• {mmf_label} {direction} {fmt_usd_bn_kr(m.get('mmf_bn'), fx)}")
         if x.get("reference_week_verified") is True:
             lines.append(
                 f"• 기준주간 {x.get('reference_week')}: 기사 본문에서 주간을 확인했으나 "
