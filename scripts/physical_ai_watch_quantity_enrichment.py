@@ -280,6 +280,8 @@ def _skip_quantity_enrichment(block: str) -> bool:
         return True
     if "US 2026/0310299 A1" in block and ("촉각" in block or "tactile" in block.lower()):
         return True
+    if "Digital Optimus" in block or "디지털 에이전트" in block or "디지털 옵티머스" in block:
+        return True
     return False
 
 
