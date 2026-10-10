@@ -526,7 +526,13 @@ jobs:
                   )
                   if doc_id:
                       normalized_doc=re.sub(r"[^a-z0-9]+","-",doc_id.group().lower()).strip("-")
-                      return "regulation","us-sif-regulation-"+normalized_doc
+                      key="us-sif-rule-"+normalized_doc
+                      if "proposed rule" in text and "final rule" not in text:
+                          return "rule_proposal",key+"-proposal"
+                      if "final rule" in text or "regulation codified" in text:
+                          return "rule_final",key+"-final"
+                      if "executive order" in text or "presidential memorandum" in text:
+                          return "executive_instrument",key+"-executive"
                   return "ignore",""
 
               membership_action=any(x in title for x in (
@@ -569,7 +575,12 @@ jobs:
               "title":"Federal Register final rule 2026-20999 published on AI model incident reporting",
               "text":"federal register final rule 2026-20999 published requires ai model incident reporting",
               "source":"Federal Register",
-          })[0]=="regulation"
+          })[0]=="rule_final"
+          assert stage({
+              "title":"Federal Register proposed rule 2026-20998 published on AI model incident reporting",
+              "text":"federal register proposed rule 2026-20998 published on ai model incident reporting",
+              "source":"Federal Register",
+          })[0]=="rule_proposal"
           assert stage({
               "title":"Super Intelligence Force has no budget or statutory authority",
               "text":"the super intelligence force has no budget and no statutory authority",
@@ -595,7 +606,8 @@ jobs:
 
           if candidates:
               rank={
-                  "procurement":8,"funding":7,"regulation":7,"statement":6,"report":6,
+                  "procurement":8,"funding":7,"rule_final":8,"executive_instrument":7,
+                  "rule_proposal":6,"statement":6,"report":6,
                   "authority":5,"funding_request":4,"membership":2,"formation":1,
               }
               st,key,digest,row=sorted(candidates,key=lambda x:rank.get(x[0],0),reverse=True)[0]
@@ -656,12 +668,24 @@ jobs:
                       "• <b>수치 미공개</b>: 24/72시간 등 구체적인 신고 시간·예산·과징금 없음",
                       "• <b>다음 확인</b>: 백악관·연방관보 원문·대상 사건 정의·수신 기관·신고 기한·시정 검수·위반 제재·실제 집행",
                   ]
-              elif st=="regulation":
-                  heading="SIF 연계 의무 규칙·보고·감사 변화"
+              elif st=="rule_proposal":
+                  heading="AI 모델 사고 신고 제안규칙 공개(시행 전)"
                   detail=[
-                      "• <b>현재 단계</b>: 제안규칙·최종규칙·의무 보고 등 규제 수단이 구체화된 단계",
-                      "• <b>의미</b>: 기업의 준수비용·보안·모델 평가 의무가 바뀔 수 있음",
-                      "• <b>다음 확인</b>: 적용 대상·시행일·법적 근거·벌칙·감사 범위",
+                      "• <b>현재 단계</b>: 제안규칙 공개. 최종 확정 또는 시행으로 간주하지 않음",
+                      "• <b>다음 확인</b>: 의견수렴·최종 규칙번호·대상 기업·신고기한·벌칙·시행일",
+                  ]
+              elif st=="rule_final":
+                  heading="AI 모델 사고 신고 최종규칙 공표"
+                  detail=[
+                      "• <b>현재 단계</b>: 번호로 식별되는 정부 최종규칙 공표",
+                      "• <b>다음 확인</b>: 공표일·발효일·적용기업·신고기한·법적 제재·집행기구",
+                  ]
+              elif st=="executive_instrument":
+                  heading="AI 모델 사고 신고 관련 대통령 행정조치 공표"
+                  detail=[
+                      "• <b>현재 단계</b>: 번호로 식별되는 행정명령·대통령각서 공표",
+                      "• <b>주의</b>: 행정조치 존재만으로 모든 민간기업 직접 의무·벌칙이 확정되는 것은 아님",
+                      "• <b>다음 확인</b>: 대상기관·권한 범위·후속 규칙·민간기업 적용 조항·발효일",
                   ]
               else:
                   heading="SIF 구성·운영 변화"
