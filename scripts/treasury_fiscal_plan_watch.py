@@ -255,9 +255,7 @@ def parse_debt(payload: object) -> dict:
 
 
 def fmt_bn(usd: Decimal) -> str:
-    return f"{usd / Decimal('1000000000'):,.2f}억달러" if False else (
-        f"{usd / Decimal('1000000000000'):,.3f}조달러"
-    )
+    return f"{usd / Decimal('1000000000000'):,.3f}조달러"
 
 
 def fx_quote() -> tuple[Decimal | None, str]:
