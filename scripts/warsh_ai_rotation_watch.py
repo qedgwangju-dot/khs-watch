@@ -43,6 +43,10 @@ ROW_PATTERN = re.compile(
 )
 NY = ZoneInfo('America/New_York')
 
+class DataNotReady(RuntimeError):
+    """정상적인 제공처 게시 시차: 잘못된 판정 없이 이번 실행만 보류."""
+    pass
+
 def fetch(url, timeout=25):
     req = urllib.request.Request(url, headers={'User-Agent': UA, 'Accept-Language': 'en-US,en;q=0.9'})
     with urllib.request.urlopen(req, timeout=timeout) as response:
@@ -83,7 +87,7 @@ def independent_series(symbol):
     # A cached page may still say "Market open" even when fetched the next day.
     # Its intraday bar must never be accepted as a finalized close.
     if 'market open' in before_table.lower():
-        raise RuntimeError(f'{symbol} 외부 제공처의 마지막 행이 장중 값(Market open) — 확정종가 판정 금지')
+        raise DataNotReady(f'{symbol} 외부 제공처의 마지막 행이 장중 값(Market open) — 확정종가 게시 대기')
     return series, url
 
 def yahoo_series(symbol, now=None):
@@ -146,7 +150,7 @@ def build_snapshot(independent, yahoo, now=None):
         raise RuntimeError(f'종목 간 최종 일자 불일치: 독립 {sorted(latest_independent)}, Yahoo {sorted(latest_yahoo)}')
     latest = next(iter(latest_independent))
     if latest != next(iter(latest_yahoo)):
-        raise RuntimeError(f'제공처 간 최신 일자 불일치: {latest} vs {next(iter(latest_yahoo))}')
+        raise DataNotReady(f'제공처 간 최신 일자 게시 시차: {latest} vs {next(iter(latest_yahoo))} — 공통 확정종가 대기')
 
     # Completed sessions only; Friday on a Saturday is valid. Weekday after close needs a fresh bar.
     ny_today = ny_now.date().isoformat()
@@ -157,7 +161,7 @@ def build_snapshot(independent, yahoo, now=None):
         raise RuntimeError(f'미국 현지 {ny_today} 정규장 종료 후 45분 이전 — 장중값 마감 종가 사용 금지')
     if ny_now.weekday() < 5 and (ny_now.hour > 16 or (ny_now.hour == 16 and ny_now.minute >= 45)):
         if latest != ny_today:
-            raise RuntimeError(f'당일 마감 일봉 미게시: 미국 현지 {ny_today}, 제공처 최신 {latest}')
+            raise DataNotReady(f'당일 마감 일봉 게시 대기: 미국 현지 {ny_today}, 제공처 최신 {latest}')
     age_days = (ny_now.date() - datetime.strptime(latest, '%Y-%m-%d').date()).days
     if age_days > 4:
         raise RuntimeError(f'최신 거래일 종가 과거 데이터: {age_days}일 지연')
@@ -396,11 +400,21 @@ def main():
     old = load_state()
     try:
         s = snapshot()
+    except DataNotReady as exc:
+        # 서로 다른 제공처가 같은 거래일 종가를 게시하는 시점은 수분~수시간
+        # 어긋날 수 있다. 이는 데이터 오류가 아니라 정상적인 게시 시차다.
+        # 기존 상태·전송 기준선은 그대로 두고 다음 실행에서 다시 확인한다.
+        print(json.dumps({
+            'data_valid': False, 'sent': False, 'retry_later': True,
+            'waiting': str(exc),
+            'rule': '제공처 게시 시차 → 판정·송출·상태 갱신 보류, 워크플로는 정상 지속'
+        }, ensure_ascii=False))
+        return
     except Exception as exc:
         print(json.dumps({
             'data_valid': False, 'sent': False,
             'failure': f'{type(exc).__name__}: {exc}',
-            'rule': '데이터 검증 실패 → 판정·송출·상태 갱신 차단'
+            'rule': '실제 데이터 검증 실패 → 판정·송출·상태 갱신 차단'
         }, ensure_ascii=False))
         raise
     old_version = old.get('methodology_version')
@@ -492,6 +506,14 @@ def self_test():
         f'Oct {i}, 2026 1.00 1.10 0.95 1.02 1.02 +2.0% 123,456'
         for i in range(1, 8)))
     assert 'market open' in bad_html.lower()
+    lagged = {symbol: dict(rows) for symbol, rows in independent.items()}
+    for symbol in lagged:
+        lagged[symbol].pop('2026-10-09', None)
+    try:
+        build_snapshot(lagged, yahoo, now)
+        raise AssertionError('provider publication lag must defer safely')
+    except DataNotReady as e:
+        assert '게시 시차' in str(e)
     original = displayed_signature(out)
     updated = dict(out)
     updated['relative_5d'] = out['relative_5d'] + 0.2
