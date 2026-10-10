@@ -28,6 +28,8 @@ for _required in (
     "DONGKUK_NPS_RECOVERY =",
     "DKT_HUMANOID_RECOVERY =",
     "TESLA_TOUCH_PATENT_RECOVERY =",
+    "DIGITAL_OPTIMUS_GAME_RECOVERY =",
+    "def _digital_optimus_game_recovery(",
     "def _dongkuk_report_recovery(",
     "def _dkt_humanoid_recovery(",
     "def _tesla_touch_patent_recovery(",
@@ -2702,6 +2704,112 @@ try:
     )
 finally:
     base.NOW = old_patent_now
+
+
+
+# 49) Digital Optimus gaming lane (2026-10-10 Musk X).
+# Product classification, reporter quality and replay gates must be separated.
+digital_progress = make(
+    "Elon Musk: Digital Optimus can play Diablo halfway and Counter-Strike",
+    "Elon Musk X post 2108823477071303109 on Oct 10 2026 says Digital Optimus "
+    "can play about halfway through the Diablo campaign looking at the screen. "
+    "Counter-Strike skill is good, League of Legends is training, and the aim "
+    "is generalization across games. No independent benchmark was published.",
+    "Elon Musk (X)",
+)
+dg, ds, dc, dk = classify(digital_progress)
+assert dg == "digital_optimus_games" and ds >= 11, (dg, ds, dc)
+assert dc == "Digital Optimus · 게임 수행 경영진 진전 발언", dc
+assert "경영진" in base.meaning(dc), base.meaning(dc)
+assert "독립" in base.risk(dc), base.risk(dc)
+assert "50%" not in base.meaning(dc), "campaign halfway must not mean 50% win rate"
+assert "물리" in base.risk(dc), base.risk(dc)
+
+digital_rewrite = make(
+    "Digital Optimus Diablo game progress",
+    "Musk X 2108823477071303109: Digital Optimus is playing the "
+    "Diablo campaign halfway and learning League of Legends.",
+    "Elon Musk (X)",
+)
+dg2, ds2, dc2, dk2 = classify(digital_rewrite)
+assert dg2 == dg and ds2 >= 11 and dk2 == dk, (dg2, ds2, dk2)
+
+digital_unverified = make(
+    "Digital Optimus achieves game-changing Diablo performance",
+    "Digital Optimus plays halfway into Diablo; Counter-Strike success proves "
+    "general AI according to anonymous sources.",
+    "Finance Influencer Blog",
+)
+ug, us, uc, uk = classify(digital_unverified)
+assert ug == "digital_optimus_games" and us < 11, (ug, us, uc)
+
+digital_job_only = make(
+    "Tesla hiring real-time Games Digital Optimus AI researcher",
+    "Tesla job posting for Digital Optimus in games focused on training agents, "
+    "memory, and a general computer-use future.",
+    "Tesla",
+)
+jg, js, jc, jk = classify(digital_job_only)
+assert jg == "digital_optimus_games" and js < 11, (jg, js, jc)
+
+digital_official_benchmark = make(
+    "Tesla Digital Optimus games benchmark",
+    "Tesla officially publishes Digital Optimus benchmark of 75% success "
+    "across 100 episodes in new unseen games, with response latency.",
+    "Tesla",
+)
+bg, bs, bc, bk = classify(digital_official_benchmark)
+assert bg == "digital_optimus_games" and bs >= 11, (bg, bs, bc)
+assert bc == "Digital Optimus · 회사 공식 다중게임 성능 검증", bc
+assert bk != dk, "future official test must be distinct from CEO X claim"
+
+digital_commercial = make(
+    "Tesla Digital Optimus game agent commercial launch",
+    "Tesla Digital Optimus games service commercial launch with "
+    "paid customer contract and enterprise deployment.",
+    "Tesla",
+)
+cg, cs, cc, ck = classify(digital_commercial)
+assert cg == "digital_optimus_games" and cs >= 11, (cg, cs, cc)
+assert cc == "Digital Optimus · 정식 상용화·유료 계약", cc
+assert ck not in {dk, bk}, (ck, dk, bk)
+
+physical_opt = make(
+    "Tesla Optimus humanoid robot hand",
+    "Tesla Optimus has 25 actuators and manipulates objects; "
+    "its physical hand is not Digital Optimus screen control.",
+    "Tesla",
+)
+pg, ps, pc, pk = classify(physical_opt)
+assert pg != "digital_optimus_games", (pg, ps, pc)
+
+old_digital_now = base.NOW
+try:
+    base.NOW = dt.datetime(2026, 10, 10, 12, 0, tzinfo=dt.timezone.utc)
+    recovered_digital = watcher.query_news(watcher.DIGITAL_OPTIMUS_GAME_RECOVERY)
+    assert len(recovered_digital) == 1, recovered_digital
+    raw_digital = recovered_digital[0]
+    assert raw_digital['source'] == 'Elon Musk (X)', raw_digital
+    assert raw_digital['link'] == 'https://x.com/elonmusk/status/2108823477071303109'
+    assert raw_digital['published'] == '2026-10-10T07:34:00+00:00', raw_digital
+    rdg, rds, rdc, rdk = classify(raw_digital)
+    assert rdg == dg and rds >= 11 and rdk == dk, (rdg, rds, rdk)
+    rendered_text = f"{raw_digital['title']} {raw_digital['description']}"
+    # Same source-loss interface as the real Telegram renderer:
+    rendered_category = base.category(rendered_text, base.topic_group(rendered_text))
+    assert rendered_category == dc, rendered_category
+    assert "머스크:" in base.clean_title(raw_digital['title'], raw_digital['source'])
+    review = base.verification(raw_digital, rdg, rendered_text)
+    assert "X 직접 열람 제한" in review, review
+    assert "독립 검증 없음" in review, review
+    assert "물리" in base.risk(rendered_category), base.risk(rendered_category)
+    assert base.key(raw_digital) == dk, "semantic deduplication across reprints failed"
+    base.NOW = dt.datetime(2026, 10, 15, 4, 0, tzinfo=dt.timezone.utc)
+    assert watcher.query_news(watcher.DIGITAL_OPTIMUS_GAME_RECOVERY) == [], (
+        "old 10/10 Musk post must not replay after backfill expires"
+    )
+finally:
+    base.NOW = old_digital_now
 
 
 print("Physical-AI watcher regression guards: PASS")
