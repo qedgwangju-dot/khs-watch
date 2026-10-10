@@ -182,17 +182,7 @@ jobs:
 
       - name: Commit new QRA state
         if: success() && env.QRA_DRY_RUN != 'true' && hashFiles('out/qra_recurring_telegram_confirmed.json') != ''
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/qra_recurring_alert_state.json
-          if git diff --cached --quiet; then
-            echo "QRA 상태 변경 없음"
-          else
-            git commit -m "Record recurring interpreted QRA delivery"
-            git pull --rebase origin main
-            git push
-          fi
+        run: python scripts/qra_recurring_state_commit.py
 
       - name: Send fiscal plan change only through existing QRA bot
         id: fiscal_delivery
