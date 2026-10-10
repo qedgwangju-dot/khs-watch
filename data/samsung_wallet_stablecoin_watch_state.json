@@ -59,7 +59,7 @@
     ],
     "explicit_reversal_confirmed": false,
     "job_fetch_ok": true,
-    "job_stablecoin_confirmed": false,
+    "job_stablecoin_confirmed": true,
     "kbw_executive_crosscheck_confirmed": true,
     "kbw_executive_primary_confirmed": true,
     "pilot_live_confirmed": false,
@@ -76,7 +76,7 @@
     "executive_default_feature_confirmation": true,
     "explicit_reversal_confirmed": false,
     "job_exists": true,
-    "official_job_scope_now": false,
+    "official_job_scope_now": true,
     "partner_primary_confirmed": true,
     "partner_primary_sources": [
       "Solana",
@@ -98,5 +98,5 @@
     "wallet_patent_publication": "US20260212355A1",
     "wallet_patent_publication_date": "2026-07-23"
   },
-  "updated_at_kst": "2026-10-10T15:59:46+09:00"
+  "updated_at_kst": "2026-10-10T17:45:12+09:00"
 }
