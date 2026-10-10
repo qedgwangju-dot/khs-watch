@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-10T17:44:41+09:00",
+  "updated_at_kst": "2026-10-10T20:13:49+09:00",
   "correction_pending": false,
   "buyback": {
     "sha256": "3e691d164254d161d0d814e87c0eb3b88203e8985bb2f046aff70278f43ae5d4",
@@ -78,6 +78,10 @@
         "start": "2026-09-10",
         "end": "2026-10-09",
         "trading_days": 22,
+        "expected_trading_days": 22,
+        "missing_trading_dates": [],
+        "unexpected_trading_dates": [],
+        "validation_issue": "",
         "partial_days": 0,
         "partial_dates": [],
         "value_usd_m": 1658.2,
@@ -86,16 +90,24 @@
         "prev_trading_days": 22,
         "prev_partial_days": 0,
         "prev_partial_dates": [],
+        "prev_expected_trading_days": 22,
+        "prev_missing_trading_dates": [],
         "prev_value_usd_m": 3277.0,
         "change_usd_m": -1618.8,
         "direction": "순유입 둔화",
-        "status": "확정"
+        "status": "집계완료(수정가능)",
+        "avg_usd_m_per_session": 75.4,
+        "prev_avg_usd_m_per_session": 149.0
       },
       "3m": {
         "valid": true,
         "start": "2026-07-10",
         "end": "2026-10-09",
         "trading_days": 65,
+        "expected_trading_days": 65,
+        "missing_trading_dates": [],
+        "unexpected_trading_dates": [],
+        "validation_issue": "",
         "partial_days": 2,
         "partial_dates": [
           "2026-07-27",
@@ -107,10 +119,14 @@
         "prev_trading_days": 62,
         "prev_partial_days": 0,
         "prev_partial_dates": [],
+        "prev_expected_trading_days": 62,
+        "prev_missing_trading_dates": [],
         "prev_value_usd_m": -5271.3,
         "change_usd_m": 11210.1,
         "direction": "순유출→순유입 전환",
-        "status": "잠정"
+        "status": "잠정",
+        "avg_usd_m_per_session": 91.4,
+        "prev_avg_usd_m_per_session": -85.0
       }
     },
     "history_source": "https://farside.co.uk/bitcoin-etf-flow-all-data/",
