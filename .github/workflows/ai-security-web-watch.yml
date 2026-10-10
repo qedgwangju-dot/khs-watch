@@ -232,7 +232,8 @@ jobs:
               "description": "Affected parties notified; remediation remains underway",
           }
           notified = normalize_item(notification_only)
-          if not material(notified) or "시정 완료" in (incident_fact(notified) or ""):
+          notified_fact = incident_fact(notified) or ""
+          if not material(notified) or "통지 발표" not in notified_fact or "시정 완료 발표" in notified_fact:
               raise RuntimeError("Disclosure was confused with completed remediation")
           print("ai_security_reporting_remediation_regression=PASS")
           print("ai_security_primary_incident_report_regression=PASS")
