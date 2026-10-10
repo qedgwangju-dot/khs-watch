@@ -100,6 +100,35 @@ BASELINE = {
     "as_of": "2026-10-05",
 }
 
+
+# Semiconductor equipment spares are a distinct cost layer from foundry wafer
+# price pass-through. ASML's 10% report is NOT a first-party price announcement.
+SEMICAP_SOURCE_URL = "https://www.thelec.kr/news/articleView.html?idxno=63515"
+SEMICAP_BASELINE_KEY = "ASML|spares|10|2027-01|reported"
+SEMICAP_BASELINE_DATE = "2026-10-10"
+SEMICAP_QUERIES = [
+    ("ko", "ASML 노광장비 유지보수 교체부품 가격 인상 2027 삼성 SK"),
+    ("en", "ASML lithography spare parts replacement price increase 2027"),
+    ("en", "ASML Applied Materials Tokyo Electron semiconductor equipment spare parts price hikes"),
+]
+SEMICAP_VENDOR_DOMAINS = {
+    "ASML": ("asml.com",),
+    "Applied Materials": ("appliedmaterials.com",),
+    "Tokyo Electron": ("tel.com",),
+    "Advanced Energy": ("advancedenergy.com",),
+    "KLA": ("kla.com",),
+    "Lam Research": ("lamresearch.com",),
+}
+SEMICAP_MEDIA_DOMAINS = ("thelec.kr", "reuters.com", "bloomberg.com", "nikkei.com", "digitimes.com", "theinformation.com")
+SEMICAP_VENDOR_ALIASES = {
+    "ASML": ("asml", "에이에스엠엘"),
+    "Applied Materials": ("applied materials", "어플라이드머티리얼즈"),
+    "Tokyo Electron": ("tokyo electron", "도쿄일렉트론", "東京エレクトロン"),
+    "Advanced Energy": ("advanced energy", "어드밴스드에너지"),
+    "KLA": ("kla corporation", "kla corp", "케이엘에이"),
+    "Lam Research": ("lam research", "램리서치"),
+}
+
 FABLESS = {
     "Novatek": ("novatek", "聯詠", "联咏"),
     "Sitronix": ("sitronix", "矽創", "矽创"),
@@ -397,9 +426,159 @@ def _event(item: dict) -> dict | None:
         "source_rank": _source_rank(item),
     }
 
+
+def _semicap_host_matches(host: str, domain: str) -> bool:
+    return host == domain or host.endswith("." + domain)
+
+
+def _semicap_source_grade(item: dict, vendor: str) -> str:
+    # A claimed publisher label must not turn third-party text into official vendor evidence.
+    host = _host(str(item.get("link") or ""))
+    if any(_semicap_host_matches(host, x) for x in SEMICAP_VENDOR_DOMAINS[vendor]):
+        return "official"
+    if any(_semicap_host_matches(host, x) for x in SEMICAP_MEDIA_DOMAINS):
+        return "reported"
+    # Google News RSS sometimes does not resolve the original link. Such
+    # reporting is always lower-grade and never company-confirmed.
+    source = _clean(str(item.get("source") or "")).lower()
+    if _semicap_host_matches(host, "news.google.com") and source in (
+        "디일렉", "the elec", "reuters", "bloomberg", "nikkei", "digitimes",
+    ):
+        return "reported"
+    return ""
+
+
+def _semicap_month(text: str) -> str:
+    low = text.lower()
+    m = re.search(r"2027[년\s./-]*(0?[1-9]|1[0-2])(?:월|\b)", low)
+    if m:
+        return f"2027-{int(m.group(1)):02d}"
+    if "2027" in low and ("january" in low or "jan " in low or "1월" in low):
+        return "2027-01"
+    if "내년 1월" in low:
+        return "2027-01"
+    return "미확인"
+
+
+def _semicap_observation(item: dict) -> dict | None:
+    title = _clean(str(item.get("title") or ""))
+    details = _clean(str(item.get("description") or ""))
+    text = f"{title} {details}"
+    low = text.lower()
+    pub = str(item.get("published_kst") or "")[:10]
+    if pub and pub < SEMICAP_BASELINE_DATE:
+        return None
+    vendor = next((name for name, aliases in SEMICAP_VENDOR_ALIASES.items()
+                   if any(re.search(r"(?<![a-z])" + re.escape(a.lower()) + r"(?![a-z])", low)
+                          for a in aliases)), None)
+    if not vendor:
+        return None
+    grade = _semicap_source_grade(item, vendor)
+    if not grade:
+        return None
+    if not any(p in low for p in (
+        "price increase", "price hike", "raise prices", "raised prices",
+        "higher prices", "price adjustment", "가격 인상", "값 인상",
+        "가격 조정", "인상 확정", "値上げ", "涨价", "漲價",
+    )):
+        return None
+    if any(p in low for p in ("share price", "stock price", "주가 상승", "목표주가")):
+        return None
+    spares = any(p in low for p in (
+        "spare part", "replacement part", "maintenance part", "service part",
+        "consumable part", "교체부품", "교체용", "유지보수", "소모성 부품", "부품값", "부품 가격",
+    ))
+    systems = any(p in low for p in (
+        "equipment", "new system", "lithography system", "scanner", "노광장비",
+        "장비값", "신규 장비", "제조장비", "판매 중인 장비", "semiconductor tool",
+    ))
+    if not (spares or systems):
+        return None
+    tentative = any(p in low for p in (
+        "in talks", "negotiat", "consider", "proposal", "propos",
+        "논의", "협의 중", "검토", "가능성", "추진",
+    ))
+    # New tool prices must have first-party firm wording, not negotiation headlines.
+    if not spares and (grade != "official" or tentative):
+        return None
+    m = re.search(r"(?<!\d)(\d{1,2}(?:\.\d+)?)\s*[%％]", text)
+    pct = float(m.group(1)) if m else None
+    if pct is not None and not (0 < pct <= 50):
+        return None
+    if spares and pct is None:
+        return None
+    if vendor != "ASML" and grade != "official":
+        return None
+    month = _semicap_month(text)
+    scope = "spares" if spares else "systems"
+    if vendor == "ASML" and scope == "spares" and grade == "reported" and pct == 10:
+        if month in ("2027-01", "미확인"):
+            return None  # Same material fact as separately attributed baseline.
+    key = "|".join((vendor, scope, f"{pct:g}" if pct is not None else "unquoted", month, grade))
+    return {
+        "key": key, "vendor": vendor, "scope": scope,
+        "rate": f"{pct:g}%" if pct is not None else "인상률 미공개",
+        "month": month, "grade": grade, "title": title,
+        "link": str(item.get("link") or ""),
+    }
+
+
+def _semicap_plan(items: list[dict], previous: dict) -> tuple[dict, list[dict]]:
+    # Only the existing workflow's successful send path commits this pending state.
+    current = dict(previous or {})
+    delivered = set(current.get("delivered_keys") or [])
+    alerts = []
+    if SEMICAP_BASELINE_KEY not in delivered:
+        alerts.append({
+            "key": SEMICAP_BASELINE_KEY, "vendor": "ASML", "scope": "spares",
+            "rate": "10%", "month": "2027-01", "grade": "reported",
+            "title": "한국향 EUV·DUV 교체부품 10% 인상 보도",
+            "link": SEMICAP_SOURCE_URL, "initial": True,
+        })
+        delivered.add(SEMICAP_BASELINE_KEY)
+    for item in sorted(items, key=lambda x: x.get("published_kst") or ""):
+        obs = _semicap_observation(item)
+        if obs and obs["key"] not in delivered:
+            alerts.append(obs)
+            delivered.add(obs["key"])
+    current["delivered_keys"] = sorted(delivered)[-300:]
+    current["baseline_source"] = SEMICAP_SOURCE_URL
+    current["source_status"] = "ASML 부품 인상: 보도 단계 / 신규 장비: 협의 단계"
+    return current, alerts
+
+
+def _semicap_alert_lines(events: list[dict]) -> list[str]:
+    lines = []
+    for ev in events:
+        grade = "업체 공식자료" if ev["grade"] == "official" else "언론보도(업체 공식 공지 미확인)"
+        kind = "교체·유지보수 부품" if ev["scope"] == "spares" else "신규 제조장비"
+        lines.extend((
+            "",
+            "• <b>" + html.escape(ev["vendor"] + " " + kind) + "</b>",
+            "  가격: " + html.escape(ev["rate"]) + " · 적용월: " + html.escape(ev["month"]),
+            "  확인등급: " + html.escape(grade),
+            "  " + html.escape(ev["title"]),
+        ))
+        if ev.get("initial"):
+            lines.extend((
+                "  디일렉 단독: 삼성전자·SK하이닉스 구매조직의 수용 보도. "
+                "세 회사의 개별 공식 가격표·계약조건은 미공개.",
+                "  ASML 신규 노광장비 가격 인상은 아직 협의 단계이며 위 10% 범위에 포함하지 않음.",
+                "  고객 원가증가 = 해당 고객의 ASML 교체부품 구입액 × 10%. "
+                "ASML 설치장비 관리 매출 전체에 10%를 적용하지 않음.",
+            ))
+        if ev.get("link"):
+            lines.append('  <a href="' + html.escape(ev["link"], quote=True) + '">근거 링크</a>')
+    lines.extend((
+        "",
+        "다음 확인: ASML·고객 공식 가격표, 신규 장비 가격 확정, "
+        "부품 교체주기·가동률, 동종 장비 업체 인상, 고객 원가·마진 전가.",
+    ))
+    return lines
+
 def collect(cutoff: dt.datetime) -> tuple[list[dict], list[str]]:
     items, errors, seen = [], [], set()
-    for lang, query in QUERIES:
+    for lang, query in QUERIES + SEMICAP_QUERIES:
         try:
             root = ET.fromstring(_fetch(_rss_url(lang, query)))
         except Exception as exc:
@@ -425,7 +604,7 @@ def collect(cutoff: dt.datetime) -> tuple[list[dict], list[str]]:
                 "title": title, "description": desc, "source": source, "link": link,
                 "published_kst": pub, "fingerprint": fp, "query": query,
             }
-            if _is_relevant(item):
+            if _is_relevant(item) or _semicap_observation(item):
                 items.append(item)
     return items, errors
 
@@ -441,6 +620,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
     current = dict(state.get("current") or BASELINE)
     seen = set(state.get("seen_fingerprints") or [])
     delivered = set(state.get("delivered_event_keys") or [])
+    semicap_state, semicap_events = _semicap_plan(items, state.get("semicap_watch") or {})
 
     changes, source_url = [], ""
     for item in sorted(items, key=lambda x: x.get("published_kst") or ""):
@@ -479,6 +659,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         "last_new_event_count": len(new_events),
         "seen_fingerprints": sorted(seen)[-1200:],
         "delivered_event_keys": sorted(pending_delivered)[-500:],
+        "semicap_watch": semicap_state,
     }
     for k in ("last_successful_delivery_kst", "telegram_message_ids", "telegram_message_id", "bot_username", "delivery_receipt"):
         if state.get(k) is not None:
@@ -492,6 +673,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         f"- 후보: {len(items)}건",
         f"- 숫자·공식성 변화: {len(changes)}건",
         f"- 신규 구조 이벤트: {len(new_events)}건",
+        f"- 반도체 장비 가격 이벤트: {len(semicap_events)}건",
         f"- 원천 오류: {len(errors)}건",
         "- 기준: 팹리스 5%~두 자릿수 인상은 검토·보도 단계, 개별 회사 공식 인상 아님",
         "- 기준: TSMC 성숙공정 3~10% 인상도 보도 단계, TSMC 공식 공지와 분리",
@@ -500,7 +682,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
     STATUS_PATH.write_text("\n".join(status) + "\n", encoding="utf-8")
 
     ALERT_PATH.unlink(missing_ok=True)
-    if not changes and not new_events:
+    if not changes and not new_events and not semicap_events:
         return
 
     lines = [
@@ -545,6 +727,15 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         "※ TrendForce News는 TrendForce 리서치팀과 독립된 뉴스 큐레이션 페이지입니다. "
         "보도 인용 수치와 TrendForce 자체 연구수치를 같은 확정등급으로 처리하지 않습니다.",
     ]
+    if semicap_events:
+        if changes or new_events:
+            lines += ["", "━━━━━━━━━━━━", "<b>[반도체 제조장비·교체부품 가격]</b>"]
+        else:
+            lines = [
+                "<b>[반도체 제조장비·교체부품 가격]</b>",
+                f"조회 {now.strftime('%Y-%m-%d %H:%M')} KST",
+            ]
+        lines += _semicap_alert_lines(semicap_events)
     ALERT_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
 
 def main() -> None:

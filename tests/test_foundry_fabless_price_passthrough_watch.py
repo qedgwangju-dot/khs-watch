@@ -119,6 +119,74 @@ class FoundryFablessPricePassThroughTests(unittest.TestCase):
         )
         self.assertFalse(w._is_relevant(x))
 
+
+    def semicap_item(self, title, desc="", link="https://www.thelec.kr/news/articleView.html?idxno=63515"):
+        x = self.item(title, desc, "디일렉", link)
+        x["published_kst"] = "2026-10-10T09:55:00+09:00"
+        return x
+
+    def test_asml_media_report_is_not_vendor_confirmation(self):
+        x = self.semicap_item("ASML, 유지보수용 노광장비 부품값 10% 일괄 인상", "내년 1월 적용")
+        self.assertEqual(w._semicap_source_grade(x, "ASML"), "reported")
+        self.assertIsNone(w._semicap_observation(x))
+
+    def test_semicap_one_time_setup_message_and_repeat_suppression(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = pathlib.Path(td)
+            state, out = root / "state.json", root / "out"
+            out.mkdir()
+            state.write_text('{"initialized":true,"current":{}}', encoding="utf-8")
+            with patch.object(w, "STATE_PATH", state), patch.object(w, "OUT_DIR", out), \
+                 patch.object(w, "ALERT_PATH", out / "alert.html"), \
+                 patch.object(w, "PENDING_PATH", out / "pending.json"), \
+                 patch.object(w, "STATUS_PATH", out / "status.md"):
+                w.write_outputs([], [])
+                msg = (out / "alert.html").read_text(encoding="utf-8")
+                self.assertIn("EUV·DUV 교체부품", msg)
+                self.assertIn("업체 공식 공지 미확인", msg)
+                self.assertIn("신규 노광장비 가격 인상은 아직 협의 단계", msg)
+                self.assertNotIn("파운드리→팹리스 가격 전가 변화", msg)
+                pending = __import__("json").loads((out / "pending.json").read_text(encoding="utf-8"))
+                self.assertIn(w.SEMICAP_BASELINE_KEY, pending["semicap_watch"]["delivered_keys"])
+                state.write_text(__import__("json").dumps(pending), encoding="utf-8")
+                w.write_outputs([], [])
+                self.assertFalse((out / "alert.html").exists())
+
+    def test_semicap_fake_source_cannot_claim_asml_hike(self):
+        x = self.semicap_item("ASML spare parts 15% price increase", "Effective January 2027",
+                              link="https://unverified.example/post")
+        x["source"] = "ASML"
+        self.assertIsNone(w._semicap_observation(x))
+
+    def test_semicap_material_15pct_revision_and_first_party_10pct(self):
+        x = self.semicap_item("ASML spare parts 15% price increase January 2027",
+                              "ASML replacement parts prices rise 15%")
+        obs = w._semicap_observation(x)
+        self.assertEqual(obs["grade"], "reported")
+        self.assertEqual(obs["rate"], "15%")
+        x["title"] = "ASML spare parts 10% price increase effective January 2027"
+        x["link"] = "https://www.asml.com/en/news/press-releases/example"
+        obs2 = w._semicap_observation(x)
+        self.assertEqual(obs2["grade"], "official")
+        self.assertNotEqual(obs2["key"], w.SEMICAP_BASELINE_KEY)
+
+    def test_semicap_2027_equipment_negotiation_not_a_hike(self):
+        x = self.semicap_item("ASML negotiating new equipment price increase 10%",
+                              "New lithography system prices are in talks",
+                              link="https://www.asml.com/en/news/press-releases/example")
+        self.assertIsNone(w._semicap_observation(x))
+        x["title"] = "ASML to raise new lithography equipment prices 10% effective January 2027"
+        x["description"] = "New system shipment prices"
+        self.assertEqual(w._semicap_observation(x)["scope"], "systems")
+
+    def test_semicap_peer_price_requires_first_party_not_repost(self):
+        x = self.semicap_item("Tokyo Electron equipment price increase 8% January 2027",
+                              "Price adjustment to semiconductor equipment",
+                              link="https://www.tel.com/newsroom/release")
+        self.assertEqual(w._semicap_observation(x)["vendor"], "Tokyo Electron")
+        x["link"] = "https://www.thelec.kr/news/articleView.html?idxno=99"
+        self.assertIsNone(w._semicap_observation(x))
+
     def test_no_change_baseline_stays_silent(self):
         with tempfile.TemporaryDirectory() as td:
             root = pathlib.Path(td)
@@ -132,6 +200,7 @@ class FoundryFablessPricePassThroughTests(unittest.TestCase):
                     "current": w.BASELINE,
                     "seen_fingerprints": [],
                     "delivered_event_keys": [],
+                    "semicap_watch": {"delivered_keys": [w.SEMICAP_BASELINE_KEY]},
                 }),
                 encoding="utf-8",
             )
