@@ -101,6 +101,16 @@ class FiscalPolicyTests(unittest.TestCase):
         self.assertIsNone(watch.classify_plan("Kenya fiscal consolidation plan", page,
                            "https://home.treasury.gov/news/press-releases/sb9998"))
 
+    def test_fiscal_state_merge_keeps_newest_and_deduplicates(self):
+        from treasury_fiscal_plan_state_commit import merge_state
+        remote = {"seen_events":["old"],"last_event_id":"old",
+                  "last_sent_at_kst":"2026-11-07T10:00:00+09:00"}
+        stale = {"seen_events":["new"],"last_event_id":"new",
+                 "last_sent_at_kst":"2026-11-06T10:00:00+09:00"}
+        merged = merge_state(remote,stale)
+        self.assertEqual(merged["last_event_id"],"old")
+        self.assertEqual(merged["seen_events"],["old","new"])
+
     def test_currency_scale(self):
         from decimal import Decimal
         v = Decimal("41000000000000")
