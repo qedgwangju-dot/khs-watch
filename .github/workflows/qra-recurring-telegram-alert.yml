@@ -194,6 +194,83 @@ jobs:
             git push
           fi
 
+      - name: Send fiscal plan change only through existing QRA bot
+        id: fiscal_delivery
+        if: always() && steps.fiscal_scan.outcome == 'success' && env.QRA_DRY_RUN != 'true' && hashFiles('out/treasury_fiscal_plan_alert.txt') != ''
+        env:
+          SECOND_TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
+          SECOND_TELEGRAM_CHAT_ID: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
+          EXISTING_TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+        run: |
+          TELEGRAM_BOT_TOKEN="$SECOND_TELEGRAM_BOT_TOKEN"
+          TELEGRAM_CHAT_ID="$SECOND_TELEGRAM_CHAT_ID"
+          if [ -z "$TELEGRAM_CHAT_ID" ]; then TELEGRAM_CHAT_ID="$EXISTING_TELEGRAM_CHAT_ID"; fi
+          export TELEGRAM_BOT_TOKEN TELEGRAM_CHAT_ID
+          python - <<'PY'
+          import json
+          import os
+          import pathlib
+          import urllib.parse
+          import urllib.request
+          token=(os.environ.get("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat=(os.environ.get("TELEGRAM_CHAT_ID") or "").strip()
+          if not token or not chat:
+              raise RuntimeError("기존 QRA 봇 토큰 또는 송출 대상 누락")
+          expected=(os.environ.get("EXPECTED_TELEGRAM_BOT_USERNAME") or "").lstrip("@")
+          with urllib.request.urlopen("https://api.telegram.org/bot"+token+"/getMe",timeout=25) as res:
+              me=json.loads(res.read().decode("utf-8"))
+          actual=str((me.get("result") or {}).get("username") or "")
+          if not me.get("ok") or actual.lower()!=expected.lower():
+              raise RuntimeError("기존 QRA Telegram 봇과 일치하지 않음")
+          body=pathlib.Path("out/treasury_fiscal_plan_alert.txt").read_text(encoding="utf-8").strip()
+          if len(body)>4096:
+              raise RuntimeError("Telegram 공식 변경 알림 길이 초과")
+          payload=urllib.parse.urlencode({
+              "chat_id":chat,"text":body,"disable_web_page_preview":"true"
+          }).encode("utf-8")
+          req=urllib.request.Request("https://api.telegram.org/bot"+token+"/sendMessage",
+                                     data=payload,method="POST")
+          with urllib.request.urlopen(req,timeout=25) as res:
+              sent=json.loads(res.read().decode("utf-8"))
+          if not sent.get("ok") or not (sent.get("result") or {}).get("message_id"):
+              raise RuntimeError("재정건전화 Telegram 송출 확인 실패")
+          data=json.loads(pathlib.Path("out/treasury_fiscal_plan_detail.json").read_text(encoding="utf-8"))
+          pathlib.Path("out/treasury_fiscal_plan_telegram_confirmed.json").write_text(
+              json.dumps({"bot_username":actual,
+                          "message_id":sent["result"]["message_id"],
+                          "event_id":data["event_id"]},
+                         ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          print("fiscal_plan_telegram_confirmed=true bot=@" + actual)
+          PY
+
+      - name: Finalize fiscal-plan event only after successful Telegram acknowledgment
+        if: steps.fiscal_delivery.outcome == 'success' && hashFiles('out/treasury_fiscal_plan_telegram_confirmed.json') != ''
+        run: |
+          python - <<'PY'
+          import datetime
+          import json
+          import pathlib
+          from zoneinfo import ZoneInfo
+          confirmed=json.loads(pathlib.Path("out/treasury_fiscal_plan_telegram_confirmed.json").read_text(encoding="utf-8"))
+          src=pathlib.Path("out/treasury_fiscal_plan_state_next.json")
+          state=json.loads(src.read_text(encoding="utf-8"))
+          pending=state.pop("pending_event_id",None)
+          if not pending or pending!=confirmed.get("event_id") or not confirmed.get("message_id"):
+              raise RuntimeError("확정 사건과 Telegram 확인 내역 불일치")
+          seen=list(state.get("seen_events") or [])
+          if pending not in seen: seen.append(pending)
+          state["seen_events"]=seen[-500:]
+          state["last_event_id"]=pending
+          state["last_sent_at_kst"]=datetime.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds")
+          output=pathlib.Path("data/treasury_fiscal_plan_state.json")
+          output.parent.mkdir(parents=True,exist_ok=True)
+          output.write_text(json.dumps(state,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          PY
+
+      - name: Persist confirmed fiscal plan event with safe Git merge
+        if: steps.fiscal_delivery.outcome == 'success' && hashFiles('data/treasury_fiscal_plan_state.json') != ''
+        run: python scripts/treasury_fiscal_plan_state_commit.py
+
       - name: Upload verification artifacts
         if: always()
         uses: actions/upload-artifact@v4
