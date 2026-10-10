@@ -20,6 +20,7 @@ FOUNDRY_TRACK_VERSION = 1
 FOUNDRY_RECOVERY_TRACK_VERSION = 1
 FOUNDRY_PRICING_RANGE_TRACK_VERSION = 1
 GLASS_SUBSTRATE_TRACK_VERSION = 5
+FOPLP_TRACK_VERSION = 1
 HBM_GENERATION_PRICE_TRACK_VERSION = 1
 MARKET_PRICING_TRACK_VERSION = 1
 EXTRA_QUERIES = [
@@ -43,6 +44,8 @@ EXTRA_QUERIES = [
     '(JNTC OR 제이앤티씨) (TGV OR 유리기판) ("12시간" OR "분 단위" OR 공정시간) (단축 OR 개발)',
     '(JNTC OR 제이앤티씨) (TGV OR 유리기판) (김천 OR Gimcheon) (3470억 OR 10개 OR 설비투자)',
     '(Chemtronics OR 켐트로닉스) (Samsung OR 삼성전자) ("glass interposer" OR 유리 인터포저) (sample OR 샘플 OR evaluation OR 평가 OR qualification OR 검증 OR contract OR 계약 OR mass production OR 양산)',
+    '(FOPLP OR "fan-out panel-level packaging" OR 扇出型面板級封裝 OR 패널형 팬아웃 패키징) (TSMC OR CoPoS OR ASE OR Innolux OR PTI OR ChipMOS OR PMIC OR RF OR AI) (customer OR pilot OR qualification OR production OR 量產 OR 양산 OR 수율)',
+    '(TSMC OR 台積電) (CoPoS OR "Chip-on-Panel-on-Substrate") (pilot OR 試產 OR 驗證 OR mass production OR 양산 OR 2027 OR 2028)',
     '(SemiAnalysis OR TrendForce OR Micron OR Citi OR JPMorgan OR "J.P. Morgan" OR BofA) 2027 (HBM3E OR HBM4 OR HBM4E) (price OR pricing OR ASP OR "$/Gb" OR "per Gb" OR 가격)',
     '"HBM3E" "HBM4" "HBM4E" 2027 (price OR ASP OR "$/Gb")',
 ]
@@ -194,6 +197,8 @@ def local_period(text, published):
 
 
 def is_axis_text(text):
+    if re.search(r'\bFOPLP\b|fan[- ]out panel[- ]level|扇出型面板級封裝|패널형 팬아웃', text, re.I):
+        return bool(re.search(r'\bTSMC\b|台積電|CoPoS|\bASE\b|日月光|Innolux|群創|\bPTI\b|ChipMOS|PMIC|\bRF\b|AI|HPC|GPU|量產|量产|양산|pilot|試產|검증|customer|qualification|패키징', text, re.I))
     return bool(re.search(
         r'RDIMM|현물.*프리미엄|spot.*premium|글라스 캐리어|glass carrier|유리 지지판|P5|'
         r'HBM.*(?:공급 부족|증산|웨이퍼|wafer|supply)|HBM4E?.*(?:\d+\s*Gb|\d+\s*GB|\d+\s*단)|'
@@ -1418,6 +1423,79 @@ def parse_glass_substrate_records(item, body):
     return rows
 
 
+
+# PMIC/RF panel-level FOPLP volume production is not TSMC CoPoS/AI/glass-core volume production.
+FOPLP_STAGE_RANK = {'development':1, 'customer_evaluation':2, 'customer_qualified':3,
+                    'pilot_production':4, 'mass_production':5}
+FOPLP_ACTORS = {
+    'tsmc': r'\bTSMC\b|台積電|台积电', 'ase': r'\bASE\b|日月光',
+    'innolux': r'\bInnolux\b|群創|群创', 'pti': r'\bPTI\b|Powertech Technology|力成',
+    'chipmos': r'\bChipMOS\b|南茂',
+    'samsung': r'Samsung Electronics|三星電子|三星电子|삼성전자',
+}
+FOPLP_ISSUER_DOMAINS = {
+    'tsmc':'tsmc.com','ase':'aseglobal.com','innolux':'innolux.com',
+    'pti':'pti.com.tw','chipmos':'chipmos.com','samsung':'samsung.com',
+}
+
+def parse_foplp_records(item, body):
+    """Require body evidence, a single named AI manufacturer and achieved milestones."""
+    if not re.search(r'\bFOPLP\b|fan[- ]out panel[- ]level|扇出型面板級封裝|패널형 팬아웃', body or '', re.I):
+        return []
+    rows = []
+    asof = (item.get('published_at_kst') or '')[:10]
+    for clause in re.split(r'[。！？；;\r\n]+|(?<=[.!?])\s+', str(body or '')):
+        clause = re.sub(r'\s+', ' ', clause).strip()
+        if not re.search(r'\bFOPLP\b|fan[- ]out panel[- ]level|扇出型面板級封裝|패널형 팬아웃', clause, re.I):
+            continue
+        achieved = bool(re.search(r'(?:achieved|already|entered|began|started|in|已|양산\s*(?:시작|개시|중))[^.;]{0,95}(?:volume\s+production|mass\s+production|量產|量产|양산)', clause, re.I))
+        pmic_rf = bool(re.search(r'\bPMIC\b|power[- ]management|\bRF\b|radio[- ]frequency|電源管理|电源管理|射頻|射频', clause, re.I))
+        panel = re.search(r'(\d{3,4})\s*[x×]\s*(\d{3,4})\s*mm', clause, re.I)
+        if achieved and pmic_rf and panel and (int(panel[1]),int(panel[2])) == (620,750):
+            rows.append(make_record(
+                'foplp_mature_node_industry',['industry','PMIC_RF'],
+                {'panel_width_mm':620,'panel_height_mm':750,'stage':'mass_production',
+                 'application':'PMIC_RF','ai_hpc_mass_production_confirmed':False,
+                 'tsmc_copos_mass_production_confirmed':False,
+                 'glass_core_mass_production_confirmed':False},
+                'mm,stage','current',item,'성숙공정 FOPLP PMIC·RF 양산; AI·CoPoS·유리 기판과 구별',
+                as_of=asof,scope='mature_node_PMIC_RF_only_not_AI_HPC_CoPoS_or_glass_core'))
+        ai = bool(re.search(r'\bAI\b|\bGPU\b|\bHPC\b|artificial intelligence|accelerator|人工智慧|人工智能|인공지능|가속기|高效能運算',clause,re.I))
+        actors = [k for k,p in FOPLP_ACTORS.items() if re.search(p,clause,re.I)]
+        if not ai or len(actors) != 1:
+            continue
+        actor = actors[0]
+        if actor == 'tsmc' and re.search(r'\bCoPoS\b',clause,re.I):
+            continue
+        # Future roadmaps cannot be promoted into current verified customer/production milestones.
+        if re.search(r'\b(?:will|would|expects?|expected|aims?|targets?|plans?|forecast|projected|slated|could|may|by\s+20\d{2})\b|預計|预计|規劃|规划|計畫|计划|目標|目标|將於|将于|예정|계획|목표|전망|예상',clause,re.I):
+            continue
+        completed = bool(re.search(r'\b(?:completed|passed|qualified|approved|achieved|began|started|entered|shipped|currently|ongoing)\b|已|完成|通過|通过|正在|已經|已经|완료|통과|시작|진행\s*중|가동\s*중',clause,re.I))
+        stage = ''
+        if achieved:
+            stage = 'mass_production'
+        elif completed and re.search(r'pilot\s+(?:line|production|run)|trial\s+production|試產|试产|시험\s*생산|파일럿\s*가동',clause,re.I):
+            stage = 'pilot_production'
+        elif completed and re.search(r'(?:customer|client|고객|客戶|客户)[^.;]{0,100}(?:qualification|qualified|validation\s+(?:passed|completed)|certification|인증\s*완료|검증\s*완료|認證通過|认证通过)',clause,re.I):
+            stage = 'customer_qualified'
+        elif completed and re.search(r'(?:customer|client|고객|客戶|客户)[^.;]{0,100}(?:evaluation|validation|qualif|test|평가|검증|시험|認證|认证)',clause,re.I):
+            stage = 'customer_evaluation'
+        if not stage:
+            continue
+        h = host(item.get('direct_link',''))
+        domain = FOPLP_ISSUER_DOMAINS[actor]
+        issuer = h == domain or h.endswith('.'+domain)
+        rec = make_record(
+            'foplp_company_ai_stage',[actor,'AI_HPC'],
+            {'stage':stage,'application':'AI_HPC','manufacturer':actor,
+             'issuer_official':issuer,'foplp_not_copos_or_glass_core':True},
+            'stage','current',item,'AI 칩 FOPLP 고객·시험생산·양산 단계',
+            as_of=asof,scope='named_company_AI_HPC_FOPLP_not_CoPoS_or_glass_core')
+        rec['evidence'] = 'official' if issuer else 'reported'
+        rows.append(rec)
+    return rows
+
+
 def parse_records(item, body):
     records, gaps = [], []
     published = item.get('published_at_kst', '')
@@ -1431,6 +1509,7 @@ def parse_records(item, body):
     records.extend(parse_foundry_recovery_records(item, body))
     records.extend(parse_foundry_hbm_records(item, body))
     records.extend(parse_glass_substrate_records(item, body))
+    records.extend(parse_foplp_records(item, body))
     paragraphs = [re.sub(r'\s+', ' ', p).strip() for p in re.split(r'\n+|(?<=[.!?])\s+(?=[A-Z가-힣])', body) if p.strip()]
     for original in paragraphs:
         p = resolve_relative_years(original, published)
@@ -1605,6 +1684,20 @@ def comparison(old, new):
         if av is not None and bv is not None and int(av) != int(bv):
             reasons.append(f"가격 곡선 확인 세대 수 {int(av)}→{int(bv)}개")
         return reasons
+    if new['axis'] == 'foplp_mature_node_industry':
+        reasons = []
+        if (a.get('panel_width_mm'),a.get('panel_height_mm')) != (b.get('panel_width_mm'),b.get('panel_height_mm')):
+            reasons.append(f"성숙공정 FOPLP 패널 규격 {a.get('panel_width_mm')}×{a.get('panel_height_mm')}→{b.get('panel_width_mm')}×{b.get('panel_height_mm')}mm")
+        if a.get('stage') != b.get('stage'):
+            reasons.append(f"PMIC·RF FOPLP 생산 단계 {a.get('stage')}→{b.get('stage')}")
+        return reasons
+    if new['axis'] == 'foplp_company_ai_stage':
+        older, newer = a.get('stage',''), b.get('stage','')
+        if older == newer:
+            return ['FOPLP AI 단계 회사 공식 확인'] if not a.get('issuer_official') and b.get('issuer_official') else []
+        if FOPLP_STAGE_RANK.get(newer,0) < FOPLP_STAGE_RANK.get(older,0):
+            return []
+        return [f"AI 칩 FOPLP {b.get('manufacturer')} {older or '미확인'}→{newer}"]
     if new['axis'] == 'glass_panel_standard':
         reasons = []
         if (a.get('width_mm'), a.get('height_mm')) != (b.get('width_mm'), b.get('height_mm')):
@@ -2019,6 +2112,13 @@ def update_state(state, records, now, seeds=None):
                     state['latest'][r['key']] = copy.deepcopy(r)
                     state['pending'].pop(r['key'], None)
             state['glass_substrate_track_version'] = GLASS_SUBSTRATE_TRACK_VERSION
+        if int(state.get('foplp_track_version') or 0) < FOPLP_TRACK_VERSION:
+            for r in seeds:
+                if r.get('axis') in ('foplp_mature_node_industry','foplp_company_ai_stage'):
+                    state['last_notified'][r['key']] = copy.deepcopy(r)
+                    state['latest'][r['key']] = copy.deepcopy(r)
+                    state['pending'].pop(r['key'], None)
+            state['foplp_track_version'] = FOPLP_TRACK_VERSION
         if int(state.get('hbm_generation_price_track_version') or 0) < HBM_GENERATION_PRICE_TRACK_VERSION:
             for r in seeds:
                 if r.get('axis') == 'hbm_generation_pricing':
@@ -2041,7 +2141,7 @@ def update_state(state, records, now, seeds=None):
         if r['as_of'][:10] > now.date().isoformat():
             continue
         grouped.setdefault(r['key'], []).append(r)
-    sparse_axes = {'foundry_base_die_allocation', 'foundry_pricing', 'foundry_hbm5_2nm', 'foundry_loss_outlook', 'foundry_external_2nm', 'foundry_taylor_schedule', 'glass_panel_standard', 'glass_tsmc_roadmap', 'glass_panel_yield', 'glass_hvm_stage', 'glass_process_cycle_time', 'glass_capex', 'glass_jv_stage', 'hbm_generation_pricing', 'hbm_market_pricing'}
+    sparse_axes = {'foundry_base_die_allocation', 'foundry_pricing', 'foundry_hbm5_2nm', 'foundry_loss_outlook', 'foundry_external_2nm', 'foundry_taylor_schedule', 'glass_panel_standard', 'glass_tsmc_roadmap', 'glass_panel_yield', 'glass_hvm_stage', 'glass_process_cycle_time', 'glass_capex', 'glass_jv_stage', 'foplp_mature_node_industry', 'foplp_company_ai_stage', 'hbm_generation_pricing', 'hbm_market_pricing'}
     for key, rows in grouped.items():
         rows.sort(key=lambda x: (x['as_of'], RANK.get(x['evidence'], 0)))
         prior = state['latest'].get(key) or state['last_notified'].get(key)
@@ -2122,7 +2222,9 @@ def render(change, rate=None):
              'postprocess_order': 'HBM 후공정 장비 수주 변화',
              'postprocess_stage': 'HBM 후공정 고객 검증·양산 단계 변화',
              'hbm_generation_pricing': 'HBM 세대별 2027 가격 리셋',
-             'glass_panel_standard': '유리기판 510×515mm 규격 수렴·TSMC 채택 상태',
+             'foplp_mature_node_industry': 'FOPLP 성숙공정 양산 기준선',
+              'foplp_company_ai_stage': 'FOPLP AI 칩 고객검증·양산 단계',
+              'glass_panel_standard': '유리기판 510×515mm 규격 수렴·TSMC 채택 상태',
              'glass_tsmc_roadmap': 'TSMC CoPoS·Glass Core 양산 로드맵',
              'glass_panel_yield': '유리기판 패널·양산 수율',
              'glass_hvm_stage': '유리기판 고객검증→발주→HVM 전환 단계',
@@ -2161,6 +2263,12 @@ def render(change, rate=None):
             if not points:
                 parts.append("정확한 세대별 숫자 공개 확인 전")
             return " / ".join(parts)
+        if record['axis'] == 'foplp_mature_node_industry':
+            return f"PMIC·RF 양산 패널 최대 {v.get('panel_width_mm')}×{v.get('panel_height_mm')}mm · AI·CoPoS 양산 아님"
+        if record['axis'] == 'foplp_company_ai_stage':
+            names = {'customer_evaluation':'고객 평가','customer_qualified':'고객 검증 완료',
+                     'pilot_production':'시험생산','mass_production':'양산'}
+            return f"{v.get('manufacturer')} AI 칩 FOPLP {names.get(v.get('stage'),v.get('stage'))} · {'회사 공식' if v.get('issuer_official') else '업계 보도'}"
         if record['axis'] == 'glass_panel_standard':
             suppliers = ', '.join(v.get('suppliers') or [])
             return f"{v.get('width_mm')}×{v.get('height_mm')}mm / 소재사 {v.get('supplier_count')}곳 ({suppliers}) / TSMC {v.get('tsmc_status')}"
@@ -2411,6 +2519,11 @@ def render(change, rate=None):
         lines.append('• 기관별 가격곡선을 서로 합치지 않습니다. 동일 기관·동일 세대·동일 적층 조건만 전후 비교합니다.')
         lines.append('• 8단·12단 등 적층 높이가 다르면 별도 가격으로 저장하며 Blended ASP와 세대별 $/Gb를 합치지 않습니다.')
         lines.append('• 사용자 캡처는 방향 기준선일 뿐, 판독이 모호한 숫자는 저장하지 않습니다. 공개 원문에서 확인되는 숫자만 가격 상태값으로 승격합니다.')
+    if r['axis'] == 'foplp_mature_node_industry':
+        lines.append('• PMIC·RF 기존 성숙공정 양산은 TSMC CoPoS나 AI 대형 칩·유리 코어 기판 양산이 아닙니다.')
+    if r['axis'] == 'foplp_company_ai_stage':
+        lines.append('• 같은 제조사·AI 응용처에서 고객 검증→시험생산→양산을 단계별 비교합니다. 업계 보도를 회사 공식 확인으로 승격하지 않습니다.')
+        lines.append('• 휨·RDL 정렬·고온 동작 검사·수율·신뢰성 검증이 실제 비용과 양산 시점을 결정합니다.')
     if r['axis'] == 'glass_panel_standard':
         lines.append('• 510×515mm 규격 수렴과 TSMC 공식 채택은 별개입니다. DIGITIMES의 공급망 추정은 reported_candidate로만 저장합니다.')
     if r['axis'] == 'glass_tsmc_roadmap':
@@ -2542,6 +2655,10 @@ def main():
             and any(k in text for k in ('hbm3e','hbm4','hbm4e'))
             and any(k in text for k in ('$/gb','per gb','price','pricing','asp','가격'))
         )
+        structured_foplp = (
+            any(k in text for k in ('foplp','fan-out panel-level','扇出型面板級封裝','패널형 팬아웃'))
+            and any(k in text for k in ('tsmc','copos','pmic','rf','ai','hpc','pilot','양산','量產','量产','고객'))
+        )
         structured_glass = (
             any(k in text for k in ('glass substrate','glass core','glass panel','glass interposer','tgv','유리기판','유리 기판','유리 인터포저','글라스 코어'))
             and any(k in text for k in ('510x515','510×515','515x510','515×510','copos','yield','수율','sample','샘플','customer evaluation','customer validation','고객 평가','고객 검증','purchase order','po ','pilot','양산','samsung','삼성전자','12시간','분 단위','cycle time','공정시간','3470억','김천','설비투자','investment'))
@@ -2557,7 +2674,7 @@ def main():
                 )
             )
         )
-        if structured_revenue or structured_postprocess or structured_market_pricing or structured_generation_pricing or structured_foundry or structured_foundry_recovery or structured_glass:
+        if structured_revenue or structured_postprocess or structured_market_pricing or structured_generation_pricing or structured_foundry or structured_foundry_recovery or structured_glass or structured_foplp:
             rejected_generic.append(e.get('id') or fingerprint(e.get('title', '')))
             return '', '', ''
         if not concrete_state_evidence(e):
@@ -2584,7 +2701,8 @@ def main():
         'samsung electro-mechanics', '삼성전기', 'edaily', '이데일리',
         'dealsite', '딜사이트', 'chemtronics', '켐트로닉스', 'kind.krx.co.kr',
         'thelec', 'the elec', 'thelec.kr', '국민일보', 'kmib', 'kmib.co.kr',
-        'lg innotek', 'lginnotek', 'samsung electro-mechanics', 'samsungsem', 'skc'
+        'lg innotek', 'lginnotek', 'samsung electro-mechanics', 'samsungsem', 'skc',
+        'ctee.com.tw', '工商時報', 'tsmc.com', 'aseglobal.com', 'innolux.com', 'pti.com.tw', 'chipmos.com'
     )
     legacy.relevant = lambda text: original_relevant(text) or is_axis_text(text)
     observed, coverage = [], []
@@ -2675,7 +2793,7 @@ def main():
     if chosen:
         rate, basis = legacy.fx_quote()
         foundry_axes = {'foundry_loss_outlook','foundry_external_2nm','foundry_taylor_schedule','foundry_base_die_allocation','foundry_node_expansion','foundry_pricing','foundry_hbm5_2nm'}
-        glass_axes = {'glass_panel_standard','glass_tsmc_roadmap','glass_panel_yield','glass_hvm_stage','glass_process_cycle_time','glass_capex','glass_jv_stage'}
+        glass_axes = {'glass_panel_standard','glass_tsmc_roadmap','glass_panel_yield','glass_hvm_stage','glass_process_cycle_time','glass_capex','glass_jv_stage','foplp_mature_node_industry','foplp_company_ai_stage'}
         generation_price_axes = {'hbm_generation_pricing'}
         regular = [k for k in chosen if state['pending'][k]['record']['axis'] not in foundry_axes | glass_axes | generation_price_axes]
         foundry = [k for k in chosen if state['pending'][k]['record']['axis'] in foundry_axes]
@@ -2691,7 +2809,7 @@ def main():
             blocks.extend(render(state['pending'][key], rate) for key in foundry)
             sections.append('\n\n'.join(blocks))
         if glass:
-            blocks = ['<b>유리기판·유리 인터포저 고객검증·HVM 전환 감시</b>']
+            blocks = ['<b>CoPoS·FOPLP·유리기판 고객검증·양산 전환 감시</b>']
             blocks.extend(render(state['pending'][key], rate) for key in glass)
             sections.append('\n\n'.join(blocks))
         if generation_price:
