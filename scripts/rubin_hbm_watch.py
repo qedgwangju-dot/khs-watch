@@ -2361,6 +2361,224 @@ def nvhbm_architecture_event(state: dict, reasons: list[str]) -> dict:
     }
 
 
+
+def extract_nvhbm_foundry_official_milestone(event: dict) -> dict | None:
+    """Only manufacturer-owned, actually fetched HBM4E/NVHBM base-die evidence.
+
+    Vendor names, technology names, and completed milestones must coexist in
+    a single relevant statement, not across an RSS title or HTML navigation.
+    """
+    url = event.get("direct_link") or ""
+    host = (urlparse(url).hostname or "").lower()
+    if host in ("news.samsung.com", "semiconductor.samsung.com", "samsung.com", "www.samsung.com"):
+        vendor = "samsung"
+    elif host in ("news.skhynix.com", "news.skhynix.co.kr", "skhynix.com", "www.skhynix.com"):
+        vendor = "skhynix"
+    elif host in ("micron.com", "www.micron.com"):
+        vendor = "micron"
+    else:
+        return None
+    if event.get("article_fetch_succeeded") is not True:
+        return None
+    article = "\n".join(
+        str(event.get(k) or "") for k in
+        ("official_article_title", "official_article_description", "official_article_text")
+    )
+    if not article.strip():
+        return None
+    sentences = re.split(r"(?<=[.!?。])\s+|\n+", article)
+    rank = NVHBM_FOUNDRY_PROGRESSION
+    best = ""
+    foundry = ""
+    for sentence in sentences:
+        low = sentence.lower()
+        if not re.search(r"nvhbm|custom[\s-]*hbm|hbm4e|커스텀\s*hbm|맞춤형\s*hbm",low,re.I):
+            continue
+        if not re.search(r"base[\s-]*die|베이스\s*다이",low,re.I):
+            continue
+        if not re.search(r"foundry|tsmc|samsung foundry|파운드리|위탁생산",low,re.I):
+            continue
+        if re.search(
+            r"\b(?:may|might|could|will|plans?|planning|proposes?|expects?|expected|"
+            r"potential|reportedly|rumored|rumoured|evaluating|considering|would)\b|"
+            r"예상|전망|계획|예정|검토|추진|고려|관측|보도에\s*따르면|논의|가능성|"
+            r"양산\s*목표|고객\s*평가\s*예정|아직",
+            low,re.I
+        ):
+            continue
+        if re.search(r"\b(?:not|never|no|without|hasn't|has not|didn't|did not)\b|미확정|미출하|부인|없다|아니다",low,re.I):
+            continue
+        stage = ""
+        if re.search(r"(?:mass|volume)\s+production\s+(?:began|started|commenced)|"
+                     r"(?:began|started|commenced)\s+(?:mass|volume)\s+production|"
+                     r"양산\s*(?:개시|시작|돌입|출하)",low,re.I):
+            stage = "official_mass_production"
+        elif re.search(r"(?:customer|clients?|고객(?:사)?)[^.]{0,90}?"
+                       r"(?:qualification|validation|인증|신뢰성\s*검증)[^.]{0,70}?"
+                       r"(?:passed|completed|통과|완료)|"
+                       r"(?:passed|completed)[^.]{0,60}?(?:customer\s+qualification|고객\s*인증)",
+                       low,re.I):
+            stage = "official_customer_qualification"
+        elif (re.search(r"customer|clients?|고객(?:사)?",low,re.I)
+              and re.search(r"(?:samples?|샘플)[^.]{0,65}?(?:shipped|delivered|sent|출하|발송|전달|공급)|"
+                            r"(?:shipped|delivered|sent|출하|발송|전달|공급)[^.]{0,65}?(?:samples?|샘플)",low,re.I)):
+            stage = "official_customer_sample"
+        elif re.search(
+            r"(?:selected|appointed|contracted|signed|awarded|chosen|secured)\s+"
+            r"[^.]{0,85}?(?:foundry|tsmc|samsung)|"
+            r"(?:tsmc|samsung foundry)[^.]{0,80}?(?:selected|appointed|chosen|awarded)|"
+            r"(?:tsmc|삼성\s*파운드리)[^.]{0,70}?(?:계약\s*체결|최종\s*선정|발주\s*확정)|"
+            r"(?:계약\s*체결|최종\s*선정|발주\s*확정)[^.]{0,70}?(?:tsmc|삼성\s*파운드리)",
+            low,re.I
+        ):
+            stage = "official_foundry_selection"
+        if stage and (not best or rank[stage] > rank[best]):
+            best = stage
+            foundry = "TSMC" if "tsmc" in low else ("Samsung Foundry" if "samsung" in low or "삼성" in low else "")
+    if not best:
+        return None
+    return {
+        "vendor": vendor, "stage": best, "foundry": foundry,
+        "evidence": "company_official_original_fetched",
+        "source_url": url, "observed_at": event.get("published_at_kst") or "",
+    }
+
+
+def merge_nvhbm_foundry_milestone(current: dict, obs: dict) -> dict:
+    out = json.loads(json.dumps(current or {}))
+    vendor = obs.get("vendor")
+    stage = obs.get("stage")
+    if vendor not in ("micron", "samsung", "skhynix") or stage not in NVHBM_FOUNDRY_PROGRESSION:
+        return out
+    if obs.get("evidence") != "company_official_original_fetched":
+        return out
+    host = (urlparse(obs.get("source_url") or "").hostname or "").lower()
+    issuer_hosts = {
+        "samsung": ("news.samsung.com", "semiconductor.samsung.com","www.samsung.com","samsung.com"),
+        "skhynix": ("news.skhynix.com", "news.skhynix.co.kr","www.skhynix.com","skhynix.com"),
+        "micron": ("micron.com","www.micron.com"),
+    }
+    if host not in issuer_hosts[vendor]:
+        return out
+    stages = dict(out.get("vendor_stage") or {})
+    current_stage = stages.get(vendor) or "reported_strategy"
+    if NVHBM_FOUNDRY_PROGRESSION[stage] <= NVHBM_FOUNDRY_PROGRESSION.get(current_stage,-1):
+        return out
+    stages[vendor] = stage
+    out["vendor_stage"] = stages
+    confirmed = dict(out.get("confirmed_official_milestones") or {})
+    confirmed[vendor] = {
+        "stage": stage,
+        "foundry": obs.get("foundry") or "실명 미확인",
+        "source_url": obs["source_url"],
+        "observed_at": obs.get("observed_at") or "",
+    }
+    out["confirmed_official_milestones"] = confirmed
+    if stage == "official_mass_production":
+        out["memory_vendor_nvhbm_mass_production_confirmed"] = sorted(
+            set(out.get("memory_vendor_nvhbm_mass_production_confirmed") or []) | {vendor}
+        )
+    out["last_official_change_at"] = obs.get("observed_at") or ""
+    return out
+
+
+def nvhbm_foundry_stage_changes(old: dict, new: dict) -> list[tuple[str,str]]:
+    changes = []
+    for vendor, ko in (("samsung","삼성전자"),("skhynix","SK하이닉스"),("micron","Micron")):
+        before = (old.get("vendor_stage") or {}).get(vendor) or "reported_strategy"
+        after = (new.get("vendor_stage") or {}).get(vendor) or "reported_strategy"
+        if NVHBM_FOUNDRY_PROGRESSION.get(after,-1) > NVHBM_FOUNDRY_PROGRESSION.get(before,-1):
+            changes.append((vendor, f"{ko}: {NVHBM_FOUNDRY_STAGE_KO[before]} → {NVHBM_FOUNDRY_STAGE_KO[after]}"))
+    return changes
+
+
+def nvhbm_foundry_strategy_event(state: dict, reasons: list[str], *, initial: bool=False, vendor: str="") -> dict:
+    links = state.get("confirmed_official_milestones") or {}
+    source = links.get(vendor,{}).get("source_url") if vendor else None
+    src_date = (links.get(vendor,{}).get("observed_at") if vendor else None) or "2026-10-09T09:00:00+09:00"
+    return {
+        "category":"nvhbm_foundry_strategy",
+        "fact_key": ("nvhbm_foundry_editorial_20261009" if initial else
+                     f"nvhbm_foundry_official_{vendor}_{src_date}"),
+        "headline_ko": "NVHBM 베이스 다이 파운드리 전략 비교",
+        "published_at_kst": src_date,
+        "origin_source": ("TrendForce News(원보도 재정리)" if initial else "메모리 업체 공식"),
+        "source": ("TrendForce News(원보도 재정리)" if initial else "메모리 업체 공식"),
+        "direct_link": source or NVHBM_FOUNDRY_NEWS_SOURCE,
+        "fact_bullets": reasons, "vendor":vendor,
+        "foundry_strategy_state":json.loads(json.dumps(state)),
+        "verification": ("NVIDIA·TSMC·삼성전자·SK하이닉스 공식자료와 개별 전문매체 보도 단계 분리"
+                         if initial else "실제 제조업체 원문 직접 확인"),
+        "verdict":"공식 사양·양산 현황과 베이스 다이 외주 전망을 분리합니다.",
+    }
+
+
+def render_nvhbm_foundry_notice(e:dict,now:datetime)->str:
+    st=e["foundry_strategy_state"]
+    initial=e.get("fact_key")=="nvhbm_foundry_editorial_20261009"
+    stages=st.get("vendor_stage") or {}
+    out=[
+        "🚨 NVHBM 베이스 다이 · 삼성전자·SK하이닉스·Micron",
+        f"조회: {now.strftime('%Y-%m-%d %H:%M KST')}",
+        ("상태: 10월 9일 공급망 전략 보도 신규 감시 / NVIDIA·TSMC 기술 수치는 별도 공식 확인"
+         if initial else "상태: 제조업체 공식 베이스 다이 공급·검증 단계 변경"),
+        "",
+        "■ NVIDIA 공식 구조와 성능",
+        "• 메모리 컨트롤러: XPU에서 HBM 베이스 다이로 이동.",
+        "• 표준 HBM4E 대비: 메모리 대역폭 최대 +30% / HBM 전력 소비 최대 -15%.",
+        "• PHY·지원 면적 최대 -67%: 전체 반도체 패키지 면적 -67%가 아닙니다.",
+        "• 연산 다이 면적 최대 +25% 및 메인 다이 실리콘 증가 최대 +30%는 다른 표현·기준이므로 합산 금지.",
+        "",
+        "■ 삼성전자",
+        "• HBM4: 1c D램 + 자체 파운드리 4나노 베이스 다이 양산·고객 출하(공식).",
+        "• NVHBM 등 맞춤형 HBM: 삼성 파운드리와 TSMC 이원화 추진(9월 ZDNet 업계 보도).",
+        "• TSMC 제작 베이스 다이 설계·최적화를 메모리사업부가 주도한다는 것은 보도 단계.",
+        "• TSMC 고객별 공급계약·NVHBM 양산: 미확정.",
+        f"• 공식 베이스 다이 전략 진행: {NVHBM_FOUNDRY_STAGE_KO.get(stages.get('samsung'),'미확인')}",
+        "",
+        "■ SK하이닉스",
+        "• HBM4: TSMC 베이스 다이 적용 협력은 공식 확인, 12나노 공정은 TSMC 공식 범용 기술자료·업계 보도로 교차 확인.",
+        "• HBM4E·맞춤형 HBM: TSMC 3나노 우선 검토 보도. 특정 차세대 고객 주문·NVHBM 양산은 미확정.",
+        "• TSMC의 N3P 맞춤형 HBM4E 베이스 다이 기술 발표는 공식. 특정 메모리 업체의 계약·양산을 의미하지 않음.",
+        f"• 공식 차세대 베이스 다이 전략 진행: {NVHBM_FOUNDRY_STAGE_KO.get(stages.get('skhynix'),'미확인')}",
+        "",
+        "■ Micron",
+        "• HBM4: 1β 코어 다이와 자체 베이스 다이 적용(The Elec 인용 보도).",
+        "• HBM4E·NVHBM: 1γ 코어 다이와 외부 파운드리 베이스 다이 전략(The Elec의 Micron 임원 발언 인용).",
+        "• TSMC 및 3나노 공급 가능성은 전망. 외주 수주처·물량·양산 계약 미확정.",
+        "• 모든 HBM 제품의 베이스 다이를 100% 외주 전환했다는 뜻은 아닙니다.",
+        f"• 공식 차세대 베이스 다이 전략 진행: {NVHBM_FOUNDRY_STAGE_KO.get(stages.get('micron'),'미확인')}",
+        "",
+        "■ 확정 고객·수익 연결",
+        "• Amazon Annapurna Labs의 NVIDIA NVHBM 기술 협력: 공식. Trainium4 NVLink Fusion 지원: 공식.",
+        "• Trainium4 NVHBM 양산 탑재·삼성/SK/Micron 공급물량: 미확인.",
+        "• 메모리사 맞춤형 HBM 판매가격·계약물량 및 TSMC의 고객별 웨이퍼 매출: 미공개. 임의 원화 매출 산출 금지.",
+        "",
+        "■ 공정 병목·역풍",
+        "• 파운드리 공정이전·메모리/로직 다이 열팽창·정렬·휨·접합 수율·고온 동작 검사·신뢰성 인증이 관건.",
+        "• 예시(실제 수율 아님): 10개 독립 공정 각각 수율 99%라면 누적 0.99^10≈90.4%.",
+        "• 가장 현실적인 실패경로: 설계·시제품 → 파운드리 수율/검증 지연 → 고객 인증 지연 → 맞춤형 매출 연결 지연.",
+        "• 향후 6~12개월 고객 실명 발표·정식 수주·고객 검증·양산시점과 웨이퍼 투입량 확인.",
+        "• 10월 9일 TrendForce News는 여러 원보도를 재정리했으므로 독립 파운드리 계약 확인 자료로 승격 금지.",
+    ]
+    if e.get("fact_bullets") and not initial:
+        out.insert(4,"• 신규 공식 변화: "+" / ".join(e["fact_bullets"]))
+    out.extend([
+        "",
+        "■ 원문 (눌러 열기)",
+        "NVIDIA 공식 "+NVHBM_FOUNDRY_NVIDIA_SOURCE,
+        "TSMC 공식 "+NVHBM_FOUNDRY_TSMC_SOURCE,
+        "삼성전자 공식 "+NVHBM_FOUNDRY_SAMSUNG_OFFICIAL,
+        "SK하이닉스 공식 "+NVHBM_FOUNDRY_SK_OFFICIAL,
+        "Micron 임원 인용 보도 "+NVHBM_FOUNDRY_MICRON_REPORT,
+        "삼성전자 이원화 보도 "+NVHBM_FOUNDRY_SAMSUNG_REPORT,
+        "SK하이닉스 3나노 보도 "+NVHBM_FOUNDRY_SK_REPORT,
+        "TrendForce 재정리 "+NVHBM_FOUNDRY_NEWS_SOURCE,
+        "Amazon 협력 공식 "+NVHBM_FOUNDRY_AWS_OFFICIAL,
+    ])
+    return "\n".join(out)+"\n"
+
+
 def extract_samsung_hbm4e_thermal_package(event: dict) -> dict | None:
     text = compact_fact_text(event)
     low = text.lower()
