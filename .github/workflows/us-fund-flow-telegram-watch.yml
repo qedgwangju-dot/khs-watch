@@ -23,7 +23,8 @@ permissions:
 
 concurrency:
   group: us-fund-flow-telegram-watch
-  cancel-in-progress: true
+  # Never cancel after Telegram has accepted a message but before state is committed.
+  cancel-in-progress: false
 
 jobs:
   watch:
@@ -136,7 +137,15 @@ jobs:
                       j=json.loads(r.read().decode())
                   if not j.get("ok"):
                       raise RuntimeError(f"Telegram rejected: {j}")
-                  ids.append((j.get("result") or {}).get("message_id"))
+                  result = j.get("result") or {}
+                  message_id = result.get("message_id")
+                  if not isinstance(message_id, int) or message_id <= 0:
+                      raise RuntimeError("Telegram API did not return a valid message_id; state must not advance")
+                  if chat_id.lstrip("-").isdigit() and int(chat_id) != (result.get("chat") or {}).get("id"):
+                      raise RuntimeError("Telegram acknowledged the wrong destination chat; state must not advance")
+                  ids.append(message_id)
+          if any(path.exists() for path in files) and not ids:
+              raise RuntimeError("Alert file exists, but no Telegram message was acknowledged")
           print(f"telegram_delivery_confirmed=true bot=@{actual} messages={len(ids)} ids={ids}")
           PY
 
