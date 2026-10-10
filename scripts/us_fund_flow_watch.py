@@ -106,10 +106,17 @@ def browser_html(url):
 
 
 def load_state():
-    try:
-        return json.loads(STATE.read_text(encoding="utf-8"))
-    except Exception:
+    # A damaged or unreadable state must never be mistaken for a first run:
+    # resetting all fingerprints would replay previously delivered alerts.
+    if not STATE.exists():
         return {"seen": {}, "values": {}}
+    try:
+        value = json.loads(STATE.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        raise RuntimeError("US fund-flow state unreadable; fail closed to avoid duplicate Telegram delivery") from exc
+    if not isinstance(value, dict) or not isinstance(value.get("seen"), dict) or not isinstance(value.get("values"), dict):
+        raise RuntimeError("US fund-flow state schema invalid; fail closed to avoid duplicate Telegram delivery")
+    return value
 
 
 def parse_num(x):
@@ -174,7 +181,12 @@ def fetch_fx():
                 vals.append((d, v))
         vals.sort()
         if vals:
-            return {"date": vals[-1][0], "usdkrw": vals[-1][1]}
+            date_text, rate = vals[-1]
+            observed = datetime.strptime(date_text, "%Y%m%d").date()
+            # Never treat a wildly invalid rate or a stale cached observation as current.
+            if not (500.0 <= rate <= 3000.0) or not (0 <= (today-observed).days <= 10):
+                return None
+            return {"date": date_text, "usdkrw": rate}
     except Exception:
         return None
     return None
@@ -189,16 +201,25 @@ def krw_trillion(bn_usd, fx):
 def fmt_krw_trillion(v, signed=False):
     if v is None:
         return "원화 환산 확인 불가"
-    if signed:
-        return f"약 {v:+,.2f}조원"
-    return f"약 {v:,.2f}조원"
+    # An '0.01 trillion won' display can erase up to 50억 of useful precision.
+    total_eok = round(abs(v) * 10000.0)
+    jo, eok = divmod(total_eok, 10000)
+    if jo and eok:
+        amount = f"{jo:,}조{eok:,}억원"
+    elif jo:
+        amount = f"{jo:,}조원"
+    else:
+        amount = f"{eok:,}억원"
+    sign = "-" if v < 0 else "+" if signed and v > 0 else ""
+    return f"약 {sign}{amount}"
 
 
 def fmt_usd_bn_kr(x, fx):
     if x is None:
         return "확인 불가"
-    sign = "+" if x > 0 else ""
-    base = f"{sign}{x:,.2f}B달러"
+    sign = "-" if x < 0 else "+" if x > 0 else ""
+    usd_eok = f"{abs(x)*10:,.2f}".rstrip("0").rstrip(".")
+    base = f"{sign}{usd_eok}억달러"
     kr = krw_trillion(x, fx) if fx else None
     return f"{base}({fmt_krw_trillion(kr, signed=True)})"
 
@@ -1147,6 +1168,29 @@ def recent_official_week(x, on_date, max_age_days=14):
     return bool(observed and 0 <= (on_date-observed).days <= max_age_days)
 
 
+def source_is_stale(x, previous, on_date):
+    """Old pages must never roll back a delivered observation or replace newer state."""
+    current_week = eligible_reference_week(x)
+    old_week = eligible_reference_week(previous)
+    if current_week is not None and old_week is not None and current_week < old_week:
+        return True
+    if x.get("source") == "ICI" and x.get("kind") in ("combined", "mmf"):
+        return not recent_official_week(x, on_date, max_age_days=21)
+    return False
+
+
+assert source_is_stale(
+    {"source":"ICI","kind":"mmf","period":"September 30, 2026"},
+    {"source":"ICI","kind":"mmf","period":"October 07, 2026"},
+    datetime(2026,10,10).date()
+)
+assert not source_is_stale(
+    {"source":"ICI","kind":"mmf","period":"October 07, 2026"},
+    {"source":"ICI","kind":"mmf","period":"October 07, 2026"},
+    datetime(2026,10,10).date()
+)
+
+
 # Regression guards: media report date is not equivalent to fund observation date.
 assert eligible_reference_week({"source":"BofA/EPFR via Reuters","kind":"bofa","period":"Fri, 09 Oct 2026"}) is None
 assert eligible_reference_week({"source":"ICI","kind":"mmf","period":"October 07, 2026"}) == datetime(2026,10,7).date()
@@ -1155,17 +1199,20 @@ assert same_reference_week({"period":"October 07, 2026"}, {"period":"October 07,
 
 
 def flow_direction(us, mmf):
+    """ICI equity net flows and ICI MMF asset-balance changes are NOT matching flows."""
     if us is None or mmf is None:
-        return "주식과 MMF를 같은 출처에서 동시에 확인하지 못해 자금 회전 방향 판정 보류"
-    if us > 0 and mmf < 0:
-        return "미국 주식 유입 + MMF 유출 → 같은 출처 안에서는 현금성 주차자금에서 위험자산으로 기울 가능성이 강화"
-    if us < 0 and mmf > 0:
-        return "미국 주식 유출 + MMF 유입 → 같은 출처 안에서는 위험자산 축소·현금성 주차 강화"
-    if us > 0 and mmf > 0:
-        return "미국 주식 + MMF 동반 유입 → 유동성 총량 확대 가능성, 단순한 MMF→주식 이동으로는 해석하지 않음"
-    if us < 0 and mmf < 0:
-        return "미국 주식 + MMF 동반 유출 → 채권·해외자산·결제 등 다른 목적지 확인 필요"
-    return "방향 혼재"
+        return "주식형 순유입·순유출과 MMF 총자산 증감을 동시에 검증하지 못해 방향 판정 보류"
+    equity = "순유입" if us > 0 else "순유출" if us < 0 else "보합"
+    assets = "증가" if mmf > 0 else "감소" if mmf < 0 else "보합"
+    return (
+        f"ICI 동일 기준주간: 미국 국내주식형 {equity} / MMF 총자산 {assets}. "
+        "주식형 순유입·순유출과 MMF 총자산 증감은 다른 지표이므로 "
+        "동일 자금의 직접 이동 확인 불가"
+    )
+
+
+assert "직접 이동 확인 불가" in flow_direction(10.0, -5.0)
+assert "직접 이동 확인 불가" in flow_direction(-10.0, 5.0)
 
 
 def source_block(x, fx):
@@ -1250,6 +1297,19 @@ for name, fn in [
             errors.append(f"{name}: 최신 데이터 항목 미발견")
     except Exception as e:
         errors.append(f"{name}: {type(e).__name__}: {e}")
+
+# Exclude genuinely stale source pages before comparing fingerprints AND before
+# writing any state. Otherwise an unrelated new update could roll back ICI data.
+fresh_results = []
+reference_today = datetime.now(ZoneInfo("America/New_York")).date()
+for x in results:
+    key = f"{x['source']}|{x['kind']}"
+    previous = (state.get("values") or {}).get(key)
+    if source_is_stale(x, previous, reference_today):
+        errors.append(f"{key}: 과거 기준기간 또는 오래된 원자료 감지 — 상태와 알림에서 제외")
+        continue
+    fresh_results.append(x)
+results = fresh_results
 
 updates = []
 for x in results:
@@ -1567,6 +1627,10 @@ force = (os.getenv("FORCE_SEND") or "").lower() in ("1", "true", "yes")
 should_alert = bool(updates or force or drawdown_transition or hartnett_init
                     or bond_level_transition or bond_momentum_transition
                     or target_rate_change or election_transition)
+# Never send a dollar-denominated report lacking a fresh, verified KRW conversion.
+# Do not advance fingerprints on this failure; a later healthy run may deliver it.
+if should_alert and fx is None:
+    raise RuntimeError("ECOS USD/KRW unavailable or stale; alert withheld and fingerprints preserved")
 if should_alert:
     body = [
         f"🇺🇸 <b>[미국 증시 자금흐름 추적 | {'수치 정정·Hartnett 감시 추가' if source_corrections and hartnett_init else '수치 정정' if source_corrections else 'Hartnett 감시 추가' if hartnett_init and not updates else '신규 변화'}]</b>",
