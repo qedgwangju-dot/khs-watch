@@ -4,12 +4,16 @@ on:
   push:
     paths:
       - "scripts/qra_recurring_alert.py"
+      - "scripts/treasury_fiscal_plan_watch.py"
+      - "scripts/treasury_fiscal_plan_state_commit.py"
+      - "tests/test_treasury_fiscal_plan_watch.py"
       - "tests/test_qra_recurring_alert.py"
       - ".github/workflows/qra-recurring-telegram-alert.yml"
   schedule:
     # QRA 8:30 a.m. ET is 12:30 UTC during DST and 13:30 UTC during standard time.
     # Run at both 12:40 and 13:40 UTC on weekdays. Duplicate state blocks repeats.
-    - cron: "40 12,13 * * 1-5"
+    - cron: "40 12,13,15,18,21 * * 1-5"
+    - cron: "40 15,21 * * 0,6"
   workflow_dispatch:
     inputs:
       dry_run:
@@ -49,6 +53,27 @@ jobs:
           python -m py_compile scripts/qra_recurring_alert.py
           if [ -f tests/test_qra_recurring_alert.py ]; then
             python -m unittest tests/test_qra_recurring_alert.py -v
+          fi
+
+      - name: Validate fiscal policy watcher
+        id: fiscal_tests
+        continue-on-error: true
+        run: |
+          python -m py_compile scripts/treasury_fiscal_plan_watch.py
+          python -m py_compile scripts/treasury_fiscal_plan_state_commit.py
+          python -m unittest discover -s tests -p test_treasury_fiscal_plan_watch.py -v
+
+      - name: Scan official fiscal plan and US national debt milestone
+        id: fiscal_scan
+        if: always() && steps.fiscal_tests.outcome == 'success'
+        continue-on-error: true
+        run: python scripts/treasury_fiscal_plan_watch.py
+
+      - name: Publish Treasury fiscal policy scan status
+        if: always()
+        run: |
+          if [ -f out/treasury_fiscal_plan_status.md ]; then
+            cat out/treasury_fiscal_plan_status.md >> "$GITHUB_STEP_SUMMARY"
           fi
 
       - name: Check official Treasury QRA page and build interpretation
@@ -179,5 +204,9 @@ jobs:
             out/qra_recurring_alert.md
             out/qra_recurring_alert.json
             out/qra_recurring_telegram_confirmed.json
+            out/treasury_fiscal_plan_status.md
+            out/treasury_fiscal_plan_alert.txt
+            out/treasury_fiscal_plan_detail.json
+            out/treasury_fiscal_plan_telegram_confirmed.json
           if-no-files-found: ignore
           retention-days: 14
