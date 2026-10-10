@@ -154,6 +154,7 @@ def calendar_period(rows: list[dict], start: dt.date, end: dt.date, minimum: int
         "valid": valid, "start": start.isoformat(), "end": end.isoformat(),
         "trading_days": len(selected),
         "partial_days": sum(row["status"] == "partial" for row in selected),
+        "partial_dates": [row["date"].isoformat() for row in selected if row["status"] == "partial"],
         "value_usd_m": round(sum(row["total"] for row in selected), 1) if valid else None,
     }
 
@@ -172,6 +173,7 @@ def calendar_windows(rows: list[dict], latest: dt.date) -> dict:
             "prev_start": prev_start.isoformat(), "prev_end": prev_end.isoformat(),
             "prev_trading_days": previous["trading_days"],
             "prev_partial_days": previous["partial_days"],
+            "prev_partial_dates": previous["partial_dates"],
             "prev_value_usd_m": previous["value_usd_m"] if valid else None,
             "change_usd_m": round(current["value_usd_m"] - previous["value_usd_m"], 1) if valid else None,
             "direction": flow_direction(previous["value_usd_m"], current["value_usd_m"]) if valid else "확인 불가",
@@ -658,12 +660,19 @@ def main() -> None:
             last_cov = str(last_partial.get("coverage") or "")
             final_cov = f"{final_reported}/{final_total}" if final_total else ""
             if same_day_value_changed:
+                first_amount = float(first_partial.get("total_usd_m", 0.0) or 0.0)
+                last_amount = float(last_partial.get("total_usd_m", 0.0) or 0.0)
+                distinct_mid = abs(first_amount - last_amount) >= 0.1 or first_cov != last_cov
+                middle = (
+                    f"직전 잠정 {signed_millions(last_amount)}"
+                    f"{f' ({last_cov})' if last_cov else ''} → "
+                    if distinct_mid else ""
+                )
                 triggers.append(
                     "BTC 현물 ETF 최종 확정: "
-                    f"최초 잠정 {signed_millions(float(first_partial.get('total_usd_m', 0.0) or 0.0))}"
+                    f"최초 잠정 {signed_millions(first_amount)}"
                     f"{f' ({first_cov})' if first_cov else ''} → "
-                    f"직전 잠정 {signed_millions(float(last_partial.get('total_usd_m', 0.0) or 0.0))}"
-                    f"{f' ({last_cov})' if last_cov else ''} → "
+                    f"{middle}"
                     f"최종 {signed_millions(etf.get('total_usd_m', 0.0))}"
                     f"{f' ({final_cov})' if final_cov else ''}"
                 )
