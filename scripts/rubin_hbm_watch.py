@@ -3473,14 +3473,22 @@ def extract_price_notes(text: str, rate: float | None) -> list[str]:
 
 
 def build_alert(now: datetime, events: list[dict], fx: dict) -> str:
-    # Give each hybrid-bonding alert an independent Telegram message, even
-    # when another HBM event is found in the same hourly collector run.
-    # Do not put speculative Rubin demand/GPU scenario text above this risk.
-    hybrid = [e for e in events if e.get("category") == "hbm_hybrid_bonding"]
-    if hybrid:
-        normal = [e for e in events if e.get("category") != "hbm_hybrid_bonding"]
+    # Topic-specific technology and supply-chain alerts must not acquire
+    # unrelated Rubin HBM demand scenarios or lose evidence provenance.
+    specials = [
+        e for e in events if e.get("category") in
+        ("hbm_hybrid_bonding", "nvhbm_foundry_strategy")
+    ]
+    if specials:
+        normal = [e for e in events if e.get("category") not in
+                  ("hbm_hybrid_bonding", "nvhbm_foundry_strategy")]
         sections = ([build_alert(now, normal, fx)] if normal else [])
-        sections += [render_hbm_hybrid_bonding_notice(e, now) for e in hybrid]
+        for e in specials:
+            sections.append(
+                render_hbm_hybrid_bonding_notice(e, now)
+                if e.get("category") == "hbm_hybrid_bonding"
+                else render_nvhbm_foundry_notice(e, now)
+            )
         return "\n\n<<<TELEGRAM_MESSAGE_BREAK>>>\n\n".join(
             section.strip() for section in sections if section.strip()
         ) + "\n"
@@ -3936,6 +3944,34 @@ def main() -> None:
     if nvhbm_changes and not first_run:
         verified_events.append(nvhbm_architecture_event(nvhbm_state, list(dict.fromkeys(nvhbm_changes))))
 
+    foundry_version_before = int(state.get("nvhbm_foundry_track_version") or 0)
+    foundry_state = json.loads(json.dumps(state.get("nvhbm_foundry_strategy") or {}))
+    if foundry_version_before < NVHBM_FOUNDRY_TRACK_VERSION:
+        seeded = json.loads(json.dumps(NVHBM_FOUNDRY_BASELINE))
+        seeded.update({key:value for key,value in foundry_state.items() if value is not None})
+        foundry_state = seeded
+    foundry_initial = foundry_version_before < NVHBM_FOUNDRY_TRACK_VERSION and not first_run
+    foundry_old = json.loads(json.dumps(foundry_state))
+    for raw in raw_events:
+        if raw.get("category") != "nvhbm_foundry_strategy":
+            continue
+        enriched = enrich_event(raw)
+        official_obs = extract_nvhbm_foundry_official_milestone(enriched)
+        if official_obs:
+            foundry_state = merge_nvhbm_foundry_milestone(foundry_state, official_obs)
+    foundry_changes = nvhbm_foundry_stage_changes(foundry_old, foundry_state)
+    if foundry_initial:
+        verified_events.append(nvhbm_foundry_strategy_event(
+            foundry_state,
+            ["최초 감시: 공급망 제조 전략 보도, NVIDIA·TSMC·삼성·SK하이닉스 공식 기술/협력과 구분"],
+            initial=True,
+        ))
+    if foundry_changes and not first_run:
+        for vendor, reason in foundry_changes:
+            verified_events.append(nvhbm_foundry_strategy_event(
+                foundry_state, [reason], initial=False, vendor=vendor,
+            ))
+
     thermal_state = dict(state.get("samsung_hbm4e_thermal_package") or {})
     thermal_track_version = int(state.get("samsung_hbm4e_thermal_track_version") or 0)
     if thermal_track_version < SAMSUNG_HBM4E_THERMAL_TRACK_VERSION:
@@ -4203,6 +4239,8 @@ def main() -> None:
         "samsung_nextgen_hbm": nextgen_state,
         "nvhbm_architecture_track_version": nvhbm_track_version,
         "nvhbm_architecture": nvhbm_state,
+        "nvhbm_foundry_track_version": NVHBM_FOUNDRY_TRACK_VERSION,
+        "nvhbm_foundry_strategy": foundry_state,
         "samsung_hbm4e_thermal_track_version": thermal_track_version,
         "samsung_hbm4e_thermal_package": thermal_state,
         "hbm_hybrid_bond_track_version": hybrid_version,
@@ -4246,6 +4284,8 @@ def main() -> None:
         f"- Samsung HBM4 price typed changes: {len(samsung_price_changes)}",
         f"- Samsung next-gen HBM typed changes: {len(nextgen_changes)}",
         f"- NVIDIA NVHBM/custom-HBM typed changes: {len(nvhbm_changes)}",
+        f"- NVHBM foundry strategy initial: {str(foundry_initial).lower()}",
+        f"- NVHBM foundry official milestones: {len(foundry_changes)}",
         f"- Samsung HBM4E thermal/package typed changes: {len(thermal_changes)}",
         f"- HBM hybrid bond reported-risk initial: {str(initial_hybrid_notice).lower()}",
         f"- HBM hybrid bond official milestones: {len(hybrid_changes)}",
