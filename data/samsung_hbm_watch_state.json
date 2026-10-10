@@ -310,7 +310,7 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-10",
-  "updated_at_kst": "2026-10-10T14:24:23+09:00",
+  "updated_at_kst": "2026-10-10T14:30:52+09:00",
   "last_event_count": 0,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
@@ -325,8 +325,8 @@
   "last_successful_official_month": "202608",
   "last_successful_official_at_kst": "2026-10-10T14:24:23+09:00",
   "malaysia_official_month": "202608",
-  "malaysia_hsk10_amount_usd": 1624534854.0,
-  "malaysia_public_available": true,
+  "malaysia_hsk10_amount_usd": null,
+  "malaysia_public_available": false,
   "malaysia_revision_due": false,
   "last_successful_delivery_kst": "2026-10-07T21:54:04+09:00",
   "telegram_message_id": 257,
@@ -2306,11 +2306,11 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-10-10T14:24:23+09:00",
+      "last_checked_at_kst": "2026-10-10T14:30:52+09:00",
       "gaps": [
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
       ],
-      "observations": 3,
+      "observations": 2,
       "rdimm_paired_observations": 0,
       "wafer_share|trendforce|industry|2026-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
       "wafer_share|trendforce|industry|2027-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
@@ -2380,10 +2380,10 @@
     "payload_hash": "01ed6f362e09684184a695c5965c43de3d6218c6509bcef52ae1149d6d9c0402"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-10-10T14:25:38+09:00",
+    "checked_at_kst": "2026-10-10T14:31:36+09:00",
     "status": "no_message_due"
   },
-  "malaysia_hsk10_weight_kg": 3833.0,
+  "malaysia_hsk10_weight_kg": null,
   "state_corrections": [
     {
       "at_kst": "2026-09-25T15:48:00+09:00",
