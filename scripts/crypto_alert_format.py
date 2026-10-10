@@ -172,7 +172,8 @@ def calendar_window_reading(etf: dict, label: str, rate: float | None) -> list[s
     item = ((etf.get("windows") or {}).get(label) or {})
     readable = {"1m": "1개월", "3m": "3개월"}[label]
     if not item.get("valid"):
-        return [f"• <b>최근 {readable}</b> · 원자료 미확보, 산출 보류"]
+        issue = item.get("validation_issue") or item.get("error") or "원자료 또는 거래일 불완전"
+        return [f"• <b>최근 {readable}</b> · 산출 보류({issue})"]
     current = float(item["value_usd_m"])
     previous = float(item["prev_value_usd_m"])
     change = float(item["change_usd_m"])
@@ -183,6 +184,13 @@ def calendar_window_reading(etf: dict, label: str, rate: float | None) -> list[s
     dates = item.get("partial_dates") or []
     if dates and len(dates) <= 3:
         caveat += " (" + ", ".join(dates) + ")"
+    current_avg = item.get("avg_usd_m_per_session")
+    previous_avg = item.get("prev_avg_usd_m_per_session")
+    if label == "3m" and current_avg is not None and previous_avg is not None:
+        caveat += (
+            f" · 거래일평균 {float(current_avg):+.1f}/{float(previous_avg):+.1f}백만달러"
+            " (최근/직전)"
+        )
     return [
         (
             f"• <b>최근 {readable}{status}</b> "
@@ -194,6 +202,26 @@ def calendar_window_reading(etf: dict, label: str, rate: float | None) -> list[s
             f" → 차이 {fmt_usd_m(change, rate)} · {item['direction']}{caveat}"
         ),
     ]
+
+
+def horizon_reading(etf: dict) -> str:
+    """Interpret short and medium horizon directions without double-counting them."""
+    five = etf.get("last5_usd_m")
+    one = ((etf.get("windows") or {}).get("1m") or {})
+    three = ((etf.get("windows") or {}).get("3m") or {})
+    def sign(value):
+        if value is None:
+            return "확인 불가"
+        value = float(value)
+        return "순유입" if value > 0 else "순유출" if value < 0 else "보합"
+    short = ("잠정 " if etf.get("status") != "complete" else "") + sign(five)
+    one_word = sign(one.get("value_usd_m")) if one.get("valid") else "확인 불가"
+    three_word = sign(three.get("value_usd_m")) if three.get("valid") else "확인 불가"
+    suffix = " · 3개월 일부 종목 미보고" if three.get("status") == "잠정" else ""
+    return (
+        f"• <b>수급 방향</b> · 최근5 {short} / 1개월 {one_word} / "
+        f"3개월 {three_word}{suffix} · 기간별 흐름은 상이할 수 있음"
+    )
 
 
 def format_fx_line(line: str) -> list[str]:
@@ -591,6 +619,7 @@ def format_alert(text: str) -> str:
     if etf:
         for window in ("1m", "3m"):
             out.extend(calendar_window_reading(etf, window, fx_rate))
+        out.append(horizon_reading(etf))
 
     if rates:
         out.append(

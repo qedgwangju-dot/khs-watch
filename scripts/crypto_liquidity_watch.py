@@ -138,21 +138,84 @@ def flow_direction(previous: float, current: float) -> str:
     return "혼조"
 
 
+# NYSE officially published full-day closures; never assume weekends alone.
+# https://www.nyse.com/trade/hours-calendars
+# Unlisted years fail closed until the exchange calendar is officially verified.
+NYSE_HOLIDAYS = {
+    2025: frozenset((
+        "2025-01-01", "2025-01-20", "2025-02-17", "2025-04-18",
+        "2025-05-26", "2025-06-19", "2025-07-04", "2025-09-01",
+        "2025-11-27", "2025-12-25",
+    )),
+    2026: frozenset((
+        "2026-01-01", "2026-01-19", "2026-02-16", "2026-04-03",
+        "2026-05-25", "2026-06-19", "2026-07-03", "2026-09-07",
+        "2026-11-26", "2026-12-25",
+    )),
+    2027: frozenset((
+        "2027-01-01", "2027-01-18", "2027-02-15", "2027-03-26",
+        "2027-05-31", "2027-06-18", "2027-07-05", "2027-09-06",
+        "2027-11-25", "2027-12-24",
+    )),
+    2028: frozenset((
+        "2028-01-17", "2028-02-21", "2028-04-14", "2028-05-29",
+        "2028-06-19", "2028-07-04", "2028-09-04", "2028-11-23",
+        "2028-12-25",
+    )),
+}
+
+
+def expected_nyse_dates(start: dt.date, end: dt.date) -> list[dt.date] | None:
+    if any(year not in NYSE_HOLIDAYS for year in range(start.year, end.year + 1)):
+        return None
+    excluded = {
+        dt.date.fromisoformat(value)
+        for year in range(start.year, end.year + 1)
+        for value in NYSE_HOLIDAYS[year]
+    }
+    days: list[dt.date] = []
+    day = start
+    while day <= end:
+        if day.weekday() < 5 and day not in excluded:
+            days.append(day)
+        day += dt.timedelta(days=1)
+    return days
+
+
 def calendar_period(rows: list[dict], start: dt.date, end: dt.date, minimum: int) -> dict:
+    # A missing ordinary session invalidates a month sum even when there are
+    # enough other observations to pass a naive '>= 12 trading days' check.
     selected = [
         row for row in rows
         if start <= row["date"] <= end and row["total_validated"]
         and row["status"] in ("partial", "complete")
     ]
     dates = sorted(row["date"] for row in selected)
-    gaps = [(b-a).days for a,b in zip(dates,dates[1:])]
-    valid = bool(len(dates) >= minimum
-        and dates[0] <= start + dt.timedelta(days=7)
-        and dates[-1] >= end - dt.timedelta(days=7)
-        and (not gaps or max(gaps) <= 7))
+    expected = expected_nyse_dates(start, end)
+    if expected is None:
+        valid = False
+        missing_dates: list[dt.date] = []
+        extra_dates: list[dt.date] = []
+        issue = "NYSE 휴장일 공식 달력이 해당 연도에 검증되지 않음"
+    else:
+        missing_dates = sorted(set(expected) - set(dates))
+        extra_dates = sorted(set(dates) - set(expected))
+        valid = bool(len(dates) >= minimum and not missing_dates and not extra_dates)
+        if missing_dates:
+            issue = "원자료 누락 거래일: " + ", ".join(d.isoformat() for d in missing_dates[:6])
+        elif extra_dates:
+            issue = "비거래일 자료가 포함됨: " + ", ".join(d.isoformat() for d in extra_dates[:6])
+        elif len(dates) < minimum:
+            issue = "비교에 필요한 거래일 수 부족"
+        else:
+            issue = ""
     return {
         "valid": valid, "start": start.isoformat(), "end": end.isoformat(),
         "trading_days": len(selected),
+        "expected_trading_days": len(expected) if expected is not None else None,
+        "missing_trading_dates": [d.isoformat() for d in missing_dates],
+        "unexpected_trading_dates": [d.isoformat() for d in extra_dates],
+        "validation_issue": issue,
         "partial_days": sum(row["status"] == "partial" for row in selected),
         "partial_dates": [row["date"].isoformat() for row in selected if row["status"] == "partial"],
         "value_usd_m": round(sum(row["total"] for row in selected), 1) if valid else None,
@@ -174,10 +237,15 @@ def calendar_windows(rows: list[dict], latest: dt.date) -> dict:
             "prev_trading_days": previous["trading_days"],
             "prev_partial_days": previous["partial_days"],
             "prev_partial_dates": previous["partial_dates"],
+            "prev_expected_trading_days": previous["expected_trading_days"],
+            "prev_missing_trading_dates": previous["missing_trading_dates"],
+            "validation_issue": current.get("validation_issue") or previous.get("validation_issue") or "",
             "prev_value_usd_m": previous["value_usd_m"] if valid else None,
             "change_usd_m": round(current["value_usd_m"] - previous["value_usd_m"], 1) if valid else None,
             "direction": flow_direction(previous["value_usd_m"], current["value_usd_m"]) if valid else "확인 불가",
-            "status": "잠정" if (current["partial_days"] or previous["partial_days"]) else "확정",
+            "status": "잠정" if (current["partial_days"] or previous["partial_days"]) else "집계완료(수정가능)",
+            "avg_usd_m_per_session": round(current["value_usd_m"] / current["trading_days"], 1) if valid else None,
+            "prev_avg_usd_m_per_session": round(previous["value_usd_m"] / previous["trading_days"], 1) if valid else None,
         })
         if not valid:
             current["value_usd_m"] = None
@@ -376,6 +444,7 @@ def btc_etf_flow() -> dict:
                 "valid": False, "value_usd_m": None, "prev_value_usd_m": None,
                 "change_usd_m": None, "direction": "확인 불가",
                 "status": "확인 불가",
+                "avg_usd_m_per_session": None, "prev_avg_usd_m_per_session": None,
                 "error": history_error or "1·3개월 계산에 필요한 과거 원자료 미확보",
             })
 

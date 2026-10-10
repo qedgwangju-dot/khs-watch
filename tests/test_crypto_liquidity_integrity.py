@@ -99,7 +99,7 @@ class CryptoLiquidityDataIntegrityTest(unittest.TestCase):
         start, end = dt.date(2026,4,6), dt.date(2026,10,9)
         rows, day = [], start
         while day <= end:
-            if day.weekday() < 5:
+            if day in (watch.expected_nyse_dates(day, day) or []):
                 rows.append({"date":day, "total":10.0, "status":"complete",
                              "total_validated":True})
             day += dt.timedelta(days=1)
@@ -128,12 +128,74 @@ class CryptoLiquidityDataIntegrityTest(unittest.TestCase):
             self.assertFalse(periods[horizon]["valid"])
             self.assertIsNone(periods[horizon]["value_usd_m"])
 
+    def test_one_missing_trading_session_invalidates_months(self):
+        import datetime as dt
+        day, end = dt.date(2026, 4, 10), dt.date(2026, 10, 9)
+        dates = watch.expected_nyse_dates(day, end)
+        self.assertIsNotNone(dates)
+        self.assertEqual(len(watch.expected_nyse_dates(dt.date(2026, 7, 10), end)), 65)
+        self.assertEqual(len(watch.expected_nyse_dates(dt.date(2026, 4, 10), dt.date(2026, 7, 9))), 62)
+        self.assertNotIn(dt.date(2026, 7, 3), dates)
+        self.assertNotIn(dt.date(2026, 9, 7), dates)
+        rows = [
+            {"date": d, "total": 2.0, "total_validated": True, "status": "complete"}
+            for d in dates
+        ]
+        clean = watch.calendar_windows(rows, end)
+        self.assertTrue(clean["1m"]["valid"] and clean["3m"]["valid"])
+        rows = [r for r in rows if r["date"] != dt.date(2026, 9, 21)]
+        missing = watch.calendar_windows(rows, end)
+        self.assertFalse(missing["1m"]["valid"])
+        self.assertFalse(missing["3m"]["valid"])
+        self.assertIn("2026-09-21", missing["1m"]["missing_trading_dates"])
+        self.assertIsNone(missing["1m"]["value_usd_m"])
+        self.assertIsNone(missing["3m"]["value_usd_m"])
+
+    def test_missing_market_holiday_calendar_fails_closed(self):
+        import datetime as dt
+        self.assertIsNone(watch.expected_nyse_dates(
+            dt.date(2029, 1, 1), dt.date(2029, 1, 31)
+        ))
+        data = watch.calendar_period([], dt.date(2029, 1, 1), dt.date(2029, 1, 31), 12)
+        self.assertFalse(data["valid"])
+        self.assertIn("공식 달력", data["validation_issue"])
+
+    def test_month_window_presentation_has_rolling_dates_and_average(self):
+        state = {
+            "status": "complete",
+            "last5_usd_m": -678.9,
+            "windows": {
+                "1m": {
+                    "valid": True, "start": "2026-09-10", "end": "2026-10-09",
+                    "trading_days": 22, "value_usd_m": 1658.2,
+                    "prev_value_usd_m": 3277.0, "change_usd_m": -1618.8,
+                    "direction": "순유입 둔화", "status": "집계완료(수정가능)",
+                },
+                "3m": {
+                    "valid": True, "start": "2026-07-10", "end": "2026-10-09",
+                    "trading_days": 65, "value_usd_m": 5938.8,
+                    "prev_value_usd_m": -5271.3, "change_usd_m": 11210.1,
+                    "avg_usd_m_per_session": 91.4, "prev_avg_usd_m_per_session": -85.0,
+                    "direction": "순유출→순유입 전환", "partial_days": 2,
+                    "prev_partial_days": 0, "partial_dates": ["2026-07-27","2026-08-07"],
+                    "status": "잠정",
+                },
+            },
+        }
+        rows = fmt.calendar_window_reading(state, "3m", 1339.2)
+        self.assertTrue(any("거래일평균" in row for row in rows))
+        self.assertTrue(any("미보고일 최근 2/직전 0" in row for row in rows))
+        note = fmt.horizon_reading(state)
+        self.assertIn("최근5 순유출", note)
+        self.assertIn("1개월 순유입", note)
+        self.assertIn("3개월 순유입", note)
+
     def test_middle_gap_blocks_three_month_only(self):
         import datetime as dt
         day,end=dt.date(2026,4,10),dt.date(2026,10,9)
         rows=[]
         while day<=end:
-            if day.weekday()<5 and not (dt.date(2026,8,10)<=day<=dt.date(2026,8,24)):
+            if day in (watch.expected_nyse_dates(day, day) or []) and not (dt.date(2026,8,10)<=day<=dt.date(2026,8,24)):
                 rows.append({"date":day,"total":5.0,"total_validated":True,
                              "status":"complete"})
             day+=dt.timedelta(days=1)
@@ -150,7 +212,7 @@ class CryptoLiquidityDataIntegrityTest(unittest.TestCase):
         day=dt.date(2026,4,6)
         values=[]
         while day<=end:
-            if day.weekday()<5:
+            if day in (watch.expected_nyse_dates(day, day) or []):
                 values.append((day,21.1 if day==end else 10.0))
             day+=dt.timedelta(days=1)
 
