@@ -648,7 +648,7 @@ def hartnett_regime_signal(mmf_weekly_bn, bond):
     if mmf_weekly_bn is None:
         return "ICI 주간 MMF 갱신 대기 — 채권금리만으로 MMF 이동을 추정하지 않음"
     if mmf_weekly_bn > 0 and bond["bond_level"] == "elevated":
-        return "MMF 증가·미 10년물 5.30% 이상: 현금 대기와 금리 부담 동반. 주식 강제매도로 단정하지 않음"
+        return "ICI MMF 총자산 증가·미 10년물 감시기준 5.30% 이상: 현금 대기와 금리 부담 동반. 주식 강제매도로 단정하지 않음"
     if mmf_weekly_bn < 0 and bond["yield_10y_5d_bp"] < -15:
         return "MMF 감소·10년물 금리 하락: 현금 대기 완화 가능성. 실제 주식형 순유입 확인 전 재진입 단정 금지"
     return "현금·채권금리 신호 혼재 — 명확한 시장 재진입 판단 보류"
@@ -1137,7 +1137,12 @@ def source_block(x, fx):
             lines.append(f"• 글로벌 주식형 {fmt_usd_bn_kr(m.get('global_equity_bn'), fx)}")
         if m.get("mmf_bn") is not None:
             lines.append(f"• MMF {fmt_usd_bn_kr(m.get('mmf_bn'), fx)}")
-        lines.append("• 같은 출처 판정: " + flow_direction(m.get("us_equity_bn"), m.get("mmf_bn")))
+        if x.get("reference_week_verified") is True:
+            lines.append("• 같은 출처·집계주간 검증 후 판정: " + flow_direction(m.get("us_equity_bn"), m.get("mmf_bn")))
+        else:
+            lines.append(
+                "• 기사 게시일과 자금 집계주간을 구분해야 하므로 집계주간 독립 확인 전 직접 자금회전 판정 보류"
+            )
     return "\n".join(lines)
 
 
@@ -1554,7 +1559,8 @@ if should_alert:
         body.append("• 미국 국채·연준 공식 수치 수집 실패: 금리와 현금 이동의 결합 판정 보류")
     body.append(
         f"• 미국 중간선거 2026-11-03 / 감시 단계 {election_window} "
-        "— 선거 시나리오는 투자전략가 견해일 뿐 확정 시장예측이 아님"
+        "— 민주당 양원 승리 시 미국 증시 -10% 초과 가능성은 Hartnett의 조건부 시나리오이며 "
+        "실제 선거 결과 또는 시장하락 확정 예측이 아님"
     )
     body.append(
         f'• 근거: <a href="{html.escape(HARTNETT_REPORT_URL, quote=True)}">Bloomberg 인용 보도</a> / '
@@ -1613,6 +1619,8 @@ if should_alert:
         "• BofA/Hartnett Bloomberg 인용 2026-10-07 주간 MMF 1,664억달러는 당시 보도값이며 이후 주간 최신값으로 재사용 금지",
         "• BofA/Hartnett 주간 순유입과 ICI 공식 MMF 총자산 주간 증감은 모집단·산식이 달라 합산·직접 비교 금지",
         "• ICI·BofA/EPFR·LSEG Lipper는 모집단이 달라 합산·평균하지 않음",
+        "• 보도일은 집계주간이 아님. 출처별 실제 집계기간이 확인되지 않으면 주식형 자금흐름 충돌 판정도 보류",
+        "• 미 국채 10년물 5.30%·5일 20bp는 내부 경보 기준이며 BofA가 공식 제시한 임계치가 아님",
         "• FINRA 마진부채는 월간 레버리지 확인용으로 주간 펀드 흐름과 기간을 섞지 않음",
         "• JPMorganChase Institute 가계 인출은 저빈도 구조지표로 사용하며 새 공식 수치가 있을 때만 변화로 처리",
         "• Federal Reserve Z.1 가계 자산은 분기 구조지표로 사용하며 새 분기 값이 있을 때만 변화로 처리",
