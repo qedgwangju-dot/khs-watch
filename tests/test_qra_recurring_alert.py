@@ -4,6 +4,7 @@ from scripts.qra_recurring_alert import (
     ReleaseParser,
     extract_refunding_amounts,
     extract_financing_estimates,
+    section_date_key,
     extract_shortfall,
     guidance_word,
     maintain_guidance,
@@ -26,6 +27,9 @@ class QRARecurringAlertTests(unittest.TestCase):
         self.assertEqual(len(parser.sections), 3)
         self.assertIn("3:00 PM", parser.sections[1].heading)
         self.assertIn("August 5, 2026", parser.sections[0].heading)
+        ordered = sorted(parser.sections, key=section_date_key, reverse=True)
+        self.assertIn("August 5, 2026", ordered[0].heading)
+        self.assertIn("August 3, 2026", ordered[1].heading)
         self.assertEqual(parser.sections[0].links[0].url, "https://home.treasury.gov/policy")
 
     def test_guidance_change_increases_to_changes(self):
