@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-08-24T21:32:19+09:00",
-  "last_checked_kst": "2026-10-10T23:59:32+09:00",
+  "last_checked_kst": "2026-10-11T00:43:56+09:00",
   "seen": {
     "74fd33cf93fb250c6b18ecd7": {
       "title": "리벨리온, 공공 CCTV 관제에 서버형 NPU 대규모 인프라 공급… 국산 AI 인프라 상용화로 기술 자립 가속",
@@ -3161,6 +3161,12 @@
       "material_stage": 5,
       "first_seen_kst": "2026-10-10T10:41:19+09:00",
       "suppressed_duplicate": "same_event:cck|capital|equity"
+    },
+    "e38126e8ce7422cec8eec720": {
+      "title": "[테크스냅] 리벨리온, AI 추론 최적화 기업 스퀴즈비츠 인수 - 연합뉴스",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1XWEF4LWhTQzI3akdWRXlwRG0zX1FydC1LOXVtN1Y2cW9ISUFyT1gzYlRkVW02ZzJneDVRdFB2NFZ5MVNSckNXMUxQaWEyOWZibFgxQXFYR0xEOTTSAWBBVV95cUxQemhKNTFEU0xHdWk4NHN1RVNxRF9fcW9PQTJfcnhPbmNWb1RVYzlycEZ4dHdtOUZNNU1NMGx0a3JWdnhfb0hkejZ4LUo2ZjJxNXJuc2FCX1Vmb0w5dWQyYV8?oc=5",
+      "first_seen_kst": "2026-10-11T00:43:56+09:00",
+      "suppressed_stale": true
     }
   }
 }
