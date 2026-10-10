@@ -129,7 +129,18 @@ def official_plan_links(html_indexes: dict[str, str]) -> list[tuple[str, str]]:
         p = OfficialLinks(base)
         p.feed(raw)
         for label, url in p.links:
-            if INDEX_WORDS.search(label):
+            parsed = urllib.parse.urlsplit(url)
+            path = parsed.path.lower()
+            if parsed.hostname == "home.treasury.gov":
+                is_release = bool(re.fullmatch(r"/news/press-releases/[a-z]{2}[0-9]+/?", path))
+            else:
+                is_release = (
+                    bool(re.match(r"/(?:releases|briefings-statements)/20[0-9]{2}/", path))
+                    or (path.endswith(".pdf")
+                        and re.search(r"/wp-content/uploads/(?:2026/11|2026/12|2027)/", path)
+                        and INDEX_WORDS.search(label))
+                )
+            if is_release and INDEX_WORDS.search(label + " " + path):
                 unique.setdefault(url, label)
     return [(title, url) for url, title in list(unique.items())[:24]]
 
