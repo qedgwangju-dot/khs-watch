@@ -208,7 +208,6 @@ OFFICIAL_SOURCE_HINTS = (
 DIRECT_OFFICIAL_PAGES = [
     ("OpenAI Alignment", "https://alignment.openai.com/", r'href=["\\\']([^"\\\']*/misalignment-reports/[^"\\\']+)["\\\']'),
     ("Anthropic Research", "https://www.anthropic.com/research", r'href=["\\\']([^"\\\']*/research/[^"\\\']+)["\\\']'),
-    ("Anthropic Model Incident Reports", "https://www.anthropic.com/research", r'href=["\\\']([^"\\\']*/research/investigating-unintended-model-actions)["\\\']'),
     ("Anthropic News", "https://www.anthropic.com/news", r'href=["\\\']([^"\\\']*/(?:news/[^"\\\']+|claude-fable-and-mythos-5-1))["\\\']'),
 ]
 
