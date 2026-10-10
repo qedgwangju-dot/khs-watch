@@ -614,7 +614,8 @@ class GlassSubstrateWatchTests(unittest.TestCase):
         self.assertTrue(rec["value"]["issuer_official"])
         self.assertEqual(rec["evidence"], "official")
         rendered = w.render({"record":rec,"old":None,"reasons":["고객 검증 완료"]})
-        self.assertIn("CoPoS", rendered)
+        self.assertIn("FOPLP", rendered)
+        self.assertNotIn("TSMC CoPoS 양산", rendered)
         self.assertIn("고객 검증", rendered)
 
     def test_foplp_media_qualification_cannot_promote_itself_to_official(self):
