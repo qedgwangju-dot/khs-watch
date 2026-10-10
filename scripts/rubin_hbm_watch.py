@@ -2588,6 +2588,20 @@ def render_nvhbm_foundry_notice(e:dict,now:datetime)->str:
     st=e["foundry_strategy_state"]
     initial=e.get("fact_key")=="nvhbm_foundry_editorial_20261009"
     stages=st.get("vendor_stage") or {}
+    product_labels = {
+        "standard_hbm4e": "표준 HBM4E",
+        "custom_hbm": "맞춤형 HBM",
+        "nvhbm": "NVHBM",
+    }
+    def product_stage_display(vendor: str) -> str:
+        typed = (st.get("vendor_product_stage") or {}).get(vendor) or {}
+        if not typed:
+            return NVHBM_FOUNDRY_STAGE_KO.get(stages.get(vendor), "미확인")
+        return " / ".join(
+            f"{product_labels[key]}: {NVHBM_FOUNDRY_STAGE_KO.get(typed[key], '미확인')}"
+            for key in ("standard_hbm4e", "custom_hbm", "nvhbm")
+            if key in typed
+        )
     out=[
         "🚨 NVHBM 베이스 다이 · 삼성전자·SK하이닉스·Micron",
         f"조회: {now.strftime('%Y-%m-%d %H:%M KST')}",
@@ -2607,7 +2621,7 @@ def render_nvhbm_foundry_notice(e:dict,now:datetime)->str:
         ("• 삼성전자 NVHBM 양산: 공식 확인."
          if "samsung" in (st.get("memory_vendor_nvhbm_mass_production_confirmed") or [])
          else "• TSMC 고객별 공급계약·삼성전자 NVHBM 양산: 미확정."),
-        f"• 공식 베이스 다이 전략 진행: {NVHBM_FOUNDRY_STAGE_KO.get(stages.get('samsung'),'미확인')}",
+        f"• 제품별 공식 검증 진행: {product_stage_display('samsung')}",
         "",
         "■ SK하이닉스",
         "• HBM4: TSMC 베이스 다이 적용 협력은 공식 확인, 12나노 공정은 TSMC 공식 범용 기술자료·업계 보도로 교차 확인.",
@@ -2615,7 +2629,7 @@ def render_nvhbm_foundry_notice(e:dict,now:datetime)->str:
          if "skhynix" in (st.get("memory_vendor_nvhbm_mass_production_confirmed") or [])
          else "• HBM4E·맞춤형 HBM: TSMC 3나노 우선 검토 보도. 특정 차세대 고객 주문·NVHBM 양산은 미확정."),
         "• TSMC의 N3P 맞춤형 HBM4E 베이스 다이 기술 발표는 공식. 특정 메모리 업체의 계약·양산을 의미하지 않음.",
-        f"• 공식 차세대 베이스 다이 전략 진행: {NVHBM_FOUNDRY_STAGE_KO.get(stages.get('skhynix'),'미확인')}",
+        f"• 제품별 공식 검증 진행: {product_stage_display('skhynix')}",
         "",
         "■ Micron",
         "• HBM4: 1β 코어 다이와 자체 베이스 다이 적용(The Elec 인용 보도).",
@@ -2624,7 +2638,7 @@ def render_nvhbm_foundry_notice(e:dict,now:datetime)->str:
          if "micron" in (st.get("memory_vendor_nvhbm_mass_production_confirmed") or [])
          else "• TSMC 및 3나노 공급 가능성은 전망. 외주 수주처·물량·NVHBM 양산 계약 미확정."),
         "• 모든 HBM 제품의 베이스 다이를 100% 외주 전환했다는 뜻은 아닙니다.",
-        f"• 공식 차세대 베이스 다이 전략 진행: {NVHBM_FOUNDRY_STAGE_KO.get(stages.get('micron'),'미확인')}",
+        f"• 제품별 공식 검증 진행: {product_stage_display('micron')}",
         "",
         "■ 확정 고객·수익 연결",
         "• Amazon Annapurna Labs의 NVIDIA NVHBM 기술 협력: 공식. Trainium4 NVLink Fusion 지원: 공식.",
