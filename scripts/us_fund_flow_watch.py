@@ -999,6 +999,9 @@ def parse_reuters(kind):
             "published": it["pub"],
             "url": final or it["link"],
             "title": it["title"],
+            "reference_week_verified": False,
+            "reference_week": None,
+            "comparison_note": "기사 게시일은 수급 집계 기준일이 아니므로 다른 출처와 직접 비교 금지",
             "metrics": {"us_equity_bn": us, "global_equity_bn": glob, "mmf_bn": mmf},
             "evidence": {"us": us_sent, "global": glob_sent, "mmf": mmf_sent},
         }
@@ -1040,6 +1043,36 @@ def period_date(x):
 def same_reference_week(a, b):
     da, db = period_date(a), period_date(b)
     return bool(da and db and da == db)
+
+
+def eligible_reference_week(x):
+    """Article publication date is NOT a fund-flow observation week.
+
+    ICI official releases identify the actual reference week; Reuters/Bloomberg
+    articles qualify only if an independently parsed, verified week exists.
+    """
+    if not isinstance(x, dict):
+        return None
+    if x.get("source") == "ICI" and x.get("kind") in ("combined", "mmf"):
+        return period_date(x)
+    if x.get("reference_week_verified") is True:
+        try:
+            return datetime.strptime(str(x["reference_week"]), "%Y-%m-%d").date()
+        except (KeyError, ValueError):
+            return None
+    return None
+
+
+def recent_official_week(x, on_date, max_age_days=14):
+    observed = eligible_reference_week(x)
+    return bool(observed and 0 <= (on_date-observed).days <= max_age_days)
+
+
+# Regression guards: media report date is not equivalent to fund observation date.
+assert eligible_reference_week({"source":"BofA/EPFR via Reuters","kind":"bofa","period":"Fri, 09 Oct 2026"}) is None
+assert eligible_reference_week({"source":"ICI","kind":"mmf","period":"October 07, 2026"}) == datetime(2026,10,7).date()
+assert not recent_official_week({"source":"ICI","kind":"mmf","period":"October 07, 2026"}, datetime(2026,11,8).date())
+assert same_reference_week({"period":"October 07, 2026"}, {"period":"October 07, 2026"})
 
 
 def flow_direction(us, mmf):
@@ -1163,8 +1196,10 @@ except Exception as e:
     errors.append(f"Hartnett 금리 검증: {type(e).__name__}: {e}")
 
 old_hartnett = (state.get("derived") or {})
+new_york_date = datetime.now(ZoneInfo("America/New_York")).date()
+mmf_recent = recent_official_week(ici_mmf, new_york_date)
 hartnett_init = bool(
-    hartnett_macro and ici_mmf and ici
+    hartnett_macro and ici_mmf and mmf_recent
     and old_hartnett.get("hartnett_tracking_version") != HARTNETT_TRACK_VERSION
 )
 bond_level_transition = bool(
@@ -1211,25 +1246,36 @@ old_band = (state.get("derived") or {}).get("sp500_drawdown_band")
 current_band = sp500.get("band") if sp500 else None
 drawdown_transition = bool(old_band and current_band and old_band != current_band)
 
+# Do not flag cross-vendor flow disagreement when the observation weeks differ,
+# or when the only "date" is a journalist's publication timestamp.
 cross = []
 pairs = [
-    ("BofA/EPFR", bofa["metrics"].get("us_equity_bn") if bofa else None),
-    ("LSEG Lipper", lipper["metrics"].get("us_equity_bn") if lipper else None),
-    ("ICI", ici["metrics"].get("domestic") if ici else None),
+    ("BofA/EPFR", bofa["metrics"].get("us_equity_bn") if bofa else None, eligible_reference_week(bofa)),
+    ("LSEG Lipper", lipper["metrics"].get("us_equity_bn") if lipper else None, eligible_reference_week(lipper)),
+    ("ICI", ici["metrics"].get("domestic") if ici else None, eligible_reference_week(ici)),
 ]
-known = [(n, v) for n, v in pairs if v is not None]
+known = [(name, value, observed) for name,value,observed in pairs if value is not None and observed]
 for i in range(len(known)):
     for j in range(i + 1, len(known)):
-        n1, v1 = known[i]
-        n2, v2 = known[j]
-        if v1 * v2 < 0:
-            cross.append(f"{n1}와 {n2}의 미국 주식 흐름 방향이 반대 → 모집단·분류 차이로 보고 합산·평균하지 않음")
+        n1, v1, d1 = known[i]
+        n2, v2, d2 = known[j]
+        if d1 == d2 and v1*v2 < 0:
+            cross.append(
+                f"{n1}와 {n2}의 동일 주간({d1}) 미국 주식 흐름 방향 반대 "
+                "→ 모집단이 달라 합산하지 않고 각 출처 원문을 별도로 확인"
+            )
 
 interpret = []
 if bofa:
-    interpret.append("BofA/EPFR: " + flow_direction(bofa["metrics"].get("us_equity_bn"), bofa["metrics"].get("mmf_bn")))
+    interpret.append(
+        "BofA/EPFR: 인용 기사에서 집계 주간 독립 확인 전이므로 "
+        "주식형·MMF를 직접 자금 회전으로 결론 내리지 않음"
+    )
 if lipper:
-    interpret.append("LSEG Lipper: " + flow_direction(lipper["metrics"].get("us_equity_bn"), lipper["metrics"].get("mmf_bn")))
+    interpret.append(
+        "LSEG Lipper: 인용 기사에서 집계 주간 독립 확인 전이므로 "
+        "주식형·MMF를 직접 자금 회전으로 결론 내리지 않음"
+    )
 if ici:
     d = ici["metrics"].get("domestic")
     if d is not None:
@@ -1238,7 +1284,10 @@ if ici_mmf:
     ch = ici_mmf["metrics"].get("weekly_change_bn")
     if ch is not None:
         interpret.append(f"ICI 공식 MMF: {'증가' if ch > 0 else '감소'} {fmt_usd_bn_kr(ch, fx)}")
-        interpret.append("Hartnett 검증: " + hartnett_regime_signal(ch, hartnett_macro))
+        if mmf_recent:
+            interpret.append("Hartnett 감시 기준: " + hartnett_regime_signal(ch, hartnett_macro))
+        else:
+            interpret.append("ICI MMF 집계 기준일이 14일보다 오래되어 금리와의 현재 동시 신호 판정 보류")
 if finra:
     md = finra["metrics"].get("margin_debt_mom_bn")
     if md is not None:
@@ -1339,19 +1388,19 @@ if cross:
         "주식형 펀드 방향이 출처마다 엇갈립니다. "
         "모집단과 기준기간이 다를 수 있어 합산·평균하지 않고 각 출처를 따로 봅니다."
     )
-elif bofa and bofa["metrics"].get("us_equity_bn") is not None and bofa["metrics"].get("mmf_bn") is not None:
-    overall_easy = "BofA/EPFR 같은 출처 내 판정: " + flow_direction(
+elif bofa and bofa.get("reference_week_verified") and bofa["metrics"].get("us_equity_bn") is not None and bofa["metrics"].get("mmf_bn") is not None:
+    overall_easy = "BofA/EPFR 집계 기준주간 검증 후 같은 출처 내 판정: " + flow_direction(
         bofa["metrics"].get("us_equity_bn"), bofa["metrics"].get("mmf_bn")
     )
-elif lipper and lipper["metrics"].get("us_equity_bn") is not None and lipper["metrics"].get("mmf_bn") is not None:
-    overall_easy = "LSEG Lipper 같은 출처 내 판정: " + flow_direction(
+elif lipper and lipper.get("reference_week_verified") and lipper["metrics"].get("us_equity_bn") is not None and lipper["metrics"].get("mmf_bn") is not None:
+    overall_easy = "LSEG Lipper 집계 기준주간 검증 후 같은 출처 내 판정: " + flow_direction(
         lipper["metrics"].get("us_equity_bn"), lipper["metrics"].get("mmf_bn")
     )
 elif ici and ici_mmf and same_reference_week(ici, ici_mmf):
     overall_easy = "ICI 같은 주간 판정: " + flow_direction(
         ici["metrics"].get("domestic"), ici_mmf["metrics"].get("weekly_change_bn")
     )
-elif stock_signals and ici_mmf and not same_reference_week(ici, ici_mmf):
+elif ici and ici_mmf and not same_reference_week(ici, ici_mmf):
     overall_easy = (
         "주식형과 MMF 최신값의 기준주간이 달라 직접 자금 회전 판정을 보류합니다. "
         "각 수치는 별도 신호로만 봅니다."
@@ -1406,6 +1455,14 @@ if hartnett_macro:
         f"momentum_transition={bond_momentum_transition} target_change={target_rate_change}"
     )
 status_lines.append(f"- Hartnett election stage: {election_window} transition={election_transition}")
+status_lines.append(
+    f"- Hartnett ICI reference check: reference={ici_mmf.get('period') if ici_mmf else 'missing'} "
+    f"date={new_york_date} recent={str(mmf_recent).lower()}"
+)
+status_lines.append(
+    "- Hartnett news rule: BofA/Bloomberg 2026-10-09 figures are dated analyst reports, "
+    "not a live repeatable official weekly flow series"
+)
 if fx:
     status_lines.append(f"- USD/KRW: {fx['usdkrw']} ({fx['date']})")
 STATUS.write_text("\n".join(status_lines) + "\n", encoding="utf-8")
@@ -1491,7 +1548,7 @@ if should_alert:
             f"(효력일 {hartnett_macro['fed_effective_date']})"
         )
         body.append(
-            f"• 검증 판정: {html.escape(hartnett_regime_signal(mmf_change, hartnett_macro))}"
+            f"• 검증 판정: {html.escape(hartnett_regime_signal(mmf_change if mmf_recent else None, hartnett_macro))}"
         )
     else:
         body.append("• 미국 국채·연준 공식 수치 수집 실패: 금리와 현금 이동의 결합 판정 보류")
@@ -1553,7 +1610,8 @@ if should_alert:
         "",
         "<b>해석 원칙</b>",
         "• 같은 출처 안에서만 미국주식↔MMF 방향을 조합해 자금 회전을 해석",
-        "• BofA/Hartnett Bloomberg 인용 주간 1,664억달러와 ICI 공식 MMF 자산 변화는 서로 다른 모집단 가능성이 있어 합산·직접 비교 금지",
+        "• BofA/Hartnett Bloomberg 인용 2026-10-07 주간 MMF 1,664억달러는 당시 보도값이며 이후 주간 최신값으로 재사용 금지",
+        "• BofA/Hartnett 주간 순유입과 ICI 공식 MMF 총자산 주간 증감은 모집단·산식이 달라 합산·직접 비교 금지",
         "• ICI·BofA/EPFR·LSEG Lipper는 모집단이 달라 합산·평균하지 않음",
         "• FINRA 마진부채는 월간 레버리지 확인용으로 주간 펀드 흐름과 기간을 섞지 않음",
         "• JPMorganChase Institute 가계 인출은 저빈도 구조지표로 사용하며 새 공식 수치가 있을 때만 변화로 처리",
