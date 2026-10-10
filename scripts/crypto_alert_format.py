@@ -177,6 +177,9 @@ def calendar_window_reading(etf: dict, label: str, rate: float | None) -> list[s
     partial = int(item.get("partial_days", 0) or 0)
     prev_partial = int(item.get("prev_partial_days", 0) or 0)
     caveat = f" · 미보고일 최근 {partial}/직전 {prev_partial}" if partial or prev_partial else ""
+    dates = item.get("partial_dates") or []
+    if dates and len(dates) <= 3:
+        caveat += " (" + ", ".join(dates) + ")"
     return [
         (
             f"• <b>최근 {readable}{status}</b> "
