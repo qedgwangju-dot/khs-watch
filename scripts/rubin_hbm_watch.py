@@ -172,7 +172,7 @@ NVHBM_FOUNDRY_TRACK_VERSION = 1
 NVHBM_FOUNDRY_NEWS_SOURCE = "https://www.trendforce.com/news/2026/10/09/news-nvidias-nvhbm-reshapes-memory-makers-base-die-strategies-as-micron-samsung-turn-to-external-foundries/"
 NVHBM_FOUNDRY_NVIDIA_SOURCE = "https://developer.nvidia.com/blog/nvidia-nvlink-fusion-brings-nvhbm-to-next-generation-ai-infrastructure/"
 NVHBM_FOUNDRY_TSMC_SOURCE = "https://www.tsmc.com/english/node/233"
-NVHBM_FOUNDRY_MICRON_REPORT = "https://www.thelec.kr/news/articleView.html?idxno=63114"
+NVHBM_FOUNDRY_MICRON_REPORT = "https://www.thelec.net/news/articleView.html?idxno=14372"
 NVHBM_FOUNDRY_SAMSUNG_REPORT = "https://zdnet.co.kr/view/?no=20260915100431"
 NVHBM_FOUNDRY_SK_REPORT = "https://www1.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=05762966645478440"
 NVHBM_FOUNDRY_SK_OFFICIAL = "https://news.skhynix.co.kr/tsmc-technology-symposium-2026/"
@@ -2468,10 +2468,18 @@ def extract_nvhbm_foundry_official_milestone(event: dict) -> dict | None:
         if stage and (not best or rank[stage] > rank[best]):
             best = stage
             foundry = "TSMC" if "tsmc" in low else ("Samsung Foundry" if "samsung" in low or "삼성" in low else "")
+            # Standard HBM4E and NVIDIA NVHBM are different products.
+            # One company's standard HBM4E shipment is not NVHBM mass production.
+            product_scope = (
+                "nvhbm" if re.search(r"\bnvhbm\b", low, re.I)
+                else "custom_hbm" if re.search(r"custom[\s-]*hbm|커스텀\s*hbm|맞춤형\s*hbm", low, re.I)
+                else "standard_hbm4e"
+            )
     if not best:
         return None
     return {
         "vendor": vendor, "stage": best, "foundry": foundry,
+        "product_scope": product_scope,
         "evidence": "company_official_original_fetched",
         "source_url": url, "observed_at": event.get("published_at_kst") or "",
     }
@@ -2502,12 +2510,13 @@ def merge_nvhbm_foundry_milestone(current: dict, obs: dict) -> dict:
     confirmed = dict(out.get("confirmed_official_milestones") or {})
     confirmed[vendor] = {
         "stage": stage,
+        "product_scope": obs.get("product_scope") or "unresolved",
         "foundry": obs.get("foundry") or "실명 미확인",
         "source_url": obs["source_url"],
         "observed_at": obs.get("observed_at") or "",
     }
     out["confirmed_official_milestones"] = confirmed
-    if stage == "official_mass_production":
+    if stage == "official_mass_production" and obs.get("product_scope") == "nvhbm":
         out["memory_vendor_nvhbm_mass_production_confirmed"] = sorted(
             set(out.get("memory_vendor_nvhbm_mass_production_confirmed") or []) | {vendor}
         )
@@ -2566,19 +2575,25 @@ def render_nvhbm_foundry_notice(e:dict,now:datetime)->str:
         "• HBM4: 1c D램 + 자체 파운드리 4나노 베이스 다이 양산·고객 출하(공식).",
         "• NVHBM 등 맞춤형 HBM: 삼성 파운드리와 TSMC 이원화 추진(9월 ZDNet 업계 보도).",
         "• TSMC 제작 베이스 다이 설계·최적화를 메모리사업부가 주도한다는 것은 보도 단계.",
-        "• TSMC 고객별 공급계약·NVHBM 양산: 미확정.",
+        ("• 삼성전자 NVHBM 양산: 공식 확인."
+         if "samsung" in (st.get("memory_vendor_nvhbm_mass_production_confirmed") or [])
+         else "• TSMC 고객별 공급계약·삼성전자 NVHBM 양산: 미확정."),
         f"• 공식 베이스 다이 전략 진행: {NVHBM_FOUNDRY_STAGE_KO.get(stages.get('samsung'),'미확인')}",
         "",
         "■ SK하이닉스",
         "• HBM4: TSMC 베이스 다이 적용 협력은 공식 확인, 12나노 공정은 TSMC 공식 범용 기술자료·업계 보도로 교차 확인.",
-        "• HBM4E·맞춤형 HBM: TSMC 3나노 우선 검토 보도. 특정 차세대 고객 주문·NVHBM 양산은 미확정.",
+        ("• SK하이닉스 NVHBM 양산: 공식 확인. 신규 고객 물량·가격 별도 검증 필요."
+         if "skhynix" in (st.get("memory_vendor_nvhbm_mass_production_confirmed") or [])
+         else "• HBM4E·맞춤형 HBM: TSMC 3나노 우선 검토 보도. 특정 차세대 고객 주문·NVHBM 양산은 미확정."),
         "• TSMC의 N3P 맞춤형 HBM4E 베이스 다이 기술 발표는 공식. 특정 메모리 업체의 계약·양산을 의미하지 않음.",
         f"• 공식 차세대 베이스 다이 전략 진행: {NVHBM_FOUNDRY_STAGE_KO.get(stages.get('skhynix'),'미확인')}",
         "",
         "■ Micron",
         "• HBM4: 1β 코어 다이와 자체 베이스 다이 적용(The Elec 인용 보도).",
         "• HBM4E·NVHBM: 1γ 코어 다이와 외부 파운드리 베이스 다이 전략(The Elec의 Micron 임원 발언 인용).",
-        "• TSMC 및 3나노 공급 가능성은 전망. 외주 수주처·물량·양산 계약 미확정.",
+        ("• Micron NVHBM 양산: 공식 확인. 고객별 물량·가격 별도 검증 필요."
+         if "micron" in (st.get("memory_vendor_nvhbm_mass_production_confirmed") or [])
+         else "• TSMC 및 3나노 공급 가능성은 전망. 외주 수주처·물량·NVHBM 양산 계약 미확정."),
         "• 모든 HBM 제품의 베이스 다이를 100% 외주 전환했다는 뜻은 아닙니다.",
         f"• 공식 차세대 베이스 다이 전략 진행: {NVHBM_FOUNDRY_STAGE_KO.get(stages.get('micron'),'미확인')}",
         "",
@@ -3996,6 +4011,8 @@ def main() -> None:
         official_obs = extract_nvhbm_foundry_official_milestone(enriched)
         if official_obs:
             foundry_state = merge_nvhbm_foundry_milestone(foundry_state, official_obs)
+    # Source link fix is a provenance update, not an IPO/production milestone.
+    foundry_state.setdefault("underlying_sources", {})["micron"] = NVHBM_FOUNDRY_MICRON_REPORT
     foundry_changes = nvhbm_foundry_stage_changes(foundry_old, foundry_state)
     if foundry_initial:
         verified_events.append(nvhbm_foundry_strategy_event(
