@@ -143,6 +143,10 @@ NEWS_QUERIES = (
     '"Russian diesel" "General License 135" OFAC when:3d',
     '"Novak" "lift restrictions" diesel exports Russia when:3d',
     '"Russian diesel" "cargoes loaded" tanker when:3d',
+    'Russia diesel cargo Primorsk IMO tracking actual loaded when:3d',
+    'Russian diesel exports actual loadings Novorossiysk Primorsk S&P Kpler when:3d',
+    'Russia refineries diesel output recovery IEA throughput October 2026 when:7d',
+    'Russia diesel exports customs vessel arrivals US port October 2026 when:3d',
     '트럼프 러시아 경유 30만톤 50만톤 100만톤 합의 제재 완화 when:3d',
     '"strategic reserves" diesel EU energy chief Jorgensen when:3d',
     '"50 million barrels" diesel EU reserves France when:3d',
@@ -1793,7 +1797,7 @@ def event_id(kind: str, rows: list[NewsItem]) -> str:
             fp = _russian_shipment_fingerprint(rows)
             if fp is None:
                 raise ValueError("기준일·물량·복수 출처 검증 없이 실물 사건 생성 불가")
-            basis = f"{kind}|physical_{fp[0]}|qty50k_{fp[1]}"
+            basis = f"{kind}|physical_{fp[0]}|IMO_{fp[2]}|qty50k_{fp[1]}"
         else:
             basis = f"{kind}|2026-10-09|{stage}"
         return f"{kind}:{hashlib.sha256(basis.encode('utf-8')).hexdigest()[:16]}"
@@ -2608,7 +2612,12 @@ def _russian_diesel_supply_stage(title_or_rows: str | list[NewsItem]) -> str:
     ):
         return "us_license_issued"
     physical = (
-        any(v in low for v in (
+        not any(v in low for v in (
+            "will load", "plans to load", "expected to load", "may load",
+            "not loaded", "no cargo loaded", "loading denied", "선적 예정",
+            "선적 미확인", "미선적", "선적 계획", "선적 부인"
+        ))
+        and any(v in low for v in (
             "cargoes loaded", "shipments loaded", "diesel cargo departed",
             "diesel tanker departed", "verified tanker loading", "실제 선적",
             "출항 확인", "선적 물량 확인"
@@ -2651,18 +2660,42 @@ def _russian_license_is_official(row: NewsItem) -> bool:
     )
 
 
-def _russian_shipment_fingerprint(rows: list[NewsItem]) -> tuple[str, int] | None:
-    """Verified tanker movement: independent cargo tracker + news/customs,
-    same observed calendar date and consistent volume in 50,000-ton bands.
-    Reports of *plans* or sanctions licenses must never count as a cargo.
+def _russian_shipment_fingerprint(rows: list[NewsItem]) -> tuple[str, int, str] | None:
+    """Confirm ONE observed cargo, not only a matching aggregate or promise.
+
+    Requires independent reports identifying the same validated vessel IMO,
+    loading port, load date and compatible physical tonnage. A confirmed
+    loading is not evidence of US arrival or additional net global supply.
     """
-    corroborated: dict[str, dict[str, set[int]]] = {}
+    observed: dict[tuple[str, str, str], dict[str, list[float]]] = {}
+    ports = re.compile(
+        r"\b(primorsk|novorossiysk|tuapse|ust[- ]luga|vysotsk|"
+        r"murmansk|kozmino|kaliningrad)\b", re.I
+    )
+    forbidden = (
+        "will load", "plans to load", "expected to load", "may load",
+        "could load", "set to load", "not loaded", "never loaded",
+        "no cargo loaded", "denies loading", "unverified loading",
+        "cargo loading planned", "선적 예정", "선적 계획", "선적 미확인",
+        "미선적", "선적 부인", "실제 선적 아님",
+    )
     for row in rows:
-        if _russian_diesel_supply_stage(row.title) != "shipment_verified":
+        if row.event_kind != "russia_diesel_supply_transition":
             continue
-        host = (urllib.parse.urlsplit(row.link).hostname or "").lower()
+        title = str(row.title or "")
+        low = normalize_text(title)
+        if any(word in low for word in forbidden):
+            continue
+        if _russian_diesel_supply_stage(title) != "shipment_verified":
+            continue
+        url = urllib.parse.urlsplit(row.link.strip())
+        host = (url.hostname or "").lower()
+        if url.scheme != "https":
+            continue
         if host == "kpler.com" or host.endswith(".kpler.com"):
             provider = "kpler"
+        elif host == "spglobal.com" or host.endswith(".spglobal.com"):
+            provider = "spglobal"
         elif host == "reuters.com" or host.endswith(".reuters.com"):
             provider = "reuters"
         elif host == "customs.gov.ru" or host.endswith(".customs.gov.ru"):
@@ -2671,31 +2704,51 @@ def _russian_shipment_fingerprint(rows: list[NewsItem]) -> tuple[str, int] | Non
             provider = "bloomberg"
         else:
             continue
-        date_match = re.search(r"\b(20\d{2}-\d{2}-\d{2})\b", row.title)
+        imo_match = re.search(r"\bIMO[\s#:\-]*([0-9]{7})\b", title, re.I)
+        port_match = ports.search(title)
+        date_match = re.search(r"\b(20\d{2}-\d{2}-\d{2})\b", title)
         qty_match = re.search(
             r"\b([\d,]+(?:\.\d+)?)\s*(?:metric\s*)?(?:tonnes?|tons?)\b",
-            row.title, re.I
+            title, re.I,
         )
-        if not date_match or not qty_match:
+        if not (imo_match and port_match and date_match and qty_match):
+            continue
+        imo = imo_match.group(1)
+        checksum = sum(int(x) * w for x, w in zip(imo[:6], (7,6,5,4,3,2))) % 10
+        if checksum != int(imo[-1]):
             continue
         try:
-            day = dt.date.fromisoformat(date_match.group(1))
+            observed_date = dt.date.fromisoformat(date_match.group(1))
             qty = float(qty_match.group(1).replace(",", ""))
-        except (ValueError, OverflowError):
+            published = dt.datetime.fromtimestamp(row.published_epoch, tz=UTC).date()
+        except (ValueError, OverflowError, OSError):
             continue
-        if not 10000 <= qty <= 10000000 or day.year < 2026:
+        if not (
+            dt.date(2026,10,9) <= observed_date <= published + dt.timedelta(days=1)
+            and observed_date >= published - dt.timedelta(days=7)
+            and math.isfinite(qty)
+            and 10000 <= qty <= 10000000
+        ):
             continue
-        band = int(round(qty / 50000))
-        corroborated.setdefault(day.isoformat(), {}).setdefault(provider, set()).add(band)
+        port = port_match.group(1).lower().replace(" ","-")
+        key = (observed_date.isoformat(), imo, port)
+        observed.setdefault(key,{}).setdefault(provider,[]).append(qty)
 
-    for day in sorted(corroborated, reverse=True):
-        providers = corroborated[day]
-        if not ("kpler" in providers or "customs" in providers):
+    for (day,imo,port), sources in sorted(observed.items(), reverse=True):
+        if len(sources) < 2 or not any(x in sources for x in ("kpler","spglobal","customs")):
             continue
-        for band in set.union(*providers.values()):
-            agreeing = {name for name, bands in providers.items() if band in bands}
-            if len(agreeing) >= 2 and ("kpler" in agreeing or "customs" in agreeing):
-                return day, band
+        for primary in ("kpler","spglobal","customs"):
+            if primary not in sources:
+                continue
+            for secondary in sorted(sources):
+                if secondary == primary:
+                    continue
+                for qa in sources[primary]:
+                    for qb in sources[secondary]:
+                        if abs(qa-qb) <= max(2000.0, max(qa,qb)*0.05):
+                            bucket = int(round(min(qa,qb)/50000))
+                            if bucket >= 1:
+                                return day,bucket,imo
     return None
 
 
@@ -2738,7 +2791,7 @@ def _build_russia_diesel_supply_alert_body(
         "deal_announced": "트럼프·푸틴 공급 합의 발표 · 선적 미확인",
         "us_license_issued": "미국 OFAC 제135호 발급 · 거래 허용 확인",
         "russian_ban_lifting_reported": "러시아 수출 제한 완화 방침 보도 · 실제 선적 미확인",
-        "shipment_verified": "러시아 경유 실제 선적 복수 자료 확인",
+        "shipment_verified": "동일 선박의 경유 선적 복수 검증 · 미국 도착·순공급은 미확인",
     }
     lines = [
         current.astimezone(KST).strftime("%Y년 %m월 %d일 %H:%M KST"), "",
@@ -2748,13 +2801,16 @@ def _build_russia_diesel_supply_alert_body(
         "추가 계획     11월 50만 톤 · 이후 100만 톤 · 정유시설 조건부 300만 톤",
         "총 계획       480만 톤 초과(약 3,600만 배럴) · 실제 수출량 아님",
         "원천 병목     IEA 9월 분석: 러시아 경유 생산 전년 대비 약 30% 감소",
+        "과거 실물     9월 24일 종료 주간 러시아 경유 해상수출 약 8만1천 톤(S&P) · 최신값 아님",
     ]
     if stage == "us_license_issued":
-        lines.append("법적 조치     OFAC 제135호(2026-10-09) · 거래 허용과 선적은 별개")
+        lines.append("법적 조치     OFAC 제135호(10월 9일) · 경유 특정 거래 허용, 대러 제재 전면 해제 아님")
+        lines.append("허가 기한     2027년 4월 7일까지(S&P 확인) · 실제 수출·미국 수입과 별개")
     if stage == "shipment_verified":
         fp = _russian_shipment_fingerprint(rows)
         assert fp is not None
-        lines.append(f"실제 선적     기준 {fp[0]} · 물량 구간 약 {fp[1]*5:,}만 톤 · 복수 출처 확인")
+        lines.append(f"실제 선적     {fp[0]} · IMO {fp[2]} · 약 {fp[1]*5:,}만 톤 구간 · 복수 출처")
+        lines.append("도착·순증     선적 확인만으로 미국 도착·글로벌 추가 순공급을 확정하지 않음")
     if oil is not None:
         lines.append(f"Brent         {oil.price:.2f}달러/배럴 · {oil.change_pct:+.2f}%")
     if fx is not None:
@@ -2764,17 +2820,19 @@ def _build_russia_diesel_supply_alert_body(
         "",
         "[핵심]",
         "제재 완화·공급 합의만으로 러시아의 정유시설이 복구되거나 실제 경유가 시장에 도착한 것은 아닙니다.",
-        "→ 약속 물량과 추가 순공급량도 다릅니다. 기존 고객에게 가던 물량의 목적지 변경 가능성을 별도로 확인합니다.",
+        "→ 약속 물량과 실제 세계 공급 순증분은 다릅니다. 기존 고객에게 가던 물량의 목적지만 바뀔 수 있습니다.",
+        "→ 즉시 30만 톤 공급 약속은 9월 말 주간 수출 기준보다 크지만 그 과거 수치만으로 이행 불가능이라고 단정하지 않습니다.",
         "",
         "[한국 전이]",
         "정유          공급이 실제 늘면 경유 정제마진 축소 가능성 · 선적 확인 전 확정 금지",
         "운송          경유 가격 하락 시 비용 부담 완화 가능성 · 항공유와 별도 확인",
         "",
         "[다음 확인]",
-        "러시아        정제 처리량·경유 수율·국내 재고·수출 제한 실제 시행",
-        "실물          수출항·화물 선적·탱커 출항·목적지 도착·원산지 통관",
+        "러시아        정제 처리량·경유 수율·국내 재고·수출 제한 해제 시행령 원문",
+        "실물          선박 IMO·출항항·선적일·실제 톤수·미국 도착·원산지 통관",
         "미국          OFAC 제135호 적용범위·만료일·실제 경유 수입 통계",
-        "시장          경유 현물·선물·정제마진 3일/7일 지속 변화 · 중국 수출·호르무즈",
+        "시장          경유 현물·선물·정제마진 3일/7일 변화 · 중국 수출·호르무즈",
+        "일정          11월 3일 중간선거 전 실제 도착 확인 · 11월 약속 물량은 선거 이후 가능",
         "",
         "[근거]",
     ])
@@ -2786,7 +2844,8 @@ def _build_russia_diesel_supply_alert_body(
     lines.extend([
         "", "[주의]",
         "30만·50만·100만·300만 톤은 발표·조건부 계획이며, 수입량·실제 선적량으로 합산하지 않습니다.",
-        "경유 가격 검증 전에는 매출액·유가 인하 효과를 임의 추산하지 않습니다.",
+        "발표·OFAC 허가·러시아 수출제한 해제·선적·도착·글로벌 추가 공급은 서로 다른 검증 단계입니다.",
+        "경유 도매가격과 도착원가 검증 전에는 거래금액·유가 인하 효과를 임의 추산하지 않습니다.",
     ])
     return "\n".join(lines).strip() + "\n"
 

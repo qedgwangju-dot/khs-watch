@@ -1005,9 +1005,9 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         now = dt.datetime(2026, 10, 12, 15, tzinfo=dt.timezone.utc)
         def row(title,source,url):
             return MODULE.NewsItem(title,source,url,now.isoformat(),now.timestamp(),"russia_diesel_supply_transition")
-        k = row("Kpler Russia diesel cargoes loaded 2026-10-12 300,000 metric tons",
+        k = row("Kpler Russia diesel cargoes loaded 2026-10-12 300,000 metric tons IMO 1234567 Primorsk",
                 "Kpler","https://www.kpler.com/reports/real-track")
-        r = row("Reuters Russia diesel cargo departed 2026-10-12 300000 tonnes",
+        r = row("Reuters Russia diesel cargo departed 2026-10-12 300000 tonnes IMO 1234567 Primorsk",
                 "Reuters","https://www.reuters.com/business/energy/real-report")
         self.assertEqual(MODULE.classify_event(k.title), "russia_diesel_supply_transition")
         self.assertEqual(MODULE._russian_diesel_supply_stage(k.title), "shipment_verified")
@@ -1015,7 +1015,7 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         self.assertTrue(MODULE._russian_physical_shipment_confirmed([k,r]))
         self.assertIsNotNone(MODULE.confirm_event([k,r]))
         fp=MODULE._russian_shipment_fingerprint([k,r])
-        self.assertEqual(fp,("2026-10-12",6))
+        self.assertEqual(fp,("2026-10-12",6,"1234567"))
         different_day = row(r.title.replace("2026-10-12","2026-10-13"),r.source,r.link)
         different_qty = row(r.title.replace("300000","600000"),r.source,r.link)
         self.assertFalse(MODULE._russian_physical_shipment_confirmed([k,different_day]))
@@ -1023,13 +1023,61 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         no_date = row(r.title.replace("2026-10-12",""),r.source,r.link)
         self.assertFalse(MODULE._russian_physical_shipment_confirmed([k,no_date]))
 
+    def test_russia_matching_date_volume_different_vessel_does_not_verify(self):
+        now=dt.datetime(2026,10,12,15,tzinfo=dt.timezone.utc)
+        make=lambda title,src,url: MODULE.NewsItem(title,src,url,now.isoformat(),now.timestamp(),"russia_diesel_supply_transition")
+        one=make("Kpler Russia diesel cargoes loaded 2026-10-12 300000 tonnes IMO 1234567 Primorsk","Kpler","https://www.kpler.com/reports/one")
+        another=make("Reuters Russia diesel cargo departed 2026-10-12 300000 tonnes IMO 1234579 Primorsk","Reuters","https://www.reuters.com/business/energy/another")
+        self.assertFalse(MODULE._russian_physical_shipment_confirmed([one,another]))
+        self.assertIsNone(MODULE.confirm_event([one,another]))
+
+    def test_russia_matching_volume_date_different_port_does_not_verify(self):
+        now=dt.datetime(2026,10,12,15,tzinfo=dt.timezone.utc)
+        k=MODULE.NewsItem("Kpler Russia diesel cargoes loaded 2026-10-12 300000 tonnes IMO 1234567 Primorsk","Kpler","https://kpler.com/report",now.isoformat(),now.timestamp(),"russia_diesel_supply_transition")
+        r=MODULE.NewsItem("Reuters Russia diesel cargo departed 2026-10-12 300000 tonnes IMO 1234567 Novorossiysk","Reuters","https://reuters.com/report",now.isoformat(),now.timestamp(),"russia_diesel_supply_transition")
+        self.assertFalse(MODULE._russian_physical_shipment_confirmed([k,r]))
+
+    def test_russia_shipments_require_imo_checksum_and_not_predeal(self):
+        now=dt.datetime(2026,10,12,15,tzinfo=dt.timezone.utc)
+        make=lambda title,src,url: MODULE.NewsItem(title,src,url,now.isoformat(),now.timestamp(),"russia_diesel_supply_transition")
+        k=make("Kpler Russia diesel cargoes loaded 2026-10-12 300000 tonnes IMO 1234567 Primorsk","Kpler","https://kpler.com/report")
+        r=make("Reuters Russia diesel cargo departed 2026-10-12 300000 tonnes IMO 1234567 Primorsk","Reuters","https://reuters.com/report")
+        self.assertFalse(MODULE._russian_physical_shipment_confirmed([k,make(r.title.replace("1234567","1234568"),"Reuters",r.link)]))
+        self.assertFalse(MODULE._russian_physical_shipment_confirmed([k,make(r.title.replace("IMO 1234567",""),"Reuters",r.link)]))
+        old_k=make(k.title.replace("2026-10-12","2026-10-08"),"Kpler",k.link)
+        old_r=make(r.title.replace("2026-10-12","2026-10-08"),"Reuters",r.link)
+        self.assertFalse(MODULE._russian_physical_shipment_confirmed([old_k,old_r]))
+
+    def test_russia_planned_loading_is_not_physical_and_late_reports_expire(self):
+        now=dt.datetime(2026,10,12,15,tzinfo=dt.timezone.utc)
+        k=MODULE.NewsItem("Kpler Russia diesel cargoes loaded 2026-10-12 300000 tonnes IMO 1234567 Primorsk","Kpler","https://kpler.com/report",now.isoformat(),now.timestamp(),"russia_diesel_supply_transition")
+        plan="Reuters Russia will load diesel cargo 2026-10-12 300000 tonnes IMO 1234567 Primorsk"
+        self.assertNotEqual(MODULE._russian_diesel_supply_stage(plan),"shipment_verified")
+        r=MODULE.NewsItem("Reuters Russia diesel cargo departed 2026-10-12 300000 tonnes IMO 1234567 Primorsk","Reuters","https://reuters.com/report",now.isoformat(),now.timestamp(),"russia_diesel_supply_transition")
+        very_late=(now+dt.timedelta(days=9)).timestamp()
+        late_k=MODULE.NewsItem(k.title,k.source,k.link,k.published_utc,very_late,k.event_kind)
+        late_r=MODULE.NewsItem(r.title,r.source,r.link,r.published_utc,very_late,r.event_kind)
+        self.assertFalse(MODULE._russian_physical_shipment_confirmed([late_k,late_r]))
+
+    def test_russia_distinct_vessels_create_distinct_physical_event_ids(self):
+        now=dt.datetime(2026,10,12,15,tzinfo=dt.timezone.utc)
+        def cargo(imo):
+            return [
+                MODULE.NewsItem(f"Kpler Russia diesel cargoes loaded 2026-10-12 300000 tonnes IMO {imo} Primorsk","Kpler","https://kpler.com/report",now.isoformat(),now.timestamp(),"russia_diesel_supply_transition"),
+                MODULE.NewsItem(f"Reuters Russia diesel cargo departed 2026-10-12 300000 tonnes IMO {imo} Primorsk","Reuters","https://reuters.com/report",now.isoformat(),now.timestamp(),"russia_diesel_supply_transition")
+            ]
+        self.assertNotEqual(
+            MODULE.event_id("russia_diesel_supply_transition",cargo("1234567")),
+            MODULE.event_id("russia_diesel_supply_transition",cargo("1234579")),
+        )
+
     def test_russia_actual_shipments_dedup_by_observed_date_and_tons(self):
         now=dt.datetime(2026,10,12,15,tzinfo=dt.timezone.utc)
         def pair(day, qty):
             return [
-                MODULE.NewsItem(f"Kpler Russia diesel cargoes loaded {day} {qty} tonnes",
+                MODULE.NewsItem(f"Kpler Russia diesel cargoes loaded {day} {qty} tonnes IMO 1234567 Primorsk",
                     "Kpler","https://kpler.com/report",now.isoformat(),now.timestamp(),"russia_diesel_supply_transition"),
-                MODULE.NewsItem(f"Reuters Russia diesel cargo departed {day} {qty} tonnes",
+                MODULE.NewsItem(f"Reuters Russia diesel cargo departed {day} {qty} tonnes IMO 1234567 Primorsk",
                     "Reuters","https://reuters.com/article",now.isoformat(),now.timestamp(),"russia_diesel_supply_transition")
             ]
         a=MODULE.event_id("russia_diesel_supply_transition",pair("2026-10-12",300000))
