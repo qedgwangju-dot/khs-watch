@@ -533,12 +533,15 @@ def score(item: dict) -> int:
 
 def category(text: str, group: str) -> str:
     if group == 'digital_optimus_games':
+        # The renderer has no source argument, while score() does. The unique
+        # 2026-10-10 CEO post must never be promoted into a benchmark merely
+        # because its text discusses *missing* measurements.
+        if DIGITAL_OPTIMUS_POST_ID in text:
+            return 'Digital Optimus · 게임 수행 경영진 진전 발언'
         if DIGITAL_OPTIMUS_COMMERCIAL.search(text):
             return 'Digital Optimus · 정식 상용화·유료 계약'
         if DIGITAL_OPTIMUS_BENCHMARK.search(text) and not DIGITAL_OPTIMUS_BENCHMARK_NOT.search(text):
             return 'Digital Optimus · 회사 공식 다중게임 성능 검증'
-        if DIGITAL_OPTIMUS_POST_ID in text:
-            return 'Digital Optimus · 게임 수행 경영진 진전 발언'
         return 'Digital Optimus · 개발 단계'
     if group == 'tesla_touch_patent':
         # Renderer omits item['source'], while score() verifies source.
@@ -765,7 +768,7 @@ def verification(item: dict, group: str, text: str) -> str:
 def clean_title(title: str, source: str) -> str:
     text = f'{title} {source}'
     if _is_digital_optimus_game(text):
-        if DIGITAL_OPTIMUS_POST_ID in text:
+        if DIGITAL_OPTIMUS_POST_ID in text or source in DIGITAL_OPTIMUS_CEO_SOURCES:
             return '머스크: Digital Optimus 게임 수행 진전…Diablo 캠페인 약 절반'
         if source in DIGITAL_OPTIMUS_TESLA_SOURCES:
             return 'Tesla Digital Optimus 게임 수행·컴퓨터 사용 성능 후속 진전'
