@@ -185,16 +185,34 @@ def calendar_windows(rows: list[dict], latest: dt.date) -> dict:
 
 
 def btc_etf_flow() -> dict:
-    html = fetch(FARSIDE_BTC_ETF_URL).decode("utf-8", errors="replace")
-    soup = BeautifulSoup(html, "html.parser")
-    table_rows = []
-    for tr in soup.find_all("tr"):
-        cells = [" ".join(td.get_text(" ", strip=True).split()) for td in tr.find_all(["td", "th"])]
-        table_rows.append(cells)
+    # /btc/ carries the latest rolling rows; the all-data endpoint is required
+    # for true 1/3-calendar-month and previous-period comparisons.
+    html = fetch(FARSIDE_BTC_ETF_URL)
+    history_error = ""
+    try:
+        historical_html = fetch(FARSIDE_BTC_HISTORY_URL)
+    except Exception as exc:
+        historical_html = None
+        history_error = f"Farside historical source unavailable: {exc}"
+    table_rows: list[tuple[str, list[str]]] = []
+    history_row_count = 0
+    for source, raw in (("live", html), ("all-data", historical_html)):
+        if raw is None:
+            continue
+        soup = BeautifulSoup(raw.decode("utf-8", errors="replace"), "html.parser")
+        page_rows = [
+            [" ".join(td.get_text(" ", strip=True).split()) for td in tr.find_all(["td", "th"])]
+            for tr in soup.find_all("tr")
+        ]
+        if not any([x.upper() for x in row[1:13]] == list(FUND_TICKERS) for row in page_rows):
+            raise RuntimeError(f"Farside {source} 12-ETF header not verified")
+        if source == "all-data":
+            history_row_count = sum(parse_date(row[0]) is not None for row in page_rows if row)
+        table_rows += [(source, cells) for cells in page_rows]
     # A layout change must never silently move totals between funds or treat
     # a missing fund report as a literal zero.
     header_matches = [
-        cells for cells in table_rows
+        cells for source, cells in table_rows
         if all(ticker in cells for ticker in FUND_TICKERS)
         and [cells.index(ticker) for ticker in FUND_TICKERS]
             == sorted(cells.index(ticker) for ticker in FUND_TICKERS)
@@ -203,7 +221,7 @@ def btc_etf_flow() -> dict:
         raise RuntimeError("Farside BTC fund ticker header not verified; table layout may have changed")
 
     rows: list[dict] = []
-    for cells in table_rows:
+    for source, cells in table_rows:
         if len(cells) < 3:
             continue
         d = parse_date(cells[0])
@@ -260,12 +278,31 @@ def btc_etf_flow() -> dict:
             "recomputed_total": recomputed_total,
             "total_gap": total_gap,
             "total_validated": total_validated,
+            "source": source,
         })
 
     if not rows:
         raise RuntimeError("Farside BTC ETF flow rows could not be parsed")
 
-    rows.sort(key=lambda x: x["date"])
+    dedup: dict[dt.date, dict] = {}
+    for row in rows:
+        date = row["date"]
+        existing = dedup.get(date)
+        if existing is None:
+            dedup[date] = row
+            continue
+        a, b = existing["reported_funds"], row["reported_funds"]
+        if row["total_validated"] and not existing["total_validated"]:
+            dedup[date] = row
+        elif b > a:
+            dedup[date] = row
+        elif b == a and row["total_validated"] and existing["total_validated"]:
+            if abs(row["total"] - existing["total"]) >= 0.1:
+                raise RuntimeError(
+                    f"Farside live/all-data disagreement on {date}: "
+                    f"{existing['total']} vs {row['total']} (both {a}/12)"
+                )
+    rows = [dedup[d] for d in sorted(dedup)]
     source_latest = rows[-1]
     valid_rows = [
         x for x in rows
@@ -308,6 +345,16 @@ def btc_etf_flow() -> dict:
         else:
             five_day_direction = "변화 없음"
 
+    windows = calendar_windows(valid_rows, latest_valid["date"])
+    if history_error or history_row_count < 120:
+        for window in windows.values():
+            window.update({
+                "valid": False, "value_usd_m": None, "prev_value_usd_m": None,
+                "change_usd_m": None, "direction": "확인 불가",
+                "status": "확인 불가",
+                "error": history_error or "1·3개월 계산에 필요한 과거 원자료 미확보",
+            })
+
     return {
         "date": latest_valid["date"].isoformat(),
         "total_usd_m": latest_valid["total"],
@@ -335,6 +382,10 @@ def btc_etf_flow() -> dict:
         "five_day_change_usd_m": five_day_change,
         "five_day_change_pct": five_day_change_pct,
         "five_day_direction": five_day_direction,
+        "windows": windows,
+        "history_source": FARSIDE_BTC_HISTORY_URL,
+        "history_row_count": history_row_count,
+        "history_error": history_error,
     }
 
 
@@ -508,6 +559,7 @@ def main() -> None:
             "treasury_buyback_page": TREASURY_BUYBACK_PAGE,
             "treasury_rates": TREASURY_RATES_URL,
             "farside_btc_etf": FARSIDE_BTC_ETF_URL,
+            "farside_btc_etf_all": FARSIDE_BTC_HISTORY_URL,
         },
         "errors": errors,
     }
