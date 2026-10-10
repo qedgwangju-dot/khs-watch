@@ -279,12 +279,13 @@ def build_financing_alert(current: ReleaseSection, previous: ReleaseSection | No
             compare = f" (직전 {prior[quarter] * 10:,.0f}억달러 → 변화 {change * 10:+,.0f}억달러)"
         else:
             compare = " (직전 동일 분기 추정 확인 불가)"
-        rows.append(f"• {quarter}: {billion:,.0f}십억달러{compare}")
+        rows.append(f"• {quarter_ko(quarter)}: ${billion:,.0f}B({billion * 10:,.0f}억달러, {financing_krw(billion, fx)}){compare}")
     title = "미 재무부 분기 순차입 추정 신규 발표"
     body = "\n".join([
         "새 3시 공식 차입추정 자료 확인", *rows,
         "• 분기 순차입 추정과 정부 총부채 잔액은 서로 다릅니다.",
         "• 만기별 국채 발행정책은 별도 QRA에서 확정·교차검증합니다.",
+        f"환율 기준: {fx_basis}",
         f"미 재무부 원문: {link.url}",
     ])
     return title, body, {"heading": current.heading, "type": "financing_estimate",
