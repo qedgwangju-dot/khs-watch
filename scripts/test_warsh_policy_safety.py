@@ -10,6 +10,7 @@ import warsh_policy_path_watch_v3 as view
 import warsh_balance_sheet_watch_v2 as balance
 import warsh_policy_path_watch_v3 as path_v3
 import warsh_policy_source_guard as guard
+import warsh_policy_state_sync as state_sync
 import warsh_sep_path_watch_v2 as sep
 import warsh_post_fomc_ib_reaction_watch as post_ib
 import warsh_energy_shock_watch as energy
@@ -519,6 +520,47 @@ class WarshSafetyTests(unittest.TestCase):
             path_v3.main()
         send.assert_not_called()
         self.assertEqual(save.call_args.args[0]["source_error_streak"],2)
+
+    def test_newer_repo_delivery_blocks_repeated_source_warning(self):
+        older = {
+            "updated_at_utc":"2026-10-09T23:58:00+00:00",
+            "source_error_kind":"transport",
+            "source_health_alerted":True,
+            "last_health_message_id":71,
+        }
+        newer = {
+            "updated_at_utc":"2026-10-10T00:00:00+00:00",
+            "source_error_kind":"auth_missing",
+            "source_health_alerted":True,
+            "last_health_message_id":72,
+        }
+        chosen, why = state_sync.reconcile(older, newer)
+        self.assertEqual(why,"remote_newer")
+        self.assertEqual(chosen["last_health_message_id"],72)
+        self.assertEqual(chosen["source_error_kind"],"auth_missing")
+        # 이후 감시의 새 소스오류는 이미 안내된 'auth_missing'과 같아 전송 대상 아님
+        with patch.object(path_v3,"validated_snapshot",
+                          side_effect=RuntimeError("CME 공식 API 인증정보 미설정")), \
+             patch.object(path_v3.base,"load_state",return_value=chosen), \
+             patch.object(path_v3.base,"save_state"), \
+             patch.object(path_v3.base,"send") as send, \
+             patch.object(path_v3.base,"FORCE",False):
+            path_v3.main()
+        send.assert_not_called()
+
+    def test_unverifiable_git_state_fails_closed(self):
+        x={"updated_at_utc":"2026-10-10T00:00:00+00:00",
+           "last_health_message_id":72}
+        y=dict(x,last_health_message_id=73)
+        with self.assertRaisesRegex(RuntimeError,"상태가 서로 다름"):
+            state_sync.reconcile(x,y)
+        stale=dict(x,updated_at_utc="2026-10-09T23:59:00+00:00")
+        best,reason=state_sync.reconcile(x,stale)
+        self.assertEqual(reason,"local_newer")
+        self.assertEqual(best,x)
+        with self.assertRaisesRegex(RuntimeError,"갱신 시각"):
+            state_sync.reconcile(x,{"last_health_message_id":80})
+
 
 
 if __name__ == "__main__":
