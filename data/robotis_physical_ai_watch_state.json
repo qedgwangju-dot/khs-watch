@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-10-10T18:32:11.342767+00:00",
+  "updated_at": "2026-10-10T19:30:02.868091+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -512,14 +512,18 @@
     "a6502de7fb414b09b419445e96246967c66ca1a73ed962a56152355734d5c1cd",
     "d606692e060a86f77216d8c9ed3740a3e520e1cc49207f2162971886c07e6c0b",
     "d4180365806d4a6741b174ceee00ceae4d1fcb09748ef22ed8b01d9a04af1750",
-    "1b6b298d36ab369dc75dcec157e72e183cf9f13c353c655e6c4b85366c6316d7"
+    "1b6b298d36ab369dc75dcec157e72e183cf9f13c353c655e6c4b85366c6316d7",
+    "2965d3612ee331a7dcc4d4676322215b53f72e9d6dca42c98208a61e348f2bac"
   ],
-  "last_selected": [],
+  "last_selected": [
+    "2965d3612ee331a7dcc4d4676322215b53f72e9d6dca42c98208a61e348f2bac"
+  ],
   "groups": [
     "digital_optimus_games",
     "dkt_humanoid",
     "dongkuk_nps",
     "ess_battery",
+    "figure_ai",
     "lg_factory_loop",
     "lg_robotics",
     "nvidia_robotics_exec",
