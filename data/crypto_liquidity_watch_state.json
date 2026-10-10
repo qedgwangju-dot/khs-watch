@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-10T15:55:04+09:00",
+  "updated_at_kst": "2026-10-10T15:56:34+09:00",
   "buyback": {
     "sha256": "3e691d164254d161d0d814e87c0eb3b88203e8985bb2f046aff70278f43ae5d4",
     "bytes": 14234,
@@ -78,11 +78,13 @@
         "end": "2026-10-09",
         "trading_days": 22,
         "partial_days": 0,
+        "partial_dates": [],
         "value_usd_m": 1658.2,
         "prev_start": "2026-08-10",
         "prev_end": "2026-09-09",
         "prev_trading_days": 22,
         "prev_partial_days": 0,
+        "prev_partial_dates": [],
         "prev_value_usd_m": 3277.0,
         "change_usd_m": -1618.8,
         "direction": "순유입 둔화",
@@ -94,11 +96,16 @@
         "end": "2026-10-09",
         "trading_days": 65,
         "partial_days": 2,
+        "partial_dates": [
+          "2026-07-27",
+          "2026-08-07"
+        ],
         "value_usd_m": 5938.8,
         "prev_start": "2026-04-10",
         "prev_end": "2026-07-09",
         "prev_trading_days": 62,
         "prev_partial_days": 0,
+        "prev_partial_dates": [],
         "prev_value_usd_m": -5271.3,
         "change_usd_m": 11210.1,
         "direction": "순유출→순유입 전환",
