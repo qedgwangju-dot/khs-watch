@@ -606,6 +606,22 @@ def _fed_target_from_official():
     raise RuntimeError("No verified current FOMC statement: "+last_error)
 
 
+def bond_yield_band(y10):
+    """In-house risk zones, NOT BofA targets or forecasts."""
+    if y10 >= 6.00:
+        return "at_or_above_6_00"
+    if y10 >= 5.50:
+        return "5_50_to_6_00"
+    if y10 >= 5.30:
+        return "5_30_to_5_50"
+    return "below_5_30"
+
+assert bond_yield_band(5.24) == "below_5_30"
+assert bond_yield_band(5.30) == "5_30_to_5_50"
+assert bond_yield_band(5.50) == "5_50_to_6_00"
+assert bond_yield_band(6.00) == "at_or_above_6_00"
+
+
 def fetch_hartnett_macro_context():
     """Official Treasury and FOMC only; withhold joint interpretation on failure."""
     curve = _treasury_official_history()
@@ -623,7 +639,7 @@ def fetch_hartnett_macro_context():
         "curve_10y_minus_2y_bp":round((y10-y2)*100.0,1),
         "fed_target_upper_pct":round(upper,3),
         "fed_effective_date":fed["date"].isoformat(),
-        "bond_level":"elevated" if y10>=5.30 else "below_5_30",
+        "bond_level":bond_yield_band(y10),
         "bond_momentum":"rise_20bp" if five_bp>=20 else "fall_20bp" if five_bp<=-20 else "neutral",
         "url_yields":curve["source_url"],
         "url_fed":fed["url"],
@@ -660,7 +676,7 @@ def hartnett_regime_signal(mmf_weekly_bn, bond):
         return "금리 공식 수치 확인 대기 — 현금성 자금만으로 위험선호 방향 단정 금지"
     if mmf_weekly_bn is None:
         return "ICI 주간 MMF 갱신 대기 — 채권금리만으로 MMF 이동을 추정하지 않음"
-    if mmf_weekly_bn > 0 and bond["bond_level"] == "elevated":
+    if mmf_weekly_bn > 0 and bond["bond_level"] != "below_5_30":
         return "ICI MMF 총자산 증가·미 10년물 감시기준 5.30% 이상: 현금 대기와 금리 부담 동반. 주식 강제매도로 단정하지 않음"
     if mmf_weekly_bn < 0 and bond["yield_10y_5d_bp"] < -15:
         return "MMF 감소·10년물 금리 하락: 현금 대기 완화 가능성. 실제 주식형 순유입 확인 전 재진입 단정 금지"
@@ -670,7 +686,7 @@ def hartnett_regime_signal(mmf_weekly_bn, bond):
 assert election_window_label(datetime(2026, 11, 3).date()) == "election_day"
 assert election_window_label(datetime(2026, 10, 27).date()) == "within_7_days"
 assert "강제매도" in hartnett_regime_signal(72.27, {
-    "bond_level":"elevated", "yield_10y_5d_bp":20.0
+    "bond_level":"5_30_to_5_50", "yield_10y_5d_bp":20.0
 })
 assert "재진입 단정 금지" in hartnett_regime_signal(-1.0, {
     "bond_level":"below_5_30","yield_10y_5d_bp":-20.0
@@ -1236,10 +1252,14 @@ hartnett_init = bool(
     hartnett_macro and ici_mmf and mmf_recent
     and old_hartnett.get("hartnett_tracking_version") != HARTNETT_TRACK_VERSION
 )
+old_bond_band = old_hartnett.get("hartnett_bond_level")
+if old_bond_band == "elevated" and hartnett_macro:
+    # Migration from one generic elevated zone to finer 5.30 / 5.50 / 6.00 zones.
+    old_bond_band = bond_yield_band(float(old_hartnett.get("hartnett_10y_pct",5.30)))
 bond_level_transition = bool(
     hartnett_macro
-    and old_hartnett.get("hartnett_bond_level")
-    and old_hartnett.get("hartnett_bond_level") != hartnett_macro["bond_level"]
+    and old_bond_band
+    and old_bond_band != hartnett_macro["bond_level"]
 )
 bond_momentum_transition = bool(
     hartnett_macro and new_bond_momentum_episode(
@@ -1410,9 +1430,11 @@ def direction_word(v, up="증가", down="감소"):
 stock_signals = []
 if ici and ici["metrics"].get("domestic") is not None:
     stock_signals.append(("ICI", ici["metrics"]["domestic"]))
-if bofa and bofa["metrics"].get("us_equity_bn") is not None:
+# A press publication date alone cannot qualify as a current investor-flow week.
+# The underlying reference week must be verified and recent before use in the headline.
+if bofa and recent_official_week(bofa, new_york_date) and bofa["metrics"].get("us_equity_bn") is not None:
     stock_signals.append(("BofA/EPFR", bofa["metrics"]["us_equity_bn"]))
-if lipper and lipper["metrics"].get("us_equity_bn") is not None:
+if lipper and recent_official_week(lipper, new_york_date) and lipper["metrics"].get("us_equity_bn") is not None:
     stock_signals.append(("LSEG Lipper", lipper["metrics"]["us_equity_bn"]))
 
 mmf_change = ici_mmf["metrics"].get("weekly_change_bn") if ici_mmf else None
@@ -1550,8 +1572,9 @@ if should_alert:
 
     if source_corrections:
         body.append(
-            "• 이전 ICI 장기펀드 표의 행 매칭 오류 및 MMF 총자산 반올림을 공식 수치표로 재검산해 정정 "
-            "(실제 원자료가 새로 발행된 것은 아님)"
+            "• ICI 동일 기준기간에 기존 저장값과 다른 새 원자료 수치가 감지됨: "
+            + ", ".join("MMF 총자산" if k=="mmf" else "주식·채권 자금흐름" for k in source_corrections)
+            + " — 공식 수정치인지 수집 오류인지 원자료로 검산 필요"
         )
     # Hartnett/BofA is an analyst's publicly reported opinion, not an ICI official series.
     # Keep the Bloomberg-quoted $166.4B separate from ICI's U.S. fund-asset change.
@@ -1572,15 +1595,28 @@ if should_alert:
             "→ BofA 수치와 비교·합산 금지"
         )
     if hartnett_macro:
+        zone_txt = {
+            "below_5_30":"5.30% 미만",
+            "5_30_to_5_50":"5.30~5.50% 미만",
+            "5_50_to_6_00":"5.50~6.00% 미만",
+            "at_or_above_6_00":"6.00% 이상",
+        }.get(hartnett_macro["bond_level"],"검증 대기")
         body.append(
             f"• 미 국채 10년물 {hartnett_macro['yield_10y_pct']:.3f}% "
             f"/ 2년물 {hartnett_macro['yield_2y_pct']:.3f}% "
             f"/ 10년물 5거래일 {hartnett_macro['yield_10y_5d_bp']:+.1f}bp "
             f"(기준 {hartnett_macro['treasury_date']})"
         )
+        body.append(f"• 장기금리 내부 위험구간: {zone_txt} (자체 기준이며 BofA 제시 임계치 아님)")
+        prior_rate=old_hartnett.get("hartnett_fed_target_upper_pct")
+        rate_move=(hartnett_macro["fed_target_upper_pct"]-prior_rate) if isinstance(prior_rate,(int,float)) else None
+        rate_note=(
+            f" · 직전 저장값 대비 {'인상' if rate_move > 0 else '인하'} {abs(rate_move)*100:.0f}bp"
+            if rate_move is not None and abs(rate_move)>=0.245 else ""
+        )
         body.append(
             f"• 연준 목표금리 상단 {hartnett_macro['fed_target_upper_pct']:.2f}% "
-            f"(효력일 {hartnett_macro['fed_effective_date']})"
+            f"(효력일 {hartnett_macro['fed_effective_date']}){rate_note}"
         )
         body.append(
             f"• 검증 판정: {html.escape(hartnett_regime_signal(mmf_change if mmf_recent else None, hartnett_macro))}"
@@ -1650,7 +1686,7 @@ if should_alert:
         "• BofA/Hartnett 주간 순유입과 ICI 공식 MMF 총자산 주간 증감은 모집단·산식이 달라 합산·직접 비교 금지",
         "• ICI·BofA/EPFR·LSEG Lipper는 모집단이 달라 합산·평균하지 않음",
         "• 보도일은 집계주간이 아님. 출처별 실제 집계기간이 확인되지 않으면 주식형 자금흐름 충돌 판정도 보류",
-        "• 미 국채 10년물 5.30%·5일 20bp는 내부 경보 기준이며 BofA가 공식 제시한 임계치가 아님",
+        "• 미 국채 10년물 5.30%·5.50%·6.00%와 5거래일 20bp는 내부 경보 기준이며 BofA가 공식 제시한 임계치가 아님",
         "• FINRA 마진부채는 월간 레버리지 확인용으로 주간 펀드 흐름과 기간을 섞지 않음",
         "• JPMorganChase Institute 가계 인출은 저빈도 구조지표로 사용하며 새 공식 수치가 있을 때만 변화로 처리",
         "• Federal Reserve Z.1 가계 자산은 분기 구조지표로 사용하며 새 분기 값이 있을 때만 변화로 처리",
@@ -1715,7 +1751,11 @@ else:
             "hartnett_treasury_date": hartnett_macro["treasury_date"],
             "hartnett_10y_pct": hartnett_macro["yield_10y_pct"],
             "hartnett_10y_5d_bp": hartnett_macro["yield_10y_5d_bp"],
+            "hartnett_bond_level": hartnett_macro["bond_level"],
             "hartnett_bond_momentum": hartnett_macro["bond_momentum"],
+            "hartnett_fed_target_upper_pct": hartnett_macro["fed_target_upper_pct"],
+            "hartnett_fed_effective_date": hartnett_macro["fed_effective_date"],
+            "hartnett_election_stage": election_window,
         }
         for key, value in latest_hartnett.items():
             if derived.get(key) != value:
