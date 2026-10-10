@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-10-10T07:47:14+09:00",
+  "last_checked_kst": "2026-10-10T10:45:20+09:00",
   "media_id": null,
   "cftc_date": "October 6, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-10-10T07:47:14+09:00",
+    "checked_kst": "2026-10-10T10:45:20+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "October 6, 2026",
@@ -193,7 +193,7 @@
         "basis": "previous trade date settlement + total product daily OI",
         "trade_date": "2026-10-08",
         "month": "DEC26",
-        "url": "https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf?download=1&_=2026100918"
+        "url": "https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf?download=1&_=2026100921"
       },
       "history_3y": {
         "basis": "CFTC TFF NASDAQ MINI futures-only",
@@ -247,7 +247,7 @@
         "scope": "CFTC TFF NASDAQ MINI 전체시장 주간"
       },
       "stored_cftc_period": "September 29, 2026",
-      "history_status": "CFTC 최신 주간 보고서와 10년 공식자료 교차검증",
+      "history_status": "이전 운영 실행의 공식 CFTC 현재주 검증 재사용",
       "errors": [],
       "stage": 0,
       "label": "⚪ 채권→Nasdaq 이중 숏 스퀴즈 미확인",
