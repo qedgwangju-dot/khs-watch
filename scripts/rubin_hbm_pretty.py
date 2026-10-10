@@ -236,7 +236,7 @@ def format_hybrid_alert(original: str) -> str:
         "TSMC 공식": ("tsmc.com", "www.tsmc.com"),
         "삼성전자 이원화 보도": ("zdnet.co.kr", "www.zdnet.co.kr"),
         "SK하이닉스 3나노 보도": ("www1.edaily.co.kr", "www.edaily.co.kr", "edaily.co.kr"),
-        "Micron 임원 인용 보도": ("thelec.kr", "www.thelec.kr"),
+        "Micron 임원 인용 보도": ("thelec.kr", "www.thelec.kr", "thelec.net", "www.thelec.net"),
         "TrendForce 재정리": ("trendforce.com", "www.trendforce.com"),
         "Amazon 협력 공식": ("blogs.nvidia.com",),
         "신규 제조사 공식원문": ("news.samsung.com", "semiconductor.samsung.com",
