@@ -208,6 +208,7 @@ OFFICIAL_SOURCE_HINTS = (
 DIRECT_OFFICIAL_PAGES = [
     ("OpenAI Alignment", "https://alignment.openai.com/", r'href=["\\\']([^"\\\']*/misalignment-reports/[^"\\\']+)["\\\']'),
     ("Anthropic Research", "https://www.anthropic.com/research", r'href=["\\\']([^"\\\']*/research/[^"\\\']+)["\\\']'),
+    ("Anthropic Model Incident Reports", "https://www.anthropic.com/research", r'href=["\\\']([^"\\\']*/research/investigating-unintended-model-actions)["\\\']'),
     ("Anthropic News", "https://www.anthropic.com/news", r'href=["\\\']([^"\\\']*/(?:news/[^"\\\']+|claude-fable-and-mythos-5-1))["\\\']'),
 ]
 
@@ -226,6 +227,11 @@ VENDOR_PATTERNS = [
 ]
 
 CATEGORY_PATTERNS = [
+    ("모델 비의도적 외부접근·사후시정", (
+        "investigating unintended model actions", "unintended model actions",
+        "unintended use of government systems", "submitted forms it should not",
+        "external government website actions",
+    )),
     ("금융·핵심인프라 AI 사이버 위험 경보", (
         "jamie dimon", "jpmorgan", "financial sector", "bank", "banks",
         "critical infrastructure", "10-fold", "tenfold", "ten-fold",
@@ -485,6 +491,8 @@ def detect_vendor(text: str) -> str:
 
 def detect_category(text: str) -> str:
     low = f" {text.lower()} "
+    if "investigating unintended model actions" in low:
+        return "모델 비의도적 외부접근·사후시정"
     scores = []
     for label, patterns in CATEGORY_PATTERNS:
         score = sum(1 for p in patterns if p in low)
@@ -555,6 +563,8 @@ def material(item: dict) -> bool:
     low = combined.lower()
 
     if item.get("kind") == "official_direct":
+        if item.get("url", "").rstrip("/").endswith("/research/investigating-unintended-model-actions"):
+            return True
         source = (item.get("source") or "").lower()
         if "openai alignment" in source and "/misalignment-reports/" in (item.get("url") or ""):
             return True
@@ -913,6 +923,8 @@ def incident_fact(item: dict) -> str | None:
         return "이 중 3만3,000건이 긴급·높음 등급"
     if ("5,500" in text or "5500" in text) and "vulnerab" in text:
         return "Anthropic 자체 스캔으로 추가 취약점 5,500건 발견"
+    if (item.get("url") or "").rstrip("/").endswith("/research/investigating-unintended-model-actions"):
+        return "Anthropic 공식 사고보고: 평가·내부 사용 중 서버 명령 실행·실제 웹 양식 제출·접근 제한 우회 등 비의도적 행동 확인"
     if "481 million" in text or "481m" in text:
         return "Anthropic 조사 범위 약 4억8,100만 기록"
     if ("four incidents" in text or "4 incidents" in text) and ("unauthorized" in text or "third-party" in text):
@@ -967,6 +979,8 @@ def event_impact(cluster: list[dict]) -> str:
         return "Anthropic이 Mythos 같은 고성능 사이버 모델의 접근범위와 차단 수준을 검증된 방어·레드팀 조직에 확대하면서 방어 생산성과 오용 위험이 동시에 커지는지가 핵심입니다."
     if "대규모 취약점 발굴·검증" in cats:
         return "AI가 실제 소프트웨어에서 발굴·검증하는 취약점 규모와 심각도가 인간 중심 보안 프로세스의 처리용량을 넘어서는지가 핵심입니다."
+    if "모델 비의도적 외부접근·사후시정" in cats:
+        return "정부기관 등 제3자 웹시스템에 대한 모델의 비의도적 요청을 실제 침해·무해한 양식 제출·시험환경 실패로 구분하고, 관계기관 신고·인터넷 격리·자동 차단의 실효성을 추적합니다."
     if "공동서약·외부감사 보안실패" in cats:
         return "공동 안전서약의 외부감사에서 실제 보안통제 실패·비인가 접근·준수 위반이 확인됐는지가 핵심입니다."
     if "이사회·감독기구 중단명령" in cats:
@@ -1132,7 +1146,7 @@ def main() -> int:
 
     # Silent baseline on the first successful collection to prevent retroactive spam.
     baseline = not bool(state.get("initialized"))
-    direct_source_version = 3
+    direct_source_version = 4
     direct_baseline = state.get("direct_official_version") != direct_source_version
     if baseline:
         new_items = []
