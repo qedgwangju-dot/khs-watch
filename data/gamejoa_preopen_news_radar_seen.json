@@ -17603,6 +17603,26 @@
       "telegram_core_fact": "김세빈 유안타증권 연구원은 “지수 전체의 이익추정치 개선보다 반도체 소부장과 기판, 통신장비 등 일부 IT 업종과 테마 중심의 상승”이라며 “지수 추격보다 실적과 매출 추정치가 실제로 올라오는 업종으로 압축할 필요가 있다”고 조언했다.",
       "title": "“한 달 만에 무려 70% 급등” ‘삼전닉스’ 저리 가라…코스닥 이끈 ‘반도체 소부장’ [투자360]"
     },
+    "core:dcbab3906efbf977d8506ff4": {
+      "first_seen_kst": "2026-10-11T05:45:39+09:00",
+      "lanes": {
+        "live": "2026-10-11T05:45:39+09:00"
+      },
+      "last_seen_kst": "2026-10-11T05:45:39+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820741",
+      "source": "뉴시스",
+      "source_body_digest": "cb119fafb787141b28a932724cb26bb6d437dc73c10a6fd5456cf6e8a048d3c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a9b1e677fadb46e60e703def426a4044abb216e4be48e98ad024379d19df1d5",
+      "source_fact_keys": [
+        "source_fact:v1:4bcdd280307328405d76cc09cc9f1f1062407218aaff7c8ee71d96c1a674a371",
+        "source_fact:v1:d23a6e45003b77362fd1b79871a914912296220fb6269148ad859b8cf27ceeca"
+      ],
+      "source_published_kst": "2026-10-11T05:25+09:00",
+      "source_title": "이란 \"호르무즈 미지정 항로 지나던 대형 유조선 기뢰 충돌 폭발\"",
+      "telegram_core_fact": "IRGC 해군은 해당 유조선이 위치 추적 시스템을 끄고 이동 중이었다며 \"호르무즈 해협의 안전과 규정을 무시하는 모든 위반 유조선의 최후는 끔찍한 화재일 것\"이라고 경고했다.",
+      "title": "이란 \"호르무즈 미지정 항로 지나던 대형 유조선 기뢰 충돌 폭발\""
+    },
     "core:dceefe5917f9df5a7bc6b63b": {
       "first_seen_kst": "2026-10-09T19:43:36+09:00",
       "lanes": {
@@ -27848,25 +27868,22 @@
     "event:c91bd744dc57f98702bd6932": {
       "first_seen_kst": "2026-10-11T02:45:51+09:00",
       "lanes": {
-        "live": "2026-10-11T02:45:51+09:00"
+        "live": "2026-10-11T05:45:39+09:00"
       },
-      "last_seen_kst": "2026-10-11T02:45:51+09:00",
-      "link": "https://www.newsis.com/view/NISX20261011_0003820731",
+      "last_seen_kst": "2026-10-11T05:45:39+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820741",
       "source": "뉴시스",
-      "source_body_digest": "5fc5c69832d026d3cafbfcbfa02beae390e56c47ecc2b465c71fa355e5ff24b5",
+      "source_body_digest": "cb119fafb787141b28a932724cb26bb6d437dc73c10a6fd5456cf6e8a048d3c0",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:984e65b43295901c84f79d03f5e6549bdccedfa7df25f1c95af1abe8a865f415",
+      "source_fact_identity": "source_facts:v1:4a9b1e677fadb46e60e703def426a4044abb216e4be48e98ad024379d19df1d5",
       "source_fact_keys": [
-        "source_fact:v1:1cef38f33583e9b2f06248a2825a93abbe6a44fef1b0dafe060dbe7f79d671cb",
-        "source_fact:v1:aded66a24517cc6e2b0e3857a1f00eb4d6ab5999ce2eb99641b338f1be241be3",
-        "source_fact:v1:c7d21c2286e4435efd5a0223e630ed4b100ecfcdd79a235baa394a7dfde0c674",
-        "source_fact:v1:cc8caf8594b1c562c94af13d598d2fc4234a1a6378c1f0d5cc1c01871513806e",
-        "source_fact:v1:eb00e707dd813a8043c85b0e301607326901f3a405ea968cd401aacd906cb50a"
+        "source_fact:v1:4bcdd280307328405d76cc09cc9f1f1062407218aaff7c8ee71d96c1a674a371",
+        "source_fact:v1:d23a6e45003b77362fd1b79871a914912296220fb6269148ad859b8cf27ceeca"
       ],
-      "source_published_kst": "2026-10-11T02:43+09:00",
-      "source_title": "\"사우디 수도 리야드 공항 또 공격받아…수십 명 부상·항공편 차질\"",
-      "telegram_core_fact": "지난 5일 후티 반군이 사우디의 공항·정유 시설 등을 겨냥한 대대적인 공격 계획을 발표한 이후 킹칼리드 공항이 공격받은 것은 이날이 최소 세 번째다.",
-      "title": "\"사우디 수도 리야드 공항 또 공격받아…수십 명 부상·항공편 차질\""
+      "source_published_kst": "2026-10-11T05:25+09:00",
+      "source_title": "이란 \"호르무즈 미지정 항로 지나던 대형 유조선 기뢰 충돌 폭발\"",
+      "telegram_core_fact": "IRGC 해군은 해당 유조선이 위치 추적 시스템을 끄고 이동 중이었다며 \"호르무즈 해협의 안전과 규정을 무시하는 모든 위반 유조선의 최후는 끔찍한 화재일 것\"이라고 경고했다.",
+      "title": "이란 \"호르무즈 미지정 항로 지나던 대형 유조선 기뢰 충돌 폭발\""
     },
     "event:c97955bd13212d7367a4e3b6": {
       "first_seen_kst": "2026-09-23T09:05:43+09:00",
@@ -46534,6 +46551,26 @@
       "source_title": "효성중공업, 2GW급 HVDC 성능검증 설비 구축…서해안 에너지고속도로 대비",
       "telegram_core_fact": "효성중공업은 경기 과천 중공업연구소에 국내 최초로 독자기술 기반의 2GW급 HVDC 성능검증 설비인 HILS(Hardware-In-the-Loop Simulation) 시스템을 구축했다고 8일 밝혔다.",
       "title": "효성중공업, 2GW급 HVDC 성능검증 설비 구축…서해안 에너지고속도로 대비"
+    },
+    "fact:787ceb258b08cf1ac92592a5": {
+      "first_seen_kst": "2026-10-11T05:45:39+09:00",
+      "lanes": {
+        "live": "2026-10-11T05:45:39+09:00"
+      },
+      "last_seen_kst": "2026-10-11T05:45:39+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820741",
+      "source": "뉴시스",
+      "source_body_digest": "cb119fafb787141b28a932724cb26bb6d437dc73c10a6fd5456cf6e8a048d3c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a9b1e677fadb46e60e703def426a4044abb216e4be48e98ad024379d19df1d5",
+      "source_fact_keys": [
+        "source_fact:v1:4bcdd280307328405d76cc09cc9f1f1062407218aaff7c8ee71d96c1a674a371",
+        "source_fact:v1:d23a6e45003b77362fd1b79871a914912296220fb6269148ad859b8cf27ceeca"
+      ],
+      "source_published_kst": "2026-10-11T05:25+09:00",
+      "source_title": "이란 \"호르무즈 미지정 항로 지나던 대형 유조선 기뢰 충돌 폭발\"",
+      "telegram_core_fact": "IRGC 해군은 해당 유조선이 위치 추적 시스템을 끄고 이동 중이었다며 \"호르무즈 해협의 안전과 규정을 무시하는 모든 위반 유조선의 최후는 끔찍한 화재일 것\"이라고 경고했다.",
+      "title": "이란 \"호르무즈 미지정 항로 지나던 대형 유조선 기뢰 충돌 폭발\""
     },
     "fact:789c6e156dfdeee9d67c76e4": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
@@ -83724,6 +83761,26 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T10:38+09:00",
       "title": "홈플러스부터 롯데카드까지…김병주 MBK 회장, 올해 국감 출석할까"
+    },
+    "link:53b58f74202fbdf25b78e63c": {
+      "first_seen_kst": "2026-10-11T05:45:39+09:00",
+      "lanes": {
+        "live": "2026-10-11T05:45:39+09:00"
+      },
+      "last_seen_kst": "2026-10-11T05:45:39+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820741",
+      "source": "뉴시스",
+      "source_body_digest": "cb119fafb787141b28a932724cb26bb6d437dc73c10a6fd5456cf6e8a048d3c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a9b1e677fadb46e60e703def426a4044abb216e4be48e98ad024379d19df1d5",
+      "source_fact_keys": [
+        "source_fact:v1:4bcdd280307328405d76cc09cc9f1f1062407218aaff7c8ee71d96c1a674a371",
+        "source_fact:v1:d23a6e45003b77362fd1b79871a914912296220fb6269148ad859b8cf27ceeca"
+      ],
+      "source_published_kst": "2026-10-11T05:25+09:00",
+      "source_title": "이란 \"호르무즈 미지정 항로 지나던 대형 유조선 기뢰 충돌 폭발\"",
+      "telegram_core_fact": "IRGC 해군은 해당 유조선이 위치 추적 시스템을 끄고 이동 중이었다며 \"호르무즈 해협의 안전과 규정을 무시하는 모든 위반 유조선의 최후는 끔찍한 화재일 것\"이라고 경고했다.",
+      "title": "이란 \"호르무즈 미지정 항로 지나던 대형 유조선 기뢰 충돌 폭발\""
     },
     "link:53c8cf4383597866a3f177d0": {
       "first_seen_kst": "2026-10-05T13:15:14+09:00",
@@ -140569,6 +140626,26 @@
       ],
       "source_published_kst": "2026-10-05T09:55+09:00",
       "title": "日라피더스, 삼성·TSMC식 설계동맹 생태계 구축"
+    },
+    "original:5de900547650cfcbe5dc369c": {
+      "first_seen_kst": "2026-10-11T05:45:39+09:00",
+      "lanes": {
+        "live": "2026-10-11T05:45:39+09:00"
+      },
+      "last_seen_kst": "2026-10-11T05:45:39+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820741",
+      "source": "뉴시스",
+      "source_body_digest": "cb119fafb787141b28a932724cb26bb6d437dc73c10a6fd5456cf6e8a048d3c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a9b1e677fadb46e60e703def426a4044abb216e4be48e98ad024379d19df1d5",
+      "source_fact_keys": [
+        "source_fact:v1:4bcdd280307328405d76cc09cc9f1f1062407218aaff7c8ee71d96c1a674a371",
+        "source_fact:v1:d23a6e45003b77362fd1b79871a914912296220fb6269148ad859b8cf27ceeca"
+      ],
+      "source_published_kst": "2026-10-11T05:25+09:00",
+      "source_title": "이란 \"호르무즈 미지정 항로 지나던 대형 유조선 기뢰 충돌 폭발\"",
+      "telegram_core_fact": "IRGC 해군은 해당 유조선이 위치 추적 시스템을 끄고 이동 중이었다며 \"호르무즈 해협의 안전과 규정을 무시하는 모든 위반 유조선의 최후는 끔찍한 화재일 것\"이라고 경고했다.",
+      "title": "이란 \"호르무즈 미지정 항로 지나던 대형 유조선 기뢰 충돌 폭발\""
     },
     "original:5dfb3e473fbcb6c6d3a5ecb1": {
       "first_seen_kst": "2026-10-04T08:29:55+09:00",
@@ -215914,6 +215991,26 @@
       "source_title": "美 주담대 금리 폭등에…트럼프 \"연준, 나라 경제 망치려는 듯\"",
       "telegram_core_fact": "미 모기지은행협회(MBA)에 따르면 지난 2일 기준 30년물 고정 모기지 평균 금리는 전주 대비 19bp 오른 7.49%를 기록했다.",
       "title": "美 주담대 금리 폭등에…트럼프 \"연준, 나라 경제 망치려는 듯\""
+    },
+    "source_fact:402579e933457454cb1e4faa": {
+      "first_seen_kst": "2026-10-11T05:45:39+09:00",
+      "lanes": {
+        "live": "2026-10-11T05:45:39+09:00"
+      },
+      "last_seen_kst": "2026-10-11T05:45:39+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820741",
+      "source": "뉴시스",
+      "source_body_digest": "cb119fafb787141b28a932724cb26bb6d437dc73c10a6fd5456cf6e8a048d3c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a9b1e677fadb46e60e703def426a4044abb216e4be48e98ad024379d19df1d5",
+      "source_fact_keys": [
+        "source_fact:v1:4bcdd280307328405d76cc09cc9f1f1062407218aaff7c8ee71d96c1a674a371",
+        "source_fact:v1:d23a6e45003b77362fd1b79871a914912296220fb6269148ad859b8cf27ceeca"
+      ],
+      "source_published_kst": "2026-10-11T05:25+09:00",
+      "source_title": "이란 \"호르무즈 미지정 항로 지나던 대형 유조선 기뢰 충돌 폭발\"",
+      "telegram_core_fact": "IRGC 해군은 해당 유조선이 위치 추적 시스템을 끄고 이동 중이었다며 \"호르무즈 해협의 안전과 규정을 무시하는 모든 위반 유조선의 최후는 끔찍한 화재일 것\"이라고 경고했다.",
+      "title": "이란 \"호르무즈 미지정 항로 지나던 대형 유조선 기뢰 충돌 폭발\""
     },
     "source_fact:402b1bfe2c24184fd6b9d651": {
       "first_seen_kst": "2026-10-08T07:12:10+09:00",
@@ -307534,6 +307631,26 @@
       "telegram_core_fact": "10년 만기 미국 국채금리는 장중 연 5.36%까지 상승해 2002년 이후 최고치를 기록했다.",
       "title": "뉴욕증시, 국채금리 24년래 최고에 휘청⋯3대 지수 동반 하락[종합]"
     },
+    "source_fact:cdf1d72a55407c83eb06620e": {
+      "first_seen_kst": "2026-10-11T05:45:39+09:00",
+      "lanes": {
+        "live": "2026-10-11T05:45:39+09:00"
+      },
+      "last_seen_kst": "2026-10-11T05:45:39+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820741",
+      "source": "뉴시스",
+      "source_body_digest": "cb119fafb787141b28a932724cb26bb6d437dc73c10a6fd5456cf6e8a048d3c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a9b1e677fadb46e60e703def426a4044abb216e4be48e98ad024379d19df1d5",
+      "source_fact_keys": [
+        "source_fact:v1:4bcdd280307328405d76cc09cc9f1f1062407218aaff7c8ee71d96c1a674a371",
+        "source_fact:v1:d23a6e45003b77362fd1b79871a914912296220fb6269148ad859b8cf27ceeca"
+      ],
+      "source_published_kst": "2026-10-11T05:25+09:00",
+      "source_title": "이란 \"호르무즈 미지정 항로 지나던 대형 유조선 기뢰 충돌 폭발\"",
+      "telegram_core_fact": "IRGC 해군은 해당 유조선이 위치 추적 시스템을 끄고 이동 중이었다며 \"호르무즈 해협의 안전과 규정을 무시하는 모든 위반 유조선의 최후는 끔찍한 화재일 것\"이라고 경고했다.",
+      "title": "이란 \"호르무즈 미지정 항로 지나던 대형 유조선 기뢰 충돌 폭발\""
+    },
     "source_fact:cdf58e939a9cc7b70aaf35c4": {
       "first_seen_kst": "2026-10-07T09:44:16+09:00",
       "lanes": {
@@ -360417,6 +360534,26 @@
       "source_published_kst": "2026-10-05T09:55+09:00",
       "title": "日라피더스, 삼성·TSMC식 설계동맹 생태계 구축"
     },
+    "title:5de900547650cfcbe5dc369c": {
+      "first_seen_kst": "2026-10-11T05:45:39+09:00",
+      "lanes": {
+        "live": "2026-10-11T05:45:39+09:00"
+      },
+      "last_seen_kst": "2026-10-11T05:45:39+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820741",
+      "source": "뉴시스",
+      "source_body_digest": "cb119fafb787141b28a932724cb26bb6d437dc73c10a6fd5456cf6e8a048d3c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a9b1e677fadb46e60e703def426a4044abb216e4be48e98ad024379d19df1d5",
+      "source_fact_keys": [
+        "source_fact:v1:4bcdd280307328405d76cc09cc9f1f1062407218aaff7c8ee71d96c1a674a371",
+        "source_fact:v1:d23a6e45003b77362fd1b79871a914912296220fb6269148ad859b8cf27ceeca"
+      ],
+      "source_published_kst": "2026-10-11T05:25+09:00",
+      "source_title": "이란 \"호르무즈 미지정 항로 지나던 대형 유조선 기뢰 충돌 폭발\"",
+      "telegram_core_fact": "IRGC 해군은 해당 유조선이 위치 추적 시스템을 끄고 이동 중이었다며 \"호르무즈 해협의 안전과 규정을 무시하는 모든 위반 유조선의 최후는 끔찍한 화재일 것\"이라고 경고했다.",
+      "title": "이란 \"호르무즈 미지정 항로 지나던 대형 유조선 기뢰 충돌 폭발\""
+    },
     "title:5dfb3e473fbcb6c6d3a5ecb1": {
       "first_seen_kst": "2026-10-04T08:29:55+09:00",
       "lanes": {
@@ -394434,5 +394571,5 @@
       "title": "AI 데이터센터가 살린 철강…관세 50%에도 대미 수출 급증"
     }
   },
-  "updated_at_kst": "2026-10-11T05:18:57+09:00"
+  "updated_at_kst": "2026-10-11T05:45:39+09:00"
 }
