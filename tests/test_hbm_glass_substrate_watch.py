@@ -563,5 +563,93 @@ class GlassSubstrateWatchTests(unittest.TestCase):
         self.assertIn("85%·90%", out)
 
 
+    def test_foplp_mature_node_volume_production_not_ai_copos_or_glass(self):
+        item = self.item(
+            "https://www.trendforce.com/presscenter/news/20260617-13107.html",
+            "TrendForce", "2026-06-17T09:00:00+09:00")
+        body = ("Several Taiwan manufacturers have already achieved volume production of "
+                "FOPLP for mature-node PMICs and RF devices, utilizing panels up to 620 × 750 mm.")
+        rows = w.parse_foplp_records(item, body)
+        rec = next(x for x in rows if x["axis"] == "foplp_mature_node_industry")
+        self.assertEqual(rec["value"]["panel_width_mm"], 620)
+        self.assertEqual(rec["value"]["panel_height_mm"], 750)
+        self.assertFalse(rec["value"]["ai_hpc_mass_production_confirmed"])
+        self.assertFalse(rec["value"]["tsmc_copos_mass_production_confirmed"])
+        self.assertFalse(any(x["axis"] == "foplp_company_ai_stage" for x in rows))
+
+    def test_generic_copos_and_foplp_story_does_not_forge_tsmc_ai_production(self):
+        item = self.item("https://www.ctee.com.tw/news/20261010700049-439901", "工商時報",
+                         "2026-10-10T12:00:00+09:00")
+        body = ("TSMC CoPoS remains under validation with production expected in 2028-2029. "
+                "FOPLP has already demonstrated mass production for legacy PMIC and RF packages. "
+                "Glass core substrates face TGV and warpage barriers.")
+        rows = w.parse_foplp_records(item, body)
+        self.assertFalse(any(x["axis"] == "foplp_company_ai_stage" for x in rows))
+        self.assertFalse(any(x["axis"] == "foplp_mature_node_industry" for x in rows))
+
+    def test_foplp_expected_future_ai_mass_production_is_not_current_stage(self):
+        item = self.item("https://www.ctee.com.tw/news/future", "工商時報")
+        rows = w.parse_foplp_records(
+            item, "TSMC plans to begin FOPLP mass production for AI accelerators by 2028.")
+        self.assertFalse(any(x["axis"] == "foplp_company_ai_stage" for x in rows))
+
+    def test_foplp_copos_not_auto_converted_to_tsmc_company_foplp_stage(self):
+        item = self.item("https://www.tsmc.com/english/news", "TSMC")
+        body = "TSMC has started CoPoS pilot production for FOPLP-style AI accelerators."
+        self.assertFalse(any(x["axis"] == "foplp_company_ai_stage"
+                             for x in w.parse_foplp_records(item, body)))
+
+    def test_foplp_ase_official_customer_qualification_is_distinct_event(self):
+        item = self.item("https://www.aseglobal.com/en/news/foplp-ai", "ASE",
+                         "2026-10-15T15:00:00+09:00")
+        body = "ASE has completed customer qualification for FOPLP AI accelerators."
+        rows = w.parse_foplp_records(item, body)
+        rec = next(x for x in rows if x["axis"] == "foplp_company_ai_stage")
+        self.assertEqual(rec["key"], "foplp_company_ai_stage|ase|AI_HPC")
+        self.assertEqual(rec["value"]["stage"], "customer_qualified")
+        self.assertTrue(rec["value"]["issuer_official"])
+        self.assertEqual(rec["evidence"], "official")
+        rendered = w.render({"record":rec,"old":None,"reasons":["고객 검증 완료"]})
+        self.assertIn("CoPoS", rendered)
+        self.assertIn("고객 검증", rendered)
+
+    def test_foplp_media_qualification_cannot_promote_itself_to_official(self):
+        item = self.item("https://www.ctee.com.tw/news/independent-ase-foplp", "工商時報",
+                         "2026-10-15T15:00:00+09:00")
+        rec = next(x for x in w.parse_foplp_records(
+            item, "ASE has completed customer qualification for FOPLP AI accelerators.")
+            if x["axis"] == "foplp_company_ai_stage")
+        self.assertFalse(rec["value"]["issuer_official"])
+        self.assertEqual(rec["evidence"], "reported")
+
+    def test_foplp_pilot_and_official_promotion_material(self):
+        old = {"axis":"foplp_company_ai_stage",
+               "value":{"stage":"customer_qualified","manufacturer":"ase","issuer_official":False}}
+        new = {"axis":"foplp_company_ai_stage",
+               "value":{"stage":"pilot_production","manufacturer":"ase","issuer_official":True}}
+        self.assertTrue(any("pilot_production" in x for x in w.comparison(old,new)))
+        reverse = w.comparison(new,old)
+        self.assertEqual(reverse, [])
+        promoted = {"axis":"foplp_company_ai_stage",
+                    "value":{"stage":"customer_qualified","manufacturer":"ase","issuer_official":True}}
+        self.assertTrue(any("회사 공식" in x for x in w.comparison(old,promoted)))
+
+    def test_foplp_seed_version_avoids_retroactive_telegram(self):
+        data = __import__("json").loads(
+            (pathlib.Path(__file__).resolve().parents[1]/"data"/"hbm_memory_baselines.json")
+            .read_text(encoding="utf-8"))
+        seed = next(x for x in data["records"]
+                    if x["key"] == "foplp_mature_node_industry|industry|PMIC_RF")
+        old = {"foplp_track_version":0, "last_notified":{}, "latest":{},
+               "pending":{}, "coverage":{}}
+        now = __import__("datetime").datetime(2026,10,10,17,0,0)
+        state = w.update_state(old,[seed],now,[seed])
+        self.assertEqual(state["foplp_track_version"], w.FOPLP_TRACK_VERSION)
+        self.assertIn(seed["key"],state["last_notified"])
+        self.assertNotIn(seed["key"],state["pending"])
+        state2 = w.update_state(state,[seed],now,[seed])
+        self.assertNotIn(seed["key"],state2["pending"])
+
+
 if __name__ == "__main__":
     unittest.main()
