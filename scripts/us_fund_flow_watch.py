@@ -1071,6 +1071,50 @@ assert signed_flow_sentence(
 )[0] == 0.56
 
 
+def elliptical_us_equity_outflow_in_global_dispatch(body):
+    """Read US regional net sales whose context is global EQUITY funds.
+
+    Reuters can write: 'Asian equity funds gained $6.16bn, but withdrew
+    $5.11bn from U.S. funds.' The two amounts share a sentence; never
+    assign the Asian amount to the US or mistake US bond/MMF funds.
+    """
+    normalized = re.sub(r"\bU\.S\.(?=\s)", "US", body, flags=re.I)
+    if not re.search(GLOBAL_EQUITY_FUND_RE, normalized, re.I):
+        return None, None
+    pattern = (
+        r"\b(?:withdrew|withdrawn|pulled)\s+\$([\d,.]+)\s*"
+        r"(billion|million)\s+from\s+(?:the\s+)?US\s+funds?\b"
+    )
+    candidates = []
+    for m in re.finditer(pattern, normalized, re.I):
+        preceding = normalized[max(0, m.start() - 350): m.start()]
+        # The explicitly named neighboring regional EQUITY funds make the
+        # elided 'US funds' phrase unambiguously equity, not MMF or bonds.
+        if not re.search(r"\b(?:Asian|European|global)\s+equity\s+funds?\b", preceding, re.I):
+            continue
+        amount = float(m.group(1).replace(",", ""))
+        if m.group(2).lower() == "million":
+            amount /= 1000.0
+        candidates.append((-amount, normalized[max(0,m.start()-120):m.end()+40]))
+    if not candidates or len({round(v, 4) for v, _ in candidates}) != 1:
+        return None, None
+    return candidates[0]
+
+
+assert elliptical_us_equity_outflow_in_global_dispatch(
+    "Investors bought $560 million in global equity funds. "
+    "European equity funds attracted $6.19 billion. "
+    "Investors added a net $6.16 billion to Asian equity funds, "
+    "but withdrew $5.11 billion from U.S. funds."
+)[0] == -5.11
+assert elliptical_us_equity_outflow_in_global_dispatch(
+    "US money market funds bought $5.11 billion of government bonds."
+)[0] is None
+assert elliptical_us_equity_outflow_in_global_dispatch(
+    "Global equity funds gained $560 million while US money market funds saw net sales of $5.11 billion."
+)[0] is None
+
+
 def parse_reuters(kind):
     query = BING_Bofa if kind == "bofa" else BING_LIPPER
     seeds = {
@@ -1125,6 +1169,11 @@ def parse_reuters(kind):
             continue
         us_equity_url = None
         if kind == "lipper":
+            if us is None:
+                regional_us, regional_sentence = elliptical_us_equity_outflow_in_global_dispatch(body)
+                if regional_us is not None:
+                    us, us_sent = regional_us, regional_sentence
+                    us_equity_url = final or it["link"]
             # Global and US fund figures are not interchangeable. Verify the
             # dedicated Reuters US-equity dispatch only if it states the SAME week.
             try:
@@ -1666,9 +1715,6 @@ old_lseg_metrics = previous_lseg.get("metrics") or {}
 old_lseg_evidence = previous_lseg.get("evidence") or {}
 media_correction = bool(
     lseg_data and same_reference_week(previous_lseg, lseg_data)
-    and old_lseg_evidence.get("us") is not None
-    and old_lseg_evidence.get("us") == old_lseg_evidence.get("global")
-    and old_lseg_metrics.get("us_equity_bn") == old_lseg_metrics.get("global_equity_bn")
     and lseg_data["metrics"].get("us_equity_bn") != old_lseg_metrics.get("us_equity_bn")
 )
 for x in updates:
@@ -1775,7 +1821,9 @@ if should_alert:
     if media_correction:
         corrected_us = lseg_data["metrics"].get("us_equity_bn")
         detail = (
-            f"정정된 미국 주식형 {fmt_usd_bn_kr(corrected_us, fx)}."
+            f"Reuters 원문에서 재검증한 미국 주식형 순유출 {fmt_usd_bn_kr(corrected_us, fx)}."
+            if corrected_us is not None and corrected_us < 0 else
+            f"Reuters 원문에서 재검증한 미국 주식형 순유입 {fmt_usd_bn_kr(corrected_us, fx)}."
             if corrected_us is not None else
             "미국 주식형 수치는 기사 본문에서 재검증되지 않아 확인 대기."
         )
