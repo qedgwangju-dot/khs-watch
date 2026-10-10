@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-08-24T21:32:19+09:00",
-  "last_checked_kst": "2026-10-10T09:41:17+09:00",
+  "last_checked_kst": "2026-10-10T10:41:19+09:00",
   "seen": {
     "74fd33cf93fb250c6b18ecd7": {
       "title": "리벨리온, 공공 CCTV 관제에 서버형 NPU 대규모 인프라 공급… 국산 AI 인프라 상용화로 기술 자립 가속",
@@ -3152,6 +3152,15 @@
       "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9jdU5uUk1XUWNkV2VqckQ1TVlYSW10ZjFjc0ZHSDJ3eFVHUkhrZ2Y2OFFQNFNaeWV2bjNxVHlDbVJrMmJURF9rWXg3WHQzZEk?oc=5",
       "first_seen_kst": "2026-10-09T19:04:41+09:00",
       "suppressed_stale": true
+    },
+    "eb313249cf799b589996beba": {
+      "title": "CCK솔루션, 리벨리온서 전략적 투자 유치…'국산 AI 풀스택' 폐쇄망 공략 - 동행일보",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBvR3VCcExmNlduRkpXeU9sOVN1TUJ6OXBoSllfRXMxejJTcFFFak1QbU5Fa1g0b1RvQzBaaVpWZEV6ajFQUWlKdWhCY3BrOERKZWtkc2laaHAxYl9Lcy1jRjNnT085dUNj?oc=5",
+      "summary": "CCK솔루션, 리벨리온서 전략적 투자 유치…'국산 AI 풀스택' 폐쇄망 공략 동행일보",
+      "event_signature": "cck|capital|equity",
+      "material_stage": 5,
+      "first_seen_kst": "2026-10-10T10:41:19+09:00",
+      "suppressed_duplicate": "same_event:cck|capital|equity"
     }
   }
 }
