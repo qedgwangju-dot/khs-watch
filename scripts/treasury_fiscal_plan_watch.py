@@ -215,13 +215,16 @@ def classify_plan(label: str, page: str, url: str) -> dict | None:
         return None
     # The official primary source provides a new published document. This
     # does not yet mean Congress has enacted the proposal.
+    # Same-date White House/Treasury announcements of the same fiscal
+    # framework are ONE policy event, regardless of the URL or headline.
+    # A new dated formal release may be a subsequent material update.
     return {
         "event_type": "official_fiscal_plan_publication",
-        "id": "official_fiscal_plan:" + hashlib.sha256(url.encode()).hexdigest()[:24],
+        "id": "official_federal_fiscal_framework:" + published.replace("-", ""),
         "published_date": published,
         "title": label,
         "source_url": url,
-        "stage": "공식안 공개(입법·집행 전)",
+        "stage": "공식 재정계획 문서 공개(입법·집행 여부 별도 확인)",
     }
 
 
