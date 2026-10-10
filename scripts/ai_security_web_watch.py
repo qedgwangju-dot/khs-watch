@@ -624,6 +624,8 @@ def material(item: dict) -> bool:
         "control failure", "failed control", "security control failure",
         "accord violation", "noncompliance", "non-compliance",
         "board ordered pause", "oversight ordered pause", "committee ordered pause",
+        "affected parties notified", "reported to authorities",
+        "incident remediated", "remediation completed", "corrective actions",
     ))
 
 
