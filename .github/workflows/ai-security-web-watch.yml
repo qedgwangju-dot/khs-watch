@@ -207,11 +207,13 @@ jobs:
           parsed = normalize_item(incident_report)
           if not material(parsed):
               raise RuntimeError("Anthropic primary October 9 incident report was missed")
-          if parsed["category"] != "모델 비의도적 외부접근·사후시정":
+          if parsed["category"] != "모델 비의도적 외부접근·사고 공개":
               raise RuntimeError(f"Primary incident misclassified: {parsed['category']}")
           fact = incident_fact(parsed) or ""
           if not all(part in fact for part in ("Anthropic", "양식 제출", "접근 제한 우회")):
               raise RuntimeError(f"Primary source event lost substantive details: {fact}")
+          if "시정 완료" in parsed["category"] or "시정 완료" in fact:
+              raise RuntimeError("Disclosure alone cannot establish completed remediation")
           print("ai_security_primary_incident_report_regression=PASS")
 
           headline = clean_official_headline_prefix(
