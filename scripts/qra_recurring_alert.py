@@ -233,6 +233,27 @@ def extract_financing_estimates(text: str) -> dict[str, float]:
     return amounts
 
 
+MONTH_LABELS = {
+    "january": "1월", "february": "2월", "march": "3월", "april": "4월",
+    "may": "5월", "june": "6월", "july": "7월", "august": "8월",
+    "september": "9월", "october": "10월", "november": "11월", "december": "12월",
+}
+
+
+def quarter_ko(label: str) -> str:
+    m = re.search(r"([A-Za-z]+)\s*[–—-]\s*([A-Za-z]+)\s+(20\d{2})", label)
+    if not m:
+        return label
+    return f"{m.group(3)}년 {MONTH_LABELS.get(m.group(1).lower(),m.group(1))}~{MONTH_LABELS.get(m.group(2).lower(),m.group(2))}"
+
+
+def financing_krw(bn: float, fx: float | None) -> str:
+    if fx is None:
+        return "원화 환산 확인 불가"
+    eok = int(round(bn * fx * 10))
+    return f"약 {eok // 10000:,}조{eok % 10000:,}억원"
+
+
 def build_financing_alert(current: ReleaseSection, previous: ReleaseSection | None):
     link = financing_estimates_link(current)
     if not link:
