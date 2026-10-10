@@ -200,10 +200,32 @@ def btc_etf_flow() -> dict:
         if raw is None:
             continue
         soup = BeautifulSoup(raw.decode("utf-8", errors="replace"), "html.parser")
-        page_rows = [
+        original_rows = [
             [" ".join(td.get_text(" ", strip=True).split()) for td in tr.find_all(["td", "th"])]
             for tr in soup.find_all("tr")
         ]
+        # The all-data source sometimes has malformed/unclosed <tr> tags:
+        # one BeautifulSoup row can contain thousands of sequential cells.
+        # Reconstruct exact date+12-funds+total records, never guess columns.
+        page_rows = []
+        for cells in original_rows:
+            if len(cells) <= len(FUND_TICKERS) + 2:
+                page_rows.append(cells)
+                continue
+            dates = [i for i, cell in enumerate(cells) if parse_date(cell) is not None]
+            if not dates:
+                page_rows.append(cells)
+                continue
+            if dates[0]:
+                page_rows.append(cells[:dates[0]])
+            for index, offset in enumerate(dates):
+                boundary = dates[index + 1] if index + 1 < len(dates) else len(cells)
+                record = cells[offset:offset + 14]
+                if len(record) != 14 or (index + 1 < len(dates) and boundary != offset + 14):
+                    raise RuntimeError(
+                        f"Farside {source} historical record width invalid at {cells[offset]}"
+                    )
+                page_rows.append(record)
         if not any([x.upper() for x in row[1:13]] == list(FUND_TICKERS) for row in page_rows):
             raise RuntimeError(f"Farside {source} 12-ETF header not verified")
         if source == "all-data":
