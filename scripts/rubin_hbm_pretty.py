@@ -239,8 +239,10 @@ def format_hybrid_alert(original: str) -> str:
         "Micron 임원 인용 보도": ("thelec.kr", "www.thelec.kr"),
         "TrendForce 재정리": ("trendforce.com", "www.trendforce.com"),
         "Amazon 협력 공식": ("blogs.nvidia.com",),
-        "SK하이닉스 공식": ("news.skhynix.com","news.skhynix.co.kr","www.skhynix.com","www.skhynix.co.kr"),
-        "삼성전자 공식": ("news.samsung.com",),
+        "신규 제조사 공식원문": ("news.samsung.com", "semiconductor.samsung.com",
+                              "www.samsung.com", "samsung.com", "news.skhynix.com",
+                              "news.skhynix.co.kr", "skhynix.com", "www.skhynix.com",
+                              "micron.com", "www.micron.com"),
     }
     out: list[str] = []
     for raw in original.splitlines():
@@ -249,7 +251,7 @@ def format_hybrid_alert(original: str) -> str:
             out.append("")
             continue
         m = re.fullmatch(
-            r"(Damnang|TechPowerUp|SK하이닉스 공식|삼성전자 공식|Counterpoint|변화 공식원문|NVIDIA 공식|TSMC 공식|삼성전자 이원화 보도|SK하이닉스 3나노 보도|Micron 임원 인용 보도|TrendForce 재정리|Amazon 협력 공식)\s+(https?://\S+)",
+            r"(Damnang|TechPowerUp|SK하이닉스 공식|삼성전자 공식|Counterpoint|변화 공식원문|NVIDIA 공식|TSMC 공식|삼성전자 이원화 보도|SK하이닉스 3나노 보도|Micron 임원 인용 보도|TrendForce 재정리|Amazon 협력 공식|신규 제조사 공식원문)\s+(https?://\S+)",
             line,
         )
         if m:
