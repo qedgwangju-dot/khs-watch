@@ -366,6 +366,12 @@ jobs:
               raise RuntimeError("AI policy pending state missing before SIF enrichment")
           state=json.loads(pending.read_text(encoding="utf-8"))
           seen=state.setdefault("seen",{})
+          # Restore the publisher's URL in older SIF checkpoints. Earlier
+          # runs saved Google News RSS proxy links; never re-send the event.
+          canonical_axios="https://www.axios.com/2026/10/09/anthropic-ai-security-white-house"
+          for event in seen.values():
+              if event.get("semantic_key")=="us-sif-ai-incident-statement-2026-10-09":
+                  event["url"]=canonical_axios
           now=dt.datetime.now(KST)
           query='("Super Intelligence Force" OR "Anthropic breaches spark White House AI reporting mandate" OR "AI model incident reporting")'
           rss="https://news.google.com/rss/search?"+urllib.parse.urlencode({
