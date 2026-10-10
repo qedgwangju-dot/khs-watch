@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at_kst": "2026-10-11T03:54:09+09:00",
+  "updated_at_kst": "2026-10-11T07:06:38+09:00",
   "initial_alert_sent": true,
   "baseline_at_kst": "2026-10-09T15:05:00+09:00",
   "seen": [
@@ -25,6 +25,7 @@
     "24e7fc5b39f6a79a4a48364d",
     "25870ca14843958b9801d47c",
     "2b2f4f993e5c0f0b007f98c3",
+    "2fb0c2268ff2b39d40cfc35c",
     "319ea65fa67176804fc04483",
     "32ac1b43e47919131e446602",
     "3590f210b063a993b2262d11",
@@ -71,6 +72,7 @@
     "950344457b8e43ff309acfee",
     "95a770949c12bb7f1544a723",
     "98faa2b7ed234d483f6ff86c",
+    "99f1a052565b0951d730edfc",
     "9a58ada9903d9beda475f5a2",
     "9eb8f791b6cb514a9cb0e026",
     "9f3d4f158481044036cff4ec",
@@ -155,7 +157,7 @@
       "ubs_delivery_lead_time_publicly_verified": false
     }
   },
-  "last_scan_items": 90,
+  "last_scan_items": 93,
   "feed_errors": [],
   "successful_sources": 8,
   "new_signal_count": 0,
