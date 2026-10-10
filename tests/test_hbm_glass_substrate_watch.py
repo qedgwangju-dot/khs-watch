@@ -587,6 +587,10 @@ class GlassSubstrateWatchTests(unittest.TestCase):
         self.assertFalse(any(x["axis"] == "foplp_company_ai_stage" for x in rows))
         self.assertFalse(any(x["axis"] == "foplp_mature_node_industry" for x in rows))
 
+    def test_foplp_keyword_cannot_hide_preexisting_glass_evidence_gate(self):
+        text = "FOPLP 510×515mm 유리기판 TGV"
+        self.assertTrue(w.is_axis_text(text))
+
     def test_foplp_expected_future_ai_mass_production_is_not_current_stage(self):
         item = self.item("https://www.ctee.com.tw/news/future", "工商時報")
         rows = w.parse_foplp_records(
