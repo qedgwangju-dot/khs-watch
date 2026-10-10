@@ -19,7 +19,9 @@ def merge_state(remote: dict, local: dict) -> dict:
     for event in local.get("seen_events") or []:
         if event not in seen:
             seen.append(event)
-    merged = {**remote, **local}
+    newer = (remote if str(remote.get("last_sent_at_kst") or "") >=
+             str(local.get("last_sent_at_kst") or "") else local)
+    merged = {**remote, **newer}
     merged["seen_events"] = seen[-500:]
     for flag in ("last_sent_at_kst",):
         merged[flag] = max(str(remote.get(flag) or ""), str(local.get(flag) or ""))
