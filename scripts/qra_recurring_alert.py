@@ -130,6 +130,22 @@ class ReleaseParser(HTMLParser):
             self._anchor_parts = []
 
 
+def section_date_key(section: ReleaseSection) -> tuple[str, int]:
+    """Sort by actual release date, not the Treasury page's block layout."""
+    m = re.search(r"([A-Za-z]+)\s+(\d{1,2}),\s+(20\d{2})", section.heading)
+    if not m:
+        return ("", 0)
+    try:
+        day = datetime.strptime(
+            f"{m.group(1).title()} {m.group(2)} {m.group(3)}",
+            "%B %d %Y",
+        ).date().isoformat()
+    except ValueError:
+        return ("", 0)
+    clock = 15 if "3:00" in section.heading else 8
+    return day, clock
+
+
 def policy_link(section: ReleaseSection) -> LinkItem | None:
     return next((x for x in section.links if "policy statement" in x.text.lower()), None)
 
@@ -437,13 +453,15 @@ def main() -> int:
         write_watch("QRA 공개 섹션 미탐지")
         return 0
 
-    # Treasury page is normally newest first. Keep a conservative fallback.
-    current = parser.sections[0]
-    # 3:00 PM financing estimates and 8:30 AM issuance/QRA are distinct
-    # official releases. Compare only the SAME type of release.
+    # The official Treasury page groups documents by category rather than
+    # always putting the most recent release first. Date-sort both types.
+    sections = sorted(parser.sections, key=section_date_key, reverse=True)
+    if not section_date_key(sections[0])[0]:
+        raise RuntimeError("미 재무부 공식 발표일 추출 실패 — 오래된 발표 재발송 방지")
+    current = sections[0]
     is_financing = "3:00" in current.heading
     previous = next(
-        (section for section in parser.sections[1:]
+        (section for section in sections[1:]
          if ("3:00" in section.heading) == is_financing),
         None,
     )
