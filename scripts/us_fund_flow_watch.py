@@ -1215,13 +1215,15 @@ def source_block(x, fx):
         if m.get("global_equity_bn") is not None:
             lines.append(f"• 글로벌 주식형 {fmt_usd_bn_kr(m.get('global_equity_bn'), fx)}")
         if m.get("mmf_bn") is not None:
-            lines.append(f"• MMF {fmt_usd_bn_kr(m.get('mmf_bn'), fx)}")
+            mmf_label="글로벌 MMF 순유입·순유출" if x["kind"]=="lipper" else "MMF(해당 보고서 집계)"
+            lines.append(f"• {mmf_label} {fmt_usd_bn_kr(m.get('mmf_bn'), fx)}")
         if x.get("reference_week_verified") is True:
-            lines.append("• 같은 출처·집계주간 검증 후 판정: " + flow_direction(m.get("us_equity_bn"), m.get("mmf_bn")))
-        else:
             lines.append(
-                "• 기사 게시일과 자금 집계주간을 구분해야 하므로 집계주간 독립 확인 전 직접 자금회전 판정 보류"
+                f"• 기준주간 {x.get('reference_week')}: 기사 본문에서 주간을 확인했으나 "
+                "주식형·MMF의 모집단이 달라 직접 자금 이동으로 결론 내리지 않음"
             )
+        else:
+            lines.append("• 기사 게시일만으로 집계주간을 추정하지 않음 — 방향 판정 보류")
     return "\n".join(lines)
 
 
@@ -1357,13 +1359,13 @@ for i in range(len(known)):
 interpret = []
 if bofa:
     interpret.append(
-        "BofA/EPFR: 인용 기사에서 집계 주간 독립 확인 전이므로 "
-        "주식형·MMF를 직접 자금 회전으로 결론 내리지 않음"
+        f"BofA/EPFR: 집계주간 {bofa.get('reference_week') or '확인 불가'}, "
+        "기사에 명시된 주간만 인정. 주식형·MMF 자금을 직접 이동으로 단정하지 않음"
     )
 if lipper:
     interpret.append(
-        "LSEG Lipper: 인용 기사에서 집계 주간 독립 확인 전이므로 "
-        "주식형·MMF를 직접 자금 회전으로 결론 내리지 않음"
+        f"LSEG Lipper: 집계주간 {lipper.get('reference_week') or '확인 불가'}, "
+        "글로벌 MMF와 미국 주식형은 모집단이 달라 직접 이동으로 단정하지 않음"
     )
 if ici:
     d = ici["metrics"].get("domestic")
