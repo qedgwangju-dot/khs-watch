@@ -2563,6 +2563,10 @@ def render_nvhbm_foundry_notice(e:dict,now:datetime)->str:
     ]
     if e.get("fact_bullets") and not initial:
         out.insert(4,"• 신규 공식 변화: "+" / ".join(e["fact_bullets"]))
+        vendor = e.get("vendor") or ""
+        proof = (st.get("confirmed_official_milestones") or {}).get(vendor) or {}
+        if proof.get("source_url"):
+            out.append("신규 제조사 공식원문 "+ proof["source_url"])
     out.extend([
         "",
         "■ 원문 (눌러 열기)",
