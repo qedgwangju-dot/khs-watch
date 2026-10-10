@@ -283,7 +283,12 @@ class HybridHBMSourceGuardTests(unittest.TestCase):
         self.assertTrue(delivery.chunks(text))
 
     def test_initial_migration_once_then_no_repeat_on_same_information(self):
-        memory = {"saved": {"seen_ids":[],"seen_fact_keys":[], "structure_baseline_version":w.STRUCTURE_BASELINE_VERSION}}
+        memory = {"saved": {
+            "seen_ids":[],"seen_fact_keys":[],
+            "structure_baseline_version":w.STRUCTURE_BASELINE_VERSION,
+            "nvhbm_foundry_track_version":w.NVHBM_FOUNDRY_TRACK_VERSION,
+            "nvhbm_foundry_strategy":copy.deepcopy(w.NVHBM_FOUNDRY_BASELINE),
+        }}
         def load():
             return copy.deepcopy(memory["saved"]), False
         def fake_json(path, value):
@@ -522,6 +527,8 @@ class HybridTelegramPresentationTests(unittest.TestCase):
             "seen_ids":[],
             "seen_fact_keys":[],
             "structure_baseline_version":w.STRUCTURE_BASELINE_VERSION,
+            "nvhbm_foundry_track_version":w.NVHBM_FOUNDRY_TRACK_VERSION,
+            "nvhbm_foundry_strategy":copy.deepcopy(w.NVHBM_FOUNDRY_BASELINE),
             "hbm_hybrid_bond_track_version":1,
             "hbm_hybrid_bonding": {
                 "sk_official_hybrid_stage": "technical_feasibility",
