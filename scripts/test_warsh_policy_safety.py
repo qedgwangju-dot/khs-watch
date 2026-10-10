@@ -622,7 +622,7 @@ class WarshSafetyTests(unittest.TestCase):
         best,reason=state_sync.reconcile(x,stale)
         self.assertEqual(reason,"local_newer")
         self.assertEqual(best,x)
-        with self.assertRaisesRegex(RuntimeError,"갱신 시각"):
+        with self.assertRaisesRegex(RuntimeError,"갱신시각"):
             state_sync.reconcile(x,{"last_health_message_id":80})
 
 
