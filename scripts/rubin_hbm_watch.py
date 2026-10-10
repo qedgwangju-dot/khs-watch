@@ -2467,7 +2467,8 @@ def extract_nvhbm_foundry_official_milestone(event: dict) -> dict | None:
             stage = "official_foundry_selection"
         if stage and (not best or rank[stage] > rank[best]):
             best = stage
-            foundry = "TSMC" if "tsmc" in low else ("Samsung Foundry" if "samsung" in low or "삼성" in low else "")
+            foundry = ("TSMC" if "tsmc" in low else
+                       "Samsung Foundry" if re.search(r"samsung\s+foundry|삼성\s*파운드리", low, re.I) else "")
             # Standard HBM4E and NVIDIA NVHBM are different products.
             # One company's standard HBM4E shipment is not NVHBM mass production.
             product_scope = (
