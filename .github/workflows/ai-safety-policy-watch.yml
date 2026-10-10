@@ -458,7 +458,12 @@ jobs:
                   "no statutory authority","without statutory authority","lacks statutory authority",
                   "no legal authority","without legal authority","lacks legal authority",
               ))
-              if authority_positive and not authority_negative:
+              if authority_positive and not authority_negative and not any(
+                  term in text for term in (
+                      "incident reporting","model incident","ai incident",
+                      "notification and remediation",
+                  )
+              ):
                   return "authority","us-sif-authority-"+hashlib.sha1(title.encode()).hexdigest()[:10]
 
               # Separate a formal request from actually appropriated/approved resources.
@@ -492,15 +497,19 @@ jobs:
               # demanding compliance is not proof of enforceable rulemaking.
               is_regulatory_source = source in {
                   "The White House", "White House", "Federal Register",
+                  "GovInfo", "U.S. Government Publishing Office",
                   "Federal Trade Commission", "U.S. Department of Defense",
                   "Department of Defense", "Office of Personnel Management",
               }
-              has_instrument = any(x in text for x in (
-                  "final rule published", "proposed rule published",
-                  "rule published in the federal register",
-                  "executive order signed", "presidential memorandum signed",
-                  "regulation codified", "rulemaking docket",
-              ))
+              has_instrument = (
+                  ("final rule" in text and "published" in text)
+                  or ("proposed rule" in text and "published" in text)
+                  or any(x in text for x in (
+                      "rule published in the federal register",
+                      "executive order signed", "presidential memorandum signed",
+                      "regulation codified", "rulemaking docket",
+                  ))
+              )
               has_incident_subject = any(x in text for x in (
                   "ai incident", "model incident", "incident reporting",
                   "security incident", "notification and remediation",
