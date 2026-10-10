@@ -347,7 +347,7 @@ jobs:
           state=json.loads(pending.read_text(encoding="utf-8"))
           seen=state.setdefault("seen",{})
           now=dt.datetime.now(KST)
-          query='"Super Intelligence Force"'
+          query='("Super Intelligence Force" OR "Anthropic breaches spark White House AI reporting mandate")'
           rss="https://news.google.com/rss/search?"+urllib.parse.urlencode({
               "q":query+" when:7d","hl":"en-US","gl":"US","ceid":"US:en"
           })
@@ -356,7 +356,7 @@ jobs:
               root=ET.fromstring(r.read())
 
           trusted={
-              "Reuters","AP News","Associated Press","The Associated Press",
+              "Reuters","AP News","Associated Press","The Associated Press","Axios",
               "The Wall Street Journal","Wall Street Journal","CBS News",
               "The White House","White House",
               "Office of the Director of National Intelligence",
@@ -375,7 +375,12 @@ jobs:
               if source not in trusted:
                   continue
               text=re.sub(r"\s+"," ",f"{title} {desc}").strip().lower()
-              if "super intelligence force" not in text and "superintelligence force" not in text:
+              is_si = "super intelligence force" in text or "superintelligence force" in text
+              is_direct = (
+                  source=="Axios"
+                  and "anthropic breaches spark white house ai reporting mandate" in title.lower()
+              )
+              if not is_si and not is_direct:
                   continue
               rows.append({"title":title.strip(),"description":desc.strip(),"source":source,"link":link,"text":text})
 
@@ -398,6 +403,17 @@ jobs:
           def stage(row):
               text=row["text"]
               title=row["title"].lower()
+              source=row.get("source","")
+
+              # A directly attributed White House statement is meaningful.
+              # But it is not equivalent to a statute, CFR rule, or enforceable
+              # regulation. Keep the legal force explicitly unverified.
+              statement_headline = (
+                  "anthropic breaches spark white house ai reporting mandate" in title
+                  or "white house mandates ai firms" in title
+              )
+              if statement_headline and source=="Axios":
+                  return "statement", "us-sif-ai-incident-statement-2026-10-09"
 
               # A promised/due report is not a released report.
               if any(x in text for x in (
@@ -448,12 +464,25 @@ jobs:
               )):
                   return "procurement","us-sif-procurement-"+hashlib.sha1(title.encode()).hexdigest()[:10]
 
-              # Regulation must have an identifiable proposed/final/mandatory instrument.
-              if any(x in text for x in (
-                  "mandatory incident reporting","incident reporting requirement",
-                  "final rule","proposed rule","reporting requirement","regulatory requirement",
-                  "binding guidance",
-              )):
+              # Legal regulation requires an identifiable published instrument
+              # AND an originating public authority. An Axios exclusive quote
+              # demanding compliance is not proof of enforceable rulemaking.
+              is_regulatory_source = source in {
+                  "The White House", "White House", "Federal Register",
+                  "Federal Trade Commission", "U.S. Department of Defense",
+                  "Department of Defense", "Office of Personnel Management",
+              }
+              has_instrument = any(x in text for x in (
+                  "final rule published", "proposed rule published",
+                  "rule published in the federal register",
+                  "executive order signed", "presidential memorandum signed",
+                  "regulation codified", "rulemaking docket",
+              ))
+              has_incident_subject = any(x in text for x in (
+                  "ai incident", "model incident", "incident reporting",
+                  "security incident", "notification and remediation",
+              ))
+              if is_regulatory_source and has_instrument and has_incident_subject:
                   return "regulation","us-sif-regulation-"+hashlib.sha1(title.encode()).hexdigest()[:10]
 
               membership_action=any(x in title for x in (
@@ -477,6 +506,21 @@ jobs:
               # authority are not state changes and must not generate a Telegram alert.
               return "ignore",""
 
+          assert stage({
+              "title":"Exclusive: Anthropic breaches spark White House AI reporting mandate",
+              "text":"the white house super intelligence force mandates incident notification and remediation without published penalties",
+              "source":"Axios",
+          })[0]=="statement"
+          assert stage({
+              "title":"Super Intelligence Force mandatory incident reporting requirement, no published law",
+              "text":"the super intelligence force says mandatory incident reporting requirement but no legal instrument",
+              "source":"Reuters",
+          })[0]=="ignore"
+          assert stage({
+              "title":"Federal Register final rule published on AI model incident reporting",
+              "text":"federal register final rule published requires ai model incident reporting",
+              "source":"Federal Register",
+          })[0]=="regulation"
           assert stage({
               "title":"Super Intelligence Force has no budget or statutory authority",
               "text":"the super intelligence force has no budget and no statutory authority",
@@ -502,7 +546,7 @@ jobs:
 
           if candidates:
               rank={
-                  "procurement":8,"funding":7,"regulation":7,"report":6,
+                  "procurement":8,"funding":7,"regulation":7,"statement":6,"report":6,
                   "authority":5,"funding_request":4,"membership":2,"formation":1,
               }
               st,key,digest,row=sorted(candidates,key=lambda x:rank.get(x[0],0),reverse=True)[0]
@@ -550,6 +594,15 @@ jobs:
                       "• <b>의미</b>: 정책 지휘체계가 기업 매출로 연결될 수 있는 첫 직접 단계",
                       "• <b>다음 확인</b>: 계약 상대방·계약금액·물량·기간·납품·검수·매출 인식",
                   ]
+              elif st=="statement":
+                  heading="백악관 SI Force, AI 모델 사고 즉시 신고·시정 요구"
+                  detail=[
+                      "• <b>현재 단계</b>: Axios가 백악관 SI Force의 서면 입장을 직접 인용한 정책 요구 발표",
+                      "• <b>요구 내용</b>: 모델 관련 사건 즉시 신고·관계기관 협력·피해 시정·재발 방지",
+                      "• <b>법적 효력</b>: 공개된 해당 법률·최종 행정규칙·집행조항·벌칙 확인 전. 법제화 확정으로 분류하지 않음",
+                      "• <b>수치 미공개</b>: 24/72시간 등 구체적인 신고 시간·예산·과징금 없음",
+                      "• <b>다음 확인</b>: 백악관·연방관보 원문·대상 사건 정의·수신 기관·신고 기한·시정 검수·위반 제재·실제 집행",
+                  ]
               elif st=="regulation":
                   heading="SIF 연계 의무 규칙·보고·감사 변화"
                   detail=[
@@ -574,8 +627,9 @@ jobs:
                   *detail,
                   "• <b>투자 연결</b>: 현재 특정 기업 신규 정부계약 확정이 아님. 예산·조달·규칙이 GPU·클라우드·사이버보안·데이터센터 전력·국방 AI 발주로 전환될 때 실적 연결",
                   *( [f'• <a href="{row["link"]}">이번 변화 출처: {html.escape(row["source"])}</a>'] if row.get("link") and row.get("link")!=truth else [] ),
-                  f'• <a href="{truth}">Trump Truth Social 창설 원문</a>',
-                  f'• <a href="{reuters}">Reuters 교차검증</a>',
+                  *( [f'• <a href="{truth}">Trump Truth Social 창설 원문</a>',
+                       f'• <a href="{reuters}">Reuters 창설 보도</a>'] if st=="formation" else [] ),
+                  *( [f'• <a href="https://www.anthropic.com/research/investigating-unintended-model-actions">Anthropic 사건 보고서(정책 법적 근거와 별개)</a>'] if st=="statement" else [] ),
               ]
               alert=pathlib.Path("out/ai_safety_policy_watch_alert.html")
               title_file=pathlib.Path("out/ai_safety_policy_watch_alert_title.txt")
