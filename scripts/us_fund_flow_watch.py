@@ -109,7 +109,7 @@ def load_state():
     # A damaged or unreadable state must never be mistaken for a first run:
     # resetting all fingerprints would replay previously delivered alerts.
     if not STATE.exists():
-        return {"seen": {}, "values": {}}
+        raise RuntimeError("US fund-flow state missing; fail closed to avoid replaying historical alerts")
     try:
         value = json.loads(STATE.read_text(encoding="utf-8"))
     except (OSError, UnicodeError, json.JSONDecodeError) as exc:
@@ -983,11 +983,14 @@ def extract_article_body(url):
 
 
 def signed_flow_sentence(text, concept_regex):
-    sentences = re.split(r"(?<=[.!?])\s+", text)
+    # Do not split "U.S. equity funds" after the abbreviation; that previously
+    # discarded otherwise valid U.S. equity flow observations.
+    normalized = re.sub(r"\bU\.S\.(?=\s)", "US", text, flags=re.I)
+    sentences = re.split(r"(?<=[.!?])\s+", normalized)
     for sent in sentences:
         if not re.search(concept_regex, sent, re.I):
             continue
-        amounts = re.findall(r"\$([\d,.]+)\s*billion", sent, re.I)
+        amounts = re.findall(r"\$([\d,.]+)\s*(billion|million)\b", sent, re.I)
         # Fail closed on multi-amount sentences; the amount might refer to another asset class.
         if len(amounts) != 1:
             continue
@@ -998,12 +1001,16 @@ def signed_flow_sentence(text, concept_regex):
         if has_inflow == has_outflow:
             continue
         sign = 1 if has_inflow else -1
-        return sign * float(amounts[0].replace(",", "")), sent[:700]
+        amount, unit = amounts[0]
+        amount_bn = float(amount.replace(",", "")) / (1000.0 if unit.lower() == "million" else 1.0)
+        return sign * amount_bn, sent[:700]
     return None, None
 
 
 # Regression guard: a sentence with opposing directions or multiple amounts cannot be signed.
 assert signed_flow_sentence("US equity had $5.11 billion in net outflows", r"US equity")[0] == -5.11
+assert signed_flow_sentence("U.S. equity funds had $5.11 billion in net outflows", r"US.*equity") [0] == -5.11
+assert signed_flow_sentence("Global equity funds attracted $560 million", r"global.*equity")[0] == 0.56
 assert signed_flow_sentence("US equity had $5 billion in inflows and $4 billion in outflows", r"US equity")[0] is None
 assert signed_flow_sentence("US equity saw both inflows and $5 billion in outflows", r"US equity")[0] is None
 
