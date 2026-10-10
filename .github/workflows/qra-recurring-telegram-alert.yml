@@ -131,7 +131,9 @@ jobs:
 
           title = pathlib.Path("out/qra_recurring_alert_title.txt").read_text(encoding="utf-8").strip()
           body = pathlib.Path("out/qra_recurring_alert.md").read_text(encoding="utf-8").strip()
-          text = f"{title}\n\n{body}"[:4096]
+          text = f"{title}\n\n{body}"
+          if len(text) > 4096:
+              raise RuntimeError("QRA 원문 누락 방지: Telegram 글자수 상한 초과")
           payload = urllib.parse.urlencode({
               "chat_id": chat_id,
               "text": text,
