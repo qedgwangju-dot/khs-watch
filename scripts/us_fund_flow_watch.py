@@ -995,8 +995,8 @@ def signed_flow_sentence(text, concept_regex):
         if len(amounts) != 1:
             continue
         low = sent.lower()
-        has_outflow = bool(re.search(r"outflow|outflows|withdrawn|withdrew|pulled|redemption|redemptions", low))
-        has_inflow = bool(re.search(r"inflow|inflows|received|attracted|bought|poured|added", low))
+        has_outflow = bool(re.search(r"outflows?|withdraw(?:n|als?)?|withdrew|pulled|redemptions?|net sales|lost|sold", low))
+        has_inflow = bool(re.search(r"inflows?|received|attracted|bought|poured|added|net purchases?|net investments?", low))
         # A sentence mentioning both inflows and outflows is directionally ambiguous.
         if has_inflow == has_outflow:
             continue
@@ -1044,6 +1044,33 @@ assert report_reference_week("Funds rose on October 7.", datetime(2026,10,9).dat
 assert report_reference_week("in the week ended October 7 and week ended September 30", datetime(2026,10,9).date()) is None
 
 
+# A geographic prefix must occur NEXT TO the reported fund class.
+# The old 'US.*equity' pattern matched navigation widgets far away from a
+# 'global equity funds' sentence, falsely labeling global +$560m as US +$560m.
+US_EQUITY_FUND_RE = (
+    r"\b(?:US|United States)\s+(?:equity|stock)\s+funds?\b"
+    r"|\b(?:equity|stock)\s+funds?\s+(?:of|from|in)\s+(?:the\s+)?(?:US|United States)\b"
+)
+GLOBAL_EQUITY_FUND_RE = r"\b(?:global|worldwide)\s+(?:equity|stock)\s+funds?\b"
+LSEG_US_REUTERS_CONFIRM = (
+    "https://www.investing.com/news/stock-market-news/"
+    "us-equity-funds-witness-first-weekly-outflow-in-three-weeks-4940766"
+)
+
+assert signed_flow_sentence(
+    "CNA Games Find US puzzles Investors made net purchases of $560 million in global equity funds.",
+    US_EQUITY_FUND_RE
+)[0] is None
+assert signed_flow_sentence(
+    "Investors withdrew a net $5.11 billion from U.S. equity funds during the week.",
+    US_EQUITY_FUND_RE
+)[0] == -5.11
+assert signed_flow_sentence(
+    "Investors made net purchases of $560 million in global equity funds.",
+    GLOBAL_EQUITY_FUND_RE
+)[0] == 0.56
+
+
 def parse_reuters(kind):
     query = BING_Bofa if kind == "bofa" else BING_LIPPER
     seeds = {
@@ -1088,15 +1115,38 @@ def parse_reuters(kind):
         if kind == "lipper" and not re.search(r"LSEG|Lipper", combined, re.I):
             continue
 
-        us, us_sent = signed_flow_sentence(combined, r"(U\.?S\.?|United States).*?(equity|stock)|(?:equity|stock).*?(U\.?S\.?|United States)")
-        glob, glob_sent = signed_flow_sentence(combined, r"global.*?(equity|stock)|(?:equity|stock).*?global")
-        mmf, mmf_sent = signed_flow_sentence(combined, r"money[- ]market|money market")
+        us, us_sent = signed_flow_sentence(body, US_EQUITY_FUND_RE)
+        glob, glob_sent = signed_flow_sentence(body, GLOBAL_EQUITY_FUND_RE)
+        mmf, mmf_sent = signed_flow_sentence(body, r"\bmoney[- ]market\s+funds?\b")
 
-        if us is None and glob is None and mmf is None:
-            continue
         # Media publication date alone is never a weekly fund-flow observation.
-        observed=report_reference_week(body,pub_day)
+        observed = report_reference_week(body, pub_day)
         if observed is None:
+            continue
+        us_equity_url = None
+        if kind == "lipper":
+            # Global and US fund figures are not interchangeable. Verify the
+            # dedicated Reuters US-equity dispatch only if it states the SAME week.
+            try:
+                dedicated_url, dedicated_body = extract_article_body(LSEG_US_REUTERS_CONFIRM)
+                dedicated_week = report_reference_week(dedicated_body, pub_day)
+                dedicated_us, dedicated_sentence = signed_flow_sentence(
+                    dedicated_body, US_EQUITY_FUND_RE
+                )
+                if dedicated_week == observed and dedicated_us is not None:
+                    # A global-dispatch parser disagreement is unsafe: withhold
+                    # US value unless the dedicated dispatch resolves it.
+                    if us is None or abs(us - dedicated_us) < 0.011:
+                        us, us_sent = dedicated_us, dedicated_sentence
+                        us_equity_url = dedicated_url
+                    else:
+                        us, us_sent = None, None
+            except Exception:
+                pass
+        if us_sent is not None and glob_sent is not None and us_sent == glob_sent:
+            # Defensive independent evidence requirement for differing markets.
+            us, us_sent = None, None
+        if us is None and glob is None and mmf is None:
             continue
         # Underlying scope differs across providers. Do not infer direct asset transfers.
         payload = {
@@ -1111,6 +1161,7 @@ def parse_reuters(kind):
             "comparison_note": "기사에 명시된 기준주간 확인; 통계 모집단별 순유입·순유출은 직접 자금 이전이 아님",
             "metrics": {"us_equity_bn": us, "global_equity_bn": glob, "mmf_bn": mmf},
             "evidence": {"us": us_sent, "global": glob_sent, "mmf": mmf_sent},
+            "us_equity_url": us_equity_url,
         }
         payload["fingerprint"] = hashlib.sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest()
         return payload
@@ -1293,6 +1344,8 @@ def source_block(x, fx):
         )
     else:
         lines.append(f"• 미국 주식형 {fmt_usd_bn_kr(m.get('us_equity_bn'), fx)}")
+        if m.get("us_equity_bn") is not None and x.get("us_equity_url"):
+            lines.append(f'• 미국 주식형 별도 원문: <a href="{html.escape(x["us_equity_url"], quote=True)}">Reuters 기사 열기</a>')
         if m.get("global_equity_bn") is not None:
             lines.append(f"• 글로벌 주식형 {fmt_usd_bn_kr(m.get('global_equity_bn'), fx)}")
         if m.get("mmf_bn") is not None:
@@ -1607,6 +1660,17 @@ else:
 
 
 source_corrections = []
+previous_lseg = (state.get("values") or {}).get("LSEG Lipper via Reuters|lipper") or {}
+lseg_data = next((item for item in updates if item.get("kind") == "lipper"), None)
+old_lseg_metrics = previous_lseg.get("metrics") or {}
+old_lseg_evidence = previous_lseg.get("evidence") or {}
+media_correction = bool(
+    lseg_data and same_reference_week(previous_lseg, lseg_data)
+    and old_lseg_evidence.get("us") is not None
+    and old_lseg_evidence.get("us") == old_lseg_evidence.get("global")
+    and old_lseg_metrics.get("us_equity_bn") == old_lseg_metrics.get("global_equity_bn")
+    and lseg_data["metrics"].get("us_equity_bn") != old_lseg_metrics.get("us_equity_bn")
+)
 for x in updates:
     old = (state.get("values") or {}).get(f"{x['source']}|{x['kind']}")
     if isinstance(old, dict) and x["kind"] in ("combined", "mmf"):
@@ -1667,7 +1731,7 @@ if should_alert and fx is None:
     raise RuntimeError("ECOS USD/KRW unavailable or stale; alert withheld and fingerprints preserved")
 if should_alert:
     body = [
-        f"🇺🇸 <b>[미국 증시 자금흐름 추적 | {'수치 정정·Hartnett 감시 추가' if source_corrections and hartnett_init else '수치 정정' if source_corrections else 'Hartnett 감시 추가' if hartnett_init and not updates else '신규 변화'}]</b>",
+        f"🇺🇸 <b>[미국 증시 자금흐름 추적 | {'수치 정정' if (source_corrections or media_correction) else 'Hartnett 감시 추가' if hartnett_init and not updates else '신규 변화'}]</b>",
         "",
         "<b>한눈에 보기</b>",
     ]
@@ -1708,6 +1772,18 @@ if should_alert:
             f"가계 기업주식·펀드 총자산 비중 {fm['equities_share_total_assets_pct']:.2f}%"
         )
 
+    if media_correction:
+        corrected_us = lseg_data["metrics"].get("us_equity_bn")
+        detail = (
+            f"정정된 미국 주식형 {fmt_usd_bn_kr(corrected_us, fx)}."
+            if corrected_us is not None else
+            "미국 주식형 수치는 기사 본문에서 재검증되지 않아 확인 대기."
+        )
+        body.append(
+            "• <b>전송 오류 정정</b>: 직전 LSEG 미국 주식형 순유입 +5.6억달러 표기는 "
+            "글로벌 주식형 순유입 +5.6억달러를 잘못 복사한 값이었습니다. "
+            + detail + " 글로벌 주식형과 미국 주식형은 다른 모집단입니다."
+        )
     if source_corrections:
         body.append(
             "• ICI 동일 기준기간에 기존 저장값과 다른 새 원자료 수치가 감지됨: "
