@@ -102,6 +102,12 @@ def format_trigger(line: str, is_partial: bool = False) -> list[str]:
         body = text.split(":", 1)[1].strip()
         return ["• <b>일간 최종 확정</b> · 값 동일", f"  {body}"]
 
+    if text.startswith("BTC 현물 ETF 1개월·3개월 누적 지표 검증 완료"):
+        return ["• <b>1·3개월 지표 첫 검증</b> · 달력기간별 누적을 신규 제공"]
+
+    if text.startswith("BTC 현물 ETF 1M 과거 누적 재계산:") or text.startswith("BTC 현물 ETF 3M 과거 누적 재계산:"):
+        return ["• <b>월간 원자료 수정</b> · " + text.split(":", 1)[1].strip()]
+
     if text.startswith("BTC 현물 ETF 과거 원자료 수정:"):
         return ["• <b>과거 원자료 수정</b>", f"  {text.split(':', 1)[1].strip()}"]
 
@@ -156,6 +162,31 @@ def five_day_reading(etf: dict, rate: float | None, is_partial: bool) -> list[st
         f"  {recent_label} {last_range} · <b>{fmt_usd_m(last5, rate)}</b>",
         f"  이전5 {prev_range} · {fmt_usd_m(prev5, rate)}",
         f"  → 구간 차이 {fmt_usd_m(delta, rate)}{pct_text} · {direction}",
+    ]
+
+
+def calendar_window_reading(etf: dict, label: str, rate: float | None) -> list[str]:
+    item = ((etf.get("windows") or {}).get(label) or {})
+    readable = {"1m": "1개월", "3m": "3개월"}[label]
+    if not item.get("valid"):
+        return [f"• <b>최근 {readable}</b> · 원자료 미확보, 산출 보류"]
+    current = float(item["value_usd_m"])
+    previous = float(item["prev_value_usd_m"])
+    change = float(item["change_usd_m"])
+    status = " · 잠정" if item.get("status") == "잠정" else ""
+    partial = int(item.get("partial_days", 0) or 0)
+    prev_partial = int(item.get("prev_partial_days", 0) or 0)
+    caveat = f" · 미보고일 최근 {partial}/직전 {prev_partial}" if partial or prev_partial else ""
+    return [
+        (
+            f"• <b>최근 {readable}{status}</b> "
+            f"{item['start']}~{item['end']} ({int(item['trading_days'])}거래일)"
+            f" · <b>{fmt_usd_m(current, rate)}</b>"
+        ),
+        (
+            f"  직전 {readable} {fmt_usd_m(previous, rate)}"
+            f" → 차이 {fmt_usd_m(change, rate)} · {item['direction']}{caveat}"
+        ),
     ]
 
 
@@ -433,6 +464,17 @@ def compact_judgement(state: dict) -> tuple[str, str]:
     else:
         reason = f"{day_text} · {rate_text}. {five_text}."
 
+    one = ((etf.get("windows") or {}).get("1m") or {})
+    three = ((etf.get("windows") or {}).get("3m") or {})
+    if one.get("valid") and three.get("valid"):
+        m = float(one["value_usd_m"])
+        q = float(three["value_usd_m"])
+        if m * q < 0:
+            reason += " 1개월과 3개월의 누적 방향은 엇갈림."
+        elif m < 0 and q < 0:
+            reason += " 1개월·3개월 누적 모두 순유출."
+        elif m > 0 and q > 0:
+            reason += " 1개월·3개월 누적은 순유입."
     if str(etf.get("status") or "") != "complete":
         overall += " · 잠정"
     return overall, reason
@@ -525,6 +567,10 @@ def format_alert(text: str) -> str:
                 if clean.startswith("→ "):
                     clean = clean[2:]
                 out.append(f"• {clean}")
+
+    if etf:
+        for window in ("1m", "3m"):
+            out.extend(calendar_window_reading(etf, window, fx_rate))
 
     if rates:
         out.append(
