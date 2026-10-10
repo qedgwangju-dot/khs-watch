@@ -554,7 +554,7 @@ def classify_event(title: str) -> str | None:
         "diesel", "gasoil", "경유", "디젤"
     ))
     russian_transition = any(term in low for term in (
-        "diesel deal", "agreed to supply", "to supply", "supply russian diesel",
+        "diesel deal", "agreed to supply", "to supply", "russia to immediately supply", "trump says russia", "russia will supply", "supply russian diesel",
         "deliver russian diesel", "russian diesel imports",
         "general license 135", "general licence 135", "ofac 135",
         "lift diesel export restrictions", "lifting diesel export restrictions",
