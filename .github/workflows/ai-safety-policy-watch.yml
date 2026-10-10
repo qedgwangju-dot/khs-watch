@@ -567,6 +567,10 @@ jobs:
                   "authority":5,"funding_request":4,"membership":2,"formation":1,
               }
               st,key,digest,row=sorted(candidates,key=lambda x:rank.get(x[0],0),reverse=True)[0]
+              if st=="statement" and row.get("source")=="Axios":
+                  # Use the publisher's verified original URL, not a Google News
+                  # RSS proxy that might redirect differently in Telegram.
+                  row["link"]="https://www.axios.com/2026/10/09/anthropic-ai-security-white-house"
               if st=="formation":
                   heading="미국 Super Intelligence Force(SIF) 창설"
                   detail=[
