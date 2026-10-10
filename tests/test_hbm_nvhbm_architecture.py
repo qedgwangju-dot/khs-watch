@@ -243,6 +243,8 @@ class NVHBMFoundryStrategyTests(unittest.TestCase):
         memory={"data":{
             "seen_ids":[],"seen_fact_keys":[],
             "structure_baseline_version":w.STRUCTURE_BASELINE_VERSION,
+            "hbm_hybrid_bond_track_version":w.HBM_HYBRID_BOND_TRACK_VERSION,
+            "hbm_hybrid_bonding":copy.deepcopy(w.HBM_HYBRID_BOND_BASELINE),
             "nvhbm_architecture_track_version":w.NVHBM_ARCH_TRACK_VERSION,
             "nvhbm_architecture":copy.deepcopy(w.NVHBM_ARCH_BASELINE),
         }}
