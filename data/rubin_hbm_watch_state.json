@@ -878,7 +878,7 @@
   "feed_healthy": 42,
   "_delivery": {
     "id": "2cebaad1d64e1dea43584c123aee9badb5cd9349ebaa178a57b1036bea3cc88b",
-    "status": "queued",
+    "status": "in_flight",
     "created_at_kst": "2026-10-10T14:30:30+09:00",
     "chunks": [
       "<b>🚨 NVHBM 베이스 다이 · 삼성전자·SK하이닉스·Micron</b>\n조회: 2026-10-10 14:29 KST\n<b>상태: 10월 9일 공급망 전략 보도 신규 감시 / NVIDIA·TSMC 기술 수치는 별도 공식 확인</b>\n\n<b>■ NVIDIA 공식 구조와 성능</b>\n• 메모리 컨트롤러: XPU에서 HBM 베이스 다이로 이동.\n• 표준 HBM4E 대비: 메모리 대역폭 최대 +30% / HBM 전력 소비 최대 -15%.\n• PHY·지원 면적 최대 -67%: 전체 반도체 패키지 면적 -67%가 아닙니다.\n• 연산 다이 면적 최대 +25% 및 메인 다이 실리콘 증가 최대 +30%는 다른 표현·기준이므로 합산 금지.\n\n<b>■ 삼성전자</b>\n• HBM4: 1c D램 + 자체 파운드리 4나노 베이스 다이 양산·고객 출하(공식).\n• NVHBM 등 맞춤형 HBM: 삼성 파운드리와 TSMC 이원화 추진(9월 ZDNet 업계 보도).\n• TSMC 제작 베이스 다이 설계·최적화를 메모리사업부가 주도한다는 것은 보도 단계.\n• TSMC 고객별 공급계약·NVHBM 양산: 미확정.\n• 공식 베이스 다이 전략 진행: 제조 전략 보도·고객 검증 미확인\n\n<b>■ SK하이닉스</b>\n• HBM4: TSMC 베이스 다이 적용 협력은 공식 확인, 12나노 공정은 TSMC 공식 범용 기술자료·업계 보도로 교차 확인.\n• HBM4E·맞춤형 HBM: TSMC 3나노 우선 검토 보도. 특정 차세대 고객 주문·NVHBM 양산은 미확정.\n• TSMC의 N3P 맞춤형 HBM4E 베이스 다이 기술 발표는 공식. 특정 메모리 업체의 계약·양산을 의미하지 않음.\n• 공식 차세대 베이스 다이 전략 진행: 제조 전략 보도·고객 검증 미확인\n\n<b>■ Micron</b>\n• HBM4: 1β 코어 다이와 자체 베이스 다이 적용(The Elec 인용 보도).\n• HBM4E·NVHBM: 1γ 코어 다이와 외부 파운드리 베이스 다이 전략(The Elec의 Micron 임원 발언 인용).\n• TSMC 및 3나노 공급 가능성은 전망. 외주 수주처·물량·양산 계약 미확정.\n• 모든 HBM 제품의 베이스 다이를 100% 외주 전환했다는 뜻은 아닙니다.\n• 공식 차세대 베이스 다이 전략 진행: 제조 전략 보도·고객 검증 미확인\n\n<b>■ 확정 고객·수익 연결</b>\n• Amazon Annapurna Labs의 NVIDIA NVHBM 기술 협력: 공식. Trainium4 NVLink Fusion 지원: 공식.\n• Trainium4 NVHBM 양산 탑재·삼성/SK/Micron 공급물량: 미확인.\n• 메모리사 맞춤형 HBM 판매가격·계약물량 및 TSMC의 고객별 웨이퍼 매출: 미공개. 임의 원화 매출 산출 금지.\n\n<b>■ 공정 병목·역풍</b>\n• 파운드리 공정이전·메모리/로직 다이 열팽창·정렬·휨·접합 수율·고온 동작 검사·신뢰성 인증이 관건.\n• 예시(실제 수율 아님): 10개 독립 공정 각각 수율 99%라면 누적 0.99^10≈90.4%.\n• 가장 현실적인 실패경로: 설계·시제품 → 파운드리 수율/검증 지연 → 고객 인증 지연 → 맞춤형 매출 연결 지연.\n• 향후 6~12개월 고객 실명 발표·정식 수주·고객 검증·양산시점과 웨이퍼 투입량 확인.\n• 10월 9일 TrendForce News는 여러 원보도를 재정리했으므로 독립 파운드리 계약 확인 자료로 승격 금지.\n\n<b>■ 원문 (눌러 열기)</b>\n• NVIDIA 공식: <a href=\"https://developer.nvidia.com/blog/nvidia-nvlink-fusion-brings-nvhbm-to-next-generation-ai-infrastructure/\">원문 보기</a>\n• TSMC 공식: <a href=\"https://www.tsmc.com/english/node/233\">원문 보기</a>\n• 삼성전자 공식: <a href=\"https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing\">원문 보기</a>\n• SK하이닉스 공식: <a href=\"https://news.skhynix.co.kr/tsmc-technology-symposium-2026/\">원문 보기</a>\n• Micron 임원 인용 보도: <a href=\"https://www.thelec.kr/news/articleView.html?idxno=63114\">원문 보기</a>\n• 삼성전자 이원화 보도: <a href=\"https://zdnet.co.kr/view/?no=20260915100431\">원문 보기</a>\n• SK하이닉스 3나노 보도: <a href=\"https://www1.edaily.co.kr/News/Read?mediaCodeNo=257&amp;newsId=05762966645478440\">원문 보기</a>\n• TrendForce 재정리: <a href=\"https://www.trendforce.com/news/2026/10/09/news-nvidias-nvhbm-reshapes-memory-makers-base-die-strategies-as-micron-samsung-turn-to-external-foundries/\">원문 보기</a>\n• Amazon 협력 공식: <a href=\"https://blogs.nvidia.com/blog/nvlink-fusion-nvhbm-custom-high-bandwidth-memory/\">원문 보기</a>"
@@ -1833,6 +1833,7 @@
         "confirmed_new_nv_hbm_fab_revenue_krw": null,
         "reported_strategy_as_of": "2026-10-09"
       }
-    }
+    },
+    "attempt_at_kst": "2026-10-10T14:30:32+09:00"
   }
 }
