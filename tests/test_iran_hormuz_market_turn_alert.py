@@ -967,6 +967,27 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         self.assertNotIn("러시아 경유 실제 선적 복수 자료 확인", body)
         self.assertLessEqual(len(body.splitlines()), 38)
 
+    def test_russia_license_is_not_resent_after_14_or_45_days(self):
+        now = dt.datetime(2026, 10, 10, 0, tzinfo=dt.timezone.utc)
+        row = MODULE.parse_ofac_russian_diesel_license(
+            "10/09/2026 Russia-related General License 135 authorizing transactions related to"
+            " sale delivery offloading and importation of Diesel Fuel of Russian Federation Origin",
+            now
+        )
+        eid = MODULE.event_id("russia_diesel_supply_transition", [row])
+        old_date = (now - dt.timedelta(days=70)).astimezone(MODULE.KST).isoformat()
+        state = {"alerted_events": {eid: old_date}}
+        self.assertTrue(MODULE.event_recently_alerted(state, eid, now))
+        new_state = MODULE.build_pending_state(
+            state, "another:event", "other", now, {}
+        )
+        self.assertIn(eid, new_state["alerted_events"])
+        self.assertIsNone(
+            MODULE.select_unalerted_event(
+                new_state, [("russia_diesel_supply_transition", [row])], now
+            )[0]
+        )
+
     def test_russia_ap_original_title_independent_agreement(self):
         title = "Trump strikes deal with Putin for Russian diesel ahead of midterms"
         self.assertEqual(MODULE.classify_event(title), "russia_diesel_supply_transition")

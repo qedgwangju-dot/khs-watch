@@ -2015,6 +2015,14 @@ def event_recently_alerted(
     hours: int = 336,
 ) -> bool:
     alerted = state.get("alerted_events")
+    # OFAC license and dated cargoes are factual one-time occurrences.
+    # The generic 14-day news cooldown must not resend them after expiry.
+    if (
+        current_event_id.startswith("russia_diesel_supply_transition:")
+        and isinstance(alerted, dict)
+        and current_event_id in alerted
+    ):
+        return True
     if isinstance(alerted, dict):
         previous = _parse_kst_timestamp(alerted.get(current_event_id))
         if previous is not None:
@@ -2058,7 +2066,9 @@ def build_pending_state(
     cleaned: dict[str, str] = {}
     for key, raw in alerted.items():
         stamp = _parse_kst_timestamp(raw)
-        if stamp is not None and stamp >= cutoff:
+        if stamp is not None and (
+            stamp >= cutoff or str(key).startswith("russia_diesel_supply_transition:")
+        ):
             cleaned[str(key)] = stamp.isoformat(timespec="seconds")
     cleaned[current_event_id] = now_kst.isoformat(timespec="seconds")
     return {
