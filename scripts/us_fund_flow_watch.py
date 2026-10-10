@@ -184,7 +184,7 @@ def fetch_fx():
             date_text, rate = vals[-1]
             observed = datetime.strptime(date_text, "%Y%m%d").date()
             # Never treat a wildly invalid rate or a stale cached observation as current.
-            if not (500.0 <= rate <= 3000.0) or not (0 <= (today-observed).days <= 10):
+            if not (500.0 <= rate <= 3000.0) or not (0 <= (today-observed).days <= 5):
                 return None
             return {"date": date_text, "usdkrw": rate}
     except Exception:
@@ -1144,6 +1144,21 @@ def period_date(x):
             return d.replace(year=year).date()
         except Exception:
             pass
+    # Low-frequency sources have month, quarter, or range labels rather than daily dates.
+    for fmt in ("%b-%y", "%b %Y", "%B %Y", "%m/%Y", "%Y-%m"):
+        try:
+            return datetime.strptime(p, fmt).date().replace(day=1)
+        except ValueError:
+            pass
+    q = re.fullmatch(r"(20\d{2}):Q([1-4])", p)
+    if q:
+        return datetime(int(q.group(1)), int(q.group(2)) * 3, 1).date()
+    interval = re.fullmatch(r"([A-Za-z]+)[-–—]([A-Za-z]+)\s+(20\d{2})", p)
+    if interval:
+        try:
+            return datetime.strptime(f"{interval.group(2)} {interval.group(3)}", "%B %Y").date()
+        except ValueError:
+            pass
     return None
 
 
@@ -1177,9 +1192,11 @@ def recent_official_week(x, on_date, max_age_days=14):
 
 def source_is_stale(x, previous, on_date):
     """Old pages must never roll back a delivered observation or replace newer state."""
-    current_week = eligible_reference_week(x)
-    old_week = eligible_reference_week(previous)
-    if current_week is not None and old_week is not None and current_week < old_week:
+    current_period = eligible_reference_week(x) or period_date(x)
+    old_period = eligible_reference_week(previous) or period_date(previous)
+    if current_period is not None and current_period > on_date:
+        return True
+    if current_period is not None and old_period is not None and current_period < old_period:
         return True
     if x.get("source") == "ICI" and x.get("kind") in ("combined", "mmf"):
         return not recent_official_week(x, on_date, max_age_days=21)
@@ -1194,6 +1211,16 @@ assert source_is_stale(
 assert not source_is_stale(
     {"source":"ICI","kind":"mmf","period":"October 07, 2026"},
     {"source":"ICI","kind":"mmf","period":"October 07, 2026"},
+    datetime(2026,10,10).date()
+)
+assert source_is_stale(
+    {"source":"FINRA","kind":"margin","period":"Jul-26"},
+    {"source":"FINRA","kind":"margin","period":"Aug-26"},
+    datetime(2026,10,10).date()
+)
+assert source_is_stale(
+    {"source":"Federal Reserve Z.1","kind":"household_balance_sheet","period":"2026:Q1"},
+    {"source":"Federal Reserve Z.1","kind":"household_balance_sheet","period":"2026:Q2"},
     datetime(2026,10,10).date()
 )
 
