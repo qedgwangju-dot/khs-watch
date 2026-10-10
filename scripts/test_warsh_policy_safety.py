@@ -368,41 +368,17 @@ class WarshSafetyTests(unittest.TestCase):
         self.assertEqual(result, [item])
 
 
-    def test_missing_probability_api_uses_official_settlement_path_without_guessing_odds(self):
-        fallback = {
-            "effr":3.88, "effr_date":"2026-10-08",
-            "meetings":[{
-                "date":"2026-10-28","post_rate":4.02,"change_bp":14.0,
-                "hike25_prob":None,"hike25_or_more_prob":None,
-                "hold_prob":None,"cut_prob":None,"outcomes":{},
-            }],
-            "url":"https://www.cmegroup.com/markets/interest-rates/stirs/30-day-federal-fund.settlements.html",
-            "market_data_basis":"CME 공식 지연 결제값 기반 금리 기대(확률 별도 확인 전 판정 유보)",
-            "official_settlement_date":"2026-10-08",
-        }
+    def test_missing_probability_api_fails_closed_without_scraping_or_guessing(self):
         with patch.dict(os.environ, {
             "CME_FEDWATCH_API_ID": "", "CME_FEDWATCH_API_PASSWORD": "",
-        }), patch.object(futures, "_legacy_public_settlement_snapshot", return_value=fallback) as settlement, \
+        }), patch.object(futures, "_legacy_public_settlement_snapshot") as settlement, \
              patch.object(futures.official_api, "oauth_token") as auth:
-            snap = futures.official_snapshot()
-        settlement.assert_called_once()
+            with self.assertRaisesRegex(RuntimeError, "인증정보 미설정"):
+                futures.official_snapshot()
+        settlement.assert_not_called()
         auth.assert_not_called()
-        self.assertIsNone(snap["meetings"][0]["hike25_prob"])
-        self.assertIn("구간별 확률 판정 유보", snap["probability_source_status"])
-        self.assertIn("결제값 기반", snap["market_data_basis"])
 
-    def test_probability_api_failure_falls_back_to_expected_rate_only(self):
-        fallback = {
-            "effr":3.88, "effr_date":"2026-10-08",
-            "meetings":[{
-                "date":"2026-10-28","post_rate":4.01,"change_bp":13.0,
-                "hike25_prob":None,"hike25_or_more_prob":None,
-                "hold_prob":None,"cut_prob":None,"outcomes":{},
-            }],
-            "url":"https://www.cmegroup.com/markets/interest-rates/stirs/30-day-federal-fund.settlements.html",
-            "market_data_basis":"CME 공식 지연 결제값 기반 금리 기대(확률 별도 확인 전 판정 유보)",
-            "official_settlement_date":"2026-10-08",
-        }
+    def test_probability_api_failure_does_not_promote_public_settlement_to_fedwatch(self):
         with patch.dict(os.environ, {
             "CME_FEDWATCH_API_ID": "id", "CME_FEDWATCH_API_PASSWORD": "pw",
         }), patch.object(futures.v3.base,"official_policy_baseline",
@@ -412,13 +388,10 @@ class WarshSafetyTests(unittest.TestCase):
              patch.object(futures,"official_fomc_dates",return_value=[date(2026,10,28)]), \
              patch.object(futures.official_api,"oauth_token",
                         side_effect=RuntimeError("entitlement denied")), \
-             patch.object(futures,"_legacy_public_settlement_snapshot",
-                        return_value=fallback) as settlement:
-            snap=futures.official_snapshot()
-        settlement.assert_called_once()
-        self.assertIsNone(snap["meetings"][0]["hike25_prob"])
-        self.assertIn("안전 전환", snap["probability_source_status"])
-        self.assertIn("entitlement denied", snap["probability_source_error"])
+             patch.object(futures,"_legacy_public_settlement_snapshot") as settlement:
+            with self.assertRaisesRegex(RuntimeError, "entitlement denied"):
+                futures.official_snapshot()
+        settlement.assert_not_called()
 
     def test_official_api_probability_is_from_target_ranges_not_avg_price(self):
         today = date(2026,10,9)
