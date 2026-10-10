@@ -266,7 +266,7 @@ def validate_rubin_nvhbm_foundry_notification(text: str) -> None:
         "developer.nvidia.com", "blogs.nvidia.com", "www.tsmc.com", "tsmc.com",
         "news.samsung.com", "semiconductor.samsung.com", "www.samsung.com", "samsung.com",
         "news.skhynix.co.kr", "news.skhynix.com", "skhynix.com", "www.skhynix.com",
-        "thelec.kr", "www.thelec.kr", "zdnet.co.kr", "www.zdnet.co.kr",
+        "thelec.kr", "www.thelec.kr", "thelec.net", "www.thelec.net", "zdnet.co.kr", "www.zdnet.co.kr",
         "www1.edaily.co.kr", "www.edaily.co.kr", "edaily.co.kr",
         "trendforce.com", "www.trendforce.com", "micron.com", "www.micron.com",
     }
