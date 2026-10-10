@@ -227,7 +227,7 @@ def format_hybrid_alert(original: str) -> str:
     allowed = {
         "Damnang": ("damnang.com", "www.damnang.com"),
         "TechPowerUp": ("techpowerup.com", "www.techpowerup.com"),
-        "SK하이닉스 공식": ("news.skhynix.com", "www.skhynix.com"),
+        "SK하이닉스 공식": ("news.skhynix.com", "news.skhynix.co.kr", "www.skhynix.com", "www.skhynix.co.kr"),
         "삼성전자 공식": ("news.samsung.com",),
         "Counterpoint": ("counterpointresearch.com", "www.counterpointresearch.com"),
         "변화 공식원문": ("news.skhynix.com", "news.skhynix.co.kr", "www.skhynix.com",
