@@ -55,9 +55,10 @@ def _meeting_line(m):
     if p is not None and m.get("hike25_or_more_prob") is not None:
         prob += f" · 누적 +25bp 이상 {float(m['hike25_or_more_prob']):.1f}%"
     ch = float(m.get('change_bp') or 0.0)
+    move_label = "확률가중 기대변화" if p is not None else "공식 결제값 기반 기대변화"
     return (
         f"• {base.ko_date(m['date'])} | {prob} | "
-        f"확률가중 기대변화 {ch:+.1f}bp | 회의 후 금리 기대 {float(m['post_rate']):.3f}%"
+        f"{move_label} {ch:+.1f}bp | 회의 후 금리 기대 {float(m['post_rate']):.3f}%"
     )
 
 
@@ -65,15 +66,26 @@ def message_v3(snap, cls):
     sep = cls.get('sep'); bal = cls.get('balance')
     extra = float(cls.get('extra_bp') or 0.0)
     eq = extra / 25.0
+    api_probability = any(m.get('hike25_prob') is not None for m in snap.get('meetings', []))
+    if api_probability:
+        equivalent_note = (
+            f"  ↳ +25bp 인상 {eq:.2f}회 상당의 <b>확률가중 평균</b>이며 실제 인상 횟수 확정값이 아닙니다."
+        )
+    else:
+        equivalent_note = (
+            f"  ↳ +25bp 단위로 환산하면 {eq:.2f}회 상당이지만, 이는 <b>공식 선물 결제값에서 계산한 기대금리 차이</b>이며 "
+            "실제 인상 횟수나 구간별 확률이 아닙니다."
+        )
     lines = [
         '<b>[Warsh 금리경로·대차대조표 종합]</b>',
         '',
         f"• <b>시장자료 기준</b>: {html.escape(str(snap.get('market_data_basis') or snap.get('source_kind') or '연방기금금리 선물 기반 경로'))}",
+        f"• <b>확률 원천 상태</b>: {html.escape(str(snap.get('probability_source_status') or ('공식 구간별 확률 사용' if api_probability else '구간별 확률 판정 유보')))}",
         '<b>핵심 판정</b>',
         f"• <b>시장 경로</b>: {html.escape(cls['verdict'])}",
         f"• <b>현재 공식 기준</b>: {cls['baseline_rate']:.3f}% ({html.escape(cls['baseline_kind'])})",
         f"• <b>연말 시장 기대</b>: {cls['yearend_market_rate']:.3f}% · 현재보다 {extra:+.1f}bp",
-        f"  ↳ +25bp 인상 {eq:.2f}회 상당의 <b>확률가중 평균</b>이며 실제 인상 횟수 확정값이 아닙니다.",
+        equivalent_note,
     ]
     if sep:
         lines += [
@@ -89,7 +101,7 @@ def message_v3(snap, cls):
         '',
         '<b>정확도 가드</b>',
         '• 확률 %와 금리변화 bp는 완전히 다른 숫자입니다.',
-        '• 원천이 여러 금리결과를 동시에 제시해 +25bp 확률을 정확히 식별할 수 없으면 확률을 추정하지 않고 “판정 유보”로 표시합니다.',
+        '• CME 공개 결제값은 기대금리 계산에는 사용할 수 있지만 FedWatch 목표금리 구간별 확률 자체는 아닙니다. 인증 API가 없으면 확률을 추정하지 않고 “판정 유보”로 표시합니다.',
         '• 선물 원천의 EFFR가 연준 공식 목표범위를 벗어나거나 미래 회의가 없으면 오래된 값으로 간주해 신규 시장판정을 중지합니다.',
         '• 점도표는 연준 참가자 전망의 중앙값이지 FOMC의 약속이 아닙니다.',
         '',
@@ -156,6 +168,20 @@ def _source_health_message(kind, err=None):
     ])
 
 
+
+def _partial_recovery_message(snap):
+    return '\n'.join([
+        '<b>[Warsh 시장 기대금리 경로 안전 복구]</b>',
+        'CME 공식 공개 결제값과 뉴욕연은 EFFR로 기대금리 경로 감시를 다시 시작합니다.',
+        '• <b>구간별 FedWatch 확률은 아직 판정 유보</b>입니다. 인증 API 권한이 연결되기 전에는 확률을 역산하지 않습니다.',
+        '• 연말·회의 후 기대금리와 연준 점도표의 차이는 공식 결제값 기반 자체 계산으로만 표시합니다.',
+        '• 과거 확률을 현재값으로 재사용하지 않습니다.',
+        '',
+        '<b>원천</b>',
+        base.link('CME 연방기금금리 선물 결제값', snap.get('url') or base.CME_URL),
+    ])
+
+
 def _last_good_snapshot(state):
     """Quarantine the last validated snapshot for audit only.
 
@@ -179,6 +205,8 @@ def _last_good_snapshot(state):
             'official_settlement_date': state.get('official_settlement_date'),
             'forecast_reporting_date': state.get('forecast_reporting_date'),
             'source_api_url': state.get('source_api_url'),
+            'probability_source_status': state.get('probability_source_status'),
+            'probability_source_error': state.get('probability_source_error'),
             'last_validated_at_utc': state.get('last_validated_at_utc'),
         }
     return None
@@ -277,8 +305,12 @@ def main():
     if not changed and old_cls.get('tightening_mix') not in (None, cls.get('tightening_mix')):
         changed = True
 
+    recovery_message_id = None
     if old.get('source_health_alerted'):
-        base.send(_source_health_message('recovery'))
+        if '판정 유보' in str(snap.get('probability_source_status') or ''):
+            recovery_message_id = base.send(_partial_recovery_message(snap))
+        else:
+            recovery_message_id = base.send(_source_health_message('recovery'))
 
     if base.FORCE or (not first and changed):
         base.send(message_v3(snap, cls))
@@ -293,6 +325,8 @@ def main():
         'official_settlement_date': snap.get('official_settlement_date'),
         'forecast_reporting_date': snap.get('forecast_reporting_date'),
         'source_api_url': snap.get('source_api_url'),
+        'probability_source_status': snap.get('probability_source_status'),
+        'probability_source_error': snap.get('probability_source_error'),
         'last_validated_at_utc': validated_at,
     }
     base.save_state({
@@ -305,7 +339,7 @@ def main():
         'source_error_kind': None,
         'source_health_alerted': False,
         'last_health_alert_at_utc': None,
-        'last_health_message_id': old.get('last_health_message_id'),
+        'last_health_message_id': recovery_message_id or old.get('last_health_message_id'),
     })
     print(json.dumps({
         'schema_version': SCHEMA_VERSION,
