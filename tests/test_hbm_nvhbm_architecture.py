@@ -26,6 +26,8 @@ class NVHBMArchitectureWatchTests(unittest.TestCase):
             "article_text": text,
             "source": source,
             "origin_source": source,
+            "article_fetch_succeeded": source == "NVIDIA Technical Blog",
+            "official_article_text": text if source == "NVIDIA Technical Blog" else "",
             "published_at_kst": "2026-10-03T14:00:00+09:00",
             "direct_link": "https://developer.nvidia.com/blog/nvidia-nvlink-fusion-brings-nvhbm-to-next-generation-ai-infrastructure/",
         }
@@ -63,6 +65,21 @@ class NVHBMArchitectureWatchTests(unittest.TestCase):
         self.assertEqual(obs["rubin_hbm_logic_phy_die_share_estimate_pct"], 16.0)
         self.assertEqual(obs["feynman_nvhbm_interface_die_share_estimate_pct"], 4.0)
         self.assertAlmostEqual(obs["samsung_custom_d2d_area_reduction_pct_estimate"], 60.15625, places=5)
+
+    def test_named_vendor_requires_nvidia_issuer_and_completed_fact(self):
+        text = (
+            "NVIDIA has officially selected Samsung Electronics as an NVHBM memory partner."
+        )
+        external = self.event(text, source="NVIDIA Technical Blog")
+        external["direct_link"] = "https://www.techpowerup.com/example-nvhbm"
+        self.assertNotIn("official_memory_vendors", w.extract_nvhbm_architecture(external) or {})
+        missing_fetch = self.event(text)
+        missing_fetch["article_fetch_succeeded"] = False
+        self.assertNotIn("official_memory_vendors", w.extract_nvhbm_architecture(missing_fetch) or {})
+        rumored = self.event("Samsung Electronics is expected to be an NVHBM memory partner.")
+        self.assertNotIn("official_memory_vendors", w.extract_nvhbm_architecture(rumored) or {})
+        confirmed = w.extract_nvhbm_architecture(self.event(text))
+        self.assertEqual(confirmed.get("official_memory_vendors"), ["Samsung Electronics"])
 
     def test_general_media_cannot_name_official_memory_vendor(self):
         obs = w.extract_nvhbm_architecture(self.event(
