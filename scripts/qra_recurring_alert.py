@@ -247,7 +247,7 @@ def build_financing_alert(current: ReleaseSection, previous: ReleaseSection | No
     for quarter, billion in amounts.items():
         compare = (f" (직전 동일 분기 {prior[quarter]:,.0f}억달러" +
                    f", 변경 {billion-prior[quarter]:+,.0f}억달러)")
-        if quarter in prior else " (동일 분기 직전 추정 확인 불가)"
+
         rows.append(f"• {quarter}: {billion:,.0f}십억달러{compare}")
     title = "미 재무부 분기 순차입 추정 신규 발표"
     body = "\n".join([
