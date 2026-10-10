@@ -268,6 +268,7 @@ DIGITAL_OPTIMUS_POST_ID = '2108823477071303109'
 DIGITAL_OPTIMUS_CANONICAL_URL = 'https://x.com/elonmusk/status/2108823477071303109'
 DIGITAL_OPTIMUS_ID = re.compile(r'Digital\s+Optimus|디지털\s*옵티머스|\bMacrohard\b', re.I)
 DIGITAL_OPTIMUS_GAMES = re.compile(
+    r'\bgames?\b|게임|게임\s*에이전트|'
     r'\bDiablo\b|디아블로|Counter[-\s]*Strike|카운터\s*스트라이크|'
     r'League\s+of\s+Legends|리그\s*오브\s*레전드|'
     r'(?:real[-\s]*time|실시간).{0,30}(?:games?|게임)|'
