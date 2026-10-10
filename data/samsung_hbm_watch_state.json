@@ -310,7 +310,7 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-10",
-  "updated_at_kst": "2026-10-10T15:20:26+09:00",
+  "updated_at_kst": "2026-10-10T17:12:14+09:00",
   "last_event_count": 0,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
@@ -1397,6 +1397,28 @@
         "excerpt": "구미 파일럿 라인을 기반으로 유리기판 기술을 개발하고 있으며 2028년 양산 목표. 공식 인사이트는 2027~2028년 상용화 체계 구축을 제시했고 UTI와 유리 정밀가공 연구개발 협력 중.",
         "secondary_source_url": "https://www.lginnotek.com/news/insightsView.do?idx=236&locale=en&rowSize=9",
         "collaboration_source_url": "https://www.lginnotek.com/news/pressView.do?idx=6572&locale=ko"
+      },
+      "foplp_mature_node_industry|industry|PMIC_RF": {
+        "key": "foplp_mature_node_industry|industry|PMIC_RF",
+        "axis": "foplp_mature_node_industry",
+        "value": {
+          "panel_width_mm": 620,
+          "panel_height_mm": 750,
+          "stage": "mass_production",
+          "application": "PMIC_RF",
+          "ai_hpc_mass_production_confirmed": false,
+          "tsmc_copos_mass_production_confirmed": false,
+          "glass_core_mass_production_confirmed": false
+        },
+        "unit": "mm,stage",
+        "period": "current",
+        "as_of": "2026-06-17",
+        "evidence": "research",
+        "source_url": "https://www.trendforce.com/presscenter/news/20260617-13107.html",
+        "source_title": "TrendForce: Mature-node FOPLP volume production for PMIC/RF, panels up to 620×750mm",
+        "source": "TrendForce",
+        "scope": "mature_node_PMIC_RF_only_not_TSMC_CoPoS_AI_HPC_or_glass_core",
+        "excerpt": "TrendForce 2026-06-17: multiple manufacturers mass-produce FOPLP for mature-node PMIC/RF, up to 620×750mm; separate from CoPoS 310×310mm roadmap and glass-core commercialization."
       }
     },
     "latest": {
@@ -2302,11 +2324,33 @@
         "excerpt": "구미 파일럿 라인을 기반으로 유리기판 기술을 개발하고 있으며 2028년 양산 목표. 공식 인사이트는 2027~2028년 상용화 체계 구축을 제시했고 UTI와 유리 정밀가공 연구개발 협력 중.",
         "secondary_source_url": "https://www.lginnotek.com/news/insightsView.do?idx=236&locale=en&rowSize=9",
         "collaboration_source_url": "https://www.lginnotek.com/news/pressView.do?idx=6572&locale=ko"
+      },
+      "foplp_mature_node_industry|industry|PMIC_RF": {
+        "key": "foplp_mature_node_industry|industry|PMIC_RF",
+        "axis": "foplp_mature_node_industry",
+        "value": {
+          "panel_width_mm": 620,
+          "panel_height_mm": 750,
+          "stage": "mass_production",
+          "application": "PMIC_RF",
+          "ai_hpc_mass_production_confirmed": false,
+          "tsmc_copos_mass_production_confirmed": false,
+          "glass_core_mass_production_confirmed": false
+        },
+        "unit": "mm,stage",
+        "period": "current",
+        "as_of": "2026-06-17",
+        "evidence": "research",
+        "source_url": "https://www.trendforce.com/presscenter/news/20260617-13107.html",
+        "source_title": "TrendForce: Mature-node FOPLP volume production for PMIC/RF, panels up to 620×750mm",
+        "source": "TrendForce",
+        "scope": "mature_node_PMIC_RF_only_not_TSMC_CoPoS_AI_HPC_or_glass_core",
+        "excerpt": "TrendForce 2026-06-17: multiple manufacturers mass-produce FOPLP for mature-node PMIC/RF, up to 620×750mm; separate from CoPoS 310×310mm roadmap and glass-core commercialization."
       }
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-10-10T15:20:26+09:00",
+      "last_checked_at_kst": "2026-10-10T17:12:14+09:00",
       "gaps": [
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
       ],
@@ -2380,7 +2424,7 @@
     "payload_hash": "01ed6f362e09684184a695c5965c43de3d6218c6509bcef52ae1149d6d9c0402"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-10-10T15:21:18+09:00",
+    "checked_at_kst": "2026-10-10T17:13:00+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null,
