@@ -554,12 +554,12 @@ def classify_event(title: str) -> str | None:
         "diesel", "gasoil", "경유", "디젤"
     ))
     russian_transition = any(term in low for term in (
-        "diesel deal", "agreed to supply", "to supply", "russia to immediately supply", "trump says russia", "russia will supply", "supply russian diesel",
+        "diesel deal", "agreed to supply", "to supply", "russia to immediately supply", "trump says russia", "russia will supply", "trump strikes deal", "supply russian diesel",
         "deliver russian diesel", "russian diesel imports",
         "general license 135", "general licence 135", "ofac 135",
         "lift diesel export restrictions", "lifting diesel export restrictions",
         "lift restrictions on diesel exports", "russian diesel exports resume",
-        "diesel shipments loaded", "diesel tanker departed", "diesel cargo departed",
+        "diesel shipments loaded", "diesel cargoes loaded", "diesel tanker departed", "diesel cargo departed",
         "러시아 경유 공급 합의", "러시아 경유 수입 허용", "러시아산 경유 제재",
         "러시아 경유 수출 규제 해제", "러시아 경유 실제 선적",
         "러 경유 공급 합의", "러 경유 공급", "러 경유 제재"
@@ -1789,9 +1789,13 @@ def event_id(kind: str, rows: list[NewsItem]) -> str:
         stage = next(iter(stages))
         if stage == "us_license_issued" and not any(_russian_license_is_official(row) for row in rows):
             raise ValueError("OFAC 공식 확인 없이 제재 허가 사건 식별 불가")
-        if stage == "shipment_verified" and not _russian_physical_shipment_confirmed(rows):
-            raise ValueError("복수 출처의 실제 선적 검증 없이 사건 생성 불가")
-        basis = f"{kind}|2026-10-09|{stage}"
+        if stage == "shipment_verified":
+            fp = _russian_shipment_fingerprint(rows)
+            if fp is None:
+                raise ValueError("기준일·물량·복수 출처 검증 없이 실물 사건 생성 불가")
+            basis = f"{kind}|physical_{fp[0]}|qty50k_{fp[1]}"
+        else:
+            basis = f"{kind}|2026-10-09|{stage}"
         return f"{kind}:{hashlib.sha256(basis.encode('utf-8')).hexdigest()[:16]}"
 
     if kind == "us_diesel_export_policy":
@@ -2637,26 +2641,56 @@ def _russian_license_is_official(row: NewsItem) -> bool:
     )
 
 
-def _russian_physical_shipment_confirmed(rows: list[NewsItem]) -> bool:
-    # Different republications of the same wire are still just one source.
-    sources = set()
+def _russian_shipment_fingerprint(rows: list[NewsItem]) -> tuple[str, int] | None:
+    """Verified tanker movement: independent cargo tracker + news/customs,
+    same observed calendar date and consistent volume in 50,000-ton bands.
+    Reports of *plans* or sanctions licenses must never count as a cargo.
+    """
+    corroborated: dict[str, dict[str, set[int]]] = {}
     for row in rows:
         if _russian_diesel_supply_stage(row.title) != "shipment_verified":
             continue
-        host = urllib.parse.urlsplit(row.link).hostname or ""
-        host = host.lower()
-        title = normalize_text(row.title)
-        if "loaded" not in title and "departed" not in title and "실제 선적" not in title and "출항 확인" not in title:
-            continue
+        host = (urllib.parse.urlsplit(row.link).hostname or "").lower()
         if host == "kpler.com" or host.endswith(".kpler.com"):
-            sources.add("kpler")
+            provider = "kpler"
         elif host == "reuters.com" or host.endswith(".reuters.com"):
-            sources.add("reuters")
-        elif host.endswith(".customs.gov.ru"):
-            sources.add("customs")
+            provider = "reuters"
+        elif host == "customs.gov.ru" or host.endswith(".customs.gov.ru"):
+            provider = "customs"
         elif host == "bloomberg.com" or host.endswith(".bloomberg.com"):
-            sources.add("bloomberg")
-    return ("kpler" in sources or "customs" in sources) and len(sources) >= 2
+            provider = "bloomberg"
+        else:
+            continue
+        date_match = re.search(r"\b(20\d{2}-\d{2}-\d{2})\b", row.title)
+        qty_match = re.search(
+            r"\b([\d,]+(?:\.\d+)?)\s*(?:metric\s*)?(?:tonnes?|tons?)\b",
+            row.title, re.I
+        )
+        if not date_match or not qty_match:
+            continue
+        try:
+            day = dt.date.fromisoformat(date_match.group(1))
+            qty = float(qty_match.group(1).replace(",", ""))
+        except (ValueError, OverflowError):
+            continue
+        if not 10000 <= qty <= 10000000 or day.year < 2026:
+            continue
+        band = int(round(qty / 50000))
+        corroborated.setdefault(day.isoformat(), {}).setdefault(provider, set()).add(band)
+
+    for day in sorted(corroborated, reverse=True):
+        providers = corroborated[day]
+        if not ("kpler" in providers or "customs" in providers):
+            continue
+        for band in set.union(*providers.values()):
+            agreeing = {name for name, bands in providers.items() if band in bands}
+            if len(agreeing) >= 2 and ("kpler" in agreeing or "customs" in agreeing):
+                return day, band
+    return None
+
+
+def _russian_physical_shipment_confirmed(rows: list[NewsItem]) -> bool:
+    return _russian_shipment_fingerprint(rows) is not None
 
 
 def parse_ofac_russian_diesel_license(raw_html: str, current: dt.datetime) -> NewsItem:
@@ -2688,7 +2722,7 @@ def _build_russia_diesel_supply_alert_body(
     if stage == "us_license_issued" and not any(_russian_license_is_official(r) for r in rows):
         raise RuntimeError("OFAC 공식 허가 검증 실패 · 전송 차단")
     if stage == "shipment_verified" and not _russian_physical_shipment_confirmed(rows):
-        raise RuntimeError("선적 근거 부족 · 전송 차단")
+        raise RuntimeError("선적 날짜·물량·독립 출처 근거 부족 · 전송 차단")
 
     labels = {
         "deal_announced": "트럼프·푸틴 공급 합의 발표 · 선적 미확인",
@@ -2707,6 +2741,10 @@ def _build_russia_diesel_supply_alert_body(
     ]
     if stage == "us_license_issued":
         lines.append("법적 조치     OFAC 제135호(2026-10-09) · 거래 허용과 선적은 별개")
+    if stage == "shipment_verified":
+        fp = _russian_shipment_fingerprint(rows)
+        assert fp is not None
+        lines.append(f"실제 선적     기준 {fp[0]} · 물량 구간 약 {fp[1]*5:,}만 톤 · 복수 출처 확인")
     if oil is not None:
         lines.append(f"Brent         {oil.price:.2f}달러/배럴 · {oil.change_pct:+.2f}%")
     if fx is not None:

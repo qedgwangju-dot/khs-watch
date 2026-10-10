@@ -967,6 +967,57 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         self.assertNotIn("러시아 경유 실제 선적 복수 자료 확인", body)
         self.assertLessEqual(len(body.splitlines()), 38)
 
+    def test_russia_ap_original_title_independent_agreement(self):
+        title = "Trump strikes deal with Putin for Russian diesel ahead of midterms"
+        self.assertEqual(MODULE.classify_event(title), "russia_diesel_supply_transition")
+        self.assertEqual(MODULE._russian_diesel_supply_stage(title), "deal_announced")
+
+    def test_russia_novak_lifts_restrictions_but_not_loaded(self):
+        title = "Novak says Russia starting to lift restrictions on diesel exports"
+        self.assertEqual(MODULE.classify_event(title), "russia_diesel_supply_transition")
+        self.assertEqual(MODULE._russian_diesel_supply_stage(title), "russian_ban_lifting_reported")
+        self.assertFalse(MODULE._russian_physical_shipment_confirmed([
+            MODULE.NewsItem(title, "Reuters", "https://www.reuters.com/test", "2026-10-10T00:00Z", 0, "russia_diesel_supply_transition")
+        ]))
+
+    def test_russia_physical_requires_date_volume_and_two_independent_providers(self):
+        now = dt.datetime(2026, 10, 12, 15, tzinfo=dt.timezone.utc)
+        def row(title,source,url):
+            return MODULE.NewsItem(title,source,url,now.isoformat(),now.timestamp(),"russia_diesel_supply_transition")
+        k = row("Kpler Russia diesel cargoes loaded 2026-10-12 300,000 metric tons",
+                "Kpler","https://www.kpler.com/reports/real-track")
+        r = row("Reuters Russia diesel cargo departed 2026-10-12 300000 tonnes",
+                "Reuters","https://www.reuters.com/business/energy/real-report")
+        self.assertEqual(MODULE.classify_event(k.title), "russia_diesel_supply_transition")
+        self.assertEqual(MODULE._russian_diesel_supply_stage(k.title), "shipment_verified")
+        self.assertFalse(MODULE._russian_physical_shipment_confirmed([k]))
+        self.assertTrue(MODULE._russian_physical_shipment_confirmed([k,r]))
+        self.assertIsNotNone(MODULE.confirm_event([k,r]))
+        fp=MODULE._russian_shipment_fingerprint([k,r])
+        self.assertEqual(fp,("2026-10-12",6))
+        different_day = row(r.title.replace("2026-10-12","2026-10-13"),r.source,r.link)
+        different_qty = row(r.title.replace("300000","600000"),r.source,r.link)
+        self.assertFalse(MODULE._russian_physical_shipment_confirmed([k,different_day]))
+        self.assertFalse(MODULE._russian_physical_shipment_confirmed([k,different_qty]))
+        no_date = row(r.title.replace("2026-10-12",""),r.source,r.link)
+        self.assertFalse(MODULE._russian_physical_shipment_confirmed([k,no_date]))
+
+    def test_russia_actual_shipments_dedup_by_observed_date_and_tons(self):
+        now=dt.datetime(2026,10,12,15,tzinfo=dt.timezone.utc)
+        def pair(day, qty):
+            return [
+                MODULE.NewsItem(f"Kpler Russia diesel cargoes loaded {day} {qty} tonnes",
+                    "Kpler","https://kpler.com/report",now.isoformat(),now.timestamp(),"russia_diesel_supply_transition"),
+                MODULE.NewsItem(f"Reuters Russia diesel cargo departed {day} {qty} tonnes",
+                    "Reuters","https://reuters.com/article",now.isoformat(),now.timestamp(),"russia_diesel_supply_transition")
+            ]
+        a=MODULE.event_id("russia_diesel_supply_transition",pair("2026-10-12",300000))
+        b=MODULE.event_id("russia_diesel_supply_transition",pair("2026-10-13",300000))
+        c=MODULE.event_id("russia_diesel_supply_transition",pair("2026-10-12",400000))
+        self.assertNotEqual(a,b)
+        self.assertNotEqual(a,c)
+        self.assertEqual(a,MODULE.event_id("russia_diesel_supply_transition",pair("2026-10-12",300000)))
+
     def test_china_fuel_export_suspension_classified(self):
         title = "Chinese refiners suspend October fuel exports, PetroChina cancels cargoes - Reuters"
         self.assertEqual(MODULE.classify_event(title), "china_fuel_export_policy")
