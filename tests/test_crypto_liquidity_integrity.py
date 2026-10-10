@@ -81,6 +81,97 @@ class CryptoLiquidityDataIntegrityTest(unittest.TestCase):
         self.assertEqual(latest["five_day_change_usd_m"], -229.3)
         self.assertEqual(latest["five_day_change_pct"], -83.8)
 
+    def test_calendar_month_boundaries_and_flow_reversals(self):
+        import datetime as dt
+        self.assertEqual(watch.months_before(dt.date(2026,3,31),1),dt.date(2026,2,28))
+        self.assertEqual(watch.flow_direction(241.1,-701.3),"순유입→순유출 전환")
+        self.assertEqual(watch.flow_direction(-30.0,20.0),"순유출→순유입 전환")
+
+    def test_true_one_and_three_calendar_month_windows(self):
+        import datetime as dt
+        start, end = dt.date(2026,4,6), dt.date(2026,10,9)
+        rows, day = [], start
+        while day <= end:
+            if day.weekday() < 5:
+                rows.append({"date":day, "total":10.0, "status":"complete",
+                             "total_validated":True})
+            day += dt.timedelta(days=1)
+        windows = watch.calendar_windows(rows,end)
+        one,three=windows["1m"],windows["3m"]
+        self.assertEqual((one["start"],one["end"]),("2026-09-10","2026-10-09"))
+        self.assertEqual((one["prev_start"],one["prev_end"]),("2026-08-10","2026-09-09"))
+        self.assertEqual((three["start"],three["end"]),("2026-07-10","2026-10-09"))
+        self.assertEqual((three["prev_start"],three["prev_end"]),("2026-04-10","2026-07-09"))
+        self.assertTrue(one["valid"] and three["valid"])
+        self.assertEqual(one["value_usd_m"],one["trading_days"] * 10)
+        self.assertEqual(three["value_usd_m"],three["trading_days"] * 10)
+        rows[-1]["status"]="partial"
+        revised=watch.calendar_windows(rows,end)
+        self.assertEqual(revised["1m"]["status"],"잠정")
+        self.assertEqual(revised["3m"]["status"],"잠정")
+        self.assertEqual(revised["1m"]["partial_days"],1)
+        self.assertEqual(revised["3m"]["partial_days"],1)
+
+    def test_truncated_history_cannot_invent_one_three_month_totals(self):
+        import datetime as dt
+        rows=[{"date":dt.date.fromisoformat(d),"total":v,"total_validated":True,
+               "status":"complete"} for d,v in DAYS]
+        periods=watch.calendar_windows(rows,dt.date(2026,10,7))
+        for horizon in ("1m","3m"):
+            self.assertFalse(periods[horizon]["valid"])
+            self.assertIsNone(periods[horizon]["value_usd_m"])
+
+    def test_middle_gap_blocks_three_month_only(self):
+        import datetime as dt
+        day,end=dt.date(2026,4,10),dt.date(2026,10,9)
+        rows=[]
+        while day<=end:
+            if day.weekday()<5 and not (dt.date(2026,8,10)<=day<=dt.date(2026,8,24)):
+                rows.append({"date":day,"total":5.0,"total_validated":True,
+                             "status":"complete"})
+            day+=dt.timedelta(days=1)
+        periods=watch.calendar_windows(rows,end)
+        self.assertTrue(periods["1m"]["valid"])
+        self.assertFalse(periods["3m"]["valid"])
+
+    def test_full_history_upgrades_incomplete_live_snapshot(self):
+        import datetime as dt
+        end=dt.date(2026,10,9)
+        day=dt.date(2026,4,6)
+        values=[]
+        while day<=end:
+            if day.weekday()<5:
+                values.append((day,21.1 if day==end else 10.0))
+            day+=dt.timedelta(days=1)
+
+        def page(data,partial_last=False):
+            lines=['<tr><th>Date</th>'+''.join(f'<th>{v}</th>' for v in watch.FUND_TICKERS)+'<th>Total</th></tr>']
+            for date,value in data:
+                cells=[str(value)]+["0.0"]*11
+                if partial_last and date==end:
+                    cells[0]="-"
+                    cells[1]="-1.3"
+                    value=-1.3
+                lines.append('<tr><td>'+date.strftime("%d %b %Y")+'</td>'+
+                             ''.join(f'<td>{v}</td>' for v in cells)+
+                             f'<td>{value:.1f}</td></tr>')
+            return ("<table>"+''.join(lines)+"</table>").encode()
+        live=page(values[-15:],partial_last=True)
+        historical=page(values)
+        def fake_fetch(url,timeout=35):
+            return historical if url==watch.FARSIDE_BTC_HISTORY_URL else live
+        with patch.object(watch,"fetch",side_effect=fake_fetch):
+            outcome=watch.btc_etf_flow()
+        self.assertEqual(outcome["date"],"2026-10-09")
+        self.assertEqual(outcome["total_usd_m"],21.1)
+        self.assertEqual(outcome["reported_funds"],12)
+        self.assertEqual(outcome["status"],"complete")
+        self.assertTrue(outcome["windows"]["1m"]["valid"])
+        self.assertTrue(outcome["windows"]["3m"]["valid"])
+        self.assertEqual(outcome["windows"]["1m"]["start"],"2026-09-10")
+        self.assertEqual(outcome["windows"]["3m"]["start"],"2026-07-10")
+        self.assertEqual(outcome["history_row_count"],len(values))
+
     def test_layout_drift_rejected(self):
         with self.assertRaises(RuntimeError):
             self.fetch_btc(build_html(columns=11))
