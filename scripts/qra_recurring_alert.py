@@ -116,7 +116,7 @@ class ReleaseParser(HTMLParser):
             heading = clean_text(" ".join(self._h3_parts))
             self._in_h3 = False
             self._h3_parts = []
-            if re.search(r"documents\s+released\s+at\s+8:30", heading, re.I):
+            if re.search(r"documents\s+released\s+at\s+(?:8:30|3:00)", heading, re.I):
                 self._current = ReleaseSection(heading=heading, links=[])
                 self.sections.append(self._current)
             else:
@@ -364,13 +364,23 @@ def main() -> int:
 
     # Treasury page is normally newest first. Keep a conservative fallback.
     current = parser.sections[0]
-    previous = parser.sections[1] if len(parser.sections) > 1 else None
+    # 3:00 PM financing estimates and 8:30 AM issuance/QRA are distinct
+    # official releases. Compare only the SAME type of release.
+    is_financing = "3:00" in current.heading
+    previous = next(
+        (section for section in parser.sections[1:]
+         if ("3:00" in section.heading) == is_financing),
+        None,
+    )
     state = load_state()
     if state.get("last_heading") == current.heading:
         write_watch("새 QRA 없음", current.heading)
         return 0
 
-    title, body, detail = build_alert(current, previous)
+    title, body, detail = (
+        build_financing_alert(current, previous)
+        if is_financing else build_alert(current, previous)
+    )
     TITLE_PATH.write_text(title + "\n", encoding="utf-8")
     ALERT_PATH.write_text(body + "\n", encoding="utf-8")
     DETAIL_PATH.write_text(json.dumps(detail, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
