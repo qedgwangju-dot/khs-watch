@@ -197,8 +197,9 @@ def local_period(text, published):
 
 
 def is_axis_text(text):
-    if re.search(r'\bFOPLP\b|fan[- ]out panel[- ]level|扇出型面板級封裝|패널형 팬아웃', text, re.I):
-        return bool(re.search(r'\bTSMC\b|台積電|CoPoS|\bASE\b|日月光|Innolux|群創|\bPTI\b|ChipMOS|PMIC|\bRF\b|AI|HPC|GPU|量產|量产|양산|pilot|試產|검증|customer|qualification|패키징', text, re.I))
+    if (re.search(r'\bFOPLP\b|fan[- ]out panel[- ]level|扇出型面板級封裝|패널형 팬아웃', text, re.I)
+            and re.search(r'\bTSMC\b|台積電|CoPoS|\bASE\b|日月光|Innolux|群創|\bPTI\b|ChipMOS|PMIC|\bRF\b|AI|HPC|GPU|量產|量产|양산|pilot|試產|검증|customer|qualification|패키징', text, re.I)):
+        return True
     return bool(re.search(
         r'RDIMM|현물.*프리미엄|spot.*premium|글라스 캐리어|glass carrier|유리 지지판|P5|'
         r'HBM.*(?:공급 부족|증산|웨이퍼|wafer|supply)|HBM4E?.*(?:\d+\s*Gb|\d+\s*GB|\d+\s*단)|'
@@ -1448,7 +1449,7 @@ def parse_foplp_records(item, body):
         clause = re.sub(r'\s+', ' ', clause).strip()
         if not re.search(r'\bFOPLP\b|fan[- ]out panel[- ]level|扇出型面板級封裝|패널형 팬아웃', clause, re.I):
             continue
-        achieved = bool(re.search(r'(?:achieved|already|entered|began|started|in|已|양산\s*(?:시작|개시|중))[^.;]{0,95}(?:volume\s+production|mass\s+production|量產|量产|양산)', clause, re.I))
+        achieved = bool(re.search(r'(?:achieved|already|entered|began|started|已|양산\s*(?:시작|개시|중))[^.;]{0,95}(?:volume\s+production|mass\s+production|量產|量产|양산)', clause, re.I))
         pmic_rf = bool(re.search(r'\bPMIC\b|power[- ]management|\bRF\b|radio[- ]frequency|電源管理|电源管理|射頻|射频', clause, re.I))
         panel = re.search(r'(\d{3,4})\s*[x×]\s*(\d{3,4})\s*mm', clause, re.I)
         if achieved and pmic_rf and panel and (int(panel[1]),int(panel[2])) == (620,750):
