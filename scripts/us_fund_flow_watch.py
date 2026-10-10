@@ -1691,4 +1691,30 @@ if should_alert:
         f"bond_level_transition={str(bond_level_transition).lower()}"
     )
 else:
-    print("us_fund_flow_alert_ready=false unchanged=true")
+    # A neutral weekly yield-momentum regime must be recorded without sending Telegram.
+    # Otherwise, after an earlier +20bp alert a neutral reset is never saved and a
+    # later fresh +20bp episode is incorrectly suppressed as "already seen".
+    silent_state = json.loads(json.dumps(state))
+    changed_silent = False
+    if hartnett_macro:
+        derived = silent_state.setdefault("derived", {})
+        latest_hartnett = {
+            "hartnett_treasury_date": hartnett_macro["treasury_date"],
+            "hartnett_10y_pct": hartnett_macro["yield_10y_pct"],
+            "hartnett_10y_5d_bp": hartnett_macro["yield_10y_5d_bp"],
+            "hartnett_bond_momentum": hartnett_macro["bond_momentum"],
+        }
+        for key, value in latest_hartnett.items():
+            if derived.get(key) != value:
+                derived[key] = value
+                changed_silent = True
+    if changed_silent:
+        # This contains only previously delivered source fingerprints plus checked
+        # derived context. No unseen ICI/Reuters source observation is acknowledged.
+        PENDING.write_text(
+            json.dumps(silent_state, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
+        print("us_fund_flow_alert_ready=false silent_derived_state_refresh=true")
+    else:
+        print("us_fund_flow_alert_ready=false unchanged=true")
