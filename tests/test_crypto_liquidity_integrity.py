@@ -81,6 +81,13 @@ class CryptoLiquidityDataIntegrityTest(unittest.TestCase):
         self.assertEqual(latest["five_day_change_usd_m"], -229.3)
         self.assertEqual(latest["five_day_change_pct"], -83.8)
 
+    def test_malformed_all_data_html_flattens_to_exact_records(self):
+        flat = build_html().replace("</tr><tr>", "")
+        result = self.fetch_btc(flat)
+        self.assertEqual(result["date"], "2026-10-07")
+        self.assertEqual(result["total_usd_m"], -277.2)
+        self.assertEqual(result["last5_usd_m"], 44.4)
+
     def test_calendar_month_boundaries_and_flow_reversals(self):
         import datetime as dt
         self.assertEqual(watch.months_before(dt.date(2026,3,31),1),dt.date(2026,2,28))
