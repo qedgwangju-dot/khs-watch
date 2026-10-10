@@ -2720,7 +2720,7 @@ digital_progress = make(
 dg, ds, dc, dk = classify(digital_progress)
 assert dg == "digital_optimus_games" and ds >= 11, (dg, ds, dc)
 assert dc == "Digital Optimus · 게임 수행 경영진 진전 발언", dc
-assert "경영진" in base.meaning(dc), base.meaning(dc)
+assert "머스크 X" in base.meaning(dc) and "주장" in base.meaning(dc), base.meaning(dc)
 assert "독립" in base.risk(dc), base.risk(dc)
 assert "50%" not in base.meaning(dc), "campaign halfway must not mean 50% win rate"
 assert "물리" in base.risk(dc), base.risk(dc)
