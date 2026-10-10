@@ -299,16 +299,25 @@ def adjacent_distribution(change_bp):
 
 
 def official_snapshot():
-    # 인증된 공식 FedWatch API만 구간별 확률을 판정하는 활성 경로.
-    # CME 공개 결제파일은 현재도 배포될 수 있지만 FedWatch 확률분포 자체가
-    # 아니므로 확률 수치로 역산·승격하지 않는다. 비공식 웹 JSON도 사용하지 않는다.
+    """최선의 공식 시장경로를 반환한다.
+
+    1) CME FedWatch 인증 API 권한이 있으면 목표금리 구간별 공식 확률을 사용한다.
+    2) 권한이 없거나 API가 일시 실패하면 CME 공개 ZQ 결제값으로 기대금리 경로만
+       계산한다. 이 경로에서는 구간별 확률을 절대 복원하거나 FedWatch 확률로
+       표시하지 않는다.
+    """
     api_id = (os.getenv("CME_FEDWATCH_API_ID") or "").strip()
     api_password = (os.getenv("CME_FEDWATCH_API_PASSWORD") or "").strip()
+
     if not api_id or not api_password:
-        raise RuntimeError(
-            "CME FedWatch 공식 API 인증정보 미설정 — 유료 데이터 구독 및 "
-            "GitHub Secrets 등록 전까지 시장 확률 판정 중지"
+        out = _legacy_public_settlement_snapshot()
+        out["probability_source_status"] = (
+            "CME FedWatch 인증 API 미연결 — 공식 결제값 기반 기대금리만 사용, "
+            "구간별 확률 판정 유보"
         )
+        out["probability_source_error"] = "CME_FEDWATCH_API_ID/PASSWORD 미설정"
+        return out
+
     policy = v3.base.official_policy_baseline()
     if not policy or policy.get("low") is None or policy.get("high") is None:
         raise RuntimeError("연준 공식 목표금리 범위 확인 불가")
@@ -323,13 +332,27 @@ def official_snapshot():
         raise RuntimeError("뉴욕연은 EFFR와 공식 목표범위 불일치")
     upcoming = official_fomc_dates()[:6]
     dates = [d.isoformat() for d in upcoming]
-    token = official_api.oauth_token(api_id, api_password)
-    records = official_api.forecasts(token, dates)
-    out = official_api.build_snapshot(records, dates, policy, ny_today())
-    out["effr"] = effr
-    out["effr_date"] = effr_date
-    return out
 
+    try:
+        token = official_api.oauth_token(api_id, api_password)
+        records = official_api.forecasts(token, dates)
+        out = official_api.build_snapshot(records, dates, policy, ny_today())
+        out["effr"] = effr
+        out["effr_date"] = effr_date
+        out["probability_source_status"] = "CME FedWatch 공식 인증 API 구간별 확률 사용"
+        out["probability_source_error"] = None
+        return out
+    except Exception as exc:
+        # API 장애/권한 문제로 전체 시장경로 감시까지 끊지 않는다.
+        # 공개 결제값은 공식 CME 원천이므로 기대금리에는 쓸 수 있지만
+        # 목표금리 구간별 확률로는 절대 승격하지 않는다.
+        out = _legacy_public_settlement_snapshot()
+        out["probability_source_status"] = (
+            "CME FedWatch 인증 API 사용 불가 — 공식 결제값 기반 기대금리로 안전 전환, "
+            "구간별 확률 판정 유보"
+        )
+        out["probability_source_error"] = f"{type(exc).__name__}: {exc}"
+        return out
 
 def _legacy_public_settlement_snapshot():
     # 비활성 참고 코드: 공개 CME 결제값은 기대금리 회귀검증에만 사용하며
