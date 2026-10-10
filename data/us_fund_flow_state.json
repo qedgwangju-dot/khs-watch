@@ -5,7 +5,7 @@
     "ICI|combined": "2e58aadeb62905be8fbe8ef955938b932ee778ab304f4d4fbecd51bc432a6a09",
     "JPMorganChase Institute|household_withdrawals": "6c6c7de140d30ef3253091d748c839718c430cd42b2e1b65880108e2720f7e29",
     "Federal Reserve Z.1|household_balance_sheet": "7360f0d54948ccab33bac2e7f7154281e984872c447a15f209941748eb0d4c64",
-    "LSEG Lipper via Reuters|lipper": "e3829760671c789221c16810faea4a6c86b88b40ad20bb3931143ba886caa87b"
+    "LSEG Lipper via Reuters|lipper": "21548eeb205d2338a8290cc11c8904d534e8ca7865b8b7d6fa8f88f71aa0703f"
   },
   "values": {
     "ICI|mmf": {
@@ -105,19 +105,19 @@
       "reference_week": "2026-10-07",
       "comparison_note": "기사에 명시된 기준주간 확인; 통계 모집단별 순유입·순유출은 직접 자금 이전이 아님",
       "metrics": {
-        "us_equity_bn": null,
-        "global_equity_bn": null,
+        "us_equity_bn": 0.56,
+        "global_equity_bn": 0.56,
         "mmf_bn": 153.81
       },
       "evidence": {
-        "us": null,
-        "global": null,
+        "us": "CNA Games Guess Word Crack the word, one row at a time Buzzword Create words using the given letters Mini Sudoku Tiny puzzle, mighty brain teaser Mini Crossword Small grid, big challenge Word Search Spot as many words as you can Show More Show Less Investors, meanwhile, made net purchases of $560 million in global equity funds — the smallest weekly inflow in three weeks.",
+        "global": "CNA Games Guess Word Crack the word, one row at a time Buzzword Create words using the given letters Mini Sudoku Tiny puzzle, mighty brain teaser Mini Crossword Small grid, big challenge Word Search Spot as many words as you can Show More Show Less Investors, meanwhile, made net purchases of $560 million in global equity funds — the smallest weekly inflow in three weeks.",
         "mmf": "Investors bought global money market funds of a net $153.81 billion during the week, registering their largest weekly net purchase since May 6, LSEG Lipper data showed."
       },
-      "fingerprint": "e3829760671c789221c16810faea4a6c86b88b40ad20bb3931143ba886caa87b"
+      "fingerprint": "21548eeb205d2338a8290cc11c8904d534e8ca7865b8b7d6fa8f88f71aa0703f"
     }
   },
-  "updated_at_kst": "2026-10-10T17:24:35.362558+09:00",
+  "updated_at_kst": "2026-10-10T18:06:34.820692+09:00",
   "derived": {
     "sp500_drawdown_band": "normal",
     "sp500_last_date": "2026-10-09",
