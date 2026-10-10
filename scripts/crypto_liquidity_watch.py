@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import datetime as dt
+import calendar
 import hashlib
 import json
 import pathlib
@@ -23,6 +24,7 @@ TREASURY_BUYBACK_XML = "https://home.treasury.gov/system/files/221/Tentative-Buy
 TREASURY_BUYBACK_PAGE = "https://www.treasurydirect.gov/auctions/announcements-data-results/buy-backs/"
 TREASURY_RATES_URL = "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_yield_curve"
 FARSIDE_BTC_ETF_URL = "https://farside.co.uk/btc/"
+FARSIDE_BTC_HISTORY_URL = "https://farside.co.uk/bitcoin-etf-flow-all-data/"
 FUND_TICKERS = ("IBIT", "FBTC", "BITB", "ARKB", "BTCO", "EZBC", "BRRR", "HODL", "BTCW", "MSBT", "GBTC", "BTC")
 
 UA = "Mozilla/5.0 (compatible; khs-watch/1.0; +https://github.com/qedgwangju-dot/khs-watch)"
@@ -115,6 +117,71 @@ def treasury_rates() -> dict:
         "five_day_10y_bp": round((latest[1] - prev5[1]) * 100, 1),
         "five_day_30y_bp": round((latest[2] - prev5[2]) * 100, 1),
     }
+
+
+def months_before(date: dt.date, months: int) -> dt.date:
+    number = date.year * 12 + date.month - 1 - months
+    year, month_index = divmod(number, 12)
+    month = month_index + 1
+    return dt.date(year, month, min(date.day, calendar.monthrange(year, month)[1]))
+
+
+def flow_direction(previous: float, current: float) -> str:
+    if previous >= 0 > current:
+        return "순유입→순유출 전환"
+    if previous <= 0 < current:
+        return "순유출→순유입 전환"
+    if previous > 0 and current > 0:
+        return "순유입 확대" if current > previous else "순유입 둔화" if current < previous else "유지"
+    if previous < 0 and current < 0:
+        return "순유출 축소" if current > previous else "순유출 확대" if current < previous else "유지"
+    return "혼조"
+
+
+def calendar_period(rows: list[dict], start: dt.date, end: dt.date, minimum: int) -> dict:
+    selected = [
+        row for row in rows
+        if start <= row["date"] <= end and row["total_validated"]
+        and row["status"] in ("partial", "complete")
+    ]
+    dates = sorted(row["date"] for row in selected)
+    gaps = [(b-a).days for a,b in zip(dates,dates[1:])]
+    valid = bool(len(dates) >= minimum
+        and dates[0] <= start + dt.timedelta(days=7)
+        and dates[-1] >= end - dt.timedelta(days=7)
+        and (not gaps or max(gaps) <= 7))
+    return {
+        "valid": valid, "start": start.isoformat(), "end": end.isoformat(),
+        "trading_days": len(selected),
+        "partial_days": sum(row["status"] == "partial" for row in selected),
+        "value_usd_m": round(sum(row["total"] for row in selected), 1) if valid else None,
+    }
+
+
+def calendar_windows(rows: list[dict], latest: dt.date) -> dict:
+    result = {}
+    for months, label, minimum in ((1, "1m", 12), (3, "3m", 40)):
+        start = months_before(latest, months) + dt.timedelta(days=1)
+        prev_end = start - dt.timedelta(days=1)
+        prev_start = months_before(prev_end, months) + dt.timedelta(days=1)
+        current = calendar_period(rows, start, latest, minimum)
+        previous = calendar_period(rows, prev_start, prev_end, minimum)
+        valid = current["valid"] and previous["valid"]
+        current.update({
+            "valid": valid,
+            "prev_start": prev_start.isoformat(), "prev_end": prev_end.isoformat(),
+            "prev_trading_days": previous["trading_days"],
+            "prev_partial_days": previous["partial_days"],
+            "prev_value_usd_m": previous["value_usd_m"] if valid else None,
+            "change_usd_m": round(current["value_usd_m"] - previous["value_usd_m"], 1) if valid else None,
+            "direction": flow_direction(previous["value_usd_m"], current["value_usd_m"]) if valid else "확인 불가",
+            "status": "잠정" if (current["partial_days"] or previous["partial_days"]) else "확정",
+        })
+        if not valid:
+            current["value_usd_m"] = None
+            current["status"] = "확인 불가"
+        result[label] = current
+    return result
 
 
 def btc_etf_flow() -> dict:
