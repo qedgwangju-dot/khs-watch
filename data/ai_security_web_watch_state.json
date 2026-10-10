@@ -1,13 +1,13 @@
 {
   "direct_official_initialized": true,
-  "direct_official_version": 3,
+  "direct_official_version": 4,
   "initialized": true,
   "last_collection": {
-    "direct_official_items": 26,
+    "direct_official_items": 27,
     "errors": [],
-    "material_items": 1,
+    "material_items": 3,
     "new_material_items": 0,
-    "raw_items": 116
+    "raw_items": 118
   },
   "seen": {
     "027ea08934406a07812d619d": {
@@ -150,6 +150,16 @@
       "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOajFqRHlNMUttN0pzY014QnFwZTlIeDhnaUpuZU9XMjFicHNVUXpOTUFZWUM2Uk94NFdsbVVuNjNWMzNNM29mN3JITnNZY1cydThONGJnZk55dnh0VUNtSHlDSFhGVlpGSFZUVV9iSmpxVUVGejVwUWhVOGstc2FDSWtSSzM2RkJxWkFxS3pqemVKMlFRZDR0SGNERTM1TW1DSmZZcWFXZzNELUZoeDNsc3ZnVUjSAbQBQVVfeXFMTmoxakR5TTFLbTdKc2NNeEJxcGU5SHg4Z2lKbmVPVzIxYnBzVVF6Tk1BWVlDNlJPeDRXbG1VbjYzVjMzTTNvZjdySE5zWWNXMnU4TjRiZ2ZOeXZ4dFVDbUh5Q0hYRlZaRkhWVFVfYkpqcVVFRno1cFFoVThrLXNhQ0lrUkszNkZCcVpBcUt6anplSjJRUWQ0dEhjREUzNU1tQ0pmWXFhV2czRC1GaHgzbHN2Z1VI?oc=5",
       "vendor": "OpenAI"
     },
+    "79ec23f71c9b0e66facf254c": {
+      "category": "모델 비의도적 외부접근·사후시정",
+      "first_seen_at": "2026-10-10T04:23:10.169394+00:00",
+      "published_at": null,
+      "severity": 1,
+      "source": "Anthropic Model Incident Reports",
+      "title": "Anthropic Model Incident Reports: investigating unintended model actions",
+      "url": "https://www.anthropic.com/research/investigating-unintended-model-actions",
+      "vendor": "Anthropic"
+    },
     "7a6370340c8995f59a18b5f9": {
       "category": "프런티어 모델 사이버 역량·접근 확대",
       "first_seen_at": "2026-10-07T00:02:25.544576+00:00",
@@ -169,6 +179,16 @@
       "title": "OpenAI Pauses Training Its Most Powerful Models After Rogue Agents Target Government - wired.com",
       "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPS0k5TC1vcnZBVEctaGxwT1VMVmtpQ2tWZzljUjBjOTlSazd1UUZtOFQ5Z0xLcVhtMXdBazNTWlhRZ3JySHBJS1ozdUhQQkpRdUhWVS1wcG5hWlFIVTZCa3dBXzFuU1BBZXh0WnF2Vm9tUFBRUmZ4R3VkcmZ0WGdNeUhXRS1icXNWV1hmQktNLUN6aTJQenZvTHBNUzh6akREMHBsS0pPVDhOQ1RSTUE?oc=5",
       "vendor": "OpenAI"
+    },
+    "81d35a0a15dc2621cc663ee8": {
+      "category": "모델 비의도적 외부접근·사후시정",
+      "first_seen_at": "2026-10-10T04:23:10.169394+00:00",
+      "published_at": null,
+      "severity": 1,
+      "source": "Anthropic Research",
+      "title": "Anthropic Research: investigating unintended model actions",
+      "url": "https://www.anthropic.com/research/investigating-unintended-model-actions",
+      "vendor": "Anthropic"
     },
     "8f93e17c409b9cb7748da9eb": {
       "category": "취약점·패치",
@@ -271,5 +291,5 @@
       "vendor": "Anthropic"
     }
   },
-  "updated_at_kst": "2026-10-10T13:02:36+09:00"
+  "updated_at_kst": "2026-10-10T13:23:10+09:00"
 }
