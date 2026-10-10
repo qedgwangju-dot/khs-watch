@@ -2140,7 +2140,15 @@ def extract_nvhbm_architecture(event: dict) -> dict | None:
 
     obs: dict = {}
     source = event.get("origin_source") or event.get("source") or ""
-    official = source_quality(source) == "공식·회사자료"
+    # Source display names are not evidence of NVIDIA authorship. An RSS
+    # republisher naming NVIDIA must never mint NVIDIA-official metrics or
+    # anonymous memory-vendor partnerships.
+    host = (urlparse(event.get("direct_link") or "").hostname or "").lower()
+    nvidia_hosts = {
+        "developer.nvidia.com", "blogs.nvidia.com", "nvidianews.nvidia.com",
+        "investor.nvidia.com", "www.nvidia.com",
+    }
+    official = host in nvidia_hosts and event.get("article_fetch_succeeded") is True
     semianalysis = "semianalysis" in source.lower() or "semianalysis" in low
 
     if "nvhbm" in low and official:
@@ -2221,14 +2229,39 @@ def extract_nvhbm_architecture(event: dict) -> dict | None:
         if "feynman" in low and any(k in low for k in ("custom hbm", "custom high-bandwidth memory", "맞춤형 hbm", "커스텀 hbm")):
             obs["feynman_custom_hbm_official"] = True
 
+        # Only a named supplier announcement in NVIDIA-owned, fetched
+        # article text counts as official. Broad multi-vendor "leading memory
+        # providers" promises and reported/expected supplier lists do not.
         confirmed_vendors = []
-        for vendor, aliases in (
-            ("Samsung Electronics", ("samsung", "삼성전자")),
-            ("SK hynix", ("sk hynix", "sk하이닉스")),
-            ("Micron", ("micron", "마이크론")),
-        ):
-            if any(a in low for a in aliases) and any(k in low for k in ("validated", "validation partner", "memory partner", "memory provider", "검증", "파트너", "공급사")):
-                confirmed_vendors.append(vendor)
+        issuer_text = "\n".join(
+            str(event.get(k) or "") for k in
+            ("official_article_title", "official_article_description", "official_article_text")
+        )
+        for sentence in re.split(r"(?<=[.!?。])\s+|\n+", issuer_text):
+            clause = sentence.lower()
+            if "nvhbm" not in clause:
+                continue
+            if any(word in clause for word in (
+                "expected", "reportedly", "rumor", "rumour", "considering",
+                "may", "might", "could", "future potential", "anticipated",
+                "예상", "전망", "거론", "추정", "관측",
+            )):
+                continue
+            if not re.search(
+                r"(?:selected|named|confirmed|validated|signed|appointed)"
+                r"[^.]{0,110}?(?:memory\s+(?:supplier|vendor|partner|provider)|nvhbm\s+partner)|"
+                r"(?:memory\s+(?:supplier|vendor|partner|provider))"
+                r"[^.]{0,110}?(?:confirmed|selected|named|validated)",
+                clause, re.I
+            ):
+                continue
+            for vendor, aliases in (
+                ("Samsung Electronics", ("samsung electronics", "삼성전자")),
+                ("SK hynix", ("sk hynix", "sk하이닉스")),
+                ("Micron", ("micron", "마이크론")),
+            ):
+                if any(alias in clause for alias in aliases):
+                    confirmed_vendors.append(vendor)
         if confirmed_vendors:
             obs["official_memory_vendors"] = sorted(set(confirmed_vendors))
 
