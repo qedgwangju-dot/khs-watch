@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at_kst": "2026-10-10T17:43:40+09:00",
+  "updated_at_kst": "2026-10-10T23:45:35+09:00",
   "initial_alert_sent": true,
   "baseline_at_kst": "2026-10-09T15:05:00+09:00",
   "seen": [
@@ -15,6 +15,7 @@
     "13863538b17e7bf78b153f49",
     "14a8cf18583a63ca4c8864ac",
     "16104769102c2047f4037832",
+    "18f4c983ddc978d95c847427",
     "1c5aaa02734d9a47a8764fd1",
     "1e37bc4f9895050b66e6b297",
     "1f566907c6df6adf62f0f573",
@@ -44,6 +45,7 @@
     "5b26e85a0b4276f2e9124b72",
     "60a625c72bc47fcabfbb0d58",
     "614c45adbf57e5051567d1cb",
+    "677672c4c8eccf812f1b3d18",
     "67776aea2788a062ac06095e",
     "67a7a63bc93188ca857b134a",
     "6e68ca90eabc022d44100c15",
@@ -72,6 +74,7 @@
     "a2b417a34bc92c3b14b5836e",
     "a5093105c2add55de3e0428e",
     "a79d527314a30d710ae06d39",
+    "ae9cc8d2fd26d249434a0fd3",
     "b025ea94b499d3e209fbba7d",
     "b0a6dff5bf10efe8799a1af3",
     "b2325dbb0c69e4c9d201a35b",
@@ -99,6 +102,7 @@
     "dafbda993bbd7a307a36cac6",
     "dc097518bf71a3b68296a56e",
     "df30817fa6da193914b7564c",
+    "e208ee405e93aff000656690",
     "e391790df225a911e6ce0ce7",
     "e731f6457b1734968dbb625e",
     "e946ed00230c6c578a3bd905",
@@ -144,7 +148,7 @@
       "ubs_delivery_lead_time_publicly_verified": false
     }
   },
-  "last_scan_items": 83,
+  "last_scan_items": 85,
   "feed_errors": [],
   "successful_sources": 8,
   "new_signal_count": 0,
