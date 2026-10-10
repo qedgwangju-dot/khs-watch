@@ -23,8 +23,10 @@ permissions:
 
 concurrency:
   group: us-fund-flow-telegram-watch
-  # Never cancel after Telegram has accepted a message but before state is committed.
+  # Preserve already-running delivery and FIFO pending source checks.
+  # The default single pending slot can otherwise silently drop bursts of runs.
   cancel-in-progress: false
+  queue: max
 
 jobs:
   watch:
