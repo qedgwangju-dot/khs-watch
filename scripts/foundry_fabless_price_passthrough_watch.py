@@ -168,6 +168,21 @@ QUERIES = [
     ("zh", '聯詠 矽創 敦泰 茂達 致新 矽力 盛群 漲價 2027'),
 ]
 
+
+# A research publisher or a Google News source label is not the issuing vendor.
+FABLESS_VENDOR_HOSTS = {
+    "Novatek": ("novatek.com.tw",),
+    "Sitronix": ("sitronix.com.tw",),
+    "FocalTech": ("focaltech-electronics.com",),
+    "Anpec": ("anpec.com.tw",),
+    "Global Mixed-mode": ("gmt.com.tw",),
+    "Silergy": ("silergy.com",),
+    "Holtek": ("holtek.com",),
+    "Texas Instruments": ("ti.com",),
+    "Renesas": ("renesas.com",),
+    "onsemi": ("onsemi.com",),
+}
+
 OFFICIAL_DOMAINS = {
     "trendforce.com",
     "tsmc.com", "umc.com", "vis.com.tw", "powerchip.com", "smic.com",
@@ -309,9 +324,15 @@ def _extract_state(item: dict) -> dict | None:
 
     # Individual company official hike: vendor source + effective-date/raise language.
     named_fabless = _named(text, FABLESS)
-    if named_fabless and _source_rank(item) >= 3 and any(k in low for k in ("effective", "new prices", "will raise", "price increase", "漲價", "涨价")):
+    link_host = _host(str(item.get("link") or ""))
+    actual_issuers = [
+        name for name in named_fabless
+        if any(link_host == d or link_host.endswith("." + d)
+               for d in FABLESS_VENDOR_HOSTS.get(name, ()))
+    ]
+    if actual_issuers and any(k in low for k in ("effective", "new prices", "will raise", "price increase", "漲價", "涨价")):
         obs["fabless_official_company_confirmed"] = True
-        obs["official_fabless_vendors"] = ", ".join(named_fabless)
+        obs["official_fabless_vendors"] = ", ".join(actual_issuers)
 
     # TSMC mature-node report.
     if "tsmc" in low or "台積電" in text or "台积电" in text:
@@ -323,7 +344,7 @@ def _extract_state(item: dict) -> dict | None:
             if 0 < lo <= hi <= 30:
                 obs["tsmc_mature_2027_hike_min_pct"] = lo
                 obs["tsmc_mature_2027_hike_max_pct"] = hi
-                obs["tsmc_mature_official_company_confirmed"] = "tsmc.com" in _host(str(item.get("link") or ""))
+                obs["tsmc_mature_official_company_confirmed"] = (link_host == "tsmc.com" or link_host.endswith(".tsmc.com"))
 
     # Utilization / foundry pricing from TrendForce research.
     m88 = re.search(r"(?:8[- ]inch)[^.]{0,180}?(88(?:\.0)?)\s*%", text, re.I)
@@ -509,21 +530,39 @@ def _semicap_observation(item: dict) -> dict | None:
     pct = float(m.group(1)) if m else None
     if pct is not None and not (0 < pct <= 50):
         return None
-    if spares and pct is None:
+    denial = any(word in low for word in (
+        "denies", "not raising", "no price increase", "price hike denied",
+        "인상 부인", "인상 사실이 아니", "인상 계획 없", "가격 인상 철회",
+    ))
+    if denial and grade != "official":
+        return None  # Do not retransmit anonymous denials as vendor statements.
+    if spares and pct is None and grade != "official":
         return None
     if vendor != "ASML" and grade != "official":
         return None
     month = _semicap_month(text)
     scope = "spares" if spares else "systems"
-    if vendor == "ASML" and scope == "spares" and grade == "reported" and pct == 10:
-        if month in ("2027-01", "미확인"):
-            return None  # Same material fact as separately attributed baseline.
-    key = "|".join((vendor, scope, f"{pct:g}" if pct is not None else "unquoted", month, grade))
+    stance = "denial" if denial else ("proposal" if tentative else "announced")
+    geography = "미확인"
+    if any(x in low for x in ("worldwide", "globally", "global customers", "전 세계", "전세계", "전면 확대")):
+        geography = "전 세계"
+    elif any(x in low for x in ("taiwan", "대만", "tsmc")):
+        geography = "대만"
+    elif any(x in low for x in ("south korea", "korean", "한국", "국내", "삼성전자", "sk하이닉스", "sk hynix")):
+        geography = "한국"
+    elif "china" in low or "중국" in low:
+        geography = "중국"
+    if (vendor == "ASML" and scope == "spares" and grade == "reported"
+            and pct == 10 and stance == "announced"):
+        if month in ("2027-01", "미확인") and geography in ("한국", "미확인"):
+            return None  # The user's Korean baseline, not new global confirmation.
+    key = "|".join((vendor, scope, f"{pct:g}" if pct is not None else "unquoted",
+                    month, grade, geography, stance))
     return {
         "key": key, "vendor": vendor, "scope": scope,
         "rate": f"{pct:g}%" if pct is not None else "인상률 미공개",
-        "month": month, "grade": grade, "title": title,
-        "link": str(item.get("link") or ""),
+        "month": month, "grade": grade, "stance": stance, "geography": geography,
+        "title": title, "link": str(item.get("link") or ""),
     }
 
 
@@ -556,10 +595,13 @@ def _semicap_alert_lines(events: list[dict]) -> list[str]:
     for ev in events:
         grade = "업체 공식자료" if ev["grade"] == "official" else "언론보도(업체 공식 공지 미확인)"
         kind = "교체·유지보수 부품" if ev["scope"] == "spares" else "신규 제조장비"
+        stance = ev.get("stance", "announced")
+        stance_label = {"denial": "공식 부인·정정", "proposal": "협의·검토(확정 아님)", "announced": "가격 인상 주장"}[stance]
         lines.extend((
             "",
             "• <b>" + html.escape(ev["vendor"] + " " + kind) + "</b>",
-            "  가격: " + html.escape(ev["rate"]) + " · 적용월: " + html.escape(ev["month"]),
+            "  항목: " + html.escape(stance_label) + " · 제시 인상률: " + html.escape(ev["rate"]),
+            "  적용월: " + html.escape(ev["month"]) + " · 지역: " + html.escape(ev.get("geography", "한국")),
             "  확인등급: " + html.escape(grade),
             "  " + html.escape(ev["title"]),
         ))

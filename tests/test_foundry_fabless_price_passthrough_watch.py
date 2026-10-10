@@ -198,6 +198,52 @@ class FoundryFablessPricePassThroughTests(unittest.TestCase):
         x["link"] = "https://www.thelec.kr/news/articleView.html?idxno=99"
         self.assertIsNone(w._semicap_observation(x))
 
+
+    def test_semi_vendor_publisher_is_not_official_fabless(self):
+        x = self.item(
+            "Renesas price increase for MCU PMIC effective January 2027",
+            "Fabless vendor raises prices; foundry cost pressure",
+            source="Renesas",
+            link="https://www.trendforce.com/news/example",
+        )
+        obs = w._extract_state(x)
+        self.assertIsNotNone(obs)
+        self.assertFalse(obs.get("fabless_official_company_confirmed", False))
+        x["link"] = "https://renesas.com.evil.example/news"
+        self.assertIsNone(w._extract_state(x))
+
+    def test_semicap_official_denial_not_reported_as_hike(self):
+        x = self.semicap_item(
+            "ASML denies 10% spare parts price increase from January 2027",
+            "Official denial of spare parts 10% price increase",
+            link="https://www.asml.com/en/news/press-releases/example",
+        )
+        ev = w._semicap_observation(x)
+        self.assertEqual(ev["stance"], "denial")
+        self.assertIn("공식 부인", "\n".join(w._semicap_alert_lines([ev])))
+        self.assertNotIn("가격 인상 주장", "\n".join(w._semicap_alert_lines([ev])))
+
+    def test_semicap_global_expansion_not_suppressed_as_korean_repeat(self):
+        x = self.semicap_item(
+            "ASML spare parts prices 10% increase worldwide January 2027",
+            "Global customers affected by replacement part price increase",
+        )
+        ev = w._semicap_observation(x)
+        self.assertIsNotNone(ev)
+        self.assertEqual(ev["geography"], "전 세계")
+        self.assertEqual(ev["grade"], "reported")
+
+    def test_semicap_official_rate_not_disclosed_is_not_assumed_ten(self):
+        x = self.semicap_item(
+            "ASML announces maintenance spare parts price increase for EUV",
+            "Company statement confirms prices for existing system parts will increase",
+            link="https://www.asml.com/en/news/press-releases/example",
+        )
+        ev = w._semicap_observation(x)
+        self.assertIsNotNone(ev)
+        self.assertEqual(ev["rate"], "인상률 미공개")
+        self.assertEqual(ev["grade"], "official")
+
     def test_no_change_baseline_stays_silent(self):
         with tempfile.TemporaryDirectory() as td:
             root = pathlib.Path(td)
