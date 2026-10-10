@@ -880,6 +880,93 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
           "Araghchi seven-day plan Hormuz currently reviewing the US reply",now)
         self.assertEqual(row.event_kind,"hormuz_7day_diplomacy")
 
+    def test_russia_diesel_announcement_and_license_are_separate_stages(self):
+        promise = "Trump says Russia to immediately supply 300,000 tons of diesel fuel"
+        gl = "OFAC Russia General License 135 issued 2026-10-09 authorizing Russian diesel transactions"
+        self.assertEqual(MODULE.classify_event(promise), "russia_diesel_supply_transition")
+        self.assertEqual(MODULE.classify_event(gl), "russia_diesel_supply_transition")
+        self.assertEqual(MODULE._russian_diesel_supply_stage(promise), "deal_announced")
+        self.assertEqual(MODULE._russian_diesel_supply_stage(gl), "us_license_issued")
+        self.assertNotEqual(MODULE.classify_event(promise), "us_diesel_export_policy")
+
+    def test_russia_diesel_real_ofac_primary_and_spoof_rejected(self):
+        now = dt.datetime(2026, 10, 10, 0, tzinfo=dt.timezone.utc)
+        html = """
+        <h1>Issuance of Russia-related General License</h1>
+        <p>10/09/2026</p>
+        <p>The Department of the Treasury's Office of Foreign Assets Control (OFAC)
+        is issuing Russia-related General License 135, Authorizing Transactions
+        Related to the Sale, Delivery, Offloading, and Importation of Diesel Fuel of Russian Federation Origin.</p>
+        """
+        row = MODULE.parse_ofac_russian_diesel_license(html, now)
+        self.assertTrue(MODULE._russian_license_is_official(row))
+        self.assertIsNotNone(MODULE.confirm_event([row]))
+        bad = MODULE.NewsItem(row.title, row.source, "https://fake-ofac.example/recent-actions/20261009_33",
+                              row.published_utc, row.published_epoch, row.event_kind)
+        self.assertFalse(MODULE._russian_license_is_official(bad))
+        self.assertIsNone(MODULE.confirm_event([bad]))
+        with self.assertRaisesRegex(RuntimeError, "검증 실패"):
+            MODULE.parse_ofac_russian_diesel_license(html.replace("135", "134"), now)
+
+    def test_russia_rss_syndication_not_two_independent_sources(self):
+        now = dt.datetime(2026, 10, 10, 0, tzinfo=dt.timezone.utc)
+        title = "Trump says Russia to immediately supply 300,000 tons of diesel fuel"
+        rows = [
+            MODULE.NewsItem(title, "Reuters", "https://www.reuters.com/business/energy/test",
+                            now.isoformat(), now.timestamp(), "russia_diesel_supply_transition"),
+            MODULE.NewsItem(title + " - Reuters", "MarketScreener", "https://marketscreener.com/reuters-test",
+                            now.isoformat(), now.timestamp(), "russia_diesel_supply_transition"),
+        ]
+        self.assertIsNone(MODULE.confirm_event(rows))
+        rows.append(MODULE.NewsItem("Trump strikes deal with Putin for Russian diesel",
+                                   "Associated Press", "https://apnews.com/article/test",
+                                   now.isoformat(), now.timestamp(), "russia_diesel_supply_transition"))
+        result = MODULE.confirm_event(rows)
+        self.assertIsNotNone(result)
+        self.assertEqual(result[0], "russia_diesel_supply_transition")
+
+    def test_russia_rhetoric_never_proves_cargo_departure(self):
+        now = dt.datetime(2026, 10, 10, 0, tzinfo=dt.timezone.utc)
+        title = "Trump says Russia to immediately supply 300,000 tons of diesel fuel"
+        r = MODULE.NewsItem(title, "Reuters", "https://www.reuters.com/business/energy/test",
+                            now.isoformat(), now.timestamp(), "russia_diesel_supply_transition")
+        self.assertEqual(MODULE._russian_diesel_supply_stage(title), "deal_announced")
+        self.assertNotIn("shipment_verified", [MODULE._russian_diesel_supply_stage(r.title)])
+        self.assertFalse(MODULE._russian_physical_shipment_confirmed([r]))
+        bad = MODULE.NewsItem("Russia diesel shipments loaded onto tanker according to sources",
+                              "Reuters", r.link, r.published_utc, r.published_epoch, r.event_kind)
+        self.assertIsNone(MODULE.confirm_event([bad]))
+        self.assertFalse(MODULE._russian_physical_shipment_confirmed([bad]))
+
+    def test_russia_same_license_not_sent_again_but_new_stage_can_alert(self):
+        now = dt.datetime(2026, 10, 10, 0, tzinfo=dt.timezone.utc)
+        row = MODULE.parse_ofac_russian_diesel_license(
+            "10/09/2026 Russia-related General License 135 authorizing transactions related to"
+            " sale delivery offloading and importation of Diesel Fuel of Russian Federation Origin",
+            now)
+        eid = MODULE.event_id("russia_diesel_supply_transition", [row])
+        state = {"alerted_events":{eid:now.astimezone(MODULE.KST).isoformat()}}
+        result, duplicates = MODULE.select_unalerted_event(
+            state, [("russia_diesel_supply_transition", [row])], now)
+        self.assertIsNone(result)
+        self.assertTrue(duplicates)
+
+    def test_russia_alert_krw_and_conditional_volume_not_claimed_delivered(self):
+        now = dt.datetime(2026, 10, 10, 0, tzinfo=dt.timezone.utc)
+        row = MODULE.parse_ofac_russian_diesel_license(
+            "10/09/2026 Russia-related General License 135 authorizing transactions related to"
+            " sale delivery offloading and importation of Diesel Fuel of Russian Federation Origin",
+            now)
+        body = MODULE.build_physical_flow_alert_body("russia_diesel_supply_transition",
+                                                     [row], None, now)
+        self.assertIn("30만 톤 초과", body)
+        self.assertIn("480만 톤 초과", body)
+        self.assertIn("정유시설 조건부 300만 톤", body)
+        self.assertIn("실제 수출량 아님", body)
+        self.assertIn("OFAC 제135호", body)
+        self.assertNotIn("러시아 경유 실제 선적 복수 자료 확인", body)
+        self.assertLessEqual(len(body.splitlines()), 38)
+
     def test_china_fuel_export_suspension_classified(self):
         title = "Chinese refiners suspend October fuel exports, PetroChina cancels cargoes - Reuters"
         self.assertEqual(MODULE.classify_event(title), "china_fuel_export_policy")

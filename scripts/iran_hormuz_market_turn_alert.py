@@ -45,6 +45,10 @@ YAHOO_BASES = (
     "https://query1.finance.yahoo.com/v8/finance/chart",
     "https://query2.finance.yahoo.com/v8/finance/chart",
 )
+RUSSIA_DIESEL_OFAC_GL135_URL = "https://ofac.treasury.gov/recent-actions/20261009_33"
+RUSSIA_DIESEL_LICENSE_SOURCE = "미국 재무부 해외자산통제국(OFAC)"
+RUSSIA_DIESEL_REUTERS_URL = "https://www.reuters.com/business/energy/trump-says-russia-immediately-supply-300000-tons-diesel-fuel-2026-10-09/"
+RUSSIA_DIESEL_IEA_REFINERY_URL = "https://www.iea.org/commentaries/russian-refining-sector-struggles-amid-intensifying-ukrainian-attacks"
 CHINA_REUTERS_20261009_URL = "https://live.euronext.com/en/financial-news/china-resume-october-fuel-exports-after-holiday-pause-sources-say"
 CHINA_REUTERS_20261009_MIRRORS = (
     CHINA_REUTERS_20261009_URL,
@@ -135,6 +139,11 @@ NEWS_QUERIES = (
     '"diesel export ban" considering Trump when:3d',
     '"still considering diesel export ban" Trump Reuters when:3d',
     '미국 디젤 수출 금지 검토 백악관 when:3d',
+    '"Trump" "Putin" "300,000" "diesel" Russia when:3d',
+    '"Russian diesel" "General License 135" OFAC when:3d',
+    '"Novak" "lift restrictions" diesel exports Russia when:3d',
+    '"Russian diesel" "cargoes loaded" tanker when:3d',
+    '트럼프 러시아 경유 30만톤 50만톤 100만톤 합의 제재 완화 when:3d',
     '"strategic reserves" diesel EU energy chief Jorgensen when:3d',
     '"50 million barrels" diesel EU reserves France when:3d',
     '"Europe weighs" diesel stocks release when:3d',
@@ -206,6 +215,10 @@ TRUSTED_SOURCE_ALIASES = (
     "newsis",
     "뉴시스",
     "euronews",
+    "interfax",
+    "tass",
+    "미국 재무부",
+    "ofac",
     "xinhua",
     "anadolu agency",
     "tasnim",
@@ -275,6 +288,7 @@ EVENT_LABELS = {
     "regional_export_recovery": "중동 원유 수출 회복 단계 상향",
     "crude_product_divergence": "중동 원유 98% 회복·정제품 병목",
     "us_diesel_export_policy": "미국 디젤 수출정책 단계 변화",
+    "russia_diesel_supply_transition": "러시아 경유 합의·제재·실제 공급 검증",
     "eu_diesel_reserve_policy": "EU 경유 전략비축유 방출 단계 변화",
     "g7_reserve_release_agreement": "G7 경유·원유 전략비축유 방출 합의",
     "china_fuel_export_policy": "중국 정제품 수출정책 단계 변화",
@@ -351,6 +365,8 @@ def _source_name_ko(source: str) -> str:
         ("business times", "비즈니스타임스"),
         ("livemint", "라이브민트"),
         ("moneycontrol", "머니컨트롤"),
+        ("interfax", "인터팍스"),
+        ("ofac", "미국 재무부(OFAC)"),
         ("euronews", "유로뉴스"),
         ("boe report", "BOE Report"),
         ("argaam", "아르가암"),
@@ -420,6 +436,16 @@ def _news_title_ko(row: NewsItem) -> str:
             "rejected": "EU, 경유 전략비축유 추가 방출안 보류·거부",
         }
         return labels.get(stage, "EU 경유 전략비축유 방출정책 변화")
+
+    if kind == "russia_diesel_supply_transition":
+        stage = _russian_diesel_supply_stage(title)
+        labels = {
+            "us_license_issued": "미국 OFAC, 러시아산 경유 거래 허용 일반허가 제135호 발급",
+            "deal_announced": "트럼프, 러시아 경유 단계별 공급 합의 발표…실제 선적 미확인",
+            "russian_ban_lifting_reported": "러시아 정부, 경유 수출 제한 조기 완화 방침 발표",
+            "shipment_verified": "러시아산 경유 실제 선적·출항 물량 복수 검증",
+        }
+        return labels.get(stage, "러시아 경유 공급정책 변화 · 실제 물량 검증 필요")
 
     if kind == "us_diesel_export_policy":
         stage = _diesel_policy_stage(title)
@@ -519,6 +545,27 @@ def classify_event(title: str) -> str | None:
     low = normalize_text(title)
     if not low:
         return None
+
+    # Importing Russian diesel is a different policy from banning US diesel exports.
+    russian_context = any(term in low for term in (
+        "russia", "russian", "putin", "novak", "러시아", "푸틴", "노박"
+    ))
+    russian_diesel = any(term in low for term in (
+        "diesel", "gasoil", "경유", "디젤"
+    ))
+    russian_transition = any(term in low for term in (
+        "diesel deal", "agreed to supply", "to supply", "supply russian diesel",
+        "deliver russian diesel", "russian diesel imports",
+        "general license 135", "general licence 135", "ofac 135",
+        "lift diesel export restrictions", "lifting diesel export restrictions",
+        "lift restrictions on diesel exports", "russian diesel exports resume",
+        "diesel shipments loaded", "diesel tanker departed", "diesel cargo departed",
+        "러시아 경유 공급 합의", "러시아 경유 수입 허용", "러시아산 경유 제재",
+        "러시아 경유 수출 규제 해제", "러시아 경유 실제 선적",
+        "러 경유 공급 합의", "러 경유 공급", "러 경유 제재"
+    ))
+    if russian_context and russian_diesel and russian_transition:
+        return "russia_diesel_supply_transition"
 
     diesel_policy_context = any(
         term in low
@@ -1448,6 +1495,8 @@ def fetch_news(current: dt.datetime) -> tuple[list[NewsItem], list[str]]:
         errors.append(f"EIA refinery 3-2-1 official: {type(exc).__name__}: {exc}")
 
     direct_sources=(
+        ("OFAC 러시아 경유 일반허가 제135호", lambda: parse_ofac_russian_diesel_license(
+            fetch_bytes(RUSSIA_DIESEL_OFAC_GL135_URL,timeout=18,attempts=2).decode("utf-8","replace"), current)),
         ("중국 Reuters 거래 관계자 보도", lambda: fetch_china_reuters_resumption(current)),
         ("호르무즈 신화통신·타스님 인용 보도", lambda: parse_hormuz_xinhua_review(
             fetch_bytes(HORMUZ_7DAY_XINHUA_URL,timeout=16,attempts=2).decode("utf-8","replace"),current)),
@@ -1504,6 +1553,10 @@ def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tupl
     for item in items:
         if item.event_kind == "china_fuel_export_policy":
             stage=_china_fuel_export_stage(item.title)
+        elif item.event_kind == "russia_diesel_supply_transition":
+            stage=_russian_diesel_supply_stage(item.title)
+            if stage == "unclassified":
+                continue
         elif item.event_kind == "hormuz_7day_diplomacy":
             stage=_hormuz_7day_stage(item.title)
         else:
@@ -1513,6 +1566,10 @@ def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tupl
     candidates: list[tuple[float, str, list[NewsItem]]] = []
     for (kind,stage), rows in by_kind.items():
         if kind=="china_fuel_export_policy" and stage=="physical_resumed" and not _china_physical_shipment_evidence(rows):
+            continue
+        if kind=="russia_diesel_supply_transition" and stage=="shipment_verified" and not _russian_physical_shipment_confirmed(rows):
+            continue
+        if kind=="russia_diesel_supply_transition" and stage=="us_license_issued" and not any(_russian_license_is_official(r) for r in rows):
             continue
         source_rows: dict[str, NewsItem] = {}
         for row in sorted(
@@ -1525,7 +1582,7 @@ def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tupl
             reverse=True,
         ):
             publisher=normalize_text(row.source)
-            if kind in ("china_fuel_export_policy","hormuz_7day_diplomacy"):
+            if kind in ("china_fuel_export_policy","hormuz_7day_diplomacy","russia_diesel_supply_transition"):
                 if ("reuters" in publisher or "reuters" in normalize_text(row.title)
                     or "marketscreener" in publisher or "euronext" in publisher):
                     publisher="reuters"
@@ -1533,6 +1590,8 @@ def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tupl
                     publisher="anadolu"
                 elif "xinhua" in publisher:
                     publisher="xinhua"
+                elif "associated press" in publisher or publisher in ("ap","ap news"):
+                    publisher="associated press"
             source_rows.setdefault(publisher, row)
         selected = list(source_rows.values())
 
@@ -1567,6 +1626,9 @@ def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tupl
             for row in selected
         )
         mma_primary=kind=="us_gulf_isaias_shutin" and _extract_mma_isaias_data(selected) is not None
+        russian_ofac_primary=kind=="russia_diesel_supply_transition" and stage=="us_license_issued" and any(
+            _russian_license_is_official(row) for row in selected
+        )
         eia_primary = kind == "eia_refining_crack_watch" and any(
             row.source == EIA_REFINING_SOURCE
             and row.link == EIA_REFINING_WEEKLY_URL
@@ -1579,7 +1641,7 @@ def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tupl
             for row in selected
         )
 
-        if len(selected) >= minimum_sources or has_primary_data or regional_primary or broker_snapshot or eu_primary_interview or pipeline_cross_checked or pipeline_bloomberg_material or osp_cross_checked or eia_primary or china_report or hormuz_primary or mma_primary:
+        if len(selected) >= minimum_sources or has_primary_data or regional_primary or broker_snapshot or eu_primary_interview or pipeline_cross_checked or pipeline_bloomberg_material or osp_cross_checked or eia_primary or china_report or hormuz_primary or mma_primary or russian_ofac_primary:
             candidates.append((max(row.published_epoch for row in selected), kind, selected))
 
     candidates.sort(key=lambda value: value[0], reverse=True)
@@ -1717,6 +1779,19 @@ def event_id(kind: str, rows: list[NewsItem]) -> str:
         bucket = math.floor(latest / 5.0)
         direction = "up" if latest > previous else "down" if latest < previous else "flat"
         basis = f"{kind}|week_{obs}|bucket_{bucket}|{direction}"
+        return f"{kind}:{hashlib.sha256(basis.encode('utf-8')).hexdigest()[:16]}"
+
+    if kind == "russia_diesel_supply_transition":
+        stages = {_russian_diesel_supply_stage(row.title) for row in rows}
+        stages.discard("unclassified")
+        if len(stages) != 1:
+            raise ValueError("러시아 경유 단계 혼재: 별도 사건으로 나눠야 합니다")
+        stage = next(iter(stages))
+        if stage == "us_license_issued" and not any(_russian_license_is_official(row) for row in rows):
+            raise ValueError("OFAC 공식 확인 없이 제재 허가 사건 식별 불가")
+        if stage == "shipment_verified" and not _russian_physical_shipment_confirmed(rows):
+            raise ValueError("복수 출처의 실제 선적 검증 없이 사건 생성 불가")
+        basis = f"{kind}|2026-10-09|{stage}"
         return f"{kind}:{hashlib.sha256(basis.encode('utf-8')).hexdigest()[:16]}"
 
     if kind == "us_diesel_export_policy":
@@ -2504,6 +2579,168 @@ def _china_policy_period(rows: list[NewsItem]) -> str:
     elif month > when.month+6:
         year-=1
     return f"{year:04d}-{month:02d}"
+
+
+def _russian_diesel_supply_stage(title_or_rows: str | list[NewsItem]) -> str:
+    # Stage is classified PER article; multiple unrelated articles must never be
+    # concatenated to infer that an announcement means a cargo physically arrived.
+    title = title_or_rows if isinstance(title_or_rows, str) else (
+        title_or_rows[0].title if title_or_rows else ""
+    )
+    low = normalize_text(title)
+    if (
+        ("general license 135" in low or "general licence 135" in low or "gl135" in low)
+        and ("diesel" in low or "경유" in low)
+    ):
+        return "us_license_issued"
+    physical = (
+        any(v in low for v in (
+            "cargoes loaded", "shipments loaded", "diesel cargo departed",
+            "diesel tanker departed", "verified tanker loading", "실제 선적",
+            "출항 확인", "선적 물량 확인"
+        ))
+        and any(v in low for v in ("russia", "russian", "러시아"))
+        and any(v in low for v in ("diesel", "gasoil", "경유"))
+    )
+    if physical:
+        return "shipment_verified"
+    if any(v in low for v in (
+        "starting to lift restrictions", "begins lifting export restrictions",
+        "lift restrictions on diesel exports", "lifting restrictions on diesel exports",
+        "russian diesel export ban lifted", "수출 제한 조기 해제",
+        "러시아 경유 수출 규제 해제", "러시아 경유 수출 제한 완화"
+    )):
+        return "russian_ban_lifting_reported"
+    if (
+        any(v in low for v in (
+            "diesel deal", "agreed to supply", "supply over 300,000",
+            "supply 300,000", "supply russian diesel", "russia to supply",
+            "trump strikes deal", "trump says russia", "러시아 경유 공급 합의",
+            "러 경유 공급 합의", "러 경유 공급"
+        ))
+        and any(v in low for v in ("diesel", "gasoil", "경유"))
+    ):
+        return "deal_announced"
+    return "unclassified"
+
+
+def _russian_license_is_official(row: NewsItem) -> bool:
+    parsed = urllib.parse.urlsplit(row.link.strip())
+    return (
+        row.event_kind == "russia_diesel_supply_transition"
+        and row.source == RUSSIA_DIESEL_LICENSE_SOURCE
+        and parsed.scheme == "https"
+        and parsed.hostname == "ofac.treasury.gov"
+        and parsed.path == "/recent-actions/20261009_33"
+        and _russian_diesel_supply_stage(row.title) == "us_license_issued"
+        and "issued 2026-10-09" in normalize_text(row.title)
+    )
+
+
+def _russian_physical_shipment_confirmed(rows: list[NewsItem]) -> bool:
+    # Different republications of the same wire are still just one source.
+    sources = set()
+    for row in rows:
+        if _russian_diesel_supply_stage(row.title) != "shipment_verified":
+            continue
+        host = urllib.parse.urlsplit(row.link).hostname or ""
+        host = host.lower()
+        title = normalize_text(row.title)
+        if "loaded" not in title and "departed" not in title and "실제 선적" not in title and "출항 확인" not in title:
+            continue
+        if host == "kpler.com" or host.endswith(".kpler.com"):
+            sources.add("kpler")
+        elif host == "reuters.com" or host.endswith(".reuters.com"):
+            sources.add("reuters")
+        elif host.endswith(".customs.gov.ru"):
+            sources.add("customs")
+        elif host == "bloomberg.com" or host.endswith(".bloomberg.com"):
+            sources.add("bloomberg")
+    return ("kpler" in sources or "customs" in sources) and len(sources) >= 2
+
+
+def parse_ofac_russian_diesel_license(raw_html: str, current: dt.datetime) -> NewsItem:
+    raw = normalize_text(_visible_text(raw_html))
+    if not (
+        "general license 135" in raw
+        and "diesel fuel of russian federation origin" in raw
+        and ("10/09/2026" in raw or "october 09, 2026" in raw or "oct 09, 2026" in raw)
+    ):
+        raise RuntimeError("OFAC 제135호·경유 품목·발급일 원문 교차 검증 실패")
+    return NewsItem(
+        title="OFAC Russia General License 135 issued 2026-10-09 authorizing Russian diesel transactions",
+        source=RUSSIA_DIESEL_LICENSE_SOURCE,
+        link=RUSSIA_DIESEL_OFAC_GL135_URL,
+        published_utc=current.isoformat().replace("+00:00", "Z"),
+        published_epoch=current.timestamp(),
+        event_kind="russia_diesel_supply_transition",
+    )
+
+
+def _build_russia_diesel_supply_alert_body(
+    rows: list[NewsItem], oil: Quote | None, current: dt.datetime, fx: Quote | None
+) -> str:
+    stages = {_russian_diesel_supply_stage(r.title) for r in rows}
+    stages.discard("unclassified")
+    if len(stages) != 1:
+        raise RuntimeError("러시아 경유 발표·허가·실물 단계 혼재: 전송 차단")
+    stage = next(iter(stages))
+    if stage == "us_license_issued" and not any(_russian_license_is_official(r) for r in rows):
+        raise RuntimeError("OFAC 공식 허가 검증 실패 · 전송 차단")
+    if stage == "shipment_verified" and not _russian_physical_shipment_confirmed(rows):
+        raise RuntimeError("선적 근거 부족 · 전송 차단")
+
+    labels = {
+        "deal_announced": "트럼프·푸틴 공급 합의 발표 · 선적 미확인",
+        "us_license_issued": "미국 OFAC 제135호 발급 · 거래 허용 확인",
+        "russian_ban_lifting_reported": "러시아 수출 제한 완화 방침 보도 · 실제 선적 미확인",
+        "shipment_verified": "러시아 경유 실제 선적 복수 자료 확인",
+    }
+    lines = [
+        current.astimezone(KST).strftime("%Y년 %m월 %d일 %H:%M KST"), "",
+        "[한눈에]",
+        f"확인 단계     {labels.get(stage, stage)}",
+        "공급 발표     즉시 30만 톤 초과(약 225만 배럴)",
+        "추가 계획     11월 50만 톤 · 이후 100만 톤 · 정유시설 조건부 300만 톤",
+        "총 계획       480만 톤 초과(약 3,600만 배럴) · 실제 수출량 아님",
+        "원천 병목     IEA 9월 분석: 러시아 경유 생산 전년 대비 약 30% 감소",
+    ]
+    if stage == "us_license_issued":
+        lines.append("법적 조치     OFAC 제135호(2026-10-09) · 거래 허용과 선적은 별개")
+    if oil is not None:
+        lines.append(f"Brent         {oil.price:.2f}달러/배럴 · {oil.change_pct:+.2f}%")
+    if fx is not None:
+        lines.append(f"원·달러       {fx.price:,.2f}원 · {fx.change_pct:+.2f}%")
+
+    lines.extend([
+        "",
+        "[핵심]",
+        "제재 완화·공급 합의만으로 러시아의 정유시설이 복구되거나 실제 경유가 시장에 도착한 것은 아닙니다.",
+        "→ 약속 물량과 추가 순공급량도 다릅니다. 기존 고객에게 가던 물량의 목적지 변경 가능성을 별도로 확인합니다.",
+        "",
+        "[한국 전이]",
+        "정유          공급이 실제 늘면 경유 정제마진 축소 가능성 · 선적 확인 전 확정 금지",
+        "운송          경유 가격 하락 시 비용 부담 완화 가능성 · 항공유와 별도 확인",
+        "",
+        "[다음 확인]",
+        "러시아        정제 처리량·경유 수율·국내 재고·수출 제한 실제 시행",
+        "실물          수출항·화물 선적·탱커 출항·목적지 도착·원산지 통관",
+        "미국          OFAC 제135호 적용범위·만료일·실제 경유 수입 통계",
+        "시장          경유 현물·선물·정제마진 3일/7일 지속 변화 · 중국 수출·호르무즈",
+        "",
+        "[근거]",
+    ])
+    for row in rows[:3]:
+        published = dt.datetime.fromtimestamp(row.published_epoch, tz=UTC).astimezone(KST)
+        lines.append(f"{_source_name_ko(row.source)} · {published:%m-%d %H:%M KST} · {_news_title_ko(row)}")
+        if row.link:
+            lines.append(f"원문: {row.link}")
+    lines.extend([
+        "", "[주의]",
+        "30만·50만·100만·300만 톤은 발표·조건부 계획이며, 수입량·실제 선적량으로 합산하지 않습니다.",
+        "경유 가격 검증 전에는 매출액·유가 인하 효과를 임의 추산하지 않습니다.",
+    ])
+    return "\n".join(lines).strip() + "\n"
 
 
 def _china_fuel_export_stage(text_or_rows: str | list[NewsItem]) -> str:
@@ -3385,6 +3622,8 @@ def build_physical_flow_alert_body(
     metrics = _extract_kpler_sts_metrics(news_rows)
     if kind == "eia_refining_crack_watch":
         return _build_eia_refining_alert_body(news_rows, oil, current, fx)
+    if kind == "russia_diesel_supply_transition":
+        return _build_russia_diesel_supply_alert_body(news_rows, oil, current, fx)
     if kind == "crude_product_divergence":
         return _build_crude_product_gap_alert_body(news_rows, oil, current, fx)
     if kind == "g7_reserve_release_agreement":
@@ -3758,6 +3997,7 @@ def run_monitor(current: dt.datetime) -> int:
         "g7_reserve_release_agreement",
         "eu_diesel_reserve_policy",
         "us_diesel_export_policy",
+        "russia_diesel_supply_transition",
         "china_fuel_export_policy",
         "hormuz_7day_diplomacy",
         "us_gulf_isaias_shutin",
@@ -3784,6 +4024,8 @@ def run_monitor(current: dt.datetime) -> int:
             title = "EU 경유 전략비축유 방출 변화"
         elif kind == "us_diesel_export_policy":
             title = "미국 디젤 수출정책 변화"
+        elif kind == "russia_diesel_supply_transition":
+            title = "러시아 경유 공급 합의·제재·실물 검증"
         elif kind == "china_fuel_export_policy":
             title = "중국 정제품 수출정책 변화"
         elif kind == "hormuz_7day_diplomacy":
