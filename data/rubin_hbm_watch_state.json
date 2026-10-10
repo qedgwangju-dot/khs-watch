@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-10T10:50:00+09:00",
+  "updated_at_kst": "2026-10-10T14:23:12+09:00",
   "seen_ids": [
     "00315ac822df3f19f0f17bfd",
     "01899de42b17bb25951592cf",
@@ -83,6 +83,7 @@
     "879690aaf1650f4535c5fa3b",
     "89dfc6e2a5f58fd54f926dca",
     "8c3ed41a5caa69f015e2670c",
+    "90220fb7efcc8b8d8890be5f",
     "92a9488842a3f019af6ec9e9",
     "942249bed778a37a967938bc",
     "94e0bb7f59a31374d524f8f3",
@@ -124,6 +125,7 @@
     "d33a5fbc0d352f5813521b17",
     "d438811610a9bd1cc60718b5",
     "d47a34c8b0086d71ea6dd5a5",
+    "d526b99cb83540d8a82e2492",
     "d5bb9608cc828c7b4cd00446",
     "d6a7588c8d5d4c51180c5a1a",
     "d6b9b392729bc1ba60f083f0",
@@ -176,13 +178,13 @@
     "rubin_ultra_spec_192gb_288gb_1tb",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 1,
+  "last_unseen_raw_count": 2,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1341.49,
-    "date": "2026-10-09 일일 기준 · ECB/Frankfurter · 조회 2026-10-10 10:50 KST · 보조 API 2026-10-10 · 차이 0.01% · 일중 기준시각 차이 가능",
+    "date": "2026-10-09 일일 기준 · ECB/Frankfurter · 조회 2026-10-10 14:23 KST · 보조 API 2026-10-10 · 차이 0.01% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
@@ -310,13 +312,13 @@
       "https://www.trendforce.com/news/",
       "https://www.trendforce.com/research"
     ],
-    "last_checked_at_kst": "2026-10-10T10:50:16+09:00",
+    "last_checked_at_kst": "2026-10-10T14:23:30+09:00",
     "candidate_count": 3,
     "errors": []
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-10-10T10:50:31+09:00",
+    "checked_at_kst": "2026-10-10T14:24:05+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-10-08T19:41:56+09:00",
@@ -384,7 +386,7 @@
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
     "last_validation_cutoff": "2026-10-10",
-    "last_checked_at_kst": "2026-10-10T10:50:19+09:00",
+    "last_checked_at_kst": "2026-10-10T14:23:55+09:00",
     "cpu_structure": {
       "bnpp_public": {
         "as_of": "2026-10-05",
@@ -479,7 +481,7 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
     "last_checked_cutoff": "2026-10-10",
-    "last_checked_at_kst": "2026-10-10T10:50:24+09:00",
+    "last_checked_at_kst": "2026-10-10T14:23:59+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -523,7 +525,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-10-10T10:50:26+09:00",
+    "last_checked_at_kst": "2026-10-10T14:24:01+09:00",
     "candidate_count": 0,
     "event_count": 0,
     "area_structure": {
@@ -872,6 +874,6 @@
     "share_source_url": "https://counterpointresearch.com/en/insights/global-hbm-market-share-q2-2026",
     "last_official_stage_change_at": null
   },
-  "feed_checks": 38,
-  "feed_healthy": 38
+  "feed_checks": 42,
+  "feed_healthy": 42
 }
