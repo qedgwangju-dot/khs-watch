@@ -43,6 +43,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          # Workflow runs queued for minutes must read the latest delivered
+          # fingerprints, not the older push event's frozen commit snapshot.
+          ref: main
           fetch-depth: 0
 
       - name: Set up Python
@@ -89,6 +92,39 @@ jobs:
             echo "Options/SOX delayed; only fully checked fund-flow data may be sent." >> "$GITHUB_STEP_SUMMARY"
             rm -f out/us_positioning_options_sox_alert.html out/us_positioning_options_sox_pending_state.json
           fi
+
+      - name: Recheck committed state before sending
+        run: |
+          # A source check may have started before another run committed delivery.
+          # Compare pending semantic fingerprints against the freshest remote state.
+          git fetch --quiet origin main
+          python - <<'PY'
+          import json, os, pathlib, subprocess
+          if (os.getenv("FORCE_SEND") or "").lower() in ("true", "1", "yes"):
+              print("pre_send_dedup_bypassed_by_explicit_force=true")
+          else:
+              alert = pathlib.Path("out/us_fund_flow_alert.html")
+              pending = pathlib.Path("out/us_fund_flow_pending_state.json")
+              if alert.exists() and pending.exists():
+                  raw = subprocess.run(
+                      ["git", "show", "origin/main:data/us_fund_flow_state.json"],
+                      capture_output=True, text=True, check=True,
+                  )
+                  committed = json.loads(raw.stdout)
+                  candidate = json.loads(pending.read_text(encoding="utf-8"))
+                  for obj in (committed, candidate):
+                      if not isinstance(obj, dict) or not isinstance(obj.get("seen"), dict):
+                          raise RuntimeError("Invalid fund-flow state during pre-send verification")
+                  if (
+                      candidate.get("seen") == committed.get("seen")
+                      and candidate.get("derived", {}) == committed.get("derived", {})
+                  ):
+                      alert.unlink()
+                      pending.unlink()
+                      print("pre_send_duplicate_blocked=true reason=same_committed_source_fingerprints_and_derived")
+                  else:
+                      print("pre_send_duplicate_blocked=false reason=new_verified_semantic_change")
+          PY
 
       - name: Send Telegram updates
         if: hashFiles('out/us_fund_flow_alert.html') != '' || hashFiles('out/us_positioning_options_sox_alert.html') != ''
