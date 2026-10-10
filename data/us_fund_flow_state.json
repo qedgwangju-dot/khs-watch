@@ -4,7 +4,8 @@
     "FINRA|margin": "8655636a0708abc68f71ddd7a8febfc428dbeaf45d54c8d809c6c5280ea4c65e",
     "ICI|combined": "2e58aadeb62905be8fbe8ef955938b932ee778ab304f4d4fbecd51bc432a6a09",
     "JPMorganChase Institute|household_withdrawals": "6c6c7de140d30ef3253091d748c839718c430cd42b2e1b65880108e2720f7e29",
-    "Federal Reserve Z.1|household_balance_sheet": "7360f0d54948ccab33bac2e7f7154281e984872c447a15f209941748eb0d4c64"
+    "Federal Reserve Z.1|household_balance_sheet": "7360f0d54948ccab33bac2e7f7154281e984872c447a15f209941748eb0d4c64",
+    "LSEG Lipper via Reuters|lipper": "e3829760671c789221c16810faea4a6c86b88b40ad20bb3931143ba886caa87b"
   },
   "values": {
     "ICI|mmf": {
@@ -92,16 +93,38 @@
         "equities_share_financial_assets_pct": 48.2
       },
       "fingerprint": "7360f0d54948ccab33bac2e7f7154281e984872c447a15f209941748eb0d4c64"
+    },
+    "LSEG Lipper via Reuters|lipper": {
+      "source": "LSEG Lipper via Reuters",
+      "kind": "lipper",
+      "period": "October 07, 2026",
+      "published": "Fri, 09 Oct 2026 10:00:00 GMT",
+      "url": "https://www.channelnewsasia.com/business/money-market-funds-attract-massive-inflows-bond-selloff-bit-6445901",
+      "title": "Money market funds attract massive inflows as bond selloff bit - Reuters",
+      "reference_week_verified": true,
+      "reference_week": "2026-10-07",
+      "comparison_note": "기사에 명시된 기준주간 확인; 통계 모집단별 순유입·순유출은 직접 자금 이전이 아님",
+      "metrics": {
+        "us_equity_bn": null,
+        "global_equity_bn": null,
+        "mmf_bn": 153.81
+      },
+      "evidence": {
+        "us": null,
+        "global": null,
+        "mmf": "Investors bought global money market funds of a net $153.81 billion during the week, registering their largest weekly net purchase since May 6, LSEG Lipper data showed."
+      },
+      "fingerprint": "e3829760671c789221c16810faea4a6c86b88b40ad20bb3931143ba886caa87b"
     }
   },
-  "updated_at_kst": "2026-10-09T23:17:10.152550+09:00",
+  "updated_at_kst": "2026-10-10T17:24:35.362558+09:00",
   "derived": {
     "sp500_drawdown_band": "normal",
     "sp500_last_date": "2026-10-09",
-    "sp500_last_value": 7790.25,
+    "sp500_last_value": 7811.5400390625,
     "sp500_peak_date": "2026-10-06",
     "sp500_peak_value": 7818.93017578125,
-    "sp500_drawdown_pct": -0.37,
+    "sp500_drawdown_pct": -0.09,
     "hartnett_tracking_version": "2026-10-09-v1",
     "hartnett_treasury_date": "2026-10-09",
     "hartnett_10y_pct": 5.24,
