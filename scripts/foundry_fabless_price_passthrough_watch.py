@@ -502,7 +502,8 @@ def _semicap_observation(item: dict) -> dict | None:
         "higher prices", "price adjustment", "가격 인상", "값 인상",
         "가격 조정", "가격을 인상", "인상 확정", "値上げ", "涨价", "漲價",
     )) or bool(re.search(
-        r"\b(?:raise|raises|raised|increase|increases|increased)\b.{0,90}\bprices?\b",
+        r"\b(?:raise|raises|raised|increase|increases|increased)\b.{0,90}\bprices?\b"
+        r"|\bprices?\b.{0,40}\b(?:rise|rises|rose|increase|increases|increased)\b",
         low,
     ))
     if not has_price_change:

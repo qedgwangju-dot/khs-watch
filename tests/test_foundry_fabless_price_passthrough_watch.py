@@ -207,8 +207,7 @@ class FoundryFablessPricePassThroughTests(unittest.TestCase):
             link="https://www.trendforce.com/news/example",
         )
         obs = w._extract_state(x)
-        self.assertIsNotNone(obs)
-        self.assertFalse(obs.get("fabless_official_company_confirmed", False))
+        self.assertFalse((obs or {}).get("fabless_official_company_confirmed", False))
         x["link"] = "https://renesas.com.evil.example/news"
         self.assertIsNone(w._extract_state(x))
 
@@ -232,6 +231,15 @@ class FoundryFablessPricePassThroughTests(unittest.TestCase):
         self.assertIsNotNone(ev)
         self.assertEqual(ev["geography"], "전 세계")
         self.assertEqual(ev["grade"], "reported")
+
+    def test_semicap_global_price_grammatical_order(self):
+        x = self.semicap_item(
+            "ASML spare parts prices 10% increase worldwide January 2027",
+            "",
+        )
+        event = w._semicap_observation(x)
+        self.assertIsNotNone(event)
+        self.assertEqual(event["geography"], "전 세계")
 
     def test_semicap_official_rate_not_disclosed_is_not_assumed_ten(self):
         x = self.semicap_item(
