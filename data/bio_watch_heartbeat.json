@@ -1,6 +1,6 @@
 {
   "status": "ok",
-  "checked_at_kst": "2026-10-10T08:51:56+09:00",
+  "checked_at_kst": "2026-10-10T10:58:13+09:00",
   "route_source": "encrypted-route",
   "telegram_route_ok": true,
   "qlex_collector_rc": 0,
@@ -30,8 +30,9 @@
   "halozyme_search_failed_tasks": 0,
   "halozyme_search_task_count": 72,
   "intismeran_retry_pending": false,
-  "last_health_notice_date": "2026-10-09",
+  "last_health_notice_date": "2026-10-10",
   "errors": [],
   "failed_component": "",
-  "error_signature": ""
+  "error_signature": "",
+  "health_notice_message_id": 141
 }
