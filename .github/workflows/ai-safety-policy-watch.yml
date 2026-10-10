@@ -364,7 +364,7 @@ jobs:
           state=json.loads(pending.read_text(encoding="utf-8"))
           seen=state.setdefault("seen",{})
           now=dt.datetime.now(KST)
-          query='("Super Intelligence Force" OR "Anthropic breaches spark White House AI reporting mandate")'
+          query='("Super Intelligence Force" OR "Anthropic breaches spark White House AI reporting mandate" OR "AI model incident reporting")'
           rss="https://news.google.com/rss/search?"+urllib.parse.urlencode({
               "q":query+" when:7d","hl":"en-US","gl":"US","ceid":"US:en"
           })
@@ -374,6 +374,7 @@ jobs:
 
           trusted={
               "Reuters","AP News","Associated Press","The Associated Press","Axios",
+              "Federal Register","GovInfo","U.S. Government Publishing Office",
               "The Wall Street Journal","Wall Street Journal","CBS News",
               "The White House","White House",
               "Office of the Director of National Intelligence",
@@ -397,7 +398,12 @@ jobs:
                   source=="Axios"
                   and "anthropic breaches spark white house ai reporting mandate" in title.lower()
               )
-              if not is_si and not is_direct:
+              is_official_rule = (
+                  source in {"Federal Register","GovInfo","U.S. Government Publishing Office"}
+                  and ("incident reporting" in text or "incident notification" in text)
+                  and ("ai model" in text or "artificial intelligence" in text)
+              )
+              if not is_si and not is_direct and not is_official_rule:
                   continue
               rows.append({"title":title.strip(),"description":desc.strip(),"source":source,"link":link,"text":text})
 
@@ -500,7 +506,18 @@ jobs:
                   "security incident", "notification and remediation",
               ))
               if is_regulatory_source and has_instrument and has_incident_subject:
-                  return "regulation","us-sif-regulation-"+hashlib.sha1(title.encode()).hexdigest()[:10]
+                  # A statute/CFR rule/EO requires a traceable instrument number.
+                  # If the news excerpt omits the identifier, await the original
+                  # government document instead of claiming enacted regulation.
+                  doc_id=re.search(
+                      r"(?:\b20\d{2}-\d{4,7}\b|\b(?:executive order|eo)\s*14\d{3}\b|"
+                      r"\b\d{1,2}\s*cfr\s*\d+(?:\.\d+)?\b|\brin\s*\d{4}-[a-z]{2}\d{2}\b)",
+                      text,re.I,
+                  )
+                  if doc_id:
+                      normalized_doc=re.sub(r"[^a-z0-9]+","-",doc_id.group().lower()).strip("-")
+                      return "regulation","us-sif-regulation-"+normalized_doc
+                  return "ignore",""
 
               membership_action=any(x in title for x in (
                   "new member","new members","joins","added to","leadership change",
@@ -536,6 +553,11 @@ jobs:
           assert stage({
               "title":"Federal Register final rule published on AI model incident reporting",
               "text":"federal register final rule published requires ai model incident reporting",
+              "source":"Federal Register",
+          })[0]=="ignore"
+          assert stage({
+              "title":"Federal Register final rule 2026-20999 published on AI model incident reporting",
+              "text":"federal register final rule 2026-20999 published requires ai model incident reporting",
               "source":"Federal Register",
           })[0]=="regulation"
           assert stage({
