@@ -201,7 +201,7 @@ jobs:
               "kind": "official_direct",
               "title": "Anthropic Research: investigating unintended model actions",
               "description": "Evaluations and internal use of Claude",
-              "source": "Anthropic Model Incident Reports",
+              "source": "Anthropic Research",
               "url": "https://www.anthropic.com/research/investigating-unintended-model-actions",
           }
           parsed = normalize_item(incident_report)
