@@ -1767,6 +1767,27 @@
       "source_published_kst": "2026-10-07T14:22+09:00",
       "title": "AI 전력난에 엔진도 뜬다…HD건설기계, 북미서 3900억원 수주"
     },
+    "core:12fbc53a264c9d9c7db2bdfc": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820742",
+      "source": "뉴시스",
+      "source_body_digest": "a60c671a1bfd3c01c1186dde3f73527dfd0740c505d2bd9e333d7329914b74d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:52e7432062d07c8b2fb6a0a479b6f8cc5f6f4a74cb107f65610aa7767682a5dc",
+      "source_fact_keys": [
+        "source_fact:v1:0b79dcf79f109c9e73491246a01c6aaf848daeb25594132fc65439495ef5088c",
+        "source_fact:v1:97f51c94a99a823331047309790b2e3819cc819f1ec356a1f156c681d9602c4b",
+        "source_fact:v1:b12ecbd1d49c799f59d43636cebb7fc407b41ba68c832655358626d25427ba3d"
+      ],
+      "source_published_kst": "2026-10-11T06:16+09:00",
+      "source_title": "트럼프 \"젤렌스키 전쟁 끝낼 수 있지만 안 해…우크라 새 대통령 필요\"",
+      "telegram_core_fact": "트럼프 대통령은 전날 소셜미디어(SNS) 트루스소셜에 \"러시아가 즉시 30만톤 이상의 디젤 연료(경유)를 미국과 세계시장에 공급하기로 했다\"면서 이후에도 추가 공급에 나서면서 총 480만톤을 공급하기로 푸틴 대통령과 합의했다고 밝혔다.",
+      "title": "트럼프 \"젤렌스키 전쟁 끝낼 수 있지만 안 해…우크라 새 대통령 필요\""
+    },
     "core:130d3cfe9255093091c24051": {
       "first_seen_kst": "2026-10-07T22:24:07+09:00",
       "lanes": {
@@ -2417,6 +2438,30 @@
       "source_title": "SK에너지, 석유제품 가격·거래관행 점검…내부통제 강화한다",
       "telegram_core_fact": "SK에너지는 △석유시장 가격체계 투명성 및 거래관행 개선 △공정거래 및 내부통제 체계 강화 △석유 유통고객과의 상생협력 강화 △안정적인 에너지 공급을 위한 역할 지속을 골자로 하는 ‘석유시장 가격구조 개편 및 내부통제 강화’ 조치를 마련했다고 8일 밝혔다.",
       "title": "SK에너지, 석유제품 가격·거래관행 점검…내부통제 강화한다"
+    },
+    "core:1c4cecd33e65fb734321c337": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261010031400003",
+      "source": "연합뉴스",
+      "source_body_digest": "619653377c9fa82ffe109690f5e5e1bdddbb65f508f8ac1ccca054fbf927e565",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ed6a35bd5dc3c4608dadaa2c25f1366b33385074ec62a5ea7a158c8bbf8dbb7c",
+      "source_fact_keys": [
+        "source_fact:v1:08e8792d717a07889775bc93b28540226477badafa1c038eca907d277afec818",
+        "source_fact:v1:7e6232bb964f29f7cbfdcdf05cfabc17bdde4b922b351b942c76f3b9585e213c",
+        "source_fact:v1:c2a2aa52318ca72d94e75ce28a468418e98b8d69a4a53802c79faf33a95a6411",
+        "source_fact:v1:c67761ff9fc6ae116586e9ad33e9ee5b1d6e159fca5b188b7b002f9f162abaef",
+        "source_fact:v1:ce396913398d294cfbf40e44bd025511e70a8c3ceb5623acc4a607f6480b468b",
+        "source_fact:v1:d4a16c25c9b1dea04e15d684ad3553f6538017c115e79b459a5927b5f80fffbc"
+      ],
+      "source_published_kst": "2026-10-11T06:05+09:00",
+      "source_title": "현대차, 분기 영업이익 기아에 역전당하나…매출도 6년만에 감소 | 연합뉴스",
+      "telegram_core_fact": "올해 판매 부진을 겪고 있는 현대차의 3분기 영업이익과 매출이 동반 감소할 것이라는 전망이 나온다.",
+      "title": "현대차, 분기 영업이익 기아에 역전당하나…매출도 6년만에 감소 | 연합뉴스"
     },
     "core:1d3e5ef4133da3f33d6354bc": {
       "first_seen_kst": "2026-10-08T03:51:03+09:00",
@@ -8761,6 +8806,27 @@
       "source_title": "트럼프 \"11월 3일 중간선거 전까지 이란 공격 안 해\" | 연합뉴스",
       "telegram_core_fact": "또 트럼프 대통령은 소셜미디어를 통해 \"우리는 이란과 생산적인 논의를 진행하고 있다\"며 \"이란은 경제적으로나 군사적으로 매우 나쁜 상황에 처해 있고, 봉쇄 조치는 전면적으로 유지될 것\"이라고도 말했습니다.",
       "title": "트럼프 \"11월 3일 중간선거 전까지 이란 공격 안 해\" | 연합뉴스"
+    },
+    "core:6e7345e7fce679ce8bd27955": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172434",
+      "source": "매일경제",
+      "source_body_digest": "bbf49a7d6db160892b79dab07a19f86001a685d5406dd21a7904bc8b063eb1c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e80182be29a19b397772a24ec7b6bd92c79afdbf16746f6f55f39d74e7ec677b",
+      "source_fact_keys": [
+        "source_fact:v1:19cd67db8105882a8a81c954f2912bb28645bab1be5b99660d99450f2d5d64a4",
+        "source_fact:v1:2629d5e40fb22adcba286b7d95f184d361e8afe8b167ccb865ded1743b8d380f",
+        "source_fact:v1:d8a7a555fbb16972b482a88d287ea7b951648850aa771b80c473022d13589f2f"
+      ],
+      "source_published_kst": "2026-10-11T05:51+09:00",
+      "source_title": "작년 한은 외화자산 운용수익 17조원 육박…역대 최대",
+      "telegram_core_fact": "한은은 지난해 수익 확대와 관련, 3월 발간한 '2025년도 연차 보고서'에서 \"원/달러 환율 상승, 유가증권 가격 상승 등의 영향으로 외화자산 관련 순이익이 전년 대비 크게 증가했다\"고 언급했다.",
+      "title": "작년 한은 외화자산 운용수익 17조원 육박…역대 최대"
     },
     "core:6eb9cf5b6132f5740ff0d850": {
       "first_seen_kst": "2026-10-09T19:24:17+09:00",
@@ -17918,6 +17984,23 @@
       "telegram_core_fact": "엔화 환율은 8일 그간 상승세를 보인 미국 장기금리가 주춤하면서 엔 매수, 달러 매도 선행으로 1달러=158엔으로 소폭 올라 시작했다.",
       "title": "엔화, 美 장기금리 상승 주춤에 1달러=158엔 소폭 상승 출발"
     },
+    "core:e04632d5e32e52c3f9fb75eb": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/11/2026100815204072052",
+      "source": "머니투데이",
+      "source_body_digest": "5f5c26ca66800b4b6028a97dca4183d11185d1448c55428628212f49905acf14",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-11T06:00+09:00",
+      "source_title": "불확실성 커진 재정·정치·글로벌 시장…불안한 佛 국채",
+      "telegram_core_fact": "국내외 금리 상승 압력이 커진 상황에서 프랑스의 정치∙재정적 불확실성이 금융시장의 우려를 자극했다. 이는 일본 국채금리 상승과 프랑스의 재정∙정치적 리스크가 맞물리면서 일본계 자금의 투자 방향이 달라질 수 있음을 보여주는 사례다.",
+      "title": "불확실성 커진 재정·정치·글로벌 시장…불안한 佛 국채"
+    },
     "core:e078f2cbe0535cb0485775c2": {
       "first_seen_kst": "2026-10-09T21:27:46+09:00",
       "lanes": {
@@ -19554,6 +19637,26 @@
       "source_title": "에볼루션 메탈스 앤 테크, 올해 매출 전망 62% 상향..1000만~1100만 달러",
       "telegram_core_fact": "2027년 매출액 컨센서스는 1억600만 달러로 2026년 대비 1102.5% 증가가 예상되나, 회사의 2027 회계연도 가이던스 4억~4억6000만 달러와는 격차가 크다.",
       "title": "에볼루션 메탈스 앤 테크, 올해 매출 전망 62% 상향..1000만~1100만 달러"
+    },
+    "core:f60d704d7dd5610cea2bac88": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008168900008",
+      "source": "연합뉴스",
+      "source_body_digest": "1ec2c00bff3d3be7921872f976723f8a51f25e6d3af24f755009fec25516be9b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47e14c74e3de981f42a134e1ffc4c9face4b2b4c3230b3a097080bccd7d97b70",
+      "source_fact_keys": [
+        "source_fact:v1:179b72b9ae1873a6beebd66c9a68f8a1f8072202e4490e2bfd29d740c8277049",
+        "source_fact:v1:46d9a79b51abe93866471b5459aecd966f120b3ad3ecbc10a3720846d723ed96"
+      ],
+      "source_published_kst": "2026-10-11T06:10+09:00",
+      "source_title": "국채금리 급등에 줄어든 매력에도…개인, 리츠 ETF 순매수액↑ | 연합뉴스",
+      "telegram_core_fact": "주요 상품별로 보면 개인은 지난달 'TIGER 리츠부동산인프라' ETF를 8월(160억원)보다 29.4% 늘어난 207억원을 순매수했다.",
+      "title": "국채금리 급등에 줄어든 매력에도…개인, 리츠 ETF 순매수액↑ | 연합뉴스"
     },
     "core:f6dc446ed218502656bb1900": {
       "first_seen_kst": "2026-10-09T22:37:15+09:00",
@@ -22167,6 +22270,23 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=01561286645608984",
       "source": "이데일리",
       "title": "전세계 덮친 '채권 쇼크'…美·英·佛 국채금리 수십년 만에 최고"
+    },
+    "event:2cf190ba66a82844682e7c58": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/11/2026100815204072052",
+      "source": "머니투데이",
+      "source_body_digest": "5f5c26ca66800b4b6028a97dca4183d11185d1448c55428628212f49905acf14",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-11T06:00+09:00",
+      "source_title": "불확실성 커진 재정·정치·글로벌 시장…불안한 佛 국채",
+      "telegram_core_fact": "국내외 금리 상승 압력이 커진 상황에서 프랑스의 정치∙재정적 불확실성이 금융시장의 우려를 자극했다. 이는 일본 국채금리 상승과 프랑스의 재정∙정치적 리스크가 맞물리면서 일본계 자금의 투자 방향이 달라질 수 있음을 보여주는 사례다.",
+      "title": "불확실성 커진 재정·정치·글로벌 시장…불안한 佛 국채"
     },
     "event:2da188b8d971de076b20a5df": {
       "first_seen_kst": "2026-09-18T13:11:00+09:00",
@@ -27919,6 +28039,26 @@
       ],
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "\"30개 테스트공장 풀가동\" SK엔무브 고급 윤활기유 1위 만든 R&D"
+    },
+    "event:c5111ef3e9751ca1ff4d5d29": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008168900008",
+      "source": "연합뉴스",
+      "source_body_digest": "1ec2c00bff3d3be7921872f976723f8a51f25e6d3af24f755009fec25516be9b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47e14c74e3de981f42a134e1ffc4c9face4b2b4c3230b3a097080bccd7d97b70",
+      "source_fact_keys": [
+        "source_fact:v1:179b72b9ae1873a6beebd66c9a68f8a1f8072202e4490e2bfd29d740c8277049",
+        "source_fact:v1:46d9a79b51abe93866471b5459aecd966f120b3ad3ecbc10a3720846d723ed96"
+      ],
+      "source_published_kst": "2026-10-11T06:10+09:00",
+      "source_title": "국채금리 급등에 줄어든 매력에도…개인, 리츠 ETF 순매수액↑ | 연합뉴스",
+      "telegram_core_fact": "주요 상품별로 보면 개인은 지난달 'TIGER 리츠부동산인프라' ETF를 8월(160억원)보다 29.4% 늘어난 207억원을 순매수했다.",
+      "title": "국채금리 급등에 줄어든 매력에도…개인, 리츠 ETF 순매수액↑ | 연합뉴스"
     },
     "event:c5a3bc7a884d610f00378016": {
       "first_seen_kst": "2026-10-03T01:03:39+09:00",
@@ -35949,6 +36089,26 @@
       "source_title": "삼성전자, 분기 영업익 107조 찍었는데 주가는 주춤?...\"극단적 저평가, 지금이 매수 기회\"",
       "telegram_core_fact": "[파이낸셜뉴스] 삼성전자가 국내 기업 최초로 분기 영업이익 100조 원을 돌파하며 글로벌 1위 기업으로 도약했다.",
       "title": "삼성전자, 분기 영업익 107조 찍었는데 주가는 주춤?...\"극단적 저평가, 지금이 매수 기회\""
+    },
+    "fact:26e56f4a24836cdfa7bc6081": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008168900008",
+      "source": "연합뉴스",
+      "source_body_digest": "1ec2c00bff3d3be7921872f976723f8a51f25e6d3af24f755009fec25516be9b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47e14c74e3de981f42a134e1ffc4c9face4b2b4c3230b3a097080bccd7d97b70",
+      "source_fact_keys": [
+        "source_fact:v1:179b72b9ae1873a6beebd66c9a68f8a1f8072202e4490e2bfd29d740c8277049",
+        "source_fact:v1:46d9a79b51abe93866471b5459aecd966f120b3ad3ecbc10a3720846d723ed96"
+      ],
+      "source_published_kst": "2026-10-11T06:10+09:00",
+      "source_title": "국채금리 급등에 줄어든 매력에도…개인, 리츠 ETF 순매수액↑ | 연합뉴스",
+      "telegram_core_fact": "주요 상품별로 보면 개인은 지난달 'TIGER 리츠부동산인프라' ETF를 8월(160억원)보다 29.4% 늘어난 207억원을 순매수했다.",
+      "title": "국채금리 급등에 줄어든 매력에도…개인, 리츠 ETF 순매수액↑ | 연합뉴스"
     },
     "fact:26f121d9f1c9f8a0ae7a8806": {
       "first_seen_kst": "2026-10-08T18:46:25+09:00",
@@ -44452,6 +44612,27 @@
       ],
       "source_published_kst": "2026-10-06T14:07+09:00",
       "title": "앤 해서웨이 ‘베러티’, 톰 크루즈 제치고 북미 박스오피스 1위"
+    },
+    "fact:65fe038a8bdb86b874137bb6": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172434",
+      "source": "매일경제",
+      "source_body_digest": "bbf49a7d6db160892b79dab07a19f86001a685d5406dd21a7904bc8b063eb1c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e80182be29a19b397772a24ec7b6bd92c79afdbf16746f6f55f39d74e7ec677b",
+      "source_fact_keys": [
+        "source_fact:v1:19cd67db8105882a8a81c954f2912bb28645bab1be5b99660d99450f2d5d64a4",
+        "source_fact:v1:2629d5e40fb22adcba286b7d95f184d361e8afe8b167ccb865ded1743b8d380f",
+        "source_fact:v1:d8a7a555fbb16972b482a88d287ea7b951648850aa771b80c473022d13589f2f"
+      ],
+      "source_published_kst": "2026-10-11T05:51+09:00",
+      "source_title": "작년 한은 외화자산 운용수익 17조원 육박…역대 최대",
+      "telegram_core_fact": "한은은 지난해 수익 확대와 관련, 3월 발간한 '2025년도 연차 보고서'에서 \"원/달러 환율 상승, 유가증권 가격 상승 등의 영향으로 외화자산 관련 순이익이 전년 대비 크게 증가했다\"고 언급했다.",
+      "title": "작년 한은 외화자산 운용수익 17조원 육박…역대 최대"
     },
     "fact:664877932747019a603d1760": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
@@ -53656,6 +53837,30 @@
       "source_published_kst": "2026-10-07T08:00+09:00",
       "title": "롯데하이마트, 산업 특화 '휴머노이드 로봇' 실증 추진…국책 과제 선정"
     },
+    "fact:a9f3f85730bfb3f0dcc7f482": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261010031400003",
+      "source": "연합뉴스",
+      "source_body_digest": "619653377c9fa82ffe109690f5e5e1bdddbb65f508f8ac1ccca054fbf927e565",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ed6a35bd5dc3c4608dadaa2c25f1366b33385074ec62a5ea7a158c8bbf8dbb7c",
+      "source_fact_keys": [
+        "source_fact:v1:08e8792d717a07889775bc93b28540226477badafa1c038eca907d277afec818",
+        "source_fact:v1:7e6232bb964f29f7cbfdcdf05cfabc17bdde4b922b351b942c76f3b9585e213c",
+        "source_fact:v1:c2a2aa52318ca72d94e75ce28a468418e98b8d69a4a53802c79faf33a95a6411",
+        "source_fact:v1:c67761ff9fc6ae116586e9ad33e9ee5b1d6e159fca5b188b7b002f9f162abaef",
+        "source_fact:v1:ce396913398d294cfbf40e44bd025511e70a8c3ceb5623acc4a607f6480b468b",
+        "source_fact:v1:d4a16c25c9b1dea04e15d684ad3553f6538017c115e79b459a5927b5f80fffbc"
+      ],
+      "source_published_kst": "2026-10-11T06:05+09:00",
+      "source_title": "현대차, 분기 영업이익 기아에 역전당하나…매출도 6년만에 감소 | 연합뉴스",
+      "telegram_core_fact": "올해 판매 부진을 겪고 있는 현대차의 3분기 영업이익과 매출이 동반 감소할 것이라는 전망이 나온다.",
+      "title": "현대차, 분기 영업이익 기아에 역전당하나…매출도 6년만에 감소 | 연합뉴스"
+    },
     "fact:a9f9a7cc737e0931d3c36254": {
       "first_seen_kst": "2026-10-08T19:49:39+09:00",
       "lanes": {
@@ -57317,6 +57522,27 @@
       "source_title": "정부, '러트닉, 김정관에 국정원 불신 전달' 보도에 \"사실 아냐\" | 연합뉴스",
       "telegram_core_fact": "산업부는 9일 보도설명자료를 통해 \"대미 전략투자 협상 과정에서 러트닉 장관이 김 장관에 국정원 관련 불신을 전달했다는 것은 사실이 아님을 명확히 밝힌다\"고 전했다.",
       "title": "정부, '러트닉, 김정관에 국정원 불신 전달' 보도에 \"사실 아냐\" | 연합뉴스"
+    },
+    "fact:c3fa1b4e1b6c5b9d2c8e2fea": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820742",
+      "source": "뉴시스",
+      "source_body_digest": "a60c671a1bfd3c01c1186dde3f73527dfd0740c505d2bd9e333d7329914b74d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:52e7432062d07c8b2fb6a0a479b6f8cc5f6f4a74cb107f65610aa7767682a5dc",
+      "source_fact_keys": [
+        "source_fact:v1:0b79dcf79f109c9e73491246a01c6aaf848daeb25594132fc65439495ef5088c",
+        "source_fact:v1:97f51c94a99a823331047309790b2e3819cc819f1ec356a1f156c681d9602c4b",
+        "source_fact:v1:b12ecbd1d49c799f59d43636cebb7fc407b41ba68c832655358626d25427ba3d"
+      ],
+      "source_published_kst": "2026-10-11T06:16+09:00",
+      "source_title": "트럼프 \"젤렌스키 전쟁 끝낼 수 있지만 안 해…우크라 새 대통령 필요\"",
+      "telegram_core_fact": "트럼프 대통령은 전날 소셜미디어(SNS) 트루스소셜에 \"러시아가 즉시 30만톤 이상의 디젤 연료(경유)를 미국과 세계시장에 공급하기로 했다\"면서 이후에도 추가 공급에 나서면서 총 480만톤을 공급하기로 푸틴 대통령과 합의했다고 밝혔다.",
+      "title": "트럼프 \"젤렌스키 전쟁 끝낼 수 있지만 안 해…우크라 새 대통령 필요\""
     },
     "fact:c400c780101aa7e7c0f2b993": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
@@ -78148,6 +78374,23 @@
       "source": "머니투데이",
       "title": "'엔비디아 들어온다' 소식에 中 반도체 하락…日도 약세[Asia마감]"
     },
+    "link:37c1b987a1905d723b63bbc3": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261009029200008",
+      "source": "연합뉴스",
+      "source_body_digest": "62831c67d614661d634820302e14a6e0f7e8e36c1bd92a13a79ecb83ffa3a2bd",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-11T06:30+09:00",
+      "source_title": "올해 크레딧물 발행 24%↑…은행채 늘고 회사채는 줄고 | 연합뉴스",
+      "telegram_core_fact": "은행채와 공사채 공급이 확대되는 동안 일반 기업의 회사채 발행은 줄어든 셈이다.",
+      "title": "올해 크레딧물 발행 24%↑…은행채 늘고 회사채는 줄고 | 연합뉴스"
+    },
     "link:37c4deebfb5a1f9016c53be4": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
       "lanes": {
@@ -81991,6 +82234,26 @@
       ],
       "source_published_kst": "2026-10-06T14:42+09:00",
       "title": "中, 첫 해저 CO₂ 주입 플랫폼 건설…연 100만t 해저 저장"
+    },
+    "link:49a462a1f8ab3060fe09b69b": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008168900008",
+      "source": "연합뉴스",
+      "source_body_digest": "1ec2c00bff3d3be7921872f976723f8a51f25e6d3af24f755009fec25516be9b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47e14c74e3de981f42a134e1ffc4c9face4b2b4c3230b3a097080bccd7d97b70",
+      "source_fact_keys": [
+        "source_fact:v1:179b72b9ae1873a6beebd66c9a68f8a1f8072202e4490e2bfd29d740c8277049",
+        "source_fact:v1:46d9a79b51abe93866471b5459aecd966f120b3ad3ecbc10a3720846d723ed96"
+      ],
+      "source_published_kst": "2026-10-11T06:10+09:00",
+      "source_title": "국채금리 급등에 줄어든 매력에도…개인, 리츠 ETF 순매수액↑ | 연합뉴스",
+      "telegram_core_fact": "주요 상품별로 보면 개인은 지난달 'TIGER 리츠부동산인프라' ETF를 8월(160억원)보다 29.4% 늘어난 207억원을 순매수했다.",
+      "title": "국채금리 급등에 줄어든 매력에도…개인, 리츠 ETF 순매수액↑ | 연합뉴스"
     },
     "link:49a7779c6974d0e61e45f093": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
@@ -86671,6 +86934,23 @@
       "source_published_kst": "2026-10-06T15:42+09:00",
       "title": "디지털 자본시장 새판 4개월 앞으로…국감서 활성화 정책 검증"
     },
+    "link:5f4a348c8e96c6d5a451a6e8": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/11/2026100815204072052",
+      "source": "머니투데이",
+      "source_body_digest": "5f5c26ca66800b4b6028a97dca4183d11185d1448c55428628212f49905acf14",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-11T06:00+09:00",
+      "source_title": "불확실성 커진 재정·정치·글로벌 시장…불안한 佛 국채",
+      "telegram_core_fact": "국내외 금리 상승 압력이 커진 상황에서 프랑스의 정치∙재정적 불확실성이 금융시장의 우려를 자극했다. 이는 일본 국채금리 상승과 프랑스의 재정∙정치적 리스크가 맞물리면서 일본계 자금의 투자 방향이 달라질 수 있음을 보여주는 사례다.",
+      "title": "불확실성 커진 재정·정치·글로벌 시장…불안한 佛 국채"
+    },
     "link:5f6ec25067ea21097df0dffa": {
       "first_seen_kst": "2026-10-02T14:00:40+09:00",
       "lanes": {
@@ -89999,6 +90279,27 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T13:22+09:00",
       "title": "다음주 어닝시즌 개막, AI주 강세 확산될까…재료 공백 속 국채 금리 주목"
+    },
+    "link:6d10fd4b382ebe197a76add6": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172434",
+      "source": "매일경제",
+      "source_body_digest": "bbf49a7d6db160892b79dab07a19f86001a685d5406dd21a7904bc8b063eb1c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e80182be29a19b397772a24ec7b6bd92c79afdbf16746f6f55f39d74e7ec677b",
+      "source_fact_keys": [
+        "source_fact:v1:19cd67db8105882a8a81c954f2912bb28645bab1be5b99660d99450f2d5d64a4",
+        "source_fact:v1:2629d5e40fb22adcba286b7d95f184d361e8afe8b167ccb865ded1743b8d380f",
+        "source_fact:v1:d8a7a555fbb16972b482a88d287ea7b951648850aa771b80c473022d13589f2f"
+      ],
+      "source_published_kst": "2026-10-11T05:51+09:00",
+      "source_title": "작년 한은 외화자산 운용수익 17조원 육박…역대 최대",
+      "telegram_core_fact": "한은은 지난해 수익 확대와 관련, 3월 발간한 '2025년도 연차 보고서'에서 \"원/달러 환율 상승, 유가증권 가격 상승 등의 영향으로 외화자산 관련 순이익이 전년 대비 크게 증가했다\"고 언급했다.",
+      "title": "작년 한은 외화자산 운용수익 17조원 육박…역대 최대"
     },
     "link:6d151ebd1ae45af1375e3166": {
       "first_seen_kst": "2026-10-03T07:28:32+09:00",
@@ -102438,6 +102739,30 @@
       "source_published_kst": "2026-10-04T23:56+09:00",
       "title": "OPEC+, 11월 원유 생산 목표 유지 합의"
     },
+    "link:a834fbfe992857edeee72724": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261010031400003",
+      "source": "연합뉴스",
+      "source_body_digest": "619653377c9fa82ffe109690f5e5e1bdddbb65f508f8ac1ccca054fbf927e565",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ed6a35bd5dc3c4608dadaa2c25f1366b33385074ec62a5ea7a158c8bbf8dbb7c",
+      "source_fact_keys": [
+        "source_fact:v1:08e8792d717a07889775bc93b28540226477badafa1c038eca907d277afec818",
+        "source_fact:v1:7e6232bb964f29f7cbfdcdf05cfabc17bdde4b922b351b942c76f3b9585e213c",
+        "source_fact:v1:c2a2aa52318ca72d94e75ce28a468418e98b8d69a4a53802c79faf33a95a6411",
+        "source_fact:v1:c67761ff9fc6ae116586e9ad33e9ee5b1d6e159fca5b188b7b002f9f162abaef",
+        "source_fact:v1:ce396913398d294cfbf40e44bd025511e70a8c3ceb5623acc4a607f6480b468b",
+        "source_fact:v1:d4a16c25c9b1dea04e15d684ad3553f6538017c115e79b459a5927b5f80fffbc"
+      ],
+      "source_published_kst": "2026-10-11T06:05+09:00",
+      "source_title": "현대차, 분기 영업이익 기아에 역전당하나…매출도 6년만에 감소 | 연합뉴스",
+      "telegram_core_fact": "올해 판매 부진을 겪고 있는 현대차의 3분기 영업이익과 매출이 동반 감소할 것이라는 전망이 나온다.",
+      "title": "현대차, 분기 영업이익 기아에 역전당하나…매출도 6년만에 감소 | 연합뉴스"
+    },
     "link:a84603c86371d59184e85640": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
       "lanes": {
@@ -107408,6 +107733,23 @@
       "source": "뉴시스",
       "title": "美FOMC 부의장 \"금리 인상 서두를 필요 없어\"…10월 인상론 50%↓"
     },
+    "link:bf189390fec68adeb891f12f": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008114100008",
+      "source": "연합뉴스",
+      "source_body_digest": "6c56f238eb5979f4f5b108d98dc12a0d182dea3b2af831dec5c8044504601072",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-11T06:25+09:00",
+      "source_title": "이번주 크레딧 2.3조 발행…LG유플러스·GS 등 수요예측 | 연합뉴스",
+      "telegram_core_fact": "추석 연휴 이후 회사채 수요예측 흥행을 이끌었던 발행사들은 모두 증액 발행을 결정했다.",
+      "title": "이번주 크레딧 2.3조 발행…LG유플러스·GS 등 수요예측 | 연합뉴스"
+    },
     "link:bf26ab1a5b1ffe9c2480ab63": {
       "first_seen_kst": "2026-10-07T20:28:48+09:00",
       "lanes": {
@@ -111052,6 +111394,27 @@
       "source_title": "[AI 고속도로] 기업 AI도 프라이빗 시대…'모듈형 데이터센터'가 뜬다",
       "telegram_core_fact": "외부 클라우드와 AI 모델에 의존하던 방식에서 벗어나 자체 인프라를 병행하는 기업이 늘면서, 필요한 장소에 빠르게 구축하고 수요에 따라 확장할 수 있는 모듈형 AI 데이터센터(AIDC)도 대안으로 부상한 모습이다. 국내에선 엘리스그룹이 모듈형 데이터센터와 클라우드 소프트웨어를 결합한 AI 인프라 사업을 추진 중이다.",
       "title": "[AI 고속도로] 기업 AI도 프라이빗 시대…'모듈형 데이터센터'가 뜬다"
+    },
+    "link:d090218a3b075a0c3acf68c7": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820742",
+      "source": "뉴시스",
+      "source_body_digest": "a60c671a1bfd3c01c1186dde3f73527dfd0740c505d2bd9e333d7329914b74d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:52e7432062d07c8b2fb6a0a479b6f8cc5f6f4a74cb107f65610aa7767682a5dc",
+      "source_fact_keys": [
+        "source_fact:v1:0b79dcf79f109c9e73491246a01c6aaf848daeb25594132fc65439495ef5088c",
+        "source_fact:v1:97f51c94a99a823331047309790b2e3819cc819f1ec356a1f156c681d9602c4b",
+        "source_fact:v1:b12ecbd1d49c799f59d43636cebb7fc407b41ba68c832655358626d25427ba3d"
+      ],
+      "source_published_kst": "2026-10-11T06:16+09:00",
+      "source_title": "트럼프 \"젤렌스키 전쟁 끝낼 수 있지만 안 해…우크라 새 대통령 필요\"",
+      "telegram_core_fact": "트럼프 대통령은 전날 소셜미디어(SNS) 트루스소셜에 \"러시아가 즉시 30만톤 이상의 디젤 연료(경유)를 미국과 세계시장에 공급하기로 했다\"면서 이후에도 추가 공급에 나서면서 총 480만톤을 공급하기로 푸틴 대통령과 합의했다고 밝혔다.",
+      "title": "트럼프 \"젤렌스키 전쟁 끝낼 수 있지만 안 해…우크라 새 대통령 필요\""
     },
     "link:d094afa156def328afde61e9": {
       "first_seen_kst": "2026-10-07T17:47:45+09:00",
@@ -128586,6 +128949,27 @@
       "source": "매일경제",
       "title": "버크&허버트 파이낸셜, LNKB 합병 완료..2분기 총자산 110억 달러 규모 성장"
     },
+    "original:24cc818c8d17c6f4bd3f8723": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172434",
+      "source": "매일경제",
+      "source_body_digest": "bbf49a7d6db160892b79dab07a19f86001a685d5406dd21a7904bc8b063eb1c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e80182be29a19b397772a24ec7b6bd92c79afdbf16746f6f55f39d74e7ec677b",
+      "source_fact_keys": [
+        "source_fact:v1:19cd67db8105882a8a81c954f2912bb28645bab1be5b99660d99450f2d5d64a4",
+        "source_fact:v1:2629d5e40fb22adcba286b7d95f184d361e8afe8b167ccb865ded1743b8d380f",
+        "source_fact:v1:d8a7a555fbb16972b482a88d287ea7b951648850aa771b80c473022d13589f2f"
+      ],
+      "source_published_kst": "2026-10-11T05:51+09:00",
+      "source_title": "작년 한은 외화자산 운용수익 17조원 육박…역대 최대",
+      "telegram_core_fact": "한은은 지난해 수익 확대와 관련, 3월 발간한 '2025년도 연차 보고서'에서 \"원/달러 환율 상승, 유가증권 가격 상승 등의 영향으로 외화자산 관련 순이익이 전년 대비 크게 증가했다\"고 언급했다.",
+      "title": "작년 한은 외화자산 운용수익 17조원 육박…역대 최대"
+    },
     "original:24d0dc04933640faea4e6c5e": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
       "lanes": {
@@ -130655,6 +131039,23 @@
       ],
       "source_published_kst": "2026-10-06T15:59+09:00",
       "title": "자사주 매입 막바지·솔리다임 상장설 악재? 삼전닉스 1~3%대↓(종합) | 연합뉴스"
+    },
+    "original:2ddbdc9e572355150a3b74bd": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261009029200008",
+      "source": "연합뉴스",
+      "source_body_digest": "62831c67d614661d634820302e14a6e0f7e8e36c1bd92a13a79ecb83ffa3a2bd",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-11T06:30+09:00",
+      "source_title": "올해 크레딧물 발행 24%↑…은행채 늘고 회사채는 줄고 | 연합뉴스",
+      "telegram_core_fact": "은행채와 공사채 공급이 확대되는 동안 일반 기업의 회사채 발행은 줄어든 셈이다.",
+      "title": "올해 크레딧물 발행 24%↑…은행채 늘고 회사채는 줄고 | 연합뉴스"
     },
     "original:2dded2a5a436e229b6ac0b56": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -134568,6 +134969,26 @@
       "link": "https://www.etnews.com/20261001000156",
       "source": "전자신문",
       "title": "이재용 뉴욕 이어 런던 '갈라 외교'…반도체 핵심 파트너 CEO 한자리에 모였다"
+    },
+    "original:3fd5d7aa1e1041a922ea4948": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008168900008",
+      "source": "연합뉴스",
+      "source_body_digest": "1ec2c00bff3d3be7921872f976723f8a51f25e6d3af24f755009fec25516be9b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47e14c74e3de981f42a134e1ffc4c9face4b2b4c3230b3a097080bccd7d97b70",
+      "source_fact_keys": [
+        "source_fact:v1:179b72b9ae1873a6beebd66c9a68f8a1f8072202e4490e2bfd29d740c8277049",
+        "source_fact:v1:46d9a79b51abe93866471b5459aecd966f120b3ad3ecbc10a3720846d723ed96"
+      ],
+      "source_published_kst": "2026-10-11T06:10+09:00",
+      "source_title": "국채금리 급등에 줄어든 매력에도…개인, 리츠 ETF 순매수액↑ | 연합뉴스",
+      "telegram_core_fact": "주요 상품별로 보면 개인은 지난달 'TIGER 리츠부동산인프라' ETF를 8월(160억원)보다 29.4% 늘어난 207억원을 순매수했다.",
+      "title": "국채금리 급등에 줄어든 매력에도…개인, 리츠 ETF 순매수액↑ | 연합뉴스"
     },
     "original:3fe19752cf065cb33e0ee926": {
       "first_seen_kst": "2026-09-24T10:55:51+09:00",
@@ -138568,6 +138989,27 @@
       ],
       "source_published_kst": "2026-10-06T17:52+09:00",
       "title": "코스닥, 석달 만에 900 뚫었다…소부장·바이오·배터리주 강세"
+    },
+    "original:5110b008c6fd6f7eeabde254": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820742",
+      "source": "뉴시스",
+      "source_body_digest": "a60c671a1bfd3c01c1186dde3f73527dfd0740c505d2bd9e333d7329914b74d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:52e7432062d07c8b2fb6a0a479b6f8cc5f6f4a74cb107f65610aa7767682a5dc",
+      "source_fact_keys": [
+        "source_fact:v1:0b79dcf79f109c9e73491246a01c6aaf848daeb25594132fc65439495ef5088c",
+        "source_fact:v1:97f51c94a99a823331047309790b2e3819cc819f1ec356a1f156c681d9602c4b",
+        "source_fact:v1:b12ecbd1d49c799f59d43636cebb7fc407b41ba68c832655358626d25427ba3d"
+      ],
+      "source_published_kst": "2026-10-11T06:16+09:00",
+      "source_title": "트럼프 \"젤렌스키 전쟁 끝낼 수 있지만 안 해…우크라 새 대통령 필요\"",
+      "telegram_core_fact": "트럼프 대통령은 전날 소셜미디어(SNS) 트루스소셜에 \"러시아가 즉시 30만톤 이상의 디젤 연료(경유)를 미국과 세계시장에 공급하기로 했다\"면서 이후에도 추가 공급에 나서면서 총 480만톤을 공급하기로 푸틴 대통령과 합의했다고 밝혔다.",
+      "title": "트럼프 \"젤렌스키 전쟁 끝낼 수 있지만 안 해…우크라 새 대통령 필요\""
     },
     "original:511e0f15b7a3c71146eeb66a": {
       "first_seen_kst": "2026-09-22T16:30:20+09:00",
@@ -149030,6 +149472,23 @@
       "telegram_core_fact": "강원 원주시는 '2026 원주 중소기업 우수제품 박람회'가 2만여명의 관람객을 모으고 온오프라인에서 3억3천만원의 매출을 기록했다고 7일 밝혔다.",
       "title": "원주 중소기업 우수제품 박람회 2만명 방문…매출 3억3천만원 | 연합뉴스"
     },
+    "original:85ae27ec23972ba4cb62701f": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008114100008",
+      "source": "연합뉴스",
+      "source_body_digest": "6c56f238eb5979f4f5b108d98dc12a0d182dea3b2af831dec5c8044504601072",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-11T06:25+09:00",
+      "source_title": "이번주 크레딧 2.3조 발행…LG유플러스·GS 등 수요예측 | 연합뉴스",
+      "telegram_core_fact": "추석 연휴 이후 회사채 수요예측 흥행을 이끌었던 발행사들은 모두 증액 발행을 결정했다.",
+      "title": "이번주 크레딧 2.3조 발행…LG유플러스·GS 등 수요예측 | 연합뉴스"
+    },
     "original:85b6ffe1789c3315d8e6b497": {
       "first_seen_kst": "2026-10-05T15:12:23+09:00",
       "lanes": {
@@ -152303,6 +152762,23 @@
       "link": "https://www.etnews.com/20260922000186",
       "source": "전자신문",
       "title": "보령, 中 이판제약과 '탁소텔' 3837억원 공급계약…역대 최대 규모"
+    },
+    "original:946a198ab3df145e3f4762ec": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/11/2026100815204072052",
+      "source": "머니투데이",
+      "source_body_digest": "5f5c26ca66800b4b6028a97dca4183d11185d1448c55428628212f49905acf14",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-11T06:00+09:00",
+      "source_title": "불확실성 커진 재정·정치·글로벌 시장…불안한 佛 국채",
+      "telegram_core_fact": "국내외 금리 상승 압력이 커진 상황에서 프랑스의 정치∙재정적 불확실성이 금융시장의 우려를 자극했다. 이는 일본 국채금리 상승과 프랑스의 재정∙정치적 리스크가 맞물리면서 일본계 자금의 투자 방향이 달라질 수 있음을 보여주는 사례다.",
+      "title": "불확실성 커진 재정·정치·글로벌 시장…불안한 佛 국채"
     },
     "original:9497b04163dfe3af02ef2a10": {
       "first_seen_kst": "2026-10-08T15:16:19+09:00",
@@ -169812,6 +170288,30 @@
       "source_published_kst": "2026-10-05T14:54+09:00",
       "title": "운문댐 저수율 22.9% 가뭄 ‘심각’"
     },
+    "original:e8696ffeabd13b119f5e5d86": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261010031400003",
+      "source": "연합뉴스",
+      "source_body_digest": "619653377c9fa82ffe109690f5e5e1bdddbb65f508f8ac1ccca054fbf927e565",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ed6a35bd5dc3c4608dadaa2c25f1366b33385074ec62a5ea7a158c8bbf8dbb7c",
+      "source_fact_keys": [
+        "source_fact:v1:08e8792d717a07889775bc93b28540226477badafa1c038eca907d277afec818",
+        "source_fact:v1:7e6232bb964f29f7cbfdcdf05cfabc17bdde4b922b351b942c76f3b9585e213c",
+        "source_fact:v1:c2a2aa52318ca72d94e75ce28a468418e98b8d69a4a53802c79faf33a95a6411",
+        "source_fact:v1:c67761ff9fc6ae116586e9ad33e9ee5b1d6e159fca5b188b7b002f9f162abaef",
+        "source_fact:v1:ce396913398d294cfbf40e44bd025511e70a8c3ceb5623acc4a607f6480b468b",
+        "source_fact:v1:d4a16c25c9b1dea04e15d684ad3553f6538017c115e79b459a5927b5f80fffbc"
+      ],
+      "source_published_kst": "2026-10-11T06:05+09:00",
+      "source_title": "현대차, 분기 영업이익 기아에 역전당하나…매출도 6년만에 감소 | 연합뉴스",
+      "telegram_core_fact": "올해 판매 부진을 겪고 있는 현대차의 3분기 영업이익과 매출이 동반 감소할 것이라는 전망이 나온다.",
+      "title": "현대차, 분기 영업이익 기아에 역전당하나…매출도 6년만에 감소 | 연합뉴스"
+    },
     "original:e88555f524965e4ed341d660": {
       "first_seen_kst": "2026-09-30T02:33:17+09:00",
       "lanes": {
@@ -177739,6 +178239,26 @@
       "telegram_core_fact": "워딩턴 스틸(WS)은 2027 회계연도 1분기(2026년 6~8월) 계속사업 기준 매출액이 27억2660만 달러로 전년비 212% 증가했으며, 계속사업 기준 GAAP 희석 주당순손실은 0.14달러로 전년 동기 0.73달러 순이익에서 적자 전환했다고 10월 7일 발표했다.",
       "title": "워딩턴 스틸, 1분기 매출 27억 달러 212%↑..적자전환"
     },
+    "source_fact:05f55d5ee2741b617163c8ea": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008168900008",
+      "source": "연합뉴스",
+      "source_body_digest": "1ec2c00bff3d3be7921872f976723f8a51f25e6d3af24f755009fec25516be9b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47e14c74e3de981f42a134e1ffc4c9face4b2b4c3230b3a097080bccd7d97b70",
+      "source_fact_keys": [
+        "source_fact:v1:179b72b9ae1873a6beebd66c9a68f8a1f8072202e4490e2bfd29d740c8277049",
+        "source_fact:v1:46d9a79b51abe93866471b5459aecd966f120b3ad3ecbc10a3720846d723ed96"
+      ],
+      "source_published_kst": "2026-10-11T06:10+09:00",
+      "source_title": "국채금리 급등에 줄어든 매력에도…개인, 리츠 ETF 순매수액↑ | 연합뉴스",
+      "telegram_core_fact": "주요 상품별로 보면 개인은 지난달 'TIGER 리츠부동산인프라' ETF를 8월(160억원)보다 29.4% 늘어난 207억원을 순매수했다.",
+      "title": "국채금리 급등에 줄어든 매력에도…개인, 리츠 ETF 순매수액↑ | 연합뉴스"
+    },
     "source_fact:05feb4d7c21484ac2c0cdce4": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
       "lanes": {
@@ -183384,6 +183904,27 @@
       "source_title": "'사건 배당' 일 시작한 중수청…수장·지휘부 공석 숙제",
       "telegram_core_fact": "중수청은 인력 구성과 배당 사건 검토 등을 거쳐 1호 수사 대상을 선정할 것으로 관측된다.",
       "title": "'사건 배당' 일 시작한 중수청…수장·지휘부 공석 숙제"
+    },
+    "source_fact:0ea145e6b3297da7db6317a8": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172434",
+      "source": "매일경제",
+      "source_body_digest": "bbf49a7d6db160892b79dab07a19f86001a685d5406dd21a7904bc8b063eb1c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e80182be29a19b397772a24ec7b6bd92c79afdbf16746f6f55f39d74e7ec677b",
+      "source_fact_keys": [
+        "source_fact:v1:19cd67db8105882a8a81c954f2912bb28645bab1be5b99660d99450f2d5d64a4",
+        "source_fact:v1:2629d5e40fb22adcba286b7d95f184d361e8afe8b167ccb865ded1743b8d380f",
+        "source_fact:v1:d8a7a555fbb16972b482a88d287ea7b951648850aa771b80c473022d13589f2f"
+      ],
+      "source_published_kst": "2026-10-11T05:51+09:00",
+      "source_title": "작년 한은 외화자산 운용수익 17조원 육박…역대 최대",
+      "telegram_core_fact": "한은은 지난해 수익 확대와 관련, 3월 발간한 '2025년도 연차 보고서'에서 \"원/달러 환율 상승, 유가증권 가격 상승 등의 영향으로 외화자산 관련 순이익이 전년 대비 크게 증가했다\"고 언급했다.",
+      "title": "작년 한은 외화자산 운용수익 17조원 육박…역대 최대"
     },
     "source_fact:0eb01d0de18c98ba4084d844": {
       "first_seen_kst": "2026-10-08T04:26:05+09:00",
@@ -190587,6 +191128,27 @@
       "source_title": "주춤한 은행주⋯증권가 “4분기 마진 개선·주주환원이 기폭제”",
       "telegram_core_fact": "은행 업종은 밸류업 프로그램 이후 총주주환원율이 과거 20%대에서 50%대로 높아졌고, 주가순자산비율(P/B) 역시 0.3~0.4배 수준에서 0.7~0.9배까지 상승했다.",
       "title": "주춤한 은행주⋯증권가 “4분기 마진 개선·주주환원이 기폭제”"
+    },
+    "source_fact:19dc7110b232ba7cc55536c8": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820742",
+      "source": "뉴시스",
+      "source_body_digest": "a60c671a1bfd3c01c1186dde3f73527dfd0740c505d2bd9e333d7329914b74d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:52e7432062d07c8b2fb6a0a479b6f8cc5f6f4a74cb107f65610aa7767682a5dc",
+      "source_fact_keys": [
+        "source_fact:v1:0b79dcf79f109c9e73491246a01c6aaf848daeb25594132fc65439495ef5088c",
+        "source_fact:v1:97f51c94a99a823331047309790b2e3819cc819f1ec356a1f156c681d9602c4b",
+        "source_fact:v1:b12ecbd1d49c799f59d43636cebb7fc407b41ba68c832655358626d25427ba3d"
+      ],
+      "source_published_kst": "2026-10-11T06:16+09:00",
+      "source_title": "트럼프 \"젤렌스키 전쟁 끝낼 수 있지만 안 해…우크라 새 대통령 필요\"",
+      "telegram_core_fact": "트럼프 대통령은 전날 소셜미디어(SNS) 트루스소셜에 \"러시아가 즉시 30만톤 이상의 디젤 연료(경유)를 미국과 세계시장에 공급하기로 했다\"면서 이후에도 추가 공급에 나서면서 총 480만톤을 공급하기로 푸틴 대통령과 합의했다고 밝혔다.",
+      "title": "트럼프 \"젤렌스키 전쟁 끝낼 수 있지만 안 해…우크라 새 대통령 필요\""
     },
     "source_fact:19fb7fc0bac4ce8d4c53bf39": {
       "first_seen_kst": "2026-10-08T20:58:15+09:00",
@@ -204698,6 +205260,30 @@
       ],
       "source_published_kst": "2026-10-06T08:41+09:00",
       "title": "AI 데이터센터 늘자 전력 수요도 급증…ETF 투자처도 '전력 인프라'로"
+    },
+    "source_fact:2dd4fbd0bc3f0c3b17bfa67a": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261010031400003",
+      "source": "연합뉴스",
+      "source_body_digest": "619653377c9fa82ffe109690f5e5e1bdddbb65f508f8ac1ccca054fbf927e565",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ed6a35bd5dc3c4608dadaa2c25f1366b33385074ec62a5ea7a158c8bbf8dbb7c",
+      "source_fact_keys": [
+        "source_fact:v1:08e8792d717a07889775bc93b28540226477badafa1c038eca907d277afec818",
+        "source_fact:v1:7e6232bb964f29f7cbfdcdf05cfabc17bdde4b922b351b942c76f3b9585e213c",
+        "source_fact:v1:c2a2aa52318ca72d94e75ce28a468418e98b8d69a4a53802c79faf33a95a6411",
+        "source_fact:v1:c67761ff9fc6ae116586e9ad33e9ee5b1d6e159fca5b188b7b002f9f162abaef",
+        "source_fact:v1:ce396913398d294cfbf40e44bd025511e70a8c3ceb5623acc4a607f6480b468b",
+        "source_fact:v1:d4a16c25c9b1dea04e15d684ad3553f6538017c115e79b459a5927b5f80fffbc"
+      ],
+      "source_published_kst": "2026-10-11T06:05+09:00",
+      "source_title": "현대차, 분기 영업이익 기아에 역전당하나…매출도 6년만에 감소 | 연합뉴스",
+      "telegram_core_fact": "올해 판매 부진을 겪고 있는 현대차의 3분기 영업이익과 매출이 동반 감소할 것이라는 전망이 나온다.",
+      "title": "현대차, 분기 영업이익 기아에 역전당하나…매출도 6년만에 감소 | 연합뉴스"
     },
     "source_fact:2dd5e9bb3322d9dec57ce209": {
       "first_seen_kst": "2026-10-07T20:59:13+09:00",
@@ -228637,6 +229223,30 @@
       "source_published_kst": "2026-10-05T19:24+09:00",
       "title": "ZTO 익스프레스, 자사주 14만주 매입..268만 달러 규모"
     },
+    "source_fact:5255870c8a3017dc8f3c4299": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261010031400003",
+      "source": "연합뉴스",
+      "source_body_digest": "619653377c9fa82ffe109690f5e5e1bdddbb65f508f8ac1ccca054fbf927e565",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ed6a35bd5dc3c4608dadaa2c25f1366b33385074ec62a5ea7a158c8bbf8dbb7c",
+      "source_fact_keys": [
+        "source_fact:v1:08e8792d717a07889775bc93b28540226477badafa1c038eca907d277afec818",
+        "source_fact:v1:7e6232bb964f29f7cbfdcdf05cfabc17bdde4b922b351b942c76f3b9585e213c",
+        "source_fact:v1:c2a2aa52318ca72d94e75ce28a468418e98b8d69a4a53802c79faf33a95a6411",
+        "source_fact:v1:c67761ff9fc6ae116586e9ad33e9ee5b1d6e159fca5b188b7b002f9f162abaef",
+        "source_fact:v1:ce396913398d294cfbf40e44bd025511e70a8c3ceb5623acc4a607f6480b468b",
+        "source_fact:v1:d4a16c25c9b1dea04e15d684ad3553f6538017c115e79b459a5927b5f80fffbc"
+      ],
+      "source_published_kst": "2026-10-11T06:05+09:00",
+      "source_title": "현대차, 분기 영업이익 기아에 역전당하나…매출도 6년만에 감소 | 연합뉴스",
+      "telegram_core_fact": "올해 판매 부진을 겪고 있는 현대차의 3분기 영업이익과 매출이 동반 감소할 것이라는 전망이 나온다.",
+      "title": "현대차, 분기 영업이익 기아에 역전당하나…매출도 6년만에 감소 | 연합뉴스"
+    },
     "source_fact:5264501e613193a36575832b": {
       "first_seen_kst": "2026-10-07T07:24:41+09:00",
       "lanes": {
@@ -236634,6 +237244,26 @@
       "source_title": "삼성전자 '분기 영업이익 100조' 시대 열었다… 세계 테크기업 '최초'(2보)",
       "telegram_core_fact": "[파이낸셜뉴스]삼성전자는 올해 3·4분기 영업이익 107조4000억원을 기록하며 '분기 영업이익 100조 시대'를 열었다.",
       "title": "삼성전자 '분기 영업이익 100조' 시대 열었다… 세계 테크기업 '최초'(2보)"
+    },
+    "source_fact:5d207d41b8a07f0f3a30f2e6": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008168900008",
+      "source": "연합뉴스",
+      "source_body_digest": "1ec2c00bff3d3be7921872f976723f8a51f25e6d3af24f755009fec25516be9b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47e14c74e3de981f42a134e1ffc4c9face4b2b4c3230b3a097080bccd7d97b70",
+      "source_fact_keys": [
+        "source_fact:v1:179b72b9ae1873a6beebd66c9a68f8a1f8072202e4490e2bfd29d740c8277049",
+        "source_fact:v1:46d9a79b51abe93866471b5459aecd966f120b3ad3ecbc10a3720846d723ed96"
+      ],
+      "source_published_kst": "2026-10-11T06:10+09:00",
+      "source_title": "국채금리 급등에 줄어든 매력에도…개인, 리츠 ETF 순매수액↑ | 연합뉴스",
+      "telegram_core_fact": "주요 상품별로 보면 개인은 지난달 'TIGER 리츠부동산인프라' ETF를 8월(160억원)보다 29.4% 늘어난 207억원을 순매수했다.",
+      "title": "국채금리 급등에 줄어든 매력에도…개인, 리츠 ETF 순매수액↑ | 연합뉴스"
     },
     "source_fact:5d27e893a255f1b880a46204": {
       "first_seen_kst": "2026-10-06T18:34:25+09:00",
@@ -258888,6 +259518,30 @@
       "telegram_core_fact": "유럽연합(EU)이 중국산 하이브리드 자동차 수입을 제한하는 긴급수입제한(세이프가드) 도입을 준비 중인 것으로 전해졌다.",
       "title": "EU, 中하이브리드차 세이프가드 도입 검토…對中 압박 키운다"
     },
+    "source_fact:80b07817abffcc04e1decc9e": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261010031400003",
+      "source": "연합뉴스",
+      "source_body_digest": "619653377c9fa82ffe109690f5e5e1bdddbb65f508f8ac1ccca054fbf927e565",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ed6a35bd5dc3c4608dadaa2c25f1366b33385074ec62a5ea7a158c8bbf8dbb7c",
+      "source_fact_keys": [
+        "source_fact:v1:08e8792d717a07889775bc93b28540226477badafa1c038eca907d277afec818",
+        "source_fact:v1:7e6232bb964f29f7cbfdcdf05cfabc17bdde4b922b351b942c76f3b9585e213c",
+        "source_fact:v1:c2a2aa52318ca72d94e75ce28a468418e98b8d69a4a53802c79faf33a95a6411",
+        "source_fact:v1:c67761ff9fc6ae116586e9ad33e9ee5b1d6e159fca5b188b7b002f9f162abaef",
+        "source_fact:v1:ce396913398d294cfbf40e44bd025511e70a8c3ceb5623acc4a607f6480b468b",
+        "source_fact:v1:d4a16c25c9b1dea04e15d684ad3553f6538017c115e79b459a5927b5f80fffbc"
+      ],
+      "source_published_kst": "2026-10-11T06:05+09:00",
+      "source_title": "현대차, 분기 영업이익 기아에 역전당하나…매출도 6년만에 감소 | 연합뉴스",
+      "telegram_core_fact": "올해 판매 부진을 겪고 있는 현대차의 3분기 영업이익과 매출이 동반 감소할 것이라는 전망이 나온다.",
+      "title": "현대차, 분기 영업이익 기아에 역전당하나…매출도 6년만에 감소 | 연합뉴스"
+    },
     "source_fact:80baebe6e7b62e22e6c72300": {
       "first_seen_kst": "2026-10-08T04:45:20+09:00",
       "lanes": {
@@ -265846,6 +266500,30 @@
       "source_title": "트레코메탈스, 깁랠터 구리 가이던스 상향에 플로렌스 상업 생산 기대 확대",
       "telegram_core_fact": "3분기 구리 4100만 파운드를 생산했고, 깁랠터 연간 구리 생산 가이던스를 상향했습니다.",
       "title": "트레코메탈스, 깁랠터 구리 가이던스 상향에 플로렌스 상업 생산 기대 확대"
+    },
+    "source_fact:8b5b5959934b024c8a4ee671": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261010031400003",
+      "source": "연합뉴스",
+      "source_body_digest": "619653377c9fa82ffe109690f5e5e1bdddbb65f508f8ac1ccca054fbf927e565",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ed6a35bd5dc3c4608dadaa2c25f1366b33385074ec62a5ea7a158c8bbf8dbb7c",
+      "source_fact_keys": [
+        "source_fact:v1:08e8792d717a07889775bc93b28540226477badafa1c038eca907d277afec818",
+        "source_fact:v1:7e6232bb964f29f7cbfdcdf05cfabc17bdde4b922b351b942c76f3b9585e213c",
+        "source_fact:v1:c2a2aa52318ca72d94e75ce28a468418e98b8d69a4a53802c79faf33a95a6411",
+        "source_fact:v1:c67761ff9fc6ae116586e9ad33e9ee5b1d6e159fca5b188b7b002f9f162abaef",
+        "source_fact:v1:ce396913398d294cfbf40e44bd025511e70a8c3ceb5623acc4a607f6480b468b",
+        "source_fact:v1:d4a16c25c9b1dea04e15d684ad3553f6538017c115e79b459a5927b5f80fffbc"
+      ],
+      "source_published_kst": "2026-10-11T06:05+09:00",
+      "source_title": "현대차, 분기 영업이익 기아에 역전당하나…매출도 6년만에 감소 | 연합뉴스",
+      "telegram_core_fact": "올해 판매 부진을 겪고 있는 현대차의 3분기 영업이익과 매출이 동반 감소할 것이라는 전망이 나온다.",
+      "title": "현대차, 분기 영업이익 기아에 역전당하나…매출도 6년만에 감소 | 연합뉴스"
     },
     "source_fact:8b68dc7f83e7f711901aa100": {
       "first_seen_kst": "2026-10-10T19:20:50+09:00",
@@ -273536,6 +274214,27 @@
       "source_published_kst": "2026-10-05T17:11+09:00",
       "title": "유로화, 17개월 만에 최저…프랑스 등 재정 불안에 채권시장 흔들 | 연합뉴스"
     },
+    "source_fact:97dcdcb170be1152d56fb115": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820742",
+      "source": "뉴시스",
+      "source_body_digest": "a60c671a1bfd3c01c1186dde3f73527dfd0740c505d2bd9e333d7329914b74d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:52e7432062d07c8b2fb6a0a479b6f8cc5f6f4a74cb107f65610aa7767682a5dc",
+      "source_fact_keys": [
+        "source_fact:v1:0b79dcf79f109c9e73491246a01c6aaf848daeb25594132fc65439495ef5088c",
+        "source_fact:v1:97f51c94a99a823331047309790b2e3819cc819f1ec356a1f156c681d9602c4b",
+        "source_fact:v1:b12ecbd1d49c799f59d43636cebb7fc407b41ba68c832655358626d25427ba3d"
+      ],
+      "source_published_kst": "2026-10-11T06:16+09:00",
+      "source_title": "트럼프 \"젤렌스키 전쟁 끝낼 수 있지만 안 해…우크라 새 대통령 필요\"",
+      "telegram_core_fact": "트럼프 대통령은 전날 소셜미디어(SNS) 트루스소셜에 \"러시아가 즉시 30만톤 이상의 디젤 연료(경유)를 미국과 세계시장에 공급하기로 했다\"면서 이후에도 추가 공급에 나서면서 총 480만톤을 공급하기로 푸틴 대통령과 합의했다고 밝혔다.",
+      "title": "트럼프 \"젤렌스키 전쟁 끝낼 수 있지만 안 해…우크라 새 대통령 필요\""
+    },
     "source_fact:97e787a73c7c120a42d132f3": {
       "first_seen_kst": "2026-10-08T00:54:18+09:00",
       "lanes": {
@@ -274960,6 +275659,30 @@
       ],
       "source_published_kst": "2026-10-05T20:07+09:00",
       "title": "이카엑스 홀딩스, 플라이미 인수 완료..18억 위안 전액 현금"
+    },
+    "source_fact:9a249e98233b9de83ce1a116": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261010031400003",
+      "source": "연합뉴스",
+      "source_body_digest": "619653377c9fa82ffe109690f5e5e1bdddbb65f508f8ac1ccca054fbf927e565",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ed6a35bd5dc3c4608dadaa2c25f1366b33385074ec62a5ea7a158c8bbf8dbb7c",
+      "source_fact_keys": [
+        "source_fact:v1:08e8792d717a07889775bc93b28540226477badafa1c038eca907d277afec818",
+        "source_fact:v1:7e6232bb964f29f7cbfdcdf05cfabc17bdde4b922b351b942c76f3b9585e213c",
+        "source_fact:v1:c2a2aa52318ca72d94e75ce28a468418e98b8d69a4a53802c79faf33a95a6411",
+        "source_fact:v1:c67761ff9fc6ae116586e9ad33e9ee5b1d6e159fca5b188b7b002f9f162abaef",
+        "source_fact:v1:ce396913398d294cfbf40e44bd025511e70a8c3ceb5623acc4a607f6480b468b",
+        "source_fact:v1:d4a16c25c9b1dea04e15d684ad3553f6538017c115e79b459a5927b5f80fffbc"
+      ],
+      "source_published_kst": "2026-10-11T06:05+09:00",
+      "source_title": "현대차, 분기 영업이익 기아에 역전당하나…매출도 6년만에 감소 | 연합뉴스",
+      "telegram_core_fact": "올해 판매 부진을 겪고 있는 현대차의 3분기 영업이익과 매출이 동반 감소할 것이라는 전망이 나온다.",
+      "title": "현대차, 분기 영업이익 기아에 역전당하나…매출도 6년만에 감소 | 연합뉴스"
     },
     "source_fact:9a2519ee69b64e278348f0c5": {
       "first_seen_kst": "2026-10-08T18:46:25+09:00",
@@ -277616,6 +278339,30 @@
       ],
       "source_published_kst": "2026-10-06T15:07+09:00",
       "title": "[2026 국감] 호남 반도체 놓고 여야 격돌…김성환 기후부 장관 “전력·용수 공급 가능”"
+    },
+    "source_fact:9e4548f28bbab312f06553b3": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261010031400003",
+      "source": "연합뉴스",
+      "source_body_digest": "619653377c9fa82ffe109690f5e5e1bdddbb65f508f8ac1ccca054fbf927e565",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ed6a35bd5dc3c4608dadaa2c25f1366b33385074ec62a5ea7a158c8bbf8dbb7c",
+      "source_fact_keys": [
+        "source_fact:v1:08e8792d717a07889775bc93b28540226477badafa1c038eca907d277afec818",
+        "source_fact:v1:7e6232bb964f29f7cbfdcdf05cfabc17bdde4b922b351b942c76f3b9585e213c",
+        "source_fact:v1:c2a2aa52318ca72d94e75ce28a468418e98b8d69a4a53802c79faf33a95a6411",
+        "source_fact:v1:c67761ff9fc6ae116586e9ad33e9ee5b1d6e159fca5b188b7b002f9f162abaef",
+        "source_fact:v1:ce396913398d294cfbf40e44bd025511e70a8c3ceb5623acc4a607f6480b468b",
+        "source_fact:v1:d4a16c25c9b1dea04e15d684ad3553f6538017c115e79b459a5927b5f80fffbc"
+      ],
+      "source_published_kst": "2026-10-11T06:05+09:00",
+      "source_title": "현대차, 분기 영업이익 기아에 역전당하나…매출도 6년만에 감소 | 연합뉴스",
+      "telegram_core_fact": "올해 판매 부진을 겪고 있는 현대차의 3분기 영업이익과 매출이 동반 감소할 것이라는 전망이 나온다.",
+      "title": "현대차, 분기 영업이익 기아에 역전당하나…매출도 6년만에 감소 | 연합뉴스"
     },
     "source_fact:9e460f3b8a467195c15bb633": {
       "first_seen_kst": "2026-10-06T22:21:21+09:00",
@@ -308492,6 +309239,27 @@
       "source_published_kst": "2026-10-06T18:31+09:00",
       "title": "김정관 “전쟁 후 알래스카 LNG 전략적 가치 생겨”…‘상업성 검토’ 착수"
     },
+    "source_fact:ce0d0fa514f2857676e0aaa6": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172434",
+      "source": "매일경제",
+      "source_body_digest": "bbf49a7d6db160892b79dab07a19f86001a685d5406dd21a7904bc8b063eb1c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e80182be29a19b397772a24ec7b6bd92c79afdbf16746f6f55f39d74e7ec677b",
+      "source_fact_keys": [
+        "source_fact:v1:19cd67db8105882a8a81c954f2912bb28645bab1be5b99660d99450f2d5d64a4",
+        "source_fact:v1:2629d5e40fb22adcba286b7d95f184d361e8afe8b167ccb865ded1743b8d380f",
+        "source_fact:v1:d8a7a555fbb16972b482a88d287ea7b951648850aa771b80c473022d13589f2f"
+      ],
+      "source_published_kst": "2026-10-11T05:51+09:00",
+      "source_title": "작년 한은 외화자산 운용수익 17조원 육박…역대 최대",
+      "telegram_core_fact": "한은은 지난해 수익 확대와 관련, 3월 발간한 '2025년도 연차 보고서'에서 \"원/달러 환율 상승, 유가증권 가격 상승 등의 영향으로 외화자산 관련 순이익이 전년 대비 크게 증가했다\"고 언급했다.",
+      "title": "작년 한은 외화자산 운용수익 17조원 육박…역대 최대"
+    },
     "source_fact:ce0dc2031a4d4148e9769038": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
       "lanes": {
@@ -315409,6 +316177,27 @@
       ],
       "source_published_kst": "2026-10-06T15:14+09:00",
       "title": "삼성전기, AI 서버용 MLCC 2900억 수주 ... 올해만 6번째 장기공급계약"
+    },
+    "source_fact:d7ea49ba584dcf553e79dc12": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820742",
+      "source": "뉴시스",
+      "source_body_digest": "a60c671a1bfd3c01c1186dde3f73527dfd0740c505d2bd9e333d7329914b74d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:52e7432062d07c8b2fb6a0a479b6f8cc5f6f4a74cb107f65610aa7767682a5dc",
+      "source_fact_keys": [
+        "source_fact:v1:0b79dcf79f109c9e73491246a01c6aaf848daeb25594132fc65439495ef5088c",
+        "source_fact:v1:97f51c94a99a823331047309790b2e3819cc819f1ec356a1f156c681d9602c4b",
+        "source_fact:v1:b12ecbd1d49c799f59d43636cebb7fc407b41ba68c832655358626d25427ba3d"
+      ],
+      "source_published_kst": "2026-10-11T06:16+09:00",
+      "source_title": "트럼프 \"젤렌스키 전쟁 끝낼 수 있지만 안 해…우크라 새 대통령 필요\"",
+      "telegram_core_fact": "트럼프 대통령은 전날 소셜미디어(SNS) 트루스소셜에 \"러시아가 즉시 30만톤 이상의 디젤 연료(경유)를 미국과 세계시장에 공급하기로 했다\"면서 이후에도 추가 공급에 나서면서 총 480만톤을 공급하기로 푸틴 대통령과 합의했다고 밝혔다.",
+      "title": "트럼프 \"젤렌스키 전쟁 끝낼 수 있지만 안 해…우크라 새 대통령 필요\""
     },
     "source_fact:d7eb2dd0a7979e00bab73e4e": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
@@ -331823,6 +332612,27 @@
       ],
       "source_published_kst": "2026-10-05T22:29+09:00",
       "title": "유나이티드 마이크로일렉, 18억 달러 전환사채 발행 확정..쿠폰 0%"
+    },
+    "source_fact:f0bc800af6ee1958fd81a939": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172434",
+      "source": "매일경제",
+      "source_body_digest": "bbf49a7d6db160892b79dab07a19f86001a685d5406dd21a7904bc8b063eb1c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e80182be29a19b397772a24ec7b6bd92c79afdbf16746f6f55f39d74e7ec677b",
+      "source_fact_keys": [
+        "source_fact:v1:19cd67db8105882a8a81c954f2912bb28645bab1be5b99660d99450f2d5d64a4",
+        "source_fact:v1:2629d5e40fb22adcba286b7d95f184d361e8afe8b167ccb865ded1743b8d380f",
+        "source_fact:v1:d8a7a555fbb16972b482a88d287ea7b951648850aa771b80c473022d13589f2f"
+      ],
+      "source_published_kst": "2026-10-11T05:51+09:00",
+      "source_title": "작년 한은 외화자산 운용수익 17조원 육박…역대 최대",
+      "telegram_core_fact": "한은은 지난해 수익 확대와 관련, 3월 발간한 '2025년도 연차 보고서'에서 \"원/달러 환율 상승, 유가증권 가격 상승 등의 영향으로 외화자산 관련 순이익이 전년 대비 크게 증가했다\"고 언급했다.",
+      "title": "작년 한은 외화자산 운용수익 17조원 육박…역대 최대"
     },
     "source_fact:f0c0ed0d36edc8a5acb009d4": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
@@ -348733,6 +349543,27 @@
       "source": "매일경제",
       "title": "버크&허버트 파이낸셜, LNKB 합병 완료..2분기 총자산 110억 달러 규모 성장"
     },
+    "title:24cc818c8d17c6f4bd3f8723": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172434",
+      "source": "매일경제",
+      "source_body_digest": "bbf49a7d6db160892b79dab07a19f86001a685d5406dd21a7904bc8b063eb1c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e80182be29a19b397772a24ec7b6bd92c79afdbf16746f6f55f39d74e7ec677b",
+      "source_fact_keys": [
+        "source_fact:v1:19cd67db8105882a8a81c954f2912bb28645bab1be5b99660d99450f2d5d64a4",
+        "source_fact:v1:2629d5e40fb22adcba286b7d95f184d361e8afe8b167ccb865ded1743b8d380f",
+        "source_fact:v1:d8a7a555fbb16972b482a88d287ea7b951648850aa771b80c473022d13589f2f"
+      ],
+      "source_published_kst": "2026-10-11T05:51+09:00",
+      "source_title": "작년 한은 외화자산 운용수익 17조원 육박…역대 최대",
+      "telegram_core_fact": "한은은 지난해 수익 확대와 관련, 3월 발간한 '2025년도 연차 보고서'에서 \"원/달러 환율 상승, 유가증권 가격 상승 등의 영향으로 외화자산 관련 순이익이 전년 대비 크게 증가했다\"고 언급했다.",
+      "title": "작년 한은 외화자산 운용수익 17조원 육박…역대 최대"
+    },
     "title:24d0dc04933640faea4e6c5e": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
       "lanes": {
@@ -350853,6 +351684,23 @@
       ],
       "source_published_kst": "2026-10-06T15:59+09:00",
       "title": "자사주 매입 막바지·솔리다임 상장설 악재? 삼전닉스 1~3%대↓(종합) | 연합뉴스"
+    },
+    "title:2ddbdc9e572355150a3b74bd": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261009029200008",
+      "source": "연합뉴스",
+      "source_body_digest": "62831c67d614661d634820302e14a6e0f7e8e36c1bd92a13a79ecb83ffa3a2bd",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-11T06:30+09:00",
+      "source_title": "올해 크레딧물 발행 24%↑…은행채 늘고 회사채는 줄고 | 연합뉴스",
+      "telegram_core_fact": "은행채와 공사채 공급이 확대되는 동안 일반 기업의 회사채 발행은 줄어든 셈이다.",
+      "title": "올해 크레딧물 발행 24%↑…은행채 늘고 회사채는 줄고 | 연합뉴스"
     },
     "title:2dded2a5a436e229b6ac0b56": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -354851,6 +355699,26 @@
       "link": "https://www.etnews.com/20261001000156",
       "source": "전자신문",
       "title": "이재용 뉴욕 이어 런던 '갈라 외교'…반도체 핵심 파트너 CEO 한자리에 모였다"
+    },
+    "title:3fd5d7aa1e1041a922ea4948": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008168900008",
+      "source": "연합뉴스",
+      "source_body_digest": "1ec2c00bff3d3be7921872f976723f8a51f25e6d3af24f755009fec25516be9b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47e14c74e3de981f42a134e1ffc4c9face4b2b4c3230b3a097080bccd7d97b70",
+      "source_fact_keys": [
+        "source_fact:v1:179b72b9ae1873a6beebd66c9a68f8a1f8072202e4490e2bfd29d740c8277049",
+        "source_fact:v1:46d9a79b51abe93866471b5459aecd966f120b3ad3ecbc10a3720846d723ed96"
+      ],
+      "source_published_kst": "2026-10-11T06:10+09:00",
+      "source_title": "국채금리 급등에 줄어든 매력에도…개인, 리츠 ETF 순매수액↑ | 연합뉴스",
+      "telegram_core_fact": "주요 상품별로 보면 개인은 지난달 'TIGER 리츠부동산인프라' ETF를 8월(160억원)보다 29.4% 늘어난 207억원을 순매수했다.",
+      "title": "국채금리 급등에 줄어든 매력에도…개인, 리츠 ETF 순매수액↑ | 연합뉴스"
     },
     "title:3fe19752cf065cb33e0ee926": {
       "first_seen_kst": "2026-09-24T10:55:51+09:00",
@@ -358866,6 +359734,27 @@
       ],
       "source_published_kst": "2026-10-06T17:52+09:00",
       "title": "코스닥, 석달 만에 900 뚫었다…소부장·바이오·배터리주 강세"
+    },
+    "title:5110b008c6fd6f7eeabde254": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820742",
+      "source": "뉴시스",
+      "source_body_digest": "a60c671a1bfd3c01c1186dde3f73527dfd0740c505d2bd9e333d7329914b74d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:52e7432062d07c8b2fb6a0a479b6f8cc5f6f4a74cb107f65610aa7767682a5dc",
+      "source_fact_keys": [
+        "source_fact:v1:0b79dcf79f109c9e73491246a01c6aaf848daeb25594132fc65439495ef5088c",
+        "source_fact:v1:97f51c94a99a823331047309790b2e3819cc819f1ec356a1f156c681d9602c4b",
+        "source_fact:v1:b12ecbd1d49c799f59d43636cebb7fc407b41ba68c832655358626d25427ba3d"
+      ],
+      "source_published_kst": "2026-10-11T06:16+09:00",
+      "source_title": "트럼프 \"젤렌스키 전쟁 끝낼 수 있지만 안 해…우크라 새 대통령 필요\"",
+      "telegram_core_fact": "트럼프 대통령은 전날 소셜미디어(SNS) 트루스소셜에 \"러시아가 즉시 30만톤 이상의 디젤 연료(경유)를 미국과 세계시장에 공급하기로 했다\"면서 이후에도 추가 공급에 나서면서 총 480만톤을 공급하기로 푸틴 대통령과 합의했다고 밝혔다.",
+      "title": "트럼프 \"젤렌스키 전쟁 끝낼 수 있지만 안 해…우크라 새 대통령 필요\""
     },
     "title:511e0f15b7a3c71146eeb66a": {
       "first_seen_kst": "2026-09-22T16:30:20+09:00",
@@ -369521,6 +370410,23 @@
       "telegram_core_fact": "강원 원주시는 '2026 원주 중소기업 우수제품 박람회'가 2만여명의 관람객을 모으고 온오프라인에서 3억3천만원의 매출을 기록했다고 7일 밝혔다.",
       "title": "원주 중소기업 우수제품 박람회 2만명 방문…매출 3억3천만원 | 연합뉴스"
     },
+    "title:85ae27ec23972ba4cb62701f": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008114100008",
+      "source": "연합뉴스",
+      "source_body_digest": "6c56f238eb5979f4f5b108d98dc12a0d182dea3b2af831dec5c8044504601072",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-11T06:25+09:00",
+      "source_title": "이번주 크레딧 2.3조 발행…LG유플러스·GS 등 수요예측 | 연합뉴스",
+      "telegram_core_fact": "추석 연휴 이후 회사채 수요예측 흥행을 이끌었던 발행사들은 모두 증액 발행을 결정했다.",
+      "title": "이번주 크레딧 2.3조 발행…LG유플러스·GS 등 수요예측 | 연합뉴스"
+    },
     "title:85b6ffe1789c3315d8e6b497": {
       "first_seen_kst": "2026-10-05T15:12:23+09:00",
       "lanes": {
@@ -372881,6 +373787,23 @@
       "link": "https://www.etnews.com/20260922000186",
       "source": "전자신문",
       "title": "보령, 中 이판제약과 '탁소텔' 3837억원 공급계약…역대 최대 규모"
+    },
+    "title:946a198ab3df145e3f4762ec": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/11/2026100815204072052",
+      "source": "머니투데이",
+      "source_body_digest": "5f5c26ca66800b4b6028a97dca4183d11185d1448c55428628212f49905acf14",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-11T06:00+09:00",
+      "source_title": "불확실성 커진 재정·정치·글로벌 시장…불안한 佛 국채",
+      "telegram_core_fact": "국내외 금리 상승 압력이 커진 상황에서 프랑스의 정치∙재정적 불확실성이 금융시장의 우려를 자극했다. 이는 일본 국채금리 상승과 프랑스의 재정∙정치적 리스크가 맞물리면서 일본계 자금의 투자 방향이 달라질 수 있음을 보여주는 사례다.",
+      "title": "불확실성 커진 재정·정치·글로벌 시장…불안한 佛 국채"
     },
     "title:9497b04163dfe3af02ef2a10": {
       "first_seen_kst": "2026-10-08T15:16:19+09:00",
@@ -390838,6 +391761,30 @@
       "source_published_kst": "2026-10-05T14:54+09:00",
       "title": "운문댐 저수율 22.9% 가뭄 ‘심각’"
     },
+    "title:e8696ffeabd13b119f5e5d86": {
+      "first_seen_kst": "2026-10-11T06:36:16+09:00",
+      "lanes": {
+        "live": "2026-10-11T06:36:16+09:00"
+      },
+      "last_seen_kst": "2026-10-11T06:36:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261010031400003",
+      "source": "연합뉴스",
+      "source_body_digest": "619653377c9fa82ffe109690f5e5e1bdddbb65f508f8ac1ccca054fbf927e565",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ed6a35bd5dc3c4608dadaa2c25f1366b33385074ec62a5ea7a158c8bbf8dbb7c",
+      "source_fact_keys": [
+        "source_fact:v1:08e8792d717a07889775bc93b28540226477badafa1c038eca907d277afec818",
+        "source_fact:v1:7e6232bb964f29f7cbfdcdf05cfabc17bdde4b922b351b942c76f3b9585e213c",
+        "source_fact:v1:c2a2aa52318ca72d94e75ce28a468418e98b8d69a4a53802c79faf33a95a6411",
+        "source_fact:v1:c67761ff9fc6ae116586e9ad33e9ee5b1d6e159fca5b188b7b002f9f162abaef",
+        "source_fact:v1:ce396913398d294cfbf40e44bd025511e70a8c3ceb5623acc4a607f6480b468b",
+        "source_fact:v1:d4a16c25c9b1dea04e15d684ad3553f6538017c115e79b459a5927b5f80fffbc"
+      ],
+      "source_published_kst": "2026-10-11T06:05+09:00",
+      "source_title": "현대차, 분기 영업이익 기아에 역전당하나…매출도 6년만에 감소 | 연합뉴스",
+      "telegram_core_fact": "올해 판매 부진을 겪고 있는 현대차의 3분기 영업이익과 매출이 동반 감소할 것이라는 전망이 나온다.",
+      "title": "현대차, 분기 영업이익 기아에 역전당하나…매출도 6년만에 감소 | 연합뉴스"
+    },
     "title:e88555f524965e4ed341d660": {
       "first_seen_kst": "2026-09-30T02:33:17+09:00",
       "lanes": {
@@ -395546,5 +396493,5 @@
       "title": "AI 데이터센터가 살린 철강…관세 50%에도 대미 수출 급증"
     }
   },
-  "updated_at_kst": "2026-10-11T06:07:21+09:00"
+  "updated_at_kst": "2026-10-11T06:36:16+09:00"
 }
