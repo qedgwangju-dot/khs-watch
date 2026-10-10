@@ -368,15 +368,57 @@ class WarshSafetyTests(unittest.TestCase):
         self.assertEqual(result, [item])
 
 
-    def test_paid_fedwatch_without_entitlement_never_scrapes_or_guesses(self):
+    def test_missing_probability_api_uses_official_settlement_path_without_guessing_odds(self):
+        fallback = {
+            "effr":3.88, "effr_date":"2026-10-08",
+            "meetings":[{
+                "date":"2026-10-28","post_rate":4.02,"change_bp":14.0,
+                "hike25_prob":None,"hike25_or_more_prob":None,
+                "hold_prob":None,"cut_prob":None,"outcomes":{},
+            }],
+            "url":"https://www.cmegroup.com/markets/interest-rates/stirs/30-day-federal-fund.settlements.html",
+            "market_data_basis":"CME 공식 지연 결제값 기반 금리 기대(확률 별도 확인 전 판정 유보)",
+            "official_settlement_date":"2026-10-08",
+        }
         with patch.dict(os.environ, {
             "CME_FEDWATCH_API_ID": "", "CME_FEDWATCH_API_PASSWORD": "",
-        }), patch.object(futures, "cme_monthly_rates") as legacy, \
+        }), patch.object(futures, "_legacy_public_settlement_snapshot", return_value=fallback) as settlement, \
              patch.object(futures.official_api, "oauth_token") as auth:
-            with self.assertRaisesRegex(RuntimeError, "인증정보 미설정"):
-                futures.official_snapshot()
-        legacy.assert_not_called()
+            snap = futures.official_snapshot()
+        settlement.assert_called_once()
         auth.assert_not_called()
+        self.assertIsNone(snap["meetings"][0]["hike25_prob"])
+        self.assertIn("구간별 확률 판정 유보", snap["probability_source_status"])
+        self.assertIn("결제값 기반", snap["market_data_basis"])
+
+    def test_probability_api_failure_falls_back_to_expected_rate_only(self):
+        fallback = {
+            "effr":3.88, "effr_date":"2026-10-08",
+            "meetings":[{
+                "date":"2026-10-28","post_rate":4.01,"change_bp":13.0,
+                "hike25_prob":None,"hike25_or_more_prob":None,
+                "hold_prob":None,"cut_prob":None,"outcomes":{},
+            }],
+            "url":"https://www.cmegroup.com/markets/interest-rates/stirs/30-day-federal-fund.settlements.html",
+            "market_data_basis":"CME 공식 지연 결제값 기반 금리 기대(확률 별도 확인 전 판정 유보)",
+            "official_settlement_date":"2026-10-08",
+        }
+        with patch.dict(os.environ, {
+            "CME_FEDWATCH_API_ID": "id", "CME_FEDWATCH_API_PASSWORD": "pw",
+        }), patch.object(futures.v3.base,"official_policy_baseline",
+                        return_value={"low":3.75,"high":4.0}), \
+             patch.object(futures,"official_effr",return_value=(3.88,"2026-10-08")), \
+             patch.object(futures,"ny_today",return_value=date(2026,10,9)), \
+             patch.object(futures,"official_fomc_dates",return_value=[date(2026,10,28)]), \
+             patch.object(futures.official_api,"oauth_token",
+                        side_effect=RuntimeError("entitlement denied")), \
+             patch.object(futures,"_legacy_public_settlement_snapshot",
+                        return_value=fallback) as settlement:
+            snap=futures.official_snapshot()
+        settlement.assert_called_once()
+        self.assertIsNone(snap["meetings"][0]["hike25_prob"])
+        self.assertIn("안전 전환", snap["probability_source_status"])
+        self.assertIn("entitlement denied", snap["probability_source_error"])
 
     def test_official_api_probability_is_from_target_ranges_not_avg_price(self):
         today = date(2026,10,9)
@@ -473,6 +515,28 @@ class WarshSafetyTests(unittest.TestCase):
         self.assertEqual(snap["forecast_reporting_date"],"2026-10-08")
         self.assertEqual(snap["official_settlement_date"],None)
         self.assertEqual(snap["meetings"][0]["hike25_prob"],80.0)
+
+    def test_settlement_fallback_message_never_calls_expected_rate_a_probability(self):
+        snap = {
+            "market_data_basis":"CME 공식 지연 결제값 기반 금리 기대(확률 별도 확인 전 판정 유보)",
+            "probability_source_status":"CME FedWatch 인증 API 미연결 — 공식 결제값 기반 기대금리만 사용, 구간별 확률 판정 유보",
+            "meetings":[{
+                "date":"2026-10-28","post_rate":4.02,"change_bp":14.0,
+                "hike25_prob":None,
+            }],
+            "url":"https://www.cmegroup.com/markets/interest-rates/stirs/30-day-federal-fund.settlements.html",
+        }
+        cls = {
+            "verdict":"추가 1회 인상 가능성 반영",
+            "baseline_rate":3.875,"baseline_kind":"FOMC 공식 목표범위 중간값",
+            "yearend_market_rate":4.02,"extra_bp":14.5,
+            "sep":None,"balance":None,
+        }
+        msg=path_v3.message_v3(snap,cls)
+        self.assertIn("공식 결제값 기반 기대변화",msg)
+        self.assertIn("구간별 확률 판정 유보",msg)
+        self.assertIn("실제 인상 횟수나 구간별 확률이 아닙니다",msg)
+        self.assertNotIn("0.58회 상당의 <b>확률가중 평균</b>",msg)
 
     def test_oauth_request_requires_client_credentials_without_printing_password(self):
         with patch.object(futures.official_api,"_request_json",return_value={
