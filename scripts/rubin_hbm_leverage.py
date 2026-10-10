@@ -44,6 +44,8 @@ def main() -> None:
         "<b>🚨 HBM 하이브리드 본딩",
         "🚨 <b>HBM 하이브리드 본딩",
         "🚨 HBM 하이브리드 본딩",
+        "<b>🚨 NVHBM 베이스 다이",
+        "🚨 NVHBM 베이스 다이",
     )):
         return
 
