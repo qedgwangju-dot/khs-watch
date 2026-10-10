@@ -5,6 +5,7 @@ from pathlib import Path
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 from urllib.parse import quote, urljoin
+from email.utils import parsedate_to_datetime
 
 import requests
 import pandas as pd
@@ -938,18 +939,24 @@ def signed_flow_sentence(text, concept_regex):
         if not re.search(concept_regex, sent, re.I):
             continue
         amounts = re.findall(r"\$([\d,.]+)\s*billion", sent, re.I)
-        if not amounts:
+        # Fail closed on multi-amount sentences; the amount might refer to another asset class.
+        if len(amounts) != 1:
             continue
-        # Only accept when direction word is in same sentence; prevents accidental amount assignment.
         low = sent.lower()
-        if re.search(r"outflow|outflows|withdrawn|withdrew|pulled|redemption|redemptions", low):
-            sign = -1
-        elif re.search(r"inflow|inflows|received|attracted|bought|poured|added", low):
-            sign = 1
-        else:
+        has_outflow = bool(re.search(r"outflow|outflows|withdrawn|withdrew|pulled|redemption|redemptions", low))
+        has_inflow = bool(re.search(r"inflow|inflows|received|attracted|bought|poured|added", low))
+        # A sentence mentioning both inflows and outflows is directionally ambiguous.
+        if has_inflow == has_outflow:
             continue
+        sign = 1 if has_inflow else -1
         return sign * float(amounts[0].replace(",", "")), sent[:700]
     return None, None
+
+
+# Regression guard: a sentence with opposing directions or multiple amounts cannot be signed.
+assert signed_flow_sentence("US equity had $5.11 billion in net outflows", r"US equity")[0] == -5.11
+assert signed_flow_sentence("US equity had $5 billion in inflows and $4 billion in outflows", r"US equity")[0] is None
+assert signed_flow_sentence("US equity saw both inflows and $5 billion in outflows", r"US equity")[0] is None
 
 
 def parse_reuters(kind):
@@ -969,7 +976,17 @@ def parse_reuters(kind):
         }],
     }
     items = seeds.get(kind, []) + news_items(query)
+    today = datetime.now(ZoneInfo("America/New_York")).date()
     for it in items:
+        # A publisher's old article is not a fresh fund-flow observation.
+        # RSS publication time is used ONLY as an article freshness guard, never
+        # as the underlying fund-flow reference week.
+        try:
+            pub_day = parsedate_to_datetime(str(it.get("pub") or "")).date()
+        except (TypeError, ValueError, IndexError, OverflowError):
+            continue
+        if not 0 <= (today - pub_day).days <= 14:
+            continue
         blob = (it["title"] + " " + it["desc"])
         if "Reuters" not in blob and "reuters" not in blob.lower():
             continue
