@@ -17,16 +17,16 @@
     "unwind::일본 단기금리 상승": false,
     "unwind::최근 공식 공동개입·추가개입 경고": false
   },
-  "fx_age_seconds": 63323.10544705391,
+  "fx_age_seconds": 78792.04003310204,
   "fx_signal_eligible": false,
   "initialized": true,
   "policy_path": {
     "cftc_net_short": 25043.0,
     "cftc_net_short_change": 0.0,
     "cftc_net_short_pct_oi": 6.802612063954277,
-    "checked_at_kst": "2026-10-10T23:30:39+09:00",
+    "checked_at_kst": "2026-10-11T03:48:21+09:00",
     "elevated_vol": false,
-    "fx_vol_ratio": 0.6833280272943262,
+    "fx_vol_ratio": 0.6818164142201025,
     "gradual_absorption": true,
     "hawkish_repricing_proxy": false,
     "initialized": true,
@@ -58,7 +58,7 @@
   },
   "real_rate_overlay": {
     "available": true,
-    "checked_at_kst": "2026-10-10T23:30:45+09:00",
+    "checked_at_kst": "2026-10-11T03:48:23+09:00",
     "initialized": true,
     "inputs": {
       "boj_effective_date": null,
@@ -118,16 +118,16 @@
     "initialized": true,
     "stressed_codes": [],
     "stressed_count": 0,
-    "updated_at_kst": "2026-10-10T23:30:30+09:00"
+    "updated_at_kst": "2026-10-11T03:48:16+09:00"
   },
   "unwind_label": "엔캐리 청산 미확인",
   "unwind_level": 0,
-  "updated_at_kst": "2026-10-10T23:29:42+09:00",
+  "updated_at_kst": "2026-10-11T03:47:34+09:00",
   "values": {
     "cftc_net_short": 25043,
     "cftc_net_short_pct_oi": 6.802612063954277,
-    "fx_12h_5m_sigma_bps": 1.3882555305601456,
-    "fx_vol_ratio": 0.6833280272943262,
+    "fx_12h_5m_sigma_bps": 1.3867165853313157,
+    "fx_vol_ratio": 0.6818164142201025,
     "jgb2": 1.936,
     "mof_latest_2w_outward_trillion_yen": 0.5205,
     "mof_prior_2w_outward_trillion_yen": -0.6133,
@@ -136,7 +136,7 @@
     "usdjpy_12h_drawdown_pct": -0.10857167184770838,
     "usdjpy_15m_pct": -0.010104264828924577,
     "usdjpy_30m_pct": -0.0006267552159292249,
-    "usdjpy_60m_pct": -0.01326624879268459,
+    "usdjpy_60m_pct": -0.020216126491831073,
     "ust2": 4.75
   }
 }
