@@ -90,7 +90,13 @@ class FiscalPolicyTests(unittest.TestCase):
             "https://home.treasury.gov/news/press-releases/sb9999")
         self.assertIsNotNone(x)
         self.assertEqual(x["published_date"], "2026-11-06")
-        self.assertEqual(x["stage"], "공식안 공개(입법·집행 전)")
+        second = watch.classify_plan(
+            "President releases Federal Deficit Reduction Plan", fresh,
+            "https://www.whitehouse.gov/releases/2026/11/fiscal-plan/"
+        )
+        self.assertEqual(x["id"], second["id"])
+
+        self.assertEqual(x["stage"], "공식 재정계획 문서 공개(입법·집행 여부 별도 확인)")
 
     def test_foreign_debt_plan_not_ours(self):
         page = '''
