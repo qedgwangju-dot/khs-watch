@@ -874,6 +874,28 @@
       "excerpt": "구미 파일럿 라인을 기반으로 유리기판 기술을 개발하고 있으며 2028년 양산 목표. 공식 인사이트는 2027~2028년 상용화 체계 구축을 제시했고 UTI와 유리 정밀가공 연구개발 협력 중.",
       "secondary_source_url": "https://www.lginnotek.com/news/insightsView.do?idx=236&locale=en&rowSize=9",
       "collaboration_source_url": "https://www.lginnotek.com/news/pressView.do?idx=6572&locale=ko"
+    },
+    {
+      "key": "foplp_mature_node_industry|industry|PMIC_RF",
+      "axis": "foplp_mature_node_industry",
+      "value": {
+        "panel_width_mm": 620,
+        "panel_height_mm": 750,
+        "stage": "mass_production",
+        "application": "PMIC_RF",
+        "ai_hpc_mass_production_confirmed": false,
+        "tsmc_copos_mass_production_confirmed": false,
+        "glass_core_mass_production_confirmed": false
+      },
+      "unit": "mm,stage",
+      "period": "current",
+      "as_of": "2026-06-17",
+      "evidence": "research",
+      "source_url": "https://www.trendforce.com/presscenter/news/20260617-13107.html",
+      "source_title": "TrendForce: Mature-node FOPLP volume production for PMIC/RF, panels up to 620×750mm",
+      "source": "TrendForce",
+      "scope": "mature_node_PMIC_RF_only_not_TSMC_CoPoS_AI_HPC_or_glass_core",
+      "excerpt": "TrendForce 2026-06-17: multiple manufacturers mass-produce FOPLP for mature-node PMIC/RF, up to 620×750mm; separate from CoPoS 310×310mm roadmap and glass-core commercialization."
     }
   ],
   "user_capture": {
