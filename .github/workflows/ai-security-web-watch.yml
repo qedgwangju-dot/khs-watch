@@ -214,6 +214,27 @@ jobs:
               raise RuntimeError(f"Primary source event lost substantive details: {fact}")
           if "시정 완료" in parsed["category"] or "시정 완료" in fact:
               raise RuntimeError("Disclosure alone cannot establish completed remediation")
+          remediated = {
+              "kind": "news",
+              "title": "Anthropic AI model incident remediated after security access error",
+              "description": "The company said remediation completed and affected parties notified",
+              "source": "Reuters",
+              "url": "https://example.com/new-incident-update",
+          }
+          fixed = normalize_item(remediated)
+          if not material(fixed) or fixed["category"] != "AI 모델사고 신고·시정 후속조치":
+              raise RuntimeError("Concrete model-incident remediation update was missed")
+          if "시정 완료 발표" not in (incident_fact(fixed) or ""):
+              raise RuntimeError("Completed-remediation statement not distinguished")
+          notification_only = {
+              **remediated,
+              "title": "Anthropic AI model incident reported to authorities",
+              "description": "Affected parties notified; remediation remains underway",
+          }
+          notified = normalize_item(notification_only)
+          if not material(notified) or "시정 완료" in (incident_fact(notified) or ""):
+              raise RuntimeError("Disclosure was confused with completed remediation")
+          print("ai_security_reporting_remediation_regression=PASS")
           print("ai_security_primary_incident_report_regression=PASS")
 
           headline = clean_official_headline_prefix(
