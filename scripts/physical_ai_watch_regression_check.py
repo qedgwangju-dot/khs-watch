@@ -2812,4 +2812,11 @@ finally:
     base.NOW = old_digital_now
 
 
+# Digital Optimus reports describe a software agent, not robot shipments.
+assert watcher.qty._skip_quantity_enrichment(
+    '<b>2. 테슬라 디지털 에이전트 Digital Optimus</b>\n'
+    '<b>분류</b>  Digital Optimus · 게임 수행 경영진 진전 발언\n'
+    'Diablo 캠페인 절반, League of Legends 학습 중'
+), 'No fictitious physical unit count for Digital Optimus'
+
 print("Physical-AI watcher regression guards: PASS")
