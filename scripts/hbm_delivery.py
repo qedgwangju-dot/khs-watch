@@ -253,6 +253,65 @@ def validate_rubin_hybrid_notification(text: str) -> None:
         chunks(part)
 
 
+def validate_rubin_nvhbm_foundry_notification(text: str) -> None:
+    """Fail closed on foundry attribution and area metric presentation errors."""
+    target = "🚨 NVHBM 베이스 다이 · 삼성전자·SK하이닉스·Micron"
+    segments = [
+        segment.strip() for segment in text.split(MESSAGE_BREAK)
+        if target in segment
+    ]
+    if not segments:
+        return
+    allowed_domains = {
+        "developer.nvidia.com", "blogs.nvidia.com", "www.tsmc.com", "tsmc.com",
+        "news.samsung.com", "semiconductor.samsung.com", "www.samsung.com", "samsung.com",
+        "news.skhynix.co.kr", "news.skhynix.com", "skhynix.com", "www.skhynix.com",
+        "thelec.kr", "www.thelec.kr", "zdnet.co.kr", "www.zdnet.co.kr",
+        "www1.edaily.co.kr", "www.edaily.co.kr", "edaily.co.kr",
+        "trendforce.com", "www.trendforce.com", "micron.com", "www.micron.com",
+    }
+    for part in segments:
+        if not part.startswith("<b>" + target + "</b>"):
+            raise ValueError("NVHBM foundry alert must start with its distinct title")
+        required = (
+            "NVIDIA 공식 구조와 성능",
+            "삼성전자", "SK하이닉스", "Micron",
+            "표준 HBM4E 대비", "최대 +30%", "최대 -15%",
+            "PHY·지원 면적 최대 -67%",
+            "전체 반도체 패키지 면적 -67%가 아닙니다",
+            "TSMC", "외부 파운드리", "확정",
+            "TrendForce News", "독립",
+            "양산 탑재", "미확인", "원문 보기",
+        )
+        for value in required:
+            if value not in part:
+                raise ValueError("NVHBM foundry alert missing evidence context: " + value)
+        for forbidden in (
+            "[이번 변화]", "신규 변화 확인 불가", "[HBM 수요·가격 레버리지]",
+            "디스펙 상쇄선", "<b>2026</b>", "technology_showcase",
+            "100% 외주 전환 확정", "Trainium4 NVHBM 양산 확정",
+        ):
+            if forbidden in part:
+                raise ValueError("NVHBM foundry alert contains unsupported or unrelated material")
+        if re.search(r"&#x[0-9a-f]{4,6};|<b>20\d{2}</b>", part, re.I):
+            raise ValueError("NVHBM foundry alert contains broken date or Korean entity")
+        if any(tag not in ("a", "b") for tag in re.findall(r"</?([a-z][a-z0-9-]*)\b", part, re.I)):
+            raise ValueError("NVHBM foundry alert contains unsupported Telegram HTML tags")
+        no_links = re.sub(r'<a\s+href="[^"]+">.*?</a>', "", part, flags=re.S)
+        visible = html.unescape(re.sub(r"<[^>]+>", "", no_links))
+        if re.search(r"https?://\S+", visible):
+            raise ValueError("NVHBM foundry alert leaks a raw full URL")
+        links = re.findall(r'<a\s+href="([^"]+)">원문 보기</a>', part)
+        if len(links) < 9:
+            raise ValueError("NVHBM foundry alert lost authoritative source links")
+        for url in links:
+            p = urllib.parse.urlparse(html.unescape(url))
+            if p.scheme != "https" or (p.hostname or "").lower() not in allowed_domains:
+                raise ValueError("NVHBM foundry alert has an unsafe or unrelated source URL")
+        # Validate Telegram entities/length before sending the first message.
+        chunks(part)
+
+
 def promote(candidate, before):
     # Keep independent lead-time metadata rather than deleting it with a
     # collector pending-state document that lacks those fields.
@@ -399,6 +458,7 @@ def finish(name):
     text = (ROOT / alert).read_text(encoding='utf-8') if (ROOT / alert).exists() else ''
     if name == 'rubin':
         validate_rubin_hybrid_notification(text)
+        validate_rubin_nvhbm_foundry_notification(text)
     guard({'state': candidate, 'text': text})
     receipt = transact(Repository(), path, before, candidate, text)
     write(OUT / (name + '_hbm_delivery_receipt.json'), receipt)
