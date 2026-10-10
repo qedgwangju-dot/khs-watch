@@ -341,6 +341,24 @@ class NVHBMFoundryStrategyTests(unittest.TestCase):
         self.assertIn('Micron 임원 인용 보도: <a href=',final)
         self.assertIsNone(delivery.validate_rubin_nvhbm_foundry_notification(final))
 
+    def test_alert_labels_standard_and_nvhbm_progress_separately(self):
+        baseline=copy.deepcopy(w.NVHBM_FOUNDRY_BASELINE)
+        baseline["vendor_product_stage"]={
+            "samsung":{
+                "standard_hbm4e":"official_mass_production",
+                "nvhbm":"official_customer_sample",
+            }
+        }
+        baseline["vendor_stage"]["samsung"]="official_mass_production"
+        baseline["memory_vendor_nvhbm_mass_production_confirmed"]=[]
+        event=w.nvhbm_foundry_strategy_event(baseline,["테스트 단계"],initial=True)
+        _,formatted,parts=self._pipeline([event])
+        self.assertIn("표준 HBM4E: 해당 베이스 다이 양산 공식 확인",formatted)
+        self.assertIn("NVHBM: 해당 베이스 다이 고객 샘플 공식 확인",formatted)
+        self.assertIn("삼성전자 NVHBM 양산: 미확정",formatted)
+        self.assertNotIn("NVHBM: 해당 베이스 다이 양산 공식 확인",formatted)
+        self.assertIsNone(delivery.validate_rubin_nvhbm_foundry_notification(formatted))
+
     def test_one_time_baseline_and_followup_silence(self):
         memory={"data":{
             "seen_ids":[],"seen_fact_keys":[],
