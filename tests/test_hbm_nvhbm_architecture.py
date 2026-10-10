@@ -359,6 +359,28 @@ class NVHBMFoundryStrategyTests(unittest.TestCase):
         self.assertNotIn("NVHBM: 해당 베이스 다이 양산 공식 확인",formatted)
         self.assertIsNone(delivery.validate_rubin_nvhbm_foundry_notification(formatted))
 
+    def test_samsung_issuer_name_does_not_identify_samsung_foundry_counterparty(self):
+        item=self.good_source(
+            "Samsung selected an external foundry for NVHBM base die."
+        )
+        obs=w.extract_nvhbm_foundry_official_milestone(item)
+        self.assertIsNotNone(obs)
+        self.assertEqual(obs["stage"],"official_foundry_selection")
+        self.assertEqual(obs["product_scope"],"nvhbm")
+        self.assertEqual(obs["foundry"],"")
+        updated=w.merge_nvhbm_foundry_milestone(
+            w.NVHBM_FOUNDRY_BASELINE,obs
+        )
+        self.assertEqual(
+            updated["confirmed_official_milestones"]["samsung"]["foundry"],
+            "실명 미확인"
+        )
+        named=self.good_source(
+            "Samsung selected Samsung Foundry for NVHBM base die."
+        )
+        selected=w.extract_nvhbm_foundry_official_milestone(named)
+        self.assertEqual(selected["foundry"],"Samsung Foundry")
+
     def test_one_time_baseline_and_followup_silence(self):
         memory={"data":{
             "seen_ids":[],"seen_fact_keys":[],
