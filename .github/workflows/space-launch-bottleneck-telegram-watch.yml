@@ -48,6 +48,7 @@ jobs:
       - name: Validate scripts
         run: |
           python -m py_compile scripts/space_launch_bottleneck_watch.py
+          SPACE_LAUNCH_TRANSITION_SELF_TEST=1 python scripts/space_launch_bottleneck_watch.py
           python -m py_compile scripts/space_launch_telegram_send.py
           python -m py_compile scripts/merge_space_launch_state.py
           python -m py_compile scripts/validate_space_launch_korean.py
