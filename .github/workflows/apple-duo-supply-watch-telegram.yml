@@ -17,7 +17,7 @@ on:
       - "scripts/apple_iphone18_pro_orders_watch.py"
       - "scripts/test_apple_iphone18_pro_orders_watch.py"
   schedule:
-    - cron: "*/15 * * * *"
+    - cron: "7,22,37,52 * * * *"
   workflow_dispatch:
     inputs:
       force_notify:
