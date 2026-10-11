@@ -221,3 +221,22 @@ def test_state_schema_guard_matches_saved_confirmed_baseline():
     assert sorted(state["armed_up"]) == ["559", "578", "600"]
     assert sorted(state["armed_down"]) == ["515", "525"]
     assert "last_date" not in state and "last_rate" not in state
+
+
+def test_ctd_warning_does_not_claim_actual_switch_from_six_percent():
+    state=watch.initial_state("2026-10-08", 578)
+    updated, events=watch.evaluate(state,"2026-10-09",600,"2026-10-08",578)
+    assert events == [("상향",600)]
+    msg=watch.crossing_message("2026-10-09",600,"2026-10-08",578,events,"https://home.treasury.gov/")
+    assert "CTD" in msg and "자동 교체되는 것은 아닙니다" in msg
+    assert "CTD 채권과 DV01" in msg and "확인 불가" in msg
+    assert "CFTC 순숏 감소만으로" in msg
+    assert "100계약은 80계약" in msg
+    assert updated["last_processed_bp"] == 600
+
+
+def test_ctd_message_also_applies_on_5_78_risk_entry():
+    msg=watch.crossing_message("2026-10-09",578,"2026-10-08",570,[("상향",578)],"https://home.treasury.gov/")
+    assert "CTD(최저비용 인도채권)" in msg
+    assert "확인 불가" in msg
+    assert watch.ROUTE=="khs8879887988798879_bot"
