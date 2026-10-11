@@ -86,6 +86,33 @@ jobs:
             cat out/starlink_mobile_d2d_watch_status.md >> "$GITHUB_STEP_SUMMARY"
           fi
 
+      - name: One-time verified mobile layout preview
+        env:
+          SPACE_LAUNCH_TELEGRAM_BOT_TOKEN: ${{ secrets.SPACE_LAUNCH_TELEGRAM_BOT_TOKEN }}
+          SPACE_LAUNCH_TELEGRAM_CHAT_ID: ${{ secrets.SPACE_LAUNCH_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import sys
+          sys.path.insert(0, "scripts")
+          from starlink_mobile_d2d_watch import price_dividend_display_correction
+          from starlink_mobile_d2d_readability import format_mobile
+          from space_launch_telegram_send import inline_messages
+
+          content = (
+              "📡 Starlink Mobile | 간결한 표시 검증\n"
+              "2026-10-11 기존 주가·발사체 정정자료. 신규 뉴스가 아닌 표시 시험.\n\n"
+              + price_dividend_display_correction()
+          )
+          formatted = format_mobile(content)
+          messages = inline_messages(formatted)
+          assert len(messages) == 1, "All existing verified facts must fit one message"
+          assert len(messages[0][1]) == 8, "All eight sources must remain clickable"
+          Path("out/starlink_mobile_layout_preview.txt").write_text(formatted, encoding="utf-8")
+          print(f"mobile_preview_ready=true telegram_messages={len(messages)} sources={len(messages[0][1])}")
+          PY
+          python scripts/space_launch_telegram_send.py --inline out/starlink_mobile_layout_preview.txt
+
       - name: Send alerts ONLY to existing dedicated Starlink Telegram bot
         if: hashFiles('out/starlink_mobile_d2d_watch_telegram.txt') != ''
         env:
