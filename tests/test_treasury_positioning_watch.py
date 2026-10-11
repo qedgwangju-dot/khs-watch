@@ -118,15 +118,14 @@ def test_ultra_position_does_not_change_existing_core_regime_thresholds():
 
 def test_cftc_contract_name_anchor_blocks_ultra_substring_match():
     import re
-    from re import escape
-    sample = "\\nULTRA UST BOND - CHICAGO BOARD OF TRADE\\nOpen Interest is 999\\nUST BOND - CHICAGO BOARD OF TRADE\\nOpen Interest is 123\\n"
-    pattern = r"(?m)^\\s*" + escape(watch.CONTRACTS["30년"]["name"]) + r"\\s*-\\s*CHICAGO BOARD OF TRADE\\b"
-    match = re.search(pattern,sample,re.I)
+    sample = "\nULTRA UST BOND - CHICAGO BOARD OF TRADE\nOpen Interest is 999\nUST BOND - CHICAGO BOARD OF TRADE\nOpen Interest is 123\n"
+    pattern = r"(?m)^\s*" + re.escape(watch.CONTRACTS["30년"]["name"]) + r"\s*-\s*CHICAGO BOARD OF TRADE\b"
+    match = re.search(pattern, sample, re.I)
     assert match is not None
-    assert match.group(0).strip()=="UST BOND - CHICAGO BOARD OF TRADE"
+    assert match.group(0).strip() == "UST BOND - CHICAGO BOARD OF TRADE"
 
 
 def test_ctd_switch_requires_delivery_basket_not_cash_bond_yield():
-    assert "CTD" in watch.CME_CTD_EDUCATION_URL.upper()
-    assert "UB" in watch.CONTRACTS["초장기(UB)"]["name"].upper() or "ULTRA" in watch.CONTRACTS["초장기(UB)"]["name"].upper()
+    assert "cmegroup.com" in watch.CME_CTD_EDUCATION_URL
+    assert watch.CONTRACTS["초장기(UB)"]["name"] == "ULTRA UST BOND"
     assert "6.00%" in watch.jpm_30y_signal(6.0)
