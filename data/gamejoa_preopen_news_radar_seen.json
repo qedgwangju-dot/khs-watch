@@ -4864,6 +4864,26 @@
       "telegram_core_fact": "국제형사재판소(ICC) 초대 재판관과 유엔인권최고대표를 지낸 나비 필라이 ICC 임시 재판관(85)이 올해 노벨 평화상 수상자로 9일(현지시간) 발표되자 도널드 트럼프 미국 행정부가 ICC 추가 제재를 단행하고 이스라엘이 반유대주의적 결정이라고 비난하는 등 후폭풍이 일고 있다.",
       "title": "트럼프의 뒤끝 \"노벨평화상 내가 받았어야\" ICC 제재"
     },
+    "core:2fe253c0f85bc1f17a8c57e0": {
+      "first_seen_kst": "2026-10-11T23:10:29+09:00",
+      "lanes": {
+        "live": "2026-10-11T23:10:29+09:00"
+      },
+      "last_seen_kst": "2026-10-11T23:10:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003821217",
+      "source": "뉴시스",
+      "source_body_digest": "afa34f90eda5011c92883cc7b2be989ef07828e0ff944469ee4552840bb2d9f5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05318c6ffb68bb43d8bdf081e526192d752d12f0e1a410fa83bfddca21bd38fe",
+      "source_fact_keys": [
+        "source_fact:v1:583f743793a1ce71a5f0ceed42029b35e4efe4a6c1005acaf7365408c8551c2c",
+        "source_fact:v1:fb08c128ec48e7ed34cdbf9734e99eef2a2aa5ae16816d55fbaaff22daf2dc1b"
+      ],
+      "source_published_kst": "2026-10-11T23:02+09:00",
+      "source_title": "[올댓차이나] 中 증감회, 증시 안정 대책 논의…중장기 자금 유입 확대",
+      "telegram_core_fact": "중국 증권감독관리위원회(증감회)가 증시 안정을 위한 제도 개선과 중장기 투자자금 유입 확대 방안을 논의했다.",
+      "title": "[올댓차이나] 中 증감회, 증시 안정 대책 논의…중장기 자금 유입 확대"
+    },
     "core:2fe4c823ce5dcdc1be7fd537": {
       "first_seen_kst": "2026-10-07T17:10:43+09:00",
       "lanes": {
@@ -8315,6 +8335,33 @@
       ],
       "source_published_kst": "2026-10-07T14:01+09:00",
       "title": "스피어, 608억 규모 특수합금 공급계약"
+    },
+    "core:553d5a7a82c92fd526d14a3e": {
+      "first_seen_kst": "2026-10-11T23:10:29+09:00",
+      "lanes": {
+        "live": "2026-10-11T23:10:29+09:00"
+      },
+      "last_seen_kst": "2026-10-11T23:10:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011053400079",
+      "source": "연합뉴스",
+      "source_body_digest": "ca4f3e29f2169d5e109e4e9668459f60525de5564c3308527959efee12615f9c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7de95f063bc118d5ae5cbfeee808129d71b8fc1e2d341b67ba662611d92c903d",
+      "source_fact_keys": [
+        "source_fact:v1:1f9697af13e8372fc147ceaf20d9cd80ac9bf30108053684c31d7f42dd655a6e",
+        "source_fact:v1:4f6a69e6249d0c55da4eba4d35ddd586b157620bbd6306dac6661b44becc3fe9",
+        "source_fact:v1:52ffac42a520897765aedc63c2ee7a8022d5d7b42a11c47b30dc182254dafc9f",
+        "source_fact:v1:5d398fab9ad2897fbefffd66e224df0bcddd064dae237eff5d9197c9cb3d9ce9",
+        "source_fact:v1:96c15332ec6943e00a25bea1926f012f4bb0f1f3caad940a06f903b7e1dbf48e",
+        "source_fact:v1:b094b9ca628cd8b951ea55e58b162ea3892b9a50f1c5a007ad51eb883d7d1893",
+        "source_fact:v1:c1c457a4e5f7118adcf6fa4fca4fd82c4fc2059c3e6153754fdae9f9e2bb943e",
+        "source_fact:v1:c22abdc338aa503a273a82f5dd8b0c0c2c6d093c6f264c7343b5f100b6133c4f",
+        "source_fact:v1:eae85c333d97eb4ec3881b332fc9489d9c540fe7b329d89ece36f1e6c9345420"
+      ],
+      "source_published_kst": "2026-10-11T22:27+09:00",
+      "source_title": "후티 공세에 쩔쩔매는 사우디…'비전 2030' 투자유치도 '먹구름' | 연합뉴스",
+      "telegram_core_fact": "사우디의 국가 개조 프로젝트인 '비전 2030'은 연간 1천억 달러(약 135조 원) 외국인 직접투자(FDI) 유치를 핵심 동력으로 삼고 있다.",
+      "title": "후티 공세에 쩔쩔매는 사우디…'비전 2030' 투자유치도 '먹구름' | 연합뉴스"
     },
     "core:55556cb89b34a6969c2e5eb7": {
       "first_seen_kst": "2026-10-10T12:36:00+09:00",
@@ -32722,22 +32769,30 @@
     "event:c91bd744dc57f98702bd6932": {
       "first_seen_kst": "2026-10-11T02:45:51+09:00",
       "lanes": {
-        "live": "2026-10-11T22:57:06+09:00",
+        "live": "2026-10-11T23:10:29+09:00",
         "preopen": "2026-10-11T06:52:52+09:00"
       },
-      "last_seen_kst": "2026-10-11T22:57:06+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261011053800079",
+      "last_seen_kst": "2026-10-11T23:10:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011053400079",
       "source": "연합뉴스",
-      "source_body_digest": "17dfd694c2b5883e43d273d7c55c06e2a5fe215ffafab4dd02c915d07e64b589",
+      "source_body_digest": "ca4f3e29f2169d5e109e4e9668459f60525de5564c3308527959efee12615f9c",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:c04427911c41bcca65ed51770e9b6db0e8bfe20f238f1b4741b4d4f2fba9eec5",
+      "source_fact_identity": "source_facts:v1:7de95f063bc118d5ae5cbfeee808129d71b8fc1e2d341b67ba662611d92c903d",
       "source_fact_keys": [
-        "source_fact:v1:af26c69f08d6e6b08597f183ec8cf91eac82e6d965b781e9b6a144ac286209d5"
+        "source_fact:v1:1f9697af13e8372fc147ceaf20d9cd80ac9bf30108053684c31d7f42dd655a6e",
+        "source_fact:v1:4f6a69e6249d0c55da4eba4d35ddd586b157620bbd6306dac6661b44becc3fe9",
+        "source_fact:v1:52ffac42a520897765aedc63c2ee7a8022d5d7b42a11c47b30dc182254dafc9f",
+        "source_fact:v1:5d398fab9ad2897fbefffd66e224df0bcddd064dae237eff5d9197c9cb3d9ce9",
+        "source_fact:v1:96c15332ec6943e00a25bea1926f012f4bb0f1f3caad940a06f903b7e1dbf48e",
+        "source_fact:v1:b094b9ca628cd8b951ea55e58b162ea3892b9a50f1c5a007ad51eb883d7d1893",
+        "source_fact:v1:c1c457a4e5f7118adcf6fa4fca4fd82c4fc2059c3e6153754fdae9f9e2bb943e",
+        "source_fact:v1:c22abdc338aa503a273a82f5dd8b0c0c2c6d093c6f264c7343b5f100b6133c4f",
+        "source_fact:v1:eae85c333d97eb4ec3881b332fc9489d9c540fe7b329d89ece36f1e6c9345420"
       ],
-      "source_published_kst": "2026-10-11T22:28+09:00",
-      "source_title": "호르무즈서 유조선 발사체에 피격…선원들은 무사 | 연합뉴스",
-      "telegram_core_fact": "영국 해사무역기구(UKMTO)는 호르무즈 해협에서 선박 피격 사건 보고를 접수했다고 11일(현지시간) 밝혔다.",
-      "title": "호르무즈서 유조선 발사체에 피격…선원들은 무사 | 연합뉴스"
+      "source_published_kst": "2026-10-11T22:27+09:00",
+      "source_title": "후티 공세에 쩔쩔매는 사우디…'비전 2030' 투자유치도 '먹구름' | 연합뉴스",
+      "telegram_core_fact": "사우디의 국가 개조 프로젝트인 '비전 2030'은 연간 1천억 달러(약 135조 원) 외국인 직접투자(FDI) 유치를 핵심 동력으로 삼고 있다.",
+      "title": "후티 공세에 쩔쩔매는 사우디…'비전 2030' 투자유치도 '먹구름' | 연합뉴스"
     },
     "event:c97955bd13212d7367a4e3b6": {
       "first_seen_kst": "2026-09-23T09:05:43+09:00",
@@ -39600,6 +39655,33 @@
       "source_title": "기름값 21주째 하락…휘발유·경유 1,800원대 | 연합뉴스",
       "telegram_core_fact": "오늘(10일) 한국석유공사 유가정보시스템 오피넷에 따르면 10월 첫째 주 전국 주유소 휘발유 평균 판매가는 지난주보다 리터(L)당 0.4원 내린 1,857.6원이었습니다.",
       "title": "기름값 21주째 하락…휘발유·경유 1,800원대 | 연합뉴스"
+    },
+    "fact:1d3202eb3343e6c62e3adcdc": {
+      "first_seen_kst": "2026-10-11T23:10:29+09:00",
+      "lanes": {
+        "live": "2026-10-11T23:10:29+09:00"
+      },
+      "last_seen_kst": "2026-10-11T23:10:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011053400079",
+      "source": "연합뉴스",
+      "source_body_digest": "ca4f3e29f2169d5e109e4e9668459f60525de5564c3308527959efee12615f9c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7de95f063bc118d5ae5cbfeee808129d71b8fc1e2d341b67ba662611d92c903d",
+      "source_fact_keys": [
+        "source_fact:v1:1f9697af13e8372fc147ceaf20d9cd80ac9bf30108053684c31d7f42dd655a6e",
+        "source_fact:v1:4f6a69e6249d0c55da4eba4d35ddd586b157620bbd6306dac6661b44becc3fe9",
+        "source_fact:v1:52ffac42a520897765aedc63c2ee7a8022d5d7b42a11c47b30dc182254dafc9f",
+        "source_fact:v1:5d398fab9ad2897fbefffd66e224df0bcddd064dae237eff5d9197c9cb3d9ce9",
+        "source_fact:v1:96c15332ec6943e00a25bea1926f012f4bb0f1f3caad940a06f903b7e1dbf48e",
+        "source_fact:v1:b094b9ca628cd8b951ea55e58b162ea3892b9a50f1c5a007ad51eb883d7d1893",
+        "source_fact:v1:c1c457a4e5f7118adcf6fa4fca4fd82c4fc2059c3e6153754fdae9f9e2bb943e",
+        "source_fact:v1:c22abdc338aa503a273a82f5dd8b0c0c2c6d093c6f264c7343b5f100b6133c4f",
+        "source_fact:v1:eae85c333d97eb4ec3881b332fc9489d9c540fe7b329d89ece36f1e6c9345420"
+      ],
+      "source_published_kst": "2026-10-11T22:27+09:00",
+      "source_title": "후티 공세에 쩔쩔매는 사우디…'비전 2030' 투자유치도 '먹구름' | 연합뉴스",
+      "telegram_core_fact": "사우디의 국가 개조 프로젝트인 '비전 2030'은 연간 1천억 달러(약 135조 원) 외국인 직접투자(FDI) 유치를 핵심 동력으로 삼고 있다.",
+      "title": "후티 공세에 쩔쩔매는 사우디…'비전 2030' 투자유치도 '먹구름' | 연합뉴스"
     },
     "fact:1d43628ef90555eae73dd539": {
       "first_seen_kst": "2026-10-11T11:48:17+09:00",
@@ -74128,6 +74210,26 @@
       "telegram_core_fact": "(런던=뉴스1) 러시아가 10일(현지시간) 도널드 트럼프 미국 대통령과 블라디미르 푸틴 러시아 대통령의 합의에 따라 자국산 경유 수출 금지 조치를 부분적으로 해제했다고 밝혔다.",
       "title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성"
     },
+    "fact:fa0aa76741d4ae68953f0056": {
+      "first_seen_kst": "2026-10-11T23:10:29+09:00",
+      "lanes": {
+        "live": "2026-10-11T23:10:29+09:00"
+      },
+      "last_seen_kst": "2026-10-11T23:10:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003821217",
+      "source": "뉴시스",
+      "source_body_digest": "afa34f90eda5011c92883cc7b2be989ef07828e0ff944469ee4552840bb2d9f5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05318c6ffb68bb43d8bdf081e526192d752d12f0e1a410fa83bfddca21bd38fe",
+      "source_fact_keys": [
+        "source_fact:v1:583f743793a1ce71a5f0ceed42029b35e4efe4a6c1005acaf7365408c8551c2c",
+        "source_fact:v1:fb08c128ec48e7ed34cdbf9734e99eef2a2aa5ae16816d55fbaaff22daf2dc1b"
+      ],
+      "source_published_kst": "2026-10-11T23:02+09:00",
+      "source_title": "[올댓차이나] 中 증감회, 증시 안정 대책 논의…중장기 자금 유입 확대",
+      "telegram_core_fact": "중국 증권감독관리위원회(증감회)가 증시 안정을 위한 제도 개선과 중장기 투자자금 유입 확대 방안을 논의했다.",
+      "title": "[올댓차이나] 中 증감회, 증시 안정 대책 논의…중장기 자금 유입 확대"
+    },
     "fact:fa595b02de9e92539badb5f2": {
       "first_seen_kst": "2026-10-09T21:11:52+09:00",
       "lanes": {
@@ -102571,6 +102673,26 @@
       "source": "연합뉴스",
       "title": "전남광주시·장성군, 앰코 폐수처리시설 확충 협력 | 연합뉴스"
     },
+    "link:75d1db070fb5f2fb451fde50": {
+      "first_seen_kst": "2026-10-11T23:10:29+09:00",
+      "lanes": {
+        "live": "2026-10-11T23:10:29+09:00"
+      },
+      "last_seen_kst": "2026-10-11T23:10:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003821217",
+      "source": "뉴시스",
+      "source_body_digest": "afa34f90eda5011c92883cc7b2be989ef07828e0ff944469ee4552840bb2d9f5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05318c6ffb68bb43d8bdf081e526192d752d12f0e1a410fa83bfddca21bd38fe",
+      "source_fact_keys": [
+        "source_fact:v1:583f743793a1ce71a5f0ceed42029b35e4efe4a6c1005acaf7365408c8551c2c",
+        "source_fact:v1:fb08c128ec48e7ed34cdbf9734e99eef2a2aa5ae16816d55fbaaff22daf2dc1b"
+      ],
+      "source_published_kst": "2026-10-11T23:02+09:00",
+      "source_title": "[올댓차이나] 中 증감회, 증시 안정 대책 논의…중장기 자금 유입 확대",
+      "telegram_core_fact": "중국 증권감독관리위원회(증감회)가 증시 안정을 위한 제도 개선과 중장기 투자자금 유입 확대 방안을 논의했다.",
+      "title": "[올댓차이나] 中 증감회, 증시 안정 대책 논의…중장기 자금 유입 확대"
+    },
     "link:75d7b5aaa186217455779b79": {
       "first_seen_kst": "2026-10-08T20:39:20+09:00",
       "lanes": {
@@ -114789,6 +114911,33 @@
       "link": "https://www.mk.co.kr/news/stock/12164151",
       "source": "매일경제",
       "title": "카맥스, 2분기 EPS 81% 급증..자사주 매입 재개"
+    },
+    "link:a8f811c6ddb3a7913d6d50bd": {
+      "first_seen_kst": "2026-10-11T23:10:29+09:00",
+      "lanes": {
+        "live": "2026-10-11T23:10:29+09:00"
+      },
+      "last_seen_kst": "2026-10-11T23:10:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011053400079",
+      "source": "연합뉴스",
+      "source_body_digest": "ca4f3e29f2169d5e109e4e9668459f60525de5564c3308527959efee12615f9c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7de95f063bc118d5ae5cbfeee808129d71b8fc1e2d341b67ba662611d92c903d",
+      "source_fact_keys": [
+        "source_fact:v1:1f9697af13e8372fc147ceaf20d9cd80ac9bf30108053684c31d7f42dd655a6e",
+        "source_fact:v1:4f6a69e6249d0c55da4eba4d35ddd586b157620bbd6306dac6661b44becc3fe9",
+        "source_fact:v1:52ffac42a520897765aedc63c2ee7a8022d5d7b42a11c47b30dc182254dafc9f",
+        "source_fact:v1:5d398fab9ad2897fbefffd66e224df0bcddd064dae237eff5d9197c9cb3d9ce9",
+        "source_fact:v1:96c15332ec6943e00a25bea1926f012f4bb0f1f3caad940a06f903b7e1dbf48e",
+        "source_fact:v1:b094b9ca628cd8b951ea55e58b162ea3892b9a50f1c5a007ad51eb883d7d1893",
+        "source_fact:v1:c1c457a4e5f7118adcf6fa4fca4fd82c4fc2059c3e6153754fdae9f9e2bb943e",
+        "source_fact:v1:c22abdc338aa503a273a82f5dd8b0c0c2c6d093c6f264c7343b5f100b6133c4f",
+        "source_fact:v1:eae85c333d97eb4ec3881b332fc9489d9c540fe7b329d89ece36f1e6c9345420"
+      ],
+      "source_published_kst": "2026-10-11T22:27+09:00",
+      "source_title": "후티 공세에 쩔쩔매는 사우디…'비전 2030' 투자유치도 '먹구름' | 연합뉴스",
+      "telegram_core_fact": "사우디의 국가 개조 프로젝트인 '비전 2030'은 연간 1천억 달러(약 135조 원) 외국인 직접투자(FDI) 유치를 핵심 동력으로 삼고 있다.",
+      "title": "후티 공세에 쩔쩔매는 사우디…'비전 2030' 투자유치도 '먹구름' | 연합뉴스"
     },
     "link:a90be06abc6bd41117ce0da2": {
       "first_seen_kst": "2026-10-06T22:51:44+09:00",
@@ -166346,6 +166495,33 @@
       "source": "이데일리",
       "title": "[단독]'적색수배' KOK 자금총책 지갑 보니…국내외 거래소로 1050억대 현금화"
     },
+    "original:8c4651187300ea29f2a01264": {
+      "first_seen_kst": "2026-10-11T23:10:29+09:00",
+      "lanes": {
+        "live": "2026-10-11T23:10:29+09:00"
+      },
+      "last_seen_kst": "2026-10-11T23:10:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011053400079",
+      "source": "연합뉴스",
+      "source_body_digest": "ca4f3e29f2169d5e109e4e9668459f60525de5564c3308527959efee12615f9c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7de95f063bc118d5ae5cbfeee808129d71b8fc1e2d341b67ba662611d92c903d",
+      "source_fact_keys": [
+        "source_fact:v1:1f9697af13e8372fc147ceaf20d9cd80ac9bf30108053684c31d7f42dd655a6e",
+        "source_fact:v1:4f6a69e6249d0c55da4eba4d35ddd586b157620bbd6306dac6661b44becc3fe9",
+        "source_fact:v1:52ffac42a520897765aedc63c2ee7a8022d5d7b42a11c47b30dc182254dafc9f",
+        "source_fact:v1:5d398fab9ad2897fbefffd66e224df0bcddd064dae237eff5d9197c9cb3d9ce9",
+        "source_fact:v1:96c15332ec6943e00a25bea1926f012f4bb0f1f3caad940a06f903b7e1dbf48e",
+        "source_fact:v1:b094b9ca628cd8b951ea55e58b162ea3892b9a50f1c5a007ad51eb883d7d1893",
+        "source_fact:v1:c1c457a4e5f7118adcf6fa4fca4fd82c4fc2059c3e6153754fdae9f9e2bb943e",
+        "source_fact:v1:c22abdc338aa503a273a82f5dd8b0c0c2c6d093c6f264c7343b5f100b6133c4f",
+        "source_fact:v1:eae85c333d97eb4ec3881b332fc9489d9c540fe7b329d89ece36f1e6c9345420"
+      ],
+      "source_published_kst": "2026-10-11T22:27+09:00",
+      "source_title": "후티 공세에 쩔쩔매는 사우디…'비전 2030' 투자유치도 '먹구름' | 연합뉴스",
+      "telegram_core_fact": "사우디의 국가 개조 프로젝트인 '비전 2030'은 연간 1천억 달러(약 135조 원) 외국인 직접투자(FDI) 유치를 핵심 동력으로 삼고 있다.",
+      "title": "후티 공세에 쩔쩔매는 사우디…'비전 2030' 투자유치도 '먹구름' | 연합뉴스"
+    },
     "original:8c46c76ee9574313929c5497": {
       "first_seen_kst": "2026-10-09T17:13:50+09:00",
       "lanes": {
@@ -184756,6 +184932,26 @@
       "source_title": "정보보호 공시 공백 메운다…NH농협銀 내년 첫 공개",
       "telegram_core_fact": "공식적으로 한국인터넷진흥원(KISA)이 운영하는 자율공시에 참여하며 동일한 기준에서 다른 시중은행들과 정보보호 투자액과 인력 등을 비교할 수 있을 전망이다.",
       "title": "정보보호 공시 공백 메운다…NH농협銀 내년 첫 공개"
+    },
+    "original:dbae1fa02f91660e48a981c1": {
+      "first_seen_kst": "2026-10-11T23:10:29+09:00",
+      "lanes": {
+        "live": "2026-10-11T23:10:29+09:00"
+      },
+      "last_seen_kst": "2026-10-11T23:10:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003821217",
+      "source": "뉴시스",
+      "source_body_digest": "afa34f90eda5011c92883cc7b2be989ef07828e0ff944469ee4552840bb2d9f5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05318c6ffb68bb43d8bdf081e526192d752d12f0e1a410fa83bfddca21bd38fe",
+      "source_fact_keys": [
+        "source_fact:v1:583f743793a1ce71a5f0ceed42029b35e4efe4a6c1005acaf7365408c8551c2c",
+        "source_fact:v1:fb08c128ec48e7ed34cdbf9734e99eef2a2aa5ae16816d55fbaaff22daf2dc1b"
+      ],
+      "source_published_kst": "2026-10-11T23:02+09:00",
+      "source_title": "[올댓차이나] 中 증감회, 증시 안정 대책 논의…중장기 자금 유입 확대",
+      "telegram_core_fact": "중국 증권감독관리위원회(증감회)가 증시 안정을 위한 제도 개선과 중장기 투자자금 유입 확대 방안을 논의했다.",
+      "title": "[올댓차이나] 中 증감회, 증시 안정 대책 논의…중장기 자금 유입 확대"
     },
     "original:dbaedf48efb85d90cdf7dcd6": {
       "first_seen_kst": "2026-10-07T07:24:41+09:00",
@@ -210859,6 +211055,33 @@
       "source_published_kst": "2026-10-07T05:30+09:00",
       "title": "“주가 일희일비할 것 없어, 반도체 공급난 지속은 명확한 사실”"
     },
+    "source_fact:1a64d4f2343c859a632c848d": {
+      "first_seen_kst": "2026-10-11T23:10:29+09:00",
+      "lanes": {
+        "live": "2026-10-11T23:10:29+09:00"
+      },
+      "last_seen_kst": "2026-10-11T23:10:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011053400079",
+      "source": "연합뉴스",
+      "source_body_digest": "ca4f3e29f2169d5e109e4e9668459f60525de5564c3308527959efee12615f9c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7de95f063bc118d5ae5cbfeee808129d71b8fc1e2d341b67ba662611d92c903d",
+      "source_fact_keys": [
+        "source_fact:v1:1f9697af13e8372fc147ceaf20d9cd80ac9bf30108053684c31d7f42dd655a6e",
+        "source_fact:v1:4f6a69e6249d0c55da4eba4d35ddd586b157620bbd6306dac6661b44becc3fe9",
+        "source_fact:v1:52ffac42a520897765aedc63c2ee7a8022d5d7b42a11c47b30dc182254dafc9f",
+        "source_fact:v1:5d398fab9ad2897fbefffd66e224df0bcddd064dae237eff5d9197c9cb3d9ce9",
+        "source_fact:v1:96c15332ec6943e00a25bea1926f012f4bb0f1f3caad940a06f903b7e1dbf48e",
+        "source_fact:v1:b094b9ca628cd8b951ea55e58b162ea3892b9a50f1c5a007ad51eb883d7d1893",
+        "source_fact:v1:c1c457a4e5f7118adcf6fa4fca4fd82c4fc2059c3e6153754fdae9f9e2bb943e",
+        "source_fact:v1:c22abdc338aa503a273a82f5dd8b0c0c2c6d093c6f264c7343b5f100b6133c4f",
+        "source_fact:v1:eae85c333d97eb4ec3881b332fc9489d9c540fe7b329d89ece36f1e6c9345420"
+      ],
+      "source_published_kst": "2026-10-11T22:27+09:00",
+      "source_title": "후티 공세에 쩔쩔매는 사우디…'비전 2030' 투자유치도 '먹구름' | 연합뉴스",
+      "telegram_core_fact": "사우디의 국가 개조 프로젝트인 '비전 2030'은 연간 1천억 달러(약 135조 원) 외국인 직접투자(FDI) 유치를 핵심 동력으로 삼고 있다.",
+      "title": "후티 공세에 쩔쩔매는 사우디…'비전 2030' 투자유치도 '먹구름' | 연합뉴스"
+    },
     "source_fact:1a65aa818373f59e1f36fb78": {
       "first_seen_kst": "2026-10-11T09:28:38+09:00",
       "lanes": {
@@ -225163,6 +225386,26 @@
       ],
       "source_published_kst": "2026-10-07T00:00+09:00",
       "title": "우크라 '韓, 러 석유공급' 보도에 비판…\"제재 정책과 어긋나\""
+    },
+    "source_fact:2bc7a75831f2a8eddb4b26ee": {
+      "first_seen_kst": "2026-10-11T23:10:29+09:00",
+      "lanes": {
+        "live": "2026-10-11T23:10:29+09:00"
+      },
+      "last_seen_kst": "2026-10-11T23:10:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003821217",
+      "source": "뉴시스",
+      "source_body_digest": "afa34f90eda5011c92883cc7b2be989ef07828e0ff944469ee4552840bb2d9f5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05318c6ffb68bb43d8bdf081e526192d752d12f0e1a410fa83bfddca21bd38fe",
+      "source_fact_keys": [
+        "source_fact:v1:583f743793a1ce71a5f0ceed42029b35e4efe4a6c1005acaf7365408c8551c2c",
+        "source_fact:v1:fb08c128ec48e7ed34cdbf9734e99eef2a2aa5ae16816d55fbaaff22daf2dc1b"
+      ],
+      "source_published_kst": "2026-10-11T23:02+09:00",
+      "source_title": "[올댓차이나] 中 증감회, 증시 안정 대책 논의…중장기 자금 유입 확대",
+      "telegram_core_fact": "중국 증권감독관리위원회(증감회)가 증시 안정을 위한 제도 개선과 중장기 투자자금 유입 확대 방안을 논의했다.",
+      "title": "[올댓차이나] 中 증감회, 증시 안정 대책 논의…중장기 자금 유입 확대"
     },
     "source_fact:2bce8ac6ef3056ae14ddb465": {
       "first_seen_kst": "2026-10-08T03:51:03+09:00",
@@ -249107,6 +249350,33 @@
       "telegram_core_fact": "이들 종목은 올해 주당순이익(EPS)이 2011년 이후 최고치를 기록할 것으로 전망되지만 주가는 과거 최고가보다 최대 20%가량 낮은 수준에 머물러 있다는 분석이다.",
       "title": "“실적은 역대 최대인데 주가는 아직”…눈여겨볼 6개 종목"
     },
+    "source_fact:4c5bfc7086f4bb1cab94c9a2": {
+      "first_seen_kst": "2026-10-11T23:10:29+09:00",
+      "lanes": {
+        "live": "2026-10-11T23:10:29+09:00"
+      },
+      "last_seen_kst": "2026-10-11T23:10:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011053400079",
+      "source": "연합뉴스",
+      "source_body_digest": "ca4f3e29f2169d5e109e4e9668459f60525de5564c3308527959efee12615f9c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7de95f063bc118d5ae5cbfeee808129d71b8fc1e2d341b67ba662611d92c903d",
+      "source_fact_keys": [
+        "source_fact:v1:1f9697af13e8372fc147ceaf20d9cd80ac9bf30108053684c31d7f42dd655a6e",
+        "source_fact:v1:4f6a69e6249d0c55da4eba4d35ddd586b157620bbd6306dac6661b44becc3fe9",
+        "source_fact:v1:52ffac42a520897765aedc63c2ee7a8022d5d7b42a11c47b30dc182254dafc9f",
+        "source_fact:v1:5d398fab9ad2897fbefffd66e224df0bcddd064dae237eff5d9197c9cb3d9ce9",
+        "source_fact:v1:96c15332ec6943e00a25bea1926f012f4bb0f1f3caad940a06f903b7e1dbf48e",
+        "source_fact:v1:b094b9ca628cd8b951ea55e58b162ea3892b9a50f1c5a007ad51eb883d7d1893",
+        "source_fact:v1:c1c457a4e5f7118adcf6fa4fca4fd82c4fc2059c3e6153754fdae9f9e2bb943e",
+        "source_fact:v1:c22abdc338aa503a273a82f5dd8b0c0c2c6d093c6f264c7343b5f100b6133c4f",
+        "source_fact:v1:eae85c333d97eb4ec3881b332fc9489d9c540fe7b329d89ece36f1e6c9345420"
+      ],
+      "source_published_kst": "2026-10-11T22:27+09:00",
+      "source_title": "후티 공세에 쩔쩔매는 사우디…'비전 2030' 투자유치도 '먹구름' | 연합뉴스",
+      "telegram_core_fact": "사우디의 국가 개조 프로젝트인 '비전 2030'은 연간 1천억 달러(약 135조 원) 외국인 직접투자(FDI) 유치를 핵심 동력으로 삼고 있다.",
+      "title": "후티 공세에 쩔쩔매는 사우디…'비전 2030' 투자유치도 '먹구름' | 연합뉴스"
+    },
     "source_fact:4c5c9f5088fc32e5b2b67b5f": {
       "first_seen_kst": "2026-10-07T14:18:25+09:00",
       "lanes": {
@@ -251048,6 +251318,33 @@
       ],
       "source_published_kst": "2026-10-06T15:09+09:00",
       "title": "AI팩토리에 승부 건 엔비디아 \"생산성·수명·범용성이 수익 좌우\""
+    },
+    "source_fact:4f059574d3ab0f937021f074": {
+      "first_seen_kst": "2026-10-11T23:10:29+09:00",
+      "lanes": {
+        "live": "2026-10-11T23:10:29+09:00"
+      },
+      "last_seen_kst": "2026-10-11T23:10:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011053400079",
+      "source": "연합뉴스",
+      "source_body_digest": "ca4f3e29f2169d5e109e4e9668459f60525de5564c3308527959efee12615f9c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7de95f063bc118d5ae5cbfeee808129d71b8fc1e2d341b67ba662611d92c903d",
+      "source_fact_keys": [
+        "source_fact:v1:1f9697af13e8372fc147ceaf20d9cd80ac9bf30108053684c31d7f42dd655a6e",
+        "source_fact:v1:4f6a69e6249d0c55da4eba4d35ddd586b157620bbd6306dac6661b44becc3fe9",
+        "source_fact:v1:52ffac42a520897765aedc63c2ee7a8022d5d7b42a11c47b30dc182254dafc9f",
+        "source_fact:v1:5d398fab9ad2897fbefffd66e224df0bcddd064dae237eff5d9197c9cb3d9ce9",
+        "source_fact:v1:96c15332ec6943e00a25bea1926f012f4bb0f1f3caad940a06f903b7e1dbf48e",
+        "source_fact:v1:b094b9ca628cd8b951ea55e58b162ea3892b9a50f1c5a007ad51eb883d7d1893",
+        "source_fact:v1:c1c457a4e5f7118adcf6fa4fca4fd82c4fc2059c3e6153754fdae9f9e2bb943e",
+        "source_fact:v1:c22abdc338aa503a273a82f5dd8b0c0c2c6d093c6f264c7343b5f100b6133c4f",
+        "source_fact:v1:eae85c333d97eb4ec3881b332fc9489d9c540fe7b329d89ece36f1e6c9345420"
+      ],
+      "source_published_kst": "2026-10-11T22:27+09:00",
+      "source_title": "후티 공세에 쩔쩔매는 사우디…'비전 2030' 투자유치도 '먹구름' | 연합뉴스",
+      "telegram_core_fact": "사우디의 국가 개조 프로젝트인 '비전 2030'은 연간 1천억 달러(약 135조 원) 외국인 직접투자(FDI) 유치를 핵심 동력으로 삼고 있다.",
+      "title": "후티 공세에 쩔쩔매는 사우디…'비전 2030' 투자유치도 '먹구름' | 연합뉴스"
     },
     "source_fact:4f0ddca0c6ce4cef1993aaa0": {
       "first_seen_kst": "2026-10-10T22:01:04+09:00",
@@ -276462,6 +276759,33 @@
       ],
       "source_published_kst": "2026-10-06T17:03+09:00",
       "title": "\"미래 성장동력 확보\"…알테오젠, 2천억 투자유치"
+    },
+    "source_fact:7038e877f4d2a99d3b5cb474": {
+      "first_seen_kst": "2026-10-11T23:10:29+09:00",
+      "lanes": {
+        "live": "2026-10-11T23:10:29+09:00"
+      },
+      "last_seen_kst": "2026-10-11T23:10:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011053400079",
+      "source": "연합뉴스",
+      "source_body_digest": "ca4f3e29f2169d5e109e4e9668459f60525de5564c3308527959efee12615f9c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7de95f063bc118d5ae5cbfeee808129d71b8fc1e2d341b67ba662611d92c903d",
+      "source_fact_keys": [
+        "source_fact:v1:1f9697af13e8372fc147ceaf20d9cd80ac9bf30108053684c31d7f42dd655a6e",
+        "source_fact:v1:4f6a69e6249d0c55da4eba4d35ddd586b157620bbd6306dac6661b44becc3fe9",
+        "source_fact:v1:52ffac42a520897765aedc63c2ee7a8022d5d7b42a11c47b30dc182254dafc9f",
+        "source_fact:v1:5d398fab9ad2897fbefffd66e224df0bcddd064dae237eff5d9197c9cb3d9ce9",
+        "source_fact:v1:96c15332ec6943e00a25bea1926f012f4bb0f1f3caad940a06f903b7e1dbf48e",
+        "source_fact:v1:b094b9ca628cd8b951ea55e58b162ea3892b9a50f1c5a007ad51eb883d7d1893",
+        "source_fact:v1:c1c457a4e5f7118adcf6fa4fca4fd82c4fc2059c3e6153754fdae9f9e2bb943e",
+        "source_fact:v1:c22abdc338aa503a273a82f5dd8b0c0c2c6d093c6f264c7343b5f100b6133c4f",
+        "source_fact:v1:eae85c333d97eb4ec3881b332fc9489d9c540fe7b329d89ece36f1e6c9345420"
+      ],
+      "source_published_kst": "2026-10-11T22:27+09:00",
+      "source_title": "후티 공세에 쩔쩔매는 사우디…'비전 2030' 투자유치도 '먹구름' | 연합뉴스",
+      "telegram_core_fact": "사우디의 국가 개조 프로젝트인 '비전 2030'은 연간 1천억 달러(약 135조 원) 외국인 직접투자(FDI) 유치를 핵심 동력으로 삼고 있다.",
+      "title": "후티 공세에 쩔쩔매는 사우디…'비전 2030' 투자유치도 '먹구름' | 연합뉴스"
     },
     "source_fact:703d78cbdba8b639cdcaffbb": {
       "first_seen_kst": "2026-10-08T17:42:30+09:00",
@@ -306968,6 +307292,33 @@
       ],
       "source_published_kst": "2026-10-06T08:02+09:00",
       "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
+    },
+    "source_fact:99c7a7881ab3ade9a96b51d9": {
+      "first_seen_kst": "2026-10-11T23:10:29+09:00",
+      "lanes": {
+        "live": "2026-10-11T23:10:29+09:00"
+      },
+      "last_seen_kst": "2026-10-11T23:10:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011053400079",
+      "source": "연합뉴스",
+      "source_body_digest": "ca4f3e29f2169d5e109e4e9668459f60525de5564c3308527959efee12615f9c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7de95f063bc118d5ae5cbfeee808129d71b8fc1e2d341b67ba662611d92c903d",
+      "source_fact_keys": [
+        "source_fact:v1:1f9697af13e8372fc147ceaf20d9cd80ac9bf30108053684c31d7f42dd655a6e",
+        "source_fact:v1:4f6a69e6249d0c55da4eba4d35ddd586b157620bbd6306dac6661b44becc3fe9",
+        "source_fact:v1:52ffac42a520897765aedc63c2ee7a8022d5d7b42a11c47b30dc182254dafc9f",
+        "source_fact:v1:5d398fab9ad2897fbefffd66e224df0bcddd064dae237eff5d9197c9cb3d9ce9",
+        "source_fact:v1:96c15332ec6943e00a25bea1926f012f4bb0f1f3caad940a06f903b7e1dbf48e",
+        "source_fact:v1:b094b9ca628cd8b951ea55e58b162ea3892b9a50f1c5a007ad51eb883d7d1893",
+        "source_fact:v1:c1c457a4e5f7118adcf6fa4fca4fd82c4fc2059c3e6153754fdae9f9e2bb943e",
+        "source_fact:v1:c22abdc338aa503a273a82f5dd8b0c0c2c6d093c6f264c7343b5f100b6133c4f",
+        "source_fact:v1:eae85c333d97eb4ec3881b332fc9489d9c540fe7b329d89ece36f1e6c9345420"
+      ],
+      "source_published_kst": "2026-10-11T22:27+09:00",
+      "source_title": "후티 공세에 쩔쩔매는 사우디…'비전 2030' 투자유치도 '먹구름' | 연합뉴스",
+      "telegram_core_fact": "사우디의 국가 개조 프로젝트인 '비전 2030'은 연간 1천억 달러(약 135조 원) 외국인 직접투자(FDI) 유치를 핵심 동력으로 삼고 있다.",
+      "title": "후티 공세에 쩔쩔매는 사우디…'비전 2030' 투자유치도 '먹구름' | 연합뉴스"
     },
     "source_fact:99c8b5178165e6ca11d51b18": {
       "first_seen_kst": "2026-10-08T02:12:43+09:00",
@@ -362575,6 +362926,33 @@
       "telegram_core_fact": "트럼프 대통령은 9일(현지시간) 푸틴 대통령과 통화한 뒤 러시아가 미국과 세계 시장에 경유 30만t 이상을 즉시 공급하기로 했다고 발표했다.",
       "title": "트럼프, 젤렌스키와 갈등 끝 푸틴과 경유 거래⋯종전 협상도 난항"
     },
+    "source_fact:e56d2e71b1dd2cca2a401428": {
+      "first_seen_kst": "2026-10-11T23:10:29+09:00",
+      "lanes": {
+        "live": "2026-10-11T23:10:29+09:00"
+      },
+      "last_seen_kst": "2026-10-11T23:10:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011053400079",
+      "source": "연합뉴스",
+      "source_body_digest": "ca4f3e29f2169d5e109e4e9668459f60525de5564c3308527959efee12615f9c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7de95f063bc118d5ae5cbfeee808129d71b8fc1e2d341b67ba662611d92c903d",
+      "source_fact_keys": [
+        "source_fact:v1:1f9697af13e8372fc147ceaf20d9cd80ac9bf30108053684c31d7f42dd655a6e",
+        "source_fact:v1:4f6a69e6249d0c55da4eba4d35ddd586b157620bbd6306dac6661b44becc3fe9",
+        "source_fact:v1:52ffac42a520897765aedc63c2ee7a8022d5d7b42a11c47b30dc182254dafc9f",
+        "source_fact:v1:5d398fab9ad2897fbefffd66e224df0bcddd064dae237eff5d9197c9cb3d9ce9",
+        "source_fact:v1:96c15332ec6943e00a25bea1926f012f4bb0f1f3caad940a06f903b7e1dbf48e",
+        "source_fact:v1:b094b9ca628cd8b951ea55e58b162ea3892b9a50f1c5a007ad51eb883d7d1893",
+        "source_fact:v1:c1c457a4e5f7118adcf6fa4fca4fd82c4fc2059c3e6153754fdae9f9e2bb943e",
+        "source_fact:v1:c22abdc338aa503a273a82f5dd8b0c0c2c6d093c6f264c7343b5f100b6133c4f",
+        "source_fact:v1:eae85c333d97eb4ec3881b332fc9489d9c540fe7b329d89ece36f1e6c9345420"
+      ],
+      "source_published_kst": "2026-10-11T22:27+09:00",
+      "source_title": "후티 공세에 쩔쩔매는 사우디…'비전 2030' 투자유치도 '먹구름' | 연합뉴스",
+      "telegram_core_fact": "사우디의 국가 개조 프로젝트인 '비전 2030'은 연간 1천억 달러(약 135조 원) 외국인 직접투자(FDI) 유치를 핵심 동력으로 삼고 있다.",
+      "title": "후티 공세에 쩔쩔매는 사우디…'비전 2030' 투자유치도 '먹구름' | 연합뉴스"
+    },
     "source_fact:e5709aa4e35438661fa3ece7": {
       "first_seen_kst": "2026-10-10T07:44:19+09:00",
       "lanes": {
@@ -365520,6 +365898,26 @@
       "telegram_core_fact": "연구실 시연을 넘어 실제 생산라인에서 사람, 전체 교대시간 동안 로봇을 운영하는 데 이어 삼성전기와 세메스 제조현장에서도 로봇의 적용 가능성을 검증하고 있다.",
       "title": "‘삼성 투자’ 월든, 美 동·서부 거점 확대…생산라인에 로봇 투입"
     },
+    "source_fact:e949e986bc88aed0dcdbad22": {
+      "first_seen_kst": "2026-10-11T23:10:29+09:00",
+      "lanes": {
+        "live": "2026-10-11T23:10:29+09:00"
+      },
+      "last_seen_kst": "2026-10-11T23:10:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003821217",
+      "source": "뉴시스",
+      "source_body_digest": "afa34f90eda5011c92883cc7b2be989ef07828e0ff944469ee4552840bb2d9f5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05318c6ffb68bb43d8bdf081e526192d752d12f0e1a410fa83bfddca21bd38fe",
+      "source_fact_keys": [
+        "source_fact:v1:583f743793a1ce71a5f0ceed42029b35e4efe4a6c1005acaf7365408c8551c2c",
+        "source_fact:v1:fb08c128ec48e7ed34cdbf9734e99eef2a2aa5ae16816d55fbaaff22daf2dc1b"
+      ],
+      "source_published_kst": "2026-10-11T23:02+09:00",
+      "source_title": "[올댓차이나] 中 증감회, 증시 안정 대책 논의…중장기 자금 유입 확대",
+      "telegram_core_fact": "중국 증권감독관리위원회(증감회)가 증시 안정을 위한 제도 개선과 중장기 투자자금 유입 확대 방안을 논의했다.",
+      "title": "[올댓차이나] 中 증감회, 증시 안정 대책 논의…중장기 자금 유입 확대"
+    },
     "source_fact:e9579b868ce1dfa6e4c157e3": {
       "first_seen_kst": "2026-10-08T02:12:43+09:00",
       "lanes": {
@@ -366309,6 +366707,33 @@
       "source_published_kst": "2026-10-06T16:40+09:00",
       "title": "알테오젠, 국민성장펀드·스카이레이크서 2000억원 투자 유치"
     },
+    "source_fact:ea81b762e1dbaaf1ec2a9a9e": {
+      "first_seen_kst": "2026-10-11T23:10:29+09:00",
+      "lanes": {
+        "live": "2026-10-11T23:10:29+09:00"
+      },
+      "last_seen_kst": "2026-10-11T23:10:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011053400079",
+      "source": "연합뉴스",
+      "source_body_digest": "ca4f3e29f2169d5e109e4e9668459f60525de5564c3308527959efee12615f9c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7de95f063bc118d5ae5cbfeee808129d71b8fc1e2d341b67ba662611d92c903d",
+      "source_fact_keys": [
+        "source_fact:v1:1f9697af13e8372fc147ceaf20d9cd80ac9bf30108053684c31d7f42dd655a6e",
+        "source_fact:v1:4f6a69e6249d0c55da4eba4d35ddd586b157620bbd6306dac6661b44becc3fe9",
+        "source_fact:v1:52ffac42a520897765aedc63c2ee7a8022d5d7b42a11c47b30dc182254dafc9f",
+        "source_fact:v1:5d398fab9ad2897fbefffd66e224df0bcddd064dae237eff5d9197c9cb3d9ce9",
+        "source_fact:v1:96c15332ec6943e00a25bea1926f012f4bb0f1f3caad940a06f903b7e1dbf48e",
+        "source_fact:v1:b094b9ca628cd8b951ea55e58b162ea3892b9a50f1c5a007ad51eb883d7d1893",
+        "source_fact:v1:c1c457a4e5f7118adcf6fa4fca4fd82c4fc2059c3e6153754fdae9f9e2bb943e",
+        "source_fact:v1:c22abdc338aa503a273a82f5dd8b0c0c2c6d093c6f264c7343b5f100b6133c4f",
+        "source_fact:v1:eae85c333d97eb4ec3881b332fc9489d9c540fe7b329d89ece36f1e6c9345420"
+      ],
+      "source_published_kst": "2026-10-11T22:27+09:00",
+      "source_title": "후티 공세에 쩔쩔매는 사우디…'비전 2030' 투자유치도 '먹구름' | 연합뉴스",
+      "telegram_core_fact": "사우디의 국가 개조 프로젝트인 '비전 2030'은 연간 1천억 달러(약 135조 원) 외국인 직접투자(FDI) 유치를 핵심 동력으로 삼고 있다.",
+      "title": "후티 공세에 쩔쩔매는 사우디…'비전 2030' 투자유치도 '먹구름' | 연합뉴스"
+    },
     "source_fact:ea865914e8ea52f616155c9e": {
       "first_seen_kst": "2026-10-08T05:44:23+09:00",
       "lanes": {
@@ -366355,6 +366780,33 @@
       "source_title": "\"트럼프 특사, 우크라전 교착 타개할 새 구상 제시 계획\" | 연합뉴스",
       "telegram_core_fact": "소식통에 따르면 윗코프 특사와 트럼프 대통령의 사위 쿠슈너는 9일 미국 마이애미에서 키릴로 부다노우 우크라이나 대통령실 비서실장을 비롯한 우크라이나 협상 대표단 및 유럽 안보 당국자들과 만나 현재 교착상태를 타개할 평화 구상을 논의할 예정이다.",
       "title": "\"트럼프 특사, 우크라전 교착 타개할 새 구상 제시 계획\" | 연합뉴스"
+    },
+    "source_fact:ea90dfe32e432537bee89250": {
+      "first_seen_kst": "2026-10-11T23:10:29+09:00",
+      "lanes": {
+        "live": "2026-10-11T23:10:29+09:00"
+      },
+      "last_seen_kst": "2026-10-11T23:10:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011053400079",
+      "source": "연합뉴스",
+      "source_body_digest": "ca4f3e29f2169d5e109e4e9668459f60525de5564c3308527959efee12615f9c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7de95f063bc118d5ae5cbfeee808129d71b8fc1e2d341b67ba662611d92c903d",
+      "source_fact_keys": [
+        "source_fact:v1:1f9697af13e8372fc147ceaf20d9cd80ac9bf30108053684c31d7f42dd655a6e",
+        "source_fact:v1:4f6a69e6249d0c55da4eba4d35ddd586b157620bbd6306dac6661b44becc3fe9",
+        "source_fact:v1:52ffac42a520897765aedc63c2ee7a8022d5d7b42a11c47b30dc182254dafc9f",
+        "source_fact:v1:5d398fab9ad2897fbefffd66e224df0bcddd064dae237eff5d9197c9cb3d9ce9",
+        "source_fact:v1:96c15332ec6943e00a25bea1926f012f4bb0f1f3caad940a06f903b7e1dbf48e",
+        "source_fact:v1:b094b9ca628cd8b951ea55e58b162ea3892b9a50f1c5a007ad51eb883d7d1893",
+        "source_fact:v1:c1c457a4e5f7118adcf6fa4fca4fd82c4fc2059c3e6153754fdae9f9e2bb943e",
+        "source_fact:v1:c22abdc338aa503a273a82f5dd8b0c0c2c6d093c6f264c7343b5f100b6133c4f",
+        "source_fact:v1:eae85c333d97eb4ec3881b332fc9489d9c540fe7b329d89ece36f1e6c9345420"
+      ],
+      "source_published_kst": "2026-10-11T22:27+09:00",
+      "source_title": "후티 공세에 쩔쩔매는 사우디…'비전 2030' 투자유치도 '먹구름' | 연합뉴스",
+      "telegram_core_fact": "사우디의 국가 개조 프로젝트인 '비전 2030'은 연간 1천억 달러(약 135조 원) 외국인 직접투자(FDI) 유치를 핵심 동력으로 삼고 있다.",
+      "title": "후티 공세에 쩔쩔매는 사우디…'비전 2030' 투자유치도 '먹구름' | 연합뉴스"
     },
     "source_fact:ea9c53e10da52266bd9a190b": {
       "first_seen_kst": "2026-10-09T15:48:54+09:00",
@@ -375791,6 +376243,33 @@
       "source_title": "기판 20%·동박판 30% 껑충 … 日·대만 소부장 영향력 커져",
       "telegram_core_fact": "일본 주요 전자재료 업체인 레조낙은 지난 3월부터 기판에 필수적인 동박적층판(CCL)과 프리프레그 전 제품의 가격을 30% 이상 인상했다. 세계 최대 반도체 조립·검사 전문 기업인 대만 ASE는 첨단 패키징 공급 견적 가격을 20% 이상 높인 것으로 알려졌다.",
       "title": "기판 20%·동박판 30% 껑충 … 日·대만 소부장 영향력 커져"
+    },
+    "source_fact:f8517e05a4c994788e424091": {
+      "first_seen_kst": "2026-10-11T23:10:29+09:00",
+      "lanes": {
+        "live": "2026-10-11T23:10:29+09:00"
+      },
+      "last_seen_kst": "2026-10-11T23:10:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011053400079",
+      "source": "연합뉴스",
+      "source_body_digest": "ca4f3e29f2169d5e109e4e9668459f60525de5564c3308527959efee12615f9c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7de95f063bc118d5ae5cbfeee808129d71b8fc1e2d341b67ba662611d92c903d",
+      "source_fact_keys": [
+        "source_fact:v1:1f9697af13e8372fc147ceaf20d9cd80ac9bf30108053684c31d7f42dd655a6e",
+        "source_fact:v1:4f6a69e6249d0c55da4eba4d35ddd586b157620bbd6306dac6661b44becc3fe9",
+        "source_fact:v1:52ffac42a520897765aedc63c2ee7a8022d5d7b42a11c47b30dc182254dafc9f",
+        "source_fact:v1:5d398fab9ad2897fbefffd66e224df0bcddd064dae237eff5d9197c9cb3d9ce9",
+        "source_fact:v1:96c15332ec6943e00a25bea1926f012f4bb0f1f3caad940a06f903b7e1dbf48e",
+        "source_fact:v1:b094b9ca628cd8b951ea55e58b162ea3892b9a50f1c5a007ad51eb883d7d1893",
+        "source_fact:v1:c1c457a4e5f7118adcf6fa4fca4fd82c4fc2059c3e6153754fdae9f9e2bb943e",
+        "source_fact:v1:c22abdc338aa503a273a82f5dd8b0c0c2c6d093c6f264c7343b5f100b6133c4f",
+        "source_fact:v1:eae85c333d97eb4ec3881b332fc9489d9c540fe7b329d89ece36f1e6c9345420"
+      ],
+      "source_published_kst": "2026-10-11T22:27+09:00",
+      "source_title": "후티 공세에 쩔쩔매는 사우디…'비전 2030' 투자유치도 '먹구름' | 연합뉴스",
+      "telegram_core_fact": "사우디의 국가 개조 프로젝트인 '비전 2030'은 연간 1천억 달러(약 135조 원) 외국인 직접투자(FDI) 유치를 핵심 동력으로 삼고 있다.",
+      "title": "후티 공세에 쩔쩔매는 사우디…'비전 2030' 투자유치도 '먹구름' | 연합뉴스"
     },
     "source_fact:f85254f9dcf08a6a2b2e44b9": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -413639,6 +414118,33 @@
       "source": "이데일리",
       "title": "[단독]'적색수배' KOK 자금총책 지갑 보니…국내외 거래소로 1050억대 현금화"
     },
+    "title:8c4651187300ea29f2a01264": {
+      "first_seen_kst": "2026-10-11T23:10:29+09:00",
+      "lanes": {
+        "live": "2026-10-11T23:10:29+09:00"
+      },
+      "last_seen_kst": "2026-10-11T23:10:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011053400079",
+      "source": "연합뉴스",
+      "source_body_digest": "ca4f3e29f2169d5e109e4e9668459f60525de5564c3308527959efee12615f9c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7de95f063bc118d5ae5cbfeee808129d71b8fc1e2d341b67ba662611d92c903d",
+      "source_fact_keys": [
+        "source_fact:v1:1f9697af13e8372fc147ceaf20d9cd80ac9bf30108053684c31d7f42dd655a6e",
+        "source_fact:v1:4f6a69e6249d0c55da4eba4d35ddd586b157620bbd6306dac6661b44becc3fe9",
+        "source_fact:v1:52ffac42a520897765aedc63c2ee7a8022d5d7b42a11c47b30dc182254dafc9f",
+        "source_fact:v1:5d398fab9ad2897fbefffd66e224df0bcddd064dae237eff5d9197c9cb3d9ce9",
+        "source_fact:v1:96c15332ec6943e00a25bea1926f012f4bb0f1f3caad940a06f903b7e1dbf48e",
+        "source_fact:v1:b094b9ca628cd8b951ea55e58b162ea3892b9a50f1c5a007ad51eb883d7d1893",
+        "source_fact:v1:c1c457a4e5f7118adcf6fa4fca4fd82c4fc2059c3e6153754fdae9f9e2bb943e",
+        "source_fact:v1:c22abdc338aa503a273a82f5dd8b0c0c2c6d093c6f264c7343b5f100b6133c4f",
+        "source_fact:v1:eae85c333d97eb4ec3881b332fc9489d9c540fe7b329d89ece36f1e6c9345420"
+      ],
+      "source_published_kst": "2026-10-11T22:27+09:00",
+      "source_title": "후티 공세에 쩔쩔매는 사우디…'비전 2030' 투자유치도 '먹구름' | 연합뉴스",
+      "telegram_core_fact": "사우디의 국가 개조 프로젝트인 '비전 2030'은 연간 1천억 달러(약 135조 원) 외국인 직접투자(FDI) 유치를 핵심 동력으로 삼고 있다.",
+      "title": "후티 공세에 쩔쩔매는 사우디…'비전 2030' 투자유치도 '먹구름' | 연합뉴스"
+    },
     "title:8c46c76ee9574313929c5497": {
       "first_seen_kst": "2026-10-09T17:13:50+09:00",
       "lanes": {
@@ -432535,6 +433041,26 @@
       "telegram_core_fact": "공식적으로 한국인터넷진흥원(KISA)이 운영하는 자율공시에 참여하며 동일한 기준에서 다른 시중은행들과 정보보호 투자액과 인력 등을 비교할 수 있을 전망이다.",
       "title": "정보보호 공시 공백 메운다…NH농협銀 내년 첫 공개"
     },
+    "title:dbae1fa02f91660e48a981c1": {
+      "first_seen_kst": "2026-10-11T23:10:29+09:00",
+      "lanes": {
+        "live": "2026-10-11T23:10:29+09:00"
+      },
+      "last_seen_kst": "2026-10-11T23:10:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003821217",
+      "source": "뉴시스",
+      "source_body_digest": "afa34f90eda5011c92883cc7b2be989ef07828e0ff944469ee4552840bb2d9f5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:05318c6ffb68bb43d8bdf081e526192d752d12f0e1a410fa83bfddca21bd38fe",
+      "source_fact_keys": [
+        "source_fact:v1:583f743793a1ce71a5f0ceed42029b35e4efe4a6c1005acaf7365408c8551c2c",
+        "source_fact:v1:fb08c128ec48e7ed34cdbf9734e99eef2a2aa5ae16816d55fbaaff22daf2dc1b"
+      ],
+      "source_published_kst": "2026-10-11T23:02+09:00",
+      "source_title": "[올댓차이나] 中 증감회, 증시 안정 대책 논의…중장기 자금 유입 확대",
+      "telegram_core_fact": "중국 증권감독관리위원회(증감회)가 증시 안정을 위한 제도 개선과 중장기 투자자금 유입 확대 방안을 논의했다.",
+      "title": "[올댓차이나] 中 증감회, 증시 안정 대책 논의…중장기 자금 유입 확대"
+    },
     "title:dbaedf48efb85d90cdf7dcd6": {
       "first_seen_kst": "2026-10-07T07:24:41+09:00",
       "lanes": {
@@ -440335,5 +440861,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-11T22:57:06+09:00"
+  "updated_at_kst": "2026-10-11T23:10:29+09:00"
 }
