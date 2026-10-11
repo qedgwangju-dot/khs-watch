@@ -5042,6 +5042,37 @@
       "telegram_core_fact": "사업시행계획 인가 전 시공사가 선정된 곳은 공사비가 10% 이상, 인가 이후 선정된 사업장은 5% 이상 증액될 때가 검증 대상이다.",
       "title": "모아타운 공사비 거품 뺀다… 서울시·SH, 소규모 정비 검증 도입"
     },
+    "core:2f89f06e51b0fedb64b92dde": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.news1.kr/economy/trend/6315056",
+      "source": "뉴스1",
+      "source_body_digest": "c3ed76ff065df6237882dae308dfad6c0544058535e5a7b4da8a3a3bd53bd799",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:727a0685f2fd997dabef38e3e5387dd44435f1744e1c07c9934df6007ec43a7d",
+      "source_fact_keys": [
+        "source_fact:v1:09fd5d9d959224b4df9d0a8bcfbfbfca310318d969b2dc8c94121ddf87c2ceb5",
+        "source_fact:v1:210ad36b2492d7e7920f917ca2c84edb7df4e0f4ecc462f017ee07f5e2478e18",
+        "source_fact:v1:24e715603b62db79677c7a83522a378a15252c8c4a13ba30e0c078792b7b761b",
+        "source_fact:v1:3278e816850beafce1f8868fb1ff48154a3ddba53cca32c7215b51248aa2d7f8",
+        "source_fact:v1:3ce042d4c72b7934640f247aa6f0841d4fe52c2131d100bcc97578886d9cf1b3",
+        "source_fact:v1:78655581f5e6fab03dda7be4ff575835695b31e2129681cf40831f2d2aad4744",
+        "source_fact:v1:99a3d4a81788785d207b0357aaef241064c8cd871722d0b70ba16bc4a6952c56",
+        "source_fact:v1:a92d351bf9cf541ae5beda87f34464359a4c8d5a91c482466685b9631abffb5d",
+        "source_fact:v1:ad5c242795401934be2728fd6f98c0c31ccfe45d3ecc43f4d97ef2c93bf1036f",
+        "source_fact:v1:b68fd8a64e11abcb62b8aa6ce79c562128ec71ded507d39d3dcb8f63dad206dd",
+        "source_fact:v1:c72a6d1b6811c157432b057f04e0d2b097535f3889ff74b0793b0b35248ce3cf",
+        "source_fact:v1:d7f979b73170cc0ec0765ac1260d3702ff7c8dbbccd985839fec2c4b96feb401",
+        "source_fact:v1:dcf3e6e510eff46e473e34aaea5bf2d31da914f402bd39d3db720daccd530d8d"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심",
+      "telegram_core_fact": "정부의 국채 발행 축소 발표 이후 금리는 3% 후반대로 내려왔지만, 지난 8일에는 다시 연 3.983%로 오르며 4% 턱밑까지 올라섰다.",
+      "title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심"
+    },
     "core:2fb3bf38210911f4750ba1ad": {
       "first_seen_kst": "2026-10-11T21:28:35+09:00",
       "lanes": {
@@ -5422,6 +5453,27 @@
       "source_title": "KT클라우드, 청라 50MW AI 데이터센터 설계·구축·운영 파트너로 참여",
       "telegram_core_fact": "KT클라우드는 7일 청라 AI 데이터센터 사업에 설계·구축·운영(DBO) 파트너로 참여한다고 밝혔다. KT클라우드가 인천 청라에 들어설 인공지능(AI) 데이터센터의 설계부터 운영까지 맡는다.",
       "title": "KT클라우드, 청라 50MW AI 데이터센터 설계·구축·운영 파트너로 참여"
+    },
+    "core:338a8dbfe403b853f6fa51d1": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/12/2026101206130938117",
+      "source": "머니투데이",
+      "source_body_digest": "72952a6a9895dc0e13f5e076c13ae98535adf44a62c26680256cbf4a2eb7b3dc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd757961a6b5bd598836d40c789195d7fb141584bb995a2f2c73a926f2960aa8",
+      "source_fact_keys": [
+        "source_fact:v1:4bbe7a7321f7ac19dceb4bea397212def1d8c5547a9575b326e251f4eadd2f40",
+        "source_fact:v1:4f1820fecadeb1cc974caee832f10878aaa4f713307f2cfa535ce8e9244fc6f5",
+        "source_fact:v1:f72059f30fa40331fa72b2e54edd396def8828737531bbdd905d4674ff7c7a9f"
+      ],
+      "source_published_kst": "2026-10-12T06:22+09:00",
+      "source_title": "\"한국, 알래스카 LNG 투자 결정한 것 없어…사업성 확인이 먼저\"",
+      "telegram_core_fact": "한국이 미국 알래스카 액화천연가스(LNG) 개발 사업에 최소 500억달러를 투자하기로 약속했다는 도널드 트럼프 대통령 발표와 달리, 한국 측은 투자 결정을 내리지 않은 것으로 보인다는 알래스카 현지 매체의 보도가 나왔다.",
+      "title": "\"한국, 알래스카 LNG 투자 결정한 것 없어…사업성 확인이 먼저\""
     },
     "core:33a7fd7519c4ce23f7660aca": {
       "first_seen_kst": "2026-10-08T09:17:31+09:00",
@@ -10189,6 +10241,31 @@
       "telegram_core_fact": "TSMC는 지난달 매출이 5,118억5,700만 대만달러로, 지난해 같은 달보다 54.6% 증가했다고 오늘(8일) 밝혔습니다.",
       "title": "TSMC 9월 매출 전년대비 54.6% 증가…전월보다는 감소"
     },
+    "core:6662336bfd8d81a73f0613aa": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12173217",
+      "source": "매일경제",
+      "source_body_digest": "22bcaec3ee308ef4a1759fb51d03cac8f9900fa1a3b836717ad41c1afb6fec8c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f4d5a9da2affb23175cb332cdd807144dfbe0698637dd8b182cf3473f506b449",
+      "source_fact_keys": [
+        "source_fact:v1:37c31b346ad69b880c02f3fab0606f92aa79dec25218b172b83c21e6a881ba5c",
+        "source_fact:v1:7704555dab0fa71049f339121eff9ba85fec3f154fd2c40ddb23c4fb4158e54f",
+        "source_fact:v1:949602684848b22342f9c33124028bfbffcb1970e105d21baf32e1116fe816b2",
+        "source_fact:v1:9b00f435c0bccf5e6891f6fb881e914e92d5547c17a83df54cdbaa38332b5396",
+        "source_fact:v1:9ea892054721eebc212285651f4fdb861d90054b99222c4fec73a2b44b53ca07",
+        "source_fact:v1:ac85a2f806c3103fcc2b0fbffe246ac55044a42f6393bb191941bfa359c5a0b6",
+        "source_fact:v1:c3bf0efd1f2c88286fa2e55be1a1cc6b56e6c84565965dce59ace1715a31e71b"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "김동선, 독립경영 강화 속도전 … 한화M&S 지분 19% 공개매수",
+      "telegram_core_fact": "전략총괄 사장 8000원·개매수에 성공하면 김 사장 1285억원, 지분율 5.81→24.81%를 매수했습니다.",
+      "title": "김동선, 독립경영 강화 속도전 … 한화M&S 지분 19% 공개매수"
+    },
     "core:66ae3626a981e788cf7b2d1d": {
       "first_seen_kst": "2026-10-09T23:27:30+09:00",
       "lanes": {
@@ -12792,6 +12869,33 @@
       "telegram_core_fact": "호르무즈 해협을 지나는 선박이 미상의 발사체에 맞았다고 영국 해사무역기구(UKMTO)가 9일(현지시간) 밝혔다.",
       "title": "호르무즈 해협서 선박 피격…혁명수비대 \"항로 위반시 처벌\" | 연합뉴스"
     },
+    "core:81d106987e96073eeec72032": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634372",
+      "source": "이투데이",
+      "source_body_digest": "e35c30986704e55e513be667df21588ef2b2225c90be5ec8e7d1cab09637f7ac",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3c7450a3f908d4186234394c49a7a270417e7f79751d512685959cf28627cae",
+      "source_fact_keys": [
+        "source_fact:v1:19452545b16aaececc4804a1b62acab598ed0cc32713a4289a6991867dab88dd",
+        "source_fact:v1:1beccc234bd02d49524c759e98c40289a91e8e9d2ae13241661403974eb6916b",
+        "source_fact:v1:45cee855bc33c2c70167f27da21918db1e93e62e34dd83bba242f76f9bd5f202",
+        "source_fact:v1:6459f9323cba9ee0372a243c657839f681445d7be7873710e884cb83a6200ec0",
+        "source_fact:v1:682672918790eed5c9a9f72ddd7a10cd36a3133738ca7a9ace41ea6821d29b40",
+        "source_fact:v1:6f38b86dc4d22b9f2e5410fb9ad68a200ba533db54412f71b011696ab0dc8e5f",
+        "source_fact:v1:b6529ce3dd9e54f34cdf31dc92f616d4e4de13c937584133f15f4333a2ba1eeb",
+        "source_fact:v1:c118f8aa31f206e7222d822e31f3d253d8a50efce5e21a56738340f6a1bf638a",
+        "source_fact:v1:d72dbb2b47df25ce23ef34a29b5bcefe0541f70a5a1f74ed449db900ea2384c4"
+      ],
+      "source_published_kst": "2026-10-12T06:22+09:00",
+      "source_title": "트럼프 “러·우크라 에너지 휴전”…러 확인 없고 젤렌스키 “금시초문”",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아와 우크라이나가 서로의 에너지 시설을 공격하지 않는 ‘에너지 휴전’에 합의했다고 발표했다. 11일(현지시간) 트럼프 대통령은 트루스소셜에 “러시아와 우크라이나 전쟁에서 에너지 휴전이 즉각 발효된다”며 “양측 모두 동의했다. 이를 위반하지 말라”고 밝혔다.",
+      "title": "트럼프 “러·우크라 에너지 휴전”…러 확인 없고 젤렌스키 “금시초문”"
+    },
     "core:82767ae1ecf79783f1ad491f": {
       "first_seen_kst": "2026-10-08T08:31:37+09:00",
       "lanes": {
@@ -14931,6 +15035,26 @@
       "source_title": "삼성전자, 반도체 제조 모든 과정 'AX 생태계' 추진",
       "telegram_core_fact": "삼성전자는 DS부문이 수십년간 현장에서 축적해 온 방대한 제조 데이터와 미스트랄AI의 고효율 모델 기술을 결합함으로써 민감한 공정 데이터를 외부로 유출하지 않고도 사내 보안망 안에서 완벽하게 현장 데이터 분석, 수율 향상을 위한 결함 예측, 공정 최적화 등을 수행할 수 있게 됐다.",
       "title": "삼성전자, 반도체 제조 모든 과정 'AX 생태계' 추진"
+    },
+    "core:9982d31cdb4926d6e6820e7a": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.fnnews.com/news/202610120600427723",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "c9433565523ef5e080261b96c66ac2d5ea2830313217360712ecb7bc182f3a66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4c6773e6bd531e0962ac93db4d47a6b2e62e75e0d3d0378f82ed6405e82bcf69",
+      "source_fact_keys": [
+        "source_fact:v1:6bf0f861858d12f94afa0fd98666004ac78885c97c3622035deb69460e66669b",
+        "source_fact:v1:a44f01da95f7cd58ebc82a55e0be0c814dfb8710ffad79e41d71154f65668a63"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "노타 채명수 \"고사양 GPU 추가보다 기존 인프라 활용 대세\" [K-챌린저]",
+      "telegram_core_fact": "채명수 노타(Nota AI) 대표는 뉴스1과 인터뷰에서 인공지능(AI) 모델 경량화나 개별 칩 최적화를 넘어 고객의 AI 도입 전 과정을 지원하는 기업으로 성장하겠다며 이같이 말했다.",
+      "title": "노타 채명수 \"고사양 GPU 추가보다 기존 인프라 활용 대세\" [K-챌린저]"
     },
     "core:998af0f0df4cbe404624c9df": {
       "first_seen_kst": "2026-10-08T15:53:45+09:00",
@@ -19099,6 +19223,31 @@
       "source_published_kst": "2026-10-07T14:38+09:00",
       "title": "삼보산업, 중동 전쟁에 알루미늄 판가 상승…장기화 땐 수익성 개선 긍정"
     },
+    "core:c01f73ee75588eefd35c7dba": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821228",
+      "source": "뉴시스",
+      "source_body_digest": "02d3a68bc4bb711575b08be805a6743a9b5ed750fc4f0b720cdfe8e24ccb143c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:087cd70573e28645826d3a61865010043c10a291aedd795acfa3db882a4c405a",
+      "source_fact_keys": [
+        "source_fact:v1:106bddd480ac85314eabe8a5811befbc4c59366c0d25883f5bc182485faf1065",
+        "source_fact:v1:2f4a61f668730ea07f0b29e43589bd7dadea4cdd579df42019b4ee2cb07d2a10",
+        "source_fact:v1:7d8f2bfd7413725d7a0649ba86f5f9c88a3c81a6579e18899672cfba1b530c66",
+        "source_fact:v1:b2208185e13ca5f299a085b5c92c4e74aacebeb63046c40a6dee4814934a3241",
+        "source_fact:v1:ea7dfda91d4656df1aba45afcee886007850180fad53a3e05c24346b7702cb4c",
+        "source_fact:v1:ec39160cb684f34992cdc3508384f98a200de0a5c2a06aa758f90a95e49902e5",
+        "source_fact:v1:ef3e5018621976524d94db8138ff0855271f19e9f3282da4cc8bb4bffa5fc19e"
+      ],
+      "source_published_kst": "2026-10-12T06:33+09:00",
+      "source_title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다[간추린 주말 뉴스]",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 올해 반도체 호황으로 역대급 수익을 내고 있는 가운데, 이르면 내년 3월 양사 직원들은 일제히 수억원대의 성과급을 지급 받을 전망이다. 국가데이터처의 '2025년 가계금융복지조사'에 따르면 지난해 3월 말 기준 가구당 평균 순자산은 4억7144만원으로 전년대비 5.0% 증가했다.",
+      "title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다[간추린 주말 뉴스]"
+    },
     "core:c02df72af45a58d76d080665": {
       "first_seen_kst": "2026-10-09T23:27:30+09:00",
       "lanes": {
@@ -21178,6 +21327,29 @@
       "source_title": "리졸브 AI, 상반기 매출 1억3100만 달러..연말 ARR 5억 달러 목표",
       "telegram_core_fact": "리졸브 AI(RZLV)는 2026년 상반기 매출액이 1억3080만 달러로 전년 동기의 20배를 넘었으며, 2026년 말 기준 연간 반복매출(ARR) 최소 5억 달러를 목표로 제시했다고 10월 8일 발표했다.",
       "title": "리졸브 AI, 상반기 매출 1억3100만 달러..연말 ARR 5억 달러 목표"
+    },
+    "core:d47de29122fbb410fc368b13": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=01436646645612264&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "e38b4172777bd621e99bbd69b2058421013b5f189c0b8c83a98fb0610c94be77",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2037022498da76bead7fa7a3e8d1e0abd8b8a6f50e48b0b3eb3a24e1d1914d71",
+      "source_fact_keys": [
+        "source_fact:v1:68b790d75da3292356b9c1f1c32bd44dc956159465ced71452cf9ca4c50999b0",
+        "source_fact:v1:85a744ca6c482e5a445fb9fc66e5546b02680f7cfa665d12f8c4abb3659b6561",
+        "source_fact:v1:8d26c43cf5e87249b1a608adfaad62d699f8eeda8f1970281d57b25f75f20e86",
+        "source_fact:v1:b55551cfb6ffbbd4bde91f844cdf09e90b5a0b582999d8dddb9d36cfff222969",
+        "source_fact:v1:efa2484d574481e667d081049a82a35f8dfc3601df77ef2f16d34824129bdb0a"
+      ],
+      "source_published_kst": "2026-10-11T17:01+09:00",
+      "source_title": "반도체 수출 호황에…달러 넘치는 외환시장",
+      "telegram_core_fact": "서울 외환시장에서 원·달러 환율은 오후 3시 30분 기준 1,340.4원을 기록했다. 반도체 수출 호황으로 유입되는 달러가 늘면서 미국의 달러 강세에도 원·달러 환율이 연저점에 가까워지고 있다.",
+      "title": "반도체 수출 호황에…달러 넘치는 외환시장"
     },
     "core:d4b32f79c877b15e483a95df": {
       "first_seen_kst": "2026-10-09T16:07:27+09:00",
@@ -26108,24 +26280,26 @@
     "event:0cfb8c849fc20ac03fac331e": {
       "first_seen_kst": "2026-10-11T12:55:39+09:00",
       "lanes": {
-        "live": "2026-10-11T12:55:39+09:00"
+        "live": "2026-10-11T12:55:39+09:00",
+        "preopen": "2026-10-12T06:42:49+09:00"
       },
-      "last_seen_kst": "2026-10-11T12:55:39+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=01410406645611936",
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=01436646645612264&Kind=257",
       "source": "이데일리",
-      "source_body_digest": "790c97437946730b0964f7a513edea3ecb61efb08b3fbac5a955348edbba8a10",
+      "source_body_digest": "e38b4172777bd621e99bbd69b2058421013b5f189c0b8c83a98fb0610c94be77",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:73d81f5671d4910d12ff884a5811bb02bd427b7730509568375db426321e7115",
+      "source_fact_identity": "source_facts:v1:2037022498da76bead7fa7a3e8d1e0abd8b8a6f50e48b0b3eb3a24e1d1914d71",
       "source_fact_keys": [
-        "source_fact:v1:114414ebc1d6c097db4679077284265f0889a0596c9d4ec5bf66f17b74f20dc8",
-        "source_fact:v1:530d8854e42e320533c124c4ccca94113cfdcc84ca70c3bb7e4def011272e43e",
-        "source_fact:v1:7fee5aa77858261ac12bc533943c5d84997fa5ea46077b33261e3b3ac3a410d8",
-        "source_fact:v1:870a4a1c21116dc7cb899c7fac13eb0a48a1a463f5c5dc8058712de7cb9612d6"
+        "source_fact:v1:68b790d75da3292356b9c1f1c32bd44dc956159465ced71452cf9ca4c50999b0",
+        "source_fact:v1:85a744ca6c482e5a445fb9fc66e5546b02680f7cfa665d12f8c4abb3659b6561",
+        "source_fact:v1:8d26c43cf5e87249b1a608adfaad62d699f8eeda8f1970281d57b25f75f20e86",
+        "source_fact:v1:b55551cfb6ffbbd4bde91f844cdf09e90b5a0b582999d8dddb9d36cfff222969",
+        "source_fact:v1:efa2484d574481e667d081049a82a35f8dfc3601df77ef2f16d34824129bdb0a"
       ],
-      "source_published_kst": "2026-10-11T11:21+09:00",
-      "source_title": "반도체 호황의 그늘…중소기업 생산·수출 비중 '뚝'",
-      "telegram_core_fact": "반도체 대기업 주도로 거시 경제 지표가 개선되고 있지만, 중소기업은 제조업 생산이 줄고 수출 비중이 쪼그라드는 등 반도체 호황의 낙수효과를 누리지 못하고 있다. 전체 수출에서 중소기업이 차지하는 비중은 작년 8월 14.4%에서 올 8월 10.3%로 축소됐다.",
-      "title": "반도체 호황의 그늘…중소기업 생산·수출 비중 '뚝'"
+      "source_published_kst": "2026-10-11T17:01+09:00",
+      "source_title": "반도체 수출 호황에…달러 넘치는 외환시장",
+      "telegram_core_fact": "서울 외환시장에서 원·달러 환율은 오후 3시 30분 기준 1,340.4원을 기록했다. 반도체 수출 호황으로 유입되는 달러가 늘면서 미국의 달러 강세에도 원·달러 환율이 연저점에 가까워지고 있다.",
+      "title": "반도체 수출 호황에…달러 넘치는 외환시장"
     },
     "event:0ed0601c2915146037de3478": {
       "first_seen_kst": "2026-09-29T09:48:13+09:00",
@@ -27395,30 +27569,34 @@
     "event:2881a326637c21bd9c88bb6f": {
       "first_seen_kst": "2026-10-12T05:09:39+09:00",
       "lanes": {
-        "live": "2026-10-12T05:09:39+09:00"
+        "live": "2026-10-12T05:09:39+09:00",
+        "preopen": "2026-10-12T06:42:49+09:00"
       },
-      "last_seen_kst": "2026-10-12T05:09:39+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2634292",
-      "source": "이투데이",
-      "source_body_digest": "4c27315dd451ec0dd30423b9727d6055617d0869dc9993cac791fde09aa1358d",
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.news1.kr/economy/trend/6315056",
+      "source": "뉴스1",
+      "source_body_digest": "c3ed76ff065df6237882dae308dfad6c0544058535e5a7b4da8a3a3bd53bd799",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:3ccba060794fd051f572c91a13fe377f31e605bb65ef4785b02c2527808404d4",
+      "source_fact_identity": "source_facts:v1:727a0685f2fd997dabef38e3e5387dd44435f1744e1c07c9934df6007ec43a7d",
       "source_fact_keys": [
-        "source_fact:v1:2c9274bb29a793619523453ff534590be413469bbebbdd0dba22ce6f3096213c",
-        "source_fact:v1:3869caf29a329669a1de9e64fa8c13aa5eae71372db504b3879b49ac11ab9cd4",
-        "source_fact:v1:81479d3e0a7ca2ed5a43362d433924e2e0050d88bc784e3360a9978830a44cea",
-        "source_fact:v1:aece4ae08d749a07e84dba48ebc03a6a0793419fcdbd671985e4d777a5d1ee21",
-        "source_fact:v1:d3b1628f04dfcf1894491b45cce48e9bf15e8f85c1bcb82ab3f8c86a11b80cb4",
-        "source_fact:v1:d9b84fea856f22cbb81455f9569db40add63cd0ad985a3a00479bf1ee8e5b233",
-        "source_fact:v1:daa3c7add7145ddf1a279ebfdb5c1f55a90bedebf0c7f67eadfec64bdc2dcc34",
-        "source_fact:v1:dd307d780c5688eaef75240b6ff548bb72a42aaff85af8774e60b4408a9bebd4",
-        "source_fact:v1:e4aef71252b61caf4188c52783389bcef52e6cdd8643902ea006b16e8836d4bd",
-        "source_fact:v1:ee01d8703b9652e23458891b7e349526843c094a351730e89339c568699c170d"
+        "source_fact:v1:09fd5d9d959224b4df9d0a8bcfbfbfca310318d969b2dc8c94121ddf87c2ceb5",
+        "source_fact:v1:210ad36b2492d7e7920f917ca2c84edb7df4e0f4ecc462f017ee07f5e2478e18",
+        "source_fact:v1:24e715603b62db79677c7a83522a378a15252c8c4a13ba30e0c078792b7b761b",
+        "source_fact:v1:3278e816850beafce1f8868fb1ff48154a3ddba53cca32c7215b51248aa2d7f8",
+        "source_fact:v1:3ce042d4c72b7934640f247aa6f0841d4fe52c2131d100bcc97578886d9cf1b3",
+        "source_fact:v1:78655581f5e6fab03dda7be4ff575835695b31e2129681cf40831f2d2aad4744",
+        "source_fact:v1:99a3d4a81788785d207b0357aaef241064c8cd871722d0b70ba16bc4a6952c56",
+        "source_fact:v1:a92d351bf9cf541ae5beda87f34464359a4c8d5a91c482466685b9631abffb5d",
+        "source_fact:v1:ad5c242795401934be2728fd6f98c0c31ccfe45d3ecc43f4d97ef2c93bf1036f",
+        "source_fact:v1:b68fd8a64e11abcb62b8aa6ce79c562128ec71ded507d39d3dcb8f63dad206dd",
+        "source_fact:v1:c72a6d1b6811c157432b057f04e0d2b097535f3889ff74b0793b0b35248ce3cf",
+        "source_fact:v1:d7f979b73170cc0ec0765ac1260d3702ff7c8dbbccd985839fec2c4b96feb401",
+        "source_fact:v1:dcf3e6e510eff46e473e34aaea5bf2d31da914f402bd39d3db720daccd530d8d"
       ],
-      "source_published_kst": "2026-10-12T05:00+09:00",
-      "source_title": "싸서 택한 주담대 변동금리, 상승폭 고정형 추월⋯커지는 차주 부담",
-      "telegram_core_fact": "고정형 주담대 금리는 4.88%로 전월보다 0.12%p 상승했다.",
-      "title": "싸서 택한 주담대 변동금리, 상승폭 고정형 추월⋯커지는 차주 부담"
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심",
+      "telegram_core_fact": "정부의 국채 발행 축소 발표 이후 금리는 3% 후반대로 내려왔지만, 지난 8일에는 다시 연 3.983%로 오르며 4% 턱밑까지 올라섰다.",
+      "title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심"
     },
     "event:28e538d8e978a0ccfdf6d9b3": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
@@ -33074,35 +33252,28 @@
     "event:b61411a301f8645f69ea7f13": {
       "first_seen_kst": "2026-10-12T06:27:02+09:00",
       "lanes": {
-        "live": "2026-10-12T06:27:02+09:00"
+        "live": "2026-10-12T06:27:02+09:00",
+        "preopen": "2026-10-12T06:42:49+09:00"
       },
-      "last_seen_kst": "2026-10-12T06:27:02+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2634163",
-      "source": "이투데이",
-      "source_body_digest": "a8c48b6daaad1be17fb9c09e55d804d7108fa7ad5e4b5bbcec633731047d9ee3",
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821228",
+      "source": "뉴시스",
+      "source_body_digest": "02d3a68bc4bb711575b08be805a6743a9b5ed750fc4f0b720cdfe8e24ccb143c",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:85cee084cf75c11c8c5a16939aa19585573a1a9aa2a027f662975bf6094555a8",
+      "source_fact_identity": "source_facts:v1:087cd70573e28645826d3a61865010043c10a291aedd795acfa3db882a4c405a",
       "source_fact_keys": [
-        "source_fact:v1:038bbad1d086d585fe797f970e0c55a454338fb4562fdec0c3c9cd2a09a7dbc5",
-        "source_fact:v1:1ff1e4be9aaa4c15e5f80ac330bbbf1d2068dd0a6ed50ab53f62a1ca5550008c",
-        "source_fact:v1:20cc4b02228bd8a37e7a19107850cc20e6e7fb96a7da45acdf96e27150526f6d",
-        "source_fact:v1:257242890e6617b7b466ca6a3e2917cc7b4d5903e30f87362174280802024b71",
-        "source_fact:v1:2d3c8b977188db4a7837f3f5d7cb252242211ea6ad0e295e9b46850c5b318214",
-        "source_fact:v1:2e8106baa95995051998046257e5ed40eda78b1a1fd3fe9d659a1aa8daa5c18d",
-        "source_fact:v1:4aa0d2ad2fde17f071ea0eb6e342c30b2d37b1dbc202abc3596044be04fb1da4",
-        "source_fact:v1:4e3d4bae945206bf8e3ddee935e8e490b9b24b6270fba8acc9d06cac80a757d2",
-        "source_fact:v1:6de71b1f9a86b0caf39ae3710a89bac73c9fb0daf597c6d51f3ba0c4711d3e12",
-        "source_fact:v1:8803b2da2deb2cd6b2cfcbf7b7911b3bdfeae0059da94da97c06b54c58d0e250",
-        "source_fact:v1:a343cba927fcf16cf4ff9d999a17eb07241543597c18714ce638ef4abfdb86e6",
-        "source_fact:v1:d0a9e2fa68fd576f17e8e624ccf2f7e09f8ad2037199ff0fbfb3bdae3421fb9f",
-        "source_fact:v1:dd9c2635a9af8134ce82d862ad177188b4b91cfe6d1d0f5a0e58b5265e525091",
-        "source_fact:v1:e868350c9cc6eda2025be2c761680cbefb72f361d268550991965f087d859ae8",
-        "source_fact:v1:e94d4acec2c88a0a682a718c8c9877f28fe5bcf1c834a714be5bc3313ed64b95"
+        "source_fact:v1:106bddd480ac85314eabe8a5811befbc4c59366c0d25883f5bc182485faf1065",
+        "source_fact:v1:2f4a61f668730ea07f0b29e43589bd7dadea4cdd579df42019b4ee2cb07d2a10",
+        "source_fact:v1:7d8f2bfd7413725d7a0649ba86f5f9c88a3c81a6579e18899672cfba1b530c66",
+        "source_fact:v1:b2208185e13ca5f299a085b5c92c4e74aacebeb63046c40a6dee4814934a3241",
+        "source_fact:v1:ea7dfda91d4656df1aba45afcee886007850180fad53a3e05c24346b7702cb4c",
+        "source_fact:v1:ec39160cb684f34992cdc3508384f98a200de0a5c2a06aa758f90a95e49902e5",
+        "source_fact:v1:ef3e5018621976524d94db8138ff0855271f19e9f3282da4cc8bb4bffa5fc19e"
       ],
-      "source_published_kst": "2026-10-12T06:00+09:00",
-      "source_title": "[주간수급리포트] 6620선 주저앉은 코스피…삼전 셀온·외인 팔자에 5% '뚝'",
-      "telegram_core_fact": "지난주 코스피 지수는 외국인과 기관의 대규모 동반 매도세와 삼성전자의 셀온(Sell-on, 호재 속 가격하락) 물량 출회에 타격을 입으며 직전 주 대비 5% 이상 하락한 6620선으로 밀려났다.",
-      "title": "[주간수급리포트] 6620선 주저앉은 코스피…삼전 셀온·외인 팔자에 5% '뚝'"
+      "source_published_kst": "2026-10-12T06:33+09:00",
+      "source_title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다[간추린 주말 뉴스]",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 올해 반도체 호황으로 역대급 수익을 내고 있는 가운데, 이르면 내년 3월 양사 직원들은 일제히 수억원대의 성과급을 지급 받을 전망이다. 국가데이터처의 '2025년 가계금융복지조사'에 따르면 지난해 3월 말 기준 가구당 평균 순자산은 4억7144만원으로 전년대비 5.0% 증가했다.",
+      "title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다[간추린 주말 뉴스]"
     },
     "event:b6320c244e060d6bb2fb7ee2": {
       "first_seen_kst": "2026-10-11T12:55:39+09:00",
@@ -42778,6 +42949,26 @@
       ],
       "source_published_kst": "2026-10-05T19:53+09:00",
       "title": "재개봉 '어벤져스: 엔드게임', '아바타' 다시 제치고 세계 1위"
+    },
+    "fact:275c7c828859d82fe7058a0c": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.fnnews.com/news/202610120600427723",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "c9433565523ef5e080261b96c66ac2d5ea2830313217360712ecb7bc182f3a66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4c6773e6bd531e0962ac93db4d47a6b2e62e75e0d3d0378f82ed6405e82bcf69",
+      "source_fact_keys": [
+        "source_fact:v1:6bf0f861858d12f94afa0fd98666004ac78885c97c3622035deb69460e66669b",
+        "source_fact:v1:a44f01da95f7cd58ebc82a55e0be0c814dfb8710ffad79e41d71154f65668a63"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "노타 채명수 \"고사양 GPU 추가보다 기존 인프라 활용 대세\" [K-챌린저]",
+      "telegram_core_fact": "채명수 노타(Nota AI) 대표는 뉴스1과 인터뷰에서 인공지능(AI) 모델 경량화나 개별 칩 최적화를 넘어 고객의 AI 도입 전 과정을 지원하는 기업으로 성장하겠다며 이같이 말했다.",
+      "title": "노타 채명수 \"고사양 GPU 추가보다 기존 인프라 활용 대세\" [K-챌린저]"
     },
     "fact:2763dcf9e0d5af43dcdc2bc0": {
       "first_seen_kst": "2026-10-09T16:53:11+09:00",
@@ -57449,6 +57640,31 @@
       "telegram_core_fact": "프로파운드 메디컬(PROF)이 9월 30일 종료된 2026년 3분기 예비 매출액이 980만~1000만 달러로, 전년 동기 530만 달러 대비 약 85~89% 증가할 것으로 예상된다고 7일 발표했다.",
       "title": "프로파운드 메디컬, 3분기 예비 매출 980만~1000만 달러..전년비 최대 89%↑"
     },
+    "fact:883b78c27120e4363c366a3e": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12173217",
+      "source": "매일경제",
+      "source_body_digest": "22bcaec3ee308ef4a1759fb51d03cac8f9900fa1a3b836717ad41c1afb6fec8c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f4d5a9da2affb23175cb332cdd807144dfbe0698637dd8b182cf3473f506b449",
+      "source_fact_keys": [
+        "source_fact:v1:37c31b346ad69b880c02f3fab0606f92aa79dec25218b172b83c21e6a881ba5c",
+        "source_fact:v1:7704555dab0fa71049f339121eff9ba85fec3f154fd2c40ddb23c4fb4158e54f",
+        "source_fact:v1:949602684848b22342f9c33124028bfbffcb1970e105d21baf32e1116fe816b2",
+        "source_fact:v1:9b00f435c0bccf5e6891f6fb881e914e92d5547c17a83df54cdbaa38332b5396",
+        "source_fact:v1:9ea892054721eebc212285651f4fdb861d90054b99222c4fec73a2b44b53ca07",
+        "source_fact:v1:ac85a2f806c3103fcc2b0fbffe246ac55044a42f6393bb191941bfa359c5a0b6",
+        "source_fact:v1:c3bf0efd1f2c88286fa2e55be1a1cc6b56e6c84565965dce59ace1715a31e71b"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "김동선, 독립경영 강화 속도전 … 한화M&S 지분 19% 공개매수",
+      "telegram_core_fact": "전략총괄 사장 8000원·개매수에 성공하면 김 사장 1285억원, 지분율 5.81→24.81%를 매수했습니다.",
+      "title": "김동선, 독립경영 강화 속도전 … 한화M&S 지분 19% 공개매수"
+    },
     "fact:887617f9827ff689561e4366": {
       "first_seen_kst": "2026-10-05T23:05:12+09:00",
       "lanes": {
@@ -64105,6 +64321,29 @@
       "source_published_kst": "2026-10-07T12:00+09:00",
       "title": "'선박왕' 권혁, 15년 만에 체납세금 3938억 완납 의사…1000억 우선 납부"
     },
+    "fact:b00b28a354d96248a8956cfa": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=01436646645612264&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "e38b4172777bd621e99bbd69b2058421013b5f189c0b8c83a98fb0610c94be77",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2037022498da76bead7fa7a3e8d1e0abd8b8a6f50e48b0b3eb3a24e1d1914d71",
+      "source_fact_keys": [
+        "source_fact:v1:68b790d75da3292356b9c1f1c32bd44dc956159465ced71452cf9ca4c50999b0",
+        "source_fact:v1:85a744ca6c482e5a445fb9fc66e5546b02680f7cfa665d12f8c4abb3659b6561",
+        "source_fact:v1:8d26c43cf5e87249b1a608adfaad62d699f8eeda8f1970281d57b25f75f20e86",
+        "source_fact:v1:b55551cfb6ffbbd4bde91f844cdf09e90b5a0b582999d8dddb9d36cfff222969",
+        "source_fact:v1:efa2484d574481e667d081049a82a35f8dfc3601df77ef2f16d34824129bdb0a"
+      ],
+      "source_published_kst": "2026-10-11T17:01+09:00",
+      "source_title": "반도체 수출 호황에…달러 넘치는 외환시장",
+      "telegram_core_fact": "서울 외환시장에서 원·달러 환율은 오후 3시 30분 기준 1,340.4원을 기록했다. 반도체 수출 호황으로 유입되는 달러가 늘면서 미국의 달러 강세에도 원·달러 환율이 연저점에 가까워지고 있다.",
+      "title": "반도체 수출 호황에…달러 넘치는 외환시장"
+    },
     "fact:b00ecd6efe5b0c09dfdd5017": {
       "first_seen_kst": "2026-10-06T15:03:09+09:00",
       "lanes": {
@@ -64672,6 +64911,27 @@
       ],
       "source_published_kst": "2026-10-06T18:28+09:00",
       "title": "포스코퓨처엠, 삼성SDI와 6조 원 규모 LFP 공급 계약 체결… K-배터리 핵심 도약"
+    },
+    "fact:b32870655c979672da280cec": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/12/2026101206130938117",
+      "source": "머니투데이",
+      "source_body_digest": "72952a6a9895dc0e13f5e076c13ae98535adf44a62c26680256cbf4a2eb7b3dc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd757961a6b5bd598836d40c789195d7fb141584bb995a2f2c73a926f2960aa8",
+      "source_fact_keys": [
+        "source_fact:v1:4bbe7a7321f7ac19dceb4bea397212def1d8c5547a9575b326e251f4eadd2f40",
+        "source_fact:v1:4f1820fecadeb1cc974caee832f10878aaa4f713307f2cfa535ce8e9244fc6f5",
+        "source_fact:v1:f72059f30fa40331fa72b2e54edd396def8828737531bbdd905d4674ff7c7a9f"
+      ],
+      "source_published_kst": "2026-10-12T06:22+09:00",
+      "source_title": "\"한국, 알래스카 LNG 투자 결정한 것 없어…사업성 확인이 먼저\"",
+      "telegram_core_fact": "한국이 미국 알래스카 액화천연가스(LNG) 개발 사업에 최소 500억달러를 투자하기로 약속했다는 도널드 트럼프 대통령 발표와 달리, 한국 측은 투자 결정을 내리지 않은 것으로 보인다는 알래스카 현지 매체의 보도가 나왔다.",
+      "title": "\"한국, 알래스카 LNG 투자 결정한 것 없어…사업성 확인이 먼저\""
     },
     "fact:b32ee6df58f8113474776a71": {
       "first_seen_kst": "2026-10-06T22:51:44+09:00",
@@ -69750,6 +70010,33 @@
       "source_published_kst": "2026-10-07T09:27+09:00",
       "title": "\"화장품株 주가 조정 과도\"…아모레퍼시픽 5%·한국콜마 5%대 상승"
     },
+    "fact:d228604aa954574e359c8099": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634372",
+      "source": "이투데이",
+      "source_body_digest": "e35c30986704e55e513be667df21588ef2b2225c90be5ec8e7d1cab09637f7ac",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3c7450a3f908d4186234394c49a7a270417e7f79751d512685959cf28627cae",
+      "source_fact_keys": [
+        "source_fact:v1:19452545b16aaececc4804a1b62acab598ed0cc32713a4289a6991867dab88dd",
+        "source_fact:v1:1beccc234bd02d49524c759e98c40289a91e8e9d2ae13241661403974eb6916b",
+        "source_fact:v1:45cee855bc33c2c70167f27da21918db1e93e62e34dd83bba242f76f9bd5f202",
+        "source_fact:v1:6459f9323cba9ee0372a243c657839f681445d7be7873710e884cb83a6200ec0",
+        "source_fact:v1:682672918790eed5c9a9f72ddd7a10cd36a3133738ca7a9ace41ea6821d29b40",
+        "source_fact:v1:6f38b86dc4d22b9f2e5410fb9ad68a200ba533db54412f71b011696ab0dc8e5f",
+        "source_fact:v1:b6529ce3dd9e54f34cdf31dc92f616d4e4de13c937584133f15f4333a2ba1eeb",
+        "source_fact:v1:c118f8aa31f206e7222d822e31f3d253d8a50efce5e21a56738340f6a1bf638a",
+        "source_fact:v1:d72dbb2b47df25ce23ef34a29b5bcefe0541f70a5a1f74ed449db900ea2384c4"
+      ],
+      "source_published_kst": "2026-10-12T06:22+09:00",
+      "source_title": "트럼프 “러·우크라 에너지 휴전”…러 확인 없고 젤렌스키 “금시초문”",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아와 우크라이나가 서로의 에너지 시설을 공격하지 않는 ‘에너지 휴전’에 합의했다고 발표했다. 11일(현지시간) 트럼프 대통령은 트루스소셜에 “러시아와 우크라이나 전쟁에서 에너지 휴전이 즉각 발효된다”며 “양측 모두 동의했다. 이를 위반하지 말라”고 밝혔다.",
+      "title": "트럼프 “러·우크라 에너지 휴전”…러 확인 없고 젤렌스키 “금시초문”"
+    },
     "fact:d2392440ec3837ef2f90e591": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
       "lanes": {
@@ -73563,6 +73850,37 @@
       "telegram_core_fact": "LG전자는 2026년 3분기 연결기준 매출 23조8270억원, 영업이익 7818억원을 잠정 기록했다고 7일 발표했다.",
       "title": "LG전자, 3분기 누적 영업이익 4조 첫 돌파…매출 9% 늘 때 이익 56% 뛰었다"
     },
+    "fact:e8618653191b676b2277f0fd": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.news1.kr/economy/trend/6315056",
+      "source": "뉴스1",
+      "source_body_digest": "c3ed76ff065df6237882dae308dfad6c0544058535e5a7b4da8a3a3bd53bd799",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:727a0685f2fd997dabef38e3e5387dd44435f1744e1c07c9934df6007ec43a7d",
+      "source_fact_keys": [
+        "source_fact:v1:09fd5d9d959224b4df9d0a8bcfbfbfca310318d969b2dc8c94121ddf87c2ceb5",
+        "source_fact:v1:210ad36b2492d7e7920f917ca2c84edb7df4e0f4ecc462f017ee07f5e2478e18",
+        "source_fact:v1:24e715603b62db79677c7a83522a378a15252c8c4a13ba30e0c078792b7b761b",
+        "source_fact:v1:3278e816850beafce1f8868fb1ff48154a3ddba53cca32c7215b51248aa2d7f8",
+        "source_fact:v1:3ce042d4c72b7934640f247aa6f0841d4fe52c2131d100bcc97578886d9cf1b3",
+        "source_fact:v1:78655581f5e6fab03dda7be4ff575835695b31e2129681cf40831f2d2aad4744",
+        "source_fact:v1:99a3d4a81788785d207b0357aaef241064c8cd871722d0b70ba16bc4a6952c56",
+        "source_fact:v1:a92d351bf9cf541ae5beda87f34464359a4c8d5a91c482466685b9631abffb5d",
+        "source_fact:v1:ad5c242795401934be2728fd6f98c0c31ccfe45d3ecc43f4d97ef2c93bf1036f",
+        "source_fact:v1:b68fd8a64e11abcb62b8aa6ce79c562128ec71ded507d39d3dcb8f63dad206dd",
+        "source_fact:v1:c72a6d1b6811c157432b057f04e0d2b097535f3889ff74b0793b0b35248ce3cf",
+        "source_fact:v1:d7f979b73170cc0ec0765ac1260d3702ff7c8dbbccd985839fec2c4b96feb401",
+        "source_fact:v1:dcf3e6e510eff46e473e34aaea5bf2d31da914f402bd39d3db720daccd530d8d"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심",
+      "telegram_core_fact": "정부의 국채 발행 축소 발표 이후 금리는 3% 후반대로 내려왔지만, 지난 8일에는 다시 연 3.983%로 오르며 4% 턱밑까지 올라섰다.",
+      "title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심"
+    },
     "fact:e8a4f366d5e2caa43cea079d": {
       "first_seen_kst": "2026-10-08T06:10:43+09:00",
       "lanes": {
@@ -75766,6 +76084,31 @@
       ],
       "source_published_kst": "2026-10-06T08:25+09:00",
       "title": "NH투자證, “LS일렉트릭, 3분기 영업익 106%↑⋯북미 수혜”"
+    },
+    "fact:f72115660cd957dfd32aa562": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821228",
+      "source": "뉴시스",
+      "source_body_digest": "02d3a68bc4bb711575b08be805a6743a9b5ed750fc4f0b720cdfe8e24ccb143c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:087cd70573e28645826d3a61865010043c10a291aedd795acfa3db882a4c405a",
+      "source_fact_keys": [
+        "source_fact:v1:106bddd480ac85314eabe8a5811befbc4c59366c0d25883f5bc182485faf1065",
+        "source_fact:v1:2f4a61f668730ea07f0b29e43589bd7dadea4cdd579df42019b4ee2cb07d2a10",
+        "source_fact:v1:7d8f2bfd7413725d7a0649ba86f5f9c88a3c81a6579e18899672cfba1b530c66",
+        "source_fact:v1:b2208185e13ca5f299a085b5c92c4e74aacebeb63046c40a6dee4814934a3241",
+        "source_fact:v1:ea7dfda91d4656df1aba45afcee886007850180fad53a3e05c24346b7702cb4c",
+        "source_fact:v1:ec39160cb684f34992cdc3508384f98a200de0a5c2a06aa758f90a95e49902e5",
+        "source_fact:v1:ef3e5018621976524d94db8138ff0855271f19e9f3282da4cc8bb4bffa5fc19e"
+      ],
+      "source_published_kst": "2026-10-12T06:33+09:00",
+      "source_title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다[간추린 주말 뉴스]",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 올해 반도체 호황으로 역대급 수익을 내고 있는 가운데, 이르면 내년 3월 양사 직원들은 일제히 수억원대의 성과급을 지급 받을 전망이다. 국가데이터처의 '2025년 가계금융복지조사'에 따르면 지난해 3월 말 기준 가구당 평균 순자산은 4억7144만원으로 전년대비 5.0% 증가했다.",
+      "title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다[간추린 주말 뉴스]"
     },
     "fact:f7415e4e83c1b892bbec086e": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
@@ -80609,6 +80952,26 @@
       "link": "https://www.mk.co.kr/news/stock/12163047",
       "source": "매일경제",
       "title": "샤오펑, 상반기 매출 328억 위안..서비스 부문 67% 급증"
+    },
+    "link:0ea67d9bf3f43390cf6f54bc": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.fnnews.com/news/202610120600427723",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "c9433565523ef5e080261b96c66ac2d5ea2830313217360712ecb7bc182f3a66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4c6773e6bd531e0962ac93db4d47a6b2e62e75e0d3d0378f82ed6405e82bcf69",
+      "source_fact_keys": [
+        "source_fact:v1:6bf0f861858d12f94afa0fd98666004ac78885c97c3622035deb69460e66669b",
+        "source_fact:v1:a44f01da95f7cd58ebc82a55e0be0c814dfb8710ffad79e41d71154f65668a63"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "노타 채명수 \"고사양 GPU 추가보다 기존 인프라 활용 대세\" [K-챌린저]",
+      "telegram_core_fact": "채명수 노타(Nota AI) 대표는 뉴스1과 인터뷰에서 인공지능(AI) 모델 경량화나 개별 칩 최적화를 넘어 고객의 AI 도입 전 과정을 지원하는 기업으로 성장하겠다며 이같이 말했다.",
+      "title": "노타 채명수 \"고사양 GPU 추가보다 기존 인프라 활용 대세\" [K-챌린저]"
     },
     "link:0eb80b880fc3194ebccbf387": {
       "first_seen_kst": "2026-10-12T01:34:33+09:00",
@@ -89360,6 +89723,31 @@
       "telegram_core_fact": "가온칩스(399720)는 주문형 반도체 설계 개발에 관한 단일판매ㆍ공급계약체결 을 08일에 공시했다. 계약금액은 76.7억원이다.",
       "title": "가온칩스 수주공시 - 주문형 반도체 설계 개발 76.7억원 (매출액대비 11.20 %)"
     },
+    "link:31eb57dbc5ecf94202243198": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12173217",
+      "source": "매일경제",
+      "source_body_digest": "22bcaec3ee308ef4a1759fb51d03cac8f9900fa1a3b836717ad41c1afb6fec8c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f4d5a9da2affb23175cb332cdd807144dfbe0698637dd8b182cf3473f506b449",
+      "source_fact_keys": [
+        "source_fact:v1:37c31b346ad69b880c02f3fab0606f92aa79dec25218b172b83c21e6a881ba5c",
+        "source_fact:v1:7704555dab0fa71049f339121eff9ba85fec3f154fd2c40ddb23c4fb4158e54f",
+        "source_fact:v1:949602684848b22342f9c33124028bfbffcb1970e105d21baf32e1116fe816b2",
+        "source_fact:v1:9b00f435c0bccf5e6891f6fb881e914e92d5547c17a83df54cdbaa38332b5396",
+        "source_fact:v1:9ea892054721eebc212285651f4fdb861d90054b99222c4fec73a2b44b53ca07",
+        "source_fact:v1:ac85a2f806c3103fcc2b0fbffe246ac55044a42f6393bb191941bfa359c5a0b6",
+        "source_fact:v1:c3bf0efd1f2c88286fa2e55be1a1cc6b56e6c84565965dce59ace1715a31e71b"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "김동선, 독립경영 강화 속도전 … 한화M&S 지분 19% 공개매수",
+      "telegram_core_fact": "전략총괄 사장 8000원·개매수에 성공하면 김 사장 1285억원, 지분율 5.81→24.81%를 매수했습니다.",
+      "title": "김동선, 독립경영 강화 속도전 … 한화M&S 지분 19% 공개매수"
+    },
     "link:31edcce87ae51139000f392c": {
       "first_seen_kst": "2026-10-08T00:24:24+09:00",
       "lanes": {
@@ -93990,6 +94378,31 @@
       "telegram_core_fact": "11월 3일 중간선거를 앞둔 트럼프 대통령으로서는 후티 공격 동참을 통한 군사적 확전이 부담스러울 수밖에 없다.",
       "title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스"
     },
+    "link:463ee05d65c247ec278dccc6": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821228",
+      "source": "뉴시스",
+      "source_body_digest": "02d3a68bc4bb711575b08be805a6743a9b5ed750fc4f0b720cdfe8e24ccb143c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:087cd70573e28645826d3a61865010043c10a291aedd795acfa3db882a4c405a",
+      "source_fact_keys": [
+        "source_fact:v1:106bddd480ac85314eabe8a5811befbc4c59366c0d25883f5bc182485faf1065",
+        "source_fact:v1:2f4a61f668730ea07f0b29e43589bd7dadea4cdd579df42019b4ee2cb07d2a10",
+        "source_fact:v1:7d8f2bfd7413725d7a0649ba86f5f9c88a3c81a6579e18899672cfba1b530c66",
+        "source_fact:v1:b2208185e13ca5f299a085b5c92c4e74aacebeb63046c40a6dee4814934a3241",
+        "source_fact:v1:ea7dfda91d4656df1aba45afcee886007850180fad53a3e05c24346b7702cb4c",
+        "source_fact:v1:ec39160cb684f34992cdc3508384f98a200de0a5c2a06aa758f90a95e49902e5",
+        "source_fact:v1:ef3e5018621976524d94db8138ff0855271f19e9f3282da4cc8bb4bffa5fc19e"
+      ],
+      "source_published_kst": "2026-10-12T06:33+09:00",
+      "source_title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다[간추린 주말 뉴스]",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 올해 반도체 호황으로 역대급 수익을 내고 있는 가운데, 이르면 내년 3월 양사 직원들은 일제히 수억원대의 성과급을 지급 받을 전망이다. 국가데이터처의 '2025년 가계금융복지조사'에 따르면 지난해 3월 말 기준 가구당 평균 순자산은 4억7144만원으로 전년대비 5.0% 증가했다.",
+      "title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다[간추린 주말 뉴스]"
+    },
     "link:468110f9a86c2a1b9dc7eced": {
       "first_seen_kst": "2026-10-10T08:48:09+09:00",
       "lanes": {
@@ -95408,6 +95821,33 @@
       "source_title": "[단독] 한투, 美에 대체투자 운용사 세운다",
       "telegram_core_fact": "지난 5월 국내 3위 암호화폐거래소 운영사 코인원 지분 20%를 취득한 데 이어 최근 KDB생명 인수 우선협상대상자로 선정됐다. 한국투자금융그룹이 미국 대체투자 전문 운용사 찰스뱅크캐피털파트너스와 합작법인(JV) 설립을 추진한다.",
       "title": "[단독] 한투, 美에 대체투자 운용사 세운다"
+    },
+    "link:4c7c51b855a20d1c2cea8379": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634372",
+      "source": "이투데이",
+      "source_body_digest": "e35c30986704e55e513be667df21588ef2b2225c90be5ec8e7d1cab09637f7ac",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3c7450a3f908d4186234394c49a7a270417e7f79751d512685959cf28627cae",
+      "source_fact_keys": [
+        "source_fact:v1:19452545b16aaececc4804a1b62acab598ed0cc32713a4289a6991867dab88dd",
+        "source_fact:v1:1beccc234bd02d49524c759e98c40289a91e8e9d2ae13241661403974eb6916b",
+        "source_fact:v1:45cee855bc33c2c70167f27da21918db1e93e62e34dd83bba242f76f9bd5f202",
+        "source_fact:v1:6459f9323cba9ee0372a243c657839f681445d7be7873710e884cb83a6200ec0",
+        "source_fact:v1:682672918790eed5c9a9f72ddd7a10cd36a3133738ca7a9ace41ea6821d29b40",
+        "source_fact:v1:6f38b86dc4d22b9f2e5410fb9ad68a200ba533db54412f71b011696ab0dc8e5f",
+        "source_fact:v1:b6529ce3dd9e54f34cdf31dc92f616d4e4de13c937584133f15f4333a2ba1eeb",
+        "source_fact:v1:c118f8aa31f206e7222d822e31f3d253d8a50efce5e21a56738340f6a1bf638a",
+        "source_fact:v1:d72dbb2b47df25ce23ef34a29b5bcefe0541f70a5a1f74ed449db900ea2384c4"
+      ],
+      "source_published_kst": "2026-10-12T06:22+09:00",
+      "source_title": "트럼프 “러·우크라 에너지 휴전”…러 확인 없고 젤렌스키 “금시초문”",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아와 우크라이나가 서로의 에너지 시설을 공격하지 않는 ‘에너지 휴전’에 합의했다고 발표했다. 11일(현지시간) 트럼프 대통령은 트루스소셜에 “러시아와 우크라이나 전쟁에서 에너지 휴전이 즉각 발효된다”며 “양측 모두 동의했다. 이를 위반하지 말라”고 밝혔다.",
+      "title": "트럼프 “러·우크라 에너지 휴전”…러 확인 없고 젤렌스키 “금시초문”"
     },
     "link:4c8ef8df4a0fbd7aa2e506e3": {
       "first_seen_kst": "2026-10-04T07:14:36+09:00",
@@ -96933,6 +97373,27 @@
       "source_title": "[단독] '개발·테스트·수출' 한번에⋯K-방산, 민관 합동 '해외 시험평가장' 구축한다",
       "telegram_core_fact": "정부가 K-방산의 새로운 수출 활로로 ‘해외 시험·평가 거점 패키지’ 구축을 본격 추진한다. 특정 국가 한 곳에 대형 시험장을 일괄 구축하는 방식에서 벗어나 K-방산 수출이나 공동 개발, 현지 생산 프로젝트가 진행 중인 지역을 거점으로 삼는 ‘분산형 복수 거점’ 전략에 무게가 실린다.",
       "title": "[단독] '개발·테스트·수출' 한번에⋯K-방산, 민관 합동 '해외 시험평가장' 구축한다"
+    },
+    "link:53a01059a72161a4ba491986": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/12/2026101206130938117",
+      "source": "머니투데이",
+      "source_body_digest": "72952a6a9895dc0e13f5e076c13ae98535adf44a62c26680256cbf4a2eb7b3dc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd757961a6b5bd598836d40c789195d7fb141584bb995a2f2c73a926f2960aa8",
+      "source_fact_keys": [
+        "source_fact:v1:4bbe7a7321f7ac19dceb4bea397212def1d8c5547a9575b326e251f4eadd2f40",
+        "source_fact:v1:4f1820fecadeb1cc974caee832f10878aaa4f713307f2cfa535ce8e9244fc6f5",
+        "source_fact:v1:f72059f30fa40331fa72b2e54edd396def8828737531bbdd905d4674ff7c7a9f"
+      ],
+      "source_published_kst": "2026-10-12T06:22+09:00",
+      "source_title": "\"한국, 알래스카 LNG 투자 결정한 것 없어…사업성 확인이 먼저\"",
+      "telegram_core_fact": "한국이 미국 알래스카 액화천연가스(LNG) 개발 사업에 최소 500억달러를 투자하기로 약속했다는 도널드 트럼프 대통령 발표와 달리, 한국 측은 투자 결정을 내리지 않은 것으로 보인다는 알래스카 현지 매체의 보도가 나왔다.",
+      "title": "\"한국, 알래스카 LNG 투자 결정한 것 없어…사업성 확인이 먼저\""
     },
     "link:53a44fc70bb8c4dbbcdfc9fe": {
       "first_seen_kst": "2026-10-05T10:39:16+09:00",
@@ -104444,6 +104905,29 @@
       "source_title": "중간선거 앞둔 트럼프 ‘폭주’…꼬여만 가는 러-우크라戰",
       "telegram_core_fact": "로이터통신에 따르면 트럼프 대통령은 지난 9일(현지시간) 블라디미르 푸틴 러시아 대통령과의 통화 후 러시아가 즉시 30만톤(t) 이상의 경유를 미국과 글로벌 시장에 공급한다고 자신의 사회관계망서비스(SNS) ‘트루스소셜’을 통해 발표했다.",
       "title": "중간선거 앞둔 트럼프 ‘폭주’…꼬여만 가는 러-우크라戰"
+    },
+    "link:713697ae2c12642c221c28cb": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=01436646645612264&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "e38b4172777bd621e99bbd69b2058421013b5f189c0b8c83a98fb0610c94be77",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2037022498da76bead7fa7a3e8d1e0abd8b8a6f50e48b0b3eb3a24e1d1914d71",
+      "source_fact_keys": [
+        "source_fact:v1:68b790d75da3292356b9c1f1c32bd44dc956159465ced71452cf9ca4c50999b0",
+        "source_fact:v1:85a744ca6c482e5a445fb9fc66e5546b02680f7cfa665d12f8c4abb3659b6561",
+        "source_fact:v1:8d26c43cf5e87249b1a608adfaad62d699f8eeda8f1970281d57b25f75f20e86",
+        "source_fact:v1:b55551cfb6ffbbd4bde91f844cdf09e90b5a0b582999d8dddb9d36cfff222969",
+        "source_fact:v1:efa2484d574481e667d081049a82a35f8dfc3601df77ef2f16d34824129bdb0a"
+      ],
+      "source_published_kst": "2026-10-11T17:01+09:00",
+      "source_title": "반도체 수출 호황에…달러 넘치는 외환시장",
+      "telegram_core_fact": "서울 외환시장에서 원·달러 환율은 오후 3시 30분 기준 1,340.4원을 기록했다. 반도체 수출 호황으로 유입되는 달러가 늘면서 미국의 달러 강세에도 원·달러 환율이 연저점에 가까워지고 있다.",
+      "title": "반도체 수출 호황에…달러 넘치는 외환시장"
     },
     "link:713fee1803b6ee6d7c1661af": {
       "first_seen_kst": "2026-10-07T18:44:00+09:00",
@@ -114067,6 +114551,29 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T05:30+09:00",
       "title": "AI로 상호금융까지 광범위 공격…\"해킹 시도 훨씬 많을 수도\" | 연합뉴스"
+    },
+    "link:99f4e87ffe94230d39e0036e": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=01436646645612264&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "e38b4172777bd621e99bbd69b2058421013b5f189c0b8c83a98fb0610c94be77",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2037022498da76bead7fa7a3e8d1e0abd8b8a6f50e48b0b3eb3a24e1d1914d71",
+      "source_fact_keys": [
+        "source_fact:v1:68b790d75da3292356b9c1f1c32bd44dc956159465ced71452cf9ca4c50999b0",
+        "source_fact:v1:85a744ca6c482e5a445fb9fc66e5546b02680f7cfa665d12f8c4abb3659b6561",
+        "source_fact:v1:8d26c43cf5e87249b1a608adfaad62d699f8eeda8f1970281d57b25f75f20e86",
+        "source_fact:v1:b55551cfb6ffbbd4bde91f844cdf09e90b5a0b582999d8dddb9d36cfff222969",
+        "source_fact:v1:efa2484d574481e667d081049a82a35f8dfc3601df77ef2f16d34824129bdb0a"
+      ],
+      "source_published_kst": "2026-10-11T17:01+09:00",
+      "source_title": "반도체 수출 호황에…달러 넘치는 외환시장",
+      "telegram_core_fact": "서울 외환시장에서 원·달러 환율은 오후 3시 30분 기준 1,340.4원을 기록했다. 반도체 수출 호황으로 유입되는 달러가 늘면서 미국의 달러 강세에도 원·달러 환율이 연저점에 가까워지고 있다.",
+      "title": "반도체 수출 호황에…달러 넘치는 외환시장"
     },
     "link:9a0d2c13a9ccb277eb4e44fd": {
       "first_seen_kst": "2026-10-09T16:53:11+09:00",
@@ -137428,6 +137935,37 @@
       "telegram_core_fact": "국제 스포츠 대회에서 우수한 성적을 거둔 선수들에게 주어지는 '주택 특별공급(특공)' 혜택을 둘러싸고 공정성 논란이 일자 국토교통부가 관련 제도 개편을 검토하기로 한 것으로 알려졌다.",
       "title": "아시안게임 병역 특례논란 후폭풍… 국토부, 우수 선수 ‘아파트 특공’ 손본다"
     },
+    "link:fe6bb884254273661cde5d9b": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.news1.kr/economy/trend/6315056",
+      "source": "뉴스1",
+      "source_body_digest": "c3ed76ff065df6237882dae308dfad6c0544058535e5a7b4da8a3a3bd53bd799",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:727a0685f2fd997dabef38e3e5387dd44435f1744e1c07c9934df6007ec43a7d",
+      "source_fact_keys": [
+        "source_fact:v1:09fd5d9d959224b4df9d0a8bcfbfbfca310318d969b2dc8c94121ddf87c2ceb5",
+        "source_fact:v1:210ad36b2492d7e7920f917ca2c84edb7df4e0f4ecc462f017ee07f5e2478e18",
+        "source_fact:v1:24e715603b62db79677c7a83522a378a15252c8c4a13ba30e0c078792b7b761b",
+        "source_fact:v1:3278e816850beafce1f8868fb1ff48154a3ddba53cca32c7215b51248aa2d7f8",
+        "source_fact:v1:3ce042d4c72b7934640f247aa6f0841d4fe52c2131d100bcc97578886d9cf1b3",
+        "source_fact:v1:78655581f5e6fab03dda7be4ff575835695b31e2129681cf40831f2d2aad4744",
+        "source_fact:v1:99a3d4a81788785d207b0357aaef241064c8cd871722d0b70ba16bc4a6952c56",
+        "source_fact:v1:a92d351bf9cf541ae5beda87f34464359a4c8d5a91c482466685b9631abffb5d",
+        "source_fact:v1:ad5c242795401934be2728fd6f98c0c31ccfe45d3ecc43f4d97ef2c93bf1036f",
+        "source_fact:v1:b68fd8a64e11abcb62b8aa6ce79c562128ec71ded507d39d3dcb8f63dad206dd",
+        "source_fact:v1:c72a6d1b6811c157432b057f04e0d2b097535f3889ff74b0793b0b35248ce3cf",
+        "source_fact:v1:d7f979b73170cc0ec0765ac1260d3702ff7c8dbbccd985839fec2c4b96feb401",
+        "source_fact:v1:dcf3e6e510eff46e473e34aaea5bf2d31da914f402bd39d3db720daccd530d8d"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심",
+      "telegram_core_fact": "정부의 국채 발행 축소 발표 이후 금리는 3% 후반대로 내려왔지만, 지난 8일에는 다시 연 3.983%로 오르며 4% 턱밑까지 올라섰다.",
+      "title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심"
+    },
     "link:fe7e74ee6bdb2418a07a510c": {
       "first_seen_kst": "2026-10-08T20:58:15+09:00",
       "lanes": {
@@ -143023,6 +143561,27 @@
       "source_title": "'AI 클라우드 기업' 엘리스그룹, 일반공모 돌입[오늘청약]",
       "telegram_core_fact": "회사에 따르면 올해 상반기 연결 기준 매출액은 344억원, 영업이익은 103억원을 기록했다. 인공지능(AI) 클라우드 기업 엘리스그룹이 오늘(7일)부터 이틀간 코스닥 상장을 위한 일반투자자 대상 공모주 청약을 진행한다.",
       "title": "'AI 클라우드 기업' 엘리스그룹, 일반공모 돌입[오늘청약]"
+    },
+    "original:167f531e65f96a0ebd3a9380": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/12/2026101206130938117",
+      "source": "머니투데이",
+      "source_body_digest": "72952a6a9895dc0e13f5e076c13ae98535adf44a62c26680256cbf4a2eb7b3dc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd757961a6b5bd598836d40c789195d7fb141584bb995a2f2c73a926f2960aa8",
+      "source_fact_keys": [
+        "source_fact:v1:4bbe7a7321f7ac19dceb4bea397212def1d8c5547a9575b326e251f4eadd2f40",
+        "source_fact:v1:4f1820fecadeb1cc974caee832f10878aaa4f713307f2cfa535ce8e9244fc6f5",
+        "source_fact:v1:f72059f30fa40331fa72b2e54edd396def8828737531bbdd905d4674ff7c7a9f"
+      ],
+      "source_published_kst": "2026-10-12T06:22+09:00",
+      "source_title": "\"한국, 알래스카 LNG 투자 결정한 것 없어…사업성 확인이 먼저\"",
+      "telegram_core_fact": "한국이 미국 알래스카 액화천연가스(LNG) 개발 사업에 최소 500억달러를 투자하기로 약속했다는 도널드 트럼프 대통령 발표와 달리, 한국 측은 투자 결정을 내리지 않은 것으로 보인다는 알래스카 현지 매체의 보도가 나왔다.",
+      "title": "\"한국, 알래스카 LNG 투자 결정한 것 없어…사업성 확인이 먼저\""
     },
     "original:16885da940e5a5e3986b4287": {
       "first_seen_kst": "2026-10-07T16:44:58+09:00",
@@ -152627,31 +153186,25 @@
     "original:3fa50a6cde99f19d13162dc0": {
       "first_seen_kst": "2026-10-12T05:35:02+09:00",
       "lanes": {
-        "live": "2026-10-12T05:35:02+09:00"
+        "live": "2026-10-12T05:35:02+09:00",
+        "preopen": "2026-10-12T06:42:49+09:00"
       },
-      "last_seen_kst": "2026-10-12T05:35:02+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=01436646645612264",
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=01436646645612264&Kind=257",
       "source": "이데일리",
-      "source_body_digest": "22794200af8c273d76fd530fb0c9fabcdc5529607d9b5f33c11f787635cf8b6b",
+      "source_body_digest": "e38b4172777bd621e99bbd69b2058421013b5f189c0b8c83a98fb0610c94be77",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:9aff4a40bb05e7997908f0ee162cfb81c0c007145c619daed10e5666ad28ba0c",
+      "source_fact_identity": "source_facts:v1:2037022498da76bead7fa7a3e8d1e0abd8b8a6f50e48b0b3eb3a24e1d1914d71",
       "source_fact_keys": [
-        "source_fact:v1:01cd295fdb151abdfd3edc0523144039883305180cbc0ea787b923564cfb66b3",
-        "source_fact:v1:29ee1cc3282d9ae40363151c1cacf486de839552bdec7109b3cf7da0b9ce5587",
-        "source_fact:v1:677219f9d5648c52302a30047b433367ad0ddd534d058213a0997be9b05a7efa",
         "source_fact:v1:68b790d75da3292356b9c1f1c32bd44dc956159465ced71452cf9ca4c50999b0",
         "source_fact:v1:85a744ca6c482e5a445fb9fc66e5546b02680f7cfa665d12f8c4abb3659b6561",
         "source_fact:v1:8d26c43cf5e87249b1a608adfaad62d699f8eeda8f1970281d57b25f75f20e86",
-        "source_fact:v1:8f5d2602a87fbb9b9cd6eee28577b5ceb706a7e711dac078ffe5705b738f6e6a",
-        "source_fact:v1:99bafea295cb0f32baf908dfda750089dc1db4ac2181e510169396621b956fef",
-        "source_fact:v1:9df6e56906dc6ab537a7fcf97cd108ee5d4fb6d678f5acbb72584aac9854a975",
         "source_fact:v1:b55551cfb6ffbbd4bde91f844cdf09e90b5a0b582999d8dddb9d36cfff222969",
-        "source_fact:v1:b6f83cc8e9c584d8153d0378d12d30dbec008a07b79b3660e9c0c66565ec4e59",
-        "source_fact:v1:dda41983b5fe9cd8ac91d614b83f9be3e45b8e057157a01167d1893edcbeffbc"
+        "source_fact:v1:efa2484d574481e667d081049a82a35f8dfc3601df77ef2f16d34824129bdb0a"
       ],
-      "source_published_kst": "2026-10-12T05:00+09:00",
+      "source_published_kst": "2026-10-11T17:01+09:00",
       "source_title": "반도체 수출 호황에…달러 넘치는 외환시장",
-      "telegram_core_fact": "문 연구원도 “반도체 기업들의 실적 호조에 따른 달러 공급이 내년에도 지속될 것으로 예상된다”며 “현재 1350원으로 제시한 내년 연평균 환율 전망치도 11월 연간 전망에서 하향 조정할 가능성이 높다”고 내다봤다.",
+      "telegram_core_fact": "서울 외환시장에서 원·달러 환율은 오후 3시 30분 기준 1,340.4원을 기록했다. 반도체 수출 호황으로 유입되는 달러가 늘면서 미국의 달러 강세에도 원·달러 환율이 연저점에 가까워지고 있다.",
       "title": "반도체 수출 호황에…달러 넘치는 외환시장"
     },
     "original:3fafd43927625c25187820b2": {
@@ -159426,6 +159979,26 @@
       "source_published_kst": "2026-10-07T06:33+09:00",
       "title": "3주 파업 예고한 삼성바이오 노조…생산·수주 불확실성 커진다"
     },
+    "original:5b5a2debc6c8711be3f7f5ac": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.fnnews.com/news/202610120600427723",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "c9433565523ef5e080261b96c66ac2d5ea2830313217360712ecb7bc182f3a66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4c6773e6bd531e0962ac93db4d47a6b2e62e75e0d3d0378f82ed6405e82bcf69",
+      "source_fact_keys": [
+        "source_fact:v1:6bf0f861858d12f94afa0fd98666004ac78885c97c3622035deb69460e66669b",
+        "source_fact:v1:a44f01da95f7cd58ebc82a55e0be0c814dfb8710ffad79e41d71154f65668a63"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "노타 채명수 \"고사양 GPU 추가보다 기존 인프라 활용 대세\" [K-챌린저]",
+      "telegram_core_fact": "채명수 노타(Nota AI) 대표는 뉴스1과 인터뷰에서 인공지능(AI) 모델 경량화나 개별 칩 최적화를 넘어 고객의 AI 도입 전 과정을 지원하는 기업으로 성장하겠다며 이같이 말했다.",
+      "title": "노타 채명수 \"고사양 GPU 추가보다 기존 인프라 활용 대세\" [K-챌린저]"
+    },
     "original:5b67680961626e2e7f84d0d1": {
       "first_seen_kst": "2026-10-12T02:51:54+09:00",
       "lanes": {
@@ -161561,6 +162134,31 @@
       "source_title": "\"증시 덮칠 '진짜 공포' 따로 있다\"…증권가 '무서운 경고' [분석+]",
       "telegram_core_fact": "미국 국채 10년물 금리가 연 5%를 넘어서면서 주식투자자가 긴장하고 있지만, 증권가에선 오히려 장기 금리의 하락이 더 큰 악재가 될 수 있다는 분석이 잇달아 나왔다.",
       "title": "\"증시 덮칠 '진짜 공포' 따로 있다\"…증권가 '무서운 경고' [분석+]"
+    },
+    "original:65f46c39ca658d0cdd79416d": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12173217",
+      "source": "매일경제",
+      "source_body_digest": "22bcaec3ee308ef4a1759fb51d03cac8f9900fa1a3b836717ad41c1afb6fec8c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f4d5a9da2affb23175cb332cdd807144dfbe0698637dd8b182cf3473f506b449",
+      "source_fact_keys": [
+        "source_fact:v1:37c31b346ad69b880c02f3fab0606f92aa79dec25218b172b83c21e6a881ba5c",
+        "source_fact:v1:7704555dab0fa71049f339121eff9ba85fec3f154fd2c40ddb23c4fb4158e54f",
+        "source_fact:v1:949602684848b22342f9c33124028bfbffcb1970e105d21baf32e1116fe816b2",
+        "source_fact:v1:9b00f435c0bccf5e6891f6fb881e914e92d5547c17a83df54cdbaa38332b5396",
+        "source_fact:v1:9ea892054721eebc212285651f4fdb861d90054b99222c4fec73a2b44b53ca07",
+        "source_fact:v1:ac85a2f806c3103fcc2b0fbffe246ac55044a42f6393bb191941bfa359c5a0b6",
+        "source_fact:v1:c3bf0efd1f2c88286fa2e55be1a1cc6b56e6c84565965dce59ace1715a31e71b"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "김동선, 독립경영 강화 속도전 … 한화M&S 지분 19% 공개매수",
+      "telegram_core_fact": "전략총괄 사장 8000원·개매수에 성공하면 김 사장 1285억원, 지분율 5.81→24.81%를 매수했습니다.",
+      "title": "김동선, 독립경영 강화 속도전 … 한화M&S 지분 19% 공개매수"
     },
     "original:6647335082be135a42defba1": {
       "first_seen_kst": "2026-10-11T18:15:28+09:00",
@@ -163699,6 +164297,31 @@
       "link": "https://www.yna.co.kr/view/AKR20261002042100008",
       "source": "연합뉴스",
       "title": "삼성전자, 자사주 계획물량 모두 매입…9천억 여유, 300만주 더살듯 | 연합뉴스"
+    },
+    "original:70580330520f320a9a243abc": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821228",
+      "source": "뉴시스",
+      "source_body_digest": "02d3a68bc4bb711575b08be805a6743a9b5ed750fc4f0b720cdfe8e24ccb143c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:087cd70573e28645826d3a61865010043c10a291aedd795acfa3db882a4c405a",
+      "source_fact_keys": [
+        "source_fact:v1:106bddd480ac85314eabe8a5811befbc4c59366c0d25883f5bc182485faf1065",
+        "source_fact:v1:2f4a61f668730ea07f0b29e43589bd7dadea4cdd579df42019b4ee2cb07d2a10",
+        "source_fact:v1:7d8f2bfd7413725d7a0649ba86f5f9c88a3c81a6579e18899672cfba1b530c66",
+        "source_fact:v1:b2208185e13ca5f299a085b5c92c4e74aacebeb63046c40a6dee4814934a3241",
+        "source_fact:v1:ea7dfda91d4656df1aba45afcee886007850180fad53a3e05c24346b7702cb4c",
+        "source_fact:v1:ec39160cb684f34992cdc3508384f98a200de0a5c2a06aa758f90a95e49902e5",
+        "source_fact:v1:ef3e5018621976524d94db8138ff0855271f19e9f3282da4cc8bb4bffa5fc19e"
+      ],
+      "source_published_kst": "2026-10-12T06:33+09:00",
+      "source_title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다[간추린 주말 뉴스]",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 올해 반도체 호황으로 역대급 수익을 내고 있는 가운데, 이르면 내년 3월 양사 직원들은 일제히 수억원대의 성과급을 지급 받을 전망이다. 국가데이터처의 '2025년 가계금융복지조사'에 따르면 지난해 3월 말 기준 가구당 평균 순자산은 4억7144만원으로 전년대비 5.0% 증가했다.",
+      "title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다[간추린 주말 뉴스]"
     },
     "original:7079c1fa5bda99490550ba24": {
       "first_seen_kst": "2026-10-09T16:53:11+09:00",
@@ -186220,6 +186843,37 @@
       "source_published_kst": "2026-10-05T11:30+09:00",
       "title": "AMRO, 한국 올해 성장률 3.3%로 상향…내년 2.7% 제시 | 연합뉴스"
     },
+    "original:d1908424edaea5f5fd32c049": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.news1.kr/economy/trend/6315056",
+      "source": "뉴스1",
+      "source_body_digest": "c3ed76ff065df6237882dae308dfad6c0544058535e5a7b4da8a3a3bd53bd799",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:727a0685f2fd997dabef38e3e5387dd44435f1744e1c07c9934df6007ec43a7d",
+      "source_fact_keys": [
+        "source_fact:v1:09fd5d9d959224b4df9d0a8bcfbfbfca310318d969b2dc8c94121ddf87c2ceb5",
+        "source_fact:v1:210ad36b2492d7e7920f917ca2c84edb7df4e0f4ecc462f017ee07f5e2478e18",
+        "source_fact:v1:24e715603b62db79677c7a83522a378a15252c8c4a13ba30e0c078792b7b761b",
+        "source_fact:v1:3278e816850beafce1f8868fb1ff48154a3ddba53cca32c7215b51248aa2d7f8",
+        "source_fact:v1:3ce042d4c72b7934640f247aa6f0841d4fe52c2131d100bcc97578886d9cf1b3",
+        "source_fact:v1:78655581f5e6fab03dda7be4ff575835695b31e2129681cf40831f2d2aad4744",
+        "source_fact:v1:99a3d4a81788785d207b0357aaef241064c8cd871722d0b70ba16bc4a6952c56",
+        "source_fact:v1:a92d351bf9cf541ae5beda87f34464359a4c8d5a91c482466685b9631abffb5d",
+        "source_fact:v1:ad5c242795401934be2728fd6f98c0c31ccfe45d3ecc43f4d97ef2c93bf1036f",
+        "source_fact:v1:b68fd8a64e11abcb62b8aa6ce79c562128ec71ded507d39d3dcb8f63dad206dd",
+        "source_fact:v1:c72a6d1b6811c157432b057f04e0d2b097535f3889ff74b0793b0b35248ce3cf",
+        "source_fact:v1:d7f979b73170cc0ec0765ac1260d3702ff7c8dbbccd985839fec2c4b96feb401",
+        "source_fact:v1:dcf3e6e510eff46e473e34aaea5bf2d31da914f402bd39d3db720daccd530d8d"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심",
+      "telegram_core_fact": "정부의 국채 발행 축소 발표 이후 금리는 3% 후반대로 내려왔지만, 지난 8일에는 다시 연 3.983%로 오르며 4% 턱밑까지 올라섰다.",
+      "title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심"
+    },
     "original:d19925155257215bcb326198": {
       "first_seen_kst": "2026-10-02T16:53:54+09:00",
       "lanes": {
@@ -194813,6 +195467,33 @@
       "source": "연합뉴스",
       "title": "LG전자, 엔비디아 AI 데이터센터 냉각솔루션 공식 파트너 | 연합뉴스"
     },
+    "original:f7430d35422e08159f53cf54": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634372",
+      "source": "이투데이",
+      "source_body_digest": "e35c30986704e55e513be667df21588ef2b2225c90be5ec8e7d1cab09637f7ac",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3c7450a3f908d4186234394c49a7a270417e7f79751d512685959cf28627cae",
+      "source_fact_keys": [
+        "source_fact:v1:19452545b16aaececc4804a1b62acab598ed0cc32713a4289a6991867dab88dd",
+        "source_fact:v1:1beccc234bd02d49524c759e98c40289a91e8e9d2ae13241661403974eb6916b",
+        "source_fact:v1:45cee855bc33c2c70167f27da21918db1e93e62e34dd83bba242f76f9bd5f202",
+        "source_fact:v1:6459f9323cba9ee0372a243c657839f681445d7be7873710e884cb83a6200ec0",
+        "source_fact:v1:682672918790eed5c9a9f72ddd7a10cd36a3133738ca7a9ace41ea6821d29b40",
+        "source_fact:v1:6f38b86dc4d22b9f2e5410fb9ad68a200ba533db54412f71b011696ab0dc8e5f",
+        "source_fact:v1:b6529ce3dd9e54f34cdf31dc92f616d4e4de13c937584133f15f4333a2ba1eeb",
+        "source_fact:v1:c118f8aa31f206e7222d822e31f3d253d8a50efce5e21a56738340f6a1bf638a",
+        "source_fact:v1:d72dbb2b47df25ce23ef34a29b5bcefe0541f70a5a1f74ed449db900ea2384c4"
+      ],
+      "source_published_kst": "2026-10-12T06:22+09:00",
+      "source_title": "트럼프 “러·우크라 에너지 휴전”…러 확인 없고 젤렌스키 “금시초문”",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아와 우크라이나가 서로의 에너지 시설을 공격하지 않는 ‘에너지 휴전’에 합의했다고 발표했다. 11일(현지시간) 트럼프 대통령은 트루스소셜에 “러시아와 우크라이나 전쟁에서 에너지 휴전이 즉각 발효된다”며 “양측 모두 동의했다. 이를 위반하지 말라”고 밝혔다.",
+      "title": "트럼프 “러·우크라 에너지 휴전”…러 확인 없고 젤렌스키 “금시초문”"
+    },
     "original:f75bdbc94f591d2620807960": {
       "first_seen_kst": "2026-10-11T06:52:52+09:00",
       "lanes": {
@@ -201957,33 +202638,28 @@
     "source_fact:07842bdee2ea0d2086ac1bba": {
       "first_seen_kst": "2026-10-10T06:02:39+09:00",
       "lanes": {
-        "live": "2026-10-10T06:02:39+09:00"
+        "live": "2026-10-10T06:02:39+09:00",
+        "preopen": "2026-10-12T06:42:49+09:00"
       },
-      "last_seen_kst": "2026-10-10T06:02:39+09:00",
-      "link": "https://www.newsis.com/view/NISX20261008_0003819636",
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821228",
       "source": "뉴시스",
-      "source_body_digest": "7c826e75f4185c94829ea5b6b6d39a1541b034a916533c61220dcff5bfc6ab85",
+      "source_body_digest": "02d3a68bc4bb711575b08be805a6743a9b5ed750fc4f0b720cdfe8e24ccb143c",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:74b146ba41afb6c903a8c216f5365fb086db1bfbeea3214b0bc61901fbc1744d",
+      "source_fact_identity": "source_facts:v1:087cd70573e28645826d3a61865010043c10a291aedd795acfa3db882a4c405a",
       "source_fact_keys": [
         "source_fact:v1:106bddd480ac85314eabe8a5811befbc4c59366c0d25883f5bc182485faf1065",
-        "source_fact:v1:21f803c585cef55f0d8d4342409682454dd9246e9070c3fdc151a067119bd2f7",
         "source_fact:v1:2f4a61f668730ea07f0b29e43589bd7dadea4cdd579df42019b4ee2cb07d2a10",
-        "source_fact:v1:463300d13e0497397a9485fa13ff986addf3329c02c6e843dad780c45206b88f",
-        "source_fact:v1:739c6363e4c4443c50375f048c0b7842bf3589be787523ec0d8ce1920175a763",
-        "source_fact:v1:81ab014acb14fdb085ea427fc37dcb867ffb4ff21f9b871b384e394cfafe8993",
-        "source_fact:v1:bf803bfe82f4ef839b9b7417198350fb7af93b0ab12c62b4c52a6d55032e7dce",
-        "source_fact:v1:cc29e106a61803019b1e47bb7f90caf87dde8065928afb803474bbeb7283b3b5",
-        "source_fact:v1:dfe124e96bcf6b8d2c1fd67a0f0f42a87221d102b5be90c4bb01710c35d4d1f3",
+        "source_fact:v1:7d8f2bfd7413725d7a0649ba86f5f9c88a3c81a6579e18899672cfba1b530c66",
+        "source_fact:v1:b2208185e13ca5f299a085b5c92c4e74aacebeb63046c40a6dee4814934a3241",
         "source_fact:v1:ea7dfda91d4656df1aba45afcee886007850180fad53a3e05c24346b7702cb4c",
         "source_fact:v1:ec39160cb684f34992cdc3508384f98a200de0a5c2a06aa758f90a95e49902e5",
-        "source_fact:v1:ef3e5018621976524d94db8138ff0855271f19e9f3282da4cc8bb4bffa5fc19e",
-        "source_fact:v1:f4a804217f8b2cd00a00302b311068532eed1dd98d5a955efb0e91026ccb86f6"
+        "source_fact:v1:ef3e5018621976524d94db8138ff0855271f19e9f3282da4cc8bb4bffa5fc19e"
       ],
-      "source_published_kst": "2026-10-10T06:00+09:00",
-      "source_title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다…삼전·닉스 '역대급 보상' 지급 일정은",
-      "telegram_core_fact": "삼성전자와 SK하이닉스가 올해 반도체 호황으로 역대급 수익을 내고 있는 가운데, 이르면 내년 3월 양사 직원들은 일제히 수억원대의 성과급을 지급 받을 전망이다. 특별경영성과급은 내년 3월 정기주주총회와 이사회 의결을 거쳐 3월 말~4월 초 지급될 예정이다.",
-      "title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다…삼전·닉스 '역대급 보상' 지급 일정은"
+      "source_published_kst": "2026-10-12T06:33+09:00",
+      "source_title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다[간추린 주말 뉴스]",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 올해 반도체 호황으로 역대급 수익을 내고 있는 가운데, 이르면 내년 3월 양사 직원들은 일제히 수억원대의 성과급을 지급 받을 전망이다. 국가데이터처의 '2025년 가계금융복지조사'에 따르면 지난해 3월 말 기준 가구당 평균 순자산은 4억7144만원으로 전년대비 5.0% 증가했다.",
+      "title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다[간추린 주말 뉴스]"
     },
     "source_fact:078c8d58c69286e9f7d65560": {
       "first_seen_kst": "2026-10-08T09:58:56+09:00",
@@ -203582,6 +204258,29 @@
       "source_title": "전기차 수요 둔화ㆍ중국 공세⋯韓배터리 경쟁력 ‘체질개선 시험대’[K배터리 주도권 탈환]",
       "telegram_core_fact": "중국은 리튬 공급망 리스크를 덜어낼 차세대 보급형 '나트륨 배터리'를 2026년 하반기 세계 최초로 양산하고, 2027년에는 '전고체 배터리' 제품까지 출시하겠다는 계획을 밝히며 미래 핵심 기술 패권마저 위협하고 있다.",
       "title": "전기차 수요 둔화ㆍ중국 공세⋯韓배터리 경쟁력 ‘체질개선 시험대’[K배터리 주도권 탈환]"
+    },
+    "source_fact:09caa1a3b12493ae449c5463": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=01436646645612264&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "e38b4172777bd621e99bbd69b2058421013b5f189c0b8c83a98fb0610c94be77",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2037022498da76bead7fa7a3e8d1e0abd8b8a6f50e48b0b3eb3a24e1d1914d71",
+      "source_fact_keys": [
+        "source_fact:v1:68b790d75da3292356b9c1f1c32bd44dc956159465ced71452cf9ca4c50999b0",
+        "source_fact:v1:85a744ca6c482e5a445fb9fc66e5546b02680f7cfa665d12f8c4abb3659b6561",
+        "source_fact:v1:8d26c43cf5e87249b1a608adfaad62d699f8eeda8f1970281d57b25f75f20e86",
+        "source_fact:v1:b55551cfb6ffbbd4bde91f844cdf09e90b5a0b582999d8dddb9d36cfff222969",
+        "source_fact:v1:efa2484d574481e667d081049a82a35f8dfc3601df77ef2f16d34824129bdb0a"
+      ],
+      "source_published_kst": "2026-10-11T17:01+09:00",
+      "source_title": "반도체 수출 호황에…달러 넘치는 외환시장",
+      "telegram_core_fact": "서울 외환시장에서 원·달러 환율은 오후 3시 30분 기준 1,340.4원을 기록했다. 반도체 수출 호황으로 유입되는 달러가 늘면서 미국의 달러 강세에도 원·달러 환율이 연저점에 가까워지고 있다.",
+      "title": "반도체 수출 호황에…달러 넘치는 외환시장"
     },
     "source_fact:09cdcc7119f862422781b8f8": {
       "first_seen_kst": "2026-10-09T15:48:54+09:00",
@@ -209708,6 +210407,31 @@
       ],
       "source_published_kst": "2026-10-06T16:58+09:00",
       "title": "발사대 우뚝 선 누리호, 7일 낮 발사준비 완료...5차 발사 도전"
+    },
+    "source_fact:11d24ea9ccbf713f96d9dac3": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12173217",
+      "source": "매일경제",
+      "source_body_digest": "22bcaec3ee308ef4a1759fb51d03cac8f9900fa1a3b836717ad41c1afb6fec8c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f4d5a9da2affb23175cb332cdd807144dfbe0698637dd8b182cf3473f506b449",
+      "source_fact_keys": [
+        "source_fact:v1:37c31b346ad69b880c02f3fab0606f92aa79dec25218b172b83c21e6a881ba5c",
+        "source_fact:v1:7704555dab0fa71049f339121eff9ba85fec3f154fd2c40ddb23c4fb4158e54f",
+        "source_fact:v1:949602684848b22342f9c33124028bfbffcb1970e105d21baf32e1116fe816b2",
+        "source_fact:v1:9b00f435c0bccf5e6891f6fb881e914e92d5547c17a83df54cdbaa38332b5396",
+        "source_fact:v1:9ea892054721eebc212285651f4fdb861d90054b99222c4fec73a2b44b53ca07",
+        "source_fact:v1:ac85a2f806c3103fcc2b0fbffe246ac55044a42f6393bb191941bfa359c5a0b6",
+        "source_fact:v1:c3bf0efd1f2c88286fa2e55be1a1cc6b56e6c84565965dce59ace1715a31e71b"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "김동선, 독립경영 강화 속도전 … 한화M&S 지분 19% 공개매수",
+      "telegram_core_fact": "전략총괄 사장 8000원·개매수에 성공하면 김 사장 1285억원, 지분율 5.81→24.81%를 매수했습니다.",
+      "title": "김동선, 독립경영 강화 속도전 … 한화M&S 지분 19% 공개매수"
     },
     "source_fact:11de53d307aaac019fe7c4ad": {
       "first_seen_kst": "2026-10-09T22:25:54+09:00",
@@ -217956,6 +218680,27 @@
       "telegram_core_fact": "쿠르무크 가동 직전에 고품위 시추 결과가 나와 초기 고품위 구간 이후 생산 지속성에 대한 우려를 덜어줘요.",
       "title": "얼라이드 골드, 쿠르무크 아샤시레 고품위 금맥 확인..가동 임박"
     },
+    "source_fact:1cc699dd991941ec4ed231c4": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/12/2026101206130938117",
+      "source": "머니투데이",
+      "source_body_digest": "72952a6a9895dc0e13f5e076c13ae98535adf44a62c26680256cbf4a2eb7b3dc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd757961a6b5bd598836d40c789195d7fb141584bb995a2f2c73a926f2960aa8",
+      "source_fact_keys": [
+        "source_fact:v1:4bbe7a7321f7ac19dceb4bea397212def1d8c5547a9575b326e251f4eadd2f40",
+        "source_fact:v1:4f1820fecadeb1cc974caee832f10878aaa4f713307f2cfa535ce8e9244fc6f5",
+        "source_fact:v1:f72059f30fa40331fa72b2e54edd396def8828737531bbdd905d4674ff7c7a9f"
+      ],
+      "source_published_kst": "2026-10-12T06:22+09:00",
+      "source_title": "\"한국, 알래스카 LNG 투자 결정한 것 없어…사업성 확인이 먼저\"",
+      "telegram_core_fact": "한국이 미국 알래스카 액화천연가스(LNG) 개발 사업에 최소 500억달러를 투자하기로 약속했다는 도널드 트럼프 대통령 발표와 달리, 한국 측은 투자 결정을 내리지 않은 것으로 보인다는 알래스카 현지 매체의 보도가 나왔다.",
+      "title": "\"한국, 알래스카 LNG 투자 결정한 것 없어…사업성 확인이 먼저\""
+    },
     "source_fact:1ccc3afd2bfd84d9936ccf1f": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
       "lanes": {
@@ -219117,6 +219862,33 @@
       ],
       "source_published_kst": "2026-10-06T11:45+09:00",
       "title": "車 디스플레이 유리 수입 간소화…재생에너지 '다수 대 다수' PPA 허용"
+    },
+    "source_fact:1e3a1b7df9b4b5b6180821aa": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634372",
+      "source": "이투데이",
+      "source_body_digest": "e35c30986704e55e513be667df21588ef2b2225c90be5ec8e7d1cab09637f7ac",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3c7450a3f908d4186234394c49a7a270417e7f79751d512685959cf28627cae",
+      "source_fact_keys": [
+        "source_fact:v1:19452545b16aaececc4804a1b62acab598ed0cc32713a4289a6991867dab88dd",
+        "source_fact:v1:1beccc234bd02d49524c759e98c40289a91e8e9d2ae13241661403974eb6916b",
+        "source_fact:v1:45cee855bc33c2c70167f27da21918db1e93e62e34dd83bba242f76f9bd5f202",
+        "source_fact:v1:6459f9323cba9ee0372a243c657839f681445d7be7873710e884cb83a6200ec0",
+        "source_fact:v1:682672918790eed5c9a9f72ddd7a10cd36a3133738ca7a9ace41ea6821d29b40",
+        "source_fact:v1:6f38b86dc4d22b9f2e5410fb9ad68a200ba533db54412f71b011696ab0dc8e5f",
+        "source_fact:v1:b6529ce3dd9e54f34cdf31dc92f616d4e4de13c937584133f15f4333a2ba1eeb",
+        "source_fact:v1:c118f8aa31f206e7222d822e31f3d253d8a50efce5e21a56738340f6a1bf638a",
+        "source_fact:v1:d72dbb2b47df25ce23ef34a29b5bcefe0541f70a5a1f74ed449db900ea2384c4"
+      ],
+      "source_published_kst": "2026-10-12T06:22+09:00",
+      "source_title": "트럼프 “러·우크라 에너지 휴전”…러 확인 없고 젤렌스키 “금시초문”",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아와 우크라이나가 서로의 에너지 시설을 공격하지 않는 ‘에너지 휴전’에 합의했다고 발표했다. 11일(현지시간) 트럼프 대통령은 트루스소셜에 “러시아와 우크라이나 전쟁에서 에너지 휴전이 즉각 발효된다”며 “양측 모두 동의했다. 이를 위반하지 말라”고 밝혔다.",
+      "title": "트럼프 “러·우크라 에너지 휴전”…러 확인 없고 젤렌스키 “금시초문”"
     },
     "source_fact:1e3dd7d50b5318c04442433e": {
       "first_seen_kst": "2026-10-08T00:39:44+09:00",
@@ -224274,33 +225046,28 @@
     "source_fact:24258a047b6dcd32ea122fb6": {
       "first_seen_kst": "2026-10-10T06:02:39+09:00",
       "lanes": {
-        "live": "2026-10-10T06:02:39+09:00"
+        "live": "2026-10-10T06:02:39+09:00",
+        "preopen": "2026-10-12T06:42:49+09:00"
       },
-      "last_seen_kst": "2026-10-10T06:02:39+09:00",
-      "link": "https://www.newsis.com/view/NISX20261008_0003819636",
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821228",
       "source": "뉴시스",
-      "source_body_digest": "7c826e75f4185c94829ea5b6b6d39a1541b034a916533c61220dcff5bfc6ab85",
+      "source_body_digest": "02d3a68bc4bb711575b08be805a6743a9b5ed750fc4f0b720cdfe8e24ccb143c",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:74b146ba41afb6c903a8c216f5365fb086db1bfbeea3214b0bc61901fbc1744d",
+      "source_fact_identity": "source_facts:v1:087cd70573e28645826d3a61865010043c10a291aedd795acfa3db882a4c405a",
       "source_fact_keys": [
         "source_fact:v1:106bddd480ac85314eabe8a5811befbc4c59366c0d25883f5bc182485faf1065",
-        "source_fact:v1:21f803c585cef55f0d8d4342409682454dd9246e9070c3fdc151a067119bd2f7",
         "source_fact:v1:2f4a61f668730ea07f0b29e43589bd7dadea4cdd579df42019b4ee2cb07d2a10",
-        "source_fact:v1:463300d13e0497397a9485fa13ff986addf3329c02c6e843dad780c45206b88f",
-        "source_fact:v1:739c6363e4c4443c50375f048c0b7842bf3589be787523ec0d8ce1920175a763",
-        "source_fact:v1:81ab014acb14fdb085ea427fc37dcb867ffb4ff21f9b871b384e394cfafe8993",
-        "source_fact:v1:bf803bfe82f4ef839b9b7417198350fb7af93b0ab12c62b4c52a6d55032e7dce",
-        "source_fact:v1:cc29e106a61803019b1e47bb7f90caf87dde8065928afb803474bbeb7283b3b5",
-        "source_fact:v1:dfe124e96bcf6b8d2c1fd67a0f0f42a87221d102b5be90c4bb01710c35d4d1f3",
+        "source_fact:v1:7d8f2bfd7413725d7a0649ba86f5f9c88a3c81a6579e18899672cfba1b530c66",
+        "source_fact:v1:b2208185e13ca5f299a085b5c92c4e74aacebeb63046c40a6dee4814934a3241",
         "source_fact:v1:ea7dfda91d4656df1aba45afcee886007850180fad53a3e05c24346b7702cb4c",
         "source_fact:v1:ec39160cb684f34992cdc3508384f98a200de0a5c2a06aa758f90a95e49902e5",
-        "source_fact:v1:ef3e5018621976524d94db8138ff0855271f19e9f3282da4cc8bb4bffa5fc19e",
-        "source_fact:v1:f4a804217f8b2cd00a00302b311068532eed1dd98d5a955efb0e91026ccb86f6"
+        "source_fact:v1:ef3e5018621976524d94db8138ff0855271f19e9f3282da4cc8bb4bffa5fc19e"
       ],
-      "source_published_kst": "2026-10-10T06:00+09:00",
-      "source_title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다…삼전·닉스 '역대급 보상' 지급 일정은",
-      "telegram_core_fact": "삼성전자와 SK하이닉스가 올해 반도체 호황으로 역대급 수익을 내고 있는 가운데, 이르면 내년 3월 양사 직원들은 일제히 수억원대의 성과급을 지급 받을 전망이다. 특별경영성과급은 내년 3월 정기주주총회와 이사회 의결을 거쳐 3월 말~4월 초 지급될 예정이다.",
-      "title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다…삼전·닉스 '역대급 보상' 지급 일정은"
+      "source_published_kst": "2026-10-12T06:33+09:00",
+      "source_title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다[간추린 주말 뉴스]",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 올해 반도체 호황으로 역대급 수익을 내고 있는 가운데, 이르면 내년 3월 양사 직원들은 일제히 수억원대의 성과급을 지급 받을 전망이다. 국가데이터처의 '2025년 가계금융복지조사'에 따르면 지난해 3월 말 기준 가구당 평균 순자산은 4억7144만원으로 전년대비 5.0% 증가했다.",
+      "title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다[간추린 주말 뉴스]"
     },
     "source_fact:2431ef98369ad5bb3fb9e823": {
       "first_seen_kst": "2026-10-10T15:05:36+09:00",
@@ -228299,6 +229066,31 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 국제 제재로 거래가 금지된 러시아산 경유(디젤)를 미국과 세계 시장에 대규모로 공급하겠다고 발표했다.",
       "title": "경유값 급등에 표심 흔들…러시아産 들여오는 트럼프"
     },
+    "source_fact:28dd9a4ad71042bdb2188ef0": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821228",
+      "source": "뉴시스",
+      "source_body_digest": "02d3a68bc4bb711575b08be805a6743a9b5ed750fc4f0b720cdfe8e24ccb143c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:087cd70573e28645826d3a61865010043c10a291aedd795acfa3db882a4c405a",
+      "source_fact_keys": [
+        "source_fact:v1:106bddd480ac85314eabe8a5811befbc4c59366c0d25883f5bc182485faf1065",
+        "source_fact:v1:2f4a61f668730ea07f0b29e43589bd7dadea4cdd579df42019b4ee2cb07d2a10",
+        "source_fact:v1:7d8f2bfd7413725d7a0649ba86f5f9c88a3c81a6579e18899672cfba1b530c66",
+        "source_fact:v1:b2208185e13ca5f299a085b5c92c4e74aacebeb63046c40a6dee4814934a3241",
+        "source_fact:v1:ea7dfda91d4656df1aba45afcee886007850180fad53a3e05c24346b7702cb4c",
+        "source_fact:v1:ec39160cb684f34992cdc3508384f98a200de0a5c2a06aa758f90a95e49902e5",
+        "source_fact:v1:ef3e5018621976524d94db8138ff0855271f19e9f3282da4cc8bb4bffa5fc19e"
+      ],
+      "source_published_kst": "2026-10-12T06:33+09:00",
+      "source_title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다[간추린 주말 뉴스]",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 올해 반도체 호황으로 역대급 수익을 내고 있는 가운데, 이르면 내년 3월 양사 직원들은 일제히 수억원대의 성과급을 지급 받을 전망이다. 국가데이터처의 '2025년 가계금융복지조사'에 따르면 지난해 3월 말 기준 가구당 평균 순자산은 4억7144만원으로 전년대비 5.0% 증가했다.",
+      "title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다[간추린 주말 뉴스]"
+    },
     "source_fact:28e7f32de7a43ca7b14f03ac": {
       "first_seen_kst": "2026-10-11T20:44:48+09:00",
       "lanes": {
@@ -229405,6 +230197,37 @@
       ],
       "source_published_kst": "2026-10-07T14:38+09:00",
       "title": "삼보산업, 중동 전쟁에 알루미늄 판가 상승…장기화 땐 수익성 개선 긍정"
+    },
+    "source_fact:2a427171f17ce1403bbcc356": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.news1.kr/economy/trend/6315056",
+      "source": "뉴스1",
+      "source_body_digest": "c3ed76ff065df6237882dae308dfad6c0544058535e5a7b4da8a3a3bd53bd799",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:727a0685f2fd997dabef38e3e5387dd44435f1744e1c07c9934df6007ec43a7d",
+      "source_fact_keys": [
+        "source_fact:v1:09fd5d9d959224b4df9d0a8bcfbfbfca310318d969b2dc8c94121ddf87c2ceb5",
+        "source_fact:v1:210ad36b2492d7e7920f917ca2c84edb7df4e0f4ecc462f017ee07f5e2478e18",
+        "source_fact:v1:24e715603b62db79677c7a83522a378a15252c8c4a13ba30e0c078792b7b761b",
+        "source_fact:v1:3278e816850beafce1f8868fb1ff48154a3ddba53cca32c7215b51248aa2d7f8",
+        "source_fact:v1:3ce042d4c72b7934640f247aa6f0841d4fe52c2131d100bcc97578886d9cf1b3",
+        "source_fact:v1:78655581f5e6fab03dda7be4ff575835695b31e2129681cf40831f2d2aad4744",
+        "source_fact:v1:99a3d4a81788785d207b0357aaef241064c8cd871722d0b70ba16bc4a6952c56",
+        "source_fact:v1:a92d351bf9cf541ae5beda87f34464359a4c8d5a91c482466685b9631abffb5d",
+        "source_fact:v1:ad5c242795401934be2728fd6f98c0c31ccfe45d3ecc43f4d97ef2c93bf1036f",
+        "source_fact:v1:b68fd8a64e11abcb62b8aa6ce79c562128ec71ded507d39d3dcb8f63dad206dd",
+        "source_fact:v1:c72a6d1b6811c157432b057f04e0d2b097535f3889ff74b0793b0b35248ce3cf",
+        "source_fact:v1:d7f979b73170cc0ec0765ac1260d3702ff7c8dbbccd985839fec2c4b96feb401",
+        "source_fact:v1:dcf3e6e510eff46e473e34aaea5bf2d31da914f402bd39d3db720daccd530d8d"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심",
+      "telegram_core_fact": "정부의 국채 발행 축소 발표 이후 금리는 3% 후반대로 내려왔지만, 지난 8일에는 다시 연 3.983%로 오르며 4% 턱밑까지 올라섰다.",
+      "title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심"
     },
     "source_fact:2a430005633f652c81530c70": {
       "first_seen_kst": "2026-10-09T18:34:32+09:00",
@@ -231643,6 +232466,37 @@
       ],
       "source_published_kst": "2026-10-06T17:25+09:00",
       "title": "노조, 공정거래법 적용 제외?…교섭 부담 던다지만 他노조 일감 보호는 ‘과제’"
+    },
+    "source_fact:2cf503dfdeaf7e7932d049c6": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.news1.kr/economy/trend/6315056",
+      "source": "뉴스1",
+      "source_body_digest": "c3ed76ff065df6237882dae308dfad6c0544058535e5a7b4da8a3a3bd53bd799",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:727a0685f2fd997dabef38e3e5387dd44435f1744e1c07c9934df6007ec43a7d",
+      "source_fact_keys": [
+        "source_fact:v1:09fd5d9d959224b4df9d0a8bcfbfbfca310318d969b2dc8c94121ddf87c2ceb5",
+        "source_fact:v1:210ad36b2492d7e7920f917ca2c84edb7df4e0f4ecc462f017ee07f5e2478e18",
+        "source_fact:v1:24e715603b62db79677c7a83522a378a15252c8c4a13ba30e0c078792b7b761b",
+        "source_fact:v1:3278e816850beafce1f8868fb1ff48154a3ddba53cca32c7215b51248aa2d7f8",
+        "source_fact:v1:3ce042d4c72b7934640f247aa6f0841d4fe52c2131d100bcc97578886d9cf1b3",
+        "source_fact:v1:78655581f5e6fab03dda7be4ff575835695b31e2129681cf40831f2d2aad4744",
+        "source_fact:v1:99a3d4a81788785d207b0357aaef241064c8cd871722d0b70ba16bc4a6952c56",
+        "source_fact:v1:a92d351bf9cf541ae5beda87f34464359a4c8d5a91c482466685b9631abffb5d",
+        "source_fact:v1:ad5c242795401934be2728fd6f98c0c31ccfe45d3ecc43f4d97ef2c93bf1036f",
+        "source_fact:v1:b68fd8a64e11abcb62b8aa6ce79c562128ec71ded507d39d3dcb8f63dad206dd",
+        "source_fact:v1:c72a6d1b6811c157432b057f04e0d2b097535f3889ff74b0793b0b35248ce3cf",
+        "source_fact:v1:d7f979b73170cc0ec0765ac1260d3702ff7c8dbbccd985839fec2c4b96feb401",
+        "source_fact:v1:dcf3e6e510eff46e473e34aaea5bf2d31da914f402bd39d3db720daccd530d8d"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심",
+      "telegram_core_fact": "정부의 국채 발행 축소 발표 이후 금리는 3% 후반대로 내려왔지만, 지난 8일에는 다시 연 3.983%로 오르며 4% 턱밑까지 올라섰다.",
+      "title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심"
     },
     "source_fact:2cf537cc7f9fa993711061c9": {
       "first_seen_kst": "2026-10-08T02:57:10+09:00",
@@ -238360,6 +239214,37 @@
       "source_published_kst": "2026-10-06T17:38+09:00",
       "title": "[미국 주식 돋보기] 데이터센터 전력 구원투수 '비코' 고공행진"
     },
+    "source_fact:35cc77daabbd78a0c19f1afa": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.news1.kr/economy/trend/6315056",
+      "source": "뉴스1",
+      "source_body_digest": "c3ed76ff065df6237882dae308dfad6c0544058535e5a7b4da8a3a3bd53bd799",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:727a0685f2fd997dabef38e3e5387dd44435f1744e1c07c9934df6007ec43a7d",
+      "source_fact_keys": [
+        "source_fact:v1:09fd5d9d959224b4df9d0a8bcfbfbfca310318d969b2dc8c94121ddf87c2ceb5",
+        "source_fact:v1:210ad36b2492d7e7920f917ca2c84edb7df4e0f4ecc462f017ee07f5e2478e18",
+        "source_fact:v1:24e715603b62db79677c7a83522a378a15252c8c4a13ba30e0c078792b7b761b",
+        "source_fact:v1:3278e816850beafce1f8868fb1ff48154a3ddba53cca32c7215b51248aa2d7f8",
+        "source_fact:v1:3ce042d4c72b7934640f247aa6f0841d4fe52c2131d100bcc97578886d9cf1b3",
+        "source_fact:v1:78655581f5e6fab03dda7be4ff575835695b31e2129681cf40831f2d2aad4744",
+        "source_fact:v1:99a3d4a81788785d207b0357aaef241064c8cd871722d0b70ba16bc4a6952c56",
+        "source_fact:v1:a92d351bf9cf541ae5beda87f34464359a4c8d5a91c482466685b9631abffb5d",
+        "source_fact:v1:ad5c242795401934be2728fd6f98c0c31ccfe45d3ecc43f4d97ef2c93bf1036f",
+        "source_fact:v1:b68fd8a64e11abcb62b8aa6ce79c562128ec71ded507d39d3dcb8f63dad206dd",
+        "source_fact:v1:c72a6d1b6811c157432b057f04e0d2b097535f3889ff74b0793b0b35248ce3cf",
+        "source_fact:v1:d7f979b73170cc0ec0765ac1260d3702ff7c8dbbccd985839fec2c4b96feb401",
+        "source_fact:v1:dcf3e6e510eff46e473e34aaea5bf2d31da914f402bd39d3db720daccd530d8d"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심",
+      "telegram_core_fact": "정부의 국채 발행 축소 발표 이후 금리는 3% 후반대로 내려왔지만, 지난 8일에는 다시 연 3.983%로 오르며 4% 턱밑까지 올라섰다.",
+      "title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심"
+    },
     "source_fact:35d3d20148e77958e8e7aa51": {
       "first_seen_kst": "2026-10-06T17:24:43+09:00",
       "lanes": {
@@ -239350,31 +240235,25 @@
     "source_fact:37018196bbb2e4701c5ae691": {
       "first_seen_kst": "2026-10-12T05:35:02+09:00",
       "lanes": {
-        "live": "2026-10-12T05:35:02+09:00"
+        "live": "2026-10-12T05:35:02+09:00",
+        "preopen": "2026-10-12T06:42:49+09:00"
       },
-      "last_seen_kst": "2026-10-12T05:35:02+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=01436646645612264",
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=01436646645612264&Kind=257",
       "source": "이데일리",
-      "source_body_digest": "22794200af8c273d76fd530fb0c9fabcdc5529607d9b5f33c11f787635cf8b6b",
+      "source_body_digest": "e38b4172777bd621e99bbd69b2058421013b5f189c0b8c83a98fb0610c94be77",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:9aff4a40bb05e7997908f0ee162cfb81c0c007145c619daed10e5666ad28ba0c",
+      "source_fact_identity": "source_facts:v1:2037022498da76bead7fa7a3e8d1e0abd8b8a6f50e48b0b3eb3a24e1d1914d71",
       "source_fact_keys": [
-        "source_fact:v1:01cd295fdb151abdfd3edc0523144039883305180cbc0ea787b923564cfb66b3",
-        "source_fact:v1:29ee1cc3282d9ae40363151c1cacf486de839552bdec7109b3cf7da0b9ce5587",
-        "source_fact:v1:677219f9d5648c52302a30047b433367ad0ddd534d058213a0997be9b05a7efa",
         "source_fact:v1:68b790d75da3292356b9c1f1c32bd44dc956159465ced71452cf9ca4c50999b0",
         "source_fact:v1:85a744ca6c482e5a445fb9fc66e5546b02680f7cfa665d12f8c4abb3659b6561",
         "source_fact:v1:8d26c43cf5e87249b1a608adfaad62d699f8eeda8f1970281d57b25f75f20e86",
-        "source_fact:v1:8f5d2602a87fbb9b9cd6eee28577b5ceb706a7e711dac078ffe5705b738f6e6a",
-        "source_fact:v1:99bafea295cb0f32baf908dfda750089dc1db4ac2181e510169396621b956fef",
-        "source_fact:v1:9df6e56906dc6ab537a7fcf97cd108ee5d4fb6d678f5acbb72584aac9854a975",
         "source_fact:v1:b55551cfb6ffbbd4bde91f844cdf09e90b5a0b582999d8dddb9d36cfff222969",
-        "source_fact:v1:b6f83cc8e9c584d8153d0378d12d30dbec008a07b79b3660e9c0c66565ec4e59",
-        "source_fact:v1:dda41983b5fe9cd8ac91d614b83f9be3e45b8e057157a01167d1893edcbeffbc"
+        "source_fact:v1:efa2484d574481e667d081049a82a35f8dfc3601df77ef2f16d34824129bdb0a"
       ],
-      "source_published_kst": "2026-10-12T05:00+09:00",
+      "source_published_kst": "2026-10-11T17:01+09:00",
       "source_title": "반도체 수출 호황에…달러 넘치는 외환시장",
-      "telegram_core_fact": "문 연구원도 “반도체 기업들의 실적 호조에 따른 달러 공급이 내년에도 지속될 것으로 예상된다”며 “현재 1350원으로 제시한 내년 연평균 환율 전망치도 11월 연간 전망에서 하향 조정할 가능성이 높다”고 내다봤다.",
+      "telegram_core_fact": "서울 외환시장에서 원·달러 환율은 오후 3시 30분 기준 1,340.4원을 기록했다. 반도체 수출 호황으로 유입되는 달러가 늘면서 미국의 달러 강세에도 원·달러 환율이 연저점에 가까워지고 있다.",
       "title": "반도체 수출 호황에…달러 넘치는 외환시장"
     },
     "source_fact:3705ebc951219b2aad058355": {
@@ -241872,6 +242751,33 @@
       ],
       "source_published_kst": "2026-10-06T18:05+09:00",
       "title": "유진투자증권, '절세·자산관리 이벤트' 진행…ISA·연금저축 신규 개설 혜택"
+    },
+    "source_fact:3a89cad19f0e3ca9c56a1710": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634372",
+      "source": "이투데이",
+      "source_body_digest": "e35c30986704e55e513be667df21588ef2b2225c90be5ec8e7d1cab09637f7ac",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3c7450a3f908d4186234394c49a7a270417e7f79751d512685959cf28627cae",
+      "source_fact_keys": [
+        "source_fact:v1:19452545b16aaececc4804a1b62acab598ed0cc32713a4289a6991867dab88dd",
+        "source_fact:v1:1beccc234bd02d49524c759e98c40289a91e8e9d2ae13241661403974eb6916b",
+        "source_fact:v1:45cee855bc33c2c70167f27da21918db1e93e62e34dd83bba242f76f9bd5f202",
+        "source_fact:v1:6459f9323cba9ee0372a243c657839f681445d7be7873710e884cb83a6200ec0",
+        "source_fact:v1:682672918790eed5c9a9f72ddd7a10cd36a3133738ca7a9ace41ea6821d29b40",
+        "source_fact:v1:6f38b86dc4d22b9f2e5410fb9ad68a200ba533db54412f71b011696ab0dc8e5f",
+        "source_fact:v1:b6529ce3dd9e54f34cdf31dc92f616d4e4de13c937584133f15f4333a2ba1eeb",
+        "source_fact:v1:c118f8aa31f206e7222d822e31f3d253d8a50efce5e21a56738340f6a1bf638a",
+        "source_fact:v1:d72dbb2b47df25ce23ef34a29b5bcefe0541f70a5a1f74ed449db900ea2384c4"
+      ],
+      "source_published_kst": "2026-10-12T06:22+09:00",
+      "source_title": "트럼프 “러·우크라 에너지 휴전”…러 확인 없고 젤렌스키 “금시초문”",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아와 우크라이나가 서로의 에너지 시설을 공격하지 않는 ‘에너지 휴전’에 합의했다고 발표했다. 11일(현지시간) 트럼프 대통령은 트루스소셜에 “러시아와 우크라이나 전쟁에서 에너지 휴전이 즉각 발효된다”며 “양측 모두 동의했다. 이를 위반하지 말라”고 밝혔다.",
+      "title": "트럼프 “러·우크라 에너지 휴전”…러 확인 없고 젤렌스키 “금시초문”"
     },
     "source_fact:3a8f2e20cd38931bd57b2fe3": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
@@ -245794,6 +246700,33 @@
       ],
       "source_published_kst": "2026-10-06T17:24+09:00",
       "title": "포스코퓨처엠, 삼성SDI에 LFP 양극재 6조원어치 공급"
+    },
+    "source_fact:3fdc4af0800719204a6a4e7f": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634372",
+      "source": "이투데이",
+      "source_body_digest": "e35c30986704e55e513be667df21588ef2b2225c90be5ec8e7d1cab09637f7ac",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3c7450a3f908d4186234394c49a7a270417e7f79751d512685959cf28627cae",
+      "source_fact_keys": [
+        "source_fact:v1:19452545b16aaececc4804a1b62acab598ed0cc32713a4289a6991867dab88dd",
+        "source_fact:v1:1beccc234bd02d49524c759e98c40289a91e8e9d2ae13241661403974eb6916b",
+        "source_fact:v1:45cee855bc33c2c70167f27da21918db1e93e62e34dd83bba242f76f9bd5f202",
+        "source_fact:v1:6459f9323cba9ee0372a243c657839f681445d7be7873710e884cb83a6200ec0",
+        "source_fact:v1:682672918790eed5c9a9f72ddd7a10cd36a3133738ca7a9ace41ea6821d29b40",
+        "source_fact:v1:6f38b86dc4d22b9f2e5410fb9ad68a200ba533db54412f71b011696ab0dc8e5f",
+        "source_fact:v1:b6529ce3dd9e54f34cdf31dc92f616d4e4de13c937584133f15f4333a2ba1eeb",
+        "source_fact:v1:c118f8aa31f206e7222d822e31f3d253d8a50efce5e21a56738340f6a1bf638a",
+        "source_fact:v1:d72dbb2b47df25ce23ef34a29b5bcefe0541f70a5a1f74ed449db900ea2384c4"
+      ],
+      "source_published_kst": "2026-10-12T06:22+09:00",
+      "source_title": "트럼프 “러·우크라 에너지 휴전”…러 확인 없고 젤렌스키 “금시초문”",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아와 우크라이나가 서로의 에너지 시설을 공격하지 않는 ‘에너지 휴전’에 합의했다고 발표했다. 11일(현지시간) 트럼프 대통령은 트루스소셜에 “러시아와 우크라이나 전쟁에서 에너지 휴전이 즉각 발효된다”며 “양측 모두 동의했다. 이를 위반하지 말라”고 밝혔다.",
+      "title": "트럼프 “러·우크라 에너지 휴전”…러 확인 없고 젤렌스키 “금시초문”"
     },
     "source_fact:3fe67e32f34f69b8dc47fa56": {
       "first_seen_kst": "2026-10-07T07:54:25+09:00",
@@ -256680,6 +257613,33 @@
       "source_published_kst": "2026-10-05T23:10+09:00",
       "title": "LG전자, 북미서 5GW 대형 AIDC 칠러 장기 공급계약"
     },
+    "source_fact:4dad606ecc93f51d4d4bf627": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634372",
+      "source": "이투데이",
+      "source_body_digest": "e35c30986704e55e513be667df21588ef2b2225c90be5ec8e7d1cab09637f7ac",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3c7450a3f908d4186234394c49a7a270417e7f79751d512685959cf28627cae",
+      "source_fact_keys": [
+        "source_fact:v1:19452545b16aaececc4804a1b62acab598ed0cc32713a4289a6991867dab88dd",
+        "source_fact:v1:1beccc234bd02d49524c759e98c40289a91e8e9d2ae13241661403974eb6916b",
+        "source_fact:v1:45cee855bc33c2c70167f27da21918db1e93e62e34dd83bba242f76f9bd5f202",
+        "source_fact:v1:6459f9323cba9ee0372a243c657839f681445d7be7873710e884cb83a6200ec0",
+        "source_fact:v1:682672918790eed5c9a9f72ddd7a10cd36a3133738ca7a9ace41ea6821d29b40",
+        "source_fact:v1:6f38b86dc4d22b9f2e5410fb9ad68a200ba533db54412f71b011696ab0dc8e5f",
+        "source_fact:v1:b6529ce3dd9e54f34cdf31dc92f616d4e4de13c937584133f15f4333a2ba1eeb",
+        "source_fact:v1:c118f8aa31f206e7222d822e31f3d253d8a50efce5e21a56738340f6a1bf638a",
+        "source_fact:v1:d72dbb2b47df25ce23ef34a29b5bcefe0541f70a5a1f74ed449db900ea2384c4"
+      ],
+      "source_published_kst": "2026-10-12T06:22+09:00",
+      "source_title": "트럼프 “러·우크라 에너지 휴전”…러 확인 없고 젤렌스키 “금시초문”",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아와 우크라이나가 서로의 에너지 시설을 공격하지 않는 ‘에너지 휴전’에 합의했다고 발표했다. 11일(현지시간) 트럼프 대통령은 트루스소셜에 “러시아와 우크라이나 전쟁에서 에너지 휴전이 즉각 발효된다”며 “양측 모두 동의했다. 이를 위반하지 말라”고 밝혔다.",
+      "title": "트럼프 “러·우크라 에너지 휴전”…러 확인 없고 젤렌스키 “금시초문”"
+    },
     "source_fact:4dafd0cc42316b7e14379712": {
       "first_seen_kst": "2026-10-07T09:44:16+09:00",
       "lanes": {
@@ -258018,6 +258978,33 @@
       "source_published_kst": "2026-10-06T13:55+09:00",
       "title": "제약바이오협회, 'R&D·임상·RA 역량강화' 세미나"
     },
+    "source_fact:4f4f29ca6313002dcd7cc12b": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634372",
+      "source": "이투데이",
+      "source_body_digest": "e35c30986704e55e513be667df21588ef2b2225c90be5ec8e7d1cab09637f7ac",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3c7450a3f908d4186234394c49a7a270417e7f79751d512685959cf28627cae",
+      "source_fact_keys": [
+        "source_fact:v1:19452545b16aaececc4804a1b62acab598ed0cc32713a4289a6991867dab88dd",
+        "source_fact:v1:1beccc234bd02d49524c759e98c40289a91e8e9d2ae13241661403974eb6916b",
+        "source_fact:v1:45cee855bc33c2c70167f27da21918db1e93e62e34dd83bba242f76f9bd5f202",
+        "source_fact:v1:6459f9323cba9ee0372a243c657839f681445d7be7873710e884cb83a6200ec0",
+        "source_fact:v1:682672918790eed5c9a9f72ddd7a10cd36a3133738ca7a9ace41ea6821d29b40",
+        "source_fact:v1:6f38b86dc4d22b9f2e5410fb9ad68a200ba533db54412f71b011696ab0dc8e5f",
+        "source_fact:v1:b6529ce3dd9e54f34cdf31dc92f616d4e4de13c937584133f15f4333a2ba1eeb",
+        "source_fact:v1:c118f8aa31f206e7222d822e31f3d253d8a50efce5e21a56738340f6a1bf638a",
+        "source_fact:v1:d72dbb2b47df25ce23ef34a29b5bcefe0541f70a5a1f74ed449db900ea2384c4"
+      ],
+      "source_published_kst": "2026-10-12T06:22+09:00",
+      "source_title": "트럼프 “러·우크라 에너지 휴전”…러 확인 없고 젤렌스키 “금시초문”",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아와 우크라이나가 서로의 에너지 시설을 공격하지 않는 ‘에너지 휴전’에 합의했다고 발표했다. 11일(현지시간) 트럼프 대통령은 트루스소셜에 “러시아와 우크라이나 전쟁에서 에너지 휴전이 즉각 발효된다”며 “양측 모두 동의했다. 이를 위반하지 말라”고 밝혔다.",
+      "title": "트럼프 “러·우크라 에너지 휴전”…러 확인 없고 젤렌스키 “금시초문”"
+    },
     "source_fact:4f5019a2176ded1e1ae2e44e": {
       "first_seen_kst": "2026-10-12T06:27:02+09:00",
       "lanes": {
@@ -258681,6 +259668,37 @@
       "source_title": "아줄, 아메리칸항공 1억 달러 투자 CADE 승인..지분 8% 확보",
       "telegram_core_fact": "브라질 최대 항공사 아줄(AZUL)은 브라질 경제방어행정위원회(CADE) 심결 재판부가 아메리칸항공(American Airlines)의 아줄 1억 달러 투자를 만장일치로 승인했다고 현지시간 7일 발표했다.",
       "title": "아줄, 아메리칸항공 1억 달러 투자 CADE 승인..지분 8% 확보"
+    },
+    "source_fact:504208dd3d95f2cb06a8da91": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.news1.kr/economy/trend/6315056",
+      "source": "뉴스1",
+      "source_body_digest": "c3ed76ff065df6237882dae308dfad6c0544058535e5a7b4da8a3a3bd53bd799",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:727a0685f2fd997dabef38e3e5387dd44435f1744e1c07c9934df6007ec43a7d",
+      "source_fact_keys": [
+        "source_fact:v1:09fd5d9d959224b4df9d0a8bcfbfbfca310318d969b2dc8c94121ddf87c2ceb5",
+        "source_fact:v1:210ad36b2492d7e7920f917ca2c84edb7df4e0f4ecc462f017ee07f5e2478e18",
+        "source_fact:v1:24e715603b62db79677c7a83522a378a15252c8c4a13ba30e0c078792b7b761b",
+        "source_fact:v1:3278e816850beafce1f8868fb1ff48154a3ddba53cca32c7215b51248aa2d7f8",
+        "source_fact:v1:3ce042d4c72b7934640f247aa6f0841d4fe52c2131d100bcc97578886d9cf1b3",
+        "source_fact:v1:78655581f5e6fab03dda7be4ff575835695b31e2129681cf40831f2d2aad4744",
+        "source_fact:v1:99a3d4a81788785d207b0357aaef241064c8cd871722d0b70ba16bc4a6952c56",
+        "source_fact:v1:a92d351bf9cf541ae5beda87f34464359a4c8d5a91c482466685b9631abffb5d",
+        "source_fact:v1:ad5c242795401934be2728fd6f98c0c31ccfe45d3ecc43f4d97ef2c93bf1036f",
+        "source_fact:v1:b68fd8a64e11abcb62b8aa6ce79c562128ec71ded507d39d3dcb8f63dad206dd",
+        "source_fact:v1:c72a6d1b6811c157432b057f04e0d2b097535f3889ff74b0793b0b35248ce3cf",
+        "source_fact:v1:d7f979b73170cc0ec0765ac1260d3702ff7c8dbbccd985839fec2c4b96feb401",
+        "source_fact:v1:dcf3e6e510eff46e473e34aaea5bf2d31da914f402bd39d3db720daccd530d8d"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심",
+      "telegram_core_fact": "정부의 국채 발행 축소 발표 이후 금리는 3% 후반대로 내려왔지만, 지난 8일에는 다시 연 3.983%로 오르며 4% 턱밑까지 올라섰다.",
+      "title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심"
     },
     "source_fact:504a5e2b6538d19acadc9607": {
       "first_seen_kst": "2026-10-08T12:13:24+09:00",
@@ -266802,31 +267820,25 @@
     "source_fact:5a0223704420e4ed84e06510": {
       "first_seen_kst": "2026-10-12T05:35:02+09:00",
       "lanes": {
-        "live": "2026-10-12T05:35:02+09:00"
+        "live": "2026-10-12T05:35:02+09:00",
+        "preopen": "2026-10-12T06:42:49+09:00"
       },
-      "last_seen_kst": "2026-10-12T05:35:02+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=01436646645612264",
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=01436646645612264&Kind=257",
       "source": "이데일리",
-      "source_body_digest": "22794200af8c273d76fd530fb0c9fabcdc5529607d9b5f33c11f787635cf8b6b",
+      "source_body_digest": "e38b4172777bd621e99bbd69b2058421013b5f189c0b8c83a98fb0610c94be77",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:9aff4a40bb05e7997908f0ee162cfb81c0c007145c619daed10e5666ad28ba0c",
+      "source_fact_identity": "source_facts:v1:2037022498da76bead7fa7a3e8d1e0abd8b8a6f50e48b0b3eb3a24e1d1914d71",
       "source_fact_keys": [
-        "source_fact:v1:01cd295fdb151abdfd3edc0523144039883305180cbc0ea787b923564cfb66b3",
-        "source_fact:v1:29ee1cc3282d9ae40363151c1cacf486de839552bdec7109b3cf7da0b9ce5587",
-        "source_fact:v1:677219f9d5648c52302a30047b433367ad0ddd534d058213a0997be9b05a7efa",
         "source_fact:v1:68b790d75da3292356b9c1f1c32bd44dc956159465ced71452cf9ca4c50999b0",
         "source_fact:v1:85a744ca6c482e5a445fb9fc66e5546b02680f7cfa665d12f8c4abb3659b6561",
         "source_fact:v1:8d26c43cf5e87249b1a608adfaad62d699f8eeda8f1970281d57b25f75f20e86",
-        "source_fact:v1:8f5d2602a87fbb9b9cd6eee28577b5ceb706a7e711dac078ffe5705b738f6e6a",
-        "source_fact:v1:99bafea295cb0f32baf908dfda750089dc1db4ac2181e510169396621b956fef",
-        "source_fact:v1:9df6e56906dc6ab537a7fcf97cd108ee5d4fb6d678f5acbb72584aac9854a975",
         "source_fact:v1:b55551cfb6ffbbd4bde91f844cdf09e90b5a0b582999d8dddb9d36cfff222969",
-        "source_fact:v1:b6f83cc8e9c584d8153d0378d12d30dbec008a07b79b3660e9c0c66565ec4e59",
-        "source_fact:v1:dda41983b5fe9cd8ac91d614b83f9be3e45b8e057157a01167d1893edcbeffbc"
+        "source_fact:v1:efa2484d574481e667d081049a82a35f8dfc3601df77ef2f16d34824129bdb0a"
       ],
-      "source_published_kst": "2026-10-12T05:00+09:00",
+      "source_published_kst": "2026-10-11T17:01+09:00",
       "source_title": "반도체 수출 호황에…달러 넘치는 외환시장",
-      "telegram_core_fact": "문 연구원도 “반도체 기업들의 실적 호조에 따른 달러 공급이 내년에도 지속될 것으로 예상된다”며 “현재 1350원으로 제시한 내년 연평균 환율 전망치도 11월 연간 전망에서 하향 조정할 가능성이 높다”고 내다봤다.",
+      "telegram_core_fact": "서울 외환시장에서 원·달러 환율은 오후 3시 30분 기준 1,340.4원을 기록했다. 반도체 수출 호황으로 유입되는 달러가 늘면서 미국의 달러 강세에도 원·달러 환율이 연저점에 가까워지고 있다.",
       "title": "반도체 수출 호황에…달러 넘치는 외환시장"
     },
     "source_fact:5a06817e6e23b2b39d156c76": {
@@ -278722,6 +279734,37 @@
       "source_published_kst": "2026-10-07T11:31+09:00",
       "title": "역외IB, 국내 인가 없인 한국물 영업 제한…당국 의견수렴 | 연합뉴스"
     },
+    "source_fact:692f726401ba92f955980a8d": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.news1.kr/economy/trend/6315056",
+      "source": "뉴스1",
+      "source_body_digest": "c3ed76ff065df6237882dae308dfad6c0544058535e5a7b4da8a3a3bd53bd799",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:727a0685f2fd997dabef38e3e5387dd44435f1744e1c07c9934df6007ec43a7d",
+      "source_fact_keys": [
+        "source_fact:v1:09fd5d9d959224b4df9d0a8bcfbfbfca310318d969b2dc8c94121ddf87c2ceb5",
+        "source_fact:v1:210ad36b2492d7e7920f917ca2c84edb7df4e0f4ecc462f017ee07f5e2478e18",
+        "source_fact:v1:24e715603b62db79677c7a83522a378a15252c8c4a13ba30e0c078792b7b761b",
+        "source_fact:v1:3278e816850beafce1f8868fb1ff48154a3ddba53cca32c7215b51248aa2d7f8",
+        "source_fact:v1:3ce042d4c72b7934640f247aa6f0841d4fe52c2131d100bcc97578886d9cf1b3",
+        "source_fact:v1:78655581f5e6fab03dda7be4ff575835695b31e2129681cf40831f2d2aad4744",
+        "source_fact:v1:99a3d4a81788785d207b0357aaef241064c8cd871722d0b70ba16bc4a6952c56",
+        "source_fact:v1:a92d351bf9cf541ae5beda87f34464359a4c8d5a91c482466685b9631abffb5d",
+        "source_fact:v1:ad5c242795401934be2728fd6f98c0c31ccfe45d3ecc43f4d97ef2c93bf1036f",
+        "source_fact:v1:b68fd8a64e11abcb62b8aa6ce79c562128ec71ded507d39d3dcb8f63dad206dd",
+        "source_fact:v1:c72a6d1b6811c157432b057f04e0d2b097535f3889ff74b0793b0b35248ce3cf",
+        "source_fact:v1:d7f979b73170cc0ec0765ac1260d3702ff7c8dbbccd985839fec2c4b96feb401",
+        "source_fact:v1:dcf3e6e510eff46e473e34aaea5bf2d31da914f402bd39d3db720daccd530d8d"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심",
+      "telegram_core_fact": "정부의 국채 발행 축소 발표 이후 금리는 3% 후반대로 내려왔지만, 지난 8일에는 다시 연 3.983%로 오르며 4% 턱밑까지 올라섰다.",
+      "title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심"
+    },
     "source_fact:6940110d182514771a01cb5a": {
       "first_seen_kst": "2026-10-08T08:12:34+09:00",
       "lanes": {
@@ -279699,6 +280742,26 @@
       "source_title": "\"SK하이닉스, HBM·범용 메모리 동반 호조..내년도 성장\"-유진證",
       "telegram_core_fact": "실적 개선의 핵심은 메모리 가격으로, 유진투자증권은 3·4분기 D램의 평균판매가격이 전 분기 대비 20%, 출하량은 저장용량 기준으로 12% 증가할 것으로 예상했다.",
       "title": "\"SK하이닉스, HBM·범용 메모리 동반 호조..내년도 성장\"-유진證"
+    },
+    "source_fact:6a3d4941eae9b5bfe8d2d6dd": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.fnnews.com/news/202610120600427723",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "c9433565523ef5e080261b96c66ac2d5ea2830313217360712ecb7bc182f3a66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4c6773e6bd531e0962ac93db4d47a6b2e62e75e0d3d0378f82ed6405e82bcf69",
+      "source_fact_keys": [
+        "source_fact:v1:6bf0f861858d12f94afa0fd98666004ac78885c97c3622035deb69460e66669b",
+        "source_fact:v1:a44f01da95f7cd58ebc82a55e0be0c814dfb8710ffad79e41d71154f65668a63"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "노타 채명수 \"고사양 GPU 추가보다 기존 인프라 활용 대세\" [K-챌린저]",
+      "telegram_core_fact": "채명수 노타(Nota AI) 대표는 뉴스1과 인터뷰에서 인공지능(AI) 모델 경량화나 개별 칩 최적화를 넘어 고객의 AI 도입 전 과정을 지원하는 기업으로 성장하겠다며 이같이 말했다.",
+      "title": "노타 채명수 \"고사양 GPU 추가보다 기존 인프라 활용 대세\" [K-챌린저]"
     },
     "source_fact:6a40053c35c6dcbdeee0d711": {
       "first_seen_kst": "2026-10-08T00:39:44+09:00",
@@ -281669,6 +282732,31 @@
       "source_title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’",
       "telegram_core_fact": "KAI 최대주주인 수출입은행의 지분 매각 가능성과 한화의 경영 참여 계획 등이 주요 질의 대상으로 거론된다.",
       "title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’"
+    },
+    "source_fact:6cd62ef6ca164115e4c7cf54": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12173217",
+      "source": "매일경제",
+      "source_body_digest": "22bcaec3ee308ef4a1759fb51d03cac8f9900fa1a3b836717ad41c1afb6fec8c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f4d5a9da2affb23175cb332cdd807144dfbe0698637dd8b182cf3473f506b449",
+      "source_fact_keys": [
+        "source_fact:v1:37c31b346ad69b880c02f3fab0606f92aa79dec25218b172b83c21e6a881ba5c",
+        "source_fact:v1:7704555dab0fa71049f339121eff9ba85fec3f154fd2c40ddb23c4fb4158e54f",
+        "source_fact:v1:949602684848b22342f9c33124028bfbffcb1970e105d21baf32e1116fe816b2",
+        "source_fact:v1:9b00f435c0bccf5e6891f6fb881e914e92d5547c17a83df54cdbaa38332b5396",
+        "source_fact:v1:9ea892054721eebc212285651f4fdb861d90054b99222c4fec73a2b44b53ca07",
+        "source_fact:v1:ac85a2f806c3103fcc2b0fbffe246ac55044a42f6393bb191941bfa359c5a0b6",
+        "source_fact:v1:c3bf0efd1f2c88286fa2e55be1a1cc6b56e6c84565965dce59ace1715a31e71b"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "김동선, 독립경영 강화 속도전 … 한화M&S 지분 19% 공개매수",
+      "telegram_core_fact": "전략총괄 사장 8000원·개매수에 성공하면 김 사장 1285억원, 지분율 5.81→24.81%를 매수했습니다.",
+      "title": "김동선, 독립경영 강화 속도전 … 한화M&S 지분 19% 공개매수"
     },
     "source_fact:6cdafa895f07d31857558bc2": {
       "first_seen_kst": "2026-10-07T17:47:45+09:00",
@@ -291535,6 +292623,31 @@
       "source_published_kst": "2026-10-05T21:20+09:00",
       "title": "이 대통령 \"부동산투기공화국 탈출 약속 반드시 지킬 것\"…하루에만 SNS 11건(종합2보)"
     },
+    "source_fact:79f122c357d24b359adbff14": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821228",
+      "source": "뉴시스",
+      "source_body_digest": "02d3a68bc4bb711575b08be805a6743a9b5ed750fc4f0b720cdfe8e24ccb143c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:087cd70573e28645826d3a61865010043c10a291aedd795acfa3db882a4c405a",
+      "source_fact_keys": [
+        "source_fact:v1:106bddd480ac85314eabe8a5811befbc4c59366c0d25883f5bc182485faf1065",
+        "source_fact:v1:2f4a61f668730ea07f0b29e43589bd7dadea4cdd579df42019b4ee2cb07d2a10",
+        "source_fact:v1:7d8f2bfd7413725d7a0649ba86f5f9c88a3c81a6579e18899672cfba1b530c66",
+        "source_fact:v1:b2208185e13ca5f299a085b5c92c4e74aacebeb63046c40a6dee4814934a3241",
+        "source_fact:v1:ea7dfda91d4656df1aba45afcee886007850180fad53a3e05c24346b7702cb4c",
+        "source_fact:v1:ec39160cb684f34992cdc3508384f98a200de0a5c2a06aa758f90a95e49902e5",
+        "source_fact:v1:ef3e5018621976524d94db8138ff0855271f19e9f3282da4cc8bb4bffa5fc19e"
+      ],
+      "source_published_kst": "2026-10-12T06:33+09:00",
+      "source_title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다[간추린 주말 뉴스]",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 올해 반도체 호황으로 역대급 수익을 내고 있는 가운데, 이르면 내년 3월 양사 직원들은 일제히 수억원대의 성과급을 지급 받을 전망이다. 국가데이터처의 '2025년 가계금융복지조사'에 따르면 지난해 3월 말 기준 가구당 평균 순자산은 4억7144만원으로 전년대비 5.0% 증가했다.",
+      "title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다[간추린 주말 뉴스]"
+    },
     "source_fact:79fbf8eb3365ae8bd408edcf": {
       "first_seen_kst": "2026-10-10T13:42:50+09:00",
       "lanes": {
@@ -292370,6 +293483,37 @@
       "source_published_kst": "2026-10-06T08:02+09:00",
       "title": "밸류파인더 “메타케어, 저용량 탈모치료제 출시 임박…헬스케어 플랫폼 확장”"
     },
+    "source_fact:7b2d297418f855a42fd367eb": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.news1.kr/economy/trend/6315056",
+      "source": "뉴스1",
+      "source_body_digest": "c3ed76ff065df6237882dae308dfad6c0544058535e5a7b4da8a3a3bd53bd799",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:727a0685f2fd997dabef38e3e5387dd44435f1744e1c07c9934df6007ec43a7d",
+      "source_fact_keys": [
+        "source_fact:v1:09fd5d9d959224b4df9d0a8bcfbfbfca310318d969b2dc8c94121ddf87c2ceb5",
+        "source_fact:v1:210ad36b2492d7e7920f917ca2c84edb7df4e0f4ecc462f017ee07f5e2478e18",
+        "source_fact:v1:24e715603b62db79677c7a83522a378a15252c8c4a13ba30e0c078792b7b761b",
+        "source_fact:v1:3278e816850beafce1f8868fb1ff48154a3ddba53cca32c7215b51248aa2d7f8",
+        "source_fact:v1:3ce042d4c72b7934640f247aa6f0841d4fe52c2131d100bcc97578886d9cf1b3",
+        "source_fact:v1:78655581f5e6fab03dda7be4ff575835695b31e2129681cf40831f2d2aad4744",
+        "source_fact:v1:99a3d4a81788785d207b0357aaef241064c8cd871722d0b70ba16bc4a6952c56",
+        "source_fact:v1:a92d351bf9cf541ae5beda87f34464359a4c8d5a91c482466685b9631abffb5d",
+        "source_fact:v1:ad5c242795401934be2728fd6f98c0c31ccfe45d3ecc43f4d97ef2c93bf1036f",
+        "source_fact:v1:b68fd8a64e11abcb62b8aa6ce79c562128ec71ded507d39d3dcb8f63dad206dd",
+        "source_fact:v1:c72a6d1b6811c157432b057f04e0d2b097535f3889ff74b0793b0b35248ce3cf",
+        "source_fact:v1:d7f979b73170cc0ec0765ac1260d3702ff7c8dbbccd985839fec2c4b96feb401",
+        "source_fact:v1:dcf3e6e510eff46e473e34aaea5bf2d31da914f402bd39d3db720daccd530d8d"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심",
+      "telegram_core_fact": "정부의 국채 발행 축소 발표 이후 금리는 3% 후반대로 내려왔지만, 지난 8일에는 다시 연 3.983%로 오르며 4% 턱밑까지 올라섰다.",
+      "title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심"
+    },
     "source_fact:7b37005bfdfd258814ed6662": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
       "lanes": {
@@ -292959,6 +294103,31 @@
       ],
       "source_published_kst": "2026-10-06T11:30+09:00",
       "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
+    },
+    "source_fact:7c2561e53a31897fbc0fb85d": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12173217",
+      "source": "매일경제",
+      "source_body_digest": "22bcaec3ee308ef4a1759fb51d03cac8f9900fa1a3b836717ad41c1afb6fec8c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f4d5a9da2affb23175cb332cdd807144dfbe0698637dd8b182cf3473f506b449",
+      "source_fact_keys": [
+        "source_fact:v1:37c31b346ad69b880c02f3fab0606f92aa79dec25218b172b83c21e6a881ba5c",
+        "source_fact:v1:7704555dab0fa71049f339121eff9ba85fec3f154fd2c40ddb23c4fb4158e54f",
+        "source_fact:v1:949602684848b22342f9c33124028bfbffcb1970e105d21baf32e1116fe816b2",
+        "source_fact:v1:9b00f435c0bccf5e6891f6fb881e914e92d5547c17a83df54cdbaa38332b5396",
+        "source_fact:v1:9ea892054721eebc212285651f4fdb861d90054b99222c4fec73a2b44b53ca07",
+        "source_fact:v1:ac85a2f806c3103fcc2b0fbffe246ac55044a42f6393bb191941bfa359c5a0b6",
+        "source_fact:v1:c3bf0efd1f2c88286fa2e55be1a1cc6b56e6c84565965dce59ace1715a31e71b"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "김동선, 독립경영 강화 속도전 … 한화M&S 지분 19% 공개매수",
+      "telegram_core_fact": "전략총괄 사장 8000원·개매수에 성공하면 김 사장 1285억원, 지분율 5.81→24.81%를 매수했습니다.",
+      "title": "김동선, 독립경영 강화 속도전 … 한화M&S 지분 19% 공개매수"
     },
     "source_fact:7c31c41cc2e5770d78663676": {
       "first_seen_kst": "2026-10-09T22:37:15+09:00",
@@ -295032,6 +296201,33 @@
       "source_title": "결국 러시아산 경유 들이는 트럼프…민주당·우크라 “악마와의 거래‘ 맹폭",
       "telegram_core_fact": "경유 도입을 위해 미국이 대러 제재를 완화하자 우크라이나와 유럽연합(EU) 등이 강력 반발하면서 발발 4년째인 러시아·우크라이나 전쟁이 기로에 섰다.",
       "title": "결국 러시아산 경유 들이는 트럼프…민주당·우크라 “악마와의 거래‘ 맹폭"
+    },
+    "source_fact:7e793620a2863ef14634739c": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634372",
+      "source": "이투데이",
+      "source_body_digest": "e35c30986704e55e513be667df21588ef2b2225c90be5ec8e7d1cab09637f7ac",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3c7450a3f908d4186234394c49a7a270417e7f79751d512685959cf28627cae",
+      "source_fact_keys": [
+        "source_fact:v1:19452545b16aaececc4804a1b62acab598ed0cc32713a4289a6991867dab88dd",
+        "source_fact:v1:1beccc234bd02d49524c759e98c40289a91e8e9d2ae13241661403974eb6916b",
+        "source_fact:v1:45cee855bc33c2c70167f27da21918db1e93e62e34dd83bba242f76f9bd5f202",
+        "source_fact:v1:6459f9323cba9ee0372a243c657839f681445d7be7873710e884cb83a6200ec0",
+        "source_fact:v1:682672918790eed5c9a9f72ddd7a10cd36a3133738ca7a9ace41ea6821d29b40",
+        "source_fact:v1:6f38b86dc4d22b9f2e5410fb9ad68a200ba533db54412f71b011696ab0dc8e5f",
+        "source_fact:v1:b6529ce3dd9e54f34cdf31dc92f616d4e4de13c937584133f15f4333a2ba1eeb",
+        "source_fact:v1:c118f8aa31f206e7222d822e31f3d253d8a50efce5e21a56738340f6a1bf638a",
+        "source_fact:v1:d72dbb2b47df25ce23ef34a29b5bcefe0541f70a5a1f74ed449db900ea2384c4"
+      ],
+      "source_published_kst": "2026-10-12T06:22+09:00",
+      "source_title": "트럼프 “러·우크라 에너지 휴전”…러 확인 없고 젤렌스키 “금시초문”",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아와 우크라이나가 서로의 에너지 시설을 공격하지 않는 ‘에너지 휴전’에 합의했다고 발표했다. 11일(현지시간) 트럼프 대통령은 트루스소셜에 “러시아와 우크라이나 전쟁에서 에너지 휴전이 즉각 발효된다”며 “양측 모두 동의했다. 이를 위반하지 말라”고 밝혔다.",
+      "title": "트럼프 “러·우크라 에너지 휴전”…러 확인 없고 젤렌스키 “금시초문”"
     },
     "source_fact:7e7dc58861f0b7714d98cc44": {
       "first_seen_kst": "2026-10-08T08:56:19+09:00",
@@ -319164,33 +320360,28 @@
     "source_fact:9e888a04a0450a28cd520efb": {
       "first_seen_kst": "2026-10-10T06:02:39+09:00",
       "lanes": {
-        "live": "2026-10-10T06:02:39+09:00"
+        "live": "2026-10-10T06:02:39+09:00",
+        "preopen": "2026-10-12T06:42:49+09:00"
       },
-      "last_seen_kst": "2026-10-10T06:02:39+09:00",
-      "link": "https://www.newsis.com/view/NISX20261008_0003819636",
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821228",
       "source": "뉴시스",
-      "source_body_digest": "7c826e75f4185c94829ea5b6b6d39a1541b034a916533c61220dcff5bfc6ab85",
+      "source_body_digest": "02d3a68bc4bb711575b08be805a6743a9b5ed750fc4f0b720cdfe8e24ccb143c",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:74b146ba41afb6c903a8c216f5365fb086db1bfbeea3214b0bc61901fbc1744d",
+      "source_fact_identity": "source_facts:v1:087cd70573e28645826d3a61865010043c10a291aedd795acfa3db882a4c405a",
       "source_fact_keys": [
         "source_fact:v1:106bddd480ac85314eabe8a5811befbc4c59366c0d25883f5bc182485faf1065",
-        "source_fact:v1:21f803c585cef55f0d8d4342409682454dd9246e9070c3fdc151a067119bd2f7",
         "source_fact:v1:2f4a61f668730ea07f0b29e43589bd7dadea4cdd579df42019b4ee2cb07d2a10",
-        "source_fact:v1:463300d13e0497397a9485fa13ff986addf3329c02c6e843dad780c45206b88f",
-        "source_fact:v1:739c6363e4c4443c50375f048c0b7842bf3589be787523ec0d8ce1920175a763",
-        "source_fact:v1:81ab014acb14fdb085ea427fc37dcb867ffb4ff21f9b871b384e394cfafe8993",
-        "source_fact:v1:bf803bfe82f4ef839b9b7417198350fb7af93b0ab12c62b4c52a6d55032e7dce",
-        "source_fact:v1:cc29e106a61803019b1e47bb7f90caf87dde8065928afb803474bbeb7283b3b5",
-        "source_fact:v1:dfe124e96bcf6b8d2c1fd67a0f0f42a87221d102b5be90c4bb01710c35d4d1f3",
+        "source_fact:v1:7d8f2bfd7413725d7a0649ba86f5f9c88a3c81a6579e18899672cfba1b530c66",
+        "source_fact:v1:b2208185e13ca5f299a085b5c92c4e74aacebeb63046c40a6dee4814934a3241",
         "source_fact:v1:ea7dfda91d4656df1aba45afcee886007850180fad53a3e05c24346b7702cb4c",
         "source_fact:v1:ec39160cb684f34992cdc3508384f98a200de0a5c2a06aa758f90a95e49902e5",
-        "source_fact:v1:ef3e5018621976524d94db8138ff0855271f19e9f3282da4cc8bb4bffa5fc19e",
-        "source_fact:v1:f4a804217f8b2cd00a00302b311068532eed1dd98d5a955efb0e91026ccb86f6"
+        "source_fact:v1:ef3e5018621976524d94db8138ff0855271f19e9f3282da4cc8bb4bffa5fc19e"
       ],
-      "source_published_kst": "2026-10-10T06:00+09:00",
-      "source_title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다…삼전·닉스 '역대급 보상' 지급 일정은",
-      "telegram_core_fact": "삼성전자와 SK하이닉스가 올해 반도체 호황으로 역대급 수익을 내고 있는 가운데, 이르면 내년 3월 양사 직원들은 일제히 수억원대의 성과급을 지급 받을 전망이다. 특별경영성과급은 내년 3월 정기주주총회와 이사회 의결을 거쳐 3월 말~4월 초 지급될 예정이다.",
-      "title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다…삼전·닉스 '역대급 보상' 지급 일정은"
+      "source_published_kst": "2026-10-12T06:33+09:00",
+      "source_title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다[간추린 주말 뉴스]",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 올해 반도체 호황으로 역대급 수익을 내고 있는 가운데, 이르면 내년 3월 양사 직원들은 일제히 수억원대의 성과급을 지급 받을 전망이다. 국가데이터처의 '2025년 가계금융복지조사'에 따르면 지난해 3월 말 기준 가구당 평균 순자산은 4억7144만원으로 전년대비 5.0% 증가했다.",
+      "title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다[간추린 주말 뉴스]"
     },
     "source_fact:9e89c0e4df0c9615f8ea906d": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -319683,6 +320874,27 @@
       ],
       "source_published_kst": "2026-10-06T15:07+09:00",
       "title": "[2026 국감] 호남 반도체 놓고 여야 격돌…김성환 기후부 장관 “전력·용수 공급 가능”"
+    },
+    "source_fact:9f3e2ef9f444bc74d8aca2ca": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/12/2026101206130938117",
+      "source": "머니투데이",
+      "source_body_digest": "72952a6a9895dc0e13f5e076c13ae98535adf44a62c26680256cbf4a2eb7b3dc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd757961a6b5bd598836d40c789195d7fb141584bb995a2f2c73a926f2960aa8",
+      "source_fact_keys": [
+        "source_fact:v1:4bbe7a7321f7ac19dceb4bea397212def1d8c5547a9575b326e251f4eadd2f40",
+        "source_fact:v1:4f1820fecadeb1cc974caee832f10878aaa4f713307f2cfa535ce8e9244fc6f5",
+        "source_fact:v1:f72059f30fa40331fa72b2e54edd396def8828737531bbdd905d4674ff7c7a9f"
+      ],
+      "source_published_kst": "2026-10-12T06:22+09:00",
+      "source_title": "\"한국, 알래스카 LNG 투자 결정한 것 없어…사업성 확인이 먼저\"",
+      "telegram_core_fact": "한국이 미국 알래스카 액화천연가스(LNG) 개발 사업에 최소 500억달러를 투자하기로 약속했다는 도널드 트럼프 대통령 발표와 달리, 한국 측은 투자 결정을 내리지 않은 것으로 보인다는 알래스카 현지 매체의 보도가 나왔다.",
+      "title": "\"한국, 알래스카 LNG 투자 결정한 것 없어…사업성 확인이 먼저\""
     },
     "source_fact:9f426eb1aaed91ef53d64d55": {
       "first_seen_kst": "2026-10-06T16:30:27+09:00",
@@ -321124,6 +322336,37 @@
       "source_title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)",
       "telegram_core_fact": "그는 미국이 러시아의 전쟁 자금 조달을 막기 위해 부과했던 러시아산 연료 제재를 일시적으로 완화한 지 하루 만에 우크라이나가 러시아 정유시설을 공격한 걸 비난했다.",
       "title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)"
+    },
+    "source_fact:a1139eba9b86cba06307c6c4": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.news1.kr/economy/trend/6315056",
+      "source": "뉴스1",
+      "source_body_digest": "c3ed76ff065df6237882dae308dfad6c0544058535e5a7b4da8a3a3bd53bd799",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:727a0685f2fd997dabef38e3e5387dd44435f1744e1c07c9934df6007ec43a7d",
+      "source_fact_keys": [
+        "source_fact:v1:09fd5d9d959224b4df9d0a8bcfbfbfca310318d969b2dc8c94121ddf87c2ceb5",
+        "source_fact:v1:210ad36b2492d7e7920f917ca2c84edb7df4e0f4ecc462f017ee07f5e2478e18",
+        "source_fact:v1:24e715603b62db79677c7a83522a378a15252c8c4a13ba30e0c078792b7b761b",
+        "source_fact:v1:3278e816850beafce1f8868fb1ff48154a3ddba53cca32c7215b51248aa2d7f8",
+        "source_fact:v1:3ce042d4c72b7934640f247aa6f0841d4fe52c2131d100bcc97578886d9cf1b3",
+        "source_fact:v1:78655581f5e6fab03dda7be4ff575835695b31e2129681cf40831f2d2aad4744",
+        "source_fact:v1:99a3d4a81788785d207b0357aaef241064c8cd871722d0b70ba16bc4a6952c56",
+        "source_fact:v1:a92d351bf9cf541ae5beda87f34464359a4c8d5a91c482466685b9631abffb5d",
+        "source_fact:v1:ad5c242795401934be2728fd6f98c0c31ccfe45d3ecc43f4d97ef2c93bf1036f",
+        "source_fact:v1:b68fd8a64e11abcb62b8aa6ce79c562128ec71ded507d39d3dcb8f63dad206dd",
+        "source_fact:v1:c72a6d1b6811c157432b057f04e0d2b097535f3889ff74b0793b0b35248ce3cf",
+        "source_fact:v1:d7f979b73170cc0ec0765ac1260d3702ff7c8dbbccd985839fec2c4b96feb401",
+        "source_fact:v1:dcf3e6e510eff46e473e34aaea5bf2d31da914f402bd39d3db720daccd530d8d"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심",
+      "telegram_core_fact": "정부의 국채 발행 축소 발표 이후 금리는 3% 후반대로 내려왔지만, 지난 8일에는 다시 연 3.983%로 오르며 4% 턱밑까지 올라섰다.",
+      "title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심"
     },
     "source_fact:a11d433db5a65a980d3fa8ba": {
       "first_seen_kst": "2026-10-06T19:33:48+09:00",
@@ -323539,31 +324782,25 @@
     "source_fact:a44086e85bc8934409954e55": {
       "first_seen_kst": "2026-10-12T05:35:02+09:00",
       "lanes": {
-        "live": "2026-10-12T05:35:02+09:00"
+        "live": "2026-10-12T05:35:02+09:00",
+        "preopen": "2026-10-12T06:42:49+09:00"
       },
-      "last_seen_kst": "2026-10-12T05:35:02+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=01436646645612264",
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=01436646645612264&Kind=257",
       "source": "이데일리",
-      "source_body_digest": "22794200af8c273d76fd530fb0c9fabcdc5529607d9b5f33c11f787635cf8b6b",
+      "source_body_digest": "e38b4172777bd621e99bbd69b2058421013b5f189c0b8c83a98fb0610c94be77",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:9aff4a40bb05e7997908f0ee162cfb81c0c007145c619daed10e5666ad28ba0c",
+      "source_fact_identity": "source_facts:v1:2037022498da76bead7fa7a3e8d1e0abd8b8a6f50e48b0b3eb3a24e1d1914d71",
       "source_fact_keys": [
-        "source_fact:v1:01cd295fdb151abdfd3edc0523144039883305180cbc0ea787b923564cfb66b3",
-        "source_fact:v1:29ee1cc3282d9ae40363151c1cacf486de839552bdec7109b3cf7da0b9ce5587",
-        "source_fact:v1:677219f9d5648c52302a30047b433367ad0ddd534d058213a0997be9b05a7efa",
         "source_fact:v1:68b790d75da3292356b9c1f1c32bd44dc956159465ced71452cf9ca4c50999b0",
         "source_fact:v1:85a744ca6c482e5a445fb9fc66e5546b02680f7cfa665d12f8c4abb3659b6561",
         "source_fact:v1:8d26c43cf5e87249b1a608adfaad62d699f8eeda8f1970281d57b25f75f20e86",
-        "source_fact:v1:8f5d2602a87fbb9b9cd6eee28577b5ceb706a7e711dac078ffe5705b738f6e6a",
-        "source_fact:v1:99bafea295cb0f32baf908dfda750089dc1db4ac2181e510169396621b956fef",
-        "source_fact:v1:9df6e56906dc6ab537a7fcf97cd108ee5d4fb6d678f5acbb72584aac9854a975",
         "source_fact:v1:b55551cfb6ffbbd4bde91f844cdf09e90b5a0b582999d8dddb9d36cfff222969",
-        "source_fact:v1:b6f83cc8e9c584d8153d0378d12d30dbec008a07b79b3660e9c0c66565ec4e59",
-        "source_fact:v1:dda41983b5fe9cd8ac91d614b83f9be3e45b8e057157a01167d1893edcbeffbc"
+        "source_fact:v1:efa2484d574481e667d081049a82a35f8dfc3601df77ef2f16d34824129bdb0a"
       ],
-      "source_published_kst": "2026-10-12T05:00+09:00",
+      "source_published_kst": "2026-10-11T17:01+09:00",
       "source_title": "반도체 수출 호황에…달러 넘치는 외환시장",
-      "telegram_core_fact": "문 연구원도 “반도체 기업들의 실적 호조에 따른 달러 공급이 내년에도 지속될 것으로 예상된다”며 “현재 1350원으로 제시한 내년 연평균 환율 전망치도 11월 연간 전망에서 하향 조정할 가능성이 높다”고 내다봤다.",
+      "telegram_core_fact": "서울 외환시장에서 원·달러 환율은 오후 3시 30분 기준 1,340.4원을 기록했다. 반도체 수출 호황으로 유입되는 달러가 늘면서 미국의 달러 강세에도 원·달러 환율이 연저점에 가까워지고 있다.",
       "title": "반도체 수출 호황에…달러 넘치는 외환시장"
     },
     "source_fact:a445e40ed2eefe4d9e45cfd8": {
@@ -324281,6 +325518,37 @@
       "source_published_kst": "2026-10-06T11:28+09:00",
       "title": "삼성전기, 글로벌 기업에 2900억 MLCC 공급…AI부품 수주 '4조 클럽' 돌파"
     },
+    "source_fact:a5616448edb2a3a98f7ab393": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.news1.kr/economy/trend/6315056",
+      "source": "뉴스1",
+      "source_body_digest": "c3ed76ff065df6237882dae308dfad6c0544058535e5a7b4da8a3a3bd53bd799",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:727a0685f2fd997dabef38e3e5387dd44435f1744e1c07c9934df6007ec43a7d",
+      "source_fact_keys": [
+        "source_fact:v1:09fd5d9d959224b4df9d0a8bcfbfbfca310318d969b2dc8c94121ddf87c2ceb5",
+        "source_fact:v1:210ad36b2492d7e7920f917ca2c84edb7df4e0f4ecc462f017ee07f5e2478e18",
+        "source_fact:v1:24e715603b62db79677c7a83522a378a15252c8c4a13ba30e0c078792b7b761b",
+        "source_fact:v1:3278e816850beafce1f8868fb1ff48154a3ddba53cca32c7215b51248aa2d7f8",
+        "source_fact:v1:3ce042d4c72b7934640f247aa6f0841d4fe52c2131d100bcc97578886d9cf1b3",
+        "source_fact:v1:78655581f5e6fab03dda7be4ff575835695b31e2129681cf40831f2d2aad4744",
+        "source_fact:v1:99a3d4a81788785d207b0357aaef241064c8cd871722d0b70ba16bc4a6952c56",
+        "source_fact:v1:a92d351bf9cf541ae5beda87f34464359a4c8d5a91c482466685b9631abffb5d",
+        "source_fact:v1:ad5c242795401934be2728fd6f98c0c31ccfe45d3ecc43f4d97ef2c93bf1036f",
+        "source_fact:v1:b68fd8a64e11abcb62b8aa6ce79c562128ec71ded507d39d3dcb8f63dad206dd",
+        "source_fact:v1:c72a6d1b6811c157432b057f04e0d2b097535f3889ff74b0793b0b35248ce3cf",
+        "source_fact:v1:d7f979b73170cc0ec0765ac1260d3702ff7c8dbbccd985839fec2c4b96feb401",
+        "source_fact:v1:dcf3e6e510eff46e473e34aaea5bf2d31da914f402bd39d3db720daccd530d8d"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심",
+      "telegram_core_fact": "정부의 국채 발행 축소 발표 이후 금리는 3% 후반대로 내려왔지만, 지난 8일에는 다시 연 3.983%로 오르며 4% 턱밑까지 올라섰다.",
+      "title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심"
+    },
     "source_fact:a56c6be7557c78d5b9ad27c1": {
       "first_seen_kst": "2026-10-09T20:02:39+09:00",
       "lanes": {
@@ -324767,6 +326035,37 @@
       "source_title": "\"엔화 840원도 바닥 아닐 수도…엔·달러 모두 추가 하락 가능성\"",
       "telegram_core_fact": "원·달러 환율이 다음 주 1310원대까지 내려가고, 엔화는 100엔당 840원대에서도 추가 하락할 수 있다는 전문가 전망이 나왔다.",
       "title": "\"엔화 840원도 바닥 아닐 수도…엔·달러 모두 추가 하락 가능성\""
+    },
+    "source_fact:a5ecc25739e8110615fb989a": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.news1.kr/economy/trend/6315056",
+      "source": "뉴스1",
+      "source_body_digest": "c3ed76ff065df6237882dae308dfad6c0544058535e5a7b4da8a3a3bd53bd799",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:727a0685f2fd997dabef38e3e5387dd44435f1744e1c07c9934df6007ec43a7d",
+      "source_fact_keys": [
+        "source_fact:v1:09fd5d9d959224b4df9d0a8bcfbfbfca310318d969b2dc8c94121ddf87c2ceb5",
+        "source_fact:v1:210ad36b2492d7e7920f917ca2c84edb7df4e0f4ecc462f017ee07f5e2478e18",
+        "source_fact:v1:24e715603b62db79677c7a83522a378a15252c8c4a13ba30e0c078792b7b761b",
+        "source_fact:v1:3278e816850beafce1f8868fb1ff48154a3ddba53cca32c7215b51248aa2d7f8",
+        "source_fact:v1:3ce042d4c72b7934640f247aa6f0841d4fe52c2131d100bcc97578886d9cf1b3",
+        "source_fact:v1:78655581f5e6fab03dda7be4ff575835695b31e2129681cf40831f2d2aad4744",
+        "source_fact:v1:99a3d4a81788785d207b0357aaef241064c8cd871722d0b70ba16bc4a6952c56",
+        "source_fact:v1:a92d351bf9cf541ae5beda87f34464359a4c8d5a91c482466685b9631abffb5d",
+        "source_fact:v1:ad5c242795401934be2728fd6f98c0c31ccfe45d3ecc43f4d97ef2c93bf1036f",
+        "source_fact:v1:b68fd8a64e11abcb62b8aa6ce79c562128ec71ded507d39d3dcb8f63dad206dd",
+        "source_fact:v1:c72a6d1b6811c157432b057f04e0d2b097535f3889ff74b0793b0b35248ce3cf",
+        "source_fact:v1:d7f979b73170cc0ec0765ac1260d3702ff7c8dbbccd985839fec2c4b96feb401",
+        "source_fact:v1:dcf3e6e510eff46e473e34aaea5bf2d31da914f402bd39d3db720daccd530d8d"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심",
+      "telegram_core_fact": "정부의 국채 발행 축소 발표 이후 금리는 3% 후반대로 내려왔지만, 지난 8일에는 다시 연 3.983%로 오르며 4% 턱밑까지 올라섰다.",
+      "title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심"
     },
     "source_fact:a5f1a52f30b872698d0a59e9": {
       "first_seen_kst": "2026-10-08T18:02:43+09:00",
@@ -330264,6 +331563,31 @@
       "source_title": "AI 데이터센터 몸값 시험대…엔비디아 투자받은 퍼머스 IPO 철회",
       "telegram_core_fact": "엔비디아의 투자를 유치하고 오픈AI·메타와 대규모 AI 인프라 계약을 맺으며 호주 증시의 대형 기업공개(IPO) 후보로 주목받았던 데이터센터 기업 퍼머스(Firmus)가 상장 계획을 철회했다.",
       "title": "AI 데이터센터 몸값 시험대…엔비디아 투자받은 퍼머스 IPO 철회"
+    },
+    "source_fact:ad4f0b2fe24c84f64666d338": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12173217",
+      "source": "매일경제",
+      "source_body_digest": "22bcaec3ee308ef4a1759fb51d03cac8f9900fa1a3b836717ad41c1afb6fec8c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f4d5a9da2affb23175cb332cdd807144dfbe0698637dd8b182cf3473f506b449",
+      "source_fact_keys": [
+        "source_fact:v1:37c31b346ad69b880c02f3fab0606f92aa79dec25218b172b83c21e6a881ba5c",
+        "source_fact:v1:7704555dab0fa71049f339121eff9ba85fec3f154fd2c40ddb23c4fb4158e54f",
+        "source_fact:v1:949602684848b22342f9c33124028bfbffcb1970e105d21baf32e1116fe816b2",
+        "source_fact:v1:9b00f435c0bccf5e6891f6fb881e914e92d5547c17a83df54cdbaa38332b5396",
+        "source_fact:v1:9ea892054721eebc212285651f4fdb861d90054b99222c4fec73a2b44b53ca07",
+        "source_fact:v1:ac85a2f806c3103fcc2b0fbffe246ac55044a42f6393bb191941bfa359c5a0b6",
+        "source_fact:v1:c3bf0efd1f2c88286fa2e55be1a1cc6b56e6c84565965dce59ace1715a31e71b"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "김동선, 독립경영 강화 속도전 … 한화M&S 지분 19% 공개매수",
+      "telegram_core_fact": "전략총괄 사장 8000원·개매수에 성공하면 김 사장 1285억원, 지분율 5.81→24.81%를 매수했습니다.",
+      "title": "김동선, 독립경영 강화 속도전 … 한화M&S 지분 19% 공개매수"
     },
     "source_fact:ad4fcda1cfca06726c641840": {
       "first_seen_kst": "2026-10-11T09:08:30+09:00",
@@ -346808,33 +348132,28 @@
     "source_fact:c36208fe02d1dd397044c389": {
       "first_seen_kst": "2026-10-10T06:02:39+09:00",
       "lanes": {
-        "live": "2026-10-10T06:02:39+09:00"
+        "live": "2026-10-10T06:02:39+09:00",
+        "preopen": "2026-10-12T06:42:49+09:00"
       },
-      "last_seen_kst": "2026-10-10T06:02:39+09:00",
-      "link": "https://www.newsis.com/view/NISX20261008_0003819636",
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821228",
       "source": "뉴시스",
-      "source_body_digest": "7c826e75f4185c94829ea5b6b6d39a1541b034a916533c61220dcff5bfc6ab85",
+      "source_body_digest": "02d3a68bc4bb711575b08be805a6743a9b5ed750fc4f0b720cdfe8e24ccb143c",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:74b146ba41afb6c903a8c216f5365fb086db1bfbeea3214b0bc61901fbc1744d",
+      "source_fact_identity": "source_facts:v1:087cd70573e28645826d3a61865010043c10a291aedd795acfa3db882a4c405a",
       "source_fact_keys": [
         "source_fact:v1:106bddd480ac85314eabe8a5811befbc4c59366c0d25883f5bc182485faf1065",
-        "source_fact:v1:21f803c585cef55f0d8d4342409682454dd9246e9070c3fdc151a067119bd2f7",
         "source_fact:v1:2f4a61f668730ea07f0b29e43589bd7dadea4cdd579df42019b4ee2cb07d2a10",
-        "source_fact:v1:463300d13e0497397a9485fa13ff986addf3329c02c6e843dad780c45206b88f",
-        "source_fact:v1:739c6363e4c4443c50375f048c0b7842bf3589be787523ec0d8ce1920175a763",
-        "source_fact:v1:81ab014acb14fdb085ea427fc37dcb867ffb4ff21f9b871b384e394cfafe8993",
-        "source_fact:v1:bf803bfe82f4ef839b9b7417198350fb7af93b0ab12c62b4c52a6d55032e7dce",
-        "source_fact:v1:cc29e106a61803019b1e47bb7f90caf87dde8065928afb803474bbeb7283b3b5",
-        "source_fact:v1:dfe124e96bcf6b8d2c1fd67a0f0f42a87221d102b5be90c4bb01710c35d4d1f3",
+        "source_fact:v1:7d8f2bfd7413725d7a0649ba86f5f9c88a3c81a6579e18899672cfba1b530c66",
+        "source_fact:v1:b2208185e13ca5f299a085b5c92c4e74aacebeb63046c40a6dee4814934a3241",
         "source_fact:v1:ea7dfda91d4656df1aba45afcee886007850180fad53a3e05c24346b7702cb4c",
         "source_fact:v1:ec39160cb684f34992cdc3508384f98a200de0a5c2a06aa758f90a95e49902e5",
-        "source_fact:v1:ef3e5018621976524d94db8138ff0855271f19e9f3282da4cc8bb4bffa5fc19e",
-        "source_fact:v1:f4a804217f8b2cd00a00302b311068532eed1dd98d5a955efb0e91026ccb86f6"
+        "source_fact:v1:ef3e5018621976524d94db8138ff0855271f19e9f3282da4cc8bb4bffa5fc19e"
       ],
-      "source_published_kst": "2026-10-10T06:00+09:00",
-      "source_title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다…삼전·닉스 '역대급 보상' 지급 일정은",
-      "telegram_core_fact": "삼성전자와 SK하이닉스가 올해 반도체 호황으로 역대급 수익을 내고 있는 가운데, 이르면 내년 3월 양사 직원들은 일제히 수억원대의 성과급을 지급 받을 전망이다. 특별경영성과급은 내년 3월 정기주주총회와 이사회 의결을 거쳐 3월 말~4월 초 지급될 예정이다.",
-      "title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다…삼전·닉스 '역대급 보상' 지급 일정은"
+      "source_published_kst": "2026-10-12T06:33+09:00",
+      "source_title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다[간추린 주말 뉴스]",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 올해 반도체 호황으로 역대급 수익을 내고 있는 가운데, 이르면 내년 3월 양사 직원들은 일제히 수억원대의 성과급을 지급 받을 전망이다. 국가데이터처의 '2025년 가계금융복지조사'에 따르면 지난해 3월 말 기준 가구당 평균 순자산은 4억7144만원으로 전년대비 5.0% 증가했다.",
+      "title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다[간추린 주말 뉴스]"
     },
     "source_fact:c369728b498641c89c94d2d6": {
       "first_seen_kst": "2026-10-06T06:36:31+09:00",
@@ -355003,6 +356322,33 @@
       "source_published_kst": "2026-10-06T11:07+09:00",
       "title": "쌍용건설, 8천65억원 규모 남부내륙철도 제9공구 수주 | 연합뉴스"
     },
+    "source_fact:cdd4ebc73dffa3c6ab2b07a9": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634372",
+      "source": "이투데이",
+      "source_body_digest": "e35c30986704e55e513be667df21588ef2b2225c90be5ec8e7d1cab09637f7ac",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3c7450a3f908d4186234394c49a7a270417e7f79751d512685959cf28627cae",
+      "source_fact_keys": [
+        "source_fact:v1:19452545b16aaececc4804a1b62acab598ed0cc32713a4289a6991867dab88dd",
+        "source_fact:v1:1beccc234bd02d49524c759e98c40289a91e8e9d2ae13241661403974eb6916b",
+        "source_fact:v1:45cee855bc33c2c70167f27da21918db1e93e62e34dd83bba242f76f9bd5f202",
+        "source_fact:v1:6459f9323cba9ee0372a243c657839f681445d7be7873710e884cb83a6200ec0",
+        "source_fact:v1:682672918790eed5c9a9f72ddd7a10cd36a3133738ca7a9ace41ea6821d29b40",
+        "source_fact:v1:6f38b86dc4d22b9f2e5410fb9ad68a200ba533db54412f71b011696ab0dc8e5f",
+        "source_fact:v1:b6529ce3dd9e54f34cdf31dc92f616d4e4de13c937584133f15f4333a2ba1eeb",
+        "source_fact:v1:c118f8aa31f206e7222d822e31f3d253d8a50efce5e21a56738340f6a1bf638a",
+        "source_fact:v1:d72dbb2b47df25ce23ef34a29b5bcefe0541f70a5a1f74ed449db900ea2384c4"
+      ],
+      "source_published_kst": "2026-10-12T06:22+09:00",
+      "source_title": "트럼프 “러·우크라 에너지 휴전”…러 확인 없고 젤렌스키 “금시초문”",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아와 우크라이나가 서로의 에너지 시설을 공격하지 않는 ‘에너지 휴전’에 합의했다고 발표했다. 11일(현지시간) 트럼프 대통령은 트루스소셜에 “러시아와 우크라이나 전쟁에서 에너지 휴전이 즉각 발효된다”며 “양측 모두 동의했다. 이를 위반하지 말라”고 밝혔다.",
+      "title": "트럼프 “러·우크라 에너지 휴전”…러 확인 없고 젤렌스키 “금시초문”"
+    },
     "source_fact:cdd827cfab62dae71c50d629": {
       "first_seen_kst": "2026-10-08T16:34:42+09:00",
       "lanes": {
@@ -357623,6 +358969,26 @@
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "산업부 국감 돌입…대미투자·호남 반도체·메가특구 '도마'"
     },
+    "source_fact:d15498fbaa0b0c3a9d1670a4": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.fnnews.com/news/202610120600427723",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "c9433565523ef5e080261b96c66ac2d5ea2830313217360712ecb7bc182f3a66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4c6773e6bd531e0962ac93db4d47a6b2e62e75e0d3d0378f82ed6405e82bcf69",
+      "source_fact_keys": [
+        "source_fact:v1:6bf0f861858d12f94afa0fd98666004ac78885c97c3622035deb69460e66669b",
+        "source_fact:v1:a44f01da95f7cd58ebc82a55e0be0c814dfb8710ffad79e41d71154f65668a63"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "노타 채명수 \"고사양 GPU 추가보다 기존 인프라 활용 대세\" [K-챌린저]",
+      "telegram_core_fact": "채명수 노타(Nota AI) 대표는 뉴스1과 인터뷰에서 인공지능(AI) 모델 경량화나 개별 칩 최적화를 넘어 고객의 AI 도입 전 과정을 지원하는 기업으로 성장하겠다며 이같이 말했다.",
+      "title": "노타 채명수 \"고사양 GPU 추가보다 기존 인프라 활용 대세\" [K-챌린저]"
+    },
     "source_fact:d171cf46eac605b4e2c334c0": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
       "lanes": {
@@ -359739,6 +361105,37 @@
       "telegram_core_fact": "국토교통부가 최근 2026 아이치·나고야 아시안게임을 계기로 논란이 된 우수선수 주택 특별공급 제도의 개선 여부를 검토한다.",
       "title": "국토부, '아시안게임 논란' 우수선수 주택 특공 제도 개선 검토 | 연합뉴스"
     },
+    "source_fact:d430ad67b6edb4acdab18f3f": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.news1.kr/economy/trend/6315056",
+      "source": "뉴스1",
+      "source_body_digest": "c3ed76ff065df6237882dae308dfad6c0544058535e5a7b4da8a3a3bd53bd799",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:727a0685f2fd997dabef38e3e5387dd44435f1744e1c07c9934df6007ec43a7d",
+      "source_fact_keys": [
+        "source_fact:v1:09fd5d9d959224b4df9d0a8bcfbfbfca310318d969b2dc8c94121ddf87c2ceb5",
+        "source_fact:v1:210ad36b2492d7e7920f917ca2c84edb7df4e0f4ecc462f017ee07f5e2478e18",
+        "source_fact:v1:24e715603b62db79677c7a83522a378a15252c8c4a13ba30e0c078792b7b761b",
+        "source_fact:v1:3278e816850beafce1f8868fb1ff48154a3ddba53cca32c7215b51248aa2d7f8",
+        "source_fact:v1:3ce042d4c72b7934640f247aa6f0841d4fe52c2131d100bcc97578886d9cf1b3",
+        "source_fact:v1:78655581f5e6fab03dda7be4ff575835695b31e2129681cf40831f2d2aad4744",
+        "source_fact:v1:99a3d4a81788785d207b0357aaef241064c8cd871722d0b70ba16bc4a6952c56",
+        "source_fact:v1:a92d351bf9cf541ae5beda87f34464359a4c8d5a91c482466685b9631abffb5d",
+        "source_fact:v1:ad5c242795401934be2728fd6f98c0c31ccfe45d3ecc43f4d97ef2c93bf1036f",
+        "source_fact:v1:b68fd8a64e11abcb62b8aa6ce79c562128ec71ded507d39d3dcb8f63dad206dd",
+        "source_fact:v1:c72a6d1b6811c157432b057f04e0d2b097535f3889ff74b0793b0b35248ce3cf",
+        "source_fact:v1:d7f979b73170cc0ec0765ac1260d3702ff7c8dbbccd985839fec2c4b96feb401",
+        "source_fact:v1:dcf3e6e510eff46e473e34aaea5bf2d31da914f402bd39d3db720daccd530d8d"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심",
+      "telegram_core_fact": "정부의 국채 발행 축소 발표 이후 금리는 3% 후반대로 내려왔지만, 지난 8일에는 다시 연 3.983%로 오르며 4% 턱밑까지 올라섰다.",
+      "title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심"
+    },
     "source_fact:d431fdd90d8cd8574aef4c00": {
       "first_seen_kst": "2026-10-11T18:15:28+09:00",
       "lanes": {
@@ -360262,6 +361659,31 @@
       ],
       "source_published_kst": "2026-10-07T09:48+09:00",
       "title": "KT클라우드, 50MW급 '청라 AI 데이터센터' 구축…2030년 준공"
+    },
+    "source_fact:d51652d6569b2b9e92ddeb1c": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12173217",
+      "source": "매일경제",
+      "source_body_digest": "22bcaec3ee308ef4a1759fb51d03cac8f9900fa1a3b836717ad41c1afb6fec8c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f4d5a9da2affb23175cb332cdd807144dfbe0698637dd8b182cf3473f506b449",
+      "source_fact_keys": [
+        "source_fact:v1:37c31b346ad69b880c02f3fab0606f92aa79dec25218b172b83c21e6a881ba5c",
+        "source_fact:v1:7704555dab0fa71049f339121eff9ba85fec3f154fd2c40ddb23c4fb4158e54f",
+        "source_fact:v1:949602684848b22342f9c33124028bfbffcb1970e105d21baf32e1116fe816b2",
+        "source_fact:v1:9b00f435c0bccf5e6891f6fb881e914e92d5547c17a83df54cdbaa38332b5396",
+        "source_fact:v1:9ea892054721eebc212285651f4fdb861d90054b99222c4fec73a2b44b53ca07",
+        "source_fact:v1:ac85a2f806c3103fcc2b0fbffe246ac55044a42f6393bb191941bfa359c5a0b6",
+        "source_fact:v1:c3bf0efd1f2c88286fa2e55be1a1cc6b56e6c84565965dce59ace1715a31e71b"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "김동선, 독립경영 강화 속도전 … 한화M&S 지분 19% 공개매수",
+      "telegram_core_fact": "전략총괄 사장 8000원·개매수에 성공하면 김 사장 1285억원, 지분율 5.81→24.81%를 매수했습니다.",
+      "title": "김동선, 독립경영 강화 속도전 … 한화M&S 지분 19% 공개매수"
     },
     "source_fact:d5182a78b4ba28023bc290d2": {
       "first_seen_kst": "2026-10-08T19:27:03+09:00",
@@ -360993,6 +362415,33 @@
       ],
       "source_published_kst": "2026-10-07T06:59+09:00",
       "title": "트럼프 “관세 낮추려는 한국에 대가 지급해야 한다 말해”"
+    },
+    "source_fact:d5d2dc8c626281be2d2b5c3a": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634372",
+      "source": "이투데이",
+      "source_body_digest": "e35c30986704e55e513be667df21588ef2b2225c90be5ec8e7d1cab09637f7ac",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3c7450a3f908d4186234394c49a7a270417e7f79751d512685959cf28627cae",
+      "source_fact_keys": [
+        "source_fact:v1:19452545b16aaececc4804a1b62acab598ed0cc32713a4289a6991867dab88dd",
+        "source_fact:v1:1beccc234bd02d49524c759e98c40289a91e8e9d2ae13241661403974eb6916b",
+        "source_fact:v1:45cee855bc33c2c70167f27da21918db1e93e62e34dd83bba242f76f9bd5f202",
+        "source_fact:v1:6459f9323cba9ee0372a243c657839f681445d7be7873710e884cb83a6200ec0",
+        "source_fact:v1:682672918790eed5c9a9f72ddd7a10cd36a3133738ca7a9ace41ea6821d29b40",
+        "source_fact:v1:6f38b86dc4d22b9f2e5410fb9ad68a200ba533db54412f71b011696ab0dc8e5f",
+        "source_fact:v1:b6529ce3dd9e54f34cdf31dc92f616d4e4de13c937584133f15f4333a2ba1eeb",
+        "source_fact:v1:c118f8aa31f206e7222d822e31f3d253d8a50efce5e21a56738340f6a1bf638a",
+        "source_fact:v1:d72dbb2b47df25ce23ef34a29b5bcefe0541f70a5a1f74ed449db900ea2384c4"
+      ],
+      "source_published_kst": "2026-10-12T06:22+09:00",
+      "source_title": "트럼프 “러·우크라 에너지 휴전”…러 확인 없고 젤렌스키 “금시초문”",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아와 우크라이나가 서로의 에너지 시설을 공격하지 않는 ‘에너지 휴전’에 합의했다고 발표했다. 11일(현지시간) 트럼프 대통령은 트루스소셜에 “러시아와 우크라이나 전쟁에서 에너지 휴전이 즉각 발효된다”며 “양측 모두 동의했다. 이를 위반하지 말라”고 밝혔다.",
+      "title": "트럼프 “러·우크라 에너지 휴전”…러 확인 없고 젤렌스키 “금시초문”"
     },
     "source_fact:d5d337556d8b4c1d63d8bfc2": {
       "first_seen_kst": "2026-10-11T07:32:31+09:00",
@@ -363979,6 +365428,27 @@
       "telegram_core_fact": "이번 공격은 사우디가 지원하는 예멘 정부군이 후티가 장악한 홍해 연안의 전략 요충지를 탈환하기 위한 군사작전에 나선 가운데 발생했다.",
       "title": "사우디·후티 '전면전' 되돌림 양상…리야드 공항 등 3명 사망"
     },
+    "source_fact:d9383ba9c3e1431da3b71f0e": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/12/2026101206130938117",
+      "source": "머니투데이",
+      "source_body_digest": "72952a6a9895dc0e13f5e076c13ae98535adf44a62c26680256cbf4a2eb7b3dc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd757961a6b5bd598836d40c789195d7fb141584bb995a2f2c73a926f2960aa8",
+      "source_fact_keys": [
+        "source_fact:v1:4bbe7a7321f7ac19dceb4bea397212def1d8c5547a9575b326e251f4eadd2f40",
+        "source_fact:v1:4f1820fecadeb1cc974caee832f10878aaa4f713307f2cfa535ce8e9244fc6f5",
+        "source_fact:v1:f72059f30fa40331fa72b2e54edd396def8828737531bbdd905d4674ff7c7a9f"
+      ],
+      "source_published_kst": "2026-10-12T06:22+09:00",
+      "source_title": "\"한국, 알래스카 LNG 투자 결정한 것 없어…사업성 확인이 먼저\"",
+      "telegram_core_fact": "한국이 미국 알래스카 액화천연가스(LNG) 개발 사업에 최소 500억달러를 투자하기로 약속했다는 도널드 트럼프 대통령 발표와 달리, 한국 측은 투자 결정을 내리지 않은 것으로 보인다는 알래스카 현지 매체의 보도가 나왔다.",
+      "title": "\"한국, 알래스카 LNG 투자 결정한 것 없어…사업성 확인이 먼저\""
+    },
     "source_fact:d944405c3f3f8ab26a68281d": {
       "first_seen_kst": "2026-10-07T05:33:37+09:00",
       "lanes": {
@@ -364573,33 +366043,28 @@
     "source_fact:da10398276e60e8aeae03776": {
       "first_seen_kst": "2026-10-10T06:02:39+09:00",
       "lanes": {
-        "live": "2026-10-10T06:02:39+09:00"
+        "live": "2026-10-10T06:02:39+09:00",
+        "preopen": "2026-10-12T06:42:49+09:00"
       },
-      "last_seen_kst": "2026-10-10T06:02:39+09:00",
-      "link": "https://www.newsis.com/view/NISX20261008_0003819636",
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821228",
       "source": "뉴시스",
-      "source_body_digest": "7c826e75f4185c94829ea5b6b6d39a1541b034a916533c61220dcff5bfc6ab85",
+      "source_body_digest": "02d3a68bc4bb711575b08be805a6743a9b5ed750fc4f0b720cdfe8e24ccb143c",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:74b146ba41afb6c903a8c216f5365fb086db1bfbeea3214b0bc61901fbc1744d",
+      "source_fact_identity": "source_facts:v1:087cd70573e28645826d3a61865010043c10a291aedd795acfa3db882a4c405a",
       "source_fact_keys": [
         "source_fact:v1:106bddd480ac85314eabe8a5811befbc4c59366c0d25883f5bc182485faf1065",
-        "source_fact:v1:21f803c585cef55f0d8d4342409682454dd9246e9070c3fdc151a067119bd2f7",
         "source_fact:v1:2f4a61f668730ea07f0b29e43589bd7dadea4cdd579df42019b4ee2cb07d2a10",
-        "source_fact:v1:463300d13e0497397a9485fa13ff986addf3329c02c6e843dad780c45206b88f",
-        "source_fact:v1:739c6363e4c4443c50375f048c0b7842bf3589be787523ec0d8ce1920175a763",
-        "source_fact:v1:81ab014acb14fdb085ea427fc37dcb867ffb4ff21f9b871b384e394cfafe8993",
-        "source_fact:v1:bf803bfe82f4ef839b9b7417198350fb7af93b0ab12c62b4c52a6d55032e7dce",
-        "source_fact:v1:cc29e106a61803019b1e47bb7f90caf87dde8065928afb803474bbeb7283b3b5",
-        "source_fact:v1:dfe124e96bcf6b8d2c1fd67a0f0f42a87221d102b5be90c4bb01710c35d4d1f3",
+        "source_fact:v1:7d8f2bfd7413725d7a0649ba86f5f9c88a3c81a6579e18899672cfba1b530c66",
+        "source_fact:v1:b2208185e13ca5f299a085b5c92c4e74aacebeb63046c40a6dee4814934a3241",
         "source_fact:v1:ea7dfda91d4656df1aba45afcee886007850180fad53a3e05c24346b7702cb4c",
         "source_fact:v1:ec39160cb684f34992cdc3508384f98a200de0a5c2a06aa758f90a95e49902e5",
-        "source_fact:v1:ef3e5018621976524d94db8138ff0855271f19e9f3282da4cc8bb4bffa5fc19e",
-        "source_fact:v1:f4a804217f8b2cd00a00302b311068532eed1dd98d5a955efb0e91026ccb86f6"
+        "source_fact:v1:ef3e5018621976524d94db8138ff0855271f19e9f3282da4cc8bb4bffa5fc19e"
       ],
-      "source_published_kst": "2026-10-10T06:00+09:00",
-      "source_title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다…삼전·닉스 '역대급 보상' 지급 일정은",
-      "telegram_core_fact": "삼성전자와 SK하이닉스가 올해 반도체 호황으로 역대급 수익을 내고 있는 가운데, 이르면 내년 3월 양사 직원들은 일제히 수억원대의 성과급을 지급 받을 전망이다. 특별경영성과급은 내년 3월 정기주주총회와 이사회 의결을 거쳐 3월 말~4월 초 지급될 예정이다.",
-      "title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다…삼전·닉스 '역대급 보상' 지급 일정은"
+      "source_published_kst": "2026-10-12T06:33+09:00",
+      "source_title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다[간추린 주말 뉴스]",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 올해 반도체 호황으로 역대급 수익을 내고 있는 가운데, 이르면 내년 3월 양사 직원들은 일제히 수억원대의 성과급을 지급 받을 전망이다. 국가데이터처의 '2025년 가계금융복지조사'에 따르면 지난해 3월 말 기준 가구당 평균 순자산은 4억7144만원으로 전년대비 5.0% 증가했다.",
+      "title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다[간추린 주말 뉴스]"
     },
     "source_fact:da19e04bf693db248eea09c5": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
@@ -377460,6 +378925,33 @@
       "source_published_kst": "2026-10-06T16:40+09:00",
       "title": "알테오젠, 국민성장펀드·스카이레이크서 2000억원 투자 유치"
     },
+    "source_fact:ea68aa507fd904f9c68ae530": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634372",
+      "source": "이투데이",
+      "source_body_digest": "e35c30986704e55e513be667df21588ef2b2225c90be5ec8e7d1cab09637f7ac",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3c7450a3f908d4186234394c49a7a270417e7f79751d512685959cf28627cae",
+      "source_fact_keys": [
+        "source_fact:v1:19452545b16aaececc4804a1b62acab598ed0cc32713a4289a6991867dab88dd",
+        "source_fact:v1:1beccc234bd02d49524c759e98c40289a91e8e9d2ae13241661403974eb6916b",
+        "source_fact:v1:45cee855bc33c2c70167f27da21918db1e93e62e34dd83bba242f76f9bd5f202",
+        "source_fact:v1:6459f9323cba9ee0372a243c657839f681445d7be7873710e884cb83a6200ec0",
+        "source_fact:v1:682672918790eed5c9a9f72ddd7a10cd36a3133738ca7a9ace41ea6821d29b40",
+        "source_fact:v1:6f38b86dc4d22b9f2e5410fb9ad68a200ba533db54412f71b011696ab0dc8e5f",
+        "source_fact:v1:b6529ce3dd9e54f34cdf31dc92f616d4e4de13c937584133f15f4333a2ba1eeb",
+        "source_fact:v1:c118f8aa31f206e7222d822e31f3d253d8a50efce5e21a56738340f6a1bf638a",
+        "source_fact:v1:d72dbb2b47df25ce23ef34a29b5bcefe0541f70a5a1f74ed449db900ea2384c4"
+      ],
+      "source_published_kst": "2026-10-12T06:22+09:00",
+      "source_title": "트럼프 “러·우크라 에너지 휴전”…러 확인 없고 젤렌스키 “금시초문”",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아와 우크라이나가 서로의 에너지 시설을 공격하지 않는 ‘에너지 휴전’에 합의했다고 발표했다. 11일(현지시간) 트럼프 대통령은 트루스소셜에 “러시아와 우크라이나 전쟁에서 에너지 휴전이 즉각 발효된다”며 “양측 모두 동의했다. 이를 위반하지 말라”고 밝혔다.",
+      "title": "트럼프 “러·우크라 에너지 휴전”…러 확인 없고 젤렌스키 “금시초문”"
+    },
     "source_fact:ea81b762e1dbaaf1ec2a9a9e": {
       "first_seen_kst": "2026-10-11T23:10:29+09:00",
       "lanes": {
@@ -378521,6 +380013,31 @@
       "telegram_core_fact": "미국 10년물 국채 금리는 장중 5.36%를 넘어 2002년 이후 최고치를 새로 썼고, 30년물 금리도 5.73%까지 치솟았다. 7일(현지 시각) 미국 국채시장에서 10년물 금리는 장중 전장보다 약 8bp(1bp=0.01%포인트) 오른 5.3640%까지 상승했다.",
       "title": "美국채 10년물 장중 5.36%까지 치솟아…24년 만에 최고"
     },
+    "source_fact:ec3209f043bedd7e05116de2": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12173217",
+      "source": "매일경제",
+      "source_body_digest": "22bcaec3ee308ef4a1759fb51d03cac8f9900fa1a3b836717ad41c1afb6fec8c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f4d5a9da2affb23175cb332cdd807144dfbe0698637dd8b182cf3473f506b449",
+      "source_fact_keys": [
+        "source_fact:v1:37c31b346ad69b880c02f3fab0606f92aa79dec25218b172b83c21e6a881ba5c",
+        "source_fact:v1:7704555dab0fa71049f339121eff9ba85fec3f154fd2c40ddb23c4fb4158e54f",
+        "source_fact:v1:949602684848b22342f9c33124028bfbffcb1970e105d21baf32e1116fe816b2",
+        "source_fact:v1:9b00f435c0bccf5e6891f6fb881e914e92d5547c17a83df54cdbaa38332b5396",
+        "source_fact:v1:9ea892054721eebc212285651f4fdb861d90054b99222c4fec73a2b44b53ca07",
+        "source_fact:v1:ac85a2f806c3103fcc2b0fbffe246ac55044a42f6393bb191941bfa359c5a0b6",
+        "source_fact:v1:c3bf0efd1f2c88286fa2e55be1a1cc6b56e6c84565965dce59ace1715a31e71b"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "김동선, 독립경영 강화 속도전 … 한화M&S 지분 19% 공개매수",
+      "telegram_core_fact": "전략총괄 사장 8000원·개매수에 성공하면 김 사장 1285억원, 지분율 5.81→24.81%를 매수했습니다.",
+      "title": "김동선, 독립경영 강화 속도전 … 한화M&S 지분 19% 공개매수"
+    },
     "source_fact:ec372f9d8888ef18a7d21347": {
       "first_seen_kst": "2026-10-10T02:34:57+09:00",
       "lanes": {
@@ -378864,6 +380381,37 @@
       "source_title": "장인화, 글로벌 자원 확보전 진두지휘…포스코 리튬 2공장 준공",
       "telegram_core_fact": "포스코홀딩스는 염수리튬 2공장 상공정을 준공하고, 2033년 연산 10만톤 생산체제 구축을 공식화했다. 장인화 포스코그룹 회장이 글로벌 핵심광물 확보전 한복판인 아르헨티나에서 리튬 사업의 확장 신호탄을 쐈다.",
       "title": "장인화, 글로벌 자원 확보전 진두지휘…포스코 리튬 2공장 준공"
+    },
+    "source_fact:ec96073f730bdef7b768a564": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.news1.kr/economy/trend/6315056",
+      "source": "뉴스1",
+      "source_body_digest": "c3ed76ff065df6237882dae308dfad6c0544058535e5a7b4da8a3a3bd53bd799",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:727a0685f2fd997dabef38e3e5387dd44435f1744e1c07c9934df6007ec43a7d",
+      "source_fact_keys": [
+        "source_fact:v1:09fd5d9d959224b4df9d0a8bcfbfbfca310318d969b2dc8c94121ddf87c2ceb5",
+        "source_fact:v1:210ad36b2492d7e7920f917ca2c84edb7df4e0f4ecc462f017ee07f5e2478e18",
+        "source_fact:v1:24e715603b62db79677c7a83522a378a15252c8c4a13ba30e0c078792b7b761b",
+        "source_fact:v1:3278e816850beafce1f8868fb1ff48154a3ddba53cca32c7215b51248aa2d7f8",
+        "source_fact:v1:3ce042d4c72b7934640f247aa6f0841d4fe52c2131d100bcc97578886d9cf1b3",
+        "source_fact:v1:78655581f5e6fab03dda7be4ff575835695b31e2129681cf40831f2d2aad4744",
+        "source_fact:v1:99a3d4a81788785d207b0357aaef241064c8cd871722d0b70ba16bc4a6952c56",
+        "source_fact:v1:a92d351bf9cf541ae5beda87f34464359a4c8d5a91c482466685b9631abffb5d",
+        "source_fact:v1:ad5c242795401934be2728fd6f98c0c31ccfe45d3ecc43f4d97ef2c93bf1036f",
+        "source_fact:v1:b68fd8a64e11abcb62b8aa6ce79c562128ec71ded507d39d3dcb8f63dad206dd",
+        "source_fact:v1:c72a6d1b6811c157432b057f04e0d2b097535f3889ff74b0793b0b35248ce3cf",
+        "source_fact:v1:d7f979b73170cc0ec0765ac1260d3702ff7c8dbbccd985839fec2c4b96feb401",
+        "source_fact:v1:dcf3e6e510eff46e473e34aaea5bf2d31da914f402bd39d3db720daccd530d8d"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심",
+      "telegram_core_fact": "정부의 국채 발행 축소 발표 이후 금리는 3% 후반대로 내려왔지만, 지난 8일에는 다시 연 3.983%로 오르며 4% 턱밑까지 올라섰다.",
+      "title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심"
     },
     "source_fact:ec9b04fd161670ef3765cb78": {
       "first_seen_kst": "2026-10-10T16:57:05+09:00",
@@ -386334,6 +387882,31 @@
       "telegram_core_fact": "특히 캐터필러는 데이터센터 건설 장비뿐 아니라 전력 공급에 필요한 가스터빈 등도 공급하고 있어 AI 인프라 투자 확대의 수혜 기업으로 평가받고 있다. 미국 중장비 제조업체 캐터필러(CAT)가 인공지능(AI) 데이터센터 투자 확대와 글로벌 인프라 건설 수요에 힘입어 추가 상승할 가능성이 있다는 분석이 나왔다.",
       "title": "[美특징주]캐터필러, AI 데이터센터·인프라 투자 수혜 기대...개장 전↑"
     },
+    "source_fact:f707a77fcc9b4560141f1c39": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12173217",
+      "source": "매일경제",
+      "source_body_digest": "22bcaec3ee308ef4a1759fb51d03cac8f9900fa1a3b836717ad41c1afb6fec8c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f4d5a9da2affb23175cb332cdd807144dfbe0698637dd8b182cf3473f506b449",
+      "source_fact_keys": [
+        "source_fact:v1:37c31b346ad69b880c02f3fab0606f92aa79dec25218b172b83c21e6a881ba5c",
+        "source_fact:v1:7704555dab0fa71049f339121eff9ba85fec3f154fd2c40ddb23c4fb4158e54f",
+        "source_fact:v1:949602684848b22342f9c33124028bfbffcb1970e105d21baf32e1116fe816b2",
+        "source_fact:v1:9b00f435c0bccf5e6891f6fb881e914e92d5547c17a83df54cdbaa38332b5396",
+        "source_fact:v1:9ea892054721eebc212285651f4fdb861d90054b99222c4fec73a2b44b53ca07",
+        "source_fact:v1:ac85a2f806c3103fcc2b0fbffe246ac55044a42f6393bb191941bfa359c5a0b6",
+        "source_fact:v1:c3bf0efd1f2c88286fa2e55be1a1cc6b56e6c84565965dce59ace1715a31e71b"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "김동선, 독립경영 강화 속도전 … 한화M&S 지분 19% 공개매수",
+      "telegram_core_fact": "전략총괄 사장 8000원·개매수에 성공하면 김 사장 1285억원, 지분율 5.81→24.81%를 매수했습니다.",
+      "title": "김동선, 독립경영 강화 속도전 … 한화M&S 지분 19% 공개매수"
+    },
     "source_fact:f709790c162e19346e341012": {
       "first_seen_kst": "2026-10-07T07:24:41+09:00",
       "lanes": {
@@ -387562,6 +389135,37 @@
       "telegram_core_fact": "오는 14일 취임 6주년을 맞는 정 회장은 수소전기차를 중심으로 추진해 온 수소 사업을 상용차와 철도, 수소 생산·충전 인프라 등으로 확대하고 있다. 정의선 현대자동차그룹 회장이 2018년 12월 충북 충주 현대모비스 수소연료전지 제2공장 기공식에서 밝힌 구상이다.",
       "title": "8년 전 수소 '퍼스트무버' 꿈꾼 정의선 회장…뚝심 투자 성과 가시화"
     },
+    "source_fact:f8d8aabecc15f815b1b07293": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.news1.kr/economy/trend/6315056",
+      "source": "뉴스1",
+      "source_body_digest": "c3ed76ff065df6237882dae308dfad6c0544058535e5a7b4da8a3a3bd53bd799",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:727a0685f2fd997dabef38e3e5387dd44435f1744e1c07c9934df6007ec43a7d",
+      "source_fact_keys": [
+        "source_fact:v1:09fd5d9d959224b4df9d0a8bcfbfbfca310318d969b2dc8c94121ddf87c2ceb5",
+        "source_fact:v1:210ad36b2492d7e7920f917ca2c84edb7df4e0f4ecc462f017ee07f5e2478e18",
+        "source_fact:v1:24e715603b62db79677c7a83522a378a15252c8c4a13ba30e0c078792b7b761b",
+        "source_fact:v1:3278e816850beafce1f8868fb1ff48154a3ddba53cca32c7215b51248aa2d7f8",
+        "source_fact:v1:3ce042d4c72b7934640f247aa6f0841d4fe52c2131d100bcc97578886d9cf1b3",
+        "source_fact:v1:78655581f5e6fab03dda7be4ff575835695b31e2129681cf40831f2d2aad4744",
+        "source_fact:v1:99a3d4a81788785d207b0357aaef241064c8cd871722d0b70ba16bc4a6952c56",
+        "source_fact:v1:a92d351bf9cf541ae5beda87f34464359a4c8d5a91c482466685b9631abffb5d",
+        "source_fact:v1:ad5c242795401934be2728fd6f98c0c31ccfe45d3ecc43f4d97ef2c93bf1036f",
+        "source_fact:v1:b68fd8a64e11abcb62b8aa6ce79c562128ec71ded507d39d3dcb8f63dad206dd",
+        "source_fact:v1:c72a6d1b6811c157432b057f04e0d2b097535f3889ff74b0793b0b35248ce3cf",
+        "source_fact:v1:d7f979b73170cc0ec0765ac1260d3702ff7c8dbbccd985839fec2c4b96feb401",
+        "source_fact:v1:dcf3e6e510eff46e473e34aaea5bf2d31da914f402bd39d3db720daccd530d8d"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심",
+      "telegram_core_fact": "정부의 국채 발행 축소 발표 이후 금리는 3% 후반대로 내려왔지만, 지난 8일에는 다시 연 3.983%로 오르며 4% 턱밑까지 올라섰다.",
+      "title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심"
+    },
     "source_fact:f8e19832ae08eea77afee0fa": {
       "first_seen_kst": "2026-10-11T09:50:45+09:00",
       "lanes": {
@@ -388495,6 +390099,37 @@
       "source_title": "뉴욕증시, 국채금리 24년래 최고에 휘청⋯3대 지수 동반 하락[종합]",
       "telegram_core_fact": "10년 만기 미국 국채금리는 장중 연 5.36%까지 상승해 2002년 이후 최고치를 기록했다.",
       "title": "뉴욕증시, 국채금리 24년래 최고에 휘청⋯3대 지수 동반 하락[종합]"
+    },
+    "source_fact:fa6d490da6fce88d73dfafbf": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.news1.kr/economy/trend/6315056",
+      "source": "뉴스1",
+      "source_body_digest": "c3ed76ff065df6237882dae308dfad6c0544058535e5a7b4da8a3a3bd53bd799",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:727a0685f2fd997dabef38e3e5387dd44435f1744e1c07c9934df6007ec43a7d",
+      "source_fact_keys": [
+        "source_fact:v1:09fd5d9d959224b4df9d0a8bcfbfbfca310318d969b2dc8c94121ddf87c2ceb5",
+        "source_fact:v1:210ad36b2492d7e7920f917ca2c84edb7df4e0f4ecc462f017ee07f5e2478e18",
+        "source_fact:v1:24e715603b62db79677c7a83522a378a15252c8c4a13ba30e0c078792b7b761b",
+        "source_fact:v1:3278e816850beafce1f8868fb1ff48154a3ddba53cca32c7215b51248aa2d7f8",
+        "source_fact:v1:3ce042d4c72b7934640f247aa6f0841d4fe52c2131d100bcc97578886d9cf1b3",
+        "source_fact:v1:78655581f5e6fab03dda7be4ff575835695b31e2129681cf40831f2d2aad4744",
+        "source_fact:v1:99a3d4a81788785d207b0357aaef241064c8cd871722d0b70ba16bc4a6952c56",
+        "source_fact:v1:a92d351bf9cf541ae5beda87f34464359a4c8d5a91c482466685b9631abffb5d",
+        "source_fact:v1:ad5c242795401934be2728fd6f98c0c31ccfe45d3ecc43f4d97ef2c93bf1036f",
+        "source_fact:v1:b68fd8a64e11abcb62b8aa6ce79c562128ec71ded507d39d3dcb8f63dad206dd",
+        "source_fact:v1:c72a6d1b6811c157432b057f04e0d2b097535f3889ff74b0793b0b35248ce3cf",
+        "source_fact:v1:d7f979b73170cc0ec0765ac1260d3702ff7c8dbbccd985839fec2c4b96feb401",
+        "source_fact:v1:dcf3e6e510eff46e473e34aaea5bf2d31da914f402bd39d3db720daccd530d8d"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심",
+      "telegram_core_fact": "정부의 국채 발행 축소 발표 이후 금리는 3% 후반대로 내려왔지만, 지난 8일에는 다시 연 3.983%로 오르며 4% 턱밑까지 올라섰다.",
+      "title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심"
     },
     "source_fact:fa7719f02ac04f621e6f2413": {
       "first_seen_kst": "2026-10-08T01:58:01+09:00",
@@ -392083,31 +393718,25 @@
     "source_fact:ff1a3a79a6f2faff548d3087": {
       "first_seen_kst": "2026-10-12T05:35:02+09:00",
       "lanes": {
-        "live": "2026-10-12T05:35:02+09:00"
+        "live": "2026-10-12T05:35:02+09:00",
+        "preopen": "2026-10-12T06:42:49+09:00"
       },
-      "last_seen_kst": "2026-10-12T05:35:02+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=01436646645612264",
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=01436646645612264&Kind=257",
       "source": "이데일리",
-      "source_body_digest": "22794200af8c273d76fd530fb0c9fabcdc5529607d9b5f33c11f787635cf8b6b",
+      "source_body_digest": "e38b4172777bd621e99bbd69b2058421013b5f189c0b8c83a98fb0610c94be77",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:9aff4a40bb05e7997908f0ee162cfb81c0c007145c619daed10e5666ad28ba0c",
+      "source_fact_identity": "source_facts:v1:2037022498da76bead7fa7a3e8d1e0abd8b8a6f50e48b0b3eb3a24e1d1914d71",
       "source_fact_keys": [
-        "source_fact:v1:01cd295fdb151abdfd3edc0523144039883305180cbc0ea787b923564cfb66b3",
-        "source_fact:v1:29ee1cc3282d9ae40363151c1cacf486de839552bdec7109b3cf7da0b9ce5587",
-        "source_fact:v1:677219f9d5648c52302a30047b433367ad0ddd534d058213a0997be9b05a7efa",
         "source_fact:v1:68b790d75da3292356b9c1f1c32bd44dc956159465ced71452cf9ca4c50999b0",
         "source_fact:v1:85a744ca6c482e5a445fb9fc66e5546b02680f7cfa665d12f8c4abb3659b6561",
         "source_fact:v1:8d26c43cf5e87249b1a608adfaad62d699f8eeda8f1970281d57b25f75f20e86",
-        "source_fact:v1:8f5d2602a87fbb9b9cd6eee28577b5ceb706a7e711dac078ffe5705b738f6e6a",
-        "source_fact:v1:99bafea295cb0f32baf908dfda750089dc1db4ac2181e510169396621b956fef",
-        "source_fact:v1:9df6e56906dc6ab537a7fcf97cd108ee5d4fb6d678f5acbb72584aac9854a975",
         "source_fact:v1:b55551cfb6ffbbd4bde91f844cdf09e90b5a0b582999d8dddb9d36cfff222969",
-        "source_fact:v1:b6f83cc8e9c584d8153d0378d12d30dbec008a07b79b3660e9c0c66565ec4e59",
-        "source_fact:v1:dda41983b5fe9cd8ac91d614b83f9be3e45b8e057157a01167d1893edcbeffbc"
+        "source_fact:v1:efa2484d574481e667d081049a82a35f8dfc3601df77ef2f16d34824129bdb0a"
       ],
-      "source_published_kst": "2026-10-12T05:00+09:00",
+      "source_published_kst": "2026-10-11T17:01+09:00",
       "source_title": "반도체 수출 호황에…달러 넘치는 외환시장",
-      "telegram_core_fact": "문 연구원도 “반도체 기업들의 실적 호조에 따른 달러 공급이 내년에도 지속될 것으로 예상된다”며 “현재 1350원으로 제시한 내년 연평균 환율 전망치도 11월 연간 전망에서 하향 조정할 가능성이 높다”고 내다봤다.",
+      "telegram_core_fact": "서울 외환시장에서 원·달러 환율은 오후 3시 30분 기준 1,340.4원을 기록했다. 반도체 수출 호황으로 유입되는 달러가 늘면서 미국의 달러 강세에도 원·달러 환율이 연저점에 가까워지고 있다.",
       "title": "반도체 수출 호황에…달러 넘치는 외환시장"
     },
     "source_fact:ff1defdfc56c3c644d3ed90c": {
@@ -398201,6 +399830,27 @@
       "source_title": "'AI 클라우드 기업' 엘리스그룹, 일반공모 돌입[오늘청약]",
       "telegram_core_fact": "회사에 따르면 올해 상반기 연결 기준 매출액은 344억원, 영업이익은 103억원을 기록했다. 인공지능(AI) 클라우드 기업 엘리스그룹이 오늘(7일)부터 이틀간 코스닥 상장을 위한 일반투자자 대상 공모주 청약을 진행한다.",
       "title": "'AI 클라우드 기업' 엘리스그룹, 일반공모 돌입[오늘청약]"
+    },
+    "title:167f531e65f96a0ebd3a9380": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/12/2026101206130938117",
+      "source": "머니투데이",
+      "source_body_digest": "72952a6a9895dc0e13f5e076c13ae98535adf44a62c26680256cbf4a2eb7b3dc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd757961a6b5bd598836d40c789195d7fb141584bb995a2f2c73a926f2960aa8",
+      "source_fact_keys": [
+        "source_fact:v1:4bbe7a7321f7ac19dceb4bea397212def1d8c5547a9575b326e251f4eadd2f40",
+        "source_fact:v1:4f1820fecadeb1cc974caee832f10878aaa4f713307f2cfa535ce8e9244fc6f5",
+        "source_fact:v1:f72059f30fa40331fa72b2e54edd396def8828737531bbdd905d4674ff7c7a9f"
+      ],
+      "source_published_kst": "2026-10-12T06:22+09:00",
+      "source_title": "\"한국, 알래스카 LNG 투자 결정한 것 없어…사업성 확인이 먼저\"",
+      "telegram_core_fact": "한국이 미국 알래스카 액화천연가스(LNG) 개발 사업에 최소 500억달러를 투자하기로 약속했다는 도널드 트럼프 대통령 발표와 달리, 한국 측은 투자 결정을 내리지 않은 것으로 보인다는 알래스카 현지 매체의 보도가 나왔다.",
+      "title": "\"한국, 알래스카 LNG 투자 결정한 것 없어…사업성 확인이 먼저\""
     },
     "title:16885da940e5a5e3986b4287": {
       "first_seen_kst": "2026-10-07T16:44:58+09:00",
@@ -407985,31 +409635,25 @@
     "title:3fa50a6cde99f19d13162dc0": {
       "first_seen_kst": "2026-10-12T05:35:02+09:00",
       "lanes": {
-        "live": "2026-10-12T05:35:02+09:00"
+        "live": "2026-10-12T05:35:02+09:00",
+        "preopen": "2026-10-12T06:42:49+09:00"
       },
-      "last_seen_kst": "2026-10-12T05:35:02+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=01436646645612264",
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=01436646645612264&Kind=257",
       "source": "이데일리",
-      "source_body_digest": "22794200af8c273d76fd530fb0c9fabcdc5529607d9b5f33c11f787635cf8b6b",
+      "source_body_digest": "e38b4172777bd621e99bbd69b2058421013b5f189c0b8c83a98fb0610c94be77",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:9aff4a40bb05e7997908f0ee162cfb81c0c007145c619daed10e5666ad28ba0c",
+      "source_fact_identity": "source_facts:v1:2037022498da76bead7fa7a3e8d1e0abd8b8a6f50e48b0b3eb3a24e1d1914d71",
       "source_fact_keys": [
-        "source_fact:v1:01cd295fdb151abdfd3edc0523144039883305180cbc0ea787b923564cfb66b3",
-        "source_fact:v1:29ee1cc3282d9ae40363151c1cacf486de839552bdec7109b3cf7da0b9ce5587",
-        "source_fact:v1:677219f9d5648c52302a30047b433367ad0ddd534d058213a0997be9b05a7efa",
         "source_fact:v1:68b790d75da3292356b9c1f1c32bd44dc956159465ced71452cf9ca4c50999b0",
         "source_fact:v1:85a744ca6c482e5a445fb9fc66e5546b02680f7cfa665d12f8c4abb3659b6561",
         "source_fact:v1:8d26c43cf5e87249b1a608adfaad62d699f8eeda8f1970281d57b25f75f20e86",
-        "source_fact:v1:8f5d2602a87fbb9b9cd6eee28577b5ceb706a7e711dac078ffe5705b738f6e6a",
-        "source_fact:v1:99bafea295cb0f32baf908dfda750089dc1db4ac2181e510169396621b956fef",
-        "source_fact:v1:9df6e56906dc6ab537a7fcf97cd108ee5d4fb6d678f5acbb72584aac9854a975",
         "source_fact:v1:b55551cfb6ffbbd4bde91f844cdf09e90b5a0b582999d8dddb9d36cfff222969",
-        "source_fact:v1:b6f83cc8e9c584d8153d0378d12d30dbec008a07b79b3660e9c0c66565ec4e59",
-        "source_fact:v1:dda41983b5fe9cd8ac91d614b83f9be3e45b8e057157a01167d1893edcbeffbc"
+        "source_fact:v1:efa2484d574481e667d081049a82a35f8dfc3601df77ef2f16d34824129bdb0a"
       ],
-      "source_published_kst": "2026-10-12T05:00+09:00",
+      "source_published_kst": "2026-10-11T17:01+09:00",
       "source_title": "반도체 수출 호황에…달러 넘치는 외환시장",
-      "telegram_core_fact": "문 연구원도 “반도체 기업들의 실적 호조에 따른 달러 공급이 내년에도 지속될 것으로 예상된다”며 “현재 1350원으로 제시한 내년 연평균 환율 전망치도 11월 연간 전망에서 하향 조정할 가능성이 높다”고 내다봤다.",
+      "telegram_core_fact": "서울 외환시장에서 원·달러 환율은 오후 3시 30분 기준 1,340.4원을 기록했다. 반도체 수출 호황으로 유입되는 달러가 늘면서 미국의 달러 강세에도 원·달러 환율이 연저점에 가까워지고 있다.",
       "title": "반도체 수출 호황에…달러 넘치는 외환시장"
     },
     "title:3fafd43927625c25187820b2": {
@@ -414863,6 +416507,26 @@
       "source_published_kst": "2026-10-07T06:33+09:00",
       "title": "3주 파업 예고한 삼성바이오 노조…생산·수주 불확실성 커진다"
     },
+    "title:5b5a2debc6c8711be3f7f5ac": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.fnnews.com/news/202610120600427723",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "c9433565523ef5e080261b96c66ac2d5ea2830313217360712ecb7bc182f3a66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4c6773e6bd531e0962ac93db4d47a6b2e62e75e0d3d0378f82ed6405e82bcf69",
+      "source_fact_keys": [
+        "source_fact:v1:6bf0f861858d12f94afa0fd98666004ac78885c97c3622035deb69460e66669b",
+        "source_fact:v1:a44f01da95f7cd58ebc82a55e0be0c814dfb8710ffad79e41d71154f65668a63"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "노타 채명수 \"고사양 GPU 추가보다 기존 인프라 활용 대세\" [K-챌린저]",
+      "telegram_core_fact": "채명수 노타(Nota AI) 대표는 뉴스1과 인터뷰에서 인공지능(AI) 모델 경량화나 개별 칩 최적화를 넘어 고객의 AI 도입 전 과정을 지원하는 기업으로 성장하겠다며 이같이 말했다.",
+      "title": "노타 채명수 \"고사양 GPU 추가보다 기존 인프라 활용 대세\" [K-챌린저]"
+    },
     "title:5b67680961626e2e7f84d0d1": {
       "first_seen_kst": "2026-10-12T02:51:54+09:00",
       "lanes": {
@@ -416998,6 +418662,31 @@
       "source_title": "\"증시 덮칠 '진짜 공포' 따로 있다\"…증권가 '무서운 경고' [분석+]",
       "telegram_core_fact": "미국 국채 10년물 금리가 연 5%를 넘어서면서 주식투자자가 긴장하고 있지만, 증권가에선 오히려 장기 금리의 하락이 더 큰 악재가 될 수 있다는 분석이 잇달아 나왔다.",
       "title": "\"증시 덮칠 '진짜 공포' 따로 있다\"…증권가 '무서운 경고' [분석+]"
+    },
+    "title:65f46c39ca658d0cdd79416d": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12173217",
+      "source": "매일경제",
+      "source_body_digest": "22bcaec3ee308ef4a1759fb51d03cac8f9900fa1a3b836717ad41c1afb6fec8c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f4d5a9da2affb23175cb332cdd807144dfbe0698637dd8b182cf3473f506b449",
+      "source_fact_keys": [
+        "source_fact:v1:37c31b346ad69b880c02f3fab0606f92aa79dec25218b172b83c21e6a881ba5c",
+        "source_fact:v1:7704555dab0fa71049f339121eff9ba85fec3f154fd2c40ddb23c4fb4158e54f",
+        "source_fact:v1:949602684848b22342f9c33124028bfbffcb1970e105d21baf32e1116fe816b2",
+        "source_fact:v1:9b00f435c0bccf5e6891f6fb881e914e92d5547c17a83df54cdbaa38332b5396",
+        "source_fact:v1:9ea892054721eebc212285651f4fdb861d90054b99222c4fec73a2b44b53ca07",
+        "source_fact:v1:ac85a2f806c3103fcc2b0fbffe246ac55044a42f6393bb191941bfa359c5a0b6",
+        "source_fact:v1:c3bf0efd1f2c88286fa2e55be1a1cc6b56e6c84565965dce59ace1715a31e71b"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "김동선, 독립경영 강화 속도전 … 한화M&S 지분 19% 공개매수",
+      "telegram_core_fact": "전략총괄 사장 8000원·개매수에 성공하면 김 사장 1285억원, 지분율 5.81→24.81%를 매수했습니다.",
+      "title": "김동선, 독립경영 강화 속도전 … 한화M&S 지분 19% 공개매수"
     },
     "title:6647335082be135a42defba1": {
       "first_seen_kst": "2026-10-11T18:15:28+09:00",
@@ -419165,6 +420854,31 @@
       "link": "https://www.yna.co.kr/view/AKR20261002042100008",
       "source": "연합뉴스",
       "title": "삼성전자, 자사주 계획물량 모두 매입…9천억 여유, 300만주 더살듯 | 연합뉴스"
+    },
+    "title:70580330520f320a9a243abc": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821228",
+      "source": "뉴시스",
+      "source_body_digest": "02d3a68bc4bb711575b08be805a6743a9b5ed750fc4f0b720cdfe8e24ccb143c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:087cd70573e28645826d3a61865010043c10a291aedd795acfa3db882a4c405a",
+      "source_fact_keys": [
+        "source_fact:v1:106bddd480ac85314eabe8a5811befbc4c59366c0d25883f5bc182485faf1065",
+        "source_fact:v1:2f4a61f668730ea07f0b29e43589bd7dadea4cdd579df42019b4ee2cb07d2a10",
+        "source_fact:v1:7d8f2bfd7413725d7a0649ba86f5f9c88a3c81a6579e18899672cfba1b530c66",
+        "source_fact:v1:b2208185e13ca5f299a085b5c92c4e74aacebeb63046c40a6dee4814934a3241",
+        "source_fact:v1:ea7dfda91d4656df1aba45afcee886007850180fad53a3e05c24346b7702cb4c",
+        "source_fact:v1:ec39160cb684f34992cdc3508384f98a200de0a5c2a06aa758f90a95e49902e5",
+        "source_fact:v1:ef3e5018621976524d94db8138ff0855271f19e9f3282da4cc8bb4bffa5fc19e"
+      ],
+      "source_published_kst": "2026-10-12T06:33+09:00",
+      "source_title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다[간추린 주말 뉴스]",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 올해 반도체 호황으로 역대급 수익을 내고 있는 가운데, 이르면 내년 3월 양사 직원들은 일제히 수억원대의 성과급을 지급 받을 전망이다. 국가데이터처의 '2025년 가계금융복지조사'에 따르면 지난해 3월 말 기준 가구당 평균 순자산은 4억7144만원으로 전년대비 5.0% 증가했다.",
+      "title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다[간추린 주말 뉴스]"
     },
     "title:7079c1fa5bda99490550ba24": {
       "first_seen_kst": "2026-10-09T16:53:11+09:00",
@@ -442342,6 +444056,37 @@
       "source_published_kst": "2026-10-05T11:30+09:00",
       "title": "AMRO, 한국 올해 성장률 3.3%로 상향…내년 2.7% 제시 | 연합뉴스"
     },
+    "title:d1908424edaea5f5fd32c049": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.news1.kr/economy/trend/6315056",
+      "source": "뉴스1",
+      "source_body_digest": "c3ed76ff065df6237882dae308dfad6c0544058535e5a7b4da8a3a3bd53bd799",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:727a0685f2fd997dabef38e3e5387dd44435f1744e1c07c9934df6007ec43a7d",
+      "source_fact_keys": [
+        "source_fact:v1:09fd5d9d959224b4df9d0a8bcfbfbfca310318d969b2dc8c94121ddf87c2ceb5",
+        "source_fact:v1:210ad36b2492d7e7920f917ca2c84edb7df4e0f4ecc462f017ee07f5e2478e18",
+        "source_fact:v1:24e715603b62db79677c7a83522a378a15252c8c4a13ba30e0c078792b7b761b",
+        "source_fact:v1:3278e816850beafce1f8868fb1ff48154a3ddba53cca32c7215b51248aa2d7f8",
+        "source_fact:v1:3ce042d4c72b7934640f247aa6f0841d4fe52c2131d100bcc97578886d9cf1b3",
+        "source_fact:v1:78655581f5e6fab03dda7be4ff575835695b31e2129681cf40831f2d2aad4744",
+        "source_fact:v1:99a3d4a81788785d207b0357aaef241064c8cd871722d0b70ba16bc4a6952c56",
+        "source_fact:v1:a92d351bf9cf541ae5beda87f34464359a4c8d5a91c482466685b9631abffb5d",
+        "source_fact:v1:ad5c242795401934be2728fd6f98c0c31ccfe45d3ecc43f4d97ef2c93bf1036f",
+        "source_fact:v1:b68fd8a64e11abcb62b8aa6ce79c562128ec71ded507d39d3dcb8f63dad206dd",
+        "source_fact:v1:c72a6d1b6811c157432b057f04e0d2b097535f3889ff74b0793b0b35248ce3cf",
+        "source_fact:v1:d7f979b73170cc0ec0765ac1260d3702ff7c8dbbccd985839fec2c4b96feb401",
+        "source_fact:v1:dcf3e6e510eff46e473e34aaea5bf2d31da914f402bd39d3db720daccd530d8d"
+      ],
+      "source_published_kst": "2026-10-12T06:00+09:00",
+      "source_title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심",
+      "telegram_core_fact": "정부의 국채 발행 축소 발표 이후 금리는 3% 후반대로 내려왔지만, 지난 8일에는 다시 연 3.983%로 오르며 4% 턱밑까지 올라섰다.",
+      "title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심"
+    },
     "title:d19925155257215bcb326198": {
       "first_seen_kst": "2026-10-02T16:53:54+09:00",
       "lanes": {
@@ -451143,6 +452888,33 @@
       "source": "연합뉴스",
       "title": "LG전자, 엔비디아 AI 데이터센터 냉각솔루션 공식 파트너 | 연합뉴스"
     },
+    "title:f7430d35422e08159f53cf54": {
+      "first_seen_kst": "2026-10-12T06:42:49+09:00",
+      "lanes": {
+        "preopen": "2026-10-12T06:42:49+09:00"
+      },
+      "last_seen_kst": "2026-10-12T06:42:49+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634372",
+      "source": "이투데이",
+      "source_body_digest": "e35c30986704e55e513be667df21588ef2b2225c90be5ec8e7d1cab09637f7ac",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3c7450a3f908d4186234394c49a7a270417e7f79751d512685959cf28627cae",
+      "source_fact_keys": [
+        "source_fact:v1:19452545b16aaececc4804a1b62acab598ed0cc32713a4289a6991867dab88dd",
+        "source_fact:v1:1beccc234bd02d49524c759e98c40289a91e8e9d2ae13241661403974eb6916b",
+        "source_fact:v1:45cee855bc33c2c70167f27da21918db1e93e62e34dd83bba242f76f9bd5f202",
+        "source_fact:v1:6459f9323cba9ee0372a243c657839f681445d7be7873710e884cb83a6200ec0",
+        "source_fact:v1:682672918790eed5c9a9f72ddd7a10cd36a3133738ca7a9ace41ea6821d29b40",
+        "source_fact:v1:6f38b86dc4d22b9f2e5410fb9ad68a200ba533db54412f71b011696ab0dc8e5f",
+        "source_fact:v1:b6529ce3dd9e54f34cdf31dc92f616d4e4de13c937584133f15f4333a2ba1eeb",
+        "source_fact:v1:c118f8aa31f206e7222d822e31f3d253d8a50efce5e21a56738340f6a1bf638a",
+        "source_fact:v1:d72dbb2b47df25ce23ef34a29b5bcefe0541f70a5a1f74ed449db900ea2384c4"
+      ],
+      "source_published_kst": "2026-10-12T06:22+09:00",
+      "source_title": "트럼프 “러·우크라 에너지 휴전”…러 확인 없고 젤렌스키 “금시초문”",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아와 우크라이나가 서로의 에너지 시설을 공격하지 않는 ‘에너지 휴전’에 합의했다고 발표했다. 11일(현지시간) 트럼프 대통령은 트루스소셜에 “러시아와 우크라이나 전쟁에서 에너지 휴전이 즉각 발효된다”며 “양측 모두 동의했다. 이를 위반하지 말라”고 밝혔다.",
+      "title": "트럼프 “러·우크라 에너지 휴전”…러 확인 없고 젤렌스키 “금시초문”"
+    },
     "title:f75bdbc94f591d2620807960": {
       "first_seen_kst": "2026-10-11T06:52:52+09:00",
       "lanes": {
@@ -453167,5 +454939,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-12T06:27:02+09:00"
+  "updated_at_kst": "2026-10-12T06:42:49+09:00"
 }
