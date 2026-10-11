@@ -669,5 +669,74 @@ class AgenticCpuStructureTests(unittest.TestCase):
         self.assertLess(len(a), 2600)
 
 
+    def test_cpu_official_arm_and_nvidia_customer_validation_coverage(self):
+        self.assertTrue(any("newsroom.arm.com" in q for _, q in w.VALIDATION_SEARCHES))
+        self.assertTrue(any("nvidia.com" in q for _, q in w.VALIDATION_SEARCHES))
+        self.assertEqual(
+            w.official_cpu_signal_type(
+                "https://newsroom.arm.com/news/meta-validation",
+                "Meta is validating Arm AGI CPU platforms for its AI data center.",
+            ),
+            "demand",
+        )
+        self.assertEqual(
+            w.official_cpu_signal_type(
+                "https://nvidianews.nvidia.com/news/vera-cpu-production",
+                "NVIDIA Vera CPU production ramp has begun.",
+            ),
+            "supply",
+        )
+        self.assertEqual(
+            w.official_cpu_signal_type(
+                "https://newsroom.arm.com/news/arm-agi-cpu",
+                "Arm AGI CPU powers future agentic AI systems.",
+            ),
+            "",
+        )
+        self.assertEqual(
+            w.official_cpu_signal_type(
+                "https://untrusted.example.com/arm-cpu",
+                "Meta is validating Arm AGI CPU platforms.",
+            ),
+            "",
+        )
+
+    def test_validation_catches_six_day_old_official_cpu_customer_signal(self):
+        now = datetime(2026, 10, 11, 12, tzinfo=ZoneInfo("Asia/Seoul"))
+        item = {
+            "kind": "bing",
+            "title": "Meta validation expands for Arm AGI CPU",
+            "description": "Meta validation of Arm AGI CPU data center.",
+            "link": "https://newsroom.arm.com/news/meta-validating-agi-cpu",
+            "published_at_kst": "2026-10-05T17:00:00+09:00",
+        }
+        with (
+            mock.patch.object(w, "read_rss", return_value=[item]),
+            mock.patch.object(w, "article_text", return_value="Meta is validating Arm AGI CPU in its labs."),
+        ):
+            found = w.discover_validation(now, "2026-10-10", set())
+        self.assertEqual(len(found), 1)
+        self.assertEqual(found[0]["signal_type"], "demand")
+        with mock.patch.object(w, "read_rss", return_value=[item]):
+            duplicate = w.discover_validation(now, "2026-10-10", {item["link"]})
+        self.assertEqual(duplicate, [])
+
+    def test_expired_cpu_search_deadline_does_not_start_new_network_request(self):
+        now = datetime(2026, 10, 11, 12, tzinfo=ZoneInfo("Asia/Seoul"))
+        with mock.patch.object(w, "read_rss", side_effect=AssertionError("network after deadline")):
+            self.assertEqual(w.discover_forecasts(now, "2026-10-08", deadline=0.0), [])
+            self.assertEqual(w.discover_validation(now, "", set(), deadline=0.0), [])
+            prior = {"seen_source_urls": []}
+            self.assertEqual(w.discover_cpu_structure(now, prior, deadline=0.0), [])
+        self.assertEqual(prior["seen_source_urls"], [])
+
+    def test_digitimes_undated_ratio_revision_not_labeled_confirmed_2027(self):
+        old = w.CPU_STRUCTURE_BASELINE["digitimes"]
+        changes = w.cpu_structure_changes(old, {"cpu_xpu_ratio_2027": 2.0}, "digitimes")
+        self.assertEqual(len(changes), 1)
+        self.assertIn("원문 상세 연도 미열람", changes[0])
+        self.assertNotIn("2027 CPU:XPU", changes[0])
+
+
 if __name__ == "__main__":
     unittest.main()
