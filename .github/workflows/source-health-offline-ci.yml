@@ -1,0 +1,75 @@
+name: Source Health Offline Regression CI
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/source-health-offline-ci.yml"
+      - ".github/workflows/clarity-watch-telegram.yml"
+      - ".github/workflows/bio-qlex-intismeran-watch.yml"
+      - ".github/workflows/qlex-sc-bio-fallback.yml"
+      - "scripts/run_offline_regressions.py"
+      - "scripts/source_collection_health.py"
+      - "scripts/clarity_*.py"
+      - "scripts/optogenetics_translation_watch.py"
+      - "scripts/bio_*.py"
+      - "scripts/jemperli_altb4_watch*.py"
+      - "scripts/qlex_wac_ir_watch*.py"
+      - "scripts/halozyme_legal_watch*.py"
+      - "tests/test_clarity_*.py"
+      - "tests/test_bio_alert_regressions.py"
+      - "tests/test_maplight_source_health.py"
+
+permissions:
+  contents: read
+
+jobs:
+  offline-source-regressions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PYTHONPATH: scripts
+    steps:
+      - name: Checkout candidate without persistent credentials
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install parser test dependency
+        run: python -m pip install --disable-pip-version-check beautifulsoup4==4.15.0
+
+      - name: Compile source-health scripts and tests
+        run: >-
+          python -m py_compile
+          scripts/clarity_watch.py
+          scripts/optogenetics_translation_watch.py
+          scripts/source_collection_health.py
+          scripts/run_offline_regressions.py
+          tests/test_clarity_source_health.py
+          tests/test_maplight_source_health.py
+
+      - name: Run source-health regressions with outbound traffic blocked
+        run: >-
+          python scripts/run_offline_regressions.py
+          tests/test_bio_alert_regressions.py
+          tests/test_maplight_source_health.py
+          tests/test_clarity_3x_etp_watch.py
+          tests/test_clarity_alert_formatter.py
+          tests/test_clarity_alert_guard.py
+          tests/test_clarity_alert_readability.py
+          tests/test_clarity_alert_visual_polish.py
+          tests/test_clarity_ethics_alert_enricher.py
+          tests/test_clarity_ethics_breakthrough_watch.py
+          tests/test_clarity_ethics_duplicate_guard.py
+          tests/test_clarity_negotiation_watch.py
+          tests/test_clarity_policy_pressure_watch.py
+          tests/test_clarity_reginfo_watch.py
+          tests/test_clarity_source_health.py
+          tests/test_clarity_vote_gate_enricher.py
+          tests/test_clarity_vote_window_watch.py
+          -v
