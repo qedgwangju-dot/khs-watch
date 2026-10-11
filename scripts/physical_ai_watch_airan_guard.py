@@ -592,6 +592,41 @@ EV_ESS_OLD_NEWS = re.compile(
 )
 
 
+
+# Editorial earnings-expectation rewrites are NOT actual quarterly results,
+# contracts, price observations, utilization, or customer orders. A live
+# run erroneously sent an Oct 12 "3분기 실적 기대감↑" story alongside the
+# true 314Ah CIF measurement. Filter this before inherited ESS scoring.
+ESS_EXPECTATION_ONLY_TITLE = re.compile(
+    r'실적.{0,25}기대감|실적.{0,20}기대\s*(?:↑|증가|확대|커져)|'
+    r'3\s*분기.{0,28}기대감|분기.{0,35}실적.{0,20}전망',
+    re.I,
+)
+ESS_EXPECTATION_TOPIC = re.compile(
+    r'ESS|BESS|에너지저장|LFP|배터리|battery', re.I
+)
+ESS_OFFICIAL_QUARTERLY = re.compile(
+    r'잠정\s*실적\s*(?:발표|공시)|(?:분기|누적)\s*실적\s*확정|'
+    r'실제\s*매출\s*(?:발표|공시)|신규\s*공급계약\s*체결|'
+    r'신규\s*수주\s*공시|첫\s*출하\s*공식\s*확인|'
+    r'official\s*(?:quarterly\s*)?results|binding\s*agreement',
+    re.I,
+)
+
+
+def _is_ess_expectation_only(item: dict) -> bool:
+    headline = item.get('title') or ''
+    source = item.get('source') or ''
+    if source in base.OFFICIAL_OR_PRIMARY:
+        return False
+    if not (ESS_EXPECTATION_ONLY_TITLE.search(headline)
+            and ESS_EXPECTATION_TOPIC.search(headline)):
+        return False
+    # A headline stating a newly completed agreement or official result is
+    # not the same as a news outlet's generic "3Q earnings hopes."
+    return not ESS_OFFICIAL_QUARTERLY.search(headline)
+
+
 def _is_lfp_na_314_price(text: str) -> bool:
     return bool(LFP_NA_314.search(text) and LFP_NA_LFP.search(text)
                 and LFP_NA_LOC.search(text) and LFP_NA_EXW.search(text)
@@ -829,6 +864,8 @@ def _stage(text: str) -> str:
 
 
 def score(item: dict) -> int:
+    if _is_ess_expectation_only(item):
+        return 0
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
     group = topic_group(text)
     if group == 'lfp_314_cif_north_america':
