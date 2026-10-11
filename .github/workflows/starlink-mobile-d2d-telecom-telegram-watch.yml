@@ -7,6 +7,8 @@ on:
       - ".github/workflows/starlink-mobile-d2d-telecom-telegram-watch.yml"
       - "scripts/starlink_mobile_d2d_watch.py"
       - "scripts/starlink_mobile_d2d_korean_guard.py"
+      - "scripts/starlink_mobile_d2d_readability.py"
+      - "scripts/space_launch_telegram_send.py"
   schedule:
     - cron: "18,48 * * * *"
   workflow_dispatch:
@@ -47,10 +49,12 @@ jobs:
           python -m py_compile scripts/starlink_mobile_d2d_korean_guard.py
           python -m py_compile scripts/space_launch_translate_local.py
           python -m py_compile scripts/space_launch_telegram_send.py
+          python -m py_compile scripts/starlink_mobile_d2d_readability.py
           STARLINK_D2D_SELF_TEST=1 python scripts/starlink_mobile_d2d_watch.py
           python scripts/starlink_mobile_d2d_korean_guard.py --self-test
           python scripts/space_launch_telegram_send.py --self-test
           python scripts/space_launch_telegram_send.py --inline-self-test
+          python scripts/starlink_mobile_d2d_readability.py --self-test
           python scripts/merge_space_launch_state.py --self-test
 
       - name: Verify first-party documents, monitor and correlate sources
@@ -66,6 +70,14 @@ jobs:
             out/starlink_mobile_d2d_watch_untranslated.txt \
             out/starlink_mobile_d2d_watch_translated.txt
           cp out/starlink_mobile_d2d_watch_translated.txt out/starlink_mobile_d2d_watch_telegram.txt
+
+      - name: Fit every Korean alert line to narrow phone screens without fact loss
+        if: hashFiles('out/starlink_mobile_d2d_watch_telegram.txt') != ''
+        run: |
+          cp out/starlink_mobile_d2d_watch_telegram.txt out/starlink_mobile_d2d_watch_before_reflow.txt
+          python scripts/starlink_mobile_d2d_readability.py \
+            out/starlink_mobile_d2d_watch_before_reflow.txt \
+            out/starlink_mobile_d2d_watch_telegram.txt
 
       - name: Audit outcome
         if: always()
