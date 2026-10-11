@@ -806,5 +806,29 @@ class AgenticCpuStructureTests(unittest.TestCase):
         self.assertIn("공식 실제 CPU 출하", summary2)
 
 
+    def test_future_cpu_orders_and_production_are_not_completed_events(self):
+        url = "https://ir.amd.com/press-releases/2026/roadmap"
+        future_statements = (
+            "Meta will validate AMD EPYC CPU platforms next quarter.",
+            "AMD will ship EPYC CPU processors to cloud providers in 2027.",
+            "AMD EPYC CPU production ramp will begin in 2027.",
+            "AMD EPYC CPU production ramp is scheduled to begin next year.",
+            "AMD EPYC CPU orders are expected to increase in 2027.",
+            "AMD plans to deploy EPYC CPU servers next month.",
+        )
+        for sentence in future_statements:
+            with self.subTest(sentence=sentence):
+                self.assertEqual(w.official_cpu_signal_type(url, sentence), "")
+        self.assertEqual(
+            w.official_cpu_signal_type(url, "AMD EPYC CPU shipments rose 30% last quarter."),
+            "demand",
+        )
+        self.assertEqual(
+            w.official_cpu_signal_type(url, "AMD EPYC CPU production ramp has begun."),
+            "supply",
+        )
+
+
+
 if __name__ == "__main__":
     unittest.main()
