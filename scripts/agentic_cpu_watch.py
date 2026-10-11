@@ -433,6 +433,39 @@ def official_cpu_signal_type(url: str, text: str) -> str:
     return "supply" if supply_seen else ""
 
 
+def official_cpu_evidence_stage(text: str, signal_type: str) -> str:
+    """Keep customer qualification, actual orders, shipments and supply distinct."""
+    if signal_type == "supply":
+        return "양산·공급 확대(고객 주문 미확인)"
+    if signal_type != "demand":
+        return ""
+    stages = (
+        ("매출 확인", r"\brevenue\b"),
+        ("실제 CPU 출하", r"\b(?:shipped|shipments?)\b"),
+        ("고객 주문·계약", r"\b(?:orders?|bookings?|contracted|contracts?|purchased|purchase orders?)\b"),
+        ("실제 설치·가동", r"\b(?:deployed|deployments?)\b"),
+        ("고객 검증", r"\b(?:qualif(?:ied|ying|ication)|validat(?:ed|ing|ion))\b"),
+    )
+    sentences = re.split(r"(?<=[.!?])\s+|[;\n]+", text)
+    for label, pattern in stages:
+        for sentence in sentences:
+            low = sentence.lower()
+            if not re.search(r"\b(?:cpu|epyc|xeon)\b", low):
+                continue
+            match = re.search(pattern, low)
+            if not match:
+                continue
+            context = low[max(0, match.start() - 70):match.end() + 35]
+            if re.search(
+                r"\b(?:not|without|unconfirmed|plans?\s+to|expects?\s+to|could|might|may|"
+                r"forecast|projected|predict(?:s|ed)?|anticipat(?:es|ed)?|estimated)\b",
+                context,
+            ):
+                continue
+            return label
+    return "공식 수요 관련 확인(세부 단계 미분류)"
+
+
 def is_official_validation(url: str, text: str) -> bool:
     return bool(official_cpu_signal_type(url, text))
 
@@ -781,7 +814,10 @@ def snapshot_block(state: dict, fx: float | None, fx_date: str, changed: list[di
         if ratio_change:
             change_bits.append(f"CPU:GPU {ratio_change[0]}→{ratio_change[1]}")
         if validation:
-            category = "공식 공급확대" if validation[0].get("signal_type") == "supply" else "공식 수요검증"
+            stage = validation[0].get("validation_stage")
+            category = ("공식 " + stage) if stage else (
+                "공식 공급확대" if validation[0].get("signal_type") == "supply" else "공식 수요검증"
+            )
             change_bits.append(category + " " + str(validation[0].get("title") or "확인"))
         if change_bits:
             lines.append("• 변화: " + " / ".join(html.escape(x) for x in change_bits))
@@ -822,8 +858,12 @@ def snapshot_block(state: dict, fx: float | None, fx_date: str, changed: list[di
         lines.append(f"• CPU:GPU 구조: {html.escape(ratio_change[0])} → {html.escape(ratio_change[1])}")
     if validation:
         for item in validation[:2]:
-            category = "양산·공급 확대" if item.get("signal_type") == "supply" else "고객 수요·출하"
-            lines.append(f"• 공식 {category} 검증: {html.escape(item.get('title') or '공식 신호')}")
+            stage = item.get("validation_stage")
+            category = stage if stage else (
+                "양산·공급 확대" if item.get("signal_type") == "supply"
+                else "고객 검증·수주·출하 관련 변화(세부 단계 미분류)"
+            )
+            lines.append(f"• 공식 {html.escape(category)}: {html.escape(item.get('title') or '공식 신호')}")
 
     total = float(m.get("server_cpu_tam_2030_usd_bn") or 0)
     agent = float(m.get("agentic_2030_usd_bn") or 0)
@@ -947,7 +987,11 @@ def discover_validation(now: datetime, cutoff: str, seen_urls: set[str], deadlin
             signal_type = official_cpu_signal_type(url, text)
             if not signal_type:
                 continue
-            out.append({**item, "url": url, "signal_type": signal_type, "ratio": extract_ratio(text)})
+            out.append({
+                **item, "url": url, "signal_type": signal_type,
+                "validation_stage": official_cpu_evidence_stage(text, signal_type),
+                "ratio": extract_ratio(text),
+            })
             seen.add(url)
     out.sort(key=lambda x: x.get("published_at_kst") or "")
     return out
