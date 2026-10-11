@@ -38,6 +38,8 @@ on:
       - "scripts/lng_supply_crisis_alert_v32.py"
       - "scripts/lng_supply_crisis_alert_v33.py"
       - "scripts/lng_supply_crisis_alert_v34.py"
+      - "scripts/lng_collection_budget.py"
+      - "tests/test_lng_collection_budget.py"
       - "tests/test_lng_parser_clock_regression.py"
       - "scripts/lng_supply_crisis_qatar_us_overlay.py"
 
@@ -66,6 +68,7 @@ jobs:
 
       - name: Validate v34 monitor
         run: |
+          python -m unittest discover -s tests -p "test_lng_collection_budget.py" -v
           python -m unittest discover -s tests -p "test_lng_parser_clock_regression.py" -v
           python -m py_compile scripts/lng_supply_crisis_alert_v12.py scripts/lng_supply_crisis_alert_v13.py scripts/lng_supply_crisis_alert_v14.py scripts/lng_supply_crisis_alert_v15.py scripts/lng_supply_crisis_alert_v16.py scripts/lng_supply_crisis_alert_v17.py scripts/lng_supply_crisis_alert_v18.py scripts/lng_supply_crisis_alert_v19.py scripts/lng_supply_crisis_alert_v20.py scripts/lng_supply_crisis_alert_v21.py scripts/lng_supply_crisis_alert_v22.py scripts/lng_supply_crisis_alert_v23.py scripts/lng_supply_crisis_alert_v24.py scripts/lng_supply_crisis_alert_v25.py scripts/lng_supply_crisis_alert_v26.py scripts/lng_supply_crisis_alert_v27.py scripts/lng_supply_crisis_alert_v28.py scripts/lng_supply_crisis_alert_v29.py scripts/lng_supply_crisis_alert_v30.py scripts/lng_supply_crisis_alert_v31.py scripts/lng_supply_crisis_alert_v32.py scripts/lng_supply_crisis_alert_v33.py scripts/lng_supply_crisis_alert_v34.py scripts/lng_supply_crisis_qatar_us_overlay.py
           python - <<'PY'
@@ -200,6 +203,7 @@ jobs:
         with:
           name: lng-supply-crisis-${{ github.run_id }}
           path: |
+            out/lng_collection_coverage.json
             out/lng_supply_crisis_watch.md
             out/lng_supply_crisis_alert.md
             out/lng_supply_crisis_alert.json
