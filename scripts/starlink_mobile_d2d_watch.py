@@ -46,6 +46,8 @@ SOURCES=(
  ("NASA Falcon 9·Dragon Crew-15~17 확정 계약","https://www.nasa.gov/missions/station/commercial-crew/nasa-awards-spacex-three-crew-flights-to-space-station/",("946 million","Crew-15","2030")),
  ("SpaceX Falcon 9 페어링 공식 제원","https://www.spacex.com/vehicles/falcon-9/fairing",("5.2","13.1")),
  ("Starlink 휴대전화 직접통신 공식 발사체 경로","https://www.starlink.com/bs/business/direct-to-cell",("Falcon 9","Starship")),
+ ("AT&T 배당락·주당 배당금 공식 발표","https://about.att.com/story/2026/november-stock-dividend.html",("0.2775","Oct. 12, 2026")),
+ ("Verizon 2026년 10월 9일 배당락 공식 내역","https://www.verizon.com/about/investors/dividend-history",("10/09/2026","0.7075")),
 )
 FCC_JULY="https://docs.fcc.gov/public/attachments/DA-26-653A1.pdf"
 FCC_JAN="https://docs.fcc.gov/public/attachments/DOC-417881A1.pdf"
@@ -382,22 +384,74 @@ def should_send_historical_factcheck(initial:bool, state:dict, official:list[str
          and "NASA Falcon 9·Dragon Crew-15~17 확정 계약" in official
          and "Grain Management 매각 공식 발표" in official)
 
-def user_claims_factcheck()->str:
+AT_T_DIVIDEND_URL="https://about.att.com/story/2026/november-stock-dividend.html"
+VERIZON_DIVIDEND_URL="https://www.verizon.com/about/investors/dividend-history"
+T_DAILY_RAW_URL="https://www.investing.com/equities/at-t-historical-data"
+VZ_DAILY_RAW_URL="https://www.investing.com/equities/verizon-communications-historical-data"
+TMUS_DAILY_URL="https://stockanalysis.com/stocks/tmus/history/"
+DIVIDEND_DISPLAY_CORRECTION_KEY="factcheck:20261011:raw_vs_dividend_adjusted_mobile_telegram"
+
+
+def daily_price_return(close:float,previous_close:float,ex_dividend:float=0)->tuple[float,float]:
+ if close<=0 or previous_close<=0 or ex_dividend<0 or ex_dividend>=previous_close:
+  raise ValueError("Invalid market-data input")
+ return ((close / previous_close-1)*100,
+         (close / (previous_close-ex_dividend)-1)*100)
+
+
+def price_dividend_display_correction()->str:
+ # Current numbers below are historical 2026-10-09 daily data, NOT live prices.
+ # We distinguish actual close-to-close declines from dividend-adjusted
+ # returns because both AT&T and VZ went ex-dividend on Oct 9.
+ t_raw,t_adj=daily_price_return(22.18,24.87,0.2775)
+ vz_raw,vz_adj=daily_price_return(41.65,46.35,0.7075)
+ tm_raw,_=daily_price_return(148.58,171.31)
  return "\n".join([
-  "[주가·발사병목 검증] 10월 9일 종가와 Falcon 9·Dragon 운항",
-  "• 미국 10월 9일 정규장 종가: AT&T(T) -9.81%(22.18달러), 버라이즌(VZ) -8.75%(41.65달러), T-Mobile(TMUS) -13.27%(148.58달러). AT&T -9.85%라는 인용은 종가 기준과 다릅니다.",
-  "• Starlink Mobile의 미국 전국 독자 이동통신망은 아직 상용 개통 완료가 아닙니다. 800MHz Grain→SpaceX 인수는 FCC 승인 대기이며, 위성 1만5,000기 허가는 운영 위성 1만5,000기 달성이 아닙니다.",
-  "• Falcon 9 페어링: 외경 5.2m, 전체 높이 약 13.1m입니다. 위성 길이 7m라는 주장만으로 직경 5.2m에 들어갈 수 없다는 결론은 성립하지 않습니다. 위성 실제 폭·접힌 상태·탑재 구조는 별도 검증해야 합니다.",
-  "• Starlink 공식 자료는 휴대전화 직접통신 위성을 Falcon 9에서 먼저 발사하고 이후 Starship으로 확대하는 접근을 설명합니다. 1만5,000기는 허가 규모이며 신규 15,000기의 실제 동시 발사가 아닙니다.",
-  "• NASA는 2026년 9월 18일 Crew-15~17 추가 3개 임무를 총 9억4,600만 달러(2026년 10월 11일 조회 환율 1달러=1,340.88원 기준 약 1조2,685억원)에 발주했습니다. 계약 수행기간은 2030년까지로 Falcon 9·Dragon의 즉시 퇴역과 모순됩니다.",
-  "• 재평가: Starship은 대형 위성군의 발사당 물량·원가를 크게 개선할 후보지만, 실제 상용 전환율·재사용 회전시간·위성 한 기 질량·발사당 수량이 공개되기 전에는 15,000기 발사 수와 운송비를 확정할 수 없습니다.",
-  "• 실패 경로: Starship 열차폐·Raptor·착륙 회수 재사용 지연 시 대형 위성군 일정은 늦어질 수 있지만, Falcon 9 계약 고객 전부가 즉시 발사 중단되는 것은 아닙니다.",
-  "• 먼저 볼 지표: NASA Crew-15~17 이행, 실제 Falcon 9 발사 횟수, Starship 2단 궤도선 재사용, 위성 발사량, Grain→SpaceX FCC 승인.",
-  "• 원문: "+US_CARRIER_20261009_URL,
+  "[주가 기준 정정·가독성 개선] 10월 9일 미국 통신 3사와 발사체",
+  "주가 | 미국 10월 9일 정규장, 전일 종가 대비",
+  f"  AT&T(T) $22.18: {t_raw:+.2f}% (배당 조정 {t_adj:+.2f}%)",
+  f"  버라이즌(VZ) $41.65: {vz_raw:+.2f}% (배당 조정 {vz_adj:+.2f}%)",
+  f"  T-Mobile(TMUS) $148.58: {tm_raw:+.2f}%",
+  "  ※ 배당락 10/9: AT&T 주당 $0.2775, VZ 주당 $0.7075.",
+  "",
+  "사업 | Starlink Mobile 전국 독자망은 아직 개통 전입니다.",
+  "  Grain→SpaceX 800MHz 인수는 계약 단계·FCC 이전 승인 대기.",
+  "  D2D 위성 1만5,000기 허가는 실제 가동 수와 다릅니다.",
+  "",
+  "발사 | Falcon 9 페어링 외경 5.2m·높이 약 13.1m.",
+  "  위성 길이 7m만으로 적재 불가 단정 금지. 접힌 폭과 적재 형상을 별도 확인해야 합니다.",
+  "  Starlink D2C는 Falcon 9 선발사→Starship 대형화 경로이며, 1만5,000기는 실제 발사 완료량이 아닙니다.",
+  "",
+  "NASA | Crew-15~17 추가 3회, $946M(2026-10-11 기준 약 1조2,685억원).",
+  "  수행기간 2030년까지. Falcon 9·Dragon 즉시 퇴역 주장과 양립하지 않습니다.",
+  "",
+  "재평가 | Starship 대형 탑재량의 비용 우위는 위성 질량×발사당 기수·재사용 회전시간 검증이 선행되어야 합니다.",
+  "역풍 | 열차폐·Raptor·회수 실패 시 D2D 배치 지연. Falcon 9 기존 계약 전체가 즉시 중단되는 것은 아닙니다.",
+  "확인 | Falcon 9 발사 횟수, Crew-15~17 이행, Starship 2단 재사용, D2D 실제 가동 기수, Grain FCC 승인.",
+  "• 원문: "+T_DAILY_RAW_URL,
+  "• 원문: "+VZ_DAILY_RAW_URL,
+  "• 원문: "+TMUS_DAILY_URL,
+  "• 원문: "+AT_T_DIVIDEND_URL,
+  "• 원문: "+VERIZON_DIVIDEND_URL,
   "• 원문: "+SPACEX_FAIRING_URL,
   "• 원문: "+STARLINK_D2C_URL,
   "• 원문: "+NASA_NEW_CREW_URL,
  ])
+
+
+def should_send_price_correction(initial:bool,state:dict,official:list[str])->bool:
+ return (not initial
+         and FACTCHECK_20261011_KEY in state.get("seen",{})
+         and DIVIDEND_DISPLAY_CORRECTION_KEY not in state.get("seen",{})
+         and "AT&T 배당락·주당 배당금 공식 발표" in official
+         and "Verizon 2026년 10월 9일 배당락 공식 내역" in official
+         and "NASA Falcon 9·Dragon Crew-15~17 확정 계약" in official)
+
+
+def user_claims_factcheck()->str:
+ # Keep the historical method for compatibility, now with the correct
+ # price-return methodology and the compact, fully sourced structure.
+ return price_dividend_display_correction()
 
 def render(topic:str,status:str,item:dict,pair:dict)->str:
  meta=TOPICS[topic]
@@ -530,10 +584,26 @@ def test()->int:
  assert not should_send_historical_factcheck(True,{"seen":{}},sources)
  assert not should_send_historical_factcheck(False,{"seen":{}},sources[:1])
 
- assert "AT&T(T) -9.81%" in user_claims_factcheck()
- assert "계약 수행기간은 2030년까지" in user_claims_factcheck()
+ assert daily_price_return(22.18,24.87,0.2775)[0] < -10.8
+ assert abs(daily_price_return(22.18,24.87,0.2775)[1] + 9.81)<0.02
+ assert abs(daily_price_return(41.65,46.35,0.7075)[0] + 10.14)<0.01
+ assert abs(daily_price_return(41.65,46.35,0.7075)[1] + 8.75)<0.02
+ assert "AT&T(T) $22.18: -10.82% (배당 조정 -9.81%)" in user_claims_factcheck()
+ assert "버라이즌(VZ) $41.65: -10.14% (배당 조정 -8.75%)" in user_claims_factcheck()
+ assert "Falcon 9·Dragon 즉시 퇴역" in user_claims_factcheck()
  assert "위성 길이 7m" in user_claims_factcheck()
  assert "• 원문: "+NASA_NEW_CREW_URL in user_claims_factcheck()
+ assert not should_send_price_correction(False,{"seen":{}},[])
+ assert should_send_price_correction(False,{"seen":{FACTCHECK_20261011_KEY:"2026-10-11"}},
+     ["AT&T 배당락·주당 배당금 공식 발표",
+      "Verizon 2026년 10월 9일 배당락 공식 내역",
+      "NASA Falcon 9·Dragon Crew-15~17 확정 계약"])
+ assert not should_send_price_correction(False,{"seen":{
+      FACTCHECK_20261011_KEY:"2026-10-11",
+      DIVIDEND_DISPLAY_CORRECTION_KEY:"2026-10-11"}},
+     ["AT&T 배당락·주당 배당금 공식 발표",
+      "Verizon 2026년 10월 9일 배당락 공식 내역",
+      "NASA Falcon 9·Dragon Crew-15~17 확정 계약"])
  assert "license:grain_spacex_800:agreement" in KNOWN_BASELINE_KEYS
  assert "license:grain_spacex_800:fcc_approval" not in KNOWN_BASELINE_KEYS
  assert "license:grain_spacex_800:close" not in KNOWN_BASELINE_KEYS
@@ -554,6 +624,11 @@ def main()->int:
   raise RuntimeError(f"독립된 공식 발행기관 {len(organizations)}곳: 알림 차단. {failed}")
  force=os.getenv("FORCE_NOTIFY","").strip().lower() in ("true","1","yes")
  events,next_seen=choose_events(groups,state["seen"],initial,force)
+ # One-time correction of the old report's close/adjusted-close basis.
+ # Strictly require issuer dividend originals and NASA's crew agreement.
+ if should_send_price_correction(initial,state,official):
+  events.insert(0,price_dividend_display_correction())
+  next_seen[DIVIDEND_DISPLAY_CORRECTION_KEY]=NOW.isoformat()
  # Correct the pre-existing program error: two DISTINCT FCC grants each
  # concern 15,000 spacecraft (Jan Gen2 broadband, Oct D2D S00735).
  # Deliver one explicit clarification only after directly reading an FCC
