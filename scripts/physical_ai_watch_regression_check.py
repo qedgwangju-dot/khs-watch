@@ -2959,6 +2959,16 @@ vendor_text=memory_vendor_order['title']+' '+memory_vendor_order['description']
 assert base.category(vendor_text,base.topic_group(vendor_text))==vc
 assert '원문 확인 단계' in base.verification(memory_vendor_order,vg,vendor_text)
 
+memory_vendor_alias = make(
+    "SK hynix NVIDIA Jetson Thor humanoid robot LPDDR5X signed supply contract",
+    "SK hynix signed supply contract to deliver LPDDR5X DRAM to NVIDIA "
+    "Jetson Thor humanoid robot platform.",
+    "SK hynix",
+)
+ag, a_score, ac, ak = classify(memory_vendor_alias)
+assert ag == vg and a_score >= 11 and ac == vc, (ag,a_score,ac)
+assert ak == vk, "Korean/English official customer and supplier aliases are one event"
+
 memory_media_contract_claim = dict(memory_vendor_order,source='테마 뉴스')
 ng, ns, nc, nk = classify(memory_media_contract_claim)
 assert ng == vg and ns < 11, (ng,ns,nc)
