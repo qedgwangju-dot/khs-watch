@@ -284,6 +284,10 @@ def _skip_quantity_enrichment(block: str) -> bool:
         return True
     if "Digital Optimus" in block or "디지털 에이전트" in block or "디지털 옵티머스" in block:
         return True
+    # A quoted USD/kWh ESS cell assessment is energy-priced, not a count
+    # of saleable robots or a "1GW" contract (1GWh must remain energy).
+    if "ESS LFP 북미 조달" in block or "북미 ESS LFP 조달원가" in block:
+        return True
     # 2026-2030 robot-memory forecasts are D-RAM bit demand, not confirmed
     # hardware shipments or priced robot units. Their KRW sensitivity is
     # separately calculated from Tbit -> GB, never from a random number+대.
