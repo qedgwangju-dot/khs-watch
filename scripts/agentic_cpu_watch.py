@@ -152,6 +152,8 @@ VALIDATION_SEARCHES = [
 # A bounded shared deadline prevents repeated search/timeouts in the CPU collector
 # from consuming the whole 30-minute Rubin workflow and blocking checkpoints.
 CPU_SCAN_WALL_SECONDS = 240.0
+CPU_FORECAST_STAGE_SECONDS = 70.0
+CPU_VALIDATION_STAGE_SECONDS = 140.0
 CPU_VALIDATION_LOOKBACK_DAYS = 14
 
 
@@ -198,6 +200,14 @@ def parse_pubdate(value: str) -> datetime | None:
         return dt.astimezone(ZoneInfo("Asia/Seoul"))
     except Exception:
         return None
+
+
+def rotated_searches(queries: list[tuple[str, str]], now: datetime) -> list[tuple[str, str]]:
+    """Rotate source priority hourly; bounded scans must not starve later feeds."""
+    if not queries:
+        return []
+    offset = (now.toordinal() * 24 + now.hour) % len(queries)
+    return queries[offset:] + queries[:offset]
 
 
 def rss_url(kind: str, query: str) -> str:
@@ -652,7 +662,7 @@ def discover_cpu_structure(now: datetime, previous: dict, deadline: float | None
     results: list[dict] = []
     seen: set[str] = set(previous.get("seen_source_urls") or [])
     fetched = 0
-    for kind, query in CPU_STRUCTURE_SEARCHES:
+    for kind, query in rotated_searches(CPU_STRUCTURE_SEARCHES, now):
         if deadline is not None and monotonic() >= deadline:
             break
         try:
@@ -848,7 +858,7 @@ def discover_forecasts(now: datetime, cutoff: str, deadline: float | None = None
     seen = set()
     fetch_budget = 6
     fetched = 0
-    for kind, query in FORECAST_SEARCHES:
+    for kind, query in rotated_searches(FORECAST_SEARCHES, now):
         if deadline is not None and monotonic() >= deadline:
             break
         try:
@@ -899,7 +909,7 @@ def discover_validation(now: datetime, cutoff: str, seen_urls: set[str], deadlin
     seen = set(seen_urls)
     fetch_budget = 8
     fetched = 0
-    for kind, query in VALIDATION_SEARCHES:
+    for kind, query in rotated_searches(VALIDATION_SEARCHES, now):
         if deadline is not None and monotonic() >= deadline:
             break
         try:
@@ -945,13 +955,17 @@ def discover_validation(now: datetime, cutoff: str, seen_urls: set[str], deadlin
 
 def main() -> None:
     now = datetime.now(ZoneInfo("Asia/Seoul"))
-    scan_deadline = monotonic() + CPU_SCAN_WALL_SECONDS
+    scan_start = monotonic()
+    forecast_deadline = scan_start + CPU_FORECAST_STAGE_SECONDS
+    validation_deadline = scan_start + CPU_VALIDATION_STAGE_SECONDS
+    scan_deadline = scan_start + CPU_SCAN_WALL_SECONDS
     committed = load_json(STATE_PATH)
     pending = load_json(PENDING_PATH)
     previous = committed.get("agentic_cpu_demand") or BASELINE
     latest = json.loads(json.dumps(previous))
 
-    forecast_candidates = discover_forecasts(now, str(previous.get("as_of") or BASELINE["as_of"]), deadline=scan_deadline)
+    forecast_candidates = discover_forecasts(now, str(previous.get("as_of") or BASELINE["as_of"]), deadline=forecast_deadline)
+    forecast_stage_exhausted = monotonic() >= forecast_deadline
     forecast_changes: list[dict] = []
     ratio_change: tuple[str, str] | None = None
     seen_forecast = set(previous.get("seen_forecast_urls") or [])
@@ -986,7 +1000,8 @@ def main() -> None:
     ratio_after = ratio_before
 
     seen_validation = set(previous.get("seen_validation_urls") or [])
-    validation = discover_validation(now, str(previous.get("last_validation_cutoff") or ""), seen_validation, deadline=scan_deadline)
+    validation = discover_validation(now, str(previous.get("last_validation_cutoff") or ""), seen_validation, deadline=validation_deadline)
+    validation_stage_exhausted = monotonic() >= validation_deadline
     for item in validation:
         if item.get("url"):
             seen_validation.add(item["url"])
@@ -1080,6 +1095,13 @@ def main() -> None:
         structure_events.extend(changes)
     latest["cpu_structure"] = structure_latest
     latest["cpu_structure_track_version"] = CPU_STRUCTURE_TRACK_VERSION
+    # Track partial coverage explicitly; a completed Actions job does not mean
+    # every external source was successfully searched this hour.
+    latest["cpu_source_scan_limited"] = {
+        "forecast_time_budget_exhausted": forecast_stage_exhausted,
+        "validation_time_budget_exhausted": validation_stage_exhausted,
+        "structure_time_budget_exhausted": monotonic() >= scan_deadline,
+    }
 
     fx, fx_date = get_fx()
     existing_alert = ALERT_PATH.read_text(encoding="utf-8").strip() if ALERT_PATH.exists() else ""
@@ -1106,7 +1128,8 @@ def main() -> None:
         "agentic_cpu_watch=true "
         f"forecast_changes={len(forecast_changes)} ratio_change={str(bool(ratio_change)).lower()} "
         f"validation_signals={len(validation)} structure_initial={str(structure_first_install).lower()} "
-        f"structure_changes={len(structure_events)} alert={str(cpu_material or bool(existing_alert)).lower()}"
+        f"structure_changes={len(structure_events)} alert={str(cpu_material or bool(existing_alert)).lower()} "
+        f"cpu_source_scan_limited={latest['cpu_source_scan_limited']}"
     )
 
 
