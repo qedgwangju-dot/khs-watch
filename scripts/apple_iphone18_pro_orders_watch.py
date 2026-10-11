@@ -245,9 +245,10 @@ def _extract_cut(text: str) -> dict | None:
         start = max((m.end() for m in separators if m.end() <= pos), default=0)
         stop = min((m.start() for m in separators if m.start() > pos), default=len(low))
         clause = low[start:stop]
-        if not any(w in clause for w in BASIS_WORDS):
-            continue
-        if not any(w in vicinity for w in BASIS_WORDS):
+        # All four concepts must be in this SAME sentence; IDC price/ASP
+        # sentences elsewhere must never inherit the prior order-cut context.
+        if not all(any(w in clause for w in words)
+                   for words in (COMPONENT_WORDS, ORDER_WORDS, CUT_WORDS, BASIS_WORDS)):
             continue
         # Reject "+" ASP growth and standalone negative annual shipments.
         before = low[max(0, pos - 1):pos]
