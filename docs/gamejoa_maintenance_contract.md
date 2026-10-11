@@ -142,7 +142,11 @@ Every defect or requested change must follow this sequence:
   commercial fact; its genre does not bypass the evidence requirement.
 - Korean submission words cannot match shipments. Exhibition attendance cannot
   republish background CAPEX, and personal-finance instructions are not new
-  market flows. Preserve scoped new construction and real shipment changes.
+  market flows. A single investor's deposit, retirement-account, or ETF anecdote
+  cannot become an aggregate flow because an index level or return appears in the
+  same story; require a dated, quantified investor-group flow from an identifiable
+  market-data source. Preserve genuinely aggregated exchange flow, scoped new
+  construction, and real shipment changes.
 - Analyst FX outlooks retain the named source, target and horizon. Operating
   asset financing retains the asset, amount and proposed transfer structure;
   SPV discussions do not become completed chip sales or secured borrowing.

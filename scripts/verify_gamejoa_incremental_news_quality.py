@@ -90,6 +90,8 @@ PACKET_QUALITY_CASES = {case['id']: case for case in json.loads(
     (ROOT / 'data/gamejoa_packet_quality_fixtures_20261006.json').read_text(encoding='utf-8'))['cases']}
 ATTACHMENT_QUALITY_20261010 = json.loads(
     (ROOT / 'data/gamejoa_attachment_quality_fixtures_20261010.json').read_text(encoding='utf-8'))
+ATTACHMENT_QUALITY_20261011 = json.loads(
+    (ROOT / 'data/gamejoa_attachment_quality_fixtures_20261011.json').read_text(encoding='utf-8'))
 HEADLINE_ANCHOR_FIXTURE = json.loads((ROOT / 'data/gamejoa_headline_anchor_fixtures_20261006.json').read_text(encoding='utf-8'))
 HEADLINE_ANCHOR_CASES = {case['id']: case for case in HEADLINE_ANCHOR_FIXTURE['cases']}
 LIVE_NOW = NOW.replace(hour=19)
@@ -6364,6 +6366,30 @@ class ConcreteLiveSelectionRegressions(unittest.TestCase):
         self.assertEqual(fixture["decision_counts"]["send_candidate"], 5)
         self.assertEqual(fixture["decision_counts"]["watch_confirmation"], 3)
         self.assertEqual(fixture["decision_counts"]["exclude_current_evidence"], 2)
+
+    def test_oct11_attachment_corpus_keeps_all_14_unique_links_and_distinct_events(self):
+        fixture = ATTACHMENT_QUALITY_20261011
+        stories = fixture["stories"]
+        self.assertEqual(len(stories), 14)
+        self.assertEqual(len(stories), fixture["input_count"])
+        self.assertEqual(len({story["id"] for story in stories}), 14)
+        self.assertEqual(len({story["url"] for story in stories}), 14)
+        self.assertEqual(len({story["event_key"] for story in stories}), 14)
+        self.assertEqual(fixture["decision_counts"], {
+            "send_candidate": 4,
+            "watch_confirmation": 8,
+            "exclude_current_evidence": 2,
+        })
+        self.assertIn("not independent verification", fixture["source_boundary"])
+        for story in stories:
+            self.assertIn(story["source_status"], {
+                "exact_link_body_checked",
+                "secondary_confirmation_only",
+                "exact_link_unavailable",
+                "google_news_origin_unresolved",
+            })
+            self.assertTrue(story["decision_reason"])
+            self.assertTrue(story["market_path"])
 
     def test_weak_live_candidates_do_not_fill_core_slots(self):
         cases = [

@@ -5001,6 +5001,27 @@ def assess(title: str, body: str, *, source_url: str = "", published: str = "") 
     political_poll = bool(re.search(r"지지율|국정\s*수행|정당\s*지지|political approval|approval rating", title, re.I)
                           and re.search(r"여론조사|응답자|유권자|poll|respondents|voters", body[:1600], re.I))
     primary_rows = ' '.join(source_sentences(body)[:6])
+    personal_investor_anecdote = bool(
+        re.search(
+            r"(?:예금|적금|퇴직금|연금|월급|종잣돈).{0,30}(?:깨|해지|인출|빼).{0,45}(?:ETF|주식|종목|몰빵|올인|다\s*걸)|"
+            r"(?:다\s*걸|몰빵|올인).{0,30}(?:ETF|주식|종목)",
+            title,
+        )
+        and re.search(r"직장인|퇴직연금|IRP|개인\s*계좌|자신의\s*계좌|투자\s*사례|개미", body[:4000], re.I)
+    )
+    aggregate_market_flow = any(
+        re.search(r"순매수|순매도|자금\s*(?:유입|유출)|거래대금", sentence)
+        and re.search(r"개인|외국인|기관|연기금", sentence)
+        and QUANTITY.search(sentence)
+        and re.search(r"한국거래소|KRX|예탁결제원|금융투자협회|거래소\s*집계|집계에\s*따르면", sentence)
+        for sentence in source_sentences(body[:5000])
+    )
+    if personal_investor_anecdote and not aggregate_market_flow:
+        result.update(
+            disposition="exclude", priority=0,
+            reason="individual_investor_anecdote_without_aggregate_market_flow",
+        )
+        return result
     professional_opinion = bool(re.search(r'\[[^\]]{0,100}(?:인사이트|칼럼|기고|사설)[^\]]*\]', title)
                                 and re.search(r'살려야|해야|필요|제언', title))
     foreground_action = any(current_event_sentence(row) and not PAST_ACTION.search(row)
