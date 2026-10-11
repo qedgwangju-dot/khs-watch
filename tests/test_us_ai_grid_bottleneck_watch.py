@@ -545,6 +545,144 @@ class KoreanTransformerExportTests(unittest.TestCase):
         self.assertEqual(w.kcs_error_category(ValueError("kcs_result_31")), "kcs_key_expired")
         self.assertEqual(w.kcs_error_category(ValueError("kcs_result_22")), "kcs_http_retryable")
 
+
+    @staticmethod
+    def official_sample():
+        def row(month, amounts):
+            pieces = {k: {"usd": int(v[0]), "kg": int(v[1])}
+                      for k, v in zip(w.KOREA_EXPORT_HS6, amounts)}
+            usd = sum(x["usd"] for x in pieces.values())
+            kg = sum(x["kg"] for x in pieces.values())
+            return {
+                "month": month, "destination": "US",
+                "hs_codes": list(w.KOREA_EXPORT_HS6),
+                "source_url": w.KOREA_EXPORT_API_DOC,
+                "export_usd": usd, "net_weight_kg": kg,
+                "average_usd_per_kg": usd / kg,
+                "by_hs": pieces,
+            }
+        return {
+            "2025-09": row("2025-09", [
+                (44236681, 5449955), (51029426, 2140079), (3881502, 338987)
+            ]),
+            "2026-08": row("2026-08", [
+                (47103683, 5063630), (98333682, 3894535), (6943335, 603644)
+            ]),
+            "2026-09": row("2026-09", [
+                (74964144, 8932859), (115443701, 5115283), (9449059, 782261)
+            ]),
+        }
+
+    def test_export_alert_exact_mass_and_money_deltas_for_real_fixtures(self):
+        history = self.official_sample()
+        with mock.patch.object(w, "usdkrw_rate", return_value=(1341.49, "2026-10-09")):
+            msg = w.korea_export_readable_alert(
+                {"kind": "official_us_month", "month": "2026-09"},
+                {"official_us_by_month": history, "reference": w.KOREA_EXPORT_REFERENCE},
+                {"latest_month": "2026-08"},
+            )
+        self.assertIn("14,830.403톤", msg)
+        self.assertIn("9,561.809톤", msg)
+        self.assertIn("5,268.594톤 증가 (+55.1%)", msg)
+        self.assertIn("6,901.382톤 증가 (+87.0%)", msg)
+        self.assertIn("199.86백만달러(약 2,681억원)", msg)
+        self.assertIn("47.48백만달러(약 637억원) 증가 (+31.2%)", msg)
+        self.assertIn("100.71백만달러(약 1,351억원) 증가 (+101.6%)", msg)
+        self.assertIn("2.46달러/kg 감소 (-15.4%)", msg)
+        self.assertIn("3,869.229톤 증가 (+76.4%)", msg)
+        self.assertIn("1,220.748톤 증가 (+31.3%)", msg)
+        self.assertIn("178.617톤 증가 (+29.6%)", msg)
+        self.assertIn("중형", msg)
+        self.assertIn("미국 수입통계 최신월: 2026-08", msg)
+        self.assertIn("1달러=1,341.49원 (2026-10-09 기준)", msg)
+        self.assertLess(len(msg), 3400)
+        self.assertEqual(
+            sum(history["2026-09"]["by_hs"][c]["kg"] - history["2026-08"]["by_hs"][c]["kg"]
+                for c in w.KOREA_EXPORT_HS6),
+            history["2026-09"]["net_weight_kg"] - history["2026-08"]["net_weight_kg"],
+        )
+
+    def test_export_alert_negative_volume_and_money_decreases(self):
+        history = self.official_sample()
+        before = history["2026-09"]
+        import copy
+        small = copy.deepcopy(before)
+        small["month"] = "2026-10"
+        for code in w.KOREA_EXPORT_HS6:
+            small["by_hs"][code]["kg"] //= 2
+            small["by_hs"][code]["usd"] //= 2
+        small["net_weight_kg"] = sum(x["kg"] for x in small["by_hs"].values())
+        small["export_usd"] = sum(x["usd"] for x in small["by_hs"].values())
+        small["average_usd_per_kg"] = small["export_usd"] / small["net_weight_kg"]
+        history["2026-10"] = small
+        with mock.patch.object(w, "usdkrw_rate", return_value=(1400.0, "2026-10-11")):
+            msg = w.korea_export_readable_alert(
+                {"kind": "official_us_month", "month": "2026-10"},
+                {"official_us_by_month": history},
+                {},
+            )
+        self.assertIn("전월보다", msg)
+        self.assertIn("감소 (-50.0%)", msg)
+        self.assertNotIn("전년동월 0.000톤", msg)
+        self.assertIn("전년동월 중량 증감: 비교 원자료 미확인", msg)
+
+    def test_export_alert_rejects_partial_hs_and_inconsistent_totals(self):
+        import copy
+        history = self.official_sample()
+        current = history["2026-09"]
+        w.validate_korea_export_snapshot(current, "2026-09")
+        corrupt = copy.deepcopy(current)
+        corrupt["export_usd"] += 1
+        with self.assertRaisesRegex(ValueError, "kcs_alert_value_sum_mismatch"):
+            w.validate_korea_export_snapshot(corrupt, "2026-09")
+        corrupt = copy.deepcopy(current)
+        corrupt["by_hs"].pop("850434")
+        with self.assertRaisesRegex(ValueError, "kcs_alert_incomplete_hs_data"):
+            w.validate_korea_export_snapshot(corrupt, "2026-09")
+        corrupt = copy.deepcopy(current)
+        corrupt["destination"] = "CN"
+        with self.assertRaisesRegex(ValueError, "kcs_alert_wrong_period_or_destination"):
+            w.validate_korea_export_snapshot(corrupt, "2026-09")
+
+    def test_export_upgrade_one_time_and_same_workflow_state(self):
+        from copy import deepcopy
+        state = deepcopy(w.KOREA_EXPORT_BASELINE)
+        state.update({
+            "baseline_notified": True,
+            "last_status": "verified",
+            "latest_official_us_month": "2026-09",
+            "official_us_by_month": self.official_sample(),
+        })
+        events = []
+        w.schedule_korea_export_layout_upgrade(state, events)
+        self.assertEqual(events, [{"kind": "official_us_format_upgrade", "month": "2026-09"}])
+        self.assertEqual(state["alert_layout_version"], 2)
+        later = []
+        w.schedule_korea_export_layout_upgrade(state, later)
+        self.assertEqual(later, [])
+        new = deepcopy(state)
+        new.pop("alert_layout_version")
+        present = [{"kind": "official_us_month", "month": "2026-09"}]
+        w.schedule_korea_export_layout_upgrade(new, present)
+        self.assertEqual([x["kind"] for x in present], ["official_us_month"])
+        self.assertEqual(new["alert_layout_version"], 2)
+
+    def test_export_no_rate_never_invents_krw(self):
+        with mock.patch.object(w, "usdkrw_rate", return_value=(None, "")):
+            msg = w.korea_export_readable_alert(
+                {"kind": "official_us_month", "month": "2026-09"},
+                {"official_us_by_month": self.official_sample()},
+                {},
+            )
+        self.assertIn("원화 환산: 환율 원자료 조회 실패로 생략", msg)
+        self.assertNotIn("약 2,681억원", msg)
+
+    def test_missing_destination_code_cannot_be_misclassified_as_us(self):
+        xml = self._response("850423")
+        xml = xml.replace(b"<statCd>US</statCd>", b"")
+        with self.assertRaises(LookupError):
+            w.parse_korea_kcs_hs6_response(xml, "850423", "202609")
+
     def test_fetched_usa_customs_month_alert_once(self):
         now = datetime(2026, 10, 9, 19, 0, tzinfo=ZoneInfo("Asia/Seoul"))
         def fake_fetch(hs, ym, country="US"):

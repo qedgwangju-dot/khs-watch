@@ -36,6 +36,7 @@ UA = "Mozilla/5.0 (compatible; khs-watch/1.1; +https://github.com/qedgwangju-dot
 # article basket is not the same as the U.S. all-liquid 850421/22/23 basket.
 KOREA_EXPORT_VERSION = 1
 KOREA_EXPORT_FETCH_REVISION = 3
+KOREA_EXPORT_ALERT_LAYOUT_VERSION = 2
 KOREA_EXPORT_HS6 = ("850422", "850423", "850434")
 KOREA_EXPORT_REFERENCE = {
     "month": "2026-09",
@@ -1055,7 +1056,7 @@ def parse_korea_kcs_hs6_response(xml_bytes: bytes, hs6: str, ym: str, country: s
         h = (item.findtext("hsCd") or "").strip().replace(".", "")
         period = (item.findtext("year") or "").strip().replace(".", "").replace("-", "")
         cty = (item.findtext("statCd") or "").strip().upper()
-        if not h.startswith(hs6) or period != ym or (cty and cty != country):
+        if not h.startswith(hs6) or period != ym or cty != country:
             continue
         if len(h) not in (6, 10):
             continue
@@ -1277,6 +1278,7 @@ def update_korea_export_watch(now: datetime, previous: dict) -> tuple[dict, list
             y, m = month_shift(now.year, now.month, -1)
             events.append({"kind": "kcs_access_blocker", "month": month_key(y, m)})
         record_kcs_connection_recovery(now, latest, events)
+        schedule_korea_export_layout_upgrade(latest, events)
         return latest, events
     latest["last_checked_at_kst"] = now.isoformat(timespec="seconds")
     if not key_available:
@@ -1348,10 +1350,222 @@ def update_korea_export_watch(now: datetime, previous: dict) -> tuple[dict, list
         latest["connection_restored_notified"] = False
         events.append({"kind": "kcs_access_blocker", "month": month_key(y, m)})
     record_kcs_connection_recovery(now, latest, events)
+    schedule_korea_export_layout_upgrade(latest, events)
     return latest, events
 
 
+
+def validate_korea_export_snapshot(snapshot: dict, expected_month: str) -> None:
+    """Require one exact U.S./HS basket and lossless by-HS totals before display."""
+    if not isinstance(snapshot, dict):
+        raise ValueError("kcs_alert_snapshot_missing")
+    if snapshot.get("month") != expected_month or snapshot.get("destination") != "US":
+        raise ValueError("kcs_alert_wrong_period_or_destination")
+    if snapshot.get("hs_codes") != list(KOREA_EXPORT_HS6):
+        raise ValueError("kcs_alert_wrong_hs_basket")
+    by_hs = snapshot.get("by_hs") or {}
+    if set(by_hs) != set(KOREA_EXPORT_HS6):
+        raise ValueError("kcs_alert_incomplete_hs_data")
+    dollars = snapshot.get("export_usd")
+    kg = snapshot.get("net_weight_kg")
+    if type(dollars) is not int or type(kg) is not int or dollars <= 0 or kg <= 0:
+        raise ValueError("kcs_alert_invalid_total")
+    for code in KOREA_EXPORT_HS6:
+        piece = by_hs[code]
+        if not isinstance(piece, dict):
+            raise ValueError("kcs_alert_invalid_hs_row")
+        for key in ("usd", "kg"):
+            if type(piece.get(key)) is not int or piece[key] < 0:
+                raise ValueError("kcs_alert_invalid_hs_row")
+    if sum(by_hs[c]["usd"] for c in KOREA_EXPORT_HS6) != dollars:
+        raise ValueError("kcs_alert_value_sum_mismatch")
+    if sum(by_hs[c]["kg"] for c in KOREA_EXPORT_HS6) != kg:
+        raise ValueError("kcs_alert_weight_sum_mismatch")
+    avg = snapshot.get("average_usd_per_kg")
+    if avg is not None and abs(float(avg) - dollars / kg) > 0.000001:
+        raise ValueError("kcs_alert_unit_value_mismatch")
+
+
+def korea_export_tonnes(kg: int) -> str:
+    return f"{kg / 1000:,.3f}톤"
+
+
+def korea_export_dollars(usd: int, rate: float | None) -> str:
+    """Two-decimal million-USD display; KRW only when exchange rate was fetched."""
+    if type(usd) is not int or usd < 0:
+        raise ValueError("kcs_alert_invalid_usd")
+    label = f"{usd / 1_000_000:,.2f}백만달러"
+    if rate is not None:
+        label += f"(약 {usd * rate / 100_000_000:,.0f}억원)"
+    return label
+
+
+def korea_export_direction(delta: float, growth_pct: float, unit_text: str) -> str:
+    if delta > 0:
+        return f"{unit_text} 증가 (+{growth_pct:.1f}%)"
+    if delta < 0:
+        return f"{unit_text} 감소 ({growth_pct:.1f}%)"
+    return f"{unit_text} 변동 없음 (0.0%)"
+
+
+def korea_export_readable_alert(event: dict, data: dict, us_imports: dict) -> str:
+    month = str(event.get("month") or "")
+    history = data.get("official_us_by_month") or {}
+    current = history.get(month)
+    validate_korea_export_snapshot(current, month)
+    y, m = map(int, month.split("-"))
+    py, pm = month_shift(y, m, -1)
+    yy, ym = month_shift(y, m, -12)
+    prev_month, year_month = month_key(py, pm), month_key(yy, ym)
+    prev, last_year = history.get(prev_month), history.get(year_month)
+    if prev is not None:
+        validate_korea_export_snapshot(prev, prev_month)
+    if last_year is not None:
+        validate_korea_export_snapshot(last_year, year_month)
+
+    rate, rate_day = usdkrw_rate()
+    lines = [
+        f"<b>한국→미국 변압기 수출 | {y}년 {m}월</b>",
+        "관세청 미국향 통관 원자료 · HS 850422·850423·850434",
+        "",
+        "<b>1. 수출 중량(순중량)</b>",
+        f"이번 달: <b>{korea_export_tonnes(current['net_weight_kg'])}</b> ({current['net_weight_kg']:,}kg)",
+    ]
+    if prev:
+        diff = current["net_weight_kg"] - prev["net_weight_kg"]
+        change = (current["net_weight_kg"] / prev["net_weight_kg"] - 1) * 100
+        lines += [
+            f"전월 {korea_export_tonnes(prev['net_weight_kg'])} → 이번 달 {korea_export_tonnes(current['net_weight_kg'])}",
+            "<b>전월보다 " + korea_export_direction(
+                diff, change, korea_export_tonnes(abs(diff))
+            ) + "</b>",
+        ]
+    else:
+        lines.append("전월 중량 증감: 비교 원자료 미확인")
+    if last_year:
+        diff = current["net_weight_kg"] - last_year["net_weight_kg"]
+        change = (current["net_weight_kg"] / last_year["net_weight_kg"] - 1) * 100
+        lines.append(
+            f"전년동월 {korea_export_tonnes(last_year['net_weight_kg'])} 대비 <b>"
+            + korea_export_direction(diff, change, korea_export_tonnes(abs(diff)))
+            + "</b>"
+        )
+    else:
+        lines.append("전년동월 중량 증감: 비교 원자료 미확인")
+
+    lines += [
+        "",
+        "<b>2. 수출금액(FOB)</b>",
+        "이번 달: <b>" + korea_export_dollars(current["export_usd"], rate) + "</b>",
+    ]
+    if prev:
+        diff = current["export_usd"] - prev["export_usd"]
+        change = (current["export_usd"] / prev["export_usd"] - 1) * 100
+        lines += [
+            f"전월 {korea_export_dollars(prev['export_usd'], rate)} → 이번 달 {korea_export_dollars(current['export_usd'], rate)}",
+            "<b>전월보다 " + korea_export_direction(
+                diff, change, korea_export_dollars(abs(diff), rate)
+            ) + "</b>",
+        ]
+    else:
+        lines.append("전월 금액 증감: 비교 원자료 미확인")
+    if last_year:
+        diff = current["export_usd"] - last_year["export_usd"]
+        change = (current["export_usd"] / last_year["export_usd"] - 1) * 100
+        lines.append(
+            f"전년동월 {korea_export_dollars(last_year['export_usd'], rate)} 대비 <b>"
+            + korea_export_direction(diff, change, korea_export_dollars(abs(diff), rate))
+            + "</b>"
+        )
+    else:
+        lines.append("전년동월 금액 증감: 비교 원자료 미확인")
+
+    lines += ["", "<b>3. 중량당 수출금액</b>"]
+    cur_unit = current["export_usd"] / current["net_weight_kg"]
+    if prev:
+        prior_unit = prev["export_usd"] / prev["net_weight_kg"]
+        d = cur_unit - prior_unit
+        pct = (cur_unit / prior_unit - 1) * 100
+        lines.append(
+            f"전월 {prior_unit:.2f} → 이번 달 {cur_unit:.2f}달러/kg · "
+            + korea_export_direction(d, pct, f"{abs(d):.2f}달러/kg")
+        )
+    if last_year:
+        prior_unit = last_year["export_usd"] / last_year["net_weight_kg"]
+        d = cur_unit - prior_unit
+        pct = (cur_unit / prior_unit - 1) * 100
+        lines.append(
+            f"전년동월 {prior_unit:.2f} → 이번 달 {cur_unit:.2f}달러/kg · "
+            + korea_export_direction(d, pct, f"{abs(d):.2f}달러/kg")
+        )
+    lines.append("※ 중량당 금액은 품목 혼합의 영향을 받으며 개별 계약단가가 아님.")
+
+    if prev:
+        lines += ["", "<b>4. 품목별 전월 수출 중량·금액 변화</b>"]
+        names = {
+            "850422": "액체절연 중형",
+            "850423": "액체절연 10,000kVA 초과",
+            "850434": "기타 500kVA 초과",
+        }
+        for code in KOREA_EXPORT_HS6:
+            a, b = current["by_hs"][code], prev["by_hs"][code]
+            kg_diff, usd_diff = a["kg"] - b["kg"], a["usd"] - b["usd"]
+            kg_change = (a["kg"] / b["kg"] - 1) * 100 if b["kg"] > 0 else None
+            kg_view = (korea_export_direction(kg_diff, kg_change, korea_export_tonnes(abs(kg_diff)))
+                       if kg_change is not None else "전월 분모 0으로 증감률 계산 불가")
+            usd_change = (a["usd"] / b["usd"] - 1) * 100 if b["usd"] > 0 else None
+            usd_view = (korea_export_direction(usd_diff, usd_change, korea_export_dollars(abs(usd_diff), rate))
+                        if usd_change is not None else "전월 분모 0으로 증감률 계산 불가")
+            lines += [
+                f"HS {code} ({names[code]})",
+                f"  중량 {kg_view} / 금액 {usd_view}",
+            ]
+    us_period = str(us_imports.get("latest_month") or "미확인")
+    lines += [
+        "",
+        "• 이 통계는 순중량이지 변압기 대수·정격용량·기업별 매출이 아닙니다.",
+        "• 미국 수입통계 최신월: " + html.escape(us_period)
+        + ". 관세청 FOB와 미국 원산지별 수입은 기간·평가·범위가 달라 직접 대조하지 않습니다.",
+        "• 기업 실적: HD현대일렉트릭·효성중공업·LS ELECTRIC의 "
+        "수주→납품→검수→매출인식→현금회수를 별도 추적합니다. 미국 현지 생산은 국내 수출에서 제외됩니다.",
+        "• 실패 가능성(6~12개월): 공장 증설·시험·인증·검수 지연으로 "
+        "수주 증가가 실제 출하·마진으로 이어지지 않는 경우.",
+        f'• <a href="{KOREA_EXPORT_API_DOC}">관세청 API</a>'
+        f' / <a href="{html.escape(str((data.get("reference") or KOREA_EXPORT_REFERENCE).get("source_url") or ""), quote=True)}">보도 원문(집계범위 별도)</a>',
+    ]
+    if rate is not None:
+        lines.append(f"• 원화 환산: 1달러={rate:,.2f}원 ({html.escape(rate_day)} 기준)")
+    else:
+        lines.append("• 원화 환산: 환율 원자료 조회 실패로 생략")
+    message = "\n".join(lines).strip() + "\n"
+    if len(message) > 3400:
+        raise ValueError("kcs_alert_message_too_long")
+    return message
+
+
+def schedule_korea_export_layout_upgrade(state: dict, events: list[dict]) -> None:
+    """A single reformatted notice only; never reinterpret the first official release."""
+    if int(state.get("alert_layout_version") or 0) >= KOREA_EXPORT_ALERT_LAYOUT_VERSION:
+        return
+    if state.get("last_status") != "verified":
+        return
+    month = str(state.get("latest_official_us_month") or "")
+    if month != "2026-09":
+        return
+    if any(e.get("kind") in ("official_us_month", "official_us_revision") for e in events):
+        state["alert_layout_version"] = KOREA_EXPORT_ALERT_LAYOUT_VERSION
+        return
+    history = state.get("official_us_by_month") or {}
+    if month not in history:
+        return
+    validate_korea_export_snapshot(history[month], month)
+    state["alert_layout_version"] = KOREA_EXPORT_ALERT_LAYOUT_VERSION
+    events.append({"kind": "official_us_format_upgrade", "month": month})
+
+
 def build_korea_export_alert(event: dict, data: dict, us_imports: dict) -> str:
+    if event.get("kind") in ("official_us_month", "official_us_revision", "official_us_format_upgrade"):
+        return korea_export_readable_alert(event, data, us_imports)
     if event.get("kind") == "kcs_connection_restored":
         months = sorted((data.get("official_us_by_month") or {}).keys())
         verified = ", ".join(months[-3:]) if months else "없음"
