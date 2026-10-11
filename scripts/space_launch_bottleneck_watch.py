@@ -369,6 +369,12 @@ def event_signature(category: Category, item: dict) -> str:
 def corroborated(category: Category, item: dict, peers: Iterable[dict]) -> bool:
     if source_is_official(item):
         return True
+    if category.key == "falcon_transition":
+        title = normalized_title(item.get("title", ""))
+        # Retirement and immediate cancellation are consequential claims:
+        # two mirrored news headlines cannot substitute for NASA, SEC or SpaceX.
+        if re.search(r"retir|phase.?out|discontinu|cancell?ed", title, re.I):
+            return False
     if not source_is_trusted(item):
         return False
     sig = event_signature(category, item)
@@ -629,6 +635,13 @@ def self_test() -> int:
     assert event_signature(category, {"title": "NASA Crew-15 Dragon Falcon 9", "description": "", "source": "NASA"}) == "nasa_dragon"
     assert event_signature(category, {"title": "Falcon 9 Starship phaseout", "description": "", "source": "Reuters"}) == "falcon_transition"
     assert "falcon_transition" in [x.key for x in CATEGORIES]
+    rumor = {"title": "SpaceX will retire Dragon and Falcon 9 immediately",
+             "description": "", "source": "Reuters", "source_url": "https://reuters.com"}
+    rumor_2 = {"title": "SpaceX to discontinue Dragon Falcon 9 at once",
+               "description": "", "source": "CNBC", "source_url": "https://cnbc.com"}
+    assert not corroborated(category, rumor, [rumor, rumor_2])
+    official = dict(rumor, source="NASA", source_url="https://www.nasa.gov")
+    assert corroborated(category, official, [official])
     print("space_launch_transition_self_test=ok official_nasa_contract_2030=1 no_early_retirement=1 initial_news_suppressed=1")
     return 0
 
