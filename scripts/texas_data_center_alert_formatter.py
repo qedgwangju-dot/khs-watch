@@ -6,7 +6,7 @@ import re
 import urllib.request
 
 from bs4 import BeautifulSoup
-from deep_translator import GoogleTranslator
+from texas_data_center_watch import translate_to_korean
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 IN_PATH = ROOT / "out" / "texas_data_center_watch_alert.json"
@@ -50,16 +50,20 @@ def clean(value):
 
 
 def ko(text):
-    text = clean(text)
-    if not text:
+    # Legacy payloads use the same paced, validated, fail-closed translator.
+    return translate_to_korean(clean(text))
+
+
+def translated_field(event, field):
+    if not clean(event.get(field)):
         return ""
-    if re.search(r"[가-힣]", text) and not re.search(r"[A-Za-z]{5,}", text):
-        return text
-    try:
-        out = GoogleTranslator(source="auto", target="ko").translate(text)
-        return clean(out) or text
-    except Exception:
-        return text
+    translated_key = f"{field}_ko"
+    if translated_key not in event:
+        return ko(event.get(field, ""))
+    translated = clean(event[translated_key])
+    if not re.search(r"[가-힣]", translated):
+        raise RuntimeError(f"한국어 번역 실패: invalid {translated_key}")
+    return translated
 
 
 def company_ko(name):
@@ -186,8 +190,8 @@ def classify(event):
 
 def generic_message(event):
     kind, direction, meaning = classify(event)
-    title_ko = ko(event.get("title", ""))
-    detail_ko = ko(event.get("detail", ""))
+    title_ko = translated_field(event, "title")
+    detail_ko = translated_field(event, "detail")
     if len(detail_ko) > 320:
         detail_ko = detail_ko[:317].rstrip() + "…"
     lines = [
@@ -221,3 +225,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

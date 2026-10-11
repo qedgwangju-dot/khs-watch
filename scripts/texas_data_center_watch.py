@@ -10,17 +10,25 @@ import time
 import urllib.parse
 import urllib.request
 from dataclasses import dataclass
+from functools import lru_cache
 from zoneinfo import ZoneInfo
 
 import certifi
+import requests
 from bs4 import BeautifulSoup
-from deep_translator import GoogleTranslator
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 STATE_PATH = ROOT / "data" / "texas_data_center_watch_state.json"
 OUT_DIR = ROOT / "out"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 SOURCE_VERSION = 1
+
+# Stay comfortably below the provider's per-second request limit. Retry delays
+# are bounded, and apply only before another attempt, never after exhaustion.
+TRANSLATION_MIN_INTERVAL = 1.0
+TRANSLATION_RETRY_DELAYS = (5, 15, 30)
+TRANSLATION_HTTP_TIMEOUT = (5, 15)  # connect timeout, read timeout in seconds
+_translation_last_request_at = None
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (compatible; KHS-Texas-DC-Watch/1.0; +https://github.com/qedgwangju-dot/khs-watch)",
@@ -211,6 +219,24 @@ def summarize_detail(body):
     return " / ".join(snippets)[:1200]
 
 
+def _request_google_translation(text):
+    # deep-translator's Google wrapper does not pass through an HTTP timeout.
+    # Own this small transport boundary instead of changing requests globally.
+    if len(text) >= 5000:
+        raise ValueError("translation input must be shorter than 5000 characters")
+    with requests.get(
+        "https://translate.google.com/m",
+        params={"sl": "auto", "tl": "ko", "q": text},
+        timeout=TRANSLATION_HTTP_TIMEOUT,
+    ) as response:
+        response.raise_for_status()
+        soup = BeautifulSoup(response.text, "html.parser")
+    element = soup.select_one("div.t0, div.result-container")
+    if element is None:
+        raise RuntimeError("translation response missing text")
+    return element.get_text(" ", strip=True)
+
+
 def translate_to_korean(text):
     text = clean(text)
     if not text:
@@ -219,17 +245,35 @@ def translate_to_korean(text):
     if re.search(r"[가-힣]", text) and not re.search(r"[A-Za-z]{4,}", text):
         return text
 
+    return _translate_clean_text(text)
+
+
+@lru_cache(maxsize=512)
+def _translate_clean_text(text):
+    # Cache only validated successes. Exceptions are not cached, so an event
+    # remains retryable after a temporary provider outage or invalid response.
+    global _translation_last_request_at
+
     last = None
-    for attempt in range(3):
+    for attempt in range(len(TRANSLATION_RETRY_DELAYS) + 1):
+        if _translation_last_request_at is not None:
+            wait = TRANSLATION_MIN_INTERVAL - (time.monotonic() - _translation_last_request_at)
+            if wait > 0:
+                time.sleep(wait)
         try:
-            translated = GoogleTranslator(source="auto", target="ko").translate(text)
+            translated = _request_google_translation(text)
             translated = clean(translated)
             if translated and re.search(r"[가-힣]", translated):
                 return translated
             last = RuntimeError("translation returned no Korean text")
         except Exception as exc:
             last = exc
-        time.sleep(2 ** attempt)
+        finally:
+            # Pace from completion, including failed requests, rather than
+            # allowing an immediate new request after a fast provider failure.
+            _translation_last_request_at = time.monotonic()
+        if attempt < len(TRANSLATION_RETRY_DELAYS):
+            time.sleep(TRANSLATION_RETRY_DELAYS[attempt])
     # Fail closed: never send the original English alert when translation failed.
     raise RuntimeError(f"한국어 번역 실패: {last}")
 
@@ -396,7 +440,13 @@ def main():
     seen = set((state or {}).get("seen_keys", []))
     new_events = [] if rebaseline else [e for e in events if e.key not in seen]
 
-    merged_seen = list(dict.fromkeys(current_keys + list(seen)))[:2000]
+    # Only the first ten new events can be included in this delivery. Keep any
+    # surplus unseen so the next successful run can deliver the remaining batch.
+    delivered_keys = {e.key for e in new_events[:10]}
+    acknowledged_keys = current_keys if rebaseline else [
+        key for key in current_keys if key in seen or key in delivered_keys
+    ]
+    merged_seen = list(dict.fromkeys(acknowledged_keys + (state or {}).get("seen_keys", [])))[:2000]
     pending = {
         "source_version": SOURCE_VERSION,
         "last_checked_kst": checked_at.isoformat(timespec="seconds"),
@@ -419,9 +469,18 @@ def main():
         # Translation happens before the state is persisted. If translation fails, the run fails
         # and the event remains unseen so it can be retried instead of sending English text.
         alert_text = format_alert(new_events, checked_at)
+        alert_events = []
+        for idx, event in enumerate(new_events):
+            item = dict(event.__dict__)
+            if idx < 10:
+                # Reuse the validated cache and carry these translations across
+                # the process boundary to the Telegram formatter.
+                item["title_ko"] = translate_to_korean(event.title)
+                item["detail_ko"] = translate_to_korean(event.detail)
+            alert_events.append(item)
         (OUT_DIR / "texas_data_center_watch_alert.md").write_text(alert_text, encoding="utf-8")
         (OUT_DIR / "texas_data_center_watch_alert.json").write_text(
-            json.dumps([e.__dict__ for e in new_events], ensure_ascii=False, indent=2) + "\n",
+            json.dumps(alert_events, ensure_ascii=False, indent=2) + "\n",
             encoding="utf-8",
         )
 
@@ -446,3 +505,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

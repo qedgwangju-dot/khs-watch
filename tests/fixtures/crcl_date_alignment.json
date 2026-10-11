@@ -1,0 +1,42 @@
+{
+  "updated_at_kst": "2026-10-06T06:58:13+09:00",
+  "circle": {
+    "date": "2026-09-24",
+    "circulation_usd_b": 75.2,
+    "_previous_distinct": {
+      "date": "2026-09-21",
+      "circulation_usd_b": 74.6
+    }
+  },
+  "usdxx": {
+    "date": "2026-10-05",
+    "sec_yield_7d": 3.82,
+    "_previous_distinct": {
+      "date": "2026-10-02",
+      "sec_yield_7d": 3.83
+    }
+  },
+  "sofr": {
+    "date": "2026-09-24",
+    "rate": 3.89,
+    "daily_bp": 1.0
+  },
+  "treasury": {
+    "date": "2026-09-25",
+    "three_month": 4.22,
+    "ten_year": 5.17,
+    "prev_ten_year": 5.18,
+    "daily_3m_bp": 3.0,
+    "daily_10y_bp": -1.0
+  },
+  "crcl": {
+    "date": "2026-09-28",
+    "close": 85.74,
+    "daily_pct": -3.6
+  },
+  "tbx": {
+    "date": "2026-09-28",
+    "daily_pct": 0.74
+  },
+  "errors": []
+}

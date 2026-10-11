@@ -1,3 +1,4 @@
+import datetime as dt
 import importlib.util
 import pathlib
 import unittest
@@ -68,7 +69,13 @@ class ClarityAlertReadabilityTest(unittest.TestCase):
                 "detail": "The Securities and Exchange Commission today proposed new rules and amendments to provide a tailored framework for the custody of crypto assets for registered investment advisers and regulated funds.",
             },
         ]
-        filtered = MOD.FMT.filter_alertable_events(events)
+        # This historical custody fixture must be evaluated at its observation time.
+        observed_at = dt.datetime(2026, 10, 2, tzinfo=dt.timezone.utc)
+        filtered = MOD.FMT.filter_alertable_events(events, now=observed_at)
+        self.assertEqual(
+            MOD.FMT.filter_alertable_events(events, now=observed_at + dt.timedelta(days=8)),
+            [],
+        )
         self.assertEqual(len(filtered), 1)
         rendered = "\n".join(MOD.build_readable(filtered))
         self.assertEqual(rendered.count("<b>1. "), 1)
@@ -287,3 +294,4 @@ class ClarityAlertReadabilityTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+

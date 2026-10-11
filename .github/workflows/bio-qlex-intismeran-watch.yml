@@ -2,6 +2,7 @@ name: Bio QLEX, Intismeran, Jemperli, Enhertu & Halozyme PTAB Telegram Watch
 
 on:
   push:
+    branches: [main]
     paths:
       - ".github/workflows/bio-qlex-intismeran-watch.yml"
       - "scripts/bio_single_runner.py"
@@ -254,3 +255,4 @@ jobs:
 # reliability trigger: Halozyme two-patent final decisions 2026-09-27
 
 # final timeline verification trigger 2026-09-27
+

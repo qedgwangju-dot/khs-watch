@@ -18,9 +18,22 @@ ALLOWED_IDENTIFIERS = (
     'AZUR-1', 'AZUR-2', 'AZUR-4', 'DOMENICA', 'JADE', 'INTerpath-001', 'INTerpath-014',
     'KEYNOTE-942', 'HER2', 'dMMR', 'MSI-H', 'sBLA', 'RFS', 'DMFS', 'OS', 'HR', 'PFS',
     'ORR', 'cCR12', 'mRNA', 'SC', 'IV', 'THP', 'WAC', 'QoQ', 'YoY', 'USD', 'KRW',
+    # optogenetics_translation_watch의 실제 회사·제품·임상 식별자만 허용한다.
+    # RTx 같은 접두어나 임의의 대문자 단어를 포괄적으로 허용하지 않는다.
+    'Ray Therapeutics', 'Nanoscope Therapeutics', 'GenSight Biologics',
+    'Bionic Sight', 'Augelux Therapeutics', 'Restore Vision',
+    'MapLight Therapeutics', 'MapLight', 'MPLT', 'Bruker', 'Inscopix',
+    'MOGENRY', 'MCO-010', 'RTx-015', 'RTx-021', 'GS030', 'BS01', 'ZM-02', 'RV-001',
+    'RTx-021/AURORA', 'MCO-010 RESTORE', 'MCO-010 STARLIGHT', 'ZM-02/MOON', 'ZM-02/PRISM',
+    'ML-007C-MA', 'ML-004', 'ML-009', 'ML-055', 'ML-021', 'VISTA', 'ZEPHYR-2',
+    'BLA', 'IND', 'CRL', 'PMDA', 'RMAT', 'PRIME', 'EOP2', 'NDA', 'CMC', 'cGMP',
+    'CNS', 'BCI', 'DBS', 'RSS', 'jRCT',
 )
 
 COMMON_REPLACEMENTS = (
+    (r'\boptogenetics\b', '광유전학'),
+    (r'\bopsin\b', '옵신'),
+    (r'\bFast Track\b', '신속심사'),
     (r'\bNational Priority Voucher program\b', '국가 우선 바우처 프로그램'),
     (r'\bNational Priority Voucher\b', '국가 우선 바우처'),
     (r'\bCommissioner[’\']s National Priority Voucher\b', '미국 FDA 국가 우선 바우처'),
@@ -71,11 +84,17 @@ def apply_common_replacements(text: str) -> str:
     return out
 
 
+def identifier_pattern(identifier: str) -> re.Pattern[str]:
+    # ASCII 경계는 한글 조사 앞에서는 식별자를 허용하지만 영어 단어 내부는
+    # 허용하지 않는다. 예: FDA가 보존되고 cost 안의 OS는 제거되지 않는다.
+    return re.compile(r'(?<![A-Za-z0-9_])' + re.escape(identifier) + r'(?![A-Za-z0-9_])', re.I)
+
+
 def protect_identifiers(text: str) -> tuple[str, dict[str, str]]:
     protected = text
     mapping: dict[str, str] = {}
     for index, identifier in enumerate(sorted(ALLOWED_IDENTIFIERS, key=len, reverse=True)):
-        pattern = re.compile(re.escape(identifier), re.I)
+        pattern = identifier_pattern(identifier)
         if not pattern.search(protected):
             continue
         marker = f'【고유명{index}】'
@@ -118,7 +137,7 @@ def translate_to_korean(text: str) -> str:
 def scrub_identifiers(text: str) -> str:
     out = text
     for identifier in sorted(ALLOWED_IDENTIFIERS, key=len, reverse=True):
-        out = re.sub(re.escape(identifier), '', out, flags=re.I)
+        out = identifier_pattern(identifier).sub('', out)
     out = re.sub(r'https?://\S+', '', out)
     out = re.sub(r'\bNCT\d+\b', '', out, flags=re.I)
     return out
@@ -176,3 +195,4 @@ def main() -> int:
 
 if __name__ == '__main__':
     raise SystemExit(main())
+

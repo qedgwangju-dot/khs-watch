@@ -2,10 +2,12 @@ name: Texas Data Center Watch Telegram
 
 on:
   push:
+    branches: [main]
     paths:
       - ".github/workflows/texas-data-center-watch-telegram.yml"
       - "scripts/texas_data_center_watch.py"
       - "scripts/texas_data_center_alert_formatter.py"
+      - "tests/test_texas_translation_regressions.py"
       - "data/texas_data_center_watch_state.json"
   schedule:
     # GitHub cron is UTC. Hourly at :07 to avoid top-of-hour congestion.
@@ -37,7 +39,10 @@ jobs:
           python-version: "3.12"
 
       - name: Install parser and Korean translation dependencies
-        run: python -m pip install --disable-pip-version-check beautifulsoup4 deep-translator certifi
+        run: python -m pip install --disable-pip-version-check beautifulsoup4 requests certifi
+
+      - name: Run offline translation regression tests
+        run: python -m unittest discover -s tests -p 'test_texas_translation_regressions.py'
 
       - name: Validate Telegram route without sending
         env:
@@ -225,3 +230,4 @@ jobs:
             out/texas_data_center_watch_telegram_confirmed.json
           if-no-files-found: ignore
           retention-days: 14
+

@@ -1,0 +1,42 @@
+name: Alert repair offline regressions
+on:
+  pull_request:
+    paths:
+      - 'scripts/bio_korean_guard.py'
+      - 'scripts/texas_data_center*.py'
+      - 'scripts/lng_supply_crisis_alert_v34.py'
+      - 'scripts/run_alert_regressions_offline.py'
+      - 'tests/test_bio_alert_regressions.py'
+      - 'tests/test_texas_translation_regressions.py'
+      - 'tests/test_clarity*.py'
+      - 'tests/test_crcl_validation_regression.py'
+      - 'tests/test_lng_parser_clock_regression.py'
+      - 'tests/fixtures/crcl_date_alignment.json'
+      - '.github/workflows/alert-repair-offline-regressions.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/bio_korean_guard.py'
+      - 'scripts/texas_data_center*.py'
+      - 'scripts/lng_supply_crisis_alert_v34.py'
+      - 'scripts/run_alert_regressions_offline.py'
+      - 'tests/test_bio_alert_regressions.py'
+      - 'tests/test_texas_translation_regressions.py'
+      - 'tests/test_clarity*.py'
+      - 'tests/test_crcl_validation_regression.py'
+      - 'tests/test_lng_parser_clock_regression.py'
+      - 'tests/fixtures/crcl_date_alignment.json'
+      - '.github/workflows/alert-repair-offline-regressions.yml'
+permissions:
+  contents: read
+jobs:
+  offline-regressions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install beautifulsoup4 requests certifi deep-translator
+      - run: python scripts/run_alert_regressions_offline.py

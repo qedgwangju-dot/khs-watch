@@ -2,6 +2,7 @@ name: CLARITY Watch Telegram
 
 on:
   push:
+    branches: [main]
     paths:
       - ".github/workflows/clarity-watch-telegram.yml"
       - "scripts/clarity_watch.py"
