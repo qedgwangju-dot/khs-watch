@@ -18,6 +18,7 @@ import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 from collections import defaultdict
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from email.utils import parsedate_to_datetime
 from urllib.parse import urlparse
 from zoneinfo import ZoneInfo
@@ -336,37 +337,129 @@ def classify(row: dict) -> list[dict]:
     return out
 
 
+def provider_feeds() -> list[tuple[str, str, str]]:
+    """Search engines plus origin-published RSS feeds, none a single point of failure."""
+    tasks = [
+        ("google", "en", "Apple M8 Ultra enterprise server NVLink Fusion"),
+        ("google", "ko", "애플 M8 Ultra 기업 서버 메모리"),
+        ("bing_news", "en", '"Apple" "M8 Ultra" server'),
+        ("bing_news", "en", '"Apple" "NVLink Fusion"'),
+        ("bing_news", "en", '"Apple" HBM server supplier contract'),
+        ("bing_news", "ko", '애플 M8 서버 엔비디아'),
+        ("bing_web", "en", '"Apple" "M8 Ultra" enterprise server'),
+        ("bing_web", "en", '"Apple" "NVLink Fusion" server'),
+        ("bing_web", "en", 'Apple enterprise server HBM memory orders'),
+        ("direct_nvidia", "en", "https://blogs.nvidia.com/feed/"),
+        ("direct_nvidia_news", "en", "https://nvidianews.nvidia.com/releases.xml"),
+        ("direct_macrumors", "en", "https://www.macrumors.com/macrumors.xml"),
+    ]
+    return tasks
+
+
+def _provider_url(provider: str, locale: str, query: str) -> str:
+    if provider == "google":
+        return rss_url(locale, query)
+    if provider == "bing_news":
+        return "https://www.bing.com/news/search?" + urllib.parse.urlencode({
+            "q": query, "format": "rss", "count": "12",
+        })
+    if provider == "bing_web":
+        return "https://www.bing.com/search?" + urllib.parse.urlencode({
+            "q": query, "format": "rss",
+        })
+    if provider.startswith("direct_"):
+        return query
+    raise ValueError(f"Unknown provider: {provider}")
+
+
+def _feed_task(task: tuple[str, str, str]) -> tuple[str, list[dict], str | None]:
+    provider, locale, query = task
+    url = _provider_url(provider, locale, query)
+    try:
+        req = urllib.request.Request(url, headers={
+            "User-Agent": "Mozilla/5.0 (compatible; RSS reader; Apple-AI-server-watch/2)",
+            "Accept": "application/rss+xml,application/xml,text/xml,*/*",
+        })
+        with urllib.request.urlopen(req, timeout=12) as response:
+            data = response.read(2_500_000)
+        root = ET.fromstring(data)
+        now = dt.datetime.now(KST)
+        cutoff = now - dt.timedelta(days=12)
+        entries = root.findall(".//item")
+        if not entries:
+            # Atom feeds are tolerated without assuming RSS channel metadata.
+            entries = root.findall(".//{http://www.w3.org/2005/Atom}entry")
+        parsed = []
+        default_source = {
+            "direct_nvidia": ("NVIDIA Blog", "https://blogs.nvidia.com"),
+            "direct_nvidia_news": ("NVIDIA", "https://nvidianews.nvidia.com"),
+            "direct_macrumors": ("MacRumors", "https://www.macrumors.com"),
+        }.get(provider, ("", ""))
+        for entry in entries:
+            title = clean(entry.findtext("title") or entry.findtext("{http://www.w3.org/2005/Atom}title"))
+            link = clean(entry.findtext("link"))
+            if not link:
+                atomlink = entry.find("{http://www.w3.org/2005/Atom}link")
+                link = atomlink.get("href", "") if atomlink is not None else ""
+            pub = (entry.findtext("pubDate") or entry.findtext("published") or
+                   entry.findtext("{http://www.w3.org/2005/Atom}published") or
+                   entry.findtext("{http://www.w3.org/2005/Atom}updated"))
+            published = dateparse(pub)
+            # Atom commonly uses a machine-readable ISO timestamp.
+            if not published and pub:
+                try:
+                    published=dt.datetime.fromisoformat(pub.replace("Z","+00:00")).astimezone(KST)
+                except Exception:
+                    pass
+            if not title or not link or not published or published < cutoff:
+                continue
+            source_node=entry.find("source")
+            source=clean(source_node.text if source_node is not None else "")
+            origin_url=source_node.get("url","") if source_node is not None else ""
+            if not source:
+                source=default_source[0]
+                origin_url=default_source[1]
+            if not source:
+                host=(urlparse(link).hostname or "").removeprefix("www.")
+                source=host or "검색출처미표시"
+                origin_url="https://"+host if host else ""
+            # Bing news often wraps the original link: keep real canonical target.
+            try:
+                parts=urllib.parse.urlparse(link)
+                if parts.hostname in ("www.bing.com","bing.com"):
+                    replacement=urllib.parse.parse_qs(parts.query).get("url",[])
+                    if replacement and replacement[0].startswith("https://"):
+                        link=replacement[0]
+            except Exception:
+                pass
+            summary=(entry.findtext("description") or entry.findtext("summary") or
+                     entry.findtext("{http://www.w3.org/2005/Atom}summary") or "")
+            parsed.append({
+                "title": title, "link": link, "description": clean(summary)[:1500],
+                "source": source, "source_url": origin_url,
+                "published": published.isoformat(timespec="seconds"),
+                "discovered_via": provider,
+            })
+        return provider, parsed, None
+    except Exception as exc:
+        return provider, [], f"{provider} {query[:35]}: {type(exc).__name__} {str(exc)[:100]}"
+
+
 def fetch_items() -> tuple[list[dict], list[str], int]:
-    now = dt.datetime.now(KST)
-    minimum = now - dt.timedelta(days=12)
-    collected, errors, ok = {}, [], 0
-    for locale, q in SEARCHES:
-        try:
-            request = urllib.request.Request(rss_url(locale, q),
-                      headers={"User-Agent": "Mozilla/5.0 (compatible; khs-apple-enterprise-watch/2.0)",
-                               "Accept": "application/rss+xml,application/xml,text/xml"})
-            with urllib.request.urlopen(request, timeout=16) as response:
-                data = response.read(2_000_000)
-            tree = ET.fromstring(data)
-            ok += 1
-            for item in tree.findall(".//item"):
-                title = clean(item.findtext("title"))
-                link = clean(item.findtext("link"))
-                published = dateparse(item.findtext("pubDate"))
-                publisher_node = item.find("source")
-                publisher = clean(publisher_node.text if publisher_node is not None else "")
-                source_url = publisher_node.get("url", "") if publisher_node is not None else ""
-                if not title or not link or not published or published < minimum:
-                    continue
-                rec = {
-                    "title": title, "link": link, "description": clean(item.findtext("description")),
-                    "source": publisher, "source_url": source_url,
-                    "published": published.isoformat(timespec="seconds"),
-                }
-                collected.setdefault(article_id(rec), rec)
-        except Exception as exc:
-            errors.append(f"{locale} {q[:38]}: {type(exc).__name__} {str(exc)[:100]}")
-    return sorted(collected.values(), key=lambda r: r["published"], reverse=True), errors, ok
+    tasks=provider_feeds()
+    collected, errors, successful = {}, [], 0
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        futures=[pool.submit(_feed_task, task) for task in tasks]
+        for future in as_completed(futures):
+            provider, rows, error = future.result()
+            if error:
+                errors.append(error)
+                continue
+            successful += 1
+            for row in rows:
+                collected.setdefault(article_id(row), row)
+    return sorted(collected.values(),key=lambda r:r["published"],reverse=True), errors, successful
+
 
 
 def load_state() -> dict:
@@ -499,7 +592,7 @@ def main() -> None:
     if successful < 2:
         STATUS.write_text("# 애플 AI 서버 감시\n\n- 데이터 원천 접속 실패: 정상 조회가 2곳 미만\n"
                           + "\n".join(errors) + "\n", encoding="utf-8")
-        raise RuntimeError(f"Insufficient RSS sources: {successful}/{len(SEARCHES)}; no silent no-change")
+        raise RuntimeError(f"Insufficient RSS sources: {successful}/{len(provider_feeds())}; no silent no-change")
     candidates, pending = process(items, state)
     pending["fetch_ok"] = successful
     pending["fetch_errors"] = errors[-30:]
@@ -509,7 +602,7 @@ def main() -> None:
     STATUS.write_text(
         "# 애플 AI 서버·메모리 신규 정보 감시\n\n"
         f"- 검사시각: {dt.datetime.now(KST).isoformat(timespec='seconds')}\n"
-        f"- 원천 조회: {successful}/{len(SEARCHES)} 정상 / {len(errors)} 실패\n"
+        f"- 원천 조회: {successful}/{len(provider_feeds())} 정상 / {len(errors)} 실패\n"
         f"- 최근 기사: {len(items)}개 / 의미 있는 신규 주장: {len(candidates)}개\n"
         f"- 알림: {'후보 생성' if candidates else '없음(기존 기사·미확인 신호 차단)'}\n"
         f"- 기준선: {BASELINE['m8_server']}; {BASELINE['nvlink']}; {BASELINE['memory']}\n"
