@@ -2417,6 +2417,46 @@
       "telegram_core_fact": "도널드 트럼프 미 대통령이 9일(현지시각) 블라디미르 푸틴 러시아 대통령과 러시아의 경유 미국 수출을 늘리기로 한 합의했음에도 미국의 경유 가격이 의미 있게 내려갈 가능성은 희박하다고 전문가들이 전망하고 있다.",
       "title": "\"트럼프 러 경유 수입 합의, 가격 인하 효과 미미\""
     },
+    "core:16959280885dda269f741d9f": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821231",
+      "source": "뉴시스",
+      "source_body_digest": "7688d71e456115455de6891a5fc6ac0df4c0d569f9b63a7da0e8bf85a09d017d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e115d50787ac6bb298a406758f0566d030934b4c2126870ecb3f7c6696c1f873",
+      "source_fact_keys": [
+        "source_fact:v1:1681bf8ad2c9aaa8cb25d40c7bbc30ade53a6b6f310a7ae62d7b3dd8ede33c10",
+        "source_fact:v1:1796eb3222742bec34847d259bbaf5b9a452d3fc386170e5577e623754a0aa61",
+        "source_fact:v1:1c7a39ed0fd5695364dd53417e5daab7ba192fedb804373ab5be9c1b60275340",
+        "source_fact:v1:32262a3572c6fb6ad3ec0b71419b655bd3e27dc11542d00f7a5144dff8c42e56",
+        "source_fact:v1:3cdc97e65ba66f92ff3d80d5298d22635b2dd85fc31c88dbf80a207a7d25a685",
+        "source_fact:v1:4649c9f4b05f99a39476ceb456ea27d3e781a21efff6875d3e6e3abf90012d17",
+        "source_fact:v1:471772cb8288a81ddfbb58824a8a40547b86da5a1add12c4d6a028ecb01a4961",
+        "source_fact:v1:47dcaa95ffba5f695d6100b8ca819872b4dbccbe6f07dd2f23dd570150af12d7",
+        "source_fact:v1:480b548b4335ee287b1dbaee6322e6d8692735e9cd04d4c32d411cd76b91ea51",
+        "source_fact:v1:5cb2a3f8ad01de051db8066ef6d6e9a8820c9006ce46bfb11597581ccfed2445",
+        "source_fact:v1:666e4c75e0eece1d7946da5c9302ecc6ca81f5b022b26c53c2969887da1d6c70",
+        "source_fact:v1:73fd37569a12113b37389917cf5d7479dc300026ef0b80cdd95f80297ec8ec0a",
+        "source_fact:v1:80d73e1405b541ea23e6b0d5b58d4ade1b033fce575fefe2ac4bf859caae8528",
+        "source_fact:v1:9777f9447d9a91fbeed497c73a40caf1066d02da0bc45c85ba4bf0bb864e2864",
+        "source_fact:v1:9b6027a4dc6be56fabfe9801ba7cf939260f954336e49758c1a10e6ef67d9b6e",
+        "source_fact:v1:b748bdd6b4a24cb7be436c1852e4c20c6aca1a563753525206aeb86c327bb9f5",
+        "source_fact:v1:c0966b7a4f3a4aa4ee5263b8d52067cc7fa7f868f41a42a9bb2824b046414fc4",
+        "source_fact:v1:dffeac24d7b2233d3cca621757e7c323ad736ca02515f5d9b0f9c5acd8207009",
+        "source_fact:v1:e2761a0639657b3bca984a50b3afcf1cb63be4836e78e1f50572934277f492db",
+        "source_fact:v1:e6a3dbdd9a3d1ab92ec11fc152e0b2b125ff51c441ebbe8395177ab6c84cbe2b",
+        "source_fact:v1:f8d0050585dba342c76e7684c7d8b4d85f11618b63a44f7d449e1958f53971b6",
+        "source_fact:v1:febd5fdd24aa92ad1887d8a15f52eb9392ef30d9c82eab45cedf403de281eb75"
+      ],
+      "source_published_kst": "2026-10-12T02:10+09:00",
+      "source_title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)",
+      "telegram_core_fact": "그는 미국이 러시아의 전쟁 자금 조달을 막기 위해 부과했던 러시아산 연료 제재를 일시적으로 완화한 지 하루 만에 우크라이나가 러시아 정유시설을 공격한 걸 비난했다.",
+      "title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)"
+    },
     "core:1695aa6d453b4933564f42d0": {
       "first_seen_kst": "2026-10-09T19:24:17+09:00",
       "lanes": {
@@ -13451,6 +13491,31 @@
       "source_title": "표심 급한 트럼프 \"중간선거 전 이란 공격 안할 것\" | 연합뉴스",
       "telegram_core_fact": "트럼프 대통령은 SNS에 올린 글을 통해 \"이란과 생산적 논의를 하고 있다\"며 다만 \"대이란 봉쇄는 지속할 것\"이라고 밝혔습니다.",
       "title": "표심 급한 트럼프 \"중간선거 전 이란 공격 안할 것\" | 연합뉴스"
+    },
+    "core:8d8ea089ca71de399894d2b8": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://go.seoul.co.kr/news/newsView.php?id=20261012008002",
+      "source": "서울신문",
+      "source_body_digest": "5dc8c16adc4df0d440bd24a8a77bb8953832c9395d646cbcfa6aedf6a5deaab9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:396bed4a8cd9b8cbf01a2eb1a8bc720426c1a16ea708dd293b3afb43245de325",
+      "source_fact_keys": [
+        "source_fact:v1:1a2826c1fdbdc0820a88f8a6d1b0d0b463517ac3c72f9800ff4baa72c502f3de",
+        "source_fact:v1:5a9110197229fd4c7c2f59500bd91d8eded43b46d38acce684cdd25540923d9c",
+        "source_fact:v1:62f10aa62f63ed69a023590aa4c6ae2a7d614f8fb3c26365a42affa1d802d6e1",
+        "source_fact:v1:890a1af1c45f6bb40526078593d5c7581047f6ec994dd39f35b590a6fb0f9e80",
+        "source_fact:v1:be762f51201fce73debbd3b5ffda433a90529e5e7326596dba1038b99c4ba688",
+        "source_fact:v1:bf58d5528636d0c41cd7e4ee7ae2efb9a3f56017a31168f8a2f8d40327a0aeae",
+        "source_fact:v1:f5fddbaad7179cc6b94d0ae1281b3832c9c63a2550b69069b7e802cc76f588ca"
+      ],
+      "source_published_kst": "2026-10-11T18:07+09:00",
+      "source_title": "종전보다 장사… 푸틴에 승리 안긴 트럼프 ‘거래의 기술’",
+      "telegram_core_fact": "미국과 러시아가 합의한 공급 물량은 이달 중 30만톤, 다음달 50만톤 등으로 트럼프 대통령이 밝힌 러시아의 총공급 물량은 480만톤이다. 트럼프 대통령은 지난 9일(현지시간) 트루스소셜을 통해 러시아산 경유를 미국과 세계 시장에 대규모 공급하기로 푸틴 대통령과 합의했다고 밝혔다.",
+      "title": "종전보다 장사… 푸틴에 승리 안긴 트럼프 ‘거래의 기술’"
     },
     "core:8dbb81ad589ec9e81a4f5cab": {
       "first_seen_kst": "2026-10-10T18:57:12+09:00",
@@ -33011,30 +33076,28 @@
     "event:c91bd744dc57f98702bd6932": {
       "first_seen_kst": "2026-10-11T02:45:51+09:00",
       "lanes": {
-        "live": "2026-10-11T23:10:29+09:00",
+        "live": "2026-10-12T02:27:00+09:00",
         "preopen": "2026-10-11T06:52:52+09:00"
       },
-      "last_seen_kst": "2026-10-11T23:10:29+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261011053400079",
-      "source": "연합뉴스",
-      "source_body_digest": "ca4f3e29f2169d5e109e4e9668459f60525de5564c3308527959efee12615f9c",
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://go.seoul.co.kr/news/newsView.php?id=20261012008002",
+      "source": "서울신문",
+      "source_body_digest": "5dc8c16adc4df0d440bd24a8a77bb8953832c9395d646cbcfa6aedf6a5deaab9",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:7de95f063bc118d5ae5cbfeee808129d71b8fc1e2d341b67ba662611d92c903d",
+      "source_fact_identity": "source_facts:v1:396bed4a8cd9b8cbf01a2eb1a8bc720426c1a16ea708dd293b3afb43245de325",
       "source_fact_keys": [
-        "source_fact:v1:1f9697af13e8372fc147ceaf20d9cd80ac9bf30108053684c31d7f42dd655a6e",
-        "source_fact:v1:4f6a69e6249d0c55da4eba4d35ddd586b157620bbd6306dac6661b44becc3fe9",
-        "source_fact:v1:52ffac42a520897765aedc63c2ee7a8022d5d7b42a11c47b30dc182254dafc9f",
-        "source_fact:v1:5d398fab9ad2897fbefffd66e224df0bcddd064dae237eff5d9197c9cb3d9ce9",
-        "source_fact:v1:96c15332ec6943e00a25bea1926f012f4bb0f1f3caad940a06f903b7e1dbf48e",
-        "source_fact:v1:b094b9ca628cd8b951ea55e58b162ea3892b9a50f1c5a007ad51eb883d7d1893",
-        "source_fact:v1:c1c457a4e5f7118adcf6fa4fca4fd82c4fc2059c3e6153754fdae9f9e2bb943e",
-        "source_fact:v1:c22abdc338aa503a273a82f5dd8b0c0c2c6d093c6f264c7343b5f100b6133c4f",
-        "source_fact:v1:eae85c333d97eb4ec3881b332fc9489d9c540fe7b329d89ece36f1e6c9345420"
+        "source_fact:v1:1a2826c1fdbdc0820a88f8a6d1b0d0b463517ac3c72f9800ff4baa72c502f3de",
+        "source_fact:v1:5a9110197229fd4c7c2f59500bd91d8eded43b46d38acce684cdd25540923d9c",
+        "source_fact:v1:62f10aa62f63ed69a023590aa4c6ae2a7d614f8fb3c26365a42affa1d802d6e1",
+        "source_fact:v1:890a1af1c45f6bb40526078593d5c7581047f6ec994dd39f35b590a6fb0f9e80",
+        "source_fact:v1:be762f51201fce73debbd3b5ffda433a90529e5e7326596dba1038b99c4ba688",
+        "source_fact:v1:bf58d5528636d0c41cd7e4ee7ae2efb9a3f56017a31168f8a2f8d40327a0aeae",
+        "source_fact:v1:f5fddbaad7179cc6b94d0ae1281b3832c9c63a2550b69069b7e802cc76f588ca"
       ],
-      "source_published_kst": "2026-10-11T22:27+09:00",
-      "source_title": "후티 공세에 쩔쩔매는 사우디…'비전 2030' 투자유치도 '먹구름' | 연합뉴스",
-      "telegram_core_fact": "사우디의 국가 개조 프로젝트인 '비전 2030'은 연간 1천억 달러(약 135조 원) 외국인 직접투자(FDI) 유치를 핵심 동력으로 삼고 있다.",
-      "title": "후티 공세에 쩔쩔매는 사우디…'비전 2030' 투자유치도 '먹구름' | 연합뉴스"
+      "source_published_kst": "2026-10-11T18:07+09:00",
+      "source_title": "종전보다 장사… 푸틴에 승리 안긴 트럼프 ‘거래의 기술’",
+      "telegram_core_fact": "미국과 러시아가 합의한 공급 물량은 이달 중 30만톤, 다음달 50만톤 등으로 트럼프 대통령이 밝힌 러시아의 총공급 물량은 480만톤이다. 트럼프 대통령은 지난 9일(현지시간) 트루스소셜을 통해 러시아산 경유를 미국과 세계 시장에 대규모 공급하기로 푸틴 대통령과 합의했다고 밝혔다.",
+      "title": "종전보다 장사… 푸틴에 승리 안긴 트럼프 ‘거래의 기술’"
     },
     "event:c97955bd13212d7367a4e3b6": {
       "first_seen_kst": "2026-09-23T09:05:43+09:00",
@@ -45600,6 +45663,31 @@
       "source_published_kst": "2026-10-06T15:28+09:00",
       "title": "한솔케미칼, 대만에 340억원 규모 반도체 소재 기지 투자 승인"
     },
+    "fact:422faf1fd764fce8de7fb7aa": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://go.seoul.co.kr/news/newsView.php?id=20261012008002",
+      "source": "서울신문",
+      "source_body_digest": "5dc8c16adc4df0d440bd24a8a77bb8953832c9395d646cbcfa6aedf6a5deaab9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:396bed4a8cd9b8cbf01a2eb1a8bc720426c1a16ea708dd293b3afb43245de325",
+      "source_fact_keys": [
+        "source_fact:v1:1a2826c1fdbdc0820a88f8a6d1b0d0b463517ac3c72f9800ff4baa72c502f3de",
+        "source_fact:v1:5a9110197229fd4c7c2f59500bd91d8eded43b46d38acce684cdd25540923d9c",
+        "source_fact:v1:62f10aa62f63ed69a023590aa4c6ae2a7d614f8fb3c26365a42affa1d802d6e1",
+        "source_fact:v1:890a1af1c45f6bb40526078593d5c7581047f6ec994dd39f35b590a6fb0f9e80",
+        "source_fact:v1:be762f51201fce73debbd3b5ffda433a90529e5e7326596dba1038b99c4ba688",
+        "source_fact:v1:bf58d5528636d0c41cd7e4ee7ae2efb9a3f56017a31168f8a2f8d40327a0aeae",
+        "source_fact:v1:f5fddbaad7179cc6b94d0ae1281b3832c9c63a2550b69069b7e802cc76f588ca"
+      ],
+      "source_published_kst": "2026-10-11T18:07+09:00",
+      "source_title": "종전보다 장사… 푸틴에 승리 안긴 트럼프 ‘거래의 기술’",
+      "telegram_core_fact": "미국과 러시아가 합의한 공급 물량은 이달 중 30만톤, 다음달 50만톤 등으로 트럼프 대통령이 밝힌 러시아의 총공급 물량은 480만톤이다. 트럼프 대통령은 지난 9일(현지시간) 트루스소셜을 통해 러시아산 경유를 미국과 세계 시장에 대규모 공급하기로 푸틴 대통령과 합의했다고 밝혔다.",
+      "title": "종전보다 장사… 푸틴에 승리 안긴 트럼프 ‘거래의 기술’"
+    },
     "fact:422feff71be8a9bc5575c8cb": {
       "first_seen_kst": "2026-10-08T17:21:28+09:00",
       "lanes": {
@@ -47888,6 +47976,46 @@
       ],
       "source_published_kst": "2026-10-07T14:21+09:00",
       "title": "HD건설기계, 美 데이터센터에 3900억원 규모 발전엔진 공급"
+    },
+    "fact:537fc81b967bf7844a44ae5e": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821231",
+      "source": "뉴시스",
+      "source_body_digest": "7688d71e456115455de6891a5fc6ac0df4c0d569f9b63a7da0e8bf85a09d017d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e115d50787ac6bb298a406758f0566d030934b4c2126870ecb3f7c6696c1f873",
+      "source_fact_keys": [
+        "source_fact:v1:1681bf8ad2c9aaa8cb25d40c7bbc30ade53a6b6f310a7ae62d7b3dd8ede33c10",
+        "source_fact:v1:1796eb3222742bec34847d259bbaf5b9a452d3fc386170e5577e623754a0aa61",
+        "source_fact:v1:1c7a39ed0fd5695364dd53417e5daab7ba192fedb804373ab5be9c1b60275340",
+        "source_fact:v1:32262a3572c6fb6ad3ec0b71419b655bd3e27dc11542d00f7a5144dff8c42e56",
+        "source_fact:v1:3cdc97e65ba66f92ff3d80d5298d22635b2dd85fc31c88dbf80a207a7d25a685",
+        "source_fact:v1:4649c9f4b05f99a39476ceb456ea27d3e781a21efff6875d3e6e3abf90012d17",
+        "source_fact:v1:471772cb8288a81ddfbb58824a8a40547b86da5a1add12c4d6a028ecb01a4961",
+        "source_fact:v1:47dcaa95ffba5f695d6100b8ca819872b4dbccbe6f07dd2f23dd570150af12d7",
+        "source_fact:v1:480b548b4335ee287b1dbaee6322e6d8692735e9cd04d4c32d411cd76b91ea51",
+        "source_fact:v1:5cb2a3f8ad01de051db8066ef6d6e9a8820c9006ce46bfb11597581ccfed2445",
+        "source_fact:v1:666e4c75e0eece1d7946da5c9302ecc6ca81f5b022b26c53c2969887da1d6c70",
+        "source_fact:v1:73fd37569a12113b37389917cf5d7479dc300026ef0b80cdd95f80297ec8ec0a",
+        "source_fact:v1:80d73e1405b541ea23e6b0d5b58d4ade1b033fce575fefe2ac4bf859caae8528",
+        "source_fact:v1:9777f9447d9a91fbeed497c73a40caf1066d02da0bc45c85ba4bf0bb864e2864",
+        "source_fact:v1:9b6027a4dc6be56fabfe9801ba7cf939260f954336e49758c1a10e6ef67d9b6e",
+        "source_fact:v1:b748bdd6b4a24cb7be436c1852e4c20c6aca1a563753525206aeb86c327bb9f5",
+        "source_fact:v1:c0966b7a4f3a4aa4ee5263b8d52067cc7fa7f868f41a42a9bb2824b046414fc4",
+        "source_fact:v1:dffeac24d7b2233d3cca621757e7c323ad736ca02515f5d9b0f9c5acd8207009",
+        "source_fact:v1:e2761a0639657b3bca984a50b3afcf1cb63be4836e78e1f50572934277f492db",
+        "source_fact:v1:e6a3dbdd9a3d1ab92ec11fc152e0b2b125ff51c441ebbe8395177ab6c84cbe2b",
+        "source_fact:v1:f8d0050585dba342c76e7684c7d8b4d85f11618b63a44f7d449e1958f53971b6",
+        "source_fact:v1:febd5fdd24aa92ad1887d8a15f52eb9392ef30d9c82eab45cedf403de281eb75"
+      ],
+      "source_published_kst": "2026-10-12T02:10+09:00",
+      "source_title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)",
+      "telegram_core_fact": "그는 미국이 러시아의 전쟁 자금 조달을 막기 위해 부과했던 러시아산 연료 제재를 일시적으로 완화한 지 하루 만에 우크라이나가 러시아 정유시설을 공격한 걸 비난했다.",
+      "title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)"
     },
     "fact:5385a6e191bbaa1d57cc57a7": {
       "first_seen_kst": "2026-10-06T06:44:01+09:00",
@@ -92177,6 +92305,31 @@
       "source": "뉴시스",
       "title": "[미중정상회담]시진핑, 11년만 국빈 방미…'부상하는 중국'서 美 경쟁상대로"
     },
+    "link:471909da6f5140c9e10c1772": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://go.seoul.co.kr/news/newsView.php?id=20261012008002",
+      "source": "서울신문",
+      "source_body_digest": "5dc8c16adc4df0d440bd24a8a77bb8953832c9395d646cbcfa6aedf6a5deaab9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:396bed4a8cd9b8cbf01a2eb1a8bc720426c1a16ea708dd293b3afb43245de325",
+      "source_fact_keys": [
+        "source_fact:v1:1a2826c1fdbdc0820a88f8a6d1b0d0b463517ac3c72f9800ff4baa72c502f3de",
+        "source_fact:v1:5a9110197229fd4c7c2f59500bd91d8eded43b46d38acce684cdd25540923d9c",
+        "source_fact:v1:62f10aa62f63ed69a023590aa4c6ae2a7d614f8fb3c26365a42affa1d802d6e1",
+        "source_fact:v1:890a1af1c45f6bb40526078593d5c7581047f6ec994dd39f35b590a6fb0f9e80",
+        "source_fact:v1:be762f51201fce73debbd3b5ffda433a90529e5e7326596dba1038b99c4ba688",
+        "source_fact:v1:bf58d5528636d0c41cd7e4ee7ae2efb9a3f56017a31168f8a2f8d40327a0aeae",
+        "source_fact:v1:f5fddbaad7179cc6b94d0ae1281b3832c9c63a2550b69069b7e802cc76f588ca"
+      ],
+      "source_published_kst": "2026-10-11T18:07+09:00",
+      "source_title": "종전보다 장사… 푸틴에 승리 안긴 트럼프 ‘거래의 기술’",
+      "telegram_core_fact": "미국과 러시아가 합의한 공급 물량은 이달 중 30만톤, 다음달 50만톤 등으로 트럼프 대통령이 밝힌 러시아의 총공급 물량은 480만톤이다. 트럼프 대통령은 지난 9일(현지시간) 트루스소셜을 통해 러시아산 경유를 미국과 세계 시장에 대규모 공급하기로 푸틴 대통령과 합의했다고 밝혔다.",
+      "title": "종전보다 장사… 푸틴에 승리 안긴 트럼프 ‘거래의 기술’"
+    },
     "link:472d0603f928ec065a8733c4": {
       "first_seen_kst": "2026-10-08T04:26:05+09:00",
       "lanes": {
@@ -104670,6 +104823,46 @@
       "source_title": "靑 “우크라, 충분한 사실 확인 없이 韓 대러 제재정책 왜곡 말아야”",
       "telegram_core_fact": "그러면서 우크라이나 측을 향해 “충분한 사실 확인 없이 대한민국의 관련 정책을 왜곡하거나 국제적 신뢰를 훼손할 수 있는 공개적인 언급을 자제해주길 바란다”고 강조했다. 청와대는 7일 우크라이나 측의 한국 대러 제재 관련 공개 발언에 대해 “사실과 다르고 부적절하다”고 밝혔다.",
       "title": "靑 “우크라, 충분한 사실 확인 없이 韓 대러 제재정책 왜곡 말아야”"
+    },
+    "link:7bab8993d22f5b2aff4bca64": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821231",
+      "source": "뉴시스",
+      "source_body_digest": "7688d71e456115455de6891a5fc6ac0df4c0d569f9b63a7da0e8bf85a09d017d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e115d50787ac6bb298a406758f0566d030934b4c2126870ecb3f7c6696c1f873",
+      "source_fact_keys": [
+        "source_fact:v1:1681bf8ad2c9aaa8cb25d40c7bbc30ade53a6b6f310a7ae62d7b3dd8ede33c10",
+        "source_fact:v1:1796eb3222742bec34847d259bbaf5b9a452d3fc386170e5577e623754a0aa61",
+        "source_fact:v1:1c7a39ed0fd5695364dd53417e5daab7ba192fedb804373ab5be9c1b60275340",
+        "source_fact:v1:32262a3572c6fb6ad3ec0b71419b655bd3e27dc11542d00f7a5144dff8c42e56",
+        "source_fact:v1:3cdc97e65ba66f92ff3d80d5298d22635b2dd85fc31c88dbf80a207a7d25a685",
+        "source_fact:v1:4649c9f4b05f99a39476ceb456ea27d3e781a21efff6875d3e6e3abf90012d17",
+        "source_fact:v1:471772cb8288a81ddfbb58824a8a40547b86da5a1add12c4d6a028ecb01a4961",
+        "source_fact:v1:47dcaa95ffba5f695d6100b8ca819872b4dbccbe6f07dd2f23dd570150af12d7",
+        "source_fact:v1:480b548b4335ee287b1dbaee6322e6d8692735e9cd04d4c32d411cd76b91ea51",
+        "source_fact:v1:5cb2a3f8ad01de051db8066ef6d6e9a8820c9006ce46bfb11597581ccfed2445",
+        "source_fact:v1:666e4c75e0eece1d7946da5c9302ecc6ca81f5b022b26c53c2969887da1d6c70",
+        "source_fact:v1:73fd37569a12113b37389917cf5d7479dc300026ef0b80cdd95f80297ec8ec0a",
+        "source_fact:v1:80d73e1405b541ea23e6b0d5b58d4ade1b033fce575fefe2ac4bf859caae8528",
+        "source_fact:v1:9777f9447d9a91fbeed497c73a40caf1066d02da0bc45c85ba4bf0bb864e2864",
+        "source_fact:v1:9b6027a4dc6be56fabfe9801ba7cf939260f954336e49758c1a10e6ef67d9b6e",
+        "source_fact:v1:b748bdd6b4a24cb7be436c1852e4c20c6aca1a563753525206aeb86c327bb9f5",
+        "source_fact:v1:c0966b7a4f3a4aa4ee5263b8d52067cc7fa7f868f41a42a9bb2824b046414fc4",
+        "source_fact:v1:dffeac24d7b2233d3cca621757e7c323ad736ca02515f5d9b0f9c5acd8207009",
+        "source_fact:v1:e2761a0639657b3bca984a50b3afcf1cb63be4836e78e1f50572934277f492db",
+        "source_fact:v1:e6a3dbdd9a3d1ab92ec11fc152e0b2b125ff51c441ebbe8395177ab6c84cbe2b",
+        "source_fact:v1:f8d0050585dba342c76e7684c7d8b4d85f11618b63a44f7d449e1958f53971b6",
+        "source_fact:v1:febd5fdd24aa92ad1887d8a15f52eb9392ef30d9c82eab45cedf403de281eb75"
+      ],
+      "source_published_kst": "2026-10-12T02:10+09:00",
+      "source_title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)",
+      "telegram_core_fact": "그는 미국이 러시아의 전쟁 자금 조달을 막기 위해 부과했던 러시아산 연료 제재를 일시적으로 완화한 지 하루 만에 우크라이나가 러시아 정유시설을 공격한 걸 비난했다.",
+      "title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)"
     },
     "link:7bc2e03304b815c5334e2559": {
       "first_seen_kst": "2026-10-06T21:40:57+09:00",
@@ -163728,6 +163921,46 @@
       "source_published_kst": "2026-10-05T11:19+09:00",
       "title": "LGU+, 구독 플랫폼 '유독'에 해외 AI 서비스 순차 확대"
     },
+    "original:7dc6ab88fc65c560ba1b757b": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821231",
+      "source": "뉴시스",
+      "source_body_digest": "7688d71e456115455de6891a5fc6ac0df4c0d569f9b63a7da0e8bf85a09d017d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e115d50787ac6bb298a406758f0566d030934b4c2126870ecb3f7c6696c1f873",
+      "source_fact_keys": [
+        "source_fact:v1:1681bf8ad2c9aaa8cb25d40c7bbc30ade53a6b6f310a7ae62d7b3dd8ede33c10",
+        "source_fact:v1:1796eb3222742bec34847d259bbaf5b9a452d3fc386170e5577e623754a0aa61",
+        "source_fact:v1:1c7a39ed0fd5695364dd53417e5daab7ba192fedb804373ab5be9c1b60275340",
+        "source_fact:v1:32262a3572c6fb6ad3ec0b71419b655bd3e27dc11542d00f7a5144dff8c42e56",
+        "source_fact:v1:3cdc97e65ba66f92ff3d80d5298d22635b2dd85fc31c88dbf80a207a7d25a685",
+        "source_fact:v1:4649c9f4b05f99a39476ceb456ea27d3e781a21efff6875d3e6e3abf90012d17",
+        "source_fact:v1:471772cb8288a81ddfbb58824a8a40547b86da5a1add12c4d6a028ecb01a4961",
+        "source_fact:v1:47dcaa95ffba5f695d6100b8ca819872b4dbccbe6f07dd2f23dd570150af12d7",
+        "source_fact:v1:480b548b4335ee287b1dbaee6322e6d8692735e9cd04d4c32d411cd76b91ea51",
+        "source_fact:v1:5cb2a3f8ad01de051db8066ef6d6e9a8820c9006ce46bfb11597581ccfed2445",
+        "source_fact:v1:666e4c75e0eece1d7946da5c9302ecc6ca81f5b022b26c53c2969887da1d6c70",
+        "source_fact:v1:73fd37569a12113b37389917cf5d7479dc300026ef0b80cdd95f80297ec8ec0a",
+        "source_fact:v1:80d73e1405b541ea23e6b0d5b58d4ade1b033fce575fefe2ac4bf859caae8528",
+        "source_fact:v1:9777f9447d9a91fbeed497c73a40caf1066d02da0bc45c85ba4bf0bb864e2864",
+        "source_fact:v1:9b6027a4dc6be56fabfe9801ba7cf939260f954336e49758c1a10e6ef67d9b6e",
+        "source_fact:v1:b748bdd6b4a24cb7be436c1852e4c20c6aca1a563753525206aeb86c327bb9f5",
+        "source_fact:v1:c0966b7a4f3a4aa4ee5263b8d52067cc7fa7f868f41a42a9bb2824b046414fc4",
+        "source_fact:v1:dffeac24d7b2233d3cca621757e7c323ad736ca02515f5d9b0f9c5acd8207009",
+        "source_fact:v1:e2761a0639657b3bca984a50b3afcf1cb63be4836e78e1f50572934277f492db",
+        "source_fact:v1:e6a3dbdd9a3d1ab92ec11fc152e0b2b125ff51c441ebbe8395177ab6c84cbe2b",
+        "source_fact:v1:f8d0050585dba342c76e7684c7d8b4d85f11618b63a44f7d449e1958f53971b6",
+        "source_fact:v1:febd5fdd24aa92ad1887d8a15f52eb9392ef30d9c82eab45cedf403de281eb75"
+      ],
+      "source_published_kst": "2026-10-12T02:10+09:00",
+      "source_title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)",
+      "telegram_core_fact": "그는 미국이 러시아의 전쟁 자금 조달을 막기 위해 부과했던 러시아산 연료 제재를 일시적으로 완화한 지 하루 만에 우크라이나가 러시아 정유시설을 공격한 걸 비난했다.",
+      "title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)"
+    },
     "original:7dcfd6ec36668c12b45b5373": {
       "first_seen_kst": "2026-10-06T17:35:32+09:00",
       "lanes": {
@@ -179484,6 +179717,31 @@
       ],
       "source_published_kst": "2026-10-06T09:58+09:00",
       "title": "메리츠는 신규 합류, 기존 증권사는 금리 인상…발행어음 '9파전' 경쟁 본격화"
+    },
+    "original:c25bad49e8f0683c6d20a94c": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://go.seoul.co.kr/news/newsView.php?id=20261012008002",
+      "source": "서울신문",
+      "source_body_digest": "5dc8c16adc4df0d440bd24a8a77bb8953832c9395d646cbcfa6aedf6a5deaab9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:396bed4a8cd9b8cbf01a2eb1a8bc720426c1a16ea708dd293b3afb43245de325",
+      "source_fact_keys": [
+        "source_fact:v1:1a2826c1fdbdc0820a88f8a6d1b0d0b463517ac3c72f9800ff4baa72c502f3de",
+        "source_fact:v1:5a9110197229fd4c7c2f59500bd91d8eded43b46d38acce684cdd25540923d9c",
+        "source_fact:v1:62f10aa62f63ed69a023590aa4c6ae2a7d614f8fb3c26365a42affa1d802d6e1",
+        "source_fact:v1:890a1af1c45f6bb40526078593d5c7581047f6ec994dd39f35b590a6fb0f9e80",
+        "source_fact:v1:be762f51201fce73debbd3b5ffda433a90529e5e7326596dba1038b99c4ba688",
+        "source_fact:v1:bf58d5528636d0c41cd7e4ee7ae2efb9a3f56017a31168f8a2f8d40327a0aeae",
+        "source_fact:v1:f5fddbaad7179cc6b94d0ae1281b3832c9c63a2550b69069b7e802cc76f588ca"
+      ],
+      "source_published_kst": "2026-10-11T18:07+09:00",
+      "source_title": "종전보다 장사… 푸틴에 승리 안긴 트럼프 ‘거래의 기술’",
+      "telegram_core_fact": "미국과 러시아가 합의한 공급 물량은 이달 중 30만톤, 다음달 50만톤 등으로 트럼프 대통령이 밝힌 러시아의 총공급 물량은 480만톤이다. 트럼프 대통령은 지난 9일(현지시간) 트루스소셜을 통해 러시아산 경유를 미국과 세계 시장에 대규모 공급하기로 푸틴 대통령과 합의했다고 밝혔다.",
+      "title": "종전보다 장사… 푸틴에 승리 안긴 트럼프 ‘거래의 기술’"
     },
     "original:c291fb3e58eeeb50049fdcb1": {
       "first_seen_kst": "2026-10-02T18:30:04+09:00",
@@ -196785,6 +197043,71 @@
       "telegram_core_fact": "사상 최고치 부근까지 오른 주가와 5%를 웃도는 장기금리가 공존하려면 기업들이 높아진 기대를 실적으로 증명해야 한다. 특히 AI에 쏟아부은 막대한 자금이 실제 매출과 이익으로 연결되고 있는지가 이번 실적시즌의 핵심 시험대가 될 전망이다.",
       "title": "사상 최고치 달리던 美증시 제동…AI 랠리 시험대[월스트리트in]"
     },
+    "source_fact:05591ab4af4042c7f4a0a113": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821231",
+      "source": "뉴시스",
+      "source_body_digest": "7688d71e456115455de6891a5fc6ac0df4c0d569f9b63a7da0e8bf85a09d017d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e115d50787ac6bb298a406758f0566d030934b4c2126870ecb3f7c6696c1f873",
+      "source_fact_keys": [
+        "source_fact:v1:1681bf8ad2c9aaa8cb25d40c7bbc30ade53a6b6f310a7ae62d7b3dd8ede33c10",
+        "source_fact:v1:1796eb3222742bec34847d259bbaf5b9a452d3fc386170e5577e623754a0aa61",
+        "source_fact:v1:1c7a39ed0fd5695364dd53417e5daab7ba192fedb804373ab5be9c1b60275340",
+        "source_fact:v1:32262a3572c6fb6ad3ec0b71419b655bd3e27dc11542d00f7a5144dff8c42e56",
+        "source_fact:v1:3cdc97e65ba66f92ff3d80d5298d22635b2dd85fc31c88dbf80a207a7d25a685",
+        "source_fact:v1:4649c9f4b05f99a39476ceb456ea27d3e781a21efff6875d3e6e3abf90012d17",
+        "source_fact:v1:471772cb8288a81ddfbb58824a8a40547b86da5a1add12c4d6a028ecb01a4961",
+        "source_fact:v1:47dcaa95ffba5f695d6100b8ca819872b4dbccbe6f07dd2f23dd570150af12d7",
+        "source_fact:v1:480b548b4335ee287b1dbaee6322e6d8692735e9cd04d4c32d411cd76b91ea51",
+        "source_fact:v1:5cb2a3f8ad01de051db8066ef6d6e9a8820c9006ce46bfb11597581ccfed2445",
+        "source_fact:v1:666e4c75e0eece1d7946da5c9302ecc6ca81f5b022b26c53c2969887da1d6c70",
+        "source_fact:v1:73fd37569a12113b37389917cf5d7479dc300026ef0b80cdd95f80297ec8ec0a",
+        "source_fact:v1:80d73e1405b541ea23e6b0d5b58d4ade1b033fce575fefe2ac4bf859caae8528",
+        "source_fact:v1:9777f9447d9a91fbeed497c73a40caf1066d02da0bc45c85ba4bf0bb864e2864",
+        "source_fact:v1:9b6027a4dc6be56fabfe9801ba7cf939260f954336e49758c1a10e6ef67d9b6e",
+        "source_fact:v1:b748bdd6b4a24cb7be436c1852e4c20c6aca1a563753525206aeb86c327bb9f5",
+        "source_fact:v1:c0966b7a4f3a4aa4ee5263b8d52067cc7fa7f868f41a42a9bb2824b046414fc4",
+        "source_fact:v1:dffeac24d7b2233d3cca621757e7c323ad736ca02515f5d9b0f9c5acd8207009",
+        "source_fact:v1:e2761a0639657b3bca984a50b3afcf1cb63be4836e78e1f50572934277f492db",
+        "source_fact:v1:e6a3dbdd9a3d1ab92ec11fc152e0b2b125ff51c441ebbe8395177ab6c84cbe2b",
+        "source_fact:v1:f8d0050585dba342c76e7684c7d8b4d85f11618b63a44f7d449e1958f53971b6",
+        "source_fact:v1:febd5fdd24aa92ad1887d8a15f52eb9392ef30d9c82eab45cedf403de281eb75"
+      ],
+      "source_published_kst": "2026-10-12T02:10+09:00",
+      "source_title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)",
+      "telegram_core_fact": "그는 미국이 러시아의 전쟁 자금 조달을 막기 위해 부과했던 러시아산 연료 제재를 일시적으로 완화한 지 하루 만에 우크라이나가 러시아 정유시설을 공격한 걸 비난했다.",
+      "title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)"
+    },
+    "source_fact:0561d85ca12604b5c6b3bc45": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://go.seoul.co.kr/news/newsView.php?id=20261012008002",
+      "source": "서울신문",
+      "source_body_digest": "5dc8c16adc4df0d440bd24a8a77bb8953832c9395d646cbcfa6aedf6a5deaab9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:396bed4a8cd9b8cbf01a2eb1a8bc720426c1a16ea708dd293b3afb43245de325",
+      "source_fact_keys": [
+        "source_fact:v1:1a2826c1fdbdc0820a88f8a6d1b0d0b463517ac3c72f9800ff4baa72c502f3de",
+        "source_fact:v1:5a9110197229fd4c7c2f59500bd91d8eded43b46d38acce684cdd25540923d9c",
+        "source_fact:v1:62f10aa62f63ed69a023590aa4c6ae2a7d614f8fb3c26365a42affa1d802d6e1",
+        "source_fact:v1:890a1af1c45f6bb40526078593d5c7581047f6ec994dd39f35b590a6fb0f9e80",
+        "source_fact:v1:be762f51201fce73debbd3b5ffda433a90529e5e7326596dba1038b99c4ba688",
+        "source_fact:v1:bf58d5528636d0c41cd7e4ee7ae2efb9a3f56017a31168f8a2f8d40327a0aeae",
+        "source_fact:v1:f5fddbaad7179cc6b94d0ae1281b3832c9c63a2550b69069b7e802cc76f588ca"
+      ],
+      "source_published_kst": "2026-10-11T18:07+09:00",
+      "source_title": "종전보다 장사… 푸틴에 승리 안긴 트럼프 ‘거래의 기술’",
+      "telegram_core_fact": "미국과 러시아가 합의한 공급 물량은 이달 중 30만톤, 다음달 50만톤 등으로 트럼프 대통령이 밝힌 러시아의 총공급 물량은 480만톤이다. 트럼프 대통령은 지난 9일(현지시간) 트루스소셜을 통해 러시아산 경유를 미국과 세계 시장에 대규모 공급하기로 푸틴 대통령과 합의했다고 밝혔다.",
+      "title": "종전보다 장사… 푸틴에 승리 안긴 트럼프 ‘거래의 기술’"
+    },
     "source_fact:056ffe5c8af29ed02e8c899e": {
       "first_seen_kst": "2026-10-07T18:12:46+09:00",
       "lanes": {
@@ -202955,6 +203278,46 @@
       "source_published_kst": "2026-10-06T16:09+09:00",
       "title": "롯데백화점 외국인 매출 1조 돌파…신세계·현대도 '목전'(종합)"
     },
+    "source_fact:0dd6544fff1691f65454d65d": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821231",
+      "source": "뉴시스",
+      "source_body_digest": "7688d71e456115455de6891a5fc6ac0df4c0d569f9b63a7da0e8bf85a09d017d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e115d50787ac6bb298a406758f0566d030934b4c2126870ecb3f7c6696c1f873",
+      "source_fact_keys": [
+        "source_fact:v1:1681bf8ad2c9aaa8cb25d40c7bbc30ade53a6b6f310a7ae62d7b3dd8ede33c10",
+        "source_fact:v1:1796eb3222742bec34847d259bbaf5b9a452d3fc386170e5577e623754a0aa61",
+        "source_fact:v1:1c7a39ed0fd5695364dd53417e5daab7ba192fedb804373ab5be9c1b60275340",
+        "source_fact:v1:32262a3572c6fb6ad3ec0b71419b655bd3e27dc11542d00f7a5144dff8c42e56",
+        "source_fact:v1:3cdc97e65ba66f92ff3d80d5298d22635b2dd85fc31c88dbf80a207a7d25a685",
+        "source_fact:v1:4649c9f4b05f99a39476ceb456ea27d3e781a21efff6875d3e6e3abf90012d17",
+        "source_fact:v1:471772cb8288a81ddfbb58824a8a40547b86da5a1add12c4d6a028ecb01a4961",
+        "source_fact:v1:47dcaa95ffba5f695d6100b8ca819872b4dbccbe6f07dd2f23dd570150af12d7",
+        "source_fact:v1:480b548b4335ee287b1dbaee6322e6d8692735e9cd04d4c32d411cd76b91ea51",
+        "source_fact:v1:5cb2a3f8ad01de051db8066ef6d6e9a8820c9006ce46bfb11597581ccfed2445",
+        "source_fact:v1:666e4c75e0eece1d7946da5c9302ecc6ca81f5b022b26c53c2969887da1d6c70",
+        "source_fact:v1:73fd37569a12113b37389917cf5d7479dc300026ef0b80cdd95f80297ec8ec0a",
+        "source_fact:v1:80d73e1405b541ea23e6b0d5b58d4ade1b033fce575fefe2ac4bf859caae8528",
+        "source_fact:v1:9777f9447d9a91fbeed497c73a40caf1066d02da0bc45c85ba4bf0bb864e2864",
+        "source_fact:v1:9b6027a4dc6be56fabfe9801ba7cf939260f954336e49758c1a10e6ef67d9b6e",
+        "source_fact:v1:b748bdd6b4a24cb7be436c1852e4c20c6aca1a563753525206aeb86c327bb9f5",
+        "source_fact:v1:c0966b7a4f3a4aa4ee5263b8d52067cc7fa7f868f41a42a9bb2824b046414fc4",
+        "source_fact:v1:dffeac24d7b2233d3cca621757e7c323ad736ca02515f5d9b0f9c5acd8207009",
+        "source_fact:v1:e2761a0639657b3bca984a50b3afcf1cb63be4836e78e1f50572934277f492db",
+        "source_fact:v1:e6a3dbdd9a3d1ab92ec11fc152e0b2b125ff51c441ebbe8395177ab6c84cbe2b",
+        "source_fact:v1:f8d0050585dba342c76e7684c7d8b4d85f11618b63a44f7d449e1958f53971b6",
+        "source_fact:v1:febd5fdd24aa92ad1887d8a15f52eb9392ef30d9c82eab45cedf403de281eb75"
+      ],
+      "source_published_kst": "2026-10-12T02:10+09:00",
+      "source_title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)",
+      "telegram_core_fact": "그는 미국이 러시아의 전쟁 자금 조달을 막기 위해 부과했던 러시아산 연료 제재를 일시적으로 완화한 지 하루 만에 우크라이나가 러시아 정유시설을 공격한 걸 비난했다.",
+      "title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)"
+    },
     "source_fact:0de27e7ae85c07d1545bee18": {
       "first_seen_kst": "2026-10-08T04:45:20+09:00",
       "lanes": {
@@ -208252,6 +208615,46 @@
       "telegram_core_fact": "풍산 매출은 2조7412억원으로 전년비 11.9% 증가했습니다.",
       "title": "풍산, 방산 부진 메운 '구리 호황' 신용등급 AA- 상향"
     },
+    "source_fact:1515244f4b70489fcfe13871": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821231",
+      "source": "뉴시스",
+      "source_body_digest": "7688d71e456115455de6891a5fc6ac0df4c0d569f9b63a7da0e8bf85a09d017d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e115d50787ac6bb298a406758f0566d030934b4c2126870ecb3f7c6696c1f873",
+      "source_fact_keys": [
+        "source_fact:v1:1681bf8ad2c9aaa8cb25d40c7bbc30ade53a6b6f310a7ae62d7b3dd8ede33c10",
+        "source_fact:v1:1796eb3222742bec34847d259bbaf5b9a452d3fc386170e5577e623754a0aa61",
+        "source_fact:v1:1c7a39ed0fd5695364dd53417e5daab7ba192fedb804373ab5be9c1b60275340",
+        "source_fact:v1:32262a3572c6fb6ad3ec0b71419b655bd3e27dc11542d00f7a5144dff8c42e56",
+        "source_fact:v1:3cdc97e65ba66f92ff3d80d5298d22635b2dd85fc31c88dbf80a207a7d25a685",
+        "source_fact:v1:4649c9f4b05f99a39476ceb456ea27d3e781a21efff6875d3e6e3abf90012d17",
+        "source_fact:v1:471772cb8288a81ddfbb58824a8a40547b86da5a1add12c4d6a028ecb01a4961",
+        "source_fact:v1:47dcaa95ffba5f695d6100b8ca819872b4dbccbe6f07dd2f23dd570150af12d7",
+        "source_fact:v1:480b548b4335ee287b1dbaee6322e6d8692735e9cd04d4c32d411cd76b91ea51",
+        "source_fact:v1:5cb2a3f8ad01de051db8066ef6d6e9a8820c9006ce46bfb11597581ccfed2445",
+        "source_fact:v1:666e4c75e0eece1d7946da5c9302ecc6ca81f5b022b26c53c2969887da1d6c70",
+        "source_fact:v1:73fd37569a12113b37389917cf5d7479dc300026ef0b80cdd95f80297ec8ec0a",
+        "source_fact:v1:80d73e1405b541ea23e6b0d5b58d4ade1b033fce575fefe2ac4bf859caae8528",
+        "source_fact:v1:9777f9447d9a91fbeed497c73a40caf1066d02da0bc45c85ba4bf0bb864e2864",
+        "source_fact:v1:9b6027a4dc6be56fabfe9801ba7cf939260f954336e49758c1a10e6ef67d9b6e",
+        "source_fact:v1:b748bdd6b4a24cb7be436c1852e4c20c6aca1a563753525206aeb86c327bb9f5",
+        "source_fact:v1:c0966b7a4f3a4aa4ee5263b8d52067cc7fa7f868f41a42a9bb2824b046414fc4",
+        "source_fact:v1:dffeac24d7b2233d3cca621757e7c323ad736ca02515f5d9b0f9c5acd8207009",
+        "source_fact:v1:e2761a0639657b3bca984a50b3afcf1cb63be4836e78e1f50572934277f492db",
+        "source_fact:v1:e6a3dbdd9a3d1ab92ec11fc152e0b2b125ff51c441ebbe8395177ab6c84cbe2b",
+        "source_fact:v1:f8d0050585dba342c76e7684c7d8b4d85f11618b63a44f7d449e1958f53971b6",
+        "source_fact:v1:febd5fdd24aa92ad1887d8a15f52eb9392ef30d9c82eab45cedf403de281eb75"
+      ],
+      "source_published_kst": "2026-10-12T02:10+09:00",
+      "source_title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)",
+      "telegram_core_fact": "그는 미국이 러시아의 전쟁 자금 조달을 막기 위해 부과했던 러시아산 연료 제재를 일시적으로 완화한 지 하루 만에 우크라이나가 러시아 정유시설을 공격한 걸 비난했다.",
+      "title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)"
+    },
     "source_fact:1517d6ee508bf9a7c995fe44": {
       "first_seen_kst": "2026-10-10T11:34:45+09:00",
       "lanes": {
@@ -209650,6 +210053,46 @@
       ],
       "source_published_kst": "2026-10-06T05:59+09:00",
       "title": "美국채금리 상승에도 뉴욕증시 상승…나스닥 사상 최고치(종합)"
+    },
+    "source_fact:16ef8de6a725ef9531ee96df": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821231",
+      "source": "뉴시스",
+      "source_body_digest": "7688d71e456115455de6891a5fc6ac0df4c0d569f9b63a7da0e8bf85a09d017d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e115d50787ac6bb298a406758f0566d030934b4c2126870ecb3f7c6696c1f873",
+      "source_fact_keys": [
+        "source_fact:v1:1681bf8ad2c9aaa8cb25d40c7bbc30ade53a6b6f310a7ae62d7b3dd8ede33c10",
+        "source_fact:v1:1796eb3222742bec34847d259bbaf5b9a452d3fc386170e5577e623754a0aa61",
+        "source_fact:v1:1c7a39ed0fd5695364dd53417e5daab7ba192fedb804373ab5be9c1b60275340",
+        "source_fact:v1:32262a3572c6fb6ad3ec0b71419b655bd3e27dc11542d00f7a5144dff8c42e56",
+        "source_fact:v1:3cdc97e65ba66f92ff3d80d5298d22635b2dd85fc31c88dbf80a207a7d25a685",
+        "source_fact:v1:4649c9f4b05f99a39476ceb456ea27d3e781a21efff6875d3e6e3abf90012d17",
+        "source_fact:v1:471772cb8288a81ddfbb58824a8a40547b86da5a1add12c4d6a028ecb01a4961",
+        "source_fact:v1:47dcaa95ffba5f695d6100b8ca819872b4dbccbe6f07dd2f23dd570150af12d7",
+        "source_fact:v1:480b548b4335ee287b1dbaee6322e6d8692735e9cd04d4c32d411cd76b91ea51",
+        "source_fact:v1:5cb2a3f8ad01de051db8066ef6d6e9a8820c9006ce46bfb11597581ccfed2445",
+        "source_fact:v1:666e4c75e0eece1d7946da5c9302ecc6ca81f5b022b26c53c2969887da1d6c70",
+        "source_fact:v1:73fd37569a12113b37389917cf5d7479dc300026ef0b80cdd95f80297ec8ec0a",
+        "source_fact:v1:80d73e1405b541ea23e6b0d5b58d4ade1b033fce575fefe2ac4bf859caae8528",
+        "source_fact:v1:9777f9447d9a91fbeed497c73a40caf1066d02da0bc45c85ba4bf0bb864e2864",
+        "source_fact:v1:9b6027a4dc6be56fabfe9801ba7cf939260f954336e49758c1a10e6ef67d9b6e",
+        "source_fact:v1:b748bdd6b4a24cb7be436c1852e4c20c6aca1a563753525206aeb86c327bb9f5",
+        "source_fact:v1:c0966b7a4f3a4aa4ee5263b8d52067cc7fa7f868f41a42a9bb2824b046414fc4",
+        "source_fact:v1:dffeac24d7b2233d3cca621757e7c323ad736ca02515f5d9b0f9c5acd8207009",
+        "source_fact:v1:e2761a0639657b3bca984a50b3afcf1cb63be4836e78e1f50572934277f492db",
+        "source_fact:v1:e6a3dbdd9a3d1ab92ec11fc152e0b2b125ff51c441ebbe8395177ab6c84cbe2b",
+        "source_fact:v1:f8d0050585dba342c76e7684c7d8b4d85f11618b63a44f7d449e1958f53971b6",
+        "source_fact:v1:febd5fdd24aa92ad1887d8a15f52eb9392ef30d9c82eab45cedf403de281eb75"
+      ],
+      "source_published_kst": "2026-10-12T02:10+09:00",
+      "source_title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)",
+      "telegram_core_fact": "그는 미국이 러시아의 전쟁 자금 조달을 막기 위해 부과했던 러시아산 연료 제재를 일시적으로 완화한 지 하루 만에 우크라이나가 러시아 정유시설을 공격한 걸 비난했다.",
+      "title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)"
     },
     "source_fact:170024c9d7f5134503440057": {
       "first_seen_kst": "2026-10-09T16:29:31+09:00",
@@ -236196,6 +236639,31 @@
       "telegram_core_fact": "2028년까지 연산 30만t(톤) 하이렉스 실증설비를 구축하고 청정수소 공급망과 포항·울산 산업단지를 연계한다.",
       "title": "포스코, K-GX ‘철강 GX’ 참여…2028년 포항에 하이렉스 실증설비"
     },
+    "source_fact:396416c94a5380c08d5849c0": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://go.seoul.co.kr/news/newsView.php?id=20261012008002",
+      "source": "서울신문",
+      "source_body_digest": "5dc8c16adc4df0d440bd24a8a77bb8953832c9395d646cbcfa6aedf6a5deaab9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:396bed4a8cd9b8cbf01a2eb1a8bc720426c1a16ea708dd293b3afb43245de325",
+      "source_fact_keys": [
+        "source_fact:v1:1a2826c1fdbdc0820a88f8a6d1b0d0b463517ac3c72f9800ff4baa72c502f3de",
+        "source_fact:v1:5a9110197229fd4c7c2f59500bd91d8eded43b46d38acce684cdd25540923d9c",
+        "source_fact:v1:62f10aa62f63ed69a023590aa4c6ae2a7d614f8fb3c26365a42affa1d802d6e1",
+        "source_fact:v1:890a1af1c45f6bb40526078593d5c7581047f6ec994dd39f35b590a6fb0f9e80",
+        "source_fact:v1:be762f51201fce73debbd3b5ffda433a90529e5e7326596dba1038b99c4ba688",
+        "source_fact:v1:bf58d5528636d0c41cd7e4ee7ae2efb9a3f56017a31168f8a2f8d40327a0aeae",
+        "source_fact:v1:f5fddbaad7179cc6b94d0ae1281b3832c9c63a2550b69069b7e802cc76f588ca"
+      ],
+      "source_published_kst": "2026-10-11T18:07+09:00",
+      "source_title": "종전보다 장사… 푸틴에 승리 안긴 트럼프 ‘거래의 기술’",
+      "telegram_core_fact": "미국과 러시아가 합의한 공급 물량은 이달 중 30만톤, 다음달 50만톤 등으로 트럼프 대통령이 밝힌 러시아의 총공급 물량은 480만톤이다. 트럼프 대통령은 지난 9일(현지시간) 트루스소셜을 통해 러시아산 경유를 미국과 세계 시장에 대규모 공급하기로 푸틴 대통령과 합의했다고 밝혔다.",
+      "title": "종전보다 장사… 푸틴에 승리 안긴 트럼프 ‘거래의 기술’"
+    },
     "source_fact:396a9b9748dff25f0b6bd2c3": {
       "first_seen_kst": "2026-10-07T03:30:59+09:00",
       "lanes": {
@@ -240086,6 +240554,46 @@
       "source_published_kst": "2026-10-05T05:01+09:00",
       "title": "국회 정무위 6일 국감 돌입…금융권 해킹에 5대 은행장 줄소환되나"
     },
+    "source_fact:3ebe0f6d66fad24696ed0bcb": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821231",
+      "source": "뉴시스",
+      "source_body_digest": "7688d71e456115455de6891a5fc6ac0df4c0d569f9b63a7da0e8bf85a09d017d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e115d50787ac6bb298a406758f0566d030934b4c2126870ecb3f7c6696c1f873",
+      "source_fact_keys": [
+        "source_fact:v1:1681bf8ad2c9aaa8cb25d40c7bbc30ade53a6b6f310a7ae62d7b3dd8ede33c10",
+        "source_fact:v1:1796eb3222742bec34847d259bbaf5b9a452d3fc386170e5577e623754a0aa61",
+        "source_fact:v1:1c7a39ed0fd5695364dd53417e5daab7ba192fedb804373ab5be9c1b60275340",
+        "source_fact:v1:32262a3572c6fb6ad3ec0b71419b655bd3e27dc11542d00f7a5144dff8c42e56",
+        "source_fact:v1:3cdc97e65ba66f92ff3d80d5298d22635b2dd85fc31c88dbf80a207a7d25a685",
+        "source_fact:v1:4649c9f4b05f99a39476ceb456ea27d3e781a21efff6875d3e6e3abf90012d17",
+        "source_fact:v1:471772cb8288a81ddfbb58824a8a40547b86da5a1add12c4d6a028ecb01a4961",
+        "source_fact:v1:47dcaa95ffba5f695d6100b8ca819872b4dbccbe6f07dd2f23dd570150af12d7",
+        "source_fact:v1:480b548b4335ee287b1dbaee6322e6d8692735e9cd04d4c32d411cd76b91ea51",
+        "source_fact:v1:5cb2a3f8ad01de051db8066ef6d6e9a8820c9006ce46bfb11597581ccfed2445",
+        "source_fact:v1:666e4c75e0eece1d7946da5c9302ecc6ca81f5b022b26c53c2969887da1d6c70",
+        "source_fact:v1:73fd37569a12113b37389917cf5d7479dc300026ef0b80cdd95f80297ec8ec0a",
+        "source_fact:v1:80d73e1405b541ea23e6b0d5b58d4ade1b033fce575fefe2ac4bf859caae8528",
+        "source_fact:v1:9777f9447d9a91fbeed497c73a40caf1066d02da0bc45c85ba4bf0bb864e2864",
+        "source_fact:v1:9b6027a4dc6be56fabfe9801ba7cf939260f954336e49758c1a10e6ef67d9b6e",
+        "source_fact:v1:b748bdd6b4a24cb7be436c1852e4c20c6aca1a563753525206aeb86c327bb9f5",
+        "source_fact:v1:c0966b7a4f3a4aa4ee5263b8d52067cc7fa7f868f41a42a9bb2824b046414fc4",
+        "source_fact:v1:dffeac24d7b2233d3cca621757e7c323ad736ca02515f5d9b0f9c5acd8207009",
+        "source_fact:v1:e2761a0639657b3bca984a50b3afcf1cb63be4836e78e1f50572934277f492db",
+        "source_fact:v1:e6a3dbdd9a3d1ab92ec11fc152e0b2b125ff51c441ebbe8395177ab6c84cbe2b",
+        "source_fact:v1:f8d0050585dba342c76e7684c7d8b4d85f11618b63a44f7d449e1958f53971b6",
+        "source_fact:v1:febd5fdd24aa92ad1887d8a15f52eb9392ef30d9c82eab45cedf403de281eb75"
+      ],
+      "source_published_kst": "2026-10-12T02:10+09:00",
+      "source_title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)",
+      "telegram_core_fact": "그는 미국이 러시아의 전쟁 자금 조달을 막기 위해 부과했던 러시아산 연료 제재를 일시적으로 완화한 지 하루 만에 우크라이나가 러시아 정유시설을 공격한 걸 비난했다.",
+      "title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)"
+    },
     "source_fact:3ebfdff3543fd14e76bf2add": {
       "first_seen_kst": "2026-10-10T06:41:01+09:00",
       "lanes": {
@@ -240466,6 +240974,46 @@
       "source_title": "트럼프 압박 통했나…IEA, '경유 중심' 전략비축유 방출 가속 합의",
       "telegram_core_fact": "G7은 향후 4개월 동안 비축유 1억배럴을 방출하기로 합의했다.",
       "title": "트럼프 압박 통했나…IEA, '경유 중심' 전략비축유 방출 가속 합의"
+    },
+    "source_fact:3f588407699ae3a87db26e17": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821231",
+      "source": "뉴시스",
+      "source_body_digest": "7688d71e456115455de6891a5fc6ac0df4c0d569f9b63a7da0e8bf85a09d017d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e115d50787ac6bb298a406758f0566d030934b4c2126870ecb3f7c6696c1f873",
+      "source_fact_keys": [
+        "source_fact:v1:1681bf8ad2c9aaa8cb25d40c7bbc30ade53a6b6f310a7ae62d7b3dd8ede33c10",
+        "source_fact:v1:1796eb3222742bec34847d259bbaf5b9a452d3fc386170e5577e623754a0aa61",
+        "source_fact:v1:1c7a39ed0fd5695364dd53417e5daab7ba192fedb804373ab5be9c1b60275340",
+        "source_fact:v1:32262a3572c6fb6ad3ec0b71419b655bd3e27dc11542d00f7a5144dff8c42e56",
+        "source_fact:v1:3cdc97e65ba66f92ff3d80d5298d22635b2dd85fc31c88dbf80a207a7d25a685",
+        "source_fact:v1:4649c9f4b05f99a39476ceb456ea27d3e781a21efff6875d3e6e3abf90012d17",
+        "source_fact:v1:471772cb8288a81ddfbb58824a8a40547b86da5a1add12c4d6a028ecb01a4961",
+        "source_fact:v1:47dcaa95ffba5f695d6100b8ca819872b4dbccbe6f07dd2f23dd570150af12d7",
+        "source_fact:v1:480b548b4335ee287b1dbaee6322e6d8692735e9cd04d4c32d411cd76b91ea51",
+        "source_fact:v1:5cb2a3f8ad01de051db8066ef6d6e9a8820c9006ce46bfb11597581ccfed2445",
+        "source_fact:v1:666e4c75e0eece1d7946da5c9302ecc6ca81f5b022b26c53c2969887da1d6c70",
+        "source_fact:v1:73fd37569a12113b37389917cf5d7479dc300026ef0b80cdd95f80297ec8ec0a",
+        "source_fact:v1:80d73e1405b541ea23e6b0d5b58d4ade1b033fce575fefe2ac4bf859caae8528",
+        "source_fact:v1:9777f9447d9a91fbeed497c73a40caf1066d02da0bc45c85ba4bf0bb864e2864",
+        "source_fact:v1:9b6027a4dc6be56fabfe9801ba7cf939260f954336e49758c1a10e6ef67d9b6e",
+        "source_fact:v1:b748bdd6b4a24cb7be436c1852e4c20c6aca1a563753525206aeb86c327bb9f5",
+        "source_fact:v1:c0966b7a4f3a4aa4ee5263b8d52067cc7fa7f868f41a42a9bb2824b046414fc4",
+        "source_fact:v1:dffeac24d7b2233d3cca621757e7c323ad736ca02515f5d9b0f9c5acd8207009",
+        "source_fact:v1:e2761a0639657b3bca984a50b3afcf1cb63be4836e78e1f50572934277f492db",
+        "source_fact:v1:e6a3dbdd9a3d1ab92ec11fc152e0b2b125ff51c441ebbe8395177ab6c84cbe2b",
+        "source_fact:v1:f8d0050585dba342c76e7684c7d8b4d85f11618b63a44f7d449e1958f53971b6",
+        "source_fact:v1:febd5fdd24aa92ad1887d8a15f52eb9392ef30d9c82eab45cedf403de281eb75"
+      ],
+      "source_published_kst": "2026-10-12T02:10+09:00",
+      "source_title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)",
+      "telegram_core_fact": "그는 미국이 러시아의 전쟁 자금 조달을 막기 위해 부과했던 러시아산 연료 제재를 일시적으로 완화한 지 하루 만에 우크라이나가 러시아 정유시설을 공격한 걸 비난했다.",
+      "title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)"
     },
     "source_fact:3f589a9d0dce3c393f92b467": {
       "first_seen_kst": "2026-10-11T09:50:45+09:00",
@@ -241901,6 +242449,46 @@
       ],
       "source_published_kst": "2026-10-07T09:49+09:00",
       "title": "HD현대重 등 산학 12개 기관, ‘SMR 해양 기술 실증센터’ 출범"
+    },
+    "source_fact:416127c72e4096750f3ada25": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821231",
+      "source": "뉴시스",
+      "source_body_digest": "7688d71e456115455de6891a5fc6ac0df4c0d569f9b63a7da0e8bf85a09d017d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e115d50787ac6bb298a406758f0566d030934b4c2126870ecb3f7c6696c1f873",
+      "source_fact_keys": [
+        "source_fact:v1:1681bf8ad2c9aaa8cb25d40c7bbc30ade53a6b6f310a7ae62d7b3dd8ede33c10",
+        "source_fact:v1:1796eb3222742bec34847d259bbaf5b9a452d3fc386170e5577e623754a0aa61",
+        "source_fact:v1:1c7a39ed0fd5695364dd53417e5daab7ba192fedb804373ab5be9c1b60275340",
+        "source_fact:v1:32262a3572c6fb6ad3ec0b71419b655bd3e27dc11542d00f7a5144dff8c42e56",
+        "source_fact:v1:3cdc97e65ba66f92ff3d80d5298d22635b2dd85fc31c88dbf80a207a7d25a685",
+        "source_fact:v1:4649c9f4b05f99a39476ceb456ea27d3e781a21efff6875d3e6e3abf90012d17",
+        "source_fact:v1:471772cb8288a81ddfbb58824a8a40547b86da5a1add12c4d6a028ecb01a4961",
+        "source_fact:v1:47dcaa95ffba5f695d6100b8ca819872b4dbccbe6f07dd2f23dd570150af12d7",
+        "source_fact:v1:480b548b4335ee287b1dbaee6322e6d8692735e9cd04d4c32d411cd76b91ea51",
+        "source_fact:v1:5cb2a3f8ad01de051db8066ef6d6e9a8820c9006ce46bfb11597581ccfed2445",
+        "source_fact:v1:666e4c75e0eece1d7946da5c9302ecc6ca81f5b022b26c53c2969887da1d6c70",
+        "source_fact:v1:73fd37569a12113b37389917cf5d7479dc300026ef0b80cdd95f80297ec8ec0a",
+        "source_fact:v1:80d73e1405b541ea23e6b0d5b58d4ade1b033fce575fefe2ac4bf859caae8528",
+        "source_fact:v1:9777f9447d9a91fbeed497c73a40caf1066d02da0bc45c85ba4bf0bb864e2864",
+        "source_fact:v1:9b6027a4dc6be56fabfe9801ba7cf939260f954336e49758c1a10e6ef67d9b6e",
+        "source_fact:v1:b748bdd6b4a24cb7be436c1852e4c20c6aca1a563753525206aeb86c327bb9f5",
+        "source_fact:v1:c0966b7a4f3a4aa4ee5263b8d52067cc7fa7f868f41a42a9bb2824b046414fc4",
+        "source_fact:v1:dffeac24d7b2233d3cca621757e7c323ad736ca02515f5d9b0f9c5acd8207009",
+        "source_fact:v1:e2761a0639657b3bca984a50b3afcf1cb63be4836e78e1f50572934277f492db",
+        "source_fact:v1:e6a3dbdd9a3d1ab92ec11fc152e0b2b125ff51c441ebbe8395177ab6c84cbe2b",
+        "source_fact:v1:f8d0050585dba342c76e7684c7d8b4d85f11618b63a44f7d449e1958f53971b6",
+        "source_fact:v1:febd5fdd24aa92ad1887d8a15f52eb9392ef30d9c82eab45cedf403de281eb75"
+      ],
+      "source_published_kst": "2026-10-12T02:10+09:00",
+      "source_title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)",
+      "telegram_core_fact": "그는 미국이 러시아의 전쟁 자금 조달을 막기 위해 부과했던 러시아산 연료 제재를 일시적으로 완화한 지 하루 만에 우크라이나가 러시아 정유시설을 공격한 걸 비난했다.",
+      "title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)"
     },
     "source_fact:416a71b847230c25b944dad1": {
       "first_seen_kst": "2026-10-07T11:11:31+09:00",
@@ -263712,6 +264300,31 @@
       "source_published_kst": "2026-10-06T17:21+09:00",
       "title": "서방 제재로 런던길 막힌 러시아산 금…홍콩 수입, 7개월 만에 연간 기록 넘었다"
     },
+    "source_fact:5cbfa3551851c40fe061f2ba": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://go.seoul.co.kr/news/newsView.php?id=20261012008002",
+      "source": "서울신문",
+      "source_body_digest": "5dc8c16adc4df0d440bd24a8a77bb8953832c9395d646cbcfa6aedf6a5deaab9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:396bed4a8cd9b8cbf01a2eb1a8bc720426c1a16ea708dd293b3afb43245de325",
+      "source_fact_keys": [
+        "source_fact:v1:1a2826c1fdbdc0820a88f8a6d1b0d0b463517ac3c72f9800ff4baa72c502f3de",
+        "source_fact:v1:5a9110197229fd4c7c2f59500bd91d8eded43b46d38acce684cdd25540923d9c",
+        "source_fact:v1:62f10aa62f63ed69a023590aa4c6ae2a7d614f8fb3c26365a42affa1d802d6e1",
+        "source_fact:v1:890a1af1c45f6bb40526078593d5c7581047f6ec994dd39f35b590a6fb0f9e80",
+        "source_fact:v1:be762f51201fce73debbd3b5ffda433a90529e5e7326596dba1038b99c4ba688",
+        "source_fact:v1:bf58d5528636d0c41cd7e4ee7ae2efb9a3f56017a31168f8a2f8d40327a0aeae",
+        "source_fact:v1:f5fddbaad7179cc6b94d0ae1281b3832c9c63a2550b69069b7e802cc76f588ca"
+      ],
+      "source_published_kst": "2026-10-11T18:07+09:00",
+      "source_title": "종전보다 장사… 푸틴에 승리 안긴 트럼프 ‘거래의 기술’",
+      "telegram_core_fact": "미국과 러시아가 합의한 공급 물량은 이달 중 30만톤, 다음달 50만톤 등으로 트럼프 대통령이 밝힌 러시아의 총공급 물량은 480만톤이다. 트럼프 대통령은 지난 9일(현지시간) 트루스소셜을 통해 러시아산 경유를 미국과 세계 시장에 대규모 공급하기로 푸틴 대통령과 합의했다고 밝혔다.",
+      "title": "종전보다 장사… 푸틴에 승리 안긴 트럼프 ‘거래의 기술’"
+    },
     "source_fact:5cd034506bf019e7b42281b0": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
       "lanes": {
@@ -264154,6 +264767,46 @@
       "source_published_kst": "2026-10-06T16:17+09:00",
       "title": "신세계, 美 워너브라더스 인수에 10억달러 투자"
     },
+    "source_fact:5d2ddd388f09661c7a185c73": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821231",
+      "source": "뉴시스",
+      "source_body_digest": "7688d71e456115455de6891a5fc6ac0df4c0d569f9b63a7da0e8bf85a09d017d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e115d50787ac6bb298a406758f0566d030934b4c2126870ecb3f7c6696c1f873",
+      "source_fact_keys": [
+        "source_fact:v1:1681bf8ad2c9aaa8cb25d40c7bbc30ade53a6b6f310a7ae62d7b3dd8ede33c10",
+        "source_fact:v1:1796eb3222742bec34847d259bbaf5b9a452d3fc386170e5577e623754a0aa61",
+        "source_fact:v1:1c7a39ed0fd5695364dd53417e5daab7ba192fedb804373ab5be9c1b60275340",
+        "source_fact:v1:32262a3572c6fb6ad3ec0b71419b655bd3e27dc11542d00f7a5144dff8c42e56",
+        "source_fact:v1:3cdc97e65ba66f92ff3d80d5298d22635b2dd85fc31c88dbf80a207a7d25a685",
+        "source_fact:v1:4649c9f4b05f99a39476ceb456ea27d3e781a21efff6875d3e6e3abf90012d17",
+        "source_fact:v1:471772cb8288a81ddfbb58824a8a40547b86da5a1add12c4d6a028ecb01a4961",
+        "source_fact:v1:47dcaa95ffba5f695d6100b8ca819872b4dbccbe6f07dd2f23dd570150af12d7",
+        "source_fact:v1:480b548b4335ee287b1dbaee6322e6d8692735e9cd04d4c32d411cd76b91ea51",
+        "source_fact:v1:5cb2a3f8ad01de051db8066ef6d6e9a8820c9006ce46bfb11597581ccfed2445",
+        "source_fact:v1:666e4c75e0eece1d7946da5c9302ecc6ca81f5b022b26c53c2969887da1d6c70",
+        "source_fact:v1:73fd37569a12113b37389917cf5d7479dc300026ef0b80cdd95f80297ec8ec0a",
+        "source_fact:v1:80d73e1405b541ea23e6b0d5b58d4ade1b033fce575fefe2ac4bf859caae8528",
+        "source_fact:v1:9777f9447d9a91fbeed497c73a40caf1066d02da0bc45c85ba4bf0bb864e2864",
+        "source_fact:v1:9b6027a4dc6be56fabfe9801ba7cf939260f954336e49758c1a10e6ef67d9b6e",
+        "source_fact:v1:b748bdd6b4a24cb7be436c1852e4c20c6aca1a563753525206aeb86c327bb9f5",
+        "source_fact:v1:c0966b7a4f3a4aa4ee5263b8d52067cc7fa7f868f41a42a9bb2824b046414fc4",
+        "source_fact:v1:dffeac24d7b2233d3cca621757e7c323ad736ca02515f5d9b0f9c5acd8207009",
+        "source_fact:v1:e2761a0639657b3bca984a50b3afcf1cb63be4836e78e1f50572934277f492db",
+        "source_fact:v1:e6a3dbdd9a3d1ab92ec11fc152e0b2b125ff51c441ebbe8395177ab6c84cbe2b",
+        "source_fact:v1:f8d0050585dba342c76e7684c7d8b4d85f11618b63a44f7d449e1958f53971b6",
+        "source_fact:v1:febd5fdd24aa92ad1887d8a15f52eb9392ef30d9c82eab45cedf403de281eb75"
+      ],
+      "source_published_kst": "2026-10-12T02:10+09:00",
+      "source_title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)",
+      "telegram_core_fact": "그는 미국이 러시아의 전쟁 자금 조달을 막기 위해 부과했던 러시아산 연료 제재를 일시적으로 완화한 지 하루 만에 우크라이나가 러시아 정유시설을 공격한 걸 비난했다.",
+      "title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)"
+    },
     "source_fact:5d2fb7e5a99473615ab4b7f0": {
       "first_seen_kst": "2026-10-07T16:57:09+09:00",
       "lanes": {
@@ -264280,6 +264933,46 @@
       "source_title": "코스피, 3분기 수익률 -19.3%…대만으로 눈 돌린 글로벌 투자자",
       "telegram_core_fact": "대만 기업들은 AI 인프라 투자 확대에 따른 판매량 증가로 실적을 끌어올리고 있는 반면 한국 반도체 기업의 이익은 메모리 가격 상승에 대한 의존도가 높다. 코스콤 CHECK 등에 따르면 코스피는 올해 3분기 19.33% 하락했다.",
       "title": "코스피, 3분기 수익률 -19.3%…대만으로 눈 돌린 글로벌 투자자"
+    },
+    "source_fact:5d66caca5ce4e7f69cb99ff1": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821231",
+      "source": "뉴시스",
+      "source_body_digest": "7688d71e456115455de6891a5fc6ac0df4c0d569f9b63a7da0e8bf85a09d017d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e115d50787ac6bb298a406758f0566d030934b4c2126870ecb3f7c6696c1f873",
+      "source_fact_keys": [
+        "source_fact:v1:1681bf8ad2c9aaa8cb25d40c7bbc30ade53a6b6f310a7ae62d7b3dd8ede33c10",
+        "source_fact:v1:1796eb3222742bec34847d259bbaf5b9a452d3fc386170e5577e623754a0aa61",
+        "source_fact:v1:1c7a39ed0fd5695364dd53417e5daab7ba192fedb804373ab5be9c1b60275340",
+        "source_fact:v1:32262a3572c6fb6ad3ec0b71419b655bd3e27dc11542d00f7a5144dff8c42e56",
+        "source_fact:v1:3cdc97e65ba66f92ff3d80d5298d22635b2dd85fc31c88dbf80a207a7d25a685",
+        "source_fact:v1:4649c9f4b05f99a39476ceb456ea27d3e781a21efff6875d3e6e3abf90012d17",
+        "source_fact:v1:471772cb8288a81ddfbb58824a8a40547b86da5a1add12c4d6a028ecb01a4961",
+        "source_fact:v1:47dcaa95ffba5f695d6100b8ca819872b4dbccbe6f07dd2f23dd570150af12d7",
+        "source_fact:v1:480b548b4335ee287b1dbaee6322e6d8692735e9cd04d4c32d411cd76b91ea51",
+        "source_fact:v1:5cb2a3f8ad01de051db8066ef6d6e9a8820c9006ce46bfb11597581ccfed2445",
+        "source_fact:v1:666e4c75e0eece1d7946da5c9302ecc6ca81f5b022b26c53c2969887da1d6c70",
+        "source_fact:v1:73fd37569a12113b37389917cf5d7479dc300026ef0b80cdd95f80297ec8ec0a",
+        "source_fact:v1:80d73e1405b541ea23e6b0d5b58d4ade1b033fce575fefe2ac4bf859caae8528",
+        "source_fact:v1:9777f9447d9a91fbeed497c73a40caf1066d02da0bc45c85ba4bf0bb864e2864",
+        "source_fact:v1:9b6027a4dc6be56fabfe9801ba7cf939260f954336e49758c1a10e6ef67d9b6e",
+        "source_fact:v1:b748bdd6b4a24cb7be436c1852e4c20c6aca1a563753525206aeb86c327bb9f5",
+        "source_fact:v1:c0966b7a4f3a4aa4ee5263b8d52067cc7fa7f868f41a42a9bb2824b046414fc4",
+        "source_fact:v1:dffeac24d7b2233d3cca621757e7c323ad736ca02515f5d9b0f9c5acd8207009",
+        "source_fact:v1:e2761a0639657b3bca984a50b3afcf1cb63be4836e78e1f50572934277f492db",
+        "source_fact:v1:e6a3dbdd9a3d1ab92ec11fc152e0b2b125ff51c441ebbe8395177ab6c84cbe2b",
+        "source_fact:v1:f8d0050585dba342c76e7684c7d8b4d85f11618b63a44f7d449e1958f53971b6",
+        "source_fact:v1:febd5fdd24aa92ad1887d8a15f52eb9392ef30d9c82eab45cedf403de281eb75"
+      ],
+      "source_published_kst": "2026-10-12T02:10+09:00",
+      "source_title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)",
+      "telegram_core_fact": "그는 미국이 러시아의 전쟁 자금 조달을 막기 위해 부과했던 러시아산 연료 제재를 일시적으로 완화한 지 하루 만에 우크라이나가 러시아 정유시설을 공격한 걸 비난했다.",
+      "title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)"
     },
     "source_fact:5d67a5d10fb766ceae9a8b75": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
@@ -272507,6 +273200,46 @@
       "source_published_kst": "2026-10-07T11:25+09:00",
       "title": "홍지선 국토장관 “비아파트 주거사다리 효과, 충분히 검토 못해” [국감]"
     },
+    "source_fact:68b88144fb8a1c5f51e7dd33": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821231",
+      "source": "뉴시스",
+      "source_body_digest": "7688d71e456115455de6891a5fc6ac0df4c0d569f9b63a7da0e8bf85a09d017d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e115d50787ac6bb298a406758f0566d030934b4c2126870ecb3f7c6696c1f873",
+      "source_fact_keys": [
+        "source_fact:v1:1681bf8ad2c9aaa8cb25d40c7bbc30ade53a6b6f310a7ae62d7b3dd8ede33c10",
+        "source_fact:v1:1796eb3222742bec34847d259bbaf5b9a452d3fc386170e5577e623754a0aa61",
+        "source_fact:v1:1c7a39ed0fd5695364dd53417e5daab7ba192fedb804373ab5be9c1b60275340",
+        "source_fact:v1:32262a3572c6fb6ad3ec0b71419b655bd3e27dc11542d00f7a5144dff8c42e56",
+        "source_fact:v1:3cdc97e65ba66f92ff3d80d5298d22635b2dd85fc31c88dbf80a207a7d25a685",
+        "source_fact:v1:4649c9f4b05f99a39476ceb456ea27d3e781a21efff6875d3e6e3abf90012d17",
+        "source_fact:v1:471772cb8288a81ddfbb58824a8a40547b86da5a1add12c4d6a028ecb01a4961",
+        "source_fact:v1:47dcaa95ffba5f695d6100b8ca819872b4dbccbe6f07dd2f23dd570150af12d7",
+        "source_fact:v1:480b548b4335ee287b1dbaee6322e6d8692735e9cd04d4c32d411cd76b91ea51",
+        "source_fact:v1:5cb2a3f8ad01de051db8066ef6d6e9a8820c9006ce46bfb11597581ccfed2445",
+        "source_fact:v1:666e4c75e0eece1d7946da5c9302ecc6ca81f5b022b26c53c2969887da1d6c70",
+        "source_fact:v1:73fd37569a12113b37389917cf5d7479dc300026ef0b80cdd95f80297ec8ec0a",
+        "source_fact:v1:80d73e1405b541ea23e6b0d5b58d4ade1b033fce575fefe2ac4bf859caae8528",
+        "source_fact:v1:9777f9447d9a91fbeed497c73a40caf1066d02da0bc45c85ba4bf0bb864e2864",
+        "source_fact:v1:9b6027a4dc6be56fabfe9801ba7cf939260f954336e49758c1a10e6ef67d9b6e",
+        "source_fact:v1:b748bdd6b4a24cb7be436c1852e4c20c6aca1a563753525206aeb86c327bb9f5",
+        "source_fact:v1:c0966b7a4f3a4aa4ee5263b8d52067cc7fa7f868f41a42a9bb2824b046414fc4",
+        "source_fact:v1:dffeac24d7b2233d3cca621757e7c323ad736ca02515f5d9b0f9c5acd8207009",
+        "source_fact:v1:e2761a0639657b3bca984a50b3afcf1cb63be4836e78e1f50572934277f492db",
+        "source_fact:v1:e6a3dbdd9a3d1ab92ec11fc152e0b2b125ff51c441ebbe8395177ab6c84cbe2b",
+        "source_fact:v1:f8d0050585dba342c76e7684c7d8b4d85f11618b63a44f7d449e1958f53971b6",
+        "source_fact:v1:febd5fdd24aa92ad1887d8a15f52eb9392ef30d9c82eab45cedf403de281eb75"
+      ],
+      "source_published_kst": "2026-10-12T02:10+09:00",
+      "source_title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)",
+      "telegram_core_fact": "그는 미국이 러시아의 전쟁 자금 조달을 막기 위해 부과했던 러시아산 연료 제재를 일시적으로 완화한 지 하루 만에 우크라이나가 러시아 정유시설을 공격한 걸 비난했다.",
+      "title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)"
+    },
     "source_fact:68bb3abf80abf8a51ae29432": {
       "first_seen_kst": "2026-10-08T11:28:27+09:00",
       "lanes": {
@@ -279932,6 +280665,46 @@
       "source_published_kst": "2026-10-05T08:55+09:00",
       "title": "매크로 공백+SEC 규제완화 효과…8.6만달러 회복[코인 모닝콜]"
     },
+    "source_fact:73180f9ab7c6177d36834de2": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821231",
+      "source": "뉴시스",
+      "source_body_digest": "7688d71e456115455de6891a5fc6ac0df4c0d569f9b63a7da0e8bf85a09d017d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e115d50787ac6bb298a406758f0566d030934b4c2126870ecb3f7c6696c1f873",
+      "source_fact_keys": [
+        "source_fact:v1:1681bf8ad2c9aaa8cb25d40c7bbc30ade53a6b6f310a7ae62d7b3dd8ede33c10",
+        "source_fact:v1:1796eb3222742bec34847d259bbaf5b9a452d3fc386170e5577e623754a0aa61",
+        "source_fact:v1:1c7a39ed0fd5695364dd53417e5daab7ba192fedb804373ab5be9c1b60275340",
+        "source_fact:v1:32262a3572c6fb6ad3ec0b71419b655bd3e27dc11542d00f7a5144dff8c42e56",
+        "source_fact:v1:3cdc97e65ba66f92ff3d80d5298d22635b2dd85fc31c88dbf80a207a7d25a685",
+        "source_fact:v1:4649c9f4b05f99a39476ceb456ea27d3e781a21efff6875d3e6e3abf90012d17",
+        "source_fact:v1:471772cb8288a81ddfbb58824a8a40547b86da5a1add12c4d6a028ecb01a4961",
+        "source_fact:v1:47dcaa95ffba5f695d6100b8ca819872b4dbccbe6f07dd2f23dd570150af12d7",
+        "source_fact:v1:480b548b4335ee287b1dbaee6322e6d8692735e9cd04d4c32d411cd76b91ea51",
+        "source_fact:v1:5cb2a3f8ad01de051db8066ef6d6e9a8820c9006ce46bfb11597581ccfed2445",
+        "source_fact:v1:666e4c75e0eece1d7946da5c9302ecc6ca81f5b022b26c53c2969887da1d6c70",
+        "source_fact:v1:73fd37569a12113b37389917cf5d7479dc300026ef0b80cdd95f80297ec8ec0a",
+        "source_fact:v1:80d73e1405b541ea23e6b0d5b58d4ade1b033fce575fefe2ac4bf859caae8528",
+        "source_fact:v1:9777f9447d9a91fbeed497c73a40caf1066d02da0bc45c85ba4bf0bb864e2864",
+        "source_fact:v1:9b6027a4dc6be56fabfe9801ba7cf939260f954336e49758c1a10e6ef67d9b6e",
+        "source_fact:v1:b748bdd6b4a24cb7be436c1852e4c20c6aca1a563753525206aeb86c327bb9f5",
+        "source_fact:v1:c0966b7a4f3a4aa4ee5263b8d52067cc7fa7f868f41a42a9bb2824b046414fc4",
+        "source_fact:v1:dffeac24d7b2233d3cca621757e7c323ad736ca02515f5d9b0f9c5acd8207009",
+        "source_fact:v1:e2761a0639657b3bca984a50b3afcf1cb63be4836e78e1f50572934277f492db",
+        "source_fact:v1:e6a3dbdd9a3d1ab92ec11fc152e0b2b125ff51c441ebbe8395177ab6c84cbe2b",
+        "source_fact:v1:f8d0050585dba342c76e7684c7d8b4d85f11618b63a44f7d449e1958f53971b6",
+        "source_fact:v1:febd5fdd24aa92ad1887d8a15f52eb9392ef30d9c82eab45cedf403de281eb75"
+      ],
+      "source_published_kst": "2026-10-12T02:10+09:00",
+      "source_title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)",
+      "telegram_core_fact": "그는 미국이 러시아의 전쟁 자금 조달을 막기 위해 부과했던 러시아산 연료 제재를 일시적으로 완화한 지 하루 만에 우크라이나가 러시아 정유시설을 공격한 걸 비난했다.",
+      "title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)"
+    },
     "source_fact:732c1bed4d69751862f1dea8": {
       "first_seen_kst": "2026-10-06T23:29:45+09:00",
       "lanes": {
@@ -280574,6 +281347,46 @@
       ],
       "source_published_kst": "2026-10-06T15:43+09:00",
       "title": "李대통령, 알시시 이집트 대통령과 정상회담…인프라·공급망 협력 확대"
+    },
+    "source_fact:741472109392314d30058540": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821231",
+      "source": "뉴시스",
+      "source_body_digest": "7688d71e456115455de6891a5fc6ac0df4c0d569f9b63a7da0e8bf85a09d017d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e115d50787ac6bb298a406758f0566d030934b4c2126870ecb3f7c6696c1f873",
+      "source_fact_keys": [
+        "source_fact:v1:1681bf8ad2c9aaa8cb25d40c7bbc30ade53a6b6f310a7ae62d7b3dd8ede33c10",
+        "source_fact:v1:1796eb3222742bec34847d259bbaf5b9a452d3fc386170e5577e623754a0aa61",
+        "source_fact:v1:1c7a39ed0fd5695364dd53417e5daab7ba192fedb804373ab5be9c1b60275340",
+        "source_fact:v1:32262a3572c6fb6ad3ec0b71419b655bd3e27dc11542d00f7a5144dff8c42e56",
+        "source_fact:v1:3cdc97e65ba66f92ff3d80d5298d22635b2dd85fc31c88dbf80a207a7d25a685",
+        "source_fact:v1:4649c9f4b05f99a39476ceb456ea27d3e781a21efff6875d3e6e3abf90012d17",
+        "source_fact:v1:471772cb8288a81ddfbb58824a8a40547b86da5a1add12c4d6a028ecb01a4961",
+        "source_fact:v1:47dcaa95ffba5f695d6100b8ca819872b4dbccbe6f07dd2f23dd570150af12d7",
+        "source_fact:v1:480b548b4335ee287b1dbaee6322e6d8692735e9cd04d4c32d411cd76b91ea51",
+        "source_fact:v1:5cb2a3f8ad01de051db8066ef6d6e9a8820c9006ce46bfb11597581ccfed2445",
+        "source_fact:v1:666e4c75e0eece1d7946da5c9302ecc6ca81f5b022b26c53c2969887da1d6c70",
+        "source_fact:v1:73fd37569a12113b37389917cf5d7479dc300026ef0b80cdd95f80297ec8ec0a",
+        "source_fact:v1:80d73e1405b541ea23e6b0d5b58d4ade1b033fce575fefe2ac4bf859caae8528",
+        "source_fact:v1:9777f9447d9a91fbeed497c73a40caf1066d02da0bc45c85ba4bf0bb864e2864",
+        "source_fact:v1:9b6027a4dc6be56fabfe9801ba7cf939260f954336e49758c1a10e6ef67d9b6e",
+        "source_fact:v1:b748bdd6b4a24cb7be436c1852e4c20c6aca1a563753525206aeb86c327bb9f5",
+        "source_fact:v1:c0966b7a4f3a4aa4ee5263b8d52067cc7fa7f868f41a42a9bb2824b046414fc4",
+        "source_fact:v1:dffeac24d7b2233d3cca621757e7c323ad736ca02515f5d9b0f9c5acd8207009",
+        "source_fact:v1:e2761a0639657b3bca984a50b3afcf1cb63be4836e78e1f50572934277f492db",
+        "source_fact:v1:e6a3dbdd9a3d1ab92ec11fc152e0b2b125ff51c441ebbe8395177ab6c84cbe2b",
+        "source_fact:v1:f8d0050585dba342c76e7684c7d8b4d85f11618b63a44f7d449e1958f53971b6",
+        "source_fact:v1:febd5fdd24aa92ad1887d8a15f52eb9392ef30d9c82eab45cedf403de281eb75"
+      ],
+      "source_published_kst": "2026-10-12T02:10+09:00",
+      "source_title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)",
+      "telegram_core_fact": "그는 미국이 러시아의 전쟁 자금 조달을 막기 위해 부과했던 러시아산 연료 제재를 일시적으로 완화한 지 하루 만에 우크라이나가 러시아 정유시설을 공격한 걸 비난했다.",
+      "title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)"
     },
     "source_fact:741adeea4feea97ac6fafcfe": {
       "first_seen_kst": "2026-10-08T10:43:48+09:00",
@@ -296916,6 +297729,31 @@
       "telegram_core_fact": "시장조사업체 트렌드포스는 올해 4·4분기 모든 낸드 플래시 제품군의 계약 가격이 전 분기 대비 15~20% 상승할 것으로 예상했다.",
       "title": "삼전닉스 '낸드' 잭팟 터진다… 로봇용 D램도 기대감 솔솔"
     },
+    "source_fact:89b6ae59f304ebe3b1bf9cb7": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://go.seoul.co.kr/news/newsView.php?id=20261012008002",
+      "source": "서울신문",
+      "source_body_digest": "5dc8c16adc4df0d440bd24a8a77bb8953832c9395d646cbcfa6aedf6a5deaab9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:396bed4a8cd9b8cbf01a2eb1a8bc720426c1a16ea708dd293b3afb43245de325",
+      "source_fact_keys": [
+        "source_fact:v1:1a2826c1fdbdc0820a88f8a6d1b0d0b463517ac3c72f9800ff4baa72c502f3de",
+        "source_fact:v1:5a9110197229fd4c7c2f59500bd91d8eded43b46d38acce684cdd25540923d9c",
+        "source_fact:v1:62f10aa62f63ed69a023590aa4c6ae2a7d614f8fb3c26365a42affa1d802d6e1",
+        "source_fact:v1:890a1af1c45f6bb40526078593d5c7581047f6ec994dd39f35b590a6fb0f9e80",
+        "source_fact:v1:be762f51201fce73debbd3b5ffda433a90529e5e7326596dba1038b99c4ba688",
+        "source_fact:v1:bf58d5528636d0c41cd7e4ee7ae2efb9a3f56017a31168f8a2f8d40327a0aeae",
+        "source_fact:v1:f5fddbaad7179cc6b94d0ae1281b3832c9c63a2550b69069b7e802cc76f588ca"
+      ],
+      "source_published_kst": "2026-10-11T18:07+09:00",
+      "source_title": "종전보다 장사… 푸틴에 승리 안긴 트럼프 ‘거래의 기술’",
+      "telegram_core_fact": "미국과 러시아가 합의한 공급 물량은 이달 중 30만톤, 다음달 50만톤 등으로 트럼프 대통령이 밝힌 러시아의 총공급 물량은 480만톤이다. 트럼프 대통령은 지난 9일(현지시간) 트루스소셜을 통해 러시아산 경유를 미국과 세계 시장에 대규모 공급하기로 푸틴 대통령과 합의했다고 밝혔다.",
+      "title": "종전보다 장사… 푸틴에 승리 안긴 트럼프 ‘거래의 기술’"
+    },
     "source_fact:89bbadd0d91faea58d9c7866": {
       "first_seen_kst": "2026-10-11T22:33:08+09:00",
       "lanes": {
@@ -306648,6 +307486,31 @@
       "source_published_kst": "2026-10-06T11:15+09:00",
       "title": "[더벨]네오리진, 글로벌 AI 추론 기업 'NOVA'에 50만달러 투자"
     },
+    "source_fact:97297043e15bfd006baa7f78": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://go.seoul.co.kr/news/newsView.php?id=20261012008002",
+      "source": "서울신문",
+      "source_body_digest": "5dc8c16adc4df0d440bd24a8a77bb8953832c9395d646cbcfa6aedf6a5deaab9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:396bed4a8cd9b8cbf01a2eb1a8bc720426c1a16ea708dd293b3afb43245de325",
+      "source_fact_keys": [
+        "source_fact:v1:1a2826c1fdbdc0820a88f8a6d1b0d0b463517ac3c72f9800ff4baa72c502f3de",
+        "source_fact:v1:5a9110197229fd4c7c2f59500bd91d8eded43b46d38acce684cdd25540923d9c",
+        "source_fact:v1:62f10aa62f63ed69a023590aa4c6ae2a7d614f8fb3c26365a42affa1d802d6e1",
+        "source_fact:v1:890a1af1c45f6bb40526078593d5c7581047f6ec994dd39f35b590a6fb0f9e80",
+        "source_fact:v1:be762f51201fce73debbd3b5ffda433a90529e5e7326596dba1038b99c4ba688",
+        "source_fact:v1:bf58d5528636d0c41cd7e4ee7ae2efb9a3f56017a31168f8a2f8d40327a0aeae",
+        "source_fact:v1:f5fddbaad7179cc6b94d0ae1281b3832c9c63a2550b69069b7e802cc76f588ca"
+      ],
+      "source_published_kst": "2026-10-11T18:07+09:00",
+      "source_title": "종전보다 장사… 푸틴에 승리 안긴 트럼프 ‘거래의 기술’",
+      "telegram_core_fact": "미국과 러시아가 합의한 공급 물량은 이달 중 30만톤, 다음달 50만톤 등으로 트럼프 대통령이 밝힌 러시아의 총공급 물량은 480만톤이다. 트럼프 대통령은 지난 9일(현지시간) 트루스소셜을 통해 러시아산 경유를 미국과 세계 시장에 대규모 공급하기로 푸틴 대통령과 합의했다고 밝혔다.",
+      "title": "종전보다 장사… 푸틴에 승리 안긴 트럼프 ‘거래의 기술’"
+    },
     "source_fact:9730b1c5fe9fd7b4a70b8ca4": {
       "first_seen_kst": "2026-10-08T00:54:18+09:00",
       "lanes": {
@@ -314132,6 +314995,46 @@
       "telegram_core_fact": "RTT 뉴스와 마켓워치, dpa 통신에 따르면 독일 연방통계청은 7일 2026년 8월 산업생산이 계절 조정치로 전월 대비 2.0% 증대했다고 발표했다. 유럽 최대 경제국 독일의 8월 산업생산은 건설과 기계·설비 생산 호조에 힘입어 17개월 만에 가장 큰 폭으로 증가했다.",
       "title": "8월 유로존 산업생산 2.0%↑…\"건설 호조에 17개월 만에 최대폭\""
     },
+    "source_fact:a10cfd3be20ce5f48ae5e67a": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821231",
+      "source": "뉴시스",
+      "source_body_digest": "7688d71e456115455de6891a5fc6ac0df4c0d569f9b63a7da0e8bf85a09d017d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e115d50787ac6bb298a406758f0566d030934b4c2126870ecb3f7c6696c1f873",
+      "source_fact_keys": [
+        "source_fact:v1:1681bf8ad2c9aaa8cb25d40c7bbc30ade53a6b6f310a7ae62d7b3dd8ede33c10",
+        "source_fact:v1:1796eb3222742bec34847d259bbaf5b9a452d3fc386170e5577e623754a0aa61",
+        "source_fact:v1:1c7a39ed0fd5695364dd53417e5daab7ba192fedb804373ab5be9c1b60275340",
+        "source_fact:v1:32262a3572c6fb6ad3ec0b71419b655bd3e27dc11542d00f7a5144dff8c42e56",
+        "source_fact:v1:3cdc97e65ba66f92ff3d80d5298d22635b2dd85fc31c88dbf80a207a7d25a685",
+        "source_fact:v1:4649c9f4b05f99a39476ceb456ea27d3e781a21efff6875d3e6e3abf90012d17",
+        "source_fact:v1:471772cb8288a81ddfbb58824a8a40547b86da5a1add12c4d6a028ecb01a4961",
+        "source_fact:v1:47dcaa95ffba5f695d6100b8ca819872b4dbccbe6f07dd2f23dd570150af12d7",
+        "source_fact:v1:480b548b4335ee287b1dbaee6322e6d8692735e9cd04d4c32d411cd76b91ea51",
+        "source_fact:v1:5cb2a3f8ad01de051db8066ef6d6e9a8820c9006ce46bfb11597581ccfed2445",
+        "source_fact:v1:666e4c75e0eece1d7946da5c9302ecc6ca81f5b022b26c53c2969887da1d6c70",
+        "source_fact:v1:73fd37569a12113b37389917cf5d7479dc300026ef0b80cdd95f80297ec8ec0a",
+        "source_fact:v1:80d73e1405b541ea23e6b0d5b58d4ade1b033fce575fefe2ac4bf859caae8528",
+        "source_fact:v1:9777f9447d9a91fbeed497c73a40caf1066d02da0bc45c85ba4bf0bb864e2864",
+        "source_fact:v1:9b6027a4dc6be56fabfe9801ba7cf939260f954336e49758c1a10e6ef67d9b6e",
+        "source_fact:v1:b748bdd6b4a24cb7be436c1852e4c20c6aca1a563753525206aeb86c327bb9f5",
+        "source_fact:v1:c0966b7a4f3a4aa4ee5263b8d52067cc7fa7f868f41a42a9bb2824b046414fc4",
+        "source_fact:v1:dffeac24d7b2233d3cca621757e7c323ad736ca02515f5d9b0f9c5acd8207009",
+        "source_fact:v1:e2761a0639657b3bca984a50b3afcf1cb63be4836e78e1f50572934277f492db",
+        "source_fact:v1:e6a3dbdd9a3d1ab92ec11fc152e0b2b125ff51c441ebbe8395177ab6c84cbe2b",
+        "source_fact:v1:f8d0050585dba342c76e7684c7d8b4d85f11618b63a44f7d449e1958f53971b6",
+        "source_fact:v1:febd5fdd24aa92ad1887d8a15f52eb9392ef30d9c82eab45cedf403de281eb75"
+      ],
+      "source_published_kst": "2026-10-12T02:10+09:00",
+      "source_title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)",
+      "telegram_core_fact": "그는 미국이 러시아의 전쟁 자금 조달을 막기 위해 부과했던 러시아산 연료 제재를 일시적으로 완화한 지 하루 만에 우크라이나가 러시아 정유시설을 공격한 걸 비난했다.",
+      "title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)"
+    },
     "source_fact:a11d433db5a65a980d3fa8ba": {
       "first_seen_kst": "2026-10-06T19:33:48+09:00",
       "lanes": {
@@ -314219,6 +315122,46 @@
       "source_title": "3주 만에 32% 뛰어올라…한섬 주가 들썩이는 이유",
       "telegram_core_fact": "주주환원 정책 공시 이후 한섬 보고서를 낸 증권사 5곳은 모두 ‘매수’ 의견을 냈고, 이 가운데 4곳이 목표주가를 올렸다.",
       "title": "3주 만에 32% 뛰어올라…한섬 주가 들썩이는 이유"
+    },
+    "source_fact:a12cb6d1afd41eb959bdf6a4": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821231",
+      "source": "뉴시스",
+      "source_body_digest": "7688d71e456115455de6891a5fc6ac0df4c0d569f9b63a7da0e8bf85a09d017d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e115d50787ac6bb298a406758f0566d030934b4c2126870ecb3f7c6696c1f873",
+      "source_fact_keys": [
+        "source_fact:v1:1681bf8ad2c9aaa8cb25d40c7bbc30ade53a6b6f310a7ae62d7b3dd8ede33c10",
+        "source_fact:v1:1796eb3222742bec34847d259bbaf5b9a452d3fc386170e5577e623754a0aa61",
+        "source_fact:v1:1c7a39ed0fd5695364dd53417e5daab7ba192fedb804373ab5be9c1b60275340",
+        "source_fact:v1:32262a3572c6fb6ad3ec0b71419b655bd3e27dc11542d00f7a5144dff8c42e56",
+        "source_fact:v1:3cdc97e65ba66f92ff3d80d5298d22635b2dd85fc31c88dbf80a207a7d25a685",
+        "source_fact:v1:4649c9f4b05f99a39476ceb456ea27d3e781a21efff6875d3e6e3abf90012d17",
+        "source_fact:v1:471772cb8288a81ddfbb58824a8a40547b86da5a1add12c4d6a028ecb01a4961",
+        "source_fact:v1:47dcaa95ffba5f695d6100b8ca819872b4dbccbe6f07dd2f23dd570150af12d7",
+        "source_fact:v1:480b548b4335ee287b1dbaee6322e6d8692735e9cd04d4c32d411cd76b91ea51",
+        "source_fact:v1:5cb2a3f8ad01de051db8066ef6d6e9a8820c9006ce46bfb11597581ccfed2445",
+        "source_fact:v1:666e4c75e0eece1d7946da5c9302ecc6ca81f5b022b26c53c2969887da1d6c70",
+        "source_fact:v1:73fd37569a12113b37389917cf5d7479dc300026ef0b80cdd95f80297ec8ec0a",
+        "source_fact:v1:80d73e1405b541ea23e6b0d5b58d4ade1b033fce575fefe2ac4bf859caae8528",
+        "source_fact:v1:9777f9447d9a91fbeed497c73a40caf1066d02da0bc45c85ba4bf0bb864e2864",
+        "source_fact:v1:9b6027a4dc6be56fabfe9801ba7cf939260f954336e49758c1a10e6ef67d9b6e",
+        "source_fact:v1:b748bdd6b4a24cb7be436c1852e4c20c6aca1a563753525206aeb86c327bb9f5",
+        "source_fact:v1:c0966b7a4f3a4aa4ee5263b8d52067cc7fa7f868f41a42a9bb2824b046414fc4",
+        "source_fact:v1:dffeac24d7b2233d3cca621757e7c323ad736ca02515f5d9b0f9c5acd8207009",
+        "source_fact:v1:e2761a0639657b3bca984a50b3afcf1cb63be4836e78e1f50572934277f492db",
+        "source_fact:v1:e6a3dbdd9a3d1ab92ec11fc152e0b2b125ff51c441ebbe8395177ab6c84cbe2b",
+        "source_fact:v1:f8d0050585dba342c76e7684c7d8b4d85f11618b63a44f7d449e1958f53971b6",
+        "source_fact:v1:febd5fdd24aa92ad1887d8a15f52eb9392ef30d9c82eab45cedf403de281eb75"
+      ],
+      "source_published_kst": "2026-10-12T02:10+09:00",
+      "source_title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)",
+      "telegram_core_fact": "그는 미국이 러시아의 전쟁 자금 조달을 막기 위해 부과했던 러시아산 연료 제재를 일시적으로 완화한 지 하루 만에 우크라이나가 러시아 정유시설을 공격한 걸 비난했다.",
+      "title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)"
     },
     "source_fact:a12ec5e4484daca9fb23c66f": {
       "first_seen_kst": "2026-10-08T20:58:15+09:00",
@@ -317474,6 +318417,46 @@
       ],
       "source_published_kst": "2026-10-06T02:28+09:00",
       "title": "아람코 CEO \"세계 석유 공급 이미 압박…비축 최대 2년\""
+    },
+    "source_fact:a5d369c67e906e88f5cfdff5": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821231",
+      "source": "뉴시스",
+      "source_body_digest": "7688d71e456115455de6891a5fc6ac0df4c0d569f9b63a7da0e8bf85a09d017d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e115d50787ac6bb298a406758f0566d030934b4c2126870ecb3f7c6696c1f873",
+      "source_fact_keys": [
+        "source_fact:v1:1681bf8ad2c9aaa8cb25d40c7bbc30ade53a6b6f310a7ae62d7b3dd8ede33c10",
+        "source_fact:v1:1796eb3222742bec34847d259bbaf5b9a452d3fc386170e5577e623754a0aa61",
+        "source_fact:v1:1c7a39ed0fd5695364dd53417e5daab7ba192fedb804373ab5be9c1b60275340",
+        "source_fact:v1:32262a3572c6fb6ad3ec0b71419b655bd3e27dc11542d00f7a5144dff8c42e56",
+        "source_fact:v1:3cdc97e65ba66f92ff3d80d5298d22635b2dd85fc31c88dbf80a207a7d25a685",
+        "source_fact:v1:4649c9f4b05f99a39476ceb456ea27d3e781a21efff6875d3e6e3abf90012d17",
+        "source_fact:v1:471772cb8288a81ddfbb58824a8a40547b86da5a1add12c4d6a028ecb01a4961",
+        "source_fact:v1:47dcaa95ffba5f695d6100b8ca819872b4dbccbe6f07dd2f23dd570150af12d7",
+        "source_fact:v1:480b548b4335ee287b1dbaee6322e6d8692735e9cd04d4c32d411cd76b91ea51",
+        "source_fact:v1:5cb2a3f8ad01de051db8066ef6d6e9a8820c9006ce46bfb11597581ccfed2445",
+        "source_fact:v1:666e4c75e0eece1d7946da5c9302ecc6ca81f5b022b26c53c2969887da1d6c70",
+        "source_fact:v1:73fd37569a12113b37389917cf5d7479dc300026ef0b80cdd95f80297ec8ec0a",
+        "source_fact:v1:80d73e1405b541ea23e6b0d5b58d4ade1b033fce575fefe2ac4bf859caae8528",
+        "source_fact:v1:9777f9447d9a91fbeed497c73a40caf1066d02da0bc45c85ba4bf0bb864e2864",
+        "source_fact:v1:9b6027a4dc6be56fabfe9801ba7cf939260f954336e49758c1a10e6ef67d9b6e",
+        "source_fact:v1:b748bdd6b4a24cb7be436c1852e4c20c6aca1a563753525206aeb86c327bb9f5",
+        "source_fact:v1:c0966b7a4f3a4aa4ee5263b8d52067cc7fa7f868f41a42a9bb2824b046414fc4",
+        "source_fact:v1:dffeac24d7b2233d3cca621757e7c323ad736ca02515f5d9b0f9c5acd8207009",
+        "source_fact:v1:e2761a0639657b3bca984a50b3afcf1cb63be4836e78e1f50572934277f492db",
+        "source_fact:v1:e6a3dbdd9a3d1ab92ec11fc152e0b2b125ff51c441ebbe8395177ab6c84cbe2b",
+        "source_fact:v1:f8d0050585dba342c76e7684c7d8b4d85f11618b63a44f7d449e1958f53971b6",
+        "source_fact:v1:febd5fdd24aa92ad1887d8a15f52eb9392ef30d9c82eab45cedf403de281eb75"
+      ],
+      "source_published_kst": "2026-10-12T02:10+09:00",
+      "source_title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)",
+      "telegram_core_fact": "그는 미국이 러시아의 전쟁 자금 조달을 막기 위해 부과했던 러시아산 연료 제재를 일시적으로 완화한 지 하루 만에 우크라이나가 러시아 정유시설을 공격한 걸 비난했다.",
+      "title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)"
     },
     "source_fact:a5dddf815f00d8df7a5927d9": {
       "first_seen_kst": "2026-10-11T04:00:46+09:00",
@@ -339807,6 +340790,46 @@
       "source_published_kst": "2026-10-05T11:05+09:00",
       "title": "KT, 경북 칠곡서 산불 대비 통신 점검"
     },
+    "source_fact:c4424c78a5f43a16821ac599": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821231",
+      "source": "뉴시스",
+      "source_body_digest": "7688d71e456115455de6891a5fc6ac0df4c0d569f9b63a7da0e8bf85a09d017d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e115d50787ac6bb298a406758f0566d030934b4c2126870ecb3f7c6696c1f873",
+      "source_fact_keys": [
+        "source_fact:v1:1681bf8ad2c9aaa8cb25d40c7bbc30ade53a6b6f310a7ae62d7b3dd8ede33c10",
+        "source_fact:v1:1796eb3222742bec34847d259bbaf5b9a452d3fc386170e5577e623754a0aa61",
+        "source_fact:v1:1c7a39ed0fd5695364dd53417e5daab7ba192fedb804373ab5be9c1b60275340",
+        "source_fact:v1:32262a3572c6fb6ad3ec0b71419b655bd3e27dc11542d00f7a5144dff8c42e56",
+        "source_fact:v1:3cdc97e65ba66f92ff3d80d5298d22635b2dd85fc31c88dbf80a207a7d25a685",
+        "source_fact:v1:4649c9f4b05f99a39476ceb456ea27d3e781a21efff6875d3e6e3abf90012d17",
+        "source_fact:v1:471772cb8288a81ddfbb58824a8a40547b86da5a1add12c4d6a028ecb01a4961",
+        "source_fact:v1:47dcaa95ffba5f695d6100b8ca819872b4dbccbe6f07dd2f23dd570150af12d7",
+        "source_fact:v1:480b548b4335ee287b1dbaee6322e6d8692735e9cd04d4c32d411cd76b91ea51",
+        "source_fact:v1:5cb2a3f8ad01de051db8066ef6d6e9a8820c9006ce46bfb11597581ccfed2445",
+        "source_fact:v1:666e4c75e0eece1d7946da5c9302ecc6ca81f5b022b26c53c2969887da1d6c70",
+        "source_fact:v1:73fd37569a12113b37389917cf5d7479dc300026ef0b80cdd95f80297ec8ec0a",
+        "source_fact:v1:80d73e1405b541ea23e6b0d5b58d4ade1b033fce575fefe2ac4bf859caae8528",
+        "source_fact:v1:9777f9447d9a91fbeed497c73a40caf1066d02da0bc45c85ba4bf0bb864e2864",
+        "source_fact:v1:9b6027a4dc6be56fabfe9801ba7cf939260f954336e49758c1a10e6ef67d9b6e",
+        "source_fact:v1:b748bdd6b4a24cb7be436c1852e4c20c6aca1a563753525206aeb86c327bb9f5",
+        "source_fact:v1:c0966b7a4f3a4aa4ee5263b8d52067cc7fa7f868f41a42a9bb2824b046414fc4",
+        "source_fact:v1:dffeac24d7b2233d3cca621757e7c323ad736ca02515f5d9b0f9c5acd8207009",
+        "source_fact:v1:e2761a0639657b3bca984a50b3afcf1cb63be4836e78e1f50572934277f492db",
+        "source_fact:v1:e6a3dbdd9a3d1ab92ec11fc152e0b2b125ff51c441ebbe8395177ab6c84cbe2b",
+        "source_fact:v1:f8d0050585dba342c76e7684c7d8b4d85f11618b63a44f7d449e1958f53971b6",
+        "source_fact:v1:febd5fdd24aa92ad1887d8a15f52eb9392ef30d9c82eab45cedf403de281eb75"
+      ],
+      "source_published_kst": "2026-10-12T02:10+09:00",
+      "source_title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)",
+      "telegram_core_fact": "그는 미국이 러시아의 전쟁 자금 조달을 막기 위해 부과했던 러시아산 연료 제재를 일시적으로 완화한 지 하루 만에 우크라이나가 러시아 정유시설을 공격한 걸 비난했다.",
+      "title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)"
+    },
     "source_fact:c44524ffa9c51c1f09b2f142": {
       "first_seen_kst": "2026-10-06T00:18:21+09:00",
       "lanes": {
@@ -342795,6 +343818,46 @@
       "telegram_core_fact": "KT클라우드는 7일 청라 AI 데이터센터 사업에 설계·구축·운영(DBO) 파트너로 참여한다고 밝혔다. KT클라우드가 인천 청라에 들어설 인공지능(AI) 데이터센터의 설계부터 운영까지 맡는다.",
       "title": "KT클라우드, 청라 50MW AI 데이터센터 설계·구축·운영 파트너로 참여"
     },
+    "source_fact:c81f636fe9792d1f3266ec2a": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821231",
+      "source": "뉴시스",
+      "source_body_digest": "7688d71e456115455de6891a5fc6ac0df4c0d569f9b63a7da0e8bf85a09d017d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e115d50787ac6bb298a406758f0566d030934b4c2126870ecb3f7c6696c1f873",
+      "source_fact_keys": [
+        "source_fact:v1:1681bf8ad2c9aaa8cb25d40c7bbc30ade53a6b6f310a7ae62d7b3dd8ede33c10",
+        "source_fact:v1:1796eb3222742bec34847d259bbaf5b9a452d3fc386170e5577e623754a0aa61",
+        "source_fact:v1:1c7a39ed0fd5695364dd53417e5daab7ba192fedb804373ab5be9c1b60275340",
+        "source_fact:v1:32262a3572c6fb6ad3ec0b71419b655bd3e27dc11542d00f7a5144dff8c42e56",
+        "source_fact:v1:3cdc97e65ba66f92ff3d80d5298d22635b2dd85fc31c88dbf80a207a7d25a685",
+        "source_fact:v1:4649c9f4b05f99a39476ceb456ea27d3e781a21efff6875d3e6e3abf90012d17",
+        "source_fact:v1:471772cb8288a81ddfbb58824a8a40547b86da5a1add12c4d6a028ecb01a4961",
+        "source_fact:v1:47dcaa95ffba5f695d6100b8ca819872b4dbccbe6f07dd2f23dd570150af12d7",
+        "source_fact:v1:480b548b4335ee287b1dbaee6322e6d8692735e9cd04d4c32d411cd76b91ea51",
+        "source_fact:v1:5cb2a3f8ad01de051db8066ef6d6e9a8820c9006ce46bfb11597581ccfed2445",
+        "source_fact:v1:666e4c75e0eece1d7946da5c9302ecc6ca81f5b022b26c53c2969887da1d6c70",
+        "source_fact:v1:73fd37569a12113b37389917cf5d7479dc300026ef0b80cdd95f80297ec8ec0a",
+        "source_fact:v1:80d73e1405b541ea23e6b0d5b58d4ade1b033fce575fefe2ac4bf859caae8528",
+        "source_fact:v1:9777f9447d9a91fbeed497c73a40caf1066d02da0bc45c85ba4bf0bb864e2864",
+        "source_fact:v1:9b6027a4dc6be56fabfe9801ba7cf939260f954336e49758c1a10e6ef67d9b6e",
+        "source_fact:v1:b748bdd6b4a24cb7be436c1852e4c20c6aca1a563753525206aeb86c327bb9f5",
+        "source_fact:v1:c0966b7a4f3a4aa4ee5263b8d52067cc7fa7f868f41a42a9bb2824b046414fc4",
+        "source_fact:v1:dffeac24d7b2233d3cca621757e7c323ad736ca02515f5d9b0f9c5acd8207009",
+        "source_fact:v1:e2761a0639657b3bca984a50b3afcf1cb63be4836e78e1f50572934277f492db",
+        "source_fact:v1:e6a3dbdd9a3d1ab92ec11fc152e0b2b125ff51c441ebbe8395177ab6c84cbe2b",
+        "source_fact:v1:f8d0050585dba342c76e7684c7d8b4d85f11618b63a44f7d449e1958f53971b6",
+        "source_fact:v1:febd5fdd24aa92ad1887d8a15f52eb9392ef30d9c82eab45cedf403de281eb75"
+      ],
+      "source_published_kst": "2026-10-12T02:10+09:00",
+      "source_title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)",
+      "telegram_core_fact": "그는 미국이 러시아의 전쟁 자금 조달을 막기 위해 부과했던 러시아산 연료 제재를 일시적으로 완화한 지 하루 만에 우크라이나가 러시아 정유시설을 공격한 걸 비난했다.",
+      "title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)"
+    },
     "source_fact:c82656eaacedbc0d20a55d00": {
       "first_seen_kst": "2026-10-08T11:49:03+09:00",
       "lanes": {
@@ -345421,6 +346484,46 @@
       "source_published_kst": "2026-10-07T12:00+09:00",
       "title": "반도체 호조에 2분기 기업 여윳돈 67.1조…역대 최대"
     },
+    "source_fact:cc0ef082f38b3a33f7aab174": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821231",
+      "source": "뉴시스",
+      "source_body_digest": "7688d71e456115455de6891a5fc6ac0df4c0d569f9b63a7da0e8bf85a09d017d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e115d50787ac6bb298a406758f0566d030934b4c2126870ecb3f7c6696c1f873",
+      "source_fact_keys": [
+        "source_fact:v1:1681bf8ad2c9aaa8cb25d40c7bbc30ade53a6b6f310a7ae62d7b3dd8ede33c10",
+        "source_fact:v1:1796eb3222742bec34847d259bbaf5b9a452d3fc386170e5577e623754a0aa61",
+        "source_fact:v1:1c7a39ed0fd5695364dd53417e5daab7ba192fedb804373ab5be9c1b60275340",
+        "source_fact:v1:32262a3572c6fb6ad3ec0b71419b655bd3e27dc11542d00f7a5144dff8c42e56",
+        "source_fact:v1:3cdc97e65ba66f92ff3d80d5298d22635b2dd85fc31c88dbf80a207a7d25a685",
+        "source_fact:v1:4649c9f4b05f99a39476ceb456ea27d3e781a21efff6875d3e6e3abf90012d17",
+        "source_fact:v1:471772cb8288a81ddfbb58824a8a40547b86da5a1add12c4d6a028ecb01a4961",
+        "source_fact:v1:47dcaa95ffba5f695d6100b8ca819872b4dbccbe6f07dd2f23dd570150af12d7",
+        "source_fact:v1:480b548b4335ee287b1dbaee6322e6d8692735e9cd04d4c32d411cd76b91ea51",
+        "source_fact:v1:5cb2a3f8ad01de051db8066ef6d6e9a8820c9006ce46bfb11597581ccfed2445",
+        "source_fact:v1:666e4c75e0eece1d7946da5c9302ecc6ca81f5b022b26c53c2969887da1d6c70",
+        "source_fact:v1:73fd37569a12113b37389917cf5d7479dc300026ef0b80cdd95f80297ec8ec0a",
+        "source_fact:v1:80d73e1405b541ea23e6b0d5b58d4ade1b033fce575fefe2ac4bf859caae8528",
+        "source_fact:v1:9777f9447d9a91fbeed497c73a40caf1066d02da0bc45c85ba4bf0bb864e2864",
+        "source_fact:v1:9b6027a4dc6be56fabfe9801ba7cf939260f954336e49758c1a10e6ef67d9b6e",
+        "source_fact:v1:b748bdd6b4a24cb7be436c1852e4c20c6aca1a563753525206aeb86c327bb9f5",
+        "source_fact:v1:c0966b7a4f3a4aa4ee5263b8d52067cc7fa7f868f41a42a9bb2824b046414fc4",
+        "source_fact:v1:dffeac24d7b2233d3cca621757e7c323ad736ca02515f5d9b0f9c5acd8207009",
+        "source_fact:v1:e2761a0639657b3bca984a50b3afcf1cb63be4836e78e1f50572934277f492db",
+        "source_fact:v1:e6a3dbdd9a3d1ab92ec11fc152e0b2b125ff51c441ebbe8395177ab6c84cbe2b",
+        "source_fact:v1:f8d0050585dba342c76e7684c7d8b4d85f11618b63a44f7d449e1958f53971b6",
+        "source_fact:v1:febd5fdd24aa92ad1887d8a15f52eb9392ef30d9c82eab45cedf403de281eb75"
+      ],
+      "source_published_kst": "2026-10-12T02:10+09:00",
+      "source_title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)",
+      "telegram_core_fact": "그는 미국이 러시아의 전쟁 자금 조달을 막기 위해 부과했던 러시아산 연료 제재를 일시적으로 완화한 지 하루 만에 우크라이나가 러시아 정유시설을 공격한 걸 비난했다.",
+      "title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)"
+    },
     "source_fact:cc120f3a6db832cd3cfb9b3b": {
       "first_seen_kst": "2026-10-11T07:32:31+09:00",
       "lanes": {
@@ -347388,6 +348491,46 @@
       ],
       "source_published_kst": "2026-10-05T16:00+09:00",
       "title": "[기획]한국재료연구원, AI·데이터로 '예측하고 설계하는' 소재 연구시대 연다"
+    },
+    "source_fact:cec379166f1ac6943c51add2": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821231",
+      "source": "뉴시스",
+      "source_body_digest": "7688d71e456115455de6891a5fc6ac0df4c0d569f9b63a7da0e8bf85a09d017d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e115d50787ac6bb298a406758f0566d030934b4c2126870ecb3f7c6696c1f873",
+      "source_fact_keys": [
+        "source_fact:v1:1681bf8ad2c9aaa8cb25d40c7bbc30ade53a6b6f310a7ae62d7b3dd8ede33c10",
+        "source_fact:v1:1796eb3222742bec34847d259bbaf5b9a452d3fc386170e5577e623754a0aa61",
+        "source_fact:v1:1c7a39ed0fd5695364dd53417e5daab7ba192fedb804373ab5be9c1b60275340",
+        "source_fact:v1:32262a3572c6fb6ad3ec0b71419b655bd3e27dc11542d00f7a5144dff8c42e56",
+        "source_fact:v1:3cdc97e65ba66f92ff3d80d5298d22635b2dd85fc31c88dbf80a207a7d25a685",
+        "source_fact:v1:4649c9f4b05f99a39476ceb456ea27d3e781a21efff6875d3e6e3abf90012d17",
+        "source_fact:v1:471772cb8288a81ddfbb58824a8a40547b86da5a1add12c4d6a028ecb01a4961",
+        "source_fact:v1:47dcaa95ffba5f695d6100b8ca819872b4dbccbe6f07dd2f23dd570150af12d7",
+        "source_fact:v1:480b548b4335ee287b1dbaee6322e6d8692735e9cd04d4c32d411cd76b91ea51",
+        "source_fact:v1:5cb2a3f8ad01de051db8066ef6d6e9a8820c9006ce46bfb11597581ccfed2445",
+        "source_fact:v1:666e4c75e0eece1d7946da5c9302ecc6ca81f5b022b26c53c2969887da1d6c70",
+        "source_fact:v1:73fd37569a12113b37389917cf5d7479dc300026ef0b80cdd95f80297ec8ec0a",
+        "source_fact:v1:80d73e1405b541ea23e6b0d5b58d4ade1b033fce575fefe2ac4bf859caae8528",
+        "source_fact:v1:9777f9447d9a91fbeed497c73a40caf1066d02da0bc45c85ba4bf0bb864e2864",
+        "source_fact:v1:9b6027a4dc6be56fabfe9801ba7cf939260f954336e49758c1a10e6ef67d9b6e",
+        "source_fact:v1:b748bdd6b4a24cb7be436c1852e4c20c6aca1a563753525206aeb86c327bb9f5",
+        "source_fact:v1:c0966b7a4f3a4aa4ee5263b8d52067cc7fa7f868f41a42a9bb2824b046414fc4",
+        "source_fact:v1:dffeac24d7b2233d3cca621757e7c323ad736ca02515f5d9b0f9c5acd8207009",
+        "source_fact:v1:e2761a0639657b3bca984a50b3afcf1cb63be4836e78e1f50572934277f492db",
+        "source_fact:v1:e6a3dbdd9a3d1ab92ec11fc152e0b2b125ff51c441ebbe8395177ab6c84cbe2b",
+        "source_fact:v1:f8d0050585dba342c76e7684c7d8b4d85f11618b63a44f7d449e1958f53971b6",
+        "source_fact:v1:febd5fdd24aa92ad1887d8a15f52eb9392ef30d9c82eab45cedf403de281eb75"
+      ],
+      "source_published_kst": "2026-10-12T02:10+09:00",
+      "source_title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)",
+      "telegram_core_fact": "그는 미국이 러시아의 전쟁 자금 조달을 막기 위해 부과했던 러시아산 연료 제재를 일시적으로 완화한 지 하루 만에 우크라이나가 러시아 정유시설을 공격한 걸 비난했다.",
+      "title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)"
     },
     "source_fact:cec76dca79d8e4db590b5982": {
       "first_seen_kst": "2026-10-08T04:45:20+09:00",
@@ -356158,6 +357301,31 @@
       "source_published_kst": "2026-10-05T10:35+09:00",
       "title": "삼성바이오·SK바이오팜·한미약품, 아태 바이오 ‘10대 거래’ 선정"
     },
+    "source_fact:da579be0aaf9246d5957b011": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://go.seoul.co.kr/news/newsView.php?id=20261012008002",
+      "source": "서울신문",
+      "source_body_digest": "5dc8c16adc4df0d440bd24a8a77bb8953832c9395d646cbcfa6aedf6a5deaab9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:396bed4a8cd9b8cbf01a2eb1a8bc720426c1a16ea708dd293b3afb43245de325",
+      "source_fact_keys": [
+        "source_fact:v1:1a2826c1fdbdc0820a88f8a6d1b0d0b463517ac3c72f9800ff4baa72c502f3de",
+        "source_fact:v1:5a9110197229fd4c7c2f59500bd91d8eded43b46d38acce684cdd25540923d9c",
+        "source_fact:v1:62f10aa62f63ed69a023590aa4c6ae2a7d614f8fb3c26365a42affa1d802d6e1",
+        "source_fact:v1:890a1af1c45f6bb40526078593d5c7581047f6ec994dd39f35b590a6fb0f9e80",
+        "source_fact:v1:be762f51201fce73debbd3b5ffda433a90529e5e7326596dba1038b99c4ba688",
+        "source_fact:v1:bf58d5528636d0c41cd7e4ee7ae2efb9a3f56017a31168f8a2f8d40327a0aeae",
+        "source_fact:v1:f5fddbaad7179cc6b94d0ae1281b3832c9c63a2550b69069b7e802cc76f588ca"
+      ],
+      "source_published_kst": "2026-10-11T18:07+09:00",
+      "source_title": "종전보다 장사… 푸틴에 승리 안긴 트럼프 ‘거래의 기술’",
+      "telegram_core_fact": "미국과 러시아가 합의한 공급 물량은 이달 중 30만톤, 다음달 50만톤 등으로 트럼프 대통령이 밝힌 러시아의 총공급 물량은 480만톤이다. 트럼프 대통령은 지난 9일(현지시간) 트루스소셜을 통해 러시아산 경유를 미국과 세계 시장에 대규모 공급하기로 푸틴 대통령과 합의했다고 밝혔다.",
+      "title": "종전보다 장사… 푸틴에 승리 안긴 트럼프 ‘거래의 기술’"
+    },
     "source_fact:da5860ab6600eef5cd9d5d28": {
       "first_seen_kst": "2026-10-08T01:43:44+09:00",
       "lanes": {
@@ -363689,6 +364857,46 @@
       "telegram_core_fact": "SK이터닉스가 연료전지를 활용해 AI 데이터센터에 필요한 전력을 현장에서 직접 공급하는 사업에 나선다. 김해중 SK이터닉스 대표는 “양사가 가진 역량을 바탕으로 시장에 새로운 데이터센터 전력공급 사업모델을 제시할 수 있도록 협력하겠다”고 말했다.",
       "title": "SK이터닉스, 연료전지로 AI 데이터센터 전력 댄다…마스턴과 사업 추진"
     },
+    "source_fact:e3f6714de4b0f76d72d0b6c9": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821231",
+      "source": "뉴시스",
+      "source_body_digest": "7688d71e456115455de6891a5fc6ac0df4c0d569f9b63a7da0e8bf85a09d017d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e115d50787ac6bb298a406758f0566d030934b4c2126870ecb3f7c6696c1f873",
+      "source_fact_keys": [
+        "source_fact:v1:1681bf8ad2c9aaa8cb25d40c7bbc30ade53a6b6f310a7ae62d7b3dd8ede33c10",
+        "source_fact:v1:1796eb3222742bec34847d259bbaf5b9a452d3fc386170e5577e623754a0aa61",
+        "source_fact:v1:1c7a39ed0fd5695364dd53417e5daab7ba192fedb804373ab5be9c1b60275340",
+        "source_fact:v1:32262a3572c6fb6ad3ec0b71419b655bd3e27dc11542d00f7a5144dff8c42e56",
+        "source_fact:v1:3cdc97e65ba66f92ff3d80d5298d22635b2dd85fc31c88dbf80a207a7d25a685",
+        "source_fact:v1:4649c9f4b05f99a39476ceb456ea27d3e781a21efff6875d3e6e3abf90012d17",
+        "source_fact:v1:471772cb8288a81ddfbb58824a8a40547b86da5a1add12c4d6a028ecb01a4961",
+        "source_fact:v1:47dcaa95ffba5f695d6100b8ca819872b4dbccbe6f07dd2f23dd570150af12d7",
+        "source_fact:v1:480b548b4335ee287b1dbaee6322e6d8692735e9cd04d4c32d411cd76b91ea51",
+        "source_fact:v1:5cb2a3f8ad01de051db8066ef6d6e9a8820c9006ce46bfb11597581ccfed2445",
+        "source_fact:v1:666e4c75e0eece1d7946da5c9302ecc6ca81f5b022b26c53c2969887da1d6c70",
+        "source_fact:v1:73fd37569a12113b37389917cf5d7479dc300026ef0b80cdd95f80297ec8ec0a",
+        "source_fact:v1:80d73e1405b541ea23e6b0d5b58d4ade1b033fce575fefe2ac4bf859caae8528",
+        "source_fact:v1:9777f9447d9a91fbeed497c73a40caf1066d02da0bc45c85ba4bf0bb864e2864",
+        "source_fact:v1:9b6027a4dc6be56fabfe9801ba7cf939260f954336e49758c1a10e6ef67d9b6e",
+        "source_fact:v1:b748bdd6b4a24cb7be436c1852e4c20c6aca1a563753525206aeb86c327bb9f5",
+        "source_fact:v1:c0966b7a4f3a4aa4ee5263b8d52067cc7fa7f868f41a42a9bb2824b046414fc4",
+        "source_fact:v1:dffeac24d7b2233d3cca621757e7c323ad736ca02515f5d9b0f9c5acd8207009",
+        "source_fact:v1:e2761a0639657b3bca984a50b3afcf1cb63be4836e78e1f50572934277f492db",
+        "source_fact:v1:e6a3dbdd9a3d1ab92ec11fc152e0b2b125ff51c441ebbe8395177ab6c84cbe2b",
+        "source_fact:v1:f8d0050585dba342c76e7684c7d8b4d85f11618b63a44f7d449e1958f53971b6",
+        "source_fact:v1:febd5fdd24aa92ad1887d8a15f52eb9392ef30d9c82eab45cedf403de281eb75"
+      ],
+      "source_published_kst": "2026-10-12T02:10+09:00",
+      "source_title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)",
+      "telegram_core_fact": "그는 미국이 러시아의 전쟁 자금 조달을 막기 위해 부과했던 러시아산 연료 제재를 일시적으로 완화한 지 하루 만에 우크라이나가 러시아 정유시설을 공격한 걸 비난했다.",
+      "title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)"
+    },
     "source_fact:e3f938bc4261b6a271b5c8e3": {
       "first_seen_kst": "2026-10-07T12:28:05+09:00",
       "lanes": {
@@ -363745,6 +364953,46 @@
       ],
       "source_published_kst": "2026-10-06T09:59+09:00",
       "title": "엔비디아, DGX 스파크 64GB 공개…로컬 AI 확장 지원"
+    },
+    "source_fact:e410c0cb24ff371f8bbb51f1": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821231",
+      "source": "뉴시스",
+      "source_body_digest": "7688d71e456115455de6891a5fc6ac0df4c0d569f9b63a7da0e8bf85a09d017d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e115d50787ac6bb298a406758f0566d030934b4c2126870ecb3f7c6696c1f873",
+      "source_fact_keys": [
+        "source_fact:v1:1681bf8ad2c9aaa8cb25d40c7bbc30ade53a6b6f310a7ae62d7b3dd8ede33c10",
+        "source_fact:v1:1796eb3222742bec34847d259bbaf5b9a452d3fc386170e5577e623754a0aa61",
+        "source_fact:v1:1c7a39ed0fd5695364dd53417e5daab7ba192fedb804373ab5be9c1b60275340",
+        "source_fact:v1:32262a3572c6fb6ad3ec0b71419b655bd3e27dc11542d00f7a5144dff8c42e56",
+        "source_fact:v1:3cdc97e65ba66f92ff3d80d5298d22635b2dd85fc31c88dbf80a207a7d25a685",
+        "source_fact:v1:4649c9f4b05f99a39476ceb456ea27d3e781a21efff6875d3e6e3abf90012d17",
+        "source_fact:v1:471772cb8288a81ddfbb58824a8a40547b86da5a1add12c4d6a028ecb01a4961",
+        "source_fact:v1:47dcaa95ffba5f695d6100b8ca819872b4dbccbe6f07dd2f23dd570150af12d7",
+        "source_fact:v1:480b548b4335ee287b1dbaee6322e6d8692735e9cd04d4c32d411cd76b91ea51",
+        "source_fact:v1:5cb2a3f8ad01de051db8066ef6d6e9a8820c9006ce46bfb11597581ccfed2445",
+        "source_fact:v1:666e4c75e0eece1d7946da5c9302ecc6ca81f5b022b26c53c2969887da1d6c70",
+        "source_fact:v1:73fd37569a12113b37389917cf5d7479dc300026ef0b80cdd95f80297ec8ec0a",
+        "source_fact:v1:80d73e1405b541ea23e6b0d5b58d4ade1b033fce575fefe2ac4bf859caae8528",
+        "source_fact:v1:9777f9447d9a91fbeed497c73a40caf1066d02da0bc45c85ba4bf0bb864e2864",
+        "source_fact:v1:9b6027a4dc6be56fabfe9801ba7cf939260f954336e49758c1a10e6ef67d9b6e",
+        "source_fact:v1:b748bdd6b4a24cb7be436c1852e4c20c6aca1a563753525206aeb86c327bb9f5",
+        "source_fact:v1:c0966b7a4f3a4aa4ee5263b8d52067cc7fa7f868f41a42a9bb2824b046414fc4",
+        "source_fact:v1:dffeac24d7b2233d3cca621757e7c323ad736ca02515f5d9b0f9c5acd8207009",
+        "source_fact:v1:e2761a0639657b3bca984a50b3afcf1cb63be4836e78e1f50572934277f492db",
+        "source_fact:v1:e6a3dbdd9a3d1ab92ec11fc152e0b2b125ff51c441ebbe8395177ab6c84cbe2b",
+        "source_fact:v1:f8d0050585dba342c76e7684c7d8b4d85f11618b63a44f7d449e1958f53971b6",
+        "source_fact:v1:febd5fdd24aa92ad1887d8a15f52eb9392ef30d9c82eab45cedf403de281eb75"
+      ],
+      "source_published_kst": "2026-10-12T02:10+09:00",
+      "source_title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)",
+      "telegram_core_fact": "그는 미국이 러시아의 전쟁 자금 조달을 막기 위해 부과했던 러시아산 연료 제재를 일시적으로 완화한 지 하루 만에 우크라이나가 러시아 정유시설을 공격한 걸 비난했다.",
+      "title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)"
     },
     "source_fact:e413c5c731c8d84c24868e2a": {
       "first_seen_kst": "2026-10-08T19:11:41+09:00",
@@ -364662,6 +365910,46 @@
       "source_title": "리사 수 \"삼성·SK 핵심 파트너…HBM 협력 여러 세대 간다\"(종합)",
       "telegram_core_fact": "수 회장은 이와 관련해 \"삼성과 SK하이닉스 모두로부터 큰 지원을 받았다\"며 HBM 협력이 \"한 세대에 그치지 않고 여러 세대에 걸쳐 이어질 것\"이라고 말했다.",
       "title": "리사 수 \"삼성·SK 핵심 파트너…HBM 협력 여러 세대 간다\"(종합)"
+    },
+    "source_fact:e557e6117b488970115fc8e2": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821231",
+      "source": "뉴시스",
+      "source_body_digest": "7688d71e456115455de6891a5fc6ac0df4c0d569f9b63a7da0e8bf85a09d017d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e115d50787ac6bb298a406758f0566d030934b4c2126870ecb3f7c6696c1f873",
+      "source_fact_keys": [
+        "source_fact:v1:1681bf8ad2c9aaa8cb25d40c7bbc30ade53a6b6f310a7ae62d7b3dd8ede33c10",
+        "source_fact:v1:1796eb3222742bec34847d259bbaf5b9a452d3fc386170e5577e623754a0aa61",
+        "source_fact:v1:1c7a39ed0fd5695364dd53417e5daab7ba192fedb804373ab5be9c1b60275340",
+        "source_fact:v1:32262a3572c6fb6ad3ec0b71419b655bd3e27dc11542d00f7a5144dff8c42e56",
+        "source_fact:v1:3cdc97e65ba66f92ff3d80d5298d22635b2dd85fc31c88dbf80a207a7d25a685",
+        "source_fact:v1:4649c9f4b05f99a39476ceb456ea27d3e781a21efff6875d3e6e3abf90012d17",
+        "source_fact:v1:471772cb8288a81ddfbb58824a8a40547b86da5a1add12c4d6a028ecb01a4961",
+        "source_fact:v1:47dcaa95ffba5f695d6100b8ca819872b4dbccbe6f07dd2f23dd570150af12d7",
+        "source_fact:v1:480b548b4335ee287b1dbaee6322e6d8692735e9cd04d4c32d411cd76b91ea51",
+        "source_fact:v1:5cb2a3f8ad01de051db8066ef6d6e9a8820c9006ce46bfb11597581ccfed2445",
+        "source_fact:v1:666e4c75e0eece1d7946da5c9302ecc6ca81f5b022b26c53c2969887da1d6c70",
+        "source_fact:v1:73fd37569a12113b37389917cf5d7479dc300026ef0b80cdd95f80297ec8ec0a",
+        "source_fact:v1:80d73e1405b541ea23e6b0d5b58d4ade1b033fce575fefe2ac4bf859caae8528",
+        "source_fact:v1:9777f9447d9a91fbeed497c73a40caf1066d02da0bc45c85ba4bf0bb864e2864",
+        "source_fact:v1:9b6027a4dc6be56fabfe9801ba7cf939260f954336e49758c1a10e6ef67d9b6e",
+        "source_fact:v1:b748bdd6b4a24cb7be436c1852e4c20c6aca1a563753525206aeb86c327bb9f5",
+        "source_fact:v1:c0966b7a4f3a4aa4ee5263b8d52067cc7fa7f868f41a42a9bb2824b046414fc4",
+        "source_fact:v1:dffeac24d7b2233d3cca621757e7c323ad736ca02515f5d9b0f9c5acd8207009",
+        "source_fact:v1:e2761a0639657b3bca984a50b3afcf1cb63be4836e78e1f50572934277f492db",
+        "source_fact:v1:e6a3dbdd9a3d1ab92ec11fc152e0b2b125ff51c441ebbe8395177ab6c84cbe2b",
+        "source_fact:v1:f8d0050585dba342c76e7684c7d8b4d85f11618b63a44f7d449e1958f53971b6",
+        "source_fact:v1:febd5fdd24aa92ad1887d8a15f52eb9392ef30d9c82eab45cedf403de281eb75"
+      ],
+      "source_published_kst": "2026-10-12T02:10+09:00",
+      "source_title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)",
+      "telegram_core_fact": "그는 미국이 러시아의 전쟁 자금 조달을 막기 위해 부과했던 러시아산 연료 제재를 일시적으로 완화한 지 하루 만에 우크라이나가 러시아 정유시설을 공격한 걸 비난했다.",
+      "title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)"
     },
     "source_fact:e55a5e1ef389cdbae54a7837": {
       "first_seen_kst": "2026-10-10T16:15:55+09:00",
@@ -370475,6 +371763,31 @@
       ],
       "source_published_kst": "2026-10-06T11:00+09:00",
       "title": "규제합리화추진단 \"디스플레이 규제 개선…수입 간소화·AI 보안가이드 마련\""
+    },
+    "source_fact:ed45997c6302122a1cdf0815": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://go.seoul.co.kr/news/newsView.php?id=20261012008002",
+      "source": "서울신문",
+      "source_body_digest": "5dc8c16adc4df0d440bd24a8a77bb8953832c9395d646cbcfa6aedf6a5deaab9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:396bed4a8cd9b8cbf01a2eb1a8bc720426c1a16ea708dd293b3afb43245de325",
+      "source_fact_keys": [
+        "source_fact:v1:1a2826c1fdbdc0820a88f8a6d1b0d0b463517ac3c72f9800ff4baa72c502f3de",
+        "source_fact:v1:5a9110197229fd4c7c2f59500bd91d8eded43b46d38acce684cdd25540923d9c",
+        "source_fact:v1:62f10aa62f63ed69a023590aa4c6ae2a7d614f8fb3c26365a42affa1d802d6e1",
+        "source_fact:v1:890a1af1c45f6bb40526078593d5c7581047f6ec994dd39f35b590a6fb0f9e80",
+        "source_fact:v1:be762f51201fce73debbd3b5ffda433a90529e5e7326596dba1038b99c4ba688",
+        "source_fact:v1:bf58d5528636d0c41cd7e4ee7ae2efb9a3f56017a31168f8a2f8d40327a0aeae",
+        "source_fact:v1:f5fddbaad7179cc6b94d0ae1281b3832c9c63a2550b69069b7e802cc76f588ca"
+      ],
+      "source_published_kst": "2026-10-11T18:07+09:00",
+      "source_title": "종전보다 장사… 푸틴에 승리 안긴 트럼프 ‘거래의 기술’",
+      "telegram_core_fact": "미국과 러시아가 합의한 공급 물량은 이달 중 30만톤, 다음달 50만톤 등으로 트럼프 대통령이 밝힌 러시아의 총공급 물량은 480만톤이다. 트럼프 대통령은 지난 9일(현지시간) 트루스소셜을 통해 러시아산 경유를 미국과 세계 시장에 대규모 공급하기로 푸틴 대통령과 합의했다고 밝혔다.",
+      "title": "종전보다 장사… 푸틴에 승리 안긴 트럼프 ‘거래의 기술’"
     },
     "source_fact:ed57f55e01b00d68cd9b4aa6": {
       "first_seen_kst": "2026-10-07T07:54:25+09:00",
@@ -412433,6 +413746,46 @@
       "source_published_kst": "2026-10-05T11:19+09:00",
       "title": "LGU+, 구독 플랫폼 '유독'에 해외 AI 서비스 순차 확대"
     },
+    "title:7dc6ab88fc65c560ba1b757b": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821231",
+      "source": "뉴시스",
+      "source_body_digest": "7688d71e456115455de6891a5fc6ac0df4c0d569f9b63a7da0e8bf85a09d017d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e115d50787ac6bb298a406758f0566d030934b4c2126870ecb3f7c6696c1f873",
+      "source_fact_keys": [
+        "source_fact:v1:1681bf8ad2c9aaa8cb25d40c7bbc30ade53a6b6f310a7ae62d7b3dd8ede33c10",
+        "source_fact:v1:1796eb3222742bec34847d259bbaf5b9a452d3fc386170e5577e623754a0aa61",
+        "source_fact:v1:1c7a39ed0fd5695364dd53417e5daab7ba192fedb804373ab5be9c1b60275340",
+        "source_fact:v1:32262a3572c6fb6ad3ec0b71419b655bd3e27dc11542d00f7a5144dff8c42e56",
+        "source_fact:v1:3cdc97e65ba66f92ff3d80d5298d22635b2dd85fc31c88dbf80a207a7d25a685",
+        "source_fact:v1:4649c9f4b05f99a39476ceb456ea27d3e781a21efff6875d3e6e3abf90012d17",
+        "source_fact:v1:471772cb8288a81ddfbb58824a8a40547b86da5a1add12c4d6a028ecb01a4961",
+        "source_fact:v1:47dcaa95ffba5f695d6100b8ca819872b4dbccbe6f07dd2f23dd570150af12d7",
+        "source_fact:v1:480b548b4335ee287b1dbaee6322e6d8692735e9cd04d4c32d411cd76b91ea51",
+        "source_fact:v1:5cb2a3f8ad01de051db8066ef6d6e9a8820c9006ce46bfb11597581ccfed2445",
+        "source_fact:v1:666e4c75e0eece1d7946da5c9302ecc6ca81f5b022b26c53c2969887da1d6c70",
+        "source_fact:v1:73fd37569a12113b37389917cf5d7479dc300026ef0b80cdd95f80297ec8ec0a",
+        "source_fact:v1:80d73e1405b541ea23e6b0d5b58d4ade1b033fce575fefe2ac4bf859caae8528",
+        "source_fact:v1:9777f9447d9a91fbeed497c73a40caf1066d02da0bc45c85ba4bf0bb864e2864",
+        "source_fact:v1:9b6027a4dc6be56fabfe9801ba7cf939260f954336e49758c1a10e6ef67d9b6e",
+        "source_fact:v1:b748bdd6b4a24cb7be436c1852e4c20c6aca1a563753525206aeb86c327bb9f5",
+        "source_fact:v1:c0966b7a4f3a4aa4ee5263b8d52067cc7fa7f868f41a42a9bb2824b046414fc4",
+        "source_fact:v1:dffeac24d7b2233d3cca621757e7c323ad736ca02515f5d9b0f9c5acd8207009",
+        "source_fact:v1:e2761a0639657b3bca984a50b3afcf1cb63be4836e78e1f50572934277f492db",
+        "source_fact:v1:e6a3dbdd9a3d1ab92ec11fc152e0b2b125ff51c441ebbe8395177ab6c84cbe2b",
+        "source_fact:v1:f8d0050585dba342c76e7684c7d8b4d85f11618b63a44f7d449e1958f53971b6",
+        "source_fact:v1:febd5fdd24aa92ad1887d8a15f52eb9392ef30d9c82eab45cedf403de281eb75"
+      ],
+      "source_published_kst": "2026-10-12T02:10+09:00",
+      "source_title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)",
+      "telegram_core_fact": "그는 미국이 러시아의 전쟁 자금 조달을 막기 위해 부과했던 러시아산 연료 제재를 일시적으로 완화한 지 하루 만에 우크라이나가 러시아 정유시설을 공격한 걸 비난했다.",
+      "title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)"
+    },
     "title:7dcfd6ec36668c12b45b5373": {
       "first_seen_kst": "2026-10-06T17:35:32+09:00",
       "lanes": {
@@ -428645,6 +429998,31 @@
       "source_published_kst": "2026-10-06T09:58+09:00",
       "title": "메리츠는 신규 합류, 기존 증권사는 금리 인상…발행어음 '9파전' 경쟁 본격화"
     },
+    "title:c25bad49e8f0683c6d20a94c": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://go.seoul.co.kr/news/newsView.php?id=20261012008002",
+      "source": "서울신문",
+      "source_body_digest": "5dc8c16adc4df0d440bd24a8a77bb8953832c9395d646cbcfa6aedf6a5deaab9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:396bed4a8cd9b8cbf01a2eb1a8bc720426c1a16ea708dd293b3afb43245de325",
+      "source_fact_keys": [
+        "source_fact:v1:1a2826c1fdbdc0820a88f8a6d1b0d0b463517ac3c72f9800ff4baa72c502f3de",
+        "source_fact:v1:5a9110197229fd4c7c2f59500bd91d8eded43b46d38acce684cdd25540923d9c",
+        "source_fact:v1:62f10aa62f63ed69a023590aa4c6ae2a7d614f8fb3c26365a42affa1d802d6e1",
+        "source_fact:v1:890a1af1c45f6bb40526078593d5c7581047f6ec994dd39f35b590a6fb0f9e80",
+        "source_fact:v1:be762f51201fce73debbd3b5ffda433a90529e5e7326596dba1038b99c4ba688",
+        "source_fact:v1:bf58d5528636d0c41cd7e4ee7ae2efb9a3f56017a31168f8a2f8d40327a0aeae",
+        "source_fact:v1:f5fddbaad7179cc6b94d0ae1281b3832c9c63a2550b69069b7e802cc76f588ca"
+      ],
+      "source_published_kst": "2026-10-11T18:07+09:00",
+      "source_title": "종전보다 장사… 푸틴에 승리 안긴 트럼프 ‘거래의 기술’",
+      "telegram_core_fact": "미국과 러시아가 합의한 공급 물량은 이달 중 30만톤, 다음달 50만톤 등으로 트럼프 대통령이 밝힌 러시아의 총공급 물량은 480만톤이다. 트럼프 대통령은 지난 9일(현지시간) 트루스소셜을 통해 러시아산 경유를 미국과 세계 시장에 대규모 공급하기로 푸틴 대통령과 합의했다고 밝혔다.",
+      "title": "종전보다 장사… 푸틴에 승리 안긴 트럼프 ‘거래의 기술’"
+    },
     "title:c291fb3e58eeeb50049fdcb1": {
       "first_seen_kst": "2026-10-02T18:30:04+09:00",
       "lanes": {
@@ -429831,6 +431209,46 @@
       "source_title": "스페이스X, 저대역 주파수 인수 후 美 통신사 시총 80조 증발",
       "telegram_core_fact": "9일(현지시간) 파이낸셜타임즈(FT)는 스페이스X가 그레인 매니지먼트로부터 전국 단위의 저대역 무선 주파수를 인수하기로 한 다음 미국 주요 통신사들의 시가총액이 약 620억달러(약83조원)가량 감소했다고 보도했다.",
       "title": "스페이스X, 저대역 주파수 인수 후 美 통신사 시총 80조 증발"
+    },
+    "title:c80aa3c3883d9f696653bb16": {
+      "first_seen_kst": "2026-10-12T02:27:00+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:27:00+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:27:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821231",
+      "source": "뉴시스",
+      "source_body_digest": "7688d71e456115455de6891a5fc6ac0df4c0d569f9b63a7da0e8bf85a09d017d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e115d50787ac6bb298a406758f0566d030934b4c2126870ecb3f7c6696c1f873",
+      "source_fact_keys": [
+        "source_fact:v1:1681bf8ad2c9aaa8cb25d40c7bbc30ade53a6b6f310a7ae62d7b3dd8ede33c10",
+        "source_fact:v1:1796eb3222742bec34847d259bbaf5b9a452d3fc386170e5577e623754a0aa61",
+        "source_fact:v1:1c7a39ed0fd5695364dd53417e5daab7ba192fedb804373ab5be9c1b60275340",
+        "source_fact:v1:32262a3572c6fb6ad3ec0b71419b655bd3e27dc11542d00f7a5144dff8c42e56",
+        "source_fact:v1:3cdc97e65ba66f92ff3d80d5298d22635b2dd85fc31c88dbf80a207a7d25a685",
+        "source_fact:v1:4649c9f4b05f99a39476ceb456ea27d3e781a21efff6875d3e6e3abf90012d17",
+        "source_fact:v1:471772cb8288a81ddfbb58824a8a40547b86da5a1add12c4d6a028ecb01a4961",
+        "source_fact:v1:47dcaa95ffba5f695d6100b8ca819872b4dbccbe6f07dd2f23dd570150af12d7",
+        "source_fact:v1:480b548b4335ee287b1dbaee6322e6d8692735e9cd04d4c32d411cd76b91ea51",
+        "source_fact:v1:5cb2a3f8ad01de051db8066ef6d6e9a8820c9006ce46bfb11597581ccfed2445",
+        "source_fact:v1:666e4c75e0eece1d7946da5c9302ecc6ca81f5b022b26c53c2969887da1d6c70",
+        "source_fact:v1:73fd37569a12113b37389917cf5d7479dc300026ef0b80cdd95f80297ec8ec0a",
+        "source_fact:v1:80d73e1405b541ea23e6b0d5b58d4ade1b033fce575fefe2ac4bf859caae8528",
+        "source_fact:v1:9777f9447d9a91fbeed497c73a40caf1066d02da0bc45c85ba4bf0bb864e2864",
+        "source_fact:v1:9b6027a4dc6be56fabfe9801ba7cf939260f954336e49758c1a10e6ef67d9b6e",
+        "source_fact:v1:b748bdd6b4a24cb7be436c1852e4c20c6aca1a563753525206aeb86c327bb9f5",
+        "source_fact:v1:c0966b7a4f3a4aa4ee5263b8d52067cc7fa7f868f41a42a9bb2824b046414fc4",
+        "source_fact:v1:dffeac24d7b2233d3cca621757e7c323ad736ca02515f5d9b0f9c5acd8207009",
+        "source_fact:v1:e2761a0639657b3bca984a50b3afcf1cb63be4836e78e1f50572934277f492db",
+        "source_fact:v1:e6a3dbdd9a3d1ab92ec11fc152e0b2b125ff51c441ebbe8395177ab6c84cbe2b",
+        "source_fact:v1:f8d0050585dba342c76e7684c7d8b4d85f11618b63a44f7d449e1958f53971b6",
+        "source_fact:v1:febd5fdd24aa92ad1887d8a15f52eb9392ef30d9c82eab45cedf403de281eb75"
+      ],
+      "source_published_kst": "2026-10-12T02:10+09:00",
+      "source_title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)",
+      "telegram_core_fact": "그는 미국이 러시아의 전쟁 자금 조달을 막기 위해 부과했던 러시아산 연료 제재를 일시적으로 완화한 지 하루 만에 우크라이나가 러시아 정유시설을 공격한 걸 비난했다.",
+      "title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)"
     },
     "title:c814c1f6e0d662363b6a8663": {
       "first_seen_kst": "2026-10-07T18:30:29+09:00",
@@ -442855,5 +444273,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-12T01:34:33+09:00"
+  "updated_at_kst": "2026-10-12T02:27:00+09:00"
 }
