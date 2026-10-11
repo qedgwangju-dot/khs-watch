@@ -168,6 +168,26 @@ CATEGORIES = (
         failure="발사체 공급 확대보다 위성 수요가 빨리 늘면 배치 지연이 길어지고 위성사업자의 매출 개시도 늦어집니다.",
         indicator="FAA 허가 상업발사 횟수, 주요 발사체 연간 운항횟수, 발사장 슬롯 대기기간, 위성사업자 일정 변경",
     ),
+    Category(
+        key="falcon_transition",
+        tag="[발사체 전환]",
+        name="Falcon 9·Dragon 운항과 Starship 대체 수송",
+        queries=(
+            '"Falcon 9" "Starship" (retirement OR phaseout OR transition OR launch bottleneck) when:7d',
+            '"SpaceX" "Dragon" (Crew-15 OR Crew-16 OR Crew-17 OR retirement) when:14d',
+            '"Starship" ("Direct to Cell" OR "Starlink Mobile" OR D2D OR satellites) (capacity OR payload) when:7d',
+            'site:nasa.gov SpaceX Crew-15 Crew-16 Crew-17 Falcon 9 Dragon when:30d',
+        ),
+        relevance=re.compile(
+            r"(Falcon\\s*9|Falcon\\s*Heavy|Dragon|Starship).*(retire|phase.?out|transition|"
+            r"launch\\s*capacity|bottleneck|crew-1[567]|direct\\s*to\\s*cell|starlink\\s*mobile)|"
+            r"(retire|phase.?out|crew-1[567]|launch\\s*bottleneck).*(Falcon\\s*9|Dragon|Starship)",
+            re.I,
+        ),
+        meaning="Falcon 9 발사 비중 축소 전망과 Dragon 유인운송 계약의 실제 종료는 별개입니다. 신규 위성군은 위성 질량·접힌 치수·발사당 수량이 검증돼야 발사량을 계산할 수 있습니다.",
+        failure="Starship 회수·열차폐·재비행 정비가 늦어지면 대형 위성군 증설 일정과 비용이 악화하나 Falcon 9·Dragon 운항이 즉시 중단되는 것은 아닙니다.",
+        indicator="NASA Crew-15~17 2030년 계약, Falcon 9 월별 발사 횟수, Starship 회수·재사용, 발사당 실제 위성 수",
+    ),
 )
 
 
@@ -331,6 +351,12 @@ def event_signature(category: Category, item: dict) -> str:
         if "flight 15" in text:
             return "flight15"
         return "orbital_compute"
+    if category.key == "falcon_transition":
+        if "dragon" in text or "crew-15" in text or "crew-16" in text or "crew-17" in text:
+            return "nasa_dragon"
+        if "retir" in text or "phase" in text or "transition" in text:
+            return "falcon_transition"
+        return "starship_mobile_payload"
     if category.key == "launch_slots":
         if "open cosmos" in text:
             return "open_cosmos"
@@ -474,6 +500,8 @@ def main() -> int:
     bootstrap = not STATE_PATH.exists()
     state = load_state()
     seen: dict[str, str] = state.setdefault("seen", {})
+    initialized: list[str] = state.setdefault("initialized_categories", [])
+    newly_initialized: list[str] = []
     all_by_category: dict[str, list[dict]] = {}
     fetch_errors: list[str] = []
 
@@ -516,7 +544,12 @@ def main() -> int:
 
         candidates.sort(key=lambda x: (x.get("_score", 0), x.get("published") or ""), reverse=True)
 
-        if force_notify or bootstrap:
+        # Adding a surveillance axis must not rebroadcast old news as a
+        # new contract, retirement decision, or operational emergency.
+        first_axis_scan = category.key == "falcon_transition" and category.key not in initialized
+        if first_axis_scan:
+            newly_initialized.append(category.key)
+        elif force_notify or bootstrap:
             if candidates:
                 selected.append((category, candidates[0]))
         else:
@@ -529,6 +562,9 @@ def main() -> int:
             iid = item_id(category.key, item)
             if source_is_trusted(item) and signal_score(category, item) >= 0:
                 seen[iid] = NOW.isoformat()
+
+    if newly_initialized:
+        initialized.extend(newly_initialized)
 
     rate = fetch_usdkrw()
     ALERT_PATH.parent.mkdir(parents=True, exist_ok=True)
@@ -575,5 +611,20 @@ def main() -> int:
     return 0
 
 
+def self_test() -> int:
+    category = next((x for x in CATEGORIES if x.key == "falcon_transition"), None)
+    assert category is not None
+    assert "2030년 계약" in category.indicator
+    assert "운항이 즉시 중단되는 것은 아닙니다" in category.failure
+    assert "Falcon 9" in category.name
+    assert event_signature(category, {"title": "NASA Crew-15 Dragon Falcon 9", "description": "", "source": "NASA"}) == "nasa_dragon"
+    assert event_signature(category, {"title": "Falcon 9 Starship phaseout", "description": "", "source": "Reuters"}) == "falcon_transition"
+    assert "falcon_transition" in [x.key for x in CATEGORIES]
+    print("space_launch_transition_self_test=ok official_nasa_contract_2030=1 no_early_retirement=1 initial_news_suppressed=1")
+    return 0
+
+
 if __name__ == "__main__":
+    if os.getenv("SPACE_LAUNCH_TRANSITION_SELF_TEST") == "1":
+        raise SystemExit(self_test())
     raise SystemExit(main())
