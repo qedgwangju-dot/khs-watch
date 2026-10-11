@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at_kst": "2026-10-11T09:59:10+09:00",
+  "updated_at_kst": "2026-10-11T13:41:04+09:00",
   "initial_alert_sent": true,
   "preorder_at_kst": "2026-10-16T21:00:00+09:00",
   "launch_date": "2026-10-23",
@@ -139,18 +139,18 @@
     "counterpoint_duo_forecast_m": 6,
     "trendforce_duo_forecast_m": 5,
     "iphone18pro_confirmation": "Counterpoint Research 2026-09-30 공식 공개 해설: 중국 첫 3일 판매 전년 대비 +12%, 38주차 Apple 점유율 33%; 원시 주간 거래표는 별도 자료",
+    "iphone18pro_panel_cumulative_through_oct_yoy_pct": 2.0,
+    "iphone18pro_panel_confirmation": "Counterpoint 2026-09-30 공식: 2026년 10월까지의 Pro OLED 패널 누적 조달 추적 전년 대비 +2%; 10월 확정 실판매가 아닌 패널 추적치",
     "counterpoint_duo_confirmation": "Reuters가 Counterpoint 전망 약 600만대 인용",
-    "trendforce_duo_confirmation": "TrendForce 공식 2026 출하 약 500만대",
-    "iphone18pro_panel_cumulative_through_oct_yoy_pct": 2,
-    "iphone18pro_panel_confirmation": "Counterpoint 2026-09-30 공식: 2026년 10월까지의 Pro OLED 패널 누적 조달 추적 전년 대비 +2%; 10월 확정 실판매가 아닌 패널 추적치"
+    "trendforce_duo_confirmation": "TrendForce 공식 2026 출하 약 500만대"
   },
   "confirmations": {
     "iphone18pro_china": "Counterpoint Research 2026-09-30 공식 공개 해설: 중국 첫 3일 판매 전년 대비 +12%, 38주차 Apple 점유율 33%; 원시 주간 거래표는 별도 자료",
+    "iphone18pro_panel": "Counterpoint 2026-09-30 공식: 2026년 10월까지의 Pro OLED 패널 누적 조달 추적 전년 대비 +2%; 10월 확정 실판매가 아닌 패널 추적치",
     "counterpoint_duo": "Reuters가 Counterpoint 전망 약 600만대 인용",
-    "trendforce_duo": "TrendForce 공식 2026 출하 약 500만대",
-    "iphone18pro_panel": "Counterpoint 2026-09-30 공식: 2026년 10월까지의 Pro OLED 패널 누적 조달 추적 전년 대비 +2%; 10월 확정 실판매가 아닌 패널 추적치"
+    "trendforce_duo": "TrendForce 공식 2026 출하 약 500만대"
   },
-  "last_scan_items": 45,
+  "last_scan_items": 46,
   "last_signal_count": 0,
   "last_alert": {
     "at_kst": "2026-09-30T13:10:14+09:00",
