@@ -4750,6 +4750,28 @@
       "telegram_core_fact": "[파이낸셜뉴스] 러시아가 이르면 이달부터 미국을 포함한 세계 시장에 경유를 추가 공급하기 위해 수출 제한 조치를 풀기로 했다.",
       "title": "러시아 \"경유 수출 제한 즉시 해제\"…이달 30만t 공급 방침"
     },
+    "core:2c8bcc680056368ef4e54edc": {
+      "first_seen_kst": "2026-10-12T03:58:42+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:58:42+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:58:42+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821233",
+      "source": "뉴시스",
+      "source_body_digest": "db110efad586806aef7c8ddeb19aecfdd7e331c705da1603b619a3f3bc491bf1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:43d0af73e8afadd2c0ce7196634b11b44d44dec7f3c45456f75624b1b60a8d8c",
+      "source_fact_keys": [
+        "source_fact:v1:2407f1d0912d2dcfa43414997837b62b3dfaea1c0ed1a72cc1cbc5e6bf223048",
+        "source_fact:v1:9e4fe597e470c5b7d53564f759309b1e0487fcabb7b777256feec94adc522a77",
+        "source_fact:v1:a1a33476a59352961701bdc9d1e9becbdc39885c444fb39b9e009543111877a5",
+        "source_fact:v1:db0ba77d95e72a7cc3ee10b101cf334bfcc43a32aaeb1b5d2e7b37c64f1d3e6b"
+      ],
+      "source_published_kst": "2026-10-12T03:42+09:00",
+      "source_title": "이란 “종전 제안에 미국 답변 불충분”…데이터센터·통신 케이블 공격 경고",
+      "telegram_core_fact": "모흐센 레자이 이란 최고국가안보회의 사무총장은 11일(현지시간) 전쟁 종식과 호르무즈 해협의 완전한 개방을 위한 협상이 진전을 보이지 못하는 가운데 미국의 최신 답변이 “불충분하다”고 밝혔다.",
+      "title": "이란 “종전 제안에 미국 답변 불충분”…데이터센터·통신 케이블 공격 경고"
+    },
     "core:2c91b75045178804508fe33e": {
       "first_seen_kst": "2026-10-07T19:47:02+09:00",
       "lanes": {
@@ -24456,6 +24478,32 @@
       "telegram_core_fact": "결국 이날 반도체 시장에서는 ETF 리밸런싱에 따른 기계적인 수급 조정과 삼성전자 실적, 옵션 만기 및 외국인 매매가 동시에 맞물리면서 종목별 주가 차별화가 나타나는지가 주요 변수로 떠올랐다.",
       "title": "반도체 ETF 리밸런싱에 변동성 커져…삼성전자 2000억 팔고 소부장 더 담는다"
     },
+    "core:fa8beb885eadb1b682ed9710": {
+      "first_seen_kst": "2026-10-12T03:58:42+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:58:42+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:58:42+09:00",
+      "link": "https://www.hankyung.com/article/2026101247267",
+      "source": "한국경제",
+      "source_body_digest": "dd7afbff49929f93cd154d46d16cef31ef05ce06f72e03ae84b570d0a513389b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8f421b2581f8a35247adf2b6dc65bf2ab1e3995e46e8708891f4404aa5695286",
+      "source_fact_keys": [
+        "source_fact:v1:2c77f5156c8854d03454440b4c28c34287fd31e21f4b6d6e2a4e012a7b0ca7aa",
+        "source_fact:v1:2d411fcc1d03950f8a56685d2f89a27a4d81d1d4bf2b0905f811a036bd7c1f03",
+        "source_fact:v1:308c6aa1f23370aaab8836b39d6f4e308bd31fc3dfed74e961debf2ac690594c",
+        "source_fact:v1:62198e7a239a4c1b8c8161b2e5cee247076cbfaf178a6900350fa6561e33dbd7",
+        "source_fact:v1:666851ea70f630506f597b850b95a2d6347f46ae5ab8c0522bb3786b84e56777",
+        "source_fact:v1:91e12c6b477be22c0444f60a35e0d9cebaff373d2c37540ed6c6f0a9448c6c87",
+        "source_fact:v1:96e834b74d3384dfbd5c8efec835846b38db566b5162ce8e029d9fd392c4b2b4",
+        "source_fact:v1:b1ecbab09960180e089a4156996665be2556fde26c02e6db6b576680f0f087a5"
+      ],
+      "source_published_kst": "2026-10-12T00:16+09:00",
+      "source_title": "트럼프 \"러-우크라, '에너지 부문 휴전 합의'…즉각 발효\"",
+      "telegram_core_fact": "이번 ‘에너지 휴전’은 지난 9일 트럼프 대통령이 블라디미르 푸틴 러시아 대통령과 미국 및 전 세계 시장에 러시아산 경유를 공급하기로 합의했다고 공개한 뒤 이틀 만이다.",
+      "title": "트럼프 \"러-우크라, '에너지 부문 휴전 합의'…즉각 발효\""
+    },
     "core:fa9e08f72ff01a6c56a71cd9": {
       "first_seen_kst": "2026-10-09T20:24:58+09:00",
       "lanes": {
@@ -26595,32 +26643,24 @@
     "event:242c04e115c71f36e3e5a541": {
       "first_seen_kst": "2026-10-12T01:34:33+09:00",
       "lanes": {
-        "live": "2026-10-12T02:51:54+09:00"
+        "live": "2026-10-12T03:58:42+09:00"
       },
-      "last_seen_kst": "2026-10-12T02:51:54+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261012001800071",
-      "source": "연합뉴스",
-      "source_body_digest": "54088b950d5d3af6108c0561b6346042bb90794452f0c98f7e00a05e349d63fc",
+      "last_seen_kst": "2026-10-12T03:58:42+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821233",
+      "source": "뉴시스",
+      "source_body_digest": "db110efad586806aef7c8ddeb19aecfdd7e331c705da1603b619a3f3bc491bf1",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:841baacd8adf0b013262963a1a0ce948c236f7ccd6c1857806656ac95a65a287",
+      "source_fact_identity": "source_facts:v1:43d0af73e8afadd2c0ce7196634b11b44d44dec7f3c45456f75624b1b60a8d8c",
       "source_fact_keys": [
-        "source_fact:v1:09b1ba9035a852c8467976cd9f02b7ae5a2d87bd1818ccbdd637d0b649e20ac6",
-        "source_fact:v1:1b764c19d6a6c603803014b6e2a9dfc7b0170ce28e676fc3008cf4adc981f531",
-        "source_fact:v1:212abd2a7c570a19539e8144437bca04e3098d6fbdbbff71d9f359a992bea8b2",
-        "source_fact:v1:2a2ad22df35bdfa30ee2e5a3b51eca9f0aebf6b2a301e890a9ccc1b4ba456cf3",
-        "source_fact:v1:3689eeab5c78353770985348de5f828cc31bc50b4d633b7a7f052780ae7b7062",
-        "source_fact:v1:37c554429cb9de4e847c3d980cfd42998a59114bc0a52544216b62bfdff2c807",
-        "source_fact:v1:676d809a586d70fd1d6e5417ca7f50b4c7ca8697c987861291625444ccd67e35",
-        "source_fact:v1:8a01f9edcb7cefdc38c796acf41f8000e05806f3908042df9d7b8d519e96716e",
-        "source_fact:v1:abf6eacbcaaf758b26cffee81a77720231dd5b9d178cf0bc12afae1aab5b15a7",
-        "source_fact:v1:e14a816bbee1497190bd54bdf08b72c69dce480eed5c5f4f3d50946807adff4f",
-        "source_fact:v1:e6d7a8d7eee69335ed427fee51b5e9f059464f7c19f98f38a963b2f9931ac911",
-        "source_fact:v1:f60f6f14b50e0537a981bf5ca38df328b8862f2f64fbad210d4e30422fe23644"
+        "source_fact:v1:2407f1d0912d2dcfa43414997837b62b3dfaea1c0ed1a72cc1cbc5e6bf223048",
+        "source_fact:v1:9e4fe597e470c5b7d53564f759309b1e0487fcabb7b777256feec94adc522a77",
+        "source_fact:v1:a1a33476a59352961701bdc9d1e9becbdc39885c444fb39b9e009543111877a5",
+        "source_fact:v1:db0ba77d95e72a7cc3ee10b101cf334bfcc43a32aaeb1b5d2e7b37c64f1d3e6b"
       ],
-      "source_published_kst": "2026-10-12T02:37+09:00",
-      "source_title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스",
-      "telegram_core_fact": "11월 3일 중간선거를 앞둔 트럼프 대통령으로서는 후티 공격 동참을 통한 군사적 확전이 부담스러울 수밖에 없다.",
-      "title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스"
+      "source_published_kst": "2026-10-12T03:42+09:00",
+      "source_title": "이란 “종전 제안에 미국 답변 불충분”…데이터센터·통신 케이블 공격 경고",
+      "telegram_core_fact": "모흐센 레자이 이란 최고국가안보회의 사무총장은 11일(현지시간) 전쟁 종식과 호르무즈 해협의 완전한 개방을 위한 협상이 진전을 보이지 못하는 가운데 미국의 최신 답변이 “불충분하다”고 밝혔다.",
+      "title": "이란 “종전 제안에 미국 답변 불충분”…데이터센터·통신 케이블 공격 경고"
     },
     "event:243b9268c0c661c2e567eb0a": {
       "first_seen_kst": "2026-09-30T11:15:27+09:00",
@@ -37067,6 +37107,28 @@
       ],
       "source_published_kst": "2026-10-06T12:15+09:00",
       "title": "세아베스틸, 로봇 구동 핵심 부품 소재 국산화…\"특수강 신사업 확장\""
+    },
+    "fact:0ace1dc841c92119d3ca22d0": {
+      "first_seen_kst": "2026-10-12T03:58:42+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:58:42+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:58:42+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821233",
+      "source": "뉴시스",
+      "source_body_digest": "db110efad586806aef7c8ddeb19aecfdd7e331c705da1603b619a3f3bc491bf1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:43d0af73e8afadd2c0ce7196634b11b44d44dec7f3c45456f75624b1b60a8d8c",
+      "source_fact_keys": [
+        "source_fact:v1:2407f1d0912d2dcfa43414997837b62b3dfaea1c0ed1a72cc1cbc5e6bf223048",
+        "source_fact:v1:9e4fe597e470c5b7d53564f759309b1e0487fcabb7b777256feec94adc522a77",
+        "source_fact:v1:a1a33476a59352961701bdc9d1e9becbdc39885c444fb39b9e009543111877a5",
+        "source_fact:v1:db0ba77d95e72a7cc3ee10b101cf334bfcc43a32aaeb1b5d2e7b37c64f1d3e6b"
+      ],
+      "source_published_kst": "2026-10-12T03:42+09:00",
+      "source_title": "이란 “종전 제안에 미국 답변 불충분”…데이터센터·통신 케이블 공격 경고",
+      "telegram_core_fact": "모흐센 레자이 이란 최고국가안보회의 사무총장은 11일(현지시간) 전쟁 종식과 호르무즈 해협의 완전한 개방을 위한 협상이 진전을 보이지 못하는 가운데 미국의 최신 답변이 “불충분하다”고 밝혔다.",
+      "title": "이란 “종전 제안에 미국 답변 불충분”…데이터센터·통신 케이블 공격 경고"
     },
     "fact:0afcc1957ca103570fd09973": {
       "first_seen_kst": "2026-10-09T21:27:46+09:00",
@@ -59109,6 +59171,32 @@
       "telegram_core_fact": "WTO는 중동 분쟁이 에너지 가격 상승과 운송 경로 차질을 통해 무역에 계속해서 부담을 줄 것으로 예상하면서도 세계 국내총생산(GDP)이 올해 2.6%, 다음해 2.9% 각각 성장할 것으로 전망했다.",
       "title": "WTO, 올해 상품무역 증가율 3.9%로 상향…\"AI 호황, 이란전 충격 상쇄\""
     },
+    "fact:969016fb7a204fae5ce71003": {
+      "first_seen_kst": "2026-10-12T03:58:42+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:58:42+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:58:42+09:00",
+      "link": "https://www.hankyung.com/article/2026101247267",
+      "source": "한국경제",
+      "source_body_digest": "dd7afbff49929f93cd154d46d16cef31ef05ce06f72e03ae84b570d0a513389b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8f421b2581f8a35247adf2b6dc65bf2ab1e3995e46e8708891f4404aa5695286",
+      "source_fact_keys": [
+        "source_fact:v1:2c77f5156c8854d03454440b4c28c34287fd31e21f4b6d6e2a4e012a7b0ca7aa",
+        "source_fact:v1:2d411fcc1d03950f8a56685d2f89a27a4d81d1d4bf2b0905f811a036bd7c1f03",
+        "source_fact:v1:308c6aa1f23370aaab8836b39d6f4e308bd31fc3dfed74e961debf2ac690594c",
+        "source_fact:v1:62198e7a239a4c1b8c8161b2e5cee247076cbfaf178a6900350fa6561e33dbd7",
+        "source_fact:v1:666851ea70f630506f597b850b95a2d6347f46ae5ab8c0522bb3786b84e56777",
+        "source_fact:v1:91e12c6b477be22c0444f60a35e0d9cebaff373d2c37540ed6c6f0a9448c6c87",
+        "source_fact:v1:96e834b74d3384dfbd5c8efec835846b38db566b5162ce8e029d9fd392c4b2b4",
+        "source_fact:v1:b1ecbab09960180e089a4156996665be2556fde26c02e6db6b576680f0f087a5"
+      ],
+      "source_published_kst": "2026-10-12T00:16+09:00",
+      "source_title": "트럼프 \"러-우크라, '에너지 부문 휴전 합의'…즉각 발효\"",
+      "telegram_core_fact": "이번 ‘에너지 휴전’은 지난 9일 트럼프 대통령이 블라디미르 푸틴 러시아 대통령과 미국 및 전 세계 시장에 러시아산 경유를 공급하기로 합의했다고 공개한 뒤 이틀 만이다.",
+      "title": "트럼프 \"러-우크라, '에너지 부문 휴전 합의'…즉각 발효\""
+    },
     "fact:96933bc1df9964678f16facc": {
       "first_seen_kst": "2026-10-10T09:31:49+09:00",
       "lanes": {
@@ -77123,6 +77211,28 @@
       ],
       "source_published_kst": "2026-10-07T08:41+09:00",
       "title": "로켓 파마슈티컬스, 1억5000만 달러 신용한도..현금 2028년 3분기까지"
+    },
+    "link:064f18bba1773d1d167548b4": {
+      "first_seen_kst": "2026-10-12T03:58:42+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:58:42+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:58:42+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821233",
+      "source": "뉴시스",
+      "source_body_digest": "db110efad586806aef7c8ddeb19aecfdd7e331c705da1603b619a3f3bc491bf1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:43d0af73e8afadd2c0ce7196634b11b44d44dec7f3c45456f75624b1b60a8d8c",
+      "source_fact_keys": [
+        "source_fact:v1:2407f1d0912d2dcfa43414997837b62b3dfaea1c0ed1a72cc1cbc5e6bf223048",
+        "source_fact:v1:9e4fe597e470c5b7d53564f759309b1e0487fcabb7b777256feec94adc522a77",
+        "source_fact:v1:a1a33476a59352961701bdc9d1e9becbdc39885c444fb39b9e009543111877a5",
+        "source_fact:v1:db0ba77d95e72a7cc3ee10b101cf334bfcc43a32aaeb1b5d2e7b37c64f1d3e6b"
+      ],
+      "source_published_kst": "2026-10-12T03:42+09:00",
+      "source_title": "이란 “종전 제안에 미국 답변 불충분”…데이터센터·통신 케이블 공격 경고",
+      "telegram_core_fact": "모흐센 레자이 이란 최고국가안보회의 사무총장은 11일(현지시간) 전쟁 종식과 호르무즈 해협의 완전한 개방을 위한 협상이 진전을 보이지 못하는 가운데 미국의 최신 답변이 “불충분하다”고 밝혔다.",
+      "title": "이란 “종전 제안에 미국 답변 불충분”…데이터센터·통신 케이블 공격 경고"
     },
     "link:06592aea7424db91d02ed0fd": {
       "first_seen_kst": "2026-10-04T15:04:58+09:00",
@@ -132494,6 +132604,32 @@
       "source_published_kst": "2026-10-07T08:00+09:00",
       "title": "반도체가 끌어올린 한국 성장률 ‘눈높이’…해외 IB 전망 한달 새 3.3%→3.5%"
     },
+    "link:f0fc96f3b49a24811869727b": {
+      "first_seen_kst": "2026-10-12T03:58:42+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:58:42+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:58:42+09:00",
+      "link": "https://www.hankyung.com/article/2026101247267",
+      "source": "한국경제",
+      "source_body_digest": "dd7afbff49929f93cd154d46d16cef31ef05ce06f72e03ae84b570d0a513389b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8f421b2581f8a35247adf2b6dc65bf2ab1e3995e46e8708891f4404aa5695286",
+      "source_fact_keys": [
+        "source_fact:v1:2c77f5156c8854d03454440b4c28c34287fd31e21f4b6d6e2a4e012a7b0ca7aa",
+        "source_fact:v1:2d411fcc1d03950f8a56685d2f89a27a4d81d1d4bf2b0905f811a036bd7c1f03",
+        "source_fact:v1:308c6aa1f23370aaab8836b39d6f4e308bd31fc3dfed74e961debf2ac690594c",
+        "source_fact:v1:62198e7a239a4c1b8c8161b2e5cee247076cbfaf178a6900350fa6561e33dbd7",
+        "source_fact:v1:666851ea70f630506f597b850b95a2d6347f46ae5ab8c0522bb3786b84e56777",
+        "source_fact:v1:91e12c6b477be22c0444f60a35e0d9cebaff373d2c37540ed6c6f0a9448c6c87",
+        "source_fact:v1:96e834b74d3384dfbd5c8efec835846b38db566b5162ce8e029d9fd392c4b2b4",
+        "source_fact:v1:b1ecbab09960180e089a4156996665be2556fde26c02e6db6b576680f0f087a5"
+      ],
+      "source_published_kst": "2026-10-12T00:16+09:00",
+      "source_title": "트럼프 \"러-우크라, '에너지 부문 휴전 합의'…즉각 발효\"",
+      "telegram_core_fact": "이번 ‘에너지 휴전’은 지난 9일 트럼프 대통령이 블라디미르 푸틴 러시아 대통령과 미국 및 전 세계 시장에 러시아산 경유를 공급하기로 합의했다고 공개한 뒤 이틀 만이다.",
+      "title": "트럼프 \"러-우크라, '에너지 부문 휴전 합의'…즉각 발효\""
+    },
     "link:f1232906fdcf9352f1e46d47": {
       "first_seen_kst": "2026-10-07T18:44:00+09:00",
       "lanes": {
@@ -156016,6 +156152,32 @@
       "source_title": "중국 반도체 장비, 3분기 수입 증가가 말해주는 것 [돈 되는 해외 주식]",
       "telegram_core_fact": "2023~2025년 분기별 중국산 장비 기업 매출과 외국산 장비 수입이 높은 동행성을 보였다는 점을 감안하면 3분기 중국 장비 기업 실적에 대한 눈높이를 상향할 필요가 있다고 판단한다.",
       "title": "중국 반도체 장비, 3분기 수입 증가가 말해주는 것 [돈 되는 해외 주식]"
+    },
+    "original:56297612a9b8728e155c6050": {
+      "first_seen_kst": "2026-10-12T03:58:42+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:58:42+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:58:42+09:00",
+      "link": "https://www.hankyung.com/article/2026101247267",
+      "source": "한국경제",
+      "source_body_digest": "dd7afbff49929f93cd154d46d16cef31ef05ce06f72e03ae84b570d0a513389b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8f421b2581f8a35247adf2b6dc65bf2ab1e3995e46e8708891f4404aa5695286",
+      "source_fact_keys": [
+        "source_fact:v1:2c77f5156c8854d03454440b4c28c34287fd31e21f4b6d6e2a4e012a7b0ca7aa",
+        "source_fact:v1:2d411fcc1d03950f8a56685d2f89a27a4d81d1d4bf2b0905f811a036bd7c1f03",
+        "source_fact:v1:308c6aa1f23370aaab8836b39d6f4e308bd31fc3dfed74e961debf2ac690594c",
+        "source_fact:v1:62198e7a239a4c1b8c8161b2e5cee247076cbfaf178a6900350fa6561e33dbd7",
+        "source_fact:v1:666851ea70f630506f597b850b95a2d6347f46ae5ab8c0522bb3786b84e56777",
+        "source_fact:v1:91e12c6b477be22c0444f60a35e0d9cebaff373d2c37540ed6c6f0a9448c6c87",
+        "source_fact:v1:96e834b74d3384dfbd5c8efec835846b38db566b5162ce8e029d9fd392c4b2b4",
+        "source_fact:v1:b1ecbab09960180e089a4156996665be2556fde26c02e6db6b576680f0f087a5"
+      ],
+      "source_published_kst": "2026-10-12T00:16+09:00",
+      "source_title": "트럼프 \"러-우크라, '에너지 부문 휴전 합의'…즉각 발효\"",
+      "telegram_core_fact": "이번 ‘에너지 휴전’은 지난 9일 트럼프 대통령이 블라디미르 푸틴 러시아 대통령과 미국 및 전 세계 시장에 러시아산 경유를 공급하기로 합의했다고 공개한 뒤 이틀 만이다.",
+      "title": "트럼프 \"러-우크라, '에너지 부문 휴전 합의'…즉각 발효\""
     },
     "original:5630b74101bb21823c755906": {
       "first_seen_kst": "2026-10-03T07:04:42+09:00",
@@ -190212,6 +190374,28 @@
       "source_published_kst": "2026-10-06T10:14+09:00",
       "title": "JW중외 \"당뇨병치료제 임상 3상 국제학회 발표\""
     },
+    "original:ed66836dd2d9099914ccfaed": {
+      "first_seen_kst": "2026-10-12T03:58:42+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:58:42+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:58:42+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821233",
+      "source": "뉴시스",
+      "source_body_digest": "db110efad586806aef7c8ddeb19aecfdd7e331c705da1603b619a3f3bc491bf1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:43d0af73e8afadd2c0ce7196634b11b44d44dec7f3c45456f75624b1b60a8d8c",
+      "source_fact_keys": [
+        "source_fact:v1:2407f1d0912d2dcfa43414997837b62b3dfaea1c0ed1a72cc1cbc5e6bf223048",
+        "source_fact:v1:9e4fe597e470c5b7d53564f759309b1e0487fcabb7b777256feec94adc522a77",
+        "source_fact:v1:a1a33476a59352961701bdc9d1e9becbdc39885c444fb39b9e009543111877a5",
+        "source_fact:v1:db0ba77d95e72a7cc3ee10b101cf334bfcc43a32aaeb1b5d2e7b37c64f1d3e6b"
+      ],
+      "source_published_kst": "2026-10-12T03:42+09:00",
+      "source_title": "이란 “종전 제안에 미국 답변 불충분”…데이터센터·통신 케이블 공격 경고",
+      "telegram_core_fact": "모흐센 레자이 이란 최고국가안보회의 사무총장은 11일(현지시간) 전쟁 종식과 호르무즈 해협의 완전한 개방을 위한 협상이 진전을 보이지 못하는 가운데 미국의 최신 답변이 “불충분하다”고 밝혔다.",
+      "title": "이란 “종전 제안에 미국 답변 불충분”…데이터센터·통신 케이블 공격 경고"
+    },
     "original:edec30cdc2a2224e6f9d8eb4": {
       "first_seen_kst": "2026-10-07T15:30:27+09:00",
       "lanes": {
@@ -206322,6 +206506,28 @@
       "telegram_core_fact": "예견된 환율 하락의 역풍3분기 연결기준 매출액은 전년 대비 42% 증가한 4250억원, 영업이익은 전년 대비 25% 늘어난 790억원으로 컨센서스 영업이익을 10% 하회할 것으로 추정된다.",
       "title": "실리콘투, 환율이 안정된다면 [베스트 애널리스트 추천 종목]"
     },
+    "source_fact:10e7d5d47c4c2af8b1f1c5da": {
+      "first_seen_kst": "2026-10-12T03:58:42+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:58:42+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:58:42+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821233",
+      "source": "뉴시스",
+      "source_body_digest": "db110efad586806aef7c8ddeb19aecfdd7e331c705da1603b619a3f3bc491bf1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:43d0af73e8afadd2c0ce7196634b11b44d44dec7f3c45456f75624b1b60a8d8c",
+      "source_fact_keys": [
+        "source_fact:v1:2407f1d0912d2dcfa43414997837b62b3dfaea1c0ed1a72cc1cbc5e6bf223048",
+        "source_fact:v1:9e4fe597e470c5b7d53564f759309b1e0487fcabb7b777256feec94adc522a77",
+        "source_fact:v1:a1a33476a59352961701bdc9d1e9becbdc39885c444fb39b9e009543111877a5",
+        "source_fact:v1:db0ba77d95e72a7cc3ee10b101cf334bfcc43a32aaeb1b5d2e7b37c64f1d3e6b"
+      ],
+      "source_published_kst": "2026-10-12T03:42+09:00",
+      "source_title": "이란 “종전 제안에 미국 답변 불충분”…데이터센터·통신 케이블 공격 경고",
+      "telegram_core_fact": "모흐센 레자이 이란 최고국가안보회의 사무총장은 11일(현지시간) 전쟁 종식과 호르무즈 해협의 완전한 개방을 위한 협상이 진전을 보이지 못하는 가운데 미국의 최신 답변이 “불충분하다”고 밝혔다.",
+      "title": "이란 “종전 제안에 미국 답변 불충분”…데이터센터·통신 케이블 공격 경고"
+    },
     "source_fact:10e8e754ef824f594cc2fd2a": {
       "first_seen_kst": "2026-10-07T00:09:35+09:00",
       "lanes": {
@@ -210453,6 +210659,28 @@
       "source_title": "쿠팡·쿠팡이츠·쿠팡플레이 등 한밤 중 접속 장애…주문·배송 차질",
       "telegram_core_fact": "고객 주문과 로그인뿐 아니라 물류 현장의 상품 분류 작업과 배송에도 차질이 빚어진 것으로 파악됐다.",
       "title": "쿠팡·쿠팡이츠·쿠팡플레이 등 한밤 중 접속 장애…주문·배송 차질"
+    },
+    "source_fact:16a7ea58053f0ee634595bf4": {
+      "first_seen_kst": "2026-10-12T03:58:42+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:58:42+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:58:42+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821233",
+      "source": "뉴시스",
+      "source_body_digest": "db110efad586806aef7c8ddeb19aecfdd7e331c705da1603b619a3f3bc491bf1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:43d0af73e8afadd2c0ce7196634b11b44d44dec7f3c45456f75624b1b60a8d8c",
+      "source_fact_keys": [
+        "source_fact:v1:2407f1d0912d2dcfa43414997837b62b3dfaea1c0ed1a72cc1cbc5e6bf223048",
+        "source_fact:v1:9e4fe597e470c5b7d53564f759309b1e0487fcabb7b777256feec94adc522a77",
+        "source_fact:v1:a1a33476a59352961701bdc9d1e9becbdc39885c444fb39b9e009543111877a5",
+        "source_fact:v1:db0ba77d95e72a7cc3ee10b101cf334bfcc43a32aaeb1b5d2e7b37c64f1d3e6b"
+      ],
+      "source_published_kst": "2026-10-12T03:42+09:00",
+      "source_title": "이란 “종전 제안에 미국 답변 불충분”…데이터센터·통신 케이블 공격 경고",
+      "telegram_core_fact": "모흐센 레자이 이란 최고국가안보회의 사무총장은 11일(현지시간) 전쟁 종식과 호르무즈 해협의 완전한 개방을 위한 협상이 진전을 보이지 못하는 가운데 미국의 최신 답변이 “불충분하다”고 밝혔다.",
+      "title": "이란 “종전 제안에 미국 답변 불충분”…데이터센터·통신 케이블 공격 경고"
     },
     "source_fact:16c0ed5f56587633587b27c6": {
       "first_seen_kst": "2026-10-08T16:34:42+09:00",
@@ -245417,6 +245645,28 @@
       "source_published_kst": "2026-10-06T07:07+09:00",
       "title": "스페이스X 주가 급등에 머스크 다시 조만장자 [마켓핫]"
     },
+    "source_fact:44a6ca305280ca3a3b03c717": {
+      "first_seen_kst": "2026-10-12T03:58:42+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:58:42+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:58:42+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821233",
+      "source": "뉴시스",
+      "source_body_digest": "db110efad586806aef7c8ddeb19aecfdd7e331c705da1603b619a3f3bc491bf1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:43d0af73e8afadd2c0ce7196634b11b44d44dec7f3c45456f75624b1b60a8d8c",
+      "source_fact_keys": [
+        "source_fact:v1:2407f1d0912d2dcfa43414997837b62b3dfaea1c0ed1a72cc1cbc5e6bf223048",
+        "source_fact:v1:9e4fe597e470c5b7d53564f759309b1e0487fcabb7b777256feec94adc522a77",
+        "source_fact:v1:a1a33476a59352961701bdc9d1e9becbdc39885c444fb39b9e009543111877a5",
+        "source_fact:v1:db0ba77d95e72a7cc3ee10b101cf334bfcc43a32aaeb1b5d2e7b37c64f1d3e6b"
+      ],
+      "source_published_kst": "2026-10-12T03:42+09:00",
+      "source_title": "이란 “종전 제안에 미국 답변 불충분”…데이터센터·통신 케이블 공격 경고",
+      "telegram_core_fact": "모흐센 레자이 이란 최고국가안보회의 사무총장은 11일(현지시간) 전쟁 종식과 호르무즈 해협의 완전한 개방을 위한 협상이 진전을 보이지 못하는 가운데 미국의 최신 답변이 “불충분하다”고 밝혔다.",
+      "title": "이란 “종전 제안에 미국 답변 불충분”…데이터센터·통신 케이블 공격 경고"
+    },
     "source_fact:44aaa996482c5722dd4423c6": {
       "first_seen_kst": "2026-10-08T19:49:39+09:00",
       "lanes": {
@@ -267449,6 +267699,32 @@
       "source_published_kst": "2026-10-06T15:25+09:00",
       "title": "임귀현 완주군의원, 친환경 액비 자원화 확대 점검 나서"
     },
+    "source_fact:602f74b9e035070f09139817": {
+      "first_seen_kst": "2026-10-12T03:58:42+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:58:42+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:58:42+09:00",
+      "link": "https://www.hankyung.com/article/2026101247267",
+      "source": "한국경제",
+      "source_body_digest": "dd7afbff49929f93cd154d46d16cef31ef05ce06f72e03ae84b570d0a513389b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8f421b2581f8a35247adf2b6dc65bf2ab1e3995e46e8708891f4404aa5695286",
+      "source_fact_keys": [
+        "source_fact:v1:2c77f5156c8854d03454440b4c28c34287fd31e21f4b6d6e2a4e012a7b0ca7aa",
+        "source_fact:v1:2d411fcc1d03950f8a56685d2f89a27a4d81d1d4bf2b0905f811a036bd7c1f03",
+        "source_fact:v1:308c6aa1f23370aaab8836b39d6f4e308bd31fc3dfed74e961debf2ac690594c",
+        "source_fact:v1:62198e7a239a4c1b8c8161b2e5cee247076cbfaf178a6900350fa6561e33dbd7",
+        "source_fact:v1:666851ea70f630506f597b850b95a2d6347f46ae5ab8c0522bb3786b84e56777",
+        "source_fact:v1:91e12c6b477be22c0444f60a35e0d9cebaff373d2c37540ed6c6f0a9448c6c87",
+        "source_fact:v1:96e834b74d3384dfbd5c8efec835846b38db566b5162ce8e029d9fd392c4b2b4",
+        "source_fact:v1:b1ecbab09960180e089a4156996665be2556fde26c02e6db6b576680f0f087a5"
+      ],
+      "source_published_kst": "2026-10-12T00:16+09:00",
+      "source_title": "트럼프 \"러-우크라, '에너지 부문 휴전 합의'…즉각 발효\"",
+      "telegram_core_fact": "이번 ‘에너지 휴전’은 지난 9일 트럼프 대통령이 블라디미르 푸틴 러시아 대통령과 미국 및 전 세계 시장에 러시아산 경유를 공급하기로 합의했다고 공개한 뒤 이틀 만이다.",
+      "title": "트럼프 \"러-우크라, '에너지 부문 휴전 합의'…즉각 발효\""
+    },
     "source_fact:6030eacdc29a52626e6f90f8": {
       "first_seen_kst": "2026-10-08T00:39:44+09:00",
       "lanes": {
@@ -273437,6 +273713,32 @@
       ],
       "source_published_kst": "2026-10-06T17:47+09:00",
       "title": "치킨업계 “산지 닭값 내려도 매입단가는 달라”…담합 조사에 비용 부담 강조"
+    },
+    "source_fact:6815c0cb6150b9851af4e311": {
+      "first_seen_kst": "2026-10-12T03:58:42+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:58:42+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:58:42+09:00",
+      "link": "https://www.hankyung.com/article/2026101247267",
+      "source": "한국경제",
+      "source_body_digest": "dd7afbff49929f93cd154d46d16cef31ef05ce06f72e03ae84b570d0a513389b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8f421b2581f8a35247adf2b6dc65bf2ab1e3995e46e8708891f4404aa5695286",
+      "source_fact_keys": [
+        "source_fact:v1:2c77f5156c8854d03454440b4c28c34287fd31e21f4b6d6e2a4e012a7b0ca7aa",
+        "source_fact:v1:2d411fcc1d03950f8a56685d2f89a27a4d81d1d4bf2b0905f811a036bd7c1f03",
+        "source_fact:v1:308c6aa1f23370aaab8836b39d6f4e308bd31fc3dfed74e961debf2ac690594c",
+        "source_fact:v1:62198e7a239a4c1b8c8161b2e5cee247076cbfaf178a6900350fa6561e33dbd7",
+        "source_fact:v1:666851ea70f630506f597b850b95a2d6347f46ae5ab8c0522bb3786b84e56777",
+        "source_fact:v1:91e12c6b477be22c0444f60a35e0d9cebaff373d2c37540ed6c6f0a9448c6c87",
+        "source_fact:v1:96e834b74d3384dfbd5c8efec835846b38db566b5162ce8e029d9fd392c4b2b4",
+        "source_fact:v1:b1ecbab09960180e089a4156996665be2556fde26c02e6db6b576680f0f087a5"
+      ],
+      "source_published_kst": "2026-10-12T00:16+09:00",
+      "source_title": "트럼프 \"러-우크라, '에너지 부문 휴전 합의'…즉각 발효\"",
+      "telegram_core_fact": "이번 ‘에너지 휴전’은 지난 9일 트럼프 대통령이 블라디미르 푸틴 러시아 대통령과 미국 및 전 세계 시장에 러시아산 경유를 공급하기로 합의했다고 공개한 뒤 이틀 만이다.",
+      "title": "트럼프 \"러-우크라, '에너지 부문 휴전 합의'…즉각 발효\""
     },
     "source_fact:6816d2f76b952a19d53f7311": {
       "first_seen_kst": "2026-10-06T18:46:35+09:00",
@@ -309578,6 +309880,32 @@
       "source_published_kst": "2026-10-07T08:44+09:00",
       "title": "LS에코에너지, 베트남서 AIDC용 버스덕트 생산능력 2배 확대"
     },
+    "source_fact:98ca1e8792aa432e9a6b0d83": {
+      "first_seen_kst": "2026-10-12T03:58:42+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:58:42+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:58:42+09:00",
+      "link": "https://www.hankyung.com/article/2026101247267",
+      "source": "한국경제",
+      "source_body_digest": "dd7afbff49929f93cd154d46d16cef31ef05ce06f72e03ae84b570d0a513389b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8f421b2581f8a35247adf2b6dc65bf2ab1e3995e46e8708891f4404aa5695286",
+      "source_fact_keys": [
+        "source_fact:v1:2c77f5156c8854d03454440b4c28c34287fd31e21f4b6d6e2a4e012a7b0ca7aa",
+        "source_fact:v1:2d411fcc1d03950f8a56685d2f89a27a4d81d1d4bf2b0905f811a036bd7c1f03",
+        "source_fact:v1:308c6aa1f23370aaab8836b39d6f4e308bd31fc3dfed74e961debf2ac690594c",
+        "source_fact:v1:62198e7a239a4c1b8c8161b2e5cee247076cbfaf178a6900350fa6561e33dbd7",
+        "source_fact:v1:666851ea70f630506f597b850b95a2d6347f46ae5ab8c0522bb3786b84e56777",
+        "source_fact:v1:91e12c6b477be22c0444f60a35e0d9cebaff373d2c37540ed6c6f0a9448c6c87",
+        "source_fact:v1:96e834b74d3384dfbd5c8efec835846b38db566b5162ce8e029d9fd392c4b2b4",
+        "source_fact:v1:b1ecbab09960180e089a4156996665be2556fde26c02e6db6b576680f0f087a5"
+      ],
+      "source_published_kst": "2026-10-12T00:16+09:00",
+      "source_title": "트럼프 \"러-우크라, '에너지 부문 휴전 합의'…즉각 발효\"",
+      "telegram_core_fact": "이번 ‘에너지 휴전’은 지난 9일 트럼프 대통령이 블라디미르 푸틴 러시아 대통령과 미국 및 전 세계 시장에 러시아산 경유를 공급하기로 합의했다고 공개한 뒤 이틀 만이다.",
+      "title": "트럼프 \"러-우크라, '에너지 부문 휴전 합의'…즉각 발효\""
+    },
     "source_fact:98cc67c7b7905ee3843a5d6c": {
       "first_seen_kst": "2026-10-07T07:01:10+09:00",
       "lanes": {
@@ -319193,6 +319521,32 @@
       "telegram_core_fact": "현대차그룹은 엔비디아와 자율주행 및 피지컬 AI 인프라 강화에 협력하고, 웨이모와는 자율주행 생태계 조성에 나서고 있다.",
       "title": "[정의선 회장 6년] 車 넘어 '피지컬 AI' 승부수…로봇·자율주행 확장"
     },
+    "source_fact:a5c83d694aa3b9b78f648268": {
+      "first_seen_kst": "2026-10-12T03:58:42+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:58:42+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:58:42+09:00",
+      "link": "https://www.hankyung.com/article/2026101247267",
+      "source": "한국경제",
+      "source_body_digest": "dd7afbff49929f93cd154d46d16cef31ef05ce06f72e03ae84b570d0a513389b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8f421b2581f8a35247adf2b6dc65bf2ab1e3995e46e8708891f4404aa5695286",
+      "source_fact_keys": [
+        "source_fact:v1:2c77f5156c8854d03454440b4c28c34287fd31e21f4b6d6e2a4e012a7b0ca7aa",
+        "source_fact:v1:2d411fcc1d03950f8a56685d2f89a27a4d81d1d4bf2b0905f811a036bd7c1f03",
+        "source_fact:v1:308c6aa1f23370aaab8836b39d6f4e308bd31fc3dfed74e961debf2ac690594c",
+        "source_fact:v1:62198e7a239a4c1b8c8161b2e5cee247076cbfaf178a6900350fa6561e33dbd7",
+        "source_fact:v1:666851ea70f630506f597b850b95a2d6347f46ae5ab8c0522bb3786b84e56777",
+        "source_fact:v1:91e12c6b477be22c0444f60a35e0d9cebaff373d2c37540ed6c6f0a9448c6c87",
+        "source_fact:v1:96e834b74d3384dfbd5c8efec835846b38db566b5162ce8e029d9fd392c4b2b4",
+        "source_fact:v1:b1ecbab09960180e089a4156996665be2556fde26c02e6db6b576680f0f087a5"
+      ],
+      "source_published_kst": "2026-10-12T00:16+09:00",
+      "source_title": "트럼프 \"러-우크라, '에너지 부문 휴전 합의'…즉각 발효\"",
+      "telegram_core_fact": "이번 ‘에너지 휴전’은 지난 9일 트럼프 대통령이 블라디미르 푸틴 러시아 대통령과 미국 및 전 세계 시장에 러시아산 경유를 공급하기로 합의했다고 공개한 뒤 이틀 만이다.",
+      "title": "트럼프 \"러-우크라, '에너지 부문 휴전 합의'…즉각 발효\""
+    },
     "source_fact:a5c93ab818ce9c97238a80b7": {
       "first_seen_kst": "2026-10-09T23:49:51+09:00",
       "lanes": {
@@ -328784,6 +329138,32 @@
       "telegram_core_fact": "트럼프 대통령은 8일(현지시간) SNS에서 “이란에 대한 봉쇄 조치는 전면적으로 유지될 것”이라면서도 “11월 3일 치러지는 중간선거 이전에는 어떤 시점에도 이란을 공격하지 않을 것”이라고 밝혔다. 도널드 트럼프 미국 대통령이 다음달 3일 중간선거 전까지 이란을 공격하지 않겠다고 밝히면서 급등하던 국제 유가가 하락했다.",
       "title": "트럼프 \"내달 3일까지 이란 공격 안해\""
     },
+    "source_fact:b287f702cc9279f7bbbb9918": {
+      "first_seen_kst": "2026-10-12T03:58:42+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:58:42+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:58:42+09:00",
+      "link": "https://www.hankyung.com/article/2026101247267",
+      "source": "한국경제",
+      "source_body_digest": "dd7afbff49929f93cd154d46d16cef31ef05ce06f72e03ae84b570d0a513389b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8f421b2581f8a35247adf2b6dc65bf2ab1e3995e46e8708891f4404aa5695286",
+      "source_fact_keys": [
+        "source_fact:v1:2c77f5156c8854d03454440b4c28c34287fd31e21f4b6d6e2a4e012a7b0ca7aa",
+        "source_fact:v1:2d411fcc1d03950f8a56685d2f89a27a4d81d1d4bf2b0905f811a036bd7c1f03",
+        "source_fact:v1:308c6aa1f23370aaab8836b39d6f4e308bd31fc3dfed74e961debf2ac690594c",
+        "source_fact:v1:62198e7a239a4c1b8c8161b2e5cee247076cbfaf178a6900350fa6561e33dbd7",
+        "source_fact:v1:666851ea70f630506f597b850b95a2d6347f46ae5ab8c0522bb3786b84e56777",
+        "source_fact:v1:91e12c6b477be22c0444f60a35e0d9cebaff373d2c37540ed6c6f0a9448c6c87",
+        "source_fact:v1:96e834b74d3384dfbd5c8efec835846b38db566b5162ce8e029d9fd392c4b2b4",
+        "source_fact:v1:b1ecbab09960180e089a4156996665be2556fde26c02e6db6b576680f0f087a5"
+      ],
+      "source_published_kst": "2026-10-12T00:16+09:00",
+      "source_title": "트럼프 \"러-우크라, '에너지 부문 휴전 합의'…즉각 발효\"",
+      "telegram_core_fact": "이번 ‘에너지 휴전’은 지난 9일 트럼프 대통령이 블라디미르 푸틴 러시아 대통령과 미국 및 전 세계 시장에 러시아산 경유를 공급하기로 합의했다고 공개한 뒤 이틀 만이다.",
+      "title": "트럼프 \"러-우크라, '에너지 부문 휴전 합의'…즉각 발효\""
+    },
     "source_fact:b295142e86a61de5b952ce0e": {
       "first_seen_kst": "2026-10-06T18:46:35+09:00",
       "lanes": {
@@ -338227,6 +338607,32 @@
       "telegram_core_fact": "이소영 중소벤처기업부 장관이 납품대금 연동제의 실효성이 부족하다며 적용 요건과 제재 등을 전반적으로 재검토하겠다고 밝혔다.",
       "title": "이소영 \"납품대금연동제 전면 검토…기술탈취 과징금 피해구제 개선\"(종합)"
     },
+    "source_fact:c0540eb113411ae67c332939": {
+      "first_seen_kst": "2026-10-12T03:58:42+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:58:42+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:58:42+09:00",
+      "link": "https://www.hankyung.com/article/2026101247267",
+      "source": "한국경제",
+      "source_body_digest": "dd7afbff49929f93cd154d46d16cef31ef05ce06f72e03ae84b570d0a513389b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8f421b2581f8a35247adf2b6dc65bf2ab1e3995e46e8708891f4404aa5695286",
+      "source_fact_keys": [
+        "source_fact:v1:2c77f5156c8854d03454440b4c28c34287fd31e21f4b6d6e2a4e012a7b0ca7aa",
+        "source_fact:v1:2d411fcc1d03950f8a56685d2f89a27a4d81d1d4bf2b0905f811a036bd7c1f03",
+        "source_fact:v1:308c6aa1f23370aaab8836b39d6f4e308bd31fc3dfed74e961debf2ac690594c",
+        "source_fact:v1:62198e7a239a4c1b8c8161b2e5cee247076cbfaf178a6900350fa6561e33dbd7",
+        "source_fact:v1:666851ea70f630506f597b850b95a2d6347f46ae5ab8c0522bb3786b84e56777",
+        "source_fact:v1:91e12c6b477be22c0444f60a35e0d9cebaff373d2c37540ed6c6f0a9448c6c87",
+        "source_fact:v1:96e834b74d3384dfbd5c8efec835846b38db566b5162ce8e029d9fd392c4b2b4",
+        "source_fact:v1:b1ecbab09960180e089a4156996665be2556fde26c02e6db6b576680f0f087a5"
+      ],
+      "source_published_kst": "2026-10-12T00:16+09:00",
+      "source_title": "트럼프 \"러-우크라, '에너지 부문 휴전 합의'…즉각 발효\"",
+      "telegram_core_fact": "이번 ‘에너지 휴전’은 지난 9일 트럼프 대통령이 블라디미르 푸틴 러시아 대통령과 미국 및 전 세계 시장에 러시아산 경유를 공급하기로 합의했다고 공개한 뒤 이틀 만이다.",
+      "title": "트럼프 \"러-우크라, '에너지 부문 휴전 합의'…즉각 발효\""
+    },
     "source_fact:c058591fa6e38fcd59aa5dfb": {
       "first_seen_kst": "2026-10-09T19:24:17+09:00",
       "lanes": {
@@ -347415,6 +347821,32 @@
       "telegram_core_fact": "S&P 500지수는 전장보다 36.41포인트(0.47%) 내린 7,765.36, 나스닥 종합지수는 345.35포인트(1.25%) 하락한 27,193.34로 마쳤다.",
       "title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스"
     },
+    "source_fact:cc08c491838b1c977760ad44": {
+      "first_seen_kst": "2026-10-12T03:58:42+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:58:42+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:58:42+09:00",
+      "link": "https://www.hankyung.com/article/2026101247267",
+      "source": "한국경제",
+      "source_body_digest": "dd7afbff49929f93cd154d46d16cef31ef05ce06f72e03ae84b570d0a513389b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8f421b2581f8a35247adf2b6dc65bf2ab1e3995e46e8708891f4404aa5695286",
+      "source_fact_keys": [
+        "source_fact:v1:2c77f5156c8854d03454440b4c28c34287fd31e21f4b6d6e2a4e012a7b0ca7aa",
+        "source_fact:v1:2d411fcc1d03950f8a56685d2f89a27a4d81d1d4bf2b0905f811a036bd7c1f03",
+        "source_fact:v1:308c6aa1f23370aaab8836b39d6f4e308bd31fc3dfed74e961debf2ac690594c",
+        "source_fact:v1:62198e7a239a4c1b8c8161b2e5cee247076cbfaf178a6900350fa6561e33dbd7",
+        "source_fact:v1:666851ea70f630506f597b850b95a2d6347f46ae5ab8c0522bb3786b84e56777",
+        "source_fact:v1:91e12c6b477be22c0444f60a35e0d9cebaff373d2c37540ed6c6f0a9448c6c87",
+        "source_fact:v1:96e834b74d3384dfbd5c8efec835846b38db566b5162ce8e029d9fd392c4b2b4",
+        "source_fact:v1:b1ecbab09960180e089a4156996665be2556fde26c02e6db6b576680f0f087a5"
+      ],
+      "source_published_kst": "2026-10-12T00:16+09:00",
+      "source_title": "트럼프 \"러-우크라, '에너지 부문 휴전 합의'…즉각 발효\"",
+      "telegram_core_fact": "이번 ‘에너지 휴전’은 지난 9일 트럼프 대통령이 블라디미르 푸틴 러시아 대통령과 미국 및 전 세계 시장에 러시아산 경유를 공급하기로 합의했다고 공개한 뒤 이틀 만이다.",
+      "title": "트럼프 \"러-우크라, '에너지 부문 휴전 합의'…즉각 발효\""
+    },
     "source_fact:cc0b58dc6528cde33dd7dc3f": {
       "first_seen_kst": "2026-10-07T12:06:36+09:00",
       "lanes": {
@@ -350373,6 +350805,32 @@
       "telegram_core_fact": "한국투자신탁운용은 7일 ACE 미국빅테크TOP7Plus 상장지수펀드(ETF)의 순자산액이 1조2000억원을 돌파했다고 밝혔다. ACE 미국빅테크TOP7Plus ETF는 미국 나스닥 시장에 상장된 빅테크 기업에 집중적으로 투자하는 상품으로 2023년 9월 상장했다.",
       "title": "한투운용, 미국 빅테크 집중 ETF 순자산 1조2000억 돌파"
     },
+    "source_fact:d0270c0be58858290e45ce8a": {
+      "first_seen_kst": "2026-10-12T03:58:42+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:58:42+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:58:42+09:00",
+      "link": "https://www.hankyung.com/article/2026101247267",
+      "source": "한국경제",
+      "source_body_digest": "dd7afbff49929f93cd154d46d16cef31ef05ce06f72e03ae84b570d0a513389b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8f421b2581f8a35247adf2b6dc65bf2ab1e3995e46e8708891f4404aa5695286",
+      "source_fact_keys": [
+        "source_fact:v1:2c77f5156c8854d03454440b4c28c34287fd31e21f4b6d6e2a4e012a7b0ca7aa",
+        "source_fact:v1:2d411fcc1d03950f8a56685d2f89a27a4d81d1d4bf2b0905f811a036bd7c1f03",
+        "source_fact:v1:308c6aa1f23370aaab8836b39d6f4e308bd31fc3dfed74e961debf2ac690594c",
+        "source_fact:v1:62198e7a239a4c1b8c8161b2e5cee247076cbfaf178a6900350fa6561e33dbd7",
+        "source_fact:v1:666851ea70f630506f597b850b95a2d6347f46ae5ab8c0522bb3786b84e56777",
+        "source_fact:v1:91e12c6b477be22c0444f60a35e0d9cebaff373d2c37540ed6c6f0a9448c6c87",
+        "source_fact:v1:96e834b74d3384dfbd5c8efec835846b38db566b5162ce8e029d9fd392c4b2b4",
+        "source_fact:v1:b1ecbab09960180e089a4156996665be2556fde26c02e6db6b576680f0f087a5"
+      ],
+      "source_published_kst": "2026-10-12T00:16+09:00",
+      "source_title": "트럼프 \"러-우크라, '에너지 부문 휴전 합의'…즉각 발효\"",
+      "telegram_core_fact": "이번 ‘에너지 휴전’은 지난 9일 트럼프 대통령이 블라디미르 푸틴 러시아 대통령과 미국 및 전 세계 시장에 러시아산 경유를 공급하기로 합의했다고 공개한 뒤 이틀 만이다.",
+      "title": "트럼프 \"러-우크라, '에너지 부문 휴전 합의'…즉각 발효\""
+    },
     "source_fact:d02cfa92adfb6fc914e7737a": {
       "first_seen_kst": "2026-10-08T04:14:15+09:00",
       "lanes": {
@@ -352008,6 +352466,28 @@
       "source_title": "선샤인 바이오파마, 600만 달러 공모가 확정..유닛당 0.55달러",
       "telegram_core_fact": "선샤인 바이오파마(SBFM)는 보통주 유닛 또는 선행출자 유닛 1090만9083개를 유닛당 0.55달러에 공모해 배정대행사 수수료와 발행 비용 차감 전 기준 총 약 600만 달러를 조달한다고 8일(현지시간) 발표했다. 공모가가 0.55달러로 1달러 미만인 점도 투자자가 유의할 대목이다.",
       "title": "선샤인 바이오파마, 600만 달러 공모가 확정..유닛당 0.55달러"
+    },
+    "source_fact:d298b84d57ff2d5a9d64cfff": {
+      "first_seen_kst": "2026-10-12T03:58:42+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:58:42+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:58:42+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821233",
+      "source": "뉴시스",
+      "source_body_digest": "db110efad586806aef7c8ddeb19aecfdd7e331c705da1603b619a3f3bc491bf1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:43d0af73e8afadd2c0ce7196634b11b44d44dec7f3c45456f75624b1b60a8d8c",
+      "source_fact_keys": [
+        "source_fact:v1:2407f1d0912d2dcfa43414997837b62b3dfaea1c0ed1a72cc1cbc5e6bf223048",
+        "source_fact:v1:9e4fe597e470c5b7d53564f759309b1e0487fcabb7b777256feec94adc522a77",
+        "source_fact:v1:a1a33476a59352961701bdc9d1e9becbdc39885c444fb39b9e009543111877a5",
+        "source_fact:v1:db0ba77d95e72a7cc3ee10b101cf334bfcc43a32aaeb1b5d2e7b37c64f1d3e6b"
+      ],
+      "source_published_kst": "2026-10-12T03:42+09:00",
+      "source_title": "이란 “종전 제안에 미국 답변 불충분”…데이터센터·통신 케이블 공격 경고",
+      "telegram_core_fact": "모흐센 레자이 이란 최고국가안보회의 사무총장은 11일(현지시간) 전쟁 종식과 호르무즈 해협의 완전한 개방을 위한 협상이 진전을 보이지 못하는 가운데 미국의 최신 답변이 “불충분하다”고 밝혔다.",
+      "title": "이란 “종전 제안에 미국 답변 불충분”…데이터센터·통신 케이블 공격 경고"
     },
     "source_fact:d298fd20dec3dbddefaac06c": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
@@ -406374,6 +406854,32 @@
       "telegram_core_fact": "2023~2025년 분기별 중국산 장비 기업 매출과 외국산 장비 수입이 높은 동행성을 보였다는 점을 감안하면 3분기 중국 장비 기업 실적에 대한 눈높이를 상향할 필요가 있다고 판단한다.",
       "title": "중국 반도체 장비, 3분기 수입 증가가 말해주는 것 [돈 되는 해외 주식]"
     },
+    "title:56297612a9b8728e155c6050": {
+      "first_seen_kst": "2026-10-12T03:58:42+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:58:42+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:58:42+09:00",
+      "link": "https://www.hankyung.com/article/2026101247267",
+      "source": "한국경제",
+      "source_body_digest": "dd7afbff49929f93cd154d46d16cef31ef05ce06f72e03ae84b570d0a513389b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8f421b2581f8a35247adf2b6dc65bf2ab1e3995e46e8708891f4404aa5695286",
+      "source_fact_keys": [
+        "source_fact:v1:2c77f5156c8854d03454440b4c28c34287fd31e21f4b6d6e2a4e012a7b0ca7aa",
+        "source_fact:v1:2d411fcc1d03950f8a56685d2f89a27a4d81d1d4bf2b0905f811a036bd7c1f03",
+        "source_fact:v1:308c6aa1f23370aaab8836b39d6f4e308bd31fc3dfed74e961debf2ac690594c",
+        "source_fact:v1:62198e7a239a4c1b8c8161b2e5cee247076cbfaf178a6900350fa6561e33dbd7",
+        "source_fact:v1:666851ea70f630506f597b850b95a2d6347f46ae5ab8c0522bb3786b84e56777",
+        "source_fact:v1:91e12c6b477be22c0444f60a35e0d9cebaff373d2c37540ed6c6f0a9448c6c87",
+        "source_fact:v1:96e834b74d3384dfbd5c8efec835846b38db566b5162ce8e029d9fd392c4b2b4",
+        "source_fact:v1:b1ecbab09960180e089a4156996665be2556fde26c02e6db6b576680f0f087a5"
+      ],
+      "source_published_kst": "2026-10-12T00:16+09:00",
+      "source_title": "트럼프 \"러-우크라, '에너지 부문 휴전 합의'…즉각 발효\"",
+      "telegram_core_fact": "이번 ‘에너지 휴전’은 지난 9일 트럼프 대통령이 블라디미르 푸틴 러시아 대통령과 미국 및 전 세계 시장에 러시아산 경유를 공급하기로 합의했다고 공개한 뒤 이틀 만이다.",
+      "title": "트럼프 \"러-우크라, '에너지 부문 휴전 합의'…즉각 발효\""
+    },
     "title:5630b74101bb21823c755906": {
       "first_seen_kst": "2026-10-03T07:04:42+09:00",
       "lanes": {
@@ -441444,6 +441950,28 @@
       "source_published_kst": "2026-10-06T10:14+09:00",
       "title": "JW중외 \"당뇨병치료제 임상 3상 국제학회 발표\""
     },
+    "title:ed66836dd2d9099914ccfaed": {
+      "first_seen_kst": "2026-10-12T03:58:42+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:58:42+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:58:42+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821233",
+      "source": "뉴시스",
+      "source_body_digest": "db110efad586806aef7c8ddeb19aecfdd7e331c705da1603b619a3f3bc491bf1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:43d0af73e8afadd2c0ce7196634b11b44d44dec7f3c45456f75624b1b60a8d8c",
+      "source_fact_keys": [
+        "source_fact:v1:2407f1d0912d2dcfa43414997837b62b3dfaea1c0ed1a72cc1cbc5e6bf223048",
+        "source_fact:v1:9e4fe597e470c5b7d53564f759309b1e0487fcabb7b777256feec94adc522a77",
+        "source_fact:v1:a1a33476a59352961701bdc9d1e9becbdc39885c444fb39b9e009543111877a5",
+        "source_fact:v1:db0ba77d95e72a7cc3ee10b101cf334bfcc43a32aaeb1b5d2e7b37c64f1d3e6b"
+      ],
+      "source_published_kst": "2026-10-12T03:42+09:00",
+      "source_title": "이란 “종전 제안에 미국 답변 불충분”…데이터센터·통신 케이블 공격 경고",
+      "telegram_core_fact": "모흐센 레자이 이란 최고국가안보회의 사무총장은 11일(현지시간) 전쟁 종식과 호르무즈 해협의 완전한 개방을 위한 협상이 진전을 보이지 못하는 가운데 미국의 최신 답변이 “불충분하다”고 밝혔다.",
+      "title": "이란 “종전 제안에 미국 답변 불충분”…데이터센터·통신 케이블 공격 경고"
+    },
     "title:edec30cdc2a2224e6f9d8eb4": {
       "first_seen_kst": "2026-10-07T15:30:27+09:00",
       "lanes": {
@@ -445383,5 +445911,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-12T03:42:08+09:00"
+  "updated_at_kst": "2026-10-12T03:58:42+09:00"
 }
