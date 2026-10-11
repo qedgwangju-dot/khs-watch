@@ -1,6 +1,6 @@
 {
-  "status": "degraded",
-  "checked_at_kst": "2026-10-11T10:49:24+09:00",
+  "status": "ok",
+  "checked_at_kst": "2026-10-11T10:56:42+09:00",
   "route_source": "encrypted-route",
   "telegram_route_ok": true,
   "qlex_collector_rc": 0,
@@ -8,7 +8,7 @@
   "intismeran_collector_rc": 0,
   "jemperli_collector_rc": 0,
   "enhertu_collector_rc": 0,
-  "halozyme_collector_rc": 2,
+  "halozyme_collector_rc": 0,
   "qlex_alert_present": false,
   "qlex_wac_alert_present": false,
   "intismeran_alert_present": false,
@@ -19,22 +19,20 @@
   "intismeran_send_outcome": "skipped",
   "jemperli_send_outcome": "skipped",
   "enhertu_send_outcome": "skipped",
-  "halozyme_run_outcome": "failure",
+  "halozyme_run_outcome": "success",
   "qlex_state_persisted": true,
   "qlex_wac_state_persisted": true,
   "intismeran_state_persisted": true,
   "jemperli_state_persisted": true,
   "enhertu_state_persisted": true,
-  "halozyme_state_persisted": false,
-  "halozyme_source_health": "degraded",
-  "halozyme_search_failed_tasks": 36,
+  "halozyme_state_persisted": true,
+  "halozyme_source_health": "ok",
+  "halozyme_search_failed_tasks": 0,
   "halozyme_search_task_count": 72,
   "intismeran_retry_pending": false,
   "last_health_notice_date": "2026-10-11",
-  "errors": [
-    "Halozyme 검색 원천 가용성 저하: 정상 응답 부족; 상세 실패 수는 heartbeat와 Halozyme 상태 파일 확인"
-  ],
-  "failed_component": "Halozyme 특허분쟁 감시",
-  "error_signature": "Halozyme 검색 원천 가용성 저하: 정상 응답 부족; 상세 실패 수는 heartbeat와 Halozyme 상태 파일 확인",
-  "failure_notice_message_id": 147
+  "errors": [],
+  "failed_component": "",
+  "error_signature": "",
+  "recovery_notice_message_id": 148
 }
