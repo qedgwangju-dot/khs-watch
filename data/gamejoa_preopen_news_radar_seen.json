@@ -8649,6 +8649,36 @@
       "telegram_core_fact": "외부 클라우드와 AI 모델에 의존하던 방식에서 벗어나 자체 인프라를 병행하는 기업이 늘면서, 필요한 장소에 빠르게 구축하고 수요에 따라 확장할 수 있는 모듈형 AI 데이터센터(AIDC)도 대안으로 부상한 모습이다. 국내에선 엘리스그룹이 모듈형 데이터센터와 클라우드 소프트웨어를 결합한 AI 인프라 사업을 추진 중이다.",
       "title": "[AI 고속도로] 기업 AI도 프라이빗 시대…'모듈형 데이터센터'가 뜬다"
     },
+    "core:56c2c5129e1984463f2997dd": {
+      "first_seen_kst": "2026-10-12T02:51:54+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:51:54+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:51:54+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012001800071",
+      "source": "연합뉴스",
+      "source_body_digest": "54088b950d5d3af6108c0561b6346042bb90794452f0c98f7e00a05e349d63fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:841baacd8adf0b013262963a1a0ce948c236f7ccd6c1857806656ac95a65a287",
+      "source_fact_keys": [
+        "source_fact:v1:09b1ba9035a852c8467976cd9f02b7ae5a2d87bd1818ccbdd637d0b649e20ac6",
+        "source_fact:v1:1b764c19d6a6c603803014b6e2a9dfc7b0170ce28e676fc3008cf4adc981f531",
+        "source_fact:v1:212abd2a7c570a19539e8144437bca04e3098d6fbdbbff71d9f359a992bea8b2",
+        "source_fact:v1:2a2ad22df35bdfa30ee2e5a3b51eca9f0aebf6b2a301e890a9ccc1b4ba456cf3",
+        "source_fact:v1:3689eeab5c78353770985348de5f828cc31bc50b4d633b7a7f052780ae7b7062",
+        "source_fact:v1:37c554429cb9de4e847c3d980cfd42998a59114bc0a52544216b62bfdff2c807",
+        "source_fact:v1:676d809a586d70fd1d6e5417ca7f50b4c7ca8697c987861291625444ccd67e35",
+        "source_fact:v1:8a01f9edcb7cefdc38c796acf41f8000e05806f3908042df9d7b8d519e96716e",
+        "source_fact:v1:abf6eacbcaaf758b26cffee81a77720231dd5b9d178cf0bc12afae1aab5b15a7",
+        "source_fact:v1:e14a816bbee1497190bd54bdf08b72c69dce480eed5c5f4f3d50946807adff4f",
+        "source_fact:v1:e6d7a8d7eee69335ed427fee51b5e9f059464f7c19f98f38a963b2f9931ac911",
+        "source_fact:v1:f60f6f14b50e0537a981bf5ca38df328b8862f2f64fbad210d4e30422fe23644"
+      ],
+      "source_published_kst": "2026-10-12T02:37+09:00",
+      "source_title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스",
+      "telegram_core_fact": "11월 3일 중간선거를 앞둔 트럼프 대통령으로서는 후티 공격 동참을 통한 군사적 확전이 부담스러울 수밖에 없다.",
+      "title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스"
+    },
     "core:56eeb25dc1799e3f5d723612": {
       "first_seen_kst": "2026-10-10T08:26:55+09:00",
       "lanes": {
@@ -26484,24 +26514,32 @@
     "event:242c04e115c71f36e3e5a541": {
       "first_seen_kst": "2026-10-12T01:34:33+09:00",
       "lanes": {
-        "live": "2026-10-12T01:34:33+09:00"
+        "live": "2026-10-12T02:51:54+09:00"
       },
-      "last_seen_kst": "2026-10-12T01:34:33+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261012001000079",
+      "last_seen_kst": "2026-10-12T02:51:54+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012001800071",
       "source": "연합뉴스",
-      "source_body_digest": "f920ee4133e275a1988ea13bbf39a9008ffc97b35a1a9ed531da85cc2163718c",
+      "source_body_digest": "54088b950d5d3af6108c0561b6346042bb90794452f0c98f7e00a05e349d63fc",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:06efff17f784a4560dc643a57cf2127458077b231da26094b96a44a5afd017df",
+      "source_fact_identity": "source_facts:v1:841baacd8adf0b013262963a1a0ce948c236f7ccd6c1857806656ac95a65a287",
       "source_fact_keys": [
-        "source_fact:v1:a4fee85c5510ea977fb4d401e107e6c4741f526202cbb6d56ae2796b90aede5b",
-        "source_fact:v1:a643b2211c3d405a7e371c404bd7feedb9a32d4f78df04c223ba10238318bf08",
-        "source_fact:v1:d22ecbeaf3bc81f388d58315b1e7cd2f0eb18d58ec1c499b2a26d7a764043aec",
-        "source_fact:v1:e6b299a26f28c06c32ae8497cfe96abbf20fd30b6650704d92a9c80195c592e6"
+        "source_fact:v1:09b1ba9035a852c8467976cd9f02b7ae5a2d87bd1818ccbdd637d0b649e20ac6",
+        "source_fact:v1:1b764c19d6a6c603803014b6e2a9dfc7b0170ce28e676fc3008cf4adc981f531",
+        "source_fact:v1:212abd2a7c570a19539e8144437bca04e3098d6fbdbbff71d9f359a992bea8b2",
+        "source_fact:v1:2a2ad22df35bdfa30ee2e5a3b51eca9f0aebf6b2a301e890a9ccc1b4ba456cf3",
+        "source_fact:v1:3689eeab5c78353770985348de5f828cc31bc50b4d633b7a7f052780ae7b7062",
+        "source_fact:v1:37c554429cb9de4e847c3d980cfd42998a59114bc0a52544216b62bfdff2c807",
+        "source_fact:v1:676d809a586d70fd1d6e5417ca7f50b4c7ca8697c987861291625444ccd67e35",
+        "source_fact:v1:8a01f9edcb7cefdc38c796acf41f8000e05806f3908042df9d7b8d519e96716e",
+        "source_fact:v1:abf6eacbcaaf758b26cffee81a77720231dd5b9d178cf0bc12afae1aab5b15a7",
+        "source_fact:v1:e14a816bbee1497190bd54bdf08b72c69dce480eed5c5f4f3d50946807adff4f",
+        "source_fact:v1:e6d7a8d7eee69335ed427fee51b5e9f059464f7c19f98f38a963b2f9931ac911",
+        "source_fact:v1:f60f6f14b50e0537a981bf5ca38df328b8862f2f64fbad210d4e30422fe23644"
       ],
-      "source_published_kst": "2026-10-12T01:21+09:00",
-      "source_title": "이란 안보수장 \"美, 7가지 제안에 답변…그러나 아직 불충분\" | 연합뉴스",
-      "telegram_core_fact": "외신에 따르면 이란은 ▲미국의 해상봉쇄 해제 ▲동결자금 즉시 반환 ▲이란산 원유 수출 제재 면제 ▲모든 전선에서 전투 중단 등 7가지 조건을 미국이 이행하면 7일 안에 호르무즈 해협을 재개방하겠다고 제안했다.",
-      "title": "이란 안보수장 \"美, 7가지 제안에 답변…그러나 아직 불충분\" | 연합뉴스"
+      "source_published_kst": "2026-10-12T02:37+09:00",
+      "source_title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스",
+      "telegram_core_fact": "11월 3일 중간선거를 앞둔 트럼프 대통령으로서는 후티 공격 동참을 통한 군사적 확전이 부담스러울 수밖에 없다.",
+      "title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스"
     },
     "event:243b9268c0c661c2e567eb0a": {
       "first_seen_kst": "2026-09-30T11:15:27+09:00",
@@ -59206,6 +59244,36 @@
       ],
       "source_published_kst": "2026-10-05T19:55+09:00",
       "title": "[美특징주]인텔, 개장 전 4%↓…머스크의 테라팹-TSMC 협력 논의"
+    },
+    "fact:97ea0d7884967c3dd26c31e8": {
+      "first_seen_kst": "2026-10-12T02:51:54+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:51:54+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:51:54+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012001800071",
+      "source": "연합뉴스",
+      "source_body_digest": "54088b950d5d3af6108c0561b6346042bb90794452f0c98f7e00a05e349d63fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:841baacd8adf0b013262963a1a0ce948c236f7ccd6c1857806656ac95a65a287",
+      "source_fact_keys": [
+        "source_fact:v1:09b1ba9035a852c8467976cd9f02b7ae5a2d87bd1818ccbdd637d0b649e20ac6",
+        "source_fact:v1:1b764c19d6a6c603803014b6e2a9dfc7b0170ce28e676fc3008cf4adc981f531",
+        "source_fact:v1:212abd2a7c570a19539e8144437bca04e3098d6fbdbbff71d9f359a992bea8b2",
+        "source_fact:v1:2a2ad22df35bdfa30ee2e5a3b51eca9f0aebf6b2a301e890a9ccc1b4ba456cf3",
+        "source_fact:v1:3689eeab5c78353770985348de5f828cc31bc50b4d633b7a7f052780ae7b7062",
+        "source_fact:v1:37c554429cb9de4e847c3d980cfd42998a59114bc0a52544216b62bfdff2c807",
+        "source_fact:v1:676d809a586d70fd1d6e5417ca7f50b4c7ca8697c987861291625444ccd67e35",
+        "source_fact:v1:8a01f9edcb7cefdc38c796acf41f8000e05806f3908042df9d7b8d519e96716e",
+        "source_fact:v1:abf6eacbcaaf758b26cffee81a77720231dd5b9d178cf0bc12afae1aab5b15a7",
+        "source_fact:v1:e14a816bbee1497190bd54bdf08b72c69dce480eed5c5f4f3d50946807adff4f",
+        "source_fact:v1:e6d7a8d7eee69335ed427fee51b5e9f059464f7c19f98f38a963b2f9931ac911",
+        "source_fact:v1:f60f6f14b50e0537a981bf5ca38df328b8862f2f64fbad210d4e30422fe23644"
+      ],
+      "source_published_kst": "2026-10-12T02:37+09:00",
+      "source_title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스",
+      "telegram_core_fact": "11월 3일 중간선거를 앞둔 트럼프 대통령으로서는 후티 공격 동참을 통한 군사적 확전이 부담스러울 수밖에 없다.",
+      "title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스"
     },
     "fact:97f5cfc24c122494cce36e45": {
       "first_seen_kst": "2026-10-07T07:39:19+09:00",
@@ -92151,6 +92219,36 @@
       "source_title": "마스오토, 美 교통부와 자율주행 협력 모색",
       "telegram_core_fact": "자율주행 트럭 기업 마스오토가 미국 교통부와 자율주행 트럭 상용화 확대 방안을 논의한다. 노제경 마스오토 부대표는 21일 ‘자율주행에 대비한 운송 노선 구축’ 세션과 22일 ‘실증에서 상용화로: 자율주행 글로벌 투어’ 세션에 한국 측 연사로 참여한다.",
       "title": "마스오토, 美 교통부와 자율주행 협력 모색"
+    },
+    "link:462761b8d52188c97335f069": {
+      "first_seen_kst": "2026-10-12T02:51:54+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:51:54+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:51:54+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012001800071",
+      "source": "연합뉴스",
+      "source_body_digest": "54088b950d5d3af6108c0561b6346042bb90794452f0c98f7e00a05e349d63fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:841baacd8adf0b013262963a1a0ce948c236f7ccd6c1857806656ac95a65a287",
+      "source_fact_keys": [
+        "source_fact:v1:09b1ba9035a852c8467976cd9f02b7ae5a2d87bd1818ccbdd637d0b649e20ac6",
+        "source_fact:v1:1b764c19d6a6c603803014b6e2a9dfc7b0170ce28e676fc3008cf4adc981f531",
+        "source_fact:v1:212abd2a7c570a19539e8144437bca04e3098d6fbdbbff71d9f359a992bea8b2",
+        "source_fact:v1:2a2ad22df35bdfa30ee2e5a3b51eca9f0aebf6b2a301e890a9ccc1b4ba456cf3",
+        "source_fact:v1:3689eeab5c78353770985348de5f828cc31bc50b4d633b7a7f052780ae7b7062",
+        "source_fact:v1:37c554429cb9de4e847c3d980cfd42998a59114bc0a52544216b62bfdff2c807",
+        "source_fact:v1:676d809a586d70fd1d6e5417ca7f50b4c7ca8697c987861291625444ccd67e35",
+        "source_fact:v1:8a01f9edcb7cefdc38c796acf41f8000e05806f3908042df9d7b8d519e96716e",
+        "source_fact:v1:abf6eacbcaaf758b26cffee81a77720231dd5b9d178cf0bc12afae1aab5b15a7",
+        "source_fact:v1:e14a816bbee1497190bd54bdf08b72c69dce480eed5c5f4f3d50946807adff4f",
+        "source_fact:v1:e6d7a8d7eee69335ed427fee51b5e9f059464f7c19f98f38a963b2f9931ac911",
+        "source_fact:v1:f60f6f14b50e0537a981bf5ca38df328b8862f2f64fbad210d4e30422fe23644"
+      ],
+      "source_published_kst": "2026-10-12T02:37+09:00",
+      "source_title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스",
+      "telegram_core_fact": "11월 3일 중간선거를 앞둔 트럼프 대통령으로서는 후티 공격 동참을 통한 군사적 확전이 부담스러울 수밖에 없다.",
+      "title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스"
     },
     "link:468110f9a86c2a1b9dc7eced": {
       "first_seen_kst": "2026-10-10T08:48:09+09:00",
@@ -156762,6 +156860,36 @@
       "source_published_kst": "2026-10-07T06:33+09:00",
       "title": "3주 파업 예고한 삼성바이오 노조…생산·수주 불확실성 커진다"
     },
+    "original:5b67680961626e2e7f84d0d1": {
+      "first_seen_kst": "2026-10-12T02:51:54+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:51:54+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:51:54+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012001800071",
+      "source": "연합뉴스",
+      "source_body_digest": "54088b950d5d3af6108c0561b6346042bb90794452f0c98f7e00a05e349d63fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:841baacd8adf0b013262963a1a0ce948c236f7ccd6c1857806656ac95a65a287",
+      "source_fact_keys": [
+        "source_fact:v1:09b1ba9035a852c8467976cd9f02b7ae5a2d87bd1818ccbdd637d0b649e20ac6",
+        "source_fact:v1:1b764c19d6a6c603803014b6e2a9dfc7b0170ce28e676fc3008cf4adc981f531",
+        "source_fact:v1:212abd2a7c570a19539e8144437bca04e3098d6fbdbbff71d9f359a992bea8b2",
+        "source_fact:v1:2a2ad22df35bdfa30ee2e5a3b51eca9f0aebf6b2a301e890a9ccc1b4ba456cf3",
+        "source_fact:v1:3689eeab5c78353770985348de5f828cc31bc50b4d633b7a7f052780ae7b7062",
+        "source_fact:v1:37c554429cb9de4e847c3d980cfd42998a59114bc0a52544216b62bfdff2c807",
+        "source_fact:v1:676d809a586d70fd1d6e5417ca7f50b4c7ca8697c987861291625444ccd67e35",
+        "source_fact:v1:8a01f9edcb7cefdc38c796acf41f8000e05806f3908042df9d7b8d519e96716e",
+        "source_fact:v1:abf6eacbcaaf758b26cffee81a77720231dd5b9d178cf0bc12afae1aab5b15a7",
+        "source_fact:v1:e14a816bbee1497190bd54bdf08b72c69dce480eed5c5f4f3d50946807adff4f",
+        "source_fact:v1:e6d7a8d7eee69335ed427fee51b5e9f059464f7c19f98f38a963b2f9931ac911",
+        "source_fact:v1:f60f6f14b50e0537a981bf5ca38df328b8862f2f64fbad210d4e30422fe23644"
+      ],
+      "source_published_kst": "2026-10-12T02:37+09:00",
+      "source_title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스",
+      "telegram_core_fact": "11월 3일 중간선거를 앞둔 트럼프 대통령으로서는 후티 공격 동참을 통한 군사적 확전이 부담스러울 수밖에 없다.",
+      "title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스"
+    },
     "original:5b6ff2e74afba5d280bcd479": {
       "first_seen_kst": "2026-10-08T06:27:52+09:00",
       "lanes": {
@@ -196673,6 +196801,36 @@
       "telegram_core_fact": "유럽·태평양 선진시장 순매출은 9억3500만 달러로 3.3% 감소했고, 부문 조정 영업이익은 1억3700만 달러로 8.9% 감소했다.",
       "title": "크래프트 하인즈, 3개 부문 개편…2분기 순매출 63억 달러 1.4%↓"
     },
+    "source_fact:050223fcd65742a16b71e16b": {
+      "first_seen_kst": "2026-10-12T02:51:54+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:51:54+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:51:54+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012001800071",
+      "source": "연합뉴스",
+      "source_body_digest": "54088b950d5d3af6108c0561b6346042bb90794452f0c98f7e00a05e349d63fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:841baacd8adf0b013262963a1a0ce948c236f7ccd6c1857806656ac95a65a287",
+      "source_fact_keys": [
+        "source_fact:v1:09b1ba9035a852c8467976cd9f02b7ae5a2d87bd1818ccbdd637d0b649e20ac6",
+        "source_fact:v1:1b764c19d6a6c603803014b6e2a9dfc7b0170ce28e676fc3008cf4adc981f531",
+        "source_fact:v1:212abd2a7c570a19539e8144437bca04e3098d6fbdbbff71d9f359a992bea8b2",
+        "source_fact:v1:2a2ad22df35bdfa30ee2e5a3b51eca9f0aebf6b2a301e890a9ccc1b4ba456cf3",
+        "source_fact:v1:3689eeab5c78353770985348de5f828cc31bc50b4d633b7a7f052780ae7b7062",
+        "source_fact:v1:37c554429cb9de4e847c3d980cfd42998a59114bc0a52544216b62bfdff2c807",
+        "source_fact:v1:676d809a586d70fd1d6e5417ca7f50b4c7ca8697c987861291625444ccd67e35",
+        "source_fact:v1:8a01f9edcb7cefdc38c796acf41f8000e05806f3908042df9d7b8d519e96716e",
+        "source_fact:v1:abf6eacbcaaf758b26cffee81a77720231dd5b9d178cf0bc12afae1aab5b15a7",
+        "source_fact:v1:e14a816bbee1497190bd54bdf08b72c69dce480eed5c5f4f3d50946807adff4f",
+        "source_fact:v1:e6d7a8d7eee69335ed427fee51b5e9f059464f7c19f98f38a963b2f9931ac911",
+        "source_fact:v1:f60f6f14b50e0537a981bf5ca38df328b8862f2f64fbad210d4e30422fe23644"
+      ],
+      "source_published_kst": "2026-10-12T02:37+09:00",
+      "source_title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스",
+      "telegram_core_fact": "11월 3일 중간선거를 앞둔 트럼프 대통령으로서는 후티 공격 동참을 통한 군사적 확전이 부담스러울 수밖에 없다.",
+      "title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스"
+    },
     "source_fact:05050cd454ac5fbd332b9d87": {
       "first_seen_kst": "2026-10-06T10:04:04+09:00",
       "lanes": {
@@ -206465,6 +206623,36 @@
       "telegram_core_fact": "같은 기간 투자 도착액은 전년 대비 30.6% 증가한 148억7000만달러로 3분기 누적 기준 역대 1위 실적을 달성했다. 특히 실제 자금이 유입된 투자 도착액은 30% 넘게 증가하며 3분기 누적 기준 역대 최대치를 경신했다.",
       "title": "3분기 누적 韓도착 외국인직접투자 149억불 '역대 최대'⋯중동 악재 속 30.6%↑"
     },
+    "source_fact:12118d8e86c354ade1e4ca76": {
+      "first_seen_kst": "2026-10-12T02:51:54+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:51:54+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:51:54+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012001800071",
+      "source": "연합뉴스",
+      "source_body_digest": "54088b950d5d3af6108c0561b6346042bb90794452f0c98f7e00a05e349d63fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:841baacd8adf0b013262963a1a0ce948c236f7ccd6c1857806656ac95a65a287",
+      "source_fact_keys": [
+        "source_fact:v1:09b1ba9035a852c8467976cd9f02b7ae5a2d87bd1818ccbdd637d0b649e20ac6",
+        "source_fact:v1:1b764c19d6a6c603803014b6e2a9dfc7b0170ce28e676fc3008cf4adc981f531",
+        "source_fact:v1:212abd2a7c570a19539e8144437bca04e3098d6fbdbbff71d9f359a992bea8b2",
+        "source_fact:v1:2a2ad22df35bdfa30ee2e5a3b51eca9f0aebf6b2a301e890a9ccc1b4ba456cf3",
+        "source_fact:v1:3689eeab5c78353770985348de5f828cc31bc50b4d633b7a7f052780ae7b7062",
+        "source_fact:v1:37c554429cb9de4e847c3d980cfd42998a59114bc0a52544216b62bfdff2c807",
+        "source_fact:v1:676d809a586d70fd1d6e5417ca7f50b4c7ca8697c987861291625444ccd67e35",
+        "source_fact:v1:8a01f9edcb7cefdc38c796acf41f8000e05806f3908042df9d7b8d519e96716e",
+        "source_fact:v1:abf6eacbcaaf758b26cffee81a77720231dd5b9d178cf0bc12afae1aab5b15a7",
+        "source_fact:v1:e14a816bbee1497190bd54bdf08b72c69dce480eed5c5f4f3d50946807adff4f",
+        "source_fact:v1:e6d7a8d7eee69335ed427fee51b5e9f059464f7c19f98f38a963b2f9931ac911",
+        "source_fact:v1:f60f6f14b50e0537a981bf5ca38df328b8862f2f64fbad210d4e30422fe23644"
+      ],
+      "source_published_kst": "2026-10-12T02:37+09:00",
+      "source_title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스",
+      "telegram_core_fact": "11월 3일 중간선거를 앞둔 트럼프 대통령으로서는 후티 공격 동참을 통한 군사적 확전이 부담스러울 수밖에 없다.",
+      "title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스"
+    },
     "source_fact:121658790eff97911acbde67": {
       "first_seen_kst": "2026-10-06T11:41:27+09:00",
       "lanes": {
@@ -214372,6 +214560,36 @@
       "source_title": "\"엔비디아칩 사려고 54조원 빚낸다\"…스페이스X, 400억달러 조달 추진",
       "telegram_core_fact": "일론 머스크가 이끄는 스페이스X가 엔비디아의 칩을 사기 위해 약 300억달러 회사채를 포함, 400억달러(약 54조원)의 자금 조달에 나설 계획이다. 마켓워치에 따르면, 400억달러는 스페이스X의 올해 예상 매출 445억달러에 거의 맞먹는 규모이다.",
       "title": "\"엔비디아칩 사려고 54조원 빚낸다\"…스페이스X, 400억달러 조달 추진"
+    },
+    "source_fact:1ca6b9e0d58611eab68aa25f": {
+      "first_seen_kst": "2026-10-12T02:51:54+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:51:54+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:51:54+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012001800071",
+      "source": "연합뉴스",
+      "source_body_digest": "54088b950d5d3af6108c0561b6346042bb90794452f0c98f7e00a05e349d63fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:841baacd8adf0b013262963a1a0ce948c236f7ccd6c1857806656ac95a65a287",
+      "source_fact_keys": [
+        "source_fact:v1:09b1ba9035a852c8467976cd9f02b7ae5a2d87bd1818ccbdd637d0b649e20ac6",
+        "source_fact:v1:1b764c19d6a6c603803014b6e2a9dfc7b0170ce28e676fc3008cf4adc981f531",
+        "source_fact:v1:212abd2a7c570a19539e8144437bca04e3098d6fbdbbff71d9f359a992bea8b2",
+        "source_fact:v1:2a2ad22df35bdfa30ee2e5a3b51eca9f0aebf6b2a301e890a9ccc1b4ba456cf3",
+        "source_fact:v1:3689eeab5c78353770985348de5f828cc31bc50b4d633b7a7f052780ae7b7062",
+        "source_fact:v1:37c554429cb9de4e847c3d980cfd42998a59114bc0a52544216b62bfdff2c807",
+        "source_fact:v1:676d809a586d70fd1d6e5417ca7f50b4c7ca8697c987861291625444ccd67e35",
+        "source_fact:v1:8a01f9edcb7cefdc38c796acf41f8000e05806f3908042df9d7b8d519e96716e",
+        "source_fact:v1:abf6eacbcaaf758b26cffee81a77720231dd5b9d178cf0bc12afae1aab5b15a7",
+        "source_fact:v1:e14a816bbee1497190bd54bdf08b72c69dce480eed5c5f4f3d50946807adff4f",
+        "source_fact:v1:e6d7a8d7eee69335ed427fee51b5e9f059464f7c19f98f38a963b2f9931ac911",
+        "source_fact:v1:f60f6f14b50e0537a981bf5ca38df328b8862f2f64fbad210d4e30422fe23644"
+      ],
+      "source_published_kst": "2026-10-12T02:37+09:00",
+      "source_title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스",
+      "telegram_core_fact": "11월 3일 중간선거를 앞둔 트럼프 대통령으로서는 후티 공격 동참을 통한 군사적 확전이 부담스러울 수밖에 없다.",
+      "title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스"
     },
     "source_fact:1ca99c9221692530cc6a5ffd": {
       "first_seen_kst": "2026-10-07T22:53:53+09:00",
@@ -248922,6 +249140,36 @@
       "source_published_kst": "2026-10-06T08:41+09:00",
       "title": "AI 데이터센터 늘자 전력 수요도 급증…ETF 투자처도 '전력 인프라'로"
     },
+    "source_fact:49466118333182595588ba8e": {
+      "first_seen_kst": "2026-10-12T02:51:54+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:51:54+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:51:54+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012001800071",
+      "source": "연합뉴스",
+      "source_body_digest": "54088b950d5d3af6108c0561b6346042bb90794452f0c98f7e00a05e349d63fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:841baacd8adf0b013262963a1a0ce948c236f7ccd6c1857806656ac95a65a287",
+      "source_fact_keys": [
+        "source_fact:v1:09b1ba9035a852c8467976cd9f02b7ae5a2d87bd1818ccbdd637d0b649e20ac6",
+        "source_fact:v1:1b764c19d6a6c603803014b6e2a9dfc7b0170ce28e676fc3008cf4adc981f531",
+        "source_fact:v1:212abd2a7c570a19539e8144437bca04e3098d6fbdbbff71d9f359a992bea8b2",
+        "source_fact:v1:2a2ad22df35bdfa30ee2e5a3b51eca9f0aebf6b2a301e890a9ccc1b4ba456cf3",
+        "source_fact:v1:3689eeab5c78353770985348de5f828cc31bc50b4d633b7a7f052780ae7b7062",
+        "source_fact:v1:37c554429cb9de4e847c3d980cfd42998a59114bc0a52544216b62bfdff2c807",
+        "source_fact:v1:676d809a586d70fd1d6e5417ca7f50b4c7ca8697c987861291625444ccd67e35",
+        "source_fact:v1:8a01f9edcb7cefdc38c796acf41f8000e05806f3908042df9d7b8d519e96716e",
+        "source_fact:v1:abf6eacbcaaf758b26cffee81a77720231dd5b9d178cf0bc12afae1aab5b15a7",
+        "source_fact:v1:e14a816bbee1497190bd54bdf08b72c69dce480eed5c5f4f3d50946807adff4f",
+        "source_fact:v1:e6d7a8d7eee69335ed427fee51b5e9f059464f7c19f98f38a963b2f9931ac911",
+        "source_fact:v1:f60f6f14b50e0537a981bf5ca38df328b8862f2f64fbad210d4e30422fe23644"
+      ],
+      "source_published_kst": "2026-10-12T02:37+09:00",
+      "source_title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스",
+      "telegram_core_fact": "11월 3일 중간선거를 앞둔 트럼프 대통령으로서는 후티 공격 동참을 통한 군사적 확전이 부담스러울 수밖에 없다.",
+      "title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스"
+    },
     "source_fact:49471cd1790f8f718e72540d": {
       "first_seen_kst": "2026-10-09T23:03:47+09:00",
       "lanes": {
@@ -262633,6 +262881,36 @@
       "telegram_core_fact": "결국 이날 반도체 시장에서는 ETF 리밸런싱에 따른 기계적인 수급 조정과 삼성전자 실적, 옵션 만기 및 외국인 매매가 동시에 맞물리면서 종목별 주가 차별화가 나타나는지가 주요 변수로 떠올랐다.",
       "title": "반도체 ETF 리밸런싱에 변동성 커져…삼성전자 2000억 팔고 소부장 더 담는다"
     },
+    "source_fact:5ae48d8521400eb35062f17a": {
+      "first_seen_kst": "2026-10-12T02:51:54+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:51:54+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:51:54+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012001800071",
+      "source": "연합뉴스",
+      "source_body_digest": "54088b950d5d3af6108c0561b6346042bb90794452f0c98f7e00a05e349d63fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:841baacd8adf0b013262963a1a0ce948c236f7ccd6c1857806656ac95a65a287",
+      "source_fact_keys": [
+        "source_fact:v1:09b1ba9035a852c8467976cd9f02b7ae5a2d87bd1818ccbdd637d0b649e20ac6",
+        "source_fact:v1:1b764c19d6a6c603803014b6e2a9dfc7b0170ce28e676fc3008cf4adc981f531",
+        "source_fact:v1:212abd2a7c570a19539e8144437bca04e3098d6fbdbbff71d9f359a992bea8b2",
+        "source_fact:v1:2a2ad22df35bdfa30ee2e5a3b51eca9f0aebf6b2a301e890a9ccc1b4ba456cf3",
+        "source_fact:v1:3689eeab5c78353770985348de5f828cc31bc50b4d633b7a7f052780ae7b7062",
+        "source_fact:v1:37c554429cb9de4e847c3d980cfd42998a59114bc0a52544216b62bfdff2c807",
+        "source_fact:v1:676d809a586d70fd1d6e5417ca7f50b4c7ca8697c987861291625444ccd67e35",
+        "source_fact:v1:8a01f9edcb7cefdc38c796acf41f8000e05806f3908042df9d7b8d519e96716e",
+        "source_fact:v1:abf6eacbcaaf758b26cffee81a77720231dd5b9d178cf0bc12afae1aab5b15a7",
+        "source_fact:v1:e14a816bbee1497190bd54bdf08b72c69dce480eed5c5f4f3d50946807adff4f",
+        "source_fact:v1:e6d7a8d7eee69335ed427fee51b5e9f059464f7c19f98f38a963b2f9931ac911",
+        "source_fact:v1:f60f6f14b50e0537a981bf5ca38df328b8862f2f64fbad210d4e30422fe23644"
+      ],
+      "source_published_kst": "2026-10-12T02:37+09:00",
+      "source_title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스",
+      "telegram_core_fact": "11월 3일 중간선거를 앞둔 트럼프 대통령으로서는 후티 공격 동참을 통한 군사적 확전이 부담스러울 수밖에 없다.",
+      "title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스"
+    },
     "source_fact:5afb1037b50cc0c9fe6764e4": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
       "lanes": {
@@ -271428,6 +271706,36 @@
       "source_title": "“역시 주주환원은 뒷전입니까”…코스피 자사주 매입, 삼전닉스 뺐더니 줄었다",
       "telegram_core_fact": "11일 금융감독원 OpenDART 공시자료 집계 결과 올해 1월 1일부터 9월 28일까지 코스피 상장사의 자기주식 직접취득 결정액은 74조629억원으로 집계됐다.",
       "title": "“역시 주주환원은 뒷전입니까”…코스피 자사주 매입, 삼전닉스 뺐더니 줄었다"
+    },
+    "source_fact:663298f3afe5744397b53c14": {
+      "first_seen_kst": "2026-10-12T02:51:54+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:51:54+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:51:54+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012001800071",
+      "source": "연합뉴스",
+      "source_body_digest": "54088b950d5d3af6108c0561b6346042bb90794452f0c98f7e00a05e349d63fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:841baacd8adf0b013262963a1a0ce948c236f7ccd6c1857806656ac95a65a287",
+      "source_fact_keys": [
+        "source_fact:v1:09b1ba9035a852c8467976cd9f02b7ae5a2d87bd1818ccbdd637d0b649e20ac6",
+        "source_fact:v1:1b764c19d6a6c603803014b6e2a9dfc7b0170ce28e676fc3008cf4adc981f531",
+        "source_fact:v1:212abd2a7c570a19539e8144437bca04e3098d6fbdbbff71d9f359a992bea8b2",
+        "source_fact:v1:2a2ad22df35bdfa30ee2e5a3b51eca9f0aebf6b2a301e890a9ccc1b4ba456cf3",
+        "source_fact:v1:3689eeab5c78353770985348de5f828cc31bc50b4d633b7a7f052780ae7b7062",
+        "source_fact:v1:37c554429cb9de4e847c3d980cfd42998a59114bc0a52544216b62bfdff2c807",
+        "source_fact:v1:676d809a586d70fd1d6e5417ca7f50b4c7ca8697c987861291625444ccd67e35",
+        "source_fact:v1:8a01f9edcb7cefdc38c796acf41f8000e05806f3908042df9d7b8d519e96716e",
+        "source_fact:v1:abf6eacbcaaf758b26cffee81a77720231dd5b9d178cf0bc12afae1aab5b15a7",
+        "source_fact:v1:e14a816bbee1497190bd54bdf08b72c69dce480eed5c5f4f3d50946807adff4f",
+        "source_fact:v1:e6d7a8d7eee69335ed427fee51b5e9f059464f7c19f98f38a963b2f9931ac911",
+        "source_fact:v1:f60f6f14b50e0537a981bf5ca38df328b8862f2f64fbad210d4e30422fe23644"
+      ],
+      "source_published_kst": "2026-10-12T02:37+09:00",
+      "source_title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스",
+      "telegram_core_fact": "11월 3일 중간선거를 앞둔 트럼프 대통령으로서는 후티 공격 동참을 통한 군사적 확전이 부담스러울 수밖에 없다.",
+      "title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스"
     },
     "source_fact:6633f38ea52e0b06dfc1036a": {
       "first_seen_kst": "2026-10-07T13:13:19+09:00",
@@ -307941,6 +308249,36 @@
       "telegram_core_fact": "올 3분기 누적 바이오의약품 수출 규모가 수출이 가장 많았던 지난해 3분기까지 수출액보다 15.8% 증가한 66억 달러(약 8조 8261억원)로 잠정집계됐다.",
       "title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대"
     },
+    "source_fact:97970f0af321c43074e18281": {
+      "first_seen_kst": "2026-10-12T02:51:54+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:51:54+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:51:54+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012001800071",
+      "source": "연합뉴스",
+      "source_body_digest": "54088b950d5d3af6108c0561b6346042bb90794452f0c98f7e00a05e349d63fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:841baacd8adf0b013262963a1a0ce948c236f7ccd6c1857806656ac95a65a287",
+      "source_fact_keys": [
+        "source_fact:v1:09b1ba9035a852c8467976cd9f02b7ae5a2d87bd1818ccbdd637d0b649e20ac6",
+        "source_fact:v1:1b764c19d6a6c603803014b6e2a9dfc7b0170ce28e676fc3008cf4adc981f531",
+        "source_fact:v1:212abd2a7c570a19539e8144437bca04e3098d6fbdbbff71d9f359a992bea8b2",
+        "source_fact:v1:2a2ad22df35bdfa30ee2e5a3b51eca9f0aebf6b2a301e890a9ccc1b4ba456cf3",
+        "source_fact:v1:3689eeab5c78353770985348de5f828cc31bc50b4d633b7a7f052780ae7b7062",
+        "source_fact:v1:37c554429cb9de4e847c3d980cfd42998a59114bc0a52544216b62bfdff2c807",
+        "source_fact:v1:676d809a586d70fd1d6e5417ca7f50b4c7ca8697c987861291625444ccd67e35",
+        "source_fact:v1:8a01f9edcb7cefdc38c796acf41f8000e05806f3908042df9d7b8d519e96716e",
+        "source_fact:v1:abf6eacbcaaf758b26cffee81a77720231dd5b9d178cf0bc12afae1aab5b15a7",
+        "source_fact:v1:e14a816bbee1497190bd54bdf08b72c69dce480eed5c5f4f3d50946807adff4f",
+        "source_fact:v1:e6d7a8d7eee69335ed427fee51b5e9f059464f7c19f98f38a963b2f9931ac911",
+        "source_fact:v1:f60f6f14b50e0537a981bf5ca38df328b8862f2f64fbad210d4e30422fe23644"
+      ],
+      "source_published_kst": "2026-10-12T02:37+09:00",
+      "source_title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스",
+      "telegram_core_fact": "11월 3일 중간선거를 앞둔 트럼프 대통령으로서는 후티 공격 동참을 통한 군사적 확전이 부담스러울 수밖에 없다.",
+      "title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스"
+    },
     "source_fact:97a30e6a605dd2f5ab786183": {
       "first_seen_kst": "2026-10-08T00:39:44+09:00",
       "lanes": {
@@ -314863,6 +315201,36 @@
       ],
       "source_published_kst": "2026-10-06T15:44+09:00",
       "title": "원·달러 환율, 0.4원 내린 1343.6원 마감"
+    },
+    "source_fact:a0d537bb9bd9d8cf58250796": {
+      "first_seen_kst": "2026-10-12T02:51:54+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:51:54+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:51:54+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012001800071",
+      "source": "연합뉴스",
+      "source_body_digest": "54088b950d5d3af6108c0561b6346042bb90794452f0c98f7e00a05e349d63fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:841baacd8adf0b013262963a1a0ce948c236f7ccd6c1857806656ac95a65a287",
+      "source_fact_keys": [
+        "source_fact:v1:09b1ba9035a852c8467976cd9f02b7ae5a2d87bd1818ccbdd637d0b649e20ac6",
+        "source_fact:v1:1b764c19d6a6c603803014b6e2a9dfc7b0170ce28e676fc3008cf4adc981f531",
+        "source_fact:v1:212abd2a7c570a19539e8144437bca04e3098d6fbdbbff71d9f359a992bea8b2",
+        "source_fact:v1:2a2ad22df35bdfa30ee2e5a3b51eca9f0aebf6b2a301e890a9ccc1b4ba456cf3",
+        "source_fact:v1:3689eeab5c78353770985348de5f828cc31bc50b4d633b7a7f052780ae7b7062",
+        "source_fact:v1:37c554429cb9de4e847c3d980cfd42998a59114bc0a52544216b62bfdff2c807",
+        "source_fact:v1:676d809a586d70fd1d6e5417ca7f50b4c7ca8697c987861291625444ccd67e35",
+        "source_fact:v1:8a01f9edcb7cefdc38c796acf41f8000e05806f3908042df9d7b8d519e96716e",
+        "source_fact:v1:abf6eacbcaaf758b26cffee81a77720231dd5b9d178cf0bc12afae1aab5b15a7",
+        "source_fact:v1:e14a816bbee1497190bd54bdf08b72c69dce480eed5c5f4f3d50946807adff4f",
+        "source_fact:v1:e6d7a8d7eee69335ed427fee51b5e9f059464f7c19f98f38a963b2f9931ac911",
+        "source_fact:v1:f60f6f14b50e0537a981bf5ca38df328b8862f2f64fbad210d4e30422fe23644"
+      ],
+      "source_published_kst": "2026-10-12T02:37+09:00",
+      "source_title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스",
+      "telegram_core_fact": "11월 3일 중간선거를 앞둔 트럼프 대통령으로서는 후티 공격 동참을 통한 군사적 확전이 부담스러울 수밖에 없다.",
+      "title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스"
     },
     "source_fact:a0d681bcd7eb1831ad9cab94": {
       "first_seen_kst": "2026-10-11T19:37:28+09:00",
@@ -331413,6 +331781,36 @@
       "telegram_core_fact": "올해 쌀 생산량이 지난해보다 0.6%, 벼 재배면적은 1.1% 가량 감소할 것으로 전망됐다. 8일 국가데이터가 발표한 '2026년 쌀 예상생산량조사 결과'를 보면 올해 쌀 생산량은 351만8000t으로 전년(353만9000t)보다 2만1000t(0.6%) 감소할 것으로 전망됐다.",
       "title": "올해 쌀 생산량 0.6% 감소 전망…재배면적 축소 영향"
     },
+    "source_fact:b7c42832bbd728367aaa9d52": {
+      "first_seen_kst": "2026-10-12T02:51:54+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:51:54+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:51:54+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012001800071",
+      "source": "연합뉴스",
+      "source_body_digest": "54088b950d5d3af6108c0561b6346042bb90794452f0c98f7e00a05e349d63fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:841baacd8adf0b013262963a1a0ce948c236f7ccd6c1857806656ac95a65a287",
+      "source_fact_keys": [
+        "source_fact:v1:09b1ba9035a852c8467976cd9f02b7ae5a2d87bd1818ccbdd637d0b649e20ac6",
+        "source_fact:v1:1b764c19d6a6c603803014b6e2a9dfc7b0170ce28e676fc3008cf4adc981f531",
+        "source_fact:v1:212abd2a7c570a19539e8144437bca04e3098d6fbdbbff71d9f359a992bea8b2",
+        "source_fact:v1:2a2ad22df35bdfa30ee2e5a3b51eca9f0aebf6b2a301e890a9ccc1b4ba456cf3",
+        "source_fact:v1:3689eeab5c78353770985348de5f828cc31bc50b4d633b7a7f052780ae7b7062",
+        "source_fact:v1:37c554429cb9de4e847c3d980cfd42998a59114bc0a52544216b62bfdff2c807",
+        "source_fact:v1:676d809a586d70fd1d6e5417ca7f50b4c7ca8697c987861291625444ccd67e35",
+        "source_fact:v1:8a01f9edcb7cefdc38c796acf41f8000e05806f3908042df9d7b8d519e96716e",
+        "source_fact:v1:abf6eacbcaaf758b26cffee81a77720231dd5b9d178cf0bc12afae1aab5b15a7",
+        "source_fact:v1:e14a816bbee1497190bd54bdf08b72c69dce480eed5c5f4f3d50946807adff4f",
+        "source_fact:v1:e6d7a8d7eee69335ed427fee51b5e9f059464f7c19f98f38a963b2f9931ac911",
+        "source_fact:v1:f60f6f14b50e0537a981bf5ca38df328b8862f2f64fbad210d4e30422fe23644"
+      ],
+      "source_published_kst": "2026-10-12T02:37+09:00",
+      "source_title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스",
+      "telegram_core_fact": "11월 3일 중간선거를 앞둔 트럼프 대통령으로서는 후티 공격 동참을 통한 군사적 확전이 부담스러울 수밖에 없다.",
+      "title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스"
+    },
     "source_fact:b7c5c6156ef2995dad6db34a": {
       "first_seen_kst": "2026-10-11T08:42:16+09:00",
       "lanes": {
@@ -331724,6 +332122,36 @@
       ],
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
+    },
+    "source_fact:b81a2cdb99472794c088a7c2": {
+      "first_seen_kst": "2026-10-12T02:51:54+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:51:54+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:51:54+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012001800071",
+      "source": "연합뉴스",
+      "source_body_digest": "54088b950d5d3af6108c0561b6346042bb90794452f0c98f7e00a05e349d63fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:841baacd8adf0b013262963a1a0ce948c236f7ccd6c1857806656ac95a65a287",
+      "source_fact_keys": [
+        "source_fact:v1:09b1ba9035a852c8467976cd9f02b7ae5a2d87bd1818ccbdd637d0b649e20ac6",
+        "source_fact:v1:1b764c19d6a6c603803014b6e2a9dfc7b0170ce28e676fc3008cf4adc981f531",
+        "source_fact:v1:212abd2a7c570a19539e8144437bca04e3098d6fbdbbff71d9f359a992bea8b2",
+        "source_fact:v1:2a2ad22df35bdfa30ee2e5a3b51eca9f0aebf6b2a301e890a9ccc1b4ba456cf3",
+        "source_fact:v1:3689eeab5c78353770985348de5f828cc31bc50b4d633b7a7f052780ae7b7062",
+        "source_fact:v1:37c554429cb9de4e847c3d980cfd42998a59114bc0a52544216b62bfdff2c807",
+        "source_fact:v1:676d809a586d70fd1d6e5417ca7f50b4c7ca8697c987861291625444ccd67e35",
+        "source_fact:v1:8a01f9edcb7cefdc38c796acf41f8000e05806f3908042df9d7b8d519e96716e",
+        "source_fact:v1:abf6eacbcaaf758b26cffee81a77720231dd5b9d178cf0bc12afae1aab5b15a7",
+        "source_fact:v1:e14a816bbee1497190bd54bdf08b72c69dce480eed5c5f4f3d50946807adff4f",
+        "source_fact:v1:e6d7a8d7eee69335ed427fee51b5e9f059464f7c19f98f38a963b2f9931ac911",
+        "source_fact:v1:f60f6f14b50e0537a981bf5ca38df328b8862f2f64fbad210d4e30422fe23644"
+      ],
+      "source_published_kst": "2026-10-12T02:37+09:00",
+      "source_title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스",
+      "telegram_core_fact": "11월 3일 중간선거를 앞둔 트럼프 대통령으로서는 후티 공격 동참을 통한 군사적 확전이 부담스러울 수밖에 없다.",
+      "title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스"
     },
     "source_fact:b82be587dbfd22123e8a63ee": {
       "first_seen_kst": "2026-10-10T15:05:36+09:00",
@@ -344079,6 +344507,36 @@
       ],
       "source_published_kst": "2026-10-07T14:21+09:00",
       "title": "HD건설기계, 美 데이터센터에 3900억원 규모 발전엔진 공급"
+    },
+    "source_fact:c87885caa38fadfe22f9b704": {
+      "first_seen_kst": "2026-10-12T02:51:54+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:51:54+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:51:54+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012001800071",
+      "source": "연합뉴스",
+      "source_body_digest": "54088b950d5d3af6108c0561b6346042bb90794452f0c98f7e00a05e349d63fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:841baacd8adf0b013262963a1a0ce948c236f7ccd6c1857806656ac95a65a287",
+      "source_fact_keys": [
+        "source_fact:v1:09b1ba9035a852c8467976cd9f02b7ae5a2d87bd1818ccbdd637d0b649e20ac6",
+        "source_fact:v1:1b764c19d6a6c603803014b6e2a9dfc7b0170ce28e676fc3008cf4adc981f531",
+        "source_fact:v1:212abd2a7c570a19539e8144437bca04e3098d6fbdbbff71d9f359a992bea8b2",
+        "source_fact:v1:2a2ad22df35bdfa30ee2e5a3b51eca9f0aebf6b2a301e890a9ccc1b4ba456cf3",
+        "source_fact:v1:3689eeab5c78353770985348de5f828cc31bc50b4d633b7a7f052780ae7b7062",
+        "source_fact:v1:37c554429cb9de4e847c3d980cfd42998a59114bc0a52544216b62bfdff2c807",
+        "source_fact:v1:676d809a586d70fd1d6e5417ca7f50b4c7ca8697c987861291625444ccd67e35",
+        "source_fact:v1:8a01f9edcb7cefdc38c796acf41f8000e05806f3908042df9d7b8d519e96716e",
+        "source_fact:v1:abf6eacbcaaf758b26cffee81a77720231dd5b9d178cf0bc12afae1aab5b15a7",
+        "source_fact:v1:e14a816bbee1497190bd54bdf08b72c69dce480eed5c5f4f3d50946807adff4f",
+        "source_fact:v1:e6d7a8d7eee69335ed427fee51b5e9f059464f7c19f98f38a963b2f9931ac911",
+        "source_fact:v1:f60f6f14b50e0537a981bf5ca38df328b8862f2f64fbad210d4e30422fe23644"
+      ],
+      "source_published_kst": "2026-10-12T02:37+09:00",
+      "source_title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스",
+      "telegram_core_fact": "11월 3일 중간선거를 앞둔 트럼프 대통령으로서는 후티 공격 동참을 통한 군사적 확전이 부담스러울 수밖에 없다.",
+      "title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스"
     },
     "source_fact:c87998a485c55c623bc83d0e": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -384214,6 +384672,36 @@
       "telegram_core_fact": "고정금리를 선택하는 비중이 늘고 있다고 해도 여전히 신규 취급 기준 변동금리 비중이 76.5%에 이르고, 잔액 기준으로도 57.3%가 변동금리인 만큼 추가적인 금리인상이 이뤄질 경우 가계의 금리 부담이 높아질 수 밖에 없다는 분석이다.",
       "title": "\"금리 치솟는데 이자 어쩌나\" 가계대출 57.3%가 변동금리"
     },
+    "source_fact:ff441e1be0fef2fdcbf3baba": {
+      "first_seen_kst": "2026-10-12T02:51:54+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:51:54+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:51:54+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012001800071",
+      "source": "연합뉴스",
+      "source_body_digest": "54088b950d5d3af6108c0561b6346042bb90794452f0c98f7e00a05e349d63fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:841baacd8adf0b013262963a1a0ce948c236f7ccd6c1857806656ac95a65a287",
+      "source_fact_keys": [
+        "source_fact:v1:09b1ba9035a852c8467976cd9f02b7ae5a2d87bd1818ccbdd637d0b649e20ac6",
+        "source_fact:v1:1b764c19d6a6c603803014b6e2a9dfc7b0170ce28e676fc3008cf4adc981f531",
+        "source_fact:v1:212abd2a7c570a19539e8144437bca04e3098d6fbdbbff71d9f359a992bea8b2",
+        "source_fact:v1:2a2ad22df35bdfa30ee2e5a3b51eca9f0aebf6b2a301e890a9ccc1b4ba456cf3",
+        "source_fact:v1:3689eeab5c78353770985348de5f828cc31bc50b4d633b7a7f052780ae7b7062",
+        "source_fact:v1:37c554429cb9de4e847c3d980cfd42998a59114bc0a52544216b62bfdff2c807",
+        "source_fact:v1:676d809a586d70fd1d6e5417ca7f50b4c7ca8697c987861291625444ccd67e35",
+        "source_fact:v1:8a01f9edcb7cefdc38c796acf41f8000e05806f3908042df9d7b8d519e96716e",
+        "source_fact:v1:abf6eacbcaaf758b26cffee81a77720231dd5b9d178cf0bc12afae1aab5b15a7",
+        "source_fact:v1:e14a816bbee1497190bd54bdf08b72c69dce480eed5c5f4f3d50946807adff4f",
+        "source_fact:v1:e6d7a8d7eee69335ed427fee51b5e9f059464f7c19f98f38a963b2f9931ac911",
+        "source_fact:v1:f60f6f14b50e0537a981bf5ca38df328b8862f2f64fbad210d4e30422fe23644"
+      ],
+      "source_published_kst": "2026-10-12T02:37+09:00",
+      "source_title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스",
+      "telegram_core_fact": "11월 3일 중간선거를 앞둔 트럼프 대통령으로서는 후티 공격 동참을 통한 군사적 확전이 부담스러울 수밖에 없다.",
+      "title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스"
+    },
     "source_fact:ff47084e20568f4405ebb2ee": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
       "lanes": {
@@ -406503,6 +406991,36 @@
       ],
       "source_published_kst": "2026-10-07T06:33+09:00",
       "title": "3주 파업 예고한 삼성바이오 노조…생산·수주 불확실성 커진다"
+    },
+    "title:5b67680961626e2e7f84d0d1": {
+      "first_seen_kst": "2026-10-12T02:51:54+09:00",
+      "lanes": {
+        "live": "2026-10-12T02:51:54+09:00"
+      },
+      "last_seen_kst": "2026-10-12T02:51:54+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012001800071",
+      "source": "연합뉴스",
+      "source_body_digest": "54088b950d5d3af6108c0561b6346042bb90794452f0c98f7e00a05e349d63fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:841baacd8adf0b013262963a1a0ce948c236f7ccd6c1857806656ac95a65a287",
+      "source_fact_keys": [
+        "source_fact:v1:09b1ba9035a852c8467976cd9f02b7ae5a2d87bd1818ccbdd637d0b649e20ac6",
+        "source_fact:v1:1b764c19d6a6c603803014b6e2a9dfc7b0170ce28e676fc3008cf4adc981f531",
+        "source_fact:v1:212abd2a7c570a19539e8144437bca04e3098d6fbdbbff71d9f359a992bea8b2",
+        "source_fact:v1:2a2ad22df35bdfa30ee2e5a3b51eca9f0aebf6b2a301e890a9ccc1b4ba456cf3",
+        "source_fact:v1:3689eeab5c78353770985348de5f828cc31bc50b4d633b7a7f052780ae7b7062",
+        "source_fact:v1:37c554429cb9de4e847c3d980cfd42998a59114bc0a52544216b62bfdff2c807",
+        "source_fact:v1:676d809a586d70fd1d6e5417ca7f50b4c7ca8697c987861291625444ccd67e35",
+        "source_fact:v1:8a01f9edcb7cefdc38c796acf41f8000e05806f3908042df9d7b8d519e96716e",
+        "source_fact:v1:abf6eacbcaaf758b26cffee81a77720231dd5b9d178cf0bc12afae1aab5b15a7",
+        "source_fact:v1:e14a816bbee1497190bd54bdf08b72c69dce480eed5c5f4f3d50946807adff4f",
+        "source_fact:v1:e6d7a8d7eee69335ed427fee51b5e9f059464f7c19f98f38a963b2f9931ac911",
+        "source_fact:v1:f60f6f14b50e0537a981bf5ca38df328b8862f2f64fbad210d4e30422fe23644"
+      ],
+      "source_published_kst": "2026-10-12T02:37+09:00",
+      "source_title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스",
+      "telegram_core_fact": "11월 3일 중간선거를 앞둔 트럼프 대통령으로서는 후티 공격 동참을 통한 군사적 확전이 부담스러울 수밖에 없다.",
+      "title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스"
     },
     "title:5b6ff2e74afba5d280bcd479": {
       "first_seen_kst": "2026-10-08T06:27:52+09:00",
@@ -444273,5 +444791,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-12T02:27:00+09:00"
+  "updated_at_kst": "2026-10-12T02:51:54+09:00"
 }
