@@ -34,6 +34,14 @@ UP = (559, 578, 600)    # 5.59%, 5.78%, 6.00%
 DOWN = (525, 515)       # 5.25%, 5.15%
 REARM_BP = 5
 ROUTE = "khs8879887988798879_bot"
+CME_CTD_EXPLANATION = (
+    "https://www.cmegroup.com/articles/2023/"
+    "navigating-higher-yields-the-role-of-treasury-futures-in-todays-market.html"
+)
+CME_CTD_ANALYTICS = (
+    "https://www.cmegroup.com/tools-information/quikstrike/"
+    "quikstrike-treasury-analytics-user-guide.html"
+)
 
 
 def bp_from_percent(value):
@@ -203,6 +211,16 @@ def crossing_message(date, current_bp, previous_date, previous_bp, triggers, url
         f"시장 의미: {market}",
         "검증: 미 재무부 일별 30년물 기준. 장중 실시간 돌파가 아닌 공식 일별 관측치.",
         "주의: JPM 2026-09-29 기술적 기준이며 목표 도달·CTA 주문 실행이 확정됐다는 뜻은 아님.",
+        # 6%는 선물 인도채권 환산계수 계산에 쓰는 가정수익률과 연관된
+        # 관찰 구간일 뿐, 실제 CTD 자동 교체나 청산 확정을 의미하지 않는다.
+        "CTD(최저비용 인도채권) 점검: CME의 국채선물 인도환산계수는 연 6% 수익률 가정을 사용합니다.",
+        "현물 30년 금리가 6%에 도달해도 선물 CTD가 자동 교체되는 것은 아닙니다.",
+        "검증 상태: 해당 선물종류(ZB/UB)·만기월별 CTD 채권과 DV01(금리 1bp당 손익)은 이 가격 경보만으로 확인 불가.",
+        "위험 연결: 실제 CTD·DV01 변경 + 레포 조달 압박 + CFTC 포지션 축소가 함께 확인돼야 강제 청산 가능성을 높게 봅니다.",
+        "예시(실제 변화 아님): 1계약 DV01이 25% 증가했다면 같은 위험을 유지하려는 100계약은 80계약으로 줄입니다.",
+        "증거 주의: CFTC 순숏 감소만으로 헤지펀드 강제청산 또는 베이시스 트레이드 청산이 확정되지 않습니다.",
+        f"CTD 구조(거래소): {CME_CTD_EXPLANATION}",
+        f"CTD·DV01 실제 조회 안내: {CME_CTD_ANALYTICS}",
         f"원문: {url}",
     ])
     return text
