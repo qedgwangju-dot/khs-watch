@@ -369,6 +369,46 @@ HUMANOID_DRAM_FORECAST_REVISION = re.compile(
 HUMANOID_DRAM_COMPANY = re.compile(r'Counterpoint|카운터포인트', re.I)
 HUMANOID_DRAM_SUBJECT = re.compile(r'휴머노이드|humanoid|robot(?:s|ic)?|로봇', re.I)
 HUMANOID_DRAM_MEMORY = re.compile(r'DRAM|D\s*램|디램|LPDDR|저전력\s*메모리', re.I)
+
+# A signed named-robot OEM low-power DRAM deal is a stronger FUTURE
+# upgrade than a market forecast. Press speculation or a loose MOU is not.
+HUMANOID_DRAM_VENDOR_SOURCES = {
+    '삼성전자', 'Samsung Electronics',
+    'SK하이닉스', 'SK hynix',
+    '마이크론', 'Micron', 'Micron Technology',
+}
+HUMANOID_DRAM_VENDOR = re.compile(
+    r'삼성전자|Samsung\s*Electronics|SK\s*hynix|SK하이닉스|'
+    r'Micron(?:\s*Technology)?|마이크론', re.I
+)
+HUMANOID_DRAM_NAMED_BUYER = re.compile(
+    r'NVIDIA|엔비디아|Tesla|테슬라|XPENG|샤오펑|Boston\s*Dynamics|'
+    r'보스턴다이내믹스|Agility\s*Robotics|Unitree|유니트리|Figure\s*AI|피겨',
+    re.I
+)
+HUMANOID_DRAM_SIGNED_ORDER = re.compile(
+    r'(?:(?:정식|확정|양산)\s*)?(?:공급|납품|구매)\s*계약\s*(?:체결|확정)|'
+    r'(?:(?:양산|초도)\s*)?(?:첫\s*)?출하\s*(?:시작|개시|완료)|'
+    r'signed\s+(?:(?:production|supply)\s+)?(?:purchase|supply)\s+(?:agreement|contract)|'
+    r'first\s+(?:production\s+)?shipments?\s+(?:began|started|completed)',
+    re.I
+)
+HUMANOID_DRAM_UNCONFIRMED_ORDER = re.compile(
+    r'(?:계약|납품|수주)\s*(?:추진|검토|논의|예정|미확정|설)|'
+    r'(?:아직|미)\s*(?:계약|수주)|rumou?r|unconfirmed|planned|'
+    r'not\s+(?:yet\s+)?(?:signed|confirmed)',
+    re.I
+)
+
+
+def _humanoid_dram_oem_order(text: str) -> bool:
+    return bool(
+        HUMANOID_DRAM_VENDOR.search(text)
+        and HUMANOID_DRAM_NAMED_BUYER.search(text)
+        and HUMANOID_DRAM_SIGNED_ORDER.search(text)
+        and not HUMANOID_DRAM_UNCONFIRMED_ORDER.search(text)
+    )
+
 HUMANOID_DRAM_19 = re.compile(r'(?<!\d)19\s*(?:GB|기가\s*바이트)', re.I)
 HUMANOID_DRAM_39 = re.compile(r'(?<!\d)39\s*(?:GB|기가\s*바이트)', re.I)
 HUMANOID_DRAM_8300 = re.compile(r'(?<!\d)8[,]?\s*300\s*(?:Tbit|테라\s*비트)', re.I)
@@ -385,12 +425,15 @@ def _is_humanoid_dram(text: str) -> bool:
     return bool(
         HUMANOID_DRAM_COMPANY.search(text)
         or (HUMANOID_DRAM_19.search(text) and HUMANOID_DRAM_39.search(text))
+        or _humanoid_dram_oem_order(text)
     )
 
 
 def _humanoid_dram_stage(text: str, source: str = '') -> str:
     if not _is_humanoid_dram(text):
         return ''
+    if source in HUMANOID_DRAM_VENDOR_SOURCES and _humanoid_dram_oem_order(text):
+        return 'confirmed_named_oem_order'
     if (source in HUMANOID_DRAM_OFFICIAL
             and HUMANOID_DRAM_FORECAST_REVISION.search(text)
             and (re.search(r'2030', text) and re.search(r'Tbit|테라\s*비트|GB', text, re.I))):
@@ -595,6 +638,7 @@ def score(item: dict) -> int:
         stage = _humanoid_dram_stage(text, item.get('source') or '')
         return {'initial_research_forecast': 45,
                 'official_forecast_revision': 52,
+                'confirmed_named_oem_order': 64,
                 'background': 0}.get(stage, 0)
     if topic_group(text) == 'digital_optimus_games':
         return {
@@ -642,6 +686,8 @@ def score(item: dict) -> int:
 
 def category(text: str, group: str) -> str:
     if group == 'humanoid_brain_dram':
+        if _humanoid_dram_oem_order(text):
+            return '휴머노이드 두뇌 D램 · 고객 실명 양산 공급계약 확인'
         # category() receives title+description without the source.
         if HUMANOID_DRAM_FORECAST_REVISION.search(text) and (
             re.search(r'2030', text) and re.search(r'Tbit|테라s*비트|GB', text, re.I)
@@ -704,6 +750,16 @@ def category(text: str, group: str) -> str:
 
 
 def meaning(cat: str) -> str:
+    if cat == '휴머노이드 두뇌 D램 · 고객 실명 양산 공급계약 확인':
+        return (
+            '시장 조사기관의 19→39GB 전망과 달리 메모리 제조사가 '
+            '특정 로봇·연산 플랫폼 고객과 정식 저전력 D램 납품 계약 또는 '
+            '첫 양산 출하를 발표한 별도 단계입니다. '
+            '계약업체·고객 실명·적용 로봇 모델·규격·출하 수량·'
+            '고객 검수·평균판매단가·원화 매출인식 및 반복 납품을 '
+            '각각 확인해야 하며 회사 발표만으로 시장 전체 수요를 '
+            '자동 확정해서는 안 됩니다.'
+        )
     if cat == '휴머노이드 두뇌 D램 · 2030년 수요 신규 전망':
         return (
             '카운터포인트리서치 10/10 전망: 로봇 1대 평균 D램은 '
@@ -868,6 +924,8 @@ def risk(cat: str) -> str:
 
 def verification(item: dict, group: str, text: str) -> str:
     if group == 'humanoid_brain_dram':
+        if _humanoid_dram_stage(text, item.get('source') or '') == 'confirmed_named_oem_order':
+            return '메모리 제조사 직접 발표 · 로봇 고객 실명 계약·실출하 원문 확인 단계, 금액 별도 확인'
         if _humanoid_dram_stage(text, item.get('source') or '') == 'official_forecast_revision':
             return '카운터포인트리서치 직접 수정 발표 단계 · 기존 전망과 고객 확정 주문을 분리'
         return (
@@ -928,6 +986,8 @@ def verification(item: dict, group: str, text: str) -> str:
 def clean_title(title: str, source: str) -> str:
     text = f'{title} {source}'
     if _is_humanoid_dram(text):
+        if source in HUMANOID_DRAM_VENDOR_SOURCES and _humanoid_dram_oem_order(text):
+            return f'{source}, 휴머노이드용 저전력 D램 로봇 고객 공급계약 공식 확인'
         return (
             '카운터포인트: 휴머노이드 D램 평균 19→39GB, '
             '전체 수요 8,300→172,000Tbit 전망'
@@ -1001,6 +1061,14 @@ def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
     if topic_group(text) == 'humanoid_brain_dram':
         stage = _humanoid_dram_stage(text, item.get('source') or '')
+        if stage == 'confirmed_named_oem_order':
+            vendor = next((v for v in sorted(HUMANOID_DRAM_VENDOR_SOURCES)
+                           if re.search(re.escape(v), text, re.I)), item.get('source') or 'unknown')
+            buyer = HUMANOID_DRAM_NAMED_BUYER.search(text)
+            actor = (buyer.group(0).lower() if buyer else 'unnamed')
+            return hashlib.sha256(
+                f'robot-lpddr-oem|{vendor}|{actor}|confirmed-contract'.encode()
+            ).hexdigest()
         if stage == 'initial_research_forecast':
             return hashlib.sha256(
                 b'counterpoint|humanoid-brain-dram|2026-10-10|2026-19gb-8300tbit|2030-39gb-172000tbit'
