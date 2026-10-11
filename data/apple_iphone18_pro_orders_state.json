@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "updated_at_kst": "2026-10-11T13:48:47+09:00",
+  "updated_at_kst": "2026-10-11T14:47:35+09:00",
   "initial_alert_sent": true,
   "baseline_at_kst": "2026-10-09T15:05:00+09:00",
   "seen": [
@@ -164,10 +164,12 @@
       "ubs_pro_wait_covered_markets_min": 30,
       "ubs_pro_max_wait_level_days_secondary": 24,
       "ubs_report_as_of": "2026-10-09",
-      "ubs_secondary_source": "Proactive 인용 UBS Evidence Lab(원본 미열람)"
+      "ubs_secondary_source": "Proactive 인용 UBS Evidence Lab(원본 미열람)",
+      "china_week38_public_counterpoint_summary_confirmed": true,
+      "china_week38_apple_share_official_pct": 33.0
     }
   },
-  "last_scan_items": 94,
+  "last_scan_items": 95,
   "feed_errors": [],
   "successful_sources": 10,
   "new_signal_count": 0,
