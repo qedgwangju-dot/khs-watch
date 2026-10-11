@@ -70,7 +70,7 @@ BASELINE = {
     "idc_publication_date": "2026-08-26",
     "apple_us_pro_price_usd": 1199,
     "apple_us_pro_max_price_usd": 1299,
-    "china_week38_sales_yoy_pct_user_provided": 12.0,
+    "china_week38_sales_yoy_pct_official_counterpoint": 12.0,
     "china_week38_public_counterpoint_summary_confirmed": True,
     "china_week38_apple_share_official_pct": 33.0,
     "china_week38_direct_tracker_publicly_verified": False,
@@ -548,6 +548,7 @@ def _load_state() -> dict:
                 # Legacy field name falsely implied that Reuters independently
                 # confirmed Nikkei's report; it expressly did NOT.
                 reported.pop("reuters_confirmed_floor", None)
+                reported.pop("china_week38_sales_yoy_pct_user_provided", None)
                 for k, v in BASELINE.items():
                     reported.setdefault(k, v)
             return data
