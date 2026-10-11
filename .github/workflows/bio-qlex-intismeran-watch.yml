@@ -4,6 +4,8 @@ on:
   push:
     branches: [main]
     paths:
+      - "scripts/source_collection_health.py"
+      - "scripts/run_offline_regressions.py"
       - ".github/workflows/bio-qlex-intismeran-watch.yml"
       - "scripts/bio_single_runner.py"
       - "scripts/bio_single_runner_v2.py"
@@ -28,6 +30,7 @@ on:
       - "scripts/halozyme_legal_watch_v4.py"
       - "scripts/optogenetics_translation_watch.py"
       - "tests/test_bio_alert_regressions.py"
+      - "tests/test_maplight_source_health.py"
   schedule:
     - cron: "7,22,37,52 * * * *"
     - cron: "12,27,42,57 * * * *"
@@ -42,6 +45,7 @@ concurrency:
 
 jobs:
   monitor:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 18
     env:
@@ -60,7 +64,7 @@ jobs:
           python-version: "3.12"
 
       - name: Run bio regression tests
-        run: PYTHONPATH=scripts python -m unittest tests/test_bio_alert_regressions.py -v
+        run: PYTHONPATH=scripts python scripts/run_offline_regressions.py tests/test_bio_alert_regressions.py tests/test_maplight_source_health.py -v
 
       - name: Run Korean-guarded bio watch
         run: python scripts/bio_single_runner_v3.py
@@ -215,6 +219,10 @@ jobs:
           echo "Failed to persist bio watcher states after retries" >&2
           exit 1
 
+      - name: Fail visibly when maplight source coverage is incomplete
+        if: always()
+        run: python scripts/source_collection_health.py maplight-check
+
       - name: Upload bio verification artifacts
         if: always()
         uses: actions/upload-artifact@v4
@@ -255,4 +263,5 @@ jobs:
 # reliability trigger: Halozyme two-patent final decisions 2026-09-27
 
 # final timeline verification trigger 2026-09-27
+
 

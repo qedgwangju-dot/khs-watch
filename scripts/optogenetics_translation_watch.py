@@ -8,6 +8,9 @@ import os
 import pathlib
 import re
 import sys
+import time
+import urllib.error
+from email.utils import parsedate_to_datetime
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -119,6 +122,67 @@ def fetch_text(url: str, timeout: int = 25) -> str:
     return raw.decode(enc, errors="replace")
 
 
+
+MAPLIGHT_TRANSIENT_HTTP = {408, 425, 429, 500, 502, 503, 504}
+
+
+def source_error_detail(exc: Exception) -> str:
+    """Keep diagnostics useful without logging response bodies or credentials."""
+    if isinstance(exc, urllib.error.HTTPError):
+        return f"HTTPError status={exc.code} retryable={str(exc.code in MAPLIGHT_TRANSIENT_HTTP).lower()}"
+    if isinstance(exc, urllib.error.URLError):
+        return f"URLError reason={type(exc.reason).__name__}"
+    if isinstance(exc, MapLightFetchError):
+        return str(exc)
+    if isinstance(exc, ValueError) and str(exc).startswith(("MapLight ClinicalTrials", "MapLight discovery")):
+        return f"ValueError: {exc}"
+    return type(exc).__name__
+
+
+class MapLightFetchError(RuntimeError):
+    pass
+
+
+def maplight_retry_delay(exc: Exception, attempt: int) -> float | None:
+    """Retry transient failures only, respecting a bounded Retry-After budget."""
+    if isinstance(exc, urllib.error.HTTPError):
+        if exc.code not in MAPLIGHT_TRANSIENT_HTTP:
+            return None
+        retry_after = (exc.headers or {}).get("Retry-After")
+        if retry_after:
+            try:
+                delay = float(retry_after)
+            except ValueError:
+                try:
+                    when = parsedate_to_datetime(retry_after)
+                    if when.tzinfo is None:
+                        when = when.replace(tzinfo=dt.timezone.utc)
+                    delay = max(0.0, (when - dt.datetime.now(dt.timezone.utc)).total_seconds())
+                except (TypeError, ValueError, OverflowError):
+                    return None
+            # Do not retry sooner than the provider permits; defer to a later run.
+            if not 0 <= delay <= 30:
+                return None
+            return max(delay, float(2 ** attempt))
+    elif not isinstance(exc, (TimeoutError, ConnectionError)):
+        if not isinstance(exc, urllib.error.URLError) or not isinstance(exc.reason, (TimeoutError, ConnectionError)):
+            return None
+    return float(2 ** attempt)
+
+
+def fetch_maplight_rss() -> str:
+    for attempt in range(3):
+        try:
+            return fetch_text(MAPLIGHT_RSS, timeout=35)
+        except (urllib.error.URLError, TimeoutError, ConnectionError) as exc:
+            delay = maplight_retry_delay(exc, attempt)
+            if delay is None or attempt == 2:
+                raise MapLightFetchError(
+                    f"{source_error_detail(exc)} attempts={attempt + 1}; source={MAPLIGHT_RSS}"
+                ) from exc
+            time.sleep(delay)
+
+
 def fetch_json(url: str, timeout: int = 25) -> dict:
     req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "application/json"})
     with urllib.request.urlopen(req, timeout=timeout) as response:
@@ -134,10 +198,30 @@ def key_for(*parts: str) -> str:
 
 
 def load_state() -> dict:
-    try:
-        return json.loads(STATE.read_text(encoding="utf-8"))
-    except Exception:
+    if not STATE.exists():
         return {}
+    try:
+        state = json.loads(STATE.read_text(encoding="utf-8"))
+        if not isinstance(state, dict) or type(state.get("initialized")) is not bool:
+            raise ValueError("initialized flag missing or invalid")
+        if state["initialized"]:
+            for key in ("seen_event_keys",):
+                if not isinstance(state.get(key), list) or any(not isinstance(item, str) for item in state[key]):
+                    raise ValueError("dedupe checkpoint missing or invalid")
+            if not isinstance(state.get("trial_snapshots"), dict):
+                raise ValueError("trial checkpoint missing or invalid")
+            version = state.get("maplight_track_version", 0)
+            if type(version) is not int:
+                raise ValueError("MapLight version is invalid")
+            if version:
+                if not isinstance(state.get("maplight_trial_snapshots"), dict):
+                    raise ValueError("MapLight trial checkpoint missing or invalid")
+                keys = state.get("maplight_seen_milestone_keys")
+                if not isinstance(keys, list) or any(not isinstance(key, str) for key in keys):
+                    raise ValueError("MapLight dedupe checkpoint missing or invalid")
+        return state
+    except (OSError, ValueError, TypeError) as exc:
+        raise RuntimeError("Optogenetics persisted state is invalid; refusing rebaseline") from exc
 
 
 def save_json(path: pathlib.Path, obj: dict) -> None:
@@ -456,8 +540,14 @@ def discover_maplight_trials() -> list[dict]:
         "query.term": '"MapLight Therapeutics"',
     })
     data = fetch_json(url)
+    if not isinstance(data, dict) or not isinstance(data.get("studies"), list):
+        raise ValueError("MapLight ClinicalTrials studies payload missing or invalid")
+    if data.get("nextPageToken"):
+        raise ValueError("MapLight ClinicalTrials discovery is paginated; refusing a partial checkpoint")
     out: list[dict] = []
-    for row in data.get("studies") or []:
+    for row in data["studies"]:
+        if not isinstance(row, dict) or not isinstance(row.get("protocolSection"), dict):
+            raise ValueError("MapLight ClinicalTrials study schema invalid")
         p = row.get("protocolSection") or {}
         sponsor = ((p.get("sponsorCollaboratorsModule") or {}).get("leadSponsor") or {}).get("name") or ""
         if "maplight therapeutics" not in sponsor.lower():
@@ -481,8 +571,8 @@ def discover_maplight_trials() -> list[dict]:
         contacts = p.get("contactsLocationsModule") or {}
         conds = (p.get("conditionsModule") or {}).get("conditions") or []
         nct = ident.get("nctId") or ""
-        if not nct:
-            continue
+        if not re.fullmatch(r"NCT\d{8}", nct) or not ident.get("briefTitle") or not status.get("overallStatus") or not (status.get("lastUpdatePostDateStruct") or {}).get("date"):
+            raise ValueError("MapLight ClinicalTrials tracked study checkpoint fields missing")
         snapshot = {
             "brief_title": clean(ident.get("briefTitle") or ""),
             "overall_status": status.get("overallStatus") or "",
@@ -614,7 +704,7 @@ def maplight_stage_and_meaning(keys: list[str], title: str) -> tuple[str, str]:
 def validate_maplight_bridge_and_events() -> tuple[bool, list[dict]]:
     # MapLight's IR HTML pages can intermittently time out from GitHub-hosted runners.
     # Use the company's own Q4-hosted RSS feed as the primary machine-readable official source.
-    xml = fetch_text(MAPLIGHT_RSS, timeout=35)
+    xml = fetch_maplight_rss()
     low = clean(re.sub(r"<[^>]+>", " ", xml)).lower()
     bridge_required = ("maplight", "karl deisseroth", "optogenetics", "circuit")
     pipeline_ok = "ml-007c-ma" in low and any(x in low for x in ("zephyr", "vista", "schizophrenia"))
@@ -856,7 +946,7 @@ def main() -> int:
         if not maplight_bridge_ok:
             maplight_errors.append("MapLight 광유전학→회로지도→약물발굴 공식 연결 검증 실패")
     except Exception as exc:
-        maplight_errors.append(f"MapLight 공식 RSS: {type(exc).__name__}")
+        maplight_errors.append(f"MapLight 공식 RSS: {source_error_detail(exc)}")
 
     for company, url, terms in COMPANY_SOURCES:
         try:
@@ -913,6 +1003,8 @@ def main() -> int:
     try:
         maplight_trials = discover_maplight_trials()
         maplight_snapshots = {item["nct"]: item["snapshot"] for item in maplight_trials}
+        if not set(old_maplight).issubset(maplight_snapshots):
+            raise ValueError("MapLight discovery omitted previously tracked trials; refusing incomplete checkpoint")
         maplight_trials_ok = True
         if initialized:
             for item in maplight_trials:
@@ -928,7 +1020,7 @@ def main() -> int:
                         "changes": changes,
                     })
     except Exception as exc:
-        maplight_errors.append(f"ClinicalTrials MapLight discovery: {type(exc).__name__}")
+        maplight_errors.append(f"ClinicalTrials MapLight discovery: {source_error_detail(exc)}")
 
     cns_trials: list[dict] = []
     try:
@@ -991,10 +1083,11 @@ def main() -> int:
         "version": 1,
         "source_version": 9,
         "ray_official_index_verified": ray_official_index_ok,
-        "maplight_track_version": MAPLIGHT_TRACK_VERSION,
+        "maplight_track_version": MAPLIGHT_TRACK_VERSION if maplight_health_ok else old_maplight_version,
+        "maplight_last_successful_check_kst": dt.datetime.now(KST).isoformat(timespec="seconds") if maplight_health_ok else old.get("maplight_last_successful_check_kst"),
         "maplight_health_ok": maplight_health_ok,
         "maplight_optogenetics_bridge_verified": maplight_bridge_ok,
-        "maplight_seen_milestone_keys": sorted(current_maplight_milestones) if maplight_health_ok else sorted(old_maplight_milestones),
+        "maplight_seen_milestone_keys": sorted(current_maplight_milestones) if maplight_health_ok else list(old.get("maplight_seen_milestone_keys") or []),
         "last_checked_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
         "nobel_2026_verified": nobel_ok,
         "seen_event_keys": current_keys,
@@ -1040,7 +1133,8 @@ def main() -> int:
         f"- MapLight 신규 변화: **{len(maplight_press_updates) + len(maplight_updates) + len(new_maplight_trials)}건**\n"
         f"- 비망막 중추신경계 광유전학 임상: **{len(cns_trials)}건**\n"
         f"- 신규 알림: **{len(new_items) + len(trial_updates) + len(rv001_updates) + len(maplight_press_updates) + len(maplight_updates) + len(new_maplight_trials) + len(new_cns)}건**\n"
-        f"- 일반 소스 오류: **{len(errors)}건** · MapLight 소스 오류: **{len(maplight_errors)}건**\n",
+        f"- 일반 소스 오류: **{len(errors)}건** · MapLight 소스 오류: **{len(maplight_errors)}건**\n"
+        + "".join(f"- MapLight 오류 상세: {error}\n" for error in maplight_errors),
         encoding="utf-8",
     )
 
@@ -1060,3 +1154,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+

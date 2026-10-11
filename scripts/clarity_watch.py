@@ -7,6 +7,7 @@ import pathlib
 import re
 import time
 import urllib.parse
+import urllib.error
 import urllib.request
 import xml.etree.ElementTree as ET
 from dataclasses import asdict, dataclass
@@ -116,25 +117,73 @@ def clean(text):
     return re.sub(r"\s+", " ", html.unescape(text or "")).strip()
 
 
+# Cache only within one collection pass. Never reuse previous-run source data.
+_FETCH_CACHE = {}
+_ACCESS_DENIED = {}
+TRANSIENT_HTTP = {408, 425, 500, 502, 503, 504}
+
+
+def reset_fetch_cache():
+    _FETCH_CACHE.clear()
+    _ACCESS_DENIED.clear()
+
+
 def fetch(url, timeout=30):
-    host = urllib.parse.urlparse(url).netloc.lower()
+    parsed = urllib.parse.urlparse(url)
+    host = parsed.netloc.lower()
     if host not in OFFICIAL_DOMAINS:
         raise RuntimeError(f"non-official domain blocked: {host}")
+    denied_key = (host, parsed.path)
+    if denied_key in _ACCESS_DENIED:
+        raise _ACCESS_DENIED[denied_key]
+    if url in _FETCH_CACHE:
+        cached = _FETCH_CACHE[url]
+        if isinstance(cached, Exception):
+            raise cached
+        return cached
     last = None
     for attempt in range(3):
         try:
             req = urllib.request.Request(url, headers=HEADERS)
             with urllib.request.urlopen(req, timeout=timeout) as response:
-                return response.read()
-        except Exception as exc:
+                result = response.read()
+            _FETCH_CACHE[url] = result
+            return result
+        except urllib.error.HTTPError as exc:
             last = exc
-            if attempt < 2:
-                time.sleep(2 ** attempt)
-    raise RuntimeError(f"fetch failed: {url}: {last}")
+            # 401/403 are access restrictions, not transient failures. 429 is
+            # deferred to a later scheduled run instead of ignoring Retry-After.
+            if exc.code not in TRANSIENT_HTTP or (exc.headers or {}).get("Retry-After"):
+                break
+        except (TimeoutError, ConnectionError) as exc:
+            last = exc
+        except urllib.error.URLError as exc:
+            last = exc
+            if not isinstance(exc.reason, (TimeoutError, ConnectionError)):
+                break
+        if attempt < 2:
+            time.sleep(2 ** attempt)
+    status = getattr(last, "code", None)
+    error = RuntimeError(f"fetch failed: {url}: {type(last).__name__} status={status or 'none'} attempts={attempt + 1}")
+    _FETCH_CACHE[url] = error
+    if status in {401, 403}:
+        # A query-string variation must not turn an access denial into a retry.
+        _ACCESS_DENIED[denied_key] = error
+    raise error from last
 
 
 def soup_for(url):
     return BeautifulSoup(fetch(url), "html.parser")
+
+
+def validate_exchange_discovery_page(soup, url):
+    text = clean(soup.get_text(" ", strip=True)).lower()
+    prefix = text[:1200]
+    if any(marker in prefix for marker in ("access denied", "request rate threshold exceeded", "undeclared automated tool", "verify you are human", "captcha")):
+        raise RuntimeError("exchange discovery returned an access/challenge page")
+    markers = ("rule filings", "rule filing") if "cboe.com" in urllib.parse.urlparse(url).netloc else ("self-regulatory organization", "self regulatory organization", "national securities exchanges")
+    if not any(marker in text for marker in markers) or soup.find("a", href=True) is None:
+        raise RuntimeError("exchange discovery page shape is unverified")
 
 
 def abs_url(base, href):
@@ -539,22 +588,16 @@ def collect_sec_newsroom_crypto_orders(errors):
 
 
 def collect_sec_exchange_orders(errors):
-    events = [
-        Event(
-            row["source"],
-            row["event_type"],
-            row["title"],
-            row["url"],
-            date=row["date"],
-            detail=row["detail"],
-        )
-        for row in SEC_VERIFIED_SRO_BACKFILL
-    ]
+    # Historical backfill is not evidence that discovery succeeded this run.
+    # Previously confirmed keys remain in state, without replaying old evidence.
+    events = []
     # Direct probes are used for high-impact orders when SEC index pages block
     # automated runners. The event is emitted only if the official SEC PDF is reachable.
     for probe in SEC_DIRECT_ORDER_PROBES:
         try:
-            fetch(probe["url"], timeout=20)
+            payload = fetch(probe["url"], timeout=20)
+            if not payload.lstrip().startswith(b"%PDF-"):
+                raise RuntimeError("SEC direct order response is not a PDF")
             events.append(Event(
                 "SEC 거래소 규칙 승인명령",
                 "SEC 거래소 상장·거래 승인",
@@ -563,13 +606,14 @@ def collect_sec_exchange_orders(errors):
                 date=probe["date"],
                 detail=probe["detail"],
             ))
-        except Exception:
-            pass
+        except Exception as exc:
+            errors.append(f"SEC direct order {probe['url']}: {exc}")
 
     last_errors = []
     for url in SEC_EXCHANGE_ORDERS_URLS:
         try:
             soup = soup_for(url)
+            validate_exchange_discovery_page(soup, url)
         except Exception as exc:
             last_errors.append(f"{url}: {exc}")
             continue
@@ -622,11 +666,12 @@ def collect_sec_exchange_orders(errors):
                 detail=detail,
             ))
 
-        if events:
-            break
+        # This page was fetched and parsed. Do not infer discovery health from
+        # a static backfill or a successful probe of a previously known PDF.
+        break
 
-    if not events and last_errors:
-        errors.append("SEC/Cboe exchange orders: " + " || ".join(last_errors[:3]))
+    if last_errors:
+        errors.append("SEC/Cboe exchange discovery incomplete: " + " || ".join(last_errors[:3]))
     return list({e.key: e for e in events}.values())
 
 
@@ -902,6 +947,7 @@ def collect_sec_sro_crypto_orders(errors):
     for url in urls:
         try:
             soup = soup_for(url)
+            validate_exchange_discovery_page(soup, url)
             for a in soup.find_all("a", href=True):
                 title = clean(a.get_text(" ", strip=True))
                 href = abs_url(url, a.get("href"))
@@ -968,6 +1014,7 @@ def collect_regulators(errors):
     # official discovery route is unavailable. Launch-stage monitoring stays
     # active through Volatility Shares' official product list, which is the
     # operational source for issuer launch/inception confirmation.
+    errors.append("SEC EDGAR EFFECT/prospectus discovery unavailable: existing polling is disabled; issuer product list does not establish registration effectiveness")
     events.extend(collect_volatility_shares_3x_crypto_launch(errors))
     return list({e.key: e for e in events}.values())
 
@@ -998,9 +1045,18 @@ def load_state():
     if not STATE_PATH.exists():
         return {}
     try:
-        return json.loads(STATE_PATH.read_text(encoding="utf-8"))
-    except Exception:
-        return {}
+        state = json.loads(STATE_PATH.read_text(encoding="utf-8"))
+        if not isinstance(state, dict) or type(state.get("initialized")) is not bool:
+            raise ValueError("initialized flag missing or invalid")
+        if state["initialized"]:
+            keys = state.get("seen_event_keys")
+            if not isinstance(keys, list) or any(not isinstance(key, str) for key in keys):
+                raise ValueError("dedupe checkpoint missing or invalid")
+            if type(state.get("source_version")) is not int:
+                raise ValueError("source version missing or invalid")
+        return state
+    except (OSError, ValueError, TypeError) as exc:
+        raise RuntimeError("CLARITY persisted state is invalid; refusing rebaseline") from exc
 
 
 def impact_hint(event):
@@ -1049,12 +1105,24 @@ def build_alert(events):
 
 
 def main():
+    reset_fetch_cache()
+    for name in ("clarity_watch_alert.md", "clarity_watch_alert.json", "clarity_watch_pending_state.json", "clarity_watch_rebaseline.txt"):
+        (OUT_DIR / name).unlink(missing_ok=True)
+    state = load_state()  # Validate checkpoints before collecting or creating output.
     errors, events = [], []
     for collector in [collect_govinfo, collect_banking, collect_agriculture, collect_floor, collect_regulators, collect_whitehouse]:
         events.extend(collector(errors))
     events = sorted({e.key: e for e in events}.values(), key=lambda e: (e.source, e.event_type, e.date, e.title))
-    state = load_state()
     baseline = (not state.get("initialized")) or state.get("source_version") != SOURCE_VERSION
+    if errors and baseline:
+        (OUT_DIR / "clarity_watch_status.md").write_text(
+            "# CLARITY Watch 상태\n\n- 공식 출처 수집: 불완전\n"
+            "- 기준선: 초기화·갱신 보류\n- Telegram 전송 대상: 없음\n"
+            + "".join(f"- 출처 오류: {error}\n" for error in errors), encoding="utf-8",
+        )
+        print("::error::CLARITY baseline blocked by incomplete source coverage")
+        print("source_errors=" + " || ".join(errors))
+        return 2
     seen = set(state.get("seen_event_keys") or [])
     new_events = [] if baseline else [e for e in events if e.key not in seen]
     merged = sorted(set(state.get("seen_event_keys") or []) | {e.key for e in events})
@@ -1069,6 +1137,8 @@ def main():
         "seen_event_keys": merged,
         "event_count": len(events),
         "source_errors": errors,
+        "collection_complete": not errors,
+        "last_complete_check_kst": now_kst().isoformat(timespec="seconds") if not errors else state.get("last_complete_check_kst"),
     }
     (OUT_DIR / "clarity_watch_pending_state.json").write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     rebaseline_path = OUT_DIR / "clarity_watch_rebaseline.txt"
@@ -1080,12 +1150,13 @@ def main():
     status = [
         "# CLARITY Watch 상태", "", "- 기준 법안: H.R. 3633",
         f"- 확인 시각: {pending['last_checked_kst']}",
-        f"- 공식 항목 수: {len(events)}", f"- 신규 공식 변화: {len(new_events)}",
+        f"- 이번 조회로 확인한 공식 항목 수: {len(events)}", f"- 조회 성공 출처 내 신규 공식 변화: {len(new_events)}",
         f"- 기준선 갱신: {'예' if baseline else '아니오'}",
         f"- Telegram 전송 대상: {'없음' if not new_events else '있음'}",
     ]
     if errors:
         status.append("- 일부 공식 출처 접근 오류: " + " | ".join(errors[:10]))
+        status.append("- 전체 출처 수집: 불완전 · 오류 출처의 신규 변화 여부는 미확인")
     (OUT_DIR / "clarity_watch_status.md").write_text("\n".join(status) + "\n", encoding="utf-8")
 
     alert_path = OUT_DIR / "clarity_watch_alert.md"
@@ -1094,17 +1165,22 @@ def main():
         if path.exists():
             path.unlink()
     if new_events:
-        alert_path.write_text(build_alert(new_events), encoding="utf-8")
+        alert_text = build_alert(new_events)
+        if errors:
+            alert_text += "\n출처 범위 주의: 일부 공식 출처 조회가 실패했습니다. 위 변화만 확인했으며 전체 출처에 새 변화가 없다는 뜻은 아닙니다.\n"
+        alert_path.write_text(alert_text, encoding="utf-8")
         alert_json.write_text(json.dumps([asdict(e) | {"key": e.key} for e in new_events], ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         print(f"clarity_new_official_change=true count={len(new_events)}")
     else:
-        print("clarity_new_official_change=false")
+        print("clarity_new_official_change=unknown_incomplete" if errors else "clarity_new_official_change=false")
     if baseline:
         print("clarity_rebaseline=true")
     if errors:
+        print("::warning::CLARITY source coverage incomplete; verified events only, no all-clear")
         print("source_errors=" + " || ".join(errors[:10]))
     return 0
 
 
 if __name__ == "__main__":
     raise SystemExit(main())
+

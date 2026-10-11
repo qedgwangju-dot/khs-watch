@@ -4,6 +4,8 @@ on:
   push:
     branches: [main]
     paths:
+      - "scripts/source_collection_health.py"
+      - "scripts/run_offline_regressions.py"
       - ".github/workflows/clarity-watch-telegram.yml"
       - "scripts/clarity_watch.py"
       - "scripts/clarity_alert_guard.py"
@@ -28,6 +30,7 @@ on:
       - "tests/test_clarity_negotiation_watch.py"
       - "tests/test_clarity_reginfo_watch.py"
       - "tests/test_clarity_3x_etp_watch.py"
+      - "tests/test_clarity_source_health.py"
       - "data/clarity_watch_state.json"
       - "data/clarity_policy_pressure_state.json"
       - "data/clarity_ethics_breakthrough_state.json"
@@ -46,6 +49,7 @@ concurrency:
 
 jobs:
   monitor:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 18
     env:
@@ -67,7 +71,7 @@ jobs:
       - name: Validate watcher, guards, negotiation logic and readable Korean formatter
         run: |
           python -m py_compile scripts/clarity_watch.py scripts/clarity_alert_guard.py scripts/clarity_policy_pressure_watch.py scripts/clarity_ethics_breakthrough_watch.py scripts/clarity_ethics_alert_enricher.py scripts/clarity_alert_formatter.py scripts/clarity_alert_readability.py scripts/clarity_alert_visual_polish.py scripts/clarity_vote_window_watch.py scripts/clarity_vote_gate_enricher.py scripts/clarity_negotiation_watch.py
-          python -m unittest tests/test_clarity_alert_guard.py tests/test_clarity_alert_formatter.py tests/test_clarity_policy_pressure_watch.py tests/test_clarity_ethics_breakthrough_watch.py tests/test_clarity_ethics_alert_enricher.py tests/test_clarity_alert_readability.py tests/test_clarity_alert_visual_polish.py tests/test_clarity_vote_window_watch.py tests/test_clarity_vote_gate_enricher.py tests/test_clarity_negotiation_watch.py tests/test_clarity_reginfo_watch.py tests/test_clarity_3x_etp_watch.py -v
+          python scripts/run_offline_regressions.py tests/test_clarity_alert_guard.py tests/test_clarity_alert_formatter.py tests/test_clarity_policy_pressure_watch.py tests/test_clarity_ethics_breakthrough_watch.py tests/test_clarity_ethics_alert_enricher.py tests/test_clarity_alert_readability.py tests/test_clarity_alert_visual_polish.py tests/test_clarity_vote_window_watch.py tests/test_clarity_vote_gate_enricher.py tests/test_clarity_negotiation_watch.py tests/test_clarity_reginfo_watch.py tests/test_clarity_3x_etp_watch.py tests/test_clarity_source_health.py -v
 
       - name: Validate Telegram route without sending
         env:
@@ -130,6 +134,10 @@ jobs:
       - name: Add exact vote-gate card and measured market context
         if: hashFiles('out/clarity_watch_telegram_chunks.json') != '' && hashFiles('out/clarity_vote_gate.json') != ''
         run: python scripts/clarity_vote_gate_enricher.py
+
+      - name: Mark incomplete coverage in final Telegram chunks
+        if: hashFiles('out/clarity_watch_telegram_chunks.json') != ''
+        run: python scripts/source_collection_health.py clarity-notice
 
       - name: Publish watcher summary
         if: always()
@@ -233,6 +241,10 @@ jobs:
           echo "state_push_success=false"
           exit 1
 
+      - name: Fail visibly when clarity source coverage is incomplete
+        if: always()
+        run: python scripts/source_collection_health.py clarity-check
+
       - name: Upload verification artifacts
         if: always()
         uses: actions/upload-artifact@v4
@@ -259,3 +271,4 @@ jobs:
             out/clarity_watch_telegram_confirmed.json
           if-no-files-found: ignore
           retention-days: 14
+
