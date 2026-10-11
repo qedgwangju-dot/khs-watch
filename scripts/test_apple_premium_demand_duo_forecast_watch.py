@@ -25,10 +25,22 @@ class ApplePremiumDemandForecastTests(unittest.TestCase):
             "link": "https://example.com",
         }
 
-    def test_baseline_preserves_paid_tracker_status(self):
+    def test_official_counterpoint_published_summary_preserved(self):
         self.assertEqual(m.BASELINE["iphone18pro_china_yoy_pct"], 12.0)
         self.assertEqual(m.BASELINE["apple_china_week38_share_pct"], 33.0)
-        self.assertIn("공개 원표 미열람", m.BASELINE["iphone18pro_confirmation"])
+        self.assertIn("공식 공개 해설", m.BASELINE["iphone18pro_confirmation"])
+        self.assertIn("counterpointresearch.com", m.COUNTERPOINT_CHINA_PRO_OFFICIAL)
+
+    def test_counterpoint_panel_tracker_is_separate_metric(self):
+        self.assertEqual(m.BASELINE["iphone18pro_panel_cumulative_through_oct_yoy_pct"], 2.0)
+        self.assertIn("패널", m.BASELINE["iphone18pro_panel_confirmation"])
+        self.assertIn("실판매가 아닌", m.BASELINE["iphone18pro_panel_confirmation"])
+
+    def test_official_baseline_alert_does_not_call_panels_sales(self):
+        alert = m._baseline_alert(m.BASELINE)
+        self.assertIn("패널 조달", alert)
+        self.assertIn("Counterpoint 2026-09-30 공식 공개", alert)
+        self.assertNotIn("공개 원표는 현재 열람하지 못했습니다", alert)
 
     def test_same_premium_baseline_does_not_realert(self):
         item = self.item(

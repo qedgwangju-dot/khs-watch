@@ -5,8 +5,12 @@ This module is intentionally separate from direct iPhone Duo preorder/sales
 tracking:
 - iPhone 18 Pro demand is an Apple premium-demand proxy, never Duo direct demand.
 - Duo forecasts are analyst shipment/sales expectations, never actual orders.
-- The user-provided Counterpoint W38 China +12% / 33% figures are preserved as
-  paid-tracker baseline values but explicitly marked as not publicly retrievable.
+- Counterpoint's 2026-09-30 public China insight directly confirms +12% Week 38
+  first-three-day Pro sales and 33% Apple weekly market share; the proprietary
+  underlying weekly transaction table is not publicly available.
+- Counterpoint's separate 2026-09-30 panel report tracks cumulative iPhone 18 Pro
+  OLED procurement through October +2% YoY (a panel tracker projection, not
+  October retail sales or a new Apple component purchase order).
 - Counterpoint ~6m Duo forecast (Reuters) and TrendForce ~5m shipment forecast
   are tracked as separate institutional baselines.
 
@@ -43,13 +47,17 @@ APPLE_OFFICIAL = "https://www.apple.com/kr/shop/buy-iphone/iphone-duo"
 COUNTERPOINT_DUO_REUTERS = "https://www.reuters.com/business/retail-consumer/apples-foldable-iphone-poses-1999-question-who-is-it-2026-09-10/"
 TRENDFORCE_DUO = "https://www.trendforce.com/presscenter/news/20260910-13228.html"
 COUNTERPOINT_CHINA_CONTEXT = "https://counterpointresearch.com/en/insights/china-smartphone-market-saw-sharper-contraction-after-618"
+COUNTERPOINT_CHINA_PRO_OFFICIAL = "https://counterpointresearch.com/en/insights/iphone-18-pro-series-sales-up-12-percent-yoy-in-launch-week-in-china-as-apple-takes-hashtag-1-spot"
+COUNTERPOINT_PRO_PANEL_OFFICIAL = "https://counterpointresearch.com/ko/reports/apples-iphone-18-pro-and-duo-panel-procurement-tracks-ahead-of-the-prior-cycle"
 
 BASELINE = {
     "iphone18pro_china_yoy_pct": 12.0,
     "apple_china_week38_share_pct": 33.0,
     "counterpoint_duo_forecast_m": 6.0,
     "trendforce_duo_forecast_m": 5.0,
-    "iphone18pro_confirmation": "사용자 제공 Counterpoint 유료 주간 트래커 숫자·공개 원표 미열람",
+    "iphone18pro_confirmation": "Counterpoint Research 2026-09-30 공식 공개 해설: 중국 첫 3일 판매 전년 대비 +12%, 38주차 Apple 점유율 33%; 원시 주간 거래표는 별도 자료",
+    "iphone18pro_panel_cumulative_through_oct_yoy_pct": 2.0,
+    "iphone18pro_panel_confirmation": "Counterpoint 2026-09-30 공식: 2026년 10월까지의 Pro OLED 패널 누적 조달 추적 전년 대비 +2%; 10월 확정 실판매가 아닌 패널 추적치",
     "counterpoint_duo_confirmation": "Reuters가 Counterpoint 전망 약 600만대 인용",
     "trendforce_duo_confirmation": "TrendForce 공식 2026 출하 약 500만대",
 }
@@ -347,8 +355,9 @@ def _baseline_alert(metrics: dict) -> str:
         "<b>[Apple 프리미엄 수요 선행지표]</b>",
         f"• 중국 iPhone 18 Pro 초기 판매: <b>전년 대비 +{metrics['iphone18pro_china_yoy_pct']:g}%</b>",
         f"• 중국 38주차 Apple 점유율: <b>{metrics['apple_china_week38_share_pct']:g}%</b>",
-        "• 위 두 숫자는 <b>사용자 제공 Counterpoint 유료 주간 트래커 수치</b>이며 공개 원표는 현재 열람하지 못했습니다.",
-        "• 따라서 iPhone Duo 직접 수요로 승격하지 않고 Apple 프리미엄 구매력의 선행지표로만 추적합니다.",
+        "• 위 두 수치는 <b>Counterpoint 2026-09-30 공식 공개 해설에서 검증</b>했습니다(원시 주간 거래표는 별도).",
+        f"• Counterpoint Pro OLED 패널: <b>10월까지 누적 전년 대비 +{metrics['iphone18pro_panel_cumulative_through_oct_yoy_pct']:g}% 추적</b> — 패널 조달이며 Pro 소비자 실판매가 아닙니다.",
+        "• 중국 판매 +12%·주간 점유율 33%·누적 패널 +2%는 서로 다른 지표이며, iPhone Duo 직접 수요로 승격하지 않습니다.",
         "",
         "<b>[Duo 기관 전망]</b>",
         f"• Counterpoint: <b>약 {metrics['counterpoint_duo_forecast_m']:g}백만대</b> — Reuters 인용 확인",
@@ -368,6 +377,8 @@ def _baseline_alert(metrics: dict) -> str:
         "",
         f'<a href="{COUNTERPOINT_DUO_REUTERS}">Reuters · Counterpoint Duo 약 600만대</a>',
         f'<a href="{TRENDFORCE_DUO}">TrendForce · Duo 약 500만대</a>',
+        f'<a href="{COUNTERPOINT_CHINA_PRO_OFFICIAL}">Counterpoint 공식 · 중국 첫 3일 판매 +12%, 점유율 33%</a>',
+        f'<a href="{COUNTERPOINT_PRO_PANEL_OFFICIAL}">Counterpoint 공식 · Pro 패널 조달 누적 +2% 추적</a>',
         f'<a href="{COUNTERPOINT_CHINA_CONTEXT}">Counterpoint · 중국 시장 수요 배경</a>',
         f'<a href="{APPLE_OFFICIAL}">Apple 공식 일정</a>',
     ]) + "\n"
@@ -421,6 +432,15 @@ def main() -> None:
     seen = set(state.get("seen") or [])
     metrics = dict(BASELINE)
     metrics.update(state.get("metrics") or {})
+    # Official source status supersedes the initial paid-tracker-only note, even
+    # when an old state was saved by a previous release. This is metadata, not
+    # a fresh sell-through/change signal.
+    for key in (
+        "iphone18pro_confirmation",
+        "iphone18pro_panel_cumulative_through_oct_yoy_pct",
+        "iphone18pro_panel_confirmation",
+    ):
+        metrics[key] = BASELINE[key]
     items, errors = collect()
     signals: list[dict] = []
 
@@ -451,6 +471,7 @@ def main() -> None:
         "metrics": metrics,
         "confirmations": {
             "iphone18pro_china": BASELINE["iphone18pro_confirmation"],
+            "iphone18pro_panel": BASELINE["iphone18pro_panel_confirmation"],
             "counterpoint_duo": BASELINE["counterpoint_duo_confirmation"],
             "trendforce_duo": BASELINE["trendforce_duo_confirmation"],
         },
@@ -486,6 +507,7 @@ def main() -> None:
         f"- initial_alert_pending: {str(initial_pending).lower()}\n"
         f"- iphone18pro_china_yoy_pct: {metrics.get('iphone18pro_china_yoy_pct')}\n"
         f"- apple_china_week38_share_pct: {metrics.get('apple_china_week38_share_pct')}\n"
+        f"- iphone18pro_panel_cumulative_through_oct_yoy_pct: {metrics.get('iphone18pro_panel_cumulative_through_oct_yoy_pct')}\n"
         f"- counterpoint_duo_forecast_m: {metrics.get('counterpoint_duo_forecast_m')}\n"
         f"- trendforce_duo_forecast_m: {metrics.get('trendforce_duo_forecast_m')}\n"
         f"- errors: {len(errors)}\n",
