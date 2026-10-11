@@ -3702,6 +3702,29 @@
       "telegram_core_fact": "지난 5일 후티 반군이 사우디의 공항·정유 시설 등을 겨냥한 대대적인 공격 계획을 발표한 이후 킹칼리드 공항이 공격받은 것은 이날이 최소 세 번째다.",
       "title": "\"사우디 수도 리야드 공항 또 공격받아…수십 명 부상·항공편 차질\""
     },
+    "core:2271ceca486dd58c68f56372": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821357",
+      "source": "뉴시스",
+      "source_body_digest": "cf41701efd6e411bcf70efb871a0075d67f5e50af6a1a8185cbbf38fd06bd54a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11305ae7e43776751ebab4668d288a87497e97435df673f5efb5924e45dca705",
+      "source_fact_keys": [
+        "source_fact:v1:78c5f0d81170a7d33817b808d1e6afc7c35c87d93eb5215d1b5cfadd433012df",
+        "source_fact:v1:88d55c12273cc850d74a55a0520279a19ea1780d4573644951d5278994d2cf26",
+        "source_fact:v1:ae4e4f9853380b6be563ad22f10061af9ffd8f274065dd87d0a0876a381e7a45",
+        "source_fact:v1:b2b1f0c2fc0cb9c0059f4932019717914536cae7775e29ad390765068ab1d306",
+        "source_fact:v1:ce3590bad592291d9336214175b4a2036fa11e5742bce120cb00cf77ce0180f9"
+      ],
+      "source_published_kst": "2026-10-12T08:21+09:00",
+      "source_title": "오리엔트바이오 \"고품질 SPF 연구용 토끼 공급 확대\"",
+      "telegram_core_fact": "첨단 바이오 인프라 전문기업 오리엔트바이오는 고품질 특정병원체 부재(SPF) 연구용 토끼의 공급을 확대하며 국내 제약·바이오 기업과 연구기관의 비임상 연구 수요에 대응 중이라고 12일 밝혔다.",
+      "title": "오리엔트바이오 \"고품질 SPF 연구용 토끼 공급 확대\""
+    },
     "core:22aa8d0282cb759bd832c03f": {
       "first_seen_kst": "2026-10-11T11:48:17+09:00",
       "lanes": {
@@ -4881,6 +4904,32 @@
       "source_title": "코스피, 3분기 수익률 -19.3%…대만으로 눈 돌린 글로벌 투자자",
       "telegram_core_fact": "대만 기업들은 AI 인프라 투자 확대에 따른 판매량 증가로 실적을 끌어올리고 있는 반면 한국 반도체 기업의 이익은 메모리 가격 상승에 대한 의존도가 높다. 코스콤 CHECK 등에 따르면 코스피는 올해 3분기 19.33% 하락했다.",
       "title": "코스피, 3분기 수익률 -19.3%…대만으로 눈 돌린 글로벌 투자자"
+    },
+    "core:2b68d8caa10da37fc10188f7": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02059846645612264",
+      "source": "이데일리",
+      "source_body_digest": "bf414b60892a16a816afd51336806a46e346f6907b511a06fde108cccd8be175",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:41ba8bb1f58e20e456c209d196e52430135a467ee56011e0aac24658d1e4a53b",
+      "source_fact_keys": [
+        "source_fact:v1:1c02b2767ae93619e617761cdd386d97832c8b3510d2dd0047a5e51099053fb4",
+        "source_fact:v1:2e8ce7e2385cc0e76cccfd9f690f789ce17fa861b3155365d2675260db3bcff5",
+        "source_fact:v1:3d0b7b1c5cb38b40410146eb75611a56875f72d92440d590d9411d9039d2d282",
+        "source_fact:v1:43f5cd21b13f2a3f7b393774b2a23cb9a9e48cb16e3bc5bda8b0aeb7314afb80",
+        "source_fact:v1:814b27077838525b15c82c5283da00b218dcc63ae3684462d3a36084e7dd27d8",
+        "source_fact:v1:d173271a1c60d76fa69655cfec4240106fddcce76c2316f1c0a3af538da1357b",
+        "source_fact:v1:da1038a36845a2a756aa18b84927a391de4fd4f07aa51a9aba6908fa30801974",
+        "source_fact:v1:df14b665d0379db660e0d649d3cd799922beeeb47c059e0dc3b08081ac0a9b59"
+      ],
+      "source_published_kst": "2026-10-12T08:06+09:00",
+      "source_title": "중동발 유가 불안에 강달러까지…환율 상승 압력[외환브리핑]",
+      "telegram_core_fact": "지난 9일(현지시간) 브렌트유 선물은 배럴당 104.72달러로 전 거래일보다 0.42% 상승 마감했다.",
+      "title": "중동발 유가 불안에 강달러까지…환율 상승 압력[외환브리핑]"
     },
     "core:2b9916f10e6b242f8a436f8d": {
       "first_seen_kst": "2026-10-08T18:46:25+09:00",
@@ -10766,6 +10815,26 @@
       "telegram_core_fact": "이수림 DS투자증권 연구원은 “로봇 보급 대수 자체가 메모리 수요와 비례하는 구조인데다 한 대 당 LPDDR 탑재량 자체도 꾸준히 증가하는 추세”라며 “휴머노이드산업의 성장 속도가 빨라질 수록 메모리 업계가 업황 주기에 얽매이지 않는 구조적 성장 산업으로 진화할 수 있을 것”이라고 내다봤다.",
       "title": "K-메모리 ‘새 큰손’ 등장…휴머노이드시대, 삼전닉스 웃는다 | 중앙일보"
     },
+    "core:690c62446beefd843f0a2864": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821329",
+      "source": "뉴시스",
+      "source_body_digest": "4c6098845462f0f0132ca10cc07022b218f05fd223db4a29584ed5df14fa16ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:13ec46d6442806cf8dc505018ec61c6f99313bfb70b003d7aa2e4e16c687dbd9",
+      "source_fact_keys": [
+        "source_fact:v1:7d3c8dea3bbabcbfce54d210301e46cdedffa8b4451c013d8df0cd4df4568042",
+        "source_fact:v1:83dfa9299cfcf5b286057123f15bc33ed8ee24909032760633b572e12b23e027"
+      ],
+      "source_published_kst": "2026-10-12T08:11+09:00",
+      "source_title": "한울반도체, 日 MLCC 제조사 검사설비 성능 개선 사업 수주",
+      "telegram_core_fact": "한울반도체는 일본 적층세라믹콘덴서(MLCC) 제조사로부터 외관검사설비 성능 개선 사업을 수주했다고 12일 밝혔다.",
+      "title": "한울반도체, 日 MLCC 제조사 검사설비 성능 개선 사업 수주"
+    },
     "core:6911a21bc136af24a38cbf44": {
       "first_seen_kst": "2026-10-12T01:34:33+09:00",
       "lanes": {
@@ -12129,6 +12198,23 @@
       "source_title": "삼성전자 반도체 특별성과급 내년 3월 말 지급⋯영업익 10.5% 푼다 [종합]",
       "telegram_core_fact": "초기업노조 삼성전자지부는 삼성전자의 올해 영업이익이 약 370조원에 이를 것이라는 증권가 전망을 토대로 특별성과급 예상액도 제시했다.",
       "title": "삼성전자 반도체 특별성과급 내년 3월 말 지급⋯영업익 10.5% 푼다 [종합]"
+    },
+    "core:7817c0fcb0ef6b5637d04f76": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634401",
+      "source": "이투데이",
+      "source_body_digest": "49a7a67da7b357c90c1c72fda652189e82135ddf387d92a69568b3ae953042d5",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T08:05+09:00",
+      "source_title": "베선트 “러 경유딜, 美국민에 좋은 일”…여야 의원들 “푸틴에 돈줄” 반발",
+      "telegram_core_fact": "그는 “이는 미국 국민에게 좋은 일”이라며 러시아산 공급 확대가 경유 가격을 낮추는 데 도움이 될 것이라고 강조했다. 하지만 트럼프 대통령은 지난 9일 푸틴 대통령과 통화한 뒤 러시아가 미국과 세계시장에 경유 30만t 이상을 즉시 공급하고 11월 50만t, 이후 100만t을 추가로 내놓기로 했다고 발표했다.",
+      "title": "베선트 “러 경유딜, 美국민에 좋은 일”…여야 의원들 “푸틴에 돈줄” 반발"
     },
     "core:782327de9a12114db3fd6c29": {
       "first_seen_kst": "2026-10-09T22:37:15+09:00",
@@ -16269,6 +16355,23 @@
       "telegram_core_fact": "예멘 친이란 반군 후티가 사우디 수도 리야드까지 미사일 공격을 확대하고 사우디가 강력 대응을 예고한 가운데 미국도 군사개입 가능성을 시사하면서 확전 우려가 고조됐다.",
       "title": "사우디 vs 후티 충돌 격화⋯美 직접 개입 가능성까지 부상 [종합]"
     },
+    "core:a181af6084460eb6cc989af1": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634408",
+      "source": "이투데이",
+      "source_body_digest": "b2088241944c3f9b58532d3c54507fba8e85ced4de0f60ae47f164c111467661",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T08:07+09:00",
+      "source_title": "유안타證 \"LIG D&A, 4분기 신규 수주 가속화\"",
+      "telegram_core_fact": "백 연구원은 \"4분기부터는 상반기 부진했던 수주 흐름이 본격적으로 반전될 전망\"이라며 \"국내에서는 1조9000억원 장거리공대공 체계개발 사업 우선협상대상자로 선정돼 12월 최종 계약 체결이 예상된다\"고 분석했다.",
+      "title": "유안타證 \"LIG D&A, 4분기 신규 수주 가속화\""
+    },
     "core:a1ca12f6a35ab11a52d8e0df": {
       "first_seen_kst": "2026-10-08T20:58:15+09:00",
       "lanes": {
@@ -17316,6 +17419,26 @@
       "source_title": "\"2류 회사에 투자\"…VC 거물의 공개 저격에 실리콘밸리 '발칵'",
       "telegram_core_fact": "테크크런치에 따르면 미국 자율주행 철도 스타트업 패러렐시스템즈(Parallel Systems)는 최근 1억달러(약 1338억원) 시리즈C 투자를 유치했다.",
       "title": "\"2류 회사에 투자\"…VC 거물의 공개 저격에 실리콘밸리 '발칵'"
+    },
+    "core:aad9ffb91714552029d59b92": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634421",
+      "source": "이투데이",
+      "source_body_digest": "ca2454a9605b03357d28d57259a6f921668496a3c0ccf205bc21dfc68c0554a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:08c0d7bddd3b6d65b400adcf8356820a77196e6c460ad2917abfe69e7c7b3f1b",
+      "source_fact_keys": [
+        "source_fact:v1:a75a5876c3b5a1544250e210872eca8da39ece99cb5464c68fb4a4c92b68cb46",
+        "source_fact:v1:ba96e07d2e5bb93dfd39559081e610c0f983b7b97a36427589ed42f2eebe063c"
+      ],
+      "source_published_kst": "2026-10-12T08:26+09:00",
+      "source_title": "경기도 '바른입찰' 10곳 뽑는다…3곳 중 1곳 처분하던 단속에 '당근'",
+      "telegram_core_fact": "경기도는 공공입찰 실태조사에서 적합 판정을 받은 도내 건설업체 가운데 '바른입찰 모범건설업체' 10곳을 12월 말 선정해 실태조사 유예기간 연장 등 인센티브를 준다.",
+      "title": "경기도 '바른입찰' 10곳 뽑는다…3곳 중 1곳 처분하던 단속에 '당근'"
     },
     "core:aaf23f8ea7a0f3bc75329d0d": {
       "first_seen_kst": "2026-10-09T16:07:27+09:00",
@@ -22554,6 +22677,42 @@
       "source_title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스",
       "telegram_core_fact": "S&P 500지수는 전장보다 36.41포인트(0.47%) 내린 7,765.36, 나스닥 종합지수는 345.35포인트(1.25%) 하락한 27,193.34로 마쳤다.",
       "title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스"
+    },
+    "core:db730c0da906c807605a7520": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02043446645612264",
+      "source": "이데일리",
+      "source_body_digest": "ef9e8fbd0ed0803af165d4bc97506a337116810216fcc26ae8c4ce79f0d59db6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bab4ed6f0cd5a08e66f88db61d26ef0a3808d33bcdb7557862eb836081e86973",
+      "source_fact_keys": [
+        "source_fact:v1:167fa9cb618057f718dc0afbf0e0d8c746a8793efb60d624d330b2a68fd6aa85",
+        "source_fact:v1:28c3923d16592e7cbda2175bd3ec3d5da565c71bacf15eec3ac842be6ef00b9e",
+        "source_fact:v1:2ebf0a1f7da5130b5aebd5f050474f51939c09d68b5a49abf6700b1dee0f0756",
+        "source_fact:v1:3e401b47f51cd4f11418772943abfadea6c55166a2038df3e1216c7bd3488e91",
+        "source_fact:v1:4251f567ae6e0ea6a814ca92e0759187dffd043d7be48e085e70559c4604ce75",
+        "source_fact:v1:4be25e433051c4fd419896c67f45323619c5a2d1413914f206fbd19f2667f840",
+        "source_fact:v1:55059c48bfffaabfb87368f1c8b0a9b2622240500079347a51a07dc7f6df2559",
+        "source_fact:v1:6870e961f0ed285ab756ceec60931cd7a50f8a144d35741ce20e8a2b55537bad",
+        "source_fact:v1:950f8f6dcfce544f63784b1bfdde79d9ccf42508e9d0949709dfa74051a34f63",
+        "source_fact:v1:9f754d13b4e0d2a554465dd1275a96b551e73b69670fde641753be55c5a34502",
+        "source_fact:v1:b105cfedf9706570ed71552e7af9f1121b3171431beb15528d95a8df7adfb6c5",
+        "source_fact:v1:b89c81d649648dd3cc847b886373a110807fb8ab6c3c1e18589b7adbad86f1a5",
+        "source_fact:v1:dc61c80093e340155be7e0eb473ce725768fdea1dede6c2db9e216065d33fed2",
+        "source_fact:v1:e9d6124dea58cda67315887f047a5a70dff7614981b8194b6eef716daa8425db",
+        "source_fact:v1:ed374aa2307fc22eb9eb3a83a0db1c31a77ec732a2fbf80cce4e79ef662d8b3d",
+        "source_fact:v1:f39bd56d2087c5b6f4e21bb4212b0002397747119ac57c1391449d0883e03ad8",
+        "source_fact:v1:f7f56da210d3010369106abe66d336805fe9564ff58ffcd04036dded952b2ce5",
+        "source_fact:v1:fda716c229fde8117ab619519cbc1ea57d23a58461dc73d5c834135b623a8b6d"
+      ],
+      "source_published_kst": "2026-10-12T08:02+09:00",
+      "source_title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]",
+      "telegram_core_fact": "펩트론은 지난달 3일 충북 청주시 오송 바이오파크에 들어설 제2공장 건설을 위해 GC녹십자EM과 시공계약을 체결한다고 밝힌 바 있다.",
+      "title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]"
     },
     "core:db80b0c178927487c4f3b5bb": {
       "first_seen_kst": "2026-10-11T11:48:17+09:00",
@@ -27898,25 +28057,28 @@
     "event:242c04e115c71f36e3e5a541": {
       "first_seen_kst": "2026-10-12T01:34:33+09:00",
       "lanes": {
-        "live": "2026-10-12T08:03:02+09:00"
+        "live": "2026-10-12T08:26:25+09:00"
       },
-      "last_seen_kst": "2026-10-12T08:03:02+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2634374",
-      "source": "이투데이",
-      "source_body_digest": "ad74b9c4ec82eb1654be6baf06c3e62730cb4afd92be25c6f204e80c9e98f6f5",
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02059846645612264",
+      "source": "이데일리",
+      "source_body_digest": "bf414b60892a16a816afd51336806a46e346f6907b511a06fde108cccd8be175",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:37397f1def5079110f8936051d6d94b18bf86adb0f9a54f6020119cb299a764d",
+      "source_fact_identity": "source_facts:v1:41ba8bb1f58e20e456c209d196e52430135a467ee56011e0aac24658d1e4a53b",
       "source_fact_keys": [
-        "source_fact:v1:57411715613f7e45c0f94101edc50a950f0bb8b0d28f6ab21f5913e189c391b3",
-        "source_fact:v1:7c7f07eb7419d8d029950ac2d60e74ae68a57d53e996776f1ae8c46ed30cac72",
-        "source_fact:v1:7fd8bf4be586be62a13672d75afa7955716d468e62849487d8813c46a91b8345",
-        "source_fact:v1:98bb7b200fb3fd7b09fccb2e401134d3071c140e5f19b4dadea1a208803281be",
-        "source_fact:v1:e652dd1b273559a6a7c29f897f52037d04bda7d44a674cacc34485536b44f6f2"
+        "source_fact:v1:1c02b2767ae93619e617761cdd386d97832c8b3510d2dd0047a5e51099053fb4",
+        "source_fact:v1:2e8ce7e2385cc0e76cccfd9f690f789ce17fa861b3155365d2675260db3bcff5",
+        "source_fact:v1:3d0b7b1c5cb38b40410146eb75611a56875f72d92440d590d9411d9039d2d282",
+        "source_fact:v1:43f5cd21b13f2a3f7b393774b2a23cb9a9e48cb16e3bc5bda8b0aeb7314afb80",
+        "source_fact:v1:814b27077838525b15c82c5283da00b218dcc63ae3684462d3a36084e7dd27d8",
+        "source_fact:v1:d173271a1c60d76fa69655cfec4240106fddcce76c2316f1c0a3af538da1357b",
+        "source_fact:v1:da1038a36845a2a756aa18b84927a391de4fd4f07aa51a9aba6908fa30801974",
+        "source_fact:v1:df14b665d0379db660e0d649d3cd799922beeeb47c059e0dc3b08081ac0a9b59"
       ],
-      "source_published_kst": "2026-10-12T06:47+09:00",
-      "source_title": "사우디 리야드 공항 또 피격…후티 “석유·가스시설도 타격”",
-      "telegram_core_fact": "예멘 친이란 반군 후티는 리야드 공항뿐 아니라 사우디 동부 공항과 석유·가스시설까지 공격했다고 주장하면서 양측의 충돌이 빠르게 확산하고 있다. 11일(현지시간) 로이터통신 등에 따르면 사우디 주도 연합군은 정체불명의 발사체가 킹칼리드 국제공항 제4터미널을 타격해 화재가 발생했다고 밝혔다.",
-      "title": "사우디 리야드 공항 또 피격…후티 “석유·가스시설도 타격”"
+      "source_published_kst": "2026-10-12T08:06+09:00",
+      "source_title": "중동발 유가 불안에 강달러까지…환율 상승 압력[외환브리핑]",
+      "telegram_core_fact": "지난 9일(현지시간) 브렌트유 선물은 배럴당 104.72달러로 전 거래일보다 0.42% 상승 마감했다.",
+      "title": "중동발 유가 불안에 강달러까지…환율 상승 압력[외환브리핑]"
     },
     "event:243b9268c0c661c2e567eb0a": {
       "first_seen_kst": "2026-09-30T11:15:27+09:00",
@@ -44292,6 +44454,29 @@
       "source_published_kst": "2026-10-07T11:22+09:00",
       "title": "LG전자 3분기 영업익 7천818억…3분기 누적 첫 4조 넘어(종합)"
     },
+    "fact:2d3e236150513d25659a007c": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821357",
+      "source": "뉴시스",
+      "source_body_digest": "cf41701efd6e411bcf70efb871a0075d67f5e50af6a1a8185cbbf38fd06bd54a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11305ae7e43776751ebab4668d288a87497e97435df673f5efb5924e45dca705",
+      "source_fact_keys": [
+        "source_fact:v1:78c5f0d81170a7d33817b808d1e6afc7c35c87d93eb5215d1b5cfadd433012df",
+        "source_fact:v1:88d55c12273cc850d74a55a0520279a19ea1780d4573644951d5278994d2cf26",
+        "source_fact:v1:ae4e4f9853380b6be563ad22f10061af9ffd8f274065dd87d0a0876a381e7a45",
+        "source_fact:v1:b2b1f0c2fc0cb9c0059f4932019717914536cae7775e29ad390765068ab1d306",
+        "source_fact:v1:ce3590bad592291d9336214175b4a2036fa11e5742bce120cb00cf77ce0180f9"
+      ],
+      "source_published_kst": "2026-10-12T08:21+09:00",
+      "source_title": "오리엔트바이오 \"고품질 SPF 연구용 토끼 공급 확대\"",
+      "telegram_core_fact": "첨단 바이오 인프라 전문기업 오리엔트바이오는 고품질 특정병원체 부재(SPF) 연구용 토끼의 공급을 확대하며 국내 제약·바이오 기업과 연구기관의 비임상 연구 수요에 대응 중이라고 12일 밝혔다.",
+      "title": "오리엔트바이오 \"고품질 SPF 연구용 토끼 공급 확대\""
+    },
     "fact:2d42887ca8ac9029a0748320": {
       "first_seen_kst": "2026-10-08T08:12:34+09:00",
       "lanes": {
@@ -46669,6 +46854,42 @@
       "source_title": "울산 남신항 에너지거점 2단계 본격화…동북아 물류허브 승부수 | 연합뉴스",
       "telegram_core_fact": "울산시는 동북아 에너지 물류거점(허브) 조성의 핵심 기반사업인 '남신항 에너지거점 2단계' 구축을 위한 3대 방향을 설정하고 사업 추진을 본격화한다고 7일 밝혔다. 남신항 에너지거점 2단계는 민선 9기 공약인 '동북아 에너지 물류거점 조성'과 연계해 울산 에너지 산업과 항만 경쟁력을 강화하기 위한 사업이다.",
       "title": "울산 남신항 에너지거점 2단계 본격화…동북아 물류허브 승부수 | 연합뉴스"
+    },
+    "fact:3b687e67939f5d6d510be850": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02043446645612264",
+      "source": "이데일리",
+      "source_body_digest": "ef9e8fbd0ed0803af165d4bc97506a337116810216fcc26ae8c4ce79f0d59db6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bab4ed6f0cd5a08e66f88db61d26ef0a3808d33bcdb7557862eb836081e86973",
+      "source_fact_keys": [
+        "source_fact:v1:167fa9cb618057f718dc0afbf0e0d8c746a8793efb60d624d330b2a68fd6aa85",
+        "source_fact:v1:28c3923d16592e7cbda2175bd3ec3d5da565c71bacf15eec3ac842be6ef00b9e",
+        "source_fact:v1:2ebf0a1f7da5130b5aebd5f050474f51939c09d68b5a49abf6700b1dee0f0756",
+        "source_fact:v1:3e401b47f51cd4f11418772943abfadea6c55166a2038df3e1216c7bd3488e91",
+        "source_fact:v1:4251f567ae6e0ea6a814ca92e0759187dffd043d7be48e085e70559c4604ce75",
+        "source_fact:v1:4be25e433051c4fd419896c67f45323619c5a2d1413914f206fbd19f2667f840",
+        "source_fact:v1:55059c48bfffaabfb87368f1c8b0a9b2622240500079347a51a07dc7f6df2559",
+        "source_fact:v1:6870e961f0ed285ab756ceec60931cd7a50f8a144d35741ce20e8a2b55537bad",
+        "source_fact:v1:950f8f6dcfce544f63784b1bfdde79d9ccf42508e9d0949709dfa74051a34f63",
+        "source_fact:v1:9f754d13b4e0d2a554465dd1275a96b551e73b69670fde641753be55c5a34502",
+        "source_fact:v1:b105cfedf9706570ed71552e7af9f1121b3171431beb15528d95a8df7adfb6c5",
+        "source_fact:v1:b89c81d649648dd3cc847b886373a110807fb8ab6c3c1e18589b7adbad86f1a5",
+        "source_fact:v1:dc61c80093e340155be7e0eb473ce725768fdea1dede6c2db9e216065d33fed2",
+        "source_fact:v1:e9d6124dea58cda67315887f047a5a70dff7614981b8194b6eef716daa8425db",
+        "source_fact:v1:ed374aa2307fc22eb9eb3a83a0db1c31a77ec732a2fbf80cce4e79ef662d8b3d",
+        "source_fact:v1:f39bd56d2087c5b6f4e21bb4212b0002397747119ac57c1391449d0883e03ad8",
+        "source_fact:v1:f7f56da210d3010369106abe66d336805fe9564ff58ffcd04036dded952b2ce5",
+        "source_fact:v1:fda716c229fde8117ab619519cbc1ea57d23a58461dc73d5c834135b623a8b6d"
+      ],
+      "source_published_kst": "2026-10-12T08:02+09:00",
+      "source_title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]",
+      "telegram_core_fact": "펩트론은 지난달 3일 충북 청주시 오송 바이오파크에 들어설 제2공장 건설을 위해 GC녹십자EM과 시공계약을 체결한다고 밝힌 바 있다.",
+      "title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]"
     },
     "fact:3b93523ff1bf9dc339f257ac": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
@@ -57623,6 +57844,26 @@
       "telegram_core_fact": "지난 7일 이뤄진 누리호 5차 발사에서 75t급 액체로켓엔진을 비롯한 핵심 부품을 공급했다.",
       "title": "'5차 발사' 누리호 만든 한화…뉴스페이스 시대 선봉장으로"
     },
+    "fact:84442a8f9422ee6bd48e4ff1": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821329",
+      "source": "뉴시스",
+      "source_body_digest": "4c6098845462f0f0132ca10cc07022b218f05fd223db4a29584ed5df14fa16ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:13ec46d6442806cf8dc505018ec61c6f99313bfb70b003d7aa2e4e16c687dbd9",
+      "source_fact_keys": [
+        "source_fact:v1:7d3c8dea3bbabcbfce54d210301e46cdedffa8b4451c013d8df0cd4df4568042",
+        "source_fact:v1:83dfa9299cfcf5b286057123f15bc33ed8ee24909032760633b572e12b23e027"
+      ],
+      "source_published_kst": "2026-10-12T08:11+09:00",
+      "source_title": "한울반도체, 日 MLCC 제조사 검사설비 성능 개선 사업 수주",
+      "telegram_core_fact": "한울반도체는 일본 적층세라믹콘덴서(MLCC) 제조사로부터 외관검사설비 성능 개선 사업을 수주했다고 12일 밝혔다.",
+      "title": "한울반도체, 日 MLCC 제조사 검사설비 성능 개선 사업 수주"
+    },
     "fact:8455581166cec5040a449034": {
       "first_seen_kst": "2026-10-08T06:27:52+09:00",
       "lanes": {
@@ -67513,6 +67754,26 @@
       "source_published_kst": "2026-10-06T17:50+09:00",
       "title": "태성, 69억 규모 FC-BGA용 기계장치 수주"
     },
+    "fact:be56952f775e44a49d59b9b4": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634421",
+      "source": "이투데이",
+      "source_body_digest": "ca2454a9605b03357d28d57259a6f921668496a3c0ccf205bc21dfc68c0554a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:08c0d7bddd3b6d65b400adcf8356820a77196e6c460ad2917abfe69e7c7b3f1b",
+      "source_fact_keys": [
+        "source_fact:v1:a75a5876c3b5a1544250e210872eca8da39ece99cb5464c68fb4a4c92b68cb46",
+        "source_fact:v1:ba96e07d2e5bb93dfd39559081e610c0f983b7b97a36427589ed42f2eebe063c"
+      ],
+      "source_published_kst": "2026-10-12T08:26+09:00",
+      "source_title": "경기도 '바른입찰' 10곳 뽑는다…3곳 중 1곳 처분하던 단속에 '당근'",
+      "telegram_core_fact": "경기도는 공공입찰 실태조사에서 적합 판정을 받은 도내 건설업체 가운데 '바른입찰 모범건설업체' 10곳을 12월 말 선정해 실태조사 유예기간 연장 등 인센티브를 준다.",
+      "title": "경기도 '바른입찰' 10곳 뽑는다…3곳 중 1곳 처분하던 단속에 '당근'"
+    },
     "fact:bea18edd1a08c55c5ee675eb": {
       "first_seen_kst": "2026-10-08T19:27:03+09:00",
       "lanes": {
@@ -74209,6 +74470,32 @@
       ],
       "source_published_kst": "2026-10-06T15:25+09:00",
       "title": "임귀현 완주군의원, 친환경 액비 자원화 확대 점검 나서"
+    },
+    "fact:e4fc9960e64dfbbde6ff0d95": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02059846645612264",
+      "source": "이데일리",
+      "source_body_digest": "bf414b60892a16a816afd51336806a46e346f6907b511a06fde108cccd8be175",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:41ba8bb1f58e20e456c209d196e52430135a467ee56011e0aac24658d1e4a53b",
+      "source_fact_keys": [
+        "source_fact:v1:1c02b2767ae93619e617761cdd386d97832c8b3510d2dd0047a5e51099053fb4",
+        "source_fact:v1:2e8ce7e2385cc0e76cccfd9f690f789ce17fa861b3155365d2675260db3bcff5",
+        "source_fact:v1:3d0b7b1c5cb38b40410146eb75611a56875f72d92440d590d9411d9039d2d282",
+        "source_fact:v1:43f5cd21b13f2a3f7b393774b2a23cb9a9e48cb16e3bc5bda8b0aeb7314afb80",
+        "source_fact:v1:814b27077838525b15c82c5283da00b218dcc63ae3684462d3a36084e7dd27d8",
+        "source_fact:v1:d173271a1c60d76fa69655cfec4240106fddcce76c2316f1c0a3af538da1357b",
+        "source_fact:v1:da1038a36845a2a756aa18b84927a391de4fd4f07aa51a9aba6908fa30801974",
+        "source_fact:v1:df14b665d0379db660e0d649d3cd799922beeeb47c059e0dc3b08081ac0a9b59"
+      ],
+      "source_published_kst": "2026-10-12T08:06+09:00",
+      "source_title": "중동발 유가 불안에 강달러까지…환율 상승 압력[외환브리핑]",
+      "telegram_core_fact": "지난 9일(현지시간) 브렌트유 선물은 배럴당 104.72달러로 전 거래일보다 0.42% 상승 마감했다.",
+      "title": "중동발 유가 불안에 강달러까지…환율 상승 압력[외환브리핑]"
     },
     "fact:e52a3a2f151b245e654f7ef3": {
       "first_seen_kst": "2026-10-11T16:47:25+09:00",
@@ -97839,6 +98126,26 @@
       "source_published_kst": "2026-10-06T11:09+09:00",
       "title": "폭염·AI에 日 전력난 비상… 노후 화력발전 수명연장 검토 | 연합뉴스"
     },
+    "link:502611909cd861ada4cae30c": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821329",
+      "source": "뉴시스",
+      "source_body_digest": "4c6098845462f0f0132ca10cc07022b218f05fd223db4a29584ed5df14fa16ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:13ec46d6442806cf8dc505018ec61c6f99313bfb70b003d7aa2e4e16c687dbd9",
+      "source_fact_keys": [
+        "source_fact:v1:7d3c8dea3bbabcbfce54d210301e46cdedffa8b4451c013d8df0cd4df4568042",
+        "source_fact:v1:83dfa9299cfcf5b286057123f15bc33ed8ee24909032760633b572e12b23e027"
+      ],
+      "source_published_kst": "2026-10-12T08:11+09:00",
+      "source_title": "한울반도체, 日 MLCC 제조사 검사설비 성능 개선 사업 수주",
+      "telegram_core_fact": "한울반도체는 일본 적층세라믹콘덴서(MLCC) 제조사로부터 외관검사설비 성능 개선 사업을 수주했다고 12일 밝혔다.",
+      "title": "한울반도체, 日 MLCC 제조사 검사설비 성능 개선 사업 수주"
+    },
     "link:50399e96567d50b8f6b87d03": {
       "first_seen_kst": "2026-10-12T07:02:25+09:00",
       "lanes": {
@@ -103795,6 +104102,29 @@
       "link": "https://www.etnews.com/20260929000109",
       "source": "전자신문",
       "title": "LG전자, '블록형 냉각설비' 모듈러 솔루션 공개…AI 데이터센터 구축기간 줄인다"
+    },
+    "link:67f21cbb58b35be170011c29": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821357",
+      "source": "뉴시스",
+      "source_body_digest": "cf41701efd6e411bcf70efb871a0075d67f5e50af6a1a8185cbbf38fd06bd54a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11305ae7e43776751ebab4668d288a87497e97435df673f5efb5924e45dca705",
+      "source_fact_keys": [
+        "source_fact:v1:78c5f0d81170a7d33817b808d1e6afc7c35c87d93eb5215d1b5cfadd433012df",
+        "source_fact:v1:88d55c12273cc850d74a55a0520279a19ea1780d4573644951d5278994d2cf26",
+        "source_fact:v1:ae4e4f9853380b6be563ad22f10061af9ffd8f274065dd87d0a0876a381e7a45",
+        "source_fact:v1:b2b1f0c2fc0cb9c0059f4932019717914536cae7775e29ad390765068ab1d306",
+        "source_fact:v1:ce3590bad592291d9336214175b4a2036fa11e5742bce120cb00cf77ce0180f9"
+      ],
+      "source_published_kst": "2026-10-12T08:21+09:00",
+      "source_title": "오리엔트바이오 \"고품질 SPF 연구용 토끼 공급 확대\"",
+      "telegram_core_fact": "첨단 바이오 인프라 전문기업 오리엔트바이오는 고품질 특정병원체 부재(SPF) 연구용 토끼의 공급을 확대하며 국내 제약·바이오 기업과 연구기관의 비임상 연구 수요에 대응 중이라고 12일 밝혔다.",
+      "title": "오리엔트바이오 \"고품질 SPF 연구용 토끼 공급 확대\""
     },
     "link:67f78d95fa7c3581db6aa21b": {
       "first_seen_kst": "2026-10-07T07:01:10+09:00",
@@ -117981,6 +118311,26 @@
       "source_published_kst": "2026-10-04T06:00+09:00",
       "title": "글로벌 지수 편입에 꿈틀…'베트남 ETF'에 자금 몰린다"
     },
+    "link:a1cf9b44136f2001ab2889bf": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634421",
+      "source": "이투데이",
+      "source_body_digest": "ca2454a9605b03357d28d57259a6f921668496a3c0ccf205bc21dfc68c0554a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:08c0d7bddd3b6d65b400adcf8356820a77196e6c460ad2917abfe69e7c7b3f1b",
+      "source_fact_keys": [
+        "source_fact:v1:a75a5876c3b5a1544250e210872eca8da39ece99cb5464c68fb4a4c92b68cb46",
+        "source_fact:v1:ba96e07d2e5bb93dfd39559081e610c0f983b7b97a36427589ed42f2eebe063c"
+      ],
+      "source_published_kst": "2026-10-12T08:26+09:00",
+      "source_title": "경기도 '바른입찰' 10곳 뽑는다…3곳 중 1곳 처분하던 단속에 '당근'",
+      "telegram_core_fact": "경기도는 공공입찰 실태조사에서 적합 판정을 받은 도내 건설업체 가운데 '바른입찰 모범건설업체' 10곳을 12월 말 선정해 실태조사 유예기간 연장 등 인센티브를 준다.",
+      "title": "경기도 '바른입찰' 10곳 뽑는다…3곳 중 1곳 처분하던 단속에 '당근'"
+    },
     "link:a1d7956c7fb70d8a6214a5bb": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
       "lanes": {
@@ -120319,6 +120669,42 @@
       "source_published_kst": "2026-10-06T17:40+09:00",
       "title": "亞 최대 동해 AI데이터센터 연내 착공"
     },
+    "link:aac11c304f1622edb5040d60": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02043446645612264",
+      "source": "이데일리",
+      "source_body_digest": "ef9e8fbd0ed0803af165d4bc97506a337116810216fcc26ae8c4ce79f0d59db6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bab4ed6f0cd5a08e66f88db61d26ef0a3808d33bcdb7557862eb836081e86973",
+      "source_fact_keys": [
+        "source_fact:v1:167fa9cb618057f718dc0afbf0e0d8c746a8793efb60d624d330b2a68fd6aa85",
+        "source_fact:v1:28c3923d16592e7cbda2175bd3ec3d5da565c71bacf15eec3ac842be6ef00b9e",
+        "source_fact:v1:2ebf0a1f7da5130b5aebd5f050474f51939c09d68b5a49abf6700b1dee0f0756",
+        "source_fact:v1:3e401b47f51cd4f11418772943abfadea6c55166a2038df3e1216c7bd3488e91",
+        "source_fact:v1:4251f567ae6e0ea6a814ca92e0759187dffd043d7be48e085e70559c4604ce75",
+        "source_fact:v1:4be25e433051c4fd419896c67f45323619c5a2d1413914f206fbd19f2667f840",
+        "source_fact:v1:55059c48bfffaabfb87368f1c8b0a9b2622240500079347a51a07dc7f6df2559",
+        "source_fact:v1:6870e961f0ed285ab756ceec60931cd7a50f8a144d35741ce20e8a2b55537bad",
+        "source_fact:v1:950f8f6dcfce544f63784b1bfdde79d9ccf42508e9d0949709dfa74051a34f63",
+        "source_fact:v1:9f754d13b4e0d2a554465dd1275a96b551e73b69670fde641753be55c5a34502",
+        "source_fact:v1:b105cfedf9706570ed71552e7af9f1121b3171431beb15528d95a8df7adfb6c5",
+        "source_fact:v1:b89c81d649648dd3cc847b886373a110807fb8ab6c3c1e18589b7adbad86f1a5",
+        "source_fact:v1:dc61c80093e340155be7e0eb473ce725768fdea1dede6c2db9e216065d33fed2",
+        "source_fact:v1:e9d6124dea58cda67315887f047a5a70dff7614981b8194b6eef716daa8425db",
+        "source_fact:v1:ed374aa2307fc22eb9eb3a83a0db1c31a77ec732a2fbf80cce4e79ef662d8b3d",
+        "source_fact:v1:f39bd56d2087c5b6f4e21bb4212b0002397747119ac57c1391449d0883e03ad8",
+        "source_fact:v1:f7f56da210d3010369106abe66d336805fe9564ff58ffcd04036dded952b2ce5",
+        "source_fact:v1:fda716c229fde8117ab619519cbc1ea57d23a58461dc73d5c834135b623a8b6d"
+      ],
+      "source_published_kst": "2026-10-12T08:02+09:00",
+      "source_title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]",
+      "telegram_core_fact": "펩트론은 지난달 3일 충북 청주시 오송 바이오파크에 들어설 제2공장 건설을 위해 GC녹십자EM과 시공계약을 체결한다고 밝힌 바 있다.",
+      "title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]"
+    },
     "link:aacdcadbed0bfa86f7123acd": {
       "first_seen_kst": "2026-10-10T10:14:41+09:00",
       "lanes": {
@@ -120663,6 +121049,23 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T08:27+09:00",
       "title": "이녹스리튬-트라피구라, 수산화리튬 장기 마케팅 계약"
+    },
+    "link:abf7804ca2df707cb8777a1e": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634401",
+      "source": "이투데이",
+      "source_body_digest": "49a7a67da7b357c90c1c72fda652189e82135ddf387d92a69568b3ae953042d5",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T08:05+09:00",
+      "source_title": "베선트 “러 경유딜, 美국민에 좋은 일”…여야 의원들 “푸틴에 돈줄” 반발",
+      "telegram_core_fact": "그는 “이는 미국 국민에게 좋은 일”이라며 러시아산 공급 확대가 경유 가격을 낮추는 데 도움이 될 것이라고 강조했다. 하지만 트럼프 대통령은 지난 9일 푸틴 대통령과 통화한 뒤 러시아가 미국과 세계시장에 경유 30만t 이상을 즉시 공급하고 11월 50만t, 이후 100만t을 추가로 내놓기로 했다고 발표했다.",
+      "title": "베선트 “러 경유딜, 美국민에 좋은 일”…여야 의원들 “푸틴에 돈줄” 반발"
     },
     "link:ac1daa2d2740167cb6d6eabb": {
       "first_seen_kst": "2026-10-08T02:57:10+09:00",
@@ -135767,6 +136170,23 @@
       "source_published_kst": "2026-10-07T07:55+09:00",
       "title": "삼성전기, 3분기 ‘깜짝 실적’ 전망…목표가 160만→260만원"
     },
+    "link:eced1b66805f60a37a455e05": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634408",
+      "source": "이투데이",
+      "source_body_digest": "b2088241944c3f9b58532d3c54507fba8e85ced4de0f60ae47f164c111467661",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T08:07+09:00",
+      "source_title": "유안타證 \"LIG D&A, 4분기 신규 수주 가속화\"",
+      "telegram_core_fact": "백 연구원은 \"4분기부터는 상반기 부진했던 수주 흐름이 본격적으로 반전될 전망\"이라며 \"국내에서는 1조9000억원 장거리공대공 체계개발 사업 우선협상대상자로 선정돼 12월 최종 계약 체결이 예상된다\"고 분석했다.",
+      "title": "유안타證 \"LIG D&A, 4분기 신규 수주 가속화\""
+    },
     "link:ecfb3b826666e3a576fce80f": {
       "first_seen_kst": "2026-10-01T16:14:13+09:00",
       "lanes": {
@@ -136747,6 +137167,32 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T09:00+09:00",
       "title": "2년간 결손 난 회사 주식으로 상속세 물납 신청…法 “거부 적법”"
+    },
+    "link:f179c732779a6e6968c7bf23": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02059846645612264",
+      "source": "이데일리",
+      "source_body_digest": "bf414b60892a16a816afd51336806a46e346f6907b511a06fde108cccd8be175",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:41ba8bb1f58e20e456c209d196e52430135a467ee56011e0aac24658d1e4a53b",
+      "source_fact_keys": [
+        "source_fact:v1:1c02b2767ae93619e617761cdd386d97832c8b3510d2dd0047a5e51099053fb4",
+        "source_fact:v1:2e8ce7e2385cc0e76cccfd9f690f789ce17fa861b3155365d2675260db3bcff5",
+        "source_fact:v1:3d0b7b1c5cb38b40410146eb75611a56875f72d92440d590d9411d9039d2d282",
+        "source_fact:v1:43f5cd21b13f2a3f7b393774b2a23cb9a9e48cb16e3bc5bda8b0aeb7314afb80",
+        "source_fact:v1:814b27077838525b15c82c5283da00b218dcc63ae3684462d3a36084e7dd27d8",
+        "source_fact:v1:d173271a1c60d76fa69655cfec4240106fddcce76c2316f1c0a3af538da1357b",
+        "source_fact:v1:da1038a36845a2a756aa18b84927a391de4fd4f07aa51a9aba6908fa30801974",
+        "source_fact:v1:df14b665d0379db660e0d649d3cd799922beeeb47c059e0dc3b08081ac0a9b59"
+      ],
+      "source_published_kst": "2026-10-12T08:06+09:00",
+      "source_title": "중동발 유가 불안에 강달러까지…환율 상승 압력[외환브리핑]",
+      "telegram_core_fact": "지난 9일(현지시간) 브렌트유 선물은 배럴당 104.72달러로 전 거래일보다 0.42% 상승 마감했다.",
+      "title": "중동발 유가 불안에 강달러까지…환율 상승 압력[외환브리핑]"
     },
     "link:f1993291f621ea3af4b7cee6": {
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
@@ -142794,6 +143240,32 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-05T19:58+09:00",
       "title": "지오 그룹, ICE 시설 9억5000만 달러 매각·자사주 한도 확대"
+    },
+    "original:0b65a1dfa553b9dd2d411d42": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02059846645612264",
+      "source": "이데일리",
+      "source_body_digest": "bf414b60892a16a816afd51336806a46e346f6907b511a06fde108cccd8be175",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:41ba8bb1f58e20e456c209d196e52430135a467ee56011e0aac24658d1e4a53b",
+      "source_fact_keys": [
+        "source_fact:v1:1c02b2767ae93619e617761cdd386d97832c8b3510d2dd0047a5e51099053fb4",
+        "source_fact:v1:2e8ce7e2385cc0e76cccfd9f690f789ce17fa861b3155365d2675260db3bcff5",
+        "source_fact:v1:3d0b7b1c5cb38b40410146eb75611a56875f72d92440d590d9411d9039d2d282",
+        "source_fact:v1:43f5cd21b13f2a3f7b393774b2a23cb9a9e48cb16e3bc5bda8b0aeb7314afb80",
+        "source_fact:v1:814b27077838525b15c82c5283da00b218dcc63ae3684462d3a36084e7dd27d8",
+        "source_fact:v1:d173271a1c60d76fa69655cfec4240106fddcce76c2316f1c0a3af538da1357b",
+        "source_fact:v1:da1038a36845a2a756aa18b84927a391de4fd4f07aa51a9aba6908fa30801974",
+        "source_fact:v1:df14b665d0379db660e0d649d3cd799922beeeb47c059e0dc3b08081ac0a9b59"
+      ],
+      "source_published_kst": "2026-10-12T08:06+09:00",
+      "source_title": "중동발 유가 불안에 강달러까지…환율 상승 압력[외환브리핑]",
+      "telegram_core_fact": "지난 9일(현지시간) 브렌트유 선물은 배럴당 104.72달러로 전 거래일보다 0.42% 상승 마감했다.",
+      "title": "중동발 유가 불안에 강달러까지…환율 상승 압력[외환브리핑]"
     },
     "original:0b6a3a6e86584feb31b8d705": {
       "first_seen_kst": "2026-10-08T08:31:37+09:00",
@@ -154422,6 +154894,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T20:26+09:00",
       "title": "OPEC+, 11월 석유 생산 목표 현 수준 유지할 듯 | 연합뉴스"
+    },
+    "original:3cd2211b233896f3d384126a": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634408",
+      "source": "이투데이",
+      "source_body_digest": "b2088241944c3f9b58532d3c54507fba8e85ced4de0f60ae47f164c111467661",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T08:07+09:00",
+      "source_title": "유안타證 \"LIG D&A, 4분기 신규 수주 가속화\"",
+      "telegram_core_fact": "백 연구원은 \"4분기부터는 상반기 부진했던 수주 흐름이 본격적으로 반전될 전망\"이라며 \"국내에서는 1조9000억원 장거리공대공 체계개발 사업 우선협상대상자로 선정돼 12월 최종 계약 체결이 예상된다\"고 분석했다.",
+      "title": "유안타證 \"LIG D&A, 4분기 신규 수주 가속화\""
     },
     "original:3ce1b4d0a3eaefdb0b7e6eee": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
@@ -170725,6 +171214,26 @@
       "telegram_core_fact": "오픈AI의 지난달 말 기준 연 환산 매출이 시장 기대치를 200억달러(약 27조원) 밑도는 500억달러(약 67조원) 수준인 것으로 알려진 가운데, '연말엔 700억달러 달성이 가능하다'는 분석이 나왔다.",
       "title": "블룸버그 \"오픈AI, 올 연말엔 연 환산 매출 700억달러 달성\""
     },
+    "original:8466a4017fa97a4cd2e1e725": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634421",
+      "source": "이투데이",
+      "source_body_digest": "ca2454a9605b03357d28d57259a6f921668496a3c0ccf205bc21dfc68c0554a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:08c0d7bddd3b6d65b400adcf8356820a77196e6c460ad2917abfe69e7c7b3f1b",
+      "source_fact_keys": [
+        "source_fact:v1:a75a5876c3b5a1544250e210872eca8da39ece99cb5464c68fb4a4c92b68cb46",
+        "source_fact:v1:ba96e07d2e5bb93dfd39559081e610c0f983b7b97a36427589ed42f2eebe063c"
+      ],
+      "source_published_kst": "2026-10-12T08:26+09:00",
+      "source_title": "경기도 '바른입찰' 10곳 뽑는다…3곳 중 1곳 처분하던 단속에 '당근'",
+      "telegram_core_fact": "경기도는 공공입찰 실태조사에서 적합 판정을 받은 도내 건설업체 가운데 '바른입찰 모범건설업체' 10곳을 12월 말 선정해 실태조사 유예기간 연장 등 인센티브를 준다.",
+      "title": "경기도 '바른입찰' 10곳 뽑는다…3곳 중 1곳 처분하던 단속에 '당근'"
+    },
     "original:847e81964690563d9af90529": {
       "first_seen_kst": "2026-10-01T05:56:02+09:00",
       "lanes": {
@@ -174815,6 +175324,42 @@
       "source_title": "불확실성 커진 재정·정치·글로벌 시장…불안한 佛 국채",
       "telegram_core_fact": "국내외 금리 상승 압력이 커진 상황에서 프랑스의 정치∙재정적 불확실성이 금융시장의 우려를 자극했다. 이는 일본 국채금리 상승과 프랑스의 재정∙정치적 리스크가 맞물리면서 일본계 자금의 투자 방향이 달라질 수 있음을 보여주는 사례다.",
       "title": "불확실성 커진 재정·정치·글로벌 시장…불안한 佛 국채"
+    },
+    "original:94759a31e65c43eee8a6311b": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02043446645612264",
+      "source": "이데일리",
+      "source_body_digest": "ef9e8fbd0ed0803af165d4bc97506a337116810216fcc26ae8c4ce79f0d59db6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bab4ed6f0cd5a08e66f88db61d26ef0a3808d33bcdb7557862eb836081e86973",
+      "source_fact_keys": [
+        "source_fact:v1:167fa9cb618057f718dc0afbf0e0d8c746a8793efb60d624d330b2a68fd6aa85",
+        "source_fact:v1:28c3923d16592e7cbda2175bd3ec3d5da565c71bacf15eec3ac842be6ef00b9e",
+        "source_fact:v1:2ebf0a1f7da5130b5aebd5f050474f51939c09d68b5a49abf6700b1dee0f0756",
+        "source_fact:v1:3e401b47f51cd4f11418772943abfadea6c55166a2038df3e1216c7bd3488e91",
+        "source_fact:v1:4251f567ae6e0ea6a814ca92e0759187dffd043d7be48e085e70559c4604ce75",
+        "source_fact:v1:4be25e433051c4fd419896c67f45323619c5a2d1413914f206fbd19f2667f840",
+        "source_fact:v1:55059c48bfffaabfb87368f1c8b0a9b2622240500079347a51a07dc7f6df2559",
+        "source_fact:v1:6870e961f0ed285ab756ceec60931cd7a50f8a144d35741ce20e8a2b55537bad",
+        "source_fact:v1:950f8f6dcfce544f63784b1bfdde79d9ccf42508e9d0949709dfa74051a34f63",
+        "source_fact:v1:9f754d13b4e0d2a554465dd1275a96b551e73b69670fde641753be55c5a34502",
+        "source_fact:v1:b105cfedf9706570ed71552e7af9f1121b3171431beb15528d95a8df7adfb6c5",
+        "source_fact:v1:b89c81d649648dd3cc847b886373a110807fb8ab6c3c1e18589b7adbad86f1a5",
+        "source_fact:v1:dc61c80093e340155be7e0eb473ce725768fdea1dede6c2db9e216065d33fed2",
+        "source_fact:v1:e9d6124dea58cda67315887f047a5a70dff7614981b8194b6eef716daa8425db",
+        "source_fact:v1:ed374aa2307fc22eb9eb3a83a0db1c31a77ec732a2fbf80cce4e79ef662d8b3d",
+        "source_fact:v1:f39bd56d2087c5b6f4e21bb4212b0002397747119ac57c1391449d0883e03ad8",
+        "source_fact:v1:f7f56da210d3010369106abe66d336805fe9564ff58ffcd04036dded952b2ce5",
+        "source_fact:v1:fda716c229fde8117ab619519cbc1ea57d23a58461dc73d5c834135b623a8b6d"
+      ],
+      "source_published_kst": "2026-10-12T08:02+09:00",
+      "source_title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]",
+      "telegram_core_fact": "펩트론은 지난달 3일 충북 청주시 오송 바이오파크에 들어설 제2공장 건설을 위해 GC녹십자EM과 시공계약을 체결한다고 밝힌 바 있다.",
+      "title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]"
     },
     "original:9497b04163dfe3af02ef2a10": {
       "first_seen_kst": "2026-10-08T15:16:19+09:00",
@@ -181238,6 +181783,29 @@
       "telegram_core_fact": "엘링턴 크레딧(EARN)이 이사회에서 보통주 1주당 0.08달러의 월간 배당을 결정했다고 7일(현지시간) 발표했다.",
       "title": "엘링턴 크레딧, 월 배당 주당 0.08달러 선언..11월 30일 지급"
     },
+    "original:af9c92f533a45b8946f25461": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821357",
+      "source": "뉴시스",
+      "source_body_digest": "cf41701efd6e411bcf70efb871a0075d67f5e50af6a1a8185cbbf38fd06bd54a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11305ae7e43776751ebab4668d288a87497e97435df673f5efb5924e45dca705",
+      "source_fact_keys": [
+        "source_fact:v1:78c5f0d81170a7d33817b808d1e6afc7c35c87d93eb5215d1b5cfadd433012df",
+        "source_fact:v1:88d55c12273cc850d74a55a0520279a19ea1780d4573644951d5278994d2cf26",
+        "source_fact:v1:ae4e4f9853380b6be563ad22f10061af9ffd8f274065dd87d0a0876a381e7a45",
+        "source_fact:v1:b2b1f0c2fc0cb9c0059f4932019717914536cae7775e29ad390765068ab1d306",
+        "source_fact:v1:ce3590bad592291d9336214175b4a2036fa11e5742bce120cb00cf77ce0180f9"
+      ],
+      "source_published_kst": "2026-10-12T08:21+09:00",
+      "source_title": "오리엔트바이오 \"고품질 SPF 연구용 토끼 공급 확대\"",
+      "telegram_core_fact": "첨단 바이오 인프라 전문기업 오리엔트바이오는 고품질 특정병원체 부재(SPF) 연구용 토끼의 공급을 확대하며 국내 제약·바이오 기업과 연구기관의 비임상 연구 수요에 대응 중이라고 12일 밝혔다.",
+      "title": "오리엔트바이오 \"고품질 SPF 연구용 토끼 공급 확대\""
+    },
     "original:afb27ef7703d9e8cd153d106": {
       "first_seen_kst": "2026-10-02T13:04:47+09:00",
       "lanes": {
@@ -182563,6 +183131,23 @@
       "link": "https://www.newsis.com/view/NISX20260918_0003795711",
       "source": "뉴시스",
       "title": "나경원 \"재판 받겠다 이 한마디면 충분했던 기자회견…나머지는 믿거나 말거나\""
+    },
+    "original:b606a67d9356f9af9834ed7f": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634401",
+      "source": "이투데이",
+      "source_body_digest": "49a7a67da7b357c90c1c72fda652189e82135ddf387d92a69568b3ae953042d5",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T08:05+09:00",
+      "source_title": "베선트 “러 경유딜, 美국민에 좋은 일”…여야 의원들 “푸틴에 돈줄” 반발",
+      "telegram_core_fact": "그는 “이는 미국 국민에게 좋은 일”이라며 러시아산 공급 확대가 경유 가격을 낮추는 데 도움이 될 것이라고 강조했다. 하지만 트럼프 대통령은 지난 9일 푸틴 대통령과 통화한 뒤 러시아가 미국과 세계시장에 경유 30만t 이상을 즉시 공급하고 11월 50만t, 이후 100만t을 추가로 내놓기로 했다고 발표했다.",
+      "title": "베선트 “러 경유딜, 美국민에 좋은 일”…여야 의원들 “푸틴에 돈줄” 반발"
     },
     "original:b64051ec5babb32bd0c827fc": {
       "first_seen_kst": "2026-10-05T06:25:21+09:00",
@@ -191939,6 +192524,26 @@
       "source_title": "중국 당정, 신질 생산력 본격 추진…금융·세제 지원 늘린다",
       "telegram_core_fact": "기술 혁신 채권 제품 시스템을 늘리고 고품질 기술 기반 기업의 상장 및 금융 지원을 강화하며 인수합병, 구조조정, 기술 기반 기업에 대한 지분 인센티브 시스템을 최적화하도록 했다.",
       "title": "중국 당정, 신질 생산력 본격 추진…금융·세제 지원 늘린다"
+    },
+    "original:ddd32e90b781d8154e5fb006": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821329",
+      "source": "뉴시스",
+      "source_body_digest": "4c6098845462f0f0132ca10cc07022b218f05fd223db4a29584ed5df14fa16ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:13ec46d6442806cf8dc505018ec61c6f99313bfb70b003d7aa2e4e16c687dbd9",
+      "source_fact_keys": [
+        "source_fact:v1:7d3c8dea3bbabcbfce54d210301e46cdedffa8b4451c013d8df0cd4df4568042",
+        "source_fact:v1:83dfa9299cfcf5b286057123f15bc33ed8ee24909032760633b572e12b23e027"
+      ],
+      "source_published_kst": "2026-10-12T08:11+09:00",
+      "source_title": "한울반도체, 日 MLCC 제조사 검사설비 성능 개선 사업 수주",
+      "telegram_core_fact": "한울반도체는 일본 적층세라믹콘덴서(MLCC) 제조사로부터 외관검사설비 성능 개선 사업을 수주했다고 12일 밝혔다.",
+      "title": "한울반도체, 日 MLCC 제조사 검사설비 성능 개선 사업 수주"
     },
     "original:dddfe532f1388478fd24d3c1": {
       "first_seen_kst": "2026-10-02T18:30:04+09:00",
@@ -203858,6 +204463,42 @@
       "source_published_kst": "2026-10-06T16:45+09:00",
       "title": "알테오젠, 2000억 투자 유치…연구부터 판매까지 한 회사로"
     },
+    "source_fact:061d91227077a903406ae5cc": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02043446645612264",
+      "source": "이데일리",
+      "source_body_digest": "ef9e8fbd0ed0803af165d4bc97506a337116810216fcc26ae8c4ce79f0d59db6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bab4ed6f0cd5a08e66f88db61d26ef0a3808d33bcdb7557862eb836081e86973",
+      "source_fact_keys": [
+        "source_fact:v1:167fa9cb618057f718dc0afbf0e0d8c746a8793efb60d624d330b2a68fd6aa85",
+        "source_fact:v1:28c3923d16592e7cbda2175bd3ec3d5da565c71bacf15eec3ac842be6ef00b9e",
+        "source_fact:v1:2ebf0a1f7da5130b5aebd5f050474f51939c09d68b5a49abf6700b1dee0f0756",
+        "source_fact:v1:3e401b47f51cd4f11418772943abfadea6c55166a2038df3e1216c7bd3488e91",
+        "source_fact:v1:4251f567ae6e0ea6a814ca92e0759187dffd043d7be48e085e70559c4604ce75",
+        "source_fact:v1:4be25e433051c4fd419896c67f45323619c5a2d1413914f206fbd19f2667f840",
+        "source_fact:v1:55059c48bfffaabfb87368f1c8b0a9b2622240500079347a51a07dc7f6df2559",
+        "source_fact:v1:6870e961f0ed285ab756ceec60931cd7a50f8a144d35741ce20e8a2b55537bad",
+        "source_fact:v1:950f8f6dcfce544f63784b1bfdde79d9ccf42508e9d0949709dfa74051a34f63",
+        "source_fact:v1:9f754d13b4e0d2a554465dd1275a96b551e73b69670fde641753be55c5a34502",
+        "source_fact:v1:b105cfedf9706570ed71552e7af9f1121b3171431beb15528d95a8df7adfb6c5",
+        "source_fact:v1:b89c81d649648dd3cc847b886373a110807fb8ab6c3c1e18589b7adbad86f1a5",
+        "source_fact:v1:dc61c80093e340155be7e0eb473ce725768fdea1dede6c2db9e216065d33fed2",
+        "source_fact:v1:e9d6124dea58cda67315887f047a5a70dff7614981b8194b6eef716daa8425db",
+        "source_fact:v1:ed374aa2307fc22eb9eb3a83a0db1c31a77ec732a2fbf80cce4e79ef662d8b3d",
+        "source_fact:v1:f39bd56d2087c5b6f4e21bb4212b0002397747119ac57c1391449d0883e03ad8",
+        "source_fact:v1:f7f56da210d3010369106abe66d336805fe9564ff58ffcd04036dded952b2ce5",
+        "source_fact:v1:fda716c229fde8117ab619519cbc1ea57d23a58461dc73d5c834135b623a8b6d"
+      ],
+      "source_published_kst": "2026-10-12T08:02+09:00",
+      "source_title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]",
+      "telegram_core_fact": "펩트론은 지난달 3일 충북 청주시 오송 바이오파크에 들어설 제2공장 건설을 위해 GC녹십자EM과 시공계약을 체결한다고 밝힌 바 있다.",
+      "title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]"
+    },
     "source_fact:061f22d1f79544d3c4fffbea": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -211649,6 +212290,42 @@
       "telegram_core_fact": "산업통상부는 8일 제60차 통상추진위원회를 열고 대미 투자, 미국 301조 관세, 한중 FTA(자유무역협정) 2단계 협상 등 주요 통상현안 대응 방안을 논의했다고 밝혔다.",
       "title": "대미 투자 다음은 301조 관세…부처 합동 통상현안 대응"
     },
+    "source_fact:0fdffcbca90f29c54050ac70": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02043446645612264",
+      "source": "이데일리",
+      "source_body_digest": "ef9e8fbd0ed0803af165d4bc97506a337116810216fcc26ae8c4ce79f0d59db6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bab4ed6f0cd5a08e66f88db61d26ef0a3808d33bcdb7557862eb836081e86973",
+      "source_fact_keys": [
+        "source_fact:v1:167fa9cb618057f718dc0afbf0e0d8c746a8793efb60d624d330b2a68fd6aa85",
+        "source_fact:v1:28c3923d16592e7cbda2175bd3ec3d5da565c71bacf15eec3ac842be6ef00b9e",
+        "source_fact:v1:2ebf0a1f7da5130b5aebd5f050474f51939c09d68b5a49abf6700b1dee0f0756",
+        "source_fact:v1:3e401b47f51cd4f11418772943abfadea6c55166a2038df3e1216c7bd3488e91",
+        "source_fact:v1:4251f567ae6e0ea6a814ca92e0759187dffd043d7be48e085e70559c4604ce75",
+        "source_fact:v1:4be25e433051c4fd419896c67f45323619c5a2d1413914f206fbd19f2667f840",
+        "source_fact:v1:55059c48bfffaabfb87368f1c8b0a9b2622240500079347a51a07dc7f6df2559",
+        "source_fact:v1:6870e961f0ed285ab756ceec60931cd7a50f8a144d35741ce20e8a2b55537bad",
+        "source_fact:v1:950f8f6dcfce544f63784b1bfdde79d9ccf42508e9d0949709dfa74051a34f63",
+        "source_fact:v1:9f754d13b4e0d2a554465dd1275a96b551e73b69670fde641753be55c5a34502",
+        "source_fact:v1:b105cfedf9706570ed71552e7af9f1121b3171431beb15528d95a8df7adfb6c5",
+        "source_fact:v1:b89c81d649648dd3cc847b886373a110807fb8ab6c3c1e18589b7adbad86f1a5",
+        "source_fact:v1:dc61c80093e340155be7e0eb473ce725768fdea1dede6c2db9e216065d33fed2",
+        "source_fact:v1:e9d6124dea58cda67315887f047a5a70dff7614981b8194b6eef716daa8425db",
+        "source_fact:v1:ed374aa2307fc22eb9eb3a83a0db1c31a77ec732a2fbf80cce4e79ef662d8b3d",
+        "source_fact:v1:f39bd56d2087c5b6f4e21bb4212b0002397747119ac57c1391449d0883e03ad8",
+        "source_fact:v1:f7f56da210d3010369106abe66d336805fe9564ff58ffcd04036dded952b2ce5",
+        "source_fact:v1:fda716c229fde8117ab619519cbc1ea57d23a58461dc73d5c834135b623a8b6d"
+      ],
+      "source_published_kst": "2026-10-12T08:02+09:00",
+      "source_title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]",
+      "telegram_core_fact": "펩트론은 지난달 3일 충북 청주시 오송 바이오파크에 들어설 제2공장 건설을 위해 GC녹십자EM과 시공계약을 체결한다고 밝힌 바 있다.",
+      "title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]"
+    },
     "source_fact:0fe334abd71a7e04f20f576d": {
       "first_seen_kst": "2026-10-11T18:34:27+09:00",
       "lanes": {
@@ -217865,6 +218542,42 @@
       ],
       "source_published_kst": "2026-10-07T05:31+09:00",
       "title": "LG전자, AI 냉각사업 공략 가속…북미 대형 계약에 버지니아 공장 신설까지"
+    },
+    "source_fact:18390db9471ebc4d0b59d1fb": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02043446645612264",
+      "source": "이데일리",
+      "source_body_digest": "ef9e8fbd0ed0803af165d4bc97506a337116810216fcc26ae8c4ce79f0d59db6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bab4ed6f0cd5a08e66f88db61d26ef0a3808d33bcdb7557862eb836081e86973",
+      "source_fact_keys": [
+        "source_fact:v1:167fa9cb618057f718dc0afbf0e0d8c746a8793efb60d624d330b2a68fd6aa85",
+        "source_fact:v1:28c3923d16592e7cbda2175bd3ec3d5da565c71bacf15eec3ac842be6ef00b9e",
+        "source_fact:v1:2ebf0a1f7da5130b5aebd5f050474f51939c09d68b5a49abf6700b1dee0f0756",
+        "source_fact:v1:3e401b47f51cd4f11418772943abfadea6c55166a2038df3e1216c7bd3488e91",
+        "source_fact:v1:4251f567ae6e0ea6a814ca92e0759187dffd043d7be48e085e70559c4604ce75",
+        "source_fact:v1:4be25e433051c4fd419896c67f45323619c5a2d1413914f206fbd19f2667f840",
+        "source_fact:v1:55059c48bfffaabfb87368f1c8b0a9b2622240500079347a51a07dc7f6df2559",
+        "source_fact:v1:6870e961f0ed285ab756ceec60931cd7a50f8a144d35741ce20e8a2b55537bad",
+        "source_fact:v1:950f8f6dcfce544f63784b1bfdde79d9ccf42508e9d0949709dfa74051a34f63",
+        "source_fact:v1:9f754d13b4e0d2a554465dd1275a96b551e73b69670fde641753be55c5a34502",
+        "source_fact:v1:b105cfedf9706570ed71552e7af9f1121b3171431beb15528d95a8df7adfb6c5",
+        "source_fact:v1:b89c81d649648dd3cc847b886373a110807fb8ab6c3c1e18589b7adbad86f1a5",
+        "source_fact:v1:dc61c80093e340155be7e0eb473ce725768fdea1dede6c2db9e216065d33fed2",
+        "source_fact:v1:e9d6124dea58cda67315887f047a5a70dff7614981b8194b6eef716daa8425db",
+        "source_fact:v1:ed374aa2307fc22eb9eb3a83a0db1c31a77ec732a2fbf80cce4e79ef662d8b3d",
+        "source_fact:v1:f39bd56d2087c5b6f4e21bb4212b0002397747119ac57c1391449d0883e03ad8",
+        "source_fact:v1:f7f56da210d3010369106abe66d336805fe9564ff58ffcd04036dded952b2ce5",
+        "source_fact:v1:fda716c229fde8117ab619519cbc1ea57d23a58461dc73d5c834135b623a8b6d"
+      ],
+      "source_published_kst": "2026-10-12T08:02+09:00",
+      "source_title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]",
+      "telegram_core_fact": "펩트론은 지난달 3일 충북 청주시 오송 바이오파크에 들어설 제2공장 건설을 위해 GC녹십자EM과 시공계약을 체결한다고 밝힌 바 있다.",
+      "title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]"
     },
     "source_fact:183b0bddab8433b7409fe26f": {
       "first_seen_kst": "2026-10-06T15:55:43+09:00",
@@ -248296,6 +249009,32 @@
       "source_published_kst": "2026-10-06T10:59+09:00",
       "title": "엠플러스, 유럽 글로벌 배터리 기업에 각형 장비 공급"
     },
+    "source_fact:3deb2a6f9bcb3008f4857eb6": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02059846645612264",
+      "source": "이데일리",
+      "source_body_digest": "bf414b60892a16a816afd51336806a46e346f6907b511a06fde108cccd8be175",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:41ba8bb1f58e20e456c209d196e52430135a467ee56011e0aac24658d1e4a53b",
+      "source_fact_keys": [
+        "source_fact:v1:1c02b2767ae93619e617761cdd386d97832c8b3510d2dd0047a5e51099053fb4",
+        "source_fact:v1:2e8ce7e2385cc0e76cccfd9f690f789ce17fa861b3155365d2675260db3bcff5",
+        "source_fact:v1:3d0b7b1c5cb38b40410146eb75611a56875f72d92440d590d9411d9039d2d282",
+        "source_fact:v1:43f5cd21b13f2a3f7b393774b2a23cb9a9e48cb16e3bc5bda8b0aeb7314afb80",
+        "source_fact:v1:814b27077838525b15c82c5283da00b218dcc63ae3684462d3a36084e7dd27d8",
+        "source_fact:v1:d173271a1c60d76fa69655cfec4240106fddcce76c2316f1c0a3af538da1357b",
+        "source_fact:v1:da1038a36845a2a756aa18b84927a391de4fd4f07aa51a9aba6908fa30801974",
+        "source_fact:v1:df14b665d0379db660e0d649d3cd799922beeeb47c059e0dc3b08081ac0a9b59"
+      ],
+      "source_published_kst": "2026-10-12T08:06+09:00",
+      "source_title": "중동발 유가 불안에 강달러까지…환율 상승 압력[외환브리핑]",
+      "telegram_core_fact": "지난 9일(현지시간) 브렌트유 선물은 배럴당 104.72달러로 전 거래일보다 0.42% 상승 마감했다.",
+      "title": "중동발 유가 불안에 강달러까지…환율 상승 압력[외환브리핑]"
+    },
     "source_fact:3e06def2f0ba31c9d8828b93": {
       "first_seen_kst": "2026-10-08T06:27:52+09:00",
       "lanes": {
@@ -250903,6 +251642,42 @@
       ],
       "source_published_kst": "2026-10-06T13:51+09:00",
       "title": "코스피, 반도체 약세에 6900선으로…코스닥은 2%대 뛰며 900선 돌파"
+    },
+    "source_fact:40ffd10392d9c313a10b55ba": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02043446645612264",
+      "source": "이데일리",
+      "source_body_digest": "ef9e8fbd0ed0803af165d4bc97506a337116810216fcc26ae8c4ce79f0d59db6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bab4ed6f0cd5a08e66f88db61d26ef0a3808d33bcdb7557862eb836081e86973",
+      "source_fact_keys": [
+        "source_fact:v1:167fa9cb618057f718dc0afbf0e0d8c746a8793efb60d624d330b2a68fd6aa85",
+        "source_fact:v1:28c3923d16592e7cbda2175bd3ec3d5da565c71bacf15eec3ac842be6ef00b9e",
+        "source_fact:v1:2ebf0a1f7da5130b5aebd5f050474f51939c09d68b5a49abf6700b1dee0f0756",
+        "source_fact:v1:3e401b47f51cd4f11418772943abfadea6c55166a2038df3e1216c7bd3488e91",
+        "source_fact:v1:4251f567ae6e0ea6a814ca92e0759187dffd043d7be48e085e70559c4604ce75",
+        "source_fact:v1:4be25e433051c4fd419896c67f45323619c5a2d1413914f206fbd19f2667f840",
+        "source_fact:v1:55059c48bfffaabfb87368f1c8b0a9b2622240500079347a51a07dc7f6df2559",
+        "source_fact:v1:6870e961f0ed285ab756ceec60931cd7a50f8a144d35741ce20e8a2b55537bad",
+        "source_fact:v1:950f8f6dcfce544f63784b1bfdde79d9ccf42508e9d0949709dfa74051a34f63",
+        "source_fact:v1:9f754d13b4e0d2a554465dd1275a96b551e73b69670fde641753be55c5a34502",
+        "source_fact:v1:b105cfedf9706570ed71552e7af9f1121b3171431beb15528d95a8df7adfb6c5",
+        "source_fact:v1:b89c81d649648dd3cc847b886373a110807fb8ab6c3c1e18589b7adbad86f1a5",
+        "source_fact:v1:dc61c80093e340155be7e0eb473ce725768fdea1dede6c2db9e216065d33fed2",
+        "source_fact:v1:e9d6124dea58cda67315887f047a5a70dff7614981b8194b6eef716daa8425db",
+        "source_fact:v1:ed374aa2307fc22eb9eb3a83a0db1c31a77ec732a2fbf80cce4e79ef662d8b3d",
+        "source_fact:v1:f39bd56d2087c5b6f4e21bb4212b0002397747119ac57c1391449d0883e03ad8",
+        "source_fact:v1:f7f56da210d3010369106abe66d336805fe9564ff58ffcd04036dded952b2ce5",
+        "source_fact:v1:fda716c229fde8117ab619519cbc1ea57d23a58461dc73d5c834135b623a8b6d"
+      ],
+      "source_published_kst": "2026-10-12T08:02+09:00",
+      "source_title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]",
+      "telegram_core_fact": "펩트론은 지난달 3일 충북 청주시 오송 바이오파크에 들어설 제2공장 건설을 위해 GC녹십자EM과 시공계약을 체결한다고 밝힌 바 있다.",
+      "title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]"
     },
     "source_fact:411e9ff1929d1d10de4133e1": {
       "first_seen_kst": "2026-10-08T18:24:19+09:00",
@@ -257373,6 +258148,26 @@
       "source_title": "HD건설기계, 美 데이터센터에 3900억 규모 발전용 엔진 공급",
       "telegram_core_fact": "HD건설기계는 미국 발전 인프라 솔루션 업체 이록(ERock)과 가스 발전용 엔진 롱블록(Long Block) 공급 계약을 체결했다고 7일 공시했다.",
       "title": "HD건설기계, 美 데이터센터에 3900억 규모 발전용 엔진 공급"
+    },
+    "source_fact:488920bd0b24833e8c220d56": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634421",
+      "source": "이투데이",
+      "source_body_digest": "ca2454a9605b03357d28d57259a6f921668496a3c0ccf205bc21dfc68c0554a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:08c0d7bddd3b6d65b400adcf8356820a77196e6c460ad2917abfe69e7c7b3f1b",
+      "source_fact_keys": [
+        "source_fact:v1:a75a5876c3b5a1544250e210872eca8da39ece99cb5464c68fb4a4c92b68cb46",
+        "source_fact:v1:ba96e07d2e5bb93dfd39559081e610c0f983b7b97a36427589ed42f2eebe063c"
+      ],
+      "source_published_kst": "2026-10-12T08:26+09:00",
+      "source_title": "경기도 '바른입찰' 10곳 뽑는다…3곳 중 1곳 처분하던 단속에 '당근'",
+      "telegram_core_fact": "경기도는 공공입찰 실태조사에서 적합 판정을 받은 도내 건설업체 가운데 '바른입찰 모범건설업체' 10곳을 12월 말 선정해 실태조사 유예기간 연장 등 인센티브를 준다.",
+      "title": "경기도 '바른입찰' 10곳 뽑는다…3곳 중 1곳 처분하던 단속에 '당근'"
     },
     "source_fact:48955aadb52a0e45287124a4": {
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
@@ -264393,6 +265188,42 @@
       "telegram_core_fact": "반면 옛 과학기술정보통신부 고시를 따랐던 유료방송사업자는 2017년부터 방송서비스매출의 1.5%를 일괄 부과받고 있다. 방송사업매출 기준으로 SO는 2017년 2조1307억원에서 1조6399억원으로 23% 감소했다.",
       "title": "경영악화 반영 장치 없다…유료방송 “방발기금 부과체계 통일해야”"
     },
+    "source_fact:518fe58332bc32b420db419b": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02043446645612264",
+      "source": "이데일리",
+      "source_body_digest": "ef9e8fbd0ed0803af165d4bc97506a337116810216fcc26ae8c4ce79f0d59db6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bab4ed6f0cd5a08e66f88db61d26ef0a3808d33bcdb7557862eb836081e86973",
+      "source_fact_keys": [
+        "source_fact:v1:167fa9cb618057f718dc0afbf0e0d8c746a8793efb60d624d330b2a68fd6aa85",
+        "source_fact:v1:28c3923d16592e7cbda2175bd3ec3d5da565c71bacf15eec3ac842be6ef00b9e",
+        "source_fact:v1:2ebf0a1f7da5130b5aebd5f050474f51939c09d68b5a49abf6700b1dee0f0756",
+        "source_fact:v1:3e401b47f51cd4f11418772943abfadea6c55166a2038df3e1216c7bd3488e91",
+        "source_fact:v1:4251f567ae6e0ea6a814ca92e0759187dffd043d7be48e085e70559c4604ce75",
+        "source_fact:v1:4be25e433051c4fd419896c67f45323619c5a2d1413914f206fbd19f2667f840",
+        "source_fact:v1:55059c48bfffaabfb87368f1c8b0a9b2622240500079347a51a07dc7f6df2559",
+        "source_fact:v1:6870e961f0ed285ab756ceec60931cd7a50f8a144d35741ce20e8a2b55537bad",
+        "source_fact:v1:950f8f6dcfce544f63784b1bfdde79d9ccf42508e9d0949709dfa74051a34f63",
+        "source_fact:v1:9f754d13b4e0d2a554465dd1275a96b551e73b69670fde641753be55c5a34502",
+        "source_fact:v1:b105cfedf9706570ed71552e7af9f1121b3171431beb15528d95a8df7adfb6c5",
+        "source_fact:v1:b89c81d649648dd3cc847b886373a110807fb8ab6c3c1e18589b7adbad86f1a5",
+        "source_fact:v1:dc61c80093e340155be7e0eb473ce725768fdea1dede6c2db9e216065d33fed2",
+        "source_fact:v1:e9d6124dea58cda67315887f047a5a70dff7614981b8194b6eef716daa8425db",
+        "source_fact:v1:ed374aa2307fc22eb9eb3a83a0db1c31a77ec732a2fbf80cce4e79ef662d8b3d",
+        "source_fact:v1:f39bd56d2087c5b6f4e21bb4212b0002397747119ac57c1391449d0883e03ad8",
+        "source_fact:v1:f7f56da210d3010369106abe66d336805fe9564ff58ffcd04036dded952b2ce5",
+        "source_fact:v1:fda716c229fde8117ab619519cbc1ea57d23a58461dc73d5c834135b623a8b6d"
+      ],
+      "source_published_kst": "2026-10-12T08:02+09:00",
+      "source_title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]",
+      "telegram_core_fact": "펩트론은 지난달 3일 충북 청주시 오송 바이오파크에 들어설 제2공장 건설을 위해 GC녹십자EM과 시공계약을 체결한다고 밝힌 바 있다.",
+      "title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]"
+    },
     "source_fact:51957a8abdce73cc0ed3eb22": {
       "first_seen_kst": "2026-10-10T09:31:49+09:00",
       "lanes": {
@@ -264481,6 +265312,29 @@
       ],
       "source_published_kst": "2026-10-05T18:43+09:00",
       "title": "JEDEC, 첫 '실리콘 포토닉스' 신뢰성 표준 발표…AI인프라 변혁 예고"
+    },
+    "source_fact:51bc7d44eeffaf6ec91a2f92": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821357",
+      "source": "뉴시스",
+      "source_body_digest": "cf41701efd6e411bcf70efb871a0075d67f5e50af6a1a8185cbbf38fd06bd54a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11305ae7e43776751ebab4668d288a87497e97435df673f5efb5924e45dca705",
+      "source_fact_keys": [
+        "source_fact:v1:78c5f0d81170a7d33817b808d1e6afc7c35c87d93eb5215d1b5cfadd433012df",
+        "source_fact:v1:88d55c12273cc850d74a55a0520279a19ea1780d4573644951d5278994d2cf26",
+        "source_fact:v1:ae4e4f9853380b6be563ad22f10061af9ffd8f274065dd87d0a0876a381e7a45",
+        "source_fact:v1:b2b1f0c2fc0cb9c0059f4932019717914536cae7775e29ad390765068ab1d306",
+        "source_fact:v1:ce3590bad592291d9336214175b4a2036fa11e5742bce120cb00cf77ce0180f9"
+      ],
+      "source_published_kst": "2026-10-12T08:21+09:00",
+      "source_title": "오리엔트바이오 \"고품질 SPF 연구용 토끼 공급 확대\"",
+      "telegram_core_fact": "첨단 바이오 인프라 전문기업 오리엔트바이오는 고품질 특정병원체 부재(SPF) 연구용 토끼의 공급을 확대하며 국내 제약·바이오 기업과 연구기관의 비임상 연구 수요에 대응 중이라고 12일 밝혔다.",
+      "title": "오리엔트바이오 \"고품질 SPF 연구용 토끼 공급 확대\""
     },
     "source_fact:51c3b765ff4cecb0844e9d7b": {
       "first_seen_kst": "2026-10-11T09:28:38+09:00",
@@ -265771,6 +266625,32 @@
       ],
       "source_published_kst": "2026-10-06T11:09+09:00",
       "title": "재정부담에 재협상까지…고금리에 상업용 부동산 비상"
+    },
+    "source_fact:532abf2e24f682a7db910b92": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02059846645612264",
+      "source": "이데일리",
+      "source_body_digest": "bf414b60892a16a816afd51336806a46e346f6907b511a06fde108cccd8be175",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:41ba8bb1f58e20e456c209d196e52430135a467ee56011e0aac24658d1e4a53b",
+      "source_fact_keys": [
+        "source_fact:v1:1c02b2767ae93619e617761cdd386d97832c8b3510d2dd0047a5e51099053fb4",
+        "source_fact:v1:2e8ce7e2385cc0e76cccfd9f690f789ce17fa861b3155365d2675260db3bcff5",
+        "source_fact:v1:3d0b7b1c5cb38b40410146eb75611a56875f72d92440d590d9411d9039d2d282",
+        "source_fact:v1:43f5cd21b13f2a3f7b393774b2a23cb9a9e48cb16e3bc5bda8b0aeb7314afb80",
+        "source_fact:v1:814b27077838525b15c82c5283da00b218dcc63ae3684462d3a36084e7dd27d8",
+        "source_fact:v1:d173271a1c60d76fa69655cfec4240106fddcce76c2316f1c0a3af538da1357b",
+        "source_fact:v1:da1038a36845a2a756aa18b84927a391de4fd4f07aa51a9aba6908fa30801974",
+        "source_fact:v1:df14b665d0379db660e0d649d3cd799922beeeb47c059e0dc3b08081ac0a9b59"
+      ],
+      "source_published_kst": "2026-10-12T08:06+09:00",
+      "source_title": "중동발 유가 불안에 강달러까지…환율 상승 압력[외환브리핑]",
+      "telegram_core_fact": "지난 9일(현지시간) 브렌트유 선물은 배럴당 104.72달러로 전 거래일보다 0.42% 상승 마감했다.",
+      "title": "중동발 유가 불안에 강달러까지…환율 상승 압력[외환브리핑]"
     },
     "source_fact:533424f7a908570fe1803528": {
       "first_seen_kst": "2026-10-11T08:42:16+09:00",
@@ -267581,6 +268461,26 @@
       ],
       "source_published_kst": "2026-10-07T07:00+09:00",
       "title": "경영권 인수 넘어 성장자본으로…PEF 순기능 살려야 [김앤장 금융·핀테크·가상자산 인사이트]"
+    },
+    "source_fact:556c9a8c4df43fb118d54f31": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634421",
+      "source": "이투데이",
+      "source_body_digest": "ca2454a9605b03357d28d57259a6f921668496a3c0ccf205bc21dfc68c0554a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:08c0d7bddd3b6d65b400adcf8356820a77196e6c460ad2917abfe69e7c7b3f1b",
+      "source_fact_keys": [
+        "source_fact:v1:a75a5876c3b5a1544250e210872eca8da39ece99cb5464c68fb4a4c92b68cb46",
+        "source_fact:v1:ba96e07d2e5bb93dfd39559081e610c0f983b7b97a36427589ed42f2eebe063c"
+      ],
+      "source_published_kst": "2026-10-12T08:26+09:00",
+      "source_title": "경기도 '바른입찰' 10곳 뽑는다…3곳 중 1곳 처분하던 단속에 '당근'",
+      "telegram_core_fact": "경기도는 공공입찰 실태조사에서 적합 판정을 받은 도내 건설업체 가운데 '바른입찰 모범건설업체' 10곳을 12월 말 선정해 실태조사 유예기간 연장 등 인센티브를 준다.",
+      "title": "경기도 '바른입찰' 10곳 뽑는다…3곳 중 1곳 처분하던 단속에 '당근'"
     },
     "source_fact:55755dd7065110990e1854b0": {
       "first_seen_kst": "2026-10-10T12:12:57+09:00",
@@ -280685,6 +281585,32 @@
       ],
       "source_published_kst": "2026-10-06T15:44+09:00",
       "title": "원·달러 환율, 0.4원 내린 1343.6원 마감"
+    },
+    "source_fact:652b5f8b88408a55bf0650b3": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02059846645612264",
+      "source": "이데일리",
+      "source_body_digest": "bf414b60892a16a816afd51336806a46e346f6907b511a06fde108cccd8be175",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:41ba8bb1f58e20e456c209d196e52430135a467ee56011e0aac24658d1e4a53b",
+      "source_fact_keys": [
+        "source_fact:v1:1c02b2767ae93619e617761cdd386d97832c8b3510d2dd0047a5e51099053fb4",
+        "source_fact:v1:2e8ce7e2385cc0e76cccfd9f690f789ce17fa861b3155365d2675260db3bcff5",
+        "source_fact:v1:3d0b7b1c5cb38b40410146eb75611a56875f72d92440d590d9411d9039d2d282",
+        "source_fact:v1:43f5cd21b13f2a3f7b393774b2a23cb9a9e48cb16e3bc5bda8b0aeb7314afb80",
+        "source_fact:v1:814b27077838525b15c82c5283da00b218dcc63ae3684462d3a36084e7dd27d8",
+        "source_fact:v1:d173271a1c60d76fa69655cfec4240106fddcce76c2316f1c0a3af538da1357b",
+        "source_fact:v1:da1038a36845a2a756aa18b84927a391de4fd4f07aa51a9aba6908fa30801974",
+        "source_fact:v1:df14b665d0379db660e0d649d3cd799922beeeb47c059e0dc3b08081ac0a9b59"
+      ],
+      "source_published_kst": "2026-10-12T08:06+09:00",
+      "source_title": "중동발 유가 불안에 강달러까지…환율 상승 압력[외환브리핑]",
+      "telegram_core_fact": "지난 9일(현지시간) 브렌트유 선물은 배럴당 104.72달러로 전 거래일보다 0.42% 상승 마감했다.",
+      "title": "중동발 유가 불안에 강달러까지…환율 상승 압력[외환브리핑]"
     },
     "source_fact:652eea937225eb2c23a7ec08": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
@@ -301648,6 +302574,42 @@
       "telegram_core_fact": "30년물 금리도 5.73%대까지 오르며 24년 만에 가장 높은 수준을 기록했다.",
       "title": "국채금리 24년 만에 최고…3대 지수 일제히 하락 [뉴욕증시 브리핑]"
     },
+    "source_fact:802f3f927a82a7c865be40fc": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02043446645612264",
+      "source": "이데일리",
+      "source_body_digest": "ef9e8fbd0ed0803af165d4bc97506a337116810216fcc26ae8c4ce79f0d59db6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bab4ed6f0cd5a08e66f88db61d26ef0a3808d33bcdb7557862eb836081e86973",
+      "source_fact_keys": [
+        "source_fact:v1:167fa9cb618057f718dc0afbf0e0d8c746a8793efb60d624d330b2a68fd6aa85",
+        "source_fact:v1:28c3923d16592e7cbda2175bd3ec3d5da565c71bacf15eec3ac842be6ef00b9e",
+        "source_fact:v1:2ebf0a1f7da5130b5aebd5f050474f51939c09d68b5a49abf6700b1dee0f0756",
+        "source_fact:v1:3e401b47f51cd4f11418772943abfadea6c55166a2038df3e1216c7bd3488e91",
+        "source_fact:v1:4251f567ae6e0ea6a814ca92e0759187dffd043d7be48e085e70559c4604ce75",
+        "source_fact:v1:4be25e433051c4fd419896c67f45323619c5a2d1413914f206fbd19f2667f840",
+        "source_fact:v1:55059c48bfffaabfb87368f1c8b0a9b2622240500079347a51a07dc7f6df2559",
+        "source_fact:v1:6870e961f0ed285ab756ceec60931cd7a50f8a144d35741ce20e8a2b55537bad",
+        "source_fact:v1:950f8f6dcfce544f63784b1bfdde79d9ccf42508e9d0949709dfa74051a34f63",
+        "source_fact:v1:9f754d13b4e0d2a554465dd1275a96b551e73b69670fde641753be55c5a34502",
+        "source_fact:v1:b105cfedf9706570ed71552e7af9f1121b3171431beb15528d95a8df7adfb6c5",
+        "source_fact:v1:b89c81d649648dd3cc847b886373a110807fb8ab6c3c1e18589b7adbad86f1a5",
+        "source_fact:v1:dc61c80093e340155be7e0eb473ce725768fdea1dede6c2db9e216065d33fed2",
+        "source_fact:v1:e9d6124dea58cda67315887f047a5a70dff7614981b8194b6eef716daa8425db",
+        "source_fact:v1:ed374aa2307fc22eb9eb3a83a0db1c31a77ec732a2fbf80cce4e79ef662d8b3d",
+        "source_fact:v1:f39bd56d2087c5b6f4e21bb4212b0002397747119ac57c1391449d0883e03ad8",
+        "source_fact:v1:f7f56da210d3010369106abe66d336805fe9564ff58ffcd04036dded952b2ce5",
+        "source_fact:v1:fda716c229fde8117ab619519cbc1ea57d23a58461dc73d5c834135b623a8b6d"
+      ],
+      "source_published_kst": "2026-10-12T08:02+09:00",
+      "source_title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]",
+      "telegram_core_fact": "펩트론은 지난달 3일 충북 청주시 오송 바이오파크에 들어설 제2공장 건설을 위해 GC녹십자EM과 시공계약을 체결한다고 밝힌 바 있다.",
+      "title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]"
+    },
     "source_fact:8046db2dd63aa64cd343bf9b": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
       "lanes": {
@@ -308765,6 +309727,29 @@
       "telegram_core_fact": "킹칼리드 공항은 5일 예멘의 친이란 반군 후티가 사우디의 공항·정유시설 등을 겨냥한 대대적인 공격을 발표한 이후 일주일간 세 차례 공격받았다.",
       "title": "사우디 리야드 공항 또 공격 받아⋯12명 사망ㆍ300명 이상 부상"
     },
+    "source_fact:89495e930e2ff1ed94de3f3e": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821357",
+      "source": "뉴시스",
+      "source_body_digest": "cf41701efd6e411bcf70efb871a0075d67f5e50af6a1a8185cbbf38fd06bd54a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11305ae7e43776751ebab4668d288a87497e97435df673f5efb5924e45dca705",
+      "source_fact_keys": [
+        "source_fact:v1:78c5f0d81170a7d33817b808d1e6afc7c35c87d93eb5215d1b5cfadd433012df",
+        "source_fact:v1:88d55c12273cc850d74a55a0520279a19ea1780d4573644951d5278994d2cf26",
+        "source_fact:v1:ae4e4f9853380b6be563ad22f10061af9ffd8f274065dd87d0a0876a381e7a45",
+        "source_fact:v1:b2b1f0c2fc0cb9c0059f4932019717914536cae7775e29ad390765068ab1d306",
+        "source_fact:v1:ce3590bad592291d9336214175b4a2036fa11e5742bce120cb00cf77ce0180f9"
+      ],
+      "source_published_kst": "2026-10-12T08:21+09:00",
+      "source_title": "오리엔트바이오 \"고품질 SPF 연구용 토끼 공급 확대\"",
+      "telegram_core_fact": "첨단 바이오 인프라 전문기업 오리엔트바이오는 고품질 특정병원체 부재(SPF) 연구용 토끼의 공급을 확대하며 국내 제약·바이오 기업과 연구기관의 비임상 연구 수요에 대응 중이라고 12일 밝혔다.",
+      "title": "오리엔트바이오 \"고품질 SPF 연구용 토끼 공급 확대\""
+    },
     "source_fact:894be6b1c566b046d942ddc2": {
       "first_seen_kst": "2026-10-08T20:58:15+09:00",
       "lanes": {
@@ -311390,6 +312375,32 @@
       ],
       "source_published_kst": "2026-10-06T19:18+09:00",
       "title": "“발전공기업 최초”…남부발전, 한국형 녹색분류체계 기반 녹색여신 약정 체결"
+    },
+    "source_fact:8c70ae61eba54f6a2ced12d2": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02059846645612264",
+      "source": "이데일리",
+      "source_body_digest": "bf414b60892a16a816afd51336806a46e346f6907b511a06fde108cccd8be175",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:41ba8bb1f58e20e456c209d196e52430135a467ee56011e0aac24658d1e4a53b",
+      "source_fact_keys": [
+        "source_fact:v1:1c02b2767ae93619e617761cdd386d97832c8b3510d2dd0047a5e51099053fb4",
+        "source_fact:v1:2e8ce7e2385cc0e76cccfd9f690f789ce17fa861b3155365d2675260db3bcff5",
+        "source_fact:v1:3d0b7b1c5cb38b40410146eb75611a56875f72d92440d590d9411d9039d2d282",
+        "source_fact:v1:43f5cd21b13f2a3f7b393774b2a23cb9a9e48cb16e3bc5bda8b0aeb7314afb80",
+        "source_fact:v1:814b27077838525b15c82c5283da00b218dcc63ae3684462d3a36084e7dd27d8",
+        "source_fact:v1:d173271a1c60d76fa69655cfec4240106fddcce76c2316f1c0a3af538da1357b",
+        "source_fact:v1:da1038a36845a2a756aa18b84927a391de4fd4f07aa51a9aba6908fa30801974",
+        "source_fact:v1:df14b665d0379db660e0d649d3cd799922beeeb47c059e0dc3b08081ac0a9b59"
+      ],
+      "source_published_kst": "2026-10-12T08:06+09:00",
+      "source_title": "중동발 유가 불안에 강달러까지…환율 상승 압력[외환브리핑]",
+      "telegram_core_fact": "지난 9일(현지시간) 브렌트유 선물은 배럴당 104.72달러로 전 거래일보다 0.42% 상승 마감했다.",
+      "title": "중동발 유가 불안에 강달러까지…환율 상승 압력[외환브리핑]"
     },
     "source_fact:8c72b97a7e07cfdda54de15a": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
@@ -315858,6 +316869,42 @@
       "source_published_kst": "2026-10-06T08:46+09:00",
       "title": "“코스피, 7100만 찍으면 7700까지 간다”…장밋빛 전망 근거는? [오늘 나온 보고서]"
     },
+    "source_fact:92d1f9e53653dc04bde4f7d4": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02043446645612264",
+      "source": "이데일리",
+      "source_body_digest": "ef9e8fbd0ed0803af165d4bc97506a337116810216fcc26ae8c4ce79f0d59db6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bab4ed6f0cd5a08e66f88db61d26ef0a3808d33bcdb7557862eb836081e86973",
+      "source_fact_keys": [
+        "source_fact:v1:167fa9cb618057f718dc0afbf0e0d8c746a8793efb60d624d330b2a68fd6aa85",
+        "source_fact:v1:28c3923d16592e7cbda2175bd3ec3d5da565c71bacf15eec3ac842be6ef00b9e",
+        "source_fact:v1:2ebf0a1f7da5130b5aebd5f050474f51939c09d68b5a49abf6700b1dee0f0756",
+        "source_fact:v1:3e401b47f51cd4f11418772943abfadea6c55166a2038df3e1216c7bd3488e91",
+        "source_fact:v1:4251f567ae6e0ea6a814ca92e0759187dffd043d7be48e085e70559c4604ce75",
+        "source_fact:v1:4be25e433051c4fd419896c67f45323619c5a2d1413914f206fbd19f2667f840",
+        "source_fact:v1:55059c48bfffaabfb87368f1c8b0a9b2622240500079347a51a07dc7f6df2559",
+        "source_fact:v1:6870e961f0ed285ab756ceec60931cd7a50f8a144d35741ce20e8a2b55537bad",
+        "source_fact:v1:950f8f6dcfce544f63784b1bfdde79d9ccf42508e9d0949709dfa74051a34f63",
+        "source_fact:v1:9f754d13b4e0d2a554465dd1275a96b551e73b69670fde641753be55c5a34502",
+        "source_fact:v1:b105cfedf9706570ed71552e7af9f1121b3171431beb15528d95a8df7adfb6c5",
+        "source_fact:v1:b89c81d649648dd3cc847b886373a110807fb8ab6c3c1e18589b7adbad86f1a5",
+        "source_fact:v1:dc61c80093e340155be7e0eb473ce725768fdea1dede6c2db9e216065d33fed2",
+        "source_fact:v1:e9d6124dea58cda67315887f047a5a70dff7614981b8194b6eef716daa8425db",
+        "source_fact:v1:ed374aa2307fc22eb9eb3a83a0db1c31a77ec732a2fbf80cce4e79ef662d8b3d",
+        "source_fact:v1:f39bd56d2087c5b6f4e21bb4212b0002397747119ac57c1391449d0883e03ad8",
+        "source_fact:v1:f7f56da210d3010369106abe66d336805fe9564ff58ffcd04036dded952b2ce5",
+        "source_fact:v1:fda716c229fde8117ab619519cbc1ea57d23a58461dc73d5c834135b623a8b6d"
+      ],
+      "source_published_kst": "2026-10-12T08:02+09:00",
+      "source_title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]",
+      "telegram_core_fact": "펩트론은 지난달 3일 충북 청주시 오송 바이오파크에 들어설 제2공장 건설을 위해 GC녹십자EM과 시공계약을 체결한다고 밝힌 바 있다.",
+      "title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]"
+    },
     "source_fact:92d93625f62a5ca426cf648d": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -318334,6 +319381,42 @@
       ],
       "source_published_kst": "2026-10-06T06:38+09:00",
       "title": "美 재무부 \"'이란 거래' 외국 금융기관, 사전 통보 없이 제재 부과\""
+    },
+    "source_fact:961d698d5e594f7853ae83f8": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02043446645612264",
+      "source": "이데일리",
+      "source_body_digest": "ef9e8fbd0ed0803af165d4bc97506a337116810216fcc26ae8c4ce79f0d59db6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bab4ed6f0cd5a08e66f88db61d26ef0a3808d33bcdb7557862eb836081e86973",
+      "source_fact_keys": [
+        "source_fact:v1:167fa9cb618057f718dc0afbf0e0d8c746a8793efb60d624d330b2a68fd6aa85",
+        "source_fact:v1:28c3923d16592e7cbda2175bd3ec3d5da565c71bacf15eec3ac842be6ef00b9e",
+        "source_fact:v1:2ebf0a1f7da5130b5aebd5f050474f51939c09d68b5a49abf6700b1dee0f0756",
+        "source_fact:v1:3e401b47f51cd4f11418772943abfadea6c55166a2038df3e1216c7bd3488e91",
+        "source_fact:v1:4251f567ae6e0ea6a814ca92e0759187dffd043d7be48e085e70559c4604ce75",
+        "source_fact:v1:4be25e433051c4fd419896c67f45323619c5a2d1413914f206fbd19f2667f840",
+        "source_fact:v1:55059c48bfffaabfb87368f1c8b0a9b2622240500079347a51a07dc7f6df2559",
+        "source_fact:v1:6870e961f0ed285ab756ceec60931cd7a50f8a144d35741ce20e8a2b55537bad",
+        "source_fact:v1:950f8f6dcfce544f63784b1bfdde79d9ccf42508e9d0949709dfa74051a34f63",
+        "source_fact:v1:9f754d13b4e0d2a554465dd1275a96b551e73b69670fde641753be55c5a34502",
+        "source_fact:v1:b105cfedf9706570ed71552e7af9f1121b3171431beb15528d95a8df7adfb6c5",
+        "source_fact:v1:b89c81d649648dd3cc847b886373a110807fb8ab6c3c1e18589b7adbad86f1a5",
+        "source_fact:v1:dc61c80093e340155be7e0eb473ce725768fdea1dede6c2db9e216065d33fed2",
+        "source_fact:v1:e9d6124dea58cda67315887f047a5a70dff7614981b8194b6eef716daa8425db",
+        "source_fact:v1:ed374aa2307fc22eb9eb3a83a0db1c31a77ec732a2fbf80cce4e79ef662d8b3d",
+        "source_fact:v1:f39bd56d2087c5b6f4e21bb4212b0002397747119ac57c1391449d0883e03ad8",
+        "source_fact:v1:f7f56da210d3010369106abe66d336805fe9564ff58ffcd04036dded952b2ce5",
+        "source_fact:v1:fda716c229fde8117ab619519cbc1ea57d23a58461dc73d5c834135b623a8b6d"
+      ],
+      "source_published_kst": "2026-10-12T08:02+09:00",
+      "source_title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]",
+      "telegram_core_fact": "펩트론은 지난달 3일 충북 청주시 오송 바이오파크에 들어설 제2공장 건설을 위해 GC녹십자EM과 시공계약을 체결한다고 밝힌 바 있다.",
+      "title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]"
     },
     "source_fact:9626a125516b4e78a64767fe": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -321827,6 +322910,42 @@
       "telegram_core_fact": "10일의 공격이 끝난 뒤 후티군은 성명을 발표, 앞으로도 사우디 아라비아에 대한 상응하는 보복조치를 할 준비가 되어 있다면서 군사력 대결 외에 민간 부문에서도 공항, 항만, 기타 공공 시설등에 대한 공격을 주저하지 않겠다고 밝혔다.",
       "title": "사우디- 후티 공습격화,.. 리야드공항 폭격에 12명 죽고 309명 부상(종합)"
     },
+    "source_fact:9a6989f4b20516555ce366e7": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02043446645612264",
+      "source": "이데일리",
+      "source_body_digest": "ef9e8fbd0ed0803af165d4bc97506a337116810216fcc26ae8c4ce79f0d59db6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bab4ed6f0cd5a08e66f88db61d26ef0a3808d33bcdb7557862eb836081e86973",
+      "source_fact_keys": [
+        "source_fact:v1:167fa9cb618057f718dc0afbf0e0d8c746a8793efb60d624d330b2a68fd6aa85",
+        "source_fact:v1:28c3923d16592e7cbda2175bd3ec3d5da565c71bacf15eec3ac842be6ef00b9e",
+        "source_fact:v1:2ebf0a1f7da5130b5aebd5f050474f51939c09d68b5a49abf6700b1dee0f0756",
+        "source_fact:v1:3e401b47f51cd4f11418772943abfadea6c55166a2038df3e1216c7bd3488e91",
+        "source_fact:v1:4251f567ae6e0ea6a814ca92e0759187dffd043d7be48e085e70559c4604ce75",
+        "source_fact:v1:4be25e433051c4fd419896c67f45323619c5a2d1413914f206fbd19f2667f840",
+        "source_fact:v1:55059c48bfffaabfb87368f1c8b0a9b2622240500079347a51a07dc7f6df2559",
+        "source_fact:v1:6870e961f0ed285ab756ceec60931cd7a50f8a144d35741ce20e8a2b55537bad",
+        "source_fact:v1:950f8f6dcfce544f63784b1bfdde79d9ccf42508e9d0949709dfa74051a34f63",
+        "source_fact:v1:9f754d13b4e0d2a554465dd1275a96b551e73b69670fde641753be55c5a34502",
+        "source_fact:v1:b105cfedf9706570ed71552e7af9f1121b3171431beb15528d95a8df7adfb6c5",
+        "source_fact:v1:b89c81d649648dd3cc847b886373a110807fb8ab6c3c1e18589b7adbad86f1a5",
+        "source_fact:v1:dc61c80093e340155be7e0eb473ce725768fdea1dede6c2db9e216065d33fed2",
+        "source_fact:v1:e9d6124dea58cda67315887f047a5a70dff7614981b8194b6eef716daa8425db",
+        "source_fact:v1:ed374aa2307fc22eb9eb3a83a0db1c31a77ec732a2fbf80cce4e79ef662d8b3d",
+        "source_fact:v1:f39bd56d2087c5b6f4e21bb4212b0002397747119ac57c1391449d0883e03ad8",
+        "source_fact:v1:f7f56da210d3010369106abe66d336805fe9564ff58ffcd04036dded952b2ce5",
+        "source_fact:v1:fda716c229fde8117ab619519cbc1ea57d23a58461dc73d5c834135b623a8b6d"
+      ],
+      "source_published_kst": "2026-10-12T08:02+09:00",
+      "source_title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]",
+      "telegram_core_fact": "펩트론은 지난달 3일 충북 청주시 오송 바이오파크에 들어설 제2공장 건설을 위해 GC녹십자EM과 시공계약을 체결한다고 밝힌 바 있다.",
+      "title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]"
+    },
     "source_fact:9a6c44022c191d0c4fc5fc2f": {
       "first_seen_kst": "2026-10-06T19:58:43+09:00",
       "lanes": {
@@ -323409,6 +324528,42 @@
       "source_title": "중국, 남아도는 전력으로 AI 승부…데이터센터 건설 가속",
       "telegram_core_fact": "향후 글로벌 AI 인프라 경쟁에서는 중국의 대규모 데이터센터 건설 계획이 실제 가동으로 얼마나 이어지는지와 미국의 전력망 제약이 어떻게 작용하는지가 주요 변수로 남을 전망이다.",
       "title": "중국, 남아도는 전력으로 AI 승부…데이터센터 건설 가속"
+    },
+    "source_fact:9ca436531deb578f54518b19": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02043446645612264",
+      "source": "이데일리",
+      "source_body_digest": "ef9e8fbd0ed0803af165d4bc97506a337116810216fcc26ae8c4ce79f0d59db6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bab4ed6f0cd5a08e66f88db61d26ef0a3808d33bcdb7557862eb836081e86973",
+      "source_fact_keys": [
+        "source_fact:v1:167fa9cb618057f718dc0afbf0e0d8c746a8793efb60d624d330b2a68fd6aa85",
+        "source_fact:v1:28c3923d16592e7cbda2175bd3ec3d5da565c71bacf15eec3ac842be6ef00b9e",
+        "source_fact:v1:2ebf0a1f7da5130b5aebd5f050474f51939c09d68b5a49abf6700b1dee0f0756",
+        "source_fact:v1:3e401b47f51cd4f11418772943abfadea6c55166a2038df3e1216c7bd3488e91",
+        "source_fact:v1:4251f567ae6e0ea6a814ca92e0759187dffd043d7be48e085e70559c4604ce75",
+        "source_fact:v1:4be25e433051c4fd419896c67f45323619c5a2d1413914f206fbd19f2667f840",
+        "source_fact:v1:55059c48bfffaabfb87368f1c8b0a9b2622240500079347a51a07dc7f6df2559",
+        "source_fact:v1:6870e961f0ed285ab756ceec60931cd7a50f8a144d35741ce20e8a2b55537bad",
+        "source_fact:v1:950f8f6dcfce544f63784b1bfdde79d9ccf42508e9d0949709dfa74051a34f63",
+        "source_fact:v1:9f754d13b4e0d2a554465dd1275a96b551e73b69670fde641753be55c5a34502",
+        "source_fact:v1:b105cfedf9706570ed71552e7af9f1121b3171431beb15528d95a8df7adfb6c5",
+        "source_fact:v1:b89c81d649648dd3cc847b886373a110807fb8ab6c3c1e18589b7adbad86f1a5",
+        "source_fact:v1:dc61c80093e340155be7e0eb473ce725768fdea1dede6c2db9e216065d33fed2",
+        "source_fact:v1:e9d6124dea58cda67315887f047a5a70dff7614981b8194b6eef716daa8425db",
+        "source_fact:v1:ed374aa2307fc22eb9eb3a83a0db1c31a77ec732a2fbf80cce4e79ef662d8b3d",
+        "source_fact:v1:f39bd56d2087c5b6f4e21bb4212b0002397747119ac57c1391449d0883e03ad8",
+        "source_fact:v1:f7f56da210d3010369106abe66d336805fe9564ff58ffcd04036dded952b2ce5",
+        "source_fact:v1:fda716c229fde8117ab619519cbc1ea57d23a58461dc73d5c834135b623a8b6d"
+      ],
+      "source_published_kst": "2026-10-12T08:02+09:00",
+      "source_title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]",
+      "telegram_core_fact": "펩트론은 지난달 3일 충북 청주시 오송 바이오파크에 들어설 제2공장 건설을 위해 GC녹십자EM과 시공계약을 체결한다고 밝힌 바 있다.",
+      "title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]"
     },
     "source_fact:9caedbb18369bd9e27af7816": {
       "first_seen_kst": "2026-10-09T23:03:47+09:00",
@@ -331825,6 +332980,29 @@
       "telegram_core_fact": "서 연구원은 \"AI 관련 콘퍼런스와 미국 소비자물가지수 발표, 본격적인 실적 시즌 등을 고려하면 추세적인 상승보다는 낙폭 과대에 따른 반등과 종목별 차별화가 진행될 것\"이라며 \"특히 반도체 업종의 변화와 외국인 수급이 중요하다\"고 짚었다.",
       "title": "[오늘의 증시]코스피, 낙폭 과대에 반등 시도 전망…6800선 회복 주목"
     },
+    "source_fact:a7376ff92728819321aebfb1": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821357",
+      "source": "뉴시스",
+      "source_body_digest": "cf41701efd6e411bcf70efb871a0075d67f5e50af6a1a8185cbbf38fd06bd54a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11305ae7e43776751ebab4668d288a87497e97435df673f5efb5924e45dca705",
+      "source_fact_keys": [
+        "source_fact:v1:78c5f0d81170a7d33817b808d1e6afc7c35c87d93eb5215d1b5cfadd433012df",
+        "source_fact:v1:88d55c12273cc850d74a55a0520279a19ea1780d4573644951d5278994d2cf26",
+        "source_fact:v1:ae4e4f9853380b6be563ad22f10061af9ffd8f274065dd87d0a0876a381e7a45",
+        "source_fact:v1:b2b1f0c2fc0cb9c0059f4932019717914536cae7775e29ad390765068ab1d306",
+        "source_fact:v1:ce3590bad592291d9336214175b4a2036fa11e5742bce120cb00cf77ce0180f9"
+      ],
+      "source_published_kst": "2026-10-12T08:21+09:00",
+      "source_title": "오리엔트바이오 \"고품질 SPF 연구용 토끼 공급 확대\"",
+      "telegram_core_fact": "첨단 바이오 인프라 전문기업 오리엔트바이오는 고품질 특정병원체 부재(SPF) 연구용 토끼의 공급을 확대하며 국내 제약·바이오 기업과 연구기관의 비임상 연구 수요에 대응 중이라고 12일 밝혔다.",
+      "title": "오리엔트바이오 \"고품질 SPF 연구용 토끼 공급 확대\""
+    },
     "source_fact:a74f41357f48fa0d1e03710d": {
       "first_seen_kst": "2026-10-08T01:26:16+09:00",
       "lanes": {
@@ -332314,6 +333492,42 @@
       "telegram_core_fact": "이날 뉴욕상업거래소에서 11월 인도분 서부텍사스산원유(WTI) 선물 종가는 전장보다 0.36달러(0.39%) 상승한 배럴당 91.85달러로 마감했다.",
       "title": "국제유가, 美 멕시코만 원유 생산 차질 속 상승…WTI 0.39%↑ | 연합뉴스"
     },
+    "source_fact:a7db90e0b671eda099c34b63": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02043446645612264",
+      "source": "이데일리",
+      "source_body_digest": "ef9e8fbd0ed0803af165d4bc97506a337116810216fcc26ae8c4ce79f0d59db6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bab4ed6f0cd5a08e66f88db61d26ef0a3808d33bcdb7557862eb836081e86973",
+      "source_fact_keys": [
+        "source_fact:v1:167fa9cb618057f718dc0afbf0e0d8c746a8793efb60d624d330b2a68fd6aa85",
+        "source_fact:v1:28c3923d16592e7cbda2175bd3ec3d5da565c71bacf15eec3ac842be6ef00b9e",
+        "source_fact:v1:2ebf0a1f7da5130b5aebd5f050474f51939c09d68b5a49abf6700b1dee0f0756",
+        "source_fact:v1:3e401b47f51cd4f11418772943abfadea6c55166a2038df3e1216c7bd3488e91",
+        "source_fact:v1:4251f567ae6e0ea6a814ca92e0759187dffd043d7be48e085e70559c4604ce75",
+        "source_fact:v1:4be25e433051c4fd419896c67f45323619c5a2d1413914f206fbd19f2667f840",
+        "source_fact:v1:55059c48bfffaabfb87368f1c8b0a9b2622240500079347a51a07dc7f6df2559",
+        "source_fact:v1:6870e961f0ed285ab756ceec60931cd7a50f8a144d35741ce20e8a2b55537bad",
+        "source_fact:v1:950f8f6dcfce544f63784b1bfdde79d9ccf42508e9d0949709dfa74051a34f63",
+        "source_fact:v1:9f754d13b4e0d2a554465dd1275a96b551e73b69670fde641753be55c5a34502",
+        "source_fact:v1:b105cfedf9706570ed71552e7af9f1121b3171431beb15528d95a8df7adfb6c5",
+        "source_fact:v1:b89c81d649648dd3cc847b886373a110807fb8ab6c3c1e18589b7adbad86f1a5",
+        "source_fact:v1:dc61c80093e340155be7e0eb473ce725768fdea1dede6c2db9e216065d33fed2",
+        "source_fact:v1:e9d6124dea58cda67315887f047a5a70dff7614981b8194b6eef716daa8425db",
+        "source_fact:v1:ed374aa2307fc22eb9eb3a83a0db1c31a77ec732a2fbf80cce4e79ef662d8b3d",
+        "source_fact:v1:f39bd56d2087c5b6f4e21bb4212b0002397747119ac57c1391449d0883e03ad8",
+        "source_fact:v1:f7f56da210d3010369106abe66d336805fe9564ff58ffcd04036dded952b2ce5",
+        "source_fact:v1:fda716c229fde8117ab619519cbc1ea57d23a58461dc73d5c834135b623a8b6d"
+      ],
+      "source_published_kst": "2026-10-12T08:02+09:00",
+      "source_title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]",
+      "telegram_core_fact": "펩트론은 지난달 3일 충북 청주시 오송 바이오파크에 들어설 제2공장 건설을 위해 GC녹십자EM과 시공계약을 체결한다고 밝힌 바 있다.",
+      "title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]"
+    },
     "source_fact:a7dd67939f3d3808f4d34975": {
       "first_seen_kst": "2026-10-08T02:57:10+09:00",
       "lanes": {
@@ -332587,6 +333801,32 @@
       "source_title": "사우디 \"후티 겨냥 대규모 작전…136개 군사목표물 파괴\"",
       "telegram_core_fact": "후티 반군은 예멘 홍해 연안 지역의 영토를 장악한 데 더해, 세계 최대 원유 수출국인 사우디아라비아 내 교통 거점과 석유시설, 기타 민간 목표물 등을 드론과 미사일로 공격해 왔다.",
       "title": "사우디 \"후티 겨냥 대규모 작전…136개 군사목표물 파괴\""
+    },
+    "source_fact:a83bc25d1b500c0c1d26e6eb": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02059846645612264",
+      "source": "이데일리",
+      "source_body_digest": "bf414b60892a16a816afd51336806a46e346f6907b511a06fde108cccd8be175",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:41ba8bb1f58e20e456c209d196e52430135a467ee56011e0aac24658d1e4a53b",
+      "source_fact_keys": [
+        "source_fact:v1:1c02b2767ae93619e617761cdd386d97832c8b3510d2dd0047a5e51099053fb4",
+        "source_fact:v1:2e8ce7e2385cc0e76cccfd9f690f789ce17fa861b3155365d2675260db3bcff5",
+        "source_fact:v1:3d0b7b1c5cb38b40410146eb75611a56875f72d92440d590d9411d9039d2d282",
+        "source_fact:v1:43f5cd21b13f2a3f7b393774b2a23cb9a9e48cb16e3bc5bda8b0aeb7314afb80",
+        "source_fact:v1:814b27077838525b15c82c5283da00b218dcc63ae3684462d3a36084e7dd27d8",
+        "source_fact:v1:d173271a1c60d76fa69655cfec4240106fddcce76c2316f1c0a3af538da1357b",
+        "source_fact:v1:da1038a36845a2a756aa18b84927a391de4fd4f07aa51a9aba6908fa30801974",
+        "source_fact:v1:df14b665d0379db660e0d649d3cd799922beeeb47c059e0dc3b08081ac0a9b59"
+      ],
+      "source_published_kst": "2026-10-12T08:06+09:00",
+      "source_title": "중동발 유가 불안에 강달러까지…환율 상승 압력[외환브리핑]",
+      "telegram_core_fact": "지난 9일(현지시간) 브렌트유 선물은 배럴당 104.72달러로 전 거래일보다 0.42% 상승 마감했다.",
+      "title": "중동발 유가 불안에 강달러까지…환율 상승 압력[외환브리핑]"
     },
     "source_fact:a83ee6fe688536ba916b2978": {
       "first_seen_kst": "2026-10-07T11:11:31+09:00",
@@ -335323,6 +336563,32 @@
       ],
       "source_published_kst": "2026-10-05T05:47+09:00",
       "title": "단일 레버리지 20주 미만 단주, 시간외 종가매매로 '출구 마련' | 연합뉴스"
+    },
+    "source_fact:ac0ddf2c8fcec1462a11fba3": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02059846645612264",
+      "source": "이데일리",
+      "source_body_digest": "bf414b60892a16a816afd51336806a46e346f6907b511a06fde108cccd8be175",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:41ba8bb1f58e20e456c209d196e52430135a467ee56011e0aac24658d1e4a53b",
+      "source_fact_keys": [
+        "source_fact:v1:1c02b2767ae93619e617761cdd386d97832c8b3510d2dd0047a5e51099053fb4",
+        "source_fact:v1:2e8ce7e2385cc0e76cccfd9f690f789ce17fa861b3155365d2675260db3bcff5",
+        "source_fact:v1:3d0b7b1c5cb38b40410146eb75611a56875f72d92440d590d9411d9039d2d282",
+        "source_fact:v1:43f5cd21b13f2a3f7b393774b2a23cb9a9e48cb16e3bc5bda8b0aeb7314afb80",
+        "source_fact:v1:814b27077838525b15c82c5283da00b218dcc63ae3684462d3a36084e7dd27d8",
+        "source_fact:v1:d173271a1c60d76fa69655cfec4240106fddcce76c2316f1c0a3af538da1357b",
+        "source_fact:v1:da1038a36845a2a756aa18b84927a391de4fd4f07aa51a9aba6908fa30801974",
+        "source_fact:v1:df14b665d0379db660e0d649d3cd799922beeeb47c059e0dc3b08081ac0a9b59"
+      ],
+      "source_published_kst": "2026-10-12T08:06+09:00",
+      "source_title": "중동발 유가 불안에 강달러까지…환율 상승 압력[외환브리핑]",
+      "telegram_core_fact": "지난 9일(현지시간) 브렌트유 선물은 배럴당 104.72달러로 전 거래일보다 0.42% 상승 마감했다.",
+      "title": "중동발 유가 불안에 강달러까지…환율 상승 압력[외환브리핑]"
     },
     "source_fact:ac0e6e5219119a16233168c2": {
       "first_seen_kst": "2026-10-11T15:29:02+09:00",
@@ -338669,6 +339935,42 @@
       ],
       "source_published_kst": "2026-10-07T05:22+09:00",
       "title": "국제유가 보합…중동 수출 증가·G7 비축유 방출에 공급 우려 완화"
+    },
+    "source_fact:b04ae8a637322c4caf8abaec": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02043446645612264",
+      "source": "이데일리",
+      "source_body_digest": "ef9e8fbd0ed0803af165d4bc97506a337116810216fcc26ae8c4ce79f0d59db6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bab4ed6f0cd5a08e66f88db61d26ef0a3808d33bcdb7557862eb836081e86973",
+      "source_fact_keys": [
+        "source_fact:v1:167fa9cb618057f718dc0afbf0e0d8c746a8793efb60d624d330b2a68fd6aa85",
+        "source_fact:v1:28c3923d16592e7cbda2175bd3ec3d5da565c71bacf15eec3ac842be6ef00b9e",
+        "source_fact:v1:2ebf0a1f7da5130b5aebd5f050474f51939c09d68b5a49abf6700b1dee0f0756",
+        "source_fact:v1:3e401b47f51cd4f11418772943abfadea6c55166a2038df3e1216c7bd3488e91",
+        "source_fact:v1:4251f567ae6e0ea6a814ca92e0759187dffd043d7be48e085e70559c4604ce75",
+        "source_fact:v1:4be25e433051c4fd419896c67f45323619c5a2d1413914f206fbd19f2667f840",
+        "source_fact:v1:55059c48bfffaabfb87368f1c8b0a9b2622240500079347a51a07dc7f6df2559",
+        "source_fact:v1:6870e961f0ed285ab756ceec60931cd7a50f8a144d35741ce20e8a2b55537bad",
+        "source_fact:v1:950f8f6dcfce544f63784b1bfdde79d9ccf42508e9d0949709dfa74051a34f63",
+        "source_fact:v1:9f754d13b4e0d2a554465dd1275a96b551e73b69670fde641753be55c5a34502",
+        "source_fact:v1:b105cfedf9706570ed71552e7af9f1121b3171431beb15528d95a8df7adfb6c5",
+        "source_fact:v1:b89c81d649648dd3cc847b886373a110807fb8ab6c3c1e18589b7adbad86f1a5",
+        "source_fact:v1:dc61c80093e340155be7e0eb473ce725768fdea1dede6c2db9e216065d33fed2",
+        "source_fact:v1:e9d6124dea58cda67315887f047a5a70dff7614981b8194b6eef716daa8425db",
+        "source_fact:v1:ed374aa2307fc22eb9eb3a83a0db1c31a77ec732a2fbf80cce4e79ef662d8b3d",
+        "source_fact:v1:f39bd56d2087c5b6f4e21bb4212b0002397747119ac57c1391449d0883e03ad8",
+        "source_fact:v1:f7f56da210d3010369106abe66d336805fe9564ff58ffcd04036dded952b2ce5",
+        "source_fact:v1:fda716c229fde8117ab619519cbc1ea57d23a58461dc73d5c834135b623a8b6d"
+      ],
+      "source_published_kst": "2026-10-12T08:02+09:00",
+      "source_title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]",
+      "telegram_core_fact": "펩트론은 지난달 3일 충북 청주시 오송 바이오파크에 들어설 제2공장 건설을 위해 GC녹십자EM과 시공계약을 체결한다고 밝힌 바 있다.",
+      "title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]"
     },
     "source_fact:b050d0805f6b4509823b122a": {
       "first_seen_kst": "2026-10-08T00:54:18+09:00",
@@ -342765,6 +344067,29 @@
       "source_published_kst": "2026-10-06T15:11+09:00",
       "title": "\"중국 문샷, 내년 1분기 홍콩 상장 추진\" | 연합뉴스"
     },
+    "source_fact:b5187839ad5012b5dfb6357e": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821357",
+      "source": "뉴시스",
+      "source_body_digest": "cf41701efd6e411bcf70efb871a0075d67f5e50af6a1a8185cbbf38fd06bd54a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11305ae7e43776751ebab4668d288a87497e97435df673f5efb5924e45dca705",
+      "source_fact_keys": [
+        "source_fact:v1:78c5f0d81170a7d33817b808d1e6afc7c35c87d93eb5215d1b5cfadd433012df",
+        "source_fact:v1:88d55c12273cc850d74a55a0520279a19ea1780d4573644951d5278994d2cf26",
+        "source_fact:v1:ae4e4f9853380b6be563ad22f10061af9ffd8f274065dd87d0a0876a381e7a45",
+        "source_fact:v1:b2b1f0c2fc0cb9c0059f4932019717914536cae7775e29ad390765068ab1d306",
+        "source_fact:v1:ce3590bad592291d9336214175b4a2036fa11e5742bce120cb00cf77ce0180f9"
+      ],
+      "source_published_kst": "2026-10-12T08:21+09:00",
+      "source_title": "오리엔트바이오 \"고품질 SPF 연구용 토끼 공급 확대\"",
+      "telegram_core_fact": "첨단 바이오 인프라 전문기업 오리엔트바이오는 고품질 특정병원체 부재(SPF) 연구용 토끼의 공급을 확대하며 국내 제약·바이오 기업과 연구기관의 비임상 연구 수요에 대응 중이라고 12일 밝혔다.",
+      "title": "오리엔트바이오 \"고품질 SPF 연구용 토끼 공급 확대\""
+    },
     "source_fact:b51b902aec9254003e212859": {
       "first_seen_kst": "2026-10-08T14:55:40+09:00",
       "lanes": {
@@ -343266,6 +344591,32 @@
       "source_title": "블룸버그 \"오픈AI, 올 연말엔 연 환산 매출 700억달러 달성\"",
       "telegram_core_fact": "오픈AI의 지난달 말 기준 연 환산 매출이 시장 기대치를 200억달러(약 27조원) 밑도는 500억달러(약 67조원) 수준인 것으로 알려진 가운데, '연말엔 700억달러 달성이 가능하다'는 분석이 나왔다.",
       "title": "블룸버그 \"오픈AI, 올 연말엔 연 환산 매출 700억달러 달성\""
+    },
+    "source_fact:b62502a273bf7dbc72733ab0": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02059846645612264",
+      "source": "이데일리",
+      "source_body_digest": "bf414b60892a16a816afd51336806a46e346f6907b511a06fde108cccd8be175",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:41ba8bb1f58e20e456c209d196e52430135a467ee56011e0aac24658d1e4a53b",
+      "source_fact_keys": [
+        "source_fact:v1:1c02b2767ae93619e617761cdd386d97832c8b3510d2dd0047a5e51099053fb4",
+        "source_fact:v1:2e8ce7e2385cc0e76cccfd9f690f789ce17fa861b3155365d2675260db3bcff5",
+        "source_fact:v1:3d0b7b1c5cb38b40410146eb75611a56875f72d92440d590d9411d9039d2d282",
+        "source_fact:v1:43f5cd21b13f2a3f7b393774b2a23cb9a9e48cb16e3bc5bda8b0aeb7314afb80",
+        "source_fact:v1:814b27077838525b15c82c5283da00b218dcc63ae3684462d3a36084e7dd27d8",
+        "source_fact:v1:d173271a1c60d76fa69655cfec4240106fddcce76c2316f1c0a3af538da1357b",
+        "source_fact:v1:da1038a36845a2a756aa18b84927a391de4fd4f07aa51a9aba6908fa30801974",
+        "source_fact:v1:df14b665d0379db660e0d649d3cd799922beeeb47c059e0dc3b08081ac0a9b59"
+      ],
+      "source_published_kst": "2026-10-12T08:06+09:00",
+      "source_title": "중동발 유가 불안에 강달러까지…환율 상승 압력[외환브리핑]",
+      "telegram_core_fact": "지난 9일(현지시간) 브렌트유 선물은 배럴당 104.72달러로 전 거래일보다 0.42% 상승 마감했다.",
+      "title": "중동발 유가 불안에 강달러까지…환율 상승 압력[외환브리핑]"
     },
     "source_fact:b62d20121b2cccb5cdab9903": {
       "first_seen_kst": "2026-10-07T16:57:09+09:00",
@@ -360363,6 +361714,42 @@
       "telegram_core_fact": "이번 ‘에너지 휴전’은 지난 9일 트럼프 대통령이 블라디미르 푸틴 러시아 대통령과 미국 및 전 세계 시장에 러시아산 경유를 공급하기로 합의했다고 공개한 뒤 이틀 만이다.",
       "title": "트럼프 \"러-우크라, '에너지 부문 휴전 합의'…즉각 발효\""
     },
+    "source_fact:cc09d0d4148f5b9ffff9a6c9": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02043446645612264",
+      "source": "이데일리",
+      "source_body_digest": "ef9e8fbd0ed0803af165d4bc97506a337116810216fcc26ae8c4ce79f0d59db6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bab4ed6f0cd5a08e66f88db61d26ef0a3808d33bcdb7557862eb836081e86973",
+      "source_fact_keys": [
+        "source_fact:v1:167fa9cb618057f718dc0afbf0e0d8c746a8793efb60d624d330b2a68fd6aa85",
+        "source_fact:v1:28c3923d16592e7cbda2175bd3ec3d5da565c71bacf15eec3ac842be6ef00b9e",
+        "source_fact:v1:2ebf0a1f7da5130b5aebd5f050474f51939c09d68b5a49abf6700b1dee0f0756",
+        "source_fact:v1:3e401b47f51cd4f11418772943abfadea6c55166a2038df3e1216c7bd3488e91",
+        "source_fact:v1:4251f567ae6e0ea6a814ca92e0759187dffd043d7be48e085e70559c4604ce75",
+        "source_fact:v1:4be25e433051c4fd419896c67f45323619c5a2d1413914f206fbd19f2667f840",
+        "source_fact:v1:55059c48bfffaabfb87368f1c8b0a9b2622240500079347a51a07dc7f6df2559",
+        "source_fact:v1:6870e961f0ed285ab756ceec60931cd7a50f8a144d35741ce20e8a2b55537bad",
+        "source_fact:v1:950f8f6dcfce544f63784b1bfdde79d9ccf42508e9d0949709dfa74051a34f63",
+        "source_fact:v1:9f754d13b4e0d2a554465dd1275a96b551e73b69670fde641753be55c5a34502",
+        "source_fact:v1:b105cfedf9706570ed71552e7af9f1121b3171431beb15528d95a8df7adfb6c5",
+        "source_fact:v1:b89c81d649648dd3cc847b886373a110807fb8ab6c3c1e18589b7adbad86f1a5",
+        "source_fact:v1:dc61c80093e340155be7e0eb473ce725768fdea1dede6c2db9e216065d33fed2",
+        "source_fact:v1:e9d6124dea58cda67315887f047a5a70dff7614981b8194b6eef716daa8425db",
+        "source_fact:v1:ed374aa2307fc22eb9eb3a83a0db1c31a77ec732a2fbf80cce4e79ef662d8b3d",
+        "source_fact:v1:f39bd56d2087c5b6f4e21bb4212b0002397747119ac57c1391449d0883e03ad8",
+        "source_fact:v1:f7f56da210d3010369106abe66d336805fe9564ff58ffcd04036dded952b2ce5",
+        "source_fact:v1:fda716c229fde8117ab619519cbc1ea57d23a58461dc73d5c834135b623a8b6d"
+      ],
+      "source_published_kst": "2026-10-12T08:02+09:00",
+      "source_title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]",
+      "telegram_core_fact": "펩트론은 지난달 3일 충북 청주시 오송 바이오파크에 들어설 제2공장 건설을 위해 GC녹십자EM과 시공계약을 체결한다고 밝힌 바 있다.",
+      "title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]"
+    },
     "source_fact:cc0b58dc6528cde33dd7dc3f": {
       "first_seen_kst": "2026-10-07T12:06:36+09:00",
       "lanes": {
@@ -362975,6 +364362,26 @@
       "source_title": "엔비디아 뛰어넘고 내년 전망도 밝은데…'분기 영업익 100조' 삼성전자, 주가는 왜?",
       "telegram_core_fact": "최근 분기 약 85조원의 영업이익을 기록한 엔비디아보다도 많은 규모다.",
       "title": "엔비디아 뛰어넘고 내년 전망도 밝은데…'분기 영업익 100조' 삼성전자, 주가는 왜?"
+    },
+    "source_fact:cf4ca972d321d7e2975408f6": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821329",
+      "source": "뉴시스",
+      "source_body_digest": "4c6098845462f0f0132ca10cc07022b218f05fd223db4a29584ed5df14fa16ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:13ec46d6442806cf8dc505018ec61c6f99313bfb70b003d7aa2e4e16c687dbd9",
+      "source_fact_keys": [
+        "source_fact:v1:7d3c8dea3bbabcbfce54d210301e46cdedffa8b4451c013d8df0cd4df4568042",
+        "source_fact:v1:83dfa9299cfcf5b286057123f15bc33ed8ee24909032760633b572e12b23e027"
+      ],
+      "source_published_kst": "2026-10-12T08:11+09:00",
+      "source_title": "한울반도체, 日 MLCC 제조사 검사설비 성능 개선 사업 수주",
+      "telegram_core_fact": "한울반도체는 일본 적층세라믹콘덴서(MLCC) 제조사로부터 외관검사설비 성능 개선 사업을 수주했다고 12일 밝혔다.",
+      "title": "한울반도체, 日 MLCC 제조사 검사설비 성능 개선 사업 수주"
     },
     "source_fact:cf535436fcaf3020ef5eea89": {
       "first_seen_kst": "2026-10-07T08:57:59+09:00",
@@ -366982,6 +368389,42 @@
       "telegram_core_fact": "지난주 후반 오픈AI의 매출을 둘러싼 논란으로 AI·반도체주가 급락한 만큼 TSMC의 실적과 가이던스는 최근 불거진 ‘AI 거품론’의 시험대가 될 전망이다. 다음주 국내외 증시는 미국 물가와 소비, 반도체 실적이 동시에 시장을 시험하는 한 주가 될 전망이다.",
       "title": "계속되는 'AI 거품론'…TSMC가 답을 할까 [다음주 주요변수 미리보기]"
     },
+    "source_fact:d4e7d573fe01d901395eb97c": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02043446645612264",
+      "source": "이데일리",
+      "source_body_digest": "ef9e8fbd0ed0803af165d4bc97506a337116810216fcc26ae8c4ce79f0d59db6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bab4ed6f0cd5a08e66f88db61d26ef0a3808d33bcdb7557862eb836081e86973",
+      "source_fact_keys": [
+        "source_fact:v1:167fa9cb618057f718dc0afbf0e0d8c746a8793efb60d624d330b2a68fd6aa85",
+        "source_fact:v1:28c3923d16592e7cbda2175bd3ec3d5da565c71bacf15eec3ac842be6ef00b9e",
+        "source_fact:v1:2ebf0a1f7da5130b5aebd5f050474f51939c09d68b5a49abf6700b1dee0f0756",
+        "source_fact:v1:3e401b47f51cd4f11418772943abfadea6c55166a2038df3e1216c7bd3488e91",
+        "source_fact:v1:4251f567ae6e0ea6a814ca92e0759187dffd043d7be48e085e70559c4604ce75",
+        "source_fact:v1:4be25e433051c4fd419896c67f45323619c5a2d1413914f206fbd19f2667f840",
+        "source_fact:v1:55059c48bfffaabfb87368f1c8b0a9b2622240500079347a51a07dc7f6df2559",
+        "source_fact:v1:6870e961f0ed285ab756ceec60931cd7a50f8a144d35741ce20e8a2b55537bad",
+        "source_fact:v1:950f8f6dcfce544f63784b1bfdde79d9ccf42508e9d0949709dfa74051a34f63",
+        "source_fact:v1:9f754d13b4e0d2a554465dd1275a96b551e73b69670fde641753be55c5a34502",
+        "source_fact:v1:b105cfedf9706570ed71552e7af9f1121b3171431beb15528d95a8df7adfb6c5",
+        "source_fact:v1:b89c81d649648dd3cc847b886373a110807fb8ab6c3c1e18589b7adbad86f1a5",
+        "source_fact:v1:dc61c80093e340155be7e0eb473ce725768fdea1dede6c2db9e216065d33fed2",
+        "source_fact:v1:e9d6124dea58cda67315887f047a5a70dff7614981b8194b6eef716daa8425db",
+        "source_fact:v1:ed374aa2307fc22eb9eb3a83a0db1c31a77ec732a2fbf80cce4e79ef662d8b3d",
+        "source_fact:v1:f39bd56d2087c5b6f4e21bb4212b0002397747119ac57c1391449d0883e03ad8",
+        "source_fact:v1:f7f56da210d3010369106abe66d336805fe9564ff58ffcd04036dded952b2ce5",
+        "source_fact:v1:fda716c229fde8117ab619519cbc1ea57d23a58461dc73d5c834135b623a8b6d"
+      ],
+      "source_published_kst": "2026-10-12T08:02+09:00",
+      "source_title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]",
+      "telegram_core_fact": "펩트론은 지난달 3일 충북 청주시 오송 바이오파크에 들어설 제2공장 건설을 위해 GC녹십자EM과 시공계약을 체결한다고 밝힌 바 있다.",
+      "title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]"
+    },
     "source_fact:d4e9ba1dfa516a5c22811c85": {
       "first_seen_kst": "2026-10-11T17:50:48+09:00",
       "lanes": {
@@ -367076,6 +368519,32 @@
       "source_title": "중동발 공급 불안에 美 생산 중단까지…국제유가 또 급등",
       "telegram_core_fact": "BOEM은 \"이사야스 때문에 멕시코만의 유인 석유 생산 플랫폼 371곳의 32.61%에 해당하는 121곳에서 인력들이 대피해 시설 가동이 중단됐다\"고 설명했다.",
       "title": "중동발 공급 불안에 美 생산 중단까지…국제유가 또 급등"
+    },
+    "source_fact:d4f95aa3d5209672993684b9": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02059846645612264",
+      "source": "이데일리",
+      "source_body_digest": "bf414b60892a16a816afd51336806a46e346f6907b511a06fde108cccd8be175",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:41ba8bb1f58e20e456c209d196e52430135a467ee56011e0aac24658d1e4a53b",
+      "source_fact_keys": [
+        "source_fact:v1:1c02b2767ae93619e617761cdd386d97832c8b3510d2dd0047a5e51099053fb4",
+        "source_fact:v1:2e8ce7e2385cc0e76cccfd9f690f789ce17fa861b3155365d2675260db3bcff5",
+        "source_fact:v1:3d0b7b1c5cb38b40410146eb75611a56875f72d92440d590d9411d9039d2d282",
+        "source_fact:v1:43f5cd21b13f2a3f7b393774b2a23cb9a9e48cb16e3bc5bda8b0aeb7314afb80",
+        "source_fact:v1:814b27077838525b15c82c5283da00b218dcc63ae3684462d3a36084e7dd27d8",
+        "source_fact:v1:d173271a1c60d76fa69655cfec4240106fddcce76c2316f1c0a3af538da1357b",
+        "source_fact:v1:da1038a36845a2a756aa18b84927a391de4fd4f07aa51a9aba6908fa30801974",
+        "source_fact:v1:df14b665d0379db660e0d649d3cd799922beeeb47c059e0dc3b08081ac0a9b59"
+      ],
+      "source_published_kst": "2026-10-12T08:06+09:00",
+      "source_title": "중동발 유가 불안에 강달러까지…환율 상승 압력[외환브리핑]",
+      "telegram_core_fact": "지난 9일(현지시간) 브렌트유 선물은 배럴당 104.72달러로 전 거래일보다 0.42% 상승 마감했다.",
+      "title": "중동발 유가 불안에 강달러까지…환율 상승 압력[외환브리핑]"
     },
     "source_fact:d4f9b4c68187063f655a56c1": {
       "first_seen_kst": "2026-10-07T06:12:17+09:00",
@@ -371900,6 +373369,26 @@
       "telegram_core_fact": "글로벌 인공지능(AI) 반도체 시장에서 '엔비디아 대항마'로 꼽히는 AMD의 리사 수 최고경영자(CEO)가 7일 한국 정부 고위 관계자와 잇달아 회동했다.",
       "title": "[단독]AMD 리사 수, 하정우와 비공개 회동…韓 AI 반도체 협력 논의"
     },
+    "source_fact:da6af34e5679912c74825391": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821329",
+      "source": "뉴시스",
+      "source_body_digest": "4c6098845462f0f0132ca10cc07022b218f05fd223db4a29584ed5df14fa16ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:13ec46d6442806cf8dc505018ec61c6f99313bfb70b003d7aa2e4e16c687dbd9",
+      "source_fact_keys": [
+        "source_fact:v1:7d3c8dea3bbabcbfce54d210301e46cdedffa8b4451c013d8df0cd4df4568042",
+        "source_fact:v1:83dfa9299cfcf5b286057123f15bc33ed8ee24909032760633b572e12b23e027"
+      ],
+      "source_published_kst": "2026-10-12T08:11+09:00",
+      "source_title": "한울반도체, 日 MLCC 제조사 검사설비 성능 개선 사업 수주",
+      "telegram_core_fact": "한울반도체는 일본 적층세라믹콘덴서(MLCC) 제조사로부터 외관검사설비 성능 개선 사업을 수주했다고 12일 밝혔다.",
+      "title": "한울반도체, 日 MLCC 제조사 검사설비 성능 개선 사업 수주"
+    },
     "source_fact:da6c1bf5db8eb5c538cbfb26": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
       "lanes": {
@@ -376550,6 +378039,42 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 대러시아 제재를 일시 완화하고 러시아산 석유를 수입하기로 하면서 미 공화당 내부에서도 반대가 이어지고 있다.",
       "title": "미 공화당서도 '트럼프-푸틴 경유딜' 반대 목소리 부상 | 연합뉴스"
     },
+    "source_fact:e0883babe0ed1b49026fd6a0": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02043446645612264",
+      "source": "이데일리",
+      "source_body_digest": "ef9e8fbd0ed0803af165d4bc97506a337116810216fcc26ae8c4ce79f0d59db6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bab4ed6f0cd5a08e66f88db61d26ef0a3808d33bcdb7557862eb836081e86973",
+      "source_fact_keys": [
+        "source_fact:v1:167fa9cb618057f718dc0afbf0e0d8c746a8793efb60d624d330b2a68fd6aa85",
+        "source_fact:v1:28c3923d16592e7cbda2175bd3ec3d5da565c71bacf15eec3ac842be6ef00b9e",
+        "source_fact:v1:2ebf0a1f7da5130b5aebd5f050474f51939c09d68b5a49abf6700b1dee0f0756",
+        "source_fact:v1:3e401b47f51cd4f11418772943abfadea6c55166a2038df3e1216c7bd3488e91",
+        "source_fact:v1:4251f567ae6e0ea6a814ca92e0759187dffd043d7be48e085e70559c4604ce75",
+        "source_fact:v1:4be25e433051c4fd419896c67f45323619c5a2d1413914f206fbd19f2667f840",
+        "source_fact:v1:55059c48bfffaabfb87368f1c8b0a9b2622240500079347a51a07dc7f6df2559",
+        "source_fact:v1:6870e961f0ed285ab756ceec60931cd7a50f8a144d35741ce20e8a2b55537bad",
+        "source_fact:v1:950f8f6dcfce544f63784b1bfdde79d9ccf42508e9d0949709dfa74051a34f63",
+        "source_fact:v1:9f754d13b4e0d2a554465dd1275a96b551e73b69670fde641753be55c5a34502",
+        "source_fact:v1:b105cfedf9706570ed71552e7af9f1121b3171431beb15528d95a8df7adfb6c5",
+        "source_fact:v1:b89c81d649648dd3cc847b886373a110807fb8ab6c3c1e18589b7adbad86f1a5",
+        "source_fact:v1:dc61c80093e340155be7e0eb473ce725768fdea1dede6c2db9e216065d33fed2",
+        "source_fact:v1:e9d6124dea58cda67315887f047a5a70dff7614981b8194b6eef716daa8425db",
+        "source_fact:v1:ed374aa2307fc22eb9eb3a83a0db1c31a77ec732a2fbf80cce4e79ef662d8b3d",
+        "source_fact:v1:f39bd56d2087c5b6f4e21bb4212b0002397747119ac57c1391449d0883e03ad8",
+        "source_fact:v1:f7f56da210d3010369106abe66d336805fe9564ff58ffcd04036dded952b2ce5",
+        "source_fact:v1:fda716c229fde8117ab619519cbc1ea57d23a58461dc73d5c834135b623a8b6d"
+      ],
+      "source_published_kst": "2026-10-12T08:02+09:00",
+      "source_title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]",
+      "telegram_core_fact": "펩트론은 지난달 3일 충북 청주시 오송 바이오파크에 들어설 제2공장 건설을 위해 GC녹십자EM과 시공계약을 체결한다고 밝힌 바 있다.",
+      "title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]"
+    },
     "source_fact:e089da059abdde0313320d8e": {
       "first_seen_kst": "2026-10-06T22:21:21+09:00",
       "lanes": {
@@ -380797,6 +382322,42 @@
       "telegram_core_fact": "미 국채 금리 급등은 즉각 유럽으로 전파돼 영국 30년물 금리가 다시 6%선을 돌파했고, 프랑스 30년물도 하루 만에 최대 14bp(1bp=0.01%p) 올랐다.",
       "title": "美 30년물 국채금리 24년만에 최고치 재경신"
     },
+    "source_fact:e54d67b686e08ef727318a22": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02043446645612264",
+      "source": "이데일리",
+      "source_body_digest": "ef9e8fbd0ed0803af165d4bc97506a337116810216fcc26ae8c4ce79f0d59db6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bab4ed6f0cd5a08e66f88db61d26ef0a3808d33bcdb7557862eb836081e86973",
+      "source_fact_keys": [
+        "source_fact:v1:167fa9cb618057f718dc0afbf0e0d8c746a8793efb60d624d330b2a68fd6aa85",
+        "source_fact:v1:28c3923d16592e7cbda2175bd3ec3d5da565c71bacf15eec3ac842be6ef00b9e",
+        "source_fact:v1:2ebf0a1f7da5130b5aebd5f050474f51939c09d68b5a49abf6700b1dee0f0756",
+        "source_fact:v1:3e401b47f51cd4f11418772943abfadea6c55166a2038df3e1216c7bd3488e91",
+        "source_fact:v1:4251f567ae6e0ea6a814ca92e0759187dffd043d7be48e085e70559c4604ce75",
+        "source_fact:v1:4be25e433051c4fd419896c67f45323619c5a2d1413914f206fbd19f2667f840",
+        "source_fact:v1:55059c48bfffaabfb87368f1c8b0a9b2622240500079347a51a07dc7f6df2559",
+        "source_fact:v1:6870e961f0ed285ab756ceec60931cd7a50f8a144d35741ce20e8a2b55537bad",
+        "source_fact:v1:950f8f6dcfce544f63784b1bfdde79d9ccf42508e9d0949709dfa74051a34f63",
+        "source_fact:v1:9f754d13b4e0d2a554465dd1275a96b551e73b69670fde641753be55c5a34502",
+        "source_fact:v1:b105cfedf9706570ed71552e7af9f1121b3171431beb15528d95a8df7adfb6c5",
+        "source_fact:v1:b89c81d649648dd3cc847b886373a110807fb8ab6c3c1e18589b7adbad86f1a5",
+        "source_fact:v1:dc61c80093e340155be7e0eb473ce725768fdea1dede6c2db9e216065d33fed2",
+        "source_fact:v1:e9d6124dea58cda67315887f047a5a70dff7614981b8194b6eef716daa8425db",
+        "source_fact:v1:ed374aa2307fc22eb9eb3a83a0db1c31a77ec732a2fbf80cce4e79ef662d8b3d",
+        "source_fact:v1:f39bd56d2087c5b6f4e21bb4212b0002397747119ac57c1391449d0883e03ad8",
+        "source_fact:v1:f7f56da210d3010369106abe66d336805fe9564ff58ffcd04036dded952b2ce5",
+        "source_fact:v1:fda716c229fde8117ab619519cbc1ea57d23a58461dc73d5c834135b623a8b6d"
+      ],
+      "source_published_kst": "2026-10-12T08:02+09:00",
+      "source_title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]",
+      "telegram_core_fact": "펩트론은 지난달 3일 충북 청주시 오송 바이오파크에 들어설 제2공장 건설을 위해 GC녹십자EM과 시공계약을 체결한다고 밝힌 바 있다.",
+      "title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]"
+    },
     "source_fact:e550fbe8ce3c28fcebeab2c0": {
       "first_seen_kst": "2026-10-08T00:54:18+09:00",
       "lanes": {
@@ -381683,6 +383244,42 @@
       "source_title": "대전샛-1, 첫 교신 성공…\"대전의 우주기술 우주서 입증\"",
       "telegram_core_fact": "대전 지역 기업이 개발한 초소형 위성 '대전샛-1(DaejeonSAT-1)'이 지상국과의 첫 교신에 성공하며 정상 운용에 들어갔다.",
       "title": "대전샛-1, 첫 교신 성공…\"대전의 우주기술 우주서 입증\""
+    },
+    "source_fact:e68d098d0afc7d0aa7f832b1": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02043446645612264",
+      "source": "이데일리",
+      "source_body_digest": "ef9e8fbd0ed0803af165d4bc97506a337116810216fcc26ae8c4ce79f0d59db6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bab4ed6f0cd5a08e66f88db61d26ef0a3808d33bcdb7557862eb836081e86973",
+      "source_fact_keys": [
+        "source_fact:v1:167fa9cb618057f718dc0afbf0e0d8c746a8793efb60d624d330b2a68fd6aa85",
+        "source_fact:v1:28c3923d16592e7cbda2175bd3ec3d5da565c71bacf15eec3ac842be6ef00b9e",
+        "source_fact:v1:2ebf0a1f7da5130b5aebd5f050474f51939c09d68b5a49abf6700b1dee0f0756",
+        "source_fact:v1:3e401b47f51cd4f11418772943abfadea6c55166a2038df3e1216c7bd3488e91",
+        "source_fact:v1:4251f567ae6e0ea6a814ca92e0759187dffd043d7be48e085e70559c4604ce75",
+        "source_fact:v1:4be25e433051c4fd419896c67f45323619c5a2d1413914f206fbd19f2667f840",
+        "source_fact:v1:55059c48bfffaabfb87368f1c8b0a9b2622240500079347a51a07dc7f6df2559",
+        "source_fact:v1:6870e961f0ed285ab756ceec60931cd7a50f8a144d35741ce20e8a2b55537bad",
+        "source_fact:v1:950f8f6dcfce544f63784b1bfdde79d9ccf42508e9d0949709dfa74051a34f63",
+        "source_fact:v1:9f754d13b4e0d2a554465dd1275a96b551e73b69670fde641753be55c5a34502",
+        "source_fact:v1:b105cfedf9706570ed71552e7af9f1121b3171431beb15528d95a8df7adfb6c5",
+        "source_fact:v1:b89c81d649648dd3cc847b886373a110807fb8ab6c3c1e18589b7adbad86f1a5",
+        "source_fact:v1:dc61c80093e340155be7e0eb473ce725768fdea1dede6c2db9e216065d33fed2",
+        "source_fact:v1:e9d6124dea58cda67315887f047a5a70dff7614981b8194b6eef716daa8425db",
+        "source_fact:v1:ed374aa2307fc22eb9eb3a83a0db1c31a77ec732a2fbf80cce4e79ef662d8b3d",
+        "source_fact:v1:f39bd56d2087c5b6f4e21bb4212b0002397747119ac57c1391449d0883e03ad8",
+        "source_fact:v1:f7f56da210d3010369106abe66d336805fe9564ff58ffcd04036dded952b2ce5",
+        "source_fact:v1:fda716c229fde8117ab619519cbc1ea57d23a58461dc73d5c834135b623a8b6d"
+      ],
+      "source_published_kst": "2026-10-12T08:02+09:00",
+      "source_title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]",
+      "telegram_core_fact": "펩트론은 지난달 3일 충북 청주시 오송 바이오파크에 들어설 제2공장 건설을 위해 GC녹십자EM과 시공계약을 체결한다고 밝힌 바 있다.",
+      "title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]"
     },
     "source_fact:e6943e58cd31baaaa8bea56e": {
       "first_seen_kst": "2026-10-06T15:55:43+09:00",
@@ -384190,6 +385787,29 @@
       ],
       "source_published_kst": "2026-10-06T11:08+09:00",
       "title": "현대차그룹, 1~8월 글로벌 전기차 판매 20%↑…\"亞·유럽서 지속 성장\""
+    },
+    "source_fact:e9b5b4f528e269c85ce844ea": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821357",
+      "source": "뉴시스",
+      "source_body_digest": "cf41701efd6e411bcf70efb871a0075d67f5e50af6a1a8185cbbf38fd06bd54a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11305ae7e43776751ebab4668d288a87497e97435df673f5efb5924e45dca705",
+      "source_fact_keys": [
+        "source_fact:v1:78c5f0d81170a7d33817b808d1e6afc7c35c87d93eb5215d1b5cfadd433012df",
+        "source_fact:v1:88d55c12273cc850d74a55a0520279a19ea1780d4573644951d5278994d2cf26",
+        "source_fact:v1:ae4e4f9853380b6be563ad22f10061af9ffd8f274065dd87d0a0876a381e7a45",
+        "source_fact:v1:b2b1f0c2fc0cb9c0059f4932019717914536cae7775e29ad390765068ab1d306",
+        "source_fact:v1:ce3590bad592291d9336214175b4a2036fa11e5742bce120cb00cf77ce0180f9"
+      ],
+      "source_published_kst": "2026-10-12T08:21+09:00",
+      "source_title": "오리엔트바이오 \"고품질 SPF 연구용 토끼 공급 확대\"",
+      "telegram_core_fact": "첨단 바이오 인프라 전문기업 오리엔트바이오는 고품질 특정병원체 부재(SPF) 연구용 토끼의 공급을 확대하며 국내 제약·바이오 기업과 연구기관의 비임상 연구 수요에 대응 중이라고 12일 밝혔다.",
+      "title": "오리엔트바이오 \"고품질 SPF 연구용 토끼 공급 확대\""
     },
     "source_fact:e9bafb39ebcb1f087cac263a": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
@@ -392027,6 +393647,42 @@
       "source_title": "美국채 10년물 장중 5.36%까지 치솟아…24년 만에 최고",
       "telegram_core_fact": "미국 10년물 국채 금리는 장중 5.36%를 넘어 2002년 이후 최고치를 새로 썼고, 30년물 금리도 5.73%까지 치솟았다. 7일(현지 시각) 미국 국채시장에서 10년물 금리는 장중 전장보다 약 8bp(1bp=0.01%포인트) 오른 5.3640%까지 상승했다.",
       "title": "美국채 10년물 장중 5.36%까지 치솟아…24년 만에 최고"
+    },
+    "source_fact:f42a62851b8a43dfc5498c29": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02043446645612264",
+      "source": "이데일리",
+      "source_body_digest": "ef9e8fbd0ed0803af165d4bc97506a337116810216fcc26ae8c4ce79f0d59db6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bab4ed6f0cd5a08e66f88db61d26ef0a3808d33bcdb7557862eb836081e86973",
+      "source_fact_keys": [
+        "source_fact:v1:167fa9cb618057f718dc0afbf0e0d8c746a8793efb60d624d330b2a68fd6aa85",
+        "source_fact:v1:28c3923d16592e7cbda2175bd3ec3d5da565c71bacf15eec3ac842be6ef00b9e",
+        "source_fact:v1:2ebf0a1f7da5130b5aebd5f050474f51939c09d68b5a49abf6700b1dee0f0756",
+        "source_fact:v1:3e401b47f51cd4f11418772943abfadea6c55166a2038df3e1216c7bd3488e91",
+        "source_fact:v1:4251f567ae6e0ea6a814ca92e0759187dffd043d7be48e085e70559c4604ce75",
+        "source_fact:v1:4be25e433051c4fd419896c67f45323619c5a2d1413914f206fbd19f2667f840",
+        "source_fact:v1:55059c48bfffaabfb87368f1c8b0a9b2622240500079347a51a07dc7f6df2559",
+        "source_fact:v1:6870e961f0ed285ab756ceec60931cd7a50f8a144d35741ce20e8a2b55537bad",
+        "source_fact:v1:950f8f6dcfce544f63784b1bfdde79d9ccf42508e9d0949709dfa74051a34f63",
+        "source_fact:v1:9f754d13b4e0d2a554465dd1275a96b551e73b69670fde641753be55c5a34502",
+        "source_fact:v1:b105cfedf9706570ed71552e7af9f1121b3171431beb15528d95a8df7adfb6c5",
+        "source_fact:v1:b89c81d649648dd3cc847b886373a110807fb8ab6c3c1e18589b7adbad86f1a5",
+        "source_fact:v1:dc61c80093e340155be7e0eb473ce725768fdea1dede6c2db9e216065d33fed2",
+        "source_fact:v1:e9d6124dea58cda67315887f047a5a70dff7614981b8194b6eef716daa8425db",
+        "source_fact:v1:ed374aa2307fc22eb9eb3a83a0db1c31a77ec732a2fbf80cce4e79ef662d8b3d",
+        "source_fact:v1:f39bd56d2087c5b6f4e21bb4212b0002397747119ac57c1391449d0883e03ad8",
+        "source_fact:v1:f7f56da210d3010369106abe66d336805fe9564ff58ffcd04036dded952b2ce5",
+        "source_fact:v1:fda716c229fde8117ab619519cbc1ea57d23a58461dc73d5c834135b623a8b6d"
+      ],
+      "source_published_kst": "2026-10-12T08:02+09:00",
+      "source_title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]",
+      "telegram_core_fact": "펩트론은 지난달 3일 충북 청주시 오송 바이오파크에 들어설 제2공장 건설을 위해 GC녹십자EM과 시공계약을 체결한다고 밝힌 바 있다.",
+      "title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]"
     },
     "source_fact:f435bf928aca6aa0a311f7d1": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
@@ -403524,6 +405180,32 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-05T19:58+09:00",
       "title": "지오 그룹, ICE 시설 9억5000만 달러 매각·자사주 한도 확대"
+    },
+    "title:0b65a1dfa553b9dd2d411d42": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02059846645612264",
+      "source": "이데일리",
+      "source_body_digest": "bf414b60892a16a816afd51336806a46e346f6907b511a06fde108cccd8be175",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:41ba8bb1f58e20e456c209d196e52430135a467ee56011e0aac24658d1e4a53b",
+      "source_fact_keys": [
+        "source_fact:v1:1c02b2767ae93619e617761cdd386d97832c8b3510d2dd0047a5e51099053fb4",
+        "source_fact:v1:2e8ce7e2385cc0e76cccfd9f690f789ce17fa861b3155365d2675260db3bcff5",
+        "source_fact:v1:3d0b7b1c5cb38b40410146eb75611a56875f72d92440d590d9411d9039d2d282",
+        "source_fact:v1:43f5cd21b13f2a3f7b393774b2a23cb9a9e48cb16e3bc5bda8b0aeb7314afb80",
+        "source_fact:v1:814b27077838525b15c82c5283da00b218dcc63ae3684462d3a36084e7dd27d8",
+        "source_fact:v1:d173271a1c60d76fa69655cfec4240106fddcce76c2316f1c0a3af538da1357b",
+        "source_fact:v1:da1038a36845a2a756aa18b84927a391de4fd4f07aa51a9aba6908fa30801974",
+        "source_fact:v1:df14b665d0379db660e0d649d3cd799922beeeb47c059e0dc3b08081ac0a9b59"
+      ],
+      "source_published_kst": "2026-10-12T08:06+09:00",
+      "source_title": "중동발 유가 불안에 강달러까지…환율 상승 압력[외환브리핑]",
+      "telegram_core_fact": "지난 9일(현지시간) 브렌트유 선물은 배럴당 104.72달러로 전 거래일보다 0.42% 상승 마감했다.",
+      "title": "중동발 유가 불안에 강달러까지…환율 상승 압력[외환브리핑]"
     },
     "title:0b6a3a6e86584feb31b8d705": {
       "first_seen_kst": "2026-10-08T08:31:37+09:00",
@@ -415400,6 +417082,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T20:26+09:00",
       "title": "OPEC+, 11월 석유 생산 목표 현 수준 유지할 듯 | 연합뉴스"
+    },
+    "title:3cd2211b233896f3d384126a": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634408",
+      "source": "이투데이",
+      "source_body_digest": "b2088241944c3f9b58532d3c54507fba8e85ced4de0f60ae47f164c111467661",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T08:07+09:00",
+      "source_title": "유안타證 \"LIG D&A, 4분기 신규 수주 가속화\"",
+      "telegram_core_fact": "백 연구원은 \"4분기부터는 상반기 부진했던 수주 흐름이 본격적으로 반전될 전망\"이라며 \"국내에서는 1조9000억원 장거리공대공 체계개발 사업 우선협상대상자로 선정돼 12월 최종 계약 체결이 예상된다\"고 분석했다.",
+      "title": "유안타證 \"LIG D&A, 4분기 신규 수주 가속화\""
     },
     "title:3ce1b4d0a3eaefdb0b7e6eee": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
@@ -431904,6 +433603,26 @@
       "telegram_core_fact": "오픈AI의 지난달 말 기준 연 환산 매출이 시장 기대치를 200억달러(약 27조원) 밑도는 500억달러(약 67조원) 수준인 것으로 알려진 가운데, '연말엔 700억달러 달성이 가능하다'는 분석이 나왔다.",
       "title": "블룸버그 \"오픈AI, 올 연말엔 연 환산 매출 700억달러 달성\""
     },
+    "title:8466a4017fa97a4cd2e1e725": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634421",
+      "source": "이투데이",
+      "source_body_digest": "ca2454a9605b03357d28d57259a6f921668496a3c0ccf205bc21dfc68c0554a7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:08c0d7bddd3b6d65b400adcf8356820a77196e6c460ad2917abfe69e7c7b3f1b",
+      "source_fact_keys": [
+        "source_fact:v1:a75a5876c3b5a1544250e210872eca8da39ece99cb5464c68fb4a4c92b68cb46",
+        "source_fact:v1:ba96e07d2e5bb93dfd39559081e610c0f983b7b97a36427589ed42f2eebe063c"
+      ],
+      "source_published_kst": "2026-10-12T08:26+09:00",
+      "source_title": "경기도 '바른입찰' 10곳 뽑는다…3곳 중 1곳 처분하던 단속에 '당근'",
+      "telegram_core_fact": "경기도는 공공입찰 실태조사에서 적합 판정을 받은 도내 건설업체 가운데 '바른입찰 모범건설업체' 10곳을 12월 말 선정해 실태조사 유예기간 연장 등 인센티브를 준다.",
+      "title": "경기도 '바른입찰' 10곳 뽑는다…3곳 중 1곳 처분하던 단속에 '당근'"
+    },
     "title:847e81964690563d9af90529": {
       "first_seen_kst": "2026-10-01T05:56:02+09:00",
       "lanes": {
@@ -436098,6 +437817,42 @@
       "source_title": "불확실성 커진 재정·정치·글로벌 시장…불안한 佛 국채",
       "telegram_core_fact": "국내외 금리 상승 압력이 커진 상황에서 프랑스의 정치∙재정적 불확실성이 금융시장의 우려를 자극했다. 이는 일본 국채금리 상승과 프랑스의 재정∙정치적 리스크가 맞물리면서 일본계 자금의 투자 방향이 달라질 수 있음을 보여주는 사례다.",
       "title": "불확실성 커진 재정·정치·글로벌 시장…불안한 佛 국채"
+    },
+    "title:94759a31e65c43eee8a6311b": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02043446645612264",
+      "source": "이데일리",
+      "source_body_digest": "ef9e8fbd0ed0803af165d4bc97506a337116810216fcc26ae8c4ce79f0d59db6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bab4ed6f0cd5a08e66f88db61d26ef0a3808d33bcdb7557862eb836081e86973",
+      "source_fact_keys": [
+        "source_fact:v1:167fa9cb618057f718dc0afbf0e0d8c746a8793efb60d624d330b2a68fd6aa85",
+        "source_fact:v1:28c3923d16592e7cbda2175bd3ec3d5da565c71bacf15eec3ac842be6ef00b9e",
+        "source_fact:v1:2ebf0a1f7da5130b5aebd5f050474f51939c09d68b5a49abf6700b1dee0f0756",
+        "source_fact:v1:3e401b47f51cd4f11418772943abfadea6c55166a2038df3e1216c7bd3488e91",
+        "source_fact:v1:4251f567ae6e0ea6a814ca92e0759187dffd043d7be48e085e70559c4604ce75",
+        "source_fact:v1:4be25e433051c4fd419896c67f45323619c5a2d1413914f206fbd19f2667f840",
+        "source_fact:v1:55059c48bfffaabfb87368f1c8b0a9b2622240500079347a51a07dc7f6df2559",
+        "source_fact:v1:6870e961f0ed285ab756ceec60931cd7a50f8a144d35741ce20e8a2b55537bad",
+        "source_fact:v1:950f8f6dcfce544f63784b1bfdde79d9ccf42508e9d0949709dfa74051a34f63",
+        "source_fact:v1:9f754d13b4e0d2a554465dd1275a96b551e73b69670fde641753be55c5a34502",
+        "source_fact:v1:b105cfedf9706570ed71552e7af9f1121b3171431beb15528d95a8df7adfb6c5",
+        "source_fact:v1:b89c81d649648dd3cc847b886373a110807fb8ab6c3c1e18589b7adbad86f1a5",
+        "source_fact:v1:dc61c80093e340155be7e0eb473ce725768fdea1dede6c2db9e216065d33fed2",
+        "source_fact:v1:e9d6124dea58cda67315887f047a5a70dff7614981b8194b6eef716daa8425db",
+        "source_fact:v1:ed374aa2307fc22eb9eb3a83a0db1c31a77ec732a2fbf80cce4e79ef662d8b3d",
+        "source_fact:v1:f39bd56d2087c5b6f4e21bb4212b0002397747119ac57c1391449d0883e03ad8",
+        "source_fact:v1:f7f56da210d3010369106abe66d336805fe9564ff58ffcd04036dded952b2ce5",
+        "source_fact:v1:fda716c229fde8117ab619519cbc1ea57d23a58461dc73d5c834135b623a8b6d"
+      ],
+      "source_published_kst": "2026-10-12T08:02+09:00",
+      "source_title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]",
+      "telegram_core_fact": "펩트론은 지난달 3일 충북 청주시 오송 바이오파크에 들어설 제2공장 건설을 위해 GC녹십자EM과 시공계약을 체결한다고 밝힌 바 있다.",
+      "title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]"
     },
     "title:9497b04163dfe3af02ef2a10": {
       "first_seen_kst": "2026-10-08T15:16:19+09:00",
@@ -442779,6 +444534,29 @@
       "telegram_core_fact": "엘링턴 크레딧(EARN)이 이사회에서 보통주 1주당 0.08달러의 월간 배당을 결정했다고 7일(현지시간) 발표했다.",
       "title": "엘링턴 크레딧, 월 배당 주당 0.08달러 선언..11월 30일 지급"
     },
+    "title:af9c92f533a45b8946f25461": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821357",
+      "source": "뉴시스",
+      "source_body_digest": "cf41701efd6e411bcf70efb871a0075d67f5e50af6a1a8185cbbf38fd06bd54a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11305ae7e43776751ebab4668d288a87497e97435df673f5efb5924e45dca705",
+      "source_fact_keys": [
+        "source_fact:v1:78c5f0d81170a7d33817b808d1e6afc7c35c87d93eb5215d1b5cfadd433012df",
+        "source_fact:v1:88d55c12273cc850d74a55a0520279a19ea1780d4573644951d5278994d2cf26",
+        "source_fact:v1:ae4e4f9853380b6be563ad22f10061af9ffd8f274065dd87d0a0876a381e7a45",
+        "source_fact:v1:b2b1f0c2fc0cb9c0059f4932019717914536cae7775e29ad390765068ab1d306",
+        "source_fact:v1:ce3590bad592291d9336214175b4a2036fa11e5742bce120cb00cf77ce0180f9"
+      ],
+      "source_published_kst": "2026-10-12T08:21+09:00",
+      "source_title": "오리엔트바이오 \"고품질 SPF 연구용 토끼 공급 확대\"",
+      "telegram_core_fact": "첨단 바이오 인프라 전문기업 오리엔트바이오는 고품질 특정병원체 부재(SPF) 연구용 토끼의 공급을 확대하며 국내 제약·바이오 기업과 연구기관의 비임상 연구 수요에 대응 중이라고 12일 밝혔다.",
+      "title": "오리엔트바이오 \"고품질 SPF 연구용 토끼 공급 확대\""
+    },
     "title:afb27ef7703d9e8cd153d106": {
       "first_seen_kst": "2026-10-02T13:04:47+09:00",
       "lanes": {
@@ -444158,6 +445936,23 @@
       ],
       "source_published_kst": "2026-10-07T06:31+09:00",
       "title": "실적 기대에 힘받은 뉴욕증시…S&P500·나스닥 또 최고치(종합)"
+    },
+    "title:b606a67d9356f9af9834ed7f": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634401",
+      "source": "이투데이",
+      "source_body_digest": "49a7a67da7b357c90c1c72fda652189e82135ddf387d92a69568b3ae953042d5",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T08:05+09:00",
+      "source_title": "베선트 “러 경유딜, 美국민에 좋은 일”…여야 의원들 “푸틴에 돈줄” 반발",
+      "telegram_core_fact": "그는 “이는 미국 국민에게 좋은 일”이라며 러시아산 공급 확대가 경유 가격을 낮추는 데 도움이 될 것이라고 강조했다. 하지만 트럼프 대통령은 지난 9일 푸틴 대통령과 통화한 뒤 러시아가 미국과 세계시장에 경유 30만t 이상을 즉시 공급하고 11월 50만t, 이후 100만t을 추가로 내놓기로 했다고 발표했다.",
+      "title": "베선트 “러 경유딜, 美국민에 좋은 일”…여야 의원들 “푸틴에 돈줄” 반발"
     },
     "title:b64051ec5babb32bd0c827fc": {
       "first_seen_kst": "2026-10-05T06:25:21+09:00",
@@ -453702,6 +455497,26 @@
       "telegram_core_fact": "기술 혁신 채권 제품 시스템을 늘리고 고품질 기술 기반 기업의 상장 및 금융 지원을 강화하며 인수합병, 구조조정, 기술 기반 기업에 대한 지분 인센티브 시스템을 최적화하도록 했다.",
       "title": "중국 당정, 신질 생산력 본격 추진…금융·세제 지원 늘린다"
     },
+    "title:ddd32e90b781d8154e5fb006": {
+      "first_seen_kst": "2026-10-12T08:26:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T08:26:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T08:26:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821329",
+      "source": "뉴시스",
+      "source_body_digest": "4c6098845462f0f0132ca10cc07022b218f05fd223db4a29584ed5df14fa16ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:13ec46d6442806cf8dc505018ec61c6f99313bfb70b003d7aa2e4e16c687dbd9",
+      "source_fact_keys": [
+        "source_fact:v1:7d3c8dea3bbabcbfce54d210301e46cdedffa8b4451c013d8df0cd4df4568042",
+        "source_fact:v1:83dfa9299cfcf5b286057123f15bc33ed8ee24909032760633b572e12b23e027"
+      ],
+      "source_published_kst": "2026-10-12T08:11+09:00",
+      "source_title": "한울반도체, 日 MLCC 제조사 검사설비 성능 개선 사업 수주",
+      "telegram_core_fact": "한울반도체는 일본 적층세라믹콘덴서(MLCC) 제조사로부터 외관검사설비 성능 개선 사업을 수주했다고 12일 밝혔다.",
+      "title": "한울반도체, 日 MLCC 제조사 검사설비 성능 개선 사업 수주"
+    },
     "title:dddfe532f1388478fd24d3c1": {
       "first_seen_kst": "2026-10-02T18:30:04+09:00",
       "lanes": {
@@ -461636,5 +463451,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-12T08:03:02+09:00"
+  "updated_at_kst": "2026-10-12T08:26:25+09:00"
 }
