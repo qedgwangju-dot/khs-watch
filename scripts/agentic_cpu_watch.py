@@ -8,6 +8,7 @@ import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta, timezone
+from time import monotonic
 from email.utils import parsedate_to_datetime
 from urllib.parse import urlparse
 from zoneinfo import ZoneInfo
@@ -143,8 +144,16 @@ FORECAST_SEARCHES = [
 VALIDATION_SEARCHES = [
     ("google", 'site:amd.com "agentic AI" ("order book" OR deploy OR validation OR shipments OR revenue OR capacity) CPU'),
     ("google", 'site:intc.com OR site:intel.com server CPU (shipments OR volume OR ASP OR orders OR capacity) AI'),
+    ("google", 'site:newsroom.arm.com "AGI CPU" (validation OR deployment OR orders OR shipments OR production)'),
+    ("google", 'site:nvidia.com "Vera CPU" (shipments OR deployment OR orders OR qualification)'),
     ("google", 'site:dell.com OR site:hpe.com OR site:supermicro.com agentic AI CPU server deploy'),
 ]
+
+# A bounded shared deadline prevents repeated search/timeouts in the CPU collector
+# from consuming the whole 30-minute Rubin workflow and blocking checkpoints.
+CPU_SCAN_WALL_SECONDS = 240.0
+CPU_VALIDATION_LOOKBACK_DAYS = 14
+
 
 OFFICIAL_VALIDATION_DOMAINS = (
     "amd.com",
@@ -154,6 +163,8 @@ OFFICIAL_VALIDATION_DOMAINS = (
     "dell.com",
     "hpe.com",
     "supermicro.com",
+    "arm.com",
+    "nvidia.com",
 )
 
 # A CPU product mention is not evidence of demand. Only actions such as
@@ -621,7 +632,7 @@ def cpu_structure_changes(old: dict, observed: dict, issuer: str) -> list[str]:
             new_ratio = float(observed["cpu_xpu_ratio_2027"])
             if before_ratio and abs(new_ratio / before_ratio - 1) >= 0.10:
                 changes.append(
-                    f"DIGITIMES 2027 CPU:XPU 전망 변경: 1:{before_ratio:g}→1:{new_ratio:g}"
+                    f"DIGITIMES CPU:XPU 전망 변경(원문 상세 연도 미열람): 1:{before_ratio:g}→1:{new_ratio:g}"
                 )
         if "per_accelerator_cpu_2027" in observed:
             before = str(old.get("per_accelerator_cpu_2027") or "")
@@ -636,17 +647,21 @@ def cpu_structure_changes(old: dict, observed: dict, issuer: str) -> list[str]:
     return changes
 
 
-def discover_cpu_structure(now: datetime, previous: dict) -> list[dict]:
+def discover_cpu_structure(now: datetime, previous: dict, deadline: float | None = None) -> list[dict]:
     """Inspect only the original BNP/DIGITIMES domains, not republishers."""
     results: list[dict] = []
     seen: set[str] = set(previous.get("seen_source_urls") or [])
     fetched = 0
     for kind, query in CPU_STRUCTURE_SEARCHES:
+        if deadline is not None and monotonic() >= deadline:
+            break
         try:
             items = read_rss(kind, query)
         except Exception:
             continue
         for item in items:
+            if deadline is not None and monotonic() >= deadline:
+                break
             url = direct_url(item)
             if not url or url in seen:
                 continue
@@ -828,17 +843,21 @@ def snapshot_block(state: dict, fx: float | None, fx_date: str, changed: list[di
     lines.append(f'• <a href="{html.escape(AMD_RATIO_URL, quote=True)}">AMD 공식 근거</a>')
     return "\n".join(lines).strip() + "\n"
 
-def discover_forecasts(now: datetime, cutoff: str) -> list[dict]:
+def discover_forecasts(now: datetime, cutoff: str, deadline: float | None = None) -> list[dict]:
     out = []
     seen = set()
     fetch_budget = 6
     fetched = 0
     for kind, query in FORECAST_SEARCHES:
+        if deadline is not None and monotonic() >= deadline:
+            break
         try:
             items = read_rss(kind, query)
         except Exception:
             continue
         for item in items:
+            if deadline is not None and monotonic() >= deadline:
+                break
             url = direct_url(item)
             if not url or url in seen:
                 continue
@@ -875,28 +894,32 @@ def discover_forecasts(now: datetime, cutoff: str) -> list[dict]:
     return out
 
 
-def discover_validation(now: datetime, cutoff: str, seen_urls: set[str]) -> list[dict]:
+def discover_validation(now: datetime, cutoff: str, seen_urls: set[str], deadline: float | None = None) -> list[dict]:
     out = []
     seen = set(seen_urls)
     fetch_budget = 8
     fetched = 0
     for kind, query in VALIDATION_SEARCHES:
+        if deadline is not None and monotonic() >= deadline:
+            break
         try:
             items = read_rss(kind, query)
         except Exception:
             continue
         for item in items:
+            if deadline is not None and monotonic() >= deadline:
+                break
             url = direct_url(item)
             if not url or url in seen:
                 continue
             published = item.get("published_at_kst") or ""
             date = published[:10] if published else ""
             # Date-only cutoffs would discard reports published *later today*
-            # after the first scan. Revisit a 3-day window, dedupe by URL,
-            # and retry on transient feed failure.
+            # after the first scan. Revisit a 14-day window, dedupe by URL,
+            # and recover releases missed during multi-day GitHub delays/outages.
             if date:
                 try:
-                    if datetime.fromisoformat(date).date() < now.date() - timedelta(days=3):
+                    if datetime.fromisoformat(date).date() < now.date() - timedelta(days=CPU_VALIDATION_LOOKBACK_DAYS):
                         continue
                 except ValueError:
                     continue
@@ -922,12 +945,13 @@ def discover_validation(now: datetime, cutoff: str, seen_urls: set[str]) -> list
 
 def main() -> None:
     now = datetime.now(ZoneInfo("Asia/Seoul"))
+    scan_deadline = monotonic() + CPU_SCAN_WALL_SECONDS
     committed = load_json(STATE_PATH)
     pending = load_json(PENDING_PATH)
     previous = committed.get("agentic_cpu_demand") or BASELINE
     latest = json.loads(json.dumps(previous))
 
-    forecast_candidates = discover_forecasts(now, str(previous.get("as_of") or BASELINE["as_of"]))
+    forecast_candidates = discover_forecasts(now, str(previous.get("as_of") or BASELINE["as_of"]), deadline=scan_deadline)
     forecast_changes: list[dict] = []
     ratio_change: tuple[str, str] | None = None
     seen_forecast = set(previous.get("seen_forecast_urls") or [])
@@ -962,7 +986,7 @@ def main() -> None:
     ratio_after = ratio_before
 
     seen_validation = set(previous.get("seen_validation_urls") or [])
-    validation = discover_validation(now, str(previous.get("last_validation_cutoff") or ""), seen_validation)
+    validation = discover_validation(now, str(previous.get("last_validation_cutoff") or ""), seen_validation, deadline=scan_deadline)
     for item in validation:
         if item.get("url"):
             seen_validation.add(item["url"])
@@ -1026,7 +1050,7 @@ def main() -> None:
         or source_alert_needed
         or structure_first_install
     )
-    for entry in discover_cpu_structure(now, structure_latest):
+    for entry in discover_cpu_structure(now, structure_latest, deadline=scan_deadline):
         provider = entry["issuer"]
         new_metrics = entry["metrics"]
         changes = cpu_structure_changes(structure_latest.get(provider) or {}, new_metrics, provider)
