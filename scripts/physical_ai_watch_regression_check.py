@@ -3115,4 +3115,43 @@ assert abs((61.99-51.62)*1e6*1340.88/1e8-139.049256)<0.00001
 assert 314*3.2 == 1004.8000000000001  # one cell at 3.2V nominal
 
 
+
+# 54) Production-alert false-positive found in Run #553, message_id=207:
+# "ESS 올라탄 K배터리…LG엔솔·삼성SDI 3분기 실적 기대감↑"
+# is market expectation, not new actual operating profit or ESS contracts.
+ess_earnings_hope = make(
+    "ESS 올라탄 K배터리…LG엔솔·삼성SDI 3분기 실적 기대감↑",
+    "중국의 ESS LFP 수출 비용 증가로 한국 기업의 실적 개선 기대감이 높아졌다. "
+    "고객 실명 신규 계약이나 판매량 증가 확인은 발표되지 않았다.",
+    "전자신문",
+)
+hope_g, hope_s, hope_c, hope_k = classify(ess_earnings_hope)
+assert hope_s < 11, ("editorial ESS earning hope cannot be new high-signal",hope_g,hope_s,hope_c)
+assert watcher._is_ess_expectation_only(ess_earnings_hope), ess_earnings_hope
+
+hope_synonym = make(
+    "ESS 배터리 업계 3분기 실적 기대감 고조",
+    "ESS 테마 선호는 커지지만 새로운 계약이나 출하 숫자는 없다.",
+    "경제뉴스",
+)
+_, hope_syn_s, _, _ = classify(hope_synonym)
+assert hope_syn_s < 11, hope_syn_s
+
+# Do not suppress signed contracts merely because analysis text
+# mentions potential earnings, or direct company quarterly releases.
+ess_new_contract = make(
+    "삼성SDI 신규 공급계약 체결, ESS 실적 기대감 확대",
+    "삼성SDI가 신규 ESS 배터리 본계약을 체결했다고 발표했다.",
+    "삼성SDI",
+)
+assert not watcher._is_ess_expectation_only(ess_new_contract), ess_new_contract
+
+ess_actual_earnings = make(
+    "LG에너지솔루션 3분기 잠정 실적 발표, ESS 성장",
+    "LG에너지솔루션 공식 발표로 3Q 매출 9조6434억원과 영업이익 7560억원을 기록.",
+    "LG에너지솔루션",
+)
+assert not watcher._is_ess_expectation_only(ess_actual_earnings),ess_actual_earnings
+
+
 print("Physical-AI watcher regression guards: PASS")
