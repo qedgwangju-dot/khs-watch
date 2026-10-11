@@ -179,9 +179,9 @@ CATEGORIES = (
             'site:nasa.gov SpaceX Crew-15 Crew-16 Crew-17 Falcon 9 Dragon when:30d',
         ),
         relevance=re.compile(
-            r"(Falcon\\s*9|Falcon\\s*Heavy|Dragon|Starship).*(retire|phase.?out|transition|"
-            r"launch\\s*capacity|bottleneck|crew-1[567]|direct\\s*to\\s*cell|starlink\\s*mobile)|"
-            r"(retire|phase.?out|crew-1[567]|launch\\s*bottleneck).*(Falcon\\s*9|Dragon|Starship)",
+            r"(Falcon\s*9|Falcon\s*Heavy|Dragon|Starship).*(retire|phase.?out|transition|"
+            r"launch\s*capacity|bottleneck|crew-1[567]|direct\s*to\s*cell|starlink\s*mobile)|"
+            r"(retire|phase.?out|crew-1[567]|launch\s*bottleneck).*(Falcon\s*9|Dragon|Starship)",
             re.I,
         ),
         meaning="Falcon 9 발사 비중 축소 전망과 Dragon 유인운송 계약의 실제 종료는 별개입니다. 신규 위성군은 위성 질량·접힌 치수·발사당 수량이 검증돼야 발사량을 계산할 수 있습니다.",
@@ -455,13 +455,22 @@ def load_state() -> dict:
         data.setdefault("version", 1)
         data.setdefault("seen", {})
         return data
-    except Exception:
-        return {"version": 1, "seen": {}, "created_at": NOW.isoformat(), "recovered": True}
+    except Exception as exc:
+        raise RuntimeError("중복방지 상태파일 손상: 자동 초기화 금지, 감시 실행 중단") from exc
 
 
 def save_pending_state(state: dict) -> None:
     PENDING_STATE_PATH.parent.mkdir(parents=True, exist_ok=True)
-    state["updated_at"] = NOW.isoformat()
+    # Leave state unchanged on runs with no new facts. Avoid unnecessary
+    # repository commits, merge conflicts and duplicate notifications.
+    try:
+        previous = json.loads(STATE_PATH.read_text(encoding="utf-8")) if STATE_PATH.exists() else {}
+    except Exception as exc:
+        raise RuntimeError("중복 상태파일 재검증 실패: 저장 금지") from exc
+    if {k:v for k,v in state.items() if k != "updated_at"} != {k:v for k,v in previous.items() if k != "updated_at"}:
+        state["updated_at"] = NOW.isoformat()
+    else:
+        state["updated_at"] = previous.get("updated_at", NOW.isoformat())
     seen = state.get("seen", {})
     if len(seen) > 2500:
         ordered = sorted(seen.items(), key=lambda kv: kv[1], reverse=True)[:2000]
@@ -560,7 +569,7 @@ def main() -> int:
 
         for item in peers:
             iid = item_id(category.key, item)
-            if source_is_trusted(item) and signal_score(category, item) >= 0:
+            if source_is_trusted(item) and signal_score(category, item) >= 0 and iid not in seen:
                 seen[iid] = NOW.isoformat()
 
     if newly_initialized:
