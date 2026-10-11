@@ -5,6 +5,7 @@ on:
       - 'scripts/bio_korean_guard.py'
       - 'scripts/texas_data_center*.py'
       - 'scripts/lng_supply_crisis_alert_v34.py'
+      - 'scripts/lng_supply_crisis_alert_v22.py'
       - 'scripts/lng_collection_budget.py'
       - 'scripts/run_alert_regressions_offline.py'
       - 'tests/test_bio_alert_regressions.py'
@@ -13,6 +14,8 @@ on:
       - 'tests/test_crcl_validation_regression.py'
       - 'tests/test_lng_parser_clock_regression.py'
       - 'tests/test_lng_collection_budget.py'
+      - 'tests/test_lng_bundesbank_csv.py'
+      - 'tests/fixtures/bundesbank_run38156218314_preview.csv'
       - 'tests/fixtures/crcl_date_alignment.json'
       - '.github/workflows/alert-repair-offline-regressions.yml'
   push:
@@ -21,6 +24,7 @@ on:
       - 'scripts/bio_korean_guard.py'
       - 'scripts/texas_data_center*.py'
       - 'scripts/lng_supply_crisis_alert_v34.py'
+      - 'scripts/lng_supply_crisis_alert_v22.py'
       - 'scripts/lng_collection_budget.py'
       - 'scripts/run_alert_regressions_offline.py'
       - 'tests/test_bio_alert_regressions.py'
@@ -29,6 +33,8 @@ on:
       - 'tests/test_crcl_validation_regression.py'
       - 'tests/test_lng_parser_clock_regression.py'
       - 'tests/test_lng_collection_budget.py'
+      - 'tests/test_lng_bundesbank_csv.py'
+      - 'tests/fixtures/bundesbank_run38156218314_preview.csv'
       - 'tests/fixtures/crcl_date_alignment.json'
       - '.github/workflows/alert-repair-offline-regressions.yml'
 permissions:
