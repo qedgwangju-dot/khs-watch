@@ -795,6 +795,12 @@ def _is_airan(text: str) -> bool:
 
 
 def topic_group(text: str) -> str | None:
+    if _is_lfp_na_314_price(text):
+        return 'lfp_314_cif_north_america'
+    if _is_2026_roadmap_rewrite(text):
+        return 'battery_roadmap_2026_baseline'
+    if _is_legacy_ev_ess_pivot(text):
+        return 'ev_to_ess_oversupply_baseline'
     if _is_optimus_hand_magnet(text):
         return 'optimus_hand_magnet'
     if _is_humanoid_dram(text):
@@ -824,7 +830,16 @@ def _stage(text: str) -> str:
 
 def score(item: dict) -> int:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
-    if topic_group(text) == 'optimus_hand_magnet':
+    group = topic_group(text)
+    if group == 'lfp_314_cif_north_america':
+        if item.get('source') in LFP_NA_CIF_PRIMARY:
+            return 46
+        if item.get('source') in LFP_NA_CIF_TRUSTED:
+            return 34
+        return 0
+    if group in {'battery_roadmap_2026_baseline','ev_to_ess_oversupply_baseline'}:
+        return 0
+    if group == 'optimus_hand_magnet':
         return {'retrospective_supply_bottleneck': 43, 'new_schedule_warning': 55,
                 'background': 0}.get(_optimus_hand_magnet_stage(text,item.get('source') or ''),0)
     if topic_group(text) == 'humanoid_brain_dram':
@@ -878,6 +893,12 @@ def score(item: dict) -> int:
 
 
 def category(text: str, group: str) -> str:
+    if group == 'lfp_314_cif_north_america':
+        return 'ESS LFP 북미 조달 · 314Ah 9월 CIF 가격·관세 가정'
+    if group == 'battery_roadmap_2026_baseline':
+        return '배터리 산업기술 로드맵 · 9월 정부 발표 기존 기준선'
+    if group == 'ev_to_ess_oversupply_baseline':
+        return '미국 EV→ESS 전환 · 기존 공장 재배치 배경'
     if group == 'optimus_hand_magnet':
         return 'Optimus 손·자석 · 2025년 공급망 차질 경영진 회고' if OPTIMUS_HAND_MAGNET_RETRO.search(text) else 'Optimus 손·자석 · 실제 신규 일정변경 확인'
     if group == 'humanoid_brain_dram':
@@ -945,6 +966,37 @@ def category(text: str, group: str) -> str:
 
 
 def meaning(cat: str) -> str:
+    if cat == 'ESS LFP 북미 조달 · 314Ah 9월 CIF 가격·관세 가정':
+        return (
+            'Benchmark 2026년 9월 실제 314Ah LFP 가격평가: 중국 EXW '
+            '51.62달러/kWh(약 69,216원), 북미 CIF 61.99달러/kWh(약 83,121원). '
+            '10.37달러 차이는 운송·보험 등을 포함한 인도조건 차이이며 '
+            '북미 CIF는 관세 이전 가격입니다. '
+            '디일렉이 인용한 최대 40.9%를 CIF에 단순 곱하면 '
+            '87.34달러/kWh(약 117,118원)이지만 이는 실제 확정 관세가 '
+            '아닌 시나리오입니다. 환산은 1달러=1,340.88원 '
+            '(2026-10-12 03:20 KST 제공 환율)을 적용했습니다. '
+            '1GWh=100만kWh 기준 중국산 북미 CIF 약 831.21억원, '
+            '관세 가정 약 1,171.18억원, 차액 약 339.97억원입니다. '
+            '미국 현지 생산 기업의 매출·원가·마진이 확정된 것은 아닙니다.'
+        )
+    if cat == '배터리 산업기술 로드맵 · 9월 정부 발표 기존 기준선':
+        return (
+            '산업통상부 2026-09-22 공식 로드맵의 연구개발 총사업비는 '
+            '2027~2031년 약 4,000억원이며 민간은 2026~2030년 '
+            '연구개발·설비투자 약 8조원을 계획했습니다. 10/12 기사 '
+            '3,000억원을 동일 정책의 신규 예산으로 중복 계산하지 않습니다. '
+            '전고체 로봇·드론 배터리 610억원은 보도된 세부 사업으로 '
+            '실제 신규 집행이나 별도 증액이 확인된 것은 아닙니다.'
+        )
+    if cat == '미국 EV→ESS 전환 · 기존 공장 재배치 배경':
+        return (
+            '북미 전기차 배터리 공장의 ESS 전환은 이미 시행 중인 '
+            '업계 전략입니다. 1000억달러 누적투자 추정, '
+            '275GWh 설비 대비 182GWh 수요 전망 등을 오늘 신규 '
+            '투자나 공장 가동중단 확정이라고 알리지 않습니다. '
+            '기업의 신규 상업가동·공식 물량·수주·실제 매출을 분리합니다.'
+        )
     if cat == 'Optimus 손·자석 · 2025년 공급망 차질 경영진 회고':
         return ('머스크는 X Takeover에서 작은 셀프태핑 나사를 집어 나무에 박는 정밀조작과 힘 제어를 동시에 달성하기 어렵다고 설명했습니다. '
                 '2025년 중국의 모터용 희토류 자석 수출 제한으로 Optimus가 2~3개월 지연됐었다는 회고는 공급망 위험의 정량 근거입니다. '
@@ -1068,6 +1120,18 @@ def meaning(cat: str) -> str:
 
 
 def risk(cat: str) -> str:
+    if cat == 'ESS LFP 북미 조달 · 314Ah 9월 CIF 가격·관세 가정':
+        return (
+            '40.9%를 모든 중국산 314Ah 셀의 확정 세율로 취급하면 '
+            '상품분류·면제·과세가격 차이를 놓칩니다. '
+            '중국 9월 리튬가격 하락이 뒤늦게 반영되거나 운임이 '
+            '내리면 북미 가격차가 다시 줄어들 수 있습니다. '
+            '셀 열폭주 전파·배기·방폭·소화·냉각, '
+            '현지 화재인증·보험, 고객 설치 지연·검수와 '
+            '배터리 수율도 실제 매출의 병목입니다. '
+            '6~12개월 조기지표는 다음 CIF/EXW 가격차, '
+            '관세 공식 유효일, 북미 실제 GWh 출하와 가동률입니다.'
+        )
     if cat.startswith('Optimus 손·자석 · '):
         return ('손의 정밀 제어·토크·촉각·마찰·발열·반복 내구성과 희토류 자석 납기·품질·원산지 인증이 결합한 병목입니다. '
                 '실패 경로는 자석 공급 지연→모터·손 액추에이터 생산 불능→조립 라인 공백→로봇 인도 지연입니다. '
@@ -1130,6 +1194,12 @@ def risk(cat: str) -> str:
 
 
 def verification(item: dict, group: str, text: str) -> str:
+    if group == 'lfp_314_cif_north_america':
+        return (
+            'Benchmark Mineral Intelligence 2026-10-09 분기 원자료·'
+            '디일렉 2026-10-12 교차확인 · 61.99달러는 관세 전 CIF · '
+            '40.9%는 조건부 관세 가정, 실제 미국 통관 세율 미확정'
+        )
     if group == 'optimus_hand_magnet':
         return ('2026-10-10 행사 주최 자료·영상 재게시·2026-10-11 구체적 대담 인용 보도와 Tesla Q2 실적자료 교차확인 · '
                 '머스크의 2025년 자석 제한에 따른 2~3개월 과거 지연 회고 · 원대담 전체 직접 전사 미완료 · 신규 일정확정 아님')
@@ -1194,6 +1264,8 @@ def verification(item: dict, group: str, text: str) -> str:
 
 
 def clean_title(title: str, source: str) -> str:
+    if _is_lfp_na_314_price(title + ' ' + source):
+        return '314Ah LFP 북미 CIF 61.99달러…관세 40.9%는 별도 가정'
     if _is_optimus_hand_magnet(title + ' ' + source):
         return '머스크: Optimus 손 정밀·힘 제어 병목, 2025년 자석 제한 2~3개월 차질 회고'
     text = f'{title} {source}'
@@ -1254,6 +1326,8 @@ def clean_title(title: str, source: str) -> str:
 
 
 def tag_for(group: str) -> str:
+    if group == 'lfp_314_cif_north_america':
+        return '북미 ESS LFP 조달원가'
     if group == 'optimus_hand_magnet':
         return 'Optimus 손·자석 공급망'
     if group == 'humanoid_brain_dram':
@@ -1273,6 +1347,14 @@ def tag_for(group: str) -> str:
 
 def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    if topic_group(text) == 'lfp_314_cif_north_america':
+        return hashlib.sha256(
+            b'Benchmark|LFP-314Ah|2026-09|CN-EXW-51.62|NA-CIF-61.99|EU-CIF-59.18'
+        ).hexdigest()
+    if topic_group(text) in {'battery_roadmap_2026_baseline','ev_to_ess_oversupply_baseline'}:
+        return hashlib.sha256(
+            f'old-battery-story|{topic_group(text)}|2026'.encode()
+        ).hexdigest()
     if topic_group(text) == 'optimus_hand_magnet':
         stage = _optimus_hand_magnet_stage(text,item.get('source') or '')
         return hashlib.sha256(f'optimus|hand-magnet|xtakeover-20261010|{stage}'.encode()).hexdigest()
@@ -1367,6 +1449,9 @@ def key(item: dict) -> str:
 def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -> list[dict]:
     chosen = _orig_select_diverse(items, seen, force, limit)
     candidates = items if force else [x for x in items if x.get('key') not in seen]
+    price_update = next((x for x in candidates if x.get('group') == 'lfp_314_cif_north_america'),None)
+    if price_update and not any(x.get('key') == price_update.get('key') for x in chosen):
+        chosen = ([price_update,*chosen] if len(chosen)<limit else [price_update,*chosen[:-1]])
     hand_magnet = next((x for x in candidates if x.get('group') == 'optimus_hand_magnet'),None)
     if hand_magnet and not any(x.get('key') == hand_magnet.get('key') for x in chosen):
         chosen = ([hand_magnet,*chosen] if len(chosen)<limit else [hand_magnet,*chosen[:-1]])
