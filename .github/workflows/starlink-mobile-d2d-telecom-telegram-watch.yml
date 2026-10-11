@@ -94,32 +94,6 @@ jobs:
         run: |
           python scripts/space_launch_telegram_send.py --inline out/starlink_mobile_d2d_watch_telegram.txt
 
-      - name: One-time on-device layout confirmation
-        env:
-          SPACE_LAUNCH_TELEGRAM_BOT_TOKEN: ${{ secrets.SPACE_LAUNCH_TELEGRAM_BOT_TOKEN }}
-          SPACE_LAUNCH_TELEGRAM_CHAT_ID: ${{ secrets.SPACE_LAUNCH_TELEGRAM_CHAT_ID }}
-        run: |
-          python - <<'PY'
-          import sys
-          from pathlib import Path
-          from datetime import datetime
-          from zoneinfo import ZoneInfo
-          sys.path.insert(0, "scripts")
-          from starlink_mobile_d2d_watch import price_dividend_display_correction
-          from starlink_mobile_d2d_readability import format_mobile
-          stamp = datetime.now(ZoneInfo("Asia/Seoul")).strftime("%Y-%m-%d %H:%M KST")
-          text = (
-              "📡 Starlink Mobile·가독성 개선 표시 시험\n"
-              f"검증 시각: {stamp}\n"
-              "※ 10월 9일 기존 검증내용의 표시 시험이며 새 소식이 아닙니다.\n\n"
-              + price_dividend_display_correction()
-          )
-          Path("out/starlink_mobile_d2d_layout_demo.txt").write_text(
-              format_mobile(text), encoding="utf-8"
-          )
-          PY
-          python scripts/space_launch_telegram_send.py --inline out/starlink_mobile_d2d_layout_demo.txt
-
       - name: Persist dedup state only after successful delivery, merge on push conflicts
         if: success() && hashFiles('out/starlink_mobile_d2d_watch_pending.json') != ''
         run: |
