@@ -2942,4 +2942,33 @@ finally:
     base.NOW = old_counterpoint_now
 
 
+
+# 51) A later real humanoid low-power DRAM supply agreement is an
+# upgrade only with a named robotics customer and memory VENDOR origin.
+memory_vendor_order = make(
+    "SK hynix NVIDIA Jetson Thor 휴머노이드 로봇 LPDDR5X 정식 공급계약 체결",
+    "SK하이닉스는 NVIDIA Jetson Thor 휴머노이드 로봇 플랫폼용 "
+    "LPDDR5X D램 정식 공급계약 체결을 발표했다.",
+    "SK하이닉스",
+)
+vg, vs, vc, vk = classify(memory_vendor_order)
+assert vg == 'humanoid_brain_dram' and vs >= 11, (vg,vs,vc)
+assert vc == '휴머노이드 두뇌 D램 · 고객 실명 양산 공급계약 확인',vc
+assert vk != mmk, "real supplier contract must be new event vs demand forecast"
+vendor_text=memory_vendor_order['title']+' '+memory_vendor_order['description']
+assert base.category(vendor_text,base.topic_group(vendor_text))==vc
+assert '원문 확인 단계' in base.verification(memory_vendor_order,vg,vendor_text)
+
+memory_media_contract_claim = dict(memory_vendor_order,source='테마 뉴스')
+ng, ns, nc, nk = classify(memory_media_contract_claim)
+assert ng == vg and ns < 11, (ng,ns,nc)
+memory_mou_only = make(
+    "SK하이닉스 NVIDIA 휴머노이드 로봇 LPDDR5X 공동개발",
+    "SK hynix NVIDIA Jetson Thor 로봇 D램 공동개발 협약으로 "
+    "향후 공급 계약은 아직 확정되지 않았다.",
+    "SK하이닉스",
+)
+mg, ms, mc, mk = classify(memory_mou_only)
+assert mg != 'humanoid_brain_dram' or ms < 11,(mg,ms,mc)
+
 print("Physical-AI watcher regression guards: PASS")
