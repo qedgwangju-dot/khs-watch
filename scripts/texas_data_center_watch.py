@@ -197,6 +197,9 @@ def date_to_korean(value):
 
 def relevant(title, body):
     signal = f"{title} {body[:18000]}"
+    # A distribution channel is not an Amazon data-center project. Remove only
+    # this exact media-service mention; material content elsewhere still counts.
+    signal = re.sub(r"\bAmazon\s+Music\b", "음악 스트리밍 서비스", signal, flags=re.I)
     if TOPIC_RE.search(signal) and (GRID_RE.search(signal) or ACTION_RE.search(signal)):
         return True
     if re.search(r"data[ -]?cent(?:er|re)s?", signal, re.I) and MATERIAL_RE.search(signal):
@@ -219,6 +222,10 @@ def summarize_detail(body):
     return " / ".join(snippets)[:1200]
 
 
+class TranslationProviderBlocked(RuntimeError):
+    """An explicit quota/access challenge must not be repeatedly requested."""
+
+
 def _request_google_translation(text):
     # deep-translator's Google wrapper does not pass through an HTTP timeout.
     # Own this small transport boundary instead of changing requests globally.
@@ -228,7 +235,14 @@ def _request_google_translation(text):
         "https://translate.google.com/m",
         params={"sl": "auto", "tl": "ko", "q": text},
         timeout=TRANSLATION_HTTP_TIMEOUT,
+        allow_redirects=False,
     ) as response:
+        # Never follow a challenge URL or retry an explicit rate/access block.
+        location = response.headers.get("Location", "")
+        if response.status_code in (403, 429) or "/sorry/" in location:
+            raise TranslationProviderBlocked("translation provider access/rate block; retry withheld")
+        if 300 <= response.status_code < 400:
+            raise TranslationProviderBlocked("unexpected translation redirect; retry withheld")
         response.raise_for_status()
         soup = BeautifulSoup(response.text, "html.parser")
     element = soup.select_one("div.t0, div.result-container")
@@ -266,6 +280,8 @@ def _translate_clean_text(text):
             if translated and re.search(r"[가-힣]", translated):
                 return translated
             last = RuntimeError("translation returned no Korean text")
+        except TranslationProviderBlocked:
+            raise
         except Exception as exc:
             last = exc
         finally:

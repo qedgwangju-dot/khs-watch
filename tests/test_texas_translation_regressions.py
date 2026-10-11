@@ -7,7 +7,7 @@ import sys
 import tempfile
 import unittest
 from contextlib import ExitStack
-from unittest.mock import patch
+from unittest.mock import MagicMock, patch
 
 from requests import HTTPError, Timeout
 
@@ -73,6 +73,8 @@ class TexasTranslationRegressions(unittest.TestCase):
     def test_http_adapter_preserves_provider_selectors_and_sets_explicit_timeouts(self):
         self.http_get.side_effect = None
         response = self.http_get.return_value.__enter__.return_value
+        response.status_code = 200
+        response.headers = {}
         for selector in ("t0", "result-container"):
             with self.subTest(selector=selector):
                 response.text = f'<html><div class="{selector}">신규 <span>승인</span></div></html>'
@@ -81,6 +83,7 @@ class TexasTranslationRegressions(unittest.TestCase):
                     "https://translate.google.com/m",
                     params={"sl": "auto", "tl": "ko", "q": "New approval"},
                     timeout=(5, 15),
+                    allow_redirects=False,
                 )
         self.assertEqual(response.raise_for_status.call_count, 2)
         self.assertEqual(self.http_get.return_value.__exit__.call_count, 2)
@@ -88,8 +91,10 @@ class TexasTranslationRegressions(unittest.TestCase):
     def test_http_adapter_rejects_error_status_and_missing_translation_element(self):
         self.http_get.side_effect = None
         response = self.http_get.return_value.__enter__.return_value
-        response.raise_for_status.side_effect = HTTPError("429 Too Many Requests")
-        with self.assertRaisesRegex(HTTPError, "429"):
+        response.status_code = 200
+        response.headers = {}
+        response.raise_for_status.side_effect = HTTPError("503 Service Unavailable")
+        with self.assertRaisesRegex(HTTPError, "503"):
             self.request_translation("New approval")
         response.raise_for_status.side_effect = None
         response.text = "<html><body>No translation available</body></html>"
@@ -125,8 +130,8 @@ class TexasTranslationRegressions(unittest.TestCase):
         self.assertEqual(call_times, [1000.0, 1003.0])
         self.assertEqual(self.clock.sleeps, [watch.TRANSLATION_MIN_INTERVAL])
 
-    def test_rate_limit_recovers_with_bounded_backoff(self):
-        self.translate.side_effect = [HTTPError("429 Too Many Requests"), "신규 승인"]
+    def test_transient_failure_recovers_with_bounded_backoff(self):
+        self.translate.side_effect = [HTTPError("503 Service Unavailable"), "신규 승인"]
         self.assertEqual(watch.translate_to_korean("New approval"), "신규 승인")
         self.assertEqual(self.translate.call_count, 2)
         self.assertEqual(self.clock.sleeps, [5])
@@ -160,7 +165,7 @@ class TexasTranslationRegressions(unittest.TestCase):
         self.assertEqual(self.translate.call_count, 2)
 
     def test_last_allowed_attempt_can_succeed(self):
-        self.translate.side_effect = [HTTPError("429 Too Many Requests")] * 3 + ["정상 번역"]
+        self.translate.side_effect = [HTTPError("503 Service Unavailable")] * 3 + ["정상 번역"]
         self.assertEqual(watch.translate_to_korean("A pending project"), "정상 번역")
         self.assertEqual(self.translate.call_count, 4)
         self.assertEqual(self.clock.sleeps, [5, 15, 30])
@@ -320,6 +325,50 @@ class TexasTranslationRegressions(unittest.TestCase):
             self.assertIn("if: success() &&", step)
         delivery = workflow.split("- name: Persist state only after confirmed Telegram delivery\n", 1)[1]
         self.assertIn("hashFiles('out/texas_data_center_watch_telegram_confirmed.json') != ''", delivery.split("run:", 1)[0])
+
+
+class TexasRecoveryTests(unittest.TestCase):
+    def tearDown(self):
+        watch._translate_clean_text.cache_clear()
+
+    def test_podcast_distribution_is_not_datacenter_event(self):
+        self.assertFalse(watch.relevant('REVISED: ERCOT Launches Podcast',
+            'ERCOT introduces an electricity podcast. Distribution includes Amazon Music.'))
+
+    def test_music_disambiguation_preserves_real_material_change(self):
+        self.assertTrue(watch.relevant('ERCOT podcast announces data center approval',
+            'The episode appears on Amazon Music. PUCT approved a data center grid connection.'))
+
+    def test_amazon_project_remains_relevant(self):
+        self.assertTrue(watch.relevant('Amazon announces Texas project',
+            'Amazon commits to funding transmission and generation for its data center.'))
+
+    def test_large_load_approval_remains_relevant(self):
+        self.assertTrue(watch.relevant('PUCT Approves ERCOT Batch Zero Process',
+            'The process connects large electricity users while protecting system reliability.'))
+
+    def test_explicit_blocks_make_one_request_without_sleep_or_cache(self):
+        for status, headers in [(429, {}), (403, {}), (302, {'Location':'https://www.google.com/sorry/index'}),
+                                (302, {'Location':'https://unexpected.example/'})]:
+            with self.subTest(status=status, headers=headers):
+                watch._translation_last_request_at = None
+                response=MagicMock(status_code=status, headers=headers)
+                with patch.object(watch.requests, 'get') as get, patch.object(watch.time, 'sleep') as sleep:
+                    get.return_value.__enter__.return_value=response
+                    with self.assertRaises(watch.TranslationProviderBlocked):
+                        watch.translate_to_korean('A new project approval')
+                    get.assert_called_once()
+                    self.assertFalse(get.call_args.kwargs['allow_redirects'])
+                    sleep.assert_not_called()
+                    self.assertEqual(watch._translate_clean_text.cache_info().currsize, 0)
+
+    def test_successful_translation_still_validated(self):
+        watch._translation_last_request_at = None
+        response=MagicMock(status_code=200, headers={}, text='<div class="result-container">새 프로젝트 승인</div>')
+        with patch.object(watch.requests, 'get') as get:
+            get.return_value.__enter__.return_value=response
+            self.assertEqual(watch.translate_to_korean('New project approval'), '새 프로젝트 승인')
+            self.assertEqual(get.call_args.kwargs['timeout'], (5,15))
 
 
 if __name__ == "__main__":
