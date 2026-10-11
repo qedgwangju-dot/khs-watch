@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-11T13:08:47+09:00",
+  "updated_at_kst": "2026-10-11T13:11:46+09:00",
   "seen_ids": [
     "00315ac822df3f19f0f17bfd",
     "01899de42b17bb25951592cf",
@@ -185,19 +185,17 @@
     "rubin_ultra_spec_192gb_288gb_1tb",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 2,
+  "last_unseen_raw_count": 0,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1341.49,
-    "date": "2026-10-09 일일 기준 · ECB/Frankfurter · 조회 2026-10-11 13:09 KST · 보조 API 2026-10-11 · 차이 0.01% · 일중 기준시각 차이 가능",
+    "date": "2026-10-09 일일 기준 · ECB/Frankfurter · 조회 2026-10-11 13:12 KST · 보조 API 2026-10-11 · 차이 0.01% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
-  "errors": [
-    "원문 URL 확인 실패: 더구루 | SK, 3분기 中서 특허 300건 돌파…'HBM·eSSD·전고체' IP 장벽 구축 - 더구루"
-  ],
+  "errors": [],
   "ai_component_leadtime": {
     "as_of": "2026-10-05",
     "source": "https://insights.trendforce.com/p/weekly-radar-004",
@@ -321,13 +319,13 @@
       "https://www.trendforce.com/news/",
       "https://www.trendforce.com/research"
     ],
-    "last_checked_at_kst": "2026-10-11T13:09:01+09:00",
+    "last_checked_at_kst": "2026-10-11T13:12:01+09:00",
     "candidate_count": 3,
     "errors": []
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-10-11T13:09:14+09:00",
+    "checked_at_kst": "2026-10-11T13:12:14+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-10-10T14:30:35+09:00",
@@ -395,7 +393,7 @@
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
     "last_validation_cutoff": "2026-10-11",
-    "last_checked_at_kst": "2026-10-11T13:09:04+09:00",
+    "last_checked_at_kst": "2026-10-11T13:12:03+09:00",
     "cpu_structure": {
       "bnpp_public": {
         "as_of": "2026-10-05",
@@ -454,7 +452,12 @@
       ],
       "cpu_xpu_ratio_alert_sent": true
     },
-    "cpu_structure_track_version": 1
+    "cpu_structure_track_version": 1,
+    "cpu_source_scan_limited": {
+      "forecast_time_budget_exhausted": false,
+      "validation_time_budget_exhausted": false,
+      "structure_time_budget_exhausted": false
+    }
   },
   "samsung_electromechanics_cpu_realization": {
     "as_of": "2026-09-23",
@@ -490,7 +493,7 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
     "last_checked_cutoff": "2026-10-11",
-    "last_checked_at_kst": "2026-10-11T13:09:09+09:00",
+    "last_checked_at_kst": "2026-10-11T13:12:08+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -534,7 +537,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-10-11T13:09:10+09:00",
+    "last_checked_at_kst": "2026-10-11T13:12:10+09:00",
     "candidate_count": 0,
     "event_count": 0,
     "area_structure": {
