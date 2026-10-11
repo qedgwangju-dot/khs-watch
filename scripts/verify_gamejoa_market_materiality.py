@@ -29,6 +29,10 @@ ATTACHMENT_FIXTURE_20261010 = json.loads(
     (Path(__file__).resolve().parent.parent / "data/gamejoa_attachment_quality_fixtures_20261010.json")
     .read_text(encoding="utf-8")
 )
+ATTACHMENT_FIXTURE_20261011 = json.loads(
+    (Path(__file__).resolve().parent.parent / "data/gamejoa_attachment_quality_fixtures_20261011.json")
+    .read_text(encoding="utf-8")
+)
 KEEP = (
     ("식품기업, 미국 김밥 매출 59% 증가", "식품기업은 미국 김밥의 1∼7월 매출이 전년비 59% 증가했다고 밝혔다."),
     ("전자기업, 신제품 공개…분기 가이던스 상향", "전자기업은 분기 매출 가이던스를 12% 상향했다고 발표했다."),
@@ -2186,6 +2190,31 @@ class MaterialityChecks(unittest.TestCase):
         with patch.object(radar.base, "kst_now", return_value=NOW):
             self.assertEqual(radar.quality_display_alerts([alert(title, body)], 1), [])
 
+    def test_personal_investor_anecdote_with_index_context_is_not_aggregate_flow(self):
+        title = "코스피 9000 찍자 예금 깨고 '반도체 ETF'에 다 걸었는데"
+        body = (
+            "코스피가 9000선을 넘어서자 한 직장인은 예금을 해지해 자신의 IRP 계좌로 반도체 ETF를 샀다. "
+            "이 기사는 개인 투자자의 선택과 계좌 운용 사례를 소개한다."
+        )
+        item = alert(title, body)
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit["disposition"], "exclude", audit)
+        self.assertEqual(audit["reason"], "individual_investor_anecdote_without_aggregate_market_flow")
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(radar.quality_display_alerts([item], 1), [])
+
+    def test_exchange_reported_quantified_etf_flow_remains_eligible(self):
+        title = "개인, 반도체 ETF 2조1000억원 순매수"
+        body = (
+            "한국거래소 집계에 따르면 10월 8일 개인 투자자는 반도체 ETF를 2조1000억원 순매수했다. "
+            "이는 같은 기간 ETF 투자자별 순매수 통계다."
+        )
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit["disposition"], "keep", audit)
+        self.assertIn("market_price_or_flow", {item["kind"] for item in audit["evidence"]})
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(len(radar.quality_display_alerts([alert(title, body)], 1)), 1)
+
     def test_fx_outlook_core_keeps_analyst_target_and_horizon(self):
         title = "원·달러 환율 다시 오르나…1400원대 넘어설 전망"
         body = ("원·달러 환율이 1330원대까지 급락한 뒤 다시 상승할 것이라는 전망이 나왔다. "
@@ -3218,6 +3247,66 @@ class ForegroundAndEventIdentityTests(unittest.TestCase):
                 self.assertTrue(story["title"])
                 self.assertTrue(story["summary"])
                 self.assertTrue(story["market_path"])
+        for left_id, right_id in fixture["must_remain_distinct"]:
+            with self.subTest(distinct_pair=(left_id, right_id)):
+                left, right = by_id[left_id], by_id[right_id]
+                self.assertNotEqual(left["event_key"], right["event_key"])
+                self.assertFalse(materiality.same_headline_event(
+                    left["title"], right["title"], left["market_path"], right["market_path"],
+                ))
+
+    def test_october_eleventh_attachment_is_exhaustively_triaged_with_source_boundaries(self):
+        fixture = ATTACHMENT_FIXTURE_20261011
+        stories = fixture["stories"]
+        self.assertEqual(len(stories), fixture["input_count"])
+        self.assertEqual(len(stories), 14)
+        self.assertEqual(len({story["id"] for story in stories}), 14)
+        self.assertEqual(len({story["url"] for story in stories}), 14)
+        self.assertEqual(len({story["event_key"] for story in stories}), 14)
+        self.assertEqual(
+            {decision: sum(story["decision"] == decision for story in stories)
+             for decision in fixture["decision_counts"]},
+            fixture["decision_counts"],
+        )
+        self.assertIn("not independent verification", fixture["source_boundary"])
+        self.assertEqual(fixture["decision_counts"], {
+            "send_candidate": 4,
+            "watch_confirmation": 8,
+            "exclude_current_evidence": 2,
+        })
+        self.assertEqual({story["id"] for story in stories}, {
+            "agentic_ai_thematic_etf_launch",
+            "putin_moscow_airports_closure",
+            "trump_putin_diesel_supply_deal",
+            "usdkrw_weekly_analyst_outlook",
+            "ai_hbm_memory_supply_shortage_2028",
+            "kospi_october_eighth_drawdown_outlook",
+            "cdn_ai_agent_ytd_stock_performance_recap",
+            "samsung_high_rate_net_cash_strategy",
+            "nvidia_inp_laser_supplier_investment_recap",
+            "trump_lisa_cook_fed_governance_inquiry",
+            "naver_uber_membership_partnership_ended",
+            "sk_china_patent_count_q3",
+            "us_treasury_term_premium_12y_high",
+            "samsung_q3_preliminary_earnings_price_divergence",
+        })
+        by_id = {story["id"]: story for story in stories}
+        for story in stories:
+            with self.subTest(story=story["id"]):
+                self.assertTrue(story["url"].startswith(("https://", "http://")))
+                self.assertTrue(story["title"])
+                self.assertTrue(story["summary"])
+                self.assertTrue(story["market_path"])
+                self.assertTrue(story["decision_reason"])
+                self.assertIn(story["source_status"], {
+                    "exact_link_body_checked",
+                    "secondary_confirmation_only",
+                    "exact_link_unavailable",
+                    "google_news_origin_unresolved",
+                })
+        for group in fixture["duplicate_event_groups"]:
+            with self.subTest(duplicate_group=group):
+                self.assertEqual(len({by_id[story_id]["event_key"] for story_id in group}), 1)
         for left_id, right_id in fixture["must_remain_distinct"]:
             with self.subTest(distinct_pair=(left_id, right_id)):
                 left, right = by_id[left_id], by_id[right_id]
