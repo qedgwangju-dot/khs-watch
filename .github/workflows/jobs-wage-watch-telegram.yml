@@ -1,26 +1,7 @@
 name: Jobs Wage Watch Telegram
 
+# Paused at the user's request. Restore triggers and remove the job guard only after re-enabling.
 on:
-  push:
-    branches: [main]
-    paths:
-      - ".github/workflows/jobs-wage-watch-telegram.yml"
-      - "scripts/jobs_wage_watch.py"
-      - "scripts/jobs_wage_watch_runner.py"
-      - "scripts/jobs_wage_watch_entry.py"
-      - "scripts/jobs_wage_watch_full_report.py"
-      - "scripts/jobs_wage_watch_full_report_v2.py"
-      - "scripts/jobs_wage_watch_full_report_v3.py"
-      - "scripts/jobs_wage_watch_full_report_v4.py"
-      - "scripts/jobs_wage_watch_full_report_v5.py"
-      - "scripts/jobs_wage_watch_full_report_v6.py"
-      - "scripts/jobs_wage_watch_full_report_v7.py"
-      - "scripts/jobs_wage_watch_full_report_v8.py"
-      - "scripts/jobs_wage_watch_full_report_v9.py"
-      - "data/jobs_wage_watch_state.json"
-      - "data/jobs_wage_full_state.json"
-  schedule:
-    - cron: "12 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -32,6 +13,7 @@ concurrency:
 
 jobs:
   monitor:
+    if: ${{ false }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
