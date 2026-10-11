@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-10-09T18:58:06+09:00",
-  "last_checked_kst": "2026-10-12T04:07:35+09:00",
+  "last_checked_kst": "2026-10-12T04:34:05+09:00",
   "seen": {
     "43cceaed20a8c7450e6ef644": {
       "title": "[단독] LG전자 “우리도 반도체 개발합니다”…보쉬와 손잡고 ‘차량 칩렛’ 도전 - 매일경제",
@@ -12,6 +12,16 @@
       "published_kst": "2026-10-09T17:47+09:00",
       "first_seen_kst": "2026-10-09T18:58:06+09:00",
       "baseline": true
+    },
+    "b9877c12c71b9a077484efec": {
+      "title": "LG전자, 보쉬와 차량용 '칩렛반도체' 개발 - 매일경제",
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9YVkswa3Mzem5CTUxRVFdCSVk2YkxLSktyLTlSTW1NdmkzdDBldjd4MzBZMDFzeDI5b0oxRi1MdzlSS3dlbzhxNzFtSFhSWmFiWWxHMTZB?oc=5",
+      "source": "매일경제",
+      "event_id": "lg_bos_hana|bosch_coverage",
+      "stage": 1,
+      "published_kst": "2026-10-09T17:10+09:00",
+      "first_seen_kst": "2026-10-12T04:34:05+09:00",
+      "suppressed_stale": true
     }
   },
   "events": {
