@@ -31,6 +31,8 @@ for _required in (
     "DIGITAL_OPTIMUS_GAME_RECOVERY =",
     "HUMANOID_DRAM_RECOVERY =",
     "OPTIMUS_HAND_MAGNET_RECOVERY =",
+    "LFP_NA_CIF_PRICE_RECOVERY =",
+    "def _lfp_na_price_recovery(",
     "def _humanoid_dram_recovery(",
     "def _digital_optimus_game_recovery(",
     "def _dongkuk_report_recovery(",
@@ -3012,5 +3014,105 @@ try:
     assert watcher.query_news(watcher.OPTIMUS_HAND_MAGNET_RECOVERY)==[]
 finally:
     base.NOW=oldnow
+
+
+# 53) Sep 2026 BMI 314Ah price observation; no unconditional 40.9% duty
+# or 50GWh company revenue inference, no rerun of two old October headlines.
+bmi_price = make(
+    "Benchmark LFP 314Ah September 2026 cell price review",
+    "Benchmark Mineral Intelligence September 2026: Chinese 314Ah LFP EXW China "
+    "$51.62/kWh, CIF North America $61.99/kWh and CIF Europe $59.18/kWh. "
+    "These are assessed cell prices without US import duties.",
+    "Benchmark Mineral Intelligence",
+)
+bg, bs, bc, bk = classify(bmi_price)
+assert bg == 'lfp_314_cif_north_america' and bs >= 11,(bg,bs,bc)
+assert bc == 'ESS LFP 북미 조달 · 314Ah 9월 CIF 가격·관세 가정',bc
+info = base.meaning(bc)
+for piece in ('51.62', '61.99', '10.37', '20.09%', '40.9%', '조건', '831.21억원', '1,171.18억원', '339.97억원'):
+    assert piece in info,(piece,info)
+risk_note=base.risk(bc)
+assert '관세' in risk_note and '화재' in risk_note or ('열폭주' in risk_note and '보험' in risk_note), risk_note
+assert '실제' in base.verification(bmi_price,bg,bmi_price['title']+" "+bmi_price['description'])
+assert watcher.qty._skip_quantity_enrichment(
+    '<b>1. 북미 ESS LFP 조달원가</b>\n'
+    '<b>분류</b>  ESS LFP 북미 조달 · 314Ah 9월 CIF 가격·관세 가정\n'
+    '1GWh 기준 100만kWh·314Ah 셀 가정'
+), 'Do not invent robot quantities or 1GW supply contracts from GWh'
+
+elec_rewrite = make(
+    "중국산 배터리 314Ah LFP 북미 CIF 61.99달러, 중국 EXW 51.62달러",
+    "THE ELEC quoted BMI Sep 2026 314Ah LFP cell North America price "
+    "$61.99/kWh and China exworks $51.62, up to 40.9% tariff is scenario.",
+    "디일렉",
+)
+eg, es, ec, ek = classify(elec_rewrite)
+assert eg == bg and es >= 11 and ec == bc and ek == bk, (eg,es,ec,ek)
+
+price_blog_rewrite = dict(elec_rewrite,source="무명주식블로그")
+pg, ps, pc, pk = classify(price_blog_rewrite)
+assert pg == bg and ps < 11 and pk == bk, (pg,ps,pc,pk)
+
+budget_oct_reprint = make(
+    "전고체·나트륨 투 트랙 배터리 전쟁…정부, 3000억 투입 초협력 생태계",
+    "산업통상부 배터리 산업기술 로드맵 2027~2031 나트륨·전고체 "
+    "3000억원 정부 R&D, 민간 8조원, 610억원 로봇·드론 배터리 조기 상용화.",
+    "이투데이",
+)
+pg, ps, pc, pk = classify(budget_oct_reprint)
+assert pg == 'battery_roadmap_2026_baseline' and ps < 11,(pg,ps,pc)
+
+budget_official_original = make(
+    "K-배터리 산업기술 로드맵 나트륨 전고체 정부 4000억원 민간 8조원",
+    "산업통상부 2026년 9월 22일 배터리 산업기술 로드맵 "
+    "2027~2031 정부 4000억원 R&D 신설, 2026~2030 민간 8조원 설비투자.",
+    "산업통상부",
+)
+og, os, oc, ok = classify(budget_official_original)
+assert og == pg and os < 11,(og,os,oc)
+
+oversupply_rewrite = make(
+    "1000억달러 쏟았는데 북미 배터리 ESS로 전환",
+    "미국 EV 배터리 공장 275GWh 설비용량 대 수요 182GWh, "
+    "북미 1000억달러 투자 후 전기차 수요 부진에 ESS 전환.",
+    "글로벌이코노믹",
+)
+vg, vs, vc, vk = classify(oversupply_rewrite)
+assert vg == 'ev_to_ess_oversupply_baseline' and vs < 11,(vg,vs,vc)
+
+real_lges_ess = make(
+    "LG에너지솔루션 북미 ESS LFP 현지공장 실제 양산 시작",
+    "LG에너지솔루션이 북미 35GWh 공장에서 새로운 ESS LFP 셀 "
+    "실제 양산 개시를 공식 발표했다.",
+    "LG에너지솔루션",
+)
+cg, cs, cc, ck = classify(real_lges_ess)
+assert cg != 'ev_to_ess_oversupply_baseline',(cg,cs,cc)
+
+recovered_lfp = watcher.query_news(watcher.LFP_NA_CIF_PRICE_RECOVERY)
+if base.NOW.astimezone(base.KST).date() <= dt.date(2026,10,18):
+    assert len(recovered_lfp) == 1,recovered_lfp
+    assessed = recovered_lfp[0]
+    assert assessed.get('published') is None,'Do not make up publication hour'
+    assert assessed['source'] == 'Benchmark Mineral Intelligence'
+    assert assessed['link'] == watcher.LFP_NA_CIF_PRICE_URL
+    ag, a_s, a_cat, a_key=classify(assessed)
+    assert ag==bg and a_s>=11 and a_key==bk,(ag,a_s,a_key)
+    render_text=assessed['title']+' '+assessed['description']
+    assert base.category(render_text,base.topic_group(render_text)) == bc
+    assert '관세' in base.verification(assessed,ag,render_text)
+    assert base.clean_title(assessed['title'],assessed['source']) != ''
+past_now=base.NOW
+try:
+    base.NOW=dt.datetime(2026,10,19,6,0,tzinfo=dt.timezone.utc)
+    assert watcher.query_news(watcher.LFP_NA_CIF_PRICE_RECOVERY) == []
+finally:
+    base.NOW=past_now
+assert abs((61.99-51.62)/51.62*100-20.089112747)<0.00001
+assert abs(61.99*1.409-87.34391)<0.00000001
+assert abs((61.99*1.409-61.99)*1e6*1340.88/1e8-339.965508408)<0.00001
+assert abs((61.99-51.62)*1e6*1340.88/1e8-139.049256)<0.00001
+assert 314*3.2 == 1004.8000000000001  # one cell at 3.2V nominal
+
 
 print("Physical-AI watcher regression guards: PASS")
