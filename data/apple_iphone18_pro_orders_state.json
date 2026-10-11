@@ -1,6 +1,6 @@
 {
-  "schema_version": 1,
-  "updated_at_kst": "2026-10-11T13:41:07+09:00",
+  "schema_version": 2,
+  "updated_at_kst": "2026-10-11T13:46:40+09:00",
   "initial_alert_sent": true,
   "baseline_at_kst": "2026-10-09T15:05:00+09:00",
   "seen": [
@@ -79,6 +79,7 @@
     "9f3d4f158481044036cff4ec",
     "a2b417a34bc92c3b14b5836e",
     "a5093105c2add55de3e0428e",
+    "a779826f6958c5dfdfa8f19d",
     "a79d527314a30d710ae06d39",
     "abf3e97006e70afcee38f6da",
     "ae9cc8d2fd26d249434a0fd3",
@@ -143,7 +144,6 @@
       "comparison": "originally requested October supplier volumes",
       "reported_cut_low_pct": 15,
       "reported_cut_high_pct": 20,
-      "reuters_confirmed_floor": 15,
       "reuters_independent_confirmation": false,
       "source_root": "nikkei_2026_10_09_supplier_interviews",
       "certainty": "니케이 공급망 취재 보도·Reuters 독립 확인 실패·Apple 공식 미확인",
@@ -156,12 +156,20 @@
       "apple_us_pro_max_price_usd": 1299,
       "china_week38_sales_yoy_pct_user_provided": 12,
       "china_week38_direct_tracker_publicly_verified": false,
-      "ubs_delivery_lead_time_publicly_verified": false
+      "ubs_delivery_lead_time_publicly_verified": false,
+      "nikkei_reported_minimum_via_reuters_pct": 15.0,
+      "idc_2026_ios_shipments_yoy_forecast_pct": -1.3,
+      "idc_2026_worldwide_market_value_yoy_forecast_pct": 6.3,
+      "ubs_pro_wait_weekly_shortening_days_secondary": 6,
+      "ubs_pro_wait_covered_markets_min": 30,
+      "ubs_pro_max_wait_level_days_secondary": 24,
+      "ubs_report_as_of": "2026-10-09",
+      "ubs_secondary_source": "Proactive 인용 UBS Evidence Lab(원본 미열람)"
     }
   },
-  "last_scan_items": 93,
+  "last_scan_items": 94,
   "feed_errors": [],
-  "successful_sources": 8,
+  "successful_sources": 10,
   "new_signal_count": 0,
   "source_status": "ok",
   "consecutive_source_failures": 0,
