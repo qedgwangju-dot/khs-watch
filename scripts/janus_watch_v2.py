@@ -73,6 +73,7 @@ _SPECIAL_KO_TITLES = {
     "new york’s big new bet on nuclear energy": "뉴욕, 신규 원전 5GW 추진",
     "new york's big new bet on nuclear energy": "뉴욕, 신규 원전 5GW 추진",
     "with federal funding windfall, x-energy advances small nuclear reactor": "X-energy, DOE 추가지원 기반 Xe-100 4기 상용화 진전",
+    "constellation and google go in on nuclear uprates to unlock clean power": "Constellation·Google, 기존 원전 11기 출력증강으로 PJM에 890MW 추가",
 }
 
 _SPECIAL_MACRO_SUMMARY = {
@@ -377,7 +378,7 @@ def _event_meaning(event, category: str) -> str:
     if event.get("kind") == "macro_nuclear":
         slug = urlparse(event.get("url", "")).path.rstrip("/").split("/")[-1].lower()
         if slug == "constellation-google-nuclear-uprates":
-            return "Google의 20년 전력구매계약을 바탕으로 Constellation이 PJM 기존 원전 11곳의 터빈·증기발생기·제어설비를 개선해 890MW를 추가합니다. 신규 원전 착공이나 NYPA 금융사업과 구분해야 합니다."
+            return "Google의 20년 전력구매계약을 기반으로 Constellation이 PJM의 기존 원전 11기 설비를 개선해 발전용량 890MW를 추가합니다. 별도의 기존 전력 공급계약 2,700MW(15년)와 Google Cloud·Gemini Enterprise 운영 기술협력(5년)은 구분하며, 신규 원자로 건설이 아닌 출력증강입니다."
         if slug not in {"new-york-big-new-bet-on-nuclear-energy", "federal-funding-x-energy-small-nuclear-reactor"}:
             return "기사 원문과 해당 계약 당사자의 공식자료에서 확인된 사실을 우선하고 다른 원전 사업의 정책·금융 설명을 적용하지 않습니다."
         if slug == "federal-funding-x-energy-small-nuclear-reactor":
@@ -403,11 +404,38 @@ _GOOGLE_CONSTELLATION_UPRATE_SLUG = "constellation-google-nuclear-uprates"
 
 
 def _is_constellation_google_uprate(event) -> bool:
+    parsed = urlparse(event.get("url", ""))
     return (
         event.get("kind") == "macro_nuclear"
-        and urlparse(event.get("url", "")).path.rstrip("/").split("/")[-1].lower()
+        and parsed.netloc.lower().removeprefix("www.") == "canarymedia.com"
+        and parsed.path.rstrip("/").split("/")[-1].lower()
         == _GOOGLE_CONSTELLATION_UPRATE_SLUG
     )
+
+
+def _verify_macro_event_source_alignment(event, rendered_block: str) -> None:
+    """송출 직전 기사 주소와 서술의 프로젝트 일치를 확인하며 불일치 시 전송 차단."""
+    url = str(event.get("url") or "")
+    slug = urlparse(url).path.rstrip("/").split("/")[-1].lower()
+    if slug == _GOOGLE_CONSTELLATION_UPRATE_SLUG:
+        if not _is_constellation_google_uprate(event):
+            raise RuntimeError("Constellation/Google 기사 출처·분류 불일치: 송출 보류")
+        required = (
+            "Constellation", "Google", "PJM", "890MW", "11기",
+            "43억달러", "20년", "2028년", "2,700MW", "15년",
+            "Gemini Enterprise", "5년",
+        )
+        missing = [term for term in required if term not in rendered_block]
+        forbidden = ("NYPA", "NYISO", "부지 선정 · 노형 선정", "뉴욕, 신규 원전 5GW")
+        leaked = [term for term in forbidden if term in rendered_block]
+        if missing or leaked:
+            raise RuntimeError(
+                f"Constellation/Google 기사와 Telegram 문구 불일치: 필수 누락={missing}; 타사업 혼입={leaked}"
+            )
+    elif event.get("kind") == "macro_nuclear" and slug != "new-york-big-new-bet-on-nuclear-energy":
+        # 뉴욕 신규원전 전용 서술이 다른 Canary Media 기사로 확산되지 않게 차단.
+        if "NYPA" in rendered_block or "NYISO" in rendered_block:
+            raise RuntimeError("다른 원전 기사에 NYPA·NYISO 금융 설명 혼입: 송출 보류")
 
 
 def _macro_highlights(event):
@@ -419,6 +447,8 @@ def _macro_highlights(event):
             ("추가 발전용량", "890MW"),
             ("사업비", "43억달러 초과"),
             ("계약기간", "20년 전력구매계약"),
+            ("별도 전력계약", "기존 전력 2,700MW · 15년 · 890MW 신규증강과 별도"),
+            ("운영 기술협력", "Google Cloud·Gemini Enterprise · 5년 · 계약 매출액 미공개"),
             ("일정", "첫 출력증강 2028년 · 전체 2030년대 초반"),
             ("공정", "터빈·증기발생기·디지털 제어설비 등 개선"),
         ]
@@ -498,6 +528,7 @@ def _render_alert_korean(events, fact_changes):
     shown_events = 0
 
     for event in events[:12]:
+        event_block_start = len(lines)
         resolved_title = _resolve_event_title(event)
         if not resolved_title:
             continue
@@ -539,6 +570,7 @@ def _render_alert_korean(events, fact_changes):
             f"<a href=\"{html.escape(event['url'], quote=True)}\">원문 보기</a>",
             "",
         ])
+        _verify_macro_event_source_alignment(event, "\n".join(lines[event_block_start:]))
         shown_events += 1
 
     shown_facts = 0
@@ -593,6 +625,20 @@ def _self_test_constellation_google_uprate() -> None:
     unknown = dict(event, url="https://www.canarymedia.com/articles/nuclear/new-unknown-event")
     assert _bottleneck_lines(unknown) == []
     assert "NYPA" not in _next_check(unknown, "정책·금융·설비투자")
+    rendered = _render_alert_korean([event], [])
+    for term in ("Constellation", "Google", "PJM", "890MW", "11기", "43억달러", "2,700MW", "15년", "Gemini Enterprise", "2028년"):
+        assert term in rendered, f"Constellation Telegram 필수 정보 누락: {term}"
+    assert "NYISO" not in rendered and "NYPA" not in rendered
+    assert "부지 선정 · 노형 선정" not in rendered
+    misleading = rendered.replace("PJM", "NYISO")
+    try:
+        _verify_macro_event_source_alignment(event, misleading)
+    except RuntimeError:
+        pass
+    else:
+        raise AssertionError("Constellation NYISO 오염 메시지가 품질검사를 통과했습니다.")
+    unknown = dict(event, url="https://www.canarymedia.com/articles/nuclear/new-unknown-event")
+    _verify_macro_event_source_alignment(unknown, "공식자료 확인 전 · 계약 조건 확인 필요")
 
 
 base.render_alert = _render_alert_korean
