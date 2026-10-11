@@ -247,7 +247,7 @@ def self_test() -> int:
 # Optional compact in-message source links. Default send path above is unchanged;
 # only the Starlink Mobile workflow explicitly invokes --inline.
 INLINE_SOURCE_RE = re.compile(r"^• 원문:\s*(https://\S+)\s*$")
-INLINE_MAX_UNITS = 800  # Mobile first: split long, fact-complete alerts into numbered parts
+INLINE_MAX_UNITS = 3500  # Only split if Telegram's real 4096-character limit requires it
 INLINE_LABELS = "①②③④⑤⑥⑦⑧⑨⑩"
 
 
@@ -318,32 +318,28 @@ def inline_display_width(text: str) -> int:
 
 
 def inline_link_row(urls: list[str]) -> tuple[str, list[dict]]:
-    """Several adjacent original URLs become compact, named text links.
+    """Inline, named text links; Telegram itself decides where lines wrap.
 
-    Max visual row width is 44 half-width cells. Multi-line entity offsets
-    include all UTF-16 code units, including newline and indentation.
+    No invented 44-column phone width or per-source buttons. Entity offsets
+    count UTF-16 units so Korean text and emoji cannot misalign the links.
     """
     if not urls:
         return "", []
     if len(urls) > len(INLINE_LABELS):
         raise ValueError("Too many source links in one section")
     result = "원문: "
-    current_line = result
     entities = []
-    for i, url in enumerate(urls):
-        label = inline_source_name(inline_url(url), i)
-        delimiter = "" if i == 0 else " · "
-        if inline_display_width(current_line + delimiter + label) > 44:
-            delimiter = "\n      "
-            current_line = ""
-        position = utf16_units(result + delimiter)
-        result += delimiter + label
-        current_line = (current_line + delimiter + label).split("\n")[-1]
+    for index, url in enumerate(urls):
+        validated = inline_url(url)
+        label = inline_source_name(validated, index)
+        separator = "" if index == 0 else " · "
+        pos = utf16_units(result + separator)
+        result += separator + label
         entities.append({
             "type": "text_link",
-            "offset": position,
+            "offset": pos,
             "length": utf16_units(label),
-            "url": url,
+            "url": validated,
         })
     return result, entities
 
@@ -480,58 +476,54 @@ def inline_messages(original: str):
 def inline_self_test() -> int:
     sample = (
         "📡 Starlink Mobile·미국 위성-휴대전화 직접통신 감시\n"
-        "기준: 2026-10-09 17:55 KST\n\n"
+        "기준: 2026-10-11 17:39 KST\n\n"
         "[중요 정정] D2D 위성 1만5,000기\n"
         "• 위성 1만5,000기, 궤도 326~335km. 📡 문자 유지.\n"
         "• 원문: https://docs.fcc.gov/public/attachments/DA-26-1078A1.pdf\n"
         "• 원문: https://docs.fcc.gov/public/attachments/DA-26-36A1.pdf\n"
         "• 원문: https://graingp.com/announcements/spacex-800-mhz/"
     )
-    texts = inline_messages(sample)
-    assert len(texts) == 1
-    assert "원문: FCC 10월 · FCC 1월 · Grain" in texts[0][0]
-    assert len(texts[0][1]) == 3
-    assert all(e["type"] == "text_link" for e in texts[0][1])
-    assert not any("reply_markup" in item[0] for item in texts)
-    long_texts = inline_messages(
-        "📡 장문 전송 검증\n\n" + ("• 실제 내용 손실 방지. " * 500)
-        + "\n• 원문: https://example.com/confirmed"
-    )
-    assert len(long_texts) > 1
-    assert sum(len(ents) for _, ents in long_texts) == 1
+    messages = inline_messages(sample)
+    assert len(messages) == 1, "Ordinary alerts must not split into tiny messages"
+    text, ents = messages[0]
+    assert "원문: FCC 10월 · FCC 1월 · Grain" in text
+    assert len(ents) == 3 and all(e["type"] == "text_link" for e in ents)
+    assert "\n      " not in text, "No hardcoded mobile-width indentation"
     assert inline_messages("이모지 📡\n• 원문: https://example.com/")[0][0].endswith("원문①")
-    assert "AT&T 주가" == inline_source_name("https://www.investing.com/equities/at-t-historical-data", 0)
-    assert "VZ 배당" == inline_source_name("https://www.verizon.com/about/investors/dividend-history", 0)
-    assert inline_display_width(inline_link_row([
-        "https://www.investing.com/equities/at-t-historical-data",
-        "https://www.investing.com/equities/verizon-communications-historical-data",
-        "https://stockanalysis.com/stocks/tmus/history/",
-        "https://about.att.com/story/2026/november-stock-dividend.html",
-        "https://www.verizon.com/about/investors/dividend-history",
-    ])[0].splitlines()[0]) <= 44
-    # Regression fixture: the exact class of 8-source dense price/launch alert
-    # that originally overflowed phone screens. Every source must survive.
+    assert "AT&T 주가" == inline_source_name(
+        "https://www.investing.com/equities/at-t-historical-data", 0)
+    assert "VZ 배당" == inline_source_name(
+        "https://www.verizon.com/about/investors/dividend-history", 0)
+
+    # End-to-end 8-source real alert regression: all verified numbers and
+    # hyperlinks must remain, yet it should fit a single Telegram message.
     from starlink_mobile_d2d_watch import price_dividend_display_correction
     from starlink_mobile_d2d_readability import format_mobile
-    full = format_mobile(
-        "📡 Starlink Mobile·미국 위성-휴대전화 직접통신 감시\n"
-        "기준: 표시검증\n\n" + price_dividend_display_correction()
-    )
+    source = "📡 Starlink Mobile·미국 위성-휴대전화 직접통신 감시\n기준: 표시검증\n\n"
+    full = format_mobile(source + price_dividend_display_correction())
     packed = inline_messages(full)
-    all_urls = [item["url"] for _, ents in packed for item in ents]
-    assert len(all_urls) == 8 and len(set(all_urls)) == 8
-    assert len(packed) >= 2, "Dense alerts should become small, readable parts"
-    assert all(utf16_units(text) <= INLINE_MAX_UNITS for text, _ in packed)
-    assert any("AT&T 주가" in text for text, _ in packed)
-    assert any("VZ 배당" in text for text, _ in packed)
-    assert any("NASA" in text for text, _ in packed)
-    assert all("원문① · 원문② · 원문③ · 원문④" not in text for text, _ in packed)
-    assert "22.18달러" in "\n".join(text for text, _ in packed)
-    assert "9억4,600만 달러" in "\n".join(text for text, _ in packed)
-    assert "2030년" in "\n".join(text for text, _ in packed)
-    # Real UI is device-dependent, but we guarantee no text/links are lost.
-    assert "원문: " in "\n".join(text for text, _ in packed)
-    print("starlink_d2d_inline_self_test=ok inline_links=3 utf16=ok long_text=ok no_buttons=ok")
+    assert len(packed) == 1, "Oct 11 factual alert should fit ONE message"
+    urls = [entry["url"] for _, all_entries in packed for entry in all_entries]
+    assert len(urls) == len(set(urls)) == 8
+    combined = "\n".join(x for x, _ in packed)
+    assert "22.18달러" in combined and "-10.82%" in combined
+    assert "-9.81%" in combined and "41.65달러" in combined
+    assert "-10.14%" in combined and "-8.75%" in combined
+    assert "148.58달러" in combined and "-13.27%" in combined
+    assert "0.2775달러" in combined and "0.7075달러" in combined
+    assert "9억4,600만 달러" in combined and "1조2,685억원" in combined
+    assert "2030년" in combined and "Falcon 9·Dragon" in combined
+    assert "FCC 이전 승인" in combined and "Starship" in combined
+    assert "Raptor" in combined and "원문: " in combined
+    assert utf16_units(combined) < INLINE_MAX_UNITS
+
+    # If a genuinely long report exceeds capacity, it is still losslessly split.
+    overlong = "📡 장문 검증\n\n" + ("• 핵심 숫자 15,000기 · 설명 확인. " * 450)
+    parts = inline_messages(overlong + "\n• 원문: https://example.com/confirmed")
+    assert len(parts) > 1
+    assert sum(len(es) for _, es in parts) == 1
+    assert all(utf16_units(t) <= INLINE_MAX_UNITS for t, _ in parts)
+    print("starlink_d2d_inline_self_test=ok one_message_8_sources=1 natural_wrap=1 utf16=ok long_split=ok")
     return 0
 
 
