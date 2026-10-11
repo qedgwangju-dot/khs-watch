@@ -442,6 +442,26 @@
       "telegram_core_fact": "엔비디아의 투자를 유치하고 오픈AI·메타와 대규모 AI 인프라 계약을 맺으며 호주 증시의 대형 기업공개(IPO) 후보로 주목받았던 데이터센터 기업 퍼머스(Firmus)가 상장 계획을 철회했다.",
       "title": "AI 데이터센터 몸값 시험대…엔비디아 투자받은 퍼머스 IPO 철회"
     },
+    "core:05476fe2d9b44f6aa95fd4df": {
+      "first_seen_kst": "2026-10-12T03:14:53+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:14:53+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:14:53+09:00",
+      "link": "https://www.etnews.com/20261008000286",
+      "source": "전자신문",
+      "source_body_digest": "54deb4196ad51e142972ee087a4521ad5ce2a255e4c58068e3acf547310776b5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fdcf189edb8776fa53a70aa6d789c06cf084d08f4f9d70541d0649fdac387d0f",
+      "source_fact_keys": [
+        "source_fact:v1:afae9710dcdeaf00388f509fea5e3064331d378ad977ca51851066c6e320e510",
+        "source_fact:v1:f111dc961c84109355dc8adac71c4486b958061a3f9a59bc83fe2a6bdade5b41"
+      ],
+      "source_published_kst": "2026-10-11T12:00+09:00",
+      "source_title": "틸론, 'Dstation X' 전 라인업 조달 등록 완료…공공기관 입찰 없이 구매한다",
+      "telegram_core_fact": "조달청 나라장터 공개데이터를 자체 분석한 내부 자료 기준으로 최근 5개년 공공조달 VDI 부문에서 높은 시장점유율과 공급 실적을 기록해 왔으며, 이번 Dstation X 등록을 계기로 기존 Dstation v9.0 중심의 조달 공급체계를 차세대 제품으로 전환할 방침이다.",
+      "title": "틸론, 'Dstation X' 전 라인업 조달 등록 완료…공공기관 입찰 없이 구매한다"
+    },
     "core:058c98482aff0702327fdbe1": {
       "first_seen_kst": "2026-10-08T00:24:24+09:00",
       "lanes": {
@@ -1701,6 +1721,28 @@
       "source_title": "민트, 아일랜드와 로봇 OEM 계약..최대 300만 유로",
       "telegram_core_fact": "액소넥스는 로봇 키트와 플랫폼 라이선스, 표준 소프트웨어, 플랫폼 기술을 센트리덱스에 공급한다.",
       "title": "민트, 아일랜드와 로봇 OEM 계약..최대 300만 유로"
+    },
+    "core:0e925dad4ed1d5788398e8b9": {
+      "first_seen_kst": "2026-10-12T03:14:53+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:14:53+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:14:53+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/12/2026101119371921309",
+      "source": "머니투데이",
+      "source_body_digest": "c661205f157110089bb61f76a8f128688ea59114c8ad6426773cf8bc414367ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2cb0456372eebd95be4de9ecc39d173218ae9fc4a22eedede89b6f0e7cee10e",
+      "source_fact_keys": [
+        "source_fact:v1:5fa759c5de5eddc31bd676a3e8dfc5b2aafab482dfad7d0d44903e0e8bf48d70",
+        "source_fact:v1:a44aa22df3554f05a5d694348406032b38b7d920b1e4e4541de392f3109326a6",
+        "source_fact:v1:d8e0ecfee369a8a78be92d02b198dae399e7c1dda177e4206b21549ea9fddaf3",
+        "source_fact:v1:dd349a015187862de34b1f6a5e3bdc0cd754b4c92f0144f0abffc5274dc53188"
+      ],
+      "source_published_kst": "2026-10-12T03:00+09:00",
+      "source_title": "'노벨상 불발' 트럼프 몽니… 평화상 발표 직후 ICC 제재",
+      "telegram_core_fact": "미국의 새로운 제재는 노벨평화상 수상자가 발표된 후 이뤄졌는데 공교롭게도 도널드 트럼프 미국 대통령은 자신의 노벨평화상 불발에 분노했다.",
+      "title": "'노벨상 불발' 트럼프 몽니… 평화상 발표 직후 ICC 제재"
     },
     "core:0e9e07f6f9e8285e5d08ee40": {
       "first_seen_kst": "2026-10-09T21:11:52+09:00",
@@ -24459,6 +24501,25 @@
       "telegram_core_fact": "홍콩 증시 상장 중국기업주 중심의 H주 지수는 전일보다 46.57 포인트, 0.57% 떨어진 8082.40으로 장을 끝냈다. 홍콩 증시는 7일 중국 증시가 국경절 연휴를 끝내고거래 재개를 하루 앞둔 가운데 지분조정 매물이 선행하면서 3거래일 만에 반락 마감했다.",
       "title": "[올댓차이나] 홍콩 증시, 지분조정 매도로 사흘 만에 반락 마감… H주 0.57%↓"
     },
+    "core:fac901ad0d944159a7389925": {
+      "first_seen_kst": "2026-10-12T03:14:53+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:14:53+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:14:53+09:00",
+      "link": "https://www.mk.co.kr/news/politics/12172965",
+      "source": "매일경제",
+      "source_body_digest": "491ca78e64de48e771732e5b2bd44350e2a6426ee6dd1ddf1de93dbd2c1883a2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2b14f472ac4c06f638897367ca4713330abeb6b22df362009967c4d9ebc470ad",
+      "source_fact_keys": [
+        "source_fact:v1:10ae5c5570e28b2f0ddf8fca60d5920190456ebf253f83a3d96d36408836ecb4"
+      ],
+      "source_published_kst": "2026-10-11T15:41+09:00",
+      "source_title": "李대통령 “주택 공급 조만간 정상화…서울·수도권 인허가와 착공 회복”",
+      "telegram_core_fact": "이재명 대통령이 11일 서울·수도권의 주택건설 인허가와 착공이 회복되고 있다며 주택 공급이 조만간 정상화될 것으로 전망했다.",
+      "title": "李대통령 “주택 공급 조만간 정상화…서울·수도권 인허가와 착공 회복”"
+    },
     "core:fb27b5f5dfc73329471025ca": {
       "first_seen_kst": "2026-10-10T00:12:46+09:00",
       "lanes": {
@@ -40777,6 +40838,26 @@
       "telegram_core_fact": "단일분자 단백질 시퀀싱 기반 프로테오믹스 기업 퀀텀-Si(QSI)가 차세대 시퀀싱 플랫폼 '프로테우스(Proteus)' 개발 프로그램에서 아미노산 19종 검출에 성공했으며, 2026년 말까지 20종 전체를 검출하겠다는 목표를 재확인했다고 8일 발표했다.",
       "title": "퀀텀-Si, 프로테우스 아미노산 19종 검출..연내 20종 목표"
     },
+    "fact:21fcabc35dd5750d62b1ce3e": {
+      "first_seen_kst": "2026-10-12T03:14:53+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:14:53+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:14:53+09:00",
+      "link": "https://www.etnews.com/20261008000286",
+      "source": "전자신문",
+      "source_body_digest": "54deb4196ad51e142972ee087a4521ad5ce2a255e4c58068e3acf547310776b5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fdcf189edb8776fa53a70aa6d789c06cf084d08f4f9d70541d0649fdac387d0f",
+      "source_fact_keys": [
+        "source_fact:v1:afae9710dcdeaf00388f509fea5e3064331d378ad977ca51851066c6e320e510",
+        "source_fact:v1:f111dc961c84109355dc8adac71c4486b958061a3f9a59bc83fe2a6bdade5b41"
+      ],
+      "source_published_kst": "2026-10-11T12:00+09:00",
+      "source_title": "틸론, 'Dstation X' 전 라인업 조달 등록 완료…공공기관 입찰 없이 구매한다",
+      "telegram_core_fact": "조달청 나라장터 공개데이터를 자체 분석한 내부 자료 기준으로 최근 5개년 공공조달 VDI 부문에서 높은 시장점유율과 공급 실적을 기록해 왔으며, 이번 Dstation X 등록을 계기로 기존 Dstation v9.0 중심의 조달 공급체계를 차세대 제품으로 전환할 방침이다.",
+      "title": "틸론, 'Dstation X' 전 라인업 조달 등록 완료…공공기관 입찰 없이 구매한다"
+    },
     "fact:2227523b62d4e46ab7d1aa03": {
       "first_seen_kst": "2026-10-07T22:37:58+09:00",
       "lanes": {
@@ -52555,6 +52636,25 @@
       ],
       "source_published_kst": "2026-10-07T11:41+09:00",
       "title": "“강남 빠져도 서울 집값 상승…내년 ‘덜 똘똘한 한채’ 대세” [헤럴드머니페스타 2026]"
+    },
+    "fact:6ff681b0d0a47e2389e5f342": {
+      "first_seen_kst": "2026-10-12T03:14:53+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:14:53+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:14:53+09:00",
+      "link": "https://www.mk.co.kr/news/politics/12172965",
+      "source": "매일경제",
+      "source_body_digest": "491ca78e64de48e771732e5b2bd44350e2a6426ee6dd1ddf1de93dbd2c1883a2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2b14f472ac4c06f638897367ca4713330abeb6b22df362009967c4d9ebc470ad",
+      "source_fact_keys": [
+        "source_fact:v1:10ae5c5570e28b2f0ddf8fca60d5920190456ebf253f83a3d96d36408836ecb4"
+      ],
+      "source_published_kst": "2026-10-11T15:41+09:00",
+      "source_title": "李대통령 “주택 공급 조만간 정상화…서울·수도권 인허가와 착공 회복”",
+      "telegram_core_fact": "이재명 대통령이 11일 서울·수도권의 주택건설 인허가와 착공이 회복되고 있다며 주택 공급이 조만간 정상화될 것으로 전망했다.",
+      "title": "李대통령 “주택 공급 조만간 정상화…서울·수도권 인허가와 착공 회복”"
     },
     "fact:70056af933b5864a434f3183": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
@@ -70788,6 +70888,28 @@
       "source_published_kst": "2026-10-06T12:32+09:00",
       "title": "\"양자 R&D→상용화로 가속…韓, 산업 연계 강화해야\""
     },
+    "fact:e1a8ecd448d0a3ea4134547b": {
+      "first_seen_kst": "2026-10-12T03:14:53+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:14:53+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:14:53+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/12/2026101119371921309",
+      "source": "머니투데이",
+      "source_body_digest": "c661205f157110089bb61f76a8f128688ea59114c8ad6426773cf8bc414367ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2cb0456372eebd95be4de9ecc39d173218ae9fc4a22eedede89b6f0e7cee10e",
+      "source_fact_keys": [
+        "source_fact:v1:5fa759c5de5eddc31bd676a3e8dfc5b2aafab482dfad7d0d44903e0e8bf48d70",
+        "source_fact:v1:a44aa22df3554f05a5d694348406032b38b7d920b1e4e4541de392f3109326a6",
+        "source_fact:v1:d8e0ecfee369a8a78be92d02b198dae399e7c1dda177e4206b21549ea9fddaf3",
+        "source_fact:v1:dd349a015187862de34b1f6a5e3bdc0cd754b4c92f0144f0abffc5274dc53188"
+      ],
+      "source_published_kst": "2026-10-12T03:00+09:00",
+      "source_title": "'노벨상 불발' 트럼프 몽니… 평화상 발표 직후 ICC 제재",
+      "telegram_core_fact": "미국의 새로운 제재는 노벨평화상 수상자가 발표된 후 이뤄졌는데 공교롭게도 도널드 트럼프 미국 대통령은 자신의 노벨평화상 불발에 분노했다.",
+      "title": "'노벨상 불발' 트럼프 몽니… 평화상 발표 직후 ICC 제재"
+    },
     "fact:e1d119d323fe415bec9dcb20": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
@@ -79353,6 +79475,28 @@
       ],
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "AI株 숨고르기 반사익…美바이오 ETF 순풍"
+    },
+    "link:103d660f8442dd6eb2bb9976": {
+      "first_seen_kst": "2026-10-12T03:14:53+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:14:53+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:14:53+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/12/2026101119371921309",
+      "source": "머니투데이",
+      "source_body_digest": "c661205f157110089bb61f76a8f128688ea59114c8ad6426773cf8bc414367ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2cb0456372eebd95be4de9ecc39d173218ae9fc4a22eedede89b6f0e7cee10e",
+      "source_fact_keys": [
+        "source_fact:v1:5fa759c5de5eddc31bd676a3e8dfc5b2aafab482dfad7d0d44903e0e8bf48d70",
+        "source_fact:v1:a44aa22df3554f05a5d694348406032b38b7d920b1e4e4541de392f3109326a6",
+        "source_fact:v1:d8e0ecfee369a8a78be92d02b198dae399e7c1dda177e4206b21549ea9fddaf3",
+        "source_fact:v1:dd349a015187862de34b1f6a5e3bdc0cd754b4c92f0144f0abffc5274dc53188"
+      ],
+      "source_published_kst": "2026-10-12T03:00+09:00",
+      "source_title": "'노벨상 불발' 트럼프 몽니… 평화상 발표 직후 ICC 제재",
+      "telegram_core_fact": "미국의 새로운 제재는 노벨평화상 수상자가 발표된 후 이뤄졌는데 공교롭게도 도널드 트럼프 미국 대통령은 자신의 노벨평화상 불발에 분노했다.",
+      "title": "'노벨상 불발' 트럼프 몽니… 평화상 발표 직후 ICC 제재"
     },
     "link:105144271ef1f1266b4e0e34": {
       "first_seen_kst": "2026-10-09T17:32:22+09:00",
@@ -101722,6 +101866,26 @@
       ],
       "source_published_kst": "2026-10-05T22:23+09:00",
       "title": "시놉시스, 10억달러 자사주 ASR 체결..173만5천주 우선 인도"
+    },
+    "link:6dac01d5476da96573455ea8": {
+      "first_seen_kst": "2026-10-12T03:14:53+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:14:53+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:14:53+09:00",
+      "link": "https://www.etnews.com/20261008000286",
+      "source": "전자신문",
+      "source_body_digest": "54deb4196ad51e142972ee087a4521ad5ce2a255e4c58068e3acf547310776b5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fdcf189edb8776fa53a70aa6d789c06cf084d08f4f9d70541d0649fdac387d0f",
+      "source_fact_keys": [
+        "source_fact:v1:afae9710dcdeaf00388f509fea5e3064331d378ad977ca51851066c6e320e510",
+        "source_fact:v1:f111dc961c84109355dc8adac71c4486b958061a3f9a59bc83fe2a6bdade5b41"
+      ],
+      "source_published_kst": "2026-10-11T12:00+09:00",
+      "source_title": "틸론, 'Dstation X' 전 라인업 조달 등록 완료…공공기관 입찰 없이 구매한다",
+      "telegram_core_fact": "조달청 나라장터 공개데이터를 자체 분석한 내부 자료 기준으로 최근 5개년 공공조달 VDI 부문에서 높은 시장점유율과 공급 실적을 기록해 왔으며, 이번 Dstation X 등록을 계기로 기존 Dstation v9.0 중심의 조달 공급체계를 차세대 제품으로 전환할 방침이다.",
+      "title": "틸론, 'Dstation X' 전 라인업 조달 등록 완료…공공기관 입찰 없이 구매한다"
     },
     "link:6dc1a2e0332b3ed8b9827f1b": {
       "first_seen_kst": "2026-10-02T13:22:36+09:00",
@@ -131653,6 +131817,25 @@
       "source": "파이낸셜뉴스",
       "title": "삼성전자, DX직원과 내달 직접 소통…성과급 불만 잠재울까"
     },
+    "link:ee67f8fad15cb44285cdfe88": {
+      "first_seen_kst": "2026-10-12T03:14:53+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:14:53+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:14:53+09:00",
+      "link": "https://www.mk.co.kr/news/politics/12172965",
+      "source": "매일경제",
+      "source_body_digest": "491ca78e64de48e771732e5b2bd44350e2a6426ee6dd1ddf1de93dbd2c1883a2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2b14f472ac4c06f638897367ca4713330abeb6b22df362009967c4d9ebc470ad",
+      "source_fact_keys": [
+        "source_fact:v1:10ae5c5570e28b2f0ddf8fca60d5920190456ebf253f83a3d96d36408836ecb4"
+      ],
+      "source_published_kst": "2026-10-11T15:41+09:00",
+      "source_title": "李대통령 “주택 공급 조만간 정상화…서울·수도권 인허가와 착공 회복”",
+      "telegram_core_fact": "이재명 대통령이 11일 서울·수도권의 주택건설 인허가와 착공이 회복되고 있다며 주택 공급이 조만간 정상화될 것으로 전망했다.",
+      "title": "李대통령 “주택 공급 조만간 정상화…서울·수도권 인허가와 착공 회복”"
+    },
     "link:eeaeb62aaa7e5f3a2b00c15a": {
       "first_seen_kst": "2026-09-28T15:47:59+09:00",
       "lanes": {
@@ -149448,6 +149631,28 @@
       "telegram_core_fact": "국내 주요 신항만에 설치된 항만장비의 국산 비중이 35%에 그치는 것으로 나타났다. 11일 서삼석 더불어민주당 의원이 해양수산부로부터 제출받은 ‘4대 항만공사 신항 지역 항만장비 도입현황’에 따르면 부산신항과 인천신항, 울산신항, 광양항에 도입된 항만장비 3325대 가운데 국산 비중은 35%에 그쳤다.",
       "title": "[단독] 4대 신항 국산 장비비중 35%...中제품 더 많이 쓴다"
     },
+    "original:3c544dff10457877ed381597": {
+      "first_seen_kst": "2026-10-12T03:14:53+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:14:53+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:14:53+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/12/2026101119371921309",
+      "source": "머니투데이",
+      "source_body_digest": "c661205f157110089bb61f76a8f128688ea59114c8ad6426773cf8bc414367ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2cb0456372eebd95be4de9ecc39d173218ae9fc4a22eedede89b6f0e7cee10e",
+      "source_fact_keys": [
+        "source_fact:v1:5fa759c5de5eddc31bd676a3e8dfc5b2aafab482dfad7d0d44903e0e8bf48d70",
+        "source_fact:v1:a44aa22df3554f05a5d694348406032b38b7d920b1e4e4541de392f3109326a6",
+        "source_fact:v1:d8e0ecfee369a8a78be92d02b198dae399e7c1dda177e4206b21549ea9fddaf3",
+        "source_fact:v1:dd349a015187862de34b1f6a5e3bdc0cd754b4c92f0144f0abffc5274dc53188"
+      ],
+      "source_published_kst": "2026-10-12T03:00+09:00",
+      "source_title": "'노벨상 불발' 트럼프 몽니… 평화상 발표 직후 ICC 제재",
+      "telegram_core_fact": "미국의 새로운 제재는 노벨평화상 수상자가 발표된 후 이뤄졌는데 공교롭게도 도널드 트럼프 미국 대통령은 자신의 노벨평화상 불발에 분노했다.",
+      "title": "'노벨상 불발' 트럼프 몽니… 평화상 발표 직후 ICC 제재"
+    },
     "original:3c5e5ab87f91240fd54cde15": {
       "first_seen_kst": "2026-10-07T12:06:36+09:00",
       "lanes": {
@@ -151895,6 +152100,25 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=01666246645583400",
       "source": "이데일리",
       "title": "뉴노멀 됐나…美10년물 다시 5.1%, 얼마나 더 오를까"
+    },
+    "original:45c1841e49eeac21db1f7db5": {
+      "first_seen_kst": "2026-10-12T03:14:53+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:14:53+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:14:53+09:00",
+      "link": "https://www.mk.co.kr/news/politics/12172965",
+      "source": "매일경제",
+      "source_body_digest": "491ca78e64de48e771732e5b2bd44350e2a6426ee6dd1ddf1de93dbd2c1883a2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2b14f472ac4c06f638897367ca4713330abeb6b22df362009967c4d9ebc470ad",
+      "source_fact_keys": [
+        "source_fact:v1:10ae5c5570e28b2f0ddf8fca60d5920190456ebf253f83a3d96d36408836ecb4"
+      ],
+      "source_published_kst": "2026-10-11T15:41+09:00",
+      "source_title": "李대통령 “주택 공급 조만간 정상화…서울·수도권 인허가와 착공 회복”",
+      "telegram_core_fact": "이재명 대통령이 11일 서울·수도권의 주택건설 인허가와 착공이 회복되고 있다며 주택 공급이 조만간 정상화될 것으로 전망했다.",
+      "title": "李대통령 “주택 공급 조만간 정상화…서울·수도권 인허가와 착공 회복”"
     },
     "original:45cf79fccfe7d65311ed4ea6": {
       "first_seen_kst": "2026-09-28T18:02:59+09:00",
@@ -174919,6 +175143,26 @@
       "source_title": "HD현대重 등 조선·원자력 분야 12개 기관 ‘SMR 해양 기술 실증센터’ 출범",
       "telegram_core_fact": "HD현대중공업을 비롯한 국내 조선·원자력 분야 주요 기업과 대학 등 12개 기관은 지난 6일 울산과학기술원(UNIST)에서 ‘SMR 해양 기술 실증센터’ 출범을 위한 업무협약을 체결했다고 7일(수) 밝혔다.",
       "title": "HD현대重 등 조선·원자력 분야 12개 기관 ‘SMR 해양 기술 실증센터’ 출범"
+    },
+    "original:ac0abaf3abeafef8aab49f15": {
+      "first_seen_kst": "2026-10-12T03:14:53+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:14:53+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:14:53+09:00",
+      "link": "https://www.etnews.com/20261008000286",
+      "source": "전자신문",
+      "source_body_digest": "54deb4196ad51e142972ee087a4521ad5ce2a255e4c58068e3acf547310776b5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fdcf189edb8776fa53a70aa6d789c06cf084d08f4f9d70541d0649fdac387d0f",
+      "source_fact_keys": [
+        "source_fact:v1:afae9710dcdeaf00388f509fea5e3064331d378ad977ca51851066c6e320e510",
+        "source_fact:v1:f111dc961c84109355dc8adac71c4486b958061a3f9a59bc83fe2a6bdade5b41"
+      ],
+      "source_published_kst": "2026-10-11T12:00+09:00",
+      "source_title": "틸론, 'Dstation X' 전 라인업 조달 등록 완료…공공기관 입찰 없이 구매한다",
+      "telegram_core_fact": "조달청 나라장터 공개데이터를 자체 분석한 내부 자료 기준으로 최근 5개년 공공조달 VDI 부문에서 높은 시장점유율과 공급 실적을 기록해 왔으며, 이번 Dstation X 등록을 계기로 기존 Dstation v9.0 중심의 조달 공급체계를 차세대 제품으로 전환할 방침이다.",
+      "title": "틸론, 'Dstation X' 전 라인업 조달 등록 완료…공공기관 입찰 없이 구매한다"
     },
     "original:ac189409c09c1ccce6d7e2a5": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
@@ -202162,6 +202406,28 @@
       "telegram_core_fact": "풍산 매출은 2조7412억원으로 전년비 11.9% 증가했습니다.",
       "title": "풍산, 방산 부진 메운 '구리 호황' 신용등급 AA- 상향"
     },
+    "source_fact:0c6fee0a9d092e370ff77130": {
+      "first_seen_kst": "2026-10-12T03:14:53+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:14:53+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:14:53+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/12/2026101119371921309",
+      "source": "머니투데이",
+      "source_body_digest": "c661205f157110089bb61f76a8f128688ea59114c8ad6426773cf8bc414367ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2cb0456372eebd95be4de9ecc39d173218ae9fc4a22eedede89b6f0e7cee10e",
+      "source_fact_keys": [
+        "source_fact:v1:5fa759c5de5eddc31bd676a3e8dfc5b2aafab482dfad7d0d44903e0e8bf48d70",
+        "source_fact:v1:a44aa22df3554f05a5d694348406032b38b7d920b1e4e4541de392f3109326a6",
+        "source_fact:v1:d8e0ecfee369a8a78be92d02b198dae399e7c1dda177e4206b21549ea9fddaf3",
+        "source_fact:v1:dd349a015187862de34b1f6a5e3bdc0cd754b4c92f0144f0abffc5274dc53188"
+      ],
+      "source_published_kst": "2026-10-12T03:00+09:00",
+      "source_title": "'노벨상 불발' 트럼프 몽니… 평화상 발표 직후 ICC 제재",
+      "telegram_core_fact": "미국의 새로운 제재는 노벨평화상 수상자가 발표된 후 이뤄졌는데 공교롭게도 도널드 트럼프 미국 대통령은 자신의 노벨평화상 불발에 분노했다.",
+      "title": "'노벨상 불발' 트럼프 몽니… 평화상 발표 직후 ICC 제재"
+    },
     "source_fact:0c72452c0b1f6dd6b48a0cec": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
       "lanes": {
@@ -220652,6 +220918,25 @@
       ],
       "source_published_kst": "2026-10-07T01:15+09:00",
       "title": "캐나다 8월 무역흑자 4년만에 최대…관세 앞두고 대미수출 급증 | 연합뉴스"
+    },
+    "source_fact:23fa9eedca7b2984e48caa70": {
+      "first_seen_kst": "2026-10-12T03:14:53+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:14:53+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:14:53+09:00",
+      "link": "https://www.mk.co.kr/news/politics/12172965",
+      "source": "매일경제",
+      "source_body_digest": "491ca78e64de48e771732e5b2bd44350e2a6426ee6dd1ddf1de93dbd2c1883a2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2b14f472ac4c06f638897367ca4713330abeb6b22df362009967c4d9ebc470ad",
+      "source_fact_keys": [
+        "source_fact:v1:10ae5c5570e28b2f0ddf8fca60d5920190456ebf253f83a3d96d36408836ecb4"
+      ],
+      "source_published_kst": "2026-10-11T15:41+09:00",
+      "source_title": "李대통령 “주택 공급 조만간 정상화…서울·수도권 인허가와 착공 회복”",
+      "telegram_core_fact": "이재명 대통령이 11일 서울·수도권의 주택건설 인허가와 착공이 회복되고 있다며 주택 공급이 조만간 정상화될 것으로 전망했다.",
+      "title": "李대통령 “주택 공급 조만간 정상화…서울·수도권 인허가와 착공 회복”"
     },
     "source_fact:23fb99e146189ca24c27fd1d": {
       "first_seen_kst": "2026-10-10T08:26:55+09:00",
@@ -274228,6 +274513,26 @@
       "telegram_core_fact": "예멘 친이란 반군 후티가 사우디 수도 리야드까지 미사일 공격을 확대하고 사우디가 강력 대응을 예고한 가운데 미국도 군사개입 가능성을 시사하면서 확전 우려가 고조됐다.",
       "title": "사우디 vs 후티 충돌 격화⋯美 직접 개입 가능성까지 부상 [종합]"
     },
+    "source_fact:69a74265a6ddfa738c165352": {
+      "first_seen_kst": "2026-10-12T03:14:53+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:14:53+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:14:53+09:00",
+      "link": "https://www.etnews.com/20261008000286",
+      "source": "전자신문",
+      "source_body_digest": "54deb4196ad51e142972ee087a4521ad5ce2a255e4c58068e3acf547310776b5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fdcf189edb8776fa53a70aa6d789c06cf084d08f4f9d70541d0649fdac387d0f",
+      "source_fact_keys": [
+        "source_fact:v1:afae9710dcdeaf00388f509fea5e3064331d378ad977ca51851066c6e320e510",
+        "source_fact:v1:f111dc961c84109355dc8adac71c4486b958061a3f9a59bc83fe2a6bdade5b41"
+      ],
+      "source_published_kst": "2026-10-11T12:00+09:00",
+      "source_title": "틸론, 'Dstation X' 전 라인업 조달 등록 완료…공공기관 입찰 없이 구매한다",
+      "telegram_core_fact": "조달청 나라장터 공개데이터를 자체 분석한 내부 자료 기준으로 최근 5개년 공공조달 VDI 부문에서 높은 시장점유율과 공급 실적을 기록해 왔으며, 이번 Dstation X 등록을 계기로 기존 Dstation v9.0 중심의 조달 공급체계를 차세대 제품으로 전환할 방침이다.",
+      "title": "틸론, 'Dstation X' 전 라인업 조달 등록 완료…공공기관 입찰 없이 구매한다"
+    },
     "source_fact:69a95b975ec25725c48738e5": {
       "first_seen_kst": "2026-10-08T06:10:43+09:00",
       "lanes": {
@@ -292910,6 +293215,28 @@
       ],
       "source_published_kst": "2026-10-06T13:52+09:00",
       "title": "거래소 “코스닥 체질 개선 노력⋯법원 제동 건 ‘시총 미달 상폐’ 후속 조치 예정”"
+    },
+    "source_fact:82ba5198b93c4a51b90eba15": {
+      "first_seen_kst": "2026-10-12T03:14:53+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:14:53+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:14:53+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/12/2026101119371921309",
+      "source": "머니투데이",
+      "source_body_digest": "c661205f157110089bb61f76a8f128688ea59114c8ad6426773cf8bc414367ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2cb0456372eebd95be4de9ecc39d173218ae9fc4a22eedede89b6f0e7cee10e",
+      "source_fact_keys": [
+        "source_fact:v1:5fa759c5de5eddc31bd676a3e8dfc5b2aafab482dfad7d0d44903e0e8bf48d70",
+        "source_fact:v1:a44aa22df3554f05a5d694348406032b38b7d920b1e4e4541de392f3109326a6",
+        "source_fact:v1:d8e0ecfee369a8a78be92d02b198dae399e7c1dda177e4206b21549ea9fddaf3",
+        "source_fact:v1:dd349a015187862de34b1f6a5e3bdc0cd754b4c92f0144f0abffc5274dc53188"
+      ],
+      "source_published_kst": "2026-10-12T03:00+09:00",
+      "source_title": "'노벨상 불발' 트럼프 몽니… 평화상 발표 직후 ICC 제재",
+      "telegram_core_fact": "미국의 새로운 제재는 노벨평화상 수상자가 발표된 후 이뤄졌는데 공교롭게도 도널드 트럼프 미국 대통령은 자신의 노벨평화상 불발에 분노했다.",
+      "title": "'노벨상 불발' 트럼프 몽니… 평화상 발표 직후 ICC 제재"
     },
     "source_fact:82bc536178e2af8e26f7d671": {
       "first_seen_kst": "2026-10-06T22:51:44+09:00",
@@ -313211,6 +313538,28 @@
       ],
       "source_published_kst": "2026-10-06T15:07+09:00",
       "title": "[2026 국감] 호남 반도체 놓고 여야 격돌…김성환 기후부 장관 “전력·용수 공급 가능”"
+    },
+    "source_fact:9e4490bb5f6edd42642ac6fb": {
+      "first_seen_kst": "2026-10-12T03:14:53+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:14:53+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:14:53+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/12/2026101119371921309",
+      "source": "머니투데이",
+      "source_body_digest": "c661205f157110089bb61f76a8f128688ea59114c8ad6426773cf8bc414367ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2cb0456372eebd95be4de9ecc39d173218ae9fc4a22eedede89b6f0e7cee10e",
+      "source_fact_keys": [
+        "source_fact:v1:5fa759c5de5eddc31bd676a3e8dfc5b2aafab482dfad7d0d44903e0e8bf48d70",
+        "source_fact:v1:a44aa22df3554f05a5d694348406032b38b7d920b1e4e4541de392f3109326a6",
+        "source_fact:v1:d8e0ecfee369a8a78be92d02b198dae399e7c1dda177e4206b21549ea9fddaf3",
+        "source_fact:v1:dd349a015187862de34b1f6a5e3bdc0cd754b4c92f0144f0abffc5274dc53188"
+      ],
+      "source_published_kst": "2026-10-12T03:00+09:00",
+      "source_title": "'노벨상 불발' 트럼프 몽니… 평화상 발표 직후 ICC 제재",
+      "telegram_core_fact": "미국의 새로운 제재는 노벨평화상 수상자가 발표된 후 이뤄졌는데 공교롭게도 도널드 트럼프 미국 대통령은 자신의 노벨평화상 불발에 분노했다.",
+      "title": "'노벨상 불발' 트럼프 몽니… 평화상 발표 직후 ICC 제재"
     },
     "source_fact:9e4548f28bbab312f06553b3": {
       "first_seen_kst": "2026-10-11T06:36:16+09:00",
@@ -334342,6 +334691,28 @@
       ],
       "source_published_kst": "2026-10-06T07:45+09:00",
       "title": "\"지금이 매수 기회\" 화장품株 급락했는데, 수출 29% 급증"
+    },
+    "source_fact:bb36b9995f68957aee3be4d5": {
+      "first_seen_kst": "2026-10-12T03:14:53+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:14:53+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:14:53+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/12/2026101119371921309",
+      "source": "머니투데이",
+      "source_body_digest": "c661205f157110089bb61f76a8f128688ea59114c8ad6426773cf8bc414367ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2cb0456372eebd95be4de9ecc39d173218ae9fc4a22eedede89b6f0e7cee10e",
+      "source_fact_keys": [
+        "source_fact:v1:5fa759c5de5eddc31bd676a3e8dfc5b2aafab482dfad7d0d44903e0e8bf48d70",
+        "source_fact:v1:a44aa22df3554f05a5d694348406032b38b7d920b1e4e4541de392f3109326a6",
+        "source_fact:v1:d8e0ecfee369a8a78be92d02b198dae399e7c1dda177e4206b21549ea9fddaf3",
+        "source_fact:v1:dd349a015187862de34b1f6a5e3bdc0cd754b4c92f0144f0abffc5274dc53188"
+      ],
+      "source_published_kst": "2026-10-12T03:00+09:00",
+      "source_title": "'노벨상 불발' 트럼프 몽니… 평화상 발표 직후 ICC 제재",
+      "telegram_core_fact": "미국의 새로운 제재는 노벨평화상 수상자가 발표된 후 이뤄졌는데 공교롭게도 도널드 트럼프 미국 대통령은 자신의 노벨평화상 불발에 분노했다.",
+      "title": "'노벨상 불발' 트럼프 몽니… 평화상 발표 직후 ICC 제재"
     },
     "source_fact:bb3c2e56ade29b441d3e845e": {
       "first_seen_kst": "2026-10-08T18:24:19+09:00",
@@ -379643,6 +380014,26 @@
       "telegram_core_fact": "양사는 전력기기 공급을 중심으로 이어온 협력을 엔지니어링과 프로젝트 수주 사업까지 확대한다.",
       "title": "LS일렉트릭, 대만 최대 석화그룹과 JV 설립⋯전력솔루션 수주 확대"
     },
+    "source_fact:f817d4606c9fbf2f3f54cc8c": {
+      "first_seen_kst": "2026-10-12T03:14:53+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:14:53+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:14:53+09:00",
+      "link": "https://www.etnews.com/20261008000286",
+      "source": "전자신문",
+      "source_body_digest": "54deb4196ad51e142972ee087a4521ad5ce2a255e4c58068e3acf547310776b5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fdcf189edb8776fa53a70aa6d789c06cf084d08f4f9d70541d0649fdac387d0f",
+      "source_fact_keys": [
+        "source_fact:v1:afae9710dcdeaf00388f509fea5e3064331d378ad977ca51851066c6e320e510",
+        "source_fact:v1:f111dc961c84109355dc8adac71c4486b958061a3f9a59bc83fe2a6bdade5b41"
+      ],
+      "source_published_kst": "2026-10-11T12:00+09:00",
+      "source_title": "틸론, 'Dstation X' 전 라인업 조달 등록 완료…공공기관 입찰 없이 구매한다",
+      "telegram_core_fact": "조달청 나라장터 공개데이터를 자체 분석한 내부 자료 기준으로 최근 5개년 공공조달 VDI 부문에서 높은 시장점유율과 공급 실적을 기록해 왔으며, 이번 Dstation X 등록을 계기로 기존 Dstation v9.0 중심의 조달 공급체계를 차세대 제품으로 전환할 방침이다.",
+      "title": "틸론, 'Dstation X' 전 라인업 조달 등록 완료…공공기관 입찰 없이 구매한다"
+    },
     "source_fact:f8251999ef567459e78b6651": {
       "first_seen_kst": "2026-10-10T16:57:05+09:00",
       "lanes": {
@@ -399491,6 +399882,28 @@
       "telegram_core_fact": "국내 주요 신항만에 설치된 항만장비의 국산 비중이 35%에 그치는 것으로 나타났다. 11일 서삼석 더불어민주당 의원이 해양수산부로부터 제출받은 ‘4대 항만공사 신항 지역 항만장비 도입현황’에 따르면 부산신항과 인천신항, 울산신항, 광양항에 도입된 항만장비 3325대 가운데 국산 비중은 35%에 그쳤다.",
       "title": "[단독] 4대 신항 국산 장비비중 35%...中제품 더 많이 쓴다"
     },
+    "title:3c544dff10457877ed381597": {
+      "first_seen_kst": "2026-10-12T03:14:53+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:14:53+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:14:53+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/12/2026101119371921309",
+      "source": "머니투데이",
+      "source_body_digest": "c661205f157110089bb61f76a8f128688ea59114c8ad6426773cf8bc414367ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2cb0456372eebd95be4de9ecc39d173218ae9fc4a22eedede89b6f0e7cee10e",
+      "source_fact_keys": [
+        "source_fact:v1:5fa759c5de5eddc31bd676a3e8dfc5b2aafab482dfad7d0d44903e0e8bf48d70",
+        "source_fact:v1:a44aa22df3554f05a5d694348406032b38b7d920b1e4e4541de392f3109326a6",
+        "source_fact:v1:d8e0ecfee369a8a78be92d02b198dae399e7c1dda177e4206b21549ea9fddaf3",
+        "source_fact:v1:dd349a015187862de34b1f6a5e3bdc0cd754b4c92f0144f0abffc5274dc53188"
+      ],
+      "source_published_kst": "2026-10-12T03:00+09:00",
+      "source_title": "'노벨상 불발' 트럼프 몽니… 평화상 발표 직후 ICC 제재",
+      "telegram_core_fact": "미국의 새로운 제재는 노벨평화상 수상자가 발표된 후 이뤄졌는데 공교롭게도 도널드 트럼프 미국 대통령은 자신의 노벨평화상 불발에 분노했다.",
+      "title": "'노벨상 불발' 트럼프 몽니… 평화상 발표 직후 ICC 제재"
+    },
     "title:3c5e5ab87f91240fd54cde15": {
       "first_seen_kst": "2026-10-07T12:06:36+09:00",
       "lanes": {
@@ -401963,6 +402376,25 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=01666246645583400",
       "source": "이데일리",
       "title": "뉴노멀 됐나…美10년물 다시 5.1%, 얼마나 더 오를까"
+    },
+    "title:45c1841e49eeac21db1f7db5": {
+      "first_seen_kst": "2026-10-12T03:14:53+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:14:53+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:14:53+09:00",
+      "link": "https://www.mk.co.kr/news/politics/12172965",
+      "source": "매일경제",
+      "source_body_digest": "491ca78e64de48e771732e5b2bd44350e2a6426ee6dd1ddf1de93dbd2c1883a2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2b14f472ac4c06f638897367ca4713330abeb6b22df362009967c4d9ebc470ad",
+      "source_fact_keys": [
+        "source_fact:v1:10ae5c5570e28b2f0ddf8fca60d5920190456ebf253f83a3d96d36408836ecb4"
+      ],
+      "source_published_kst": "2026-10-11T15:41+09:00",
+      "source_title": "李대통령 “주택 공급 조만간 정상화…서울·수도권 인허가와 착공 회복”",
+      "telegram_core_fact": "이재명 대통령이 11일 서울·수도권의 주택건설 인허가와 착공이 회복되고 있다며 주택 공급이 조만간 정상화될 것으로 전망했다.",
+      "title": "李대통령 “주택 공급 조만간 정상화…서울·수도권 인허가와 착공 회복”"
     },
     "title:45cf79fccfe7d65311ed4ea6": {
       "first_seen_kst": "2026-09-28T18:02:59+09:00",
@@ -425498,6 +425930,26 @@
       "telegram_core_fact": "HD현대중공업을 비롯한 국내 조선·원자력 분야 주요 기업과 대학 등 12개 기관은 지난 6일 울산과학기술원(UNIST)에서 ‘SMR 해양 기술 실증센터’ 출범을 위한 업무협약을 체결했다고 7일(수) 밝혔다.",
       "title": "HD현대重 등 조선·원자력 분야 12개 기관 ‘SMR 해양 기술 실증센터’ 출범"
     },
+    "title:ac0abaf3abeafef8aab49f15": {
+      "first_seen_kst": "2026-10-12T03:14:53+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:14:53+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:14:53+09:00",
+      "link": "https://www.etnews.com/20261008000286",
+      "source": "전자신문",
+      "source_body_digest": "54deb4196ad51e142972ee087a4521ad5ce2a255e4c58068e3acf547310776b5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fdcf189edb8776fa53a70aa6d789c06cf084d08f4f9d70541d0649fdac387d0f",
+      "source_fact_keys": [
+        "source_fact:v1:afae9710dcdeaf00388f509fea5e3064331d378ad977ca51851066c6e320e510",
+        "source_fact:v1:f111dc961c84109355dc8adac71c4486b958061a3f9a59bc83fe2a6bdade5b41"
+      ],
+      "source_published_kst": "2026-10-11T12:00+09:00",
+      "source_title": "틸론, 'Dstation X' 전 라인업 조달 등록 완료…공공기관 입찰 없이 구매한다",
+      "telegram_core_fact": "조달청 나라장터 공개데이터를 자체 분석한 내부 자료 기준으로 최근 5개년 공공조달 VDI 부문에서 높은 시장점유율과 공급 실적을 기록해 왔으며, 이번 Dstation X 등록을 계기로 기존 Dstation v9.0 중심의 조달 공급체계를 차세대 제품으로 전환할 방침이다.",
+      "title": "틸론, 'Dstation X' 전 라인업 조달 등록 완료…공공기관 입찰 없이 구매한다"
+    },
     "title:ac189409c09c1ccce6d7e2a5": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
       "lanes": {
@@ -444791,5 +445243,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-12T02:51:54+09:00"
+  "updated_at_kst": "2026-10-12T03:14:53+09:00"
 }
