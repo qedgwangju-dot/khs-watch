@@ -9148,6 +9148,34 @@
       "telegram_core_fact": "트리플 플래그 프레셔스 메탈스(TFPM)는 3분기 잠정 매출액이 1억670만 달러, 금 환산 온스(GEO) 기준 판매량이 2만5030온스로 집계됐다고 10월 7일 발표했다.",
       "title": "트리플 플래그 프레셔스, 3분기 잠정 매출 1억700만 달러..라벤스우드 첫 인도"
     },
+    "core:612b10dd0fa92552ddcb98cc": {
+      "first_seen_kst": "2026-10-11T19:37:28+09:00",
+      "lanes": {
+        "live": "2026-10-11T19:37:28+09:00"
+      },
+      "last_seen_kst": "2026-10-11T19:37:28+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011039751079",
+      "source": "연합뉴스",
+      "source_body_digest": "7d83e04e9c4a81ed60469bddfb356c2593463d35ba2ac4427dcff8558d52bc78",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5e4cd47ebcb2a21e6e539a2808dbd90b5fd3fb44bb131fc2fc50e5d49a72808",
+      "source_fact_keys": [
+        "source_fact:v1:01279584b5938d7eff63357b158bd91eeb7b815de17f7bcebb63f52fc5da2ff8",
+        "source_fact:v1:1e398a97d7032b84e14e77b38bbca9a241afea89eee7e6850e5fea272b7189e0",
+        "source_fact:v1:3b1383ffd501863d9191e415ee33cd67a7c0ab44dd1adc61dabfe6627365e761",
+        "source_fact:v1:62649e463b1910f6401d82610ff08f7d6958c93e7845c81daa62dbde56ad6940",
+        "source_fact:v1:78d2627989926eb88265d9878f5db4dd0d2a4b18e247aec0b30193882058fe40",
+        "source_fact:v1:88dba8b8ae22577d96375d6060309613b3e4cc57a1bdf124d1204d120c092f60",
+        "source_fact:v1:8f2537f9237c869c0a79785ba37c67025896514e6515e131ecc882686341dff2",
+        "source_fact:v1:a9347968ea4b8af64c8de05bd6ce396fc80b70f66a3fc892743a3ae3ba5e820b",
+        "source_fact:v1:ab654d1188dfd45f0f295c2547fdd8ef61f6096a293d228b0bffa611cb1e8632",
+        "source_fact:v1:e9e7e77b9229863b80a45640e519dc25c88c7f0e53747846d7e2a2bb459cb2dc"
+      ],
+      "source_published_kst": "2026-10-11T19:12+09:00",
+      "source_title": "후티 반군 \"사우디 공항·영공 이용 말라…성지 빼고 전면 타격\"(종합) | 연합뉴스",
+      "telegram_core_fact": "사우디아라비아는 지난달 후티 반군이 홍해 연안의 전략적 요충지를 장악하자 반군을 겨냥한 공습을 단행하고 예멘 정부군의 반격을 지원하는 등 최근 예멘 사태에 대한 군사 개입을 강화하고 있다.",
+      "title": "후티 반군 \"사우디 공항·영공 이용 말라…성지 빼고 전면 타격\"(종합) | 연합뉴스"
+    },
     "core:612c225d0fbf7d163fd781f7": {
       "first_seen_kst": "2026-10-08T19:49:39+09:00",
       "lanes": {
@@ -32086,25 +32114,31 @@
     "event:c91bd744dc57f98702bd6932": {
       "first_seen_kst": "2026-10-11T02:45:51+09:00",
       "lanes": {
-        "live": "2026-10-11T18:15:28+09:00",
+        "live": "2026-10-11T19:37:28+09:00",
         "preopen": "2026-10-11T06:52:52+09:00"
       },
-      "last_seen_kst": "2026-10-11T18:15:28+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2634257",
-      "source": "이투데이",
-      "source_body_digest": "035b73de7da3278dbea8cdf1d0e368179a260e39e0089868801a07e584cb3aef",
+      "last_seen_kst": "2026-10-11T19:37:28+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011039751079",
+      "source": "연합뉴스",
+      "source_body_digest": "7d83e04e9c4a81ed60469bddfb356c2593463d35ba2ac4427dcff8558d52bc78",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:c885b86fdd57f650406dbff17061bd455be97dcd2ab9b039a685ef5ba2d5f7ed",
+      "source_fact_identity": "source_facts:v1:e5e4cd47ebcb2a21e6e539a2808dbd90b5fd3fb44bb131fc2fc50e5d49a72808",
       "source_fact_keys": [
-        "source_fact:v1:3f38cf7ada77c12e0fee2c2bee9a2c3985e5c4d13685bc0945d63017a52061f0",
-        "source_fact:v1:4b120e940c93900b0b66a035e0411198ce1647f2be65543c6606b1de2042b6ec",
-        "source_fact:v1:72103233d8dd12cea5951c0b6c7596299614a9416ed73a294a1d903602b91295",
-        "source_fact:v1:ecacd1572037522a6b058b175435eb0bf620a31f3a71b0c1b9356a4ad740f39d"
+        "source_fact:v1:01279584b5938d7eff63357b158bd91eeb7b815de17f7bcebb63f52fc5da2ff8",
+        "source_fact:v1:1e398a97d7032b84e14e77b38bbca9a241afea89eee7e6850e5fea272b7189e0",
+        "source_fact:v1:3b1383ffd501863d9191e415ee33cd67a7c0ab44dd1adc61dabfe6627365e761",
+        "source_fact:v1:62649e463b1910f6401d82610ff08f7d6958c93e7845c81daa62dbde56ad6940",
+        "source_fact:v1:78d2627989926eb88265d9878f5db4dd0d2a4b18e247aec0b30193882058fe40",
+        "source_fact:v1:88dba8b8ae22577d96375d6060309613b3e4cc57a1bdf124d1204d120c092f60",
+        "source_fact:v1:8f2537f9237c869c0a79785ba37c67025896514e6515e131ecc882686341dff2",
+        "source_fact:v1:a9347968ea4b8af64c8de05bd6ce396fc80b70f66a3fc892743a3ae3ba5e820b",
+        "source_fact:v1:ab654d1188dfd45f0f295c2547fdd8ef61f6096a293d228b0bffa611cb1e8632",
+        "source_fact:v1:e9e7e77b9229863b80a45640e519dc25c88c7f0e53747846d7e2a2bb459cb2dc"
       ],
-      "source_published_kst": "2026-10-11T08:24+09:00",
-      "source_title": "트럼프 “우크라이나, 새 대통령 필요”⋯젤렌스키와 충돌",
-      "telegram_core_fact": "전날 트럼프 대통령은 자신이 세운 SNS 트루스소셜에 “방금 블라디미르 푸틴 러시아 대통령과 매우 성공적인 논의를 마쳤다”며 “러시아는 미국과 세계 시장에 경유 30만t(톤) 이상을 즉시 공급하고 11월 중 50만t, 이후 100만t을 추가 공급하기로 했다”고 적었다.",
-      "title": "트럼프 “우크라이나, 새 대통령 필요”⋯젤렌스키와 충돌"
+      "source_published_kst": "2026-10-11T19:12+09:00",
+      "source_title": "후티 반군 \"사우디 공항·영공 이용 말라…성지 빼고 전면 타격\"(종합) | 연합뉴스",
+      "telegram_core_fact": "사우디아라비아는 지난달 후티 반군이 홍해 연안의 전략적 요충지를 장악하자 반군을 겨냥한 공습을 단행하고 예멘 정부군의 반격을 지원하는 등 최근 예멘 사태에 대한 군사 개입을 강화하고 있다.",
+      "title": "후티 반군 \"사우디 공항·영공 이용 말라…성지 빼고 전면 타격\"(종합) | 연합뉴스"
     },
     "event:c97955bd13212d7367a4e3b6": {
       "first_seen_kst": "2026-09-23T09:05:43+09:00",
@@ -34783,6 +34817,34 @@
       "source_title": "고고로, 6200만 달러 증자..주당 2.48달러 신주 발행",
       "telegram_core_fact": "배터리 교환 생태계 기업 고고로(GGR)가 이사 Chung-Yao Yin이 지배하는 법인과 전략적 투자자를 대상으로 보통주 2493만6057주를 주당 2.48달러에 발행해 약 6180만 달러 두 번째 신규 지분투자를 유치한다고 7일(현지시간) 발표했다.",
       "title": "고고로, 6200만 달러 증자..주당 2.48달러 신주 발행"
+    },
+    "fact:02bd917478ada0244292578d": {
+      "first_seen_kst": "2026-10-11T19:37:28+09:00",
+      "lanes": {
+        "live": "2026-10-11T19:37:28+09:00"
+      },
+      "last_seen_kst": "2026-10-11T19:37:28+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011039751079",
+      "source": "연합뉴스",
+      "source_body_digest": "7d83e04e9c4a81ed60469bddfb356c2593463d35ba2ac4427dcff8558d52bc78",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5e4cd47ebcb2a21e6e539a2808dbd90b5fd3fb44bb131fc2fc50e5d49a72808",
+      "source_fact_keys": [
+        "source_fact:v1:01279584b5938d7eff63357b158bd91eeb7b815de17f7bcebb63f52fc5da2ff8",
+        "source_fact:v1:1e398a97d7032b84e14e77b38bbca9a241afea89eee7e6850e5fea272b7189e0",
+        "source_fact:v1:3b1383ffd501863d9191e415ee33cd67a7c0ab44dd1adc61dabfe6627365e761",
+        "source_fact:v1:62649e463b1910f6401d82610ff08f7d6958c93e7845c81daa62dbde56ad6940",
+        "source_fact:v1:78d2627989926eb88265d9878f5db4dd0d2a4b18e247aec0b30193882058fe40",
+        "source_fact:v1:88dba8b8ae22577d96375d6060309613b3e4cc57a1bdf124d1204d120c092f60",
+        "source_fact:v1:8f2537f9237c869c0a79785ba37c67025896514e6515e131ecc882686341dff2",
+        "source_fact:v1:a9347968ea4b8af64c8de05bd6ce396fc80b70f66a3fc892743a3ae3ba5e820b",
+        "source_fact:v1:ab654d1188dfd45f0f295c2547fdd8ef61f6096a293d228b0bffa611cb1e8632",
+        "source_fact:v1:e9e7e77b9229863b80a45640e519dc25c88c7f0e53747846d7e2a2bb459cb2dc"
+      ],
+      "source_published_kst": "2026-10-11T19:12+09:00",
+      "source_title": "후티 반군 \"사우디 공항·영공 이용 말라…성지 빼고 전면 타격\"(종합) | 연합뉴스",
+      "telegram_core_fact": "사우디아라비아는 지난달 후티 반군이 홍해 연안의 전략적 요충지를 장악하자 반군을 겨냥한 공습을 단행하고 예멘 정부군의 반격을 지원하는 등 최근 예멘 사태에 대한 군사 개입을 강화하고 있다.",
+      "title": "후티 반군 \"사우디 공항·영공 이용 말라…성지 빼고 전면 타격\"(종합) | 연합뉴스"
     },
     "fact:02d9f9ccbd3ffa1b28e40042": {
       "first_seen_kst": "2026-10-06T21:28:22+09:00",
@@ -81573,6 +81635,34 @@
       "link": "https://www.etnews.com/20260922000186",
       "source": "전자신문",
       "title": "보령, 中 이판제약과 '탁소텔' 3837억원 공급계약…역대 최대 규모"
+    },
+    "link:245e89408406f233ba893ad4": {
+      "first_seen_kst": "2026-10-11T19:37:28+09:00",
+      "lanes": {
+        "live": "2026-10-11T19:37:28+09:00"
+      },
+      "last_seen_kst": "2026-10-11T19:37:28+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011039751079",
+      "source": "연합뉴스",
+      "source_body_digest": "7d83e04e9c4a81ed60469bddfb356c2593463d35ba2ac4427dcff8558d52bc78",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5e4cd47ebcb2a21e6e539a2808dbd90b5fd3fb44bb131fc2fc50e5d49a72808",
+      "source_fact_keys": [
+        "source_fact:v1:01279584b5938d7eff63357b158bd91eeb7b815de17f7bcebb63f52fc5da2ff8",
+        "source_fact:v1:1e398a97d7032b84e14e77b38bbca9a241afea89eee7e6850e5fea272b7189e0",
+        "source_fact:v1:3b1383ffd501863d9191e415ee33cd67a7c0ab44dd1adc61dabfe6627365e761",
+        "source_fact:v1:62649e463b1910f6401d82610ff08f7d6958c93e7845c81daa62dbde56ad6940",
+        "source_fact:v1:78d2627989926eb88265d9878f5db4dd0d2a4b18e247aec0b30193882058fe40",
+        "source_fact:v1:88dba8b8ae22577d96375d6060309613b3e4cc57a1bdf124d1204d120c092f60",
+        "source_fact:v1:8f2537f9237c869c0a79785ba37c67025896514e6515e131ecc882686341dff2",
+        "source_fact:v1:a9347968ea4b8af64c8de05bd6ce396fc80b70f66a3fc892743a3ae3ba5e820b",
+        "source_fact:v1:ab654d1188dfd45f0f295c2547fdd8ef61f6096a293d228b0bffa611cb1e8632",
+        "source_fact:v1:e9e7e77b9229863b80a45640e519dc25c88c7f0e53747846d7e2a2bb459cb2dc"
+      ],
+      "source_published_kst": "2026-10-11T19:12+09:00",
+      "source_title": "후티 반군 \"사우디 공항·영공 이용 말라…성지 빼고 전면 타격\"(종합) | 연합뉴스",
+      "telegram_core_fact": "사우디아라비아는 지난달 후티 반군이 홍해 연안의 전략적 요충지를 장악하자 반군을 겨냥한 공습을 단행하고 예멘 정부군의 반격을 지원하는 등 최근 예멘 사태에 대한 군사 개입을 강화하고 있다.",
+      "title": "후티 반군 \"사우디 공항·영공 이용 말라…성지 빼고 전면 타격\"(종합) | 연합뉴스"
     },
     "link:245ffa29d9cd21117b8ba58d": {
       "first_seen_kst": "2026-09-28T19:38:01+09:00",
@@ -149498,6 +149588,34 @@
       "link": "https://www.yna.co.kr/view/AKR20261003005400072",
       "source": "연합뉴스",
       "title": "美고용 부진에 금리인상 우려 완화…나스닥 1.2%↑ | 연합뉴스"
+    },
+    "original:49303c04479afa262749c788": {
+      "first_seen_kst": "2026-10-11T19:37:28+09:00",
+      "lanes": {
+        "live": "2026-10-11T19:37:28+09:00"
+      },
+      "last_seen_kst": "2026-10-11T19:37:28+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011039751079",
+      "source": "연합뉴스",
+      "source_body_digest": "7d83e04e9c4a81ed60469bddfb356c2593463d35ba2ac4427dcff8558d52bc78",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5e4cd47ebcb2a21e6e539a2808dbd90b5fd3fb44bb131fc2fc50e5d49a72808",
+      "source_fact_keys": [
+        "source_fact:v1:01279584b5938d7eff63357b158bd91eeb7b815de17f7bcebb63f52fc5da2ff8",
+        "source_fact:v1:1e398a97d7032b84e14e77b38bbca9a241afea89eee7e6850e5fea272b7189e0",
+        "source_fact:v1:3b1383ffd501863d9191e415ee33cd67a7c0ab44dd1adc61dabfe6627365e761",
+        "source_fact:v1:62649e463b1910f6401d82610ff08f7d6958c93e7845c81daa62dbde56ad6940",
+        "source_fact:v1:78d2627989926eb88265d9878f5db4dd0d2a4b18e247aec0b30193882058fe40",
+        "source_fact:v1:88dba8b8ae22577d96375d6060309613b3e4cc57a1bdf124d1204d120c092f60",
+        "source_fact:v1:8f2537f9237c869c0a79785ba37c67025896514e6515e131ecc882686341dff2",
+        "source_fact:v1:a9347968ea4b8af64c8de05bd6ce396fc80b70f66a3fc892743a3ae3ba5e820b",
+        "source_fact:v1:ab654d1188dfd45f0f295c2547fdd8ef61f6096a293d228b0bffa611cb1e8632",
+        "source_fact:v1:e9e7e77b9229863b80a45640e519dc25c88c7f0e53747846d7e2a2bb459cb2dc"
+      ],
+      "source_published_kst": "2026-10-11T19:12+09:00",
+      "source_title": "후티 반군 \"사우디 공항·영공 이용 말라…성지 빼고 전면 타격\"(종합) | 연합뉴스",
+      "telegram_core_fact": "사우디아라비아는 지난달 후티 반군이 홍해 연안의 전략적 요충지를 장악하자 반군을 겨냥한 공습을 단행하고 예멘 정부군의 반격을 지원하는 등 최근 예멘 사태에 대한 군사 개입을 강화하고 있다.",
+      "title": "후티 반군 \"사우디 공항·영공 이용 말라…성지 빼고 전면 타격\"(종합) | 연합뉴스"
     },
     "original:4953b74775c4ebbb6bf4e52c": {
       "first_seen_kst": "2026-10-08T00:54:18+09:00",
@@ -224384,6 +224502,34 @@
       "telegram_core_fact": "소식통에 따르면 윗코프 특사와 트럼프 대통령의 사위 쿠슈너는 9일 미국 마이애미에서 키릴로 부다노우 우크라이나 대통령실 비서실장을 비롯한 우크라이나 협상 대표단 및 유럽 안보 당국자들과 만나 현재 교착상태를 타개할 평화 구상을 논의할 예정이다.",
       "title": "\"트럼프 특사, 우크라전 교착 타개할 새 구상 제시 계획\" | 연합뉴스"
     },
+    "source_fact:2fb941d6943cff8b4831c977": {
+      "first_seen_kst": "2026-10-11T19:37:28+09:00",
+      "lanes": {
+        "live": "2026-10-11T19:37:28+09:00"
+      },
+      "last_seen_kst": "2026-10-11T19:37:28+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011039751079",
+      "source": "연합뉴스",
+      "source_body_digest": "7d83e04e9c4a81ed60469bddfb356c2593463d35ba2ac4427dcff8558d52bc78",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5e4cd47ebcb2a21e6e539a2808dbd90b5fd3fb44bb131fc2fc50e5d49a72808",
+      "source_fact_keys": [
+        "source_fact:v1:01279584b5938d7eff63357b158bd91eeb7b815de17f7bcebb63f52fc5da2ff8",
+        "source_fact:v1:1e398a97d7032b84e14e77b38bbca9a241afea89eee7e6850e5fea272b7189e0",
+        "source_fact:v1:3b1383ffd501863d9191e415ee33cd67a7c0ab44dd1adc61dabfe6627365e761",
+        "source_fact:v1:62649e463b1910f6401d82610ff08f7d6958c93e7845c81daa62dbde56ad6940",
+        "source_fact:v1:78d2627989926eb88265d9878f5db4dd0d2a4b18e247aec0b30193882058fe40",
+        "source_fact:v1:88dba8b8ae22577d96375d6060309613b3e4cc57a1bdf124d1204d120c092f60",
+        "source_fact:v1:8f2537f9237c869c0a79785ba37c67025896514e6515e131ecc882686341dff2",
+        "source_fact:v1:a9347968ea4b8af64c8de05bd6ce396fc80b70f66a3fc892743a3ae3ba5e820b",
+        "source_fact:v1:ab654d1188dfd45f0f295c2547fdd8ef61f6096a293d228b0bffa611cb1e8632",
+        "source_fact:v1:e9e7e77b9229863b80a45640e519dc25c88c7f0e53747846d7e2a2bb459cb2dc"
+      ],
+      "source_published_kst": "2026-10-11T19:12+09:00",
+      "source_title": "후티 반군 \"사우디 공항·영공 이용 말라…성지 빼고 전면 타격\"(종합) | 연합뉴스",
+      "telegram_core_fact": "사우디아라비아는 지난달 후티 반군이 홍해 연안의 전략적 요충지를 장악하자 반군을 겨냥한 공습을 단행하고 예멘 정부군의 반격을 지원하는 등 최근 예멘 사태에 대한 군사 개입을 강화하고 있다.",
+      "title": "후티 반군 \"사우디 공항·영공 이용 말라…성지 빼고 전면 타격\"(종합) | 연합뉴스"
+    },
     "source_fact:2fddd95c8d766e092a686a2b": {
       "first_seen_kst": "2026-10-10T22:01:04+09:00",
       "lanes": {
@@ -230008,6 +230154,34 @@
       "telegram_core_fact": "블룸버그통신에 따르면 월러 이사는 “경제지표가 예상대로 나온다면 인플레이션을 2% 목표치로 더 신속하게 되돌리기 위해 추가 금리 인상이 필요할 것으로 예상한다”고 말했다.",
       "title": "연준 무살렘·월러 \"추가 금리 인상 필요\"…시점엔 유연성"
     },
+    "source_fact:37568a0387b14bd391c422eb": {
+      "first_seen_kst": "2026-10-11T19:37:28+09:00",
+      "lanes": {
+        "live": "2026-10-11T19:37:28+09:00"
+      },
+      "last_seen_kst": "2026-10-11T19:37:28+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011039751079",
+      "source": "연합뉴스",
+      "source_body_digest": "7d83e04e9c4a81ed60469bddfb356c2593463d35ba2ac4427dcff8558d52bc78",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5e4cd47ebcb2a21e6e539a2808dbd90b5fd3fb44bb131fc2fc50e5d49a72808",
+      "source_fact_keys": [
+        "source_fact:v1:01279584b5938d7eff63357b158bd91eeb7b815de17f7bcebb63f52fc5da2ff8",
+        "source_fact:v1:1e398a97d7032b84e14e77b38bbca9a241afea89eee7e6850e5fea272b7189e0",
+        "source_fact:v1:3b1383ffd501863d9191e415ee33cd67a7c0ab44dd1adc61dabfe6627365e761",
+        "source_fact:v1:62649e463b1910f6401d82610ff08f7d6958c93e7845c81daa62dbde56ad6940",
+        "source_fact:v1:78d2627989926eb88265d9878f5db4dd0d2a4b18e247aec0b30193882058fe40",
+        "source_fact:v1:88dba8b8ae22577d96375d6060309613b3e4cc57a1bdf124d1204d120c092f60",
+        "source_fact:v1:8f2537f9237c869c0a79785ba37c67025896514e6515e131ecc882686341dff2",
+        "source_fact:v1:a9347968ea4b8af64c8de05bd6ce396fc80b70f66a3fc892743a3ae3ba5e820b",
+        "source_fact:v1:ab654d1188dfd45f0f295c2547fdd8ef61f6096a293d228b0bffa611cb1e8632",
+        "source_fact:v1:e9e7e77b9229863b80a45640e519dc25c88c7f0e53747846d7e2a2bb459cb2dc"
+      ],
+      "source_published_kst": "2026-10-11T19:12+09:00",
+      "source_title": "후티 반군 \"사우디 공항·영공 이용 말라…성지 빼고 전면 타격\"(종합) | 연합뉴스",
+      "telegram_core_fact": "사우디아라비아는 지난달 후티 반군이 홍해 연안의 전략적 요충지를 장악하자 반군을 겨냥한 공습을 단행하고 예멘 정부군의 반격을 지원하는 등 최근 예멘 사태에 대한 군사 개입을 강화하고 있다.",
+      "title": "후티 반군 \"사우디 공항·영공 이용 말라…성지 빼고 전면 타격\"(종합) | 연합뉴스"
+    },
     "source_fact:375ec11b3c609dee472c7e09": {
       "first_seen_kst": "2026-10-07T13:41:41+09:00",
       "lanes": {
@@ -235441,6 +235615,34 @@
       "source_title": "장인화號 포스코홀딩스, 3분기 실적 개선 전망…\"리튬 사업 확장에 이익 커진다\"",
       "telegram_core_fact": "포스코홀딩스가 올해 3분기 8000억원 안팎의 영업이익을 달성하며 실적 개선을 이어갈 전망이다.",
       "title": "장인화號 포스코홀딩스, 3분기 실적 개선 전망…\"리튬 사업 확장에 이익 커진다\""
+    },
+    "source_fact:3f75605c9f0159c4541857bd": {
+      "first_seen_kst": "2026-10-11T19:37:28+09:00",
+      "lanes": {
+        "live": "2026-10-11T19:37:28+09:00"
+      },
+      "last_seen_kst": "2026-10-11T19:37:28+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011039751079",
+      "source": "연합뉴스",
+      "source_body_digest": "7d83e04e9c4a81ed60469bddfb356c2593463d35ba2ac4427dcff8558d52bc78",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5e4cd47ebcb2a21e6e539a2808dbd90b5fd3fb44bb131fc2fc50e5d49a72808",
+      "source_fact_keys": [
+        "source_fact:v1:01279584b5938d7eff63357b158bd91eeb7b815de17f7bcebb63f52fc5da2ff8",
+        "source_fact:v1:1e398a97d7032b84e14e77b38bbca9a241afea89eee7e6850e5fea272b7189e0",
+        "source_fact:v1:3b1383ffd501863d9191e415ee33cd67a7c0ab44dd1adc61dabfe6627365e761",
+        "source_fact:v1:62649e463b1910f6401d82610ff08f7d6958c93e7845c81daa62dbde56ad6940",
+        "source_fact:v1:78d2627989926eb88265d9878f5db4dd0d2a4b18e247aec0b30193882058fe40",
+        "source_fact:v1:88dba8b8ae22577d96375d6060309613b3e4cc57a1bdf124d1204d120c092f60",
+        "source_fact:v1:8f2537f9237c869c0a79785ba37c67025896514e6515e131ecc882686341dff2",
+        "source_fact:v1:a9347968ea4b8af64c8de05bd6ce396fc80b70f66a3fc892743a3ae3ba5e820b",
+        "source_fact:v1:ab654d1188dfd45f0f295c2547fdd8ef61f6096a293d228b0bffa611cb1e8632",
+        "source_fact:v1:e9e7e77b9229863b80a45640e519dc25c88c7f0e53747846d7e2a2bb459cb2dc"
+      ],
+      "source_published_kst": "2026-10-11T19:12+09:00",
+      "source_title": "후티 반군 \"사우디 공항·영공 이용 말라…성지 빼고 전면 타격\"(종합) | 연합뉴스",
+      "telegram_core_fact": "사우디아라비아는 지난달 후티 반군이 홍해 연안의 전략적 요충지를 장악하자 반군을 겨냥한 공습을 단행하고 예멘 정부군의 반격을 지원하는 등 최근 예멘 사태에 대한 군사 개입을 강화하고 있다.",
+      "title": "후티 반군 \"사우디 공항·영공 이용 말라…성지 빼고 전면 타격\"(종합) | 연합뉴스"
     },
     "source_fact:3f7600a7ddd2d36457f5895d": {
       "first_seen_kst": "2026-10-09T18:57:38+09:00",
@@ -242975,6 +243177,34 @@
       ],
       "source_published_kst": "2026-10-07T11:00+09:00",
       "title": "3분기 外人투자 도착 148.7억弗 전년比 30.6%↑…역대 1위 달성"
+    },
+    "source_fact:493a3a0b5e20780d4d9e5612": {
+      "first_seen_kst": "2026-10-11T19:37:28+09:00",
+      "lanes": {
+        "live": "2026-10-11T19:37:28+09:00"
+      },
+      "last_seen_kst": "2026-10-11T19:37:28+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011039751079",
+      "source": "연합뉴스",
+      "source_body_digest": "7d83e04e9c4a81ed60469bddfb356c2593463d35ba2ac4427dcff8558d52bc78",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5e4cd47ebcb2a21e6e539a2808dbd90b5fd3fb44bb131fc2fc50e5d49a72808",
+      "source_fact_keys": [
+        "source_fact:v1:01279584b5938d7eff63357b158bd91eeb7b815de17f7bcebb63f52fc5da2ff8",
+        "source_fact:v1:1e398a97d7032b84e14e77b38bbca9a241afea89eee7e6850e5fea272b7189e0",
+        "source_fact:v1:3b1383ffd501863d9191e415ee33cd67a7c0ab44dd1adc61dabfe6627365e761",
+        "source_fact:v1:62649e463b1910f6401d82610ff08f7d6958c93e7845c81daa62dbde56ad6940",
+        "source_fact:v1:78d2627989926eb88265d9878f5db4dd0d2a4b18e247aec0b30193882058fe40",
+        "source_fact:v1:88dba8b8ae22577d96375d6060309613b3e4cc57a1bdf124d1204d120c092f60",
+        "source_fact:v1:8f2537f9237c869c0a79785ba37c67025896514e6515e131ecc882686341dff2",
+        "source_fact:v1:a9347968ea4b8af64c8de05bd6ce396fc80b70f66a3fc892743a3ae3ba5e820b",
+        "source_fact:v1:ab654d1188dfd45f0f295c2547fdd8ef61f6096a293d228b0bffa611cb1e8632",
+        "source_fact:v1:e9e7e77b9229863b80a45640e519dc25c88c7f0e53747846d7e2a2bb459cb2dc"
+      ],
+      "source_published_kst": "2026-10-11T19:12+09:00",
+      "source_title": "후티 반군 \"사우디 공항·영공 이용 말라…성지 빼고 전면 타격\"(종합) | 연합뉴스",
+      "telegram_core_fact": "사우디아라비아는 지난달 후티 반군이 홍해 연안의 전략적 요충지를 장악하자 반군을 겨냥한 공습을 단행하고 예멘 정부군의 반격을 지원하는 등 최근 예멘 사태에 대한 군사 개입을 강화하고 있다.",
+      "title": "후티 반군 \"사우디 공항·영공 이용 말라…성지 빼고 전면 타격\"(종합) | 연합뉴스"
     },
     "source_fact:49433977d01c296d69ae8948": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
@@ -251396,6 +251626,34 @@
       "source_title": "[속보] 국제유가 하락⋯WTI 1.3%↓",
       "telegram_core_fact": "이날 뉴욕상업거래소에서 11월 인도분 서부텍사스산원유(WTI)는 전장보다 1.16달러(1.3%) 내린 배럴당 88.28달러에 장을 마감했다.",
       "title": "[속보] 국제유가 하락⋯WTI 1.3%↓"
+    },
+    "source_fact:54d9f665c0f9ab9c0b1c6257": {
+      "first_seen_kst": "2026-10-11T19:37:28+09:00",
+      "lanes": {
+        "live": "2026-10-11T19:37:28+09:00"
+      },
+      "last_seen_kst": "2026-10-11T19:37:28+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011039751079",
+      "source": "연합뉴스",
+      "source_body_digest": "7d83e04e9c4a81ed60469bddfb356c2593463d35ba2ac4427dcff8558d52bc78",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5e4cd47ebcb2a21e6e539a2808dbd90b5fd3fb44bb131fc2fc50e5d49a72808",
+      "source_fact_keys": [
+        "source_fact:v1:01279584b5938d7eff63357b158bd91eeb7b815de17f7bcebb63f52fc5da2ff8",
+        "source_fact:v1:1e398a97d7032b84e14e77b38bbca9a241afea89eee7e6850e5fea272b7189e0",
+        "source_fact:v1:3b1383ffd501863d9191e415ee33cd67a7c0ab44dd1adc61dabfe6627365e761",
+        "source_fact:v1:62649e463b1910f6401d82610ff08f7d6958c93e7845c81daa62dbde56ad6940",
+        "source_fact:v1:78d2627989926eb88265d9878f5db4dd0d2a4b18e247aec0b30193882058fe40",
+        "source_fact:v1:88dba8b8ae22577d96375d6060309613b3e4cc57a1bdf124d1204d120c092f60",
+        "source_fact:v1:8f2537f9237c869c0a79785ba37c67025896514e6515e131ecc882686341dff2",
+        "source_fact:v1:a9347968ea4b8af64c8de05bd6ce396fc80b70f66a3fc892743a3ae3ba5e820b",
+        "source_fact:v1:ab654d1188dfd45f0f295c2547fdd8ef61f6096a293d228b0bffa611cb1e8632",
+        "source_fact:v1:e9e7e77b9229863b80a45640e519dc25c88c7f0e53747846d7e2a2bb459cb2dc"
+      ],
+      "source_published_kst": "2026-10-11T19:12+09:00",
+      "source_title": "후티 반군 \"사우디 공항·영공 이용 말라…성지 빼고 전면 타격\"(종합) | 연합뉴스",
+      "telegram_core_fact": "사우디아라비아는 지난달 후티 반군이 홍해 연안의 전략적 요충지를 장악하자 반군을 겨냥한 공습을 단행하고 예멘 정부군의 반격을 지원하는 등 최근 예멘 사태에 대한 군사 개입을 강화하고 있다.",
+      "title": "후티 반군 \"사우디 공항·영공 이용 말라…성지 빼고 전면 타격\"(종합) | 연합뉴스"
     },
     "source_fact:54db2c570c9c46087cf8a30c": {
       "first_seen_kst": "2026-10-11T18:15:28+09:00",
@@ -279002,6 +279260,34 @@
       "telegram_core_fact": "HD현대중공업을 비롯한 국내 조선·원자력 분야 주요 기업과 대학 등 12개 기관은 지난 6일 울산과학기술원(UNIST)에서 ‘SMR 해양 기술 실증센터’ 출범을 위한 업무협약을 체결했다고 7일(수) 밝혔다.",
       "title": "HD현대重 등 조선·원자력 분야 12개 기관 ‘SMR 해양 기술 실증센터’ 출범"
     },
+    "source_fact:7a6ecdf40861fb37e5b33ead": {
+      "first_seen_kst": "2026-10-11T19:37:28+09:00",
+      "lanes": {
+        "live": "2026-10-11T19:37:28+09:00"
+      },
+      "last_seen_kst": "2026-10-11T19:37:28+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011039751079",
+      "source": "연합뉴스",
+      "source_body_digest": "7d83e04e9c4a81ed60469bddfb356c2593463d35ba2ac4427dcff8558d52bc78",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5e4cd47ebcb2a21e6e539a2808dbd90b5fd3fb44bb131fc2fc50e5d49a72808",
+      "source_fact_keys": [
+        "source_fact:v1:01279584b5938d7eff63357b158bd91eeb7b815de17f7bcebb63f52fc5da2ff8",
+        "source_fact:v1:1e398a97d7032b84e14e77b38bbca9a241afea89eee7e6850e5fea272b7189e0",
+        "source_fact:v1:3b1383ffd501863d9191e415ee33cd67a7c0ab44dd1adc61dabfe6627365e761",
+        "source_fact:v1:62649e463b1910f6401d82610ff08f7d6958c93e7845c81daa62dbde56ad6940",
+        "source_fact:v1:78d2627989926eb88265d9878f5db4dd0d2a4b18e247aec0b30193882058fe40",
+        "source_fact:v1:88dba8b8ae22577d96375d6060309613b3e4cc57a1bdf124d1204d120c092f60",
+        "source_fact:v1:8f2537f9237c869c0a79785ba37c67025896514e6515e131ecc882686341dff2",
+        "source_fact:v1:a9347968ea4b8af64c8de05bd6ce396fc80b70f66a3fc892743a3ae3ba5e820b",
+        "source_fact:v1:ab654d1188dfd45f0f295c2547fdd8ef61f6096a293d228b0bffa611cb1e8632",
+        "source_fact:v1:e9e7e77b9229863b80a45640e519dc25c88c7f0e53747846d7e2a2bb459cb2dc"
+      ],
+      "source_published_kst": "2026-10-11T19:12+09:00",
+      "source_title": "후티 반군 \"사우디 공항·영공 이용 말라…성지 빼고 전면 타격\"(종합) | 연합뉴스",
+      "telegram_core_fact": "사우디아라비아는 지난달 후티 반군이 홍해 연안의 전략적 요충지를 장악하자 반군을 겨냥한 공습을 단행하고 예멘 정부군의 반격을 지원하는 등 최근 예멘 사태에 대한 군사 개입을 강화하고 있다.",
+      "title": "후티 반군 \"사우디 공항·영공 이용 말라…성지 빼고 전면 타격\"(종합) | 연합뉴스"
+    },
     "source_fact:7a6f7db1e9b9f2350c002953": {
       "first_seen_kst": "2026-10-06T14:18:00+09:00",
       "lanes": {
@@ -306297,6 +306583,34 @@
       "source_published_kst": "2026-10-06T15:44+09:00",
       "title": "원·달러 환율, 0.4원 내린 1343.6원 마감"
     },
+    "source_fact:a0d681bcd7eb1831ad9cab94": {
+      "first_seen_kst": "2026-10-11T19:37:28+09:00",
+      "lanes": {
+        "live": "2026-10-11T19:37:28+09:00"
+      },
+      "last_seen_kst": "2026-10-11T19:37:28+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011039751079",
+      "source": "연합뉴스",
+      "source_body_digest": "7d83e04e9c4a81ed60469bddfb356c2593463d35ba2ac4427dcff8558d52bc78",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5e4cd47ebcb2a21e6e539a2808dbd90b5fd3fb44bb131fc2fc50e5d49a72808",
+      "source_fact_keys": [
+        "source_fact:v1:01279584b5938d7eff63357b158bd91eeb7b815de17f7bcebb63f52fc5da2ff8",
+        "source_fact:v1:1e398a97d7032b84e14e77b38bbca9a241afea89eee7e6850e5fea272b7189e0",
+        "source_fact:v1:3b1383ffd501863d9191e415ee33cd67a7c0ab44dd1adc61dabfe6627365e761",
+        "source_fact:v1:62649e463b1910f6401d82610ff08f7d6958c93e7845c81daa62dbde56ad6940",
+        "source_fact:v1:78d2627989926eb88265d9878f5db4dd0d2a4b18e247aec0b30193882058fe40",
+        "source_fact:v1:88dba8b8ae22577d96375d6060309613b3e4cc57a1bdf124d1204d120c092f60",
+        "source_fact:v1:8f2537f9237c869c0a79785ba37c67025896514e6515e131ecc882686341dff2",
+        "source_fact:v1:a9347968ea4b8af64c8de05bd6ce396fc80b70f66a3fc892743a3ae3ba5e820b",
+        "source_fact:v1:ab654d1188dfd45f0f295c2547fdd8ef61f6096a293d228b0bffa611cb1e8632",
+        "source_fact:v1:e9e7e77b9229863b80a45640e519dc25c88c7f0e53747846d7e2a2bb459cb2dc"
+      ],
+      "source_published_kst": "2026-10-11T19:12+09:00",
+      "source_title": "후티 반군 \"사우디 공항·영공 이용 말라…성지 빼고 전면 타격\"(종합) | 연합뉴스",
+      "telegram_core_fact": "사우디아라비아는 지난달 후티 반군이 홍해 연안의 전략적 요충지를 장악하자 반군을 겨냥한 공습을 단행하고 예멘 정부군의 반격을 지원하는 등 최근 예멘 사태에 대한 군사 개입을 강화하고 있다.",
+      "title": "후티 반군 \"사우디 공항·영공 이용 말라…성지 빼고 전면 타격\"(종합) | 연합뉴스"
+    },
     "source_fact:a0dc08a5e4ed7ea9305253f0": {
       "first_seen_kst": "2026-10-05T22:49:24+09:00",
       "lanes": {
@@ -323854,6 +324168,34 @@
       "source_title": "중국 AI스타트업 마누스, 메타 인수 무산 뒤 5억달러 투자유치 | 연합뉴스",
       "telegram_core_fact": "중국 정부의 제동으로 미국 빅테크 기업 메타의 인수 거래가 무산된 인공지능(AI) 스타트업 마누스가 5억달러(약 6천700억원) 이상의 신규 투자를 유치했다. 중국 IT 전문매체 IT즈자(IT之家) 등에 따르면 마누스의 모회사 버터플라이 이펙트는 이날 최근 5억달러 이상의 신규 자금 조달을 완료했다고 발표했다.",
       "title": "중국 AI스타트업 마누스, 메타 인수 무산 뒤 5억달러 투자유치 | 연합뉴스"
+    },
+    "source_fact:b9de0e7c7a503276a14fb388": {
+      "first_seen_kst": "2026-10-11T19:37:28+09:00",
+      "lanes": {
+        "live": "2026-10-11T19:37:28+09:00"
+      },
+      "last_seen_kst": "2026-10-11T19:37:28+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011039751079",
+      "source": "연합뉴스",
+      "source_body_digest": "7d83e04e9c4a81ed60469bddfb356c2593463d35ba2ac4427dcff8558d52bc78",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5e4cd47ebcb2a21e6e539a2808dbd90b5fd3fb44bb131fc2fc50e5d49a72808",
+      "source_fact_keys": [
+        "source_fact:v1:01279584b5938d7eff63357b158bd91eeb7b815de17f7bcebb63f52fc5da2ff8",
+        "source_fact:v1:1e398a97d7032b84e14e77b38bbca9a241afea89eee7e6850e5fea272b7189e0",
+        "source_fact:v1:3b1383ffd501863d9191e415ee33cd67a7c0ab44dd1adc61dabfe6627365e761",
+        "source_fact:v1:62649e463b1910f6401d82610ff08f7d6958c93e7845c81daa62dbde56ad6940",
+        "source_fact:v1:78d2627989926eb88265d9878f5db4dd0d2a4b18e247aec0b30193882058fe40",
+        "source_fact:v1:88dba8b8ae22577d96375d6060309613b3e4cc57a1bdf124d1204d120c092f60",
+        "source_fact:v1:8f2537f9237c869c0a79785ba37c67025896514e6515e131ecc882686341dff2",
+        "source_fact:v1:a9347968ea4b8af64c8de05bd6ce396fc80b70f66a3fc892743a3ae3ba5e820b",
+        "source_fact:v1:ab654d1188dfd45f0f295c2547fdd8ef61f6096a293d228b0bffa611cb1e8632",
+        "source_fact:v1:e9e7e77b9229863b80a45640e519dc25c88c7f0e53747846d7e2a2bb459cb2dc"
+      ],
+      "source_published_kst": "2026-10-11T19:12+09:00",
+      "source_title": "후티 반군 \"사우디 공항·영공 이용 말라…성지 빼고 전면 타격\"(종합) | 연합뉴스",
+      "telegram_core_fact": "사우디아라비아는 지난달 후티 반군이 홍해 연안의 전략적 요충지를 장악하자 반군을 겨냥한 공습을 단행하고 예멘 정부군의 반격을 지원하는 등 최근 예멘 사태에 대한 군사 개입을 강화하고 있다.",
+      "title": "후티 반군 \"사우디 공항·영공 이용 말라…성지 빼고 전면 타격\"(종합) | 연합뉴스"
     },
     "source_fact:b9e4e20925b73bab1f1b875e": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
@@ -355921,6 +356263,34 @@
       "telegram_core_fact": "금융투자업계에 따르면 삼성전자는 올해 3분기 잠정 실적으로 연결 기준 매출액 195조원, 영업이익 107조4000억 원(약 803억 달러)을 기록했다.",
       "title": "'107조 잭팟' 삼성전자, '63만전자' 시동거나"
     },
+    "source_fact:e5a5b1950a21ecd50c14d200": {
+      "first_seen_kst": "2026-10-11T19:37:28+09:00",
+      "lanes": {
+        "live": "2026-10-11T19:37:28+09:00"
+      },
+      "last_seen_kst": "2026-10-11T19:37:28+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011039751079",
+      "source": "연합뉴스",
+      "source_body_digest": "7d83e04e9c4a81ed60469bddfb356c2593463d35ba2ac4427dcff8558d52bc78",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5e4cd47ebcb2a21e6e539a2808dbd90b5fd3fb44bb131fc2fc50e5d49a72808",
+      "source_fact_keys": [
+        "source_fact:v1:01279584b5938d7eff63357b158bd91eeb7b815de17f7bcebb63f52fc5da2ff8",
+        "source_fact:v1:1e398a97d7032b84e14e77b38bbca9a241afea89eee7e6850e5fea272b7189e0",
+        "source_fact:v1:3b1383ffd501863d9191e415ee33cd67a7c0ab44dd1adc61dabfe6627365e761",
+        "source_fact:v1:62649e463b1910f6401d82610ff08f7d6958c93e7845c81daa62dbde56ad6940",
+        "source_fact:v1:78d2627989926eb88265d9878f5db4dd0d2a4b18e247aec0b30193882058fe40",
+        "source_fact:v1:88dba8b8ae22577d96375d6060309613b3e4cc57a1bdf124d1204d120c092f60",
+        "source_fact:v1:8f2537f9237c869c0a79785ba37c67025896514e6515e131ecc882686341dff2",
+        "source_fact:v1:a9347968ea4b8af64c8de05bd6ce396fc80b70f66a3fc892743a3ae3ba5e820b",
+        "source_fact:v1:ab654d1188dfd45f0f295c2547fdd8ef61f6096a293d228b0bffa611cb1e8632",
+        "source_fact:v1:e9e7e77b9229863b80a45640e519dc25c88c7f0e53747846d7e2a2bb459cb2dc"
+      ],
+      "source_published_kst": "2026-10-11T19:12+09:00",
+      "source_title": "후티 반군 \"사우디 공항·영공 이용 말라…성지 빼고 전면 타격\"(종합) | 연합뉴스",
+      "telegram_core_fact": "사우디아라비아는 지난달 후티 반군이 홍해 연안의 전략적 요충지를 장악하자 반군을 겨냥한 공습을 단행하고 예멘 정부군의 반격을 지원하는 등 최근 예멘 사태에 대한 군사 개입을 강화하고 있다.",
+      "title": "후티 반군 \"사우디 공항·영공 이용 말라…성지 빼고 전면 타격\"(종합) | 연합뉴스"
+    },
     "source_fact:e5b8b93b84cb4cf615870363": {
       "first_seen_kst": "2026-10-07T12:49:48+09:00",
       "lanes": {
@@ -372108,6 +372478,34 @@
       "source_title": "\"트럼프, 젤렌스키가 요청 6차례 무시하자 푸틴과 경유 거래\"",
       "telegram_core_fact": "미 재무부는 곧바로 러시아 경유에 대한 제재 해제를 발표했는데, 중간선거를 앞두고 미국 내 경유가격 급등에 대한 불만이 커지자 트럼프 대통령이 푸틴 대통령에게 손을 내민 모양새다.",
       "title": "\"트럼프, 젤렌스키가 요청 6차례 무시하자 푸틴과 경유 거래\""
+    },
+    "source_fact:fd612db8c72eaeabd12c8038": {
+      "first_seen_kst": "2026-10-11T19:37:28+09:00",
+      "lanes": {
+        "live": "2026-10-11T19:37:28+09:00"
+      },
+      "last_seen_kst": "2026-10-11T19:37:28+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011039751079",
+      "source": "연합뉴스",
+      "source_body_digest": "7d83e04e9c4a81ed60469bddfb356c2593463d35ba2ac4427dcff8558d52bc78",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5e4cd47ebcb2a21e6e539a2808dbd90b5fd3fb44bb131fc2fc50e5d49a72808",
+      "source_fact_keys": [
+        "source_fact:v1:01279584b5938d7eff63357b158bd91eeb7b815de17f7bcebb63f52fc5da2ff8",
+        "source_fact:v1:1e398a97d7032b84e14e77b38bbca9a241afea89eee7e6850e5fea272b7189e0",
+        "source_fact:v1:3b1383ffd501863d9191e415ee33cd67a7c0ab44dd1adc61dabfe6627365e761",
+        "source_fact:v1:62649e463b1910f6401d82610ff08f7d6958c93e7845c81daa62dbde56ad6940",
+        "source_fact:v1:78d2627989926eb88265d9878f5db4dd0d2a4b18e247aec0b30193882058fe40",
+        "source_fact:v1:88dba8b8ae22577d96375d6060309613b3e4cc57a1bdf124d1204d120c092f60",
+        "source_fact:v1:8f2537f9237c869c0a79785ba37c67025896514e6515e131ecc882686341dff2",
+        "source_fact:v1:a9347968ea4b8af64c8de05bd6ce396fc80b70f66a3fc892743a3ae3ba5e820b",
+        "source_fact:v1:ab654d1188dfd45f0f295c2547fdd8ef61f6096a293d228b0bffa611cb1e8632",
+        "source_fact:v1:e9e7e77b9229863b80a45640e519dc25c88c7f0e53747846d7e2a2bb459cb2dc"
+      ],
+      "source_published_kst": "2026-10-11T19:12+09:00",
+      "source_title": "후티 반군 \"사우디 공항·영공 이용 말라…성지 빼고 전면 타격\"(종합) | 연합뉴스",
+      "telegram_core_fact": "사우디아라비아는 지난달 후티 반군이 홍해 연안의 전략적 요충지를 장악하자 반군을 겨냥한 공습을 단행하고 예멘 정부군의 반격을 지원하는 등 최근 예멘 사태에 대한 군사 개입을 강화하고 있다.",
+      "title": "후티 반군 \"사우디 공항·영공 이용 말라…성지 빼고 전면 타격\"(종합) | 연합뉴스"
     },
     "source_fact:fd653cada57eafc21e82b3ab": {
       "first_seen_kst": "2026-10-08T19:11:41+09:00",
@@ -391279,6 +391677,34 @@
       "link": "https://www.yna.co.kr/view/AKR20261003005400072",
       "source": "연합뉴스",
       "title": "美고용 부진에 금리인상 우려 완화…나스닥 1.2%↑ | 연합뉴스"
+    },
+    "title:49303c04479afa262749c788": {
+      "first_seen_kst": "2026-10-11T19:37:28+09:00",
+      "lanes": {
+        "live": "2026-10-11T19:37:28+09:00"
+      },
+      "last_seen_kst": "2026-10-11T19:37:28+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011039751079",
+      "source": "연합뉴스",
+      "source_body_digest": "7d83e04e9c4a81ed60469bddfb356c2593463d35ba2ac4427dcff8558d52bc78",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5e4cd47ebcb2a21e6e539a2808dbd90b5fd3fb44bb131fc2fc50e5d49a72808",
+      "source_fact_keys": [
+        "source_fact:v1:01279584b5938d7eff63357b158bd91eeb7b815de17f7bcebb63f52fc5da2ff8",
+        "source_fact:v1:1e398a97d7032b84e14e77b38bbca9a241afea89eee7e6850e5fea272b7189e0",
+        "source_fact:v1:3b1383ffd501863d9191e415ee33cd67a7c0ab44dd1adc61dabfe6627365e761",
+        "source_fact:v1:62649e463b1910f6401d82610ff08f7d6958c93e7845c81daa62dbde56ad6940",
+        "source_fact:v1:78d2627989926eb88265d9878f5db4dd0d2a4b18e247aec0b30193882058fe40",
+        "source_fact:v1:88dba8b8ae22577d96375d6060309613b3e4cc57a1bdf124d1204d120c092f60",
+        "source_fact:v1:8f2537f9237c869c0a79785ba37c67025896514e6515e131ecc882686341dff2",
+        "source_fact:v1:a9347968ea4b8af64c8de05bd6ce396fc80b70f66a3fc892743a3ae3ba5e820b",
+        "source_fact:v1:ab654d1188dfd45f0f295c2547fdd8ef61f6096a293d228b0bffa611cb1e8632",
+        "source_fact:v1:e9e7e77b9229863b80a45640e519dc25c88c7f0e53747846d7e2a2bb459cb2dc"
+      ],
+      "source_published_kst": "2026-10-11T19:12+09:00",
+      "source_title": "후티 반군 \"사우디 공항·영공 이용 말라…성지 빼고 전면 타격\"(종합) | 연합뉴스",
+      "telegram_core_fact": "사우디아라비아는 지난달 후티 반군이 홍해 연안의 전략적 요충지를 장악하자 반군을 겨냥한 공습을 단행하고 예멘 정부군의 반격을 지원하는 등 최근 예멘 사태에 대한 군사 개입을 강화하고 있다.",
+      "title": "후티 반군 \"사우디 공항·영공 이용 말라…성지 빼고 전면 타격\"(종합) | 연합뉴스"
     },
     "title:4953b74775c4ebbb6bf4e52c": {
       "first_seen_kst": "2026-10-08T00:54:18+09:00",
@@ -432449,5 +432875,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-11T19:15:43+09:00"
+  "updated_at_kst": "2026-10-11T19:37:28+09:00"
 }
