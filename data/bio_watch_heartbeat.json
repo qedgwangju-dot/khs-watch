@@ -1,6 +1,6 @@
 {
   "status": "degraded",
-  "checked_at_kst": "2026-10-11T10:47:42+09:00",
+  "checked_at_kst": "2026-10-11T10:49:24+09:00",
   "route_source": "encrypted-route",
   "telegram_route_ok": true,
   "qlex_collector_rc": 0,
@@ -36,5 +36,5 @@
   ],
   "failed_component": "Halozyme 특허분쟁 감시",
   "error_signature": "Halozyme 검색 원천 가용성 저하: 정상 응답 부족; 상세 실패 수는 heartbeat와 Halozyme 상태 파일 확인",
-  "failure_notice_message_id": 145
+  "failure_notice_message_id": 147
 }
