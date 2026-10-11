@@ -738,5 +738,29 @@ class AgenticCpuStructureTests(unittest.TestCase):
         self.assertNotIn("2027 CPU:XPU", changes[0])
 
 
+    def test_bounded_search_priority_rotates_across_all_sources(self):
+        searches = [
+            ("google", "source-a"), ("bing", "source-b"),
+            ("google", "source-c"), ("bing", "source-d"),
+            ("google", "source-e"),
+        ]
+        day = datetime(2026, 10, 11, 0, tzinfo=ZoneInfo("Asia/Seoul"))
+        firsts = [
+            w.rotated_searches(searches, day.replace(hour=hour))[0]
+            for hour in range(5)
+        ]
+        self.assertEqual(len(set(firsts)), 5)
+        for hour in range(5):
+            rotated = w.rotated_searches(searches, day.replace(hour=hour))
+            self.assertEqual(set(rotated), set(searches))
+        self.assertEqual(w.rotated_searches([], day), [])
+
+    def test_cpu_scan_stage_budgets_are_bounded_and_allow_structure_scan(self):
+        self.assertLess(w.CPU_FORECAST_STAGE_SECONDS, w.CPU_VALIDATION_STAGE_SECONDS)
+        self.assertLess(w.CPU_VALIDATION_STAGE_SECONDS, w.CPU_SCAN_WALL_SECONDS)
+        self.assertLess(w.CPU_SCAN_WALL_SECONDS, 440)
+
+
+
 if __name__ == "__main__":
     unittest.main()
