@@ -94,7 +94,7 @@ QUERIES = [
 
 HIGH_SOURCES = ("nikkei", "reuters", "bloomberg", "financial times",
                 "wall street journal", "wsj", "the information", "ubs")
-MID_SOURCES = ("investing.com", "newsquawk", "digitimes", "the elec", "proactive",
+MID_SOURCES = ("investing.com", "newsquawk", "digitimes", "the elec", "proactive", "9to5mac",
                "전자신문", "etnews", "zdnet", "매일경제", "한국경제",
                "서울경제", "파이낸셜뉴스", "연합뉴스", "yonhap")
 LOW_SOURCES = ("notebookcheck", "wccftech", "reddit", "note.com", "technobezz")
@@ -237,6 +237,15 @@ def _extract_cut(text: str) -> dict | None:
         if not any(w in vicinity for w in ORDER_WORDS):
             continue
         if not any(w in vicinity for w in COMPONENT_WORDS):
+            continue
+        # The comparison basis must belong to the SAME sentence as the
+        # percentage. "October parts cut 30%. IDC's ORIGINAL forecast..."
+        # must never fabricate an October original-plan comparison.
+        separators = list(re.finditer(r"(?<!\\d)\\.(?!\\d)|[;!?。]", low))
+        start = max((m.end() for m in separators if m.end() <= pos), default=0)
+        stop = min((m.start() for m in separators if m.start() > pos), default=len(low))
+        clause = low[start:stop]
+        if not any(w in clause for w in BASIS_WORDS):
             continue
         if not any(w in vicinity for w in BASIS_WORDS):
             continue
