@@ -1587,6 +1587,30 @@ core.signal_label = signal_label_v34
 core.build_regular_alert = build_regular_alert_v34
 core.build_setup_test = build_setup_test_v34
 
+# v34 canonical sources supersede v7/v16 quotes and v19 unofficial bonds.
+# Do not fetch those discarded values before collecting the canonical replacements.
+import lng_collection_budget
+import lng_supply_crisis_alert_v10 as _news_v10
+import lng_supply_crisis_alert_v20 as _bonds_v20
+
+
+def _official_bond_quotes_v34():
+    bund, us = _bonds_v20.fetch_official_bond_snapshots()
+    return {"bund10": _bonds_v20._make_quote("bund10", bund),
+            "us10": _bonds_v20._make_quote("us10", us)}
+
+
+lng_collection_budget.install(
+    core,
+    early_queries=_news_v10.EARLY_ALASKA_QUERIES,
+    market_sources={
+        "ttf": lambda: {"ttf": _fetch_te_korean_detail_quote_v34("ttf")},
+        "jkm": lambda: {"jkm": _fetch_te_korean_detail_quote_v34("jkm")},
+        "brent": lambda: {"brent": _fetch_yahoo_brent_daily_close_v34()},
+        "official_bonds": _official_bond_quotes_v34,
+    },
+)
+
 if __name__ == "__main__":
     raise SystemExit(core.main())
 
