@@ -613,6 +613,27 @@
       "telegram_core_fact": "라이프존 메탈스(LZM)는 탄자니아 카방가 니켈 프로젝트의 주민 이주 실행계획(RAP)이 국제금융공사(IFC) 성능표준 5(PS5)에 중대한 측면에서 계속 부합한다는 독립 전문가 검토 결과가 나오면서, 호주 광산업체 BHP에 지급할 인수 대가의 상한이 800만 달러 자동 감액됐다고 7일 발표했다.",
       "title": "라이프존 메탈스, BHP 인수대가 800만달러 감액..이주계획 검증 통과"
     },
+    "core:074f4d20bc531fa51e99f630": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820772",
+      "source": "뉴시스",
+      "source_body_digest": "96329d727d9161910f28537f9c4b566b8df513d0940fd37740835c2cfba68686",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3879331ea60fd8446cc92a6c85816acdb965ace65735acb56761baa3c221220c",
+      "source_fact_keys": [
+        "source_fact:v1:08f34cfef36096af4fda0e40e67bff5463c371f0fba11c39f41302fe509cc5b1",
+        "source_fact:v1:4d4d8aa994e463f80192adfc4e7e575634538a2a88deee06a5065f67dcf76dc6",
+        "source_fact:v1:9b759eafd0755392b2770146bacca782e624975e9e005a4c64f10ed50dd42279"
+      ],
+      "source_published_kst": "2026-10-11T10:51+09:00",
+      "source_title": "\"금리 올리며 돈 푸는 이상한 시대\"…국장 박스권 갇힐 동안 AI 주도주 쏠린다",
+      "telegram_core_fact": "\"과거에는 통화와 재정이 같은 방향으로 움직였지만, 지금은 기준금리를 올리면서 재정 집행을 위해 국채 발행을 늘리다 보니 24년 만에 최고 수준의 국채금리 시대가 도래했다\"고 분석했다.",
+      "title": "\"금리 올리며 돈 푸는 이상한 시대\"…국장 박스권 갇힐 동안 AI 주도주 쏠린다"
+    },
     "core:07ae2fae090c447b85850067": {
       "first_seen_kst": "2026-10-08T05:44:23+09:00",
       "lanes": {
@@ -8696,6 +8717,31 @@
       "telegram_core_fact": "동아쏘시오그룹은 ESG(환경·사회적 책무·기업지배구조 개선) 규제 강화 등에 대응해 협력사 대상 교육을 실시했다.",
       "title": "[바이오스냅] 동아쏘시오그룹, 협력사 대상 ESG 공급망 교육 | 연합뉴스"
     },
+    "core:6802b1a4717f5ba0bb5e4685": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://m.yonhapnewstv.co.kr/news/AKR202610111020306Op",
+      "source": "연합뉴스TV",
+      "source_body_digest": "253764c47aca0bc3a22f3440dc9b0139cdfbe27ce05386a6969f424ce64811f3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:936186fea7462d373b42793ba3e6f93b9dd287d30dc6a6ee94a83f58c7ded5d4",
+      "source_fact_keys": [
+        "source_fact:v1:0f890c8fa8df195744925c15b8c661b03d2d5aa0c2664ac83107315032d28997",
+        "source_fact:v1:2931bc30146e88be539454a040c1c74d5960bafa8340fed3e832695e6e6c7d77",
+        "source_fact:v1:5ddca16e6cb283e30d77439875db9a42b575ddf91d9577a35305b8dd7041585b",
+        "source_fact:v1:ab8aca7c1f864b449868e801e22e04fc39897f3ea03bd52b075a1b117538baad",
+        "source_fact:v1:b8af703f7a54dfcea88b73f6e748e27ce6a26aede5dc40d57dbaf404e1374e35",
+        "source_fact:v1:c7b690667fd68b9538a7257d8c31a654bbf2634ef9d6afe1ecec618daa246b74",
+        "source_fact:v1:dbe928d2fdbc9963a50813e07b4cd3edbb98e8150dee0b627f01b8e9a837266e"
+      ],
+      "source_published_kst": "2026-10-11T10:20+09:00",
+      "source_title": "“美, 우크라에 ’러 정유소 때리면 정보공유 중단’ 경고“",
+      "telegram_core_fact": "미국이 우크라이나가 러시아 정유시설 공격을 멈추지 않으면 정보 공유를 중단하겠다고 경고한 것으로 전해졌습니다. 우크라이나 측은 미국이 러시아에는 공습 중단을 요구하지 않으면서 자신들에게만 요구하는 것은 불공평하다고 불만을 표시한 것으로 전해졌습니다.",
+      "title": "“美, 우크라에 ’러 정유소 때리면 정보공유 중단’ 경고“"
+    },
     "core:6843d6f553f095ce0c5788b1": {
       "first_seen_kst": "2026-10-07T16:57:09+09:00",
       "lanes": {
@@ -8753,6 +8799,25 @@
       "source_title": "SK하이닉스 이르면 28일 실적 공개…영업이익률 80% 돌파하나",
       "telegram_core_fact": "삼성전자가 '분기 영업이익 100조' 시대를 열었고 SK하이닉스는 꿈의 영업이익률 기록을 세울 것으로 기대된다.",
       "title": "SK하이닉스 이르면 28일 실적 공개…영업이익률 80% 돌파하나"
+    },
+    "core:6882afccf87444619d486473": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633974",
+      "source": "이투데이",
+      "source_body_digest": "accfa7432ce185623d60da09bd11278db96ed7f10b8c29c4e33d455c322a4bf5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1b1bb2d24f9af93a4e57f77b04d451f041b5e94b2a287c980b28d1769499278b",
+      "source_fact_keys": [
+        "source_fact:v1:c86bed4641d6ae2277d82050a12d982043049d00d19f99bfae01719d02b7b4dc"
+      ],
+      "source_published_kst": "2026-10-11T10:54+09:00",
+      "source_title": "네팔 정부 수색 종료에도…두산에너빌 “복구보다 실종 직원 수색 우선“",
+      "telegram_core_fact": "네팔 정부는 5일 대홍수에 따른 국가 차원의 대규모 수색·구조 활동을 종료하고 피해 복구에 집중하는 단계로 전환했다.",
+      "title": "네팔 정부 수색 종료에도…두산에너빌 “복구보다 실종 직원 수색 우선“"
     },
     "core:68d1c9abd40a35af437b213e": {
       "first_seen_kst": "2026-10-08T16:34:42+09:00",
@@ -13923,6 +13988,37 @@
       "source_published_kst": "2026-10-07T13:37+09:00",
       "title": "대구·경북 제조업 생산 엇갈려…소비는 동반 감소"
     },
+    "core:a73bb25c2ffeccc061acdf39": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820846",
+      "source": "뉴시스",
+      "source_body_digest": "1336b76d908d32bf9f5fa6e29cbffd31b3c0d165a9d2e6163e32819fa9a754d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:004cf17a86b8cd3a79e7536528394bc4819d4a5cf8c0fd6f6345f4189098ecec",
+      "source_fact_keys": [
+        "source_fact:v1:0b225a5e125654487c85babb325486d63566a610b0fc1146120d9991c1ff4318",
+        "source_fact:v1:0cd6c7dbc9fe7c40d626f57ccc44bce5fdb4a9a0d47e205f269db57de9d527ac",
+        "source_fact:v1:1cf810cba524c3b2164f457bb1089ea41fc7b361eee1e89e9983f1e83fadf2d1",
+        "source_fact:v1:4747cc9dc105228547dc6a844f3d9010829b8062ca145efdd8a45974e391ab75",
+        "source_fact:v1:4a69df7601222ff9e2feddfdbd213709b2bce35387c5ebd1e43aafaac05d7313",
+        "source_fact:v1:5e466ca417915e288124a5a69fba32e2feb786538d551245e93902d55b1f444b",
+        "source_fact:v1:96c44b9474c67adf158a4fba454d3a871fcf7f77da2f41fea16c81ac0123f0fc",
+        "source_fact:v1:c69b7c7831804ef7d8a223bf918a172ba5ff855b0e42e71571774d2387edbe8d",
+        "source_fact:v1:c83d4afba33d3eea83195a9f9d04d8b0732c9b2d477c3a11da89d3da567bad57",
+        "source_fact:v1:c95804732aea16b7182c2eccaab5bea08faa92a7a8b45ae6bf189802a7e15ba8",
+        "source_fact:v1:d36b5bbe189936505e417a581b11f1c48951b163c5593b93d3ade74a13f64d19",
+        "source_fact:v1:d4018d9fcb0f51891d1e6b885349f2703e65137f2e6bdd4005d4381c74cb1c16",
+        "source_fact:v1:f1392b6658e00b33828b89666d5e8e8419f6c543fd7ebf0e1f11c8cdf5fa6dca"
+      ],
+      "source_published_kst": "2026-10-11T10:59+09:00",
+      "source_title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아 정유시설 공격을 계속하는 우크라이나에 정보 공유 중단을 경고하고 볼로디미르 젤렌스키 대통령의 교체 필요성까지 언급했다.",
+      "title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고"
+    },
     "core:a78757410ebfacbfcab2b635": {
       "first_seen_kst": "2026-10-08T09:17:31+09:00",
       "lanes": {
@@ -17800,6 +17896,37 @@
       "telegram_core_fact": "GC녹십자웰빙은 글로벌 개발 일정에 맞춰 국내 임상 및 허가 절차를 추진할 계획으로, 이번 협력을 통해 국내 개발 및 사업화 준비를 구체화한다는 방침이다.",
       "title": "GC녹십자웰빙, 365mc와 비만관리 사업 협력 … 지방분해주사제 신약 키운다"
     },
+    "core:d2778858b5296741991f221f": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://biz.chosun.com/it-science/ict/2026/10/11/VUGOPMIACZE2HL2N2E7E77LAFE/",
+      "source": "조선비즈",
+      "source_body_digest": "f046122054b62f9fc451f1adde12dd2ef26e4d2651a1f7efbefe46be303dc956",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79b3b19f8b48fc67fe8adf83351f4471ec6b52fcfa9407ee98a2f49872066a71",
+      "source_fact_keys": [
+        "source_fact:v1:1e6892c187b48c9b5d5faa9b194a4bf0b569a7e875d1e0dad62ba3df4ee61265",
+        "source_fact:v1:218907e397e41a61a533cbc3c286fb3a097e9148c319c5d5ceaff752ddd0641b",
+        "source_fact:v1:2350afda3df19a74aab1c3324209a76159c77c49e4cae0ed504bc3fccd128487",
+        "source_fact:v1:364c7888baf2b6fe8fa3007a5e032a9bbea7f818ce2e6a50cb40137ba9c0e22c",
+        "source_fact:v1:38e4ac25df7558ed6cdbae13b71badf1f44ce7ad36211433da119c74918e68bf",
+        "source_fact:v1:5099a201aeb4fd40bb183aadf820ad59fd9b5fdf05ccb03a6548e0c8b16bd405",
+        "source_fact:v1:56a02eb6b041cdc2878114cd15ad215394addee7296bcc452427c4b32f2becb4",
+        "source_fact:v1:59affeb1f3cbde41c2357ba89194bb92e4687df8e646b67b2a060c8e87149981",
+        "source_fact:v1:78f32e62da3f24c4cff6769c251e2a0eb34179ef6e7bf63841e50ee86cf22126",
+        "source_fact:v1:7fa20c912983a3824328c681428dd7370b6190e8b9e07e71072fd0a094946565",
+        "source_fact:v1:827b5b8ca040235e2636ac7f87d185b7f13a70195c3eac0e87c9bf8c8fdc3a3c",
+        "source_fact:v1:cd7eefa850b69de40f73a4ef11ab95248d1236a71083ddc8d27aa47461e678ed",
+        "source_fact:v1:f9a7a17ebf475d7b7f858d494b173b866260f63082299b2a224ff76bf425ea9f"
+      ],
+      "source_published_kst": "2026-10-11T10:39+09:00",
+      "source_title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁",
+      "telegram_core_fact": "특히 기존 OLED보다 밝기와 수명을 높이면서 소비전력을 줄일 수 있는 '탠덤 OLED'가 핵심 기술로 떠오르면서 삼성디스플레이와 LG디스플레이의 경쟁도 치열해지고 있다. 시장조사업체 옴디아에 따르면 올해 2분기 미국 PC 출하량은 전년비 1.0% 증가하는 데 그쳤지만, 매출은 13.1% 늘었다.",
+      "title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁"
+    },
     "core:d279865015ca824c6a075d8c": {
       "first_seen_kst": "2026-10-07T22:13:12+09:00",
       "lanes": {
@@ -20950,6 +21077,30 @@
       "source_title": "“9월 경상수지, 8월보다 좋을 것…연간 4500억달러 달성 가능”[일문일답]",
       "telegram_core_fact": "9월 무역수지가 예상을 뛰어넘는 큰 폭의 흑자를 기록한 데다, 연말로 갈수록 수출이 집중되는 효과까지 더해지면서 올해 연간 경상수지 흑자 전망치인 4500억달러도 달성 가능할 것이란 전망이다. 한은은 지난 8월 올해 연간 경상수지 흑자 전망치를 기존 2500억달러에서 4500억달러로 대폭 상향한 바 있다.",
       "title": "“9월 경상수지, 8월보다 좋을 것…연간 4500억달러 달성 가능”[일문일답]"
+    },
+    "core:f758bb7a21e378ca53d8f312": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01243126645611936",
+      "source": "이데일리",
+      "source_body_digest": "4b683df0052ebabe3d720de3afacd173cac6029f7acba150522d55ec6cde3fda",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:25e50d264fea06271ab3ac67134aa79563b353c1aa6cc6e3d2bca50516f00f10",
+      "source_fact_keys": [
+        "source_fact:v1:1c3faa87dfd680e41f57dea3be2d7f0d3292705644ca4a4bd927d50718011f29",
+        "source_fact:v1:1f2662a0fd5c2bdc2f215193e10f5f328868f8fb584ece83b1081de9e8482af6",
+        "source_fact:v1:7af8abf111e67a444c6d17396af9e8034166238db380e7500d5efd6c5f63bdf1",
+        "source_fact:v1:91d26c59fc720df9537abcaed687194b8ea9e72228f9d423adb828281b926f38",
+        "source_fact:v1:ab43d8b627763f53b0ec2e1ce2a65c2b1213d071adbff4e8b8b95f9869b892cf",
+        "source_fact:v1:fe4a8c085f7f08796ec823e81a22115a053809bbffd54841d63478d42c36e42c"
+      ],
+      "source_published_kst": "2026-10-11T09:45+09:00",
+      "source_title": "“금리 또 올랐다고?”…가계대출 60%가 변동금리 ‘발 동동’",
+      "telegram_core_fact": "한국은행의 연이은 기준금리 인상에도 은행 가계대출의 변동금리 비중이 60%에 육박한 것으로 나타났다.",
+      "title": "“금리 또 올랐다고?”…가계대출 60%가 변동금리 ‘발 동동’"
     },
     "core:f796226fa73142c79add5d0d": {
       "first_seen_kst": "2026-10-07T22:00:35+09:00",
@@ -25706,6 +25857,27 @@
       "source": "머니투데이",
       "title": "GS건설, 데이터센터 추가 수주 임박…목표가 26.3%↑-다올"
     },
+    "event:64f7a955941d67bee0e32fd8": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820772",
+      "source": "뉴시스",
+      "source_body_digest": "96329d727d9161910f28537f9c4b566b8df513d0940fd37740835c2cfba68686",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3879331ea60fd8446cc92a6c85816acdb965ace65735acb56761baa3c221220c",
+      "source_fact_keys": [
+        "source_fact:v1:08f34cfef36096af4fda0e40e67bff5463c371f0fba11c39f41302fe509cc5b1",
+        "source_fact:v1:4d4d8aa994e463f80192adfc4e7e575634538a2a88deee06a5065f67dcf76dc6",
+        "source_fact:v1:9b759eafd0755392b2770146bacca782e624975e9e005a4c64f10ed50dd42279"
+      ],
+      "source_published_kst": "2026-10-11T10:51+09:00",
+      "source_title": "\"금리 올리며 돈 푸는 이상한 시대\"…국장 박스권 갇힐 동안 AI 주도주 쏠린다",
+      "telegram_core_fact": "\"과거에는 통화와 재정이 같은 방향으로 움직였지만, 지금은 기준금리를 올리면서 재정 집행을 위해 국채 발행을 늘리다 보니 24년 만에 최고 수준의 국채금리 시대가 도래했다\"고 분석했다.",
+      "title": "\"금리 올리며 돈 푸는 이상한 시대\"…국장 박스권 갇힐 동안 AI 주도주 쏠린다"
+    },
     "event:661a943044c9f31c965beac2": {
       "first_seen_kst": "2026-09-28T08:48:10+09:00",
       "lanes": {
@@ -26700,25 +26872,26 @@
     "event:7e3069cf32ab92e164cf3871": {
       "first_seen_kst": "2026-10-11T08:42:16+09:00",
       "lanes": {
-        "live": "2026-10-11T08:42:16+09:00"
+        "live": "2026-10-11T11:01:00+09:00"
       },
-      "last_seen_kst": "2026-10-11T08:42:16+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1172485",
-      "source": "매일경제",
-      "source_body_digest": "ac890da7533a4af9f35903e20861c971feaca2fdb5f4e6e910f1cd7c601191c2",
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01243126645611936",
+      "source": "이데일리",
+      "source_body_digest": "4b683df0052ebabe3d720de3afacd173cac6029f7acba150522d55ec6cde3fda",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:29540a10f21988d69849eda3b1bca39e7c125eb2de50a896a7469fe0ae8fe40c",
+      "source_fact_identity": "source_facts:v1:25e50d264fea06271ab3ac67134aa79563b353c1aa6cc6e3d2bca50516f00f10",
       "source_fact_keys": [
-        "source_fact:v1:6a6f52f2982c429bbe2fd136d5667f66b0558d4f0264f0ae964794d1b29532bf",
-        "source_fact:v1:94c715a273b1fffc7c70ffd82b18fc0980369008ec5a9cdd81b9f81d3616a6a4",
-        "source_fact:v1:a9b8f6b2a79878ebf2f673eb28cd26d3fd025df6cff18e9c10c366fcf5876d02",
-        "source_fact:v1:d9659318c10124be48e0893294fcffe182588a7bfb908f85fed5af915acc6c4a",
-        "source_fact:v1:f82a1a21efd563c935f719dd016faa131b1613ea019937875758d92fc0161a8a"
+        "source_fact:v1:1c3faa87dfd680e41f57dea3be2d7f0d3292705644ca4a4bd927d50718011f29",
+        "source_fact:v1:1f2662a0fd5c2bdc2f215193e10f5f328868f8fb584ece83b1081de9e8482af6",
+        "source_fact:v1:7af8abf111e67a444c6d17396af9e8034166238db380e7500d5efd6c5f63bdf1",
+        "source_fact:v1:91d26c59fc720df9537abcaed687194b8ea9e72228f9d423adb828281b926f38",
+        "source_fact:v1:ab43d8b627763f53b0ec2e1ce2a65c2b1213d071adbff4e8b8b95f9869b892cf",
+        "source_fact:v1:fe4a8c085f7f08796ec823e81a22115a053809bbffd54841d63478d42c36e42c"
       ],
-      "source_published_kst": "2026-10-11T07:33+09:00",
-      "source_title": "“내년엔 1200원대도 가능”…‘반도체 달러’ 덕에 원화 강세 계속될까",
-      "telegram_core_fact": "반도체 수출 호황에 달러 수급 여건이 크게 개선되며, 원화의 펀더멘털이 강해졌다는 분석이 나온다.",
-      "title": "“내년엔 1200원대도 가능”…‘반도체 달러’ 덕에 원화 강세 계속될까"
+      "source_published_kst": "2026-10-11T09:45+09:00",
+      "source_title": "“금리 또 올랐다고?”…가계대출 60%가 변동금리 ‘발 동동’",
+      "telegram_core_fact": "한국은행의 연이은 기준금리 인상에도 은행 가계대출의 변동금리 비중이 60%에 육박한 것으로 나타났다.",
+      "title": "“금리 또 올랐다고?”…가계대출 60%가 변동금리 ‘발 동동’"
     },
     "event:7e3fbb8cd304a004176216ae": {
       "event_alias_evidence_message_id": 2295,
@@ -38064,6 +38237,25 @@
       "source_published_kst": "2026-10-06T10:23+09:00",
       "title": "산업장관 \"지방투자 1600조…3대 메가프로젝트 차질없이 추진\""
     },
+    "fact:281e945e513a9dfa46301b32": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633974",
+      "source": "이투데이",
+      "source_body_digest": "accfa7432ce185623d60da09bd11278db96ed7f10b8c29c4e33d455c322a4bf5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1b1bb2d24f9af93a4e57f77b04d451f041b5e94b2a287c980b28d1769499278b",
+      "source_fact_keys": [
+        "source_fact:v1:c86bed4641d6ae2277d82050a12d982043049d00d19f99bfae01719d02b7b4dc"
+      ],
+      "source_published_kst": "2026-10-11T10:54+09:00",
+      "source_title": "네팔 정부 수색 종료에도…두산에너빌 “복구보다 실종 직원 수색 우선“",
+      "telegram_core_fact": "네팔 정부는 5일 대홍수에 따른 국가 차원의 대규모 수색·구조 활동을 종료하고 피해 복구에 집중하는 단계로 전환했다.",
+      "title": "네팔 정부 수색 종료에도…두산에너빌 “복구보다 실종 직원 수색 우선“"
+    },
     "fact:28210194c9870798c6d927f9": {
       "first_seen_kst": "2026-10-09T18:34:32+09:00",
       "lanes": {
@@ -41086,6 +41278,30 @@
       ],
       "source_published_kst": "2026-10-06T06:31+09:00",
       "title": "GKL, 해외서 고객 접촉 논란…\"현지법·중국 형법 저촉 소지\" | 연합뉴스"
+    },
+    "fact:3e323248d1bea62dd20b3269": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01243126645611936",
+      "source": "이데일리",
+      "source_body_digest": "4b683df0052ebabe3d720de3afacd173cac6029f7acba150522d55ec6cde3fda",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:25e50d264fea06271ab3ac67134aa79563b353c1aa6cc6e3d2bca50516f00f10",
+      "source_fact_keys": [
+        "source_fact:v1:1c3faa87dfd680e41f57dea3be2d7f0d3292705644ca4a4bd927d50718011f29",
+        "source_fact:v1:1f2662a0fd5c2bdc2f215193e10f5f328868f8fb584ece83b1081de9e8482af6",
+        "source_fact:v1:7af8abf111e67a444c6d17396af9e8034166238db380e7500d5efd6c5f63bdf1",
+        "source_fact:v1:91d26c59fc720df9537abcaed687194b8ea9e72228f9d423adb828281b926f38",
+        "source_fact:v1:ab43d8b627763f53b0ec2e1ce2a65c2b1213d071adbff4e8b8b95f9869b892cf",
+        "source_fact:v1:fe4a8c085f7f08796ec823e81a22115a053809bbffd54841d63478d42c36e42c"
+      ],
+      "source_published_kst": "2026-10-11T09:45+09:00",
+      "source_title": "“금리 또 올랐다고?”…가계대출 60%가 변동금리 ‘발 동동’",
+      "telegram_core_fact": "한국은행의 연이은 기준금리 인상에도 은행 가계대출의 변동금리 비중이 60%에 육박한 것으로 나타났다.",
+      "title": "“금리 또 올랐다고?”…가계대출 60%가 변동금리 ‘발 동동’"
     },
     "fact:3e40f5e3d21f980b3e7ffda2": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -46093,6 +46309,27 @@
       "source_published_kst": "2026-10-07T15:31+09:00",
       "title": "스페이스X, 엔비디아 칩 사려고 400억달러 조달 추진"
     },
+    "fact:6325e33619e9e016584d63e3": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820772",
+      "source": "뉴시스",
+      "source_body_digest": "96329d727d9161910f28537f9c4b566b8df513d0940fd37740835c2cfba68686",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3879331ea60fd8446cc92a6c85816acdb965ace65735acb56761baa3c221220c",
+      "source_fact_keys": [
+        "source_fact:v1:08f34cfef36096af4fda0e40e67bff5463c371f0fba11c39f41302fe509cc5b1",
+        "source_fact:v1:4d4d8aa994e463f80192adfc4e7e575634538a2a88deee06a5065f67dcf76dc6",
+        "source_fact:v1:9b759eafd0755392b2770146bacca782e624975e9e005a4c64f10ed50dd42279"
+      ],
+      "source_published_kst": "2026-10-11T10:51+09:00",
+      "source_title": "\"금리 올리며 돈 푸는 이상한 시대\"…국장 박스권 갇힐 동안 AI 주도주 쏠린다",
+      "telegram_core_fact": "\"과거에는 통화와 재정이 같은 방향으로 움직였지만, 지금은 기준금리를 올리면서 재정 집행을 위해 국채 발행을 늘리다 보니 24년 만에 최고 수준의 국채금리 시대가 도래했다\"고 분석했다.",
+      "title": "\"금리 올리며 돈 푸는 이상한 시대\"…국장 박스권 갇힐 동안 AI 주도주 쏠린다"
+    },
     "fact:6349320ad5b8985051f1d44c": {
       "first_seen_kst": "2026-10-08T07:12:10+09:00",
       "lanes": {
@@ -46417,6 +46654,37 @@
       "source_title": "리졸브 AI, 상반기 매출 1억3100만 달러..연말 ARR 5억 달러 목표",
       "telegram_core_fact": "리졸브 AI(RZLV)는 2026년 상반기 매출액이 1억3080만 달러로 전년 동기의 20배를 넘었으며, 2026년 말 기준 연간 반복매출(ARR) 최소 5억 달러를 목표로 제시했다고 10월 8일 발표했다.",
       "title": "리졸브 AI, 상반기 매출 1억3100만 달러..연말 ARR 5억 달러 목표"
+    },
+    "fact:657a878f405e2f42242fe4d7": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://biz.chosun.com/it-science/ict/2026/10/11/VUGOPMIACZE2HL2N2E7E77LAFE/",
+      "source": "조선비즈",
+      "source_body_digest": "f046122054b62f9fc451f1adde12dd2ef26e4d2651a1f7efbefe46be303dc956",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79b3b19f8b48fc67fe8adf83351f4471ec6b52fcfa9407ee98a2f49872066a71",
+      "source_fact_keys": [
+        "source_fact:v1:1e6892c187b48c9b5d5faa9b194a4bf0b569a7e875d1e0dad62ba3df4ee61265",
+        "source_fact:v1:218907e397e41a61a533cbc3c286fb3a097e9148c319c5d5ceaff752ddd0641b",
+        "source_fact:v1:2350afda3df19a74aab1c3324209a76159c77c49e4cae0ed504bc3fccd128487",
+        "source_fact:v1:364c7888baf2b6fe8fa3007a5e032a9bbea7f818ce2e6a50cb40137ba9c0e22c",
+        "source_fact:v1:38e4ac25df7558ed6cdbae13b71badf1f44ce7ad36211433da119c74918e68bf",
+        "source_fact:v1:5099a201aeb4fd40bb183aadf820ad59fd9b5fdf05ccb03a6548e0c8b16bd405",
+        "source_fact:v1:56a02eb6b041cdc2878114cd15ad215394addee7296bcc452427c4b32f2becb4",
+        "source_fact:v1:59affeb1f3cbde41c2357ba89194bb92e4687df8e646b67b2a060c8e87149981",
+        "source_fact:v1:78f32e62da3f24c4cff6769c251e2a0eb34179ef6e7bf63841e50ee86cf22126",
+        "source_fact:v1:7fa20c912983a3824328c681428dd7370b6190e8b9e07e71072fd0a094946565",
+        "source_fact:v1:827b5b8ca040235e2636ac7f87d185b7f13a70195c3eac0e87c9bf8c8fdc3a3c",
+        "source_fact:v1:cd7eefa850b69de40f73a4ef11ab95248d1236a71083ddc8d27aa47461e678ed",
+        "source_fact:v1:f9a7a17ebf475d7b7f858d494b173b866260f63082299b2a224ff76bf425ea9f"
+      ],
+      "source_published_kst": "2026-10-11T10:39+09:00",
+      "source_title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁",
+      "telegram_core_fact": "특히 기존 OLED보다 밝기와 수명을 높이면서 소비전력을 줄일 수 있는 '탠덤 OLED'가 핵심 기술로 떠오르면서 삼성디스플레이와 LG디스플레이의 경쟁도 치열해지고 있다. 시장조사업체 옴디아에 따르면 올해 2분기 미국 PC 출하량은 전년비 1.0% 증가하는 데 그쳤지만, 매출은 13.1% 늘었다.",
+      "title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁"
     },
     "fact:657b39291ee4f6f20d3a6eba": {
       "first_seen_kst": "2026-10-06T22:08:07+09:00",
@@ -51851,6 +52119,37 @@
       "source_published_kst": "2026-10-06T09:48+09:00",
       "title": "은평구 불광 5구역, 철거 착수…2046가구 '북한산 자이'로 탈바꿈"
     },
+    "fact:8c75dadde61924955c91d142": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820846",
+      "source": "뉴시스",
+      "source_body_digest": "1336b76d908d32bf9f5fa6e29cbffd31b3c0d165a9d2e6163e32819fa9a754d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:004cf17a86b8cd3a79e7536528394bc4819d4a5cf8c0fd6f6345f4189098ecec",
+      "source_fact_keys": [
+        "source_fact:v1:0b225a5e125654487c85babb325486d63566a610b0fc1146120d9991c1ff4318",
+        "source_fact:v1:0cd6c7dbc9fe7c40d626f57ccc44bce5fdb4a9a0d47e205f269db57de9d527ac",
+        "source_fact:v1:1cf810cba524c3b2164f457bb1089ea41fc7b361eee1e89e9983f1e83fadf2d1",
+        "source_fact:v1:4747cc9dc105228547dc6a844f3d9010829b8062ca145efdd8a45974e391ab75",
+        "source_fact:v1:4a69df7601222ff9e2feddfdbd213709b2bce35387c5ebd1e43aafaac05d7313",
+        "source_fact:v1:5e466ca417915e288124a5a69fba32e2feb786538d551245e93902d55b1f444b",
+        "source_fact:v1:96c44b9474c67adf158a4fba454d3a871fcf7f77da2f41fea16c81ac0123f0fc",
+        "source_fact:v1:c69b7c7831804ef7d8a223bf918a172ba5ff855b0e42e71571774d2387edbe8d",
+        "source_fact:v1:c83d4afba33d3eea83195a9f9d04d8b0732c9b2d477c3a11da89d3da567bad57",
+        "source_fact:v1:c95804732aea16b7182c2eccaab5bea08faa92a7a8b45ae6bf189802a7e15ba8",
+        "source_fact:v1:d36b5bbe189936505e417a581b11f1c48951b163c5593b93d3ade74a13f64d19",
+        "source_fact:v1:d4018d9fcb0f51891d1e6b885349f2703e65137f2e6bdd4005d4381c74cb1c16",
+        "source_fact:v1:f1392b6658e00b33828b89666d5e8e8419f6c543fd7ebf0e1f11c8cdf5fa6dca"
+      ],
+      "source_published_kst": "2026-10-11T10:59+09:00",
+      "source_title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아 정유시설 공격을 계속하는 우크라이나에 정보 공유 중단을 경고하고 볼로디미르 젤렌스키 대통령의 교체 필요성까지 언급했다.",
+      "title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고"
+    },
     "fact:8c89cdd4fc2531d29a7e2cdd": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -56040,6 +56339,31 @@
       "source_title": "‘삼성 투자’ 월든, 美 동·서부 거점 확대…생산라인에 로봇 투입",
       "telegram_core_fact": "연구실 시연을 넘어 실제 생산라인에서 사람, 전체 교대시간 동안 로봇을 운영하는 데 이어 삼성전기와 세메스 제조현장에서도 로봇의 적용 가능성을 검증하고 있다.",
       "title": "‘삼성 투자’ 월든, 美 동·서부 거점 확대…생산라인에 로봇 투입"
+    },
+    "fact:a84b409e6bd3f5fddb045f3c": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://m.yonhapnewstv.co.kr/news/AKR202610111020306Op",
+      "source": "연합뉴스TV",
+      "source_body_digest": "253764c47aca0bc3a22f3440dc9b0139cdfbe27ce05386a6969f424ce64811f3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:936186fea7462d373b42793ba3e6f93b9dd287d30dc6a6ee94a83f58c7ded5d4",
+      "source_fact_keys": [
+        "source_fact:v1:0f890c8fa8df195744925c15b8c661b03d2d5aa0c2664ac83107315032d28997",
+        "source_fact:v1:2931bc30146e88be539454a040c1c74d5960bafa8340fed3e832695e6e6c7d77",
+        "source_fact:v1:5ddca16e6cb283e30d77439875db9a42b575ddf91d9577a35305b8dd7041585b",
+        "source_fact:v1:ab8aca7c1f864b449868e801e22e04fc39897f3ea03bd52b075a1b117538baad",
+        "source_fact:v1:b8af703f7a54dfcea88b73f6e748e27ce6a26aede5dc40d57dbaf404e1374e35",
+        "source_fact:v1:c7b690667fd68b9538a7257d8c31a654bbf2634ef9d6afe1ecec618daa246b74",
+        "source_fact:v1:dbe928d2fdbc9963a50813e07b4cd3edbb98e8150dee0b627f01b8e9a837266e"
+      ],
+      "source_published_kst": "2026-10-11T10:20+09:00",
+      "source_title": "“美, 우크라에 ’러 정유소 때리면 정보공유 중단’ 경고“",
+      "telegram_core_fact": "미국이 우크라이나가 러시아 정유시설 공격을 멈추지 않으면 정보 공유를 중단하겠다고 경고한 것으로 전해졌습니다. 우크라이나 측은 미국이 러시아에는 공습 중단을 요구하지 않으면서 자신들에게만 요구하는 것은 불공평하다고 불만을 표시한 것으로 전해졌습니다.",
+      "title": "“美, 우크라에 ’러 정유소 때리면 정보공유 중단’ 경고“"
     },
     "fact:a8d544b2b8e69e211ef882e1": {
       "first_seen_kst": "2026-10-11T01:31:17+09:00",
@@ -76763,6 +77087,27 @@
       "source": "디지털타임스",
       "title": "마이크론, 4분기 매출 542억달러…AI 메모리 수요에 ‘어닝 서프라이즈’"
     },
+    "link:24b090975e2d760c0177803e": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820772",
+      "source": "뉴시스",
+      "source_body_digest": "96329d727d9161910f28537f9c4b566b8df513d0940fd37740835c2cfba68686",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3879331ea60fd8446cc92a6c85816acdb965ace65735acb56761baa3c221220c",
+      "source_fact_keys": [
+        "source_fact:v1:08f34cfef36096af4fda0e40e67bff5463c371f0fba11c39f41302fe509cc5b1",
+        "source_fact:v1:4d4d8aa994e463f80192adfc4e7e575634538a2a88deee06a5065f67dcf76dc6",
+        "source_fact:v1:9b759eafd0755392b2770146bacca782e624975e9e005a4c64f10ed50dd42279"
+      ],
+      "source_published_kst": "2026-10-11T10:51+09:00",
+      "source_title": "\"금리 올리며 돈 푸는 이상한 시대\"…국장 박스권 갇힐 동안 AI 주도주 쏠린다",
+      "telegram_core_fact": "\"과거에는 통화와 재정이 같은 방향으로 움직였지만, 지금은 기준금리를 올리면서 재정 집행을 위해 국채 발행을 늘리다 보니 24년 만에 최고 수준의 국채금리 시대가 도래했다\"고 분석했다.",
+      "title": "\"금리 올리며 돈 푸는 이상한 시대\"…국장 박스권 갇힐 동안 AI 주도주 쏠린다"
+    },
     "link:24de9db8d496e99858ac22a7": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
       "lanes": {
@@ -79714,6 +80059,25 @@
       "source_title": "미러 '경유딜'에 EU \"전쟁자금 대는 것\"…영국 \"우크라와 연대\"(종합) | 연합뉴스",
       "telegram_core_fact": "EU 집행위원회는 별도로 낸 성명에서 \"우리는 우크라이나와 러시아에서 세계 식품 공급과 에너지 인프라를 보호할 휴전이 필요하다고 계속 믿는다\"라며 \"유럽은 러시아 탄화수소에 대한 과잉 의존에 숨은 비용이 있음을 너무 잘 알며, 유럽은 우크라이나에 대한 러시아의 전쟁을 부추기기를 원하지 않는다\"고 밝혔다.",
       "title": "미러 '경유딜'에 EU \"전쟁자금 대는 것\"…영국 \"우크라와 연대\"(종합) | 연합뉴스"
+    },
+    "link:2fd9d63addab16cd1301e7de": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633974",
+      "source": "이투데이",
+      "source_body_digest": "accfa7432ce185623d60da09bd11278db96ed7f10b8c29c4e33d455c322a4bf5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1b1bb2d24f9af93a4e57f77b04d451f041b5e94b2a287c980b28d1769499278b",
+      "source_fact_keys": [
+        "source_fact:v1:c86bed4641d6ae2277d82050a12d982043049d00d19f99bfae01719d02b7b4dc"
+      ],
+      "source_published_kst": "2026-10-11T10:54+09:00",
+      "source_title": "네팔 정부 수색 종료에도…두산에너빌 “복구보다 실종 직원 수색 우선“",
+      "telegram_core_fact": "네팔 정부는 5일 대홍수에 따른 국가 차원의 대규모 수색·구조 활동을 종료하고 피해 복구에 집중하는 단계로 전환했다.",
+      "title": "네팔 정부 수색 종료에도…두산에너빌 “복구보다 실종 직원 수색 우선“"
     },
     "link:2fe704e5a504f805fd1787d4": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
@@ -98030,6 +98394,37 @@
       "telegram_core_fact": "라이브 네이션(LYV)이 표면금리 7.125%의 2032년 만기 달러화 선순위 채권 7억3000만 달러와 표면금리 6.125%의 2032년 만기 유로화 선순위 채권 6억 유로의 발행 가격을 결정했다고 9일(현지시간) 발표했다.",
       "title": "라이브 네이션, 7억3000만 달러·6억 유로 선순위채 가격 결정"
     },
+    "link:817cf0c8ae8b241428fad98d": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://biz.chosun.com/it-science/ict/2026/10/11/VUGOPMIACZE2HL2N2E7E77LAFE/",
+      "source": "조선비즈",
+      "source_body_digest": "f046122054b62f9fc451f1adde12dd2ef26e4d2651a1f7efbefe46be303dc956",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79b3b19f8b48fc67fe8adf83351f4471ec6b52fcfa9407ee98a2f49872066a71",
+      "source_fact_keys": [
+        "source_fact:v1:1e6892c187b48c9b5d5faa9b194a4bf0b569a7e875d1e0dad62ba3df4ee61265",
+        "source_fact:v1:218907e397e41a61a533cbc3c286fb3a097e9148c319c5d5ceaff752ddd0641b",
+        "source_fact:v1:2350afda3df19a74aab1c3324209a76159c77c49e4cae0ed504bc3fccd128487",
+        "source_fact:v1:364c7888baf2b6fe8fa3007a5e032a9bbea7f818ce2e6a50cb40137ba9c0e22c",
+        "source_fact:v1:38e4ac25df7558ed6cdbae13b71badf1f44ce7ad36211433da119c74918e68bf",
+        "source_fact:v1:5099a201aeb4fd40bb183aadf820ad59fd9b5fdf05ccb03a6548e0c8b16bd405",
+        "source_fact:v1:56a02eb6b041cdc2878114cd15ad215394addee7296bcc452427c4b32f2becb4",
+        "source_fact:v1:59affeb1f3cbde41c2357ba89194bb92e4687df8e646b67b2a060c8e87149981",
+        "source_fact:v1:78f32e62da3f24c4cff6769c251e2a0eb34179ef6e7bf63841e50ee86cf22126",
+        "source_fact:v1:7fa20c912983a3824328c681428dd7370b6190e8b9e07e71072fd0a094946565",
+        "source_fact:v1:827b5b8ca040235e2636ac7f87d185b7f13a70195c3eac0e87c9bf8c8fdc3a3c",
+        "source_fact:v1:cd7eefa850b69de40f73a4ef11ab95248d1236a71083ddc8d27aa47461e678ed",
+        "source_fact:v1:f9a7a17ebf475d7b7f858d494b173b866260f63082299b2a224ff76bf425ea9f"
+      ],
+      "source_published_kst": "2026-10-11T10:39+09:00",
+      "source_title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁",
+      "telegram_core_fact": "특히 기존 OLED보다 밝기와 수명을 높이면서 소비전력을 줄일 수 있는 '탠덤 OLED'가 핵심 기술로 떠오르면서 삼성디스플레이와 LG디스플레이의 경쟁도 치열해지고 있다. 시장조사업체 옴디아에 따르면 올해 2분기 미국 PC 출하량은 전년비 1.0% 증가하는 데 그쳤지만, 매출은 13.1% 늘었다.",
+      "title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁"
+    },
     "link:8185192324550087456eb702": {
       "first_seen_kst": "2026-10-08T16:54:07+09:00",
       "lanes": {
@@ -102727,6 +103122,30 @@
       "telegram_core_fact": "LG디스플레이는 선제적인 제품 양산을 넘어 탠덤 OLED의 소재·소자·적층 구조와 구동 기술 전반에 걸쳐 선행 기술과 특허 등 지적재산(IP)을 축적해 왔다고 설명했다.",
       "title": "프리미엄화 가속하는 PC시장…고성능 탠덤 디스플레이 경쟁 치열 | 연합뉴스"
     },
+    "link:976c814216490e4dd71a0575": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01243126645611936",
+      "source": "이데일리",
+      "source_body_digest": "4b683df0052ebabe3d720de3afacd173cac6029f7acba150522d55ec6cde3fda",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:25e50d264fea06271ab3ac67134aa79563b353c1aa6cc6e3d2bca50516f00f10",
+      "source_fact_keys": [
+        "source_fact:v1:1c3faa87dfd680e41f57dea3be2d7f0d3292705644ca4a4bd927d50718011f29",
+        "source_fact:v1:1f2662a0fd5c2bdc2f215193e10f5f328868f8fb584ece83b1081de9e8482af6",
+        "source_fact:v1:7af8abf111e67a444c6d17396af9e8034166238db380e7500d5efd6c5f63bdf1",
+        "source_fact:v1:91d26c59fc720df9537abcaed687194b8ea9e72228f9d423adb828281b926f38",
+        "source_fact:v1:ab43d8b627763f53b0ec2e1ce2a65c2b1213d071adbff4e8b8b95f9869b892cf",
+        "source_fact:v1:fe4a8c085f7f08796ec823e81a22115a053809bbffd54841d63478d42c36e42c"
+      ],
+      "source_published_kst": "2026-10-11T09:45+09:00",
+      "source_title": "“금리 또 올랐다고?”…가계대출 60%가 변동금리 ‘발 동동’",
+      "telegram_core_fact": "한국은행의 연이은 기준금리 인상에도 은행 가계대출의 변동금리 비중이 60%에 육박한 것으로 나타났다.",
+      "title": "“금리 또 올랐다고?”…가계대출 60%가 변동금리 ‘발 동동’"
+    },
     "link:9770f3f58d3d465425536b04": {
       "first_seen_kst": "2026-09-27T19:02:46+09:00",
       "lanes": {
@@ -102753,6 +103172,37 @@
       "source_title": "40년 ‘반도체 검증’ 큐알티, AI·우주 타고 ‘퀀텀점프’ [그 회사 어때?]",
       "telegram_core_fact": "위성에 탑재되는 반도체가 지상에서 사용되는 제품보다 훨씬 엄격한 검증을 거쳐야 하는 이유다.",
       "title": "40년 ‘반도체 검증’ 큐알티, AI·우주 타고 ‘퀀텀점프’ [그 회사 어때?]"
+    },
+    "link:97a58e89cf041c269070e5fb": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820846",
+      "source": "뉴시스",
+      "source_body_digest": "1336b76d908d32bf9f5fa6e29cbffd31b3c0d165a9d2e6163e32819fa9a754d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:004cf17a86b8cd3a79e7536528394bc4819d4a5cf8c0fd6f6345f4189098ecec",
+      "source_fact_keys": [
+        "source_fact:v1:0b225a5e125654487c85babb325486d63566a610b0fc1146120d9991c1ff4318",
+        "source_fact:v1:0cd6c7dbc9fe7c40d626f57ccc44bce5fdb4a9a0d47e205f269db57de9d527ac",
+        "source_fact:v1:1cf810cba524c3b2164f457bb1089ea41fc7b361eee1e89e9983f1e83fadf2d1",
+        "source_fact:v1:4747cc9dc105228547dc6a844f3d9010829b8062ca145efdd8a45974e391ab75",
+        "source_fact:v1:4a69df7601222ff9e2feddfdbd213709b2bce35387c5ebd1e43aafaac05d7313",
+        "source_fact:v1:5e466ca417915e288124a5a69fba32e2feb786538d551245e93902d55b1f444b",
+        "source_fact:v1:96c44b9474c67adf158a4fba454d3a871fcf7f77da2f41fea16c81ac0123f0fc",
+        "source_fact:v1:c69b7c7831804ef7d8a223bf918a172ba5ff855b0e42e71571774d2387edbe8d",
+        "source_fact:v1:c83d4afba33d3eea83195a9f9d04d8b0732c9b2d477c3a11da89d3da567bad57",
+        "source_fact:v1:c95804732aea16b7182c2eccaab5bea08faa92a7a8b45ae6bf189802a7e15ba8",
+        "source_fact:v1:d36b5bbe189936505e417a581b11f1c48951b163c5593b93d3ade74a13f64d19",
+        "source_fact:v1:d4018d9fcb0f51891d1e6b885349f2703e65137f2e6bdd4005d4381c74cb1c16",
+        "source_fact:v1:f1392b6658e00b33828b89666d5e8e8419f6c543fd7ebf0e1f11c8cdf5fa6dca"
+      ],
+      "source_published_kst": "2026-10-11T10:59+09:00",
+      "source_title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아 정유시설 공격을 계속하는 우크라이나에 정보 공유 중단을 경고하고 볼로디미르 젤렌스키 대통령의 교체 필요성까지 언급했다.",
+      "title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고"
     },
     "link:97ac7cc0546b24af49fc2586": {
       "first_seen_kst": "2026-10-05T06:25:21+09:00",
@@ -123063,6 +123513,31 @@
       "source": "이데일리",
       "title": "다롄 공장 한계 부딪힌 솔리다임, 미국행 낸드 생산기지 추진"
     },
+    "link:f41904b62f7dee8a8885d76a": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://m.yonhapnewstv.co.kr/news/AKR202610111020306Op",
+      "source": "연합뉴스TV",
+      "source_body_digest": "253764c47aca0bc3a22f3440dc9b0139cdfbe27ce05386a6969f424ce64811f3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:936186fea7462d373b42793ba3e6f93b9dd287d30dc6a6ee94a83f58c7ded5d4",
+      "source_fact_keys": [
+        "source_fact:v1:0f890c8fa8df195744925c15b8c661b03d2d5aa0c2664ac83107315032d28997",
+        "source_fact:v1:2931bc30146e88be539454a040c1c74d5960bafa8340fed3e832695e6e6c7d77",
+        "source_fact:v1:5ddca16e6cb283e30d77439875db9a42b575ddf91d9577a35305b8dd7041585b",
+        "source_fact:v1:ab8aca7c1f864b449868e801e22e04fc39897f3ea03bd52b075a1b117538baad",
+        "source_fact:v1:b8af703f7a54dfcea88b73f6e748e27ce6a26aede5dc40d57dbaf404e1374e35",
+        "source_fact:v1:c7b690667fd68b9538a7257d8c31a654bbf2634ef9d6afe1ecec618daa246b74",
+        "source_fact:v1:dbe928d2fdbc9963a50813e07b4cd3edbb98e8150dee0b627f01b8e9a837266e"
+      ],
+      "source_published_kst": "2026-10-11T10:20+09:00",
+      "source_title": "“美, 우크라에 ’러 정유소 때리면 정보공유 중단’ 경고“",
+      "telegram_core_fact": "미국이 우크라이나가 러시아 정유시설 공격을 멈추지 않으면 정보 공유를 중단하겠다고 경고한 것으로 전해졌습니다. 우크라이나 측은 미국이 러시아에는 공습 중단을 요구하지 않으면서 자신들에게만 요구하는 것은 불공평하다고 불만을 표시한 것으로 전해졌습니다.",
+      "title": "“美, 우크라에 ’러 정유소 때리면 정보공유 중단’ 경고“"
+    },
     "link:f45d0ee032447f9d9dcd3edb": {
       "first_seen_kst": "2026-10-10T01:47:39+09:00",
       "lanes": {
@@ -132264,6 +132739,27 @@
       "link": "https://www.newsis.com/view/NISX20261001_0003810887",
       "source": "뉴시스",
       "title": "줄줄이 오르는 은행 예금금리…하나은행, 1년 만기 연 3.6%로"
+    },
+    "original:211035546d2159292ec81518": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820772",
+      "source": "뉴시스",
+      "source_body_digest": "96329d727d9161910f28537f9c4b566b8df513d0940fd37740835c2cfba68686",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3879331ea60fd8446cc92a6c85816acdb965ace65735acb56761baa3c221220c",
+      "source_fact_keys": [
+        "source_fact:v1:08f34cfef36096af4fda0e40e67bff5463c371f0fba11c39f41302fe509cc5b1",
+        "source_fact:v1:4d4d8aa994e463f80192adfc4e7e575634538a2a88deee06a5065f67dcf76dc6",
+        "source_fact:v1:9b759eafd0755392b2770146bacca782e624975e9e005a4c64f10ed50dd42279"
+      ],
+      "source_published_kst": "2026-10-11T10:51+09:00",
+      "source_title": "\"금리 올리며 돈 푸는 이상한 시대\"…국장 박스권 갇힐 동안 AI 주도주 쏠린다",
+      "telegram_core_fact": "\"과거에는 통화와 재정이 같은 방향으로 움직였지만, 지금은 기준금리를 올리면서 재정 집행을 위해 국채 발행을 늘리다 보니 24년 만에 최고 수준의 국채금리 시대가 도래했다\"고 분석했다.",
+      "title": "\"금리 올리며 돈 푸는 이상한 시대\"…국장 박스권 갇힐 동안 AI 주도주 쏠린다"
     },
     "original:2112dd09513b0df2593f09cb": {
       "first_seen_kst": "2026-09-23T07:15:19+09:00",
@@ -142821,6 +143317,25 @@
       "source_published_kst": "2026-10-06T15:16+09:00",
       "title": "MSDI, 구미에 미사일 개발·생산 거점 추진…2029년까지 7000억 규모"
     },
+    "original:4e69b9b8e0460ecab80ae741": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633974",
+      "source": "이투데이",
+      "source_body_digest": "accfa7432ce185623d60da09bd11278db96ed7f10b8c29c4e33d455c322a4bf5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1b1bb2d24f9af93a4e57f77b04d451f041b5e94b2a287c980b28d1769499278b",
+      "source_fact_keys": [
+        "source_fact:v1:c86bed4641d6ae2277d82050a12d982043049d00d19f99bfae01719d02b7b4dc"
+      ],
+      "source_published_kst": "2026-10-11T10:54+09:00",
+      "source_title": "네팔 정부 수색 종료에도…두산에너빌 “복구보다 실종 직원 수색 우선“",
+      "telegram_core_fact": "네팔 정부는 5일 대홍수에 따른 국가 차원의 대규모 수색·구조 활동을 종료하고 피해 복구에 집중하는 단계로 전환했다.",
+      "title": "네팔 정부 수색 종료에도…두산에너빌 “복구보다 실종 직원 수색 우선“"
+    },
     "original:4e6a4cac798c1894f9f81584": {
       "first_seen_kst": "2026-10-08T21:47:01+09:00",
       "lanes": {
@@ -147830,6 +148345,37 @@
       "source_title": "금융권서 교회·대학까지…해킹에 개인정보 100만건 넘게 노출 | 연합뉴스",
       "telegram_core_fact": "국가청렴권익교육원이 운영하는 청렴권익배움터에서는 이용자 10만여명의 개인정보가 유출됐다.",
       "title": "금융권서 교회·대학까지…해킹에 개인정보 100만건 넘게 노출 | 연합뉴스"
+    },
+    "original:67e42696ffe54c29fb5af194": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://biz.chosun.com/it-science/ict/2026/10/11/VUGOPMIACZE2HL2N2E7E77LAFE/",
+      "source": "조선비즈",
+      "source_body_digest": "f046122054b62f9fc451f1adde12dd2ef26e4d2651a1f7efbefe46be303dc956",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79b3b19f8b48fc67fe8adf83351f4471ec6b52fcfa9407ee98a2f49872066a71",
+      "source_fact_keys": [
+        "source_fact:v1:1e6892c187b48c9b5d5faa9b194a4bf0b569a7e875d1e0dad62ba3df4ee61265",
+        "source_fact:v1:218907e397e41a61a533cbc3c286fb3a097e9148c319c5d5ceaff752ddd0641b",
+        "source_fact:v1:2350afda3df19a74aab1c3324209a76159c77c49e4cae0ed504bc3fccd128487",
+        "source_fact:v1:364c7888baf2b6fe8fa3007a5e032a9bbea7f818ce2e6a50cb40137ba9c0e22c",
+        "source_fact:v1:38e4ac25df7558ed6cdbae13b71badf1f44ce7ad36211433da119c74918e68bf",
+        "source_fact:v1:5099a201aeb4fd40bb183aadf820ad59fd9b5fdf05ccb03a6548e0c8b16bd405",
+        "source_fact:v1:56a02eb6b041cdc2878114cd15ad215394addee7296bcc452427c4b32f2becb4",
+        "source_fact:v1:59affeb1f3cbde41c2357ba89194bb92e4687df8e646b67b2a060c8e87149981",
+        "source_fact:v1:78f32e62da3f24c4cff6769c251e2a0eb34179ef6e7bf63841e50ee86cf22126",
+        "source_fact:v1:7fa20c912983a3824328c681428dd7370b6190e8b9e07e71072fd0a094946565",
+        "source_fact:v1:827b5b8ca040235e2636ac7f87d185b7f13a70195c3eac0e87c9bf8c8fdc3a3c",
+        "source_fact:v1:cd7eefa850b69de40f73a4ef11ab95248d1236a71083ddc8d27aa47461e678ed",
+        "source_fact:v1:f9a7a17ebf475d7b7f858d494b173b866260f63082299b2a224ff76bf425ea9f"
+      ],
+      "source_published_kst": "2026-10-11T10:39+09:00",
+      "source_title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁",
+      "telegram_core_fact": "특히 기존 OLED보다 밝기와 수명을 높이면서 소비전력을 줄일 수 있는 '탠덤 OLED'가 핵심 기술로 떠오르면서 삼성디스플레이와 LG디스플레이의 경쟁도 치열해지고 있다. 시장조사업체 옴디아에 따르면 올해 2분기 미국 PC 출하량은 전년비 1.0% 증가하는 데 그쳤지만, 매출은 13.1% 늘었다.",
+      "title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁"
     },
     "original:67f1a3e21d28210df1b0d655": {
       "first_seen_kst": "2026-10-02T17:56:05+09:00",
@@ -154487,6 +155033,30 @@
       "source": "매일경제",
       "title": "삼성전기, `이익 컨센서스 상향 조정이 재가속화될 전망` 증권사 발표에 강세"
     },
+    "original:875c4a9dbac930dbcca327bd": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01243126645611936",
+      "source": "이데일리",
+      "source_body_digest": "4b683df0052ebabe3d720de3afacd173cac6029f7acba150522d55ec6cde3fda",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:25e50d264fea06271ab3ac67134aa79563b353c1aa6cc6e3d2bca50516f00f10",
+      "source_fact_keys": [
+        "source_fact:v1:1c3faa87dfd680e41f57dea3be2d7f0d3292705644ca4a4bd927d50718011f29",
+        "source_fact:v1:1f2662a0fd5c2bdc2f215193e10f5f328868f8fb584ece83b1081de9e8482af6",
+        "source_fact:v1:7af8abf111e67a444c6d17396af9e8034166238db380e7500d5efd6c5f63bdf1",
+        "source_fact:v1:91d26c59fc720df9537abcaed687194b8ea9e72228f9d423adb828281b926f38",
+        "source_fact:v1:ab43d8b627763f53b0ec2e1ce2a65c2b1213d071adbff4e8b8b95f9869b892cf",
+        "source_fact:v1:fe4a8c085f7f08796ec823e81a22115a053809bbffd54841d63478d42c36e42c"
+      ],
+      "source_published_kst": "2026-10-11T09:45+09:00",
+      "source_title": "“금리 또 올랐다고?”…가계대출 60%가 변동금리 ‘발 동동’",
+      "telegram_core_fact": "한국은행의 연이은 기준금리 인상에도 은행 가계대출의 변동금리 비중이 60%에 육박한 것으로 나타났다.",
+      "title": "“금리 또 올랐다고?”…가계대출 60%가 변동금리 ‘발 동동’"
+    },
     "original:87654e63dc51e405e820ec9a": {
       "first_seen_kst": "2026-09-18T12:25:16+09:00",
       "lanes": {
@@ -160262,6 +160832,31 @@
       "source_published_kst": "2026-10-07T09:35+09:00",
       "title": "KT클라우드, ‘청라 AI 데이터센터’ 구축 참여…50MW급 규모로 수도권 확장"
     },
+    "original:a16a4a1150a5fd3dbb29078c": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://m.yonhapnewstv.co.kr/news/AKR202610111020306Op",
+      "source": "연합뉴스TV",
+      "source_body_digest": "253764c47aca0bc3a22f3440dc9b0139cdfbe27ce05386a6969f424ce64811f3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:936186fea7462d373b42793ba3e6f93b9dd287d30dc6a6ee94a83f58c7ded5d4",
+      "source_fact_keys": [
+        "source_fact:v1:0f890c8fa8df195744925c15b8c661b03d2d5aa0c2664ac83107315032d28997",
+        "source_fact:v1:2931bc30146e88be539454a040c1c74d5960bafa8340fed3e832695e6e6c7d77",
+        "source_fact:v1:5ddca16e6cb283e30d77439875db9a42b575ddf91d9577a35305b8dd7041585b",
+        "source_fact:v1:ab8aca7c1f864b449868e801e22e04fc39897f3ea03bd52b075a1b117538baad",
+        "source_fact:v1:b8af703f7a54dfcea88b73f6e748e27ce6a26aede5dc40d57dbaf404e1374e35",
+        "source_fact:v1:c7b690667fd68b9538a7257d8c31a654bbf2634ef9d6afe1ecec618daa246b74",
+        "source_fact:v1:dbe928d2fdbc9963a50813e07b4cd3edbb98e8150dee0b627f01b8e9a837266e"
+      ],
+      "source_published_kst": "2026-10-11T10:20+09:00",
+      "source_title": "“美, 우크라에 ’러 정유소 때리면 정보공유 중단’ 경고“",
+      "telegram_core_fact": "미국이 우크라이나가 러시아 정유시설 공격을 멈추지 않으면 정보 공유를 중단하겠다고 경고한 것으로 전해졌습니다. 우크라이나 측은 미국이 러시아에는 공습 중단을 요구하지 않으면서 자신들에게만 요구하는 것은 불공평하다고 불만을 표시한 것으로 전해졌습니다.",
+      "title": "“美, 우크라에 ’러 정유소 때리면 정보공유 중단’ 경고“"
+    },
     "original:a1a0359eafaa61f23484f55e": {
       "first_seen_kst": "2026-09-19T00:36:11+09:00",
       "lanes": {
@@ -164393,6 +164988,37 @@
       "source_title": "패트리아 인베스트먼트, 2분기 순매출 1억1100만 달러..35% 증가",
       "telegram_core_fact": "패트리아 인베스트먼트(PAX)는 2분기(4~6월) 서비스 순매출(Net revenue from services)이 1억1129만 달러로 전년비 34.9% 증가했고, 희석 주당순이익은 0.065달러로 전년 동기 0.080달러보다 감소했다고 10월 7일 발표했다.",
       "title": "패트리아 인베스트먼트, 2분기 순매출 1억1100만 달러..35% 증가"
+    },
+    "original:b3460327ae81747a3e5a67cb": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820846",
+      "source": "뉴시스",
+      "source_body_digest": "1336b76d908d32bf9f5fa6e29cbffd31b3c0d165a9d2e6163e32819fa9a754d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:004cf17a86b8cd3a79e7536528394bc4819d4a5cf8c0fd6f6345f4189098ecec",
+      "source_fact_keys": [
+        "source_fact:v1:0b225a5e125654487c85babb325486d63566a610b0fc1146120d9991c1ff4318",
+        "source_fact:v1:0cd6c7dbc9fe7c40d626f57ccc44bce5fdb4a9a0d47e205f269db57de9d527ac",
+        "source_fact:v1:1cf810cba524c3b2164f457bb1089ea41fc7b361eee1e89e9983f1e83fadf2d1",
+        "source_fact:v1:4747cc9dc105228547dc6a844f3d9010829b8062ca145efdd8a45974e391ab75",
+        "source_fact:v1:4a69df7601222ff9e2feddfdbd213709b2bce35387c5ebd1e43aafaac05d7313",
+        "source_fact:v1:5e466ca417915e288124a5a69fba32e2feb786538d551245e93902d55b1f444b",
+        "source_fact:v1:96c44b9474c67adf158a4fba454d3a871fcf7f77da2f41fea16c81ac0123f0fc",
+        "source_fact:v1:c69b7c7831804ef7d8a223bf918a172ba5ff855b0e42e71571774d2387edbe8d",
+        "source_fact:v1:c83d4afba33d3eea83195a9f9d04d8b0732c9b2d477c3a11da89d3da567bad57",
+        "source_fact:v1:c95804732aea16b7182c2eccaab5bea08faa92a7a8b45ae6bf189802a7e15ba8",
+        "source_fact:v1:d36b5bbe189936505e417a581b11f1c48951b163c5593b93d3ade74a13f64d19",
+        "source_fact:v1:d4018d9fcb0f51891d1e6b885349f2703e65137f2e6bdd4005d4381c74cb1c16",
+        "source_fact:v1:f1392b6658e00b33828b89666d5e8e8419f6c543fd7ebf0e1f11c8cdf5fa6dca"
+      ],
+      "source_published_kst": "2026-10-11T10:59+09:00",
+      "source_title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아 정유시설 공격을 계속하는 우크라이나에 정보 공유 중단을 경고하고 볼로디미르 젤렌스키 대통령의 교체 필요성까지 언급했다.",
+      "title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고"
     },
     "original:b367b3443767cc3fc3f8f923": {
       "first_seen_kst": "2026-10-02T22:41:43+09:00",
@@ -180409,6 +181035,30 @@
       "source_published_kst": "2026-10-06T16:57+09:00",
       "title": "[BioS]알테오젠, 국민성장펀드 등 2000억 유치..\"新동력 확보\""
     },
+    "source_fact:0025ab2ae35860c4830b2809": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01243126645611936",
+      "source": "이데일리",
+      "source_body_digest": "4b683df0052ebabe3d720de3afacd173cac6029f7acba150522d55ec6cde3fda",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:25e50d264fea06271ab3ac67134aa79563b353c1aa6cc6e3d2bca50516f00f10",
+      "source_fact_keys": [
+        "source_fact:v1:1c3faa87dfd680e41f57dea3be2d7f0d3292705644ca4a4bd927d50718011f29",
+        "source_fact:v1:1f2662a0fd5c2bdc2f215193e10f5f328868f8fb584ece83b1081de9e8482af6",
+        "source_fact:v1:7af8abf111e67a444c6d17396af9e8034166238db380e7500d5efd6c5f63bdf1",
+        "source_fact:v1:91d26c59fc720df9537abcaed687194b8ea9e72228f9d423adb828281b926f38",
+        "source_fact:v1:ab43d8b627763f53b0ec2e1ce2a65c2b1213d071adbff4e8b8b95f9869b892cf",
+        "source_fact:v1:fe4a8c085f7f08796ec823e81a22115a053809bbffd54841d63478d42c36e42c"
+      ],
+      "source_published_kst": "2026-10-11T09:45+09:00",
+      "source_title": "“금리 또 올랐다고?”…가계대출 60%가 변동금리 ‘발 동동’",
+      "telegram_core_fact": "한국은행의 연이은 기준금리 인상에도 은행 가계대출의 변동금리 비중이 60%에 육박한 것으로 나타났다.",
+      "title": "“금리 또 올랐다고?”…가계대출 60%가 변동금리 ‘발 동동’"
+    },
     "source_fact:0035c8e61423aa0b623e2264": {
       "first_seen_kst": "2026-10-08T02:41:45+09:00",
       "lanes": {
@@ -186205,6 +186855,30 @@
       "telegram_core_fact": "우크라이나 총참모부는 7일 당시 공격으로 저장탱크 14기와 송유관 일부, 석유제품 자동 출하시설이 손상된 것으로 확인됐다고 발표했다. 우크라이나 총참모부는 우랄스유가 러시아 전체 원유 수출의 최대 50%를 차지하며 사마라 기지가 러시아군 수요를 충족하는 데도 관여한다고 설명했다.",
       "title": "러 사마라 핵심 석유거점 또 대형 화재…우크라 \"2일 공격 때 탱크 14기 손상\""
     },
+    "source_fact:09a6a9835123727a599df92c": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01243126645611936",
+      "source": "이데일리",
+      "source_body_digest": "4b683df0052ebabe3d720de3afacd173cac6029f7acba150522d55ec6cde3fda",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:25e50d264fea06271ab3ac67134aa79563b353c1aa6cc6e3d2bca50516f00f10",
+      "source_fact_keys": [
+        "source_fact:v1:1c3faa87dfd680e41f57dea3be2d7f0d3292705644ca4a4bd927d50718011f29",
+        "source_fact:v1:1f2662a0fd5c2bdc2f215193e10f5f328868f8fb584ece83b1081de9e8482af6",
+        "source_fact:v1:7af8abf111e67a444c6d17396af9e8034166238db380e7500d5efd6c5f63bdf1",
+        "source_fact:v1:91d26c59fc720df9537abcaed687194b8ea9e72228f9d423adb828281b926f38",
+        "source_fact:v1:ab43d8b627763f53b0ec2e1ce2a65c2b1213d071adbff4e8b8b95f9869b892cf",
+        "source_fact:v1:fe4a8c085f7f08796ec823e81a22115a053809bbffd54841d63478d42c36e42c"
+      ],
+      "source_published_kst": "2026-10-11T09:45+09:00",
+      "source_title": "“금리 또 올랐다고?”…가계대출 60%가 변동금리 ‘발 동동’",
+      "telegram_core_fact": "한국은행의 연이은 기준금리 인상에도 은행 가계대출의 변동금리 비중이 60%에 육박한 것으로 나타났다.",
+      "title": "“금리 또 올랐다고?”…가계대출 60%가 변동금리 ‘발 동동’"
+    },
     "source_fact:09cdcc7119f862422781b8f8": {
       "first_seen_kst": "2026-10-09T15:48:54+09:00",
       "lanes": {
@@ -190784,6 +191458,37 @@
       "source_title": "\"국세 체납 116조 넘어…법인세 등 지연 가산세 5년여간 22조\" | 연합뉴스",
       "telegram_core_fact": "국세 체납액이 116조원을 넘어선 가운데, 세무서가 세금을 고지하기 전 단계에서 발생한 납부지연가산세만 2021년 이후 21조원이 넘게 부과된 것으로 집계됐다.",
       "title": "\"국세 체납 116조 넘어…법인세 등 지연 가산세 5년여간 22조\" | 연합뉴스"
+    },
+    "source_fact:1027634fb5ad0e24c31e39d2": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820846",
+      "source": "뉴시스",
+      "source_body_digest": "1336b76d908d32bf9f5fa6e29cbffd31b3c0d165a9d2e6163e32819fa9a754d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:004cf17a86b8cd3a79e7536528394bc4819d4a5cf8c0fd6f6345f4189098ecec",
+      "source_fact_keys": [
+        "source_fact:v1:0b225a5e125654487c85babb325486d63566a610b0fc1146120d9991c1ff4318",
+        "source_fact:v1:0cd6c7dbc9fe7c40d626f57ccc44bce5fdb4a9a0d47e205f269db57de9d527ac",
+        "source_fact:v1:1cf810cba524c3b2164f457bb1089ea41fc7b361eee1e89e9983f1e83fadf2d1",
+        "source_fact:v1:4747cc9dc105228547dc6a844f3d9010829b8062ca145efdd8a45974e391ab75",
+        "source_fact:v1:4a69df7601222ff9e2feddfdbd213709b2bce35387c5ebd1e43aafaac05d7313",
+        "source_fact:v1:5e466ca417915e288124a5a69fba32e2feb786538d551245e93902d55b1f444b",
+        "source_fact:v1:96c44b9474c67adf158a4fba454d3a871fcf7f77da2f41fea16c81ac0123f0fc",
+        "source_fact:v1:c69b7c7831804ef7d8a223bf918a172ba5ff855b0e42e71571774d2387edbe8d",
+        "source_fact:v1:c83d4afba33d3eea83195a9f9d04d8b0732c9b2d477c3a11da89d3da567bad57",
+        "source_fact:v1:c95804732aea16b7182c2eccaab5bea08faa92a7a8b45ae6bf189802a7e15ba8",
+        "source_fact:v1:d36b5bbe189936505e417a581b11f1c48951b163c5593b93d3ade74a13f64d19",
+        "source_fact:v1:d4018d9fcb0f51891d1e6b885349f2703e65137f2e6bdd4005d4381c74cb1c16",
+        "source_fact:v1:f1392b6658e00b33828b89666d5e8e8419f6c543fd7ebf0e1f11c8cdf5fa6dca"
+      ],
+      "source_published_kst": "2026-10-11T10:59+09:00",
+      "source_title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아 정유시설 공격을 계속하는 우크라이나에 정보 공유 중단을 경고하고 볼로디미르 젤렌스키 대통령의 교체 필요성까지 언급했다.",
+      "title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고"
     },
     "source_fact:103137ed892efa3ed8016310": {
       "first_seen_kst": "2026-10-07T22:24:07+09:00",
@@ -199486,6 +200191,37 @@
       "source_published_kst": "2026-10-06T05:00+09:00",
       "title": "납품단가 다음은 ‘데이터’⋯AI 시대 대기업·中企 ‘新 갑을관계’ 탄생하나 [AI 신계급사회]"
     },
+    "source_fact:1d3f0658e1624831dd68baaa": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://biz.chosun.com/it-science/ict/2026/10/11/VUGOPMIACZE2HL2N2E7E77LAFE/",
+      "source": "조선비즈",
+      "source_body_digest": "f046122054b62f9fc451f1adde12dd2ef26e4d2651a1f7efbefe46be303dc956",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79b3b19f8b48fc67fe8adf83351f4471ec6b52fcfa9407ee98a2f49872066a71",
+      "source_fact_keys": [
+        "source_fact:v1:1e6892c187b48c9b5d5faa9b194a4bf0b569a7e875d1e0dad62ba3df4ee61265",
+        "source_fact:v1:218907e397e41a61a533cbc3c286fb3a097e9148c319c5d5ceaff752ddd0641b",
+        "source_fact:v1:2350afda3df19a74aab1c3324209a76159c77c49e4cae0ed504bc3fccd128487",
+        "source_fact:v1:364c7888baf2b6fe8fa3007a5e032a9bbea7f818ce2e6a50cb40137ba9c0e22c",
+        "source_fact:v1:38e4ac25df7558ed6cdbae13b71badf1f44ce7ad36211433da119c74918e68bf",
+        "source_fact:v1:5099a201aeb4fd40bb183aadf820ad59fd9b5fdf05ccb03a6548e0c8b16bd405",
+        "source_fact:v1:56a02eb6b041cdc2878114cd15ad215394addee7296bcc452427c4b32f2becb4",
+        "source_fact:v1:59affeb1f3cbde41c2357ba89194bb92e4687df8e646b67b2a060c8e87149981",
+        "source_fact:v1:78f32e62da3f24c4cff6769c251e2a0eb34179ef6e7bf63841e50ee86cf22126",
+        "source_fact:v1:7fa20c912983a3824328c681428dd7370b6190e8b9e07e71072fd0a094946565",
+        "source_fact:v1:827b5b8ca040235e2636ac7f87d185b7f13a70195c3eac0e87c9bf8c8fdc3a3c",
+        "source_fact:v1:cd7eefa850b69de40f73a4ef11ab95248d1236a71083ddc8d27aa47461e678ed",
+        "source_fact:v1:f9a7a17ebf475d7b7f858d494b173b866260f63082299b2a224ff76bf425ea9f"
+      ],
+      "source_published_kst": "2026-10-11T10:39+09:00",
+      "source_title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁",
+      "telegram_core_fact": "특히 기존 OLED보다 밝기와 수명을 높이면서 소비전력을 줄일 수 있는 '탠덤 OLED'가 핵심 기술로 떠오르면서 삼성디스플레이와 LG디스플레이의 경쟁도 치열해지고 있다. 시장조사업체 옴디아에 따르면 올해 2분기 미국 PC 출하량은 전년비 1.0% 증가하는 데 그쳤지만, 매출은 13.1% 늘었다.",
+      "title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁"
+    },
     "source_fact:1d4873a032020fdf50af4835": {
       "first_seen_kst": "2026-10-08T01:43:44+09:00",
       "lanes": {
@@ -199710,6 +200446,37 @@
       "source_published_kst": "2026-10-05T22:23+09:00",
       "title": "시놉시스, 10억달러 자사주 ASR 체결..173만5천주 우선 인도"
     },
+    "source_fact:1d6f65703ca9bec0dd01f2c5": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://biz.chosun.com/it-science/ict/2026/10/11/VUGOPMIACZE2HL2N2E7E77LAFE/",
+      "source": "조선비즈",
+      "source_body_digest": "f046122054b62f9fc451f1adde12dd2ef26e4d2651a1f7efbefe46be303dc956",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79b3b19f8b48fc67fe8adf83351f4471ec6b52fcfa9407ee98a2f49872066a71",
+      "source_fact_keys": [
+        "source_fact:v1:1e6892c187b48c9b5d5faa9b194a4bf0b569a7e875d1e0dad62ba3df4ee61265",
+        "source_fact:v1:218907e397e41a61a533cbc3c286fb3a097e9148c319c5d5ceaff752ddd0641b",
+        "source_fact:v1:2350afda3df19a74aab1c3324209a76159c77c49e4cae0ed504bc3fccd128487",
+        "source_fact:v1:364c7888baf2b6fe8fa3007a5e032a9bbea7f818ce2e6a50cb40137ba9c0e22c",
+        "source_fact:v1:38e4ac25df7558ed6cdbae13b71badf1f44ce7ad36211433da119c74918e68bf",
+        "source_fact:v1:5099a201aeb4fd40bb183aadf820ad59fd9b5fdf05ccb03a6548e0c8b16bd405",
+        "source_fact:v1:56a02eb6b041cdc2878114cd15ad215394addee7296bcc452427c4b32f2becb4",
+        "source_fact:v1:59affeb1f3cbde41c2357ba89194bb92e4687df8e646b67b2a060c8e87149981",
+        "source_fact:v1:78f32e62da3f24c4cff6769c251e2a0eb34179ef6e7bf63841e50ee86cf22126",
+        "source_fact:v1:7fa20c912983a3824328c681428dd7370b6190e8b9e07e71072fd0a094946565",
+        "source_fact:v1:827b5b8ca040235e2636ac7f87d185b7f13a70195c3eac0e87c9bf8c8fdc3a3c",
+        "source_fact:v1:cd7eefa850b69de40f73a4ef11ab95248d1236a71083ddc8d27aa47461e678ed",
+        "source_fact:v1:f9a7a17ebf475d7b7f858d494b173b866260f63082299b2a224ff76bf425ea9f"
+      ],
+      "source_published_kst": "2026-10-11T10:39+09:00",
+      "source_title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁",
+      "telegram_core_fact": "특히 기존 OLED보다 밝기와 수명을 높이면서 소비전력을 줄일 수 있는 '탠덤 OLED'가 핵심 기술로 떠오르면서 삼성디스플레이와 LG디스플레이의 경쟁도 치열해지고 있다. 시장조사업체 옴디아에 따르면 올해 2분기 미국 PC 출하량은 전년비 1.0% 증가하는 데 그쳤지만, 매출은 13.1% 늘었다.",
+      "title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁"
+    },
     "source_fact:1d8c6b59e645f8dd13891748": {
       "first_seen_kst": "2026-10-07T07:12:15+09:00",
       "lanes": {
@@ -199782,6 +200549,31 @@
       ],
       "source_published_kst": "2026-10-06T10:16+09:00",
       "title": "李부총리 \"민생경제 안정·양극화 완화 총력…주택공급 확대 최우선\"[국감]"
+    },
+    "source_fact:1da2d83c4f1bad4011e4ff63": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://m.yonhapnewstv.co.kr/news/AKR202610111020306Op",
+      "source": "연합뉴스TV",
+      "source_body_digest": "253764c47aca0bc3a22f3440dc9b0139cdfbe27ce05386a6969f424ce64811f3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:936186fea7462d373b42793ba3e6f93b9dd287d30dc6a6ee94a83f58c7ded5d4",
+      "source_fact_keys": [
+        "source_fact:v1:0f890c8fa8df195744925c15b8c661b03d2d5aa0c2664ac83107315032d28997",
+        "source_fact:v1:2931bc30146e88be539454a040c1c74d5960bafa8340fed3e832695e6e6c7d77",
+        "source_fact:v1:5ddca16e6cb283e30d77439875db9a42b575ddf91d9577a35305b8dd7041585b",
+        "source_fact:v1:ab8aca7c1f864b449868e801e22e04fc39897f3ea03bd52b075a1b117538baad",
+        "source_fact:v1:b8af703f7a54dfcea88b73f6e748e27ce6a26aede5dc40d57dbaf404e1374e35",
+        "source_fact:v1:c7b690667fd68b9538a7257d8c31a654bbf2634ef9d6afe1ecec618daa246b74",
+        "source_fact:v1:dbe928d2fdbc9963a50813e07b4cd3edbb98e8150dee0b627f01b8e9a837266e"
+      ],
+      "source_published_kst": "2026-10-11T10:20+09:00",
+      "source_title": "“美, 우크라에 ’러 정유소 때리면 정보공유 중단’ 경고“",
+      "telegram_core_fact": "미국이 우크라이나가 러시아 정유시설 공격을 멈추지 않으면 정보 공유를 중단하겠다고 경고한 것으로 전해졌습니다. 우크라이나 측은 미국이 러시아에는 공습 중단을 요구하지 않으면서 자신들에게만 요구하는 것은 불공평하다고 불만을 표시한 것으로 전해졌습니다.",
+      "title": "“美, 우크라에 ’러 정유소 때리면 정보공유 중단’ 경고“"
     },
     "source_fact:1daeaab47d01405b06e2be0b": {
       "first_seen_kst": "2026-10-06T15:44:02+09:00",
@@ -202809,6 +203601,37 @@
       "source_title": "HD현대마린솔루션, 美 엔진 기업 '골텐스' 3315억원에 인수",
       "telegram_core_fact": "인수 금액은 약 2억4700만달러(약 3315억 원)다. HD현대마린솔루션이 글로벌 '선박·육상발전용 엔진' 서비스 전문기업 '골텐스(Goltens)'의 지분 100%를 인수하는 주식매매계약을 체결했다고 8일 공시했다.",
       "title": "HD현대마린솔루션, 美 엔진 기업 '골텐스' 3315억원에 인수"
+    },
+    "source_fact:21ed061843a8f1f9816894d5": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://biz.chosun.com/it-science/ict/2026/10/11/VUGOPMIACZE2HL2N2E7E77LAFE/",
+      "source": "조선비즈",
+      "source_body_digest": "f046122054b62f9fc451f1adde12dd2ef26e4d2651a1f7efbefe46be303dc956",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79b3b19f8b48fc67fe8adf83351f4471ec6b52fcfa9407ee98a2f49872066a71",
+      "source_fact_keys": [
+        "source_fact:v1:1e6892c187b48c9b5d5faa9b194a4bf0b569a7e875d1e0dad62ba3df4ee61265",
+        "source_fact:v1:218907e397e41a61a533cbc3c286fb3a097e9148c319c5d5ceaff752ddd0641b",
+        "source_fact:v1:2350afda3df19a74aab1c3324209a76159c77c49e4cae0ed504bc3fccd128487",
+        "source_fact:v1:364c7888baf2b6fe8fa3007a5e032a9bbea7f818ce2e6a50cb40137ba9c0e22c",
+        "source_fact:v1:38e4ac25df7558ed6cdbae13b71badf1f44ce7ad36211433da119c74918e68bf",
+        "source_fact:v1:5099a201aeb4fd40bb183aadf820ad59fd9b5fdf05ccb03a6548e0c8b16bd405",
+        "source_fact:v1:56a02eb6b041cdc2878114cd15ad215394addee7296bcc452427c4b32f2becb4",
+        "source_fact:v1:59affeb1f3cbde41c2357ba89194bb92e4687df8e646b67b2a060c8e87149981",
+        "source_fact:v1:78f32e62da3f24c4cff6769c251e2a0eb34179ef6e7bf63841e50ee86cf22126",
+        "source_fact:v1:7fa20c912983a3824328c681428dd7370b6190e8b9e07e71072fd0a094946565",
+        "source_fact:v1:827b5b8ca040235e2636ac7f87d185b7f13a70195c3eac0e87c9bf8c8fdc3a3c",
+        "source_fact:v1:cd7eefa850b69de40f73a4ef11ab95248d1236a71083ddc8d27aa47461e678ed",
+        "source_fact:v1:f9a7a17ebf475d7b7f858d494b173b866260f63082299b2a224ff76bf425ea9f"
+      ],
+      "source_published_kst": "2026-10-11T10:39+09:00",
+      "source_title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁",
+      "telegram_core_fact": "특히 기존 OLED보다 밝기와 수명을 높이면서 소비전력을 줄일 수 있는 '탠덤 OLED'가 핵심 기술로 떠오르면서 삼성디스플레이와 LG디스플레이의 경쟁도 치열해지고 있다. 시장조사업체 옴디아에 따르면 올해 2분기 미국 PC 출하량은 전년비 1.0% 증가하는 데 그쳤지만, 매출은 13.1% 늘었다.",
+      "title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁"
     },
     "source_fact:21f6563b4cd81e550d71a856": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
@@ -207552,6 +208375,31 @@
       "source_published_kst": "2026-10-06T05:00+09:00",
       "title": "납품단가 다음은 ‘데이터’⋯AI 시대 대기업·中企 ‘新 갑을관계’ 탄생하나 [AI 신계급사회]"
     },
+    "source_fact:280ddc3eb0051dd460ccbd15": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://m.yonhapnewstv.co.kr/news/AKR202610111020306Op",
+      "source": "연합뉴스TV",
+      "source_body_digest": "253764c47aca0bc3a22f3440dc9b0139cdfbe27ce05386a6969f424ce64811f3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:936186fea7462d373b42793ba3e6f93b9dd287d30dc6a6ee94a83f58c7ded5d4",
+      "source_fact_keys": [
+        "source_fact:v1:0f890c8fa8df195744925c15b8c661b03d2d5aa0c2664ac83107315032d28997",
+        "source_fact:v1:2931bc30146e88be539454a040c1c74d5960bafa8340fed3e832695e6e6c7d77",
+        "source_fact:v1:5ddca16e6cb283e30d77439875db9a42b575ddf91d9577a35305b8dd7041585b",
+        "source_fact:v1:ab8aca7c1f864b449868e801e22e04fc39897f3ea03bd52b075a1b117538baad",
+        "source_fact:v1:b8af703f7a54dfcea88b73f6e748e27ce6a26aede5dc40d57dbaf404e1374e35",
+        "source_fact:v1:c7b690667fd68b9538a7257d8c31a654bbf2634ef9d6afe1ecec618daa246b74",
+        "source_fact:v1:dbe928d2fdbc9963a50813e07b4cd3edbb98e8150dee0b627f01b8e9a837266e"
+      ],
+      "source_published_kst": "2026-10-11T10:20+09:00",
+      "source_title": "“美, 우크라에 ’러 정유소 때리면 정보공유 중단’ 경고“",
+      "telegram_core_fact": "미국이 우크라이나가 러시아 정유시설 공격을 멈추지 않으면 정보 공유를 중단하겠다고 경고한 것으로 전해졌습니다. 우크라이나 측은 미국이 러시아에는 공습 중단을 요구하지 않으면서 자신들에게만 요구하는 것은 불공평하다고 불만을 표시한 것으로 전해졌습니다.",
+      "title": "“美, 우크라에 ’러 정유소 때리면 정보공유 중단’ 경고“"
+    },
     "source_fact:28139ec4c23923a488692c69": {
       "first_seen_kst": "2026-10-08T19:11:41+09:00",
       "lanes": {
@@ -207743,6 +208591,37 @@
       ],
       "source_published_kst": "2026-10-07T07:00+09:00",
       "title": "내년 세수 37%가 법인세…의존도 높아 세수 전망도 '출렁'"
+    },
+    "source_fact:285f72173f167c8c84553aa8": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://biz.chosun.com/it-science/ict/2026/10/11/VUGOPMIACZE2HL2N2E7E77LAFE/",
+      "source": "조선비즈",
+      "source_body_digest": "f046122054b62f9fc451f1adde12dd2ef26e4d2651a1f7efbefe46be303dc956",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79b3b19f8b48fc67fe8adf83351f4471ec6b52fcfa9407ee98a2f49872066a71",
+      "source_fact_keys": [
+        "source_fact:v1:1e6892c187b48c9b5d5faa9b194a4bf0b569a7e875d1e0dad62ba3df4ee61265",
+        "source_fact:v1:218907e397e41a61a533cbc3c286fb3a097e9148c319c5d5ceaff752ddd0641b",
+        "source_fact:v1:2350afda3df19a74aab1c3324209a76159c77c49e4cae0ed504bc3fccd128487",
+        "source_fact:v1:364c7888baf2b6fe8fa3007a5e032a9bbea7f818ce2e6a50cb40137ba9c0e22c",
+        "source_fact:v1:38e4ac25df7558ed6cdbae13b71badf1f44ce7ad36211433da119c74918e68bf",
+        "source_fact:v1:5099a201aeb4fd40bb183aadf820ad59fd9b5fdf05ccb03a6548e0c8b16bd405",
+        "source_fact:v1:56a02eb6b041cdc2878114cd15ad215394addee7296bcc452427c4b32f2becb4",
+        "source_fact:v1:59affeb1f3cbde41c2357ba89194bb92e4687df8e646b67b2a060c8e87149981",
+        "source_fact:v1:78f32e62da3f24c4cff6769c251e2a0eb34179ef6e7bf63841e50ee86cf22126",
+        "source_fact:v1:7fa20c912983a3824328c681428dd7370b6190e8b9e07e71072fd0a094946565",
+        "source_fact:v1:827b5b8ca040235e2636ac7f87d185b7f13a70195c3eac0e87c9bf8c8fdc3a3c",
+        "source_fact:v1:cd7eefa850b69de40f73a4ef11ab95248d1236a71083ddc8d27aa47461e678ed",
+        "source_fact:v1:f9a7a17ebf475d7b7f858d494b173b866260f63082299b2a224ff76bf425ea9f"
+      ],
+      "source_published_kst": "2026-10-11T10:39+09:00",
+      "source_title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁",
+      "telegram_core_fact": "특히 기존 OLED보다 밝기와 수명을 높이면서 소비전력을 줄일 수 있는 '탠덤 OLED'가 핵심 기술로 떠오르면서 삼성디스플레이와 LG디스플레이의 경쟁도 치열해지고 있다. 시장조사업체 옴디아에 따르면 올해 2분기 미국 PC 출하량은 전년비 1.0% 증가하는 데 그쳤지만, 매출은 13.1% 늘었다.",
+      "title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁"
     },
     "source_fact:28618c4b7eab01b7bea362c8": {
       "first_seen_kst": "2026-10-09T16:29:31+09:00",
@@ -208223,6 +209102,37 @@
       "source_title": "CALISA ACQUISITION CORP, 합병 대상 굿비전AI 텍사스 AI 인프라 협력 2건",
       "telegram_core_fact": "CALISA ACQUISITION CORP는 협력 계약의 구속력이 없어 실제 매출 기여까지는 불확실성이 크며, 합병이 완료되지 않거나 지연될 가능성도 위험 요인으로 제시됐다.",
       "title": "CALISA ACQUISITION CORP, 합병 대상 굿비전AI 텍사스 AI 인프라 협력 2건"
+    },
+    "source_fact:292b7ad8ae2157603a447935": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820846",
+      "source": "뉴시스",
+      "source_body_digest": "1336b76d908d32bf9f5fa6e29cbffd31b3c0d165a9d2e6163e32819fa9a754d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:004cf17a86b8cd3a79e7536528394bc4819d4a5cf8c0fd6f6345f4189098ecec",
+      "source_fact_keys": [
+        "source_fact:v1:0b225a5e125654487c85babb325486d63566a610b0fc1146120d9991c1ff4318",
+        "source_fact:v1:0cd6c7dbc9fe7c40d626f57ccc44bce5fdb4a9a0d47e205f269db57de9d527ac",
+        "source_fact:v1:1cf810cba524c3b2164f457bb1089ea41fc7b361eee1e89e9983f1e83fadf2d1",
+        "source_fact:v1:4747cc9dc105228547dc6a844f3d9010829b8062ca145efdd8a45974e391ab75",
+        "source_fact:v1:4a69df7601222ff9e2feddfdbd213709b2bce35387c5ebd1e43aafaac05d7313",
+        "source_fact:v1:5e466ca417915e288124a5a69fba32e2feb786538d551245e93902d55b1f444b",
+        "source_fact:v1:96c44b9474c67adf158a4fba454d3a871fcf7f77da2f41fea16c81ac0123f0fc",
+        "source_fact:v1:c69b7c7831804ef7d8a223bf918a172ba5ff855b0e42e71571774d2387edbe8d",
+        "source_fact:v1:c83d4afba33d3eea83195a9f9d04d8b0732c9b2d477c3a11da89d3da567bad57",
+        "source_fact:v1:c95804732aea16b7182c2eccaab5bea08faa92a7a8b45ae6bf189802a7e15ba8",
+        "source_fact:v1:d36b5bbe189936505e417a581b11f1c48951b163c5593b93d3ade74a13f64d19",
+        "source_fact:v1:d4018d9fcb0f51891d1e6b885349f2703e65137f2e6bdd4005d4381c74cb1c16",
+        "source_fact:v1:f1392b6658e00b33828b89666d5e8e8419f6c543fd7ebf0e1f11c8cdf5fa6dca"
+      ],
+      "source_published_kst": "2026-10-11T10:59+09:00",
+      "source_title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아 정유시설 공격을 계속하는 우크라이나에 정보 공유 중단을 경고하고 볼로디미르 젤렌스키 대통령의 교체 필요성까지 언급했다.",
+      "title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고"
     },
     "source_fact:2946283e7f7d1f09657ac94b": {
       "first_seen_kst": "2026-10-06T20:12:00+09:00",
@@ -214247,6 +215157,37 @@
       "telegram_core_fact": "10년물 금리는 장 초반 5.36%까지 올라 2002년 이후 최고 수준을 기록했지만 입찰 이후 5.28% 안팎으로 하락했다.",
       "title": "美국채금리 24년來 최고 찍자 매수세…10년물 입찰 '흥행'"
     },
+    "source_fact:318c34ff4d7052e97ee3bbb2": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820846",
+      "source": "뉴시스",
+      "source_body_digest": "1336b76d908d32bf9f5fa6e29cbffd31b3c0d165a9d2e6163e32819fa9a754d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:004cf17a86b8cd3a79e7536528394bc4819d4a5cf8c0fd6f6345f4189098ecec",
+      "source_fact_keys": [
+        "source_fact:v1:0b225a5e125654487c85babb325486d63566a610b0fc1146120d9991c1ff4318",
+        "source_fact:v1:0cd6c7dbc9fe7c40d626f57ccc44bce5fdb4a9a0d47e205f269db57de9d527ac",
+        "source_fact:v1:1cf810cba524c3b2164f457bb1089ea41fc7b361eee1e89e9983f1e83fadf2d1",
+        "source_fact:v1:4747cc9dc105228547dc6a844f3d9010829b8062ca145efdd8a45974e391ab75",
+        "source_fact:v1:4a69df7601222ff9e2feddfdbd213709b2bce35387c5ebd1e43aafaac05d7313",
+        "source_fact:v1:5e466ca417915e288124a5a69fba32e2feb786538d551245e93902d55b1f444b",
+        "source_fact:v1:96c44b9474c67adf158a4fba454d3a871fcf7f77da2f41fea16c81ac0123f0fc",
+        "source_fact:v1:c69b7c7831804ef7d8a223bf918a172ba5ff855b0e42e71571774d2387edbe8d",
+        "source_fact:v1:c83d4afba33d3eea83195a9f9d04d8b0732c9b2d477c3a11da89d3da567bad57",
+        "source_fact:v1:c95804732aea16b7182c2eccaab5bea08faa92a7a8b45ae6bf189802a7e15ba8",
+        "source_fact:v1:d36b5bbe189936505e417a581b11f1c48951b163c5593b93d3ade74a13f64d19",
+        "source_fact:v1:d4018d9fcb0f51891d1e6b885349f2703e65137f2e6bdd4005d4381c74cb1c16",
+        "source_fact:v1:f1392b6658e00b33828b89666d5e8e8419f6c543fd7ebf0e1f11c8cdf5fa6dca"
+      ],
+      "source_published_kst": "2026-10-11T10:59+09:00",
+      "source_title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아 정유시설 공격을 계속하는 우크라이나에 정보 공유 중단을 경고하고 볼로디미르 젤렌스키 대통령의 교체 필요성까지 언급했다.",
+      "title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고"
+    },
     "source_fact:318c597c60dad344f593c6db": {
       "first_seen_kst": "2026-10-07T07:01:10+09:00",
       "lanes": {
@@ -220178,6 +221119,37 @@
       "source_title": "세계 최대 바이오 생산기지 송도의 역설…원부자재 95% 수입 | 연합뉴스",
       "telegram_core_fact": "보고서는 \"바이오 원부자재는 원가, 품질, 공급 안전성을 좌우하는 전략 자산\"이라며 \"의약품 제조 품목 허가에 등록된 원부자재는 교체 시 재검증 비용이 막대해 안정적 매출의 원천이 된다\"고 짚었다.",
       "title": "세계 최대 바이오 생산기지 송도의 역설…원부자재 95% 수입 | 연합뉴스"
+    },
+    "source_fact:3a7ef0e948302900b1c857da": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820846",
+      "source": "뉴시스",
+      "source_body_digest": "1336b76d908d32bf9f5fa6e29cbffd31b3c0d165a9d2e6163e32819fa9a754d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:004cf17a86b8cd3a79e7536528394bc4819d4a5cf8c0fd6f6345f4189098ecec",
+      "source_fact_keys": [
+        "source_fact:v1:0b225a5e125654487c85babb325486d63566a610b0fc1146120d9991c1ff4318",
+        "source_fact:v1:0cd6c7dbc9fe7c40d626f57ccc44bce5fdb4a9a0d47e205f269db57de9d527ac",
+        "source_fact:v1:1cf810cba524c3b2164f457bb1089ea41fc7b361eee1e89e9983f1e83fadf2d1",
+        "source_fact:v1:4747cc9dc105228547dc6a844f3d9010829b8062ca145efdd8a45974e391ab75",
+        "source_fact:v1:4a69df7601222ff9e2feddfdbd213709b2bce35387c5ebd1e43aafaac05d7313",
+        "source_fact:v1:5e466ca417915e288124a5a69fba32e2feb786538d551245e93902d55b1f444b",
+        "source_fact:v1:96c44b9474c67adf158a4fba454d3a871fcf7f77da2f41fea16c81ac0123f0fc",
+        "source_fact:v1:c69b7c7831804ef7d8a223bf918a172ba5ff855b0e42e71571774d2387edbe8d",
+        "source_fact:v1:c83d4afba33d3eea83195a9f9d04d8b0732c9b2d477c3a11da89d3da567bad57",
+        "source_fact:v1:c95804732aea16b7182c2eccaab5bea08faa92a7a8b45ae6bf189802a7e15ba8",
+        "source_fact:v1:d36b5bbe189936505e417a581b11f1c48951b163c5593b93d3ade74a13f64d19",
+        "source_fact:v1:d4018d9fcb0f51891d1e6b885349f2703e65137f2e6bdd4005d4381c74cb1c16",
+        "source_fact:v1:f1392b6658e00b33828b89666d5e8e8419f6c543fd7ebf0e1f11c8cdf5fa6dca"
+      ],
+      "source_published_kst": "2026-10-11T10:59+09:00",
+      "source_title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아 정유시설 공격을 계속하는 우크라이나에 정보 공유 중단을 경고하고 볼로디미르 젤렌스키 대통령의 교체 필요성까지 언급했다.",
+      "title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고"
     },
     "source_fact:3a83290b056b0f80796e4698": {
       "first_seen_kst": "2026-10-07T03:04:14+09:00",
@@ -231162,6 +232134,37 @@
       "source_published_kst": "2026-10-06T10:04+09:00",
       "title": "옵티팜, cGMP 시설 인수로 이종이식 사업화 속도"
     },
+    "source_fact:4a0fc5d37b49540c581efc1f": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820846",
+      "source": "뉴시스",
+      "source_body_digest": "1336b76d908d32bf9f5fa6e29cbffd31b3c0d165a9d2e6163e32819fa9a754d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:004cf17a86b8cd3a79e7536528394bc4819d4a5cf8c0fd6f6345f4189098ecec",
+      "source_fact_keys": [
+        "source_fact:v1:0b225a5e125654487c85babb325486d63566a610b0fc1146120d9991c1ff4318",
+        "source_fact:v1:0cd6c7dbc9fe7c40d626f57ccc44bce5fdb4a9a0d47e205f269db57de9d527ac",
+        "source_fact:v1:1cf810cba524c3b2164f457bb1089ea41fc7b361eee1e89e9983f1e83fadf2d1",
+        "source_fact:v1:4747cc9dc105228547dc6a844f3d9010829b8062ca145efdd8a45974e391ab75",
+        "source_fact:v1:4a69df7601222ff9e2feddfdbd213709b2bce35387c5ebd1e43aafaac05d7313",
+        "source_fact:v1:5e466ca417915e288124a5a69fba32e2feb786538d551245e93902d55b1f444b",
+        "source_fact:v1:96c44b9474c67adf158a4fba454d3a871fcf7f77da2f41fea16c81ac0123f0fc",
+        "source_fact:v1:c69b7c7831804ef7d8a223bf918a172ba5ff855b0e42e71571774d2387edbe8d",
+        "source_fact:v1:c83d4afba33d3eea83195a9f9d04d8b0732c9b2d477c3a11da89d3da567bad57",
+        "source_fact:v1:c95804732aea16b7182c2eccaab5bea08faa92a7a8b45ae6bf189802a7e15ba8",
+        "source_fact:v1:d36b5bbe189936505e417a581b11f1c48951b163c5593b93d3ade74a13f64d19",
+        "source_fact:v1:d4018d9fcb0f51891d1e6b885349f2703e65137f2e6bdd4005d4381c74cb1c16",
+        "source_fact:v1:f1392b6658e00b33828b89666d5e8e8419f6c543fd7ebf0e1f11c8cdf5fa6dca"
+      ],
+      "source_published_kst": "2026-10-11T10:59+09:00",
+      "source_title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아 정유시설 공격을 계속하는 우크라이나에 정보 공유 중단을 경고하고 볼로디미르 젤렌스키 대통령의 교체 필요성까지 언급했다.",
+      "title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고"
+    },
     "source_fact:4a1607dc189459d6300d4948": {
       "first_seen_kst": "2026-10-07T21:47:30+09:00",
       "lanes": {
@@ -232884,6 +233887,30 @@
       "source_published_kst": "2026-10-06T17:34+09:00",
       "title": "기업 DB, 계열사에만 제공…조사協, 한국평가데이터 공정위 신고"
     },
+    "source_fact:4d109f6e1ee37747ef1e7fe6": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01243126645611936",
+      "source": "이데일리",
+      "source_body_digest": "4b683df0052ebabe3d720de3afacd173cac6029f7acba150522d55ec6cde3fda",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:25e50d264fea06271ab3ac67134aa79563b353c1aa6cc6e3d2bca50516f00f10",
+      "source_fact_keys": [
+        "source_fact:v1:1c3faa87dfd680e41f57dea3be2d7f0d3292705644ca4a4bd927d50718011f29",
+        "source_fact:v1:1f2662a0fd5c2bdc2f215193e10f5f328868f8fb584ece83b1081de9e8482af6",
+        "source_fact:v1:7af8abf111e67a444c6d17396af9e8034166238db380e7500d5efd6c5f63bdf1",
+        "source_fact:v1:91d26c59fc720df9537abcaed687194b8ea9e72228f9d423adb828281b926f38",
+        "source_fact:v1:ab43d8b627763f53b0ec2e1ce2a65c2b1213d071adbff4e8b8b95f9869b892cf",
+        "source_fact:v1:fe4a8c085f7f08796ec823e81a22115a053809bbffd54841d63478d42c36e42c"
+      ],
+      "source_published_kst": "2026-10-11T09:45+09:00",
+      "source_title": "“금리 또 올랐다고?”…가계대출 60%가 변동금리 ‘발 동동’",
+      "telegram_core_fact": "한국은행의 연이은 기준금리 인상에도 은행 가계대출의 변동금리 비중이 60%에 육박한 것으로 나타났다.",
+      "title": "“금리 또 올랐다고?”…가계대출 60%가 변동금리 ‘발 동동’"
+    },
     "source_fact:4d18afa7e699b77c3d59c149": {
       "first_seen_kst": "2026-10-09T16:53:11+09:00",
       "lanes": {
@@ -234503,6 +235530,37 @@
       "source_title": "노벨평화상 발표 직후 ICC 전면 제재한 트럼프…유럽과 정면충돌",
       "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 도널드 트럼프 미국 행정부가 국제형사재판소(ICC) 전직 재판관의 노벨평화상 수상 발표 직후 ICC 자체를 제재 대상으로 지정했다.",
       "title": "노벨평화상 발표 직후 ICC 전면 제재한 트럼프…유럽과 정면충돌"
+    },
+    "source_fact:4f7ff6e236c55f4e6841accb": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820846",
+      "source": "뉴시스",
+      "source_body_digest": "1336b76d908d32bf9f5fa6e29cbffd31b3c0d165a9d2e6163e32819fa9a754d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:004cf17a86b8cd3a79e7536528394bc4819d4a5cf8c0fd6f6345f4189098ecec",
+      "source_fact_keys": [
+        "source_fact:v1:0b225a5e125654487c85babb325486d63566a610b0fc1146120d9991c1ff4318",
+        "source_fact:v1:0cd6c7dbc9fe7c40d626f57ccc44bce5fdb4a9a0d47e205f269db57de9d527ac",
+        "source_fact:v1:1cf810cba524c3b2164f457bb1089ea41fc7b361eee1e89e9983f1e83fadf2d1",
+        "source_fact:v1:4747cc9dc105228547dc6a844f3d9010829b8062ca145efdd8a45974e391ab75",
+        "source_fact:v1:4a69df7601222ff9e2feddfdbd213709b2bce35387c5ebd1e43aafaac05d7313",
+        "source_fact:v1:5e466ca417915e288124a5a69fba32e2feb786538d551245e93902d55b1f444b",
+        "source_fact:v1:96c44b9474c67adf158a4fba454d3a871fcf7f77da2f41fea16c81ac0123f0fc",
+        "source_fact:v1:c69b7c7831804ef7d8a223bf918a172ba5ff855b0e42e71571774d2387edbe8d",
+        "source_fact:v1:c83d4afba33d3eea83195a9f9d04d8b0732c9b2d477c3a11da89d3da567bad57",
+        "source_fact:v1:c95804732aea16b7182c2eccaab5bea08faa92a7a8b45ae6bf189802a7e15ba8",
+        "source_fact:v1:d36b5bbe189936505e417a581b11f1c48951b163c5593b93d3ade74a13f64d19",
+        "source_fact:v1:d4018d9fcb0f51891d1e6b885349f2703e65137f2e6bdd4005d4381c74cb1c16",
+        "source_fact:v1:f1392b6658e00b33828b89666d5e8e8419f6c543fd7ebf0e1f11c8cdf5fa6dca"
+      ],
+      "source_published_kst": "2026-10-11T10:59+09:00",
+      "source_title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아 정유시설 공격을 계속하는 우크라이나에 정보 공유 중단을 경고하고 볼로디미르 젤렌스키 대통령의 교체 필요성까지 언급했다.",
+      "title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고"
     },
     "source_fact:4f85c03526bbed1f41fff66f": {
       "first_seen_kst": "2026-10-08T20:39:20+09:00",
@@ -240166,6 +241224,37 @@
       "telegram_core_fact": "한화오션은 9일 정인섭 경영지원실장(사장) 명의의 담화문을 내고 \"안전과 생산을 위협하는 것은 타협의 대상이 될 수 없다\"고 밝혔다. 한화오션 노동조합이 크레인 위에서 고공 농성에 돌입한 가운데 한화오션 측이 안전과 생산을 위협하는 불법 고공 농성을 중단하고 올해 임금·단체협약(임단협) 교섭을 이어가자고 촉구했다.",
       "title": "정인섭 한화오션 사장 \"안전·생산 위협 행위 우려…고공 농성 중단해야\""
     },
+    "source_fact:57c68b5ed994157184e0f40b": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://biz.chosun.com/it-science/ict/2026/10/11/VUGOPMIACZE2HL2N2E7E77LAFE/",
+      "source": "조선비즈",
+      "source_body_digest": "f046122054b62f9fc451f1adde12dd2ef26e4d2651a1f7efbefe46be303dc956",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79b3b19f8b48fc67fe8adf83351f4471ec6b52fcfa9407ee98a2f49872066a71",
+      "source_fact_keys": [
+        "source_fact:v1:1e6892c187b48c9b5d5faa9b194a4bf0b569a7e875d1e0dad62ba3df4ee61265",
+        "source_fact:v1:218907e397e41a61a533cbc3c286fb3a097e9148c319c5d5ceaff752ddd0641b",
+        "source_fact:v1:2350afda3df19a74aab1c3324209a76159c77c49e4cae0ed504bc3fccd128487",
+        "source_fact:v1:364c7888baf2b6fe8fa3007a5e032a9bbea7f818ce2e6a50cb40137ba9c0e22c",
+        "source_fact:v1:38e4ac25df7558ed6cdbae13b71badf1f44ce7ad36211433da119c74918e68bf",
+        "source_fact:v1:5099a201aeb4fd40bb183aadf820ad59fd9b5fdf05ccb03a6548e0c8b16bd405",
+        "source_fact:v1:56a02eb6b041cdc2878114cd15ad215394addee7296bcc452427c4b32f2becb4",
+        "source_fact:v1:59affeb1f3cbde41c2357ba89194bb92e4687df8e646b67b2a060c8e87149981",
+        "source_fact:v1:78f32e62da3f24c4cff6769c251e2a0eb34179ef6e7bf63841e50ee86cf22126",
+        "source_fact:v1:7fa20c912983a3824328c681428dd7370b6190e8b9e07e71072fd0a094946565",
+        "source_fact:v1:827b5b8ca040235e2636ac7f87d185b7f13a70195c3eac0e87c9bf8c8fdc3a3c",
+        "source_fact:v1:cd7eefa850b69de40f73a4ef11ab95248d1236a71083ddc8d27aa47461e678ed",
+        "source_fact:v1:f9a7a17ebf475d7b7f858d494b173b866260f63082299b2a224ff76bf425ea9f"
+      ],
+      "source_published_kst": "2026-10-11T10:39+09:00",
+      "source_title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁",
+      "telegram_core_fact": "특히 기존 OLED보다 밝기와 수명을 높이면서 소비전력을 줄일 수 있는 '탠덤 OLED'가 핵심 기술로 떠오르면서 삼성디스플레이와 LG디스플레이의 경쟁도 치열해지고 있다. 시장조사업체 옴디아에 따르면 올해 2분기 미국 PC 출하량은 전년비 1.0% 증가하는 데 그쳤지만, 매출은 13.1% 늘었다.",
+      "title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁"
+    },
     "source_fact:57db0ed91511fe8059e0baf4": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
       "lanes": {
@@ -243936,6 +245025,31 @@
       "source_published_kst": "2026-10-07T11:25+09:00",
       "title": "KGM 액티언, 하이브리드 선택률 82%…\"전 연령층서 인기\""
     },
+    "source_fact:5c6387d10785a97bc3cfb031": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://m.yonhapnewstv.co.kr/news/AKR202610111020306Op",
+      "source": "연합뉴스TV",
+      "source_body_digest": "253764c47aca0bc3a22f3440dc9b0139cdfbe27ce05386a6969f424ce64811f3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:936186fea7462d373b42793ba3e6f93b9dd287d30dc6a6ee94a83f58c7ded5d4",
+      "source_fact_keys": [
+        "source_fact:v1:0f890c8fa8df195744925c15b8c661b03d2d5aa0c2664ac83107315032d28997",
+        "source_fact:v1:2931bc30146e88be539454a040c1c74d5960bafa8340fed3e832695e6e6c7d77",
+        "source_fact:v1:5ddca16e6cb283e30d77439875db9a42b575ddf91d9577a35305b8dd7041585b",
+        "source_fact:v1:ab8aca7c1f864b449868e801e22e04fc39897f3ea03bd52b075a1b117538baad",
+        "source_fact:v1:b8af703f7a54dfcea88b73f6e748e27ce6a26aede5dc40d57dbaf404e1374e35",
+        "source_fact:v1:c7b690667fd68b9538a7257d8c31a654bbf2634ef9d6afe1ecec618daa246b74",
+        "source_fact:v1:dbe928d2fdbc9963a50813e07b4cd3edbb98e8150dee0b627f01b8e9a837266e"
+      ],
+      "source_published_kst": "2026-10-11T10:20+09:00",
+      "source_title": "“美, 우크라에 ’러 정유소 때리면 정보공유 중단’ 경고“",
+      "telegram_core_fact": "미국이 우크라이나가 러시아 정유시설 공격을 멈추지 않으면 정보 공유를 중단하겠다고 경고한 것으로 전해졌습니다. 우크라이나 측은 미국이 러시아에는 공습 중단을 요구하지 않으면서 자신들에게만 요구하는 것은 불공평하다고 불만을 표시한 것으로 전해졌습니다.",
+      "title": "“美, 우크라에 ’러 정유소 때리면 정보공유 중단’ 경고“"
+    },
     "source_fact:5c64eedd6423acb39ad35386": {
       "first_seen_kst": "2026-10-09T23:03:47+09:00",
       "lanes": {
@@ -246996,6 +248110,37 @@
       ],
       "source_published_kst": "2026-10-07T12:50+09:00",
       "title": "반도체 호황에 기업 곳간 ‘최대’…가계는 예금 빼 주식으로"
+    },
+    "source_fact:60a48692f8855e11a5d4fc8d": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://biz.chosun.com/it-science/ict/2026/10/11/VUGOPMIACZE2HL2N2E7E77LAFE/",
+      "source": "조선비즈",
+      "source_body_digest": "f046122054b62f9fc451f1adde12dd2ef26e4d2651a1f7efbefe46be303dc956",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79b3b19f8b48fc67fe8adf83351f4471ec6b52fcfa9407ee98a2f49872066a71",
+      "source_fact_keys": [
+        "source_fact:v1:1e6892c187b48c9b5d5faa9b194a4bf0b569a7e875d1e0dad62ba3df4ee61265",
+        "source_fact:v1:218907e397e41a61a533cbc3c286fb3a097e9148c319c5d5ceaff752ddd0641b",
+        "source_fact:v1:2350afda3df19a74aab1c3324209a76159c77c49e4cae0ed504bc3fccd128487",
+        "source_fact:v1:364c7888baf2b6fe8fa3007a5e032a9bbea7f818ce2e6a50cb40137ba9c0e22c",
+        "source_fact:v1:38e4ac25df7558ed6cdbae13b71badf1f44ce7ad36211433da119c74918e68bf",
+        "source_fact:v1:5099a201aeb4fd40bb183aadf820ad59fd9b5fdf05ccb03a6548e0c8b16bd405",
+        "source_fact:v1:56a02eb6b041cdc2878114cd15ad215394addee7296bcc452427c4b32f2becb4",
+        "source_fact:v1:59affeb1f3cbde41c2357ba89194bb92e4687df8e646b67b2a060c8e87149981",
+        "source_fact:v1:78f32e62da3f24c4cff6769c251e2a0eb34179ef6e7bf63841e50ee86cf22126",
+        "source_fact:v1:7fa20c912983a3824328c681428dd7370b6190e8b9e07e71072fd0a094946565",
+        "source_fact:v1:827b5b8ca040235e2636ac7f87d185b7f13a70195c3eac0e87c9bf8c8fdc3a3c",
+        "source_fact:v1:cd7eefa850b69de40f73a4ef11ab95248d1236a71083ddc8d27aa47461e678ed",
+        "source_fact:v1:f9a7a17ebf475d7b7f858d494b173b866260f63082299b2a224ff76bf425ea9f"
+      ],
+      "source_published_kst": "2026-10-11T10:39+09:00",
+      "source_title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁",
+      "telegram_core_fact": "특히 기존 OLED보다 밝기와 수명을 높이면서 소비전력을 줄일 수 있는 '탠덤 OLED'가 핵심 기술로 떠오르면서 삼성디스플레이와 LG디스플레이의 경쟁도 치열해지고 있다. 시장조사업체 옴디아에 따르면 올해 2분기 미국 PC 출하량은 전년비 1.0% 증가하는 데 그쳤지만, 매출은 13.1% 늘었다.",
+      "title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁"
     },
     "source_fact:60b8ca92d721e8eafcd8c800": {
       "first_seen_kst": "2026-10-07T08:57:59+09:00",
@@ -251580,6 +252725,31 @@
       ],
       "source_published_kst": "2026-10-06T08:02+09:00",
       "title": "밸류파인더 “메타케어, 저용량 탈모치료제 출시 임박…헬스케어 플랫폼 확장”"
+    },
+    "source_fact:677ae653596405d934766cef": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://m.yonhapnewstv.co.kr/news/AKR202610111020306Op",
+      "source": "연합뉴스TV",
+      "source_body_digest": "253764c47aca0bc3a22f3440dc9b0139cdfbe27ce05386a6969f424ce64811f3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:936186fea7462d373b42793ba3e6f93b9dd287d30dc6a6ee94a83f58c7ded5d4",
+      "source_fact_keys": [
+        "source_fact:v1:0f890c8fa8df195744925c15b8c661b03d2d5aa0c2664ac83107315032d28997",
+        "source_fact:v1:2931bc30146e88be539454a040c1c74d5960bafa8340fed3e832695e6e6c7d77",
+        "source_fact:v1:5ddca16e6cb283e30d77439875db9a42b575ddf91d9577a35305b8dd7041585b",
+        "source_fact:v1:ab8aca7c1f864b449868e801e22e04fc39897f3ea03bd52b075a1b117538baad",
+        "source_fact:v1:b8af703f7a54dfcea88b73f6e748e27ce6a26aede5dc40d57dbaf404e1374e35",
+        "source_fact:v1:c7b690667fd68b9538a7257d8c31a654bbf2634ef9d6afe1ecec618daa246b74",
+        "source_fact:v1:dbe928d2fdbc9963a50813e07b4cd3edbb98e8150dee0b627f01b8e9a837266e"
+      ],
+      "source_published_kst": "2026-10-11T10:20+09:00",
+      "source_title": "“美, 우크라에 ’러 정유소 때리면 정보공유 중단’ 경고“",
+      "telegram_core_fact": "미국이 우크라이나가 러시아 정유시설 공격을 멈추지 않으면 정보 공유를 중단하겠다고 경고한 것으로 전해졌습니다. 우크라이나 측은 미국이 러시아에는 공습 중단을 요구하지 않으면서 자신들에게만 요구하는 것은 불공평하다고 불만을 표시한 것으로 전해졌습니다.",
+      "title": "“美, 우크라에 ’러 정유소 때리면 정보공유 중단’ 경고“"
     },
     "source_fact:677c5aa6985c4cb21024ffef": {
       "first_seen_kst": "2026-10-08T03:13:06+09:00",
@@ -258564,6 +259734,37 @@
       "telegram_core_fact": "이후 누리호가 이륙한 뒤 약 20분간 위성 사출이 완전히 끝날 때까지 숨죽여 지켜보던 이 대통령은 발사 성공이 확인되고 항공우주연구원 관계자들이 환호하는 모습이 화면에 나오자 함께 박수를 치며 기쁨을 표시했다고 한다.",
       "title": "[누리호 성공] 李대통령, 발사 장면 생중계로 시청…\"정부 지원 성과\" | 연합뉴스"
     },
+    "source_fact:724ef524e400e897a2803ce8": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://biz.chosun.com/it-science/ict/2026/10/11/VUGOPMIACZE2HL2N2E7E77LAFE/",
+      "source": "조선비즈",
+      "source_body_digest": "f046122054b62f9fc451f1adde12dd2ef26e4d2651a1f7efbefe46be303dc956",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79b3b19f8b48fc67fe8adf83351f4471ec6b52fcfa9407ee98a2f49872066a71",
+      "source_fact_keys": [
+        "source_fact:v1:1e6892c187b48c9b5d5faa9b194a4bf0b569a7e875d1e0dad62ba3df4ee61265",
+        "source_fact:v1:218907e397e41a61a533cbc3c286fb3a097e9148c319c5d5ceaff752ddd0641b",
+        "source_fact:v1:2350afda3df19a74aab1c3324209a76159c77c49e4cae0ed504bc3fccd128487",
+        "source_fact:v1:364c7888baf2b6fe8fa3007a5e032a9bbea7f818ce2e6a50cb40137ba9c0e22c",
+        "source_fact:v1:38e4ac25df7558ed6cdbae13b71badf1f44ce7ad36211433da119c74918e68bf",
+        "source_fact:v1:5099a201aeb4fd40bb183aadf820ad59fd9b5fdf05ccb03a6548e0c8b16bd405",
+        "source_fact:v1:56a02eb6b041cdc2878114cd15ad215394addee7296bcc452427c4b32f2becb4",
+        "source_fact:v1:59affeb1f3cbde41c2357ba89194bb92e4687df8e646b67b2a060c8e87149981",
+        "source_fact:v1:78f32e62da3f24c4cff6769c251e2a0eb34179ef6e7bf63841e50ee86cf22126",
+        "source_fact:v1:7fa20c912983a3824328c681428dd7370b6190e8b9e07e71072fd0a094946565",
+        "source_fact:v1:827b5b8ca040235e2636ac7f87d185b7f13a70195c3eac0e87c9bf8c8fdc3a3c",
+        "source_fact:v1:cd7eefa850b69de40f73a4ef11ab95248d1236a71083ddc8d27aa47461e678ed",
+        "source_fact:v1:f9a7a17ebf475d7b7f858d494b173b866260f63082299b2a224ff76bf425ea9f"
+      ],
+      "source_published_kst": "2026-10-11T10:39+09:00",
+      "source_title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁",
+      "telegram_core_fact": "특히 기존 OLED보다 밝기와 수명을 높이면서 소비전력을 줄일 수 있는 '탠덤 OLED'가 핵심 기술로 떠오르면서 삼성디스플레이와 LG디스플레이의 경쟁도 치열해지고 있다. 시장조사업체 옴디아에 따르면 올해 2분기 미국 PC 출하량은 전년비 1.0% 증가하는 데 그쳤지만, 매출은 13.1% 늘었다.",
+      "title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁"
+    },
     "source_fact:7253bc269639e25795aa805c": {
       "first_seen_kst": "2026-10-09T19:24:17+09:00",
       "lanes": {
@@ -259285,6 +260486,37 @@
       "source_published_kst": "2026-10-06T17:40+09:00",
       "title": "포스코퓨처엠, 삼성SDI와 6조 규모 LFP 양극재 공급 계약…\"배터리 동맹 강화\""
     },
+    "source_fact:737c5a990c6ebb6f15425cb7": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://biz.chosun.com/it-science/ict/2026/10/11/VUGOPMIACZE2HL2N2E7E77LAFE/",
+      "source": "조선비즈",
+      "source_body_digest": "f046122054b62f9fc451f1adde12dd2ef26e4d2651a1f7efbefe46be303dc956",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79b3b19f8b48fc67fe8adf83351f4471ec6b52fcfa9407ee98a2f49872066a71",
+      "source_fact_keys": [
+        "source_fact:v1:1e6892c187b48c9b5d5faa9b194a4bf0b569a7e875d1e0dad62ba3df4ee61265",
+        "source_fact:v1:218907e397e41a61a533cbc3c286fb3a097e9148c319c5d5ceaff752ddd0641b",
+        "source_fact:v1:2350afda3df19a74aab1c3324209a76159c77c49e4cae0ed504bc3fccd128487",
+        "source_fact:v1:364c7888baf2b6fe8fa3007a5e032a9bbea7f818ce2e6a50cb40137ba9c0e22c",
+        "source_fact:v1:38e4ac25df7558ed6cdbae13b71badf1f44ce7ad36211433da119c74918e68bf",
+        "source_fact:v1:5099a201aeb4fd40bb183aadf820ad59fd9b5fdf05ccb03a6548e0c8b16bd405",
+        "source_fact:v1:56a02eb6b041cdc2878114cd15ad215394addee7296bcc452427c4b32f2becb4",
+        "source_fact:v1:59affeb1f3cbde41c2357ba89194bb92e4687df8e646b67b2a060c8e87149981",
+        "source_fact:v1:78f32e62da3f24c4cff6769c251e2a0eb34179ef6e7bf63841e50ee86cf22126",
+        "source_fact:v1:7fa20c912983a3824328c681428dd7370b6190e8b9e07e71072fd0a094946565",
+        "source_fact:v1:827b5b8ca040235e2636ac7f87d185b7f13a70195c3eac0e87c9bf8c8fdc3a3c",
+        "source_fact:v1:cd7eefa850b69de40f73a4ef11ab95248d1236a71083ddc8d27aa47461e678ed",
+        "source_fact:v1:f9a7a17ebf475d7b7f858d494b173b866260f63082299b2a224ff76bf425ea9f"
+      ],
+      "source_published_kst": "2026-10-11T10:39+09:00",
+      "source_title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁",
+      "telegram_core_fact": "특히 기존 OLED보다 밝기와 수명을 높이면서 소비전력을 줄일 수 있는 '탠덤 OLED'가 핵심 기술로 떠오르면서 삼성디스플레이와 LG디스플레이의 경쟁도 치열해지고 있다. 시장조사업체 옴디아에 따르면 올해 2분기 미국 PC 출하량은 전년비 1.0% 증가하는 데 그쳤지만, 매출은 13.1% 늘었다.",
+      "title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁"
+    },
     "source_fact:7380d0ad9c87fd23fe654b2f": {
       "first_seen_kst": "2026-10-08T17:21:28+09:00",
       "lanes": {
@@ -259639,6 +260871,37 @@
       "source_title": "삼성전자 3분기 영업익 107조…글로벌 빅테크 최초 100조 돌파(종합2보)",
       "telegram_core_fact": "삼성전자가 올해 3분기 영업이익 107조4천억원을 기록해 국내 기업 사상 최초로 분기 영업익 100조원 시대를 열었다.",
       "title": "삼성전자 3분기 영업익 107조…글로벌 빅테크 최초 100조 돌파(종합2보)"
+    },
+    "source_fact:741f2544b2b39b07b0d0cf47": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820846",
+      "source": "뉴시스",
+      "source_body_digest": "1336b76d908d32bf9f5fa6e29cbffd31b3c0d165a9d2e6163e32819fa9a754d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:004cf17a86b8cd3a79e7536528394bc4819d4a5cf8c0fd6f6345f4189098ecec",
+      "source_fact_keys": [
+        "source_fact:v1:0b225a5e125654487c85babb325486d63566a610b0fc1146120d9991c1ff4318",
+        "source_fact:v1:0cd6c7dbc9fe7c40d626f57ccc44bce5fdb4a9a0d47e205f269db57de9d527ac",
+        "source_fact:v1:1cf810cba524c3b2164f457bb1089ea41fc7b361eee1e89e9983f1e83fadf2d1",
+        "source_fact:v1:4747cc9dc105228547dc6a844f3d9010829b8062ca145efdd8a45974e391ab75",
+        "source_fact:v1:4a69df7601222ff9e2feddfdbd213709b2bce35387c5ebd1e43aafaac05d7313",
+        "source_fact:v1:5e466ca417915e288124a5a69fba32e2feb786538d551245e93902d55b1f444b",
+        "source_fact:v1:96c44b9474c67adf158a4fba454d3a871fcf7f77da2f41fea16c81ac0123f0fc",
+        "source_fact:v1:c69b7c7831804ef7d8a223bf918a172ba5ff855b0e42e71571774d2387edbe8d",
+        "source_fact:v1:c83d4afba33d3eea83195a9f9d04d8b0732c9b2d477c3a11da89d3da567bad57",
+        "source_fact:v1:c95804732aea16b7182c2eccaab5bea08faa92a7a8b45ae6bf189802a7e15ba8",
+        "source_fact:v1:d36b5bbe189936505e417a581b11f1c48951b163c5593b93d3ade74a13f64d19",
+        "source_fact:v1:d4018d9fcb0f51891d1e6b885349f2703e65137f2e6bdd4005d4381c74cb1c16",
+        "source_fact:v1:f1392b6658e00b33828b89666d5e8e8419f6c543fd7ebf0e1f11c8cdf5fa6dca"
+      ],
+      "source_published_kst": "2026-10-11T10:59+09:00",
+      "source_title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아 정유시설 공격을 계속하는 우크라이나에 정보 공유 중단을 경고하고 볼로디미르 젤렌스키 대통령의 교체 필요성까지 언급했다.",
+      "title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고"
     },
     "source_fact:7421eaafc6f9cbba26596d65": {
       "first_seen_kst": "2026-10-09T17:13:50+09:00",
@@ -266199,6 +267462,37 @@
       "source_published_kst": "2026-10-06T05:08+09:00",
       "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
     },
+    "source_fact:7d9c0c39ff5dde374c07dad6": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820846",
+      "source": "뉴시스",
+      "source_body_digest": "1336b76d908d32bf9f5fa6e29cbffd31b3c0d165a9d2e6163e32819fa9a754d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:004cf17a86b8cd3a79e7536528394bc4819d4a5cf8c0fd6f6345f4189098ecec",
+      "source_fact_keys": [
+        "source_fact:v1:0b225a5e125654487c85babb325486d63566a610b0fc1146120d9991c1ff4318",
+        "source_fact:v1:0cd6c7dbc9fe7c40d626f57ccc44bce5fdb4a9a0d47e205f269db57de9d527ac",
+        "source_fact:v1:1cf810cba524c3b2164f457bb1089ea41fc7b361eee1e89e9983f1e83fadf2d1",
+        "source_fact:v1:4747cc9dc105228547dc6a844f3d9010829b8062ca145efdd8a45974e391ab75",
+        "source_fact:v1:4a69df7601222ff9e2feddfdbd213709b2bce35387c5ebd1e43aafaac05d7313",
+        "source_fact:v1:5e466ca417915e288124a5a69fba32e2feb786538d551245e93902d55b1f444b",
+        "source_fact:v1:96c44b9474c67adf158a4fba454d3a871fcf7f77da2f41fea16c81ac0123f0fc",
+        "source_fact:v1:c69b7c7831804ef7d8a223bf918a172ba5ff855b0e42e71571774d2387edbe8d",
+        "source_fact:v1:c83d4afba33d3eea83195a9f9d04d8b0732c9b2d477c3a11da89d3da567bad57",
+        "source_fact:v1:c95804732aea16b7182c2eccaab5bea08faa92a7a8b45ae6bf189802a7e15ba8",
+        "source_fact:v1:d36b5bbe189936505e417a581b11f1c48951b163c5593b93d3ade74a13f64d19",
+        "source_fact:v1:d4018d9fcb0f51891d1e6b885349f2703e65137f2e6bdd4005d4381c74cb1c16",
+        "source_fact:v1:f1392b6658e00b33828b89666d5e8e8419f6c543fd7ebf0e1f11c8cdf5fa6dca"
+      ],
+      "source_published_kst": "2026-10-11T10:59+09:00",
+      "source_title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아 정유시설 공격을 계속하는 우크라이나에 정보 공유 중단을 경고하고 볼로디미르 젤렌스키 대통령의 교체 필요성까지 언급했다.",
+      "title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고"
+    },
     "source_fact:7da4b94ba49b8182990cdb20": {
       "first_seen_kst": "2026-10-09T16:07:27+09:00",
       "lanes": {
@@ -266416,6 +267710,27 @@
       "source_title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다",
       "telegram_core_fact": "글로벌 투자은행 UBS는 올해 HBM 시장의 비트 출하량 기준 점유율을 SK하이닉스 48%, 삼성전자 31%로 예상했다.",
       "title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다"
+    },
+    "source_fact:7e0215a73bb8d8afbb3b93e5": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820772",
+      "source": "뉴시스",
+      "source_body_digest": "96329d727d9161910f28537f9c4b566b8df513d0940fd37740835c2cfba68686",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3879331ea60fd8446cc92a6c85816acdb965ace65735acb56761baa3c221220c",
+      "source_fact_keys": [
+        "source_fact:v1:08f34cfef36096af4fda0e40e67bff5463c371f0fba11c39f41302fe509cc5b1",
+        "source_fact:v1:4d4d8aa994e463f80192adfc4e7e575634538a2a88deee06a5065f67dcf76dc6",
+        "source_fact:v1:9b759eafd0755392b2770146bacca782e624975e9e005a4c64f10ed50dd42279"
+      ],
+      "source_published_kst": "2026-10-11T10:51+09:00",
+      "source_title": "\"금리 올리며 돈 푸는 이상한 시대\"…국장 박스권 갇힐 동안 AI 주도주 쏠린다",
+      "telegram_core_fact": "\"과거에는 통화와 재정이 같은 방향으로 움직였지만, 지금은 기준금리를 올리면서 재정 집행을 위해 국채 발행을 늘리다 보니 24년 만에 최고 수준의 국채금리 시대가 도래했다\"고 분석했다.",
+      "title": "\"금리 올리며 돈 푸는 이상한 시대\"…국장 박스권 갇힐 동안 AI 주도주 쏠린다"
     },
     "source_fact:7e1e082bf495d4ce65899072": {
       "first_seen_kst": "2026-10-09T23:49:51+09:00",
@@ -271722,6 +273037,27 @@
       "source_published_kst": "2026-10-05T16:40+09:00",
       "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
     },
+    "source_fact:8639e1762cc62e442c14c51d": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820772",
+      "source": "뉴시스",
+      "source_body_digest": "96329d727d9161910f28537f9c4b566b8df513d0940fd37740835c2cfba68686",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3879331ea60fd8446cc92a6c85816acdb965ace65735acb56761baa3c221220c",
+      "source_fact_keys": [
+        "source_fact:v1:08f34cfef36096af4fda0e40e67bff5463c371f0fba11c39f41302fe509cc5b1",
+        "source_fact:v1:4d4d8aa994e463f80192adfc4e7e575634538a2a88deee06a5065f67dcf76dc6",
+        "source_fact:v1:9b759eafd0755392b2770146bacca782e624975e9e005a4c64f10ed50dd42279"
+      ],
+      "source_published_kst": "2026-10-11T10:51+09:00",
+      "source_title": "\"금리 올리며 돈 푸는 이상한 시대\"…국장 박스권 갇힐 동안 AI 주도주 쏠린다",
+      "telegram_core_fact": "\"과거에는 통화와 재정이 같은 방향으로 움직였지만, 지금은 기준금리를 올리면서 재정 집행을 위해 국채 발행을 늘리다 보니 24년 만에 최고 수준의 국채금리 시대가 도래했다\"고 분석했다.",
+      "title": "\"금리 올리며 돈 푸는 이상한 시대\"…국장 박스권 갇힐 동안 AI 주도주 쏠린다"
+    },
     "source_fact:863aac9044ac57a7f6f3d10b": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -273860,6 +275196,30 @@
       ],
       "source_published_kst": "2026-10-06T13:21+09:00",
       "title": "유럽 로봇 유니콘도 미국행…로브코, 현지 생산·시장 공략"
+    },
+    "source_fact:894085c1ea187436b8675aca": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01243126645611936",
+      "source": "이데일리",
+      "source_body_digest": "4b683df0052ebabe3d720de3afacd173cac6029f7acba150522d55ec6cde3fda",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:25e50d264fea06271ab3ac67134aa79563b353c1aa6cc6e3d2bca50516f00f10",
+      "source_fact_keys": [
+        "source_fact:v1:1c3faa87dfd680e41f57dea3be2d7f0d3292705644ca4a4bd927d50718011f29",
+        "source_fact:v1:1f2662a0fd5c2bdc2f215193e10f5f328868f8fb584ece83b1081de9e8482af6",
+        "source_fact:v1:7af8abf111e67a444c6d17396af9e8034166238db380e7500d5efd6c5f63bdf1",
+        "source_fact:v1:91d26c59fc720df9537abcaed687194b8ea9e72228f9d423adb828281b926f38",
+        "source_fact:v1:ab43d8b627763f53b0ec2e1ce2a65c2b1213d071adbff4e8b8b95f9869b892cf",
+        "source_fact:v1:fe4a8c085f7f08796ec823e81a22115a053809bbffd54841d63478d42c36e42c"
+      ],
+      "source_published_kst": "2026-10-11T09:45+09:00",
+      "source_title": "“금리 또 올랐다고?”…가계대출 60%가 변동금리 ‘발 동동’",
+      "telegram_core_fact": "한국은행의 연이은 기준금리 인상에도 은행 가계대출의 변동금리 비중이 60%에 육박한 것으로 나타났다.",
+      "title": "“금리 또 올랐다고?”…가계대출 60%가 변동금리 ‘발 동동’"
     },
     "source_fact:8945736e9413c8bd7d5855d2": {
       "first_seen_kst": "2026-10-11T08:42:16+09:00",
@@ -290542,6 +291902,37 @@
       "source_published_kst": "2026-10-07T09:56+09:00",
       "title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표"
     },
+    "source_fact:a2ef32b9813a2925a1ed735f": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://biz.chosun.com/it-science/ict/2026/10/11/VUGOPMIACZE2HL2N2E7E77LAFE/",
+      "source": "조선비즈",
+      "source_body_digest": "f046122054b62f9fc451f1adde12dd2ef26e4d2651a1f7efbefe46be303dc956",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79b3b19f8b48fc67fe8adf83351f4471ec6b52fcfa9407ee98a2f49872066a71",
+      "source_fact_keys": [
+        "source_fact:v1:1e6892c187b48c9b5d5faa9b194a4bf0b569a7e875d1e0dad62ba3df4ee61265",
+        "source_fact:v1:218907e397e41a61a533cbc3c286fb3a097e9148c319c5d5ceaff752ddd0641b",
+        "source_fact:v1:2350afda3df19a74aab1c3324209a76159c77c49e4cae0ed504bc3fccd128487",
+        "source_fact:v1:364c7888baf2b6fe8fa3007a5e032a9bbea7f818ce2e6a50cb40137ba9c0e22c",
+        "source_fact:v1:38e4ac25df7558ed6cdbae13b71badf1f44ce7ad36211433da119c74918e68bf",
+        "source_fact:v1:5099a201aeb4fd40bb183aadf820ad59fd9b5fdf05ccb03a6548e0c8b16bd405",
+        "source_fact:v1:56a02eb6b041cdc2878114cd15ad215394addee7296bcc452427c4b32f2becb4",
+        "source_fact:v1:59affeb1f3cbde41c2357ba89194bb92e4687df8e646b67b2a060c8e87149981",
+        "source_fact:v1:78f32e62da3f24c4cff6769c251e2a0eb34179ef6e7bf63841e50ee86cf22126",
+        "source_fact:v1:7fa20c912983a3824328c681428dd7370b6190e8b9e07e71072fd0a094946565",
+        "source_fact:v1:827b5b8ca040235e2636ac7f87d185b7f13a70195c3eac0e87c9bf8c8fdc3a3c",
+        "source_fact:v1:cd7eefa850b69de40f73a4ef11ab95248d1236a71083ddc8d27aa47461e678ed",
+        "source_fact:v1:f9a7a17ebf475d7b7f858d494b173b866260f63082299b2a224ff76bf425ea9f"
+      ],
+      "source_published_kst": "2026-10-11T10:39+09:00",
+      "source_title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁",
+      "telegram_core_fact": "특히 기존 OLED보다 밝기와 수명을 높이면서 소비전력을 줄일 수 있는 '탠덤 OLED'가 핵심 기술로 떠오르면서 삼성디스플레이와 LG디스플레이의 경쟁도 치열해지고 있다. 시장조사업체 옴디아에 따르면 올해 2분기 미국 PC 출하량은 전년비 1.0% 증가하는 데 그쳤지만, 매출은 13.1% 늘었다.",
+      "title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁"
+    },
     "source_fact:a2fc4dcc5792360af44e9d07": {
       "first_seen_kst": "2026-10-06T02:31:07+09:00",
       "lanes": {
@@ -295631,6 +297022,37 @@
       "telegram_core_fact": "트럼프 대통령은 푸틴 대통령과 통화한 뒤 러시아가 미국과 세계 시장에 경유 30만t 이상을 즉시 공급하고 11월에 50만t을, 그 직후엔 100만t을 추가 공급하기로 했다고 발표했습니다.",
       "title": "“트럼프, 젤렌스키가 요청 무시하자 푸틴과 경유 거래 결정“"
     },
+    "source_fact:ab06063bd764909d7b915262": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820846",
+      "source": "뉴시스",
+      "source_body_digest": "1336b76d908d32bf9f5fa6e29cbffd31b3c0d165a9d2e6163e32819fa9a754d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:004cf17a86b8cd3a79e7536528394bc4819d4a5cf8c0fd6f6345f4189098ecec",
+      "source_fact_keys": [
+        "source_fact:v1:0b225a5e125654487c85babb325486d63566a610b0fc1146120d9991c1ff4318",
+        "source_fact:v1:0cd6c7dbc9fe7c40d626f57ccc44bce5fdb4a9a0d47e205f269db57de9d527ac",
+        "source_fact:v1:1cf810cba524c3b2164f457bb1089ea41fc7b361eee1e89e9983f1e83fadf2d1",
+        "source_fact:v1:4747cc9dc105228547dc6a844f3d9010829b8062ca145efdd8a45974e391ab75",
+        "source_fact:v1:4a69df7601222ff9e2feddfdbd213709b2bce35387c5ebd1e43aafaac05d7313",
+        "source_fact:v1:5e466ca417915e288124a5a69fba32e2feb786538d551245e93902d55b1f444b",
+        "source_fact:v1:96c44b9474c67adf158a4fba454d3a871fcf7f77da2f41fea16c81ac0123f0fc",
+        "source_fact:v1:c69b7c7831804ef7d8a223bf918a172ba5ff855b0e42e71571774d2387edbe8d",
+        "source_fact:v1:c83d4afba33d3eea83195a9f9d04d8b0732c9b2d477c3a11da89d3da567bad57",
+        "source_fact:v1:c95804732aea16b7182c2eccaab5bea08faa92a7a8b45ae6bf189802a7e15ba8",
+        "source_fact:v1:d36b5bbe189936505e417a581b11f1c48951b163c5593b93d3ade74a13f64d19",
+        "source_fact:v1:d4018d9fcb0f51891d1e6b885349f2703e65137f2e6bdd4005d4381c74cb1c16",
+        "source_fact:v1:f1392b6658e00b33828b89666d5e8e8419f6c543fd7ebf0e1f11c8cdf5fa6dca"
+      ],
+      "source_published_kst": "2026-10-11T10:59+09:00",
+      "source_title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아 정유시설 공격을 계속하는 우크라이나에 정보 공유 중단을 경고하고 볼로디미르 젤렌스키 대통령의 교체 필요성까지 언급했다.",
+      "title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고"
+    },
     "source_fact:ab0f3921f69a0795df238397": {
       "first_seen_kst": "2026-10-07T22:00:35+09:00",
       "lanes": {
@@ -298247,6 +299669,37 @@
       "source_title": "네팔, 실종자 5000명 곧 사망처리…유족 지원·상속 가능해진다",
       "telegram_core_fact": "네팔 정부는 대홍수 사망자 유족에게 가족 중 첫 희생자에 대해 약 20만 네팔루피(약 174만원), 추가 사망자 1명 당 10만 네팔루피(약 86만8천원)의 보상금을 각각 지급하고 있으며, 이와 별도로 최대 2만5천 네팔루피(약 21만7천원)의 장례 비용을 지원하고 있다.",
       "title": "네팔, 실종자 5000명 곧 사망처리…유족 지원·상속 가능해진다"
+    },
+    "source_fact:ae996350af2892471da4df84": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://biz.chosun.com/it-science/ict/2026/10/11/VUGOPMIACZE2HL2N2E7E77LAFE/",
+      "source": "조선비즈",
+      "source_body_digest": "f046122054b62f9fc451f1adde12dd2ef26e4d2651a1f7efbefe46be303dc956",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79b3b19f8b48fc67fe8adf83351f4471ec6b52fcfa9407ee98a2f49872066a71",
+      "source_fact_keys": [
+        "source_fact:v1:1e6892c187b48c9b5d5faa9b194a4bf0b569a7e875d1e0dad62ba3df4ee61265",
+        "source_fact:v1:218907e397e41a61a533cbc3c286fb3a097e9148c319c5d5ceaff752ddd0641b",
+        "source_fact:v1:2350afda3df19a74aab1c3324209a76159c77c49e4cae0ed504bc3fccd128487",
+        "source_fact:v1:364c7888baf2b6fe8fa3007a5e032a9bbea7f818ce2e6a50cb40137ba9c0e22c",
+        "source_fact:v1:38e4ac25df7558ed6cdbae13b71badf1f44ce7ad36211433da119c74918e68bf",
+        "source_fact:v1:5099a201aeb4fd40bb183aadf820ad59fd9b5fdf05ccb03a6548e0c8b16bd405",
+        "source_fact:v1:56a02eb6b041cdc2878114cd15ad215394addee7296bcc452427c4b32f2becb4",
+        "source_fact:v1:59affeb1f3cbde41c2357ba89194bb92e4687df8e646b67b2a060c8e87149981",
+        "source_fact:v1:78f32e62da3f24c4cff6769c251e2a0eb34179ef6e7bf63841e50ee86cf22126",
+        "source_fact:v1:7fa20c912983a3824328c681428dd7370b6190e8b9e07e71072fd0a094946565",
+        "source_fact:v1:827b5b8ca040235e2636ac7f87d185b7f13a70195c3eac0e87c9bf8c8fdc3a3c",
+        "source_fact:v1:cd7eefa850b69de40f73a4ef11ab95248d1236a71083ddc8d27aa47461e678ed",
+        "source_fact:v1:f9a7a17ebf475d7b7f858d494b173b866260f63082299b2a224ff76bf425ea9f"
+      ],
+      "source_published_kst": "2026-10-11T10:39+09:00",
+      "source_title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁",
+      "telegram_core_fact": "특히 기존 OLED보다 밝기와 수명을 높이면서 소비전력을 줄일 수 있는 '탠덤 OLED'가 핵심 기술로 떠오르면서 삼성디스플레이와 LG디스플레이의 경쟁도 치열해지고 있다. 시장조사업체 옴디아에 따르면 올해 2분기 미국 PC 출하량은 전년비 1.0% 증가하는 데 그쳤지만, 매출은 13.1% 늘었다.",
+      "title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁"
     },
     "source_fact:aea317bf809f307c1215159d": {
       "first_seen_kst": "2026-10-10T13:17:24+09:00",
@@ -315910,6 +317363,27 @@
       "source_published_kst": "2026-10-05T21:23+09:00",
       "title": "테라울프, 머스키 전력 1GW로 2배 확대..2단계 1년 앞당겨"
     },
+    "source_fact:c899e6c321b02631c76fe54e": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820772",
+      "source": "뉴시스",
+      "source_body_digest": "96329d727d9161910f28537f9c4b566b8df513d0940fd37740835c2cfba68686",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3879331ea60fd8446cc92a6c85816acdb965ace65735acb56761baa3c221220c",
+      "source_fact_keys": [
+        "source_fact:v1:08f34cfef36096af4fda0e40e67bff5463c371f0fba11c39f41302fe509cc5b1",
+        "source_fact:v1:4d4d8aa994e463f80192adfc4e7e575634538a2a88deee06a5065f67dcf76dc6",
+        "source_fact:v1:9b759eafd0755392b2770146bacca782e624975e9e005a4c64f10ed50dd42279"
+      ],
+      "source_published_kst": "2026-10-11T10:51+09:00",
+      "source_title": "\"금리 올리며 돈 푸는 이상한 시대\"…국장 박스권 갇힐 동안 AI 주도주 쏠린다",
+      "telegram_core_fact": "\"과거에는 통화와 재정이 같은 방향으로 움직였지만, 지금은 기준금리를 올리면서 재정 집행을 위해 국채 발행을 늘리다 보니 24년 만에 최고 수준의 국채금리 시대가 도래했다\"고 분석했다.",
+      "title": "\"금리 올리며 돈 푸는 이상한 시대\"…국장 박스권 갇힐 동안 AI 주도주 쏠린다"
+    },
     "source_fact:c8b8f720d8fbefeba288bcad": {
       "first_seen_kst": "2026-10-08T08:12:34+09:00",
       "lanes": {
@@ -317476,6 +318950,37 @@
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
     },
+    "source_fact:cb121e5edb46222969be9163": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://biz.chosun.com/it-science/ict/2026/10/11/VUGOPMIACZE2HL2N2E7E77LAFE/",
+      "source": "조선비즈",
+      "source_body_digest": "f046122054b62f9fc451f1adde12dd2ef26e4d2651a1f7efbefe46be303dc956",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79b3b19f8b48fc67fe8adf83351f4471ec6b52fcfa9407ee98a2f49872066a71",
+      "source_fact_keys": [
+        "source_fact:v1:1e6892c187b48c9b5d5faa9b194a4bf0b569a7e875d1e0dad62ba3df4ee61265",
+        "source_fact:v1:218907e397e41a61a533cbc3c286fb3a097e9148c319c5d5ceaff752ddd0641b",
+        "source_fact:v1:2350afda3df19a74aab1c3324209a76159c77c49e4cae0ed504bc3fccd128487",
+        "source_fact:v1:364c7888baf2b6fe8fa3007a5e032a9bbea7f818ce2e6a50cb40137ba9c0e22c",
+        "source_fact:v1:38e4ac25df7558ed6cdbae13b71badf1f44ce7ad36211433da119c74918e68bf",
+        "source_fact:v1:5099a201aeb4fd40bb183aadf820ad59fd9b5fdf05ccb03a6548e0c8b16bd405",
+        "source_fact:v1:56a02eb6b041cdc2878114cd15ad215394addee7296bcc452427c4b32f2becb4",
+        "source_fact:v1:59affeb1f3cbde41c2357ba89194bb92e4687df8e646b67b2a060c8e87149981",
+        "source_fact:v1:78f32e62da3f24c4cff6769c251e2a0eb34179ef6e7bf63841e50ee86cf22126",
+        "source_fact:v1:7fa20c912983a3824328c681428dd7370b6190e8b9e07e71072fd0a094946565",
+        "source_fact:v1:827b5b8ca040235e2636ac7f87d185b7f13a70195c3eac0e87c9bf8c8fdc3a3c",
+        "source_fact:v1:cd7eefa850b69de40f73a4ef11ab95248d1236a71083ddc8d27aa47461e678ed",
+        "source_fact:v1:f9a7a17ebf475d7b7f858d494b173b866260f63082299b2a224ff76bf425ea9f"
+      ],
+      "source_published_kst": "2026-10-11T10:39+09:00",
+      "source_title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁",
+      "telegram_core_fact": "특히 기존 OLED보다 밝기와 수명을 높이면서 소비전력을 줄일 수 있는 '탠덤 OLED'가 핵심 기술로 떠오르면서 삼성디스플레이와 LG디스플레이의 경쟁도 치열해지고 있다. 시장조사업체 옴디아에 따르면 올해 2분기 미국 PC 출하량은 전년비 1.0% 증가하는 데 그쳤지만, 매출은 13.1% 늘었다.",
+      "title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁"
+    },
     "source_fact:cb181dfd8ef62e8472f6cf53": {
       "first_seen_kst": "2026-10-10T08:26:55+09:00",
       "lanes": {
@@ -318930,6 +320435,37 @@
       "source_title": "세계 최대 바이오 생산기지 송도의 역설…원부자재 95% 수입 | 연합뉴스",
       "telegram_core_fact": "보고서는 \"바이오 원부자재는 원가, 품질, 공급 안전성을 좌우하는 전략 자산\"이라며 \"의약품 제조 품목 허가에 등록된 원부자재는 교체 시 재검증 비용이 막대해 안정적 매출의 원천이 된다\"고 짚었다.",
       "title": "세계 최대 바이오 생산기지 송도의 역설…원부자재 95% 수입 | 연합뉴스"
+    },
+    "source_fact:cd75e67f3a7e8b5a00b254ee": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820846",
+      "source": "뉴시스",
+      "source_body_digest": "1336b76d908d32bf9f5fa6e29cbffd31b3c0d165a9d2e6163e32819fa9a754d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:004cf17a86b8cd3a79e7536528394bc4819d4a5cf8c0fd6f6345f4189098ecec",
+      "source_fact_keys": [
+        "source_fact:v1:0b225a5e125654487c85babb325486d63566a610b0fc1146120d9991c1ff4318",
+        "source_fact:v1:0cd6c7dbc9fe7c40d626f57ccc44bce5fdb4a9a0d47e205f269db57de9d527ac",
+        "source_fact:v1:1cf810cba524c3b2164f457bb1089ea41fc7b361eee1e89e9983f1e83fadf2d1",
+        "source_fact:v1:4747cc9dc105228547dc6a844f3d9010829b8062ca145efdd8a45974e391ab75",
+        "source_fact:v1:4a69df7601222ff9e2feddfdbd213709b2bce35387c5ebd1e43aafaac05d7313",
+        "source_fact:v1:5e466ca417915e288124a5a69fba32e2feb786538d551245e93902d55b1f444b",
+        "source_fact:v1:96c44b9474c67adf158a4fba454d3a871fcf7f77da2f41fea16c81ac0123f0fc",
+        "source_fact:v1:c69b7c7831804ef7d8a223bf918a172ba5ff855b0e42e71571774d2387edbe8d",
+        "source_fact:v1:c83d4afba33d3eea83195a9f9d04d8b0732c9b2d477c3a11da89d3da567bad57",
+        "source_fact:v1:c95804732aea16b7182c2eccaab5bea08faa92a7a8b45ae6bf189802a7e15ba8",
+        "source_fact:v1:d36b5bbe189936505e417a581b11f1c48951b163c5593b93d3ade74a13f64d19",
+        "source_fact:v1:d4018d9fcb0f51891d1e6b885349f2703e65137f2e6bdd4005d4381c74cb1c16",
+        "source_fact:v1:f1392b6658e00b33828b89666d5e8e8419f6c543fd7ebf0e1f11c8cdf5fa6dca"
+      ],
+      "source_published_kst": "2026-10-11T10:59+09:00",
+      "source_title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아 정유시설 공격을 계속하는 우크라이나에 정보 공유 중단을 경고하고 볼로디미르 젤렌스키 대통령의 교체 필요성까지 언급했다.",
+      "title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고"
     },
     "source_fact:cd77761e5d0af7bcd8ca350b": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -321821,6 +323357,37 @@
       "telegram_core_fact": "콘텐츠 IP 커머셜라이징 기업 페퍼앤솔트가 올해 상반기 매출 131억원을 기록한 가운데, 하반기에는 K-SNS 캐릭터의 해외 유통망 구축과 글로벌 IP 사업 확대에 나선다.",
       "title": "페퍼앤솔트, 상반기 매출 131억원 기록…K-캐릭터 해외 진출 본격화"
     },
+    "source_fact:d20376d7e7f63546ebcca2de": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820846",
+      "source": "뉴시스",
+      "source_body_digest": "1336b76d908d32bf9f5fa6e29cbffd31b3c0d165a9d2e6163e32819fa9a754d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:004cf17a86b8cd3a79e7536528394bc4819d4a5cf8c0fd6f6345f4189098ecec",
+      "source_fact_keys": [
+        "source_fact:v1:0b225a5e125654487c85babb325486d63566a610b0fc1146120d9991c1ff4318",
+        "source_fact:v1:0cd6c7dbc9fe7c40d626f57ccc44bce5fdb4a9a0d47e205f269db57de9d527ac",
+        "source_fact:v1:1cf810cba524c3b2164f457bb1089ea41fc7b361eee1e89e9983f1e83fadf2d1",
+        "source_fact:v1:4747cc9dc105228547dc6a844f3d9010829b8062ca145efdd8a45974e391ab75",
+        "source_fact:v1:4a69df7601222ff9e2feddfdbd213709b2bce35387c5ebd1e43aafaac05d7313",
+        "source_fact:v1:5e466ca417915e288124a5a69fba32e2feb786538d551245e93902d55b1f444b",
+        "source_fact:v1:96c44b9474c67adf158a4fba454d3a871fcf7f77da2f41fea16c81ac0123f0fc",
+        "source_fact:v1:c69b7c7831804ef7d8a223bf918a172ba5ff855b0e42e71571774d2387edbe8d",
+        "source_fact:v1:c83d4afba33d3eea83195a9f9d04d8b0732c9b2d477c3a11da89d3da567bad57",
+        "source_fact:v1:c95804732aea16b7182c2eccaab5bea08faa92a7a8b45ae6bf189802a7e15ba8",
+        "source_fact:v1:d36b5bbe189936505e417a581b11f1c48951b163c5593b93d3ade74a13f64d19",
+        "source_fact:v1:d4018d9fcb0f51891d1e6b885349f2703e65137f2e6bdd4005d4381c74cb1c16",
+        "source_fact:v1:f1392b6658e00b33828b89666d5e8e8419f6c543fd7ebf0e1f11c8cdf5fa6dca"
+      ],
+      "source_published_kst": "2026-10-11T10:59+09:00",
+      "source_title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아 정유시설 공격을 계속하는 우크라이나에 정보 공유 중단을 경고하고 볼로디미르 젤렌스키 대통령의 교체 필요성까지 언급했다.",
+      "title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고"
+    },
     "source_fact:d20459d4fc1a2042839cc2b3": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
       "lanes": {
@@ -321863,6 +323430,25 @@
       ],
       "source_published_kst": "2026-10-06T09:00+09:00",
       "title": "한미반도체, 삼성전기서 245억 장비 수주…곽동신 “삼성그룹 환영”"
+    },
+    "source_fact:d20a412099a1051eb05c4fb7": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633974",
+      "source": "이투데이",
+      "source_body_digest": "accfa7432ce185623d60da09bd11278db96ed7f10b8c29c4e33d455c322a4bf5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1b1bb2d24f9af93a4e57f77b04d451f041b5e94b2a287c980b28d1769499278b",
+      "source_fact_keys": [
+        "source_fact:v1:c86bed4641d6ae2277d82050a12d982043049d00d19f99bfae01719d02b7b4dc"
+      ],
+      "source_published_kst": "2026-10-11T10:54+09:00",
+      "source_title": "네팔 정부 수색 종료에도…두산에너빌 “복구보다 실종 직원 수색 우선“",
+      "telegram_core_fact": "네팔 정부는 5일 대홍수에 따른 국가 차원의 대규모 수색·구조 활동을 종료하고 피해 복구에 집중하는 단계로 전환했다.",
+      "title": "네팔 정부 수색 종료에도…두산에너빌 “복구보다 실종 직원 수색 우선“"
     },
     "source_fact:d20aadfdfa1a361e81b7f85c": {
       "first_seen_kst": "2026-10-06T21:28:22+09:00",
@@ -335678,6 +337264,31 @@
       "telegram_core_fact": "원림에 따르면 스타바이오 매출은 2023년 261억 원에서 2025년 334억 원으로 2년 새 약 28% 증가했다. 원림이 스타바이오의 정형외과 의료기기 사업과 한빛인베스트먼트의 헬스케어 투자로 바이오 사업을 확대하고 있다.",
       "title": "원림, 의료기기 사업·바이오 투자 병행으로 성장동력 다변화"
     },
+    "source_fact:e5173bb8dbc0bda3fca6d479": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://m.yonhapnewstv.co.kr/news/AKR202610111020306Op",
+      "source": "연합뉴스TV",
+      "source_body_digest": "253764c47aca0bc3a22f3440dc9b0139cdfbe27ce05386a6969f424ce64811f3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:936186fea7462d373b42793ba3e6f93b9dd287d30dc6a6ee94a83f58c7ded5d4",
+      "source_fact_keys": [
+        "source_fact:v1:0f890c8fa8df195744925c15b8c661b03d2d5aa0c2664ac83107315032d28997",
+        "source_fact:v1:2931bc30146e88be539454a040c1c74d5960bafa8340fed3e832695e6e6c7d77",
+        "source_fact:v1:5ddca16e6cb283e30d77439875db9a42b575ddf91d9577a35305b8dd7041585b",
+        "source_fact:v1:ab8aca7c1f864b449868e801e22e04fc39897f3ea03bd52b075a1b117538baad",
+        "source_fact:v1:b8af703f7a54dfcea88b73f6e748e27ce6a26aede5dc40d57dbaf404e1374e35",
+        "source_fact:v1:c7b690667fd68b9538a7257d8c31a654bbf2634ef9d6afe1ecec618daa246b74",
+        "source_fact:v1:dbe928d2fdbc9963a50813e07b4cd3edbb98e8150dee0b627f01b8e9a837266e"
+      ],
+      "source_published_kst": "2026-10-11T10:20+09:00",
+      "source_title": "“美, 우크라에 ’러 정유소 때리면 정보공유 중단’ 경고“",
+      "telegram_core_fact": "미국이 우크라이나가 러시아 정유시설 공격을 멈추지 않으면 정보 공유를 중단하겠다고 경고한 것으로 전해졌습니다. 우크라이나 측은 미국이 러시아에는 공습 중단을 요구하지 않으면서 자신들에게만 요구하는 것은 불공평하다고 불만을 표시한 것으로 전해졌습니다.",
+      "title": "“美, 우크라에 ’러 정유소 때리면 정보공유 중단’ 경고“"
+    },
     "source_fact:e522c05d80a5679aa00d32ff": {
       "first_seen_kst": "2026-10-10T01:24:21+09:00",
       "lanes": {
@@ -337194,6 +338805,37 @@
       "source_published_kst": "2026-10-06T17:35+09:00",
       "title": "포스코퓨처엠, 삼성SDI와 LFP 6조원 규모 공급계약 체결"
     },
+    "source_fact:e76c5978ed8db779a8a1f4c7": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820846",
+      "source": "뉴시스",
+      "source_body_digest": "1336b76d908d32bf9f5fa6e29cbffd31b3c0d165a9d2e6163e32819fa9a754d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:004cf17a86b8cd3a79e7536528394bc4819d4a5cf8c0fd6f6345f4189098ecec",
+      "source_fact_keys": [
+        "source_fact:v1:0b225a5e125654487c85babb325486d63566a610b0fc1146120d9991c1ff4318",
+        "source_fact:v1:0cd6c7dbc9fe7c40d626f57ccc44bce5fdb4a9a0d47e205f269db57de9d527ac",
+        "source_fact:v1:1cf810cba524c3b2164f457bb1089ea41fc7b361eee1e89e9983f1e83fadf2d1",
+        "source_fact:v1:4747cc9dc105228547dc6a844f3d9010829b8062ca145efdd8a45974e391ab75",
+        "source_fact:v1:4a69df7601222ff9e2feddfdbd213709b2bce35387c5ebd1e43aafaac05d7313",
+        "source_fact:v1:5e466ca417915e288124a5a69fba32e2feb786538d551245e93902d55b1f444b",
+        "source_fact:v1:96c44b9474c67adf158a4fba454d3a871fcf7f77da2f41fea16c81ac0123f0fc",
+        "source_fact:v1:c69b7c7831804ef7d8a223bf918a172ba5ff855b0e42e71571774d2387edbe8d",
+        "source_fact:v1:c83d4afba33d3eea83195a9f9d04d8b0732c9b2d477c3a11da89d3da567bad57",
+        "source_fact:v1:c95804732aea16b7182c2eccaab5bea08faa92a7a8b45ae6bf189802a7e15ba8",
+        "source_fact:v1:d36b5bbe189936505e417a581b11f1c48951b163c5593b93d3ade74a13f64d19",
+        "source_fact:v1:d4018d9fcb0f51891d1e6b885349f2703e65137f2e6bdd4005d4381c74cb1c16",
+        "source_fact:v1:f1392b6658e00b33828b89666d5e8e8419f6c543fd7ebf0e1f11c8cdf5fa6dca"
+      ],
+      "source_published_kst": "2026-10-11T10:59+09:00",
+      "source_title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아 정유시설 공격을 계속하는 우크라이나에 정보 공유 중단을 경고하고 볼로디미르 젤렌스키 대통령의 교체 필요성까지 언급했다.",
+      "title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고"
+    },
     "source_fact:e76e7f6e442854a72897feeb": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -338545,6 +340187,30 @@
       "source_title": "네이버파이낸셜·두나무 주식교환 또다시 연기…“내년 3월에 시행”",
       "telegram_core_fact": "두나무는 네이버 종속회사인 네이버파이낸셜과의 주식교환일을 올해 12월 31일에서 내년 3월 31일로 변경했다고 7일 공시했다. 네이버파이낸셜이 두나무를 완전 자회사로 편입하기 위한 포괄적 주식교환 일정이 내년 3월로 다시 미뤄졌다.",
       "title": "네이버파이낸셜·두나무 주식교환 또다시 연기…“내년 3월에 시행”"
+    },
+    "source_fact:e96ec63373657810bddaad45": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01243126645611936",
+      "source": "이데일리",
+      "source_body_digest": "4b683df0052ebabe3d720de3afacd173cac6029f7acba150522d55ec6cde3fda",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:25e50d264fea06271ab3ac67134aa79563b353c1aa6cc6e3d2bca50516f00f10",
+      "source_fact_keys": [
+        "source_fact:v1:1c3faa87dfd680e41f57dea3be2d7f0d3292705644ca4a4bd927d50718011f29",
+        "source_fact:v1:1f2662a0fd5c2bdc2f215193e10f5f328868f8fb584ece83b1081de9e8482af6",
+        "source_fact:v1:7af8abf111e67a444c6d17396af9e8034166238db380e7500d5efd6c5f63bdf1",
+        "source_fact:v1:91d26c59fc720df9537abcaed687194b8ea9e72228f9d423adb828281b926f38",
+        "source_fact:v1:ab43d8b627763f53b0ec2e1ce2a65c2b1213d071adbff4e8b8b95f9869b892cf",
+        "source_fact:v1:fe4a8c085f7f08796ec823e81a22115a053809bbffd54841d63478d42c36e42c"
+      ],
+      "source_published_kst": "2026-10-11T09:45+09:00",
+      "source_title": "“금리 또 올랐다고?”…가계대출 60%가 변동금리 ‘발 동동’",
+      "telegram_core_fact": "한국은행의 연이은 기준금리 인상에도 은행 가계대출의 변동금리 비중이 60%에 육박한 것으로 나타났다.",
+      "title": "“금리 또 올랐다고?”…가계대출 60%가 변동금리 ‘발 동동’"
     },
     "source_fact:e9706c4dfd134c2e7bf25108": {
       "first_seen_kst": "2026-10-08T00:54:18+09:00",
@@ -341213,6 +342879,30 @@
       "telegram_core_fact": "소상공인, 단독주택, 공장·시설 등 전문성과 자본이 부족한 소비자가 구독료만 납부하면 히트펌프의 금융 및 설치부터 운영 및 에너지 거래까지 통합 서비스를 누릴 수 있는 데이터 기반 재생열에너지 플랫폼을 구축하고 있다.",
       "title": "[제2서울핀테크랩 스타트업 CEO] 난방약자와 기후투자자를 연결하는 히트펌프 열 구독서비스 운영 기업 ‘모닥불 에너지’"
     },
+    "source_fact:ed60dc0e85a25d6bafcf0425": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01243126645611936",
+      "source": "이데일리",
+      "source_body_digest": "4b683df0052ebabe3d720de3afacd173cac6029f7acba150522d55ec6cde3fda",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:25e50d264fea06271ab3ac67134aa79563b353c1aa6cc6e3d2bca50516f00f10",
+      "source_fact_keys": [
+        "source_fact:v1:1c3faa87dfd680e41f57dea3be2d7f0d3292705644ca4a4bd927d50718011f29",
+        "source_fact:v1:1f2662a0fd5c2bdc2f215193e10f5f328868f8fb584ece83b1081de9e8482af6",
+        "source_fact:v1:7af8abf111e67a444c6d17396af9e8034166238db380e7500d5efd6c5f63bdf1",
+        "source_fact:v1:91d26c59fc720df9537abcaed687194b8ea9e72228f9d423adb828281b926f38",
+        "source_fact:v1:ab43d8b627763f53b0ec2e1ce2a65c2b1213d071adbff4e8b8b95f9869b892cf",
+        "source_fact:v1:fe4a8c085f7f08796ec823e81a22115a053809bbffd54841d63478d42c36e42c"
+      ],
+      "source_published_kst": "2026-10-11T09:45+09:00",
+      "source_title": "“금리 또 올랐다고?”…가계대출 60%가 변동금리 ‘발 동동’",
+      "telegram_core_fact": "한국은행의 연이은 기준금리 인상에도 은행 가계대출의 변동금리 비중이 60%에 육박한 것으로 나타났다.",
+      "title": "“금리 또 올랐다고?”…가계대출 60%가 변동금리 ‘발 동동’"
+    },
     "source_fact:ed64288b03f71df660c73017": {
       "first_seen_kst": "2026-10-07T06:41:04+09:00",
       "lanes": {
@@ -343500,6 +345190,37 @@
       ],
       "source_published_kst": "2026-10-05T21:00+09:00",
       "title": "알보테크, FDA 심랜디 미국 생산설비 추가 승인에 공급능력 2배 확대 기대"
+    },
+    "source_fact:f11144be5264218fba68ef7f": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://biz.chosun.com/it-science/ict/2026/10/11/VUGOPMIACZE2HL2N2E7E77LAFE/",
+      "source": "조선비즈",
+      "source_body_digest": "f046122054b62f9fc451f1adde12dd2ef26e4d2651a1f7efbefe46be303dc956",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79b3b19f8b48fc67fe8adf83351f4471ec6b52fcfa9407ee98a2f49872066a71",
+      "source_fact_keys": [
+        "source_fact:v1:1e6892c187b48c9b5d5faa9b194a4bf0b569a7e875d1e0dad62ba3df4ee61265",
+        "source_fact:v1:218907e397e41a61a533cbc3c286fb3a097e9148c319c5d5ceaff752ddd0641b",
+        "source_fact:v1:2350afda3df19a74aab1c3324209a76159c77c49e4cae0ed504bc3fccd128487",
+        "source_fact:v1:364c7888baf2b6fe8fa3007a5e032a9bbea7f818ce2e6a50cb40137ba9c0e22c",
+        "source_fact:v1:38e4ac25df7558ed6cdbae13b71badf1f44ce7ad36211433da119c74918e68bf",
+        "source_fact:v1:5099a201aeb4fd40bb183aadf820ad59fd9b5fdf05ccb03a6548e0c8b16bd405",
+        "source_fact:v1:56a02eb6b041cdc2878114cd15ad215394addee7296bcc452427c4b32f2becb4",
+        "source_fact:v1:59affeb1f3cbde41c2357ba89194bb92e4687df8e646b67b2a060c8e87149981",
+        "source_fact:v1:78f32e62da3f24c4cff6769c251e2a0eb34179ef6e7bf63841e50ee86cf22126",
+        "source_fact:v1:7fa20c912983a3824328c681428dd7370b6190e8b9e07e71072fd0a094946565",
+        "source_fact:v1:827b5b8ca040235e2636ac7f87d185b7f13a70195c3eac0e87c9bf8c8fdc3a3c",
+        "source_fact:v1:cd7eefa850b69de40f73a4ef11ab95248d1236a71083ddc8d27aa47461e678ed",
+        "source_fact:v1:f9a7a17ebf475d7b7f858d494b173b866260f63082299b2a224ff76bf425ea9f"
+      ],
+      "source_published_kst": "2026-10-11T10:39+09:00",
+      "source_title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁",
+      "telegram_core_fact": "특히 기존 OLED보다 밝기와 수명을 높이면서 소비전력을 줄일 수 있는 '탠덤 OLED'가 핵심 기술로 떠오르면서 삼성디스플레이와 LG디스플레이의 경쟁도 치열해지고 있다. 시장조사업체 옴디아에 따르면 올해 2분기 미국 PC 출하량은 전년비 1.0% 증가하는 데 그쳤지만, 매출은 13.1% 늘었다.",
+      "title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁"
     },
     "source_fact:f11721e28a74e940a2a03786": {
       "first_seen_kst": "2026-10-11T09:28:38+09:00",
@@ -346139,6 +347860,31 @@
       "telegram_core_fact": "출범 엿새째를 맞은 중대범죄수사청(중수청)이 첫날 접수한 고소·고발 사건들을 배당하고 검토에 착수했다.",
       "title": "중수청, 출범 첫날 접수 고소·고발건 배당 시작"
     },
+    "source_fact:f50dc20468978a79c9454f68": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://m.yonhapnewstv.co.kr/news/AKR202610111020306Op",
+      "source": "연합뉴스TV",
+      "source_body_digest": "253764c47aca0bc3a22f3440dc9b0139cdfbe27ce05386a6969f424ce64811f3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:936186fea7462d373b42793ba3e6f93b9dd287d30dc6a6ee94a83f58c7ded5d4",
+      "source_fact_keys": [
+        "source_fact:v1:0f890c8fa8df195744925c15b8c661b03d2d5aa0c2664ac83107315032d28997",
+        "source_fact:v1:2931bc30146e88be539454a040c1c74d5960bafa8340fed3e832695e6e6c7d77",
+        "source_fact:v1:5ddca16e6cb283e30d77439875db9a42b575ddf91d9577a35305b8dd7041585b",
+        "source_fact:v1:ab8aca7c1f864b449868e801e22e04fc39897f3ea03bd52b075a1b117538baad",
+        "source_fact:v1:b8af703f7a54dfcea88b73f6e748e27ce6a26aede5dc40d57dbaf404e1374e35",
+        "source_fact:v1:c7b690667fd68b9538a7257d8c31a654bbf2634ef9d6afe1ecec618daa246b74",
+        "source_fact:v1:dbe928d2fdbc9963a50813e07b4cd3edbb98e8150dee0b627f01b8e9a837266e"
+      ],
+      "source_published_kst": "2026-10-11T10:20+09:00",
+      "source_title": "“美, 우크라에 ’러 정유소 때리면 정보공유 중단’ 경고“",
+      "telegram_core_fact": "미국이 우크라이나가 러시아 정유시설 공격을 멈추지 않으면 정보 공유를 중단하겠다고 경고한 것으로 전해졌습니다. 우크라이나 측은 미국이 러시아에는 공습 중단을 요구하지 않으면서 자신들에게만 요구하는 것은 불공평하다고 불만을 표시한 것으로 전해졌습니다.",
+      "title": "“美, 우크라에 ’러 정유소 때리면 정보공유 중단’ 경고“"
+    },
     "source_fact:f5138ab7e293d66f56b30915": {
       "first_seen_kst": "2026-10-08T11:28:27+09:00",
       "lanes": {
@@ -348450,6 +350196,37 @@
       "telegram_core_fact": "11일 이투데이 취재를 종합하면 임 의원은 7일 열린 '용인반도체산단 용수공급 지역 상생협의체' 1차 회의 결과에 대한 입장문을 내고 \"국가전략산업 추진을 위한 첫 대화의 장은 열렸으나, 광주시민의 목소리와 구체적 상생방안을 책임 있게 다룰 핵심 정부부처 라인이 빠져 깊은 아쉬움을 남겼다\"고 밝혔다.",
       "title": "용인 반도체 용수 상생협의체 첫 회의…임창휘 \"광주 상생안 다룰 핵심부처 빠져\""
     },
+    "source_fact:f94b5e9007c35018152c3dd8": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://biz.chosun.com/it-science/ict/2026/10/11/VUGOPMIACZE2HL2N2E7E77LAFE/",
+      "source": "조선비즈",
+      "source_body_digest": "f046122054b62f9fc451f1adde12dd2ef26e4d2651a1f7efbefe46be303dc956",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79b3b19f8b48fc67fe8adf83351f4471ec6b52fcfa9407ee98a2f49872066a71",
+      "source_fact_keys": [
+        "source_fact:v1:1e6892c187b48c9b5d5faa9b194a4bf0b569a7e875d1e0dad62ba3df4ee61265",
+        "source_fact:v1:218907e397e41a61a533cbc3c286fb3a097e9148c319c5d5ceaff752ddd0641b",
+        "source_fact:v1:2350afda3df19a74aab1c3324209a76159c77c49e4cae0ed504bc3fccd128487",
+        "source_fact:v1:364c7888baf2b6fe8fa3007a5e032a9bbea7f818ce2e6a50cb40137ba9c0e22c",
+        "source_fact:v1:38e4ac25df7558ed6cdbae13b71badf1f44ce7ad36211433da119c74918e68bf",
+        "source_fact:v1:5099a201aeb4fd40bb183aadf820ad59fd9b5fdf05ccb03a6548e0c8b16bd405",
+        "source_fact:v1:56a02eb6b041cdc2878114cd15ad215394addee7296bcc452427c4b32f2becb4",
+        "source_fact:v1:59affeb1f3cbde41c2357ba89194bb92e4687df8e646b67b2a060c8e87149981",
+        "source_fact:v1:78f32e62da3f24c4cff6769c251e2a0eb34179ef6e7bf63841e50ee86cf22126",
+        "source_fact:v1:7fa20c912983a3824328c681428dd7370b6190e8b9e07e71072fd0a094946565",
+        "source_fact:v1:827b5b8ca040235e2636ac7f87d185b7f13a70195c3eac0e87c9bf8c8fdc3a3c",
+        "source_fact:v1:cd7eefa850b69de40f73a4ef11ab95248d1236a71083ddc8d27aa47461e678ed",
+        "source_fact:v1:f9a7a17ebf475d7b7f858d494b173b866260f63082299b2a224ff76bf425ea9f"
+      ],
+      "source_published_kst": "2026-10-11T10:39+09:00",
+      "source_title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁",
+      "telegram_core_fact": "특히 기존 OLED보다 밝기와 수명을 높이면서 소비전력을 줄일 수 있는 '탠덤 OLED'가 핵심 기술로 떠오르면서 삼성디스플레이와 LG디스플레이의 경쟁도 치열해지고 있다. 시장조사업체 옴디아에 따르면 올해 2분기 미국 PC 출하량은 전년비 1.0% 증가하는 데 그쳤지만, 매출은 13.1% 늘었다.",
+      "title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁"
+    },
     "source_fact:f9620cfc47eefb8a92839449": {
       "first_seen_kst": "2026-10-06T19:58:43+09:00",
       "lanes": {
@@ -349968,6 +351745,31 @@
       "source_published_kst": "2026-10-06T15:16+09:00",
       "title": "“유럽 첫 상용 SDV 뚫었다”… LG전자 차세대 콕핏 르노 공급"
     },
+    "source_fact:fc153d2b9fd5fcd95c88f8c5": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://m.yonhapnewstv.co.kr/news/AKR202610111020306Op",
+      "source": "연합뉴스TV",
+      "source_body_digest": "253764c47aca0bc3a22f3440dc9b0139cdfbe27ce05386a6969f424ce64811f3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:936186fea7462d373b42793ba3e6f93b9dd287d30dc6a6ee94a83f58c7ded5d4",
+      "source_fact_keys": [
+        "source_fact:v1:0f890c8fa8df195744925c15b8c661b03d2d5aa0c2664ac83107315032d28997",
+        "source_fact:v1:2931bc30146e88be539454a040c1c74d5960bafa8340fed3e832695e6e6c7d77",
+        "source_fact:v1:5ddca16e6cb283e30d77439875db9a42b575ddf91d9577a35305b8dd7041585b",
+        "source_fact:v1:ab8aca7c1f864b449868e801e22e04fc39897f3ea03bd52b075a1b117538baad",
+        "source_fact:v1:b8af703f7a54dfcea88b73f6e748e27ce6a26aede5dc40d57dbaf404e1374e35",
+        "source_fact:v1:c7b690667fd68b9538a7257d8c31a654bbf2634ef9d6afe1ecec618daa246b74",
+        "source_fact:v1:dbe928d2fdbc9963a50813e07b4cd3edbb98e8150dee0b627f01b8e9a837266e"
+      ],
+      "source_published_kst": "2026-10-11T10:20+09:00",
+      "source_title": "“美, 우크라에 ’러 정유소 때리면 정보공유 중단’ 경고“",
+      "telegram_core_fact": "미국이 우크라이나가 러시아 정유시설 공격을 멈추지 않으면 정보 공유를 중단하겠다고 경고한 것으로 전해졌습니다. 우크라이나 측은 미국이 러시아에는 공습 중단을 요구하지 않으면서 자신들에게만 요구하는 것은 불공평하다고 불만을 표시한 것으로 전해졌습니다.",
+      "title": "“美, 우크라에 ’러 정유소 때리면 정보공유 중단’ 경고“"
+    },
     "source_fact:fc200f9b0eab648c383af9a7": {
       "first_seen_kst": "2026-10-05T19:54:04+09:00",
       "lanes": {
@@ -351209,6 +353011,37 @@
       "source_title": "연준 무살렘·월러 \"추가 금리 인상 필요\"…시점엔 유연성",
       "telegram_core_fact": "블룸버그통신에 따르면 월러 이사는 “경제지표가 예상대로 나온다면 인플레이션을 2% 목표치로 더 신속하게 되돌리기 위해 추가 금리 인상이 필요할 것으로 예상한다”고 말했다.",
       "title": "연준 무살렘·월러 \"추가 금리 인상 필요\"…시점엔 유연성"
+    },
+    "source_fact:fda31e739c56fdada3b3a4e3": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820846",
+      "source": "뉴시스",
+      "source_body_digest": "1336b76d908d32bf9f5fa6e29cbffd31b3c0d165a9d2e6163e32819fa9a754d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:004cf17a86b8cd3a79e7536528394bc4819d4a5cf8c0fd6f6345f4189098ecec",
+      "source_fact_keys": [
+        "source_fact:v1:0b225a5e125654487c85babb325486d63566a610b0fc1146120d9991c1ff4318",
+        "source_fact:v1:0cd6c7dbc9fe7c40d626f57ccc44bce5fdb4a9a0d47e205f269db57de9d527ac",
+        "source_fact:v1:1cf810cba524c3b2164f457bb1089ea41fc7b361eee1e89e9983f1e83fadf2d1",
+        "source_fact:v1:4747cc9dc105228547dc6a844f3d9010829b8062ca145efdd8a45974e391ab75",
+        "source_fact:v1:4a69df7601222ff9e2feddfdbd213709b2bce35387c5ebd1e43aafaac05d7313",
+        "source_fact:v1:5e466ca417915e288124a5a69fba32e2feb786538d551245e93902d55b1f444b",
+        "source_fact:v1:96c44b9474c67adf158a4fba454d3a871fcf7f77da2f41fea16c81ac0123f0fc",
+        "source_fact:v1:c69b7c7831804ef7d8a223bf918a172ba5ff855b0e42e71571774d2387edbe8d",
+        "source_fact:v1:c83d4afba33d3eea83195a9f9d04d8b0732c9b2d477c3a11da89d3da567bad57",
+        "source_fact:v1:c95804732aea16b7182c2eccaab5bea08faa92a7a8b45ae6bf189802a7e15ba8",
+        "source_fact:v1:d36b5bbe189936505e417a581b11f1c48951b163c5593b93d3ade74a13f64d19",
+        "source_fact:v1:d4018d9fcb0f51891d1e6b885349f2703e65137f2e6bdd4005d4381c74cb1c16",
+        "source_fact:v1:f1392b6658e00b33828b89666d5e8e8419f6c543fd7ebf0e1f11c8cdf5fa6dca"
+      ],
+      "source_published_kst": "2026-10-11T10:59+09:00",
+      "source_title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아 정유시설 공격을 계속하는 우크라이나에 정보 공유 중단을 경고하고 볼로디미르 젤렌스키 대통령의 교체 필요성까지 언급했다.",
+      "title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고"
     },
     "source_fact:fda478353e700dd669b4fea8": {
       "first_seen_kst": "2026-10-10T01:24:21+09:00",
@@ -359764,6 +361597,27 @@
       "link": "https://www.newsis.com/view/NISX20261001_0003810887",
       "source": "뉴시스",
       "title": "줄줄이 오르는 은행 예금금리…하나은행, 1년 만기 연 3.6%로"
+    },
+    "title:211035546d2159292ec81518": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820772",
+      "source": "뉴시스",
+      "source_body_digest": "96329d727d9161910f28537f9c4b566b8df513d0940fd37740835c2cfba68686",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3879331ea60fd8446cc92a6c85816acdb965ace65735acb56761baa3c221220c",
+      "source_fact_keys": [
+        "source_fact:v1:08f34cfef36096af4fda0e40e67bff5463c371f0fba11c39f41302fe509cc5b1",
+        "source_fact:v1:4d4d8aa994e463f80192adfc4e7e575634538a2a88deee06a5065f67dcf76dc6",
+        "source_fact:v1:9b759eafd0755392b2770146bacca782e624975e9e005a4c64f10ed50dd42279"
+      ],
+      "source_published_kst": "2026-10-11T10:51+09:00",
+      "source_title": "\"금리 올리며 돈 푸는 이상한 시대\"…국장 박스권 갇힐 동안 AI 주도주 쏠린다",
+      "telegram_core_fact": "\"과거에는 통화와 재정이 같은 방향으로 움직였지만, 지금은 기준금리를 올리면서 재정 집행을 위해 국채 발행을 늘리다 보니 24년 만에 최고 수준의 국채금리 시대가 도래했다\"고 분석했다.",
+      "title": "\"금리 올리며 돈 푸는 이상한 시대\"…국장 박스권 갇힐 동안 AI 주도주 쏠린다"
     },
     "title:2112dd09513b0df2593f09cb": {
       "first_seen_kst": "2026-09-23T07:15:19+09:00",
@@ -370472,6 +372326,25 @@
       "source_published_kst": "2026-10-06T15:16+09:00",
       "title": "MSDI, 구미에 미사일 개발·생산 거점 추진…2029년까지 7000억 규모"
     },
+    "title:4e69b9b8e0460ecab80ae741": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633974",
+      "source": "이투데이",
+      "source_body_digest": "accfa7432ce185623d60da09bd11278db96ed7f10b8c29c4e33d455c322a4bf5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1b1bb2d24f9af93a4e57f77b04d451f041b5e94b2a287c980b28d1769499278b",
+      "source_fact_keys": [
+        "source_fact:v1:c86bed4641d6ae2277d82050a12d982043049d00d19f99bfae01719d02b7b4dc"
+      ],
+      "source_published_kst": "2026-10-11T10:54+09:00",
+      "source_title": "네팔 정부 수색 종료에도…두산에너빌 “복구보다 실종 직원 수색 우선“",
+      "telegram_core_fact": "네팔 정부는 5일 대홍수에 따른 국가 차원의 대규모 수색·구조 활동을 종료하고 피해 복구에 집중하는 단계로 전환했다.",
+      "title": "네팔 정부 수색 종료에도…두산에너빌 “복구보다 실종 직원 수색 우선“"
+    },
     "title:4e6a4cac798c1894f9f81584": {
       "first_seen_kst": "2026-10-08T21:47:01+09:00",
       "lanes": {
@@ -375555,6 +377428,37 @@
       "source_title": "금융권서 교회·대학까지…해킹에 개인정보 100만건 넘게 노출 | 연합뉴스",
       "telegram_core_fact": "국가청렴권익교육원이 운영하는 청렴권익배움터에서는 이용자 10만여명의 개인정보가 유출됐다.",
       "title": "금융권서 교회·대학까지…해킹에 개인정보 100만건 넘게 노출 | 연합뉴스"
+    },
+    "title:67e42696ffe54c29fb5af194": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://biz.chosun.com/it-science/ict/2026/10/11/VUGOPMIACZE2HL2N2E7E77LAFE/",
+      "source": "조선비즈",
+      "source_body_digest": "f046122054b62f9fc451f1adde12dd2ef26e4d2651a1f7efbefe46be303dc956",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79b3b19f8b48fc67fe8adf83351f4471ec6b52fcfa9407ee98a2f49872066a71",
+      "source_fact_keys": [
+        "source_fact:v1:1e6892c187b48c9b5d5faa9b194a4bf0b569a7e875d1e0dad62ba3df4ee61265",
+        "source_fact:v1:218907e397e41a61a533cbc3c286fb3a097e9148c319c5d5ceaff752ddd0641b",
+        "source_fact:v1:2350afda3df19a74aab1c3324209a76159c77c49e4cae0ed504bc3fccd128487",
+        "source_fact:v1:364c7888baf2b6fe8fa3007a5e032a9bbea7f818ce2e6a50cb40137ba9c0e22c",
+        "source_fact:v1:38e4ac25df7558ed6cdbae13b71badf1f44ce7ad36211433da119c74918e68bf",
+        "source_fact:v1:5099a201aeb4fd40bb183aadf820ad59fd9b5fdf05ccb03a6548e0c8b16bd405",
+        "source_fact:v1:56a02eb6b041cdc2878114cd15ad215394addee7296bcc452427c4b32f2becb4",
+        "source_fact:v1:59affeb1f3cbde41c2357ba89194bb92e4687df8e646b67b2a060c8e87149981",
+        "source_fact:v1:78f32e62da3f24c4cff6769c251e2a0eb34179ef6e7bf63841e50ee86cf22126",
+        "source_fact:v1:7fa20c912983a3824328c681428dd7370b6190e8b9e07e71072fd0a094946565",
+        "source_fact:v1:827b5b8ca040235e2636ac7f87d185b7f13a70195c3eac0e87c9bf8c8fdc3a3c",
+        "source_fact:v1:cd7eefa850b69de40f73a4ef11ab95248d1236a71083ddc8d27aa47461e678ed",
+        "source_fact:v1:f9a7a17ebf475d7b7f858d494b173b866260f63082299b2a224ff76bf425ea9f"
+      ],
+      "source_published_kst": "2026-10-11T10:39+09:00",
+      "source_title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁",
+      "telegram_core_fact": "특히 기존 OLED보다 밝기와 수명을 높이면서 소비전력을 줄일 수 있는 '탠덤 OLED'가 핵심 기술로 떠오르면서 삼성디스플레이와 LG디스플레이의 경쟁도 치열해지고 있다. 시장조사업체 옴디아에 따르면 올해 2분기 미국 PC 출하량은 전년비 1.0% 증가하는 데 그쳤지만, 매출은 13.1% 늘었다.",
+      "title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁"
     },
     "title:67f1a3e21d28210df1b0d655": {
       "first_seen_kst": "2026-10-02T17:56:05+09:00",
@@ -382331,6 +384235,30 @@
       "source": "매일경제",
       "title": "삼성전기, `이익 컨센서스 상향 조정이 재가속화될 전망` 증권사 발표에 강세"
     },
+    "title:875c4a9dbac930dbcca327bd": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01243126645611936",
+      "source": "이데일리",
+      "source_body_digest": "4b683df0052ebabe3d720de3afacd173cac6029f7acba150522d55ec6cde3fda",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:25e50d264fea06271ab3ac67134aa79563b353c1aa6cc6e3d2bca50516f00f10",
+      "source_fact_keys": [
+        "source_fact:v1:1c3faa87dfd680e41f57dea3be2d7f0d3292705644ca4a4bd927d50718011f29",
+        "source_fact:v1:1f2662a0fd5c2bdc2f215193e10f5f328868f8fb584ece83b1081de9e8482af6",
+        "source_fact:v1:7af8abf111e67a444c6d17396af9e8034166238db380e7500d5efd6c5f63bdf1",
+        "source_fact:v1:91d26c59fc720df9537abcaed687194b8ea9e72228f9d423adb828281b926f38",
+        "source_fact:v1:ab43d8b627763f53b0ec2e1ce2a65c2b1213d071adbff4e8b8b95f9869b892cf",
+        "source_fact:v1:fe4a8c085f7f08796ec823e81a22115a053809bbffd54841d63478d42c36e42c"
+      ],
+      "source_published_kst": "2026-10-11T09:45+09:00",
+      "source_title": "“금리 또 올랐다고?”…가계대출 60%가 변동금리 ‘발 동동’",
+      "telegram_core_fact": "한국은행의 연이은 기준금리 인상에도 은행 가계대출의 변동금리 비중이 60%에 육박한 것으로 나타났다.",
+      "title": "“금리 또 올랐다고?”…가계대출 60%가 변동금리 ‘발 동동’"
+    },
     "title:87654e63dc51e405e820ec9a": {
       "first_seen_kst": "2026-09-18T12:25:16+09:00",
       "lanes": {
@@ -388304,6 +390232,31 @@
       "source_published_kst": "2026-10-07T09:35+09:00",
       "title": "KT클라우드, ‘청라 AI 데이터센터’ 구축 참여…50MW급 규모로 수도권 확장"
     },
+    "title:a16a4a1150a5fd3dbb29078c": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://m.yonhapnewstv.co.kr/news/AKR202610111020306Op",
+      "source": "연합뉴스TV",
+      "source_body_digest": "253764c47aca0bc3a22f3440dc9b0139cdfbe27ce05386a6969f424ce64811f3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:936186fea7462d373b42793ba3e6f93b9dd287d30dc6a6ee94a83f58c7ded5d4",
+      "source_fact_keys": [
+        "source_fact:v1:0f890c8fa8df195744925c15b8c661b03d2d5aa0c2664ac83107315032d28997",
+        "source_fact:v1:2931bc30146e88be539454a040c1c74d5960bafa8340fed3e832695e6e6c7d77",
+        "source_fact:v1:5ddca16e6cb283e30d77439875db9a42b575ddf91d9577a35305b8dd7041585b",
+        "source_fact:v1:ab8aca7c1f864b449868e801e22e04fc39897f3ea03bd52b075a1b117538baad",
+        "source_fact:v1:b8af703f7a54dfcea88b73f6e748e27ce6a26aede5dc40d57dbaf404e1374e35",
+        "source_fact:v1:c7b690667fd68b9538a7257d8c31a654bbf2634ef9d6afe1ecec618daa246b74",
+        "source_fact:v1:dbe928d2fdbc9963a50813e07b4cd3edbb98e8150dee0b627f01b8e9a837266e"
+      ],
+      "source_published_kst": "2026-10-11T10:20+09:00",
+      "source_title": "“美, 우크라에 ’러 정유소 때리면 정보공유 중단’ 경고“",
+      "telegram_core_fact": "미국이 우크라이나가 러시아 정유시설 공격을 멈추지 않으면 정보 공유를 중단하겠다고 경고한 것으로 전해졌습니다. 우크라이나 측은 미국이 러시아에는 공습 중단을 요구하지 않으면서 자신들에게만 요구하는 것은 불공평하다고 불만을 표시한 것으로 전해졌습니다.",
+      "title": "“美, 우크라에 ’러 정유소 때리면 정보공유 중단’ 경고“"
+    },
     "title:a1a0359eafaa61f23484f55e": {
       "first_seen_kst": "2026-09-19T00:36:11+09:00",
       "lanes": {
@@ -392589,6 +394542,37 @@
       "source_title": "패트리아 인베스트먼트, 2분기 순매출 1억1100만 달러..35% 증가",
       "telegram_core_fact": "패트리아 인베스트먼트(PAX)는 2분기(4~6월) 서비스 순매출(Net revenue from services)이 1억1129만 달러로 전년비 34.9% 증가했고, 희석 주당순이익은 0.065달러로 전년 동기 0.080달러보다 감소했다고 10월 7일 발표했다.",
       "title": "패트리아 인베스트먼트, 2분기 순매출 1억1100만 달러..35% 증가"
+    },
+    "title:b3460327ae81747a3e5a67cb": {
+      "first_seen_kst": "2026-10-11T11:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820846",
+      "source": "뉴시스",
+      "source_body_digest": "1336b76d908d32bf9f5fa6e29cbffd31b3c0d165a9d2e6163e32819fa9a754d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:004cf17a86b8cd3a79e7536528394bc4819d4a5cf8c0fd6f6345f4189098ecec",
+      "source_fact_keys": [
+        "source_fact:v1:0b225a5e125654487c85babb325486d63566a610b0fc1146120d9991c1ff4318",
+        "source_fact:v1:0cd6c7dbc9fe7c40d626f57ccc44bce5fdb4a9a0d47e205f269db57de9d527ac",
+        "source_fact:v1:1cf810cba524c3b2164f457bb1089ea41fc7b361eee1e89e9983f1e83fadf2d1",
+        "source_fact:v1:4747cc9dc105228547dc6a844f3d9010829b8062ca145efdd8a45974e391ab75",
+        "source_fact:v1:4a69df7601222ff9e2feddfdbd213709b2bce35387c5ebd1e43aafaac05d7313",
+        "source_fact:v1:5e466ca417915e288124a5a69fba32e2feb786538d551245e93902d55b1f444b",
+        "source_fact:v1:96c44b9474c67adf158a4fba454d3a871fcf7f77da2f41fea16c81ac0123f0fc",
+        "source_fact:v1:c69b7c7831804ef7d8a223bf918a172ba5ff855b0e42e71571774d2387edbe8d",
+        "source_fact:v1:c83d4afba33d3eea83195a9f9d04d8b0732c9b2d477c3a11da89d3da567bad57",
+        "source_fact:v1:c95804732aea16b7182c2eccaab5bea08faa92a7a8b45ae6bf189802a7e15ba8",
+        "source_fact:v1:d36b5bbe189936505e417a581b11f1c48951b163c5593b93d3ade74a13f64d19",
+        "source_fact:v1:d4018d9fcb0f51891d1e6b885349f2703e65137f2e6bdd4005d4381c74cb1c16",
+        "source_fact:v1:f1392b6658e00b33828b89666d5e8e8419f6c543fd7ebf0e1f11c8cdf5fa6dca"
+      ],
+      "source_published_kst": "2026-10-11T10:59+09:00",
+      "source_title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아 정유시설 공격을 계속하는 우크라이나에 정보 공유 중단을 경고하고 볼로디미르 젤렌스키 대통령의 교체 필요성까지 언급했다.",
+      "title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고"
     },
     "title:b367b3443767cc3fc3f8f923": {
       "first_seen_kst": "2026-10-02T22:41:43+09:00",
@@ -408865,5 +410849,5 @@
       "title": "AI 데이터센터가 살린 철강…관세 50%에도 대미 수출 급증"
     }
   },
-  "updated_at_kst": "2026-10-11T10:42:03+09:00"
+  "updated_at_kst": "2026-10-11T11:01:00+09:00"
 }
