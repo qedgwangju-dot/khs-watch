@@ -56,7 +56,7 @@ BASELINE = {
     "comparison": "originally requested October supplier volumes",
     "reported_cut_low_pct": 15.0,
     "reported_cut_high_pct": 20.0,
-    "reuters_confirmed_floor": 15.0,
+    "nikkei_reported_minimum_via_reuters_pct": 15.0,
     "reuters_independent_confirmation": False,
     "source_root": SOURCE_ROOT,
     "certainty": "니케이 공급망 취재 보도·Reuters 독립 확인 실패·Apple 공식 미확인",
@@ -64,12 +64,19 @@ BASELINE = {
     "actual_finished_device_sales_cut_confirmed": False,
     "idc_2026_worldwide_shipments_yoy_forecast_pct": -16.7,
     "idc_2026_worldwide_asp_yoy_forecast_pct": 27.6,
+    "idc_2026_ios_shipments_yoy_forecast_pct": -1.3,
+    "idc_2026_worldwide_market_value_yoy_forecast_pct": 6.3,
     "idc_publication_date": "2026-08-26",
     "apple_us_pro_price_usd": 1199,
     "apple_us_pro_max_price_usd": 1299,
     "china_week38_sales_yoy_pct_user_provided": 12.0,
     "china_week38_direct_tracker_publicly_verified": False,
     "ubs_delivery_lead_time_publicly_verified": False,
+    "ubs_pro_wait_weekly_shortening_days_secondary": 6,
+    "ubs_pro_wait_covered_markets_min": 30,
+    "ubs_pro_max_wait_level_days_secondary": 24,
+    "ubs_report_as_of": "2026-10-09",
+    "ubs_secondary_source": "Proactive 인용 UBS Evidence Lab(원본 미열람)",
 }
 
 QUERIES = [
@@ -78,6 +85,8 @@ QUERIES = [
     ("en", '"iPhone 18 Pro" Nikkei order cuts 15 20 percent suppliers'),
     ("en", '"iPhone 18 Pro" Foxconn camera OLED panel component orders November'),
     ("en", '"iPhone 18 Pro" UBS delivery lead times demand October'),
+    ("en", '"UBS Evidence Lab" "iPhone 18 Pro" weekly wait times'),
+    ("ko", '"아이폰 18 프로" UBS 배송 대기 30개국'),
     ("ko", '"아이폰 18 프로" 10월 부품 발주 주문 감축 니케이'),
     ("ko", '"아이폰18 프로 맥스" 생산 주문 감소 15% 20%'),
     ("ko", '"아이폰 18 프로" LG이노텍 삼성디스플레이 부품 주문 축소'),
@@ -85,7 +94,7 @@ QUERIES = [
 
 HIGH_SOURCES = ("nikkei", "reuters", "bloomberg", "financial times",
                 "wall street journal", "wsj", "the information", "ubs")
-MID_SOURCES = ("investing.com", "newsquawk", "digitimes", "the elec",
+MID_SOURCES = ("investing.com", "newsquawk", "digitimes", "the elec", "proactive",
                "전자신문", "etnews", "zdnet", "매일경제", "한국경제",
                "서울경제", "파이낸셜뉴스", "연합뉴스", "yonhap")
 LOW_SOURCES = ("notebookcheck", "wccftech", "reddit", "note.com", "technobezz")
@@ -229,6 +238,8 @@ def _extract_cut(text: str) -> dict | None:
             continue
         if not any(w in vicinity for w in COMPONENT_WORDS):
             continue
+        if not any(w in vicinity for w in BASIS_WORDS):
+            continue
         # Reject "+" ASP growth and standalone negative annual shipments.
         before = low[max(0, pos - 1):pos]
         if before == "+":
@@ -335,6 +346,79 @@ def _relevant_news(item: dict, state: dict) -> dict | None:
             "source_root": "verified_manufacturer_official" if official else _root(item),
             "stage": 3 if official else (2 if rank == 3 else 1)}
 
+def _ubs_wait_leading_signal(item: dict, state: dict) -> dict | None:
+    """Track a *new week's* UBS Pro lead-time reading as demand context only.
+
+    A shorter queue may also reflect higher supply; it is not confirmation
+    of Nikkei's component-order cut or a measured consumer sales decline.
+    """
+    rank = _rank(item.get("source") or "")
+    if rank < 2:
+        return None
+    blob = f"{item.get('title','')} {item.get('description','')}"
+    low = _clean(blob).lower()
+    if "ubs" not in low or not PRO_RE.search(low):
+        return None
+    if not any(x in low for x in ("wait time", "waits", "lead time", "delivery wait", "shipping wait", "배송 대기", "대기기간")):
+        return None
+    # Do not convert a Pro Max 24-day wait-time LEVEL into Pro's weekly change.
+    if not re.search(r"iphone\s*18\s*pro\b(?!\s*max)|아이폰\s*18\s*프로\b(?!\s*맥스)", low):
+        return None
+    try:
+        published = dt.datetime.fromisoformat(item["published_at_kst"]).astimezone(KST)
+    except (KeyError, TypeError, ValueError):
+        return None
+    if published.date() <= dt.date(2026, 10, 11):
+        return None
+
+    # Keep the number next to Pro's own wait-time shortening, not the
+    # neighboring Pro Max level, number of countries or October order cut.
+    candidates = []
+    for clause in re.split(r"[.!?。;\n]|\s+\b(?:while|whereas|반면)\b\s+", low):
+        pro_subject = re.search(r"iphone\s*18\s*pro\b(?!\s*max)|아이폰\s*18\s*프로\b(?!\s*맥스)", clause)
+        if not pro_subject:
+            continue
+        if not any(x in clause for x in ("wait", "lead time", "delivery", "배송 대기", "대기기간")):
+            continue
+        if not any(x in clause for x in ("shorten", "fell", "drop", "declin", "decreas", "줄었", "단축", "감소")):
+            continue
+        # Reject a clause dominated by a different product's quoted wait.
+        if re.search(r"pro\s*max[^.!?]{0,40}?\d+\s*days", clause) and clause.find("pro max") > pro_subject.start():
+            clause = clause[:clause.find("pro max")]
+        m = re.search(
+            r"(?:shorten(?:ed|ing)?|fell|dropped|declined|decreased|단축|감소)"
+            r"[^.!?]{0,40}?(?:by|about|around|roughly|약)?\s*(\d{1,2}|six|five|four|three|two)\s*(?:days?|일)",
+            clause,
+        )
+        if not m:
+            continue
+        n = m.group(1)
+        days = {"six": 6, "five": 5, "four": 4, "three": 3, "two": 2}.get(n)
+        if days is None:
+            days = int(n)
+        if 3 <= days <= 20:
+            candidates.append(days)
+    if len(set(candidates)) != 1 or not candidates:
+        return None
+    days = candidates[0]
+    # Do not re-date the 9 Oct UBS quote as a fresh study on 16 Oct.
+    if re.search(r"(?:october|oct\.?|10월)\s*(?:9(?:th)?|09)\b|10월\s*9일", low):
+        return None
+    week = published.isocalendar()
+    key = f"ubs_evidence_lab|iphone18_pro|{week.year}-W{week.week:02d}|wait_shorter_{days}d"
+    if key in set(state.get("seen_fact_keys") or []):
+        return None
+    return {
+        "kind": "ubs_leadtime",
+        "item": item,
+        "rank": rank,
+        "stage": 1,
+        "fact_key": key,
+        "source_root": "ubs_evidence_lab_via_secondary",
+        "wait_shortened_days": days,
+    }
+
+
 def _rss(lang: str, query: str) -> str:
     args = {"q": query, "hl": "ko" if lang == "ko" else "en-US",
             "gl": "KR" if lang == "ko" else "US",
@@ -402,6 +486,13 @@ def _load_state() -> dict:
             data.setdefault("seen", [])
             data.setdefault("seen_fact_keys", [])
             data.setdefault("metrics", {})
+            reported = data["metrics"].get("reported_baseline")
+            if isinstance(reported, dict):
+                # Legacy field name falsely implied that Reuters independently
+                # confirmed Nikkei's report; it expressly did NOT.
+                reported.pop("reuters_confirmed_floor", None)
+                for k, v in BASELINE.items():
+                    reported.setdefault(k, v)
             return data
         except Exception as exc:
             raise RuntimeError("Pro order state damaged — stop instead of resending baseline") from exc
@@ -434,8 +525,8 @@ def _baseline_alert(fx_text: str) -> str:
         "<b>[확인된 보도 범위]</b>",
         "• <b>2026년 10월</b> 두 모델용 <b>일부 공급사 부품 주문</b>: "
         "당초 요청 물량보다 <b>15~20% 축소</b>됐다는 니케이아시아 공급망 보도",
-        "• Reuters의 직접 재확인 범위는 <b>최소 15% 감축</b>; "
-        "상단 20%는 동일 니케이 보도를 인용한 매체에서 확인됩니다.",
+        "• Reuters는 니케이의 <b>최소 15% 감축 주장</b>을 재전달했습니다. "
+        "이는 Reuters의 독립적인 감축 확인이 아닙니다.",
         "• <b>Apple 공식 확인 및 독립 공급사별 감축 공시는 없음.</b> "
         "Reuters도 원보도를 독립적으로 확인하지 못했다고 명시했습니다.",
         "• 11월 이후 추가 감축/복원, 총 주문 대수와 협력사별 물량은 미공개.",
@@ -444,6 +535,10 @@ def _baseline_alert(fx_text: str) -> str:
         fx_text,
         "• IDC의 2026년 전 세계 스마트폰 출하 -16.7%·평균판매단가 +27.6%는 "
         "<b>8월 26일 전망치</b>이며 오늘 Apple 감축의 추가 검증 증거가 아닙니다.",
+        "• IDC의 iOS 출하 전망 -1.3%는 전체 시장 -16.7%와 다릅니다. "
+        "iPhone Pro의 10월 부품 주문과 연간 iOS 실판매를 혼동하지 않습니다.",
+        "• UBS 30개 이상 지역 Pro 배송대기 약 6일 단축은 2차 인용 자료입니다. "
+        "Pro Max 대기는 약 24일로 상대적으로 안정적이며 UBS 원보고서는 미열람입니다.",
         "• 중국 38주차 iPhone 18 Pro 초기 판매 +12%는 사용자 제공 "
         "Counterpoint 유료 지표로 공개 원표 미열람. "
         "지역·시점·실판매와 부품발주를 섞지 않습니다.",
@@ -458,7 +553,7 @@ def _baseline_alert(fx_text: str) -> str:
         "• 11~12월 Pro·Pro Max 실제 부품 발주 추가 하향/복원",
         "• Foxconn 조립 물량, 삼성디스플레이 OLED, LG이노텍 카메라 등 "
         "협력사 실명·물량·영향 범위의 독립 확인",
-        "• UBS 배송기간의 국가별 원자료 및 예약·개통량 추세",
+        "• UBS 배송기간의 국가별 원자료 및 예약·개통량 추세(공급 정상화 대안 함께 검증)",
         "• 10월 16일 예약 개시 예정인 iPhone Duo의 실제 주문은 <b>별개</b>로 확인",
         "",
         f'<a href="{REUTERS}">Reuters · 니케이 보도 인용(독립확인 실패)</a>',
@@ -478,11 +573,19 @@ def _change_alert(changes: list[dict]) -> str:
          else "🟠 <b>추가 공급망 발주 조정 보도·계약 확정 여부 미확인</b>"),
     ]
     for signal in changes:
-        item, cut = signal["item"], signal["cut"]
-        lines.append(
-            f"• {cut['period']} {_model_label(item['title'] + ' ' + item.get('description',''))} "
-            f"부품 발주 조정 {cut['low']:g}~{cut['high']:g}% (당초 공급사 요청 대비)"
-        )
+        item = signal["item"]
+        if signal.get("kind") == "ubs_leadtime":
+            lines.append(
+                f"• UBS 인용 후속 주간 지표: iPhone 18 Pro 배송 대기기간 "
+                f"약 {signal['wait_shortened_days']:g}일 단축 (원보고서 미열람)"
+            )
+            lines.append("  └ 수요 둔화 또는 공급 증가 모두 가능. 부품 발주 재확인이 아닙니다.")
+        else:
+            cut = signal["cut"]
+            lines.append(
+                f"• {cut['period']} {_model_label(item['title'] + ' ' + item.get('description',''))} "
+                f"부품 발주 조정 {cut['low']:g}~{cut['high']:g}% (당초 공급사 요청 대비)"
+            )
         lines.append(
             f"  └ {html.escape(item['source'])} · {html.escape(item['published_at_kst'])}"
         )
@@ -564,7 +667,8 @@ def main() -> None:
             fid = _fingerprint(item)
             if fid in seen:
                 continue
-            signal = _relevant_news(item, {**state, "seen_fact_keys": list(fact_keys)})
+            snapshot = {**state, "seen_fact_keys": list(fact_keys)}
+            signal = _relevant_news(item, snapshot) or _ubs_wait_leading_signal(item, snapshot)
             if signal and signal["fact_key"] not in fact_keys:
                 key = signal["fact_key"]
                 old = candidates.get(key)
@@ -591,7 +695,7 @@ def main() -> None:
     else:
         alert = ""
     pending = {
-        "schema_version": 1,
+        "schema_version": 2,
         "updated_at_kst": now.isoformat(timespec="seconds"),
         "initial_alert_sent": True,
         "baseline_at_kst": state.get("baseline_at_kst") or "2026-10-09T15:05:00+09:00",

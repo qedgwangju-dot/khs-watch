@@ -316,6 +316,92 @@ class IPhone18ProOrderTests(unittest.TestCase):
                 with self.assertRaises(RuntimeError):
                     m._load_state()
 
+    def test_reuters_is_not_an_independent_minimum_confirmation(self):
+        self.assertNotIn("reuters_confirmed_floor", m.BASELINE)
+        self.assertFalse(m.BASELINE["reuters_independent_confirmation"])
+        self.assertEqual(m.BASELINE["nikkei_reported_minimum_via_reuters_pct"], 15.0)
+        message = m._baseline_alert("• 환율 테스트")
+        self.assertNotIn("Reuters의 직접 재확인", message)
+        self.assertIn("Reuters의 독립적인 감축 확인이 아닙니다", message)
+
+    def test_ubs_oct9_leadtime_baseline_not_realerted(self):
+        row = self.item(
+            "UBS iPhone 18 Pro wait times shortened by about six days",
+            "30 geographies over the week, while Pro Max wait remained 24 days.",
+            "Proactive", "2026-10-09T21:00:00+09:00",
+        )
+        self.assertIsNone(m._ubs_wait_leading_signal(row, self.state()))
+
+    def test_pro_max_24day_level_is_not_pro_weekly_shortening(self):
+        row = self.item(
+            "UBS iPhone 18 Pro Max wait times steady at 24 days",
+            "Pro Max availability appears flat year over year.",
+            "Reuters", "2026-10-16T21:00:00+09:00",
+        )
+        self.assertIsNone(m._ubs_wait_leading_signal(row, self.state()))
+
+    def test_new_week_ubs_pro_wait_change_separate_from_orders(self):
+        row = self.item(
+            "UBS Evidence Lab: iPhone 18 Pro wait times shortened by five days",
+            "The Pro delivery wait shortened by about five days over the week in 30 markets.",
+            "Proactive", "2026-10-16T21:00:00+09:00",
+        )
+        event = m._ubs_wait_leading_signal(row, self.state())
+        self.assertIsNotNone(event)
+        self.assertEqual(event["kind"], "ubs_leadtime")
+        self.assertEqual(event["wait_shortened_days"], 5)
+        self.assertEqual(event["stage"], 1)
+        self.assertNotIn("cut", event)
+        alert = m._change_alert([event])
+        self.assertIn("배송 대기기간", alert)
+        self.assertIn("부품 발주 재확인이 아닙니다", alert)
+
+    def test_ubs_same_study_multiple_articles_share_weekly_fact_key(self):
+        a = self.item(
+            "UBS: iPhone 18 Pro wait times shortened by 5 days this week",
+            "30 markets surveyed, iPhone 18 Pro waits decreased by 5 days.",
+            "Proactive", "2026-10-16T12:00:00+09:00",
+        )
+        b = self.item(
+            "UBS Evidence Lab: iPhone 18 Pro wait times shortened by 5 days",
+            "The Pro delivery wait decreased by 5 days over the week.",
+            "9to5Mac", "2026-10-17T12:00:00+09:00",
+        )
+        a_signal = m._ubs_wait_leading_signal(a, self.state())
+        b_signal = m._ubs_wait_leading_signal(b, self.state())
+        self.assertIsNotNone(a_signal)
+        self.assertEqual(a_signal["fact_key"], b_signal["fact_key"])
+
+    def test_ubs_rereport_explicit_old_date_not_relabelled_new_week(self):
+        row = self.item(
+            "UBS iPhone 18 Pro wait times shortened by 6 days",
+            "Revisiting October 9 UBS report in 30 markets.",
+            "Proactive", "2026-10-16T12:00:00+09:00",
+        )
+        self.assertIsNone(m._ubs_wait_leading_signal(row, self.state()))
+
+    def test_component_percentage_must_share_local_original_plan_basis(self):
+        blob = (
+            "Apple iPhone 18 Pro October component orders cut 30% after "
+            "production delays. IDC had an original annual industry "
+            "ASP forecast of 27.6% which is not a supplier order."
+        )
+        self.assertIsNone(m._extract_cut(blob))
+
+    def test_legacy_reuters_field_migrates_without_replaying_baseline(self):
+        import json, tempfile
+        with tempfile.TemporaryDirectory() as d:
+            p = pathlib.Path(d) / "state.json"
+            historic = self.state()
+            historic["metrics"]["reported_baseline"]["reuters_confirmed_floor"] = 15.0
+            p.write_text(json.dumps(historic), encoding="utf-8")
+            with patch.object(m, "STATE_PATH", p):
+                restored = m._load_state()
+            self.assertTrue(restored["initial_alert_sent"])
+            metrics = restored["metrics"]["reported_baseline"]
+            self.assertNotIn("reuters_confirmed_floor", metrics)
+            self.assertEqual(metrics["nikkei_reported_minimum_via_reuters_pct"], 15.0)
+
 if __name__ == "__main__":
     result=unittest.TextTestRunner(verbosity=2).run(
         unittest.defaultTestLoader.loadTestsFromTestCase(IPhone18ProOrderTests)
