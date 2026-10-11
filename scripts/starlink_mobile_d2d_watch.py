@@ -458,14 +458,15 @@ def render(topic:str,status:str,item:dict,pair:dict)->str:
  timestamp=item["pub"].astimezone(KST).strftime("%Y-%m-%d %H:%M KST")
  return "\n".join([
   meta["title"],
-  "• 사건 단계: "+LABELS[status],
+  "상태 | "+LABELS[status],
   "• 제목: "+item["title"],
-  "• 검증: 서로 다른 2개 언론 보도의 같은 사건 교차확인, 정부·계약당사자 최종 원문은 별도 확인 필요",
-  "• 시각: "+timestamp+" | 매체: "+item["publisher"]+" / "+pair["publisher"],
-  "• 매출 연결: "+meta["meaning"],
-  "• 실패 경로: "+meta["risk"],
-  "• 먼저 볼 지표: "+meta["indicator"],
-  "• "+TRADE_PRICE_NOTE,
+  "근거 | "+item["publisher"]+"·"+pair["publisher"]+" | "+timestamp,
+  "  서로 다른 2개 매체의 같은 사건 보도. 정부 승인·계약 체결은 당사자 원문 확인 전까지 미확정.",
+  "",
+  "매출 | "+meta["meaning"],
+  "역풍 | "+meta["risk"],
+  "지표 | "+meta["indicator"],
+  "금액 | "+TRADE_PRICE_NOTE,
   "• 원문: "+item["url"],
   "• 원문: "+pair["url"],
  ])
@@ -565,7 +566,9 @@ def test()->int:
  second,_=choose_events(records,updated,False)
  assert not second
  other,post=choose_events(records,{},False)
- assert len(other)==1 and "정부·계약당사자 최종 원문" in other[0]
+ assert len(other)==1 and "정부 승인·계약 체결은 당사자 원문" in other[0]
+ assert "매출 | " in other[0] and "역풍 | " in other[0] and "지표 | " in other[0]
+ assert other[0].count("• 원문: ")==2
  assert "거래금액: 당사자 공식 발표에서 미공개" in bootstrap()
  assert "2026년 7월 1일" in bootstrap()
  assert "2026년 10월 1일" in bootstrap()
