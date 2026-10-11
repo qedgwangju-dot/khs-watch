@@ -3891,6 +3891,26 @@
       "telegram_core_fact": "오션팔(SVRN)이 NEAR 프로토콜 네트워크 접속·데이터 인프라 업체 패스트니어(FastNEAR)를 인수해 완전 자회사로 편입했다고 9일 발표했다.",
       "title": "오션팔, NEAR 인프라 업체 패스트니어 인수 완료"
     },
+    "core:2b2774459b1052970ec1e6b4": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.etnews.com/20261008000268",
+      "source": "전자신문",
+      "source_body_digest": "4d627aa1beeb4a2544f4c485542f7bb9c72139f37864cefe5f1eb4afe2570051",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dbd7afd24e760d0820bf7b275e02a3400146dfbb1c2afacf4695231b9033e0eb",
+      "source_fact_keys": [
+        "source_fact:v1:e784efc67a22e7b3127ff7cf27de972c0bcf22c5d9a2429b8407450d8a15b46d",
+        "source_fact:v1:fe712dafdfde16010cc2735556539f6cfe70e1554094ea9ec8d89be27184e9b2"
+      ],
+      "source_published_kst": "2026-10-11T09:30+09:00",
+      "source_title": "경영악화 반영 장치 없다…유료방송 “방발기금 부과체계 통일해야”",
+      "telegram_core_fact": "반면 옛 과학기술정보통신부 고시를 따랐던 유료방송사업자는 2017년부터 방송서비스매출의 1.5%를 일괄 부과받고 있다. 방송사업매출 기준으로 SO는 2017년 2조1307억원에서 1조6399억원으로 23% 감소했다.",
+      "title": "경영악화 반영 장치 없다…유료방송 “방발기금 부과체계 통일해야”"
+    },
     "core:2b28fd216ec21d81cec779f5": {
       "first_seen_kst": "2026-10-11T07:07:11+09:00",
       "lanes": {
@@ -6117,6 +6137,37 @@
       "source_title": "올해 쌀 생산량 0.6% 감소 전망…재배면적 축소 영향",
       "telegram_core_fact": "올해 쌀 생산량이 지난해보다 0.6%, 벼 재배면적은 1.1% 가량 감소할 것으로 전망됐다. 8일 국가데이터가 발표한 '2026년 쌀 예상생산량조사 결과'를 보면 올해 쌀 생산량은 351만8000t으로 전년(353만9000t)보다 2만1000t(0.6%) 감소할 것으로 전망됐다.",
       "title": "올해 쌀 생산량 0.6% 감소 전망…재배면적 축소 영향"
+    },
+    "core:459bd20ad1698c81246e30f3": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01213606645611936",
+      "source": "이데일리",
+      "source_body_digest": "2678f11d4defa3c38bfa5b15264e6da60ee009ac2f6965a69d1deb09aa333052",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d83245eae0a056d4c134608a2e0fa74e7b3c7642be46feff20726e4b443e01c2",
+      "source_fact_keys": [
+        "source_fact:v1:00a6e4c775cd5760087b47ac78d797a4adbb76559b914c59955d0f9dc8d33503",
+        "source_fact:v1:0deac8991804af95fbc8b615f01b47e0fc3c1b28b44ea643a56082a4f5fd6e81",
+        "source_fact:v1:15621b12ed640e9ff599b0c3aa9b40ddefff0ed6ef4a8879388a98b35ca3b0fa",
+        "source_fact:v1:210bb3dd93924df65f329101439c29248ba9d89febb4fc7db04d5e044972bff5",
+        "source_fact:v1:2e4f2cd3fadbc6e5eac3e27250825a956ac81408923a80c996e23136f6957075",
+        "source_fact:v1:50e8a0b58be7818be203493bd3e2e849b6a1d7e0db4fde6a681f878d1bb85177",
+        "source_fact:v1:7bfca2ee59f5595a47e0f45989036a828f80df2cdbd18192f85f48f68ec8ea22",
+        "source_fact:v1:b1815df442658fe1e07a32bc62fe3581f9d1dcfe45629dc98f93c133d5ef28f2",
+        "source_fact:v1:b5d6b5826a1ad5ee9547a13c884b367581b02e66af41e67ddb48bf8eaa61a45d",
+        "source_fact:v1:cbcdebab9173196f9d2f1261e354696f0cb07a25c535913b3755f5f3c48a55cf",
+        "source_fact:v1:e5db076fa6e962ae48cae1d4585c076860d6e47e1723c4ca9124015923100960",
+        "source_fact:v1:f57ae9e92fb6ae5e4a29e18d1dc4ed359c812af628b26f2b1a4997f6de634b4d",
+        "source_fact:v1:f815feaab048fb82632895b8e707514c3b0928330c0ee5b552254d01e7adea8b"
+      ],
+      "source_published_kst": "2026-10-11T09:23+09:00",
+      "source_title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 진행해 온 약 55조원 자사주 매입이 마무리 국면에 접어들면서 그동안 증시 하단을 지탱했던 수급 요인이 약해질 수 있다는 분석이 나온다.",
+      "title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]"
     },
     "core:45c8f869456c88032aeee1a8": {
       "first_seen_kst": "2026-10-08T16:14:26+09:00",
@@ -9831,6 +9882,30 @@
       "telegram_core_fact": "토로(TORO)는 6월 30일 종료된 2분기 계속사업 기준 선박 매출액이 695만 달러로 전년비 71.3% 증가했지만, 순이익은 55만7912달러로 60.9% 감소했고 계속사업 기본 주당순손실은 0.129달러를 기록했다고 10월 9일 발표했다.",
       "title": "토로, 2분기 선박매출 695만달러 71%↑..순익 61%↓"
     },
+    "core:789d926098741349bd50a080": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://biz.heraldcorp.com/article/10897551",
+      "source": "헤럴드경제",
+      "source_body_digest": "0441e27e57997b0115b337fbea715f00c161b0125c9e394fc4985e2ba357e90e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e24e7643fb94dfb5f1142c7f66bc5433cd6d1be0bd5829212dbf91d6d1e8c3f4",
+      "source_fact_keys": [
+        "source_fact:v1:2fde5ce3fb21d2a6ba4c04e609919043e20d1e5a4196a3add89eb8dbb988de63",
+        "source_fact:v1:5e89c1b7b1dacf2b91ea5f868c3e6debfaaf9336689f28685d4c91461c88e1c6",
+        "source_fact:v1:a2b1dc6d64212003e0b6d60f2f8d47fb179598b6368beea49101dae1e41e9709",
+        "source_fact:v1:ab0e8d3bd887ff3de5198df735f2dc159e4e1a75fe8c3ee39af63183eb1f1311",
+        "source_fact:v1:e4aa3b2cfb01da30646782b8fdbf62e93d3587cc3370b48ac91b5206eb5782e7",
+        "source_fact:v1:f44f252bc92448e9d021cc956c57aa22900a08e8f3e9631956075874e3c220d3"
+      ],
+      "source_published_kst": "2026-10-11T09:40+09:00",
+      "source_title": "빅딜 완주하고 펀딩 속도전…한투PE, 투자 영토 넓힌다 [하우스리뷰]",
+      "telegram_core_fact": "나아가 1조원대 독자 실물 인프라 투자 플랫폼 구축을 비롯해, 핵심광물 공급망 정책 펀드와 연계 프로젝트 펀드, 스페셜시츄에이션 하이브리드 펀드 조성에 이르기까지 다각화된 펀딩 레이스를 전개하며 대체투자 영토 확장을 위한 거침없는 행보를 이어가는 모습이다.",
+      "title": "빅딜 완주하고 펀딩 속도전…한투PE, 투자 영토 넓힌다 [하우스리뷰]"
+    },
     "core:78db516c7661926e3b67dcff": {
       "first_seen_kst": "2026-10-09T21:51:45+09:00",
       "lanes": {
@@ -13250,6 +13325,32 @@
       "source_published_kst": "2026-10-07T11:25+09:00",
       "title": "블룸버그 “AI 유망 투자처는 대만...코스피는 ‘위험’”"
     },
+    "core:a30e98346c65c7ba1f36edd4": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820811",
+      "source": "뉴시스",
+      "source_body_digest": "bca418c5558c687192e3e26c4aaf0d15c83b702363c72b0aa8a06da1e7a7caae",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de0bd7ebf2efed26eb8e6c838e9e1b73f164d30bac035a376dd1761a11bb8d20",
+      "source_fact_keys": [
+        "source_fact:v1:488ac713ccd86bb6c6e036184e3c03c37551132d7971cd782b9c1115dd210f2e",
+        "source_fact:v1:96a5c8d03a49557cf4cbdcc5d669793247e99a2f3a0e84d61c3f3a61e4bbce0d",
+        "source_fact:v1:9b682683ef07d844936c3281b6d39f6bb756824c65556cf69efc8352988393fd",
+        "source_fact:v1:b937ce5b9657396947ca1d99c95c37ee3ac5fd2a73f39bbc419dbec8d15fdf72",
+        "source_fact:v1:dacddf784d4cb9b87c573ac02b5c0aa8c660eb82ada0a691ae1f8d8ea5759224",
+        "source_fact:v1:e0f31a89b54f2e8716e219ca471bbc2e7466ef4ace66ced4c4a0bb713fda4b5f",
+        "source_fact:v1:e5a0bf90d4452719b34fec5ad0609104ecca9d5c5a76e813080d80179c656b7c",
+        "source_fact:v1:f71228db8695c22f8ce521f4a27ae2ca6f7b18bd4e7e79a77ddb40218c1c8f66"
+      ],
+      "source_published_kst": "2026-10-11T09:31+09:00",
+      "source_title": "현대차, 인도 누적 판매 1000만대 눈앞…\"年 생산량 110만대로 확대\"",
+      "telegram_core_fact": "현대차와 인도자동차공업협회(SIAM)에 따르면 현대차의 1998년부터 올해 3분기까지 인도 내 누적 판매량은 988만4960대로 집계됐다.",
+      "title": "현대차, 인도 누적 판매 1000만대 눈앞…\"年 생산량 110만대로 확대\""
+    },
     "core:a315fed80d2ca59e948160e1": {
       "first_seen_kst": "2026-10-08T01:26:16+09:00",
       "lanes": {
@@ -15070,6 +15171,23 @@
       "source_title": "[단독]역대 최대 수익 올렸는데...지급 안 된 국민연금 성과급",
       "telegram_core_fact": "8일 국회 보건복지위원회 소속 더불어민주당 이인영 의원실이 국민연금공단으로부터 제출받은 자료에 따르면 기금운용본부 일반직 75명과 준법지원실 운용직 12명·일반직 9명 등 총 96명의 성과급 21억5400만원이 현재까지 지급되지 않았다.",
       "title": "[단독]역대 최대 수익 올렸는데...지급 안 된 국민연금 성과급"
+    },
+    "core:b6f89bfde69bd083b5f99dfd": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820780",
+      "source": "뉴시스",
+      "source_body_digest": "88042f6f1ddb79313c1e0735dfd6f63bed9d7216f76c9a607dfc4fcea14c0f00",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-11T09:31+09:00",
+      "source_title": "'오디세이' 1383억 벌었다…'아바타2' 제치고 역대 외화 매출 1위",
+      "telegram_core_fact": "'오디세이'는 '아바타'(약 1252억원), '어벤져스: 엔드게임'(약 1224억 원), '겨울왕국 2'(약 1150억 원) 등 국내 극장가에서 흥행한 주요 외화들의 매출 기록도 모두 넘어섰다.",
+      "title": "'오디세이' 1383억 벌었다…'아바타2' 제치고 역대 외화 매출 1위"
     },
     "core:b714df4a48f59c84f55c0109": {
       "first_seen_kst": "2026-10-07T13:13:19+09:00",
@@ -17317,6 +17435,31 @@
       "source_title": "[제2서울핀테크랩 스타트업 CEO] 제로트러스트(Zero Trust) 기반 금융 보안·인증·결제 솔루션 개발하는 기업 ‘신영이노베이션’",
       "telegram_core_fact": "KB국민카드, 롯데카드, 웰컴저축은행 등 국내 금융사에 누적 1천만 명 이상 고객 기반으로 검증된 인증·보안 기술을 보유하고 있으며, 이 원천기술을 바탕으로 만든 솔루션이 TrustIn Gateway이다.",
       "title": "[제2서울핀테크랩 스타트업 CEO] 제로트러스트(Zero Trust) 기반 금융 보안·인증·결제 솔루션 개발하는 기업 ‘신영이노베이션’"
+    },
+    "core:d09cf9724ff234bd6913fbe1": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634279",
+      "source": "이투데이",
+      "source_body_digest": "cbfae14868554ae278a398eb8c9d424810ab5119cbd8e8600f7f06194799e40b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:56f1dc94dcca5d655c37fe277e0df89dcb097235ea20c5a5cafd630aef70a639",
+      "source_fact_keys": [
+        "source_fact:v1:13cbda660a05ab90368d4548f84b7f57f3d59a2862faad10222bcc5947a1c4cc",
+        "source_fact:v1:36c8e73595ab0beae73ef01207eb7ed8339b55ecb7a506b79ce4416617ec1063",
+        "source_fact:v1:3caccb570622dc8d6a80a8c56528431232b4c4f9cdf228a5a383a1403f749ef0",
+        "source_fact:v1:41d9bf5630acff0b93d10262d22c4f2a443783a5be5a91e0ac0a45a6b400b0a9",
+        "source_fact:v1:88a557f1ecab726e7cef5ab02ba94b781824b19b9b678970e67d260c34e3d074",
+        "source_fact:v1:ab9735ec2bf8b2b227cad39a7a59ca5e4d6dd408dd74e8967fde395c8b056cdb",
+        "source_fact:v1:e9b6d9f4fd7fc379788d1626addc9624a1cff5702ba01286d12955b7d4f82801"
+      ],
+      "source_published_kst": "2026-10-11T09:34+09:00",
+      "source_title": "하이엠솔루텍, AI 데이터센터 맞춤 HVAC 서비스 강화",
+      "telegram_core_fact": "(자료제공=하이엠솔루텍)LG전자 냉난방공조(HVAC) 유지보수 전문 자회사 하이엠솔루텍이 AI 데이터센터 시장 확대에 맞춰 통합 유지보수 서비스를 강화한다. 하이엠솔루텍은 AI 데이터센터를 대상으로 HVAC 통합 유지보수 체계를 강화한다고 11일 밝혔다.",
+      "title": "하이엠솔루텍, AI 데이터센터 맞춤 HVAC 서비스 강화"
     },
     "core:d0a40c3430b85083f9a88da4": {
       "first_seen_kst": "2026-10-08T19:27:03+09:00",
@@ -29351,30 +29494,34 @@
     "event:c91bd744dc57f98702bd6932": {
       "first_seen_kst": "2026-10-11T02:45:51+09:00",
       "lanes": {
-        "live": "2026-10-11T09:28:38+09:00",
+        "live": "2026-10-11T09:50:45+09:00",
         "preopen": "2026-10-11T06:52:52+09:00"
       },
-      "last_seen_kst": "2026-10-11T09:28:38+09:00",
-      "link": "https://www.newsis.com/view/NISX20261011_0003820777",
-      "source": "뉴시스",
-      "source_body_digest": "908facac76a175368a7bfca8f0ceedd9c5cef14fc8e42ce5d1e088926bad3d8f",
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01213606645611936",
+      "source": "이데일리",
+      "source_body_digest": "2678f11d4defa3c38bfa5b15264e6da60ee009ac2f6965a69d1deb09aa333052",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:79edfbae582d7183ce93a79c7b69ce0b3691075ed1678fcea0633bdca3dea5aa",
+      "source_fact_identity": "source_facts:v1:d83245eae0a056d4c134608a2e0fa74e7b3c7642be46feff20726e4b443e01c2",
       "source_fact_keys": [
-        "source_fact:v1:04225eba06909e47b7a61ed8e240f3535e465337d211ee69f7e84928441a6fd7",
-        "source_fact:v1:068bfa37de187f8b6fe69e23fd33b00cb21731cadb7efa4db0ac5ad4b4d9ad20",
-        "source_fact:v1:078423a026b3c821058b681af1ca0082904a4f59db10400b4a7592048f548076",
-        "source_fact:v1:093e0066337e4a7faf51ccb993d4ac84b8b37fbf80f63211cf779021a6792856",
-        "source_fact:v1:24e7a6171f55803211c2360d9a2c85f76b3dff7f4a03c9e5dc1996855a139d89",
-        "source_fact:v1:69146fe40fab4acab7d7f1140452844b826595c535099e62133b0b3b8e8fee50",
-        "source_fact:v1:c5296251a9ffd7ca067d95793a76e6b35e9ca3485b772ada7c7d28e0b7aa562e",
-        "source_fact:v1:c7020d5480166b3f8ed28a2f303aefb56fcd1e76f531bde538a5c97943a1fdb8",
-        "source_fact:v1:d71a5948306d959874c62c902cda7718f3517e1c71a1e15686017794e3841ed7"
+        "source_fact:v1:00a6e4c775cd5760087b47ac78d797a4adbb76559b914c59955d0f9dc8d33503",
+        "source_fact:v1:0deac8991804af95fbc8b615f01b47e0fc3c1b28b44ea643a56082a4f5fd6e81",
+        "source_fact:v1:15621b12ed640e9ff599b0c3aa9b40ddefff0ed6ef4a8879388a98b35ca3b0fa",
+        "source_fact:v1:210bb3dd93924df65f329101439c29248ba9d89febb4fc7db04d5e044972bff5",
+        "source_fact:v1:2e4f2cd3fadbc6e5eac3e27250825a956ac81408923a80c996e23136f6957075",
+        "source_fact:v1:50e8a0b58be7818be203493bd3e2e849b6a1d7e0db4fde6a681f878d1bb85177",
+        "source_fact:v1:7bfca2ee59f5595a47e0f45989036a828f80df2cdbd18192f85f48f68ec8ea22",
+        "source_fact:v1:b1815df442658fe1e07a32bc62fe3581f9d1dcfe45629dc98f93c133d5ef28f2",
+        "source_fact:v1:b5d6b5826a1ad5ee9547a13c884b367581b02e66af41e67ddb48bf8eaa61a45d",
+        "source_fact:v1:cbcdebab9173196f9d2f1261e354696f0cb07a25c535913b3755f5f3c48a55cf",
+        "source_fact:v1:e5db076fa6e962ae48cae1d4585c076860d6e47e1723c4ca9124015923100960",
+        "source_fact:v1:f57ae9e92fb6ae5e4a29e18d1dc4ed359c812af628b26f2b1a4997f6de634b4d",
+        "source_fact:v1:f815feaab048fb82632895b8e707514c3b0928330c0ee5b552254d01e7adea8b"
       ],
-      "source_published_kst": "2026-10-11T09:21+09:00",
-      "source_title": "사우디- 후티 공습격화,.. 리야드공항 폭격에 12명 죽고 309명 부상(종합)",
-      "telegram_core_fact": "10일의 공격이 끝난 뒤 후티군은 성명을 발표, 앞으로도 사우디 아라비아에 대한 상응하는 보복조치를 할 준비가 되어 있다면서 군사력 대결 외에 민간 부문에서도 공항, 항만, 기타 공공 시설등에 대한 공격을 주저하지 않겠다고 밝혔다.",
-      "title": "사우디- 후티 공습격화,.. 리야드공항 폭격에 12명 죽고 309명 부상(종합)"
+      "source_published_kst": "2026-10-11T09:23+09:00",
+      "source_title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 진행해 온 약 55조원 자사주 매입이 마무리 국면에 접어들면서 그동안 증시 하단을 지탱했던 수급 요인이 약해질 수 있다는 분석이 나온다.",
+      "title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]"
     },
     "event:c97955bd13212d7367a4e3b6": {
       "first_seen_kst": "2026-09-23T09:05:43+09:00",
@@ -29634,6 +29781,30 @@
       "source_title": "중국 반도체 장비, 3분기 수입 증가가 말해주는 것 [돈 되는 해외 주식]",
       "telegram_core_fact": "2023~2025년 분기별 중국산 장비 기업 매출과 외국산 장비 수입이 높은 동행성을 보였다는 점을 감안하면 3분기 중국 장비 기업 실적에 대한 눈높이를 상향할 필요가 있다고 판단한다.",
       "title": "중국 반도체 장비, 3분기 수입 증가가 말해주는 것 [돈 되는 해외 주식]"
+    },
+    "event:ce8b7981f231825aa821d0d7": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://biz.heraldcorp.com/article/10897551",
+      "source": "헤럴드경제",
+      "source_body_digest": "0441e27e57997b0115b337fbea715f00c161b0125c9e394fc4985e2ba357e90e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e24e7643fb94dfb5f1142c7f66bc5433cd6d1be0bd5829212dbf91d6d1e8c3f4",
+      "source_fact_keys": [
+        "source_fact:v1:2fde5ce3fb21d2a6ba4c04e609919043e20d1e5a4196a3add89eb8dbb988de63",
+        "source_fact:v1:5e89c1b7b1dacf2b91ea5f868c3e6debfaaf9336689f28685d4c91461c88e1c6",
+        "source_fact:v1:a2b1dc6d64212003e0b6d60f2f8d47fb179598b6368beea49101dae1e41e9709",
+        "source_fact:v1:ab0e8d3bd887ff3de5198df735f2dc159e4e1a75fe8c3ee39af63183eb1f1311",
+        "source_fact:v1:e4aa3b2cfb01da30646782b8fdbf62e93d3587cc3370b48ac91b5206eb5782e7",
+        "source_fact:v1:f44f252bc92448e9d021cc956c57aa22900a08e8f3e9631956075874e3c220d3"
+      ],
+      "source_published_kst": "2026-10-11T09:40+09:00",
+      "source_title": "빅딜 완주하고 펀딩 속도전…한투PE, 투자 영토 넓힌다 [하우스리뷰]",
+      "telegram_core_fact": "나아가 1조원대 독자 실물 인프라 투자 플랫폼 구축을 비롯해, 핵심광물 공급망 정책 펀드와 연계 프로젝트 펀드, 스페셜시츄에이션 하이브리드 펀드 조성에 이르기까지 다각화된 펀딩 레이스를 전개하며 대체투자 영토 확장을 위한 거침없는 행보를 이어가는 모습이다.",
+      "title": "빅딜 완주하고 펀딩 속도전…한투PE, 투자 영토 넓힌다 [하우스리뷰]"
     },
     "event:ce90b9c6c794e021e7e54bda": {
       "first_seen_kst": "2026-10-07T06:41:04+09:00",
@@ -32714,6 +32885,32 @@
       "telegram_core_fact": "우크라이나 총참모부는 7일 당시 공격으로 저장탱크 14기와 송유관 일부, 석유제품 자동 출하시설이 손상된 것으로 확인됐다고 발표했다. 우크라이나 총참모부는 우랄스유가 러시아 전체 원유 수출의 최대 50%를 차지하며 사마라 기지가 러시아군 수요를 충족하는 데도 관여한다고 설명했다.",
       "title": "러 사마라 핵심 석유거점 또 대형 화재…우크라 \"2일 공격 때 탱크 14기 손상\""
     },
+    "fact:094b3243c1a207a7d2453ba1": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820811",
+      "source": "뉴시스",
+      "source_body_digest": "bca418c5558c687192e3e26c4aaf0d15c83b702363c72b0aa8a06da1e7a7caae",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de0bd7ebf2efed26eb8e6c838e9e1b73f164d30bac035a376dd1761a11bb8d20",
+      "source_fact_keys": [
+        "source_fact:v1:488ac713ccd86bb6c6e036184e3c03c37551132d7971cd782b9c1115dd210f2e",
+        "source_fact:v1:96a5c8d03a49557cf4cbdcc5d669793247e99a2f3a0e84d61c3f3a61e4bbce0d",
+        "source_fact:v1:9b682683ef07d844936c3281b6d39f6bb756824c65556cf69efc8352988393fd",
+        "source_fact:v1:b937ce5b9657396947ca1d99c95c37ee3ac5fd2a73f39bbc419dbec8d15fdf72",
+        "source_fact:v1:dacddf784d4cb9b87c573ac02b5c0aa8c660eb82ada0a691ae1f8d8ea5759224",
+        "source_fact:v1:e0f31a89b54f2e8716e219ca471bbc2e7466ef4ace66ced4c4a0bb713fda4b5f",
+        "source_fact:v1:e5a0bf90d4452719b34fec5ad0609104ecca9d5c5a76e813080d80179c656b7c",
+        "source_fact:v1:f71228db8695c22f8ce521f4a27ae2ca6f7b18bd4e7e79a77ddb40218c1c8f66"
+      ],
+      "source_published_kst": "2026-10-11T09:31+09:00",
+      "source_title": "현대차, 인도 누적 판매 1000만대 눈앞…\"年 생산량 110만대로 확대\"",
+      "telegram_core_fact": "현대차와 인도자동차공업협회(SIAM)에 따르면 현대차의 1998년부터 올해 3분기까지 인도 내 누적 판매량은 988만4960대로 집계됐다.",
+      "title": "현대차, 인도 누적 판매 1000만대 눈앞…\"年 생산량 110만대로 확대\""
+    },
     "fact:0977e38e464d6871904bd675": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -33430,6 +33627,37 @@
       ],
       "source_published_kst": "2026-10-06T09:00+09:00",
       "title": "한미반도체, 삼성전기서 245억 장비 수주…곽동신 “삼성그룹 환영”"
+    },
+    "fact:0d37463ea3f62f92674aa194": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01213606645611936",
+      "source": "이데일리",
+      "source_body_digest": "2678f11d4defa3c38bfa5b15264e6da60ee009ac2f6965a69d1deb09aa333052",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d83245eae0a056d4c134608a2e0fa74e7b3c7642be46feff20726e4b443e01c2",
+      "source_fact_keys": [
+        "source_fact:v1:00a6e4c775cd5760087b47ac78d797a4adbb76559b914c59955d0f9dc8d33503",
+        "source_fact:v1:0deac8991804af95fbc8b615f01b47e0fc3c1b28b44ea643a56082a4f5fd6e81",
+        "source_fact:v1:15621b12ed640e9ff599b0c3aa9b40ddefff0ed6ef4a8879388a98b35ca3b0fa",
+        "source_fact:v1:210bb3dd93924df65f329101439c29248ba9d89febb4fc7db04d5e044972bff5",
+        "source_fact:v1:2e4f2cd3fadbc6e5eac3e27250825a956ac81408923a80c996e23136f6957075",
+        "source_fact:v1:50e8a0b58be7818be203493bd3e2e849b6a1d7e0db4fde6a681f878d1bb85177",
+        "source_fact:v1:7bfca2ee59f5595a47e0f45989036a828f80df2cdbd18192f85f48f68ec8ea22",
+        "source_fact:v1:b1815df442658fe1e07a32bc62fe3581f9d1dcfe45629dc98f93c133d5ef28f2",
+        "source_fact:v1:b5d6b5826a1ad5ee9547a13c884b367581b02e66af41e67ddb48bf8eaa61a45d",
+        "source_fact:v1:cbcdebab9173196f9d2f1261e354696f0cb07a25c535913b3755f5f3c48a55cf",
+        "source_fact:v1:e5db076fa6e962ae48cae1d4585c076860d6e47e1723c4ca9124015923100960",
+        "source_fact:v1:f57ae9e92fb6ae5e4a29e18d1dc4ed359c812af628b26f2b1a4997f6de634b4d",
+        "source_fact:v1:f815feaab048fb82632895b8e707514c3b0928330c0ee5b552254d01e7adea8b"
+      ],
+      "source_published_kst": "2026-10-11T09:23+09:00",
+      "source_title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 진행해 온 약 55조원 자사주 매입이 마무리 국면에 접어들면서 그동안 증시 하단을 지탱했던 수급 요인이 약해질 수 있다는 분석이 나온다.",
+      "title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]"
     },
     "fact:0d5e039fd67b5d27329c6826": {
       "first_seen_kst": "2026-10-06T19:46:03+09:00",
@@ -49509,6 +49737,30 @@
       "source_published_kst": "2026-10-07T06:06+09:00",
       "title": "분기 영업익 200조 목전…삼전·닉스 기대치 높이는 증권가"
     },
+    "fact:813814288a8f63200f349c2f": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://biz.heraldcorp.com/article/10897551",
+      "source": "헤럴드경제",
+      "source_body_digest": "0441e27e57997b0115b337fbea715f00c161b0125c9e394fc4985e2ba357e90e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e24e7643fb94dfb5f1142c7f66bc5433cd6d1be0bd5829212dbf91d6d1e8c3f4",
+      "source_fact_keys": [
+        "source_fact:v1:2fde5ce3fb21d2a6ba4c04e609919043e20d1e5a4196a3add89eb8dbb988de63",
+        "source_fact:v1:5e89c1b7b1dacf2b91ea5f868c3e6debfaaf9336689f28685d4c91461c88e1c6",
+        "source_fact:v1:a2b1dc6d64212003e0b6d60f2f8d47fb179598b6368beea49101dae1e41e9709",
+        "source_fact:v1:ab0e8d3bd887ff3de5198df735f2dc159e4e1a75fe8c3ee39af63183eb1f1311",
+        "source_fact:v1:e4aa3b2cfb01da30646782b8fdbf62e93d3587cc3370b48ac91b5206eb5782e7",
+        "source_fact:v1:f44f252bc92448e9d021cc956c57aa22900a08e8f3e9631956075874e3c220d3"
+      ],
+      "source_published_kst": "2026-10-11T09:40+09:00",
+      "source_title": "빅딜 완주하고 펀딩 속도전…한투PE, 투자 영토 넓힌다 [하우스리뷰]",
+      "telegram_core_fact": "나아가 1조원대 독자 실물 인프라 투자 플랫폼 구축을 비롯해, 핵심광물 공급망 정책 펀드와 연계 프로젝트 펀드, 스페셜시츄에이션 하이브리드 펀드 조성에 이르기까지 다각화된 펀딩 레이스를 전개하며 대체투자 영토 확장을 위한 거침없는 행보를 이어가는 모습이다.",
+      "title": "빅딜 완주하고 펀딩 속도전…한투PE, 투자 영토 넓힌다 [하우스리뷰]"
+    },
     "fact:815e4379ef9c1290d918f370": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
       "lanes": {
@@ -53600,6 +53852,31 @@
       "source_title": "최태원 “호남 반도체, 전력·용수 늦어도 공사 먼저…용인 3분의 2 규모로”(종합)",
       "telegram_core_fact": "최태원 SK그룹 회장이 호남권 반도체 생산거점을 용인 반도체 클러스터의 3분의 2 규모로 계획하고 있다고 밝혔다. 빠르게 늘어나는 반도체 수요에 대응하기 위해 용인과 광주에서 공장을 병행 건설할 가능성도 열어뒀다.",
       "title": "최태원 “호남 반도체, 전력·용수 늦어도 공사 먼저…용인 3분의 2 규모로”(종합)"
+    },
+    "fact:994262f4043bdcc3988f8f05": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634279",
+      "source": "이투데이",
+      "source_body_digest": "cbfae14868554ae278a398eb8c9d424810ab5119cbd8e8600f7f06194799e40b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:56f1dc94dcca5d655c37fe277e0df89dcb097235ea20c5a5cafd630aef70a639",
+      "source_fact_keys": [
+        "source_fact:v1:13cbda660a05ab90368d4548f84b7f57f3d59a2862faad10222bcc5947a1c4cc",
+        "source_fact:v1:36c8e73595ab0beae73ef01207eb7ed8339b55ecb7a506b79ce4416617ec1063",
+        "source_fact:v1:3caccb570622dc8d6a80a8c56528431232b4c4f9cdf228a5a383a1403f749ef0",
+        "source_fact:v1:41d9bf5630acff0b93d10262d22c4f2a443783a5be5a91e0ac0a45a6b400b0a9",
+        "source_fact:v1:88a557f1ecab726e7cef5ab02ba94b781824b19b9b678970e67d260c34e3d074",
+        "source_fact:v1:ab9735ec2bf8b2b227cad39a7a59ca5e4d6dd408dd74e8967fde395c8b056cdb",
+        "source_fact:v1:e9b6d9f4fd7fc379788d1626addc9624a1cff5702ba01286d12955b7d4f82801"
+      ],
+      "source_published_kst": "2026-10-11T09:34+09:00",
+      "source_title": "하이엠솔루텍, AI 데이터센터 맞춤 HVAC 서비스 강화",
+      "telegram_core_fact": "(자료제공=하이엠솔루텍)LG전자 냉난방공조(HVAC) 유지보수 전문 자회사 하이엠솔루텍이 AI 데이터센터 시장 확대에 맞춰 통합 유지보수 서비스를 강화한다. 하이엠솔루텍은 AI 데이터센터를 대상으로 HVAC 통합 유지보수 체계를 강화한다고 11일 밝혔다.",
+      "title": "하이엠솔루텍, AI 데이터센터 맞춤 HVAC 서비스 강화"
     },
     "fact:99aa60be5e60d0e7e513dd16": {
       "first_seen_kst": "2026-10-08T01:09:29+09:00",
@@ -60304,6 +60581,26 @@
       "source_title": "공공시장 입지 확대 나서는 주연테크, 해군 PC 공급사업 수주",
       "telegram_core_fact": "PC 제조기업 '주연테크'가 해군본부와 약 44억원 사무자동화장비 공급 계약을 최근 체결하며 공공부문 사업 확대에 나섰다.",
       "title": "공공시장 입지 확대 나서는 주연테크, 해군 PC 공급사업 수주"
+    },
+    "fact:cb160a4e3421d7fcb81a06fd": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.etnews.com/20261008000268",
+      "source": "전자신문",
+      "source_body_digest": "4d627aa1beeb4a2544f4c485542f7bb9c72139f37864cefe5f1eb4afe2570051",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dbd7afd24e760d0820bf7b275e02a3400146dfbb1c2afacf4695231b9033e0eb",
+      "source_fact_keys": [
+        "source_fact:v1:e784efc67a22e7b3127ff7cf27de972c0bcf22c5d9a2429b8407450d8a15b46d",
+        "source_fact:v1:fe712dafdfde16010cc2735556539f6cfe70e1554094ea9ec8d89be27184e9b2"
+      ],
+      "source_published_kst": "2026-10-11T09:30+09:00",
+      "source_title": "경영악화 반영 장치 없다…유료방송 “방발기금 부과체계 통일해야”",
+      "telegram_core_fact": "반면 옛 과학기술정보통신부 고시를 따랐던 유료방송사업자는 2017년부터 방송서비스매출의 1.5%를 일괄 부과받고 있다. 방송사업매출 기준으로 SO는 2017년 2조1307억원에서 1조6399억원으로 23% 감소했다.",
+      "title": "경영악화 반영 장치 없다…유료방송 “방발기금 부과체계 통일해야”"
     },
     "fact:cb20ab3a1ed5e924377c7f58": {
       "first_seen_kst": "2026-10-07T08:57:59+09:00",
@@ -79781,6 +80078,30 @@
       "source": "매일경제",
       "title": "삼성의 다음 승부처는 ‘AI 일상’…노태문 “거스를 수 없는 대세”"
     },
+    "link:33058168599743c1db59d07c": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://biz.heraldcorp.com/article/10897551",
+      "source": "헤럴드경제",
+      "source_body_digest": "0441e27e57997b0115b337fbea715f00c161b0125c9e394fc4985e2ba357e90e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e24e7643fb94dfb5f1142c7f66bc5433cd6d1be0bd5829212dbf91d6d1e8c3f4",
+      "source_fact_keys": [
+        "source_fact:v1:2fde5ce3fb21d2a6ba4c04e609919043e20d1e5a4196a3add89eb8dbb988de63",
+        "source_fact:v1:5e89c1b7b1dacf2b91ea5f868c3e6debfaaf9336689f28685d4c91461c88e1c6",
+        "source_fact:v1:a2b1dc6d64212003e0b6d60f2f8d47fb179598b6368beea49101dae1e41e9709",
+        "source_fact:v1:ab0e8d3bd887ff3de5198df735f2dc159e4e1a75fe8c3ee39af63183eb1f1311",
+        "source_fact:v1:e4aa3b2cfb01da30646782b8fdbf62e93d3587cc3370b48ac91b5206eb5782e7",
+        "source_fact:v1:f44f252bc92448e9d021cc956c57aa22900a08e8f3e9631956075874e3c220d3"
+      ],
+      "source_published_kst": "2026-10-11T09:40+09:00",
+      "source_title": "빅딜 완주하고 펀딩 속도전…한투PE, 투자 영토 넓힌다 [하우스리뷰]",
+      "telegram_core_fact": "나아가 1조원대 독자 실물 인프라 투자 플랫폼 구축을 비롯해, 핵심광물 공급망 정책 펀드와 연계 프로젝트 펀드, 스페셜시츄에이션 하이브리드 펀드 조성에 이르기까지 다각화된 펀딩 레이스를 전개하며 대체투자 영토 확장을 위한 거침없는 행보를 이어가는 모습이다.",
+      "title": "빅딜 완주하고 펀딩 속도전…한투PE, 투자 영토 넓힌다 [하우스리뷰]"
+    },
     "link:3309447b5bef5c6e8309bd43": {
       "first_seen_kst": "2026-09-23T21:19:17+09:00",
       "lanes": {
@@ -79812,6 +80133,26 @@
       "link": "https://www.newsis.com/view/NISX20260927_0003804208",
       "source": "뉴시스",
       "title": "국감 시즌 임박…개인정보 유출·담합 등 현안에 유통·식품업계 '긴장'"
+    },
+    "link:334b3322fc8d53cfb687bd64": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.etnews.com/20261008000268",
+      "source": "전자신문",
+      "source_body_digest": "4d627aa1beeb4a2544f4c485542f7bb9c72139f37864cefe5f1eb4afe2570051",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dbd7afd24e760d0820bf7b275e02a3400146dfbb1c2afacf4695231b9033e0eb",
+      "source_fact_keys": [
+        "source_fact:v1:e784efc67a22e7b3127ff7cf27de972c0bcf22c5d9a2429b8407450d8a15b46d",
+        "source_fact:v1:fe712dafdfde16010cc2735556539f6cfe70e1554094ea9ec8d89be27184e9b2"
+      ],
+      "source_published_kst": "2026-10-11T09:30+09:00",
+      "source_title": "경영악화 반영 장치 없다…유료방송 “방발기금 부과체계 통일해야”",
+      "telegram_core_fact": "반면 옛 과학기술정보통신부 고시를 따랐던 유료방송사업자는 2017년부터 방송서비스매출의 1.5%를 일괄 부과받고 있다. 방송사업매출 기준으로 SO는 2017년 2조1307억원에서 1조6399억원으로 23% 감소했다.",
+      "title": "경영악화 반영 장치 없다…유료방송 “방발기금 부과체계 통일해야”"
     },
     "link:339ace8bbb0c4f9d452a58ff": {
       "first_seen_kst": "2026-10-06T23:56:49+09:00",
@@ -89353,6 +89694,32 @@
       "source_published_kst": "2026-10-06T09:57+09:00",
       "title": "네이버 소비자 분쟁 피해구제율 83.6%…“분류체계 세분화 필요\""
     },
+    "link:5fd9e54acf81419f99e74a11": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820811",
+      "source": "뉴시스",
+      "source_body_digest": "bca418c5558c687192e3e26c4aaf0d15c83b702363c72b0aa8a06da1e7a7caae",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de0bd7ebf2efed26eb8e6c838e9e1b73f164d30bac035a376dd1761a11bb8d20",
+      "source_fact_keys": [
+        "source_fact:v1:488ac713ccd86bb6c6e036184e3c03c37551132d7971cd782b9c1115dd210f2e",
+        "source_fact:v1:96a5c8d03a49557cf4cbdcc5d669793247e99a2f3a0e84d61c3f3a61e4bbce0d",
+        "source_fact:v1:9b682683ef07d844936c3281b6d39f6bb756824c65556cf69efc8352988393fd",
+        "source_fact:v1:b937ce5b9657396947ca1d99c95c37ee3ac5fd2a73f39bbc419dbec8d15fdf72",
+        "source_fact:v1:dacddf784d4cb9b87c573ac02b5c0aa8c660eb82ada0a691ae1f8d8ea5759224",
+        "source_fact:v1:e0f31a89b54f2e8716e219ca471bbc2e7466ef4ace66ced4c4a0bb713fda4b5f",
+        "source_fact:v1:e5a0bf90d4452719b34fec5ad0609104ecca9d5c5a76e813080d80179c656b7c",
+        "source_fact:v1:f71228db8695c22f8ce521f4a27ae2ca6f7b18bd4e7e79a77ddb40218c1c8f66"
+      ],
+      "source_published_kst": "2026-10-11T09:31+09:00",
+      "source_title": "현대차, 인도 누적 판매 1000만대 눈앞…\"年 생산량 110만대로 확대\"",
+      "telegram_core_fact": "현대차와 인도자동차공업협회(SIAM)에 따르면 현대차의 1998년부터 올해 3분기까지 인도 내 누적 판매량은 988만4960대로 집계됐다.",
+      "title": "현대차, 인도 누적 판매 1000만대 눈앞…\"年 생산량 110만대로 확대\""
+    },
     "link:60298ce57a5003f8e6f9d526": {
       "first_seen_kst": "2026-10-07T07:01:10+09:00",
       "lanes": {
@@ -89811,6 +90178,31 @@
       ],
       "source_published_kst": "2026-10-05T17:08+09:00",
       "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
+    },
+    "link:6237e91ad776e84c0ef46f5a": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634279",
+      "source": "이투데이",
+      "source_body_digest": "cbfae14868554ae278a398eb8c9d424810ab5119cbd8e8600f7f06194799e40b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:56f1dc94dcca5d655c37fe277e0df89dcb097235ea20c5a5cafd630aef70a639",
+      "source_fact_keys": [
+        "source_fact:v1:13cbda660a05ab90368d4548f84b7f57f3d59a2862faad10222bcc5947a1c4cc",
+        "source_fact:v1:36c8e73595ab0beae73ef01207eb7ed8339b55ecb7a506b79ce4416617ec1063",
+        "source_fact:v1:3caccb570622dc8d6a80a8c56528431232b4c4f9cdf228a5a383a1403f749ef0",
+        "source_fact:v1:41d9bf5630acff0b93d10262d22c4f2a443783a5be5a91e0ac0a45a6b400b0a9",
+        "source_fact:v1:88a557f1ecab726e7cef5ab02ba94b781824b19b9b678970e67d260c34e3d074",
+        "source_fact:v1:ab9735ec2bf8b2b227cad39a7a59ca5e4d6dd408dd74e8967fde395c8b056cdb",
+        "source_fact:v1:e9b6d9f4fd7fc379788d1626addc9624a1cff5702ba01286d12955b7d4f82801"
+      ],
+      "source_published_kst": "2026-10-11T09:34+09:00",
+      "source_title": "하이엠솔루텍, AI 데이터센터 맞춤 HVAC 서비스 강화",
+      "telegram_core_fact": "(자료제공=하이엠솔루텍)LG전자 냉난방공조(HVAC) 유지보수 전문 자회사 하이엠솔루텍이 AI 데이터센터 시장 확대에 맞춰 통합 유지보수 서비스를 강화한다. 하이엠솔루텍은 AI 데이터센터를 대상으로 HVAC 통합 유지보수 체계를 강화한다고 11일 밝혔다.",
+      "title": "하이엠솔루텍, AI 데이터센터 맞춤 HVAC 서비스 강화"
     },
     "link:62524ee80439eafff28f3e3a": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
@@ -91319,6 +91711,23 @@
       "link": "https://www.mk.co.kr/news/stock/12161520",
       "source": "매일경제",
       "title": "풀, 前 콘스텔리움 CEO 장마르크 제르맹 사외이사 선임"
+    },
+    "link:67bf26b97f664c380fc1ae28": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820780",
+      "source": "뉴시스",
+      "source_body_digest": "88042f6f1ddb79313c1e0735dfd6f63bed9d7216f76c9a607dfc4fcea14c0f00",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-11T09:31+09:00",
+      "source_title": "'오디세이' 1383억 벌었다…'아바타2' 제치고 역대 외화 매출 1위",
+      "telegram_core_fact": "'오디세이'는 '아바타'(약 1252억원), '어벤져스: 엔드게임'(약 1224억 원), '겨울왕국 2'(약 1150억 원) 등 국내 극장가에서 흥행한 주요 외화들의 매출 기록도 모두 넘어섰다.",
+      "title": "'오디세이' 1383억 벌었다…'아바타2' 제치고 역대 외화 매출 1위"
     },
     "link:67e21866a133db0576676c96": {
       "first_seen_kst": "2026-09-30T16:46:52+09:00",
@@ -98085,6 +98494,23 @@
       "source_published_kst": "2026-10-05T18:43+09:00",
       "title": "JEDEC, 첫 '실리콘 포토닉스' 신뢰성 표준 발표…AI인프라 변혁 예고"
     },
+    "link:8753701cbb2ceb66013e1404": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/11/2026101107584729420",
+      "source": "머니투데이",
+      "source_body_digest": "10c42f102a6f05ed68e687ae3cab418be176c69f5432c2497ba76621071ec7d6",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-11T09:27+09:00",
+      "source_title": "노벨평화상 파장 확산…美, ICC 제재 vs 수상자 \"전례 없다\" 반발",
+      "telegram_core_fact": "미국은 수상자 발표 몇 시간 뒤 ICC에 대한 새 제재를 발표했다.",
+      "title": "노벨평화상 파장 확산…美, ICC 제재 vs 수상자 \"전례 없다\" 반발"
+    },
     "link:8763b1940917062331f5ebf8": {
       "first_seen_kst": "2026-10-08T14:21:54+09:00",
       "lanes": {
@@ -101626,6 +102052,37 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T12:53+09:00",
       "title": "이강석 대우건설 대표이사 공식 취임…“AI· 데이터센터 등 미래성장 분야 발굴”"
+    },
+    "link:96cea4d2363a7e9c0fb52585": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01213606645611936",
+      "source": "이데일리",
+      "source_body_digest": "2678f11d4defa3c38bfa5b15264e6da60ee009ac2f6965a69d1deb09aa333052",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d83245eae0a056d4c134608a2e0fa74e7b3c7642be46feff20726e4b443e01c2",
+      "source_fact_keys": [
+        "source_fact:v1:00a6e4c775cd5760087b47ac78d797a4adbb76559b914c59955d0f9dc8d33503",
+        "source_fact:v1:0deac8991804af95fbc8b615f01b47e0fc3c1b28b44ea643a56082a4f5fd6e81",
+        "source_fact:v1:15621b12ed640e9ff599b0c3aa9b40ddefff0ed6ef4a8879388a98b35ca3b0fa",
+        "source_fact:v1:210bb3dd93924df65f329101439c29248ba9d89febb4fc7db04d5e044972bff5",
+        "source_fact:v1:2e4f2cd3fadbc6e5eac3e27250825a956ac81408923a80c996e23136f6957075",
+        "source_fact:v1:50e8a0b58be7818be203493bd3e2e849b6a1d7e0db4fde6a681f878d1bb85177",
+        "source_fact:v1:7bfca2ee59f5595a47e0f45989036a828f80df2cdbd18192f85f48f68ec8ea22",
+        "source_fact:v1:b1815df442658fe1e07a32bc62fe3581f9d1dcfe45629dc98f93c133d5ef28f2",
+        "source_fact:v1:b5d6b5826a1ad5ee9547a13c884b367581b02e66af41e67ddb48bf8eaa61a45d",
+        "source_fact:v1:cbcdebab9173196f9d2f1261e354696f0cb07a25c535913b3755f5f3c48a55cf",
+        "source_fact:v1:e5db076fa6e962ae48cae1d4585c076860d6e47e1723c4ca9124015923100960",
+        "source_fact:v1:f57ae9e92fb6ae5e4a29e18d1dc4ed359c812af628b26f2b1a4997f6de634b4d",
+        "source_fact:v1:f815feaab048fb82632895b8e707514c3b0928330c0ee5b552254d01e7adea8b"
+      ],
+      "source_published_kst": "2026-10-11T09:23+09:00",
+      "source_title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 진행해 온 약 55조원 자사주 매입이 마무리 국면에 접어들면서 그동안 증시 하단을 지탱했던 수급 요인이 약해질 수 있다는 분석이 나온다.",
+      "title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]"
     },
     "link:96d0a7271875274f7ca15255": {
       "first_seen_kst": "2026-10-01T16:14:13+09:00",
@@ -140065,6 +140522,32 @@
       "source": "뉴시스",
       "title": "美국채 10년물 19년 만에 5.1%…'10월 또 금리인상' 베팅 66%"
     },
+    "original:46960ac2e67f4abde4ff74c6": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820811",
+      "source": "뉴시스",
+      "source_body_digest": "bca418c5558c687192e3e26c4aaf0d15c83b702363c72b0aa8a06da1e7a7caae",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de0bd7ebf2efed26eb8e6c838e9e1b73f164d30bac035a376dd1761a11bb8d20",
+      "source_fact_keys": [
+        "source_fact:v1:488ac713ccd86bb6c6e036184e3c03c37551132d7971cd782b9c1115dd210f2e",
+        "source_fact:v1:96a5c8d03a49557cf4cbdcc5d669793247e99a2f3a0e84d61c3f3a61e4bbce0d",
+        "source_fact:v1:9b682683ef07d844936c3281b6d39f6bb756824c65556cf69efc8352988393fd",
+        "source_fact:v1:b937ce5b9657396947ca1d99c95c37ee3ac5fd2a73f39bbc419dbec8d15fdf72",
+        "source_fact:v1:dacddf784d4cb9b87c573ac02b5c0aa8c660eb82ada0a691ae1f8d8ea5759224",
+        "source_fact:v1:e0f31a89b54f2e8716e219ca471bbc2e7466ef4ace66ced4c4a0bb713fda4b5f",
+        "source_fact:v1:e5a0bf90d4452719b34fec5ad0609104ecca9d5c5a76e813080d80179c656b7c",
+        "source_fact:v1:f71228db8695c22f8ce521f4a27ae2ca6f7b18bd4e7e79a77ddb40218c1c8f66"
+      ],
+      "source_published_kst": "2026-10-11T09:31+09:00",
+      "source_title": "현대차, 인도 누적 판매 1000만대 눈앞…\"年 생산량 110만대로 확대\"",
+      "telegram_core_fact": "현대차와 인도자동차공업협회(SIAM)에 따르면 현대차의 1998년부터 올해 3분기까지 인도 내 누적 판매량은 988만4960대로 집계됐다.",
+      "title": "현대차, 인도 누적 판매 1000만대 눈앞…\"年 생산량 110만대로 확대\""
+    },
     "original:46bd4c7868dc3d34a276df76": {
       "first_seen_kst": "2026-10-10T06:23:09+09:00",
       "lanes": {
@@ -147393,6 +147876,31 @@
       "source_title": "한국경제평론가협회, 국회서 '한국경제 전망·부동산 정책 쟁점' 논의",
       "telegram_core_fact": "특히 반도체 산업의 변화와 자금 흐름, 부동산 수요·공급 전망, 세제개편안 등을 주요 의제로 다룬다.",
       "title": "한국경제평론가협회, 국회서 '한국경제 전망·부동산 정책 쟁점' 논의"
+    },
+    "original:6b5fc5d977dbd1ac5342005c": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634279",
+      "source": "이투데이",
+      "source_body_digest": "cbfae14868554ae278a398eb8c9d424810ab5119cbd8e8600f7f06194799e40b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:56f1dc94dcca5d655c37fe277e0df89dcb097235ea20c5a5cafd630aef70a639",
+      "source_fact_keys": [
+        "source_fact:v1:13cbda660a05ab90368d4548f84b7f57f3d59a2862faad10222bcc5947a1c4cc",
+        "source_fact:v1:36c8e73595ab0beae73ef01207eb7ed8339b55ecb7a506b79ce4416617ec1063",
+        "source_fact:v1:3caccb570622dc8d6a80a8c56528431232b4c4f9cdf228a5a383a1403f749ef0",
+        "source_fact:v1:41d9bf5630acff0b93d10262d22c4f2a443783a5be5a91e0ac0a45a6b400b0a9",
+        "source_fact:v1:88a557f1ecab726e7cef5ab02ba94b781824b19b9b678970e67d260c34e3d074",
+        "source_fact:v1:ab9735ec2bf8b2b227cad39a7a59ca5e4d6dd408dd74e8967fde395c8b056cdb",
+        "source_fact:v1:e9b6d9f4fd7fc379788d1626addc9624a1cff5702ba01286d12955b7d4f82801"
+      ],
+      "source_published_kst": "2026-10-11T09:34+09:00",
+      "source_title": "하이엠솔루텍, AI 데이터센터 맞춤 HVAC 서비스 강화",
+      "telegram_core_fact": "(자료제공=하이엠솔루텍)LG전자 냉난방공조(HVAC) 유지보수 전문 자회사 하이엠솔루텍이 AI 데이터센터 시장 확대에 맞춰 통합 유지보수 서비스를 강화한다. 하이엠솔루텍은 AI 데이터센터를 대상으로 HVAC 통합 유지보수 체계를 강화한다고 11일 밝혔다.",
+      "title": "하이엠솔루텍, AI 데이터센터 맞춤 HVAC 서비스 강화"
     },
     "original:6b86484150e7143f5b5f3496": {
       "first_seen_kst": "2026-10-06T06:36:31+09:00",
@@ -158554,6 +159062,37 @@
       "source": "머니투데이",
       "title": "[사설]알래스카 송유관 사업성 꼼꼼히 따져야"
     },
+    "original:9ef7440e08b027e9ccf8845a": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01213606645611936",
+      "source": "이데일리",
+      "source_body_digest": "2678f11d4defa3c38bfa5b15264e6da60ee009ac2f6965a69d1deb09aa333052",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d83245eae0a056d4c134608a2e0fa74e7b3c7642be46feff20726e4b443e01c2",
+      "source_fact_keys": [
+        "source_fact:v1:00a6e4c775cd5760087b47ac78d797a4adbb76559b914c59955d0f9dc8d33503",
+        "source_fact:v1:0deac8991804af95fbc8b615f01b47e0fc3c1b28b44ea643a56082a4f5fd6e81",
+        "source_fact:v1:15621b12ed640e9ff599b0c3aa9b40ddefff0ed6ef4a8879388a98b35ca3b0fa",
+        "source_fact:v1:210bb3dd93924df65f329101439c29248ba9d89febb4fc7db04d5e044972bff5",
+        "source_fact:v1:2e4f2cd3fadbc6e5eac3e27250825a956ac81408923a80c996e23136f6957075",
+        "source_fact:v1:50e8a0b58be7818be203493bd3e2e849b6a1d7e0db4fde6a681f878d1bb85177",
+        "source_fact:v1:7bfca2ee59f5595a47e0f45989036a828f80df2cdbd18192f85f48f68ec8ea22",
+        "source_fact:v1:b1815df442658fe1e07a32bc62fe3581f9d1dcfe45629dc98f93c133d5ef28f2",
+        "source_fact:v1:b5d6b5826a1ad5ee9547a13c884b367581b02e66af41e67ddb48bf8eaa61a45d",
+        "source_fact:v1:cbcdebab9173196f9d2f1261e354696f0cb07a25c535913b3755f5f3c48a55cf",
+        "source_fact:v1:e5db076fa6e962ae48cae1d4585c076860d6e47e1723c4ca9124015923100960",
+        "source_fact:v1:f57ae9e92fb6ae5e4a29e18d1dc4ed359c812af628b26f2b1a4997f6de634b4d",
+        "source_fact:v1:f815feaab048fb82632895b8e707514c3b0928330c0ee5b552254d01e7adea8b"
+      ],
+      "source_published_kst": "2026-10-11T09:23+09:00",
+      "source_title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 진행해 온 약 55조원 자사주 매입이 마무리 국면에 접어들면서 그동안 증시 하단을 지탱했던 수급 요인이 약해질 수 있다는 분석이 나온다.",
+      "title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]"
+    },
     "original:9f1c2cf119d368619faf7271": {
       "first_seen_kst": "2026-10-08T03:26:42+09:00",
       "lanes": {
@@ -162102,6 +162641,23 @@
       "telegram_core_fact": "이익잉여금도 1억2300만 달러로 8.1% 증가했고, 12년 연속 배당 인상을 결정해 주주환원 의지를 보여줬습니다.",
       "title": "밸류라인, 12년 연속 배당 인상·순이익 증가에 투자자 관심 집중"
     },
+    "original:ae8dd45d99c7517c27e46bf1": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/11/2026101107584729420",
+      "source": "머니투데이",
+      "source_body_digest": "10c42f102a6f05ed68e687ae3cab418be176c69f5432c2497ba76621071ec7d6",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-11T09:27+09:00",
+      "source_title": "노벨평화상 파장 확산…美, ICC 제재 vs 수상자 \"전례 없다\" 반발",
+      "telegram_core_fact": "미국은 수상자 발표 몇 시간 뒤 ICC에 대한 새 제재를 발표했다.",
+      "title": "노벨평화상 파장 확산…美, ICC 제재 vs 수상자 \"전례 없다\" 반발"
+    },
     "original:ae8f25ed15838ef7f0fc2b46": {
       "first_seen_kst": "2026-10-04T21:15:01+09:00",
       "lanes": {
@@ -164993,6 +165549,26 @@
       "source_published_kst": "2026-10-05T06:15+09:00",
       "title": "반세기만의 원전 역수출…웨스팅하우스 반대 뚫어낸 막전막후 | 연합뉴스"
     },
+    "original:bca23fd98a35e7269ca453fe": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.etnews.com/20261008000268",
+      "source": "전자신문",
+      "source_body_digest": "4d627aa1beeb4a2544f4c485542f7bb9c72139f37864cefe5f1eb4afe2570051",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dbd7afd24e760d0820bf7b275e02a3400146dfbb1c2afacf4695231b9033e0eb",
+      "source_fact_keys": [
+        "source_fact:v1:e784efc67a22e7b3127ff7cf27de972c0bcf22c5d9a2429b8407450d8a15b46d",
+        "source_fact:v1:fe712dafdfde16010cc2735556539f6cfe70e1554094ea9ec8d89be27184e9b2"
+      ],
+      "source_published_kst": "2026-10-11T09:30+09:00",
+      "source_title": "경영악화 반영 장치 없다…유료방송 “방발기금 부과체계 통일해야”",
+      "telegram_core_fact": "반면 옛 과학기술정보통신부 고시를 따랐던 유료방송사업자는 2017년부터 방송서비스매출의 1.5%를 일괄 부과받고 있다. 방송사업매출 기준으로 SO는 2017년 2조1307억원에서 1조6399억원으로 23% 감소했다.",
+      "title": "경영악화 반영 장치 없다…유료방송 “방발기금 부과체계 통일해야”"
+    },
     "original:bca77bbe672a88171b163a9c": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -167561,6 +168137,23 @@
       ],
       "source_published_kst": "2026-10-06T07:42+09:00",
       "title": "[오늘의 증시]美금리 상승에도 나스닥 최고치…코스피 상승 출발 전망"
+    },
+    "original:cb009b2b69fe206d45333ed6": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820780",
+      "source": "뉴시스",
+      "source_body_digest": "88042f6f1ddb79313c1e0735dfd6f63bed9d7216f76c9a607dfc4fcea14c0f00",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-11T09:31+09:00",
+      "source_title": "'오디세이' 1383억 벌었다…'아바타2' 제치고 역대 외화 매출 1위",
+      "telegram_core_fact": "'오디세이'는 '아바타'(약 1252억원), '어벤져스: 엔드게임'(약 1224억 원), '겨울왕국 2'(약 1150억 원) 등 국내 극장가에서 흥행한 주요 외화들의 매출 기록도 모두 넘어섰다.",
+      "title": "'오디세이' 1383억 벌었다…'아바타2' 제치고 역대 외화 매출 1위"
     },
     "original:cb0890bc5eaa2d4ae89516fe": {
       "first_seen_kst": "2026-10-08T09:33:54+09:00",
@@ -172767,6 +173360,30 @@
       "link": "https://magazine.hankyung.com/business/article/202610016223b",
       "source": "한국경제",
       "title": "K원전, 美 시장 뚫었다…APR1400 2기·웨스팅하우스 지분 인수 추진"
+    },
+    "original:e21d1b8d85a72ccc036b0911": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://biz.heraldcorp.com/article/10897551",
+      "source": "헤럴드경제",
+      "source_body_digest": "0441e27e57997b0115b337fbea715f00c161b0125c9e394fc4985e2ba357e90e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e24e7643fb94dfb5f1142c7f66bc5433cd6d1be0bd5829212dbf91d6d1e8c3f4",
+      "source_fact_keys": [
+        "source_fact:v1:2fde5ce3fb21d2a6ba4c04e609919043e20d1e5a4196a3add89eb8dbb988de63",
+        "source_fact:v1:5e89c1b7b1dacf2b91ea5f868c3e6debfaaf9336689f28685d4c91461c88e1c6",
+        "source_fact:v1:a2b1dc6d64212003e0b6d60f2f8d47fb179598b6368beea49101dae1e41e9709",
+        "source_fact:v1:ab0e8d3bd887ff3de5198df735f2dc159e4e1a75fe8c3ee39af63183eb1f1311",
+        "source_fact:v1:e4aa3b2cfb01da30646782b8fdbf62e93d3587cc3370b48ac91b5206eb5782e7",
+        "source_fact:v1:f44f252bc92448e9d021cc956c57aa22900a08e8f3e9631956075874e3c220d3"
+      ],
+      "source_published_kst": "2026-10-11T09:40+09:00",
+      "source_title": "빅딜 완주하고 펀딩 속도전…한투PE, 투자 영토 넓힌다 [하우스리뷰]",
+      "telegram_core_fact": "나아가 1조원대 독자 실물 인프라 투자 플랫폼 구축을 비롯해, 핵심광물 공급망 정책 펀드와 연계 프로젝트 펀드, 스페셜시츄에이션 하이브리드 펀드 조성에 이르기까지 다각화된 펀딩 레이스를 전개하며 대체투자 영토 확장을 위한 거침없는 행보를 이어가는 모습이다.",
+      "title": "빅딜 완주하고 펀딩 속도전…한투PE, 투자 영토 넓힌다 [하우스리뷰]"
     },
     "original:e2211bee72ead2c9c448226d": {
       "first_seen_kst": "2026-10-09T22:25:54+09:00",
@@ -179607,6 +180224,32 @@
       ],
       "source_published_kst": "2026-10-06T03:38+09:00",
       "title": "[美특징주]TSMC, 머스크 ‘테라팹’ 협력 논의 확인…주가 3%↑"
+    },
+    "source_fact:014e759997bf4f12c8bed925": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820811",
+      "source": "뉴시스",
+      "source_body_digest": "bca418c5558c687192e3e26c4aaf0d15c83b702363c72b0aa8a06da1e7a7caae",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de0bd7ebf2efed26eb8e6c838e9e1b73f164d30bac035a376dd1761a11bb8d20",
+      "source_fact_keys": [
+        "source_fact:v1:488ac713ccd86bb6c6e036184e3c03c37551132d7971cd782b9c1115dd210f2e",
+        "source_fact:v1:96a5c8d03a49557cf4cbdcc5d669793247e99a2f3a0e84d61c3f3a61e4bbce0d",
+        "source_fact:v1:9b682683ef07d844936c3281b6d39f6bb756824c65556cf69efc8352988393fd",
+        "source_fact:v1:b937ce5b9657396947ca1d99c95c37ee3ac5fd2a73f39bbc419dbec8d15fdf72",
+        "source_fact:v1:dacddf784d4cb9b87c573ac02b5c0aa8c660eb82ada0a691ae1f8d8ea5759224",
+        "source_fact:v1:e0f31a89b54f2e8716e219ca471bbc2e7466ef4ace66ced4c4a0bb713fda4b5f",
+        "source_fact:v1:e5a0bf90d4452719b34fec5ad0609104ecca9d5c5a76e813080d80179c656b7c",
+        "source_fact:v1:f71228db8695c22f8ce521f4a27ae2ca6f7b18bd4e7e79a77ddb40218c1c8f66"
+      ],
+      "source_published_kst": "2026-10-11T09:31+09:00",
+      "source_title": "현대차, 인도 누적 판매 1000만대 눈앞…\"年 생산량 110만대로 확대\"",
+      "telegram_core_fact": "현대차와 인도자동차공업협회(SIAM)에 따르면 현대차의 1998년부터 올해 3분기까지 인도 내 누적 판매량은 988만4960대로 집계됐다.",
+      "title": "현대차, 인도 누적 판매 1000만대 눈앞…\"年 생산량 110만대로 확대\""
     },
     "source_fact:015f8156e5311d76014f6dff": {
       "first_seen_kst": "2026-10-08T11:49:03+09:00",
@@ -193630,6 +194273,32 @@
       "source_title": "[美특징주]컨스텔레이션 브랜즈, 맥주 1위 유지에도 가이던스 하회에 개장전 5%↓",
       "telegram_core_fact": "맥주 부문 순매출은 전년비 5% 증가한 24억7000만달러를 기록했으며 출하량은 5.5% 늘었다.",
       "title": "[美특징주]컨스텔레이션 브랜즈, 맥주 1위 유지에도 가이던스 하회에 개장전 5%↓"
+    },
+    "source_fact:16d6862222f7d9be7a66805a": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820811",
+      "source": "뉴시스",
+      "source_body_digest": "bca418c5558c687192e3e26c4aaf0d15c83b702363c72b0aa8a06da1e7a7caae",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de0bd7ebf2efed26eb8e6c838e9e1b73f164d30bac035a376dd1761a11bb8d20",
+      "source_fact_keys": [
+        "source_fact:v1:488ac713ccd86bb6c6e036184e3c03c37551132d7971cd782b9c1115dd210f2e",
+        "source_fact:v1:96a5c8d03a49557cf4cbdcc5d669793247e99a2f3a0e84d61c3f3a61e4bbce0d",
+        "source_fact:v1:9b682683ef07d844936c3281b6d39f6bb756824c65556cf69efc8352988393fd",
+        "source_fact:v1:b937ce5b9657396947ca1d99c95c37ee3ac5fd2a73f39bbc419dbec8d15fdf72",
+        "source_fact:v1:dacddf784d4cb9b87c573ac02b5c0aa8c660eb82ada0a691ae1f8d8ea5759224",
+        "source_fact:v1:e0f31a89b54f2e8716e219ca471bbc2e7466ef4ace66ced4c4a0bb713fda4b5f",
+        "source_fact:v1:e5a0bf90d4452719b34fec5ad0609104ecca9d5c5a76e813080d80179c656b7c",
+        "source_fact:v1:f71228db8695c22f8ce521f4a27ae2ca6f7b18bd4e7e79a77ddb40218c1c8f66"
+      ],
+      "source_published_kst": "2026-10-11T09:31+09:00",
+      "source_title": "현대차, 인도 누적 판매 1000만대 눈앞…\"年 생산량 110만대로 확대\"",
+      "telegram_core_fact": "현대차와 인도자동차공업협회(SIAM)에 따르면 현대차의 1998년부터 올해 3분기까지 인도 내 누적 판매량은 988만4960대로 집계됐다.",
+      "title": "현대차, 인도 누적 판매 1000만대 눈앞…\"年 생산량 110만대로 확대\""
     },
     "source_fact:16d717d9536a17622d8d53cd": {
       "first_seen_kst": "2026-10-10T20:50:05+09:00",
@@ -207701,6 +208370,37 @@
       "source_published_kst": "2026-10-07T13:37+09:00",
       "title": "대구·경북 제조업 생산 엇갈려…소비는 동반 감소"
     },
+    "source_fact:2aa7476b77452c86476c138d": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01213606645611936",
+      "source": "이데일리",
+      "source_body_digest": "2678f11d4defa3c38bfa5b15264e6da60ee009ac2f6965a69d1deb09aa333052",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d83245eae0a056d4c134608a2e0fa74e7b3c7642be46feff20726e4b443e01c2",
+      "source_fact_keys": [
+        "source_fact:v1:00a6e4c775cd5760087b47ac78d797a4adbb76559b914c59955d0f9dc8d33503",
+        "source_fact:v1:0deac8991804af95fbc8b615f01b47e0fc3c1b28b44ea643a56082a4f5fd6e81",
+        "source_fact:v1:15621b12ed640e9ff599b0c3aa9b40ddefff0ed6ef4a8879388a98b35ca3b0fa",
+        "source_fact:v1:210bb3dd93924df65f329101439c29248ba9d89febb4fc7db04d5e044972bff5",
+        "source_fact:v1:2e4f2cd3fadbc6e5eac3e27250825a956ac81408923a80c996e23136f6957075",
+        "source_fact:v1:50e8a0b58be7818be203493bd3e2e849b6a1d7e0db4fde6a681f878d1bb85177",
+        "source_fact:v1:7bfca2ee59f5595a47e0f45989036a828f80df2cdbd18192f85f48f68ec8ea22",
+        "source_fact:v1:b1815df442658fe1e07a32bc62fe3581f9d1dcfe45629dc98f93c133d5ef28f2",
+        "source_fact:v1:b5d6b5826a1ad5ee9547a13c884b367581b02e66af41e67ddb48bf8eaa61a45d",
+        "source_fact:v1:cbcdebab9173196f9d2f1261e354696f0cb07a25c535913b3755f5f3c48a55cf",
+        "source_fact:v1:e5db076fa6e962ae48cae1d4585c076860d6e47e1723c4ca9124015923100960",
+        "source_fact:v1:f57ae9e92fb6ae5e4a29e18d1dc4ed359c812af628b26f2b1a4997f6de634b4d",
+        "source_fact:v1:f815feaab048fb82632895b8e707514c3b0928330c0ee5b552254d01e7adea8b"
+      ],
+      "source_published_kst": "2026-10-11T09:23+09:00",
+      "source_title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 진행해 온 약 55조원 자사주 매입이 마무리 국면에 접어들면서 그동안 증시 하단을 지탱했던 수급 요인이 약해질 수 있다는 분석이 나온다.",
+      "title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]"
+    },
     "source_fact:2ab4a5bad3bbb3f07890c114": {
       "first_seen_kst": "2026-10-08T11:06:13+09:00",
       "lanes": {
@@ -221441,6 +222141,30 @@
       "telegram_core_fact": "리바이스트라우스 앤 코(LEVI)는 8월 30일 종료된 2026 회계연도 3분기 매출액이 16억970만 달러로 전년비 4.3% 증가했고, 계속사업 희석 주당순이익(GAAP)은 0.43달러로 전년 동기(0.31달러) 대비 38.7% 늘었다고 7일(현지시간) 발표했다.",
       "title": "리바이스트라우스 앤 코, 3분기 매출 16억 달러 4%↑·EPS 전망 상향"
     },
+    "source_fact:3ef6d3d7fef3835d1fb38ffa": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://biz.heraldcorp.com/article/10897551",
+      "source": "헤럴드경제",
+      "source_body_digest": "0441e27e57997b0115b337fbea715f00c161b0125c9e394fc4985e2ba357e90e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e24e7643fb94dfb5f1142c7f66bc5433cd6d1be0bd5829212dbf91d6d1e8c3f4",
+      "source_fact_keys": [
+        "source_fact:v1:2fde5ce3fb21d2a6ba4c04e609919043e20d1e5a4196a3add89eb8dbb988de63",
+        "source_fact:v1:5e89c1b7b1dacf2b91ea5f868c3e6debfaaf9336689f28685d4c91461c88e1c6",
+        "source_fact:v1:a2b1dc6d64212003e0b6d60f2f8d47fb179598b6368beea49101dae1e41e9709",
+        "source_fact:v1:ab0e8d3bd887ff3de5198df735f2dc159e4e1a75fe8c3ee39af63183eb1f1311",
+        "source_fact:v1:e4aa3b2cfb01da30646782b8fdbf62e93d3587cc3370b48ac91b5206eb5782e7",
+        "source_fact:v1:f44f252bc92448e9d021cc956c57aa22900a08e8f3e9631956075874e3c220d3"
+      ],
+      "source_published_kst": "2026-10-11T09:40+09:00",
+      "source_title": "빅딜 완주하고 펀딩 속도전…한투PE, 투자 영토 넓힌다 [하우스리뷰]",
+      "telegram_core_fact": "나아가 1조원대 독자 실물 인프라 투자 플랫폼 구축을 비롯해, 핵심광물 공급망 정책 펀드와 연계 프로젝트 펀드, 스페셜시츄에이션 하이브리드 펀드 조성에 이르기까지 다각화된 펀딩 레이스를 전개하며 대체투자 영토 확장을 위한 거침없는 행보를 이어가는 모습이다.",
+      "title": "빅딜 완주하고 펀딩 속도전…한투PE, 투자 영토 넓힌다 [하우스리뷰]"
+    },
     "source_fact:3f07889583212905e24d8855": {
       "first_seen_kst": "2026-10-08T02:12:43+09:00",
       "lanes": {
@@ -221656,6 +222380,37 @@
       "source_title": "트럼프 압박 통했나…IEA, '경유 중심' 전략비축유 방출 가속 합의",
       "telegram_core_fact": "G7은 향후 4개월 동안 비축유 1억배럴을 방출하기로 합의했다.",
       "title": "트럼프 압박 통했나…IEA, '경유 중심' 전략비축유 방출 가속 합의"
+    },
+    "source_fact:3f589a9d0dce3c393f92b467": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01213606645611936",
+      "source": "이데일리",
+      "source_body_digest": "2678f11d4defa3c38bfa5b15264e6da60ee009ac2f6965a69d1deb09aa333052",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d83245eae0a056d4c134608a2e0fa74e7b3c7642be46feff20726e4b443e01c2",
+      "source_fact_keys": [
+        "source_fact:v1:00a6e4c775cd5760087b47ac78d797a4adbb76559b914c59955d0f9dc8d33503",
+        "source_fact:v1:0deac8991804af95fbc8b615f01b47e0fc3c1b28b44ea643a56082a4f5fd6e81",
+        "source_fact:v1:15621b12ed640e9ff599b0c3aa9b40ddefff0ed6ef4a8879388a98b35ca3b0fa",
+        "source_fact:v1:210bb3dd93924df65f329101439c29248ba9d89febb4fc7db04d5e044972bff5",
+        "source_fact:v1:2e4f2cd3fadbc6e5eac3e27250825a956ac81408923a80c996e23136f6957075",
+        "source_fact:v1:50e8a0b58be7818be203493bd3e2e849b6a1d7e0db4fde6a681f878d1bb85177",
+        "source_fact:v1:7bfca2ee59f5595a47e0f45989036a828f80df2cdbd18192f85f48f68ec8ea22",
+        "source_fact:v1:b1815df442658fe1e07a32bc62fe3581f9d1dcfe45629dc98f93c133d5ef28f2",
+        "source_fact:v1:b5d6b5826a1ad5ee9547a13c884b367581b02e66af41e67ddb48bf8eaa61a45d",
+        "source_fact:v1:cbcdebab9173196f9d2f1261e354696f0cb07a25c535913b3755f5f3c48a55cf",
+        "source_fact:v1:e5db076fa6e962ae48cae1d4585c076860d6e47e1723c4ca9124015923100960",
+        "source_fact:v1:f57ae9e92fb6ae5e4a29e18d1dc4ed359c812af628b26f2b1a4997f6de634b4d",
+        "source_fact:v1:f815feaab048fb82632895b8e707514c3b0928330c0ee5b552254d01e7adea8b"
+      ],
+      "source_published_kst": "2026-10-11T09:23+09:00",
+      "source_title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 진행해 온 약 55조원 자사주 매입이 마무리 국면에 접어들면서 그동안 증시 하단을 지탱했던 수급 요인이 약해질 수 있다는 분석이 나온다.",
+      "title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]"
     },
     "source_fact:3f5d41d8ed19ee599f585b34": {
       "first_seen_kst": "2026-10-07T11:25:20+09:00",
@@ -225000,6 +225755,30 @@
       "telegram_core_fact": "인천지방해양수산청에 따르면 인천해수청은 최근 인천 남항 삼표시멘트 부두 시설을 증설하기 위해 삼표시멘트 측이 낸 비관리청 항만개발사업 시행을 허가했다.",
       "title": "인천 남항 시멘트부두 사일로 증설 추진…인천해수청, 사업 허가"
     },
+    "source_fact:444f725c906d88967eb6c965": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://biz.heraldcorp.com/article/10897551",
+      "source": "헤럴드경제",
+      "source_body_digest": "0441e27e57997b0115b337fbea715f00c161b0125c9e394fc4985e2ba357e90e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e24e7643fb94dfb5f1142c7f66bc5433cd6d1be0bd5829212dbf91d6d1e8c3f4",
+      "source_fact_keys": [
+        "source_fact:v1:2fde5ce3fb21d2a6ba4c04e609919043e20d1e5a4196a3add89eb8dbb988de63",
+        "source_fact:v1:5e89c1b7b1dacf2b91ea5f868c3e6debfaaf9336689f28685d4c91461c88e1c6",
+        "source_fact:v1:a2b1dc6d64212003e0b6d60f2f8d47fb179598b6368beea49101dae1e41e9709",
+        "source_fact:v1:ab0e8d3bd887ff3de5198df735f2dc159e4e1a75fe8c3ee39af63183eb1f1311",
+        "source_fact:v1:e4aa3b2cfb01da30646782b8fdbf62e93d3587cc3370b48ac91b5206eb5782e7",
+        "source_fact:v1:f44f252bc92448e9d021cc956c57aa22900a08e8f3e9631956075874e3c220d3"
+      ],
+      "source_published_kst": "2026-10-11T09:40+09:00",
+      "source_title": "빅딜 완주하고 펀딩 속도전…한투PE, 투자 영토 넓힌다 [하우스리뷰]",
+      "telegram_core_fact": "나아가 1조원대 독자 실물 인프라 투자 플랫폼 구축을 비롯해, 핵심광물 공급망 정책 펀드와 연계 프로젝트 펀드, 스페셜시츄에이션 하이브리드 펀드 조성에 이르기까지 다각화된 펀딩 레이스를 전개하며 대체투자 영토 확장을 위한 거침없는 행보를 이어가는 모습이다.",
+      "title": "빅딜 완주하고 펀딩 속도전…한투PE, 투자 영토 넓힌다 [하우스리뷰]"
+    },
     "source_fact:44585392ed94f3214910297d": {
       "first_seen_kst": "2026-10-06T04:08:54+09:00",
       "lanes": {
@@ -225793,6 +226572,26 @@
       ],
       "source_published_kst": "2026-10-07T11:33+09:00",
       "title": "트럼프, 확전·선거철 여론악화 우려해 예멘내전 '뒷짐' | 연합뉴스"
+    },
+    "source_fact:45d97899fe755bd196cd842b": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.etnews.com/20261008000268",
+      "source": "전자신문",
+      "source_body_digest": "4d627aa1beeb4a2544f4c485542f7bb9c72139f37864cefe5f1eb4afe2570051",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dbd7afd24e760d0820bf7b275e02a3400146dfbb1c2afacf4695231b9033e0eb",
+      "source_fact_keys": [
+        "source_fact:v1:e784efc67a22e7b3127ff7cf27de972c0bcf22c5d9a2429b8407450d8a15b46d",
+        "source_fact:v1:fe712dafdfde16010cc2735556539f6cfe70e1554094ea9ec8d89be27184e9b2"
+      ],
+      "source_published_kst": "2026-10-11T09:30+09:00",
+      "source_title": "경영악화 반영 장치 없다…유료방송 “방발기금 부과체계 통일해야”",
+      "telegram_core_fact": "반면 옛 과학기술정보통신부 고시를 따랐던 유료방송사업자는 2017년부터 방송서비스매출의 1.5%를 일괄 부과받고 있다. 방송사업매출 기준으로 SO는 2017년 2조1307억원에서 1조6399억원으로 23% 감소했다.",
+      "title": "경영악화 반영 장치 없다…유료방송 “방발기금 부과체계 통일해야”"
     },
     "source_fact:45dbb035a82caa9664a51672": {
       "first_seen_kst": "2026-10-08T06:10:43+09:00",
@@ -233673,6 +234472,31 @@
       "source_published_kst": "2026-10-06T17:37+09:00",
       "title": "규제자유특구 문턱 밖 경기…AI기본법 근거로 'AI집적단지' 자체 지정 추진"
     },
+    "source_fact:5131d9ef4390c61b91b7d515": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634279",
+      "source": "이투데이",
+      "source_body_digest": "cbfae14868554ae278a398eb8c9d424810ab5119cbd8e8600f7f06194799e40b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:56f1dc94dcca5d655c37fe277e0df89dcb097235ea20c5a5cafd630aef70a639",
+      "source_fact_keys": [
+        "source_fact:v1:13cbda660a05ab90368d4548f84b7f57f3d59a2862faad10222bcc5947a1c4cc",
+        "source_fact:v1:36c8e73595ab0beae73ef01207eb7ed8339b55ecb7a506b79ce4416617ec1063",
+        "source_fact:v1:3caccb570622dc8d6a80a8c56528431232b4c4f9cdf228a5a383a1403f749ef0",
+        "source_fact:v1:41d9bf5630acff0b93d10262d22c4f2a443783a5be5a91e0ac0a45a6b400b0a9",
+        "source_fact:v1:88a557f1ecab726e7cef5ab02ba94b781824b19b9b678970e67d260c34e3d074",
+        "source_fact:v1:ab9735ec2bf8b2b227cad39a7a59ca5e4d6dd408dd74e8967fde395c8b056cdb",
+        "source_fact:v1:e9b6d9f4fd7fc379788d1626addc9624a1cff5702ba01286d12955b7d4f82801"
+      ],
+      "source_published_kst": "2026-10-11T09:34+09:00",
+      "source_title": "하이엠솔루텍, AI 데이터센터 맞춤 HVAC 서비스 강화",
+      "telegram_core_fact": "(자료제공=하이엠솔루텍)LG전자 냉난방공조(HVAC) 유지보수 전문 자회사 하이엠솔루텍이 AI 데이터센터 시장 확대에 맞춰 통합 유지보수 서비스를 강화한다. 하이엠솔루텍은 AI 데이터센터를 대상으로 HVAC 통합 유지보수 체계를 강화한다고 11일 밝혔다.",
+      "title": "하이엠솔루텍, AI 데이터센터 맞춤 HVAC 서비스 강화"
+    },
     "source_fact:513af5663197375d9fcaaf2e": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -234002,6 +234826,26 @@
       "source_title": "금융지주 상반기 순익 17.6조…증권 73% 뛰고 은행은 8% 감소",
       "telegram_core_fact": "국내 금융지주회사의 올해 상반기 순이익이 17조6000억원으로 전년비 13.7% 증가했다.",
       "title": "금융지주 상반기 순익 17.6조…증권 73% 뛰고 은행은 8% 감소"
+    },
+    "source_fact:518ec47ab3ff8c5bd9d64bc4": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.etnews.com/20261008000268",
+      "source": "전자신문",
+      "source_body_digest": "4d627aa1beeb4a2544f4c485542f7bb9c72139f37864cefe5f1eb4afe2570051",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dbd7afd24e760d0820bf7b275e02a3400146dfbb1c2afacf4695231b9033e0eb",
+      "source_fact_keys": [
+        "source_fact:v1:e784efc67a22e7b3127ff7cf27de972c0bcf22c5d9a2429b8407450d8a15b46d",
+        "source_fact:v1:fe712dafdfde16010cc2735556539f6cfe70e1554094ea9ec8d89be27184e9b2"
+      ],
+      "source_published_kst": "2026-10-11T09:30+09:00",
+      "source_title": "경영악화 반영 장치 없다…유료방송 “방발기금 부과체계 통일해야”",
+      "telegram_core_fact": "반면 옛 과학기술정보통신부 고시를 따랐던 유료방송사업자는 2017년부터 방송서비스매출의 1.5%를 일괄 부과받고 있다. 방송사업매출 기준으로 SO는 2017년 2조1307억원에서 1조6399억원으로 23% 감소했다.",
+      "title": "경영악화 반영 장치 없다…유료방송 “방발기금 부과체계 통일해야”"
     },
     "source_fact:51957a8abdce73cc0ed3eb22": {
       "first_seen_kst": "2026-10-10T09:31:49+09:00",
@@ -234793,6 +235637,37 @@
       "source_title": "\"사우디 수도 리야드 공항 또 공격받아…수십 명 부상·항공편 차질\"",
       "telegram_core_fact": "지난 5일 후티 반군이 사우디의 공항·정유 시설 등을 겨냥한 대대적인 공격 계획을 발표한 이후 킹칼리드 공항이 공격받은 것은 이날이 최소 세 번째다.",
       "title": "\"사우디 수도 리야드 공항 또 공격받아…수십 명 부상·항공편 차질\""
+    },
+    "source_fact:52adbb901e8db44cfaf42c72": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01213606645611936",
+      "source": "이데일리",
+      "source_body_digest": "2678f11d4defa3c38bfa5b15264e6da60ee009ac2f6965a69d1deb09aa333052",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d83245eae0a056d4c134608a2e0fa74e7b3c7642be46feff20726e4b443e01c2",
+      "source_fact_keys": [
+        "source_fact:v1:00a6e4c775cd5760087b47ac78d797a4adbb76559b914c59955d0f9dc8d33503",
+        "source_fact:v1:0deac8991804af95fbc8b615f01b47e0fc3c1b28b44ea643a56082a4f5fd6e81",
+        "source_fact:v1:15621b12ed640e9ff599b0c3aa9b40ddefff0ed6ef4a8879388a98b35ca3b0fa",
+        "source_fact:v1:210bb3dd93924df65f329101439c29248ba9d89febb4fc7db04d5e044972bff5",
+        "source_fact:v1:2e4f2cd3fadbc6e5eac3e27250825a956ac81408923a80c996e23136f6957075",
+        "source_fact:v1:50e8a0b58be7818be203493bd3e2e849b6a1d7e0db4fde6a681f878d1bb85177",
+        "source_fact:v1:7bfca2ee59f5595a47e0f45989036a828f80df2cdbd18192f85f48f68ec8ea22",
+        "source_fact:v1:b1815df442658fe1e07a32bc62fe3581f9d1dcfe45629dc98f93c133d5ef28f2",
+        "source_fact:v1:b5d6b5826a1ad5ee9547a13c884b367581b02e66af41e67ddb48bf8eaa61a45d",
+        "source_fact:v1:cbcdebab9173196f9d2f1261e354696f0cb07a25c535913b3755f5f3c48a55cf",
+        "source_fact:v1:e5db076fa6e962ae48cae1d4585c076860d6e47e1723c4ca9124015923100960",
+        "source_fact:v1:f57ae9e92fb6ae5e4a29e18d1dc4ed359c812af628b26f2b1a4997f6de634b4d",
+        "source_fact:v1:f815feaab048fb82632895b8e707514c3b0928330c0ee5b552254d01e7adea8b"
+      ],
+      "source_published_kst": "2026-10-11T09:23+09:00",
+      "source_title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 진행해 온 약 55조원 자사주 매입이 마무리 국면에 접어들면서 그동안 증시 하단을 지탱했던 수급 요인이 약해질 수 있다는 분석이 나온다.",
+      "title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]"
     },
     "source_fact:52b0b603e4ca1698158a6dd8": {
       "first_seen_kst": "2026-10-11T02:45:51+09:00",
@@ -239198,6 +240073,31 @@
       ],
       "source_published_kst": "2026-10-05T20:58+09:00",
       "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
+    },
+    "source_fact:58acc0051d180e6bb0a9d95c": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634279",
+      "source": "이투데이",
+      "source_body_digest": "cbfae14868554ae278a398eb8c9d424810ab5119cbd8e8600f7f06194799e40b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:56f1dc94dcca5d655c37fe277e0df89dcb097235ea20c5a5cafd630aef70a639",
+      "source_fact_keys": [
+        "source_fact:v1:13cbda660a05ab90368d4548f84b7f57f3d59a2862faad10222bcc5947a1c4cc",
+        "source_fact:v1:36c8e73595ab0beae73ef01207eb7ed8339b55ecb7a506b79ce4416617ec1063",
+        "source_fact:v1:3caccb570622dc8d6a80a8c56528431232b4c4f9cdf228a5a383a1403f749ef0",
+        "source_fact:v1:41d9bf5630acff0b93d10262d22c4f2a443783a5be5a91e0ac0a45a6b400b0a9",
+        "source_fact:v1:88a557f1ecab726e7cef5ab02ba94b781824b19b9b678970e67d260c34e3d074",
+        "source_fact:v1:ab9735ec2bf8b2b227cad39a7a59ca5e4d6dd408dd74e8967fde395c8b056cdb",
+        "source_fact:v1:e9b6d9f4fd7fc379788d1626addc9624a1cff5702ba01286d12955b7d4f82801"
+      ],
+      "source_published_kst": "2026-10-11T09:34+09:00",
+      "source_title": "하이엠솔루텍, AI 데이터센터 맞춤 HVAC 서비스 강화",
+      "telegram_core_fact": "(자료제공=하이엠솔루텍)LG전자 냉난방공조(HVAC) 유지보수 전문 자회사 하이엠솔루텍이 AI 데이터센터 시장 확대에 맞춰 통합 유지보수 서비스를 강화한다. 하이엠솔루텍은 AI 데이터센터를 대상으로 HVAC 통합 유지보수 체계를 강화한다고 11일 밝혔다.",
+      "title": "하이엠솔루텍, AI 데이터센터 맞춤 HVAC 서비스 강화"
     },
     "source_fact:58af3317d6eaa2a2dd2e1d45": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
@@ -246436,6 +247336,31 @@
       "telegram_core_fact": "현재까지 코스피 시장에서 개인 투자자 홀로 4687억원 순매수 중이며 외국인과 기관 투자자가 각각 4240억원 758억원 순매도 중이다. 미국 증시가 사상 최고치 행진을 이어가고 미 국채금리 상승세까지 꺾이고 있으나 코스피는 연일 하락세를 면치 못하고 있다.",
       "title": "[속보]뉴욕증시 사상 최고치에도…코스피 연일 하락세"
     },
+    "source_fact:62b30df20a2c7e93f9a3ea2f": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634279",
+      "source": "이투데이",
+      "source_body_digest": "cbfae14868554ae278a398eb8c9d424810ab5119cbd8e8600f7f06194799e40b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:56f1dc94dcca5d655c37fe277e0df89dcb097235ea20c5a5cafd630aef70a639",
+      "source_fact_keys": [
+        "source_fact:v1:13cbda660a05ab90368d4548f84b7f57f3d59a2862faad10222bcc5947a1c4cc",
+        "source_fact:v1:36c8e73595ab0beae73ef01207eb7ed8339b55ecb7a506b79ce4416617ec1063",
+        "source_fact:v1:3caccb570622dc8d6a80a8c56528431232b4c4f9cdf228a5a383a1403f749ef0",
+        "source_fact:v1:41d9bf5630acff0b93d10262d22c4f2a443783a5be5a91e0ac0a45a6b400b0a9",
+        "source_fact:v1:88a557f1ecab726e7cef5ab02ba94b781824b19b9b678970e67d260c34e3d074",
+        "source_fact:v1:ab9735ec2bf8b2b227cad39a7a59ca5e4d6dd408dd74e8967fde395c8b056cdb",
+        "source_fact:v1:e9b6d9f4fd7fc379788d1626addc9624a1cff5702ba01286d12955b7d4f82801"
+      ],
+      "source_published_kst": "2026-10-11T09:34+09:00",
+      "source_title": "하이엠솔루텍, AI 데이터센터 맞춤 HVAC 서비스 강화",
+      "telegram_core_fact": "(자료제공=하이엠솔루텍)LG전자 냉난방공조(HVAC) 유지보수 전문 자회사 하이엠솔루텍이 AI 데이터센터 시장 확대에 맞춰 통합 유지보수 서비스를 강화한다. 하이엠솔루텍은 AI 데이터센터를 대상으로 HVAC 통합 유지보수 체계를 강화한다고 11일 밝혔다.",
+      "title": "하이엠솔루텍, AI 데이터센터 맞춤 HVAC 서비스 강화"
+    },
     "source_fact:62ba1ae6cac4bde9703d4eff": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
       "lanes": {
@@ -246614,6 +247539,37 @@
       "source_title": "엔화, 美 장기금리 상승 주춤에 1달러=158엔 소폭 상승 출발",
       "telegram_core_fact": "엔화 환율은 8일 그간 상승세를 보인 미국 장기금리가 주춤하면서 엔 매수, 달러 매도 선행으로 1달러=158엔으로 소폭 올라 시작했다.",
       "title": "엔화, 美 장기금리 상승 주춤에 1달러=158엔 소폭 상승 출발"
+    },
+    "source_fact:62f993f931061e2eeb5a6f53": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01213606645611936",
+      "source": "이데일리",
+      "source_body_digest": "2678f11d4defa3c38bfa5b15264e6da60ee009ac2f6965a69d1deb09aa333052",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d83245eae0a056d4c134608a2e0fa74e7b3c7642be46feff20726e4b443e01c2",
+      "source_fact_keys": [
+        "source_fact:v1:00a6e4c775cd5760087b47ac78d797a4adbb76559b914c59955d0f9dc8d33503",
+        "source_fact:v1:0deac8991804af95fbc8b615f01b47e0fc3c1b28b44ea643a56082a4f5fd6e81",
+        "source_fact:v1:15621b12ed640e9ff599b0c3aa9b40ddefff0ed6ef4a8879388a98b35ca3b0fa",
+        "source_fact:v1:210bb3dd93924df65f329101439c29248ba9d89febb4fc7db04d5e044972bff5",
+        "source_fact:v1:2e4f2cd3fadbc6e5eac3e27250825a956ac81408923a80c996e23136f6957075",
+        "source_fact:v1:50e8a0b58be7818be203493bd3e2e849b6a1d7e0db4fde6a681f878d1bb85177",
+        "source_fact:v1:7bfca2ee59f5595a47e0f45989036a828f80df2cdbd18192f85f48f68ec8ea22",
+        "source_fact:v1:b1815df442658fe1e07a32bc62fe3581f9d1dcfe45629dc98f93c133d5ef28f2",
+        "source_fact:v1:b5d6b5826a1ad5ee9547a13c884b367581b02e66af41e67ddb48bf8eaa61a45d",
+        "source_fact:v1:cbcdebab9173196f9d2f1261e354696f0cb07a25c535913b3755f5f3c48a55cf",
+        "source_fact:v1:e5db076fa6e962ae48cae1d4585c076860d6e47e1723c4ca9124015923100960",
+        "source_fact:v1:f57ae9e92fb6ae5e4a29e18d1dc4ed359c812af628b26f2b1a4997f6de634b4d",
+        "source_fact:v1:f815feaab048fb82632895b8e707514c3b0928330c0ee5b552254d01e7adea8b"
+      ],
+      "source_published_kst": "2026-10-11T09:23+09:00",
+      "source_title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 진행해 온 약 55조원 자사주 매입이 마무리 국면에 접어들면서 그동안 증시 하단을 지탱했던 수급 요인이 약해질 수 있다는 분석이 나온다.",
+      "title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]"
     },
     "source_fact:6301765965d3df75f1db2389": {
       "first_seen_kst": "2026-10-07T23:36:14+09:00",
@@ -263257,6 +264213,37 @@
       "source_published_kst": "2026-10-07T06:15+09:00",
       "title": "AI 에이전트 뜨자 CPU도 부활…AMD 시총 1조달러 돌파"
     },
+    "source_fact:7c8cd41438978acbc853a179": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01213606645611936",
+      "source": "이데일리",
+      "source_body_digest": "2678f11d4defa3c38bfa5b15264e6da60ee009ac2f6965a69d1deb09aa333052",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d83245eae0a056d4c134608a2e0fa74e7b3c7642be46feff20726e4b443e01c2",
+      "source_fact_keys": [
+        "source_fact:v1:00a6e4c775cd5760087b47ac78d797a4adbb76559b914c59955d0f9dc8d33503",
+        "source_fact:v1:0deac8991804af95fbc8b615f01b47e0fc3c1b28b44ea643a56082a4f5fd6e81",
+        "source_fact:v1:15621b12ed640e9ff599b0c3aa9b40ddefff0ed6ef4a8879388a98b35ca3b0fa",
+        "source_fact:v1:210bb3dd93924df65f329101439c29248ba9d89febb4fc7db04d5e044972bff5",
+        "source_fact:v1:2e4f2cd3fadbc6e5eac3e27250825a956ac81408923a80c996e23136f6957075",
+        "source_fact:v1:50e8a0b58be7818be203493bd3e2e849b6a1d7e0db4fde6a681f878d1bb85177",
+        "source_fact:v1:7bfca2ee59f5595a47e0f45989036a828f80df2cdbd18192f85f48f68ec8ea22",
+        "source_fact:v1:b1815df442658fe1e07a32bc62fe3581f9d1dcfe45629dc98f93c133d5ef28f2",
+        "source_fact:v1:b5d6b5826a1ad5ee9547a13c884b367581b02e66af41e67ddb48bf8eaa61a45d",
+        "source_fact:v1:cbcdebab9173196f9d2f1261e354696f0cb07a25c535913b3755f5f3c48a55cf",
+        "source_fact:v1:e5db076fa6e962ae48cae1d4585c076860d6e47e1723c4ca9124015923100960",
+        "source_fact:v1:f57ae9e92fb6ae5e4a29e18d1dc4ed359c812af628b26f2b1a4997f6de634b4d",
+        "source_fact:v1:f815feaab048fb82632895b8e707514c3b0928330c0ee5b552254d01e7adea8b"
+      ],
+      "source_published_kst": "2026-10-11T09:23+09:00",
+      "source_title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 진행해 온 약 55조원 자사주 매입이 마무리 국면에 접어들면서 그동안 증시 하단을 지탱했던 수급 요인이 약해질 수 있다는 분석이 나온다.",
+      "title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]"
+    },
     "source_fact:7c8eb35c99b6b70b3af4d624": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -265032,6 +266019,32 @@
       "source_title": "韓 등 15개국, 車·배터리·반도체 과잉생산 공동 대응",
       "telegram_core_fact": "산업통상부는 한국을 포함한 15개국이 7일(현지시간) 프랑스 파리 경제협력개발기구(OECD) 본부에서 '구조적 과잉생산 대응을 위한 공동 장관성명'을 발표했다고 8일 밝혔다.",
       "title": "韓 등 15개국, 車·배터리·반도체 과잉생산 공동 대응"
+    },
+    "source_fact:7f40c4f6a437fbdc6869fd92": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820811",
+      "source": "뉴시스",
+      "source_body_digest": "bca418c5558c687192e3e26c4aaf0d15c83b702363c72b0aa8a06da1e7a7caae",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de0bd7ebf2efed26eb8e6c838e9e1b73f164d30bac035a376dd1761a11bb8d20",
+      "source_fact_keys": [
+        "source_fact:v1:488ac713ccd86bb6c6e036184e3c03c37551132d7971cd782b9c1115dd210f2e",
+        "source_fact:v1:96a5c8d03a49557cf4cbdcc5d669793247e99a2f3a0e84d61c3f3a61e4bbce0d",
+        "source_fact:v1:9b682683ef07d844936c3281b6d39f6bb756824c65556cf69efc8352988393fd",
+        "source_fact:v1:b937ce5b9657396947ca1d99c95c37ee3ac5fd2a73f39bbc419dbec8d15fdf72",
+        "source_fact:v1:dacddf784d4cb9b87c573ac02b5c0aa8c660eb82ada0a691ae1f8d8ea5759224",
+        "source_fact:v1:e0f31a89b54f2e8716e219ca471bbc2e7466ef4ace66ced4c4a0bb713fda4b5f",
+        "source_fact:v1:e5a0bf90d4452719b34fec5ad0609104ecca9d5c5a76e813080d80179c656b7c",
+        "source_fact:v1:f71228db8695c22f8ce521f4a27ae2ca6f7b18bd4e7e79a77ddb40218c1c8f66"
+      ],
+      "source_published_kst": "2026-10-11T09:31+09:00",
+      "source_title": "현대차, 인도 누적 판매 1000만대 눈앞…\"年 생산량 110만대로 확대\"",
+      "telegram_core_fact": "현대차와 인도자동차공업협회(SIAM)에 따르면 현대차의 1998년부터 올해 3분기까지 인도 내 누적 판매량은 988만4960대로 집계됐다.",
+      "title": "현대차, 인도 누적 판매 1000만대 눈앞…\"年 생산량 110만대로 확대\""
     },
     "source_fact:7f5064930e9240f6edce6ac0": {
       "first_seen_kst": "2026-10-06T20:54:05+09:00",
@@ -269206,6 +270219,30 @@
       "telegram_core_fact": "AI가 행정·복지·교통·교육 등 시민 일상으로 깊숙이 들어오면서 공정성·투명성과 같은 원칙을 선언하는 데 그치지 않고 AI 도입 전 위험을 살피고 운영 과정에서 문제를 감시하며, 이를 다시 제도 개선으로 연결하는 거버넌스가 필요하다는 목소리가 나왔다.",
       "title": "“AI 도입보다 중요한 건 신뢰”…서울형 AI 윤리 해법 찾는다"
     },
+    "source_fact:85b2f65b25c7080441f33870": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://biz.heraldcorp.com/article/10897551",
+      "source": "헤럴드경제",
+      "source_body_digest": "0441e27e57997b0115b337fbea715f00c161b0125c9e394fc4985e2ba357e90e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e24e7643fb94dfb5f1142c7f66bc5433cd6d1be0bd5829212dbf91d6d1e8c3f4",
+      "source_fact_keys": [
+        "source_fact:v1:2fde5ce3fb21d2a6ba4c04e609919043e20d1e5a4196a3add89eb8dbb988de63",
+        "source_fact:v1:5e89c1b7b1dacf2b91ea5f868c3e6debfaaf9336689f28685d4c91461c88e1c6",
+        "source_fact:v1:a2b1dc6d64212003e0b6d60f2f8d47fb179598b6368beea49101dae1e41e9709",
+        "source_fact:v1:ab0e8d3bd887ff3de5198df735f2dc159e4e1a75fe8c3ee39af63183eb1f1311",
+        "source_fact:v1:e4aa3b2cfb01da30646782b8fdbf62e93d3587cc3370b48ac91b5206eb5782e7",
+        "source_fact:v1:f44f252bc92448e9d021cc956c57aa22900a08e8f3e9631956075874e3c220d3"
+      ],
+      "source_published_kst": "2026-10-11T09:40+09:00",
+      "source_title": "빅딜 완주하고 펀딩 속도전…한투PE, 투자 영토 넓힌다 [하우스리뷰]",
+      "telegram_core_fact": "나아가 1조원대 독자 실물 인프라 투자 플랫폼 구축을 비롯해, 핵심광물 공급망 정책 펀드와 연계 프로젝트 펀드, 스페셜시츄에이션 하이브리드 펀드 조성에 이르기까지 다각화된 펀딩 레이스를 전개하며 대체투자 영토 확장을 위한 거침없는 행보를 이어가는 모습이다.",
+      "title": "빅딜 완주하고 펀딩 속도전…한투PE, 투자 영토 넓힌다 [하우스리뷰]"
+    },
     "source_fact:85bb168eb482a0835126a24f": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
       "lanes": {
@@ -273113,6 +274150,37 @@
       "telegram_core_fact": "김선우 연구원은 \"당사의 최근 전망치 대비 메모리에서 2조2000억원 기대 이상의 성과를 기록한 것으로 추정된다\"며 \"급격한 원화 강세로 비우호적인 사업 환경이 조성됐음에도 업계 평균을 웃도는 견조한 판매가격 정책이 실적 개선을 이끈 것으로 판단한다\"고 설명했다.",
       "title": "메리츠證 \"삼성전자 3분기 메모리 실적 예상 웃돌아…D램·낸드 가격 경쟁력 지속\""
     },
+    "source_fact:8b98190c91105f30d07ad55e": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01213606645611936",
+      "source": "이데일리",
+      "source_body_digest": "2678f11d4defa3c38bfa5b15264e6da60ee009ac2f6965a69d1deb09aa333052",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d83245eae0a056d4c134608a2e0fa74e7b3c7642be46feff20726e4b443e01c2",
+      "source_fact_keys": [
+        "source_fact:v1:00a6e4c775cd5760087b47ac78d797a4adbb76559b914c59955d0f9dc8d33503",
+        "source_fact:v1:0deac8991804af95fbc8b615f01b47e0fc3c1b28b44ea643a56082a4f5fd6e81",
+        "source_fact:v1:15621b12ed640e9ff599b0c3aa9b40ddefff0ed6ef4a8879388a98b35ca3b0fa",
+        "source_fact:v1:210bb3dd93924df65f329101439c29248ba9d89febb4fc7db04d5e044972bff5",
+        "source_fact:v1:2e4f2cd3fadbc6e5eac3e27250825a956ac81408923a80c996e23136f6957075",
+        "source_fact:v1:50e8a0b58be7818be203493bd3e2e849b6a1d7e0db4fde6a681f878d1bb85177",
+        "source_fact:v1:7bfca2ee59f5595a47e0f45989036a828f80df2cdbd18192f85f48f68ec8ea22",
+        "source_fact:v1:b1815df442658fe1e07a32bc62fe3581f9d1dcfe45629dc98f93c133d5ef28f2",
+        "source_fact:v1:b5d6b5826a1ad5ee9547a13c884b367581b02e66af41e67ddb48bf8eaa61a45d",
+        "source_fact:v1:cbcdebab9173196f9d2f1261e354696f0cb07a25c535913b3755f5f3c48a55cf",
+        "source_fact:v1:e5db076fa6e962ae48cae1d4585c076860d6e47e1723c4ca9124015923100960",
+        "source_fact:v1:f57ae9e92fb6ae5e4a29e18d1dc4ed359c812af628b26f2b1a4997f6de634b4d",
+        "source_fact:v1:f815feaab048fb82632895b8e707514c3b0928330c0ee5b552254d01e7adea8b"
+      ],
+      "source_published_kst": "2026-10-11T09:23+09:00",
+      "source_title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 진행해 온 약 55조원 자사주 매입이 마무리 국면에 접어들면서 그동안 증시 하단을 지탱했던 수급 요인이 약해질 수 있다는 분석이 나온다.",
+      "title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]"
+    },
     "source_fact:8b99636be8e32c4b41acfb02": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
       "lanes": {
@@ -274582,6 +275650,32 @@
       "source_published_kst": "2026-10-06T15:17+09:00",
       "title": "그래도 버틴다…\"이란, 원유수출 막혀도 美 지치기 기다려\" | 연합뉴스"
     },
+    "source_fact:8dda8a55c0f6598a655babe0": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820811",
+      "source": "뉴시스",
+      "source_body_digest": "bca418c5558c687192e3e26c4aaf0d15c83b702363c72b0aa8a06da1e7a7caae",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de0bd7ebf2efed26eb8e6c838e9e1b73f164d30bac035a376dd1761a11bb8d20",
+      "source_fact_keys": [
+        "source_fact:v1:488ac713ccd86bb6c6e036184e3c03c37551132d7971cd782b9c1115dd210f2e",
+        "source_fact:v1:96a5c8d03a49557cf4cbdcc5d669793247e99a2f3a0e84d61c3f3a61e4bbce0d",
+        "source_fact:v1:9b682683ef07d844936c3281b6d39f6bb756824c65556cf69efc8352988393fd",
+        "source_fact:v1:b937ce5b9657396947ca1d99c95c37ee3ac5fd2a73f39bbc419dbec8d15fdf72",
+        "source_fact:v1:dacddf784d4cb9b87c573ac02b5c0aa8c660eb82ada0a691ae1f8d8ea5759224",
+        "source_fact:v1:e0f31a89b54f2e8716e219ca471bbc2e7466ef4ace66ced4c4a0bb713fda4b5f",
+        "source_fact:v1:e5a0bf90d4452719b34fec5ad0609104ecca9d5c5a76e813080d80179c656b7c",
+        "source_fact:v1:f71228db8695c22f8ce521f4a27ae2ca6f7b18bd4e7e79a77ddb40218c1c8f66"
+      ],
+      "source_published_kst": "2026-10-11T09:31+09:00",
+      "source_title": "현대차, 인도 누적 판매 1000만대 눈앞…\"年 생산량 110만대로 확대\"",
+      "telegram_core_fact": "현대차와 인도자동차공업협회(SIAM)에 따르면 현대차의 1998년부터 올해 3분기까지 인도 내 누적 판매량은 988만4960대로 집계됐다.",
+      "title": "현대차, 인도 누적 판매 1000만대 눈앞…\"年 생산량 110만대로 확대\""
+    },
     "source_fact:8deb2b77a64b8dce58ac7404": {
       "first_seen_kst": "2026-10-10T10:34:18+09:00",
       "lanes": {
@@ -275417,6 +276511,32 @@
       ],
       "source_published_kst": "2026-10-05T11:25+09:00",
       "title": "사우디, 11월 아시아 공급용 원유가 대폭 인하 | 연합뉴스"
+    },
+    "source_fact:8f572e5322a7f8e3a1367588": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820811",
+      "source": "뉴시스",
+      "source_body_digest": "bca418c5558c687192e3e26c4aaf0d15c83b702363c72b0aa8a06da1e7a7caae",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de0bd7ebf2efed26eb8e6c838e9e1b73f164d30bac035a376dd1761a11bb8d20",
+      "source_fact_keys": [
+        "source_fact:v1:488ac713ccd86bb6c6e036184e3c03c37551132d7971cd782b9c1115dd210f2e",
+        "source_fact:v1:96a5c8d03a49557cf4cbdcc5d669793247e99a2f3a0e84d61c3f3a61e4bbce0d",
+        "source_fact:v1:9b682683ef07d844936c3281b6d39f6bb756824c65556cf69efc8352988393fd",
+        "source_fact:v1:b937ce5b9657396947ca1d99c95c37ee3ac5fd2a73f39bbc419dbec8d15fdf72",
+        "source_fact:v1:dacddf784d4cb9b87c573ac02b5c0aa8c660eb82ada0a691ae1f8d8ea5759224",
+        "source_fact:v1:e0f31a89b54f2e8716e219ca471bbc2e7466ef4ace66ced4c4a0bb713fda4b5f",
+        "source_fact:v1:e5a0bf90d4452719b34fec5ad0609104ecca9d5c5a76e813080d80179c656b7c",
+        "source_fact:v1:f71228db8695c22f8ce521f4a27ae2ca6f7b18bd4e7e79a77ddb40218c1c8f66"
+      ],
+      "source_published_kst": "2026-10-11T09:31+09:00",
+      "source_title": "현대차, 인도 누적 판매 1000만대 눈앞…\"年 생산량 110만대로 확대\"",
+      "telegram_core_fact": "현대차와 인도자동차공업협회(SIAM)에 따르면 현대차의 1998년부터 올해 3분기까지 인도 내 누적 판매량은 988만4960대로 집계됐다.",
+      "title": "현대차, 인도 누적 판매 1000만대 눈앞…\"年 생산량 110만대로 확대\""
     },
     "source_fact:8f5af517b5be44176f0db6e2": {
       "first_seen_kst": "2026-10-08T11:28:27+09:00",
@@ -276878,6 +277998,31 @@
       "source_title": "뉴욕증시, 오픈AI 매출 우려 완화에 상승 마감…나스닥 0.64%↑",
       "telegram_core_fact": "인베스팅닷컴은 오픈AI의 9월 말 연간 환산 매출이 약 500억달러(67조1000억원)였지만 연말에는 700억달러(93조9400억원)에 도달하거나 이를 넘어설 것으로 예상된다는 보도가 투자심리를 지지했다고 전했다.",
       "title": "뉴욕증시, 오픈AI 매출 우려 완화에 상승 마감…나스닥 0.64%↑"
+    },
+    "source_fact:91b7ff2a5fb5f280509ef2eb": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634279",
+      "source": "이투데이",
+      "source_body_digest": "cbfae14868554ae278a398eb8c9d424810ab5119cbd8e8600f7f06194799e40b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:56f1dc94dcca5d655c37fe277e0df89dcb097235ea20c5a5cafd630aef70a639",
+      "source_fact_keys": [
+        "source_fact:v1:13cbda660a05ab90368d4548f84b7f57f3d59a2862faad10222bcc5947a1c4cc",
+        "source_fact:v1:36c8e73595ab0beae73ef01207eb7ed8339b55ecb7a506b79ce4416617ec1063",
+        "source_fact:v1:3caccb570622dc8d6a80a8c56528431232b4c4f9cdf228a5a383a1403f749ef0",
+        "source_fact:v1:41d9bf5630acff0b93d10262d22c4f2a443783a5be5a91e0ac0a45a6b400b0a9",
+        "source_fact:v1:88a557f1ecab726e7cef5ab02ba94b781824b19b9b678970e67d260c34e3d074",
+        "source_fact:v1:ab9735ec2bf8b2b227cad39a7a59ca5e4d6dd408dd74e8967fde395c8b056cdb",
+        "source_fact:v1:e9b6d9f4fd7fc379788d1626addc9624a1cff5702ba01286d12955b7d4f82801"
+      ],
+      "source_published_kst": "2026-10-11T09:34+09:00",
+      "source_title": "하이엠솔루텍, AI 데이터센터 맞춤 HVAC 서비스 강화",
+      "telegram_core_fact": "(자료제공=하이엠솔루텍)LG전자 냉난방공조(HVAC) 유지보수 전문 자회사 하이엠솔루텍이 AI 데이터센터 시장 확대에 맞춰 통합 유지보수 서비스를 강화한다. 하이엠솔루텍은 AI 데이터센터를 대상으로 HVAC 통합 유지보수 체계를 강화한다고 11일 밝혔다.",
+      "title": "하이엠솔루텍, AI 데이터센터 맞춤 HVAC 서비스 강화"
     },
     "source_fact:91bb55f9dc506858634df01a": {
       "first_seen_kst": "2026-10-08T06:10:43+09:00",
@@ -280552,6 +281697,31 @@
       ],
       "source_published_kst": "2026-10-06T11:30+09:00",
       "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
+    },
+    "source_fact:978c528b769403d6ae22cb06": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634279",
+      "source": "이투데이",
+      "source_body_digest": "cbfae14868554ae278a398eb8c9d424810ab5119cbd8e8600f7f06194799e40b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:56f1dc94dcca5d655c37fe277e0df89dcb097235ea20c5a5cafd630aef70a639",
+      "source_fact_keys": [
+        "source_fact:v1:13cbda660a05ab90368d4548f84b7f57f3d59a2862faad10222bcc5947a1c4cc",
+        "source_fact:v1:36c8e73595ab0beae73ef01207eb7ed8339b55ecb7a506b79ce4416617ec1063",
+        "source_fact:v1:3caccb570622dc8d6a80a8c56528431232b4c4f9cdf228a5a383a1403f749ef0",
+        "source_fact:v1:41d9bf5630acff0b93d10262d22c4f2a443783a5be5a91e0ac0a45a6b400b0a9",
+        "source_fact:v1:88a557f1ecab726e7cef5ab02ba94b781824b19b9b678970e67d260c34e3d074",
+        "source_fact:v1:ab9735ec2bf8b2b227cad39a7a59ca5e4d6dd408dd74e8967fde395c8b056cdb",
+        "source_fact:v1:e9b6d9f4fd7fc379788d1626addc9624a1cff5702ba01286d12955b7d4f82801"
+      ],
+      "source_published_kst": "2026-10-11T09:34+09:00",
+      "source_title": "하이엠솔루텍, AI 데이터센터 맞춤 HVAC 서비스 강화",
+      "telegram_core_fact": "(자료제공=하이엠솔루텍)LG전자 냉난방공조(HVAC) 유지보수 전문 자회사 하이엠솔루텍이 AI 데이터센터 시장 확대에 맞춰 통합 유지보수 서비스를 강화한다. 하이엠솔루텍은 AI 데이터센터를 대상으로 HVAC 통합 유지보수 체계를 강화한다고 11일 밝혔다.",
+      "title": "하이엠솔루텍, AI 데이터센터 맞춤 HVAC 서비스 강화"
     },
     "source_fact:978ffb185df29706abb22e72": {
       "first_seen_kst": "2026-10-10T06:02:39+09:00",
@@ -291557,6 +292727,37 @@
       "telegram_core_fact": "우리은행은 수출기업이 시설자금 대출을 신청할 경우 최대 15%의 추가 한도를 지원한다.",
       "title": "우리銀, '수출선도기업대출' 출시…시설자금 최대 15% 추가한도 | 연합뉴스"
     },
+    "source_fact:a8665235eceb794181cf8217": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01213606645611936",
+      "source": "이데일리",
+      "source_body_digest": "2678f11d4defa3c38bfa5b15264e6da60ee009ac2f6965a69d1deb09aa333052",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d83245eae0a056d4c134608a2e0fa74e7b3c7642be46feff20726e4b443e01c2",
+      "source_fact_keys": [
+        "source_fact:v1:00a6e4c775cd5760087b47ac78d797a4adbb76559b914c59955d0f9dc8d33503",
+        "source_fact:v1:0deac8991804af95fbc8b615f01b47e0fc3c1b28b44ea643a56082a4f5fd6e81",
+        "source_fact:v1:15621b12ed640e9ff599b0c3aa9b40ddefff0ed6ef4a8879388a98b35ca3b0fa",
+        "source_fact:v1:210bb3dd93924df65f329101439c29248ba9d89febb4fc7db04d5e044972bff5",
+        "source_fact:v1:2e4f2cd3fadbc6e5eac3e27250825a956ac81408923a80c996e23136f6957075",
+        "source_fact:v1:50e8a0b58be7818be203493bd3e2e849b6a1d7e0db4fde6a681f878d1bb85177",
+        "source_fact:v1:7bfca2ee59f5595a47e0f45989036a828f80df2cdbd18192f85f48f68ec8ea22",
+        "source_fact:v1:b1815df442658fe1e07a32bc62fe3581f9d1dcfe45629dc98f93c133d5ef28f2",
+        "source_fact:v1:b5d6b5826a1ad5ee9547a13c884b367581b02e66af41e67ddb48bf8eaa61a45d",
+        "source_fact:v1:cbcdebab9173196f9d2f1261e354696f0cb07a25c535913b3755f5f3c48a55cf",
+        "source_fact:v1:e5db076fa6e962ae48cae1d4585c076860d6e47e1723c4ca9124015923100960",
+        "source_fact:v1:f57ae9e92fb6ae5e4a29e18d1dc4ed359c812af628b26f2b1a4997f6de634b4d",
+        "source_fact:v1:f815feaab048fb82632895b8e707514c3b0928330c0ee5b552254d01e7adea8b"
+      ],
+      "source_published_kst": "2026-10-11T09:23+09:00",
+      "source_title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 진행해 온 약 55조원 자사주 매입이 마무리 국면에 접어들면서 그동안 증시 하단을 지탱했던 수급 요인이 약해질 수 있다는 분석이 나온다.",
+      "title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]"
+    },
     "source_fact:a89e859fdbfade7a0eea29db": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
@@ -297553,6 +298754,37 @@
       "source_title": "그린파워 모터, IUC와 EV 플릿 LOI 체결..비구속 협력",
       "telegram_core_fact": "제이크 베잔트 IUC 대표는 \"고객들이 플릿 전환을 포함해 더 많은 전기차 생태계를 책임져 달라고 요구하고 있다\"며 \"그린파워와의 협력은 고품질 차량을 공급할 파트너를 확보해 충전, 서비스, 차량, 배터리 등 고객이 필요로 하는 모든 것을 제공하려는 노력을 뒷받침한다\"고 밝혔다.",
       "title": "그린파워 모터, IUC와 EV 플릿 LOI 체결..비구속 협력"
+    },
+    "source_fact:b1432edbe6fd03413bd74629": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01213606645611936",
+      "source": "이데일리",
+      "source_body_digest": "2678f11d4defa3c38bfa5b15264e6da60ee009ac2f6965a69d1deb09aa333052",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d83245eae0a056d4c134608a2e0fa74e7b3c7642be46feff20726e4b443e01c2",
+      "source_fact_keys": [
+        "source_fact:v1:00a6e4c775cd5760087b47ac78d797a4adbb76559b914c59955d0f9dc8d33503",
+        "source_fact:v1:0deac8991804af95fbc8b615f01b47e0fc3c1b28b44ea643a56082a4f5fd6e81",
+        "source_fact:v1:15621b12ed640e9ff599b0c3aa9b40ddefff0ed6ef4a8879388a98b35ca3b0fa",
+        "source_fact:v1:210bb3dd93924df65f329101439c29248ba9d89febb4fc7db04d5e044972bff5",
+        "source_fact:v1:2e4f2cd3fadbc6e5eac3e27250825a956ac81408923a80c996e23136f6957075",
+        "source_fact:v1:50e8a0b58be7818be203493bd3e2e849b6a1d7e0db4fde6a681f878d1bb85177",
+        "source_fact:v1:7bfca2ee59f5595a47e0f45989036a828f80df2cdbd18192f85f48f68ec8ea22",
+        "source_fact:v1:b1815df442658fe1e07a32bc62fe3581f9d1dcfe45629dc98f93c133d5ef28f2",
+        "source_fact:v1:b5d6b5826a1ad5ee9547a13c884b367581b02e66af41e67ddb48bf8eaa61a45d",
+        "source_fact:v1:cbcdebab9173196f9d2f1261e354696f0cb07a25c535913b3755f5f3c48a55cf",
+        "source_fact:v1:e5db076fa6e962ae48cae1d4585c076860d6e47e1723c4ca9124015923100960",
+        "source_fact:v1:f57ae9e92fb6ae5e4a29e18d1dc4ed359c812af628b26f2b1a4997f6de634b4d",
+        "source_fact:v1:f815feaab048fb82632895b8e707514c3b0928330c0ee5b552254d01e7adea8b"
+      ],
+      "source_published_kst": "2026-10-11T09:23+09:00",
+      "source_title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 진행해 온 약 55조원 자사주 매입이 마무리 국면에 접어들면서 그동안 증시 하단을 지탱했던 수급 요인이 약해질 수 있다는 분석이 나온다.",
+      "title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]"
     },
     "source_fact:b1480eb3e6019e429c385743": {
       "first_seen_kst": "2026-10-06T22:08:07+09:00",
@@ -312763,6 +313995,30 @@
       "source_published_kst": "2026-10-06T09:29+09:00",
       "title": "대신운용, ‘주주환원고배당펀드’ 출시⋯배당ㆍ자사주 매입 기업 투자"
     },
+    "source_fact:c79acffd87ce12fa0346c4fd": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://biz.heraldcorp.com/article/10897551",
+      "source": "헤럴드경제",
+      "source_body_digest": "0441e27e57997b0115b337fbea715f00c161b0125c9e394fc4985e2ba357e90e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e24e7643fb94dfb5f1142c7f66bc5433cd6d1be0bd5829212dbf91d6d1e8c3f4",
+      "source_fact_keys": [
+        "source_fact:v1:2fde5ce3fb21d2a6ba4c04e609919043e20d1e5a4196a3add89eb8dbb988de63",
+        "source_fact:v1:5e89c1b7b1dacf2b91ea5f868c3e6debfaaf9336689f28685d4c91461c88e1c6",
+        "source_fact:v1:a2b1dc6d64212003e0b6d60f2f8d47fb179598b6368beea49101dae1e41e9709",
+        "source_fact:v1:ab0e8d3bd887ff3de5198df735f2dc159e4e1a75fe8c3ee39af63183eb1f1311",
+        "source_fact:v1:e4aa3b2cfb01da30646782b8fdbf62e93d3587cc3370b48ac91b5206eb5782e7",
+        "source_fact:v1:f44f252bc92448e9d021cc956c57aa22900a08e8f3e9631956075874e3c220d3"
+      ],
+      "source_published_kst": "2026-10-11T09:40+09:00",
+      "source_title": "빅딜 완주하고 펀딩 속도전…한투PE, 투자 영토 넓힌다 [하우스리뷰]",
+      "telegram_core_fact": "나아가 1조원대 독자 실물 인프라 투자 플랫폼 구축을 비롯해, 핵심광물 공급망 정책 펀드와 연계 프로젝트 펀드, 스페셜시츄에이션 하이브리드 펀드 조성에 이르기까지 다각화된 펀딩 레이스를 전개하며 대체투자 영토 확장을 위한 거침없는 행보를 이어가는 모습이다.",
+      "title": "빅딜 완주하고 펀딩 속도전…한투PE, 투자 영토 넓힌다 [하우스리뷰]"
+    },
     "source_fact:c7a1e4a89e66b242b1d3429f": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
       "lanes": {
@@ -312988,6 +314244,30 @@
       "source_title": "리사 수 AMD CEO “반도체는 팀 스포츠, 한국은 핵심 파트너”",
       "telegram_core_fact": "리사 수 AMD 최고경영자(CEO)가 한국을 인공지능(AI)과 반도체 공급망에서 핵심적인 파트너로 꼽았다. 최근 수 CEO가 한국을 잇따라 찾는 배경에도 장기적인 공급망 협력이 있다고 설명했다.",
       "title": "리사 수 AMD CEO “반도체는 팀 스포츠, 한국은 핵심 파트너”"
+    },
+    "source_fact:c7f67aa6201a7095464141a9": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://biz.heraldcorp.com/article/10897551",
+      "source": "헤럴드경제",
+      "source_body_digest": "0441e27e57997b0115b337fbea715f00c161b0125c9e394fc4985e2ba357e90e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e24e7643fb94dfb5f1142c7f66bc5433cd6d1be0bd5829212dbf91d6d1e8c3f4",
+      "source_fact_keys": [
+        "source_fact:v1:2fde5ce3fb21d2a6ba4c04e609919043e20d1e5a4196a3add89eb8dbb988de63",
+        "source_fact:v1:5e89c1b7b1dacf2b91ea5f868c3e6debfaaf9336689f28685d4c91461c88e1c6",
+        "source_fact:v1:a2b1dc6d64212003e0b6d60f2f8d47fb179598b6368beea49101dae1e41e9709",
+        "source_fact:v1:ab0e8d3bd887ff3de5198df735f2dc159e4e1a75fe8c3ee39af63183eb1f1311",
+        "source_fact:v1:e4aa3b2cfb01da30646782b8fdbf62e93d3587cc3370b48ac91b5206eb5782e7",
+        "source_fact:v1:f44f252bc92448e9d021cc956c57aa22900a08e8f3e9631956075874e3c220d3"
+      ],
+      "source_published_kst": "2026-10-11T09:40+09:00",
+      "source_title": "빅딜 완주하고 펀딩 속도전…한투PE, 투자 영토 넓힌다 [하우스리뷰]",
+      "telegram_core_fact": "나아가 1조원대 독자 실물 인프라 투자 플랫폼 구축을 비롯해, 핵심광물 공급망 정책 펀드와 연계 프로젝트 펀드, 스페셜시츄에이션 하이브리드 펀드 조성에 이르기까지 다각화된 펀딩 레이스를 전개하며 대체투자 영토 확장을 위한 거침없는 행보를 이어가는 모습이다.",
+      "title": "빅딜 완주하고 펀딩 속도전…한투PE, 투자 영토 넓힌다 [하우스리뷰]"
     },
     "source_fact:c7fbd13aa5ae10664f126a11": {
       "first_seen_kst": "2026-10-08T21:21:36+09:00",
@@ -314619,6 +315899,37 @@
       "source_title": "트럼프, 이란 공격 유보했지만 … 유가는 4% 급등",
       "telegram_core_fact": "트럼프 대통령의 발언이 나온 이후 유가 상승폭은 일부 줄었지만, 중동의 원유 공급 불안이 이어지면서 국제유가는 결국 4% 넘게 오른 채 거래를 마쳤다.",
       "title": "트럼프, 이란 공격 유보했지만 … 유가는 4% 급등"
+    },
+    "source_fact:caa34920ef3574aa081a47ba": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01213606645611936",
+      "source": "이데일리",
+      "source_body_digest": "2678f11d4defa3c38bfa5b15264e6da60ee009ac2f6965a69d1deb09aa333052",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d83245eae0a056d4c134608a2e0fa74e7b3c7642be46feff20726e4b443e01c2",
+      "source_fact_keys": [
+        "source_fact:v1:00a6e4c775cd5760087b47ac78d797a4adbb76559b914c59955d0f9dc8d33503",
+        "source_fact:v1:0deac8991804af95fbc8b615f01b47e0fc3c1b28b44ea643a56082a4f5fd6e81",
+        "source_fact:v1:15621b12ed640e9ff599b0c3aa9b40ddefff0ed6ef4a8879388a98b35ca3b0fa",
+        "source_fact:v1:210bb3dd93924df65f329101439c29248ba9d89febb4fc7db04d5e044972bff5",
+        "source_fact:v1:2e4f2cd3fadbc6e5eac3e27250825a956ac81408923a80c996e23136f6957075",
+        "source_fact:v1:50e8a0b58be7818be203493bd3e2e849b6a1d7e0db4fde6a681f878d1bb85177",
+        "source_fact:v1:7bfca2ee59f5595a47e0f45989036a828f80df2cdbd18192f85f48f68ec8ea22",
+        "source_fact:v1:b1815df442658fe1e07a32bc62fe3581f9d1dcfe45629dc98f93c133d5ef28f2",
+        "source_fact:v1:b5d6b5826a1ad5ee9547a13c884b367581b02e66af41e67ddb48bf8eaa61a45d",
+        "source_fact:v1:cbcdebab9173196f9d2f1261e354696f0cb07a25c535913b3755f5f3c48a55cf",
+        "source_fact:v1:e5db076fa6e962ae48cae1d4585c076860d6e47e1723c4ca9124015923100960",
+        "source_fact:v1:f57ae9e92fb6ae5e4a29e18d1dc4ed359c812af628b26f2b1a4997f6de634b4d",
+        "source_fact:v1:f815feaab048fb82632895b8e707514c3b0928330c0ee5b552254d01e7adea8b"
+      ],
+      "source_published_kst": "2026-10-11T09:23+09:00",
+      "source_title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 진행해 온 약 55조원 자사주 매입이 마무리 국면에 접어들면서 그동안 증시 하단을 지탱했던 수급 요인이 약해질 수 있다는 분석이 나온다.",
+      "title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]"
     },
     "source_fact:caa3b44b81841d20979e9f6d": {
       "first_seen_kst": "2026-10-08T16:14:26+09:00",
@@ -319560,6 +320871,37 @@
       ],
       "source_published_kst": "2026-10-06T13:52+09:00",
       "title": "거래소 “코스닥 체질 개선 노력⋯법원 제동 건 ‘시총 미달 상폐’ 후속 조치 예정”"
+    },
+    "source_fact:d2ab673a930a48db02e6f724": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01213606645611936",
+      "source": "이데일리",
+      "source_body_digest": "2678f11d4defa3c38bfa5b15264e6da60ee009ac2f6965a69d1deb09aa333052",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d83245eae0a056d4c134608a2e0fa74e7b3c7642be46feff20726e4b443e01c2",
+      "source_fact_keys": [
+        "source_fact:v1:00a6e4c775cd5760087b47ac78d797a4adbb76559b914c59955d0f9dc8d33503",
+        "source_fact:v1:0deac8991804af95fbc8b615f01b47e0fc3c1b28b44ea643a56082a4f5fd6e81",
+        "source_fact:v1:15621b12ed640e9ff599b0c3aa9b40ddefff0ed6ef4a8879388a98b35ca3b0fa",
+        "source_fact:v1:210bb3dd93924df65f329101439c29248ba9d89febb4fc7db04d5e044972bff5",
+        "source_fact:v1:2e4f2cd3fadbc6e5eac3e27250825a956ac81408923a80c996e23136f6957075",
+        "source_fact:v1:50e8a0b58be7818be203493bd3e2e849b6a1d7e0db4fde6a681f878d1bb85177",
+        "source_fact:v1:7bfca2ee59f5595a47e0f45989036a828f80df2cdbd18192f85f48f68ec8ea22",
+        "source_fact:v1:b1815df442658fe1e07a32bc62fe3581f9d1dcfe45629dc98f93c133d5ef28f2",
+        "source_fact:v1:b5d6b5826a1ad5ee9547a13c884b367581b02e66af41e67ddb48bf8eaa61a45d",
+        "source_fact:v1:cbcdebab9173196f9d2f1261e354696f0cb07a25c535913b3755f5f3c48a55cf",
+        "source_fact:v1:e5db076fa6e962ae48cae1d4585c076860d6e47e1723c4ca9124015923100960",
+        "source_fact:v1:f57ae9e92fb6ae5e4a29e18d1dc4ed359c812af628b26f2b1a4997f6de634b4d",
+        "source_fact:v1:f815feaab048fb82632895b8e707514c3b0928330c0ee5b552254d01e7adea8b"
+      ],
+      "source_published_kst": "2026-10-11T09:23+09:00",
+      "source_title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 진행해 온 약 55조원 자사주 매입이 마무리 국면에 접어들면서 그동안 증시 하단을 지탱했던 수급 요인이 약해질 수 있다는 분석이 나온다.",
+      "title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]"
     },
     "source_fact:d2b7d4bcf2e3405f03989d78": {
       "first_seen_kst": "2026-10-06T21:28:22+09:00",
@@ -331578,6 +332920,31 @@
       "telegram_core_fact": "\"여러 품목에서 담합이 적발되고 같은 기업에 제재가 집중되는 만큼, 과징금 부과와 함께 재발 방지 대책의 실효성을 점검해야 한다\"며 \"공정위는 제재 이후 시정조치 이행을 철저히 확인하고, 먹거리 분야의 담합 감시를 강화해야 한다\"고 강조했다.",
       "title": "설탕·밀가루·전분당 담합…삼양사, 공정위 과징금 1위 불명예"
     },
+    "source_fact:e326e8c53aad74e0945704a8": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634279",
+      "source": "이투데이",
+      "source_body_digest": "cbfae14868554ae278a398eb8c9d424810ab5119cbd8e8600f7f06194799e40b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:56f1dc94dcca5d655c37fe277e0df89dcb097235ea20c5a5cafd630aef70a639",
+      "source_fact_keys": [
+        "source_fact:v1:13cbda660a05ab90368d4548f84b7f57f3d59a2862faad10222bcc5947a1c4cc",
+        "source_fact:v1:36c8e73595ab0beae73ef01207eb7ed8339b55ecb7a506b79ce4416617ec1063",
+        "source_fact:v1:3caccb570622dc8d6a80a8c56528431232b4c4f9cdf228a5a383a1403f749ef0",
+        "source_fact:v1:41d9bf5630acff0b93d10262d22c4f2a443783a5be5a91e0ac0a45a6b400b0a9",
+        "source_fact:v1:88a557f1ecab726e7cef5ab02ba94b781824b19b9b678970e67d260c34e3d074",
+        "source_fact:v1:ab9735ec2bf8b2b227cad39a7a59ca5e4d6dd408dd74e8967fde395c8b056cdb",
+        "source_fact:v1:e9b6d9f4fd7fc379788d1626addc9624a1cff5702ba01286d12955b7d4f82801"
+      ],
+      "source_published_kst": "2026-10-11T09:34+09:00",
+      "source_title": "하이엠솔루텍, AI 데이터센터 맞춤 HVAC 서비스 강화",
+      "telegram_core_fact": "(자료제공=하이엠솔루텍)LG전자 냉난방공조(HVAC) 유지보수 전문 자회사 하이엠솔루텍이 AI 데이터센터 시장 확대에 맞춰 통합 유지보수 서비스를 강화한다. 하이엠솔루텍은 AI 데이터센터를 대상으로 HVAC 통합 유지보수 체계를 강화한다고 11일 밝혔다.",
+      "title": "하이엠솔루텍, AI 데이터센터 맞춤 HVAC 서비스 강화"
+    },
     "source_fact:e327f3abb556860a6484aaac": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
       "lanes": {
@@ -332020,6 +333387,37 @@
       "source_published_kst": "2026-10-06T17:48+09:00",
       "title": "알테오젠, 알테오젠바이오로직스 흡수합병…사업 역량 통합"
     },
+    "source_fact:e3ac3306a742783a0192b742": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01213606645611936",
+      "source": "이데일리",
+      "source_body_digest": "2678f11d4defa3c38bfa5b15264e6da60ee009ac2f6965a69d1deb09aa333052",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d83245eae0a056d4c134608a2e0fa74e7b3c7642be46feff20726e4b443e01c2",
+      "source_fact_keys": [
+        "source_fact:v1:00a6e4c775cd5760087b47ac78d797a4adbb76559b914c59955d0f9dc8d33503",
+        "source_fact:v1:0deac8991804af95fbc8b615f01b47e0fc3c1b28b44ea643a56082a4f5fd6e81",
+        "source_fact:v1:15621b12ed640e9ff599b0c3aa9b40ddefff0ed6ef4a8879388a98b35ca3b0fa",
+        "source_fact:v1:210bb3dd93924df65f329101439c29248ba9d89febb4fc7db04d5e044972bff5",
+        "source_fact:v1:2e4f2cd3fadbc6e5eac3e27250825a956ac81408923a80c996e23136f6957075",
+        "source_fact:v1:50e8a0b58be7818be203493bd3e2e849b6a1d7e0db4fde6a681f878d1bb85177",
+        "source_fact:v1:7bfca2ee59f5595a47e0f45989036a828f80df2cdbd18192f85f48f68ec8ea22",
+        "source_fact:v1:b1815df442658fe1e07a32bc62fe3581f9d1dcfe45629dc98f93c133d5ef28f2",
+        "source_fact:v1:b5d6b5826a1ad5ee9547a13c884b367581b02e66af41e67ddb48bf8eaa61a45d",
+        "source_fact:v1:cbcdebab9173196f9d2f1261e354696f0cb07a25c535913b3755f5f3c48a55cf",
+        "source_fact:v1:e5db076fa6e962ae48cae1d4585c076860d6e47e1723c4ca9124015923100960",
+        "source_fact:v1:f57ae9e92fb6ae5e4a29e18d1dc4ed359c812af628b26f2b1a4997f6de634b4d",
+        "source_fact:v1:f815feaab048fb82632895b8e707514c3b0928330c0ee5b552254d01e7adea8b"
+      ],
+      "source_published_kst": "2026-10-11T09:23+09:00",
+      "source_title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 진행해 온 약 55조원 자사주 매입이 마무리 국면에 접어들면서 그동안 증시 하단을 지탱했던 수급 요인이 약해질 수 있다는 분석이 나온다.",
+      "title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]"
+    },
     "source_fact:e3ac747e28bb6d5c820b0642": {
       "first_seen_kst": "2026-10-07T01:18:00+09:00",
       "lanes": {
@@ -332445,6 +333843,32 @@
       ],
       "source_published_kst": "2026-10-06T12:29+09:00",
       "title": "권대영 \"레버리지 ETF 도입, 금융위가 최종 결정…투자자 손실 송구\""
+    },
+    "source_fact:e466106944e958a73d9f1641": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820811",
+      "source": "뉴시스",
+      "source_body_digest": "bca418c5558c687192e3e26c4aaf0d15c83b702363c72b0aa8a06da1e7a7caae",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de0bd7ebf2efed26eb8e6c838e9e1b73f164d30bac035a376dd1761a11bb8d20",
+      "source_fact_keys": [
+        "source_fact:v1:488ac713ccd86bb6c6e036184e3c03c37551132d7971cd782b9c1115dd210f2e",
+        "source_fact:v1:96a5c8d03a49557cf4cbdcc5d669793247e99a2f3a0e84d61c3f3a61e4bbce0d",
+        "source_fact:v1:9b682683ef07d844936c3281b6d39f6bb756824c65556cf69efc8352988393fd",
+        "source_fact:v1:b937ce5b9657396947ca1d99c95c37ee3ac5fd2a73f39bbc419dbec8d15fdf72",
+        "source_fact:v1:dacddf784d4cb9b87c573ac02b5c0aa8c660eb82ada0a691ae1f8d8ea5759224",
+        "source_fact:v1:e0f31a89b54f2e8716e219ca471bbc2e7466ef4ace66ced4c4a0bb713fda4b5f",
+        "source_fact:v1:e5a0bf90d4452719b34fec5ad0609104ecca9d5c5a76e813080d80179c656b7c",
+        "source_fact:v1:f71228db8695c22f8ce521f4a27ae2ca6f7b18bd4e7e79a77ddb40218c1c8f66"
+      ],
+      "source_published_kst": "2026-10-11T09:31+09:00",
+      "source_title": "현대차, 인도 누적 판매 1000만대 눈앞…\"年 생산량 110만대로 확대\"",
+      "telegram_core_fact": "현대차와 인도자동차공업협회(SIAM)에 따르면 현대차의 1998년부터 올해 3분기까지 인도 내 누적 판매량은 988만4960대로 집계됐다.",
+      "title": "현대차, 인도 누적 판매 1000만대 눈앞…\"年 생산량 110만대로 확대\""
     },
     "source_fact:e46a608568f1225297d90d5e": {
       "first_seen_kst": "2026-10-09T23:03:47+09:00",
@@ -333841,6 +335265,31 @@
       ],
       "source_published_kst": "2026-10-06T04:36+09:00",
       "title": "美10년물 국채금리 장중 5.34% 돌파…24년 만에 최고"
+    },
+    "source_fact:e6a19ac10a151e984ebe52b6": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634279",
+      "source": "이투데이",
+      "source_body_digest": "cbfae14868554ae278a398eb8c9d424810ab5119cbd8e8600f7f06194799e40b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:56f1dc94dcca5d655c37fe277e0df89dcb097235ea20c5a5cafd630aef70a639",
+      "source_fact_keys": [
+        "source_fact:v1:13cbda660a05ab90368d4548f84b7f57f3d59a2862faad10222bcc5947a1c4cc",
+        "source_fact:v1:36c8e73595ab0beae73ef01207eb7ed8339b55ecb7a506b79ce4416617ec1063",
+        "source_fact:v1:3caccb570622dc8d6a80a8c56528431232b4c4f9cdf228a5a383a1403f749ef0",
+        "source_fact:v1:41d9bf5630acff0b93d10262d22c4f2a443783a5be5a91e0ac0a45a6b400b0a9",
+        "source_fact:v1:88a557f1ecab726e7cef5ab02ba94b781824b19b9b678970e67d260c34e3d074",
+        "source_fact:v1:ab9735ec2bf8b2b227cad39a7a59ca5e4d6dd408dd74e8967fde395c8b056cdb",
+        "source_fact:v1:e9b6d9f4fd7fc379788d1626addc9624a1cff5702ba01286d12955b7d4f82801"
+      ],
+      "source_published_kst": "2026-10-11T09:34+09:00",
+      "source_title": "하이엠솔루텍, AI 데이터센터 맞춤 HVAC 서비스 강화",
+      "telegram_core_fact": "(자료제공=하이엠솔루텍)LG전자 냉난방공조(HVAC) 유지보수 전문 자회사 하이엠솔루텍이 AI 데이터센터 시장 확대에 맞춰 통합 유지보수 서비스를 강화한다. 하이엠솔루텍은 AI 데이터센터를 대상으로 HVAC 통합 유지보수 체계를 강화한다고 11일 밝혔다.",
+      "title": "하이엠솔루텍, AI 데이터센터 맞춤 HVAC 서비스 강화"
     },
     "source_fact:e6a3f2b8753cfced2e02f070": {
       "first_seen_kst": "2026-10-07T18:30:29+09:00",
@@ -339118,6 +340567,30 @@
       "telegram_core_fact": "미래에셋자산운용은 달러 단기자산 상장지수펀드(ETF) 2종 ‘TIGER 미국달러단기채권액티브’와 ‘TIGER 미국초단기(3개월이하)국채’의 합산 순자산이 1조원을 돌파했다고 8일 밝혔다.",
       "title": "미래에셋 'TIGER 달러 단기자산 ETF' 2종, 합산 순자산 1조 돌파"
     },
+    "source_fact:ee7ee4f6cd3fe802b1473375": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://biz.heraldcorp.com/article/10897551",
+      "source": "헤럴드경제",
+      "source_body_digest": "0441e27e57997b0115b337fbea715f00c161b0125c9e394fc4985e2ba357e90e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e24e7643fb94dfb5f1142c7f66bc5433cd6d1be0bd5829212dbf91d6d1e8c3f4",
+      "source_fact_keys": [
+        "source_fact:v1:2fde5ce3fb21d2a6ba4c04e609919043e20d1e5a4196a3add89eb8dbb988de63",
+        "source_fact:v1:5e89c1b7b1dacf2b91ea5f868c3e6debfaaf9336689f28685d4c91461c88e1c6",
+        "source_fact:v1:a2b1dc6d64212003e0b6d60f2f8d47fb179598b6368beea49101dae1e41e9709",
+        "source_fact:v1:ab0e8d3bd887ff3de5198df735f2dc159e4e1a75fe8c3ee39af63183eb1f1311",
+        "source_fact:v1:e4aa3b2cfb01da30646782b8fdbf62e93d3587cc3370b48ac91b5206eb5782e7",
+        "source_fact:v1:f44f252bc92448e9d021cc956c57aa22900a08e8f3e9631956075874e3c220d3"
+      ],
+      "source_published_kst": "2026-10-11T09:40+09:00",
+      "source_title": "빅딜 완주하고 펀딩 속도전…한투PE, 투자 영토 넓힌다 [하우스리뷰]",
+      "telegram_core_fact": "나아가 1조원대 독자 실물 인프라 투자 플랫폼 구축을 비롯해, 핵심광물 공급망 정책 펀드와 연계 프로젝트 펀드, 스페셜시츄에이션 하이브리드 펀드 조성에 이르기까지 다각화된 펀딩 레이스를 전개하며 대체투자 영토 확장을 위한 거침없는 행보를 이어가는 모습이다.",
+      "title": "빅딜 완주하고 펀딩 속도전…한투PE, 투자 영토 넓힌다 [하우스리뷰]"
+    },
     "source_fact:ee8f39b8c99d76da981b8c7c": {
       "first_seen_kst": "2026-10-08T02:41:45+09:00",
       "lanes": {
@@ -339703,6 +341176,37 @@
       "source_title": "AI칩 사려 53조원 차입 추진…스페이스X 신용위험 '사상 최고'",
       "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 일론 머스크의 스페이스X가 엔비디아의 인공지능(AI) 칩 구매를 위해 400억달러(약 53조5560억원) 신규 차입을 추진하는 가운데 스페이스X의 신용위험 지표가 사상 최고치로 치솟았다.",
       "title": "AI칩 사려 53조원 차입 추진…스페이스X 신용위험 '사상 최고'"
+    },
+    "source_fact:ef66c0fe502eda5ef2f0ee38": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01213606645611936",
+      "source": "이데일리",
+      "source_body_digest": "2678f11d4defa3c38bfa5b15264e6da60ee009ac2f6965a69d1deb09aa333052",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d83245eae0a056d4c134608a2e0fa74e7b3c7642be46feff20726e4b443e01c2",
+      "source_fact_keys": [
+        "source_fact:v1:00a6e4c775cd5760087b47ac78d797a4adbb76559b914c59955d0f9dc8d33503",
+        "source_fact:v1:0deac8991804af95fbc8b615f01b47e0fc3c1b28b44ea643a56082a4f5fd6e81",
+        "source_fact:v1:15621b12ed640e9ff599b0c3aa9b40ddefff0ed6ef4a8879388a98b35ca3b0fa",
+        "source_fact:v1:210bb3dd93924df65f329101439c29248ba9d89febb4fc7db04d5e044972bff5",
+        "source_fact:v1:2e4f2cd3fadbc6e5eac3e27250825a956ac81408923a80c996e23136f6957075",
+        "source_fact:v1:50e8a0b58be7818be203493bd3e2e849b6a1d7e0db4fde6a681f878d1bb85177",
+        "source_fact:v1:7bfca2ee59f5595a47e0f45989036a828f80df2cdbd18192f85f48f68ec8ea22",
+        "source_fact:v1:b1815df442658fe1e07a32bc62fe3581f9d1dcfe45629dc98f93c133d5ef28f2",
+        "source_fact:v1:b5d6b5826a1ad5ee9547a13c884b367581b02e66af41e67ddb48bf8eaa61a45d",
+        "source_fact:v1:cbcdebab9173196f9d2f1261e354696f0cb07a25c535913b3755f5f3c48a55cf",
+        "source_fact:v1:e5db076fa6e962ae48cae1d4585c076860d6e47e1723c4ca9124015923100960",
+        "source_fact:v1:f57ae9e92fb6ae5e4a29e18d1dc4ed359c812af628b26f2b1a4997f6de634b4d",
+        "source_fact:v1:f815feaab048fb82632895b8e707514c3b0928330c0ee5b552254d01e7adea8b"
+      ],
+      "source_published_kst": "2026-10-11T09:23+09:00",
+      "source_title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 진행해 온 약 55조원 자사주 매입이 마무리 국면에 접어들면서 그동안 증시 하단을 지탱했던 수급 요인이 약해질 수 있다는 분석이 나온다.",
+      "title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]"
     },
     "source_fact:ef6e59a9b1cea673be9ee03e": {
       "first_seen_kst": "2026-10-06T16:30:27+09:00",
@@ -340980,6 +342484,32 @@
       "source_title": "중국 반도체 장비, 3분기 수입 증가가 말해주는 것 [돈 되는 해외 주식]",
       "telegram_core_fact": "2023~2025년 분기별 중국산 장비 기업 매출과 외국산 장비 수입이 높은 동행성을 보였다는 점을 감안하면 3분기 중국 장비 기업 실적에 대한 눈높이를 상향할 필요가 있다고 판단한다.",
       "title": "중국 반도체 장비, 3분기 수입 증가가 말해주는 것 [돈 되는 해외 주식]"
+    },
+    "source_fact:f19028d931b0c871408a9a31": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820811",
+      "source": "뉴시스",
+      "source_body_digest": "bca418c5558c687192e3e26c4aaf0d15c83b702363c72b0aa8a06da1e7a7caae",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de0bd7ebf2efed26eb8e6c838e9e1b73f164d30bac035a376dd1761a11bb8d20",
+      "source_fact_keys": [
+        "source_fact:v1:488ac713ccd86bb6c6e036184e3c03c37551132d7971cd782b9c1115dd210f2e",
+        "source_fact:v1:96a5c8d03a49557cf4cbdcc5d669793247e99a2f3a0e84d61c3f3a61e4bbce0d",
+        "source_fact:v1:9b682683ef07d844936c3281b6d39f6bb756824c65556cf69efc8352988393fd",
+        "source_fact:v1:b937ce5b9657396947ca1d99c95c37ee3ac5fd2a73f39bbc419dbec8d15fdf72",
+        "source_fact:v1:dacddf784d4cb9b87c573ac02b5c0aa8c660eb82ada0a691ae1f8d8ea5759224",
+        "source_fact:v1:e0f31a89b54f2e8716e219ca471bbc2e7466ef4ace66ced4c4a0bb713fda4b5f",
+        "source_fact:v1:e5a0bf90d4452719b34fec5ad0609104ecca9d5c5a76e813080d80179c656b7c",
+        "source_fact:v1:f71228db8695c22f8ce521f4a27ae2ca6f7b18bd4e7e79a77ddb40218c1c8f66"
+      ],
+      "source_published_kst": "2026-10-11T09:31+09:00",
+      "source_title": "현대차, 인도 누적 판매 1000만대 눈앞…\"年 생산량 110만대로 확대\"",
+      "telegram_core_fact": "현대차와 인도자동차공업협회(SIAM)에 따르면 현대차의 1998년부터 올해 3분기까지 인도 내 누적 판매량은 988만4960대로 집계됐다.",
+      "title": "현대차, 인도 누적 판매 1000만대 눈앞…\"年 생산량 110만대로 확대\""
     },
     "source_fact:f190935d849101ac7bdc3963": {
       "first_seen_kst": "2026-10-07T18:30:29+09:00",
@@ -345347,6 +346877,32 @@
       "telegram_core_fact": "중노위는 27일 온라인 학습지 업체와 회원가입 상담 업무를 수행한 재택 상담교사에 대해 근로기준법상 근로자로 인정하는 판결을 내렸다고 밝혔다. 중노위는 위탁업무계약을 체결한 학습교사에게 일방적으로 위탁계약 종료를 통보한 회사가 부당해고를 했다고 판정했다.",
       "title": "학습지 교사 '근로자'로 첫 인정…중노위, 부당해고 판정"
     },
+    "source_fact:f8e19832ae08eea77afee0fa": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820811",
+      "source": "뉴시스",
+      "source_body_digest": "bca418c5558c687192e3e26c4aaf0d15c83b702363c72b0aa8a06da1e7a7caae",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de0bd7ebf2efed26eb8e6c838e9e1b73f164d30bac035a376dd1761a11bb8d20",
+      "source_fact_keys": [
+        "source_fact:v1:488ac713ccd86bb6c6e036184e3c03c37551132d7971cd782b9c1115dd210f2e",
+        "source_fact:v1:96a5c8d03a49557cf4cbdcc5d669793247e99a2f3a0e84d61c3f3a61e4bbce0d",
+        "source_fact:v1:9b682683ef07d844936c3281b6d39f6bb756824c65556cf69efc8352988393fd",
+        "source_fact:v1:b937ce5b9657396947ca1d99c95c37ee3ac5fd2a73f39bbc419dbec8d15fdf72",
+        "source_fact:v1:dacddf784d4cb9b87c573ac02b5c0aa8c660eb82ada0a691ae1f8d8ea5759224",
+        "source_fact:v1:e0f31a89b54f2e8716e219ca471bbc2e7466ef4ace66ced4c4a0bb713fda4b5f",
+        "source_fact:v1:e5a0bf90d4452719b34fec5ad0609104ecca9d5c5a76e813080d80179c656b7c",
+        "source_fact:v1:f71228db8695c22f8ce521f4a27ae2ca6f7b18bd4e7e79a77ddb40218c1c8f66"
+      ],
+      "source_published_kst": "2026-10-11T09:31+09:00",
+      "source_title": "현대차, 인도 누적 판매 1000만대 눈앞…\"年 생산량 110만대로 확대\"",
+      "telegram_core_fact": "현대차와 인도자동차공업협회(SIAM)에 따르면 현대차의 1998년부터 올해 3분기까지 인도 내 누적 판매량은 988만4960대로 집계됐다.",
+      "title": "현대차, 인도 누적 판매 1000만대 눈앞…\"年 생산량 110만대로 확대\""
+    },
     "source_fact:f8fd2cd7450703b63022f6df": {
       "first_seen_kst": "2026-10-06T22:21:21+09:00",
       "lanes": {
@@ -347291,6 +348847,37 @@
       "source_title": "금융당국, '초단타' HFT 겨냥…과다호가부담금·호가 지연제 고심",
       "telegram_core_fact": "금융당국이 고빈도매매(HFT·High Frequency Trading) 보완 방안 검토에 착수한 가운데 파생시장에 적용되는 과다호가부담금, 스피드범프(Speed Bump·호가 지연제) 등이 규제책으로 거론된다.",
       "title": "금융당국, '초단타' HFT 겨냥…과다호가부담금·호가 지연제 고심"
+    },
+    "source_fact:fc648d2b1316681d428a6432": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01213606645611936",
+      "source": "이데일리",
+      "source_body_digest": "2678f11d4defa3c38bfa5b15264e6da60ee009ac2f6965a69d1deb09aa333052",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d83245eae0a056d4c134608a2e0fa74e7b3c7642be46feff20726e4b443e01c2",
+      "source_fact_keys": [
+        "source_fact:v1:00a6e4c775cd5760087b47ac78d797a4adbb76559b914c59955d0f9dc8d33503",
+        "source_fact:v1:0deac8991804af95fbc8b615f01b47e0fc3c1b28b44ea643a56082a4f5fd6e81",
+        "source_fact:v1:15621b12ed640e9ff599b0c3aa9b40ddefff0ed6ef4a8879388a98b35ca3b0fa",
+        "source_fact:v1:210bb3dd93924df65f329101439c29248ba9d89febb4fc7db04d5e044972bff5",
+        "source_fact:v1:2e4f2cd3fadbc6e5eac3e27250825a956ac81408923a80c996e23136f6957075",
+        "source_fact:v1:50e8a0b58be7818be203493bd3e2e849b6a1d7e0db4fde6a681f878d1bb85177",
+        "source_fact:v1:7bfca2ee59f5595a47e0f45989036a828f80df2cdbd18192f85f48f68ec8ea22",
+        "source_fact:v1:b1815df442658fe1e07a32bc62fe3581f9d1dcfe45629dc98f93c133d5ef28f2",
+        "source_fact:v1:b5d6b5826a1ad5ee9547a13c884b367581b02e66af41e67ddb48bf8eaa61a45d",
+        "source_fact:v1:cbcdebab9173196f9d2f1261e354696f0cb07a25c535913b3755f5f3c48a55cf",
+        "source_fact:v1:e5db076fa6e962ae48cae1d4585c076860d6e47e1723c4ca9124015923100960",
+        "source_fact:v1:f57ae9e92fb6ae5e4a29e18d1dc4ed359c812af628b26f2b1a4997f6de634b4d",
+        "source_fact:v1:f815feaab048fb82632895b8e707514c3b0928330c0ee5b552254d01e7adea8b"
+      ],
+      "source_published_kst": "2026-10-11T09:23+09:00",
+      "source_title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 진행해 온 약 55조원 자사주 매입이 마무리 국면에 접어들면서 그동안 증시 하단을 지탱했던 수급 요인이 약해질 수 있다는 분석이 나온다.",
+      "title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]"
     },
     "source_fact:fc6fed4470ea6f1559203dd4": {
       "first_seen_kst": "2026-10-06T18:16:47+09:00",
@@ -365819,6 +367406,32 @@
       "source": "뉴시스",
       "title": "美국채 10년물 19년 만에 5.1%…'10월 또 금리인상' 베팅 66%"
     },
+    "title:46960ac2e67f4abde4ff74c6": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820811",
+      "source": "뉴시스",
+      "source_body_digest": "bca418c5558c687192e3e26c4aaf0d15c83b702363c72b0aa8a06da1e7a7caae",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de0bd7ebf2efed26eb8e6c838e9e1b73f164d30bac035a376dd1761a11bb8d20",
+      "source_fact_keys": [
+        "source_fact:v1:488ac713ccd86bb6c6e036184e3c03c37551132d7971cd782b9c1115dd210f2e",
+        "source_fact:v1:96a5c8d03a49557cf4cbdcc5d669793247e99a2f3a0e84d61c3f3a61e4bbce0d",
+        "source_fact:v1:9b682683ef07d844936c3281b6d39f6bb756824c65556cf69efc8352988393fd",
+        "source_fact:v1:b937ce5b9657396947ca1d99c95c37ee3ac5fd2a73f39bbc419dbec8d15fdf72",
+        "source_fact:v1:dacddf784d4cb9b87c573ac02b5c0aa8c660eb82ada0a691ae1f8d8ea5759224",
+        "source_fact:v1:e0f31a89b54f2e8716e219ca471bbc2e7466ef4ace66ced4c4a0bb713fda4b5f",
+        "source_fact:v1:e5a0bf90d4452719b34fec5ad0609104ecca9d5c5a76e813080d80179c656b7c",
+        "source_fact:v1:f71228db8695c22f8ce521f4a27ae2ca6f7b18bd4e7e79a77ddb40218c1c8f66"
+      ],
+      "source_published_kst": "2026-10-11T09:31+09:00",
+      "source_title": "현대차, 인도 누적 판매 1000만대 눈앞…\"年 생산량 110만대로 확대\"",
+      "telegram_core_fact": "현대차와 인도자동차공업협회(SIAM)에 따르면 현대차의 1998년부터 올해 3분기까지 인도 내 누적 판매량은 988만4960대로 집계됐다.",
+      "title": "현대차, 인도 누적 판매 1000만대 눈앞…\"年 생산량 110만대로 확대\""
+    },
     "title:46bd4c7868dc3d34a276df76": {
       "first_seen_kst": "2026-10-10T06:23:09+09:00",
       "lanes": {
@@ -373221,6 +374834,31 @@
       "source_title": "한국경제평론가협회, 국회서 '한국경제 전망·부동산 정책 쟁점' 논의",
       "telegram_core_fact": "특히 반도체 산업의 변화와 자금 흐름, 부동산 수요·공급 전망, 세제개편안 등을 주요 의제로 다룬다.",
       "title": "한국경제평론가협회, 국회서 '한국경제 전망·부동산 정책 쟁점' 논의"
+    },
+    "title:6b5fc5d977dbd1ac5342005c": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634279",
+      "source": "이투데이",
+      "source_body_digest": "cbfae14868554ae278a398eb8c9d424810ab5119cbd8e8600f7f06194799e40b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:56f1dc94dcca5d655c37fe277e0df89dcb097235ea20c5a5cafd630aef70a639",
+      "source_fact_keys": [
+        "source_fact:v1:13cbda660a05ab90368d4548f84b7f57f3d59a2862faad10222bcc5947a1c4cc",
+        "source_fact:v1:36c8e73595ab0beae73ef01207eb7ed8339b55ecb7a506b79ce4416617ec1063",
+        "source_fact:v1:3caccb570622dc8d6a80a8c56528431232b4c4f9cdf228a5a383a1403f749ef0",
+        "source_fact:v1:41d9bf5630acff0b93d10262d22c4f2a443783a5be5a91e0ac0a45a6b400b0a9",
+        "source_fact:v1:88a557f1ecab726e7cef5ab02ba94b781824b19b9b678970e67d260c34e3d074",
+        "source_fact:v1:ab9735ec2bf8b2b227cad39a7a59ca5e4d6dd408dd74e8967fde395c8b056cdb",
+        "source_fact:v1:e9b6d9f4fd7fc379788d1626addc9624a1cff5702ba01286d12955b7d4f82801"
+      ],
+      "source_published_kst": "2026-10-11T09:34+09:00",
+      "source_title": "하이엠솔루텍, AI 데이터센터 맞춤 HVAC 서비스 강화",
+      "telegram_core_fact": "(자료제공=하이엠솔루텍)LG전자 냉난방공조(HVAC) 유지보수 전문 자회사 하이엠솔루텍이 AI 데이터센터 시장 확대에 맞춰 통합 유지보수 서비스를 강화한다. 하이엠솔루텍은 AI 데이터센터를 대상으로 HVAC 통합 유지보수 체계를 강화한다고 11일 밝혔다.",
+      "title": "하이엠솔루텍, AI 데이터센터 맞춤 HVAC 서비스 강화"
     },
     "title:6b86484150e7143f5b5f3496": {
       "first_seen_kst": "2026-10-06T06:36:31+09:00",
@@ -384678,6 +386316,37 @@
       "source": "머니투데이",
       "title": "[사설]알래스카 송유관 사업성 꼼꼼히 따져야"
     },
+    "title:9ef7440e08b027e9ccf8845a": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01213606645611936",
+      "source": "이데일리",
+      "source_body_digest": "2678f11d4defa3c38bfa5b15264e6da60ee009ac2f6965a69d1deb09aa333052",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d83245eae0a056d4c134608a2e0fa74e7b3c7642be46feff20726e4b443e01c2",
+      "source_fact_keys": [
+        "source_fact:v1:00a6e4c775cd5760087b47ac78d797a4adbb76559b914c59955d0f9dc8d33503",
+        "source_fact:v1:0deac8991804af95fbc8b615f01b47e0fc3c1b28b44ea643a56082a4f5fd6e81",
+        "source_fact:v1:15621b12ed640e9ff599b0c3aa9b40ddefff0ed6ef4a8879388a98b35ca3b0fa",
+        "source_fact:v1:210bb3dd93924df65f329101439c29248ba9d89febb4fc7db04d5e044972bff5",
+        "source_fact:v1:2e4f2cd3fadbc6e5eac3e27250825a956ac81408923a80c996e23136f6957075",
+        "source_fact:v1:50e8a0b58be7818be203493bd3e2e849b6a1d7e0db4fde6a681f878d1bb85177",
+        "source_fact:v1:7bfca2ee59f5595a47e0f45989036a828f80df2cdbd18192f85f48f68ec8ea22",
+        "source_fact:v1:b1815df442658fe1e07a32bc62fe3581f9d1dcfe45629dc98f93c133d5ef28f2",
+        "source_fact:v1:b5d6b5826a1ad5ee9547a13c884b367581b02e66af41e67ddb48bf8eaa61a45d",
+        "source_fact:v1:cbcdebab9173196f9d2f1261e354696f0cb07a25c535913b3755f5f3c48a55cf",
+        "source_fact:v1:e5db076fa6e962ae48cae1d4585c076860d6e47e1723c4ca9124015923100960",
+        "source_fact:v1:f57ae9e92fb6ae5e4a29e18d1dc4ed359c812af628b26f2b1a4997f6de634b4d",
+        "source_fact:v1:f815feaab048fb82632895b8e707514c3b0928330c0ee5b552254d01e7adea8b"
+      ],
+      "source_published_kst": "2026-10-11T09:23+09:00",
+      "source_title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]",
+      "telegram_core_fact": "삼성전자와 SK하이닉스가 진행해 온 약 55조원 자사주 매입이 마무리 국면에 접어들면서 그동안 증시 하단을 지탱했던 수급 요인이 약해질 수 있다는 분석이 나온다.",
+      "title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]"
+    },
     "title:9f1c2cf119d368619faf7271": {
       "first_seen_kst": "2026-10-08T03:26:42+09:00",
       "lanes": {
@@ -388350,6 +390019,23 @@
       "telegram_core_fact": "이익잉여금도 1억2300만 달러로 8.1% 증가했고, 12년 연속 배당 인상을 결정해 주주환원 의지를 보여줬습니다.",
       "title": "밸류라인, 12년 연속 배당 인상·순이익 증가에 투자자 관심 집중"
     },
+    "title:ae8dd45d99c7517c27e46bf1": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/11/2026101107584729420",
+      "source": "머니투데이",
+      "source_body_digest": "10c42f102a6f05ed68e687ae3cab418be176c69f5432c2497ba76621071ec7d6",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-11T09:27+09:00",
+      "source_title": "노벨평화상 파장 확산…美, ICC 제재 vs 수상자 \"전례 없다\" 반발",
+      "telegram_core_fact": "미국은 수상자 발표 몇 시간 뒤 ICC에 대한 새 제재를 발표했다.",
+      "title": "노벨평화상 파장 확산…美, ICC 제재 vs 수상자 \"전례 없다\" 반발"
+    },
     "title:ae8f25ed15838ef7f0fc2b46": {
       "first_seen_kst": "2026-10-04T21:15:01+09:00",
       "lanes": {
@@ -391322,6 +393008,26 @@
       "source_published_kst": "2026-10-05T06:15+09:00",
       "title": "반세기만의 원전 역수출…웨스팅하우스 반대 뚫어낸 막전막후 | 연합뉴스"
     },
+    "title:bca23fd98a35e7269ca453fe": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.etnews.com/20261008000268",
+      "source": "전자신문",
+      "source_body_digest": "4d627aa1beeb4a2544f4c485542f7bb9c72139f37864cefe5f1eb4afe2570051",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dbd7afd24e760d0820bf7b275e02a3400146dfbb1c2afacf4695231b9033e0eb",
+      "source_fact_keys": [
+        "source_fact:v1:e784efc67a22e7b3127ff7cf27de972c0bcf22c5d9a2429b8407450d8a15b46d",
+        "source_fact:v1:fe712dafdfde16010cc2735556539f6cfe70e1554094ea9ec8d89be27184e9b2"
+      ],
+      "source_published_kst": "2026-10-11T09:30+09:00",
+      "source_title": "경영악화 반영 장치 없다…유료방송 “방발기금 부과체계 통일해야”",
+      "telegram_core_fact": "반면 옛 과학기술정보통신부 고시를 따랐던 유료방송사업자는 2017년부터 방송서비스매출의 1.5%를 일괄 부과받고 있다. 방송사업매출 기준으로 SO는 2017년 2조1307억원에서 1조6399억원으로 23% 감소했다.",
+      "title": "경영악화 반영 장치 없다…유료방송 “방발기금 부과체계 통일해야”"
+    },
     "title:bca77bbe672a88171b163a9c": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -393967,6 +395673,23 @@
       ],
       "source_published_kst": "2026-10-06T07:42+09:00",
       "title": "[오늘의 증시]美금리 상승에도 나스닥 최고치…코스피 상승 출발 전망"
+    },
+    "title:cb009b2b69fe206d45333ed6": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820780",
+      "source": "뉴시스",
+      "source_body_digest": "88042f6f1ddb79313c1e0735dfd6f63bed9d7216f76c9a607dfc4fcea14c0f00",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-11T09:31+09:00",
+      "source_title": "'오디세이' 1383억 벌었다…'아바타2' 제치고 역대 외화 매출 1위",
+      "telegram_core_fact": "'오디세이'는 '아바타'(약 1252억원), '어벤져스: 엔드게임'(약 1224억 원), '겨울왕국 2'(약 1150억 원) 등 국내 극장가에서 흥행한 주요 외화들의 매출 기록도 모두 넘어섰다.",
+      "title": "'오디세이' 1383억 벌었다…'아바타2' 제치고 역대 외화 매출 1위"
     },
     "title:cb0890bc5eaa2d4ae89516fe": {
       "first_seen_kst": "2026-10-08T09:33:54+09:00",
@@ -399208,6 +400931,30 @@
       "link": "https://magazine.hankyung.com/business/article/202610016223b",
       "source": "한국경제",
       "title": "K원전, 美 시장 뚫었다…APR1400 2기·웨스팅하우스 지분 인수 추진"
+    },
+    "title:e21d1b8d85a72ccc036b0911": {
+      "first_seen_kst": "2026-10-11T09:50:45+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:50:45+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:50:45+09:00",
+      "link": "https://biz.heraldcorp.com/article/10897551",
+      "source": "헤럴드경제",
+      "source_body_digest": "0441e27e57997b0115b337fbea715f00c161b0125c9e394fc4985e2ba357e90e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e24e7643fb94dfb5f1142c7f66bc5433cd6d1be0bd5829212dbf91d6d1e8c3f4",
+      "source_fact_keys": [
+        "source_fact:v1:2fde5ce3fb21d2a6ba4c04e609919043e20d1e5a4196a3add89eb8dbb988de63",
+        "source_fact:v1:5e89c1b7b1dacf2b91ea5f868c3e6debfaaf9336689f28685d4c91461c88e1c6",
+        "source_fact:v1:a2b1dc6d64212003e0b6d60f2f8d47fb179598b6368beea49101dae1e41e9709",
+        "source_fact:v1:ab0e8d3bd887ff3de5198df735f2dc159e4e1a75fe8c3ee39af63183eb1f1311",
+        "source_fact:v1:e4aa3b2cfb01da30646782b8fdbf62e93d3587cc3370b48ac91b5206eb5782e7",
+        "source_fact:v1:f44f252bc92448e9d021cc956c57aa22900a08e8f3e9631956075874e3c220d3"
+      ],
+      "source_published_kst": "2026-10-11T09:40+09:00",
+      "source_title": "빅딜 완주하고 펀딩 속도전…한투PE, 투자 영토 넓힌다 [하우스리뷰]",
+      "telegram_core_fact": "나아가 1조원대 독자 실물 인프라 투자 플랫폼 구축을 비롯해, 핵심광물 공급망 정책 펀드와 연계 프로젝트 펀드, 스페셜시츄에이션 하이브리드 펀드 조성에 이르기까지 다각화된 펀딩 레이스를 전개하며 대체투자 영토 확장을 위한 거침없는 행보를 이어가는 모습이다.",
+      "title": "빅딜 완주하고 펀딩 속도전…한투PE, 투자 영토 넓힌다 [하우스리뷰]"
     },
     "title:e2211bee72ead2c9c448226d": {
       "first_seen_kst": "2026-10-09T22:25:54+09:00",
@@ -405556,5 +407303,5 @@
       "title": "AI 데이터센터가 살린 철강…관세 50%에도 대미 수출 급증"
     }
   },
-  "updated_at_kst": "2026-10-11T09:28:38+09:00"
+  "updated_at_kst": "2026-10-11T09:50:45+09:00"
 }
