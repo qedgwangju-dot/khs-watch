@@ -155,6 +155,33 @@ class AgenticCpuStructureTests(unittest.TestCase):
             "DIGITIMES 2027 가속기당 CPU 전망 변경: nearly_double→triple"
         ])
 
+    def test_digitimes_cpu_per_accelerator_double_requires_matching_metric(self):
+        url = w.CPU_STRUCTURE_BASELINE["digitimes"]["per_accelerator_source_url"]
+        # The headline contains CPU and 2027, but only *GPU memory* doubled.
+        provider, obs = w.cpu_structure_observation(
+            "2027 AI server CPU outlook",
+            "GPU memory per accelerator will nearly double by 2027, while CPU allocations are unchanged.",
+            url,
+        )
+        self.assertEqual((provider, obs), ("", {}))
+        # Likewise, an unrelated rack-level doubling must not masquerade as
+        # an accelerator-per-CPU revision.
+        provider, obs = w.cpu_structure_observation(
+            "2027 AI server CPU outlook",
+            "AI rack power per accelerator will almost double, without more CPU sockets.",
+            url,
+        )
+        self.assertEqual((provider, obs), ("", {}))
+        # Keep both observed phrasings that genuinely refer to CPU allocation.
+        for headline, description in (
+            ("2027 AI servers will carry nearly twice as many CPUs per accelerator", ""),
+            ("2027 AI server CPU forecast", "CPUs per accelerator will nearly double."),
+        ):
+            with self.subTest(headline=headline):
+                provider, obs = w.cpu_structure_observation(headline, description, url)
+                self.assertEqual(provider, "digitimes")
+                self.assertEqual(obs.get("per_accelerator_cpu_2027"), "nearly_double")
+
     def test_bnp_2030_revision_only_compares_same_provider(self):
         old = w.CPU_STRUCTURE_BASELINE["bnpp_public"]
         self.assertEqual(w.cpu_structure_changes(old, {"market_2030_usd_bn": 235}, "bnpp_public"), [])

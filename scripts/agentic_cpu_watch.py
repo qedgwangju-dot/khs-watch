@@ -630,8 +630,18 @@ def cpu_structure_observation(title: str, text: str, url: str) -> tuple[str, dic
             accelerator_per_cpu = float(ratio.group(1))
             if 0.7 <= accelerator_per_cpu <= 16:
                 obs["cpu_xpu_ratio_2027"] = accelerator_per_cpu
+        # A generic "nearly double" elsewhere in the article may refer to
+        # GPU memory, bandwidth or rack count. Only treat it as CPU demand
+        # when the phrase specifically names CPUs *per accelerator*.
+        cpu_per_accelerator_double = (
+            r"(?:nearly|almost)\s+(?:twice|double)\s+as\s+many\s+cpus?\s+per\s+accelerator"
+            r"|(?:cpus?\s+per\s+accelerator|cpu\s+(?:count|sockets?)\s+per\s+accelerator)"
+            r"[^.!?]{0,90}?(?:nearly|almost)\s+doub(?:le|les)"
+            r"|(?:nearly|almost)\s+doub(?:le|les)\s+(?:the\s+)?"
+            r"(?:number\s+of\s+)?cpus?\s+per\s+accelerator"
+        )
         if "accelerator" in low:
-            if re.search(r"(?:nearly|almost)\s+(?:twice|double)|nearly\s+twofold", low):
+            if re.search(cpu_per_accelerator_double, low, re.I):
                 obs["per_accelerator_cpu_2027"] = "nearly_double"
             elif re.search(r"(?:threefold|three[- ]?times|triple)\s+(?:as many\s+)?cpus?\s+per\s+accelerator", low):
                 obs["per_accelerator_cpu_2027"] = "triple"
