@@ -38,7 +38,13 @@ CONTRACTS = {
     "5년": {"code": "044601", "name": "UST 5Y NOTE"},
     "10년": {"code": "043602", "name": "UST 10Y NOTE"},
     "30년": {"code": "020601", "name": "UST BOND"},
+    "초장기(UB)": {"code": "020604", "name": "ULTRA UST BOND"},
 }
+# TFF 초장기(UB) 결과는 별도 표시하고, 기존 2·5·10·30년 종합 판정의
+# 모집단·임계값은 종전과 동일하게 유지한다.
+CORE_CONTRACTS = ("2년", "5년", "10년", "30년")
+CME_CTD_EDUCATION_URL = "https://www.cmegroup.com/articles/2023/navigating-higher-yields-the-role-of-treasury-futures-in-todays-market.html"
+CME_CTD_ANALYTICS_URL = "https://www.cmegroup.com/tools-information/quikstrike/quikstrike-treasury-analytics-user-guide.html"
 
 
 def load_state():
@@ -108,7 +114,9 @@ def get_cftc_official_html():
 
     out = {}
     for label, meta in CONTRACTS.items():
-        pattern = re.escape(meta["name"]) + r"\s*-\s*CHICAGO BOARD OF TRADE"
+        # Classic 'UST BOND' must not match the substring inside 'ULTRA UST BOND'.
+        # Anchor the full exchange contract name at the start of its own line.
+        pattern = r"(?m)^\s*" + re.escape(meta["name"]) + r"\s*-\s*CHICAGO BOARD OF TRADE\b"
         m = re.search(pattern, plain, re.I)
         if not m:
             raise RuntimeError(f"CFTC official HTML contract missing: {label}")
@@ -340,8 +348,8 @@ def jpm_30y_signal(y30):
 
 
 def technical_positioning(rows, repo, y30):
-    reductions = sum(1 for x in rows.values() if x["net"] < 0 and x["net_change"] > 0)
-    expansions = sum(1 for x in rows.values() if x["net"] < 0 and x["net_change"] < 0)
+    reductions = sum(1 for name in CORE_CONTRACTS if rows[name]["net"] < 0 and rows[name]["net_change"] > 0)
+    expansions = sum(1 for name in CORE_CONTRACTS if rows[name]["net"] < 0 and rows[name]["net_change"] < 0)
 
     if y30 >= 6.00:
         return "극단 장기금리 스트레스", "30년물 6%대 → 채권·고밸류 성장주 할인율 부담 극대화"
@@ -471,7 +479,7 @@ def main():
         "",
         "[CFTC Leveraged Funds]",
     ]
-    for label in ("2년", "5년", "10년", "30년"):
+    for label in (*CORE_CONTRACTS, "초장기(UB)"):
         x = rows[label]
         pct = f"{x['net_oi_pct']:+.1f}%" if x["net_oi_pct"] is not None else "확인 대기"
         lines.append(
@@ -490,8 +498,18 @@ def main():
         "→ 숏↓ + Repo 스트레스 = 강제 디레버리징 경계",
         "→ 숏↑ + Repo 거래량↑ = 레버리지 확대 가능성 보조 신호",
         "",
-        "다음 확인: 다음 CFTC TFF 공개 + SOFR/TGCR + OFR DVP Repo + 30년 5.59/5.78/6.00·5.25/5.15",
-        "출처: CFTC TFF Futures Only · OFR/NY Fed Repo · U.S. Treasury · JPM 기술기준(사용자 제공 2026-09-29 자료)",
+        "CTD·금리 민감도 확인:",
+        "→ 전통 30년 국채선물(ZB)과 초장기 국채선물(UB)은 별도 상품이며 인도 가능한 국채도 다릅니다.",
+        "→ 6%는 CME 환산계수 계산의 기준 수익률과 관련된 관찰구간이지, CTD가 자동으로 교체되는 확정선이 아닙니다.",
+        "→ 실제 CTD 교체·선물 DV01 증감·인도채권별 순베이시스는 CME 거래자료로 별도 검증 전까지 확인 불가입니다.",
+        "→ 실제 CTD·DV01 변화와 SOFR·TGCR 조달압박 및 CFTC 레버리지 포지션 축소가 동반될 때만 청산 위험을 높게 판단합니다.",
+        "→ 순숏 감소 하나로 강제 매도나 베이시스 청산을 확정하지 않습니다.",
+        "→ 위험도 예시: 100계약의 계약당 DV01이 25% 늘면 동일 금리위험을 유지하려면 80계약으로 조정(가정·실제 CTD 교체 미확인).",
+        f"CTD 공식 설명: {CME_CTD_EDUCATION_URL}",
+        f"CME CTD·DV01 조회 안내: {CME_CTD_ANALYTICS_URL}",
+        "",
+        "다음 확인: 다음 CFTC TFF(30년 ZB·초장기 UB 구분) + SOFR/TGCR + OFR DVP Repo + 30년 5.59/5.78/6.00·5.25/5.15",
+        "출처: CFTC TFF 선물만 · OFR/NY Fed 레포 · 미 재무부 · CME CTD 방법론 · JPM 기술기준(사용자 제공 2026-09-29 자료)",
     ]
     text = "\n".join(lines)
 
@@ -508,6 +526,13 @@ def main():
             "date": y30_date,
             "yield": y30,
             "source": curve["ust30"].source,
+        },
+        "ctd_verification": {
+            "ctd_switch_confirmed": None,
+            "futures_dv01_verified": False,
+            "contracts_distinguished": ["ZB", "UB"],
+            "cme_reference": CME_CTD_EDUCATION_URL,
+            "reason": "인도 가능채권별 현물·선물·환산계수·조달금리 동시 검증 부재. 6% 금리만으로 전환을 추론하지 않음.",
         },
         "classification": {
             "overall": head,
