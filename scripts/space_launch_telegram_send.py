@@ -247,7 +247,7 @@ def self_test() -> int:
 # Optional compact in-message source links. Default send path above is unchanged;
 # only the Starlink Mobile workflow explicitly invokes --inline.
 INLINE_SOURCE_RE = re.compile(r"^• 원문:\s*(https://\S+)\s*$")
-INLINE_MAX_UNITS = 1200
+INLINE_MAX_UNITS = 800  # Mobile first: split long, fact-complete alerts into numbered parts
 INLINE_LABELS = "①②③④⑤⑥⑦⑧⑨⑩"
 
 
