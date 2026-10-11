@@ -1135,6 +1135,27 @@
       "telegram_core_fact": "연간 생산 가이던스도 6만9000~7만2500온스로 낮아졌고, 단위 원가인 AISC 전망은 2650~2850달러로 높아져 수익성 부담이 커졌습니다.",
       "title": "칼레도니아마이닝, 3분기 금 생산 감소와 연간 가이던스 하향에 투자심리 위축"
     },
+    "core:0b8c42f3eec488df36c28fb1": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.hankyung.com/article/202610114294i",
+      "source": "한국경제",
+      "source_body_digest": "bf7607d104890a4140a4b13323ec552147f2ef9fbf3e2458a000d8231db3cdde",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bb14933b226ff889df466c5f55a2e346510ffd0199ce58a2184040aea4573ba",
+      "source_fact_keys": [
+        "source_fact:v1:1c392ce4aa263185757523b9da1c2f1468be0fbd8d2cc4eaaef4cf4718a38b15",
+        "source_fact:v1:be24324f44e3ce93302e667353cecbf31046cc6bba04192ddfc192b0139cee7e",
+        "source_fact:v1:ff1acedd695721e93231cce3bcf7b3ba28d6517b81967a441ffa1d63e221f064"
+      ],
+      "source_published_kst": "2026-10-11T16:52+09:00",
+      "source_title": "[단독]한투, 美에 대체투자 운용사 세운다",
+      "telegram_core_fact": "한국투자금융지주가 미국 대체투자 전문 운용사인 찰스뱅크캐피털파트너스와 크레딧 투자를 전문으로 하는 합작법인(JV) 설립을 추진한다. 투자은행(IB) 업계에 따르면 한투는 미국 사모펀드 운용사인 찰스뱅크와 JV 설립을 위한 협상을 진행하고 있다.",
+      "title": "[단독]한투, 美에 대체투자 운용사 세운다"
+    },
     "core:0b92de79f4b9ef9c63e95cfa": {
       "first_seen_kst": "2026-10-10T02:10:54+09:00",
       "lanes": {
@@ -1153,6 +1174,28 @@
       "source_title": "충남 서천 기산면서 산불…주불 진화",
       "telegram_core_fact": "(서천=뉴스1) 9일 오후 2시 53분께 충남 서천군 기산면 월기리 한 산에서 발생한 산불이 56분 만에 진화됐다. 당국은 잔불 진화를 마치는 즉시 산림보호법 제42조에 따라 투입해 정확한 산불 피해 면적과 재산 피해 등을 조사할 계획이다.",
       "title": "충남 서천 기산면서 산불…주불 진화"
+    },
+    "core:0bbad661c2697a9d1ab949da": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.mk.co.kr/news/politics/12173017",
+      "source": "매일경제",
+      "source_body_digest": "a816e327aa0df969f62aeda2d085c00eea4ec143ca30c37e45e948b96c205938",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5a0b81cd83f148d1d1229bc5271e2012eac08004905e922d712befd801821567",
+      "source_fact_keys": [
+        "source_fact:v1:13186484dfacee871e6e61262575564a87c5b29f38f612f863ae2bb525f05ed4",
+        "source_fact:v1:3c0d37a1197913c4471e5cdf796e0e10800e0db130d54fa282d7736e90891f1a",
+        "source_fact:v1:9de93fbbc7ea7e262a12d28aa81237901904c55f2f640e0ccf3c21e78dd144f0",
+        "source_fact:v1:a4fa3d0e1885b66e74c25b3a2143ccf14b589e46eebb4ea1c4421e80c7c57cdb"
+      ],
+      "source_published_kst": "2026-10-11T16:33+09:00",
+      "source_title": "[단독] 집지을 땅 없다는데 … LH 택지 절반 유찰",
+      "telegram_core_fact": "11일 국회 국토교통위원회 소속 김종양 국민의힘 의원실이 LH에서 제출받은 국정감사 자료에 따르면 공공택지 공급공고 필지 기준 유찰률은 2024년 56%, 지난해 45%에 달했다. 2023년부터 올해 5월까지 체결한 토지 공급 계약 40조4000억원 중 9조5000억원(23.5%)이 무이자 할부 방식이었다.",
+      "title": "[단독] 집지을 땅 없다는데 … LH 택지 절반 유찰"
     },
     "core:0bc1a119ac5f014a515c07a7": {
       "first_seen_kst": "2026-10-08T00:54:18+09:00",
@@ -3716,6 +3759,33 @@
       "source_title": "워딩턴 스틸, 1분기 매출 27억 달러 212%↑..적자전환",
       "telegram_core_fact": "워딩턴 스틸(WS)은 2027 회계연도 1분기(2026년 6~8월) 계속사업 기준 매출액이 27억2660만 달러로 전년비 212% 증가했으며, 계속사업 기준 GAAP 희석 주당순손실은 0.14달러로 전년 동기 0.73달러 순이익에서 적자 전환했다고 10월 7일 발표했다.",
       "title": "워딩턴 스틸, 1분기 매출 27억 달러 212%↑..적자전환"
+    },
+    "core:259c33c25ff6e461ff7b6114": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01328406645611936&parentid=02945446645611936&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "fb645682279d9baab3410152ede34d8aa06345f7fe68b0b4041f215432f591ff",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f36f0106a19ea3f6a100deee3e6ae65618c5a25775392dc109350c45f889e374",
+      "source_fact_keys": [
+        "source_fact:v1:1c5b2b905a5fcab494c80c18329fce98f065542fee6bd0e31cf28dc1826a5128",
+        "source_fact:v1:1f59ee0941eb4fcdea50545a584c341b44883ba167bbe5eeb3cae9643945f843",
+        "source_fact:v1:246176ba8af4cd516367690dd9a4eec12e90d557276d1be5f45c82b4e3fddd4c",
+        "source_fact:v1:4ab17ea5da7477b537d4acd00cfb82acbc9008043f9625f19dfa4852fd1390a2",
+        "source_fact:v1:9f81e13ca5ec9612f947e882bb9f1604eebfd133aa84cf1f83bb5dda69bd32af",
+        "source_fact:v1:be78857b3c795212aa52640657a425c26f8b1f9c391773d51d762e6693ce6f16",
+        "source_fact:v1:cabe275c3d1028111d2a60ce77802fa082ade08267626d063d957296470ce16e",
+        "source_fact:v1:e4b700848a368119173cfdadc2c8be921ed77fafa1b0ab3421798368c5ba2b4e",
+        "source_fact:v1:e76c15557771a1e75e88e63eb68b75ef7c161858683c6de337aea693b654b874"
+      ],
+      "source_published_kst": "2026-10-11T10:30+09:00",
+      "source_title": "[단독] “사망사고 나자 민간에 떠넘기나”…한전, 정전복구 외주화 추진",
+      "telegram_core_fact": "11일 국회 기후에너지환경노동위원회 소속 어기구 더불어민주당 의원(충남 당진시)이 한국전력공사로부터 제출받은 자료에 따르면, 2017년부터 2026년 8월까지 정전복구 작업 중 산업재해를 입은 한전 직원은 21명으로, 이 가운데 1명이 사망했다.",
+      "title": "[단독] “사망사고 나자 민간에 떠넘기나”…한전, 정전복구 외주화 추진"
     },
     "core:25a133061c0b873c5b52247a": {
       "first_seen_kst": "2026-10-10T11:34:45+09:00",
@@ -14686,6 +14756,33 @@
       "telegram_core_fact": "현대차와 인도자동차공업협회(SIAM)에 따르면 현대차의 1998년부터 올해 3분기까지 인도 내 누적 판매량은 988만4960대로 집계됐다.",
       "title": "현대차, 인도 누적 판매 1000만대 눈앞…\"年 생산량 110만대로 확대\""
     },
+    "core:a3154353091dfe8a000afb6a": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.mk.co.kr/news/business/12173107",
+      "source": "매일경제",
+      "source_body_digest": "8266afe08b8f9fb2657ae0cac270d25aa06b70409a9406ad5b6bf976286ffc2b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dcd630d938190aede9f20314280329601d54e543612b14a3665a16c01f1bb2ce",
+      "source_fact_keys": [
+        "source_fact:v1:04d267756abda78ea790fd56f31e13d743dc9de15006f1a1b8854b047dc687c1",
+        "source_fact:v1:2c77e0c658ca65c906997939e5a81c2fd7d32b7ccf4deb74c73915c1bf5c623b",
+        "source_fact:v1:4ed79c4373e0e8f41db9f2048abc5dfea7186bd8566388c5a2376627b6540537",
+        "source_fact:v1:68774888a9db0001ee3f7dcebb42c945357fe1c74948669cff42019738cc1f0c",
+        "source_fact:v1:6e20cff67bfedf252a28a79096ef3b43ca58583a5c8ac3eade528c6fc8568207",
+        "source_fact:v1:b3f27fcea714a3beca4c55fe7dda7be39a98cf8f6af411dfe96068ded98948bf",
+        "source_fact:v1:cc1ab9ac4b8ac8bc36e70fbfaeae6c7306a37896d6d3ebe89ea271846f348be1",
+        "source_fact:v1:e12d8baed42341db63f84d30f8ccd7763eb369483bb024d9456bda2d9486a0a3",
+        "source_fact:v1:fe6c646be431dc00e735f7356e0dd1c3e694d2e16df8c5132a9d2611bcd46bd3"
+      ],
+      "source_published_kst": "2026-10-11T17:29+09:00",
+      "source_title": "LS전선, 해저케이블 공장 계열사에 매각 검토",
+      "telegram_core_fact": "미국 전력망 시장 공략에 박차를 가하고 있는 LS전선이 '사업 리밸런싱'을 위해 계열사 가온전선에 동해사업장 내 공장 1개 동을 매각하는 방안을 검토하고 나섰다. 전선업계에 따르면 LS전선은 최근 동해사업장 해저1공장을 가온전선에 매각하는 방안을 검토하고 있다.",
+      "title": "LS전선, 해저케이블 공장 계열사에 매각 검토"
+    },
     "core:a315fed80d2ca59e948160e1": {
       "first_seen_kst": "2026-10-08T01:26:16+09:00",
       "lanes": {
@@ -17152,6 +17249,25 @@
       "source_title": "국세 체납 116조원…고지 전 가산세만 5년여간 22조원",
       "telegram_core_fact": "국세 체납액이 116조원을 넘어선 가운데 세무서가 세금을 고지하기 전까지 발생하는 납부지연가산세 부과액이 5년여간 약 22조원에 달한 것으로 나타났다.",
       "title": "국세 체납 116조원…고지 전 가산세만 5년여간 22조원"
+    },
+    "core:bb44dde1d72f826e4701207e": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011042800062",
+      "source": "연합뉴스",
+      "source_body_digest": "c77ae8fb26dc0663ef9613c312a2da706ca6f876d8a3682b9dccd8d9f7945164",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:91225bf9c68846bc7128e00dc309595b6c79ef7ae15841011ef2d774c632c1e2",
+      "source_fact_keys": [
+        "source_fact:v1:73d91120eae1c0d4d15d3935fb3e37ee638cd9fa72e8cefbd2e2bda7e4bb135a"
+      ],
+      "source_published_kst": "2026-10-11T18:25+09:00",
+      "source_title": "홍천 인삼·한우 명품축제 성료…10만명 방문·매출 15억원 | 연합뉴스",
+      "telegram_core_fact": "홍천문화재단에 따르면 지난 8일부터 이날까지 홍천 도시산림공원 토리숲 일대에서 열린 축제의 인삼·한우와 농특산물, 먹거리 등 총매출은 약 15억원으로 집계됐다.",
+      "title": "홍천 인삼·한우 명품축제 성료…10만명 방문·매출 15억원 | 연합뉴스"
     },
     "core:bb6c429c5a7be312fd23a518": {
       "first_seen_kst": "2026-10-08T11:49:03+09:00",
@@ -23540,6 +23656,27 @@
       "source_title": "최태원 “호남 반도체, 전력·용수 늦어도 공사 먼저…용인 3분의 2 규모로”(종합)",
       "telegram_core_fact": "최태원 SK그룹 회장이 호남권 반도체 생산거점을 용인 반도체 클러스터의 3분의 2 규모로 계획하고 있다고 밝혔다. 빠르게 늘어나는 반도체 수요에 대응하기 위해 용인과 광주에서 공장을 병행 건설할 가능성도 열어뒀다.",
       "title": "최태원 “호남 반도체, 전력·용수 늦어도 공사 먼저…용인 3분의 2 규모로”(종합)"
+    },
+    "core:fe2b567195265fe54eabcf6b": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172606",
+      "source": "매일경제",
+      "source_body_digest": "f5a253f0b217330d41b791e9f2f70338b6b246dec6cbbefc4eebdb57d74c3316",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:07a0c8c80251a5ef857e2a784129982204ccf5063c473726b96e1a547ee2ccdb",
+      "source_fact_keys": [
+        "source_fact:v1:11199063ede2e0ed1abe8f0525ce5d26c4c8f99e4d94fa32bbf48f78c971e112",
+        "source_fact:v1:26aa561a2892da3d651da795c7e031bfaedd907772694a5f7f0f5240917cad1e",
+        "source_fact:v1:3973240e137e02b304f8e85061673012dba3208a624b080c53ab9cec0d3cf5eb"
+      ],
+      "source_published_kst": "2026-10-11T17:26+09:00",
+      "source_title": "4대 신항만 장비 38%가 '메이드 인 차이나'",
+      "telegram_core_fact": "중국산 장비가 전체에서 38%를 차지하는 등 수입 의존도가 높은 가운데 항만 자동화가 확대되면서 정보보안과 유지관리 체계를 강화해야 한다는 지적이 나온다. 국내 주요 신항만에 설치된 항만장비의 국산 비중이 35%에 그치는 것으로 나타났다.",
+      "title": "4대 신항만 장비 38%가 '메이드 인 차이나'"
     },
     "core:fe4e3050fa428d0e562568df": {
       "first_seen_kst": "2026-10-08T06:42:50+09:00",
@@ -36334,6 +36471,27 @@
       "source_published_kst": "2026-10-06T10:22+09:00",
       "title": "에코프로비엠, 삼성SDI와 '전고체' 개발 협력…상용화 목전"
     },
+    "fact:0f26ffe12407043c66e22154": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172606",
+      "source": "매일경제",
+      "source_body_digest": "f5a253f0b217330d41b791e9f2f70338b6b246dec6cbbefc4eebdb57d74c3316",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:07a0c8c80251a5ef857e2a784129982204ccf5063c473726b96e1a547ee2ccdb",
+      "source_fact_keys": [
+        "source_fact:v1:11199063ede2e0ed1abe8f0525ce5d26c4c8f99e4d94fa32bbf48f78c971e112",
+        "source_fact:v1:26aa561a2892da3d651da795c7e031bfaedd907772694a5f7f0f5240917cad1e",
+        "source_fact:v1:3973240e137e02b304f8e85061673012dba3208a624b080c53ab9cec0d3cf5eb"
+      ],
+      "source_published_kst": "2026-10-11T17:26+09:00",
+      "source_title": "4대 신항만 장비 38%가 '메이드 인 차이나'",
+      "telegram_core_fact": "중국산 장비가 전체에서 38%를 차지하는 등 수입 의존도가 높은 가운데 항만 자동화가 확대되면서 정보보안과 유지관리 체계를 강화해야 한다는 지적이 나온다. 국내 주요 신항만에 설치된 항만장비의 국산 비중이 35%에 그치는 것으로 나타났다.",
+      "title": "4대 신항만 장비 38%가 '메이드 인 차이나'"
+    },
     "fact:0fa78844e6f0e29da2be1568": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -47915,6 +48073,27 @@
       "source_published_kst": "2026-10-06T13:28+09:00",
       "title": "세계 반도체 매출, 1조 달러 넘어섰다…18개월 연속 성장"
     },
+    "fact:5d63c4b3de265cbedb0d6612": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.hankyung.com/article/202610114294i",
+      "source": "한국경제",
+      "source_body_digest": "bf7607d104890a4140a4b13323ec552147f2ef9fbf3e2458a000d8231db3cdde",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bb14933b226ff889df466c5f55a2e346510ffd0199ce58a2184040aea4573ba",
+      "source_fact_keys": [
+        "source_fact:v1:1c392ce4aa263185757523b9da1c2f1468be0fbd8d2cc4eaaef4cf4718a38b15",
+        "source_fact:v1:be24324f44e3ce93302e667353cecbf31046cc6bba04192ddfc192b0139cee7e",
+        "source_fact:v1:ff1acedd695721e93231cce3bcf7b3ba28d6517b81967a441ffa1d63e221f064"
+      ],
+      "source_published_kst": "2026-10-11T16:52+09:00",
+      "source_title": "[단독]한투, 美에 대체투자 운용사 세운다",
+      "telegram_core_fact": "한국투자금융지주가 미국 대체투자 전문 운용사인 찰스뱅크캐피털파트너스와 크레딧 투자를 전문으로 하는 합작법인(JV) 설립을 추진한다. 투자은행(IB) 업계에 따르면 한투는 미국 사모펀드 운용사인 찰스뱅크와 JV 설립을 위한 협상을 진행하고 있다.",
+      "title": "[단독]한투, 美에 대체투자 운용사 세운다"
+    },
     "fact:5d84b03a904581d1ef0ae4d6": {
       "first_seen_kst": "2026-10-06T01:51:09+09:00",
       "lanes": {
@@ -48879,6 +49058,32 @@
       "source_title": "허성무 \"웨스팅하우스 상장시 추가 지분 확보 계획 필요\"",
       "telegram_core_fact": "국회 산업통상자원중소벤처기업위원회 소속 더불어민주당 허성무(경남 창원 성산) 의원은 산업통상부 국정감사에서 김정관 산업통상부 장관에게 윤석열 정부 당시 미국 웨스팅하우스와 체결한 노예계약을 변경하고 원전 수출 주권을 회복하기 위해 웨스팅하우스 지분 확보 계획을 마련해야 한다고 촉구했다.",
       "title": "허성무 \"웨스팅하우스 상장시 추가 지분 확보 계획 필요\""
+    },
+    "fact:63943c743e43ea921fac7d94": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675285",
+      "source": "블로터",
+      "source_body_digest": "160663c3fd2ebaf3e238f9e890e23bbe7ffa13f92caf196ad20fb6feef777a6a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a37f6e2d8e851a689be743a19a61e067023e165063d77d52d097602d7cb9a009",
+      "source_fact_keys": [
+        "source_fact:v1:019f4c5cba213cffd6b2dac1f51b3033135bc99413fb233316da8591d97c3bae",
+        "source_fact:v1:253db952f546820f703a2ec7f990fbaacdc2cc7bf3cdd37c61bd90a81b4c7875",
+        "source_fact:v1:5cbc5829a9d6c76d07347fa23bbc3a0af983c756215396edbbf6b50fd3885c72",
+        "source_fact:v1:739f06e6af8c2673ef76cf76518c129f19a4e90008ed2589add5e438d8d96bc0",
+        "source_fact:v1:80fac96d6054f1d727773dfbe6d78f4bfd2f70908e1c9186a2d74cf5c2b35a29",
+        "source_fact:v1:993627ead407fcb2c6549630d60adbc20ca10c9ce4535dbe14c89c598a109126",
+        "source_fact:v1:c0686370c763d1fc4f1335325a9f9736eec6d97b99e73cc3c4d51a2df6951d7f",
+        "source_fact:v1:e545f1b016e4a72f92228cd0c5afd01da5c37d62857594cc5471db853c143a45"
+      ],
+      "source_published_kst": "2026-10-11T16:00+09:00",
+      "source_title": "풍산, 방산 부진 메운 '구리 호황' 신용등급 AA- 상향",
+      "telegram_core_fact": "풍산 매출은 2조7412억원으로 전년비 11.9% 증가했습니다.",
+      "title": "풍산, 방산 부진 메운 '구리 호황' 신용등급 AA- 상향"
     },
     "fact:63de219a15e0342ac6f23cab": {
       "first_seen_kst": "2026-10-08T07:12:10+09:00",
@@ -52305,6 +52510,33 @@
       "source_published_kst": "2026-10-06T16:39+09:00",
       "title": "\"10월은 미국보다 한국 주식·채권 투자 최적 시점\""
     },
+    "fact:7a7381f72277ab3e3f589bf6": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.mk.co.kr/news/business/12173107",
+      "source": "매일경제",
+      "source_body_digest": "8266afe08b8f9fb2657ae0cac270d25aa06b70409a9406ad5b6bf976286ffc2b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dcd630d938190aede9f20314280329601d54e543612b14a3665a16c01f1bb2ce",
+      "source_fact_keys": [
+        "source_fact:v1:04d267756abda78ea790fd56f31e13d743dc9de15006f1a1b8854b047dc687c1",
+        "source_fact:v1:2c77e0c658ca65c906997939e5a81c2fd7d32b7ccf4deb74c73915c1bf5c623b",
+        "source_fact:v1:4ed79c4373e0e8f41db9f2048abc5dfea7186bd8566388c5a2376627b6540537",
+        "source_fact:v1:68774888a9db0001ee3f7dcebb42c945357fe1c74948669cff42019738cc1f0c",
+        "source_fact:v1:6e20cff67bfedf252a28a79096ef3b43ca58583a5c8ac3eade528c6fc8568207",
+        "source_fact:v1:b3f27fcea714a3beca4c55fe7dda7be39a98cf8f6af411dfe96068ded98948bf",
+        "source_fact:v1:cc1ab9ac4b8ac8bc36e70fbfaeae6c7306a37896d6d3ebe89ea271846f348be1",
+        "source_fact:v1:e12d8baed42341db63f84d30f8ccd7763eb369483bb024d9456bda2d9486a0a3",
+        "source_fact:v1:fe6c646be431dc00e735f7356e0dd1c3e694d2e16df8c5132a9d2611bcd46bd3"
+      ],
+      "source_published_kst": "2026-10-11T17:29+09:00",
+      "source_title": "LS전선, 해저케이블 공장 계열사에 매각 검토",
+      "telegram_core_fact": "미국 전력망 시장 공략에 박차를 가하고 있는 LS전선이 '사업 리밸런싱'을 위해 계열사 가온전선에 동해사업장 내 공장 1개 동을 매각하는 방안을 검토하고 나섰다. 전선업계에 따르면 LS전선은 최근 동해사업장 해저1공장을 가온전선에 매각하는 방안을 검토하고 있다.",
+      "title": "LS전선, 해저케이블 공장 계열사에 매각 검토"
+    },
     "fact:7a7ba92698f7432d53bad942": {
       "first_seen_kst": "2026-10-07T01:18:00+09:00",
       "lanes": {
@@ -53482,6 +53714,33 @@
       "source_title": "LG전자 3분기 실적 컨센서스 하회…증권가 \"일시적 요인, 본업 건재\"",
       "telegram_core_fact": "LG전자는 3분기 연결기준 매출 23조 8270억원, 영업이익 7822억원 잠정실적을 기록했다.",
       "title": "LG전자 3분기 실적 컨센서스 하회…증권가 \"일시적 요인, 본업 건재\""
+    },
+    "fact:8357ffce9695be61d0f503d4": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01328406645611936&parentid=02945446645611936&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "fb645682279d9baab3410152ede34d8aa06345f7fe68b0b4041f215432f591ff",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f36f0106a19ea3f6a100deee3e6ae65618c5a25775392dc109350c45f889e374",
+      "source_fact_keys": [
+        "source_fact:v1:1c5b2b905a5fcab494c80c18329fce98f065542fee6bd0e31cf28dc1826a5128",
+        "source_fact:v1:1f59ee0941eb4fcdea50545a584c341b44883ba167bbe5eeb3cae9643945f843",
+        "source_fact:v1:246176ba8af4cd516367690dd9a4eec12e90d557276d1be5f45c82b4e3fddd4c",
+        "source_fact:v1:4ab17ea5da7477b537d4acd00cfb82acbc9008043f9625f19dfa4852fd1390a2",
+        "source_fact:v1:9f81e13ca5ec9612f947e882bb9f1604eebfd133aa84cf1f83bb5dda69bd32af",
+        "source_fact:v1:be78857b3c795212aa52640657a425c26f8b1f9c391773d51d762e6693ce6f16",
+        "source_fact:v1:cabe275c3d1028111d2a60ce77802fa082ade08267626d063d957296470ce16e",
+        "source_fact:v1:e4b700848a368119173cfdadc2c8be921ed77fafa1b0ab3421798368c5ba2b4e",
+        "source_fact:v1:e76c15557771a1e75e88e63eb68b75ef7c161858683c6de337aea693b654b874"
+      ],
+      "source_published_kst": "2026-10-11T10:30+09:00",
+      "source_title": "[단독] “사망사고 나자 민간에 떠넘기나”…한전, 정전복구 외주화 추진",
+      "telegram_core_fact": "11일 국회 기후에너지환경노동위원회 소속 어기구 더불어민주당 의원(충남 당진시)이 한국전력공사로부터 제출받은 자료에 따르면, 2017년부터 2026년 8월까지 정전복구 작업 중 산업재해를 입은 한전 직원은 21명으로, 이 가운데 1명이 사망했다.",
+      "title": "[단독] “사망사고 나자 민간에 떠넘기나”…한전, 정전복구 외주화 추진"
     },
     "fact:83b91f9b72d2622f75496f6c": {
       "first_seen_kst": "2026-10-07T22:53:53+09:00",
@@ -59892,6 +60151,25 @@
       "telegram_core_fact": "스포츠레이더 그룹(SRAD)이 자회사 시너지 스포츠(Synergy Sports)의 코칭·스카우팅 사업부인 아트리움 스포츠(Atrium Sports)를 팀웍스 이노베이션스(Teamworks Innovations)에 현금 1억7000만 달러를 받고 매각하는 확정 계약을 체결했다고 7일 발표했다.",
       "title": "스포츠레이더 그룹, 코칭사업 1억7000만 달러 매각…핵심 집중"
     },
+    "fact:aad1bc12d57d1f5d9912e7a2": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011042800062",
+      "source": "연합뉴스",
+      "source_body_digest": "c77ae8fb26dc0663ef9613c312a2da706ca6f876d8a3682b9dccd8d9f7945164",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:91225bf9c68846bc7128e00dc309595b6c79ef7ae15841011ef2d774c632c1e2",
+      "source_fact_keys": [
+        "source_fact:v1:73d91120eae1c0d4d15d3935fb3e37ee638cd9fa72e8cefbd2e2bda7e4bb135a"
+      ],
+      "source_published_kst": "2026-10-11T18:25+09:00",
+      "source_title": "홍천 인삼·한우 명품축제 성료…10만명 방문·매출 15억원 | 연합뉴스",
+      "telegram_core_fact": "홍천문화재단에 따르면 지난 8일부터 이날까지 홍천 도시산림공원 토리숲 일대에서 열린 축제의 인삼·한우와 농특산물, 먹거리 등 총매출은 약 15억원으로 집계됐다.",
+      "title": "홍천 인삼·한우 명품축제 성료…10만명 방문·매출 15억원 | 연합뉴스"
+    },
     "fact:aad433f529eb9b14cddea509": {
       "first_seen_kst": "2026-10-11T07:32:31+09:00",
       "lanes": {
@@ -60155,6 +60433,28 @@
       ],
       "source_published_kst": "2026-10-06T17:03+09:00",
       "title": "삼성전기, 일주일만 MLCC 2900억 공급계약…올 수주 3.9조원"
+    },
+    "fact:ac5de1f03cacd0179e25ed7b": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.mk.co.kr/news/politics/12173017",
+      "source": "매일경제",
+      "source_body_digest": "a816e327aa0df969f62aeda2d085c00eea4ec143ca30c37e45e948b96c205938",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5a0b81cd83f148d1d1229bc5271e2012eac08004905e922d712befd801821567",
+      "source_fact_keys": [
+        "source_fact:v1:13186484dfacee871e6e61262575564a87c5b29f38f612f863ae2bb525f05ed4",
+        "source_fact:v1:3c0d37a1197913c4471e5cdf796e0e10800e0db130d54fa282d7736e90891f1a",
+        "source_fact:v1:9de93fbbc7ea7e262a12d28aa81237901904c55f2f640e0ccf3c21e78dd144f0",
+        "source_fact:v1:a4fa3d0e1885b66e74c25b3a2143ccf14b589e46eebb4ea1c4421e80c7c57cdb"
+      ],
+      "source_published_kst": "2026-10-11T16:33+09:00",
+      "source_title": "[단독] 집지을 땅 없다는데 … LH 택지 절반 유찰",
+      "telegram_core_fact": "11일 국회 국토교통위원회 소속 김종양 국민의힘 의원실이 LH에서 제출받은 국정감사 자료에 따르면 공공택지 공급공고 필지 기준 유찰률은 2024년 56%, 지난해 45%에 달했다. 2023년부터 올해 5월까지 체결한 토지 공급 계약 40조4000억원 중 9조5000억원(23.5%)이 무이자 할부 방식이었다.",
+      "title": "[단독] 집지을 땅 없다는데 … LH 택지 절반 유찰"
     },
     "fact:ac6f238599c9bd304b9500e3": {
       "first_seen_kst": "2026-10-07T00:23:09+09:00",
@@ -78484,6 +78784,33 @@
       "telegram_core_fact": "최태원 SK그룹 회장이 메모리 수요 확대에 대응하기 위해 반도체 팹(공장) 증설에 속도를 내고 있다.",
       "title": "투자 지연 우려 불식 나선 최태원 회장…\"호남 팹, 인프라 늦어도 선제 착공\""
     },
+    "link:172b8a3b8c769e31f737579a": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01328406645611936&parentid=02945446645611936&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "fb645682279d9baab3410152ede34d8aa06345f7fe68b0b4041f215432f591ff",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f36f0106a19ea3f6a100deee3e6ae65618c5a25775392dc109350c45f889e374",
+      "source_fact_keys": [
+        "source_fact:v1:1c5b2b905a5fcab494c80c18329fce98f065542fee6bd0e31cf28dc1826a5128",
+        "source_fact:v1:1f59ee0941eb4fcdea50545a584c341b44883ba167bbe5eeb3cae9643945f843",
+        "source_fact:v1:246176ba8af4cd516367690dd9a4eec12e90d557276d1be5f45c82b4e3fddd4c",
+        "source_fact:v1:4ab17ea5da7477b537d4acd00cfb82acbc9008043f9625f19dfa4852fd1390a2",
+        "source_fact:v1:9f81e13ca5ec9612f947e882bb9f1604eebfd133aa84cf1f83bb5dda69bd32af",
+        "source_fact:v1:be78857b3c795212aa52640657a425c26f8b1f9c391773d51d762e6693ce6f16",
+        "source_fact:v1:cabe275c3d1028111d2a60ce77802fa082ade08267626d063d957296470ce16e",
+        "source_fact:v1:e4b700848a368119173cfdadc2c8be921ed77fafa1b0ab3421798368c5ba2b4e",
+        "source_fact:v1:e76c15557771a1e75e88e63eb68b75ef7c161858683c6de337aea693b654b874"
+      ],
+      "source_published_kst": "2026-10-11T10:30+09:00",
+      "source_title": "[단독] “사망사고 나자 민간에 떠넘기나”…한전, 정전복구 외주화 추진",
+      "telegram_core_fact": "11일 국회 기후에너지환경노동위원회 소속 어기구 더불어민주당 의원(충남 당진시)이 한국전력공사로부터 제출받은 자료에 따르면, 2017년부터 2026년 8월까지 정전복구 작업 중 산업재해를 입은 한전 직원은 21명으로, 이 가운데 1명이 사망했다.",
+      "title": "[단독] “사망사고 나자 민간에 떠넘기나”…한전, 정전복구 외주화 추진"
+    },
     "link:172eb18eb657592f6cf3ff88": {
       "first_seen_kst": "2026-10-07T07:39:19+09:00",
       "lanes": {
@@ -84753,6 +85080,32 @@
       "source_published_kst": "2026-10-06T07:42+09:00",
       "title": "리노공업, 중장기 주목할 부분은 CPO…목표가↑-DS"
     },
+    "link:31a6bfd0d35f6fb869545ab1": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675285",
+      "source": "블로터",
+      "source_body_digest": "160663c3fd2ebaf3e238f9e890e23bbe7ffa13f92caf196ad20fb6feef777a6a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a37f6e2d8e851a689be743a19a61e067023e165063d77d52d097602d7cb9a009",
+      "source_fact_keys": [
+        "source_fact:v1:019f4c5cba213cffd6b2dac1f51b3033135bc99413fb233316da8591d97c3bae",
+        "source_fact:v1:253db952f546820f703a2ec7f990fbaacdc2cc7bf3cdd37c61bd90a81b4c7875",
+        "source_fact:v1:5cbc5829a9d6c76d07347fa23bbc3a0af983c756215396edbbf6b50fd3885c72",
+        "source_fact:v1:739f06e6af8c2673ef76cf76518c129f19a4e90008ed2589add5e438d8d96bc0",
+        "source_fact:v1:80fac96d6054f1d727773dfbe6d78f4bfd2f70908e1c9186a2d74cf5c2b35a29",
+        "source_fact:v1:993627ead407fcb2c6549630d60adbc20ca10c9ce4535dbe14c89c598a109126",
+        "source_fact:v1:c0686370c763d1fc4f1335325a9f9736eec6d97b99e73cc3c4d51a2df6951d7f",
+        "source_fact:v1:e545f1b016e4a72f92228cd0c5afd01da5c37d62857594cc5471db853c143a45"
+      ],
+      "source_published_kst": "2026-10-11T16:00+09:00",
+      "source_title": "풍산, 방산 부진 메운 '구리 호황' 신용등급 AA- 상향",
+      "telegram_core_fact": "풍산 매출은 2조7412억원으로 전년비 11.9% 증가했습니다.",
+      "title": "풍산, 방산 부진 메운 '구리 호황' 신용등급 AA- 상향"
+    },
     "link:31a7a1b92479e0cb94facb20": {
       "first_seen_kst": "2026-10-06T22:37:02+09:00",
       "lanes": {
@@ -90605,6 +90958,27 @@
       "link": "https://www.mt.co.kr/index.php/world/2026/09/18/2026091814531938415",
       "source": "머니투데이",
       "title": "화웨이, \"자체개발 AI칩 중국 내 점유율 엔비디아 추월\""
+    },
+    "link:4bc1a937f5d48d3c83d1ccf7": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172606",
+      "source": "매일경제",
+      "source_body_digest": "f5a253f0b217330d41b791e9f2f70338b6b246dec6cbbefc4eebdb57d74c3316",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:07a0c8c80251a5ef857e2a784129982204ccf5063c473726b96e1a547ee2ccdb",
+      "source_fact_keys": [
+        "source_fact:v1:11199063ede2e0ed1abe8f0525ce5d26c4c8f99e4d94fa32bbf48f78c971e112",
+        "source_fact:v1:26aa561a2892da3d651da795c7e031bfaedd907772694a5f7f0f5240917cad1e",
+        "source_fact:v1:3973240e137e02b304f8e85061673012dba3208a624b080c53ab9cec0d3cf5eb"
+      ],
+      "source_published_kst": "2026-10-11T17:26+09:00",
+      "source_title": "4대 신항만 장비 38%가 '메이드 인 차이나'",
+      "telegram_core_fact": "중국산 장비가 전체에서 38%를 차지하는 등 수입 의존도가 높은 가운데 항만 자동화가 확대되면서 정보보안과 유지관리 체계를 강화해야 한다는 지적이 나온다. 국내 주요 신항만에 설치된 항만장비의 국산 비중이 35%에 그치는 것으로 나타났다.",
+      "title": "4대 신항만 장비 38%가 '메이드 인 차이나'"
     },
     "link:4bce24e6a250a2b5b58a676a": {
       "first_seen_kst": "2026-10-09T22:37:15+09:00",
@@ -102995,6 +103369,28 @@
       "source": "매일경제",
       "title": "“AI 데이터센터 냉각도 레고처럼 뚝딱”…LG전자, 냉각설비 ‘모듈형’ 승부수"
     },
+    "link:80d86ecfe6f71ec90b9c6f17": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.mk.co.kr/news/politics/12173017",
+      "source": "매일경제",
+      "source_body_digest": "a816e327aa0df969f62aeda2d085c00eea4ec143ca30c37e45e948b96c205938",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5a0b81cd83f148d1d1229bc5271e2012eac08004905e922d712befd801821567",
+      "source_fact_keys": [
+        "source_fact:v1:13186484dfacee871e6e61262575564a87c5b29f38f612f863ae2bb525f05ed4",
+        "source_fact:v1:3c0d37a1197913c4471e5cdf796e0e10800e0db130d54fa282d7736e90891f1a",
+        "source_fact:v1:9de93fbbc7ea7e262a12d28aa81237901904c55f2f640e0ccf3c21e78dd144f0",
+        "source_fact:v1:a4fa3d0e1885b66e74c25b3a2143ccf14b589e46eebb4ea1c4421e80c7c57cdb"
+      ],
+      "source_published_kst": "2026-10-11T16:33+09:00",
+      "source_title": "[단독] 집지을 땅 없다는데 … LH 택지 절반 유찰",
+      "telegram_core_fact": "11일 국회 국토교통위원회 소속 김종양 국민의힘 의원실이 LH에서 제출받은 국정감사 자료에 따르면 공공택지 공급공고 필지 기준 유찰률은 2024년 56%, 지난해 45%에 달했다. 2023년부터 올해 5월까지 체결한 토지 공급 계약 40조4000억원 중 9조5000억원(23.5%)이 무이자 할부 방식이었다.",
+      "title": "[단독] 집지을 땅 없다는데 … LH 택지 절반 유찰"
+    },
     "link:80d95326f2a18be3138107b5": {
       "first_seen_kst": "2026-10-06T16:30:27+09:00",
       "lanes": {
@@ -110561,6 +110957,33 @@
       "telegram_core_fact": "조선대 연구진은 CPSat을 통해 실제 우주환경에서 광통신 기술을 검증하며 차세대 위성통신 기술의 가능성을 확인한다.",
       "title": "조선대 참여 큐브 위성, 누리호 타고 우주로…\"광통신 실증\""
     },
+    "link:a17b482c2bb94f86af90c73b": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.mk.co.kr/news/business/12173107",
+      "source": "매일경제",
+      "source_body_digest": "8266afe08b8f9fb2657ae0cac270d25aa06b70409a9406ad5b6bf976286ffc2b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dcd630d938190aede9f20314280329601d54e543612b14a3665a16c01f1bb2ce",
+      "source_fact_keys": [
+        "source_fact:v1:04d267756abda78ea790fd56f31e13d743dc9de15006f1a1b8854b047dc687c1",
+        "source_fact:v1:2c77e0c658ca65c906997939e5a81c2fd7d32b7ccf4deb74c73915c1bf5c623b",
+        "source_fact:v1:4ed79c4373e0e8f41db9f2048abc5dfea7186bd8566388c5a2376627b6540537",
+        "source_fact:v1:68774888a9db0001ee3f7dcebb42c945357fe1c74948669cff42019738cc1f0c",
+        "source_fact:v1:6e20cff67bfedf252a28a79096ef3b43ca58583a5c8ac3eade528c6fc8568207",
+        "source_fact:v1:b3f27fcea714a3beca4c55fe7dda7be39a98cf8f6af411dfe96068ded98948bf",
+        "source_fact:v1:cc1ab9ac4b8ac8bc36e70fbfaeae6c7306a37896d6d3ebe89ea271846f348be1",
+        "source_fact:v1:e12d8baed42341db63f84d30f8ccd7763eb369483bb024d9456bda2d9486a0a3",
+        "source_fact:v1:fe6c646be431dc00e735f7356e0dd1c3e694d2e16df8c5132a9d2611bcd46bd3"
+      ],
+      "source_published_kst": "2026-10-11T17:29+09:00",
+      "source_title": "LS전선, 해저케이블 공장 계열사에 매각 검토",
+      "telegram_core_fact": "미국 전력망 시장 공략에 박차를 가하고 있는 LS전선이 '사업 리밸런싱'을 위해 계열사 가온전선에 동해사업장 내 공장 1개 동을 매각하는 방안을 검토하고 나섰다. 전선업계에 따르면 LS전선은 최근 동해사업장 해저1공장을 가온전선에 매각하는 방안을 검토하고 있다.",
+      "title": "LS전선, 해저케이블 공장 계열사에 매각 검토"
+    },
     "link:a18f5b1fd4c4a4bd36789ff1": {
       "first_seen_kst": "2026-10-06T00:26:07+09:00",
       "lanes": {
@@ -115203,6 +115626,33 @@
       "telegram_core_fact": "이번 제2차 세미나 및 직무교육은 개별 국가의 규제 대응을 넘어 이슬람협력기구(OIC, 57개국) 중심으로 형성되고 있는 국제 할랄 표준과 인증체계에 대한 기업의 이해를 높여 중동 및 이슬람권 국가의 할랄 시장 전반에 대한 수출 대응 역량 강화를 위해 마련됐다.",
       "title": "식약처, 'K-뷰티' 할랄 인증 2차세미나·교육 실시"
     },
+    "link:b5aab1ca13619eb45dcee3f5": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01328406645611936&parentid=02945446645611936&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "fb645682279d9baab3410152ede34d8aa06345f7fe68b0b4041f215432f591ff",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f36f0106a19ea3f6a100deee3e6ae65618c5a25775392dc109350c45f889e374",
+      "source_fact_keys": [
+        "source_fact:v1:1c5b2b905a5fcab494c80c18329fce98f065542fee6bd0e31cf28dc1826a5128",
+        "source_fact:v1:1f59ee0941eb4fcdea50545a584c341b44883ba167bbe5eeb3cae9643945f843",
+        "source_fact:v1:246176ba8af4cd516367690dd9a4eec12e90d557276d1be5f45c82b4e3fddd4c",
+        "source_fact:v1:4ab17ea5da7477b537d4acd00cfb82acbc9008043f9625f19dfa4852fd1390a2",
+        "source_fact:v1:9f81e13ca5ec9612f947e882bb9f1604eebfd133aa84cf1f83bb5dda69bd32af",
+        "source_fact:v1:be78857b3c795212aa52640657a425c26f8b1f9c391773d51d762e6693ce6f16",
+        "source_fact:v1:cabe275c3d1028111d2a60ce77802fa082ade08267626d063d957296470ce16e",
+        "source_fact:v1:e4b700848a368119173cfdadc2c8be921ed77fafa1b0ab3421798368c5ba2b4e",
+        "source_fact:v1:e76c15557771a1e75e88e63eb68b75ef7c161858683c6de337aea693b654b874"
+      ],
+      "source_published_kst": "2026-10-11T10:30+09:00",
+      "source_title": "[단독] “사망사고 나자 민간에 떠넘기나”…한전, 정전복구 외주화 추진",
+      "telegram_core_fact": "11일 국회 기후에너지환경노동위원회 소속 어기구 더불어민주당 의원(충남 당진시)이 한국전력공사로부터 제출받은 자료에 따르면, 2017년부터 2026년 8월까지 정전복구 작업 중 산업재해를 입은 한전 직원은 21명으로, 이 가운데 1명이 사망했다.",
+      "title": "[단독] “사망사고 나자 민간에 떠넘기나”…한전, 정전복구 외주화 추진"
+    },
     "link:b5adf4125bd3d352cf1e242c": {
       "first_seen_kst": "2026-10-08T17:21:28+09:00",
       "lanes": {
@@ -117834,6 +118284,27 @@
       "telegram_core_fact": "라이프존 메탈스(LZM)는 탄자니아 카방가 니켈 프로젝트의 주민 이주 실행계획(RAP)이 국제금융공사(IFC) 성능표준 5(PS5)에 중대한 측면에서 계속 부합한다는 독립 전문가 검토 결과가 나오면서, 호주 광산업체 BHP에 지급할 인수 대가의 상한이 800만 달러 자동 감액됐다고 7일 발표했다.",
       "title": "라이프존 메탈스, BHP 인수대가 800만달러 감액..이주계획 검증 통과"
     },
+    "link:c0dc0cb715893c2d347c7c1a": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.hankyung.com/article/202610114294i",
+      "source": "한국경제",
+      "source_body_digest": "bf7607d104890a4140a4b13323ec552147f2ef9fbf3e2458a000d8231db3cdde",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bb14933b226ff889df466c5f55a2e346510ffd0199ce58a2184040aea4573ba",
+      "source_fact_keys": [
+        "source_fact:v1:1c392ce4aa263185757523b9da1c2f1468be0fbd8d2cc4eaaef4cf4718a38b15",
+        "source_fact:v1:be24324f44e3ce93302e667353cecbf31046cc6bba04192ddfc192b0139cee7e",
+        "source_fact:v1:ff1acedd695721e93231cce3bcf7b3ba28d6517b81967a441ffa1d63e221f064"
+      ],
+      "source_published_kst": "2026-10-11T16:52+09:00",
+      "source_title": "[단독]한투, 美에 대체투자 운용사 세운다",
+      "telegram_core_fact": "한국투자금융지주가 미국 대체투자 전문 운용사인 찰스뱅크캐피털파트너스와 크레딧 투자를 전문으로 하는 합작법인(JV) 설립을 추진한다. 투자은행(IB) 업계에 따르면 한투는 미국 사모펀드 운용사인 찰스뱅크와 JV 설립을 위한 협상을 진행하고 있다.",
+      "title": "[단독]한투, 美에 대체투자 운용사 세운다"
+    },
     "link:c0dcf3e25fb91e33066f23f3": {
       "first_seen_kst": "2026-10-07T15:30:27+09:00",
       "lanes": {
@@ -119702,6 +120173,25 @@
       "link": "https://www.mk.co.kr/news/business/12163017",
       "source": "매일경제",
       "title": "삼성전기, 韓·베트남 AI 반도체 기판에 6조7800억 투자"
+    },
+    "link:c94e79830cc5e529e1e5c081": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011042800062",
+      "source": "연합뉴스",
+      "source_body_digest": "c77ae8fb26dc0663ef9613c312a2da706ca6f876d8a3682b9dccd8d9f7945164",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:91225bf9c68846bc7128e00dc309595b6c79ef7ae15841011ef2d774c632c1e2",
+      "source_fact_keys": [
+        "source_fact:v1:73d91120eae1c0d4d15d3935fb3e37ee638cd9fa72e8cefbd2e2bda7e4bb135a"
+      ],
+      "source_published_kst": "2026-10-11T18:25+09:00",
+      "source_title": "홍천 인삼·한우 명품축제 성료…10만명 방문·매출 15억원 | 연합뉴스",
+      "telegram_core_fact": "홍천문화재단에 따르면 지난 8일부터 이날까지 홍천 도시산림공원 토리숲 일대에서 열린 축제의 인삼·한우와 농특산물, 먹거리 등 총매출은 약 15억원으로 집계됐다.",
+      "title": "홍천 인삼·한우 명품축제 성료…10만명 방문·매출 15억원 | 연합뉴스"
     },
     "link:c96baa59201db1eb4ec6868f": {
       "first_seen_kst": "2026-10-05T18:22:57+09:00",
@@ -133628,6 +134118,27 @@
       "telegram_core_fact": "반도체 호황으로 삼성전자와 SK하이닉스의 직원들이 수억원대 성과급을 받을 것으로 예상되지만, 이런 성과급이 소비 진작으로 이어지는 효과는 크지 않을 것이라는 분석이 나왔다.",
       "title": "“반도체 성과급 잔치에도… 소비 진작 효과는 제한적일 것”"
     },
+    "original:07f18452796acefcec6d3618": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172606",
+      "source": "매일경제",
+      "source_body_digest": "f5a253f0b217330d41b791e9f2f70338b6b246dec6cbbefc4eebdb57d74c3316",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:07a0c8c80251a5ef857e2a784129982204ccf5063c473726b96e1a547ee2ccdb",
+      "source_fact_keys": [
+        "source_fact:v1:11199063ede2e0ed1abe8f0525ce5d26c4c8f99e4d94fa32bbf48f78c971e112",
+        "source_fact:v1:26aa561a2892da3d651da795c7e031bfaedd907772694a5f7f0f5240917cad1e",
+        "source_fact:v1:3973240e137e02b304f8e85061673012dba3208a624b080c53ab9cec0d3cf5eb"
+      ],
+      "source_published_kst": "2026-10-11T17:26+09:00",
+      "source_title": "4대 신항만 장비 38%가 '메이드 인 차이나'",
+      "telegram_core_fact": "중국산 장비가 전체에서 38%를 차지하는 등 수입 의존도가 높은 가운데 항만 자동화가 확대되면서 정보보안과 유지관리 체계를 강화해야 한다는 지적이 나온다. 국내 주요 신항만에 설치된 항만장비의 국산 비중이 35%에 그치는 것으로 나타났다.",
+      "title": "4대 신항만 장비 38%가 '메이드 인 차이나'"
+    },
     "original:0806d412dfc8c34cd81d69b7": {
       "first_seen_kst": "2026-09-30T15:16:38+09:00",
       "lanes": {
@@ -140351,6 +140862,27 @@
       ],
       "source_published_kst": "2026-10-06T10:57+09:00",
       "title": "오텍캐리어, AI 데이터센터용 CDU 제품 라인업 강화"
+    },
+    "original:269a0a6e85af879b3cd0e728": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.hankyung.com/article/202610114294i",
+      "source": "한국경제",
+      "source_body_digest": "bf7607d104890a4140a4b13323ec552147f2ef9fbf3e2458a000d8231db3cdde",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bb14933b226ff889df466c5f55a2e346510ffd0199ce58a2184040aea4573ba",
+      "source_fact_keys": [
+        "source_fact:v1:1c392ce4aa263185757523b9da1c2f1468be0fbd8d2cc4eaaef4cf4718a38b15",
+        "source_fact:v1:be24324f44e3ce93302e667353cecbf31046cc6bba04192ddfc192b0139cee7e",
+        "source_fact:v1:ff1acedd695721e93231cce3bcf7b3ba28d6517b81967a441ffa1d63e221f064"
+      ],
+      "source_published_kst": "2026-10-11T16:52+09:00",
+      "source_title": "[단독]한투, 美에 대체투자 운용사 세운다",
+      "telegram_core_fact": "한국투자금융지주가 미국 대체투자 전문 운용사인 찰스뱅크캐피털파트너스와 크레딧 투자를 전문으로 하는 합작법인(JV) 설립을 추진한다. 투자은행(IB) 업계에 따르면 한투는 미국 사모펀드 운용사인 찰스뱅크와 JV 설립을 위한 협상을 진행하고 있다.",
+      "title": "[단독]한투, 美에 대체투자 운용사 세운다"
     },
     "original:26f835c17634ee0dbc977a61": {
       "first_seen_kst": "2026-09-27T00:25:22+09:00",
@@ -150294,6 +150826,28 @@
       "telegram_core_fact": "이 메시지는 ICC 재판관을 지낸 나비 필라이의 노벨평화상 수상 직후 트럼프 행정부가 ICC에 대한 고강도 제재를 발표한 지 얼마 지나지 않아 게시된 것이다.",
       "title": "다카이치, 美 ICC 제재 직후 \"깊은 우려…ICC 역할 지원\" | 연합뉴스"
     },
+    "original:4fe61b807e2218f675602cd8": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.mk.co.kr/news/politics/12173017",
+      "source": "매일경제",
+      "source_body_digest": "a816e327aa0df969f62aeda2d085c00eea4ec143ca30c37e45e948b96c205938",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5a0b81cd83f148d1d1229bc5271e2012eac08004905e922d712befd801821567",
+      "source_fact_keys": [
+        "source_fact:v1:13186484dfacee871e6e61262575564a87c5b29f38f612f863ae2bb525f05ed4",
+        "source_fact:v1:3c0d37a1197913c4471e5cdf796e0e10800e0db130d54fa282d7736e90891f1a",
+        "source_fact:v1:9de93fbbc7ea7e262a12d28aa81237901904c55f2f640e0ccf3c21e78dd144f0",
+        "source_fact:v1:a4fa3d0e1885b66e74c25b3a2143ccf14b589e46eebb4ea1c4421e80c7c57cdb"
+      ],
+      "source_published_kst": "2026-10-11T16:33+09:00",
+      "source_title": "[단독] 집지을 땅 없다는데 … LH 택지 절반 유찰",
+      "telegram_core_fact": "11일 국회 국토교통위원회 소속 김종양 국민의힘 의원실이 LH에서 제출받은 국정감사 자료에 따르면 공공택지 공급공고 필지 기준 유찰률은 2024년 56%, 지난해 45%에 달했다. 2023년부터 올해 5월까지 체결한 토지 공급 계약 40조4000억원 중 9조5000억원(23.5%)이 무이자 할부 방식이었다.",
+      "title": "[단독] 집지을 땅 없다는데 … LH 택지 절반 유찰"
+    },
     "original:4fe68063a2265c5932aca28b": {
       "first_seen_kst": "2026-09-27T08:28:35+09:00",
       "lanes": {
@@ -155757,6 +156311,25 @@
       "source_title": "한국경제평론가협회, 국회서 '한국경제 전망·부동산 정책 쟁점' 논의",
       "telegram_core_fact": "특히 반도체 산업의 변화와 자금 흐름, 부동산 수요·공급 전망, 세제개편안 등을 주요 의제로 다룬다.",
       "title": "한국경제평론가협회, 국회서 '한국경제 전망·부동산 정책 쟁점' 논의"
+    },
+    "original:6b5e537c80b22b251abeaac9": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011042800062",
+      "source": "연합뉴스",
+      "source_body_digest": "c77ae8fb26dc0663ef9613c312a2da706ca6f876d8a3682b9dccd8d9f7945164",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:91225bf9c68846bc7128e00dc309595b6c79ef7ae15841011ef2d774c632c1e2",
+      "source_fact_keys": [
+        "source_fact:v1:73d91120eae1c0d4d15d3935fb3e37ee638cd9fa72e8cefbd2e2bda7e4bb135a"
+      ],
+      "source_published_kst": "2026-10-11T18:25+09:00",
+      "source_title": "홍천 인삼·한우 명품축제 성료…10만명 방문·매출 15억원 | 연합뉴스",
+      "telegram_core_fact": "홍천문화재단에 따르면 지난 8일부터 이날까지 홍천 도시산림공원 토리숲 일대에서 열린 축제의 인삼·한우와 농특산물, 먹거리 등 총매출은 약 15억원으로 집계됐다.",
+      "title": "홍천 인삼·한우 명품축제 성료…10만명 방문·매출 15억원 | 연합뉴스"
     },
     "original:6b5fc5d977dbd1ac5342005c": {
       "first_seen_kst": "2026-10-11T09:50:45+09:00",
@@ -174455,6 +175028,32 @@
       "source_published_kst": "2026-10-06T19:11+09:00",
       "title": "\"일본·중국 美국채 큰 손 사라진다\"…레이 달리오 경고 배경은"
     },
+    "original:bef16bc1c22fd0ffba3f9a00": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675285",
+      "source": "블로터",
+      "source_body_digest": "160663c3fd2ebaf3e238f9e890e23bbe7ffa13f92caf196ad20fb6feef777a6a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a37f6e2d8e851a689be743a19a61e067023e165063d77d52d097602d7cb9a009",
+      "source_fact_keys": [
+        "source_fact:v1:019f4c5cba213cffd6b2dac1f51b3033135bc99413fb233316da8591d97c3bae",
+        "source_fact:v1:253db952f546820f703a2ec7f990fbaacdc2cc7bf3cdd37c61bd90a81b4c7875",
+        "source_fact:v1:5cbc5829a9d6c76d07347fa23bbc3a0af983c756215396edbbf6b50fd3885c72",
+        "source_fact:v1:739f06e6af8c2673ef76cf76518c129f19a4e90008ed2589add5e438d8d96bc0",
+        "source_fact:v1:80fac96d6054f1d727773dfbe6d78f4bfd2f70908e1c9186a2d74cf5c2b35a29",
+        "source_fact:v1:993627ead407fcb2c6549630d60adbc20ca10c9ce4535dbe14c89c598a109126",
+        "source_fact:v1:c0686370c763d1fc4f1335325a9f9736eec6d97b99e73cc3c4d51a2df6951d7f",
+        "source_fact:v1:e545f1b016e4a72f92228cd0c5afd01da5c37d62857594cc5471db853c143a45"
+      ],
+      "source_published_kst": "2026-10-11T16:00+09:00",
+      "source_title": "풍산, 방산 부진 메운 '구리 호황' 신용등급 AA- 상향",
+      "telegram_core_fact": "풍산 매출은 2조7412억원으로 전년비 11.9% 증가했습니다.",
+      "title": "풍산, 방산 부진 메운 '구리 호황' 신용등급 AA- 상향"
+    },
     "original:bf072632ca52b7e615929eb1": {
       "first_seen_kst": "2026-10-03T10:53:56+09:00",
       "lanes": {
@@ -174535,6 +175134,33 @@
       ],
       "source_published_kst": "2026-10-06T12:00+09:00",
       "title": "대한상의·감사원 사전컨설팅에 멈춘 공공주택 3936세대 ‘물꼬’"
+    },
+    "original:bf946dd90e6478c0725d2aee": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.mk.co.kr/news/business/12173107",
+      "source": "매일경제",
+      "source_body_digest": "8266afe08b8f9fb2657ae0cac270d25aa06b70409a9406ad5b6bf976286ffc2b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dcd630d938190aede9f20314280329601d54e543612b14a3665a16c01f1bb2ce",
+      "source_fact_keys": [
+        "source_fact:v1:04d267756abda78ea790fd56f31e13d743dc9de15006f1a1b8854b047dc687c1",
+        "source_fact:v1:2c77e0c658ca65c906997939e5a81c2fd7d32b7ccf4deb74c73915c1bf5c623b",
+        "source_fact:v1:4ed79c4373e0e8f41db9f2048abc5dfea7186bd8566388c5a2376627b6540537",
+        "source_fact:v1:68774888a9db0001ee3f7dcebb42c945357fe1c74948669cff42019738cc1f0c",
+        "source_fact:v1:6e20cff67bfedf252a28a79096ef3b43ca58583a5c8ac3eade528c6fc8568207",
+        "source_fact:v1:b3f27fcea714a3beca4c55fe7dda7be39a98cf8f6af411dfe96068ded98948bf",
+        "source_fact:v1:cc1ab9ac4b8ac8bc36e70fbfaeae6c7306a37896d6d3ebe89ea271846f348be1",
+        "source_fact:v1:e12d8baed42341db63f84d30f8ccd7763eb369483bb024d9456bda2d9486a0a3",
+        "source_fact:v1:fe6c646be431dc00e735f7356e0dd1c3e694d2e16df8c5132a9d2611bcd46bd3"
+      ],
+      "source_published_kst": "2026-10-11T17:29+09:00",
+      "source_title": "LS전선, 해저케이블 공장 계열사에 매각 검토",
+      "telegram_core_fact": "미국 전력망 시장 공략에 박차를 가하고 있는 LS전선이 '사업 리밸런싱'을 위해 계열사 가온전선에 동해사업장 내 공장 1개 동을 매각하는 방안을 검토하고 나섰다. 전선업계에 따르면 LS전선은 최근 동해사업장 해저1공장을 가온전선에 매각하는 방안을 검토하고 있다.",
+      "title": "LS전선, 해저케이블 공장 계열사에 매각 검토"
     },
     "original:bf96d8fb8706d32d6c46ce69": {
       "first_seen_kst": "2026-10-05T08:24:29+09:00",
@@ -188345,6 +188971,33 @@
       "telegram_core_fact": "고객 주문과 로그인뿐 아니라 물류 현장의 상품 분류 작업과 배송에도 차질이 빚어진 것으로 파악됐다.",
       "title": "쿠팡·쿠팡이츠·쿠팡플레이 등 한밤 중 접속 장애…주문·배송 차질"
     },
+    "original:fe4130123b2aed7a2f7299ef": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01328406645611936&parentid=02945446645611936&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "fb645682279d9baab3410152ede34d8aa06345f7fe68b0b4041f215432f591ff",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f36f0106a19ea3f6a100deee3e6ae65618c5a25775392dc109350c45f889e374",
+      "source_fact_keys": [
+        "source_fact:v1:1c5b2b905a5fcab494c80c18329fce98f065542fee6bd0e31cf28dc1826a5128",
+        "source_fact:v1:1f59ee0941eb4fcdea50545a584c341b44883ba167bbe5eeb3cae9643945f843",
+        "source_fact:v1:246176ba8af4cd516367690dd9a4eec12e90d557276d1be5f45c82b4e3fddd4c",
+        "source_fact:v1:4ab17ea5da7477b537d4acd00cfb82acbc9008043f9625f19dfa4852fd1390a2",
+        "source_fact:v1:9f81e13ca5ec9612f947e882bb9f1604eebfd133aa84cf1f83bb5dda69bd32af",
+        "source_fact:v1:be78857b3c795212aa52640657a425c26f8b1f9c391773d51d762e6693ce6f16",
+        "source_fact:v1:cabe275c3d1028111d2a60ce77802fa082ade08267626d063d957296470ce16e",
+        "source_fact:v1:e4b700848a368119173cfdadc2c8be921ed77fafa1b0ab3421798368c5ba2b4e",
+        "source_fact:v1:e76c15557771a1e75e88e63eb68b75ef7c161858683c6de337aea693b654b874"
+      ],
+      "source_published_kst": "2026-10-11T10:30+09:00",
+      "source_title": "[단독] “사망사고 나자 민간에 떠넘기나”…한전, 정전복구 외주화 추진",
+      "telegram_core_fact": "11일 국회 기후에너지환경노동위원회 소속 어기구 더불어민주당 의원(충남 당진시)이 한국전력공사로부터 제출받은 자료에 따르면, 2017년부터 2026년 8월까지 정전복구 작업 중 산업재해를 입은 한전 직원은 21명으로, 이 가운데 1명이 사망했다.",
+      "title": "[단독] “사망사고 나자 민간에 떠넘기나”…한전, 정전복구 외주화 추진"
+    },
     "original:fe4171d0d2ebc2d56c190bed": {
       "first_seen_kst": "2026-10-07T08:36:47+09:00",
       "lanes": {
@@ -190113,6 +190766,32 @@
       "source_title": "[정의선 회장 6년] 車 넘어 '피지컬 AI' 승부수…로봇·자율주행 확장",
       "telegram_core_fact": "현대차그룹은 엔비디아와 자율주행 및 피지컬 AI 인프라 강화에 협력하고, 웨이모와는 자율주행 생태계 조성에 나서고 있다.",
       "title": "[정의선 회장 6년] 車 넘어 '피지컬 AI' 승부수…로봇·자율주행 확장"
+    },
+    "source_fact:020c2957cef80b7b201d058b": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675285",
+      "source": "블로터",
+      "source_body_digest": "160663c3fd2ebaf3e238f9e890e23bbe7ffa13f92caf196ad20fb6feef777a6a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a37f6e2d8e851a689be743a19a61e067023e165063d77d52d097602d7cb9a009",
+      "source_fact_keys": [
+        "source_fact:v1:019f4c5cba213cffd6b2dac1f51b3033135bc99413fb233316da8591d97c3bae",
+        "source_fact:v1:253db952f546820f703a2ec7f990fbaacdc2cc7bf3cdd37c61bd90a81b4c7875",
+        "source_fact:v1:5cbc5829a9d6c76d07347fa23bbc3a0af983c756215396edbbf6b50fd3885c72",
+        "source_fact:v1:739f06e6af8c2673ef76cf76518c129f19a4e90008ed2589add5e438d8d96bc0",
+        "source_fact:v1:80fac96d6054f1d727773dfbe6d78f4bfd2f70908e1c9186a2d74cf5c2b35a29",
+        "source_fact:v1:993627ead407fcb2c6549630d60adbc20ca10c9ce4535dbe14c89c598a109126",
+        "source_fact:v1:c0686370c763d1fc4f1335325a9f9736eec6d97b99e73cc3c4d51a2df6951d7f",
+        "source_fact:v1:e545f1b016e4a72f92228cd0c5afd01da5c37d62857594cc5471db853c143a45"
+      ],
+      "source_published_kst": "2026-10-11T16:00+09:00",
+      "source_title": "풍산, 방산 부진 메운 '구리 호황' 신용등급 AA- 상향",
+      "telegram_core_fact": "풍산 매출은 2조7412억원으로 전년비 11.9% 증가했습니다.",
+      "title": "풍산, 방산 부진 메운 '구리 호황' 신용등급 AA- 상향"
     },
     "source_fact:0212a0f29f2d49b83df014d2": {
       "first_seen_kst": "2026-10-10T10:34:18+09:00",
@@ -196548,6 +197227,25 @@
       "telegram_core_fact": "평택시는 삼성전자 협력사 3곳 등에 하루 1만8천400t을 공급할 3.23㎞ 하수처리수 관로 공사를 착공했다. 공사비 225억원은 공급업체 3곳이 전액 부담하며, 내년 말 준공 목표다.",
       "title": "평택시, 반도체 배후산단에 하수처리수 공급…관로공사 착공"
     },
+    "source_fact:0c0ffaffbf71cde1a121fa84": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011042800062",
+      "source": "연합뉴스",
+      "source_body_digest": "c77ae8fb26dc0663ef9613c312a2da706ca6f876d8a3682b9dccd8d9f7945164",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:91225bf9c68846bc7128e00dc309595b6c79ef7ae15841011ef2d774c632c1e2",
+      "source_fact_keys": [
+        "source_fact:v1:73d91120eae1c0d4d15d3935fb3e37ee638cd9fa72e8cefbd2e2bda7e4bb135a"
+      ],
+      "source_published_kst": "2026-10-11T18:25+09:00",
+      "source_title": "홍천 인삼·한우 명품축제 성료…10만명 방문·매출 15억원 | 연합뉴스",
+      "telegram_core_fact": "홍천문화재단에 따르면 지난 8일부터 이날까지 홍천 도시산림공원 토리숲 일대에서 열린 축제의 인삼·한우와 농특산물, 먹거리 등 총매출은 약 15억원으로 집계됐다.",
+      "title": "홍천 인삼·한우 명품축제 성료…10만명 방문·매출 15억원 | 연합뉴스"
+    },
     "source_fact:0c10088dbfea23820517e6ae": {
       "first_seen_kst": "2026-10-10T16:38:23+09:00",
       "lanes": {
@@ -196752,6 +197450,32 @@
       ],
       "source_published_kst": "2026-10-06T22:00+09:00",
       "title": "포스코퓨처엠·삼성SDI … LFP 양극재 6조원 계약"
+    },
+    "source_fact:0c6eafe9602cc90ad1b8eb66": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675285",
+      "source": "블로터",
+      "source_body_digest": "160663c3fd2ebaf3e238f9e890e23bbe7ffa13f92caf196ad20fb6feef777a6a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a37f6e2d8e851a689be743a19a61e067023e165063d77d52d097602d7cb9a009",
+      "source_fact_keys": [
+        "source_fact:v1:019f4c5cba213cffd6b2dac1f51b3033135bc99413fb233316da8591d97c3bae",
+        "source_fact:v1:253db952f546820f703a2ec7f990fbaacdc2cc7bf3cdd37c61bd90a81b4c7875",
+        "source_fact:v1:5cbc5829a9d6c76d07347fa23bbc3a0af983c756215396edbbf6b50fd3885c72",
+        "source_fact:v1:739f06e6af8c2673ef76cf76518c129f19a4e90008ed2589add5e438d8d96bc0",
+        "source_fact:v1:80fac96d6054f1d727773dfbe6d78f4bfd2f70908e1c9186a2d74cf5c2b35a29",
+        "source_fact:v1:993627ead407fcb2c6549630d60adbc20ca10c9ce4535dbe14c89c598a109126",
+        "source_fact:v1:c0686370c763d1fc4f1335325a9f9736eec6d97b99e73cc3c4d51a2df6951d7f",
+        "source_fact:v1:e545f1b016e4a72f92228cd0c5afd01da5c37d62857594cc5471db853c143a45"
+      ],
+      "source_published_kst": "2026-10-11T16:00+09:00",
+      "source_title": "풍산, 방산 부진 메운 '구리 호황' 신용등급 AA- 상향",
+      "telegram_core_fact": "풍산 매출은 2조7412억원으로 전년비 11.9% 증가했습니다.",
+      "title": "풍산, 방산 부진 메운 '구리 호황' 신용등급 AA- 상향"
     },
     "source_fact:0c72452c0b1f6dd6b48a0cec": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
@@ -199864,6 +200588,33 @@
       "source_title": "대미 투자 다음은 301조 관세…부처 합동 통상현안 대응",
       "telegram_core_fact": "산업통상부는 8일 제60차 통상추진위원회를 열고 대미 투자, 미국 301조 관세, 한중 FTA(자유무역협정) 2단계 협상 등 주요 통상현안 대응 방안을 논의했다고 밝혔다.",
       "title": "대미 투자 다음은 301조 관세…부처 합동 통상현안 대응"
+    },
+    "source_fact:0fe334abd71a7e04f20f576d": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.mk.co.kr/news/business/12173107",
+      "source": "매일경제",
+      "source_body_digest": "8266afe08b8f9fb2657ae0cac270d25aa06b70409a9406ad5b6bf976286ffc2b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dcd630d938190aede9f20314280329601d54e543612b14a3665a16c01f1bb2ce",
+      "source_fact_keys": [
+        "source_fact:v1:04d267756abda78ea790fd56f31e13d743dc9de15006f1a1b8854b047dc687c1",
+        "source_fact:v1:2c77e0c658ca65c906997939e5a81c2fd7d32b7ccf4deb74c73915c1bf5c623b",
+        "source_fact:v1:4ed79c4373e0e8f41db9f2048abc5dfea7186bd8566388c5a2376627b6540537",
+        "source_fact:v1:68774888a9db0001ee3f7dcebb42c945357fe1c74948669cff42019738cc1f0c",
+        "source_fact:v1:6e20cff67bfedf252a28a79096ef3b43ca58583a5c8ac3eade528c6fc8568207",
+        "source_fact:v1:b3f27fcea714a3beca4c55fe7dda7be39a98cf8f6af411dfe96068ded98948bf",
+        "source_fact:v1:cc1ab9ac4b8ac8bc36e70fbfaeae6c7306a37896d6d3ebe89ea271846f348be1",
+        "source_fact:v1:e12d8baed42341db63f84d30f8ccd7763eb369483bb024d9456bda2d9486a0a3",
+        "source_fact:v1:fe6c646be431dc00e735f7356e0dd1c3e694d2e16df8c5132a9d2611bcd46bd3"
+      ],
+      "source_published_kst": "2026-10-11T17:29+09:00",
+      "source_title": "LS전선, 해저케이블 공장 계열사에 매각 검토",
+      "telegram_core_fact": "미국 전력망 시장 공략에 박차를 가하고 있는 LS전선이 '사업 리밸런싱'을 위해 계열사 가온전선에 동해사업장 내 공장 1개 동을 매각하는 방안을 검토하고 나섰다. 전선업계에 따르면 LS전선은 최근 동해사업장 해저1공장을 가온전선에 매각하는 방안을 검토하고 있다.",
+      "title": "LS전선, 해저케이블 공장 계열사에 매각 검토"
     },
     "source_fact:101fc62f1210e5efb88e2130": {
       "first_seen_kst": "2026-10-08T02:12:43+09:00",
@@ -203108,6 +203859,32 @@
       "telegram_core_fact": "패트리아 인베스트먼트(PAX)는 2분기(4~6월) 서비스 순매출(Net revenue from services)이 1억1129만 달러로 전년비 34.9% 증가했고, 희석 주당순이익은 0.065달러로 전년 동기 0.080달러보다 감소했다고 10월 7일 발표했다.",
       "title": "패트리아 인베스트먼트, 2분기 순매출 1억1100만 달러..35% 증가"
     },
+    "source_fact:14f7210c71ee5b3c31543eca": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675285",
+      "source": "블로터",
+      "source_body_digest": "160663c3fd2ebaf3e238f9e890e23bbe7ffa13f92caf196ad20fb6feef777a6a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a37f6e2d8e851a689be743a19a61e067023e165063d77d52d097602d7cb9a009",
+      "source_fact_keys": [
+        "source_fact:v1:019f4c5cba213cffd6b2dac1f51b3033135bc99413fb233316da8591d97c3bae",
+        "source_fact:v1:253db952f546820f703a2ec7f990fbaacdc2cc7bf3cdd37c61bd90a81b4c7875",
+        "source_fact:v1:5cbc5829a9d6c76d07347fa23bbc3a0af983c756215396edbbf6b50fd3885c72",
+        "source_fact:v1:739f06e6af8c2673ef76cf76518c129f19a4e90008ed2589add5e438d8d96bc0",
+        "source_fact:v1:80fac96d6054f1d727773dfbe6d78f4bfd2f70908e1c9186a2d74cf5c2b35a29",
+        "source_fact:v1:993627ead407fcb2c6549630d60adbc20ca10c9ce4535dbe14c89c598a109126",
+        "source_fact:v1:c0686370c763d1fc4f1335325a9f9736eec6d97b99e73cc3c4d51a2df6951d7f",
+        "source_fact:v1:e545f1b016e4a72f92228cd0c5afd01da5c37d62857594cc5471db853c143a45"
+      ],
+      "source_published_kst": "2026-10-11T16:00+09:00",
+      "source_title": "풍산, 방산 부진 메운 '구리 호황' 신용등급 AA- 상향",
+      "telegram_core_fact": "풍산 매출은 2조7412억원으로 전년비 11.9% 증가했습니다.",
+      "title": "풍산, 방산 부진 메운 '구리 호황' 신용등급 AA- 상향"
+    },
     "source_fact:1517d6ee508bf9a7c995fe44": {
       "first_seen_kst": "2026-10-10T11:34:45+09:00",
       "lanes": {
@@ -205144,6 +205921,27 @@
       "source_published_kst": "2026-10-07T00:55+09:00",
       "title": "국제 유가·美 국채 수익률 동반 하락…뉴욕 증시 사상 최고"
     },
+    "source_fact:17c0f37089786ae936f951dd": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172606",
+      "source": "매일경제",
+      "source_body_digest": "f5a253f0b217330d41b791e9f2f70338b6b246dec6cbbefc4eebdb57d74c3316",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:07a0c8c80251a5ef857e2a784129982204ccf5063c473726b96e1a547ee2ccdb",
+      "source_fact_keys": [
+        "source_fact:v1:11199063ede2e0ed1abe8f0525ce5d26c4c8f99e4d94fa32bbf48f78c971e112",
+        "source_fact:v1:26aa561a2892da3d651da795c7e031bfaedd907772694a5f7f0f5240917cad1e",
+        "source_fact:v1:3973240e137e02b304f8e85061673012dba3208a624b080c53ab9cec0d3cf5eb"
+      ],
+      "source_published_kst": "2026-10-11T17:26+09:00",
+      "source_title": "4대 신항만 장비 38%가 '메이드 인 차이나'",
+      "telegram_core_fact": "중국산 장비가 전체에서 38%를 차지하는 등 수입 의존도가 높은 가운데 항만 자동화가 확대되면서 정보보안과 유지관리 체계를 강화해야 한다는 지적이 나온다. 국내 주요 신항만에 설치된 항만장비의 국산 비중이 35%에 그치는 것으로 나타났다.",
+      "title": "4대 신항만 장비 38%가 '메이드 인 차이나'"
+    },
     "source_fact:17c4cca8ae8374caf7ddc371": {
       "first_seen_kst": "2026-10-11T16:16:50+09:00",
       "lanes": {
@@ -206923,6 +207721,33 @@
       "source_title": "마스오토, 美 교통부와 자율주행 협력 모색",
       "telegram_core_fact": "자율주행 트럭 기업 마스오토가 미국 교통부와 자율주행 트럭 상용화 확대 방안을 논의한다. 노제경 마스오토 부대표는 21일 ‘자율주행에 대비한 운송 노선 구축’ 세션과 22일 ‘실증에서 상용화로: 자율주행 글로벌 투어’ 세션에 한국 측 연사로 참여한다.",
       "title": "마스오토, 美 교통부와 자율주행 협력 모색"
+    },
+    "source_fact:1aa62ebd0a0ae24f741f326c": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01328406645611936&parentid=02945446645611936&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "fb645682279d9baab3410152ede34d8aa06345f7fe68b0b4041f215432f591ff",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f36f0106a19ea3f6a100deee3e6ae65618c5a25775392dc109350c45f889e374",
+      "source_fact_keys": [
+        "source_fact:v1:1c5b2b905a5fcab494c80c18329fce98f065542fee6bd0e31cf28dc1826a5128",
+        "source_fact:v1:1f59ee0941eb4fcdea50545a584c341b44883ba167bbe5eeb3cae9643945f843",
+        "source_fact:v1:246176ba8af4cd516367690dd9a4eec12e90d557276d1be5f45c82b4e3fddd4c",
+        "source_fact:v1:4ab17ea5da7477b537d4acd00cfb82acbc9008043f9625f19dfa4852fd1390a2",
+        "source_fact:v1:9f81e13ca5ec9612f947e882bb9f1604eebfd133aa84cf1f83bb5dda69bd32af",
+        "source_fact:v1:be78857b3c795212aa52640657a425c26f8b1f9c391773d51d762e6693ce6f16",
+        "source_fact:v1:cabe275c3d1028111d2a60ce77802fa082ade08267626d063d957296470ce16e",
+        "source_fact:v1:e4b700848a368119173cfdadc2c8be921ed77fafa1b0ab3421798368c5ba2b4e",
+        "source_fact:v1:e76c15557771a1e75e88e63eb68b75ef7c161858683c6de337aea693b654b874"
+      ],
+      "source_published_kst": "2026-10-11T10:30+09:00",
+      "source_title": "[단독] “사망사고 나자 민간에 떠넘기나”…한전, 정전복구 외주화 추진",
+      "telegram_core_fact": "11일 국회 기후에너지환경노동위원회 소속 어기구 더불어민주당 의원(충남 당진시)이 한국전력공사로부터 제출받은 자료에 따르면, 2017년부터 2026년 8월까지 정전복구 작업 중 산업재해를 입은 한전 직원은 21명으로, 이 가운데 1명이 사망했다.",
+      "title": "[단독] “사망사고 나자 민간에 떠넘기나”…한전, 정전복구 외주화 추진"
     },
     "source_fact:1aaeb6eea83ca1ff227d0e79": {
       "first_seen_kst": "2026-10-06T22:51:44+09:00",
@@ -209817,6 +210642,28 @@
       "source_published_kst": "2026-10-06T11:20+09:00",
       "title": "엠플러스, 유럽 배터리 기업 각형 노칭·스태킹 장비 수주"
     },
+    "source_fact:1e9fc25745f84e0fe723a15a": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.mk.co.kr/news/politics/12173017",
+      "source": "매일경제",
+      "source_body_digest": "a816e327aa0df969f62aeda2d085c00eea4ec143ca30c37e45e948b96c205938",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5a0b81cd83f148d1d1229bc5271e2012eac08004905e922d712befd801821567",
+      "source_fact_keys": [
+        "source_fact:v1:13186484dfacee871e6e61262575564a87c5b29f38f612f863ae2bb525f05ed4",
+        "source_fact:v1:3c0d37a1197913c4471e5cdf796e0e10800e0db130d54fa282d7736e90891f1a",
+        "source_fact:v1:9de93fbbc7ea7e262a12d28aa81237901904c55f2f640e0ccf3c21e78dd144f0",
+        "source_fact:v1:a4fa3d0e1885b66e74c25b3a2143ccf14b589e46eebb4ea1c4421e80c7c57cdb"
+      ],
+      "source_published_kst": "2026-10-11T16:33+09:00",
+      "source_title": "[단독] 집지을 땅 없다는데 … LH 택지 절반 유찰",
+      "telegram_core_fact": "11일 국회 국토교통위원회 소속 김종양 국민의힘 의원실이 LH에서 제출받은 국정감사 자료에 따르면 공공택지 공급공고 필지 기준 유찰률은 2024년 56%, 지난해 45%에 달했다. 2023년부터 올해 5월까지 체결한 토지 공급 계약 40조4000억원 중 9조5000억원(23.5%)이 무이자 할부 방식이었다.",
+      "title": "[단독] 집지을 땅 없다는데 … LH 택지 절반 유찰"
+    },
     "source_fact:1ea695f4260230d203206a67": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
       "lanes": {
@@ -211234,6 +212081,27 @@
       "source_title": "[제2서울핀테크랩 스타트업 CEO] 제로트러스트(Zero Trust) 기반 금융 보안·인증·결제 솔루션 개발하는 기업 ‘신영이노베이션’",
       "telegram_core_fact": "KB국민카드, 롯데카드, 웰컴저축은행 등 국내 금융사에 누적 1천만 명 이상 고객 기반으로 검증된 인증·보안 기술을 보유하고 있으며, 이 원천기술을 바탕으로 만든 솔루션이 TrustIn Gateway이다.",
       "title": "[제2서울핀테크랩 스타트업 CEO] 제로트러스트(Zero Trust) 기반 금융 보안·인증·결제 솔루션 개발하는 기업 ‘신영이노베이션’"
+    },
+    "source_fact:20640409aec6f4ef7262577b": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.hankyung.com/article/202610114294i",
+      "source": "한국경제",
+      "source_body_digest": "bf7607d104890a4140a4b13323ec552147f2ef9fbf3e2458a000d8231db3cdde",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bb14933b226ff889df466c5f55a2e346510ffd0199ce58a2184040aea4573ba",
+      "source_fact_keys": [
+        "source_fact:v1:1c392ce4aa263185757523b9da1c2f1468be0fbd8d2cc4eaaef4cf4718a38b15",
+        "source_fact:v1:be24324f44e3ce93302e667353cecbf31046cc6bba04192ddfc192b0139cee7e",
+        "source_fact:v1:ff1acedd695721e93231cce3bcf7b3ba28d6517b81967a441ffa1d63e221f064"
+      ],
+      "source_published_kst": "2026-10-11T16:52+09:00",
+      "source_title": "[단독]한투, 美에 대체투자 운용사 세운다",
+      "telegram_core_fact": "한국투자금융지주가 미국 대체투자 전문 운용사인 찰스뱅크캐피털파트너스와 크레딧 투자를 전문으로 하는 합작법인(JV) 설립을 추진한다. 투자은행(IB) 업계에 따르면 한투는 미국 사모펀드 운용사인 찰스뱅크와 JV 설립을 위한 협상을 진행하고 있다.",
+      "title": "[단독]한투, 美에 대체투자 운용사 세운다"
     },
     "source_fact:2068c37abebf33e772045bdf": {
       "first_seen_kst": "2026-10-07T06:12:17+09:00",
@@ -213329,6 +214197,33 @@
       "source_title": "EU, 中하이브리드차 세이프가드 도입 검토…對中 압박 키운다",
       "telegram_core_fact": "유럽연합(EU)이 중국산 하이브리드 자동차 수입을 제한하는 긴급수입제한(세이프가드) 도입을 준비 중인 것으로 전해졌다.",
       "title": "EU, 中하이브리드차 세이프가드 도입 검토…對中 압박 키운다"
+    },
+    "source_fact:22dbbdf89bae100004d317c2": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.mk.co.kr/news/business/12173107",
+      "source": "매일경제",
+      "source_body_digest": "8266afe08b8f9fb2657ae0cac270d25aa06b70409a9406ad5b6bf976286ffc2b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dcd630d938190aede9f20314280329601d54e543612b14a3665a16c01f1bb2ce",
+      "source_fact_keys": [
+        "source_fact:v1:04d267756abda78ea790fd56f31e13d743dc9de15006f1a1b8854b047dc687c1",
+        "source_fact:v1:2c77e0c658ca65c906997939e5a81c2fd7d32b7ccf4deb74c73915c1bf5c623b",
+        "source_fact:v1:4ed79c4373e0e8f41db9f2048abc5dfea7186bd8566388c5a2376627b6540537",
+        "source_fact:v1:68774888a9db0001ee3f7dcebb42c945357fe1c74948669cff42019738cc1f0c",
+        "source_fact:v1:6e20cff67bfedf252a28a79096ef3b43ca58583a5c8ac3eade528c6fc8568207",
+        "source_fact:v1:b3f27fcea714a3beca4c55fe7dda7be39a98cf8f6af411dfe96068ded98948bf",
+        "source_fact:v1:cc1ab9ac4b8ac8bc36e70fbfaeae6c7306a37896d6d3ebe89ea271846f348be1",
+        "source_fact:v1:e12d8baed42341db63f84d30f8ccd7763eb369483bb024d9456bda2d9486a0a3",
+        "source_fact:v1:fe6c646be431dc00e735f7356e0dd1c3e694d2e16df8c5132a9d2611bcd46bd3"
+      ],
+      "source_published_kst": "2026-10-11T17:29+09:00",
+      "source_title": "LS전선, 해저케이블 공장 계열사에 매각 검토",
+      "telegram_core_fact": "미국 전력망 시장 공략에 박차를 가하고 있는 LS전선이 '사업 리밸런싱'을 위해 계열사 가온전선에 동해사업장 내 공장 1개 동을 매각하는 방안을 검토하고 나섰다. 전선업계에 따르면 LS전선은 최근 동해사업장 해저1공장을 가온전선에 매각하는 방안을 검토하고 있다.",
+      "title": "LS전선, 해저케이블 공장 계열사에 매각 검토"
     },
     "source_fact:22dbc1586b3048d4a12229dc": {
       "first_seen_kst": "2026-10-08T09:17:31+09:00",
@@ -215688,6 +216583,33 @@
       ],
       "source_published_kst": "2026-10-06T09:47+09:00",
       "title": "중간선거 앞두고 전전긍긍…트럼프 \"농업용 면세유 車사용 한시 유예\""
+    },
+    "source_fact:258cb661278c7ed2b81043ab": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01328406645611936&parentid=02945446645611936&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "fb645682279d9baab3410152ede34d8aa06345f7fe68b0b4041f215432f591ff",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f36f0106a19ea3f6a100deee3e6ae65618c5a25775392dc109350c45f889e374",
+      "source_fact_keys": [
+        "source_fact:v1:1c5b2b905a5fcab494c80c18329fce98f065542fee6bd0e31cf28dc1826a5128",
+        "source_fact:v1:1f59ee0941eb4fcdea50545a584c341b44883ba167bbe5eeb3cae9643945f843",
+        "source_fact:v1:246176ba8af4cd516367690dd9a4eec12e90d557276d1be5f45c82b4e3fddd4c",
+        "source_fact:v1:4ab17ea5da7477b537d4acd00cfb82acbc9008043f9625f19dfa4852fd1390a2",
+        "source_fact:v1:9f81e13ca5ec9612f947e882bb9f1604eebfd133aa84cf1f83bb5dda69bd32af",
+        "source_fact:v1:be78857b3c795212aa52640657a425c26f8b1f9c391773d51d762e6693ce6f16",
+        "source_fact:v1:cabe275c3d1028111d2a60ce77802fa082ade08267626d063d957296470ce16e",
+        "source_fact:v1:e4b700848a368119173cfdadc2c8be921ed77fafa1b0ab3421798368c5ba2b4e",
+        "source_fact:v1:e76c15557771a1e75e88e63eb68b75ef7c161858683c6de337aea693b654b874"
+      ],
+      "source_published_kst": "2026-10-11T10:30+09:00",
+      "source_title": "[단독] “사망사고 나자 민간에 떠넘기나”…한전, 정전복구 외주화 추진",
+      "telegram_core_fact": "11일 국회 기후에너지환경노동위원회 소속 어기구 더불어민주당 의원(충남 당진시)이 한국전력공사로부터 제출받은 자료에 따르면, 2017년부터 2026년 8월까지 정전복구 작업 중 산업재해를 입은 한전 직원은 21명으로, 이 가운데 1명이 사망했다.",
+      "title": "[단독] “사망사고 나자 민간에 떠넘기나”…한전, 정전복구 외주화 추진"
     },
     "source_fact:259539f16ef221bc9eebbf23": {
       "first_seen_kst": "2026-10-08T11:49:03+09:00",
@@ -218150,6 +219072,33 @@
       "source_published_kst": "2026-10-06T08:33+09:00",
       "title": "“광고·커머스 매출 성장 둔화, AI 비용 증가”…대신증권, NAVER 목표가↓"
     },
+    "source_fact:28e8ee8aabcb6376f0996181": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01328406645611936&parentid=02945446645611936&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "fb645682279d9baab3410152ede34d8aa06345f7fe68b0b4041f215432f591ff",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f36f0106a19ea3f6a100deee3e6ae65618c5a25775392dc109350c45f889e374",
+      "source_fact_keys": [
+        "source_fact:v1:1c5b2b905a5fcab494c80c18329fce98f065542fee6bd0e31cf28dc1826a5128",
+        "source_fact:v1:1f59ee0941eb4fcdea50545a584c341b44883ba167bbe5eeb3cae9643945f843",
+        "source_fact:v1:246176ba8af4cd516367690dd9a4eec12e90d557276d1be5f45c82b4e3fddd4c",
+        "source_fact:v1:4ab17ea5da7477b537d4acd00cfb82acbc9008043f9625f19dfa4852fd1390a2",
+        "source_fact:v1:9f81e13ca5ec9612f947e882bb9f1604eebfd133aa84cf1f83bb5dda69bd32af",
+        "source_fact:v1:be78857b3c795212aa52640657a425c26f8b1f9c391773d51d762e6693ce6f16",
+        "source_fact:v1:cabe275c3d1028111d2a60ce77802fa082ade08267626d063d957296470ce16e",
+        "source_fact:v1:e4b700848a368119173cfdadc2c8be921ed77fafa1b0ab3421798368c5ba2b4e",
+        "source_fact:v1:e76c15557771a1e75e88e63eb68b75ef7c161858683c6de337aea693b654b874"
+      ],
+      "source_published_kst": "2026-10-11T10:30+09:00",
+      "source_title": "[단독] “사망사고 나자 민간에 떠넘기나”…한전, 정전복구 외주화 추진",
+      "telegram_core_fact": "11일 국회 기후에너지환경노동위원회 소속 어기구 더불어민주당 의원(충남 당진시)이 한국전력공사로부터 제출받은 자료에 따르면, 2017년부터 2026년 8월까지 정전복구 작업 중 산업재해를 입은 한전 직원은 21명으로, 이 가운데 1명이 사망했다.",
+      "title": "[단독] “사망사고 나자 민간에 떠넘기나”…한전, 정전복구 외주화 추진"
+    },
     "source_fact:28ea85230c6af44550f7338c": {
       "first_seen_kst": "2026-10-08T07:27:34+09:00",
       "lanes": {
@@ -219533,6 +220482,28 @@
       "source_title": "은행권 금리 경쟁…1년만기 예금 3%대 후반으로 속속 인상",
       "telegram_core_fact": "시장금리 상승 속에 은행 정기예금 금리도 연 3%대 후반으로 향하고 있다.",
       "title": "은행권 금리 경쟁…1년만기 예금 3%대 후반으로 속속 인상"
+    },
+    "source_fact:2abbf44f979832bbc13df10c": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.mk.co.kr/news/politics/12173017",
+      "source": "매일경제",
+      "source_body_digest": "a816e327aa0df969f62aeda2d085c00eea4ec143ca30c37e45e948b96c205938",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5a0b81cd83f148d1d1229bc5271e2012eac08004905e922d712befd801821567",
+      "source_fact_keys": [
+        "source_fact:v1:13186484dfacee871e6e61262575564a87c5b29f38f612f863ae2bb525f05ed4",
+        "source_fact:v1:3c0d37a1197913c4471e5cdf796e0e10800e0db130d54fa282d7736e90891f1a",
+        "source_fact:v1:9de93fbbc7ea7e262a12d28aa81237901904c55f2f640e0ccf3c21e78dd144f0",
+        "source_fact:v1:a4fa3d0e1885b66e74c25b3a2143ccf14b589e46eebb4ea1c4421e80c7c57cdb"
+      ],
+      "source_published_kst": "2026-10-11T16:33+09:00",
+      "source_title": "[단독] 집지을 땅 없다는데 … LH 택지 절반 유찰",
+      "telegram_core_fact": "11일 국회 국토교통위원회 소속 김종양 국민의힘 의원실이 LH에서 제출받은 국정감사 자료에 따르면 공공택지 공급공고 필지 기준 유찰률은 2024년 56%, 지난해 45%에 달했다. 2023년부터 올해 5월까지 체결한 토지 공급 계약 40조4000억원 중 9조5000억원(23.5%)이 무이자 할부 방식이었다.",
+      "title": "[단독] 집지을 땅 없다는데 … LH 택지 절반 유찰"
     },
     "source_fact:2abc2d0b56af8a01db2b7a7c": {
       "first_seen_kst": "2026-10-09T15:48:54+09:00",
@@ -228422,6 +229393,27 @@
       ],
       "source_published_kst": "2026-10-06T05:00+09:00",
       "title": "납품단가 다음은 ‘데이터’⋯AI 시대 대기업·中企 ‘新 갑을관계’ 탄생하나 [AI 신계급사회]"
+    },
+    "source_fact:36f8563523a013009527f43f": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.hankyung.com/article/202610114294i",
+      "source": "한국경제",
+      "source_body_digest": "bf7607d104890a4140a4b13323ec552147f2ef9fbf3e2458a000d8231db3cdde",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bb14933b226ff889df466c5f55a2e346510ffd0199ce58a2184040aea4573ba",
+      "source_fact_keys": [
+        "source_fact:v1:1c392ce4aa263185757523b9da1c2f1468be0fbd8d2cc4eaaef4cf4718a38b15",
+        "source_fact:v1:be24324f44e3ce93302e667353cecbf31046cc6bba04192ddfc192b0139cee7e",
+        "source_fact:v1:ff1acedd695721e93231cce3bcf7b3ba28d6517b81967a441ffa1d63e221f064"
+      ],
+      "source_published_kst": "2026-10-11T16:52+09:00",
+      "source_title": "[단독]한투, 美에 대체투자 운용사 세운다",
+      "telegram_core_fact": "한국투자금융지주가 미국 대체투자 전문 운용사인 찰스뱅크캐피털파트너스와 크레딧 투자를 전문으로 하는 합작법인(JV) 설립을 추진한다. 투자은행(IB) 업계에 따르면 한투는 미국 사모펀드 운용사인 찰스뱅크와 JV 설립을 위한 협상을 진행하고 있다.",
+      "title": "[단독]한투, 美에 대체투자 운용사 세운다"
     },
     "source_fact:3705ebc951219b2aad058355": {
       "first_seen_kst": "2026-10-07T05:33:37+09:00",
@@ -239576,6 +240568,32 @@
       "telegram_core_fact": "삼성전자와 SK하이닉스가 올해 반도체 호황으로 역대급 수익을 내고 있는 가운데, 이르면 내년 3월 양사 직원들은 일제히 수억원대의 성과급을 지급 받을 전망이다. 특별경영성과급은 내년 3월 정기주주총회와 이사회 의결을 거쳐 3월 말~4월 초 지급될 예정이다.",
       "title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다…삼전·닉스 '역대급 보상' 지급 일정은"
     },
+    "source_fact:46eea25f7232c9bc57c0d261": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675285",
+      "source": "블로터",
+      "source_body_digest": "160663c3fd2ebaf3e238f9e890e23bbe7ffa13f92caf196ad20fb6feef777a6a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a37f6e2d8e851a689be743a19a61e067023e165063d77d52d097602d7cb9a009",
+      "source_fact_keys": [
+        "source_fact:v1:019f4c5cba213cffd6b2dac1f51b3033135bc99413fb233316da8591d97c3bae",
+        "source_fact:v1:253db952f546820f703a2ec7f990fbaacdc2cc7bf3cdd37c61bd90a81b4c7875",
+        "source_fact:v1:5cbc5829a9d6c76d07347fa23bbc3a0af983c756215396edbbf6b50fd3885c72",
+        "source_fact:v1:739f06e6af8c2673ef76cf76518c129f19a4e90008ed2589add5e438d8d96bc0",
+        "source_fact:v1:80fac96d6054f1d727773dfbe6d78f4bfd2f70908e1c9186a2d74cf5c2b35a29",
+        "source_fact:v1:993627ead407fcb2c6549630d60adbc20ca10c9ce4535dbe14c89c598a109126",
+        "source_fact:v1:c0686370c763d1fc4f1335325a9f9736eec6d97b99e73cc3c4d51a2df6951d7f",
+        "source_fact:v1:e545f1b016e4a72f92228cd0c5afd01da5c37d62857594cc5471db853c143a45"
+      ],
+      "source_published_kst": "2026-10-11T16:00+09:00",
+      "source_title": "풍산, 방산 부진 메운 '구리 호황' 신용등급 AA- 상향",
+      "telegram_core_fact": "풍산 매출은 2조7412억원으로 전년비 11.9% 증가했습니다.",
+      "title": "풍산, 방산 부진 메운 '구리 호황' 신용등급 AA- 상향"
+    },
     "source_fact:46ff427405700b1d58da6c9f": {
       "first_seen_kst": "2026-10-08T16:34:42+09:00",
       "lanes": {
@@ -244437,6 +245455,32 @@
       "source_title": "매그나이트, 텀론 금리 0.5%p 인하..연 180만 달러 절감",
       "telegram_core_fact": "세계 최대 독립 광고 판매 플랫폼 기업 매그나이트(MGNI)가 3억5800만 달러 규모 선순위 담보부 텀론B의 금리를 50bp(0.5%포인트) 낮추는 세 번째 리프라이싱을 완료해 연간 약 180만 달러의 현금 이자 비용을 절감하게 됐다고 7일(현지시간) 발표했다.",
       "title": "매그나이트, 텀론 금리 0.5%p 인하..연 180만 달러 절감"
+    },
+    "source_fact:4d678cf1eca8e90f5446e9f3": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675285",
+      "source": "블로터",
+      "source_body_digest": "160663c3fd2ebaf3e238f9e890e23bbe7ffa13f92caf196ad20fb6feef777a6a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a37f6e2d8e851a689be743a19a61e067023e165063d77d52d097602d7cb9a009",
+      "source_fact_keys": [
+        "source_fact:v1:019f4c5cba213cffd6b2dac1f51b3033135bc99413fb233316da8591d97c3bae",
+        "source_fact:v1:253db952f546820f703a2ec7f990fbaacdc2cc7bf3cdd37c61bd90a81b4c7875",
+        "source_fact:v1:5cbc5829a9d6c76d07347fa23bbc3a0af983c756215396edbbf6b50fd3885c72",
+        "source_fact:v1:739f06e6af8c2673ef76cf76518c129f19a4e90008ed2589add5e438d8d96bc0",
+        "source_fact:v1:80fac96d6054f1d727773dfbe6d78f4bfd2f70908e1c9186a2d74cf5c2b35a29",
+        "source_fact:v1:993627ead407fcb2c6549630d60adbc20ca10c9ce4535dbe14c89c598a109126",
+        "source_fact:v1:c0686370c763d1fc4f1335325a9f9736eec6d97b99e73cc3c4d51a2df6951d7f",
+        "source_fact:v1:e545f1b016e4a72f92228cd0c5afd01da5c37d62857594cc5471db853c143a45"
+      ],
+      "source_published_kst": "2026-10-11T16:00+09:00",
+      "source_title": "풍산, 방산 부진 메운 '구리 호황' 신용등급 AA- 상향",
+      "telegram_core_fact": "풍산 매출은 2조7412억원으로 전년비 11.9% 증가했습니다.",
+      "title": "풍산, 방산 부진 메운 '구리 호황' 신용등급 AA- 상향"
     },
     "source_fact:4d75bc61cf8fe2b816ffb83a": {
       "first_seen_kst": "2026-10-07T11:11:31+09:00",
@@ -259322,6 +260366,27 @@
       "telegram_core_fact": "크루그먼 교수는 \"AI 붐이 다른 모든 산업을 밀어내고 있다\"며 \"높은 금리, 부족한 전력을 엄청나게 소비하는 것, 반도체 수요 급증으로 인한 칩 가격 폭등 등 광범위하게 타격을 주고 있다\"고 경고했다.",
       "title": "\"AI 열풍, 다른 영역 모두 투자 위축\"…노벨경제학상 교수 '경고'"
     },
+    "source_fact:611672e08f0e2144707ce13c": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172606",
+      "source": "매일경제",
+      "source_body_digest": "f5a253f0b217330d41b791e9f2f70338b6b246dec6cbbefc4eebdb57d74c3316",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:07a0c8c80251a5ef857e2a784129982204ccf5063c473726b96e1a547ee2ccdb",
+      "source_fact_keys": [
+        "source_fact:v1:11199063ede2e0ed1abe8f0525ce5d26c4c8f99e4d94fa32bbf48f78c971e112",
+        "source_fact:v1:26aa561a2892da3d651da795c7e031bfaedd907772694a5f7f0f5240917cad1e",
+        "source_fact:v1:3973240e137e02b304f8e85061673012dba3208a624b080c53ab9cec0d3cf5eb"
+      ],
+      "source_published_kst": "2026-10-11T17:26+09:00",
+      "source_title": "4대 신항만 장비 38%가 '메이드 인 차이나'",
+      "telegram_core_fact": "중국산 장비가 전체에서 38%를 차지하는 등 수입 의존도가 높은 가운데 항만 자동화가 확대되면서 정보보안과 유지관리 체계를 강화해야 한다는 지적이 나온다. 국내 주요 신항만에 설치된 항만장비의 국산 비중이 35%에 그치는 것으로 나타났다.",
+      "title": "4대 신항만 장비 38%가 '메이드 인 차이나'"
+    },
     "source_fact:611ae879c6d806da40026b94": {
       "first_seen_kst": "2026-10-08T17:42:30+09:00",
       "lanes": {
@@ -262920,6 +263985,27 @@
       "source_published_kst": "2026-10-07T06:31+09:00",
       "title": "실적 기대에 힘받은 뉴욕증시…S&P500·나스닥 또 최고치(종합)"
     },
+    "source_fact:65bb3c494ee574eec82dc385": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172606",
+      "source": "매일경제",
+      "source_body_digest": "f5a253f0b217330d41b791e9f2f70338b6b246dec6cbbefc4eebdb57d74c3316",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:07a0c8c80251a5ef857e2a784129982204ccf5063c473726b96e1a547ee2ccdb",
+      "source_fact_keys": [
+        "source_fact:v1:11199063ede2e0ed1abe8f0525ce5d26c4c8f99e4d94fa32bbf48f78c971e112",
+        "source_fact:v1:26aa561a2892da3d651da795c7e031bfaedd907772694a5f7f0f5240917cad1e",
+        "source_fact:v1:3973240e137e02b304f8e85061673012dba3208a624b080c53ab9cec0d3cf5eb"
+      ],
+      "source_published_kst": "2026-10-11T17:26+09:00",
+      "source_title": "4대 신항만 장비 38%가 '메이드 인 차이나'",
+      "telegram_core_fact": "중국산 장비가 전체에서 38%를 차지하는 등 수입 의존도가 높은 가운데 항만 자동화가 확대되면서 정보보안과 유지관리 체계를 강화해야 한다는 지적이 나온다. 국내 주요 신항만에 설치된 항만장비의 국산 비중이 35%에 그치는 것으로 나타났다.",
+      "title": "4대 신항만 장비 38%가 '메이드 인 차이나'"
+    },
     "source_fact:65c21d20a2a9c867adacf9b1": {
       "first_seen_kst": "2026-10-08T07:27:34+09:00",
       "lanes": {
@@ -264647,6 +265733,33 @@
       "source_published_kst": "2026-10-07T05:57+09:00",
       "title": "삼전 ‘영업익 100조’ 예고에도 주가는 영…8일도 심상치않다는데"
     },
+    "source_fact:6869ae1caf7e0b9e713eb096": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01328406645611936&parentid=02945446645611936&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "fb645682279d9baab3410152ede34d8aa06345f7fe68b0b4041f215432f591ff",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f36f0106a19ea3f6a100deee3e6ae65618c5a25775392dc109350c45f889e374",
+      "source_fact_keys": [
+        "source_fact:v1:1c5b2b905a5fcab494c80c18329fce98f065542fee6bd0e31cf28dc1826a5128",
+        "source_fact:v1:1f59ee0941eb4fcdea50545a584c341b44883ba167bbe5eeb3cae9643945f843",
+        "source_fact:v1:246176ba8af4cd516367690dd9a4eec12e90d557276d1be5f45c82b4e3fddd4c",
+        "source_fact:v1:4ab17ea5da7477b537d4acd00cfb82acbc9008043f9625f19dfa4852fd1390a2",
+        "source_fact:v1:9f81e13ca5ec9612f947e882bb9f1604eebfd133aa84cf1f83bb5dda69bd32af",
+        "source_fact:v1:be78857b3c795212aa52640657a425c26f8b1f9c391773d51d762e6693ce6f16",
+        "source_fact:v1:cabe275c3d1028111d2a60ce77802fa082ade08267626d063d957296470ce16e",
+        "source_fact:v1:e4b700848a368119173cfdadc2c8be921ed77fafa1b0ab3421798368c5ba2b4e",
+        "source_fact:v1:e76c15557771a1e75e88e63eb68b75ef7c161858683c6de337aea693b654b874"
+      ],
+      "source_published_kst": "2026-10-11T10:30+09:00",
+      "source_title": "[단독] “사망사고 나자 민간에 떠넘기나”…한전, 정전복구 외주화 추진",
+      "telegram_core_fact": "11일 국회 기후에너지환경노동위원회 소속 어기구 더불어민주당 의원(충남 당진시)이 한국전력공사로부터 제출받은 자료에 따르면, 2017년부터 2026년 8월까지 정전복구 작업 중 산업재해를 입은 한전 직원은 21명으로, 이 가운데 1명이 사망했다.",
+      "title": "[단독] “사망사고 나자 민간에 떠넘기나”…한전, 정전복구 외주화 추진"
+    },
     "source_fact:686b4bdfee1655894d84a4ac": {
       "first_seen_kst": "2026-10-08T22:06:55+09:00",
       "lanes": {
@@ -265815,6 +266928,33 @@
       "source_published_kst": "2026-10-07T06:06+09:00",
       "title": "분기 영업익 200조 목전…삼전·닉스 기대치 높이는 증권가"
     },
+    "source_fact:69f68bed9367513c912d8ba7": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.mk.co.kr/news/business/12173107",
+      "source": "매일경제",
+      "source_body_digest": "8266afe08b8f9fb2657ae0cac270d25aa06b70409a9406ad5b6bf976286ffc2b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dcd630d938190aede9f20314280329601d54e543612b14a3665a16c01f1bb2ce",
+      "source_fact_keys": [
+        "source_fact:v1:04d267756abda78ea790fd56f31e13d743dc9de15006f1a1b8854b047dc687c1",
+        "source_fact:v1:2c77e0c658ca65c906997939e5a81c2fd7d32b7ccf4deb74c73915c1bf5c623b",
+        "source_fact:v1:4ed79c4373e0e8f41db9f2048abc5dfea7186bd8566388c5a2376627b6540537",
+        "source_fact:v1:68774888a9db0001ee3f7dcebb42c945357fe1c74948669cff42019738cc1f0c",
+        "source_fact:v1:6e20cff67bfedf252a28a79096ef3b43ca58583a5c8ac3eade528c6fc8568207",
+        "source_fact:v1:b3f27fcea714a3beca4c55fe7dda7be39a98cf8f6af411dfe96068ded98948bf",
+        "source_fact:v1:cc1ab9ac4b8ac8bc36e70fbfaeae6c7306a37896d6d3ebe89ea271846f348be1",
+        "source_fact:v1:e12d8baed42341db63f84d30f8ccd7763eb369483bb024d9456bda2d9486a0a3",
+        "source_fact:v1:fe6c646be431dc00e735f7356e0dd1c3e694d2e16df8c5132a9d2611bcd46bd3"
+      ],
+      "source_published_kst": "2026-10-11T17:29+09:00",
+      "source_title": "LS전선, 해저케이블 공장 계열사에 매각 검토",
+      "telegram_core_fact": "미국 전력망 시장 공략에 박차를 가하고 있는 LS전선이 '사업 리밸런싱'을 위해 계열사 가온전선에 동해사업장 내 공장 1개 동을 매각하는 방안을 검토하고 나섰다. 전선업계에 따르면 LS전선은 최근 동해사업장 해저1공장을 가온전선에 매각하는 방안을 검토하고 있다.",
+      "title": "LS전선, 해저케이블 공장 계열사에 매각 검토"
+    },
     "source_fact:69fa48223cc87d05e02616ea": {
       "first_seen_kst": "2026-10-11T18:15:28+09:00",
       "lanes": {
@@ -266163,6 +267303,28 @@
       ],
       "source_published_kst": "2026-10-07T13:41+09:00",
       "title": "스피어, 10월에만 608억원 규모 공급계약…우주항공 특수합금 사업 확대"
+    },
+    "source_fact:6a618b97efb137da6389215f": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.mk.co.kr/news/politics/12173017",
+      "source": "매일경제",
+      "source_body_digest": "a816e327aa0df969f62aeda2d085c00eea4ec143ca30c37e45e948b96c205938",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5a0b81cd83f148d1d1229bc5271e2012eac08004905e922d712befd801821567",
+      "source_fact_keys": [
+        "source_fact:v1:13186484dfacee871e6e61262575564a87c5b29f38f612f863ae2bb525f05ed4",
+        "source_fact:v1:3c0d37a1197913c4471e5cdf796e0e10800e0db130d54fa282d7736e90891f1a",
+        "source_fact:v1:9de93fbbc7ea7e262a12d28aa81237901904c55f2f640e0ccf3c21e78dd144f0",
+        "source_fact:v1:a4fa3d0e1885b66e74c25b3a2143ccf14b589e46eebb4ea1c4421e80c7c57cdb"
+      ],
+      "source_published_kst": "2026-10-11T16:33+09:00",
+      "source_title": "[단독] 집지을 땅 없다는데 … LH 택지 절반 유찰",
+      "telegram_core_fact": "11일 국회 국토교통위원회 소속 김종양 국민의힘 의원실이 LH에서 제출받은 국정감사 자료에 따르면 공공택지 공급공고 필지 기준 유찰률은 2024년 56%, 지난해 45%에 달했다. 2023년부터 올해 5월까지 체결한 토지 공급 계약 40조4000억원 중 9조5000억원(23.5%)이 무이자 할부 방식이었다.",
+      "title": "[단독] 집지을 땅 없다는데 … LH 택지 절반 유찰"
     },
     "source_fact:6a695eb1243ba79037e242bf": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
@@ -267291,6 +268453,33 @@
       ],
       "source_published_kst": "2026-10-07T07:43+09:00",
       "title": "“56만전자·320만닉스 간다\"…삼전닉스, 3분기 실적 기대 이상"
+    },
+    "source_fact:6c0219a73579dfd5ee75cf2d": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01328406645611936&parentid=02945446645611936&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "fb645682279d9baab3410152ede34d8aa06345f7fe68b0b4041f215432f591ff",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f36f0106a19ea3f6a100deee3e6ae65618c5a25775392dc109350c45f889e374",
+      "source_fact_keys": [
+        "source_fact:v1:1c5b2b905a5fcab494c80c18329fce98f065542fee6bd0e31cf28dc1826a5128",
+        "source_fact:v1:1f59ee0941eb4fcdea50545a584c341b44883ba167bbe5eeb3cae9643945f843",
+        "source_fact:v1:246176ba8af4cd516367690dd9a4eec12e90d557276d1be5f45c82b4e3fddd4c",
+        "source_fact:v1:4ab17ea5da7477b537d4acd00cfb82acbc9008043f9625f19dfa4852fd1390a2",
+        "source_fact:v1:9f81e13ca5ec9612f947e882bb9f1604eebfd133aa84cf1f83bb5dda69bd32af",
+        "source_fact:v1:be78857b3c795212aa52640657a425c26f8b1f9c391773d51d762e6693ce6f16",
+        "source_fact:v1:cabe275c3d1028111d2a60ce77802fa082ade08267626d063d957296470ce16e",
+        "source_fact:v1:e4b700848a368119173cfdadc2c8be921ed77fafa1b0ab3421798368c5ba2b4e",
+        "source_fact:v1:e76c15557771a1e75e88e63eb68b75ef7c161858683c6de337aea693b654b874"
+      ],
+      "source_published_kst": "2026-10-11T10:30+09:00",
+      "source_title": "[단독] “사망사고 나자 민간에 떠넘기나”…한전, 정전복구 외주화 추진",
+      "telegram_core_fact": "11일 국회 기후에너지환경노동위원회 소속 어기구 더불어민주당 의원(충남 당진시)이 한국전력공사로부터 제출받은 자료에 따르면, 2017년부터 2026년 8월까지 정전복구 작업 중 산업재해를 입은 한전 직원은 21명으로, 이 가운데 1명이 사망했다.",
+      "title": "[단독] “사망사고 나자 민간에 떠넘기나”…한전, 정전복구 외주화 추진"
     },
     "source_fact:6c1033cad28e4780d8552e39": {
       "first_seen_kst": "2026-10-08T09:33:54+09:00",
@@ -269158,6 +270347,33 @@
       ],
       "source_published_kst": "2026-10-07T09:28+09:00",
       "title": "현대엔지니어링, 군산 이어 인천 데이터센터 수주…8700억 규모"
+    },
+    "source_fact:6ee035ba8b9b44b2002c5297": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.mk.co.kr/news/business/12173107",
+      "source": "매일경제",
+      "source_body_digest": "8266afe08b8f9fb2657ae0cac270d25aa06b70409a9406ad5b6bf976286ffc2b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dcd630d938190aede9f20314280329601d54e543612b14a3665a16c01f1bb2ce",
+      "source_fact_keys": [
+        "source_fact:v1:04d267756abda78ea790fd56f31e13d743dc9de15006f1a1b8854b047dc687c1",
+        "source_fact:v1:2c77e0c658ca65c906997939e5a81c2fd7d32b7ccf4deb74c73915c1bf5c623b",
+        "source_fact:v1:4ed79c4373e0e8f41db9f2048abc5dfea7186bd8566388c5a2376627b6540537",
+        "source_fact:v1:68774888a9db0001ee3f7dcebb42c945357fe1c74948669cff42019738cc1f0c",
+        "source_fact:v1:6e20cff67bfedf252a28a79096ef3b43ca58583a5c8ac3eade528c6fc8568207",
+        "source_fact:v1:b3f27fcea714a3beca4c55fe7dda7be39a98cf8f6af411dfe96068ded98948bf",
+        "source_fact:v1:cc1ab9ac4b8ac8bc36e70fbfaeae6c7306a37896d6d3ebe89ea271846f348be1",
+        "source_fact:v1:e12d8baed42341db63f84d30f8ccd7763eb369483bb024d9456bda2d9486a0a3",
+        "source_fact:v1:fe6c646be431dc00e735f7356e0dd1c3e694d2e16df8c5132a9d2611bcd46bd3"
+      ],
+      "source_published_kst": "2026-10-11T17:29+09:00",
+      "source_title": "LS전선, 해저케이블 공장 계열사에 매각 검토",
+      "telegram_core_fact": "미국 전력망 시장 공략에 박차를 가하고 있는 LS전선이 '사업 리밸런싱'을 위해 계열사 가온전선에 동해사업장 내 공장 1개 동을 매각하는 방안을 검토하고 나섰다. 전선업계에 따르면 LS전선은 최근 동해사업장 해저1공장을 가온전선에 매각하는 방안을 검토하고 있다.",
+      "title": "LS전선, 해저케이블 공장 계열사에 매각 검토"
     },
     "source_fact:6ef2f3b6f5deeab99d84e4f8": {
       "first_seen_kst": "2026-10-06T18:16:47+09:00",
@@ -271661,6 +272877,28 @@
       "source_title": "마스오토, 美 교통부와 자율주행 트럭 상용화 해법 논의",
       "telegram_core_fact": "자율주행 트럭 기업 마스오토가 오는 10월 19일부터 23일까지 강릉 올림픽파크에서 열리는 ‘2026 강릉 ITS 세계총회(ITS World Congress 2026)’에서 미국 교통부(USDOT), 텍사스주 교통부(TxDOT) 등 글로벌 교통 정책 관계자들과 자율주행 트럭 상용화 확대 방안을 논의한다고 밝혔다.",
       "title": "마스오토, 美 교통부와 자율주행 트럭 상용화 해법 논의"
+    },
+    "source_fact:72891493a9b92ee6c00621ea": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.mk.co.kr/news/politics/12173017",
+      "source": "매일경제",
+      "source_body_digest": "a816e327aa0df969f62aeda2d085c00eea4ec143ca30c37e45e948b96c205938",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5a0b81cd83f148d1d1229bc5271e2012eac08004905e922d712befd801821567",
+      "source_fact_keys": [
+        "source_fact:v1:13186484dfacee871e6e61262575564a87c5b29f38f612f863ae2bb525f05ed4",
+        "source_fact:v1:3c0d37a1197913c4471e5cdf796e0e10800e0db130d54fa282d7736e90891f1a",
+        "source_fact:v1:9de93fbbc7ea7e262a12d28aa81237901904c55f2f640e0ccf3c21e78dd144f0",
+        "source_fact:v1:a4fa3d0e1885b66e74c25b3a2143ccf14b589e46eebb4ea1c4421e80c7c57cdb"
+      ],
+      "source_published_kst": "2026-10-11T16:33+09:00",
+      "source_title": "[단독] 집지을 땅 없다는데 … LH 택지 절반 유찰",
+      "telegram_core_fact": "11일 국회 국토교통위원회 소속 김종양 국민의힘 의원실이 LH에서 제출받은 국정감사 자료에 따르면 공공택지 공급공고 필지 기준 유찰률은 2024년 56%, 지난해 45%에 달했다. 2023년부터 올해 5월까지 체결한 토지 공급 계약 40조4000억원 중 9조5000억원(23.5%)이 무이자 할부 방식이었다.",
+      "title": "[단독] 집지을 땅 없다는데 … LH 택지 절반 유찰"
     },
     "source_fact:72989bfeee4dbb9d96457a52": {
       "first_seen_kst": "2026-10-10T07:44:19+09:00",
@@ -290267,6 +291505,33 @@
       "telegram_core_fact": "고객 데이터와 자산을 미국 내에 보관하고 중국 직원은 접근할 수 없다고 강조했으며, 규제기관과의 협력 의지도 밝혔습니다. 미 하원 특위 보고서가 불완전한 기록에 근거한 결론이라고 반박한 점이 주목받고 있습니다.",
       "title": "위불, 美 하원 보고서에 적극 반박하며 데이터 보안 우려 불식 나서"
     },
+    "source_fact:8c2f75d36ef6e4ede952618d": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01328406645611936&parentid=02945446645611936&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "fb645682279d9baab3410152ede34d8aa06345f7fe68b0b4041f215432f591ff",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f36f0106a19ea3f6a100deee3e6ae65618c5a25775392dc109350c45f889e374",
+      "source_fact_keys": [
+        "source_fact:v1:1c5b2b905a5fcab494c80c18329fce98f065542fee6bd0e31cf28dc1826a5128",
+        "source_fact:v1:1f59ee0941eb4fcdea50545a584c341b44883ba167bbe5eeb3cae9643945f843",
+        "source_fact:v1:246176ba8af4cd516367690dd9a4eec12e90d557276d1be5f45c82b4e3fddd4c",
+        "source_fact:v1:4ab17ea5da7477b537d4acd00cfb82acbc9008043f9625f19dfa4852fd1390a2",
+        "source_fact:v1:9f81e13ca5ec9612f947e882bb9f1604eebfd133aa84cf1f83bb5dda69bd32af",
+        "source_fact:v1:be78857b3c795212aa52640657a425c26f8b1f9c391773d51d762e6693ce6f16",
+        "source_fact:v1:cabe275c3d1028111d2a60ce77802fa082ade08267626d063d957296470ce16e",
+        "source_fact:v1:e4b700848a368119173cfdadc2c8be921ed77fafa1b0ab3421798368c5ba2b4e",
+        "source_fact:v1:e76c15557771a1e75e88e63eb68b75ef7c161858683c6de337aea693b654b874"
+      ],
+      "source_published_kst": "2026-10-11T10:30+09:00",
+      "source_title": "[단독] “사망사고 나자 민간에 떠넘기나”…한전, 정전복구 외주화 추진",
+      "telegram_core_fact": "11일 국회 기후에너지환경노동위원회 소속 어기구 더불어민주당 의원(충남 당진시)이 한국전력공사로부터 제출받은 자료에 따르면, 2017년부터 2026년 8월까지 정전복구 작업 중 산업재해를 입은 한전 직원은 21명으로, 이 가운데 1명이 사망했다.",
+      "title": "[단독] “사망사고 나자 민간에 떠넘기나”…한전, 정전복구 외주화 추진"
+    },
     "source_fact:8c3020fc957cc978968d89df": {
       "first_seen_kst": "2026-10-10T05:32:28+09:00",
       "lanes": {
@@ -291931,6 +293196,27 @@
       ],
       "source_published_kst": "2026-10-06T03:38+09:00",
       "title": "[美특징주]TSMC, 머스크 ‘테라팹’ 협력 논의 확인…주가 3%↑"
+    },
+    "source_fact:8ee6adcac2b30899f4bb214b": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.hankyung.com/article/202610114294i",
+      "source": "한국경제",
+      "source_body_digest": "bf7607d104890a4140a4b13323ec552147f2ef9fbf3e2458a000d8231db3cdde",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bb14933b226ff889df466c5f55a2e346510ffd0199ce58a2184040aea4573ba",
+      "source_fact_keys": [
+        "source_fact:v1:1c392ce4aa263185757523b9da1c2f1468be0fbd8d2cc4eaaef4cf4718a38b15",
+        "source_fact:v1:be24324f44e3ce93302e667353cecbf31046cc6bba04192ddfc192b0139cee7e",
+        "source_fact:v1:ff1acedd695721e93231cce3bcf7b3ba28d6517b81967a441ffa1d63e221f064"
+      ],
+      "source_published_kst": "2026-10-11T16:52+09:00",
+      "source_title": "[단독]한투, 美에 대체투자 운용사 세운다",
+      "telegram_core_fact": "한국투자금융지주가 미국 대체투자 전문 운용사인 찰스뱅크캐피털파트너스와 크레딧 투자를 전문으로 하는 합작법인(JV) 설립을 추진한다. 투자은행(IB) 업계에 따르면 한투는 미국 사모펀드 운용사인 찰스뱅크와 JV 설립을 위한 협상을 진행하고 있다.",
+      "title": "[단독]한투, 美에 대체투자 운용사 세운다"
     },
     "source_fact:8eef80a694e321aa57a6d7c1": {
       "first_seen_kst": "2026-10-11T10:26:26+09:00",
@@ -296909,6 +298195,33 @@
       "source_title": "탑 웰스 그룹 홀딩, 나스닥 1달러 호가 요건 미달 통보..내년 3월 말 시한",
       "telegram_core_fact": "탑 웰스 그룹 홀딩(TWG)이 나스닥 상장 유지 요건인 최소 매수호가 1달러를 30거래일 연속 밑돌아 10월 2일자로 나스닥으로부터 요건 미충족 통지서를 받았으며, 규정 준수 시한은 2027년 3월 31일이라고 10월 6일 발표했다.",
       "title": "탑 웰스 그룹 홀딩, 나스닥 1달러 호가 요건 미달 통보..내년 3월 말 시한"
+    },
+    "source_fact:966bac56dfd99bb6c829db59": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.mk.co.kr/news/business/12173107",
+      "source": "매일경제",
+      "source_body_digest": "8266afe08b8f9fb2657ae0cac270d25aa06b70409a9406ad5b6bf976286ffc2b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dcd630d938190aede9f20314280329601d54e543612b14a3665a16c01f1bb2ce",
+      "source_fact_keys": [
+        "source_fact:v1:04d267756abda78ea790fd56f31e13d743dc9de15006f1a1b8854b047dc687c1",
+        "source_fact:v1:2c77e0c658ca65c906997939e5a81c2fd7d32b7ccf4deb74c73915c1bf5c623b",
+        "source_fact:v1:4ed79c4373e0e8f41db9f2048abc5dfea7186bd8566388c5a2376627b6540537",
+        "source_fact:v1:68774888a9db0001ee3f7dcebb42c945357fe1c74948669cff42019738cc1f0c",
+        "source_fact:v1:6e20cff67bfedf252a28a79096ef3b43ca58583a5c8ac3eade528c6fc8568207",
+        "source_fact:v1:b3f27fcea714a3beca4c55fe7dda7be39a98cf8f6af411dfe96068ded98948bf",
+        "source_fact:v1:cc1ab9ac4b8ac8bc36e70fbfaeae6c7306a37896d6d3ebe89ea271846f348be1",
+        "source_fact:v1:e12d8baed42341db63f84d30f8ccd7763eb369483bb024d9456bda2d9486a0a3",
+        "source_fact:v1:fe6c646be431dc00e735f7356e0dd1c3e694d2e16df8c5132a9d2611bcd46bd3"
+      ],
+      "source_published_kst": "2026-10-11T17:29+09:00",
+      "source_title": "LS전선, 해저케이블 공장 계열사에 매각 검토",
+      "telegram_core_fact": "미국 전력망 시장 공략에 박차를 가하고 있는 LS전선이 '사업 리밸런싱'을 위해 계열사 가온전선에 동해사업장 내 공장 1개 동을 매각하는 방안을 검토하고 나섰다. 전선업계에 따르면 LS전선은 최근 동해사업장 해저1공장을 가온전선에 매각하는 방안을 검토하고 있다.",
+      "title": "LS전선, 해저케이블 공장 계열사에 매각 검토"
     },
     "source_fact:9674e06aa8cdde3ae95cd9de": {
       "first_seen_kst": "2026-10-07T07:39:19+09:00",
@@ -304795,6 +306108,33 @@
       "telegram_core_fact": "LG전자의 3분기 잠정 영업이익은 7818억원으로 전년비 13.5% 증가했지만 시장 기대치 약 1조301억원을 24.1% 밑돌았다.",
       "title": "LG전자, 실적 충격 속 이틀 새 14% 하락…AI 냉각·로봇에 쏠린 시선"
     },
+    "source_fact:a152e0a1294e1537509e6632": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.mk.co.kr/news/business/12173107",
+      "source": "매일경제",
+      "source_body_digest": "8266afe08b8f9fb2657ae0cac270d25aa06b70409a9406ad5b6bf976286ffc2b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dcd630d938190aede9f20314280329601d54e543612b14a3665a16c01f1bb2ce",
+      "source_fact_keys": [
+        "source_fact:v1:04d267756abda78ea790fd56f31e13d743dc9de15006f1a1b8854b047dc687c1",
+        "source_fact:v1:2c77e0c658ca65c906997939e5a81c2fd7d32b7ccf4deb74c73915c1bf5c623b",
+        "source_fact:v1:4ed79c4373e0e8f41db9f2048abc5dfea7186bd8566388c5a2376627b6540537",
+        "source_fact:v1:68774888a9db0001ee3f7dcebb42c945357fe1c74948669cff42019738cc1f0c",
+        "source_fact:v1:6e20cff67bfedf252a28a79096ef3b43ca58583a5c8ac3eade528c6fc8568207",
+        "source_fact:v1:b3f27fcea714a3beca4c55fe7dda7be39a98cf8f6af411dfe96068ded98948bf",
+        "source_fact:v1:cc1ab9ac4b8ac8bc36e70fbfaeae6c7306a37896d6d3ebe89ea271846f348be1",
+        "source_fact:v1:e12d8baed42341db63f84d30f8ccd7763eb369483bb024d9456bda2d9486a0a3",
+        "source_fact:v1:fe6c646be431dc00e735f7356e0dd1c3e694d2e16df8c5132a9d2611bcd46bd3"
+      ],
+      "source_published_kst": "2026-10-11T17:29+09:00",
+      "source_title": "LS전선, 해저케이블 공장 계열사에 매각 검토",
+      "telegram_core_fact": "미국 전력망 시장 공략에 박차를 가하고 있는 LS전선이 '사업 리밸런싱'을 위해 계열사 가온전선에 동해사업장 내 공장 1개 동을 매각하는 방안을 검토하고 나섰다. 전선업계에 따르면 LS전선은 최근 동해사업장 해저1공장을 가온전선에 매각하는 방안을 검토하고 있다.",
+      "title": "LS전선, 해저케이블 공장 계열사에 매각 검토"
+    },
     "source_fact:a154b415c98114c1ea11611b": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
       "lanes": {
@@ -308467,6 +309807,32 @@
       ],
       "source_published_kst": "2026-10-07T09:27+09:00",
       "title": "\"화장품株 주가 조정 과도\"…아모레퍼시픽 5%·한국콜마 5%대 상승"
+    },
+    "source_fact:a66d3964dc55ef304f6d0522": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675285",
+      "source": "블로터",
+      "source_body_digest": "160663c3fd2ebaf3e238f9e890e23bbe7ffa13f92caf196ad20fb6feef777a6a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a37f6e2d8e851a689be743a19a61e067023e165063d77d52d097602d7cb9a009",
+      "source_fact_keys": [
+        "source_fact:v1:019f4c5cba213cffd6b2dac1f51b3033135bc99413fb233316da8591d97c3bae",
+        "source_fact:v1:253db952f546820f703a2ec7f990fbaacdc2cc7bf3cdd37c61bd90a81b4c7875",
+        "source_fact:v1:5cbc5829a9d6c76d07347fa23bbc3a0af983c756215396edbbf6b50fd3885c72",
+        "source_fact:v1:739f06e6af8c2673ef76cf76518c129f19a4e90008ed2589add5e438d8d96bc0",
+        "source_fact:v1:80fac96d6054f1d727773dfbe6d78f4bfd2f70908e1c9186a2d74cf5c2b35a29",
+        "source_fact:v1:993627ead407fcb2c6549630d60adbc20ca10c9ce4535dbe14c89c598a109126",
+        "source_fact:v1:c0686370c763d1fc4f1335325a9f9736eec6d97b99e73cc3c4d51a2df6951d7f",
+        "source_fact:v1:e545f1b016e4a72f92228cd0c5afd01da5c37d62857594cc5471db853c143a45"
+      ],
+      "source_published_kst": "2026-10-11T16:00+09:00",
+      "source_title": "풍산, 방산 부진 메운 '구리 호황' 신용등급 AA- 상향",
+      "telegram_core_fact": "풍산 매출은 2조7412억원으로 전년비 11.9% 증가했습니다.",
+      "title": "풍산, 방산 부진 메운 '구리 호황' 신용등급 AA- 상향"
     },
     "source_fact:a671344c8c9265074a73030d": {
       "first_seen_kst": "2026-10-07T03:17:01+09:00",
@@ -322560,6 +323926,33 @@
       "source_published_kst": "2026-10-07T14:43+09:00",
       "title": "HD건설기계, 엔진사업 속도…북미 데이터센터에 전력 공급"
     },
+    "source_fact:baa96c89331d66d5088781c7": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01328406645611936&parentid=02945446645611936&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "fb645682279d9baab3410152ede34d8aa06345f7fe68b0b4041f215432f591ff",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f36f0106a19ea3f6a100deee3e6ae65618c5a25775392dc109350c45f889e374",
+      "source_fact_keys": [
+        "source_fact:v1:1c5b2b905a5fcab494c80c18329fce98f065542fee6bd0e31cf28dc1826a5128",
+        "source_fact:v1:1f59ee0941eb4fcdea50545a584c341b44883ba167bbe5eeb3cae9643945f843",
+        "source_fact:v1:246176ba8af4cd516367690dd9a4eec12e90d557276d1be5f45c82b4e3fddd4c",
+        "source_fact:v1:4ab17ea5da7477b537d4acd00cfb82acbc9008043f9625f19dfa4852fd1390a2",
+        "source_fact:v1:9f81e13ca5ec9612f947e882bb9f1604eebfd133aa84cf1f83bb5dda69bd32af",
+        "source_fact:v1:be78857b3c795212aa52640657a425c26f8b1f9c391773d51d762e6693ce6f16",
+        "source_fact:v1:cabe275c3d1028111d2a60ce77802fa082ade08267626d063d957296470ce16e",
+        "source_fact:v1:e4b700848a368119173cfdadc2c8be921ed77fafa1b0ab3421798368c5ba2b4e",
+        "source_fact:v1:e76c15557771a1e75e88e63eb68b75ef7c161858683c6de337aea693b654b874"
+      ],
+      "source_published_kst": "2026-10-11T10:30+09:00",
+      "source_title": "[단독] “사망사고 나자 민간에 떠넘기나”…한전, 정전복구 외주화 추진",
+      "telegram_core_fact": "11일 국회 기후에너지환경노동위원회 소속 어기구 더불어민주당 의원(충남 당진시)이 한국전력공사로부터 제출받은 자료에 따르면, 2017년부터 2026년 8월까지 정전복구 작업 중 산업재해를 입은 한전 직원은 21명으로, 이 가운데 1명이 사망했다.",
+      "title": "[단독] “사망사고 나자 민간에 떠넘기나”…한전, 정전복구 외주화 추진"
+    },
     "source_fact:baaa5bc1565e938b46eec3f6": {
       "first_seen_kst": "2026-10-07T20:59:13+09:00",
       "lanes": {
@@ -328873,6 +330266,33 @@
       "source_title": "“한 달 만에 무려 70% 급등” ‘삼전닉스’ 저리 가라…코스닥 이끈 ‘반도체 소부장’ [투자360]",
       "telegram_core_fact": "김세빈 유안타증권 연구원은 “지수 전체의 이익추정치 개선보다 반도체 소부장과 기판, 통신장비 등 일부 IT 업종과 테마 중심의 상승”이라며 “지수 추격보다 실적과 매출 추정치가 실제로 올라오는 업종으로 압축할 필요가 있다”고 조언했다.",
       "title": "“한 달 만에 무려 70% 급등” ‘삼전닉스’ 저리 가라…코스닥 이끈 ‘반도체 소부장’ [투자360]"
+    },
+    "source_fact:c39bb0c6032064211f531377": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01328406645611936&parentid=02945446645611936&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "fb645682279d9baab3410152ede34d8aa06345f7fe68b0b4041f215432f591ff",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f36f0106a19ea3f6a100deee3e6ae65618c5a25775392dc109350c45f889e374",
+      "source_fact_keys": [
+        "source_fact:v1:1c5b2b905a5fcab494c80c18329fce98f065542fee6bd0e31cf28dc1826a5128",
+        "source_fact:v1:1f59ee0941eb4fcdea50545a584c341b44883ba167bbe5eeb3cae9643945f843",
+        "source_fact:v1:246176ba8af4cd516367690dd9a4eec12e90d557276d1be5f45c82b4e3fddd4c",
+        "source_fact:v1:4ab17ea5da7477b537d4acd00cfb82acbc9008043f9625f19dfa4852fd1390a2",
+        "source_fact:v1:9f81e13ca5ec9612f947e882bb9f1604eebfd133aa84cf1f83bb5dda69bd32af",
+        "source_fact:v1:be78857b3c795212aa52640657a425c26f8b1f9c391773d51d762e6693ce6f16",
+        "source_fact:v1:cabe275c3d1028111d2a60ce77802fa082ade08267626d063d957296470ce16e",
+        "source_fact:v1:e4b700848a368119173cfdadc2c8be921ed77fafa1b0ab3421798368c5ba2b4e",
+        "source_fact:v1:e76c15557771a1e75e88e63eb68b75ef7c161858683c6de337aea693b654b874"
+      ],
+      "source_published_kst": "2026-10-11T10:30+09:00",
+      "source_title": "[단독] “사망사고 나자 민간에 떠넘기나”…한전, 정전복구 외주화 추진",
+      "telegram_core_fact": "11일 국회 기후에너지환경노동위원회 소속 어기구 더불어민주당 의원(충남 당진시)이 한국전력공사로부터 제출받은 자료에 따르면, 2017년부터 2026년 8월까지 정전복구 작업 중 산업재해를 입은 한전 직원은 21명으로, 이 가운데 1명이 사망했다.",
+      "title": "[단독] “사망사고 나자 민간에 떠넘기나”…한전, 정전복구 외주화 추진"
     },
     "source_fact:c3a77a4a6e3afb03f34ef3be": {
       "first_seen_kst": "2026-10-08T06:57:59+09:00",
@@ -349677,6 +351097,33 @@
       "telegram_core_fact": "2000억 달러 대미 전략투자 프로그램이 확정되면서, 1500억 달러 한미 조선 협력 프로젝트인 '마스가(MASGA)'도 본격적인 사업 발굴과 투자 집행 단계에 들어설 전망이다.",
       "title": "2000억弗 대미 투자 확정…이제 1500억달러 '마스가' 본격화"
     },
+    "source_fact:e02c881053cc8616d98cb6a8": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.mk.co.kr/news/business/12173107",
+      "source": "매일경제",
+      "source_body_digest": "8266afe08b8f9fb2657ae0cac270d25aa06b70409a9406ad5b6bf976286ffc2b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dcd630d938190aede9f20314280329601d54e543612b14a3665a16c01f1bb2ce",
+      "source_fact_keys": [
+        "source_fact:v1:04d267756abda78ea790fd56f31e13d743dc9de15006f1a1b8854b047dc687c1",
+        "source_fact:v1:2c77e0c658ca65c906997939e5a81c2fd7d32b7ccf4deb74c73915c1bf5c623b",
+        "source_fact:v1:4ed79c4373e0e8f41db9f2048abc5dfea7186bd8566388c5a2376627b6540537",
+        "source_fact:v1:68774888a9db0001ee3f7dcebb42c945357fe1c74948669cff42019738cc1f0c",
+        "source_fact:v1:6e20cff67bfedf252a28a79096ef3b43ca58583a5c8ac3eade528c6fc8568207",
+        "source_fact:v1:b3f27fcea714a3beca4c55fe7dda7be39a98cf8f6af411dfe96068ded98948bf",
+        "source_fact:v1:cc1ab9ac4b8ac8bc36e70fbfaeae6c7306a37896d6d3ebe89ea271846f348be1",
+        "source_fact:v1:e12d8baed42341db63f84d30f8ccd7763eb369483bb024d9456bda2d9486a0a3",
+        "source_fact:v1:fe6c646be431dc00e735f7356e0dd1c3e694d2e16df8c5132a9d2611bcd46bd3"
+      ],
+      "source_published_kst": "2026-10-11T17:29+09:00",
+      "source_title": "LS전선, 해저케이블 공장 계열사에 매각 검토",
+      "telegram_core_fact": "미국 전력망 시장 공략에 박차를 가하고 있는 LS전선이 '사업 리밸런싱'을 위해 계열사 가온전선에 동해사업장 내 공장 1개 동을 매각하는 방안을 검토하고 나섰다. 전선업계에 따르면 LS전선은 최근 동해사업장 해저1공장을 가온전선에 매각하는 방안을 검토하고 있다.",
+      "title": "LS전선, 해저케이블 공장 계열사에 매각 검토"
+    },
     "source_fact:e043218146f2deaedaf12704": {
       "first_seen_kst": "2026-10-07T02:13:12+09:00",
       "lanes": {
@@ -350389,6 +351836,32 @@
       "source_title": "표심 급한 트럼프 \"중간선거 전 이란 공격 안할 것\" | 연합뉴스",
       "telegram_core_fact": "트럼프 대통령은 SNS에 올린 글을 통해 \"이란과 생산적 논의를 하고 있다\"며 다만 \"대이란 봉쇄는 지속할 것\"이라고 밝혔습니다.",
       "title": "표심 급한 트럼프 \"중간선거 전 이란 공격 안할 것\" | 연합뉴스"
+    },
+    "source_fact:e133e1ad7709d1160c688a79": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675285",
+      "source": "블로터",
+      "source_body_digest": "160663c3fd2ebaf3e238f9e890e23bbe7ffa13f92caf196ad20fb6feef777a6a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a37f6e2d8e851a689be743a19a61e067023e165063d77d52d097602d7cb9a009",
+      "source_fact_keys": [
+        "source_fact:v1:019f4c5cba213cffd6b2dac1f51b3033135bc99413fb233316da8591d97c3bae",
+        "source_fact:v1:253db952f546820f703a2ec7f990fbaacdc2cc7bf3cdd37c61bd90a81b4c7875",
+        "source_fact:v1:5cbc5829a9d6c76d07347fa23bbc3a0af983c756215396edbbf6b50fd3885c72",
+        "source_fact:v1:739f06e6af8c2673ef76cf76518c129f19a4e90008ed2589add5e438d8d96bc0",
+        "source_fact:v1:80fac96d6054f1d727773dfbe6d78f4bfd2f70908e1c9186a2d74cf5c2b35a29",
+        "source_fact:v1:993627ead407fcb2c6549630d60adbc20ca10c9ce4535dbe14c89c598a109126",
+        "source_fact:v1:c0686370c763d1fc4f1335325a9f9736eec6d97b99e73cc3c4d51a2df6951d7f",
+        "source_fact:v1:e545f1b016e4a72f92228cd0c5afd01da5c37d62857594cc5471db853c143a45"
+      ],
+      "source_published_kst": "2026-10-11T16:00+09:00",
+      "source_title": "풍산, 방산 부진 메운 '구리 호황' 신용등급 AA- 상향",
+      "telegram_core_fact": "풍산 매출은 2조7412억원으로 전년비 11.9% 증가했습니다.",
+      "title": "풍산, 방산 부진 메운 '구리 호황' 신용등급 AA- 상향"
     },
     "source_fact:e13b6c7998de8fa4b62079e1": {
       "first_seen_kst": "2026-10-08T08:12:34+09:00",
@@ -352378,6 +353851,33 @@
       "source_published_kst": "2026-10-06T13:51+09:00",
       "title": "코스피, 반도체 약세에 6900선으로…코스닥은 2%대 뛰며 900선 돌파"
     },
+    "source_fact:e379a3a2faee95c959bcb371": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.mk.co.kr/news/business/12173107",
+      "source": "매일경제",
+      "source_body_digest": "8266afe08b8f9fb2657ae0cac270d25aa06b70409a9406ad5b6bf976286ffc2b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dcd630d938190aede9f20314280329601d54e543612b14a3665a16c01f1bb2ce",
+      "source_fact_keys": [
+        "source_fact:v1:04d267756abda78ea790fd56f31e13d743dc9de15006f1a1b8854b047dc687c1",
+        "source_fact:v1:2c77e0c658ca65c906997939e5a81c2fd7d32b7ccf4deb74c73915c1bf5c623b",
+        "source_fact:v1:4ed79c4373e0e8f41db9f2048abc5dfea7186bd8566388c5a2376627b6540537",
+        "source_fact:v1:68774888a9db0001ee3f7dcebb42c945357fe1c74948669cff42019738cc1f0c",
+        "source_fact:v1:6e20cff67bfedf252a28a79096ef3b43ca58583a5c8ac3eade528c6fc8568207",
+        "source_fact:v1:b3f27fcea714a3beca4c55fe7dda7be39a98cf8f6af411dfe96068ded98948bf",
+        "source_fact:v1:cc1ab9ac4b8ac8bc36e70fbfaeae6c7306a37896d6d3ebe89ea271846f348be1",
+        "source_fact:v1:e12d8baed42341db63f84d30f8ccd7763eb369483bb024d9456bda2d9486a0a3",
+        "source_fact:v1:fe6c646be431dc00e735f7356e0dd1c3e694d2e16df8c5132a9d2611bcd46bd3"
+      ],
+      "source_published_kst": "2026-10-11T17:29+09:00",
+      "source_title": "LS전선, 해저케이블 공장 계열사에 매각 검토",
+      "telegram_core_fact": "미국 전력망 시장 공략에 박차를 가하고 있는 LS전선이 '사업 리밸런싱'을 위해 계열사 가온전선에 동해사업장 내 공장 1개 동을 매각하는 방안을 검토하고 나섰다. 전선업계에 따르면 LS전선은 최근 동해사업장 해저1공장을 가온전선에 매각하는 방안을 검토하고 있다.",
+      "title": "LS전선, 해저케이블 공장 계열사에 매각 검토"
+    },
     "source_fact:e37db87955cda0136a58b1a4": {
       "first_seen_kst": "2026-10-06T21:05:27+09:00",
       "lanes": {
@@ -353342,6 +354842,33 @@
       ],
       "source_published_kst": "2026-10-06T18:09+09:00",
       "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어(종합) | 연합뉴스"
+    },
+    "source_fact:e4bf4c81db808b54e6f5fbba": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.mk.co.kr/news/business/12173107",
+      "source": "매일경제",
+      "source_body_digest": "8266afe08b8f9fb2657ae0cac270d25aa06b70409a9406ad5b6bf976286ffc2b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dcd630d938190aede9f20314280329601d54e543612b14a3665a16c01f1bb2ce",
+      "source_fact_keys": [
+        "source_fact:v1:04d267756abda78ea790fd56f31e13d743dc9de15006f1a1b8854b047dc687c1",
+        "source_fact:v1:2c77e0c658ca65c906997939e5a81c2fd7d32b7ccf4deb74c73915c1bf5c623b",
+        "source_fact:v1:4ed79c4373e0e8f41db9f2048abc5dfea7186bd8566388c5a2376627b6540537",
+        "source_fact:v1:68774888a9db0001ee3f7dcebb42c945357fe1c74948669cff42019738cc1f0c",
+        "source_fact:v1:6e20cff67bfedf252a28a79096ef3b43ca58583a5c8ac3eade528c6fc8568207",
+        "source_fact:v1:b3f27fcea714a3beca4c55fe7dda7be39a98cf8f6af411dfe96068ded98948bf",
+        "source_fact:v1:cc1ab9ac4b8ac8bc36e70fbfaeae6c7306a37896d6d3ebe89ea271846f348be1",
+        "source_fact:v1:e12d8baed42341db63f84d30f8ccd7763eb369483bb024d9456bda2d9486a0a3",
+        "source_fact:v1:fe6c646be431dc00e735f7356e0dd1c3e694d2e16df8c5132a9d2611bcd46bd3"
+      ],
+      "source_published_kst": "2026-10-11T17:29+09:00",
+      "source_title": "LS전선, 해저케이블 공장 계열사에 매각 검토",
+      "telegram_core_fact": "미국 전력망 시장 공략에 박차를 가하고 있는 LS전선이 '사업 리밸런싱'을 위해 계열사 가온전선에 동해사업장 내 공장 1개 동을 매각하는 방안을 검토하고 나섰다. 전선업계에 따르면 LS전선은 최근 동해사업장 해저1공장을 가온전선에 매각하는 방안을 검토하고 있다.",
+      "title": "LS전선, 해저케이블 공장 계열사에 매각 검토"
     },
     "source_fact:e4d232abba9dce84a3776b23": {
       "first_seen_kst": "2026-10-08T02:26:35+09:00",
@@ -367690,6 +369217,33 @@
       "source_published_kst": "2026-10-06T16:40+09:00",
       "title": "알테오젠, 국민성장펀드·스카이레이크서 2000억원 투자 유치"
     },
+    "source_fact:fa26198bf5944d7e7232184c": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01328406645611936&parentid=02945446645611936&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "fb645682279d9baab3410152ede34d8aa06345f7fe68b0b4041f215432f591ff",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f36f0106a19ea3f6a100deee3e6ae65618c5a25775392dc109350c45f889e374",
+      "source_fact_keys": [
+        "source_fact:v1:1c5b2b905a5fcab494c80c18329fce98f065542fee6bd0e31cf28dc1826a5128",
+        "source_fact:v1:1f59ee0941eb4fcdea50545a584c341b44883ba167bbe5eeb3cae9643945f843",
+        "source_fact:v1:246176ba8af4cd516367690dd9a4eec12e90d557276d1be5f45c82b4e3fddd4c",
+        "source_fact:v1:4ab17ea5da7477b537d4acd00cfb82acbc9008043f9625f19dfa4852fd1390a2",
+        "source_fact:v1:9f81e13ca5ec9612f947e882bb9f1604eebfd133aa84cf1f83bb5dda69bd32af",
+        "source_fact:v1:be78857b3c795212aa52640657a425c26f8b1f9c391773d51d762e6693ce6f16",
+        "source_fact:v1:cabe275c3d1028111d2a60ce77802fa082ade08267626d063d957296470ce16e",
+        "source_fact:v1:e4b700848a368119173cfdadc2c8be921ed77fafa1b0ab3421798368c5ba2b4e",
+        "source_fact:v1:e76c15557771a1e75e88e63eb68b75ef7c161858683c6de337aea693b654b874"
+      ],
+      "source_published_kst": "2026-10-11T10:30+09:00",
+      "source_title": "[단독] “사망사고 나자 민간에 떠넘기나”…한전, 정전복구 외주화 추진",
+      "telegram_core_fact": "11일 국회 기후에너지환경노동위원회 소속 어기구 더불어민주당 의원(충남 당진시)이 한국전력공사로부터 제출받은 자료에 따르면, 2017년부터 2026년 8월까지 정전복구 작업 중 산업재해를 입은 한전 직원은 21명으로, 이 가운데 1명이 사망했다.",
+      "title": "[단독] “사망사고 나자 민간에 떠넘기나”…한전, 정전복구 외주화 추진"
+    },
     "source_fact:fa2ece7b9ccfc5dc89326fef": {
       "first_seen_kst": "2026-10-11T12:11:12+09:00",
       "lanes": {
@@ -371772,6 +373326,32 @@
       "source_published_kst": "2026-10-06T08:00+09:00",
       "title": "큐리옥스바이오시스템즈, 글로벌 '톱5' CRO가 찍었다 ... 첫 주문부터 7억 수주"
     },
+    "source_fact:ffad138ecb23ec1ce4add1b9": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675285",
+      "source": "블로터",
+      "source_body_digest": "160663c3fd2ebaf3e238f9e890e23bbe7ffa13f92caf196ad20fb6feef777a6a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a37f6e2d8e851a689be743a19a61e067023e165063d77d52d097602d7cb9a009",
+      "source_fact_keys": [
+        "source_fact:v1:019f4c5cba213cffd6b2dac1f51b3033135bc99413fb233316da8591d97c3bae",
+        "source_fact:v1:253db952f546820f703a2ec7f990fbaacdc2cc7bf3cdd37c61bd90a81b4c7875",
+        "source_fact:v1:5cbc5829a9d6c76d07347fa23bbc3a0af983c756215396edbbf6b50fd3885c72",
+        "source_fact:v1:739f06e6af8c2673ef76cf76518c129f19a4e90008ed2589add5e438d8d96bc0",
+        "source_fact:v1:80fac96d6054f1d727773dfbe6d78f4bfd2f70908e1c9186a2d74cf5c2b35a29",
+        "source_fact:v1:993627ead407fcb2c6549630d60adbc20ca10c9ce4535dbe14c89c598a109126",
+        "source_fact:v1:c0686370c763d1fc4f1335325a9f9736eec6d97b99e73cc3c4d51a2df6951d7f",
+        "source_fact:v1:e545f1b016e4a72f92228cd0c5afd01da5c37d62857594cc5471db853c143a45"
+      ],
+      "source_published_kst": "2026-10-11T16:00+09:00",
+      "source_title": "풍산, 방산 부진 메운 '구리 호황' 신용등급 AA- 상향",
+      "telegram_core_fact": "풍산 매출은 2조7412억원으로 전년비 11.9% 증가했습니다.",
+      "title": "풍산, 방산 부진 메운 '구리 호황' 신용등급 AA- 상향"
+    },
     "source_fact:ffae0791deb9b2d3c8ed2524": {
       "first_seen_kst": "2026-10-11T12:11:12+09:00",
       "lanes": {
@@ -373781,6 +375361,27 @@
       "source_title": "“반도체 성과급 잔치에도… 소비 진작 효과는 제한적일 것”",
       "telegram_core_fact": "반도체 호황으로 삼성전자와 SK하이닉스의 직원들이 수억원대 성과급을 받을 것으로 예상되지만, 이런 성과급이 소비 진작으로 이어지는 효과는 크지 않을 것이라는 분석이 나왔다.",
       "title": "“반도체 성과급 잔치에도… 소비 진작 효과는 제한적일 것”"
+    },
+    "title:07f18452796acefcec6d3618": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172606",
+      "source": "매일경제",
+      "source_body_digest": "f5a253f0b217330d41b791e9f2f70338b6b246dec6cbbefc4eebdb57d74c3316",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:07a0c8c80251a5ef857e2a784129982204ccf5063c473726b96e1a547ee2ccdb",
+      "source_fact_keys": [
+        "source_fact:v1:11199063ede2e0ed1abe8f0525ce5d26c4c8f99e4d94fa32bbf48f78c971e112",
+        "source_fact:v1:26aa561a2892da3d651da795c7e031bfaedd907772694a5f7f0f5240917cad1e",
+        "source_fact:v1:3973240e137e02b304f8e85061673012dba3208a624b080c53ab9cec0d3cf5eb"
+      ],
+      "source_published_kst": "2026-10-11T17:26+09:00",
+      "source_title": "4대 신항만 장비 38%가 '메이드 인 차이나'",
+      "telegram_core_fact": "중국산 장비가 전체에서 38%를 차지하는 등 수입 의존도가 높은 가운데 항만 자동화가 확대되면서 정보보안과 유지관리 체계를 강화해야 한다는 지적이 나온다. 국내 주요 신항만에 설치된 항만장비의 국산 비중이 35%에 그치는 것으로 나타났다.",
+      "title": "4대 신항만 장비 38%가 '메이드 인 차이나'"
     },
     "title:0806d412dfc8c34cd81d69b7": {
       "first_seen_kst": "2026-09-30T15:16:38+09:00",
@@ -380700,6 +382301,27 @@
       ],
       "source_published_kst": "2026-10-06T10:57+09:00",
       "title": "오텍캐리어, AI 데이터센터용 CDU 제품 라인업 강화"
+    },
+    "title:269a0a6e85af879b3cd0e728": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.hankyung.com/article/202610114294i",
+      "source": "한국경제",
+      "source_body_digest": "bf7607d104890a4140a4b13323ec552147f2ef9fbf3e2458a000d8231db3cdde",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bb14933b226ff889df466c5f55a2e346510ffd0199ce58a2184040aea4573ba",
+      "source_fact_keys": [
+        "source_fact:v1:1c392ce4aa263185757523b9da1c2f1468be0fbd8d2cc4eaaef4cf4718a38b15",
+        "source_fact:v1:be24324f44e3ce93302e667353cecbf31046cc6bba04192ddfc192b0139cee7e",
+        "source_fact:v1:ff1acedd695721e93231cce3bcf7b3ba28d6517b81967a441ffa1d63e221f064"
+      ],
+      "source_published_kst": "2026-10-11T16:52+09:00",
+      "source_title": "[단독]한투, 美에 대체투자 운용사 세운다",
+      "telegram_core_fact": "한국투자금융지주가 미국 대체투자 전문 운용사인 찰스뱅크캐피털파트너스와 크레딧 투자를 전문으로 하는 합작법인(JV) 설립을 추진한다. 투자은행(IB) 업계에 따르면 한투는 미국 사모펀드 운용사인 찰스뱅크와 JV 설립을 위한 협상을 진행하고 있다.",
+      "title": "[단독]한투, 美에 대체투자 운용사 세운다"
     },
     "title:26f835c17634ee0dbc977a61": {
       "first_seen_kst": "2026-09-27T00:25:22+09:00",
@@ -390765,6 +392387,28 @@
       "telegram_core_fact": "이 메시지는 ICC 재판관을 지낸 나비 필라이의 노벨평화상 수상 직후 트럼프 행정부가 ICC에 대한 고강도 제재를 발표한 지 얼마 지나지 않아 게시된 것이다.",
       "title": "다카이치, 美 ICC 제재 직후 \"깊은 우려…ICC 역할 지원\" | 연합뉴스"
     },
+    "title:4fe61b807e2218f675602cd8": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.mk.co.kr/news/politics/12173017",
+      "source": "매일경제",
+      "source_body_digest": "a816e327aa0df969f62aeda2d085c00eea4ec143ca30c37e45e948b96c205938",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5a0b81cd83f148d1d1229bc5271e2012eac08004905e922d712befd801821567",
+      "source_fact_keys": [
+        "source_fact:v1:13186484dfacee871e6e61262575564a87c5b29f38f612f863ae2bb525f05ed4",
+        "source_fact:v1:3c0d37a1197913c4471e5cdf796e0e10800e0db130d54fa282d7736e90891f1a",
+        "source_fact:v1:9de93fbbc7ea7e262a12d28aa81237901904c55f2f640e0ccf3c21e78dd144f0",
+        "source_fact:v1:a4fa3d0e1885b66e74c25b3a2143ccf14b589e46eebb4ea1c4421e80c7c57cdb"
+      ],
+      "source_published_kst": "2026-10-11T16:33+09:00",
+      "source_title": "[단독] 집지을 땅 없다는데 … LH 택지 절반 유찰",
+      "telegram_core_fact": "11일 국회 국토교통위원회 소속 김종양 국민의힘 의원실이 LH에서 제출받은 국정감사 자료에 따르면 공공택지 공급공고 필지 기준 유찰률은 2024년 56%, 지난해 45%에 달했다. 2023년부터 올해 5월까지 체결한 토지 공급 계약 40조4000억원 중 9조5000억원(23.5%)이 무이자 할부 방식이었다.",
+      "title": "[단독] 집지을 땅 없다는데 … LH 택지 절반 유찰"
+    },
     "title:4fe68063a2265c5932aca28b": {
       "first_seen_kst": "2026-09-27T08:28:35+09:00",
       "lanes": {
@@ -396302,6 +397946,25 @@
       "source_title": "한국경제평론가협회, 국회서 '한국경제 전망·부동산 정책 쟁점' 논의",
       "telegram_core_fact": "특히 반도체 산업의 변화와 자금 흐름, 부동산 수요·공급 전망, 세제개편안 등을 주요 의제로 다룬다.",
       "title": "한국경제평론가협회, 국회서 '한국경제 전망·부동산 정책 쟁점' 논의"
+    },
+    "title:6b5e537c80b22b251abeaac9": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011042800062",
+      "source": "연합뉴스",
+      "source_body_digest": "c77ae8fb26dc0663ef9613c312a2da706ca6f876d8a3682b9dccd8d9f7945164",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:91225bf9c68846bc7128e00dc309595b6c79ef7ae15841011ef2d774c632c1e2",
+      "source_fact_keys": [
+        "source_fact:v1:73d91120eae1c0d4d15d3935fb3e37ee638cd9fa72e8cefbd2e2bda7e4bb135a"
+      ],
+      "source_published_kst": "2026-10-11T18:25+09:00",
+      "source_title": "홍천 인삼·한우 명품축제 성료…10만명 방문·매출 15억원 | 연합뉴스",
+      "telegram_core_fact": "홍천문화재단에 따르면 지난 8일부터 이날까지 홍천 도시산림공원 토리숲 일대에서 열린 축제의 인삼·한우와 농특산물, 먹거리 등 총매출은 약 15억원으로 집계됐다.",
+      "title": "홍천 인삼·한우 명품축제 성료…10만명 방문·매출 15억원 | 연합뉴스"
     },
     "title:6b5fc5d977dbd1ac5342005c": {
       "first_seen_kst": "2026-10-11T09:50:45+09:00",
@@ -415528,6 +417191,32 @@
       "source_published_kst": "2026-10-06T19:11+09:00",
       "title": "\"일본·중국 美국채 큰 손 사라진다\"…레이 달리오 경고 배경은"
     },
+    "title:bef16bc1c22fd0ffba3f9a00": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675285",
+      "source": "블로터",
+      "source_body_digest": "160663c3fd2ebaf3e238f9e890e23bbe7ffa13f92caf196ad20fb6feef777a6a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a37f6e2d8e851a689be743a19a61e067023e165063d77d52d097602d7cb9a009",
+      "source_fact_keys": [
+        "source_fact:v1:019f4c5cba213cffd6b2dac1f51b3033135bc99413fb233316da8591d97c3bae",
+        "source_fact:v1:253db952f546820f703a2ec7f990fbaacdc2cc7bf3cdd37c61bd90a81b4c7875",
+        "source_fact:v1:5cbc5829a9d6c76d07347fa23bbc3a0af983c756215396edbbf6b50fd3885c72",
+        "source_fact:v1:739f06e6af8c2673ef76cf76518c129f19a4e90008ed2589add5e438d8d96bc0",
+        "source_fact:v1:80fac96d6054f1d727773dfbe6d78f4bfd2f70908e1c9186a2d74cf5c2b35a29",
+        "source_fact:v1:993627ead407fcb2c6549630d60adbc20ca10c9ce4535dbe14c89c598a109126",
+        "source_fact:v1:c0686370c763d1fc4f1335325a9f9736eec6d97b99e73cc3c4d51a2df6951d7f",
+        "source_fact:v1:e545f1b016e4a72f92228cd0c5afd01da5c37d62857594cc5471db853c143a45"
+      ],
+      "source_published_kst": "2026-10-11T16:00+09:00",
+      "source_title": "풍산, 방산 부진 메운 '구리 호황' 신용등급 AA- 상향",
+      "telegram_core_fact": "풍산 매출은 2조7412억원으로 전년비 11.9% 증가했습니다.",
+      "title": "풍산, 방산 부진 메운 '구리 호황' 신용등급 AA- 상향"
+    },
     "title:bf072632ca52b7e615929eb1": {
       "first_seen_kst": "2026-10-03T10:53:56+09:00",
       "lanes": {
@@ -415608,6 +417297,33 @@
       ],
       "source_published_kst": "2026-10-06T12:00+09:00",
       "title": "대한상의·감사원 사전컨설팅에 멈춘 공공주택 3936세대 ‘물꼬’"
+    },
+    "title:bf946dd90e6478c0725d2aee": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.mk.co.kr/news/business/12173107",
+      "source": "매일경제",
+      "source_body_digest": "8266afe08b8f9fb2657ae0cac270d25aa06b70409a9406ad5b6bf976286ffc2b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dcd630d938190aede9f20314280329601d54e543612b14a3665a16c01f1bb2ce",
+      "source_fact_keys": [
+        "source_fact:v1:04d267756abda78ea790fd56f31e13d743dc9de15006f1a1b8854b047dc687c1",
+        "source_fact:v1:2c77e0c658ca65c906997939e5a81c2fd7d32b7ccf4deb74c73915c1bf5c623b",
+        "source_fact:v1:4ed79c4373e0e8f41db9f2048abc5dfea7186bd8566388c5a2376627b6540537",
+        "source_fact:v1:68774888a9db0001ee3f7dcebb42c945357fe1c74948669cff42019738cc1f0c",
+        "source_fact:v1:6e20cff67bfedf252a28a79096ef3b43ca58583a5c8ac3eade528c6fc8568207",
+        "source_fact:v1:b3f27fcea714a3beca4c55fe7dda7be39a98cf8f6af411dfe96068ded98948bf",
+        "source_fact:v1:cc1ab9ac4b8ac8bc36e70fbfaeae6c7306a37896d6d3ebe89ea271846f348be1",
+        "source_fact:v1:e12d8baed42341db63f84d30f8ccd7763eb369483bb024d9456bda2d9486a0a3",
+        "source_fact:v1:fe6c646be431dc00e735f7356e0dd1c3e694d2e16df8c5132a9d2611bcd46bd3"
+      ],
+      "source_published_kst": "2026-10-11T17:29+09:00",
+      "source_title": "LS전선, 해저케이블 공장 계열사에 매각 검토",
+      "telegram_core_fact": "미국 전력망 시장 공략에 박차를 가하고 있는 LS전선이 '사업 리밸런싱'을 위해 계열사 가온전선에 동해사업장 내 공장 1개 동을 매각하는 방안을 검토하고 나섰다. 전선업계에 따르면 LS전선은 최근 동해사업장 해저1공장을 가온전선에 매각하는 방안을 검토하고 있다.",
+      "title": "LS전선, 해저케이블 공장 계열사에 매각 검토"
     },
     "title:bf96d8fb8706d32d6c46ce69": {
       "first_seen_kst": "2026-10-05T08:24:29+09:00",
@@ -429744,6 +431460,33 @@
       "telegram_core_fact": "고객 주문과 로그인뿐 아니라 물류 현장의 상품 분류 작업과 배송에도 차질이 빚어진 것으로 파악됐다.",
       "title": "쿠팡·쿠팡이츠·쿠팡플레이 등 한밤 중 접속 장애…주문·배송 차질"
     },
+    "title:fe4130123b2aed7a2f7299ef": {
+      "first_seen_kst": "2026-10-11T18:34:27+09:00",
+      "lanes": {
+        "live": "2026-10-11T18:34:27+09:00"
+      },
+      "last_seen_kst": "2026-10-11T18:34:27+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01328406645611936&parentid=02945446645611936&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "fb645682279d9baab3410152ede34d8aa06345f7fe68b0b4041f215432f591ff",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f36f0106a19ea3f6a100deee3e6ae65618c5a25775392dc109350c45f889e374",
+      "source_fact_keys": [
+        "source_fact:v1:1c5b2b905a5fcab494c80c18329fce98f065542fee6bd0e31cf28dc1826a5128",
+        "source_fact:v1:1f59ee0941eb4fcdea50545a584c341b44883ba167bbe5eeb3cae9643945f843",
+        "source_fact:v1:246176ba8af4cd516367690dd9a4eec12e90d557276d1be5f45c82b4e3fddd4c",
+        "source_fact:v1:4ab17ea5da7477b537d4acd00cfb82acbc9008043f9625f19dfa4852fd1390a2",
+        "source_fact:v1:9f81e13ca5ec9612f947e882bb9f1604eebfd133aa84cf1f83bb5dda69bd32af",
+        "source_fact:v1:be78857b3c795212aa52640657a425c26f8b1f9c391773d51d762e6693ce6f16",
+        "source_fact:v1:cabe275c3d1028111d2a60ce77802fa082ade08267626d063d957296470ce16e",
+        "source_fact:v1:e4b700848a368119173cfdadc2c8be921ed77fafa1b0ab3421798368c5ba2b4e",
+        "source_fact:v1:e76c15557771a1e75e88e63eb68b75ef7c161858683c6de337aea693b654b874"
+      ],
+      "source_published_kst": "2026-10-11T10:30+09:00",
+      "source_title": "[단독] “사망사고 나자 민간에 떠넘기나”…한전, 정전복구 외주화 추진",
+      "telegram_core_fact": "11일 국회 기후에너지환경노동위원회 소속 어기구 더불어민주당 의원(충남 당진시)이 한국전력공사로부터 제출받은 자료에 따르면, 2017년부터 2026년 8월까지 정전복구 작업 중 산업재해를 입은 한전 직원은 21명으로, 이 가운데 1명이 사망했다.",
+      "title": "[단독] “사망사고 나자 민간에 떠넘기나”…한전, 정전복구 외주화 추진"
+    },
     "title:fe4171d0d2ebc2d56c190bed": {
       "first_seen_kst": "2026-10-07T08:36:47+09:00",
       "lanes": {
@@ -430162,5 +431905,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-11T18:15:28+09:00"
+  "updated_at_kst": "2026-10-11T18:34:27+09:00"
 }
