@@ -30,6 +30,7 @@ for _required in (
     "TESLA_TOUCH_PATENT_RECOVERY =",
     "DIGITAL_OPTIMUS_GAME_RECOVERY =",
     "HUMANOID_DRAM_RECOVERY =",
+    "OPTIMUS_HAND_MAGNET_RECOVERY =",
     "def _humanoid_dram_recovery(",
     "def _digital_optimus_game_recovery(",
     "def _dongkuk_report_recovery(",
@@ -2980,5 +2981,36 @@ memory_mou_only = make(
 )
 mg, ms, mc, mk = classify(memory_mou_only)
 assert mg != 'humanoid_brain_dram' or ms < 11,(mg,ms,mc)
+
+
+# X Takeover: historical 2025 magnet disruption is not new 2026 delay.
+hand_recovered = watcher.query_news(watcher.OPTIMUS_HAND_MAGNET_RECOVERY)
+if base.NOW.astimezone(base.KST).date() <= dt.date(2026,10,16):
+    assert len(hand_recovered)==1,hand_recovered
+    item=hand_recovered[0]
+    g, sc, cat, key = classify(item)
+    assert g=='optimus_hand_magnet' and sc>=11,(g,sc,cat)
+    assert cat == 'Optimus 손·자석 · 2025년 공급망 차질 경영진 회고',cat
+    assert '2025년' in base.meaning(cat) and '2~3개월' in base.meaning(cat)
+    assert '현재 V3 일정이 2~3개월 새로 지연' in base.meaning(cat)
+    assert watcher.qty._skip_quantity_enrichment(
+        'Optimus 손·자석 · 2025년 공급망 차질 경영진 회고\n2~3개월 지연'
+    )
+    # The base renderer discards item source while preparing the category.
+    rendered=item['title']+' '+item['description']
+    assert base.category(rendered,base.topic_group(rendered))==cat
+hand_theme=make(
+    'Optimus hand magnet China risk X Takeover',
+    'Elon Musk noted general magnet shortage and fine manipulation challenges.',
+    '테마 뉴스'
+)
+hg, hs, hc, hk=classify(hand_theme)
+assert hg=='optimus_hand_magnet' and hs<11,(hg,hs,hc)
+oldnow=base.NOW
+try:
+    base.NOW=dt.datetime(2026,10,17,0,0,tzinfo=dt.timezone.utc)
+    assert watcher.query_news(watcher.OPTIMUS_HAND_MAGNET_RECOVERY)==[]
+finally:
+    base.NOW=oldnow
 
 print("Physical-AI watcher regression guards: PASS")
