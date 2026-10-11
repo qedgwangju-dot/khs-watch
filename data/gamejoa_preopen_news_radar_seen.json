@@ -3624,6 +3624,25 @@
       "telegram_core_fact": "롯데백화점이 미국 로스앤젤레스(LA)에서 K뷰티 브랜드를 알리고 국내 신진 브랜드의 해외 진출을 지원한다. 최근 롯데백화점에서 북미 고객의 K뷰티 매출이 120% 증가하는 등 높아진 관심을 바탕으로 현지에서 스킨케어와 프래그런스 브랜드를 직접 경험할 수 있는 팝업을 연다.",
       "title": "롯데百, LA서 K뷰티 알린다…국내 브랜드 7곳 해외 진출 지원"
     },
+    "core:28c5b655eb11e914c789daec": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008078400051",
+      "source": "연합뉴스",
+      "source_body_digest": "9697c36afb056c9e5b9b2c6c0eb24b1486d502dc69044fe32aac2a442d760872",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dec9f0a1da2ff9fc247c1cda868844b6c428982ad0affd11f533ffc84d492ff8",
+      "source_fact_keys": [
+        "source_fact:v1:b86e53ea7cd6d02842e7c483558cce364ec5d60aa8c5892a947ed6439a02cc8b"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "부산 에코델타시티 18·19블록 계약취소 2가구 재공급 | 연합뉴스",
+      "telegram_core_fact": "신창호 부산도시공사 사장은 \"이번에 재공급하는 취소 세대는 청약 조건이 까다롭지 않아 진입장벽이 낮고, 분양가격이 저렴해 시민 관심이 높을 것으로 예상한다\"라며 \"청약 접수부터 입주까지 차질 없이 일정이 진행될 수 있도록 철저히 준비하겠다\"고 말했다.",
+      "title": "부산 에코델타시티 18·19블록 계약취소 2가구 재공급 | 연합뉴스"
+    },
     "core:290d055a43c0b404779609b5": {
       "first_seen_kst": "2026-10-09T22:37:15+09:00",
       "lanes": {
@@ -5250,6 +5269,29 @@
       "telegram_core_fact": "산업통상부는 한국을 포함한 15개국이 7일(현지시간) 프랑스 파리 경제협력개발기구(OECD) 본부에서 '구조적 과잉생산 대응을 위한 공동 장관성명'을 발표했다고 8일 밝혔다.",
       "title": "韓 등 15개국, 車·배터리·반도체 과잉생산 공동 대응"
     },
+    "core:3c53db4482dcb420a0a844d9": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261010000300003",
+      "source": "연합뉴스",
+      "source_body_digest": "7410d44fe790955b7dc0a61f45b9c85992630b7965213c0bbc6ffd5c24173f56",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48b6ddc7a9615d1a2d7d87d52afd39f756df4e5c40a8aa8174970f12664c733d",
+      "source_fact_keys": [
+        "source_fact:v1:3f6d90ddb360b764c7ef0e4907fe8c6ea0410e2b76740547650c1a75e78dc294",
+        "source_fact:v1:497f069226bcdf688e10e8613a117389f6c4c556fc8acde4ba76f71f4ea87f35",
+        "source_fact:v1:9080c0fc3533d2f1110f115652fb5b38c8fa6d0fbecffbe15a983f8c78b4ca91",
+        "source_fact:v1:970a5cfbab1027c31d45b397936fa70f7a82e09fe7225de40b767b412ff48da3",
+        "source_fact:v1:e552efb5160ac3dd061582cc370f1e826d8c9b056db39bae2031cc64f4fe7493"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "현대차, 인도 진출 30년만에 누적판매 1천만대 돌파 눈앞 | 연합뉴스",
+      "telegram_core_fact": "현대차는 첸나이 1·2공장(82만4천대)에 이어 푸네 신공장(17만대)을 본격 가동하며 인도 현지에서 총 100만대의 생산능력을 갖추게 됐다.",
+      "title": "현대차, 인도 진출 30년만에 누적판매 1천만대 돌파 눈앞 | 연합뉴스"
+    },
     "core:3c5f2de2574c786c8e997f0b": {
       "first_seen_kst": "2026-10-09T20:48:52+09:00",
       "lanes": {
@@ -6725,6 +6767,35 @@
       "source_title": "위불, 美 하원 보고서에 적극 반박하며 데이터 보안 우려 불식 나서",
       "telegram_core_fact": "고객 데이터와 자산을 미국 내에 보관하고 중국 직원은 접근할 수 없다고 강조했으며, 규제기관과의 협력 의지도 밝혔습니다. 미 하원 특위 보고서가 불완전한 기록에 근거한 결론이라고 반박한 점이 주목받고 있습니다.",
       "title": "위불, 美 하원 보고서에 적극 반박하며 데이터 보안 우려 불식 나서"
+    },
+    "core:4fcee9eb4ebfb57cc1bef5a8": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634012",
+      "source": "이투데이",
+      "source_body_digest": "6ce385b5078e74f8fcb042dddb2dbb67dd331b9b37dde8c8077115bf6aa86430",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3db382a20fbe1f75876a22265a4690dd79ae83a2ae9405bc2154fe34552e59d",
+      "source_fact_keys": [
+        "source_fact:v1:64322acf556f70f1f10ece485822527a6f67d4fd5181d156dc75100e8876f510",
+        "source_fact:v1:8f7b1e2138f577d6cf1ad0ee345480fef5a3ffb64acf2bfd27f24476b72c510b",
+        "source_fact:v1:92c36a2d5f43de1e037875df15b31b2239e0127055f842c2c168a9583afd55f1",
+        "source_fact:v1:a7e7821319649c6c4ca813b167bf317894df764fe94e9f1390f38059bc31280d",
+        "source_fact:v1:b687013c576fd55d986dab8bbba918fbdc69ab5375f0d5e405cf1b800265ca8e",
+        "source_fact:v1:b71a9e938759a69c126251f58b61db391842cff4a65cb737d6418906bd92aa9f",
+        "source_fact:v1:d13795590010a9cc27020058a69ab4cd5527ceea8764b73e71f9dae785391793",
+        "source_fact:v1:e1b9ea1dd7eedf7fe09c43799a36956c410189c9109d7f2c2c9cd79c0c0b8b5f",
+        "source_fact:v1:f1a82c841f3956980fa775b62b2e580401097e11fd25ef3ee3cf150a87306faf",
+        "source_fact:v1:f3843056ab9b1485efc583b8b91c0b92f6f94f2d723c6d0d36540c35cec97694",
+        "source_fact:v1:f7e3c1fdd83477896243fb305ca631bbe56e49691ea00c54e20c860abb2eeaac"
+      ],
+      "source_published_kst": "2026-10-11T08:57+09:00",
+      "source_title": "“이번에도 떨어졌다”…삼전 역대급 실적 발표에도 주가 하락",
+      "telegram_core_fact": "삼성전자가 국내 기업 최초로 분기 영업이익 100조원 시대를 열며 사상 최대 실적을 달성했으나 주가는 오히려 하락세로 마감했다.",
+      "title": "“이번에도 떨어졌다”…삼전 역대급 실적 발표에도 주가 하락"
     },
     "core:5046274a7b7652a58acb4214": {
       "first_seen_kst": "2026-10-09T21:51:45+09:00",
@@ -9289,6 +9360,23 @@
       "telegram_core_fact": "3분기 구리 4100만 파운드를 생산했고, 깁랠터 연간 구리 생산 가이던스를 상향했습니다.",
       "title": "트레코메탈스, 깁랠터 구리 가이던스 상향에 플로렌스 상업 생산 기대 확대"
     },
+    "core:71d64337e4d5a1da2e57895a": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633388",
+      "source": "이투데이",
+      "source_body_digest": "0b605a884a7b35e91796bbc668870a2af9df36ad5999f38c334451c15a5386d4",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "조각투자 넘어 채권ㆍ펀드로⋯토큰증권 시장 확장 채비",
+      "telegram_core_fact": "토큰증권 시장이 부동산·미술품 등 조각투자를 넘어 채권·펀드로 확장을 준비한다. 일반투자자의 장외거래소 투자한도는 거래소 한 곳당 연간 순매수액 1억원으로 제한하는 안이 제시됐다.",
+      "title": "조각투자 넘어 채권ㆍ펀드로⋯토큰증권 시장 확장 채비"
+    },
     "core:71e631b7f72b0e70d131b12d": {
       "first_seen_kst": "2026-10-09T16:07:27+09:00",
       "lanes": {
@@ -11154,6 +11242,25 @@
       "source_title": "금융당국, '초단타' HFT 겨냥…과다호가부담금·호가 지연제 고심",
       "telegram_core_fact": "금융당국이 고빈도매매(HFT·High Frequency Trading) 보완 방안 검토에 착수한 가운데 파생시장에 적용되는 과다호가부담금, 스피드범프(Speed Bump·호가 지연제) 등이 규제책으로 거론된다.",
       "title": "금융당국, '초단타' HFT 겨냥…과다호가부담금·호가 지연제 고심"
+    },
+    "core:887195adcd7b4d7a55795511": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634240",
+      "source": "이투데이",
+      "source_body_digest": "333ceb53392942fba1d2cae4bde00636658492494ba5ef38d3bb2d4ff2a5dcab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4484e4b5bbfde6d54f3c4ec95070442a32bc5ba3d1c2fe59da867937f6373888",
+      "source_fact_keys": [
+        "source_fact:v1:90341f65b948145671c57fd4e479f75fe1070e4d860fe1a9c2c5396a72ecf9ef"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "상표 계약 맺어놓고 “사용료 아냐” 프라다, 33억 세금소송 최종 패소",
+      "telegram_core_fact": "강남세무서는 이 지급액을 국내에서 상표권을 사용한 대가인 ‘국내 원천 사용료 소득’으로 보고, 2019년 12월 프라다코리아에 가산세를 포함한 약 33억원의 법인세를 부과했다.",
+      "title": "상표 계약 맺어놓고 “사용료 아냐” 프라다, 33억 세금소송 최종 패소"
     },
     "core:88d38519169fdac79e63e10d": {
       "first_seen_kst": "2026-10-08T04:45:20+09:00",
@@ -15390,6 +15497,38 @@
       "source_title": "삼성바이오로직스, 日 공략 속도…엔드 투 엔드 서비스로 APAC 시장 확대",
       "telegram_core_fact": "발표를 맡은 최연정 뉴모달리티그룹 프로는 첨단 기술인 전산유체역학(CFD)을 활용해 ADC 생산규모 확대(scale-up) 시에도 일관된 품질을 유지하는 공정 기술을 통해 삼성바이오로직스의 고품질 제조 역량을 강조했다.",
       "title": "삼성바이오로직스, 日 공략 속도…엔드 투 엔드 서비스로 APAC 시장 확대"
+    },
+    "core:bbe6c3dfa51bbe3f5f42e1d2": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633922",
+      "source": "이투데이",
+      "source_body_digest": "653f5e089da79e6ffd8591758737da9eb2ee07c006438d80c0dc84367114ae31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e9da11ec8af14bb598e37940603c2d70a323a8dfcc20ce1fdca3e6b43c065f5e",
+      "source_fact_keys": [
+        "source_fact:v1:21302108cfeaaf0842fb173f0ec06925fa5cd2ee12daa52bc782e2773fc48e8f",
+        "source_fact:v1:2bab80ca419ebd2221f45b2fa6f3620decd96bab08389cf3fe7500721e8a6358",
+        "source_fact:v1:406975f7192328fdb5fd9da93f2054bd2e3a4f836b9a7813517cbc5858e514e2",
+        "source_fact:v1:4184b41b66e25542abf89cf73ceb3675307d3ab56898b8edde55b7e728390a45",
+        "source_fact:v1:47586015796239db64d04a058d3f32b5b8d8135e0744a577d836eb253e003cd7",
+        "source_fact:v1:611f88406f31e6e0912602f93f1f3148c74758ed1437d1cb3e2bfa4cd532ece6",
+        "source_fact:v1:76b79434fb2ec2d31f26b1032e7171fbb5786d8e2e0e510a11e287e7a32afdd6",
+        "source_fact:v1:7c1ac192b2a51af15de1421e610074d1e8ce6c90daec0f89963f8f408322677c",
+        "source_fact:v1:b52bb4944dc3ce0bf330e236a2ce40f28db6265021b7e4691ba31c50a23a9216",
+        "source_fact:v1:b8000aeaa8a7a452c1dd95fcc1e7b3ff714d45030eab91d94490ad2b9f804763",
+        "source_fact:v1:c3ecad609f0c7d66613f53e8908ae5d9431982e4ae18d2c7610cb01bd6533c1b",
+        "source_fact:v1:ce3054a7912ee2b2ccb9f35c849a7b2ad3c28b6bc16f932e37118722d182d6b8",
+        "source_fact:v1:def540a7b78600c990132186300da15f2174b8c66005f613c41161312c85d6a1",
+        "source_fact:v1:fae99063ba20ec121e33b13983cab8399f47be0bcc2d5a7249b91d449370a004"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’",
+      "telegram_core_fact": "KAI 최대주주인 수출입은행의 지분 매각 가능성과 한화의 경영 참여 계획 등이 주요 질의 대상으로 거론된다.",
+      "title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’"
     },
     "core:bc0f15e1753c995fdf294b07": {
       "first_seen_kst": "2026-10-08T05:17:22+09:00",
@@ -20782,6 +20921,26 @@
       "telegram_core_fact": "이날 파이낸셜타임스(FT)에 따르면 오픈AI는 9월 말 기준 연환산 매출이 약 500억 달러를 기록했다고 투자자들에게 밝혔다.",
       "title": "[TODAY엔비디아]오픈AI의 매출 실망에 230달러로 후퇴…나스닥, 1% 하락"
     },
+    "core:fb949fe4df718a37f1965e6c": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818737",
+      "source": "뉴시스",
+      "source_body_digest": "5b93cef91e4ce47a23c6767e710a2dfcdf46edc6777c0f5b8d574a7c32caa15f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ecacdfab5b275c978899a9cca69a7e93b3c05efa44e6110ed34fd7dd29c1e56b",
+      "source_fact_keys": [
+        "source_fact:v1:a7d2a084b203731c08a0bec05c4a0fa274f403f391104143e3a839ee145ca372",
+        "source_fact:v1:afe35c795421b7efd4b3b56d76975a8572f17b20a02caeeed5666871e80e68a6"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "금융권 훑고 다닌 'AI 해킹'…\"더 큰 피해 올 수도\"[K금융의 보안 민낯④]",
+      "telegram_core_fact": "금융업계와 보안업계에 따르면 최근 신한·KB국민·하나·BNK부산은행 등 주요 은행에서 해킹 공격으로 인한 이용자 정보 유출 피해가 잇따라 확인됐다.",
+      "title": "금융권 훑고 다닌 'AI 해킹'…\"더 큰 피해 올 수도\"[K금융의 보안 민낯④]"
+    },
     "core:fb96dc63176153a86c8966ed": {
       "first_seen_kst": "2026-10-07T18:44:00+09:00",
       "lanes": {
@@ -24226,6 +24385,35 @@
       "source_title": "리졸브 AI, 상반기 매출 1억3100만 달러..연말 ARR 5억 달러 목표",
       "telegram_core_fact": "리졸브 AI(RZLV)는 2026년 상반기 매출액이 1억3080만 달러로 전년 동기의 20배를 넘었으며, 2026년 말 기준 연간 반복매출(ARR) 최소 5억 달러를 목표로 제시했다고 10월 8일 발표했다.",
       "title": "리졸브 AI, 상반기 매출 1억3100만 달러..연말 ARR 5억 달러 목표"
+    },
+    "event:5099696131bce1135fe2f44a": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634012",
+      "source": "이투데이",
+      "source_body_digest": "6ce385b5078e74f8fcb042dddb2dbb67dd331b9b37dde8c8077115bf6aa86430",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3db382a20fbe1f75876a22265a4690dd79ae83a2ae9405bc2154fe34552e59d",
+      "source_fact_keys": [
+        "source_fact:v1:64322acf556f70f1f10ece485822527a6f67d4fd5181d156dc75100e8876f510",
+        "source_fact:v1:8f7b1e2138f577d6cf1ad0ee345480fef5a3ffb64acf2bfd27f24476b72c510b",
+        "source_fact:v1:92c36a2d5f43de1e037875df15b31b2239e0127055f842c2c168a9583afd55f1",
+        "source_fact:v1:a7e7821319649c6c4ca813b167bf317894df764fe94e9f1390f38059bc31280d",
+        "source_fact:v1:b687013c576fd55d986dab8bbba918fbdc69ab5375f0d5e405cf1b800265ca8e",
+        "source_fact:v1:b71a9e938759a69c126251f58b61db391842cff4a65cb737d6418906bd92aa9f",
+        "source_fact:v1:d13795590010a9cc27020058a69ab4cd5527ceea8764b73e71f9dae785391793",
+        "source_fact:v1:e1b9ea1dd7eedf7fe09c43799a36956c410189c9109d7f2c2c9cd79c0c0b8b5f",
+        "source_fact:v1:f1a82c841f3956980fa775b62b2e580401097e11fd25ef3ee3cf150a87306faf",
+        "source_fact:v1:f3843056ab9b1485efc583b8b91c0b92f6f94f2d723c6d0d36540c35cec97694",
+        "source_fact:v1:f7e3c1fdd83477896243fb305ca631bbe56e49691ea00c54e20c860abb2eeaac"
+      ],
+      "source_published_kst": "2026-10-11T08:57+09:00",
+      "source_title": "“이번에도 떨어졌다”…삼전 역대급 실적 발표에도 주가 하락",
+      "telegram_core_fact": "삼성전자가 국내 기업 최초로 분기 영업이익 100조원 시대를 열며 사상 최대 실적을 달성했으나 주가는 오히려 하락세로 마감했다.",
+      "title": "“이번에도 떨어졌다”…삼전 역대급 실적 발표에도 주가 하락"
     },
     "event:50f36d7c687335ca6d825a55": {
       "first_seen_kst": "2026-09-22T19:01:13+09:00",
@@ -42608,6 +42796,35 @@
       "source_published_kst": "2026-10-06T07:30+09:00",
       "title": "원화 강세의 그늘…실적시즌 앞두고 이익전망 '뒷걸음질'"
     },
+    "fact:50983b9aa78b0b764c229c62": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634012",
+      "source": "이투데이",
+      "source_body_digest": "6ce385b5078e74f8fcb042dddb2dbb67dd331b9b37dde8c8077115bf6aa86430",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3db382a20fbe1f75876a22265a4690dd79ae83a2ae9405bc2154fe34552e59d",
+      "source_fact_keys": [
+        "source_fact:v1:64322acf556f70f1f10ece485822527a6f67d4fd5181d156dc75100e8876f510",
+        "source_fact:v1:8f7b1e2138f577d6cf1ad0ee345480fef5a3ffb64acf2bfd27f24476b72c510b",
+        "source_fact:v1:92c36a2d5f43de1e037875df15b31b2239e0127055f842c2c168a9583afd55f1",
+        "source_fact:v1:a7e7821319649c6c4ca813b167bf317894df764fe94e9f1390f38059bc31280d",
+        "source_fact:v1:b687013c576fd55d986dab8bbba918fbdc69ab5375f0d5e405cf1b800265ca8e",
+        "source_fact:v1:b71a9e938759a69c126251f58b61db391842cff4a65cb737d6418906bd92aa9f",
+        "source_fact:v1:d13795590010a9cc27020058a69ab4cd5527ceea8764b73e71f9dae785391793",
+        "source_fact:v1:e1b9ea1dd7eedf7fe09c43799a36956c410189c9109d7f2c2c9cd79c0c0b8b5f",
+        "source_fact:v1:f1a82c841f3956980fa775b62b2e580401097e11fd25ef3ee3cf150a87306faf",
+        "source_fact:v1:f3843056ab9b1485efc583b8b91c0b92f6f94f2d723c6d0d36540c35cec97694",
+        "source_fact:v1:f7e3c1fdd83477896243fb305ca631bbe56e49691ea00c54e20c860abb2eeaac"
+      ],
+      "source_published_kst": "2026-10-11T08:57+09:00",
+      "source_title": "“이번에도 떨어졌다”…삼전 역대급 실적 발표에도 주가 하락",
+      "telegram_core_fact": "삼성전자가 국내 기업 최초로 분기 영업이익 100조원 시대를 열며 사상 최대 실적을 달성했으나 주가는 오히려 하락세로 마감했다.",
+      "title": "“이번에도 떨어졌다”…삼전 역대급 실적 발표에도 주가 하락"
+    },
     "fact:50de4440f10af0f99b0e78ec": {
       "first_seen_kst": "2026-10-07T21:31:57+09:00",
       "lanes": {
@@ -43009,6 +43226,26 @@
       "source_title": "정석근 SK하이퍼 대표 \"AI 인프라 산업 병목 변화하고 있다\"",
       "telegram_core_fact": "포럼 사무국인 한국정보통신진흥협회(KAIT)는 앞으로도 '디지털 인사이트 포럼'을 통해 AI·디지털 산업의 주요 기술·정책 이슈를 선제적으로 발굴하고, AI 인프라 경쟁력 강화를 위한 민관 협력을 지속적으로 확대해 나갈 계획이다.",
       "title": "정석근 SK하이퍼 대표 \"AI 인프라 산업 병목 변화하고 있다\""
+    },
+    "fact:54ae1d7d117f07f9ba76143d": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818737",
+      "source": "뉴시스",
+      "source_body_digest": "5b93cef91e4ce47a23c6767e710a2dfcdf46edc6777c0f5b8d574a7c32caa15f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ecacdfab5b275c978899a9cca69a7e93b3c05efa44e6110ed34fd7dd29c1e56b",
+      "source_fact_keys": [
+        "source_fact:v1:a7d2a084b203731c08a0bec05c4a0fa274f403f391104143e3a839ee145ca372",
+        "source_fact:v1:afe35c795421b7efd4b3b56d76975a8572f17b20a02caeeed5666871e80e68a6"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "금융권 훑고 다닌 'AI 해킹'…\"더 큰 피해 올 수도\"[K금융의 보안 민낯④]",
+      "telegram_core_fact": "금융업계와 보안업계에 따르면 최근 신한·KB국민·하나·BNK부산은행 등 주요 은행에서 해킹 공격으로 인한 이용자 정보 유출 피해가 잇따라 확인됐다.",
+      "title": "금융권 훑고 다닌 'AI 해킹'…\"더 큰 피해 올 수도\"[K금융의 보안 민낯④]"
     },
     "fact:54f3768e096dcc91a1e273cd": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
@@ -53113,6 +53350,25 @@
       "telegram_core_fact": "아이티센엔텍은 한국교육학술정보원(KERIS)이 발주한 'K-에듀파인 운영환경 고도화 및 재해복구 체계 구축' 사업의 우선협상대상자로 선정됐다고 7일 밝혔다.",
       "title": "아이티센엔텍, 2173억 'K-에듀파인 고도화' 수주"
     },
+    "fact:99ef47d7612e376206ff5295": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634240",
+      "source": "이투데이",
+      "source_body_digest": "333ceb53392942fba1d2cae4bde00636658492494ba5ef38d3bb2d4ff2a5dcab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4484e4b5bbfde6d54f3c4ec95070442a32bc5ba3d1c2fe59da867937f6373888",
+      "source_fact_keys": [
+        "source_fact:v1:90341f65b948145671c57fd4e479f75fe1070e4d860fe1a9c2c5396a72ecf9ef"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "상표 계약 맺어놓고 “사용료 아냐” 프라다, 33억 세금소송 최종 패소",
+      "telegram_core_fact": "강남세무서는 이 지급액을 국내에서 상표권을 사용한 대가인 ‘국내 원천 사용료 소득’으로 보고, 2019년 12월 프라다코리아에 가산세를 포함한 약 33억원의 법인세를 부과했다.",
+      "title": "상표 계약 맺어놓고 “사용료 아냐” 프라다, 33억 세금소송 최종 패소"
+    },
     "fact:9a08496138a5c99015cf7150": {
       "first_seen_kst": "2026-10-06T15:44:02+09:00",
       "lanes": {
@@ -55268,6 +55524,38 @@
       ],
       "source_published_kst": "2026-10-07T12:00+09:00",
       "title": "햇빛소득마을 2차 공모 436개 마을 선정…총 523개 마을로 확대"
+    },
+    "fact:ab3b2f3d85b477c5d38befc6": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633922",
+      "source": "이투데이",
+      "source_body_digest": "653f5e089da79e6ffd8591758737da9eb2ee07c006438d80c0dc84367114ae31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e9da11ec8af14bb598e37940603c2d70a323a8dfcc20ce1fdca3e6b43c065f5e",
+      "source_fact_keys": [
+        "source_fact:v1:21302108cfeaaf0842fb173f0ec06925fa5cd2ee12daa52bc782e2773fc48e8f",
+        "source_fact:v1:2bab80ca419ebd2221f45b2fa6f3620decd96bab08389cf3fe7500721e8a6358",
+        "source_fact:v1:406975f7192328fdb5fd9da93f2054bd2e3a4f836b9a7813517cbc5858e514e2",
+        "source_fact:v1:4184b41b66e25542abf89cf73ceb3675307d3ab56898b8edde55b7e728390a45",
+        "source_fact:v1:47586015796239db64d04a058d3f32b5b8d8135e0744a577d836eb253e003cd7",
+        "source_fact:v1:611f88406f31e6e0912602f93f1f3148c74758ed1437d1cb3e2bfa4cd532ece6",
+        "source_fact:v1:76b79434fb2ec2d31f26b1032e7171fbb5786d8e2e0e510a11e287e7a32afdd6",
+        "source_fact:v1:7c1ac192b2a51af15de1421e610074d1e8ce6c90daec0f89963f8f408322677c",
+        "source_fact:v1:b52bb4944dc3ce0bf330e236a2ce40f28db6265021b7e4691ba31c50a23a9216",
+        "source_fact:v1:b8000aeaa8a7a452c1dd95fcc1e7b3ff714d45030eab91d94490ad2b9f804763",
+        "source_fact:v1:c3ecad609f0c7d66613f53e8908ae5d9431982e4ae18d2c7610cb01bd6533c1b",
+        "source_fact:v1:ce3054a7912ee2b2ccb9f35c849a7b2ad3c28b6bc16f932e37118722d182d6b8",
+        "source_fact:v1:def540a7b78600c990132186300da15f2174b8c66005f613c41161312c85d6a1",
+        "source_fact:v1:fae99063ba20ec121e33b13983cab8399f47be0bcc2d5a7249b91d449370a004"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’",
+      "telegram_core_fact": "KAI 최대주주인 수출입은행의 지분 매각 가능성과 한화의 경영 참여 계획 등이 주요 질의 대상으로 거론된다.",
+      "title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’"
     },
     "fact:ab5ec416306d4638b0ede09f": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
@@ -61280,6 +61568,25 @@
       "telegram_core_fact": "솔리다임은 이번 IPO를 통해 약 100억 달러(약 13조4000억원)를 조달할 것으로 예상된다. 두 은행은 솔리다임의 상장 전 자금 조달을 위한 투자 유치 작업에도 참여할 것으로 관측된다.",
       "title": "SK하이닉스 솔리다임, 美 상장 채비…100억달러 조달 관측"
     },
+    "fact:d43de330aaf3c13dda4fd7d7": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008078400051",
+      "source": "연합뉴스",
+      "source_body_digest": "9697c36afb056c9e5b9b2c6c0eb24b1486d502dc69044fe32aac2a442d760872",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dec9f0a1da2ff9fc247c1cda868844b6c428982ad0affd11f533ffc84d492ff8",
+      "source_fact_keys": [
+        "source_fact:v1:b86e53ea7cd6d02842e7c483558cce364ec5d60aa8c5892a947ed6439a02cc8b"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "부산 에코델타시티 18·19블록 계약취소 2가구 재공급 | 연합뉴스",
+      "telegram_core_fact": "신창호 부산도시공사 사장은 \"이번에 재공급하는 취소 세대는 청약 조건이 까다롭지 않아 진입장벽이 낮고, 분양가격이 저렴해 시민 관심이 높을 것으로 예상한다\"라며 \"청약 접수부터 입주까지 차질 없이 일정이 진행될 수 있도록 철저히 준비하겠다\"고 말했다.",
+      "title": "부산 에코델타시티 18·19블록 계약취소 2가구 재공급 | 연합뉴스"
+    },
     "fact:d43e2162d101520a89a8092b": {
       "first_seen_kst": "2026-10-07T18:58:51+09:00",
       "lanes": {
@@ -64466,6 +64773,29 @@
       "source_title": "씨이랩, AI 데이터센터 인프라 컨퍼런스 개최…기업 고객 확대 추진",
       "telegram_core_fact": "인공지능(AI) 인프라 소프트웨어 전문기업 씨이랩(189330)이 기업의 AI 데이터센터(AIDC) 전환을 지원하기 위한 컨퍼런스를 개최하고 기업 고객 확대에 나섰다.",
       "title": "씨이랩, AI 데이터센터 인프라 컨퍼런스 개최…기업 고객 확대 추진"
+    },
+    "fact:e92d2ead6c03e78645d4b38e": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261010000300003",
+      "source": "연합뉴스",
+      "source_body_digest": "7410d44fe790955b7dc0a61f45b9c85992630b7965213c0bbc6ffd5c24173f56",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48b6ddc7a9615d1a2d7d87d52afd39f756df4e5c40a8aa8174970f12664c733d",
+      "source_fact_keys": [
+        "source_fact:v1:3f6d90ddb360b764c7ef0e4907fe8c6ea0410e2b76740547650c1a75e78dc294",
+        "source_fact:v1:497f069226bcdf688e10e8613a117389f6c4c556fc8acde4ba76f71f4ea87f35",
+        "source_fact:v1:9080c0fc3533d2f1110f115652fb5b38c8fa6d0fbecffbe15a983f8c78b4ca91",
+        "source_fact:v1:970a5cfbab1027c31d45b397936fa70f7a82e09fe7225de40b767b412ff48da3",
+        "source_fact:v1:e552efb5160ac3dd061582cc370f1e826d8c9b056db39bae2031cc64f4fe7493"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "현대차, 인도 진출 30년만에 누적판매 1천만대 돌파 눈앞 | 연합뉴스",
+      "telegram_core_fact": "현대차는 첸나이 1·2공장(82만4천대)에 이어 푸네 신공장(17만대)을 본격 가동하며 인도 현지에서 총 100만대의 생산능력을 갖추게 됐다.",
+      "title": "현대차, 인도 진출 30년만에 누적판매 1천만대 돌파 눈앞 | 연합뉴스"
     },
     "fact:e9689b6fcf6f67c7d13a7d4d": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
@@ -86067,6 +86397,38 @@
       "telegram_core_fact": "윤 실장은 거래량 증가 시 중앙은행이 시장에 유동성을 공급하는 개입 체계를 갖춰야 한다고 강조했다.",
       "title": "한은 \"토큰화 확산 따른 유동성 분절 우려⋯중앙은행 공급체계 설계해야\""
     },
+    "link:545eef9051f2d2170bdaf825": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633922",
+      "source": "이투데이",
+      "source_body_digest": "653f5e089da79e6ffd8591758737da9eb2ee07c006438d80c0dc84367114ae31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e9da11ec8af14bb598e37940603c2d70a323a8dfcc20ce1fdca3e6b43c065f5e",
+      "source_fact_keys": [
+        "source_fact:v1:21302108cfeaaf0842fb173f0ec06925fa5cd2ee12daa52bc782e2773fc48e8f",
+        "source_fact:v1:2bab80ca419ebd2221f45b2fa6f3620decd96bab08389cf3fe7500721e8a6358",
+        "source_fact:v1:406975f7192328fdb5fd9da93f2054bd2e3a4f836b9a7813517cbc5858e514e2",
+        "source_fact:v1:4184b41b66e25542abf89cf73ceb3675307d3ab56898b8edde55b7e728390a45",
+        "source_fact:v1:47586015796239db64d04a058d3f32b5b8d8135e0744a577d836eb253e003cd7",
+        "source_fact:v1:611f88406f31e6e0912602f93f1f3148c74758ed1437d1cb3e2bfa4cd532ece6",
+        "source_fact:v1:76b79434fb2ec2d31f26b1032e7171fbb5786d8e2e0e510a11e287e7a32afdd6",
+        "source_fact:v1:7c1ac192b2a51af15de1421e610074d1e8ce6c90daec0f89963f8f408322677c",
+        "source_fact:v1:b52bb4944dc3ce0bf330e236a2ce40f28db6265021b7e4691ba31c50a23a9216",
+        "source_fact:v1:b8000aeaa8a7a452c1dd95fcc1e7b3ff714d45030eab91d94490ad2b9f804763",
+        "source_fact:v1:c3ecad609f0c7d66613f53e8908ae5d9431982e4ae18d2c7610cb01bd6533c1b",
+        "source_fact:v1:ce3054a7912ee2b2ccb9f35c849a7b2ad3c28b6bc16f932e37118722d182d6b8",
+        "source_fact:v1:def540a7b78600c990132186300da15f2174b8c66005f613c41161312c85d6a1",
+        "source_fact:v1:fae99063ba20ec121e33b13983cab8399f47be0bcc2d5a7249b91d449370a004"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’",
+      "telegram_core_fact": "KAI 최대주주인 수출입은행의 지분 매각 가능성과 한화의 경영 참여 계획 등이 주요 질의 대상으로 거론된다.",
+      "title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’"
+    },
     "link:54648b4443b3a78bac1d719d": {
       "first_seen_kst": "2026-10-11T07:07:11+09:00",
       "lanes": {
@@ -92058,6 +92420,23 @@
       "source_published_kst": "2026-10-05T14:28+09:00",
       "title": "폭스바겐 ‘판매왕’에서 모빌리티 창업가로…차봇, 해외로 영토 확장"
     },
+    "link:6df96a7657fab8f231c149dd": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633388",
+      "source": "이투데이",
+      "source_body_digest": "0b605a884a7b35e91796bbc668870a2af9df36ad5999f38c334451c15a5386d4",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "조각투자 넘어 채권ㆍ펀드로⋯토큰증권 시장 확장 채비",
+      "telegram_core_fact": "토큰증권 시장이 부동산·미술품 등 조각투자를 넘어 채권·펀드로 확장을 준비한다. 일반투자자의 장외거래소 투자한도는 거래소 한 곳당 연간 순매수액 1억원으로 제한하는 안이 제시됐다.",
+      "title": "조각투자 넘어 채권ㆍ펀드로⋯토큰증권 시장 확장 채비"
+    },
     "link:6e070d147ddb1a0cb5b40b6f": {
       "first_seen_kst": "2026-10-02T17:14:32+09:00",
       "lanes": {
@@ -95873,6 +96252,35 @@
       "source": "지디넷코리아",
       "source_event_identity": "",
       "title": "마이크론, D램 2위 SK하이닉스 턱밑 추격…점유율 격차 1%포인트"
+    },
+    "link:7f71effee6a4520bada327d5": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634012",
+      "source": "이투데이",
+      "source_body_digest": "6ce385b5078e74f8fcb042dddb2dbb67dd331b9b37dde8c8077115bf6aa86430",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3db382a20fbe1f75876a22265a4690dd79ae83a2ae9405bc2154fe34552e59d",
+      "source_fact_keys": [
+        "source_fact:v1:64322acf556f70f1f10ece485822527a6f67d4fd5181d156dc75100e8876f510",
+        "source_fact:v1:8f7b1e2138f577d6cf1ad0ee345480fef5a3ffb64acf2bfd27f24476b72c510b",
+        "source_fact:v1:92c36a2d5f43de1e037875df15b31b2239e0127055f842c2c168a9583afd55f1",
+        "source_fact:v1:a7e7821319649c6c4ca813b167bf317894df764fe94e9f1390f38059bc31280d",
+        "source_fact:v1:b687013c576fd55d986dab8bbba918fbdc69ab5375f0d5e405cf1b800265ca8e",
+        "source_fact:v1:b71a9e938759a69c126251f58b61db391842cff4a65cb737d6418906bd92aa9f",
+        "source_fact:v1:d13795590010a9cc27020058a69ab4cd5527ceea8764b73e71f9dae785391793",
+        "source_fact:v1:e1b9ea1dd7eedf7fe09c43799a36956c410189c9109d7f2c2c9cd79c0c0b8b5f",
+        "source_fact:v1:f1a82c841f3956980fa775b62b2e580401097e11fd25ef3ee3cf150a87306faf",
+        "source_fact:v1:f3843056ab9b1485efc583b8b91c0b92f6f94f2d723c6d0d36540c35cec97694",
+        "source_fact:v1:f7e3c1fdd83477896243fb305ca631bbe56e49691ea00c54e20c860abb2eeaac"
+      ],
+      "source_published_kst": "2026-10-11T08:57+09:00",
+      "source_title": "“이번에도 떨어졌다”…삼전 역대급 실적 발표에도 주가 하락",
+      "telegram_core_fact": "삼성전자가 국내 기업 최초로 분기 영업이익 100조원 시대를 열며 사상 최대 실적을 달성했으나 주가는 오히려 하락세로 마감했다.",
+      "title": "“이번에도 떨어졌다”…삼전 역대급 실적 발표에도 주가 하락"
     },
     "link:7f744f0b62319127dc6a39d0": {
       "first_seen_kst": "2026-10-05T06:25:21+09:00",
@@ -113809,6 +114217,29 @@
       "source_published_kst": "2026-10-06T11:45+09:00",
       "title": "파리 첫 진출 현대백화점 ‘더현대 글로벌’ “2030 매장 10개 목표”"
     },
+    "link:d29a497a6943d3a17252e3ff": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261010000300003",
+      "source": "연합뉴스",
+      "source_body_digest": "7410d44fe790955b7dc0a61f45b9c85992630b7965213c0bbc6ffd5c24173f56",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48b6ddc7a9615d1a2d7d87d52afd39f756df4e5c40a8aa8174970f12664c733d",
+      "source_fact_keys": [
+        "source_fact:v1:3f6d90ddb360b764c7ef0e4907fe8c6ea0410e2b76740547650c1a75e78dc294",
+        "source_fact:v1:497f069226bcdf688e10e8613a117389f6c4c556fc8acde4ba76f71f4ea87f35",
+        "source_fact:v1:9080c0fc3533d2f1110f115652fb5b38c8fa6d0fbecffbe15a983f8c78b4ca91",
+        "source_fact:v1:970a5cfbab1027c31d45b397936fa70f7a82e09fe7225de40b767b412ff48da3",
+        "source_fact:v1:e552efb5160ac3dd061582cc370f1e826d8c9b056db39bae2031cc64f4fe7493"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "현대차, 인도 진출 30년만에 누적판매 1천만대 돌파 눈앞 | 연합뉴스",
+      "telegram_core_fact": "현대차는 첸나이 1·2공장(82만4천대)에 이어 푸네 신공장(17만대)을 본격 가동하며 인도 현지에서 총 100만대의 생산능력을 갖추게 됐다.",
+      "title": "현대차, 인도 진출 30년만에 누적판매 1천만대 돌파 눈앞 | 연합뉴스"
+    },
     "link:d2c620a21905387adcbaa6a6": {
       "first_seen_kst": "2026-10-06T18:58:43+09:00",
       "lanes": {
@@ -117746,6 +118177,25 @@
       "source": "매일경제",
       "title": "로얄캐리비안, 60억 달러 샌들리조트 인수 추진…단기 재무 부담에 주가 약세"
     },
+    "link:e5b61f0aeaffbe5d056eedb4": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634240",
+      "source": "이투데이",
+      "source_body_digest": "333ceb53392942fba1d2cae4bde00636658492494ba5ef38d3bb2d4ff2a5dcab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4484e4b5bbfde6d54f3c4ec95070442a32bc5ba3d1c2fe59da867937f6373888",
+      "source_fact_keys": [
+        "source_fact:v1:90341f65b948145671c57fd4e479f75fe1070e4d860fe1a9c2c5396a72ecf9ef"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "상표 계약 맺어놓고 “사용료 아냐” 프라다, 33억 세금소송 최종 패소",
+      "telegram_core_fact": "강남세무서는 이 지급액을 국내에서 상표권을 사용한 대가인 ‘국내 원천 사용료 소득’으로 보고, 2019년 12월 프라다코리아에 가산세를 포함한 약 33억원의 법인세를 부과했다.",
+      "title": "상표 계약 맺어놓고 “사용료 아냐” 프라다, 33억 세금소송 최종 패소"
+    },
     "link:e5c79ac9810c39d93ea8d454": {
       "first_seen_kst": "2026-09-30T18:28:36+09:00",
       "lanes": {
@@ -119006,6 +119456,25 @@
       "source_title": "파시라파마, 비아트리스에 16억5000만 달러 규모 현금 인수 확정",
       "telegram_core_fact": "비아트리스가 주당 36.50달러 전액 현금으로 인수하는 계약을 확정했다는 소식이 전해졌습니다. 총 지분가치는 16억5000만 달러 규모이며, 공개매수 후 2단계 합병으로 진행됩니다.",
       "title": "파시라파마, 비아트리스에 16억5000만 달러 규모 현금 인수 확정"
+    },
+    "link:eaa3c0a2eefc8717fd52b35e": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008078400051",
+      "source": "연합뉴스",
+      "source_body_digest": "9697c36afb056c9e5b9b2c6c0eb24b1486d502dc69044fe32aac2a442d760872",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dec9f0a1da2ff9fc247c1cda868844b6c428982ad0affd11f533ffc84d492ff8",
+      "source_fact_keys": [
+        "source_fact:v1:b86e53ea7cd6d02842e7c483558cce364ec5d60aa8c5892a947ed6439a02cc8b"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "부산 에코델타시티 18·19블록 계약취소 2가구 재공급 | 연합뉴스",
+      "telegram_core_fact": "신창호 부산도시공사 사장은 \"이번에 재공급하는 취소 세대는 청약 조건이 까다롭지 않아 진입장벽이 낮고, 분양가격이 저렴해 시민 관심이 높을 것으로 예상한다\"라며 \"청약 접수부터 입주까지 차질 없이 일정이 진행될 수 있도록 철저히 준비하겠다\"고 말했다.",
+      "title": "부산 에코델타시티 18·19블록 계약취소 2가구 재공급 | 연합뉴스"
     },
     "link:eaabeca2fe6b001e1315e146": {
       "first_seen_kst": "2026-10-06T14:18:00+09:00",
@@ -121544,6 +122013,26 @@
       "source_title": "63만원 or 27만원…'역대급 실적' 삼성전자 주가 향방은[종목e슈]",
       "telegram_core_fact": "삼성전자(005930)가 분기 사상 최대 실적을 연이어 경신하며 글로벌 영업이익 1위 자리를 거머쥐며 거침없는 상승세를 이어가고 있다.",
       "title": "63만원 or 27만원…'역대급 실적' 삼성전자 주가 향방은[종목e슈]"
+    },
+    "link:f71bfcc0b72e6161e2503fc1": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818737",
+      "source": "뉴시스",
+      "source_body_digest": "5b93cef91e4ce47a23c6767e710a2dfcdf46edc6777c0f5b8d574a7c32caa15f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ecacdfab5b275c978899a9cca69a7e93b3c05efa44e6110ed34fd7dd29c1e56b",
+      "source_fact_keys": [
+        "source_fact:v1:a7d2a084b203731c08a0bec05c4a0fa274f403f391104143e3a839ee145ca372",
+        "source_fact:v1:afe35c795421b7efd4b3b56d76975a8572f17b20a02caeeed5666871e80e68a6"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "금융권 훑고 다닌 'AI 해킹'…\"더 큰 피해 올 수도\"[K금융의 보안 민낯④]",
+      "telegram_core_fact": "금융업계와 보안업계에 따르면 최근 신한·KB국민·하나·BNK부산은행 등 주요 은행에서 해킹 공격으로 인한 이용자 정보 유출 피해가 잇따라 확인됐다.",
+      "title": "금융권 훑고 다닌 'AI 해킹'…\"더 큰 피해 올 수도\"[K금융의 보안 민낯④]"
     },
     "link:f7599716557d8a27a69fe51b": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
@@ -125652,6 +126141,26 @@
       ],
       "source_published_kst": "2026-10-06T14:26+09:00",
       "title": "HD현대, 세계 최초 '래싱프리 컨테이너선' 프랑스 선사에 인도 | 연합뉴스"
+    },
+    "original:0a3a9b2e4c0bfa2166f85fb6": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818737",
+      "source": "뉴시스",
+      "source_body_digest": "5b93cef91e4ce47a23c6767e710a2dfcdf46edc6777c0f5b8d574a7c32caa15f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ecacdfab5b275c978899a9cca69a7e93b3c05efa44e6110ed34fd7dd29c1e56b",
+      "source_fact_keys": [
+        "source_fact:v1:a7d2a084b203731c08a0bec05c4a0fa274f403f391104143e3a839ee145ca372",
+        "source_fact:v1:afe35c795421b7efd4b3b56d76975a8572f17b20a02caeeed5666871e80e68a6"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "금융권 훑고 다닌 'AI 해킹'…\"더 큰 피해 올 수도\"[K금융의 보안 민낯④]",
+      "telegram_core_fact": "금융업계와 보안업계에 따르면 최근 신한·KB국민·하나·BNK부산은행 등 주요 은행에서 해킹 공격으로 인한 이용자 정보 유출 피해가 잇따라 확인됐다.",
+      "title": "금융권 훑고 다닌 'AI 해킹'…\"더 큰 피해 올 수도\"[K금융의 보안 민낯④]"
     },
     "original:0a541b9a10e32caad7b3bd82": {
       "first_seen_kst": "2026-10-04T00:00:47+09:00",
@@ -131542,6 +132051,35 @@
       "source_title": "리졸브 AI, 상반기 매출 1억3100만 달러..연말 ARR 5억 달러 목표",
       "telegram_core_fact": "리졸브 AI(RZLV)는 2026년 상반기 매출액이 1억3080만 달러로 전년 동기의 20배를 넘었으며, 2026년 말 기준 연간 반복매출(ARR) 최소 5억 달러를 목표로 제시했다고 10월 8일 발표했다.",
       "title": "리졸브 AI, 상반기 매출 1억3100만 달러..연말 ARR 5억 달러 목표"
+    },
+    "original:27236c3d5856caa1a25a67c2": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634012",
+      "source": "이투데이",
+      "source_body_digest": "6ce385b5078e74f8fcb042dddb2dbb67dd331b9b37dde8c8077115bf6aa86430",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3db382a20fbe1f75876a22265a4690dd79ae83a2ae9405bc2154fe34552e59d",
+      "source_fact_keys": [
+        "source_fact:v1:64322acf556f70f1f10ece485822527a6f67d4fd5181d156dc75100e8876f510",
+        "source_fact:v1:8f7b1e2138f577d6cf1ad0ee345480fef5a3ffb64acf2bfd27f24476b72c510b",
+        "source_fact:v1:92c36a2d5f43de1e037875df15b31b2239e0127055f842c2c168a9583afd55f1",
+        "source_fact:v1:a7e7821319649c6c4ca813b167bf317894df764fe94e9f1390f38059bc31280d",
+        "source_fact:v1:b687013c576fd55d986dab8bbba918fbdc69ab5375f0d5e405cf1b800265ca8e",
+        "source_fact:v1:b71a9e938759a69c126251f58b61db391842cff4a65cb737d6418906bd92aa9f",
+        "source_fact:v1:d13795590010a9cc27020058a69ab4cd5527ceea8764b73e71f9dae785391793",
+        "source_fact:v1:e1b9ea1dd7eedf7fe09c43799a36956c410189c9109d7f2c2c9cd79c0c0b8b5f",
+        "source_fact:v1:f1a82c841f3956980fa775b62b2e580401097e11fd25ef3ee3cf150a87306faf",
+        "source_fact:v1:f3843056ab9b1485efc583b8b91c0b92f6f94f2d723c6d0d36540c35cec97694",
+        "source_fact:v1:f7e3c1fdd83477896243fb305ca631bbe56e49691ea00c54e20c860abb2eeaac"
+      ],
+      "source_published_kst": "2026-10-11T08:57+09:00",
+      "source_title": "“이번에도 떨어졌다”…삼전 역대급 실적 발표에도 주가 하락",
+      "telegram_core_fact": "삼성전자가 국내 기업 최초로 분기 영업이익 100조원 시대를 열며 사상 최대 실적을 달성했으나 주가는 오히려 하락세로 마감했다.",
+      "title": "“이번에도 떨어졌다”…삼전 역대급 실적 발표에도 주가 하락"
     },
     "original:273249a247518cbb27a45832": {
       "first_seen_kst": "2026-10-03T03:43:38+09:00",
@@ -152190,6 +152728,38 @@
       "source": "지디넷코리아",
       "title": "허태수 GS 회장 \"스타트업 기술로 AI 데이터센터 병목 해소\""
     },
+    "original:8767772e5fb08da4f224a9c3": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633922",
+      "source": "이투데이",
+      "source_body_digest": "653f5e089da79e6ffd8591758737da9eb2ee07c006438d80c0dc84367114ae31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e9da11ec8af14bb598e37940603c2d70a323a8dfcc20ce1fdca3e6b43c065f5e",
+      "source_fact_keys": [
+        "source_fact:v1:21302108cfeaaf0842fb173f0ec06925fa5cd2ee12daa52bc782e2773fc48e8f",
+        "source_fact:v1:2bab80ca419ebd2221f45b2fa6f3620decd96bab08389cf3fe7500721e8a6358",
+        "source_fact:v1:406975f7192328fdb5fd9da93f2054bd2e3a4f836b9a7813517cbc5858e514e2",
+        "source_fact:v1:4184b41b66e25542abf89cf73ceb3675307d3ab56898b8edde55b7e728390a45",
+        "source_fact:v1:47586015796239db64d04a058d3f32b5b8d8135e0744a577d836eb253e003cd7",
+        "source_fact:v1:611f88406f31e6e0912602f93f1f3148c74758ed1437d1cb3e2bfa4cd532ece6",
+        "source_fact:v1:76b79434fb2ec2d31f26b1032e7171fbb5786d8e2e0e510a11e287e7a32afdd6",
+        "source_fact:v1:7c1ac192b2a51af15de1421e610074d1e8ce6c90daec0f89963f8f408322677c",
+        "source_fact:v1:b52bb4944dc3ce0bf330e236a2ce40f28db6265021b7e4691ba31c50a23a9216",
+        "source_fact:v1:b8000aeaa8a7a452c1dd95fcc1e7b3ff714d45030eab91d94490ad2b9f804763",
+        "source_fact:v1:c3ecad609f0c7d66613f53e8908ae5d9431982e4ae18d2c7610cb01bd6533c1b",
+        "source_fact:v1:ce3054a7912ee2b2ccb9f35c849a7b2ad3c28b6bc16f932e37118722d182d6b8",
+        "source_fact:v1:def540a7b78600c990132186300da15f2174b8c66005f613c41161312c85d6a1",
+        "source_fact:v1:fae99063ba20ec121e33b13983cab8399f47be0bcc2d5a7249b91d449370a004"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’",
+      "telegram_core_fact": "KAI 최대주주인 수출입은행의 지분 매각 가능성과 한화의 경영 참여 계획 등이 주요 질의 대상으로 거론된다.",
+      "title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’"
+    },
     "original:876a39328798c47dbff75f95": {
       "first_seen_kst": "2026-10-07T22:53:53+09:00",
       "lanes": {
@@ -153767,6 +154337,25 @@
       ],
       "source_published_kst": "2026-10-06T08:45+09:00",
       "title": "한미반도체, 삼성전기에 패키징 장비 공급…245억원 규모"
+    },
+    "original:8e629e511e2db8cbe6febd0b": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634240",
+      "source": "이투데이",
+      "source_body_digest": "333ceb53392942fba1d2cae4bde00636658492494ba5ef38d3bb2d4ff2a5dcab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4484e4b5bbfde6d54f3c4ec95070442a32bc5ba3d1c2fe59da867937f6373888",
+      "source_fact_keys": [
+        "source_fact:v1:90341f65b948145671c57fd4e479f75fe1070e4d860fe1a9c2c5396a72ecf9ef"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "상표 계약 맺어놓고 “사용료 아냐” 프라다, 33억 세금소송 최종 패소",
+      "telegram_core_fact": "강남세무서는 이 지급액을 국내에서 상표권을 사용한 대가인 ‘국내 원천 사용료 소득’으로 보고, 2019년 12월 프라다코리아에 가산세를 포함한 약 33억원의 법인세를 부과했다.",
+      "title": "상표 계약 맺어놓고 “사용료 아냐” 프라다, 33억 세금소송 최종 패소"
     },
     "original:8e7d0a2b38ba4c03bd999914": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
@@ -156552,6 +157141,23 @@
       "link": "https://www.mt.co.kr/world/2026/10/03/2026100306383782269",
       "source": "머니투데이",
       "title": "트럼프 \"2배 청구\" 으름장, 국무부 \"한미 윈윈\"…알래스카 LNG 압박"
+    },
+    "original:9b00cbe64176a072a3523775": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633388",
+      "source": "이투데이",
+      "source_body_digest": "0b605a884a7b35e91796bbc668870a2af9df36ad5999f38c334451c15a5386d4",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "조각투자 넘어 채권ㆍ펀드로⋯토큰증권 시장 확장 채비",
+      "telegram_core_fact": "토큰증권 시장이 부동산·미술품 등 조각투자를 넘어 채권·펀드로 확장을 준비한다. 일반투자자의 장외거래소 투자한도는 거래소 한 곳당 연간 순매수액 1억원으로 제한하는 안이 제시됐다.",
+      "title": "조각투자 넘어 채권ㆍ펀드로⋯토큰증권 시장 확장 채비"
     },
     "original:9b5b598b553f986f0afba470": {
       "first_seen_kst": "2026-10-02T13:38:43+09:00",
@@ -164529,6 +165135,29 @@
       "source_published_kst": "2026-10-06T08:48+09:00",
       "title": "키움운용, '미국AI테크하이베타 ETF' 마이크론·스페이스X 신규 편입"
     },
+    "original:c115d1213eadde00b2990687": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261010000300003",
+      "source": "연합뉴스",
+      "source_body_digest": "7410d44fe790955b7dc0a61f45b9c85992630b7965213c0bbc6ffd5c24173f56",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48b6ddc7a9615d1a2d7d87d52afd39f756df4e5c40a8aa8174970f12664c733d",
+      "source_fact_keys": [
+        "source_fact:v1:3f6d90ddb360b764c7ef0e4907fe8c6ea0410e2b76740547650c1a75e78dc294",
+        "source_fact:v1:497f069226bcdf688e10e8613a117389f6c4c556fc8acde4ba76f71f4ea87f35",
+        "source_fact:v1:9080c0fc3533d2f1110f115652fb5b38c8fa6d0fbecffbe15a983f8c78b4ca91",
+        "source_fact:v1:970a5cfbab1027c31d45b397936fa70f7a82e09fe7225de40b767b412ff48da3",
+        "source_fact:v1:e552efb5160ac3dd061582cc370f1e826d8c9b056db39bae2031cc64f4fe7493"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "현대차, 인도 진출 30년만에 누적판매 1천만대 돌파 눈앞 | 연합뉴스",
+      "telegram_core_fact": "현대차는 첸나이 1·2공장(82만4천대)에 이어 푸네 신공장(17만대)을 본격 가동하며 인도 현지에서 총 100만대의 생산능력을 갖추게 됐다.",
+      "title": "현대차, 인도 진출 30년만에 누적판매 1천만대 돌파 눈앞 | 연합뉴스"
+    },
     "original:c1479694d28a15ab9d3cf908": {
       "first_seen_kst": "2026-10-07T06:28:41+09:00",
       "lanes": {
@@ -165364,6 +165993,25 @@
       "source_title": "[속보] 韓 발사체 ‘누리호’ 우주 발사…위성 15기 분리 성공",
       "telegram_core_fact": "“임무를 마친 누리호 3단은 남아있는 산화제를 배출하고 소멸한다”면서 “위성의 정확한 목표궤도 투입결과를 발표할 계획”이라고 덧붙였다.",
       "title": "[속보] 韓 발사체 ‘누리호’ 우주 발사…위성 15기 분리 성공"
+    },
+    "original:c668c6831916144c312dcc55": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008078400051",
+      "source": "연합뉴스",
+      "source_body_digest": "9697c36afb056c9e5b9b2c6c0eb24b1486d502dc69044fe32aac2a442d760872",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dec9f0a1da2ff9fc247c1cda868844b6c428982ad0affd11f533ffc84d492ff8",
+      "source_fact_keys": [
+        "source_fact:v1:b86e53ea7cd6d02842e7c483558cce364ec5d60aa8c5892a947ed6439a02cc8b"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "부산 에코델타시티 18·19블록 계약취소 2가구 재공급 | 연합뉴스",
+      "telegram_core_fact": "신창호 부산도시공사 사장은 \"이번에 재공급하는 취소 세대는 청약 조건이 까다롭지 않아 진입장벽이 낮고, 분양가격이 저렴해 시민 관심이 높을 것으로 예상한다\"라며 \"청약 접수부터 입주까지 차질 없이 일정이 진행될 수 있도록 철저히 준비하겠다\"고 말했다.",
+      "title": "부산 에코델타시티 18·19블록 계약취소 2가구 재공급 | 연합뉴스"
     },
     "original:c6696217675dcd6ad8a75c5b": {
       "first_seen_kst": "2026-10-06T22:08:07+09:00",
@@ -197523,6 +198171,35 @@
       "telegram_core_fact": "결국 이날 반도체 시장에서는 ETF 리밸런싱에 따른 기계적인 수급 조정과 삼성전자 실적, 옵션 만기 및 외국인 매매가 동시에 맞물리면서 종목별 주가 차별화가 나타나는지가 주요 변수로 떠올랐다.",
       "title": "반도체 ETF 리밸런싱에 변동성 커져…삼성전자 2000억 팔고 소부장 더 담는다"
     },
+    "source_fact:1f0174e8bc948b1257387514": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634012",
+      "source": "이투데이",
+      "source_body_digest": "6ce385b5078e74f8fcb042dddb2dbb67dd331b9b37dde8c8077115bf6aa86430",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3db382a20fbe1f75876a22265a4690dd79ae83a2ae9405bc2154fe34552e59d",
+      "source_fact_keys": [
+        "source_fact:v1:64322acf556f70f1f10ece485822527a6f67d4fd5181d156dc75100e8876f510",
+        "source_fact:v1:8f7b1e2138f577d6cf1ad0ee345480fef5a3ffb64acf2bfd27f24476b72c510b",
+        "source_fact:v1:92c36a2d5f43de1e037875df15b31b2239e0127055f842c2c168a9583afd55f1",
+        "source_fact:v1:a7e7821319649c6c4ca813b167bf317894df764fe94e9f1390f38059bc31280d",
+        "source_fact:v1:b687013c576fd55d986dab8bbba918fbdc69ab5375f0d5e405cf1b800265ca8e",
+        "source_fact:v1:b71a9e938759a69c126251f58b61db391842cff4a65cb737d6418906bd92aa9f",
+        "source_fact:v1:d13795590010a9cc27020058a69ab4cd5527ceea8764b73e71f9dae785391793",
+        "source_fact:v1:e1b9ea1dd7eedf7fe09c43799a36956c410189c9109d7f2c2c9cd79c0c0b8b5f",
+        "source_fact:v1:f1a82c841f3956980fa775b62b2e580401097e11fd25ef3ee3cf150a87306faf",
+        "source_fact:v1:f3843056ab9b1485efc583b8b91c0b92f6f94f2d723c6d0d36540c35cec97694",
+        "source_fact:v1:f7e3c1fdd83477896243fb305ca631bbe56e49691ea00c54e20c860abb2eeaac"
+      ],
+      "source_published_kst": "2026-10-11T08:57+09:00",
+      "source_title": "“이번에도 떨어졌다”…삼전 역대급 실적 발표에도 주가 하락",
+      "telegram_core_fact": "삼성전자가 국내 기업 최초로 분기 영업이익 100조원 시대를 열며 사상 최대 실적을 달성했으나 주가는 오히려 하락세로 마감했다.",
+      "title": "“이번에도 떨어졌다”…삼전 역대급 실적 발표에도 주가 하락"
+    },
     "source_fact:1f0280f037433f03d4568fce": {
       "first_seen_kst": "2026-10-06T22:51:44+09:00",
       "lanes": {
@@ -200153,6 +200830,38 @@
       ],
       "source_published_kst": "2026-10-07T09:30+09:00",
       "title": "플로리젠로보틱스-IDQ, 국내 최초 '양자보안 순찰로봇 관제시스템' 공동 개발"
+    },
+    "source_fact:2283fcee1376d2a384cf042f": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633922",
+      "source": "이투데이",
+      "source_body_digest": "653f5e089da79e6ffd8591758737da9eb2ee07c006438d80c0dc84367114ae31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e9da11ec8af14bb598e37940603c2d70a323a8dfcc20ce1fdca3e6b43c065f5e",
+      "source_fact_keys": [
+        "source_fact:v1:21302108cfeaaf0842fb173f0ec06925fa5cd2ee12daa52bc782e2773fc48e8f",
+        "source_fact:v1:2bab80ca419ebd2221f45b2fa6f3620decd96bab08389cf3fe7500721e8a6358",
+        "source_fact:v1:406975f7192328fdb5fd9da93f2054bd2e3a4f836b9a7813517cbc5858e514e2",
+        "source_fact:v1:4184b41b66e25542abf89cf73ceb3675307d3ab56898b8edde55b7e728390a45",
+        "source_fact:v1:47586015796239db64d04a058d3f32b5b8d8135e0744a577d836eb253e003cd7",
+        "source_fact:v1:611f88406f31e6e0912602f93f1f3148c74758ed1437d1cb3e2bfa4cd532ece6",
+        "source_fact:v1:76b79434fb2ec2d31f26b1032e7171fbb5786d8e2e0e510a11e287e7a32afdd6",
+        "source_fact:v1:7c1ac192b2a51af15de1421e610074d1e8ce6c90daec0f89963f8f408322677c",
+        "source_fact:v1:b52bb4944dc3ce0bf330e236a2ce40f28db6265021b7e4691ba31c50a23a9216",
+        "source_fact:v1:b8000aeaa8a7a452c1dd95fcc1e7b3ff714d45030eab91d94490ad2b9f804763",
+        "source_fact:v1:c3ecad609f0c7d66613f53e8908ae5d9431982e4ae18d2c7610cb01bd6533c1b",
+        "source_fact:v1:ce3054a7912ee2b2ccb9f35c849a7b2ad3c28b6bc16f932e37118722d182d6b8",
+        "source_fact:v1:def540a7b78600c990132186300da15f2174b8c66005f613c41161312c85d6a1",
+        "source_fact:v1:fae99063ba20ec121e33b13983cab8399f47be0bcc2d5a7249b91d449370a004"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’",
+      "telegram_core_fact": "KAI 최대주주인 수출입은행의 지분 매각 가능성과 한화의 경영 참여 계획 등이 주요 질의 대상으로 거론된다.",
+      "title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’"
     },
     "source_fact:2289ec8ff19d94ffb2b72b7d": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
@@ -205466,6 +206175,35 @@
       "source_published_kst": "2026-10-06T11:08+09:00",
       "title": "\"농지 특조법 특례 2∼3년 설정·농지법 개정 동시 추진 필요\" | 연합뉴스"
     },
+    "source_fact:29d7f96e7933c1737ebe2603": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634012",
+      "source": "이투데이",
+      "source_body_digest": "6ce385b5078e74f8fcb042dddb2dbb67dd331b9b37dde8c8077115bf6aa86430",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3db382a20fbe1f75876a22265a4690dd79ae83a2ae9405bc2154fe34552e59d",
+      "source_fact_keys": [
+        "source_fact:v1:64322acf556f70f1f10ece485822527a6f67d4fd5181d156dc75100e8876f510",
+        "source_fact:v1:8f7b1e2138f577d6cf1ad0ee345480fef5a3ffb64acf2bfd27f24476b72c510b",
+        "source_fact:v1:92c36a2d5f43de1e037875df15b31b2239e0127055f842c2c168a9583afd55f1",
+        "source_fact:v1:a7e7821319649c6c4ca813b167bf317894df764fe94e9f1390f38059bc31280d",
+        "source_fact:v1:b687013c576fd55d986dab8bbba918fbdc69ab5375f0d5e405cf1b800265ca8e",
+        "source_fact:v1:b71a9e938759a69c126251f58b61db391842cff4a65cb737d6418906bd92aa9f",
+        "source_fact:v1:d13795590010a9cc27020058a69ab4cd5527ceea8764b73e71f9dae785391793",
+        "source_fact:v1:e1b9ea1dd7eedf7fe09c43799a36956c410189c9109d7f2c2c9cd79c0c0b8b5f",
+        "source_fact:v1:f1a82c841f3956980fa775b62b2e580401097e11fd25ef3ee3cf150a87306faf",
+        "source_fact:v1:f3843056ab9b1485efc583b8b91c0b92f6f94f2d723c6d0d36540c35cec97694",
+        "source_fact:v1:f7e3c1fdd83477896243fb305ca631bbe56e49691ea00c54e20c860abb2eeaac"
+      ],
+      "source_published_kst": "2026-10-11T08:57+09:00",
+      "source_title": "“이번에도 떨어졌다”…삼전 역대급 실적 발표에도 주가 하락",
+      "telegram_core_fact": "삼성전자가 국내 기업 최초로 분기 영업이익 100조원 시대를 열며 사상 최대 실적을 달성했으나 주가는 오히려 하락세로 마감했다.",
+      "title": "“이번에도 떨어졌다”…삼전 역대급 실적 발표에도 주가 하락"
+    },
     "source_fact:29e19902bfe137c3a85b0073": {
       "first_seen_kst": "2026-10-08T00:39:44+09:00",
       "lanes": {
@@ -210530,6 +211268,35 @@
       "telegram_core_fact": "우리은행은 수출기업이 시설자금 대출을 신청할 경우 최대 15%의 추가 한도를 지원한다.",
       "title": "우리銀, '수출선도기업대출' 출시…시설자금 최대 15% 추가한도 | 연합뉴스"
     },
+    "source_fact:30cfe0bb6e489108307ee952": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634012",
+      "source": "이투데이",
+      "source_body_digest": "6ce385b5078e74f8fcb042dddb2dbb67dd331b9b37dde8c8077115bf6aa86430",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3db382a20fbe1f75876a22265a4690dd79ae83a2ae9405bc2154fe34552e59d",
+      "source_fact_keys": [
+        "source_fact:v1:64322acf556f70f1f10ece485822527a6f67d4fd5181d156dc75100e8876f510",
+        "source_fact:v1:8f7b1e2138f577d6cf1ad0ee345480fef5a3ffb64acf2bfd27f24476b72c510b",
+        "source_fact:v1:92c36a2d5f43de1e037875df15b31b2239e0127055f842c2c168a9583afd55f1",
+        "source_fact:v1:a7e7821319649c6c4ca813b167bf317894df764fe94e9f1390f38059bc31280d",
+        "source_fact:v1:b687013c576fd55d986dab8bbba918fbdc69ab5375f0d5e405cf1b800265ca8e",
+        "source_fact:v1:b71a9e938759a69c126251f58b61db391842cff4a65cb737d6418906bd92aa9f",
+        "source_fact:v1:d13795590010a9cc27020058a69ab4cd5527ceea8764b73e71f9dae785391793",
+        "source_fact:v1:e1b9ea1dd7eedf7fe09c43799a36956c410189c9109d7f2c2c9cd79c0c0b8b5f",
+        "source_fact:v1:f1a82c841f3956980fa775b62b2e580401097e11fd25ef3ee3cf150a87306faf",
+        "source_fact:v1:f3843056ab9b1485efc583b8b91c0b92f6f94f2d723c6d0d36540c35cec97694",
+        "source_fact:v1:f7e3c1fdd83477896243fb305ca631bbe56e49691ea00c54e20c860abb2eeaac"
+      ],
+      "source_published_kst": "2026-10-11T08:57+09:00",
+      "source_title": "“이번에도 떨어졌다”…삼전 역대급 실적 발표에도 주가 하락",
+      "telegram_core_fact": "삼성전자가 국내 기업 최초로 분기 영업이익 100조원 시대를 열며 사상 최대 실적을 달성했으나 주가는 오히려 하락세로 마감했다.",
+      "title": "“이번에도 떨어졌다”…삼전 역대급 실적 발표에도 주가 하락"
+    },
     "source_fact:30f09a1f16bce401c79068c5": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
       "lanes": {
@@ -212124,6 +212891,38 @@
       "telegram_core_fact": "솔리다임은 이번 IPO를 통해 약 100억 달러(약 13조4000억원)를 조달할 것으로 예상된다. 두 은행은 솔리다임의 상장 전 자금 조달을 위한 투자 유치 작업에도 참여할 것으로 관측된다.",
       "title": "SK하이닉스 솔리다임, 美 상장 채비…100억달러 조달 관측"
     },
+    "source_fact:333a49a924d35c76a83977ba": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633922",
+      "source": "이투데이",
+      "source_body_digest": "653f5e089da79e6ffd8591758737da9eb2ee07c006438d80c0dc84367114ae31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e9da11ec8af14bb598e37940603c2d70a323a8dfcc20ce1fdca3e6b43c065f5e",
+      "source_fact_keys": [
+        "source_fact:v1:21302108cfeaaf0842fb173f0ec06925fa5cd2ee12daa52bc782e2773fc48e8f",
+        "source_fact:v1:2bab80ca419ebd2221f45b2fa6f3620decd96bab08389cf3fe7500721e8a6358",
+        "source_fact:v1:406975f7192328fdb5fd9da93f2054bd2e3a4f836b9a7813517cbc5858e514e2",
+        "source_fact:v1:4184b41b66e25542abf89cf73ceb3675307d3ab56898b8edde55b7e728390a45",
+        "source_fact:v1:47586015796239db64d04a058d3f32b5b8d8135e0744a577d836eb253e003cd7",
+        "source_fact:v1:611f88406f31e6e0912602f93f1f3148c74758ed1437d1cb3e2bfa4cd532ece6",
+        "source_fact:v1:76b79434fb2ec2d31f26b1032e7171fbb5786d8e2e0e510a11e287e7a32afdd6",
+        "source_fact:v1:7c1ac192b2a51af15de1421e610074d1e8ce6c90daec0f89963f8f408322677c",
+        "source_fact:v1:b52bb4944dc3ce0bf330e236a2ce40f28db6265021b7e4691ba31c50a23a9216",
+        "source_fact:v1:b8000aeaa8a7a452c1dd95fcc1e7b3ff714d45030eab91d94490ad2b9f804763",
+        "source_fact:v1:c3ecad609f0c7d66613f53e8908ae5d9431982e4ae18d2c7610cb01bd6533c1b",
+        "source_fact:v1:ce3054a7912ee2b2ccb9f35c849a7b2ad3c28b6bc16f932e37118722d182d6b8",
+        "source_fact:v1:def540a7b78600c990132186300da15f2174b8c66005f613c41161312c85d6a1",
+        "source_fact:v1:fae99063ba20ec121e33b13983cab8399f47be0bcc2d5a7249b91d449370a004"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’",
+      "telegram_core_fact": "KAI 최대주주인 수출입은행의 지분 매각 가능성과 한화의 경영 참여 계획 등이 주요 질의 대상으로 거론된다.",
+      "title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’"
+    },
     "source_fact:3349d56f291b43d44c28987d": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -212487,6 +213286,35 @@
       "source_title": "9월 FOMC \"연내 금리 인상 한 번 더\"…인상 근거 놓고는 시각차 [Fed 워치]",
       "telegram_core_fact": "Fed가 공개한 9월 15~16일 연방공개시장위원회(FOMC) 의사록에 따르면 모든 참석자는 연방기금금리 목표범위를 0.25%포인트 인상해 연 3.75~4.00%로 높이는 데 찬성했다.",
       "title": "9월 FOMC \"연내 금리 인상 한 번 더\"…인상 근거 놓고는 시각차 [Fed 워치]"
+    },
+    "source_fact:33e7b0f75ef0639ed94eb938": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634012",
+      "source": "이투데이",
+      "source_body_digest": "6ce385b5078e74f8fcb042dddb2dbb67dd331b9b37dde8c8077115bf6aa86430",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3db382a20fbe1f75876a22265a4690dd79ae83a2ae9405bc2154fe34552e59d",
+      "source_fact_keys": [
+        "source_fact:v1:64322acf556f70f1f10ece485822527a6f67d4fd5181d156dc75100e8876f510",
+        "source_fact:v1:8f7b1e2138f577d6cf1ad0ee345480fef5a3ffb64acf2bfd27f24476b72c510b",
+        "source_fact:v1:92c36a2d5f43de1e037875df15b31b2239e0127055f842c2c168a9583afd55f1",
+        "source_fact:v1:a7e7821319649c6c4ca813b167bf317894df764fe94e9f1390f38059bc31280d",
+        "source_fact:v1:b687013c576fd55d986dab8bbba918fbdc69ab5375f0d5e405cf1b800265ca8e",
+        "source_fact:v1:b71a9e938759a69c126251f58b61db391842cff4a65cb737d6418906bd92aa9f",
+        "source_fact:v1:d13795590010a9cc27020058a69ab4cd5527ceea8764b73e71f9dae785391793",
+        "source_fact:v1:e1b9ea1dd7eedf7fe09c43799a36956c410189c9109d7f2c2c9cd79c0c0b8b5f",
+        "source_fact:v1:f1a82c841f3956980fa775b62b2e580401097e11fd25ef3ee3cf150a87306faf",
+        "source_fact:v1:f3843056ab9b1485efc583b8b91c0b92f6f94f2d723c6d0d36540c35cec97694",
+        "source_fact:v1:f7e3c1fdd83477896243fb305ca631bbe56e49691ea00c54e20c860abb2eeaac"
+      ],
+      "source_published_kst": "2026-10-11T08:57+09:00",
+      "source_title": "“이번에도 떨어졌다”…삼전 역대급 실적 발표에도 주가 하락",
+      "telegram_core_fact": "삼성전자가 국내 기업 최초로 분기 영업이익 100조원 시대를 열며 사상 최대 실적을 달성했으나 주가는 오히려 하락세로 마감했다.",
+      "title": "“이번에도 떨어졌다”…삼전 역대급 실적 발표에도 주가 하락"
     },
     "source_fact:33e89814889dce1b93971455": {
       "first_seen_kst": "2026-10-10T01:24:21+09:00",
@@ -213984,6 +214812,29 @@
       ],
       "source_published_kst": "2026-10-06T11:31+09:00",
       "title": "[2026 국감]산업부, 대미투자 국익 최우선 추진…호남 반도체 등 1600조 속도전"
+    },
+    "source_fact:36128b718f5e7cd07ffad8c3": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261010000300003",
+      "source": "연합뉴스",
+      "source_body_digest": "7410d44fe790955b7dc0a61f45b9c85992630b7965213c0bbc6ffd5c24173f56",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48b6ddc7a9615d1a2d7d87d52afd39f756df4e5c40a8aa8174970f12664c733d",
+      "source_fact_keys": [
+        "source_fact:v1:3f6d90ddb360b764c7ef0e4907fe8c6ea0410e2b76740547650c1a75e78dc294",
+        "source_fact:v1:497f069226bcdf688e10e8613a117389f6c4c556fc8acde4ba76f71f4ea87f35",
+        "source_fact:v1:9080c0fc3533d2f1110f115652fb5b38c8fa6d0fbecffbe15a983f8c78b4ca91",
+        "source_fact:v1:970a5cfbab1027c31d45b397936fa70f7a82e09fe7225de40b767b412ff48da3",
+        "source_fact:v1:e552efb5160ac3dd061582cc370f1e826d8c9b056db39bae2031cc64f4fe7493"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "현대차, 인도 진출 30년만에 누적판매 1천만대 돌파 눈앞 | 연합뉴스",
+      "telegram_core_fact": "현대차는 첸나이 1·2공장(82만4천대)에 이어 푸네 신공장(17만대)을 본격 가동하며 인도 현지에서 총 100만대의 생산능력을 갖추게 됐다.",
+      "title": "현대차, 인도 진출 30년만에 누적판매 1천만대 돌파 눈앞 | 연합뉴스"
     },
     "source_fact:361d983f7631d54e35466ce0": {
       "first_seen_kst": "2026-10-08T15:16:19+09:00",
@@ -224701,6 +225552,29 @@
       "telegram_core_fact": "트럼프 대통령은 SNS에 올린 글을 통해 \"이란과 생산적 논의를 하고 있다\"며 다만 \"대이란 봉쇄는 지속할 것\"이라고 밝혔습니다.",
       "title": "표심 급한 트럼프 \"중간선거 전 이란 공격 안할 것\" | 연합뉴스"
     },
+    "source_fact:468641779d84cbea3cf66468": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261010000300003",
+      "source": "연합뉴스",
+      "source_body_digest": "7410d44fe790955b7dc0a61f45b9c85992630b7965213c0bbc6ffd5c24173f56",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48b6ddc7a9615d1a2d7d87d52afd39f756df4e5c40a8aa8174970f12664c733d",
+      "source_fact_keys": [
+        "source_fact:v1:3f6d90ddb360b764c7ef0e4907fe8c6ea0410e2b76740547650c1a75e78dc294",
+        "source_fact:v1:497f069226bcdf688e10e8613a117389f6c4c556fc8acde4ba76f71f4ea87f35",
+        "source_fact:v1:9080c0fc3533d2f1110f115652fb5b38c8fa6d0fbecffbe15a983f8c78b4ca91",
+        "source_fact:v1:970a5cfbab1027c31d45b397936fa70f7a82e09fe7225de40b767b412ff48da3",
+        "source_fact:v1:e552efb5160ac3dd061582cc370f1e826d8c9b056db39bae2031cc64f4fe7493"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "현대차, 인도 진출 30년만에 누적판매 1천만대 돌파 눈앞 | 연합뉴스",
+      "telegram_core_fact": "현대차는 첸나이 1·2공장(82만4천대)에 이어 푸네 신공장(17만대)을 본격 가동하며 인도 현지에서 총 100만대의 생산능력을 갖추게 됐다.",
+      "title": "현대차, 인도 진출 30년만에 누적판매 1천만대 돌파 눈앞 | 연합뉴스"
+    },
     "source_fact:468a79238da7dc6fd86af98e": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
       "lanes": {
@@ -224725,6 +225599,38 @@
       ],
       "source_published_kst": "2026-10-06T08:41+09:00",
       "title": "AI 데이터센터 늘자 전력 수요도 급증…ETF 투자처도 '전력 인프라'로"
+    },
+    "source_fact:46983aeacc91502fc1d72a64": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633922",
+      "source": "이투데이",
+      "source_body_digest": "653f5e089da79e6ffd8591758737da9eb2ee07c006438d80c0dc84367114ae31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e9da11ec8af14bb598e37940603c2d70a323a8dfcc20ce1fdca3e6b43c065f5e",
+      "source_fact_keys": [
+        "source_fact:v1:21302108cfeaaf0842fb173f0ec06925fa5cd2ee12daa52bc782e2773fc48e8f",
+        "source_fact:v1:2bab80ca419ebd2221f45b2fa6f3620decd96bab08389cf3fe7500721e8a6358",
+        "source_fact:v1:406975f7192328fdb5fd9da93f2054bd2e3a4f836b9a7813517cbc5858e514e2",
+        "source_fact:v1:4184b41b66e25542abf89cf73ceb3675307d3ab56898b8edde55b7e728390a45",
+        "source_fact:v1:47586015796239db64d04a058d3f32b5b8d8135e0744a577d836eb253e003cd7",
+        "source_fact:v1:611f88406f31e6e0912602f93f1f3148c74758ed1437d1cb3e2bfa4cd532ece6",
+        "source_fact:v1:76b79434fb2ec2d31f26b1032e7171fbb5786d8e2e0e510a11e287e7a32afdd6",
+        "source_fact:v1:7c1ac192b2a51af15de1421e610074d1e8ce6c90daec0f89963f8f408322677c",
+        "source_fact:v1:b52bb4944dc3ce0bf330e236a2ce40f28db6265021b7e4691ba31c50a23a9216",
+        "source_fact:v1:b8000aeaa8a7a452c1dd95fcc1e7b3ff714d45030eab91d94490ad2b9f804763",
+        "source_fact:v1:c3ecad609f0c7d66613f53e8908ae5d9431982e4ae18d2c7610cb01bd6533c1b",
+        "source_fact:v1:ce3054a7912ee2b2ccb9f35c849a7b2ad3c28b6bc16f932e37118722d182d6b8",
+        "source_fact:v1:def540a7b78600c990132186300da15f2174b8c66005f613c41161312c85d6a1",
+        "source_fact:v1:fae99063ba20ec121e33b13983cab8399f47be0bcc2d5a7249b91d449370a004"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’",
+      "telegram_core_fact": "KAI 최대주주인 수출입은행의 지분 매각 가능성과 한화의 경영 참여 계획 등이 주요 질의 대상으로 거론된다.",
+      "title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’"
     },
     "source_fact:4699b4eccde7289770a50fbc": {
       "first_seen_kst": "2026-10-08T08:56:19+09:00",
@@ -226256,6 +227162,25 @@
       ],
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
+    },
+    "source_fact:485ba95b1646a399defce75a": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008078400051",
+      "source": "연합뉴스",
+      "source_body_digest": "9697c36afb056c9e5b9b2c6c0eb24b1486d502dc69044fe32aac2a442d760872",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dec9f0a1da2ff9fc247c1cda868844b6c428982ad0affd11f533ffc84d492ff8",
+      "source_fact_keys": [
+        "source_fact:v1:b86e53ea7cd6d02842e7c483558cce364ec5d60aa8c5892a947ed6439a02cc8b"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "부산 에코델타시티 18·19블록 계약취소 2가구 재공급 | 연합뉴스",
+      "telegram_core_fact": "신창호 부산도시공사 사장은 \"이번에 재공급하는 취소 세대는 청약 조건이 까다롭지 않아 진입장벽이 낮고, 분양가격이 저렴해 시민 관심이 높을 것으로 예상한다\"라며 \"청약 접수부터 입주까지 차질 없이 일정이 진행될 수 있도록 철저히 준비하겠다\"고 말했다.",
+      "title": "부산 에코델타시티 18·19블록 계약취소 2가구 재공급 | 연합뉴스"
     },
     "source_fact:485bced2a981a5f80f03172b": {
       "first_seen_kst": "2026-10-08T14:55:40+09:00",
@@ -228349,6 +229274,29 @@
       "source_published_kst": "2026-10-07T05:22+09:00",
       "title": "국제유가 보합…중동 수출 증가·G7 비축유 방출에 공급 우려 완화"
     },
+    "source_fact:4b2e6881ac76b14e31226e21": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261010000300003",
+      "source": "연합뉴스",
+      "source_body_digest": "7410d44fe790955b7dc0a61f45b9c85992630b7965213c0bbc6ffd5c24173f56",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48b6ddc7a9615d1a2d7d87d52afd39f756df4e5c40a8aa8174970f12664c733d",
+      "source_fact_keys": [
+        "source_fact:v1:3f6d90ddb360b764c7ef0e4907fe8c6ea0410e2b76740547650c1a75e78dc294",
+        "source_fact:v1:497f069226bcdf688e10e8613a117389f6c4c556fc8acde4ba76f71f4ea87f35",
+        "source_fact:v1:9080c0fc3533d2f1110f115652fb5b38c8fa6d0fbecffbe15a983f8c78b4ca91",
+        "source_fact:v1:970a5cfbab1027c31d45b397936fa70f7a82e09fe7225de40b767b412ff48da3",
+        "source_fact:v1:e552efb5160ac3dd061582cc370f1e826d8c9b056db39bae2031cc64f4fe7493"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "현대차, 인도 진출 30년만에 누적판매 1천만대 돌파 눈앞 | 연합뉴스",
+      "telegram_core_fact": "현대차는 첸나이 1·2공장(82만4천대)에 이어 푸네 신공장(17만대)을 본격 가동하며 인도 현지에서 총 100만대의 생산능력을 갖추게 됐다.",
+      "title": "현대차, 인도 진출 30년만에 누적판매 1천만대 돌파 눈앞 | 연합뉴스"
+    },
     "source_fact:4b31396fc52fab592a39d6bb": {
       "first_seen_kst": "2026-10-06T17:24:43+09:00",
       "lanes": {
@@ -228499,6 +229447,25 @@
       "source_published_kst": "2026-10-06T09:21+09:00",
       "title": "CPTPP, 농산물 관세만의 문제 아니다…농가 지원·검역도 '시험대'"
     },
+    "source_fact:4bb948a029a724845366107e": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634240",
+      "source": "이투데이",
+      "source_body_digest": "333ceb53392942fba1d2cae4bde00636658492494ba5ef38d3bb2d4ff2a5dcab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4484e4b5bbfde6d54f3c4ec95070442a32bc5ba3d1c2fe59da867937f6373888",
+      "source_fact_keys": [
+        "source_fact:v1:90341f65b948145671c57fd4e479f75fe1070e4d860fe1a9c2c5396a72ecf9ef"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "상표 계약 맺어놓고 “사용료 아냐” 프라다, 33억 세금소송 최종 패소",
+      "telegram_core_fact": "강남세무서는 이 지급액을 국내에서 상표권을 사용한 대가인 ‘국내 원천 사용료 소득’으로 보고, 2019년 12월 프라다코리아에 가산세를 포함한 약 33억원의 법인세를 부과했다.",
+      "title": "상표 계약 맺어놓고 “사용료 아냐” 프라다, 33억 세금소송 최종 패소"
+    },
     "source_fact:4bb9bcced659ac5b5a5526c2": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
       "lanes": {
@@ -228563,6 +229530,38 @@
       "source_title": "靑, '러 석유공급' 우크라 주장에 반박…\"사실과 다르고 부적절\" | 연합뉴스",
       "telegram_core_fact": "청와대는 7일 우크라이나가 '한국이 러시아에 경유 등 석유제품을 공급했다'는 외신을 인용해 한국을 비판한 데 대해 \"충분한 사실 확인 없이 대한민국의 관련 정책을 왜곡하거나 국제적 신뢰를 훼손할 수 있는 공개적 언급을 자제해달라\"고 반박했다.",
       "title": "靑, '러 석유공급' 우크라 주장에 반박…\"사실과 다르고 부적절\" | 연합뉴스"
+    },
+    "source_fact:4bcb0a53bbfe79943564ef65": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633922",
+      "source": "이투데이",
+      "source_body_digest": "653f5e089da79e6ffd8591758737da9eb2ee07c006438d80c0dc84367114ae31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e9da11ec8af14bb598e37940603c2d70a323a8dfcc20ce1fdca3e6b43c065f5e",
+      "source_fact_keys": [
+        "source_fact:v1:21302108cfeaaf0842fb173f0ec06925fa5cd2ee12daa52bc782e2773fc48e8f",
+        "source_fact:v1:2bab80ca419ebd2221f45b2fa6f3620decd96bab08389cf3fe7500721e8a6358",
+        "source_fact:v1:406975f7192328fdb5fd9da93f2054bd2e3a4f836b9a7813517cbc5858e514e2",
+        "source_fact:v1:4184b41b66e25542abf89cf73ceb3675307d3ab56898b8edde55b7e728390a45",
+        "source_fact:v1:47586015796239db64d04a058d3f32b5b8d8135e0744a577d836eb253e003cd7",
+        "source_fact:v1:611f88406f31e6e0912602f93f1f3148c74758ed1437d1cb3e2bfa4cd532ece6",
+        "source_fact:v1:76b79434fb2ec2d31f26b1032e7171fbb5786d8e2e0e510a11e287e7a32afdd6",
+        "source_fact:v1:7c1ac192b2a51af15de1421e610074d1e8ce6c90daec0f89963f8f408322677c",
+        "source_fact:v1:b52bb4944dc3ce0bf330e236a2ce40f28db6265021b7e4691ba31c50a23a9216",
+        "source_fact:v1:b8000aeaa8a7a452c1dd95fcc1e7b3ff714d45030eab91d94490ad2b9f804763",
+        "source_fact:v1:c3ecad609f0c7d66613f53e8908ae5d9431982e4ae18d2c7610cb01bd6533c1b",
+        "source_fact:v1:ce3054a7912ee2b2ccb9f35c849a7b2ad3c28b6bc16f932e37118722d182d6b8",
+        "source_fact:v1:def540a7b78600c990132186300da15f2174b8c66005f613c41161312c85d6a1",
+        "source_fact:v1:fae99063ba20ec121e33b13983cab8399f47be0bcc2d5a7249b91d449370a004"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’",
+      "telegram_core_fact": "KAI 최대주주인 수출입은행의 지분 매각 가능성과 한화의 경영 참여 계획 등이 주요 질의 대상으로 거론된다.",
+      "title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’"
     },
     "source_fact:4bdac428101b476569cf2392": {
       "first_seen_kst": "2026-10-08T09:58:56+09:00",
@@ -234035,6 +235034,35 @@
       "source_published_kst": "2026-10-06T08:40+09:00",
       "title": "그록 주주들, 엔비디아 '우회 인수'에 소송…\"껍데기 회사 남겨\""
     },
+    "source_fact:5466ee83d2015741a4b9de40": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634012",
+      "source": "이투데이",
+      "source_body_digest": "6ce385b5078e74f8fcb042dddb2dbb67dd331b9b37dde8c8077115bf6aa86430",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3db382a20fbe1f75876a22265a4690dd79ae83a2ae9405bc2154fe34552e59d",
+      "source_fact_keys": [
+        "source_fact:v1:64322acf556f70f1f10ece485822527a6f67d4fd5181d156dc75100e8876f510",
+        "source_fact:v1:8f7b1e2138f577d6cf1ad0ee345480fef5a3ffb64acf2bfd27f24476b72c510b",
+        "source_fact:v1:92c36a2d5f43de1e037875df15b31b2239e0127055f842c2c168a9583afd55f1",
+        "source_fact:v1:a7e7821319649c6c4ca813b167bf317894df764fe94e9f1390f38059bc31280d",
+        "source_fact:v1:b687013c576fd55d986dab8bbba918fbdc69ab5375f0d5e405cf1b800265ca8e",
+        "source_fact:v1:b71a9e938759a69c126251f58b61db391842cff4a65cb737d6418906bd92aa9f",
+        "source_fact:v1:d13795590010a9cc27020058a69ab4cd5527ceea8764b73e71f9dae785391793",
+        "source_fact:v1:e1b9ea1dd7eedf7fe09c43799a36956c410189c9109d7f2c2c9cd79c0c0b8b5f",
+        "source_fact:v1:f1a82c841f3956980fa775b62b2e580401097e11fd25ef3ee3cf150a87306faf",
+        "source_fact:v1:f3843056ab9b1485efc583b8b91c0b92f6f94f2d723c6d0d36540c35cec97694",
+        "source_fact:v1:f7e3c1fdd83477896243fb305ca631bbe56e49691ea00c54e20c860abb2eeaac"
+      ],
+      "source_published_kst": "2026-10-11T08:57+09:00",
+      "source_title": "“이번에도 떨어졌다”…삼전 역대급 실적 발표에도 주가 하락",
+      "telegram_core_fact": "삼성전자가 국내 기업 최초로 분기 영업이익 100조원 시대를 열며 사상 최대 실적을 달성했으나 주가는 오히려 하락세로 마감했다.",
+      "title": "“이번에도 떨어졌다”…삼전 역대급 실적 발표에도 주가 하락"
+    },
     "source_fact:54695b04cd7b15de7d9a1dca": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
@@ -234801,6 +235829,61 @@
       "telegram_core_fact": "기술 혁신 채권 제품 시스템을 늘리고 고품질 기술 기반 기업의 상장 및 금융 지원을 강화하며 인수합병, 구조조정, 기술 기반 기업에 대한 지분 인센티브 시스템을 최적화하도록 했다.",
       "title": "중국 당정, 신질 생산력 본격 추진…금융·세제 지원 늘린다"
     },
+    "source_fact:558b64fcc2f546b0735b9f21": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261010000300003",
+      "source": "연합뉴스",
+      "source_body_digest": "7410d44fe790955b7dc0a61f45b9c85992630b7965213c0bbc6ffd5c24173f56",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48b6ddc7a9615d1a2d7d87d52afd39f756df4e5c40a8aa8174970f12664c733d",
+      "source_fact_keys": [
+        "source_fact:v1:3f6d90ddb360b764c7ef0e4907fe8c6ea0410e2b76740547650c1a75e78dc294",
+        "source_fact:v1:497f069226bcdf688e10e8613a117389f6c4c556fc8acde4ba76f71f4ea87f35",
+        "source_fact:v1:9080c0fc3533d2f1110f115652fb5b38c8fa6d0fbecffbe15a983f8c78b4ca91",
+        "source_fact:v1:970a5cfbab1027c31d45b397936fa70f7a82e09fe7225de40b767b412ff48da3",
+        "source_fact:v1:e552efb5160ac3dd061582cc370f1e826d8c9b056db39bae2031cc64f4fe7493"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "현대차, 인도 진출 30년만에 누적판매 1천만대 돌파 눈앞 | 연합뉴스",
+      "telegram_core_fact": "현대차는 첸나이 1·2공장(82만4천대)에 이어 푸네 신공장(17만대)을 본격 가동하며 인도 현지에서 총 100만대의 생산능력을 갖추게 됐다.",
+      "title": "현대차, 인도 진출 30년만에 누적판매 1천만대 돌파 눈앞 | 연합뉴스"
+    },
+    "source_fact:55919619063de5ee5ef76514": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633922",
+      "source": "이투데이",
+      "source_body_digest": "653f5e089da79e6ffd8591758737da9eb2ee07c006438d80c0dc84367114ae31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e9da11ec8af14bb598e37940603c2d70a323a8dfcc20ce1fdca3e6b43c065f5e",
+      "source_fact_keys": [
+        "source_fact:v1:21302108cfeaaf0842fb173f0ec06925fa5cd2ee12daa52bc782e2773fc48e8f",
+        "source_fact:v1:2bab80ca419ebd2221f45b2fa6f3620decd96bab08389cf3fe7500721e8a6358",
+        "source_fact:v1:406975f7192328fdb5fd9da93f2054bd2e3a4f836b9a7813517cbc5858e514e2",
+        "source_fact:v1:4184b41b66e25542abf89cf73ceb3675307d3ab56898b8edde55b7e728390a45",
+        "source_fact:v1:47586015796239db64d04a058d3f32b5b8d8135e0744a577d836eb253e003cd7",
+        "source_fact:v1:611f88406f31e6e0912602f93f1f3148c74758ed1437d1cb3e2bfa4cd532ece6",
+        "source_fact:v1:76b79434fb2ec2d31f26b1032e7171fbb5786d8e2e0e510a11e287e7a32afdd6",
+        "source_fact:v1:7c1ac192b2a51af15de1421e610074d1e8ce6c90daec0f89963f8f408322677c",
+        "source_fact:v1:b52bb4944dc3ce0bf330e236a2ce40f28db6265021b7e4691ba31c50a23a9216",
+        "source_fact:v1:b8000aeaa8a7a452c1dd95fcc1e7b3ff714d45030eab91d94490ad2b9f804763",
+        "source_fact:v1:c3ecad609f0c7d66613f53e8908ae5d9431982e4ae18d2c7610cb01bd6533c1b",
+        "source_fact:v1:ce3054a7912ee2b2ccb9f35c849a7b2ad3c28b6bc16f932e37118722d182d6b8",
+        "source_fact:v1:def540a7b78600c990132186300da15f2174b8c66005f613c41161312c85d6a1",
+        "source_fact:v1:fae99063ba20ec121e33b13983cab8399f47be0bcc2d5a7249b91d449370a004"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’",
+      "telegram_core_fact": "KAI 최대주주인 수출입은행의 지분 매각 가능성과 한화의 경영 참여 계획 등이 주요 질의 대상으로 거론된다.",
+      "title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’"
+    },
     "source_fact:559d6ac3b76e67b375f3931c": {
       "first_seen_kst": "2026-10-08T14:55:40+09:00",
       "lanes": {
@@ -235390,6 +236473,38 @@
       ],
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "[ETF업&다운]3분기 엇갈린 반도체…삼전닉스 빠지고 소부장 버텼다"
+    },
+    "source_fact:567b8c8da288cf84919e9212": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633922",
+      "source": "이투데이",
+      "source_body_digest": "653f5e089da79e6ffd8591758737da9eb2ee07c006438d80c0dc84367114ae31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e9da11ec8af14bb598e37940603c2d70a323a8dfcc20ce1fdca3e6b43c065f5e",
+      "source_fact_keys": [
+        "source_fact:v1:21302108cfeaaf0842fb173f0ec06925fa5cd2ee12daa52bc782e2773fc48e8f",
+        "source_fact:v1:2bab80ca419ebd2221f45b2fa6f3620decd96bab08389cf3fe7500721e8a6358",
+        "source_fact:v1:406975f7192328fdb5fd9da93f2054bd2e3a4f836b9a7813517cbc5858e514e2",
+        "source_fact:v1:4184b41b66e25542abf89cf73ceb3675307d3ab56898b8edde55b7e728390a45",
+        "source_fact:v1:47586015796239db64d04a058d3f32b5b8d8135e0744a577d836eb253e003cd7",
+        "source_fact:v1:611f88406f31e6e0912602f93f1f3148c74758ed1437d1cb3e2bfa4cd532ece6",
+        "source_fact:v1:76b79434fb2ec2d31f26b1032e7171fbb5786d8e2e0e510a11e287e7a32afdd6",
+        "source_fact:v1:7c1ac192b2a51af15de1421e610074d1e8ce6c90daec0f89963f8f408322677c",
+        "source_fact:v1:b52bb4944dc3ce0bf330e236a2ce40f28db6265021b7e4691ba31c50a23a9216",
+        "source_fact:v1:b8000aeaa8a7a452c1dd95fcc1e7b3ff714d45030eab91d94490ad2b9f804763",
+        "source_fact:v1:c3ecad609f0c7d66613f53e8908ae5d9431982e4ae18d2c7610cb01bd6533c1b",
+        "source_fact:v1:ce3054a7912ee2b2ccb9f35c849a7b2ad3c28b6bc16f932e37118722d182d6b8",
+        "source_fact:v1:def540a7b78600c990132186300da15f2174b8c66005f613c41161312c85d6a1",
+        "source_fact:v1:fae99063ba20ec121e33b13983cab8399f47be0bcc2d5a7249b91d449370a004"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’",
+      "telegram_core_fact": "KAI 최대주주인 수출입은행의 지분 매각 가능성과 한화의 경영 참여 계획 등이 주요 질의 대상으로 거론된다.",
+      "title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’"
     },
     "source_fact:567ba2fcf934c95f1c2c87ff": {
       "first_seen_kst": "2026-10-07T03:30:59+09:00",
@@ -237396,6 +238511,26 @@
       "source_published_kst": "2026-10-07T15:16+09:00",
       "title": "외국인 투자 늘었지만…제조업 '새 투자' 줄고 M&A에 몰렸다"
     },
+    "source_fact:591901928b78bcb46e93cdd5": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818737",
+      "source": "뉴시스",
+      "source_body_digest": "5b93cef91e4ce47a23c6767e710a2dfcdf46edc6777c0f5b8d574a7c32caa15f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ecacdfab5b275c978899a9cca69a7e93b3c05efa44e6110ed34fd7dd29c1e56b",
+      "source_fact_keys": [
+        "source_fact:v1:a7d2a084b203731c08a0bec05c4a0fa274f403f391104143e3a839ee145ca372",
+        "source_fact:v1:afe35c795421b7efd4b3b56d76975a8572f17b20a02caeeed5666871e80e68a6"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "금융권 훑고 다닌 'AI 해킹'…\"더 큰 피해 올 수도\"[K금융의 보안 민낯④]",
+      "telegram_core_fact": "금융업계와 보안업계에 따르면 최근 신한·KB국민·하나·BNK부산은행 등 주요 은행에서 해킹 공격으로 인한 이용자 정보 유출 피해가 잇따라 확인됐다.",
+      "title": "금융권 훑고 다닌 'AI 해킹'…\"더 큰 피해 올 수도\"[K금융의 보안 민낯④]"
+    },
     "source_fact:59229bcde6256f2bd5486370": {
       "first_seen_kst": "2026-10-06T00:57:01+09:00",
       "lanes": {
@@ -237445,6 +238580,35 @@
       "source_title": "칼레도니아 마이닝, 3분기 금 생산 11% 감소·연간 가이던스 하향",
       "telegram_core_fact": "칼레도니아 마이닝(CMCL)이 짐바브웨 블랭킷 광산의 3분기(9월 30일 종료) 금 생산량이 1만7030온스로 전년 동기(1만9106온스) 대비 10.9% 감소했다고 밝히고, 2026년 연간 금 생산 가이던스를 기존 7만2000~7만6500온스에서 6만9000~7만2500온스로 하향 조정한다고 10월 9일 발표했다.",
       "title": "칼레도니아 마이닝, 3분기 금 생산 11% 감소·연간 가이던스 하향"
+    },
+    "source_fact:592bcee9bd16c48f659f465d": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634012",
+      "source": "이투데이",
+      "source_body_digest": "6ce385b5078e74f8fcb042dddb2dbb67dd331b9b37dde8c8077115bf6aa86430",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3db382a20fbe1f75876a22265a4690dd79ae83a2ae9405bc2154fe34552e59d",
+      "source_fact_keys": [
+        "source_fact:v1:64322acf556f70f1f10ece485822527a6f67d4fd5181d156dc75100e8876f510",
+        "source_fact:v1:8f7b1e2138f577d6cf1ad0ee345480fef5a3ffb64acf2bfd27f24476b72c510b",
+        "source_fact:v1:92c36a2d5f43de1e037875df15b31b2239e0127055f842c2c168a9583afd55f1",
+        "source_fact:v1:a7e7821319649c6c4ca813b167bf317894df764fe94e9f1390f38059bc31280d",
+        "source_fact:v1:b687013c576fd55d986dab8bbba918fbdc69ab5375f0d5e405cf1b800265ca8e",
+        "source_fact:v1:b71a9e938759a69c126251f58b61db391842cff4a65cb737d6418906bd92aa9f",
+        "source_fact:v1:d13795590010a9cc27020058a69ab4cd5527ceea8764b73e71f9dae785391793",
+        "source_fact:v1:e1b9ea1dd7eedf7fe09c43799a36956c410189c9109d7f2c2c9cd79c0c0b8b5f",
+        "source_fact:v1:f1a82c841f3956980fa775b62b2e580401097e11fd25ef3ee3cf150a87306faf",
+        "source_fact:v1:f3843056ab9b1485efc583b8b91c0b92f6f94f2d723c6d0d36540c35cec97694",
+        "source_fact:v1:f7e3c1fdd83477896243fb305ca631bbe56e49691ea00c54e20c860abb2eeaac"
+      ],
+      "source_published_kst": "2026-10-11T08:57+09:00",
+      "source_title": "“이번에도 떨어졌다”…삼전 역대급 실적 발표에도 주가 하락",
+      "telegram_core_fact": "삼성전자가 국내 기업 최초로 분기 영업이익 100조원 시대를 열며 사상 최대 실적을 달성했으나 주가는 오히려 하락세로 마감했다.",
+      "title": "“이번에도 떨어졌다”…삼전 역대급 실적 발표에도 주가 하락"
     },
     "source_fact:592c49583c74a3883fdabf8f": {
       "first_seen_kst": "2026-10-07T17:34:38+09:00",
@@ -242872,6 +244036,35 @@
       "telegram_core_fact": "LG전자는 3분기 연결기준 매출 23조 8270억원, 영업이익 7822억원 잠정실적을 기록했다.",
       "title": "LG전자 3분기 실적 컨센서스 하회…증권가 \"일시적 요인, 본업 건재\""
     },
+    "source_fact:60d7e14e3b52c12952dc4571": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634012",
+      "source": "이투데이",
+      "source_body_digest": "6ce385b5078e74f8fcb042dddb2dbb67dd331b9b37dde8c8077115bf6aa86430",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3db382a20fbe1f75876a22265a4690dd79ae83a2ae9405bc2154fe34552e59d",
+      "source_fact_keys": [
+        "source_fact:v1:64322acf556f70f1f10ece485822527a6f67d4fd5181d156dc75100e8876f510",
+        "source_fact:v1:8f7b1e2138f577d6cf1ad0ee345480fef5a3ffb64acf2bfd27f24476b72c510b",
+        "source_fact:v1:92c36a2d5f43de1e037875df15b31b2239e0127055f842c2c168a9583afd55f1",
+        "source_fact:v1:a7e7821319649c6c4ca813b167bf317894df764fe94e9f1390f38059bc31280d",
+        "source_fact:v1:b687013c576fd55d986dab8bbba918fbdc69ab5375f0d5e405cf1b800265ca8e",
+        "source_fact:v1:b71a9e938759a69c126251f58b61db391842cff4a65cb737d6418906bd92aa9f",
+        "source_fact:v1:d13795590010a9cc27020058a69ab4cd5527ceea8764b73e71f9dae785391793",
+        "source_fact:v1:e1b9ea1dd7eedf7fe09c43799a36956c410189c9109d7f2c2c9cd79c0c0b8b5f",
+        "source_fact:v1:f1a82c841f3956980fa775b62b2e580401097e11fd25ef3ee3cf150a87306faf",
+        "source_fact:v1:f3843056ab9b1485efc583b8b91c0b92f6f94f2d723c6d0d36540c35cec97694",
+        "source_fact:v1:f7e3c1fdd83477896243fb305ca631bbe56e49691ea00c54e20c860abb2eeaac"
+      ],
+      "source_published_kst": "2026-10-11T08:57+09:00",
+      "source_title": "“이번에도 떨어졌다”…삼전 역대급 실적 발표에도 주가 하락",
+      "telegram_core_fact": "삼성전자가 국내 기업 최초로 분기 영업이익 100조원 시대를 열며 사상 최대 실적을 달성했으나 주가는 오히려 하락세로 마감했다.",
+      "title": "“이번에도 떨어졌다”…삼전 역대급 실적 발표에도 주가 하락"
+    },
     "source_fact:60e8663dabe81c46ac5496c1": {
       "first_seen_kst": "2026-10-06T01:41:59+09:00",
       "lanes": {
@@ -243876,6 +245069,35 @@
       ],
       "source_published_kst": "2026-10-07T14:39+09:00",
       "title": "\"美, 사우디-후티 분쟁 개입 꺼려…사우디에 지상군 투입 만류도\""
+    },
+    "source_fact:6273d1391dd85f9952d12ad2": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634012",
+      "source": "이투데이",
+      "source_body_digest": "6ce385b5078e74f8fcb042dddb2dbb67dd331b9b37dde8c8077115bf6aa86430",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3db382a20fbe1f75876a22265a4690dd79ae83a2ae9405bc2154fe34552e59d",
+      "source_fact_keys": [
+        "source_fact:v1:64322acf556f70f1f10ece485822527a6f67d4fd5181d156dc75100e8876f510",
+        "source_fact:v1:8f7b1e2138f577d6cf1ad0ee345480fef5a3ffb64acf2bfd27f24476b72c510b",
+        "source_fact:v1:92c36a2d5f43de1e037875df15b31b2239e0127055f842c2c168a9583afd55f1",
+        "source_fact:v1:a7e7821319649c6c4ca813b167bf317894df764fe94e9f1390f38059bc31280d",
+        "source_fact:v1:b687013c576fd55d986dab8bbba918fbdc69ab5375f0d5e405cf1b800265ca8e",
+        "source_fact:v1:b71a9e938759a69c126251f58b61db391842cff4a65cb737d6418906bd92aa9f",
+        "source_fact:v1:d13795590010a9cc27020058a69ab4cd5527ceea8764b73e71f9dae785391793",
+        "source_fact:v1:e1b9ea1dd7eedf7fe09c43799a36956c410189c9109d7f2c2c9cd79c0c0b8b5f",
+        "source_fact:v1:f1a82c841f3956980fa775b62b2e580401097e11fd25ef3ee3cf150a87306faf",
+        "source_fact:v1:f3843056ab9b1485efc583b8b91c0b92f6f94f2d723c6d0d36540c35cec97694",
+        "source_fact:v1:f7e3c1fdd83477896243fb305ca631bbe56e49691ea00c54e20c860abb2eeaac"
+      ],
+      "source_published_kst": "2026-10-11T08:57+09:00",
+      "source_title": "“이번에도 떨어졌다”…삼전 역대급 실적 발표에도 주가 하락",
+      "telegram_core_fact": "삼성전자가 국내 기업 최초로 분기 영업이익 100조원 시대를 열며 사상 최대 실적을 달성했으나 주가는 오히려 하락세로 마감했다.",
+      "title": "“이번에도 떨어졌다”…삼전 역대급 실적 발표에도 주가 하락"
     },
     "source_fact:6279654aec63fb9e200abf5c": {
       "first_seen_kst": "2026-10-06T12:10:48+09:00",
@@ -250767,6 +251989,38 @@
       ],
       "source_published_kst": "2026-10-07T10:34+09:00",
       "title": "우크라 \"한국이 러시아에 석유 공급\" 저격"
+    },
+    "source_fact:6ccc47683a579c24f57a7eff": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633922",
+      "source": "이투데이",
+      "source_body_digest": "653f5e089da79e6ffd8591758737da9eb2ee07c006438d80c0dc84367114ae31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e9da11ec8af14bb598e37940603c2d70a323a8dfcc20ce1fdca3e6b43c065f5e",
+      "source_fact_keys": [
+        "source_fact:v1:21302108cfeaaf0842fb173f0ec06925fa5cd2ee12daa52bc782e2773fc48e8f",
+        "source_fact:v1:2bab80ca419ebd2221f45b2fa6f3620decd96bab08389cf3fe7500721e8a6358",
+        "source_fact:v1:406975f7192328fdb5fd9da93f2054bd2e3a4f836b9a7813517cbc5858e514e2",
+        "source_fact:v1:4184b41b66e25542abf89cf73ceb3675307d3ab56898b8edde55b7e728390a45",
+        "source_fact:v1:47586015796239db64d04a058d3f32b5b8d8135e0744a577d836eb253e003cd7",
+        "source_fact:v1:611f88406f31e6e0912602f93f1f3148c74758ed1437d1cb3e2bfa4cd532ece6",
+        "source_fact:v1:76b79434fb2ec2d31f26b1032e7171fbb5786d8e2e0e510a11e287e7a32afdd6",
+        "source_fact:v1:7c1ac192b2a51af15de1421e610074d1e8ce6c90daec0f89963f8f408322677c",
+        "source_fact:v1:b52bb4944dc3ce0bf330e236a2ce40f28db6265021b7e4691ba31c50a23a9216",
+        "source_fact:v1:b8000aeaa8a7a452c1dd95fcc1e7b3ff714d45030eab91d94490ad2b9f804763",
+        "source_fact:v1:c3ecad609f0c7d66613f53e8908ae5d9431982e4ae18d2c7610cb01bd6533c1b",
+        "source_fact:v1:ce3054a7912ee2b2ccb9f35c849a7b2ad3c28b6bc16f932e37118722d182d6b8",
+        "source_fact:v1:def540a7b78600c990132186300da15f2174b8c66005f613c41161312c85d6a1",
+        "source_fact:v1:fae99063ba20ec121e33b13983cab8399f47be0bcc2d5a7249b91d449370a004"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’",
+      "telegram_core_fact": "KAI 최대주주인 수출입은행의 지분 매각 가능성과 한화의 경영 참여 계획 등이 주요 질의 대상으로 거론된다.",
+      "title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’"
     },
     "source_fact:6cdafa895f07d31857558bc2": {
       "first_seen_kst": "2026-10-07T17:47:45+09:00",
@@ -258188,6 +259442,38 @@
       "source_published_kst": "2026-10-07T09:42+09:00",
       "title": "kt클라우드, 50MW급 청라 AI 데이터센터 구축 사업 참여 | 연합뉴스"
     },
+    "source_fact:7887a2a87a89d3f23ff4fc69": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633922",
+      "source": "이투데이",
+      "source_body_digest": "653f5e089da79e6ffd8591758737da9eb2ee07c006438d80c0dc84367114ae31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e9da11ec8af14bb598e37940603c2d70a323a8dfcc20ce1fdca3e6b43c065f5e",
+      "source_fact_keys": [
+        "source_fact:v1:21302108cfeaaf0842fb173f0ec06925fa5cd2ee12daa52bc782e2773fc48e8f",
+        "source_fact:v1:2bab80ca419ebd2221f45b2fa6f3620decd96bab08389cf3fe7500721e8a6358",
+        "source_fact:v1:406975f7192328fdb5fd9da93f2054bd2e3a4f836b9a7813517cbc5858e514e2",
+        "source_fact:v1:4184b41b66e25542abf89cf73ceb3675307d3ab56898b8edde55b7e728390a45",
+        "source_fact:v1:47586015796239db64d04a058d3f32b5b8d8135e0744a577d836eb253e003cd7",
+        "source_fact:v1:611f88406f31e6e0912602f93f1f3148c74758ed1437d1cb3e2bfa4cd532ece6",
+        "source_fact:v1:76b79434fb2ec2d31f26b1032e7171fbb5786d8e2e0e510a11e287e7a32afdd6",
+        "source_fact:v1:7c1ac192b2a51af15de1421e610074d1e8ce6c90daec0f89963f8f408322677c",
+        "source_fact:v1:b52bb4944dc3ce0bf330e236a2ce40f28db6265021b7e4691ba31c50a23a9216",
+        "source_fact:v1:b8000aeaa8a7a452c1dd95fcc1e7b3ff714d45030eab91d94490ad2b9f804763",
+        "source_fact:v1:c3ecad609f0c7d66613f53e8908ae5d9431982e4ae18d2c7610cb01bd6533c1b",
+        "source_fact:v1:ce3054a7912ee2b2ccb9f35c849a7b2ad3c28b6bc16f932e37118722d182d6b8",
+        "source_fact:v1:def540a7b78600c990132186300da15f2174b8c66005f613c41161312c85d6a1",
+        "source_fact:v1:fae99063ba20ec121e33b13983cab8399f47be0bcc2d5a7249b91d449370a004"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’",
+      "telegram_core_fact": "KAI 최대주주인 수출입은행의 지분 매각 가능성과 한화의 경영 참여 계획 등이 주요 질의 대상으로 거론된다.",
+      "title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’"
+    },
     "source_fact:78898d1172f5cfdc417fb552": {
       "first_seen_kst": "2026-10-07T11:25:20+09:00",
       "lanes": {
@@ -261897,6 +263183,38 @@
       "source_title": "AMD 리사수, 삼성 전영현·SK 곽노정 만나 AI 협력방안 논의(종합)",
       "telegram_core_fact": "방한한 리사 수 AMD 회장 겸 최고경영자(CEO)가 삼성과 SK의 반도체 수장을 만나 AI 협력 강화 방안을 논의한다. 약 7개월 만에 다시 성사된 전 부회장과 수 회장의 이번 회동으로 삼성전자와 AMD는 고대역폭메모리(HBM)를 포함한 AI 반도체 협력을 강화할 전망이다.",
       "title": "AMD 리사수, 삼성 전영현·SK 곽노정 만나 AI 협력방안 논의(종합)"
+    },
+    "source_fact:7e39689fc6ab7574e34d01e5": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633922",
+      "source": "이투데이",
+      "source_body_digest": "653f5e089da79e6ffd8591758737da9eb2ee07c006438d80c0dc84367114ae31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e9da11ec8af14bb598e37940603c2d70a323a8dfcc20ce1fdca3e6b43c065f5e",
+      "source_fact_keys": [
+        "source_fact:v1:21302108cfeaaf0842fb173f0ec06925fa5cd2ee12daa52bc782e2773fc48e8f",
+        "source_fact:v1:2bab80ca419ebd2221f45b2fa6f3620decd96bab08389cf3fe7500721e8a6358",
+        "source_fact:v1:406975f7192328fdb5fd9da93f2054bd2e3a4f836b9a7813517cbc5858e514e2",
+        "source_fact:v1:4184b41b66e25542abf89cf73ceb3675307d3ab56898b8edde55b7e728390a45",
+        "source_fact:v1:47586015796239db64d04a058d3f32b5b8d8135e0744a577d836eb253e003cd7",
+        "source_fact:v1:611f88406f31e6e0912602f93f1f3148c74758ed1437d1cb3e2bfa4cd532ece6",
+        "source_fact:v1:76b79434fb2ec2d31f26b1032e7171fbb5786d8e2e0e510a11e287e7a32afdd6",
+        "source_fact:v1:7c1ac192b2a51af15de1421e610074d1e8ce6c90daec0f89963f8f408322677c",
+        "source_fact:v1:b52bb4944dc3ce0bf330e236a2ce40f28db6265021b7e4691ba31c50a23a9216",
+        "source_fact:v1:b8000aeaa8a7a452c1dd95fcc1e7b3ff714d45030eab91d94490ad2b9f804763",
+        "source_fact:v1:c3ecad609f0c7d66613f53e8908ae5d9431982e4ae18d2c7610cb01bd6533c1b",
+        "source_fact:v1:ce3054a7912ee2b2ccb9f35c849a7b2ad3c28b6bc16f932e37118722d182d6b8",
+        "source_fact:v1:def540a7b78600c990132186300da15f2174b8c66005f613c41161312c85d6a1",
+        "source_fact:v1:fae99063ba20ec121e33b13983cab8399f47be0bcc2d5a7249b91d449370a004"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’",
+      "telegram_core_fact": "KAI 최대주주인 수출입은행의 지분 매각 가능성과 한화의 경영 참여 계획 등이 주요 질의 대상으로 거론된다.",
+      "title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’"
     },
     "source_fact:7e3b3dbc9540b122a673069d": {
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
@@ -267794,6 +269112,38 @@
       "source_title": "삼성전자 '분기 영업이익 100조' 시대 열었다… 세계 테크기업 '최초'",
       "telegram_core_fact": "[파이낸셜뉴스]삼성전자가 올해 3·4분기 영업이익 107조4000억원을 기록하며 '분기 영업이익 100조 시대'를 열었다.",
       "title": "삼성전자 '분기 영업이익 100조' 시대 열었다… 세계 테크기업 '최초'"
+    },
+    "source_fact:8785deb51b9654a327319410": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633922",
+      "source": "이투데이",
+      "source_body_digest": "653f5e089da79e6ffd8591758737da9eb2ee07c006438d80c0dc84367114ae31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e9da11ec8af14bb598e37940603c2d70a323a8dfcc20ce1fdca3e6b43c065f5e",
+      "source_fact_keys": [
+        "source_fact:v1:21302108cfeaaf0842fb173f0ec06925fa5cd2ee12daa52bc782e2773fc48e8f",
+        "source_fact:v1:2bab80ca419ebd2221f45b2fa6f3620decd96bab08389cf3fe7500721e8a6358",
+        "source_fact:v1:406975f7192328fdb5fd9da93f2054bd2e3a4f836b9a7813517cbc5858e514e2",
+        "source_fact:v1:4184b41b66e25542abf89cf73ceb3675307d3ab56898b8edde55b7e728390a45",
+        "source_fact:v1:47586015796239db64d04a058d3f32b5b8d8135e0744a577d836eb253e003cd7",
+        "source_fact:v1:611f88406f31e6e0912602f93f1f3148c74758ed1437d1cb3e2bfa4cd532ece6",
+        "source_fact:v1:76b79434fb2ec2d31f26b1032e7171fbb5786d8e2e0e510a11e287e7a32afdd6",
+        "source_fact:v1:7c1ac192b2a51af15de1421e610074d1e8ce6c90daec0f89963f8f408322677c",
+        "source_fact:v1:b52bb4944dc3ce0bf330e236a2ce40f28db6265021b7e4691ba31c50a23a9216",
+        "source_fact:v1:b8000aeaa8a7a452c1dd95fcc1e7b3ff714d45030eab91d94490ad2b9f804763",
+        "source_fact:v1:c3ecad609f0c7d66613f53e8908ae5d9431982e4ae18d2c7610cb01bd6533c1b",
+        "source_fact:v1:ce3054a7912ee2b2ccb9f35c849a7b2ad3c28b6bc16f932e37118722d182d6b8",
+        "source_fact:v1:def540a7b78600c990132186300da15f2174b8c66005f613c41161312c85d6a1",
+        "source_fact:v1:fae99063ba20ec121e33b13983cab8399f47be0bcc2d5a7249b91d449370a004"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’",
+      "telegram_core_fact": "KAI 최대주주인 수출입은행의 지분 매각 가능성과 한화의 경영 참여 계획 등이 주요 질의 대상으로 거론된다.",
+      "title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’"
     },
     "source_fact:878b2dba854401360cafe7dc": {
       "first_seen_kst": "2026-10-06T23:46:46+09:00",
@@ -289046,6 +290396,38 @@
       "telegram_core_fact": "통관수출의 전년 대비 증가율을 보면 8월 IT는 컴퓨터주변기기SSD(+366.8%), 반도체(206.1%), 무선통신기기(+3.9%) 등을 중심으로 162.6% 늘었다.",
       "title": "반도체 수출 호조…8월 경상수지 461.1억달러 흑자 역대 2위"
     },
+    "source_fact:a8d9eb53a8ad77c95c631e13": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633922",
+      "source": "이투데이",
+      "source_body_digest": "653f5e089da79e6ffd8591758737da9eb2ee07c006438d80c0dc84367114ae31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e9da11ec8af14bb598e37940603c2d70a323a8dfcc20ce1fdca3e6b43c065f5e",
+      "source_fact_keys": [
+        "source_fact:v1:21302108cfeaaf0842fb173f0ec06925fa5cd2ee12daa52bc782e2773fc48e8f",
+        "source_fact:v1:2bab80ca419ebd2221f45b2fa6f3620decd96bab08389cf3fe7500721e8a6358",
+        "source_fact:v1:406975f7192328fdb5fd9da93f2054bd2e3a4f836b9a7813517cbc5858e514e2",
+        "source_fact:v1:4184b41b66e25542abf89cf73ceb3675307d3ab56898b8edde55b7e728390a45",
+        "source_fact:v1:47586015796239db64d04a058d3f32b5b8d8135e0744a577d836eb253e003cd7",
+        "source_fact:v1:611f88406f31e6e0912602f93f1f3148c74758ed1437d1cb3e2bfa4cd532ece6",
+        "source_fact:v1:76b79434fb2ec2d31f26b1032e7171fbb5786d8e2e0e510a11e287e7a32afdd6",
+        "source_fact:v1:7c1ac192b2a51af15de1421e610074d1e8ce6c90daec0f89963f8f408322677c",
+        "source_fact:v1:b52bb4944dc3ce0bf330e236a2ce40f28db6265021b7e4691ba31c50a23a9216",
+        "source_fact:v1:b8000aeaa8a7a452c1dd95fcc1e7b3ff714d45030eab91d94490ad2b9f804763",
+        "source_fact:v1:c3ecad609f0c7d66613f53e8908ae5d9431982e4ae18d2c7610cb01bd6533c1b",
+        "source_fact:v1:ce3054a7912ee2b2ccb9f35c849a7b2ad3c28b6bc16f932e37118722d182d6b8",
+        "source_fact:v1:def540a7b78600c990132186300da15f2174b8c66005f613c41161312c85d6a1",
+        "source_fact:v1:fae99063ba20ec121e33b13983cab8399f47be0bcc2d5a7249b91d449370a004"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’",
+      "telegram_core_fact": "KAI 최대주주인 수출입은행의 지분 매각 가능성과 한화의 경영 참여 계획 등이 주요 질의 대상으로 거론된다.",
+      "title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’"
+    },
     "source_fact:a8f8a87003d04125cd9b1274": {
       "first_seen_kst": "2026-10-06T23:05:07+09:00",
       "lanes": {
@@ -289164,6 +290546,38 @@
       "source_title": "삼성전자, 영업이익 107조원 돌파에도 무덤덤… K-반도체 저평가 흐름 이어지나",
       "telegram_core_fact": "삼성전자가 3분기 100조원이 넘는 영업이익을 기록하며 깜짝 실적을 냈으나 외국인 투자자들의 매도세와 옵션 만기일 영향이 겹쳐 주가는 지루한 움직임을 보였다.",
       "title": "삼성전자, 영업이익 107조원 돌파에도 무덤덤… K-반도체 저평가 흐름 이어지나"
+    },
+    "source_fact:a92f4e8c897a70dc82620d4f": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633922",
+      "source": "이투데이",
+      "source_body_digest": "653f5e089da79e6ffd8591758737da9eb2ee07c006438d80c0dc84367114ae31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e9da11ec8af14bb598e37940603c2d70a323a8dfcc20ce1fdca3e6b43c065f5e",
+      "source_fact_keys": [
+        "source_fact:v1:21302108cfeaaf0842fb173f0ec06925fa5cd2ee12daa52bc782e2773fc48e8f",
+        "source_fact:v1:2bab80ca419ebd2221f45b2fa6f3620decd96bab08389cf3fe7500721e8a6358",
+        "source_fact:v1:406975f7192328fdb5fd9da93f2054bd2e3a4f836b9a7813517cbc5858e514e2",
+        "source_fact:v1:4184b41b66e25542abf89cf73ceb3675307d3ab56898b8edde55b7e728390a45",
+        "source_fact:v1:47586015796239db64d04a058d3f32b5b8d8135e0744a577d836eb253e003cd7",
+        "source_fact:v1:611f88406f31e6e0912602f93f1f3148c74758ed1437d1cb3e2bfa4cd532ece6",
+        "source_fact:v1:76b79434fb2ec2d31f26b1032e7171fbb5786d8e2e0e510a11e287e7a32afdd6",
+        "source_fact:v1:7c1ac192b2a51af15de1421e610074d1e8ce6c90daec0f89963f8f408322677c",
+        "source_fact:v1:b52bb4944dc3ce0bf330e236a2ce40f28db6265021b7e4691ba31c50a23a9216",
+        "source_fact:v1:b8000aeaa8a7a452c1dd95fcc1e7b3ff714d45030eab91d94490ad2b9f804763",
+        "source_fact:v1:c3ecad609f0c7d66613f53e8908ae5d9431982e4ae18d2c7610cb01bd6533c1b",
+        "source_fact:v1:ce3054a7912ee2b2ccb9f35c849a7b2ad3c28b6bc16f932e37118722d182d6b8",
+        "source_fact:v1:def540a7b78600c990132186300da15f2174b8c66005f613c41161312c85d6a1",
+        "source_fact:v1:fae99063ba20ec121e33b13983cab8399f47be0bcc2d5a7249b91d449370a004"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’",
+      "telegram_core_fact": "KAI 최대주주인 수출입은행의 지분 매각 가능성과 한화의 경영 참여 계획 등이 주요 질의 대상으로 거론된다.",
+      "title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’"
     },
     "source_fact:a93264eba06905e5d1b6e560": {
       "first_seen_kst": "2026-10-09T18:34:32+09:00",
@@ -290783,6 +292197,38 @@
       "source_published_kst": "2026-10-06T07:42+09:00",
       "title": "[오늘의 증시]美금리 상승에도 나스닥 최고치…코스피 상승 출발 전망"
     },
+    "source_fact:ab813e908ae66aa81765f849": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633922",
+      "source": "이투데이",
+      "source_body_digest": "653f5e089da79e6ffd8591758737da9eb2ee07c006438d80c0dc84367114ae31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e9da11ec8af14bb598e37940603c2d70a323a8dfcc20ce1fdca3e6b43c065f5e",
+      "source_fact_keys": [
+        "source_fact:v1:21302108cfeaaf0842fb173f0ec06925fa5cd2ee12daa52bc782e2773fc48e8f",
+        "source_fact:v1:2bab80ca419ebd2221f45b2fa6f3620decd96bab08389cf3fe7500721e8a6358",
+        "source_fact:v1:406975f7192328fdb5fd9da93f2054bd2e3a4f836b9a7813517cbc5858e514e2",
+        "source_fact:v1:4184b41b66e25542abf89cf73ceb3675307d3ab56898b8edde55b7e728390a45",
+        "source_fact:v1:47586015796239db64d04a058d3f32b5b8d8135e0744a577d836eb253e003cd7",
+        "source_fact:v1:611f88406f31e6e0912602f93f1f3148c74758ed1437d1cb3e2bfa4cd532ece6",
+        "source_fact:v1:76b79434fb2ec2d31f26b1032e7171fbb5786d8e2e0e510a11e287e7a32afdd6",
+        "source_fact:v1:7c1ac192b2a51af15de1421e610074d1e8ce6c90daec0f89963f8f408322677c",
+        "source_fact:v1:b52bb4944dc3ce0bf330e236a2ce40f28db6265021b7e4691ba31c50a23a9216",
+        "source_fact:v1:b8000aeaa8a7a452c1dd95fcc1e7b3ff714d45030eab91d94490ad2b9f804763",
+        "source_fact:v1:c3ecad609f0c7d66613f53e8908ae5d9431982e4ae18d2c7610cb01bd6533c1b",
+        "source_fact:v1:ce3054a7912ee2b2ccb9f35c849a7b2ad3c28b6bc16f932e37118722d182d6b8",
+        "source_fact:v1:def540a7b78600c990132186300da15f2174b8c66005f613c41161312c85d6a1",
+        "source_fact:v1:fae99063ba20ec121e33b13983cab8399f47be0bcc2d5a7249b91d449370a004"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’",
+      "telegram_core_fact": "KAI 최대주주인 수출입은행의 지분 매각 가능성과 한화의 경영 참여 계획 등이 주요 질의 대상으로 거론된다.",
+      "title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’"
+    },
     "source_fact:aba5257057522c0ab2dd6d7d": {
       "first_seen_kst": "2026-10-06T11:41:27+09:00",
       "lanes": {
@@ -292170,6 +293616,38 @@
       "source_title": "AI 데이터센터 몸값 시험대…엔비디아 투자받은 퍼머스 IPO 철회",
       "telegram_core_fact": "엔비디아의 투자를 유치하고 오픈AI·메타와 대규모 AI 인프라 계약을 맺으며 호주 증시의 대형 기업공개(IPO) 후보로 주목받았던 데이터센터 기업 퍼머스(Firmus)가 상장 계획을 철회했다.",
       "title": "AI 데이터센터 몸값 시험대…엔비디아 투자받은 퍼머스 IPO 철회"
+    },
+    "source_fact:ad4fcda1cfca06726c641840": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633922",
+      "source": "이투데이",
+      "source_body_digest": "653f5e089da79e6ffd8591758737da9eb2ee07c006438d80c0dc84367114ae31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e9da11ec8af14bb598e37940603c2d70a323a8dfcc20ce1fdca3e6b43c065f5e",
+      "source_fact_keys": [
+        "source_fact:v1:21302108cfeaaf0842fb173f0ec06925fa5cd2ee12daa52bc782e2773fc48e8f",
+        "source_fact:v1:2bab80ca419ebd2221f45b2fa6f3620decd96bab08389cf3fe7500721e8a6358",
+        "source_fact:v1:406975f7192328fdb5fd9da93f2054bd2e3a4f836b9a7813517cbc5858e514e2",
+        "source_fact:v1:4184b41b66e25542abf89cf73ceb3675307d3ab56898b8edde55b7e728390a45",
+        "source_fact:v1:47586015796239db64d04a058d3f32b5b8d8135e0744a577d836eb253e003cd7",
+        "source_fact:v1:611f88406f31e6e0912602f93f1f3148c74758ed1437d1cb3e2bfa4cd532ece6",
+        "source_fact:v1:76b79434fb2ec2d31f26b1032e7171fbb5786d8e2e0e510a11e287e7a32afdd6",
+        "source_fact:v1:7c1ac192b2a51af15de1421e610074d1e8ce6c90daec0f89963f8f408322677c",
+        "source_fact:v1:b52bb4944dc3ce0bf330e236a2ce40f28db6265021b7e4691ba31c50a23a9216",
+        "source_fact:v1:b8000aeaa8a7a452c1dd95fcc1e7b3ff714d45030eab91d94490ad2b9f804763",
+        "source_fact:v1:c3ecad609f0c7d66613f53e8908ae5d9431982e4ae18d2c7610cb01bd6533c1b",
+        "source_fact:v1:ce3054a7912ee2b2ccb9f35c849a7b2ad3c28b6bc16f932e37118722d182d6b8",
+        "source_fact:v1:def540a7b78600c990132186300da15f2174b8c66005f613c41161312c85d6a1",
+        "source_fact:v1:fae99063ba20ec121e33b13983cab8399f47be0bcc2d5a7249b91d449370a004"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’",
+      "telegram_core_fact": "KAI 최대주주인 수출입은행의 지분 매각 가능성과 한화의 경영 참여 계획 등이 주요 질의 대상으로 거론된다.",
+      "title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’"
     },
     "source_fact:ad57956d9ee73d0fc1519220": {
       "first_seen_kst": "2026-10-08T18:46:25+09:00",
@@ -296051,6 +297529,35 @@
       "source_published_kst": "2026-10-06T11:45+09:00",
       "title": "車 디스플레이 유리 수입 간소화…재생에너지 '다수 대 다수' PPA 허용"
     },
+    "source_fact:b3059fdf6fffb65ac3fa4b78": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634012",
+      "source": "이투데이",
+      "source_body_digest": "6ce385b5078e74f8fcb042dddb2dbb67dd331b9b37dde8c8077115bf6aa86430",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3db382a20fbe1f75876a22265a4690dd79ae83a2ae9405bc2154fe34552e59d",
+      "source_fact_keys": [
+        "source_fact:v1:64322acf556f70f1f10ece485822527a6f67d4fd5181d156dc75100e8876f510",
+        "source_fact:v1:8f7b1e2138f577d6cf1ad0ee345480fef5a3ffb64acf2bfd27f24476b72c510b",
+        "source_fact:v1:92c36a2d5f43de1e037875df15b31b2239e0127055f842c2c168a9583afd55f1",
+        "source_fact:v1:a7e7821319649c6c4ca813b167bf317894df764fe94e9f1390f38059bc31280d",
+        "source_fact:v1:b687013c576fd55d986dab8bbba918fbdc69ab5375f0d5e405cf1b800265ca8e",
+        "source_fact:v1:b71a9e938759a69c126251f58b61db391842cff4a65cb737d6418906bd92aa9f",
+        "source_fact:v1:d13795590010a9cc27020058a69ab4cd5527ceea8764b73e71f9dae785391793",
+        "source_fact:v1:e1b9ea1dd7eedf7fe09c43799a36956c410189c9109d7f2c2c9cd79c0c0b8b5f",
+        "source_fact:v1:f1a82c841f3956980fa775b62b2e580401097e11fd25ef3ee3cf150a87306faf",
+        "source_fact:v1:f3843056ab9b1485efc583b8b91c0b92f6f94f2d723c6d0d36540c35cec97694",
+        "source_fact:v1:f7e3c1fdd83477896243fb305ca631bbe56e49691ea00c54e20c860abb2eeaac"
+      ],
+      "source_published_kst": "2026-10-11T08:57+09:00",
+      "source_title": "“이번에도 떨어졌다”…삼전 역대급 실적 발표에도 주가 하락",
+      "telegram_core_fact": "삼성전자가 국내 기업 최초로 분기 영업이익 100조원 시대를 열며 사상 최대 실적을 달성했으나 주가는 오히려 하락세로 마감했다.",
+      "title": "“이번에도 떨어졌다”…삼전 역대급 실적 발표에도 주가 하락"
+    },
     "source_fact:b305c061a6e78872a5b8d0c8": {
       "first_seen_kst": "2026-10-06T17:24:43+09:00",
       "lanes": {
@@ -296910,6 +298417,35 @@
       "source_title": "포르쉐, 새 중장기 전략 발표…9000명 감원·사업구조 재편",
       "telegram_core_fact": "포르쉐가 9000개 일자리를 감축하고 일부 사업을 정리하는 내용의 새로운 중장기 전략을 내놨다.",
       "title": "포르쉐, 새 중장기 전략 발표…9000명 감원·사업구조 재편"
+    },
+    "source_fact:b4570600e8914e1fa1acee7c": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634012",
+      "source": "이투데이",
+      "source_body_digest": "6ce385b5078e74f8fcb042dddb2dbb67dd331b9b37dde8c8077115bf6aa86430",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3db382a20fbe1f75876a22265a4690dd79ae83a2ae9405bc2154fe34552e59d",
+      "source_fact_keys": [
+        "source_fact:v1:64322acf556f70f1f10ece485822527a6f67d4fd5181d156dc75100e8876f510",
+        "source_fact:v1:8f7b1e2138f577d6cf1ad0ee345480fef5a3ffb64acf2bfd27f24476b72c510b",
+        "source_fact:v1:92c36a2d5f43de1e037875df15b31b2239e0127055f842c2c168a9583afd55f1",
+        "source_fact:v1:a7e7821319649c6c4ca813b167bf317894df764fe94e9f1390f38059bc31280d",
+        "source_fact:v1:b687013c576fd55d986dab8bbba918fbdc69ab5375f0d5e405cf1b800265ca8e",
+        "source_fact:v1:b71a9e938759a69c126251f58b61db391842cff4a65cb737d6418906bd92aa9f",
+        "source_fact:v1:d13795590010a9cc27020058a69ab4cd5527ceea8764b73e71f9dae785391793",
+        "source_fact:v1:e1b9ea1dd7eedf7fe09c43799a36956c410189c9109d7f2c2c9cd79c0c0b8b5f",
+        "source_fact:v1:f1a82c841f3956980fa775b62b2e580401097e11fd25ef3ee3cf150a87306faf",
+        "source_fact:v1:f3843056ab9b1485efc583b8b91c0b92f6f94f2d723c6d0d36540c35cec97694",
+        "source_fact:v1:f7e3c1fdd83477896243fb305ca631bbe56e49691ea00c54e20c860abb2eeaac"
+      ],
+      "source_published_kst": "2026-10-11T08:57+09:00",
+      "source_title": "“이번에도 떨어졌다”…삼전 역대급 실적 발표에도 주가 하락",
+      "telegram_core_fact": "삼성전자가 국내 기업 최초로 분기 영업이익 100조원 시대를 열며 사상 최대 실적을 달성했으나 주가는 오히려 하락세로 마감했다.",
+      "title": "“이번에도 떨어졌다”…삼전 역대급 실적 발표에도 주가 하락"
     },
     "source_fact:b45ece5a5647fc787d4f460f": {
       "first_seen_kst": "2026-10-06T20:12:00+09:00",
@@ -308005,6 +309541,29 @@
       ],
       "source_published_kst": "2026-10-05T18:21+09:00",
       "title": "솔리다임 美상장… \"SK하닉 가치 재평가\" vs \"주주 피해\" [어떻게 생각하십니까]"
+    },
+    "source_fact:c53d11917527b18f0522fb22": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261010000300003",
+      "source": "연합뉴스",
+      "source_body_digest": "7410d44fe790955b7dc0a61f45b9c85992630b7965213c0bbc6ffd5c24173f56",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48b6ddc7a9615d1a2d7d87d52afd39f756df4e5c40a8aa8174970f12664c733d",
+      "source_fact_keys": [
+        "source_fact:v1:3f6d90ddb360b764c7ef0e4907fe8c6ea0410e2b76740547650c1a75e78dc294",
+        "source_fact:v1:497f069226bcdf688e10e8613a117389f6c4c556fc8acde4ba76f71f4ea87f35",
+        "source_fact:v1:9080c0fc3533d2f1110f115652fb5b38c8fa6d0fbecffbe15a983f8c78b4ca91",
+        "source_fact:v1:970a5cfbab1027c31d45b397936fa70f7a82e09fe7225de40b767b412ff48da3",
+        "source_fact:v1:e552efb5160ac3dd061582cc370f1e826d8c9b056db39bae2031cc64f4fe7493"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "현대차, 인도 진출 30년만에 누적판매 1천만대 돌파 눈앞 | 연합뉴스",
+      "telegram_core_fact": "현대차는 첸나이 1·2공장(82만4천대)에 이어 푸네 신공장(17만대)을 본격 가동하며 인도 현지에서 총 100만대의 생산능력을 갖추게 됐다.",
+      "title": "현대차, 인도 진출 30년만에 누적판매 1천만대 돌파 눈앞 | 연합뉴스"
     },
     "source_fact:c54cdf97249cbe599c77b3bf": {
       "first_seen_kst": "2026-10-08T08:56:19+09:00",
@@ -330351,6 +331910,35 @@
       "source_published_kst": "2026-10-06T08:19+09:00",
       "title": "“IPO 미룬 오픈AI, 300억달러 투자 유치 논의 중”"
     },
+    "source_fact:e5fa8ef099c08c4a4d8d383a": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634012",
+      "source": "이투데이",
+      "source_body_digest": "6ce385b5078e74f8fcb042dddb2dbb67dd331b9b37dde8c8077115bf6aa86430",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3db382a20fbe1f75876a22265a4690dd79ae83a2ae9405bc2154fe34552e59d",
+      "source_fact_keys": [
+        "source_fact:v1:64322acf556f70f1f10ece485822527a6f67d4fd5181d156dc75100e8876f510",
+        "source_fact:v1:8f7b1e2138f577d6cf1ad0ee345480fef5a3ffb64acf2bfd27f24476b72c510b",
+        "source_fact:v1:92c36a2d5f43de1e037875df15b31b2239e0127055f842c2c168a9583afd55f1",
+        "source_fact:v1:a7e7821319649c6c4ca813b167bf317894df764fe94e9f1390f38059bc31280d",
+        "source_fact:v1:b687013c576fd55d986dab8bbba918fbdc69ab5375f0d5e405cf1b800265ca8e",
+        "source_fact:v1:b71a9e938759a69c126251f58b61db391842cff4a65cb737d6418906bd92aa9f",
+        "source_fact:v1:d13795590010a9cc27020058a69ab4cd5527ceea8764b73e71f9dae785391793",
+        "source_fact:v1:e1b9ea1dd7eedf7fe09c43799a36956c410189c9109d7f2c2c9cd79c0c0b8b5f",
+        "source_fact:v1:f1a82c841f3956980fa775b62b2e580401097e11fd25ef3ee3cf150a87306faf",
+        "source_fact:v1:f3843056ab9b1485efc583b8b91c0b92f6f94f2d723c6d0d36540c35cec97694",
+        "source_fact:v1:f7e3c1fdd83477896243fb305ca631bbe56e49691ea00c54e20c860abb2eeaac"
+      ],
+      "source_published_kst": "2026-10-11T08:57+09:00",
+      "source_title": "“이번에도 떨어졌다”…삼전 역대급 실적 발표에도 주가 하락",
+      "telegram_core_fact": "삼성전자가 국내 기업 최초로 분기 영업이익 100조원 시대를 열며 사상 최대 실적을 달성했으나 주가는 오히려 하락세로 마감했다.",
+      "title": "“이번에도 떨어졌다”…삼전 역대급 실적 발표에도 주가 하락"
+    },
     "source_fact:e5fe4f2ddb0fdb88dbb07159": {
       "first_seen_kst": "2026-10-07T11:25:20+09:00",
       "lanes": {
@@ -330525,6 +332113,26 @@
       ],
       "source_published_kst": "2026-10-04T22:38+09:00",
       "title": "\"사우디, 2034 월드컵 경기장 '네옴 스타디움' 건설 계획 보류\" | 연합뉴스"
+    },
+    "source_fact:e6668d2c088c04170bfac7bd": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818737",
+      "source": "뉴시스",
+      "source_body_digest": "5b93cef91e4ce47a23c6767e710a2dfcdf46edc6777c0f5b8d574a7c32caa15f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ecacdfab5b275c978899a9cca69a7e93b3c05efa44e6110ed34fd7dd29c1e56b",
+      "source_fact_keys": [
+        "source_fact:v1:a7d2a084b203731c08a0bec05c4a0fa274f403f391104143e3a839ee145ca372",
+        "source_fact:v1:afe35c795421b7efd4b3b56d76975a8572f17b20a02caeeed5666871e80e68a6"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "금융권 훑고 다닌 'AI 해킹'…\"더 큰 피해 올 수도\"[K금융의 보안 민낯④]",
+      "telegram_core_fact": "금융업계와 보안업계에 따르면 최근 신한·KB국민·하나·BNK부산은행 등 주요 은행에서 해킹 공격으로 인한 이용자 정보 유출 피해가 잇따라 확인됐다.",
+      "title": "금융권 훑고 다닌 'AI 해킹'…\"더 큰 피해 올 수도\"[K금융의 보안 민낯④]"
     },
     "source_fact:e66c2035b24f403b1c677e87": {
       "first_seen_kst": "2026-10-06T21:05:27+09:00",
@@ -348803,6 +350411,26 @@
       "source_published_kst": "2026-10-06T14:26+09:00",
       "title": "HD현대, 세계 최초 '래싱프리 컨테이너선' 프랑스 선사에 인도 | 연합뉴스"
     },
+    "title:0a3a9b2e4c0bfa2166f85fb6": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.newsis.com/view/NISX20261008_0003818737",
+      "source": "뉴시스",
+      "source_body_digest": "5b93cef91e4ce47a23c6767e710a2dfcdf46edc6777c0f5b8d574a7c32caa15f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ecacdfab5b275c978899a9cca69a7e93b3c05efa44e6110ed34fd7dd29c1e56b",
+      "source_fact_keys": [
+        "source_fact:v1:a7d2a084b203731c08a0bec05c4a0fa274f403f391104143e3a839ee145ca372",
+        "source_fact:v1:afe35c795421b7efd4b3b56d76975a8572f17b20a02caeeed5666871e80e68a6"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "금융권 훑고 다닌 'AI 해킹'…\"더 큰 피해 올 수도\"[K금융의 보안 민낯④]",
+      "telegram_core_fact": "금융업계와 보안업계에 따르면 최근 신한·KB국민·하나·BNK부산은행 등 주요 은행에서 해킹 공격으로 인한 이용자 정보 유출 피해가 잇따라 확인됐다.",
+      "title": "금융권 훑고 다닌 'AI 해킹'…\"더 큰 피해 올 수도\"[K금융의 보안 민낯④]"
+    },
     "title:0a3dc3a61c905d1ed6245f10": {
       "first_seen_kst": "2026-10-07T00:09:35+09:00",
       "lanes": {
@@ -354861,6 +356489,35 @@
       "source_title": "리졸브 AI, 상반기 매출 1억3100만 달러..연말 ARR 5억 달러 목표",
       "telegram_core_fact": "리졸브 AI(RZLV)는 2026년 상반기 매출액이 1억3080만 달러로 전년 동기의 20배를 넘었으며, 2026년 말 기준 연간 반복매출(ARR) 최소 5억 달러를 목표로 제시했다고 10월 8일 발표했다.",
       "title": "리졸브 AI, 상반기 매출 1억3100만 달러..연말 ARR 5억 달러 목표"
+    },
+    "title:27236c3d5856caa1a25a67c2": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634012",
+      "source": "이투데이",
+      "source_body_digest": "6ce385b5078e74f8fcb042dddb2dbb67dd331b9b37dde8c8077115bf6aa86430",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b3db382a20fbe1f75876a22265a4690dd79ae83a2ae9405bc2154fe34552e59d",
+      "source_fact_keys": [
+        "source_fact:v1:64322acf556f70f1f10ece485822527a6f67d4fd5181d156dc75100e8876f510",
+        "source_fact:v1:8f7b1e2138f577d6cf1ad0ee345480fef5a3ffb64acf2bfd27f24476b72c510b",
+        "source_fact:v1:92c36a2d5f43de1e037875df15b31b2239e0127055f842c2c168a9583afd55f1",
+        "source_fact:v1:a7e7821319649c6c4ca813b167bf317894df764fe94e9f1390f38059bc31280d",
+        "source_fact:v1:b687013c576fd55d986dab8bbba918fbdc69ab5375f0d5e405cf1b800265ca8e",
+        "source_fact:v1:b71a9e938759a69c126251f58b61db391842cff4a65cb737d6418906bd92aa9f",
+        "source_fact:v1:d13795590010a9cc27020058a69ab4cd5527ceea8764b73e71f9dae785391793",
+        "source_fact:v1:e1b9ea1dd7eedf7fe09c43799a36956c410189c9109d7f2c2c9cd79c0c0b8b5f",
+        "source_fact:v1:f1a82c841f3956980fa775b62b2e580401097e11fd25ef3ee3cf150a87306faf",
+        "source_fact:v1:f3843056ab9b1485efc583b8b91c0b92f6f94f2d723c6d0d36540c35cec97694",
+        "source_fact:v1:f7e3c1fdd83477896243fb305ca631bbe56e49691ea00c54e20c860abb2eeaac"
+      ],
+      "source_published_kst": "2026-10-11T08:57+09:00",
+      "source_title": "“이번에도 떨어졌다”…삼전 역대급 실적 발표에도 주가 하락",
+      "telegram_core_fact": "삼성전자가 국내 기업 최초로 분기 영업이익 100조원 시대를 열며 사상 최대 실적을 달성했으나 주가는 오히려 하락세로 마감했다.",
+      "title": "“이번에도 떨어졌다”…삼전 역대급 실적 발표에도 주가 하락"
     },
     "title:273249a247518cbb27a45832": {
       "first_seen_kst": "2026-10-03T03:43:38+09:00",
@@ -375824,6 +377481,38 @@
       "source": "지디넷코리아",
       "title": "허태수 GS 회장 \"스타트업 기술로 AI 데이터센터 병목 해소\""
     },
+    "title:8767772e5fb08da4f224a9c3": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633922",
+      "source": "이투데이",
+      "source_body_digest": "653f5e089da79e6ffd8591758737da9eb2ee07c006438d80c0dc84367114ae31",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e9da11ec8af14bb598e37940603c2d70a323a8dfcc20ce1fdca3e6b43c065f5e",
+      "source_fact_keys": [
+        "source_fact:v1:21302108cfeaaf0842fb173f0ec06925fa5cd2ee12daa52bc782e2773fc48e8f",
+        "source_fact:v1:2bab80ca419ebd2221f45b2fa6f3620decd96bab08389cf3fe7500721e8a6358",
+        "source_fact:v1:406975f7192328fdb5fd9da93f2054bd2e3a4f836b9a7813517cbc5858e514e2",
+        "source_fact:v1:4184b41b66e25542abf89cf73ceb3675307d3ab56898b8edde55b7e728390a45",
+        "source_fact:v1:47586015796239db64d04a058d3f32b5b8d8135e0744a577d836eb253e003cd7",
+        "source_fact:v1:611f88406f31e6e0912602f93f1f3148c74758ed1437d1cb3e2bfa4cd532ece6",
+        "source_fact:v1:76b79434fb2ec2d31f26b1032e7171fbb5786d8e2e0e510a11e287e7a32afdd6",
+        "source_fact:v1:7c1ac192b2a51af15de1421e610074d1e8ce6c90daec0f89963f8f408322677c",
+        "source_fact:v1:b52bb4944dc3ce0bf330e236a2ce40f28db6265021b7e4691ba31c50a23a9216",
+        "source_fact:v1:b8000aeaa8a7a452c1dd95fcc1e7b3ff714d45030eab91d94490ad2b9f804763",
+        "source_fact:v1:c3ecad609f0c7d66613f53e8908ae5d9431982e4ae18d2c7610cb01bd6533c1b",
+        "source_fact:v1:ce3054a7912ee2b2ccb9f35c849a7b2ad3c28b6bc16f932e37118722d182d6b8",
+        "source_fact:v1:def540a7b78600c990132186300da15f2174b8c66005f613c41161312c85d6a1",
+        "source_fact:v1:fae99063ba20ec121e33b13983cab8399f47be0bcc2d5a7249b91d449370a004"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’",
+      "telegram_core_fact": "KAI 최대주주인 수출입은행의 지분 매각 가능성과 한화의 경영 참여 계획 등이 주요 질의 대상으로 거론된다.",
+      "title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’"
+    },
     "title:876a39328798c47dbff75f95": {
       "first_seen_kst": "2026-10-07T22:53:53+09:00",
       "lanes": {
@@ -377459,6 +379148,25 @@
       ],
       "source_published_kst": "2026-10-06T08:45+09:00",
       "title": "한미반도체, 삼성전기에 패키징 장비 공급…245억원 규모"
+    },
+    "title:8e629e511e2db8cbe6febd0b": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634240",
+      "source": "이투데이",
+      "source_body_digest": "333ceb53392942fba1d2cae4bde00636658492494ba5ef38d3bb2d4ff2a5dcab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4484e4b5bbfde6d54f3c4ec95070442a32bc5ba3d1c2fe59da867937f6373888",
+      "source_fact_keys": [
+        "source_fact:v1:90341f65b948145671c57fd4e479f75fe1070e4d860fe1a9c2c5396a72ecf9ef"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "상표 계약 맺어놓고 “사용료 아냐” 프라다, 33억 세금소송 최종 패소",
+      "telegram_core_fact": "강남세무서는 이 지급액을 국내에서 상표권을 사용한 대가인 ‘국내 원천 사용료 소득’으로 보고, 2019년 12월 프라다코리아에 가산세를 포함한 약 33억원의 법인세를 부과했다.",
+      "title": "상표 계약 맺어놓고 “사용료 아냐” 프라다, 33억 세금소송 최종 패소"
     },
     "title:8e7d0a2b38ba4c03bd999914": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
@@ -380324,6 +382032,23 @@
       "link": "https://www.mt.co.kr/world/2026/10/03/2026100306383782269",
       "source": "머니투데이",
       "title": "트럼프 \"2배 청구\" 으름장, 국무부 \"한미 윈윈\"…알래스카 LNG 압박"
+    },
+    "title:9b00cbe64176a072a3523775": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633388",
+      "source": "이투데이",
+      "source_body_digest": "0b605a884a7b35e91796bbc668870a2af9df36ad5999f38c334451c15a5386d4",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "조각투자 넘어 채권ㆍ펀드로⋯토큰증권 시장 확장 채비",
+      "telegram_core_fact": "토큰증권 시장이 부동산·미술품 등 조각투자를 넘어 채권·펀드로 확장을 준비한다. 일반투자자의 장외거래소 투자한도는 거래소 한 곳당 연간 순매수액 1억원으로 제한하는 안이 제시됐다.",
+      "title": "조각투자 넘어 채권ㆍ펀드로⋯토큰증권 시장 확장 채비"
     },
     "title:9b5b598b553f986f0afba470": {
       "first_seen_kst": "2026-10-02T13:38:43+09:00",
@@ -388545,6 +390270,29 @@
       "source_published_kst": "2026-10-06T08:48+09:00",
       "title": "키움운용, '미국AI테크하이베타 ETF' 마이크론·스페이스X 신규 편입"
     },
+    "title:c115d1213eadde00b2990687": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261010000300003",
+      "source": "연합뉴스",
+      "source_body_digest": "7410d44fe790955b7dc0a61f45b9c85992630b7965213c0bbc6ffd5c24173f56",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48b6ddc7a9615d1a2d7d87d52afd39f756df4e5c40a8aa8174970f12664c733d",
+      "source_fact_keys": [
+        "source_fact:v1:3f6d90ddb360b764c7ef0e4907fe8c6ea0410e2b76740547650c1a75e78dc294",
+        "source_fact:v1:497f069226bcdf688e10e8613a117389f6c4c556fc8acde4ba76f71f4ea87f35",
+        "source_fact:v1:9080c0fc3533d2f1110f115652fb5b38c8fa6d0fbecffbe15a983f8c78b4ca91",
+        "source_fact:v1:970a5cfbab1027c31d45b397936fa70f7a82e09fe7225de40b767b412ff48da3",
+        "source_fact:v1:e552efb5160ac3dd061582cc370f1e826d8c9b056db39bae2031cc64f4fe7493"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "현대차, 인도 진출 30년만에 누적판매 1천만대 돌파 눈앞 | 연합뉴스",
+      "telegram_core_fact": "현대차는 첸나이 1·2공장(82만4천대)에 이어 푸네 신공장(17만대)을 본격 가동하며 인도 현지에서 총 100만대의 생산능력을 갖추게 됐다.",
+      "title": "현대차, 인도 진출 30년만에 누적판매 1천만대 돌파 눈앞 | 연합뉴스"
+    },
     "title:c1479694d28a15ab9d3cf908": {
       "first_seen_kst": "2026-10-07T06:28:41+09:00",
       "lanes": {
@@ -389424,6 +391172,25 @@
       "source_title": "[속보] 韓 발사체 ‘누리호’ 우주 발사…위성 15기 분리 성공",
       "telegram_core_fact": "“임무를 마친 누리호 3단은 남아있는 산화제를 배출하고 소멸한다”면서 “위성의 정확한 목표궤도 투입결과를 발표할 계획”이라고 덧붙였다.",
       "title": "[속보] 韓 발사체 ‘누리호’ 우주 발사…위성 15기 분리 성공"
+    },
+    "title:c668c6831916144c312dcc55": {
+      "first_seen_kst": "2026-10-11T09:08:30+09:00",
+      "lanes": {
+        "live": "2026-10-11T09:08:30+09:00"
+      },
+      "last_seen_kst": "2026-10-11T09:08:30+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261008078400051",
+      "source": "연합뉴스",
+      "source_body_digest": "9697c36afb056c9e5b9b2c6c0eb24b1486d502dc69044fe32aac2a442d760872",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dec9f0a1da2ff9fc247c1cda868844b6c428982ad0affd11f533ffc84d492ff8",
+      "source_fact_keys": [
+        "source_fact:v1:b86e53ea7cd6d02842e7c483558cce364ec5d60aa8c5892a947ed6439a02cc8b"
+      ],
+      "source_published_kst": "2026-10-11T09:00+09:00",
+      "source_title": "부산 에코델타시티 18·19블록 계약취소 2가구 재공급 | 연합뉴스",
+      "telegram_core_fact": "신창호 부산도시공사 사장은 \"이번에 재공급하는 취소 세대는 청약 조건이 까다롭지 않아 진입장벽이 낮고, 분양가격이 저렴해 시민 관심이 높을 것으로 예상한다\"라며 \"청약 접수부터 입주까지 차질 없이 일정이 진행될 수 있도록 철저히 준비하겠다\"고 말했다.",
+      "title": "부산 에코델타시티 18·19블록 계약취소 2가구 재공급 | 연합뉴스"
     },
     "title:c6696217675dcd6ad8a75c5b": {
       "first_seen_kst": "2026-10-06T22:08:07+09:00",
@@ -401905,5 +403672,5 @@
       "title": "AI 데이터센터가 살린 철강…관세 50%에도 대미 수출 급증"
     }
   },
-  "updated_at_kst": "2026-10-11T08:42:16+09:00"
+  "updated_at_kst": "2026-10-11T09:08:30+09:00"
 }
