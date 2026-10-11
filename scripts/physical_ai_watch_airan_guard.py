@@ -354,6 +354,93 @@ def _digital_optimus_game_recovery() -> list[dict]:
     }]
 
 
+
+# Counterpoint humanoid BRAIN-DRAM demand, 2026-10-10 primary-source forecast.
+# 19/39 GB are a blended DRAM forecast PER robot, not installed production
+# measurements, NAND capacity, HBM capacity, or a confirmed OEM memory order.
+HUMANOID_DRAM_RECOVERY = 'DIRECT_COUNTERPOINT_HUMANOID_BRAIN_DRAM_20261010_19GB_39GB'
+HUMANOID_DRAM_URL = 'https://counterpointresearch.com/ko/insights/robot-dram-demand-samsung-sk-hynix'
+HUMANOID_DRAM_OFFICIAL = {'Counterpoint Research', '카운터포인트리서치', 'Counterpoint'}
+HUMANOID_DRAM_FORECAST_REVISION = re.compile(
+    r'(?:revised?|revision|revises?|raises?\s+forecast|cuts?\s+forecast|'
+    r'전망\s*(?:상향|하향|수정|변경)|전망치\s*(?:상향|하향|수정|변경))',
+    re.I,
+)
+HUMANOID_DRAM_COMPANY = re.compile(r'Counterpoint|카운터포인트', re.I)
+HUMANOID_DRAM_SUBJECT = re.compile(r'휴머노이드|humanoid|robot(?:s|ic)?|로봇', re.I)
+HUMANOID_DRAM_MEMORY = re.compile(r'DRAM|D\s*램|디램|LPDDR|저전력\s*메모리', re.I)
+HUMANOID_DRAM_19 = re.compile(r'(?<!\d)19\s*(?:GB|기가\s*바이트)', re.I)
+HUMANOID_DRAM_39 = re.compile(r'(?<!\d)39\s*(?:GB|기가\s*바이트)', re.I)
+HUMANOID_DRAM_8300 = re.compile(r'(?<!\d)8[,]?\s*300\s*(?:Tbit|테라\s*비트)', re.I)
+HUMANOID_DRAM_172000 = re.compile(r'(?<!\d)172[,]?\s*000\s*(?:Tbit|테라\s*비트)|17\s*만\s*2[,]?\s*000\s*(?:Tbit|테라\s*비트)', re.I)
+HUMANOID_DRAM_BASELINE = (
+    '카운터포인트리서치: 휴머노이드 두뇌용 D램 19GB→39GB, '
+    '산업 총량 8,300→172,000Tbit 전망'
+)
+
+
+def _is_humanoid_dram(text: str) -> bool:
+    if not (HUMANOID_DRAM_SUBJECT.search(text) and HUMANOID_DRAM_MEMORY.search(text)):
+        return False
+    return bool(
+        HUMANOID_DRAM_COMPANY.search(text)
+        or (HUMANOID_DRAM_19.search(text) and HUMANOID_DRAM_39.search(text))
+    )
+
+
+def _humanoid_dram_stage(text: str, source: str = '') -> str:
+    if not _is_humanoid_dram(text):
+        return ''
+    if (source in HUMANOID_DRAM_OFFICIAL
+            and HUMANOID_DRAM_FORECAST_REVISION.search(text)
+            and (re.search(r'2030', text) and re.search(r'Tbit|테라\s*비트|GB', text, re.I))):
+        return 'official_forecast_revision'
+    if ((HUMANOID_DRAM_19.search(text) and HUMANOID_DRAM_39.search(text))
+            and (HUMANOID_DRAM_8300.search(text)
+                 and HUMANOID_DRAM_172000.search(text)
+                 or HUMANOID_DRAM_COMPANY.search(text))):
+        return 'initial_research_forecast'
+    return 'background'
+
+
+def _humanoid_dram_recovery() -> list[dict]:
+    # The research note reports a DATE (2026-10-10), not a verified time.
+    # published=None prevents manufacturing a publication hour.
+    # Historical recovery expires, so dedup-state rotation cannot replay news.
+    if base.NOW.astimezone(base.KST).date() > dt.date(2026, 10, 18):
+        return []
+    return [{
+        'title': HUMANOID_DRAM_BASELINE,
+        'link': HUMANOID_DRAM_URL,
+        'description': (
+            '카운터포인트리서치 2026-10-10 공식 휴머노이드 로봇 인사이트 기준: '
+            '2026년 로봇 한 대당 블렌디드 D램 평균 19GB, 산업 연간 총수요 '
+            '약 8,300Tbit 전망; 2030년 평균 39GB, 산업 연간 총수요 '
+            '약 172,000Tbit 전망. 이는 각 연도 전체 출하 제품의 메모리 '
+            '비트 수요 예측이지 현재 양산품 측정이나 확정 고객 주문이 아니다. '
+            '2026년→2030년 총량 약 20.72배, 대당 용량 약 2.05배. '
+            '십진 환산 1Tbit=125GB를 적용하면 연간 D램 총량 '
+            '2026년 1,037,500GB, 2030년 21,500,000GB. '
+            '연간 출하대수 단순 역산은 각각 약 54,605대·551,282대이지만 '
+            '실제 OEM 출하량 직접 발표가 아니며 예측 평균의 혼합제품 영향이 있다. '
+            '가격 미공개로 실제 원화 매출 추정 금지. '
+            '원화 민감도: 출하 D램 1GB당 실현 평균판매단가가 1,000원 달라질 경우 '
+            '2030년 산업 전체 가상 매출 변동은 215억원, 2026년은 '
+            '약 10억 3,750만원이며 이것은 실제 판매가격·계약금액 예측이 아니다. '
+            '저전력 D램 LPDDR과 낸드 저장장치는 서로 분리하고 '
+            '고대역폭메모리 HBM도 로봇 탑재량 39GB에 더하지 않는다. '
+            'Micron CEO가 말한 향후 휴머노이드 200GB 이상 메모리 가능성은 '
+            '별도 고사양 시나리오이지 본 조사기관의 2030 평균과 같지 않다. '
+            '고객사별 공급·출하·실제 평균판매단가·수율·이익률은 공개되지 않았다. '
+            '카운터포인트 원문·연합뉴스·뉴스1 보도로 숫자를 교차확인했다.'
+        ),
+        'source': '카운터포인트리서치',
+        'published': None,
+        'direct_recovery': True,
+        'robot_memory_forecast': True,
+    }]
+
+
 _orig_query_news = base.query_news
 
 
@@ -366,6 +453,8 @@ def query_news(q: str) -> list[dict]:
         return _tesla_touch_patent_recovery()
     if q == DIGITAL_OPTIMUS_GAME_RECOVERY:
         return _digital_optimus_game_recovery()
+    if q == HUMANOID_DRAM_RECOVERY:
+        return _humanoid_dram_recovery()
     return _orig_query_news(q)
 
 
@@ -378,6 +467,18 @@ if TESLA_TOUCH_PATENT_RECOVERY not in base.QUERIES:
     base.QUERIES.append(TESLA_TOUCH_PATENT_RECOVERY)
 if DIGITAL_OPTIMUS_GAME_RECOVERY not in base.QUERIES:
     base.QUERIES.append(DIGITAL_OPTIMUS_GAME_RECOVERY)
+if HUMANOID_DRAM_RECOVERY not in base.QUERIES:
+    base.QUERIES.append(HUMANOID_DRAM_RECOVERY)
+for q in (
+    '(Counterpoint OR 카운터포인트) (휴머노이드 OR humanoid OR 로봇) '
+    '(DRAM OR D램 OR LPDDR) (19GB OR 39GB OR 8300Tbit OR 172000Tbit '
+    'OR 전망 수정 OR revised OR forecast)',
+    '(휴머노이드 OR humanoid) (LPDDR OR 저전력 D램 OR NAND OR 낸드) '
+    '(삼성전자 OR SK하이닉스 OR Micron OR 카운터포인트) '
+    '(공급계약 OR 고객 승인 OR 양산 출하 OR revised forecast OR 전망 상향)',
+):
+    if q not in base.QUERIES:
+        base.QUERIES.append(q)
 for q in (
     '("Digital Optimus" OR "Macrohard" OR 디지털옵티머스) '
     '(Diablo OR 디아블로 OR "Counter Strike" OR Counter-Strike OR 게임 OR games) '
@@ -463,6 +564,8 @@ def _is_airan(text: str) -> bool:
 
 
 def topic_group(text: str) -> str | None:
+    if _is_humanoid_dram(text):
+        return 'humanoid_brain_dram'
     if _is_digital_optimus_game(text):
         return 'digital_optimus_games'
     if _tesla_touch_patent_match(text):
@@ -488,6 +591,11 @@ def _stage(text: str) -> str:
 
 def score(item: dict) -> int:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    if topic_group(text) == 'humanoid_brain_dram':
+        stage = _humanoid_dram_stage(text, item.get('source') or '')
+        return {'initial_research_forecast': 45,
+                'official_forecast_revision': 52,
+                'background': 0}.get(stage, 0)
     if topic_group(text) == 'digital_optimus_games':
         return {
             'musk_game_progress': 43,
@@ -533,6 +641,13 @@ def score(item: dict) -> int:
 
 
 def category(text: str, group: str) -> str:
+    if group == 'humanoid_brain_dram':
+        # category() receives title+description without the source.
+        if HUMANOID_DRAM_FORECAST_REVISION.search(text) and (
+            re.search(r'2030', text) and re.search(r'Tbit|테라s*비트|GB', text, re.I)
+        ):
+            return '휴머노이드 두뇌 D램 · 조사기관 전망치 공식 수정'
+        return '휴머노이드 두뇌 D램 · 2030년 수요 신규 전망'
     if group == 'digital_optimus_games':
         # The renderer has no source argument, while score() does. The unique
         # 2026-10-10 CEO post must never be promoted into a benchmark merely
@@ -589,6 +704,28 @@ def category(text: str, group: str) -> str:
 
 
 def meaning(cat: str) -> str:
+    if cat == '휴머노이드 두뇌 D램 · 2030년 수요 신규 전망':
+        return (
+            '카운터포인트리서치 10/10 전망: 로봇 1대 평균 D램은 '
+            '2026년 19GB→2030년 39GB, 산업 연간 D램 수요는 '
+            '8,300→172,000Tbit(약 20.72배)로 증가할 것으로 예상됩니다. '
+            '물량×단위는 1Tbit=125GB의 십진 환산으로 각각 '
+            '1,037,500GB→21,500,000GB입니다. '
+            '대당 평균으로 나눈 역산 출하규모는 약 5만 4,605대→55만 1,282대에 '
+            '해당하지만 실제 출하 실적은 아닙니다. '
+            '1GB당 평균판매단가가 가정상 1,000원 변할 때 2030년 전 산업 연간 '
+            '매출 민감도는 215억원(2026년 약 10억 3,750만원)입니다. '
+            '이는 실거래 단가·매출 가이던스가 아닙니다. '
+            '현재 로봇 주력은 저전력 D램 LPDDR과 낸드 저장장치이며 '
+            '39GB를 낸드·HBM 탑재량에 그대로 적용하면 안 됩니다.'
+        )
+    if cat == '휴머노이드 두뇌 D램 · 조사기관 전망치 공식 수정':
+        return (
+            '카운터포인트 공식 원문이 과거 2026년 19GB·8,300Tbit, '
+            '2030년 39GB·172,000Tbit 대비 전망을 직접 변경한 단계입니다. '
+            '로봇 대당 D램과 연간 비트 수요를 다시 검산하고 수정 원인을 '
+            '출하량·제품 조합·전력·가격으로 분리해 확인해야 합니다.'
+        )
     if cat == 'Digital Optimus · 게임 수행 경영진 진전 발언':
         return (
             '10/10 머스크 X: 게임 화면을 보며 Diablo 캠페인의 약 절반까지 진행한다고 주장. '
@@ -673,6 +810,20 @@ def meaning(cat: str) -> str:
 
 
 def risk(cat: str) -> str:
+    if cat.startswith('휴머노이드 두뇌 D램 · '):
+        return (
+            '가장 현실적인 실패 경로는 로봇 양산이 지연되거나 메모리 최적화로 '
+            '실제 대당 탑재량이 전망보다 적어지는 것입니다. 2030년 수요 '
+            '172,000Tbit의 25%만 미달해도 연간 43,000Tbit '
+            '(5,375,000GB)가 줄어듭니다. '
+            '저전력 D램 발열·전력소모·대역폭, 낸드 쓰기수명·저장 용량, '
+            '반도체 패키징 수율·고온 동작 검사·신뢰성 검증, '
+            'HBM 증설에 따른 웨이퍼 공급경쟁을 별도 병목으로 봅니다. '
+            '6~24개월 조기경보는 로봇 실제 출하 대수, LPDDR 채택 용량, '
+            '메모리 가격·수율, 반복 주문입니다. '
+            '삼성전자·SK하이닉스·마이크론의 휴머노이드 실제 고객 실명·'
+            '공급계약·매출은 조사기관 전망만으로 확인되지 않습니다.'
+        )
     if cat.startswith('Digital Optimus · '):
         return (
             '실패 경로는 게임별 단기 시연에는 성공해도 새로운 게임·긴 작업·일반 컴퓨터 '
@@ -716,6 +867,14 @@ def risk(cat: str) -> str:
 
 
 def verification(item: dict, group: str, text: str) -> str:
+    if group == 'humanoid_brain_dram':
+        if _humanoid_dram_stage(text, item.get('source') or '') == 'official_forecast_revision':
+            return '카운터포인트리서치 직접 수정 발표 단계 · 기존 전망과 고객 확정 주문을 분리'
+        return (
+            '카운터포인트리서치 2026-10-10 공식 인사이트·연합뉴스·뉴스1 '
+            '수치 교차확인 · 산업 전망치, 회사 실출하·공급계약 아님 · '
+            'LPDDR D램/낸드/HBM별 용량 구분'
+        )
     if group == 'digital_optimus_games':
         stage = _digital_optimus_stage(text, item.get('source') or '')
         if stage == 'musk_game_progress':
@@ -768,6 +927,11 @@ def verification(item: dict, group: str, text: str) -> str:
 
 def clean_title(title: str, source: str) -> str:
     text = f'{title} {source}'
+    if _is_humanoid_dram(text):
+        return (
+            '카운터포인트: 휴머노이드 D램 평균 19→39GB, '
+            '전체 수요 8,300→172,000Tbit 전망'
+        )
     if _is_digital_optimus_game(text):
         if DIGITAL_OPTIMUS_POST_ID in text or source in DIGITAL_OPTIMUS_CEO_SOURCES:
             return '머스크: Digital Optimus 게임 수행 진전…Diablo 캠페인 약 절반'
@@ -818,6 +982,8 @@ def clean_title(title: str, source: str) -> str:
 
 
 def tag_for(group: str) -> str:
+    if group == 'humanoid_brain_dram':
+        return '휴머노이드 메모리'
     if group == 'digital_optimus_games':
         return '테슬라 디지털 에이전트'
     if group == 'tesla_touch_patent':
@@ -833,6 +999,18 @@ def tag_for(group: str) -> str:
 
 def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    if topic_group(text) == 'humanoid_brain_dram':
+        stage = _humanoid_dram_stage(text, item.get('source') or '')
+        if stage == 'initial_research_forecast':
+            return hashlib.sha256(
+                b'counterpoint|humanoid-brain-dram|2026-10-10|2026-19gb-8300tbit|2030-39gb-172000tbit'
+            ).hexdigest()
+        # Revised forecasts keep a new numeric signature but multiple media
+        # copies of one change do not create fresh alerts.
+        nums = '|'.join(sorted(set(re.findall(
+            r'\d[\d,]*\s*(?:GB|Tbit|테라\s*비트)', text, re.I
+        ))))
+        return hashlib.sha256(f'counterpoint|humanoid-brain-dram|{stage}|{nums}'.encode()).hexdigest()
     if topic_group(text) == 'digital_optimus_games':
         stage = _digital_optimus_stage(text, item.get('source') or '')
         if stage == 'musk_game_progress':
@@ -883,6 +1061,11 @@ def key(item: dict) -> str:
 def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -> list[dict]:
     chosen = _orig_select_diverse(items, seen, force, limit)
     candidates = items if force else [x for x in items if x.get('key') not in seen]
+    brain_memory = next((x for x in candidates if x.get('group') == 'humanoid_brain_dram'), None)
+    if brain_memory and not any(x.get('key') == brain_memory.get('key') for x in chosen):
+        chosen = (
+            [brain_memory, *chosen] if len(chosen) < limit else [brain_memory, *chosen[:-1]]
+        )
     digital = next((x for x in candidates if x.get('group') == 'digital_optimus_games'), None)
     if digital and not any(x.get('key') == digital.get('key') for x in chosen):
         chosen = ([digital, *chosen] if len(chosen) < limit else [digital, *chosen[:-1]])
