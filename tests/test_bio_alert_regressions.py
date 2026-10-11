@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import datetime as dt
 import pathlib
 import sys
 import unittest
@@ -10,7 +11,9 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 import bio_korean_guard_strict_v2 as guard
+import bio_korean_guard as basic_guard
 import bio_single_runner as bio_runner
+import optogenetics_translation_watch as optogenetics
 import jemperli_altb4_watch as jem_base
 import jemperli_altb4_watch_v2 as jem
 import qlex_wac_ir_watch_v2 as wac
@@ -18,6 +21,92 @@ import halozyme_legal_watch_v4 as halo
 
 
 class BioAlertRegressionTests(unittest.TestCase):
+    def test_optogenetics_known_products_do_not_require_machine_translation(self):
+        line = "- 망막 광유전학: MOGENRY 허가결정·RTx-015 후기임상 전환이 가장 가까운 상용화 검증 신호입니다."
+        with patch.object(basic_guard, "translate_to_korean", side_effect=AssertionError("unexpected network translation")):
+            self.assertEqual(guard.ensure_korean_text(line), line)
+
+    def test_optogenetics_footer_passes_strict_guard_offline(self):
+        rendered = optogenetics.render_alert([], [], [], [], [], [], [], dt.datetime(2026, 10, 11))
+        with patch.object(basic_guard, "translate_to_korean", side_effect=AssertionError("unexpected network translation")):
+            guarded = guard.ensure_korean_text(rendered)
+        self.assertIn("MOGENRY·RTx-015/021·GS030·BS01·ZM-02·RV-001은 옵신", guarded)
+        self.assertIn("MapLight(MPLT)", guarded)
+        self.assertIn("미국 식품의약국(FDA)", guarded)
+        self.assertEqual(basic_guard.general_english_words(guarded), [])
+
+    def test_optogenetics_registered_trial_labels_remain_identifiable(self):
+        # Keep the producer and strict sender in the same regression test so a new
+        # company/program cannot silently recreate the production send failure.
+        with patch.object(basic_guard, "translate_to_korean", side_effect=AssertionError("unexpected network translation")):
+            for nct, meta in optogenetics.TRIALS.items():
+                with self.subTest(nct=nct):
+                    line = f"{meta['company']} · {meta['program']} · {nct}"
+                    self.assertEqual(guard.ensure_korean_text(line), line)
+
+    def test_optogenetics_press_and_registry_alerts_pass_strict_guard_offline(self):
+        item = {
+            "company": "Ray Therapeutics", "program": "RTx-015/RTx-021",
+            "stage": "FDA RMAT", "meaning": "FDA 재생의료첨단치료제(RMAT) 지정",
+            "url": "https://raytherapeutics.com/example",
+        }
+        registry = {"trial_id": "jRCT2033240611", "changes": ["목표 환자수: 10 → 20"]}
+        maplight = {
+            "program": "ML-007C-MA", "stage": "FDA EOP2 완료",
+            "meaning": "FDA와 후기임상·허가 경로가 실제로 조율된 단계 변화",
+            "url": "https://ir.maplightrx.com/example",
+        }
+        rendered = optogenetics.render_alert(
+            [item], [], [registry], [maplight], [], [], [], dt.datetime(2026, 10, 11)
+        )
+        with patch.object(basic_guard, "translate_to_korean", side_effect=AssertionError("unexpected network translation")):
+            guarded = guard.ensure_korean_text(rendered)
+        self.assertIn("Ray Therapeutics · RTx-015/RTx-021", guarded)
+        self.assertIn("Restore Vision · RV-001 · jRCT2033240611", guarded)
+        self.assertIn("광유전학·회로지도", guarded)
+
+    def test_identifier_allowlist_does_not_scrub_inside_english_words(self):
+        self.assertEqual(basic_guard.general_english_words("cost dose host ecosystem"),
+                         ["cost", "dose", "host", "ecosystem"])
+        protected, mapping = basic_guard.protect_identifiers("cost dose host ecosystem")
+        self.assertEqual(protected, "cost dose host ecosystem")
+        self.assertEqual(mapping, {})
+
+    def test_identifiers_accept_korean_particles_but_not_english_suffixes(self):
+        line = "MOGENRY는 RTx-015와 FDA가 확인"
+        protected, mapping = basic_guard.protect_identifiers(line)
+        self.assertNotIn("MOGENRY", protected)
+        self.assertNotIn("RTx-015", protected)
+        self.assertNotIn("FDA", protected)
+        self.assertEqual(basic_guard.restore_identifiers(protected, mapping), line)
+        self.assertEqual(basic_guard.scrub_identifiers("MOGENRYextra prefixMOGENRY"),
+                         "MOGENRYextra prefixMOGENRY")
+
+    def test_unknown_optogenetics_names_and_generic_english_still_blocked(self):
+        lines = (
+            "- 후보: RTx-999 신규 임상",
+            "- 후보: MOGENRYextra 신규 임상",
+            "- 후보: UnknownCompany 신규 임상",
+            "- 설명: MOGENRY cost dose host",
+            "- 설명: MOGENRY treatment remains experimental",
+        )
+        with patch.object(basic_guard, "translate_to_korean", side_effect=lambda text: text):
+            for line in lines:
+                with self.subTest(line=line):
+                    with self.assertRaisesRegex(RuntimeError, "한국어 송출 검증 실패"):
+                        guard.ensure_korean_text(line)
+
+    def test_optogenetics_japanese_prose_still_blocked(self):
+        with patch.object(basic_guard, "translate_to_korean", side_effect=lambda text: text):
+            with self.assertRaisesRegex(RuntimeError, "한국어 송출 검증 실패"):
+                guard.ensure_korean_text("MOGENRY 日本語の説明")
+
+    def test_optogenetics_explanatory_terms_are_translated_not_allowlisted(self):
+        self.assertEqual(basic_guard.apply_common_replacements("opsin optogenetics Fast Track"),
+                         "옵신 광유전학 신속심사")
+        self.assertEqual(basic_guard.general_english_words("opsin optogenetics Fast Track"),
+                         ["opsin", "optogenetics", "Fast", "Track"])
+
     def test_jemperli_canada_cross_source_dedupes_to_one_event(self):
         a = jem_base.Item(
             "Google News",
@@ -432,3 +521,4 @@ class BioAlertRegressionTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+

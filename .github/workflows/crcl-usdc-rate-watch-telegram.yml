@@ -2,6 +2,7 @@ name: CRCL USDC Rate Telegram Watch
 
 on:
   push:
+    branches: [main]
     paths:
       - ".github/workflows/crcl-usdc-rate-watch-telegram.yml"
       - "scripts/crcl_usdc_rate_watch.py"
@@ -11,6 +12,8 @@ on:
       - "scripts/crypto_alert_krw.py"
       - "scripts/coin_alert_korean_terms.py"
       - "data/crcl_usdc_rate_watch_state.json"
+      - "tests/fixtures/crcl_date_alignment.json"
+      - "tests/test_crcl_validation_regression.py"
   schedule:
     # Hourly source check; sends only on a new CRCL close or meaningful source change.
     - cron: "17 * * * *"
@@ -46,6 +49,7 @@ jobs:
 
       - name: Validate watcher
         run: |
+          python -m unittest discover -s tests -p "test_crcl_validation_regression.py" -v
           python -m py_compile scripts/crcl_usdc_rate_watch.py
           python -m py_compile scripts/crcl_usdc_rate_watch_runner.py
           python -m py_compile scripts/crcl_tbx_alert_format.py
@@ -57,7 +61,8 @@ jobs:
           import json
           from scripts import crcl_directional_summary as fmt
 
-          state = json.load(open("data/crcl_usdc_rate_watch_state.json", encoding="utf-8"))
+          # Historical mismatch scenario: never assert fixed outcomes against live state.
+          state = json.load(open("tests/fixtures/crcl_date_alignment.json", encoding="utf-8"))
           sample = """<b>CRCL 금리·USDC 펀더멘털 변화</b>
           <code>조회 2026-09-29T06:58:13+09:00</code>
 
@@ -304,3 +309,4 @@ jobs:
             out/crcl_usdc_rate_watch_telegram_confirmed.json
           if-no-files-found: ignore
           retention-days: 14
+

@@ -326,7 +326,11 @@ TE_TTF_KO_DETAIL_V34 = "https://ko.tradingeconomics.com/commodity/eu-natural-gas
 TE_JKM_KO_DETAIL_V34 = "https://ko.tradingeconomics.com/commodity/liquefied-natural-gas-japan-korea"
 
 
-def _parse_te_korean_detail_v34(raw_html: str, key: str) -> dict[str, object]:
+def _parse_te_korean_detail_v34(
+    raw_html: str, key: str, *, now: dt.datetime | None = None
+) -> dict[str, object]:
+    # Inject an observation clock for historical fixtures; live callers use UTC now.
+    today_kst = (core.now_utc() if now is None else now).astimezone(core.KST).date()
     text = _visible_text_v34(raw_html)
     if key == "ttf":
         stats = re.search(
@@ -398,14 +402,12 @@ def _parse_te_korean_detail_v34(raw_html: str, key: str) -> dict[str, object]:
             dt.date.fromisoformat(value)
             for value in re.findall(r"\b(20\d{2}-\d{2}-\d{2})\b", text)
         ]
-        today_kst = core.now_utc().astimezone(core.KST).date()
         candidates = [value for value in iso_dates if value <= today_kst]
         if candidates:
             source_date = max(candidates)
     if source_date is None:
         raise RuntimeError(f"TE Korean {key} source date not found")
 
-    today_kst = core.now_utc().astimezone(core.KST).date()
     age_days = (today_kst - source_date).days
     if age_days < 0 or age_days > TE_MAX_AGE_DAYS_V34:
         raise RuntimeError(f"TE Korean {key} stale source date={source_date} age={age_days}d")
@@ -856,12 +858,13 @@ def _self_validate_price_alignment_v34() -> None:
 
 
 def _self_validate_canonical_price_parsers_v34() -> None:
+    fixture_now = dt.datetime(2026, 9, 25, 12, tzinfo=dt.timezone.utc)
     ttf_html = """
     실제 이전 최고 최저 날짜 단위 업데이트 주기 71.89 74.94 345 3.37
     유럽연합 가스 71.89 -3.05 -4.07%
     2026년 9월 25일 EU 가스는
     """
-    ttf = _parse_te_korean_detail_v34(ttf_html, "ttf")
+    ttf = _parse_te_korean_detail_v34(ttf_html, "ttf", now=fixture_now)
     assert str(ttf["source_date"]) == "2026-09-25"
     assert abs(float(ttf["actual"]) - 71.89) < 0.001
     assert abs(float(ttf["change_pct"]) + 4.07) < 0.05
@@ -871,7 +874,7 @@ def _self_validate_canonical_price_parsers_v34() -> None:
     LNG JKM 25.82 -0.57 -2.14%
     2026년 9월 25일 LNG JKM
     """
-    jkm = _parse_te_korean_detail_v34(jkm_html, "jkm")
+    jkm = _parse_te_korean_detail_v34(jkm_html, "jkm", now=fixture_now)
     assert str(jkm["source_date"]) == "2026-09-25"
     assert abs(float(jkm["actual"]) - 25.82) < 0.001
     assert abs(float(jkm["change_pct"]) + 2.14) < 0.05
@@ -1586,3 +1589,4 @@ core.build_setup_test = build_setup_test_v34
 
 if __name__ == "__main__":
     raise SystemExit(core.main())
+
