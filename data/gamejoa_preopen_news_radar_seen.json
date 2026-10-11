@@ -15115,6 +15115,32 @@
       "telegram_core_fact": "외국인은 올해 코스피 시장에서 누적 197조원 넘게 순매도했다. 2008년 1월 11일 46.35% 이후 약 18년9개월 만에 가장 낮은 수준이다.",
       "title": "107조 벌어도 외국인은 팔았다…삼전 지분율 18년9개월 최저[종합]"
     },
+    "core:9e2d89c853dcb060409ebe10": {
+      "first_seen_kst": "2026-10-12T04:17:35+09:00",
+      "lanes": {
+        "live": "2026-10-12T04:17:35+09:00"
+      },
+      "last_seen_kst": "2026-10-12T04:17:35+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000021616",
+      "source": "국민일보",
+      "source_body_digest": "9d1b1ef889a255932c466bfa643a677fec1a3a0208556bdc764d1bc48b2052c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99486a43c78d90d02a40236c868eb1c18d9190315ace8f06d9cae8bde14eecff",
+      "source_fact_keys": [
+        "source_fact:v1:02d67f205a7d1ae3098175e5ed0ce29c672f5b4f276e61d98ec09acc853ed01c",
+        "source_fact:v1:2ee1eefd62159f7095af71e668a14d707e58efef47e71c60a19cacd6b6750028",
+        "source_fact:v1:6a0ba821b32ccd113ded360920f84e4c88cc7a811aa2c0d36eca337ee5958391",
+        "source_fact:v1:70ef7f4d001d3616483cc59d7ed3b92a8d1d13a67f2afa519d9feb66db3ea278",
+        "source_fact:v1:beaa9184d7c4e896cd2e8337eb37dda1ed82fc64c00f0d484df5a7f9ff8c473a",
+        "source_fact:v1:eb3866e9b8e1b4b84fa20335d3e53682777ddaed2400aaf3029bb0afcc49d8e2",
+        "source_fact:v1:ed1af32298dbc26a0bffd5b078d5afe8e283d31a710e379c8b0ee8bcb263b8a2",
+        "source_fact:v1:f5ea8a477206f8b7151f348494ee45a72b9d29475f81b6ecc2eec7a283aa1327"
+      ],
+      "source_published_kst": "2026-10-12T00:44+09:00",
+      "source_title": "한화오션 하청 이어 원청도 고공농성… 추투 장기화되나",
+      "telegram_core_fact": "금속노조 경남지부는 ‘고공농성 돌입’ 관련 성명에서 한화오션의 올해 상반기 영업이익이 1조1772억원을 기록해 지난해 동기 대비 87% 늘었는데도 그 성과가 원·하청 노동자에게 돌아가지 않았다고 밝혔다.",
+      "title": "한화오션 하청 이어 원청도 고공농성… 추투 장기화되나"
+    },
     "core:9ea111236f1ab43bcab30055": {
       "first_seen_kst": "2026-10-10T07:23:23+09:00",
       "lanes": {
@@ -36610,6 +36636,32 @@
       ],
       "source_published_kst": "2026-10-07T09:18+09:00",
       "title": "미래에셋 'TIGER 미국 타겟데일리커버드콜' 3종, 연초 이후 개인 순매수 1조 돌파"
+    },
+    "fact:0844e0c8f85bb21f4ce2e373": {
+      "first_seen_kst": "2026-10-12T04:17:35+09:00",
+      "lanes": {
+        "live": "2026-10-12T04:17:35+09:00"
+      },
+      "last_seen_kst": "2026-10-12T04:17:35+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000021616",
+      "source": "국민일보",
+      "source_body_digest": "9d1b1ef889a255932c466bfa643a677fec1a3a0208556bdc764d1bc48b2052c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99486a43c78d90d02a40236c868eb1c18d9190315ace8f06d9cae8bde14eecff",
+      "source_fact_keys": [
+        "source_fact:v1:02d67f205a7d1ae3098175e5ed0ce29c672f5b4f276e61d98ec09acc853ed01c",
+        "source_fact:v1:2ee1eefd62159f7095af71e668a14d707e58efef47e71c60a19cacd6b6750028",
+        "source_fact:v1:6a0ba821b32ccd113ded360920f84e4c88cc7a811aa2c0d36eca337ee5958391",
+        "source_fact:v1:70ef7f4d001d3616483cc59d7ed3b92a8d1d13a67f2afa519d9feb66db3ea278",
+        "source_fact:v1:beaa9184d7c4e896cd2e8337eb37dda1ed82fc64c00f0d484df5a7f9ff8c473a",
+        "source_fact:v1:eb3866e9b8e1b4b84fa20335d3e53682777ddaed2400aaf3029bb0afcc49d8e2",
+        "source_fact:v1:ed1af32298dbc26a0bffd5b078d5afe8e283d31a710e379c8b0ee8bcb263b8a2",
+        "source_fact:v1:f5ea8a477206f8b7151f348494ee45a72b9d29475f81b6ecc2eec7a283aa1327"
+      ],
+      "source_published_kst": "2026-10-12T00:44+09:00",
+      "source_title": "한화오션 하청 이어 원청도 고공농성… 추투 장기화되나",
+      "telegram_core_fact": "금속노조 경남지부는 ‘고공농성 돌입’ 관련 성명에서 한화오션의 올해 상반기 영업이익이 1조1772억원을 기록해 지난해 동기 대비 87% 늘었는데도 그 성과가 원·하청 노동자에게 돌아가지 않았다고 밝혔다.",
+      "title": "한화오션 하청 이어 원청도 고공농성… 추투 장기화되나"
     },
     "fact:085b8f297808688c94707375": {
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
@@ -79895,6 +79947,32 @@
       ],
       "source_published_kst": "2026-10-05T09:39+09:00",
       "title": "“20좌 안 되면 못 파나”…단일종목 레버리지 ‘단주 출구’ 만든다"
+    },
+    "link:1123b67a5afc822216248f57": {
+      "first_seen_kst": "2026-10-12T04:17:35+09:00",
+      "lanes": {
+        "live": "2026-10-12T04:17:35+09:00"
+      },
+      "last_seen_kst": "2026-10-12T04:17:35+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000021616",
+      "source": "국민일보",
+      "source_body_digest": "9d1b1ef889a255932c466bfa643a677fec1a3a0208556bdc764d1bc48b2052c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99486a43c78d90d02a40236c868eb1c18d9190315ace8f06d9cae8bde14eecff",
+      "source_fact_keys": [
+        "source_fact:v1:02d67f205a7d1ae3098175e5ed0ce29c672f5b4f276e61d98ec09acc853ed01c",
+        "source_fact:v1:2ee1eefd62159f7095af71e668a14d707e58efef47e71c60a19cacd6b6750028",
+        "source_fact:v1:6a0ba821b32ccd113ded360920f84e4c88cc7a811aa2c0d36eca337ee5958391",
+        "source_fact:v1:70ef7f4d001d3616483cc59d7ed3b92a8d1d13a67f2afa519d9feb66db3ea278",
+        "source_fact:v1:beaa9184d7c4e896cd2e8337eb37dda1ed82fc64c00f0d484df5a7f9ff8c473a",
+        "source_fact:v1:eb3866e9b8e1b4b84fa20335d3e53682777ddaed2400aaf3029bb0afcc49d8e2",
+        "source_fact:v1:ed1af32298dbc26a0bffd5b078d5afe8e283d31a710e379c8b0ee8bcb263b8a2",
+        "source_fact:v1:f5ea8a477206f8b7151f348494ee45a72b9d29475f81b6ecc2eec7a283aa1327"
+      ],
+      "source_published_kst": "2026-10-12T00:44+09:00",
+      "source_title": "한화오션 하청 이어 원청도 고공농성… 추투 장기화되나",
+      "telegram_core_fact": "금속노조 경남지부는 ‘고공농성 돌입’ 관련 성명에서 한화오션의 올해 상반기 영업이익이 1조1772억원을 기록해 지난해 동기 대비 87% 늘었는데도 그 성과가 원·하청 노동자에게 돌아가지 않았다고 밝혔다.",
+      "title": "한화오션 하청 이어 원청도 고공농성… 추투 장기화되나"
     },
     "link:112dedd9a812085d4b419b87": {
       "first_seen_kst": "2026-10-07T02:24:39+09:00",
@@ -194109,6 +194187,32 @@
       "source": "연합뉴스",
       "title": "모아라이프플러스, 40억원 유상증자…메드투자조합에 제3자배정 | 연합뉴스"
     },
+    "original:ff4b23a8be8497c2307b53dd": {
+      "first_seen_kst": "2026-10-12T04:17:35+09:00",
+      "lanes": {
+        "live": "2026-10-12T04:17:35+09:00"
+      },
+      "last_seen_kst": "2026-10-12T04:17:35+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000021616",
+      "source": "국민일보",
+      "source_body_digest": "9d1b1ef889a255932c466bfa643a677fec1a3a0208556bdc764d1bc48b2052c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99486a43c78d90d02a40236c868eb1c18d9190315ace8f06d9cae8bde14eecff",
+      "source_fact_keys": [
+        "source_fact:v1:02d67f205a7d1ae3098175e5ed0ce29c672f5b4f276e61d98ec09acc853ed01c",
+        "source_fact:v1:2ee1eefd62159f7095af71e668a14d707e58efef47e71c60a19cacd6b6750028",
+        "source_fact:v1:6a0ba821b32ccd113ded360920f84e4c88cc7a811aa2c0d36eca337ee5958391",
+        "source_fact:v1:70ef7f4d001d3616483cc59d7ed3b92a8d1d13a67f2afa519d9feb66db3ea278",
+        "source_fact:v1:beaa9184d7c4e896cd2e8337eb37dda1ed82fc64c00f0d484df5a7f9ff8c473a",
+        "source_fact:v1:eb3866e9b8e1b4b84fa20335d3e53682777ddaed2400aaf3029bb0afcc49d8e2",
+        "source_fact:v1:ed1af32298dbc26a0bffd5b078d5afe8e283d31a710e379c8b0ee8bcb263b8a2",
+        "source_fact:v1:f5ea8a477206f8b7151f348494ee45a72b9d29475f81b6ecc2eec7a283aa1327"
+      ],
+      "source_published_kst": "2026-10-12T00:44+09:00",
+      "source_title": "한화오션 하청 이어 원청도 고공농성… 추투 장기화되나",
+      "telegram_core_fact": "금속노조 경남지부는 ‘고공농성 돌입’ 관련 성명에서 한화오션의 올해 상반기 영업이익이 1조1772억원을 기록해 지난해 동기 대비 87% 늘었는데도 그 성과가 원·하청 노동자에게 돌아가지 않았다고 밝혔다.",
+      "title": "한화오션 하청 이어 원청도 고공농성… 추투 장기화되나"
+    },
     "original:ff512c1555aaa3d1d397fcaa": {
       "first_seen_kst": "2026-10-02T07:36:51+09:00",
       "lanes": {
@@ -220322,6 +220426,32 @@
       "source_published_kst": "2026-10-07T00:00+09:00",
       "title": "우크라 '韓, 러 석유공급' 보도에 비판…\"제재 정책과 어긋나\""
     },
+    "source_fact:22f2ed1baaf7290aaf441fed": {
+      "first_seen_kst": "2026-10-12T04:17:35+09:00",
+      "lanes": {
+        "live": "2026-10-12T04:17:35+09:00"
+      },
+      "last_seen_kst": "2026-10-12T04:17:35+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000021616",
+      "source": "국민일보",
+      "source_body_digest": "9d1b1ef889a255932c466bfa643a677fec1a3a0208556bdc764d1bc48b2052c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99486a43c78d90d02a40236c868eb1c18d9190315ace8f06d9cae8bde14eecff",
+      "source_fact_keys": [
+        "source_fact:v1:02d67f205a7d1ae3098175e5ed0ce29c672f5b4f276e61d98ec09acc853ed01c",
+        "source_fact:v1:2ee1eefd62159f7095af71e668a14d707e58efef47e71c60a19cacd6b6750028",
+        "source_fact:v1:6a0ba821b32ccd113ded360920f84e4c88cc7a811aa2c0d36eca337ee5958391",
+        "source_fact:v1:70ef7f4d001d3616483cc59d7ed3b92a8d1d13a67f2afa519d9feb66db3ea278",
+        "source_fact:v1:beaa9184d7c4e896cd2e8337eb37dda1ed82fc64c00f0d484df5a7f9ff8c473a",
+        "source_fact:v1:eb3866e9b8e1b4b84fa20335d3e53682777ddaed2400aaf3029bb0afcc49d8e2",
+        "source_fact:v1:ed1af32298dbc26a0bffd5b078d5afe8e283d31a710e379c8b0ee8bcb263b8a2",
+        "source_fact:v1:f5ea8a477206f8b7151f348494ee45a72b9d29475f81b6ecc2eec7a283aa1327"
+      ],
+      "source_published_kst": "2026-10-12T00:44+09:00",
+      "source_title": "한화오션 하청 이어 원청도 고공농성… 추투 장기화되나",
+      "telegram_core_fact": "금속노조 경남지부는 ‘고공농성 돌입’ 관련 성명에서 한화오션의 올해 상반기 영업이익이 1조1772억원을 기록해 지난해 동기 대비 87% 늘었는데도 그 성과가 원·하청 노동자에게 돌아가지 않았다고 밝혔다.",
+      "title": "한화오션 하청 이어 원청도 고공농성… 추투 장기화되나"
+    },
     "source_fact:22f32c535b34cde75ec31dd7": {
       "first_seen_kst": "2026-10-07T12:49:48+09:00",
       "lanes": {
@@ -245757,6 +245887,32 @@
       "telegram_core_fact": "트럼프 대통령의 발언이 나온 이후 유가 상승폭은 일부 줄었지만, 중동의 원유 공급 불안이 이어지면서 국제유가는 결국 4% 넘게 오른 채 거래를 마쳤다.",
       "title": "트럼프, 이란 공격 유보했지만 … 유가는 4% 급등"
     },
+    "source_fact:44e46f40a35554d6d7c0a7d3": {
+      "first_seen_kst": "2026-10-12T04:17:35+09:00",
+      "lanes": {
+        "live": "2026-10-12T04:17:35+09:00"
+      },
+      "last_seen_kst": "2026-10-12T04:17:35+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000021616",
+      "source": "국민일보",
+      "source_body_digest": "9d1b1ef889a255932c466bfa643a677fec1a3a0208556bdc764d1bc48b2052c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99486a43c78d90d02a40236c868eb1c18d9190315ace8f06d9cae8bde14eecff",
+      "source_fact_keys": [
+        "source_fact:v1:02d67f205a7d1ae3098175e5ed0ce29c672f5b4f276e61d98ec09acc853ed01c",
+        "source_fact:v1:2ee1eefd62159f7095af71e668a14d707e58efef47e71c60a19cacd6b6750028",
+        "source_fact:v1:6a0ba821b32ccd113ded360920f84e4c88cc7a811aa2c0d36eca337ee5958391",
+        "source_fact:v1:70ef7f4d001d3616483cc59d7ed3b92a8d1d13a67f2afa519d9feb66db3ea278",
+        "source_fact:v1:beaa9184d7c4e896cd2e8337eb37dda1ed82fc64c00f0d484df5a7f9ff8c473a",
+        "source_fact:v1:eb3866e9b8e1b4b84fa20335d3e53682777ddaed2400aaf3029bb0afcc49d8e2",
+        "source_fact:v1:ed1af32298dbc26a0bffd5b078d5afe8e283d31a710e379c8b0ee8bcb263b8a2",
+        "source_fact:v1:f5ea8a477206f8b7151f348494ee45a72b9d29475f81b6ecc2eec7a283aa1327"
+      ],
+      "source_published_kst": "2026-10-12T00:44+09:00",
+      "source_title": "한화오션 하청 이어 원청도 고공농성… 추투 장기화되나",
+      "telegram_core_fact": "금속노조 경남지부는 ‘고공농성 돌입’ 관련 성명에서 한화오션의 올해 상반기 영업이익이 1조1772억원을 기록해 지난해 동기 대비 87% 늘었는데도 그 성과가 원·하청 노동자에게 돌아가지 않았다고 밝혔다.",
+      "title": "한화오션 하청 이어 원청도 고공농성… 추투 장기화되나"
+    },
     "source_fact:44e7bd2326ad545d38e43c87": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
@@ -254588,6 +254744,32 @@
       "source_title": "[인터뷰]심재국 평창군수 \"평창형 기본소득으로 군민 삶 변화\"",
       "telegram_core_fact": "농업인은 생산비와 일손 걱정을 덜고 소상공인은 관광객 증가가 매출로 이어지는 변화를 느끼고 청년은 일자리와 주거 때문에 고향을 떠나지 않아도 되는 평창을 만들겠다.",
       "title": "[인터뷰]심재국 평창군수 \"평창형 기본소득으로 군민 삶 변화\""
+    },
+    "source_fact:4fdd7e075bb42f262dc33a88": {
+      "first_seen_kst": "2026-10-12T04:17:35+09:00",
+      "lanes": {
+        "live": "2026-10-12T04:17:35+09:00"
+      },
+      "last_seen_kst": "2026-10-12T04:17:35+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000021616",
+      "source": "국민일보",
+      "source_body_digest": "9d1b1ef889a255932c466bfa643a677fec1a3a0208556bdc764d1bc48b2052c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99486a43c78d90d02a40236c868eb1c18d9190315ace8f06d9cae8bde14eecff",
+      "source_fact_keys": [
+        "source_fact:v1:02d67f205a7d1ae3098175e5ed0ce29c672f5b4f276e61d98ec09acc853ed01c",
+        "source_fact:v1:2ee1eefd62159f7095af71e668a14d707e58efef47e71c60a19cacd6b6750028",
+        "source_fact:v1:6a0ba821b32ccd113ded360920f84e4c88cc7a811aa2c0d36eca337ee5958391",
+        "source_fact:v1:70ef7f4d001d3616483cc59d7ed3b92a8d1d13a67f2afa519d9feb66db3ea278",
+        "source_fact:v1:beaa9184d7c4e896cd2e8337eb37dda1ed82fc64c00f0d484df5a7f9ff8c473a",
+        "source_fact:v1:eb3866e9b8e1b4b84fa20335d3e53682777ddaed2400aaf3029bb0afcc49d8e2",
+        "source_fact:v1:ed1af32298dbc26a0bffd5b078d5afe8e283d31a710e379c8b0ee8bcb263b8a2",
+        "source_fact:v1:f5ea8a477206f8b7151f348494ee45a72b9d29475f81b6ecc2eec7a283aa1327"
+      ],
+      "source_published_kst": "2026-10-12T00:44+09:00",
+      "source_title": "한화오션 하청 이어 원청도 고공농성… 추투 장기화되나",
+      "telegram_core_fact": "금속노조 경남지부는 ‘고공농성 돌입’ 관련 성명에서 한화오션의 올해 상반기 영업이익이 1조1772억원을 기록해 지난해 동기 대비 87% 늘었는데도 그 성과가 원·하청 노동자에게 돌아가지 않았다고 밝혔다.",
+      "title": "한화오션 하청 이어 원청도 고공농성… 추투 장기화되나"
     },
     "source_fact:5006e4a5ab44e36ae29c0e1d": {
       "first_seen_kst": "2026-10-08T13:07:52+09:00",
@@ -290147,6 +290329,32 @@
       "telegram_core_fact": "\"과거에는 통화와 재정이 같은 방향으로 움직였지만, 지금은 기준금리를 올리면서 재정 집행을 위해 국채 발행을 늘리다 보니 24년 만에 최고 수준의 국채금리 시대가 도래했다\"고 분석했다.",
       "title": "\"금리 올리며 돈 푸는 이상한 시대\"…국장 박스권 갇힐 동안 AI 주도주 쏠린다"
     },
+    "source_fact:7e0693554fe1a2cfa1dc8aa8": {
+      "first_seen_kst": "2026-10-12T04:17:35+09:00",
+      "lanes": {
+        "live": "2026-10-12T04:17:35+09:00"
+      },
+      "last_seen_kst": "2026-10-12T04:17:35+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000021616",
+      "source": "국민일보",
+      "source_body_digest": "9d1b1ef889a255932c466bfa643a677fec1a3a0208556bdc764d1bc48b2052c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99486a43c78d90d02a40236c868eb1c18d9190315ace8f06d9cae8bde14eecff",
+      "source_fact_keys": [
+        "source_fact:v1:02d67f205a7d1ae3098175e5ed0ce29c672f5b4f276e61d98ec09acc853ed01c",
+        "source_fact:v1:2ee1eefd62159f7095af71e668a14d707e58efef47e71c60a19cacd6b6750028",
+        "source_fact:v1:6a0ba821b32ccd113ded360920f84e4c88cc7a811aa2c0d36eca337ee5958391",
+        "source_fact:v1:70ef7f4d001d3616483cc59d7ed3b92a8d1d13a67f2afa519d9feb66db3ea278",
+        "source_fact:v1:beaa9184d7c4e896cd2e8337eb37dda1ed82fc64c00f0d484df5a7f9ff8c473a",
+        "source_fact:v1:eb3866e9b8e1b4b84fa20335d3e53682777ddaed2400aaf3029bb0afcc49d8e2",
+        "source_fact:v1:ed1af32298dbc26a0bffd5b078d5afe8e283d31a710e379c8b0ee8bcb263b8a2",
+        "source_fact:v1:f5ea8a477206f8b7151f348494ee45a72b9d29475f81b6ecc2eec7a283aa1327"
+      ],
+      "source_published_kst": "2026-10-12T00:44+09:00",
+      "source_title": "한화오션 하청 이어 원청도 고공농성… 추투 장기화되나",
+      "telegram_core_fact": "금속노조 경남지부는 ‘고공농성 돌입’ 관련 성명에서 한화오션의 올해 상반기 영업이익이 1조1772억원을 기록해 지난해 동기 대비 87% 늘었는데도 그 성과가 원·하청 노동자에게 돌아가지 않았다고 밝혔다.",
+      "title": "한화오션 하청 이어 원청도 고공농성… 추투 장기화되나"
+    },
     "source_fact:7e071041781bb3c8b36b27a7": {
       "first_seen_kst": "2026-10-11T15:53:29+09:00",
       "lanes": {
@@ -294645,6 +294853,32 @@
       "telegram_core_fact": "한섬이 새롭게 들여온 해외 패션 브랜드들의 올해 1~8월 누적 매출은 전년비 약 50% 증가했다. 계약이 마무리되면 한섬이 2022년 이후 국내에 들여온 해외 브랜드는 총 15개로 늘어난다.",
       "title": "한섬, 해외 브랜드 15개로 확대…내년 매장 90개 목표"
     },
+    "source_fact:8477adfa30abc93cce1988a5": {
+      "first_seen_kst": "2026-10-12T04:17:35+09:00",
+      "lanes": {
+        "live": "2026-10-12T04:17:35+09:00"
+      },
+      "last_seen_kst": "2026-10-12T04:17:35+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000021616",
+      "source": "국민일보",
+      "source_body_digest": "9d1b1ef889a255932c466bfa643a677fec1a3a0208556bdc764d1bc48b2052c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99486a43c78d90d02a40236c868eb1c18d9190315ace8f06d9cae8bde14eecff",
+      "source_fact_keys": [
+        "source_fact:v1:02d67f205a7d1ae3098175e5ed0ce29c672f5b4f276e61d98ec09acc853ed01c",
+        "source_fact:v1:2ee1eefd62159f7095af71e668a14d707e58efef47e71c60a19cacd6b6750028",
+        "source_fact:v1:6a0ba821b32ccd113ded360920f84e4c88cc7a811aa2c0d36eca337ee5958391",
+        "source_fact:v1:70ef7f4d001d3616483cc59d7ed3b92a8d1d13a67f2afa519d9feb66db3ea278",
+        "source_fact:v1:beaa9184d7c4e896cd2e8337eb37dda1ed82fc64c00f0d484df5a7f9ff8c473a",
+        "source_fact:v1:eb3866e9b8e1b4b84fa20335d3e53682777ddaed2400aaf3029bb0afcc49d8e2",
+        "source_fact:v1:ed1af32298dbc26a0bffd5b078d5afe8e283d31a710e379c8b0ee8bcb263b8a2",
+        "source_fact:v1:f5ea8a477206f8b7151f348494ee45a72b9d29475f81b6ecc2eec7a283aa1327"
+      ],
+      "source_published_kst": "2026-10-12T00:44+09:00",
+      "source_title": "한화오션 하청 이어 원청도 고공농성… 추투 장기화되나",
+      "telegram_core_fact": "금속노조 경남지부는 ‘고공농성 돌입’ 관련 성명에서 한화오션의 올해 상반기 영업이익이 1조1772억원을 기록해 지난해 동기 대비 87% 늘었는데도 그 성과가 원·하청 노동자에게 돌아가지 않았다고 밝혔다.",
+      "title": "한화오션 하청 이어 원청도 고공농성… 추투 장기화되나"
+    },
     "source_fact:8494b69aa2f2274e25ffaeeb": {
       "first_seen_kst": "2026-10-08T15:16:19+09:00",
       "lanes": {
@@ -298292,6 +298526,32 @@
       "source_title": "\"벤처투자 늘어도 회수는 제자리…세컨더리 시장 활성화 시급\"",
       "telegram_core_fact": "\"세컨더리 시장은 자금만 공급한다고 거래가 이뤄지는 구조가 아니다\"라며 \"실제 매도 물량과 매수자의 가격 제시, 거래 성사 사례가 축적돼 시장에서 신뢰할 수 있는 가격 정보가 형성돼야 한다\"고 강조했다.",
       "title": "\"벤처투자 늘어도 회수는 제자리…세컨더리 시장 활성화 시급\""
+    },
+    "source_fact:8917ec5956f4ab8399ff2fc5": {
+      "first_seen_kst": "2026-10-12T04:17:35+09:00",
+      "lanes": {
+        "live": "2026-10-12T04:17:35+09:00"
+      },
+      "last_seen_kst": "2026-10-12T04:17:35+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000021616",
+      "source": "국민일보",
+      "source_body_digest": "9d1b1ef889a255932c466bfa643a677fec1a3a0208556bdc764d1bc48b2052c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99486a43c78d90d02a40236c868eb1c18d9190315ace8f06d9cae8bde14eecff",
+      "source_fact_keys": [
+        "source_fact:v1:02d67f205a7d1ae3098175e5ed0ce29c672f5b4f276e61d98ec09acc853ed01c",
+        "source_fact:v1:2ee1eefd62159f7095af71e668a14d707e58efef47e71c60a19cacd6b6750028",
+        "source_fact:v1:6a0ba821b32ccd113ded360920f84e4c88cc7a811aa2c0d36eca337ee5958391",
+        "source_fact:v1:70ef7f4d001d3616483cc59d7ed3b92a8d1d13a67f2afa519d9feb66db3ea278",
+        "source_fact:v1:beaa9184d7c4e896cd2e8337eb37dda1ed82fc64c00f0d484df5a7f9ff8c473a",
+        "source_fact:v1:eb3866e9b8e1b4b84fa20335d3e53682777ddaed2400aaf3029bb0afcc49d8e2",
+        "source_fact:v1:ed1af32298dbc26a0bffd5b078d5afe8e283d31a710e379c8b0ee8bcb263b8a2",
+        "source_fact:v1:f5ea8a477206f8b7151f348494ee45a72b9d29475f81b6ecc2eec7a283aa1327"
+      ],
+      "source_published_kst": "2026-10-12T00:44+09:00",
+      "source_title": "한화오션 하청 이어 원청도 고공농성… 추투 장기화되나",
+      "telegram_core_fact": "금속노조 경남지부는 ‘고공농성 돌입’ 관련 성명에서 한화오션의 올해 상반기 영업이익이 1조1772억원을 기록해 지난해 동기 대비 87% 늘었는데도 그 성과가 원·하청 노동자에게 돌아가지 않았다고 밝혔다.",
+      "title": "한화오션 하청 이어 원청도 고공농성… 추투 장기화되나"
     },
     "source_fact:891a47d203855887c4ae0044": {
       "first_seen_kst": "2026-10-08T05:44:23+09:00",
@@ -303006,6 +303266,32 @@
       "telegram_core_fact": "배터리 교환 생태계 기업 고고로(GGR)가 이사 Chung-Yao Yin이 지배하는 법인과 전략적 투자자를 대상으로 보통주 2493만6057주를 주당 2.48달러에 발행해 약 6180만 달러 두 번째 신규 지분투자를 유치한다고 7일(현지시간) 발표했다.",
       "title": "고고로, 6200만 달러 증자..주당 2.48달러 신주 발행"
     },
+    "source_fact:8f7ab4b83ec265e467894279": {
+      "first_seen_kst": "2026-10-12T04:17:35+09:00",
+      "lanes": {
+        "live": "2026-10-12T04:17:35+09:00"
+      },
+      "last_seen_kst": "2026-10-12T04:17:35+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000021616",
+      "source": "국민일보",
+      "source_body_digest": "9d1b1ef889a255932c466bfa643a677fec1a3a0208556bdc764d1bc48b2052c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99486a43c78d90d02a40236c868eb1c18d9190315ace8f06d9cae8bde14eecff",
+      "source_fact_keys": [
+        "source_fact:v1:02d67f205a7d1ae3098175e5ed0ce29c672f5b4f276e61d98ec09acc853ed01c",
+        "source_fact:v1:2ee1eefd62159f7095af71e668a14d707e58efef47e71c60a19cacd6b6750028",
+        "source_fact:v1:6a0ba821b32ccd113ded360920f84e4c88cc7a811aa2c0d36eca337ee5958391",
+        "source_fact:v1:70ef7f4d001d3616483cc59d7ed3b92a8d1d13a67f2afa519d9feb66db3ea278",
+        "source_fact:v1:beaa9184d7c4e896cd2e8337eb37dda1ed82fc64c00f0d484df5a7f9ff8c473a",
+        "source_fact:v1:eb3866e9b8e1b4b84fa20335d3e53682777ddaed2400aaf3029bb0afcc49d8e2",
+        "source_fact:v1:ed1af32298dbc26a0bffd5b078d5afe8e283d31a710e379c8b0ee8bcb263b8a2",
+        "source_fact:v1:f5ea8a477206f8b7151f348494ee45a72b9d29475f81b6ecc2eec7a283aa1327"
+      ],
+      "source_published_kst": "2026-10-12T00:44+09:00",
+      "source_title": "한화오션 하청 이어 원청도 고공농성… 추투 장기화되나",
+      "telegram_core_fact": "금속노조 경남지부는 ‘고공농성 돌입’ 관련 성명에서 한화오션의 올해 상반기 영업이익이 1조1772억원을 기록해 지난해 동기 대비 87% 늘었는데도 그 성과가 원·하청 노동자에게 돌아가지 않았다고 밝혔다.",
+      "title": "한화오션 하청 이어 원청도 고공농성… 추투 장기화되나"
+    },
     "source_fact:8f7b68717176b97d219f4e6f": {
       "first_seen_kst": "2026-10-07T16:57:09+09:00",
       "lanes": {
@@ -306408,6 +306694,32 @@
       ],
       "source_published_kst": "2026-10-07T08:49+09:00",
       "title": "블랙 힐스, 구글 데이터센터 전력 계약..18억 달러 투자"
+    },
+    "source_fact:9481e86476fe3301a514fe0b": {
+      "first_seen_kst": "2026-10-12T04:17:35+09:00",
+      "lanes": {
+        "live": "2026-10-12T04:17:35+09:00"
+      },
+      "last_seen_kst": "2026-10-12T04:17:35+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000021616",
+      "source": "국민일보",
+      "source_body_digest": "9d1b1ef889a255932c466bfa643a677fec1a3a0208556bdc764d1bc48b2052c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99486a43c78d90d02a40236c868eb1c18d9190315ace8f06d9cae8bde14eecff",
+      "source_fact_keys": [
+        "source_fact:v1:02d67f205a7d1ae3098175e5ed0ce29c672f5b4f276e61d98ec09acc853ed01c",
+        "source_fact:v1:2ee1eefd62159f7095af71e668a14d707e58efef47e71c60a19cacd6b6750028",
+        "source_fact:v1:6a0ba821b32ccd113ded360920f84e4c88cc7a811aa2c0d36eca337ee5958391",
+        "source_fact:v1:70ef7f4d001d3616483cc59d7ed3b92a8d1d13a67f2afa519d9feb66db3ea278",
+        "source_fact:v1:beaa9184d7c4e896cd2e8337eb37dda1ed82fc64c00f0d484df5a7f9ff8c473a",
+        "source_fact:v1:eb3866e9b8e1b4b84fa20335d3e53682777ddaed2400aaf3029bb0afcc49d8e2",
+        "source_fact:v1:ed1af32298dbc26a0bffd5b078d5afe8e283d31a710e379c8b0ee8bcb263b8a2",
+        "source_fact:v1:f5ea8a477206f8b7151f348494ee45a72b9d29475f81b6ecc2eec7a283aa1327"
+      ],
+      "source_published_kst": "2026-10-12T00:44+09:00",
+      "source_title": "한화오션 하청 이어 원청도 고공농성… 추투 장기화되나",
+      "telegram_core_fact": "금속노조 경남지부는 ‘고공농성 돌입’ 관련 성명에서 한화오션의 올해 상반기 영업이익이 1조1772억원을 기록해 지난해 동기 대비 87% 늘었는데도 그 성과가 원·하청 노동자에게 돌아가지 않았다고 밝혔다.",
+      "title": "한화오션 하청 이어 원청도 고공농성… 추투 장기화되나"
     },
     "source_fact:949f54a4b38849de621d5b95": {
       "first_seen_kst": "2026-10-08T04:14:15+09:00",
@@ -445757,6 +446069,32 @@
       "source": "연합뉴스",
       "title": "모아라이프플러스, 40억원 유상증자…메드투자조합에 제3자배정 | 연합뉴스"
     },
+    "title:ff4b23a8be8497c2307b53dd": {
+      "first_seen_kst": "2026-10-12T04:17:35+09:00",
+      "lanes": {
+        "live": "2026-10-12T04:17:35+09:00"
+      },
+      "last_seen_kst": "2026-10-12T04:17:35+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000021616",
+      "source": "국민일보",
+      "source_body_digest": "9d1b1ef889a255932c466bfa643a677fec1a3a0208556bdc764d1bc48b2052c0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99486a43c78d90d02a40236c868eb1c18d9190315ace8f06d9cae8bde14eecff",
+      "source_fact_keys": [
+        "source_fact:v1:02d67f205a7d1ae3098175e5ed0ce29c672f5b4f276e61d98ec09acc853ed01c",
+        "source_fact:v1:2ee1eefd62159f7095af71e668a14d707e58efef47e71c60a19cacd6b6750028",
+        "source_fact:v1:6a0ba821b32ccd113ded360920f84e4c88cc7a811aa2c0d36eca337ee5958391",
+        "source_fact:v1:70ef7f4d001d3616483cc59d7ed3b92a8d1d13a67f2afa519d9feb66db3ea278",
+        "source_fact:v1:beaa9184d7c4e896cd2e8337eb37dda1ed82fc64c00f0d484df5a7f9ff8c473a",
+        "source_fact:v1:eb3866e9b8e1b4b84fa20335d3e53682777ddaed2400aaf3029bb0afcc49d8e2",
+        "source_fact:v1:ed1af32298dbc26a0bffd5b078d5afe8e283d31a710e379c8b0ee8bcb263b8a2",
+        "source_fact:v1:f5ea8a477206f8b7151f348494ee45a72b9d29475f81b6ecc2eec7a283aa1327"
+      ],
+      "source_published_kst": "2026-10-12T00:44+09:00",
+      "source_title": "한화오션 하청 이어 원청도 고공농성… 추투 장기화되나",
+      "telegram_core_fact": "금속노조 경남지부는 ‘고공농성 돌입’ 관련 성명에서 한화오션의 올해 상반기 영업이익이 1조1772억원을 기록해 지난해 동기 대비 87% 늘었는데도 그 성과가 원·하청 노동자에게 돌아가지 않았다고 밝혔다.",
+      "title": "한화오션 하청 이어 원청도 고공농성… 추투 장기화되나"
+    },
     "title:ff512c1555aaa3d1d397fcaa": {
       "first_seen_kst": "2026-10-02T07:36:51+09:00",
       "lanes": {
@@ -445911,5 +446249,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-12T03:58:42+09:00"
+  "updated_at_kst": "2026-10-12T04:17:35+09:00"
 }
