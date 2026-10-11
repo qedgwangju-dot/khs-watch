@@ -3906,6 +3906,39 @@
       "telegram_core_fact": "10년 만기 국채 금리는 7월 말 이후 60bp 급등했고, 같은 기간 미국 원유 가격은 20% 상승했다.",
       "title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매"
     },
+    "core:23debe1d63e8ef27db75d2c8": {
+      "first_seen_kst": "2026-10-12T07:02:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:02:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:02:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01744966645612264",
+      "source": "이데일리",
+      "source_body_digest": "0b1fa0d02485a2ca1c7973f03bb1128ca005ede1842f3a6027199eae0c619790",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a71649f9da30d30686ad42df6a9add1c9f966e438701fd8857bd270b33c37d4",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:208ae731bf9eccfb74906f39b8b01120db59fc7b1aef53775c37ca23f304b28c",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:4757fe180e75d831794352adb85a46459e3c5e5c4e432e8766df60925d58820d",
+        "source_fact:v1:532b7ab57a4039f344215c99c0d4e1b8e91a4dbfc1f2dce214b239617b46908d",
+        "source_fact:v1:59d6334f99b973eb66e595d3c4714c04849114dd18562be04fedeccb58bd4b39",
+        "source_fact:v1:6584fc2cff852908a1f1e1276de1b78c97b5aa6fa6dae833d81c24c899e8d2d2",
+        "source_fact:v1:81448971df5accd91451f983737ddcc3c32245a7a3dcb9fea30ee1fe7da4df2c",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:9842afb810b158de357c1a0bf470bd4692b72b46f81aaf2851429dd36f93c367",
+        "source_fact:v1:99f38eca29eab1fb6a0b1939b9e4eddb6587edf5056d0eba67a609d8931caf88",
+        "source_fact:v1:9ca5b3fbafa3973e85860919911f6c6bd3d9b0812f69cc1ad820bc66662d81ac",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:e9836bff65de24b57ea6658f3f4e08379c7b530d06ad8dc15cca5143172b5e03",
+        "source_fact:v1:fa91f30ca98feddea318dd200e7dde298440a1617bb4c42c08c0e7208854f790"
+      ],
+      "source_published_kst": "2026-10-12T06:29+09:00",
+      "source_title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다",
+      "telegram_core_fact": "젤렌스키 대통령은 전날 트럼프 대통령이 러시아와 경유 공급 계약을 체결했다고 발표한 데 대해서도 강하게 반발했다.",
+      "title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다"
+    },
     "core:243e7733970f29d5516dc664": {
       "first_seen_kst": "2026-10-08T09:58:56+09:00",
       "lanes": {
@@ -5389,6 +5422,23 @@
       "source_title": "국내·외 상관없다…최태원 회장, AI 메모리 호황에 반도체 증설 '속도전'",
       "telegram_core_fact": "최태원 SK그룹 회장이 인공지능(AI)발 메모리 호황이 이어지자, 반도체 캐파(생산능력) 확장을 위한 '속도전'에 나섰다.",
       "title": "국내·외 상관없다…최태원 회장, AI 메모리 호황에 반도체 증설 '속도전'"
+    },
+    "core:32ac3c15dda648370d68dbc1": {
+      "first_seen_kst": "2026-10-12T07:02:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:02:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:02:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003821107",
+      "source": "뉴시스",
+      "source_body_digest": "77d6f33d2c1041947e2c56c1b3eb9a31797ee9c83b10b3d43e73605497de9432",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T06:43+09:00",
+      "source_title": "과방위, 오늘 방미통위 국감…YTN 민영화·구글·텔레그램 도마",
+      "telegram_core_fact": "이날 과방위 국감의 가장 큰 쟁점은 YTN 민영화 과정이다. YTN 지분 매각 당시 정부의 개입 과정과 구글 앱마켓 거래 조건, 텔레그램의 불법정보 유통 대응이 방송미디어통신위원회 국정감사 주요 쟁점으로 다뤄질 전망이다.",
+      "title": "과방위, 오늘 방미통위 국감…YTN 민영화·구글·텔레그램 도마"
     },
     "core:331222bd5e81ed003a03ecc8": {
       "first_seen_kst": "2026-10-11T08:19:03+09:00",
@@ -13142,6 +13192,27 @@
       "source_title": "LG에너지솔루션, 3분기 영업익 7560억원…분기 최대 매출",
       "telegram_core_fact": "LG에너지솔루션은 연결 기준 올해 3분기 영업이익이 지난해 동기보다 25.7% 증가한 7560억원으로 잠정 집계됐다고 8일 공시했다.",
       "title": "LG에너지솔루션, 3분기 영업익 7560억원…분기 최대 매출"
+    },
+    "core:84f12a6cc4ab739e7fcb56a2": {
+      "first_seen_kst": "2026-10-12T07:02:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:02:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:02:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634375",
+      "source": "이투데이",
+      "source_body_digest": "7b221b541e01347367b8bf2fd3a92d3048d478b41d1bad1695ab119c31743545",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d8ccdf58a62acee57a24023bde3a99a77256073051582498617a18983412b39f",
+      "source_fact_keys": [
+        "source_fact:v1:0571f77033ba8555a12c4096617257c14c5e74f566c176db511249144ceebb0d",
+        "source_fact:v1:245adb4bc1d856b86f3a6a34483d82b62e6e526e9e6ef29f6e4ac7b69f2fe4e3",
+        "source_fact:v1:69f6d8ebd538d566c8814f6e5dc79dea38e20acedfe02336d43e5a6bb9d071ec"
+      ],
+      "source_published_kst": "2026-10-12T06:48+09:00",
+      "source_title": "“韓 당국, 알래스카 LNG 개발사의 최종투자결정 있어야 검토”",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 한국의 대미투자금 중 500억달러가 알래스카 액화천연가스(LNG) 프로젝트에 투입된다고 발표한 뒤에도 한국의 관리들이 계속 반박하고 있다고 알래스카퍼블리미디어가 9일(현지시간) 보도했다.",
+      "title": "“韓 당국, 알래스카 LNG 개발사의 최종투자결정 있어야 검토”"
     },
     "core:85140abe4208c2cb41106b5d": {
       "first_seen_kst": "2026-10-08T16:34:42+09:00",
@@ -27368,24 +27439,35 @@
     "event:242c04e115c71f36e3e5a541": {
       "first_seen_kst": "2026-10-12T01:34:33+09:00",
       "lanes": {
-        "live": "2026-10-12T03:58:42+09:00"
+        "live": "2026-10-12T07:02:25+09:00"
       },
-      "last_seen_kst": "2026-10-12T03:58:42+09:00",
-      "link": "https://www.newsis.com/view/NISX20261012_0003821233",
-      "source": "뉴시스",
-      "source_body_digest": "db110efad586806aef7c8ddeb19aecfdd7e331c705da1603b619a3f3bc491bf1",
+      "last_seen_kst": "2026-10-12T07:02:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01744966645612264",
+      "source": "이데일리",
+      "source_body_digest": "0b1fa0d02485a2ca1c7973f03bb1128ca005ede1842f3a6027199eae0c619790",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:43d0af73e8afadd2c0ce7196634b11b44d44dec7f3c45456f75624b1b60a8d8c",
+      "source_fact_identity": "source_facts:v1:4a71649f9da30d30686ad42df6a9add1c9f966e438701fd8857bd270b33c37d4",
       "source_fact_keys": [
-        "source_fact:v1:2407f1d0912d2dcfa43414997837b62b3dfaea1c0ed1a72cc1cbc5e6bf223048",
-        "source_fact:v1:9e4fe597e470c5b7d53564f759309b1e0487fcabb7b777256feec94adc522a77",
-        "source_fact:v1:a1a33476a59352961701bdc9d1e9becbdc39885c444fb39b9e009543111877a5",
-        "source_fact:v1:db0ba77d95e72a7cc3ee10b101cf334bfcc43a32aaeb1b5d2e7b37c64f1d3e6b"
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:208ae731bf9eccfb74906f39b8b01120db59fc7b1aef53775c37ca23f304b28c",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:4757fe180e75d831794352adb85a46459e3c5e5c4e432e8766df60925d58820d",
+        "source_fact:v1:532b7ab57a4039f344215c99c0d4e1b8e91a4dbfc1f2dce214b239617b46908d",
+        "source_fact:v1:59d6334f99b973eb66e595d3c4714c04849114dd18562be04fedeccb58bd4b39",
+        "source_fact:v1:6584fc2cff852908a1f1e1276de1b78c97b5aa6fa6dae833d81c24c899e8d2d2",
+        "source_fact:v1:81448971df5accd91451f983737ddcc3c32245a7a3dcb9fea30ee1fe7da4df2c",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:9842afb810b158de357c1a0bf470bd4692b72b46f81aaf2851429dd36f93c367",
+        "source_fact:v1:99f38eca29eab1fb6a0b1939b9e4eddb6587edf5056d0eba67a609d8931caf88",
+        "source_fact:v1:9ca5b3fbafa3973e85860919911f6c6bd3d9b0812f69cc1ad820bc66662d81ac",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:e9836bff65de24b57ea6658f3f4e08379c7b530d06ad8dc15cca5143172b5e03",
+        "source_fact:v1:fa91f30ca98feddea318dd200e7dde298440a1617bb4c42c08c0e7208854f790"
       ],
-      "source_published_kst": "2026-10-12T03:42+09:00",
-      "source_title": "이란 “종전 제안에 미국 답변 불충분”…데이터센터·통신 케이블 공격 경고",
-      "telegram_core_fact": "모흐센 레자이 이란 최고국가안보회의 사무총장은 11일(현지시간) 전쟁 종식과 호르무즈 해협의 완전한 개방을 위한 협상이 진전을 보이지 못하는 가운데 미국의 최신 답변이 “불충분하다”고 밝혔다.",
-      "title": "이란 “종전 제안에 미국 답변 불충분”…데이터센터·통신 케이블 공격 경고"
+      "source_published_kst": "2026-10-12T06:29+09:00",
+      "source_title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다",
+      "telegram_core_fact": "젤렌스키 대통령은 전날 트럼프 대통령이 러시아와 경유 공급 계약을 체결했다고 발표한 데 대해서도 강하게 반발했다.",
+      "title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다"
     },
     "event:243b9268c0c661c2e567eb0a": {
       "first_seen_kst": "2026-09-30T11:15:27+09:00",
@@ -53497,6 +53579,27 @@
       "telegram_core_fact": "KB국민카드, 롯데카드, 웰컴저축은행 등 국내 금융사에 누적 1천만 명 이상 고객 기반으로 검증된 인증·보안 기술을 보유하고 있으며, 이 원천기술을 바탕으로 만든 솔루션이 TrustIn Gateway이다.",
       "title": "[제2서울핀테크랩 스타트업 CEO] 제로트러스트(Zero Trust) 기반 금융 보안·인증·결제 솔루션 개발하는 기업 ‘신영이노베이션’"
     },
+    "fact:6dcf321feefdb4fc3f671cff": {
+      "first_seen_kst": "2026-10-12T07:02:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:02:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:02:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634375",
+      "source": "이투데이",
+      "source_body_digest": "7b221b541e01347367b8bf2fd3a92d3048d478b41d1bad1695ab119c31743545",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d8ccdf58a62acee57a24023bde3a99a77256073051582498617a18983412b39f",
+      "source_fact_keys": [
+        "source_fact:v1:0571f77033ba8555a12c4096617257c14c5e74f566c176db511249144ceebb0d",
+        "source_fact:v1:245adb4bc1d856b86f3a6a34483d82b62e6e526e9e6ef29f6e4ac7b69f2fe4e3",
+        "source_fact:v1:69f6d8ebd538d566c8814f6e5dc79dea38e20acedfe02336d43e5a6bb9d071ec"
+      ],
+      "source_published_kst": "2026-10-12T06:48+09:00",
+      "source_title": "“韓 당국, 알래스카 LNG 개발사의 최종투자결정 있어야 검토”",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 한국의 대미투자금 중 500억달러가 알래스카 액화천연가스(LNG) 프로젝트에 투입된다고 발표한 뒤에도 한국의 관리들이 계속 반박하고 있다고 알래스카퍼블리미디어가 9일(현지시간) 보도했다.",
+      "title": "“韓 당국, 알래스카 LNG 개발사의 최종투자결정 있어야 검토”"
+    },
     "fact:6de573a787339fbbeca45530": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
       "lanes": {
@@ -55492,6 +55595,39 @@
       ],
       "source_published_kst": "2026-10-05T19:24+09:00",
       "title": "ZTO 익스프레스, 자사주 14만주 매입..268만 달러 규모"
+    },
+    "fact:7b0a804890630227eb7284ee": {
+      "first_seen_kst": "2026-10-12T07:02:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:02:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:02:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01744966645612264",
+      "source": "이데일리",
+      "source_body_digest": "0b1fa0d02485a2ca1c7973f03bb1128ca005ede1842f3a6027199eae0c619790",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a71649f9da30d30686ad42df6a9add1c9f966e438701fd8857bd270b33c37d4",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:208ae731bf9eccfb74906f39b8b01120db59fc7b1aef53775c37ca23f304b28c",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:4757fe180e75d831794352adb85a46459e3c5e5c4e432e8766df60925d58820d",
+        "source_fact:v1:532b7ab57a4039f344215c99c0d4e1b8e91a4dbfc1f2dce214b239617b46908d",
+        "source_fact:v1:59d6334f99b973eb66e595d3c4714c04849114dd18562be04fedeccb58bd4b39",
+        "source_fact:v1:6584fc2cff852908a1f1e1276de1b78c97b5aa6fa6dae833d81c24c899e8d2d2",
+        "source_fact:v1:81448971df5accd91451f983737ddcc3c32245a7a3dcb9fea30ee1fe7da4df2c",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:9842afb810b158de357c1a0bf470bd4692b72b46f81aaf2851429dd36f93c367",
+        "source_fact:v1:99f38eca29eab1fb6a0b1939b9e4eddb6587edf5056d0eba67a609d8931caf88",
+        "source_fact:v1:9ca5b3fbafa3973e85860919911f6c6bd3d9b0812f69cc1ad820bc66662d81ac",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:e9836bff65de24b57ea6658f3f4e08379c7b530d06ad8dc15cca5143172b5e03",
+        "source_fact:v1:fa91f30ca98feddea318dd200e7dde298440a1617bb4c42c08c0e7208854f790"
+      ],
+      "source_published_kst": "2026-10-12T06:29+09:00",
+      "source_title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다",
+      "telegram_core_fact": "젤렌스키 대통령은 전날 트럼프 대통령이 러시아와 경유 공급 계약을 체결했다고 발표한 데 대해서도 강하게 반발했다.",
+      "title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다"
     },
     "fact:7b0c0493ea45867d6d75712d": {
       "first_seen_kst": "2026-10-11T16:32:27+09:00",
@@ -96567,6 +96703,39 @@
       "source_published_kst": "2026-10-06T11:09+09:00",
       "title": "폭염·AI에 日 전력난 비상… 노후 화력발전 수명연장 검토 | 연합뉴스"
     },
+    "link:50399e96567d50b8f6b87d03": {
+      "first_seen_kst": "2026-10-12T07:02:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:02:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:02:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01744966645612264",
+      "source": "이데일리",
+      "source_body_digest": "0b1fa0d02485a2ca1c7973f03bb1128ca005ede1842f3a6027199eae0c619790",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a71649f9da30d30686ad42df6a9add1c9f966e438701fd8857bd270b33c37d4",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:208ae731bf9eccfb74906f39b8b01120db59fc7b1aef53775c37ca23f304b28c",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:4757fe180e75d831794352adb85a46459e3c5e5c4e432e8766df60925d58820d",
+        "source_fact:v1:532b7ab57a4039f344215c99c0d4e1b8e91a4dbfc1f2dce214b239617b46908d",
+        "source_fact:v1:59d6334f99b973eb66e595d3c4714c04849114dd18562be04fedeccb58bd4b39",
+        "source_fact:v1:6584fc2cff852908a1f1e1276de1b78c97b5aa6fa6dae833d81c24c899e8d2d2",
+        "source_fact:v1:81448971df5accd91451f983737ddcc3c32245a7a3dcb9fea30ee1fe7da4df2c",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:9842afb810b158de357c1a0bf470bd4692b72b46f81aaf2851429dd36f93c367",
+        "source_fact:v1:99f38eca29eab1fb6a0b1939b9e4eddb6587edf5056d0eba67a609d8931caf88",
+        "source_fact:v1:9ca5b3fbafa3973e85860919911f6c6bd3d9b0812f69cc1ad820bc66662d81ac",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:e9836bff65de24b57ea6658f3f4e08379c7b530d06ad8dc15cca5143172b5e03",
+        "source_fact:v1:fa91f30ca98feddea318dd200e7dde298440a1617bb4c42c08c0e7208854f790"
+      ],
+      "source_published_kst": "2026-10-12T06:29+09:00",
+      "source_title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다",
+      "telegram_core_fact": "젤렌스키 대통령은 전날 트럼프 대통령이 러시아와 경유 공급 계약을 체결했다고 발표한 데 대해서도 강하게 반발했다.",
+      "title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다"
+    },
     "link:504083e71ee4c2c287da865e": {
       "first_seen_kst": "2026-10-04T00:19:00+09:00",
       "lanes": {
@@ -109830,6 +109999,23 @@
       "link": "https://magazine.hankyung.com/business/article/202610029993b",
       "source": "한국경제",
       "title": "HD현대重, 태안 해상변전소 본계약…해상풍력 밸류체인 확대"
+    },
+    "link:862ee781d2c74c744d022dc0": {
+      "first_seen_kst": "2026-10-12T07:02:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:02:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:02:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003821107",
+      "source": "뉴시스",
+      "source_body_digest": "77d6f33d2c1041947e2c56c1b3eb9a31797ee9c83b10b3d43e73605497de9432",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T06:43+09:00",
+      "source_title": "과방위, 오늘 방미통위 국감…YTN 민영화·구글·텔레그램 도마",
+      "telegram_core_fact": "이날 과방위 국감의 가장 큰 쟁점은 YTN 민영화 과정이다. YTN 지분 매각 당시 정부의 개입 과정과 구글 앱마켓 거래 조건, 텔레그램의 불법정보 유통 대응이 방송미디어통신위원회 국정감사 주요 쟁점으로 다뤄질 전망이다.",
+      "title": "과방위, 오늘 방미통위 국감…YTN 민영화·구글·텔레그램 도마"
     },
     "link:86499e35f7ad6c6a83f48b4a": {
       "first_seen_kst": "2026-10-06T21:54:00+09:00",
@@ -131976,6 +132162,27 @@
       ],
       "source_published_kst": "2026-10-06T17:38+09:00",
       "title": "\"中국경절 연휴 특수\"… 외국인 매출 두배로"
+    },
+    "link:e4c13ef948b46245ddfc0b52": {
+      "first_seen_kst": "2026-10-12T07:02:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:02:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:02:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634375",
+      "source": "이투데이",
+      "source_body_digest": "7b221b541e01347367b8bf2fd3a92d3048d478b41d1bad1695ab119c31743545",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d8ccdf58a62acee57a24023bde3a99a77256073051582498617a18983412b39f",
+      "source_fact_keys": [
+        "source_fact:v1:0571f77033ba8555a12c4096617257c14c5e74f566c176db511249144ceebb0d",
+        "source_fact:v1:245adb4bc1d856b86f3a6a34483d82b62e6e526e9e6ef29f6e4ac7b69f2fe4e3",
+        "source_fact:v1:69f6d8ebd538d566c8814f6e5dc79dea38e20acedfe02336d43e5a6bb9d071ec"
+      ],
+      "source_published_kst": "2026-10-12T06:48+09:00",
+      "source_title": "“韓 당국, 알래스카 LNG 개발사의 최종투자결정 있어야 검토”",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 한국의 대미투자금 중 500억달러가 알래스카 액화천연가스(LNG) 프로젝트에 투입된다고 발표한 뒤에도 한국의 관리들이 계속 반박하고 있다고 알래스카퍼블리미디어가 9일(현지시간) 보도했다.",
+      "title": "“韓 당국, 알래스카 LNG 개발사의 최종투자결정 있어야 검토”"
     },
     "link:e4cef80be0da6a676279dd3f": {
       "first_seen_kst": "2026-10-05T11:24:20+09:00",
@@ -161695,6 +161902,39 @@
       "source_published_kst": "2026-10-05T23:10+09:00",
       "title": "유나이티드마이크로일렉, 18억 달러 해외CB 발행 확정에 지분 희석·매물 부담 부각"
     },
+    "original:6310a3871fbbce3b832530c2": {
+      "first_seen_kst": "2026-10-12T07:02:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:02:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:02:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01744966645612264",
+      "source": "이데일리",
+      "source_body_digest": "0b1fa0d02485a2ca1c7973f03bb1128ca005ede1842f3a6027199eae0c619790",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a71649f9da30d30686ad42df6a9add1c9f966e438701fd8857bd270b33c37d4",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:208ae731bf9eccfb74906f39b8b01120db59fc7b1aef53775c37ca23f304b28c",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:4757fe180e75d831794352adb85a46459e3c5e5c4e432e8766df60925d58820d",
+        "source_fact:v1:532b7ab57a4039f344215c99c0d4e1b8e91a4dbfc1f2dce214b239617b46908d",
+        "source_fact:v1:59d6334f99b973eb66e595d3c4714c04849114dd18562be04fedeccb58bd4b39",
+        "source_fact:v1:6584fc2cff852908a1f1e1276de1b78c97b5aa6fa6dae833d81c24c899e8d2d2",
+        "source_fact:v1:81448971df5accd91451f983737ddcc3c32245a7a3dcb9fea30ee1fe7da4df2c",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:9842afb810b158de357c1a0bf470bd4692b72b46f81aaf2851429dd36f93c367",
+        "source_fact:v1:99f38eca29eab1fb6a0b1939b9e4eddb6587edf5056d0eba67a609d8931caf88",
+        "source_fact:v1:9ca5b3fbafa3973e85860919911f6c6bd3d9b0812f69cc1ad820bc66662d81ac",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:e9836bff65de24b57ea6658f3f4e08379c7b530d06ad8dc15cca5143172b5e03",
+        "source_fact:v1:fa91f30ca98feddea318dd200e7dde298440a1617bb4c42c08c0e7208854f790"
+      ],
+      "source_published_kst": "2026-10-12T06:29+09:00",
+      "source_title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다",
+      "telegram_core_fact": "젤렌스키 대통령은 전날 트럼프 대통령이 러시아와 경유 공급 계약을 체결했다고 발표한 데 대해서도 강하게 반발했다.",
+      "title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다"
+    },
     "original:63191b78b79b6805c3c0e6a1": {
       "first_seen_kst": "2026-10-08T11:28:27+09:00",
       "lanes": {
@@ -164423,6 +164663,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T17:16+09:00",
       "title": "이란 “조건 수용 전까지 호르무즈 해협 개방 안해”"
+    },
+    "original:70cf9000fa3276001c709385": {
+      "first_seen_kst": "2026-10-12T07:02:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:02:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:02:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003821107",
+      "source": "뉴시스",
+      "source_body_digest": "77d6f33d2c1041947e2c56c1b3eb9a31797ee9c83b10b3d43e73605497de9432",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T06:43+09:00",
+      "source_title": "과방위, 오늘 방미통위 국감…YTN 민영화·구글·텔레그램 도마",
+      "telegram_core_fact": "이날 과방위 국감의 가장 큰 쟁점은 YTN 민영화 과정이다. YTN 지분 매각 당시 정부의 개입 과정과 구글 앱마켓 거래 조건, 텔레그램의 불법정보 유통 대응이 방송미디어통신위원회 국정감사 주요 쟁점으로 다뤄질 전망이다.",
+      "title": "과방위, 오늘 방미통위 국감…YTN 민영화·구글·텔레그램 도마"
     },
     "original:70dbc3bb5f6864ee55e3b600": {
       "first_seen_kst": "2026-10-08T02:41:45+09:00",
@@ -187754,6 +188011,27 @@
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "LK삼양–다온아이앤씨, 드론용 초경량 EO·IR 모듈 개발 MOU"
     },
+    "original:d498921f6dab507004a751a9": {
+      "first_seen_kst": "2026-10-12T07:02:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:02:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:02:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634375",
+      "source": "이투데이",
+      "source_body_digest": "7b221b541e01347367b8bf2fd3a92d3048d478b41d1bad1695ab119c31743545",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d8ccdf58a62acee57a24023bde3a99a77256073051582498617a18983412b39f",
+      "source_fact_keys": [
+        "source_fact:v1:0571f77033ba8555a12c4096617257c14c5e74f566c176db511249144ceebb0d",
+        "source_fact:v1:245adb4bc1d856b86f3a6a34483d82b62e6e526e9e6ef29f6e4ac7b69f2fe4e3",
+        "source_fact:v1:69f6d8ebd538d566c8814f6e5dc79dea38e20acedfe02336d43e5a6bb9d071ec"
+      ],
+      "source_published_kst": "2026-10-12T06:48+09:00",
+      "source_title": "“韓 당국, 알래스카 LNG 개발사의 최종투자결정 있어야 검토”",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 한국의 대미투자금 중 500억달러가 알래스카 액화천연가스(LNG) 프로젝트에 투입된다고 발표한 뒤에도 한국의 관리들이 계속 반박하고 있다고 알래스카퍼블리미디어가 9일(현지시간) 보도했다.",
+      "title": "“韓 당국, 알래스카 LNG 개발사의 최종투자결정 있어야 검토”"
+    },
     "original:d49afe64d0e7ce82a513b008": {
       "first_seen_kst": "2026-10-07T18:44:00+09:00",
       "lanes": {
@@ -209822,6 +210100,39 @@
       "telegram_core_fact": "스탠다드 리튬(SLI)은 9월 30일 종료된 3분기 동안 시장가 유상증자(ATM) 프로그램을 통해 보통주 10만7631주를 평균 2.78달러에 발행하고 총수익 29만9569달러를 조달했다고 10월 9일 발표했다.",
       "title": "스탠다드 리튬, 3분기 ATM으로 30만달러 조달..10만주 발행"
     },
+    "source_fact:10ce4d5fc4dd872706fc8558": {
+      "first_seen_kst": "2026-10-12T07:02:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:02:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:02:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01744966645612264",
+      "source": "이데일리",
+      "source_body_digest": "0b1fa0d02485a2ca1c7973f03bb1128ca005ede1842f3a6027199eae0c619790",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a71649f9da30d30686ad42df6a9add1c9f966e438701fd8857bd270b33c37d4",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:208ae731bf9eccfb74906f39b8b01120db59fc7b1aef53775c37ca23f304b28c",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:4757fe180e75d831794352adb85a46459e3c5e5c4e432e8766df60925d58820d",
+        "source_fact:v1:532b7ab57a4039f344215c99c0d4e1b8e91a4dbfc1f2dce214b239617b46908d",
+        "source_fact:v1:59d6334f99b973eb66e595d3c4714c04849114dd18562be04fedeccb58bd4b39",
+        "source_fact:v1:6584fc2cff852908a1f1e1276de1b78c97b5aa6fa6dae833d81c24c899e8d2d2",
+        "source_fact:v1:81448971df5accd91451f983737ddcc3c32245a7a3dcb9fea30ee1fe7da4df2c",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:9842afb810b158de357c1a0bf470bd4692b72b46f81aaf2851429dd36f93c367",
+        "source_fact:v1:99f38eca29eab1fb6a0b1939b9e4eddb6587edf5056d0eba67a609d8931caf88",
+        "source_fact:v1:9ca5b3fbafa3973e85860919911f6c6bd3d9b0812f69cc1ad820bc66662d81ac",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:e9836bff65de24b57ea6658f3f4e08379c7b530d06ad8dc15cca5143172b5e03",
+        "source_fact:v1:fa91f30ca98feddea318dd200e7dde298440a1617bb4c42c08c0e7208854f790"
+      ],
+      "source_published_kst": "2026-10-12T06:29+09:00",
+      "source_title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다",
+      "telegram_core_fact": "젤렌스키 대통령은 전날 트럼프 대통령이 러시아와 경유 공급 계약을 체결했다고 발표한 데 대해서도 강하게 반발했다.",
+      "title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다"
+    },
     "source_fact:10e264e5c22047cad415288c": {
       "first_seen_kst": "2026-10-08T16:34:42+09:00",
       "lanes": {
@@ -210345,6 +210656,39 @@
       "source_title": "SK에너지, 석유제품 가격·거래관행 점검…내부통제 강화한다",
       "telegram_core_fact": "SK에너지는 △석유시장 가격체계 투명성 및 거래관행 개선 △공정거래 및 내부통제 체계 강화 △석유 유통고객과의 상생협력 강화 △안정적인 에너지 공급을 위한 역할 지속을 골자로 하는 ‘석유시장 가격구조 개편 및 내부통제 강화’ 조치를 마련했다고 8일 밝혔다.",
       "title": "SK에너지, 석유제품 가격·거래관행 점검…내부통제 강화한다"
+    },
+    "source_fact:11c3ee16187c2e1bb182e9b0": {
+      "first_seen_kst": "2026-10-12T07:02:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:02:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:02:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01744966645612264",
+      "source": "이데일리",
+      "source_body_digest": "0b1fa0d02485a2ca1c7973f03bb1128ca005ede1842f3a6027199eae0c619790",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a71649f9da30d30686ad42df6a9add1c9f966e438701fd8857bd270b33c37d4",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:208ae731bf9eccfb74906f39b8b01120db59fc7b1aef53775c37ca23f304b28c",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:4757fe180e75d831794352adb85a46459e3c5e5c4e432e8766df60925d58820d",
+        "source_fact:v1:532b7ab57a4039f344215c99c0d4e1b8e91a4dbfc1f2dce214b239617b46908d",
+        "source_fact:v1:59d6334f99b973eb66e595d3c4714c04849114dd18562be04fedeccb58bd4b39",
+        "source_fact:v1:6584fc2cff852908a1f1e1276de1b78c97b5aa6fa6dae833d81c24c899e8d2d2",
+        "source_fact:v1:81448971df5accd91451f983737ddcc3c32245a7a3dcb9fea30ee1fe7da4df2c",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:9842afb810b158de357c1a0bf470bd4692b72b46f81aaf2851429dd36f93c367",
+        "source_fact:v1:99f38eca29eab1fb6a0b1939b9e4eddb6587edf5056d0eba67a609d8931caf88",
+        "source_fact:v1:9ca5b3fbafa3973e85860919911f6c6bd3d9b0812f69cc1ad820bc66662d81ac",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:e9836bff65de24b57ea6658f3f4e08379c7b530d06ad8dc15cca5143172b5e03",
+        "source_fact:v1:fa91f30ca98feddea318dd200e7dde298440a1617bb4c42c08c0e7208854f790"
+      ],
+      "source_published_kst": "2026-10-12T06:29+09:00",
+      "source_title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다",
+      "telegram_core_fact": "젤렌스키 대통령은 전날 트럼프 대통령이 러시아와 경유 공급 계약을 체결했다고 발표한 데 대해서도 강하게 반발했다.",
+      "title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다"
     },
     "source_fact:11c71cf9c291b29f100c4ed7": {
       "first_seen_kst": "2026-10-11T12:55:39+09:00",
@@ -213128,6 +213472,39 @@
       "source_title": "'역대 최대' 10개 금융지주 상반기 순이익 17조 돌파",
       "telegram_core_fact": "이들 10대 금융지주사의 상반기 당기순이익 합계는 전년 동기(15조4000억원)보다 2조2000억원(13.7%)증가한 총 17조6000억원으로 집계됐다.",
       "title": "'역대 최대' 10개 금융지주 상반기 순이익 17조 돌파"
+    },
+    "source_fact:157eb0395b0454ab6348cc5d": {
+      "first_seen_kst": "2026-10-12T07:02:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:02:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:02:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01744966645612264",
+      "source": "이데일리",
+      "source_body_digest": "0b1fa0d02485a2ca1c7973f03bb1128ca005ede1842f3a6027199eae0c619790",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a71649f9da30d30686ad42df6a9add1c9f966e438701fd8857bd270b33c37d4",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:208ae731bf9eccfb74906f39b8b01120db59fc7b1aef53775c37ca23f304b28c",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:4757fe180e75d831794352adb85a46459e3c5e5c4e432e8766df60925d58820d",
+        "source_fact:v1:532b7ab57a4039f344215c99c0d4e1b8e91a4dbfc1f2dce214b239617b46908d",
+        "source_fact:v1:59d6334f99b973eb66e595d3c4714c04849114dd18562be04fedeccb58bd4b39",
+        "source_fact:v1:6584fc2cff852908a1f1e1276de1b78c97b5aa6fa6dae833d81c24c899e8d2d2",
+        "source_fact:v1:81448971df5accd91451f983737ddcc3c32245a7a3dcb9fea30ee1fe7da4df2c",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:9842afb810b158de357c1a0bf470bd4692b72b46f81aaf2851429dd36f93c367",
+        "source_fact:v1:99f38eca29eab1fb6a0b1939b9e4eddb6587edf5056d0eba67a609d8931caf88",
+        "source_fact:v1:9ca5b3fbafa3973e85860919911f6c6bd3d9b0812f69cc1ad820bc66662d81ac",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:e9836bff65de24b57ea6658f3f4e08379c7b530d06ad8dc15cca5143172b5e03",
+        "source_fact:v1:fa91f30ca98feddea318dd200e7dde298440a1617bb4c42c08c0e7208854f790"
+      ],
+      "source_published_kst": "2026-10-12T06:29+09:00",
+      "source_title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다",
+      "telegram_core_fact": "젤렌스키 대통령은 전날 트럼프 대통령이 러시아와 경유 공급 계약을 체결했다고 발표한 데 대해서도 강하게 반발했다.",
+      "title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다"
     },
     "source_fact:1583bee925eec0157da30387": {
       "first_seen_kst": "2026-10-10T12:36:00+09:00",
@@ -227066,6 +227443,39 @@
       "source_published_kst": "2026-10-07T08:08+09:00",
       "title": "AMD “반도체 수요, 공급 크게 앞질러”⋯CEO 움직이자 주가는 최고치"
     },
+    "source_fact:26826d505cb788ab0c0db4d6": {
+      "first_seen_kst": "2026-10-12T07:02:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:02:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:02:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01744966645612264",
+      "source": "이데일리",
+      "source_body_digest": "0b1fa0d02485a2ca1c7973f03bb1128ca005ede1842f3a6027199eae0c619790",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a71649f9da30d30686ad42df6a9add1c9f966e438701fd8857bd270b33c37d4",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:208ae731bf9eccfb74906f39b8b01120db59fc7b1aef53775c37ca23f304b28c",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:4757fe180e75d831794352adb85a46459e3c5e5c4e432e8766df60925d58820d",
+        "source_fact:v1:532b7ab57a4039f344215c99c0d4e1b8e91a4dbfc1f2dce214b239617b46908d",
+        "source_fact:v1:59d6334f99b973eb66e595d3c4714c04849114dd18562be04fedeccb58bd4b39",
+        "source_fact:v1:6584fc2cff852908a1f1e1276de1b78c97b5aa6fa6dae833d81c24c899e8d2d2",
+        "source_fact:v1:81448971df5accd91451f983737ddcc3c32245a7a3dcb9fea30ee1fe7da4df2c",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:9842afb810b158de357c1a0bf470bd4692b72b46f81aaf2851429dd36f93c367",
+        "source_fact:v1:99f38eca29eab1fb6a0b1939b9e4eddb6587edf5056d0eba67a609d8931caf88",
+        "source_fact:v1:9ca5b3fbafa3973e85860919911f6c6bd3d9b0812f69cc1ad820bc66662d81ac",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:e9836bff65de24b57ea6658f3f4e08379c7b530d06ad8dc15cca5143172b5e03",
+        "source_fact:v1:fa91f30ca98feddea318dd200e7dde298440a1617bb4c42c08c0e7208854f790"
+      ],
+      "source_published_kst": "2026-10-12T06:29+09:00",
+      "source_title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다",
+      "telegram_core_fact": "젤렌스키 대통령은 전날 트럼프 대통령이 러시아와 경유 공급 계약을 체결했다고 발표한 데 대해서도 강하게 반발했다.",
+      "title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다"
+    },
     "source_fact:26828471e34b8c5cdf95ffb7": {
       "first_seen_kst": "2026-10-07T14:18:25+09:00",
       "lanes": {
@@ -231221,6 +231631,39 @@
       ],
       "source_published_kst": "2026-10-06T18:32+09:00",
       "title": "알테오젠, 바이오로직스 흡수합병…연구·판매 전주기 '통합'"
+    },
+    "source_fact:2b3943901ff3acd5c19e9093": {
+      "first_seen_kst": "2026-10-12T07:02:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:02:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:02:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01744966645612264",
+      "source": "이데일리",
+      "source_body_digest": "0b1fa0d02485a2ca1c7973f03bb1128ca005ede1842f3a6027199eae0c619790",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a71649f9da30d30686ad42df6a9add1c9f966e438701fd8857bd270b33c37d4",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:208ae731bf9eccfb74906f39b8b01120db59fc7b1aef53775c37ca23f304b28c",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:4757fe180e75d831794352adb85a46459e3c5e5c4e432e8766df60925d58820d",
+        "source_fact:v1:532b7ab57a4039f344215c99c0d4e1b8e91a4dbfc1f2dce214b239617b46908d",
+        "source_fact:v1:59d6334f99b973eb66e595d3c4714c04849114dd18562be04fedeccb58bd4b39",
+        "source_fact:v1:6584fc2cff852908a1f1e1276de1b78c97b5aa6fa6dae833d81c24c899e8d2d2",
+        "source_fact:v1:81448971df5accd91451f983737ddcc3c32245a7a3dcb9fea30ee1fe7da4df2c",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:9842afb810b158de357c1a0bf470bd4692b72b46f81aaf2851429dd36f93c367",
+        "source_fact:v1:99f38eca29eab1fb6a0b1939b9e4eddb6587edf5056d0eba67a609d8931caf88",
+        "source_fact:v1:9ca5b3fbafa3973e85860919911f6c6bd3d9b0812f69cc1ad820bc66662d81ac",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:e9836bff65de24b57ea6658f3f4e08379c7b530d06ad8dc15cca5143172b5e03",
+        "source_fact:v1:fa91f30ca98feddea318dd200e7dde298440a1617bb4c42c08c0e7208854f790"
+      ],
+      "source_published_kst": "2026-10-12T06:29+09:00",
+      "source_title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다",
+      "telegram_core_fact": "젤렌스키 대통령은 전날 트럼프 대통령이 러시아와 경유 공급 계약을 체결했다고 발표한 데 대해서도 강하게 반발했다.",
+      "title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다"
     },
     "source_fact:2b3bc2153c18e259349c35ac": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
@@ -251462,6 +251905,39 @@
       "source_published_kst": "2026-10-07T11:06+09:00",
       "title": "[ESGX 이슈 5] 구글, 美 원전 11기 출력 높인다…AI 전력 확보에 43억달러 투자"
     },
+    "source_fact:463d848e30669867e394ec0e": {
+      "first_seen_kst": "2026-10-12T07:02:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:02:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:02:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01744966645612264",
+      "source": "이데일리",
+      "source_body_digest": "0b1fa0d02485a2ca1c7973f03bb1128ca005ede1842f3a6027199eae0c619790",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a71649f9da30d30686ad42df6a9add1c9f966e438701fd8857bd270b33c37d4",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:208ae731bf9eccfb74906f39b8b01120db59fc7b1aef53775c37ca23f304b28c",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:4757fe180e75d831794352adb85a46459e3c5e5c4e432e8766df60925d58820d",
+        "source_fact:v1:532b7ab57a4039f344215c99c0d4e1b8e91a4dbfc1f2dce214b239617b46908d",
+        "source_fact:v1:59d6334f99b973eb66e595d3c4714c04849114dd18562be04fedeccb58bd4b39",
+        "source_fact:v1:6584fc2cff852908a1f1e1276de1b78c97b5aa6fa6dae833d81c24c899e8d2d2",
+        "source_fact:v1:81448971df5accd91451f983737ddcc3c32245a7a3dcb9fea30ee1fe7da4df2c",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:9842afb810b158de357c1a0bf470bd4692b72b46f81aaf2851429dd36f93c367",
+        "source_fact:v1:99f38eca29eab1fb6a0b1939b9e4eddb6587edf5056d0eba67a609d8931caf88",
+        "source_fact:v1:9ca5b3fbafa3973e85860919911f6c6bd3d9b0812f69cc1ad820bc66662d81ac",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:e9836bff65de24b57ea6658f3f4e08379c7b530d06ad8dc15cca5143172b5e03",
+        "source_fact:v1:fa91f30ca98feddea318dd200e7dde298440a1617bb4c42c08c0e7208854f790"
+      ],
+      "source_published_kst": "2026-10-12T06:29+09:00",
+      "source_title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다",
+      "telegram_core_fact": "젤렌스키 대통령은 전날 트럼프 대통령이 러시아와 경유 공급 계약을 체결했다고 발표한 데 대해서도 강하게 반발했다.",
+      "title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다"
+    },
     "source_fact:464e18ff2aa1d23ca5cd118b": {
       "first_seen_kst": "2026-10-07T07:54:25+09:00",
       "lanes": {
@@ -256047,6 +256523,39 @@
       "source_title": "미래에셋 'TIGER 달러 단기자산 ETF' 2종, 합산 순자산 1조 돌파",
       "telegram_core_fact": "미래에셋자산운용은 달러 단기자산 상장지수펀드(ETF) 2종 ‘TIGER 미국달러단기채권액티브’와 ‘TIGER 미국초단기(3개월이하)국채’의 합산 순자산이 1조원을 돌파했다고 8일 밝혔다.",
       "title": "미래에셋 'TIGER 달러 단기자산 ETF' 2종, 합산 순자산 1조 돌파"
+    },
+    "source_fact:4b21d16dadbf8191eeb39a68": {
+      "first_seen_kst": "2026-10-12T07:02:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:02:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:02:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01744966645612264",
+      "source": "이데일리",
+      "source_body_digest": "0b1fa0d02485a2ca1c7973f03bb1128ca005ede1842f3a6027199eae0c619790",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a71649f9da30d30686ad42df6a9add1c9f966e438701fd8857bd270b33c37d4",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:208ae731bf9eccfb74906f39b8b01120db59fc7b1aef53775c37ca23f304b28c",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:4757fe180e75d831794352adb85a46459e3c5e5c4e432e8766df60925d58820d",
+        "source_fact:v1:532b7ab57a4039f344215c99c0d4e1b8e91a4dbfc1f2dce214b239617b46908d",
+        "source_fact:v1:59d6334f99b973eb66e595d3c4714c04849114dd18562be04fedeccb58bd4b39",
+        "source_fact:v1:6584fc2cff852908a1f1e1276de1b78c97b5aa6fa6dae833d81c24c899e8d2d2",
+        "source_fact:v1:81448971df5accd91451f983737ddcc3c32245a7a3dcb9fea30ee1fe7da4df2c",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:9842afb810b158de357c1a0bf470bd4692b72b46f81aaf2851429dd36f93c367",
+        "source_fact:v1:99f38eca29eab1fb6a0b1939b9e4eddb6587edf5056d0eba67a609d8931caf88",
+        "source_fact:v1:9ca5b3fbafa3973e85860919911f6c6bd3d9b0812f69cc1ad820bc66662d81ac",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:e9836bff65de24b57ea6658f3f4e08379c7b530d06ad8dc15cca5143172b5e03",
+        "source_fact:v1:fa91f30ca98feddea318dd200e7dde298440a1617bb4c42c08c0e7208854f790"
+      ],
+      "source_published_kst": "2026-10-12T06:29+09:00",
+      "source_title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다",
+      "telegram_core_fact": "젤렌스키 대통령은 전날 트럼프 대통령이 러시아와 경유 공급 계약을 체결했다고 발표한 데 대해서도 강하게 반발했다.",
+      "title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다"
     },
     "source_fact:4b228ee667f145da623466ee": {
       "first_seen_kst": "2026-10-09T20:48:52+09:00",
@@ -262370,6 +262879,27 @@
       "telegram_core_fact": "지난 7월 OK금융그룹이 예별손보 공개매각 우선협상대상자로 선정된 지 약 3개월 만이다.",
       "title": "예보, OK금융그룹과 예별손보 주식매매계약서 체결"
     },
+    "source_fact:538c9a1d9435c60a8b6cf52b": {
+      "first_seen_kst": "2026-10-12T07:02:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:02:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:02:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634375",
+      "source": "이투데이",
+      "source_body_digest": "7b221b541e01347367b8bf2fd3a92d3048d478b41d1bad1695ab119c31743545",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d8ccdf58a62acee57a24023bde3a99a77256073051582498617a18983412b39f",
+      "source_fact_keys": [
+        "source_fact:v1:0571f77033ba8555a12c4096617257c14c5e74f566c176db511249144ceebb0d",
+        "source_fact:v1:245adb4bc1d856b86f3a6a34483d82b62e6e526e9e6ef29f6e4ac7b69f2fe4e3",
+        "source_fact:v1:69f6d8ebd538d566c8814f6e5dc79dea38e20acedfe02336d43e5a6bb9d071ec"
+      ],
+      "source_published_kst": "2026-10-12T06:48+09:00",
+      "source_title": "“韓 당국, 알래스카 LNG 개발사의 최종투자결정 있어야 검토”",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 한국의 대미투자금 중 500억달러가 알래스카 액화천연가스(LNG) 프로젝트에 투입된다고 발표한 뒤에도 한국의 관리들이 계속 반박하고 있다고 알래스카퍼블리미디어가 9일(현지시간) 보도했다.",
+      "title": "“韓 당국, 알래스카 LNG 개발사의 최종투자결정 있어야 검토”"
+    },
     "source_fact:53904ecdc2a06c849f686787": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
       "lanes": {
@@ -266836,6 +267366,27 @@
       ],
       "source_published_kst": "2026-10-06T09:41+09:00",
       "title": "HLB그룹주 연일 강세…리픽투 FDA 품목허가 효과"
+    },
+    "source_fact:58c7036aba773617fbd978a4": {
+      "first_seen_kst": "2026-10-12T07:02:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:02:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:02:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634375",
+      "source": "이투데이",
+      "source_body_digest": "7b221b541e01347367b8bf2fd3a92d3048d478b41d1bad1695ab119c31743545",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d8ccdf58a62acee57a24023bde3a99a77256073051582498617a18983412b39f",
+      "source_fact_keys": [
+        "source_fact:v1:0571f77033ba8555a12c4096617257c14c5e74f566c176db511249144ceebb0d",
+        "source_fact:v1:245adb4bc1d856b86f3a6a34483d82b62e6e526e9e6ef29f6e4ac7b69f2fe4e3",
+        "source_fact:v1:69f6d8ebd538d566c8814f6e5dc79dea38e20acedfe02336d43e5a6bb9d071ec"
+      ],
+      "source_published_kst": "2026-10-12T06:48+09:00",
+      "source_title": "“韓 당국, 알래스카 LNG 개발사의 최종투자결정 있어야 검토”",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 한국의 대미투자금 중 500억달러가 알래스카 액화천연가스(LNG) 프로젝트에 투입된다고 발표한 뒤에도 한국의 관리들이 계속 반박하고 있다고 알래스카퍼블리미디어가 9일(현지시간) 보도했다.",
+      "title": "“韓 당국, 알래스카 LNG 개발사의 최종투자결정 있어야 검토”"
     },
     "source_fact:58d3dc82dcfd0335f8149f40": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
@@ -277162,6 +277713,39 @@
       ],
       "source_published_kst": "2026-10-07T06:31+09:00",
       "title": "실적 기대에 힘받은 뉴욕증시…S&P500·나스닥 또 최고치(종합)"
+    },
+    "source_fact:65a655fd7364a3affe1fe95f": {
+      "first_seen_kst": "2026-10-12T07:02:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:02:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:02:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01744966645612264",
+      "source": "이데일리",
+      "source_body_digest": "0b1fa0d02485a2ca1c7973f03bb1128ca005ede1842f3a6027199eae0c619790",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a71649f9da30d30686ad42df6a9add1c9f966e438701fd8857bd270b33c37d4",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:208ae731bf9eccfb74906f39b8b01120db59fc7b1aef53775c37ca23f304b28c",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:4757fe180e75d831794352adb85a46459e3c5e5c4e432e8766df60925d58820d",
+        "source_fact:v1:532b7ab57a4039f344215c99c0d4e1b8e91a4dbfc1f2dce214b239617b46908d",
+        "source_fact:v1:59d6334f99b973eb66e595d3c4714c04849114dd18562be04fedeccb58bd4b39",
+        "source_fact:v1:6584fc2cff852908a1f1e1276de1b78c97b5aa6fa6dae833d81c24c899e8d2d2",
+        "source_fact:v1:81448971df5accd91451f983737ddcc3c32245a7a3dcb9fea30ee1fe7da4df2c",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:9842afb810b158de357c1a0bf470bd4692b72b46f81aaf2851429dd36f93c367",
+        "source_fact:v1:99f38eca29eab1fb6a0b1939b9e4eddb6587edf5056d0eba67a609d8931caf88",
+        "source_fact:v1:9ca5b3fbafa3973e85860919911f6c6bd3d9b0812f69cc1ad820bc66662d81ac",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:e9836bff65de24b57ea6658f3f4e08379c7b530d06ad8dc15cca5143172b5e03",
+        "source_fact:v1:fa91f30ca98feddea318dd200e7dde298440a1617bb4c42c08c0e7208854f790"
+      ],
+      "source_published_kst": "2026-10-12T06:29+09:00",
+      "source_title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다",
+      "telegram_core_fact": "젤렌스키 대통령은 전날 트럼프 대통령이 러시아와 경유 공급 계약을 체결했다고 발표한 데 대해서도 강하게 반발했다.",
+      "title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다"
     },
     "source_fact:65bb3c494ee574eec82dc385": {
       "first_seen_kst": "2026-10-11T18:34:27+09:00",
@@ -291802,6 +292386,39 @@
       "telegram_core_fact": "AI가 행정·복지·교통·교육 등 시민 일상으로 깊숙이 들어오면서 공정성·투명성과 같은 원칙을 선언하는 데 그치지 않고 AI 도입 전 위험을 살피고 운영 과정에서 문제를 감시하며, 이를 다시 제도 개선으로 연결하는 거버넌스가 필요하다는 목소리가 나왔다.",
       "title": "“AI 도입보다 중요한 건 신뢰”…서울형 AI 윤리 해법 찾는다"
     },
+    "source_fact:78e95b0a6d8a72edc451b0a7": {
+      "first_seen_kst": "2026-10-12T07:02:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:02:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:02:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01744966645612264",
+      "source": "이데일리",
+      "source_body_digest": "0b1fa0d02485a2ca1c7973f03bb1128ca005ede1842f3a6027199eae0c619790",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a71649f9da30d30686ad42df6a9add1c9f966e438701fd8857bd270b33c37d4",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:208ae731bf9eccfb74906f39b8b01120db59fc7b1aef53775c37ca23f304b28c",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:4757fe180e75d831794352adb85a46459e3c5e5c4e432e8766df60925d58820d",
+        "source_fact:v1:532b7ab57a4039f344215c99c0d4e1b8e91a4dbfc1f2dce214b239617b46908d",
+        "source_fact:v1:59d6334f99b973eb66e595d3c4714c04849114dd18562be04fedeccb58bd4b39",
+        "source_fact:v1:6584fc2cff852908a1f1e1276de1b78c97b5aa6fa6dae833d81c24c899e8d2d2",
+        "source_fact:v1:81448971df5accd91451f983737ddcc3c32245a7a3dcb9fea30ee1fe7da4df2c",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:9842afb810b158de357c1a0bf470bd4692b72b46f81aaf2851429dd36f93c367",
+        "source_fact:v1:99f38eca29eab1fb6a0b1939b9e4eddb6587edf5056d0eba67a609d8931caf88",
+        "source_fact:v1:9ca5b3fbafa3973e85860919911f6c6bd3d9b0812f69cc1ad820bc66662d81ac",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:e9836bff65de24b57ea6658f3f4e08379c7b530d06ad8dc15cca5143172b5e03",
+        "source_fact:v1:fa91f30ca98feddea318dd200e7dde298440a1617bb4c42c08c0e7208854f790"
+      ],
+      "source_published_kst": "2026-10-12T06:29+09:00",
+      "source_title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다",
+      "telegram_core_fact": "젤렌스키 대통령은 전날 트럼프 대통령이 러시아와 경유 공급 계약을 체결했다고 발표한 데 대해서도 강하게 반발했다.",
+      "title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다"
+    },
     "source_fact:78ee18c0390f774f6755ec43": {
       "first_seen_kst": "2026-10-11T16:16:50+09:00",
       "lanes": {
@@ -303063,6 +303680,39 @@
       "source_published_kst": "2026-10-06T14:42+09:00",
       "title": "中, 첫 해저 CO₂ 주입 플랫폼 건설…연 100만t 해저 저장"
     },
+    "source_fact:87ec040a8fa99654075578e5": {
+      "first_seen_kst": "2026-10-12T07:02:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:02:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:02:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01744966645612264",
+      "source": "이데일리",
+      "source_body_digest": "0b1fa0d02485a2ca1c7973f03bb1128ca005ede1842f3a6027199eae0c619790",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a71649f9da30d30686ad42df6a9add1c9f966e438701fd8857bd270b33c37d4",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:208ae731bf9eccfb74906f39b8b01120db59fc7b1aef53775c37ca23f304b28c",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:4757fe180e75d831794352adb85a46459e3c5e5c4e432e8766df60925d58820d",
+        "source_fact:v1:532b7ab57a4039f344215c99c0d4e1b8e91a4dbfc1f2dce214b239617b46908d",
+        "source_fact:v1:59d6334f99b973eb66e595d3c4714c04849114dd18562be04fedeccb58bd4b39",
+        "source_fact:v1:6584fc2cff852908a1f1e1276de1b78c97b5aa6fa6dae833d81c24c899e8d2d2",
+        "source_fact:v1:81448971df5accd91451f983737ddcc3c32245a7a3dcb9fea30ee1fe7da4df2c",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:9842afb810b158de357c1a0bf470bd4692b72b46f81aaf2851429dd36f93c367",
+        "source_fact:v1:99f38eca29eab1fb6a0b1939b9e4eddb6587edf5056d0eba67a609d8931caf88",
+        "source_fact:v1:9ca5b3fbafa3973e85860919911f6c6bd3d9b0812f69cc1ad820bc66662d81ac",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:e9836bff65de24b57ea6658f3f4e08379c7b530d06ad8dc15cca5143172b5e03",
+        "source_fact:v1:fa91f30ca98feddea318dd200e7dde298440a1617bb4c42c08c0e7208854f790"
+      ],
+      "source_published_kst": "2026-10-12T06:29+09:00",
+      "source_title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다",
+      "telegram_core_fact": "젤렌스키 대통령은 전날 트럼프 대통령이 러시아와 경유 공급 계약을 체결했다고 발표한 데 대해서도 강하게 반발했다.",
+      "title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다"
+    },
     "source_fact:87f23e624e521e67715d3634": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
@@ -310203,6 +310853,27 @@
       ],
       "source_published_kst": "2026-10-06T05:08+09:00",
       "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
+    },
+    "source_fact:910808c4c3293a2f2720bb27": {
+      "first_seen_kst": "2026-10-12T07:02:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:02:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:02:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634375",
+      "source": "이투데이",
+      "source_body_digest": "7b221b541e01347367b8bf2fd3a92d3048d478b41d1bad1695ab119c31743545",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d8ccdf58a62acee57a24023bde3a99a77256073051582498617a18983412b39f",
+      "source_fact_keys": [
+        "source_fact:v1:0571f77033ba8555a12c4096617257c14c5e74f566c176db511249144ceebb0d",
+        "source_fact:v1:245adb4bc1d856b86f3a6a34483d82b62e6e526e9e6ef29f6e4ac7b69f2fe4e3",
+        "source_fact:v1:69f6d8ebd538d566c8814f6e5dc79dea38e20acedfe02336d43e5a6bb9d071ec"
+      ],
+      "source_published_kst": "2026-10-12T06:48+09:00",
+      "source_title": "“韓 당국, 알래스카 LNG 개발사의 최종투자결정 있어야 검토”",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 한국의 대미투자금 중 500억달러가 알래스카 액화천연가스(LNG) 프로젝트에 투입된다고 발표한 뒤에도 한국의 관리들이 계속 반박하고 있다고 알래스카퍼블리미디어가 9일(현지시간) 보도했다.",
+      "title": "“韓 당국, 알래스카 LNG 개발사의 최종투자결정 있어야 검토”"
     },
     "source_fact:91204bf8821b4ffd01c07e4b": {
       "first_seen_kst": "2026-10-06T19:58:43+09:00",
@@ -352483,6 +353154,39 @@
       "source_published_kst": "2026-10-06T05:59+09:00",
       "title": "가상자산 거래소 장애인고용 '미달'…5년여간 부담금 13억 | 연합뉴스"
     },
+    "source_fact:c87e1c557bb2a0b210968725": {
+      "first_seen_kst": "2026-10-12T07:02:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:02:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:02:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01744966645612264",
+      "source": "이데일리",
+      "source_body_digest": "0b1fa0d02485a2ca1c7973f03bb1128ca005ede1842f3a6027199eae0c619790",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a71649f9da30d30686ad42df6a9add1c9f966e438701fd8857bd270b33c37d4",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:208ae731bf9eccfb74906f39b8b01120db59fc7b1aef53775c37ca23f304b28c",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:4757fe180e75d831794352adb85a46459e3c5e5c4e432e8766df60925d58820d",
+        "source_fact:v1:532b7ab57a4039f344215c99c0d4e1b8e91a4dbfc1f2dce214b239617b46908d",
+        "source_fact:v1:59d6334f99b973eb66e595d3c4714c04849114dd18562be04fedeccb58bd4b39",
+        "source_fact:v1:6584fc2cff852908a1f1e1276de1b78c97b5aa6fa6dae833d81c24c899e8d2d2",
+        "source_fact:v1:81448971df5accd91451f983737ddcc3c32245a7a3dcb9fea30ee1fe7da4df2c",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:9842afb810b158de357c1a0bf470bd4692b72b46f81aaf2851429dd36f93c367",
+        "source_fact:v1:99f38eca29eab1fb6a0b1939b9e4eddb6587edf5056d0eba67a609d8931caf88",
+        "source_fact:v1:9ca5b3fbafa3973e85860919911f6c6bd3d9b0812f69cc1ad820bc66662d81ac",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:e9836bff65de24b57ea6658f3f4e08379c7b530d06ad8dc15cca5143172b5e03",
+        "source_fact:v1:fa91f30ca98feddea318dd200e7dde298440a1617bb4c42c08c0e7208854f790"
+      ],
+      "source_published_kst": "2026-10-12T06:29+09:00",
+      "source_title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다",
+      "telegram_core_fact": "젤렌스키 대통령은 전날 트럼프 대통령이 러시아와 경유 공급 계약을 체결했다고 발표한 데 대해서도 강하게 반발했다.",
+      "title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다"
+    },
     "source_fact:c8962910d841f949ff8d96fa": {
       "first_seen_kst": "2026-10-06T15:55:43+09:00",
       "lanes": {
@@ -361738,6 +362442,39 @@
       "telegram_core_fact": "리사 그레이버 알보테크 대표는 \"글로벌 제조 네트워크를 확장하면 향후 10년간 파이프라인 수요를 충족할 충분한 생산능력을 확보하게 된다\"며 \"롯데바이오로직스와의 협력은 뉴욕에 추가 생산능력을 제공해 포트폴리오 확대와 향후 제품 출시를 준비하는 데 도움이 될 것\"이라고 밝혔다.",
       "title": "알보테크, 롯데바이오로직스와 뉴욕 위탁생산 계약..10년 수요 대응"
     },
+    "source_fact:d527b09939e965fc98be624d": {
+      "first_seen_kst": "2026-10-12T07:02:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:02:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:02:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01744966645612264",
+      "source": "이데일리",
+      "source_body_digest": "0b1fa0d02485a2ca1c7973f03bb1128ca005ede1842f3a6027199eae0c619790",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a71649f9da30d30686ad42df6a9add1c9f966e438701fd8857bd270b33c37d4",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:208ae731bf9eccfb74906f39b8b01120db59fc7b1aef53775c37ca23f304b28c",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:4757fe180e75d831794352adb85a46459e3c5e5c4e432e8766df60925d58820d",
+        "source_fact:v1:532b7ab57a4039f344215c99c0d4e1b8e91a4dbfc1f2dce214b239617b46908d",
+        "source_fact:v1:59d6334f99b973eb66e595d3c4714c04849114dd18562be04fedeccb58bd4b39",
+        "source_fact:v1:6584fc2cff852908a1f1e1276de1b78c97b5aa6fa6dae833d81c24c899e8d2d2",
+        "source_fact:v1:81448971df5accd91451f983737ddcc3c32245a7a3dcb9fea30ee1fe7da4df2c",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:9842afb810b158de357c1a0bf470bd4692b72b46f81aaf2851429dd36f93c367",
+        "source_fact:v1:99f38eca29eab1fb6a0b1939b9e4eddb6587edf5056d0eba67a609d8931caf88",
+        "source_fact:v1:9ca5b3fbafa3973e85860919911f6c6bd3d9b0812f69cc1ad820bc66662d81ac",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:e9836bff65de24b57ea6658f3f4e08379c7b530d06ad8dc15cca5143172b5e03",
+        "source_fact:v1:fa91f30ca98feddea318dd200e7dde298440a1617bb4c42c08c0e7208854f790"
+      ],
+      "source_published_kst": "2026-10-12T06:29+09:00",
+      "source_title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다",
+      "telegram_core_fact": "젤렌스키 대통령은 전날 트럼프 대통령이 러시아와 경유 공급 계약을 체결했다고 발표한 데 대해서도 강하게 반발했다.",
+      "title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다"
+    },
     "source_fact:d52930b22ded98ef1a353d34": {
       "first_seen_kst": "2026-10-06T17:59:23+09:00",
       "lanes": {
@@ -364315,6 +365052,39 @@
       ],
       "source_published_kst": "2026-10-06T06:38+09:00",
       "title": "美 재무부 \"'이란 거래' 외국 금융기관, 사전 통보 없이 제재 부과\""
+    },
+    "source_fact:d79dfd1161d8708716143e58": {
+      "first_seen_kst": "2026-10-12T07:02:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:02:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:02:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01744966645612264",
+      "source": "이데일리",
+      "source_body_digest": "0b1fa0d02485a2ca1c7973f03bb1128ca005ede1842f3a6027199eae0c619790",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a71649f9da30d30686ad42df6a9add1c9f966e438701fd8857bd270b33c37d4",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:208ae731bf9eccfb74906f39b8b01120db59fc7b1aef53775c37ca23f304b28c",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:4757fe180e75d831794352adb85a46459e3c5e5c4e432e8766df60925d58820d",
+        "source_fact:v1:532b7ab57a4039f344215c99c0d4e1b8e91a4dbfc1f2dce214b239617b46908d",
+        "source_fact:v1:59d6334f99b973eb66e595d3c4714c04849114dd18562be04fedeccb58bd4b39",
+        "source_fact:v1:6584fc2cff852908a1f1e1276de1b78c97b5aa6fa6dae833d81c24c899e8d2d2",
+        "source_fact:v1:81448971df5accd91451f983737ddcc3c32245a7a3dcb9fea30ee1fe7da4df2c",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:9842afb810b158de357c1a0bf470bd4692b72b46f81aaf2851429dd36f93c367",
+        "source_fact:v1:99f38eca29eab1fb6a0b1939b9e4eddb6587edf5056d0eba67a609d8931caf88",
+        "source_fact:v1:9ca5b3fbafa3973e85860919911f6c6bd3d9b0812f69cc1ad820bc66662d81ac",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:e9836bff65de24b57ea6658f3f4e08379c7b530d06ad8dc15cca5143172b5e03",
+        "source_fact:v1:fa91f30ca98feddea318dd200e7dde298440a1617bb4c42c08c0e7208854f790"
+      ],
+      "source_published_kst": "2026-10-12T06:29+09:00",
+      "source_title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다",
+      "telegram_core_fact": "젤렌스키 대통령은 전날 트럼프 대통령이 러시아와 경유 공급 계약을 체결했다고 발표한 데 대해서도 강하게 반발했다.",
+      "title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다"
     },
     "source_fact:d7a0fa29aafd0934efe906da": {
       "first_seen_kst": "2026-10-10T07:44:19+09:00",
@@ -370751,6 +371521,39 @@
       "source_title": "경유값 급등에 표심 흔들…러시아産 들여오는 트럼프",
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 국제 제재로 거래가 금지된 러시아산 경유(디젤)를 미국과 세계 시장에 대규모로 공급하겠다고 발표했다.",
       "title": "경유값 급등에 표심 흔들…러시아産 들여오는 트럼프"
+    },
+    "source_fact:e05e1c8a3bd360752725f385": {
+      "first_seen_kst": "2026-10-12T07:02:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:02:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:02:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01744966645612264",
+      "source": "이데일리",
+      "source_body_digest": "0b1fa0d02485a2ca1c7973f03bb1128ca005ede1842f3a6027199eae0c619790",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a71649f9da30d30686ad42df6a9add1c9f966e438701fd8857bd270b33c37d4",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:208ae731bf9eccfb74906f39b8b01120db59fc7b1aef53775c37ca23f304b28c",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:4757fe180e75d831794352adb85a46459e3c5e5c4e432e8766df60925d58820d",
+        "source_fact:v1:532b7ab57a4039f344215c99c0d4e1b8e91a4dbfc1f2dce214b239617b46908d",
+        "source_fact:v1:59d6334f99b973eb66e595d3c4714c04849114dd18562be04fedeccb58bd4b39",
+        "source_fact:v1:6584fc2cff852908a1f1e1276de1b78c97b5aa6fa6dae833d81c24c899e8d2d2",
+        "source_fact:v1:81448971df5accd91451f983737ddcc3c32245a7a3dcb9fea30ee1fe7da4df2c",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:9842afb810b158de357c1a0bf470bd4692b72b46f81aaf2851429dd36f93c367",
+        "source_fact:v1:99f38eca29eab1fb6a0b1939b9e4eddb6587edf5056d0eba67a609d8931caf88",
+        "source_fact:v1:9ca5b3fbafa3973e85860919911f6c6bd3d9b0812f69cc1ad820bc66662d81ac",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:e9836bff65de24b57ea6658f3f4e08379c7b530d06ad8dc15cca5143172b5e03",
+        "source_fact:v1:fa91f30ca98feddea318dd200e7dde298440a1617bb4c42c08c0e7208854f790"
+      ],
+      "source_published_kst": "2026-10-12T06:29+09:00",
+      "source_title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다",
+      "telegram_core_fact": "젤렌스키 대통령은 전날 트럼프 대통령이 러시아와 경유 공급 계약을 체결했다고 발표한 데 대해서도 강하게 반발했다.",
+      "title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다"
     },
     "source_fact:e065d2adcc6710ca8ec224be": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
@@ -394489,6 +395292,39 @@
       "source_published_kst": "2026-10-07T11:14+09:00",
       "title": "다이나핏, FW 신상 매출 23%↑…'트레이닝 세트'는 리오더"
     },
+    "source_fact:ffdbead2eeee5f7a149ffb03": {
+      "first_seen_kst": "2026-10-12T07:02:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:02:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:02:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01744966645612264",
+      "source": "이데일리",
+      "source_body_digest": "0b1fa0d02485a2ca1c7973f03bb1128ca005ede1842f3a6027199eae0c619790",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a71649f9da30d30686ad42df6a9add1c9f966e438701fd8857bd270b33c37d4",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:208ae731bf9eccfb74906f39b8b01120db59fc7b1aef53775c37ca23f304b28c",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:4757fe180e75d831794352adb85a46459e3c5e5c4e432e8766df60925d58820d",
+        "source_fact:v1:532b7ab57a4039f344215c99c0d4e1b8e91a4dbfc1f2dce214b239617b46908d",
+        "source_fact:v1:59d6334f99b973eb66e595d3c4714c04849114dd18562be04fedeccb58bd4b39",
+        "source_fact:v1:6584fc2cff852908a1f1e1276de1b78c97b5aa6fa6dae833d81c24c899e8d2d2",
+        "source_fact:v1:81448971df5accd91451f983737ddcc3c32245a7a3dcb9fea30ee1fe7da4df2c",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:9842afb810b158de357c1a0bf470bd4692b72b46f81aaf2851429dd36f93c367",
+        "source_fact:v1:99f38eca29eab1fb6a0b1939b9e4eddb6587edf5056d0eba67a609d8931caf88",
+        "source_fact:v1:9ca5b3fbafa3973e85860919911f6c6bd3d9b0812f69cc1ad820bc66662d81ac",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:e9836bff65de24b57ea6658f3f4e08379c7b530d06ad8dc15cca5143172b5e03",
+        "source_fact:v1:fa91f30ca98feddea318dd200e7dde298440a1617bb4c42c08c0e7208854f790"
+      ],
+      "source_published_kst": "2026-10-12T06:29+09:00",
+      "source_title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다",
+      "telegram_core_fact": "젤렌스키 대통령은 전날 트럼프 대통령이 러시아와 경유 공급 계약을 체결했다고 발표한 데 대해서도 강하게 반발했다.",
+      "title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다"
+    },
     "source_fact:ffdfd486dbbed4491a77134e": {
       "first_seen_kst": "2026-10-11T02:45:51+09:00",
       "lanes": {
@@ -418223,6 +419059,39 @@
       "source_published_kst": "2026-10-05T23:10+09:00",
       "title": "유나이티드마이크로일렉, 18억 달러 해외CB 발행 확정에 지분 희석·매물 부담 부각"
     },
+    "title:6310a3871fbbce3b832530c2": {
+      "first_seen_kst": "2026-10-12T07:02:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:02:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:02:25+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01744966645612264",
+      "source": "이데일리",
+      "source_body_digest": "0b1fa0d02485a2ca1c7973f03bb1128ca005ede1842f3a6027199eae0c619790",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a71649f9da30d30686ad42df6a9add1c9f966e438701fd8857bd270b33c37d4",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:208ae731bf9eccfb74906f39b8b01120db59fc7b1aef53775c37ca23f304b28c",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:4757fe180e75d831794352adb85a46459e3c5e5c4e432e8766df60925d58820d",
+        "source_fact:v1:532b7ab57a4039f344215c99c0d4e1b8e91a4dbfc1f2dce214b239617b46908d",
+        "source_fact:v1:59d6334f99b973eb66e595d3c4714c04849114dd18562be04fedeccb58bd4b39",
+        "source_fact:v1:6584fc2cff852908a1f1e1276de1b78c97b5aa6fa6dae833d81c24c899e8d2d2",
+        "source_fact:v1:81448971df5accd91451f983737ddcc3c32245a7a3dcb9fea30ee1fe7da4df2c",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:9842afb810b158de357c1a0bf470bd4692b72b46f81aaf2851429dd36f93c367",
+        "source_fact:v1:99f38eca29eab1fb6a0b1939b9e4eddb6587edf5056d0eba67a609d8931caf88",
+        "source_fact:v1:9ca5b3fbafa3973e85860919911f6c6bd3d9b0812f69cc1ad820bc66662d81ac",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:e9836bff65de24b57ea6658f3f4e08379c7b530d06ad8dc15cca5143172b5e03",
+        "source_fact:v1:fa91f30ca98feddea318dd200e7dde298440a1617bb4c42c08c0e7208854f790"
+      ],
+      "source_published_kst": "2026-10-12T06:29+09:00",
+      "source_title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다",
+      "telegram_core_fact": "젤렌스키 대통령은 전날 트럼프 대통령이 러시아와 경유 공급 계약을 체결했다고 발표한 데 대해서도 강하게 반발했다.",
+      "title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다"
+    },
     "title:63191b78b79b6805c3c0e6a1": {
       "first_seen_kst": "2026-10-08T11:28:27+09:00",
       "lanes": {
@@ -420980,6 +421849,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T17:16+09:00",
       "title": "이란 “조건 수용 전까지 호르무즈 해협 개방 안해”"
+    },
+    "title:70cf9000fa3276001c709385": {
+      "first_seen_kst": "2026-10-12T07:02:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:02:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:02:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003821107",
+      "source": "뉴시스",
+      "source_body_digest": "77d6f33d2c1041947e2c56c1b3eb9a31797ee9c83b10b3d43e73605497de9432",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T06:43+09:00",
+      "source_title": "과방위, 오늘 방미통위 국감…YTN 민영화·구글·텔레그램 도마",
+      "telegram_core_fact": "이날 과방위 국감의 가장 큰 쟁점은 YTN 민영화 과정이다. YTN 지분 매각 당시 정부의 개입 과정과 구글 앱마켓 거래 조건, 텔레그램의 불법정보 유통 대응이 방송미디어통신위원회 국정감사 주요 쟁점으로 다뤄질 전망이다.",
+      "title": "과방위, 오늘 방미통위 국감…YTN 민영화·구글·텔레그램 도마"
     },
     "title:70dbc3bb5f6864ee55e3b600": {
       "first_seen_kst": "2026-10-08T02:41:45+09:00",
@@ -444967,6 +445853,27 @@
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "LK삼양–다온아이앤씨, 드론용 초경량 EO·IR 모듈 개발 MOU"
     },
+    "title:d498921f6dab507004a751a9": {
+      "first_seen_kst": "2026-10-12T07:02:25+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:02:25+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:02:25+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634375",
+      "source": "이투데이",
+      "source_body_digest": "7b221b541e01347367b8bf2fd3a92d3048d478b41d1bad1695ab119c31743545",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d8ccdf58a62acee57a24023bde3a99a77256073051582498617a18983412b39f",
+      "source_fact_keys": [
+        "source_fact:v1:0571f77033ba8555a12c4096617257c14c5e74f566c176db511249144ceebb0d",
+        "source_fact:v1:245adb4bc1d856b86f3a6a34483d82b62e6e526e9e6ef29f6e4ac7b69f2fe4e3",
+        "source_fact:v1:69f6d8ebd538d566c8814f6e5dc79dea38e20acedfe02336d43e5a6bb9d071ec"
+      ],
+      "source_published_kst": "2026-10-12T06:48+09:00",
+      "source_title": "“韓 당국, 알래스카 LNG 개발사의 최종투자결정 있어야 검토”",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 한국의 대미투자금 중 500억달러가 알래스카 액화천연가스(LNG) 프로젝트에 투입된다고 발표한 뒤에도 한국의 관리들이 계속 반박하고 있다고 알래스카퍼블리미디어가 9일(현지시간) 보도했다.",
+      "title": "“韓 당국, 알래스카 LNG 개발사의 최종투자결정 있어야 검토”"
+    },
     "title:d49afe64d0e7ce82a513b008": {
       "first_seen_kst": "2026-10-07T18:44:00+09:00",
       "lanes": {
@@ -454939,5 +455846,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-12T06:42:49+09:00"
+  "updated_at_kst": "2026-10-12T07:02:25+09:00"
 }
