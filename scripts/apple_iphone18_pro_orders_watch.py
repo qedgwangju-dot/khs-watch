@@ -45,6 +45,7 @@ REUTERS = "https://www.reuters.com/business/retail-consumer/apple-cuts-iphone-18
 NIKKEI_REPRINT = "https://ca.investing.com/news/stock-market-news/apple-cuts-iphone18-pro-component-orders-amid-sluggish-demand-nikkei-4872814"
 APPLE_PRICE = "https://www.apple.com/newsroom/2026/09/apple-debuts-iphone-18-pro-and-iphone-18-pro-max/"
 IDC = "https://www.idc.com/resource-center/blog/smartphone-shipments-set-for-record-16-7-drop-in-2026-as-the-memory-crisis-hits-full-force/"
+COUNTERPOINT_CHINA = "https://counterpointresearch.com/ko/insights/iphone-18-pro-series-sales-up-12-percent-yoy-in-launch-week-in-china-as-apple-takes-hashtag-1-spot"
 DUO_OFFICIAL = "https://www.apple.com/kr/iphone-duo/"
 SOURCE_ROOT = "nikkei_2026_10_09_supplier_interviews"
 BASELINE_FACT = "iphone18_pro_pro_max|2026-10|component_orders|original_requested_plan|cut_15_to_20|nikkei_2026_10_09"
@@ -70,6 +71,8 @@ BASELINE = {
     "apple_us_pro_price_usd": 1199,
     "apple_us_pro_max_price_usd": 1299,
     "china_week38_sales_yoy_pct_user_provided": 12.0,
+    "china_week38_public_counterpoint_summary_confirmed": True,
+    "china_week38_apple_share_official_pct": 33.0,
     "china_week38_direct_tracker_publicly_verified": False,
     "ubs_delivery_lead_time_publicly_verified": False,
     "ubs_pro_wait_weekly_shortening_days_secondary": 6,
@@ -250,6 +253,21 @@ def _extract_cut(text: str) -> dict | None:
         if not all(any(w in clause for w in words)
                    for words in (COMPONENT_WORDS, ORDER_WORDS, CUT_WORDS, BASIS_WORDS)):
             continue
+        # A Pro mention elsewhere in a multi-device article does not make
+        # another device's quantified procurement change an iPhone order cut.
+        if not PRO_RE.search(clause):
+            continue
+        # If a sales, shipments or ASP metric is mentioned closer to the
+        # percentage than supplier orders, don't borrow its percentage.
+        local_pos = pos - start
+        prefix = clause[max(0, local_pos - 115):local_pos]
+        other_metrics = ("retail sales", "sell-through", "shipments",
+                         "market share", "average selling price", "asp",
+                         "판매량", "시장 점유율", "출하량")
+        last_other = max((prefix.rfind(x) for x in other_metrics), default=-1)
+        last_order = max((prefix.rfind(x) for x in ORDER_WORDS), default=-1)
+        if last_other > last_order:
+            continue
         # Reject "+" ASP growth and standalone negative annual shipments.
         before = low[max(0, pos - 1):pos]
         if before == "+":
@@ -356,6 +374,30 @@ def _relevant_news(item: dict, state: dict) -> dict | None:
             "source_root": "verified_manufacturer_official" if official else _root(item),
             "stage": 3 if official else (2 if rank == 3 else 1)}
 
+def _ubs_study_date(blob: str) -> dt.date | None:
+    """UBS observation date is distinct from a later news article date."""
+    low = _clean(blob).lower()
+    prefix = r"(?:week ending|week ended|as of|observation as of|survey dated|조사 기준)"
+    iso = re.search(prefix + r"\s*[:：-]?\s*(20\d{2}-\d{2}-\d{2})\b", low)
+    if iso:
+        try:
+            return dt.date.fromisoformat(iso.group(1))
+        except ValueError:
+            return None
+    english = re.search(
+        prefix + r"\s*[:：-]?\s*(october|oct\.?|november|nov\.?)\s+"
+        r"(\d{1,2}),?\s+(20\d{2})\b",
+        low,
+    )
+    if english:
+        month = 10 if english.group(1).startswith("oct") else 11
+        try:
+            return dt.date(int(english.group(3)), month, int(english.group(2)))
+        except ValueError:
+            return None
+    return None
+
+
 def _ubs_wait_leading_signal(item: dict, state: dict) -> dict | None:
     """Track a *new week's* UBS Pro lead-time reading as demand context only.
 
@@ -378,7 +420,12 @@ def _ubs_wait_leading_signal(item: dict, state: dict) -> dict | None:
         published = dt.datetime.fromisoformat(item["published_at_kst"]).astimezone(KST)
     except (KeyError, TypeError, ValueError):
         return None
-    if published.date() <= dt.date(2026, 10, 11):
+    study_date = _ubs_study_date(blob)
+    # Undated syndicated UBS summaries can be recycled months later. Without
+    # a new explicit study date they are context, not fresh demand alerts.
+    if study_date is None or study_date <= dt.date(2026, 10, 9):
+        return None
+    if study_date > published.date() + dt.timedelta(days=1):
         return None
 
     # Keep the number next to Pro's own wait-time shortening, not the
@@ -414,7 +461,7 @@ def _ubs_wait_leading_signal(item: dict, state: dict) -> dict | None:
     # Do not re-date the 9 Oct UBS quote as a fresh study on 16 Oct.
     if re.search(r"(?:october|oct\.?|10월)\s*(?:9(?:th)?|09)\b|10월\s*9일", low):
         return None
-    week = published.isocalendar()
+    week = study_date.isocalendar()
     key = f"ubs_evidence_lab|iphone18_pro|{week.year}-W{week.week:02d}|wait_shorter_{days}d"
     if key in set(state.get("seen_fact_keys") or []):
         return None
@@ -549,9 +596,9 @@ def _baseline_alert(fx_text: str) -> str:
         "iPhone Pro의 10월 부품 주문과 연간 iOS 실판매를 혼동하지 않습니다.",
         "• UBS 30개 이상 지역 Pro 배송대기 약 6일 단축은 2차 인용 자료입니다. "
         "Pro Max 대기는 약 24일로 상대적으로 안정적이며 UBS 원보고서는 미열람입니다.",
-        "• 중국 38주차 iPhone 18 Pro 초기 판매 +12%는 사용자 제공 "
-        "Counterpoint 유료 지표로 공개 원표 미열람. "
-        "지역·시점·실판매와 부품발주를 섞지 않습니다.",
+        "• 중국 38주차 iPhone 18 Pro 초기 판매 +12%·Apple 점유율 33%는 "
+        "Counterpoint 9월 30일 공식 공개 해설에서 확인됩니다. "
+        "원시 거래표는 별도 자료이며 지역·시점·실판매와 부품발주를 섞지 않습니다.",
         "",
         "<b>[현재 판정]</b>",
         "🟠 <b>중요한 공급망 발주 감축 보도, 공식 미확정</b>",
@@ -570,6 +617,7 @@ def _baseline_alert(fx_text: str) -> str:
         f'<a href="{NIKKEI_REPRINT}">니케이 15~20% 재전달 보도</a>',
         f'<a href="{APPLE_PRICE}">Apple 공식 Pro 출고가</a>',
         f'<a href="{IDC}">IDC 8월 글로벌 시장 전망</a>',
+        f'<a href="{COUNTERPOINT_CHINA}">Counterpoint 중국 Pro 초기 판매 공식 발표</a>',
         f'<a href="{DUO_OFFICIAL}">Apple 공식 Duo 출시 일정</a>',
     ]
     return "\n".join(lines) + "\n"

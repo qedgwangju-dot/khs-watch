@@ -343,7 +343,7 @@ class IPhone18ProOrderTests(unittest.TestCase):
     def test_new_week_ubs_pro_wait_change_separate_from_orders(self):
         row = self.item(
             "UBS Evidence Lab: iPhone 18 Pro wait times shortened by five days",
-            "The Pro delivery wait shortened by about five days over the week in 30 markets.",
+            "The Pro delivery wait shortened by about five days over the week in 30 markets; UBS survey week ending October 16, 2026.",
             "Proactive", "2026-10-16T21:00:00+09:00",
         )
         event = m._ubs_wait_leading_signal(row, self.state())
@@ -359,12 +359,12 @@ class IPhone18ProOrderTests(unittest.TestCase):
     def test_ubs_same_study_multiple_articles_share_weekly_fact_key(self):
         a = self.item(
             "UBS: iPhone 18 Pro wait times shortened by 5 days this week",
-            "30 markets surveyed, iPhone 18 Pro waits decreased by 5 days.",
+            "30 markets surveyed, iPhone 18 Pro waits decreased by 5 days; UBS survey week ending October 16, 2026.",
             "Proactive", "2026-10-16T12:00:00+09:00",
         )
         b = self.item(
             "UBS Evidence Lab: iPhone 18 Pro wait times shortened by 5 days",
-            "The Pro delivery wait decreased by 5 days over the week.",
+            "The Pro delivery wait decreased by 5 days over the week; UBS observation as of 2026-10-16.",
             "9to5Mac", "2026-10-17T12:00:00+09:00",
         )
         a_signal = m._ubs_wait_leading_signal(a, self.state())
@@ -401,6 +401,46 @@ class IPhone18ProOrderTests(unittest.TestCase):
             metrics = restored["metrics"]["reported_baseline"]
             self.assertNotIn("reuters_confirmed_floor", metrics)
             self.assertEqual(metrics["nikkei_reported_minimum_via_reuters_pct"], 15.0)
+
+    def test_unrelated_product_order_cut_cannot_borrow_pro_subject(self):
+        article=(
+            "Apple iPhone 18 Pro demand was soft due to memory prices. "
+            "Galaxy S27 October component orders cut 30% from originally "
+            "requested supplier volume."
+        )
+        self.assertIsNone(m._extract_cut(article))
+
+    def test_retail_sales_pct_not_copied_to_pro_order_metric(self):
+        article=(
+            "Apple iPhone 18 Pro October component orders cut after weak demand "
+            "and retail sales fell 30% versus original estimates."
+        )
+        self.assertIsNone(m._extract_cut(article))
+
+    def test_ubs_secondary_article_without_asof_cannot_be_new_study(self):
+        row=self.item(
+            "UBS iPhone 18 Pro wait times shortened by five days",
+            "Pro delivery waits shortened by five days last week in 30 markets.",
+            "Proactive", "2026-10-17T12:00:00+09:00"
+        )
+        self.assertIsNone(m._ubs_wait_leading_signal(row,self.state()))
+
+    def test_ubs_study_date_not_republication_date(self):
+        row=self.item(
+            "UBS iPhone 18 Pro wait times shortened by five days",
+            "Pro delivery wait shortened by five days; UBS survey week ending October 16, 2026.",
+            "Proactive", "2026-10-24T12:00:00+09:00"
+        )
+        signal=m._ubs_wait_leading_signal(row,self.state())
+        self.assertIsNotNone(signal)
+        self.assertIn("2026-W42",signal["fact_key"])
+
+    def test_counterpoint_china_first_three_day_data_is_now_public(self):
+        message=m._baseline_alert("• 환율 검증")
+        self.assertTrue(m.BASELINE["china_week38_public_counterpoint_summary_confirmed"])
+        self.assertFalse(m.BASELINE["china_week38_direct_tracker_publicly_verified"])
+        self.assertIn("Counterpoint 9월 30일 공식 공개 해설",message)
+        self.assertIn("Counterpoint 중국 Pro 초기 판매 공식 발표",message)
 
 if __name__ == "__main__":
     result=unittest.TextTestRunner(verbosity=2).run(
