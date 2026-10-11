@@ -9840,6 +9840,26 @@
       "telegram_core_fact": "상반기 매출은 줄었지만 매출총이익률이 35.4%로 1.7%p 개선되며 영업이익이 2587만 위안으로 69.1% 증가했습니다.",
       "title": "루카스GC, 영업이익 급증과 마진 개선에 투자자 관심 집중"
     },
+    "core:62bc22853c37b52d361cf602": {
+      "first_seen_kst": "2026-10-12T03:42:08+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:42:08+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:42:08+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/12/2026101119504739795",
+      "source": "머니투데이",
+      "source_body_digest": "60a561ec7567337b39833c8b1a58fb0381646419f502e412c8e243d756220e2e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5b5f129f79d4be2789b1bd529ebf249564316652e588447e9dadc5cb7a4729a",
+      "source_fact_keys": [
+        "source_fact:v1:2762e044e70cb3f8bc11403295353517f39bb1c7092546834d60da9d050c6183",
+        "source_fact:v1:a11c92e5179d85c5821319e406eecaf2989e9058e790588cc8c7835d993ede6d"
+      ],
+      "source_published_kst": "2026-10-12T03:20+09:00",
+      "source_title": "오픈AI, 매출 부풀렸나… 다시 부풀어오른 '거품론'",
+      "telegram_core_fact": "오픈AI 매출이 올해 말엔 기존 예상치에 이를 것으로 전망됐지만 막대한 AI 투자에 대한 불안감이 번졌다.",
+      "title": "오픈AI, 매출 부풀렸나… 다시 부풀어오른 '거품론'"
+    },
     "core:62ce01feb7bea5e8eaad7fe4": {
       "first_seen_kst": "2026-10-08T22:06:55+09:00",
       "lanes": {
@@ -41688,6 +41708,26 @@
       "source_title": "트럼프 \"이란과 대화 '생산적'…11월 중간선거 전 공격 없다\"",
       "telegram_core_fact": "트럼프 대통령은 8일(현지시간) 소셜미디어(SNS) 트루스소셜에 \"우리는 이란 이슬람공화국과 생산적인 논의를 하고 있다\"며 \"11월3일 미국에서 실시되는 중간선거 전까지는 이란을 공격하지 않을 것\"이라고 적었다.",
       "title": "트럼프 \"이란과 대화 '생산적'…11월 중간선거 전 공격 없다\""
+    },
+    "fact:266eafd1589c5441cad37e29": {
+      "first_seen_kst": "2026-10-12T03:42:08+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:42:08+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:42:08+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/12/2026101119504739795",
+      "source": "머니투데이",
+      "source_body_digest": "60a561ec7567337b39833c8b1a58fb0381646419f502e412c8e243d756220e2e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5b5f129f79d4be2789b1bd529ebf249564316652e588447e9dadc5cb7a4729a",
+      "source_fact_keys": [
+        "source_fact:v1:2762e044e70cb3f8bc11403295353517f39bb1c7092546834d60da9d050c6183",
+        "source_fact:v1:a11c92e5179d85c5821319e406eecaf2989e9058e790588cc8c7835d993ede6d"
+      ],
+      "source_published_kst": "2026-10-12T03:20+09:00",
+      "source_title": "오픈AI, 매출 부풀렸나… 다시 부풀어오른 '거품론'",
+      "telegram_core_fact": "오픈AI 매출이 올해 말엔 기존 예상치에 이를 것으로 전망됐지만 막대한 AI 투자에 대한 불안감이 번졌다.",
+      "title": "오픈AI, 매출 부풀렸나… 다시 부풀어오른 '거품론'"
     },
     "fact:26a023e72fe5e7ca024d2bfc": {
       "first_seen_kst": "2026-10-06T19:10:36+09:00",
@@ -114726,6 +114766,26 @@
       "source": "뉴시스",
       "title": "쿡 美연준 이사 \"AI, 인플레 부추겨…추가 금리 인상은 데이터 따라 결정\""
     },
+    "link:a4359bd7b6eb0060f639c731": {
+      "first_seen_kst": "2026-10-12T03:42:08+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:42:08+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:42:08+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/12/2026101119504739795",
+      "source": "머니투데이",
+      "source_body_digest": "60a561ec7567337b39833c8b1a58fb0381646419f502e412c8e243d756220e2e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5b5f129f79d4be2789b1bd529ebf249564316652e588447e9dadc5cb7a4729a",
+      "source_fact_keys": [
+        "source_fact:v1:2762e044e70cb3f8bc11403295353517f39bb1c7092546834d60da9d050c6183",
+        "source_fact:v1:a11c92e5179d85c5821319e406eecaf2989e9058e790588cc8c7835d993ede6d"
+      ],
+      "source_published_kst": "2026-10-12T03:20+09:00",
+      "source_title": "오픈AI, 매출 부풀렸나… 다시 부풀어오른 '거품론'",
+      "telegram_core_fact": "오픈AI 매출이 올해 말엔 기존 예상치에 이를 것으로 전망됐지만 막대한 AI 투자에 대한 불안감이 번졌다.",
+      "title": "오픈AI, 매출 부풀렸나… 다시 부풀어오른 '거품론'"
+    },
     "link:a43c4025d781cdc8b12ffee1": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -148495,6 +148555,26 @@
       ],
       "source_published_kst": "2026-10-06T14:04+09:00",
       "title": "세아베스틸, 로봇 감속기 소재 시장 진출…휴머노이드까지 확대"
+    },
+    "original:377a260355253957ea81cb23": {
+      "first_seen_kst": "2026-10-12T03:42:08+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:42:08+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:42:08+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/12/2026101119504739795",
+      "source": "머니투데이",
+      "source_body_digest": "60a561ec7567337b39833c8b1a58fb0381646419f502e412c8e243d756220e2e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5b5f129f79d4be2789b1bd529ebf249564316652e588447e9dadc5cb7a4729a",
+      "source_fact_keys": [
+        "source_fact:v1:2762e044e70cb3f8bc11403295353517f39bb1c7092546834d60da9d050c6183",
+        "source_fact:v1:a11c92e5179d85c5821319e406eecaf2989e9058e790588cc8c7835d993ede6d"
+      ],
+      "source_published_kst": "2026-10-12T03:20+09:00",
+      "source_title": "오픈AI, 매출 부풀렸나… 다시 부풀어오른 '거품론'",
+      "telegram_core_fact": "오픈AI 매출이 올해 말엔 기존 예상치에 이를 것으로 전망됐지만 막대한 AI 투자에 대한 불안감이 번졌다.",
+      "title": "오픈AI, 매출 부풀렸나… 다시 부풀어오른 '거품론'"
     },
     "original:37805ca0eecae179c58ddace": {
       "first_seen_kst": "2026-09-28T20:44:08+09:00",
@@ -201203,6 +201283,26 @@
       ],
       "source_published_kst": "2026-10-07T08:08+09:00",
       "title": "선장에 월 10만달러·보너스까지…호르무즈 '위험수당' 급등"
+    },
+    "source_fact:0af8c5e72d1ea874ec6f662d": {
+      "first_seen_kst": "2026-10-12T03:42:08+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:42:08+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:42:08+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/12/2026101119504739795",
+      "source": "머니투데이",
+      "source_body_digest": "60a561ec7567337b39833c8b1a58fb0381646419f502e412c8e243d756220e2e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5b5f129f79d4be2789b1bd529ebf249564316652e588447e9dadc5cb7a4729a",
+      "source_fact_keys": [
+        "source_fact:v1:2762e044e70cb3f8bc11403295353517f39bb1c7092546834d60da9d050c6183",
+        "source_fact:v1:a11c92e5179d85c5821319e406eecaf2989e9058e790588cc8c7835d993ede6d"
+      ],
+      "source_published_kst": "2026-10-12T03:20+09:00",
+      "source_title": "오픈AI, 매출 부풀렸나… 다시 부풀어오른 '거품론'",
+      "telegram_core_fact": "오픈AI 매출이 올해 말엔 기존 예상치에 이를 것으로 전망됐지만 막대한 AI 투자에 대한 불안감이 번졌다.",
+      "title": "오픈AI, 매출 부풀렸나… 다시 부풀어오른 '거품론'"
     },
     "source_fact:0afaf32b328eb05818a62262": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
@@ -344005,6 +344105,26 @@
       "telegram_core_fact": "세계 최대 반도체 위탁생산업체(파운드리) 대만 TSMC(臺灣積體電路製造) 2026년 3분기(7∼9월) 매출이 전년비 50.95% 증가한 1조4942억4200만 대만달러(약 62조8777억원)를 기록했다.",
       "title": "[올댓차이나] TSMC 3분기 매출 62.8조원·50.9%↑…AI 수요에 사상 최고"
     },
+    "source_fact:c7659f5ab359b71c47bf4ea9": {
+      "first_seen_kst": "2026-10-12T03:42:08+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:42:08+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:42:08+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/12/2026101119504739795",
+      "source": "머니투데이",
+      "source_body_digest": "60a561ec7567337b39833c8b1a58fb0381646419f502e412c8e243d756220e2e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5b5f129f79d4be2789b1bd529ebf249564316652e588447e9dadc5cb7a4729a",
+      "source_fact_keys": [
+        "source_fact:v1:2762e044e70cb3f8bc11403295353517f39bb1c7092546834d60da9d050c6183",
+        "source_fact:v1:a11c92e5179d85c5821319e406eecaf2989e9058e790588cc8c7835d993ede6d"
+      ],
+      "source_published_kst": "2026-10-12T03:20+09:00",
+      "source_title": "오픈AI, 매출 부풀렸나… 다시 부풀어오른 '거품론'",
+      "telegram_core_fact": "오픈AI 매출이 올해 말엔 기존 예상치에 이를 것으로 전망됐지만 막대한 AI 투자에 대한 불안감이 번졌다.",
+      "title": "오픈AI, 매출 부풀렸나… 다시 부풀어오른 '거품론'"
+    },
     "source_fact:c77096d43de3530181a78bd8": {
       "first_seen_kst": "2026-10-08T06:57:59+09:00",
       "lanes": {
@@ -398726,6 +398846,26 @@
       "source": "뉴시스",
       "title": "美 \"알래스카 투자\" 못박았지만…韓 \"합의보다 나갔다, 원칙대로 간다\" (종합)"
     },
+    "title:377a260355253957ea81cb23": {
+      "first_seen_kst": "2026-10-12T03:42:08+09:00",
+      "lanes": {
+        "live": "2026-10-12T03:42:08+09:00"
+      },
+      "last_seen_kst": "2026-10-12T03:42:08+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/12/2026101119504739795",
+      "source": "머니투데이",
+      "source_body_digest": "60a561ec7567337b39833c8b1a58fb0381646419f502e412c8e243d756220e2e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5b5f129f79d4be2789b1bd529ebf249564316652e588447e9dadc5cb7a4729a",
+      "source_fact_keys": [
+        "source_fact:v1:2762e044e70cb3f8bc11403295353517f39bb1c7092546834d60da9d050c6183",
+        "source_fact:v1:a11c92e5179d85c5821319e406eecaf2989e9058e790588cc8c7835d993ede6d"
+      ],
+      "source_published_kst": "2026-10-12T03:20+09:00",
+      "source_title": "오픈AI, 매출 부풀렸나… 다시 부풀어오른 '거품론'",
+      "telegram_core_fact": "오픈AI 매출이 올해 말엔 기존 예상치에 이를 것으로 전망됐지만 막대한 AI 투자에 대한 불안감이 번졌다.",
+      "title": "오픈AI, 매출 부풀렸나… 다시 부풀어오른 '거품론'"
+    },
     "title:37805ca0eecae179c58ddace": {
       "first_seen_kst": "2026-09-28T20:44:08+09:00",
       "lanes": {
@@ -445243,5 +445383,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-12T03:14:53+09:00"
+  "updated_at_kst": "2026-10-12T03:42:08+09:00"
 }
