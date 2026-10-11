@@ -1878,6 +1878,25 @@
       "telegram_core_fact": "미국 재무부가 대(對)중국 첨단기술 투자 규제 제도 도입 이후 처음으로 위반 사례를 적발해 벌금을 부과했다고 홍콩 사우스차이나모닝포스트(SCMP)가 7일(현지시간) 보도했다.",
       "title": "미국, '對중국 첨단기술 투자규제' 위반 첫 벌금 부과"
     },
+    "core:14085a6c425c93acbe5f5996": {
+      "first_seen_kst": "2026-10-11T10:42:03+09:00",
+      "lanes": {
+        "live": "2026-10-11T10:42:03+09:00"
+      },
+      "last_seen_kst": "2026-10-11T10:42:03+09:00",
+      "link": "https://biz.chosun.com/policy/policy_sub/2026/10/11/FULD2R626REGTN4WNDLIBO3B2Y/",
+      "source": "조선비즈",
+      "source_body_digest": "490aae15712996285ee06cb45a7ee5d4e5d3dc46e93bda8dc2387921294cde90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2b0d1cfe28763b84a2ea28d7e391449632c5c97a5e5dd36dae2737f193679ff8",
+      "source_fact_keys": [
+        "source_fact:v1:86b47b6936b6b0793b493b46fbebcc6292753002c407227de9ac639017275de9"
+      ],
+      "source_published_kst": "2026-10-11T10:18+09:00",
+      "source_title": "“반도체 성과급 잔치에도… 소비 진작 효과는 제한적일 것”",
+      "telegram_core_fact": "반도체 호황으로 삼성전자와 SK하이닉스의 직원들이 수억원대 성과급을 받을 것으로 예상되지만, 이런 성과급이 소비 진작으로 이어지는 효과는 크지 않을 것이라는 분석이 나왔다.",
+      "title": "“반도체 성과급 잔치에도… 소비 진작 효과는 제한적일 것”"
+    },
     "core:148b3d82d694f5a6f382a21c": {
       "first_seen_kst": "2026-10-11T08:19:03+09:00",
       "lanes": {
@@ -9419,6 +9438,27 @@
       "telegram_core_fact": "소식통에 따르면 윗코프 특사와 트럼프 대통령의 사위 쿠슈너는 9일 미국 마이애미에서 키릴로 부다노우 우크라이나 대통령실 비서실장을 비롯한 우크라이나 협상 대표단 및 유럽 안보 당국자들과 만나 현재 교착상태를 타개할 평화 구상을 논의할 예정이다.",
       "title": "\"트럼프 특사, 우크라전 교착 타개할 새 구상 제시 계획\" | 연합뉴스"
     },
+    "core:6fdd905782f1755c804b69c5": {
+      "first_seen_kst": "2026-10-11T10:42:03+09:00",
+      "lanes": {
+        "live": "2026-10-11T10:42:03+09:00"
+      },
+      "last_seen_kst": "2026-10-11T10:42:03+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01331686645611936",
+      "source": "이데일리",
+      "source_body_digest": "121cad163511e08acf35c2e175932e3f1b544f647ae6995cec10f3bb182786aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:52aeae13e09122708504b7c36cba2abfa0f189fe119b9f5522805c670a6557e4",
+      "source_fact_keys": [
+        "source_fact:v1:3935c674473027d54e8271c2e74522d963ac04bc56b4a5f924ef03665a4390b1",
+        "source_fact:v1:477be2b29e3da779d897c015603f9b2eda1b9fb610a20356505083fa5a727db2",
+        "source_fact:v1:f19bf7182f1096f3c0c713d941afc9e6df54648c82f1c824c8cf85fe38232e5d"
+      ],
+      "source_published_kst": "2026-10-11T10:30+09:00",
+      "source_title": "반도체 훈풍 비껴간 건설현장…일용직 30만명 일터 잃어",
+      "telegram_core_fact": "반도체 산업이 전례 없는 호황을 누리는 반면, 건설 현장에서는 30만명이 넘는 노동자가 원치 않게 일터를 떠난 것으로 나타났다. 고용계약 종료나 구조조정, 해고 등에 따른 비자발적 이직자가 30만명을 넘어선 것은 2023년 9월(31만 432명) 이후 35개월 만이다.",
+      "title": "반도체 훈풍 비껴간 건설현장…일용직 30만명 일터 잃어"
+    },
     "core:6ffbed07f5742a1af25033d7": {
       "first_seen_kst": "2026-10-08T18:46:25+09:00",
       "lanes": {
@@ -10520,6 +10560,25 @@
       "source_title": "“AI 도입보다 중요한 건 신뢰”…서울형 AI 윤리 해법 찾는다",
       "telegram_core_fact": "AI가 행정·복지·교통·교육 등 시민 일상으로 깊숙이 들어오면서 공정성·투명성과 같은 원칙을 선언하는 데 그치지 않고 AI 도입 전 위험을 살피고 운영 과정에서 문제를 감시하며, 이를 다시 제도 개선으로 연결하는 거버넌스가 필요하다는 목소리가 나왔다.",
       "title": "“AI 도입보다 중요한 건 신뢰”…서울형 AI 윤리 해법 찾는다"
+    },
+    "core:7dfb36d0befe428b622cd8f1": {
+      "first_seen_kst": "2026-10-11T10:42:03+09:00",
+      "lanes": {
+        "live": "2026-10-11T10:42:03+09:00"
+      },
+      "last_seen_kst": "2026-10-11T10:42:03+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011017400030",
+      "source": "연합뉴스",
+      "source_body_digest": "52244b74542758a6c1d95d505255c1c1d801236522bbed11dedf87061b299f8b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1e026c56b2fe4453dbd03736231b378d4bfee0986ef5a5e8d9f1d03f4f4c42d8",
+      "source_fact_keys": [
+        "source_fact:v1:8e03d175d77c9711cd7ad4da279efc71e66ba74deb5400ec74953c7c53db0869"
+      ],
+      "source_published_kst": "2026-10-11T10:32+09:00",
+      "source_title": "한진, 정부 소상공인 물류 지원사업 수행…\"상생물류 구축\" | 연합뉴스",
+      "telegram_core_fact": "한진 관계자는 \"중소상공인의 성장을 돕고 지속 가능한 상생 물류 생태계를 확고히 구축해 나갈 것\"이라고 말했다.",
+      "title": "한진, 정부 소상공인 물류 지원사업 수행…\"상생물류 구축\" | 연합뉴스"
     },
     "core:7e7a8b3f9e5c0b7d48fc5ebf": {
       "first_seen_kst": "2026-10-08T22:29:06+09:00",
@@ -19951,6 +20010,26 @@
       "source_title": "“경주서도 K뷰티 ‘푹’ 빠졌네”…국경절 맞은 중국인들 어디 갔나 했더니",
       "telegram_core_fact": "CJ올리브영에 따르면 올해 중국 국경절 연휴인 지난 1~7일 중 1~6일 매출을 집계한 결과, 외국인 고객의 일평균 매출은 지난해 국경절 연휴(10월 1~8일)보다 70% 증가했다. 같은 기간 비수도권 지역 올리브영 매장의 외국인 매출은 전년 대비 97% 증가했다.",
       "title": "“경주서도 K뷰티 ‘푹’ 빠졌네”…국경절 맞은 중국인들 어디 갔나 했더니"
+    },
+    "core:eca72ee5c67daf5222b81124": {
+      "first_seen_kst": "2026-10-11T10:42:03+09:00",
+      "lanes": {
+        "live": "2026-10-11T10:42:03+09:00"
+      },
+      "last_seen_kst": "2026-10-11T10:42:03+09:00",
+      "link": "https://www.etnews.com/20261011000031",
+      "source": "전자신문",
+      "source_body_digest": "0a930338677425dc9836be90d8a242d5d34980ba342a70e06876bbca95a11b6d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c11abb23b424d9f4b3eb8d6edfae7f3fab2c5d4e0d967721dc92362d04e51a4f",
+      "source_fact_keys": [
+        "source_fact:v1:4e108b5a3b181cdd9aaadb0c5f64a3f792dffbf2fc39c50ed7c21c7c23277240",
+        "source_fact:v1:ece9b5fa325c769a5512949cde6bff7511bc2117e3850ca81cb447b24f0f7b88"
+      ],
+      "source_published_kst": "2026-10-11T10:09+09:00",
+      "source_title": "하이엠솔루텍, AI 데이터센터 맞춤형 HVAC 서비스 강화",
+      "telegram_core_fact": "하이엠솔루텍은 기존 칠러 설비 중심 유지보수를 AI 데이터센터 구동에 필수적인 액체냉각 설비까지 확대한다고 11일 밝혔다.",
+      "title": "하이엠솔루텍, AI 데이터센터 맞춤형 HVAC 서비스 강화"
     },
     "core:edb5064cd2b1fc33c7fab2e6": {
       "first_seen_kst": "2026-10-09T17:54:07+09:00",
@@ -31786,19 +31865,22 @@
     "event:fe63067fb8b6aafdf318a626": {
       "first_seen_kst": "2026-10-11T06:52:52+09:00",
       "lanes": {
+        "live": "2026-10-11T10:42:03+09:00",
         "preopen": "2026-10-11T06:52:52+09:00"
       },
-      "last_seen_kst": "2026-10-11T06:52:52+09:00",
-      "link": "https://www.fnnews.com/news/202610110630332656",
-      "source": "파이낸셜뉴스",
-      "source_body_digest": "2eb2aad3f99fb917af4af8084d6aa1d784683b22351786f8cc282e25b96fcd51",
+      "last_seen_kst": "2026-10-11T10:42:03+09:00",
+      "link": "https://biz.chosun.com/policy/policy_sub/2026/10/11/FULD2R626REGTN4WNDLIBO3B2Y/",
+      "source": "조선비즈",
+      "source_body_digest": "490aae15712996285ee06cb45a7ee5d4e5d3dc46e93bda8dc2387921294cde90",
       "source_event_identity": "",
-      "source_fact_identity": "",
-      "source_fact_keys": [],
-      "source_published_kst": "2026-10-11T06:30+09:00",
-      "source_title": "SK하이닉스 이르면 28일 실적 공개…영업이익률 80% 돌파하나",
-      "telegram_core_fact": "삼성전자가 '분기 영업이익 100조' 시대를 열었고 SK하이닉스는 꿈의 영업이익률 기록을 세울 것으로 기대된다.",
-      "title": "SK하이닉스 이르면 28일 실적 공개…영업이익률 80% 돌파하나"
+      "source_fact_identity": "source_facts:v1:2b0d1cfe28763b84a2ea28d7e391449632c5c97a5e5dd36dae2737f193679ff8",
+      "source_fact_keys": [
+        "source_fact:v1:86b47b6936b6b0793b493b46fbebcc6292753002c407227de9ac639017275de9"
+      ],
+      "source_published_kst": "2026-10-11T10:18+09:00",
+      "source_title": "“반도체 성과급 잔치에도… 소비 진작 효과는 제한적일 것”",
+      "telegram_core_fact": "반도체 호황으로 삼성전자와 SK하이닉스의 직원들이 수억원대 성과급을 받을 것으로 예상되지만, 이런 성과급이 소비 진작으로 이어지는 효과는 크지 않을 것이라는 분석이 나왔다.",
+      "title": "“반도체 성과급 잔치에도… 소비 진작 효과는 제한적일 것”"
     },
     "event:febc28af8331c3cd3ae5eb71": {
       "first_seen_kst": "2026-09-30T23:32:53+09:00",
@@ -41128,6 +41210,25 @@
       "source_published_kst": "2026-10-06T15:43+09:00",
       "title": "李대통령, 알시시 이집트 대통령과 정상회담…인프라·공급망 협력 확대"
     },
+    "fact:3ed148967668dc614b21ba4b": {
+      "first_seen_kst": "2026-10-11T10:42:03+09:00",
+      "lanes": {
+        "live": "2026-10-11T10:42:03+09:00"
+      },
+      "last_seen_kst": "2026-10-11T10:42:03+09:00",
+      "link": "https://biz.chosun.com/policy/policy_sub/2026/10/11/FULD2R626REGTN4WNDLIBO3B2Y/",
+      "source": "조선비즈",
+      "source_body_digest": "490aae15712996285ee06cb45a7ee5d4e5d3dc46e93bda8dc2387921294cde90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2b0d1cfe28763b84a2ea28d7e391449632c5c97a5e5dd36dae2737f193679ff8",
+      "source_fact_keys": [
+        "source_fact:v1:86b47b6936b6b0793b493b46fbebcc6292753002c407227de9ac639017275de9"
+      ],
+      "source_published_kst": "2026-10-11T10:18+09:00",
+      "source_title": "“반도체 성과급 잔치에도… 소비 진작 효과는 제한적일 것”",
+      "telegram_core_fact": "반도체 호황으로 삼성전자와 SK하이닉스의 직원들이 수억원대 성과급을 받을 것으로 예상되지만, 이런 성과급이 소비 진작으로 이어지는 효과는 크지 않을 것이라는 분석이 나왔다.",
+      "title": "“반도체 성과급 잔치에도… 소비 진작 효과는 제한적일 것”"
+    },
     "fact:3ed83d86d6f0bd89116ff72b": {
       "first_seen_kst": "2026-10-08T20:16:13+09:00",
       "lanes": {
@@ -44354,6 +44455,27 @@
       ],
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
+    },
+    "fact:5706869af152ba9402f10162": {
+      "first_seen_kst": "2026-10-11T10:42:03+09:00",
+      "lanes": {
+        "live": "2026-10-11T10:42:03+09:00"
+      },
+      "last_seen_kst": "2026-10-11T10:42:03+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01331686645611936",
+      "source": "이데일리",
+      "source_body_digest": "121cad163511e08acf35c2e175932e3f1b544f647ae6995cec10f3bb182786aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:52aeae13e09122708504b7c36cba2abfa0f189fe119b9f5522805c670a6557e4",
+      "source_fact_keys": [
+        "source_fact:v1:3935c674473027d54e8271c2e74522d963ac04bc56b4a5f924ef03665a4390b1",
+        "source_fact:v1:477be2b29e3da779d897c015603f9b2eda1b9fb610a20356505083fa5a727db2",
+        "source_fact:v1:f19bf7182f1096f3c0c713d941afc9e6df54648c82f1c824c8cf85fe38232e5d"
+      ],
+      "source_published_kst": "2026-10-11T10:30+09:00",
+      "source_title": "반도체 훈풍 비껴간 건설현장…일용직 30만명 일터 잃어",
+      "telegram_core_fact": "반도체 산업이 전례 없는 호황을 누리는 반면, 건설 현장에서는 30만명이 넘는 노동자가 원치 않게 일터를 떠난 것으로 나타났다. 고용계약 종료나 구조조정, 해고 등에 따른 비자발적 이직자가 30만명을 넘어선 것은 2023년 9월(31만 432명) 이후 35개월 만이다.",
+      "title": "반도체 훈풍 비껴간 건설현장…일용직 30만명 일터 잃어"
     },
     "fact:574382804e596264c6d4b847": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -49716,6 +49838,26 @@
       ],
       "source_published_kst": "2026-10-07T15:28+09:00",
       "title": "두나무-네이버파이낸셜 주식교환, 내년 3월로 연기 [공시]"
+    },
+    "fact:7ec5cb1989c6c5c5ce387a12": {
+      "first_seen_kst": "2026-10-11T10:42:03+09:00",
+      "lanes": {
+        "live": "2026-10-11T10:42:03+09:00"
+      },
+      "last_seen_kst": "2026-10-11T10:42:03+09:00",
+      "link": "https://www.etnews.com/20261011000031",
+      "source": "전자신문",
+      "source_body_digest": "0a930338677425dc9836be90d8a242d5d34980ba342a70e06876bbca95a11b6d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c11abb23b424d9f4b3eb8d6edfae7f3fab2c5d4e0d967721dc92362d04e51a4f",
+      "source_fact_keys": [
+        "source_fact:v1:4e108b5a3b181cdd9aaadb0c5f64a3f792dffbf2fc39c50ed7c21c7c23277240",
+        "source_fact:v1:ece9b5fa325c769a5512949cde6bff7511bc2117e3850ca81cb447b24f0f7b88"
+      ],
+      "source_published_kst": "2026-10-11T10:09+09:00",
+      "source_title": "하이엠솔루텍, AI 데이터센터 맞춤형 HVAC 서비스 강화",
+      "telegram_core_fact": "하이엠솔루텍은 기존 칠러 설비 중심 유지보수를 AI 데이터센터 구동에 필수적인 액체냉각 설비까지 확대한다고 11일 밝혔다.",
+      "title": "하이엠솔루텍, AI 데이터센터 맞춤형 HVAC 서비스 강화"
     },
     "fact:7ef53d4fee733016f5d4b68d": {
       "first_seen_kst": "2026-10-07T20:28:48+09:00",
@@ -59219,6 +59361,25 @@
       "source_title": "어라이브 AI, 유닛당 0.65달러 직접투자 유치..213% 프리미엄",
       "telegram_core_fact": "어라이브 AI(ARAI)가 최근 거래가격 0.2075달러보다 약 213% 높은 유닛당 0.65달러에 미국 소재 특화 민간 투자회사로부터 25만 달러 직접투자를 유치했다고 9일(현지시간) 발표했다. 증권가 컨센서스에 따르면 어라이브 AI의 2026년 예상 매출액은 10만 달러로 전년 대비 11.7% 감소할 것으로 전망된다.",
       "title": "어라이브 AI, 유닛당 0.65달러 직접투자 유치..213% 프리미엄"
+    },
+    "fact:bfd81f03e6b35374cb7c49a6": {
+      "first_seen_kst": "2026-10-11T10:42:03+09:00",
+      "lanes": {
+        "live": "2026-10-11T10:42:03+09:00"
+      },
+      "last_seen_kst": "2026-10-11T10:42:03+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011017400030",
+      "source": "연합뉴스",
+      "source_body_digest": "52244b74542758a6c1d95d505255c1c1d801236522bbed11dedf87061b299f8b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1e026c56b2fe4453dbd03736231b378d4bfee0986ef5a5e8d9f1d03f4f4c42d8",
+      "source_fact_keys": [
+        "source_fact:v1:8e03d175d77c9711cd7ad4da279efc71e66ba74deb5400ec74953c7c53db0869"
+      ],
+      "source_published_kst": "2026-10-11T10:32+09:00",
+      "source_title": "한진, 정부 소상공인 물류 지원사업 수행…\"상생물류 구축\" | 연합뉴스",
+      "telegram_core_fact": "한진 관계자는 \"중소상공인의 성장을 돕고 지속 가능한 상생 물류 생태계를 확고히 구축해 나갈 것\"이라고 말했다.",
+      "title": "한진, 정부 소상공인 물류 지원사업 수행…\"상생물류 구축\" | 연합뉴스"
     },
     "fact:bfe28e3822d2fc71f87ce996": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
@@ -86151,6 +86312,25 @@
       "telegram_core_fact": "2025년 3월 23일 매일경제 기사에서는 삼성물산이 송파구 한양3차 아파트 재건축 사업을 수주했다고 전했다.",
       "title": "송파구 송파삼성래미안 79.7㎡ 22억 5천만원… 최근 3년 신고가 [MAI부동산]"
     },
+    "link:4e33e4e0172b0a558d4fa289": {
+      "first_seen_kst": "2026-10-11T10:42:03+09:00",
+      "lanes": {
+        "live": "2026-10-11T10:42:03+09:00"
+      },
+      "last_seen_kst": "2026-10-11T10:42:03+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011017400030",
+      "source": "연합뉴스",
+      "source_body_digest": "52244b74542758a6c1d95d505255c1c1d801236522bbed11dedf87061b299f8b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1e026c56b2fe4453dbd03736231b378d4bfee0986ef5a5e8d9f1d03f4f4c42d8",
+      "source_fact_keys": [
+        "source_fact:v1:8e03d175d77c9711cd7ad4da279efc71e66ba74deb5400ec74953c7c53db0869"
+      ],
+      "source_published_kst": "2026-10-11T10:32+09:00",
+      "source_title": "한진, 정부 소상공인 물류 지원사업 수행…\"상생물류 구축\" | 연합뉴스",
+      "telegram_core_fact": "한진 관계자는 \"중소상공인의 성장을 돕고 지속 가능한 상생 물류 생태계를 확고히 구축해 나갈 것\"이라고 말했다.",
+      "title": "한진, 정부 소상공인 물류 지원사업 수행…\"상생물류 구축\" | 연합뉴스"
+    },
     "link:4e351237455d3e81be0b7d01": {
       "first_seen_kst": "2026-10-06T22:21:21+09:00",
       "lanes": {
@@ -103691,6 +103871,23 @@
       "source_published_kst": "2026-10-05T09:39+09:00",
       "title": "“20좌 안 되면 못 파나”…단일종목 레버리지 ‘단주 출구’ 만든다"
     },
+    "link:9c9feefe29223cc1f21a85a3": {
+      "first_seen_kst": "2026-10-11T10:42:03+09:00",
+      "lanes": {
+        "live": "2026-10-11T10:42:03+09:00"
+      },
+      "last_seen_kst": "2026-10-11T10:42:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820863",
+      "source": "뉴시스",
+      "source_body_digest": "aa9a2d9562c51be4ab679fe3e64df92055ba92a52197357b3f55ddc524a1d5e0",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-11T10:35+09:00",
+      "source_title": "피겨 기대주 최하빈, 2년 연속 주니어 그랑프리 파이널 진출",
+      "telegram_core_fact": "여자 싱글과 아이스댄스, 페어 종목에선 파이널 진출자가 나오지 못했다.",
+      "title": "피겨 기대주 최하빈, 2년 연속 주니어 그랑프리 파이널 진출"
+    },
     "link:9ce5abb91cf80e24a1af68a4": {
       "first_seen_kst": "2026-10-01T19:22:15+09:00",
       "lanes": {
@@ -103934,6 +104131,27 @@
       ],
       "source_published_kst": "2026-10-06T10:21+09:00",
       "title": "원프레딕트, 7368억 피지컬AI 사업 참여…제조 AI 총괄"
+    },
+    "link:9d6e9a6bcc9882b91e3f2ca6": {
+      "first_seen_kst": "2026-10-11T10:42:03+09:00",
+      "lanes": {
+        "live": "2026-10-11T10:42:03+09:00"
+      },
+      "last_seen_kst": "2026-10-11T10:42:03+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01331686645611936",
+      "source": "이데일리",
+      "source_body_digest": "121cad163511e08acf35c2e175932e3f1b544f647ae6995cec10f3bb182786aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:52aeae13e09122708504b7c36cba2abfa0f189fe119b9f5522805c670a6557e4",
+      "source_fact_keys": [
+        "source_fact:v1:3935c674473027d54e8271c2e74522d963ac04bc56b4a5f924ef03665a4390b1",
+        "source_fact:v1:477be2b29e3da779d897c015603f9b2eda1b9fb610a20356505083fa5a727db2",
+        "source_fact:v1:f19bf7182f1096f3c0c713d941afc9e6df54648c82f1c824c8cf85fe38232e5d"
+      ],
+      "source_published_kst": "2026-10-11T10:30+09:00",
+      "source_title": "반도체 훈풍 비껴간 건설현장…일용직 30만명 일터 잃어",
+      "telegram_core_fact": "반도체 산업이 전례 없는 호황을 누리는 반면, 건설 현장에서는 30만명이 넘는 노동자가 원치 않게 일터를 떠난 것으로 나타났다. 고용계약 종료나 구조조정, 해고 등에 따른 비자발적 이직자가 30만명을 넘어선 것은 2023년 9월(31만 432명) 이후 35개월 만이다.",
+      "title": "반도체 훈풍 비껴간 건설현장…일용직 30만명 일터 잃어"
     },
     "link:9dce49acb3d90bd476bd69e2": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -110977,6 +111195,26 @@
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "\"30개 테스트공장 풀가동\" SK엔무브 고급 윤활기유 1위 만든 R&D | 연합뉴스"
     },
+    "link:bdceb41252a894e7a50515bb": {
+      "first_seen_kst": "2026-10-11T10:42:03+09:00",
+      "lanes": {
+        "live": "2026-10-11T10:42:03+09:00"
+      },
+      "last_seen_kst": "2026-10-11T10:42:03+09:00",
+      "link": "https://www.etnews.com/20261011000031",
+      "source": "전자신문",
+      "source_body_digest": "0a930338677425dc9836be90d8a242d5d34980ba342a70e06876bbca95a11b6d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c11abb23b424d9f4b3eb8d6edfae7f3fab2c5d4e0d967721dc92362d04e51a4f",
+      "source_fact_keys": [
+        "source_fact:v1:4e108b5a3b181cdd9aaadb0c5f64a3f792dffbf2fc39c50ed7c21c7c23277240",
+        "source_fact:v1:ece9b5fa325c769a5512949cde6bff7511bc2117e3850ca81cb447b24f0f7b88"
+      ],
+      "source_published_kst": "2026-10-11T10:09+09:00",
+      "source_title": "하이엠솔루텍, AI 데이터센터 맞춤형 HVAC 서비스 강화",
+      "telegram_core_fact": "하이엠솔루텍은 기존 칠러 설비 중심 유지보수를 AI 데이터센터 구동에 필수적인 액체냉각 설비까지 확대한다고 11일 밝혔다.",
+      "title": "하이엠솔루텍, AI 데이터센터 맞춤형 HVAC 서비스 강화"
+    },
     "link:bddcd54c3fb091fbf66a50cf": {
       "first_seen_kst": "2026-10-08T01:43:44+09:00",
       "lanes": {
@@ -111541,6 +111779,25 @@
       ],
       "source_published_kst": "2026-10-07T15:55+09:00",
       "title": "대구·전남광주, 공장 누비며 부품 나르는 '공정모빌리티' 개발 | 연합뉴스"
+    },
+    "link:c033035039ce1c9c3e0feb67": {
+      "first_seen_kst": "2026-10-11T10:42:03+09:00",
+      "lanes": {
+        "live": "2026-10-11T10:42:03+09:00"
+      },
+      "last_seen_kst": "2026-10-11T10:42:03+09:00",
+      "link": "https://biz.chosun.com/policy/policy_sub/2026/10/11/FULD2R626REGTN4WNDLIBO3B2Y/",
+      "source": "조선비즈",
+      "source_body_digest": "490aae15712996285ee06cb45a7ee5d4e5d3dc46e93bda8dc2387921294cde90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2b0d1cfe28763b84a2ea28d7e391449632c5c97a5e5dd36dae2737f193679ff8",
+      "source_fact_keys": [
+        "source_fact:v1:86b47b6936b6b0793b493b46fbebcc6292753002c407227de9ac639017275de9"
+      ],
+      "source_published_kst": "2026-10-11T10:18+09:00",
+      "source_title": "“반도체 성과급 잔치에도… 소비 진작 효과는 제한적일 것”",
+      "telegram_core_fact": "반도체 호황으로 삼성전자와 SK하이닉스의 직원들이 수억원대 성과급을 받을 것으로 예상되지만, 이런 성과급이 소비 진작으로 이어지는 효과는 크지 않을 것이라는 분석이 나왔다.",
+      "title": "“반도체 성과급 잔치에도… 소비 진작 효과는 제한적일 것”"
     },
     "link:c06f49b85267dd530979bbf9": {
       "first_seen_kst": "2026-10-08T11:49:03+09:00",
@@ -126111,6 +126368,26 @@
       "telegram_core_fact": "예멘 정부군과 사우디 주도 연합군이 지난 4일 후티가 장악한 영토를 탈환하기 위한 '예멘의 새벽' 작전을 선언하고 대규모 공세에 나서자 후티는 이후 사우디 본토의 공항과 정유시설을 탄도미사일과 드론으로 잇달아 공격했다고 밝히고 있다.",
       "title": "사우디 \"리야드·아브하 공항서 3명 사망\"…후티 잇단 공습 주장(종합) | 연합뉴스"
     },
+    "original:038777c0f9c342c900f87d89": {
+      "first_seen_kst": "2026-10-11T10:42:03+09:00",
+      "lanes": {
+        "live": "2026-10-11T10:42:03+09:00"
+      },
+      "last_seen_kst": "2026-10-11T10:42:03+09:00",
+      "link": "https://www.etnews.com/20261011000031",
+      "source": "전자신문",
+      "source_body_digest": "0a930338677425dc9836be90d8a242d5d34980ba342a70e06876bbca95a11b6d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c11abb23b424d9f4b3eb8d6edfae7f3fab2c5d4e0d967721dc92362d04e51a4f",
+      "source_fact_keys": [
+        "source_fact:v1:4e108b5a3b181cdd9aaadb0c5f64a3f792dffbf2fc39c50ed7c21c7c23277240",
+        "source_fact:v1:ece9b5fa325c769a5512949cde6bff7511bc2117e3850ca81cb447b24f0f7b88"
+      ],
+      "source_published_kst": "2026-10-11T10:09+09:00",
+      "source_title": "하이엠솔루텍, AI 데이터센터 맞춤형 HVAC 서비스 강화",
+      "telegram_core_fact": "하이엠솔루텍은 기존 칠러 설비 중심 유지보수를 AI 데이터센터 구동에 필수적인 액체냉각 설비까지 확대한다고 11일 밝혔다.",
+      "title": "하이엠솔루텍, AI 데이터센터 맞춤형 HVAC 서비스 강화"
+    },
     "original:03a5c15e8c5f1bf6ade7ecf9": {
       "first_seen_kst": "2026-10-06T19:10:36+09:00",
       "lanes": {
@@ -126943,6 +127220,25 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T07:00+09:00",
       "title": "CPTPP 가입 효과, 5년 새 제조업 3.7배로…농업 피해도 1.6배"
+    },
+    "original:07dcb608abdc230ed5d662f1": {
+      "first_seen_kst": "2026-10-11T10:42:03+09:00",
+      "lanes": {
+        "live": "2026-10-11T10:42:03+09:00"
+      },
+      "last_seen_kst": "2026-10-11T10:42:03+09:00",
+      "link": "https://biz.chosun.com/policy/policy_sub/2026/10/11/FULD2R626REGTN4WNDLIBO3B2Y/",
+      "source": "조선비즈",
+      "source_body_digest": "490aae15712996285ee06cb45a7ee5d4e5d3dc46e93bda8dc2387921294cde90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2b0d1cfe28763b84a2ea28d7e391449632c5c97a5e5dd36dae2737f193679ff8",
+      "source_fact_keys": [
+        "source_fact:v1:86b47b6936b6b0793b493b46fbebcc6292753002c407227de9ac639017275de9"
+      ],
+      "source_published_kst": "2026-10-11T10:18+09:00",
+      "source_title": "“반도체 성과급 잔치에도… 소비 진작 효과는 제한적일 것”",
+      "telegram_core_fact": "반도체 호황으로 삼성전자와 SK하이닉스의 직원들이 수억원대 성과급을 받을 것으로 예상되지만, 이런 성과급이 소비 진작으로 이어지는 효과는 크지 않을 것이라는 분석이 나왔다.",
+      "title": "“반도체 성과급 잔치에도… 소비 진작 효과는 제한적일 것”"
     },
     "original:0806d412dfc8c34cd81d69b7": {
       "first_seen_kst": "2026-09-30T15:16:38+09:00",
@@ -136033,6 +136329,25 @@
       "link": "https://www.yna.co.kr/view/AKR20260923077900003",
       "source": "연합뉴스",
       "title": "\"억대 성과급 놓칠라\"…삼전닉스 육아휴직률 첫 동반 하락 | 연합뉴스"
+    },
+    "original:32749d7d3cf27d831a36fe9e": {
+      "first_seen_kst": "2026-10-11T10:42:03+09:00",
+      "lanes": {
+        "live": "2026-10-11T10:42:03+09:00"
+      },
+      "last_seen_kst": "2026-10-11T10:42:03+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011017400030",
+      "source": "연합뉴스",
+      "source_body_digest": "52244b74542758a6c1d95d505255c1c1d801236522bbed11dedf87061b299f8b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1e026c56b2fe4453dbd03736231b378d4bfee0986ef5a5e8d9f1d03f4f4c42d8",
+      "source_fact_keys": [
+        "source_fact:v1:8e03d175d77c9711cd7ad4da279efc71e66ba74deb5400ec74953c7c53db0869"
+      ],
+      "source_published_kst": "2026-10-11T10:32+09:00",
+      "source_title": "한진, 정부 소상공인 물류 지원사업 수행…\"상생물류 구축\" | 연합뉴스",
+      "telegram_core_fact": "한진 관계자는 \"중소상공인의 성장을 돕고 지속 가능한 상생 물류 생태계를 확고히 구축해 나갈 것\"이라고 말했다.",
+      "title": "한진, 정부 소상공인 물류 지원사업 수행…\"상생물류 구축\" | 연합뉴스"
     },
     "original:327c7f4553d3413a2fd2b861": {
       "first_seen_kst": "2026-10-07T16:15:21+09:00",
@@ -165069,6 +165384,23 @@
       "source": "매일경제",
       "title": "거래대금 반토막에 주춤한 이 업종…“배당 매력 커졌다”"
     },
+    "original:b926bb956c64f3716b1fbf91": {
+      "first_seen_kst": "2026-10-11T10:42:03+09:00",
+      "lanes": {
+        "live": "2026-10-11T10:42:03+09:00"
+      },
+      "last_seen_kst": "2026-10-11T10:42:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820863",
+      "source": "뉴시스",
+      "source_body_digest": "aa9a2d9562c51be4ab679fe3e64df92055ba92a52197357b3f55ddc524a1d5e0",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-11T10:35+09:00",
+      "source_title": "피겨 기대주 최하빈, 2년 연속 주니어 그랑프리 파이널 진출",
+      "telegram_core_fact": "여자 싱글과 아이스댄스, 페어 종목에선 파이널 진출자가 나오지 못했다.",
+      "title": "피겨 기대주 최하빈, 2년 연속 주니어 그랑프리 파이널 진출"
+    },
     "original:b950488023470513f85f0cd4": {
       "first_seen_kst": "2026-10-02T22:19:09+09:00",
       "lanes": {
@@ -177305,6 +177637,27 @@
       ],
       "source_published_kst": "2026-10-06T21:44+09:00",
       "title": "이형일 \"프리랜서 세금 줄이고 직장인에 더 걷는다? 사실 아냐\""
+    },
+    "original:f2bdc5d7c55b87babfcba53f": {
+      "first_seen_kst": "2026-10-11T10:42:03+09:00",
+      "lanes": {
+        "live": "2026-10-11T10:42:03+09:00"
+      },
+      "last_seen_kst": "2026-10-11T10:42:03+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01331686645611936",
+      "source": "이데일리",
+      "source_body_digest": "121cad163511e08acf35c2e175932e3f1b544f647ae6995cec10f3bb182786aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:52aeae13e09122708504b7c36cba2abfa0f189fe119b9f5522805c670a6557e4",
+      "source_fact_keys": [
+        "source_fact:v1:3935c674473027d54e8271c2e74522d963ac04bc56b4a5f924ef03665a4390b1",
+        "source_fact:v1:477be2b29e3da779d897c015603f9b2eda1b9fb610a20356505083fa5a727db2",
+        "source_fact:v1:f19bf7182f1096f3c0c713d941afc9e6df54648c82f1c824c8cf85fe38232e5d"
+      ],
+      "source_published_kst": "2026-10-11T10:30+09:00",
+      "source_title": "반도체 훈풍 비껴간 건설현장…일용직 30만명 일터 잃어",
+      "telegram_core_fact": "반도체 산업이 전례 없는 호황을 누리는 반면, 건설 현장에서는 30만명이 넘는 노동자가 원치 않게 일터를 떠난 것으로 나타났다. 고용계약 종료나 구조조정, 해고 등에 따른 비자발적 이직자가 30만명을 넘어선 것은 2023년 9월(31만 432명) 이후 35개월 만이다.",
+      "title": "반도체 훈풍 비껴간 건설현장…일용직 30만명 일터 잃어"
     },
     "original:f2e57d0b0d1d3562ed164b98": {
       "first_seen_kst": "2026-10-06T23:46:46+09:00",
@@ -201823,6 +202176,25 @@
       "telegram_core_fact": "향후 글로벌 AI 인프라 경쟁에서는 중국의 대규모 데이터센터 건설 계획이 실제 가동으로 얼마나 이어지는지와 미국의 전력망 제약이 어떻게 작용하는지가 주요 변수로 남을 전망이다.",
       "title": "중국, 남아도는 전력으로 AI 승부…데이터센터 건설 가속"
     },
+    "source_fact:21136bd7e295ca1c669793d5": {
+      "first_seen_kst": "2026-10-11T10:42:03+09:00",
+      "lanes": {
+        "live": "2026-10-11T10:42:03+09:00"
+      },
+      "last_seen_kst": "2026-10-11T10:42:03+09:00",
+      "link": "https://biz.chosun.com/policy/policy_sub/2026/10/11/FULD2R626REGTN4WNDLIBO3B2Y/",
+      "source": "조선비즈",
+      "source_body_digest": "490aae15712996285ee06cb45a7ee5d4e5d3dc46e93bda8dc2387921294cde90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2b0d1cfe28763b84a2ea28d7e391449632c5c97a5e5dd36dae2737f193679ff8",
+      "source_fact_keys": [
+        "source_fact:v1:86b47b6936b6b0793b493b46fbebcc6292753002c407227de9ac639017275de9"
+      ],
+      "source_published_kst": "2026-10-11T10:18+09:00",
+      "source_title": "“반도체 성과급 잔치에도… 소비 진작 효과는 제한적일 것”",
+      "telegram_core_fact": "반도체 호황으로 삼성전자와 SK하이닉스의 직원들이 수억원대 성과급을 받을 것으로 예상되지만, 이런 성과급이 소비 진작으로 이어지는 효과는 크지 않을 것이라는 분석이 나왔다.",
+      "title": "“반도체 성과급 잔치에도… 소비 진작 효과는 제한적일 것”"
+    },
     "source_fact:2118066988caea65286bf027": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
       "lanes": {
@@ -223864,6 +224236,27 @@
       "source_title": "두나무·네이버 주식교환 일정 연장…주총 2월·교환일 3월로 변경",
       "telegram_core_fact": "네이버는 7일 기재정정공시를 통해 주주총회 예정일을 기존 11월19일에서 내년 2월26일로, 주식교환·이전일을 12월31일에서 내년 3월31일로 변경했다고 밝혔다. 두나무와 네이버파이낸셜의 포괄적 주식교환 일정이 약 3개월 연장됐다.",
       "title": "두나무·네이버 주식교환 일정 연장…주총 2월·교환일 3월로 변경"
+    },
+    "source_fact:40b59e3747970a6974239e97": {
+      "first_seen_kst": "2026-10-11T10:42:03+09:00",
+      "lanes": {
+        "live": "2026-10-11T10:42:03+09:00"
+      },
+      "last_seen_kst": "2026-10-11T10:42:03+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01331686645611936",
+      "source": "이데일리",
+      "source_body_digest": "121cad163511e08acf35c2e175932e3f1b544f647ae6995cec10f3bb182786aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:52aeae13e09122708504b7c36cba2abfa0f189fe119b9f5522805c670a6557e4",
+      "source_fact_keys": [
+        "source_fact:v1:3935c674473027d54e8271c2e74522d963ac04bc56b4a5f924ef03665a4390b1",
+        "source_fact:v1:477be2b29e3da779d897c015603f9b2eda1b9fb610a20356505083fa5a727db2",
+        "source_fact:v1:f19bf7182f1096f3c0c713d941afc9e6df54648c82f1c824c8cf85fe38232e5d"
+      ],
+      "source_published_kst": "2026-10-11T10:30+09:00",
+      "source_title": "반도체 훈풍 비껴간 건설현장…일용직 30만명 일터 잃어",
+      "telegram_core_fact": "반도체 산업이 전례 없는 호황을 누리는 반면, 건설 현장에서는 30만명이 넘는 노동자가 원치 않게 일터를 떠난 것으로 나타났다. 고용계약 종료나 구조조정, 해고 등에 따른 비자발적 이직자가 30만명을 넘어선 것은 2023년 9월(31만 432명) 이후 35개월 만이다.",
+      "title": "반도체 훈풍 비껴간 건설현장…일용직 30만명 일터 잃어"
     },
     "source_fact:40bb3bd3ce4d5a2663cbad47": {
       "first_seen_kst": "2026-10-08T03:26:42+09:00",
@@ -256578,6 +256971,27 @@
       "telegram_core_fact": "신한투자증권 김상인 연구원은 \"올해 은행채 발행은 시중은행채보다 특수은행채를 중심으로 늘어난 흐름\"이라며 \"정책 금융 확대와 기업 대출 수요 등에 따라 산업은행과 기업은행 등의 자금 조달 수요가 커진 영향이 반영된 것으로 보인다\"고 말했다.",
       "title": "올해 크레딧물 발행 24%↑…은행채 늘고 회사채는 줄고"
     },
+    "source_fact:6fd238ee0acec3b59ec0c78e": {
+      "first_seen_kst": "2026-10-11T10:42:03+09:00",
+      "lanes": {
+        "live": "2026-10-11T10:42:03+09:00"
+      },
+      "last_seen_kst": "2026-10-11T10:42:03+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01331686645611936",
+      "source": "이데일리",
+      "source_body_digest": "121cad163511e08acf35c2e175932e3f1b544f647ae6995cec10f3bb182786aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:52aeae13e09122708504b7c36cba2abfa0f189fe119b9f5522805c670a6557e4",
+      "source_fact_keys": [
+        "source_fact:v1:3935c674473027d54e8271c2e74522d963ac04bc56b4a5f924ef03665a4390b1",
+        "source_fact:v1:477be2b29e3da779d897c015603f9b2eda1b9fb610a20356505083fa5a727db2",
+        "source_fact:v1:f19bf7182f1096f3c0c713d941afc9e6df54648c82f1c824c8cf85fe38232e5d"
+      ],
+      "source_published_kst": "2026-10-11T10:30+09:00",
+      "source_title": "반도체 훈풍 비껴간 건설현장…일용직 30만명 일터 잃어",
+      "telegram_core_fact": "반도체 산업이 전례 없는 호황을 누리는 반면, 건설 현장에서는 30만명이 넘는 노동자가 원치 않게 일터를 떠난 것으로 나타났다. 고용계약 종료나 구조조정, 해고 등에 따른 비자발적 이직자가 30만명을 넘어선 것은 2023년 9월(31만 432명) 이후 35개월 만이다.",
+      "title": "반도체 훈풍 비껴간 건설현장…일용직 30만명 일터 잃어"
+    },
     "source_fact:6fd83272e0ae780b1ab54e3b": {
       "first_seen_kst": "2026-10-08T19:27:03+09:00",
       "lanes": {
@@ -283232,6 +283646,25 @@
       "telegram_core_fact": "방한한 리사 수 AMD 회장 겸 최고경영자(CEO)가 삼성과 SK의 반도체 수장을 만나 AI 협력 강화 방안을 논의한다. 약 7개월 만에 다시 성사된 전 부회장과 수 회장의 이번 회동으로 삼성전자와 AMD는 고대역폭메모리(HBM)를 포함한 AI 반도체 협력을 강화할 전망이다.",
       "title": "AMD 리사수, 삼성 전영현·SK 곽노정 만나 AI 협력방안 논의(종합)"
     },
+    "source_fact:98a616f23066d3646d930af4": {
+      "first_seen_kst": "2026-10-11T10:42:03+09:00",
+      "lanes": {
+        "live": "2026-10-11T10:42:03+09:00"
+      },
+      "last_seen_kst": "2026-10-11T10:42:03+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011017400030",
+      "source": "연합뉴스",
+      "source_body_digest": "52244b74542758a6c1d95d505255c1c1d801236522bbed11dedf87061b299f8b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1e026c56b2fe4453dbd03736231b378d4bfee0986ef5a5e8d9f1d03f4f4c42d8",
+      "source_fact_keys": [
+        "source_fact:v1:8e03d175d77c9711cd7ad4da279efc71e66ba74deb5400ec74953c7c53db0869"
+      ],
+      "source_published_kst": "2026-10-11T10:32+09:00",
+      "source_title": "한진, 정부 소상공인 물류 지원사업 수행…\"상생물류 구축\" | 연합뉴스",
+      "telegram_core_fact": "한진 관계자는 \"중소상공인의 성장을 돕고 지속 가능한 상생 물류 생태계를 확고히 구축해 나갈 것\"이라고 말했다.",
+      "title": "한진, 정부 소상공인 물류 지원사업 수행…\"상생물류 구축\" | 연합뉴스"
+    },
     "source_fact:98af6b93afd7b81361c4c809": {
       "first_seen_kst": "2026-10-07T08:15:28+09:00",
       "lanes": {
@@ -286068,6 +286501,26 @@
       ],
       "source_published_kst": "2026-10-07T08:53+09:00",
       "title": "“100조 넘긴다” 삼성전자 신기록 전망"
+    },
+    "source_fact:9d302d3ebc0bbe86770c01da": {
+      "first_seen_kst": "2026-10-11T10:42:03+09:00",
+      "lanes": {
+        "live": "2026-10-11T10:42:03+09:00"
+      },
+      "last_seen_kst": "2026-10-11T10:42:03+09:00",
+      "link": "https://www.etnews.com/20261011000031",
+      "source": "전자신문",
+      "source_body_digest": "0a930338677425dc9836be90d8a242d5d34980ba342a70e06876bbca95a11b6d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c11abb23b424d9f4b3eb8d6edfae7f3fab2c5d4e0d967721dc92362d04e51a4f",
+      "source_fact_keys": [
+        "source_fact:v1:4e108b5a3b181cdd9aaadb0c5f64a3f792dffbf2fc39c50ed7c21c7c23277240",
+        "source_fact:v1:ece9b5fa325c769a5512949cde6bff7511bc2117e3850ca81cb447b24f0f7b88"
+      ],
+      "source_published_kst": "2026-10-11T10:09+09:00",
+      "source_title": "하이엠솔루텍, AI 데이터센터 맞춤형 HVAC 서비스 강화",
+      "telegram_core_fact": "하이엠솔루텍은 기존 칠러 설비 중심 유지보수를 AI 데이터센터 구동에 필수적인 액체냉각 설비까지 확대한다고 11일 밝혔다.",
+      "title": "하이엠솔루텍, AI 데이터센터 맞춤형 HVAC 서비스 강화"
     },
     "source_fact:9d3f4f653a2278322513e785": {
       "first_seen_kst": "2026-10-08T07:12:10+09:00",
@@ -292620,6 +293073,27 @@
       ],
       "source_published_kst": "2026-10-06T10:24+09:00",
       "title": "슈나이더, 미 소프트웨어 업체 20조원에 인수 | 연합뉴스"
+    },
+    "source_fact:a705402eb3d9cd39ad9f7d63": {
+      "first_seen_kst": "2026-10-11T10:42:03+09:00",
+      "lanes": {
+        "live": "2026-10-11T10:42:03+09:00"
+      },
+      "last_seen_kst": "2026-10-11T10:42:03+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01331686645611936",
+      "source": "이데일리",
+      "source_body_digest": "121cad163511e08acf35c2e175932e3f1b544f647ae6995cec10f3bb182786aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:52aeae13e09122708504b7c36cba2abfa0f189fe119b9f5522805c670a6557e4",
+      "source_fact_keys": [
+        "source_fact:v1:3935c674473027d54e8271c2e74522d963ac04bc56b4a5f924ef03665a4390b1",
+        "source_fact:v1:477be2b29e3da779d897c015603f9b2eda1b9fb610a20356505083fa5a727db2",
+        "source_fact:v1:f19bf7182f1096f3c0c713d941afc9e6df54648c82f1c824c8cf85fe38232e5d"
+      ],
+      "source_published_kst": "2026-10-11T10:30+09:00",
+      "source_title": "반도체 훈풍 비껴간 건설현장…일용직 30만명 일터 잃어",
+      "telegram_core_fact": "반도체 산업이 전례 없는 호황을 누리는 반면, 건설 현장에서는 30만명이 넘는 노동자가 원치 않게 일터를 떠난 것으로 나타났다. 고용계약 종료나 구조조정, 해고 등에 따른 비자발적 이직자가 30만명을 넘어선 것은 2023년 9월(31만 432명) 이후 35개월 만이다.",
+      "title": "반도체 훈풍 비껴간 건설현장…일용직 30만명 일터 잃어"
     },
     "source_fact:a714bfe7d8e79c2c5a5df1dc": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
@@ -324866,6 +325340,26 @@
       "source_published_kst": "2026-10-06T09:16+09:00",
       "title": "비트코인, 1억1600만원대 강보합…美 고용 둔화에 금리 인상 부담 완화"
     },
+    "source_fact:d6bcd8b0fb1dca511ad6d6b1": {
+      "first_seen_kst": "2026-10-11T10:42:03+09:00",
+      "lanes": {
+        "live": "2026-10-11T10:42:03+09:00"
+      },
+      "last_seen_kst": "2026-10-11T10:42:03+09:00",
+      "link": "https://www.etnews.com/20261011000031",
+      "source": "전자신문",
+      "source_body_digest": "0a930338677425dc9836be90d8a242d5d34980ba342a70e06876bbca95a11b6d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c11abb23b424d9f4b3eb8d6edfae7f3fab2c5d4e0d967721dc92362d04e51a4f",
+      "source_fact_keys": [
+        "source_fact:v1:4e108b5a3b181cdd9aaadb0c5f64a3f792dffbf2fc39c50ed7c21c7c23277240",
+        "source_fact:v1:ece9b5fa325c769a5512949cde6bff7511bc2117e3850ca81cb447b24f0f7b88"
+      ],
+      "source_published_kst": "2026-10-11T10:09+09:00",
+      "source_title": "하이엠솔루텍, AI 데이터센터 맞춤형 HVAC 서비스 강화",
+      "telegram_core_fact": "하이엠솔루텍은 기존 칠러 설비 중심 유지보수를 AI 데이터센터 구동에 필수적인 액체냉각 설비까지 확대한다고 11일 밝혔다.",
+      "title": "하이엠솔루텍, AI 데이터센터 맞춤형 HVAC 서비스 강화"
+    },
     "source_fact:d6bf8d7677eab2c8de4b98ea": {
       "first_seen_kst": "2026-10-07T22:13:12+09:00",
       "lanes": {
@@ -353208,6 +353702,26 @@
       "telegram_core_fact": "예멘 정부군과 사우디 주도 연합군이 지난 4일 후티가 장악한 영토를 탈환하기 위한 '예멘의 새벽' 작전을 선언하고 대규모 공세에 나서자 후티는 이후 사우디 본토의 공항과 정유시설을 탄도미사일과 드론으로 잇달아 공격했다고 밝히고 있다.",
       "title": "사우디 \"리야드·아브하 공항서 3명 사망\"…후티 잇단 공습 주장(종합) | 연합뉴스"
     },
+    "title:038777c0f9c342c900f87d89": {
+      "first_seen_kst": "2026-10-11T10:42:03+09:00",
+      "lanes": {
+        "live": "2026-10-11T10:42:03+09:00"
+      },
+      "last_seen_kst": "2026-10-11T10:42:03+09:00",
+      "link": "https://www.etnews.com/20261011000031",
+      "source": "전자신문",
+      "source_body_digest": "0a930338677425dc9836be90d8a242d5d34980ba342a70e06876bbca95a11b6d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c11abb23b424d9f4b3eb8d6edfae7f3fab2c5d4e0d967721dc92362d04e51a4f",
+      "source_fact_keys": [
+        "source_fact:v1:4e108b5a3b181cdd9aaadb0c5f64a3f792dffbf2fc39c50ed7c21c7c23277240",
+        "source_fact:v1:ece9b5fa325c769a5512949cde6bff7511bc2117e3850ca81cb447b24f0f7b88"
+      ],
+      "source_published_kst": "2026-10-11T10:09+09:00",
+      "source_title": "하이엠솔루텍, AI 데이터센터 맞춤형 HVAC 서비스 강화",
+      "telegram_core_fact": "하이엠솔루텍은 기존 칠러 설비 중심 유지보수를 AI 데이터센터 구동에 필수적인 액체냉각 설비까지 확대한다고 11일 밝혔다.",
+      "title": "하이엠솔루텍, AI 데이터센터 맞춤형 HVAC 서비스 강화"
+    },
     "title:03a5c15e8c5f1bf6ade7ecf9": {
       "first_seen_kst": "2026-10-06T19:10:36+09:00",
       "lanes": {
@@ -354040,6 +354554,25 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T07:00+09:00",
       "title": "CPTPP 가입 효과, 5년 새 제조업 3.7배로…농업 피해도 1.6배"
+    },
+    "title:07dcb608abdc230ed5d662f1": {
+      "first_seen_kst": "2026-10-11T10:42:03+09:00",
+      "lanes": {
+        "live": "2026-10-11T10:42:03+09:00"
+      },
+      "last_seen_kst": "2026-10-11T10:42:03+09:00",
+      "link": "https://biz.chosun.com/policy/policy_sub/2026/10/11/FULD2R626REGTN4WNDLIBO3B2Y/",
+      "source": "조선비즈",
+      "source_body_digest": "490aae15712996285ee06cb45a7ee5d4e5d3dc46e93bda8dc2387921294cde90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2b0d1cfe28763b84a2ea28d7e391449632c5c97a5e5dd36dae2737f193679ff8",
+      "source_fact_keys": [
+        "source_fact:v1:86b47b6936b6b0793b493b46fbebcc6292753002c407227de9ac639017275de9"
+      ],
+      "source_published_kst": "2026-10-11T10:18+09:00",
+      "source_title": "“반도체 성과급 잔치에도… 소비 진작 효과는 제한적일 것”",
+      "telegram_core_fact": "반도체 호황으로 삼성전자와 SK하이닉스의 직원들이 수억원대 성과급을 받을 것으로 예상되지만, 이런 성과급이 소비 진작으로 이어지는 효과는 크지 않을 것이라는 분석이 나왔다.",
+      "title": "“반도체 성과급 잔치에도… 소비 진작 효과는 제한적일 것”"
     },
     "title:0806d412dfc8c34cd81d69b7": {
       "first_seen_kst": "2026-09-30T15:16:38+09:00",
@@ -363379,6 +363912,25 @@
       "link": "https://www.yna.co.kr/view/AKR20260923077900003",
       "source": "연합뉴스",
       "title": "\"억대 성과급 놓칠라\"…삼전닉스 육아휴직률 첫 동반 하락 | 연합뉴스"
+    },
+    "title:32749d7d3cf27d831a36fe9e": {
+      "first_seen_kst": "2026-10-11T10:42:03+09:00",
+      "lanes": {
+        "live": "2026-10-11T10:42:03+09:00"
+      },
+      "last_seen_kst": "2026-10-11T10:42:03+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261011017400030",
+      "source": "연합뉴스",
+      "source_body_digest": "52244b74542758a6c1d95d505255c1c1d801236522bbed11dedf87061b299f8b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1e026c56b2fe4453dbd03736231b378d4bfee0986ef5a5e8d9f1d03f4f4c42d8",
+      "source_fact_keys": [
+        "source_fact:v1:8e03d175d77c9711cd7ad4da279efc71e66ba74deb5400ec74953c7c53db0869"
+      ],
+      "source_published_kst": "2026-10-11T10:32+09:00",
+      "source_title": "한진, 정부 소상공인 물류 지원사업 수행…\"상생물류 구축\" | 연합뉴스",
+      "telegram_core_fact": "한진 관계자는 \"중소상공인의 성장을 돕고 지속 가능한 상생 물류 생태계를 확고히 구축해 나갈 것\"이라고 말했다.",
+      "title": "한진, 정부 소상공인 물류 지원사업 수행…\"상생물류 구축\" | 연합뉴스"
     },
     "title:327c7f4553d3413a2fd2b861": {
       "first_seen_kst": "2026-10-07T16:15:21+09:00",
@@ -393058,6 +393610,23 @@
       "source": "매일경제",
       "title": "거래대금 반토막에 주춤한 이 업종…“배당 매력 커졌다”"
     },
+    "title:b926bb956c64f3716b1fbf91": {
+      "first_seen_kst": "2026-10-11T10:42:03+09:00",
+      "lanes": {
+        "live": "2026-10-11T10:42:03+09:00"
+      },
+      "last_seen_kst": "2026-10-11T10:42:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820863",
+      "source": "뉴시스",
+      "source_body_digest": "aa9a2d9562c51be4ab679fe3e64df92055ba92a52197357b3f55ddc524a1d5e0",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-11T10:35+09:00",
+      "source_title": "피겨 기대주 최하빈, 2년 연속 주니어 그랑프리 파이널 진출",
+      "telegram_core_fact": "여자 싱글과 아이스댄스, 페어 종목에선 파이널 진출자가 나오지 못했다.",
+      "title": "피겨 기대주 최하빈, 2년 연속 주니어 그랑프리 파이널 진출"
+    },
     "title:b950488023470513f85f0cd4": {
       "first_seen_kst": "2026-10-02T22:19:09+09:00",
       "lanes": {
@@ -405518,6 +406087,27 @@
       "source_published_kst": "2026-10-06T21:44+09:00",
       "title": "이형일 \"프리랜서 세금 줄이고 직장인에 더 걷는다? 사실 아냐\""
     },
+    "title:f2bdc5d7c55b87babfcba53f": {
+      "first_seen_kst": "2026-10-11T10:42:03+09:00",
+      "lanes": {
+        "live": "2026-10-11T10:42:03+09:00"
+      },
+      "last_seen_kst": "2026-10-11T10:42:03+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01331686645611936",
+      "source": "이데일리",
+      "source_body_digest": "121cad163511e08acf35c2e175932e3f1b544f647ae6995cec10f3bb182786aa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:52aeae13e09122708504b7c36cba2abfa0f189fe119b9f5522805c670a6557e4",
+      "source_fact_keys": [
+        "source_fact:v1:3935c674473027d54e8271c2e74522d963ac04bc56b4a5f924ef03665a4390b1",
+        "source_fact:v1:477be2b29e3da779d897c015603f9b2eda1b9fb610a20356505083fa5a727db2",
+        "source_fact:v1:f19bf7182f1096f3c0c713d941afc9e6df54648c82f1c824c8cf85fe38232e5d"
+      ],
+      "source_published_kst": "2026-10-11T10:30+09:00",
+      "source_title": "반도체 훈풍 비껴간 건설현장…일용직 30만명 일터 잃어",
+      "telegram_core_fact": "반도체 산업이 전례 없는 호황을 누리는 반면, 건설 현장에서는 30만명이 넘는 노동자가 원치 않게 일터를 떠난 것으로 나타났다. 고용계약 종료나 구조조정, 해고 등에 따른 비자발적 이직자가 30만명을 넘어선 것은 2023년 9월(31만 432명) 이후 35개월 만이다.",
+      "title": "반도체 훈풍 비껴간 건설현장…일용직 30만명 일터 잃어"
+    },
     "title:f2e57d0b0d1d3562ed164b98": {
       "first_seen_kst": "2026-10-06T23:46:46+09:00",
       "lanes": {
@@ -408275,5 +408865,5 @@
       "title": "AI 데이터센터가 살린 철강…관세 50%에도 대미 수출 급증"
     }
   },
-  "updated_at_kst": "2026-10-11T10:26:26+09:00"
+  "updated_at_kst": "2026-10-11T10:42:03+09:00"
 }
