@@ -561,6 +561,94 @@ def _optimus_hand_magnet_recovery() -> list[dict]:
         'historical_2025_supply_delay': True,
     }]
 
+
+# Verified Benchmark Q3-2026 LFP 314Ah EXW/CIF price observation; tariff
+# 40.9% is media's hypothetical illustration, not customs clearance proof.
+LFP_NA_CIF_PRICE_RECOVERY = 'DIRECT_BMI_Q3_2026_LFP314_EXW5162_CIF6199'
+LFP_NA_CIF_PRICE_URL = (
+    'https://source.benchmarkminerals.com/article/'
+    'lithium-cost-pass-through-drives-volatile-quarter-for-energy-storage-cells-cell-price-review-q3-2026'
+)
+LFP_NA_CIF_PRIMARY = {'Benchmark Mineral Intelligence','Benchmark Minerals','BMI'}
+LFP_NA_CIF_TRUSTED = LFP_NA_CIF_PRIMARY | {'디일렉','THE ELEC','The Elec'}
+LFP_NA_314 = re.compile(r'314\s*(?:Ah|암페어시)',re.I)
+LFP_NA_LFP = re.compile(r'LFP|리튬인산철|lithium\s*iron\s*phosphate',re.I)
+LFP_NA_LOC = re.compile(r'북미|North\s*America|미국|CIF\s*NA',re.I)
+LFP_NA_EXW = re.compile(r'(?<!\d)51[.]62(?!\d)')
+LFP_NA_PRICE = re.compile(r'(?<!\d)61[.]99(?!\d)')
+BATT_ROADMAP_POLICY = re.compile(
+    r'배터리\s*산업기술\s*로드맵|K[-\s]*배터리.{0,60}(?:초협력|나트륨|전고체)|'
+    r'초협력\s*생태계.{0,40}배터리',re.I
+)
+BATT_POLICY_SIZE = re.compile(
+    r'3[,]?000\s*억|4[,]?000\s*억|3000\s*억|4000\s*억|8\s*조|'
+    r'2027[~～\-]2031|27[~～\-]31',re.I
+)
+EV_ESS_OLD_NEWS = re.compile(
+    r'(?:275\s*GWh|275기가와트시).{0,160}(?:182\s*GWh|182기가와트시)|'
+    r'(?:182\s*GWh|182기가와트시).{0,160}(?:275\s*GWh|275기가와트시)|'
+    r'1[,]?000\s*억\s*달러.{0,100}(?:배터리|ESS)|'
+    r'(?:배터리|ESS).{0,100}1[,]?000\s*억\s*달러',re.I
+)
+
+
+def _is_lfp_na_314_price(text: str) -> bool:
+    return bool(LFP_NA_314.search(text) and LFP_NA_LFP.search(text)
+                and LFP_NA_LOC.search(text) and LFP_NA_EXW.search(text)
+                and LFP_NA_PRICE.search(text))
+
+
+def _is_2026_roadmap_rewrite(text: str) -> bool:
+    return bool(BATT_ROADMAP_POLICY.search(text) and BATT_POLICY_SIZE.search(text))
+
+
+def _is_legacy_ev_ess_pivot(text: str) -> bool:
+    return bool(EV_ESS_OLD_NEWS.search(text) and
+                re.search(r'ESS|에너지저장|BESS',text,re.I) and
+                re.search(r'전기차|EV|배터리|battery',text,re.I))
+
+
+def _lfp_na_price_recovery() -> list[dict]:
+    # Assessment date is 2026-09; primary-source story released 2026-10-09.
+    # Do not invent an exact publication time or store this as a new tax law.
+    if base.NOW.astimezone(base.KST).date() > dt.date(2026,10,18):
+        return []
+    return [{
+        'title': 'Benchmark 9월 314Ah LFP 가격: 중국 51.62·북미 CIF 61.99달러/kWh',
+        'link': LFP_NA_CIF_PRICE_URL,
+        'description': (
+            '2026-10-09 Benchmark Mineral Intelligence 3분기 배터리 셀 가격평가와 '
+            '2026-10-12 디일렉 교차검증. 9월 314Ah LFP 각형셀 중국 출고가격 EXW '
+            '51.62 USD/kWh, 북미 도착가격 CIF 61.99 USD/kWh, 유럽 CIF '
+            '59.18 USD/kWh. 중국 EXW→북미 CIF 차이 10.37달러/kWh '
+            '(20.09%)는 운송·보험·거래조건 차이이고 북미 CIF에는 '
+            '미국 수입관세가 아직 포함되지 않는다. '
+            '디일렉 인용 최대 40.9% 관세를 CIF에 단순 곱하면 '
+            '87.34391 USD/kWh이나 실제 신고세율·과세가격이 확정된 금액이 아닌 '
+            '조건부 시나리오다. 1 USD=1340.88원(2026-10-12 03:20 KST 제공값) '
+            '환산 시 EXW 약 69,216원/kWh, CIF 약 83,121원/kWh, '
+            '관세 조건부 약 117,118원/kWh이다. '
+            '1GWh=1,000,000kWh, CIF 중국산 셀 구매비용 약 831.21억원, '
+            '관세 시나리오 약 1171.18억원, 추가 부담 약 339.97억원. '
+            '중국 EXW→북미 CIF 격차는 GWh당 약 139.05억원, '
+            '중국 EXW→관세 가정 총 격차는 GWh당 약 479.01억원이다. '
+            '관세 품목분류·원산지·유효일·면제·실제 수입신고가격을 '
+            '미국 USITC·CBP 자료로 추가 확인해야 하며 40.9%를 '
+            '모든 수입 셀에 적용되는 법정세율이라고 단정하지 않는다. '
+            '공식 HiTHIUM 314Ah 셀은 표준전압 3.2V·정격에너지 1004.8Wh지만 '
+            '가격조사 대상 모두가 동일 회사·형번이라는 뜻은 아니다. '
+            'LG에너지솔루션 2026년 말 북미 ESS 50GWh 이상 생산능력 목표와 '
+            '삼성SDI 2028년 하반기 50GWh 이상 전망은 서로 다른 일정이다. '
+            '현지 셀 제조원가·고객 수주가격·공급계약·수율·보험은 '
+            'CIF 가격 관측만으로 확정할 수 없다.'
+        ),
+        'source': 'Benchmark Mineral Intelligence',
+        'published': None,
+        'direct_recovery': True,
+        'price_observation': True,
+    }]
+
+
 _orig_query_news = base.query_news
 
 
@@ -577,10 +665,23 @@ def query_news(q: str) -> list[dict]:
         return _humanoid_dram_recovery()
     if q == OPTIMUS_HAND_MAGNET_RECOVERY:
         return _optimus_hand_magnet_recovery()
+    if q == LFP_NA_CIF_PRICE_RECOVERY:
+        return _lfp_na_price_recovery()
     return _orig_query_news(q)
 
 
 base.query_news = query_news
+if LFP_NA_CIF_PRICE_RECOVERY not in base.QUERIES:
+    base.QUERIES.append(LFP_NA_CIF_PRICE_RECOVERY)
+for q in (
+    '(Benchmark OR 벤치마크 OR 디일렉) (314Ah OR 314암페어시) '
+    '(51.62 OR 61.99) (LFP OR 리튬인산철) (CIF OR EXW OR 북미)',
+    '(314Ah OR 314암페어시) (LFP OR 리튬인산철) '
+    '(미국 OR 북미 OR North America) (운송비 OR CIF OR 관세 OR 40.9%)',
+):
+    if q not in base.QUERIES:
+        base.QUERIES.append(q)
+
 if OPTIMUS_HAND_MAGNET_RECOVERY not in base.QUERIES:
     base.QUERIES.append(OPTIMUS_HAND_MAGNET_RECOVERY)
 for q in (
