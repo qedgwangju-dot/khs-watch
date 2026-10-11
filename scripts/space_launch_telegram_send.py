@@ -459,7 +459,11 @@ def inline_messages(original: str):
         for ent in ents:
             span = encoded[ent["offset"] * 2:
                            (ent["offset"] + ent["length"]) * 2].decode("utf-16-le")
-            if not span.startswith("원문"):
+            expected_labels = {
+                inline_source_name(ent["url"], index)
+                for index in range(len(INLINE_LABELS))
+            }
+            if span not in expected_labels:
                 raise AssertionError("Bad Telegram UTF-16 hyperlink position")
         if "아래 링크 버튼" in text:
             raise AssertionError("Legacy button prompt survived")
