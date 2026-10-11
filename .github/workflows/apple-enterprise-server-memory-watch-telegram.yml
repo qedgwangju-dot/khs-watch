@@ -6,6 +6,7 @@ on:
     paths:
       - ".github/workflows/apple-enterprise-server-memory-watch-telegram.yml"
       - "scripts/apple_enterprise_server_memory_watch.py"
+      - "scripts/test_apple_enterprise_server_memory_watch.py"
       - "data/apple_enterprise_server_memory_watch_state.json"
   schedule:
     - cron: "*/15 * * * *"
@@ -16,7 +17,7 @@ permissions:
 
 concurrency:
   group: apple-enterprise-server-memory-watch-telegram
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   monitor:
@@ -35,8 +36,11 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Validate watcher
-        run: python -m py_compile scripts/apple_enterprise_server_memory_watch.py
+      - name: Validate watcher and regression tests
+        run: |
+          python -m py_compile scripts/apple_enterprise_server_memory_watch.py
+          python -m py_compile scripts/test_apple_enterprise_server_memory_watch.py
+          python scripts/test_apple_enterprise_server_memory_watch.py
 
       - name: Validate Telegram route without sending
         env:
@@ -140,25 +144,52 @@ jobs:
         if: success() && hashFiles('out/apple_enterprise_server_memory_watch_telegram.txt') != '' && hashFiles('out/apple_enterprise_server_memory_watch_telegram_confirmed.json') != '' && hashFiles('out/apple_enterprise_server_memory_watch_pending_state.json') != ''
         run: cp out/apple_enterprise_server_memory_watch_pending_state.json data/apple_enterprise_server_memory_watch_state.json
 
-      - name: Commit watcher state
+      - name: Commit watcher state with concurrent-safe merge
         if: success()
         run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/apple_enterprise_server_memory_watch_state.json
-          if git diff --cached --quiet; then
-            echo "Apple enterprise server memory state unchanged"
-          else
-            git commit -m "Update Apple enterprise server memory watch state"
-            for attempt in 1 2 3; do
-              if git pull --rebase origin main && git push; then
-                exit 0
-              fi
-              git rebase --abort 2>/dev/null || true
-              sleep $((attempt * 3))
-            done
-            exit 1
-          fi
+          cp data/apple_enterprise_server_memory_watch_state.json /tmp/apple_server_scan_checkpoint.json
+          for attempt in 1 2 3 4 5; do
+            git fetch --quiet origin main
+            git reset --hard origin/main
+            python - <<'PY'
+          import json
+          from pathlib import Path
+          target=Path("data/apple_enterprise_server_memory_watch_state.json")
+          local=json.loads(Path("/tmp/apple_server_scan_checkpoint.json").read_text(encoding="utf-8"))
+          remote=json.loads(target.read_text(encoding="utf-8")) if target.exists() else {}
+          newer=local if str(local.get("last_scan_kst","")) >= str(remote.get("last_scan_kst","")) else remote
+          merged=dict(remote)
+          merged.update(newer)
+          for field, limit in (("seen",4500),("seen_event_keys",1500)):
+              merged[field]=sorted(set(remote.get(field) or []) | set(local.get(field) or []))[-limit:]
+          observations={}
+          for rec in (remote.get("observations") or [])+(local.get("observations") or []):
+              key=(rec.get("key"),rec.get("origin"),rec.get("published"))
+              observations[key]=rec
+          merged["observations"]=sorted(observations.values(),key=lambda r:r.get("published",""))[-600:]
+          last_alerts=[a for a in (remote.get("last_alert"),local.get("last_alert")) if isinstance(a,dict)]
+          if last_alerts:
+              merged["last_alert"]=max(last_alerts,key=lambda a:a.get("at_kst",""))
+          merged["schema_version"]=max(2,int(remote.get("schema_version",1)),int(local.get("schema_version",1)))
+          target.write_text(json.dumps(merged,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          PY
+            git add data/apple_enterprise_server_memory_watch_state.json
+            if git diff --cached --quiet; then
+              echo "apple_server_state=unchanged_or_already_merged"
+              exit 0
+            fi
+            git commit -m "Update Apple enterprise server memory watch state [skip ci]" >/dev/null
+            if git push origin HEAD:main; then
+              echo "apple_server_state=confirmed"
+              exit 0
+            fi
+            sleep $((attempt * 2))
+          done
+          echo "apple_server_state=push_failed"
+          exit 1
 
       - name: Upload verification artifacts
         if: always()
