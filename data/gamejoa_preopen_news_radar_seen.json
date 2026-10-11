@@ -7842,6 +7842,32 @@
       "telegram_core_fact": "기술 혁신 채권 제품 시스템을 늘리고 고품질 기술 기반 기업의 상장 및 금융 지원을 강화하며 인수합병, 구조조정, 기술 기반 기업에 대한 지분 인센티브 시스템을 최적화하도록 했다.",
       "title": "중국 당정, 신질 생산력 본격 추진…금융·세제 지원 늘린다"
     },
+    "core:4f9edb9d3120183e671cef1c": {
+      "first_seen_kst": "2026-10-12T00:45:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T00:45:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T00:45:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821226",
+      "source": "뉴시스",
+      "source_body_digest": "bfabc63e201553af20ff1a2d1de6cf1e2d646a3513186aac4b745ba1cb26f4ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ce667620af0d6cabfc5d4fbd6e0d20fdfa4b09ac2f778cbfe1e22165899ff11c",
+      "source_fact_keys": [
+        "source_fact:v1:07eb8fa72edf8126cd51609a9d90b3b43a10ba28d6705122cb53d6443f877001",
+        "source_fact:v1:08915e111bebaf0a51ed5bc77691c7024b69e4e32236c6ea822dae92d83f1e11",
+        "source_fact:v1:0e421505fb495ae059bc046ec1dace2f3aa25d8bc6fa6ff2b6afd3b1039d46da",
+        "source_fact:v1:5773bb0a587bade0820f00cc1811b34ad54f1787c7c1eb2053eaca090de97e4b",
+        "source_fact:v1:6c052d2cd39c54e3d3d174cbb0fa50b39d6261196218ef6d9c4a88d1d922c165",
+        "source_fact:v1:71c57007540e0d6c33316e3d913df9e61356f6049ff569d31645c39450dd1e64",
+        "source_fact:v1:93beabf0b11b0ae58104af69dc5fe8a9502718eb2a11cabdd0514f96954d5120",
+        "source_fact:v1:e8999e8fdc7c7f42b0a19ce652f07c54adda9be4c1259bc9284a203dadac4b11"
+      ],
+      "source_published_kst": "2026-10-12T00:36+09:00",
+      "source_title": "젤렌스키 \"러시아, 60일 휴전 동의하면 우크라이나 선거 실시\"",
+      "telegram_core_fact": "미국이 우크라이나 전쟁 자금으로 쓰이는 러시아의 수입을 차단하기 위해 러시아산 연료에 발동한 제재를 일시적으로 완화한지 하루 만에 우크라이나를 비판했다.",
+      "title": "젤렌스키 \"러시아, 60일 휴전 동의하면 우크라이나 선거 실시\""
+    },
     "core:4fb85c647adcb5425d9789cc": {
       "first_seen_kst": "2026-10-10T00:39:56+09:00",
       "lanes": {
@@ -46386,6 +46412,32 @@
       ],
       "source_published_kst": "2026-10-07T12:00+09:00",
       "title": "반도체 호황에 기업 여윳돈 67조…역대 최대"
+    },
+    "fact:48c874ad962363c19ea9a514": {
+      "first_seen_kst": "2026-10-12T00:45:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T00:45:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T00:45:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821226",
+      "source": "뉴시스",
+      "source_body_digest": "bfabc63e201553af20ff1a2d1de6cf1e2d646a3513186aac4b745ba1cb26f4ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ce667620af0d6cabfc5d4fbd6e0d20fdfa4b09ac2f778cbfe1e22165899ff11c",
+      "source_fact_keys": [
+        "source_fact:v1:07eb8fa72edf8126cd51609a9d90b3b43a10ba28d6705122cb53d6443f877001",
+        "source_fact:v1:08915e111bebaf0a51ed5bc77691c7024b69e4e32236c6ea822dae92d83f1e11",
+        "source_fact:v1:0e421505fb495ae059bc046ec1dace2f3aa25d8bc6fa6ff2b6afd3b1039d46da",
+        "source_fact:v1:5773bb0a587bade0820f00cc1811b34ad54f1787c7c1eb2053eaca090de97e4b",
+        "source_fact:v1:6c052d2cd39c54e3d3d174cbb0fa50b39d6261196218ef6d9c4a88d1d922c165",
+        "source_fact:v1:71c57007540e0d6c33316e3d913df9e61356f6049ff569d31645c39450dd1e64",
+        "source_fact:v1:93beabf0b11b0ae58104af69dc5fe8a9502718eb2a11cabdd0514f96954d5120",
+        "source_fact:v1:e8999e8fdc7c7f42b0a19ce652f07c54adda9be4c1259bc9284a203dadac4b11"
+      ],
+      "source_published_kst": "2026-10-12T00:36+09:00",
+      "source_title": "젤렌스키 \"러시아, 60일 휴전 동의하면 우크라이나 선거 실시\"",
+      "telegram_core_fact": "미국이 우크라이나 전쟁 자금으로 쓰이는 러시아의 수입을 차단하기 위해 러시아산 연료에 발동한 제재를 일시적으로 완화한지 하루 만에 우크라이나를 비판했다.",
+      "title": "젤렌스키 \"러시아, 60일 휴전 동의하면 우크라이나 선거 실시\""
     },
     "fact:48f9982fab73395228f04fa8": {
       "first_seen_kst": "2026-10-08T03:51:03+09:00",
@@ -97815,6 +97867,32 @@
       "source_published_kst": "2026-10-06T10:12+09:00",
       "title": "제주항공, 中 노선 증편·운수권 추가 확보…동계 시즌 공급 대폭 확대"
     },
+    "link:61c0e34b85d9464026a4e08a": {
+      "first_seen_kst": "2026-10-12T00:45:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T00:45:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T00:45:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821226",
+      "source": "뉴시스",
+      "source_body_digest": "bfabc63e201553af20ff1a2d1de6cf1e2d646a3513186aac4b745ba1cb26f4ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ce667620af0d6cabfc5d4fbd6e0d20fdfa4b09ac2f778cbfe1e22165899ff11c",
+      "source_fact_keys": [
+        "source_fact:v1:07eb8fa72edf8126cd51609a9d90b3b43a10ba28d6705122cb53d6443f877001",
+        "source_fact:v1:08915e111bebaf0a51ed5bc77691c7024b69e4e32236c6ea822dae92d83f1e11",
+        "source_fact:v1:0e421505fb495ae059bc046ec1dace2f3aa25d8bc6fa6ff2b6afd3b1039d46da",
+        "source_fact:v1:5773bb0a587bade0820f00cc1811b34ad54f1787c7c1eb2053eaca090de97e4b",
+        "source_fact:v1:6c052d2cd39c54e3d3d174cbb0fa50b39d6261196218ef6d9c4a88d1d922c165",
+        "source_fact:v1:71c57007540e0d6c33316e3d913df9e61356f6049ff569d31645c39450dd1e64",
+        "source_fact:v1:93beabf0b11b0ae58104af69dc5fe8a9502718eb2a11cabdd0514f96954d5120",
+        "source_fact:v1:e8999e8fdc7c7f42b0a19ce652f07c54adda9be4c1259bc9284a203dadac4b11"
+      ],
+      "source_published_kst": "2026-10-12T00:36+09:00",
+      "source_title": "젤렌스키 \"러시아, 60일 휴전 동의하면 우크라이나 선거 실시\"",
+      "telegram_core_fact": "미국이 우크라이나 전쟁 자금으로 쓰이는 러시아의 수입을 차단하기 위해 러시아산 연료에 발동한 제재를 일시적으로 완화한지 하루 만에 우크라이나를 비판했다.",
+      "title": "젤렌스키 \"러시아, 60일 휴전 동의하면 우크라이나 선거 실시\""
+    },
     "link:61c2e4591cdb81ae3d15a262": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
       "lanes": {
@@ -137363,6 +137441,32 @@
       "source_title": "금융권 훑고 다닌 'AI 해킹'…\"더 큰 피해 올 수도\"[K금융의 보안 민낯④]",
       "telegram_core_fact": "금융업계와 보안업계에 따르면 최근 신한·KB국민·하나·BNK부산은행 등 주요 은행에서 해킹 공격으로 인한 이용자 정보 유출 피해가 잇따라 확인됐다.",
       "title": "금융권 훑고 다닌 'AI 해킹'…\"더 큰 피해 올 수도\"[K금융의 보안 민낯④]"
+    },
+    "original:0a3de1acf0ec3ea9d1a84a76": {
+      "first_seen_kst": "2026-10-12T00:45:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T00:45:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T00:45:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821226",
+      "source": "뉴시스",
+      "source_body_digest": "bfabc63e201553af20ff1a2d1de6cf1e2d646a3513186aac4b745ba1cb26f4ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ce667620af0d6cabfc5d4fbd6e0d20fdfa4b09ac2f778cbfe1e22165899ff11c",
+      "source_fact_keys": [
+        "source_fact:v1:07eb8fa72edf8126cd51609a9d90b3b43a10ba28d6705122cb53d6443f877001",
+        "source_fact:v1:08915e111bebaf0a51ed5bc77691c7024b69e4e32236c6ea822dae92d83f1e11",
+        "source_fact:v1:0e421505fb495ae059bc046ec1dace2f3aa25d8bc6fa6ff2b6afd3b1039d46da",
+        "source_fact:v1:5773bb0a587bade0820f00cc1811b34ad54f1787c7c1eb2053eaca090de97e4b",
+        "source_fact:v1:6c052d2cd39c54e3d3d174cbb0fa50b39d6261196218ef6d9c4a88d1d922c165",
+        "source_fact:v1:71c57007540e0d6c33316e3d913df9e61356f6049ff569d31645c39450dd1e64",
+        "source_fact:v1:93beabf0b11b0ae58104af69dc5fe8a9502718eb2a11cabdd0514f96954d5120",
+        "source_fact:v1:e8999e8fdc7c7f42b0a19ce652f07c54adda9be4c1259bc9284a203dadac4b11"
+      ],
+      "source_published_kst": "2026-10-12T00:36+09:00",
+      "source_title": "젤렌스키 \"러시아, 60일 휴전 동의하면 우크라이나 선거 실시\"",
+      "telegram_core_fact": "미국이 우크라이나 전쟁 자금으로 쓰이는 러시아의 수입을 차단하기 위해 러시아산 연료에 발동한 제재를 일시적으로 완화한지 하루 만에 우크라이나를 비판했다.",
+      "title": "젤렌스키 \"러시아, 60일 휴전 동의하면 우크라이나 선거 실시\""
     },
     "original:0a541b9a10e32caad7b3bd82": {
       "first_seen_kst": "2026-10-04T00:00:47+09:00",
@@ -210826,6 +210930,32 @@
       "source_published_kst": "2026-10-06T22:35+09:00",
       "title": "김정관 \"알래스카 LNG 투자, 아직 확정 아냐…중동전쟁 후 전략적 가치 생겨\"(종합2보)"
     },
+    "source_fact:1963db71277752bc10d1621e": {
+      "first_seen_kst": "2026-10-12T00:45:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T00:45:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T00:45:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821226",
+      "source": "뉴시스",
+      "source_body_digest": "bfabc63e201553af20ff1a2d1de6cf1e2d646a3513186aac4b745ba1cb26f4ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ce667620af0d6cabfc5d4fbd6e0d20fdfa4b09ac2f778cbfe1e22165899ff11c",
+      "source_fact_keys": [
+        "source_fact:v1:07eb8fa72edf8126cd51609a9d90b3b43a10ba28d6705122cb53d6443f877001",
+        "source_fact:v1:08915e111bebaf0a51ed5bc77691c7024b69e4e32236c6ea822dae92d83f1e11",
+        "source_fact:v1:0e421505fb495ae059bc046ec1dace2f3aa25d8bc6fa6ff2b6afd3b1039d46da",
+        "source_fact:v1:5773bb0a587bade0820f00cc1811b34ad54f1787c7c1eb2053eaca090de97e4b",
+        "source_fact:v1:6c052d2cd39c54e3d3d174cbb0fa50b39d6261196218ef6d9c4a88d1d922c165",
+        "source_fact:v1:71c57007540e0d6c33316e3d913df9e61356f6049ff569d31645c39450dd1e64",
+        "source_fact:v1:93beabf0b11b0ae58104af69dc5fe8a9502718eb2a11cabdd0514f96954d5120",
+        "source_fact:v1:e8999e8fdc7c7f42b0a19ce652f07c54adda9be4c1259bc9284a203dadac4b11"
+      ],
+      "source_published_kst": "2026-10-12T00:36+09:00",
+      "source_title": "젤렌스키 \"러시아, 60일 휴전 동의하면 우크라이나 선거 실시\"",
+      "telegram_core_fact": "미국이 우크라이나 전쟁 자금으로 쓰이는 러시아의 수입을 차단하기 위해 러시아산 연료에 발동한 제재를 일시적으로 완화한지 하루 만에 우크라이나를 비판했다.",
+      "title": "젤렌스키 \"러시아, 60일 휴전 동의하면 우크라이나 선거 실시\""
+    },
     "source_fact:198e8355711977c302972b7f": {
       "first_seen_kst": "2026-10-10T17:23:49+09:00",
       "lanes": {
@@ -229601,6 +229731,32 @@
       "source_title": "드론에 '러시아판 구글' 얀덱스 또 멈췄다…나흘 새 데이터센터 세 번째 피격",
       "telegram_core_fact": "러시아 기술기업 얀덱스의 블라디미르주 데이터센터가 드론 공격을 받은 것으로 전해진 뒤 가동을 전면 중단했다.",
       "title": "드론에 '러시아판 구글' 얀덱스 또 멈췄다…나흘 새 데이터센터 세 번째 피격"
+    },
+    "source_fact:30c6ba442ec2f8d0d5b7628d": {
+      "first_seen_kst": "2026-10-12T00:45:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T00:45:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T00:45:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821226",
+      "source": "뉴시스",
+      "source_body_digest": "bfabc63e201553af20ff1a2d1de6cf1e2d646a3513186aac4b745ba1cb26f4ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ce667620af0d6cabfc5d4fbd6e0d20fdfa4b09ac2f778cbfe1e22165899ff11c",
+      "source_fact_keys": [
+        "source_fact:v1:07eb8fa72edf8126cd51609a9d90b3b43a10ba28d6705122cb53d6443f877001",
+        "source_fact:v1:08915e111bebaf0a51ed5bc77691c7024b69e4e32236c6ea822dae92d83f1e11",
+        "source_fact:v1:0e421505fb495ae059bc046ec1dace2f3aa25d8bc6fa6ff2b6afd3b1039d46da",
+        "source_fact:v1:5773bb0a587bade0820f00cc1811b34ad54f1787c7c1eb2053eaca090de97e4b",
+        "source_fact:v1:6c052d2cd39c54e3d3d174cbb0fa50b39d6261196218ef6d9c4a88d1d922c165",
+        "source_fact:v1:71c57007540e0d6c33316e3d913df9e61356f6049ff569d31645c39450dd1e64",
+        "source_fact:v1:93beabf0b11b0ae58104af69dc5fe8a9502718eb2a11cabdd0514f96954d5120",
+        "source_fact:v1:e8999e8fdc7c7f42b0a19ce652f07c54adda9be4c1259bc9284a203dadac4b11"
+      ],
+      "source_published_kst": "2026-10-12T00:36+09:00",
+      "source_title": "젤렌스키 \"러시아, 60일 휴전 동의하면 우크라이나 선거 실시\"",
+      "telegram_core_fact": "미국이 우크라이나 전쟁 자금으로 쓰이는 러시아의 수입을 차단하기 위해 러시아산 연료에 발동한 제재를 일시적으로 완화한지 하루 만에 우크라이나를 비판했다.",
+      "title": "젤렌스키 \"러시아, 60일 휴전 동의하면 우크라이나 선거 실시\""
     },
     "source_fact:30c9ea9b34b25a3c4671d6f8": {
       "first_seen_kst": "2026-10-08T07:12:10+09:00",
@@ -280786,6 +280942,32 @@
       "telegram_core_fact": "연준이 7일(현지시간) 공개한 9월 15~16일 연방공개시장위원회(FOMC) 의사록에 따르면 참석자 대부분은 향후 통화정책과 관련해 “연말까지 기준금리 목표범위를 한 차례 더 인상하는 것이 적절할 가능성이 높다”고 평가했다.",
       "title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\""
     },
+    "source_fact:74d6af181502a5e54e82d4fa": {
+      "first_seen_kst": "2026-10-12T00:45:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T00:45:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T00:45:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821226",
+      "source": "뉴시스",
+      "source_body_digest": "bfabc63e201553af20ff1a2d1de6cf1e2d646a3513186aac4b745ba1cb26f4ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ce667620af0d6cabfc5d4fbd6e0d20fdfa4b09ac2f778cbfe1e22165899ff11c",
+      "source_fact_keys": [
+        "source_fact:v1:07eb8fa72edf8126cd51609a9d90b3b43a10ba28d6705122cb53d6443f877001",
+        "source_fact:v1:08915e111bebaf0a51ed5bc77691c7024b69e4e32236c6ea822dae92d83f1e11",
+        "source_fact:v1:0e421505fb495ae059bc046ec1dace2f3aa25d8bc6fa6ff2b6afd3b1039d46da",
+        "source_fact:v1:5773bb0a587bade0820f00cc1811b34ad54f1787c7c1eb2053eaca090de97e4b",
+        "source_fact:v1:6c052d2cd39c54e3d3d174cbb0fa50b39d6261196218ef6d9c4a88d1d922c165",
+        "source_fact:v1:71c57007540e0d6c33316e3d913df9e61356f6049ff569d31645c39450dd1e64",
+        "source_fact:v1:93beabf0b11b0ae58104af69dc5fe8a9502718eb2a11cabdd0514f96954d5120",
+        "source_fact:v1:e8999e8fdc7c7f42b0a19ce652f07c54adda9be4c1259bc9284a203dadac4b11"
+      ],
+      "source_published_kst": "2026-10-12T00:36+09:00",
+      "source_title": "젤렌스키 \"러시아, 60일 휴전 동의하면 우크라이나 선거 실시\"",
+      "telegram_core_fact": "미국이 우크라이나 전쟁 자금으로 쓰이는 러시아의 수입을 차단하기 위해 러시아산 연료에 발동한 제재를 일시적으로 완화한지 하루 만에 우크라이나를 비판했다.",
+      "title": "젤렌스키 \"러시아, 60일 휴전 동의하면 우크라이나 선거 실시\""
+    },
     "source_fact:74da18d44acc92410523c17f": {
       "first_seen_kst": "2026-10-09T16:07:27+09:00",
       "lanes": {
@@ -283422,6 +283604,32 @@
       ],
       "source_published_kst": "2026-10-07T08:00+09:00",
       "title": "롯데하이마트, 산업 특화 '휴머노이드 로봇' 실증 추진…국책 과제 선정"
+    },
+    "source_fact:7869c3758dab35aa3ea74890": {
+      "first_seen_kst": "2026-10-12T00:45:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T00:45:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T00:45:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821226",
+      "source": "뉴시스",
+      "source_body_digest": "bfabc63e201553af20ff1a2d1de6cf1e2d646a3513186aac4b745ba1cb26f4ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ce667620af0d6cabfc5d4fbd6e0d20fdfa4b09ac2f778cbfe1e22165899ff11c",
+      "source_fact_keys": [
+        "source_fact:v1:07eb8fa72edf8126cd51609a9d90b3b43a10ba28d6705122cb53d6443f877001",
+        "source_fact:v1:08915e111bebaf0a51ed5bc77691c7024b69e4e32236c6ea822dae92d83f1e11",
+        "source_fact:v1:0e421505fb495ae059bc046ec1dace2f3aa25d8bc6fa6ff2b6afd3b1039d46da",
+        "source_fact:v1:5773bb0a587bade0820f00cc1811b34ad54f1787c7c1eb2053eaca090de97e4b",
+        "source_fact:v1:6c052d2cd39c54e3d3d174cbb0fa50b39d6261196218ef6d9c4a88d1d922c165",
+        "source_fact:v1:71c57007540e0d6c33316e3d913df9e61356f6049ff569d31645c39450dd1e64",
+        "source_fact:v1:93beabf0b11b0ae58104af69dc5fe8a9502718eb2a11cabdd0514f96954d5120",
+        "source_fact:v1:e8999e8fdc7c7f42b0a19ce652f07c54adda9be4c1259bc9284a203dadac4b11"
+      ],
+      "source_published_kst": "2026-10-12T00:36+09:00",
+      "source_title": "젤렌스키 \"러시아, 60일 휴전 동의하면 우크라이나 선거 실시\"",
+      "telegram_core_fact": "미국이 우크라이나 전쟁 자금으로 쓰이는 러시아의 수입을 차단하기 위해 러시아산 연료에 발동한 제재를 일시적으로 완화한지 하루 만에 우크라이나를 비판했다.",
+      "title": "젤렌스키 \"러시아, 60일 휴전 동의하면 우크라이나 선거 실시\""
     },
     "source_fact:786a9ccbb2189985626cd271": {
       "first_seen_kst": "2026-10-07T21:31:57+09:00",
@@ -338315,6 +338523,32 @@
       "telegram_core_fact": "롯데백화점이 미국 로스앤젤레스(LA)에서 K뷰티 브랜드를 알리고 국내 신진 브랜드의 해외 진출을 지원한다. 최근 롯데백화점에서 북미 고객의 K뷰티 매출이 120% 증가하는 등 높아진 관심을 바탕으로 현지에서 스킨케어와 프래그런스 브랜드를 직접 경험할 수 있는 팝업을 연다.",
       "title": "롯데百, LA서 K뷰티 알린다…국내 브랜드 7곳 해외 진출 지원"
     },
+    "source_fact:c35cec53dc6b3f577056d965": {
+      "first_seen_kst": "2026-10-12T00:45:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T00:45:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T00:45:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821226",
+      "source": "뉴시스",
+      "source_body_digest": "bfabc63e201553af20ff1a2d1de6cf1e2d646a3513186aac4b745ba1cb26f4ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ce667620af0d6cabfc5d4fbd6e0d20fdfa4b09ac2f778cbfe1e22165899ff11c",
+      "source_fact_keys": [
+        "source_fact:v1:07eb8fa72edf8126cd51609a9d90b3b43a10ba28d6705122cb53d6443f877001",
+        "source_fact:v1:08915e111bebaf0a51ed5bc77691c7024b69e4e32236c6ea822dae92d83f1e11",
+        "source_fact:v1:0e421505fb495ae059bc046ec1dace2f3aa25d8bc6fa6ff2b6afd3b1039d46da",
+        "source_fact:v1:5773bb0a587bade0820f00cc1811b34ad54f1787c7c1eb2053eaca090de97e4b",
+        "source_fact:v1:6c052d2cd39c54e3d3d174cbb0fa50b39d6261196218ef6d9c4a88d1d922c165",
+        "source_fact:v1:71c57007540e0d6c33316e3d913df9e61356f6049ff569d31645c39450dd1e64",
+        "source_fact:v1:93beabf0b11b0ae58104af69dc5fe8a9502718eb2a11cabdd0514f96954d5120",
+        "source_fact:v1:e8999e8fdc7c7f42b0a19ce652f07c54adda9be4c1259bc9284a203dadac4b11"
+      ],
+      "source_published_kst": "2026-10-12T00:36+09:00",
+      "source_title": "젤렌스키 \"러시아, 60일 휴전 동의하면 우크라이나 선거 실시\"",
+      "telegram_core_fact": "미국이 우크라이나 전쟁 자금으로 쓰이는 러시아의 수입을 차단하기 위해 러시아산 연료에 발동한 제재를 일시적으로 완화한지 하루 만에 우크라이나를 비판했다.",
+      "title": "젤렌스키 \"러시아, 60일 휴전 동의하면 우크라이나 선거 실시\""
+    },
     "source_fact:c36208fe02d1dd397044c389": {
       "first_seen_kst": "2026-10-10T06:02:39+09:00",
       "lanes": {
@@ -338513,6 +338747,32 @@
       "source_title": "[단독] “사망사고 나자 민간에 떠넘기나”…한전, 정전복구 외주화 추진",
       "telegram_core_fact": "11일 국회 기후에너지환경노동위원회 소속 어기구 더불어민주당 의원(충남 당진시)이 한국전력공사로부터 제출받은 자료에 따르면, 2017년부터 2026년 8월까지 정전복구 작업 중 산업재해를 입은 한전 직원은 21명으로, 이 가운데 1명이 사망했다.",
       "title": "[단독] “사망사고 나자 민간에 떠넘기나”…한전, 정전복구 외주화 추진"
+    },
+    "source_fact:c3a52e0f8c7ca464489f7d1e": {
+      "first_seen_kst": "2026-10-12T00:45:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T00:45:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T00:45:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821226",
+      "source": "뉴시스",
+      "source_body_digest": "bfabc63e201553af20ff1a2d1de6cf1e2d646a3513186aac4b745ba1cb26f4ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ce667620af0d6cabfc5d4fbd6e0d20fdfa4b09ac2f778cbfe1e22165899ff11c",
+      "source_fact_keys": [
+        "source_fact:v1:07eb8fa72edf8126cd51609a9d90b3b43a10ba28d6705122cb53d6443f877001",
+        "source_fact:v1:08915e111bebaf0a51ed5bc77691c7024b69e4e32236c6ea822dae92d83f1e11",
+        "source_fact:v1:0e421505fb495ae059bc046ec1dace2f3aa25d8bc6fa6ff2b6afd3b1039d46da",
+        "source_fact:v1:5773bb0a587bade0820f00cc1811b34ad54f1787c7c1eb2053eaca090de97e4b",
+        "source_fact:v1:6c052d2cd39c54e3d3d174cbb0fa50b39d6261196218ef6d9c4a88d1d922c165",
+        "source_fact:v1:71c57007540e0d6c33316e3d913df9e61356f6049ff569d31645c39450dd1e64",
+        "source_fact:v1:93beabf0b11b0ae58104af69dc5fe8a9502718eb2a11cabdd0514f96954d5120",
+        "source_fact:v1:e8999e8fdc7c7f42b0a19ce652f07c54adda9be4c1259bc9284a203dadac4b11"
+      ],
+      "source_published_kst": "2026-10-12T00:36+09:00",
+      "source_title": "젤렌스키 \"러시아, 60일 휴전 동의하면 우크라이나 선거 실시\"",
+      "telegram_core_fact": "미국이 우크라이나 전쟁 자금으로 쓰이는 러시아의 수입을 차단하기 위해 러시아산 연료에 발동한 제재를 일시적으로 완화한지 하루 만에 우크라이나를 비판했다.",
+      "title": "젤렌스키 \"러시아, 60일 휴전 동의하면 우크라이나 선거 실시\""
     },
     "source_fact:c3a77a4a6e3afb03f34ef3be": {
       "first_seen_kst": "2026-10-08T06:57:59+09:00",
@@ -348852,6 +349112,32 @@
       ],
       "source_published_kst": "2026-10-06T08:03+09:00",
       "title": "일진전기, 중전기 수주 북미 비중 80% 육박"
+    },
+    "source_fact:d1e8bebfba1bca8101818e06": {
+      "first_seen_kst": "2026-10-12T00:45:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T00:45:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T00:45:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821226",
+      "source": "뉴시스",
+      "source_body_digest": "bfabc63e201553af20ff1a2d1de6cf1e2d646a3513186aac4b745ba1cb26f4ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ce667620af0d6cabfc5d4fbd6e0d20fdfa4b09ac2f778cbfe1e22165899ff11c",
+      "source_fact_keys": [
+        "source_fact:v1:07eb8fa72edf8126cd51609a9d90b3b43a10ba28d6705122cb53d6443f877001",
+        "source_fact:v1:08915e111bebaf0a51ed5bc77691c7024b69e4e32236c6ea822dae92d83f1e11",
+        "source_fact:v1:0e421505fb495ae059bc046ec1dace2f3aa25d8bc6fa6ff2b6afd3b1039d46da",
+        "source_fact:v1:5773bb0a587bade0820f00cc1811b34ad54f1787c7c1eb2053eaca090de97e4b",
+        "source_fact:v1:6c052d2cd39c54e3d3d174cbb0fa50b39d6261196218ef6d9c4a88d1d922c165",
+        "source_fact:v1:71c57007540e0d6c33316e3d913df9e61356f6049ff569d31645c39450dd1e64",
+        "source_fact:v1:93beabf0b11b0ae58104af69dc5fe8a9502718eb2a11cabdd0514f96954d5120",
+        "source_fact:v1:e8999e8fdc7c7f42b0a19ce652f07c54adda9be4c1259bc9284a203dadac4b11"
+      ],
+      "source_published_kst": "2026-10-12T00:36+09:00",
+      "source_title": "젤렌스키 \"러시아, 60일 휴전 동의하면 우크라이나 선거 실시\"",
+      "telegram_core_fact": "미국이 우크라이나 전쟁 자금으로 쓰이는 러시아의 수입을 차단하기 위해 러시아산 연료에 발동한 제재를 일시적으로 완화한지 하루 만에 우크라이나를 비판했다.",
+      "title": "젤렌스키 \"러시아, 60일 휴전 동의하면 우크라이나 선거 실시\""
     },
     "source_fact:d1e9b216e27f4c4106c172e8": {
       "first_seen_kst": "2026-10-09T17:32:22+09:00",
@@ -379256,6 +379542,32 @@
       "telegram_core_fact": "특히 경기 남부지역에서 상대적으로 자금 부담이 적은 소형·중저가 주택 중심으로 거래가 이뤄진 데다, 7월부터 자금조달계획서 제출 대상도 기존 6억원 이상 주택에서 전체 주택으로 확대된 영향도 반영된 것으로 보인다.",
       "title": "동탄 갭투자 막히자…사내대출·사채 자금 3배로 늘어"
     },
+    "source_fact:fb7a33e52500714158ae1a4d": {
+      "first_seen_kst": "2026-10-12T00:45:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T00:45:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T00:45:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821226",
+      "source": "뉴시스",
+      "source_body_digest": "bfabc63e201553af20ff1a2d1de6cf1e2d646a3513186aac4b745ba1cb26f4ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ce667620af0d6cabfc5d4fbd6e0d20fdfa4b09ac2f778cbfe1e22165899ff11c",
+      "source_fact_keys": [
+        "source_fact:v1:07eb8fa72edf8126cd51609a9d90b3b43a10ba28d6705122cb53d6443f877001",
+        "source_fact:v1:08915e111bebaf0a51ed5bc77691c7024b69e4e32236c6ea822dae92d83f1e11",
+        "source_fact:v1:0e421505fb495ae059bc046ec1dace2f3aa25d8bc6fa6ff2b6afd3b1039d46da",
+        "source_fact:v1:5773bb0a587bade0820f00cc1811b34ad54f1787c7c1eb2053eaca090de97e4b",
+        "source_fact:v1:6c052d2cd39c54e3d3d174cbb0fa50b39d6261196218ef6d9c4a88d1d922c165",
+        "source_fact:v1:71c57007540e0d6c33316e3d913df9e61356f6049ff569d31645c39450dd1e64",
+        "source_fact:v1:93beabf0b11b0ae58104af69dc5fe8a9502718eb2a11cabdd0514f96954d5120",
+        "source_fact:v1:e8999e8fdc7c7f42b0a19ce652f07c54adda9be4c1259bc9284a203dadac4b11"
+      ],
+      "source_published_kst": "2026-10-12T00:36+09:00",
+      "source_title": "젤렌스키 \"러시아, 60일 휴전 동의하면 우크라이나 선거 실시\"",
+      "telegram_core_fact": "미국이 우크라이나 전쟁 자금으로 쓰이는 러시아의 수입을 차단하기 위해 러시아산 연료에 발동한 제재를 일시적으로 완화한지 하루 만에 우크라이나를 비판했다.",
+      "title": "젤렌스키 \"러시아, 60일 휴전 동의하면 우크라이나 선거 실시\""
+    },
     "source_fact:fb8011f1bb65bfae903a147d": {
       "first_seen_kst": "2026-10-07T07:54:25+09:00",
       "lanes": {
@@ -385206,6 +385518,32 @@
       ],
       "source_published_kst": "2026-10-06T17:00+09:00",
       "title": "금감원, '2.5만명 정보유출' 신한은행 현장검사 전환…점검 착수 엿새 만(종합)"
+    },
+    "title:0a3de1acf0ec3ea9d1a84a76": {
+      "first_seen_kst": "2026-10-12T00:45:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T00:45:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T00:45:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821226",
+      "source": "뉴시스",
+      "source_body_digest": "bfabc63e201553af20ff1a2d1de6cf1e2d646a3513186aac4b745ba1cb26f4ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ce667620af0d6cabfc5d4fbd6e0d20fdfa4b09ac2f778cbfe1e22165899ff11c",
+      "source_fact_keys": [
+        "source_fact:v1:07eb8fa72edf8126cd51609a9d90b3b43a10ba28d6705122cb53d6443f877001",
+        "source_fact:v1:08915e111bebaf0a51ed5bc77691c7024b69e4e32236c6ea822dae92d83f1e11",
+        "source_fact:v1:0e421505fb495ae059bc046ec1dace2f3aa25d8bc6fa6ff2b6afd3b1039d46da",
+        "source_fact:v1:5773bb0a587bade0820f00cc1811b34ad54f1787c7c1eb2053eaca090de97e4b",
+        "source_fact:v1:6c052d2cd39c54e3d3d174cbb0fa50b39d6261196218ef6d9c4a88d1d922c165",
+        "source_fact:v1:71c57007540e0d6c33316e3d913df9e61356f6049ff569d31645c39450dd1e64",
+        "source_fact:v1:93beabf0b11b0ae58104af69dc5fe8a9502718eb2a11cabdd0514f96954d5120",
+        "source_fact:v1:e8999e8fdc7c7f42b0a19ce652f07c54adda9be4c1259bc9284a203dadac4b11"
+      ],
+      "source_published_kst": "2026-10-12T00:36+09:00",
+      "source_title": "젤렌스키 \"러시아, 60일 휴전 동의하면 우크라이나 선거 실시\"",
+      "telegram_core_fact": "미국이 우크라이나 전쟁 자금으로 쓰이는 러시아의 수입을 차단하기 위해 러시아산 연료에 발동한 제재를 일시적으로 완화한지 하루 만에 우크라이나를 비판했다.",
+      "title": "젤렌스키 \"러시아, 60일 휴전 동의하면 우크라이나 선거 실시\""
     },
     "title:0a541b9a10e32caad7b3bd82": {
       "first_seen_kst": "2026-10-04T00:00:47+09:00",
@@ -442023,5 +442361,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-12T00:21:39+09:00"
+  "updated_at_kst": "2026-10-12T00:45:57+09:00"
 }
