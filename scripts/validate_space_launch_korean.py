@@ -7,7 +7,7 @@ import sys
 from urllib.parse import urlsplit
 
 SOURCE_PREFIX = "• 원문: "
-TAG_RE = re.compile(r"^\[(신규병목|계약|개발|증권사|발사슬롯)\]")
+TAG_RE = re.compile(r"^\[(신규병목|계약|개발|증권사|발사슬롯|발사체 전환)\]")
 ASCII_WORD_RE = re.compile(r"\b[A-Za-z][A-Za-z'-]*\b")
 HANGUL_RE = re.compile(r"[가-힣]")
 SOURCE_TOKEN_RE = re.compile(r"__SOURCE_URL_\d{4}__")
