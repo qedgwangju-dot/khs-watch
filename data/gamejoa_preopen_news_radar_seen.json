@@ -7948,6 +7948,27 @@
       "telegram_core_fact": "컨센서스 기준 매출액은 2026년 15억5233만 달러로 전년 대비 67.34% 증가하고, 2027년 19억6567만 달러(+26.63%), 2028년 21억6900만 달러(+10.34%)로 늘 전망이다.",
       "title": "아리스 마이닝, 3분기 금 매출 2억8700만 달러·누적생산 16%↑"
     },
+    "core:4b4d3aaa421ea829db38e3b0": {
+      "first_seen_kst": "2026-10-12T07:43:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:43:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:43:12+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012008300009",
+      "source": "연합뉴스",
+      "source_body_digest": "a007476224ce89cc4a0a5af8213a0fe9152d9a38382cd95d61b03ee7910ce154",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c3a8c29e7421588c086c888f78c4aa15f618f9eb1723554d4709796975571a6b",
+      "source_fact_keys": [
+        "source_fact:v1:455b1e3d35f1dbdde34876b9ef74ee47b1c0a94119062f8d9e7b974d2ed7e141",
+        "source_fact:v1:a7b28c06ddb3fb136f725f4d66ca94effcc111520801461f7619ffd9c698dbec",
+        "source_fact:v1:fdd74ce0022b1926e7b76a25b151cd082f4d976e2eb5c1e2d1247fc1f5d51c7c"
+      ],
+      "source_published_kst": "2026-10-12T07:30+09:00",
+      "source_title": "\"앤트로픽, 아이렌과 클라우드 계약\"…데이터센터 확보 속도전 | 연합뉴스",
+      "telegram_core_fact": "앤트로픽은 아이렌 외에도 아마존웹서비스(AWS)와 구글 등 10곳이 넘는 클라우드와 15기가와트(GW), 5천300억달러(약 720조원) 데이터센터 임차 계약을 맺고 협력사들에 가동을 서두르라고 요구하고 있다.",
+      "title": "\"앤트로픽, 아이렌과 클라우드 계약\"…데이터센터 확보 속도전 | 연합뉴스"
+    },
     "core:4b8f18a6854339a3833871ea": {
       "first_seen_kst": "2026-10-09T19:43:36+09:00",
       "lanes": {
@@ -12077,6 +12098,25 @@
       "telegram_core_fact": "일본 시장조사 업계는 지금까지 글로벌 의류업계 2위였던 H&M의 2025년 11월기(2024년 12월∼2025년 11월) 결산 매출액이 3조6천억엔(약 30조5천600억원)을 기록한 이후 매출 감소세가 나타났다며 패스트리테일링이 매출 규모를 앞질렀을 가능성이 있다고 분석했다.",
       "title": "유니클로 운영사 매출액 17% 증가…\"H&M 잡고 세계 2위 전망\" | 연합뉴스"
     },
+    "core:7a2a653e05845471e6172d10": {
+      "first_seen_kst": "2026-10-12T07:43:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:43:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:43:12+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634383",
+      "source": "이투데이",
+      "source_body_digest": "d6dcd63f15dc3ab7872e35487bf2a42f608479ae1762953cfa6d4779ccd7e0e5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:18f7225fcc9bb6a2d6720985cca40d1a7e0d6f15655453d7f80d5cf7e49bc4e6",
+      "source_fact_keys": [
+        "source_fact:v1:7508c818600dac2d8b502662730c6e594ace3f0d9d2d8418d45f939eb83d28de"
+      ],
+      "source_published_kst": "2026-10-12T07:40+09:00",
+      "source_title": "“아마존, 데카트 70억 달러에 인수 협상 중”",
+      "telegram_core_fact": "아마존이 AI 스타트업 데카트를 약 70억 달러(약 9조4080억 원)에 인수하는 방안을 협상 중이라고 월스트리트저널(WSJ)이 소식통을 인용해 11일(현지시간) 보도했다.",
+      "title": "“아마존, 데카트 70억 달러에 인수 협상 중”"
+    },
     "core:7a66e7954738307870e054ab": {
       "first_seen_kst": "2026-10-07T15:44:50+09:00",
       "lanes": {
@@ -15963,6 +16003,27 @@
       "source_title": "전고체 배터리 경쟁 본격화…LG엔솔·삼성SDI 전략 차이는?",
       "telegram_core_fact": "삼성SDI가 내년 양산을 목표로 소재 공급망 구축까지 속도를 내는 반면 LG에너지솔루션(LG엔솔)은 상용화 시점보다는 기술 차별화와 원가 경쟁력 확보에 무게를 두고 있다. 이와 비교해 삼성SDI는 이보다 빠른 내년께 황화물계 전고체 배터리 상용화를 목표로 공급망 구축에 나서고 있다.",
       "title": "전고체 배터리 경쟁 본격화…LG엔솔·삼성SDI 전략 차이는?"
+    },
+    "core:a0929e00f57b5e47bc90551a": {
+      "first_seen_kst": "2026-10-12T07:43:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:43:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:43:12+09:00",
+      "link": "https://www.fnnews.com/news/202610120601336274",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "5b3578d1745cef7da42e410597b73c367b4708be1f06ede747175627b7b295f9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0eb9dbab07b355c9c32375c3ba17a3e41d41a8caf069df119d686e5b6e33d4d9",
+      "source_fact_keys": [
+        "source_fact:v1:c3eb03e749efd6e721b9e38d97e15eec1dc61c15d519fc489ab4da491e1c451a",
+        "source_fact:v1:caeedc35adcf1ebfc254b01b5720342cd304ef6783eb12df7ec6f3580ab599c9",
+        "source_fact:v1:d40e634182262227b966f0448e9306bf29fffe22f0e2479bafebfd5a9152afe9"
+      ],
+      "source_published_kst": "2026-10-12T06:01+09:00",
+      "source_title": "삼성전자, '쌓는 D램' 성능↑ 기술 축적…전류 흐름 2.6배 향상",
+      "telegram_core_fact": "비트라인과 전류가 흐르는 통로인 채널 사이의 저항을 낮춰 메모리 셀의 동작 성능을 높이는 방식이다.",
+      "title": "삼성전자, '쌓는 D램' 성능↑ 기술 축적…전류 흐름 2.6배 향상"
     },
     "core:a0a5f6faabddf5b3fd17039f": {
       "first_seen_kst": "2026-10-08T18:24:19+09:00",
@@ -23199,6 +23260,26 @@
       "source_published_kst": "2026-10-07T15:04+09:00",
       "title": "HD건설기계, 미 발전 인프라 솔루션 업체로부터 가스 발전용 엔진 롱블록 수주 | 연합뉴스"
     },
+    "core:e55c350c5adb600653c8f973": {
+      "first_seen_kst": "2026-10-12T07:43:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:43:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:43:12+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821275",
+      "source": "뉴시스",
+      "source_body_digest": "2313d57dfa952646425a69f987f27959af0ea7eac10d3ec36e21ad41e07e367f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dd0fc1d37f518ae145052a60542860df5b605316360358206a233cbe9c816492",
+      "source_fact_keys": [
+        "source_fact:v1:52a38cc52af8f1a1e8c85dd16b625cad491d58958d00bcc1fdb1097a7afb62e5",
+        "source_fact:v1:a570a81ab6e0fac0232d3082b3246fe2559dd6c669d6fd7b9699ecaa1e89075d"
+      ],
+      "source_published_kst": "2026-10-12T07:44+09:00",
+      "source_title": "이란군\" 호르무즈 불법통과 유조선 11일 기뢰에 또 폭발..벌써 3척 \"",
+      "telegram_core_fact": "이란 혁명수비대(IRGC)해군은 11일(현지시간) 성명을 발표, 이 날 앞서 호르무즈해협 남단의 봉쇄선을 \"위반\"해서 불법 통과하던 대형 유조선 한 척이 또 해군의 기뢰에 걸려 폭발했다고 밝혔다.",
+      "title": "이란군\" 호르무즈 불법통과 유조선 11일 기뢰에 또 폭발..벌써 3척 \""
+    },
     "core:e59dac5e1397a9de65d0de95": {
       "first_seen_kst": "2026-10-10T01:47:39+09:00",
       "lanes": {
@@ -27591,35 +27672,22 @@
     "event:242c04e115c71f36e3e5a541": {
       "first_seen_kst": "2026-10-12T01:34:33+09:00",
       "lanes": {
-        "live": "2026-10-12T07:02:25+09:00"
+        "live": "2026-10-12T07:43:12+09:00"
       },
-      "last_seen_kst": "2026-10-12T07:02:25+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=01744966645612264",
-      "source": "이데일리",
-      "source_body_digest": "0b1fa0d02485a2ca1c7973f03bb1128ca005ede1842f3a6027199eae0c619790",
+      "last_seen_kst": "2026-10-12T07:43:12+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821275",
+      "source": "뉴시스",
+      "source_body_digest": "2313d57dfa952646425a69f987f27959af0ea7eac10d3ec36e21ad41e07e367f",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:4a71649f9da30d30686ad42df6a9add1c9f966e438701fd8857bd270b33c37d4",
+      "source_fact_identity": "source_facts:v1:dd0fc1d37f518ae145052a60542860df5b605316360358206a233cbe9c816492",
       "source_fact_keys": [
-        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
-        "source_fact:v1:208ae731bf9eccfb74906f39b8b01120db59fc7b1aef53775c37ca23f304b28c",
-        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
-        "source_fact:v1:4757fe180e75d831794352adb85a46459e3c5e5c4e432e8766df60925d58820d",
-        "source_fact:v1:532b7ab57a4039f344215c99c0d4e1b8e91a4dbfc1f2dce214b239617b46908d",
-        "source_fact:v1:59d6334f99b973eb66e595d3c4714c04849114dd18562be04fedeccb58bd4b39",
-        "source_fact:v1:6584fc2cff852908a1f1e1276de1b78c97b5aa6fa6dae833d81c24c899e8d2d2",
-        "source_fact:v1:81448971df5accd91451f983737ddcc3c32245a7a3dcb9fea30ee1fe7da4df2c",
-        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
-        "source_fact:v1:9842afb810b158de357c1a0bf470bd4692b72b46f81aaf2851429dd36f93c367",
-        "source_fact:v1:99f38eca29eab1fb6a0b1939b9e4eddb6587edf5056d0eba67a609d8931caf88",
-        "source_fact:v1:9ca5b3fbafa3973e85860919911f6c6bd3d9b0812f69cc1ad820bc66662d81ac",
-        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
-        "source_fact:v1:e9836bff65de24b57ea6658f3f4e08379c7b530d06ad8dc15cca5143172b5e03",
-        "source_fact:v1:fa91f30ca98feddea318dd200e7dde298440a1617bb4c42c08c0e7208854f790"
+        "source_fact:v1:52a38cc52af8f1a1e8c85dd16b625cad491d58958d00bcc1fdb1097a7afb62e5",
+        "source_fact:v1:a570a81ab6e0fac0232d3082b3246fe2559dd6c669d6fd7b9699ecaa1e89075d"
       ],
-      "source_published_kst": "2026-10-12T06:29+09:00",
-      "source_title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다",
-      "telegram_core_fact": "젤렌스키 대통령은 전날 트럼프 대통령이 러시아와 경유 공급 계약을 체결했다고 발표한 데 대해서도 강하게 반발했다.",
-      "title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다"
+      "source_published_kst": "2026-10-12T07:44+09:00",
+      "source_title": "이란군\" 호르무즈 불법통과 유조선 11일 기뢰에 또 폭발..벌써 3척 \"",
+      "telegram_core_fact": "이란 혁명수비대(IRGC)해군은 11일(현지시간) 성명을 발표, 이 날 앞서 호르무즈해협 남단의 봉쇄선을 \"위반\"해서 불법 통과하던 대형 유조선 한 척이 또 해군의 기뢰에 걸려 폭발했다고 밝혔다.",
+      "title": "이란군\" 호르무즈 불법통과 유조선 11일 기뢰에 또 폭발..벌써 3척 \""
     },
     "event:243b9268c0c661c2e567eb0a": {
       "first_seen_kst": "2026-09-30T11:15:27+09:00",
@@ -30598,6 +30666,27 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T10:42+09:00",
       "title": "격전지 간 트럼프"
+    },
+    "event:6ff0a8713180ba1ab0e9bf44": {
+      "first_seen_kst": "2026-10-12T07:43:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:43:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:43:12+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012008300009",
+      "source": "연합뉴스",
+      "source_body_digest": "a007476224ce89cc4a0a5af8213a0fe9152d9a38382cd95d61b03ee7910ce154",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c3a8c29e7421588c086c888f78c4aa15f618f9eb1723554d4709796975571a6b",
+      "source_fact_keys": [
+        "source_fact:v1:455b1e3d35f1dbdde34876b9ef74ee47b1c0a94119062f8d9e7b974d2ed7e141",
+        "source_fact:v1:a7b28c06ddb3fb136f725f4d66ca94effcc111520801461f7619ffd9c698dbec",
+        "source_fact:v1:fdd74ce0022b1926e7b76a25b151cd082f4d976e2eb5c1e2d1247fc1f5d51c7c"
+      ],
+      "source_published_kst": "2026-10-12T07:30+09:00",
+      "source_title": "\"앤트로픽, 아이렌과 클라우드 계약\"…데이터센터 확보 속도전 | 연합뉴스",
+      "telegram_core_fact": "앤트로픽은 아이렌 외에도 아마존웹서비스(AWS)와 구글 등 10곳이 넘는 클라우드와 15기가와트(GW), 5천300억달러(약 720조원) 데이터센터 임차 계약을 맺고 협력사들에 가동을 서두르라고 요구하고 있다.",
+      "title": "\"앤트로픽, 아이렌과 클라우드 계약\"…데이터센터 확보 속도전 | 연합뉴스"
     },
     "event:70ef15e117a62a7e5766d539": {
       "first_seen_kst": "2026-10-02T07:25:31+09:00",
@@ -36771,6 +36860,26 @@
       "link": "https://www.fnnews.com/news/202610011451375116",
       "source": "파이낸셜뉴스",
       "title": "우리운용 'WON 전단채플러스액티브 ETF' 순자산 5000억원 돌파"
+    },
+    "fact:0019f7dad2649eba06e4d207": {
+      "first_seen_kst": "2026-10-12T07:43:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:43:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:43:12+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821275",
+      "source": "뉴시스",
+      "source_body_digest": "2313d57dfa952646425a69f987f27959af0ea7eac10d3ec36e21ad41e07e367f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dd0fc1d37f518ae145052a60542860df5b605316360358206a233cbe9c816492",
+      "source_fact_keys": [
+        "source_fact:v1:52a38cc52af8f1a1e8c85dd16b625cad491d58958d00bcc1fdb1097a7afb62e5",
+        "source_fact:v1:a570a81ab6e0fac0232d3082b3246fe2559dd6c669d6fd7b9699ecaa1e89075d"
+      ],
+      "source_published_kst": "2026-10-12T07:44+09:00",
+      "source_title": "이란군\" 호르무즈 불법통과 유조선 11일 기뢰에 또 폭발..벌써 3척 \"",
+      "telegram_core_fact": "이란 혁명수비대(IRGC)해군은 11일(현지시간) 성명을 발표, 이 날 앞서 호르무즈해협 남단의 봉쇄선을 \"위반\"해서 불법 통과하던 대형 유조선 한 척이 또 해군의 기뢰에 걸려 폭발했다고 밝혔다.",
+      "title": "이란군\" 호르무즈 불법통과 유조선 11일 기뢰에 또 폭발..벌써 3척 \""
     },
     "fact:004c1e1d8934a3833a4438c5": {
       "first_seen_kst": "2026-10-08T02:12:43+09:00",
@@ -43744,6 +43853,25 @@
       ],
       "source_published_kst": "2026-10-06T08:45+09:00",
       "title": "한미반도체, 삼성전기에 패키징 장비 공급…245억원 규모"
+    },
+    "fact:2afadaa709069b7aa5db2fcc": {
+      "first_seen_kst": "2026-10-12T07:43:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:43:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:43:12+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634383",
+      "source": "이투데이",
+      "source_body_digest": "d6dcd63f15dc3ab7872e35487bf2a42f608479ae1762953cfa6d4779ccd7e0e5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:18f7225fcc9bb6a2d6720985cca40d1a7e0d6f15655453d7f80d5cf7e49bc4e6",
+      "source_fact_keys": [
+        "source_fact:v1:7508c818600dac2d8b502662730c6e594ace3f0d9d2d8418d45f939eb83d28de"
+      ],
+      "source_published_kst": "2026-10-12T07:40+09:00",
+      "source_title": "“아마존, 데카트 70억 달러에 인수 협상 중”",
+      "telegram_core_fact": "아마존이 AI 스타트업 데카트를 약 70억 달러(약 9조4080억 원)에 인수하는 방안을 협상 중이라고 월스트리트저널(WSJ)이 소식통을 인용해 11일(현지시간) 보도했다.",
+      "title": "“아마존, 데카트 70억 달러에 인수 협상 중”"
     },
     "fact:2c257d791aad304a3c263be4": {
       "first_seen_kst": "2026-10-09T17:54:07+09:00",
@@ -64932,6 +65060,27 @@
       "telegram_core_fact": "8일(현지시간) 블룸버그통신은 복수의 소식통을 인용해 솔리다임이 골드만삭스와 모건스탠리를 IPO 대표 주관사로 선정했다고 보도했다. SK하이닉스의 손자회사 솔리다임이 내년 미국 증시 상장을 위한 대표 주관사단을 구성하며 기업공개(IPO) 준비에 속도를 내고 있다는 미국 현지 보도가 나왔다.",
       "title": "외신 “하이닉스 솔리다임, 내년 美IPO 추진…골드만·모건스탠리 주관사 선정”"
     },
+    "fact:b1757bc3fd193b5dbe5ffe5b": {
+      "first_seen_kst": "2026-10-12T07:43:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:43:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:43:12+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012008300009",
+      "source": "연합뉴스",
+      "source_body_digest": "a007476224ce89cc4a0a5af8213a0fe9152d9a38382cd95d61b03ee7910ce154",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c3a8c29e7421588c086c888f78c4aa15f618f9eb1723554d4709796975571a6b",
+      "source_fact_keys": [
+        "source_fact:v1:455b1e3d35f1dbdde34876b9ef74ee47b1c0a94119062f8d9e7b974d2ed7e141",
+        "source_fact:v1:a7b28c06ddb3fb136f725f4d66ca94effcc111520801461f7619ffd9c698dbec",
+        "source_fact:v1:fdd74ce0022b1926e7b76a25b151cd082f4d976e2eb5c1e2d1247fc1f5d51c7c"
+      ],
+      "source_published_kst": "2026-10-12T07:30+09:00",
+      "source_title": "\"앤트로픽, 아이렌과 클라우드 계약\"…데이터센터 확보 속도전 | 연합뉴스",
+      "telegram_core_fact": "앤트로픽은 아이렌 외에도 아마존웹서비스(AWS)와 구글 등 10곳이 넘는 클라우드와 15기가와트(GW), 5천300억달러(약 720조원) 데이터센터 임차 계약을 맺고 협력사들에 가동을 서두르라고 요구하고 있다.",
+      "title": "\"앤트로픽, 아이렌과 클라우드 계약\"…데이터센터 확보 속도전 | 연합뉴스"
+    },
     "fact:b1787f1d01f6e5b04638bf8c": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -66460,6 +66609,27 @@
       "source_title": "\"추가 방출 없이 합의된 비축유만 조기 공급…유럽 경윳값 8%↑\"",
       "telegram_core_fact": "국제에너지기구(IEA) 회원국들이 7일(현지 시간) 중동 사태에 따른 에너지 공급 차질을 감안해 지난 3월 합의한 비축유 방출에 속도를 내겠다고 밝혔다.",
       "title": "\"추가 방출 없이 합의된 비축유만 조기 공급…유럽 경윳값 8%↑\""
+    },
+    "fact:b9bc9e7fe9ac838997ec19e5": {
+      "first_seen_kst": "2026-10-12T07:43:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:43:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:43:12+09:00",
+      "link": "https://www.fnnews.com/news/202610120601336274",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "5b3578d1745cef7da42e410597b73c367b4708be1f06ede747175627b7b295f9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0eb9dbab07b355c9c32375c3ba17a3e41d41a8caf069df119d686e5b6e33d4d9",
+      "source_fact_keys": [
+        "source_fact:v1:c3eb03e749efd6e721b9e38d97e15eec1dc61c15d519fc489ab4da491e1c451a",
+        "source_fact:v1:caeedc35adcf1ebfc254b01b5720342cd304ef6783eb12df7ec6f3580ab599c9",
+        "source_fact:v1:d40e634182262227b966f0448e9306bf29fffe22f0e2479bafebfd5a9152afe9"
+      ],
+      "source_published_kst": "2026-10-12T06:01+09:00",
+      "source_title": "삼성전자, '쌓는 D램' 성능↑ 기술 축적…전류 흐름 2.6배 향상",
+      "telegram_core_fact": "비트라인과 전류가 흐르는 통로인 채널 사이의 저항을 낮춰 메모리 셀의 동작 성능을 높이는 방식이다.",
+      "title": "삼성전자, '쌓는 D램' 성능↑ 기술 축적…전류 흐름 2.6배 향상"
     },
     "fact:b9ec6c51cb70081a9a596be6": {
       "first_seen_kst": "2026-10-05T23:05:12+09:00",
@@ -78962,6 +79132,27 @@
       "source_title": "\"코리아 디스카운트 해소, 주주환원 지속에 답 있다\"",
       "telegram_core_fact": "주주환원이 꾸준히 이어지는지, 실제로 벌어들인 현금 흐름을 바탕으로 하는지, 발표에 그치지 않고 자사주 소각 등 실제 행동으로 연결되는지를 본다는 것이다.",
       "title": "\"코리아 디스카운트 해소, 주주환원 지속에 답 있다\""
+    },
+    "link:043e9c279e72c73e517d61f7": {
+      "first_seen_kst": "2026-10-12T07:43:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:43:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:43:12+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012008300009",
+      "source": "연합뉴스",
+      "source_body_digest": "a007476224ce89cc4a0a5af8213a0fe9152d9a38382cd95d61b03ee7910ce154",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c3a8c29e7421588c086c888f78c4aa15f618f9eb1723554d4709796975571a6b",
+      "source_fact_keys": [
+        "source_fact:v1:455b1e3d35f1dbdde34876b9ef74ee47b1c0a94119062f8d9e7b974d2ed7e141",
+        "source_fact:v1:a7b28c06ddb3fb136f725f4d66ca94effcc111520801461f7619ffd9c698dbec",
+        "source_fact:v1:fdd74ce0022b1926e7b76a25b151cd082f4d976e2eb5c1e2d1247fc1f5d51c7c"
+      ],
+      "source_published_kst": "2026-10-12T07:30+09:00",
+      "source_title": "\"앤트로픽, 아이렌과 클라우드 계약\"…데이터센터 확보 속도전 | 연합뉴스",
+      "telegram_core_fact": "앤트로픽은 아이렌 외에도 아마존웹서비스(AWS)와 구글 등 10곳이 넘는 클라우드와 15기가와트(GW), 5천300억달러(약 720조원) 데이터센터 임차 계약을 맺고 협력사들에 가동을 서두르라고 요구하고 있다.",
+      "title": "\"앤트로픽, 아이렌과 클라우드 계약\"…데이터센터 확보 속도전 | 연합뉴스"
     },
     "link:04572ff4c781131145c377eb": {
       "first_seen_kst": "2026-10-09T15:48:54+09:00",
@@ -99424,6 +99615,25 @@
       "source_title": "\"국세 체납 116조 넘어…법인세 등 지연 가산세 5년여간 22조\" | 연합뉴스",
       "telegram_core_fact": "국세 체납액이 116조원을 넘어선 가운데, 세무서가 세금을 고지하기 전 단계에서 발생한 납부지연가산세만 2021년 이후 21조원이 넘게 부과된 것으로 집계됐다.",
       "title": "\"국세 체납 116조 넘어…법인세 등 지연 가산세 5년여간 22조\" | 연합뉴스"
+    },
+    "link:598749faaf59f9f9c443500f": {
+      "first_seen_kst": "2026-10-12T07:43:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:43:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:43:12+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634383",
+      "source": "이투데이",
+      "source_body_digest": "d6dcd63f15dc3ab7872e35487bf2a42f608479ae1762953cfa6d4779ccd7e0e5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:18f7225fcc9bb6a2d6720985cca40d1a7e0d6f15655453d7f80d5cf7e49bc4e6",
+      "source_fact_keys": [
+        "source_fact:v1:7508c818600dac2d8b502662730c6e594ace3f0d9d2d8418d45f939eb83d28de"
+      ],
+      "source_published_kst": "2026-10-12T07:40+09:00",
+      "source_title": "“아마존, 데카트 70억 달러에 인수 협상 중”",
+      "telegram_core_fact": "아마존이 AI 스타트업 데카트를 약 70억 달러(약 9조4080억 원)에 인수하는 방안을 협상 중이라고 월스트리트저널(WSJ)이 소식통을 인용해 11일(현지시간) 보도했다.",
+      "title": "“아마존, 데카트 70억 달러에 인수 협상 중”"
     },
     "link:598cec79dfa8bb1a967f587a": {
       "first_seen_kst": "2026-10-08T00:24:24+09:00",
@@ -125148,6 +125358,27 @@
       "source_published_kst": "2026-10-07T11:25+09:00",
       "title": "홍지선 국토장관 “비아파트 주거사다리 효과, 충분히 검토 못해” [국감]"
     },
+    "link:c2aa7c70ee64bb254e87c06c": {
+      "first_seen_kst": "2026-10-12T07:43:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:43:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:43:12+09:00",
+      "link": "https://www.fnnews.com/news/202610120601336274",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "5b3578d1745cef7da42e410597b73c367b4708be1f06ede747175627b7b295f9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0eb9dbab07b355c9c32375c3ba17a3e41d41a8caf069df119d686e5b6e33d4d9",
+      "source_fact_keys": [
+        "source_fact:v1:c3eb03e749efd6e721b9e38d97e15eec1dc61c15d519fc489ab4da491e1c451a",
+        "source_fact:v1:caeedc35adcf1ebfc254b01b5720342cd304ef6783eb12df7ec6f3580ab599c9",
+        "source_fact:v1:d40e634182262227b966f0448e9306bf29fffe22f0e2479bafebfd5a9152afe9"
+      ],
+      "source_published_kst": "2026-10-12T06:01+09:00",
+      "source_title": "삼성전자, '쌓는 D램' 성능↑ 기술 축적…전류 흐름 2.6배 향상",
+      "telegram_core_fact": "비트라인과 전류가 흐르는 통로인 채널 사이의 저항을 낮춰 메모리 셀의 동작 성능을 높이는 방식이다.",
+      "title": "삼성전자, '쌓는 D램' 성능↑ 기술 축적…전류 흐름 2.6배 향상"
+    },
     "link:c2b3bfde0ae38a2e29b477ca": {
       "first_seen_kst": "2026-10-04T08:29:55+09:00",
       "lanes": {
@@ -131537,6 +131768,26 @@
       "link": "https://view.asiae.co.kr/article/2026100110263966041",
       "source": "아시아경제",
       "title": "삼성운용 \"커버드콜 ETF 활용해서 월 분배금 두 번 받으세요\""
+    },
+    "link:df475fa4d5fcaab1d205c52f": {
+      "first_seen_kst": "2026-10-12T07:43:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:43:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:43:12+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821275",
+      "source": "뉴시스",
+      "source_body_digest": "2313d57dfa952646425a69f987f27959af0ea7eac10d3ec36e21ad41e07e367f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dd0fc1d37f518ae145052a60542860df5b605316360358206a233cbe9c816492",
+      "source_fact_keys": [
+        "source_fact:v1:52a38cc52af8f1a1e8c85dd16b625cad491d58958d00bcc1fdb1097a7afb62e5",
+        "source_fact:v1:a570a81ab6e0fac0232d3082b3246fe2559dd6c669d6fd7b9699ecaa1e89075d"
+      ],
+      "source_published_kst": "2026-10-12T07:44+09:00",
+      "source_title": "이란군\" 호르무즈 불법통과 유조선 11일 기뢰에 또 폭발..벌써 3척 \"",
+      "telegram_core_fact": "이란 혁명수비대(IRGC)해군은 11일(현지시간) 성명을 발표, 이 날 앞서 호르무즈해협 남단의 봉쇄선을 \"위반\"해서 불법 통과하던 대형 유조선 한 척이 또 해군의 기뢰에 걸려 폭발했다고 밝혔다.",
+      "title": "이란군\" 호르무즈 불법통과 유조선 11일 기뢰에 또 폭발..벌써 3척 \""
     },
     "link:df54e7d3f0d82f4365b04ace": {
       "first_seen_kst": "2026-10-07T05:59:02+09:00",
@@ -165284,6 +165535,26 @@
       "source_published_kst": "2026-10-05T07:00+09:00",
       "title": "서울연구원 \"소셜벤처, 5년간 매출 475억원⋯법적 근거·인증제도 마련해야\""
     },
+    "original:70bc319b3f58584fff935e9b": {
+      "first_seen_kst": "2026-10-12T07:43:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:43:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:43:12+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821275",
+      "source": "뉴시스",
+      "source_body_digest": "2313d57dfa952646425a69f987f27959af0ea7eac10d3ec36e21ad41e07e367f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dd0fc1d37f518ae145052a60542860df5b605316360358206a233cbe9c816492",
+      "source_fact_keys": [
+        "source_fact:v1:52a38cc52af8f1a1e8c85dd16b625cad491d58958d00bcc1fdb1097a7afb62e5",
+        "source_fact:v1:a570a81ab6e0fac0232d3082b3246fe2559dd6c669d6fd7b9699ecaa1e89075d"
+      ],
+      "source_published_kst": "2026-10-12T07:44+09:00",
+      "source_title": "이란군\" 호르무즈 불법통과 유조선 11일 기뢰에 또 폭발..벌써 3척 \"",
+      "telegram_core_fact": "이란 혁명수비대(IRGC)해군은 11일(현지시간) 성명을 발표, 이 날 앞서 호르무즈해협 남단의 봉쇄선을 \"위반\"해서 불법 통과하던 대형 유조선 한 척이 또 해군의 기뢰에 걸려 폭발했다고 밝혔다.",
+      "title": "이란군\" 호르무즈 불법통과 유조선 11일 기뢰에 또 폭발..벌써 3척 \""
+    },
     "original:70c4221906de4aa35a14a3d5": {
       "first_seen_kst": "2026-10-01T17:28:33+09:00",
       "lanes": {
@@ -192082,6 +192353,25 @@
       "source": "뉴시스",
       "title": "9월 물가 2.9%↑…정부 \"석유 최고가격제 없었다면 3.5%\"(종합)"
     },
+    "original:e378addaaba6659a3b8e87b7": {
+      "first_seen_kst": "2026-10-12T07:43:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:43:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:43:12+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634383",
+      "source": "이투데이",
+      "source_body_digest": "d6dcd63f15dc3ab7872e35487bf2a42f608479ae1762953cfa6d4779ccd7e0e5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:18f7225fcc9bb6a2d6720985cca40d1a7e0d6f15655453d7f80d5cf7e49bc4e6",
+      "source_fact_keys": [
+        "source_fact:v1:7508c818600dac2d8b502662730c6e594ace3f0d9d2d8418d45f939eb83d28de"
+      ],
+      "source_published_kst": "2026-10-12T07:40+09:00",
+      "source_title": "“아마존, 데카트 70억 달러에 인수 협상 중”",
+      "telegram_core_fact": "아마존이 AI 스타트업 데카트를 약 70억 달러(약 9조4080억 원)에 인수하는 방안을 협상 중이라고 월스트리트저널(WSJ)이 소식통을 인용해 11일(현지시간) 보도했다.",
+      "title": "“아마존, 데카트 70억 달러에 인수 협상 중”"
+    },
     "original:e384e6ff211860275329a3b7": {
       "first_seen_kst": "2026-09-22T13:18:41+09:00",
       "lanes": {
@@ -194652,6 +194942,27 @@
       ],
       "source_published_kst": "2026-10-06T05:00+09:00",
       "title": "유통·식품 수장 줄줄이 국감장…쿠팡·배민·홈플러스 정조준하나"
+    },
+    "original:eeecdb79b24a1642fce5018f": {
+      "first_seen_kst": "2026-10-12T07:43:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:43:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:43:12+09:00",
+      "link": "https://www.fnnews.com/news/202610120601336274",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "5b3578d1745cef7da42e410597b73c367b4708be1f06ede747175627b7b295f9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0eb9dbab07b355c9c32375c3ba17a3e41d41a8caf069df119d686e5b6e33d4d9",
+      "source_fact_keys": [
+        "source_fact:v1:c3eb03e749efd6e721b9e38d97e15eec1dc61c15d519fc489ab4da491e1c451a",
+        "source_fact:v1:caeedc35adcf1ebfc254b01b5720342cd304ef6783eb12df7ec6f3580ab599c9",
+        "source_fact:v1:d40e634182262227b966f0448e9306bf29fffe22f0e2479bafebfd5a9152afe9"
+      ],
+      "source_published_kst": "2026-10-12T06:01+09:00",
+      "source_title": "삼성전자, '쌓는 D램' 성능↑ 기술 축적…전류 흐름 2.6배 향상",
+      "telegram_core_fact": "비트라인과 전류가 흐르는 통로인 채널 사이의 저항을 낮춰 메모리 셀의 동작 성능을 높이는 방식이다.",
+      "title": "삼성전자, '쌓는 D램' 성능↑ 기술 축적…전류 흐름 2.6배 향상"
     },
     "original:ef05bde16186c2a38ce01735": {
       "first_seen_kst": "2026-10-11T15:10:51+09:00",
@@ -197982,6 +198293,27 @@
       ],
       "source_published_kst": "2026-10-06T08:03+09:00",
       "title": "뉴욕증시, 국채금리 상승에도 강세⋯나스닥, 사상 최고치 [글로벌마켓 모닝 브리핑]"
+    },
+    "original:fdf725729c3adcbb64821561": {
+      "first_seen_kst": "2026-10-12T07:43:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:43:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:43:12+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012008300009",
+      "source": "연합뉴스",
+      "source_body_digest": "a007476224ce89cc4a0a5af8213a0fe9152d9a38382cd95d61b03ee7910ce154",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c3a8c29e7421588c086c888f78c4aa15f618f9eb1723554d4709796975571a6b",
+      "source_fact_keys": [
+        "source_fact:v1:455b1e3d35f1dbdde34876b9ef74ee47b1c0a94119062f8d9e7b974d2ed7e141",
+        "source_fact:v1:a7b28c06ddb3fb136f725f4d66ca94effcc111520801461f7619ffd9c698dbec",
+        "source_fact:v1:fdd74ce0022b1926e7b76a25b151cd082f4d976e2eb5c1e2d1247fc1f5d51c7c"
+      ],
+      "source_published_kst": "2026-10-12T07:30+09:00",
+      "source_title": "\"앤트로픽, 아이렌과 클라우드 계약\"…데이터센터 확보 속도전 | 연합뉴스",
+      "telegram_core_fact": "앤트로픽은 아이렌 외에도 아마존웹서비스(AWS)와 구글 등 10곳이 넘는 클라우드와 15기가와트(GW), 5천300억달러(약 720조원) 데이터센터 임차 계약을 맺고 협력사들에 가동을 서두르라고 요구하고 있다.",
+      "title": "\"앤트로픽, 아이렌과 클라우드 계약\"…데이터센터 확보 속도전 | 연합뉴스"
     },
     "original:fe0815777250dc9de2eac8a8": {
       "first_seen_kst": "2026-10-04T02:31:20+09:00",
@@ -211203,6 +211535,27 @@
       "source_title": "삼성전자, 올 3분기 영업이익률 55% 신기록 …반도체 부문은 70% 돌파할 듯",
       "telegram_core_fact": "삼성전자는 3분기 영업이익률 55.1%를 기록했는데, 반도체를 담당하는 디바이스솔루션(DS) 부문은 70%를 넘어섰을 것으로 보인다.",
       "title": "삼성전자, 올 3분기 영업이익률 55% 신기록 …반도체 부문은 70% 돌파할 듯"
+    },
+    "source_fact:114918ef365626923bc4ff29": {
+      "first_seen_kst": "2026-10-12T07:43:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:43:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:43:12+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012008300009",
+      "source": "연합뉴스",
+      "source_body_digest": "a007476224ce89cc4a0a5af8213a0fe9152d9a38382cd95d61b03ee7910ce154",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c3a8c29e7421588c086c888f78c4aa15f618f9eb1723554d4709796975571a6b",
+      "source_fact_keys": [
+        "source_fact:v1:455b1e3d35f1dbdde34876b9ef74ee47b1c0a94119062f8d9e7b974d2ed7e141",
+        "source_fact:v1:a7b28c06ddb3fb136f725f4d66ca94effcc111520801461f7619ffd9c698dbec",
+        "source_fact:v1:fdd74ce0022b1926e7b76a25b151cd082f4d976e2eb5c1e2d1247fc1f5d51c7c"
+      ],
+      "source_published_kst": "2026-10-12T07:30+09:00",
+      "source_title": "\"앤트로픽, 아이렌과 클라우드 계약\"…데이터센터 확보 속도전 | 연합뉴스",
+      "telegram_core_fact": "앤트로픽은 아이렌 외에도 아마존웹서비스(AWS)와 구글 등 10곳이 넘는 클라우드와 15기가와트(GW), 5천300억달러(약 720조원) 데이터센터 임차 계약을 맺고 협력사들에 가동을 서두르라고 요구하고 있다.",
+      "title": "\"앤트로픽, 아이렌과 클라우드 계약\"…데이터센터 확보 속도전 | 연합뉴스"
     },
     "source_fact:115a1b18705d434b1e3f2403": {
       "first_seen_kst": "2026-10-10T06:23:09+09:00",
@@ -247746,6 +248099,25 @@
       "telegram_core_fact": "산업통상부는 한국을 포함한 15개국이 7일(현지시간) 프랑스 파리 경제협력개발기구(OECD) 본부에서 '구조적 과잉생산 대응을 위한 공동 장관성명'을 발표했다고 8일 밝혔다.",
       "title": "韓 등 15개국, 車·배터리·반도체 과잉생산 공동 대응"
     },
+    "source_fact:3f33642366290f9358421e60": {
+      "first_seen_kst": "2026-10-12T07:43:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:43:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:43:12+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634383",
+      "source": "이투데이",
+      "source_body_digest": "d6dcd63f15dc3ab7872e35487bf2a42f608479ae1762953cfa6d4779ccd7e0e5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:18f7225fcc9bb6a2d6720985cca40d1a7e0d6f15655453d7f80d5cf7e49bc4e6",
+      "source_fact_keys": [
+        "source_fact:v1:7508c818600dac2d8b502662730c6e594ace3f0d9d2d8418d45f939eb83d28de"
+      ],
+      "source_published_kst": "2026-10-12T07:40+09:00",
+      "source_title": "“아마존, 데카트 70억 달러에 인수 협상 중”",
+      "telegram_core_fact": "아마존이 AI 스타트업 데카트를 약 70억 달러(약 9조4080억 원)에 인수하는 방안을 협상 중이라고 월스트리트저널(WSJ)이 소식통을 인용해 11일(현지시간) 보도했다.",
+      "title": "“아마존, 데카트 70억 달러에 인수 협상 중”"
+    },
     "source_fact:3f3eff1839fba5e060deb973": {
       "first_seen_kst": "2026-10-09T16:29:31+09:00",
       "lanes": {
@@ -261819,6 +262191,27 @@
       "telegram_core_fact": "미 국채 금리 급등은 즉각 유럽으로 전파돼 영국 30년물 금리가 다시 6%선을 돌파했고, 프랑스 30년물도 하루 만에 최대 14bp(1bp=0.01%p) 올랐다.",
       "title": "美 30년물 국채금리 24년만에 최고치 재경신"
     },
+    "source_fact:50dd4ed54d98d66072ce0b76": {
+      "first_seen_kst": "2026-10-12T07:43:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:43:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:43:12+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012008300009",
+      "source": "연합뉴스",
+      "source_body_digest": "a007476224ce89cc4a0a5af8213a0fe9152d9a38382cd95d61b03ee7910ce154",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c3a8c29e7421588c086c888f78c4aa15f618f9eb1723554d4709796975571a6b",
+      "source_fact_keys": [
+        "source_fact:v1:455b1e3d35f1dbdde34876b9ef74ee47b1c0a94119062f8d9e7b974d2ed7e141",
+        "source_fact:v1:a7b28c06ddb3fb136f725f4d66ca94effcc111520801461f7619ffd9c698dbec",
+        "source_fact:v1:fdd74ce0022b1926e7b76a25b151cd082f4d976e2eb5c1e2d1247fc1f5d51c7c"
+      ],
+      "source_published_kst": "2026-10-12T07:30+09:00",
+      "source_title": "\"앤트로픽, 아이렌과 클라우드 계약\"…데이터센터 확보 속도전 | 연합뉴스",
+      "telegram_core_fact": "앤트로픽은 아이렌 외에도 아마존웹서비스(AWS)와 구글 등 10곳이 넘는 클라우드와 15기가와트(GW), 5천300억달러(약 720조원) 데이터센터 임차 계약을 맺고 협력사들에 가동을 서두르라고 요구하고 있다.",
+      "title": "\"앤트로픽, 아이렌과 클라우드 계약\"…데이터센터 확보 속도전 | 연합뉴스"
+    },
     "source_fact:50e035c4c5916f2c16933f40": {
       "first_seen_kst": "2026-10-09T18:14:26+09:00",
       "lanes": {
@@ -268720,6 +269113,27 @@
       "source_title": "코스맥스 `계절성을 깨트리다` 증권사 발표에 강세…3.52%",
       "telegram_core_fact": "당일 하나증권 박종대 애널리스트는 '계절성을 깨트리다' 라고 목표가를 380,000원으로 상향 조정한 바 있다.",
       "title": "코스맥스 `계절성을 깨트리다` 증권사 발표에 강세…3.52%"
+    },
+    "source_fact:58ecd417393f53c69ad459b6": {
+      "first_seen_kst": "2026-10-12T07:43:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:43:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:43:12+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012008300009",
+      "source": "연합뉴스",
+      "source_body_digest": "a007476224ce89cc4a0a5af8213a0fe9152d9a38382cd95d61b03ee7910ce154",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c3a8c29e7421588c086c888f78c4aa15f618f9eb1723554d4709796975571a6b",
+      "source_fact_keys": [
+        "source_fact:v1:455b1e3d35f1dbdde34876b9ef74ee47b1c0a94119062f8d9e7b974d2ed7e141",
+        "source_fact:v1:a7b28c06ddb3fb136f725f4d66ca94effcc111520801461f7619ffd9c698dbec",
+        "source_fact:v1:fdd74ce0022b1926e7b76a25b151cd082f4d976e2eb5c1e2d1247fc1f5d51c7c"
+      ],
+      "source_published_kst": "2026-10-12T07:30+09:00",
+      "source_title": "\"앤트로픽, 아이렌과 클라우드 계약\"…데이터센터 확보 속도전 | 연합뉴스",
+      "telegram_core_fact": "앤트로픽은 아이렌 외에도 아마존웹서비스(AWS)와 구글 등 10곳이 넘는 클라우드와 15기가와트(GW), 5천300억달러(약 720조원) 데이터센터 임차 계약을 맺고 협력사들에 가동을 서두르라고 요구하고 있다.",
+      "title": "\"앤트로픽, 아이렌과 클라우드 계약\"…데이터센터 확보 속도전 | 연합뉴스"
     },
     "source_fact:58ee71495de2d61656348e9b": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
@@ -309892,6 +310306,27 @@
       "telegram_core_fact": "LG전자가 목동 신축 주거단지에 인공지능(AI) 홈 솔루션과 프리미엄 빌트인 가전을 공급한다.",
       "title": "LG전자, 목동 최고급 주거단지에 AI 홈 심는다…B2B 사업 확장"
     },
+    "source_fact:8dd8e7d338357ba5c6446a98": {
+      "first_seen_kst": "2026-10-12T07:43:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:43:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:43:12+09:00",
+      "link": "https://www.fnnews.com/news/202610120601336274",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "5b3578d1745cef7da42e410597b73c367b4708be1f06ede747175627b7b295f9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0eb9dbab07b355c9c32375c3ba17a3e41d41a8caf069df119d686e5b6e33d4d9",
+      "source_fact_keys": [
+        "source_fact:v1:c3eb03e749efd6e721b9e38d97e15eec1dc61c15d519fc489ab4da491e1c451a",
+        "source_fact:v1:caeedc35adcf1ebfc254b01b5720342cd304ef6783eb12df7ec6f3580ab599c9",
+        "source_fact:v1:d40e634182262227b966f0448e9306bf29fffe22f0e2479bafebfd5a9152afe9"
+      ],
+      "source_published_kst": "2026-10-12T06:01+09:00",
+      "source_title": "삼성전자, '쌓는 D램' 성능↑ 기술 축적…전류 흐름 2.6배 향상",
+      "telegram_core_fact": "비트라인과 전류가 흐르는 통로인 채널 사이의 저항을 낮춰 메모리 셀의 동작 성능을 높이는 방식이다.",
+      "title": "삼성전자, '쌓는 D램' 성능↑ 기술 축적…전류 흐름 2.6배 향상"
+    },
     "source_fact:8dda8a55c0f6598a655babe0": {
       "first_seen_kst": "2026-10-11T09:50:45+09:00",
       "lanes": {
@@ -343159,6 +343594,26 @@
       "telegram_core_fact": "윤성에프앤씨(372170)는 2차전지 믹싱시스템에 관한 단일판매ㆍ공급계약체결 을 08일에 공시했다. 계약금액은 134.4억원이다.",
       "title": "윤성에프앤씨 수주공시 - 2차전지 믹싱시스템 134.4억원 (매출액대비 13.42 %)"
     },
+    "source_fact:b966cba0ed871ddc3e9b623a": {
+      "first_seen_kst": "2026-10-12T07:43:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:43:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:43:12+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821275",
+      "source": "뉴시스",
+      "source_body_digest": "2313d57dfa952646425a69f987f27959af0ea7eac10d3ec36e21ad41e07e367f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dd0fc1d37f518ae145052a60542860df5b605316360358206a233cbe9c816492",
+      "source_fact_keys": [
+        "source_fact:v1:52a38cc52af8f1a1e8c85dd16b625cad491d58958d00bcc1fdb1097a7afb62e5",
+        "source_fact:v1:a570a81ab6e0fac0232d3082b3246fe2559dd6c669d6fd7b9699ecaa1e89075d"
+      ],
+      "source_published_kst": "2026-10-12T07:44+09:00",
+      "source_title": "이란군\" 호르무즈 불법통과 유조선 11일 기뢰에 또 폭발..벌써 3척 \"",
+      "telegram_core_fact": "이란 혁명수비대(IRGC)해군은 11일(현지시간) 성명을 발표, 이 날 앞서 호르무즈해협 남단의 봉쇄선을 \"위반\"해서 불법 통과하던 대형 유조선 한 척이 또 해군의 기뢰에 걸려 폭발했다고 밝혔다.",
+      "title": "이란군\" 호르무즈 불법통과 유조선 11일 기뢰에 또 폭발..벌써 3척 \""
+    },
     "source_fact:b9744604ff743558a8dace19": {
       "first_seen_kst": "2026-10-09T16:53:11+09:00",
       "lanes": {
@@ -361475,6 +361930,27 @@
       "telegram_core_fact": "대만 기업들은 AI 인프라 투자 확대에 따른 판매량 증가로 실적을 끌어올리고 있는 반면 한국 반도체 기업의 이익은 메모리 가격 상승에 대한 의존도가 높다. 코스콤 CHECK 등에 따르면 코스피는 올해 3분기 19.33% 하락했다.",
       "title": "코스피, 3분기 수익률 -19.3%…대만으로 눈 돌린 글로벌 투자자"
     },
+    "source_fact:d1203b4fcce6a114c148f3bc": {
+      "first_seen_kst": "2026-10-12T07:43:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:43:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:43:12+09:00",
+      "link": "https://www.fnnews.com/news/202610120601336274",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "5b3578d1745cef7da42e410597b73c367b4708be1f06ede747175627b7b295f9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0eb9dbab07b355c9c32375c3ba17a3e41d41a8caf069df119d686e5b6e33d4d9",
+      "source_fact_keys": [
+        "source_fact:v1:c3eb03e749efd6e721b9e38d97e15eec1dc61c15d519fc489ab4da491e1c451a",
+        "source_fact:v1:caeedc35adcf1ebfc254b01b5720342cd304ef6783eb12df7ec6f3580ab599c9",
+        "source_fact:v1:d40e634182262227b966f0448e9306bf29fffe22f0e2479bafebfd5a9152afe9"
+      ],
+      "source_published_kst": "2026-10-12T06:01+09:00",
+      "source_title": "삼성전자, '쌓는 D램' 성능↑ 기술 축적…전류 흐름 2.6배 향상",
+      "telegram_core_fact": "비트라인과 전류가 흐르는 통로인 채널 사이의 저항을 낮춰 메모리 셀의 동작 성능을 높이는 방식이다.",
+      "title": "삼성전자, '쌓는 D램' 성능↑ 기술 축적…전류 흐름 2.6배 향상"
+    },
     "source_fact:d12248ce0d5c82cc511ef5a7": {
       "first_seen_kst": "2026-10-08T12:46:54+09:00",
       "lanes": {
@@ -371354,6 +371830,27 @@
       ],
       "source_published_kst": "2026-10-06T17:35+09:00",
       "title": "포스코퓨처엠, 삼성SDI에 '6조원' 규모 LFP 공급…\"물량 두 배 이상 확대\""
+    },
+    "source_fact:ddab2104ed89213f767e35b0": {
+      "first_seen_kst": "2026-10-12T07:43:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:43:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:43:12+09:00",
+      "link": "https://www.fnnews.com/news/202610120601336274",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "5b3578d1745cef7da42e410597b73c367b4708be1f06ede747175627b7b295f9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0eb9dbab07b355c9c32375c3ba17a3e41d41a8caf069df119d686e5b6e33d4d9",
+      "source_fact_keys": [
+        "source_fact:v1:c3eb03e749efd6e721b9e38d97e15eec1dc61c15d519fc489ab4da491e1c451a",
+        "source_fact:v1:caeedc35adcf1ebfc254b01b5720342cd304ef6783eb12df7ec6f3580ab599c9",
+        "source_fact:v1:d40e634182262227b966f0448e9306bf29fffe22f0e2479bafebfd5a9152afe9"
+      ],
+      "source_published_kst": "2026-10-12T06:01+09:00",
+      "source_title": "삼성전자, '쌓는 D램' 성능↑ 기술 축적…전류 흐름 2.6배 향상",
+      "telegram_core_fact": "비트라인과 전류가 흐르는 통로인 채널 사이의 저항을 낮춰 메모리 셀의 동작 성능을 높이는 방식이다.",
+      "title": "삼성전자, '쌓는 D램' 성능↑ 기술 축적…전류 흐름 2.6배 향상"
     },
     "source_fact:ddb20b839b81b7c15034d1f3": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
@@ -389794,6 +390291,26 @@
       "source_title": "밸류파인더 “MSDI, 구미시와 7000억 미사일 방산단지 추진…전주기 사업 첫발”",
       "telegram_core_fact": "유럽 미사일 전문기업과의 협력을 바탕으로 초기에는 MRO와 라이선스 생산에서 매출을 확보하고 장기적으로 독자 미사일 개발까지 사업을 확대한다는 구상이다.",
       "title": "밸류파인더 “MSDI, 구미시와 7000억 미사일 방산단지 추진…전주기 사업 첫발”"
+    },
+    "source_fact:f5690db55c56a4a30df3f556": {
+      "first_seen_kst": "2026-10-12T07:43:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:43:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:43:12+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821275",
+      "source": "뉴시스",
+      "source_body_digest": "2313d57dfa952646425a69f987f27959af0ea7eac10d3ec36e21ad41e07e367f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dd0fc1d37f518ae145052a60542860df5b605316360358206a233cbe9c816492",
+      "source_fact_keys": [
+        "source_fact:v1:52a38cc52af8f1a1e8c85dd16b625cad491d58958d00bcc1fdb1097a7afb62e5",
+        "source_fact:v1:a570a81ab6e0fac0232d3082b3246fe2559dd6c669d6fd7b9699ecaa1e89075d"
+      ],
+      "source_published_kst": "2026-10-12T07:44+09:00",
+      "source_title": "이란군\" 호르무즈 불법통과 유조선 11일 기뢰에 또 폭발..벌써 3척 \"",
+      "telegram_core_fact": "이란 혁명수비대(IRGC)해군은 11일(현지시간) 성명을 발표, 이 날 앞서 호르무즈해협 남단의 봉쇄선을 \"위반\"해서 불법 통과하던 대형 유조선 한 척이 또 해군의 기뢰에 걸려 폭발했다고 밝혔다.",
+      "title": "이란군\" 호르무즈 불법통과 유조선 11일 기뢰에 또 폭발..벌써 3척 \""
     },
     "source_fact:f576233ea231f7ffcf838c9f": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
@@ -424054,6 +424571,26 @@
       "source_published_kst": "2026-10-05T07:00+09:00",
       "title": "서울연구원 \"소셜벤처, 5년간 매출 475억원⋯법적 근거·인증제도 마련해야\""
     },
+    "title:70bc319b3f58584fff935e9b": {
+      "first_seen_kst": "2026-10-12T07:43:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:43:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:43:12+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821275",
+      "source": "뉴시스",
+      "source_body_digest": "2313d57dfa952646425a69f987f27959af0ea7eac10d3ec36e21ad41e07e367f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dd0fc1d37f518ae145052a60542860df5b605316360358206a233cbe9c816492",
+      "source_fact_keys": [
+        "source_fact:v1:52a38cc52af8f1a1e8c85dd16b625cad491d58958d00bcc1fdb1097a7afb62e5",
+        "source_fact:v1:a570a81ab6e0fac0232d3082b3246fe2559dd6c669d6fd7b9699ecaa1e89075d"
+      ],
+      "source_published_kst": "2026-10-12T07:44+09:00",
+      "source_title": "이란군\" 호르무즈 불법통과 유조선 11일 기뢰에 또 폭발..벌써 3척 \"",
+      "telegram_core_fact": "이란 혁명수비대(IRGC)해군은 11일(현지시간) 성명을 발표, 이 날 앞서 호르무즈해협 남단의 봉쇄선을 \"위반\"해서 불법 통과하던 대형 유조선 한 척이 또 해군의 기뢰에 걸려 폭발했다고 밝혔다.",
+      "title": "이란군\" 호르무즈 불법통과 유조선 11일 기뢰에 또 폭발..벌써 3척 \""
+    },
     "title:70c4221906de4aa35a14a3d5": {
       "first_seen_kst": "2026-10-01T17:28:33+09:00",
       "lanes": {
@@ -451544,6 +452081,25 @@
       "source": "뉴시스",
       "title": "9월 물가 2.9%↑…정부 \"석유 최고가격제 없었다면 3.5%\"(종합)"
     },
+    "title:e378addaaba6659a3b8e87b7": {
+      "first_seen_kst": "2026-10-12T07:43:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:43:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:43:12+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634383",
+      "source": "이투데이",
+      "source_body_digest": "d6dcd63f15dc3ab7872e35487bf2a42f608479ae1762953cfa6d4779ccd7e0e5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:18f7225fcc9bb6a2d6720985cca40d1a7e0d6f15655453d7f80d5cf7e49bc4e6",
+      "source_fact_keys": [
+        "source_fact:v1:7508c818600dac2d8b502662730c6e594ace3f0d9d2d8418d45f939eb83d28de"
+      ],
+      "source_published_kst": "2026-10-12T07:40+09:00",
+      "source_title": "“아마존, 데카트 70억 달러에 인수 협상 중”",
+      "telegram_core_fact": "아마존이 AI 스타트업 데카트를 약 70억 달러(약 9조4080억 원)에 인수하는 방안을 협상 중이라고 월스트리트저널(WSJ)이 소식통을 인용해 11일(현지시간) 보도했다.",
+      "title": "“아마존, 데카트 70억 달러에 인수 협상 중”"
+    },
     "title:e384e6ff211860275329a3b7": {
       "first_seen_kst": "2026-09-22T13:18:41+09:00",
       "lanes": {
@@ -454225,6 +454781,27 @@
       ],
       "source_published_kst": "2026-10-06T05:00+09:00",
       "title": "유통·식품 수장 줄줄이 국감장…쿠팡·배민·홈플러스 정조준하나"
+    },
+    "title:eeecdb79b24a1642fce5018f": {
+      "first_seen_kst": "2026-10-12T07:43:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:43:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:43:12+09:00",
+      "link": "https://www.fnnews.com/news/202610120601336274",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "5b3578d1745cef7da42e410597b73c367b4708be1f06ede747175627b7b295f9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0eb9dbab07b355c9c32375c3ba17a3e41d41a8caf069df119d686e5b6e33d4d9",
+      "source_fact_keys": [
+        "source_fact:v1:c3eb03e749efd6e721b9e38d97e15eec1dc61c15d519fc489ab4da491e1c451a",
+        "source_fact:v1:caeedc35adcf1ebfc254b01b5720342cd304ef6783eb12df7ec6f3580ab599c9",
+        "source_fact:v1:d40e634182262227b966f0448e9306bf29fffe22f0e2479bafebfd5a9152afe9"
+      ],
+      "source_published_kst": "2026-10-12T06:01+09:00",
+      "source_title": "삼성전자, '쌓는 D램' 성능↑ 기술 축적…전류 흐름 2.6배 향상",
+      "telegram_core_fact": "비트라인과 전류가 흐르는 통로인 채널 사이의 저항을 낮춰 메모리 셀의 동작 성능을 높이는 방식이다.",
+      "title": "삼성전자, '쌓는 D램' 성능↑ 기술 축적…전류 흐름 2.6배 향상"
     },
     "title:ef05bde16186c2a38ce01735": {
       "first_seen_kst": "2026-10-11T15:10:51+09:00",
@@ -457628,6 +458205,27 @@
       "source_published_kst": "2026-10-06T08:03+09:00",
       "title": "뉴욕증시, 국채금리 상승에도 강세⋯나스닥, 사상 최고치 [글로벌마켓 모닝 브리핑]"
     },
+    "title:fdf725729c3adcbb64821561": {
+      "first_seen_kst": "2026-10-12T07:43:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T07:43:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T07:43:12+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012008300009",
+      "source": "연합뉴스",
+      "source_body_digest": "a007476224ce89cc4a0a5af8213a0fe9152d9a38382cd95d61b03ee7910ce154",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c3a8c29e7421588c086c888f78c4aa15f618f9eb1723554d4709796975571a6b",
+      "source_fact_keys": [
+        "source_fact:v1:455b1e3d35f1dbdde34876b9ef74ee47b1c0a94119062f8d9e7b974d2ed7e141",
+        "source_fact:v1:a7b28c06ddb3fb136f725f4d66ca94effcc111520801461f7619ffd9c698dbec",
+        "source_fact:v1:fdd74ce0022b1926e7b76a25b151cd082f4d976e2eb5c1e2d1247fc1f5d51c7c"
+      ],
+      "source_published_kst": "2026-10-12T07:30+09:00",
+      "source_title": "\"앤트로픽, 아이렌과 클라우드 계약\"…데이터센터 확보 속도전 | 연합뉴스",
+      "telegram_core_fact": "앤트로픽은 아이렌 외에도 아마존웹서비스(AWS)와 구글 등 10곳이 넘는 클라우드와 15기가와트(GW), 5천300억달러(약 720조원) 데이터센터 임차 계약을 맺고 협력사들에 가동을 서두르라고 요구하고 있다.",
+      "title": "\"앤트로픽, 아이렌과 클라우드 계약\"…데이터센터 확보 속도전 | 연합뉴스"
+    },
     "title:fe0815777250dc9de2eac8a8": {
       "first_seen_kst": "2026-10-04T02:31:20+09:00",
       "lanes": {
@@ -458179,5 +458777,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-12T07:27:08+09:00"
+  "updated_at_kst": "2026-10-12T07:43:12+09:00"
 }
