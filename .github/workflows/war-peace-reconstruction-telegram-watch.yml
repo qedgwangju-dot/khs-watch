@@ -4,8 +4,14 @@ on:
   schedule:
     - cron: "*/5 * * * *"
   push:
+    branches: [main]
     paths:
       - ".github/war-peace-telegram-test-trigger.txt"
+      - ".github/workflows/war-peace-reconstruction-telegram-watch.yml"
+      - "scripts/war_peace_reconstruction_watch*.py"
+      - "scripts/test_war_peace*.py"
+  pull_request:
+    paths:
       - ".github/workflows/war-peace-reconstruction-telegram-watch.yml"
       - "scripts/war_peace_reconstruction_watch*.py"
       - "scripts/test_war_peace*.py"
@@ -22,11 +28,28 @@ permissions:
   contents: write
 
 concurrency:
-  group: war-peace-reconstruction-telegram-watch
+  group: ${{ github.event_name == 'pull_request' && format('war-peace-reconstruction-pr-{0}', github.event.pull_request.number) || 'war-peace-reconstruction-telegram-watch' }}
   cancel-in-progress: false
 
 jobs:
+  offline-regressions:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Run no-send offline regressions
+        run: python scripts/test_war_peace_offline.py
+
   monitor:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 12
     env:
@@ -84,8 +107,8 @@ jobs:
           python -m py_compile scripts/war_peace_reconstruction_watch_oct04_guard.py
           python -m py_compile scripts/test_war_peace_regression.py
           python -m py_compile scripts/test_war_peace_oct04_regression.py
-          python scripts/test_war_peace_regression.py
-          python scripts/test_war_peace_oct04_regression.py
+          python -m py_compile scripts/war_peace_reconstruction_watch_runtime.py
+          python scripts/test_war_peace_offline.py
       - name: Check war peace reconstruction conditions
         run: |
           if [ "$TELEGRAM_TEST" = "true" ]; then
@@ -215,5 +238,7 @@ jobs:
             out/war_peace_reconstruction_watch.md
             out/war_peace_reconstruction_alert.txt
             out/war_peace_reconstruction_pending.json
+            out/war_peace_reconstruction_coverage.json
           if-no-files-found: ignore
           retention-days: 7
+
