@@ -6,6 +6,9 @@ import html
 import json
 import pathlib
 import re
+import socket
+import time
+import urllib.error
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -20,9 +23,22 @@ OUT.mkdir(parents=True, exist_ok=True)
 ALERT = OUT / "rebellions_partner_watch_alert.md"
 PENDING = OUT / "rebellions_partner_watch_pending_state.json"
 STATUS = OUT / "rebellions_partner_watch_status.md"
+SOURCE_HEALTH = OUT / "rebellions_partner_watch_source_health.json"
 
 UA = "Mozilla/5.0 (compatible; RebellionsPartnerWatch/1.1; +https://github.com/qedgwangju-dot/khs-watch)"
-FETCH_STATS = {"official_ok": 0, "google_ok": 0, "official_errors": [], "google_errors": []}
+FETCH_STATS = {}
+
+
+def reset_fetch_stats():
+    FETCH_STATS.clear()
+    FETCH_STATS.update({
+        "official_ok": 0, "google_ok": 0,
+        "official_errors": [], "google_errors": [], "google_results": [],
+        "official_blocked": False, "official_skipped": 0, "google_blocked": False,
+    })
+
+
+reset_fetch_stats()
 
 ACTION_TERMS = [
     "협력", "업무협약", "mou", "파트너", "공동개발", "공동 개발", "공동사업", "공동 사업",
@@ -413,11 +429,16 @@ def collect_official():
     items = []
     seen_urls = set()
     for page in range(1, 11):
+        if FETCH_STATS["official_blocked"]:
+            FETCH_STATS["official_skipped"] += 1
+            continue
         url = "https://kr.rebellions.ai/company/newsroom/" + (f"page/{page}/" if page > 1 else "")
         try:
             body = fetch_text(url)
         except Exception as exc:
-            FETCH_STATS["official_errors"].append(f"{url}: {type(exc).__name__}")
+            FETCH_STATS["official_errors"].append(source_error(f"official_page_{page}", exc))
+            if isinstance(exc, urllib.error.HTTPError) and exc.code in {401, 403, 429}:
+                FETCH_STATS["official_blocked"] = True
             continue
         FETCH_STATS["official_ok"] += 1
         soup = BeautifulSoup(body, "html.parser")
@@ -444,19 +465,79 @@ def collect_official():
     return items
 
 
+def source_error(source, exc):
+    """Keep actionable cause codes without logging response bodies or credentials."""
+    error = {"source": source, "error_type": type(exc).__name__}
+    if isinstance(exc, urllib.error.HTTPError):
+        error["http_status"] = exc.code
+    elif isinstance(exc, urllib.error.URLError):
+        error["reason_type"] = type(exc.reason).__name__
+    return error
+
+
+def is_transient_source_error(exc):
+    if isinstance(exc, urllib.error.HTTPError):
+        return exc.code in {500, 502, 503, 504}
+    reason = exc.reason if isinstance(exc, urllib.error.URLError) else exc
+    return isinstance(reason, (TimeoutError, socket.timeout, ConnectionResetError))
+
+
+class ProviderAccessBlocked(RuntimeError):
+    pass
+
+
+def fetch_news_feed(url):
+    """One bounded retry for transient failures, never for access/rate-limit blocks."""
+    errors = []
+    for attempt in range(2):
+        try:
+            # Keep six feeds plus their retries within the workflow's time budget.
+            xml = fetch_text(url, timeout=12)
+            lowered = xml.lower()
+            if "<html" in lowered and any(marker in lowered for marker in (
+                "unusual traffic", "/sorry/", "recaptcha",
+            )):
+                raise ProviderAccessBlocked("Provider challenge page")
+            root = ET.fromstring(xml)
+            if root.tag != "rss" or root.find("channel") is None:
+                raise ValueError("Unexpected RSS document shape")
+            return root, errors
+        except Exception as exc:
+            errors.append(exc)
+            if attempt == 0 and is_transient_source_error(exc):
+                time.sleep(1)
+                continue
+            return None, errors
+
+
 def collect_google_news():
     items = []
-    for query in GOOGLE_QUERIES:
+    for index, query in enumerate(GOOGLE_QUERIES, start=1):
+        source = f"google_query_{index}"
+        if FETCH_STATS["google_blocked"]:
+            FETCH_STATS["google_results"].append({
+                "source": source, "status": "skipped_provider_block", "attempts": 0,
+            })
+            continue
         url = (
             "https://news.google.com/rss/search?q="
             + urllib.parse.quote(query)
             + "&hl=ko&gl=KR&ceid=KR:ko"
         )
-        try:
-            xml = fetch_text(url)
-            root = ET.fromstring(xml)
-        except Exception as exc:
-            FETCH_STATS["google_errors"].append(f"{query}: {type(exc).__name__}")
+        root, errors = fetch_news_feed(url)
+        result = {
+            "source": source, "status": "ok" if root is not None else "error",
+            "attempts": len(errors) + (1 if root is not None else 0),
+            "errors": [source_error(source, exc) for exc in errors],
+        }
+        FETCH_STATS["google_results"].append(result)
+        if root is None:
+            FETCH_STATS["google_errors"].append(result["errors"][-1])
+            exc = errors[-1]
+            if isinstance(exc, ProviderAccessBlocked) or (
+                isinstance(exc, urllib.error.HTTPError) and exc.code in {401, 403, 429}
+            ):
+                FETCH_STATS["google_blocked"] = True
             continue
         FETCH_STATS["google_ok"] += 1
         for node in root.findall(".//item"):
@@ -481,6 +562,41 @@ def collect_google_news():
     return items
 
 
+def write_source_health(now):
+    failed = FETCH_STATS["google_ok"] < 2 or FETCH_STATS["google_blocked"]
+    partial = FETCH_STATS["official_ok"] < 10 or FETCH_STATS["google_ok"] < len(GOOGLE_QUERIES)
+    outcome = "failed" if failed else ("partial" if partial else "passed")
+    report = {
+        "checked_at_kst": now.isoformat(timespec="seconds"),
+        "collection_attempted": True, "outcome": outcome,
+        "official_expected": 10, "google_expected": len(GOOGLE_QUERIES),
+        "minimum_google_feeds": 2,
+        "official_validation": "transport_only",
+        "official_content_validated": False,
+        "google_validation": "rss_root_and_channel",
+        **FETCH_STATS,
+    }
+    SOURCE_HEALTH.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    for group in ("official_errors", "google_errors"):
+        for error in FETCH_STATS[group]:
+            print("rebellions_source_error=" + json.dumps(error, ensure_ascii=False, sort_keys=True))
+    if outcome == "partial":
+        print("warning=rebellions_source_coverage_partial "
+              f"official_pages={FETCH_STATS['official_ok']}/10 "
+              f"google_feeds={FETCH_STATS['google_ok']}/{len(GOOGLE_QUERIES)}")
+    if failed:
+        STATUS.write_text(
+            "# 리벨리온 협력 웹감시\n\n- 상태: 원천 조회 실패 · 신규 변화 여부 확인 불가\n"
+            f"- 원천 조회: 공식 {FETCH_STATS['official_ok']}/10 · 뉴스 {FETCH_STATS['google_ok']}/{len(GOOGLE_QUERIES)}\n"
+            f"- 제공자 접근 제한: {FETCH_STATS['google_blocked']}\n"
+            "- 알림 및 상태 갱신: 중단 (이전 정상 조회 시각 유지)\n"
+            "- 진단: rebellions_partner_watch_source_health.json\n"
+            f"- 조회시각: {now:%Y-%m-%d %H:%M} KST\n",
+            encoding="utf-8",
+        )
+    return failed
+
+
 def load_state():
     if not STATE.exists():
         return {"seen": {}, "initialized": False}
@@ -491,7 +607,8 @@ def load_state():
 
 
 def main():
-    for p in (ALERT, PENDING, STATUS):
+    reset_fetch_stats()
+    for p in (ALERT, PENDING, STATUS, SOURCE_HEALTH):
         if p.exists():
             p.unlink()
 
@@ -501,8 +618,11 @@ def main():
 
     candidates = collect_official() + collect_google_news()
     print(f"rebellions_source_health official_pages={FETCH_STATS['official_ok']}/10 google_feeds={FETCH_STATS['google_ok']}/{len(GOOGLE_QUERIES)}")
-    if FETCH_STATS["google_ok"] < 2:
-        raise RuntimeError("Rebellions news feeds mostly unavailable; fail rather than silently treating missing results as no changes")
+    if write_source_health(now):
+        raise RuntimeError("Rebellions news feeds unavailable or blocked; see source-health diagnostics; no alert or state advancement")
+    collection_label = "정상 조회" if (
+        FETCH_STATS["official_ok"] == 10 and FETCH_STATS["google_ok"] == len(GOOGLE_QUERIES)
+    ) else "부분 조회 · 일부 원천 미확인"
     if FETCH_STATS["official_ok"] == 0:
         print("warning=rebellions_official_newsroom_unreachable; Google News is partial fallback")
 
@@ -541,7 +661,7 @@ def main():
         }
         PENDING.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         STATUS.write_text(
-            f"# 리벨리온 협력 웹감시\n\n- 상태: 초기 기준선 생성\n- 기준선 항목: {len(seen)}개\n- 신규 알림: 0개\n- 원천 조회: 공식 {FETCH_STATS['official_ok']}/10 · 뉴스 {FETCH_STATS['google_ok']}/{len(GOOGLE_QUERIES)}\n- 조회시각: {now:%Y-%m-%d %H:%M} KST\n",
+            f"# 리벨리온 협력 웹감시\n\n- 상태: 초기 기준선 생성 · {collection_label}\n- 기준선 항목: {len(seen)}개\n- 신규 알림: 0개\n- 원천 조회: 공식 {FETCH_STATS['official_ok']}/10 · 뉴스 {FETCH_STATS['google_ok']}/{len(GOOGLE_QUERIES)}\n- 조회시각: {now:%Y-%m-%d %H:%M} KST\n",
             encoding="utf-8",
         )
         return
@@ -656,10 +776,11 @@ def main():
     }
     PENDING.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     STATUS.write_text(
-        f"# 리벨리온 협력 웹감시\n\n- 상태: 정상 조회\n- 후보 항목: {len(ordered)}개\n- 신규 알림: {len(fresh)}개\n- 이번 실행 중복 억제: {duplicate_suppressed}개\n- 누적 중복키: {len(seen)}개\n- 원천 조회: 공식 {FETCH_STATS['official_ok']}/10 · 뉴스 {FETCH_STATS['google_ok']}/{len(GOOGLE_QUERIES)}\n- 조회시각: {now:%Y-%m-%d %H:%M} KST\n",
+        f"# 리벨리온 협력 웹감시\n\n- 상태: {collection_label}\n- 후보 항목: {len(ordered)}개\n- 신규 알림: {len(fresh)}개\n- 이번 실행 중복 억제: {duplicate_suppressed}개\n- 누적 중복키: {len(seen)}개\n- 원천 조회: 공식 {FETCH_STATS['official_ok']}/10 · 뉴스 {FETCH_STATS['google_ok']}/{len(GOOGLE_QUERIES)}\n- 조회시각: {now:%Y-%m-%d %H:%M} KST\n",
         encoding="utf-8",
     )
 
 
 if __name__ == "__main__":
     main()
+

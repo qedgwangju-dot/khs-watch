@@ -2,6 +2,13 @@ name: Rebellions Partner Watch Telegram
 
 on:
   push:
+    branches: [main]
+    paths:
+      - ".github/workflows/rebellions-partner-watch-telegram.yml"
+      - "scripts/rebellions_partner_watch.py"
+      - "tests/test_rebellions_partner_watch.py"
+  pull_request:
+    branches: [main]
     paths:
       - ".github/workflows/rebellions-partner-watch-telegram.yml"
       - "scripts/rebellions_partner_watch.py"
@@ -21,12 +28,34 @@ permissions:
   contents: write
 
 concurrency:
-  group: rebellions-partner-watch-telegram
+  group: rebellions-partner-watch-telegram${{ github.event_name == 'pull_request' && format('-pr-{0}', github.event.pull_request.number) || '' }}
   cancel-in-progress: false
 
 jobs:
+  offline-regressions:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout proposed revision
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install test parser
+        run: python -m pip install --disable-pip-version-check beautifulsoup4
+      - name: Run offline source and event regressions
+        run: |
+          python -m py_compile scripts/rebellions_partner_watch.py
+          python -m unittest discover -s tests -p 'test_rebellions_partner_watch.py' -v
+
   monitor:
-    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event_name != 'pull_request' && (github.event_name != 'push' || github.ref == 'refs/heads/main') && (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success') }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
@@ -69,6 +98,24 @@ jobs:
           with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
               output.write(f"run={'true' if should_run else 'false'}\n")
           print(f"rebellions_trigger={event} state_lag_minutes={lag_minutes:.1f} execute={should_run}")
+          if not should_run:
+              out = pathlib.Path("out")
+              out.mkdir(exist_ok=True)
+              (out / "rebellions_partner_watch_source_health.json").write_text(
+                  json.dumps({
+                      "collection_attempted": False,
+                      "outcome": "skipped_recent_check",
+                      "trigger": event,
+                      "state_lag_minutes": round(lag_minutes, 1),
+                      "last_checked_kst": state.get("last_checked_kst"),
+                  }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8",
+              )
+              (out / "rebellions_partner_watch_status.md").write_text(
+                  "# 리벨리온 협력 웹감시\n\n- 상태: 최근 조회로 이번 수집 생략\n"
+                  f"- 마지막 정상 조회: {state.get('last_checked_kst')}\n"
+                  f"- 경과 시간: {lag_minutes:.1f}분\n"
+                  "- 이번 실행의 원천 건강 상태: 확인하지 않음\n", encoding="utf-8",
+              )
           PY
 
       - name: Set up Python
@@ -154,7 +201,7 @@ jobs:
         run: python scripts/rebellions_partner_watch.py
 
       - name: Publish summary
-        if: always() && steps.cadence.outputs.run == 'true'
+        if: always()
         run: |
           if [ -f out/rebellions_partner_watch_status.md ]; then
             cat out/rebellions_partner_watch_status.md >> "$GITHUB_STEP_SUMMARY"
@@ -282,8 +329,10 @@ jobs:
           name: rebellions-partner-watch-${{ github.run_id }}
           path: |
             out/rebellions_partner_watch_status.md
+            out/rebellions_partner_watch_source_health.json
             out/rebellions_partner_watch_alert.md
             out/rebellions_partner_watch_telegram_confirmed.json
             out/rebellions_partner_watch_pending_state.json
           if-no-files-found: ignore
           retention-days: 14
+
