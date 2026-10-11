@@ -2546,13 +2546,15 @@
   "export_alert_format_version": 2,
   "_delivery": {
     "id": "235664a7ebdcae2a9ebbb2b1b5856c5475df55d3777d2eeb5daf8b65b8dd4274",
-    "status": "in_flight",
+    "status": "partial",
     "created_at_kst": "2026-10-12T03:15:03+09:00",
     "chunks": [
       "✅ <b>삼성·SK하이닉스 HBM 수출 원자료 조회 복구</b>\n━━━━━━━━━━━━━━━━\n• 대상월: <b>2026년 9월</b>\n• 관세청·공공데이터 공식 조회 경로가 다시 정상 응답합니다.\n• 장애 중에는 과거 월 값을 최신값으로 재사용하지 않았습니다.\n• 새 확정월이 확인되면 월간 수출 비교 알림을 별도로 전송합니다.\n• 복구 확인: 2026-10-12 03:13 KST"
     ],
-    "next_chunk": 0,
-    "message_ids": [],
+    "next_chunk": 1,
+    "message_ids": [
+      280
+    ],
     "candidate": {
       "seen_ids": [
         "017d7560e3afc81111bbcb5c",
