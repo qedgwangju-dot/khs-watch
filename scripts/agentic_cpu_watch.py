@@ -410,9 +410,13 @@ def official_cpu_signal_type(url: str, text: str) -> str:
         )
         if supply:
             # A planned future production ramp is not present output.
-            before_ramp = low[max(0, supply.start() - 65):supply.start()]
-            if not re.search(r"\b(?:plans?\s+to|expects?\s+to|will|could|may"
-                             r"|intends?\s+to|scheduled\s+to)\s*$", before_ramp):
+            ramp_context = low[max(0, supply.start() - 75):supply.end() + 60]
+            if not re.search(
+                r"\b(?:plans?\s+to|expects?(?:\s+to)?|will|would|could|may|"
+                r"intends?\s+to|scheduled\s+to|is\s+set\s+to|"
+                r"forecast|projected|targeted|anticipated)\b",
+                ramp_context,
+            ):
                 supply_seen = True
         action = re.search(
             r"\b(?:shipped|shipments?|orders?|bookings?|contracted|contracts?"
@@ -425,7 +429,8 @@ def official_cpu_signal_type(url: str, text: str) -> str:
         # Prospective, negated or hypothetical volume is not observed demand.
         context = low[max(0, action.start() - 70):action.end() + 25]
         if re.search(r"\b(?:no|not|without|unconfirmed|expect(?:s|ed)?(?:\s+to)?"
-                     r"|plans?\s+to|designed\s+to|could|might|may|forecast"
+                     r"|plans?\s+to|designed\s+to|will|would|going\s+to|"
+                     r"scheduled\s+to|intends?\s+to|could|might|may|forecast"
                      r"|projected|predict(?:s|ed)?|anticipat(?:es|ed)?"
                      r"|estimat(?:es|ed)?|guidance|outlook)\b", context):
             continue
@@ -457,8 +462,10 @@ def official_cpu_evidence_stage(text: str, signal_type: str) -> str:
                 continue
             context = low[max(0, match.start() - 70):match.end() + 35]
             if re.search(
-                r"\b(?:not|without|unconfirmed|plans?\s+to|expects?\s+to|could|might|may|"
-                r"forecast|projected|predict(?:s|ed)?|anticipat(?:es|ed)?|estimated)\b",
+                r"\b(?:no|not|without|unconfirmed|plans?\s+to|expects?(?:\s+to)?|"
+                r"will|would|going\s+to|scheduled\s+to|intends?\s+to|"
+                r"could|might|may|forecast|projected|predict(?:s|ed)?|"
+                r"anticipat(?:es|ed)?|estimated)\b",
                 context,
             ):
                 continue
