@@ -241,7 +241,7 @@ def _extract_cut(text: str) -> dict | None:
         # The comparison basis must belong to the SAME sentence as the
         # percentage. "October parts cut 30%. IDC's ORIGINAL forecast..."
         # must never fabricate an October original-plan comparison.
-        separators = list(re.finditer(r"(?<!\\d)\\.(?!\\d)|[;!?。]", low))
+        separators = list(re.finditer(r"(?<!\d)\.(?!\d)|[;!?。]", low))
         start = max((m.end() for m in separators if m.end() <= pos), default=0)
         stop = min((m.start() for m in separators if m.start() > pos), default=len(low))
         clause = low[start:stop]
