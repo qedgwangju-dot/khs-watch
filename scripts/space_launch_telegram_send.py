@@ -509,6 +509,28 @@ def inline_self_test() -> int:
         "https://about.att.com/story/2026/november-stock-dividend.html",
         "https://www.verizon.com/about/investors/dividend-history",
     ])[0].splitlines()[0]) <= 44
+    # Regression fixture: the exact class of 8-source dense price/launch alert
+    # that originally overflowed phone screens. Every source must survive.
+    from starlink_mobile_d2d_watch import price_dividend_display_correction
+    from starlink_mobile_d2d_readability import format_mobile
+    full = format_mobile(
+        "📡 Starlink Mobile·미국 위성-휴대전화 직접통신 감시\n"
+        "기준: 표시검증\n\n" + price_dividend_display_correction()
+    )
+    packed = inline_messages(full)
+    all_urls = [item["url"] for _, ents in packed for item in ents]
+    assert len(all_urls) == 8 and len(set(all_urls)) == 8
+    assert len(packed) >= 2, "Dense alerts should become small, readable parts"
+    assert all(utf16_units(text) <= INLINE_MAX_UNITS for text, _ in packed)
+    assert any("AT&T 주가" in text for text, _ in packed)
+    assert any("VZ 배당" in text for text, _ in packed)
+    assert any("NASA" in text for text, _ in packed)
+    assert all("원문① · 원문② · 원문③ · 원문④" not in text for text, _ in packed)
+    assert "22.18달러" in "\n".join(text for text, _ in packed)
+    assert "9억4,600만 달러" in "\n".join(text for text, _ in packed)
+    assert "2030년" in "\n".join(text for text, _ in packed)
+    # Real UI is device-dependent, but we guarantee no text/links are lost.
+    assert "원문: " in "\n".join(text for text, _ in packed)
     print("starlink_d2d_inline_self_test=ok inline_links=3 utf16=ok long_text=ok no_buttons=ok")
     return 0
 
