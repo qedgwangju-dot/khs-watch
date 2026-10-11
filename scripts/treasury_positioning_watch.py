@@ -381,8 +381,8 @@ def fmt_contracts(v):
 
 
 def classify(rows, repo):
-    reductions = sum(1 for x in rows.values() if x["net"] < 0 and x["net_change"] > 0)
-    expansions = sum(1 for x in rows.values() if x["net"] < 0 and x["net_change"] < 0)
+    reductions = sum(1 for name in CORE_CONTRACTS if rows[name]["net"] < 0 and rows[name]["net_change"] > 0)
+    expansions = sum(1 for name in CORE_CONTRACTS if rows[name]["net"] < 0 and rows[name]["net_change"] < 0)
 
     if reductions >= 3 and repo["state"] in ("주의", "스트레스"):
         return (
