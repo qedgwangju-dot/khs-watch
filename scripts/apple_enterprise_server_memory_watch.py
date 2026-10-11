@@ -144,7 +144,9 @@ def origin_family(row: dict) -> str:
     publisher = norm(row.get("source", "")) or "unspecified"
     # Reuters and syndicators attributing the *same* Information scoop
     # are not independent confirmations.
-    if has(text, ("the information", "더인포메이션", "信息", "据the information", "据theinformation")):
+    if publisher == "the information":
+        return "the-information-syndicated"
+    if has(text, ("the information", "더인포메이션", "据the information", "据theinformation")):
         if publisher not in ("apple", "nvidia", "samsung electronics", "micron technology"):
             return "the-information-syndicated"
     if "reuters" in text and publisher != "reuters":
@@ -457,8 +459,17 @@ def process(rows: list[dict], state: dict) -> tuple[list[dict], dict]:
             x["published"]), reverse=True)
         top = ranked[0]
         # No alert based on an isolated low-quality headline.
-        if top["tier"] in ("기타매체", "재인용가능") and len(independent[key]) < 2:
-            continue
+        if top["tier"] in ("기타매체", "재인용가능"):
+            # Two copies of a rumor, even at unrelated outlets, don't prove it.
+            # Require a separate first-party/high-quality originating report.
+            top_origins = {x["origin"] for x in events}
+            recent_evidence = [
+                r for r in reports[-600:]
+                if r["key"] == key and r["origin"] in independent[key]
+                and r["tier"] in ("회사발표색인", "신뢰보도")
+            ]
+            if len(independent[key]) < 2 or not recent_evidence:
+                continue
         top = dict(top)
         n = len(independent[key])
         top["significance"] += f" (독립 원보도 계열 {n}곳; 인용 기사 반복은 제외)"
