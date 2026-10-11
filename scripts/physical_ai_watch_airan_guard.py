@@ -484,6 +484,83 @@ def _humanoid_dram_recovery() -> list[dict]:
     }]
 
 
+
+# 2026-10-10 X Takeover: Musk discussed fine-motor force/precision and
+# retrospectively described a 2025 Chinese motor-magnet export restriction.
+# This is a new management DISCLOSURE of an old disruption, not a new V3 delay.
+OPTIMUS_HAND_MAGNET_RECOVERY = 'DIRECT_XTAKEOVER_OPTIMUS_HAND_MAGNET_RETROSPECTIVE_20261010'
+OPTIMUS_HAND_MAGNET_URL = 'https://x.com/tslaming/status/2109093140477231416'
+OPTIMUS_HAND_MAGNET_ID = re.compile(
+    r'X\s*Takeover|XTakeover|2109093140477231416|'
+    r'자석.{0,60}(?:Optimus|옵티머스)|motor\s*magnets?',
+    re.I,
+)
+OPTIMUS_HAND_MAGNET_CEO = re.compile(r'Elon\s*Musk|일론\s*머스크|머스크', re.I)
+OPTIMUS_HAND_MAGNET_PRECISION = re.compile(
+    r'self[-\s]*tapping|셀프\s*태핑|나사|dexterous\s*hand|손.{0,30}정밀|precision.{0,35}force',
+    re.I,
+)
+OPTIMUS_HAND_MAGNET_RETRO = re.compile(
+    r'(?:지난해|작년|last\s*year|2025).{0,140}(?:자석|magnet)|'
+    r'(?:자석|magnet).{0,120}(?:지난해|작년|last\s*year|2025)',
+    re.I,
+)
+OPTIMUS_HAND_MAGNET_FRESH = re.compile(
+    r'(?:new|current|additional|further|추가|새로운|이번|현재).{0,80}'
+    r'(?:export\s*ban|magnet\s*ban|자석\s*수출\s*금지|생산\s*지연|일정\s*지연)|'
+    r'(?:2026|2027).{0,60}(?:새로운\s*지연|추가\s*지연)',
+    re.I,
+)
+OPTIMUS_HAND_MAGNET_SOURCES = {'Elon Musk (X Takeover)', '일론 머스크 (X Takeover)'}
+
+
+def _is_optimus_hand_magnet(text: str) -> bool:
+    return bool(OPTIMUS_HAND_MAGNET_ID.search(text) and
+                OPTIMUS_HAND_MAGNET_CEO.search(text) and
+                (OPTIMUS_HAND_MAGNET_PRECISION.search(text) or
+                 re.search(r'자석|magnet', text,re.I)))
+
+
+def _optimus_hand_magnet_stage(text: str, source: str = '') -> str:
+    if not _is_optimus_hand_magnet(text):
+        return ''
+    if OPTIMUS_HAND_MAGNET_RETRO.search(text):
+        return 'retrospective_supply_bottleneck' if source in OPTIMUS_HAND_MAGNET_SOURCES else 'background'
+    # Do not infer new production slippage merely from a hand/rare-earth mention.
+    if OPTIMUS_HAND_MAGNET_FRESH.search(text) and source in OPTIMUS_HAND_MAGNET_SOURCES:
+        return 'new_schedule_warning'
+    return 'background'
+
+
+def _optimus_hand_magnet_recovery() -> list[dict]:
+    if base.NOW.astimezone(base.KST).date() > dt.date(2026,10,16):
+        return []
+    return [{
+        'title': 'X Takeover 머스크 Optimus 손 정밀·힘 제어와 자석 수출 제한 2025년 차질 회고',
+        'link': OPTIMUS_HAND_MAGNET_URL,
+        'description': (
+            '2026년 10월 10일 X Takeover 원격 대담: 일론 머스크는 '
+            '작은 셀프태핑 나사를 나무에 박는 예를 들며 손의 정밀 조작과 '
+            '축방향 힘을 동시에 제어하는 난도를 설명했다. '
+            '처음 보는 작업에 적응하는 범용성은 목표이며 달성 시연이 아니다. '
+            '2025년 중국 모터용 희토류 영구자석 수출 제한으로 '
+            'Optimus 개발이 2~3개월 지연됐었다고 회고했다. '
+            '이는 2026년 10월 신규 2~3개월 생산 지연 발표가 아니다. '
+            '2026년 2분기 실적발표에서 이미 설명한 '
+            '신규 로봇 부품 공급망 구축·내재화의 실제 실패 사례에 해당한다. '
+            'Tesla의 실제 신규 부품 주문, 미국 영구자석 신규 증설 금액, '
+            '희토류 자석 공급사 선정, V3 새 공개일 또는 납품 계약은 '
+            '이번 대담에서 발표된 사실로 확인되지 않았다. '
+            '실제 원대담 전체를 직접 재생·전사하지 못했고 주최 행사자료, '
+            '대담 영상 재게시, 2026-10-11 The Last Daily의 구체적 인용 '
+            '및 Tesla 2분기 실적발표로 교차확인했다.'
+        ),
+        'source': 'Elon Musk (X Takeover)',
+        'published': None,
+        'direct_recovery': True,
+        'historical_2025_supply_delay': True,
+    }]
+
 _orig_query_news = base.query_news
 
 
@@ -498,10 +575,20 @@ def query_news(q: str) -> list[dict]:
         return _digital_optimus_game_recovery()
     if q == HUMANOID_DRAM_RECOVERY:
         return _humanoid_dram_recovery()
+    if q == OPTIMUS_HAND_MAGNET_RECOVERY:
+        return _optimus_hand_magnet_recovery()
     return _orig_query_news(q)
 
 
 base.query_news = query_news
+if OPTIMUS_HAND_MAGNET_RECOVERY not in base.QUERIES:
+    base.QUERIES.append(OPTIMUS_HAND_MAGNET_RECOVERY)
+for q in (
+    '("X Takeover" OR XTakeover) (Optimus OR 옵티머스) (magnet OR 자석 OR screw OR 나사 OR hand OR 손)',
+    '(Tesla OR 테슬라) (Optimus OR 옵티머스) (희토류 자석 OR 영구자석 OR motor magnets) (신규 공급계약 OR 공장 가동 OR 공급 승인 OR 지연 OR 생산량)',
+):
+    if q not in base.QUERIES:
+        base.QUERIES.append(q)
 if DONGKUK_NPS_RECOVERY not in base.QUERIES:
     base.QUERIES.append(DONGKUK_NPS_RECOVERY)
 if DKT_HUMANOID_RECOVERY not in base.QUERIES:
@@ -607,6 +694,8 @@ def _is_airan(text: str) -> bool:
 
 
 def topic_group(text: str) -> str | None:
+    if _is_optimus_hand_magnet(text):
+        return 'optimus_hand_magnet'
     if _is_humanoid_dram(text):
         return 'humanoid_brain_dram'
     if _is_digital_optimus_game(text):
@@ -634,6 +723,9 @@ def _stage(text: str) -> str:
 
 def score(item: dict) -> int:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    if topic_group(text) == 'optimus_hand_magnet':
+        return {'retrospective_supply_bottleneck': 43, 'new_schedule_warning': 55,
+                'background': 0}.get(_optimus_hand_magnet_stage(text,item.get('source') or ''),0)
     if topic_group(text) == 'humanoid_brain_dram':
         stage = _humanoid_dram_stage(text, item.get('source') or '')
         return {'initial_research_forecast': 45,
@@ -685,6 +777,8 @@ def score(item: dict) -> int:
 
 
 def category(text: str, group: str) -> str:
+    if group == 'optimus_hand_magnet':
+        return 'Optimus 손·자석 · 2025년 공급망 차질 경영진 회고' if OPTIMUS_HAND_MAGNET_RETRO.search(text) else 'Optimus 손·자석 · 실제 신규 일정변경 확인'
     if group == 'humanoid_brain_dram':
         if _humanoid_dram_oem_order(text):
             return '휴머노이드 두뇌 D램 · 고객 실명 양산 공급계약 확인'
@@ -750,6 +844,13 @@ def category(text: str, group: str) -> str:
 
 
 def meaning(cat: str) -> str:
+    if cat == 'Optimus 손·자석 · 2025년 공급망 차질 경영진 회고':
+        return ('머스크는 X Takeover에서 작은 셀프태핑 나사를 집어 나무에 박는 정밀조작과 힘 제어를 동시에 달성하기 어렵다고 설명했습니다. '
+                '2025년 중국의 모터용 희토류 자석 수출 제한으로 Optimus가 2~3개월 지연됐었다는 회고는 공급망 위험의 정량 근거입니다. '
+                '현재 V3 일정이 2~3개월 새로 지연됐다는 뜻은 아닙니다. '
+                '다음 단계는 처음 보는 작업의 자율수행 성공률·사람 개입률, 정밀 구동 부품 수율, 대체자석 고객 승인과 실제 출하입니다.')
+    if cat == 'Optimus 손·자석 · 실제 신규 일정변경 확인':
+        return ('최근 공급망 차질이 실제 V3 생산 일정을 새로 변경했다는 경영진 발언 단계입니다. 기존 2025년 2~3개월 차질과 분리해 새 기준일·인증기간·대체 공급사와 생산량을 확인합니다.')
     if cat == '휴머노이드 두뇌 D램 · 고객 실명 양산 공급계약 확인':
         return (
             '시장 조사기관의 19→39GB 전망과 달리 메모리 제조사가 '
@@ -866,6 +967,11 @@ def meaning(cat: str) -> str:
 
 
 def risk(cat: str) -> str:
+    if cat.startswith('Optimus 손·자석 · '):
+        return ('손의 정밀 제어·토크·촉각·마찰·발열·반복 내구성과 희토류 자석 납기·품질·원산지 인증이 결합한 병목입니다. '
+                '실패 경로는 자석 공급 지연→모터·손 액추에이터 생산 불능→조립 라인 공백→로봇 인도 지연입니다. '
+                '과거 2~3개월 차질은 2025년 회고 수치이며 새로운 2026년 V3 일정 지연을 추정하지 않습니다. '
+                '향후 6~12개월 조기지표는 대체자석 승인, 모터 양산수율, 실제 손 작업 성공률·재작업률, 로봇 주간 실출하입니다.')
     if cat.startswith('휴머노이드 두뇌 D램 · '):
         return (
             '가장 현실적인 실패 경로는 로봇 양산이 지연되거나 메모리 최적화로 '
@@ -923,6 +1029,9 @@ def risk(cat: str) -> str:
 
 
 def verification(item: dict, group: str, text: str) -> str:
+    if group == 'optimus_hand_magnet':
+        return ('2026-10-10 행사 주최 자료·영상 재게시·2026-10-11 구체적 대담 인용 보도와 Tesla Q2 실적자료 교차확인 · '
+                '머스크의 2025년 자석 제한에 따른 2~3개월 과거 지연 회고 · 원대담 전체 직접 전사 미완료 · 신규 일정확정 아님')
     if group == 'humanoid_brain_dram':
         if _humanoid_dram_stage(text, item.get('source') or '') == 'confirmed_named_oem_order':
             return '메모리 제조사 직접 발표 · 로봇 고객 실명 계약·실출하 원문 확인 단계, 금액 별도 확인'
@@ -984,6 +1093,8 @@ def verification(item: dict, group: str, text: str) -> str:
 
 
 def clean_title(title: str, source: str) -> str:
+    if _is_optimus_hand_magnet(title + ' ' + source):
+        return '머스크: Optimus 손 정밀·힘 제어 병목, 2025년 자석 제한 2~3개월 차질 회고'
     text = f'{title} {source}'
     if _is_humanoid_dram(text):
         if source in HUMANOID_DRAM_VENDOR_SOURCES and _humanoid_dram_oem_order(text):
@@ -1042,6 +1153,8 @@ def clean_title(title: str, source: str) -> str:
 
 
 def tag_for(group: str) -> str:
+    if group == 'optimus_hand_magnet':
+        return 'Optimus 손·자석 공급망'
     if group == 'humanoid_brain_dram':
         return '휴머노이드 메모리'
     if group == 'digital_optimus_games':
@@ -1059,6 +1172,9 @@ def tag_for(group: str) -> str:
 
 def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    if topic_group(text) == 'optimus_hand_magnet':
+        stage = _optimus_hand_magnet_stage(text,item.get('source') or '')
+        return hashlib.sha256(f'optimus|hand-magnet|xtakeover-20261010|{stage}'.encode()).hexdigest()
     if topic_group(text) == 'humanoid_brain_dram':
         stage = _humanoid_dram_stage(text, item.get('source') or '')
         if stage == 'confirmed_named_oem_order':
@@ -1150,6 +1266,9 @@ def key(item: dict) -> str:
 def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -> list[dict]:
     chosen = _orig_select_diverse(items, seen, force, limit)
     candidates = items if force else [x for x in items if x.get('key') not in seen]
+    hand_magnet = next((x for x in candidates if x.get('group') == 'optimus_hand_magnet'),None)
+    if hand_magnet and not any(x.get('key') == hand_magnet.get('key') for x in chosen):
+        chosen = ([hand_magnet,*chosen] if len(chosen)<limit else [hand_magnet,*chosen[:-1]])
     brain_memory = next((x for x in candidates if x.get('group') == 'humanoid_brain_dram'), None)
     if brain_memory and not any(x.get('key') == brain_memory.get('key') for x in chosen):
         chosen = (
