@@ -1062,12 +1062,33 @@ def key(item: dict) -> str:
     if topic_group(text) == 'humanoid_brain_dram':
         stage = _humanoid_dram_stage(text, item.get('source') or '')
         if stage == 'confirmed_named_oem_order':
-            vendor = next((v for v in sorted(HUMANOID_DRAM_VENDOR_SOURCES)
-                           if re.search(re.escape(v), text, re.I)), item.get('source') or 'unknown')
-            buyer = HUMANOID_DRAM_NAMED_BUYER.search(text)
-            actor = (buyer.group(0).lower() if buyer else 'unnamed')
+            # Canonicalize Korean/English company aliases to prevent double
+            # alerts from identical vendor and buyer announcements.
+            vendor = 'unknown'
+            for canonical, pat in (
+                ('samsung', r'삼성전자|Samsung\\s*Electronics'),
+                ('skhynix', r'SK\\s*hynix|SK하이닉스'),
+                ('micron', r'Micron(?:\\s*Technology)?|마이크론'),
+            ):
+                if re.search(pat, text, re.I):
+                    vendor = canonical
+                    break
+            buyer = 'unknown'
+            for canonical, pat in (
+                ('nvidia', r'NVIDIA|엔비디아'),
+                ('tesla', r'Tesla|테슬라'),
+                ('xpeng', r'XPENG|샤오펑'),
+                ('boston', r'Boston\\s*Dynamics|보스턴다이내믹스'),
+                ('agility', r'Agility\\s*Robotics'),
+                ('unitree', r'Unitree|유니트리'),
+                ('figure', r'Figure\\s*AI|피겨'),
+            ):
+                if re.search(pat, text, re.I):
+                    buyer = canonical
+                    break
+            product = 'jetson-thor' if re.search(r'Jetson\\s*Thor|젯슨\\s*토르',text,re.I) else 'other-robot'
             return hashlib.sha256(
-                f'robot-lpddr-oem|{vendor}|{actor}|confirmed-contract'.encode()
+                f'robot-lpddr-oem|{vendor}|{buyer}|{product}|confirmed-contract'.encode()
             ).hexdigest()
         if stage == 'initial_research_forecast':
             return hashlib.sha256(
