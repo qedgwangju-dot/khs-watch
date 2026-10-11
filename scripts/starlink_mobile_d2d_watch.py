@@ -376,6 +376,12 @@ SPACEX_FAIRING_URL="https://www.spacex.com/vehicles/falcon-9/fairing"
 STARLINK_D2C_URL="https://www.starlink.com/bs/business/direct-to-cell"
 US_CARRIER_20261009_URL="https://www.fool.com/coverage/stock-market-today/2026/10/09/stock-market-today-oct-9-at-and-t-slides-on-spacex-spectrum-deal-threat/"
 
+def should_send_historical_factcheck(initial:bool, state:dict, official:list[str])->bool:
+ return (not initial
+         and FACTCHECK_20261011_KEY not in state.get("seen", {})
+         and "NASA Falcon 9·Dragon Crew-15~17 확정 계약" in official
+         and "Grain Management 매각 공식 발표" in official)
+
 def user_claims_factcheck()->str:
  return "\n".join([
   "[주가·발사병목 검증] 10월 9일 종가와 Falcon 9·Dragon 운항",
@@ -518,6 +524,12 @@ def test()->int:
  assert distinct_primary_organizations(["Grain Management 매각 공식 발표", "Grain Management 배포 보도자료"])=={"grain"}
  assert distinct_primary_organizations(["Grain Management 배포 보도자료", "AT&T·AST SpaceMobile 상업계약 공식 발표"])=={"grain","att"}
  assert FACTCHECK_20261011_KEY not in KNOWN_BASELINE_KEYS
+ sources=["NASA Falcon 9·Dragon Crew-15~17 확정 계약", "Grain Management 매각 공식 발표"]
+ assert should_send_historical_factcheck(False,{"seen":{}},sources)
+ assert not should_send_historical_factcheck(False,{"seen":{FACTCHECK_20261011_KEY:"2026-10-11"}},sources)
+ assert not should_send_historical_factcheck(True,{"seen":{}},sources)
+ assert not should_send_historical_factcheck(False,{"seen":{}},sources[:1])
+
  assert "AT&T(T) -9.81%" in user_claims_factcheck()
  assert "계약 수행기간은 2030년까지" in user_claims_factcheck()
  assert "위성 길이 7m" in user_claims_factcheck()
@@ -569,7 +581,7 @@ def main()->int:
  claim_verified = ("NASA Falcon 9·Dragon Crew-15~17 확정 계약" in official
                   and "Grain Management 매각 공식 발표" in official)
  factcheck_20261011=False
- if not initial and FACTCHECK_20261011_KEY not in state["seen"] and claim_verified:
+ if should_send_historical_factcheck(initial,state,official):
   events.insert(0,user_claims_factcheck())
   next_seen[FACTCHECK_20261011_KEY]=NOW.isoformat()
   factcheck_20261011=True
