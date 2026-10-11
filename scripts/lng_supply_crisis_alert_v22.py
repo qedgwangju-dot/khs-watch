@@ -2,6 +2,7 @@
 """LNG 공급·가격 감시 v22: Bundesbank 메타데이터 날짜 오인 차단."""
 from __future__ import annotations
 
+import csv
 import datetime as dt
 import re
 
@@ -14,18 +15,38 @@ def parse_bundesbank_csv_v22(raw: bytes) -> list[tuple[dt.date, float]]:
     out: list[tuple[dt.date, float]] = []
     # Bundesbank BBK-CSV는 메타데이터 블록 뒤 실제 관측행이 날짜로 시작한다.
     # 날짜가 줄 중간에 등장하는 메타데이터/업데이트시각은 절대 관측치로 취급하지 않는다.
-    pattern = re.compile(
-        r'^\s*"?(20\d{2}-\d{2}-\d{2})"?\s*;\s*"?([-+]?\d+(?:[.,]\d+)?)"?(?:\s*;|\s*$)'
-    )
+    date_start = re.compile(r'^\s*"?20\d{2}-\d{2}-\d{2}"?\s*([;,\t])')
+    number = re.compile(r'[-+]?\d+(?:[.,]\d+)?')
+    delimiter = None
     for line in text.splitlines():
-        m = pattern.search(line)
-        if not m:
+        match = date_start.match(line)
+        if not match:
+            continue
+        row_delimiter = match.group(1)
+        if delimiter is not None and row_delimiter != delimiter:
+            raise RuntimeError("Bundesbank observation delimiters disagree")
+        delimiter = row_delimiter
+        try:
+            row = next(csv.reader([line.strip()], delimiter=delimiter,
+                                  skipinitialspace=True, strict=True))
+        except csv.Error as exc:
+            raise RuntimeError("Bundesbank malformed observation CSV") from exc
+        if len(row) < 2:
+            continue
+        period, token = row[0].strip(), row[1].strip()
+        if not re.fullmatch(r'20\d{2}-\d{2}-\d{2}', period):
             continue
         try:
-            date = dt.date.fromisoformat(m.group(1))
-            value = float(m.group(2).replace(",", "."))
-        except Exception:
+            date = dt.date.fromisoformat(period)
+        except ValueError:
             continue
+        # Read only the observation column. Missing values and flag/comment
+        # numbers must never be interpreted as a yield.
+        if not number.fullmatch(token):
+            continue
+        if delimiter == "," and len(row) > 2 and number.fullmatch(row[2].strip()):
+            raise RuntimeError("Bundesbank ambiguous unquoted decimal comma or numeric flag")
+        value = float(token.replace(",", "."))
         if not (-1.0 <= value <= 8.0):
             raise RuntimeError(f"Bundesbank 10Y implausible observation date={date} value={value}")
         out.append((date, value))
