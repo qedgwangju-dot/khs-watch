@@ -2858,8 +2858,8 @@ assert rng == mmg and rns >= 11 and rnk == mmk, (rng, rns, rnc, rnk)
 # Macro-only or speculative HBM cross-over is not an installed order.
 memory_theme = make(
     "휴머노이드 로봇 메모리 시장 20배 테마",
-    "로봇 DRAM은 성장할 것이라는 전망만 소개하며 "
-    "정식 고객·로봇 탑재량 수치는 없다.",
+    "카운터포인트리서치는 로봇 DRAM이 성장할 것으로 예측하지만 이 보도는 "
+    "정식 고객·로봇 탑재량 수치 없이 주가 테마만 소개한다.",
     "증시 테마 블로그",
 )
 tg, ts, tc, tk = classify(memory_theme)
