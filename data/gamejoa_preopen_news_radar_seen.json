@@ -4399,6 +4399,25 @@
       "telegram_core_fact": "KT&G가 인도네시아 신공장을 가동해 글로벌 5각 생산체제를 구축했다. 설비 9대 설치 후 연산 210억 개비, 기존 공장 포함 현지 생산능력은 350억 개비로 확대될 전망이다.",
       "title": "KT&G, 인도네시아 신공장 가동…5개국 생산체제 구축 | 연합뉴스"
     },
+    "core:3195551e57cdd0d0d21cc08b": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820887",
+      "source": "뉴시스",
+      "source_body_digest": "e20671522182807e0c0b76f2aa22f825c0531d8c9cb634c8bda8fbab6b98dca0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5f23859c6369b07b80cfc577c9c4d14de2ff5d61d3125fbf94a75a24d9ae545",
+      "source_fact_keys": [
+        "source_fact:v1:eae6d722b4a100eed013f53a3978cf1442d48e124bdfa76c21ad96ab9547b7c9"
+      ],
+      "source_published_kst": "2026-10-11T11:09+09:00",
+      "source_title": "\"매도세 심상찮더니…\" 삼성전자 외국인 지분, 17년만에 최저",
+      "telegram_core_fact": "외국인들은 올들어 지난 8일까지 코스피시장에서 92조5477억원에 이르는 삼성전자 주식을 순매도했다.",
+      "title": "\"매도세 심상찮더니…\" 삼성전자 외국인 지분, 17년만에 최저"
+    },
     "core:31a2878ec20ff8ac8bb02412": {
       "first_seen_kst": "2026-10-07T22:13:12+09:00",
       "lanes": {
@@ -5443,6 +5462,37 @@
       "source_title": "아비언트, 신임 대표에 마이크 프랭크 선임..가이던스 유지",
       "telegram_core_fact": "증권가는 아비언트의 2026년 매출액을 약 34억2,167만 달러로 전년 대비 4.95% 증가할 것으로 예상한다.",
       "title": "아비언트, 신임 대표에 마이크 프랭크 선임..가이던스 유지"
+    },
+    "core:3c78a6b6215d5e73d39d42a1": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.news1.kr/world/europe/6315726",
+      "source": "뉴스1",
+      "source_body_digest": "0fe9e321ba15c757cf5d3a734bf198a7255ea52d7a37f29e94c59aa5ee145d4e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8eea27a1ab9a0a3ebcff31bc4515d00677f7c8e9479325a18f314acb66479e99",
+      "source_fact_keys": [
+        "source_fact:v1:27e0c5a36d9e46f494dc298273fd68ca5619c179bd5ff8a0129eed72481ab324",
+        "source_fact:v1:2ed26438764725a50dff0f8297a6d498a6a85e70ae3d70f197eb894435430b8b",
+        "source_fact:v1:31e26677e90f145ab20b0888a9fe03de6b4fe567f5288728276d3bacc98f23a4",
+        "source_fact:v1:560c3df8cf3c45fe19e21205d4a27cd927df446b68afb469e73ca02feefe2636",
+        "source_fact:v1:6445d831949d3cc34e6428655c19fc89cfa9e556b9dcc4c778c655e693d4c1b4",
+        "source_fact:v1:7f2851eec48fa941cfb758f97c5ef0b34968500b8fc8c40b225739813c642108",
+        "source_fact:v1:834e231feeb564ff9bdbe5824143d66f450c95afeb16cd88a8816dce661fbd14",
+        "source_fact:v1:9c2ef8eea27b4c2a5109bd424c0391b88528cefd0bdc5927478dc74d864bf8af",
+        "source_fact:v1:cd3f99c0a1b09bec99104bd6d97f07ea6527633be504010b53eeebc38feb4a07",
+        "source_fact:v1:ddaaccbddb86804ee8c802d1332487c16d09a12adf83cd9e2285d2b8ed47afd1",
+        "source_fact:v1:ede55a42b2befdbd683577f1d14f22c601ca6bb30fadfde4057c87b94ab9f126",
+        "source_fact:v1:f0691e4274da096e48d24dc8f93ea89d3e92da8798090e5f38e73b1c743d3469",
+        "source_fact:v1:f09973070049a674877c0c7fe5c49213267465bda20b8f0eda9a053397b16796"
+      ],
+      "source_published_kst": "2026-10-11T06:19+09:00",
+      "source_title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성",
+      "telegram_core_fact": "(런던=뉴스1) 러시아가 10일(현지시간) 도널드 트럼프 미국 대통령과 블라디미르 푸틴 러시아 대통령의 합의에 따라 자국산 경유 수출 금지 조치를 부분적으로 해제했다고 밝혔다.",
+      "title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성"
     },
     "core:3cc3a8ccd5160e35bf599e41": {
       "first_seen_kst": "2026-10-09T15:48:54+09:00",
@@ -13739,6 +13789,32 @@
       "telegram_core_fact": "한 업계 관계자 A는 \"삼성전자가 최근 협력사에 연간 스마트폰 출하량 2억 3000만대 초반에 해당하는 4분기 부품 발주량을 통보했다\"며 \"당초 부품업계에서 기대했던 (스마트폰 출하량 전망치) 2억 4000만대보다 적다\"고 밝혔다.",
       "title": "삼성전자, 올해 스마트폰 출하 목표 2.4억대→2.3억대 하향"
     },
+    "core:a486933a5dfe2172252ae9fc": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01400566645611936",
+      "source": "이데일리",
+      "source_body_digest": "cdfc2feb028f591c7759ea6fbe3cf4ee9d6c9eb907ac23c191d4f2b49494d83c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3760acd2d6ceeeff03c29df26a5f5c56de769d206694e56a425e03e0f9617d28",
+      "source_fact_keys": [
+        "source_fact:v1:3890e363b51da245257234affa08ad160ab03d30eae0a6ed64c66e243a5979b3",
+        "source_fact:v1:5a75a0c0ef5104e07c3c81ce8b5feec53b500515a914802a89bc2b1b44997380",
+        "source_fact:v1:5fbd5a9da9dd25977e4f7af8161db69e883a4f35973e69c34a4245be448c23b7",
+        "source_fact:v1:6efe7c4bf2cb5b33aa546041344e0e157c401a948a313cc329520fd013df403a",
+        "source_fact:v1:9a7aef122a00a35fb64ccac90cebaac9209428508524ff69e0450edce2f02432",
+        "source_fact:v1:e17fa24b5f40ad556d6cf94769746685cded671701c0d66285f6bcbbbd92d7d1",
+        "source_fact:v1:ed5193a3ed267f031df567ad81d206a740e2661d116b4ff1ecfa15451540a24d",
+        "source_fact:v1:ee6edb922de28e660e9f3f7f5557943b89fc5c71c166701744f9689ba24f3102"
+      ],
+      "source_published_kst": "2026-10-11T11:07+09:00",
+      "source_title": "중국 소비 부진 속 황금연휴 효과 기대…5중전회에 쏠리는 눈",
+      "telegram_core_fact": "중국 상무부는 중추절 연휴 기간인 지난달 25~27일 전국 수요 소매·외식업체의 일평균 매출이 전년동기대비 6.1% 증가했다고 밝혔다. 로이터통신은 오히려 9~10월 연휴 기간 중국 내 여행당 평균 지출액이 전년동기대비 1.9% 감소했다면서 소비자 지출이 약세를 이어가고 있다고 보도했다.",
+      "title": "중국 소비 부진 속 황금연휴 효과 기대…5중전회에 쏠리는 눈"
+    },
     "core:a4ac0065b535ffea54590417": {
       "first_seen_kst": "2026-10-10T06:02:39+09:00",
       "lanes": {
@@ -15333,6 +15409,25 @@
       "source_title": "사우디·후티 '전면전' 되돌림 양상…리야드 공항 등 3명 사망",
       "telegram_core_fact": "이번 공격은 사우디가 지원하는 예멘 정부군이 후티가 장악한 홍해 연안의 전략 요충지를 탈환하기 위한 군사작전에 나선 가운데 발생했다.",
       "title": "사우디·후티 '전면전' 되돌림 양상…리야드 공항 등 3명 사망"
+    },
+    "core:b62c1fd5a81f49a11d01e424": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820882",
+      "source": "뉴시스",
+      "source_body_digest": "e20df4500cd5aabe90a9d0384382ab3010975f6424f8b1a4fd938f32ed25747f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4b23ea5e8efbcdc67b3d4928c3317ebf0cff7bca63bb90624701b2cf93b4e294",
+      "source_fact_keys": [
+        "source_fact:v1:f5ff2490940dbe6d639de1cd5ea5f41474fd6cd2fa559519a865ec4d73b73ed1"
+      ],
+      "source_published_kst": "2026-10-11T11:05+09:00",
+      "source_title": "인천 쿠팡물류센터 화재 원인 '리튬배터리' 추정",
+      "telegram_core_fact": "109시간 만에 진화된 인천 쿠팡 물류센터 화재가 발생한 지 약 3개월이 지난 가운데 '리튬배터리'에서 불이 시작됐을 가능성이 있다는 국립과학수사연구원(국과수)의 감정 결과가 나왔다. 인천경찰청 광역범죄수사대 등에 따르면 국과수는 지난달 1차 감정 결과 리튬배터리 발화 가능성을 제시했다.",
+      "title": "인천 쿠팡물류센터 화재 원인 '리튬배터리' 추정"
     },
     "core:b641bdbca87d3430366f35b6": {
       "first_seen_kst": "2026-10-09T19:24:17+09:00",
@@ -32038,22 +32133,22 @@
     "event:fe63067fb8b6aafdf318a626": {
       "first_seen_kst": "2026-10-11T06:52:52+09:00",
       "lanes": {
-        "live": "2026-10-11T10:42:03+09:00",
+        "live": "2026-10-11T11:26:05+09:00",
         "preopen": "2026-10-11T06:52:52+09:00"
       },
-      "last_seen_kst": "2026-10-11T10:42:03+09:00",
-      "link": "https://biz.chosun.com/policy/policy_sub/2026/10/11/FULD2R626REGTN4WNDLIBO3B2Y/",
-      "source": "조선비즈",
-      "source_body_digest": "490aae15712996285ee06cb45a7ee5d4e5d3dc46e93bda8dc2387921294cde90",
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820887",
+      "source": "뉴시스",
+      "source_body_digest": "e20671522182807e0c0b76f2aa22f825c0531d8c9cb634c8bda8fbab6b98dca0",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:2b0d1cfe28763b84a2ea28d7e391449632c5c97a5e5dd36dae2737f193679ff8",
+      "source_fact_identity": "source_facts:v1:e5f23859c6369b07b80cfc577c9c4d14de2ff5d61d3125fbf94a75a24d9ae545",
       "source_fact_keys": [
-        "source_fact:v1:86b47b6936b6b0793b493b46fbebcc6292753002c407227de9ac639017275de9"
+        "source_fact:v1:eae6d722b4a100eed013f53a3978cf1442d48e124bdfa76c21ad96ab9547b7c9"
       ],
-      "source_published_kst": "2026-10-11T10:18+09:00",
-      "source_title": "“반도체 성과급 잔치에도… 소비 진작 효과는 제한적일 것”",
-      "telegram_core_fact": "반도체 호황으로 삼성전자와 SK하이닉스의 직원들이 수억원대 성과급을 받을 것으로 예상되지만, 이런 성과급이 소비 진작으로 이어지는 효과는 크지 않을 것이라는 분석이 나왔다.",
-      "title": "“반도체 성과급 잔치에도… 소비 진작 효과는 제한적일 것”"
+      "source_published_kst": "2026-10-11T11:09+09:00",
+      "source_title": "\"매도세 심상찮더니…\" 삼성전자 외국인 지분, 17년만에 최저",
+      "telegram_core_fact": "외국인들은 올들어 지난 8일까지 코스피시장에서 92조5477억원에 이르는 삼성전자 주식을 순매도했다.",
+      "title": "\"매도세 심상찮더니…\" 삼성전자 외국인 지분, 17년만에 최저"
     },
     "event:febc28af8331c3cd3ae5eb71": {
       "first_seen_kst": "2026-09-30T23:32:53+09:00",
@@ -47238,6 +47333,25 @@
       "source_published_kst": "2026-10-06T07:07+09:00",
       "title": "스페이스X 주가 급등에 머스크 다시 조만장자 [마켓핫]"
     },
+    "fact:69a6eb953a229c04b5d5139d": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820882",
+      "source": "뉴시스",
+      "source_body_digest": "e20df4500cd5aabe90a9d0384382ab3010975f6424f8b1a4fd938f32ed25747f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4b23ea5e8efbcdc67b3d4928c3317ebf0cff7bca63bb90624701b2cf93b4e294",
+      "source_fact_keys": [
+        "source_fact:v1:f5ff2490940dbe6d639de1cd5ea5f41474fd6cd2fa559519a865ec4d73b73ed1"
+      ],
+      "source_published_kst": "2026-10-11T11:05+09:00",
+      "source_title": "인천 쿠팡물류센터 화재 원인 '리튬배터리' 추정",
+      "telegram_core_fact": "109시간 만에 진화된 인천 쿠팡 물류센터 화재가 발생한 지 약 3개월이 지난 가운데 '리튬배터리'에서 불이 시작됐을 가능성이 있다는 국립과학수사연구원(국과수)의 감정 결과가 나왔다. 인천경찰청 광역범죄수사대 등에 따르면 국과수는 지난달 1차 감정 결과 리튬배터리 발화 가능성을 제시했다.",
+      "title": "인천 쿠팡물류센터 화재 원인 '리튬배터리' 추정"
+    },
     "fact:69bf1fb4afcd2eeb45396f8e": {
       "first_seen_kst": "2026-10-06T15:03:09+09:00",
       "lanes": {
@@ -54481,6 +54595,32 @@
       "source_title": "최태원 “호남 반도체, 전력·용수 늦어도 공사 먼저…용인 3분의 2 규모로”(종합)",
       "telegram_core_fact": "최태원 SK그룹 회장이 호남권 반도체 생산거점을 용인 반도체 클러스터의 3분의 2 규모로 계획하고 있다고 밝혔다. 빠르게 늘어나는 반도체 수요에 대응하기 위해 용인과 광주에서 공장을 병행 건설할 가능성도 열어뒀다.",
       "title": "최태원 “호남 반도체, 전력·용수 늦어도 공사 먼저…용인 3분의 2 규모로”(종합)"
+    },
+    "fact:99356d1bf92a30d01150936a": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01400566645611936",
+      "source": "이데일리",
+      "source_body_digest": "cdfc2feb028f591c7759ea6fbe3cf4ee9d6c9eb907ac23c191d4f2b49494d83c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3760acd2d6ceeeff03c29df26a5f5c56de769d206694e56a425e03e0f9617d28",
+      "source_fact_keys": [
+        "source_fact:v1:3890e363b51da245257234affa08ad160ab03d30eae0a6ed64c66e243a5979b3",
+        "source_fact:v1:5a75a0c0ef5104e07c3c81ce8b5feec53b500515a914802a89bc2b1b44997380",
+        "source_fact:v1:5fbd5a9da9dd25977e4f7af8161db69e883a4f35973e69c34a4245be448c23b7",
+        "source_fact:v1:6efe7c4bf2cb5b33aa546041344e0e157c401a948a313cc329520fd013df403a",
+        "source_fact:v1:9a7aef122a00a35fb64ccac90cebaac9209428508524ff69e0450edce2f02432",
+        "source_fact:v1:e17fa24b5f40ad556d6cf94769746685cded671701c0d66285f6bcbbbd92d7d1",
+        "source_fact:v1:ed5193a3ed267f031df567ad81d206a740e2661d116b4ff1ecfa15451540a24d",
+        "source_fact:v1:ee6edb922de28e660e9f3f7f5557943b89fc5c71c166701744f9689ba24f3102"
+      ],
+      "source_published_kst": "2026-10-11T11:07+09:00",
+      "source_title": "중국 소비 부진 속 황금연휴 효과 기대…5중전회에 쏠리는 눈",
+      "telegram_core_fact": "중국 상무부는 중추절 연휴 기간인 지난달 25~27일 전국 수요 소매·외식업체의 일평균 매출이 전년동기대비 6.1% 증가했다고 밝혔다. 로이터통신은 오히려 9~10월 연휴 기간 중국 내 여행당 평균 지출액이 전년동기대비 1.9% 감소했다면서 소비자 지출이 약세를 이어가고 있다고 보도했다.",
+      "title": "중국 소비 부진 속 황금연휴 효과 기대…5중전회에 쏠리는 눈"
     },
     "fact:994262f4043bdcc3988f8f05": {
       "first_seen_kst": "2026-10-11T09:50:45+09:00",
@@ -64680,6 +64820,25 @@
       "source_published_kst": "2026-10-05T08:34+09:00",
       "title": "걸프국 원유 수출 회복세에 ‘먹구름’⋯호르무즈 선박 피격 나흘새 4건"
     },
+    "fact:e0018eae00b19654804b01c6": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820887",
+      "source": "뉴시스",
+      "source_body_digest": "e20671522182807e0c0b76f2aa22f825c0531d8c9cb634c8bda8fbab6b98dca0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5f23859c6369b07b80cfc577c9c4d14de2ff5d61d3125fbf94a75a24d9ae545",
+      "source_fact_keys": [
+        "source_fact:v1:eae6d722b4a100eed013f53a3978cf1442d48e124bdfa76c21ad96ab9547b7c9"
+      ],
+      "source_published_kst": "2026-10-11T11:09+09:00",
+      "source_title": "\"매도세 심상찮더니…\" 삼성전자 외국인 지분, 17년만에 최저",
+      "telegram_core_fact": "외국인들은 올들어 지난 8일까지 코스피시장에서 92조5477억원에 이르는 삼성전자 주식을 순매도했다.",
+      "title": "\"매도세 심상찮더니…\" 삼성전자 외국인 지분, 17년만에 최저"
+    },
     "fact:e0213175379c057aae109d6d": {
       "first_seen_kst": "2026-10-06T03:45:53+09:00",
       "lanes": {
@@ -68632,6 +68791,37 @@
       ],
       "source_published_kst": "2026-10-05T21:24+09:00",
       "title": "레이도스 홀딩스, 애널로직 보안검색 합작법인 출범..소수지분 유지"
+    },
+    "fact:f9e709b89cb50c4bbf11314e": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.news1.kr/world/europe/6315726",
+      "source": "뉴스1",
+      "source_body_digest": "0fe9e321ba15c757cf5d3a734bf198a7255ea52d7a37f29e94c59aa5ee145d4e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8eea27a1ab9a0a3ebcff31bc4515d00677f7c8e9479325a18f314acb66479e99",
+      "source_fact_keys": [
+        "source_fact:v1:27e0c5a36d9e46f494dc298273fd68ca5619c179bd5ff8a0129eed72481ab324",
+        "source_fact:v1:2ed26438764725a50dff0f8297a6d498a6a85e70ae3d70f197eb894435430b8b",
+        "source_fact:v1:31e26677e90f145ab20b0888a9fe03de6b4fe567f5288728276d3bacc98f23a4",
+        "source_fact:v1:560c3df8cf3c45fe19e21205d4a27cd927df446b68afb469e73ca02feefe2636",
+        "source_fact:v1:6445d831949d3cc34e6428655c19fc89cfa9e556b9dcc4c778c655e693d4c1b4",
+        "source_fact:v1:7f2851eec48fa941cfb758f97c5ef0b34968500b8fc8c40b225739813c642108",
+        "source_fact:v1:834e231feeb564ff9bdbe5824143d66f450c95afeb16cd88a8816dce661fbd14",
+        "source_fact:v1:9c2ef8eea27b4c2a5109bd424c0391b88528cefd0bdc5927478dc74d864bf8af",
+        "source_fact:v1:cd3f99c0a1b09bec99104bd6d97f07ea6527633be504010b53eeebc38feb4a07",
+        "source_fact:v1:ddaaccbddb86804ee8c802d1332487c16d09a12adf83cd9e2285d2b8ed47afd1",
+        "source_fact:v1:ede55a42b2befdbd683577f1d14f22c601ca6bb30fadfde4057c87b94ab9f126",
+        "source_fact:v1:f0691e4274da096e48d24dc8f93ea89d3e92da8798090e5f38e73b1c743d3469",
+        "source_fact:v1:f09973070049a674877c0c7fe5c49213267465bda20b8f0eda9a053397b16796"
+      ],
+      "source_published_kst": "2026-10-11T06:19+09:00",
+      "source_title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성",
+      "telegram_core_fact": "(런던=뉴스1) 러시아가 10일(현지시간) 도널드 트럼프 미국 대통령과 블라디미르 푸틴 러시아 대통령의 합의에 따라 자국산 경유 수출 금지 조치를 부분적으로 해제했다고 밝혔다.",
+      "title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성"
     },
     "fact:fa595b02de9e92539badb5f2": {
       "first_seen_kst": "2026-10-09T21:11:52+09:00",
@@ -83777,6 +83967,25 @@
       "link": "https://www.newsis.com/view/NISX20260923_0003802333",
       "source": "뉴시스",
       "title": "가계대출 감소세…주담대 5000억, 신용대출 1.3조 빠져"
+    },
+    "link:3f765ac3e3d8e9d462325733": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820887",
+      "source": "뉴시스",
+      "source_body_digest": "e20671522182807e0c0b76f2aa22f825c0531d8c9cb634c8bda8fbab6b98dca0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5f23859c6369b07b80cfc577c9c4d14de2ff5d61d3125fbf94a75a24d9ae545",
+      "source_fact_keys": [
+        "source_fact:v1:eae6d722b4a100eed013f53a3978cf1442d48e124bdfa76c21ad96ab9547b7c9"
+      ],
+      "source_published_kst": "2026-10-11T11:09+09:00",
+      "source_title": "\"매도세 심상찮더니…\" 삼성전자 외국인 지분, 17년만에 최저",
+      "telegram_core_fact": "외국인들은 올들어 지난 8일까지 코스피시장에서 92조5477억원에 이르는 삼성전자 주식을 순매도했다.",
+      "title": "\"매도세 심상찮더니…\" 삼성전자 외국인 지분, 17년만에 최저"
     },
     "link:3f7bdba12b86fa54b0899801": {
       "first_seen_kst": "2026-10-02T22:19:09+09:00",
@@ -99253,6 +99462,37 @@
       "source": "전자신문",
       "title": "화성시, 삼성전자와 '성장 동맹'…1조7000억원 투자계획 본격 추진"
     },
+    "link:866e5d50fcd9f1da013af085": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.news1.kr/world/europe/6315726",
+      "source": "뉴스1",
+      "source_body_digest": "0fe9e321ba15c757cf5d3a734bf198a7255ea52d7a37f29e94c59aa5ee145d4e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8eea27a1ab9a0a3ebcff31bc4515d00677f7c8e9479325a18f314acb66479e99",
+      "source_fact_keys": [
+        "source_fact:v1:27e0c5a36d9e46f494dc298273fd68ca5619c179bd5ff8a0129eed72481ab324",
+        "source_fact:v1:2ed26438764725a50dff0f8297a6d498a6a85e70ae3d70f197eb894435430b8b",
+        "source_fact:v1:31e26677e90f145ab20b0888a9fe03de6b4fe567f5288728276d3bacc98f23a4",
+        "source_fact:v1:560c3df8cf3c45fe19e21205d4a27cd927df446b68afb469e73ca02feefe2636",
+        "source_fact:v1:6445d831949d3cc34e6428655c19fc89cfa9e556b9dcc4c778c655e693d4c1b4",
+        "source_fact:v1:7f2851eec48fa941cfb758f97c5ef0b34968500b8fc8c40b225739813c642108",
+        "source_fact:v1:834e231feeb564ff9bdbe5824143d66f450c95afeb16cd88a8816dce661fbd14",
+        "source_fact:v1:9c2ef8eea27b4c2a5109bd424c0391b88528cefd0bdc5927478dc74d864bf8af",
+        "source_fact:v1:cd3f99c0a1b09bec99104bd6d97f07ea6527633be504010b53eeebc38feb4a07",
+        "source_fact:v1:ddaaccbddb86804ee8c802d1332487c16d09a12adf83cd9e2285d2b8ed47afd1",
+        "source_fact:v1:ede55a42b2befdbd683577f1d14f22c601ca6bb30fadfde4057c87b94ab9f126",
+        "source_fact:v1:f0691e4274da096e48d24dc8f93ea89d3e92da8798090e5f38e73b1c743d3469",
+        "source_fact:v1:f09973070049a674877c0c7fe5c49213267465bda20b8f0eda9a053397b16796"
+      ],
+      "source_published_kst": "2026-10-11T06:19+09:00",
+      "source_title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성",
+      "telegram_core_fact": "(런던=뉴스1) 러시아가 10일(현지시간) 도널드 트럼프 미국 대통령과 블라디미르 푸틴 러시아 대통령의 합의에 따라 자국산 경유 수출 금지 조치를 부분적으로 해제했다고 밝혔다.",
+      "title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성"
+    },
     "link:867d08f783e91b7adb9d6f8f": {
       "first_seen_kst": "2026-10-09T20:48:52+09:00",
       "lanes": {
@@ -100037,6 +100277,25 @@
       "link": "https://www.etnews.com/20261001000189",
       "source": "전자신문",
       "title": "위닉스, 겨울 가전 신제품 2종 출시"
+    },
+    "link:8a8ac4f79b0e44976b14b1f7": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820882",
+      "source": "뉴시스",
+      "source_body_digest": "e20df4500cd5aabe90a9d0384382ab3010975f6424f8b1a4fd938f32ed25747f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4b23ea5e8efbcdc67b3d4928c3317ebf0cff7bca63bb90624701b2cf93b4e294",
+      "source_fact_keys": [
+        "source_fact:v1:f5ff2490940dbe6d639de1cd5ea5f41474fd6cd2fa559519a865ec4d73b73ed1"
+      ],
+      "source_published_kst": "2026-10-11T11:05+09:00",
+      "source_title": "인천 쿠팡물류센터 화재 원인 '리튬배터리' 추정",
+      "telegram_core_fact": "109시간 만에 진화된 인천 쿠팡 물류센터 화재가 발생한 지 약 3개월이 지난 가운데 '리튬배터리'에서 불이 시작됐을 가능성이 있다는 국립과학수사연구원(국과수)의 감정 결과가 나왔다. 인천경찰청 광역범죄수사대 등에 따르면 국과수는 지난달 1차 감정 결과 리튬배터리 발화 가능성을 제시했다.",
+      "title": "인천 쿠팡물류센터 화재 원인 '리튬배터리' 추정"
     },
     "link:8a8c18152a86b2a69f576acb": {
       "first_seen_kst": "2026-10-05T23:28:38+09:00",
@@ -103880,6 +104139,32 @@
       ],
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "반도체 소부장 랠리 … ETF 출시도 잇따라"
+    },
+    "link:9abb4b4f7c4efb2529be6e7a": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01400566645611936",
+      "source": "이데일리",
+      "source_body_digest": "cdfc2feb028f591c7759ea6fbe3cf4ee9d6c9eb907ac23c191d4f2b49494d83c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3760acd2d6ceeeff03c29df26a5f5c56de769d206694e56a425e03e0f9617d28",
+      "source_fact_keys": [
+        "source_fact:v1:3890e363b51da245257234affa08ad160ab03d30eae0a6ed64c66e243a5979b3",
+        "source_fact:v1:5a75a0c0ef5104e07c3c81ce8b5feec53b500515a914802a89bc2b1b44997380",
+        "source_fact:v1:5fbd5a9da9dd25977e4f7af8161db69e883a4f35973e69c34a4245be448c23b7",
+        "source_fact:v1:6efe7c4bf2cb5b33aa546041344e0e157c401a948a313cc329520fd013df403a",
+        "source_fact:v1:9a7aef122a00a35fb64ccac90cebaac9209428508524ff69e0450edce2f02432",
+        "source_fact:v1:e17fa24b5f40ad556d6cf94769746685cded671701c0d66285f6bcbbbd92d7d1",
+        "source_fact:v1:ed5193a3ed267f031df567ad81d206a740e2661d116b4ff1ecfa15451540a24d",
+        "source_fact:v1:ee6edb922de28e660e9f3f7f5557943b89fc5c71c166701744f9689ba24f3102"
+      ],
+      "source_published_kst": "2026-10-11T11:07+09:00",
+      "source_title": "중국 소비 부진 속 황금연휴 효과 기대…5중전회에 쏠리는 눈",
+      "telegram_core_fact": "중국 상무부는 중추절 연휴 기간인 지난달 25~27일 전국 수요 소매·외식업체의 일평균 매출이 전년동기대비 6.1% 증가했다고 밝혔다. 로이터통신은 오히려 9~10월 연휴 기간 중국 내 여행당 평균 지출액이 전년동기대비 1.9% 감소했다면서 소비자 지출이 약세를 이어가고 있다고 보도했다.",
+      "title": "중국 소비 부진 속 황금연휴 효과 기대…5중전회에 쏠리는 눈"
     },
     "link:9abfb841b609518218424989": {
       "first_seen_kst": "2026-09-19T01:58:52+09:00",
@@ -126689,6 +126974,37 @@
       "source_published_kst": "2026-10-07T14:24+09:00",
       "title": "KT&G, 인니 신공장 가동 시작…‘글로벌 5각 생산체제’ 구축"
     },
+    "original:02dfa54dc4e9ebf60f25493d": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.news1.kr/world/europe/6315726",
+      "source": "뉴스1",
+      "source_body_digest": "0fe9e321ba15c757cf5d3a734bf198a7255ea52d7a37f29e94c59aa5ee145d4e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8eea27a1ab9a0a3ebcff31bc4515d00677f7c8e9479325a18f314acb66479e99",
+      "source_fact_keys": [
+        "source_fact:v1:27e0c5a36d9e46f494dc298273fd68ca5619c179bd5ff8a0129eed72481ab324",
+        "source_fact:v1:2ed26438764725a50dff0f8297a6d498a6a85e70ae3d70f197eb894435430b8b",
+        "source_fact:v1:31e26677e90f145ab20b0888a9fe03de6b4fe567f5288728276d3bacc98f23a4",
+        "source_fact:v1:560c3df8cf3c45fe19e21205d4a27cd927df446b68afb469e73ca02feefe2636",
+        "source_fact:v1:6445d831949d3cc34e6428655c19fc89cfa9e556b9dcc4c778c655e693d4c1b4",
+        "source_fact:v1:7f2851eec48fa941cfb758f97c5ef0b34968500b8fc8c40b225739813c642108",
+        "source_fact:v1:834e231feeb564ff9bdbe5824143d66f450c95afeb16cd88a8816dce661fbd14",
+        "source_fact:v1:9c2ef8eea27b4c2a5109bd424c0391b88528cefd0bdc5927478dc74d864bf8af",
+        "source_fact:v1:cd3f99c0a1b09bec99104bd6d97f07ea6527633be504010b53eeebc38feb4a07",
+        "source_fact:v1:ddaaccbddb86804ee8c802d1332487c16d09a12adf83cd9e2285d2b8ed47afd1",
+        "source_fact:v1:ede55a42b2befdbd683577f1d14f22c601ca6bb30fadfde4057c87b94ab9f126",
+        "source_fact:v1:f0691e4274da096e48d24dc8f93ea89d3e92da8798090e5f38e73b1c743d3469",
+        "source_fact:v1:f09973070049a674877c0c7fe5c49213267465bda20b8f0eda9a053397b16796"
+      ],
+      "source_published_kst": "2026-10-11T06:19+09:00",
+      "source_title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성",
+      "telegram_core_fact": "(런던=뉴스1) 러시아가 10일(현지시간) 도널드 트럼프 미국 대통령과 블라디미르 푸틴 러시아 대통령의 합의에 따라 자국산 경유 수출 금지 조치를 부분적으로 해제했다고 밝혔다.",
+      "title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성"
+    },
     "original:02f1044ce541f8fb4fabaed9": {
       "first_seen_kst": "2026-10-01T07:43:35+09:00",
       "lanes": {
@@ -129281,6 +129597,25 @@
       "source_title": "[속보]\"100조 벽 깼다\" 삼성전자, 영업익 107조 '역대 최대'",
       "telegram_core_fact": "삼성전자는 올해 3분기 연결 기준 잠정 영업이익이 107조4000억원으로 집계됐다고 8일 공시했다.",
       "title": "[속보]\"100조 벽 깼다\" 삼성전자, 영업익 107조 '역대 최대'"
+    },
+    "original:0f4474f404973d8d7f752964": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820887",
+      "source": "뉴시스",
+      "source_body_digest": "e20671522182807e0c0b76f2aa22f825c0531d8c9cb634c8bda8fbab6b98dca0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5f23859c6369b07b80cfc577c9c4d14de2ff5d61d3125fbf94a75a24d9ae545",
+      "source_fact_keys": [
+        "source_fact:v1:eae6d722b4a100eed013f53a3978cf1442d48e124bdfa76c21ad96ab9547b7c9"
+      ],
+      "source_published_kst": "2026-10-11T11:09+09:00",
+      "source_title": "\"매도세 심상찮더니…\" 삼성전자 외국인 지분, 17년만에 최저",
+      "telegram_core_fact": "외국인들은 올들어 지난 8일까지 코스피시장에서 92조5477억원에 이르는 삼성전자 주식을 순매도했다.",
+      "title": "\"매도세 심상찮더니…\" 삼성전자 외국인 지분, 17년만에 최저"
     },
     "original:0f6b35e17230191009ad6712": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
@@ -159500,6 +159835,25 @@
       "source": "머니투데이",
       "title": "트럼프 \"2배 청구\" 으름장, 국무부 \"한미 윈윈\"…알래스카 LNG 압박"
     },
+    "original:9ae719dc27ae2ce378c00e36": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820882",
+      "source": "뉴시스",
+      "source_body_digest": "e20df4500cd5aabe90a9d0384382ab3010975f6424f8b1a4fd938f32ed25747f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4b23ea5e8efbcdc67b3d4928c3317ebf0cff7bca63bb90624701b2cf93b4e294",
+      "source_fact_keys": [
+        "source_fact:v1:f5ff2490940dbe6d639de1cd5ea5f41474fd6cd2fa559519a865ec4d73b73ed1"
+      ],
+      "source_published_kst": "2026-10-11T11:05+09:00",
+      "source_title": "인천 쿠팡물류센터 화재 원인 '리튬배터리' 추정",
+      "telegram_core_fact": "109시간 만에 진화된 인천 쿠팡 물류센터 화재가 발생한 지 약 3개월이 지난 가운데 '리튬배터리'에서 불이 시작됐을 가능성이 있다는 국립과학수사연구원(국과수)의 감정 결과가 나왔다. 인천경찰청 광역범죄수사대 등에 따르면 국과수는 지난달 1차 감정 결과 리튬배터리 발화 가능성을 제시했다.",
+      "title": "인천 쿠팡물류센터 화재 원인 '리튬배터리' 추정"
+    },
     "original:9b00cbe64176a072a3523775": {
       "first_seen_kst": "2026-10-11T09:08:30+09:00",
       "lanes": {
@@ -163707,6 +164061,32 @@
       "source_title": "미국 역수출 포문 여는 K-원전…\"낙수효과 기대\" | 연합뉴스",
       "telegram_core_fact": "미국에 대한 원전 수출을 제한한 협정이 개정되면서, 국내 업계의 낙수효과도 예상됩니다.",
       "title": "미국 역수출 포문 여는 K-원전…\"낙수효과 기대\" | 연합뉴스"
+    },
+    "original:adbb83aca833bebd303d1c24": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01400566645611936",
+      "source": "이데일리",
+      "source_body_digest": "cdfc2feb028f591c7759ea6fbe3cf4ee9d6c9eb907ac23c191d4f2b49494d83c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3760acd2d6ceeeff03c29df26a5f5c56de769d206694e56a425e03e0f9617d28",
+      "source_fact_keys": [
+        "source_fact:v1:3890e363b51da245257234affa08ad160ab03d30eae0a6ed64c66e243a5979b3",
+        "source_fact:v1:5a75a0c0ef5104e07c3c81ce8b5feec53b500515a914802a89bc2b1b44997380",
+        "source_fact:v1:5fbd5a9da9dd25977e4f7af8161db69e883a4f35973e69c34a4245be448c23b7",
+        "source_fact:v1:6efe7c4bf2cb5b33aa546041344e0e157c401a948a313cc329520fd013df403a",
+        "source_fact:v1:9a7aef122a00a35fb64ccac90cebaac9209428508524ff69e0450edce2f02432",
+        "source_fact:v1:e17fa24b5f40ad556d6cf94769746685cded671701c0d66285f6bcbbbd92d7d1",
+        "source_fact:v1:ed5193a3ed267f031df567ad81d206a740e2661d116b4ff1ecfa15451540a24d",
+        "source_fact:v1:ee6edb922de28e660e9f3f7f5557943b89fc5c71c166701744f9689ba24f3102"
+      ],
+      "source_published_kst": "2026-10-11T11:07+09:00",
+      "source_title": "중국 소비 부진 속 황금연휴 효과 기대…5중전회에 쏠리는 눈",
+      "telegram_core_fact": "중국 상무부는 중추절 연휴 기간인 지난달 25~27일 전국 수요 소매·외식업체의 일평균 매출이 전년동기대비 6.1% 증가했다고 밝혔다. 로이터통신은 오히려 9~10월 연휴 기간 중국 내 여행당 평균 지출액이 전년동기대비 1.9% 감소했다면서 소비자 지출이 약세를 이어가고 있다고 보도했다.",
+      "title": "중국 소비 부진 속 황금연휴 효과 기대…5중전회에 쏠리는 눈"
     },
     "original:adcaf4c49faa244d824bab9a": {
       "first_seen_kst": "2026-10-08T03:26:42+09:00",
@@ -188768,6 +189148,37 @@
       "telegram_core_fact": "자율주행 트럭 기업 마스오토가 미국 교통부와 자율주행 트럭 상용화 확대 방안을 논의한다. 노제경 마스오토 부대표는 21일 ‘자율주행에 대비한 운송 노선 구축’ 세션과 22일 ‘실증에서 상용화로: 자율주행 글로벌 투어’ 세션에 한국 측 연사로 참여한다.",
       "title": "마스오토, 美 교통부와 자율주행 협력 모색"
     },
+    "source_fact:0cdbbc949ce7c6927dad4f46": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.news1.kr/world/europe/6315726",
+      "source": "뉴스1",
+      "source_body_digest": "0fe9e321ba15c757cf5d3a734bf198a7255ea52d7a37f29e94c59aa5ee145d4e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8eea27a1ab9a0a3ebcff31bc4515d00677f7c8e9479325a18f314acb66479e99",
+      "source_fact_keys": [
+        "source_fact:v1:27e0c5a36d9e46f494dc298273fd68ca5619c179bd5ff8a0129eed72481ab324",
+        "source_fact:v1:2ed26438764725a50dff0f8297a6d498a6a85e70ae3d70f197eb894435430b8b",
+        "source_fact:v1:31e26677e90f145ab20b0888a9fe03de6b4fe567f5288728276d3bacc98f23a4",
+        "source_fact:v1:560c3df8cf3c45fe19e21205d4a27cd927df446b68afb469e73ca02feefe2636",
+        "source_fact:v1:6445d831949d3cc34e6428655c19fc89cfa9e556b9dcc4c778c655e693d4c1b4",
+        "source_fact:v1:7f2851eec48fa941cfb758f97c5ef0b34968500b8fc8c40b225739813c642108",
+        "source_fact:v1:834e231feeb564ff9bdbe5824143d66f450c95afeb16cd88a8816dce661fbd14",
+        "source_fact:v1:9c2ef8eea27b4c2a5109bd424c0391b88528cefd0bdc5927478dc74d864bf8af",
+        "source_fact:v1:cd3f99c0a1b09bec99104bd6d97f07ea6527633be504010b53eeebc38feb4a07",
+        "source_fact:v1:ddaaccbddb86804ee8c802d1332487c16d09a12adf83cd9e2285d2b8ed47afd1",
+        "source_fact:v1:ede55a42b2befdbd683577f1d14f22c601ca6bb30fadfde4057c87b94ab9f126",
+        "source_fact:v1:f0691e4274da096e48d24dc8f93ea89d3e92da8798090e5f38e73b1c743d3469",
+        "source_fact:v1:f09973070049a674877c0c7fe5c49213267465bda20b8f0eda9a053397b16796"
+      ],
+      "source_published_kst": "2026-10-11T06:19+09:00",
+      "source_title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성",
+      "telegram_core_fact": "(런던=뉴스1) 러시아가 10일(현지시간) 도널드 트럼프 미국 대통령과 블라디미르 푸틴 러시아 대통령의 합의에 따라 자국산 경유 수출 금지 조치를 부분적으로 해제했다고 밝혔다.",
+      "title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성"
+    },
     "source_fact:0cec7df37c7dd829420b5734": {
       "first_seen_kst": "2026-10-07T19:13:29+09:00",
       "lanes": {
@@ -201012,6 +201423,32 @@
       "telegram_core_fact": "삼성전자는 올해 3분기 연결 기준 잠정 영업이익이 107조4000억원으로 집계됐다고 8일 공시했다.",
       "title": "[속보]\"100조 벽 깼다\" 삼성전자, 영업익 107조 '역대 최대'"
     },
+    "source_fact:1e8929394cba7bf60c2d27f8": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01400566645611936",
+      "source": "이데일리",
+      "source_body_digest": "cdfc2feb028f591c7759ea6fbe3cf4ee9d6c9eb907ac23c191d4f2b49494d83c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3760acd2d6ceeeff03c29df26a5f5c56de769d206694e56a425e03e0f9617d28",
+      "source_fact_keys": [
+        "source_fact:v1:3890e363b51da245257234affa08ad160ab03d30eae0a6ed64c66e243a5979b3",
+        "source_fact:v1:5a75a0c0ef5104e07c3c81ce8b5feec53b500515a914802a89bc2b1b44997380",
+        "source_fact:v1:5fbd5a9da9dd25977e4f7af8161db69e883a4f35973e69c34a4245be448c23b7",
+        "source_fact:v1:6efe7c4bf2cb5b33aa546041344e0e157c401a948a313cc329520fd013df403a",
+        "source_fact:v1:9a7aef122a00a35fb64ccac90cebaac9209428508524ff69e0450edce2f02432",
+        "source_fact:v1:e17fa24b5f40ad556d6cf94769746685cded671701c0d66285f6bcbbbd92d7d1",
+        "source_fact:v1:ed5193a3ed267f031df567ad81d206a740e2661d116b4ff1ecfa15451540a24d",
+        "source_fact:v1:ee6edb922de28e660e9f3f7f5557943b89fc5c71c166701744f9689ba24f3102"
+      ],
+      "source_published_kst": "2026-10-11T11:07+09:00",
+      "source_title": "중국 소비 부진 속 황금연휴 효과 기대…5중전회에 쏠리는 눈",
+      "telegram_core_fact": "중국 상무부는 중추절 연휴 기간인 지난달 25~27일 전국 수요 소매·외식업체의 일평균 매출이 전년동기대비 6.1% 증가했다고 밝혔다. 로이터통신은 오히려 9~10월 연휴 기간 중국 내 여행당 평균 지출액이 전년동기대비 1.9% 감소했다면서 소비자 지출이 약세를 이어가고 있다고 보도했다.",
+      "title": "중국 소비 부진 속 황금연휴 효과 기대…5중전회에 쏠리는 눈"
+    },
     "source_fact:1e8f340de47c4973d9bb8293": {
       "first_seen_kst": "2026-10-11T07:32:31+09:00",
       "lanes": {
@@ -201412,6 +201849,37 @@
       ],
       "source_published_kst": "2026-10-05T14:28+09:00",
       "title": "폭스바겐 ‘판매왕’에서 모빌리티 창업가로…차봇, 해외로 영토 확장"
+    },
+    "source_fact:1f3adb700aab175713fd2070": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.news1.kr/world/europe/6315726",
+      "source": "뉴스1",
+      "source_body_digest": "0fe9e321ba15c757cf5d3a734bf198a7255ea52d7a37f29e94c59aa5ee145d4e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8eea27a1ab9a0a3ebcff31bc4515d00677f7c8e9479325a18f314acb66479e99",
+      "source_fact_keys": [
+        "source_fact:v1:27e0c5a36d9e46f494dc298273fd68ca5619c179bd5ff8a0129eed72481ab324",
+        "source_fact:v1:2ed26438764725a50dff0f8297a6d498a6a85e70ae3d70f197eb894435430b8b",
+        "source_fact:v1:31e26677e90f145ab20b0888a9fe03de6b4fe567f5288728276d3bacc98f23a4",
+        "source_fact:v1:560c3df8cf3c45fe19e21205d4a27cd927df446b68afb469e73ca02feefe2636",
+        "source_fact:v1:6445d831949d3cc34e6428655c19fc89cfa9e556b9dcc4c778c655e693d4c1b4",
+        "source_fact:v1:7f2851eec48fa941cfb758f97c5ef0b34968500b8fc8c40b225739813c642108",
+        "source_fact:v1:834e231feeb564ff9bdbe5824143d66f450c95afeb16cd88a8816dce661fbd14",
+        "source_fact:v1:9c2ef8eea27b4c2a5109bd424c0391b88528cefd0bdc5927478dc74d864bf8af",
+        "source_fact:v1:cd3f99c0a1b09bec99104bd6d97f07ea6527633be504010b53eeebc38feb4a07",
+        "source_fact:v1:ddaaccbddb86804ee8c802d1332487c16d09a12adf83cd9e2285d2b8ed47afd1",
+        "source_fact:v1:ede55a42b2befdbd683577f1d14f22c601ca6bb30fadfde4057c87b94ab9f126",
+        "source_fact:v1:f0691e4274da096e48d24dc8f93ea89d3e92da8798090e5f38e73b1c743d3469",
+        "source_fact:v1:f09973070049a674877c0c7fe5c49213267465bda20b8f0eda9a053397b16796"
+      ],
+      "source_published_kst": "2026-10-11T06:19+09:00",
+      "source_title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성",
+      "telegram_core_fact": "(런던=뉴스1) 러시아가 10일(현지시간) 도널드 트럼프 미국 대통령과 블라디미르 푸틴 러시아 대통령의 합의에 따라 자국산 경유 수출 금지 조치를 부분적으로 해제했다고 밝혔다.",
+      "title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성"
     },
     "source_fact:1f3c70d8c48c22a80082ce8d": {
       "first_seen_kst": "2026-10-08T08:12:34+09:00",
@@ -234483,6 +234951,37 @@
       "source_published_kst": "2026-10-06T17:18+09:00",
       "title": "국고채 금리, 대외금리 연동하며 혼조세…3년물 3.933%(종합) | 연합뉴스"
     },
+    "source_fact:4deac8b24e274445511e0dac": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.news1.kr/world/europe/6315726",
+      "source": "뉴스1",
+      "source_body_digest": "0fe9e321ba15c757cf5d3a734bf198a7255ea52d7a37f29e94c59aa5ee145d4e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8eea27a1ab9a0a3ebcff31bc4515d00677f7c8e9479325a18f314acb66479e99",
+      "source_fact_keys": [
+        "source_fact:v1:27e0c5a36d9e46f494dc298273fd68ca5619c179bd5ff8a0129eed72481ab324",
+        "source_fact:v1:2ed26438764725a50dff0f8297a6d498a6a85e70ae3d70f197eb894435430b8b",
+        "source_fact:v1:31e26677e90f145ab20b0888a9fe03de6b4fe567f5288728276d3bacc98f23a4",
+        "source_fact:v1:560c3df8cf3c45fe19e21205d4a27cd927df446b68afb469e73ca02feefe2636",
+        "source_fact:v1:6445d831949d3cc34e6428655c19fc89cfa9e556b9dcc4c778c655e693d4c1b4",
+        "source_fact:v1:7f2851eec48fa941cfb758f97c5ef0b34968500b8fc8c40b225739813c642108",
+        "source_fact:v1:834e231feeb564ff9bdbe5824143d66f450c95afeb16cd88a8816dce661fbd14",
+        "source_fact:v1:9c2ef8eea27b4c2a5109bd424c0391b88528cefd0bdc5927478dc74d864bf8af",
+        "source_fact:v1:cd3f99c0a1b09bec99104bd6d97f07ea6527633be504010b53eeebc38feb4a07",
+        "source_fact:v1:ddaaccbddb86804ee8c802d1332487c16d09a12adf83cd9e2285d2b8ed47afd1",
+        "source_fact:v1:ede55a42b2befdbd683577f1d14f22c601ca6bb30fadfde4057c87b94ab9f126",
+        "source_fact:v1:f0691e4274da096e48d24dc8f93ea89d3e92da8798090e5f38e73b1c743d3469",
+        "source_fact:v1:f09973070049a674877c0c7fe5c49213267465bda20b8f0eda9a053397b16796"
+      ],
+      "source_published_kst": "2026-10-11T06:19+09:00",
+      "source_title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성",
+      "telegram_core_fact": "(런던=뉴스1) 러시아가 10일(현지시간) 도널드 트럼프 미국 대통령과 블라디미르 푸틴 러시아 대통령의 합의에 따라 자국산 경유 수출 금지 조치를 부분적으로 해제했다고 밝혔다.",
+      "title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성"
+    },
     "source_fact:4dec6f2f2bf9093a81a5b010": {
       "first_seen_kst": "2026-10-06T01:16:46+09:00",
       "lanes": {
@@ -238635,6 +239134,32 @@
       ],
       "source_published_kst": "2026-10-06T04:36+09:00",
       "title": "美10년물 국채금리 장중 5.34% 돌파…24년 만에 최고"
+    },
+    "source_fact:53df2fabb7746c674461cf2d": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01400566645611936",
+      "source": "이데일리",
+      "source_body_digest": "cdfc2feb028f591c7759ea6fbe3cf4ee9d6c9eb907ac23c191d4f2b49494d83c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3760acd2d6ceeeff03c29df26a5f5c56de769d206694e56a425e03e0f9617d28",
+      "source_fact_keys": [
+        "source_fact:v1:3890e363b51da245257234affa08ad160ab03d30eae0a6ed64c66e243a5979b3",
+        "source_fact:v1:5a75a0c0ef5104e07c3c81ce8b5feec53b500515a914802a89bc2b1b44997380",
+        "source_fact:v1:5fbd5a9da9dd25977e4f7af8161db69e883a4f35973e69c34a4245be448c23b7",
+        "source_fact:v1:6efe7c4bf2cb5b33aa546041344e0e157c401a948a313cc329520fd013df403a",
+        "source_fact:v1:9a7aef122a00a35fb64ccac90cebaac9209428508524ff69e0450edce2f02432",
+        "source_fact:v1:e17fa24b5f40ad556d6cf94769746685cded671701c0d66285f6bcbbbd92d7d1",
+        "source_fact:v1:ed5193a3ed267f031df567ad81d206a740e2661d116b4ff1ecfa15451540a24d",
+        "source_fact:v1:ee6edb922de28e660e9f3f7f5557943b89fc5c71c166701744f9689ba24f3102"
+      ],
+      "source_published_kst": "2026-10-11T11:07+09:00",
+      "source_title": "중국 소비 부진 속 황금연휴 효과 기대…5중전회에 쏠리는 눈",
+      "telegram_core_fact": "중국 상무부는 중추절 연휴 기간인 지난달 25~27일 전국 수요 소매·외식업체의 일평균 매출이 전년동기대비 6.1% 증가했다고 밝혔다. 로이터통신은 오히려 9~10월 연휴 기간 중국 내 여행당 평균 지출액이 전년동기대비 1.9% 감소했다면서 소비자 지출이 약세를 이어가고 있다고 보도했다.",
+      "title": "중국 소비 부진 속 황금연휴 효과 기대…5중전회에 쏠리는 눈"
     },
     "source_fact:54126535f8d08422146b2886": {
       "first_seen_kst": "2026-10-07T18:44:00+09:00",
@@ -246516,6 +247041,32 @@
       "source_published_kst": "2026-10-07T09:48+09:00",
       "title": "러 북한에 제트 드론 기술 대거 이전 가능성"
     },
+    "source_fact:5e41c0c630968d68e981e5f4": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01400566645611936",
+      "source": "이데일리",
+      "source_body_digest": "cdfc2feb028f591c7759ea6fbe3cf4ee9d6c9eb907ac23c191d4f2b49494d83c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3760acd2d6ceeeff03c29df26a5f5c56de769d206694e56a425e03e0f9617d28",
+      "source_fact_keys": [
+        "source_fact:v1:3890e363b51da245257234affa08ad160ab03d30eae0a6ed64c66e243a5979b3",
+        "source_fact:v1:5a75a0c0ef5104e07c3c81ce8b5feec53b500515a914802a89bc2b1b44997380",
+        "source_fact:v1:5fbd5a9da9dd25977e4f7af8161db69e883a4f35973e69c34a4245be448c23b7",
+        "source_fact:v1:6efe7c4bf2cb5b33aa546041344e0e157c401a948a313cc329520fd013df403a",
+        "source_fact:v1:9a7aef122a00a35fb64ccac90cebaac9209428508524ff69e0450edce2f02432",
+        "source_fact:v1:e17fa24b5f40ad556d6cf94769746685cded671701c0d66285f6bcbbbd92d7d1",
+        "source_fact:v1:ed5193a3ed267f031df567ad81d206a740e2661d116b4ff1ecfa15451540a24d",
+        "source_fact:v1:ee6edb922de28e660e9f3f7f5557943b89fc5c71c166701744f9689ba24f3102"
+      ],
+      "source_published_kst": "2026-10-11T11:07+09:00",
+      "source_title": "중국 소비 부진 속 황금연휴 효과 기대…5중전회에 쏠리는 눈",
+      "telegram_core_fact": "중국 상무부는 중추절 연휴 기간인 지난달 25~27일 전국 수요 소매·외식업체의 일평균 매출이 전년동기대비 6.1% 증가했다고 밝혔다. 로이터통신은 오히려 9~10월 연휴 기간 중국 내 여행당 평균 지출액이 전년동기대비 1.9% 감소했다면서 소비자 지출이 약세를 이어가고 있다고 보도했다.",
+      "title": "중국 소비 부진 속 황금연휴 효과 기대…5중전회에 쏠리는 눈"
+    },
     "source_fact:5e50de7274710fafda9bae5c": {
       "first_seen_kst": "2026-10-08T01:09:29+09:00",
       "lanes": {
@@ -250297,6 +250848,37 @@
       "source_title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주",
       "telegram_core_fact": "회사 매출은 2억2000만 달러 전망입니다.",
       "title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주"
+    },
+    "source_fact:6395bd8cfe5799846e0fb44f": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.news1.kr/world/europe/6315726",
+      "source": "뉴스1",
+      "source_body_digest": "0fe9e321ba15c757cf5d3a734bf198a7255ea52d7a37f29e94c59aa5ee145d4e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8eea27a1ab9a0a3ebcff31bc4515d00677f7c8e9479325a18f314acb66479e99",
+      "source_fact_keys": [
+        "source_fact:v1:27e0c5a36d9e46f494dc298273fd68ca5619c179bd5ff8a0129eed72481ab324",
+        "source_fact:v1:2ed26438764725a50dff0f8297a6d498a6a85e70ae3d70f197eb894435430b8b",
+        "source_fact:v1:31e26677e90f145ab20b0888a9fe03de6b4fe567f5288728276d3bacc98f23a4",
+        "source_fact:v1:560c3df8cf3c45fe19e21205d4a27cd927df446b68afb469e73ca02feefe2636",
+        "source_fact:v1:6445d831949d3cc34e6428655c19fc89cfa9e556b9dcc4c778c655e693d4c1b4",
+        "source_fact:v1:7f2851eec48fa941cfb758f97c5ef0b34968500b8fc8c40b225739813c642108",
+        "source_fact:v1:834e231feeb564ff9bdbe5824143d66f450c95afeb16cd88a8816dce661fbd14",
+        "source_fact:v1:9c2ef8eea27b4c2a5109bd424c0391b88528cefd0bdc5927478dc74d864bf8af",
+        "source_fact:v1:cd3f99c0a1b09bec99104bd6d97f07ea6527633be504010b53eeebc38feb4a07",
+        "source_fact:v1:ddaaccbddb86804ee8c802d1332487c16d09a12adf83cd9e2285d2b8ed47afd1",
+        "source_fact:v1:ede55a42b2befdbd683577f1d14f22c601ca6bb30fadfde4057c87b94ab9f126",
+        "source_fact:v1:f0691e4274da096e48d24dc8f93ea89d3e92da8798090e5f38e73b1c743d3469",
+        "source_fact:v1:f09973070049a674877c0c7fe5c49213267465bda20b8f0eda9a053397b16796"
+      ],
+      "source_published_kst": "2026-10-11T06:19+09:00",
+      "source_title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성",
+      "telegram_core_fact": "(런던=뉴스1) 러시아가 10일(현지시간) 도널드 트럼프 미국 대통령과 블라디미르 푸틴 러시아 대통령의 합의에 따라 자국산 경유 수출 금지 조치를 부분적으로 해제했다고 밝혔다.",
+      "title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성"
     },
     "source_fact:6396206163ed13d8642ee596": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
@@ -274121,6 +274703,25 @@
       "source_published_kst": "2026-10-05T17:00+09:00",
       "title": "[주간수급리포트] 외국인, 삼전닉스 7.5조 던졌다⋯‘자사주+개인’이 방어"
     },
+    "source_fact:87d38b7b04f027d64aaf9ab5": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820887",
+      "source": "뉴시스",
+      "source_body_digest": "e20671522182807e0c0b76f2aa22f825c0531d8c9cb634c8bda8fbab6b98dca0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5f23859c6369b07b80cfc577c9c4d14de2ff5d61d3125fbf94a75a24d9ae545",
+      "source_fact_keys": [
+        "source_fact:v1:eae6d722b4a100eed013f53a3978cf1442d48e124bdfa76c21ad96ab9547b7c9"
+      ],
+      "source_published_kst": "2026-10-11T11:09+09:00",
+      "source_title": "\"매도세 심상찮더니…\" 삼성전자 외국인 지분, 17년만에 최저",
+      "telegram_core_fact": "외국인들은 올들어 지난 8일까지 코스피시장에서 92조5477억원에 이르는 삼성전자 주식을 순매도했다.",
+      "title": "\"매도세 심상찮더니…\" 삼성전자 외국인 지분, 17년만에 최저"
+    },
     "source_fact:87d9af882f4e7e04d6e9e637": {
       "first_seen_kst": "2026-10-06T14:52:12+09:00",
       "lanes": {
@@ -276517,6 +277118,37 @@
       "source_title": "현대차, 분기 영업이익 기아에 역전당하나…매출도 6년만에 감소 | 연합뉴스",
       "telegram_core_fact": "올해 판매 부진을 겪고 있는 현대차의 3분기 영업이익과 매출이 동반 감소할 것이라는 전망이 나온다.",
       "title": "현대차, 분기 영업이익 기아에 역전당하나…매출도 6년만에 감소 | 연합뉴스"
+    },
+    "source_fact:8b65a3d0dd714dc6082e3ddc": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.news1.kr/world/europe/6315726",
+      "source": "뉴스1",
+      "source_body_digest": "0fe9e321ba15c757cf5d3a734bf198a7255ea52d7a37f29e94c59aa5ee145d4e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8eea27a1ab9a0a3ebcff31bc4515d00677f7c8e9479325a18f314acb66479e99",
+      "source_fact_keys": [
+        "source_fact:v1:27e0c5a36d9e46f494dc298273fd68ca5619c179bd5ff8a0129eed72481ab324",
+        "source_fact:v1:2ed26438764725a50dff0f8297a6d498a6a85e70ae3d70f197eb894435430b8b",
+        "source_fact:v1:31e26677e90f145ab20b0888a9fe03de6b4fe567f5288728276d3bacc98f23a4",
+        "source_fact:v1:560c3df8cf3c45fe19e21205d4a27cd927df446b68afb469e73ca02feefe2636",
+        "source_fact:v1:6445d831949d3cc34e6428655c19fc89cfa9e556b9dcc4c778c655e693d4c1b4",
+        "source_fact:v1:7f2851eec48fa941cfb758f97c5ef0b34968500b8fc8c40b225739813c642108",
+        "source_fact:v1:834e231feeb564ff9bdbe5824143d66f450c95afeb16cd88a8816dce661fbd14",
+        "source_fact:v1:9c2ef8eea27b4c2a5109bd424c0391b88528cefd0bdc5927478dc74d864bf8af",
+        "source_fact:v1:cd3f99c0a1b09bec99104bd6d97f07ea6527633be504010b53eeebc38feb4a07",
+        "source_fact:v1:ddaaccbddb86804ee8c802d1332487c16d09a12adf83cd9e2285d2b8ed47afd1",
+        "source_fact:v1:ede55a42b2befdbd683577f1d14f22c601ca6bb30fadfde4057c87b94ab9f126",
+        "source_fact:v1:f0691e4274da096e48d24dc8f93ea89d3e92da8798090e5f38e73b1c743d3469",
+        "source_fact:v1:f09973070049a674877c0c7fe5c49213267465bda20b8f0eda9a053397b16796"
+      ],
+      "source_published_kst": "2026-10-11T06:19+09:00",
+      "source_title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성",
+      "telegram_core_fact": "(런던=뉴스1) 러시아가 10일(현지시간) 도널드 트럼프 미국 대통령과 블라디미르 푸틴 러시아 대통령의 합의에 따라 자국산 경유 수출 금지 조치를 부분적으로 해제했다고 밝혔다.",
+      "title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성"
     },
     "source_fact:8b68dc7f83e7f711901aa100": {
       "first_seen_kst": "2026-10-10T19:20:50+09:00",
@@ -280827,6 +281459,37 @@
       "source_published_kst": "2026-10-06T18:04+09:00",
       "title": "노벨티노빌리티, 7443억 기술 수출"
     },
+    "source_fact:9230ca7a8e1d032ac4578553": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.news1.kr/world/europe/6315726",
+      "source": "뉴스1",
+      "source_body_digest": "0fe9e321ba15c757cf5d3a734bf198a7255ea52d7a37f29e94c59aa5ee145d4e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8eea27a1ab9a0a3ebcff31bc4515d00677f7c8e9479325a18f314acb66479e99",
+      "source_fact_keys": [
+        "source_fact:v1:27e0c5a36d9e46f494dc298273fd68ca5619c179bd5ff8a0129eed72481ab324",
+        "source_fact:v1:2ed26438764725a50dff0f8297a6d498a6a85e70ae3d70f197eb894435430b8b",
+        "source_fact:v1:31e26677e90f145ab20b0888a9fe03de6b4fe567f5288728276d3bacc98f23a4",
+        "source_fact:v1:560c3df8cf3c45fe19e21205d4a27cd927df446b68afb469e73ca02feefe2636",
+        "source_fact:v1:6445d831949d3cc34e6428655c19fc89cfa9e556b9dcc4c778c655e693d4c1b4",
+        "source_fact:v1:7f2851eec48fa941cfb758f97c5ef0b34968500b8fc8c40b225739813c642108",
+        "source_fact:v1:834e231feeb564ff9bdbe5824143d66f450c95afeb16cd88a8816dce661fbd14",
+        "source_fact:v1:9c2ef8eea27b4c2a5109bd424c0391b88528cefd0bdc5927478dc74d864bf8af",
+        "source_fact:v1:cd3f99c0a1b09bec99104bd6d97f07ea6527633be504010b53eeebc38feb4a07",
+        "source_fact:v1:ddaaccbddb86804ee8c802d1332487c16d09a12adf83cd9e2285d2b8ed47afd1",
+        "source_fact:v1:ede55a42b2befdbd683577f1d14f22c601ca6bb30fadfde4057c87b94ab9f126",
+        "source_fact:v1:f0691e4274da096e48d24dc8f93ea89d3e92da8798090e5f38e73b1c743d3469",
+        "source_fact:v1:f09973070049a674877c0c7fe5c49213267465bda20b8f0eda9a053397b16796"
+      ],
+      "source_published_kst": "2026-10-11T06:19+09:00",
+      "source_title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성",
+      "telegram_core_fact": "(런던=뉴스1) 러시아가 10일(현지시간) 도널드 트럼프 미국 대통령과 블라디미르 푸틴 러시아 대통령의 합의에 따라 자국산 경유 수출 금지 조치를 부분적으로 해제했다고 밝혔다.",
+      "title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성"
+    },
     "source_fact:923f111df49e0a90f1348a01": {
       "first_seen_kst": "2026-10-09T20:02:39+09:00",
       "lanes": {
@@ -282940,6 +283603,37 @@
       "telegram_core_fact": "공급 계획의 차질없는 이행을 위해 ▲3기 신도시 등 공공택지 조성 ▲인허가를 받고도 착공하지 못한 사업장의 지원 강화 ▲인허가 지연 해결 ▲공공 장기임대주택 공급 등 4가지 과제를 언급했다.",
       "title": "홍지선 \"공공 장기임대 재원에 초과세수 활용 검토\"…SNS 첫 게시물"
     },
+    "source_fact:95d6148cfea355e8f3b9f0a0": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.news1.kr/world/europe/6315726",
+      "source": "뉴스1",
+      "source_body_digest": "0fe9e321ba15c757cf5d3a734bf198a7255ea52d7a37f29e94c59aa5ee145d4e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8eea27a1ab9a0a3ebcff31bc4515d00677f7c8e9479325a18f314acb66479e99",
+      "source_fact_keys": [
+        "source_fact:v1:27e0c5a36d9e46f494dc298273fd68ca5619c179bd5ff8a0129eed72481ab324",
+        "source_fact:v1:2ed26438764725a50dff0f8297a6d498a6a85e70ae3d70f197eb894435430b8b",
+        "source_fact:v1:31e26677e90f145ab20b0888a9fe03de6b4fe567f5288728276d3bacc98f23a4",
+        "source_fact:v1:560c3df8cf3c45fe19e21205d4a27cd927df446b68afb469e73ca02feefe2636",
+        "source_fact:v1:6445d831949d3cc34e6428655c19fc89cfa9e556b9dcc4c778c655e693d4c1b4",
+        "source_fact:v1:7f2851eec48fa941cfb758f97c5ef0b34968500b8fc8c40b225739813c642108",
+        "source_fact:v1:834e231feeb564ff9bdbe5824143d66f450c95afeb16cd88a8816dce661fbd14",
+        "source_fact:v1:9c2ef8eea27b4c2a5109bd424c0391b88528cefd0bdc5927478dc74d864bf8af",
+        "source_fact:v1:cd3f99c0a1b09bec99104bd6d97f07ea6527633be504010b53eeebc38feb4a07",
+        "source_fact:v1:ddaaccbddb86804ee8c802d1332487c16d09a12adf83cd9e2285d2b8ed47afd1",
+        "source_fact:v1:ede55a42b2befdbd683577f1d14f22c601ca6bb30fadfde4057c87b94ab9f126",
+        "source_fact:v1:f0691e4274da096e48d24dc8f93ea89d3e92da8798090e5f38e73b1c743d3469",
+        "source_fact:v1:f09973070049a674877c0c7fe5c49213267465bda20b8f0eda9a053397b16796"
+      ],
+      "source_published_kst": "2026-10-11T06:19+09:00",
+      "source_title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성",
+      "telegram_core_fact": "(런던=뉴스1) 러시아가 10일(현지시간) 도널드 트럼프 미국 대통령과 블라디미르 푸틴 러시아 대통령의 합의에 따라 자국산 경유 수출 금지 조치를 부분적으로 해제했다고 밝혔다.",
+      "title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성"
+    },
     "source_fact:95d64e72edcee139a0a0ce84": {
       "first_seen_kst": "2026-10-11T04:00:46+09:00",
       "lanes": {
@@ -282966,6 +283660,32 @@
       "source_title": "\"엔화 840원도 바닥 아닐 수도…엔·달러 모두 추가 하락 가능성\"",
       "telegram_core_fact": "원·달러 환율이 다음 주 1310원대까지 내려가고, 엔화는 100엔당 840원대에서도 추가 하락할 수 있다는 전문가 전망이 나왔다.",
       "title": "\"엔화 840원도 바닥 아닐 수도…엔·달러 모두 추가 하락 가능성\""
+    },
+    "source_fact:95e6780c3f4aea00643317c4": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01400566645611936",
+      "source": "이데일리",
+      "source_body_digest": "cdfc2feb028f591c7759ea6fbe3cf4ee9d6c9eb907ac23c191d4f2b49494d83c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3760acd2d6ceeeff03c29df26a5f5c56de769d206694e56a425e03e0f9617d28",
+      "source_fact_keys": [
+        "source_fact:v1:3890e363b51da245257234affa08ad160ab03d30eae0a6ed64c66e243a5979b3",
+        "source_fact:v1:5a75a0c0ef5104e07c3c81ce8b5feec53b500515a914802a89bc2b1b44997380",
+        "source_fact:v1:5fbd5a9da9dd25977e4f7af8161db69e883a4f35973e69c34a4245be448c23b7",
+        "source_fact:v1:6efe7c4bf2cb5b33aa546041344e0e157c401a948a313cc329520fd013df403a",
+        "source_fact:v1:9a7aef122a00a35fb64ccac90cebaac9209428508524ff69e0450edce2f02432",
+        "source_fact:v1:e17fa24b5f40ad556d6cf94769746685cded671701c0d66285f6bcbbbd92d7d1",
+        "source_fact:v1:ed5193a3ed267f031df567ad81d206a740e2661d116b4ff1ecfa15451540a24d",
+        "source_fact:v1:ee6edb922de28e660e9f3f7f5557943b89fc5c71c166701744f9689ba24f3102"
+      ],
+      "source_published_kst": "2026-10-11T11:07+09:00",
+      "source_title": "중국 소비 부진 속 황금연휴 효과 기대…5중전회에 쏠리는 눈",
+      "telegram_core_fact": "중국 상무부는 중추절 연휴 기간인 지난달 25~27일 전국 수요 소매·외식업체의 일평균 매출이 전년동기대비 6.1% 증가했다고 밝혔다. 로이터통신은 오히려 9~10월 연휴 기간 중국 내 여행당 평균 지출액이 전년동기대비 1.9% 감소했다면서 소비자 지출이 약세를 이어가고 있다고 보도했다.",
+      "title": "중국 소비 부진 속 황금연휴 효과 기대…5중전회에 쏠리는 눈"
     },
     "source_fact:95ff4776e1983af4f3a0c14f": {
       "first_seen_kst": "2026-10-08T22:29:06+09:00",
@@ -285441,6 +286161,37 @@
       ],
       "source_published_kst": "2026-10-07T06:26+09:00",
       "title": "美 3년물 국채 입찰금리 4.932%…2006년 이후 최고"
+    },
+    "source_fact:994dc5be873976a561370616": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.news1.kr/world/europe/6315726",
+      "source": "뉴스1",
+      "source_body_digest": "0fe9e321ba15c757cf5d3a734bf198a7255ea52d7a37f29e94c59aa5ee145d4e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8eea27a1ab9a0a3ebcff31bc4515d00677f7c8e9479325a18f314acb66479e99",
+      "source_fact_keys": [
+        "source_fact:v1:27e0c5a36d9e46f494dc298273fd68ca5619c179bd5ff8a0129eed72481ab324",
+        "source_fact:v1:2ed26438764725a50dff0f8297a6d498a6a85e70ae3d70f197eb894435430b8b",
+        "source_fact:v1:31e26677e90f145ab20b0888a9fe03de6b4fe567f5288728276d3bacc98f23a4",
+        "source_fact:v1:560c3df8cf3c45fe19e21205d4a27cd927df446b68afb469e73ca02feefe2636",
+        "source_fact:v1:6445d831949d3cc34e6428655c19fc89cfa9e556b9dcc4c778c655e693d4c1b4",
+        "source_fact:v1:7f2851eec48fa941cfb758f97c5ef0b34968500b8fc8c40b225739813c642108",
+        "source_fact:v1:834e231feeb564ff9bdbe5824143d66f450c95afeb16cd88a8816dce661fbd14",
+        "source_fact:v1:9c2ef8eea27b4c2a5109bd424c0391b88528cefd0bdc5927478dc74d864bf8af",
+        "source_fact:v1:cd3f99c0a1b09bec99104bd6d97f07ea6527633be504010b53eeebc38feb4a07",
+        "source_fact:v1:ddaaccbddb86804ee8c802d1332487c16d09a12adf83cd9e2285d2b8ed47afd1",
+        "source_fact:v1:ede55a42b2befdbd683577f1d14f22c601ca6bb30fadfde4057c87b94ab9f126",
+        "source_fact:v1:f0691e4274da096e48d24dc8f93ea89d3e92da8798090e5f38e73b1c743d3469",
+        "source_fact:v1:f09973070049a674877c0c7fe5c49213267465bda20b8f0eda9a053397b16796"
+      ],
+      "source_published_kst": "2026-10-11T06:19+09:00",
+      "source_title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성",
+      "telegram_core_fact": "(런던=뉴스1) 러시아가 10일(현지시간) 도널드 트럼프 미국 대통령과 블라디미르 푸틴 러시아 대통령의 합의에 따라 자국산 경유 수출 금지 조치를 부분적으로 해제했다고 밝혔다.",
+      "title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성"
     },
     "source_fact:994eb0368e93977213ef999e": {
       "first_seen_kst": "2026-10-07T18:00:43+09:00",
@@ -294155,6 +294906,37 @@
       "source_published_kst": "2026-10-07T09:55+09:00",
       "title": "그래피, 메가젠과 20억 규모 보철 솔루션 공급 계약"
     },
+    "source_fact:a661edf7d01056c1b8d4c7ef": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.news1.kr/world/europe/6315726",
+      "source": "뉴스1",
+      "source_body_digest": "0fe9e321ba15c757cf5d3a734bf198a7255ea52d7a37f29e94c59aa5ee145d4e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8eea27a1ab9a0a3ebcff31bc4515d00677f7c8e9479325a18f314acb66479e99",
+      "source_fact_keys": [
+        "source_fact:v1:27e0c5a36d9e46f494dc298273fd68ca5619c179bd5ff8a0129eed72481ab324",
+        "source_fact:v1:2ed26438764725a50dff0f8297a6d498a6a85e70ae3d70f197eb894435430b8b",
+        "source_fact:v1:31e26677e90f145ab20b0888a9fe03de6b4fe567f5288728276d3bacc98f23a4",
+        "source_fact:v1:560c3df8cf3c45fe19e21205d4a27cd927df446b68afb469e73ca02feefe2636",
+        "source_fact:v1:6445d831949d3cc34e6428655c19fc89cfa9e556b9dcc4c778c655e693d4c1b4",
+        "source_fact:v1:7f2851eec48fa941cfb758f97c5ef0b34968500b8fc8c40b225739813c642108",
+        "source_fact:v1:834e231feeb564ff9bdbe5824143d66f450c95afeb16cd88a8816dce661fbd14",
+        "source_fact:v1:9c2ef8eea27b4c2a5109bd424c0391b88528cefd0bdc5927478dc74d864bf8af",
+        "source_fact:v1:cd3f99c0a1b09bec99104bd6d97f07ea6527633be504010b53eeebc38feb4a07",
+        "source_fact:v1:ddaaccbddb86804ee8c802d1332487c16d09a12adf83cd9e2285d2b8ed47afd1",
+        "source_fact:v1:ede55a42b2befdbd683577f1d14f22c601ca6bb30fadfde4057c87b94ab9f126",
+        "source_fact:v1:f0691e4274da096e48d24dc8f93ea89d3e92da8798090e5f38e73b1c743d3469",
+        "source_fact:v1:f09973070049a674877c0c7fe5c49213267465bda20b8f0eda9a053397b16796"
+      ],
+      "source_published_kst": "2026-10-11T06:19+09:00",
+      "source_title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성",
+      "telegram_core_fact": "(런던=뉴스1) 러시아가 10일(현지시간) 도널드 트럼프 미국 대통령과 블라디미르 푸틴 러시아 대통령의 합의에 따라 자국산 경유 수출 금지 조치를 부분적으로 해제했다고 밝혔다.",
+      "title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성"
+    },
     "source_fact:a665449836c75b12be9731db": {
       "first_seen_kst": "2026-10-08T08:31:37+09:00",
       "lanes": {
@@ -298523,6 +299305,32 @@
       "source_published_kst": "2026-10-07T08:17+09:00",
       "title": "지아이이노베이션 GI-301, 일본 임상 2상 진입 … 10월 첫 환자 투약"
     },
+    "source_fact:acf36d8f147f3e51ff25efc2": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01400566645611936",
+      "source": "이데일리",
+      "source_body_digest": "cdfc2feb028f591c7759ea6fbe3cf4ee9d6c9eb907ac23c191d4f2b49494d83c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3760acd2d6ceeeff03c29df26a5f5c56de769d206694e56a425e03e0f9617d28",
+      "source_fact_keys": [
+        "source_fact:v1:3890e363b51da245257234affa08ad160ab03d30eae0a6ed64c66e243a5979b3",
+        "source_fact:v1:5a75a0c0ef5104e07c3c81ce8b5feec53b500515a914802a89bc2b1b44997380",
+        "source_fact:v1:5fbd5a9da9dd25977e4f7af8161db69e883a4f35973e69c34a4245be448c23b7",
+        "source_fact:v1:6efe7c4bf2cb5b33aa546041344e0e157c401a948a313cc329520fd013df403a",
+        "source_fact:v1:9a7aef122a00a35fb64ccac90cebaac9209428508524ff69e0450edce2f02432",
+        "source_fact:v1:e17fa24b5f40ad556d6cf94769746685cded671701c0d66285f6bcbbbd92d7d1",
+        "source_fact:v1:ed5193a3ed267f031df567ad81d206a740e2661d116b4ff1ecfa15451540a24d",
+        "source_fact:v1:ee6edb922de28e660e9f3f7f5557943b89fc5c71c166701744f9689ba24f3102"
+      ],
+      "source_published_kst": "2026-10-11T11:07+09:00",
+      "source_title": "중국 소비 부진 속 황금연휴 효과 기대…5중전회에 쏠리는 눈",
+      "telegram_core_fact": "중국 상무부는 중추절 연휴 기간인 지난달 25~27일 전국 수요 소매·외식업체의 일평균 매출이 전년동기대비 6.1% 증가했다고 밝혔다. 로이터통신은 오히려 9~10월 연휴 기간 중국 내 여행당 평균 지출액이 전년동기대비 1.9% 감소했다면서 소비자 지출이 약세를 이어가고 있다고 보도했다.",
+      "title": "중국 소비 부진 속 황금연휴 효과 기대…5중전회에 쏠리는 눈"
+    },
     "source_fact:acf86568bbbe9b208dff62cf": {
       "first_seen_kst": "2026-10-09T16:29:31+09:00",
       "lanes": {
@@ -301062,6 +301870,32 @@
       ],
       "source_published_kst": "2026-10-07T14:00+09:00",
       "title": "“확전에는 확전으로” 사우디 vs 후티 전면 격화…韓 기업 진출 지역도 영향권"
+    },
+    "source_fact:b0b4b03c818e1a8443228c0e": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01400566645611936",
+      "source": "이데일리",
+      "source_body_digest": "cdfc2feb028f591c7759ea6fbe3cf4ee9d6c9eb907ac23c191d4f2b49494d83c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3760acd2d6ceeeff03c29df26a5f5c56de769d206694e56a425e03e0f9617d28",
+      "source_fact_keys": [
+        "source_fact:v1:3890e363b51da245257234affa08ad160ab03d30eae0a6ed64c66e243a5979b3",
+        "source_fact:v1:5a75a0c0ef5104e07c3c81ce8b5feec53b500515a914802a89bc2b1b44997380",
+        "source_fact:v1:5fbd5a9da9dd25977e4f7af8161db69e883a4f35973e69c34a4245be448c23b7",
+        "source_fact:v1:6efe7c4bf2cb5b33aa546041344e0e157c401a948a313cc329520fd013df403a",
+        "source_fact:v1:9a7aef122a00a35fb64ccac90cebaac9209428508524ff69e0450edce2f02432",
+        "source_fact:v1:e17fa24b5f40ad556d6cf94769746685cded671701c0d66285f6bcbbbd92d7d1",
+        "source_fact:v1:ed5193a3ed267f031df567ad81d206a740e2661d116b4ff1ecfa15451540a24d",
+        "source_fact:v1:ee6edb922de28e660e9f3f7f5557943b89fc5c71c166701744f9689ba24f3102"
+      ],
+      "source_published_kst": "2026-10-11T11:07+09:00",
+      "source_title": "중국 소비 부진 속 황금연휴 효과 기대…5중전회에 쏠리는 눈",
+      "telegram_core_fact": "중국 상무부는 중추절 연휴 기간인 지난달 25~27일 전국 수요 소매·외식업체의 일평균 매출이 전년동기대비 6.1% 증가했다고 밝혔다. 로이터통신은 오히려 9~10월 연휴 기간 중국 내 여행당 평균 지출액이 전년동기대비 1.9% 감소했다면서 소비자 지출이 약세를 이어가고 있다고 보도했다.",
+      "title": "중국 소비 부진 속 황금연휴 효과 기대…5중전회에 쏠리는 눈"
     },
     "source_fact:b0b50962f90a8053ff039ba0": {
       "first_seen_kst": "2026-10-06T00:11:03+09:00",
@@ -304564,6 +305398,32 @@
       "source_published_kst": "2026-10-06T05:00+09:00",
       "title": "서비스 매출 94% 셀렉트스타…IPO서 플랫폼 전환 시험대[IPO 엑스레이]"
     },
+    "source_fact:b5ef5cb29097afae48ec5897": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01400566645611936",
+      "source": "이데일리",
+      "source_body_digest": "cdfc2feb028f591c7759ea6fbe3cf4ee9d6c9eb907ac23c191d4f2b49494d83c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3760acd2d6ceeeff03c29df26a5f5c56de769d206694e56a425e03e0f9617d28",
+      "source_fact_keys": [
+        "source_fact:v1:3890e363b51da245257234affa08ad160ab03d30eae0a6ed64c66e243a5979b3",
+        "source_fact:v1:5a75a0c0ef5104e07c3c81ce8b5feec53b500515a914802a89bc2b1b44997380",
+        "source_fact:v1:5fbd5a9da9dd25977e4f7af8161db69e883a4f35973e69c34a4245be448c23b7",
+        "source_fact:v1:6efe7c4bf2cb5b33aa546041344e0e157c401a948a313cc329520fd013df403a",
+        "source_fact:v1:9a7aef122a00a35fb64ccac90cebaac9209428508524ff69e0450edce2f02432",
+        "source_fact:v1:e17fa24b5f40ad556d6cf94769746685cded671701c0d66285f6bcbbbd92d7d1",
+        "source_fact:v1:ed5193a3ed267f031df567ad81d206a740e2661d116b4ff1ecfa15451540a24d",
+        "source_fact:v1:ee6edb922de28e660e9f3f7f5557943b89fc5c71c166701744f9689ba24f3102"
+      ],
+      "source_published_kst": "2026-10-11T11:07+09:00",
+      "source_title": "중국 소비 부진 속 황금연휴 효과 기대…5중전회에 쏠리는 눈",
+      "telegram_core_fact": "중국 상무부는 중추절 연휴 기간인 지난달 25~27일 전국 수요 소매·외식업체의 일평균 매출이 전년동기대비 6.1% 증가했다고 밝혔다. 로이터통신은 오히려 9~10월 연휴 기간 중국 내 여행당 평균 지출액이 전년동기대비 1.9% 감소했다면서 소비자 지출이 약세를 이어가고 있다고 보도했다.",
+      "title": "중국 소비 부진 속 황금연휴 효과 기대…5중전회에 쏠리는 눈"
+    },
     "source_fact:b5f640bdb812ee4c4bb40d9f": {
       "first_seen_kst": "2026-10-06T19:58:43+09:00",
       "lanes": {
@@ -306569,6 +307429,37 @@
       ],
       "source_published_kst": "2026-10-06T17:33+09:00",
       "title": "이현재 하남시장 \"2030년까지 10조 투자 유치\"…기업·일자리 확대"
+    },
+    "source_fact:b8b1462590e2bd0fef30ade1": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.news1.kr/world/europe/6315726",
+      "source": "뉴스1",
+      "source_body_digest": "0fe9e321ba15c757cf5d3a734bf198a7255ea52d7a37f29e94c59aa5ee145d4e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8eea27a1ab9a0a3ebcff31bc4515d00677f7c8e9479325a18f314acb66479e99",
+      "source_fact_keys": [
+        "source_fact:v1:27e0c5a36d9e46f494dc298273fd68ca5619c179bd5ff8a0129eed72481ab324",
+        "source_fact:v1:2ed26438764725a50dff0f8297a6d498a6a85e70ae3d70f197eb894435430b8b",
+        "source_fact:v1:31e26677e90f145ab20b0888a9fe03de6b4fe567f5288728276d3bacc98f23a4",
+        "source_fact:v1:560c3df8cf3c45fe19e21205d4a27cd927df446b68afb469e73ca02feefe2636",
+        "source_fact:v1:6445d831949d3cc34e6428655c19fc89cfa9e556b9dcc4c778c655e693d4c1b4",
+        "source_fact:v1:7f2851eec48fa941cfb758f97c5ef0b34968500b8fc8c40b225739813c642108",
+        "source_fact:v1:834e231feeb564ff9bdbe5824143d66f450c95afeb16cd88a8816dce661fbd14",
+        "source_fact:v1:9c2ef8eea27b4c2a5109bd424c0391b88528cefd0bdc5927478dc74d864bf8af",
+        "source_fact:v1:cd3f99c0a1b09bec99104bd6d97f07ea6527633be504010b53eeebc38feb4a07",
+        "source_fact:v1:ddaaccbddb86804ee8c802d1332487c16d09a12adf83cd9e2285d2b8ed47afd1",
+        "source_fact:v1:ede55a42b2befdbd683577f1d14f22c601ca6bb30fadfde4057c87b94ab9f126",
+        "source_fact:v1:f0691e4274da096e48d24dc8f93ea89d3e92da8798090e5f38e73b1c743d3469",
+        "source_fact:v1:f09973070049a674877c0c7fe5c49213267465bda20b8f0eda9a053397b16796"
+      ],
+      "source_published_kst": "2026-10-11T06:19+09:00",
+      "source_title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성",
+      "telegram_core_fact": "(런던=뉴스1) 러시아가 10일(현지시간) 도널드 트럼프 미국 대통령과 블라디미르 푸틴 러시아 대통령의 합의에 따라 자국산 경유 수출 금지 조치를 부분적으로 해제했다고 밝혔다.",
+      "title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성"
     },
     "source_fact:b8b6d1c2e468f1f8b5c6dad4": {
       "first_seen_kst": "2026-10-07T03:04:14+09:00",
@@ -318238,6 +319129,37 @@
       "telegram_core_fact": "국민연금이 올해 서울 중구 을지트윈타워 서관 등 도심 대형 오피스 거래에 출자자로 잇따라 이름을 올린 것으로 나타났다.",
       "title": "빈 사무실 늘어나는데…국민연금은 서울 빌딩에 수천억 '베팅'"
     },
+    "source_fact:c9de3c4fb47f5e1f4d140619": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.news1.kr/world/europe/6315726",
+      "source": "뉴스1",
+      "source_body_digest": "0fe9e321ba15c757cf5d3a734bf198a7255ea52d7a37f29e94c59aa5ee145d4e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8eea27a1ab9a0a3ebcff31bc4515d00677f7c8e9479325a18f314acb66479e99",
+      "source_fact_keys": [
+        "source_fact:v1:27e0c5a36d9e46f494dc298273fd68ca5619c179bd5ff8a0129eed72481ab324",
+        "source_fact:v1:2ed26438764725a50dff0f8297a6d498a6a85e70ae3d70f197eb894435430b8b",
+        "source_fact:v1:31e26677e90f145ab20b0888a9fe03de6b4fe567f5288728276d3bacc98f23a4",
+        "source_fact:v1:560c3df8cf3c45fe19e21205d4a27cd927df446b68afb469e73ca02feefe2636",
+        "source_fact:v1:6445d831949d3cc34e6428655c19fc89cfa9e556b9dcc4c778c655e693d4c1b4",
+        "source_fact:v1:7f2851eec48fa941cfb758f97c5ef0b34968500b8fc8c40b225739813c642108",
+        "source_fact:v1:834e231feeb564ff9bdbe5824143d66f450c95afeb16cd88a8816dce661fbd14",
+        "source_fact:v1:9c2ef8eea27b4c2a5109bd424c0391b88528cefd0bdc5927478dc74d864bf8af",
+        "source_fact:v1:cd3f99c0a1b09bec99104bd6d97f07ea6527633be504010b53eeebc38feb4a07",
+        "source_fact:v1:ddaaccbddb86804ee8c802d1332487c16d09a12adf83cd9e2285d2b8ed47afd1",
+        "source_fact:v1:ede55a42b2befdbd683577f1d14f22c601ca6bb30fadfde4057c87b94ab9f126",
+        "source_fact:v1:f0691e4274da096e48d24dc8f93ea89d3e92da8798090e5f38e73b1c743d3469",
+        "source_fact:v1:f09973070049a674877c0c7fe5c49213267465bda20b8f0eda9a053397b16796"
+      ],
+      "source_published_kst": "2026-10-11T06:19+09:00",
+      "source_title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성",
+      "telegram_core_fact": "(런던=뉴스1) 러시아가 10일(현지시간) 도널드 트럼프 미국 대통령과 블라디미르 푸틴 러시아 대통령의 합의에 따라 자국산 경유 수출 금지 조치를 부분적으로 해제했다고 밝혔다.",
+      "title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성"
+    },
     "source_fact:c9e1e832e90a01a86bfed8e2": {
       "first_seen_kst": "2026-10-06T18:58:43+09:00",
       "lanes": {
@@ -320988,6 +321910,32 @@
       "source_title": "엘리스그룹, 모듈형 AI 데이터센터 ‘PMDC’ 상표 등록",
       "telegram_core_fact": "2021년부터 개발·운영해온 모듈형 데이터센터 기술과 AI 클라우드 소프트웨어를 결합해 국내외 AI 인프라 사업을 확대한다.",
       "title": "엘리스그룹, 모듈형 AI 데이터센터 ‘PMDC’ 상표 등록"
+    },
+    "source_fact:ce4e4b2a9eb64750b75b4383": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01400566645611936",
+      "source": "이데일리",
+      "source_body_digest": "cdfc2feb028f591c7759ea6fbe3cf4ee9d6c9eb907ac23c191d4f2b49494d83c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3760acd2d6ceeeff03c29df26a5f5c56de769d206694e56a425e03e0f9617d28",
+      "source_fact_keys": [
+        "source_fact:v1:3890e363b51da245257234affa08ad160ab03d30eae0a6ed64c66e243a5979b3",
+        "source_fact:v1:5a75a0c0ef5104e07c3c81ce8b5feec53b500515a914802a89bc2b1b44997380",
+        "source_fact:v1:5fbd5a9da9dd25977e4f7af8161db69e883a4f35973e69c34a4245be448c23b7",
+        "source_fact:v1:6efe7c4bf2cb5b33aa546041344e0e157c401a948a313cc329520fd013df403a",
+        "source_fact:v1:9a7aef122a00a35fb64ccac90cebaac9209428508524ff69e0450edce2f02432",
+        "source_fact:v1:e17fa24b5f40ad556d6cf94769746685cded671701c0d66285f6bcbbbd92d7d1",
+        "source_fact:v1:ed5193a3ed267f031df567ad81d206a740e2661d116b4ff1ecfa15451540a24d",
+        "source_fact:v1:ee6edb922de28e660e9f3f7f5557943b89fc5c71c166701744f9689ba24f3102"
+      ],
+      "source_published_kst": "2026-10-11T11:07+09:00",
+      "source_title": "중국 소비 부진 속 황금연휴 효과 기대…5중전회에 쏠리는 눈",
+      "telegram_core_fact": "중국 상무부는 중추절 연휴 기간인 지난달 25~27일 전국 수요 소매·외식업체의 일평균 매출이 전년동기대비 6.1% 증가했다고 밝혔다. 로이터통신은 오히려 9~10월 연휴 기간 중국 내 여행당 평균 지출액이 전년동기대비 1.9% 감소했다면서 소비자 지출이 약세를 이어가고 있다고 보도했다.",
+      "title": "중국 소비 부진 속 황금연휴 효과 기대…5중전회에 쏠리는 눈"
     },
     "source_fact:ce4fed3fb155ba01fd3f9fcb": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
@@ -338284,6 +339232,37 @@
       "source_published_kst": "2026-10-05T20:03+09:00",
       "title": "인스메드, CFO 10월 30일 사임…연간 매출 가이던스 유지"
     },
+    "source_fact:e6b70774e6cdc6a67fc76cbd": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.news1.kr/world/europe/6315726",
+      "source": "뉴스1",
+      "source_body_digest": "0fe9e321ba15c757cf5d3a734bf198a7255ea52d7a37f29e94c59aa5ee145d4e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8eea27a1ab9a0a3ebcff31bc4515d00677f7c8e9479325a18f314acb66479e99",
+      "source_fact_keys": [
+        "source_fact:v1:27e0c5a36d9e46f494dc298273fd68ca5619c179bd5ff8a0129eed72481ab324",
+        "source_fact:v1:2ed26438764725a50dff0f8297a6d498a6a85e70ae3d70f197eb894435430b8b",
+        "source_fact:v1:31e26677e90f145ab20b0888a9fe03de6b4fe567f5288728276d3bacc98f23a4",
+        "source_fact:v1:560c3df8cf3c45fe19e21205d4a27cd927df446b68afb469e73ca02feefe2636",
+        "source_fact:v1:6445d831949d3cc34e6428655c19fc89cfa9e556b9dcc4c778c655e693d4c1b4",
+        "source_fact:v1:7f2851eec48fa941cfb758f97c5ef0b34968500b8fc8c40b225739813c642108",
+        "source_fact:v1:834e231feeb564ff9bdbe5824143d66f450c95afeb16cd88a8816dce661fbd14",
+        "source_fact:v1:9c2ef8eea27b4c2a5109bd424c0391b88528cefd0bdc5927478dc74d864bf8af",
+        "source_fact:v1:cd3f99c0a1b09bec99104bd6d97f07ea6527633be504010b53eeebc38feb4a07",
+        "source_fact:v1:ddaaccbddb86804ee8c802d1332487c16d09a12adf83cd9e2285d2b8ed47afd1",
+        "source_fact:v1:ede55a42b2befdbd683577f1d14f22c601ca6bb30fadfde4057c87b94ab9f126",
+        "source_fact:v1:f0691e4274da096e48d24dc8f93ea89d3e92da8798090e5f38e73b1c743d3469",
+        "source_fact:v1:f09973070049a674877c0c7fe5c49213267465bda20b8f0eda9a053397b16796"
+      ],
+      "source_published_kst": "2026-10-11T06:19+09:00",
+      "source_title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성",
+      "telegram_core_fact": "(런던=뉴스1) 러시아가 10일(현지시간) 도널드 트럼프 미국 대통령과 블라디미르 푸틴 러시아 대통령의 합의에 따라 자국산 경유 수출 금지 조치를 부분적으로 해제했다고 밝혔다.",
+      "title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성"
+    },
     "source_fact:e6bb09e76a3e62c86eb77f93": {
       "first_seen_kst": "2026-10-06T15:55:43+09:00",
       "lanes": {
@@ -340138,6 +341117,37 @@
       "source_title": "[속보] 삼성전자 영업익 100조 돌파…분기 기준 '국내 최초'",
       "telegram_core_fact": "인공지능(AI) 투자정보 플랫폼 에픽AI는 삼성전자의 3분기 매출과 영업이익 컨센서스(증권사 전망치 평균)를 각각 201조1109억원, 107조860억원으로 제시했다.",
       "title": "[속보] 삼성전자 영업익 100조 돌파…분기 기준 '국내 최초'"
+    },
+    "source_fact:e93f7961fa0f4eb491a89106": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.news1.kr/world/europe/6315726",
+      "source": "뉴스1",
+      "source_body_digest": "0fe9e321ba15c757cf5d3a734bf198a7255ea52d7a37f29e94c59aa5ee145d4e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8eea27a1ab9a0a3ebcff31bc4515d00677f7c8e9479325a18f314acb66479e99",
+      "source_fact_keys": [
+        "source_fact:v1:27e0c5a36d9e46f494dc298273fd68ca5619c179bd5ff8a0129eed72481ab324",
+        "source_fact:v1:2ed26438764725a50dff0f8297a6d498a6a85e70ae3d70f197eb894435430b8b",
+        "source_fact:v1:31e26677e90f145ab20b0888a9fe03de6b4fe567f5288728276d3bacc98f23a4",
+        "source_fact:v1:560c3df8cf3c45fe19e21205d4a27cd927df446b68afb469e73ca02feefe2636",
+        "source_fact:v1:6445d831949d3cc34e6428655c19fc89cfa9e556b9dcc4c778c655e693d4c1b4",
+        "source_fact:v1:7f2851eec48fa941cfb758f97c5ef0b34968500b8fc8c40b225739813c642108",
+        "source_fact:v1:834e231feeb564ff9bdbe5824143d66f450c95afeb16cd88a8816dce661fbd14",
+        "source_fact:v1:9c2ef8eea27b4c2a5109bd424c0391b88528cefd0bdc5927478dc74d864bf8af",
+        "source_fact:v1:cd3f99c0a1b09bec99104bd6d97f07ea6527633be504010b53eeebc38feb4a07",
+        "source_fact:v1:ddaaccbddb86804ee8c802d1332487c16d09a12adf83cd9e2285d2b8ed47afd1",
+        "source_fact:v1:ede55a42b2befdbd683577f1d14f22c601ca6bb30fadfde4057c87b94ab9f126",
+        "source_fact:v1:f0691e4274da096e48d24dc8f93ea89d3e92da8798090e5f38e73b1c743d3469",
+        "source_fact:v1:f09973070049a674877c0c7fe5c49213267465bda20b8f0eda9a053397b16796"
+      ],
+      "source_published_kst": "2026-10-11T06:19+09:00",
+      "source_title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성",
+      "telegram_core_fact": "(런던=뉴스1) 러시아가 10일(현지시간) 도널드 트럼프 미국 대통령과 블라디미르 푸틴 러시아 대통령의 합의에 따라 자국산 경유 수출 금지 조치를 부분적으로 해제했다고 밝혔다.",
+      "title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성"
     },
     "source_fact:e940c14333b9f65d76b4c4ba": {
       "first_seen_kst": "2026-10-08T14:55:40+09:00",
@@ -351224,6 +352234,25 @@
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
     },
+    "source_fact:fb230c5fbff9c60a765e0f21": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820882",
+      "source": "뉴시스",
+      "source_body_digest": "e20df4500cd5aabe90a9d0384382ab3010975f6424f8b1a4fd938f32ed25747f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4b23ea5e8efbcdc67b3d4928c3317ebf0cff7bca63bb90624701b2cf93b4e294",
+      "source_fact_keys": [
+        "source_fact:v1:f5ff2490940dbe6d639de1cd5ea5f41474fd6cd2fa559519a865ec4d73b73ed1"
+      ],
+      "source_published_kst": "2026-10-11T11:05+09:00",
+      "source_title": "인천 쿠팡물류센터 화재 원인 '리튬배터리' 추정",
+      "telegram_core_fact": "109시간 만에 진화된 인천 쿠팡 물류센터 화재가 발생한 지 약 3개월이 지난 가운데 '리튬배터리'에서 불이 시작됐을 가능성이 있다는 국립과학수사연구원(국과수)의 감정 결과가 나왔다. 인천경찰청 광역범죄수사대 등에 따르면 국과수는 지난달 1차 감정 결과 리튬배터리 발화 가능성을 제시했다.",
+      "title": "인천 쿠팡물류센터 화재 원인 '리튬배터리' 추정"
+    },
     "source_fact:fb23d2d28275899b57137741": {
       "first_seen_kst": "2026-10-08T04:26:05+09:00",
       "lanes": {
@@ -355381,6 +356410,37 @@
       "source_published_kst": "2026-10-07T14:24+09:00",
       "title": "KT&G, 인니 신공장 가동 시작…‘글로벌 5각 생산체제’ 구축"
     },
+    "title:02dfa54dc4e9ebf60f25493d": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.news1.kr/world/europe/6315726",
+      "source": "뉴스1",
+      "source_body_digest": "0fe9e321ba15c757cf5d3a734bf198a7255ea52d7a37f29e94c59aa5ee145d4e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8eea27a1ab9a0a3ebcff31bc4515d00677f7c8e9479325a18f314acb66479e99",
+      "source_fact_keys": [
+        "source_fact:v1:27e0c5a36d9e46f494dc298273fd68ca5619c179bd5ff8a0129eed72481ab324",
+        "source_fact:v1:2ed26438764725a50dff0f8297a6d498a6a85e70ae3d70f197eb894435430b8b",
+        "source_fact:v1:31e26677e90f145ab20b0888a9fe03de6b4fe567f5288728276d3bacc98f23a4",
+        "source_fact:v1:560c3df8cf3c45fe19e21205d4a27cd927df446b68afb469e73ca02feefe2636",
+        "source_fact:v1:6445d831949d3cc34e6428655c19fc89cfa9e556b9dcc4c778c655e693d4c1b4",
+        "source_fact:v1:7f2851eec48fa941cfb758f97c5ef0b34968500b8fc8c40b225739813c642108",
+        "source_fact:v1:834e231feeb564ff9bdbe5824143d66f450c95afeb16cd88a8816dce661fbd14",
+        "source_fact:v1:9c2ef8eea27b4c2a5109bd424c0391b88528cefd0bdc5927478dc74d864bf8af",
+        "source_fact:v1:cd3f99c0a1b09bec99104bd6d97f07ea6527633be504010b53eeebc38feb4a07",
+        "source_fact:v1:ddaaccbddb86804ee8c802d1332487c16d09a12adf83cd9e2285d2b8ed47afd1",
+        "source_fact:v1:ede55a42b2befdbd683577f1d14f22c601ca6bb30fadfde4057c87b94ab9f126",
+        "source_fact:v1:f0691e4274da096e48d24dc8f93ea89d3e92da8798090e5f38e73b1c743d3469",
+        "source_fact:v1:f09973070049a674877c0c7fe5c49213267465bda20b8f0eda9a053397b16796"
+      ],
+      "source_published_kst": "2026-10-11T06:19+09:00",
+      "source_title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성",
+      "telegram_core_fact": "(런던=뉴스1) 러시아가 10일(현지시간) 도널드 트럼프 미국 대통령과 블라디미르 푸틴 러시아 대통령의 합의에 따라 자국산 경유 수출 금지 조치를 부분적으로 해제했다고 밝혔다.",
+      "title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성"
+    },
     "title:02f1044ce541f8fb4fabaed9": {
       "first_seen_kst": "2026-10-01T07:43:35+09:00",
       "lanes": {
@@ -358045,6 +359105,25 @@
       "source_title": "[속보]\"100조 벽 깼다\" 삼성전자, 영업익 107조 '역대 최대'",
       "telegram_core_fact": "삼성전자는 올해 3분기 연결 기준 잠정 영업이익이 107조4000억원으로 집계됐다고 8일 공시했다.",
       "title": "[속보]\"100조 벽 깼다\" 삼성전자, 영업익 107조 '역대 최대'"
+    },
+    "title:0f4474f404973d8d7f752964": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820887",
+      "source": "뉴시스",
+      "source_body_digest": "e20671522182807e0c0b76f2aa22f825c0531d8c9cb634c8bda8fbab6b98dca0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5f23859c6369b07b80cfc577c9c4d14de2ff5d61d3125fbf94a75a24d9ae545",
+      "source_fact_keys": [
+        "source_fact:v1:eae6d722b4a100eed013f53a3978cf1442d48e124bdfa76c21ad96ab9547b7c9"
+      ],
+      "source_published_kst": "2026-10-11T11:09+09:00",
+      "source_title": "\"매도세 심상찮더니…\" 삼성전자 외국인 지분, 17년만에 최저",
+      "telegram_core_fact": "외국인들은 올들어 지난 8일까지 코스피시장에서 92조5477억원에 이르는 삼성전자 주식을 순매도했다.",
+      "title": "\"매도세 심상찮더니…\" 삼성전자 외국인 지분, 17년만에 최저"
     },
     "title:0f6b35e17230191009ad6712": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
@@ -388840,6 +389919,25 @@
       "source": "머니투데이",
       "title": "트럼프 \"2배 청구\" 으름장, 국무부 \"한미 윈윈\"…알래스카 LNG 압박"
     },
+    "title:9ae719dc27ae2ce378c00e36": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003820882",
+      "source": "뉴시스",
+      "source_body_digest": "e20df4500cd5aabe90a9d0384382ab3010975f6424f8b1a4fd938f32ed25747f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4b23ea5e8efbcdc67b3d4928c3317ebf0cff7bca63bb90624701b2cf93b4e294",
+      "source_fact_keys": [
+        "source_fact:v1:f5ff2490940dbe6d639de1cd5ea5f41474fd6cd2fa559519a865ec4d73b73ed1"
+      ],
+      "source_published_kst": "2026-10-11T11:05+09:00",
+      "source_title": "인천 쿠팡물류센터 화재 원인 '리튬배터리' 추정",
+      "telegram_core_fact": "109시간 만에 진화된 인천 쿠팡 물류센터 화재가 발생한 지 약 3개월이 지난 가운데 '리튬배터리'에서 불이 시작됐을 가능성이 있다는 국립과학수사연구원(국과수)의 감정 결과가 나왔다. 인천경찰청 광역범죄수사대 등에 따르면 국과수는 지난달 1차 감정 결과 리튬배터리 발화 가능성을 제시했다.",
+      "title": "인천 쿠팡물류센터 화재 원인 '리튬배터리' 추정"
+    },
     "title:9b00cbe64176a072a3523775": {
       "first_seen_kst": "2026-10-11T09:08:30+09:00",
       "lanes": {
@@ -393210,6 +394308,32 @@
       "source": "뉴시스",
       "source_event_identity": "",
       "title": "중남미 7개 대선 모두 우파 승리…룰라·보우소나루 아들 4일 격돌(종합)"
+    },
+    "title:adbb83aca833bebd303d1c24": {
+      "first_seen_kst": "2026-10-11T11:26:05+09:00",
+      "lanes": {
+        "live": "2026-10-11T11:26:05+09:00"
+      },
+      "last_seen_kst": "2026-10-11T11:26:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01400566645611936",
+      "source": "이데일리",
+      "source_body_digest": "cdfc2feb028f591c7759ea6fbe3cf4ee9d6c9eb907ac23c191d4f2b49494d83c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3760acd2d6ceeeff03c29df26a5f5c56de769d206694e56a425e03e0f9617d28",
+      "source_fact_keys": [
+        "source_fact:v1:3890e363b51da245257234affa08ad160ab03d30eae0a6ed64c66e243a5979b3",
+        "source_fact:v1:5a75a0c0ef5104e07c3c81ce8b5feec53b500515a914802a89bc2b1b44997380",
+        "source_fact:v1:5fbd5a9da9dd25977e4f7af8161db69e883a4f35973e69c34a4245be448c23b7",
+        "source_fact:v1:6efe7c4bf2cb5b33aa546041344e0e157c401a948a313cc329520fd013df403a",
+        "source_fact:v1:9a7aef122a00a35fb64ccac90cebaac9209428508524ff69e0450edce2f02432",
+        "source_fact:v1:e17fa24b5f40ad556d6cf94769746685cded671701c0d66285f6bcbbbd92d7d1",
+        "source_fact:v1:ed5193a3ed267f031df567ad81d206a740e2661d116b4ff1ecfa15451540a24d",
+        "source_fact:v1:ee6edb922de28e660e9f3f7f5557943b89fc5c71c166701744f9689ba24f3102"
+      ],
+      "source_published_kst": "2026-10-11T11:07+09:00",
+      "source_title": "중국 소비 부진 속 황금연휴 효과 기대…5중전회에 쏠리는 눈",
+      "telegram_core_fact": "중국 상무부는 중추절 연휴 기간인 지난달 25~27일 전국 수요 소매·외식업체의 일평균 매출이 전년동기대비 6.1% 증가했다고 밝혔다. 로이터통신은 오히려 9~10월 연휴 기간 중국 내 여행당 평균 지출액이 전년동기대비 1.9% 감소했다면서 소비자 지출이 약세를 이어가고 있다고 보도했다.",
+      "title": "중국 소비 부진 속 황금연휴 효과 기대…5중전회에 쏠리는 눈"
     },
     "title:adcaf4c49faa244d824bab9a": {
       "first_seen_kst": "2026-10-08T03:26:42+09:00",
@@ -410849,5 +411973,5 @@
       "title": "AI 데이터센터가 살린 철강…관세 50%에도 대미 수출 급증"
     }
   },
-  "updated_at_kst": "2026-10-11T11:01:00+09:00"
+  "updated_at_kst": "2026-10-11T11:26:05+09:00"
 }
