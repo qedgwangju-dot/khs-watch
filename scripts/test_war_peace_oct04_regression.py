@@ -928,6 +928,10 @@ kuwait_short_reprint = row(
     description="American soldiers said Iranian attacks forced evacuation.",
     minutes_ago=10,
 )
+# 회귀시험의 기사 발행일은 고정해야 한다. 현재 실행 날짜를 쓰면 10/11부터 거짓 실패한다.
+kuwait_short_reprint["published"] = format_datetime(
+    dt.datetime(2026, 10, 9, 12, 0, tzinfo=mod.watch.KST)
+)
 check("oct09-kuwait-20261009-short-reprint-detected", mod._historical_kuwait_base_footage(kuwait_short_reprint))
 kuwait_new_attack = row(
     "New Iranian missile attack on Kuwait military base today",
