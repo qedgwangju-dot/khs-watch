@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-10-11T09:17:37.046239+00:00",
+  "updated_at": "2026-10-11T11:16:09.672072+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -513,15 +513,19 @@
     "d606692e060a86f77216d8c9ed3740a3e520e1cc49207f2162971886c07e6c0b",
     "d4180365806d4a6741b174ceee00ceae4d1fcb09748ef22ed8b01d9a04af1750",
     "1b6b298d36ab369dc75dcec157e72e183cf9f13c353c655e6c4b85366c6316d7",
-    "2965d3612ee331a7dcc4d4676322215b53f72e9d6dca42c98208a61e348f2bac"
+    "2965d3612ee331a7dcc4d4676322215b53f72e9d6dca42c98208a61e348f2bac",
+    "fa3efe985b12ffcfbdf3191bb4b6eee50f854776df94fb7311b737435cf1a56f"
   ],
-  "last_selected": [],
+  "last_selected": [
+    "fa3efe985b12ffcfbdf3191bb4b6eee50f854776df94fb7311b737435cf1a56f"
+  ],
   "groups": [
     "digital_optimus_games",
     "dkt_humanoid",
     "dongkuk_nps",
     "ess_battery",
     "figure_ai",
+    "humanoid_brain_dram",
     "lg_factory_loop",
     "robotis",
     "tesla_touch_patent"
