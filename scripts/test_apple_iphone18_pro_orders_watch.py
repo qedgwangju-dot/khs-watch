@@ -394,12 +394,15 @@ class IPhone18ProOrderTests(unittest.TestCase):
             p = pathlib.Path(d) / "state.json"
             historic = self.state()
             historic["metrics"]["reported_baseline"]["reuters_confirmed_floor"] = 15.0
+            historic["metrics"]["reported_baseline"]["china_week38_sales_yoy_pct_user_provided"] = 12.0
             p.write_text(json.dumps(historic), encoding="utf-8")
             with patch.object(m, "STATE_PATH", p):
                 restored = m._load_state()
             self.assertTrue(restored["initial_alert_sent"])
             metrics = restored["metrics"]["reported_baseline"]
             self.assertNotIn("reuters_confirmed_floor", metrics)
+            self.assertNotIn("china_week38_sales_yoy_pct_user_provided", metrics)
+            self.assertEqual(metrics["china_week38_sales_yoy_pct_official_counterpoint"], 12.0)
             self.assertEqual(metrics["nikkei_reported_minimum_via_reuters_pct"], 15.0)
 
     def test_unrelated_product_order_cut_cannot_borrow_pro_subject(self):
@@ -439,6 +442,8 @@ class IPhone18ProOrderTests(unittest.TestCase):
         message=m._baseline_alert("• 환율 검증")
         self.assertTrue(m.BASELINE["china_week38_public_counterpoint_summary_confirmed"])
         self.assertFalse(m.BASELINE["china_week38_direct_tracker_publicly_verified"])
+        self.assertEqual(m.BASELINE["china_week38_sales_yoy_pct_official_counterpoint"], 12)
+        self.assertNotIn("china_week38_sales_yoy_pct_user_provided", m.BASELINE)
         self.assertIn("Counterpoint 9월 30일 공식 공개 해설",message)
         self.assertIn("Counterpoint 중국 Pro 초기 판매 공식 발표",message)
 
