@@ -7760,6 +7760,26 @@
       "telegram_core_fact": "효성중공업은 경기 과천 중공업연구소에 국내 최초로 독자기술 기반의 2GW급 HVDC 성능검증 설비인 HILS(Hardware-In-the-Loop Simulation) 시스템을 구축했다고 8일 밝혔다.",
       "title": "효성중공업, 2GW급 HVDC 성능검증 설비 구축…서해안 에너지고속도로 대비"
     },
+    "core:4d227c3efda93d71c0929848": {
+      "first_seen_kst": "2026-10-12T01:34:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T01:34:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T01:34:33+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003821086",
+      "source": "뉴시스",
+      "source_body_digest": "663a2e864b2aa08bfc1fc83d20857d3c021fec5b701d4c9adf9e4b1acc5beec6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:39200613a0d6b099dca2e5ee6d4f6a7753f0f7766479f134e797ffb3391d7581",
+      "source_fact_keys": [
+        "source_fact:v1:cc1fb5f2d4ee1e02c06d6c1a4ecc8d9d6cf441ff02eb7087f3092ce7d23fa723",
+        "source_fact:v1:d1b6cd420561a33b994a37db982e71b88cff687fce801c60ea1bed2246ca526d"
+      ],
+      "source_published_kst": "2026-10-12T01:30+09:00",
+      "source_title": "'트리플 강세'에 갇힌 부동산…\"지금 안 사면 큰일? '영끌 매수' 경계해야\"",
+      "telegram_core_fact": "최근 부동산 시장을 '매매·전세·월세의 트리플 강세'로 진단하며, 무리한 '영끌' 매수와 변동금리 대출에 대해 경고한 전문가의 분석이 나왔다.",
+      "title": "'트리플 강세'에 갇힌 부동산…\"지금 안 사면 큰일? '영끌 매수' 경계해야\""
+    },
     "core:4d971cf88de402f230685f8c": {
       "first_seen_kst": "2026-10-08T22:29:06+09:00",
       "lanes": {
@@ -10076,6 +10096,28 @@
       "source_title": "올해 쌀 생산량 5년 연속 감소 전망…재배면적 역대 최소 | 연합뉴스",
       "telegram_core_fact": "벼 재배면적이 역대 최소 수준으로 줄어들면서 올해 쌀 생산량이 5년 연속 감소할 것으로 전망됐다. 국가데이터처가 8일 발표한 '2026년 쌀 예상 생산량 조사 결과'를 보면 올해 쌀 예상 생산량은 351만8천t으로, 작년보다 0.6% 감소할 것으로 예상됐다.",
       "title": "올해 쌀 생산량 5년 연속 감소 전망…재배면적 역대 최소 | 연합뉴스"
+    },
+    "core:6911a21bc136af24a38cbf44": {
+      "first_seen_kst": "2026-10-12T01:34:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T01:34:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T01:34:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012001000079",
+      "source": "연합뉴스",
+      "source_body_digest": "f920ee4133e275a1988ea13bbf39a9008ffc97b35a1a9ed531da85cc2163718c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06efff17f784a4560dc643a57cf2127458077b231da26094b96a44a5afd017df",
+      "source_fact_keys": [
+        "source_fact:v1:a4fee85c5510ea977fb4d401e107e6c4741f526202cbb6d56ae2796b90aede5b",
+        "source_fact:v1:a643b2211c3d405a7e371c404bd7feedb9a32d4f78df04c223ba10238318bf08",
+        "source_fact:v1:d22ecbeaf3bc81f388d58315b1e7cd2f0eb18d58ec1c499b2a26d7a764043aec",
+        "source_fact:v1:e6b299a26f28c06c32ae8497cfe96abbf20fd30b6650704d92a9c80195c592e6"
+      ],
+      "source_published_kst": "2026-10-12T01:21+09:00",
+      "source_title": "이란 안보수장 \"美, 7가지 제안에 답변…그러나 아직 불충분\" | 연합뉴스",
+      "telegram_core_fact": "외신에 따르면 이란은 ▲미국의 해상봉쇄 해제 ▲동결자금 즉시 반환 ▲이란산 원유 수출 제재 면제 ▲모든 전선에서 전투 중단 등 7가지 조건을 미국이 이행하면 7일 안에 호르무즈 해협을 재개방하겠다고 제안했다.",
+      "title": "이란 안보수장 \"美, 7가지 제안에 답변…그러나 아직 불충분\" | 연합뉴스"
     },
     "core:6913086c19e2db51cb425e8b": {
       "first_seen_kst": "2026-10-07T13:41:41+09:00",
@@ -26374,6 +26416,28 @@
       "source": "이데일리",
       "title": "“삼성전자 지금 너무 싸다”…46만원 간다는데, 근거가 ‘메모리’?"
     },
+    "event:242c04e115c71f36e3e5a541": {
+      "first_seen_kst": "2026-10-12T01:34:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T01:34:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T01:34:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012001000079",
+      "source": "연합뉴스",
+      "source_body_digest": "f920ee4133e275a1988ea13bbf39a9008ffc97b35a1a9ed531da85cc2163718c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06efff17f784a4560dc643a57cf2127458077b231da26094b96a44a5afd017df",
+      "source_fact_keys": [
+        "source_fact:v1:a4fee85c5510ea977fb4d401e107e6c4741f526202cbb6d56ae2796b90aede5b",
+        "source_fact:v1:a643b2211c3d405a7e371c404bd7feedb9a32d4f78df04c223ba10238318bf08",
+        "source_fact:v1:d22ecbeaf3bc81f388d58315b1e7cd2f0eb18d58ec1c499b2a26d7a764043aec",
+        "source_fact:v1:e6b299a26f28c06c32ae8497cfe96abbf20fd30b6650704d92a9c80195c592e6"
+      ],
+      "source_published_kst": "2026-10-12T01:21+09:00",
+      "source_title": "이란 안보수장 \"美, 7가지 제안에 답변…그러나 아직 불충분\" | 연합뉴스",
+      "telegram_core_fact": "외신에 따르면 이란은 ▲미국의 해상봉쇄 해제 ▲동결자금 즉시 반환 ▲이란산 원유 수출 제재 면제 ▲모든 전선에서 전투 중단 등 7가지 조건을 미국이 이행하면 7일 안에 호르무즈 해협을 재개방하겠다고 제안했다.",
+      "title": "이란 안보수장 \"美, 7가지 제안에 답변…그러나 아직 불충분\" | 연합뉴스"
+    },
     "event:243b9268c0c661c2e567eb0a": {
       "first_seen_kst": "2026-09-30T11:15:27+09:00",
       "lanes": {
@@ -29160,6 +29224,26 @@
       "link": "https://www.yna.co.kr/view/AKR20261001150200008",
       "source": "연합뉴스",
       "title": "'마이크론·반도체 수출' 훈풍에 7천피 턱밑…코스닥 4.48% 급등(종합) | 연합뉴스"
+    },
+    "event:6d32aa4f795a1786c15c5224": {
+      "first_seen_kst": "2026-10-12T01:34:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T01:34:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T01:34:33+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003821086",
+      "source": "뉴시스",
+      "source_body_digest": "663a2e864b2aa08bfc1fc83d20857d3c021fec5b701d4c9adf9e4b1acc5beec6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:39200613a0d6b099dca2e5ee6d4f6a7753f0f7766479f134e797ffb3391d7581",
+      "source_fact_keys": [
+        "source_fact:v1:cc1fb5f2d4ee1e02c06d6c1a4ecc8d9d6cf441ff02eb7087f3092ce7d23fa723",
+        "source_fact:v1:d1b6cd420561a33b994a37db982e71b88cff687fce801c60ea1bed2246ca526d"
+      ],
+      "source_published_kst": "2026-10-12T01:30+09:00",
+      "source_title": "'트리플 강세'에 갇힌 부동산…\"지금 안 사면 큰일? '영끌 매수' 경계해야\"",
+      "telegram_core_fact": "최근 부동산 시장을 '매매·전세·월세의 트리플 강세'로 진단하며, 무리한 '영끌' 매수와 변동금리 대출에 대해 경고한 전문가의 분석이 나왔다.",
+      "title": "'트리플 강세'에 갇힌 부동산…\"지금 안 사면 큰일? '영끌 매수' 경계해야\""
     },
     "event:6d3544df4c209db670f8713f": {
       "first_seen_kst": "2026-10-03T16:23:07+09:00",
@@ -38587,6 +38671,26 @@
       "source_title": "사우스포트 애퀴지션, IPO 2억1000만 달러 조달..신탁 2억1100만 달러",
       "telegram_core_fact": "이번 8-K는 실적 발표가 아니라 IPO 완료 후 감사를 거친 개시 재무상태표 공시로, 매출액이나 주당순이익 등 실적 수치와 가이던스는 포함되지 않았다.",
       "title": "사우스포트 애퀴지션, IPO 2억1000만 달러 조달..신탁 2억1100만 달러"
+    },
+    "fact:157226cd6b5bc979e97585bc": {
+      "first_seen_kst": "2026-10-12T01:34:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T01:34:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T01:34:33+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003821086",
+      "source": "뉴시스",
+      "source_body_digest": "663a2e864b2aa08bfc1fc83d20857d3c021fec5b701d4c9adf9e4b1acc5beec6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:39200613a0d6b099dca2e5ee6d4f6a7753f0f7766479f134e797ffb3391d7581",
+      "source_fact_keys": [
+        "source_fact:v1:cc1fb5f2d4ee1e02c06d6c1a4ecc8d9d6cf441ff02eb7087f3092ce7d23fa723",
+        "source_fact:v1:d1b6cd420561a33b994a37db982e71b88cff687fce801c60ea1bed2246ca526d"
+      ],
+      "source_published_kst": "2026-10-12T01:30+09:00",
+      "source_title": "'트리플 강세'에 갇힌 부동산…\"지금 안 사면 큰일? '영끌 매수' 경계해야\"",
+      "telegram_core_fact": "최근 부동산 시장을 '매매·전세·월세의 트리플 강세'로 진단하며, 무리한 '영끌' 매수와 변동금리 대출에 대해 경고한 전문가의 분석이 나왔다.",
+      "title": "'트리플 강세'에 갇힌 부동산…\"지금 안 사면 큰일? '영끌 매수' 경계해야\""
     },
     "fact:15872aaf172b42d1fc2dd4ad": {
       "first_seen_kst": "2026-10-08T09:33:54+09:00",
@@ -68640,6 +68744,28 @@
       "telegram_core_fact": "브로드컴은 오픈AI AI칩용 500억달러(약 67조원) 조달을 논의하고, 스페이스X는 400억달러(약 53조6000억원) 조달을 추진 중입니다. CDS는 스페이스X가 194bp에서 1bp로, 오라클은 40bp 오른 81bp로 상승했습니다.",
       "title": "브로드컴·스페이스X·오라클, AI칩 위해 수십조 빚낸다…신용지표 '경고등'"
     },
+    "fact:d5b78da6f2fa889f1cfeb103": {
+      "first_seen_kst": "2026-10-12T01:34:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T01:34:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T01:34:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012001000079",
+      "source": "연합뉴스",
+      "source_body_digest": "f920ee4133e275a1988ea13bbf39a9008ffc97b35a1a9ed531da85cc2163718c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06efff17f784a4560dc643a57cf2127458077b231da26094b96a44a5afd017df",
+      "source_fact_keys": [
+        "source_fact:v1:a4fee85c5510ea977fb4d401e107e6c4741f526202cbb6d56ae2796b90aede5b",
+        "source_fact:v1:a643b2211c3d405a7e371c404bd7feedb9a32d4f78df04c223ba10238318bf08",
+        "source_fact:v1:d22ecbeaf3bc81f388d58315b1e7cd2f0eb18d58ec1c499b2a26d7a764043aec",
+        "source_fact:v1:e6b299a26f28c06c32ae8497cfe96abbf20fd30b6650704d92a9c80195c592e6"
+      ],
+      "source_published_kst": "2026-10-12T01:21+09:00",
+      "source_title": "이란 안보수장 \"美, 7가지 제안에 답변…그러나 아직 불충분\" | 연합뉴스",
+      "telegram_core_fact": "외신에 따르면 이란은 ▲미국의 해상봉쇄 해제 ▲동결자금 즉시 반환 ▲이란산 원유 수출 제재 면제 ▲모든 전선에서 전투 중단 등 7가지 조건을 미국이 이행하면 7일 안에 호르무즈 해협을 재개방하겠다고 제안했다.",
+      "title": "이란 안보수장 \"美, 7가지 제안에 답변…그러나 아직 불충분\" | 연합뉴스"
+    },
     "fact:d5d7803fa25aad6c5732829d": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
       "lanes": {
@@ -77564,6 +77690,28 @@
       "source_published_kst": "2026-10-05T12:01+09:00",
       "title": "지재처, 메가프로젝트 분야 신규 상품명 72개 추가한다"
     },
+    "link:0a70b0f9c5afa9612e88eb7a": {
+      "first_seen_kst": "2026-10-12T01:34:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T01:34:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T01:34:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012001000079",
+      "source": "연합뉴스",
+      "source_body_digest": "f920ee4133e275a1988ea13bbf39a9008ffc97b35a1a9ed531da85cc2163718c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06efff17f784a4560dc643a57cf2127458077b231da26094b96a44a5afd017df",
+      "source_fact_keys": [
+        "source_fact:v1:a4fee85c5510ea977fb4d401e107e6c4741f526202cbb6d56ae2796b90aede5b",
+        "source_fact:v1:a643b2211c3d405a7e371c404bd7feedb9a32d4f78df04c223ba10238318bf08",
+        "source_fact:v1:d22ecbeaf3bc81f388d58315b1e7cd2f0eb18d58ec1c499b2a26d7a764043aec",
+        "source_fact:v1:e6b299a26f28c06c32ae8497cfe96abbf20fd30b6650704d92a9c80195c592e6"
+      ],
+      "source_published_kst": "2026-10-12T01:21+09:00",
+      "source_title": "이란 안보수장 \"美, 7가지 제안에 답변…그러나 아직 불충분\" | 연합뉴스",
+      "telegram_core_fact": "외신에 따르면 이란은 ▲미국의 해상봉쇄 해제 ▲동결자금 즉시 반환 ▲이란산 원유 수출 제재 면제 ▲모든 전선에서 전투 중단 등 7가지 조건을 미국이 이행하면 7일 안에 호르무즈 해협을 재개방하겠다고 제안했다.",
+      "title": "이란 안보수장 \"美, 7가지 제안에 답변…그러나 아직 불충분\" | 연합뉴스"
+    },
     "link:0a76b7ac381d3455c800d9bf": {
       "first_seen_kst": "2026-10-09T18:57:38+09:00",
       "lanes": {
@@ -78707,6 +78855,26 @@
       "link": "https://www.mk.co.kr/news/stock/12163047",
       "source": "매일경제",
       "title": "샤오펑, 상반기 매출 328억 위안..서비스 부문 67% 급증"
+    },
+    "link:0eb80b880fc3194ebccbf387": {
+      "first_seen_kst": "2026-10-12T01:34:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T01:34:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T01:34:33+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003821086",
+      "source": "뉴시스",
+      "source_body_digest": "663a2e864b2aa08bfc1fc83d20857d3c021fec5b701d4c9adf9e4b1acc5beec6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:39200613a0d6b099dca2e5ee6d4f6a7753f0f7766479f134e797ffb3391d7581",
+      "source_fact_keys": [
+        "source_fact:v1:cc1fb5f2d4ee1e02c06d6c1a4ecc8d9d6cf441ff02eb7087f3092ce7d23fa723",
+        "source_fact:v1:d1b6cd420561a33b994a37db982e71b88cff687fce801c60ea1bed2246ca526d"
+      ],
+      "source_published_kst": "2026-10-12T01:30+09:00",
+      "source_title": "'트리플 강세'에 갇힌 부동산…\"지금 안 사면 큰일? '영끌 매수' 경계해야\"",
+      "telegram_core_fact": "최근 부동산 시장을 '매매·전세·월세의 트리플 강세'로 진단하며, 무리한 '영끌' 매수와 변동금리 대출에 대해 경고한 전문가의 분석이 나왔다.",
+      "title": "'트리플 강세'에 갇힌 부동산…\"지금 안 사면 큰일? '영끌 매수' 경계해야\""
     },
     "link:0ec159ea4f9e909e15a0f8c4": {
       "first_seen_kst": "2026-10-06T18:34:25+09:00",
@@ -159137,6 +159305,28 @@
       "source_published_kst": "2026-10-07T08:53+09:00",
       "title": "LS에코에너지, AI 데이터센터용 버스덕트 설비 투자…생산능력 2배 늘린다"
     },
+    "original:69a7fbf2ec12f1fc918a8123": {
+      "first_seen_kst": "2026-10-12T01:34:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T01:34:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T01:34:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012001000079",
+      "source": "연합뉴스",
+      "source_body_digest": "f920ee4133e275a1988ea13bbf39a9008ffc97b35a1a9ed531da85cc2163718c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06efff17f784a4560dc643a57cf2127458077b231da26094b96a44a5afd017df",
+      "source_fact_keys": [
+        "source_fact:v1:a4fee85c5510ea977fb4d401e107e6c4741f526202cbb6d56ae2796b90aede5b",
+        "source_fact:v1:a643b2211c3d405a7e371c404bd7feedb9a32d4f78df04c223ba10238318bf08",
+        "source_fact:v1:d22ecbeaf3bc81f388d58315b1e7cd2f0eb18d58ec1c499b2a26d7a764043aec",
+        "source_fact:v1:e6b299a26f28c06c32ae8497cfe96abbf20fd30b6650704d92a9c80195c592e6"
+      ],
+      "source_published_kst": "2026-10-12T01:21+09:00",
+      "source_title": "이란 안보수장 \"美, 7가지 제안에 답변…그러나 아직 불충분\" | 연합뉴스",
+      "telegram_core_fact": "외신에 따르면 이란은 ▲미국의 해상봉쇄 해제 ▲동결자금 즉시 반환 ▲이란산 원유 수출 제재 면제 ▲모든 전선에서 전투 중단 등 7가지 조건을 미국이 이행하면 7일 안에 호르무즈 해협을 재개방하겠다고 제안했다.",
+      "title": "이란 안보수장 \"美, 7가지 제안에 답변…그러나 아직 불충분\" | 연합뉴스"
+    },
     "original:69f5f074682466b1a864d9ac": {
       "first_seen_kst": "2026-10-08T11:49:03+09:00",
       "lanes": {
@@ -183417,6 +183607,26 @@
       "link": "https://www.yna.co.kr/view/AKR20261001154900008",
       "source": "연합뉴스",
       "title": "한국금융지주, 회사채 수요예측에 1.8조…모집예정액 7배 넘겨 | 연합뉴스"
+    },
+    "original:d401f76d38be60c71244043e": {
+      "first_seen_kst": "2026-10-12T01:34:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T01:34:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T01:34:33+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003821086",
+      "source": "뉴시스",
+      "source_body_digest": "663a2e864b2aa08bfc1fc83d20857d3c021fec5b701d4c9adf9e4b1acc5beec6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:39200613a0d6b099dca2e5ee6d4f6a7753f0f7766479f134e797ffb3391d7581",
+      "source_fact_keys": [
+        "source_fact:v1:cc1fb5f2d4ee1e02c06d6c1a4ecc8d9d6cf441ff02eb7087f3092ce7d23fa723",
+        "source_fact:v1:d1b6cd420561a33b994a37db982e71b88cff687fce801c60ea1bed2246ca526d"
+      ],
+      "source_published_kst": "2026-10-12T01:30+09:00",
+      "source_title": "'트리플 강세'에 갇힌 부동산…\"지금 안 사면 큰일? '영끌 매수' 경계해야\"",
+      "telegram_core_fact": "최근 부동산 시장을 '매매·전세·월세의 트리플 강세'로 진단하며, 무리한 '영끌' 매수와 변동금리 대출에 대해 경고한 전문가의 분석이 나왔다.",
+      "title": "'트리플 강세'에 갇힌 부동산…\"지금 안 사면 큰일? '영끌 매수' 경계해야\""
     },
     "original:d409dca758b0087f17f85ec4": {
       "first_seen_kst": "2026-09-28T17:39:42+09:00",
@@ -230017,6 +230227,26 @@
       "source_published_kst": "2026-10-07T14:21+09:00",
       "title": "HD건설기계, 美 데이터센터에 3900억원 규모 발전엔진 공급"
     },
+    "source_fact:31163d7760ea1d8febf006f2": {
+      "first_seen_kst": "2026-10-12T01:34:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T01:34:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T01:34:33+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003821086",
+      "source": "뉴시스",
+      "source_body_digest": "663a2e864b2aa08bfc1fc83d20857d3c021fec5b701d4c9adf9e4b1acc5beec6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:39200613a0d6b099dca2e5ee6d4f6a7753f0f7766479f134e797ffb3391d7581",
+      "source_fact_keys": [
+        "source_fact:v1:cc1fb5f2d4ee1e02c06d6c1a4ecc8d9d6cf441ff02eb7087f3092ce7d23fa723",
+        "source_fact:v1:d1b6cd420561a33b994a37db982e71b88cff687fce801c60ea1bed2246ca526d"
+      ],
+      "source_published_kst": "2026-10-12T01:30+09:00",
+      "source_title": "'트리플 강세'에 갇힌 부동산…\"지금 안 사면 큰일? '영끌 매수' 경계해야\"",
+      "telegram_core_fact": "최근 부동산 시장을 '매매·전세·월세의 트리플 강세'로 진단하며, 무리한 '영끌' 매수와 변동금리 대출에 대해 경고한 전문가의 분석이 나왔다.",
+      "title": "'트리플 강세'에 갇힌 부동산…\"지금 안 사면 큰일? '영끌 매수' 경계해야\""
+    },
     "source_fact:3117f751105f190db0191895": {
       "first_seen_kst": "2026-10-06T21:40:57+09:00",
       "lanes": {
@@ -257429,6 +257659,28 @@
       "telegram_core_fact": "프로파운드 메디컬(PROF)이 9월 30일 종료된 2026년 3분기 예비 매출액이 980만~1000만 달러로, 전년 동기 530만 달러 대비 약 85~89% 증가할 것으로 예상된다고 7일 발표했다.",
       "title": "프로파운드 메디컬, 3분기 예비 매출 980만~1000만 달러..전년비 최대 89%↑"
     },
+    "source_fact:55ac4628575c13db54e7b4f2": {
+      "first_seen_kst": "2026-10-12T01:34:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T01:34:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T01:34:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012001000079",
+      "source": "연합뉴스",
+      "source_body_digest": "f920ee4133e275a1988ea13bbf39a9008ffc97b35a1a9ed531da85cc2163718c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06efff17f784a4560dc643a57cf2127458077b231da26094b96a44a5afd017df",
+      "source_fact_keys": [
+        "source_fact:v1:a4fee85c5510ea977fb4d401e107e6c4741f526202cbb6d56ae2796b90aede5b",
+        "source_fact:v1:a643b2211c3d405a7e371c404bd7feedb9a32d4f78df04c223ba10238318bf08",
+        "source_fact:v1:d22ecbeaf3bc81f388d58315b1e7cd2f0eb18d58ec1c499b2a26d7a764043aec",
+        "source_fact:v1:e6b299a26f28c06c32ae8497cfe96abbf20fd30b6650704d92a9c80195c592e6"
+      ],
+      "source_published_kst": "2026-10-12T01:21+09:00",
+      "source_title": "이란 안보수장 \"美, 7가지 제안에 답변…그러나 아직 불충분\" | 연합뉴스",
+      "telegram_core_fact": "외신에 따르면 이란은 ▲미국의 해상봉쇄 해제 ▲동결자금 즉시 반환 ▲이란산 원유 수출 제재 면제 ▲모든 전선에서 전투 중단 등 7가지 조건을 미국이 이행하면 7일 안에 호르무즈 해협을 재개방하겠다고 제안했다.",
+      "title": "이란 안보수장 \"美, 7가지 제안에 답변…그러나 아직 불충분\" | 연합뉴스"
+    },
     "source_fact:55aedd5591ccf2690dbac108": {
       "first_seen_kst": "2026-10-12T00:21:39+09:00",
       "lanes": {
@@ -279307,6 +279559,28 @@
       "source_title": "[단독] 집지을 땅 없다는데 … LH 택지 절반 유찰",
       "telegram_core_fact": "11일 국회 국토교통위원회 소속 김종양 국민의힘 의원실이 LH에서 제출받은 국정감사 자료에 따르면 공공택지 공급공고 필지 기준 유찰률은 2024년 56%, 지난해 45%에 달했다. 2023년부터 올해 5월까지 체결한 토지 공급 계약 40조4000억원 중 9조5000억원(23.5%)이 무이자 할부 방식이었다.",
       "title": "[단독] 집지을 땅 없다는데 … LH 택지 절반 유찰"
+    },
+    "source_fact:728a2db84b5f867b141a75bc": {
+      "first_seen_kst": "2026-10-12T01:34:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T01:34:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T01:34:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012001000079",
+      "source": "연합뉴스",
+      "source_body_digest": "f920ee4133e275a1988ea13bbf39a9008ffc97b35a1a9ed531da85cc2163718c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06efff17f784a4560dc643a57cf2127458077b231da26094b96a44a5afd017df",
+      "source_fact_keys": [
+        "source_fact:v1:a4fee85c5510ea977fb4d401e107e6c4741f526202cbb6d56ae2796b90aede5b",
+        "source_fact:v1:a643b2211c3d405a7e371c404bd7feedb9a32d4f78df04c223ba10238318bf08",
+        "source_fact:v1:d22ecbeaf3bc81f388d58315b1e7cd2f0eb18d58ec1c499b2a26d7a764043aec",
+        "source_fact:v1:e6b299a26f28c06c32ae8497cfe96abbf20fd30b6650704d92a9c80195c592e6"
+      ],
+      "source_published_kst": "2026-10-12T01:21+09:00",
+      "source_title": "이란 안보수장 \"美, 7가지 제안에 답변…그러나 아직 불충분\" | 연합뉴스",
+      "telegram_core_fact": "외신에 따르면 이란은 ▲미국의 해상봉쇄 해제 ▲동결자금 즉시 반환 ▲이란산 원유 수출 제재 면제 ▲모든 전선에서 전투 중단 등 7가지 조건을 미국이 이행하면 7일 안에 호르무즈 해협을 재개방하겠다고 제안했다.",
+      "title": "이란 안보수장 \"美, 7가지 제안에 답변…그러나 아직 불충분\" | 연합뉴스"
     },
     "source_fact:72989bfeee4dbb9d96457a52": {
       "first_seen_kst": "2026-10-10T07:44:19+09:00",
@@ -310493,6 +310767,28 @@
       "telegram_core_fact": "삼성전자가 107조원대 3분기 영업이익으로 어닝 서프라이즈를 기록했지만 채권 금리와 국제 유가 부담을 이겨내지 못하며 7000선 안착에 실패했다.",
       "title": "금리 vs 실적…코스피, 7000선 재도전 나설까[주간증시전망]"
     },
+    "source_fact:9cdd729a9ada588e8d934669": {
+      "first_seen_kst": "2026-10-12T01:34:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T01:34:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T01:34:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012001000079",
+      "source": "연합뉴스",
+      "source_body_digest": "f920ee4133e275a1988ea13bbf39a9008ffc97b35a1a9ed531da85cc2163718c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06efff17f784a4560dc643a57cf2127458077b231da26094b96a44a5afd017df",
+      "source_fact_keys": [
+        "source_fact:v1:a4fee85c5510ea977fb4d401e107e6c4741f526202cbb6d56ae2796b90aede5b",
+        "source_fact:v1:a643b2211c3d405a7e371c404bd7feedb9a32d4f78df04c223ba10238318bf08",
+        "source_fact:v1:d22ecbeaf3bc81f388d58315b1e7cd2f0eb18d58ec1c499b2a26d7a764043aec",
+        "source_fact:v1:e6b299a26f28c06c32ae8497cfe96abbf20fd30b6650704d92a9c80195c592e6"
+      ],
+      "source_published_kst": "2026-10-12T01:21+09:00",
+      "source_title": "이란 안보수장 \"美, 7가지 제안에 답변…그러나 아직 불충분\" | 연합뉴스",
+      "telegram_core_fact": "외신에 따르면 이란은 ▲미국의 해상봉쇄 해제 ▲동결자금 즉시 반환 ▲이란산 원유 수출 제재 면제 ▲모든 전선에서 전투 중단 등 7가지 조건을 미국이 이행하면 7일 안에 호르무즈 해협을 재개방하겠다고 제안했다.",
+      "title": "이란 안보수장 \"美, 7가지 제안에 답변…그러나 아직 불충분\" | 연합뉴스"
+    },
     "source_fact:9cdfa579a110354238e1d6a1": {
       "first_seen_kst": "2026-10-06T17:24:43+09:00",
       "lanes": {
@@ -333433,6 +333729,28 @@
       "source_published_kst": "2026-10-07T14:58+09:00",
       "title": "송미령 \"산란계협회, 경고에도 가격 고시…농가 짓밟았다는 비판 과해\""
     },
+    "source_fact:bc4a0ffe0a92c2e93ee9d514": {
+      "first_seen_kst": "2026-10-12T01:34:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T01:34:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T01:34:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012001000079",
+      "source": "연합뉴스",
+      "source_body_digest": "f920ee4133e275a1988ea13bbf39a9008ffc97b35a1a9ed531da85cc2163718c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06efff17f784a4560dc643a57cf2127458077b231da26094b96a44a5afd017df",
+      "source_fact_keys": [
+        "source_fact:v1:a4fee85c5510ea977fb4d401e107e6c4741f526202cbb6d56ae2796b90aede5b",
+        "source_fact:v1:a643b2211c3d405a7e371c404bd7feedb9a32d4f78df04c223ba10238318bf08",
+        "source_fact:v1:d22ecbeaf3bc81f388d58315b1e7cd2f0eb18d58ec1c499b2a26d7a764043aec",
+        "source_fact:v1:e6b299a26f28c06c32ae8497cfe96abbf20fd30b6650704d92a9c80195c592e6"
+      ],
+      "source_published_kst": "2026-10-12T01:21+09:00",
+      "source_title": "이란 안보수장 \"美, 7가지 제안에 답변…그러나 아직 불충분\" | 연합뉴스",
+      "telegram_core_fact": "외신에 따르면 이란은 ▲미국의 해상봉쇄 해제 ▲동결자금 즉시 반환 ▲이란산 원유 수출 제재 면제 ▲모든 전선에서 전투 중단 등 7가지 조건을 미국이 이행하면 7일 안에 호르무즈 해협을 재개방하겠다고 제안했다.",
+      "title": "이란 안보수장 \"美, 7가지 제안에 답변…그러나 아직 불충분\" | 연합뉴스"
+    },
     "source_fact:bc591f4d31d083147bcab95b": {
       "first_seen_kst": "2026-10-08T14:55:40+09:00",
       "lanes": {
@@ -346265,6 +346583,26 @@
       ],
       "source_published_kst": "2026-10-06T09:38+09:00",
       "title": "LG이노텍, `환율 우려를 걷어내면 보이는 바닥 시그널` 증권사 발표에 강세"
+    },
+    "source_fact:cdd426546fa5114e426c6f90": {
+      "first_seen_kst": "2026-10-12T01:34:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T01:34:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T01:34:33+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003821086",
+      "source": "뉴시스",
+      "source_body_digest": "663a2e864b2aa08bfc1fc83d20857d3c021fec5b701d4c9adf9e4b1acc5beec6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:39200613a0d6b099dca2e5ee6d4f6a7753f0f7766479f134e797ffb3391d7581",
+      "source_fact_keys": [
+        "source_fact:v1:cc1fb5f2d4ee1e02c06d6c1a4ecc8d9d6cf441ff02eb7087f3092ce7d23fa723",
+        "source_fact:v1:d1b6cd420561a33b994a37db982e71b88cff687fce801c60ea1bed2246ca526d"
+      ],
+      "source_published_kst": "2026-10-12T01:30+09:00",
+      "source_title": "'트리플 강세'에 갇힌 부동산…\"지금 안 사면 큰일? '영끌 매수' 경계해야\"",
+      "telegram_core_fact": "최근 부동산 시장을 '매매·전세·월세의 트리플 강세'로 진단하며, 무리한 '영끌' 매수와 변동금리 대출에 대해 경고한 전문가의 분석이 나왔다.",
+      "title": "'트리플 강세'에 갇힌 부동산…\"지금 안 사면 큰일? '영끌 매수' 경계해야\""
     },
     "source_fact:cdd4da2234c30253fe0845f4": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
@@ -407599,6 +407937,28 @@
       "source_published_kst": "2026-10-07T08:53+09:00",
       "title": "LS에코에너지, AI 데이터센터용 버스덕트 설비 투자…생산능력 2배 늘린다"
     },
+    "title:69a7fbf2ec12f1fc918a8123": {
+      "first_seen_kst": "2026-10-12T01:34:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T01:34:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T01:34:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012001000079",
+      "source": "연합뉴스",
+      "source_body_digest": "f920ee4133e275a1988ea13bbf39a9008ffc97b35a1a9ed531da85cc2163718c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06efff17f784a4560dc643a57cf2127458077b231da26094b96a44a5afd017df",
+      "source_fact_keys": [
+        "source_fact:v1:a4fee85c5510ea977fb4d401e107e6c4741f526202cbb6d56ae2796b90aede5b",
+        "source_fact:v1:a643b2211c3d405a7e371c404bd7feedb9a32d4f78df04c223ba10238318bf08",
+        "source_fact:v1:d22ecbeaf3bc81f388d58315b1e7cd2f0eb18d58ec1c499b2a26d7a764043aec",
+        "source_fact:v1:e6b299a26f28c06c32ae8497cfe96abbf20fd30b6650704d92a9c80195c592e6"
+      ],
+      "source_published_kst": "2026-10-12T01:21+09:00",
+      "source_title": "이란 안보수장 \"美, 7가지 제안에 답변…그러나 아직 불충분\" | 연합뉴스",
+      "telegram_core_fact": "외신에 따르면 이란은 ▲미국의 해상봉쇄 해제 ▲동결자금 즉시 반환 ▲이란산 원유 수출 제재 면제 ▲모든 전선에서 전투 중단 등 7가지 조건을 미국이 이행하면 7일 안에 호르무즈 해협을 재개방하겠다고 제안했다.",
+      "title": "이란 안보수장 \"美, 7가지 제안에 답변…그러나 아직 불충분\" | 연합뉴스"
+    },
     "title:69f5f074682466b1a864d9ac": {
       "first_seen_kst": "2026-10-08T11:49:03+09:00",
       "lanes": {
@@ -432515,6 +432875,26 @@
       "source": "연합뉴스",
       "title": "한국금융지주, 회사채 수요예측에 1.8조…모집예정액 7배 넘겨 | 연합뉴스"
     },
+    "title:d401f76d38be60c71244043e": {
+      "first_seen_kst": "2026-10-12T01:34:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T01:34:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T01:34:33+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003821086",
+      "source": "뉴시스",
+      "source_body_digest": "663a2e864b2aa08bfc1fc83d20857d3c021fec5b701d4c9adf9e4b1acc5beec6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:39200613a0d6b099dca2e5ee6d4f6a7753f0f7766479f134e797ffb3391d7581",
+      "source_fact_keys": [
+        "source_fact:v1:cc1fb5f2d4ee1e02c06d6c1a4ecc8d9d6cf441ff02eb7087f3092ce7d23fa723",
+        "source_fact:v1:d1b6cd420561a33b994a37db982e71b88cff687fce801c60ea1bed2246ca526d"
+      ],
+      "source_published_kst": "2026-10-12T01:30+09:00",
+      "source_title": "'트리플 강세'에 갇힌 부동산…\"지금 안 사면 큰일? '영끌 매수' 경계해야\"",
+      "telegram_core_fact": "최근 부동산 시장을 '매매·전세·월세의 트리플 강세'로 진단하며, 무리한 '영끌' 매수와 변동금리 대출에 대해 경고한 전문가의 분석이 나왔다.",
+      "title": "'트리플 강세'에 갇힌 부동산…\"지금 안 사면 큰일? '영끌 매수' 경계해야\""
+    },
     "title:d409dca758b0087f17f85ec4": {
       "first_seen_kst": "2026-09-28T17:39:42+09:00",
       "lanes": {
@@ -442475,5 +442855,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-12T01:08:58+09:00"
+  "updated_at_kst": "2026-10-12T01:34:33+09:00"
 }
