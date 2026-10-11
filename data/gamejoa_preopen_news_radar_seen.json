@@ -2566,6 +2566,23 @@
       "telegram_core_fact": "지난주 후반 오픈AI의 매출을 둘러싼 논란으로 AI·반도체주가 급락한 만큼 TSMC의 실적과 가이던스는 최근 불거진 ‘AI 거품론’의 시험대가 될 전망이다. 다음주 국내외 증시는 미국 물가와 소비, 반도체 실적이 동시에 시장을 시험하는 한 주가 될 전망이다.",
       "title": "계속되는 'AI 거품론'…TSMC가 답을 할까 [다음주 주요변수 미리보기]"
     },
+    "core:19634a9bda3671311452c32a": {
+      "first_seen_kst": "2026-10-11T22:33:08+09:00",
+      "lanes": {
+        "live": "2026-10-11T22:33:08+09:00"
+      },
+      "last_seen_kst": "2026-10-11T22:33:08+09:00",
+      "link": "https://www.hankyung.com/article/2026101144321",
+      "source": "한국경제",
+      "source_body_digest": "456e8129b81db4feb0e39f99774ebcf4fbfababc72de1deeca4012f1ad7c4b07",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-11T18:07+09:00",
+      "source_title": "현대차, 인도 누적 판매 1000만대 눈앞",
+      "telegram_core_fact": "현대자동차가 인도 시장에서 누적 판매량 1000만 대 돌파를 눈앞에 뒀다. 인도자동차공업협회(SIAM)에 따르면 현대차의 인도 누적 판매량(지난달 기준)은 988만4960대다.",
+      "title": "현대차, 인도 누적 판매 1000만대 눈앞"
+    },
     "core:19d3e537b2671b013a2c6b41": {
       "first_seen_kst": "2026-10-08T04:26:05+09:00",
       "lanes": {
@@ -14803,6 +14820,26 @@
       ],
       "source_published_kst": "2026-10-07T12:00+09:00",
       "title": "반도체 호황에 기업 여윳돈 67조…역대 최대"
+    },
+    "core:9f4fe722652e77392bd448fd": {
+      "first_seen_kst": "2026-10-11T22:33:08+09:00",
+      "lanes": {
+        "live": "2026-10-11T22:33:08+09:00"
+      },
+      "last_seen_kst": "2026-10-11T22:33:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003821044",
+      "source": "뉴시스",
+      "source_body_digest": "e7b0cbe4eb4d97b73fcad3eb5f9bd9e4349e13a6936a333dc7181829f9130443",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:012e02fc7d4091bf8de0dab8a4066a35420940bfbeae5fc1b6a73d87e2fe88c6",
+      "source_fact_keys": [
+        "source_fact:v1:31ba4a07ebd228240524389c768cbdcbedb79d7e52261a88c454fd2b83b328f9",
+        "source_fact:v1:daf973d3d78467fbc24269c89e9b54fcfdd04a5abcbbab904cd4b5857e05b772"
+      ],
+      "source_published_kst": "2026-10-11T22:24+09:00",
+      "source_title": "청년층 '주택 매수' 열풍…대출 규제 속 '부모 찬스' 필수됐다",
+      "telegram_core_fact": "이 세무사는 \"서울 노원구와 경기 남양주시의 30대 자금조달계획서를 분석해 보니 증여·상속이나 부모 등으로부터의 사적 차입을 활용한 거래가 47%에 달했다\"며 \"이제 부모 찬스는 찬스가 아니라 디폴트값(기본값)이 됐다\"고 말했다.",
+      "title": "청년층 '주택 매수' 열풍…대출 규제 속 '부모 찬스' 필수됐다"
     },
     "core:9f78611bc4cf5f487094c672": {
       "first_seen_kst": "2026-10-08T10:20:20+09:00",
@@ -72348,6 +72385,26 @@
       "telegram_core_fact": "중국 정부의 제동으로 미국 빅테크 기업 메타의 인수 거래가 무산된 인공지능(AI) 스타트업 마누스가 5억달러(약 6천700억원) 이상의 신규 투자를 유치했다. 중국 IT 전문매체 IT즈자(IT之家) 등에 따르면 마누스의 모회사 버터플라이 이펙트는 이날 최근 5억달러 이상의 신규 자금 조달을 완료했다고 발표했다.",
       "title": "중국 AI스타트업 마누스, 메타 인수 무산 뒤 5억달러 투자유치 | 연합뉴스"
     },
+    "fact:efa1327d3290471f6149463a": {
+      "first_seen_kst": "2026-10-11T22:33:08+09:00",
+      "lanes": {
+        "live": "2026-10-11T22:33:08+09:00"
+      },
+      "last_seen_kst": "2026-10-11T22:33:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003821044",
+      "source": "뉴시스",
+      "source_body_digest": "e7b0cbe4eb4d97b73fcad3eb5f9bd9e4349e13a6936a333dc7181829f9130443",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:012e02fc7d4091bf8de0dab8a4066a35420940bfbeae5fc1b6a73d87e2fe88c6",
+      "source_fact_keys": [
+        "source_fact:v1:31ba4a07ebd228240524389c768cbdcbedb79d7e52261a88c454fd2b83b328f9",
+        "source_fact:v1:daf973d3d78467fbc24269c89e9b54fcfdd04a5abcbbab904cd4b5857e05b772"
+      ],
+      "source_published_kst": "2026-10-11T22:24+09:00",
+      "source_title": "청년층 '주택 매수' 열풍…대출 규제 속 '부모 찬스' 필수됐다",
+      "telegram_core_fact": "이 세무사는 \"서울 노원구와 경기 남양주시의 30대 자금조달계획서를 분석해 보니 증여·상속이나 부모 등으로부터의 사적 차입을 활용한 거래가 47%에 달했다\"며 \"이제 부모 찬스는 찬스가 아니라 디폴트값(기본값)이 됐다\"고 말했다.",
+      "title": "청년층 '주택 매수' 열풍…대출 규제 속 '부모 찬스' 필수됐다"
+    },
     "fact:efac362e596d4797183e2802": {
       "first_seen_kst": "2026-10-06T17:24:43+09:00",
       "lanes": {
@@ -102890,6 +102947,26 @@
       "source": "뉴시스",
       "title": "KB證 \"삼성전자 HMB증설, D램 공급 부족 촉발…가격 상승 효과\""
     },
+    "link:77d4d61688e244fc80d625d7": {
+      "first_seen_kst": "2026-10-11T22:33:08+09:00",
+      "lanes": {
+        "live": "2026-10-11T22:33:08+09:00"
+      },
+      "last_seen_kst": "2026-10-11T22:33:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003821044",
+      "source": "뉴시스",
+      "source_body_digest": "e7b0cbe4eb4d97b73fcad3eb5f9bd9e4349e13a6936a333dc7181829f9130443",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:012e02fc7d4091bf8de0dab8a4066a35420940bfbeae5fc1b6a73d87e2fe88c6",
+      "source_fact_keys": [
+        "source_fact:v1:31ba4a07ebd228240524389c768cbdcbedb79d7e52261a88c454fd2b83b328f9",
+        "source_fact:v1:daf973d3d78467fbc24269c89e9b54fcfdd04a5abcbbab904cd4b5857e05b772"
+      ],
+      "source_published_kst": "2026-10-11T22:24+09:00",
+      "source_title": "청년층 '주택 매수' 열풍…대출 규제 속 '부모 찬스' 필수됐다",
+      "telegram_core_fact": "이 세무사는 \"서울 노원구와 경기 남양주시의 30대 자금조달계획서를 분석해 보니 증여·상속이나 부모 등으로부터의 사적 차입을 활용한 거래가 47%에 달했다\"며 \"이제 부모 찬스는 찬스가 아니라 디폴트값(기본값)이 됐다\"고 말했다.",
+      "title": "청년층 '주택 매수' 열풍…대출 규제 속 '부모 찬스' 필수됐다"
+    },
     "link:77d869d99b788b999cdcb3d7": {
       "first_seen_kst": "2026-10-07T19:13:29+09:00",
       "lanes": {
@@ -122585,6 +122662,23 @@
       "source_title": "韓 등 15개국, 車·배터리·반도체 과잉생산 공동 대응",
       "telegram_core_fact": "산업통상부는 한국을 포함한 15개국이 7일(현지시간) 프랑스 파리 경제협력개발기구(OECD) 본부에서 '구조적 과잉생산 대응을 위한 공동 장관성명'을 발표했다고 8일 밝혔다.",
       "title": "韓 등 15개국, 車·배터리·반도체 과잉생산 공동 대응"
+    },
+    "link:cb9a34a7e2a296cf964eff7b": {
+      "first_seen_kst": "2026-10-11T22:33:08+09:00",
+      "lanes": {
+        "live": "2026-10-11T22:33:08+09:00"
+      },
+      "last_seen_kst": "2026-10-11T22:33:08+09:00",
+      "link": "https://www.hankyung.com/article/2026101144321",
+      "source": "한국경제",
+      "source_body_digest": "456e8129b81db4feb0e39f99774ebcf4fbfababc72de1deeca4012f1ad7c4b07",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-11T18:07+09:00",
+      "source_title": "현대차, 인도 누적 판매 1000만대 눈앞",
+      "telegram_core_fact": "현대자동차가 인도 시장에서 누적 판매량 1000만 대 돌파를 눈앞에 뒀다. 인도자동차공업협회(SIAM)에 따르면 현대차의 인도 누적 판매량(지난달 기준)은 988만4960대다.",
+      "title": "현대차, 인도 누적 판매 1000만대 눈앞"
     },
     "link:cba87d72faa0c550e0d5d9ee": {
       "first_seen_kst": "2026-10-10T11:34:45+09:00",
@@ -168286,6 +168380,26 @@
       "source_published_kst": "2026-10-06T01:21+09:00",
       "title": "페라리, 자사주 2600만 유로 매입..3차 한도 41% 소진"
     },
+    "original:95c21b70574e1bd438480490": {
+      "first_seen_kst": "2026-10-11T22:33:08+09:00",
+      "lanes": {
+        "live": "2026-10-11T22:33:08+09:00"
+      },
+      "last_seen_kst": "2026-10-11T22:33:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003821044",
+      "source": "뉴시스",
+      "source_body_digest": "e7b0cbe4eb4d97b73fcad3eb5f9bd9e4349e13a6936a333dc7181829f9130443",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:012e02fc7d4091bf8de0dab8a4066a35420940bfbeae5fc1b6a73d87e2fe88c6",
+      "source_fact_keys": [
+        "source_fact:v1:31ba4a07ebd228240524389c768cbdcbedb79d7e52261a88c454fd2b83b328f9",
+        "source_fact:v1:daf973d3d78467fbc24269c89e9b54fcfdd04a5abcbbab904cd4b5857e05b772"
+      ],
+      "source_published_kst": "2026-10-11T22:24+09:00",
+      "source_title": "청년층 '주택 매수' 열풍…대출 규제 속 '부모 찬스' 필수됐다",
+      "telegram_core_fact": "이 세무사는 \"서울 노원구와 경기 남양주시의 30대 자금조달계획서를 분석해 보니 증여·상속이나 부모 등으로부터의 사적 차입을 활용한 거래가 47%에 달했다\"며 \"이제 부모 찬스는 찬스가 아니라 디폴트값(기본값)이 됐다\"고 말했다.",
+      "title": "청년층 '주택 매수' 열풍…대출 규제 속 '부모 찬스' 필수됐다"
+    },
     "original:95cf5ffe5273f1acf65fdd90": {
       "first_seen_kst": "2026-10-06T12:10:48+09:00",
       "lanes": {
@@ -178872,6 +178986,23 @@
       "source_title": "뉴젠IVF 그룹, 상반기 순손실 808만달러..적자전환",
       "telegram_core_fact": "뉴젠IVF 그룹(NIVF)은 6월 30일 종료된 2026년 상반기 매출액이 192만4900달러로 전년비 4.7% 감소했고, 순손실은 807만9400달러로 전년 동기 69만8000달러 순이익에서 적자 전환했다고 10월 7일 발표했다.",
       "title": "뉴젠IVF 그룹, 상반기 순손실 808만달러..적자전환"
+    },
+    "original:c558b282223366828f0a2ee0": {
+      "first_seen_kst": "2026-10-11T22:33:08+09:00",
+      "lanes": {
+        "live": "2026-10-11T22:33:08+09:00"
+      },
+      "last_seen_kst": "2026-10-11T22:33:08+09:00",
+      "link": "https://www.hankyung.com/article/2026101144321",
+      "source": "한국경제",
+      "source_body_digest": "456e8129b81db4feb0e39f99774ebcf4fbfababc72de1deeca4012f1ad7c4b07",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-11T18:07+09:00",
+      "source_title": "현대차, 인도 누적 판매 1000만대 눈앞",
+      "telegram_core_fact": "현대자동차가 인도 시장에서 누적 판매량 1000만 대 돌파를 눈앞에 뒀다. 인도자동차공업협회(SIAM)에 따르면 현대차의 인도 누적 판매량(지난달 기준)은 988만4960대다.",
+      "title": "현대차, 인도 누적 판매 1000만대 눈앞"
     },
     "original:c55bea0aa604bddb10d3529c": {
       "first_seen_kst": "2026-09-28T13:07:46+09:00",
@@ -294895,6 +295026,26 @@
       "telegram_core_fact": "시장조사업체 트렌드포스는 올해 4·4분기 모든 낸드 플래시 제품군의 계약 가격이 전 분기 대비 15~20% 상승할 것으로 예상했다.",
       "title": "삼전닉스 '낸드' 잭팟 터진다… 로봇용 D램도 기대감 솔솔"
     },
+    "source_fact:89bbadd0d91faea58d9c7866": {
+      "first_seen_kst": "2026-10-11T22:33:08+09:00",
+      "lanes": {
+        "live": "2026-10-11T22:33:08+09:00"
+      },
+      "last_seen_kst": "2026-10-11T22:33:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003821044",
+      "source": "뉴시스",
+      "source_body_digest": "e7b0cbe4eb4d97b73fcad3eb5f9bd9e4349e13a6936a333dc7181829f9130443",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:012e02fc7d4091bf8de0dab8a4066a35420940bfbeae5fc1b6a73d87e2fe88c6",
+      "source_fact_keys": [
+        "source_fact:v1:31ba4a07ebd228240524389c768cbdcbedb79d7e52261a88c454fd2b83b328f9",
+        "source_fact:v1:daf973d3d78467fbc24269c89e9b54fcfdd04a5abcbbab904cd4b5857e05b772"
+      ],
+      "source_published_kst": "2026-10-11T22:24+09:00",
+      "source_title": "청년층 '주택 매수' 열풍…대출 규제 속 '부모 찬스' 필수됐다",
+      "telegram_core_fact": "이 세무사는 \"서울 노원구와 경기 남양주시의 30대 자금조달계획서를 분석해 보니 증여·상속이나 부모 등으로부터의 사적 차입을 활용한 거래가 47%에 달했다\"며 \"이제 부모 찬스는 찬스가 아니라 디폴트값(기본값)이 됐다\"고 말했다.",
+      "title": "청년층 '주택 매수' 열풍…대출 규제 속 '부모 찬스' 필수됐다"
+    },
     "source_fact:89c3ae642327671d62415625": {
       "first_seen_kst": "2026-10-07T12:49:48+09:00",
       "lanes": {
@@ -310351,6 +310502,26 @@
       "source_title": "美 AI 반도체주 혼조…국채금리 급등에 엔비디아·AMD↓, 마이크론 4%↑",
       "telegram_core_fact": "미국 인공지능(AI) 반도체주가 장기 국채금리 급등에 대체로 하락했지만 마이크론테크놀로지는 4% 넘게 뛰는 등 종목별로 엇갈렸다.",
       "title": "美 AI 반도체주 혼조…국채금리 급등에 엔비디아·AMD↓, 마이크론 4%↑"
+    },
+    "source_fact:9ef36f5e6ab1011a138836be": {
+      "first_seen_kst": "2026-10-11T22:33:08+09:00",
+      "lanes": {
+        "live": "2026-10-11T22:33:08+09:00"
+      },
+      "last_seen_kst": "2026-10-11T22:33:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003821044",
+      "source": "뉴시스",
+      "source_body_digest": "e7b0cbe4eb4d97b73fcad3eb5f9bd9e4349e13a6936a333dc7181829f9130443",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:012e02fc7d4091bf8de0dab8a4066a35420940bfbeae5fc1b6a73d87e2fe88c6",
+      "source_fact_keys": [
+        "source_fact:v1:31ba4a07ebd228240524389c768cbdcbedb79d7e52261a88c454fd2b83b328f9",
+        "source_fact:v1:daf973d3d78467fbc24269c89e9b54fcfdd04a5abcbbab904cd4b5857e05b772"
+      ],
+      "source_published_kst": "2026-10-11T22:24+09:00",
+      "source_title": "청년층 '주택 매수' 열풍…대출 규제 속 '부모 찬스' 필수됐다",
+      "telegram_core_fact": "이 세무사는 \"서울 노원구와 경기 남양주시의 30대 자금조달계획서를 분석해 보니 증여·상속이나 부모 등으로부터의 사적 차입을 활용한 거래가 47%에 달했다\"며 \"이제 부모 찬스는 찬스가 아니라 디폴트값(기본값)이 됐다\"고 말했다.",
+      "title": "청년층 '주택 매수' 열풍…대출 규제 속 '부모 찬스' 필수됐다"
     },
     "source_fact:9ef38610adb525562cf6e983": {
       "first_seen_kst": "2026-10-07T12:49:48+09:00",
@@ -415453,6 +415624,26 @@
       "source_published_kst": "2026-10-06T01:21+09:00",
       "title": "페라리, 자사주 2600만 유로 매입..3차 한도 41% 소진"
     },
+    "title:95c21b70574e1bd438480490": {
+      "first_seen_kst": "2026-10-11T22:33:08+09:00",
+      "lanes": {
+        "live": "2026-10-11T22:33:08+09:00"
+      },
+      "last_seen_kst": "2026-10-11T22:33:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003821044",
+      "source": "뉴시스",
+      "source_body_digest": "e7b0cbe4eb4d97b73fcad3eb5f9bd9e4349e13a6936a333dc7181829f9130443",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:012e02fc7d4091bf8de0dab8a4066a35420940bfbeae5fc1b6a73d87e2fe88c6",
+      "source_fact_keys": [
+        "source_fact:v1:31ba4a07ebd228240524389c768cbdcbedb79d7e52261a88c454fd2b83b328f9",
+        "source_fact:v1:daf973d3d78467fbc24269c89e9b54fcfdd04a5abcbbab904cd4b5857e05b772"
+      ],
+      "source_published_kst": "2026-10-11T22:24+09:00",
+      "source_title": "청년층 '주택 매수' 열풍…대출 규제 속 '부모 찬스' 필수됐다",
+      "telegram_core_fact": "이 세무사는 \"서울 노원구와 경기 남양주시의 30대 자금조달계획서를 분석해 보니 증여·상속이나 부모 등으로부터의 사적 차입을 활용한 거래가 47%에 달했다\"며 \"이제 부모 찬스는 찬스가 아니라 디폴트값(기본값)이 됐다\"고 말했다.",
+      "title": "청년층 '주택 매수' 열풍…대출 규제 속 '부모 찬스' 필수됐다"
+    },
     "title:95cf5ffe5273f1acf65fdd90": {
       "first_seen_kst": "2026-10-06T12:10:48+09:00",
       "lanes": {
@@ -426405,6 +426596,23 @@
       "source_title": "뉴젠IVF 그룹, 상반기 순손실 808만달러..적자전환",
       "telegram_core_fact": "뉴젠IVF 그룹(NIVF)은 6월 30일 종료된 2026년 상반기 매출액이 192만4900달러로 전년비 4.7% 감소했고, 순손실은 807만9400달러로 전년 동기 69만8000달러 순이익에서 적자 전환했다고 10월 7일 발표했다.",
       "title": "뉴젠IVF 그룹, 상반기 순손실 808만달러..적자전환"
+    },
+    "title:c558b282223366828f0a2ee0": {
+      "first_seen_kst": "2026-10-11T22:33:08+09:00",
+      "lanes": {
+        "live": "2026-10-11T22:33:08+09:00"
+      },
+      "last_seen_kst": "2026-10-11T22:33:08+09:00",
+      "link": "https://www.hankyung.com/article/2026101144321",
+      "source": "한국경제",
+      "source_body_digest": "456e8129b81db4feb0e39f99774ebcf4fbfababc72de1deeca4012f1ad7c4b07",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-11T18:07+09:00",
+      "source_title": "현대차, 인도 누적 판매 1000만대 눈앞",
+      "telegram_core_fact": "현대자동차가 인도 시장에서 누적 판매량 1000만 대 돌파를 눈앞에 뒀다. 인도자동차공업협회(SIAM)에 따르면 현대차의 인도 누적 판매량(지난달 기준)은 988만4960대다.",
+      "title": "현대차, 인도 누적 판매 1000만대 눈앞"
     },
     "title:c55bea0aa604bddb10d3529c": {
       "first_seen_kst": "2026-09-28T13:07:46+09:00",
@@ -439854,5 +440062,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-11T22:09:39+09:00"
+  "updated_at_kst": "2026-10-11T22:33:08+09:00"
 }
