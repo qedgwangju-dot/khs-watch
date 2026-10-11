@@ -29,6 +29,8 @@ for _required in (
     "DKT_HUMANOID_RECOVERY =",
     "TESLA_TOUCH_PATENT_RECOVERY =",
     "DIGITAL_OPTIMUS_GAME_RECOVERY =",
+    "HUMANOID_DRAM_RECOVERY =",
+    "def _humanoid_dram_recovery(",
     "def _digital_optimus_game_recovery(",
     "def _dongkuk_report_recovery(",
     "def _dkt_humanoid_recovery(",
@@ -2818,5 +2820,126 @@ assert watcher.qty._skip_quantity_enrichment(
     '<b>분류</b>  Digital Optimus · 게임 수행 경영진 진전 발언\n'
     'Diablo 캠페인 절반, League of Legends 학습 중'
 ), 'No fictitious physical unit count for Digital Optimus'
+
+
+# 50) Counterpoint's 2026-10-10 humanoid BRAIN-DRAM outlook:
+# numeric 2026 and 2030 scenarios must not be turned into sales,
+# NAND capacity, physical robot shipments, or server HBM.
+robot_memory_primary = make(
+    "Counterpoint humanoid robot DRAM demand outlook",
+    "Counterpoint Research says 2026 humanoid robot brain DRAM demand is "
+    "8,300Tbit with 19GB blended DRAM per robot; in 2030 it forecasts "
+    "172,000Tbit with 39GB average DRAM. LPDDR memory and NAND storage "
+    "are distinct, while HBM is mainly used in AI servers.",
+    "카운터포인트리서치",
+)
+mmg, mms, mmc, mmk = classify(robot_memory_primary)
+assert mmg == 'humanoid_brain_dram' and mms >= 11, (mmg, mms, mmc)
+assert mmc == '휴머노이드 두뇌 D램 · 2030년 수요 신규 전망', mmc
+assert '전망' in mmc and '고객' not in mmc
+body = base.meaning(mmc)
+for required in ('19GB', '39GB', '8,300', '172,000', '1,037,500GB',
+                 '21,500,000GB', '215억원', '실거래 단가·매출 가이던스가 아닙니다'):
+    assert required in body, (required, body)
+assert 'LPDDR' in body and '낸드' in body and 'HBM' in body, body
+assert '25%' in base.risk(mmc) and '43,000Tbit' in base.risk(mmc)
+
+# Alternate sources and headlines discussing SAME forecast must map to
+# the same event key. No new message merely because a newspaper rewrites it.
+robot_memory_reprint = make(
+    "휴머노이드 브레인용 메모리 19GB서 39GB, 카운터포인트 전망",
+    "2026년 휴머노이드 D램 8,300Tbit에서 2030년 172,000Tbit로 "
+    "확대, 로봇당 19GB에서 39GB. 이는 블렌디드 DRAM 용량 전망이다.",
+    "연합뉴스",
+)
+rng, rns, rnc, rnk = classify(robot_memory_reprint)
+assert rng == mmg and rns >= 11 and rnk == mmk, (rng, rns, rnc, rnk)
+
+# Macro-only or speculative HBM cross-over is not an installed order.
+memory_theme = make(
+    "휴머노이드 로봇 메모리 시장 20배 테마",
+    "로봇 DRAM은 성장할 것이라는 전망만 소개하며 "
+    "정식 고객·로봇 탑재량 수치는 없다.",
+    "증시 테마 블로그",
+)
+tg, ts, tc, tk = classify(memory_theme)
+assert tg == mmg and ts < 11, (tg, ts, tc)
+
+memory_hbm_misread = make(
+    "테슬라 휴머노이드 HBM 39GB 출하 확정이라는 루머",
+    "Tesla humanoid robotics robot HBM 39GB capacity rumor "
+    "without official LPDDR DRAM supply confirmation.",
+    "익명 SNS",
+)
+hg, hs, hc, hk = classify(memory_hbm_misread)
+assert hg != mmg, (hg, hs, hc)
+
+memory_micron_longterm = make(
+    "마이크론 휴머노이드 200GB 장기 기대",
+    "Micron says humanoid robots may require over 200GB LPDDR "
+    "memory and multiple TB of NAND storage, not a 2030 blended average.",
+    "Micron",
+)
+mg, ms, mc, mk = classify(memory_micron_longterm)
+assert mg != mmg, (mg, ms, mc)
+
+revision_media_only = make(
+    "카운터포인트 휴머노이드 메모리 수요 수정 보도",
+    "Counterpoint humanoid DRAM 2030 demand forecast revised from "
+    "172,000Tbit at 39GB to 180,000Tbit with 41GB per robot.",
+    "익명 뉴스",
+)
+zg, zs, zc, zk = classify(revision_media_only)
+assert zg == mmg and zs < 11, (zg, zs, zc)
+
+revision_official = make(
+    "Counterpoint revised humanoid DRAM forecast",
+    "Counterpoint Research officially revised its 2030 humanoid robot "
+    "brain DRAM forecast to 180,000Tbit at 41GB from the earlier "
+    "172,000Tbit and 39GB. This is a future hypothetical regression case.",
+    "카운터포인트리서치",
+)
+og, os, oc, ok = classify(revision_official)
+assert og == mmg and os >= 11, (og, os, oc)
+assert oc == '휴머노이드 두뇌 D램 · 조사기관 전망치 공식 수정', oc
+assert ok != mmk, "true future revision must upgrade beyond current forecast"
+assert '기존 전망' in base.verification(revision_official,og,
+        revision_official['title']+' '+revision_official['description'])
+
+# Validate algebra independently of market forecasts:
+# 1 Tbit = 1,000,000,000,000 bits = 125 GB decimal.
+assert 8300*125 == 1_037_500
+assert 172000*125 == 21_500_000
+assert round((172000/8300),2) == 20.72
+assert round((39/19),2) == 2.05
+assert round((8300*125/19)) == 54605
+assert round((172000*125/39)) == 551282
+assert 21_500_000*1000 == 21_500_000_000  # KRW 215eok, illustrative
+assert 1_037_500*1000 == 1_037_500_000    # KRW 10eok3750man, illustrative
+
+memory_recovered = watcher.query_news(watcher.HUMANOID_DRAM_RECOVERY)
+if base.NOW.astimezone(base.KST).date() <= dt.date(2026,10,18):
+    assert len(memory_recovered) == 1, memory_recovered
+    mr = memory_recovered[0]
+    assert mr['source'] == '카운터포인트리서치'
+    assert mr['link'] == watcher.HUMANOID_DRAM_URL
+    assert mr['published'] is None, 'do not invent an intraday time'
+    rg, rs, rc, rk = classify(mr)
+    assert rg == mmg and rs>=11 and rk==mmk, (rg,rs,rc,rk)
+    render_text = mr['title']+' '+mr['description']
+    assert base.category(render_text,base.topic_group(render_text)) == mmc
+    assert '실출하·공급계약 아님' in base.verification(mr,rg,render_text)
+    assert watcher.qty._skip_quantity_enrichment(
+        '<b>1. 휴머노이드 메모리 로봇 D램</b>\n'
+        '<b>분류</b>  휴머노이드 두뇌 D램 · 2030년 수요 신규 전망\n'
+        '역산 출하량 55만대, 8,300Tbit, 19GB, 39GB'
+    ), 'forecast robot equivalents may not be labelled confirmed shipment units'
+old_counterpoint_now = base.NOW
+try:
+    base.NOW = dt.datetime(2026,10,19,12,0,tzinfo=dt.timezone.utc)
+    assert watcher.query_news(watcher.HUMANOID_DRAM_RECOVERY) == []
+finally:
+    base.NOW = old_counterpoint_now
+
 
 print("Physical-AI watcher regression guards: PASS")
