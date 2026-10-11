@@ -282,6 +282,11 @@ def _skip_quantity_enrichment(block: str) -> bool:
         return True
     if "Digital Optimus" in block or "디지털 에이전트" in block or "디지털 옵티머스" in block:
         return True
+    # 2026-2030 robot-memory forecasts are D-RAM bit demand, not confirmed
+    # hardware shipments or priced robot units. Their KRW sensitivity is
+    # separately calculated from Tbit -> GB, never from a random number+대.
+    if "휴머노이드 두뇌 D램" in block or "휴머노이드 메모리" in block:
+        return True
     return False
 
 
