@@ -762,5 +762,49 @@ class AgenticCpuStructureTests(unittest.TestCase):
 
 
 
+    def test_cpu_evidence_stage_never_turns_validation_into_shipment(self):
+        self.assertEqual(
+            w.official_cpu_evidence_stage(
+                "Meta is validating Arm AGI CPU platforms in its labs.", "demand"
+            ),
+            "고객 검증",
+        )
+        self.assertEqual(
+            w.official_cpu_evidence_stage(
+                "AMD EPYC CPU shipments accelerated.", "demand"
+            ),
+            "실제 CPU 출하",
+        )
+        self.assertEqual(
+            w.official_cpu_evidence_stage(
+                "AMD EPYC CPUs received new customer purchase orders.", "demand"
+            ),
+            "고객 주문·계약",
+        )
+        self.assertEqual(
+            w.official_cpu_evidence_stage(
+                "AMD EPYC CPU production ramp has begun.", "supply"
+            ),
+            "양산·공급 확대(고객 주문 미확인)",
+        )
+        self.assertEqual(
+            w.official_cpu_evidence_stage(
+                "AMD expects EPYC CPU shipments to grow in 2027.", "demand"
+            ),
+            "공식 수요 관련 확인(세부 단계 미분류)",
+        )
+
+    def test_cpu_alert_presents_precise_validation_vs_shipments(self):
+        row = {"title": "Meta confirms EPYC CPU lab validation",
+               "url": "https://ir.amd.com/meta-cpu-test",
+               "signal_type": "demand", "validation_stage": "고객 검증"}
+        summary = w.snapshot_block(w.BASELINE, 1340.44, "2026-10-11", [], None, [row], False)
+        self.assertIn("공식 고객 검증", summary)
+        self.assertNotIn("공식 실제 CPU 출하", summary)
+        shipped = dict(row, validation_stage="실제 CPU 출하")
+        summary2 = w.snapshot_block(w.BASELINE, 1340.44, "2026-10-11", [], None, [shipped], False)
+        self.assertIn("공식 실제 CPU 출하", summary2)
+
+
 if __name__ == "__main__":
     unittest.main()
