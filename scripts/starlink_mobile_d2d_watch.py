@@ -43,6 +43,9 @@ SOURCES=(
  ("AT&T·AST SpaceMobile 상업계약 공식 발표","https://about.att.com/story/2024/ast-spacemobile-commercial-agreement.html",("AST SpaceMobile","2030")),
  ("FCC 2026년 10월 D2D 별도 승인 DA-26-1078","https://docs.fcc.gov/public/attachments/DA-26-1078A1.txt",("15,000","SpaceX")),
  ("FCC D2D 공식 결정문 안내","https://www.fcc.gov/document/spacex-approved-ngso-mss-system-direct-device-services",("SpaceX","direct-to-device")),
+ ("NASA Falcon 9·Dragon Crew-15~17 확정 계약","https://www.nasa.gov/missions/station/commercial-crew/nasa-awards-spacex-three-crew-flights-to-space-station/",("946 million","Crew-15","2030")),
+ ("SpaceX Falcon 9 페어링 공식 제원","https://www.spacex.com/vehicles/falcon-9/fairing",("5.2","13.1")),
+ ("Starlink 휴대전화 직접통신 공식 발사체 경로","https://www.starlink.com/bs/business/direct-to-cell",("Falcon 9","Starship")),
 )
 FCC_JULY="https://docs.fcc.gov/public/attachments/DA-26-653A1.pdf"
 FCC_JAN="https://docs.fcc.gov/public/attachments/DOC-417881A1.pdf"
@@ -208,6 +211,9 @@ def distinct_primary_organizations(names:list[str])->set[str]:
   elif name.startswith("AT&T"):groups.add("att")
   elif name.startswith("T-Mobile"):groups.add("tmobile")
   elif name.startswith("FCC "):groups.add("fcc")
+  elif name.startswith("NASA "):groups.add("nasa")
+  elif name.startswith("Starlink "):groups.add("starlink")
+  elif name.startswith("SpaceX "):groups.add("spacex")
  return groups
 
 def rss(query:str)->list[dict]:
@@ -364,6 +370,29 @@ def regulatory_correction_notice()->str:
   "• 원문: https://graingp.com/grain-management-announces-definitive-agreement-to-sell-nationwide-800-mhz-spectrum-portfolio-to-spacex/",
  ])
 
+FACTCHECK_20261011_KEY="factcheck:20261011:carrier_close_falcon9_dragon"
+NASA_NEW_CREW_URL="https://www.nasa.gov/missions/station/commercial-crew/nasa-awards-spacex-three-crew-flights-to-space-station/"
+SPACEX_FAIRING_URL="https://www.spacex.com/vehicles/falcon-9/fairing"
+STARLINK_D2C_URL="https://www.starlink.com/bs/business/direct-to-cell"
+US_CARRIER_20261009_URL="https://www.fool.com/coverage/stock-market-today/2026/10/09/stock-market-today-oct-9-at-and-t-slides-on-spacex-spectrum-deal-threat/"
+
+def user_claims_factcheck()->str:
+ return "\n".join([
+  "[주가·발사병목 검증] 10월 9일 종가와 Falcon 9·Dragon 운항",
+  "• 미국 10월 9일 정규장 종가: AT&T(T) -9.81%(22.18달러), 버라이즌(VZ) -8.75%(41.65달러), T-Mobile(TMUS) -13.27%(148.58달러). AT&T -9.85%라는 인용은 종가 기준과 다릅니다.",
+  "• Starlink Mobile의 미국 전국 독자 이동통신망은 아직 상용 개통 완료가 아닙니다. 800MHz Grain→SpaceX 인수는 FCC 승인 대기이며, 위성 1만5,000기 허가는 운영 위성 1만5,000기 달성이 아닙니다.",
+  "• Falcon 9 페어링: 외경 5.2m, 전체 높이 약 13.1m입니다. 위성 길이 7m라는 주장만으로 직경 5.2m에 들어갈 수 없다는 결론은 성립하지 않습니다. 위성 실제 폭·접힌 상태·탑재 구조는 별도 검증해야 합니다.",
+  "• Starlink 공식 자료는 휴대전화 직접통신 위성을 Falcon 9에서 먼저 발사하고 이후 Starship으로 확대하는 접근을 설명합니다. 1만5,000기는 허가 규모이며 신규 15,000기의 실제 동시 발사가 아닙니다.",
+  "• NASA는 2026년 9월 18일 Crew-15~17 추가 3개 임무를 총 9억4,600만 달러(2026년 10월 11일 조회 환율 1달러=1,340.88원 기준 약 1조2,685억원)에 발주했습니다. 계약 수행기간은 2030년까지로 Falcon 9·Dragon의 즉시 퇴역과 모순됩니다.",
+  "• 재평가: Starship은 대형 위성군의 발사당 물량·원가를 크게 개선할 후보지만, 실제 상용 전환율·재사용 회전시간·위성 한 기 질량·발사당 수량이 공개되기 전에는 15,000기 발사 수와 운송비를 확정할 수 없습니다.",
+  "• 실패 경로: Starship 열차폐·Raptor·착륙 회수 재사용 지연 시 대형 위성군 일정은 늦어질 수 있지만, Falcon 9 계약 고객 전부가 즉시 발사 중단되는 것은 아닙니다.",
+  "• 먼저 볼 지표: NASA Crew-15~17 이행, 실제 Falcon 9 발사 횟수, Starship 2단 궤도선 재사용, 위성 발사량, Grain→SpaceX FCC 승인.",
+  "• 원문: "+US_CARRIER_20261009_URL,
+  "• 원문: "+SPACEX_FAIRING_URL,
+  "• 원문: "+STARLINK_D2C_URL,
+  "• 원문: "+NASA_NEW_CREW_URL,
+ ])
+
 def render(topic:str,status:str,item:dict,pair:dict)->str:
  meta=TOPICS[topic]
  timestamp=item["pub"].astimezone(KST).strftime("%Y-%m-%d %H:%M KST")
@@ -488,6 +517,11 @@ def test()->int:
  assert STATE!=PENDING!=ALERT
  assert distinct_primary_organizations(["Grain Management 매각 공식 발표", "Grain Management 배포 보도자료"])=={"grain"}
  assert distinct_primary_organizations(["Grain Management 배포 보도자료", "AT&T·AST SpaceMobile 상업계약 공식 발표"])=={"grain","att"}
+ assert FACTCHECK_20261011_KEY not in KNOWN_BASELINE_KEYS
+ assert "AT&T(T) -9.81%" in user_claims_factcheck()
+ assert "계약 수행기간은 2030년까지" in user_claims_factcheck()
+ assert "위성 길이 7m" in user_claims_factcheck()
+ assert "• 원문: "+NASA_NEW_CREW_URL in user_claims_factcheck()
  assert "license:grain_spacex_800:agreement" in KNOWN_BASELINE_KEYS
  assert "license:grain_spacex_800:fcc_approval" not in KNOWN_BASELINE_KEYS
  assert "license:grain_spacex_800:close" not in KNOWN_BASELINE_KEYS
@@ -528,6 +562,17 @@ def main()->int:
   )]
   events.insert(0,regulatory_correction_notice())
   next_seen[FCC_D2D_ORDER_KEY]=NOW.isoformat()
+ # One-time fact check of claims that conflate 2026-10-09 regular closes,
+ # Falcon 9 fairing diameter and satellite length, and Dragon retirement.
+ # We insist on a live first-party NASA document plus the established Grain
+ # original before sending historical data as a carefully labelled correction.
+ claim_verified = ("NASA Falcon 9·Dragon Crew-15~17 확정 계약" in official
+                  and "Grain Management 매각 공식 발표" in official)
+ factcheck_20261011=False
+ if not initial and FACTCHECK_20261011_KEY not in state["seen"] and claim_verified:
+  events.insert(0,user_claims_factcheck())
+  next_seen[FACTCHECK_20261011_KEY]=NOW.isoformat()
+  factcheck_20261011=True
  # Idempotent migration fixes an original bug: the first broadcast delivered
  # known October headlines while an empty dedup state could replay them later.
  # Never pre-mark the still-pending FCC assignment approval or sale closing.
@@ -558,6 +603,7 @@ def main()->int:
   f"- 뉴스 피드 장애: {len(errors)}",
   f"- 최초 기준선: {initial}, 이번 알림 사건: {len(events)}",
   f"- 10월 6일 별도 FCC 직접통신 허가 정정 알림: {correction}",
+  f"- 10월 11일 주가·Falcon/Dragon 팩트체크: {factcheck_20261011} | NASA+Grain 공식 원문: {claim_verified}",
   f"- FCC DA-26-1078 공식 원문 검증: {oct_fcc_primary}",
   "- FCC 2026-07 T-Mobile→Grain 승인과 2026-10 Grain→SpaceX 승인 대기를 혼동하지 않음",
   "- 언론 교차 보도는 정부 승인·거래 종결로 확정하지 않음",
