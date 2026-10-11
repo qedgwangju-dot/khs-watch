@@ -400,68 +400,44 @@ def daily_price_return(close:float,previous_close:float,ex_dividend:float=0)->tu
 
 
 def price_dividend_display_correction()->str:
-  """Mobile-first: keep all source facts, move evidence next to its claim."""
+  """A compact, natural-width Korean report; eight sources beside their claims.
+
+  Facts and source URLs are unchanged. No manual line wraps or tiny numbered
+  Telegram messages. The sending client handles the real device screen width.
+  """
   t_raw,t_adj=daily_price_return(22.18,24.87,0.2775)
   vz_raw,vz_adj=daily_price_return(41.65,46.35,0.7075)
   tm_raw,_=daily_price_return(148.58,171.31)
   return "\n".join([
    "[주가 기준 정정] 10월 9일 미국 통신 3사",
-   "핵심: 주가는 급락했지만",
-   "Starlink Mobile 미국 독자망은 아직 개통 전.",
+   "핵심: 통신 3사 주가는 급락했으나 Starlink Mobile 미국 독자망은 아직 개통 전입니다.",
    "",
-   "[주가] 10/9 정규장, 전일 종가 대비",
-   f"AT&T(T) 22.18달러 · {t_raw:+.2f}%",
-   f"  배당락 조정: {t_adj:+.2f}%",
-   f"버라이즌(VZ) 41.65달러 · {vz_raw:+.2f}%",
-   f"  배당락 조정: {vz_adj:+.2f}%",
+   "[주가] 10/9 정규장 · 전일 종가 대비",
+   f"AT&T(T) 22.18달러 · {t_raw:+.2f}%  배당락 조정: {t_adj:+.2f}%",
+   f"버라이즌(VZ) 41.65달러 · {vz_raw:+.2f}%  배당락 조정: {vz_adj:+.2f}%",
    f"T-Mobile(TMUS) 148.58달러 · {tm_raw:+.2f}%",
-   "※ 10/9 배당락: T 주당 0.2775달러,",
-   "  VZ 주당 0.7075달러.",
-   "※ 원수익률과 배당 조정 수익률은",
-   "  서로 다른 비교 기준입니다.",
+   "※ 10/9 배당락: T 주당 0.2775달러, VZ 주당 0.7075달러. 원수익률과 배당 조정 수익률은 서로 다른 비교 기준입니다.",
    "• 원문: "+T_DAILY_RAW_URL,
    "• 원문: "+VZ_DAILY_RAW_URL,
    "• 원문: "+TMUS_DAILY_URL,
    "• 원문: "+AT_T_DIVIDEND_URL,
    "• 원문: "+VERIZON_DIVIDEND_URL,
    "",
-   "[사업] 아직 개통·승인 완료 아님",
-   "Grain→SpaceX 800MHz: 인수계약 체결.",
-   "  FCC 이전 승인 대기.",
-   "D2D 1만5,000기: 허가 규모일 뿐",
-   "  실제 가동 위성 수는 아닙니다.",
+   "[사업] 인수계약·위성 허가 ≠ 상용 개통",
+   "Grain→SpaceX 800MHz 인수계약 체결, FCC 이전 승인 대기. D2D 1만5,000기는 허가 규모이지 실제 가동 위성 수가 아닙니다.",
    "",
-   "[발사] Falcon 9와 Starship",
-   "Falcon 9 페어링: 외경 5.2m,",
-   "  높이 약 13.1m.",
-   "위성 길이 7m만으로 적재 불가 단정 금지.",
-   "  접힌 폭·적재 형상 별도 검증 필요.",
-   "Starlink 직접통신은 Falcon 9로 선발사,",
-   "  이후 Starship 대형화 경로입니다.",
-   "1만5,000기는 발사 완료량이 아닙니다.",
+   "[발사] Falcon 9·Starship 병행 경로",
+   "Falcon 9 페어링: 외경 5.2m·높이 약 13.1m. 위성 길이 7m만으로 적재 불가 단정 금지(접힌 폭·적재 형상 별도 검증).",
+   "Starlink 직접통신은 Falcon 9로 선발사한 뒤 Starship으로 대형화하는 경로입니다. 1만5,000기는 발사 완료량이 아닙니다.",
    "• 원문: "+SPACEX_FAIRING_URL,
    "• 원문: "+STARLINK_D2C_URL,
    "",
    "[NASA] Falcon 9·Dragon 계속 운용",
-   "Crew-15~17 추가 3회, 9억4,600만 달러",
-   "  (10/11 환산 약 1조2,685억원).",
-   "계약 수행기간: 2030년까지.",
-   "  Falcon 9·Dragon 즉시 퇴역 주장과",
-   "  양립하지 않습니다.",
+   "Crew-15~17 추가 3회, 9억4,600만 달러(10/11 환산 약 1조2,685억원). 계약 수행기간 2030년까지로 Falcon 9·Dragon 즉시 퇴역 주장과 양립하지 않습니다.",
    "• 원문: "+NASA_NEW_CREW_URL,
    "",
-   "[재평가·역풍]",
-   "Starship 원가 우위 검증에는",
-   "  위성당 질량·발사당 기수·회전시간 필요.",
-   "열차폐·Raptor·회수 지연 시",
-   "  D2D 위성 배치 일정이 늦어질 수 있음.",
-   "  기존 Falcon 9 계약 전체가",
-   "  즉시 중단되는 것은 아닙니다.",
-   "",
-   "[추적 지표]",
-   "Falcon 9 발사 빈도 · Crew-15~17 이행",
-   "Starship 2단 재사용 · D2D 가동 기수",
-   "Grain→SpaceX FCC 이전 승인",
+   "[재평가·역풍] Starship의 원가 우위는 위성당 질량·발사당 기수·재사용 회전시간 검증이 선행되어야 합니다. 열차폐·Raptor·회수 지연은 D2D 배치를 늦출 수 있으나 기존 Falcon 9 계약 전체의 즉시 중단을 뜻하지 않습니다.",
+   "[추적 지표] Falcon 9 발사 빈도 · Crew-15~17 이행 · Starship 2단 재사용 · D2D 실제 가동 기수 · Grain→SpaceX FCC 이전 승인",
   ])
 
 
