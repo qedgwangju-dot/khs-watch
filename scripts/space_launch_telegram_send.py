@@ -6,6 +6,7 @@ import os
 import pathlib
 import re
 import socket
+import unicodedata
 import sys
 import time
 import urllib.error
@@ -246,7 +247,7 @@ def self_test() -> int:
 # Optional compact in-message source links. Default send path above is unchanged;
 # only the Starlink Mobile workflow explicitly invokes --inline.
 INLINE_SOURCE_RE = re.compile(r"^• 원문:\s*(https://\S+)\s*$")
-INLINE_MAX_UNITS = 3450
+INLINE_MAX_UNITS = 1200
 INLINE_LABELS = "①②③④⑤⑥⑦⑧⑨⑩"
 
 
@@ -272,26 +273,78 @@ def inline_url(value: str) -> str:
     return value
 
 
+def inline_source_name(url: str, number: int) -> str:
+    """Clear and short source name, tied to the URL's issuer and purpose."""
+    from urllib.parse import urlsplit
+    p = urlsplit(url)
+    host = (p.hostname or "").lower()
+    path = p.path.lower()
+    if "investing.com" in host and "at-t-historical" in path:
+        return "AT&T 주가"
+    if "investing.com" in host and "verizon-communications" in path:
+        return "VZ 주가"
+    if "stockanalysis.com" in host and "/stocks/tmus/" in path:
+        return "TMUS 주가"
+    if "about.att.com" in host and "dividend" in path:
+        return "AT&T 배당"
+    if "verizon.com" in host and "dividend" in path:
+        return "VZ 배당"
+    if "nasa.gov" in host:
+        return "NASA"
+    if "spacex.com" in host and "fairing" in path:
+        return "Falcon 9"
+    if "starlink.com" in host:
+        return "Starlink"
+    if "docs.fcc.gov" in host and "da-26-1078" in path:
+        return "FCC 10월"
+    if "docs.fcc.gov" in host and "da-26-36" in path:
+        return "FCC 1월"
+    if "fcc.gov" in host:
+        return "FCC"
+    if "graingp.com" in host:
+        return "Grain"
+    if "rocketlabcorp.com" in host:
+        return "Rocket Lab"
+    if "reuters.com" in host:
+        return "Reuters"
+    return f"원문{INLINE_LABELS[number]}"
+
+
+def inline_display_width(text: str) -> int:
+    return sum(
+        2 if unicodedata.east_asian_width(ch) in ("W", "F") else 1
+        for ch in text
+    )
+
+
 def inline_link_row(urls: list[str]) -> tuple[str, list[dict]]:
+    """Several adjacent original URLs become compact, named text links.
+
+    Max visual row width is 44 half-width cells. Multi-line entity offsets
+    include all UTF-16 code units, including newline and indentation.
+    """
     if not urls:
         return "", []
     if len(urls) > len(INLINE_LABELS):
         raise ValueError("Too many source links in one section")
-    labels = [
-        "원문" if len(urls) == 1 else f"원문{INLINE_LABELS[i]}"
-        for i in range(len(urls))
-    ]
-    result = " · ".join(labels)
+    result = "원문: "
+    current_line = result
     entities = []
-    pos = 0
-    for i, (label, url) in enumerate(zip(labels, urls)):
-        if i:
-            pos += utf16_units(" · ")
+    for i, url in enumerate(urls):
+        label = inline_source_name(inline_url(url), i)
+        delimiter = "" if i == 0 else " · "
+        if inline_display_width(current_line + delimiter + label) > 44:
+            delimiter = "\n      "
+            current_line = ""
+        position = utf16_units(result + delimiter)
+        result += delimiter + label
+        current_line = (current_line + delimiter + label).split("\n")[-1]
         entities.append({
-            "type": "text_link", "offset": pos, "length": utf16_units(label),
-            "url": inline_url(url),
+            "type": "text_link",
+            "offset": position,
+            "length": utf16_units(label),
+            "url": url,
         })
-        pos += utf16_units(label)
     return result, entities
 
 
@@ -432,7 +485,7 @@ def inline_self_test() -> int:
     )
     texts = inline_messages(sample)
     assert len(texts) == 1
-    assert "원문① · 원문② · 원문③" in texts[0][0]
+    assert "원문: FCC 10월 · FCC 1월 · Grain" in texts[0][0]
     assert len(texts[0][1]) == 3
     assert all(e["type"] == "text_link" for e in texts[0][1])
     assert not any("reply_markup" in item[0] for item in texts)
@@ -442,14 +495,30 @@ def inline_self_test() -> int:
     )
     assert len(long_texts) > 1
     assert sum(len(ents) for _, ents in long_texts) == 1
-    assert inline_messages("이모지 📡\n• 원문: https://example.com/")[0][0].endswith("원문")
+    assert inline_messages("이모지 📡\n• 원문: https://example.com/")[0][0].endswith("원문①")
+    assert "AT&T 주가" == inline_source_name("https://www.investing.com/equities/at-t-historical-data", 0)
+    assert "VZ 배당" == inline_source_name("https://www.verizon.com/about/investors/dividend-history", 0)
+    assert inline_display_width(inline_link_row([
+        "https://www.investing.com/equities/at-t-historical-data",
+        "https://www.investing.com/equities/verizon-communications-historical-data",
+        "https://stockanalysis.com/stocks/tmus/history/",
+        "https://about.att.com/story/2026/november-stock-dividend.html",
+        "https://www.verizon.com/about/investors/dividend-history",
+    ])[0].splitlines()[0]) <= 44
     print("starlink_d2d_inline_self_test=ok inline_links=3 utf16=ok long_text=ok no_buttons=ok")
     return 0
 
 
 def send_inline_alert(token: str, chat_id: str, message: str):
     ids = []
-    for plain_text, entities in inline_messages(message):
+    portions = inline_messages(message)
+    for index, (plain_text, entities) in enumerate(portions, start=1):
+        if len(portions) > 1:
+            # This makes the complete series identifiable on a small screen.
+            prefix = f"[{index}/{len(portions)}] "
+            plain_text, entities = inline_combine(
+                (prefix, []), (plain_text, entities), ""
+            )
         response = telegram_call(token, "sendMessage", {
             "chat_id": chat_id,
             "text": plain_text,
