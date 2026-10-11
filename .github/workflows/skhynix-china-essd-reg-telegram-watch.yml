@@ -2,10 +2,13 @@ name: SK hynix China eSSD Regulation Telegram Watch
 
 on:
   push:
+    branches: [main]
     paths:
       - ".github/workflows/skhynix-china-essd-reg-telegram-watch.yml"
       - "scripts/skhynix_china_essd_reg_watch.py"
       - "scripts/skhynix_china_essd_direct_link_fix.py"
+      - "requirements-news-decoder.txt"
+      - "tests/test_news_decoder_dependencies.py"
       - "data/skhynix_china_essd_reg_watch_state.json"
   schedule:
     # GitHub cron is UTC. Check twice per hour and stay silent without a meaningful new signal.
@@ -38,7 +41,10 @@ jobs:
           python-version: "3.12"
 
       - name: Install Google News direct-link resolver
-        run: python -m pip install --disable-pip-version-check --quiet googlenewsdecoder==0.1.7
+        run: python -m pip install --disable-pip-version-check --quiet -r requirements-news-decoder.txt
+
+      - name: Check decoder dependency compatibility without network
+        run: python -m unittest discover -s tests -p test_news_decoder_dependencies.py -v
 
       - name: Validate watcher
         run: |
@@ -239,3 +245,4 @@ jobs:
             out/skhynix_china_essd_reg_watch_telegram_confirmed.json
           if-no-files-found: ignore
           retention-days: 14
+
