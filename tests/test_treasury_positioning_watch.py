@@ -93,3 +93,40 @@ def test_classify_three_short_expansions_and_repo_growth():
     assert label == "숏·레버리지 확대 가능성"
     assert "3개" in reason
     assert "+7.6%" in reason
+
+
+def test_zb_and_ultra_bond_contracts_are_separated():
+    assert watch.CONTRACTS["30년"]["code"] == "020601"
+    assert watch.CONTRACTS["초장기(UB)"]["code"] == "020604"
+    assert watch.CONTRACTS["30년"]["name"] == "UST BOND"
+    assert watch.CONTRACTS["초장기(UB)"]["name"] == "ULTRA UST BOND"
+    assert watch.CORE_CONTRACTS == ("2년", "5년", "10년", "30년")
+
+
+def test_ultra_position_does_not_change_existing_core_regime_thresholds():
+    rows = {
+        "2년": {"net": -10, "net_change": 2},
+        "5년": {"net": -10, "net_change": 2},
+        "10년": {"net": -10, "net_change": -2},
+        "30년": {"net": -10, "net_change": -2},
+        "초장기(UB)": {"net": -10, "net_change": 400},
+    }
+    repo = {"state": "스트레스", "dvp_week_pct": 1.0}
+    head, _ = watch.classify(rows, repo)
+    assert head == "혼조·추가 확인"
+
+
+def test_cftc_contract_name_anchor_blocks_ultra_substring_match():
+    import re
+    from re import escape
+    sample = "\\nULTRA UST BOND - CHICAGO BOARD OF TRADE\\nOpen Interest is 999\\nUST BOND - CHICAGO BOARD OF TRADE\\nOpen Interest is 123\\n"
+    pattern = r"(?m)^\\s*" + escape(watch.CONTRACTS["30년"]["name"]) + r"\\s*-\\s*CHICAGO BOARD OF TRADE\\b"
+    match = re.search(pattern,sample,re.I)
+    assert match is not None
+    assert match.group(0).strip()=="UST BOND - CHICAGO BOARD OF TRADE"
+
+
+def test_ctd_switch_requires_delivery_basket_not_cash_bond_yield():
+    assert "CTD" in watch.CME_CTD_EDUCATION_URL.upper()
+    assert "UB" in watch.CONTRACTS["초장기(UB)"]["name"].upper() or "ULTRA" in watch.CONTRACTS["초장기(UB)"]["name"].upper()
+    assert "6.00%" in watch.jpm_30y_signal(6.0)
