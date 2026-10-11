@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "updated_at_kst": "2026-10-11T14:47:35+09:00",
+  "updated_at_kst": "2026-10-11T14:50:27+09:00",
   "initial_alert_sent": true,
   "baseline_at_kst": "2026-10-09T15:05:00+09:00",
   "seen": [
@@ -63,6 +63,7 @@
     "7fb5ff4de0a88c7a51d6cd61",
     "808293f9672a00ac0175bc4f",
     "8089ff323cd2da43807bfa06",
+    "8105b2d35fca7290bec4e01a",
     "863ba0578bdd9b3cf0eaad11",
     "866c387db811acbb2b54e661",
     "89502563fbedc77fffa05c64",
@@ -154,7 +155,6 @@
       "idc_publication_date": "2026-08-26",
       "apple_us_pro_price_usd": 1199,
       "apple_us_pro_max_price_usd": 1299,
-      "china_week38_sales_yoy_pct_user_provided": 12,
       "china_week38_direct_tracker_publicly_verified": false,
       "ubs_delivery_lead_time_publicly_verified": false,
       "nikkei_reported_minimum_via_reuters_pct": 15.0,
@@ -166,7 +166,8 @@
       "ubs_report_as_of": "2026-10-09",
       "ubs_secondary_source": "Proactive 인용 UBS Evidence Lab(원본 미열람)",
       "china_week38_public_counterpoint_summary_confirmed": true,
-      "china_week38_apple_share_official_pct": 33.0
+      "china_week38_apple_share_official_pct": 33.0,
+      "china_week38_sales_yoy_pct_official_counterpoint": 12.0
     }
   },
   "last_scan_items": 95,
