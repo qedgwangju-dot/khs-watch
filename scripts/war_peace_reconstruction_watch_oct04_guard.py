@@ -1907,6 +1907,12 @@ def _sync_pending_to_rendered_alert():
         watch.PENDING.write_text(json.dumps(pending, ensure_ascii=False), encoding="utf-8")
 
 
+def _run_and_verify():
+    watch.run(test=False)
+    _sync_pending_to_rendered_alert()
+    runner.verify_alert(test_mode=False)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--finalize", action="store_true")
@@ -1918,10 +1924,13 @@ def main():
     if args.telegram_test:
         base._write_inline_test()
     else:
-        watch.run(test=False)
+        from war_peace_reconstruction_watch_runtime import run_bounded
+        return run_bounded(watch, _run_and_verify)
     _sync_pending_to_rendered_alert()
     runner.verify_alert(test_mode=False)
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
+

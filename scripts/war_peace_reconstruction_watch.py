@@ -8,6 +8,7 @@ import pathlib
 import re
 import time
 import urllib.parse
+import urllib.error
 import urllib.request
 import xml.etree.ElementTree as ET
 from email.utils import parsedate_to_datetime
@@ -60,33 +61,70 @@ REBUILD = [
 POLITICAL = ["midterm", "election", "republican", "gop", "중간선거", "공화당"]
 
 
+class SourceAccessBlocked(RuntimeError):
+    provider_blocked = True
+
+
+# Installed only inside isolated collection workers, never in delivery/finalize.
+_before_source_request = None
+
+
+def _blocked_target(url):
+    parsed = urllib.parse.urlparse(url)
+    path = (parsed.netloc + parsed.path).lower()
+    return any(term in path for term in (
+        'captcha', 'challenge', '/cdn-cgi/', '/sorry', 'consent.',
+        '/login', '/signin', '/blocked', 'verify-human',
+    ))
+
+
+class _SourceRedirects(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, request, response, code, message, headers, new_url):
+        old_host = urllib.parse.urlparse(request.full_url).hostname or ''
+        new_host = urllib.parse.urlparse(new_url).hostname or ''
+        if (_blocked_target(new_url)
+                or old_host.removeprefix('www.') != new_host.removeprefix('www.')):
+            raise SourceAccessBlocked('source redirect requires access review')
+        if _before_source_request is not None:
+            _before_source_request(new_url)
+        return super().redirect_request(request, response, code, message, headers, new_url)
+
+
 def req(url, timeout=20):
-    """일시적 HTTP/DNS 오류를 한 번 재시도하되 전체 감시 지연은 제한한다."""
-    headers_list = [
-        {
-            "User-Agent": "Mozilla/5.0 khs-watch/2.0",
-            "Accept": "text/html,application/xhtml+xml,application/xml,application/json;q=0.9,*/*;q=0.8",
-            "Accept-Language": "ko-KR,ko;q=0.9,en;q=0.7",
-        },
-        {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/154 Safari/537.36",
-            "Accept": "text/html,application/xhtml+xml,application/xml,application/json;q=0.9,*/*;q=0.8",
-            "Accept-Language": "en-US,en;q=0.9,ko;q=0.7",
-        },
-    ]
-    last = None
-    for attempt, headers in enumerate(headers_list):
+    """Retry transient failures once, never an access denial or another identity."""
+    headers = {
+        "User-Agent": "Mozilla/5.0 khs-watch/2.0",
+        "Accept": "text/html,application/xhtml+xml,application/xml,application/json;q=0.9,*/*;q=0.8",
+        "Accept-Language": "ko-KR,ko;q=0.9,en;q=0.7",
+    }
+    opener = urllib.request.build_opener(_SourceRedirects())
+    for attempt in range(2):
+        if _before_source_request is not None:
+            _before_source_request(url)
         try:
-            # 개별 외부 소스가 느리거나 멈춰도 5분 감시 주기 전체를 붙잡지 않도록 상한을 둔다.
-            attempt_timeout = min(timeout, 10) if attempt == 0 else min(timeout, 5)
             request = urllib.request.Request(url, headers=headers)
-            with urllib.request.urlopen(request, timeout=attempt_timeout) as r:
-                return r.read()
-        except Exception as exc:
-            last = exc
-            if attempt == 0:
-                time.sleep(0.3)
-    raise last
+            with opener.open(request, timeout=min(timeout, 10 if attempt == 0 else 5)) as response:
+                data = response.read()
+            sample = data[:16000].lower()
+            is_html = b'<html' in sample[:2000] or sample.lstrip().startswith(b'<!doctype html')
+            if is_html and any(marker in sample for marker in (
+                b'cf-chl-', b'/cdn-cgi/challenge-platform/',
+                b'verify you are human', b'prove you are human',
+                b'our systems have detected unusual traffic',
+            )):
+                raise SourceAccessBlocked('source returned an access challenge')
+            return data
+        except SourceAccessBlocked:
+            raise
+        except urllib.error.HTTPError as exc:
+            if exc.code in (401, 403, 429):
+                raise
+            if attempt == 1:
+                raise
+        except Exception:
+            if attempt == 1:
+                raise
+        time.sleep(0.3)
 
 
 def clean(s):
@@ -128,6 +166,8 @@ def google_news(query):
     url = f"https://news.google.com/rss/search?q={q}&hl=ko&gl=KR&ceid=KR:ko"
     try:
         root = ET.fromstring(req(url))
+        if root.tag != "rss" or root.find("channel") is None:
+            raise ValueError("Google News response is not an RSS channel")
     except Exception as e:
         return [], f"{query}: {type(e).__name__}"
     out = []
@@ -411,3 +451,4 @@ if __name__ == "__main__":
         finalize()
     else:
         run(test=a.telegram_test)
+
