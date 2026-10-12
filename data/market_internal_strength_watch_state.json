@@ -13,13 +13,70 @@
   "vix_official_crosscheck_date": "2026-10-09",
   "vix_official_same_day": true,
   "vix_official_lag_days": 0,
-  "vix_cboe_quote_date": "2026-10-11",
+  "vix_cboe_quote_date": "2026-10-12",
   "vix_cboe_quote_same_day": false,
   "vix_cboe_quote_diff": null,
-  "vix_crosscheck_max_abs_diff": 0.0,
+  "vix_crosscheck_max_abs_diff": 1.5258789076710855e-07,
   "etf_final_close_source": "StockAnalysis / S&P Global Market Intelligence",
   "etf_final_close_date": "2026-10-09",
-  "settlement_overrides": {},
+  "settlement_overrides": {
+    "S&P500": {
+      "yahoo": 778.5700073242188,
+      "final": 778.57
+    },
+    "동일가중 S&P500": {
+      "yahoo": 213.0399932861328,
+      "final": 213.04
+    },
+    "중소형주": {
+      "yahoo": 278.94000244140625,
+      "final": 278.94
+    },
+    "하이일드 회사채": {
+      "yahoo": 77.2300033569336,
+      "final": 77.23
+    },
+    "커뮤니케이션": {
+      "yahoo": 110.37999725341797,
+      "final": 110.38
+    },
+    "경기소비재": {
+      "yahoo": 112.8499984741211,
+      "final": 112.85
+    },
+    "필수소비재": {
+      "yahoo": 83.43000030517578,
+      "final": 83.43
+    },
+    "에너지": {
+      "yahoo": 65.08000183105469,
+      "final": 65.08
+    },
+    "금융": {
+      "yahoo": 54.72999954223633,
+      "final": 54.73
+    },
+    "헬스케어": {
+      "yahoo": 170.80999755859375,
+      "final": 170.81
+    },
+    "소재": {
+      "yahoo": 49.43000030517578,
+      "final": 49.43
+    },
+    "부동산": {
+      "yahoo": 41.61000061035156,
+      "final": 41.61
+    },
+    "기술": {
+      "yahoo": 198.77999877929688,
+      "final": 198.78
+    },
+    "유틸리티": {
+      "yahoo": 41.40999984741211,
+      "final": 41.41
+    }
+  },
   "breadth_warning": true,
   "rsp_warning": false,
   "iwm_warning": true,
@@ -49,9 +106,9 @@
       "5d": 0.4160659506615927
     },
     "VIX": {
-      "1d": -3.6988958666851146,
-      "3d": -1.132579788737953,
-      "5d": -3.069891618124898
+      "1d": -3.698894876497627,
+      "3d": -1.1325787721630842,
+      "5d": -3.0698906214698507
     },
     "커뮤니케이션": {
       "1d": -1.507985811926682,
