@@ -866,7 +866,20 @@ def render_enrichment_summary(raw: dict[str, Any]) -> str:
         text = _render(*limits)
         if _enrichment_visible_length(text) <= 3800:
             return text
-    raise ValueError("Telegram 정밀분해 메시지 길이 초과; 원자료 유지, 임의 절단 금지")
+    # 극단적인 종목명 길이에서도 감시 자체가 조용히 실패하지 않도록 핵심만 보낸다.
+    # 세부 숫자는 기존 아티팩트에 전량 남으며 문장·HTML을 중간에서 자르지 않는다.
+    market = event.get("market_attribution") or {}
+    brief = [
+        "🔎 <b>코스피 급락 · 정밀분해 요약</b>",
+        f"<code>{esc(event_time)} KST</code>",
+        f"• 구간 <b>{start} → {low}</b>",
+        "• 시장 판정: " + esc(market.get("verdict") or "수급 정렬 부족·판정 보류"),
+        "• 상세 표시는 Telegram 글자 수를 초과하여 생략했습니다. 검증 원자료는 기존 GitHub Actions 아티팩트에 저장합니다.",
+    ]
+    result = "\n".join(brief)
+    if _enrichment_visible_length(result) > 3800:
+        raise ValueError("필수 시장 판정 텍스트가 Telegram 제한을 초과")
+    return result
 
 
 def build_enrichment(
