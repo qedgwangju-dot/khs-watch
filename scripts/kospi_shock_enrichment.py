@@ -827,11 +827,12 @@ def render_enrichment_summary(raw: dict[str, Any]) -> str:
             member_key = tuple(str(v) for v in (th.get("stocks") or []))
             key = (delta, member_key)
             if key not in merged:
-                merged[key] = {"names": [], "delta": delta, "count": len(member_key)}
+                merged[key] = {"names": [], "delta": delta, "stocks": member_key}
             merged[key]["names"].append(str(th.get("name") or "?"))
         for bucket in merged.values():
             names = "·".join(esc(x) for x in bucket["names"])
-            lines.append(f"• {names} {_fmt_program(bucket['delta'])} <i>(연결 {bucket['count']}종목)</i>")
+            members = "·".join(esc(x) for x in bucket["stocks"][:3])
+            lines.append(f"• {names} {_fmt_program(bucket['delta'])}" + (f" · {members}" if members else ""))
         if not merged:
             lines.append("• 확인된 연결 테마 없음")
 
