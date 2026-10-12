@@ -3249,9 +3249,10 @@ finally:
 
 
 
-# 53) FUNDA estimated 3–4x GPU load for video/joint/action VLA post-training.
-# User-supplied analyst excerpt; primary article and equal-condition raw
-# benchmarking data could not be independently opened or verified.
+# 53) FUNDA 2026-10-12 channel-check estimate of 3–4x robot
+# post-training GPU resources on 7–13B models. The original article text
+# is available from indexed search; direct URL-open failed. Raw same-hardware
+# metered GPU-hours and an independent reproduction remain unavailable.
 funda_claim = make(
     "FUNDA Physical AI robot data race to second compute demand curve",
     "FUNDA industry interviews estimate robot VLA model post-training with "
@@ -3266,6 +3267,15 @@ assert fg == 'robot_posttrain_compute' and fs < 11, (fg,fs,fc)
 assert fc == '로봇 사후학습 · Funda AI 3~4배 추정 기준선', fc
 assert '독립' in base.verification(funda_claim,fg,funda_claim['title']+' '+funda_claim['description'])
 assert '3~4배' in base.meaning(fc), base.meaning(fc)
+assert '70억~130억' in base.meaning(fc), base.meaning(fc)
+assert '사전학습보다' in base.meaning(fc), base.meaning(fc)
+assert '실제 산업 GPU 수요' in base.meaning(fc), base.meaning(fc)
+assert '원문 검색 결과의 본문 확인' in base.verification(
+    funda_claim,fg,funda_claim['title']+' '+funda_claim['description']
+), 'Public source retrieved through indexed search; no longer only a user excerpt'
+assert '직접 URL 열람 실패' in base.verification(
+    funda_claim,fg,funda_claim['title']+' '+funda_claim['description']
+), 'A failed direct open must not be represented as a successful full URL fetch'
 
 funda_reprint = make(
     "Funda AI physical robotics compute GPU 3~4x post-training estimate",
@@ -3308,6 +3318,30 @@ assert ok != fk, 'official measured training workload must be a new alert'
 render_text = future_official_measurement['title'] + ' ' + future_official_measurement['description']
 assert base.category(render_text,base.topic_group(render_text)) == oc
 assert '실측' in base.verification(future_official_measurement,og,render_text)
+
+# A generic "reported" or "benchmark" in an official article does NOT
+# prove actual metered GPU-hours: it must contain measured/instrumented data.
+nvidia_unspecified_report = make(
+    "NVIDIA robot post-training GPU-hour report",
+    "NVIDIA reported a benchmark estimate of 12,000 H100 GPU-hours for "
+    "robot VLA post-training but published no measured training logs.",
+    "NVIDIA",
+)
+xg, xs, xc, xk = classify(nvidia_unspecified_report)
+assert xg == 'robot_posttrain_compute' and xs < 11, (xg,xs,xc)
+
+# A Figure–Nscale 2026-09-03 official COMPUTE SERVICE commitment is
+# separate from a post-training GPU-hour measurement and not new on 10/12.
+figure_nscale_old = make(
+    "Figure Nscale up to 100,000 NVIDIA GPUs on Vera Rubin",
+    "Figure and Nscale signed a 3.5 billion USD multi-year compute services "
+    "commitment for 100,000 GPUs with first deployment planned H2 2027; "
+    "robot simulation training and post-training are possible workloads "
+    "but GPU-hours measured for a named training run are NOT disclosed.",
+    "Figure AI",
+)
+nxg, nxs, nxc, nxk = classify(figure_nscale_old)
+assert nxg != 'robot_posttrain_compute' or nxs < 11, (nxg,nxs,nxc)
 
 non_robot_training = make(
     "NVIDIA LLM text post-training compute",
