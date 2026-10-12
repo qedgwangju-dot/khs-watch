@@ -37,12 +37,13 @@ def inspect_workflow(path: pathlib.Path) -> dict[str, Any]:
     is_dispatch = bool(re.search(r"(?m)^  workflow_dispatch:\s*", body))
     direct_send = "/sendMessage" in body or "sendMessage" in body
     is_active_alert = bool(re.search(r"(?i)(telegram|alert|watch)", path.name))
+    is_one_shot = bool(re.search(r"(?i)(-once|-smoketest|-smoke-test|-test|-ci|route-inventory)", path.name))
     risks = []
     if r"\${{" in body:
         risks.append("escaped_github_expression")
-    if direct_send and not re.search(r"\bmessage_id\b", body):
+    if direct_send and not is_one_shot and not re.search(r"\bmessage_id\b", body):
         risks.append("direct_send_without_message_id_check")
-    if is_schedule and not is_dispatch and is_active_alert:
+    if is_schedule and not is_dispatch and is_active_alert and not is_one_shot:
         risks.append("no_manual_dispatch_for_scheduled_watch")
     if (is_schedule and "workflow_run:" in body and
             re.search(r"(?m)^\s+cancel-in-progress:\s*true\s*$", body)):
@@ -61,7 +62,7 @@ def inspect_workflow(path: pathlib.Path) -> dict[str, Any]:
         "dispatch": is_dispatch,
         "inline_telegram_send": direct_send,
         "receipt_marker": bool(re.search(r"\bmessage_id\b", body)),
-        "has_github_run_completion_only": False,
+        "one_shot_or_test": is_one_shot,
         "risks": sorted(set(risks)),
     }
 
@@ -88,6 +89,15 @@ def audit_static(root: pathlib.Path) -> dict[str, Any]:
 
 
 def audit_runtime(runs: list[dict[str, Any]], workflows: list[dict[str, Any]]) -> dict[str, Any]:
+    # Adjacent API time windows may overlap at their exact boundary. Count
+    # a workflow run ID once, not once per API page or window.
+    unique: dict[str, dict[str, Any]] = {}
+    for run in runs:
+        key = str(run.get("id") or "").strip()
+        if not key:
+            key = "|".join(str(run.get(k) or "") for k in ("path", "created_at", "event", "conclusion"))
+        unique[key] = run
+    runs = list(unique.values())
     by_path: dict[str, list[dict[str, Any]]] = collections.defaultdict(list)
     for run in runs:
         path = str(run.get("path") or "").strip()
