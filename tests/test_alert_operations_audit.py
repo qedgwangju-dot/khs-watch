@@ -45,21 +45,23 @@ class AlertOperationsAuditTest(unittest.TestCase):
 
     def test_runtime_preserves_failure_cancel_and_disabled_distinction(self):
         rows = [
+            {"id": 1, "path": ".github/workflows/a.yml", "event": "pull_request", "conclusion": "success", "created_at": "2026-10-12T14:00:00Z"},
             {"id": 1, "path": ".github/workflows/a.yml", "conclusion": "success", "created_at": "2026-10-12T14:00:00Z"},
-            {"id": 1, "path": ".github/workflows/a.yml", "conclusion": "success", "created_at": "2026-10-12T14:00:00Z"},
-            {"path": ".github/workflows/a.yml", "conclusion": "failure", "created_at": "2026-10-12T13:00:00Z"},
+            {"path": ".github/workflows/a.yml", "event": "schedule", "conclusion": "failure", "created_at": "2026-10-12T13:00:00Z"},
             {"path": ".github/workflows/b.yml", "conclusion": "cancelled", "created_at": "2026-10-12T12:00:00Z"},
         ]
         catalog = [
             {"path": ".github/workflows/a.yml", "state": "active"},
             {"path": ".github/workflows/b.yml", "state": "disabled_manually"},
         ]
-        summary = audit.audit_runtime(rows, catalog)
+        summary = audit.audit_runtime(rows, catalog, known_paths={".github/workflows/a.yml"})
         self.assertEqual(summary["runs_reviewed"], 3)
         self.assertEqual(summary["conclusions"]["success"], 1)
         self.assertEqual(summary["conclusions"]["failure"], 1)
         self.assertEqual(summary["conclusions"]["cancelled"], 1)
         self.assertEqual(summary["failure_clusters"][0]["latest_conclusion"], "success")
+        self.assertEqual(summary["failure_clusters"][0]["latest_schedule_conclusion"], "failure")
+        self.assertEqual(summary["registry_only_workflows"][0]["path"], ".github/workflows/b.yml")
         self.assertEqual(summary["inactive_workflows"][0]["state"], "disabled_manually")
         md = audit.make_markdown({"workflow_files": 2, "scheduled_files": 2, "inline_send_files": 1, "risk_counts": {}}, summary)
         self.assertIn("성공 1 · 실패 1 · 취소 1", md)
