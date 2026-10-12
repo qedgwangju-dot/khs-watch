@@ -740,7 +740,7 @@ def _vnet_equity_recovery() -> list[dict]:
     if base.NOW.astimezone(base.KST).date() > dt.date(2026,10,19):
         return []
     return [{
-        'title': '정정: 10/12 주가 상승·수주 기대 기사 2건은 알림 제외 — VNET 9/21 지분거래만 확인',
+        'title': '정정: 10/12 ESS 주가 상승 기사 2건 제외 — CATL 관계사·VNET 9/21 지분거래만 확인',
         'link': 'https://ir.vnet.com/news-releases/news-release-details/vnet-announces-closing-previously-announced-strategic-investment',
         'description': (
             '앞서 발송한 Telegram message_id=208의 1번(아이뉴스24)과 3번(이투데이)은 주가 반응·ESS 수주 기대감 기사이므로 신규 계약이나 실적 고신호가 아니었습니다. 두 건은 제외하며 이후 같은 성격의 뉴스는 조용히 무시합니다. 2번 VNET 사실관계는 유지합니다. ' 
