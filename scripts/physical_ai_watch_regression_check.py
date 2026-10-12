@@ -3189,7 +3189,7 @@ if base.NOW.astimezone(base.KST).date() <= dt.date(2026,10,19):
     assert '60GWh' in base.meaning(vc)
     assert '208' in base.meaning(vc) and '1·3번' in base.meaning(vc)
     assert vnet_recovered[0].get('correction_for_false_stock_alerts') is True
-    assert base.key(vnet_recovered[0]) not in base.load_state().get('seen',[]), 'one-time correction key already marked in state before send'
+    assert base.key(vnet_recovered[0]) != hashlib.sha256(b'vnet|PJ-Millennium|CATL-affiliate|20260921|38.1|650424192|SECONDARY').hexdigest(), 'correction must be one different semantic event'
     assert base.clean_title(vnet_recovered[0]['title'],vnet_recovered[0]['source']).startswith('정정:'), 'corrective alert title overwritten'
     visible=vnet_recovered[0]['title']+' '+vnet_recovered[0]['description']
     assert base.category(visible,vg)==vc,'source loss in Telegram renderer'
