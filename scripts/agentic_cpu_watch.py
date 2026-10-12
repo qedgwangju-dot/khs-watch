@@ -121,6 +121,26 @@ CPU_STRUCTURE_BASELINE = {
     },
     "seen_source_urls": [],
 }
+# Independent primary-source health checks, not new forecast publications.
+CPU_PRIMARY_REFERENCE_SOURCES = {
+    "bnpp_public": (
+        "bnpp_public",
+        CPU_STRUCTURE_BASELINE["bnpp_public"]["source_url"],
+        {"market_2025_usd_bn": 26.0, "market_2030_usd_bn": 220.0},
+    ),
+    "digitimes_ratio": (
+        "digitimes",
+        CPU_STRUCTURE_BASELINE["digitimes"]["cpu_xpu_ratio_source_url"],
+        {"cpu_xpu_ratio_2027": 2.3},
+    ),
+    "digitimes_shipments": (
+        "digitimes",
+        CPU_STRUCTURE_BASELINE["digitimes"]["shipments_source_url"],
+        {"ai_server_cpu_2027_million": 9.845},
+    ),
+}
+CPU_PRIMARY_AUDIT_INTERVAL_HOURS = 6
+
 CPU_STRUCTURE_SEARCHES = [
     ("google", 'site:cib.bnpparibas/ai-infrastructure agentic CPU 2030'),
     ("bing", 'site:cib.bnpparibas "data centre CPU" "2030"'),
@@ -712,12 +732,18 @@ def discover_cpu_structure(now: datetime, previous: dict, deadline: float | None
     results: list[dict] = []
     seen: set[str] = set(previous.get("seen_source_urls") or [])
     fetched = 0
+    rss_attempts = 0
+    rss_successes = 0
+    rss_failures = 0
     for kind, query in rotated_searches(CPU_STRUCTURE_SEARCHES, now):
         if deadline is not None and monotonic() >= deadline:
             break
+        rss_attempts += 1
         try:
             items = read_rss(kind, query)
+            rss_successes += 1
         except Exception:
+            rss_failures += 1
             continue
         for item in items:
             if deadline is not None and monotonic() >= deadline:
@@ -753,7 +779,65 @@ def discover_cpu_structure(now: datetime, previous: dict, deadline: float | None
                 seen.add(url)
                 results.append({"issuer": provider, "metrics": obs, "url": url, "as_of": published})
     previous["seen_source_urls"] = sorted(seen)[-100:]
+    previous["scan_health"] = {
+        "checked_at_kst": now.isoformat(timespec="seconds"),
+        "rss_attempts": rss_attempts,
+        "rss_successes": rss_successes,
+        "rss_failures": rss_failures,
+        "verified_observations": len(results),
+        "deadline_exhausted": bool(deadline is not None and monotonic() >= deadline),
+        "rss_coverage_unavailable": rss_attempts > 0 and rss_successes == 0,
+    }
     return results
+
+
+def audit_cpu_primary_evidence(now: datetime, previous: dict, deadline: float | None = None) -> dict:
+    """Log source access and provenance separately from publishable CPU revisions.
+
+    Never turn an undated edit of a historical baseline into a new forecast
+    alert. Persist unavailable/partial primary sources instead of declaring
+    an empty search successful.
+    """
+    old = previous or {}
+    checked_at = str(old.get("checked_at_kst") or "")
+    if checked_at:
+        try:
+            delta = (now - datetime.fromisoformat(checked_at)).total_seconds()
+            if 0 <= delta < CPU_PRIMARY_AUDIT_INTERVAL_HOURS * 3600:
+                return dict(old)
+        except (TypeError, ValueError):
+            pass
+    rows = {}
+    for name, (issuer, url, expected) in CPU_PRIMARY_REFERENCE_SOURCES.items():
+        if deadline is not None and monotonic() >= deadline:
+            rows[name] = {"status": "deadline_skipped", "url": url}
+            continue
+        body = article_text(url)
+        if not body:
+            rows[name] = {"status": "retrieval_unavailable", "url": url}
+            continue
+        provider, observed = cpu_structure_observation("", body, url)
+        if provider != issuer or not observed:
+            rows[name] = {"status": "claim_not_extractable", "url": url}
+            continue
+        same = [key for key in expected if key in observed
+                and abs(float(observed[key])-float(expected[key])) <= 0.0001]
+        different = [key for key in expected if key in observed
+                     and abs(float(observed[key])-float(expected[key])) > 0.0001]
+        label = (
+            "changed_requires_dated_confirmation" if different
+            else "verified_same" if len(same) == len(expected)
+            else "partial_claim_only"
+        )
+        rows[name] = {
+            "status": label, "url": url,
+            "matched_fields": same, "differing_fields": different,
+        }
+    return {
+        "checked_at_kst": now.isoformat(timespec="seconds"),
+        "sources": rows,
+        "degraded": any(row["status"] != "verified_same" for row in rows.values()),
+    }
 
 
 def cpu_structure_block(state: dict, fx: float, changes: list[str]) -> str:
@@ -1154,6 +1238,11 @@ def main() -> None:
                 "DIGITIMES 신규 공식자료의 CPU:XPU 전망 변화 · 유료 본문 상세 연도 검증 전"
             )
         structure_events.extend(changes)
+    # Audit original sources after fresh-news scans, respecting the shared
+    # CPU deadline. An inaccessible source is recorded, not silently passed.
+    structure_latest["primary_source_audit"] = audit_cpu_primary_evidence(
+        now, structure_old.get("primary_source_audit") or {}, deadline=scan_deadline
+    )
     latest["cpu_structure"] = structure_latest
     latest["cpu_structure_track_version"] = CPU_STRUCTURE_TRACK_VERSION
     # Track partial coverage explicitly; a completed Actions job does not mean
@@ -1162,6 +1251,12 @@ def main() -> None:
         "forecast_time_budget_exhausted": forecast_stage_exhausted,
         "validation_time_budget_exhausted": validation_stage_exhausted,
         "structure_time_budget_exhausted": monotonic() >= scan_deadline,
+        "structure_rss_coverage_unavailable": bool(
+            (structure_latest.get("scan_health") or {}).get("rss_coverage_unavailable")
+        ),
+        "primary_source_audit_degraded": bool(
+            (structure_latest.get("primary_source_audit") or {}).get("degraded")
+        ),
     }
 
     fx, fx_date = get_fx()

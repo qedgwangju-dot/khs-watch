@@ -857,5 +857,74 @@ class AgenticCpuStructureTests(unittest.TestCase):
 
 
 
+    def test_cpu_structure_all_rss_failures_record_degraded_coverage(self):
+        now = datetime(2026, 10, 12, 22, tzinfo=ZoneInfo("Asia/Seoul"))
+        previous = {"seen_source_urls": []}
+        with mock.patch.object(w, "read_rss", side_effect=OSError("RSS unavailable")):
+            found = w.discover_cpu_structure(now, previous)
+        self.assertEqual(found, [])
+        self.assertEqual(previous["scan_health"]["rss_attempts"], len(w.CPU_STRUCTURE_SEARCHES))
+        self.assertEqual(previous["scan_health"]["rss_successes"], 0)
+        self.assertTrue(previous["scan_health"]["rss_coverage_unavailable"])
+        self.assertEqual(previous["seen_source_urls"], [])
+
+    def test_cpu_structure_empty_but_reachable_rss_is_not_an_outage(self):
+        now = datetime(2026, 10, 12, 22, tzinfo=ZoneInfo("Asia/Seoul"))
+        previous = {"seen_source_urls": []}
+        with mock.patch.object(w, "read_rss", return_value=[]):
+            self.assertEqual(w.discover_cpu_structure(now, previous), [])
+        self.assertEqual(previous["scan_health"]["rss_successes"], len(w.CPU_STRUCTURE_SEARCHES))
+        self.assertFalse(previous["scan_health"]["rss_coverage_unavailable"])
+
+    def test_cpu_primary_source_audit_separates_failures_and_denominators(self):
+        now = datetime(2026, 10, 12, 22, tzinfo=ZoneInfo("Asia/Seoul"))
+        refs = w.CPU_PRIMARY_REFERENCE_SOURCES
+        bodies = {
+            refs["bnpp_public"][1]: (
+                "Agentic AI affects CPU demand. AMD estimates that the data centre "
+                "CPU TAM rises from around USD26 billion in 2025 to around "
+                "USD220 billion in 2030."
+            ),
+            refs["digitimes_ratio"][1]: (
+                "Agentic AI drives server CPU demand. AI server CPU : XPU "
+                "will increase to 1 : 2.3."
+            ),
+            refs["digitimes_shipments"][1]: "",
+        }
+        with mock.patch.object(w, "article_text", side_effect=lambda url: bodies[url]) as read:
+            audit = w.audit_cpu_primary_evidence(now, {})
+            repeat = w.audit_cpu_primary_evidence(now.replace(hour=23), audit)
+        self.assertEqual(read.call_count, len(refs))
+        self.assertEqual(audit["sources"]["bnpp_public"]["status"], "verified_same")
+        self.assertEqual(audit["sources"]["digitimes_ratio"]["status"], "verified_same")
+        self.assertEqual(audit["sources"]["digitimes_shipments"]["status"], "retrieval_unavailable")
+        self.assertTrue(audit["degraded"])
+        self.assertEqual(repeat, audit)
+
+    def test_cpu_primary_audit_undated_change_never_becomes_new_alert(self):
+        now = datetime(2026, 10, 12, 22, tzinfo=ZoneInfo("Asia/Seoul"))
+        with mock.patch.object(w, "article_text", return_value=(
+            "AMD estimates suggest agentic CPU market rises from USD26 billion "
+            "in 2025 to USD245 billion in 2030."
+        )):
+            audit = w.audit_cpu_primary_evidence(now, {})
+        self.assertEqual(
+            audit["sources"]["bnpp_public"]["status"],
+            "changed_requires_dated_confirmation",
+        )
+        self.assertNotIn("metrics", audit)
+        self.assertNotIn("new_alert", audit)
+
+    def test_cpu_primary_audit_deadline_skips_requests(self):
+        now = datetime(2026, 10, 12, 22, tzinfo=ZoneInfo("Asia/Seoul"))
+        with mock.patch.object(w, "article_text", side_effect=AssertionError("network after deadline")):
+            audit = w.audit_cpu_primary_evidence(now, {}, deadline=0.0)
+        self.assertTrue(audit["degraded"])
+        self.assertTrue(all(
+            row["status"] == "deadline_skipped" for row in audit["sources"].values()
+        ))
+
+
+
 if __name__ == "__main__":
     unittest.main()
