@@ -1183,6 +1183,23 @@
       "telegram_core_fact": "정부가 사회적 반발을 달래기 위해 지출을 늘리면 국채시장의 신뢰를 잃고, 반대로 긴축을 강화하면 정치·사회적 반발이 거세지는 딜레마에 빠진 것이다. 10일(현지시간) 로이터통신에 따르면 프랑스 10년 만기 국채금리는 이달 초 5%에 근접해 2002년 이후 최고 수준을 기록했다.",
       "title": "지출 늘리면 국채 신뢰 ‘흔들', 긴축땐 '민심 폭발'…佛 딜레마"
     },
+    "core:09989bbfa79091d22867db14": {
+      "first_seen_kst": "2026-10-13T04:16:15+09:00",
+      "lanes": {
+        "live": "2026-10-13T04:16:15+09:00"
+      },
+      "last_seen_kst": "2026-10-13T04:16:15+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821532",
+      "source": "뉴시스",
+      "source_body_digest": "3dccdfe5233b58b01aa0bb7f522a97217ba6ef0525464a7a7edb144c1f4efddf",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T09:11+09:00",
+      "source_title": "위너스일렉-헥사로보틱스, 웨어러블 로봇 OEM 위탁생산 계약",
+      "telegram_core_fact": "회사 측에 따르면 이번 계약으로 위너스일렉은 헥사로보틱스가 개발한 보행보조 웨어러블 로봇 시스템 'GLEGYM H40A'의 양산 공정 구축부터 핵심 모듈 생산, 완제품 정밀 조립, 출하 검사까지 전 과정을 독점 전담한다.",
+      "title": "위너스일렉-헥사로보틱스, 웨어러블 로봇 OEM 위탁생산 계약"
+    },
     "core:09d7eb942c8ebda28a5806b0": {
       "first_seen_kst": "2026-10-10T09:31:49+09:00",
       "lanes": {
@@ -14012,6 +14029,25 @@
       "telegram_core_fact": "외국인은 올해 코스피에서 약 199조원을 순매도했다. 삼성전자와 SK하이닉스 두 회사를 제외해도 순이익이 119.7% 증가했다.",
       "title": "100일간 50조원 팔았다 … 코스피, 외국인 엑소더스에 속수무책"
     },
+    "core:67d07db07c18ab44ed3e18ba": {
+      "first_seen_kst": "2026-10-13T04:16:15+09:00",
+      "lanes": {
+        "live": "2026-10-13T04:16:15+09:00"
+      },
+      "last_seen_kst": "2026-10-13T04:16:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01400566645612592&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "49c195077087581e739e939e7370bbc9038883b581e3f223e7a458833660e9f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:165f66eb2d3c0b7e05266cefe31542ea5cf113f2891a8ae38df43dba9776bd2f",
+      "source_fact_keys": [
+        "source_fact:v1:fd63ca28a7d26bcc9649e46eb3195314d4665612cb5ac39961b6ad7cc1554cef"
+      ],
+      "source_published_kst": "2026-10-13T04:00+09:00",
+      "source_title": "10월 초 수출 261억달러 신기록…반도체는 170% 뛰며 '역대 최대'",
+      "telegram_core_fact": "관세청이 발표한 ‘10월 1~10일 수출입 현황’에 따르면 이 기간 수출액은 261억 400만달러로 전년비 102.0% 증가했다.",
+      "title": "10월 초 수출 261억달러 신기록…반도체는 170% 뛰며 '역대 최대'"
+    },
     "core:67f055658976b3f107887126": {
       "first_seen_kst": "2026-10-13T00:22:20+09:00",
       "lanes": {
@@ -15829,6 +15865,25 @@
       "source_title": "국제유가, IEA 비축유 방출 가속에 하락…WTI 1.3%↓ | 연합뉴스",
       "telegram_core_fact": "국제에너지기구(IEA)가 비축유 방출을 앞당기기로 하면서 7일(현지시간) 국제유가가 하락했다.",
       "title": "국제유가, IEA 비축유 방출 가속에 하락…WTI 1.3%↓ | 연합뉴스"
+    },
+    "core:76c81f438c7b19ffb94c61ce": {
+      "first_seen_kst": "2026-10-13T04:16:15+09:00",
+      "lanes": {
+        "live": "2026-10-13T04:16:15+09:00"
+      },
+      "last_seen_kst": "2026-10-13T04:16:15+09:00",
+      "link": "https://www.mk.co.kr/news/world/12173986",
+      "source": "매일경제",
+      "source_body_digest": "1baad53074b770aea7692b0fa11e4517b66adb2cc72e89df86ee06582aac66cf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ee6ace10213fdfbc544b0f61d43e0052f5b8fae1d33c79c1ce59444c752a5fc8",
+      "source_fact_keys": [
+        "source_fact:v1:48fc64d0bda8b1d592a8a42107273ccdf7eeb564f88e02ca8bcdda09407edcea"
+      ],
+      "source_published_kst": "2026-10-12T18:53+09:00",
+      "source_title": "[속보] 올해 노벨경제학상에 로버트 홀 스탠포드대 교수·마이클 우드포드 컬럼비아대 교수",
+      "telegram_core_fact": "올해 노벨경제학상은 경기 침체와 물가 상승 등 경제 불안을 줄이기 위한 거시경제 이론 발전에 기여한 미국 경제학자 2명에게 돌아갔다.",
+      "title": "[속보] 올해 노벨경제학상에 로버트 홀 스탠포드대 교수·마이클 우드포드 컬럼비아대 교수"
     },
     "core:77acc91b7bd796f0525a345e": {
       "first_seen_kst": "2026-10-12T15:20:09+09:00",
@@ -27101,6 +27156,28 @@
       "source_title": "'107조 잭팟' 삼성전자, '63만전자' 시동거나",
       "telegram_core_fact": "금융투자업계에 따르면 삼성전자는 올해 3분기 잠정 실적으로 연결 기준 매출액 195조원, 영업이익 107조4000억 원(약 803억 달러)을 기록했다.",
       "title": "'107조 잭팟' 삼성전자, '63만전자' 시동거나"
+    },
+    "core:cb1860a7dccaf95c717bb936": {
+      "first_seen_kst": "2026-10-13T04:16:15+09:00",
+      "lanes": {
+        "live": "2026-10-13T04:16:15+09:00"
+      },
+      "last_seen_kst": "2026-10-13T04:16:15+09:00",
+      "link": "https://www.etnews.com/20261012000029",
+      "source": "전자신문",
+      "source_body_digest": "9c19c87be0b1b97c0cccff5320e4d51699fb08f72931e5ab1f18639edad1825a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22f666afa3065cc03be5775c1dc8dd0f39f1b4f78653f42c2ce9aace7d26f062",
+      "source_fact_keys": [
+        "source_fact:v1:07d6e6666c91d211bc26adc508a1ef1f2842be3372ddc95a01804d350fb63f43",
+        "source_fact:v1:089fc1ea5be997ca80db0c846f0a0a0c2669b0a3480a35c3c29d40cbae2f281c",
+        "source_fact:v1:19aa2ce8e011bfdcdad59521d703cf3c0523f7887287c18c34900f658b9b607f",
+        "source_fact:v1:bf69f036aa36e5902563c9bea178687db55685b790bad51e99281e7eaedc1d70"
+      ],
+      "source_published_kst": "2026-10-12T09:31+09:00",
+      "source_title": "풀무원, '특등급 국산콩 두유 서리태' 출시…원액두유 96.37% 함유",
+      "telegram_core_fact": "특등급 국산콩 두유는 출시 두 달여 만에 누적 판매량 120만개를 돌파하면서 수요 증가에 대응해 생산량을 기존 대비 5배로 확대하기도 했다.",
+      "title": "풀무원, '특등급 국산콩 두유 서리태' 출시…원액두유 96.37% 함유"
     },
     "core:cb3633a8ac080a7526a7984d": {
       "first_seen_kst": "2026-10-08T01:09:29+09:00",
@@ -43110,6 +43187,25 @@
       "source_published_kst": "2026-10-04T13:00+09:00",
       "title": "건어물 팔던 나라서 반도체 수출국으로…韓수출 1조弗 눈앞 [세쓸통]"
     },
+    "event:ca027943d1fbf3b91ed85149": {
+      "first_seen_kst": "2026-10-13T04:16:15+09:00",
+      "lanes": {
+        "live": "2026-10-13T04:16:15+09:00"
+      },
+      "last_seen_kst": "2026-10-13T04:16:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01400566645612592&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "49c195077087581e739e939e7370bbc9038883b581e3f223e7a458833660e9f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:165f66eb2d3c0b7e05266cefe31542ea5cf113f2891a8ae38df43dba9776bd2f",
+      "source_fact_keys": [
+        "source_fact:v1:fd63ca28a7d26bcc9649e46eb3195314d4665612cb5ac39961b6ad7cc1554cef"
+      ],
+      "source_published_kst": "2026-10-13T04:00+09:00",
+      "source_title": "10월 초 수출 261억달러 신기록…반도체는 170% 뛰며 '역대 최대'",
+      "telegram_core_fact": "관세청이 발표한 ‘10월 1~10일 수출입 현황’에 따르면 이 기간 수출액은 261억 400만달러로 전년비 102.0% 증가했다.",
+      "title": "10월 초 수출 261억달러 신기록…반도체는 170% 뛰며 '역대 최대'"
+    },
     "event:ca5510beb04d02929a86011b": {
       "first_seen_kst": "2026-09-22T17:04:40+09:00",
       "lanes": {
@@ -49636,6 +49732,28 @@
       "source_title": "미래운용, '스테이트타워 남산' 매각 검토…KIC 등 입주",
       "telegram_core_fact": "현재 복수의 부동산 자문사를 대상으로 매각 주관사 선정 절차를 진행 중인 초기 단계로, 입찰제안요청서(RFP)는 아직 배포하지 않았다.",
       "title": "미래운용, '스테이트타워 남산' 매각 검토…KIC 등 입주"
+    },
+    "fact:156034b936b9452e724b38ec": {
+      "first_seen_kst": "2026-10-13T04:16:15+09:00",
+      "lanes": {
+        "live": "2026-10-13T04:16:15+09:00"
+      },
+      "last_seen_kst": "2026-10-13T04:16:15+09:00",
+      "link": "https://www.etnews.com/20261012000029",
+      "source": "전자신문",
+      "source_body_digest": "9c19c87be0b1b97c0cccff5320e4d51699fb08f72931e5ab1f18639edad1825a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22f666afa3065cc03be5775c1dc8dd0f39f1b4f78653f42c2ce9aace7d26f062",
+      "source_fact_keys": [
+        "source_fact:v1:07d6e6666c91d211bc26adc508a1ef1f2842be3372ddc95a01804d350fb63f43",
+        "source_fact:v1:089fc1ea5be997ca80db0c846f0a0a0c2669b0a3480a35c3c29d40cbae2f281c",
+        "source_fact:v1:19aa2ce8e011bfdcdad59521d703cf3c0523f7887287c18c34900f658b9b607f",
+        "source_fact:v1:bf69f036aa36e5902563c9bea178687db55685b790bad51e99281e7eaedc1d70"
+      ],
+      "source_published_kst": "2026-10-12T09:31+09:00",
+      "source_title": "풀무원, '특등급 국산콩 두유 서리태' 출시…원액두유 96.37% 함유",
+      "telegram_core_fact": "특등급 국산콩 두유는 출시 두 달여 만에 누적 판매량 120만개를 돌파하면서 수요 증가에 대응해 생산량을 기존 대비 5배로 확대하기도 했다.",
+      "title": "풀무원, '특등급 국산콩 두유 서리태' 출시…원액두유 96.37% 함유"
     },
     "fact:1569e25af5877d2c1cc678a9": {
       "first_seen_kst": "2026-10-09T21:11:52+09:00",
@@ -63628,6 +63746,25 @@
       "source_title": "이 대통령, 누리호 5차 발사 성공 축하…\"우주 주권 한층 가까워져\"",
       "telegram_core_fact": "이재명 대통령이 7일 한국형 발사체 누리호 5차 발사가 성공한 데 대해 \"정부가 우주 발사를 적극적으로 지원한 성과\"라고 평가하며 \"향후 발사 주기를 더욱 앞당겨 위성체 기술 발전에 박차를 가할 것\"이라고 밝혔다.",
       "title": "이 대통령, 누리호 5차 발사 성공 축하…\"우주 주권 한층 가까워져\""
+    },
+    "fact:634c41aeb50d829661c1ea92": {
+      "first_seen_kst": "2026-10-13T04:16:15+09:00",
+      "lanes": {
+        "live": "2026-10-13T04:16:15+09:00"
+      },
+      "last_seen_kst": "2026-10-13T04:16:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01400566645612592&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "49c195077087581e739e939e7370bbc9038883b581e3f223e7a458833660e9f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:165f66eb2d3c0b7e05266cefe31542ea5cf113f2891a8ae38df43dba9776bd2f",
+      "source_fact_keys": [
+        "source_fact:v1:fd63ca28a7d26bcc9649e46eb3195314d4665612cb5ac39961b6ad7cc1554cef"
+      ],
+      "source_published_kst": "2026-10-13T04:00+09:00",
+      "source_title": "10월 초 수출 261억달러 신기록…반도체는 170% 뛰며 '역대 최대'",
+      "telegram_core_fact": "관세청이 발표한 ‘10월 1~10일 수출입 현황’에 따르면 이 기간 수출액은 261억 400만달러로 전년비 102.0% 증가했다.",
+      "title": "10월 초 수출 261억달러 신기록…반도체는 170% 뛰며 '역대 최대'"
     },
     "fact:63564361137dbec4e9a8c29a": {
       "first_seen_kst": "2026-10-05T20:04:01+09:00",
@@ -93908,6 +94045,25 @@
       "source_published_kst": "2026-10-07T09:26+09:00",
       "title": "KGM, 액티언 구매자 10명 중 8명 ‘하이브리드’ 선택"
     },
+    "fact:fda29018739dc14ca2875259": {
+      "first_seen_kst": "2026-10-13T04:16:15+09:00",
+      "lanes": {
+        "live": "2026-10-13T04:16:15+09:00"
+      },
+      "last_seen_kst": "2026-10-13T04:16:15+09:00",
+      "link": "https://www.mk.co.kr/news/world/12173986",
+      "source": "매일경제",
+      "source_body_digest": "1baad53074b770aea7692b0fa11e4517b66adb2cc72e89df86ee06582aac66cf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ee6ace10213fdfbc544b0f61d43e0052f5b8fae1d33c79c1ce59444c752a5fc8",
+      "source_fact_keys": [
+        "source_fact:v1:48fc64d0bda8b1d592a8a42107273ccdf7eeb564f88e02ca8bcdda09407edcea"
+      ],
+      "source_published_kst": "2026-10-12T18:53+09:00",
+      "source_title": "[속보] 올해 노벨경제학상에 로버트 홀 스탠포드대 교수·마이클 우드포드 컬럼비아대 교수",
+      "telegram_core_fact": "올해 노벨경제학상은 경기 침체와 물가 상승 등 경제 불안을 줄이기 위한 거시경제 이론 발전에 기여한 미국 경제학자 2명에게 돌아갔다.",
+      "title": "[속보] 올해 노벨경제학상에 로버트 홀 스탠포드대 교수·마이클 우드포드 컬럼비아대 교수"
+    },
     "fact:fdc4a1a3c5ba0fa41ccd323e": {
       "first_seen_kst": "2026-10-06T16:52:01+09:00",
       "lanes": {
@@ -110746,6 +110902,25 @@
       "telegram_core_fact": "9월 수치에는 CPC 에어로포르투스 인수 완료 이후 처음으로 한 달 전체가 반영된 브라질, 코스타리카, 퀴라소, 에콰도르 공항의 여객 약 390만 명이 포함됐다.",
       "title": "사우스이스트 에어포트 그룹, 9월 여객 866만명 전년 수준…멕시코 6%↓"
     },
+    "link:3ade149e2a7fc87fd1354812": {
+      "first_seen_kst": "2026-10-13T04:16:15+09:00",
+      "lanes": {
+        "live": "2026-10-13T04:16:15+09:00"
+      },
+      "last_seen_kst": "2026-10-13T04:16:15+09:00",
+      "link": "https://www.mk.co.kr/news/world/12173986",
+      "source": "매일경제",
+      "source_body_digest": "1baad53074b770aea7692b0fa11e4517b66adb2cc72e89df86ee06582aac66cf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ee6ace10213fdfbc544b0f61d43e0052f5b8fae1d33c79c1ce59444c752a5fc8",
+      "source_fact_keys": [
+        "source_fact:v1:48fc64d0bda8b1d592a8a42107273ccdf7eeb564f88e02ca8bcdda09407edcea"
+      ],
+      "source_published_kst": "2026-10-12T18:53+09:00",
+      "source_title": "[속보] 올해 노벨경제학상에 로버트 홀 스탠포드대 교수·마이클 우드포드 컬럼비아대 교수",
+      "telegram_core_fact": "올해 노벨경제학상은 경기 침체와 물가 상승 등 경제 불안을 줄이기 위한 거시경제 이론 발전에 기여한 미국 경제학자 2명에게 돌아갔다.",
+      "title": "[속보] 올해 노벨경제학상에 로버트 홀 스탠포드대 교수·마이클 우드포드 컬럼비아대 교수"
+    },
     "link:3ae23428bce5e19ce59e2f7c": {
       "first_seen_kst": "2026-10-06T21:28:22+09:00",
       "lanes": {
@@ -116500,6 +116675,28 @@
       "telegram_core_fact": "한국수자원공사(한수원)가 용인 반도체 국가산단에 하루 107.2만톤의 공업용수를 공급하기 위해 추진 중인 이 사업은 팔당댐에서 수도권으로 향하는 하남 도수관 분기점에 서 광주를 거쳐 용인 국가산단까지 46.9km 길이의 관로를 신설한다.",
       "title": "용인은 돈벼락, 하남·광주는 물벼락..\"희생만 강요\""
     },
+    "link:5119b8b3d45d7167e975ca47": {
+      "first_seen_kst": "2026-10-13T04:16:15+09:00",
+      "lanes": {
+        "live": "2026-10-13T04:16:15+09:00"
+      },
+      "last_seen_kst": "2026-10-13T04:16:15+09:00",
+      "link": "https://www.etnews.com/20261012000029",
+      "source": "전자신문",
+      "source_body_digest": "9c19c87be0b1b97c0cccff5320e4d51699fb08f72931e5ab1f18639edad1825a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22f666afa3065cc03be5775c1dc8dd0f39f1b4f78653f42c2ce9aace7d26f062",
+      "source_fact_keys": [
+        "source_fact:v1:07d6e6666c91d211bc26adc508a1ef1f2842be3372ddc95a01804d350fb63f43",
+        "source_fact:v1:089fc1ea5be997ca80db0c846f0a0a0c2669b0a3480a35c3c29d40cbae2f281c",
+        "source_fact:v1:19aa2ce8e011bfdcdad59521d703cf3c0523f7887287c18c34900f658b9b607f",
+        "source_fact:v1:bf69f036aa36e5902563c9bea178687db55685b790bad51e99281e7eaedc1d70"
+      ],
+      "source_published_kst": "2026-10-12T09:31+09:00",
+      "source_title": "풀무원, '특등급 국산콩 두유 서리태' 출시…원액두유 96.37% 함유",
+      "telegram_core_fact": "특등급 국산콩 두유는 출시 두 달여 만에 누적 판매량 120만개를 돌파하면서 수요 증가에 대응해 생산량을 기존 대비 5배로 확대하기도 했다.",
+      "title": "풀무원, '특등급 국산콩 두유 서리태' 출시…원액두유 96.37% 함유"
+    },
     "link:51268886d46b6123e3b519cf": {
       "first_seen_kst": "2026-10-13T03:12:47+09:00",
       "lanes": {
@@ -118962,6 +119159,25 @@
       ],
       "source_published_kst": "2026-10-05T21:20+09:00",
       "title": "이 대통령 \"부동산투기공화국 탈출 약속 반드시 지킬 것\"…하루에만 SNS 11건(종합2보)"
+    },
+    "link:5a50d9f2fde4f24a795ddaf2": {
+      "first_seen_kst": "2026-10-13T04:16:15+09:00",
+      "lanes": {
+        "live": "2026-10-13T04:16:15+09:00"
+      },
+      "last_seen_kst": "2026-10-13T04:16:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01400566645612592&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "49c195077087581e739e939e7370bbc9038883b581e3f223e7a458833660e9f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:165f66eb2d3c0b7e05266cefe31542ea5cf113f2891a8ae38df43dba9776bd2f",
+      "source_fact_keys": [
+        "source_fact:v1:fd63ca28a7d26bcc9649e46eb3195314d4665612cb5ac39961b6ad7cc1554cef"
+      ],
+      "source_published_kst": "2026-10-13T04:00+09:00",
+      "source_title": "10월 초 수출 261억달러 신기록…반도체는 170% 뛰며 '역대 최대'",
+      "telegram_core_fact": "관세청이 발표한 ‘10월 1~10일 수출입 현황’에 따르면 이 기간 수출액은 261억 400만달러로 전년비 102.0% 증가했다.",
+      "title": "10월 초 수출 261억달러 신기록…반도체는 170% 뛰며 '역대 최대'"
     },
     "link:5a69c297194d33c7373afbdf": {
       "first_seen_kst": "2026-09-27T02:12:48+09:00",
@@ -129348,6 +129564,25 @@
       "source": "지디넷코리아",
       "source_event_identity": "",
       "title": "마이크론, D램 2위 SK하이닉스 턱밑 추격…점유율 격차 1%포인트"
+    },
+    "link:7f7044f342b93ccc1f7e5676": {
+      "first_seen_kst": "2026-10-13T04:16:15+09:00",
+      "lanes": {
+        "live": "2026-10-13T04:16:15+09:00"
+      },
+      "last_seen_kst": "2026-10-13T04:16:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01400566645612592&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "49c195077087581e739e939e7370bbc9038883b581e3f223e7a458833660e9f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:165f66eb2d3c0b7e05266cefe31542ea5cf113f2891a8ae38df43dba9776bd2f",
+      "source_fact_keys": [
+        "source_fact:v1:fd63ca28a7d26bcc9649e46eb3195314d4665612cb5ac39961b6ad7cc1554cef"
+      ],
+      "source_published_kst": "2026-10-13T04:00+09:00",
+      "source_title": "10월 초 수출 261억달러 신기록…반도체는 170% 뛰며 '역대 최대'",
+      "telegram_core_fact": "관세청이 발표한 ‘10월 1~10일 수출입 현황’에 따르면 이 기간 수출액은 261억 400만달러로 전년비 102.0% 증가했다.",
+      "title": "10월 초 수출 261억달러 신기록…반도체는 170% 뛰며 '역대 최대'"
     },
     "link:7f71effee6a4520bada327d5": {
       "first_seen_kst": "2026-10-11T09:08:30+09:00",
@@ -155539,6 +155774,23 @@
       "link": "https://www.etnews.com/20261001000430",
       "source": "전자신문",
       "title": "'반복 산재 땐 영업이익 5% 과징금'…산안법, 野 반대에도 본회의 통과"
+    },
+    "link:e068acef50b73b3a5d61c528": {
+      "first_seen_kst": "2026-10-13T04:16:15+09:00",
+      "lanes": {
+        "live": "2026-10-13T04:16:15+09:00"
+      },
+      "last_seen_kst": "2026-10-13T04:16:15+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821532",
+      "source": "뉴시스",
+      "source_body_digest": "3dccdfe5233b58b01aa0bb7f522a97217ba6ef0525464a7a7edb144c1f4efddf",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T09:11+09:00",
+      "source_title": "위너스일렉-헥사로보틱스, 웨어러블 로봇 OEM 위탁생산 계약",
+      "telegram_core_fact": "회사 측에 따르면 이번 계약으로 위너스일렉은 헥사로보틱스가 개발한 보행보조 웨어러블 로봇 시스템 'GLEGYM H40A'의 양산 공정 구축부터 핵심 모듈 생산, 완제품 정밀 조립, 출하 검사까지 전 과정을 독점 전담한다.",
+      "title": "위너스일렉-헥사로보틱스, 웨어러블 로봇 OEM 위탁생산 계약"
     },
     "link:e06c67c5e1afc56facf949c3": {
       "first_seen_kst": "2026-10-05T15:49:55+09:00",
@@ -198839,6 +199091,28 @@
       "telegram_core_fact": "이날 하루 판매액은 약 758억원으로, 이날부터 서민 우선배정 물량 및 온라인 판매 비중 제한이 사라지며 판매량이 크게 증가했다.",
       "title": "2차 국민성장펀드, 물량 3분의 2 소진….4060억원 판매"
     },
+    "original:836d95050089ceb3837f3dd2": {
+      "first_seen_kst": "2026-10-13T04:16:15+09:00",
+      "lanes": {
+        "live": "2026-10-13T04:16:15+09:00"
+      },
+      "last_seen_kst": "2026-10-13T04:16:15+09:00",
+      "link": "https://www.etnews.com/20261012000029",
+      "source": "전자신문",
+      "source_body_digest": "9c19c87be0b1b97c0cccff5320e4d51699fb08f72931e5ab1f18639edad1825a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22f666afa3065cc03be5775c1dc8dd0f39f1b4f78653f42c2ce9aace7d26f062",
+      "source_fact_keys": [
+        "source_fact:v1:07d6e6666c91d211bc26adc508a1ef1f2842be3372ddc95a01804d350fb63f43",
+        "source_fact:v1:089fc1ea5be997ca80db0c846f0a0a0c2669b0a3480a35c3c29d40cbae2f281c",
+        "source_fact:v1:19aa2ce8e011bfdcdad59521d703cf3c0523f7887287c18c34900f658b9b607f",
+        "source_fact:v1:bf69f036aa36e5902563c9bea178687db55685b790bad51e99281e7eaedc1d70"
+      ],
+      "source_published_kst": "2026-10-12T09:31+09:00",
+      "source_title": "풀무원, '특등급 국산콩 두유 서리태' 출시…원액두유 96.37% 함유",
+      "telegram_core_fact": "특등급 국산콩 두유는 출시 두 달여 만에 누적 판매량 120만개를 돌파하면서 수요 증가에 대응해 생산량을 기존 대비 5배로 확대하기도 했다.",
+      "title": "풀무원, '특등급 국산콩 두유 서리태' 출시…원액두유 96.37% 함유"
+    },
     "original:839d3c1ed6a5b45d5d2c5d4e": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
       "lanes": {
@@ -202153,6 +202427,25 @@
       ],
       "source_published_kst": "2026-10-07T06:25+09:00",
       "title": "국제유가, 후티 반격ㆍ중동 수출 증가 놓고 강보합⋯WTI 0.01%↑ [상보]"
+    },
+    "original:8f6eb1fd2adc9b941696c8d7": {
+      "first_seen_kst": "2026-10-13T04:16:15+09:00",
+      "lanes": {
+        "live": "2026-10-13T04:16:15+09:00"
+      },
+      "last_seen_kst": "2026-10-13T04:16:15+09:00",
+      "link": "https://www.mk.co.kr/news/world/12173986",
+      "source": "매일경제",
+      "source_body_digest": "1baad53074b770aea7692b0fa11e4517b66adb2cc72e89df86ee06582aac66cf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ee6ace10213fdfbc544b0f61d43e0052f5b8fae1d33c79c1ce59444c752a5fc8",
+      "source_fact_keys": [
+        "source_fact:v1:48fc64d0bda8b1d592a8a42107273ccdf7eeb564f88e02ca8bcdda09407edcea"
+      ],
+      "source_published_kst": "2026-10-12T18:53+09:00",
+      "source_title": "[속보] 올해 노벨경제학상에 로버트 홀 스탠포드대 교수·마이클 우드포드 컬럼비아대 교수",
+      "telegram_core_fact": "올해 노벨경제학상은 경기 침체와 물가 상승 등 경제 불안을 줄이기 위한 거시경제 이론 발전에 기여한 미국 경제학자 2명에게 돌아갔다.",
+      "title": "[속보] 올해 노벨경제학상에 로버트 홀 스탠포드대 교수·마이클 우드포드 컬럼비아대 교수"
     },
     "original:8f86af5f5b89f8708a095226": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
@@ -224038,6 +224331,23 @@
       "source": "매일경제",
       "title": "주가 상승 챙기고 배당금도 꼬박꼬박 … 고정커버드콜 인기"
     },
+    "original:e26c5329c40eac3cac427475": {
+      "first_seen_kst": "2026-10-13T04:16:15+09:00",
+      "lanes": {
+        "live": "2026-10-13T04:16:15+09:00"
+      },
+      "last_seen_kst": "2026-10-13T04:16:15+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821532",
+      "source": "뉴시스",
+      "source_body_digest": "3dccdfe5233b58b01aa0bb7f522a97217ba6ef0525464a7a7edb144c1f4efddf",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T09:11+09:00",
+      "source_title": "위너스일렉-헥사로보틱스, 웨어러블 로봇 OEM 위탁생산 계약",
+      "telegram_core_fact": "회사 측에 따르면 이번 계약으로 위너스일렉은 헥사로보틱스가 개발한 보행보조 웨어러블 로봇 시스템 'GLEGYM H40A'의 양산 공정 구축부터 핵심 모듈 생산, 완제품 정밀 조립, 출하 검사까지 전 과정을 독점 전담한다.",
+      "title": "위너스일렉-헥사로보틱스, 웨어러블 로봇 OEM 위탁생산 계약"
+    },
     "original:e27b49c07d1bdfed3e507308": {
       "first_seen_kst": "2026-10-10T05:10:14+09:00",
       "lanes": {
@@ -224122,6 +224432,25 @@
       "source": "매일경제",
       "source_event_identity": "",
       "title": "네비우스, 인퍼라이즈 인수로 AI 추론 스택 확장 나서"
+    },
+    "original:e2c557443ed0d0ee57cf66c8": {
+      "first_seen_kst": "2026-10-13T04:16:15+09:00",
+      "lanes": {
+        "live": "2026-10-13T04:16:15+09:00"
+      },
+      "last_seen_kst": "2026-10-13T04:16:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01400566645612592&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "49c195077087581e739e939e7370bbc9038883b581e3f223e7a458833660e9f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:165f66eb2d3c0b7e05266cefe31542ea5cf113f2891a8ae38df43dba9776bd2f",
+      "source_fact_keys": [
+        "source_fact:v1:fd63ca28a7d26bcc9649e46eb3195314d4665612cb5ac39961b6ad7cc1554cef"
+      ],
+      "source_published_kst": "2026-10-13T04:00+09:00",
+      "source_title": "10월 초 수출 261억달러 신기록…반도체는 170% 뛰며 '역대 최대'",
+      "telegram_core_fact": "관세청이 발표한 ‘10월 1~10일 수출입 현황’에 따르면 이 기간 수출액은 261억 400만달러로 전년비 102.0% 증가했다.",
+      "title": "10월 초 수출 261억달러 신기록…반도체는 170% 뛰며 '역대 최대'"
     },
     "original:e2d34c4c8bf9b4c3912e34fa": {
       "first_seen_kst": "2026-10-06T15:44:02+09:00",
@@ -233642,6 +233971,25 @@
       ],
       "source_published_kst": "2026-10-07T14:38+09:00",
       "title": "삼보산업, 중동 전쟁에 알루미늄 판가 상승…장기화 땐 수익성 개선 긍정"
+    },
+    "source_fact:028386477a73e4a076c0b433": {
+      "first_seen_kst": "2026-10-13T04:16:15+09:00",
+      "lanes": {
+        "live": "2026-10-13T04:16:15+09:00"
+      },
+      "last_seen_kst": "2026-10-13T04:16:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01400566645612592&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "49c195077087581e739e939e7370bbc9038883b581e3f223e7a458833660e9f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:165f66eb2d3c0b7e05266cefe31542ea5cf113f2891a8ae38df43dba9776bd2f",
+      "source_fact_keys": [
+        "source_fact:v1:fd63ca28a7d26bcc9649e46eb3195314d4665612cb5ac39961b6ad7cc1554cef"
+      ],
+      "source_published_kst": "2026-10-13T04:00+09:00",
+      "source_title": "10월 초 수출 261억달러 신기록…반도체는 170% 뛰며 '역대 최대'",
+      "telegram_core_fact": "관세청이 발표한 ‘10월 1~10일 수출입 현황’에 따르면 이 기간 수출액은 261억 400만달러로 전년비 102.0% 증가했다.",
+      "title": "10월 초 수출 261억달러 신기록…반도체는 170% 뛰며 '역대 최대'"
     },
     "source_fact:028a1a8bb0d1e8078a250f5c": {
       "first_seen_kst": "2026-10-07T04:29:18+09:00",
@@ -286078,6 +286426,28 @@
       "telegram_core_fact": "예멘 친이란 반군 후티는 리야드 공항뿐 아니라 사우디 동부 공항과 석유·가스시설까지 공격했다고 주장하면서 양측의 충돌이 빠르게 확산하고 있다. 11일(현지시간) 로이터통신 등에 따르면 사우디 주도 연합군은 정체불명의 발사체가 킹칼리드 국제공항 제4터미널을 타격해 화재가 발생했다고 밝혔다.",
       "title": "사우디 리야드 공항 또 피격…후티 “석유·가스시설도 타격”"
     },
+    "source_fact:3a34a3ae610dc723fd2d69de": {
+      "first_seen_kst": "2026-10-13T04:16:15+09:00",
+      "lanes": {
+        "live": "2026-10-13T04:16:15+09:00"
+      },
+      "last_seen_kst": "2026-10-13T04:16:15+09:00",
+      "link": "https://www.etnews.com/20261012000029",
+      "source": "전자신문",
+      "source_body_digest": "9c19c87be0b1b97c0cccff5320e4d51699fb08f72931e5ab1f18639edad1825a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22f666afa3065cc03be5775c1dc8dd0f39f1b4f78653f42c2ce9aace7d26f062",
+      "source_fact_keys": [
+        "source_fact:v1:07d6e6666c91d211bc26adc508a1ef1f2842be3372ddc95a01804d350fb63f43",
+        "source_fact:v1:089fc1ea5be997ca80db0c846f0a0a0c2669b0a3480a35c3c29d40cbae2f281c",
+        "source_fact:v1:19aa2ce8e011bfdcdad59521d703cf3c0523f7887287c18c34900f658b9b607f",
+        "source_fact:v1:bf69f036aa36e5902563c9bea178687db55685b790bad51e99281e7eaedc1d70"
+      ],
+      "source_published_kst": "2026-10-12T09:31+09:00",
+      "source_title": "풀무원, '특등급 국산콩 두유 서리태' 출시…원액두유 96.37% 함유",
+      "telegram_core_fact": "특등급 국산콩 두유는 출시 두 달여 만에 누적 판매량 120만개를 돌파하면서 수요 증가에 대응해 생산량을 기존 대비 5배로 확대하기도 했다.",
+      "title": "풀무원, '특등급 국산콩 두유 서리태' 출시…원액두유 96.37% 함유"
+    },
     "source_fact:3a3b6b9d75878904de012071": {
       "first_seen_kst": "2026-10-07T18:12:46+09:00",
       "lanes": {
@@ -303004,6 +303374,25 @@
       "source_title": "어라이브 AI, 유닛당 0.65달러 직접투자 유치..213% 프리미엄",
       "telegram_core_fact": "어라이브 AI(ARAI)가 최근 거래가격 0.2075달러보다 약 213% 높은 유닛당 0.65달러에 미국 소재 특화 민간 투자회사로부터 25만 달러 직접투자를 유치했다고 9일(현지시간) 발표했다. 증권가 컨센서스에 따르면 어라이브 AI의 2026년 예상 매출액은 10만 달러로 전년 대비 11.7% 감소할 것으로 전망된다.",
       "title": "어라이브 AI, 유닛당 0.65달러 직접투자 유치..213% 프리미엄"
+    },
+    "source_fact:4c4b35a8ef6b4f3408a06508": {
+      "first_seen_kst": "2026-10-13T04:16:15+09:00",
+      "lanes": {
+        "live": "2026-10-13T04:16:15+09:00"
+      },
+      "last_seen_kst": "2026-10-13T04:16:15+09:00",
+      "link": "https://www.mk.co.kr/news/world/12173986",
+      "source": "매일경제",
+      "source_body_digest": "1baad53074b770aea7692b0fa11e4517b66adb2cc72e89df86ee06582aac66cf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ee6ace10213fdfbc544b0f61d43e0052f5b8fae1d33c79c1ce59444c752a5fc8",
+      "source_fact_keys": [
+        "source_fact:v1:48fc64d0bda8b1d592a8a42107273ccdf7eeb564f88e02ca8bcdda09407edcea"
+      ],
+      "source_published_kst": "2026-10-12T18:53+09:00",
+      "source_title": "[속보] 올해 노벨경제학상에 로버트 홀 스탠포드대 교수·마이클 우드포드 컬럼비아대 교수",
+      "telegram_core_fact": "올해 노벨경제학상은 경기 침체와 물가 상승 등 경제 불안을 줄이기 위한 거시경제 이론 발전에 기여한 미국 경제학자 2명에게 돌아갔다.",
+      "title": "[속보] 올해 노벨경제학상에 로버트 홀 스탠포드대 교수·마이클 우드포드 컬럼비아대 교수"
     },
     "source_fact:4c4cc5bfe7af96f6f5e45c21": {
       "first_seen_kst": "2026-10-08T03:26:42+09:00",
@@ -339044,6 +339433,28 @@
       "source_title": "금융지주, 상반기 순익 17.6조원…비은행 성장 속 건전성은 악화",
       "telegram_core_fact": "올해 상반기 금융지주회사 순이익이 금융투자 등 비은행 부문 호조에 힘입어 전년 동기보다 13.7% 증가했다.",
       "title": "금융지주, 상반기 순익 17.6조원…비은행 성장 속 건전성은 악화"
+    },
+    "source_fact:72f5fc6cd007893be4fcf7fe": {
+      "first_seen_kst": "2026-10-13T04:16:15+09:00",
+      "lanes": {
+        "live": "2026-10-13T04:16:15+09:00"
+      },
+      "last_seen_kst": "2026-10-13T04:16:15+09:00",
+      "link": "https://www.etnews.com/20261012000029",
+      "source": "전자신문",
+      "source_body_digest": "9c19c87be0b1b97c0cccff5320e4d51699fb08f72931e5ab1f18639edad1825a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22f666afa3065cc03be5775c1dc8dd0f39f1b4f78653f42c2ce9aace7d26f062",
+      "source_fact_keys": [
+        "source_fact:v1:07d6e6666c91d211bc26adc508a1ef1f2842be3372ddc95a01804d350fb63f43",
+        "source_fact:v1:089fc1ea5be997ca80db0c846f0a0a0c2669b0a3480a35c3c29d40cbae2f281c",
+        "source_fact:v1:19aa2ce8e011bfdcdad59521d703cf3c0523f7887287c18c34900f658b9b607f",
+        "source_fact:v1:bf69f036aa36e5902563c9bea178687db55685b790bad51e99281e7eaedc1d70"
+      ],
+      "source_published_kst": "2026-10-12T09:31+09:00",
+      "source_title": "풀무원, '특등급 국산콩 두유 서리태' 출시…원액두유 96.37% 함유",
+      "telegram_core_fact": "특등급 국산콩 두유는 출시 두 달여 만에 누적 판매량 120만개를 돌파하면서 수요 증가에 대응해 생산량을 기존 대비 5배로 확대하기도 했다.",
+      "title": "풀무원, '특등급 국산콩 두유 서리태' 출시…원액두유 96.37% 함유"
     },
     "source_fact:7302e548a7a3e3875c3264b0": {
       "first_seen_kst": "2026-10-12T06:27:02+09:00",
@@ -434590,6 +435001,28 @@
       "source_published_kst": "2026-10-06T04:36+09:00",
       "title": "美10년물 국채금리 장중 5.34% 돌파…24년 만에 최고"
     },
+    "source_fact:da6f74c6c5c54ac424bea117": {
+      "first_seen_kst": "2026-10-13T04:16:15+09:00",
+      "lanes": {
+        "live": "2026-10-13T04:16:15+09:00"
+      },
+      "last_seen_kst": "2026-10-13T04:16:15+09:00",
+      "link": "https://www.etnews.com/20261012000029",
+      "source": "전자신문",
+      "source_body_digest": "9c19c87be0b1b97c0cccff5320e4d51699fb08f72931e5ab1f18639edad1825a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22f666afa3065cc03be5775c1dc8dd0f39f1b4f78653f42c2ce9aace7d26f062",
+      "source_fact_keys": [
+        "source_fact:v1:07d6e6666c91d211bc26adc508a1ef1f2842be3372ddc95a01804d350fb63f43",
+        "source_fact:v1:089fc1ea5be997ca80db0c846f0a0a0c2669b0a3480a35c3c29d40cbae2f281c",
+        "source_fact:v1:19aa2ce8e011bfdcdad59521d703cf3c0523f7887287c18c34900f658b9b607f",
+        "source_fact:v1:bf69f036aa36e5902563c9bea178687db55685b790bad51e99281e7eaedc1d70"
+      ],
+      "source_published_kst": "2026-10-12T09:31+09:00",
+      "source_title": "풀무원, '특등급 국산콩 두유 서리태' 출시…원액두유 96.37% 함유",
+      "telegram_core_fact": "특등급 국산콩 두유는 출시 두 달여 만에 누적 판매량 120만개를 돌파하면서 수요 증가에 대응해 생산량을 기존 대비 5배로 확대하기도 했다.",
+      "title": "풀무원, '특등급 국산콩 두유 서리태' 출시…원액두유 96.37% 함유"
+    },
     "source_fact:da71de623095c7799a814df8": {
       "first_seen_kst": "2026-10-13T01:37:36+09:00",
       "lanes": {
@@ -447028,6 +447461,28 @@
       ],
       "source_published_kst": "2026-10-07T06:00+09:00",
       "title": "롯데하이마트, 물류센터에 ‘휴머노이드 로봇’ 투입…2028년 실증"
+    },
+    "source_fact:e7307c0fc7720719ee91cd66": {
+      "first_seen_kst": "2026-10-13T04:16:15+09:00",
+      "lanes": {
+        "live": "2026-10-13T04:16:15+09:00"
+      },
+      "last_seen_kst": "2026-10-13T04:16:15+09:00",
+      "link": "https://www.etnews.com/20261012000029",
+      "source": "전자신문",
+      "source_body_digest": "9c19c87be0b1b97c0cccff5320e4d51699fb08f72931e5ab1f18639edad1825a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22f666afa3065cc03be5775c1dc8dd0f39f1b4f78653f42c2ce9aace7d26f062",
+      "source_fact_keys": [
+        "source_fact:v1:07d6e6666c91d211bc26adc508a1ef1f2842be3372ddc95a01804d350fb63f43",
+        "source_fact:v1:089fc1ea5be997ca80db0c846f0a0a0c2669b0a3480a35c3c29d40cbae2f281c",
+        "source_fact:v1:19aa2ce8e011bfdcdad59521d703cf3c0523f7887287c18c34900f658b9b607f",
+        "source_fact:v1:bf69f036aa36e5902563c9bea178687db55685b790bad51e99281e7eaedc1d70"
+      ],
+      "source_published_kst": "2026-10-12T09:31+09:00",
+      "source_title": "풀무원, '특등급 국산콩 두유 서리태' 출시…원액두유 96.37% 함유",
+      "telegram_core_fact": "특등급 국산콩 두유는 출시 두 달여 만에 누적 판매량 120만개를 돌파하면서 수요 증가에 대응해 생산량을 기존 대비 5배로 확대하기도 했다.",
+      "title": "풀무원, '특등급 국산콩 두유 서리태' 출시…원액두유 96.37% 함유"
     },
     "source_fact:e73d57dc2c919cbdaaa71084": {
       "first_seen_kst": "2026-10-08T03:26:42+09:00",
@@ -504316,6 +504771,28 @@
       "telegram_core_fact": "이날 하루 판매액은 약 758억원으로, 이날부터 서민 우선배정 물량 및 온라인 판매 비중 제한이 사라지며 판매량이 크게 증가했다.",
       "title": "2차 국민성장펀드, 물량 3분의 2 소진….4060억원 판매"
     },
+    "title:836d95050089ceb3837f3dd2": {
+      "first_seen_kst": "2026-10-13T04:16:15+09:00",
+      "lanes": {
+        "live": "2026-10-13T04:16:15+09:00"
+      },
+      "last_seen_kst": "2026-10-13T04:16:15+09:00",
+      "link": "https://www.etnews.com/20261012000029",
+      "source": "전자신문",
+      "source_body_digest": "9c19c87be0b1b97c0cccff5320e4d51699fb08f72931e5ab1f18639edad1825a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22f666afa3065cc03be5775c1dc8dd0f39f1b4f78653f42c2ce9aace7d26f062",
+      "source_fact_keys": [
+        "source_fact:v1:07d6e6666c91d211bc26adc508a1ef1f2842be3372ddc95a01804d350fb63f43",
+        "source_fact:v1:089fc1ea5be997ca80db0c846f0a0a0c2669b0a3480a35c3c29d40cbae2f281c",
+        "source_fact:v1:19aa2ce8e011bfdcdad59521d703cf3c0523f7887287c18c34900f658b9b607f",
+        "source_fact:v1:bf69f036aa36e5902563c9bea178687db55685b790bad51e99281e7eaedc1d70"
+      ],
+      "source_published_kst": "2026-10-12T09:31+09:00",
+      "source_title": "풀무원, '특등급 국산콩 두유 서리태' 출시…원액두유 96.37% 함유",
+      "telegram_core_fact": "특등급 국산콩 두유는 출시 두 달여 만에 누적 판매량 120만개를 돌파하면서 수요 증가에 대응해 생산량을 기존 대비 5배로 확대하기도 했다.",
+      "title": "풀무원, '특등급 국산콩 두유 서리태' 출시…원액두유 96.37% 함유"
+    },
     "title:839d3c1ed6a5b45d5d2c5d4e": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
       "lanes": {
@@ -507705,6 +508182,25 @@
       ],
       "source_published_kst": "2026-10-07T06:25+09:00",
       "title": "국제유가, 후티 반격ㆍ중동 수출 증가 놓고 강보합⋯WTI 0.01%↑ [상보]"
+    },
+    "title:8f6eb1fd2adc9b941696c8d7": {
+      "first_seen_kst": "2026-10-13T04:16:15+09:00",
+      "lanes": {
+        "live": "2026-10-13T04:16:15+09:00"
+      },
+      "last_seen_kst": "2026-10-13T04:16:15+09:00",
+      "link": "https://www.mk.co.kr/news/world/12173986",
+      "source": "매일경제",
+      "source_body_digest": "1baad53074b770aea7692b0fa11e4517b66adb2cc72e89df86ee06582aac66cf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ee6ace10213fdfbc544b0f61d43e0052f5b8fae1d33c79c1ce59444c752a5fc8",
+      "source_fact_keys": [
+        "source_fact:v1:48fc64d0bda8b1d592a8a42107273ccdf7eeb564f88e02ca8bcdda09407edcea"
+      ],
+      "source_published_kst": "2026-10-12T18:53+09:00",
+      "source_title": "[속보] 올해 노벨경제학상에 로버트 홀 스탠포드대 교수·마이클 우드포드 컬럼비아대 교수",
+      "telegram_core_fact": "올해 노벨경제학상은 경기 침체와 물가 상승 등 경제 불안을 줄이기 위한 거시경제 이론 발전에 기여한 미국 경제학자 2명에게 돌아갔다.",
+      "title": "[속보] 올해 노벨경제학상에 로버트 홀 스탠포드대 교수·마이클 우드포드 컬럼비아대 교수"
     },
     "title:8f86af5f5b89f8708a095226": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
@@ -530315,6 +530811,23 @@
       "source": "매일경제",
       "title": "주가 상승 챙기고 배당금도 꼬박꼬박 … 고정커버드콜 인기"
     },
+    "title:e26c5329c40eac3cac427475": {
+      "first_seen_kst": "2026-10-13T04:16:15+09:00",
+      "lanes": {
+        "live": "2026-10-13T04:16:15+09:00"
+      },
+      "last_seen_kst": "2026-10-13T04:16:15+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821532",
+      "source": "뉴시스",
+      "source_body_digest": "3dccdfe5233b58b01aa0bb7f522a97217ba6ef0525464a7a7edb144c1f4efddf",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T09:11+09:00",
+      "source_title": "위너스일렉-헥사로보틱스, 웨어러블 로봇 OEM 위탁생산 계약",
+      "telegram_core_fact": "회사 측에 따르면 이번 계약으로 위너스일렉은 헥사로보틱스가 개발한 보행보조 웨어러블 로봇 시스템 'GLEGYM H40A'의 양산 공정 구축부터 핵심 모듈 생산, 완제품 정밀 조립, 출하 검사까지 전 과정을 독점 전담한다.",
+      "title": "위너스일렉-헥사로보틱스, 웨어러블 로봇 OEM 위탁생산 계약"
+    },
     "title:e27b49c07d1bdfed3e507308": {
       "first_seen_kst": "2026-10-10T05:10:14+09:00",
       "lanes": {
@@ -530399,6 +530912,25 @@
       "source": "매일경제",
       "source_event_identity": "",
       "title": "네비우스, 인퍼라이즈 인수로 AI 추론 스택 확장 나서"
+    },
+    "title:e2c557443ed0d0ee57cf66c8": {
+      "first_seen_kst": "2026-10-13T04:16:15+09:00",
+      "lanes": {
+        "live": "2026-10-13T04:16:15+09:00"
+      },
+      "last_seen_kst": "2026-10-13T04:16:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01400566645612592&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "49c195077087581e739e939e7370bbc9038883b581e3f223e7a458833660e9f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:165f66eb2d3c0b7e05266cefe31542ea5cf113f2891a8ae38df43dba9776bd2f",
+      "source_fact_keys": [
+        "source_fact:v1:fd63ca28a7d26bcc9649e46eb3195314d4665612cb5ac39961b6ad7cc1554cef"
+      ],
+      "source_published_kst": "2026-10-13T04:00+09:00",
+      "source_title": "10월 초 수출 261억달러 신기록…반도체는 170% 뛰며 '역대 최대'",
+      "telegram_core_fact": "관세청이 발표한 ‘10월 1~10일 수출입 현황’에 따르면 이 기간 수출액은 261억 400만달러로 전년비 102.0% 증가했다.",
+      "title": "10월 초 수출 261억달러 신기록…반도체는 170% 뛰며 '역대 최대'"
     },
     "title:e2d34c4c8bf9b4c3912e34fa": {
       "first_seen_kst": "2026-10-06T15:44:02+09:00",
@@ -538172,5 +538704,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-13T04:02:08+09:00"
+  "updated_at_kst": "2026-10-13T04:16:15+09:00"
 }
