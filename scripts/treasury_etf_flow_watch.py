@@ -4,6 +4,7 @@ import json
 import os
 import pathlib
 import re
+import time
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -61,9 +62,31 @@ def money_number(value):
     return float(value.replace(",", ""))
 
 
-def get_ishares(ticker, meta):
-    response = requests.get(meta["url"], headers=HEADERS, timeout=35)
-    response.raise_for_status()
+class IsharesRetryBudget:
+    """At most one extra read-only request across a complete fund collection."""
+
+    def __init__(self):
+        self.remaining = 1
+
+
+def get_ishares(ticker, meta, *, retry_budget=None):
+    # Do not retry the whole report: it also contains a Telegram sender.
+    # Main shares this allowance across all five funds; standalone callers
+    # also get at most one retry. Parsing/HTTP errors are not transient here.
+    if retry_budget is None:
+        retry_budget = IsharesRetryBudget()
+    while True:
+        try:
+            response = requests.get(meta["url"], headers=HEADERS, timeout=(8, 35))
+            response.raise_for_status()
+            break
+        except requests.Timeout as exc:
+            if retry_budget.remaining <= 0:
+                print(f"ishares_request_failed=true ticker={ticker} reason={type(exc).__name__} retry_budget_exhausted=true")
+                raise
+            retry_budget.remaining -= 1
+            print(f"ishares_request_retry=true ticker={ticker} reason={type(exc).__name__} backoff_seconds=2")
+            time.sleep(2)
     text = BeautifulSoup(response.text, "html.parser").get_text(" ", strip=True)
     text = re.sub(r"\s+", " ", text)
 
@@ -270,9 +293,10 @@ def main():
     curve = get_treasury_curve()
     results = {}
     same_dates = True
+    ishares_retry_budget = IsharesRetryBudget()
 
     for ticker, meta in FUNDS.items():
-        cur = get_ishares(ticker, meta)
+        cur = get_ishares(ticker, meta, retry_budget=ishares_retry_budget)
         hist = state["history"].get(ticker, [])
         flow = compute_flow(cur, hist)
         prev = previous_snapshot(hist, cur["date"])

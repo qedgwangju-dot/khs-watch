@@ -105,6 +105,7 @@ jobs:
           python -m py_compile scripts/treasury_credit_flow_watch_marketstress.py
           python -m py_compile scripts/treasury_credit_flow_watch_refinancing.py
           PYTHONPATH=scripts python -m unittest discover -s tests -p 'test_treasury_daily_report_integrity.py' -v
+          PYTHONPATH=scripts python -m unittest discover -s tests -p 'test_treasury_ishares_timeout.py' -v
           PYTHONPATH=scripts python - <<'PY'
           import treasury_credit_flow_watch_refinancing as report
 
