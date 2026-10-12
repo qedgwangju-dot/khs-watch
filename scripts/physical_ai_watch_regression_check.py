@@ -25,6 +25,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 _watcher_source_path = Path(__file__).with_name("physical_ai_watch_airan_guard.py")
 _watcher_source = _watcher_source_path.read_text(encoding="utf-8")
 for _required in (
+    "ROBOT_POSTTRAIN_FUNDA_URL =",
     "DONGKUK_NPS_RECOVERY =",
     "DKT_HUMANOID_RECOVERY =",
     "TESLA_TOUCH_PATENT_RECOVERY =",
@@ -3246,5 +3247,84 @@ try:
 finally:
     base.NOW=old_vnet_date
 
+
+
+# 53) FUNDA estimated 3–4x GPU load for video/joint/action VLA post-training.
+# User-supplied analyst excerpt; primary article and equal-condition raw
+# benchmarking data could not be independently opened or verified.
+funda_claim = make(
+    "FUNDA Physical AI robot data race to second compute demand curve",
+    "FUNDA industry interviews estimate robot VLA model post-training with "
+    "video, joint and action signals takes 3-4x GPU resources versus "
+    "text-only model post-training at the same parameter count. "
+    "No benchmark GPU-hours, server order, named training cluster or "
+    "independent same-condition replication was disclosed.",
+    "FUNDA",
+)
+fg, fs, fc, fk = classify(funda_claim)
+assert fg == 'robot_posttrain_compute' and fs < 11, (fg,fs,fc)
+assert fc == '로봇 사후학습 · Funda AI 3~4배 추정 기준선', fc
+assert '독립' in base.verification(funda_claim,fg,funda_claim['title']+' '+funda_claim['description'])
+assert '3~4배' in base.meaning(fc), base.meaning(fc)
+
+funda_reprint = make(
+    "Funda AI physical robotics compute GPU 3~4x post-training estimate",
+    "An outside news article quotes FUNDA robot VLA post-training 3~4x "
+    "GPU resources against text-only; hardware purchases not confirmed.",
+    "Thematic News Blog",
+)
+rg, rs, rc, rk = classify(funda_reprint)
+assert rg == fg and rs < 11 and rk == fk, (rg,rs,rc,rk)
+
+nvidia_pretraining_only = make(
+    "NVIDIA GR00T robot pretraining compute",
+    "NVIDIA GR00T robot VLA model pretraining consumed "
+    "50,000 H100 GPU-hours, not a post-training benchmark.",
+    "NVIDIA",
+)
+pg, ps, pc, pk = classify(nvidia_pretraining_only)
+assert pg != 'robot_posttrain_compute' or ps < 11, (pg,ps,pc)
+
+independent_news_gpu_hours = make(
+    "Robot policy post-training used 12,000 GPU-hours, media report",
+    "Research blogger claims a VLA robot post-training benchmark "
+    "measured 12,000 H100 GPU-hours, without official results.",
+    "Unverified Robotics Blog",
+)
+ng, ns, nc, nk = classify(independent_news_gpu_hours)
+assert ng == 'robot_posttrain_compute' and ns < 11, (ng,ns,nc)
+
+future_official_measurement = make(
+    "NVIDIA Isaac GR00T VLA robot post-training GPU-hour benchmark",
+    "NVIDIA officially reported measured robot VLA post-training "
+    "using 12,000 H100 GPU-hours on a named task/data setup. "
+    "This is a hypothetical future regression fixture.",
+    "NVIDIA",
+)
+og, os, oc, ok = classify(future_official_measurement)
+assert og == 'robot_posttrain_compute' and os >= 11, (og,os,oc)
+assert oc == '로봇 사후학습 · GPU시간 실측 공개', oc
+assert ok != fk, 'official measured training workload must be a new alert'
+render_text = future_official_measurement['title'] + ' ' + future_official_measurement['description']
+assert base.category(render_text,base.topic_group(render_text)) == oc
+assert '실측' in base.verification(future_official_measurement,og,render_text)
+
+non_robot_training = make(
+    "NVIDIA LLM text post-training compute",
+    "NVIDIA text-only LLM post-training measured 12,000 GPU-hours.",
+    "NVIDIA",
+)
+tg, ts, tc, tk = classify(non_robot_training)
+assert tg != 'robot_posttrain_compute', (tg,ts,tc)
+
+assert watcher.qty._skip_quantity_enrichment(
+    '<b>1. 피지컬AI 학습 연산</b>\n'
+    '<b>분류</b>  로봇 사후학습 · GPU시간 실측 공개\n'
+    '모델 사후학습 12,000 GPU시간은 실제 출하 대수가 아니다'
+), 'GPU-hours must not be counted as priced robot units'
+assert watcher.qty._skip_quantity_enrichment(
+    '<b>1. Funda AI 로봇 사후학습 GPU 3~4배</b>\n'
+    '동영상·행동 신호의 사후학습 추정치'
+)
 
 print("Physical-AI watcher regression guards: PASS")
