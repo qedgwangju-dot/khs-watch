@@ -284,6 +284,10 @@ def _skip_quantity_enrichment(block: str) -> bool:
         return True
     if "Digital Optimus" in block or "디지털 에이전트" in block or "디지털 옵티머스" in block:
         return True
+    # VNET's 889/1007 MW are IDC POWER capacity, not deployed ESS MWh.
+    # Secondary equity shares cannot be priced as shipped robot units.
+    if "CATL 관계사–VNET" in block or "CATL–VNET" in block:
+        return True
     # A quoted USD/kWh ESS cell assessment is energy-priced, not a count
     # of saleable robots or a "1GW" contract (1GWh must remain energy).
     if "ESS LFP 북미 조달" in block or "북미 ESS LFP 조달원가" in block:
