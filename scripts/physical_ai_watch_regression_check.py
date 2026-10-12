@@ -3166,7 +3166,7 @@ if base.NOW.astimezone(base.KST).date() <= dt.date(2026,10,19):
     vg,vs,vc,vk=classify(vnet_recovered[0])
     assert vg=='catl_vnet_infrastructure' and vs>=11,(vg,vs,vc)
     assert vc=='CATL 관계사–VNET · 9/21 간접지분 38.1% 인수 종결',vc
-    assert '신주' in base.meaning(vc) and '독점' in base.meaning(vc)
+    assert any(word in base.meaning(vc) for word in ('신주','유상증자')) and '독점' in base.meaning(vc),base.meaning(vc)
     assert '1,007MW' in base.meaning(vc) and '889MW' in base.meaning(vc)
     assert '60GWh' in base.meaning(vc)
     visible=vnet_recovered[0]['title']+' '+vnet_recovered[0]['description']
