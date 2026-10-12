@@ -16,6 +16,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 ALERT = ROOT / "out" / "khs_us_investment_alert.html"
 DELIVERY = ROOT / "out" / "khs_us_investment_delivery.json"
 STATE = ROOT / "data" / "khs_us_investment_seen.json"
+PENDING = ROOT / "out" / "khs_us_investment_pending_seen.json"
 
 
 def _api_json(url: str, *, data: bytes | None = None, timeout: int = 25) -> dict:
@@ -124,7 +125,8 @@ def resolve_mode() -> int:
 
 def _event_facts(family: str) -> set[str]:
     try:
-        state = json.loads(STATE.read_text(encoding="utf-8"))
+        state_path = PENDING if PENDING.exists() else STATE
+        state = json.loads(state_path.read_text(encoding="utf-8"))
     except Exception as exc:
         raise RuntimeError(f"US investment state unavailable: {exc}") from exc
     return {
@@ -138,6 +140,7 @@ def _validate_alert_contract(text: str) -> None:
     plain = plain.replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&")
     nuclear_facts = _event_facts("nuclear_build")
     stake_facts = _event_facts("westinghouse_stake")
+    alaska_facts = _event_facts("alaska_lng")
 
     legacy_signature = (
         "대미투자 | 내용 변화" in plain
@@ -201,9 +204,13 @@ def _validate_alert_contract(text: str) -> None:
     ):
         raise RuntimeError("Blocked Project Power definitive-agreement completion before verified state")
 
+    # "예외 적용 완료: 대기"는 완료 주장 아닌 점검항목 명칭이다.
+    # 차단은 실제 완료 주장에만 적용한다.
+    pending_suffix = re.compile(r"[:：]\s*(?:대기|미완료|미체결|미확정|검토|예정|조건부)(?:\s|$|[.·])", re.I)
+    asserted_plain = "\n".join(line for line in plain.splitlines() if not pending_suffix.search(line))
     if (
         project_power_context
-        and re.search(r"(?:예외\s*적용|타협협정[^\n]{0,30}예외)[^\n]{0,20}(?:완료|체결|확정)", plain, re.I)
+        and re.search(r"(?:예외\s*적용|타협협정[^\n]{0,30}예외)[^\n]{0,20}(?:완료|체결|확정)", asserted_plain, re.I)
         and "nuclear_settlement_waiver_status:executed" not in nuclear_facts
     ):
         raise RuntimeError("Blocked Project Power settlement-waiver completion before verified state")
@@ -340,6 +347,7 @@ def self_test_mode() -> int:
         "첫 송금 24억달러(약 3조원) 송금 완료 · 후속 자금요청 추적"
     )
     _validate_alert_contract(good)
+    _validate_alert_contract(good + "\n2025 타협협정 예외 적용 완료: 대기\nProject North Glenfarne FID 완료: 대기")
     print("telegram_alert_contract_self_test=passed project_power_fail_closed=true")
     return 0
 
