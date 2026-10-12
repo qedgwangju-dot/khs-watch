@@ -275,6 +275,140 @@ def fact_key(kind: str, text: str) -> str:
     return hashlib.sha1(text.encode()).hexdigest()[:12]
 
 
+# Independent NVIDIA science and quantum R&D capital-allocation axis.
+# Never treat a multi-year private commitment as a DOE appropriation or as
+# a cash outlay already executed.
+NVIDIA_SCIENCE_URL = (
+    "https://nvidianews.nvidia.com/news/"
+    "nvidia-commits-1-billion-to-advance-us-science-over-the-next-five-years"
+)
+NVIDIA_SCIENCE_BASE_KEY = "nvidia_science_20261008_1b_5year_commitment"
+
+
+def nvidia_science_stage(headline: str) -> str:
+    low = clean(headline).lower()
+    if "nvidia" not in low:
+        return ""
+    if ("commits" in low or "commitment" in low) and (
+        "science" in low or "quantum" in low
+    ) and ("1 billion" in low or "$1b" in low):
+        return "commitment"
+    if not any(x in low for x in ("genesis mission", "quantum", "science", "national laborator")):
+        return ""
+    if any(x in low for x in (
+        "delivers", "deploys", "installed", "contract awarded", "award recipient",
+        "completes construction", "begins operations", "commercial contract",
+        "signed agreement", "commissions new", "new funding awarded",
+    )):
+        return "verified_execution"
+    return ""
+
+
+def _official_science_events() -> list[dict]:
+    """Only NVIDIA first-party document titles can create science milestones."""
+    candidates = {NVIDIA_SCIENCE_URL}
+    try:
+        listing = fetch(OFFICIAL_PRESS_RELEASES, timeout=18).decode("utf-8", "replace")
+        for match in re.finditer(r'href=["\\\']([^"\\\']+)["\\\']', listing, re.I):
+            url = urllib.parse.urljoin(OFFICIAL_PRESS_RELEASES, html.unescape(match.group(1)))
+            parsed = urllib.parse.urlsplit(url)
+            if parsed.netloc.lower() not in {"investor.nvidia.com", "nvidianews.nvidia.com"}:
+                continue
+            slug = parsed.path.lower()
+            if not any(x in slug for x in ("genesis-mission", "quantum", "advance-us-science", "science-research")):
+                continue
+            candidates.add(urllib.parse.urlunsplit((parsed.scheme, parsed.netloc, parsed.path, "", "")))
+    except Exception:
+        # Source failure must not turn the already-known 2026-10-08 press
+        # release into a newly discovered spend event.
+        pass
+    events = []
+    for url in sorted(candidates):
+        try:
+            raw = fetch(url, timeout=18).decode("utf-8", "replace")
+        except Exception:
+            continue
+        match = re.search(r"<h1[^>]*>(.*?)</h1>", raw, re.I | re.S)
+        title = clean(match.group(1)) if match else ""
+        kind = nvidia_science_stage(title)
+        if not kind:
+            continue
+        body = clean(raw)
+        if not ("NVIDIA" in body and any(x in body.lower() for x in ("quantum", "science", "genesis mission"))):
+            continue
+        if kind == "commitment":
+            if url.rstrip("/") != NVIDIA_SCIENCE_URL.rstrip("/"):
+                continue
+            if not all(x in body.lower() for x in ("1 billion", "five years")):
+                continue
+            published = "2026-10-08T00:00:00+09:00"
+            fact = NVIDIA_SCIENCE_BASE_KEY
+        else:
+            # Future awards/actual resource deployment are keyed by the
+            # first-party announcement, not by syndication or title updates.
+            date_match = re.search(r'(20\\d{2})-(\\d{2})-(\\d{2})', raw)
+            if not date_match:
+                continue
+            published = f"{date_match.group(1)}-{date_match.group(2)}-{date_match.group(3)}T00:00:00+09:00"
+            if date_match.group(0) <= "2026-10-08":
+                continue
+            fact = "nvidia_science_execution_" + hashlib.sha256(url.encode("utf-8")).hexdigest()[:16]
+        events.append({
+            "id": event_id(title, "NVIDIA Newsroom"),
+            "kind": "science_commitment" if kind == "commitment" else "science_execution",
+            "fact_key": fact,
+            "title": title,
+            "description": body[:12000],
+            "source": "NVIDIA Newsroom",
+            "published_at_kst": published,
+            "direct_link": url,
+            "rank": 100,
+        })
+    return events
+
+
+def build_science_alert(events: list[dict], now: datetime) -> str:
+    science = [e for e in events if e.get("kind") in ("science_commitment", "science_execution")]
+    other = [e for e in events if e not in science]
+    lines = [
+        "🚨 <b>NVIDIA 미국 과학·양자 연구 투자 단계 변화</b>",
+        "",
+        "<b>[기존 공식 기준]</b>",
+        "• 2026년 10월 8일: NVIDIA가 향후 5년간 미국 과학연구에 10억달러 상당의 자원 투입을 약속",
+        "• 대상: 양자컴퓨팅·의료·에너지·과학용 인공지능 및 대학·클라우드 연구 인프라",
+        "• 주의: 10억달러 전액이 양자컴퓨팅 전용도 아니고 DOE 정부 예산 확정액이나 실제 이미 집행된 현금도 아님",
+    ]
+    for item in science:
+        if item["kind"] == "science_execution":
+            lines.extend([
+                "",
+                "<b>[새로 확인한 이행 단계]</b>",
+                "• NVIDIA가 공식 발표한 연구 협력·설비 배치·계약 이행 단계",
+                f'• <a href="{html.escape(item["direct_link"],quote=True)}">공식 변경 문서</a>',
+                f"• 원문 제목 식별: {html.escape(item['title'])}",
+            ])
+    if other:
+        kinds = {e.get("kind") for e in other}
+        if "capital_return" in kinds:
+            lines.append("• 별도 자본환원 변화: 이사회 승인과 실제 매입을 구분해 재검증")
+        if "demand" in kinds:
+            lines.append("• 별도 판매·수요 변화: 전체 칩과 AI GPU/HBM 수량 구분 필요")
+        if "safety" in kinds:
+            lines.append("• 별도 안전 변화: 실제 출시 지연/보류 여부 확인 필요")
+        for item in other[:2]:
+            lines.append(f'• <a href="{html.escape(item["direct_link"],quote=True)}">기타 동일 실행 확인자료</a>')
+    lines.extend([
+        "",
+        "<b>[다음 확인]</b>",
+        "• 기관별 배분액·계약 당사자·GPU/시스템 실제 공급량·전원 인가·검수 시점",
+        "• 단순 연구협력과 실제 유상 장비·클라우드 사용권 매출 구분",
+        "• 데이터센터 전력·냉각 병목, 연구과제 지연, 조달 축소를 반대 지표로 추적",
+        f'<a href="{NVIDIA_SCIENCE_URL}">NVIDIA 10월 8일 원문</a>',
+        f"조회: {now:%Y-%m-%d %H:%M KST}",
+    ])
+    return "\n".join(lines) + "\n"
+
+
 def _official_press_release_events() -> list[dict]:
     urls = list(OFFICIAL_BUYBACK_CANDIDATES)
     try:
@@ -370,6 +504,8 @@ def read_events() -> list[dict]:
                     "rank": source_rank(source, title),
                 }
     for e in _official_press_release_events():
+        rows[e["id"]] = e
+    for e in _official_science_events():
         rows[e["id"]] = e
     return sorted(rows.values(), key=lambda x: x.get("published_at_kst") or "")
 
@@ -478,6 +614,8 @@ def choose_new(events: list[dict], seen_ids: set[str], seen_fact_keys: set[str],
 
 
 def build_alert(events: list[dict], now: datetime) -> str:
+    if any(e.get("kind") in ("science_commitment", "science_execution") for e in events):
+        return build_science_alert(events, now)
     demand = next((e for e in reversed(events) if e["kind"] == "demand"), None)
     safety = next((e for e in reversed(events) if e["kind"] == "safety"), None)
     capital = next((e for e in reversed(events) if e["kind"] == "capital_return"), None)
@@ -580,6 +718,8 @@ def main() -> None:
     state = dict(previous_state)
     seen_ids = set(state.get("seen_ids") or [])
     seen_fact_keys = set(state.get("seen_fact_keys") or [])
+    # Existing 2026-10-08 $1B announcement is a baseline, not a new award.
+    seen_fact_keys.add(NVIDIA_SCIENCE_BASE_KEY)
     capital_state = dict(state.get("capital_return_state") or {})
     if int(state.get("capital_return_track_version") or 0) < CAPITAL_RETURN_TRACK_VERSION:
         capital_state = dict(CAPITAL_RETURN_BASELINE)
