@@ -120,12 +120,29 @@ def clean(text):
 # Cache only within one collection pass. Never reuse previous-run source data.
 _FETCH_CACHE = {}
 _ACCESS_DENIED = {}
+_FETCH_METADATA = {}
+_JSON_DIAGNOSTICS = []
 TRANSIENT_HTTP = {408, 425, 500, 502, 503, 504}
+
+
+def safe_response_url_path(url):
+    """Keep only scheme, hostname and path, never userinfo/query/fragment."""
+    if not isinstance(url, str):
+        return ""
+    try:
+        parsed = urllib.parse.urlsplit(url)
+        if parsed.scheme not in {"https", "http"} or not parsed.hostname:
+            return ""
+        return urllib.parse.urlunsplit((parsed.scheme, parsed.hostname, parsed.path, "", ""))
+    except ValueError:
+        return ""
 
 
 def reset_fetch_cache():
     _FETCH_CACHE.clear()
     _ACCESS_DENIED.clear()
+    _FETCH_METADATA.clear()
+    _JSON_DIAGNOSTICS.clear()
 
 
 def fetch(url, timeout=30):
@@ -147,6 +164,14 @@ def fetch(url, timeout=30):
             req = urllib.request.Request(url, headers=HEADERS)
             with urllib.request.urlopen(req, timeout=timeout) as response:
                 result = response.read()
+                status = getattr(response, "status", None)
+                content_type = response.headers.get("Content-Type", "")
+                final_url = response.geturl()
+                _FETCH_METADATA[url] = {
+                    "http_status": status if type(status) is int else None,
+                    "content_type": content_type.split(";", 1)[0].strip().lower() if isinstance(content_type, str) else "",
+                    "final_url_path": safe_response_url_path(final_url),
+                }
             _FETCH_CACHE[url] = result
             return result
         except urllib.error.HTTPError as exc:
@@ -365,6 +390,76 @@ def parse_rss(url, source, errors):
     return events
 
 
+def fetch_federal_register_payload(source, url):
+    """Reject unverified response shapes and retain safe diagnostics, never bodies."""
+    raw = fetch(url)
+    prefix = raw[:4096].lstrip().removeprefix(b"\xef\xbb\xbf").lstrip().lower()
+    kind = "json_like" if prefix.startswith((b"{", b"[")) else "other"
+    if not prefix:
+        kind = "empty"
+    elif kind != "json_like" and any(marker in prefix for marker in (b"access denied", b"captcha", b"verify you are human", b"request rate threshold", b"undeclared automated tool")):
+        kind = "access_challenge"
+    elif prefix.startswith((b"<!doctype html", b"<html", b"<head", b"<body")):
+        kind = "html"
+    elif prefix.startswith(b"<"):
+        kind = "xml_or_markup"
+    diagnostic = {
+        "source": source,
+        "request_url_path": safe_response_url_path(url),
+        **_FETCH_METADATA.get(url, {}),
+        "response_kind": kind,
+        "byte_count": len(raw),
+        "payload_sha256": hashlib.sha256(raw).hexdigest(),
+        "schema_valid": False,
+    }
+    _JSON_DIAGNOSTICS.append(diagnostic)
+
+    def invalid(reason):
+        diagnostic["validation_error"] = reason
+        raise ValueError(
+            "Federal Register response invalid: "
+            f"reason={reason} kind={kind} http_status={diagnostic.get('http_status')} "
+            f"content_type={diagnostic.get('content_type', '') or 'unknown'} bytes={len(raw)}"
+        )
+
+    if kind == "access_challenge":
+        parsed = urllib.parse.urlparse(url)
+        _ACCESS_DENIED[(parsed.netloc.lower(), parsed.path)] = RuntimeError(
+            "Federal Register access challenge already observed; no further queries to this path in this run"
+        )
+    if kind != "json_like":
+        invalid("expected_json")
+    content_type = diagnostic.get("content_type", "")
+    if content_type and content_type not in {"application/json", "text/json"} and not content_type.endswith("+json"):
+        invalid("unexpected_content_type")
+    try:
+        payload = json.loads(raw.decode("utf-8-sig"))
+    except (UnicodeDecodeError, json.JSONDecodeError):
+        invalid("malformed_json")
+    if not isinstance(payload, dict) or not isinstance(payload.get("results"), list):
+        invalid("results_schema")
+    # Validate the entire response before returning any records. Missing fields
+    # must not become a silent no-change result or partial dedupe checkpoint.
+    for row in payload["results"]:
+        if not isinstance(row, dict):
+            invalid("result_not_object")
+        for field in ("title", "html_url", "publication_date", "document_number"):
+            if not isinstance(row.get(field), str) or not row[field].strip():
+                invalid("missing_" + field)
+        parsed = urllib.parse.urlsplit(row["html_url"])
+        if parsed.scheme != "https" or parsed.hostname not in {"www.federalregister.gov", "federalregister.gov"} or parsed.username or parsed.password:
+            invalid("non_official_document_url")
+        try:
+            dt.date.fromisoformat(row["publication_date"])
+        except ValueError:
+            invalid("invalid_publication_date")
+        if row.get("abstract") is not None and not isinstance(row["abstract"], str):
+            invalid("invalid_abstract")
+    diagnostic["schema_valid"] = True
+    diagnostic["result_count"] = len(payload["results"])
+    return payload
+
+
 def collect_federal_register(errors):
     events = []
     searches = [
@@ -383,7 +478,7 @@ def collect_federal_register(errors):
         })
         url = f"https://www.federalregister.gov/documents/search?{query}"
         try:
-            payload = json.loads(fetch(url).decode("utf-8"))
+            payload = fetch_federal_register_payload(source, url)
             for row in (payload.get("results") or [])[:60]:
                 title = clean(row.get("title") or "")
                 abstract = clean(row.get("abstract") or "")
@@ -1106,12 +1201,15 @@ def build_alert(events):
 
 def main():
     reset_fetch_cache()
-    for name in ("clarity_watch_alert.md", "clarity_watch_alert.json", "clarity_watch_pending_state.json", "clarity_watch_rebaseline.txt"):
+    for name in ("clarity_watch_alert.md", "clarity_watch_alert.json", "clarity_watch_pending_state.json", "clarity_watch_rebaseline.txt", "clarity_source_response_diagnostics.json"):
         (OUT_DIR / name).unlink(missing_ok=True)
     state = load_state()  # Validate checkpoints before collecting or creating output.
     errors, events = [], []
     for collector in [collect_govinfo, collect_banking, collect_agriculture, collect_floor, collect_regulators, collect_whitehouse]:
         events.extend(collector(errors))
+    (OUT_DIR / "clarity_source_response_diagnostics.json").write_text(
+        json.dumps(_JSON_DIAGNOSTICS, ensure_ascii=False, indent=2) + "\n", encoding="utf-8",
+    )
     events = sorted({e.key: e for e in events}.values(), key=lambda e: (e.source, e.event_type, e.date, e.title))
     baseline = (not state.get("initialized")) or state.get("source_version") != SOURCE_VERSION
     if errors and baseline:

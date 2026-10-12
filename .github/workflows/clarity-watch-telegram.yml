@@ -252,6 +252,7 @@ jobs:
           name: clarity-watch-${{ github.run_id }}
           path: |
             out/clarity_watch_status.md
+            out/clarity_source_response_diagnostics.json
             out/clarity_watch_alert.md
             out/clarity_watch_alert.json
             out/clarity_alert_guard_report.json
