@@ -705,10 +705,11 @@ def _flow_surge_program(
     if calc is None or direct is None or gap is None:
         return None
     ratio = abs(gap) / max(abs(calc), abs(direct), 1.0) * 100
-    span = max(
-        fnum(start.get("표본시차초")) or float("inf"),
-        fnum(end.get("표본시차초")) or float("inf"),
-    )
+    span_values = [
+        fnum(start.get("표본시차초")),
+        fnum(end.get("표본시차초")),
+    ]
+    span = max(v if v is not None else float("inf") for v in span_values)
     aligned = (
         span <= MAX_PROGRAM_SNAPSHOT_SKEW_SEC
         and ratio <= MAX_PROGRAM_CROSSCHECK_RATIO_PCT
@@ -794,6 +795,7 @@ class Watch:
         self.last_option_poll = 0.0
         self.session_open_ts: float | None = None
         self.session_close_ts: float | None = None
+        self.session_continuous_end_ts: float | None = None
         self.opening_gap_sent = False
         self.handoff_path: str | None = None
         self.last_handoff_save_ts = 0.0
@@ -1271,14 +1273,15 @@ class Watch:
 
     async def maybe_alert_flow_surge(self, now_ts: float | None = None) -> None:
         """가격 급락과 독립적으로 동작하며 다른 경보의 상태를 수정하지 않는다."""
-        if self.test or not self.flows:
+        if getattr(self, "test", False) or not getattr(self, "flows", None):
             return
         now_ts = time.time() if now_ts is None else now_ts
+        start = getattr(self, "session_open_ts", None)
+        end = getattr(self, "session_close_ts", None)
+        continuous_end = getattr(self, "session_continuous_end_ts", None)
         if (
-            self.session_open_ts is None
-            or self.session_close_ts is None
-            or not (self.session_open_ts <= now_ts < self.session_close_ts)
-            or (self.session_continuous_end_ts is not None and now_ts >= self.session_continuous_end_ts)
+            start is None or end is None or not (start <= now_ts < end)
+            or (continuous_end is not None and now_ts >= continuous_end)
         ):
             return
         latest_ts = fnum(self.flows[-1].get("ts"))
