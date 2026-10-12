@@ -64,6 +64,12 @@ MMA_ISAIAS_VERIFIED_START_URLS = (
     MMA_OIL_ISAIAS_OCT8_URL,
     MMA_OIL_ISAIAS_OCT9_URL,
 )
+SAUDI_BYPASS_STRATEGY_URL = "https://www.argaam.com/en/article/articledetail/id/1943047"
+SAUDI_BYPASS_REPORT_DATE = dt.date(2026, 10, 11)
+OPEC_WOO2026_URL = "https://www.opec.org/speech-detail/394-18-june-2026.html"
+# Baseline published 18 June 2026; NOT a new investment commitment or alert trigger.
+OPEC_WOO2026_ENERGY_GROWTH_PCT = 23
+OPEC_WOO2026_OIL_INVESTMENT_USD_TRILLION = 17.7
 EIA_REFINING_WEEKLY_URL = "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_w.htm"
 EIA_REFINING_SOURCE = "미국 에너지정보청(EIA)"
 # Only distinct weekly observations and material changes can trigger a message.
@@ -124,6 +130,12 @@ NEWS_QUERIES = (
     '"East-West Pipeline" 3.5 million barrels per day Saudi when:3d',
     '"East-West Pipeline" pumping 3.5 million bpd Yanbu when:3d',
     '"East-West Pipeline" 4 million bpd Yanbu Saudi when:3d',
+    '"Saudi Arabia builds additional pipelines" alternative Hormuz minister when:7d',
+    '"Saudi Arabia" alternative oil pipeline international participation when:7d',
+    '"Saudi Aramco" fourth fifth crude export route feasibility study when:7d',
+    '"Saudi" "pipeline" "total capacity" "10 million" when:7d',
+    '"Saudi Arabia" bypass pipeline tender EPC construction award when:7d',
+    '사우디 호르무즈 우회 신규 송유관 국제 참여 설계 발주 when:7d',
     '"East-West Pipeline" 80% capacity Saudi when:3d',
     '"East-West Pipeline" 6 million barrels Saudi when:3d',
     '"Saudi Arabia Hikes Oil Flow on Key Pipeline to Over 80% Capacity" when:3d',
@@ -289,6 +301,7 @@ EVENT_LABELS = {
     "saudi_asia_osp_change": "사우디 아시아 원유 공식판매가격(OSP) 변화",
     "eia_refining_crack_watch": "미국 공식 현물 정제마진·가격 병목 변화",
     "east_west_pipeline_recovery": "사우디 East-West Pipeline 실물 회복",
+    "saudi_bypass_investment": "사우디 호르무즈 우회 신규 송유관 투자 단계 변화",
     "regional_export_recovery": "중동 원유 수출 회복 단계 상향",
     "crude_product_divergence": "중동 원유 98% 회복·정제품 병목",
     "us_diesel_export_policy": "미국 디젤 수출정책 단계 변화",
@@ -464,6 +477,9 @@ def _news_title_ko(row: NewsItem) -> str:
         }
         return labels.get(stage, "미국 디젤 수출정책 변화")
 
+    if kind == "saudi_bypass_investment":
+        return _saudi_bypass_stage_label(_saudi_bypass_stage(title))
+
     if kind == "eia_refining_crack_watch":
         return "미국 에너지정보청, WTI·휘발유·경유 현물가격으로 계산한 정제마진 변화"
 
@@ -549,6 +565,10 @@ def classify_event(title: str) -> str | None:
     low = normalize_text(title)
     if not low:
         return None
+
+    # New capital programme is separate from EXISTING East-West pipeline flow.
+    if _saudi_bypass_investment_headline(title):
+        return "saudi_bypass_investment"
 
     # Importing Russian diesel is a different policy from banning US diesel exports.
     russian_context = any(term in low for term in (
@@ -912,6 +932,210 @@ def _visible_text(raw_html: str) -> str:
     text = re.sub(r"(?is)<script\b.*?</script>|<style\b.*?</style>", " ", raw_html)
     text = re.sub(r"(?s)<[^>]+>", " ", text)
     return re.sub(r"\s+", " ", html.unescape(text)).strip()
+
+
+def _saudi_total_pipeline_target_mbd(title: str) -> float | None:
+    text = normalize_text(title)
+    # A "10 Mbd expansion" alone is ambiguous: new total or +10 Mbd?
+    patterns = (
+        r"(?:total|combined|overall|aggregate)\s+(?:oil\s+)?(?:pipeline\s+)?(?:transport\s+)?capacity\s+(?:to|of|at)\s+([0-9]+(?:\.[0-9]+)?)\s*(?:million\s+barrels\s+(?:per|a)\s+day|mbd)",
+        r"송유관\s*최종\s*총(?:수송)?용량\s*(?:하루|일일)?\s*([0-9]+(?:\.[0-9]+)?)\s*(?:백만\s*배럴|mbd)",
+    )
+    for pattern in patterns:
+        match = re.search(pattern, text, flags=re.I)
+        if match:
+            total = float(match.group(1))
+            if 7.0 < total <= 25.0:
+                return total
+    return None
+
+
+def _saudi_bypass_investment_headline(title: str) -> bool:
+    text = normalize_text(title)
+    if not any(term in text for term in ("saudi", "aramco", "사우디", "아람코")):
+        return False
+    if not any(term in text for term in ("pipeline", "pipelines", "송유관")):
+        return False
+    route_context = any(term in text for term in (
+        "hormuz", "bypass", "alternative route", "new export route",
+        "additional pipelines", "fourth and fifth", "호르무즈", "우회",
+        "대체 송유관", "신규 수출 경로",
+    ))
+    material_step = any(term in text for term in (
+        "develop", "build", "plan", "project", "study", "tender",
+        "invite", "participation", "finance", "investment", "award",
+        "construction", "expand", "capacity", "commission", "new",
+        "개발", "신설", "증설", "설계", "국제 참여", "투자", "발주", "착공", "계약",
+    ))
+    return route_context and material_step
+
+
+def _saudi_bypass_stage(title: str) -> str:
+    if not _saudi_bypass_investment_headline(title):
+        return "unclassified"
+    text = normalize_text(title)
+
+    if _saudi_total_pipeline_target_mbd(title) is not None:
+        return "target_total_confirmed"
+
+    # Do not use broad "operating" / "completed" alone: the older
+    # 7-Mbd East-West pipeline is already operating.
+    if any(term in text for term in (
+        "new bypass pipeline commissioned", "new bypass route commissioned",
+        "new alternative pipeline inaugurated", "신규 우회 송유관 준공",
+    )):
+        return "commissioned"
+    if any(term in text for term in (
+        "construction starts on new", "construction begins on new",
+        "breaks ground on new", "신규 우회 송유관 착공",
+    )):
+        return "construction_started"
+    if any(term in text for term in (
+        "contract awarded", "awards pipeline contract", "epc contract signed",
+        "신규 우회 송유관 계약 체결", "송유관 건설 계약 낙찰",
+    )):
+        return "contract_awarded"
+    if any(term in text for term in (
+        "tender issued", "bidding opened", "invites bids for new",
+        "신규 우회 송유관 입찰 공고",
+    )):
+        return "tender_issued"
+    if any(term in text for term in (
+        "feasibility study", "feasibility work underway",
+        "front-end engineering", "fourth and fifth crude export route",
+        "신규 우회 송유관 타당성 조사", "기본설계 착수",
+    )):
+        return "feasibility"
+    if any(term in text for term in (
+        "seeking international participation", "seeks international participation",
+        "invites foreign partners", "inviting international investors",
+        "seeking foreign investment", "국제 참여 모색",
+        "해외 투자자 참여 모집",
+    )):
+        return "partners_sought"
+    if any(term in text for term in (
+        "developing additional pipelines", "builds additional pipelines",
+        "building alternative pipelines", "plans new bypass pipelines",
+        "developing additional pipeline routes",
+        "호르무즈 우회 송유관 추가 개발", "대체 송유관 개발",
+        "신규 우회 송유관 추진",
+    )):
+        return "strategy_announced"
+    return "unclassified"
+
+
+def _saudi_bypass_stage_label(stage: str) -> str:
+    return {
+        "strategy_announced": "사우디, 호르무즈 우회 송유관 추가 개발 방침",
+        "partners_sought": "사우디, 신규 우회 송유관에 국제 참여 모색",
+        "feasibility": "사우디, 신규 우회 송유관 타당성 조사·기본설계",
+        "target_total_confirmed": "사우디, 신규 송유관 최종 총수송능력 공식 확인",
+        "tender_issued": "사우디, 신규 우회 송유관 입찰 공고",
+        "contract_awarded": "사우디, 신규 우회 송유관 계약 체결",
+        "construction_started": "사우디, 신규 우회 송유관 착공",
+        "commissioned": "사우디, 신규 우회 송유관 준공·전원 인가",
+    }.get(stage, "사우디 신규 우회 송유관 단계 미확인")
+
+
+def _saudi_bypass_first_party_proof(row: NewsItem) -> bool:
+    source = normalize_text(row.source)
+    allowed_sources = ("saudi ministry of energy", "saudi aramco", "saudi press agency")
+    if not any(s == source for s in allowed_sources):
+        return False
+    parsed = urllib.parse.urlparse(row.link)
+    host = (parsed.hostname or "").lower()
+    return (
+        parsed.scheme == "https"
+        and any(host == domain or host.endswith("." + domain) for domain in
+                ("energy.gov.sa", "aramco.com", "spa.gov.sa"))
+    )
+
+
+def parse_saudi_bypass_strategy_source(raw_html: str, current: dt.datetime) -> NewsItem:
+    text = _visible_text(raw_html)
+    low = normalize_text(text)
+    # Article must contain the particular minister's attributed statement.
+    if not all(marker in low for marker in (
+        "11/10/2026", "abdulaziz bin salman", "developing additional pipelines",
+        "bypass the strait of hormuz",
+    )):
+        raise RuntimeError("Argaam 10월 11일 장관 발언 원문·날짜 검증 실패")
+    headline = (
+        "Saudi Arabia developing additional pipelines as alternative routes bypassing Hormuz"
+    )
+    if _saudi_bypass_stage(headline) != "strategy_announced":
+        raise RuntimeError("신규 송유관 발언 계획 단계 판정 실패")
+
+    # Original publication date, never the current poll time.
+    # Source has date precision only, so public alert prints only the date.
+    published = dt.datetime.combine(SAUDI_BYPASS_REPORT_DATE, dt.time(), tzinfo=UTC)
+    if published > current + dt.timedelta(days=1):
+        raise RuntimeError("출처 일자가 미래이므로 제외")
+    return NewsItem(
+        title=headline,
+        source="Argaam",
+        link=SAUDI_BYPASS_STRATEGY_URL,
+        published_utc=published.isoformat().replace("+00:00", "Z"),
+        published_epoch=published.timestamp(),
+        event_kind="saudi_bypass_investment",
+    )
+
+
+def _build_saudi_bypass_investment_alert_body(
+    news_rows: list[NewsItem], oil: Quote | None, current: dt.datetime, fx: Quote | None,
+) -> str:
+    stages = {_saudi_bypass_stage(row.title) for row in news_rows}
+    stages.discard("unclassified")
+    if len(stages) != 1:
+        raise RuntimeError("송유관 신규 투자 단계 혼재 · 전송 차단")
+    stage = next(iter(stages))
+    lines = [
+        current.astimezone(KST).strftime("%Y년 %m월 %d일 %H:%M KST"),
+        "",
+        "[확인된 단계]",
+        _saudi_bypass_stage_label(stage),
+        "기존 가동      East-West Pipeline · 최근 발표 580만 배럴/일(10월 6일)",
+        "기존 명목능력  하루 700만 배럴 · 최신 실제 가동량과 구분",
+    ]
+    if stage == "target_total_confirmed":
+        candidates={_saudi_total_pipeline_target_mbd(row.title) for row in news_rows}
+        candidates.discard(None)
+        if len(candidates)!=1 or not any(_saudi_bypass_first_party_proof(row) for row in news_rows):
+            raise RuntimeError("공식 최종 총용량 확인 실패 · 전송 차단")
+        total = next(iter(candidates))
+        lines.append(f"새 총용량      {total:.1f}백만 배럴/일 · 기존 7.0보다 +{total-7.0:.1f}")
+    else:
+        lines.append("신규 목표      1,000만 배럴/일·2~3년설은 총용량/증분·기산일 공식 미확인")
+    lines += [
+        "",
+        "[의미]",
+        "호르무즈 대체 물류축 증설은 신규 투자 논의이지 계약·착공·완공이 아닙니다.",
+        "→ 신규 송유관·펌프·밸브·자동제어·안전·소방·원격관제 발주가 실제 매출 경로입니다.",
+        "→ 송유관 유량 증가와 Yanbu 실제 선박 선적량, 전원 인가 시점을 분리합니다.",
+        "",
+        "[다음 검증]",
+        "계획          공식 최종/순증설 용량 · 노선 km · 일정 기산일 · 사업비",
+        "사업          사업주체 · 조달공고 · 설계·조달·시공 수주처 · 참여 지분",
+        "가동          기존 580만→700만 배럴/일 · 신규선 시험·실제 선적",
+        "역풍          허가·토지·폭발/누출·보험·펌프 전력·항만 수용량",
+        "",
+        "[근거]",
+    ]
+    for row in news_rows[:2]:
+        if row.source == "Argaam" and row.link == SAUDI_BYPASS_STRATEGY_URL:
+            lines.append("아르가암 · 2026-10-11 장관 발언 전달(기사 날짜만 확인)")
+        else:
+            published=dt.datetime.fromtimestamp(row.published_epoch, tz=UTC).astimezone(KST)
+            lines.append(f"{_source_name_ko(row.source)} · {published:%m-%d} · {_news_title_ko(row)}")
+        if row.link:
+            lines.append(f"원문: {row.link}")
+    lines += [
+        "",
+        "[주의]",
+        "OPEC 2050년 에너지 +23%와 석유 투자 17조7,000억 달러는 2026년 6월 발표된 세계 전망입니다.",
+        "사우디 신규 사업비·확정 수주액이 아니며, 같은 전망을 반복해 신규 알림하지 않습니다.",
+    ]
+    return "\n".join(lines).strip() + "\n"
 
 
 def parse_eu_diesel_reserve_snapshot(raw_html: str, current: dt.datetime) -> NewsItem:
@@ -1499,6 +1723,8 @@ def fetch_news(current: dt.datetime) -> tuple[list[NewsItem], list[str]]:
         errors.append(f"EIA refinery 3-2-1 official: {type(exc).__name__}: {exc}")
 
     direct_sources=(
+        ("사우디 신규 우회 송유관 장관 발언", lambda: parse_saudi_bypass_strategy_source(
+            fetch_bytes(SAUDI_BYPASS_STRATEGY_URL,timeout=18,attempts=2).decode("utf-8","replace"),current)),
         ("OFAC 러시아 경유 일반허가 제135호", lambda: parse_ofac_russian_diesel_license(
             fetch_bytes(RUSSIA_DIESEL_OFAC_GL135_URL,timeout=18,attempts=2).decode("utf-8","replace"), current)),
         ("중국 Reuters 거래 관계자 보도", lambda: fetch_china_reuters_resumption(current)),
@@ -1563,12 +1789,21 @@ def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tupl
                 continue
         elif item.event_kind == "hormuz_7day_diplomacy":
             stage=_hormuz_7day_stage(item.title)
+        elif item.event_kind == "saudi_bypass_investment":
+            stage=_saudi_bypass_stage(item.title)
+            if stage == "unclassified":
+                continue
         else:
             stage="all"
         by_kind.setdefault((item.event_kind,stage),[]).append(item)
 
     candidates: list[tuple[float, str, list[NewsItem]]] = []
     for (kind,stage), rows in by_kind.items():
+        if kind == "saudi_bypass_investment" and stage in (
+            "target_total_confirmed", "tender_issued",
+            "contract_awarded", "construction_started", "commissioned",
+        ) and not any(_saudi_bypass_first_party_proof(row) for row in rows):
+            continue
         if kind=="china_fuel_export_policy" and stage=="physical_resumed" and not _china_physical_shipment_evidence(rows):
             continue
         if kind=="russia_diesel_supply_transition" and stage=="shipment_verified" and not _russian_physical_shipment_confirmed(rows):
@@ -1619,6 +1854,18 @@ def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tupl
             "euronews" in normalize_text(row.source)
             for row in selected
         )
+        saudi_minister_direct = (
+            kind == "saudi_bypass_investment"
+            and stage == "strategy_announced"
+            and any(row.source == "Argaam" and row.link == SAUDI_BYPASS_STRATEGY_URL
+                    for row in selected)
+        )
+        saudi_official_advanced = (
+            kind == "saudi_bypass_investment"
+            and stage in ("target_total_confirmed", "tender_issued", "contract_awarded",
+                          "construction_started", "commissioned")
+            and any(_saudi_bypass_first_party_proof(row) for row in selected)
+        )
         pipeline_cross_checked = kind == "east_west_pipeline_recovery" and len(selected) >= minimum_sources
         osp_cross_checked = kind == "saudi_asia_osp_change" and len(selected) >= minimum_sources
         china_report=kind=="china_fuel_export_policy" and stage=="planned_resume" and any(
@@ -1645,7 +1892,7 @@ def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tupl
             for row in selected
         )
 
-        if len(selected) >= minimum_sources or has_primary_data or regional_primary or broker_snapshot or eu_primary_interview or pipeline_cross_checked or pipeline_bloomberg_material or osp_cross_checked or eia_primary or china_report or hormuz_primary or mma_primary or russian_ofac_primary:
+        if len(selected) >= minimum_sources or has_primary_data or regional_primary or broker_snapshot or eu_primary_interview or pipeline_cross_checked or pipeline_bloomberg_material or osp_cross_checked or eia_primary or china_report or hormuz_primary or mma_primary or russian_ofac_primary or saudi_minister_direct or saudi_official_advanced:
             candidates.append((max(row.published_epoch for row in selected), kind, selected))
 
     candidates.sort(key=lambda value: value[0], reverse=True)
@@ -1771,6 +2018,25 @@ def load_state(path: pathlib.Path = STATE_PATH) -> dict:
 
 def event_id(kind: str, rows: list[NewsItem]) -> str:
     combined = " ".join(normalize_text(row.title) for row in rows)
+
+    if kind == "saudi_bypass_investment":
+        stages = {_saudi_bypass_stage(row.title) for row in rows}
+        stages.discard("unclassified")
+        if len(stages) != 1:
+            raise ValueError("신규 송유관 투자 단계가 섞이거나 불명확함")
+        stage = next(iter(stages))
+        if stage in ("contract_awarded", "construction_started", "commissioned", "target_total_confirmed"):
+            if not any(_saudi_bypass_first_party_proof(row) for row in rows):
+                raise ValueError("계약·착공·용량 확정은 사우디 공식 원문 없이는 불가")
+        if stage == "target_total_confirmed":
+            totals = {_saudi_total_pipeline_target_mbd(row.title) for row in rows}
+            totals.discard(None)
+            if len(totals) != 1:
+                raise ValueError("신규 송유관의 총용량과 순증설 구분 불명확")
+            basis = f"{kind}|{stage}|total_{next(iter(totals)):.1f}"
+        else:
+            basis = f"{kind}|{stage}|Saudi_2026"
+        return f"{kind}:{hashlib.sha256(basis.encode('utf-8')).hexdigest()[:16]}"
 
     if kind == "eia_refining_crack_watch":
         metrics = _extract_eia_refining_metrics(rows)
@@ -2022,7 +2288,10 @@ def event_recently_alerted(
     # OFAC license and dated cargoes are factual one-time occurrences.
     # The generic 14-day news cooldown must not resend them after expiry.
     if (
-        current_event_id.startswith("russia_diesel_supply_transition:")
+        current_event_id.startswith((
+            "russia_diesel_supply_transition:",
+            "saudi_bypass_investment:",
+        ))
         and isinstance(alerted, dict)
         and current_event_id in alerted
     ):
@@ -2071,7 +2340,10 @@ def build_pending_state(
     for key, raw in alerted.items():
         stamp = _parse_kst_timestamp(raw)
         if stamp is not None and (
-            stamp >= cutoff or str(key).startswith("russia_diesel_supply_transition:")
+            stamp >= cutoff or str(key).startswith((
+                "russia_diesel_supply_transition:",
+                "saudi_bypass_investment:",
+            ))
         ):
             cleaned[str(key)] = stamp.isoformat(timespec="seconds")
     cleaned[current_event_id] = now_kst.isoformat(timespec="seconds")
@@ -3731,6 +4003,8 @@ def build_physical_flow_alert_body(
         return _build_eia_refining_alert_body(news_rows, oil, current, fx)
     if kind == "russia_diesel_supply_transition":
         return _build_russia_diesel_supply_alert_body(news_rows, oil, current, fx)
+    if kind == "saudi_bypass_investment":
+        return _build_saudi_bypass_investment_alert_body(news_rows, oil, current, fx)
     if kind == "crude_product_divergence":
         return _build_crude_product_gap_alert_body(news_rows, oil, current, fx)
     if kind == "g7_reserve_release_agreement":
@@ -4098,6 +4372,7 @@ def run_monitor(current: dt.datetime) -> int:
         "ex_iran_crude_prewar_recovery",
         "saudi_asia_osp_change",
         "east_west_pipeline_recovery",
+        "saudi_bypass_investment",
         "regional_export_recovery",
         "crude_product_divergence",
         "eia_refining_crack_watch",
@@ -4133,6 +4408,8 @@ def run_monitor(current: dt.datetime) -> int:
             title = "미국 디젤 수출정책 변화"
         elif kind == "russia_diesel_supply_transition":
             title = "러시아 경유 공급 합의·제재·실물 검증"
+        elif kind == "saudi_bypass_investment":
+            title = "사우디 신규 우회 송유관 투자 단계 변화"
         elif kind == "china_fuel_export_policy":
             title = "중국 정제품 수출정책 변화"
         elif kind == "hormuz_7day_diplomacy":

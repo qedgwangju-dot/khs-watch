@@ -14,6 +14,99 @@ SPEC.loader.exec_module(MODULE)
 
 
 class IranHormuzMarketTurnTests(unittest.TestCase):
+    def test_saudi_bypass_new_plan_separate_from_existing_pipeline_operations(self):
+        self.assertEqual(
+            MODULE.classify_event("Saudi Arabia builds additional pipelines as alternative routes to Hormuz: Minister"),
+            "saudi_bypass_investment"
+        )
+        self.assertEqual(
+            MODULE.classify_event("Saudi East-West Pipeline transport hits 5.8 million barrels per day"),
+            "east_west_pipeline_recovery"
+        )
+
+    def test_saudi_bypass_speech_direct_source_has_stable_original_date(self):
+        raw = """<html><body>11/10/2026 Argaam
+        Saudi Arabia builds additional pipelines as alternative routes to Hormuz: Minister
+        Prince Abdulaziz bin Salman said Saudi Arabia is developing additional pipelines
+        to provide alternative routes that bypass the Strait of Hormuz.
+        Building alternative routes is far lower in cost than not having them.
+        </body></html>"""
+        now=dt.datetime(2026,10,12,9,20,tzinfo=dt.timezone.utc)
+        row=MODULE.parse_saudi_bypass_strategy_source(raw,now)
+        self.assertEqual(row.event_kind,"saudi_bypass_investment")
+        self.assertEqual(MODULE._saudi_bypass_stage(row.title),"strategy_announced")
+        self.assertEqual(row.published_utc,"2026-10-11T00:00:00Z")
+        self.assertEqual(row.link,MODULE.SAUDI_BYPASS_STRATEGY_URL)
+        a=MODULE.event_id(row.event_kind,[row])
+        reprint=MODULE.NewsItem(row.title,row.source,row.link,row.published_utc,row.published_epoch+7200,row.event_kind)
+        self.assertEqual(a,MODULE.event_id(reprint.event_kind,[reprint]))
+        found=MODULE.confirm_event([row])
+        self.assertIsNotNone(found)
+        body=MODULE.build_physical_flow_alert_body(row.event_kind,[row],None,now)
+        self.assertIn("1,000만 배럴/일·2~3년설은 총용량/증분·기산일 공식 미확인",body)
+        self.assertIn("세계 전망",body)
+        self.assertNotIn("사업비 확정",body)
+        self.assertLessEqual(len(body.splitlines()),34)
+
+    def test_saudi_bypass_unverified_10m_and_2years_not_confirmed(self):
+        headline="Saudi Arabia pipeline capacity expansion 10 million bpd in 2-3 years"
+        self.assertIsNone(MODULE._saudi_total_pipeline_target_mbd(headline))
+        self.assertNotEqual(MODULE._saudi_bypass_stage(headline),"target_total_confirmed")
+        now=dt.datetime(2026,10,12,9,20,tzinfo=dt.timezone.utc)
+        row=MODULE.NewsItem(
+            "Saudi developing additional pipelines; total pipeline capacity to 10 million barrels per day",
+            "Argaam","https://www.argaam.com/en/article/articledetail/id/1943047",
+            now.isoformat(),now.timestamp(),"saudi_bypass_investment"
+        )
+        self.assertEqual(MODULE._saudi_bypass_stage(row.title),"target_total_confirmed")
+        self.assertIsNone(MODULE.confirm_event([row]))
+        self.assertFalse(MODULE._saudi_bypass_first_party_proof(row))
+        with self.assertRaisesRegex(ValueError,"공식 원문"):
+            MODULE.event_id(row.event_kind,[row])
+
+    def test_saudi_bypass_first_party_milestone_and_new_stage(self):
+        now=dt.datetime(2026,10,12,9,20,tzinfo=dt.timezone.utc)
+        plan=MODULE.NewsItem(
+            "Saudi Arabia developing additional pipelines as alternative routes bypassing Hormuz",
+            "Argaam",MODULE.SAUDI_BYPASS_STRATEGY_URL,
+            now.isoformat(),now.timestamp(),"saudi_bypass_investment"
+        )
+        award=MODULE.NewsItem(
+            "Saudi Aramco awards pipeline contract for new Hormuz bypass alternative route",
+            "Saudi Aramco","https://www.aramco.com/en/news-media/news/2026/hormuz-bypass",
+            now.isoformat(),now.timestamp(),"saudi_bypass_investment"
+        )
+        self.assertEqual(MODULE._saudi_bypass_stage(award.title),"contract_awarded")
+        self.assertTrue(MODULE._saudi_bypass_first_party_proof(award))
+        self.assertIsNotNone(MODULE.confirm_event([award]))
+        self.assertNotEqual(MODULE.event_id(plan.event_kind,[plan]),MODULE.event_id(award.event_kind,[award]))
+        spoof=MODULE.NewsItem(award.title,"Saudi Aramco","https://example.com/fake",
+                              award.published_utc,award.published_epoch,award.event_kind)
+        self.assertFalse(MODULE._saudi_bypass_first_party_proof(spoof))
+        self.assertIsNone(MODULE.confirm_event([spoof]))
+
+    def test_saudi_bypass_dated_plan_immutably_deduped_after_100_days(self):
+        now=dt.datetime(2026,10,12,9,20,tzinfo=dt.timezone.utc)
+        row=MODULE.NewsItem(
+            "Saudi Arabia developing additional pipelines as alternative routes bypassing Hormuz",
+            "Argaam",MODULE.SAUDI_BYPASS_STRATEGY_URL,
+            now.isoformat(),now.timestamp(),"saudi_bypass_investment"
+        )
+        eid=MODULE.event_id(row.event_kind,[row])
+        state={"alerted_events":{eid:now.astimezone(MODULE.KST).isoformat()}}
+        later=now+dt.timedelta(days=100)
+        self.assertTrue(MODULE.event_recently_alerted(state,eid,later))
+        updated=MODULE.build_pending_state(state,"another_event","other",later,{})
+        self.assertIn(eid,updated["alerted_events"])
+        self.assertIsNone(MODULE.select_unalerted_event(state,[(row.event_kind,[row])],later)[0])
+
+    def test_opec_23percent_june2026_is_not_new_investment_project(self):
+        self.assertEqual(MODULE.OPEC_WOO2026_ENERGY_GROWTH_PCT,23)
+        self.assertEqual(MODULE.OPEC_WOO2026_OIL_INVESTMENT_USD_TRILLION,17.7)
+        self.assertIsNone(MODULE.classify_event(
+            "OPEC secretary general: world primary energy needs rise 23% by 2050"
+        ))
+
     def test_final_ceasefire_is_classified(self):
         title = "US and Iran agree to ceasefire agreement, officials say - Reuters"
         self.assertEqual(MODULE.classify_event(title), "ceasefire")
