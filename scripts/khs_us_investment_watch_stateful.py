@@ -45,12 +45,7 @@ def _norm(value: str) -> str:
 
 
 def _is_official(row: dict) -> bool:
-    try:
-        if core._is_official(row):
-            return True
-    except Exception:
-        pass
-
+    # 기사 제목 속 기관명이 출처 공식성을 대체하지 못하게 한다.
     # 기사 제목에 기관·기업명이 들어갔다는 이유만으로 '공식자료'로 승격하지 않는다.
     # 발행 출처명 또는 실제 링크 도메인이 공식기관/공식회사인 경우만 fallback 공식으로 본다.
     source_blob = _norm(str(row.get("source") or ""))
@@ -867,7 +862,8 @@ def _candidate_facts(row: dict, family: str) -> set[str]:
                     facts.add(f"alaska_korea_investment_usd_b:{value}")
                 else:
                     facts.add(f"alaska_reported_amount_usd_b:{value}")
-        facts |= stages
+        # 일반 기사 속 FID·착공·발표 언급은 실제 알래스카 사업 완료와 다르다.
+        # 검증된 프로젝트별 단계만 승격하고 원문에서 포괄 추출된 stages는 배제한다.
         # 금강공업의 API 5L X70 인증 연관성만으로 프로젝트 공급사 상태를 올리지 않는다.
         # 공급계약/선정/승인/공식확정처럼 프로젝트 단계가 실제 상승한 경우에만 당사자로 채택한다.
         if "party:kumkang" in parties and not any(
@@ -1380,6 +1376,23 @@ def _migrate_encinal_project_cost_role(state: dict) -> None:
     state["encinal_project_cost_role_version"] = 1
 
 
+def _migrate_alaska_stale_stages(state: dict) -> None:
+    if int(state.get("alaska_stale_stages_guard_version") or 0) >= 1:
+        return
+    bucket = (state.setdefault("event_states", {}).get("alaska_lng") or {})
+    if bucket:
+        bucket["facts"] = sorted({
+            str(x) for x in (bucket.get("facts") or [])
+            if not str(x).startswith("stage:")
+        })
+        bucket["slots"] = {
+            str(k): str(v) for k, v in (bucket.get("slots") or {}).items()
+            if not str(k).startswith("alaska_lng|stage:")
+        }
+        bucket["last_source"] = str(bucket.get("last_source") or "") + " · alaska-stage-provenance-reset"
+    state["alaska_stale_stages_guard_version"] = 1
+
+
 def _load() -> dict:
     global _SHARED_STATE, _BOOTSTRAP_GUARD
     state = _ORIG_LOAD()
@@ -1393,6 +1406,7 @@ def _load() -> dict:
     _migrate_westinghouse_framework_equity(state)
     _migrate_project_power_funding_roles(state)
     _migrate_encinal_project_cost_role(state)
+    _migrate_alaska_stale_stages(state)
     if _BOOTSTRAP_GUARD:
         state["event_state_guard_version"] = GUARD_VERSION
         state["event_state_guard_started_at"] = dt.datetime.now(dt.timezone.utc).isoformat()
@@ -1933,6 +1947,14 @@ def _self_test() -> int:
     if "alaska_bilateral_status:review_started" not in accepted:
         raise RuntimeError(f"official Project North baseline failed: {accepted}")
 
+    pending_alaska = [{
+        "title": "Project North 알래스카 LNG 착공 예정·Glenfarne FID 이후 한국 투자 검토",
+        "source": "대한민국 정책브리핑",
+        "link": "https://www.korea.kr/example",
+    }]
+    accepted_pending, _ = _accepted_facts_for_group("alaska_lng", pending_alaska)
+    if "stage:착공" in accepted_pending or "stage:최종투자결정" in accepted_pending:
+        raise RuntimeError(f"Alaska future-stage falsely completed: {accepted_pending}")
     print("state_event_guard_self_test=passed")
     return 0
 
