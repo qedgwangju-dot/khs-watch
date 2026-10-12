@@ -2117,6 +2117,26 @@
       "telegram_core_fact": "후티 반군은 지난달 모카를 점령한 뒤 사우디 에너지 시설을 공격하고, 폭 약 29km인 홍해 입구를 지나는 사우디 선박 통행을 위협해왔다.",
       "title": "후티, 사우디 공항 미사일 공격…3명 사망·36명 부상"
     },
+    "core:0eea21bdf641bb4cc2ff8442": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.hankyung.com/article/2026101268256",
+      "source": "한국경제",
+      "source_body_digest": "fa79447dd06af41b043b1d58147bbbc3e208539b38da8bc1df5ec04a4f3e736c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c9dd888c48d89e991f9c327d01bed402ff9fff518c84e20e43fa7e9c26312ef0",
+      "source_fact_keys": [
+        "source_fact:v1:30c331cd72733c66f083421c39aa25b45e445e0a318481e344e596f0d39678f4",
+        "source_fact:v1:a71467300191e85d03c1196d0bd84bc39a6efdfd24765794cde5f30c7dc328a2"
+      ],
+      "source_published_kst": "2026-10-12T17:30+09:00",
+      "source_title": "디에스운용, 'DS AI반도체액티브' ETF 13일 상장",
+      "telegram_core_fact": "디에스자산운용은 오는 13일 'DS AI반도체액티브' 상장지수펀드(ETF)를 유가증권시장에 상장한다고 12일 밝혔다.",
+      "title": "디에스운용, 'DS AI반도체액티브' ETF 13일 상장"
+    },
     "core:0f13ef2882b188547840d1e0": {
       "first_seen_kst": "2026-10-07T15:30:27+09:00",
       "lanes": {
@@ -4915,6 +4935,32 @@
       "source_published_kst": "2026-10-07T12:50+09:00",
       "title": "반도체 호황에 기업 곳간 ‘최대’…가계는 예금 빼 주식으로"
     },
+    "core:25025ef53bf0155900dd484d": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03463686645612264",
+      "source": "이데일리",
+      "source_body_digest": "02a46aa180d289ae8f1c50a9400ca35dabf3df01699fbefb5a67e3c4cf7f6606",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2611a0b82784195607a451aaefa0b7571f8774b05f374504c3eccac2b58bbcd",
+      "source_fact_keys": [
+        "source_fact:v1:2bf586b31ac582222906fdf5ea794ac322b16debb1c377818485a566eda17ba6",
+        "source_fact:v1:6498120909b359ea0070e2dfd8b7745a86282a1f1f6bd94b0ef1040468373c84",
+        "source_fact:v1:a0bc0a7f955816e119c5a9f2737211f614690047afdf23c3c043d728237f06a3",
+        "source_fact:v1:b0d6a8c3621bb28981eb4466849445428893db188cbb9aaeb4be2da974eda226",
+        "source_fact:v1:ba36bb98670aecc327f3034101ab1b03575af440cbcc2699f5ae355794514439",
+        "source_fact:v1:d0da68b77d3195b7ccd5307c86b341cb47ec00ce7bde9f26703c97207e6eb5e8",
+        "source_fact:v1:e119b508b4d329b7251bef43dbb59401b5a550125b5badbd0c9f35eb3a3974a1",
+        "source_fact:v1:f59f4da249ff338f599ca779ef9df1d6e767f6317ca65f5844e8e6a1ad00c3a0"
+      ],
+      "source_published_kst": "2026-10-12T15:26+09:00",
+      "source_title": "항공물류 힘주는 삼성SDS…우정항공 품는다(종합)",
+      "telegram_core_fact": "정보기술(IT) 업계에 따르면 삼성SDS는 이날 우정항공 지분 전량을 인수하는 주식양수도계약을 체결했다. 이번 인수로 삼성SDS는 주요 항공사와의 운송 공간 계약부터 공항 내 화물 처리까지 항공물류 운영 역량을 확보하게 된다.",
+      "title": "항공물류 힘주는 삼성SDS…우정항공 품는다(종합)"
+    },
     "core:2528f4e067017b8929f5c38b": {
       "first_seen_kst": "2026-10-08T02:41:45+09:00",
       "lanes": {
@@ -7165,6 +7211,26 @@
       "source_title": "美 재정 적자 2조 달러 눈앞…\"2021년 이후 최대\"",
       "telegram_core_fact": "미국의 올해 재정 적자가 전년 대비 10% 넘게 증가한 2조 달러(약 2690조원)에 육박하면서 2021년 이후 최대치를 기록했다. 트럼프 행정부는 적자를 GDP 대비 3%로 축소하기 위한 재정건전화 계획을 언급하면서도, 공화당이 선거에서 이길 경우 미국 성인 1인당 5000달러씩 주겠다는 배당금 공약을 내걸었다.",
       "title": "美 재정 적자 2조 달러 눈앞…\"2021년 이후 최대\""
+    },
+    "core:3583599c4db7114cfb61b7a2": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174041",
+      "source": "매일경제",
+      "source_body_digest": "f3933d6447b5f2383df7859ac1cfb4c85c35a8db5d418912198314cc609e3d7b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ffb7ad8c461a7f342cb19294c88610173ff45d61e4f7bbae3193aa8e6191773b",
+      "source_fact_keys": [
+        "source_fact:v1:249cc0adda388e09176d929cc96813b393b399709aa488da43631597b37b151f",
+        "source_fact:v1:e848b605ea2e39120736d7a14c998e8d4bde07eb876b548b3a0ce148f0503d9d"
+      ],
+      "source_published_kst": "2026-10-12T23:10+09:00",
+      "source_title": "아이온큐, 엘리시티 전액 주식 인수 발표에 지분 희석 우려 부각",
+      "telegram_core_fact": "최대 13억 달러 규모로 사이버보안 기업 엘리시티를 전액 주식으로 인수한다는 소식에 지분 희석 우려가 커졌습니다.",
+      "title": "아이온큐, 엘리시티 전액 주식 인수 발표에 지분 희석 우려 부각"
     },
     "core:358c3b82927780467f4219aa": {
       "first_seen_kst": "2026-10-12T22:50:06+09:00",
@@ -19912,6 +19978,28 @@
       "telegram_core_fact": "정부는 착공 실적 부진을 만회하기 위해 신규택지와 공공택지를 중심으로 공급 속도를 높인다는 방침이다.",
       "title": "홍지선 국토장관 “수도권 주택 착공 목표 달성 어려워…80~88% 전망” [국감] [종합]"
     },
+    "core:9f260a07d855af60639e3701": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633862",
+      "source": "이투데이",
+      "source_body_digest": "5c57a992edd1112bda3b77f1d8a3b056e588be4bc82c95fc9e7a82ec783e62c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:063d6326268d2934b8fe0db1afdddf26ae63ddfa01deb933448076082c731d73",
+      "source_fact_keys": [
+        "source_fact:v1:3177261dcfc7977464f4651f05f5d3a13c12571e7a88f0c1725f52aa5bbc1c66",
+        "source_fact:v1:3fb5e5d1a8efa2dd1e9f659b87cbb10e4e3298fa621bfe479d7a9bc750afd029",
+        "source_fact:v1:b96bd88559b890028e16ddeb277fd4d61302a9355e9a7363e05478f40b305011",
+        "source_fact:v1:bcfb755359bfbb63d9f54dedec5876eace5bfc83265dc07b54abe57843e8e2fa"
+      ],
+      "source_published_kst": "2026-10-12T05:00+09:00",
+      "source_title": "돈 빌려 한미사이언스 지분 늘리는 신동국…'5000억 대출' 이자부담 커진다",
+      "telegram_core_fact": "수천억대 차입 부담을 감수하면서 지분을 늘리는 만큼 향후 대출 만기와 상환 여력에도 관심이 쏠린다.",
+      "title": "돈 빌려 한미사이언스 지분 늘리는 신동국…'5000억 대출' 이자부담 커진다"
+    },
     "core:9f2ea44266a0d6a71af1eaeb": {
       "first_seen_kst": "2026-10-07T16:44:58+09:00",
       "lanes": {
@@ -21991,6 +22079,25 @@
       "source_title": "효성重, 2GW급 제어기 성능검증 시스템 국내 최초 구축",
       "telegram_core_fact": "효성중공업 관계자는 “이번 HILS 구축은 단순한 시험설비 확보를 넘어, 당사가 자체 개발한 2GW급 HVDC 제어기를 더욱 고도화할 수 있는 독자적인 기술 기반을 확보했다는 데 의미가 있다”며 “이를 바탕으로 국산 독자기술을 통한 글로벌 HVDC 시장 진출을 지속 확대해 나가겠다”고 밝혔다.",
       "title": "효성重, 2GW급 제어기 성능검증 시스템 국내 최초 구축"
+    },
+    "core:ad894ec877f1532ea22601cc": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05100406645612264",
+      "source": "이데일리",
+      "source_body_digest": "f78ee3be38137eab95c6ddc3968b7d068d3d79e2fc6a9f6d661400028d461030",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d23ba01f9ccc5ce20b3653654893f1baa3f744eca6149d428a9f0ec259cf8250",
+      "source_fact_keys": [
+        "source_fact:v1:b67463b5a81f7760ebafbcb0032a45f85dd2ace61d884b3be829960375812653"
+      ],
+      "source_published_kst": "2026-10-12T21:53+09:00",
+      "source_title": "JTBC 채권 피해자 712명·593억원 피해…“개인 채권자 변제안 마련해야”",
+      "telegram_core_fact": "JTBC 회사채에 투자했다가 피해를 본 개인 채권자들이 국회 국정감사에서 구체적인 변제 계획 마련과 오너 일가의 책임 있는 대응을 촉구했다.",
+      "title": "JTBC 채권 피해자 712명·593억원 피해…“개인 채권자 변제안 마련해야”"
     },
     "core:ad94a5fd104a4df62572eb13": {
       "first_seen_kst": "2026-10-12T07:27:08+09:00",
@@ -30014,6 +30121,26 @@
       "telegram_core_fact": "박종찬 한국형발사체 고도화사업단장은 \"1·2·3단 엔진 연소시간이 기존 노미널 기준값(설계 기준값)보다 모두 약간씩 짧아졌다\"며 \"성능이 개선됐다고 표현하기보다는 예상했던 성능범위 안에서 더 좋은 방향의 마진(성능 여유)이 나온 것\"이라고 설명했다.",
       "title": "한국형발사체 '누리호' 정시 이륙… 목표 궤도 안착 [뉴시스Pic]"
     },
+    "core:ee903e320987e50fea1fa697": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.yna.co.kr/view/MYH20261012000100038",
+      "source": "연합뉴스",
+      "source_body_digest": "b3611b62711dcd2f357ef7107c1e5184f112198ac8ef818f98583819c77b9195",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cbb47e5f3171e032c8c883339069cc57808bd874147ee30357561cd46625d5cc",
+      "source_fact_keys": [
+        "source_fact:v1:8d675c22e345a6c224706030662593eca3ecb68b21664343f5dd7d74bb767e2a",
+        "source_fact:v1:bb37daf30fad8e6bf0d02d53e1a9df8a570ee2a03c13bc7313d4651f442a56cb"
+      ],
+      "source_published_kst": "2026-10-12T05:12+09:00",
+      "source_title": "트럼프 \"러-우크라, 에너지 부문 휴전 합의\" | 연합뉴스",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아와 우크라이나가 에너지 부문에 대한 휴전에 합의했다고 밝혔습니다. 트럼프 대통령은 현지시간 11일 소셜미디어 트루스소셜을 통해 \"러시아와 우크라이나 간 전쟁에서 에너지 휴전이 이뤄졌다\"라며 \"즉각적으로 효력이 발생한다\"라고 말했습니다.",
+      "title": "트럼프 \"러-우크라, 에너지 부문 휴전 합의\" | 연합뉴스"
+    },
     "core:eed370d4e0dd79a6523c23f4": {
       "first_seen_kst": "2026-10-08T06:10:43+09:00",
       "lanes": {
@@ -30193,6 +30320,30 @@
       "source_title": "한울반도체, 日 MLCC 제조사 AI 외관검사 성능개선 수주…해외 고객 확대",
       "telegram_core_fact": "한울반도체가 일본 소재 글로벌 적층세라믹콘덴서(MLCC) 제조사로부터 외관검사설비의 AI 성능 개선 사업을 수주했다.",
       "title": "한울반도체, 日 MLCC 제조사 AI 외관검사 성능개선 수주…해외 고객 확대"
+    },
+    "core:efee1b699082ea6a5b0a8be3": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://core.asiae.co.kr/article/2026101208500475243",
+      "source": "아시아경제",
+      "source_body_digest": "7f799134dfa89f81a9eb4581cf8b38b5f03ca86284591026b2a96024194277c1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:664d7a91cef2023e3707739bdd112b2c43756f0c75b1e3099ea04aff9409d87f",
+      "source_fact_keys": [
+        "source_fact:v1:513a0135e659d6533daee85575e54002d02b282b0969b3b6d7352de33707367b",
+        "source_fact:v1:a2068b7df13986d28cd9beb90707f61930f7a6aa4cbacf6775974f3e8a1989e4",
+        "source_fact:v1:ad0442890b0ef6aa8107868859e7ef3c680692fc47dca76e3380b8f5d38f6812",
+        "source_fact:v1:bd9ef01057ac17ae81b0fee3f2e15636339e64caf8c7f2c749a552e71060a6ff",
+        "source_fact:v1:ebb079f62027aa702744fc8b3487ac4d41448bcf98c9c3799863d82606d8b4f8",
+        "source_fact:v1:fb23b1f179517ea25745df20f1acebf9b2dde98f2febab49fadcb5bbabe3d94a"
+      ],
+      "source_published_kst": "2026-10-12T17:50+09:00",
+      "source_title": "KB운용, 'RISE 코리아밸류업위클리고정커버드콜 ETF' 순자산 4천억 돌파",
+      "telegram_core_fact": "KB자산운용, RISE 코리아밸류업위클리고정커버드콜 ETF의 순자산이 4000억원을 넘어섰다고 밝혔다. ' ETF가 순자산 4000억원을 돌파했다.",
+      "title": "KB운용, 'RISE 코리아밸류업위클리고정커버드콜 ETF' 순자산 4천억 돌파"
     },
     "core:f04dde79b11b42ce0c6f4b28": {
       "first_seen_kst": "2026-10-08T02:12:43+09:00",
@@ -35454,22 +35605,22 @@
     "event:4737714e3ad20fc71dee8088": {
       "first_seen_kst": "2026-10-12T05:58:12+09:00",
       "lanes": {
-        "live": "2026-10-12T23:14:39+09:00"
+        "live": "2026-10-12T23:37:27+09:00"
       },
-      "last_seen_kst": "2026-10-12T23:14:39+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261012043000008",
-      "source": "연합뉴스",
-      "source_body_digest": "0a1f12507fcc4081b44e81886d0797d7c9e5e82a62b10220848776ce58bd43d3",
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.hankyung.com/article/2026101268256",
+      "source": "한국경제",
+      "source_body_digest": "fa79447dd06af41b043b1d58147bbbc3e208539b38da8bc1df5ec04a4f3e736c",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:5a7348742777fa0ab050d5990efcaa1774bfbf49401c2714a05e8fe841927ab3",
+      "source_fact_identity": "source_facts:v1:c9dd888c48d89e991f9c327d01bed402ff9fff518c84e20e43fa7e9c26312ef0",
       "source_fact_keys": [
-        "source_fact:v1:52e66b993f1cb5d30584e1e7b5c70479b30a0b8b4dae3b369cdd242fbd12bbc1",
-        "source_fact:v1:9f66ad644e2f294ae788eef46e494c19bea8b7d0ff246a511f98c6c120f09a44"
+        "source_fact:v1:30c331cd72733c66f083421c39aa25b45e445e0a318481e344e596f0d39678f4",
+        "source_fact:v1:a71467300191e85d03c1196d0bd84bc39a6efdfd24765794cde5f30c7dc328a2"
       ],
-      "source_published_kst": "2026-10-12T09:34+09:00",
-      "source_title": "키움운용, 'MLCC&AI기판' ETF 상장…무라타·삼성전기 50% 투자 | 연합뉴스",
-      "telegram_core_fact": "키움투자자산운용은 오는 13일 적층세라믹콘덴서(MLCC)와 인공지능(AI) 반도체 패키징 기판 관련 기업에 투자하는 'KIWOOM 글로벌MLCC&AI기판TOP4+' 상장지수펀드(ETF)를 상장한다고 12일 밝혔다.",
-      "title": "키움운용, 'MLCC&AI기판' ETF 상장…무라타·삼성전기 50% 투자 | 연합뉴스"
+      "source_published_kst": "2026-10-12T17:30+09:00",
+      "source_title": "디에스운용, 'DS AI반도체액티브' ETF 13일 상장",
+      "telegram_core_fact": "디에스자산운용은 오는 13일 'DS AI반도체액티브' 상장지수펀드(ETF)를 유가증권시장에 상장한다고 12일 밝혔다.",
+      "title": "디에스운용, 'DS AI반도체액티브' ETF 13일 상장"
     },
     "event:47441e982ce90f7c91ef1c61": {
       "first_seen_kst": "2026-10-12T11:11:48+09:00",
@@ -36988,22 +37139,28 @@
     "event:6a27210e82c74ecaf46cca68": {
       "first_seen_kst": "2026-10-12T12:09:58+09:00",
       "lanes": {
-        "live": "2026-10-12T21:20:33+09:00"
+        "live": "2026-10-12T23:37:27+09:00"
       },
-      "last_seen_kst": "2026-10-12T21:20:33+09:00",
-      "link": "https://www.hankyung.com/article/2026101268781",
-      "source": "한국경제",
-      "source_body_digest": "c2dec739b8d533a92cfc06391168b790ec3a0e9bd9907d786b1acfa0b92f1c25",
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03463686645612264",
+      "source": "이데일리",
+      "source_body_digest": "02a46aa180d289ae8f1c50a9400ca35dabf3df01699fbefb5a67e3c4cf7f6606",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:d10512fb77b1aa9d6e0fbed36f1613503c7b5a6c3f195a21b3eb557e8acdaa05",
+      "source_fact_identity": "source_facts:v1:e2611a0b82784195607a451aaefa0b7571f8774b05f374504c3eccac2b58bbcd",
       "source_fact_keys": [
-        "source_fact:v1:285087f77f35f410a94cf6d4bd3aad2dd8dcff92574b2d1f7a1322ed728c91aa",
-        "source_fact:v1:d2c593639f07c7ddc735af720f33dd1a3fad14bdb426a8ede6dfbe9c3dfee761"
+        "source_fact:v1:2bf586b31ac582222906fdf5ea794ac322b16debb1c377818485a566eda17ba6",
+        "source_fact:v1:6498120909b359ea0070e2dfd8b7745a86282a1f1f6bd94b0ef1040468373c84",
+        "source_fact:v1:a0bc0a7f955816e119c5a9f2737211f614690047afdf23c3c043d728237f06a3",
+        "source_fact:v1:b0d6a8c3621bb28981eb4466849445428893db188cbb9aaeb4be2da974eda226",
+        "source_fact:v1:ba36bb98670aecc327f3034101ab1b03575af440cbcc2699f5ae355794514439",
+        "source_fact:v1:d0da68b77d3195b7ccd5307c86b341cb47ec00ce7bde9f26703c97207e6eb5e8",
+        "source_fact:v1:e119b508b4d329b7251bef43dbb59401b5a550125b5badbd0c9f35eb3a3974a1",
+        "source_fact:v1:f59f4da249ff338f599ca779ef9df1d6e767f6317ca65f5844e8e6a1ad00c3a0"
       ],
-      "source_published_kst": "2026-10-12T19:08+09:00",
-      "source_title": "알테오젠 \"실탄 6300억, 새 기술 도입에 투자\"",
-      "telegram_core_fact": "알테오젠은 최근 국민성장펀드 출자금을 포함한 스카이레이크 펀드에서 총 2000억원의 투자를 유치하기로 했다. 발행을 완료하면 기존에 보유한 현금성 자산 4300억원과 합쳐 총 6300억원의 투자 재원을 확보하게 된다.",
-      "title": "알테오젠 \"실탄 6300억, 새 기술 도입에 투자\""
+      "source_published_kst": "2026-10-12T15:26+09:00",
+      "source_title": "항공물류 힘주는 삼성SDS…우정항공 품는다(종합)",
+      "telegram_core_fact": "정보기술(IT) 업계에 따르면 삼성SDS는 이날 우정항공 지분 전량을 인수하는 주식양수도계약을 체결했다. 이번 인수로 삼성SDS는 주요 항공사와의 운송 공간 계약부터 공항 내 화물 처리까지 항공물류 운영 역량을 확보하게 된다.",
+      "title": "항공물류 힘주는 삼성SDS…우정항공 품는다(종합)"
     },
     "event:6a805815905820cdf1fa5d3a": {
       "first_seen_kst": "2026-10-10T06:02:39+09:00",
@@ -43018,26 +43175,26 @@
     "event:ed9afcaa219ba32c7d3e20ee": {
       "first_seen_kst": "2026-10-12T09:53:29+09:00",
       "lanes": {
-        "live": "2026-10-12T17:17:29+09:00"
+        "live": "2026-10-12T23:37:27+09:00"
       },
-      "last_seen_kst": "2026-10-12T17:17:29+09:00",
-      "link": "https://www.fnnews.com/news/202610121559373403",
-      "source": "파이낸셜뉴스",
-      "source_body_digest": "9ed13a04b0af7a6b2e2001b6eb76fa79496b07b2ae376c62a947fdaecd7fa88e",
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://core.asiae.co.kr/article/2026101208500475243",
+      "source": "아시아경제",
+      "source_body_digest": "7f799134dfa89f81a9eb4581cf8b38b5f03ca86284591026b2a96024194277c1",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:9ef0954bd79aa4dac46b24b71aa69c0026efe3271d801fc19604c517361e94ef",
+      "source_fact_identity": "source_facts:v1:664d7a91cef2023e3707739bdd112b2c43756f0c75b1e3099ea04aff9409d87f",
       "source_fact_keys": [
-        "source_fact:v1:1f51d05c872781111fd992d7d3c04ad8e2023e0dca0c4abce380216b54457fec",
-        "source_fact:v1:36e99d6e7b55a7beb2144fdc19fd786767e3af79e1467b9cab5b44ade6ee19f4",
-        "source_fact:v1:5294d013513b09af4d26a98c55c3f2bb48b6118d369d6c4cf72b09ec1d1e08f9",
-        "source_fact:v1:a546db1591fba790cef231f26a01a4d49af4901ced87aff64cb1527707d6eccb",
-        "source_fact:v1:e8846bcb30693acb68cfb46ee4c086700850a4aa62f805ac065814045d0e9781",
-        "source_fact:v1:ffdf847fcbba3f8075ccbda861321dc374e3432811df67b99e9e9edc4344810f"
+        "source_fact:v1:513a0135e659d6533daee85575e54002d02b282b0969b3b6d7352de33707367b",
+        "source_fact:v1:a2068b7df13986d28cd9beb90707f61930f7a6aa4cbacf6775974f3e8a1989e4",
+        "source_fact:v1:ad0442890b0ef6aa8107868859e7ef3c680692fc47dca76e3380b8f5d38f6812",
+        "source_fact:v1:bd9ef01057ac17ae81b0fee3f2e15636339e64caf8c7f2c749a552e71060a6ff",
+        "source_fact:v1:ebb079f62027aa702744fc8b3487ac4d41448bcf98c9c3799863d82606d8b4f8",
+        "source_fact:v1:fb23b1f179517ea25745df20f1acebf9b2dde98f2febab49fadcb5bbabe3d94a"
       ],
-      "source_published_kst": "2026-10-12T16:44+09:00",
-      "source_title": "\"왜 국장만 내려요?\"…'코스피 소외'에 ETF·직투 자금 '미국행'",
-      "telegram_core_fact": "미국의 2·4분기 명목 성장률은 6.3%로 10년물 국채금리(5% 초반)를 웃돌았고, 3·4분기 S&P500 기업의 주당순이익(EPS) 증가율은 30%를 웃돌 것으로 예상된다. [파이낸셜뉴스]미국 증시가 사상 최고치를 새로 쓰는 사이 코스피는 뒷걸음질치면서 투자자금의 미국행이 두드러지고 있다.",
-      "title": "\"왜 국장만 내려요?\"…'코스피 소외'에 ETF·직투 자금 '미국행'"
+      "source_published_kst": "2026-10-12T17:50+09:00",
+      "source_title": "KB운용, 'RISE 코리아밸류업위클리고정커버드콜 ETF' 순자산 4천억 돌파",
+      "telegram_core_fact": "KB자산운용, RISE 코리아밸류업위클리고정커버드콜 ETF의 순자산이 4000억원을 넘어섰다고 밝혔다. ' ETF가 순자산 4000억원을 돌파했다.",
+      "title": "KB운용, 'RISE 코리아밸류업위클리고정커버드콜 ETF' 순자산 4천억 돌파"
     },
     "event:ee2445b0912c043ab1270e54": {
       "first_seen_kst": "2026-10-05T15:39:46+09:00",
@@ -48732,6 +48889,26 @@
       "telegram_core_fact": "조 시장은 \"삼성전기가 명학산단 잔여 부지에 1단계로 4조2천700억원 투자를, 2단계 투자로 추가 증설을 검토하고 있다\"며 \"3단계 투자는 연서면 국가산단에 하는 방안을 현재 논의하고 있다\"고 설명했다.",
       "title": "세종시장 \"삼성전기, 추가증설 검토…3단계 투자 연서면 국가산단 논의\""
     },
+    "fact:19ccfb8a1515ec214456bde2": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.yna.co.kr/view/MYH20261012000100038",
+      "source": "연합뉴스",
+      "source_body_digest": "b3611b62711dcd2f357ef7107c1e5184f112198ac8ef818f98583819c77b9195",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cbb47e5f3171e032c8c883339069cc57808bd874147ee30357561cd46625d5cc",
+      "source_fact_keys": [
+        "source_fact:v1:8d675c22e345a6c224706030662593eca3ecb68b21664343f5dd7d74bb767e2a",
+        "source_fact:v1:bb37daf30fad8e6bf0d02d53e1a9df8a570ee2a03c13bc7313d4651f442a56cb"
+      ],
+      "source_published_kst": "2026-10-12T05:12+09:00",
+      "source_title": "트럼프 \"러-우크라, 에너지 부문 휴전 합의\" | 연합뉴스",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아와 우크라이나가 에너지 부문에 대한 휴전에 합의했다고 밝혔습니다. 트럼프 대통령은 현지시간 11일 소셜미디어 트루스소셜을 통해 \"러시아와 우크라이나 간 전쟁에서 에너지 휴전이 이뤄졌다\"라며 \"즉각적으로 효력이 발생한다\"라고 말했습니다.",
+      "title": "트럼프 \"러-우크라, 에너지 부문 휴전 합의\" | 연합뉴스"
+    },
     "fact:1a010d9063177441bbe83b37": {
       "first_seen_kst": "2026-10-06T00:57:01+09:00",
       "lanes": {
@@ -53767,6 +53944,26 @@
       "source_published_kst": "2026-10-05T21:46+09:00",
       "title": "재규어 헬스, 특별 주식배당..우선주 1주 보통주 5주 전환"
     },
+    "fact:375bfd65f07194f2c33524f6": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.hankyung.com/article/2026101268256",
+      "source": "한국경제",
+      "source_body_digest": "fa79447dd06af41b043b1d58147bbbc3e208539b38da8bc1df5ec04a4f3e736c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c9dd888c48d89e991f9c327d01bed402ff9fff518c84e20e43fa7e9c26312ef0",
+      "source_fact_keys": [
+        "source_fact:v1:30c331cd72733c66f083421c39aa25b45e445e0a318481e344e596f0d39678f4",
+        "source_fact:v1:a71467300191e85d03c1196d0bd84bc39a6efdfd24765794cde5f30c7dc328a2"
+      ],
+      "source_published_kst": "2026-10-12T17:30+09:00",
+      "source_title": "디에스운용, 'DS AI반도체액티브' ETF 13일 상장",
+      "telegram_core_fact": "디에스자산운용은 오는 13일 'DS AI반도체액티브' 상장지수펀드(ETF)를 유가증권시장에 상장한다고 12일 밝혔다.",
+      "title": "디에스운용, 'DS AI반도체액티브' ETF 13일 상장"
+    },
     "fact:376a4ef5e911bcb0d76c7867": {
       "first_seen_kst": "2026-10-07T13:41:41+09:00",
       "lanes": {
@@ -57340,6 +57537,32 @@
       "source_title": "원림, 의료기기 사업·바이오 투자 병행으로 성장동력 다변화",
       "telegram_core_fact": "원림에 따르면 스타바이오 매출은 2023년 261억 원에서 2025년 334억 원으로 2년 새 약 28% 증가했다. 원림이 스타바이오의 정형외과 의료기기 사업과 한빛인베스트먼트의 헬스케어 투자로 바이오 사업을 확대하고 있다.",
       "title": "원림, 의료기기 사업·바이오 투자 병행으로 성장동력 다변화"
+    },
+    "fact:4b7f59d3e2d38a2bce12f60b": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03463686645612264",
+      "source": "이데일리",
+      "source_body_digest": "02a46aa180d289ae8f1c50a9400ca35dabf3df01699fbefb5a67e3c4cf7f6606",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2611a0b82784195607a451aaefa0b7571f8774b05f374504c3eccac2b58bbcd",
+      "source_fact_keys": [
+        "source_fact:v1:2bf586b31ac582222906fdf5ea794ac322b16debb1c377818485a566eda17ba6",
+        "source_fact:v1:6498120909b359ea0070e2dfd8b7745a86282a1f1f6bd94b0ef1040468373c84",
+        "source_fact:v1:a0bc0a7f955816e119c5a9f2737211f614690047afdf23c3c043d728237f06a3",
+        "source_fact:v1:b0d6a8c3621bb28981eb4466849445428893db188cbb9aaeb4be2da974eda226",
+        "source_fact:v1:ba36bb98670aecc327f3034101ab1b03575af440cbcc2699f5ae355794514439",
+        "source_fact:v1:d0da68b77d3195b7ccd5307c86b341cb47ec00ce7bde9f26703c97207e6eb5e8",
+        "source_fact:v1:e119b508b4d329b7251bef43dbb59401b5a550125b5badbd0c9f35eb3a3974a1",
+        "source_fact:v1:f59f4da249ff338f599ca779ef9df1d6e767f6317ca65f5844e8e6a1ad00c3a0"
+      ],
+      "source_published_kst": "2026-10-12T15:26+09:00",
+      "source_title": "항공물류 힘주는 삼성SDS…우정항공 품는다(종합)",
+      "telegram_core_fact": "정보기술(IT) 업계에 따르면 삼성SDS는 이날 우정항공 지분 전량을 인수하는 주식양수도계약을 체결했다. 이번 인수로 삼성SDS는 주요 항공사와의 운송 공간 계약부터 공항 내 화물 처리까지 항공물류 운영 역량을 확보하게 된다.",
+      "title": "항공물류 힘주는 삼성SDS…우정항공 품는다(종합)"
     },
     "fact:4b7f9f611cff68387e734425": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
@@ -71707,6 +71930,25 @@
       "telegram_core_fact": "후보지 선정부터 착공까지 걸리는 기간을 약 6년에서 4년 6개월로 1년 6개월 단축하고, 2030년까지 후보지 100곳을 선정해 약 8만호의 주택 공급 기반을 마련한다는 계획이다.",
       "title": "서울시 '모아통합기획' 도입…착공까지 6년→4년6개월로 단축 | 연합뉴스"
     },
+    "fact:98b1763ab776d164663f0ba7": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05100406645612264",
+      "source": "이데일리",
+      "source_body_digest": "f78ee3be38137eab95c6ddc3968b7d068d3d79e2fc6a9f6d661400028d461030",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d23ba01f9ccc5ce20b3653654893f1baa3f744eca6149d428a9f0ec259cf8250",
+      "source_fact_keys": [
+        "source_fact:v1:b67463b5a81f7760ebafbcb0032a45f85dd2ace61d884b3be829960375812653"
+      ],
+      "source_published_kst": "2026-10-12T21:53+09:00",
+      "source_title": "JTBC 채권 피해자 712명·593억원 피해…“개인 채권자 변제안 마련해야”",
+      "telegram_core_fact": "JTBC 회사채에 투자했다가 피해를 본 개인 채권자들이 국회 국정감사에서 구체적인 변제 계획 마련과 오너 일가의 책임 있는 대응을 촉구했다.",
+      "title": "JTBC 채권 피해자 712명·593억원 피해…“개인 채권자 변제안 마련해야”"
+    },
     "fact:98bb5ef40999016b7170e636": {
       "first_seen_kst": "2026-10-06T14:18:00+09:00",
       "lanes": {
@@ -79969,6 +80211,28 @@
       "telegram_core_fact": "실적 개선의 핵심은 메모리 가격으로, 유진투자증권은 3·4분기 D램의 평균판매가격이 전 분기 대비 20%, 출하량은 저장용량 기준으로 12% 증가할 것으로 예상했다.",
       "title": "\"SK하이닉스, HBM·범용 메모리 동반 호조..내년도 성장\"-유진證"
     },
+    "fact:c5b988a6d38f438ada8d1029": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633862",
+      "source": "이투데이",
+      "source_body_digest": "5c57a992edd1112bda3b77f1d8a3b056e588be4bc82c95fc9e7a82ec783e62c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:063d6326268d2934b8fe0db1afdddf26ae63ddfa01deb933448076082c731d73",
+      "source_fact_keys": [
+        "source_fact:v1:3177261dcfc7977464f4651f05f5d3a13c12571e7a88f0c1725f52aa5bbc1c66",
+        "source_fact:v1:3fb5e5d1a8efa2dd1e9f659b87cbb10e4e3298fa621bfe479d7a9bc750afd029",
+        "source_fact:v1:b96bd88559b890028e16ddeb277fd4d61302a9355e9a7363e05478f40b305011",
+        "source_fact:v1:bcfb755359bfbb63d9f54dedec5876eace5bfc83265dc07b54abe57843e8e2fa"
+      ],
+      "source_published_kst": "2026-10-12T05:00+09:00",
+      "source_title": "돈 빌려 한미사이언스 지분 늘리는 신동국…'5000억 대출' 이자부담 커진다",
+      "telegram_core_fact": "수천억대 차입 부담을 감수하면서 지분을 늘리는 만큼 향후 대출 만기와 상환 여력에도 관심이 쏠린다.",
+      "title": "돈 빌려 한미사이언스 지분 늘리는 신동국…'5000억 대출' 이자부담 커진다"
+    },
     "fact:c5de48539ba5ccc61886a334": {
       "first_seen_kst": "2026-10-11T17:50:48+09:00",
       "lanes": {
@@ -81887,6 +82151,26 @@
       "source_published_kst": "2026-10-06T12:52+09:00",
       "title": "술·약물 복용 후 수상레저기구 운전 '철퇴'…주취 조종 첫 적발, 최대 5년 징역"
     },
+    "fact:d01e7789050a6b90917f32ec": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174041",
+      "source": "매일경제",
+      "source_body_digest": "f3933d6447b5f2383df7859ac1cfb4c85c35a8db5d418912198314cc609e3d7b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ffb7ad8c461a7f342cb19294c88610173ff45d61e4f7bbae3193aa8e6191773b",
+      "source_fact_keys": [
+        "source_fact:v1:249cc0adda388e09176d929cc96813b393b399709aa488da43631597b37b151f",
+        "source_fact:v1:e848b605ea2e39120736d7a14c998e8d4bde07eb876b548b3a0ce148f0503d9d"
+      ],
+      "source_published_kst": "2026-10-12T23:10+09:00",
+      "source_title": "아이온큐, 엘리시티 전액 주식 인수 발표에 지분 희석 우려 부각",
+      "telegram_core_fact": "최대 13억 달러 규모로 사이버보안 기업 엘리시티를 전액 주식으로 인수한다는 소식에 지분 희석 우려가 커졌습니다.",
+      "title": "아이온큐, 엘리시티 전액 주식 인수 발표에 지분 희석 우려 부각"
+    },
     "fact:d0387a94115635508d5d4ad0": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
       "lanes": {
@@ -82865,6 +83149,30 @@
       "source_title": "재생에너지·AI 확산에 美 ESS 수요 폭발⋯韓 기업엔 ‘기회의 땅’[K배터리 주도권 탈환]",
       "telegram_core_fact": "전력망용 ESS뿐만 아니라, AI 데이터센터용 무정전 전원 장치(UPS) 수요가 연평균 47%씩 급증하며 시장 확대를 견인할 것으로 분석됐다.",
       "title": "재생에너지·AI 확산에 美 ESS 수요 폭발⋯韓 기업엔 ‘기회의 땅’[K배터리 주도권 탈환]"
+    },
+    "fact:d49f6bbd8cbdd3b9b44c3428": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://core.asiae.co.kr/article/2026101208500475243",
+      "source": "아시아경제",
+      "source_body_digest": "7f799134dfa89f81a9eb4581cf8b38b5f03ca86284591026b2a96024194277c1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:664d7a91cef2023e3707739bdd112b2c43756f0c75b1e3099ea04aff9409d87f",
+      "source_fact_keys": [
+        "source_fact:v1:513a0135e659d6533daee85575e54002d02b282b0969b3b6d7352de33707367b",
+        "source_fact:v1:a2068b7df13986d28cd9beb90707f61930f7a6aa4cbacf6775974f3e8a1989e4",
+        "source_fact:v1:ad0442890b0ef6aa8107868859e7ef3c680692fc47dca76e3380b8f5d38f6812",
+        "source_fact:v1:bd9ef01057ac17ae81b0fee3f2e15636339e64caf8c7f2c749a552e71060a6ff",
+        "source_fact:v1:ebb079f62027aa702744fc8b3487ac4d41448bcf98c9c3799863d82606d8b4f8",
+        "source_fact:v1:fb23b1f179517ea25745df20f1acebf9b2dde98f2febab49fadcb5bbabe3d94a"
+      ],
+      "source_published_kst": "2026-10-12T17:50+09:00",
+      "source_title": "KB운용, 'RISE 코리아밸류업위클리고정커버드콜 ETF' 순자산 4천억 돌파",
+      "telegram_core_fact": "KB자산운용, RISE 코리아밸류업위클리고정커버드콜 ETF의 순자산이 4000억원을 넘어섰다고 밝혔다. ' ETF가 순자산 4000억원을 돌파했다.",
+      "title": "KB운용, 'RISE 코리아밸류업위클리고정커버드콜 ETF' 순자산 4천억 돌파"
     },
     "fact:d4cfcced53c26edb33564060": {
       "first_seen_kst": "2026-10-10T08:26:55+09:00",
@@ -105453,6 +105761,32 @@
       ],
       "source_published_kst": "2026-10-06T00:51+09:00",
       "title": "美고용 식었는데 서비스 물가 더 뛰었다…연준 딜레마"
+    },
+    "link:351b281cb7968f4add95382e": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03463686645612264",
+      "source": "이데일리",
+      "source_body_digest": "02a46aa180d289ae8f1c50a9400ca35dabf3df01699fbefb5a67e3c4cf7f6606",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2611a0b82784195607a451aaefa0b7571f8774b05f374504c3eccac2b58bbcd",
+      "source_fact_keys": [
+        "source_fact:v1:2bf586b31ac582222906fdf5ea794ac322b16debb1c377818485a566eda17ba6",
+        "source_fact:v1:6498120909b359ea0070e2dfd8b7745a86282a1f1f6bd94b0ef1040468373c84",
+        "source_fact:v1:a0bc0a7f955816e119c5a9f2737211f614690047afdf23c3c043d728237f06a3",
+        "source_fact:v1:b0d6a8c3621bb28981eb4466849445428893db188cbb9aaeb4be2da974eda226",
+        "source_fact:v1:ba36bb98670aecc327f3034101ab1b03575af440cbcc2699f5ae355794514439",
+        "source_fact:v1:d0da68b77d3195b7ccd5307c86b341cb47ec00ce7bde9f26703c97207e6eb5e8",
+        "source_fact:v1:e119b508b4d329b7251bef43dbb59401b5a550125b5badbd0c9f35eb3a3974a1",
+        "source_fact:v1:f59f4da249ff338f599ca779ef9df1d6e767f6317ca65f5844e8e6a1ad00c3a0"
+      ],
+      "source_published_kst": "2026-10-12T15:26+09:00",
+      "source_title": "항공물류 힘주는 삼성SDS…우정항공 품는다(종합)",
+      "telegram_core_fact": "정보기술(IT) 업계에 따르면 삼성SDS는 이날 우정항공 지분 전량을 인수하는 주식양수도계약을 체결했다. 이번 인수로 삼성SDS는 주요 항공사와의 운송 공간 계약부터 공항 내 화물 처리까지 항공물류 운영 역량을 확보하게 된다.",
+      "title": "항공물류 힘주는 삼성SDS…우정항공 품는다(종합)"
     },
     "link:3522bd4bc4327359f2538e0e": {
       "first_seen_kst": "2026-10-09T15:48:54+09:00",
@@ -131055,6 +131389,26 @@
       "telegram_core_fact": "레노버 AI 익스프레스는 기존 '레노버 하이브리드 AI 팩토리 위드 엔비디아'를 기업이 보다 빠르게 구축할 수 있도록 지원하는 솔루션이다.",
       "title": "레노버·엔비디아, AI 팩토리 구축 속도 높인다…최단 15일 만에 출하"
     },
+    "link:961489d9f737d4372e78a383": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.yna.co.kr/view/MYH20261012000100038",
+      "source": "연합뉴스",
+      "source_body_digest": "b3611b62711dcd2f357ef7107c1e5184f112198ac8ef818f98583819c77b9195",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cbb47e5f3171e032c8c883339069cc57808bd874147ee30357561cd46625d5cc",
+      "source_fact_keys": [
+        "source_fact:v1:8d675c22e345a6c224706030662593eca3ecb68b21664343f5dd7d74bb767e2a",
+        "source_fact:v1:bb37daf30fad8e6bf0d02d53e1a9df8a570ee2a03c13bc7313d4651f442a56cb"
+      ],
+      "source_published_kst": "2026-10-12T05:12+09:00",
+      "source_title": "트럼프 \"러-우크라, 에너지 부문 휴전 합의\" | 연합뉴스",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아와 우크라이나가 에너지 부문에 대한 휴전에 합의했다고 밝혔습니다. 트럼프 대통령은 현지시간 11일 소셜미디어 트루스소셜을 통해 \"러시아와 우크라이나 간 전쟁에서 에너지 휴전이 이뤄졌다\"라며 \"즉각적으로 효력이 발생한다\"라고 말했습니다.",
+      "title": "트럼프 \"러-우크라, 에너지 부문 휴전 합의\" | 연합뉴스"
+    },
     "link:962c4092daa2fa2a46fc473a": {
       "first_seen_kst": "2026-10-07T02:49:10+09:00",
       "lanes": {
@@ -131364,6 +131718,25 @@
       "source_title": "프리미엄화 가속하는 PC시장…고성능 탠덤 디스플레이 경쟁 치열 | 연합뉴스",
       "telegram_core_fact": "LG디스플레이는 선제적인 제품 양산을 넘어 탠덤 OLED의 소재·소자·적층 구조와 구동 기술 전반에 걸쳐 선행 기술과 특허 등 지적재산(IP)을 축적해 왔다고 설명했다.",
       "title": "프리미엄화 가속하는 PC시장…고성능 탠덤 디스플레이 경쟁 치열 | 연합뉴스"
+    },
+    "link:97468416ee2d62fa24a9d7e3": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05100406645612264",
+      "source": "이데일리",
+      "source_body_digest": "f78ee3be38137eab95c6ddc3968b7d068d3d79e2fc6a9f6d661400028d461030",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d23ba01f9ccc5ce20b3653654893f1baa3f744eca6149d428a9f0ec259cf8250",
+      "source_fact_keys": [
+        "source_fact:v1:b67463b5a81f7760ebafbcb0032a45f85dd2ace61d884b3be829960375812653"
+      ],
+      "source_published_kst": "2026-10-12T21:53+09:00",
+      "source_title": "JTBC 채권 피해자 712명·593억원 피해…“개인 채권자 변제안 마련해야”",
+      "telegram_core_fact": "JTBC 회사채에 투자했다가 피해를 본 개인 채권자들이 국회 국정감사에서 구체적인 변제 계획 마련과 오너 일가의 책임 있는 대응을 촉구했다.",
+      "title": "JTBC 채권 피해자 712명·593억원 피해…“개인 채권자 변제안 마련해야”"
     },
     "link:976bb1d14ae4c60521a99965": {
       "first_seen_kst": "2026-10-12T11:11:48+09:00",
@@ -136601,6 +136974,26 @@
       "telegram_core_fact": "휴머노이드 로봇 시장이 성장하면서 메모리 반도체 업계에 새로운 수요처가 열릴 전망이다.",
       "title": "“삼전닉스 또 돈 벌 곳 생겼다”…로봇 D램 수요 4년 뒤 20배 폭증 전망"
     },
+    "link:aa04b9742f4112c390b38fed": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.hankyung.com/article/2026101268256",
+      "source": "한국경제",
+      "source_body_digest": "fa79447dd06af41b043b1d58147bbbc3e208539b38da8bc1df5ec04a4f3e736c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c9dd888c48d89e991f9c327d01bed402ff9fff518c84e20e43fa7e9c26312ef0",
+      "source_fact_keys": [
+        "source_fact:v1:30c331cd72733c66f083421c39aa25b45e445e0a318481e344e596f0d39678f4",
+        "source_fact:v1:a71467300191e85d03c1196d0bd84bc39a6efdfd24765794cde5f30c7dc328a2"
+      ],
+      "source_published_kst": "2026-10-12T17:30+09:00",
+      "source_title": "디에스운용, 'DS AI반도체액티브' ETF 13일 상장",
+      "telegram_core_fact": "디에스자산운용은 오는 13일 'DS AI반도체액티브' 상장지수펀드(ETF)를 유가증권시장에 상장한다고 12일 밝혔다.",
+      "title": "디에스운용, 'DS AI반도체액티브' ETF 13일 상장"
+    },
     "link:aa16f427e1c223d52d7fe841": {
       "first_seen_kst": "2026-10-11T21:51:07+09:00",
       "lanes": {
@@ -140978,6 +141371,26 @@
       "source_published_kst": "2026-10-07T09:19+09:00",
       "title": "[더벨]레이저쎌, '글로벌 톱' 메모리 프로브카드 기업에 LPB 공급"
     },
+    "link:bb6a7361403dd5838ae7839d": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174041",
+      "source": "매일경제",
+      "source_body_digest": "f3933d6447b5f2383df7859ac1cfb4c85c35a8db5d418912198314cc609e3d7b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ffb7ad8c461a7f342cb19294c88610173ff45d61e4f7bbae3193aa8e6191773b",
+      "source_fact_keys": [
+        "source_fact:v1:249cc0adda388e09176d929cc96813b393b399709aa488da43631597b37b151f",
+        "source_fact:v1:e848b605ea2e39120736d7a14c998e8d4bde07eb876b548b3a0ce148f0503d9d"
+      ],
+      "source_published_kst": "2026-10-12T23:10+09:00",
+      "source_title": "아이온큐, 엘리시티 전액 주식 인수 발표에 지분 희석 우려 부각",
+      "telegram_core_fact": "최대 13억 달러 규모로 사이버보안 기업 엘리시티를 전액 주식으로 인수한다는 소식에 지분 희석 우려가 커졌습니다.",
+      "title": "아이온큐, 엘리시티 전액 주식 인수 발표에 지분 희석 우려 부각"
+    },
     "link:bb712decd1f1b74d57684379": {
       "first_seen_kst": "2026-10-02T10:55:46+09:00",
       "lanes": {
@@ -143351,6 +143764,28 @@
       "source": "뉴시스",
       "source_event_identity": "",
       "title": "스타벅스, 中신장 첫 진출…美의원·인권단체 \"즉각 매장 닫아라\""
+    },
+    "link:c33ac75210afc5ffc94acae6": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633862",
+      "source": "이투데이",
+      "source_body_digest": "5c57a992edd1112bda3b77f1d8a3b056e588be4bc82c95fc9e7a82ec783e62c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:063d6326268d2934b8fe0db1afdddf26ae63ddfa01deb933448076082c731d73",
+      "source_fact_keys": [
+        "source_fact:v1:3177261dcfc7977464f4651f05f5d3a13c12571e7a88f0c1725f52aa5bbc1c66",
+        "source_fact:v1:3fb5e5d1a8efa2dd1e9f659b87cbb10e4e3298fa621bfe479d7a9bc750afd029",
+        "source_fact:v1:b96bd88559b890028e16ddeb277fd4d61302a9355e9a7363e05478f40b305011",
+        "source_fact:v1:bcfb755359bfbb63d9f54dedec5876eace5bfc83265dc07b54abe57843e8e2fa"
+      ],
+      "source_published_kst": "2026-10-12T05:00+09:00",
+      "source_title": "돈 빌려 한미사이언스 지분 늘리는 신동국…'5000억 대출' 이자부담 커진다",
+      "telegram_core_fact": "수천억대 차입 부담을 감수하면서 지분을 늘리는 만큼 향후 대출 만기와 상환 여력에도 관심이 쏠린다.",
+      "title": "돈 빌려 한미사이언스 지분 늘리는 신동국…'5000억 대출' 이자부담 커진다"
     },
     "link:c33c983d9572a93d63bad77b": {
       "first_seen_kst": "2026-10-08T07:50:51+09:00",
@@ -148740,6 +149175,30 @@
       ],
       "source_published_kst": "2026-10-06T10:02+09:00",
       "title": "이녹스리튬, 2029년까지 수산화리튬 장기 마케팅 계약 체결"
+    },
+    "link:d7899443c71b991193d8bd90": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://core.asiae.co.kr/article/2026101208500475243",
+      "source": "아시아경제",
+      "source_body_digest": "7f799134dfa89f81a9eb4581cf8b38b5f03ca86284591026b2a96024194277c1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:664d7a91cef2023e3707739bdd112b2c43756f0c75b1e3099ea04aff9409d87f",
+      "source_fact_keys": [
+        "source_fact:v1:513a0135e659d6533daee85575e54002d02b282b0969b3b6d7352de33707367b",
+        "source_fact:v1:a2068b7df13986d28cd9beb90707f61930f7a6aa4cbacf6775974f3e8a1989e4",
+        "source_fact:v1:ad0442890b0ef6aa8107868859e7ef3c680692fc47dca76e3380b8f5d38f6812",
+        "source_fact:v1:bd9ef01057ac17ae81b0fee3f2e15636339e64caf8c7f2c749a552e71060a6ff",
+        "source_fact:v1:ebb079f62027aa702744fc8b3487ac4d41448bcf98c9c3799863d82606d8b4f8",
+        "source_fact:v1:fb23b1f179517ea25745df20f1acebf9b2dde98f2febab49fadcb5bbabe3d94a"
+      ],
+      "source_published_kst": "2026-10-12T17:50+09:00",
+      "source_title": "KB운용, 'RISE 코리아밸류업위클리고정커버드콜 ETF' 순자산 4천억 돌파",
+      "telegram_core_fact": "KB자산운용, RISE 코리아밸류업위클리고정커버드콜 ETF의 순자산이 4000억원을 넘어섰다고 밝혔다. ' ETF가 순자산 4000억원을 돌파했다.",
+      "title": "KB운용, 'RISE 코리아밸류업위클리고정커버드콜 ETF' 순자산 4천억 돌파"
     },
     "link:d796106c5e32bac0d9d696a8": {
       "first_seen_kst": "2026-10-08T13:07:52+09:00",
@@ -173109,6 +173568,26 @@
       "source": "전자신문",
       "title": "엔비디아, 11월 서울서 AI 데이 연다…삼성·SK·네이버 등 20개사 참여"
     },
+    "original:369765eeba4b1fcf96408d53": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.yna.co.kr/view/MYH20261012000100038",
+      "source": "연합뉴스",
+      "source_body_digest": "b3611b62711dcd2f357ef7107c1e5184f112198ac8ef818f98583819c77b9195",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cbb47e5f3171e032c8c883339069cc57808bd874147ee30357561cd46625d5cc",
+      "source_fact_keys": [
+        "source_fact:v1:8d675c22e345a6c224706030662593eca3ecb68b21664343f5dd7d74bb767e2a",
+        "source_fact:v1:bb37daf30fad8e6bf0d02d53e1a9df8a570ee2a03c13bc7313d4651f442a56cb"
+      ],
+      "source_published_kst": "2026-10-12T05:12+09:00",
+      "source_title": "트럼프 \"러-우크라, 에너지 부문 휴전 합의\" | 연합뉴스",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아와 우크라이나가 에너지 부문에 대한 휴전에 합의했다고 밝혔습니다. 트럼프 대통령은 현지시간 11일 소셜미디어 트루스소셜을 통해 \"러시아와 우크라이나 간 전쟁에서 에너지 휴전이 이뤄졌다\"라며 \"즉각적으로 효력이 발생한다\"라고 말했습니다.",
+      "title": "트럼프 \"러-우크라, 에너지 부문 휴전 합의\" | 연합뉴스"
+    },
     "original:3699bbe7eb28c5cac8b09ae1": {
       "first_seen_kst": "2026-10-01T16:57:16+09:00",
       "lanes": {
@@ -181593,6 +182072,26 @@
       "source": "이투데이",
       "title": "[속보] 국제유가 하락⋯WTI 1.90%↓"
     },
+    "original:5617ec2fedcda8a2526079dc": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.hankyung.com/article/2026101268256",
+      "source": "한국경제",
+      "source_body_digest": "fa79447dd06af41b043b1d58147bbbc3e208539b38da8bc1df5ec04a4f3e736c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c9dd888c48d89e991f9c327d01bed402ff9fff518c84e20e43fa7e9c26312ef0",
+      "source_fact_keys": [
+        "source_fact:v1:30c331cd72733c66f083421c39aa25b45e445e0a318481e344e596f0d39678f4",
+        "source_fact:v1:a71467300191e85d03c1196d0bd84bc39a6efdfd24765794cde5f30c7dc328a2"
+      ],
+      "source_published_kst": "2026-10-12T17:30+09:00",
+      "source_title": "디에스운용, 'DS AI반도체액티브' ETF 13일 상장",
+      "telegram_core_fact": "디에스자산운용은 오는 13일 'DS AI반도체액티브' 상장지수펀드(ETF)를 유가증권시장에 상장한다고 12일 밝혔다.",
+      "title": "디에스운용, 'DS AI반도체액티브' ETF 13일 상장"
+    },
     "original:56194ce3d4f0ed5fcd5b5f3a": {
       "first_seen_kst": "2026-10-09T18:34:32+09:00",
       "lanes": {
@@ -189496,6 +189995,30 @@
       "source_published_kst": "2026-10-05T07:00+09:00",
       "title": "알래스카 LNG 검토 단계인데…트럼프 한 마디에 여야 공방 예고"
     },
+    "original:7624ef0f6358d95c19fefdae": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://core.asiae.co.kr/article/2026101208500475243",
+      "source": "아시아경제",
+      "source_body_digest": "7f799134dfa89f81a9eb4581cf8b38b5f03ca86284591026b2a96024194277c1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:664d7a91cef2023e3707739bdd112b2c43756f0c75b1e3099ea04aff9409d87f",
+      "source_fact_keys": [
+        "source_fact:v1:513a0135e659d6533daee85575e54002d02b282b0969b3b6d7352de33707367b",
+        "source_fact:v1:a2068b7df13986d28cd9beb90707f61930f7a6aa4cbacf6775974f3e8a1989e4",
+        "source_fact:v1:ad0442890b0ef6aa8107868859e7ef3c680692fc47dca76e3380b8f5d38f6812",
+        "source_fact:v1:bd9ef01057ac17ae81b0fee3f2e15636339e64caf8c7f2c749a552e71060a6ff",
+        "source_fact:v1:ebb079f62027aa702744fc8b3487ac4d41448bcf98c9c3799863d82606d8b4f8",
+        "source_fact:v1:fb23b1f179517ea25745df20f1acebf9b2dde98f2febab49fadcb5bbabe3d94a"
+      ],
+      "source_published_kst": "2026-10-12T17:50+09:00",
+      "source_title": "KB운용, 'RISE 코리아밸류업위클리고정커버드콜 ETF' 순자산 4천억 돌파",
+      "telegram_core_fact": "KB자산운용, RISE 코리아밸류업위클리고정커버드콜 ETF의 순자산이 4000억원을 넘어섰다고 밝혔다. ' ETF가 순자산 4000억원을 돌파했다.",
+      "title": "KB운용, 'RISE 코리아밸류업위클리고정커버드콜 ETF' 순자산 4천억 돌파"
+    },
     "original:762fad42a7a30dd4ec2183aa": {
       "first_seen_kst": "2026-09-18T12:25:16+09:00",
       "lanes": {
@@ -189857,6 +190380,25 @@
       ],
       "source_published_kst": "2026-10-07T14:38+09:00",
       "title": "삼보산업, 중동 전쟁에 알루미늄 판가 상승…장기화 땐 수익성 개선 긍정"
+    },
+    "original:7774bb89de978f74209bbeeb": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05100406645612264",
+      "source": "이데일리",
+      "source_body_digest": "f78ee3be38137eab95c6ddc3968b7d068d3d79e2fc6a9f6d661400028d461030",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d23ba01f9ccc5ce20b3653654893f1baa3f744eca6149d428a9f0ec259cf8250",
+      "source_fact_keys": [
+        "source_fact:v1:b67463b5a81f7760ebafbcb0032a45f85dd2ace61d884b3be829960375812653"
+      ],
+      "source_published_kst": "2026-10-12T21:53+09:00",
+      "source_title": "JTBC 채권 피해자 712명·593억원 피해…“개인 채권자 변제안 마련해야”",
+      "telegram_core_fact": "JTBC 회사채에 투자했다가 피해를 본 개인 채권자들이 국회 국정감사에서 구체적인 변제 계획 마련과 오너 일가의 책임 있는 대응을 촉구했다.",
+      "title": "JTBC 채권 피해자 712명·593억원 피해…“개인 채권자 변제안 마련해야”"
     },
     "original:777772630205a5b4877eaee0": {
       "first_seen_kst": "2026-10-12T17:38:53+09:00",
@@ -198924,6 +199466,28 @@
       "source": "서울신문",
       "title": "경기도, 전국 최초 온실가스 관측 ‘경기기후위성 2호기’ 발사 성공"
     },
+    "original:9a2324f315d8f2b6d6d0be86": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633862",
+      "source": "이투데이",
+      "source_body_digest": "5c57a992edd1112bda3b77f1d8a3b056e588be4bc82c95fc9e7a82ec783e62c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:063d6326268d2934b8fe0db1afdddf26ae63ddfa01deb933448076082c731d73",
+      "source_fact_keys": [
+        "source_fact:v1:3177261dcfc7977464f4651f05f5d3a13c12571e7a88f0c1725f52aa5bbc1c66",
+        "source_fact:v1:3fb5e5d1a8efa2dd1e9f659b87cbb10e4e3298fa621bfe479d7a9bc750afd029",
+        "source_fact:v1:b96bd88559b890028e16ddeb277fd4d61302a9355e9a7363e05478f40b305011",
+        "source_fact:v1:bcfb755359bfbb63d9f54dedec5876eace5bfc83265dc07b54abe57843e8e2fa"
+      ],
+      "source_published_kst": "2026-10-12T05:00+09:00",
+      "source_title": "돈 빌려 한미사이언스 지분 늘리는 신동국…'5000억 대출' 이자부담 커진다",
+      "telegram_core_fact": "수천억대 차입 부담을 감수하면서 지분을 늘리는 만큼 향후 대출 만기와 상환 여력에도 관심이 쏠린다.",
+      "title": "돈 빌려 한미사이언스 지분 늘리는 신동국…'5000억 대출' 이자부담 커진다"
+    },
     "original:9a26b28b25f5f0535fdd6762": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
       "lanes": {
@@ -199169,6 +199733,26 @@
       "source_title": "조각투자 넘어 채권ㆍ펀드로⋯토큰증권 시장 확장 채비",
       "telegram_core_fact": "토큰증권 시장이 부동산·미술품 등 조각투자를 넘어 채권·펀드로 확장을 준비한다. 일반투자자의 장외거래소 투자한도는 거래소 한 곳당 연간 순매수액 1억원으로 제한하는 안이 제시됐다.",
       "title": "조각투자 넘어 채권ㆍ펀드로⋯토큰증권 시장 확장 채비"
+    },
+    "original:9b0d583a55121a7c212d26e7": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174041",
+      "source": "매일경제",
+      "source_body_digest": "f3933d6447b5f2383df7859ac1cfb4c85c35a8db5d418912198314cc609e3d7b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ffb7ad8c461a7f342cb19294c88610173ff45d61e4f7bbae3193aa8e6191773b",
+      "source_fact_keys": [
+        "source_fact:v1:249cc0adda388e09176d929cc96813b393b399709aa488da43631597b37b151f",
+        "source_fact:v1:e848b605ea2e39120736d7a14c998e8d4bde07eb876b548b3a0ce148f0503d9d"
+      ],
+      "source_published_kst": "2026-10-12T23:10+09:00",
+      "source_title": "아이온큐, 엘리시티 전액 주식 인수 발표에 지분 희석 우려 부각",
+      "telegram_core_fact": "최대 13억 달러 규모로 사이버보안 기업 엘리시티를 전액 주식으로 인수한다는 소식에 지분 희석 우려가 커졌습니다.",
+      "title": "아이온큐, 엘리시티 전액 주식 인수 발표에 지분 희석 우려 부각"
     },
     "original:9b5b598b553f986f0afba470": {
       "first_seen_kst": "2026-10-02T13:38:43+09:00",
@@ -202041,6 +202625,32 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T04:57+09:00",
       "title": "국제유가, 중동 원유수출 증가·G7 비축유 방출 약속에 1.8%↓ | 연합뉴스"
+    },
+    "original:a6d29692f84227134bbcb95b": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03463686645612264",
+      "source": "이데일리",
+      "source_body_digest": "02a46aa180d289ae8f1c50a9400ca35dabf3df01699fbefb5a67e3c4cf7f6606",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2611a0b82784195607a451aaefa0b7571f8774b05f374504c3eccac2b58bbcd",
+      "source_fact_keys": [
+        "source_fact:v1:2bf586b31ac582222906fdf5ea794ac322b16debb1c377818485a566eda17ba6",
+        "source_fact:v1:6498120909b359ea0070e2dfd8b7745a86282a1f1f6bd94b0ef1040468373c84",
+        "source_fact:v1:a0bc0a7f955816e119c5a9f2737211f614690047afdf23c3c043d728237f06a3",
+        "source_fact:v1:b0d6a8c3621bb28981eb4466849445428893db188cbb9aaeb4be2da974eda226",
+        "source_fact:v1:ba36bb98670aecc327f3034101ab1b03575af440cbcc2699f5ae355794514439",
+        "source_fact:v1:d0da68b77d3195b7ccd5307c86b341cb47ec00ce7bde9f26703c97207e6eb5e8",
+        "source_fact:v1:e119b508b4d329b7251bef43dbb59401b5a550125b5badbd0c9f35eb3a3974a1",
+        "source_fact:v1:f59f4da249ff338f599ca779ef9df1d6e767f6317ca65f5844e8e6a1ad00c3a0"
+      ],
+      "source_published_kst": "2026-10-12T15:26+09:00",
+      "source_title": "항공물류 힘주는 삼성SDS…우정항공 품는다(종합)",
+      "telegram_core_fact": "정보기술(IT) 업계에 따르면 삼성SDS는 이날 우정항공 지분 전량을 인수하는 주식양수도계약을 체결했다. 이번 인수로 삼성SDS는 주요 항공사와의 운송 공간 계약부터 공항 내 화물 처리까지 항공물류 운영 역량을 확보하게 된다.",
+      "title": "항공물류 힘주는 삼성SDS…우정항공 품는다(종합)"
     },
     "original:a6d3b5df5eac58702df30f9e": {
       "first_seen_kst": "2026-10-10T12:56:15+09:00",
@@ -239362,6 +239972,30 @@
       "telegram_core_fact": "하지만 회원국이 자국 경제 피해를 최소화할 제재 대상을 찾기 어려워지면서 대규모 추가 제재를 추진할 동력이 떨어지고 있다는 우려가 커지고 있다.",
       "title": "EU, 러 제재 대상 1600곳 무더기 추가… 단일 최대 규모"
     },
+    "source_fact:109631cf29aa0d44940db1c3": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://core.asiae.co.kr/article/2026101208500475243",
+      "source": "아시아경제",
+      "source_body_digest": "7f799134dfa89f81a9eb4581cf8b38b5f03ca86284591026b2a96024194277c1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:664d7a91cef2023e3707739bdd112b2c43756f0c75b1e3099ea04aff9409d87f",
+      "source_fact_keys": [
+        "source_fact:v1:513a0135e659d6533daee85575e54002d02b282b0969b3b6d7352de33707367b",
+        "source_fact:v1:a2068b7df13986d28cd9beb90707f61930f7a6aa4cbacf6775974f3e8a1989e4",
+        "source_fact:v1:ad0442890b0ef6aa8107868859e7ef3c680692fc47dca76e3380b8f5d38f6812",
+        "source_fact:v1:bd9ef01057ac17ae81b0fee3f2e15636339e64caf8c7f2c749a552e71060a6ff",
+        "source_fact:v1:ebb079f62027aa702744fc8b3487ac4d41448bcf98c9c3799863d82606d8b4f8",
+        "source_fact:v1:fb23b1f179517ea25745df20f1acebf9b2dde98f2febab49fadcb5bbabe3d94a"
+      ],
+      "source_published_kst": "2026-10-12T17:50+09:00",
+      "source_title": "KB운용, 'RISE 코리아밸류업위클리고정커버드콜 ETF' 순자산 4천억 돌파",
+      "telegram_core_fact": "KB자산운용, RISE 코리아밸류업위클리고정커버드콜 ETF의 순자산이 4000억원을 넘어섰다고 밝혔다. ' ETF가 순자산 4000억원을 돌파했다.",
+      "title": "KB운용, 'RISE 코리아밸류업위클리고정커버드콜 ETF' 순자산 4천억 돌파"
+    },
     "source_fact:109a9c2e3e4a78c6cd8c0910": {
       "first_seen_kst": "2026-10-08T07:12:10+09:00",
       "lanes": {
@@ -250431,6 +251065,32 @@
       "telegram_core_fact": "중동 지역의 지정학적 불안이 장기화하면서 해운 운임이 급등하자 해운 관련주가 일제히 강세를 보이고 있다.",
       "title": "STX그린로지스, 8% 급등…중동 불안에 운임 뛰자 해운株 줄줄이 상승"
     },
+    "source_fact:1ce23d53c4ceb1222d9f683d": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03463686645612264",
+      "source": "이데일리",
+      "source_body_digest": "02a46aa180d289ae8f1c50a9400ca35dabf3df01699fbefb5a67e3c4cf7f6606",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2611a0b82784195607a451aaefa0b7571f8774b05f374504c3eccac2b58bbcd",
+      "source_fact_keys": [
+        "source_fact:v1:2bf586b31ac582222906fdf5ea794ac322b16debb1c377818485a566eda17ba6",
+        "source_fact:v1:6498120909b359ea0070e2dfd8b7745a86282a1f1f6bd94b0ef1040468373c84",
+        "source_fact:v1:a0bc0a7f955816e119c5a9f2737211f614690047afdf23c3c043d728237f06a3",
+        "source_fact:v1:b0d6a8c3621bb28981eb4466849445428893db188cbb9aaeb4be2da974eda226",
+        "source_fact:v1:ba36bb98670aecc327f3034101ab1b03575af440cbcc2699f5ae355794514439",
+        "source_fact:v1:d0da68b77d3195b7ccd5307c86b341cb47ec00ce7bde9f26703c97207e6eb5e8",
+        "source_fact:v1:e119b508b4d329b7251bef43dbb59401b5a550125b5badbd0c9f35eb3a3974a1",
+        "source_fact:v1:f59f4da249ff338f599ca779ef9df1d6e767f6317ca65f5844e8e6a1ad00c3a0"
+      ],
+      "source_published_kst": "2026-10-12T15:26+09:00",
+      "source_title": "항공물류 힘주는 삼성SDS…우정항공 품는다(종합)",
+      "telegram_core_fact": "정보기술(IT) 업계에 따르면 삼성SDS는 이날 우정항공 지분 전량을 인수하는 주식양수도계약을 체결했다. 이번 인수로 삼성SDS는 주요 항공사와의 운송 공간 계약부터 공항 내 화물 처리까지 항공물류 운영 역량을 확보하게 된다.",
+      "title": "항공물류 힘주는 삼성SDS…우정항공 품는다(종합)"
+    },
     "source_fact:1cead38348671de3cc1537c1": {
       "first_seen_kst": "2026-10-10T16:38:23+09:00",
       "lanes": {
@@ -254935,6 +255595,26 @@
       "source_published_kst": "2026-10-06T14:48+09:00",
       "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
     },
+    "source_fact:21668780f90f30b420d45e8c": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.yna.co.kr/view/MYH20261012000100038",
+      "source": "연합뉴스",
+      "source_body_digest": "b3611b62711dcd2f357ef7107c1e5184f112198ac8ef818f98583819c77b9195",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cbb47e5f3171e032c8c883339069cc57808bd874147ee30357561cd46625d5cc",
+      "source_fact_keys": [
+        "source_fact:v1:8d675c22e345a6c224706030662593eca3ecb68b21664343f5dd7d74bb767e2a",
+        "source_fact:v1:bb37daf30fad8e6bf0d02d53e1a9df8a570ee2a03c13bc7313d4651f442a56cb"
+      ],
+      "source_published_kst": "2026-10-12T05:12+09:00",
+      "source_title": "트럼프 \"러-우크라, 에너지 부문 휴전 합의\" | 연합뉴스",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아와 우크라이나가 에너지 부문에 대한 휴전에 합의했다고 밝혔습니다. 트럼프 대통령은 현지시간 11일 소셜미디어 트루스소셜을 통해 \"러시아와 우크라이나 간 전쟁에서 에너지 휴전이 이뤄졌다\"라며 \"즉각적으로 효력이 발생한다\"라고 말했습니다.",
+      "title": "트럼프 \"러-우크라, 에너지 부문 휴전 합의\" | 연합뉴스"
+    },
     "source_fact:216c100061ee0ce952780c40": {
       "first_seen_kst": "2026-10-10T05:32:28+09:00",
       "lanes": {
@@ -257694,6 +258374,28 @@
       "source_title": "네이버클라우드, 베트남 최대 IT 기업과 AI 팩토리 사업 추진...아태 AI 시장 공략",
       "telegram_core_fact": "네이버클라우드가 베트남 대표 IT 기업 FPT와 AI 팩토리 사업을 공동 추진하고 한국과 일본, 베트남 등 아시아태평양(APAC) 시장에서의 GPUaaS 사업 확대를 위해 힘을 합친다.",
       "title": "네이버클라우드, 베트남 최대 IT 기업과 AI 팩토리 사업 추진...아태 AI 시장 공략"
+    },
+    "source_fact:2418a60e9674a46519cf7413": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633862",
+      "source": "이투데이",
+      "source_body_digest": "5c57a992edd1112bda3b77f1d8a3b056e588be4bc82c95fc9e7a82ec783e62c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:063d6326268d2934b8fe0db1afdddf26ae63ddfa01deb933448076082c731d73",
+      "source_fact_keys": [
+        "source_fact:v1:3177261dcfc7977464f4651f05f5d3a13c12571e7a88f0c1725f52aa5bbc1c66",
+        "source_fact:v1:3fb5e5d1a8efa2dd1e9f659b87cbb10e4e3298fa621bfe479d7a9bc750afd029",
+        "source_fact:v1:b96bd88559b890028e16ddeb277fd4d61302a9355e9a7363e05478f40b305011",
+        "source_fact:v1:bcfb755359bfbb63d9f54dedec5876eace5bfc83265dc07b54abe57843e8e2fa"
+      ],
+      "source_published_kst": "2026-10-12T05:00+09:00",
+      "source_title": "돈 빌려 한미사이언스 지분 늘리는 신동국…'5000억 대출' 이자부담 커진다",
+      "telegram_core_fact": "수천억대 차입 부담을 감수하면서 지분을 늘리는 만큼 향후 대출 만기와 상환 여력에도 관심이 쏠린다.",
+      "title": "돈 빌려 한미사이언스 지분 늘리는 신동국…'5000억 대출' 이자부담 커진다"
     },
     "source_fact:2419adc2d209572cf065eca1": {
       "first_seen_kst": "2026-10-08T11:28:27+09:00",
@@ -261652,6 +262354,46 @@
       ],
       "source_published_kst": "2026-10-06T22:00+09:00",
       "title": "포스코퓨처엠·삼성SDI … LFP 양극재 6조원 계약"
+    },
+    "source_fact:283f92e0516f380c68212009": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.hankyung.com/article/2026101268256",
+      "source": "한국경제",
+      "source_body_digest": "fa79447dd06af41b043b1d58147bbbc3e208539b38da8bc1df5ec04a4f3e736c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c9dd888c48d89e991f9c327d01bed402ff9fff518c84e20e43fa7e9c26312ef0",
+      "source_fact_keys": [
+        "source_fact:v1:30c331cd72733c66f083421c39aa25b45e445e0a318481e344e596f0d39678f4",
+        "source_fact:v1:a71467300191e85d03c1196d0bd84bc39a6efdfd24765794cde5f30c7dc328a2"
+      ],
+      "source_published_kst": "2026-10-12T17:30+09:00",
+      "source_title": "디에스운용, 'DS AI반도체액티브' ETF 13일 상장",
+      "telegram_core_fact": "디에스자산운용은 오는 13일 'DS AI반도체액티브' 상장지수펀드(ETF)를 유가증권시장에 상장한다고 12일 밝혔다.",
+      "title": "디에스운용, 'DS AI반도체액티브' ETF 13일 상장"
+    },
+    "source_fact:28471cac6f16460e147b82cf": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.hankyung.com/article/2026101268256",
+      "source": "한국경제",
+      "source_body_digest": "fa79447dd06af41b043b1d58147bbbc3e208539b38da8bc1df5ec04a4f3e736c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c9dd888c48d89e991f9c327d01bed402ff9fff518c84e20e43fa7e9c26312ef0",
+      "source_fact_keys": [
+        "source_fact:v1:30c331cd72733c66f083421c39aa25b45e445e0a318481e344e596f0d39678f4",
+        "source_fact:v1:a71467300191e85d03c1196d0bd84bc39a6efdfd24765794cde5f30c7dc328a2"
+      ],
+      "source_published_kst": "2026-10-12T17:30+09:00",
+      "source_title": "디에스운용, 'DS AI반도체액티브' ETF 13일 상장",
+      "telegram_core_fact": "디에스자산운용은 오는 13일 'DS AI반도체액티브' 상장지수펀드(ETF)를 유가증권시장에 상장한다고 12일 밝혔다.",
+      "title": "디에스운용, 'DS AI반도체액티브' ETF 13일 상장"
     },
     "source_fact:285176446ff1de06ebeb01b2": {
       "first_seen_kst": "2026-10-09T18:57:38+09:00",
@@ -266181,6 +266923,26 @@
       "source_published_kst": "2026-10-07T09:42+09:00",
       "title": "경기도, 생산단계 수산물 유해물질검사 항목 95→167개 확대 | 연합뉴스"
     },
+    "source_fact:2d051d01b182a28eab8529f1": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174041",
+      "source": "매일경제",
+      "source_body_digest": "f3933d6447b5f2383df7859ac1cfb4c85c35a8db5d418912198314cc609e3d7b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ffb7ad8c461a7f342cb19294c88610173ff45d61e4f7bbae3193aa8e6191773b",
+      "source_fact_keys": [
+        "source_fact:v1:249cc0adda388e09176d929cc96813b393b399709aa488da43631597b37b151f",
+        "source_fact:v1:e848b605ea2e39120736d7a14c998e8d4bde07eb876b548b3a0ce148f0503d9d"
+      ],
+      "source_published_kst": "2026-10-12T23:10+09:00",
+      "source_title": "아이온큐, 엘리시티 전액 주식 인수 발표에 지분 희석 우려 부각",
+      "telegram_core_fact": "최대 13억 달러 규모로 사이버보안 기업 엘리시티를 전액 주식으로 인수한다는 소식에 지분 희석 우려가 커졌습니다.",
+      "title": "아이온큐, 엘리시티 전액 주식 인수 발표에 지분 희석 우려 부각"
+    },
     "source_fact:2d05b83a9f5149354fddd05d": {
       "first_seen_kst": "2026-10-12T17:17:29+09:00",
       "lanes": {
@@ -266991,6 +267753,28 @@
       "source_title": "LH, 수도권 매입임대 4만호 연내 착공…서울 3년간 2만호 공급",
       "telegram_core_fact": "올해 수도권에서 4만호를 연내 착공하고, 향후 3년간 서울 25개 자치구에 매입임대주택 2만호 이상을 공급할 계획이다.",
       "title": "LH, 수도권 매입임대 4만호 연내 착공…서울 3년간 2만호 공급"
+    },
+    "source_fact:2e2685ca4b0670a514fd95df": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633862",
+      "source": "이투데이",
+      "source_body_digest": "5c57a992edd1112bda3b77f1d8a3b056e588be4bc82c95fc9e7a82ec783e62c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:063d6326268d2934b8fe0db1afdddf26ae63ddfa01deb933448076082c731d73",
+      "source_fact_keys": [
+        "source_fact:v1:3177261dcfc7977464f4651f05f5d3a13c12571e7a88f0c1725f52aa5bbc1c66",
+        "source_fact:v1:3fb5e5d1a8efa2dd1e9f659b87cbb10e4e3298fa621bfe479d7a9bc750afd029",
+        "source_fact:v1:b96bd88559b890028e16ddeb277fd4d61302a9355e9a7363e05478f40b305011",
+        "source_fact:v1:bcfb755359bfbb63d9f54dedec5876eace5bfc83265dc07b54abe57843e8e2fa"
+      ],
+      "source_published_kst": "2026-10-12T05:00+09:00",
+      "source_title": "돈 빌려 한미사이언스 지분 늘리는 신동국…'5000억 대출' 이자부담 커진다",
+      "telegram_core_fact": "수천억대 차입 부담을 감수하면서 지분을 늘리는 만큼 향후 대출 만기와 상환 여력에도 관심이 쏠린다.",
+      "title": "돈 빌려 한미사이언스 지분 늘리는 신동국…'5000억 대출' 이자부담 커진다"
     },
     "source_fact:2e26e58e4d0defdbc428219f": {
       "first_seen_kst": "2026-10-07T08:36:47+09:00",
@@ -270562,6 +271346,25 @@
       "source_title": "[AI 고속도로] 기업 AI도 프라이빗 시대…'모듈형 데이터센터'가 뜬다",
       "telegram_core_fact": "외부 클라우드와 AI 모델에 의존하던 방식에서 벗어나 자체 인프라를 병행하는 기업이 늘면서, 필요한 장소에 빠르게 구축하고 수요에 따라 확장할 수 있는 모듈형 AI 데이터센터(AIDC)도 대안으로 부상한 모습이다. 국내에선 엘리스그룹이 모듈형 데이터센터와 클라우드 소프트웨어를 결합한 AI 인프라 사업을 추진 중이다.",
       "title": "[AI 고속도로] 기업 AI도 프라이빗 시대…'모듈형 데이터센터'가 뜬다"
+    },
+    "source_fact:320309e0c952d12ea88f87bd": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05100406645612264",
+      "source": "이데일리",
+      "source_body_digest": "f78ee3be38137eab95c6ddc3968b7d068d3d79e2fc6a9f6d661400028d461030",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d23ba01f9ccc5ce20b3653654893f1baa3f744eca6149d428a9f0ec259cf8250",
+      "source_fact_keys": [
+        "source_fact:v1:b67463b5a81f7760ebafbcb0032a45f85dd2ace61d884b3be829960375812653"
+      ],
+      "source_published_kst": "2026-10-12T21:53+09:00",
+      "source_title": "JTBC 채권 피해자 712명·593억원 피해…“개인 채권자 변제안 마련해야”",
+      "telegram_core_fact": "JTBC 회사채에 투자했다가 피해를 본 개인 채권자들이 국회 국정감사에서 구체적인 변제 계획 마련과 오너 일가의 책임 있는 대응을 촉구했다.",
+      "title": "JTBC 채권 피해자 712명·593억원 피해…“개인 채권자 변제안 마련해야”"
     },
     "source_fact:32041ba7e2ac1f6b338e960a": {
       "first_seen_kst": "2026-10-10T06:02:39+09:00",
@@ -309760,6 +310563,28 @@
       "telegram_core_fact": "2021년부터 개발·운영해온 모듈형 데이터센터 기술과 AI 클라우드 소프트웨어를 결합해 국내외 AI 인프라 사업을 확대한다.",
       "title": "엘리스그룹, 모듈형 AI 데이터센터 ‘PMDC’ 상표 등록"
     },
+    "source_fact:5c7b7aa0adcd17d9cbafc8c3": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633862",
+      "source": "이투데이",
+      "source_body_digest": "5c57a992edd1112bda3b77f1d8a3b056e588be4bc82c95fc9e7a82ec783e62c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:063d6326268d2934b8fe0db1afdddf26ae63ddfa01deb933448076082c731d73",
+      "source_fact_keys": [
+        "source_fact:v1:3177261dcfc7977464f4651f05f5d3a13c12571e7a88f0c1725f52aa5bbc1c66",
+        "source_fact:v1:3fb5e5d1a8efa2dd1e9f659b87cbb10e4e3298fa621bfe479d7a9bc750afd029",
+        "source_fact:v1:b96bd88559b890028e16ddeb277fd4d61302a9355e9a7363e05478f40b305011",
+        "source_fact:v1:bcfb755359bfbb63d9f54dedec5876eace5bfc83265dc07b54abe57843e8e2fa"
+      ],
+      "source_published_kst": "2026-10-12T05:00+09:00",
+      "source_title": "돈 빌려 한미사이언스 지분 늘리는 신동국…'5000억 대출' 이자부담 커진다",
+      "telegram_core_fact": "수천억대 차입 부담을 감수하면서 지분을 늘리는 만큼 향후 대출 만기와 상환 여력에도 관심이 쏠린다.",
+      "title": "돈 빌려 한미사이언스 지분 늘리는 신동국…'5000억 대출' 이자부담 커진다"
+    },
     "source_fact:5c7e78c98542c5cc6574ac86": {
       "first_seen_kst": "2026-10-08T00:24:24+09:00",
       "lanes": {
@@ -325629,6 +326454,30 @@
       "source_published_kst": "2026-10-05T20:21+09:00",
       "title": "퀀티넘과 서호주대학교, 호주의 양자 역량 강화를 위한 파트너십 체결"
     },
+    "source_fact:6e17f4385fe8268ddfe0c368": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://core.asiae.co.kr/article/2026101208500475243",
+      "source": "아시아경제",
+      "source_body_digest": "7f799134dfa89f81a9eb4581cf8b38b5f03ca86284591026b2a96024194277c1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:664d7a91cef2023e3707739bdd112b2c43756f0c75b1e3099ea04aff9409d87f",
+      "source_fact_keys": [
+        "source_fact:v1:513a0135e659d6533daee85575e54002d02b282b0969b3b6d7352de33707367b",
+        "source_fact:v1:a2068b7df13986d28cd9beb90707f61930f7a6aa4cbacf6775974f3e8a1989e4",
+        "source_fact:v1:ad0442890b0ef6aa8107868859e7ef3c680692fc47dca76e3380b8f5d38f6812",
+        "source_fact:v1:bd9ef01057ac17ae81b0fee3f2e15636339e64caf8c7f2c749a552e71060a6ff",
+        "source_fact:v1:ebb079f62027aa702744fc8b3487ac4d41448bcf98c9c3799863d82606d8b4f8",
+        "source_fact:v1:fb23b1f179517ea25745df20f1acebf9b2dde98f2febab49fadcb5bbabe3d94a"
+      ],
+      "source_published_kst": "2026-10-12T17:50+09:00",
+      "source_title": "KB운용, 'RISE 코리아밸류업위클리고정커버드콜 ETF' 순자산 4천억 돌파",
+      "telegram_core_fact": "KB자산운용, RISE 코리아밸류업위클리고정커버드콜 ETF의 순자산이 4000억원을 넘어섰다고 밝혔다. ' ETF가 순자산 4000억원을 돌파했다.",
+      "title": "KB운용, 'RISE 코리아밸류업위클리고정커버드콜 ETF' 순자산 4천억 돌파"
+    },
     "source_fact:6e1cd91e47f858641473a7a6": {
       "first_seen_kst": "2026-10-05T19:54:04+09:00",
       "lanes": {
@@ -327297,6 +328146,32 @@
       "telegram_core_fact": "미 국채 10년물 금리는 현지시간 7일 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
       "title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스"
     },
+    "source_fact:701f2f8074637ae80478a7d2": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03463686645612264",
+      "source": "이데일리",
+      "source_body_digest": "02a46aa180d289ae8f1c50a9400ca35dabf3df01699fbefb5a67e3c4cf7f6606",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2611a0b82784195607a451aaefa0b7571f8774b05f374504c3eccac2b58bbcd",
+      "source_fact_keys": [
+        "source_fact:v1:2bf586b31ac582222906fdf5ea794ac322b16debb1c377818485a566eda17ba6",
+        "source_fact:v1:6498120909b359ea0070e2dfd8b7745a86282a1f1f6bd94b0ef1040468373c84",
+        "source_fact:v1:a0bc0a7f955816e119c5a9f2737211f614690047afdf23c3c043d728237f06a3",
+        "source_fact:v1:b0d6a8c3621bb28981eb4466849445428893db188cbb9aaeb4be2da974eda226",
+        "source_fact:v1:ba36bb98670aecc327f3034101ab1b03575af440cbcc2699f5ae355794514439",
+        "source_fact:v1:d0da68b77d3195b7ccd5307c86b341cb47ec00ce7bde9f26703c97207e6eb5e8",
+        "source_fact:v1:e119b508b4d329b7251bef43dbb59401b5a550125b5badbd0c9f35eb3a3974a1",
+        "source_fact:v1:f59f4da249ff338f599ca779ef9df1d6e767f6317ca65f5844e8e6a1ad00c3a0"
+      ],
+      "source_published_kst": "2026-10-12T15:26+09:00",
+      "source_title": "항공물류 힘주는 삼성SDS…우정항공 품는다(종합)",
+      "telegram_core_fact": "정보기술(IT) 업계에 따르면 삼성SDS는 이날 우정항공 지분 전량을 인수하는 주식양수도계약을 체결했다. 이번 인수로 삼성SDS는 주요 항공사와의 운송 공간 계약부터 공항 내 화물 처리까지 항공물류 운영 역량을 확보하게 된다.",
+      "title": "항공물류 힘주는 삼성SDS…우정항공 품는다(종합)"
+    },
     "source_fact:70229d29a21469a7bf613c35": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -328856,6 +329731,32 @@
       "telegram_core_fact": "“과징금이 처벌이 아닌 기업의 영업비용으로 전락해서는 안 된다”며 “반복적인 소비자 기만행위를 막을 수 있도록 공정위의 제재 실효성을 강화해야 한다”고 강조했다.",
       "title": "“속여도 남는 장사?”…공정위 제재 비웃는 기업들 ‘배짱 광고’"
     },
+    "source_fact:71e5fd1b56607de5c2155253": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03463686645612264",
+      "source": "이데일리",
+      "source_body_digest": "02a46aa180d289ae8f1c50a9400ca35dabf3df01699fbefb5a67e3c4cf7f6606",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2611a0b82784195607a451aaefa0b7571f8774b05f374504c3eccac2b58bbcd",
+      "source_fact_keys": [
+        "source_fact:v1:2bf586b31ac582222906fdf5ea794ac322b16debb1c377818485a566eda17ba6",
+        "source_fact:v1:6498120909b359ea0070e2dfd8b7745a86282a1f1f6bd94b0ef1040468373c84",
+        "source_fact:v1:a0bc0a7f955816e119c5a9f2737211f614690047afdf23c3c043d728237f06a3",
+        "source_fact:v1:b0d6a8c3621bb28981eb4466849445428893db188cbb9aaeb4be2da974eda226",
+        "source_fact:v1:ba36bb98670aecc327f3034101ab1b03575af440cbcc2699f5ae355794514439",
+        "source_fact:v1:d0da68b77d3195b7ccd5307c86b341cb47ec00ce7bde9f26703c97207e6eb5e8",
+        "source_fact:v1:e119b508b4d329b7251bef43dbb59401b5a550125b5badbd0c9f35eb3a3974a1",
+        "source_fact:v1:f59f4da249ff338f599ca779ef9df1d6e767f6317ca65f5844e8e6a1ad00c3a0"
+      ],
+      "source_published_kst": "2026-10-12T15:26+09:00",
+      "source_title": "항공물류 힘주는 삼성SDS…우정항공 품는다(종합)",
+      "telegram_core_fact": "정보기술(IT) 업계에 따르면 삼성SDS는 이날 우정항공 지분 전량을 인수하는 주식양수도계약을 체결했다. 이번 인수로 삼성SDS는 주요 항공사와의 운송 공간 계약부터 공항 내 화물 처리까지 항공물류 운영 역량을 확보하게 된다.",
+      "title": "항공물류 힘주는 삼성SDS…우정항공 품는다(종합)"
+    },
     "source_fact:71ee23a06c0aac044ed6dd74": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
       "lanes": {
@@ -329554,6 +330455,32 @@
       ],
       "source_published_kst": "2026-10-06T17:03+09:00",
       "title": "\"미래 성장동력 확보\"…알테오젠, 2천억 투자유치"
+    },
+    "source_fact:72ced21b709e69eccd48e54d": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03463686645612264",
+      "source": "이데일리",
+      "source_body_digest": "02a46aa180d289ae8f1c50a9400ca35dabf3df01699fbefb5a67e3c4cf7f6606",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2611a0b82784195607a451aaefa0b7571f8774b05f374504c3eccac2b58bbcd",
+      "source_fact_keys": [
+        "source_fact:v1:2bf586b31ac582222906fdf5ea794ac322b16debb1c377818485a566eda17ba6",
+        "source_fact:v1:6498120909b359ea0070e2dfd8b7745a86282a1f1f6bd94b0ef1040468373c84",
+        "source_fact:v1:a0bc0a7f955816e119c5a9f2737211f614690047afdf23c3c043d728237f06a3",
+        "source_fact:v1:b0d6a8c3621bb28981eb4466849445428893db188cbb9aaeb4be2da974eda226",
+        "source_fact:v1:ba36bb98670aecc327f3034101ab1b03575af440cbcc2699f5ae355794514439",
+        "source_fact:v1:d0da68b77d3195b7ccd5307c86b341cb47ec00ce7bde9f26703c97207e6eb5e8",
+        "source_fact:v1:e119b508b4d329b7251bef43dbb59401b5a550125b5badbd0c9f35eb3a3974a1",
+        "source_fact:v1:f59f4da249ff338f599ca779ef9df1d6e767f6317ca65f5844e8e6a1ad00c3a0"
+      ],
+      "source_published_kst": "2026-10-12T15:26+09:00",
+      "source_title": "항공물류 힘주는 삼성SDS…우정항공 품는다(종합)",
+      "telegram_core_fact": "정보기술(IT) 업계에 따르면 삼성SDS는 이날 우정항공 지분 전량을 인수하는 주식양수도계약을 체결했다. 이번 인수로 삼성SDS는 주요 항공사와의 운송 공간 계약부터 공항 내 화물 처리까지 항공물류 운영 역량을 확보하게 된다.",
+      "title": "항공물류 힘주는 삼성SDS…우정항공 품는다(종합)"
     },
     "source_fact:72d1032d9d14677ed04a110a": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -351705,6 +352632,30 @@
       "source_published_kst": "2026-10-06T06:27+09:00",
       "title": "뉴욕 증시, 국채 금리 급등에도 나스닥 사상 최고치"
     },
+    "source_fact:8b0d9503a40d63f26e83e468": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://core.asiae.co.kr/article/2026101208500475243",
+      "source": "아시아경제",
+      "source_body_digest": "7f799134dfa89f81a9eb4581cf8b38b5f03ca86284591026b2a96024194277c1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:664d7a91cef2023e3707739bdd112b2c43756f0c75b1e3099ea04aff9409d87f",
+      "source_fact_keys": [
+        "source_fact:v1:513a0135e659d6533daee85575e54002d02b282b0969b3b6d7352de33707367b",
+        "source_fact:v1:a2068b7df13986d28cd9beb90707f61930f7a6aa4cbacf6775974f3e8a1989e4",
+        "source_fact:v1:ad0442890b0ef6aa8107868859e7ef3c680692fc47dca76e3380b8f5d38f6812",
+        "source_fact:v1:bd9ef01057ac17ae81b0fee3f2e15636339e64caf8c7f2c749a552e71060a6ff",
+        "source_fact:v1:ebb079f62027aa702744fc8b3487ac4d41448bcf98c9c3799863d82606d8b4f8",
+        "source_fact:v1:fb23b1f179517ea25745df20f1acebf9b2dde98f2febab49fadcb5bbabe3d94a"
+      ],
+      "source_published_kst": "2026-10-12T17:50+09:00",
+      "source_title": "KB운용, 'RISE 코리아밸류업위클리고정커버드콜 ETF' 순자산 4천억 돌파",
+      "telegram_core_fact": "KB자산운용, RISE 코리아밸류업위클리고정커버드콜 ETF의 순자산이 4000억원을 넘어섰다고 밝혔다. ' ETF가 순자산 4000억원을 돌파했다.",
+      "title": "KB운용, 'RISE 코리아밸류업위클리고정커버드콜 ETF' 순자산 4천억 돌파"
+    },
     "source_fact:8b10163ee13d3be298e0e164": {
       "first_seen_kst": "2026-10-07T20:28:48+09:00",
       "lanes": {
@@ -352293,6 +353244,30 @@
       "source_title": "송미령 “CPTPP 가입 결정된 것 없어…쌀 최우선 보호” [국감]",
       "telegram_core_fact": "이 의원이 2014년 쌀 관세화 발표 당시 추가적인 양허 협상은 하지 않겠다는 정부 약속을 거론하자 송 장관은 “쌀은 우리로서는 정말 초민감 품목이라고 생각한다”며 “최우선으로 보호해야 한다는 입장”이라고 밝혔다.",
       "title": "송미령 “CPTPP 가입 결정된 것 없어…쌀 최우선 보호” [국감]"
+    },
+    "source_fact:8bcc3cea8f385f28ea6c7df3": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://core.asiae.co.kr/article/2026101208500475243",
+      "source": "아시아경제",
+      "source_body_digest": "7f799134dfa89f81a9eb4581cf8b38b5f03ca86284591026b2a96024194277c1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:664d7a91cef2023e3707739bdd112b2c43756f0c75b1e3099ea04aff9409d87f",
+      "source_fact_keys": [
+        "source_fact:v1:513a0135e659d6533daee85575e54002d02b282b0969b3b6d7352de33707367b",
+        "source_fact:v1:a2068b7df13986d28cd9beb90707f61930f7a6aa4cbacf6775974f3e8a1989e4",
+        "source_fact:v1:ad0442890b0ef6aa8107868859e7ef3c680692fc47dca76e3380b8f5d38f6812",
+        "source_fact:v1:bd9ef01057ac17ae81b0fee3f2e15636339e64caf8c7f2c749a552e71060a6ff",
+        "source_fact:v1:ebb079f62027aa702744fc8b3487ac4d41448bcf98c9c3799863d82606d8b4f8",
+        "source_fact:v1:fb23b1f179517ea25745df20f1acebf9b2dde98f2febab49fadcb5bbabe3d94a"
+      ],
+      "source_published_kst": "2026-10-12T17:50+09:00",
+      "source_title": "KB운용, 'RISE 코리아밸류업위클리고정커버드콜 ETF' 순자산 4천억 돌파",
+      "telegram_core_fact": "KB자산운용, RISE 코리아밸류업위클리고정커버드콜 ETF의 순자산이 4000억원을 넘어섰다고 밝혔다. ' ETF가 순자산 4000억원을 돌파했다.",
+      "title": "KB운용, 'RISE 코리아밸류업위클리고정커버드콜 ETF' 순자산 4천억 돌파"
     },
     "source_fact:8bd7497d7ea4d574033fa31e": {
       "first_seen_kst": "2026-10-07T01:07:29+09:00",
@@ -353938,6 +354913,26 @@
       "source_title": "美, 우크라 전방위 압박…\"무기도 안 준다\" 위협",
       "telegram_core_fact": "도널드 트럼프 미국 행정부가 우크라이나에 러시아 에너지 시설 공격을 중단하도록 압박하기 위해 무기 공급 중단을 위협했다고 파이낸셜타임스(FT)가 11일(현지 시간) 보도했다. 미국의 메시지에는 정보 공유 중단, '우크라이나 우선요구목록(PURL)'을 중단할 수 있다는 위협이 포함된 것으로 전해졌다.",
       "title": "美, 우크라 전방위 압박…\"무기도 안 준다\" 위협"
+    },
+    "source_fact:8db16fb6a25f90cde089ad26": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174041",
+      "source": "매일경제",
+      "source_body_digest": "f3933d6447b5f2383df7859ac1cfb4c85c35a8db5d418912198314cc609e3d7b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ffb7ad8c461a7f342cb19294c88610173ff45d61e4f7bbae3193aa8e6191773b",
+      "source_fact_keys": [
+        "source_fact:v1:249cc0adda388e09176d929cc96813b393b399709aa488da43631597b37b151f",
+        "source_fact:v1:e848b605ea2e39120736d7a14c998e8d4bde07eb876b548b3a0ce148f0503d9d"
+      ],
+      "source_published_kst": "2026-10-12T23:10+09:00",
+      "source_title": "아이온큐, 엘리시티 전액 주식 인수 발표에 지분 희석 우려 부각",
+      "telegram_core_fact": "최대 13억 달러 규모로 사이버보안 기업 엘리시티를 전액 주식으로 인수한다는 소식에 지분 희석 우려가 커졌습니다.",
+      "title": "아이온큐, 엘리시티 전액 주식 인수 발표에 지분 희석 우려 부각"
     },
     "source_fact:8db7fca14402a0b97809c289": {
       "first_seen_kst": "2026-10-12T08:03:02+09:00",
@@ -358895,6 +359890,28 @@
       ],
       "source_published_kst": "2026-10-07T09:42+09:00",
       "title": "경기도, 생산단계 수산물 유해물질검사 항목 95→167개 확대 | 연합뉴스"
+    },
+    "source_fact:939dea7316e0733cf96dd909": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633862",
+      "source": "이투데이",
+      "source_body_digest": "5c57a992edd1112bda3b77f1d8a3b056e588be4bc82c95fc9e7a82ec783e62c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:063d6326268d2934b8fe0db1afdddf26ae63ddfa01deb933448076082c731d73",
+      "source_fact_keys": [
+        "source_fact:v1:3177261dcfc7977464f4651f05f5d3a13c12571e7a88f0c1725f52aa5bbc1c66",
+        "source_fact:v1:3fb5e5d1a8efa2dd1e9f659b87cbb10e4e3298fa621bfe479d7a9bc750afd029",
+        "source_fact:v1:b96bd88559b890028e16ddeb277fd4d61302a9355e9a7363e05478f40b305011",
+        "source_fact:v1:bcfb755359bfbb63d9f54dedec5876eace5bfc83265dc07b54abe57843e8e2fa"
+      ],
+      "source_published_kst": "2026-10-12T05:00+09:00",
+      "source_title": "돈 빌려 한미사이언스 지분 늘리는 신동국…'5000억 대출' 이자부담 커진다",
+      "telegram_core_fact": "수천억대 차입 부담을 감수하면서 지분을 늘리는 만큼 향후 대출 만기와 상환 여력에도 관심이 쏠린다.",
+      "title": "돈 빌려 한미사이언스 지분 늘리는 신동국…'5000억 대출' 이자부담 커진다"
     },
     "source_fact:939ef2e498abb50cad916b61": {
       "first_seen_kst": "2026-10-12T14:44:13+09:00",
@@ -380473,6 +381490,32 @@
       "source_published_kst": "2026-10-06T07:42+09:00",
       "title": "[오늘의 증시]美금리 상승에도 나스닥 최고치…코스피 상승 출발 전망"
     },
+    "source_fact:ab62b44f9278990298a3f61d": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03463686645612264",
+      "source": "이데일리",
+      "source_body_digest": "02a46aa180d289ae8f1c50a9400ca35dabf3df01699fbefb5a67e3c4cf7f6606",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2611a0b82784195607a451aaefa0b7571f8774b05f374504c3eccac2b58bbcd",
+      "source_fact_keys": [
+        "source_fact:v1:2bf586b31ac582222906fdf5ea794ac322b16debb1c377818485a566eda17ba6",
+        "source_fact:v1:6498120909b359ea0070e2dfd8b7745a86282a1f1f6bd94b0ef1040468373c84",
+        "source_fact:v1:a0bc0a7f955816e119c5a9f2737211f614690047afdf23c3c043d728237f06a3",
+        "source_fact:v1:b0d6a8c3621bb28981eb4466849445428893db188cbb9aaeb4be2da974eda226",
+        "source_fact:v1:ba36bb98670aecc327f3034101ab1b03575af440cbcc2699f5ae355794514439",
+        "source_fact:v1:d0da68b77d3195b7ccd5307c86b341cb47ec00ce7bde9f26703c97207e6eb5e8",
+        "source_fact:v1:e119b508b4d329b7251bef43dbb59401b5a550125b5badbd0c9f35eb3a3974a1",
+        "source_fact:v1:f59f4da249ff338f599ca779ef9df1d6e767f6317ca65f5844e8e6a1ad00c3a0"
+      ],
+      "source_published_kst": "2026-10-12T15:26+09:00",
+      "source_title": "항공물류 힘주는 삼성SDS…우정항공 품는다(종합)",
+      "telegram_core_fact": "정보기술(IT) 업계에 따르면 삼성SDS는 이날 우정항공 지분 전량을 인수하는 주식양수도계약을 체결했다. 이번 인수로 삼성SDS는 주요 항공사와의 운송 공간 계약부터 공항 내 화물 처리까지 항공물류 운영 역량을 확보하게 된다.",
+      "title": "항공물류 힘주는 삼성SDS…우정항공 품는다(종합)"
+    },
     "source_fact:ab813e908ae66aa81765f849": {
       "first_seen_kst": "2026-10-11T09:08:30+09:00",
       "lanes": {
@@ -388297,6 +389340,32 @@
       ],
       "source_published_kst": "2026-10-05T20:58+09:00",
       "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
+    },
+    "source_fact:b42642c6eb813d0ded16e57a": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03463686645612264",
+      "source": "이데일리",
+      "source_body_digest": "02a46aa180d289ae8f1c50a9400ca35dabf3df01699fbefb5a67e3c4cf7f6606",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2611a0b82784195607a451aaefa0b7571f8774b05f374504c3eccac2b58bbcd",
+      "source_fact_keys": [
+        "source_fact:v1:2bf586b31ac582222906fdf5ea794ac322b16debb1c377818485a566eda17ba6",
+        "source_fact:v1:6498120909b359ea0070e2dfd8b7745a86282a1f1f6bd94b0ef1040468373c84",
+        "source_fact:v1:a0bc0a7f955816e119c5a9f2737211f614690047afdf23c3c043d728237f06a3",
+        "source_fact:v1:b0d6a8c3621bb28981eb4466849445428893db188cbb9aaeb4be2da974eda226",
+        "source_fact:v1:ba36bb98670aecc327f3034101ab1b03575af440cbcc2699f5ae355794514439",
+        "source_fact:v1:d0da68b77d3195b7ccd5307c86b341cb47ec00ce7bde9f26703c97207e6eb5e8",
+        "source_fact:v1:e119b508b4d329b7251bef43dbb59401b5a550125b5badbd0c9f35eb3a3974a1",
+        "source_fact:v1:f59f4da249ff338f599ca779ef9df1d6e767f6317ca65f5844e8e6a1ad00c3a0"
+      ],
+      "source_published_kst": "2026-10-12T15:26+09:00",
+      "source_title": "항공물류 힘주는 삼성SDS…우정항공 품는다(종합)",
+      "telegram_core_fact": "정보기술(IT) 업계에 따르면 삼성SDS는 이날 우정항공 지분 전량을 인수하는 주식양수도계약을 체결했다. 이번 인수로 삼성SDS는 주요 항공사와의 운송 공간 계약부터 공항 내 화물 처리까지 항공물류 운영 역량을 확보하게 된다.",
+      "title": "항공물류 힘주는 삼성SDS…우정항공 품는다(종합)"
     },
     "source_fact:b427757be0be06d4e6574f4f": {
       "first_seen_kst": "2026-10-06T15:03:09+09:00",
@@ -401253,6 +402322,30 @@
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
     },
+    "source_fact:c302421c0f15f5f61c7fa686": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://core.asiae.co.kr/article/2026101208500475243",
+      "source": "아시아경제",
+      "source_body_digest": "7f799134dfa89f81a9eb4581cf8b38b5f03ca86284591026b2a96024194277c1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:664d7a91cef2023e3707739bdd112b2c43756f0c75b1e3099ea04aff9409d87f",
+      "source_fact_keys": [
+        "source_fact:v1:513a0135e659d6533daee85575e54002d02b282b0969b3b6d7352de33707367b",
+        "source_fact:v1:a2068b7df13986d28cd9beb90707f61930f7a6aa4cbacf6775974f3e8a1989e4",
+        "source_fact:v1:ad0442890b0ef6aa8107868859e7ef3c680692fc47dca76e3380b8f5d38f6812",
+        "source_fact:v1:bd9ef01057ac17ae81b0fee3f2e15636339e64caf8c7f2c749a552e71060a6ff",
+        "source_fact:v1:ebb079f62027aa702744fc8b3487ac4d41448bcf98c9c3799863d82606d8b4f8",
+        "source_fact:v1:fb23b1f179517ea25745df20f1acebf9b2dde98f2febab49fadcb5bbabe3d94a"
+      ],
+      "source_published_kst": "2026-10-12T17:50+09:00",
+      "source_title": "KB운용, 'RISE 코리아밸류업위클리고정커버드콜 ETF' 순자산 4천억 돌파",
+      "telegram_core_fact": "KB자산운용, RISE 코리아밸류업위클리고정커버드콜 ETF의 순자산이 4000억원을 넘어섰다고 밝혔다. ' ETF가 순자산 4000억원을 돌파했다.",
+      "title": "KB운용, 'RISE 코리아밸류업위클리고정커버드콜 ETF' 순자산 4천억 돌파"
+    },
     "source_fact:c30d5dbcd2d2bd73d5a63bc4": {
       "first_seen_kst": "2026-10-06T22:37:02+09:00",
       "lanes": {
@@ -403328,6 +404421,32 @@
       "telegram_core_fact": "기반시설 조성과 반도체 팹 건설을 병행해 생산능력 확충 시점을 최대한 앞당기겠다는 뜻이다.",
       "title": "최태원 \"전력·용수 늦어도 먼저 짓겠다\"…호남 반도체 팹 '속도전'"
     },
+    "source_fact:c504defc0aea11fd6a4ae857": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03463686645612264",
+      "source": "이데일리",
+      "source_body_digest": "02a46aa180d289ae8f1c50a9400ca35dabf3df01699fbefb5a67e3c4cf7f6606",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2611a0b82784195607a451aaefa0b7571f8774b05f374504c3eccac2b58bbcd",
+      "source_fact_keys": [
+        "source_fact:v1:2bf586b31ac582222906fdf5ea794ac322b16debb1c377818485a566eda17ba6",
+        "source_fact:v1:6498120909b359ea0070e2dfd8b7745a86282a1f1f6bd94b0ef1040468373c84",
+        "source_fact:v1:a0bc0a7f955816e119c5a9f2737211f614690047afdf23c3c043d728237f06a3",
+        "source_fact:v1:b0d6a8c3621bb28981eb4466849445428893db188cbb9aaeb4be2da974eda226",
+        "source_fact:v1:ba36bb98670aecc327f3034101ab1b03575af440cbcc2699f5ae355794514439",
+        "source_fact:v1:d0da68b77d3195b7ccd5307c86b341cb47ec00ce7bde9f26703c97207e6eb5e8",
+        "source_fact:v1:e119b508b4d329b7251bef43dbb59401b5a550125b5badbd0c9f35eb3a3974a1",
+        "source_fact:v1:f59f4da249ff338f599ca779ef9df1d6e767f6317ca65f5844e8e6a1ad00c3a0"
+      ],
+      "source_published_kst": "2026-10-12T15:26+09:00",
+      "source_title": "항공물류 힘주는 삼성SDS…우정항공 품는다(종합)",
+      "telegram_core_fact": "정보기술(IT) 업계에 따르면 삼성SDS는 이날 우정항공 지분 전량을 인수하는 주식양수도계약을 체결했다. 이번 인수로 삼성SDS는 주요 항공사와의 운송 공간 계약부터 공항 내 화물 처리까지 항공물류 운영 역량을 확보하게 된다.",
+      "title": "항공물류 힘주는 삼성SDS…우정항공 품는다(종합)"
+    },
     "source_fact:c50532d116e188e633987353": {
       "first_seen_kst": "2026-10-07T11:25:20+09:00",
       "lanes": {
@@ -404842,6 +405961,32 @@
       "source_title": "S&P 사상 최고 하루만에 후퇴…24년만의 금리 발작[뉴욕마감]",
       "telegram_core_fact": "이날 미 국채 10년물 금리는 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
       "title": "S&P 사상 최고 하루만에 후퇴…24년만의 금리 발작[뉴욕마감]"
+    },
+    "source_fact:c6c52da361f11d1c9d09e5bd": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03463686645612264",
+      "source": "이데일리",
+      "source_body_digest": "02a46aa180d289ae8f1c50a9400ca35dabf3df01699fbefb5a67e3c4cf7f6606",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2611a0b82784195607a451aaefa0b7571f8774b05f374504c3eccac2b58bbcd",
+      "source_fact_keys": [
+        "source_fact:v1:2bf586b31ac582222906fdf5ea794ac322b16debb1c377818485a566eda17ba6",
+        "source_fact:v1:6498120909b359ea0070e2dfd8b7745a86282a1f1f6bd94b0ef1040468373c84",
+        "source_fact:v1:a0bc0a7f955816e119c5a9f2737211f614690047afdf23c3c043d728237f06a3",
+        "source_fact:v1:b0d6a8c3621bb28981eb4466849445428893db188cbb9aaeb4be2da974eda226",
+        "source_fact:v1:ba36bb98670aecc327f3034101ab1b03575af440cbcc2699f5ae355794514439",
+        "source_fact:v1:d0da68b77d3195b7ccd5307c86b341cb47ec00ce7bde9f26703c97207e6eb5e8",
+        "source_fact:v1:e119b508b4d329b7251bef43dbb59401b5a550125b5badbd0c9f35eb3a3974a1",
+        "source_fact:v1:f59f4da249ff338f599ca779ef9df1d6e767f6317ca65f5844e8e6a1ad00c3a0"
+      ],
+      "source_published_kst": "2026-10-12T15:26+09:00",
+      "source_title": "항공물류 힘주는 삼성SDS…우정항공 품는다(종합)",
+      "telegram_core_fact": "정보기술(IT) 업계에 따르면 삼성SDS는 이날 우정항공 지분 전량을 인수하는 주식양수도계약을 체결했다. 이번 인수로 삼성SDS는 주요 항공사와의 운송 공간 계약부터 공항 내 화물 처리까지 항공물류 운영 역량을 확보하게 된다.",
+      "title": "항공물류 힘주는 삼성SDS…우정항공 품는다(종합)"
     },
     "source_fact:c6c6d0fcd14f279e13b76e06": {
       "first_seen_kst": "2026-10-09T16:53:11+09:00",
@@ -438553,6 +439698,30 @@
       "telegram_core_fact": "정부가 서울 전역과 경기 일부 지역을 규제지역과 토지거래허가구역으로 지정하며 대출 규제까지 강화한 10·15 부동산대책이 시행 1년을 맞았습니다.",
       "title": "[집중취재] 10·15 부동산대책 1년…집값 잡았나, 풍선효과 키웠나"
     },
+    "source_fact:eb330ca58b28e4c2f28fb108": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://core.asiae.co.kr/article/2026101208500475243",
+      "source": "아시아경제",
+      "source_body_digest": "7f799134dfa89f81a9eb4581cf8b38b5f03ca86284591026b2a96024194277c1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:664d7a91cef2023e3707739bdd112b2c43756f0c75b1e3099ea04aff9409d87f",
+      "source_fact_keys": [
+        "source_fact:v1:513a0135e659d6533daee85575e54002d02b282b0969b3b6d7352de33707367b",
+        "source_fact:v1:a2068b7df13986d28cd9beb90707f61930f7a6aa4cbacf6775974f3e8a1989e4",
+        "source_fact:v1:ad0442890b0ef6aa8107868859e7ef3c680692fc47dca76e3380b8f5d38f6812",
+        "source_fact:v1:bd9ef01057ac17ae81b0fee3f2e15636339e64caf8c7f2c749a552e71060a6ff",
+        "source_fact:v1:ebb079f62027aa702744fc8b3487ac4d41448bcf98c9c3799863d82606d8b4f8",
+        "source_fact:v1:fb23b1f179517ea25745df20f1acebf9b2dde98f2febab49fadcb5bbabe3d94a"
+      ],
+      "source_published_kst": "2026-10-12T17:50+09:00",
+      "source_title": "KB운용, 'RISE 코리아밸류업위클리고정커버드콜 ETF' 순자산 4천억 돌파",
+      "telegram_core_fact": "KB자산운용, RISE 코리아밸류업위클리고정커버드콜 ETF의 순자산이 4000억원을 넘어섰다고 밝혔다. ' ETF가 순자산 4000억원을 돌파했다.",
+      "title": "KB운용, 'RISE 코리아밸류업위클리고정커버드콜 ETF' 순자산 4천억 돌파"
+    },
     "source_fact:eb354f268128f20acfa42418": {
       "first_seen_kst": "2026-10-10T20:30:39+09:00",
       "lanes": {
@@ -442523,6 +443692,26 @@
       "source_title": "코람코자산신탁, 여의도 ABL타워 인수 우선협상대상자로 선정 | 연합뉴스",
       "telegram_core_fact": "서울 여의도 ABL타워 인수 우선협상대상자로 코람코자산신탁이 선정됐다.",
       "title": "코람코자산신탁, 여의도 ABL타워 인수 우선협상대상자로 선정 | 연합뉴스"
+    },
+    "source_fact:efd40095aec3e91543a33efd": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.yna.co.kr/view/MYH20261012000100038",
+      "source": "연합뉴스",
+      "source_body_digest": "b3611b62711dcd2f357ef7107c1e5184f112198ac8ef818f98583819c77b9195",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cbb47e5f3171e032c8c883339069cc57808bd874147ee30357561cd46625d5cc",
+      "source_fact_keys": [
+        "source_fact:v1:8d675c22e345a6c224706030662593eca3ecb68b21664343f5dd7d74bb767e2a",
+        "source_fact:v1:bb37daf30fad8e6bf0d02d53e1a9df8a570ee2a03c13bc7313d4651f442a56cb"
+      ],
+      "source_published_kst": "2026-10-12T05:12+09:00",
+      "source_title": "트럼프 \"러-우크라, 에너지 부문 휴전 합의\" | 연합뉴스",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아와 우크라이나가 에너지 부문에 대한 휴전에 합의했다고 밝혔습니다. 트럼프 대통령은 현지시간 11일 소셜미디어 트루스소셜을 통해 \"러시아와 우크라이나 간 전쟁에서 에너지 휴전이 이뤄졌다\"라며 \"즉각적으로 효력이 발생한다\"라고 말했습니다.",
+      "title": "트럼프 \"러-우크라, 에너지 부문 휴전 합의\" | 연합뉴스"
     },
     "source_fact:efdbe5bb9954d928ab09a47a": {
       "first_seen_kst": "2026-10-07T11:25:20+09:00",
@@ -470555,6 +471744,26 @@
       "source": "전자신문",
       "title": "엔비디아, 11월 서울서 AI 데이 연다…삼성·SK·네이버 등 20개사 참여"
     },
+    "title:369765eeba4b1fcf96408d53": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.yna.co.kr/view/MYH20261012000100038",
+      "source": "연합뉴스",
+      "source_body_digest": "b3611b62711dcd2f357ef7107c1e5184f112198ac8ef818f98583819c77b9195",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cbb47e5f3171e032c8c883339069cc57808bd874147ee30357561cd46625d5cc",
+      "source_fact_keys": [
+        "source_fact:v1:8d675c22e345a6c224706030662593eca3ecb68b21664343f5dd7d74bb767e2a",
+        "source_fact:v1:bb37daf30fad8e6bf0d02d53e1a9df8a570ee2a03c13bc7313d4651f442a56cb"
+      ],
+      "source_published_kst": "2026-10-12T05:12+09:00",
+      "source_title": "트럼프 \"러-우크라, 에너지 부문 휴전 합의\" | 연합뉴스",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아와 우크라이나가 에너지 부문에 대한 휴전에 합의했다고 밝혔습니다. 트럼프 대통령은 현지시간 11일 소셜미디어 트루스소셜을 통해 \"러시아와 우크라이나 간 전쟁에서 에너지 휴전이 이뤄졌다\"라며 \"즉각적으로 효력이 발생한다\"라고 말했습니다.",
+      "title": "트럼프 \"러-우크라, 에너지 부문 휴전 합의\" | 연합뉴스"
+    },
     "title:3699bbe7eb28c5cac8b09ae1": {
       "first_seen_kst": "2026-10-01T16:57:16+09:00",
       "lanes": {
@@ -479177,6 +480386,26 @@
       "source": "이투데이",
       "title": "[속보] 국제유가 하락⋯WTI 1.90%↓"
     },
+    "title:5617ec2fedcda8a2526079dc": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.hankyung.com/article/2026101268256",
+      "source": "한국경제",
+      "source_body_digest": "fa79447dd06af41b043b1d58147bbbc3e208539b38da8bc1df5ec04a4f3e736c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c9dd888c48d89e991f9c327d01bed402ff9fff518c84e20e43fa7e9c26312ef0",
+      "source_fact_keys": [
+        "source_fact:v1:30c331cd72733c66f083421c39aa25b45e445e0a318481e344e596f0d39678f4",
+        "source_fact:v1:a71467300191e85d03c1196d0bd84bc39a6efdfd24765794cde5f30c7dc328a2"
+      ],
+      "source_published_kst": "2026-10-12T17:30+09:00",
+      "source_title": "디에스운용, 'DS AI반도체액티브' ETF 13일 상장",
+      "telegram_core_fact": "디에스자산운용은 오는 13일 'DS AI반도체액티브' 상장지수펀드(ETF)를 유가증권시장에 상장한다고 12일 밝혔다.",
+      "title": "디에스운용, 'DS AI반도체액티브' ETF 13일 상장"
+    },
     "title:56194ce3d4f0ed5fcd5b5f3a": {
       "first_seen_kst": "2026-10-09T18:34:32+09:00",
       "lanes": {
@@ -487248,6 +488477,30 @@
       "source_published_kst": "2026-10-05T07:00+09:00",
       "title": "알래스카 LNG 검토 단계인데…트럼프 한 마디에 여야 공방 예고"
     },
+    "title:7624ef0f6358d95c19fefdae": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://core.asiae.co.kr/article/2026101208500475243",
+      "source": "아시아경제",
+      "source_body_digest": "7f799134dfa89f81a9eb4581cf8b38b5f03ca86284591026b2a96024194277c1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:664d7a91cef2023e3707739bdd112b2c43756f0c75b1e3099ea04aff9409d87f",
+      "source_fact_keys": [
+        "source_fact:v1:513a0135e659d6533daee85575e54002d02b282b0969b3b6d7352de33707367b",
+        "source_fact:v1:a2068b7df13986d28cd9beb90707f61930f7a6aa4cbacf6775974f3e8a1989e4",
+        "source_fact:v1:ad0442890b0ef6aa8107868859e7ef3c680692fc47dca76e3380b8f5d38f6812",
+        "source_fact:v1:bd9ef01057ac17ae81b0fee3f2e15636339e64caf8c7f2c749a552e71060a6ff",
+        "source_fact:v1:ebb079f62027aa702744fc8b3487ac4d41448bcf98c9c3799863d82606d8b4f8",
+        "source_fact:v1:fb23b1f179517ea25745df20f1acebf9b2dde98f2febab49fadcb5bbabe3d94a"
+      ],
+      "source_published_kst": "2026-10-12T17:50+09:00",
+      "source_title": "KB운용, 'RISE 코리아밸류업위클리고정커버드콜 ETF' 순자산 4천억 돌파",
+      "telegram_core_fact": "KB자산운용, RISE 코리아밸류업위클리고정커버드콜 ETF의 순자산이 4000억원을 넘어섰다고 밝혔다. ' ETF가 순자산 4000억원을 돌파했다.",
+      "title": "KB운용, 'RISE 코리아밸류업위클리고정커버드콜 ETF' 순자산 4천억 돌파"
+    },
     "title:762fad42a7a30dd4ec2183aa": {
       "first_seen_kst": "2026-09-18T12:25:16+09:00",
       "lanes": {
@@ -487609,6 +488862,25 @@
       ],
       "source_published_kst": "2026-10-07T14:38+09:00",
       "title": "삼보산업, 중동 전쟁에 알루미늄 판가 상승…장기화 땐 수익성 개선 긍정"
+    },
+    "title:7774bb89de978f74209bbeeb": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05100406645612264",
+      "source": "이데일리",
+      "source_body_digest": "f78ee3be38137eab95c6ddc3968b7d068d3d79e2fc6a9f6d661400028d461030",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d23ba01f9ccc5ce20b3653654893f1baa3f744eca6149d428a9f0ec259cf8250",
+      "source_fact_keys": [
+        "source_fact:v1:b67463b5a81f7760ebafbcb0032a45f85dd2ace61d884b3be829960375812653"
+      ],
+      "source_published_kst": "2026-10-12T21:53+09:00",
+      "source_title": "JTBC 채권 피해자 712명·593억원 피해…“개인 채권자 변제안 마련해야”",
+      "telegram_core_fact": "JTBC 회사채에 투자했다가 피해를 본 개인 채권자들이 국회 국정감사에서 구체적인 변제 계획 마련과 오너 일가의 책임 있는 대응을 촉구했다.",
+      "title": "JTBC 채권 피해자 712명·593억원 피해…“개인 채권자 변제안 마련해야”"
     },
     "title:777772630205a5b4877eaee0": {
       "first_seen_kst": "2026-10-12T17:38:53+09:00",
@@ -496879,6 +498151,28 @@
       "source": "서울신문",
       "title": "경기도, 전국 최초 온실가스 관측 ‘경기기후위성 2호기’ 발사 성공"
     },
+    "title:9a2324f315d8f2b6d6d0be86": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633862",
+      "source": "이투데이",
+      "source_body_digest": "5c57a992edd1112bda3b77f1d8a3b056e588be4bc82c95fc9e7a82ec783e62c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:063d6326268d2934b8fe0db1afdddf26ae63ddfa01deb933448076082c731d73",
+      "source_fact_keys": [
+        "source_fact:v1:3177261dcfc7977464f4651f05f5d3a13c12571e7a88f0c1725f52aa5bbc1c66",
+        "source_fact:v1:3fb5e5d1a8efa2dd1e9f659b87cbb10e4e3298fa621bfe479d7a9bc750afd029",
+        "source_fact:v1:b96bd88559b890028e16ddeb277fd4d61302a9355e9a7363e05478f40b305011",
+        "source_fact:v1:bcfb755359bfbb63d9f54dedec5876eace5bfc83265dc07b54abe57843e8e2fa"
+      ],
+      "source_published_kst": "2026-10-12T05:00+09:00",
+      "source_title": "돈 빌려 한미사이언스 지분 늘리는 신동국…'5000억 대출' 이자부담 커진다",
+      "telegram_core_fact": "수천억대 차입 부담을 감수하면서 지분을 늘리는 만큼 향후 대출 만기와 상환 여력에도 관심이 쏠린다.",
+      "title": "돈 빌려 한미사이언스 지분 늘리는 신동국…'5000억 대출' 이자부담 커진다"
+    },
     "title:9a26b28b25f5f0535fdd6762": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
       "lanes": {
@@ -497124,6 +498418,26 @@
       "source_title": "조각투자 넘어 채권ㆍ펀드로⋯토큰증권 시장 확장 채비",
       "telegram_core_fact": "토큰증권 시장이 부동산·미술품 등 조각투자를 넘어 채권·펀드로 확장을 준비한다. 일반투자자의 장외거래소 투자한도는 거래소 한 곳당 연간 순매수액 1억원으로 제한하는 안이 제시됐다.",
       "title": "조각투자 넘어 채권ㆍ펀드로⋯토큰증권 시장 확장 채비"
+    },
+    "title:9b0d583a55121a7c212d26e7": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174041",
+      "source": "매일경제",
+      "source_body_digest": "f3933d6447b5f2383df7859ac1cfb4c85c35a8db5d418912198314cc609e3d7b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ffb7ad8c461a7f342cb19294c88610173ff45d61e4f7bbae3193aa8e6191773b",
+      "source_fact_keys": [
+        "source_fact:v1:249cc0adda388e09176d929cc96813b393b399709aa488da43631597b37b151f",
+        "source_fact:v1:e848b605ea2e39120736d7a14c998e8d4bde07eb876b548b3a0ce148f0503d9d"
+      ],
+      "source_published_kst": "2026-10-12T23:10+09:00",
+      "source_title": "아이온큐, 엘리시티 전액 주식 인수 발표에 지분 희석 우려 부각",
+      "telegram_core_fact": "최대 13억 달러 규모로 사이버보안 기업 엘리시티를 전액 주식으로 인수한다는 소식에 지분 희석 우려가 커졌습니다.",
+      "title": "아이온큐, 엘리시티 전액 주식 인수 발표에 지분 희석 우려 부각"
     },
     "title:9b5b598b553f986f0afba470": {
       "first_seen_kst": "2026-10-02T13:38:43+09:00",
@@ -500205,6 +501519,32 @@
       "source_published_kst": "2026-10-06T04:57+09:00",
       "title": "국제유가, 중동 원유수출 증가·G7 비축유 방출 약속에 1.8%↓ | 연합뉴스"
     },
+    "title:a6d29692f84227134bbcb95b": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03463686645612264",
+      "source": "이데일리",
+      "source_body_digest": "02a46aa180d289ae8f1c50a9400ca35dabf3df01699fbefb5a67e3c4cf7f6606",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2611a0b82784195607a451aaefa0b7571f8774b05f374504c3eccac2b58bbcd",
+      "source_fact_keys": [
+        "source_fact:v1:2bf586b31ac582222906fdf5ea794ac322b16debb1c377818485a566eda17ba6",
+        "source_fact:v1:6498120909b359ea0070e2dfd8b7745a86282a1f1f6bd94b0ef1040468373c84",
+        "source_fact:v1:a0bc0a7f955816e119c5a9f2737211f614690047afdf23c3c043d728237f06a3",
+        "source_fact:v1:b0d6a8c3621bb28981eb4466849445428893db188cbb9aaeb4be2da974eda226",
+        "source_fact:v1:ba36bb98670aecc327f3034101ab1b03575af440cbcc2699f5ae355794514439",
+        "source_fact:v1:d0da68b77d3195b7ccd5307c86b341cb47ec00ce7bde9f26703c97207e6eb5e8",
+        "source_fact:v1:e119b508b4d329b7251bef43dbb59401b5a550125b5badbd0c9f35eb3a3974a1",
+        "source_fact:v1:f59f4da249ff338f599ca779ef9df1d6e767f6317ca65f5844e8e6a1ad00c3a0"
+      ],
+      "source_published_kst": "2026-10-12T15:26+09:00",
+      "source_title": "항공물류 힘주는 삼성SDS…우정항공 품는다(종합)",
+      "telegram_core_fact": "정보기술(IT) 업계에 따르면 삼성SDS는 이날 우정항공 지분 전량을 인수하는 주식양수도계약을 체결했다. 이번 인수로 삼성SDS는 주요 항공사와의 운송 공간 계약부터 공항 내 화물 처리까지 항공물류 운영 역량을 확보하게 된다.",
+      "title": "항공물류 힘주는 삼성SDS…우정항공 품는다(종합)"
+    },
     "title:a6d3b5df5eac58702df30f9e": {
       "first_seen_kst": "2026-10-10T12:56:15+09:00",
       "lanes": {
@@ -502702,6 +504042,32 @@
       "source_title": "오리엔트바이오 \"고품질 SPF 연구용 토끼 공급 확대\"",
       "telegram_core_fact": "첨단 바이오 인프라 전문기업 오리엔트바이오는 고품질 특정병원체 부재(SPF) 연구용 토끼의 공급을 확대하며 국내 제약·바이오 기업과 연구기관의 비임상 연구 수요에 대응 중이라고 12일 밝혔다.",
       "title": "오리엔트바이오 \"고품질 SPF 연구용 토끼 공급 확대\""
+    },
+    "title:af9f384e68ea985e1a214a42": {
+      "first_seen_kst": "2026-10-12T23:37:27+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:37:27+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:37:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03463686645612264",
+      "source": "이데일리",
+      "source_body_digest": "02a46aa180d289ae8f1c50a9400ca35dabf3df01699fbefb5a67e3c4cf7f6606",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2611a0b82784195607a451aaefa0b7571f8774b05f374504c3eccac2b58bbcd",
+      "source_fact_keys": [
+        "source_fact:v1:2bf586b31ac582222906fdf5ea794ac322b16debb1c377818485a566eda17ba6",
+        "source_fact:v1:6498120909b359ea0070e2dfd8b7745a86282a1f1f6bd94b0ef1040468373c84",
+        "source_fact:v1:a0bc0a7f955816e119c5a9f2737211f614690047afdf23c3c043d728237f06a3",
+        "source_fact:v1:b0d6a8c3621bb28981eb4466849445428893db188cbb9aaeb4be2da974eda226",
+        "source_fact:v1:ba36bb98670aecc327f3034101ab1b03575af440cbcc2699f5ae355794514439",
+        "source_fact:v1:d0da68b77d3195b7ccd5307c86b341cb47ec00ce7bde9f26703c97207e6eb5e8",
+        "source_fact:v1:e119b508b4d329b7251bef43dbb59401b5a550125b5badbd0c9f35eb3a3974a1",
+        "source_fact:v1:f59f4da249ff338f599ca779ef9df1d6e767f6317ca65f5844e8e6a1ad00c3a0"
+      ],
+      "source_published_kst": "2026-10-12T15:26+09:00",
+      "source_title": "항공물류 힘주는 삼성SDS…우정항공 품는다(종합)",
+      "telegram_core_fact": "정보기술(IT) 업계에 따르면 삼성SDS는 이날 우정항공 지분 전량을 인수하는 주식양수도계약을 체결했다. 이번 인수로 삼성SDS는 주요 항공사와의 운송 공간 계약부터 공항 내 화물 처리까지 항공물류 운영 역량을 확보하게 된다.",
+      "title": "항공물류 힘주는 삼성SDS…우정항공 품는다(종합)"
     },
     "title:afb27ef7703d9e8cd153d106": {
       "first_seen_kst": "2026-10-02T13:04:47+09:00",
@@ -523710,5 +525076,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-12T23:14:39+09:00"
+  "updated_at_kst": "2026-10-12T23:37:27+09:00"
 }
