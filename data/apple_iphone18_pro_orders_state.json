@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "updated_at_kst": "2026-10-12T22:56:40+09:00",
+  "updated_at_kst": "2026-10-13T06:57:25+09:00",
   "initial_alert_sent": true,
   "baseline_at_kst": "2026-10-09T15:05:00+09:00",
   "seen": [
@@ -42,6 +42,7 @@
     "473d771dfbbd7cb31f1104cf",
     "47de917dae1b489ab0e4c4dd",
     "49fabb874e1e12df82d280e3",
+    "4b24ff58739deed0b955a399",
     "4b75c03bfb26002837da736e",
     "4be0038b177bd71395fe7c44",
     "4c7877ee35453507b6caff2b",
@@ -57,6 +58,7 @@
     "677672c4c8eccf812f1b3d18",
     "67776aea2788a062ac06095e",
     "67a7a63bc93188ca857b134a",
+    "68170ac28a59f85d932bd2df",
     "6e68ca90eabc022d44100c15",
     "6f589fb73f526dc8ee6e6130",
     "72d37830f8cc90740d379d6b",
@@ -84,6 +86,7 @@
     "9a58ada9903d9beda475f5a2",
     "9b9f54796f72e005d02470a5",
     "9eb8f791b6cb514a9cb0e026",
+    "9ef3129dd95be80081b5f5cc",
     "9f3d4f158481044036cff4ec",
     "a2b417a34bc92c3b14b5836e",
     "a5093105c2add55de3e0428e",
@@ -104,6 +107,7 @@
     "bd7bbb24f5d039b49d5bd4d6",
     "bf5a4133271132ee18de8e73",
     "c393aa4a8f06df51813d1df4",
+    "c3fbc53b244613c687fb85d2",
     "c4d3145858c39548434d81a4",
     "c7ca6d5ada2000f70747958a",
     "c895bf957caf431c83bff478",
@@ -183,22 +187,11 @@
       "china_week38_sales_yoy_pct_official_counterpoint": 12.0
     }
   },
-  "last_scan_items": 2,
-  "feed_errors": [
-    "google_en:HTTPError",
-    "google_en:HTTPError",
-    "google_en:HTTPError",
-    "google_en:HTTPError",
-    "google_en:HTTPError",
-    "google_en:HTTPError",
-    "google_ko:HTTPError",
-    "google_ko:HTTPError",
-    "google_ko:HTTPError",
-    "google_ko:HTTPError"
-  ],
-  "successful_sources": 2,
+  "last_scan_items": 94,
+  "feed_errors": [],
+  "successful_sources": 10,
   "new_signal_count": 0,
-  "source_status": "partial_source_errors",
+  "source_status": "ok",
   "consecutive_source_failures": 0,
   "source_degraded_notice_sent": false,
   "last_alert": {

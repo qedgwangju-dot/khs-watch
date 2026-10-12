@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at_kst": "2026-10-12T22:54:37+09:00",
+  "updated_at_kst": "2026-10-13T06:57:18+09:00",
   "initial_alert_sent": true,
   "baseline_at_kst": "2026-09-27T17:05:00+09:00",
   "baseline": {
@@ -117,6 +117,7 @@
     "ac060b05ffd97d440adbd2ad",
     "ad3fad7a44a18aabadaa0f27",
     "b00dd999ce8d3ba319e21cfe",
+    "b3fc6b497bb9f2b86ca9ec1d",
     "b44d285d5d9d3a5592b9aaf2",
     "b46686ecb3490b1e8715f39f",
     "b8620a1a902634f1c2247ff7",
@@ -129,6 +130,7 @@
     "bff88584b86d23d8a138158e",
     "c0a9b982df11c9a55b1ed91e",
     "c805a65b885261fb18615d2b",
+    "ca7867ede1a20d3890ced9e1",
     "cba557320aa2854debadcd61",
     "cc14169e011f5de69228e146",
     "ccb519aed790de670d115c22",
@@ -170,8 +172,8 @@
   ],
   "last_fx_bucket": "orange",
   "last_fx": {
-    "latest_rate": 1341.49,
-    "latest_date": "2026-10-09",
+    "latest_rate": 1333.09,
+    "latest_date": "2026-10-12",
     "latest_source": "ECB/Frankfurter",
     "q2_avg": 1500.48,
     "q3_avg": 1417.24,
@@ -179,7 +181,7 @@
     "bucket": "orange",
     "average_source": "Fed H.10/FRED"
   },
-  "last_scan_items": 0,
+  "last_scan_items": 24,
   "last_signal_count": 0,
   "last_alert": {
     "at_kst": "2026-09-28T07:38:15+09:00",
