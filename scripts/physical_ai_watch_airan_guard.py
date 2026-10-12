@@ -809,6 +809,9 @@ ROBOT_POSTTRAIN_MEASURED = re.compile(
 )
 ROBOT_POSTTRAIN_DENIAL = re.compile(
     r'not\s+(?:yet\s+)?measured|no\s+GPU[-\s]*hours?\s+disclosed|'
+    r'\bno\s+(?:independent\s+)?(?:measured|metered|actual)\b|'
+    r'(?:without|no|not)\s+(?:published\s+)?(?:measured|metered)\s+(?:training\s+)?(?:logs?|results?)|'
+    r'(?:published|released)\s+no\s+(?:measured|metered)\b|'
     r'GPU\s*시간\s*(?:미공개|미확인)|실측\s*(?:없음|미확인)',re.I
 )
 
