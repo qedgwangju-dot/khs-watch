@@ -6613,6 +6613,30 @@
       "source_published_kst": "2026-10-07T09:42+09:00",
       "title": "경기도, 생산단계 수산물 유해물질검사 항목 95→167개 확대 | 연합뉴스"
     },
+    "core:360b7bb2fbdfe32dc5cff225": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.news1.kr/world/middleeast-africa/6316842",
+      "source": "뉴스1",
+      "source_body_digest": "2638b2df2a6ff3c7629fde7184948296c3dde506d61771946e514947cb6290e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d96e49b83705444a6023f7f9540c145ced3e479a8c409b2e77e1517a8ac4b389",
+      "source_fact_keys": [
+        "source_fact:v1:43ccb58f4515df6c529afcea3407059d27432b3013009b0529142d3d12813faf",
+        "source_fact:v1:48b3d6330bb04c1424706d94083f2742e2dc6bb67a99cfe13d2beab8cd4d1ccc",
+        "source_fact:v1:67cc2dd88480c6113f4bb5de2134a8103080fde803dd0910c4ad71115459f71b",
+        "source_fact:v1:9efd5d74189d01ae4bd4b76b799ec9e33c107c70f4b89bd5698213711befd9b6",
+        "source_fact:v1:a12360f5cd4c0c529037dcd796da554e178d93a05b5b64e253f51e24cc6ef585",
+        "source_fact:v1:ae3e88fc6340c99f4defcb03bb5dc2b254e9be1028c93966dce86e8bb691e967"
+      ],
+      "source_published_kst": "2026-10-12T14:07+09:00",
+      "source_title": "후티 공격에 요격미사일 바닥난 사우디…파키스탄 등에 지원 요청",
+      "telegram_core_fact": "사우디 당국자들은 올여름까지만 해도 후티 반군과의 상황이 통제되고 있다고 설명했지만, 이후 후티의 공세가 강화되면서 홍해 연안의 예멘 주요 거점을 잃고 사우디 본토 공항과 석유 시설까지 공격받고 있다.",
+      "title": "후티 공격에 요격미사일 바닥난 사우디…파키스탄 등에 지원 요청"
+    },
     "core:362c744d88f81539dd2665f5": {
       "first_seen_kst": "2026-10-10T08:01:49+09:00",
       "lanes": {
@@ -7719,6 +7743,29 @@
       "source_title": "제주 바다숲 소멸은 생태계 변화 신호탄…해조류 생산 97% 감소 | 연합뉴스",
       "telegram_core_fact": "한국해양과학기술원이 8일 내놓은 현안 보고서를 보면 2010년 5천155t에 달하던 제주 연근해 해조류 생산량은 지난해 154t으로 97% 감소했다. 제주 연안의 바다숲 소멸은 생태계 변화의 신호탄으로, 아열대화를 지속해서 관측해야 한다는 의견이 나왔다.",
       "title": "제주 바다숲 소멸은 생태계 변화 신호탄…해조류 생산 97% 감소 | 연합뉴스"
+    },
+    "core:3e5b8fd2acf4c92f60b64b67": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.hankyung.com/article/2026101254526",
+      "source": "한국경제",
+      "source_body_digest": "31aa2f686f92b53397b4a792becfcada1a018f348d6fbcaf18a262369d452d22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:414c30a55c25e9723c7535ae99bd422410789c0cce32c55233bdf2881a8e08fb",
+      "source_fact_keys": [
+        "source_fact:v1:16d135cb4fde64047929bab461cf1f9483a061a8856c36a6d31295c1c06d0af3",
+        "source_fact:v1:2aa7dfcb26cd35dc729e513998bbf3ff5d49c4ef4b37cd03e5b2dd6bf15116a3",
+        "source_fact:v1:2c9b3526fe4261a843a5702bb87da2f0d308bb73cf1cd40436c232003b0a2e91",
+        "source_fact:v1:4c094b54267da3d52cfec323eef017ebafe06f6b0b1f14af7833a2a4d008d413",
+        "source_fact:v1:85ae1ed390e0d663eb09369c38dd7fb7a26dc6e8be41a0d518642638f2981396"
+      ],
+      "source_published_kst": "2026-10-12T09:44+09:00",
+      "source_title": "호르무즈 해협 막히자 해운주 강세…STX그린로지스 6%↑",
+      "telegram_core_fact": "이날 해운주의 강세는 중동 지역 지정학적 리스크 심화로 주요 해상 요충지의 통과 차질이 이어지면서 선박들의 우회 운항과 대기 시간 증가로 실질 가용 선복량 감소와 해상 운임 상승세 지속에 따른 실적 기대감이 반영된 것으로 풀이된다.",
+      "title": "호르무즈 해협 막히자 해운주 강세…STX그린로지스 6%↑"
     },
     "core:3e735ea03c496207ff98fa55": {
       "first_seen_kst": "2026-10-11T16:32:27+09:00",
@@ -9177,6 +9224,25 @@
       "source_title": "中국경절 연휴, 영화 관람객 저조…12년 만에 최저",
       "telegram_core_fact": "상무부에 따르면 이번 국경절 연휴 기간인 지난 1∼6일 주요 온라인 플랫폼의 체화지능(具身智能·Embodied Intelligence) 로봇 매출은 전년비 130% 증가했고 스마트 안경 매출도 100% 늘었다.",
       "title": "中국경절 연휴, 영화 관람객 저조…12년 만에 최저"
+    },
+    "core:4bbdaf77c2faff93005cf6ad": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634749",
+      "source": "이투데이",
+      "source_body_digest": "d77f6cb2ff6f1dea2c6e20e1a8b7ac12709e7df1041e4290536d310a759e10a4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:727c785b7318e0f85028a4e58c5f0b6ce8beafcc42e75c503da0db04ae28d2d1",
+      "source_fact_keys": [
+        "source_fact:v1:59bb4a918a667269deb2f95daa07a6c3e58636919afcc2ba12b503fbc42d4e1d"
+      ],
+      "source_published_kst": "2026-10-12T15:41+09:00",
+      "source_title": "“전세부터 지원금까지” 미드나잇, 개인정보 숨기는 블록체인 활용 사례 공개",
+      "telegram_core_fact": "개인정보 원본을 제출하지 않고 지원금 신청 자격을 증명하거나, 다른 세입자의 보증금을 공개하지 않은 채 전세 계약의 위험도를 확인하는 블록체인 활용 사례가 공개됐다.",
+      "title": "“전세부터 지원금까지” 미드나잇, 개인정보 숨기는 블록체인 활용 사례 공개"
     },
     "core:4bfe58ee0160221b7424cf00": {
       "first_seen_kst": "2026-10-11T07:07:11+09:00",
@@ -17087,6 +17153,25 @@
       "telegram_core_fact": "9월 중순께 홈플러스는 당초 목표로 세웠던 매출의 40%만 달성했는데, 여기서 더 떨어진 것이다.",
       "title": "홈플러스, 목표 대비 매출 30%…통매각 불발 시 분리매각 수순 | 연합뉴스"
     },
+    "core:93b5777540c5466ce6cb8089": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012113600063",
+      "source": "연합뉴스",
+      "source_body_digest": "576ebf9fe60a3b1163a80d941f2425b2f31ee460b8d89e08c51e684428b01690",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d278fa4b91aa1e69af529601471c839b77d353678125c4f25ee38f2a0f13b246",
+      "source_fact_keys": [
+        "source_fact:v1:cfe3162cb53140f026355058862c4e64fb4c1ba255499fcbe0d289bf70f61a18"
+      ],
+      "source_published_kst": "2026-10-12T14:47+09:00",
+      "source_title": "박수현 \"202조원 첨단산업 투자 뒷받침…AI·힐링 충남 실현\" | 연합뉴스",
+      "telegram_core_fact": "아산 삼성디스플레이의 67조원 투자와 당진 AI 데이터센터 조성, 8개 시군 27개 기업의 1조5천303억원 투자 유치 등도 성과로 소개했다.",
+      "title": "박수현 \"202조원 첨단산업 투자 뒷받침…AI·힐링 충남 실현\" | 연합뉴스"
+    },
     "core:93d90df6717fd2dcc88ea9cb": {
       "first_seen_kst": "2026-10-11T13:18:03+09:00",
       "lanes": {
@@ -20874,6 +20959,23 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령은 11일(현지시간) 러시아와 우크라이나가 에너지 시설 공격을 중단하는‘에너지 휴전’에 합의했다고 밝혔다. 트럼프 대통령은 수주 동안 젤렌스키 대통령에게 러시아 에너지 기반시설에 대한 공격을 중단하라고 압박해 왔다.",
       "title": "트럼프 “러시아·우크라이나, 에너지 휴전 합의”…구체적 내용은 미공개"
     },
+    "core:b45a5a7b26f081f26eba5d91": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822359",
+      "source": "뉴시스",
+      "source_body_digest": "ec4a9cc02dce35d839e125a21d020d01f3a070df3b72a36cd275c12715fa82c4",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T16:26+09:00",
+      "source_title": "\"위성 개발부터 환경시험까지\"…KAI, 국내 민간 유일 통합체계 완성",
+      "telegram_core_fact": "한국항공우주산업(KAI)이 위성 개발부터 환경시험까지 전 과정을 자체 수행할 수 있는 통합체계를 완성하며 우주사업 경쟁력 강화에 나섰다.",
+      "title": "\"위성 개발부터 환경시험까지\"…KAI, 국내 민간 유일 통합체계 완성"
+    },
     "core:b45adbecbf9d5e5ac03eba95": {
       "first_seen_kst": "2026-10-08T03:51:03+09:00",
       "lanes": {
@@ -23981,6 +24083,26 @@
       "source_title": "아이엘, 전고체배터리 '에너지 밀도 10배' 기술 개발…고용량·초고속 방전 동시 구현",
       "telegram_core_fact": "높은 에너지 밀도와 고출력 특성을 동시에 확보할 수 있는 차세대 배터리 기술은 향후 로봇의 구동 효율과 운용 성능을 결정하는 핵심 요소 중 하나로 꼽힌다.",
       "title": "아이엘, 전고체배터리 '에너지 밀도 10배' 기술 개발…고용량·초고속 방전 동시 구현"
+    },
+    "core:cfb144cc91d8b66284124ac4": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.etnews.com/20261012000299",
+      "source": "전자신문",
+      "source_body_digest": "64056dfc2fe70a0488fefb3801134c537b14f110762ec550c090053e86c72316",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:86dd9bd45c04d7e688f5f3f887c797d1c581ef1a551058e6b25fc619dfefe2e7",
+      "source_fact_keys": [
+        "source_fact:v1:bc091074f4309aebd5b8c423bbd746308836cd723814ea78ae085d5e8971af8d",
+        "source_fact:v1:d2c96ff7c16360d6cc4e75d81cf9035ff9e0516119a5858c38c6c700b284bf42"
+      ],
+      "source_published_kst": "2026-10-12T15:31+09:00",
+      "source_title": "국세청, 구글코리아 1540억원대 법인세 취소소송에서 패소",
+      "telegram_core_fact": "구글코리아가 1540억원대 법인세 부과에 불복해 낸 소송에서 과세당국이 최종 패소, 과세 처분이 취소된다.",
+      "title": "국세청, 구글코리아 1540억원대 법인세 취소소송에서 패소"
     },
     "core:d007d6d176f80e442907c6c3": {
       "first_seen_kst": "2026-10-11T17:50:48+09:00",
@@ -31339,32 +31461,26 @@
     "event:242c04e115c71f36e3e5a541": {
       "first_seen_kst": "2026-10-12T01:34:33+09:00",
       "lanes": {
-        "live": "2026-10-12T16:29:45+09:00"
+        "live": "2026-10-12T16:50:12+09:00"
       },
-      "last_seen_kst": "2026-10-12T16:29:45+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=03306246645612264",
-      "source": "이데일리",
-      "source_body_digest": "3d9941a1568946b4c60b01824bc6084971c02dc2c3196e46c0e82bb5c8ca9daf",
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.news1.kr/world/middleeast-africa/6316842",
+      "source": "뉴스1",
+      "source_body_digest": "2638b2df2a6ff3c7629fde7184948296c3dde506d61771946e514947cb6290e4",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:4f49a9f48f3098e85ef90773d3eb37ffb45a44dc3879efce43d4b33973631c3b",
+      "source_fact_identity": "source_facts:v1:d96e49b83705444a6023f7f9540c145ced3e479a8c409b2e77e1517a8ac4b389",
       "source_fact_keys": [
-        "source_fact:v1:0608d1b8a5690232c2d1602c0737add81185f649471509ada0a92a0f1c8f0a92",
-        "source_fact:v1:1dfc6a917bda90cacf9e6ef525673c115c4710ecbe61c6f84d9fcecc067e3a24",
-        "source_fact:v1:1fb04963d453de9f6e4fa40f6955f57cd7b8244085fc11586ae1036ca6f748f1",
-        "source_fact:v1:2f601fd8c9a2a71a06797ce11b8c50877c21f7674068e7b9e4d2ee21a31dae68",
-        "source_fact:v1:4176e519acb4889d908b216c78331005645c75034f2cf8a3e0686569f59fa362",
-        "source_fact:v1:4e9cb31c66d4b64171a9244c52828d10db1d50f7a94d9554e5835f5d08742b52",
-        "source_fact:v1:8314ee0abcb018ff35be13c0627bc0ab2483cace0e1cee17fa06146bdd482e21",
-        "source_fact:v1:93bfcb56fcd35b5c4228b231504ce564762eff52210e69f7a6f63d8ef82ccc15",
-        "source_fact:v1:9609d9f80e3f39297b9674d8a00cf8d0cd083d6ebc63adca49e3be912dbc6f39",
-        "source_fact:v1:c14cb1b4de06f33e2ace062dd78f6db7c8013258163e77d289302b04fee1609e",
-        "source_fact:v1:d8ae5a4aa5a9aa3ea27677adf4be9e79636aa23d00d8fffc676fcba88ce0a897",
-        "source_fact:v1:e0de40166a73880527b439b492a3a1978a6051ba199dd69718f4ce651b7c3f02"
+        "source_fact:v1:43ccb58f4515df6c529afcea3407059d27432b3013009b0529142d3d12813faf",
+        "source_fact:v1:48b3d6330bb04c1424706d94083f2742e2dc6bb67a99cfe13d2beab8cd4d1ccc",
+        "source_fact:v1:67cc2dd88480c6113f4bb5de2134a8103080fde803dd0910c4ad71115459f71b",
+        "source_fact:v1:9efd5d74189d01ae4bd4b76b799ec9e33c107c70f4b89bd5698213711befd9b6",
+        "source_fact:v1:a12360f5cd4c0c529037dcd796da554e178d93a05b5b64e253f51e24cc6ef585",
+        "source_fact:v1:ae3e88fc6340c99f4defcb03bb5dc2b254e9be1028c93966dce86e8bb691e967"
       ],
-      "source_published_kst": "2026-10-12T14:27+09:00",
-      "source_title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향",
-      "telegram_core_fact": "금융투자협회가 12일 발표한 ‘2026년 9월 장외채권시장 동향’에 따르면 지난달 말 국고채 1년물 금리는 3.733%로 전월 말보다 29.2bp(1bp=0.01%포인트) 상승했다.",
-      "title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향"
+      "source_published_kst": "2026-10-12T14:07+09:00",
+      "source_title": "후티 공격에 요격미사일 바닥난 사우디…파키스탄 등에 지원 요청",
+      "telegram_core_fact": "사우디 당국자들은 올여름까지만 해도 후티 반군과의 상황이 통제되고 있다고 설명했지만, 이후 후티의 공세가 강화되면서 홍해 연안의 예멘 주요 거점을 잃고 사우디 본토 공항과 석유 시설까지 공격받고 있다.",
+      "title": "후티 공격에 요격미사일 바닥난 사우디…파키스탄 등에 지원 요청"
     },
     "event:243b9268c0c661c2e567eb0a": {
       "first_seen_kst": "2026-09-30T11:15:27+09:00",
@@ -35737,6 +35853,28 @@
       "telegram_core_fact": "파라다이스가 공모 회사채 수요예측에서 모집액의 3.4배에 달하는 투자 수요를 확보하며 2년 연속 흥행에 성공했다. 파라다이스에 따르면 회사는 지난 6일 총 600억원 공모 회사채 발행을 위한 수요예측을 실시한 결과 모집액의 3.42배인 총 2050억원의 주문이 접수됐다.",
       "title": "파라다이스, 회사채 수요예측에 2050억 몰려…모집액 3.4배"
     },
+    "event:8cefa4e6784360b1d41cb8f5": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634799",
+      "source": "이투데이",
+      "source_body_digest": "5bc4a6bcfb0fbbfaeb228ed0701625b823daad83cb4c020ef726dbeecec29b1e",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:abf72a669a882e4f5474dad1e5da6b7064611bcb2e6570d177d96b46737ec29c",
+      "source_fact_identity": "source_facts:v1:c6b4b7b1793d645c1768bcd841742667ae1b66974d28c3d4937f6b19efa01f1f",
+      "source_fact_keys": [
+        "source_fact:v1:02287ed6f1216ee2c450a646a31266acfd93a9bb6588268a030ba1ad15cb8a49",
+        "source_fact:v1:7203f2d5fa7ddefba148d495197e0d571c56455c202a1780aec81ef0951cd18b",
+        "source_fact:v1:7ebe0600811857e19f9caf0802e28be78e396171acb20c2d40fb0af06ce4126f",
+        "source_fact:v1:a86523f6b193ee393a914d6eb12d23ed170be3eabbfc9241dd66d4abe2eb6979"
+      ],
+      "source_published_kst": "2026-10-12T16:49+09:00",
+      "source_title": "한진, 3분기 매출 8898억원 '역대 최대'…항만·글로벌 사업 호조",
+      "telegram_core_fact": "한진이 항만하역과 글로벌 사업의 성장에 힘입어 3분기 역대 최대 매출을 달성했다.",
+      "title": "한진, 3분기 매출 8898억원 '역대 최대'…항만·글로벌 사업 호조"
+    },
     "event:8d593442e34aab77d7eddfe9": {
       "first_seen_kst": "2026-10-11T09:28:38+09:00",
       "lanes": {
@@ -37117,30 +37255,25 @@
     "event:ac54dee8e15f589c65cdb303": {
       "first_seen_kst": "2026-10-12T12:09:58+09:00",
       "lanes": {
-        "live": "2026-10-12T12:09:58+09:00"
+        "live": "2026-10-12T16:50:12+09:00"
       },
-      "last_seen_kst": "2026-10-12T12:09:58+09:00",
-      "link": "https://www.mt.co.kr/stock/2026/10/12/2026101210221960349",
-      "source": "머니투데이",
-      "source_body_digest": "159f3867cd99607482f717c350ac33d5194e4b5daa259b4c1923b645a078de5f",
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.hankyung.com/article/2026101254526",
+      "source": "한국경제",
+      "source_body_digest": "31aa2f686f92b53397b4a792becfcada1a018f348d6fbcaf18a262369d452d22",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:75476087cab4f450c062006b9213167f438a0a07903caa1edbef1b0fdf3c610c",
+      "source_fact_identity": "source_facts:v1:414c30a55c25e9723c7535ae99bd422410789c0cce32c55233bdf2881a8e08fb",
       "source_fact_keys": [
-        "source_fact:v1:06b3b3386d71821651dc220fb8798b5e039c98a726fe6b94b0cf13d13d3854cd",
-        "source_fact:v1:0d4021ed96f7a65f865435230264d9799d056bfe7e0edfe60c40c8ce4df3b24d",
-        "source_fact:v1:18b99af0bb92ddbc7a1dcbfea31cd075c2e0d394cab51c316e190276f626fef8",
-        "source_fact:v1:25697250b3dc946786e240ba545f6f8338bfaa79bec0d3ce34d9f0b0e71f1031",
-        "source_fact:v1:587ff1391831d4488b83ac7026583d682af6126e449463a4892f20d40fd171f0",
-        "source_fact:v1:59fbccf6dc8da70cb826ae94befb1c6412779e27f2e694b7fce5e803b7ceadc6",
-        "source_fact:v1:6bdf3fa9ad32d76af6da55c048241c2724e6e2d4db19fe61b008dc4528269f16",
-        "source_fact:v1:8ba99ee1f1de92da4d5c3b5c2db4ac1a10aaf142d5598286abc312d7320f0d67",
-        "source_fact:v1:a384031719be453e511a2276a90428f0bad59a4f7ca76fac42f8a643d406d68c",
-        "source_fact:v1:c661a6a5a7436637bbc5f77d9cbaab961775b681261cee4420dbeec708ea646a"
+        "source_fact:v1:16d135cb4fde64047929bab461cf1f9483a061a8856c36a6d31295c1c06d0af3",
+        "source_fact:v1:2aa7dfcb26cd35dc729e513998bbf3ff5d49c4ef4b37cd03e5b2dd6bf15116a3",
+        "source_fact:v1:2c9b3526fe4261a843a5702bb87da2f0d308bb73cf1cd40436c232003b0a2e91",
+        "source_fact:v1:4c094b54267da3d52cfec323eef017ebafe06f6b0b1f14af7833a2a4d008d413",
+        "source_fact:v1:85ae1ed390e0d663eb09369c38dd7fb7a26dc6e8be41a0d518642638f2981396"
       ],
-      "source_published_kst": "2026-10-12T10:34+09:00",
-      "source_title": "또 'AI 거품론'...반도체 매도 압력, 삼전닉스 약세",
-      "telegram_core_fact": "한글날 연휴 이후 첫 거래일인 12일 코스피가 외국인 매도와 반도체주 약세에 2% 넘게 하락하고 있다. 미국 뉴욕증시에서 인공지능(AI) 산업의 성장성에 대한 우려로 반도체주에 가해진 매도 압력이 국내 증시로 이어진 것으로 보인다.",
-      "title": "또 'AI 거품론'...반도체 매도 압력, 삼전닉스 약세"
+      "source_published_kst": "2026-10-12T09:44+09:00",
+      "source_title": "호르무즈 해협 막히자 해운주 강세…STX그린로지스 6%↑",
+      "telegram_core_fact": "이날 해운주의 강세는 중동 지역 지정학적 리스크 심화로 주요 해상 요충지의 통과 차질이 이어지면서 선박들의 우회 운항과 대기 시간 증가로 실질 가용 선복량 감소와 해상 운임 상승세 지속에 따른 실적 기대감이 반영된 것으로 풀이된다.",
+      "title": "호르무즈 해협 막히자 해운주 강세…STX그린로지스 6%↑"
     },
     "event:ad3fd9c7aa9202967054f0fc": {
       "first_seen_kst": "2026-10-12T14:44:13+09:00",
@@ -48773,6 +48906,25 @@
       "source_published_kst": "2026-10-06T21:25+09:00",
       "title": "[美특징주]콘스텔레이션 에너지, 구글과 20년 원전 전력 공급 계약에 개장 전↑"
     },
+    "fact:2d7fb022e1386368e4206cba": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634749",
+      "source": "이투데이",
+      "source_body_digest": "d77f6cb2ff6f1dea2c6e20e1a8b7ac12709e7df1041e4290536d310a759e10a4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:727c785b7318e0f85028a4e58c5f0b6ce8beafcc42e75c503da0db04ae28d2d1",
+      "source_fact_keys": [
+        "source_fact:v1:59bb4a918a667269deb2f95daa07a6c3e58636919afcc2ba12b503fbc42d4e1d"
+      ],
+      "source_published_kst": "2026-10-12T15:41+09:00",
+      "source_title": "“전세부터 지원금까지” 미드나잇, 개인정보 숨기는 블록체인 활용 사례 공개",
+      "telegram_core_fact": "개인정보 원본을 제출하지 않고 지원금 신청 자격을 증명하거나, 다른 세입자의 보증금을 공개하지 않은 채 전세 계약의 위험도를 확인하는 블록체인 활용 사례가 공개됐다.",
+      "title": "“전세부터 지원금까지” 미드나잇, 개인정보 숨기는 블록체인 활용 사례 공개"
+    },
     "fact:2da54e3d09f306dd3643219e": {
       "first_seen_kst": "2026-10-08T20:39:20+09:00",
       "lanes": {
@@ -51363,6 +51515,25 @@
       "source_title": "상반기 금융지주 순이익 17.6조…전년比 13.7% 증가",
       "telegram_core_fact": "올해 상반기 금융지주회사의 당기순이익이 17조6000억원으로 전년 대비 13.7% 증가한 것으로 나타났다.",
       "title": "상반기 금융지주 순이익 17.6조…전년比 13.7% 증가"
+    },
+    "fact:3cecb2121bdd0012dc2f655a": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012113600063",
+      "source": "연합뉴스",
+      "source_body_digest": "576ebf9fe60a3b1163a80d941f2425b2f31ee460b8d89e08c51e684428b01690",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d278fa4b91aa1e69af529601471c839b77d353678125c4f25ee38f2a0f13b246",
+      "source_fact_keys": [
+        "source_fact:v1:cfe3162cb53140f026355058862c4e64fb4c1ba255499fcbe0d289bf70f61a18"
+      ],
+      "source_published_kst": "2026-10-12T14:47+09:00",
+      "source_title": "박수현 \"202조원 첨단산업 투자 뒷받침…AI·힐링 충남 실현\" | 연합뉴스",
+      "telegram_core_fact": "아산 삼성디스플레이의 67조원 투자와 당진 AI 데이터센터 조성, 8개 시군 27개 기업의 1조5천303억원 투자 유치 등도 성과로 소개했다.",
+      "title": "박수현 \"202조원 첨단산업 투자 뒷받침…AI·힐링 충남 실현\" | 연합뉴스"
     },
     "fact:3d07a35447959ffec880be75": {
       "first_seen_kst": "2026-10-11T11:48:17+09:00",
@@ -58425,6 +58596,29 @@
       "source_published_kst": "2026-10-06T09:01+09:00",
       "title": "“코스피, 11월부터 연말 랠리…외국인 돌아온다”"
     },
+    "fact:67d99601b71c96bf1473db8d": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.hankyung.com/article/2026101254526",
+      "source": "한국경제",
+      "source_body_digest": "31aa2f686f92b53397b4a792becfcada1a018f348d6fbcaf18a262369d452d22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:414c30a55c25e9723c7535ae99bd422410789c0cce32c55233bdf2881a8e08fb",
+      "source_fact_keys": [
+        "source_fact:v1:16d135cb4fde64047929bab461cf1f9483a061a8856c36a6d31295c1c06d0af3",
+        "source_fact:v1:2aa7dfcb26cd35dc729e513998bbf3ff5d49c4ef4b37cd03e5b2dd6bf15116a3",
+        "source_fact:v1:2c9b3526fe4261a843a5702bb87da2f0d308bb73cf1cd40436c232003b0a2e91",
+        "source_fact:v1:4c094b54267da3d52cfec323eef017ebafe06f6b0b1f14af7833a2a4d008d413",
+        "source_fact:v1:85ae1ed390e0d663eb09369c38dd7fb7a26dc6e8be41a0d518642638f2981396"
+      ],
+      "source_published_kst": "2026-10-12T09:44+09:00",
+      "source_title": "호르무즈 해협 막히자 해운주 강세…STX그린로지스 6%↑",
+      "telegram_core_fact": "이날 해운주의 강세는 중동 지역 지정학적 리스크 심화로 주요 해상 요충지의 통과 차질이 이어지면서 선박들의 우회 운항과 대기 시간 증가로 실질 가용 선복량 감소와 해상 운임 상승세 지속에 따른 실적 기대감이 반영된 것으로 풀이된다.",
+      "title": "호르무즈 해협 막히자 해운주 강세…STX그린로지스 6%↑"
+    },
     "fact:67e8a71893cf8b621b524dc2": {
       "first_seen_kst": "2026-10-07T15:30:27+09:00",
       "lanes": {
@@ -59069,6 +59263,28 @@
       ],
       "source_published_kst": "2026-10-07T08:37+09:00",
       "title": "LS에코에너지, AI데이터센터용 대용량 버스덕트에 80억원 투자 | 연합뉴스"
+    },
+    "fact:6c230eee7e8d377e2ca1c3c0": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634799",
+      "source": "이투데이",
+      "source_body_digest": "5bc4a6bcfb0fbbfaeb228ed0701625b823daad83cb4c020ef726dbeecec29b1e",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:abf72a669a882e4f5474dad1e5da6b7064611bcb2e6570d177d96b46737ec29c",
+      "source_fact_identity": "source_facts:v1:c6b4b7b1793d645c1768bcd841742667ae1b66974d28c3d4937f6b19efa01f1f",
+      "source_fact_keys": [
+        "source_fact:v1:02287ed6f1216ee2c450a646a31266acfd93a9bb6588268a030ba1ad15cb8a49",
+        "source_fact:v1:7203f2d5fa7ddefba148d495197e0d571c56455c202a1780aec81ef0951cd18b",
+        "source_fact:v1:7ebe0600811857e19f9caf0802e28be78e396171acb20c2d40fb0af06ce4126f",
+        "source_fact:v1:a86523f6b193ee393a914d6eb12d23ed170be3eabbfc9241dd66d4abe2eb6979"
+      ],
+      "source_published_kst": "2026-10-12T16:49+09:00",
+      "source_title": "한진, 3분기 매출 8898억원 '역대 최대'…항만·글로벌 사업 호조",
+      "telegram_core_fact": "한진이 항만하역과 글로벌 사업의 성장에 힘입어 3분기 역대 최대 매출을 달성했다.",
+      "title": "한진, 3분기 매출 8898억원 '역대 최대'…항만·글로벌 사업 호조"
     },
     "fact:6c243f898f3ace11aa725891": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
@@ -76845,6 +77061,30 @@
       "source_published_kst": "2026-10-06T17:33+09:00",
       "title": "날아오른 스페이스X…머스크 다시 '조만장자'"
     },
+    "fact:cf90673009c5c3802b121c44": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.news1.kr/world/middleeast-africa/6316842",
+      "source": "뉴스1",
+      "source_body_digest": "2638b2df2a6ff3c7629fde7184948296c3dde506d61771946e514947cb6290e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d96e49b83705444a6023f7f9540c145ced3e479a8c409b2e77e1517a8ac4b389",
+      "source_fact_keys": [
+        "source_fact:v1:43ccb58f4515df6c529afcea3407059d27432b3013009b0529142d3d12813faf",
+        "source_fact:v1:48b3d6330bb04c1424706d94083f2742e2dc6bb67a99cfe13d2beab8cd4d1ccc",
+        "source_fact:v1:67cc2dd88480c6113f4bb5de2134a8103080fde803dd0910c4ad71115459f71b",
+        "source_fact:v1:9efd5d74189d01ae4bd4b76b799ec9e33c107c70f4b89bd5698213711befd9b6",
+        "source_fact:v1:a12360f5cd4c0c529037dcd796da554e178d93a05b5b64e253f51e24cc6ef585",
+        "source_fact:v1:ae3e88fc6340c99f4defcb03bb5dc2b254e9be1028c93966dce86e8bb691e967"
+      ],
+      "source_published_kst": "2026-10-12T14:07+09:00",
+      "source_title": "후티 공격에 요격미사일 바닥난 사우디…파키스탄 등에 지원 요청",
+      "telegram_core_fact": "사우디 당국자들은 올여름까지만 해도 후티 반군과의 상황이 통제되고 있다고 설명했지만, 이후 후티의 공세가 강화되면서 홍해 연안의 예멘 주요 거점을 잃고 사우디 본토 공항과 석유 시설까지 공격받고 있다.",
+      "title": "후티 공격에 요격미사일 바닥난 사우디…파키스탄 등에 지원 요청"
+    },
     "fact:cfc3efe2b4db87a6131bdca8": {
       "first_seen_kst": "2026-10-06T15:44:02+09:00",
       "lanes": {
@@ -85353,6 +85593,26 @@
       "source_published_kst": "2026-10-06T07:45+09:00",
       "title": "\"지금이 매수 기회\" 화장품株 급락했는데, 수출 29% 급증"
     },
+    "fact:fe035751be26f347514dc38a": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.etnews.com/20261012000299",
+      "source": "전자신문",
+      "source_body_digest": "64056dfc2fe70a0488fefb3801134c537b14f110762ec550c090053e86c72316",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:86dd9bd45c04d7e688f5f3f887c797d1c581ef1a551058e6b25fc619dfefe2e7",
+      "source_fact_keys": [
+        "source_fact:v1:bc091074f4309aebd5b8c423bbd746308836cd723814ea78ae085d5e8971af8d",
+        "source_fact:v1:d2c96ff7c16360d6cc4e75d81cf9035ff9e0516119a5858c38c6c700b284bf42"
+      ],
+      "source_published_kst": "2026-10-12T15:31+09:00",
+      "source_title": "국세청, 구글코리아 1540억원대 법인세 취소소송에서 패소",
+      "telegram_core_fact": "구글코리아가 1540억원대 법인세 부과에 불복해 낸 소송에서 과세당국이 최종 패소, 과세 처분이 취소된다.",
+      "title": "국세청, 구글코리아 1540억원대 법인세 취소소송에서 패소"
+    },
     "fact:fe3eeac81a412bbb245fc822": {
       "first_seen_kst": "2026-10-06T17:59:23+09:00",
       "lanes": {
@@ -87669,6 +87929,25 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=05703926645608656",
       "source": "이데일리",
       "title": "포스코, 우리금융 지분 전량 매각…6765억원 확보"
+    },
+    "link:088dd8e87b50a7cd4013c474": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634749",
+      "source": "이투데이",
+      "source_body_digest": "d77f6cb2ff6f1dea2c6e20e1a8b7ac12709e7df1041e4290536d310a759e10a4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:727c785b7318e0f85028a4e58c5f0b6ce8beafcc42e75c503da0db04ae28d2d1",
+      "source_fact_keys": [
+        "source_fact:v1:59bb4a918a667269deb2f95daa07a6c3e58636919afcc2ba12b503fbc42d4e1d"
+      ],
+      "source_published_kst": "2026-10-12T15:41+09:00",
+      "source_title": "“전세부터 지원금까지” 미드나잇, 개인정보 숨기는 블록체인 활용 사례 공개",
+      "telegram_core_fact": "개인정보 원본을 제출하지 않고 지원금 신청 자격을 증명하거나, 다른 세입자의 보증금을 공개하지 않은 채 전세 계약의 위험도를 확인하는 블록체인 활용 사례가 공개됐다.",
+      "title": "“전세부터 지원금까지” 미드나잇, 개인정보 숨기는 블록체인 활용 사례 공개"
     },
     "link:088e052ff510250ce90f45db": {
       "first_seen_kst": "2026-10-06T18:46:35+09:00",
@@ -90686,6 +90965,23 @@
       "source_title": "[임상 업데이트] HK이노엔 GLP-1 신약, 비만 청소년 임상서 효과 확인",
       "telegram_core_fact": "한 주(10월 5일~10월 9일) 국내 제약·바이오 업계에서 주목받은 임상 및 품목 허가 소식이다.",
       "title": "[임상 업데이트] HK이노엔 GLP-1 신약, 비만 청소년 임상서 효과 확인"
+    },
+    "link:13e315ce5dbf4c466bcfcb20": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822359",
+      "source": "뉴시스",
+      "source_body_digest": "ec4a9cc02dce35d839e125a21d020d01f3a070df3b72a36cd275c12715fa82c4",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T16:26+09:00",
+      "source_title": "\"위성 개발부터 환경시험까지\"…KAI, 국내 민간 유일 통합체계 완성",
+      "telegram_core_fact": "한국항공우주산업(KAI)이 위성 개발부터 환경시험까지 전 과정을 자체 수행할 수 있는 통합체계를 완성하며 우주사업 경쟁력 강화에 나섰다.",
+      "title": "\"위성 개발부터 환경시험까지\"…KAI, 국내 민간 유일 통합체계 완성"
     },
     "link:13f7a2ad28ee9b8b9ddbdf76": {
       "first_seen_kst": "2026-09-28T23:22:54+09:00",
@@ -97868,6 +98164,29 @@
       "source": "연합뉴스",
       "title": "한전 사장, 거제 수해지역·도서지역 전력공급 현장 점검 | 연합뉴스"
     },
+    "link:2efe45ff0a146110793e0e63": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.hankyung.com/article/2026101254526",
+      "source": "한국경제",
+      "source_body_digest": "31aa2f686f92b53397b4a792becfcada1a018f348d6fbcaf18a262369d452d22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:414c30a55c25e9723c7535ae99bd422410789c0cce32c55233bdf2881a8e08fb",
+      "source_fact_keys": [
+        "source_fact:v1:16d135cb4fde64047929bab461cf1f9483a061a8856c36a6d31295c1c06d0af3",
+        "source_fact:v1:2aa7dfcb26cd35dc729e513998bbf3ff5d49c4ef4b37cd03e5b2dd6bf15116a3",
+        "source_fact:v1:2c9b3526fe4261a843a5702bb87da2f0d308bb73cf1cd40436c232003b0a2e91",
+        "source_fact:v1:4c094b54267da3d52cfec323eef017ebafe06f6b0b1f14af7833a2a4d008d413",
+        "source_fact:v1:85ae1ed390e0d663eb09369c38dd7fb7a26dc6e8be41a0d518642638f2981396"
+      ],
+      "source_published_kst": "2026-10-12T09:44+09:00",
+      "source_title": "호르무즈 해협 막히자 해운주 강세…STX그린로지스 6%↑",
+      "telegram_core_fact": "이날 해운주의 강세는 중동 지역 지정학적 리스크 심화로 주요 해상 요충지의 통과 차질이 이어지면서 선박들의 우회 운항과 대기 시간 증가로 실질 가용 선복량 감소와 해상 운임 상승세 지속에 따른 실적 기대감이 반영된 것으로 풀이된다.",
+      "title": "호르무즈 해협 막히자 해운주 강세…STX그린로지스 6%↑"
+    },
     "link:2f154384c16eb02f0d839558": {
       "first_seen_kst": "2026-10-10T00:12:46+09:00",
       "lanes": {
@@ -104899,6 +105218,25 @@
       "telegram_core_fact": "[뉴욕=이데일리 성주원 특파원] 도널드 트럼프 미국 행정부가 국제형사재판소(ICC) 전직 재판관의 노벨평화상 수상 발표 직후 ICC 자체를 제재 대상으로 지정했다.",
       "title": "노벨평화상 발표 직후 ICC 전면 제재한 트럼프…유럽과 정면충돌"
     },
+    "link:4b1e993578dffca7c113c82b": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012113600063",
+      "source": "연합뉴스",
+      "source_body_digest": "576ebf9fe60a3b1163a80d941f2425b2f31ee460b8d89e08c51e684428b01690",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d278fa4b91aa1e69af529601471c839b77d353678125c4f25ee38f2a0f13b246",
+      "source_fact_keys": [
+        "source_fact:v1:cfe3162cb53140f026355058862c4e64fb4c1ba255499fcbe0d289bf70f61a18"
+      ],
+      "source_published_kst": "2026-10-12T14:47+09:00",
+      "source_title": "박수현 \"202조원 첨단산업 투자 뒷받침…AI·힐링 충남 실현\" | 연합뉴스",
+      "telegram_core_fact": "아산 삼성디스플레이의 67조원 투자와 당진 AI 데이터센터 조성, 8개 시군 27개 기업의 1조5천303억원 투자 유치 등도 성과로 소개했다.",
+      "title": "박수현 \"202조원 첨단산업 투자 뒷받침…AI·힐링 충남 실현\" | 연합뉴스"
+    },
     "link:4b22e438c157a084130f6e86": {
       "first_seen_kst": "2026-10-05T13:15:14+09:00",
       "lanes": {
@@ -105701,6 +106039,28 @@
       "link": "https://www.yna.co.kr/view/AKR20261002180652072?section=international/all",
       "source": "연합뉴스",
       "title": "美 9월 고용 2만9천명 증가 그쳐…10월 금리인상 베팅 감소(종합) | 연합뉴스"
+    },
+    "link:4eefee993ae94333bcc69449": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634799",
+      "source": "이투데이",
+      "source_body_digest": "5bc4a6bcfb0fbbfaeb228ed0701625b823daad83cb4c020ef726dbeecec29b1e",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:abf72a669a882e4f5474dad1e5da6b7064611bcb2e6570d177d96b46737ec29c",
+      "source_fact_identity": "source_facts:v1:c6b4b7b1793d645c1768bcd841742667ae1b66974d28c3d4937f6b19efa01f1f",
+      "source_fact_keys": [
+        "source_fact:v1:02287ed6f1216ee2c450a646a31266acfd93a9bb6588268a030ba1ad15cb8a49",
+        "source_fact:v1:7203f2d5fa7ddefba148d495197e0d571c56455c202a1780aec81ef0951cd18b",
+        "source_fact:v1:7ebe0600811857e19f9caf0802e28be78e396171acb20c2d40fb0af06ce4126f",
+        "source_fact:v1:a86523f6b193ee393a914d6eb12d23ed170be3eabbfc9241dd66d4abe2eb6979"
+      ],
+      "source_published_kst": "2026-10-12T16:49+09:00",
+      "source_title": "한진, 3분기 매출 8898억원 '역대 최대'…항만·글로벌 사업 호조",
+      "telegram_core_fact": "한진이 항만하역과 글로벌 사업의 성장에 힘입어 3분기 역대 최대 매출을 달성했다.",
+      "title": "한진, 3분기 매출 8898억원 '역대 최대'…항만·글로벌 사업 호조"
     },
     "link:4ef4198235f75caa71bb28cc": {
       "first_seen_kst": "2026-09-19T08:53:16+09:00",
@@ -112181,6 +112541,30 @@
       "source_title": "'오디세이' 1383억 벌었다…'아바타2' 제치고 역대 외화 매출 1위",
       "telegram_core_fact": "'오디세이'는 '아바타'(약 1252억원), '어벤져스: 엔드게임'(약 1224억 원), '겨울왕국 2'(약 1150억 원) 등 국내 극장가에서 흥행한 주요 외화들의 매출 기록도 모두 넘어섰다.",
       "title": "'오디세이' 1383억 벌었다…'아바타2' 제치고 역대 외화 매출 1위"
+    },
+    "link:67e2108c62f593dfc369608e": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.news1.kr/world/middleeast-africa/6316842",
+      "source": "뉴스1",
+      "source_body_digest": "2638b2df2a6ff3c7629fde7184948296c3dde506d61771946e514947cb6290e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d96e49b83705444a6023f7f9540c145ced3e479a8c409b2e77e1517a8ac4b389",
+      "source_fact_keys": [
+        "source_fact:v1:43ccb58f4515df6c529afcea3407059d27432b3013009b0529142d3d12813faf",
+        "source_fact:v1:48b3d6330bb04c1424706d94083f2742e2dc6bb67a99cfe13d2beab8cd4d1ccc",
+        "source_fact:v1:67cc2dd88480c6113f4bb5de2134a8103080fde803dd0910c4ad71115459f71b",
+        "source_fact:v1:9efd5d74189d01ae4bd4b76b799ec9e33c107c70f4b89bd5698213711befd9b6",
+        "source_fact:v1:a12360f5cd4c0c529037dcd796da554e178d93a05b5b64e253f51e24cc6ef585",
+        "source_fact:v1:ae3e88fc6340c99f4defcb03bb5dc2b254e9be1028c93966dce86e8bb691e967"
+      ],
+      "source_published_kst": "2026-10-12T14:07+09:00",
+      "source_title": "후티 공격에 요격미사일 바닥난 사우디…파키스탄 등에 지원 요청",
+      "telegram_core_fact": "사우디 당국자들은 올여름까지만 해도 후티 반군과의 상황이 통제되고 있다고 설명했지만, 이후 후티의 공세가 강화되면서 홍해 연안의 예멘 주요 거점을 잃고 사우디 본토 공항과 석유 시설까지 공격받고 있다.",
+      "title": "후티 공격에 요격미사일 바닥난 사우디…파키스탄 등에 지원 요청"
     },
     "link:67e21866a133db0576676c96": {
       "first_seen_kst": "2026-09-30T16:46:52+09:00",
@@ -137147,6 +137531,26 @@
       "source": "파이낸셜뉴스",
       "title": "\"추석 떡값 100만원 생겼다면…\" 운용사들은 '반도체·월배당·반반' 찍었다"
     },
+    "link:c7e48f988b51b0d41b7371f7": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.etnews.com/20261012000299",
+      "source": "전자신문",
+      "source_body_digest": "64056dfc2fe70a0488fefb3801134c537b14f110762ec550c090053e86c72316",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:86dd9bd45c04d7e688f5f3f887c797d1c581ef1a551058e6b25fc619dfefe2e7",
+      "source_fact_keys": [
+        "source_fact:v1:bc091074f4309aebd5b8c423bbd746308836cd723814ea78ae085d5e8971af8d",
+        "source_fact:v1:d2c96ff7c16360d6cc4e75d81cf9035ff9e0516119a5858c38c6c700b284bf42"
+      ],
+      "source_published_kst": "2026-10-12T15:31+09:00",
+      "source_title": "국세청, 구글코리아 1540억원대 법인세 취소소송에서 패소",
+      "telegram_core_fact": "구글코리아가 1540억원대 법인세 부과에 불복해 낸 소송에서 과세당국이 최종 패소, 과세 처분이 취소된다.",
+      "title": "국세청, 구글코리아 1540억원대 법인세 취소소송에서 패소"
+    },
     "link:c7facbf386587ae34e2daef5": {
       "first_seen_kst": "2026-10-05T09:13:59+09:00",
       "lanes": {
@@ -152086,6 +152490,23 @@
       "source": "뉴시스",
       "title": "美 \"알래스카 투자\" 못박았지만…韓 \"합의보다 나갔다, 원칙대로 간다\" (종합)"
     },
+    "original:048889fce6ac9ddaf9437636": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822359",
+      "source": "뉴시스",
+      "source_body_digest": "ec4a9cc02dce35d839e125a21d020d01f3a070df3b72a36cd275c12715fa82c4",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T16:26+09:00",
+      "source_title": "\"위성 개발부터 환경시험까지\"…KAI, 국내 민간 유일 통합체계 완성",
+      "telegram_core_fact": "한국항공우주산업(KAI)이 위성 개발부터 환경시험까지 전 과정을 자체 수행할 수 있는 통합체계를 완성하며 우주사업 경쟁력 강화에 나섰다.",
+      "title": "\"위성 개발부터 환경시험까지\"…KAI, 국내 민간 유일 통합체계 완성"
+    },
     "original:04962303c0965798f5397130": {
       "first_seen_kst": "2026-10-11T22:09:39+09:00",
       "lanes": {
@@ -158401,6 +158822,26 @@
       "link": "https://www.yna.co.kr/view/AKR20261002036500002",
       "source": "연합뉴스",
       "title": "한은 \"10월 물가상승률 3% 내외 높은 수준 예상\" | 연합뉴스"
+    },
+    "original:1f6a833e8699ed6e165f6f38": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.etnews.com/20261012000299",
+      "source": "전자신문",
+      "source_body_digest": "64056dfc2fe70a0488fefb3801134c537b14f110762ec550c090053e86c72316",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:86dd9bd45c04d7e688f5f3f887c797d1c581ef1a551058e6b25fc619dfefe2e7",
+      "source_fact_keys": [
+        "source_fact:v1:bc091074f4309aebd5b8c423bbd746308836cd723814ea78ae085d5e8971af8d",
+        "source_fact:v1:d2c96ff7c16360d6cc4e75d81cf9035ff9e0516119a5858c38c6c700b284bf42"
+      ],
+      "source_published_kst": "2026-10-12T15:31+09:00",
+      "source_title": "국세청, 구글코리아 1540억원대 법인세 취소소송에서 패소",
+      "telegram_core_fact": "구글코리아가 1540억원대 법인세 부과에 불복해 낸 소송에서 과세당국이 최종 패소, 과세 처분이 취소된다.",
+      "title": "국세청, 구글코리아 1540억원대 법인세 취소소송에서 패소"
     },
     "original:1f7c92473f2eee9c6cf33033": {
       "first_seen_kst": "2026-10-08T05:44:23+09:00",
@@ -179448,6 +179889,25 @@
       "source": "헤럴드경제",
       "title": "HBM 소재 등에 업은 에코프로HN"
     },
+    "original:739077fccbd82c5af922b7a2": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012113600063",
+      "source": "연합뉴스",
+      "source_body_digest": "576ebf9fe60a3b1163a80d941f2425b2f31ee460b8d89e08c51e684428b01690",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d278fa4b91aa1e69af529601471c839b77d353678125c4f25ee38f2a0f13b246",
+      "source_fact_keys": [
+        "source_fact:v1:cfe3162cb53140f026355058862c4e64fb4c1ba255499fcbe0d289bf70f61a18"
+      ],
+      "source_published_kst": "2026-10-12T14:47+09:00",
+      "source_title": "박수현 \"202조원 첨단산업 투자 뒷받침…AI·힐링 충남 실현\" | 연합뉴스",
+      "telegram_core_fact": "아산 삼성디스플레이의 67조원 투자와 당진 AI 데이터센터 조성, 8개 시군 27개 기업의 1조5천303억원 투자 유치 등도 성과로 소개했다.",
+      "title": "박수현 \"202조원 첨단산업 투자 뒷받침…AI·힐링 충남 실현\" | 연합뉴스"
+    },
     "original:739b6f7b1b0c9bc8ba1bd30b": {
       "first_seen_kst": "2026-10-06T21:40:57+09:00",
       "lanes": {
@@ -180932,6 +181392,25 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T08:41+09:00",
       "title": "세계식량가격 1.5% 상승…곡물 5.1%·설탕 6.1% 뛰었다"
+    },
+    "original:79194a69ff3201c6d3260c2c": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634749",
+      "source": "이투데이",
+      "source_body_digest": "d77f6cb2ff6f1dea2c6e20e1a8b7ac12709e7df1041e4290536d310a759e10a4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:727c785b7318e0f85028a4e58c5f0b6ce8beafcc42e75c503da0db04ae28d2d1",
+      "source_fact_keys": [
+        "source_fact:v1:59bb4a918a667269deb2f95daa07a6c3e58636919afcc2ba12b503fbc42d4e1d"
+      ],
+      "source_published_kst": "2026-10-12T15:41+09:00",
+      "source_title": "“전세부터 지원금까지” 미드나잇, 개인정보 숨기는 블록체인 활용 사례 공개",
+      "telegram_core_fact": "개인정보 원본을 제출하지 않고 지원금 신청 자격을 증명하거나, 다른 세입자의 보증금을 공개하지 않은 채 전세 계약의 위험도를 확인하는 블록체인 활용 사례가 공개됐다.",
+      "title": "“전세부터 지원금까지” 미드나잇, 개인정보 숨기는 블록체인 활용 사례 공개"
     },
     "original:79259626b36db565ed32643b": {
       "first_seen_kst": "2026-10-09T20:02:39+09:00",
@@ -192222,6 +192701,28 @@
       "telegram_core_fact": "전날 트럼프 대통령은 자신이 세운 SNS 트루스소셜에 “방금 블라디미르 푸틴 러시아 대통령과 매우 성공적인 논의를 마쳤다”며 “러시아는 미국과 세계 시장에 경유 30만t(톤) 이상을 즉시 공급하고 11월 중 50만t, 이후 100만t을 추가 공급하기로 했다”고 적었다.",
       "title": "트럼프 “우크라이나, 새 대통령 필요”⋯젤렌스키와 충돌"
     },
+    "original:a7487538e83f4e0d7480b071": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634799",
+      "source": "이투데이",
+      "source_body_digest": "5bc4a6bcfb0fbbfaeb228ed0701625b823daad83cb4c020ef726dbeecec29b1e",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:abf72a669a882e4f5474dad1e5da6b7064611bcb2e6570d177d96b46737ec29c",
+      "source_fact_identity": "source_facts:v1:c6b4b7b1793d645c1768bcd841742667ae1b66974d28c3d4937f6b19efa01f1f",
+      "source_fact_keys": [
+        "source_fact:v1:02287ed6f1216ee2c450a646a31266acfd93a9bb6588268a030ba1ad15cb8a49",
+        "source_fact:v1:7203f2d5fa7ddefba148d495197e0d571c56455c202a1780aec81ef0951cd18b",
+        "source_fact:v1:7ebe0600811857e19f9caf0802e28be78e396171acb20c2d40fb0af06ce4126f",
+        "source_fact:v1:a86523f6b193ee393a914d6eb12d23ed170be3eabbfc9241dd66d4abe2eb6979"
+      ],
+      "source_published_kst": "2026-10-12T16:49+09:00",
+      "source_title": "한진, 3분기 매출 8898억원 '역대 최대'…항만·글로벌 사업 호조",
+      "telegram_core_fact": "한진이 항만하역과 글로벌 사업의 성장에 힘입어 3분기 역대 최대 매출을 달성했다.",
+      "title": "한진, 3분기 매출 8898억원 '역대 최대'…항만·글로벌 사업 호조"
+    },
     "original:a7578c1858fb1315d5bdcb30": {
       "first_seen_kst": "2026-10-03T21:50:02+09:00",
       "lanes": {
@@ -201040,6 +201541,30 @@
       "telegram_core_fact": "삼성전자가 '분기 영업이익 100조' 시대를 열었고 SK하이닉스는 꿈의 영업이익률 기록을 세울 것으로 기대된다.",
       "title": "SK하이닉스 이르면 28일 실적 공개…영업이익률 80% 돌파하나"
     },
+    "original:cbbba6be91c9598efd4576db": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.news1.kr/world/middleeast-africa/6316842",
+      "source": "뉴스1",
+      "source_body_digest": "2638b2df2a6ff3c7629fde7184948296c3dde506d61771946e514947cb6290e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d96e49b83705444a6023f7f9540c145ced3e479a8c409b2e77e1517a8ac4b389",
+      "source_fact_keys": [
+        "source_fact:v1:43ccb58f4515df6c529afcea3407059d27432b3013009b0529142d3d12813faf",
+        "source_fact:v1:48b3d6330bb04c1424706d94083f2742e2dc6bb67a99cfe13d2beab8cd4d1ccc",
+        "source_fact:v1:67cc2dd88480c6113f4bb5de2134a8103080fde803dd0910c4ad71115459f71b",
+        "source_fact:v1:9efd5d74189d01ae4bd4b76b799ec9e33c107c70f4b89bd5698213711befd9b6",
+        "source_fact:v1:a12360f5cd4c0c529037dcd796da554e178d93a05b5b64e253f51e24cc6ef585",
+        "source_fact:v1:ae3e88fc6340c99f4defcb03bb5dc2b254e9be1028c93966dce86e8bb691e967"
+      ],
+      "source_published_kst": "2026-10-12T14:07+09:00",
+      "source_title": "후티 공격에 요격미사일 바닥난 사우디…파키스탄 등에 지원 요청",
+      "telegram_core_fact": "사우디 당국자들은 올여름까지만 해도 후티 반군과의 상황이 통제되고 있다고 설명했지만, 이후 후티의 공세가 강화되면서 홍해 연안의 예멘 주요 거점을 잃고 사우디 본토 공항과 석유 시설까지 공격받고 있다.",
+      "title": "후티 공격에 요격미사일 바닥난 사우디…파키스탄 등에 지원 요청"
+    },
     "original:cbc40bd01046d5433c1b29e0": {
       "first_seen_kst": "2026-10-08T22:06:55+09:00",
       "lanes": {
@@ -204676,6 +205201,29 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T06:00+09:00",
       "title": "삼전닉스 자사주 매입 막바지…'수급 공백' 메울 190조 실적 '기대'"
+    },
+    "original:d96a1efd51069aca03322bba": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.hankyung.com/article/2026101254526",
+      "source": "한국경제",
+      "source_body_digest": "31aa2f686f92b53397b4a792becfcada1a018f348d6fbcaf18a262369d452d22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:414c30a55c25e9723c7535ae99bd422410789c0cce32c55233bdf2881a8e08fb",
+      "source_fact_keys": [
+        "source_fact:v1:16d135cb4fde64047929bab461cf1f9483a061a8856c36a6d31295c1c06d0af3",
+        "source_fact:v1:2aa7dfcb26cd35dc729e513998bbf3ff5d49c4ef4b37cd03e5b2dd6bf15116a3",
+        "source_fact:v1:2c9b3526fe4261a843a5702bb87da2f0d308bb73cf1cd40436c232003b0a2e91",
+        "source_fact:v1:4c094b54267da3d52cfec323eef017ebafe06f6b0b1f14af7833a2a4d008d413",
+        "source_fact:v1:85ae1ed390e0d663eb09369c38dd7fb7a26dc6e8be41a0d518642638f2981396"
+      ],
+      "source_published_kst": "2026-10-12T09:44+09:00",
+      "source_title": "호르무즈 해협 막히자 해운주 강세…STX그린로지스 6%↑",
+      "telegram_core_fact": "이날 해운주의 강세는 중동 지역 지정학적 리스크 심화로 주요 해상 요충지의 통과 차질이 이어지면서 선박들의 우회 운항과 대기 시간 증가로 실질 가용 선복량 감소와 해상 운임 상승세 지속에 따른 실적 기대감이 반영된 것으로 풀이된다.",
+      "title": "호르무즈 해협 막히자 해운주 강세…STX그린로지스 6%↑"
     },
     "original:d987980954a317e1af1980d3": {
       "first_seen_kst": "2026-10-02T07:53:13+09:00",
@@ -215270,6 +215818,28 @@
       "telegram_core_fact": "국제에너지기구(IEA) 회원국들이 7일(현지 시간) 중동 사태에 따른 에너지 공급 차질을 감안해 지난 3월 합의한 비축유 방출에 속도를 내겠다고 밝혔다.",
       "title": "\"추가 방출 없이 합의된 비축유만 조기 공급…유럽 경윳값 8%↑\""
     },
+    "source_fact:01c2e9f8d56ef5eb16e3e3f8": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634799",
+      "source": "이투데이",
+      "source_body_digest": "5bc4a6bcfb0fbbfaeb228ed0701625b823daad83cb4c020ef726dbeecec29b1e",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:abf72a669a882e4f5474dad1e5da6b7064611bcb2e6570d177d96b46737ec29c",
+      "source_fact_identity": "source_facts:v1:c6b4b7b1793d645c1768bcd841742667ae1b66974d28c3d4937f6b19efa01f1f",
+      "source_fact_keys": [
+        "source_fact:v1:02287ed6f1216ee2c450a646a31266acfd93a9bb6588268a030ba1ad15cb8a49",
+        "source_fact:v1:7203f2d5fa7ddefba148d495197e0d571c56455c202a1780aec81ef0951cd18b",
+        "source_fact:v1:7ebe0600811857e19f9caf0802e28be78e396171acb20c2d40fb0af06ce4126f",
+        "source_fact:v1:a86523f6b193ee393a914d6eb12d23ed170be3eabbfc9241dd66d4abe2eb6979"
+      ],
+      "source_published_kst": "2026-10-12T16:49+09:00",
+      "source_title": "한진, 3분기 매출 8898억원 '역대 최대'…항만·글로벌 사업 호조",
+      "telegram_core_fact": "한진이 항만하역과 글로벌 사업의 성장에 힘입어 3분기 역대 최대 매출을 달성했다.",
+      "title": "한진, 3분기 매출 8898억원 '역대 최대'…항만·글로벌 사업 호조"
+    },
     "source_fact:01c61f246b67dc3a18779445": {
       "first_seen_kst": "2026-10-07T22:00:35+09:00",
       "lanes": {
@@ -216825,6 +217395,29 @@
       "source_title": "식약처, 'K-뷰티' 할랄 인증 2차세미나·교육 실시",
       "telegram_core_fact": "이번 제2차 세미나 및 직무교육은 개별 국가의 규제 대응을 넘어 이슬람협력기구(OIC, 57개국) 중심으로 형성되고 있는 국제 할랄 표준과 인증체계에 대한 기업의 이해를 높여 중동 및 이슬람권 국가의 할랄 시장 전반에 대한 수출 대응 역량 강화를 위해 마련됐다.",
       "title": "식약처, 'K-뷰티' 할랄 인증 2차세미나·교육 실시"
+    },
+    "source_fact:03f7667265e82c1227fed01e": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.hankyung.com/article/2026101254526",
+      "source": "한국경제",
+      "source_body_digest": "31aa2f686f92b53397b4a792becfcada1a018f348d6fbcaf18a262369d452d22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:414c30a55c25e9723c7535ae99bd422410789c0cce32c55233bdf2881a8e08fb",
+      "source_fact_keys": [
+        "source_fact:v1:16d135cb4fde64047929bab461cf1f9483a061a8856c36a6d31295c1c06d0af3",
+        "source_fact:v1:2aa7dfcb26cd35dc729e513998bbf3ff5d49c4ef4b37cd03e5b2dd6bf15116a3",
+        "source_fact:v1:2c9b3526fe4261a843a5702bb87da2f0d308bb73cf1cd40436c232003b0a2e91",
+        "source_fact:v1:4c094b54267da3d52cfec323eef017ebafe06f6b0b1f14af7833a2a4d008d413",
+        "source_fact:v1:85ae1ed390e0d663eb09369c38dd7fb7a26dc6e8be41a0d518642638f2981396"
+      ],
+      "source_published_kst": "2026-10-12T09:44+09:00",
+      "source_title": "호르무즈 해협 막히자 해운주 강세…STX그린로지스 6%↑",
+      "telegram_core_fact": "이날 해운주의 강세는 중동 지역 지정학적 리스크 심화로 주요 해상 요충지의 통과 차질이 이어지면서 선박들의 우회 운항과 대기 시간 증가로 실질 가용 선복량 감소와 해상 운임 상승세 지속에 따른 실적 기대감이 반영된 것으로 풀이된다.",
+      "title": "호르무즈 해협 막히자 해운주 강세…STX그린로지스 6%↑"
     },
     "source_fact:0409b0faf1edbd2761b85a5b": {
       "first_seen_kst": "2026-10-07T22:53:53+09:00",
@@ -237199,6 +237792,25 @@
       "source_published_kst": "2026-10-07T06:04+09:00",
       "title": "[속보] 국제유가, 강보합⋯WTI 0.01% ↑"
     },
+    "source_fact:1bef504c103f6619f5ab42f4": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634749",
+      "source": "이투데이",
+      "source_body_digest": "d77f6cb2ff6f1dea2c6e20e1a8b7ac12709e7df1041e4290536d310a759e10a4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:727c785b7318e0f85028a4e58c5f0b6ce8beafcc42e75c503da0db04ae28d2d1",
+      "source_fact_keys": [
+        "source_fact:v1:59bb4a918a667269deb2f95daa07a6c3e58636919afcc2ba12b503fbc42d4e1d"
+      ],
+      "source_published_kst": "2026-10-12T15:41+09:00",
+      "source_title": "“전세부터 지원금까지” 미드나잇, 개인정보 숨기는 블록체인 활용 사례 공개",
+      "telegram_core_fact": "개인정보 원본을 제출하지 않고 지원금 신청 자격을 증명하거나, 다른 세입자의 보증금을 공개하지 않은 채 전세 계약의 위험도를 확인하는 블록체인 활용 사례가 공개됐다.",
+      "title": "“전세부터 지원금까지” 미드나잇, 개인정보 숨기는 블록체인 활용 사례 공개"
+    },
     "source_fact:1bf7db5dd249c46f657a251f": {
       "first_seen_kst": "2026-10-08T01:58:01+09:00",
       "lanes": {
@@ -239538,6 +240150,28 @@
       "source_title": "코스피, 장중 6400선까지 밀려…삼전·하이닉스 3%대 ‘뚝’",
       "telegram_core_fact": "코스피가 12일 삼성전자(005930)와 SK하이닉스(000660) 동반 약세로 인해 장중 3% 넘게 급락해 결국 6400선까지 밀렸다.",
       "title": "코스피, 장중 6400선까지 밀려…삼전·하이닉스 3%대 ‘뚝’"
+    },
+    "source_fact:1ebe42891102ec2b6f44ff72": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634799",
+      "source": "이투데이",
+      "source_body_digest": "5bc4a6bcfb0fbbfaeb228ed0701625b823daad83cb4c020ef726dbeecec29b1e",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:abf72a669a882e4f5474dad1e5da6b7064611bcb2e6570d177d96b46737ec29c",
+      "source_fact_identity": "source_facts:v1:c6b4b7b1793d645c1768bcd841742667ae1b66974d28c3d4937f6b19efa01f1f",
+      "source_fact_keys": [
+        "source_fact:v1:02287ed6f1216ee2c450a646a31266acfd93a9bb6588268a030ba1ad15cb8a49",
+        "source_fact:v1:7203f2d5fa7ddefba148d495197e0d571c56455c202a1780aec81ef0951cd18b",
+        "source_fact:v1:7ebe0600811857e19f9caf0802e28be78e396171acb20c2d40fb0af06ce4126f",
+        "source_fact:v1:a86523f6b193ee393a914d6eb12d23ed170be3eabbfc9241dd66d4abe2eb6979"
+      ],
+      "source_published_kst": "2026-10-12T16:49+09:00",
+      "source_title": "한진, 3분기 매출 8898억원 '역대 최대'…항만·글로벌 사업 호조",
+      "telegram_core_fact": "한진이 항만하역과 글로벌 사업의 성장에 힘입어 3분기 역대 최대 매출을 달성했다.",
+      "title": "한진, 3분기 매출 8898억원 '역대 최대'…항만·글로벌 사업 호조"
     },
     "source_fact:1ec6cec4a47ca24d494a9516": {
       "first_seen_kst": "2026-10-07T02:13:12+09:00",
@@ -244482,6 +245116,30 @@
       "source_published_kst": "2026-10-07T05:30+09:00",
       "title": "“주가 일희일비할 것 없어, 반도체 공급난 지속은 명확한 사실”"
     },
+    "source_fact:23e2849a1389d11b1ac8da5d": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.news1.kr/world/middleeast-africa/6316842",
+      "source": "뉴스1",
+      "source_body_digest": "2638b2df2a6ff3c7629fde7184948296c3dde506d61771946e514947cb6290e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d96e49b83705444a6023f7f9540c145ced3e479a8c409b2e77e1517a8ac4b389",
+      "source_fact_keys": [
+        "source_fact:v1:43ccb58f4515df6c529afcea3407059d27432b3013009b0529142d3d12813faf",
+        "source_fact:v1:48b3d6330bb04c1424706d94083f2742e2dc6bb67a99cfe13d2beab8cd4d1ccc",
+        "source_fact:v1:67cc2dd88480c6113f4bb5de2134a8103080fde803dd0910c4ad71115459f71b",
+        "source_fact:v1:9efd5d74189d01ae4bd4b76b799ec9e33c107c70f4b89bd5698213711befd9b6",
+        "source_fact:v1:a12360f5cd4c0c529037dcd796da554e178d93a05b5b64e253f51e24cc6ef585",
+        "source_fact:v1:ae3e88fc6340c99f4defcb03bb5dc2b254e9be1028c93966dce86e8bb691e967"
+      ],
+      "source_published_kst": "2026-10-12T14:07+09:00",
+      "source_title": "후티 공격에 요격미사일 바닥난 사우디…파키스탄 등에 지원 요청",
+      "telegram_core_fact": "사우디 당국자들은 올여름까지만 해도 후티 반군과의 상황이 통제되고 있다고 설명했지만, 이후 후티의 공세가 강화되면서 홍해 연안의 예멘 주요 거점을 잃고 사우디 본토 공항과 석유 시설까지 공격받고 있다.",
+      "title": "후티 공격에 요격미사일 바닥난 사우디…파키스탄 등에 지원 요청"
+    },
     "source_fact:23e773c6736e500352ef60fc": {
       "first_seen_kst": "2026-10-10T07:44:19+09:00",
       "lanes": {
@@ -244855,6 +245513,30 @@
       ],
       "source_published_kst": "2026-10-05T05:18+09:00",
       "title": "“국산 AI반도체, 실험실 넘어 전력현장으로”…K-Perf 첫 적용"
+    },
+    "source_fact:243fc5cdc5f5da087ba7bf35": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.news1.kr/world/middleeast-africa/6316842",
+      "source": "뉴스1",
+      "source_body_digest": "2638b2df2a6ff3c7629fde7184948296c3dde506d61771946e514947cb6290e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d96e49b83705444a6023f7f9540c145ced3e479a8c409b2e77e1517a8ac4b389",
+      "source_fact_keys": [
+        "source_fact:v1:43ccb58f4515df6c529afcea3407059d27432b3013009b0529142d3d12813faf",
+        "source_fact:v1:48b3d6330bb04c1424706d94083f2742e2dc6bb67a99cfe13d2beab8cd4d1ccc",
+        "source_fact:v1:67cc2dd88480c6113f4bb5de2134a8103080fde803dd0910c4ad71115459f71b",
+        "source_fact:v1:9efd5d74189d01ae4bd4b76b799ec9e33c107c70f4b89bd5698213711befd9b6",
+        "source_fact:v1:a12360f5cd4c0c529037dcd796da554e178d93a05b5b64e253f51e24cc6ef585",
+        "source_fact:v1:ae3e88fc6340c99f4defcb03bb5dc2b254e9be1028c93966dce86e8bb691e967"
+      ],
+      "source_published_kst": "2026-10-12T14:07+09:00",
+      "source_title": "후티 공격에 요격미사일 바닥난 사우디…파키스탄 등에 지원 요청",
+      "telegram_core_fact": "사우디 당국자들은 올여름까지만 해도 후티 반군과의 상황이 통제되고 있다고 설명했지만, 이후 후티의 공세가 강화되면서 홍해 연안의 예멘 주요 거점을 잃고 사우디 본토 공항과 석유 시설까지 공격받고 있다.",
+      "title": "후티 공격에 요격미사일 바닥난 사우디…파키스탄 등에 지원 요청"
     },
     "source_fact:2443d675192a9354b20af4d6": {
       "first_seen_kst": "2026-10-07T08:15:28+09:00",
@@ -258679,6 +259361,29 @@
       "source_title": "표심 급한 트럼프 \"중간선거 전 이란 공격 안할 것\" | 연합뉴스",
       "telegram_core_fact": "트럼프 대통령은 SNS에 올린 글을 통해 \"이란과 생산적 논의를 하고 있다\"며 다만 \"대이란 봉쇄는 지속할 것\"이라고 밝혔습니다.",
       "title": "표심 급한 트럼프 \"중간선거 전 이란 공격 안할 것\" | 연합뉴스"
+    },
+    "source_fact:343370bdecae64db8f80da7c": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.hankyung.com/article/2026101254526",
+      "source": "한국경제",
+      "source_body_digest": "31aa2f686f92b53397b4a792becfcada1a018f348d6fbcaf18a262369d452d22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:414c30a55c25e9723c7535ae99bd422410789c0cce32c55233bdf2881a8e08fb",
+      "source_fact_keys": [
+        "source_fact:v1:16d135cb4fde64047929bab461cf1f9483a061a8856c36a6d31295c1c06d0af3",
+        "source_fact:v1:2aa7dfcb26cd35dc729e513998bbf3ff5d49c4ef4b37cd03e5b2dd6bf15116a3",
+        "source_fact:v1:2c9b3526fe4261a843a5702bb87da2f0d308bb73cf1cd40436c232003b0a2e91",
+        "source_fact:v1:4c094b54267da3d52cfec323eef017ebafe06f6b0b1f14af7833a2a4d008d413",
+        "source_fact:v1:85ae1ed390e0d663eb09369c38dd7fb7a26dc6e8be41a0d518642638f2981396"
+      ],
+      "source_published_kst": "2026-10-12T09:44+09:00",
+      "source_title": "호르무즈 해협 막히자 해운주 강세…STX그린로지스 6%↑",
+      "telegram_core_fact": "이날 해운주의 강세는 중동 지역 지정학적 리스크 심화로 주요 해상 요충지의 통과 차질이 이어지면서 선박들의 우회 운항과 대기 시간 증가로 실질 가용 선복량 감소와 해상 운임 상승세 지속에 따른 실적 기대감이 반영된 것으로 풀이된다.",
+      "title": "호르무즈 해협 막히자 해운주 강세…STX그린로지스 6%↑"
     },
     "source_fact:3445378ad3e18ac30d1546d8": {
       "first_seen_kst": "2026-10-07T17:47:45+09:00",
@@ -280031,6 +280736,30 @@
       "telegram_core_fact": "세계 최대 독립 광고 판매 플랫폼 기업 매그나이트(MGNI)가 3억5800만 달러 규모 선순위 담보부 텀론B의 금리를 50bp(0.5%포인트) 낮추는 세 번째 리프라이싱을 완료해 연간 약 180만 달러의 현금 이자 비용을 절감하게 됐다고 7일(현지시간) 발표했다.",
       "title": "매그나이트, 텀론 금리 0.5%p 인하..연 180만 달러 절감"
     },
+    "source_fact:4d618b349ce0924814dc35d4": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.news1.kr/world/middleeast-africa/6316842",
+      "source": "뉴스1",
+      "source_body_digest": "2638b2df2a6ff3c7629fde7184948296c3dde506d61771946e514947cb6290e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d96e49b83705444a6023f7f9540c145ced3e479a8c409b2e77e1517a8ac4b389",
+      "source_fact_keys": [
+        "source_fact:v1:43ccb58f4515df6c529afcea3407059d27432b3013009b0529142d3d12813faf",
+        "source_fact:v1:48b3d6330bb04c1424706d94083f2742e2dc6bb67a99cfe13d2beab8cd4d1ccc",
+        "source_fact:v1:67cc2dd88480c6113f4bb5de2134a8103080fde803dd0910c4ad71115459f71b",
+        "source_fact:v1:9efd5d74189d01ae4bd4b76b799ec9e33c107c70f4b89bd5698213711befd9b6",
+        "source_fact:v1:a12360f5cd4c0c529037dcd796da554e178d93a05b5b64e253f51e24cc6ef585",
+        "source_fact:v1:ae3e88fc6340c99f4defcb03bb5dc2b254e9be1028c93966dce86e8bb691e967"
+      ],
+      "source_published_kst": "2026-10-12T14:07+09:00",
+      "source_title": "후티 공격에 요격미사일 바닥난 사우디…파키스탄 등에 지원 요청",
+      "telegram_core_fact": "사우디 당국자들은 올여름까지만 해도 후티 반군과의 상황이 통제되고 있다고 설명했지만, 이후 후티의 공세가 강화되면서 홍해 연안의 예멘 주요 거점을 잃고 사우디 본토 공항과 석유 시설까지 공격받고 있다.",
+      "title": "후티 공격에 요격미사일 바닥난 사우디…파키스탄 등에 지원 요청"
+    },
     "source_fact:4d678cf1eca8e90f5446e9f3": {
       "first_seen_kst": "2026-10-11T18:34:27+09:00",
       "lanes": {
@@ -295775,6 +296504,29 @@
       "telegram_core_fact": "또 트럼프 대통령은 소셜미디어를 통해 \"우리는 이란과 생산적인 논의를 진행하고 있다\"며 \"이란은 경제적으로나 군사적으로 매우 나쁜 상황에 처해 있고, 봉쇄 조치는 전면적으로 유지될 것\"이라고도 말했습니다.",
       "title": "트럼프 \"11월 3일 중간선거 전까지 이란 공격 안 해\" | 연합뉴스"
     },
+    "source_fact:5eb12aeff8d54d3b9eaae5e8": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.hankyung.com/article/2026101254526",
+      "source": "한국경제",
+      "source_body_digest": "31aa2f686f92b53397b4a792becfcada1a018f348d6fbcaf18a262369d452d22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:414c30a55c25e9723c7535ae99bd422410789c0cce32c55233bdf2881a8e08fb",
+      "source_fact_keys": [
+        "source_fact:v1:16d135cb4fde64047929bab461cf1f9483a061a8856c36a6d31295c1c06d0af3",
+        "source_fact:v1:2aa7dfcb26cd35dc729e513998bbf3ff5d49c4ef4b37cd03e5b2dd6bf15116a3",
+        "source_fact:v1:2c9b3526fe4261a843a5702bb87da2f0d308bb73cf1cd40436c232003b0a2e91",
+        "source_fact:v1:4c094b54267da3d52cfec323eef017ebafe06f6b0b1f14af7833a2a4d008d413",
+        "source_fact:v1:85ae1ed390e0d663eb09369c38dd7fb7a26dc6e8be41a0d518642638f2981396"
+      ],
+      "source_published_kst": "2026-10-12T09:44+09:00",
+      "source_title": "호르무즈 해협 막히자 해운주 강세…STX그린로지스 6%↑",
+      "telegram_core_fact": "이날 해운주의 강세는 중동 지역 지정학적 리스크 심화로 주요 해상 요충지의 통과 차질이 이어지면서 선박들의 우회 운항과 대기 시간 증가로 실질 가용 선복량 감소와 해상 운임 상승세 지속에 따른 실적 기대감이 반영된 것으로 풀이된다.",
+      "title": "호르무즈 해협 막히자 해운주 강세…STX그린로지스 6%↑"
+    },
     "source_fact:5ec17d2308199fcbcb0c663d": {
       "first_seen_kst": "2026-10-12T12:56:34+09:00",
       "lanes": {
@@ -304348,6 +305100,29 @@
       "telegram_core_fact": "지난 7월 OK금융그룹이 예별손보 공개매각 우선협상대상자로 선정된 지 약 3개월 만이다.",
       "title": "예보, OK금융그룹과 예별손보 주식매매계약서 체결"
     },
+    "source_fact:68f614337eb36935c436ffa6": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.hankyung.com/article/2026101254526",
+      "source": "한국경제",
+      "source_body_digest": "31aa2f686f92b53397b4a792becfcada1a018f348d6fbcaf18a262369d452d22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:414c30a55c25e9723c7535ae99bd422410789c0cce32c55233bdf2881a8e08fb",
+      "source_fact_keys": [
+        "source_fact:v1:16d135cb4fde64047929bab461cf1f9483a061a8856c36a6d31295c1c06d0af3",
+        "source_fact:v1:2aa7dfcb26cd35dc729e513998bbf3ff5d49c4ef4b37cd03e5b2dd6bf15116a3",
+        "source_fact:v1:2c9b3526fe4261a843a5702bb87da2f0d308bb73cf1cd40436c232003b0a2e91",
+        "source_fact:v1:4c094b54267da3d52cfec323eef017ebafe06f6b0b1f14af7833a2a4d008d413",
+        "source_fact:v1:85ae1ed390e0d663eb09369c38dd7fb7a26dc6e8be41a0d518642638f2981396"
+      ],
+      "source_published_kst": "2026-10-12T09:44+09:00",
+      "source_title": "호르무즈 해협 막히자 해운주 강세…STX그린로지스 6%↑",
+      "telegram_core_fact": "이날 해운주의 강세는 중동 지역 지정학적 리스크 심화로 주요 해상 요충지의 통과 차질이 이어지면서 선박들의 우회 운항과 대기 시간 증가로 실질 가용 선복량 감소와 해상 운임 상승세 지속에 따른 실적 기대감이 반영된 것으로 풀이된다.",
+      "title": "호르무즈 해협 막히자 해운주 강세…STX그린로지스 6%↑"
+    },
     "source_fact:68fc550ee9bebf304df2b76f": {
       "first_seen_kst": "2026-10-11T20:19:08+09:00",
       "lanes": {
@@ -308353,6 +309128,25 @@
       ],
       "source_published_kst": "2026-10-06T12:32+09:00",
       "title": "\"양자 R&D→상용화로 가속…韓, 산업 연계 강화해야\""
+    },
+    "source_fact:6da093d7df23c6c1aa9c7688": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012113600063",
+      "source": "연합뉴스",
+      "source_body_digest": "576ebf9fe60a3b1163a80d941f2425b2f31ee460b8d89e08c51e684428b01690",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d278fa4b91aa1e69af529601471c839b77d353678125c4f25ee38f2a0f13b246",
+      "source_fact_keys": [
+        "source_fact:v1:cfe3162cb53140f026355058862c4e64fb4c1ba255499fcbe0d289bf70f61a18"
+      ],
+      "source_published_kst": "2026-10-12T14:47+09:00",
+      "source_title": "박수현 \"202조원 첨단산업 투자 뒷받침…AI·힐링 충남 실현\" | 연합뉴스",
+      "telegram_core_fact": "아산 삼성디스플레이의 67조원 투자와 당진 AI 데이터센터 조성, 8개 시군 27개 기업의 1조5천303억원 투자 유치 등도 성과로 소개했다.",
+      "title": "박수현 \"202조원 첨단산업 투자 뒷받침…AI·힐링 충남 실현\" | 연합뉴스"
     },
     "source_fact:6da27b112cc9a031fc143846": {
       "first_seen_kst": "2026-10-07T20:28:48+09:00",
@@ -322982,6 +323776,30 @@
       "source_published_kst": "2026-10-07T14:58+09:00",
       "title": "송미령 \"산란계협회, 경고에도 가격 고시…농가 짓밟았다는 비판 과해\""
     },
+    "source_fact:7eb5a43c495ca403e6bf2a3e": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.news1.kr/world/middleeast-africa/6316842",
+      "source": "뉴스1",
+      "source_body_digest": "2638b2df2a6ff3c7629fde7184948296c3dde506d61771946e514947cb6290e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d96e49b83705444a6023f7f9540c145ced3e479a8c409b2e77e1517a8ac4b389",
+      "source_fact_keys": [
+        "source_fact:v1:43ccb58f4515df6c529afcea3407059d27432b3013009b0529142d3d12813faf",
+        "source_fact:v1:48b3d6330bb04c1424706d94083f2742e2dc6bb67a99cfe13d2beab8cd4d1ccc",
+        "source_fact:v1:67cc2dd88480c6113f4bb5de2134a8103080fde803dd0910c4ad71115459f71b",
+        "source_fact:v1:9efd5d74189d01ae4bd4b76b799ec9e33c107c70f4b89bd5698213711befd9b6",
+        "source_fact:v1:a12360f5cd4c0c529037dcd796da554e178d93a05b5b64e253f51e24cc6ef585",
+        "source_fact:v1:ae3e88fc6340c99f4defcb03bb5dc2b254e9be1028c93966dce86e8bb691e967"
+      ],
+      "source_published_kst": "2026-10-12T14:07+09:00",
+      "source_title": "후티 공격에 요격미사일 바닥난 사우디…파키스탄 등에 지원 요청",
+      "telegram_core_fact": "사우디 당국자들은 올여름까지만 해도 후티 반군과의 상황이 통제되고 있다고 설명했지만, 이후 후티의 공세가 강화되면서 홍해 연안의 예멘 주요 거점을 잃고 사우디 본토 공항과 석유 시설까지 공격받고 있다.",
+      "title": "후티 공격에 요격미사일 바닥난 사우디…파키스탄 등에 지원 요청"
+    },
     "source_fact:7ec0aa5548c8ba7a89b375a9": {
       "first_seen_kst": "2026-10-09T19:24:17+09:00",
       "lanes": {
@@ -324573,6 +325391,28 @@
       ],
       "source_published_kst": "2026-10-07T16:01+09:00",
       "title": "6800선으로 내려온 코스피…삼전 실적·FOMC 의사록 등 변동성↑"
+    },
+    "source_fact:80dfdfcfb70afd2fe1d7b4e6": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634799",
+      "source": "이투데이",
+      "source_body_digest": "5bc4a6bcfb0fbbfaeb228ed0701625b823daad83cb4c020ef726dbeecec29b1e",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:abf72a669a882e4f5474dad1e5da6b7064611bcb2e6570d177d96b46737ec29c",
+      "source_fact_identity": "source_facts:v1:c6b4b7b1793d645c1768bcd841742667ae1b66974d28c3d4937f6b19efa01f1f",
+      "source_fact_keys": [
+        "source_fact:v1:02287ed6f1216ee2c450a646a31266acfd93a9bb6588268a030ba1ad15cb8a49",
+        "source_fact:v1:7203f2d5fa7ddefba148d495197e0d571c56455c202a1780aec81ef0951cd18b",
+        "source_fact:v1:7ebe0600811857e19f9caf0802e28be78e396171acb20c2d40fb0af06ce4126f",
+        "source_fact:v1:a86523f6b193ee393a914d6eb12d23ed170be3eabbfc9241dd66d4abe2eb6979"
+      ],
+      "source_published_kst": "2026-10-12T16:49+09:00",
+      "source_title": "한진, 3분기 매출 8898억원 '역대 최대'…항만·글로벌 사업 호조",
+      "telegram_core_fact": "한진이 항만하역과 글로벌 사업의 성장에 힘입어 3분기 역대 최대 매출을 달성했다.",
+      "title": "한진, 3분기 매출 8898억원 '역대 최대'…항만·글로벌 사업 호조"
     },
     "source_fact:80e2c3f29b0a2b24375f6091": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -336835,6 +337675,26 @@
       ],
       "source_published_kst": "2026-10-05T11:25+09:00",
       "title": "사우디, 11월 아시아 공급용 원유가 대폭 인하 | 연합뉴스"
+    },
+    "source_fact:8f4ec261a822c138589d75f8": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.etnews.com/20261012000299",
+      "source": "전자신문",
+      "source_body_digest": "64056dfc2fe70a0488fefb3801134c537b14f110762ec550c090053e86c72316",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:86dd9bd45c04d7e688f5f3f887c797d1c581ef1a551058e6b25fc619dfefe2e7",
+      "source_fact_keys": [
+        "source_fact:v1:bc091074f4309aebd5b8c423bbd746308836cd723814ea78ae085d5e8971af8d",
+        "source_fact:v1:d2c96ff7c16360d6cc4e75d81cf9035ff9e0516119a5858c38c6c700b284bf42"
+      ],
+      "source_published_kst": "2026-10-12T15:31+09:00",
+      "source_title": "국세청, 구글코리아 1540억원대 법인세 취소소송에서 패소",
+      "telegram_core_fact": "구글코리아가 1540억원대 법인세 부과에 불복해 낸 소송에서 과세당국이 최종 패소, 과세 처분이 취소된다.",
+      "title": "국세청, 구글코리아 1540억원대 법인세 취소소송에서 패소"
     },
     "source_fact:8f572e5322a7f8e3a1367588": {
       "first_seen_kst": "2026-10-11T09:50:45+09:00",
@@ -350667,6 +351527,29 @@
       "source_title": "코스피, 장중 6400선까지 밀려…삼전·하이닉스 3%대 ‘뚝’",
       "telegram_core_fact": "코스피가 12일 삼성전자(005930)와 SK하이닉스(000660) 동반 약세로 인해 장중 3% 넘게 급락해 결국 6400선까지 밀렸다.",
       "title": "코스피, 장중 6400선까지 밀려…삼전·하이닉스 3%대 ‘뚝’"
+    },
+    "source_fact:9fc0410a503051be1c4d23a0": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.hankyung.com/article/2026101254526",
+      "source": "한국경제",
+      "source_body_digest": "31aa2f686f92b53397b4a792becfcada1a018f348d6fbcaf18a262369d452d22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:414c30a55c25e9723c7535ae99bd422410789c0cce32c55233bdf2881a8e08fb",
+      "source_fact_keys": [
+        "source_fact:v1:16d135cb4fde64047929bab461cf1f9483a061a8856c36a6d31295c1c06d0af3",
+        "source_fact:v1:2aa7dfcb26cd35dc729e513998bbf3ff5d49c4ef4b37cd03e5b2dd6bf15116a3",
+        "source_fact:v1:2c9b3526fe4261a843a5702bb87da2f0d308bb73cf1cd40436c232003b0a2e91",
+        "source_fact:v1:4c094b54267da3d52cfec323eef017ebafe06f6b0b1f14af7833a2a4d008d413",
+        "source_fact:v1:85ae1ed390e0d663eb09369c38dd7fb7a26dc6e8be41a0d518642638f2981396"
+      ],
+      "source_published_kst": "2026-10-12T09:44+09:00",
+      "source_title": "호르무즈 해협 막히자 해운주 강세…STX그린로지스 6%↑",
+      "telegram_core_fact": "이날 해운주의 강세는 중동 지역 지정학적 리스크 심화로 주요 해상 요충지의 통과 차질이 이어지면서 선박들의 우회 운항과 대기 시간 증가로 실질 가용 선복량 감소와 해상 운임 상승세 지속에 따른 실적 기대감이 반영된 것으로 풀이된다.",
+      "title": "호르무즈 해협 막히자 해운주 강세…STX그린로지스 6%↑"
     },
     "source_fact:9fc6f9c0d7c17b779e8899b2": {
       "first_seen_kst": "2026-10-08T06:10:43+09:00",
@@ -376382,6 +377265,30 @@
       "source_published_kst": "2026-10-06T11:20+09:00",
       "title": "에이스테크, 4개 차종 적용 차량용 안테나 수주"
     },
+    "source_fact:beadd300a5c0a8604743f2b3": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.news1.kr/world/middleeast-africa/6316842",
+      "source": "뉴스1",
+      "source_body_digest": "2638b2df2a6ff3c7629fde7184948296c3dde506d61771946e514947cb6290e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d96e49b83705444a6023f7f9540c145ced3e479a8c409b2e77e1517a8ac4b389",
+      "source_fact_keys": [
+        "source_fact:v1:43ccb58f4515df6c529afcea3407059d27432b3013009b0529142d3d12813faf",
+        "source_fact:v1:48b3d6330bb04c1424706d94083f2742e2dc6bb67a99cfe13d2beab8cd4d1ccc",
+        "source_fact:v1:67cc2dd88480c6113f4bb5de2134a8103080fde803dd0910c4ad71115459f71b",
+        "source_fact:v1:9efd5d74189d01ae4bd4b76b799ec9e33c107c70f4b89bd5698213711befd9b6",
+        "source_fact:v1:a12360f5cd4c0c529037dcd796da554e178d93a05b5b64e253f51e24cc6ef585",
+        "source_fact:v1:ae3e88fc6340c99f4defcb03bb5dc2b254e9be1028c93966dce86e8bb691e967"
+      ],
+      "source_published_kst": "2026-10-12T14:07+09:00",
+      "source_title": "후티 공격에 요격미사일 바닥난 사우디…파키스탄 등에 지원 요청",
+      "telegram_core_fact": "사우디 당국자들은 올여름까지만 해도 후티 반군과의 상황이 통제되고 있다고 설명했지만, 이후 후티의 공세가 강화되면서 홍해 연안의 예멘 주요 거점을 잃고 사우디 본토 공항과 석유 시설까지 공격받고 있다.",
+      "title": "후티 공격에 요격미사일 바닥난 사우디…파키스탄 등에 지원 요청"
+    },
     "source_fact:bec49cb877b1fdd2dd2b9320": {
       "first_seen_kst": "2026-10-07T16:44:58+09:00",
       "lanes": {
@@ -392636,6 +393543,26 @@
       "source_title": "美 10년물, 올해 말 5.1% 찍고 내년 말 4.78%…고금리 오래 간다",
       "telegram_core_fact": "시나이 사장은 10년물 국채금리가 2027년 6%에 근접할 수 있고 2020년대 말까지 5%를 웃돌 수 있다고 내다봤다.",
       "title": "美 10년물, 올해 말 5.1% 찍고 내년 말 4.78%…고금리 오래 간다"
+    },
+    "source_fact:d1cdd6b03bc9b3f61c0bdd91": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.etnews.com/20261012000299",
+      "source": "전자신문",
+      "source_body_digest": "64056dfc2fe70a0488fefb3801134c537b14f110762ec550c090053e86c72316",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:86dd9bd45c04d7e688f5f3f887c797d1c581ef1a551058e6b25fc619dfefe2e7",
+      "source_fact_keys": [
+        "source_fact:v1:bc091074f4309aebd5b8c423bbd746308836cd723814ea78ae085d5e8971af8d",
+        "source_fact:v1:d2c96ff7c16360d6cc4e75d81cf9035ff9e0516119a5858c38c6c700b284bf42"
+      ],
+      "source_published_kst": "2026-10-12T15:31+09:00",
+      "source_title": "국세청, 구글코리아 1540억원대 법인세 취소소송에서 패소",
+      "telegram_core_fact": "구글코리아가 1540억원대 법인세 부과에 불복해 낸 소송에서 과세당국이 최종 패소, 과세 처분이 취소된다.",
+      "title": "국세청, 구글코리아 1540억원대 법인세 취소소송에서 패소"
     },
     "source_fact:d1ce015d6b25df9479f047be": {
       "first_seen_kst": "2026-10-09T21:11:52+09:00",
@@ -414209,6 +415136,30 @@
       "source_published_kst": "2026-10-06T06:40+09:00",
       "title": "“중동 원유수출 증가·G7 비축유 방출 약속“ 국제유가 1.8%↓"
     },
+    "source_fact:e9e6e3164a5f85dfc9da8479": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.news1.kr/world/middleeast-africa/6316842",
+      "source": "뉴스1",
+      "source_body_digest": "2638b2df2a6ff3c7629fde7184948296c3dde506d61771946e514947cb6290e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d96e49b83705444a6023f7f9540c145ced3e479a8c409b2e77e1517a8ac4b389",
+      "source_fact_keys": [
+        "source_fact:v1:43ccb58f4515df6c529afcea3407059d27432b3013009b0529142d3d12813faf",
+        "source_fact:v1:48b3d6330bb04c1424706d94083f2742e2dc6bb67a99cfe13d2beab8cd4d1ccc",
+        "source_fact:v1:67cc2dd88480c6113f4bb5de2134a8103080fde803dd0910c4ad71115459f71b",
+        "source_fact:v1:9efd5d74189d01ae4bd4b76b799ec9e33c107c70f4b89bd5698213711befd9b6",
+        "source_fact:v1:a12360f5cd4c0c529037dcd796da554e178d93a05b5b64e253f51e24cc6ef585",
+        "source_fact:v1:ae3e88fc6340c99f4defcb03bb5dc2b254e9be1028c93966dce86e8bb691e967"
+      ],
+      "source_published_kst": "2026-10-12T14:07+09:00",
+      "source_title": "후티 공격에 요격미사일 바닥난 사우디…파키스탄 등에 지원 요청",
+      "telegram_core_fact": "사우디 당국자들은 올여름까지만 해도 후티 반군과의 상황이 통제되고 있다고 설명했지만, 이후 후티의 공세가 강화되면서 홍해 연안의 예멘 주요 거점을 잃고 사우디 본토 공항과 석유 시설까지 공격받고 있다.",
+      "title": "후티 공격에 요격미사일 바닥난 사우디…파키스탄 등에 지원 요청"
+    },
     "source_fact:e9f4dede7a69a46df02cb86f": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
       "lanes": {
@@ -425977,6 +426928,28 @@
       "telegram_core_fact": "현대차와 인도자동차공업협회(SIAM)에 따르면 현대차의 1998년부터 올해 3분기까지 인도 내 누적 판매량은 988만4960대로 집계됐다.",
       "title": "현대차, 인도 누적 판매 1000만대 눈앞…\"年 생산량 110만대로 확대\""
     },
+    "source_fact:f8e7e083143d4e4d255d2671": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634799",
+      "source": "이투데이",
+      "source_body_digest": "5bc4a6bcfb0fbbfaeb228ed0701625b823daad83cb4c020ef726dbeecec29b1e",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:abf72a669a882e4f5474dad1e5da6b7064611bcb2e6570d177d96b46737ec29c",
+      "source_fact_identity": "source_facts:v1:c6b4b7b1793d645c1768bcd841742667ae1b66974d28c3d4937f6b19efa01f1f",
+      "source_fact_keys": [
+        "source_fact:v1:02287ed6f1216ee2c450a646a31266acfd93a9bb6588268a030ba1ad15cb8a49",
+        "source_fact:v1:7203f2d5fa7ddefba148d495197e0d571c56455c202a1780aec81ef0951cd18b",
+        "source_fact:v1:7ebe0600811857e19f9caf0802e28be78e396171acb20c2d40fb0af06ce4126f",
+        "source_fact:v1:a86523f6b193ee393a914d6eb12d23ed170be3eabbfc9241dd66d4abe2eb6979"
+      ],
+      "source_published_kst": "2026-10-12T16:49+09:00",
+      "source_title": "한진, 3분기 매출 8898억원 '역대 최대'…항만·글로벌 사업 호조",
+      "telegram_core_fact": "한진이 항만하역과 글로벌 사업의 성장에 힘입어 3분기 역대 최대 매출을 달성했다.",
+      "title": "한진, 3분기 매출 8898억원 '역대 최대'…항만·글로벌 사업 호조"
+    },
     "source_fact:f8fd2cd7450703b63022f6df": {
       "first_seen_kst": "2026-10-06T22:21:21+09:00",
       "lanes": {
@@ -432981,6 +433954,23 @@
       "source": "뉴시스",
       "title": "美 \"알래스카 투자\" 못박았지만…韓 \"합의보다 나갔다, 원칙대로 간다\" (종합)"
     },
+    "title:048889fce6ac9ddaf9437636": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822359",
+      "source": "뉴시스",
+      "source_body_digest": "ec4a9cc02dce35d839e125a21d020d01f3a070df3b72a36cd275c12715fa82c4",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T16:26+09:00",
+      "source_title": "\"위성 개발부터 환경시험까지\"…KAI, 국내 민간 유일 통합체계 완성",
+      "telegram_core_fact": "한국항공우주산업(KAI)이 위성 개발부터 환경시험까지 전 과정을 자체 수행할 수 있는 통합체계를 완성하며 우주사업 경쟁력 강화에 나섰다.",
+      "title": "\"위성 개발부터 환경시험까지\"…KAI, 국내 민간 유일 통합체계 완성"
+    },
     "title:04962303c0965798f5397130": {
       "first_seen_kst": "2026-10-11T22:09:39+09:00",
       "lanes": {
@@ -439438,6 +440428,26 @@
       "link": "https://www.yna.co.kr/view/AKR20261002036500002",
       "source": "연합뉴스",
       "title": "한은 \"10월 물가상승률 3% 내외 높은 수준 예상\" | 연합뉴스"
+    },
+    "title:1f6a833e8699ed6e165f6f38": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.etnews.com/20261012000299",
+      "source": "전자신문",
+      "source_body_digest": "64056dfc2fe70a0488fefb3801134c537b14f110762ec550c090053e86c72316",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:86dd9bd45c04d7e688f5f3f887c797d1c581ef1a551058e6b25fc619dfefe2e7",
+      "source_fact_keys": [
+        "source_fact:v1:bc091074f4309aebd5b8c423bbd746308836cd723814ea78ae085d5e8971af8d",
+        "source_fact:v1:d2c96ff7c16360d6cc4e75d81cf9035ff9e0516119a5858c38c6c700b284bf42"
+      ],
+      "source_published_kst": "2026-10-12T15:31+09:00",
+      "source_title": "국세청, 구글코리아 1540억원대 법인세 취소소송에서 패소",
+      "telegram_core_fact": "구글코리아가 1540억원대 법인세 부과에 불복해 낸 소송에서 과세당국이 최종 패소, 과세 처분이 취소된다.",
+      "title": "국세청, 구글코리아 1540억원대 법인세 취소소송에서 패소"
     },
     "title:1f7c92473f2eee9c6cf33033": {
       "first_seen_kst": "2026-10-08T05:44:23+09:00",
@@ -460791,6 +461801,25 @@
       "source": "헤럴드경제",
       "title": "HBM 소재 등에 업은 에코프로HN"
     },
+    "title:739077fccbd82c5af922b7a2": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012113600063",
+      "source": "연합뉴스",
+      "source_body_digest": "576ebf9fe60a3b1163a80d941f2425b2f31ee460b8d89e08c51e684428b01690",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d278fa4b91aa1e69af529601471c839b77d353678125c4f25ee38f2a0f13b246",
+      "source_fact_keys": [
+        "source_fact:v1:cfe3162cb53140f026355058862c4e64fb4c1ba255499fcbe0d289bf70f61a18"
+      ],
+      "source_published_kst": "2026-10-12T14:47+09:00",
+      "source_title": "박수현 \"202조원 첨단산업 투자 뒷받침…AI·힐링 충남 실현\" | 연합뉴스",
+      "telegram_core_fact": "아산 삼성디스플레이의 67조원 투자와 당진 AI 데이터센터 조성, 8개 시군 27개 기업의 1조5천303억원 투자 유치 등도 성과로 소개했다.",
+      "title": "박수현 \"202조원 첨단산업 투자 뒷받침…AI·힐링 충남 실현\" | 연합뉴스"
+    },
     "title:739b6f7b1b0c9bc8ba1bd30b": {
       "first_seen_kst": "2026-10-06T21:40:57+09:00",
       "lanes": {
@@ -462329,6 +463358,25 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T08:41+09:00",
       "title": "세계식량가격 1.5% 상승…곡물 5.1%·설탕 6.1% 뛰었다"
+    },
+    "title:79194a69ff3201c6d3260c2c": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634749",
+      "source": "이투데이",
+      "source_body_digest": "d77f6cb2ff6f1dea2c6e20e1a8b7ac12709e7df1041e4290536d310a759e10a4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:727c785b7318e0f85028a4e58c5f0b6ce8beafcc42e75c503da0db04ae28d2d1",
+      "source_fact_keys": [
+        "source_fact:v1:59bb4a918a667269deb2f95daa07a6c3e58636919afcc2ba12b503fbc42d4e1d"
+      ],
+      "source_published_kst": "2026-10-12T15:41+09:00",
+      "source_title": "“전세부터 지원금까지” 미드나잇, 개인정보 숨기는 블록체인 활용 사례 공개",
+      "telegram_core_fact": "개인정보 원본을 제출하지 않고 지원금 신청 자격을 증명하거나, 다른 세입자의 보증금을 공개하지 않은 채 전세 계약의 위험도를 확인하는 블록체인 활용 사례가 공개됐다.",
+      "title": "“전세부터 지원금까지” 미드나잇, 개인정보 숨기는 블록체인 활용 사례 공개"
     },
     "title:79259626b36db565ed32643b": {
       "first_seen_kst": "2026-10-09T20:02:39+09:00",
@@ -474005,6 +475053,28 @@
       "telegram_core_fact": "전날 트럼프 대통령은 자신이 세운 SNS 트루스소셜에 “방금 블라디미르 푸틴 러시아 대통령과 매우 성공적인 논의를 마쳤다”며 “러시아는 미국과 세계 시장에 경유 30만t(톤) 이상을 즉시 공급하고 11월 중 50만t, 이후 100만t을 추가 공급하기로 했다”고 적었다.",
       "title": "트럼프 “우크라이나, 새 대통령 필요”⋯젤렌스키와 충돌"
     },
+    "title:a7487538e83f4e0d7480b071": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634799",
+      "source": "이투데이",
+      "source_body_digest": "5bc4a6bcfb0fbbfaeb228ed0701625b823daad83cb4c020ef726dbeecec29b1e",
+      "source_event_identity": "source_event:v2:issuer_quarterly_earnings:abf72a669a882e4f5474dad1e5da6b7064611bcb2e6570d177d96b46737ec29c",
+      "source_fact_identity": "source_facts:v1:c6b4b7b1793d645c1768bcd841742667ae1b66974d28c3d4937f6b19efa01f1f",
+      "source_fact_keys": [
+        "source_fact:v1:02287ed6f1216ee2c450a646a31266acfd93a9bb6588268a030ba1ad15cb8a49",
+        "source_fact:v1:7203f2d5fa7ddefba148d495197e0d571c56455c202a1780aec81ef0951cd18b",
+        "source_fact:v1:7ebe0600811857e19f9caf0802e28be78e396171acb20c2d40fb0af06ce4126f",
+        "source_fact:v1:a86523f6b193ee393a914d6eb12d23ed170be3eabbfc9241dd66d4abe2eb6979"
+      ],
+      "source_published_kst": "2026-10-12T16:49+09:00",
+      "source_title": "한진, 3분기 매출 8898억원 '역대 최대'…항만·글로벌 사업 호조",
+      "telegram_core_fact": "한진이 항만하역과 글로벌 사업의 성장에 힘입어 3분기 역대 최대 매출을 달성했다.",
+      "title": "한진, 3분기 매출 8898억원 '역대 최대'…항만·글로벌 사업 호조"
+    },
     "title:a7578c1858fb1315d5bdcb30": {
       "first_seen_kst": "2026-10-03T21:50:02+09:00",
       "lanes": {
@@ -483116,6 +484186,30 @@
       "telegram_core_fact": "삼성전자가 '분기 영업이익 100조' 시대를 열었고 SK하이닉스는 꿈의 영업이익률 기록을 세울 것으로 기대된다.",
       "title": "SK하이닉스 이르면 28일 실적 공개…영업이익률 80% 돌파하나"
     },
+    "title:cbbba6be91c9598efd4576db": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.news1.kr/world/middleeast-africa/6316842",
+      "source": "뉴스1",
+      "source_body_digest": "2638b2df2a6ff3c7629fde7184948296c3dde506d61771946e514947cb6290e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d96e49b83705444a6023f7f9540c145ced3e479a8c409b2e77e1517a8ac4b389",
+      "source_fact_keys": [
+        "source_fact:v1:43ccb58f4515df6c529afcea3407059d27432b3013009b0529142d3d12813faf",
+        "source_fact:v1:48b3d6330bb04c1424706d94083f2742e2dc6bb67a99cfe13d2beab8cd4d1ccc",
+        "source_fact:v1:67cc2dd88480c6113f4bb5de2134a8103080fde803dd0910c4ad71115459f71b",
+        "source_fact:v1:9efd5d74189d01ae4bd4b76b799ec9e33c107c70f4b89bd5698213711befd9b6",
+        "source_fact:v1:a12360f5cd4c0c529037dcd796da554e178d93a05b5b64e253f51e24cc6ef585",
+        "source_fact:v1:ae3e88fc6340c99f4defcb03bb5dc2b254e9be1028c93966dce86e8bb691e967"
+      ],
+      "source_published_kst": "2026-10-12T14:07+09:00",
+      "source_title": "후티 공격에 요격미사일 바닥난 사우디…파키스탄 등에 지원 요청",
+      "telegram_core_fact": "사우디 당국자들은 올여름까지만 해도 후티 반군과의 상황이 통제되고 있다고 설명했지만, 이후 후티의 공세가 강화되면서 홍해 연안의 예멘 주요 거점을 잃고 사우디 본토 공항과 석유 시설까지 공격받고 있다.",
+      "title": "후티 공격에 요격미사일 바닥난 사우디…파키스탄 등에 지원 요청"
+    },
     "title:cbc40bd01046d5433c1b29e0": {
       "first_seen_kst": "2026-10-08T22:06:55+09:00",
       "lanes": {
@@ -486780,6 +487874,29 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T06:00+09:00",
       "title": "삼전닉스 자사주 매입 막바지…'수급 공백' 메울 190조 실적 '기대'"
+    },
+    "title:d96a1efd51069aca03322bba": {
+      "first_seen_kst": "2026-10-12T16:50:12+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:50:12+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:50:12+09:00",
+      "link": "https://www.hankyung.com/article/2026101254526",
+      "source": "한국경제",
+      "source_body_digest": "31aa2f686f92b53397b4a792becfcada1a018f348d6fbcaf18a262369d452d22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:414c30a55c25e9723c7535ae99bd422410789c0cce32c55233bdf2881a8e08fb",
+      "source_fact_keys": [
+        "source_fact:v1:16d135cb4fde64047929bab461cf1f9483a061a8856c36a6d31295c1c06d0af3",
+        "source_fact:v1:2aa7dfcb26cd35dc729e513998bbf3ff5d49c4ef4b37cd03e5b2dd6bf15116a3",
+        "source_fact:v1:2c9b3526fe4261a843a5702bb87da2f0d308bb73cf1cd40436c232003b0a2e91",
+        "source_fact:v1:4c094b54267da3d52cfec323eef017ebafe06f6b0b1f14af7833a2a4d008d413",
+        "source_fact:v1:85ae1ed390e0d663eb09369c38dd7fb7a26dc6e8be41a0d518642638f2981396"
+      ],
+      "source_published_kst": "2026-10-12T09:44+09:00",
+      "source_title": "호르무즈 해협 막히자 해운주 강세…STX그린로지스 6%↑",
+      "telegram_core_fact": "이날 해운주의 강세는 중동 지역 지정학적 리스크 심화로 주요 해상 요충지의 통과 차질이 이어지면서 선박들의 우회 운항과 대기 시간 증가로 실질 가용 선복량 감소와 해상 운임 상승세 지속에 따른 실적 기대감이 반영된 것으로 풀이된다.",
+      "title": "호르무즈 해협 막히자 해운주 강세…STX그린로지스 6%↑"
     },
     "title:d987980954a317e1af1980d3": {
       "first_seen_kst": "2026-10-02T07:53:13+09:00",
@@ -496435,5 +497552,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-12T16:29:45+09:00"
+  "updated_at_kst": "2026-10-12T16:50:12+09:00"
 }
