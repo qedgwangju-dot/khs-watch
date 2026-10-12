@@ -817,6 +817,7 @@ def _robot_posttrain_stage(text: str, source: str = '') -> str:
     if not _is_robot_posttrain_compute(text):
         return ''
     if (source in ROBOT_POSTTRAIN_PRIMARY
+            and not re.search(r'not a post[- ]training benchmark|사후학습 수치가 아님', text, re.I)
             and ROBOT_POSTTRAIN_GPU_HOURS.search(text)
             and ROBOT_POSTTRAIN_MEASURED.search(text)
             and not ROBOT_POSTTRAIN_DENIAL.search(text)):
