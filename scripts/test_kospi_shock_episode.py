@@ -858,3 +858,43 @@ try:
 finally:
     ks.telegram_send=_original_surge_sender
 print("flow_surge_two_sample_confirm_valid=true dedup=20m handoff=true test_mode_silent=true")
+
+# 두 시장의 원자료 종료 시각이 각각 신선하더라도 30초 이상 차이나면
+# 5분 '동시 유입'으로 합치면 안 된다.
+_skew_rows=[
+    _surge_row(19940,0,0,0),
+    _surge_row(20000,0,0,0),
+    _surge_row(20260,0,500,700),
+    _surge_row(20300,350,500,1000),
+]
+_skew_rows[-1]["선물"]["sample_ts"]=20260
+assert not _surge_scan(_skew_rows,20305), "현물·선물 종료시각 40초 차이를 동시 매수로 오인"
+_skew_rows[-1]["선물"]["sample_ts"]=20270
+_aligned_surge=_surge_scan(_skew_rows,20305)
+assert len(_aligned_surge)==1 and _aligned_surge[0]["actor"]=="외국인",_aligned_surge
+assert _aligned_surge[0]["mode"]=="현물·선물 동시",_aligned_surge
+assert _aligned_surge[0]["confidence"]=="높음",_aligned_surge
+assert _aligned_surge[0]["spot_window"]==(20000.0,20300.0),_aligned_surge
+assert _aligned_surge[0]["futures_window"]==(19940.0,20270.0),_aligned_surge
+_ts_display_watch=Watch("unused",[], "",False)
+_displayed=_ts_display_watch.build_flow_surge_alert(_aligned_surge[0],20305)
+assert "실제 수급 표본:" in _displayed,_displayed
+assert ks.fmt_clock(19940) in _displayed and ks.fmt_clock(20270) in _displayed,_displayed
+print("flow_surge_cross_channel_alignment_regression=true")
+
+# 프로그램 거래는 전체/차익/비차익 검산이 통과하더라도
+# 매수주체 기준점 대비 40초 뒤처지면 높은 확신도를 주지 않는다.
+_program_lag_rows=[
+    _surge_row(19940,0,0,0),
+    _surge_row(20000,0,0,0),
+    _surge_row(20260,0,0,700),
+    _surge_row(20300,400,600,1000),
+]
+_program_lag_rows[-1]["프로그램"]["sample_ts"]=20260
+_lag_surge=_surge_scan(_program_lag_rows,20305)
+assert len(_lag_surge)==1 and _lag_surge[0]["mode"]=="현물·선물 동시",_lag_surge
+assert _lag_surge[0]["program"] is not None and _lag_surge[0]["program"]["valid"],_lag_surge
+assert _lag_surge[0]["confidence"]=="중간",_lag_surge
+print("flow_surge_program_timestamp_confidence_regression=true")
+
+
