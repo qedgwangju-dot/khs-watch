@@ -2590,6 +2590,33 @@
       "telegram_core_fact": "국내 대형주 삼성전자가 3분기에 영업이익 100조원이라는 높은 실적을 기록했지만 국내 증시는 주중 최대 하락폭을 기록했다.",
       "title": "삼성전자 분기 영업이익 100조에도, 코스피는 6600선까지 밀려"
     },
+    "core:13993943913d017c8c9dc36d": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634757",
+      "source": "이투데이",
+      "source_body_digest": "d7c3777e162e5936b8c8524e5b6bb74c94aeb05a3fd360e17a56eb4a16c79093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30d43012886f4600edc60790fd44b8131f7a31ce36b175ca6ac811f293a34f55",
+      "source_fact_keys": [
+        "source_fact:v1:2963c28daa9c05dfa5f6b9223638a7005d4e7ace0678379f047e801f282448ef",
+        "source_fact:v1:373eb6cbe2637951270d15c6175e922570a96025084d28f08604171a2aa27ca4",
+        "source_fact:v1:539d463da03a4abc1b1e040dd12c67ff3765193b56dd4b4133ff87f55db6e882",
+        "source_fact:v1:821e160dd1349abaa62fe7ed535aef45b833314e46f2e67b1dca57d07a642ea6",
+        "source_fact:v1:9c06d08ee12d95704fc856d0fab328786a3ed928769627e54d20746436c7887d",
+        "source_fact:v1:9e380e2f4cba95a26f15bd05096d21155511c944cabd34992e91cd4550a5490a",
+        "source_fact:v1:b949d043dda087c40e0353cf023d5b7b5762c19d898f66872f1f5b04be8e1311",
+        "source_fact:v1:e590f24ebe234ceee2f5445f660114a02a4b9a73ae094020c6efc56c71f706d7",
+        "source_fact:v1:fb3c369fb93ed97493167034b8d01f3203c2282a81155a4a1ffa21e665a8bf22"
+      ],
+      "source_published_kst": "2026-10-12T18:00+09:00",
+      "source_title": "마이크론은 10% 뛰는데 삼전·하닉은 뒷걸음…메모리 호황 속 ‘엇갈린 성적표’",
+      "telegram_core_fact": "한동희 SK증권 연구원은 “원·달러 환율 가정을 7% 낮췄음에도 2027년 이익 전망을 상향한 것은 AI 메모리 수요 강세와 공급 부족, 장기공급계약이 견인하는 가격 강세 때문”이라며 “시장에서 우려하는 메모리 업황 둔화와 감익 시나리오는 실현되지 않을 것”이라고 말했다.",
+      "title": "마이크론은 10% 뛰는데 삼전·하닉은 뒷걸음…메모리 호황 속 ‘엇갈린 성적표’"
+    },
     "core:139f44e5a9c1438c6eb1cd77": {
       "first_seen_kst": "2026-10-08T09:33:54+09:00",
       "lanes": {
@@ -6579,6 +6606,28 @@
       "source_title": "한전 사장 “호남 반도체 전력망 20%만 한전 부담…삼전닉스가 80% 낸다”",
       "telegram_core_fact": "김동철 한국전력공사 사장은 호남 반도체 클러스터 1단계 전력 공급을 위한 송전설비 구축 비용 중 한전의 부담 비율은 20% 미만이며, 나머지 80% 이상은 실사용자인 삼성전자와 SK하이닉스가 부담한다고 12일 밝혔다.",
       "title": "한전 사장 “호남 반도체 전력망 20%만 한전 부담…삼전닉스가 80% 낸다”"
+    },
+    "core:33855ef567516c7d7676887a": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04204966645612264",
+      "source": "이데일리",
+      "source_body_digest": "b76ba6e45fda9191995f5cd8d514b40f291e84e7d22975280b250f2ff45c4138",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:173eb6805f3db207a137c030b41e0430978b87552c694c695d327ee096851018",
+      "source_fact_keys": [
+        "source_fact:v1:3f2631e88b39a77d92068776799580d5447e24dccc2e4810b1fa516049b3f3eb",
+        "source_fact:v1:4be96c25783161e892542a4727133e2303cb62a2b46a7154613d692475e502e5",
+        "source_fact:v1:4d7774744a66888f41e1ddde877e7a193767cf6eb041321f74458591b45ab816",
+        "source_fact:v1:ca77da54e3d2c33b86fdb1b9e6c7e5609b2b2fe1e5048bea344c0ea11eb109db"
+      ],
+      "source_published_kst": "2026-10-12T18:00+09:00",
+      "source_title": "코트라, EU 포장폐기물 규정 대응 21개국 EPR 보고서 발간",
+      "telegram_core_fact": "코트라는 지난해 유럽연합 포장 및 포장 폐기물 규정의 주요 내용과 올해 실무 문답 자료를 발간하고 규제 본격 시행 전후 두 차례 유럽연합 포장 및 포장 폐기물 규정 대응 화상 설명회를 개최해 우리 기업의 규제 대응을 지원해 왔다.",
+      "title": "코트라, EU 포장폐기물 규정 대응 21개국 EPR 보고서 발간"
     },
     "core:338a8dbfe403b853f6fa51d1": {
       "first_seen_kst": "2026-10-12T06:42:49+09:00",
@@ -14112,6 +14161,26 @@
       "telegram_core_fact": "풍력터빈 전문기업 유니슨은 전날 대한상공회의소에서 열린 '한국형 녹색대전환(K-GX) 전략 국민보고회'에 풍력 분야 기업으로 참여했다고 8일 밝혔다. 이 가운데 해상풍력 분야에서는 유니슨을 포함한 참여기업들이 약 2조8500억원 민간 투자를 추진한다.",
       "title": "유니슨, '한국형 녹색대전환 전략 국민보고회' 참여"
     },
+    "core:74db6b695b2ba18f07c10245": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822762",
+      "source": "뉴시스",
+      "source_body_digest": "e97020dacdad2277dc1d13f16d678c6d0eb38ad0e2914ae8da6f435cbf5ba1e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e74d58a2abb794d8a947f124d2b64e792c99d84bf766286dd30bc51697b94d77",
+      "source_fact_keys": [
+        "source_fact:v1:3dfda430e1ae16d5c10e6ca1af072d61c9598a57f0f4dbe251dc40ea38b12ebb",
+        "source_fact:v1:db1c591770e55c15d850ada3d79d06255f0ce610436b11268188a2c1ab75eef2"
+      ],
+      "source_published_kst": "2026-10-12T17:43+09:00",
+      "source_title": "조달청, 평가위원 사전접촉시 교섭 정지…부적합 2회 판정시 해촉",
+      "telegram_core_fact": "조달청이 평가위원의 사전접촉 행위가 확인되면 해촉하고 비위행위 사전 조회를 기존 건설분야에서 모든 평가분야로 확대하는 등 평가위원 제재기준을 대폭 강화했다.",
+      "title": "조달청, 평가위원 사전접촉시 교섭 정지…부적합 2회 판정시 해촉"
+    },
     "core:7506d6db333f6ebf801718fc": {
       "first_seen_kst": "2026-10-08T14:21:54+09:00",
       "lanes": {
@@ -15159,6 +15228,25 @@
       "telegram_core_fact": "한진 관계자는 \"중소상공인의 성장을 돕고 지속 가능한 상생 물류 생태계를 확고히 구축해 나갈 것\"이라고 말했다.",
       "title": "한진, 정부 소상공인 물류 지원사업 수행…\"상생물류 구축\" | 연합뉴스"
     },
+    "core:7e0f2da33c4dfffb991600aa": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822834",
+      "source": "뉴시스",
+      "source_body_digest": "b75778db123d3cb545fa31e5dc6fd37bf183f7e0c9f54c72d35df3a6ab2c944c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c812db9723229012640d071dbf4c8942ea3f139bd668e0d29ea336f2e017a0e",
+      "source_fact_keys": [
+        "source_fact:v1:f29d5af0cb491710d27e0551cb4c16eaff03e1a3fde5f4b4649a60dc7b6bf071"
+      ],
+      "source_published_kst": "2026-10-12T18:39+09:00",
+      "source_title": "한전 사장 \"기업의 전기료 선납으로 재무 문제 해결은 잘못\"",
+      "telegram_core_fact": "재무 문제 해결을 위한 한전채 발행과 관련해선 \"한전은 신용등급이 트리플 A 등급으로 한전채를 발행하면 사채 시장에서 일반기업들이 쓸어가기 때문에 일반 기업들의 자금 조달에 큰 문제가 생긴다\"며 \"한전은 할 수 있으면 사채를 발행하지 않는 것이 채권시장에 좋다고 생각하고 있다\"고 생각을 전했다.",
+      "title": "한전 사장 \"기업의 전기료 선납으로 재무 문제 해결은 잘못\""
+    },
     "core:7e7a8b3f9e5c0b7d48fc5ebf": {
       "first_seen_kst": "2026-10-08T22:29:06+09:00",
       "lanes": {
@@ -15681,6 +15769,28 @@
       "source_title": "트럼프 “러·우크라 에너지 휴전”…러 확인 없고 젤렌스키 “금시초문”",
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아와 우크라이나가 서로의 에너지 시설을 공격하지 않는 ‘에너지 휴전’에 합의했다고 발표했다. 11일(현지시간) 트럼프 대통령은 트루스소셜에 “러시아와 우크라이나 전쟁에서 에너지 휴전이 즉각 발효된다”며 “양측 모두 동의했다. 이를 위반하지 말라”고 밝혔다.",
       "title": "트럼프 “러·우크라 에너지 휴전”…러 확인 없고 젤렌스키 “금시초문”"
+    },
+    "core:81e8c6b06684e3d5cc0b3da2": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173080",
+      "source": "매일경제",
+      "source_body_digest": "a85678beee6361e37f5049baa72b0a56dc78434a6a736889b5428de943609618",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9641674e24213b5eff38e642d53fa3d5ace866245427b3dcdf7c565a0748af0e",
+      "source_fact_keys": [
+        "source_fact:v1:2f61110342f648c6312d7db2725576d78a17e726025270004145aa80189417ea",
+        "source_fact:v1:927f55e906a46d7b7858ebbe9cca4f309380d10b102cc2626a07f0d1a1609fc1",
+        "source_fact:v1:9c8d85a31394d003840effdfb14ccc2b09518868bcf9bc2290371a90b16c3ba6",
+        "source_fact:v1:e925b53a99b77b51a024d33aa891150a628c7f66b6611565660599f697745b55"
+      ],
+      "source_published_kst": "2026-10-12T17:28+09:00",
+      "source_title": "서학개미, 美반도체 3배 레버리지 폭풍매수",
+      "telegram_core_fact": "미국 반도체 기업에 분산 투자하는 '아이셰어스 반도체 ETF'(SOXX)는 같은 기간 5516만달러가 순매수되며 전체 3위에 올랐다. 반도체 지수의 하루 수익률을 3배로 추종하는 레버리지 ETF가 해외 주식 순매수 1위에 오른 가운데 반도체 업종 전반에 투자하는 ETF와 개별 반도체 기업에도 매수세가 집중됐다.",
+      "title": "서학개미, 美반도체 3배 레버리지 폭풍매수"
     },
     "core:82767ae1ecf79783f1ad491f": {
       "first_seen_kst": "2026-10-08T08:31:37+09:00",
@@ -18057,6 +18167,34 @@
       "source_title": "SK오션플랜트 인수 디오션, 지역상생 내용에 관심 | 연합뉴스",
       "telegram_core_fact": "이런 상황에서 SK오션플랜트 최대 주주 SK에코플랜트가 지난해 9월 1일 SK오션플랜트 매각 우선협상대상자로 디오션자산운용 컨소시엄을 선정했다고 공시하자 도, 고성군 모두 크게 반발했다.",
       "title": "SK오션플랜트 인수 디오션, 지역상생 내용에 관심 | 연합뉴스"
+    },
+    "core:95b09b472c8a287f21ac4776": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/12/2026101214213521243",
+      "source": "머니투데이",
+      "source_body_digest": "d7675377e370c3e9635f6cac4eb809e182fc044114e001c93eda0e302767d268",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fc4a59be58d3fd9e97a1c02618b5fd95dfd860d5f8ba07b9b6e98a5f2aaf3403",
+      "source_fact_keys": [
+        "source_fact:v1:31428b46d92a31563fde4337e68cd24f2ce735cde0cd0fcd0142dafb72bf1e12",
+        "source_fact:v1:441d9369e43bad4fda5f35ac0fdb82f793621e4bbb51106d3be45dc4f74dcf1c",
+        "source_fact:v1:4baec211dbd6b182eafe514f647c688d678e00cb209139e8bcd1bbe6c7faf8b4",
+        "source_fact:v1:5bfee031f0595ece7ec271c73976d39efbc1f507d78467b77859b41ceac2fbc2",
+        "source_fact:v1:7c3fa3b42f7f836377f61583c5f5e7dd887e793c2c56dadc49c4a4cd55e5f0f6",
+        "source_fact:v1:854a8f6588b73b619afd756d7289109916695f4a798b187388a5accff1e7ae46",
+        "source_fact:v1:88ac23173d0379dda49b4f1ca78cae2ef218ed8c3dbdea9bfaf7ffb5fe2f1b5c",
+        "source_fact:v1:bc0d0db14c701be2a15adbd2cef48d606e5c85059a7854b94c6872d382ffeb8b",
+        "source_fact:v1:e2219514ccd86eb05db335f669bcdfc786831b5f372473616c52b7e0ff3d3147",
+        "source_fact:v1:f7f5a6c7fb6283c166eee5c164bf716df3e2bf5844b4c12eb672cd6daea13f71"
+      ],
+      "source_published_kst": "2026-10-12T17:30+09:00",
+      "source_title": "건설기계 바닥 다졌나..비철금속·AIDC 수요 딛고 턴어라운드",
+      "telegram_core_fact": "비철금속을 중심으로 광산 투자가 확대되는 가운데 인공지능(AI) 데이터센터 건설까지 가세하면서 비주택 시장을 중심으로 건설장비 수요가 늘고 있어서다.",
+      "title": "건설기계 바닥 다졌나..비철금속·AIDC 수요 딛고 턴어라운드"
     },
     "core:9602bd6e8c6049256589790a": {
       "first_seen_kst": "2026-10-12T08:03:02+09:00",
@@ -24085,6 +24223,28 @@
       "source_title": "\"SK하이닉스, HBM·범용 메모리 동반 호조..내년도 성장\"-유진證",
       "telegram_core_fact": "실적 개선의 핵심은 메모리 가격으로, 유진투자증권은 3·4분기 D램의 평균판매가격이 전 분기 대비 20%, 출하량은 저장용량 기준으로 12% 증가할 것으로 예상했다.",
       "title": "\"SK하이닉스, HBM·범용 메모리 동반 호조..내년도 성장\"-유진證"
+    },
+    "core:c8181006ad6fa38b5e194dca": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822757",
+      "source": "뉴시스",
+      "source_body_digest": "5e5c9ed8503e30721562705086ee32b5847922ebcc1e210df177348092db13ff",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c7c8f4d5d036b2fe472201af18eed674d06f6becaaeb5c0388c96c83c5a7a470",
+      "source_fact_keys": [
+        "source_fact:v1:14454dee60c9b610dc684c1481ab92c672b90d39fa734cbbe9c2ba4cb636e247",
+        "source_fact:v1:550ddd5a0c0025bd7709a63f36893af4968d9391bd1dea323b4d875249ac6a06",
+        "source_fact:v1:60c19dfa0b63dac729da60ad20f7535afb842aeba3fd4a1a5c1fad56d2620679",
+        "source_fact:v1:ae4ccbedc0f7225b7bf120b0f45e4a32110aecb9e8a16d1705d9ae8b841f12c1"
+      ],
+      "source_published_kst": "2026-10-12T18:06+09:00",
+      "source_title": "中, 대만 수교국 파라과이 장관 등 제재…\"내정에 간섭\"(종합)",
+      "telegram_core_fact": "문예성 기자, 박정규 특파원 = 중국 정부가 대만과 외교관계를 유지하고 있는 파라과이와 벨리즈의 장관 2명을 상대로 자산 동결과 입국 금지 등 제재 조치를 발표했다.",
+      "title": "中, 대만 수교국 파라과이 장관 등 제재…\"내정에 간섭\"(종합)"
     },
     "core:c840fa27f7c98db6e77b6682": {
       "first_seen_kst": "2026-10-09T17:32:22+09:00",
@@ -36806,26 +36966,24 @@
     "event:83c53d4458cde3b63b606a9a": {
       "first_seen_kst": "2026-10-12T05:58:12+09:00",
       "lanes": {
-        "live": "2026-10-12T13:56:47+09:00"
+        "live": "2026-10-12T20:14:14+09:00"
       },
-      "last_seen_kst": "2026-10-12T13:56:47+09:00",
-      "link": "https://biz.heraldcorp.com/article/10899509",
-      "source": "헤럴드경제",
-      "source_body_digest": "f541234bcd4ff75ae2f32f9eba83183196710f0a7621565cdc0ee4748b8e67c0",
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173080",
+      "source": "매일경제",
+      "source_body_digest": "a85678beee6361e37f5049baa72b0a56dc78434a6a736889b5428de943609618",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:3e15ab483613de2f02b9ebfadfc0138d6cd44b690838f83d5252f5a910bcc22e",
+      "source_fact_identity": "source_facts:v1:9641674e24213b5eff38e642d53fa3d5ace866245427b3dcdf7c565a0748af0e",
       "source_fact_keys": [
-        "source_fact:v1:369949985b3febcb5fe97b272ea35fbd63aa840753b07404812aaaf423022091",
-        "source_fact:v1:93c33d8e4dcbb30ddb61bf93ff2a5f1f95e665bb667e40dce071db79cc3d6452",
-        "source_fact:v1:b4710c6611449c29329bf6d39042c053d2984e3ab4e444c76c54ed87e8a55006",
-        "source_fact:v1:be9b02e0da3636b7a740e080d296d990b736ff22ad6e7eb1b2e65cdb52f27907",
-        "source_fact:v1:d065b53c326d74d5af6e1b45f9aa016a48b4d9b3e36358220b1e0f2685ab4cca",
-        "source_fact:v1:ec71f647eeb545c7b80c1e4b86aafcd93ba275388aa7de03504a27c2bb211afa"
+        "source_fact:v1:2f61110342f648c6312d7db2725576d78a17e726025270004145aa80189417ea",
+        "source_fact:v1:927f55e906a46d7b7858ebbe9cca4f309380d10b102cc2626a07f0d1a1609fc1",
+        "source_fact:v1:9c8d85a31394d003840effdfb14ccc2b09518868bcf9bc2290371a90b16c3ba6",
+        "source_fact:v1:e925b53a99b77b51a024d33aa891150a628c7f66b6611565660599f697745b55"
       ],
-      "source_published_kst": "2026-10-12T11:34+09:00",
-      "source_title": "“반도체 공장 빨리 짓겠다” 최태원 등장하자 상한가…금호전기·금호건설 급등[종목Pick]",
-      "telegram_core_fact": "금호전기와 금호건설 주가는 지난 6월 호남 반도체 클러스터 조성 계획 발표 이후 8월까지 각각 2000%, 300% 급등했다. 그는 “지금 빠른 속도로 반도체 수요가 늘고 있기 때문에 공급 속도도 높여야 한다”며 필요하다면 호남권 산단을 용인 산단과 병행해서라도 빨리 짓겠다고 했다.",
-      "title": "“반도체 공장 빨리 짓겠다” 최태원 등장하자 상한가…금호전기·금호건설 급등[종목Pick]"
+      "source_published_kst": "2026-10-12T17:28+09:00",
+      "source_title": "서학개미, 美반도체 3배 레버리지 폭풍매수",
+      "telegram_core_fact": "미국 반도체 기업에 분산 투자하는 '아이셰어스 반도체 ETF'(SOXX)는 같은 기간 5516만달러가 순매수되며 전체 3위에 올랐다. 반도체 지수의 하루 수익률을 3배로 추종하는 레버리지 ETF가 해외 주식 순매수 1위에 오른 가운데 반도체 업종 전반에 투자하는 ETF와 개별 반도체 기업에도 매수세가 집중됐다.",
+      "title": "서학개미, 美반도체 3배 레버리지 폭풍매수"
     },
     "event:83d6c410232a8f83eb701efd": {
       "first_seen_kst": "2026-10-11T08:19:03+09:00",
@@ -37703,26 +37861,30 @@
     "event:9863e2156d1d4e96f8f2f84b": {
       "first_seen_kst": "2026-10-12T05:35:02+09:00",
       "lanes": {
-        "live": "2026-10-12T15:20:09+09:00"
+        "live": "2026-10-12T20:14:14+09:00"
       },
-      "last_seen_kst": "2026-10-12T15:20:09+09:00",
-      "link": "https://www.newsis.com/view/NISX20261012_0003822242",
-      "source": "뉴시스",
-      "source_body_digest": "d8b1ba77d8c7093e204b916f669c7ed8f0ceaea8a3a6edd0a0f6a3143b293301",
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/12/2026101214213521243",
+      "source": "머니투데이",
+      "source_body_digest": "d7675377e370c3e9635f6cac4eb809e182fc044114e001c93eda0e302767d268",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:ca31e30d15de772e53b77c5577b25baf1f03e7dbe5feeeed801cfb9bfc3fa5cf",
+      "source_fact_identity": "source_facts:v1:fc4a59be58d3fd9e97a1c02618b5fd95dfd860d5f8ba07b9b6e98a5f2aaf3403",
       "source_fact_keys": [
-        "source_fact:v1:68dd127a47232f5e61470931db51c212722ce0796ca7a2f521ba4aa1b23a9c58",
-        "source_fact:v1:6c46b88fe9418b8438c1588619ceb757c190d7aa06c0017ab50c977d402add17",
-        "source_fact:v1:76e158ac32744bfdbdb1066a6e596aa53fe25dfe2779b256c13fec60c1778302",
-        "source_fact:v1:8fb44134d5c2b9191201428058eee166be975297c474d413eb302e1651156fda",
-        "source_fact:v1:c13779896dcef468928aec1b177d6041d1d58fa9c2fdbc8fad166e6968d538de",
-        "source_fact:v1:dd3089baeb7f18b3f401ce4dbd2694672bcdda66b918eebcc5646a4ce7a7f1a4"
+        "source_fact:v1:31428b46d92a31563fde4337e68cd24f2ce735cde0cd0fcd0142dafb72bf1e12",
+        "source_fact:v1:441d9369e43bad4fda5f35ac0fdb82f793621e4bbb51106d3be45dc4f74dcf1c",
+        "source_fact:v1:4baec211dbd6b182eafe514f647c688d678e00cb209139e8bcd1bbe6c7faf8b4",
+        "source_fact:v1:5bfee031f0595ece7ec271c73976d39efbc1f507d78467b77859b41ceac2fbc2",
+        "source_fact:v1:7c3fa3b42f7f836377f61583c5f5e7dd887e793c2c56dadc49c4a4cd55e5f0f6",
+        "source_fact:v1:854a8f6588b73b619afd756d7289109916695f4a798b187388a5accff1e7ae46",
+        "source_fact:v1:88ac23173d0379dda49b4f1ca78cae2ef218ed8c3dbdea9bfaf7ffb5fe2f1b5c",
+        "source_fact:v1:bc0d0db14c701be2a15adbd2cef48d606e5c85059a7854b94c6872d382ffeb8b",
+        "source_fact:v1:e2219514ccd86eb05db335f669bcdfc786831b5f372473616c52b7e0ff3d3147",
+        "source_fact:v1:f7f5a6c7fb6283c166eee5c164bf716df3e2bf5844b4c12eb672cd6daea13f71"
       ],
-      "source_published_kst": "2026-10-12T14:32+09:00",
-      "source_title": "메모리 원가 비중 40%로 급등…3분기 글로벌 PC 출하량 21% 감소",
-      "telegram_core_fact": "벤 예(Ben Yeh) 옴디아 수석 애널리스트는 \"PC에서 D램과 SSD(솔리드스테이트드라이브)가 차지하는 원가 비중이 통상 약 15%에서 40%로 급등했다\"며 \"가격은 4배 이상 올랐다\"고 밝혔다.",
-      "title": "메모리 원가 비중 40%로 급등…3분기 글로벌 PC 출하량 21% 감소"
+      "source_published_kst": "2026-10-12T17:30+09:00",
+      "source_title": "건설기계 바닥 다졌나..비철금속·AIDC 수요 딛고 턴어라운드",
+      "telegram_core_fact": "비철금속을 중심으로 광산 투자가 확대되는 가운데 인공지능(AI) 데이터센터 건설까지 가세하면서 비주택 시장을 중심으로 건설장비 수요가 늘고 있어서다.",
+      "title": "건설기계 바닥 다졌나..비철금속·AIDC 수요 딛고 턴어라운드"
     },
     "event:989b212ffe32167f3bef644a": {
       "first_seen_kst": "2026-09-30T18:09:05+09:00",
@@ -41025,25 +41187,29 @@
     "event:e3567ec4f7a11f57551dc919": {
       "first_seen_kst": "2026-10-12T05:09:39+09:00",
       "lanes": {
-        "live": "2026-10-12T17:38:53+09:00"
+        "live": "2026-10-12T20:14:14+09:00"
       },
-      "last_seen_kst": "2026-10-12T17:38:53+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1173053",
-      "source": "매일경제",
-      "source_body_digest": "ac98382eeb4c276c4f6e604e1f487c3dfa8a7be648a0dadabf5d3a78458ab008",
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634757",
+      "source": "이투데이",
+      "source_body_digest": "d7c3777e162e5936b8c8524e5b6bb74c94aeb05a3fd360e17a56eb4a16c79093",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:a1bc0de7031f5cacc868e3f94103effcde0875fe3a964c310551d92563850def",
+      "source_fact_identity": "source_facts:v1:30d43012886f4600edc60790fd44b8131f7a31ce36b175ca6ac811f293a34f55",
       "source_fact_keys": [
-        "source_fact:v1:396ddd0f34050824e177a712dd0f93817a7b6b33879c98038bf8df7251c863cc",
-        "source_fact:v1:531729efe18ce1b5d4756168a30cbd15cf5632bbad56980b88da6819cc0b5ff1",
-        "source_fact:v1:596a3bde723e3e47de7fa189f81b9ca1ea061ca85b2687d8928c41bc8d6042a5",
-        "source_fact:v1:69ea4b394577cba299d5e8518c3c508f32adba54bac19fb522116864f182d4a5",
-        "source_fact:v1:e43391f552c8a4dedd71d8017bb906afc97e8bf141b30db17f8a3252933a6af3"
+        "source_fact:v1:2963c28daa9c05dfa5f6b9223638a7005d4e7ace0678379f047e801f282448ef",
+        "source_fact:v1:373eb6cbe2637951270d15c6175e922570a96025084d28f08604171a2aa27ca4",
+        "source_fact:v1:539d463da03a4abc1b1e040dd12c67ff3765193b56dd4b4133ff87f55db6e882",
+        "source_fact:v1:821e160dd1349abaa62fe7ed535aef45b833314e46f2e67b1dca57d07a642ea6",
+        "source_fact:v1:9c06d08ee12d95704fc856d0fab328786a3ed928769627e54d20746436c7887d",
+        "source_fact:v1:9e380e2f4cba95a26f15bd05096d21155511c944cabd34992e91cd4550a5490a",
+        "source_fact:v1:b949d043dda087c40e0353cf023d5b7b5762c19d898f66872f1f5b04be8e1311",
+        "source_fact:v1:e590f24ebe234ceee2f5445f660114a02a4b9a73ae094020c6efc56c71f706d7",
+        "source_fact:v1:fb3c369fb93ed97493167034b8d01f3203c2282a81155a4a1ffa21e665a8bf22"
       ],
-      "source_published_kst": "2026-10-12T16:56+09:00",
-      "source_title": "중동 불안.고금리 악재에 코스피 3.65% 급락 마감",
-      "telegram_core_fact": "중동 정세 불안으로 국제유가와 미국 국채금리가 상승했지만, 반도체 수출업체의 달러 매도 물량과 수출 호조에 따른 경상수지 흑자 기대가 환율 하락을 뒷받침했다.",
-      "title": "중동 불안.고금리 악재에 코스피 3.65% 급락 마감"
+      "source_published_kst": "2026-10-12T18:00+09:00",
+      "source_title": "마이크론은 10% 뛰는데 삼전·하닉은 뒷걸음…메모리 호황 속 ‘엇갈린 성적표’",
+      "telegram_core_fact": "한동희 SK증권 연구원은 “원·달러 환율 가정을 7% 낮췄음에도 2027년 이익 전망을 상향한 것은 AI 메모리 수요 강세와 공급 부족, 장기공급계약이 견인하는 가격 강세 때문”이라며 “시장에서 우려하는 메모리 업황 둔화와 감익 시나리오는 실현되지 않을 것”이라고 말했다.",
+      "title": "마이크론은 10% 뛰는데 삼전·하닉은 뒷걸음…메모리 호황 속 ‘엇갈린 성적표’"
     },
     "event:e3838b4fc8ffadd034571cd3": {
       "first_seen_kst": "2026-09-28T05:32:59+09:00",
@@ -45125,6 +45291,28 @@
       "source_published_kst": "2026-10-05T18:21+09:00",
       "title": "솔리다임 美상장… \"SK하닉 가치 재평가\" vs \"주주 피해\" [어떻게 생각하십니까]"
     },
+    "fact:0fac40fd86b93e2cc6308405": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822757",
+      "source": "뉴시스",
+      "source_body_digest": "5e5c9ed8503e30721562705086ee32b5847922ebcc1e210df177348092db13ff",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c7c8f4d5d036b2fe472201af18eed674d06f6becaaeb5c0388c96c83c5a7a470",
+      "source_fact_keys": [
+        "source_fact:v1:14454dee60c9b610dc684c1481ab92c672b90d39fa734cbbe9c2ba4cb636e247",
+        "source_fact:v1:550ddd5a0c0025bd7709a63f36893af4968d9391bd1dea323b4d875249ac6a06",
+        "source_fact:v1:60c19dfa0b63dac729da60ad20f7535afb842aeba3fd4a1a5c1fad56d2620679",
+        "source_fact:v1:ae4ccbedc0f7225b7bf120b0f45e4a32110aecb9e8a16d1705d9ae8b841f12c1"
+      ],
+      "source_published_kst": "2026-10-12T18:06+09:00",
+      "source_title": "中, 대만 수교국 파라과이 장관 등 제재…\"내정에 간섭\"(종합)",
+      "telegram_core_fact": "문예성 기자, 박정규 특파원 = 중국 정부가 대만과 외교관계를 유지하고 있는 파라과이와 벨리즈의 장관 2명을 상대로 자산 동결과 입국 금지 등 제재 조치를 발표했다.",
+      "title": "中, 대만 수교국 파라과이 장관 등 제재…\"내정에 간섭\"(종합)"
+    },
     "fact:0fc3c60f86990f8faffd9e65": {
       "first_seen_kst": "2026-10-07T05:13:11+09:00",
       "lanes": {
@@ -45454,6 +45642,28 @@
       "source_title": "투자유치에 판로개척까지…찾아가는 신용한 지사",
       "telegram_core_fact": "신 지사는 이날 중국의 대표적인 이차전지 양극재 기업인 닝보 롱바이와 4300억원 투자유치 업무협약을 체결했다. 닝보 롱바이는 충주 외국인투자지역에 오는 2030년까지 연면적 2만6000㎡ 공장을 증설하고 100명을 신규 고용할 계획이다.",
       "title": "투자유치에 판로개척까지…찾아가는 신용한 지사"
+    },
+    "fact:10d643d2309cf0c710da69fd": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173080",
+      "source": "매일경제",
+      "source_body_digest": "a85678beee6361e37f5049baa72b0a56dc78434a6a736889b5428de943609618",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9641674e24213b5eff38e642d53fa3d5ace866245427b3dcdf7c565a0748af0e",
+      "source_fact_keys": [
+        "source_fact:v1:2f61110342f648c6312d7db2725576d78a17e726025270004145aa80189417ea",
+        "source_fact:v1:927f55e906a46d7b7858ebbe9cca4f309380d10b102cc2626a07f0d1a1609fc1",
+        "source_fact:v1:9c8d85a31394d003840effdfb14ccc2b09518868bcf9bc2290371a90b16c3ba6",
+        "source_fact:v1:e925b53a99b77b51a024d33aa891150a628c7f66b6611565660599f697745b55"
+      ],
+      "source_published_kst": "2026-10-12T17:28+09:00",
+      "source_title": "서학개미, 美반도체 3배 레버리지 폭풍매수",
+      "telegram_core_fact": "미국 반도체 기업에 분산 투자하는 '아이셰어스 반도체 ETF'(SOXX)는 같은 기간 5516만달러가 순매수되며 전체 3위에 올랐다. 반도체 지수의 하루 수익률을 3배로 추종하는 레버리지 ETF가 해외 주식 순매수 1위에 오른 가운데 반도체 업종 전반에 투자하는 ETF와 개별 반도체 기업에도 매수세가 집중됐다.",
+      "title": "서학개미, 美반도체 3배 레버리지 폭풍매수"
     },
     "fact:1130fc58d08600351f9aabc2": {
       "first_seen_kst": "2026-10-08T01:58:01+09:00",
@@ -59710,6 +59920,34 @@
       "telegram_core_fact": "2028년 매출액은 2억6791만 달러로 9.19% 늘어날 것으로 예상된다.",
       "title": "리차드슨 일렉트로닉스, 1분기 매출 6490만 달러..전년비 19% 증가"
     },
+    "fact:64b14733cc947218e3b5db2e": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/12/2026101214213521243",
+      "source": "머니투데이",
+      "source_body_digest": "d7675377e370c3e9635f6cac4eb809e182fc044114e001c93eda0e302767d268",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fc4a59be58d3fd9e97a1c02618b5fd95dfd860d5f8ba07b9b6e98a5f2aaf3403",
+      "source_fact_keys": [
+        "source_fact:v1:31428b46d92a31563fde4337e68cd24f2ce735cde0cd0fcd0142dafb72bf1e12",
+        "source_fact:v1:441d9369e43bad4fda5f35ac0fdb82f793621e4bbb51106d3be45dc4f74dcf1c",
+        "source_fact:v1:4baec211dbd6b182eafe514f647c688d678e00cb209139e8bcd1bbe6c7faf8b4",
+        "source_fact:v1:5bfee031f0595ece7ec271c73976d39efbc1f507d78467b77859b41ceac2fbc2",
+        "source_fact:v1:7c3fa3b42f7f836377f61583c5f5e7dd887e793c2c56dadc49c4a4cd55e5f0f6",
+        "source_fact:v1:854a8f6588b73b619afd756d7289109916695f4a798b187388a5accff1e7ae46",
+        "source_fact:v1:88ac23173d0379dda49b4f1ca78cae2ef218ed8c3dbdea9bfaf7ffb5fe2f1b5c",
+        "source_fact:v1:bc0d0db14c701be2a15adbd2cef48d606e5c85059a7854b94c6872d382ffeb8b",
+        "source_fact:v1:e2219514ccd86eb05db335f669bcdfc786831b5f372473616c52b7e0ff3d3147",
+        "source_fact:v1:f7f5a6c7fb6283c166eee5c164bf716df3e2bf5844b4c12eb672cd6daea13f71"
+      ],
+      "source_published_kst": "2026-10-12T17:30+09:00",
+      "source_title": "건설기계 바닥 다졌나..비철금속·AIDC 수요 딛고 턴어라운드",
+      "telegram_core_fact": "비철금속을 중심으로 광산 투자가 확대되는 가운데 인공지능(AI) 데이터센터 건설까지 가세하면서 비주택 시장을 중심으로 건설장비 수요가 늘고 있어서다.",
+      "title": "건설기계 바닥 다졌나..비철금속·AIDC 수요 딛고 턴어라운드"
+    },
     "fact:65324d6e57f59e2ba04f41de": {
       "first_seen_kst": "2026-10-08T02:41:45+09:00",
       "lanes": {
@@ -68796,6 +69034,26 @@
       "source_published_kst": "2026-10-06T14:22+09:00",
       "title": "한은 \"IMF 제도 개편, 한국 경상수지 평가에 불리\""
     },
+    "fact:95b9e105d5219e8a063a3b98": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822762",
+      "source": "뉴시스",
+      "source_body_digest": "e97020dacdad2277dc1d13f16d678c6d0eb38ad0e2914ae8da6f435cbf5ba1e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e74d58a2abb794d8a947f124d2b64e792c99d84bf766286dd30bc51697b94d77",
+      "source_fact_keys": [
+        "source_fact:v1:3dfda430e1ae16d5c10e6ca1af072d61c9598a57f0f4dbe251dc40ea38b12ebb",
+        "source_fact:v1:db1c591770e55c15d850ada3d79d06255f0ce610436b11268188a2c1ab75eef2"
+      ],
+      "source_published_kst": "2026-10-12T17:43+09:00",
+      "source_title": "조달청, 평가위원 사전접촉시 교섭 정지…부적합 2회 판정시 해촉",
+      "telegram_core_fact": "조달청이 평가위원의 사전접촉 행위가 확인되면 해촉하고 비위행위 사전 조회를 기존 건설분야에서 모든 평가분야로 확대하는 등 평가위원 제재기준을 대폭 강화했다.",
+      "title": "조달청, 평가위원 사전접촉시 교섭 정지…부적합 2회 판정시 해촉"
+    },
     "fact:95cdaca3cf9ec3b7ccb39acf": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -70890,6 +71148,33 @@
       "telegram_core_fact": "하지만 이는 실제 매출 감소가 아닌 회계상 매출 집계 방식의 차이에서 발생한 것으로 파악됐고, 이튿날인 9일 나스닥 지수가 0.64% 반등한 점을 고려하면 코스피의 부진을 오픈AI발 거품론으로만 설명하기는 어려운 듯 보인다.",
       "title": "반등 활로 못 찾는 코스피…역대급 삼전 실적에도 오히려 낙폭 확대 | 연합뉴스"
     },
+    "fact:a19ae7e2aaf5cc7ecc9a3650": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634757",
+      "source": "이투데이",
+      "source_body_digest": "d7c3777e162e5936b8c8524e5b6bb74c94aeb05a3fd360e17a56eb4a16c79093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30d43012886f4600edc60790fd44b8131f7a31ce36b175ca6ac811f293a34f55",
+      "source_fact_keys": [
+        "source_fact:v1:2963c28daa9c05dfa5f6b9223638a7005d4e7ace0678379f047e801f282448ef",
+        "source_fact:v1:373eb6cbe2637951270d15c6175e922570a96025084d28f08604171a2aa27ca4",
+        "source_fact:v1:539d463da03a4abc1b1e040dd12c67ff3765193b56dd4b4133ff87f55db6e882",
+        "source_fact:v1:821e160dd1349abaa62fe7ed535aef45b833314e46f2e67b1dca57d07a642ea6",
+        "source_fact:v1:9c06d08ee12d95704fc856d0fab328786a3ed928769627e54d20746436c7887d",
+        "source_fact:v1:9e380e2f4cba95a26f15bd05096d21155511c944cabd34992e91cd4550a5490a",
+        "source_fact:v1:b949d043dda087c40e0353cf023d5b7b5762c19d898f66872f1f5b04be8e1311",
+        "source_fact:v1:e590f24ebe234ceee2f5445f660114a02a4b9a73ae094020c6efc56c71f706d7",
+        "source_fact:v1:fb3c369fb93ed97493167034b8d01f3203c2282a81155a4a1ffa21e665a8bf22"
+      ],
+      "source_published_kst": "2026-10-12T18:00+09:00",
+      "source_title": "마이크론은 10% 뛰는데 삼전·하닉은 뒷걸음…메모리 호황 속 ‘엇갈린 성적표’",
+      "telegram_core_fact": "한동희 SK증권 연구원은 “원·달러 환율 가정을 7% 낮췄음에도 2027년 이익 전망을 상향한 것은 AI 메모리 수요 강세와 공급 부족, 장기공급계약이 견인하는 가격 강세 때문”이라며 “시장에서 우려하는 메모리 업황 둔화와 감익 시나리오는 실현되지 않을 것”이라고 말했다.",
+      "title": "마이크론은 10% 뛰는데 삼전·하닉은 뒷걸음…메모리 호황 속 ‘엇갈린 성적표’"
+    },
     "fact:a1d57a94df0307f58f824ee4": {
       "first_seen_kst": "2026-10-10T03:26:28+09:00",
       "lanes": {
@@ -71183,6 +71468,25 @@
       ],
       "source_published_kst": "2026-10-06T10:25+09:00",
       "title": "JW중외제약 “당뇨병 신약 ‘엠파가드’, 임상 3상서 우수한 혈당 조절 효과 확인”"
+    },
+    "fact:a3d16b2c74e483bd3c047960": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822834",
+      "source": "뉴시스",
+      "source_body_digest": "b75778db123d3cb545fa31e5dc6fd37bf183f7e0c9f54c72d35df3a6ab2c944c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c812db9723229012640d071dbf4c8942ea3f139bd668e0d29ea336f2e017a0e",
+      "source_fact_keys": [
+        "source_fact:v1:f29d5af0cb491710d27e0551cb4c16eaff03e1a3fde5f4b4649a60dc7b6bf071"
+      ],
+      "source_published_kst": "2026-10-12T18:39+09:00",
+      "source_title": "한전 사장 \"기업의 전기료 선납으로 재무 문제 해결은 잘못\"",
+      "telegram_core_fact": "재무 문제 해결을 위한 한전채 발행과 관련해선 \"한전은 신용등급이 트리플 A 등급으로 한전채를 발행하면 사채 시장에서 일반기업들이 쓸어가기 때문에 일반 기업들의 자금 조달에 큰 문제가 생긴다\"며 \"한전은 할 수 있으면 사채를 발행하지 않는 것이 채권시장에 좋다고 생각하고 있다\"고 생각을 전했다.",
+      "title": "한전 사장 \"기업의 전기료 선납으로 재무 문제 해결은 잘못\""
     },
     "fact:a3eff5bb38070ae2d99270f5": {
       "first_seen_kst": "2026-10-08T08:31:37+09:00",
@@ -87597,6 +87901,28 @@
       "telegram_core_fact": "2026 회계연도 매출 가이던스를 1000만~1100만 달러로 올려 중간값 기준 62% 상향했습니다.",
       "title": "에볼루션메탈스, 올해 매출 가이던스 대폭 상향에 주목"
     },
+    "fact:fc155f128c94405d7f0606ba": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04204966645612264",
+      "source": "이데일리",
+      "source_body_digest": "b76ba6e45fda9191995f5cd8d514b40f291e84e7d22975280b250f2ff45c4138",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:173eb6805f3db207a137c030b41e0430978b87552c694c695d327ee096851018",
+      "source_fact_keys": [
+        "source_fact:v1:3f2631e88b39a77d92068776799580d5447e24dccc2e4810b1fa516049b3f3eb",
+        "source_fact:v1:4be96c25783161e892542a4727133e2303cb62a2b46a7154613d692475e502e5",
+        "source_fact:v1:4d7774744a66888f41e1ddde877e7a193767cf6eb041321f74458591b45ab816",
+        "source_fact:v1:ca77da54e3d2c33b86fdb1b9e6c7e5609b2b2fe1e5048bea344c0ea11eb109db"
+      ],
+      "source_published_kst": "2026-10-12T18:00+09:00",
+      "source_title": "코트라, EU 포장폐기물 규정 대응 21개국 EPR 보고서 발간",
+      "telegram_core_fact": "코트라는 지난해 유럽연합 포장 및 포장 폐기물 규정의 주요 내용과 올해 실무 문답 자료를 발간하고 규제 본격 시행 전후 두 차례 유럽연합 포장 및 포장 폐기물 규정 대응 화상 설명회를 개최해 우리 기업의 규제 대응을 지원해 왔다.",
+      "title": "코트라, EU 포장폐기물 규정 대응 21개국 EPR 보고서 발간"
+    },
     "fact:fc45833ab9b5bbb589294e49": {
       "first_seen_kst": "2026-10-11T13:40:09+09:00",
       "lanes": {
@@ -89675,6 +90001,34 @@
       "link": "https://www.mk.co.kr/news/stock/12161194",
       "source": "매일경제",
       "title": "오틀리 그룹, 17억 크로나 회사채 나스닥 스톡홀름 상장 추진"
+    },
+    "link:0613dbc7e92b110386517a1c": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/12/2026101214213521243",
+      "source": "머니투데이",
+      "source_body_digest": "d7675377e370c3e9635f6cac4eb809e182fc044114e001c93eda0e302767d268",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fc4a59be58d3fd9e97a1c02618b5fd95dfd860d5f8ba07b9b6e98a5f2aaf3403",
+      "source_fact_keys": [
+        "source_fact:v1:31428b46d92a31563fde4337e68cd24f2ce735cde0cd0fcd0142dafb72bf1e12",
+        "source_fact:v1:441d9369e43bad4fda5f35ac0fdb82f793621e4bbb51106d3be45dc4f74dcf1c",
+        "source_fact:v1:4baec211dbd6b182eafe514f647c688d678e00cb209139e8bcd1bbe6c7faf8b4",
+        "source_fact:v1:5bfee031f0595ece7ec271c73976d39efbc1f507d78467b77859b41ceac2fbc2",
+        "source_fact:v1:7c3fa3b42f7f836377f61583c5f5e7dd887e793c2c56dadc49c4a4cd55e5f0f6",
+        "source_fact:v1:854a8f6588b73b619afd756d7289109916695f4a798b187388a5accff1e7ae46",
+        "source_fact:v1:88ac23173d0379dda49b4f1ca78cae2ef218ed8c3dbdea9bfaf7ffb5fe2f1b5c",
+        "source_fact:v1:bc0d0db14c701be2a15adbd2cef48d606e5c85059a7854b94c6872d382ffeb8b",
+        "source_fact:v1:e2219514ccd86eb05db335f669bcdfc786831b5f372473616c52b7e0ff3d3147",
+        "source_fact:v1:f7f5a6c7fb6283c166eee5c164bf716df3e2bf5844b4c12eb672cd6daea13f71"
+      ],
+      "source_published_kst": "2026-10-12T17:30+09:00",
+      "source_title": "건설기계 바닥 다졌나..비철금속·AIDC 수요 딛고 턴어라운드",
+      "telegram_core_fact": "비철금속을 중심으로 광산 투자가 확대되는 가운데 인공지능(AI) 데이터센터 건설까지 가세하면서 비주택 시장을 중심으로 건설장비 수요가 늘고 있어서다.",
+      "title": "건설기계 바닥 다졌나..비철금속·AIDC 수요 딛고 턴어라운드"
     },
     "link:06145dfa298fe8bcf9794944": {
       "first_seen_kst": "2026-10-07T03:43:49+09:00",
@@ -101512,6 +101866,33 @@
       "source_published_kst": "2026-10-06T17:21+09:00",
       "title": "서방 제재로 런던길 막힌 러시아산 금…홍콩 수입, 7개월 만에 연간 기록 넘었다"
     },
+    "link:31a8f9951591d354017d9b08": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634757",
+      "source": "이투데이",
+      "source_body_digest": "d7c3777e162e5936b8c8524e5b6bb74c94aeb05a3fd360e17a56eb4a16c79093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30d43012886f4600edc60790fd44b8131f7a31ce36b175ca6ac811f293a34f55",
+      "source_fact_keys": [
+        "source_fact:v1:2963c28daa9c05dfa5f6b9223638a7005d4e7ace0678379f047e801f282448ef",
+        "source_fact:v1:373eb6cbe2637951270d15c6175e922570a96025084d28f08604171a2aa27ca4",
+        "source_fact:v1:539d463da03a4abc1b1e040dd12c67ff3765193b56dd4b4133ff87f55db6e882",
+        "source_fact:v1:821e160dd1349abaa62fe7ed535aef45b833314e46f2e67b1dca57d07a642ea6",
+        "source_fact:v1:9c06d08ee12d95704fc856d0fab328786a3ed928769627e54d20746436c7887d",
+        "source_fact:v1:9e380e2f4cba95a26f15bd05096d21155511c944cabd34992e91cd4550a5490a",
+        "source_fact:v1:b949d043dda087c40e0353cf023d5b7b5762c19d898f66872f1f5b04be8e1311",
+        "source_fact:v1:e590f24ebe234ceee2f5445f660114a02a4b9a73ae094020c6efc56c71f706d7",
+        "source_fact:v1:fb3c369fb93ed97493167034b8d01f3203c2282a81155a4a1ffa21e665a8bf22"
+      ],
+      "source_published_kst": "2026-10-12T18:00+09:00",
+      "source_title": "마이크론은 10% 뛰는데 삼전·하닉은 뒷걸음…메모리 호황 속 ‘엇갈린 성적표’",
+      "telegram_core_fact": "한동희 SK증권 연구원은 “원·달러 환율 가정을 7% 낮췄음에도 2027년 이익 전망을 상향한 것은 AI 메모리 수요 강세와 공급 부족, 장기공급계약이 견인하는 가격 강세 때문”이라며 “시장에서 우려하는 메모리 업황 둔화와 감익 시나리오는 실현되지 않을 것”이라고 말했다.",
+      "title": "마이크론은 10% 뛰는데 삼전·하닉은 뒷걸음…메모리 호황 속 ‘엇갈린 성적표’"
+    },
     "link:31b2aeb0417a0c040c3eab7e": {
       "first_seen_kst": "2026-10-08T00:24:24+09:00",
       "lanes": {
@@ -113080,6 +113461,28 @@
       "source_published_kst": "2026-10-05T08:55+09:00",
       "title": "매크로 공백+SEC 규제완화 효과…8.6만달러 회복[코인 모닝콜]"
     },
+    "link:5f764546b162730244637ee8": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04204966645612264",
+      "source": "이데일리",
+      "source_body_digest": "b76ba6e45fda9191995f5cd8d514b40f291e84e7d22975280b250f2ff45c4138",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:173eb6805f3db207a137c030b41e0430978b87552c694c695d327ee096851018",
+      "source_fact_keys": [
+        "source_fact:v1:3f2631e88b39a77d92068776799580d5447e24dccc2e4810b1fa516049b3f3eb",
+        "source_fact:v1:4be96c25783161e892542a4727133e2303cb62a2b46a7154613d692475e502e5",
+        "source_fact:v1:4d7774744a66888f41e1ddde877e7a193767cf6eb041321f74458591b45ab816",
+        "source_fact:v1:ca77da54e3d2c33b86fdb1b9e6c7e5609b2b2fe1e5048bea344c0ea11eb109db"
+      ],
+      "source_published_kst": "2026-10-12T18:00+09:00",
+      "source_title": "코트라, EU 포장폐기물 규정 대응 21개국 EPR 보고서 발간",
+      "telegram_core_fact": "코트라는 지난해 유럽연합 포장 및 포장 폐기물 규정의 주요 내용과 올해 실무 문답 자료를 발간하고 규제 본격 시행 전후 두 차례 유럽연합 포장 및 포장 폐기물 규정 대응 화상 설명회를 개최해 우리 기업의 규제 대응을 지원해 왔다.",
+      "title": "코트라, EU 포장폐기물 규정 대응 21개국 EPR 보고서 발간"
+    },
     "link:5f8cac9383303216ea8d3e20": {
       "first_seen_kst": "2026-10-07T11:43:24+09:00",
       "lanes": {
@@ -114164,6 +114567,26 @@
       "source_title": "엘링턴 크레딧, 월 배당 주당 0.08달러 선언..11월 30일 지급",
       "telegram_core_fact": "엘링턴 크레딧(EARN)이 이사회에서 보통주 1주당 0.08달러의 월간 배당을 결정했다고 7일(현지시간) 발표했다.",
       "title": "엘링턴 크레딧, 월 배당 주당 0.08달러 선언..11월 30일 지급"
+    },
+    "link:635a38c1d4a77adc132e3daf": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822762",
+      "source": "뉴시스",
+      "source_body_digest": "e97020dacdad2277dc1d13f16d678c6d0eb38ad0e2914ae8da6f435cbf5ba1e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e74d58a2abb794d8a947f124d2b64e792c99d84bf766286dd30bc51697b94d77",
+      "source_fact_keys": [
+        "source_fact:v1:3dfda430e1ae16d5c10e6ca1af072d61c9598a57f0f4dbe251dc40ea38b12ebb",
+        "source_fact:v1:db1c591770e55c15d850ada3d79d06255f0ce610436b11268188a2c1ab75eef2"
+      ],
+      "source_published_kst": "2026-10-12T17:43+09:00",
+      "source_title": "조달청, 평가위원 사전접촉시 교섭 정지…부적합 2회 판정시 해촉",
+      "telegram_core_fact": "조달청이 평가위원의 사전접촉 행위가 확인되면 해촉하고 비위행위 사전 조회를 기존 건설분야에서 모든 평가분야로 확대하는 등 평가위원 제재기준을 대폭 강화했다.",
+      "title": "조달청, 평가위원 사전접촉시 교섭 정지…부적합 2회 판정시 해촉"
     },
     "link:635c7b3b0fc25c3388e9e134": {
       "first_seen_kst": "2026-10-05T22:12:53+09:00",
@@ -119458,6 +119881,28 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "[일문일답] 독파모 끝까지 간다…\"프론티어 AI 사업 별도 추진\""
+    },
+    "link:76f9508baf663da35acdff1f": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822757",
+      "source": "뉴시스",
+      "source_body_digest": "5e5c9ed8503e30721562705086ee32b5847922ebcc1e210df177348092db13ff",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c7c8f4d5d036b2fe472201af18eed674d06f6becaaeb5c0388c96c83c5a7a470",
+      "source_fact_keys": [
+        "source_fact:v1:14454dee60c9b610dc684c1481ab92c672b90d39fa734cbbe9c2ba4cb636e247",
+        "source_fact:v1:550ddd5a0c0025bd7709a63f36893af4968d9391bd1dea323b4d875249ac6a06",
+        "source_fact:v1:60c19dfa0b63dac729da60ad20f7535afb842aeba3fd4a1a5c1fad56d2620679",
+        "source_fact:v1:ae4ccbedc0f7225b7bf120b0f45e4a32110aecb9e8a16d1705d9ae8b841f12c1"
+      ],
+      "source_published_kst": "2026-10-12T18:06+09:00",
+      "source_title": "中, 대만 수교국 파라과이 장관 등 제재…\"내정에 간섭\"(종합)",
+      "telegram_core_fact": "문예성 기자, 박정규 특파원 = 중국 정부가 대만과 외교관계를 유지하고 있는 파라과이와 벨리즈의 장관 2명을 상대로 자산 동결과 입국 금지 등 제재 조치를 발표했다.",
+      "title": "中, 대만 수교국 파라과이 장관 등 제재…\"내정에 간섭\"(종합)"
     },
     "link:76fe4796ff5982c3da2d6256": {
       "first_seen_kst": "2026-09-29T08:03:12+09:00",
@@ -125477,6 +125922,25 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-03T16:30+09:00",
       "title": "“최고 금리 4.5%인데 가입해야죠” 신협 부스에 대학생들 몰린 이유는? [헤럴드머니페스타2026]"
+    },
+    "link:8f50d51fdbb1bb462e47aef7": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822834",
+      "source": "뉴시스",
+      "source_body_digest": "b75778db123d3cb545fa31e5dc6fd37bf183f7e0c9f54c72d35df3a6ab2c944c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c812db9723229012640d071dbf4c8942ea3f139bd668e0d29ea336f2e017a0e",
+      "source_fact_keys": [
+        "source_fact:v1:f29d5af0cb491710d27e0551cb4c16eaff03e1a3fde5f4b4649a60dc7b6bf071"
+      ],
+      "source_published_kst": "2026-10-12T18:39+09:00",
+      "source_title": "한전 사장 \"기업의 전기료 선납으로 재무 문제 해결은 잘못\"",
+      "telegram_core_fact": "재무 문제 해결을 위한 한전채 발행과 관련해선 \"한전은 신용등급이 트리플 A 등급으로 한전채를 발행하면 사채 시장에서 일반기업들이 쓸어가기 때문에 일반 기업들의 자금 조달에 큰 문제가 생긴다\"며 \"한전은 할 수 있으면 사채를 발행하지 않는 것이 채권시장에 좋다고 생각하고 있다\"고 생각을 전했다.",
+      "title": "한전 사장 \"기업의 전기료 선납으로 재무 문제 해결은 잘못\""
     },
     "link:8f6b4637878644b53aea84a3": {
       "first_seen_kst": "2026-10-08T05:17:22+09:00",
@@ -133717,6 +134181,28 @@
       "source_title": "허성무 \"웨스팅하우스 상장시 추가 지분 확보 계획 필요\"",
       "telegram_core_fact": "국회 산업통상자원중소벤처기업위원회 소속 더불어민주당 허성무(경남 창원 성산) 의원은 산업통상부 국정감사에서 김정관 산업통상부 장관에게 윤석열 정부 당시 미국 웨스팅하우스와 체결한 노예계약을 변경하고 원전 수출 주권을 회복하기 위해 웨스팅하우스 지분 확보 계획을 마련해야 한다고 촉구했다.",
       "title": "허성무 \"웨스팅하우스 상장시 추가 지분 확보 계획 필요\""
+    },
+    "link:ac59715866c9db75c3b865c1": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173080",
+      "source": "매일경제",
+      "source_body_digest": "a85678beee6361e37f5049baa72b0a56dc78434a6a736889b5428de943609618",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9641674e24213b5eff38e642d53fa3d5ace866245427b3dcdf7c565a0748af0e",
+      "source_fact_keys": [
+        "source_fact:v1:2f61110342f648c6312d7db2725576d78a17e726025270004145aa80189417ea",
+        "source_fact:v1:927f55e906a46d7b7858ebbe9cca4f309380d10b102cc2626a07f0d1a1609fc1",
+        "source_fact:v1:9c8d85a31394d003840effdfb14ccc2b09518868bcf9bc2290371a90b16c3ba6",
+        "source_fact:v1:e925b53a99b77b51a024d33aa891150a628c7f66b6611565660599f697745b55"
+      ],
+      "source_published_kst": "2026-10-12T17:28+09:00",
+      "source_title": "서학개미, 美반도체 3배 레버리지 폭풍매수",
+      "telegram_core_fact": "미국 반도체 기업에 분산 투자하는 '아이셰어스 반도체 ETF'(SOXX)는 같은 기간 5516만달러가 순매수되며 전체 3위에 올랐다. 반도체 지수의 하루 수익률을 3배로 추종하는 레버리지 ETF가 해외 주식 순매수 1위에 오른 가운데 반도체 업종 전반에 투자하는 ETF와 개별 반도체 기업에도 매수세가 집중됐다.",
+      "title": "서학개미, 美반도체 3배 레버리지 폭풍매수"
     },
     "link:ac5e4afab1713bfe9a7a5091": {
       "first_seen_kst": "2026-10-09T22:25:54+09:00",
@@ -155747,6 +156233,33 @@
       "source_published_kst": "2026-10-07T11:00+09:00",
       "title": "폴스타, 9월 역대 최대 판매…年 판매목표 달성 성큼"
     },
+    "original:033a8e1a24e9652d14c9e302": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634757",
+      "source": "이투데이",
+      "source_body_digest": "d7c3777e162e5936b8c8524e5b6bb74c94aeb05a3fd360e17a56eb4a16c79093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30d43012886f4600edc60790fd44b8131f7a31ce36b175ca6ac811f293a34f55",
+      "source_fact_keys": [
+        "source_fact:v1:2963c28daa9c05dfa5f6b9223638a7005d4e7ace0678379f047e801f282448ef",
+        "source_fact:v1:373eb6cbe2637951270d15c6175e922570a96025084d28f08604171a2aa27ca4",
+        "source_fact:v1:539d463da03a4abc1b1e040dd12c67ff3765193b56dd4b4133ff87f55db6e882",
+        "source_fact:v1:821e160dd1349abaa62fe7ed535aef45b833314e46f2e67b1dca57d07a642ea6",
+        "source_fact:v1:9c06d08ee12d95704fc856d0fab328786a3ed928769627e54d20746436c7887d",
+        "source_fact:v1:9e380e2f4cba95a26f15bd05096d21155511c944cabd34992e91cd4550a5490a",
+        "source_fact:v1:b949d043dda087c40e0353cf023d5b7b5762c19d898f66872f1f5b04be8e1311",
+        "source_fact:v1:e590f24ebe234ceee2f5445f660114a02a4b9a73ae094020c6efc56c71f706d7",
+        "source_fact:v1:fb3c369fb93ed97493167034b8d01f3203c2282a81155a4a1ffa21e665a8bf22"
+      ],
+      "source_published_kst": "2026-10-12T18:00+09:00",
+      "source_title": "마이크론은 10% 뛰는데 삼전·하닉은 뒷걸음…메모리 호황 속 ‘엇갈린 성적표’",
+      "telegram_core_fact": "한동희 SK증권 연구원은 “원·달러 환율 가정을 7% 낮췄음에도 2027년 이익 전망을 상향한 것은 AI 메모리 수요 강세와 공급 부족, 장기공급계약이 견인하는 가격 강세 때문”이라며 “시장에서 우려하는 메모리 업황 둔화와 감익 시나리오는 실현되지 않을 것”이라고 말했다.",
+      "title": "마이크론은 10% 뛰는데 삼전·하닉은 뒷걸음…메모리 호황 속 ‘엇갈린 성적표’"
+    },
     "original:03480acbb57d762683eb58e1": {
       "first_seen_kst": "2026-10-10T11:01:18+09:00",
       "lanes": {
@@ -164317,6 +164830,25 @@
       "source_published_kst": "2026-10-06T04:36+09:00",
       "title": "美10년물 국채금리 장중 5.34% 돌파…24년 만에 최고"
     },
+    "original:25ac032377818c50fb6c1786": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822834",
+      "source": "뉴시스",
+      "source_body_digest": "b75778db123d3cb545fa31e5dc6fd37bf183f7e0c9f54c72d35df3a6ab2c944c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c812db9723229012640d071dbf4c8942ea3f139bd668e0d29ea336f2e017a0e",
+      "source_fact_keys": [
+        "source_fact:v1:f29d5af0cb491710d27e0551cb4c16eaff03e1a3fde5f4b4649a60dc7b6bf071"
+      ],
+      "source_published_kst": "2026-10-12T18:39+09:00",
+      "source_title": "한전 사장 \"기업의 전기료 선납으로 재무 문제 해결은 잘못\"",
+      "telegram_core_fact": "재무 문제 해결을 위한 한전채 발행과 관련해선 \"한전은 신용등급이 트리플 A 등급으로 한전채를 발행하면 사채 시장에서 일반기업들이 쓸어가기 때문에 일반 기업들의 자금 조달에 큰 문제가 생긴다\"며 \"한전은 할 수 있으면 사채를 발행하지 않는 것이 채권시장에 좋다고 생각하고 있다\"고 생각을 전했다.",
+      "title": "한전 사장 \"기업의 전기료 선납으로 재무 문제 해결은 잘못\""
+    },
     "original:25c670db410b3a87ce70aa2c": {
       "first_seen_kst": "2026-10-12T08:46:35+09:00",
       "lanes": {
@@ -164461,6 +164993,28 @@
       "source_title": "조국 \"1년 안에 '큰 승부' 봐야…민생·복지, 반도체 수준으로 투자하자\"",
       "telegram_core_fact": "\"그러나 반도체가 역대급 호황을 이끌고 있지만 청년 일자리, 자영업자와 직장인 소득, 내수 활성화는 뒷걸음질치는 상황\"이라며 \"지금 한국에서는 수출 통계의 숫자와 민생 장바구니의 숫자 간의 괴리가 역대급이다. 위쪽 막대는 솟고, 아래쪽 막대는 가라앉는 이른바 'H자형 불평등'\"이라고 말했다.",
       "title": "조국 \"1년 안에 '큰 승부' 봐야…민생·복지, 반도체 수준으로 투자하자\""
+    },
+    "original:2693b76bc7169b8f14de0560": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822757",
+      "source": "뉴시스",
+      "source_body_digest": "5e5c9ed8503e30721562705086ee32b5847922ebcc1e210df177348092db13ff",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c7c8f4d5d036b2fe472201af18eed674d06f6becaaeb5c0388c96c83c5a7a470",
+      "source_fact_keys": [
+        "source_fact:v1:14454dee60c9b610dc684c1481ab92c672b90d39fa734cbbe9c2ba4cb636e247",
+        "source_fact:v1:550ddd5a0c0025bd7709a63f36893af4968d9391bd1dea323b4d875249ac6a06",
+        "source_fact:v1:60c19dfa0b63dac729da60ad20f7535afb842aeba3fd4a1a5c1fad56d2620679",
+        "source_fact:v1:ae4ccbedc0f7225b7bf120b0f45e4a32110aecb9e8a16d1705d9ae8b841f12c1"
+      ],
+      "source_published_kst": "2026-10-12T18:06+09:00",
+      "source_title": "中, 대만 수교국 파라과이 장관 등 제재…\"내정에 간섭\"(종합)",
+      "telegram_core_fact": "문예성 기자, 박정규 특파원 = 중국 정부가 대만과 외교관계를 유지하고 있는 파라과이와 벨리즈의 장관 2명을 상대로 자산 동결과 입국 금지 등 제재 조치를 발표했다.",
+      "title": "中, 대만 수교국 파라과이 장관 등 제재…\"내정에 간섭\"(종합)"
     },
     "original:269643a12086cb9491ef169e": {
       "first_seen_kst": "2026-10-06T23:19:02+09:00",
@@ -170704,6 +171258,26 @@
       "telegram_core_fact": "인수 금액은 약 2억4700만달러(약 3315억 원)다. HD현대마린솔루션이 글로벌 '선박·육상발전용 엔진' 서비스 전문기업 '골텐스(Goltens)'의 지분 100%를 인수하는 주식매매계약을 체결했다고 8일 공시했다.",
       "title": "HD현대마린솔루션, 美 엔진 기업 '골텐스' 3315억원에 인수"
     },
+    "original:3e93dbea2f6984ff181bfa92": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822762",
+      "source": "뉴시스",
+      "source_body_digest": "e97020dacdad2277dc1d13f16d678c6d0eb38ad0e2914ae8da6f435cbf5ba1e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e74d58a2abb794d8a947f124d2b64e792c99d84bf766286dd30bc51697b94d77",
+      "source_fact_keys": [
+        "source_fact:v1:3dfda430e1ae16d5c10e6ca1af072d61c9598a57f0f4dbe251dc40ea38b12ebb",
+        "source_fact:v1:db1c591770e55c15d850ada3d79d06255f0ce610436b11268188a2c1ab75eef2"
+      ],
+      "source_published_kst": "2026-10-12T17:43+09:00",
+      "source_title": "조달청, 평가위원 사전접촉시 교섭 정지…부적합 2회 판정시 해촉",
+      "telegram_core_fact": "조달청이 평가위원의 사전접촉 행위가 확인되면 해촉하고 비위행위 사전 조회를 기존 건설분야에서 모든 평가분야로 확대하는 등 평가위원 제재기준을 대폭 강화했다.",
+      "title": "조달청, 평가위원 사전접촉시 교섭 정지…부적합 2회 판정시 해촉"
+    },
     "original:3ea9a9fcb67467957e738b68": {
       "first_seen_kst": "2026-10-07T23:10:06+09:00",
       "lanes": {
@@ -171959,6 +172533,34 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T06:29+09:00",
       "title": "외국인, 한 달간 코스피서 20조 매도…비중 삼전 46%·닉스 49%대"
+    },
+    "original:422ed248a75c0d0d0acbd077": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/12/2026101214213521243",
+      "source": "머니투데이",
+      "source_body_digest": "d7675377e370c3e9635f6cac4eb809e182fc044114e001c93eda0e302767d268",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fc4a59be58d3fd9e97a1c02618b5fd95dfd860d5f8ba07b9b6e98a5f2aaf3403",
+      "source_fact_keys": [
+        "source_fact:v1:31428b46d92a31563fde4337e68cd24f2ce735cde0cd0fcd0142dafb72bf1e12",
+        "source_fact:v1:441d9369e43bad4fda5f35ac0fdb82f793621e4bbb51106d3be45dc4f74dcf1c",
+        "source_fact:v1:4baec211dbd6b182eafe514f647c688d678e00cb209139e8bcd1bbe6c7faf8b4",
+        "source_fact:v1:5bfee031f0595ece7ec271c73976d39efbc1f507d78467b77859b41ceac2fbc2",
+        "source_fact:v1:7c3fa3b42f7f836377f61583c5f5e7dd887e793c2c56dadc49c4a4cd55e5f0f6",
+        "source_fact:v1:854a8f6588b73b619afd756d7289109916695f4a798b187388a5accff1e7ae46",
+        "source_fact:v1:88ac23173d0379dda49b4f1ca78cae2ef218ed8c3dbdea9bfaf7ffb5fe2f1b5c",
+        "source_fact:v1:bc0d0db14c701be2a15adbd2cef48d606e5c85059a7854b94c6872d382ffeb8b",
+        "source_fact:v1:e2219514ccd86eb05db335f669bcdfc786831b5f372473616c52b7e0ff3d3147",
+        "source_fact:v1:f7f5a6c7fb6283c166eee5c164bf716df3e2bf5844b4c12eb672cd6daea13f71"
+      ],
+      "source_published_kst": "2026-10-12T17:30+09:00",
+      "source_title": "건설기계 바닥 다졌나..비철금속·AIDC 수요 딛고 턴어라운드",
+      "telegram_core_fact": "비철금속을 중심으로 광산 투자가 확대되는 가운데 인공지능(AI) 데이터센터 건설까지 가세하면서 비주택 시장을 중심으로 건설장비 수요가 늘고 있어서다.",
+      "title": "건설기계 바닥 다졌나..비철금속·AIDC 수요 딛고 턴어라운드"
     },
     "original:42383e984483cdd86dcf1d78": {
       "first_seen_kst": "2026-10-02T11:10:58+09:00",
@@ -185958,6 +186560,28 @@
       "source_published_kst": "2026-10-07T00:06+09:00",
       "title": "美 8월 무역적자 1056억원…작년 3월 이후 최대"
     },
+    "original:7b195ef7505952ded3bcacff": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04204966645612264",
+      "source": "이데일리",
+      "source_body_digest": "b76ba6e45fda9191995f5cd8d514b40f291e84e7d22975280b250f2ff45c4138",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:173eb6805f3db207a137c030b41e0430978b87552c694c695d327ee096851018",
+      "source_fact_keys": [
+        "source_fact:v1:3f2631e88b39a77d92068776799580d5447e24dccc2e4810b1fa516049b3f3eb",
+        "source_fact:v1:4be96c25783161e892542a4727133e2303cb62a2b46a7154613d692475e502e5",
+        "source_fact:v1:4d7774744a66888f41e1ddde877e7a193767cf6eb041321f74458591b45ab816",
+        "source_fact:v1:ca77da54e3d2c33b86fdb1b9e6c7e5609b2b2fe1e5048bea344c0ea11eb109db"
+      ],
+      "source_published_kst": "2026-10-12T18:00+09:00",
+      "source_title": "코트라, EU 포장폐기물 규정 대응 21개국 EPR 보고서 발간",
+      "telegram_core_fact": "코트라는 지난해 유럽연합 포장 및 포장 폐기물 규정의 주요 내용과 올해 실무 문답 자료를 발간하고 규제 본격 시행 전후 두 차례 유럽연합 포장 및 포장 폐기물 규정 대응 화상 설명회를 개최해 우리 기업의 규제 대응을 지원해 왔다.",
+      "title": "코트라, EU 포장폐기물 규정 대응 21개국 EPR 보고서 발간"
+    },
     "original:7b3ae65051a5d08e321aceb9": {
       "first_seen_kst": "2026-10-02T17:56:05+09:00",
       "lanes": {
@@ -194043,6 +194667,28 @@
       "source_title": "트럼프-푸틴 경유 거래 이튿날 러, 우크라 자포리자 공격 8명 사망",
       "telegram_core_fact": "미 재무부는 트럼프의 발언이 나온 직후 러시아 경유에 대한 수출 제재 해제를 발표했다.",
       "title": "트럼프-푸틴 경유 거래 이튿날 러, 우크라 자포리자 공격 8명 사망"
+    },
+    "original:9a75adee2f0e319fa92b8be8": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173080",
+      "source": "매일경제",
+      "source_body_digest": "a85678beee6361e37f5049baa72b0a56dc78434a6a736889b5428de943609618",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9641674e24213b5eff38e642d53fa3d5ace866245427b3dcdf7c565a0748af0e",
+      "source_fact_keys": [
+        "source_fact:v1:2f61110342f648c6312d7db2725576d78a17e726025270004145aa80189417ea",
+        "source_fact:v1:927f55e906a46d7b7858ebbe9cca4f309380d10b102cc2626a07f0d1a1609fc1",
+        "source_fact:v1:9c8d85a31394d003840effdfb14ccc2b09518868bcf9bc2290371a90b16c3ba6",
+        "source_fact:v1:e925b53a99b77b51a024d33aa891150a628c7f66b6611565660599f697745b55"
+      ],
+      "source_published_kst": "2026-10-12T17:28+09:00",
+      "source_title": "서학개미, 美반도체 3배 레버리지 폭풍매수",
+      "telegram_core_fact": "미국 반도체 기업에 분산 투자하는 '아이셰어스 반도체 ETF'(SOXX)는 같은 기간 5516만달러가 순매수되며 전체 3위에 올랐다. 반도체 지수의 하루 수익률을 3배로 추종하는 레버리지 ETF가 해외 주식 순매수 1위에 오른 가운데 반도체 업종 전반에 투자하는 ETF와 개별 반도체 기업에도 매수세가 집중됐다.",
+      "title": "서학개미, 美반도체 3배 레버리지 폭풍매수"
     },
     "original:9a8a92b283df147abd474165": {
       "first_seen_kst": "2026-10-11T13:40:09+09:00",
@@ -227129,6 +227775,33 @@
       "telegram_core_fact": "포스코DX는 포스코기술투자와 함께 출자한 '포스코DX 기업형벤처캐피탈(CVC) 신기술투자조합'을 통해 온톨로지 기반 엔터프라이즈 AI 운영체계(OS) '에이전트OS'를 개발한 스타트업 인핸스에 20억원을 투자했다고 10일 밝혔다. 포스코DX는 이번 투자를 기반으로 에이전틱 AI 시장 공략에 속도를 낸다는 계획이다.",
       "title": "포스코DX, '인핸스'에 20억 투자…온톨로지 기반 에이전틱 AI 고도화"
     },
+    "source_fact:09a503cf9e4a7e6ffbce55be": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634757",
+      "source": "이투데이",
+      "source_body_digest": "d7c3777e162e5936b8c8524e5b6bb74c94aeb05a3fd360e17a56eb4a16c79093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30d43012886f4600edc60790fd44b8131f7a31ce36b175ca6ac811f293a34f55",
+      "source_fact_keys": [
+        "source_fact:v1:2963c28daa9c05dfa5f6b9223638a7005d4e7ace0678379f047e801f282448ef",
+        "source_fact:v1:373eb6cbe2637951270d15c6175e922570a96025084d28f08604171a2aa27ca4",
+        "source_fact:v1:539d463da03a4abc1b1e040dd12c67ff3765193b56dd4b4133ff87f55db6e882",
+        "source_fact:v1:821e160dd1349abaa62fe7ed535aef45b833314e46f2e67b1dca57d07a642ea6",
+        "source_fact:v1:9c06d08ee12d95704fc856d0fab328786a3ed928769627e54d20746436c7887d",
+        "source_fact:v1:9e380e2f4cba95a26f15bd05096d21155511c944cabd34992e91cd4550a5490a",
+        "source_fact:v1:b949d043dda087c40e0353cf023d5b7b5762c19d898f66872f1f5b04be8e1311",
+        "source_fact:v1:e590f24ebe234ceee2f5445f660114a02a4b9a73ae094020c6efc56c71f706d7",
+        "source_fact:v1:fb3c369fb93ed97493167034b8d01f3203c2282a81155a4a1ffa21e665a8bf22"
+      ],
+      "source_published_kst": "2026-10-12T18:00+09:00",
+      "source_title": "마이크론은 10% 뛰는데 삼전·하닉은 뒷걸음…메모리 호황 속 ‘엇갈린 성적표’",
+      "telegram_core_fact": "한동희 SK증권 연구원은 “원·달러 환율 가정을 7% 낮췄음에도 2027년 이익 전망을 상향한 것은 AI 메모리 수요 강세와 공급 부족, 장기공급계약이 견인하는 가격 강세 때문”이라며 “시장에서 우려하는 메모리 업황 둔화와 감익 시나리오는 실현되지 않을 것”이라고 말했다.",
+      "title": "마이크론은 10% 뛰는데 삼전·하닉은 뒷걸음…메모리 호황 속 ‘엇갈린 성적표’"
+    },
     "source_fact:09a668049112d5ecf2153ee5": {
       "first_seen_kst": "2026-10-08T22:06:55+09:00",
       "lanes": {
@@ -233990,6 +234663,33 @@
       "telegram_core_fact": "앤트로픽은 아이렌 외에도 아마존웹서비스(AWS)와 구글 등 10곳이 넘는 클라우드와 15기가와트(GW), 5천300억달러(약 720조원) 데이터센터 임차 계약을 맺고 협력사들에 가동을 서두르라고 요구하고 있다.",
       "title": "\"앤트로픽, 아이렌과 클라우드 계약\"…데이터센터 확보 속도전 | 연합뉴스"
     },
+    "source_fact:11506c366e7b80a0909b2f31": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634757",
+      "source": "이투데이",
+      "source_body_digest": "d7c3777e162e5936b8c8524e5b6bb74c94aeb05a3fd360e17a56eb4a16c79093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30d43012886f4600edc60790fd44b8131f7a31ce36b175ca6ac811f293a34f55",
+      "source_fact_keys": [
+        "source_fact:v1:2963c28daa9c05dfa5f6b9223638a7005d4e7ace0678379f047e801f282448ef",
+        "source_fact:v1:373eb6cbe2637951270d15c6175e922570a96025084d28f08604171a2aa27ca4",
+        "source_fact:v1:539d463da03a4abc1b1e040dd12c67ff3765193b56dd4b4133ff87f55db6e882",
+        "source_fact:v1:821e160dd1349abaa62fe7ed535aef45b833314e46f2e67b1dca57d07a642ea6",
+        "source_fact:v1:9c06d08ee12d95704fc856d0fab328786a3ed928769627e54d20746436c7887d",
+        "source_fact:v1:9e380e2f4cba95a26f15bd05096d21155511c944cabd34992e91cd4550a5490a",
+        "source_fact:v1:b949d043dda087c40e0353cf023d5b7b5762c19d898f66872f1f5b04be8e1311",
+        "source_fact:v1:e590f24ebe234ceee2f5445f660114a02a4b9a73ae094020c6efc56c71f706d7",
+        "source_fact:v1:fb3c369fb93ed97493167034b8d01f3203c2282a81155a4a1ffa21e665a8bf22"
+      ],
+      "source_published_kst": "2026-10-12T18:00+09:00",
+      "source_title": "마이크론은 10% 뛰는데 삼전·하닉은 뒷걸음…메모리 호황 속 ‘엇갈린 성적표’",
+      "telegram_core_fact": "한동희 SK증권 연구원은 “원·달러 환율 가정을 7% 낮췄음에도 2027년 이익 전망을 상향한 것은 AI 메모리 수요 강세와 공급 부족, 장기공급계약이 견인하는 가격 강세 때문”이라며 “시장에서 우려하는 메모리 업황 둔화와 감익 시나리오는 실현되지 않을 것”이라고 말했다.",
+      "title": "마이크론은 10% 뛰는데 삼전·하닉은 뒷걸음…메모리 호황 속 ‘엇갈린 성적표’"
+    },
     "source_fact:1154d11853d8b2f93488e2c2": {
       "first_seen_kst": "2026-10-12T16:29:45+09:00",
       "lanes": {
@@ -238162,6 +238862,28 @@
       "telegram_core_fact": "삼성전자의 영업이익은 지난 분기 세계에서 최고치를 기록했는데 이번에도 전세계 기업중 1위를 기록할 것으로 예상된다.",
       "title": "삼성전자 분기 영업익 사상첫 100조 돌파…전사 영업이익률 55% 육박"
     },
+    "source_fact:162a3b2f66b5303830d731a7": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173080",
+      "source": "매일경제",
+      "source_body_digest": "a85678beee6361e37f5049baa72b0a56dc78434a6a736889b5428de943609618",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9641674e24213b5eff38e642d53fa3d5ace866245427b3dcdf7c565a0748af0e",
+      "source_fact_keys": [
+        "source_fact:v1:2f61110342f648c6312d7db2725576d78a17e726025270004145aa80189417ea",
+        "source_fact:v1:927f55e906a46d7b7858ebbe9cca4f309380d10b102cc2626a07f0d1a1609fc1",
+        "source_fact:v1:9c8d85a31394d003840effdfb14ccc2b09518868bcf9bc2290371a90b16c3ba6",
+        "source_fact:v1:e925b53a99b77b51a024d33aa891150a628c7f66b6611565660599f697745b55"
+      ],
+      "source_published_kst": "2026-10-12T17:28+09:00",
+      "source_title": "서학개미, 美반도체 3배 레버리지 폭풍매수",
+      "telegram_core_fact": "미국 반도체 기업에 분산 투자하는 '아이셰어스 반도체 ETF'(SOXX)는 같은 기간 5516만달러가 순매수되며 전체 3위에 올랐다. 반도체 지수의 하루 수익률을 3배로 추종하는 레버리지 ETF가 해외 주식 순매수 1위에 오른 가운데 반도체 업종 전반에 투자하는 ETF와 개별 반도체 기업에도 매수세가 집중됐다.",
+      "title": "서학개미, 美반도체 3배 레버리지 폭풍매수"
+    },
     "source_fact:162f48d68b4bcaeb94307016": {
       "first_seen_kst": "2026-10-09T22:25:54+09:00",
       "lanes": {
@@ -241837,6 +242559,28 @@
       "source_title": "\"美, 러 정유소 공격 멈추라며 우크라에 정보공유 중단 경고\" | 연합뉴스",
       "telegram_core_fact": "미국이 우크라이나에 러시아 정유시설 공격을 멈추지 않으면 핵심정보 공유를 중단하겠다고 경고했다고 파이낸셜타임스(FT)가 10일(현지시간) 보도했다. 이어 러시아 정유시설 공격이 '세계적 문제'를 일으킨다는 자신의 경고에도 우크라이나가 계속 공격했다면서 \"당장 그만두는 게 좋을 것\"이라고 압박했다.",
       "title": "\"美, 러 정유소 공격 멈추라며 우크라에 정보공유 중단 경고\" | 연합뉴스"
+    },
+    "source_fact:1a671455cc8206bad0b0e233": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04204966645612264",
+      "source": "이데일리",
+      "source_body_digest": "b76ba6e45fda9191995f5cd8d514b40f291e84e7d22975280b250f2ff45c4138",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:173eb6805f3db207a137c030b41e0430978b87552c694c695d327ee096851018",
+      "source_fact_keys": [
+        "source_fact:v1:3f2631e88b39a77d92068776799580d5447e24dccc2e4810b1fa516049b3f3eb",
+        "source_fact:v1:4be96c25783161e892542a4727133e2303cb62a2b46a7154613d692475e502e5",
+        "source_fact:v1:4d7774744a66888f41e1ddde877e7a193767cf6eb041321f74458591b45ab816",
+        "source_fact:v1:ca77da54e3d2c33b86fdb1b9e6c7e5609b2b2fe1e5048bea344c0ea11eb109db"
+      ],
+      "source_published_kst": "2026-10-12T18:00+09:00",
+      "source_title": "코트라, EU 포장폐기물 규정 대응 21개국 EPR 보고서 발간",
+      "telegram_core_fact": "코트라는 지난해 유럽연합 포장 및 포장 폐기물 규정의 주요 내용과 올해 실무 문답 자료를 발간하고 규제 본격 시행 전후 두 차례 유럽연합 포장 및 포장 폐기물 규정 대응 화상 설명회를 개최해 우리 기업의 규제 대응을 지원해 왔다.",
+      "title": "코트라, EU 포장폐기물 규정 대응 21개국 EPR 보고서 발간"
     },
     "source_fact:1a6e0104d55e96e318cc0328": {
       "first_seen_kst": "2026-10-08T15:16:19+09:00",
@@ -248253,6 +248997,28 @@
       "source_published_kst": "2026-10-06T08:41+09:00",
       "title": "AI 데이터센터 늘자 전력 수요도 급증…ETF 투자처도 '전력 인프라'로"
     },
+    "source_fact:2122eb705b673805224fcb45": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822757",
+      "source": "뉴시스",
+      "source_body_digest": "5e5c9ed8503e30721562705086ee32b5847922ebcc1e210df177348092db13ff",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c7c8f4d5d036b2fe472201af18eed674d06f6becaaeb5c0388c96c83c5a7a470",
+      "source_fact_keys": [
+        "source_fact:v1:14454dee60c9b610dc684c1481ab92c672b90d39fa734cbbe9c2ba4cb636e247",
+        "source_fact:v1:550ddd5a0c0025bd7709a63f36893af4968d9391bd1dea323b4d875249ac6a06",
+        "source_fact:v1:60c19dfa0b63dac729da60ad20f7535afb842aeba3fd4a1a5c1fad56d2620679",
+        "source_fact:v1:ae4ccbedc0f7225b7bf120b0f45e4a32110aecb9e8a16d1705d9ae8b841f12c1"
+      ],
+      "source_published_kst": "2026-10-12T18:06+09:00",
+      "source_title": "中, 대만 수교국 파라과이 장관 등 제재…\"내정에 간섭\"(종합)",
+      "telegram_core_fact": "문예성 기자, 박정규 특파원 = 중국 정부가 대만과 외교관계를 유지하고 있는 파라과이와 벨리즈의 장관 2명을 상대로 자산 동결과 입국 금지 등 제재 조치를 발표했다.",
+      "title": "中, 대만 수교국 파라과이 장관 등 제재…\"내정에 간섭\"(종합)"
+    },
     "source_fact:212e63e157cc975a867d4113": {
       "first_seen_kst": "2026-10-10T03:26:28+09:00",
       "lanes": {
@@ -250628,6 +251394,34 @@
       ],
       "source_published_kst": "2026-10-06T20:03+09:00",
       "title": "[TODAY테슬라]테슬라, 3분기 실적보단 로보택시·FSD 중요…‘중립’-골드만"
+    },
+    "source_fact:2398afa7deee6e9df32cb90c": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/12/2026101214213521243",
+      "source": "머니투데이",
+      "source_body_digest": "d7675377e370c3e9635f6cac4eb809e182fc044114e001c93eda0e302767d268",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fc4a59be58d3fd9e97a1c02618b5fd95dfd860d5f8ba07b9b6e98a5f2aaf3403",
+      "source_fact_keys": [
+        "source_fact:v1:31428b46d92a31563fde4337e68cd24f2ce735cde0cd0fcd0142dafb72bf1e12",
+        "source_fact:v1:441d9369e43bad4fda5f35ac0fdb82f793621e4bbb51106d3be45dc4f74dcf1c",
+        "source_fact:v1:4baec211dbd6b182eafe514f647c688d678e00cb209139e8bcd1bbe6c7faf8b4",
+        "source_fact:v1:5bfee031f0595ece7ec271c73976d39efbc1f507d78467b77859b41ceac2fbc2",
+        "source_fact:v1:7c3fa3b42f7f836377f61583c5f5e7dd887e793c2c56dadc49c4a4cd55e5f0f6",
+        "source_fact:v1:854a8f6588b73b619afd756d7289109916695f4a798b187388a5accff1e7ae46",
+        "source_fact:v1:88ac23173d0379dda49b4f1ca78cae2ef218ed8c3dbdea9bfaf7ffb5fe2f1b5c",
+        "source_fact:v1:bc0d0db14c701be2a15adbd2cef48d606e5c85059a7854b94c6872d382ffeb8b",
+        "source_fact:v1:e2219514ccd86eb05db335f669bcdfc786831b5f372473616c52b7e0ff3d3147",
+        "source_fact:v1:f7f5a6c7fb6283c166eee5c164bf716df3e2bf5844b4c12eb672cd6daea13f71"
+      ],
+      "source_published_kst": "2026-10-12T17:30+09:00",
+      "source_title": "건설기계 바닥 다졌나..비철금속·AIDC 수요 딛고 턴어라운드",
+      "telegram_core_fact": "비철금속을 중심으로 광산 투자가 확대되는 가운데 인공지능(AI) 데이터센터 건설까지 가세하면서 비주택 시장을 중심으로 건설장비 수요가 늘고 있어서다.",
+      "title": "건설기계 바닥 다졌나..비철금속·AIDC 수요 딛고 턴어라운드"
     },
     "source_fact:239a93ecb04ce10c9aef05f3": {
       "first_seen_kst": "2026-10-07T20:28:48+09:00",
@@ -259160,6 +259954,28 @@
       "source_title": "호르무즈 통항 75% 급감에 해운株 강세…팬오션 5%대↑",
       "telegram_core_fact": "호르무즈 해협의 선박 통항량은 전쟁 이전의 약 4분의 1 수준에 머무른 것으로 나타났다.",
       "title": "호르무즈 통항 75% 급감에 해운株 강세…팬오션 5%대↑"
+    },
+    "source_fact:2c65668e29311dc3c6507b8f": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04204966645612264",
+      "source": "이데일리",
+      "source_body_digest": "b76ba6e45fda9191995f5cd8d514b40f291e84e7d22975280b250f2ff45c4138",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:173eb6805f3db207a137c030b41e0430978b87552c694c695d327ee096851018",
+      "source_fact_keys": [
+        "source_fact:v1:3f2631e88b39a77d92068776799580d5447e24dccc2e4810b1fa516049b3f3eb",
+        "source_fact:v1:4be96c25783161e892542a4727133e2303cb62a2b46a7154613d692475e502e5",
+        "source_fact:v1:4d7774744a66888f41e1ddde877e7a193767cf6eb041321f74458591b45ab816",
+        "source_fact:v1:ca77da54e3d2c33b86fdb1b9e6c7e5609b2b2fe1e5048bea344c0ea11eb109db"
+      ],
+      "source_published_kst": "2026-10-12T18:00+09:00",
+      "source_title": "코트라, EU 포장폐기물 규정 대응 21개국 EPR 보고서 발간",
+      "telegram_core_fact": "코트라는 지난해 유럽연합 포장 및 포장 폐기물 규정의 주요 내용과 올해 실무 문답 자료를 발간하고 규제 본격 시행 전후 두 차례 유럽연합 포장 및 포장 폐기물 규정 대응 화상 설명회를 개최해 우리 기업의 규제 대응을 지원해 왔다.",
+      "title": "코트라, EU 포장폐기물 규정 대응 21개국 EPR 보고서 발간"
     },
     "source_fact:2c738e48f73a17ffc6d5e09e": {
       "first_seen_kst": "2026-10-08T06:57:59+09:00",
@@ -271287,6 +272103,34 @@
       "source_title": "바이오어피니티 테크놀러, 400만 달러 직접공모 조달..주당 6.122달러",
       "telegram_core_fact": "워런트 행사가격은 주당 6.122달러이며 주주 승인 이후부터 행사할 수 있다. 보통주 공모가는 주당 6.122달러, 선행 출자 워런트(pre-funded warrant)는 주당 6.115달러다.",
       "title": "바이오어피니티 테크놀러, 400만 달러 직접공모 조달..주당 6.122달러"
+    },
+    "source_fact:3aacf9443a01d0bc25380030": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/12/2026101214213521243",
+      "source": "머니투데이",
+      "source_body_digest": "d7675377e370c3e9635f6cac4eb809e182fc044114e001c93eda0e302767d268",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fc4a59be58d3fd9e97a1c02618b5fd95dfd860d5f8ba07b9b6e98a5f2aaf3403",
+      "source_fact_keys": [
+        "source_fact:v1:31428b46d92a31563fde4337e68cd24f2ce735cde0cd0fcd0142dafb72bf1e12",
+        "source_fact:v1:441d9369e43bad4fda5f35ac0fdb82f793621e4bbb51106d3be45dc4f74dcf1c",
+        "source_fact:v1:4baec211dbd6b182eafe514f647c688d678e00cb209139e8bcd1bbe6c7faf8b4",
+        "source_fact:v1:5bfee031f0595ece7ec271c73976d39efbc1f507d78467b77859b41ceac2fbc2",
+        "source_fact:v1:7c3fa3b42f7f836377f61583c5f5e7dd887e793c2c56dadc49c4a4cd55e5f0f6",
+        "source_fact:v1:854a8f6588b73b619afd756d7289109916695f4a798b187388a5accff1e7ae46",
+        "source_fact:v1:88ac23173d0379dda49b4f1ca78cae2ef218ed8c3dbdea9bfaf7ffb5fe2f1b5c",
+        "source_fact:v1:bc0d0db14c701be2a15adbd2cef48d606e5c85059a7854b94c6872d382ffeb8b",
+        "source_fact:v1:e2219514ccd86eb05db335f669bcdfc786831b5f372473616c52b7e0ff3d3147",
+        "source_fact:v1:f7f5a6c7fb6283c166eee5c164bf716df3e2bf5844b4c12eb672cd6daea13f71"
+      ],
+      "source_published_kst": "2026-10-12T17:30+09:00",
+      "source_title": "건설기계 바닥 다졌나..비철금속·AIDC 수요 딛고 턴어라운드",
+      "telegram_core_fact": "비철금속을 중심으로 광산 투자가 확대되는 가운데 인공지능(AI) 데이터센터 건설까지 가세하면서 비주택 시장을 중심으로 건설장비 수요가 늘고 있어서다.",
+      "title": "건설기계 바닥 다졌나..비철금속·AIDC 수요 딛고 턴어라운드"
     },
     "source_fact:3ab8669d1dd507ae911a16dc": {
       "first_seen_kst": "2026-10-07T19:32:28+09:00",
@@ -286543,6 +287387,34 @@
       "telegram_core_fact": "신한자산운용은 'SOL 글로벌DRAM반도체플러스 ETF'가 올해 하반기 신규 상장한 반도체 ETF 가운데 상장 첫날 개인 순매수 1위를 기록했다고 8일 밝혔다.",
       "title": "상장 첫날 개인 58억 샀다…SOL 글로벌DRAM반도체플러스, 하반기 반도체 ETF 1위"
     },
+    "source_fact:4be6acbef26fc16b2ed8c24d": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/12/2026101214213521243",
+      "source": "머니투데이",
+      "source_body_digest": "d7675377e370c3e9635f6cac4eb809e182fc044114e001c93eda0e302767d268",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fc4a59be58d3fd9e97a1c02618b5fd95dfd860d5f8ba07b9b6e98a5f2aaf3403",
+      "source_fact_keys": [
+        "source_fact:v1:31428b46d92a31563fde4337e68cd24f2ce735cde0cd0fcd0142dafb72bf1e12",
+        "source_fact:v1:441d9369e43bad4fda5f35ac0fdb82f793621e4bbb51106d3be45dc4f74dcf1c",
+        "source_fact:v1:4baec211dbd6b182eafe514f647c688d678e00cb209139e8bcd1bbe6c7faf8b4",
+        "source_fact:v1:5bfee031f0595ece7ec271c73976d39efbc1f507d78467b77859b41ceac2fbc2",
+        "source_fact:v1:7c3fa3b42f7f836377f61583c5f5e7dd887e793c2c56dadc49c4a4cd55e5f0f6",
+        "source_fact:v1:854a8f6588b73b619afd756d7289109916695f4a798b187388a5accff1e7ae46",
+        "source_fact:v1:88ac23173d0379dda49b4f1ca78cae2ef218ed8c3dbdea9bfaf7ffb5fe2f1b5c",
+        "source_fact:v1:bc0d0db14c701be2a15adbd2cef48d606e5c85059a7854b94c6872d382ffeb8b",
+        "source_fact:v1:e2219514ccd86eb05db335f669bcdfc786831b5f372473616c52b7e0ff3d3147",
+        "source_fact:v1:f7f5a6c7fb6283c166eee5c164bf716df3e2bf5844b4c12eb672cd6daea13f71"
+      ],
+      "source_published_kst": "2026-10-12T17:30+09:00",
+      "source_title": "건설기계 바닥 다졌나..비철금속·AIDC 수요 딛고 턴어라운드",
+      "telegram_core_fact": "비철금속을 중심으로 광산 투자가 확대되는 가운데 인공지능(AI) 데이터센터 건설까지 가세하면서 비주택 시장을 중심으로 건설장비 수요가 늘고 있어서다.",
+      "title": "건설기계 바닥 다졌나..비철금속·AIDC 수요 딛고 턴어라운드"
+    },
     "source_fact:4c027284a2a9d475f4e0bb92": {
       "first_seen_kst": "2026-10-08T07:27:34+09:00",
       "lanes": {
@@ -293297,6 +294169,26 @@
       "telegram_core_fact": "도널드 트럼프 미 대통령이 9일(현지시각) 블라디미르 푸틴 러시아 대통령과 러시아의 경유 미국 수출을 늘리기로 한 합의했음에도 미국의 경유 가격이 의미 있게 내려갈 가능성은 희박하다고 전문가들이 전망하고 있다.",
       "title": "\"트럼프 러 경유 수입 합의, 가격 인하 효과 미미\""
     },
+    "source_fact:5385ab73cac6c349c49473c0": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822762",
+      "source": "뉴시스",
+      "source_body_digest": "e97020dacdad2277dc1d13f16d678c6d0eb38ad0e2914ae8da6f435cbf5ba1e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e74d58a2abb794d8a947f124d2b64e792c99d84bf766286dd30bc51697b94d77",
+      "source_fact_keys": [
+        "source_fact:v1:3dfda430e1ae16d5c10e6ca1af072d61c9598a57f0f4dbe251dc40ea38b12ebb",
+        "source_fact:v1:db1c591770e55c15d850ada3d79d06255f0ce610436b11268188a2c1ab75eef2"
+      ],
+      "source_published_kst": "2026-10-12T17:43+09:00",
+      "source_title": "조달청, 평가위원 사전접촉시 교섭 정지…부적합 2회 판정시 해촉",
+      "telegram_core_fact": "조달청이 평가위원의 사전접촉 행위가 확인되면 해촉하고 비위행위 사전 조회를 기존 건설분야에서 모든 평가분야로 확대하는 등 평가위원 제재기준을 대폭 강화했다.",
+      "title": "조달청, 평가위원 사전접촉시 교섭 정지…부적합 2회 판정시 해촉"
+    },
     "source_fact:53885b2c1fcfec527158072d": {
       "first_seen_kst": "2026-10-07T23:23:06+09:00",
       "lanes": {
@@ -298876,6 +299768,34 @@
       "source_title": "리졸브 AI, 상반기 매출 1억3100만 달러..연말 ARR 5억 달러 목표",
       "telegram_core_fact": "리졸브 AI(RZLV)는 2026년 상반기 매출액이 1억3080만 달러로 전년 동기의 20배를 넘었으며, 2026년 말 기준 연간 반복매출(ARR) 최소 5억 달러를 목표로 제시했다고 10월 8일 발표했다.",
       "title": "리졸브 AI, 상반기 매출 1억3100만 달러..연말 ARR 5억 달러 목표"
+    },
+    "source_fact:596d7b227d88ac2e931ce412": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/12/2026101214213521243",
+      "source": "머니투데이",
+      "source_body_digest": "d7675377e370c3e9635f6cac4eb809e182fc044114e001c93eda0e302767d268",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fc4a59be58d3fd9e97a1c02618b5fd95dfd860d5f8ba07b9b6e98a5f2aaf3403",
+      "source_fact_keys": [
+        "source_fact:v1:31428b46d92a31563fde4337e68cd24f2ce735cde0cd0fcd0142dafb72bf1e12",
+        "source_fact:v1:441d9369e43bad4fda5f35ac0fdb82f793621e4bbb51106d3be45dc4f74dcf1c",
+        "source_fact:v1:4baec211dbd6b182eafe514f647c688d678e00cb209139e8bcd1bbe6c7faf8b4",
+        "source_fact:v1:5bfee031f0595ece7ec271c73976d39efbc1f507d78467b77859b41ceac2fbc2",
+        "source_fact:v1:7c3fa3b42f7f836377f61583c5f5e7dd887e793c2c56dadc49c4a4cd55e5f0f6",
+        "source_fact:v1:854a8f6588b73b619afd756d7289109916695f4a798b187388a5accff1e7ae46",
+        "source_fact:v1:88ac23173d0379dda49b4f1ca78cae2ef218ed8c3dbdea9bfaf7ffb5fe2f1b5c",
+        "source_fact:v1:bc0d0db14c701be2a15adbd2cef48d606e5c85059a7854b94c6872d382ffeb8b",
+        "source_fact:v1:e2219514ccd86eb05db335f669bcdfc786831b5f372473616c52b7e0ff3d3147",
+        "source_fact:v1:f7f5a6c7fb6283c166eee5c164bf716df3e2bf5844b4c12eb672cd6daea13f71"
+      ],
+      "source_published_kst": "2026-10-12T17:30+09:00",
+      "source_title": "건설기계 바닥 다졌나..비철금속·AIDC 수요 딛고 턴어라운드",
+      "telegram_core_fact": "비철금속을 중심으로 광산 투자가 확대되는 가운데 인공지능(AI) 데이터센터 건설까지 가세하면서 비주택 시장을 중심으로 건설장비 수요가 늘고 있어서다.",
+      "title": "건설기계 바닥 다졌나..비철금속·AIDC 수요 딛고 턴어라운드"
     },
     "source_fact:597ab9cd237d51b23032910f": {
       "first_seen_kst": "2026-10-08T17:21:28+09:00",
@@ -328074,6 +328994,33 @@
       "source_published_kst": "2026-10-06T11:30+09:00",
       "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
     },
+    "source_fact:7a746e72041b3e4b0881b1fb": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634757",
+      "source": "이투데이",
+      "source_body_digest": "d7c3777e162e5936b8c8524e5b6bb74c94aeb05a3fd360e17a56eb4a16c79093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30d43012886f4600edc60790fd44b8131f7a31ce36b175ca6ac811f293a34f55",
+      "source_fact_keys": [
+        "source_fact:v1:2963c28daa9c05dfa5f6b9223638a7005d4e7ace0678379f047e801f282448ef",
+        "source_fact:v1:373eb6cbe2637951270d15c6175e922570a96025084d28f08604171a2aa27ca4",
+        "source_fact:v1:539d463da03a4abc1b1e040dd12c67ff3765193b56dd4b4133ff87f55db6e882",
+        "source_fact:v1:821e160dd1349abaa62fe7ed535aef45b833314e46f2e67b1dca57d07a642ea6",
+        "source_fact:v1:9c06d08ee12d95704fc856d0fab328786a3ed928769627e54d20746436c7887d",
+        "source_fact:v1:9e380e2f4cba95a26f15bd05096d21155511c944cabd34992e91cd4550a5490a",
+        "source_fact:v1:b949d043dda087c40e0353cf023d5b7b5762c19d898f66872f1f5b04be8e1311",
+        "source_fact:v1:e590f24ebe234ceee2f5445f660114a02a4b9a73ae094020c6efc56c71f706d7",
+        "source_fact:v1:fb3c369fb93ed97493167034b8d01f3203c2282a81155a4a1ffa21e665a8bf22"
+      ],
+      "source_published_kst": "2026-10-12T18:00+09:00",
+      "source_title": "마이크론은 10% 뛰는데 삼전·하닉은 뒷걸음…메모리 호황 속 ‘엇갈린 성적표’",
+      "telegram_core_fact": "한동희 SK증권 연구원은 “원·달러 환율 가정을 7% 낮췄음에도 2027년 이익 전망을 상향한 것은 AI 메모리 수요 강세와 공급 부족, 장기공급계약이 견인하는 가격 강세 때문”이라며 “시장에서 우려하는 메모리 업황 둔화와 감익 시나리오는 실현되지 않을 것”이라고 말했다.",
+      "title": "마이크론은 10% 뛰는데 삼전·하닉은 뒷걸음…메모리 호황 속 ‘엇갈린 성적표’"
+    },
     "source_fact:7a7523d6be6c5bc248682068": {
       "first_seen_kst": "2026-10-11T09:28:38+09:00",
       "lanes": {
@@ -332427,6 +333374,28 @@
       "source_published_kst": "2026-10-07T00:55+09:00",
       "title": "국제 유가·美 국채 수익률 동반 하락…뉴욕 증시 사상 최고"
     },
+    "source_fact:7f63a5938bafad3bf6594b75": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173080",
+      "source": "매일경제",
+      "source_body_digest": "a85678beee6361e37f5049baa72b0a56dc78434a6a736889b5428de943609618",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9641674e24213b5eff38e642d53fa3d5ace866245427b3dcdf7c565a0748af0e",
+      "source_fact_keys": [
+        "source_fact:v1:2f61110342f648c6312d7db2725576d78a17e726025270004145aa80189417ea",
+        "source_fact:v1:927f55e906a46d7b7858ebbe9cca4f309380d10b102cc2626a07f0d1a1609fc1",
+        "source_fact:v1:9c8d85a31394d003840effdfb14ccc2b09518868bcf9bc2290371a90b16c3ba6",
+        "source_fact:v1:e925b53a99b77b51a024d33aa891150a628c7f66b6611565660599f697745b55"
+      ],
+      "source_published_kst": "2026-10-12T17:28+09:00",
+      "source_title": "서학개미, 美반도체 3배 레버리지 폭풍매수",
+      "telegram_core_fact": "미국 반도체 기업에 분산 투자하는 '아이셰어스 반도체 ETF'(SOXX)는 같은 기간 5516만달러가 순매수되며 전체 3위에 올랐다. 반도체 지수의 하루 수익률을 3배로 추종하는 레버리지 ETF가 해외 주식 순매수 1위에 오른 가운데 반도체 업종 전반에 투자하는 ETF와 개별 반도체 기업에도 매수세가 집중됐다.",
+      "title": "서학개미, 美반도체 3배 레버리지 폭풍매수"
+    },
     "source_fact:7f70218f152d7565d36e7268": {
       "first_seen_kst": "2026-10-06T16:30:27+09:00",
       "lanes": {
@@ -332925,6 +333894,33 @@
       ],
       "source_published_kst": "2026-10-06T05:08+09:00",
       "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
+    },
+    "source_fact:7fead555e499b4109c473593": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634757",
+      "source": "이투데이",
+      "source_body_digest": "d7c3777e162e5936b8c8524e5b6bb74c94aeb05a3fd360e17a56eb4a16c79093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30d43012886f4600edc60790fd44b8131f7a31ce36b175ca6ac811f293a34f55",
+      "source_fact_keys": [
+        "source_fact:v1:2963c28daa9c05dfa5f6b9223638a7005d4e7ace0678379f047e801f282448ef",
+        "source_fact:v1:373eb6cbe2637951270d15c6175e922570a96025084d28f08604171a2aa27ca4",
+        "source_fact:v1:539d463da03a4abc1b1e040dd12c67ff3765193b56dd4b4133ff87f55db6e882",
+        "source_fact:v1:821e160dd1349abaa62fe7ed535aef45b833314e46f2e67b1dca57d07a642ea6",
+        "source_fact:v1:9c06d08ee12d95704fc856d0fab328786a3ed928769627e54d20746436c7887d",
+        "source_fact:v1:9e380e2f4cba95a26f15bd05096d21155511c944cabd34992e91cd4550a5490a",
+        "source_fact:v1:b949d043dda087c40e0353cf023d5b7b5762c19d898f66872f1f5b04be8e1311",
+        "source_fact:v1:e590f24ebe234ceee2f5445f660114a02a4b9a73ae094020c6efc56c71f706d7",
+        "source_fact:v1:fb3c369fb93ed97493167034b8d01f3203c2282a81155a4a1ffa21e665a8bf22"
+      ],
+      "source_published_kst": "2026-10-12T18:00+09:00",
+      "source_title": "마이크론은 10% 뛰는데 삼전·하닉은 뒷걸음…메모리 호황 속 ‘엇갈린 성적표’",
+      "telegram_core_fact": "한동희 SK증권 연구원은 “원·달러 환율 가정을 7% 낮췄음에도 2027년 이익 전망을 상향한 것은 AI 메모리 수요 강세와 공급 부족, 장기공급계약이 견인하는 가격 강세 때문”이라며 “시장에서 우려하는 메모리 업황 둔화와 감익 시나리오는 실현되지 않을 것”이라고 말했다.",
+      "title": "마이크론은 10% 뛰는데 삼전·하닉은 뒷걸음…메모리 호황 속 ‘엇갈린 성적표’"
     },
     "source_fact:7ff01142a0636f2ccf340a33": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
@@ -336948,6 +337944,25 @@
       "source_title": "오비맥주, '한맥' 생맥주 성장성 확인… 카스 잇는 동력될까",
       "telegram_core_fact": "오비맥주가 카스에 이은 브랜드로 육성해온 '한맥'이 생맥주에서 성장의 돌파구를 찾고 있다. 업계에 따르면 오비맥주는 한맥 생맥주 판매량이 최근 증가한 데 따라 관련 마케팅을 더욱 확대한다.",
       "title": "오비맥주, '한맥' 생맥주 성장성 확인… 카스 잇는 동력될까"
+    },
+    "source_fact:85081931ed97d51720d39777": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822834",
+      "source": "뉴시스",
+      "source_body_digest": "b75778db123d3cb545fa31e5dc6fd37bf183f7e0c9f54c72d35df3a6ab2c944c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c812db9723229012640d071dbf4c8942ea3f139bd668e0d29ea336f2e017a0e",
+      "source_fact_keys": [
+        "source_fact:v1:f29d5af0cb491710d27e0551cb4c16eaff03e1a3fde5f4b4649a60dc7b6bf071"
+      ],
+      "source_published_kst": "2026-10-12T18:39+09:00",
+      "source_title": "한전 사장 \"기업의 전기료 선납으로 재무 문제 해결은 잘못\"",
+      "telegram_core_fact": "재무 문제 해결을 위한 한전채 발행과 관련해선 \"한전은 신용등급이 트리플 A 등급으로 한전채를 발행하면 사채 시장에서 일반기업들이 쓸어가기 때문에 일반 기업들의 자금 조달에 큰 문제가 생긴다\"며 \"한전은 할 수 있으면 사채를 발행하지 않는 것이 채권시장에 좋다고 생각하고 있다\"고 생각을 전했다.",
+      "title": "한전 사장 \"기업의 전기료 선납으로 재무 문제 해결은 잘못\""
     },
     "source_fact:850ca7d90011b6f0c43ee9c1": {
       "first_seen_kst": "2026-10-11T19:15:43+09:00",
@@ -346739,6 +347754,33 @@
       "source_published_kst": "2026-10-07T09:22+09:00",
       "title": "상한가 유도한 AI 공급계약, 금액 반토막…플리토 7% 급락"
     },
+    "source_fact:8fbab8b49e31b2f5cb1c74bd": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634757",
+      "source": "이투데이",
+      "source_body_digest": "d7c3777e162e5936b8c8524e5b6bb74c94aeb05a3fd360e17a56eb4a16c79093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30d43012886f4600edc60790fd44b8131f7a31ce36b175ca6ac811f293a34f55",
+      "source_fact_keys": [
+        "source_fact:v1:2963c28daa9c05dfa5f6b9223638a7005d4e7ace0678379f047e801f282448ef",
+        "source_fact:v1:373eb6cbe2637951270d15c6175e922570a96025084d28f08604171a2aa27ca4",
+        "source_fact:v1:539d463da03a4abc1b1e040dd12c67ff3765193b56dd4b4133ff87f55db6e882",
+        "source_fact:v1:821e160dd1349abaa62fe7ed535aef45b833314e46f2e67b1dca57d07a642ea6",
+        "source_fact:v1:9c06d08ee12d95704fc856d0fab328786a3ed928769627e54d20746436c7887d",
+        "source_fact:v1:9e380e2f4cba95a26f15bd05096d21155511c944cabd34992e91cd4550a5490a",
+        "source_fact:v1:b949d043dda087c40e0353cf023d5b7b5762c19d898f66872f1f5b04be8e1311",
+        "source_fact:v1:e590f24ebe234ceee2f5445f660114a02a4b9a73ae094020c6efc56c71f706d7",
+        "source_fact:v1:fb3c369fb93ed97493167034b8d01f3203c2282a81155a4a1ffa21e665a8bf22"
+      ],
+      "source_published_kst": "2026-10-12T18:00+09:00",
+      "source_title": "마이크론은 10% 뛰는데 삼전·하닉은 뒷걸음…메모리 호황 속 ‘엇갈린 성적표’",
+      "telegram_core_fact": "한동희 SK증권 연구원은 “원·달러 환율 가정을 7% 낮췄음에도 2027년 이익 전망을 상향한 것은 AI 메모리 수요 강세와 공급 부족, 장기공급계약이 견인하는 가격 강세 때문”이라며 “시장에서 우려하는 메모리 업황 둔화와 감익 시나리오는 실현되지 않을 것”이라고 말했다.",
+      "title": "마이크론은 10% 뛰는데 삼전·하닉은 뒷걸음…메모리 호황 속 ‘엇갈린 성적표’"
+    },
     "source_fact:8fbbb2622eab42ee5026d80d": {
       "first_seen_kst": "2026-10-11T13:18:03+09:00",
       "lanes": {
@@ -348941,6 +349983,28 @@
       "source_title": "관세 수입 줄고, 국채 이자 늘어…美 재정적자 2조달러 문턱",
       "telegram_core_fact": "도널드 트럼프 미국 행정부는 2기 출범 후 연방정부 인력 감축, 친환경 에너지 세액공제 축소 등 지출 삭감, 고율 관세 부과 정책으로 재정적자 문제 해결에 나섰다.",
       "title": "관세 수입 줄고, 국채 이자 늘어…美 재정적자 2조달러 문턱"
+    },
+    "source_fact:92691ca5762c6ffb012c7f8b": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173080",
+      "source": "매일경제",
+      "source_body_digest": "a85678beee6361e37f5049baa72b0a56dc78434a6a736889b5428de943609618",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9641674e24213b5eff38e642d53fa3d5ace866245427b3dcdf7c565a0748af0e",
+      "source_fact_keys": [
+        "source_fact:v1:2f61110342f648c6312d7db2725576d78a17e726025270004145aa80189417ea",
+        "source_fact:v1:927f55e906a46d7b7858ebbe9cca4f309380d10b102cc2626a07f0d1a1609fc1",
+        "source_fact:v1:9c8d85a31394d003840effdfb14ccc2b09518868bcf9bc2290371a90b16c3ba6",
+        "source_fact:v1:e925b53a99b77b51a024d33aa891150a628c7f66b6611565660599f697745b55"
+      ],
+      "source_published_kst": "2026-10-12T17:28+09:00",
+      "source_title": "서학개미, 美반도체 3배 레버리지 폭풍매수",
+      "telegram_core_fact": "미국 반도체 기업에 분산 투자하는 '아이셰어스 반도체 ETF'(SOXX)는 같은 기간 5516만달러가 순매수되며 전체 3위에 올랐다. 반도체 지수의 하루 수익률을 3배로 추종하는 레버리지 ETF가 해외 주식 순매수 1위에 오른 가운데 반도체 업종 전반에 투자하는 ETF와 개별 반도체 기업에도 매수세가 집중됐다.",
+      "title": "서학개미, 美반도체 3배 레버리지 폭풍매수"
     },
     "source_fact:927d679fff9db89bf55f4bac": {
       "first_seen_kst": "2026-10-11T15:29:02+09:00",
@@ -354167,6 +355231,28 @@
       "telegram_core_fact": "은행 업종은 밸류업 프로그램 이후 총주주환원율이 과거 20%대에서 50%대로 높아졌고, 주가순자산비율(P/B) 역시 0.3~0.4배 수준에서 0.7~0.9배까지 상승했다.",
       "title": "주춤한 은행주⋯증권가 “4분기 마진 개선·주주환원이 기폭제”"
     },
+    "source_fact:987d6ed635fd5ea85ad79a5b": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822757",
+      "source": "뉴시스",
+      "source_body_digest": "5e5c9ed8503e30721562705086ee32b5847922ebcc1e210df177348092db13ff",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c7c8f4d5d036b2fe472201af18eed674d06f6becaaeb5c0388c96c83c5a7a470",
+      "source_fact_keys": [
+        "source_fact:v1:14454dee60c9b610dc684c1481ab92c672b90d39fa734cbbe9c2ba4cb636e247",
+        "source_fact:v1:550ddd5a0c0025bd7709a63f36893af4968d9391bd1dea323b4d875249ac6a06",
+        "source_fact:v1:60c19dfa0b63dac729da60ad20f7535afb842aeba3fd4a1a5c1fad56d2620679",
+        "source_fact:v1:ae4ccbedc0f7225b7bf120b0f45e4a32110aecb9e8a16d1705d9ae8b841f12c1"
+      ],
+      "source_published_kst": "2026-10-12T18:06+09:00",
+      "source_title": "中, 대만 수교국 파라과이 장관 등 제재…\"내정에 간섭\"(종합)",
+      "telegram_core_fact": "문예성 기자, 박정규 특파원 = 중국 정부가 대만과 외교관계를 유지하고 있는 파라과이와 벨리즈의 장관 2명을 상대로 자산 동결과 입국 금지 등 제재 조치를 발표했다.",
+      "title": "中, 대만 수교국 파라과이 장관 등 제재…\"내정에 간섭\"(종합)"
+    },
     "source_fact:9882e333cd2019a1b8e97351": {
       "first_seen_kst": "2026-10-06T00:03:48+09:00",
       "lanes": {
@@ -356300,6 +357386,33 @@
       "telegram_core_fact": "예견된 환율 하락의 역풍3분기 연결기준 매출액은 전년 대비 42% 증가한 4250억원, 영업이익은 전년 대비 25% 늘어난 790억원으로 컨센서스 영업이익을 10% 하회할 것으로 추정된다.",
       "title": "실리콘투, 환율이 안정된다면 [베스트 애널리스트 추천 종목]"
     },
+    "source_fact:9ad65136a0b4e5629126c36d": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634757",
+      "source": "이투데이",
+      "source_body_digest": "d7c3777e162e5936b8c8524e5b6bb74c94aeb05a3fd360e17a56eb4a16c79093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30d43012886f4600edc60790fd44b8131f7a31ce36b175ca6ac811f293a34f55",
+      "source_fact_keys": [
+        "source_fact:v1:2963c28daa9c05dfa5f6b9223638a7005d4e7ace0678379f047e801f282448ef",
+        "source_fact:v1:373eb6cbe2637951270d15c6175e922570a96025084d28f08604171a2aa27ca4",
+        "source_fact:v1:539d463da03a4abc1b1e040dd12c67ff3765193b56dd4b4133ff87f55db6e882",
+        "source_fact:v1:821e160dd1349abaa62fe7ed535aef45b833314e46f2e67b1dca57d07a642ea6",
+        "source_fact:v1:9c06d08ee12d95704fc856d0fab328786a3ed928769627e54d20746436c7887d",
+        "source_fact:v1:9e380e2f4cba95a26f15bd05096d21155511c944cabd34992e91cd4550a5490a",
+        "source_fact:v1:b949d043dda087c40e0353cf023d5b7b5762c19d898f66872f1f5b04be8e1311",
+        "source_fact:v1:e590f24ebe234ceee2f5445f660114a02a4b9a73ae094020c6efc56c71f706d7",
+        "source_fact:v1:fb3c369fb93ed97493167034b8d01f3203c2282a81155a4a1ffa21e665a8bf22"
+      ],
+      "source_published_kst": "2026-10-12T18:00+09:00",
+      "source_title": "마이크론은 10% 뛰는데 삼전·하닉은 뒷걸음…메모리 호황 속 ‘엇갈린 성적표’",
+      "telegram_core_fact": "한동희 SK증권 연구원은 “원·달러 환율 가정을 7% 낮췄음에도 2027년 이익 전망을 상향한 것은 AI 메모리 수요 강세와 공급 부족, 장기공급계약이 견인하는 가격 강세 때문”이라며 “시장에서 우려하는 메모리 업황 둔화와 감익 시나리오는 실현되지 않을 것”이라고 말했다.",
+      "title": "마이크론은 10% 뛰는데 삼전·하닉은 뒷걸음…메모리 호황 속 ‘엇갈린 성적표’"
+    },
     "source_fact:9ad7158e8dabd82164fac998": {
       "first_seen_kst": "2026-10-09T19:43:36+09:00",
       "lanes": {
@@ -357481,6 +358594,28 @@
       ],
       "source_published_kst": "2026-10-06T09:30+09:00",
       "title": "\"美 대표지수 ETF 사고 미국 가자\"…한투운용, 항공 기프트카드 증정"
+    },
+    "source_fact:9c500936c0fedd3fea3a5235": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04204966645612264",
+      "source": "이데일리",
+      "source_body_digest": "b76ba6e45fda9191995f5cd8d514b40f291e84e7d22975280b250f2ff45c4138",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:173eb6805f3db207a137c030b41e0430978b87552c694c695d327ee096851018",
+      "source_fact_keys": [
+        "source_fact:v1:3f2631e88b39a77d92068776799580d5447e24dccc2e4810b1fa516049b3f3eb",
+        "source_fact:v1:4be96c25783161e892542a4727133e2303cb62a2b46a7154613d692475e502e5",
+        "source_fact:v1:4d7774744a66888f41e1ddde877e7a193767cf6eb041321f74458591b45ab816",
+        "source_fact:v1:ca77da54e3d2c33b86fdb1b9e6c7e5609b2b2fe1e5048bea344c0ea11eb109db"
+      ],
+      "source_published_kst": "2026-10-12T18:00+09:00",
+      "source_title": "코트라, EU 포장폐기물 규정 대응 21개국 EPR 보고서 발간",
+      "telegram_core_fact": "코트라는 지난해 유럽연합 포장 및 포장 폐기물 규정의 주요 내용과 올해 실무 문답 자료를 발간하고 규제 본격 시행 전후 두 차례 유럽연합 포장 및 포장 폐기물 규정 대응 화상 설명회를 개최해 우리 기업의 규제 대응을 지원해 왔다.",
+      "title": "코트라, EU 포장폐기물 규정 대응 21개국 EPR 보고서 발간"
     },
     "source_fact:9c5863e39c2bd16a1dbad7a4": {
       "first_seen_kst": "2026-10-10T06:02:39+09:00",
@@ -359765,6 +360900,34 @@
       "telegram_core_fact": "유전 특화 생산·유지보수 장비 업체 스택(STAK)이 클래스B 보통주 1주당 의결권을 30표에서 100표로 상향하는 안건과 액면가 감액·수권주식 1만 배 확대 안건이 클래스A 주주총회와 임시주주총회(EGM)에서 모두 가결됐다고 10월 9일 발표했다.",
       "title": "스택, 클래스B 의결권 100표로 상향..수권주식 1만배"
     },
+    "source_fact:9ee8b3e1d11e44499e204b51": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/12/2026101214213521243",
+      "source": "머니투데이",
+      "source_body_digest": "d7675377e370c3e9635f6cac4eb809e182fc044114e001c93eda0e302767d268",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fc4a59be58d3fd9e97a1c02618b5fd95dfd860d5f8ba07b9b6e98a5f2aaf3403",
+      "source_fact_keys": [
+        "source_fact:v1:31428b46d92a31563fde4337e68cd24f2ce735cde0cd0fcd0142dafb72bf1e12",
+        "source_fact:v1:441d9369e43bad4fda5f35ac0fdb82f793621e4bbb51106d3be45dc4f74dcf1c",
+        "source_fact:v1:4baec211dbd6b182eafe514f647c688d678e00cb209139e8bcd1bbe6c7faf8b4",
+        "source_fact:v1:5bfee031f0595ece7ec271c73976d39efbc1f507d78467b77859b41ceac2fbc2",
+        "source_fact:v1:7c3fa3b42f7f836377f61583c5f5e7dd887e793c2c56dadc49c4a4cd55e5f0f6",
+        "source_fact:v1:854a8f6588b73b619afd756d7289109916695f4a798b187388a5accff1e7ae46",
+        "source_fact:v1:88ac23173d0379dda49b4f1ca78cae2ef218ed8c3dbdea9bfaf7ffb5fe2f1b5c",
+        "source_fact:v1:bc0d0db14c701be2a15adbd2cef48d606e5c85059a7854b94c6872d382ffeb8b",
+        "source_fact:v1:e2219514ccd86eb05db335f669bcdfc786831b5f372473616c52b7e0ff3d3147",
+        "source_fact:v1:f7f5a6c7fb6283c166eee5c164bf716df3e2bf5844b4c12eb672cd6daea13f71"
+      ],
+      "source_published_kst": "2026-10-12T17:30+09:00",
+      "source_title": "건설기계 바닥 다졌나..비철금속·AIDC 수요 딛고 턴어라운드",
+      "telegram_core_fact": "비철금속을 중심으로 광산 투자가 확대되는 가운데 인공지능(AI) 데이터센터 건설까지 가세하면서 비주택 시장을 중심으로 건설장비 수요가 늘고 있어서다.",
+      "title": "건설기계 바닥 다졌나..비철금속·AIDC 수요 딛고 턴어라운드"
+    },
     "source_fact:9eefbe66d3bcdbd012ac32e6": {
       "first_seen_kst": "2026-10-08T07:12:10+09:00",
       "lanes": {
@@ -361882,6 +363045,34 @@
       "source_title": "\"물가 상승, 유가·환율 때문인데 왜 금리 올렸나\"…한은 답변은",
       "telegram_core_fact": "신 총재는 “중앙은행은 전체 경제 총량을 보고 통화정책을 펴는 것이 옳다”며, 소득 여건 개선에 다소 시간이 걸리더라도 전반적인 경제 흐름과 금융안정 리스크, 물가 상승세 확산 방지를 고려해 금리 인상이 불가피했음을 설명했다.",
       "title": "\"물가 상승, 유가·환율 때문인데 왜 금리 올렸나\"…한은 답변은"
+    },
+    "source_fact:a148de4b79d4ab82d836fedd": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/12/2026101214213521243",
+      "source": "머니투데이",
+      "source_body_digest": "d7675377e370c3e9635f6cac4eb809e182fc044114e001c93eda0e302767d268",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fc4a59be58d3fd9e97a1c02618b5fd95dfd860d5f8ba07b9b6e98a5f2aaf3403",
+      "source_fact_keys": [
+        "source_fact:v1:31428b46d92a31563fde4337e68cd24f2ce735cde0cd0fcd0142dafb72bf1e12",
+        "source_fact:v1:441d9369e43bad4fda5f35ac0fdb82f793621e4bbb51106d3be45dc4f74dcf1c",
+        "source_fact:v1:4baec211dbd6b182eafe514f647c688d678e00cb209139e8bcd1bbe6c7faf8b4",
+        "source_fact:v1:5bfee031f0595ece7ec271c73976d39efbc1f507d78467b77859b41ceac2fbc2",
+        "source_fact:v1:7c3fa3b42f7f836377f61583c5f5e7dd887e793c2c56dadc49c4a4cd55e5f0f6",
+        "source_fact:v1:854a8f6588b73b619afd756d7289109916695f4a798b187388a5accff1e7ae46",
+        "source_fact:v1:88ac23173d0379dda49b4f1ca78cae2ef218ed8c3dbdea9bfaf7ffb5fe2f1b5c",
+        "source_fact:v1:bc0d0db14c701be2a15adbd2cef48d606e5c85059a7854b94c6872d382ffeb8b",
+        "source_fact:v1:e2219514ccd86eb05db335f669bcdfc786831b5f372473616c52b7e0ff3d3147",
+        "source_fact:v1:f7f5a6c7fb6283c166eee5c164bf716df3e2bf5844b4c12eb672cd6daea13f71"
+      ],
+      "source_published_kst": "2026-10-12T17:30+09:00",
+      "source_title": "건설기계 바닥 다졌나..비철금속·AIDC 수요 딛고 턴어라운드",
+      "telegram_core_fact": "비철금속을 중심으로 광산 투자가 확대되는 가운데 인공지능(AI) 데이터센터 건설까지 가세하면서 비주택 시장을 중심으로 건설장비 수요가 늘고 있어서다.",
+      "title": "건설기계 바닥 다졌나..비철금속·AIDC 수요 딛고 턴어라운드"
     },
     "source_fact:a152e0a1294e1537509e6632": {
       "first_seen_kst": "2026-10-11T18:34:27+09:00",
@@ -373875,6 +375066,28 @@
       ],
       "source_published_kst": "2026-10-06T12:08+09:00",
       "title": "삼성전기, 2856억 MLCC 추가 수주…올해 공급계약 약 4조원 추산(종합)"
+    },
+    "source_fact:af63fe5eda3a4f017dd79a28": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04204966645612264",
+      "source": "이데일리",
+      "source_body_digest": "b76ba6e45fda9191995f5cd8d514b40f291e84e7d22975280b250f2ff45c4138",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:173eb6805f3db207a137c030b41e0430978b87552c694c695d327ee096851018",
+      "source_fact_keys": [
+        "source_fact:v1:3f2631e88b39a77d92068776799580d5447e24dccc2e4810b1fa516049b3f3eb",
+        "source_fact:v1:4be96c25783161e892542a4727133e2303cb62a2b46a7154613d692475e502e5",
+        "source_fact:v1:4d7774744a66888f41e1ddde877e7a193767cf6eb041321f74458591b45ab816",
+        "source_fact:v1:ca77da54e3d2c33b86fdb1b9e6c7e5609b2b2fe1e5048bea344c0ea11eb109db"
+      ],
+      "source_published_kst": "2026-10-12T18:00+09:00",
+      "source_title": "코트라, EU 포장폐기물 규정 대응 21개국 EPR 보고서 발간",
+      "telegram_core_fact": "코트라는 지난해 유럽연합 포장 및 포장 폐기물 규정의 주요 내용과 올해 실무 문답 자료를 발간하고 규제 본격 시행 전후 두 차례 유럽연합 포장 및 포장 폐기물 규정 대응 화상 설명회를 개최해 우리 기업의 규제 대응을 지원해 왔다.",
+      "title": "코트라, EU 포장폐기물 규정 대응 21개국 EPR 보고서 발간"
     },
     "source_fact:af683856d25d705e1b787d24": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
@@ -386891,6 +388104,33 @@
       "source_title": "후티 공격에 요격미사일 바닥난 사우디…파키스탄 등에 지원 요청",
       "telegram_core_fact": "사우디 당국자들은 올여름까지만 해도 후티 반군과의 상황이 통제되고 있다고 설명했지만, 이후 후티의 공세가 강화되면서 홍해 연안의 예멘 주요 거점을 잃고 사우디 본토 공항과 석유 시설까지 공격받고 있다.",
       "title": "후티 공격에 요격미사일 바닥난 사우디…파키스탄 등에 지원 요청"
+    },
+    "source_fact:beafca47410e1a62191cd719": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634757",
+      "source": "이투데이",
+      "source_body_digest": "d7c3777e162e5936b8c8524e5b6bb74c94aeb05a3fd360e17a56eb4a16c79093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30d43012886f4600edc60790fd44b8131f7a31ce36b175ca6ac811f293a34f55",
+      "source_fact_keys": [
+        "source_fact:v1:2963c28daa9c05dfa5f6b9223638a7005d4e7ace0678379f047e801f282448ef",
+        "source_fact:v1:373eb6cbe2637951270d15c6175e922570a96025084d28f08604171a2aa27ca4",
+        "source_fact:v1:539d463da03a4abc1b1e040dd12c67ff3765193b56dd4b4133ff87f55db6e882",
+        "source_fact:v1:821e160dd1349abaa62fe7ed535aef45b833314e46f2e67b1dca57d07a642ea6",
+        "source_fact:v1:9c06d08ee12d95704fc856d0fab328786a3ed928769627e54d20746436c7887d",
+        "source_fact:v1:9e380e2f4cba95a26f15bd05096d21155511c944cabd34992e91cd4550a5490a",
+        "source_fact:v1:b949d043dda087c40e0353cf023d5b7b5762c19d898f66872f1f5b04be8e1311",
+        "source_fact:v1:e590f24ebe234ceee2f5445f660114a02a4b9a73ae094020c6efc56c71f706d7",
+        "source_fact:v1:fb3c369fb93ed97493167034b8d01f3203c2282a81155a4a1ffa21e665a8bf22"
+      ],
+      "source_published_kst": "2026-10-12T18:00+09:00",
+      "source_title": "마이크론은 10% 뛰는데 삼전·하닉은 뒷걸음…메모리 호황 속 ‘엇갈린 성적표’",
+      "telegram_core_fact": "한동희 SK증권 연구원은 “원·달러 환율 가정을 7% 낮췄음에도 2027년 이익 전망을 상향한 것은 AI 메모리 수요 강세와 공급 부족, 장기공급계약이 견인하는 가격 강세 때문”이라며 “시장에서 우려하는 메모리 업황 둔화와 감익 시나리오는 실현되지 않을 것”이라고 말했다.",
+      "title": "마이크론은 10% 뛰는데 삼전·하닉은 뒷걸음…메모리 호황 속 ‘엇갈린 성적표’"
     },
     "source_fact:bec49cb877b1fdd2dd2b9320": {
       "first_seen_kst": "2026-10-07T16:44:58+09:00",
@@ -403734,6 +404974,33 @@
       "telegram_core_fact": "콘텐츠 IP 커머셜라이징 기업 페퍼앤솔트가 올해 상반기 매출 131억원을 기록한 가운데, 하반기에는 K-SNS 캐릭터의 해외 유통망 구축과 글로벌 IP 사업 확대에 나선다.",
       "title": "페퍼앤솔트, 상반기 매출 131억원 기록…K-캐릭터 해외 진출 본격화"
     },
+    "source_fact:d1f0e87e7c016bd178b1cfa5": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634757",
+      "source": "이투데이",
+      "source_body_digest": "d7c3777e162e5936b8c8524e5b6bb74c94aeb05a3fd360e17a56eb4a16c79093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30d43012886f4600edc60790fd44b8131f7a31ce36b175ca6ac811f293a34f55",
+      "source_fact_keys": [
+        "source_fact:v1:2963c28daa9c05dfa5f6b9223638a7005d4e7ace0678379f047e801f282448ef",
+        "source_fact:v1:373eb6cbe2637951270d15c6175e922570a96025084d28f08604171a2aa27ca4",
+        "source_fact:v1:539d463da03a4abc1b1e040dd12c67ff3765193b56dd4b4133ff87f55db6e882",
+        "source_fact:v1:821e160dd1349abaa62fe7ed535aef45b833314e46f2e67b1dca57d07a642ea6",
+        "source_fact:v1:9c06d08ee12d95704fc856d0fab328786a3ed928769627e54d20746436c7887d",
+        "source_fact:v1:9e380e2f4cba95a26f15bd05096d21155511c944cabd34992e91cd4550a5490a",
+        "source_fact:v1:b949d043dda087c40e0353cf023d5b7b5762c19d898f66872f1f5b04be8e1311",
+        "source_fact:v1:e590f24ebe234ceee2f5445f660114a02a4b9a73ae094020c6efc56c71f706d7",
+        "source_fact:v1:fb3c369fb93ed97493167034b8d01f3203c2282a81155a4a1ffa21e665a8bf22"
+      ],
+      "source_published_kst": "2026-10-12T18:00+09:00",
+      "source_title": "마이크론은 10% 뛰는데 삼전·하닉은 뒷걸음…메모리 호황 속 ‘엇갈린 성적표’",
+      "telegram_core_fact": "한동희 SK증권 연구원은 “원·달러 환율 가정을 7% 낮췄음에도 2027년 이익 전망을 상향한 것은 AI 메모리 수요 강세와 공급 부족, 장기공급계약이 견인하는 가격 강세 때문”이라며 “시장에서 우려하는 메모리 업황 둔화와 감익 시나리오는 실현되지 않을 것”이라고 말했다.",
+      "title": "마이크론은 10% 뛰는데 삼전·하닉은 뒷걸음…메모리 호황 속 ‘엇갈린 성적표’"
+    },
     "source_fact:d20376d7e7f63546ebcca2de": {
       "first_seen_kst": "2026-10-11T11:01:00+09:00",
       "lanes": {
@@ -405679,6 +406946,61 @@
       "source_title": "韓·中·日 바이오 수주 삼국지 …\"올해 키워드는 생산 유연성\"",
       "telegram_core_fact": "이탈리아 'CPHI 밀라노 2026'에서 글로벌 생명공학 기업 알보텍과 생산 수주 계약을 체결한 직후 일본으로 날아온 그는 아침부터 고객사 미팅에 참여했다.",
       "title": "韓·中·日 바이오 수주 삼국지 …\"올해 키워드는 생산 유연성\""
+    },
+    "source_fact:d4340392b4f9d24467354204": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/12/2026101214213521243",
+      "source": "머니투데이",
+      "source_body_digest": "d7675377e370c3e9635f6cac4eb809e182fc044114e001c93eda0e302767d268",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fc4a59be58d3fd9e97a1c02618b5fd95dfd860d5f8ba07b9b6e98a5f2aaf3403",
+      "source_fact_keys": [
+        "source_fact:v1:31428b46d92a31563fde4337e68cd24f2ce735cde0cd0fcd0142dafb72bf1e12",
+        "source_fact:v1:441d9369e43bad4fda5f35ac0fdb82f793621e4bbb51106d3be45dc4f74dcf1c",
+        "source_fact:v1:4baec211dbd6b182eafe514f647c688d678e00cb209139e8bcd1bbe6c7faf8b4",
+        "source_fact:v1:5bfee031f0595ece7ec271c73976d39efbc1f507d78467b77859b41ceac2fbc2",
+        "source_fact:v1:7c3fa3b42f7f836377f61583c5f5e7dd887e793c2c56dadc49c4a4cd55e5f0f6",
+        "source_fact:v1:854a8f6588b73b619afd756d7289109916695f4a798b187388a5accff1e7ae46",
+        "source_fact:v1:88ac23173d0379dda49b4f1ca78cae2ef218ed8c3dbdea9bfaf7ffb5fe2f1b5c",
+        "source_fact:v1:bc0d0db14c701be2a15adbd2cef48d606e5c85059a7854b94c6872d382ffeb8b",
+        "source_fact:v1:e2219514ccd86eb05db335f669bcdfc786831b5f372473616c52b7e0ff3d3147",
+        "source_fact:v1:f7f5a6c7fb6283c166eee5c164bf716df3e2bf5844b4c12eb672cd6daea13f71"
+      ],
+      "source_published_kst": "2026-10-12T17:30+09:00",
+      "source_title": "건설기계 바닥 다졌나..비철금속·AIDC 수요 딛고 턴어라운드",
+      "telegram_core_fact": "비철금속을 중심으로 광산 투자가 확대되는 가운데 인공지능(AI) 데이터센터 건설까지 가세하면서 비주택 시장을 중심으로 건설장비 수요가 늘고 있어서다.",
+      "title": "건설기계 바닥 다졌나..비철금속·AIDC 수요 딛고 턴어라운드"
+    },
+    "source_fact:d43cb2f84ed91f42450d736b": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634757",
+      "source": "이투데이",
+      "source_body_digest": "d7c3777e162e5936b8c8524e5b6bb74c94aeb05a3fd360e17a56eb4a16c79093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30d43012886f4600edc60790fd44b8131f7a31ce36b175ca6ac811f293a34f55",
+      "source_fact_keys": [
+        "source_fact:v1:2963c28daa9c05dfa5f6b9223638a7005d4e7ace0678379f047e801f282448ef",
+        "source_fact:v1:373eb6cbe2637951270d15c6175e922570a96025084d28f08604171a2aa27ca4",
+        "source_fact:v1:539d463da03a4abc1b1e040dd12c67ff3765193b56dd4b4133ff87f55db6e882",
+        "source_fact:v1:821e160dd1349abaa62fe7ed535aef45b833314e46f2e67b1dca57d07a642ea6",
+        "source_fact:v1:9c06d08ee12d95704fc856d0fab328786a3ed928769627e54d20746436c7887d",
+        "source_fact:v1:9e380e2f4cba95a26f15bd05096d21155511c944cabd34992e91cd4550a5490a",
+        "source_fact:v1:b949d043dda087c40e0353cf023d5b7b5762c19d898f66872f1f5b04be8e1311",
+        "source_fact:v1:e590f24ebe234ceee2f5445f660114a02a4b9a73ae094020c6efc56c71f706d7",
+        "source_fact:v1:fb3c369fb93ed97493167034b8d01f3203c2282a81155a4a1ffa21e665a8bf22"
+      ],
+      "source_published_kst": "2026-10-12T18:00+09:00",
+      "source_title": "마이크론은 10% 뛰는데 삼전·하닉은 뒷걸음…메모리 호황 속 ‘엇갈린 성적표’",
+      "telegram_core_fact": "한동희 SK증권 연구원은 “원·달러 환율 가정을 7% 낮췄음에도 2027년 이익 전망을 상향한 것은 AI 메모리 수요 강세와 공급 부족, 장기공급계약이 견인하는 가격 강세 때문”이라며 “시장에서 우려하는 메모리 업황 둔화와 감익 시나리오는 실현되지 않을 것”이라고 말했다.",
+      "title": "마이크론은 10% 뛰는데 삼전·하닉은 뒷걸음…메모리 호황 속 ‘엇갈린 성적표’"
     },
     "source_fact:d44462e9ed85c279054b50fe": {
       "first_seen_kst": "2026-10-11T12:33:27+09:00",
@@ -409578,6 +410900,34 @@
       "source_published_kst": "2026-10-06T06:27+09:00",
       "title": "뉴욕 증시, 국채 금리 급등에도 나스닥 사상 최고치"
     },
+    "source_fact:d7f3f641b8dc8699a48c6ff4": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/12/2026101214213521243",
+      "source": "머니투데이",
+      "source_body_digest": "d7675377e370c3e9635f6cac4eb809e182fc044114e001c93eda0e302767d268",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fc4a59be58d3fd9e97a1c02618b5fd95dfd860d5f8ba07b9b6e98a5f2aaf3403",
+      "source_fact_keys": [
+        "source_fact:v1:31428b46d92a31563fde4337e68cd24f2ce735cde0cd0fcd0142dafb72bf1e12",
+        "source_fact:v1:441d9369e43bad4fda5f35ac0fdb82f793621e4bbb51106d3be45dc4f74dcf1c",
+        "source_fact:v1:4baec211dbd6b182eafe514f647c688d678e00cb209139e8bcd1bbe6c7faf8b4",
+        "source_fact:v1:5bfee031f0595ece7ec271c73976d39efbc1f507d78467b77859b41ceac2fbc2",
+        "source_fact:v1:7c3fa3b42f7f836377f61583c5f5e7dd887e793c2c56dadc49c4a4cd55e5f0f6",
+        "source_fact:v1:854a8f6588b73b619afd756d7289109916695f4a798b187388a5accff1e7ae46",
+        "source_fact:v1:88ac23173d0379dda49b4f1ca78cae2ef218ed8c3dbdea9bfaf7ffb5fe2f1b5c",
+        "source_fact:v1:bc0d0db14c701be2a15adbd2cef48d606e5c85059a7854b94c6872d382ffeb8b",
+        "source_fact:v1:e2219514ccd86eb05db335f669bcdfc786831b5f372473616c52b7e0ff3d3147",
+        "source_fact:v1:f7f5a6c7fb6283c166eee5c164bf716df3e2bf5844b4c12eb672cd6daea13f71"
+      ],
+      "source_published_kst": "2026-10-12T17:30+09:00",
+      "source_title": "건설기계 바닥 다졌나..비철금속·AIDC 수요 딛고 턴어라운드",
+      "telegram_core_fact": "비철금속을 중심으로 광산 투자가 확대되는 가운데 인공지능(AI) 데이터센터 건설까지 가세하면서 비주택 시장을 중심으로 건설장비 수요가 늘고 있어서다.",
+      "title": "건설기계 바닥 다졌나..비철금속·AIDC 수요 딛고 턴어라운드"
+    },
     "source_fact:d7f9381b29477f27c0748420": {
       "first_seen_kst": "2026-10-07T14:18:25+09:00",
       "lanes": {
@@ -411170,6 +412520,34 @@
       ],
       "source_published_kst": "2026-10-06T07:26+09:00",
       "title": "\"리노공업, CPO 수혜주…목표가 10만원으로 상향\"-DS"
+    },
+    "source_fact:d9ecb05470fdee2c8f2720e1": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/12/2026101214213521243",
+      "source": "머니투데이",
+      "source_body_digest": "d7675377e370c3e9635f6cac4eb809e182fc044114e001c93eda0e302767d268",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fc4a59be58d3fd9e97a1c02618b5fd95dfd860d5f8ba07b9b6e98a5f2aaf3403",
+      "source_fact_keys": [
+        "source_fact:v1:31428b46d92a31563fde4337e68cd24f2ce735cde0cd0fcd0142dafb72bf1e12",
+        "source_fact:v1:441d9369e43bad4fda5f35ac0fdb82f793621e4bbb51106d3be45dc4f74dcf1c",
+        "source_fact:v1:4baec211dbd6b182eafe514f647c688d678e00cb209139e8bcd1bbe6c7faf8b4",
+        "source_fact:v1:5bfee031f0595ece7ec271c73976d39efbc1f507d78467b77859b41ceac2fbc2",
+        "source_fact:v1:7c3fa3b42f7f836377f61583c5f5e7dd887e793c2c56dadc49c4a4cd55e5f0f6",
+        "source_fact:v1:854a8f6588b73b619afd756d7289109916695f4a798b187388a5accff1e7ae46",
+        "source_fact:v1:88ac23173d0379dda49b4f1ca78cae2ef218ed8c3dbdea9bfaf7ffb5fe2f1b5c",
+        "source_fact:v1:bc0d0db14c701be2a15adbd2cef48d606e5c85059a7854b94c6872d382ffeb8b",
+        "source_fact:v1:e2219514ccd86eb05db335f669bcdfc786831b5f372473616c52b7e0ff3d3147",
+        "source_fact:v1:f7f5a6c7fb6283c166eee5c164bf716df3e2bf5844b4c12eb672cd6daea13f71"
+      ],
+      "source_published_kst": "2026-10-12T17:30+09:00",
+      "source_title": "건설기계 바닥 다졌나..비철금속·AIDC 수요 딛고 턴어라운드",
+      "telegram_core_fact": "비철금속을 중심으로 광산 투자가 확대되는 가운데 인공지능(AI) 데이터센터 건설까지 가세하면서 비주택 시장을 중심으로 건설장비 수요가 늘고 있어서다.",
+      "title": "건설기계 바닥 다졌나..비철금속·AIDC 수요 딛고 턴어라운드"
     },
     "source_fact:d9efb42b31262445fc02d6de": {
       "first_seen_kst": "2026-10-10T06:41:01+09:00",
@@ -417320,6 +418698,28 @@
       "source_title": "홍지선 국토장관 “수도권 주택 착공 목표 달성 어려워…80~88% 전망” [국감] [종합]",
       "telegram_core_fact": "정부는 착공 실적 부진을 만회하기 위해 신규택지와 공공택지를 중심으로 공급 속도를 높인다는 방침이다.",
       "title": "홍지선 국토장관 “수도권 주택 착공 목표 달성 어려워…80~88% 전망” [국감] [종합]"
+    },
+    "source_fact:e10b4d861dded7e7e8c4e0d2": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822757",
+      "source": "뉴시스",
+      "source_body_digest": "5e5c9ed8503e30721562705086ee32b5847922ebcc1e210df177348092db13ff",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c7c8f4d5d036b2fe472201af18eed674d06f6becaaeb5c0388c96c83c5a7a470",
+      "source_fact_keys": [
+        "source_fact:v1:14454dee60c9b610dc684c1481ab92c672b90d39fa734cbbe9c2ba4cb636e247",
+        "source_fact:v1:550ddd5a0c0025bd7709a63f36893af4968d9391bd1dea323b4d875249ac6a06",
+        "source_fact:v1:60c19dfa0b63dac729da60ad20f7535afb842aeba3fd4a1a5c1fad56d2620679",
+        "source_fact:v1:ae4ccbedc0f7225b7bf120b0f45e4a32110aecb9e8a16d1705d9ae8b841f12c1"
+      ],
+      "source_published_kst": "2026-10-12T18:06+09:00",
+      "source_title": "中, 대만 수교국 파라과이 장관 등 제재…\"내정에 간섭\"(종합)",
+      "telegram_core_fact": "문예성 기자, 박정규 특파원 = 중국 정부가 대만과 외교관계를 유지하고 있는 파라과이와 벨리즈의 장관 2명을 상대로 자산 동결과 입국 금지 등 제재 조치를 발표했다.",
+      "title": "中, 대만 수교국 파라과이 장관 등 제재…\"내정에 간섭\"(종합)"
     },
     "source_fact:e119cb6f6ba8c57ce82fce54": {
       "first_seen_kst": "2026-10-08T07:27:34+09:00",
@@ -430665,6 +432065,26 @@
       "source_published_kst": "2026-10-06T13:24+09:00",
       "title": "통합항공사 뜨자 남은 10.58%…산은, 한진칼 지분 '엑시트 셈법' 관심집중 [fn마켓워치]"
     },
+    "source_fact:efa71fbc4349aca5273a28e1": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822762",
+      "source": "뉴시스",
+      "source_body_digest": "e97020dacdad2277dc1d13f16d678c6d0eb38ad0e2914ae8da6f435cbf5ba1e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e74d58a2abb794d8a947f124d2b64e792c99d84bf766286dd30bc51697b94d77",
+      "source_fact_keys": [
+        "source_fact:v1:3dfda430e1ae16d5c10e6ca1af072d61c9598a57f0f4dbe251dc40ea38b12ebb",
+        "source_fact:v1:db1c591770e55c15d850ada3d79d06255f0ce610436b11268188a2c1ab75eef2"
+      ],
+      "source_published_kst": "2026-10-12T17:43+09:00",
+      "source_title": "조달청, 평가위원 사전접촉시 교섭 정지…부적합 2회 판정시 해촉",
+      "telegram_core_fact": "조달청이 평가위원의 사전접촉 행위가 확인되면 해촉하고 비위행위 사전 조회를 기존 건설분야에서 모든 평가분야로 확대하는 등 평가위원 제재기준을 대폭 강화했다.",
+      "title": "조달청, 평가위원 사전접촉시 교섭 정지…부적합 2회 판정시 해촉"
+    },
     "source_fact:efb3a204039531f74385a78d": {
       "first_seen_kst": "2026-10-10T23:07:35+09:00",
       "lanes": {
@@ -433707,6 +435127,28 @@
       "source_title": "두나무·네이버파이낸셜 빅딜 내년 3월로 또 연기",
       "telegram_core_fact": "네이버가 공시한 ‘주식교환·이전 결정’ 정정공시에 따르면 네이버파이낸셜과 두나무의 주식교환일은 기존 올해 12월 31일에서 내년 3월 31일로 변경됐다. 주식교환 비율은 네이버파이낸셜 1주당 두나무 2.5422618주다.",
       "title": "두나무·네이버파이낸셜 빅딜 내년 3월로 또 연기"
+    },
+    "source_fact:f378b61c3423cc890316b45d": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822757",
+      "source": "뉴시스",
+      "source_body_digest": "5e5c9ed8503e30721562705086ee32b5847922ebcc1e210df177348092db13ff",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c7c8f4d5d036b2fe472201af18eed674d06f6becaaeb5c0388c96c83c5a7a470",
+      "source_fact_keys": [
+        "source_fact:v1:14454dee60c9b610dc684c1481ab92c672b90d39fa734cbbe9c2ba4cb636e247",
+        "source_fact:v1:550ddd5a0c0025bd7709a63f36893af4968d9391bd1dea323b4d875249ac6a06",
+        "source_fact:v1:60c19dfa0b63dac729da60ad20f7535afb842aeba3fd4a1a5c1fad56d2620679",
+        "source_fact:v1:ae4ccbedc0f7225b7bf120b0f45e4a32110aecb9e8a16d1705d9ae8b841f12c1"
+      ],
+      "source_published_kst": "2026-10-12T18:06+09:00",
+      "source_title": "中, 대만 수교국 파라과이 장관 등 제재…\"내정에 간섭\"(종합)",
+      "telegram_core_fact": "문예성 기자, 박정규 특파원 = 중국 정부가 대만과 외교관계를 유지하고 있는 파라과이와 벨리즈의 장관 2명을 상대로 자산 동결과 입국 금지 등 제재 조치를 발표했다.",
+      "title": "中, 대만 수교국 파라과이 장관 등 제재…\"내정에 간섭\"(종합)"
     },
     "source_fact:f379b7c1da882a1e8d58b606": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
@@ -439875,6 +441317,28 @@
       "source_published_kst": "2026-10-06T10:44+09:00",
       "title": "엑시나, 포트래이와 CXL 기반 바이오 데이터 인프라 구축 '맞손'"
     },
+    "source_fact:fb3ee3053629db77fe383e31": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173080",
+      "source": "매일경제",
+      "source_body_digest": "a85678beee6361e37f5049baa72b0a56dc78434a6a736889b5428de943609618",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9641674e24213b5eff38e642d53fa3d5ace866245427b3dcdf7c565a0748af0e",
+      "source_fact_keys": [
+        "source_fact:v1:2f61110342f648c6312d7db2725576d78a17e726025270004145aa80189417ea",
+        "source_fact:v1:927f55e906a46d7b7858ebbe9cca4f309380d10b102cc2626a07f0d1a1609fc1",
+        "source_fact:v1:9c8d85a31394d003840effdfb14ccc2b09518868bcf9bc2290371a90b16c3ba6",
+        "source_fact:v1:e925b53a99b77b51a024d33aa891150a628c7f66b6611565660599f697745b55"
+      ],
+      "source_published_kst": "2026-10-12T17:28+09:00",
+      "source_title": "서학개미, 美반도체 3배 레버리지 폭풍매수",
+      "telegram_core_fact": "미국 반도체 기업에 분산 투자하는 '아이셰어스 반도체 ETF'(SOXX)는 같은 기간 5516만달러가 순매수되며 전체 3위에 올랐다. 반도체 지수의 하루 수익률을 3배로 추종하는 레버리지 ETF가 해외 주식 순매수 1위에 오른 가운데 반도체 업종 전반에 투자하는 ETF와 개별 반도체 기업에도 매수세가 집중됐다.",
+      "title": "서학개미, 美반도체 3배 레버리지 폭풍매수"
+    },
     "source_fact:fb46e67bccccef005ced4cb2": {
       "first_seen_kst": "2026-10-12T13:56:47+09:00",
       "lanes": {
@@ -442242,6 +443706,34 @@
       ],
       "source_published_kst": "2026-10-05T03:42+09:00",
       "title": "\"호르무즈 해협서 또 유조선 피격\"…이달에만 최소 4차례 | 연합뉴스"
+    },
+    "source_fact:fe07201e1b7206eb6aac0673": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/12/2026101214213521243",
+      "source": "머니투데이",
+      "source_body_digest": "d7675377e370c3e9635f6cac4eb809e182fc044114e001c93eda0e302767d268",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fc4a59be58d3fd9e97a1c02618b5fd95dfd860d5f8ba07b9b6e98a5f2aaf3403",
+      "source_fact_keys": [
+        "source_fact:v1:31428b46d92a31563fde4337e68cd24f2ce735cde0cd0fcd0142dafb72bf1e12",
+        "source_fact:v1:441d9369e43bad4fda5f35ac0fdb82f793621e4bbb51106d3be45dc4f74dcf1c",
+        "source_fact:v1:4baec211dbd6b182eafe514f647c688d678e00cb209139e8bcd1bbe6c7faf8b4",
+        "source_fact:v1:5bfee031f0595ece7ec271c73976d39efbc1f507d78467b77859b41ceac2fbc2",
+        "source_fact:v1:7c3fa3b42f7f836377f61583c5f5e7dd887e793c2c56dadc49c4a4cd55e5f0f6",
+        "source_fact:v1:854a8f6588b73b619afd756d7289109916695f4a798b187388a5accff1e7ae46",
+        "source_fact:v1:88ac23173d0379dda49b4f1ca78cae2ef218ed8c3dbdea9bfaf7ffb5fe2f1b5c",
+        "source_fact:v1:bc0d0db14c701be2a15adbd2cef48d606e5c85059a7854b94c6872d382ffeb8b",
+        "source_fact:v1:e2219514ccd86eb05db335f669bcdfc786831b5f372473616c52b7e0ff3d3147",
+        "source_fact:v1:f7f5a6c7fb6283c166eee5c164bf716df3e2bf5844b4c12eb672cd6daea13f71"
+      ],
+      "source_published_kst": "2026-10-12T17:30+09:00",
+      "source_title": "건설기계 바닥 다졌나..비철금속·AIDC 수요 딛고 턴어라운드",
+      "telegram_core_fact": "비철금속을 중심으로 광산 투자가 확대되는 가운데 인공지능(AI) 데이터센터 건설까지 가세하면서 비주택 시장을 중심으로 건설장비 수요가 늘고 있어서다.",
+      "title": "건설기계 바닥 다졌나..비철금속·AIDC 수요 딛고 턴어라운드"
     },
     "source_fact:fe1751bda0e357fa833768be": {
       "first_seen_kst": "2026-10-08T13:46:05+09:00",
@@ -444894,6 +446386,33 @@
       ],
       "source_published_kst": "2026-10-07T11:00+09:00",
       "title": "폴스타, 9월 역대 최대 판매…年 판매목표 달성 성큼"
+    },
+    "title:033a8e1a24e9652d14c9e302": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634757",
+      "source": "이투데이",
+      "source_body_digest": "d7c3777e162e5936b8c8524e5b6bb74c94aeb05a3fd360e17a56eb4a16c79093",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30d43012886f4600edc60790fd44b8131f7a31ce36b175ca6ac811f293a34f55",
+      "source_fact_keys": [
+        "source_fact:v1:2963c28daa9c05dfa5f6b9223638a7005d4e7ace0678379f047e801f282448ef",
+        "source_fact:v1:373eb6cbe2637951270d15c6175e922570a96025084d28f08604171a2aa27ca4",
+        "source_fact:v1:539d463da03a4abc1b1e040dd12c67ff3765193b56dd4b4133ff87f55db6e882",
+        "source_fact:v1:821e160dd1349abaa62fe7ed535aef45b833314e46f2e67b1dca57d07a642ea6",
+        "source_fact:v1:9c06d08ee12d95704fc856d0fab328786a3ed928769627e54d20746436c7887d",
+        "source_fact:v1:9e380e2f4cba95a26f15bd05096d21155511c944cabd34992e91cd4550a5490a",
+        "source_fact:v1:b949d043dda087c40e0353cf023d5b7b5762c19d898f66872f1f5b04be8e1311",
+        "source_fact:v1:e590f24ebe234ceee2f5445f660114a02a4b9a73ae094020c6efc56c71f706d7",
+        "source_fact:v1:fb3c369fb93ed97493167034b8d01f3203c2282a81155a4a1ffa21e665a8bf22"
+      ],
+      "source_published_kst": "2026-10-12T18:00+09:00",
+      "source_title": "마이크론은 10% 뛰는데 삼전·하닉은 뒷걸음…메모리 호황 속 ‘엇갈린 성적표’",
+      "telegram_core_fact": "한동희 SK증권 연구원은 “원·달러 환율 가정을 7% 낮췄음에도 2027년 이익 전망을 상향한 것은 AI 메모리 수요 강세와 공급 부족, 장기공급계약이 견인하는 가격 강세 때문”이라며 “시장에서 우려하는 메모리 업황 둔화와 감익 시나리오는 실현되지 않을 것”이라고 말했다.",
+      "title": "마이크론은 10% 뛰는데 삼전·하닉은 뒷걸음…메모리 호황 속 ‘엇갈린 성적표’"
     },
     "title:03480acbb57d762683eb58e1": {
       "first_seen_kst": "2026-10-10T11:01:18+09:00",
@@ -453660,6 +455179,25 @@
       "source_published_kst": "2026-10-06T04:36+09:00",
       "title": "美10년물 국채금리 장중 5.34% 돌파…24년 만에 최고"
     },
+    "title:25ac032377818c50fb6c1786": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822834",
+      "source": "뉴시스",
+      "source_body_digest": "b75778db123d3cb545fa31e5dc6fd37bf183f7e0c9f54c72d35df3a6ab2c944c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5c812db9723229012640d071dbf4c8942ea3f139bd668e0d29ea336f2e017a0e",
+      "source_fact_keys": [
+        "source_fact:v1:f29d5af0cb491710d27e0551cb4c16eaff03e1a3fde5f4b4649a60dc7b6bf071"
+      ],
+      "source_published_kst": "2026-10-12T18:39+09:00",
+      "source_title": "한전 사장 \"기업의 전기료 선납으로 재무 문제 해결은 잘못\"",
+      "telegram_core_fact": "재무 문제 해결을 위한 한전채 발행과 관련해선 \"한전은 신용등급이 트리플 A 등급으로 한전채를 발행하면 사채 시장에서 일반기업들이 쓸어가기 때문에 일반 기업들의 자금 조달에 큰 문제가 생긴다\"며 \"한전은 할 수 있으면 사채를 발행하지 않는 것이 채권시장에 좋다고 생각하고 있다\"고 생각을 전했다.",
+      "title": "한전 사장 \"기업의 전기료 선납으로 재무 문제 해결은 잘못\""
+    },
     "title:25c670db410b3a87ce70aa2c": {
       "first_seen_kst": "2026-10-12T08:46:35+09:00",
       "lanes": {
@@ -453804,6 +455342,28 @@
       "source_title": "조국 \"1년 안에 '큰 승부' 봐야…민생·복지, 반도체 수준으로 투자하자\"",
       "telegram_core_fact": "\"그러나 반도체가 역대급 호황을 이끌고 있지만 청년 일자리, 자영업자와 직장인 소득, 내수 활성화는 뒷걸음질치는 상황\"이라며 \"지금 한국에서는 수출 통계의 숫자와 민생 장바구니의 숫자 간의 괴리가 역대급이다. 위쪽 막대는 솟고, 아래쪽 막대는 가라앉는 이른바 'H자형 불평등'\"이라고 말했다.",
       "title": "조국 \"1년 안에 '큰 승부' 봐야…민생·복지, 반도체 수준으로 투자하자\""
+    },
+    "title:2693b76bc7169b8f14de0560": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822757",
+      "source": "뉴시스",
+      "source_body_digest": "5e5c9ed8503e30721562705086ee32b5847922ebcc1e210df177348092db13ff",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c7c8f4d5d036b2fe472201af18eed674d06f6becaaeb5c0388c96c83c5a7a470",
+      "source_fact_keys": [
+        "source_fact:v1:14454dee60c9b610dc684c1481ab92c672b90d39fa734cbbe9c2ba4cb636e247",
+        "source_fact:v1:550ddd5a0c0025bd7709a63f36893af4968d9391bd1dea323b4d875249ac6a06",
+        "source_fact:v1:60c19dfa0b63dac729da60ad20f7535afb842aeba3fd4a1a5c1fad56d2620679",
+        "source_fact:v1:ae4ccbedc0f7225b7bf120b0f45e4a32110aecb9e8a16d1705d9ae8b841f12c1"
+      ],
+      "source_published_kst": "2026-10-12T18:06+09:00",
+      "source_title": "中, 대만 수교국 파라과이 장관 등 제재…\"내정에 간섭\"(종합)",
+      "telegram_core_fact": "문예성 기자, 박정규 특파원 = 중국 정부가 대만과 외교관계를 유지하고 있는 파라과이와 벨리즈의 장관 2명을 상대로 자산 동결과 입국 금지 등 제재 조치를 발표했다.",
+      "title": "中, 대만 수교국 파라과이 장관 등 제재…\"내정에 간섭\"(종합)"
     },
     "title:269643a12086cb9491ef169e": {
       "first_seen_kst": "2026-10-06T23:19:02+09:00",
@@ -460174,6 +461734,26 @@
       "telegram_core_fact": "인수 금액은 약 2억4700만달러(약 3315억 원)다. HD현대마린솔루션이 글로벌 '선박·육상발전용 엔진' 서비스 전문기업 '골텐스(Goltens)'의 지분 100%를 인수하는 주식매매계약을 체결했다고 8일 공시했다.",
       "title": "HD현대마린솔루션, 美 엔진 기업 '골텐스' 3315억원에 인수"
     },
+    "title:3e93dbea2f6984ff181bfa92": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822762",
+      "source": "뉴시스",
+      "source_body_digest": "e97020dacdad2277dc1d13f16d678c6d0eb38ad0e2914ae8da6f435cbf5ba1e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e74d58a2abb794d8a947f124d2b64e792c99d84bf766286dd30bc51697b94d77",
+      "source_fact_keys": [
+        "source_fact:v1:3dfda430e1ae16d5c10e6ca1af072d61c9598a57f0f4dbe251dc40ea38b12ebb",
+        "source_fact:v1:db1c591770e55c15d850ada3d79d06255f0ce610436b11268188a2c1ab75eef2"
+      ],
+      "source_published_kst": "2026-10-12T17:43+09:00",
+      "source_title": "조달청, 평가위원 사전접촉시 교섭 정지…부적합 2회 판정시 해촉",
+      "telegram_core_fact": "조달청이 평가위원의 사전접촉 행위가 확인되면 해촉하고 비위행위 사전 조회를 기존 건설분야에서 모든 평가분야로 확대하는 등 평가위원 제재기준을 대폭 강화했다.",
+      "title": "조달청, 평가위원 사전접촉시 교섭 정지…부적합 2회 판정시 해촉"
+    },
     "title:3ea9a9fcb67467957e738b68": {
       "first_seen_kst": "2026-10-07T23:10:06+09:00",
       "lanes": {
@@ -461445,6 +463025,34 @@
       "source_published_kst": "2026-10-04T06:29+09:00",
       "title": "외국인, 한 달간 코스피서 20조 매도…비중 삼전 46%·닉스 49%대"
     },
+    "title:422ed248a75c0d0d0acbd077": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/12/2026101214213521243",
+      "source": "머니투데이",
+      "source_body_digest": "d7675377e370c3e9635f6cac4eb809e182fc044114e001c93eda0e302767d268",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fc4a59be58d3fd9e97a1c02618b5fd95dfd860d5f8ba07b9b6e98a5f2aaf3403",
+      "source_fact_keys": [
+        "source_fact:v1:31428b46d92a31563fde4337e68cd24f2ce735cde0cd0fcd0142dafb72bf1e12",
+        "source_fact:v1:441d9369e43bad4fda5f35ac0fdb82f793621e4bbb51106d3be45dc4f74dcf1c",
+        "source_fact:v1:4baec211dbd6b182eafe514f647c688d678e00cb209139e8bcd1bbe6c7faf8b4",
+        "source_fact:v1:5bfee031f0595ece7ec271c73976d39efbc1f507d78467b77859b41ceac2fbc2",
+        "source_fact:v1:7c3fa3b42f7f836377f61583c5f5e7dd887e793c2c56dadc49c4a4cd55e5f0f6",
+        "source_fact:v1:854a8f6588b73b619afd756d7289109916695f4a798b187388a5accff1e7ae46",
+        "source_fact:v1:88ac23173d0379dda49b4f1ca78cae2ef218ed8c3dbdea9bfaf7ffb5fe2f1b5c",
+        "source_fact:v1:bc0d0db14c701be2a15adbd2cef48d606e5c85059a7854b94c6872d382ffeb8b",
+        "source_fact:v1:e2219514ccd86eb05db335f669bcdfc786831b5f372473616c52b7e0ff3d3147",
+        "source_fact:v1:f7f5a6c7fb6283c166eee5c164bf716df3e2bf5844b4c12eb672cd6daea13f71"
+      ],
+      "source_published_kst": "2026-10-12T17:30+09:00",
+      "source_title": "건설기계 바닥 다졌나..비철금속·AIDC 수요 딛고 턴어라운드",
+      "telegram_core_fact": "비철금속을 중심으로 광산 투자가 확대되는 가운데 인공지능(AI) 데이터센터 건설까지 가세하면서 비주택 시장을 중심으로 건설장비 수요가 늘고 있어서다.",
+      "title": "건설기계 바닥 다졌나..비철금속·AIDC 수요 딛고 턴어라운드"
+    },
     "title:42383e984483cdd86dcf1d78": {
       "first_seen_kst": "2026-10-02T11:10:58+09:00",
       "lanes": {
@@ -461626,6 +463234,28 @@
       "link": "https://www.mk.co.kr/news/world/12155328",
       "source": "매일경제",
       "title": "순자산 144조원…인도 갑부 제치고 아시아 최고 부자 된 40대남의 정체"
+    },
+    "title:431c11caef5bc3a55f28fda9": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822757",
+      "source": "뉴시스",
+      "source_body_digest": "5e5c9ed8503e30721562705086ee32b5847922ebcc1e210df177348092db13ff",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c7c8f4d5d036b2fe472201af18eed674d06f6becaaeb5c0388c96c83c5a7a470",
+      "source_fact_keys": [
+        "source_fact:v1:14454dee60c9b610dc684c1481ab92c672b90d39fa734cbbe9c2ba4cb636e247",
+        "source_fact:v1:550ddd5a0c0025bd7709a63f36893af4968d9391bd1dea323b4d875249ac6a06",
+        "source_fact:v1:60c19dfa0b63dac729da60ad20f7535afb842aeba3fd4a1a5c1fad56d2620679",
+        "source_fact:v1:ae4ccbedc0f7225b7bf120b0f45e4a32110aecb9e8a16d1705d9ae8b841f12c1"
+      ],
+      "source_published_kst": "2026-10-12T18:06+09:00",
+      "source_title": "中, 대만 수교국 파라과이 장관 등 제재…\"내정에 간섭\"(종합)",
+      "telegram_core_fact": "문예성 기자, 박정규 특파원 = 중국 정부가 대만과 외교관계를 유지하고 있는 파라과이와 벨리즈의 장관 2명을 상대로 자산 동결과 입국 금지 등 제재 조치를 발표했다.",
+      "title": "中, 대만 수교국 파라과이 장관 등 제재…\"내정에 간섭\"(종합)"
     },
     "title:433de54418554624cd40129d": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
@@ -475628,6 +477258,28 @@
       "source_published_kst": "2026-10-07T00:06+09:00",
       "title": "美 8월 무역적자 1056억원…작년 3월 이후 최대"
     },
+    "title:7b195ef7505952ded3bcacff": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04204966645612264",
+      "source": "이데일리",
+      "source_body_digest": "b76ba6e45fda9191995f5cd8d514b40f291e84e7d22975280b250f2ff45c4138",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:173eb6805f3db207a137c030b41e0430978b87552c694c695d327ee096851018",
+      "source_fact_keys": [
+        "source_fact:v1:3f2631e88b39a77d92068776799580d5447e24dccc2e4810b1fa516049b3f3eb",
+        "source_fact:v1:4be96c25783161e892542a4727133e2303cb62a2b46a7154613d692475e502e5",
+        "source_fact:v1:4d7774744a66888f41e1ddde877e7a193767cf6eb041321f74458591b45ab816",
+        "source_fact:v1:ca77da54e3d2c33b86fdb1b9e6c7e5609b2b2fe1e5048bea344c0ea11eb109db"
+      ],
+      "source_published_kst": "2026-10-12T18:00+09:00",
+      "source_title": "코트라, EU 포장폐기물 규정 대응 21개국 EPR 보고서 발간",
+      "telegram_core_fact": "코트라는 지난해 유럽연합 포장 및 포장 폐기물 규정의 주요 내용과 올해 실무 문답 자료를 발간하고 규제 본격 시행 전후 두 차례 유럽연합 포장 및 포장 폐기물 규정 대응 화상 설명회를 개최해 우리 기업의 규제 대응을 지원해 왔다.",
+      "title": "코트라, EU 포장폐기물 규정 대응 21개국 EPR 보고서 발간"
+    },
     "title:7b3ae65051a5d08e321aceb9": {
       "first_seen_kst": "2026-10-02T17:56:05+09:00",
       "lanes": {
@@ -483916,6 +485568,28 @@
       "source_title": "트럼프-푸틴 경유 거래 이튿날 러, 우크라 자포리자 공격 8명 사망",
       "telegram_core_fact": "미 재무부는 트럼프의 발언이 나온 직후 러시아 경유에 대한 수출 제재 해제를 발표했다.",
       "title": "트럼프-푸틴 경유 거래 이튿날 러, 우크라 자포리자 공격 8명 사망"
+    },
+    "title:9a75adee2f0e319fa92b8be8": {
+      "first_seen_kst": "2026-10-12T20:14:14+09:00",
+      "lanes": {
+        "live": "2026-10-12T20:14:14+09:00"
+      },
+      "last_seen_kst": "2026-10-12T20:14:14+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173080",
+      "source": "매일경제",
+      "source_body_digest": "a85678beee6361e37f5049baa72b0a56dc78434a6a736889b5428de943609618",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9641674e24213b5eff38e642d53fa3d5ace866245427b3dcdf7c565a0748af0e",
+      "source_fact_keys": [
+        "source_fact:v1:2f61110342f648c6312d7db2725576d78a17e726025270004145aa80189417ea",
+        "source_fact:v1:927f55e906a46d7b7858ebbe9cca4f309380d10b102cc2626a07f0d1a1609fc1",
+        "source_fact:v1:9c8d85a31394d003840effdfb14ccc2b09518868bcf9bc2290371a90b16c3ba6",
+        "source_fact:v1:e925b53a99b77b51a024d33aa891150a628c7f66b6611565660599f697745b55"
+      ],
+      "source_published_kst": "2026-10-12T17:28+09:00",
+      "source_title": "서학개미, 美반도체 3배 레버리지 폭풍매수",
+      "telegram_core_fact": "미국 반도체 기업에 분산 투자하는 '아이셰어스 반도체 ETF'(SOXX)는 같은 기간 5516만달러가 순매수되며 전체 3위에 올랐다. 반도체 지수의 하루 수익률을 3배로 추종하는 레버리지 ETF가 해외 주식 순매수 1위에 오른 가운데 반도체 업종 전반에 투자하는 ETF와 개별 반도체 기업에도 매수세가 집중됐다.",
+      "title": "서학개미, 美반도체 3배 레버리지 폭풍매수"
     },
     "title:9a8a92b283df147abd474165": {
       "first_seen_kst": "2026-10-11T13:40:09+09:00",
@@ -510084,5 +511758,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-12T19:52:19+09:00"
+  "updated_at_kst": "2026-10-12T20:14:14+09:00"
 }
