@@ -1456,7 +1456,8 @@ def clean_title(title: str, source: str) -> str:
     if _is_vnet_catl(title + ' ' + source):
         if title.startswith('정정:'):
             return title
-        if source in VNET_OFFICIAL and VNET_SODIUM.search(title) and VNET_ORDER.search(title) and VNET_ESS_QTY.search(title):
+        if (source in VNET_OFFICIAL and VNET_SODIUM.search(title) and VNET_ESS_QTY.search(title)
+                and (VNET_ORDER.search(title) or re.search(r'\bnew\s+(?:supply|purchase)\s+contract\b', title, re.I))):
             return 'CATL–VNET 나트륨 ESS 공식 납품 계약 확인'
         return '9/21 공식 확인: CATL 관계사 연계 투자기구, VNET 지분 38.1% 취득'
     if _is_lfp_na_314_price(title + ' ' + source):
