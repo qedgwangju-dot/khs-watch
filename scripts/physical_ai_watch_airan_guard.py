@@ -684,6 +684,66 @@ def _lfp_na_price_recovery() -> list[dict]:
     }]
 
 
+
+# VNET's strategic shareholder links and AIDC energy collaboration do NOT
+# constitute CATL sodium-ion ESS captive purchase orders.
+VNET_EQUITY_RECOVERY = 'DIRECT_VNET_PJ_MILLENNIUM_CATL_AFFILIATE_20260921'
+VNET_OFFICIAL = {'VNET', 'VNET Group', 'VNET IR'}
+VNET_ID = re.compile(r'VNET|21Vianet|世纪互联',re.I)
+VNET_CATL = re.compile(r'CATL|宁德时代|닝더스다이',re.I)
+VNET_EQUITY_CLOSED = re.compile(
+    r'650[,]?424[,]?192.{0,280}38[.]1\s*%|'
+    r'38[.]1\s*%.{0,280}(?:September 21|2026-09-21|closing|종결|완료)',re.I)
+VNET_SODIUM = re.compile(r'sodium[-\s]*ion|나트륨이온|钠离子',re.I)
+VNET_ORDER = re.compile(r'(?:정식\s*)?(?:공급계약|구매계약)\s*체결|'
+                        r'signed\s+(?:binding\s+)?(?:supply|purchase)\s+(?:contract|agreement)',re.I)
+VNET_ESS_QTY = re.compile(r'\d+(?:[.]\d+)?\s*(?:GWh|MWh)',re.I)
+VNET_HYPERSTRONG_BASE = re.compile(r'(?:HyperStrong|海博思创).{0,250}60\s*GWh|60\s*GWh.{0,250}(?:HyperStrong|海博思创)',re.I)
+
+
+def _is_vnet_catl(text: str) -> bool:
+    return bool(VNET_ID.search(text) and VNET_CATL.search(text))
+
+
+def _vnet_catl_stage(text: str, source: str = '') -> str:
+    if not _is_vnet_catl(text) or source not in VNET_OFFICIAL:
+        return 'background'
+    if (VNET_SODIUM.search(text) and VNET_ORDER.search(text)
+            and VNET_ESS_QTY.search(text) and not VNET_HYPERSTRONG_BASE.search(text)
+            and re.search(r'VNET.{0,230}(?:sodium|나트륨).{0,230}(?:GWh|MWh)',text,re.I)):
+        return 'signed_vnet_sodium_contract'
+    if VNET_EQUITY_CLOSED.search(text):
+        return 'equity_closing_baseline_recovery'
+    return 'background'
+
+
+def _vnet_equity_recovery() -> list[dict]:
+    if base.NOW.astimezone(base.KST).date() > dt.date(2026,10,19):
+        return []
+    return [{
+        'title': '누락복원: CATL 비연결 관계사 연계 투자기구, VNET 지분 38.1% 인수 완료',
+        'link': 'https://ir.vnet.com/news-releases/news-release-details/vnet-announces-closing-previously-announced-strategic-investment',
+        'description': (
+            'VNET 2026-09-21 회사 보도자료·미 SEC 공시: CATL의 비지배·비연결 '
+            '관계사와 연관된 PJ Millennium 투자기구가 기존 주주로부터 '
+            'Class A 주식 650,424,192주를 취득 완료해 38.1%를 보유한다. '
+            '이는 CATL 직접 보유나 VNET 신주 발행을 통한 신규 자금 조달이 아니다. '
+            '주당 1.4486달러 기준 약 9억 4,220만달러의 기존 주주간 지분 양도거래다. '
+            'CATL과 VNET는 별도로 8월 데이터센터 전력·컴퓨팅 통합 전략협력을 체결했다. '
+            '나트륨이온 ESS 독점·전속 구매계약, 발주 물량, 신규 시공·운영 매출은 '
+            '공식자료에서 확인되지 않았다. VNET 889MW는 2025년 12월 말 '
+            '도매 IDC 가동 용량이며, 2026년 6월 말은 1,007MW 가동·744MW 고객 사용이다. '
+            '이 수치는 나트륨 ESS 설치 MWh가 아니다. '
+            'CATL–HyperStrong 3년 60GWh 나트륨 공급 협력은 '
+            '2026년 4월 27일 별도 당사자간 계약이며 VNET 물량으로 합산하지 않는다.'
+        ),
+        'source':'VNET',
+        'published':None,
+        'direct_recovery':True,
+        'historical_missed_equity_event':True,
+    }]
+
+
 _orig_query_news = base.query_news
 
 
@@ -702,12 +762,22 @@ def query_news(q: str) -> list[dict]:
         return _optimus_hand_magnet_recovery()
     if q == LFP_NA_CIF_PRICE_RECOVERY:
         return _lfp_na_price_recovery()
+    if q == VNET_EQUITY_RECOVERY:
+        return _vnet_equity_recovery()
     return _orig_query_news(q)
 
 
 base.query_news = query_news
 if LFP_NA_CIF_PRICE_RECOVERY not in base.QUERIES:
     base.QUERIES.append(LFP_NA_CIF_PRICE_RECOVERY)
+if VNET_EQUITY_RECOVERY not in base.QUERIES:
+    base.QUERIES.append(VNET_EQUITY_RECOVERY)
+for q in (
+    '(VNET OR 21Vianet) (CATL OR 宁德时代) (sodium-ion OR 나트륨이온 OR energy storage) (GWh OR MWh OR supply contract OR 구매계약)',
+    '(VNET OR 21Vianet) (CATL OR 宁德时代) (PJ Millennium OR 38.1% OR 650424192 OR 지분 종결)',
+):
+    if q not in base.QUERIES:
+        base.QUERIES.append(q)
 for q in (
     '(Benchmark OR 벤치마크 OR 디일렉) (314Ah OR 314암페어시) '
     '(51.62 OR 61.99) (LFP OR 리튬인산철) (CIF OR EXW OR 북미)',
@@ -830,6 +900,8 @@ def _is_airan(text: str) -> bool:
 
 
 def topic_group(text: str) -> str | None:
+    if _is_vnet_catl(text):
+        return 'catl_vnet_infrastructure'
     if _is_lfp_na_314_price(text):
         return 'lfp_314_cif_north_america'
     if _is_2026_roadmap_rewrite(text):
@@ -868,6 +940,9 @@ def score(item: dict) -> int:
         return 0
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
     group = topic_group(text)
+    if group == 'catl_vnet_infrastructure':
+        return {'equity_closing_baseline_recovery':45,'signed_vnet_sodium_contract':65,
+                'background':0}.get(_vnet_catl_stage(text,item.get('source') or ''),0)
     if group == 'lfp_314_cif_north_america':
         if item.get('source') in LFP_NA_CIF_PRIMARY:
             return 46
@@ -930,6 +1005,12 @@ def score(item: dict) -> int:
 
 
 def category(text: str, group: str) -> str:
+    if group == 'catl_vnet_infrastructure':
+        if (VNET_SODIUM.search(text) and VNET_ORDER.search(text)
+                and VNET_ESS_QTY.search(text) and not VNET_HYPERSTRONG_BASE.search(text)
+                and re.search(r'VNET.{0,230}(?:sodium|나트륨).{0,230}(?:GWh|MWh)',text,re.I)):
+            return 'CATL–VNET · 나트륨 ESS 실명 공급계약'
+        return 'CATL 관계사–VNET · 9/21 간접지분 38.1% 인수 종결'
     if group == 'lfp_314_cif_north_america':
         return 'ESS LFP 북미 조달 · 314Ah 9월 CIF 가격·관세 가정'
     if group == 'battery_roadmap_2026_baseline':
@@ -1003,6 +1084,24 @@ def category(text: str, group: str) -> str:
 
 
 def meaning(cat: str) -> str:
+    if cat == 'CATL 관계사–VNET · 9/21 간접지분 38.1% 인수 종결':
+        return (
+            'VNET 9/21 공식 공시로 CATL 비지배·비연결 관계사와 연결된 '
+            '투자기구의 기존주 650,424,192주 매입·38.1% 보유가 확정됐습니다. '
+            'VNET 신규 유상증자 자금은 아니며 CATL 직접 취득도 아닙니다. '
+            '8월 CATL–VNET 데이터센터 전력 통합협력은 별도로 확인되지만 '
+            '나트륨 ESS 독점 발주·설치·매출은 공개되지 않았습니다. '
+            'VNET 가동 도매 IDC 용량은 2025년 말 889MW에서 '
+            '2026년 6월 말 1,007MW(고객 실제 사용 744MW)로 증가했습니다. '
+            '전력 MW와 배터리 MWh를 혼동하지 않습니다. '
+            'CATL–HyperStrong 4월 60GWh 주문은 VNET 구매물량이 아닙니다.'
+        )
+    if cat == 'CATL–VNET · 나트륨 ESS 실명 공급계약':
+        return (
+            '지분·데이터센터 전략적 협력에서 나트륨 ESS 구매계약으로 단계가 상승한 '
+            '공식 이벤트입니다. 계약 MWh·납품일·현장·단가·안전 검수·매출 인식과 '
+            '장기 유지보수 계약을 확인하고 HyperStrong 60GWh와 분리합니다.'
+        )
     if cat == 'ESS LFP 북미 조달 · 314Ah 9월 CIF 가격·관세 가정':
         return (
             'Benchmark 2026년 9월 실제 314Ah LFP 가격평가: 중국 EXW '
@@ -1161,6 +1260,14 @@ def meaning(cat: str) -> str:
 
 
 def risk(cat: str) -> str:
+    if cat.startswith('CATL 관계사–VNET · ') or cat.startswith('CATL–VNET · '):
+        return (
+            '지분취득과 VNET 데이터센터용 배터리 전속 공급권은 다릅니다. '
+            '전력망 접속·설치허가·배터리 열폭주·배기·방폭·냉각·보험·검수와 '
+            '셀 수율이 실제 채택 병목입니다. '
+            '6~12개월 조기지표는 공식 ESS 발주 MWh·인증·시공·전원 인가일, '
+            '24개월은 납품 실적·반복 유지보수 현금 회수입니다.'
+        )
     if cat == 'ESS LFP 북미 조달 · 314Ah 9월 CIF 가격·관세 가정':
         return (
             '40.9%를 모든 중국산 314Ah 셀의 확정 세율로 취급하면 '
@@ -1235,6 +1342,12 @@ def risk(cat: str) -> str:
 
 
 def verification(item: dict, group: str, text: str) -> str:
+    if group == 'catl_vnet_infrastructure':
+        if _vnet_catl_stage(text,item.get('source') or '') == 'signed_vnet_sodium_contract':
+            return 'CATL/VNET 회사 공식 나트륨 ESS 계약 발표 · 실제 납품·매출 별도 확인'
+        return ('VNET 9/21 공식 지분거래 종결 발표·미 SEC 공시 교차확인 · '
+                'CATL 비지배·비연결 관계사 경유 · '
+                'CATL–VNET 8월 전력협력은 확정, 나트륨 ESS 독점발주 미확인')
     if group == 'lfp_314_cif_north_america':
         return (
             'Benchmark Mineral Intelligence 2026-10-09 분기 원자료·'
@@ -1305,6 +1418,8 @@ def verification(item: dict, group: str, text: str) -> str:
 
 
 def clean_title(title: str, source: str) -> str:
+    if _is_vnet_catl(title + ' ' + source):
+        return '9/21 공식 확인: CATL 관계사 연계 투자기구, VNET 지분 38.1% 취득'
     if _is_lfp_na_314_price(title + ' ' + source):
         return '314Ah LFP 북미 CIF 61.99달러…관세 40.9%는 별도 가정'
     if _is_optimus_hand_magnet(title + ' ' + source):
@@ -1367,6 +1482,8 @@ def clean_title(title: str, source: str) -> str:
 
 
 def tag_for(group: str) -> str:
+    if group == 'catl_vnet_infrastructure':
+        return 'CATL–VNET 데이터센터 ESS'
     if group == 'lfp_314_cif_north_america':
         return '북미 ESS LFP 조달원가'
     if group == 'optimus_hand_magnet':
@@ -1388,6 +1505,12 @@ def tag_for(group: str) -> str:
 
 def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    if topic_group(text) == 'catl_vnet_infrastructure':
+        stage=_vnet_catl_stage(text,item.get('source') or '')
+        if stage=='equity_closing_baseline_recovery':
+            return hashlib.sha256(b'vnet|PJ-Millennium|CATL-affiliate|20260921|38.1|650424192|SECONDARY').hexdigest()
+        vals='|'.join(sorted(set(VNET_ESS_QTY.findall(text))))
+        return hashlib.sha256(f'vnet|catl|{stage}|sodiumESS|{vals}'.encode()).hexdigest()
     if topic_group(text) == 'lfp_314_cif_north_america':
         return hashlib.sha256(
             b'Benchmark|LFP-314Ah|2026-09|CN-EXW-51.62|NA-CIF-61.99|EU-CIF-59.18'
@@ -1490,6 +1613,9 @@ def key(item: dict) -> str:
 def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -> list[dict]:
     chosen = _orig_select_diverse(items, seen, force, limit)
     candidates = items if force else [x for x in items if x.get('key') not in seen]
+    vnet=next((x for x in candidates if x.get('group')=='catl_vnet_infrastructure'),None)
+    if vnet and not any(x.get('key')==vnet.get('key') for x in chosen):
+        chosen=([vnet,*chosen] if len(chosen)<limit else [vnet,*chosen[:-1]])
     price_update = next((x for x in candidates if x.get('group') == 'lfp_314_cif_north_america'),None)
     if price_update and not any(x.get('key') == price_update.get('key') for x in chosen):
         chosen = ([price_update,*chosen] if len(chosen)<limit else [price_update,*chosen[:-1]])
