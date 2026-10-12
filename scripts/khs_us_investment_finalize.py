@@ -132,6 +132,8 @@ def _short_judgment(title: str, tags: str) -> str:
     if "원전" in blob:
         return "원전 관련 보도는 한미 공동 팩트시트의 프레임워크 범위와 개별 프로젝트 확정 수준을 구분."
     if "알래스카 lng" in blob or "project north" in blob:
+        if "fid 이후" in blob or "fid 후" in blob:
+            return "알래스카 주의원 발언 보도: Glenfarne FID 이후에도 한국은 상업성·법적 요건을 별도 검토. 투자 승인·송금은 아님."
         if "검토 착수" in blob or "project north" in blob:
             return "한미 공동 팩트시트상 Project North는 검토 착수 단계. 상업적 합리성·국내법 요건 충족 후 추진 여부를 결정하므로 한국의 투자 확정으로 표시하지 않음."
         if any(x in blob for x in ["540억", "54 billion", "발표예정", "발표 가능성", "발표 예상"]):
@@ -339,7 +341,8 @@ def _alaska_kumkang_context() -> list[str]:
         status_lines = [
             "<b>🧊 알래스카 LNG 공식 단계</b>",
             "• 한미 공동 팩트시트: <b>Project North는 검토 착수</b> 단계이며 투자 확정이 아님",
-            "• 추진 조건: <b>상업적 합리성 + 관련 국내법 요건 충족</b>",
+            "• 추진 조건: <b>Glenfarne FID → 한국의 상업성 심사·국내법 절차 → 한국 투자확정 → 실제 지급</b>",
+            "• 10월 7일 알래스카 주의원 면담은 <b>현지 언론이 보도한 발언</b>으로, 한국 정부 투자 확정은 아님",
             "• 트럼프는 한국 투자를 기정사실화해 발표했지만, 한국 정부 공식 문서는 검토 후 추진 여부를 결정한다고 명시",
         ]
     elif announced:
@@ -402,7 +405,9 @@ def _next_checks(flags: dict[str, bool]) -> list[str]:
     if flags["alaska"]:
         checks += [
             "백악관·한국 정부 540억달러 공식 발표 여부·투자구조·집행주체",
-            "SPA·FID·금융종결·한국 투자액",
+            "Glenfarne 최종투자결정(FID) 공식 발표와 금융종결",
+            "한국 상업성 심사·국회 절차·투자 확정·실제 송금",
+            "구속력 있는 LNG 장기구매계약(SPA)과 가격·물량",
             "금강공업 API Active·vendor approval/공급계약·대구경 생산/협력 여부",
         ]
     out: list[str] = []
