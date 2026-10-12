@@ -4253,6 +4253,26 @@
       "telegram_core_fact": "삼성전자는 3분기 영업이익률 55.1%를 기록했는데, 반도체를 담당하는 디바이스솔루션(DS) 부문은 70%를 넘어섰을 것으로 보인다.",
       "title": "삼성전자, 올 3분기 영업이익률 55% 신기록 …반도체 부문은 70% 돌파할 듯"
     },
+    "core:2022b0171aee0b5ac96487ba": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.mk.co.kr/news/business/12174015",
+      "source": "매일경제",
+      "source_body_digest": "56b5160565fefe7597d7a879e3cff5706173afc2bd4c6deb3af75ca39f37874f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:20f36c88d593f2bace97328c42d6fad7fa9a967282cee95429ece704c97b7281",
+      "source_fact_keys": [
+        "source_fact:v1:1a59848fad558adc1a806f0751f84419262122ccfef72bdc2762362a97d2730b",
+        "source_fact:v1:4b040fb6812033374ea20b221b66bd14465e1c7849b1a99f62b629b3f6fbf8b0"
+      ],
+      "source_published_kst": "2026-10-12T21:24+09:00",
+      "source_title": "“속여도 남는 장사?”…공정위 제재 비웃는 기업들 ‘배짱 광고’",
+      "telegram_core_fact": "“과징금이 처벌이 아닌 기업의 영업비용으로 전락해서는 안 된다”며 “반복적인 소비자 기만행위를 막을 수 있도록 공정위의 제재 실효성을 강화해야 한다”고 강조했다.",
+      "title": "“속여도 남는 장사?”…공정위 제재 비웃는 기업들 ‘배짱 광고’"
+    },
     "core:20439458dc62c1b155c1aa7c": {
       "first_seen_kst": "2026-10-10T07:44:19+09:00",
       "lanes": {
@@ -7071,6 +7091,27 @@
       "telegram_core_fact": "미국의 올해 재정 적자가 전년 대비 10% 넘게 증가한 2조 달러(약 2690조원)에 육박하면서 2021년 이후 최대치를 기록했다. 트럼프 행정부는 적자를 GDP 대비 3%로 축소하기 위한 재정건전화 계획을 언급하면서도, 공화당이 선거에서 이길 경우 미국 성인 1인당 5000달러씩 주겠다는 배당금 공약을 내걸었다.",
       "title": "美 재정 적자 2조 달러 눈앞…\"2021년 이후 최대\""
     },
+    "core:358c3b82927780467f4219aa": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173048",
+      "source": "매일경제",
+      "source_body_digest": "440acf3f90de9e261370c4dd8b618ad9bdc192385200cc325bb118cefc17ce2d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9565540038b6f790459dd86e324057b8bdf40933dd08afe1c1202bcb850183d0",
+      "source_fact_keys": [
+        "source_fact:v1:1168a5d2f5c4816945bbee054d7ee22ccdcffd9666cbb6af4f6ff6ee6a6a6b7b",
+        "source_fact:v1:510d0c4528d86c2b5d7868f17d237732352fb90fd20f6950bdda96f302b53552",
+        "source_fact:v1:6e18d98a91e6b3f8e77dc4558989e934311d8ddfb8af98043c32e254f22e7f3c"
+      ],
+      "source_published_kst": "2026-10-12T16:53+09:00",
+      "source_title": "[집중취재] 10·15 부동산대책 1년…집값 잡았나, 풍선효과 키웠나",
+      "telegram_core_fact": "정부가 서울 전역과 경기 일부 지역을 규제지역과 토지거래허가구역으로 지정하며 대출 규제까지 강화한 10·15 부동산대책이 시행 1년을 맞았습니다.",
+      "title": "[집중취재] 10·15 부동산대책 1년…집값 잡았나, 풍선효과 키웠나"
+    },
     "core:35bc48d96f01079381d95320": {
       "first_seen_kst": "2026-10-12T20:37:19+09:00",
       "lanes": {
@@ -7709,6 +7750,28 @@
       "source_title": "울산 남신항 에너지거점 2단계 본격화…동북아 물류허브 승부수 | 연합뉴스",
       "telegram_core_fact": "울산시는 동북아 에너지 물류거점(허브) 조성의 핵심 기반사업인 '남신항 에너지거점 2단계' 구축을 위한 3대 방향을 설정하고 사업 추진을 본격화한다고 7일 밝혔다. 남신항 에너지거점 2단계는 민선 9기 공약인 '동북아 에너지 물류거점 조성'과 연계해 울산 에너지 산업과 항만 경쟁력을 강화하기 위한 사업이다.",
       "title": "울산 남신항 에너지거점 2단계 본격화…동북아 물류허브 승부수 | 연합뉴스"
+    },
+    "core:3b01dde9048bf0a45a67a077": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.mt.co.kr/future/2026/10/12/2026101215240383824",
+      "source": "머니투데이",
+      "source_body_digest": "fe97b361365fc59e1be8b1c8bf5a915c9994da1729140f09190f649f158f6904",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3401853a2c6f37972de31b92468d3deb63b4684a7f58dae0bd024d9cff278a94",
+      "source_fact_keys": [
+        "source_fact:v1:6bc81f34df3c9c3737bc88ccc95c55e71ae6ae36fa7b63297f0bb9d814671f92",
+        "source_fact:v1:8b860ec23db7c5e8e21732cfd4e6576d54609a47491b5320730de74ccb60f9a9",
+        "source_fact:v1:cde350160587c9709902c5314b324da82b562773f43efb11cc12823477ea776b",
+        "source_fact:v1:e7dd6f15672c124276aaa9c2c6f6ca15df7adf3f4d4c9d82a37db1333616f7cc"
+      ],
+      "source_published_kst": "2026-10-12T15:42+09:00",
+      "source_title": "스트라드비젼, 32억원 규모 'ADAS 전방 카메라 SW 공급' 계약",
+      "telegram_core_fact": "스트라드비젼(대표 김준환)이 앱티브(Aptiv)의 계열사 '앱티브 글로벌 오퍼레이션스 리미티드'(Aptiv Global Operations Limited)와 약 32억 원(240만달러) '첨단운전자보조시스템(ADAS)용 전방 카메라 비전 인지 소프트웨어 공급계약'을 체결했다고 12일 공시를 통해 밝혔다.",
+      "title": "스트라드비젼, 32억원 규모 'ADAS 전방 카메라 SW 공급' 계약"
     },
     "core:3b264e21f40d54e4c0470d8b": {
       "first_seen_kst": "2026-10-11T09:28:38+09:00",
@@ -23081,6 +23144,23 @@
       "telegram_core_fact": "[파이낸셜뉴스]삼성전자가 올해 3·4분기 영업이익 107조4000억원을 기록하며 '분기 영업이익 100조 시대'를 열었다.",
       "title": "삼성전자 '분기 영업이익 100조' 시대 열었다… 세계 테크기업 '최초'"
     },
+    "core:b7536fc04ef6871bc75c9690": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610126165b",
+      "source": "한국경제",
+      "source_body_digest": "b0fe556ddec97ade862bd25ef61c7485691347e447991999a10fa21e2577da6e",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T14:02+09:00",
+      "source_title": "셀트리온에 무슨 일이…분기 영업익 5000억 넘었다",
+      "telegram_core_fact": "셀트리온은 올해 3분기 연결 기준 잠정 매출이 1조5000억원, 영업이익이 5100억원으로 잠정 집계됐다고 12일 밝혔다.",
+      "title": "셀트리온에 무슨 일이…분기 영업익 5000억 넘었다"
+    },
     "core:b776da269daf04e65c03a968": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
@@ -28350,6 +28430,25 @@
       "telegram_core_fact": "네팔 정부가 대홍수로 실종된 피해자들의 법적 사망선고 대기기간을 기존 12년에서 약 45일로 대폭 단축했다. 8월 발생한 대홍수로 5000명 넘는 실종자가 발생한 가운데 유족들이 보상금을 받거나 재산 문제를 해결할 수 있도록 하기 위한 조치다.",
       "title": "네팔, 대홍수 실종자 사망선고 대기기간 12년→45일 단축"
     },
+    "core:e2a3339b2cd81899d62b1f43": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12173378",
+      "source": "매일경제",
+      "source_body_digest": "5e0cc5d1a2765b8beb452ba02e425d0e1ef233d6037a75ff60afe8b0be75f208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:259d7e5b92ca1e654674b182c77d016eae53835ca26d6e0ee65785981ef63561",
+      "source_fact_keys": [
+        "source_fact:v1:f0682a5059a4ae3e4946c3e50983f6a5e9e82168e07261912ec32a13d771916e"
+      ],
+      "source_published_kst": "2026-10-12T10:27+09:00",
+      "source_title": "이형일 “3조원 규모 해외건설 新전략펀드 신설…‘패키지 수주’ 지원”",
+      "telegram_core_fact": "이형일 부총리 겸 재정경제부 장관은 기업 해외 수주를 지원하도록 3조원 해외건설 전략펀드를 신설하겠다고 12일 밝혔다.",
+      "title": "이형일 “3조원 규모 해외건설 新전략펀드 신설…‘패키지 수주’ 지원”"
+    },
     "core:e2cda9d1f706abf343e505c0": {
       "first_seen_kst": "2026-10-09T23:03:47+09:00",
       "lanes": {
@@ -31745,6 +31844,27 @@
       "telegram_core_fact": "미국 트럼프 행정부가 국제형사재판소, ICC에 대한 고강도 제재안을 발표했습니다. 트럼프 대통령의 대척점에 선 인물로 평가받는 나비 필라이 전 ICC 재판관의 노벨평화상 수상 소식이 전해진 직후입니다.",
       "title": "노벨상 불발에 트럼프 뒤끝?…고강도 ICC 제재 발표 | 연합뉴스"
     },
+    "core:fd31deaa0440dbe5538c3883": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.mt.co.kr/index.php/future/2026/10/12/2026101214540744073",
+      "source": "머니투데이",
+      "source_body_digest": "0fed35ecf7297baacb639952225e8777a463395004ff6ae668ae101a209de5f0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fdc6e56bb6d0c876e01d3cf65a772945cae60c6c349eff90db6d877080bde8c9",
+      "source_fact_keys": [
+        "source_fact:v1:42ecb352c98c58711c232930e41fe540745705058c9ebf402d60b0855987d910",
+        "source_fact:v1:49906e421074cc631de88d40665ea8d11edab86ec1897ac213e299b028c07f92",
+        "source_fact:v1:f10e5ca67d34311f6e37d2528fb677568b7c73c458df886552fc82f43c9bed33"
+      ],
+      "source_published_kst": "2026-10-12T19:00+09:00",
+      "source_title": "베슬AI, '솔라 프로4' 인프라 공급…AI '추론 운영'으로 영역 확대",
+      "telegram_core_fact": "인공지능(AI) 인프라 스타트업 베슬AI가 업스테이지의 거대언어모델(LLM) '솔라 프로4'에 글로벌 인퍼런스(추론) 인프라를 공급해 서비스 운영을 지원했다고 12일 밝혔다. 베슬AI는 해당 협업을 계기로 GPU 인프라 공급을 넘어 AI 모델의 추론 운영 전문 기업으로 사업 영역을 확대한다는 방침이다.",
+      "title": "베슬AI, '솔라 프로4' 인프라 공급…AI '추론 운영'으로 영역 확대"
+    },
     "core:fd367693310e2976e5369cfe": {
       "first_seen_kst": "2026-10-09T17:13:50+09:00",
       "lanes": {
@@ -31787,6 +31907,30 @@
       "source_title": "2030년 일감까지 채운다… 삼성중공업, LNG·FLNG '쌍끌이 수주' 랠리",
       "telegram_core_fact": "조선업계에 따르면 삼성중공업은 최근 아시아 지역 선주로부터 LNG 운반선 2척을 6722억원에 수주했다.",
       "title": "2030년 일감까지 채운다… 삼성중공업, LNG·FLNG '쌍끌이 수주' 랠리"
+    },
+    "core:fdfc911e8ea51f9ea9568fb3": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012144700057",
+      "source": "연합뉴스",
+      "source_body_digest": "d3e438db71218ee161f662fc8e46389c8c2a1fb83fa7f7e869c345930104ffcc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10f217f58b9e5805419ecfe76e586825aead9bd486295068363a3758470ad75c",
+      "source_fact_keys": [
+        "source_fact:v1:02535ea4459b99310e6a54585f8ab6b35a03c6a4bc1bdf0f870eca21abe8df63",
+        "source_fact:v1:6634cbc0f875ce54c3e14c2882604812ed3679974c342ab6673b21e8cb23642c",
+        "source_fact:v1:674fb955a6760ded1075cbfbbf1be2050410a3bf70e494260080362df7a68e17",
+        "source_fact:v1:94bfc6ff8ec5813440ba90448ab16f588469995fd9cc6b98e8b856d765025bd4",
+        "source_fact:v1:9d62cb65615624eea3614b12036b51584d7dea5937b99d8be7a7fa05107dbaf9",
+        "source_fact:v1:d7fe258186c31f25a9fface72da9ba27a61b64757e4a7bd81c05ec26d80e680d"
+      ],
+      "source_published_kst": "2026-10-12T16:46+09:00",
+      "source_title": "울산시·시교육청, 교육투자 확대…협약형 특성화고 운영 협력 | 연합뉴스",
+      "telegram_core_fact": "시교육청은 ▲ 협약형 특성화고 지원 ▲ 학교급식비 인상과 협약 체계 개선 ▲ 교복 구입비 지원금 인상분 분담 ▲ 학교시설 개방 활성화 지원 등을 제시했다.",
+      "title": "울산시·시교육청, 교육투자 확대…협약형 특성화고 운영 협력 | 연합뉴스"
     },
     "core:fe2b567195265fe54eabcf6b": {
       "first_seen_kst": "2026-10-11T18:34:27+09:00",
@@ -38848,24 +38992,23 @@
     "event:9863e2156d1d4e96f8f2f84b": {
       "first_seen_kst": "2026-10-12T05:35:02+09:00",
       "lanes": {
-        "live": "2026-10-12T21:20:33+09:00"
+        "live": "2026-10-12T22:50:06+09:00"
       },
-      "last_seen_kst": "2026-10-12T21:20:33+09:00",
-      "link": "https://www.hankyung.com/article/2026101255626",
-      "source": "한국경제",
-      "source_body_digest": "4db49d57146729b337678bf04bdbc33238fc16f601a8efb1e5db3ab831be4c69",
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173048",
+      "source": "매일경제",
+      "source_body_digest": "440acf3f90de9e261370c4dd8b618ad9bdc192385200cc325bb118cefc17ce2d",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:fe09e8078cf4ed38351293241d2700e5827b9c303ae2eea0172f36e5ad7ea0cf",
+      "source_fact_identity": "source_facts:v1:9565540038b6f790459dd86e324057b8bdf40933dd08afe1c1202bcb850183d0",
       "source_fact_keys": [
-        "source_fact:v1:17e3e1679dd2657e7ce00ce9bb26c855511c37bdfcc24a238b16aa4522bb23c2",
-        "source_fact:v1:1eb4d55d6bddbeed299fcdc90b1e543ae450512c7c1e141aebdd8c3e1827b44b",
-        "source_fact:v1:289d263a3ba7a478f1e2eea7375aed28875025e9fbdf59a637e47b8525850084",
-        "source_fact:v1:55c49c941fbc885ec9bdc520c2fb423832a237f0fca230ed75e3265cd50d2e19"
+        "source_fact:v1:1168a5d2f5c4816945bbee054d7ee22ccdcffd9666cbb6af4f6ff6ee6a6a6b7b",
+        "source_fact:v1:510d0c4528d86c2b5d7868f17d237732352fb90fd20f6950bdda96f302b53552",
+        "source_fact:v1:6e18d98a91e6b3f8e77dc4558989e934311d8ddfb8af98043c32e254f22e7f3c"
       ],
-      "source_published_kst": "2026-10-12T10:08+09:00",
-      "source_title": "효성중공업, 3분기 실적 눈높이 하향에 6%대 약세",
-      "telegram_core_fact": "한화투자증권은 효성중공업의 3분기 매출액을 전년비 6.4% 늘어난 1조7277억원, 영업이익은 32.9% 증가한 2920억원으로 추정하며 시장 컨센서스를 밑돌 것으로 전망했다.",
-      "title": "효성중공업, 3분기 실적 눈높이 하향에 6%대 약세"
+      "source_published_kst": "2026-10-12T16:53+09:00",
+      "source_title": "[집중취재] 10·15 부동산대책 1년…집값 잡았나, 풍선효과 키웠나",
+      "telegram_core_fact": "정부가 서울 전역과 경기 일부 지역을 규제지역과 토지거래허가구역으로 지정하며 대출 규제까지 강화한 10·15 부동산대책이 시행 1년을 맞았습니다.",
+      "title": "[집중취재] 10·15 부동산대책 1년…집값 잡았나, 풍선효과 키웠나"
     },
     "event:989b212ffe32167f3bef644a": {
       "first_seen_kst": "2026-09-30T18:09:05+09:00",
@@ -53637,6 +53780,28 @@
       "telegram_core_fact": "지난달 29일 국무회의를 통과한 '핵추진잠수함 특별법' 제정을 기반으로 정부 역량 결집을 위한 의사결정체계를 정립하고, 사업 특수성을 고려한 획득 특례적용 및 핵잠 원자력안전규제 기반을 조성할 계획이다.",
       "title": "국방부, '핵추진잠수함 특별법'·대미 협의 본격화…연내 국방인공지능법 제정"
     },
+    "fact:38ace02c7d68750091f7e390": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.mt.co.kr/future/2026/10/12/2026101215240383824",
+      "source": "머니투데이",
+      "source_body_digest": "fe97b361365fc59e1be8b1c8bf5a915c9994da1729140f09190f649f158f6904",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3401853a2c6f37972de31b92468d3deb63b4684a7f58dae0bd024d9cff278a94",
+      "source_fact_keys": [
+        "source_fact:v1:6bc81f34df3c9c3737bc88ccc95c55e71ae6ae36fa7b63297f0bb9d814671f92",
+        "source_fact:v1:8b860ec23db7c5e8e21732cfd4e6576d54609a47491b5320730de74ccb60f9a9",
+        "source_fact:v1:cde350160587c9709902c5314b324da82b562773f43efb11cc12823477ea776b",
+        "source_fact:v1:e7dd6f15672c124276aaa9c2c6f6ca15df7adf3f4d4c9d82a37db1333616f7cc"
+      ],
+      "source_published_kst": "2026-10-12T15:42+09:00",
+      "source_title": "스트라드비젼, 32억원 규모 'ADAS 전방 카메라 SW 공급' 계약",
+      "telegram_core_fact": "스트라드비젼(대표 김준환)이 앱티브(Aptiv)의 계열사 '앱티브 글로벌 오퍼레이션스 리미티드'(Aptiv Global Operations Limited)와 약 32억 원(240만달러) '첨단운전자보조시스템(ADAS)용 전방 카메라 비전 인지 소프트웨어 공급계약'을 체결했다고 12일 공시를 통해 밝혔다.",
+      "title": "스트라드비젼, 32억원 규모 'ADAS 전방 카메라 SW 공급' 계약"
+    },
     "fact:38c9980365b6191fe22e0548": {
       "first_seen_kst": "2026-10-10T04:46:38+09:00",
       "lanes": {
@@ -63177,6 +63342,25 @@
       "telegram_core_fact": "방한한 리사 수 AMD 회장 겸 최고경영자(CEO)가 삼성과 SK의 반도체 수장을 만나 AI 협력 강화 방안을 논의한다. 약 7개월 만에 다시 성사된 전 부회장과 수 회장의 이번 회동으로 삼성전자와 AMD는 고대역폭메모리(HBM)를 포함한 AI 반도체 협력을 강화할 전망이다.",
       "title": "AMD 리사수, 삼성 전영현·SK 곽노정 만나 AI 협력방안 논의(종합)"
     },
+    "fact:6ef8d390f2742eb7d6e1a47d": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12173378",
+      "source": "매일경제",
+      "source_body_digest": "5e0cc5d1a2765b8beb452ba02e425d0e1ef233d6037a75ff60afe8b0be75f208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:259d7e5b92ca1e654674b182c77d016eae53835ca26d6e0ee65785981ef63561",
+      "source_fact_keys": [
+        "source_fact:v1:f0682a5059a4ae3e4946c3e50983f6a5e9e82168e07261912ec32a13d771916e"
+      ],
+      "source_published_kst": "2026-10-12T10:27+09:00",
+      "source_title": "이형일 “3조원 규모 해외건설 新전략펀드 신설…‘패키지 수주’ 지원”",
+      "telegram_core_fact": "이형일 부총리 겸 재정경제부 장관은 기업 해외 수주를 지원하도록 3조원 해외건설 전략펀드를 신설하겠다고 12일 밝혔다.",
+      "title": "이형일 “3조원 규모 해외건설 新전략펀드 신설…‘패키지 수주’ 지원”"
+    },
     "fact:6f1fb60ec1f27a5c9086bf75": {
       "first_seen_kst": "2026-10-08T10:20:20+09:00",
       "lanes": {
@@ -65682,6 +65866,27 @@
       "source_title": "모태 자펀드 수도권 집중…2020년 이후 신규투자 4분의 3 쏠려 | 연합뉴스",
       "telegram_core_fact": "올해는 모태펀드가 출자하는 자펀드에 지역투자 20% 의무를 부여하고, 지방 소재 중소·벤처기업에 30% 이상 투자 의무를 설정한 운용사에는 가점을 부여한다.",
       "title": "모태 자펀드 수도권 집중…2020년 이후 신규투자 4분의 3 쏠려 | 연합뉴스"
+    },
+    "fact:7dfbca601d842ba47384c01d": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173048",
+      "source": "매일경제",
+      "source_body_digest": "440acf3f90de9e261370c4dd8b618ad9bdc192385200cc325bb118cefc17ce2d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9565540038b6f790459dd86e324057b8bdf40933dd08afe1c1202bcb850183d0",
+      "source_fact_keys": [
+        "source_fact:v1:1168a5d2f5c4816945bbee054d7ee22ccdcffd9666cbb6af4f6ff6ee6a6a6b7b",
+        "source_fact:v1:510d0c4528d86c2b5d7868f17d237732352fb90fd20f6950bdda96f302b53552",
+        "source_fact:v1:6e18d98a91e6b3f8e77dc4558989e934311d8ddfb8af98043c32e254f22e7f3c"
+      ],
+      "source_published_kst": "2026-10-12T16:53+09:00",
+      "source_title": "[집중취재] 10·15 부동산대책 1년…집값 잡았나, 풍선효과 키웠나",
+      "telegram_core_fact": "정부가 서울 전역과 경기 일부 지역을 규제지역과 토지거래허가구역으로 지정하며 대출 규제까지 강화한 10·15 부동산대책이 시행 1년을 맞았습니다.",
+      "title": "[집중취재] 10·15 부동산대책 1년…집값 잡았나, 풍선효과 키웠나"
     },
     "fact:7e18aa1a94e580560d728a24": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -70164,6 +70369,30 @@
       "source_published_kst": "2026-10-06T20:59+09:00",
       "title": "AI가 부의 지형 바꿨다…세계 500대 부자 미국 IT에 집중"
     },
+    "fact:94265c4fed7480abbd038ed4": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012144700057",
+      "source": "연합뉴스",
+      "source_body_digest": "d3e438db71218ee161f662fc8e46389c8c2a1fb83fa7f7e869c345930104ffcc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10f217f58b9e5805419ecfe76e586825aead9bd486295068363a3758470ad75c",
+      "source_fact_keys": [
+        "source_fact:v1:02535ea4459b99310e6a54585f8ab6b35a03c6a4bc1bdf0f870eca21abe8df63",
+        "source_fact:v1:6634cbc0f875ce54c3e14c2882604812ed3679974c342ab6673b21e8cb23642c",
+        "source_fact:v1:674fb955a6760ded1075cbfbbf1be2050410a3bf70e494260080362df7a68e17",
+        "source_fact:v1:94bfc6ff8ec5813440ba90448ab16f588469995fd9cc6b98e8b856d765025bd4",
+        "source_fact:v1:9d62cb65615624eea3614b12036b51584d7dea5937b99d8be7a7fa05107dbaf9",
+        "source_fact:v1:d7fe258186c31f25a9fface72da9ba27a61b64757e4a7bd81c05ec26d80e680d"
+      ],
+      "source_published_kst": "2026-10-12T16:46+09:00",
+      "source_title": "울산시·시교육청, 교육투자 확대…협약형 특성화고 운영 협력 | 연합뉴스",
+      "telegram_core_fact": "시교육청은 ▲ 협약형 특성화고 지원 ▲ 학교급식비 인상과 협약 체계 개선 ▲ 교복 구입비 지원금 인상분 분담 ▲ 학교시설 개방 활성화 지원 등을 제시했다.",
+      "title": "울산시·시교육청, 교육투자 확대…협약형 특성화고 운영 협력 | 연합뉴스"
+    },
     "fact:94280393417119da1f65572f": {
       "first_seen_kst": "2026-10-11T12:11:12+09:00",
       "lanes": {
@@ -72708,6 +72937,27 @@
       "source_title": "삼전닉스 자사주 매입 끝나자 6500 무너져 … 코스피 사줄 사람이 없다",
       "telegram_core_fact": "외국인 자금이 미국으로 이동하는 가운데 국내에서는 국민연금과 개인의 매물 부담이 크고, 그동안 시장을 받쳐왔던 삼성전자와 SK하이닉스의 자사주 매입까지 마무리되면서 추가적인 매수 동력이 약해졌다는 분석이다.",
       "title": "삼전닉스 자사주 매입 끝나자 6500 무너져 … 코스피 사줄 사람이 없다"
+    },
+    "fact:a1c2286e2341b23714aa006c": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.mt.co.kr/index.php/future/2026/10/12/2026101214540744073",
+      "source": "머니투데이",
+      "source_body_digest": "0fed35ecf7297baacb639952225e8777a463395004ff6ae668ae101a209de5f0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fdc6e56bb6d0c876e01d3cf65a772945cae60c6c349eff90db6d877080bde8c9",
+      "source_fact_keys": [
+        "source_fact:v1:42ecb352c98c58711c232930e41fe540745705058c9ebf402d60b0855987d910",
+        "source_fact:v1:49906e421074cc631de88d40665ea8d11edab86ec1897ac213e299b028c07f92",
+        "source_fact:v1:f10e5ca67d34311f6e37d2528fb677568b7c73c458df886552fc82f43c9bed33"
+      ],
+      "source_published_kst": "2026-10-12T19:00+09:00",
+      "source_title": "베슬AI, '솔라 프로4' 인프라 공급…AI '추론 운영'으로 영역 확대",
+      "telegram_core_fact": "인공지능(AI) 인프라 스타트업 베슬AI가 업스테이지의 거대언어모델(LLM) '솔라 프로4'에 글로벌 인퍼런스(추론) 인프라를 공급해 서비스 운영을 지원했다고 12일 밝혔다. 베슬AI는 해당 협업을 계기로 GPU 인프라 공급을 넘어 AI 모델의 추론 운영 전문 기업으로 사업 영역을 확대한다는 방침이다.",
+      "title": "베슬AI, '솔라 프로4' 인프라 공급…AI '추론 운영'으로 영역 확대"
     },
     "fact:a1d57a94df0307f58f824ee4": {
       "first_seen_kst": "2026-10-10T03:26:28+09:00",
@@ -85451,6 +85701,26 @@
       "telegram_core_fact": "올해 상반기에는 경기 고양시 삼송 데이터센터 등 1조원 이상 대형 DBO 사업을 수주했다.",
       "title": "LG CNS, 모듈형 데이터센터 기반 AI 팩토리로 승부"
     },
+    "fact:e535cb1adc814387331ae81a": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.mk.co.kr/news/business/12174015",
+      "source": "매일경제",
+      "source_body_digest": "56b5160565fefe7597d7a879e3cff5706173afc2bd4c6deb3af75ca39f37874f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:20f36c88d593f2bace97328c42d6fad7fa9a967282cee95429ece704c97b7281",
+      "source_fact_keys": [
+        "source_fact:v1:1a59848fad558adc1a806f0751f84419262122ccfef72bdc2762362a97d2730b",
+        "source_fact:v1:4b040fb6812033374ea20b221b66bd14465e1c7849b1a99f62b629b3f6fbf8b0"
+      ],
+      "source_published_kst": "2026-10-12T21:24+09:00",
+      "source_title": "“속여도 남는 장사?”…공정위 제재 비웃는 기업들 ‘배짱 광고’",
+      "telegram_core_fact": "“과징금이 처벌이 아닌 기업의 영업비용으로 전락해서는 안 된다”며 “반복적인 소비자 기만행위를 막을 수 있도록 공정위의 제재 실효성을 강화해야 한다”고 강조했다.",
+      "title": "“속여도 남는 장사?”…공정위 제재 비웃는 기업들 ‘배짱 광고’"
+    },
     "fact:e53d2327261a87e60651a8eb": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
       "lanes": {
@@ -91297,6 +91567,26 @@
       "source_title": "민트, 아일랜드와 로봇 OEM 계약..최대 300만 유로",
       "telegram_core_fact": "액소넥스는 로봇 키트와 플랫폼 라이선스, 표준 소프트웨어, 플랫폼 기술을 센트리덱스에 공급한다.",
       "title": "민트, 아일랜드와 로봇 OEM 계약..최대 300만 유로"
+    },
+    "link:03fb0a29a315f82e44d471ed": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.mk.co.kr/news/business/12174015",
+      "source": "매일경제",
+      "source_body_digest": "56b5160565fefe7597d7a879e3cff5706173afc2bd4c6deb3af75ca39f37874f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:20f36c88d593f2bace97328c42d6fad7fa9a967282cee95429ece704c97b7281",
+      "source_fact_keys": [
+        "source_fact:v1:1a59848fad558adc1a806f0751f84419262122ccfef72bdc2762362a97d2730b",
+        "source_fact:v1:4b040fb6812033374ea20b221b66bd14465e1c7849b1a99f62b629b3f6fbf8b0"
+      ],
+      "source_published_kst": "2026-10-12T21:24+09:00",
+      "source_title": "“속여도 남는 장사?”…공정위 제재 비웃는 기업들 ‘배짱 광고’",
+      "telegram_core_fact": "“과징금이 처벌이 아닌 기업의 영업비용으로 전락해서는 안 된다”며 “반복적인 소비자 기만행위를 막을 수 있도록 공정위의 제재 실효성을 강화해야 한다”고 강조했다.",
+      "title": "“속여도 남는 장사?”…공정위 제재 비웃는 기업들 ‘배짱 광고’"
     },
     "link:043abb4ec892dff51b2e8050": {
       "first_seen_kst": "2026-10-12T13:56:47+09:00",
@@ -98795,6 +99085,23 @@
       "source": "파이낸셜뉴스",
       "title": "정부 \"9월 물가 2.9%…석유 최고가격제로 상승률 0.6%p 낮춰\""
     },
+    "link:20d0f815f70f4f00421f9f97": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610126165b",
+      "source": "한국경제",
+      "source_body_digest": "b0fe556ddec97ade862bd25ef61c7485691347e447991999a10fa21e2577da6e",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T14:02+09:00",
+      "source_title": "셀트리온에 무슨 일이…분기 영업익 5000억 넘었다",
+      "telegram_core_fact": "셀트리온은 올해 3분기 연결 기준 잠정 매출이 1조5000억원, 영업이익이 5100억원으로 잠정 집계됐다고 12일 밝혔다.",
+      "title": "셀트리온에 무슨 일이…분기 영업익 5000억 넘었다"
+    },
     "link:20daffd73ec45f0db1393605": {
       "first_seen_kst": "2026-10-12T20:37:19+09:00",
       "lanes": {
@@ -102696,6 +103003,25 @@
       "source_title": "이소영 중기장관 \"'납품대금 연동제' 제재 약해…실효성 부족\" | 연합뉴스",
       "telegram_core_fact": "이 장관은 \"발동 요건에 대한 제도 보완과 제재나 계약에서의 자동 적용 제도까지 포함해서 납품 대금 연동제에 대해서는 전체적인 검토를 다시 하겠다\"며 \"일본의 관련 제도는 법적인 구속력이 없는 권고적인 제도지만, 정부가 가격 지표를 공표하는 부분 등 벤치마킹할 수 있는 부분은 그렇게 하겠다\"고 말했다.",
       "title": "이소영 중기장관 \"'납품대금 연동제' 제재 약해…실효성 부족\" | 연합뉴스"
+    },
+    "link:2deb3c2b599d0bbe6a5ffc54": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12173378",
+      "source": "매일경제",
+      "source_body_digest": "5e0cc5d1a2765b8beb452ba02e425d0e1ef233d6037a75ff60afe8b0be75f208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:259d7e5b92ca1e654674b182c77d016eae53835ca26d6e0ee65785981ef63561",
+      "source_fact_keys": [
+        "source_fact:v1:f0682a5059a4ae3e4946c3e50983f6a5e9e82168e07261912ec32a13d771916e"
+      ],
+      "source_published_kst": "2026-10-12T10:27+09:00",
+      "source_title": "이형일 “3조원 규모 해외건설 新전략펀드 신설…‘패키지 수주’ 지원”",
+      "telegram_core_fact": "이형일 부총리 겸 재정경제부 장관은 기업 해외 수주를 지원하도록 3조원 해외건설 전략펀드를 신설하겠다고 12일 밝혔다.",
+      "title": "이형일 “3조원 규모 해외건설 新전략펀드 신설…‘패키지 수주’ 지원”"
     },
     "link:2df2da139799948e1e12f9e5": {
       "first_seen_kst": "2026-10-01T21:23:29+09:00",
@@ -129055,6 +129381,27 @@
       "telegram_core_fact": "회사에 따르면 올해 상반기 연결 기준 매출액은 344억원, 영업이익은 103억원을 기록했다. 인공지능(AI) 클라우드 기업 엘리스그룹이 오늘(7일)부터 이틀간 코스닥 상장을 위한 일반투자자 대상 공모주 청약을 진행한다.",
       "title": "'AI 클라우드 기업' 엘리스그룹, 일반공모 돌입[오늘청약]"
     },
+    "link:9297c99d26e30fe3a57696a7": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.mt.co.kr/index.php/future/2026/10/12/2026101214540744073",
+      "source": "머니투데이",
+      "source_body_digest": "0fed35ecf7297baacb639952225e8777a463395004ff6ae668ae101a209de5f0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fdc6e56bb6d0c876e01d3cf65a772945cae60c6c349eff90db6d877080bde8c9",
+      "source_fact_keys": [
+        "source_fact:v1:42ecb352c98c58711c232930e41fe540745705058c9ebf402d60b0855987d910",
+        "source_fact:v1:49906e421074cc631de88d40665ea8d11edab86ec1897ac213e299b028c07f92",
+        "source_fact:v1:f10e5ca67d34311f6e37d2528fb677568b7c73c458df886552fc82f43c9bed33"
+      ],
+      "source_published_kst": "2026-10-12T19:00+09:00",
+      "source_title": "베슬AI, '솔라 프로4' 인프라 공급…AI '추론 운영'으로 영역 확대",
+      "telegram_core_fact": "인공지능(AI) 인프라 스타트업 베슬AI가 업스테이지의 거대언어모델(LLM) '솔라 프로4'에 글로벌 인퍼런스(추론) 인프라를 공급해 서비스 운영을 지원했다고 12일 밝혔다. 베슬AI는 해당 협업을 계기로 GPU 인프라 공급을 넘어 AI 모델의 추론 운영 전문 기업으로 사업 영역을 확대한다는 방침이다.",
+      "title": "베슬AI, '솔라 프로4' 인프라 공급…AI '추론 운영'으로 영역 확대"
+    },
     "link:929b1772ffc4b04bdf77f5c5": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
       "lanes": {
@@ -132777,6 +133124,30 @@
       ],
       "source_published_kst": "2026-10-06T16:30+09:00",
       "title": "\"미디어텍 디멘시티, 프리미엄 스마트폰 AP시장서 삼성전자 역전 전망\""
+    },
+    "link:9f314786fbfb511aa8bc86a3": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012144700057",
+      "source": "연합뉴스",
+      "source_body_digest": "d3e438db71218ee161f662fc8e46389c8c2a1fb83fa7f7e869c345930104ffcc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10f217f58b9e5805419ecfe76e586825aead9bd486295068363a3758470ad75c",
+      "source_fact_keys": [
+        "source_fact:v1:02535ea4459b99310e6a54585f8ab6b35a03c6a4bc1bdf0f870eca21abe8df63",
+        "source_fact:v1:6634cbc0f875ce54c3e14c2882604812ed3679974c342ab6673b21e8cb23642c",
+        "source_fact:v1:674fb955a6760ded1075cbfbbf1be2050410a3bf70e494260080362df7a68e17",
+        "source_fact:v1:94bfc6ff8ec5813440ba90448ab16f588469995fd9cc6b98e8b856d765025bd4",
+        "source_fact:v1:9d62cb65615624eea3614b12036b51584d7dea5937b99d8be7a7fa05107dbaf9",
+        "source_fact:v1:d7fe258186c31f25a9fface72da9ba27a61b64757e4a7bd81c05ec26d80e680d"
+      ],
+      "source_published_kst": "2026-10-12T16:46+09:00",
+      "source_title": "울산시·시교육청, 교육투자 확대…협약형 특성화고 운영 협력 | 연합뉴스",
+      "telegram_core_fact": "시교육청은 ▲ 협약형 특성화고 지원 ▲ 학교급식비 인상과 협약 체계 개선 ▲ 교복 구입비 지원금 인상분 분담 ▲ 학교시설 개방 활성화 지원 등을 제시했다.",
+      "title": "울산시·시교육청, 교육투자 확대…협약형 특성화고 운영 협력 | 연합뉴스"
     },
     "link:9f60c05023f7736d6886aaa6": {
       "first_seen_kst": "2026-10-07T19:13:29+09:00",
@@ -140589,6 +140960,27 @@
       "source": "뉴시스",
       "title": "네이버 노조, 15개 계열사 통합교섭 요구…노동위에 시정신청"
     },
+    "link:bc8878405ef0dfaab804acdf": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173048",
+      "source": "매일경제",
+      "source_body_digest": "440acf3f90de9e261370c4dd8b618ad9bdc192385200cc325bb118cefc17ce2d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9565540038b6f790459dd86e324057b8bdf40933dd08afe1c1202bcb850183d0",
+      "source_fact_keys": [
+        "source_fact:v1:1168a5d2f5c4816945bbee054d7ee22ccdcffd9666cbb6af4f6ff6ee6a6a6b7b",
+        "source_fact:v1:510d0c4528d86c2b5d7868f17d237732352fb90fd20f6950bdda96f302b53552",
+        "source_fact:v1:6e18d98a91e6b3f8e77dc4558989e934311d8ddfb8af98043c32e254f22e7f3c"
+      ],
+      "source_published_kst": "2026-10-12T16:53+09:00",
+      "source_title": "[집중취재] 10·15 부동산대책 1년…집값 잡았나, 풍선효과 키웠나",
+      "telegram_core_fact": "정부가 서울 전역과 경기 일부 지역을 규제지역과 토지거래허가구역으로 지정하며 대출 규제까지 강화한 10·15 부동산대책이 시행 1년을 맞았습니다.",
+      "title": "[집중취재] 10·15 부동산대책 1년…집값 잡았나, 풍선효과 키웠나"
+    },
     "link:bca8fc93f112283a84920346": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -142082,6 +142474,28 @@
       ],
       "source_published_kst": "2026-10-06T11:08+09:00",
       "title": "\"농지 특조법 특례 2∼3년 설정·농지법 개정 동시 추진 필요\" | 연합뉴스"
+    },
+    "link:c15af6bbc486308ef00ca4ad": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.mt.co.kr/future/2026/10/12/2026101215240383824",
+      "source": "머니투데이",
+      "source_body_digest": "fe97b361365fc59e1be8b1c8bf5a915c9994da1729140f09190f649f158f6904",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3401853a2c6f37972de31b92468d3deb63b4684a7f58dae0bd024d9cff278a94",
+      "source_fact_keys": [
+        "source_fact:v1:6bc81f34df3c9c3737bc88ccc95c55e71ae6ae36fa7b63297f0bb9d814671f92",
+        "source_fact:v1:8b860ec23db7c5e8e21732cfd4e6576d54609a47491b5320730de74ccb60f9a9",
+        "source_fact:v1:cde350160587c9709902c5314b324da82b562773f43efb11cc12823477ea776b",
+        "source_fact:v1:e7dd6f15672c124276aaa9c2c6f6ca15df7adf3f4d4c9d82a37db1333616f7cc"
+      ],
+      "source_published_kst": "2026-10-12T15:42+09:00",
+      "source_title": "스트라드비젼, 32억원 규모 'ADAS 전방 카메라 SW 공급' 계약",
+      "telegram_core_fact": "스트라드비젼(대표 김준환)이 앱티브(Aptiv)의 계열사 '앱티브 글로벌 오퍼레이션스 리미티드'(Aptiv Global Operations Limited)와 약 32억 원(240만달러) '첨단운전자보조시스템(ADAS)용 전방 카메라 비전 인지 소프트웨어 공급계약'을 체결했다고 12일 공시를 통해 밝혔다.",
+      "title": "스트라드비젼, 32억원 규모 'ADAS 전방 카메라 SW 공급' 계약"
     },
     "link:c15cb67cb1349425a0cbb78c": {
       "first_seen_kst": "2026-10-08T00:39:44+09:00",
@@ -164999,6 +165413,25 @@
       "source_published_kst": "2026-10-07T15:15+09:00",
       "title": "두나무·네이버파이낸셜 주식교환 또 연기…내년 3월 예정 | 연합뉴스"
     },
+    "original:1b2ab97fe9c8e49246ac161e": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12173378",
+      "source": "매일경제",
+      "source_body_digest": "5e0cc5d1a2765b8beb452ba02e425d0e1ef233d6037a75ff60afe8b0be75f208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:259d7e5b92ca1e654674b182c77d016eae53835ca26d6e0ee65785981ef63561",
+      "source_fact_keys": [
+        "source_fact:v1:f0682a5059a4ae3e4946c3e50983f6a5e9e82168e07261912ec32a13d771916e"
+      ],
+      "source_published_kst": "2026-10-12T10:27+09:00",
+      "source_title": "이형일 “3조원 규모 해외건설 新전략펀드 신설…‘패키지 수주’ 지원”",
+      "telegram_core_fact": "이형일 부총리 겸 재정경제부 장관은 기업 해외 수주를 지원하도록 3조원 해외건설 전략펀드를 신설하겠다고 12일 밝혔다.",
+      "title": "이형일 “3조원 규모 해외건설 新전략펀드 신설…‘패키지 수주’ 지원”"
+    },
     "original:1b3ce221f9b8d52fc53526cc": {
       "first_seen_kst": "2026-10-01T16:14:13+09:00",
       "lanes": {
@@ -167713,6 +168146,23 @@
       "source_title": "한전 사장 \"기업의 전기료 선납으로 재무 문제 해결은 잘못\"",
       "telegram_core_fact": "재무 문제 해결을 위한 한전채 발행과 관련해선 \"한전은 신용등급이 트리플 A 등급으로 한전채를 발행하면 사채 시장에서 일반기업들이 쓸어가기 때문에 일반 기업들의 자금 조달에 큰 문제가 생긴다\"며 \"한전은 할 수 있으면 사채를 발행하지 않는 것이 채권시장에 좋다고 생각하고 있다\"고 생각을 전했다.",
       "title": "한전 사장 \"기업의 전기료 선납으로 재무 문제 해결은 잘못\""
+    },
+    "original:25ac2c80bcfbb7759c8fed78": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610126165b",
+      "source": "한국경제",
+      "source_body_digest": "b0fe556ddec97ade862bd25ef61c7485691347e447991999a10fa21e2577da6e",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T14:02+09:00",
+      "source_title": "셀트리온에 무슨 일이…분기 영업익 5000억 넘었다",
+      "telegram_core_fact": "셀트리온은 올해 3분기 연결 기준 잠정 매출이 1조5000억원, 영업이익이 5100억원으로 잠정 집계됐다고 12일 밝혔다.",
+      "title": "셀트리온에 무슨 일이…분기 영업익 5000억 넘었다"
     },
     "original:25c670db410b3a87ce70aa2c": {
       "first_seen_kst": "2026-10-12T08:46:35+09:00",
@@ -184801,6 +185251,27 @@
       "source_published_kst": "2026-10-03T16:30+09:00",
       "title": "“최고 금리 4.5%인데 가입해야죠” 신협 부스에 대학생들 몰린 이유는? [헤럴드머니페스타2026]"
     },
+    "original:681aab402cb5f78aefd0ee72": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173048",
+      "source": "매일경제",
+      "source_body_digest": "440acf3f90de9e261370c4dd8b618ad9bdc192385200cc325bb118cefc17ce2d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9565540038b6f790459dd86e324057b8bdf40933dd08afe1c1202bcb850183d0",
+      "source_fact_keys": [
+        "source_fact:v1:1168a5d2f5c4816945bbee054d7ee22ccdcffd9666cbb6af4f6ff6ee6a6a6b7b",
+        "source_fact:v1:510d0c4528d86c2b5d7868f17d237732352fb90fd20f6950bdda96f302b53552",
+        "source_fact:v1:6e18d98a91e6b3f8e77dc4558989e934311d8ddfb8af98043c32e254f22e7f3c"
+      ],
+      "source_published_kst": "2026-10-12T16:53+09:00",
+      "source_title": "[집중취재] 10·15 부동산대책 1년…집값 잡았나, 풍선효과 키웠나",
+      "telegram_core_fact": "정부가 서울 전역과 경기 일부 지역을 규제지역과 토지거래허가구역으로 지정하며 대출 규제까지 강화한 10·15 부동산대책이 시행 1년을 맞았습니다.",
+      "title": "[집중취재] 10·15 부동산대책 1년…집값 잡았나, 풍선효과 키웠나"
+    },
     "original:682276b855c1da4c8fc80eeb": {
       "first_seen_kst": "2026-09-30T05:43:22+09:00",
       "lanes": {
@@ -185773,6 +186244,27 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T13:00+09:00",
       "title": "올해 영화시장 매출 3분기 만에 1조원 돌파…‘오디세이’·‘암살자(들)’ 흥행"
+    },
+    "original:6c5e717c95367c663b3fedb1": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.mt.co.kr/index.php/future/2026/10/12/2026101214540744073",
+      "source": "머니투데이",
+      "source_body_digest": "0fed35ecf7297baacb639952225e8777a463395004ff6ae668ae101a209de5f0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fdc6e56bb6d0c876e01d3cf65a772945cae60c6c349eff90db6d877080bde8c9",
+      "source_fact_keys": [
+        "source_fact:v1:42ecb352c98c58711c232930e41fe540745705058c9ebf402d60b0855987d910",
+        "source_fact:v1:49906e421074cc631de88d40665ea8d11edab86ec1897ac213e299b028c07f92",
+        "source_fact:v1:f10e5ca67d34311f6e37d2528fb677568b7c73c458df886552fc82f43c9bed33"
+      ],
+      "source_published_kst": "2026-10-12T19:00+09:00",
+      "source_title": "베슬AI, '솔라 프로4' 인프라 공급…AI '추론 운영'으로 영역 확대",
+      "telegram_core_fact": "인공지능(AI) 인프라 스타트업 베슬AI가 업스테이지의 거대언어모델(LLM) '솔라 프로4'에 글로벌 인퍼런스(추론) 인프라를 공급해 서비스 운영을 지원했다고 12일 밝혔다. 베슬AI는 해당 협업을 계기로 GPU 인프라 공급을 넘어 AI 모델의 추론 운영 전문 기업으로 사업 영역을 확대한다는 방침이다.",
+      "title": "베슬AI, '솔라 프로4' 인프라 공급…AI '추론 운영'으로 영역 확대"
     },
     "original:6c82f6417fdb10f67125875f": {
       "first_seen_kst": "2026-10-11T22:57:06+09:00",
@@ -192175,6 +192667,30 @@
       ],
       "source_published_kst": "2026-10-06T10:11+09:00",
       "title": "세아베스틸, 로봇 감속기용 특수강 국산화…양산 본격화"
+    },
+    "original:84f65afb37f0379347bf0a66": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012144700057",
+      "source": "연합뉴스",
+      "source_body_digest": "d3e438db71218ee161f662fc8e46389c8c2a1fb83fa7f7e869c345930104ffcc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10f217f58b9e5805419ecfe76e586825aead9bd486295068363a3758470ad75c",
+      "source_fact_keys": [
+        "source_fact:v1:02535ea4459b99310e6a54585f8ab6b35a03c6a4bc1bdf0f870eca21abe8df63",
+        "source_fact:v1:6634cbc0f875ce54c3e14c2882604812ed3679974c342ab6673b21e8cb23642c",
+        "source_fact:v1:674fb955a6760ded1075cbfbbf1be2050410a3bf70e494260080362df7a68e17",
+        "source_fact:v1:94bfc6ff8ec5813440ba90448ab16f588469995fd9cc6b98e8b856d765025bd4",
+        "source_fact:v1:9d62cb65615624eea3614b12036b51584d7dea5937b99d8be7a7fa05107dbaf9",
+        "source_fact:v1:d7fe258186c31f25a9fface72da9ba27a61b64757e4a7bd81c05ec26d80e680d"
+      ],
+      "source_published_kst": "2026-10-12T16:46+09:00",
+      "source_title": "울산시·시교육청, 교육투자 확대…협약형 특성화고 운영 협력 | 연합뉴스",
+      "telegram_core_fact": "시교육청은 ▲ 협약형 특성화고 지원 ▲ 학교급식비 인상과 협약 체계 개선 ▲ 교복 구입비 지원금 인상분 분담 ▲ 학교시설 개방 활성화 지원 등을 제시했다.",
+      "title": "울산시·시교육청, 교육투자 확대…협약형 특성화고 운영 협력 | 연합뉴스"
     },
     "original:84f66621e2fbbed0059c1bdb": {
       "first_seen_kst": "2026-10-01T19:16:32+09:00",
@@ -219132,6 +219648,28 @@
       "telegram_core_fact": "국민의힘 구자근 국회의원(경북 구미시갑)이 12일 한국제품안전관리원으로부터 제출받은 자료에 따르면 2021년부터 2026년 7월까지 해외 리콜제품 1만 9102개를 대상으로 해외 직구 플랫폼을 모니터링한 결과, 국내 판매가 확인된 사례는 총 1138건으로 집계됐다.",
       "title": "구자근 의원 \"해외서 리콜된 제품 국내서 버젓이 판매\""
     },
+    "original:ed97dd979228195d471d6282": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.mt.co.kr/future/2026/10/12/2026101215240383824",
+      "source": "머니투데이",
+      "source_body_digest": "fe97b361365fc59e1be8b1c8bf5a915c9994da1729140f09190f649f158f6904",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3401853a2c6f37972de31b92468d3deb63b4684a7f58dae0bd024d9cff278a94",
+      "source_fact_keys": [
+        "source_fact:v1:6bc81f34df3c9c3737bc88ccc95c55e71ae6ae36fa7b63297f0bb9d814671f92",
+        "source_fact:v1:8b860ec23db7c5e8e21732cfd4e6576d54609a47491b5320730de74ccb60f9a9",
+        "source_fact:v1:cde350160587c9709902c5314b324da82b562773f43efb11cc12823477ea776b",
+        "source_fact:v1:e7dd6f15672c124276aaa9c2c6f6ca15df7adf3f4d4c9d82a37db1333616f7cc"
+      ],
+      "source_published_kst": "2026-10-12T15:42+09:00",
+      "source_title": "스트라드비젼, 32억원 규모 'ADAS 전방 카메라 SW 공급' 계약",
+      "telegram_core_fact": "스트라드비젼(대표 김준환)이 앱티브(Aptiv)의 계열사 '앱티브 글로벌 오퍼레이션스 리미티드'(Aptiv Global Operations Limited)와 약 32억 원(240만달러) '첨단운전자보조시스템(ADAS)용 전방 카메라 비전 인지 소프트웨어 공급계약'을 체결했다고 12일 공시를 통해 밝혔다.",
+      "title": "스트라드비젼, 32억원 규모 'ADAS 전방 카메라 SW 공급' 계약"
+    },
     "original:edb5925e3d74375d286813d7": {
       "first_seen_kst": "2026-10-12T13:56:47+09:00",
       "lanes": {
@@ -219151,6 +219689,26 @@
       "source_title": "한화투자증권, 일본 GI캐피털매니지먼트 증권 부문 주식 취득 계약",
       "telegram_core_fact": "한화투자증권이 일본 종합금융투자회사 GI캐피털매니지먼트의 증권 부문 지분을 인수하는 주식매매계약을 체결했다. 한화투자증권에 따르면 회사는 지난달 이사회에서 GI캐피털매니지먼트 증권 부문 지분 인수를 결의한 데 이어 일본 도쿄에서 계약식을 열었다.",
       "title": "한화투자증권, 일본 GI캐피털매니지먼트 증권 부문 주식 취득 계약"
+    },
+    "original:edc5c448988fe6430ffe03e8": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.mk.co.kr/news/business/12174015",
+      "source": "매일경제",
+      "source_body_digest": "56b5160565fefe7597d7a879e3cff5706173afc2bd4c6deb3af75ca39f37874f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:20f36c88d593f2bace97328c42d6fad7fa9a967282cee95429ece704c97b7281",
+      "source_fact_keys": [
+        "source_fact:v1:1a59848fad558adc1a806f0751f84419262122ccfef72bdc2762362a97d2730b",
+        "source_fact:v1:4b040fb6812033374ea20b221b66bd14465e1c7849b1a99f62b629b3f6fbf8b0"
+      ],
+      "source_published_kst": "2026-10-12T21:24+09:00",
+      "source_title": "“속여도 남는 장사?”…공정위 제재 비웃는 기업들 ‘배짱 광고’",
+      "telegram_core_fact": "“과징금이 처벌이 아닌 기업의 영업비용으로 전락해서는 안 된다”며 “반복적인 소비자 기만행위를 막을 수 있도록 공정위의 제재 실효성을 강화해야 한다”고 강조했다.",
+      "title": "“속여도 남는 장사?”…공정위 제재 비웃는 기업들 ‘배짱 광고’"
     },
     "original:edec30cdc2a2224e6f9d8eb4": {
       "first_seen_kst": "2026-10-07T15:30:27+09:00",
@@ -226380,6 +226938,30 @@
       "telegram_core_fact": "삼성전자가 내년 미국 텍사스주 테일러 파운드리(반도체 위탁생산) 공장의 2나노미터(나노미터·1㎚=10억분의 1m) 반도체 본격 양산을 앞두고 기술 인력과 현지 운영조직 확충에 속도를 내고 있다.",
       "title": "삼성 美 테일러팹 2나노 양산 임박…'수율 특공대' 파견"
     },
+    "source_fact:038c8d05bd198460f9651b3e": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012144700057",
+      "source": "연합뉴스",
+      "source_body_digest": "d3e438db71218ee161f662fc8e46389c8c2a1fb83fa7f7e869c345930104ffcc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10f217f58b9e5805419ecfe76e586825aead9bd486295068363a3758470ad75c",
+      "source_fact_keys": [
+        "source_fact:v1:02535ea4459b99310e6a54585f8ab6b35a03c6a4bc1bdf0f870eca21abe8df63",
+        "source_fact:v1:6634cbc0f875ce54c3e14c2882604812ed3679974c342ab6673b21e8cb23642c",
+        "source_fact:v1:674fb955a6760ded1075cbfbbf1be2050410a3bf70e494260080362df7a68e17",
+        "source_fact:v1:94bfc6ff8ec5813440ba90448ab16f588469995fd9cc6b98e8b856d765025bd4",
+        "source_fact:v1:9d62cb65615624eea3614b12036b51584d7dea5937b99d8be7a7fa05107dbaf9",
+        "source_fact:v1:d7fe258186c31f25a9fface72da9ba27a61b64757e4a7bd81c05ec26d80e680d"
+      ],
+      "source_published_kst": "2026-10-12T16:46+09:00",
+      "source_title": "울산시·시교육청, 교육투자 확대…협약형 특성화고 운영 협력 | 연합뉴스",
+      "telegram_core_fact": "시교육청은 ▲ 협약형 특성화고 지원 ▲ 학교급식비 인상과 협약 체계 개선 ▲ 교복 구입비 지원금 인상분 분담 ▲ 학교시설 개방 활성화 지원 등을 제시했다.",
+      "title": "울산시·시교육청, 교육투자 확대…협약형 특성화고 운영 협력 | 연합뉴스"
+    },
     "source_fact:0392f7f64543a2196172fd40": {
       "first_seen_kst": "2026-10-12T20:37:19+09:00",
       "lanes": {
@@ -229155,6 +229737,27 @@
       "source_title": "철강·리튬·에너지에 힘 싣는 포스코…핵심자원 '삼각축 체제' 가동",
       "telegram_core_fact": "장인화 포스코그룹 회장은 지난 7월 ‘최고경영자(CEO) 인베스터데이’에 참석해 산업자원(철강), 전략자원(리튬·양음극재·희토류 등), 에너지자원(액화천연가스·신재생에너지)을 아우르는 ‘트리플 코어’ 체제를 구축해 ‘국가대표 핵심자원 공급자’로 도약하겠다는 비전을 밝혔다.",
       "title": "철강·리튬·에너지에 힘 싣는 포스코…핵심자원 '삼각축 체제' 가동"
+    },
+    "source_fact:06a75d83ccbfdf364bd91ddf": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173048",
+      "source": "매일경제",
+      "source_body_digest": "440acf3f90de9e261370c4dd8b618ad9bdc192385200cc325bb118cefc17ce2d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9565540038b6f790459dd86e324057b8bdf40933dd08afe1c1202bcb850183d0",
+      "source_fact_keys": [
+        "source_fact:v1:1168a5d2f5c4816945bbee054d7ee22ccdcffd9666cbb6af4f6ff6ee6a6a6b7b",
+        "source_fact:v1:510d0c4528d86c2b5d7868f17d237732352fb90fd20f6950bdda96f302b53552",
+        "source_fact:v1:6e18d98a91e6b3f8e77dc4558989e934311d8ddfb8af98043c32e254f22e7f3c"
+      ],
+      "source_published_kst": "2026-10-12T16:53+09:00",
+      "source_title": "[집중취재] 10·15 부동산대책 1년…집값 잡았나, 풍선효과 키웠나",
+      "telegram_core_fact": "정부가 서울 전역과 경기 일부 지역을 규제지역과 토지거래허가구역으로 지정하며 대출 규제까지 강화한 10·15 부동산대책이 시행 1년을 맞았습니다.",
+      "title": "[집중취재] 10·15 부동산대책 1년…집값 잡았나, 풍선효과 키웠나"
     },
     "source_fact:06b7620e042aec29bad2e654": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
@@ -239039,6 +239642,27 @@
       "telegram_core_fact": "SK에너지는 △석유시장 가격체계 투명성 및 거래관행 개선 △공정거래 및 내부통제 체계 강화 △석유 유통고객과의 상생협력 강화 △안정적인 에너지 공급을 위한 역할 지속을 골자로 하는 ‘석유시장 가격구조 개편 및 내부통제 강화’ 조치를 마련했다고 8일 밝혔다.",
       "title": "SK에너지, 석유제품 가격·거래관행 점검…내부통제 강화한다"
     },
+    "source_fact:11b617085e1f062da2216eb6": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173048",
+      "source": "매일경제",
+      "source_body_digest": "440acf3f90de9e261370c4dd8b618ad9bdc192385200cc325bb118cefc17ce2d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9565540038b6f790459dd86e324057b8bdf40933dd08afe1c1202bcb850183d0",
+      "source_fact_keys": [
+        "source_fact:v1:1168a5d2f5c4816945bbee054d7ee22ccdcffd9666cbb6af4f6ff6ee6a6a6b7b",
+        "source_fact:v1:510d0c4528d86c2b5d7868f17d237732352fb90fd20f6950bdda96f302b53552",
+        "source_fact:v1:6e18d98a91e6b3f8e77dc4558989e934311d8ddfb8af98043c32e254f22e7f3c"
+      ],
+      "source_published_kst": "2026-10-12T16:53+09:00",
+      "source_title": "[집중취재] 10·15 부동산대책 1년…집값 잡았나, 풍선효과 키웠나",
+      "telegram_core_fact": "정부가 서울 전역과 경기 일부 지역을 규제지역과 토지거래허가구역으로 지정하며 대출 규제까지 강화한 10·15 부동산대책이 시행 1년을 맞았습니다.",
+      "title": "[집중취재] 10·15 부동산대책 1년…집값 잡았나, 풍선효과 키웠나"
+    },
     "source_fact:11c3ee16187c2e1bb182e9b0": {
       "first_seen_kst": "2026-10-12T07:02:25+09:00",
       "lanes": {
@@ -245211,6 +245835,28 @@
       "source_published_kst": "2026-10-07T07:00+09:00",
       "title": "“관세 낮추려면 대가 내야”…트럼프, 한국 1500억달러 또 꺼냈다"
     },
+    "source_fact:18c2428315da6ca37dbead83": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.mt.co.kr/future/2026/10/12/2026101215240383824",
+      "source": "머니투데이",
+      "source_body_digest": "fe97b361365fc59e1be8b1c8bf5a915c9994da1729140f09190f649f158f6904",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3401853a2c6f37972de31b92468d3deb63b4684a7f58dae0bd024d9cff278a94",
+      "source_fact_keys": [
+        "source_fact:v1:6bc81f34df3c9c3737bc88ccc95c55e71ae6ae36fa7b63297f0bb9d814671f92",
+        "source_fact:v1:8b860ec23db7c5e8e21732cfd4e6576d54609a47491b5320730de74ccb60f9a9",
+        "source_fact:v1:cde350160587c9709902c5314b324da82b562773f43efb11cc12823477ea776b",
+        "source_fact:v1:e7dd6f15672c124276aaa9c2c6f6ca15df7adf3f4d4c9d82a37db1333616f7cc"
+      ],
+      "source_published_kst": "2026-10-12T15:42+09:00",
+      "source_title": "스트라드비젼, 32억원 규모 'ADAS 전방 카메라 SW 공급' 계약",
+      "telegram_core_fact": "스트라드비젼(대표 김준환)이 앱티브(Aptiv)의 계열사 '앱티브 글로벌 오퍼레이션스 리미티드'(Aptiv Global Operations Limited)와 약 32억 원(240만달러) '첨단운전자보조시스템(ADAS)용 전방 카메라 비전 인지 소프트웨어 공급계약'을 체결했다고 12일 공시를 통해 밝혔다.",
+      "title": "스트라드비젼, 32억원 규모 'ADAS 전방 카메라 SW 공급' 계약"
+    },
     "source_fact:18c3d24fb7252455a0b8a96e": {
       "first_seen_kst": "2026-10-08T21:47:01+09:00",
       "lanes": {
@@ -248259,6 +248905,30 @@
       "source_published_kst": "2026-10-05T16:00+09:00",
       "title": "[기획]한국재료연구원, AI·데이터로 '예측하고 설계하는' 소재 연구시대 연다"
     },
+    "source_fact:1bfb698816b0f559cecf9d56": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012144700057",
+      "source": "연합뉴스",
+      "source_body_digest": "d3e438db71218ee161f662fc8e46389c8c2a1fb83fa7f7e869c345930104ffcc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10f217f58b9e5805419ecfe76e586825aead9bd486295068363a3758470ad75c",
+      "source_fact_keys": [
+        "source_fact:v1:02535ea4459b99310e6a54585f8ab6b35a03c6a4bc1bdf0f870eca21abe8df63",
+        "source_fact:v1:6634cbc0f875ce54c3e14c2882604812ed3679974c342ab6673b21e8cb23642c",
+        "source_fact:v1:674fb955a6760ded1075cbfbbf1be2050410a3bf70e494260080362df7a68e17",
+        "source_fact:v1:94bfc6ff8ec5813440ba90448ab16f588469995fd9cc6b98e8b856d765025bd4",
+        "source_fact:v1:9d62cb65615624eea3614b12036b51584d7dea5937b99d8be7a7fa05107dbaf9",
+        "source_fact:v1:d7fe258186c31f25a9fface72da9ba27a61b64757e4a7bd81c05ec26d80e680d"
+      ],
+      "source_published_kst": "2026-10-12T16:46+09:00",
+      "source_title": "울산시·시교육청, 교육투자 확대…협약형 특성화고 운영 협력 | 연합뉴스",
+      "telegram_core_fact": "시교육청은 ▲ 협약형 특성화고 지원 ▲ 학교급식비 인상과 협약 체계 개선 ▲ 교복 구입비 지원금 인상분 분담 ▲ 학교시설 개방 활성화 지원 등을 제시했다.",
+      "title": "울산시·시교육청, 교육투자 확대…협약형 특성화고 운영 협력 | 연합뉴스"
+    },
     "source_fact:1bfc9d38617a7ad17a413a10": {
       "first_seen_kst": "2026-10-08T07:50:51+09:00",
       "lanes": {
@@ -249900,6 +250570,27 @@
       ],
       "source_published_kst": "2026-10-07T06:31+09:00",
       "title": "실적 기대에 힘받은 뉴욕증시…S&P500·나스닥 또 최고치(종합)"
+    },
+    "source_fact:1d917fcc040c2cafae459e04": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.mt.co.kr/index.php/future/2026/10/12/2026101214540744073",
+      "source": "머니투데이",
+      "source_body_digest": "0fed35ecf7297baacb639952225e8777a463395004ff6ae668ae101a209de5f0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fdc6e56bb6d0c876e01d3cf65a772945cae60c6c349eff90db6d877080bde8c9",
+      "source_fact_keys": [
+        "source_fact:v1:42ecb352c98c58711c232930e41fe540745705058c9ebf402d60b0855987d910",
+        "source_fact:v1:49906e421074cc631de88d40665ea8d11edab86ec1897ac213e299b028c07f92",
+        "source_fact:v1:f10e5ca67d34311f6e37d2528fb677568b7c73c458df886552fc82f43c9bed33"
+      ],
+      "source_published_kst": "2026-10-12T19:00+09:00",
+      "source_title": "베슬AI, '솔라 프로4' 인프라 공급…AI '추론 운영'으로 영역 확대",
+      "telegram_core_fact": "인공지능(AI) 인프라 스타트업 베슬AI가 업스테이지의 거대언어모델(LLM) '솔라 프로4'에 글로벌 인퍼런스(추론) 인프라를 공급해 서비스 운영을 지원했다고 12일 밝혔다. 베슬AI는 해당 협업을 계기로 GPU 인프라 공급을 넘어 AI 모델의 추론 운영 전문 기업으로 사업 영역을 확대한다는 방침이다.",
+      "title": "베슬AI, '솔라 프로4' 인프라 공급…AI '추론 운영'으로 영역 확대"
     },
     "source_fact:1d9688706b6819e2164892a4": {
       "first_seen_kst": "2026-10-08T14:21:54+09:00",
@@ -316379,6 +317070,27 @@
       "source_published_kst": "2026-10-07T06:31+09:00",
       "title": "실적 기대에 힘받은 뉴욕증시…S&P500·나스닥 또 최고치(종합)"
     },
+    "source_fact:6591ad0cc35cd4a9d27d582e": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.mt.co.kr/index.php/future/2026/10/12/2026101214540744073",
+      "source": "머니투데이",
+      "source_body_digest": "0fed35ecf7297baacb639952225e8777a463395004ff6ae668ae101a209de5f0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fdc6e56bb6d0c876e01d3cf65a772945cae60c6c349eff90db6d877080bde8c9",
+      "source_fact_keys": [
+        "source_fact:v1:42ecb352c98c58711c232930e41fe540745705058c9ebf402d60b0855987d910",
+        "source_fact:v1:49906e421074cc631de88d40665ea8d11edab86ec1897ac213e299b028c07f92",
+        "source_fact:v1:f10e5ca67d34311f6e37d2528fb677568b7c73c458df886552fc82f43c9bed33"
+      ],
+      "source_published_kst": "2026-10-12T19:00+09:00",
+      "source_title": "베슬AI, '솔라 프로4' 인프라 공급…AI '추론 운영'으로 영역 확대",
+      "telegram_core_fact": "인공지능(AI) 인프라 스타트업 베슬AI가 업스테이지의 거대언어모델(LLM) '솔라 프로4'에 글로벌 인퍼런스(추론) 인프라를 공급해 서비스 운영을 지원했다고 12일 밝혔다. 베슬AI는 해당 협업을 계기로 GPU 인프라 공급을 넘어 AI 모델의 추론 운영 전문 기업으로 사업 영역을 확대한다는 방침이다.",
+      "title": "베슬AI, '솔라 프로4' 인프라 공급…AI '추론 운영'으로 영역 확대"
+    },
     "source_fact:65a655fd7364a3affe1fe95f": {
       "first_seen_kst": "2026-10-12T07:02:25+09:00",
       "lanes": {
@@ -319591,6 +320303,28 @@
       "source_title": "마스오토, 美 교통부와 자율주행 트럭 상용화 해법 논의",
       "telegram_core_fact": "자율주행 트럭 기업 마스오토가 오는 10월 19일부터 23일까지 강릉 올림픽파크에서 열리는 ‘2026 강릉 ITS 세계총회(ITS World Congress 2026)’에서 미국 교통부(USDOT), 텍사스주 교통부(TxDOT) 등 글로벌 교통 정책 관계자들과 자율주행 트럭 상용화 확대 방안을 논의한다고 밝혔다.",
       "title": "마스오토, 美 교통부와 자율주행 트럭 상용화 해법 논의"
+    },
+    "source_fact:696d2aa204a1ddcec826b31e": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.mt.co.kr/future/2026/10/12/2026101215240383824",
+      "source": "머니투데이",
+      "source_body_digest": "fe97b361365fc59e1be8b1c8bf5a915c9994da1729140f09190f649f158f6904",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3401853a2c6f37972de31b92468d3deb63b4684a7f58dae0bd024d9cff278a94",
+      "source_fact_keys": [
+        "source_fact:v1:6bc81f34df3c9c3737bc88ccc95c55e71ae6ae36fa7b63297f0bb9d814671f92",
+        "source_fact:v1:8b860ec23db7c5e8e21732cfd4e6576d54609a47491b5320730de74ccb60f9a9",
+        "source_fact:v1:cde350160587c9709902c5314b324da82b562773f43efb11cc12823477ea776b",
+        "source_fact:v1:e7dd6f15672c124276aaa9c2c6f6ca15df7adf3f4d4c9d82a37db1333616f7cc"
+      ],
+      "source_published_kst": "2026-10-12T15:42+09:00",
+      "source_title": "스트라드비젼, 32억원 규모 'ADAS 전방 카메라 SW 공급' 계약",
+      "telegram_core_fact": "스트라드비젼(대표 김준환)이 앱티브(Aptiv)의 계열사 '앱티브 글로벌 오퍼레이션스 리미티드'(Aptiv Global Operations Limited)와 약 32억 원(240만달러) '첨단운전자보조시스템(ADAS)용 전방 카메라 비전 인지 소프트웨어 공급계약'을 체결했다고 12일 공시를 통해 밝혔다.",
+      "title": "스트라드비젼, 32억원 규모 'ADAS 전방 카메라 SW 공급' 계약"
     },
     "source_fact:696eb9a4f519d9b276823134": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
@@ -327193,6 +327927,26 @@
       "telegram_core_fact": "연구실 시연을 넘어 실제 생산라인에서 사람, 전체 교대시간 동안 로봇을 운영하는 데 이어 삼성전기와 세메스 제조현장에서도 로봇의 적용 가능성을 검증하고 있다.",
       "title": "‘삼성 투자’ 월든, 美 동·서부 거점 확대…생산라인에 로봇 투입"
     },
+    "source_fact:71e2397d8d2b29c9ee12cced": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.mk.co.kr/news/business/12174015",
+      "source": "매일경제",
+      "source_body_digest": "56b5160565fefe7597d7a879e3cff5706173afc2bd4c6deb3af75ca39f37874f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:20f36c88d593f2bace97328c42d6fad7fa9a967282cee95429ece704c97b7281",
+      "source_fact_keys": [
+        "source_fact:v1:1a59848fad558adc1a806f0751f84419262122ccfef72bdc2762362a97d2730b",
+        "source_fact:v1:4b040fb6812033374ea20b221b66bd14465e1c7849b1a99f62b629b3f6fbf8b0"
+      ],
+      "source_published_kst": "2026-10-12T21:24+09:00",
+      "source_title": "“속여도 남는 장사?”…공정위 제재 비웃는 기업들 ‘배짱 광고’",
+      "telegram_core_fact": "“과징금이 처벌이 아닌 기업의 영업비용으로 전락해서는 안 된다”며 “반복적인 소비자 기만행위를 막을 수 있도록 공정위의 제재 실효성을 강화해야 한다”고 강조했다.",
+      "title": "“속여도 남는 장사?”…공정위 제재 비웃는 기업들 ‘배짱 광고’"
+    },
     "source_fact:71ee23a06c0aac044ed6dd74": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
       "lanes": {
@@ -327895,6 +328649,30 @@
       ],
       "source_published_kst": "2026-10-05T21:07+09:00",
       "title": "텔라 바이오, 완전 흡수성 메시 '리오라' FDA 허가 획득"
+    },
+    "source_fact:72f1c1b1896b47b129af204e": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012144700057",
+      "source": "연합뉴스",
+      "source_body_digest": "d3e438db71218ee161f662fc8e46389c8c2a1fb83fa7f7e869c345930104ffcc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10f217f58b9e5805419ecfe76e586825aead9bd486295068363a3758470ad75c",
+      "source_fact_keys": [
+        "source_fact:v1:02535ea4459b99310e6a54585f8ab6b35a03c6a4bc1bdf0f870eca21abe8df63",
+        "source_fact:v1:6634cbc0f875ce54c3e14c2882604812ed3679974c342ab6673b21e8cb23642c",
+        "source_fact:v1:674fb955a6760ded1075cbfbbf1be2050410a3bf70e494260080362df7a68e17",
+        "source_fact:v1:94bfc6ff8ec5813440ba90448ab16f588469995fd9cc6b98e8b856d765025bd4",
+        "source_fact:v1:9d62cb65615624eea3614b12036b51584d7dea5937b99d8be7a7fa05107dbaf9",
+        "source_fact:v1:d7fe258186c31f25a9fface72da9ba27a61b64757e4a7bd81c05ec26d80e680d"
+      ],
+      "source_published_kst": "2026-10-12T16:46+09:00",
+      "source_title": "울산시·시교육청, 교육투자 확대…협약형 특성화고 운영 협력 | 연합뉴스",
+      "telegram_core_fact": "시교육청은 ▲ 협약형 특성화고 지원 ▲ 학교급식비 인상과 협약 체계 개선 ▲ 교복 구입비 지원금 인상분 분담 ▲ 학교시설 개방 활성화 지원 등을 제시했다.",
+      "title": "울산시·시교육청, 교육투자 확대…협약형 특성화고 운영 협력 | 연합뉴스"
     },
     "source_fact:72f49f2aa967a0f692dab3e0": {
       "first_seen_kst": "2026-10-08T06:27:52+09:00",
@@ -369842,6 +370620,30 @@
       "telegram_core_fact": "한국은행 국정감사에서 김태년 더불어민주당 의원이 기준금리 인상이 지방 경제와 자영업·취약계층에 미치는 부담을 짚으며, 통화정책과 민생의 괴리를 파고들었다.",
       "title": "김태년 \"'반도체 호황' 가려진 민생…금리 인상에 지방·자영업 부담\""
     },
+    "source_fact:a181562f1aaebfedd6a49fd0": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012144700057",
+      "source": "연합뉴스",
+      "source_body_digest": "d3e438db71218ee161f662fc8e46389c8c2a1fb83fa7f7e869c345930104ffcc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10f217f58b9e5805419ecfe76e586825aead9bd486295068363a3758470ad75c",
+      "source_fact_keys": [
+        "source_fact:v1:02535ea4459b99310e6a54585f8ab6b35a03c6a4bc1bdf0f870eca21abe8df63",
+        "source_fact:v1:6634cbc0f875ce54c3e14c2882604812ed3679974c342ab6673b21e8cb23642c",
+        "source_fact:v1:674fb955a6760ded1075cbfbbf1be2050410a3bf70e494260080362df7a68e17",
+        "source_fact:v1:94bfc6ff8ec5813440ba90448ab16f588469995fd9cc6b98e8b856d765025bd4",
+        "source_fact:v1:9d62cb65615624eea3614b12036b51584d7dea5937b99d8be7a7fa05107dbaf9",
+        "source_fact:v1:d7fe258186c31f25a9fface72da9ba27a61b64757e4a7bd81c05ec26d80e680d"
+      ],
+      "source_published_kst": "2026-10-12T16:46+09:00",
+      "source_title": "울산시·시교육청, 교육투자 확대…협약형 특성화고 운영 협력 | 연합뉴스",
+      "telegram_core_fact": "시교육청은 ▲ 협약형 특성화고 지원 ▲ 학교급식비 인상과 협약 체계 개선 ▲ 교복 구입비 지원금 인상분 분담 ▲ 학교시설 개방 활성화 지원 등을 제시했다.",
+      "title": "울산시·시교육청, 교육투자 확대…협약형 특성화고 운영 협력 | 연합뉴스"
+    },
     "source_fact:a18a2d313049591640e7cd56": {
       "first_seen_kst": "2026-10-12T12:32:44+09:00",
       "lanes": {
@@ -373606,6 +374408,25 @@
       ],
       "source_published_kst": "2026-10-07T08:08+09:00",
       "title": "AMD “반도체 수요, 공급 크게 앞질러”⋯CEO 움직이자 주가는 최고치"
+    },
+    "source_fact:a5b1c7e2ae1ade30fed0985e": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12173378",
+      "source": "매일경제",
+      "source_body_digest": "5e0cc5d1a2765b8beb452ba02e425d0e1ef233d6037a75ff60afe8b0be75f208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:259d7e5b92ca1e654674b182c77d016eae53835ca26d6e0ee65785981ef63561",
+      "source_fact_keys": [
+        "source_fact:v1:f0682a5059a4ae3e4946c3e50983f6a5e9e82168e07261912ec32a13d771916e"
+      ],
+      "source_published_kst": "2026-10-12T10:27+09:00",
+      "source_title": "이형일 “3조원 규모 해외건설 新전략펀드 신설…‘패키지 수주’ 지원”",
+      "telegram_core_fact": "이형일 부총리 겸 재정경제부 장관은 기업 해외 수주를 지원하도록 3조원 해외건설 전략펀드를 신설하겠다고 12일 밝혔다.",
+      "title": "이형일 “3조원 규모 해외건설 新전략펀드 신설…‘패키지 수주’ 지원”"
     },
     "source_fact:a5b827a2337e900a8d4fb926": {
       "first_seen_kst": "2026-10-08T08:56:19+09:00",
@@ -402340,6 +403161,28 @@
       "telegram_core_fact": "인공지능 데이터센터(AIDC) 확대와 전기화 흐름 속에 냉난방공조(HVAC)가 가전업계의 새로운 기업간거래(B2B) 성장동력으로 부상하고 있다.",
       "title": "50조원대 AI 냉각시장 열린다…삼성·LG HVAC 사업 성과 가시화"
     },
+    "source_fact:c6521ba8f0f742f1acf889ce": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.mt.co.kr/future/2026/10/12/2026101215240383824",
+      "source": "머니투데이",
+      "source_body_digest": "fe97b361365fc59e1be8b1c8bf5a915c9994da1729140f09190f649f158f6904",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3401853a2c6f37972de31b92468d3deb63b4684a7f58dae0bd024d9cff278a94",
+      "source_fact_keys": [
+        "source_fact:v1:6bc81f34df3c9c3737bc88ccc95c55e71ae6ae36fa7b63297f0bb9d814671f92",
+        "source_fact:v1:8b860ec23db7c5e8e21732cfd4e6576d54609a47491b5320730de74ccb60f9a9",
+        "source_fact:v1:cde350160587c9709902c5314b324da82b562773f43efb11cc12823477ea776b",
+        "source_fact:v1:e7dd6f15672c124276aaa9c2c6f6ca15df7adf3f4d4c9d82a37db1333616f7cc"
+      ],
+      "source_published_kst": "2026-10-12T15:42+09:00",
+      "source_title": "스트라드비젼, 32억원 규모 'ADAS 전방 카메라 SW 공급' 계약",
+      "telegram_core_fact": "스트라드비젼(대표 김준환)이 앱티브(Aptiv)의 계열사 '앱티브 글로벌 오퍼레이션스 리미티드'(Aptiv Global Operations Limited)와 약 32억 원(240만달러) '첨단운전자보조시스템(ADAS)용 전방 카메라 비전 인지 소프트웨어 공급계약'을 체결했다고 12일 공시를 통해 밝혔다.",
+      "title": "스트라드비젼, 32억원 규모 'ADAS 전방 카메라 SW 공급' 계약"
+    },
     "source_fact:c65b1474327c49943d85bf0e": {
       "first_seen_kst": "2026-10-08T17:21:28+09:00",
       "lanes": {
@@ -411012,6 +411855,28 @@
       "telegram_core_fact": "효성중공업이 국내 최초로 독자기술 기반의 2기가와트(GW)급 초고압직류송전(HVDC) 성능검증 설비를 구축하며 대용량 전력망 기술 국산화에 박차를 가한다.",
       "title": "효성중공업, 국내 최초 2GW급 HVDC 성능 검증 설비 구축"
     },
+    "source_fact:d061b04ac4f48af35e1b0747": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.mt.co.kr/future/2026/10/12/2026101215240383824",
+      "source": "머니투데이",
+      "source_body_digest": "fe97b361365fc59e1be8b1c8bf5a915c9994da1729140f09190f649f158f6904",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3401853a2c6f37972de31b92468d3deb63b4684a7f58dae0bd024d9cff278a94",
+      "source_fact_keys": [
+        "source_fact:v1:6bc81f34df3c9c3737bc88ccc95c55e71ae6ae36fa7b63297f0bb9d814671f92",
+        "source_fact:v1:8b860ec23db7c5e8e21732cfd4e6576d54609a47491b5320730de74ccb60f9a9",
+        "source_fact:v1:cde350160587c9709902c5314b324da82b562773f43efb11cc12823477ea776b",
+        "source_fact:v1:e7dd6f15672c124276aaa9c2c6f6ca15df7adf3f4d4c9d82a37db1333616f7cc"
+      ],
+      "source_published_kst": "2026-10-12T15:42+09:00",
+      "source_title": "스트라드비젼, 32억원 규모 'ADAS 전방 카메라 SW 공급' 계약",
+      "telegram_core_fact": "스트라드비젼(대표 김준환)이 앱티브(Aptiv)의 계열사 '앱티브 글로벌 오퍼레이션스 리미티드'(Aptiv Global Operations Limited)와 약 32억 원(240만달러) '첨단운전자보조시스템(ADAS)용 전방 카메라 비전 인지 소프트웨어 공급계약'을 체결했다고 12일 공시를 통해 밝혔다.",
+      "title": "스트라드비젼, 32억원 규모 'ADAS 전방 카메라 SW 공급' 계약"
+    },
     "source_fact:d065ad9207ab18b2903f7019": {
       "first_seen_kst": "2026-10-11T07:07:11+09:00",
       "lanes": {
@@ -412031,6 +412896,30 @@
       ],
       "source_published_kst": "2026-10-07T14:11+09:00",
       "title": "HD건설기계, 美 데이터센터에 발전엔진 공급…3900억원 수주"
+    },
+    "source_fact:d19c082074dca1955989a56a": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012144700057",
+      "source": "연합뉴스",
+      "source_body_digest": "d3e438db71218ee161f662fc8e46389c8c2a1fb83fa7f7e869c345930104ffcc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10f217f58b9e5805419ecfe76e586825aead9bd486295068363a3758470ad75c",
+      "source_fact_keys": [
+        "source_fact:v1:02535ea4459b99310e6a54585f8ab6b35a03c6a4bc1bdf0f870eca21abe8df63",
+        "source_fact:v1:6634cbc0f875ce54c3e14c2882604812ed3679974c342ab6673b21e8cb23642c",
+        "source_fact:v1:674fb955a6760ded1075cbfbbf1be2050410a3bf70e494260080362df7a68e17",
+        "source_fact:v1:94bfc6ff8ec5813440ba90448ab16f588469995fd9cc6b98e8b856d765025bd4",
+        "source_fact:v1:9d62cb65615624eea3614b12036b51584d7dea5937b99d8be7a7fa05107dbaf9",
+        "source_fact:v1:d7fe258186c31f25a9fface72da9ba27a61b64757e4a7bd81c05ec26d80e680d"
+      ],
+      "source_published_kst": "2026-10-12T16:46+09:00",
+      "source_title": "울산시·시교육청, 교육투자 확대…협약형 특성화고 운영 협력 | 연합뉴스",
+      "telegram_core_fact": "시교육청은 ▲ 협약형 특성화고 지원 ▲ 학교급식비 인상과 협약 체계 개선 ▲ 교복 구입비 지원금 인상분 분담 ▲ 학교시설 개방 활성화 지원 등을 제시했다.",
+      "title": "울산시·시교육청, 교육투자 확대…협약형 특성화고 운영 협력 | 연합뉴스"
     },
     "source_fact:d19ecdaef4d30dc51048783b": {
       "first_seen_kst": "2026-10-07T15:44:50+09:00",
@@ -421150,6 +422039,27 @@
       "telegram_core_fact": "대만 캐세이유나이티드은행은 시장 전망을 인용해 TSMC의 3분기 매출을 460억달러(약 62조원)로 내다봤다.",
       "title": "'최대실적 예고' TSMC, 더 멀리 본다…\"60조 매출에 130조 투자\""
     },
+    "source_fact:db1f58d4d39c5d4a39cb1978": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.mt.co.kr/index.php/future/2026/10/12/2026101214540744073",
+      "source": "머니투데이",
+      "source_body_digest": "0fed35ecf7297baacb639952225e8777a463395004ff6ae668ae101a209de5f0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fdc6e56bb6d0c876e01d3cf65a772945cae60c6c349eff90db6d877080bde8c9",
+      "source_fact_keys": [
+        "source_fact:v1:42ecb352c98c58711c232930e41fe540745705058c9ebf402d60b0855987d910",
+        "source_fact:v1:49906e421074cc631de88d40665ea8d11edab86ec1897ac213e299b028c07f92",
+        "source_fact:v1:f10e5ca67d34311f6e37d2528fb677568b7c73c458df886552fc82f43c9bed33"
+      ],
+      "source_published_kst": "2026-10-12T19:00+09:00",
+      "source_title": "베슬AI, '솔라 프로4' 인프라 공급…AI '추론 운영'으로 영역 확대",
+      "telegram_core_fact": "인공지능(AI) 인프라 스타트업 베슬AI가 업스테이지의 거대언어모델(LLM) '솔라 프로4'에 글로벌 인퍼런스(추론) 인프라를 공급해 서비스 운영을 지원했다고 12일 밝혔다. 베슬AI는 해당 협업을 계기로 GPU 인프라 공급을 넘어 AI 모델의 추론 운영 전문 기업으로 사업 영역을 확대한다는 방침이다.",
+      "title": "베슬AI, '솔라 프로4' 인프라 공급…AI '추론 운영'으로 영역 확대"
+    },
     "source_fact:db2b97e01552c2bb6ca79a21": {
       "first_seen_kst": "2026-10-07T00:54:50+09:00",
       "lanes": {
@@ -427735,6 +428645,26 @@
       "source_title": "뉴욕증시, 국채금리 24년래 최고에 휘청⋯3대 지수 동반 하락[종합]",
       "telegram_core_fact": "10년 만기 미국 국채금리는 장중 연 5.36%까지 상승해 2002년 이후 최고치를 기록했다.",
       "title": "뉴욕증시, 국채금리 24년래 최고에 휘청⋯3대 지수 동반 하락[종합]"
+    },
+    "source_fact:e22d52f43e0a3c1210f8d6b5": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.mk.co.kr/news/business/12174015",
+      "source": "매일경제",
+      "source_body_digest": "56b5160565fefe7597d7a879e3cff5706173afc2bd4c6deb3af75ca39f37874f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:20f36c88d593f2bace97328c42d6fad7fa9a967282cee95429ece704c97b7281",
+      "source_fact_keys": [
+        "source_fact:v1:1a59848fad558adc1a806f0751f84419262122ccfef72bdc2762362a97d2730b",
+        "source_fact:v1:4b040fb6812033374ea20b221b66bd14465e1c7849b1a99f62b629b3f6fbf8b0"
+      ],
+      "source_published_kst": "2026-10-12T21:24+09:00",
+      "source_title": "“속여도 남는 장사?”…공정위 제재 비웃는 기업들 ‘배짱 광고’",
+      "telegram_core_fact": "“과징금이 처벌이 아닌 기업의 영업비용으로 전락해서는 안 된다”며 “반복적인 소비자 기만행위를 막을 수 있도록 공정위의 제재 실효성을 강화해야 한다”고 강조했다.",
+      "title": "“속여도 남는 장사?”…공정위 제재 비웃는 기업들 ‘배짱 광고’"
     },
     "source_fact:e235d165821cc7bc60bb00d8": {
       "first_seen_kst": "2026-10-07T07:39:19+09:00",
@@ -436221,6 +437151,27 @@
       "source_published_kst": "2026-10-05T23:00+09:00",
       "title": "뉴로센스, 최저호가 요건 회복과 청문 절차로 상장 유지 기대감 부각"
     },
+    "source_fact:eb28c17b06bd2828bc9864f2": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173048",
+      "source": "매일경제",
+      "source_body_digest": "440acf3f90de9e261370c4dd8b618ad9bdc192385200cc325bb118cefc17ce2d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9565540038b6f790459dd86e324057b8bdf40933dd08afe1c1202bcb850183d0",
+      "source_fact_keys": [
+        "source_fact:v1:1168a5d2f5c4816945bbee054d7ee22ccdcffd9666cbb6af4f6ff6ee6a6a6b7b",
+        "source_fact:v1:510d0c4528d86c2b5d7868f17d237732352fb90fd20f6950bdda96f302b53552",
+        "source_fact:v1:6e18d98a91e6b3f8e77dc4558989e934311d8ddfb8af98043c32e254f22e7f3c"
+      ],
+      "source_published_kst": "2026-10-12T16:53+09:00",
+      "source_title": "[집중취재] 10·15 부동산대책 1년…집값 잡았나, 풍선효과 키웠나",
+      "telegram_core_fact": "정부가 서울 전역과 경기 일부 지역을 규제지역과 토지거래허가구역으로 지정하며 대출 규제까지 강화한 10·15 부동산대책이 시행 1년을 맞았습니다.",
+      "title": "[집중취재] 10·15 부동산대책 1년…집값 잡았나, 풍선효과 키웠나"
+    },
     "source_fact:eb354f268128f20acfa42418": {
       "first_seen_kst": "2026-10-10T20:30:39+09:00",
       "lanes": {
@@ -440259,6 +441210,30 @@
       ],
       "source_published_kst": "2026-10-06T09:42+09:00",
       "title": "레디로버스트머신 '리마스터 하이브리드 굴착기' 베트남 상륙…현지기업 RCE와 맞손"
+    },
+    "source_fact:eff159c7526486296e12e83a": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012144700057",
+      "source": "연합뉴스",
+      "source_body_digest": "d3e438db71218ee161f662fc8e46389c8c2a1fb83fa7f7e869c345930104ffcc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10f217f58b9e5805419ecfe76e586825aead9bd486295068363a3758470ad75c",
+      "source_fact_keys": [
+        "source_fact:v1:02535ea4459b99310e6a54585f8ab6b35a03c6a4bc1bdf0f870eca21abe8df63",
+        "source_fact:v1:6634cbc0f875ce54c3e14c2882604812ed3679974c342ab6673b21e8cb23642c",
+        "source_fact:v1:674fb955a6760ded1075cbfbbf1be2050410a3bf70e494260080362df7a68e17",
+        "source_fact:v1:94bfc6ff8ec5813440ba90448ab16f588469995fd9cc6b98e8b856d765025bd4",
+        "source_fact:v1:9d62cb65615624eea3614b12036b51584d7dea5937b99d8be7a7fa05107dbaf9",
+        "source_fact:v1:d7fe258186c31f25a9fface72da9ba27a61b64757e4a7bd81c05ec26d80e680d"
+      ],
+      "source_published_kst": "2026-10-12T16:46+09:00",
+      "source_title": "울산시·시교육청, 교육투자 확대…협약형 특성화고 운영 협력 | 연합뉴스",
+      "telegram_core_fact": "시교육청은 ▲ 협약형 특성화고 지원 ▲ 학교급식비 인상과 협약 체계 개선 ▲ 교복 구입비 지원금 인상분 분담 ▲ 학교시설 개방 활성화 지원 등을 제시했다.",
+      "title": "울산시·시교육청, 교육투자 확대…협약형 특성화고 운영 협력 | 연합뉴스"
     },
     "source_fact:eff5161b9edb2ac5e5277298": {
       "first_seen_kst": "2026-10-12T19:29:26+09:00",
@@ -460846,6 +461821,25 @@
       "source_published_kst": "2026-10-07T14:21+09:00",
       "title": "리사 수 방한 계기로 韓ㆍAMD 반도체 협력 확대⋯정부, 내년 실증사업 속도 [종합]"
     },
+    "title:1b2ab97fe9c8e49246ac161e": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12173378",
+      "source": "매일경제",
+      "source_body_digest": "5e0cc5d1a2765b8beb452ba02e425d0e1ef233d6037a75ff60afe8b0be75f208",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:259d7e5b92ca1e654674b182c77d016eae53835ca26d6e0ee65785981ef63561",
+      "source_fact_keys": [
+        "source_fact:v1:f0682a5059a4ae3e4946c3e50983f6a5e9e82168e07261912ec32a13d771916e"
+      ],
+      "source_published_kst": "2026-10-12T10:27+09:00",
+      "source_title": "이형일 “3조원 규모 해외건설 新전략펀드 신설…‘패키지 수주’ 지원”",
+      "telegram_core_fact": "이형일 부총리 겸 재정경제부 장관은 기업 해외 수주를 지원하도록 3조원 해외건설 전략펀드를 신설하겠다고 12일 밝혔다.",
+      "title": "이형일 “3조원 규모 해외건설 新전략펀드 신설…‘패키지 수주’ 지원”"
+    },
     "title:1b3ce221f9b8d52fc53526cc": {
       "first_seen_kst": "2026-10-01T16:14:13+09:00",
       "lanes": {
@@ -463613,6 +464607,23 @@
       "source_title": "한전 사장 \"기업의 전기료 선납으로 재무 문제 해결은 잘못\"",
       "telegram_core_fact": "재무 문제 해결을 위한 한전채 발행과 관련해선 \"한전은 신용등급이 트리플 A 등급으로 한전채를 발행하면 사채 시장에서 일반기업들이 쓸어가기 때문에 일반 기업들의 자금 조달에 큰 문제가 생긴다\"며 \"한전은 할 수 있으면 사채를 발행하지 않는 것이 채권시장에 좋다고 생각하고 있다\"고 생각을 전했다.",
       "title": "한전 사장 \"기업의 전기료 선납으로 재무 문제 해결은 잘못\""
+    },
+    "title:25ac2c80bcfbb7759c8fed78": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610126165b",
+      "source": "한국경제",
+      "source_body_digest": "b0fe556ddec97ade862bd25ef61c7485691347e447991999a10fa21e2577da6e",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T14:02+09:00",
+      "source_title": "셀트리온에 무슨 일이…분기 영업익 5000억 넘었다",
+      "telegram_core_fact": "셀트리온은 올해 3분기 연결 기준 잠정 매출이 1조5000억원, 영업이익이 5100억원으로 잠정 집계됐다고 12일 밝혔다.",
+      "title": "셀트리온에 무슨 일이…분기 영업익 5000억 넘었다"
     },
     "title:25c670db410b3a87ce70aa2c": {
       "first_seen_kst": "2026-10-12T08:46:35+09:00",
@@ -481000,6 +482011,27 @@
       "source_published_kst": "2026-10-03T16:30+09:00",
       "title": "“최고 금리 4.5%인데 가입해야죠” 신협 부스에 대학생들 몰린 이유는? [헤럴드머니페스타2026]"
     },
+    "title:681aab402cb5f78aefd0ee72": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173048",
+      "source": "매일경제",
+      "source_body_digest": "440acf3f90de9e261370c4dd8b618ad9bdc192385200cc325bb118cefc17ce2d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9565540038b6f790459dd86e324057b8bdf40933dd08afe1c1202bcb850183d0",
+      "source_fact_keys": [
+        "source_fact:v1:1168a5d2f5c4816945bbee054d7ee22ccdcffd9666cbb6af4f6ff6ee6a6a6b7b",
+        "source_fact:v1:510d0c4528d86c2b5d7868f17d237732352fb90fd20f6950bdda96f302b53552",
+        "source_fact:v1:6e18d98a91e6b3f8e77dc4558989e934311d8ddfb8af98043c32e254f22e7f3c"
+      ],
+      "source_published_kst": "2026-10-12T16:53+09:00",
+      "source_title": "[집중취재] 10·15 부동산대책 1년…집값 잡았나, 풍선효과 키웠나",
+      "telegram_core_fact": "정부가 서울 전역과 경기 일부 지역을 규제지역과 토지거래허가구역으로 지정하며 대출 규제까지 강화한 10·15 부동산대책이 시행 1년을 맞았습니다.",
+      "title": "[집중취재] 10·15 부동산대책 1년…집값 잡았나, 풍선효과 키웠나"
+    },
     "title:682276b855c1da4c8fc80eeb": {
       "first_seen_kst": "2026-09-30T05:43:22+09:00",
       "lanes": {
@@ -481972,6 +483004,27 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T13:00+09:00",
       "title": "올해 영화시장 매출 3분기 만에 1조원 돌파…‘오디세이’·‘암살자(들)’ 흥행"
+    },
+    "title:6c5e717c95367c663b3fedb1": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.mt.co.kr/index.php/future/2026/10/12/2026101214540744073",
+      "source": "머니투데이",
+      "source_body_digest": "0fed35ecf7297baacb639952225e8777a463395004ff6ae668ae101a209de5f0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fdc6e56bb6d0c876e01d3cf65a772945cae60c6c349eff90db6d877080bde8c9",
+      "source_fact_keys": [
+        "source_fact:v1:42ecb352c98c58711c232930e41fe540745705058c9ebf402d60b0855987d910",
+        "source_fact:v1:49906e421074cc631de88d40665ea8d11edab86ec1897ac213e299b028c07f92",
+        "source_fact:v1:f10e5ca67d34311f6e37d2528fb677568b7c73c458df886552fc82f43c9bed33"
+      ],
+      "source_published_kst": "2026-10-12T19:00+09:00",
+      "source_title": "베슬AI, '솔라 프로4' 인프라 공급…AI '추론 운영'으로 영역 확대",
+      "telegram_core_fact": "인공지능(AI) 인프라 스타트업 베슬AI가 업스테이지의 거대언어모델(LLM) '솔라 프로4'에 글로벌 인퍼런스(추론) 인프라를 공급해 서비스 운영을 지원했다고 12일 밝혔다. 베슬AI는 해당 협업을 계기로 GPU 인프라 공급을 넘어 AI 모델의 추론 운영 전문 기업으로 사업 영역을 확대한다는 방침이다.",
+      "title": "베슬AI, '솔라 프로4' 인프라 공급…AI '추론 운영'으로 영역 확대"
     },
     "title:6c82f6417fdb10f67125875f": {
       "first_seen_kst": "2026-10-11T22:57:06+09:00",
@@ -488493,6 +489546,30 @@
       ],
       "source_published_kst": "2026-10-06T10:11+09:00",
       "title": "세아베스틸, 로봇 감속기용 특수강 국산화…양산 본격화"
+    },
+    "title:84f65afb37f0379347bf0a66": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012144700057",
+      "source": "연합뉴스",
+      "source_body_digest": "d3e438db71218ee161f662fc8e46389c8c2a1fb83fa7f7e869c345930104ffcc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10f217f58b9e5805419ecfe76e586825aead9bd486295068363a3758470ad75c",
+      "source_fact_keys": [
+        "source_fact:v1:02535ea4459b99310e6a54585f8ab6b35a03c6a4bc1bdf0f870eca21abe8df63",
+        "source_fact:v1:6634cbc0f875ce54c3e14c2882604812ed3679974c342ab6673b21e8cb23642c",
+        "source_fact:v1:674fb955a6760ded1075cbfbbf1be2050410a3bf70e494260080362df7a68e17",
+        "source_fact:v1:94bfc6ff8ec5813440ba90448ab16f588469995fd9cc6b98e8b856d765025bd4",
+        "source_fact:v1:9d62cb65615624eea3614b12036b51584d7dea5937b99d8be7a7fa05107dbaf9",
+        "source_fact:v1:d7fe258186c31f25a9fface72da9ba27a61b64757e4a7bd81c05ec26d80e680d"
+      ],
+      "source_published_kst": "2026-10-12T16:46+09:00",
+      "source_title": "울산시·시교육청, 교육투자 확대…협약형 특성화고 운영 협력 | 연합뉴스",
+      "telegram_core_fact": "시교육청은 ▲ 협약형 특성화고 지원 ▲ 학교급식비 인상과 협약 체계 개선 ▲ 교복 구입비 지원금 인상분 분담 ▲ 학교시설 개방 활성화 지원 등을 제시했다.",
+      "title": "울산시·시교육청, 교육투자 확대…협약형 특성화고 운영 협력 | 연합뉴스"
     },
     "title:84f66621e2fbbed0059c1bdb": {
       "first_seen_kst": "2026-10-01T19:16:32+09:00",
@@ -516318,6 +517395,28 @@
       "telegram_core_fact": "국민의힘 구자근 국회의원(경북 구미시갑)이 12일 한국제품안전관리원으로부터 제출받은 자료에 따르면 2021년부터 2026년 7월까지 해외 리콜제품 1만 9102개를 대상으로 해외 직구 플랫폼을 모니터링한 결과, 국내 판매가 확인된 사례는 총 1138건으로 집계됐다.",
       "title": "구자근 의원 \"해외서 리콜된 제품 국내서 버젓이 판매\""
     },
+    "title:ed97dd979228195d471d6282": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.mt.co.kr/future/2026/10/12/2026101215240383824",
+      "source": "머니투데이",
+      "source_body_digest": "fe97b361365fc59e1be8b1c8bf5a915c9994da1729140f09190f649f158f6904",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3401853a2c6f37972de31b92468d3deb63b4684a7f58dae0bd024d9cff278a94",
+      "source_fact_keys": [
+        "source_fact:v1:6bc81f34df3c9c3737bc88ccc95c55e71ae6ae36fa7b63297f0bb9d814671f92",
+        "source_fact:v1:8b860ec23db7c5e8e21732cfd4e6576d54609a47491b5320730de74ccb60f9a9",
+        "source_fact:v1:cde350160587c9709902c5314b324da82b562773f43efb11cc12823477ea776b",
+        "source_fact:v1:e7dd6f15672c124276aaa9c2c6f6ca15df7adf3f4d4c9d82a37db1333616f7cc"
+      ],
+      "source_published_kst": "2026-10-12T15:42+09:00",
+      "source_title": "스트라드비젼, 32억원 규모 'ADAS 전방 카메라 SW 공급' 계약",
+      "telegram_core_fact": "스트라드비젼(대표 김준환)이 앱티브(Aptiv)의 계열사 '앱티브 글로벌 오퍼레이션스 리미티드'(Aptiv Global Operations Limited)와 약 32억 원(240만달러) '첨단운전자보조시스템(ADAS)용 전방 카메라 비전 인지 소프트웨어 공급계약'을 체결했다고 12일 공시를 통해 밝혔다.",
+      "title": "스트라드비젼, 32억원 규모 'ADAS 전방 카메라 SW 공급' 계약"
+    },
     "title:edb5925e3d74375d286813d7": {
       "first_seen_kst": "2026-10-12T13:56:47+09:00",
       "lanes": {
@@ -516337,6 +517436,26 @@
       "source_title": "한화투자증권, 일본 GI캐피털매니지먼트 증권 부문 주식 취득 계약",
       "telegram_core_fact": "한화투자증권이 일본 종합금융투자회사 GI캐피털매니지먼트의 증권 부문 지분을 인수하는 주식매매계약을 체결했다. 한화투자증권에 따르면 회사는 지난달 이사회에서 GI캐피털매니지먼트 증권 부문 지분 인수를 결의한 데 이어 일본 도쿄에서 계약식을 열었다.",
       "title": "한화투자증권, 일본 GI캐피털매니지먼트 증권 부문 주식 취득 계약"
+    },
+    "title:edc5c448988fe6430ffe03e8": {
+      "first_seen_kst": "2026-10-12T22:50:06+09:00",
+      "lanes": {
+        "live": "2026-10-12T22:50:06+09:00"
+      },
+      "last_seen_kst": "2026-10-12T22:50:06+09:00",
+      "link": "https://www.mk.co.kr/news/business/12174015",
+      "source": "매일경제",
+      "source_body_digest": "56b5160565fefe7597d7a879e3cff5706173afc2bd4c6deb3af75ca39f37874f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:20f36c88d593f2bace97328c42d6fad7fa9a967282cee95429ece704c97b7281",
+      "source_fact_keys": [
+        "source_fact:v1:1a59848fad558adc1a806f0751f84419262122ccfef72bdc2762362a97d2730b",
+        "source_fact:v1:4b040fb6812033374ea20b221b66bd14465e1c7849b1a99f62b629b3f6fbf8b0"
+      ],
+      "source_published_kst": "2026-10-12T21:24+09:00",
+      "source_title": "“속여도 남는 장사?”…공정위 제재 비웃는 기업들 ‘배짱 광고’",
+      "telegram_core_fact": "“과징금이 처벌이 아닌 기업의 영업비용으로 전락해서는 안 된다”며 “반복적인 소비자 기만행위를 막을 수 있도록 공정위의 제재 실효성을 강화해야 한다”고 강조했다.",
+      "title": "“속여도 남는 장사?”…공정위 제재 비웃는 기업들 ‘배짱 광고’"
     },
     "title:edec30cdc2a2224e6f9d8eb4": {
       "first_seen_kst": "2026-10-07T15:30:27+09:00",
@@ -521046,5 +522165,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-12T22:29:29+09:00"
+  "updated_at_kst": "2026-10-12T22:50:06+09:00"
 }
