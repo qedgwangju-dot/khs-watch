@@ -2385,6 +2385,25 @@
       "telegram_core_fact": "서울시는 지난 7일 제16차 도시계획위원회를 열고 도로 지분을 이용한 소규모 지분 쪼개기 등 투기성 거래를 선제적으로 차단하기 위해 서울 전역의 지목이 도로인 토지를 토허구역으로 신규지정한다고 8일 밝혔다.",
       "title": "서울 모든 도로, 토허구역 지정…‘도로 쪼개팔기’ 기획부동산 막는다"
     },
+    "core:10fe6d709ed2a46b1fa9e664": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.hankyung.com/article/2026101269241",
+      "source": "한국경제",
+      "source_body_digest": "ca712e859dd9390b6b727ab251d3208196481025e750fddf37cd2e71a1bfbdf7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d4d5922a3944a1e80427c33efde36f56633033e2cbc24b3a4c47f9cb63b17f0",
+      "source_fact_keys": [
+        "source_fact:v1:f1bbfea907b1d3a61e77bdf17686cf959ce6a2a9ff5a316e1fcbd702b8851bea"
+      ],
+      "source_published_kst": "2026-10-12T18:55+09:00",
+      "source_title": "오드리 찰스 \"韓 반도체 생태계 매력적…HBM패키징·초미세공정에 투자\"",
+      "telegram_core_fact": "16단 이상의 고용량 고대역폭메모리(HBM) 개발이 본격화함에 따라 차세대 패키징 신기술을 확보한 기업을 적극 물색할 방침이다.",
+      "title": "오드리 찰스 \"韓 반도체 생태계 매력적…HBM패키징·초미세공정에 투자\""
+    },
     "core:11052bcd1bda6a3f8101bf8c": {
       "first_seen_kst": "2026-10-07T20:59:13+09:00",
       "lanes": {
@@ -3205,6 +3224,32 @@
       "source_title": "현대비앤지스틸 \"성림첨단산업 주식 708억원에 추가취득\" | 연합뉴스",
       "telegram_core_fact": "코스피 상장사 현대비앤지스틸[004560]은 영구자석, 전자석, 자석응용기기 제조 및 판매업 업체 성림첨단산업의 주식 283만3천629주를 약 708억원에 추가 취득한다고 8일 공시했다.",
       "title": "현대비앤지스틸 \"성림첨단산업 주식 708억원에 추가취득\" | 연합뉴스"
+    },
+    "core:187304cc713b82fa107c9bbb": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012169500109",
+      "source": "연합뉴스",
+      "source_body_digest": "153c464fed3491cde8f24e8280eb4fc1bd358b696617509a5029c8c1140c0af1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a91b90f91402a2a55b06b243c06e8c5bf2adb8d991f56baac765a6a07449695",
+      "source_fact_keys": [
+        "source_fact:v1:278b5e7f1fb5670ece15eef0e733b5d3657f79ee00968678ca008400539a1a95",
+        "source_fact:v1:27953ff05d1050c9a9ddfdfb61d54581ea1ad5fce2a65f7b2654c680f1230d61",
+        "source_fact:v1:987f49f1e5c4bd650aa47c9c4c6e6fced792cd5c801a8d29ab3934ec84363802",
+        "source_fact:v1:a0be4d176be20b581b9ef5eabb689f3a77301898ba71f4dfd40ab2310b68ccb1",
+        "source_fact:v1:abc37e0cf394da2951100be704fdff0970c7ef97f3a40043cd6b8b086e3b964d",
+        "source_fact:v1:b48b57bc25c99edf3c694fac301010b31957258956288e5db05491e7fbbc9315",
+        "source_fact:v1:ef5c4bad803222c560ef3e52ad6ce38c13777f8d4e7c71bf693212525f4cc325",
+        "source_fact:v1:f85b61cd61e34ab1016c7ae2522458a924620edbd8c3deac16f755f61535b3bb"
+      ],
+      "source_published_kst": "2026-10-12T19:06+09:00",
+      "source_title": "젤렌스키 \"러, 우크라 가스시설 공격…에너지 휴전 위반\" | 연합뉴스",
+      "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령은 12일(현지시간) 러시아가 밤새 우크라이나의 가스시설을 공격했다며 휴전에 동의하지 않으면 대응에 나설 것이라고 경고했다. 젤렌스키 대통령은 \"일반 주유소를 겨냥한 러시아의 공격도 있었다\"며 \"도널드 트럼프 미국 대통령이 발표한 에너지 휴전을 러시아가 위반한 사례들\"이라고 지적했다.",
+      "title": "젤렌스키 \"러, 우크라 가스시설 공격…에너지 휴전 위반\" | 연합뉴스"
     },
     "core:187a28cca755bef65e77bd42": {
       "first_seen_kst": "2026-10-12T12:32:44+09:00",
@@ -12247,6 +12292,35 @@
       "telegram_core_fact": "스타벅스가 치폴레 인수를 검토하고 있다는 보도가 전해지며 인수 프리미엄에 대한 기대감이 커졌습니다.",
       "title": "치폴레, 스타벅스 인수 검토설 부각되며 주목받는 흐름"
     },
+    "core:61712989a82b143fa49ffb17": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.etnews.com/20261012000251",
+      "source": "전자신문",
+      "source_body_digest": "7ae738905fe20b77161d56580b06d0f1f75edda4f4ef2eb94bd7a99c6ca4ff77",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e0363632d10f31661fbcad564e3805ad8465b385a90051ba5fd3616f85bb7541",
+      "source_fact_keys": [
+        "source_fact:v1:14dbc5a84ee2d2af9f06c8b9f0cb9ab9b743ea280ab3b4ab6aa2078183194263",
+        "source_fact:v1:1a2bb7bd4b8d520850e553dd171f1cb33c76084ece7c221da38197358821fc66",
+        "source_fact:v1:1d81b9afb90c1609eba4053af2c25137b89d4d355272c8142e432847b0aee53a",
+        "source_fact:v1:36a17d22a1671857d40dfb1e7756edee5c1fee58d2603918c0c40a073a129083",
+        "source_fact:v1:492af0b567cf459988c953dd576de3306d4756c24e0a99ab4f7608cf1fd188fc",
+        "source_fact:v1:4cc38b8e4246235ce925d26e8ae57410cf3acaf847fc43ee6e63f0ee9d9b338d",
+        "source_fact:v1:78db2d61707eed0a36b946cfcd403e08a32fcdaa42d28ad7c202f000e7635b33",
+        "source_fact:v1:8f9ebb5e2e888028629789f8140f212630d83900cda1565f43f113eb371c2fbe",
+        "source_fact:v1:afd21902f13373e12cab6d17b461080f96a9422294f9b2a05d7bb607f2807822",
+        "source_fact:v1:e0d76979b342806663cd5478d45c6f956b70253c967138b7ba4bf7cea53fd4aa",
+        "source_fact:v1:fa219bc81bffc07d9e3faac81635b69ddbd5a4790f74ded0fa67d8603edd4347"
+      ],
+      "source_published_kst": "2026-10-12T17:00+09:00",
+      "source_title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진",
+      "telegram_core_fact": "기존 로봇을 해체해 활용할 수 있는 부품에 추가 설계를 적용하는 방안을 검토하고 있으며, 향후 공급 과정에서 규제가 걸림돌이 되지 않도록 선제적으로 승인 절차를 준비하고 있다.",
+      "title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진"
+    },
     "core:617f9e80abb32d8c405523d3": {
       "first_seen_kst": "2026-10-08T03:51:03+09:00",
       "lanes": {
@@ -12297,6 +12371,28 @@
       "source_title": "EU·中, 하이브리드차 수출 제한 합의…EU 연 35만대 쿼터 추진",
       "telegram_core_fact": "중국과 유럽연합(EU)이 중국산 하이브리드차 수출 제한에 합의한 가운데 EU가 이르면 12월1일 중국의 암묵적 동의 아래 중국산 하이브리드 자동차 '연간 수입량(쿼터)'을 제한하는 무역 '세이프가드'를 시행할 예정이라는 보도가 나왔다.",
       "title": "EU·中, 하이브리드차 수출 제한 합의…EU 연 35만대 쿼터 추진"
+    },
+    "core:61ce16a2225d903efc4c29c6": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.hankyung.com/article/2026101255626",
+      "source": "한국경제",
+      "source_body_digest": "4db49d57146729b337678bf04bdbc33238fc16f601a8efb1e5db3ab831be4c69",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fe09e8078cf4ed38351293241d2700e5827b9c303ae2eea0172f36e5ad7ea0cf",
+      "source_fact_keys": [
+        "source_fact:v1:17e3e1679dd2657e7ce00ce9bb26c855511c37bdfcc24a238b16aa4522bb23c2",
+        "source_fact:v1:1eb4d55d6bddbeed299fcdc90b1e543ae450512c7c1e141aebdd8c3e1827b44b",
+        "source_fact:v1:289d263a3ba7a478f1e2eea7375aed28875025e9fbdf59a637e47b8525850084",
+        "source_fact:v1:55c49c941fbc885ec9bdc520c2fb423832a237f0fca230ed75e3265cd50d2e19"
+      ],
+      "source_published_kst": "2026-10-12T10:08+09:00",
+      "source_title": "효성중공업, 3분기 실적 눈높이 하향에 6%대 약세",
+      "telegram_core_fact": "한화투자증권은 효성중공업의 3분기 매출액을 전년비 6.4% 늘어난 1조7277억원, 영업이익은 32.9% 증가한 2920억원으로 추정하며 시장 컨센서스를 밑돌 것으로 전망했다.",
+      "title": "효성중공업, 3분기 실적 눈높이 하향에 6%대 약세"
     },
     "core:620363c649cfeba7b37674fc": {
       "first_seen_kst": "2026-10-08T16:14:26+09:00",
@@ -17583,6 +17679,27 @@
       "telegram_core_fact": "LH 관계자는 \"주택시장 안정을 위해 공공주택을 공급하는 과정에서 손실이 이어져 가산비 신설을 검토하게 됐다\"며 \"가산비를 신설해도 실제 분양가 상승폭은 크지 않다\"고 설명했다.",
       "title": "LH, 분양가상한 공공분양주택에 최대 9.5% 가산비 신설 검토 | 연합뉴스"
     },
+    "core:8ebc83ce88d57961d4e28c99": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.etnews.com/20261012000152",
+      "source": "전자신문",
+      "source_body_digest": "dbba3f581de8bfb3a684798a771bd2209bebab513283eda0daad78c209e8fbe7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dd35f428f529a65d3017b48edff49c74ee235ccaf35f404d78aa96033608b686",
+      "source_fact_keys": [
+        "source_fact:v1:1f85537e19396e5abc986511b9a8f94fe291a5645ca34d8399e38f55c837dec7",
+        "source_fact:v1:3f3ae2ce93c0132fe8eba57fdcf5bf61f0aff616115f0a75c399e30fb80a8766",
+        "source_fact:v1:e1f8e96cc832131f387c83de416c34f2d62b72fd00f3adb110a4d6f0c4d8ff3f"
+      ],
+      "source_published_kst": "2026-10-12T11:15+09:00",
+      "source_title": "네오에이아이클라우드, 포항 AI 데이터센터 6,000억원 규모 자금조달 완료",
+      "telegram_core_fact": "AI 인프라 전문기업 네오에이아이클라우드가 경북 포항에서 추진 중인 AI 전용 데이터센터 개발사업에 필요한 총 6,000억 원의 자금조달을 최종 마무리했다.",
+      "title": "네오에이아이클라우드, 포항 AI 데이터센터 6,000억원 규모 자금조달 완료"
+    },
     "core:8ebce3582dd4209d58f14ec5": {
       "first_seen_kst": "2026-10-11T08:19:03+09:00",
       "lanes": {
@@ -20766,6 +20883,25 @@
       ],
       "source_published_kst": "2026-10-07T11:41+09:00",
       "title": "“강남 빠져도 서울 집값 상승…내년 ‘덜 똘똘한 한채’ 대세” [헤럴드머니페스타 2026]"
+    },
+    "core:a9727cf761d5104a2f5e78d4": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000021895",
+      "source": "국민일보",
+      "source_body_digest": "8caf4983db13ac2ffce92fd94281494c64cc8a479f448a1d044575d085138ba0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f94d3ea93b6fd1d5fbb3ec150a5854b7e49ef5c48987643a0c425806c76654e6",
+      "source_fact_keys": [
+        "source_fact:v1:e0c2495e77ebcc0ac7a5b081bf6ebd7db593b36c99eb360b072eb385cd79ced8"
+      ],
+      "source_published_kst": "2026-10-12T18:57+09:00",
+      "source_title": "“변압기 대기줄 5년”… 메모리 이어 전력 인프라도 ‘장기계약’이 대세",
+      "telegram_core_fact": "인공지능(AI) 데이터센터 급증과 북미·유럽 등의 노후 전력망 교체 수요가 맞물리면서 글로벌 전력 인프라 시장도 메모리 반도체 분야처럼 ‘공급자 우위’ 구도가 확고해진 영향이다.",
+      "title": "“변압기 대기줄 5년”… 메모리 이어 전력 인프라도 ‘장기계약’이 대세"
     },
     "core:a9a14d454e0062ba16aacbc5": {
       "first_seen_kst": "2026-10-07T16:44:58+09:00",
@@ -27574,6 +27710,26 @@
       "telegram_core_fact": "국내외 금리 상승 압력이 커진 상황에서 프랑스의 정치∙재정적 불확실성이 금융시장의 우려를 자극했다. 이는 일본 국채금리 상승과 프랑스의 재정∙정치적 리스크가 맞물리면서 일본계 자금의 투자 방향이 달라질 수 있음을 보여주는 사례다.",
       "title": "불확실성 커진 재정·정치·글로벌 시장…불안한 佛 국채"
     },
+    "core:e04769b27386ba2b651cc8ed": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.hankyung.com/article/2026101268781",
+      "source": "한국경제",
+      "source_body_digest": "c2dec739b8d533a92cfc06391168b790ec3a0e9bd9907d786b1acfa0b92f1c25",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d10512fb77b1aa9d6e0fbed36f1613503c7b5a6c3f195a21b3eb557e8acdaa05",
+      "source_fact_keys": [
+        "source_fact:v1:285087f77f35f410a94cf6d4bd3aad2dd8dcff92574b2d1f7a1322ed728c91aa",
+        "source_fact:v1:d2c593639f07c7ddc735af720f33dd1a3fad14bdb426a8ede6dfbe9c3dfee761"
+      ],
+      "source_published_kst": "2026-10-12T19:08+09:00",
+      "source_title": "알테오젠 \"실탄 6300억, 새 기술 도입에 투자\"",
+      "telegram_core_fact": "알테오젠은 최근 국민성장펀드 출자금을 포함한 스카이레이크 펀드에서 총 2000억원의 투자를 유치하기로 했다. 발행을 완료하면 기존에 보유한 현금성 자산 4300억원과 합쳐 총 6300억원의 투자 재원을 확보하게 된다.",
+      "title": "알테오젠 \"실탄 6300억, 새 기술 도입에 투자\""
+    },
     "core:e078f2cbe0535cb0485775c2": {
       "first_seen_kst": "2026-10-09T21:27:46+09:00",
       "lanes": {
@@ -34375,6 +34531,27 @@
       "source": "이데일리",
       "title": "엔비디아 황 CEO 수상식에 삼성·SK 총수 동석…차세대 HBM 협력 논의 주목"
     },
+    "event:43ee83b6ae3b36e208c632ee": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.etnews.com/20261012000152",
+      "source": "전자신문",
+      "source_body_digest": "dbba3f581de8bfb3a684798a771bd2209bebab513283eda0daad78c209e8fbe7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dd35f428f529a65d3017b48edff49c74ee235ccaf35f404d78aa96033608b686",
+      "source_fact_keys": [
+        "source_fact:v1:1f85537e19396e5abc986511b9a8f94fe291a5645ca34d8399e38f55c837dec7",
+        "source_fact:v1:3f3ae2ce93c0132fe8eba57fdcf5bf61f0aff616115f0a75c399e30fb80a8766",
+        "source_fact:v1:e1f8e96cc832131f387c83de416c34f2d62b72fd00f3adb110a4d6f0c4d8ff3f"
+      ],
+      "source_published_kst": "2026-10-12T11:15+09:00",
+      "source_title": "네오에이아이클라우드, 포항 AI 데이터센터 6,000억원 규모 자금조달 완료",
+      "telegram_core_fact": "AI 인프라 전문기업 네오에이아이클라우드가 경북 포항에서 추진 중인 AI 전용 데이터센터 개발사업에 필요한 총 6,000억 원의 자금조달을 최종 마무리했다.",
+      "title": "네오에이아이클라우드, 포항 AI 데이터센터 6,000억원 규모 자금조달 완료"
+    },
     "event:442db33cbe3e041f8c855225": {
       "first_seen_kst": "2026-09-19T11:34:06+09:00",
       "lanes": {
@@ -36042,23 +36219,22 @@
     "event:6a27210e82c74ecaf46cca68": {
       "first_seen_kst": "2026-10-12T12:09:58+09:00",
       "lanes": {
-        "live": "2026-10-12T19:07:06+09:00"
+        "live": "2026-10-12T21:20:33+09:00"
       },
-      "last_seen_kst": "2026-10-12T19:07:06+09:00",
-      "link": "https://www.newsis.com/view/NISX20261012_0003822692",
-      "source": "뉴시스",
-      "source_body_digest": "15b324eef5b9008dba66050a6d9ae082b03504a5c0cfcdb8fec16acbacbc753c",
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.hankyung.com/article/2026101268781",
+      "source": "한국경제",
+      "source_body_digest": "c2dec739b8d533a92cfc06391168b790ec3a0e9bd9907d786b1acfa0b92f1c25",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:88d909442185da6b97cb4daf8b1bfb7fa3a893500e1e76d939396b877b44e496",
+      "source_fact_identity": "source_facts:v1:d10512fb77b1aa9d6e0fbed36f1613503c7b5a6c3f195a21b3eb557e8acdaa05",
       "source_fact_keys": [
-        "source_fact:v1:35fbd8ebd292e32340cbbdd4db1b22fd4a4c00f504d6a2fc646f3874b37d2629",
-        "source_fact:v1:7cc96f9d196db16e27685c840f90079dcf574f2f94288b2f6bcac806e1165653",
-        "source_fact:v1:909898446614821071ebb727dd6856e54dd9fd4709a621028b88ad011ae147fb"
+        "source_fact:v1:285087f77f35f410a94cf6d4bd3aad2dd8dcff92574b2d1f7a1322ed728c91aa",
+        "source_fact:v1:d2c593639f07c7ddc735af720f33dd1a3fad14bdb426a8ede6dfbe9c3dfee761"
       ],
-      "source_published_kst": "2026-10-12T17:03+09:00",
-      "source_title": "엘앤씨바이오 \"美조직은행과 '리투오' 820억 계약\"",
-      "telegram_core_fact": "엘앤씨바이오가 미국 인체조직 전문기업·조직은행과 인체조직 피부 ECM 제품인 '리투오 시리즈'에 대한 820억원 공급계약을 체결했다.",
-      "title": "엘앤씨바이오 \"美조직은행과 '리투오' 820억 계약\""
+      "source_published_kst": "2026-10-12T19:08+09:00",
+      "source_title": "알테오젠 \"실탄 6300억, 새 기술 도입에 투자\"",
+      "telegram_core_fact": "알테오젠은 최근 국민성장펀드 출자금을 포함한 스카이레이크 펀드에서 총 2000억원의 투자를 유치하기로 했다. 발행을 완료하면 기존에 보유한 현금성 자산 4300억원과 합쳐 총 6300억원의 투자 재원을 확보하게 된다.",
+      "title": "알테오젠 \"실탄 6300억, 새 기술 도입에 투자\""
     },
     "event:6a805815905820cdf1fa5d3a": {
       "first_seen_kst": "2026-10-10T06:02:39+09:00",
@@ -36477,36 +36653,21 @@
     "event:7390cbf502ba1b6d9b7abe96": {
       "first_seen_kst": "2026-10-12T18:39:51+09:00",
       "lanes": {
-        "live": "2026-10-12T18:39:51+09:00"
+        "live": "2026-10-12T21:20:33+09:00"
       },
-      "last_seen_kst": "2026-10-12T18:39:51+09:00",
-      "link": "https://www.fnnews.com/news/202610121821333879",
-      "source": "파이낸셜뉴스",
-      "source_body_digest": "551386cf1ce014d6be404c0a49d95c166b5f4fde7928d88a0ba271d401e2b5d6",
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.hankyung.com/article/2026101269241",
+      "source": "한국경제",
+      "source_body_digest": "ca712e859dd9390b6b727ab251d3208196481025e750fddf37cd2e71a1bfbdf7",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:0ffb6ef2b5c0dda564b103af9ad3ef1c709503536b0209ece6ef9d39a51bfc6a",
+      "source_fact_identity": "source_facts:v1:7d4d5922a3944a1e80427c33efde36f56633033e2cbc24b3a4c47f9cb63b17f0",
       "source_fact_keys": [
-        "source_fact:v1:1287669cc9728be7351fb5ed86c40881f4ebf8f535bab561344a95ccba429647",
-        "source_fact:v1:1f4e0dfb8296ecc136836361ed7ffb933b3c9aca876abb071341583cdb2f63ba",
-        "source_fact:v1:36fa3789eedc3d811c1d084238447c47e58e4fbb53bc37a99f30303344204d28",
-        "source_fact:v1:3a49c58d9a9bbb8bb735ffe4035b05348d4b275c929a72a458ab910fdd49e388",
-        "source_fact:v1:5adb4a33cdaf77848012da0f3c8cc9606140929ec6ec09636c5c3a7a973947d6",
-        "source_fact:v1:6a3cbbfc946a2c87bb25a2ca048710f4858fe3af3ce080ed43b54c40a6b37fe6",
-        "source_fact:v1:79740aea4d5dd56794604f0a3b51ce8f01ef5e3c8ce37083c049ae37b0677c19",
-        "source_fact:v1:c197542b9c57d6b379879f89fde87676b4c52118ebac61f24eb4eb604c60488e",
-        "source_fact:v1:c71f67bd955082d593929f51ee96d5391ae0f611404e0e6a04320b0d3515daf5",
-        "source_fact:v1:c71f7505b7dba5226724cde1ec86c5b43c74e570bbfa327821aff5aadbdd880f",
-        "source_fact:v1:ca6166fe9389c76c88d0fb0e796a7a73c71dbf62c0db79ea7653647eee6516af",
-        "source_fact:v1:caf9ae114e1ca9714fca7f2af2733ffe6c3a9b3f62c61a81ad294de9b3f69001",
-        "source_fact:v1:cf4f940503a10f74f5bef46634435d4f8f26542206b088498a3c2b20fe24aa36",
-        "source_fact:v1:dbe25817022ca58089136a2a6eb0e425634dab7583e85abea193dbb973bb6a93",
-        "source_fact:v1:e81143303df3fd35d999ba3d2d9d9a557a7f2f4f9f0a7add5f33f3c3e00e49f7",
-        "source_fact:v1:f406b3979888cedc23707a549c8b8d958e43b8ced2e86367e8c176a1b711e9e5"
+        "source_fact:v1:f1bbfea907b1d3a61e77bdf17686cf959ce6a2a9ff5a316e1fcbd702b8851bea"
       ],
-      "source_published_kst": "2026-10-12T18:21+09:00",
-      "source_title": "삼성 美 테일러팹 2나노 양산 임박…'수율 특공대' 파견",
-      "telegram_core_fact": "삼성전자가 내년 미국 텍사스주 테일러 파운드리(반도체 위탁생산) 공장의 2나노미터(나노미터·1㎚=10억분의 1m) 반도체 본격 양산을 앞두고 기술 인력과 현지 운영조직 확충에 속도를 내고 있다.",
-      "title": "삼성 美 테일러팹 2나노 양산 임박…'수율 특공대' 파견"
+      "source_published_kst": "2026-10-12T18:55+09:00",
+      "source_title": "오드리 찰스 \"韓 반도체 생태계 매력적…HBM패키징·초미세공정에 투자\"",
+      "telegram_core_fact": "16단 이상의 고용량 고대역폭메모리(HBM) 개발이 본격화함에 따라 차세대 패키징 신기술을 확보한 기업을 적극 물색할 방침이다.",
+      "title": "오드리 찰스 \"韓 반도체 생태계 매력적…HBM패키징·초미세공정에 투자\""
     },
     "event:742312a61f9ee9b1a0ea7c8a": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
@@ -38234,30 +38395,24 @@
     "event:9863e2156d1d4e96f8f2f84b": {
       "first_seen_kst": "2026-10-12T05:35:02+09:00",
       "lanes": {
-        "live": "2026-10-12T20:14:14+09:00"
+        "live": "2026-10-12T21:20:33+09:00"
       },
-      "last_seen_kst": "2026-10-12T20:14:14+09:00",
-      "link": "https://www.mt.co.kr/index.php/industry/2026/10/12/2026101214213521243",
-      "source": "머니투데이",
-      "source_body_digest": "d7675377e370c3e9635f6cac4eb809e182fc044114e001c93eda0e302767d268",
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.hankyung.com/article/2026101255626",
+      "source": "한국경제",
+      "source_body_digest": "4db49d57146729b337678bf04bdbc33238fc16f601a8efb1e5db3ab831be4c69",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:fc4a59be58d3fd9e97a1c02618b5fd95dfd860d5f8ba07b9b6e98a5f2aaf3403",
+      "source_fact_identity": "source_facts:v1:fe09e8078cf4ed38351293241d2700e5827b9c303ae2eea0172f36e5ad7ea0cf",
       "source_fact_keys": [
-        "source_fact:v1:31428b46d92a31563fde4337e68cd24f2ce735cde0cd0fcd0142dafb72bf1e12",
-        "source_fact:v1:441d9369e43bad4fda5f35ac0fdb82f793621e4bbb51106d3be45dc4f74dcf1c",
-        "source_fact:v1:4baec211dbd6b182eafe514f647c688d678e00cb209139e8bcd1bbe6c7faf8b4",
-        "source_fact:v1:5bfee031f0595ece7ec271c73976d39efbc1f507d78467b77859b41ceac2fbc2",
-        "source_fact:v1:7c3fa3b42f7f836377f61583c5f5e7dd887e793c2c56dadc49c4a4cd55e5f0f6",
-        "source_fact:v1:854a8f6588b73b619afd756d7289109916695f4a798b187388a5accff1e7ae46",
-        "source_fact:v1:88ac23173d0379dda49b4f1ca78cae2ef218ed8c3dbdea9bfaf7ffb5fe2f1b5c",
-        "source_fact:v1:bc0d0db14c701be2a15adbd2cef48d606e5c85059a7854b94c6872d382ffeb8b",
-        "source_fact:v1:e2219514ccd86eb05db335f669bcdfc786831b5f372473616c52b7e0ff3d3147",
-        "source_fact:v1:f7f5a6c7fb6283c166eee5c164bf716df3e2bf5844b4c12eb672cd6daea13f71"
+        "source_fact:v1:17e3e1679dd2657e7ce00ce9bb26c855511c37bdfcc24a238b16aa4522bb23c2",
+        "source_fact:v1:1eb4d55d6bddbeed299fcdc90b1e543ae450512c7c1e141aebdd8c3e1827b44b",
+        "source_fact:v1:289d263a3ba7a478f1e2eea7375aed28875025e9fbdf59a637e47b8525850084",
+        "source_fact:v1:55c49c941fbc885ec9bdc520c2fb423832a237f0fca230ed75e3265cd50d2e19"
       ],
-      "source_published_kst": "2026-10-12T17:30+09:00",
-      "source_title": "건설기계 바닥 다졌나..비철금속·AIDC 수요 딛고 턴어라운드",
-      "telegram_core_fact": "비철금속을 중심으로 광산 투자가 확대되는 가운데 인공지능(AI) 데이터센터 건설까지 가세하면서 비주택 시장을 중심으로 건설장비 수요가 늘고 있어서다.",
-      "title": "건설기계 바닥 다졌나..비철금속·AIDC 수요 딛고 턴어라운드"
+      "source_published_kst": "2026-10-12T10:08+09:00",
+      "source_title": "효성중공업, 3분기 실적 눈높이 하향에 6%대 약세",
+      "telegram_core_fact": "한화투자증권은 효성중공업의 3분기 매출액을 전년비 6.4% 늘어난 1조7277억원, 영업이익은 32.9% 증가한 2920억원으로 추정하며 시장 컨센서스를 밑돌 것으로 전망했다.",
+      "title": "효성중공업, 3분기 실적 눈높이 하향에 6%대 약세"
     },
     "event:989b212ffe32167f3bef644a": {
       "first_seen_kst": "2026-09-30T18:09:05+09:00",
@@ -44969,6 +45124,28 @@
       "telegram_core_fact": "삼표산업은 지반 보수 전문기업 에스지오텍과 지반 보수 공법 공동 개발 및 기술 협력을 위한 업무협약(MOU)을 체결했다고 8일 밝혔다. 삼표산업이 성수대교와 올림픽대교 단차 보수 현장에 적용한 특수몰탈을 활용해 지반 보수 신공법 개발에 나선다.",
       "title": "삼표산업, 에스지오텍과 지반 보수 신공법 개발 업무협약 체결"
     },
+    "fact:0b710c4a746cbc5b50c900ee": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.hankyung.com/article/2026101255626",
+      "source": "한국경제",
+      "source_body_digest": "4db49d57146729b337678bf04bdbc33238fc16f601a8efb1e5db3ab831be4c69",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fe09e8078cf4ed38351293241d2700e5827b9c303ae2eea0172f36e5ad7ea0cf",
+      "source_fact_keys": [
+        "source_fact:v1:17e3e1679dd2657e7ce00ce9bb26c855511c37bdfcc24a238b16aa4522bb23c2",
+        "source_fact:v1:1eb4d55d6bddbeed299fcdc90b1e543ae450512c7c1e141aebdd8c3e1827b44b",
+        "source_fact:v1:289d263a3ba7a478f1e2eea7375aed28875025e9fbdf59a637e47b8525850084",
+        "source_fact:v1:55c49c941fbc885ec9bdc520c2fb423832a237f0fca230ed75e3265cd50d2e19"
+      ],
+      "source_published_kst": "2026-10-12T10:08+09:00",
+      "source_title": "효성중공업, 3분기 실적 눈높이 하향에 6%대 약세",
+      "telegram_core_fact": "한화투자증권은 효성중공업의 3분기 매출액을 전년비 6.4% 늘어난 1조7277억원, 영업이익은 32.9% 증가한 2920억원으로 추정하며 시장 컨센서스를 밑돌 것으로 전망했다.",
+      "title": "효성중공업, 3분기 실적 눈높이 하향에 6%대 약세"
+    },
     "fact:0b7f706c5ae1f0b22d608f92": {
       "first_seen_kst": "2026-10-07T16:57:09+09:00",
       "lanes": {
@@ -51223,6 +51400,26 @@
       "source_published_kst": "2026-10-07T09:23+09:00",
       "title": "법무법인 태평양, 9년 연속 ‘글로벌 200대 로펌’ 선정 쾌거"
     },
+    "fact:2e5e5e6f4144235dcfd14471": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.hankyung.com/article/2026101268781",
+      "source": "한국경제",
+      "source_body_digest": "c2dec739b8d533a92cfc06391168b790ec3a0e9bd9907d786b1acfa0b92f1c25",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d10512fb77b1aa9d6e0fbed36f1613503c7b5a6c3f195a21b3eb557e8acdaa05",
+      "source_fact_keys": [
+        "source_fact:v1:285087f77f35f410a94cf6d4bd3aad2dd8dcff92574b2d1f7a1322ed728c91aa",
+        "source_fact:v1:d2c593639f07c7ddc735af720f33dd1a3fad14bdb426a8ede6dfbe9c3dfee761"
+      ],
+      "source_published_kst": "2026-10-12T19:08+09:00",
+      "source_title": "알테오젠 \"실탄 6300억, 새 기술 도입에 투자\"",
+      "telegram_core_fact": "알테오젠은 최근 국민성장펀드 출자금을 포함한 스카이레이크 펀드에서 총 2000억원의 투자를 유치하기로 했다. 발행을 완료하면 기존에 보유한 현금성 자산 4300억원과 합쳐 총 6300억원의 투자 재원을 확보하게 된다.",
+      "title": "알테오젠 \"실탄 6300억, 새 기술 도입에 투자\""
+    },
     "fact:2e65e9ca99a737663f7fa476": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
       "lanes": {
@@ -51392,6 +51589,32 @@
       ],
       "source_published_kst": "2026-10-06T15:42+09:00",
       "title": "MSDI, 구미시와 7천억 규모 미사일 방산단지 조성 MOU | 연합뉴스"
+    },
+    "fact:2f9a60a71acb4c27cbfafcdd": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012169500109",
+      "source": "연합뉴스",
+      "source_body_digest": "153c464fed3491cde8f24e8280eb4fc1bd358b696617509a5029c8c1140c0af1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a91b90f91402a2a55b06b243c06e8c5bf2adb8d991f56baac765a6a07449695",
+      "source_fact_keys": [
+        "source_fact:v1:278b5e7f1fb5670ece15eef0e733b5d3657f79ee00968678ca008400539a1a95",
+        "source_fact:v1:27953ff05d1050c9a9ddfdfb61d54581ea1ad5fce2a65f7b2654c680f1230d61",
+        "source_fact:v1:987f49f1e5c4bd650aa47c9c4c6e6fced792cd5c801a8d29ab3934ec84363802",
+        "source_fact:v1:a0be4d176be20b581b9ef5eabb689f3a77301898ba71f4dfd40ab2310b68ccb1",
+        "source_fact:v1:abc37e0cf394da2951100be704fdff0970c7ef97f3a40043cd6b8b086e3b964d",
+        "source_fact:v1:b48b57bc25c99edf3c694fac301010b31957258956288e5db05491e7fbbc9315",
+        "source_fact:v1:ef5c4bad803222c560ef3e52ad6ce38c13777f8d4e7c71bf693212525f4cc325",
+        "source_fact:v1:f85b61cd61e34ab1016c7ae2522458a924620edbd8c3deac16f755f61535b3bb"
+      ],
+      "source_published_kst": "2026-10-12T19:06+09:00",
+      "source_title": "젤렌스키 \"러, 우크라 가스시설 공격…에너지 휴전 위반\" | 연합뉴스",
+      "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령은 12일(현지시간) 러시아가 밤새 우크라이나의 가스시설을 공격했다며 휴전에 동의하지 않으면 대응에 나설 것이라고 경고했다. 젤렌스키 대통령은 \"일반 주유소를 겨냥한 러시아의 공격도 있었다\"며 \"도널드 트럼프 미국 대통령이 발표한 에너지 휴전을 러시아가 위반한 사례들\"이라고 지적했다.",
+      "title": "젤렌스키 \"러, 우크라 가스시설 공격…에너지 휴전 위반\" | 연합뉴스"
     },
     "fact:2feb393986c5a69d1f14dbe4": {
       "first_seen_kst": "2026-10-07T01:07:29+09:00",
@@ -54863,6 +55086,35 @@
       "source_title": "반도체 호황의 그늘…중소기업 생산·수출 비중 '뚝'",
       "telegram_core_fact": "반도체 대기업 주도로 거시 경제 지표가 개선되고 있지만, 중소기업은 제조업 생산이 줄고 수출 비중이 쪼그라드는 등 반도체 호황의 낙수효과를 누리지 못하고 있다. 전체 수출에서 중소기업이 차지하는 비중은 작년 8월 14.4%에서 올 8월 10.3%로 축소됐다.",
       "title": "반도체 호황의 그늘…중소기업 생산·수출 비중 '뚝'"
+    },
+    "fact:428bffb156977fbc8a836bb1": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.etnews.com/20261012000251",
+      "source": "전자신문",
+      "source_body_digest": "7ae738905fe20b77161d56580b06d0f1f75edda4f4ef2eb94bd7a99c6ca4ff77",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e0363632d10f31661fbcad564e3805ad8465b385a90051ba5fd3616f85bb7541",
+      "source_fact_keys": [
+        "source_fact:v1:14dbc5a84ee2d2af9f06c8b9f0cb9ab9b743ea280ab3b4ab6aa2078183194263",
+        "source_fact:v1:1a2bb7bd4b8d520850e553dd171f1cb33c76084ece7c221da38197358821fc66",
+        "source_fact:v1:1d81b9afb90c1609eba4053af2c25137b89d4d355272c8142e432847b0aee53a",
+        "source_fact:v1:36a17d22a1671857d40dfb1e7756edee5c1fee58d2603918c0c40a073a129083",
+        "source_fact:v1:492af0b567cf459988c953dd576de3306d4756c24e0a99ab4f7608cf1fd188fc",
+        "source_fact:v1:4cc38b8e4246235ce925d26e8ae57410cf3acaf847fc43ee6e63f0ee9d9b338d",
+        "source_fact:v1:78db2d61707eed0a36b946cfcd403e08a32fcdaa42d28ad7c202f000e7635b33",
+        "source_fact:v1:8f9ebb5e2e888028629789f8140f212630d83900cda1565f43f113eb371c2fbe",
+        "source_fact:v1:afd21902f13373e12cab6d17b461080f96a9422294f9b2a05d7bb607f2807822",
+        "source_fact:v1:e0d76979b342806663cd5478d45c6f956b70253c967138b7ba4bf7cea53fd4aa",
+        "source_fact:v1:fa219bc81bffc07d9e3faac81635b69ddbd5a4790f74ded0fa67d8603edd4347"
+      ],
+      "source_published_kst": "2026-10-12T17:00+09:00",
+      "source_title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진",
+      "telegram_core_fact": "기존 로봇을 해체해 활용할 수 있는 부품에 추가 설계를 적용하는 방안을 검토하고 있으며, 향후 공급 과정에서 규제가 걸림돌이 되지 않도록 선제적으로 승인 절차를 준비하고 있다.",
+      "title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진"
     },
     "fact:42973bf4dfb13132e26fa031": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
@@ -60971,6 +61223,27 @@
       ],
       "source_published_kst": "2026-10-06T09:01+09:00",
       "title": "“코스피, 11월부터 연말 랠리…외국인 돌아온다”"
+    },
+    "fact:67abce6da44c019a1ec743c7": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.etnews.com/20261012000152",
+      "source": "전자신문",
+      "source_body_digest": "dbba3f581de8bfb3a684798a771bd2209bebab513283eda0daad78c209e8fbe7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dd35f428f529a65d3017b48edff49c74ee235ccaf35f404d78aa96033608b686",
+      "source_fact_keys": [
+        "source_fact:v1:1f85537e19396e5abc986511b9a8f94fe291a5645ca34d8399e38f55c837dec7",
+        "source_fact:v1:3f3ae2ce93c0132fe8eba57fdcf5bf61f0aff616115f0a75c399e30fb80a8766",
+        "source_fact:v1:e1f8e96cc832131f387c83de416c34f2d62b72fd00f3adb110a4d6f0c4d8ff3f"
+      ],
+      "source_published_kst": "2026-10-12T11:15+09:00",
+      "source_title": "네오에이아이클라우드, 포항 AI 데이터센터 6,000억원 규모 자금조달 완료",
+      "telegram_core_fact": "AI 인프라 전문기업 네오에이아이클라우드가 경북 포항에서 추진 중인 AI 전용 데이터센터 개발사업에 필요한 총 6,000억 원의 자금조달을 최종 마무리했다.",
+      "title": "네오에이아이클라우드, 포항 AI 데이터센터 6,000억원 규모 자금조달 완료"
     },
     "fact:67d99601b71c96bf1473db8d": {
       "first_seen_kst": "2026-10-12T16:50:12+09:00",
@@ -73230,6 +73503,25 @@
       "telegram_core_fact": "한국과학기술원(KAIST·카이스트)이 움직이는 피지컬 인공지능(AI)을 제조업뿐 아니라 의료·국방·물류·일상 등으로 확장키 위한 국가 산업생태계 구축전략을 제시한다.",
       "title": "KAIST, 피지컬 AI 국가 전략 선포…로봇 넘어 산업·일상으로 확장"
     },
+    "fact:aa57fd3309cf789ec674885d": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.hankyung.com/article/2026101269241",
+      "source": "한국경제",
+      "source_body_digest": "ca712e859dd9390b6b727ab251d3208196481025e750fddf37cd2e71a1bfbdf7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d4d5922a3944a1e80427c33efde36f56633033e2cbc24b3a4c47f9cb63b17f0",
+      "source_fact_keys": [
+        "source_fact:v1:f1bbfea907b1d3a61e77bdf17686cf959ce6a2a9ff5a316e1fcbd702b8851bea"
+      ],
+      "source_published_kst": "2026-10-12T18:55+09:00",
+      "source_title": "오드리 찰스 \"韓 반도체 생태계 매력적…HBM패키징·초미세공정에 투자\"",
+      "telegram_core_fact": "16단 이상의 고용량 고대역폭메모리(HBM) 개발이 본격화함에 따라 차세대 패키징 신기술을 확보한 기업을 적극 물색할 방침이다.",
+      "title": "오드리 찰스 \"韓 반도체 생태계 매력적…HBM패키징·초미세공정에 투자\""
+    },
     "fact:aa9a4d932cc7bce4490014cd": {
       "first_seen_kst": "2026-10-06T15:14:29+09:00",
       "lanes": {
@@ -76978,6 +77270,25 @@
       "source_title": "[뉴욕마감]국채금리 급등에 다우 0.66% 하락…S&P·나스닥 사상 최고서 후퇴",
       "telegram_core_fact": "스탠더드앤드푸어스(S&P)500지수는 17.18포인트(0.22%) 내린 7801.75, 나스닥종합지수는 61.19포인트(0.22%) 떨어진 2만7538.69를 기록했다.",
       "title": "[뉴욕마감]국채금리 급등에 다우 0.66% 하락…S&P·나스닥 사상 최고서 후퇴"
+    },
+    "fact:bed0c4d95c616507bd26fedc": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000021895",
+      "source": "국민일보",
+      "source_body_digest": "8caf4983db13ac2ffce92fd94281494c64cc8a479f448a1d044575d085138ba0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f94d3ea93b6fd1d5fbb3ec150a5854b7e49ef5c48987643a0c425806c76654e6",
+      "source_fact_keys": [
+        "source_fact:v1:e0c2495e77ebcc0ac7a5b081bf6ebd7db593b36c99eb360b072eb385cd79ced8"
+      ],
+      "source_published_kst": "2026-10-12T18:57+09:00",
+      "source_title": "“변압기 대기줄 5년”… 메모리 이어 전력 인프라도 ‘장기계약’이 대세",
+      "telegram_core_fact": "인공지능(AI) 데이터센터 급증과 북미·유럽 등의 노후 전력망 교체 수요가 맞물리면서 글로벌 전력 인프라 시장도 메모리 반도체 분야처럼 ‘공급자 우위’ 구도가 확고해진 영향이다.",
+      "title": "“변압기 대기줄 5년”… 메모리 이어 전력 인프라도 ‘장기계약’이 대세"
     },
     "fact:bed1da093598db86a4cb9346": {
       "first_seen_kst": "2026-10-07T20:05:17+09:00",
@@ -91039,6 +91350,26 @@
       "source_title": "[1보] 삼성전자 3분기 영업이익 107조4천억원…작년 대비 782.5%↑ | 연합뉴스",
       "telegram_core_fact": "코스피 상장사 삼성전자[005930]는 연결 기준 올해 3분기 영업이익이 107조4천억원으로 지난해 동기보다 782.5% 증가한 것으로 잠정 집계됐다고 8일 공시했다.",
       "title": "[1보] 삼성전자 3분기 영업이익 107조4천억원…작년 대비 782.5%↑ | 연합뉴스"
+    },
+    "link:075fcb6221c60f540f8cc0b4": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.hankyung.com/article/2026101268781",
+      "source": "한국경제",
+      "source_body_digest": "c2dec739b8d533a92cfc06391168b790ec3a0e9bd9907d786b1acfa0b92f1c25",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d10512fb77b1aa9d6e0fbed36f1613503c7b5a6c3f195a21b3eb557e8acdaa05",
+      "source_fact_keys": [
+        "source_fact:v1:285087f77f35f410a94cf6d4bd3aad2dd8dcff92574b2d1f7a1322ed728c91aa",
+        "source_fact:v1:d2c593639f07c7ddc735af720f33dd1a3fad14bdb426a8ede6dfbe9c3dfee761"
+      ],
+      "source_published_kst": "2026-10-12T19:08+09:00",
+      "source_title": "알테오젠 \"실탄 6300억, 새 기술 도입에 투자\"",
+      "telegram_core_fact": "알테오젠은 최근 국민성장펀드 출자금을 포함한 스카이레이크 펀드에서 총 2000억원의 투자를 유치하기로 했다. 발행을 완료하면 기존에 보유한 현금성 자산 4300억원과 합쳐 총 6300억원의 투자 재원을 확보하게 된다.",
+      "title": "알테오젠 \"실탄 6300억, 새 기술 도입에 투자\""
     },
     "link:0768cd14005a818e5a48da6a": {
       "first_seen_kst": "2026-10-06T19:33:48+09:00",
@@ -119532,6 +119863,25 @@
       "source_published_kst": "2026-10-05T09:51+09:00",
       "title": "아이폰 듀오, 초기 물량 부족…한국도 '공급 지연' 우려"
     },
+    "link:7224a9b0ae27a6a3576a1c54": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000021895",
+      "source": "국민일보",
+      "source_body_digest": "8caf4983db13ac2ffce92fd94281494c64cc8a479f448a1d044575d085138ba0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f94d3ea93b6fd1d5fbb3ec150a5854b7e49ef5c48987643a0c425806c76654e6",
+      "source_fact_keys": [
+        "source_fact:v1:e0c2495e77ebcc0ac7a5b081bf6ebd7db593b36c99eb360b072eb385cd79ced8"
+      ],
+      "source_published_kst": "2026-10-12T18:57+09:00",
+      "source_title": "“변압기 대기줄 5년”… 메모리 이어 전력 인프라도 ‘장기계약’이 대세",
+      "telegram_core_fact": "인공지능(AI) 데이터센터 급증과 북미·유럽 등의 노후 전력망 교체 수요가 맞물리면서 글로벌 전력 인프라 시장도 메모리 반도체 분야처럼 ‘공급자 우위’ 구도가 확고해진 영향이다.",
+      "title": "“변압기 대기줄 5년”… 메모리 이어 전력 인프라도 ‘장기계약’이 대세"
+    },
     "link:722545036d9ac1e070aace52": {
       "first_seen_kst": "2026-10-08T20:39:20+09:00",
       "lanes": {
@@ -119565,6 +119915,35 @@
       "source_title": "얼어붙은 3분기 IPO 시장…무신사·소노, 구원투수될까",
       "telegram_core_fact": "코스닥 상장을 추진 중인 1조원 IPO 대어, 엘리스그룹 또한 기대주로 꼽힌다.",
       "title": "얼어붙은 3분기 IPO 시장…무신사·소노, 구원투수될까"
+    },
+    "link:724552446c989e9ea64bdfdc": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.etnews.com/20261012000251",
+      "source": "전자신문",
+      "source_body_digest": "7ae738905fe20b77161d56580b06d0f1f75edda4f4ef2eb94bd7a99c6ca4ff77",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e0363632d10f31661fbcad564e3805ad8465b385a90051ba5fd3616f85bb7541",
+      "source_fact_keys": [
+        "source_fact:v1:14dbc5a84ee2d2af9f06c8b9f0cb9ab9b743ea280ab3b4ab6aa2078183194263",
+        "source_fact:v1:1a2bb7bd4b8d520850e553dd171f1cb33c76084ece7c221da38197358821fc66",
+        "source_fact:v1:1d81b9afb90c1609eba4053af2c25137b89d4d355272c8142e432847b0aee53a",
+        "source_fact:v1:36a17d22a1671857d40dfb1e7756edee5c1fee58d2603918c0c40a073a129083",
+        "source_fact:v1:492af0b567cf459988c953dd576de3306d4756c24e0a99ab4f7608cf1fd188fc",
+        "source_fact:v1:4cc38b8e4246235ce925d26e8ae57410cf3acaf847fc43ee6e63f0ee9d9b338d",
+        "source_fact:v1:78db2d61707eed0a36b946cfcd403e08a32fcdaa42d28ad7c202f000e7635b33",
+        "source_fact:v1:8f9ebb5e2e888028629789f8140f212630d83900cda1565f43f113eb371c2fbe",
+        "source_fact:v1:afd21902f13373e12cab6d17b461080f96a9422294f9b2a05d7bb607f2807822",
+        "source_fact:v1:e0d76979b342806663cd5478d45c6f956b70253c967138b7ba4bf7cea53fd4aa",
+        "source_fact:v1:fa219bc81bffc07d9e3faac81635b69ddbd5a4790f74ded0fa67d8603edd4347"
+      ],
+      "source_published_kst": "2026-10-12T17:00+09:00",
+      "source_title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진",
+      "telegram_core_fact": "기존 로봇을 해체해 활용할 수 있는 부품에 추가 설계를 적용하는 방안을 검토하고 있으며, 향후 공급 과정에서 규제가 걸림돌이 되지 않도록 선제적으로 승인 절차를 준비하고 있다.",
+      "title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진"
     },
     "link:725c94d86f8afa0649f9025b": {
       "first_seen_kst": "2026-10-09T17:13:50+09:00",
@@ -122908,6 +123287,27 @@
       "link": "https://www.newsis.com/view/NISX20260927_0003804400",
       "source": "뉴시스",
       "title": "국힘, 장외투쟁 신중론…\"국감 등 원내에서 현안 대응 우선\""
+    },
+    "link:7eeea8d08a4f8a52b9428323": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.etnews.com/20261012000152",
+      "source": "전자신문",
+      "source_body_digest": "dbba3f581de8bfb3a684798a771bd2209bebab513283eda0daad78c209e8fbe7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dd35f428f529a65d3017b48edff49c74ee235ccaf35f404d78aa96033608b686",
+      "source_fact_keys": [
+        "source_fact:v1:1f85537e19396e5abc986511b9a8f94fe291a5645ca34d8399e38f55c837dec7",
+        "source_fact:v1:3f3ae2ce93c0132fe8eba57fdcf5bf61f0aff616115f0a75c399e30fb80a8766",
+        "source_fact:v1:e1f8e96cc832131f387c83de416c34f2d62b72fd00f3adb110a4d6f0c4d8ff3f"
+      ],
+      "source_published_kst": "2026-10-12T11:15+09:00",
+      "source_title": "네오에이아이클라우드, 포항 AI 데이터센터 6,000억원 규모 자금조달 완료",
+      "telegram_core_fact": "AI 인프라 전문기업 네오에이아이클라우드가 경북 포항에서 추진 중인 AI 전용 데이터센터 개발사업에 필요한 총 6,000억 원의 자금조달을 최종 마무리했다.",
+      "title": "네오에이아이클라우드, 포항 AI 데이터센터 6,000억원 규모 자금조달 완료"
     },
     "link:7f155e86b19fd9ec35a34ac4": {
       "first_seen_kst": "2026-10-06T01:16:46+09:00",
@@ -130273,6 +130673,32 @@
       "link": "https://www.mk.co.kr/news/business/12156227",
       "source": "매일경제",
       "title": "“경영진 4명, 자사주 4억원어치 매입”…KG모빌리티플랫폼, 책임경영 강화"
+    },
+    "link:9bab8e7d0de05b6af700410e": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012169500109",
+      "source": "연합뉴스",
+      "source_body_digest": "153c464fed3491cde8f24e8280eb4fc1bd358b696617509a5029c8c1140c0af1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a91b90f91402a2a55b06b243c06e8c5bf2adb8d991f56baac765a6a07449695",
+      "source_fact_keys": [
+        "source_fact:v1:278b5e7f1fb5670ece15eef0e733b5d3657f79ee00968678ca008400539a1a95",
+        "source_fact:v1:27953ff05d1050c9a9ddfdfb61d54581ea1ad5fce2a65f7b2654c680f1230d61",
+        "source_fact:v1:987f49f1e5c4bd650aa47c9c4c6e6fced792cd5c801a8d29ab3934ec84363802",
+        "source_fact:v1:a0be4d176be20b581b9ef5eabb689f3a77301898ba71f4dfd40ab2310b68ccb1",
+        "source_fact:v1:abc37e0cf394da2951100be704fdff0970c7ef97f3a40043cd6b8b086e3b964d",
+        "source_fact:v1:b48b57bc25c99edf3c694fac301010b31957258956288e5db05491e7fbbc9315",
+        "source_fact:v1:ef5c4bad803222c560ef3e52ad6ce38c13777f8d4e7c71bf693212525f4cc325",
+        "source_fact:v1:f85b61cd61e34ab1016c7ae2522458a924620edbd8c3deac16f755f61535b3bb"
+      ],
+      "source_published_kst": "2026-10-12T19:06+09:00",
+      "source_title": "젤렌스키 \"러, 우크라 가스시설 공격…에너지 휴전 위반\" | 연합뉴스",
+      "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령은 12일(현지시간) 러시아가 밤새 우크라이나의 가스시설을 공격했다며 휴전에 동의하지 않으면 대응에 나설 것이라고 경고했다. 젤렌스키 대통령은 \"일반 주유소를 겨냥한 러시아의 공격도 있었다\"며 \"도널드 트럼프 미국 대통령이 발표한 에너지 휴전을 러시아가 위반한 사례들\"이라고 지적했다.",
+      "title": "젤렌스키 \"러, 우크라 가스시설 공격…에너지 휴전 위반\" | 연합뉴스"
     },
     "link:9bac564e3ad3db1b16a66484": {
       "first_seen_kst": "2026-10-08T17:21:28+09:00",
@@ -150182,6 +150608,25 @@
       "source_published_kst": "2026-10-07T14:51+09:00",
       "title": "한투증권, 글로벌 퀀트 운용사 AQR과 파트너십"
     },
+    "link:e8475ce0d814eb7ac0e52770": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.hankyung.com/article/2026101269241",
+      "source": "한국경제",
+      "source_body_digest": "ca712e859dd9390b6b727ab251d3208196481025e750fddf37cd2e71a1bfbdf7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d4d5922a3944a1e80427c33efde36f56633033e2cbc24b3a4c47f9cb63b17f0",
+      "source_fact_keys": [
+        "source_fact:v1:f1bbfea907b1d3a61e77bdf17686cf959ce6a2a9ff5a316e1fcbd702b8851bea"
+      ],
+      "source_published_kst": "2026-10-12T18:55+09:00",
+      "source_title": "오드리 찰스 \"韓 반도체 생태계 매력적…HBM패키징·초미세공정에 투자\"",
+      "telegram_core_fact": "16단 이상의 고용량 고대역폭메모리(HBM) 개발이 본격화함에 따라 차세대 패키징 신기술을 확보한 기업을 적극 물색할 방침이다.",
+      "title": "오드리 찰스 \"韓 반도체 생태계 매력적…HBM패키징·초미세공정에 투자\""
+    },
     "link:e84a77eb7b3cf783c181ca01": {
       "first_seen_kst": "2026-10-08T18:02:43+09:00",
       "lanes": {
@@ -155447,6 +155892,28 @@
       "link": "https://www.yna.co.kr/view/AKR20261002036500002",
       "source": "연합뉴스",
       "title": "한은 \"10월 물가상승률 3% 내외 높은 수준 예상\" | 연합뉴스"
+    },
+    "link:fd73bd7cba6d6b0aafb86685": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.hankyung.com/article/2026101255626",
+      "source": "한국경제",
+      "source_body_digest": "4db49d57146729b337678bf04bdbc33238fc16f601a8efb1e5db3ab831be4c69",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fe09e8078cf4ed38351293241d2700e5827b9c303ae2eea0172f36e5ad7ea0cf",
+      "source_fact_keys": [
+        "source_fact:v1:17e3e1679dd2657e7ce00ce9bb26c855511c37bdfcc24a238b16aa4522bb23c2",
+        "source_fact:v1:1eb4d55d6bddbeed299fcdc90b1e543ae450512c7c1e141aebdd8c3e1827b44b",
+        "source_fact:v1:289d263a3ba7a478f1e2eea7375aed28875025e9fbdf59a637e47b8525850084",
+        "source_fact:v1:55c49c941fbc885ec9bdc520c2fb423832a237f0fca230ed75e3265cd50d2e19"
+      ],
+      "source_published_kst": "2026-10-12T10:08+09:00",
+      "source_title": "효성중공업, 3분기 실적 눈높이 하향에 6%대 약세",
+      "telegram_core_fact": "한화투자증권은 효성중공업의 3분기 매출액을 전년비 6.4% 늘어난 1조7277억원, 영업이익은 32.9% 증가한 2920억원으로 추정하며 시장 컨센서스를 밑돌 것으로 전망했다.",
+      "title": "효성중공업, 3분기 실적 눈높이 하향에 6%대 약세"
     },
     "link:fda29c607a883973cb0e709f": {
       "first_seen_kst": "2026-10-07T17:47:45+09:00",
@@ -172142,6 +172609,25 @@
       "telegram_core_fact": "이번 사명 변경은 비상장사 오르파이 테라퓨틱스(Orphai Therapeutics)와의 합병 완료에 따른 후속 조치다.",
       "title": "퀸스 테라퓨틱스, IRulya로 사명 변경..12일 IRLA 거래 시작"
     },
+    "original:3d689de38d023282f4de3c78": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000021895",
+      "source": "국민일보",
+      "source_body_digest": "8caf4983db13ac2ffce92fd94281494c64cc8a479f448a1d044575d085138ba0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f94d3ea93b6fd1d5fbb3ec150a5854b7e49ef5c48987643a0c425806c76654e6",
+      "source_fact_keys": [
+        "source_fact:v1:e0c2495e77ebcc0ac7a5b081bf6ebd7db593b36c99eb360b072eb385cd79ced8"
+      ],
+      "source_published_kst": "2026-10-12T18:57+09:00",
+      "source_title": "“변압기 대기줄 5년”… 메모리 이어 전력 인프라도 ‘장기계약’이 대세",
+      "telegram_core_fact": "인공지능(AI) 데이터센터 급증과 북미·유럽 등의 노후 전력망 교체 수요가 맞물리면서 글로벌 전력 인프라 시장도 메모리 반도체 분야처럼 ‘공급자 우위’ 구도가 확고해진 영향이다.",
+      "title": "“변압기 대기줄 5년”… 메모리 이어 전력 인프라도 ‘장기계약’이 대세"
+    },
     "original:3d8d8e88dccbfa6ccd1d5b22": {
       "first_seen_kst": "2026-10-02T14:00:40+09:00",
       "lanes": {
@@ -180274,6 +180760,28 @@
       "link": "https://www.newsis.com/view/NISX20261001_0003811534",
       "source": "뉴시스",
       "title": "[올댓차이나] 대만 증시, 韓美 반도체 호조에 0.86%↑ 상승 마감…1주 만에 사상최고 경신"
+    },
+    "original:5cd8641a7f10981015c19711": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.hankyung.com/article/2026101255626",
+      "source": "한국경제",
+      "source_body_digest": "4db49d57146729b337678bf04bdbc33238fc16f601a8efb1e5db3ab831be4c69",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fe09e8078cf4ed38351293241d2700e5827b9c303ae2eea0172f36e5ad7ea0cf",
+      "source_fact_keys": [
+        "source_fact:v1:17e3e1679dd2657e7ce00ce9bb26c855511c37bdfcc24a238b16aa4522bb23c2",
+        "source_fact:v1:1eb4d55d6bddbeed299fcdc90b1e543ae450512c7c1e141aebdd8c3e1827b44b",
+        "source_fact:v1:289d263a3ba7a478f1e2eea7375aed28875025e9fbdf59a637e47b8525850084",
+        "source_fact:v1:55c49c941fbc885ec9bdc520c2fb423832a237f0fca230ed75e3265cd50d2e19"
+      ],
+      "source_published_kst": "2026-10-12T10:08+09:00",
+      "source_title": "효성중공업, 3분기 실적 눈높이 하향에 6%대 약세",
+      "telegram_core_fact": "한화투자증권은 효성중공업의 3분기 매출액을 전년비 6.4% 늘어난 1조7277억원, 영업이익은 32.9% 증가한 2920억원으로 추정하며 시장 컨센서스를 밑돌 것으로 전망했다.",
+      "title": "효성중공업, 3분기 실적 눈높이 하향에 6%대 약세"
     },
     "original:5cf26c767da76cc137688684": {
       "first_seen_kst": "2026-10-08T04:14:15+09:00",
@@ -194138,6 +194646,25 @@
       "source_published_kst": "2026-10-06T16:41+09:00",
       "title": "최수진 의원실 ‘삼성·SK하이닉스 출신 27명 CXMT 이직’ 주장 [국감2026]"
     },
+    "original:94076e0e07e3520669ef072b": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.hankyung.com/article/2026101269241",
+      "source": "한국경제",
+      "source_body_digest": "ca712e859dd9390b6b727ab251d3208196481025e750fddf37cd2e71a1bfbdf7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d4d5922a3944a1e80427c33efde36f56633033e2cbc24b3a4c47f9cb63b17f0",
+      "source_fact_keys": [
+        "source_fact:v1:f1bbfea907b1d3a61e77bdf17686cf959ce6a2a9ff5a316e1fcbd702b8851bea"
+      ],
+      "source_published_kst": "2026-10-12T18:55+09:00",
+      "source_title": "오드리 찰스 \"韓 반도체 생태계 매력적…HBM패키징·초미세공정에 투자\"",
+      "telegram_core_fact": "16단 이상의 고용량 고대역폭메모리(HBM) 개발이 본격화함에 따라 차세대 패키징 신기술을 확보한 기업을 적극 물색할 방침이다.",
+      "title": "오드리 찰스 \"韓 반도체 생태계 매력적…HBM패키징·초미세공정에 투자\""
+    },
     "original:9412e681c4427799da72c260": {
       "first_seen_kst": "2026-09-23T21:31:09+09:00",
       "lanes": {
@@ -202659,6 +203186,32 @@
       "source_published_kst": "2026-10-06T12:58+09:00",
       "title": "전세사기 피해 보증금 3분의 1 최소 보장⋯11월 13일 시행"
     },
+    "original:b5996065625e8278d9620dd0": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012169500109",
+      "source": "연합뉴스",
+      "source_body_digest": "153c464fed3491cde8f24e8280eb4fc1bd358b696617509a5029c8c1140c0af1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a91b90f91402a2a55b06b243c06e8c5bf2adb8d991f56baac765a6a07449695",
+      "source_fact_keys": [
+        "source_fact:v1:278b5e7f1fb5670ece15eef0e733b5d3657f79ee00968678ca008400539a1a95",
+        "source_fact:v1:27953ff05d1050c9a9ddfdfb61d54581ea1ad5fce2a65f7b2654c680f1230d61",
+        "source_fact:v1:987f49f1e5c4bd650aa47c9c4c6e6fced792cd5c801a8d29ab3934ec84363802",
+        "source_fact:v1:a0be4d176be20b581b9ef5eabb689f3a77301898ba71f4dfd40ab2310b68ccb1",
+        "source_fact:v1:abc37e0cf394da2951100be704fdff0970c7ef97f3a40043cd6b8b086e3b964d",
+        "source_fact:v1:b48b57bc25c99edf3c694fac301010b31957258956288e5db05491e7fbbc9315",
+        "source_fact:v1:ef5c4bad803222c560ef3e52ad6ce38c13777f8d4e7c71bf693212525f4cc325",
+        "source_fact:v1:f85b61cd61e34ab1016c7ae2522458a924620edbd8c3deac16f755f61535b3bb"
+      ],
+      "source_published_kst": "2026-10-12T19:06+09:00",
+      "source_title": "젤렌스키 \"러, 우크라 가스시설 공격…에너지 휴전 위반\" | 연합뉴스",
+      "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령은 12일(현지시간) 러시아가 밤새 우크라이나의 가스시설을 공격했다며 휴전에 동의하지 않으면 대응에 나설 것이라고 경고했다. 젤렌스키 대통령은 \"일반 주유소를 겨냥한 러시아의 공격도 있었다\"며 \"도널드 트럼프 미국 대통령이 발표한 에너지 휴전을 러시아가 위반한 사례들\"이라고 지적했다.",
+      "title": "젤렌스키 \"러, 우크라 가스시설 공격…에너지 휴전 위반\" | 연합뉴스"
+    },
     "original:b5c13c5ffa7513ce8ada1941": {
       "first_seen_kst": "2026-09-18T14:40:33+09:00",
       "lanes": {
@@ -209165,6 +209718,26 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=01298886645608984",
       "source": "이데일리",
       "title": "[美특징주]맥코믹, 예상치 웃도는 실적에도 비용 상승 우려에 하락"
+    },
+    "original:d09bd633df464ce2ecc5279b": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.hankyung.com/article/2026101268781",
+      "source": "한국경제",
+      "source_body_digest": "c2dec739b8d533a92cfc06391168b790ec3a0e9bd9907d786b1acfa0b92f1c25",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d10512fb77b1aa9d6e0fbed36f1613503c7b5a6c3f195a21b3eb557e8acdaa05",
+      "source_fact_keys": [
+        "source_fact:v1:285087f77f35f410a94cf6d4bd3aad2dd8dcff92574b2d1f7a1322ed728c91aa",
+        "source_fact:v1:d2c593639f07c7ddc735af720f33dd1a3fad14bdb426a8ede6dfbe9c3dfee761"
+      ],
+      "source_published_kst": "2026-10-12T19:08+09:00",
+      "source_title": "알테오젠 \"실탄 6300억, 새 기술 도입에 투자\"",
+      "telegram_core_fact": "알테오젠은 최근 국민성장펀드 출자금을 포함한 스카이레이크 펀드에서 총 2000억원의 투자를 유치하기로 했다. 발행을 완료하면 기존에 보유한 현금성 자산 4300억원과 합쳐 총 6300억원의 투자 재원을 확보하게 된다.",
+      "title": "알테오젠 \"실탄 6300억, 새 기술 도입에 투자\""
     },
     "original:d0a813feb25fe7d7d8b1f64a": {
       "first_seen_kst": "2026-10-07T18:44:00+09:00",
@@ -216119,6 +216692,27 @@
       "source": "연합뉴스",
       "title": "美 SEC, '토큰 주식' 거래 문턱 낮춘다…24시간 거래 확대되나 | 연합뉴스"
     },
+    "original:ea182e3c46237bba688d9a76": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.etnews.com/20261012000152",
+      "source": "전자신문",
+      "source_body_digest": "dbba3f581de8bfb3a684798a771bd2209bebab513283eda0daad78c209e8fbe7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dd35f428f529a65d3017b48edff49c74ee235ccaf35f404d78aa96033608b686",
+      "source_fact_keys": [
+        "source_fact:v1:1f85537e19396e5abc986511b9a8f94fe291a5645ca34d8399e38f55c837dec7",
+        "source_fact:v1:3f3ae2ce93c0132fe8eba57fdcf5bf61f0aff616115f0a75c399e30fb80a8766",
+        "source_fact:v1:e1f8e96cc832131f387c83de416c34f2d62b72fd00f3adb110a4d6f0c4d8ff3f"
+      ],
+      "source_published_kst": "2026-10-12T11:15+09:00",
+      "source_title": "네오에이아이클라우드, 포항 AI 데이터센터 6,000억원 규모 자금조달 완료",
+      "telegram_core_fact": "AI 인프라 전문기업 네오에이아이클라우드가 경북 포항에서 추진 중인 AI 전용 데이터센터 개발사업에 필요한 총 6,000억 원의 자금조달을 최종 마무리했다.",
+      "title": "네오에이아이클라우드, 포항 AI 데이터센터 6,000억원 규모 자금조달 완료"
+    },
     "original:ea1b53a32153eeac69a4e4cf": {
       "first_seen_kst": "2026-10-06T07:30:15+09:00",
       "lanes": {
@@ -217434,6 +218028,35 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-07T00:14+09:00",
       "title": "\"지금부터 겁먹을 이유 없다\"…미 국채금리 5% 시대, 증시 전망과 취약점"
+    },
+    "original:f070ff4baf60ae87887f7920": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.etnews.com/20261012000251",
+      "source": "전자신문",
+      "source_body_digest": "7ae738905fe20b77161d56580b06d0f1f75edda4f4ef2eb94bd7a99c6ca4ff77",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e0363632d10f31661fbcad564e3805ad8465b385a90051ba5fd3616f85bb7541",
+      "source_fact_keys": [
+        "source_fact:v1:14dbc5a84ee2d2af9f06c8b9f0cb9ab9b743ea280ab3b4ab6aa2078183194263",
+        "source_fact:v1:1a2bb7bd4b8d520850e553dd171f1cb33c76084ece7c221da38197358821fc66",
+        "source_fact:v1:1d81b9afb90c1609eba4053af2c25137b89d4d355272c8142e432847b0aee53a",
+        "source_fact:v1:36a17d22a1671857d40dfb1e7756edee5c1fee58d2603918c0c40a073a129083",
+        "source_fact:v1:492af0b567cf459988c953dd576de3306d4756c24e0a99ab4f7608cf1fd188fc",
+        "source_fact:v1:4cc38b8e4246235ce925d26e8ae57410cf3acaf847fc43ee6e63f0ee9d9b338d",
+        "source_fact:v1:78db2d61707eed0a36b946cfcd403e08a32fcdaa42d28ad7c202f000e7635b33",
+        "source_fact:v1:8f9ebb5e2e888028629789f8140f212630d83900cda1565f43f113eb371c2fbe",
+        "source_fact:v1:afd21902f13373e12cab6d17b461080f96a9422294f9b2a05d7bb607f2807822",
+        "source_fact:v1:e0d76979b342806663cd5478d45c6f956b70253c967138b7ba4bf7cea53fd4aa",
+        "source_fact:v1:fa219bc81bffc07d9e3faac81635b69ddbd5a4790f74ded0fa67d8603edd4347"
+      ],
+      "source_published_kst": "2026-10-12T17:00+09:00",
+      "source_title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진",
+      "telegram_core_fact": "기존 로봇을 해체해 활용할 수 있는 부품에 추가 설계를 적용하는 방안을 검토하고 있으며, 향후 공급 과정에서 규제가 걸림돌이 되지 않도록 선제적으로 승인 절차를 준비하고 있다.",
+      "title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진"
     },
     "original:f0918d18ced22761d1b1402b": {
       "first_seen_kst": "2026-10-05T15:34:30+09:00",
@@ -224186,6 +224809,27 @@
       "source_published_kst": "2026-10-07T07:10+09:00",
       "title": "리사 수 \"수요가 공급보다 많아\"…AMD 주가 사상 최고"
     },
+    "source_fact:03b87e33db810e26b0f10d23": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.etnews.com/20261012000152",
+      "source": "전자신문",
+      "source_body_digest": "dbba3f581de8bfb3a684798a771bd2209bebab513283eda0daad78c209e8fbe7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dd35f428f529a65d3017b48edff49c74ee235ccaf35f404d78aa96033608b686",
+      "source_fact_keys": [
+        "source_fact:v1:1f85537e19396e5abc986511b9a8f94fe291a5645ca34d8399e38f55c837dec7",
+        "source_fact:v1:3f3ae2ce93c0132fe8eba57fdcf5bf61f0aff616115f0a75c399e30fb80a8766",
+        "source_fact:v1:e1f8e96cc832131f387c83de416c34f2d62b72fd00f3adb110a4d6f0c4d8ff3f"
+      ],
+      "source_published_kst": "2026-10-12T11:15+09:00",
+      "source_title": "네오에이아이클라우드, 포항 AI 데이터센터 6,000억원 규모 자금조달 완료",
+      "telegram_core_fact": "AI 인프라 전문기업 네오에이아이클라우드가 경북 포항에서 추진 중인 AI 전용 데이터센터 개발사업에 필요한 총 6,000억 원의 자금조달을 최종 마무리했다.",
+      "title": "네오에이아이클라우드, 포항 AI 데이터센터 6,000억원 규모 자금조달 완료"
+    },
     "source_fact:03bf9f060844048474647df9": {
       "first_seen_kst": "2026-10-12T09:53:29+09:00",
       "lanes": {
@@ -224688,6 +225332,35 @@
       ],
       "source_published_kst": "2026-10-07T11:25+09:00",
       "title": "홍지선 국토장관 “비아파트 주거사다리 효과, 충분히 검토 못해” [국감]"
+    },
+    "source_fact:04c3063c9de2e6f1a447b974": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.etnews.com/20261012000251",
+      "source": "전자신문",
+      "source_body_digest": "7ae738905fe20b77161d56580b06d0f1f75edda4f4ef2eb94bd7a99c6ca4ff77",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e0363632d10f31661fbcad564e3805ad8465b385a90051ba5fd3616f85bb7541",
+      "source_fact_keys": [
+        "source_fact:v1:14dbc5a84ee2d2af9f06c8b9f0cb9ab9b743ea280ab3b4ab6aa2078183194263",
+        "source_fact:v1:1a2bb7bd4b8d520850e553dd171f1cb33c76084ece7c221da38197358821fc66",
+        "source_fact:v1:1d81b9afb90c1609eba4053af2c25137b89d4d355272c8142e432847b0aee53a",
+        "source_fact:v1:36a17d22a1671857d40dfb1e7756edee5c1fee58d2603918c0c40a073a129083",
+        "source_fact:v1:492af0b567cf459988c953dd576de3306d4756c24e0a99ab4f7608cf1fd188fc",
+        "source_fact:v1:4cc38b8e4246235ce925d26e8ae57410cf3acaf847fc43ee6e63f0ee9d9b338d",
+        "source_fact:v1:78db2d61707eed0a36b946cfcd403e08a32fcdaa42d28ad7c202f000e7635b33",
+        "source_fact:v1:8f9ebb5e2e888028629789f8140f212630d83900cda1565f43f113eb371c2fbe",
+        "source_fact:v1:afd21902f13373e12cab6d17b461080f96a9422294f9b2a05d7bb607f2807822",
+        "source_fact:v1:e0d76979b342806663cd5478d45c6f956b70253c967138b7ba4bf7cea53fd4aa",
+        "source_fact:v1:fa219bc81bffc07d9e3faac81635b69ddbd5a4790f74ded0fa67d8603edd4347"
+      ],
+      "source_published_kst": "2026-10-12T17:00+09:00",
+      "source_title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진",
+      "telegram_core_fact": "기존 로봇을 해체해 활용할 수 있는 부품에 추가 설계를 적용하는 방안을 검토하고 있으며, 향후 공급 과정에서 규제가 걸림돌이 되지 않도록 선제적으로 승인 절차를 준비하고 있다.",
+      "title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진"
     },
     "source_fact:04c3541a95512fc18de0e2c8": {
       "first_seen_kst": "2026-10-08T13:07:52+09:00",
@@ -232318,6 +232991,35 @@
       ],
       "source_published_kst": "2026-10-06T07:42+09:00",
       "title": "[오늘의 증시]美금리 상승에도 나스닥 최고치…코스피 상승 출발 전망"
+    },
+    "source_fact:0d42f241e0577245c6843717": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.etnews.com/20261012000251",
+      "source": "전자신문",
+      "source_body_digest": "7ae738905fe20b77161d56580b06d0f1f75edda4f4ef2eb94bd7a99c6ca4ff77",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e0363632d10f31661fbcad564e3805ad8465b385a90051ba5fd3616f85bb7541",
+      "source_fact_keys": [
+        "source_fact:v1:14dbc5a84ee2d2af9f06c8b9f0cb9ab9b743ea280ab3b4ab6aa2078183194263",
+        "source_fact:v1:1a2bb7bd4b8d520850e553dd171f1cb33c76084ece7c221da38197358821fc66",
+        "source_fact:v1:1d81b9afb90c1609eba4053af2c25137b89d4d355272c8142e432847b0aee53a",
+        "source_fact:v1:36a17d22a1671857d40dfb1e7756edee5c1fee58d2603918c0c40a073a129083",
+        "source_fact:v1:492af0b567cf459988c953dd576de3306d4756c24e0a99ab4f7608cf1fd188fc",
+        "source_fact:v1:4cc38b8e4246235ce925d26e8ae57410cf3acaf847fc43ee6e63f0ee9d9b338d",
+        "source_fact:v1:78db2d61707eed0a36b946cfcd403e08a32fcdaa42d28ad7c202f000e7635b33",
+        "source_fact:v1:8f9ebb5e2e888028629789f8140f212630d83900cda1565f43f113eb371c2fbe",
+        "source_fact:v1:afd21902f13373e12cab6d17b461080f96a9422294f9b2a05d7bb607f2807822",
+        "source_fact:v1:e0d76979b342806663cd5478d45c6f956b70253c967138b7ba4bf7cea53fd4aa",
+        "source_fact:v1:fa219bc81bffc07d9e3faac81635b69ddbd5a4790f74ded0fa67d8603edd4347"
+      ],
+      "source_published_kst": "2026-10-12T17:00+09:00",
+      "source_title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진",
+      "telegram_core_fact": "기존 로봇을 해체해 활용할 수 있는 부품에 추가 설계를 적용하는 방안을 검토하고 있으며, 향후 공급 과정에서 규제가 걸림돌이 되지 않도록 선제적으로 승인 절차를 준비하고 있다.",
+      "title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진"
     },
     "source_fact:0d487f48c375c14cffe14f2e": {
       "first_seen_kst": "2026-10-10T06:23:09+09:00",
@@ -246815,6 +247517,28 @@
       "telegram_core_fact": "스타필드 프로퍼티스가 투자기구 'RB텐트폴' 지분 100%를 취득해 파라마운트와 워너브라더스 합병 관련 신주에 간접 투자하는 구조다.",
       "title": "나신평 \"이마트, 워너브라더스 인수 1.4조 투자로 재무부담 확대…과중한 투자\""
     },
+    "source_fact:1d28c98747b7dc529a47027a": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.hankyung.com/article/2026101255626",
+      "source": "한국경제",
+      "source_body_digest": "4db49d57146729b337678bf04bdbc33238fc16f601a8efb1e5db3ab831be4c69",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fe09e8078cf4ed38351293241d2700e5827b9c303ae2eea0172f36e5ad7ea0cf",
+      "source_fact_keys": [
+        "source_fact:v1:17e3e1679dd2657e7ce00ce9bb26c855511c37bdfcc24a238b16aa4522bb23c2",
+        "source_fact:v1:1eb4d55d6bddbeed299fcdc90b1e543ae450512c7c1e141aebdd8c3e1827b44b",
+        "source_fact:v1:289d263a3ba7a478f1e2eea7375aed28875025e9fbdf59a637e47b8525850084",
+        "source_fact:v1:55c49c941fbc885ec9bdc520c2fb423832a237f0fca230ed75e3265cd50d2e19"
+      ],
+      "source_published_kst": "2026-10-12T10:08+09:00",
+      "source_title": "효성중공업, 3분기 실적 눈높이 하향에 6%대 약세",
+      "telegram_core_fact": "한화투자증권은 효성중공업의 3분기 매출액을 전년비 6.4% 늘어난 1조7277억원, 영업이익은 32.9% 증가한 2920억원으로 추정하며 시장 컨센서스를 밑돌 것으로 전망했다.",
+      "title": "효성중공업, 3분기 실적 눈높이 하향에 6%대 약세"
+    },
     "source_fact:1d2ef2570b5b773f0ad13f3a": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
       "lanes": {
@@ -248073,6 +248797,32 @@
       "source_published_kst": "2026-10-06T11:20+09:00",
       "title": "엠플러스, 유럽 배터리 기업 각형 노칭·스태킹 장비 수주"
     },
+    "source_fact:1e9d90e707b596cb30e3bcf9": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012169500109",
+      "source": "연합뉴스",
+      "source_body_digest": "153c464fed3491cde8f24e8280eb4fc1bd358b696617509a5029c8c1140c0af1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a91b90f91402a2a55b06b243c06e8c5bf2adb8d991f56baac765a6a07449695",
+      "source_fact_keys": [
+        "source_fact:v1:278b5e7f1fb5670ece15eef0e733b5d3657f79ee00968678ca008400539a1a95",
+        "source_fact:v1:27953ff05d1050c9a9ddfdfb61d54581ea1ad5fce2a65f7b2654c680f1230d61",
+        "source_fact:v1:987f49f1e5c4bd650aa47c9c4c6e6fced792cd5c801a8d29ab3934ec84363802",
+        "source_fact:v1:a0be4d176be20b581b9ef5eabb689f3a77301898ba71f4dfd40ab2310b68ccb1",
+        "source_fact:v1:abc37e0cf394da2951100be704fdff0970c7ef97f3a40043cd6b8b086e3b964d",
+        "source_fact:v1:b48b57bc25c99edf3c694fac301010b31957258956288e5db05491e7fbbc9315",
+        "source_fact:v1:ef5c4bad803222c560ef3e52ad6ce38c13777f8d4e7c71bf693212525f4cc325",
+        "source_fact:v1:f85b61cd61e34ab1016c7ae2522458a924620edbd8c3deac16f755f61535b3bb"
+      ],
+      "source_published_kst": "2026-10-12T19:06+09:00",
+      "source_title": "젤렌스키 \"러, 우크라 가스시설 공격…에너지 휴전 위반\" | 연합뉴스",
+      "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령은 12일(현지시간) 러시아가 밤새 우크라이나의 가스시설을 공격했다며 휴전에 동의하지 않으면 대응에 나설 것이라고 경고했다. 젤렌스키 대통령은 \"일반 주유소를 겨냥한 러시아의 공격도 있었다\"며 \"도널드 트럼프 미국 대통령이 발표한 에너지 휴전을 러시아가 위반한 사례들\"이라고 지적했다.",
+      "title": "젤렌스키 \"러, 우크라 가스시설 공격…에너지 휴전 위반\" | 연합뉴스"
+    },
     "source_fact:1e9fc25745f84e0fe723a15a": {
       "first_seen_kst": "2026-10-11T18:34:27+09:00",
       "lanes": {
@@ -248131,6 +248881,32 @@
       ],
       "source_published_kst": "2026-10-06T18:39+09:00",
       "title": "“5·18 ‘광주’ 한정, 유공자 명단공개” 이진숙표 법안에 오월단체 “즉각 철회하라”"
+    },
+    "source_fact:1eb3b39fbd35d2b054f52178": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012169500109",
+      "source": "연합뉴스",
+      "source_body_digest": "153c464fed3491cde8f24e8280eb4fc1bd358b696617509a5029c8c1140c0af1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a91b90f91402a2a55b06b243c06e8c5bf2adb8d991f56baac765a6a07449695",
+      "source_fact_keys": [
+        "source_fact:v1:278b5e7f1fb5670ece15eef0e733b5d3657f79ee00968678ca008400539a1a95",
+        "source_fact:v1:27953ff05d1050c9a9ddfdfb61d54581ea1ad5fce2a65f7b2654c680f1230d61",
+        "source_fact:v1:987f49f1e5c4bd650aa47c9c4c6e6fced792cd5c801a8d29ab3934ec84363802",
+        "source_fact:v1:a0be4d176be20b581b9ef5eabb689f3a77301898ba71f4dfd40ab2310b68ccb1",
+        "source_fact:v1:abc37e0cf394da2951100be704fdff0970c7ef97f3a40043cd6b8b086e3b964d",
+        "source_fact:v1:b48b57bc25c99edf3c694fac301010b31957258956288e5db05491e7fbbc9315",
+        "source_fact:v1:ef5c4bad803222c560ef3e52ad6ce38c13777f8d4e7c71bf693212525f4cc325",
+        "source_fact:v1:f85b61cd61e34ab1016c7ae2522458a924620edbd8c3deac16f755f61535b3bb"
+      ],
+      "source_published_kst": "2026-10-12T19:06+09:00",
+      "source_title": "젤렌스키 \"러, 우크라 가스시설 공격…에너지 휴전 위반\" | 연합뉴스",
+      "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령은 12일(현지시간) 러시아가 밤새 우크라이나의 가스시설을 공격했다며 휴전에 동의하지 않으면 대응에 나설 것이라고 경고했다. 젤렌스키 대통령은 \"일반 주유소를 겨냥한 러시아의 공격도 있었다\"며 \"도널드 트럼프 미국 대통령이 발표한 에너지 휴전을 러시아가 위반한 사례들\"이라고 지적했다.",
+      "title": "젤렌스키 \"러, 우크라 가스시설 공격…에너지 휴전 위반\" | 연합뉴스"
     },
     "source_fact:1eb6d9da8b75714408bebc28": {
       "first_seen_kst": "2026-10-12T10:56:38+09:00",
@@ -252210,6 +252986,35 @@
       "telegram_core_fact": "도널드 트럼프 미 대통령이 9일(현지시각) 블라디미르 푸틴 러시아 대통령과 러시아의 경유 미국 수출을 늘리기로 한 합의했음에도 미국의 경유 가격이 의미 있게 내려갈 가능성은 희박하다고 전문가들이 전망하고 있다.",
       "title": "\"트럼프 러 경유 수입 합의, 가격 인하 효과 미미\""
     },
+    "source_fact:22c7442a3e55d0f2d66af6e2": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.etnews.com/20261012000251",
+      "source": "전자신문",
+      "source_body_digest": "7ae738905fe20b77161d56580b06d0f1f75edda4f4ef2eb94bd7a99c6ca4ff77",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e0363632d10f31661fbcad564e3805ad8465b385a90051ba5fd3616f85bb7541",
+      "source_fact_keys": [
+        "source_fact:v1:14dbc5a84ee2d2af9f06c8b9f0cb9ab9b743ea280ab3b4ab6aa2078183194263",
+        "source_fact:v1:1a2bb7bd4b8d520850e553dd171f1cb33c76084ece7c221da38197358821fc66",
+        "source_fact:v1:1d81b9afb90c1609eba4053af2c25137b89d4d355272c8142e432847b0aee53a",
+        "source_fact:v1:36a17d22a1671857d40dfb1e7756edee5c1fee58d2603918c0c40a073a129083",
+        "source_fact:v1:492af0b567cf459988c953dd576de3306d4756c24e0a99ab4f7608cf1fd188fc",
+        "source_fact:v1:4cc38b8e4246235ce925d26e8ae57410cf3acaf847fc43ee6e63f0ee9d9b338d",
+        "source_fact:v1:78db2d61707eed0a36b946cfcd403e08a32fcdaa42d28ad7c202f000e7635b33",
+        "source_fact:v1:8f9ebb5e2e888028629789f8140f212630d83900cda1565f43f113eb371c2fbe",
+        "source_fact:v1:afd21902f13373e12cab6d17b461080f96a9422294f9b2a05d7bb607f2807822",
+        "source_fact:v1:e0d76979b342806663cd5478d45c6f956b70253c967138b7ba4bf7cea53fd4aa",
+        "source_fact:v1:fa219bc81bffc07d9e3faac81635b69ddbd5a4790f74ded0fa67d8603edd4347"
+      ],
+      "source_published_kst": "2026-10-12T17:00+09:00",
+      "source_title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진",
+      "telegram_core_fact": "기존 로봇을 해체해 활용할 수 있는 부품에 추가 설계를 적용하는 방안을 검토하고 있으며, 향후 공급 과정에서 규제가 걸림돌이 되지 않도록 선제적으로 승인 절차를 준비하고 있다.",
+      "title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진"
+    },
     "source_fact:22cfb0dd7892342a47fb890b": {
       "first_seen_kst": "2026-10-07T22:53:53+09:00",
       "lanes": {
@@ -254824,6 +255629,32 @@
       ],
       "source_published_kst": "2026-10-06T18:09+09:00",
       "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어(종합) | 연합뉴스"
+    },
+    "source_fact:2535423620e2c80188daf17d": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012169500109",
+      "source": "연합뉴스",
+      "source_body_digest": "153c464fed3491cde8f24e8280eb4fc1bd358b696617509a5029c8c1140c0af1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a91b90f91402a2a55b06b243c06e8c5bf2adb8d991f56baac765a6a07449695",
+      "source_fact_keys": [
+        "source_fact:v1:278b5e7f1fb5670ece15eef0e733b5d3657f79ee00968678ca008400539a1a95",
+        "source_fact:v1:27953ff05d1050c9a9ddfdfb61d54581ea1ad5fce2a65f7b2654c680f1230d61",
+        "source_fact:v1:987f49f1e5c4bd650aa47c9c4c6e6fced792cd5c801a8d29ab3934ec84363802",
+        "source_fact:v1:a0be4d176be20b581b9ef5eabb689f3a77301898ba71f4dfd40ab2310b68ccb1",
+        "source_fact:v1:abc37e0cf394da2951100be704fdff0970c7ef97f3a40043cd6b8b086e3b964d",
+        "source_fact:v1:b48b57bc25c99edf3c694fac301010b31957258956288e5db05491e7fbbc9315",
+        "source_fact:v1:ef5c4bad803222c560ef3e52ad6ce38c13777f8d4e7c71bf693212525f4cc325",
+        "source_fact:v1:f85b61cd61e34ab1016c7ae2522458a924620edbd8c3deac16f755f61535b3bb"
+      ],
+      "source_published_kst": "2026-10-12T19:06+09:00",
+      "source_title": "젤렌스키 \"러, 우크라 가스시설 공격…에너지 휴전 위반\" | 연합뉴스",
+      "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령은 12일(현지시간) 러시아가 밤새 우크라이나의 가스시설을 공격했다며 휴전에 동의하지 않으면 대응에 나설 것이라고 경고했다. 젤렌스키 대통령은 \"일반 주유소를 겨냥한 러시아의 공격도 있었다\"며 \"도널드 트럼프 미국 대통령이 발표한 에너지 휴전을 러시아가 위반한 사례들\"이라고 지적했다.",
+      "title": "젤렌스키 \"러, 우크라 가스시설 공격…에너지 휴전 위반\" | 연합뉴스"
     },
     "source_fact:253ad62f543b850711600444": {
       "first_seen_kst": "2026-10-11T08:42:16+09:00",
@@ -258141,6 +258972,35 @@
       ],
       "source_published_kst": "2026-10-06T08:33+09:00",
       "title": "“광고·커머스 매출 성장 둔화, AI 비용 증가”…대신증권, NAVER 목표가↓"
+    },
+    "source_fact:28d71564d9e9441da52d0ece": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.etnews.com/20261012000251",
+      "source": "전자신문",
+      "source_body_digest": "7ae738905fe20b77161d56580b06d0f1f75edda4f4ef2eb94bd7a99c6ca4ff77",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e0363632d10f31661fbcad564e3805ad8465b385a90051ba5fd3616f85bb7541",
+      "source_fact_keys": [
+        "source_fact:v1:14dbc5a84ee2d2af9f06c8b9f0cb9ab9b743ea280ab3b4ab6aa2078183194263",
+        "source_fact:v1:1a2bb7bd4b8d520850e553dd171f1cb33c76084ece7c221da38197358821fc66",
+        "source_fact:v1:1d81b9afb90c1609eba4053af2c25137b89d4d355272c8142e432847b0aee53a",
+        "source_fact:v1:36a17d22a1671857d40dfb1e7756edee5c1fee58d2603918c0c40a073a129083",
+        "source_fact:v1:492af0b567cf459988c953dd576de3306d4756c24e0a99ab4f7608cf1fd188fc",
+        "source_fact:v1:4cc38b8e4246235ce925d26e8ae57410cf3acaf847fc43ee6e63f0ee9d9b338d",
+        "source_fact:v1:78db2d61707eed0a36b946cfcd403e08a32fcdaa42d28ad7c202f000e7635b33",
+        "source_fact:v1:8f9ebb5e2e888028629789f8140f212630d83900cda1565f43f113eb371c2fbe",
+        "source_fact:v1:afd21902f13373e12cab6d17b461080f96a9422294f9b2a05d7bb607f2807822",
+        "source_fact:v1:e0d76979b342806663cd5478d45c6f956b70253c967138b7ba4bf7cea53fd4aa",
+        "source_fact:v1:fa219bc81bffc07d9e3faac81635b69ddbd5a4790f74ded0fa67d8603edd4347"
+      ],
+      "source_published_kst": "2026-10-12T17:00+09:00",
+      "source_title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진",
+      "telegram_core_fact": "기존 로봇을 해체해 활용할 수 있는 부품에 추가 설계를 적용하는 방안을 검토하고 있으며, 향후 공급 과정에서 규제가 걸림돌이 되지 않도록 선제적으로 승인 절차를 준비하고 있다.",
+      "title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진"
     },
     "source_fact:28d73a147cb5adba0bc6706a": {
       "first_seen_kst": "2026-10-11T21:51:07+09:00",
@@ -263401,6 +264261,35 @@
       ],
       "source_published_kst": "2026-10-07T01:33+09:00",
       "title": "휴네시온, 'AI 페스타 26' 참가…N2SF 전환·AI 보안 전략 공개"
+    },
+    "source_fact:2ed2f3332be049f3d9634d41": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.etnews.com/20261012000251",
+      "source": "전자신문",
+      "source_body_digest": "7ae738905fe20b77161d56580b06d0f1f75edda4f4ef2eb94bd7a99c6ca4ff77",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e0363632d10f31661fbcad564e3805ad8465b385a90051ba5fd3616f85bb7541",
+      "source_fact_keys": [
+        "source_fact:v1:14dbc5a84ee2d2af9f06c8b9f0cb9ab9b743ea280ab3b4ab6aa2078183194263",
+        "source_fact:v1:1a2bb7bd4b8d520850e553dd171f1cb33c76084ece7c221da38197358821fc66",
+        "source_fact:v1:1d81b9afb90c1609eba4053af2c25137b89d4d355272c8142e432847b0aee53a",
+        "source_fact:v1:36a17d22a1671857d40dfb1e7756edee5c1fee58d2603918c0c40a073a129083",
+        "source_fact:v1:492af0b567cf459988c953dd576de3306d4756c24e0a99ab4f7608cf1fd188fc",
+        "source_fact:v1:4cc38b8e4246235ce925d26e8ae57410cf3acaf847fc43ee6e63f0ee9d9b338d",
+        "source_fact:v1:78db2d61707eed0a36b946cfcd403e08a32fcdaa42d28ad7c202f000e7635b33",
+        "source_fact:v1:8f9ebb5e2e888028629789f8140f212630d83900cda1565f43f113eb371c2fbe",
+        "source_fact:v1:afd21902f13373e12cab6d17b461080f96a9422294f9b2a05d7bb607f2807822",
+        "source_fact:v1:e0d76979b342806663cd5478d45c6f956b70253c967138b7ba4bf7cea53fd4aa",
+        "source_fact:v1:fa219bc81bffc07d9e3faac81635b69ddbd5a4790f74ded0fa67d8603edd4347"
+      ],
+      "source_published_kst": "2026-10-12T17:00+09:00",
+      "source_title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진",
+      "telegram_core_fact": "기존 로봇을 해체해 활용할 수 있는 부품에 추가 설계를 적용하는 방안을 검토하고 있으며, 향후 공급 과정에서 규제가 걸림돌이 되지 않도록 선제적으로 승인 절차를 준비하고 있다.",
+      "title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진"
     },
     "source_fact:2ed93765f8a0d0e637eca635": {
       "first_seen_kst": "2026-10-06T18:58:43+09:00",
@@ -280634,6 +281523,25 @@
       "source_published_kst": "2026-10-07T07:53+09:00",
       "title": "롯데바이오, 알보텍과 생산 수주 계약 체결 | 연합뉴스"
     },
+    "source_fact:42404d9d1f2bceac5b7838a7": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000021895",
+      "source": "국민일보",
+      "source_body_digest": "8caf4983db13ac2ffce92fd94281494c64cc8a479f448a1d044575d085138ba0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f94d3ea93b6fd1d5fbb3ec150a5854b7e49ef5c48987643a0c425806c76654e6",
+      "source_fact_keys": [
+        "source_fact:v1:e0c2495e77ebcc0ac7a5b081bf6ebd7db593b36c99eb360b072eb385cd79ced8"
+      ],
+      "source_published_kst": "2026-10-12T18:57+09:00",
+      "source_title": "“변압기 대기줄 5년”… 메모리 이어 전력 인프라도 ‘장기계약’이 대세",
+      "telegram_core_fact": "인공지능(AI) 데이터센터 급증과 북미·유럽 등의 노후 전력망 교체 수요가 맞물리면서 글로벌 전력 인프라 시장도 메모리 반도체 분야처럼 ‘공급자 우위’ 구도가 확고해진 영향이다.",
+      "title": "“변압기 대기줄 5년”… 메모리 이어 전력 인프라도 ‘장기계약’이 대세"
+    },
     "source_fact:4249c40c0c2b72509fe1251b": {
       "first_seen_kst": "2026-10-08T13:46:05+09:00",
       "lanes": {
@@ -282185,6 +283093,35 @@
       "telegram_core_fact": "나아가 1조원대 독자 실물 인프라 투자 플랫폼 구축을 비롯해, 핵심광물 공급망 정책 펀드와 연계 프로젝트 펀드, 스페셜시츄에이션 하이브리드 펀드 조성에 이르기까지 다각화된 펀딩 레이스를 전개하며 대체투자 영토 확장을 위한 거침없는 행보를 이어가는 모습이다.",
       "title": "빅딜 완주하고 펀딩 속도전…한투PE, 투자 영토 넓힌다 [하우스리뷰]"
     },
+    "source_fact:44571f043eccb04c31eefe97": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.etnews.com/20261012000251",
+      "source": "전자신문",
+      "source_body_digest": "7ae738905fe20b77161d56580b06d0f1f75edda4f4ef2eb94bd7a99c6ca4ff77",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e0363632d10f31661fbcad564e3805ad8465b385a90051ba5fd3616f85bb7541",
+      "source_fact_keys": [
+        "source_fact:v1:14dbc5a84ee2d2af9f06c8b9f0cb9ab9b743ea280ab3b4ab6aa2078183194263",
+        "source_fact:v1:1a2bb7bd4b8d520850e553dd171f1cb33c76084ece7c221da38197358821fc66",
+        "source_fact:v1:1d81b9afb90c1609eba4053af2c25137b89d4d355272c8142e432847b0aee53a",
+        "source_fact:v1:36a17d22a1671857d40dfb1e7756edee5c1fee58d2603918c0c40a073a129083",
+        "source_fact:v1:492af0b567cf459988c953dd576de3306d4756c24e0a99ab4f7608cf1fd188fc",
+        "source_fact:v1:4cc38b8e4246235ce925d26e8ae57410cf3acaf847fc43ee6e63f0ee9d9b338d",
+        "source_fact:v1:78db2d61707eed0a36b946cfcd403e08a32fcdaa42d28ad7c202f000e7635b33",
+        "source_fact:v1:8f9ebb5e2e888028629789f8140f212630d83900cda1565f43f113eb371c2fbe",
+        "source_fact:v1:afd21902f13373e12cab6d17b461080f96a9422294f9b2a05d7bb607f2807822",
+        "source_fact:v1:e0d76979b342806663cd5478d45c6f956b70253c967138b7ba4bf7cea53fd4aa",
+        "source_fact:v1:fa219bc81bffc07d9e3faac81635b69ddbd5a4790f74ded0fa67d8603edd4347"
+      ],
+      "source_published_kst": "2026-10-12T17:00+09:00",
+      "source_title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진",
+      "telegram_core_fact": "기존 로봇을 해체해 활용할 수 있는 부품에 추가 설계를 적용하는 방안을 검토하고 있으며, 향후 공급 과정에서 규제가 걸림돌이 되지 않도록 선제적으로 승인 절차를 준비하고 있다.",
+      "title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진"
+    },
     "source_fact:44585392ed94f3214910297d": {
       "first_seen_kst": "2026-10-06T04:08:54+09:00",
       "lanes": {
@@ -283728,6 +284665,32 @@
       ],
       "source_published_kst": "2026-10-05T10:59+09:00",
       "title": "“국내서 접하기 힘든 해외 AI 한곳 에”…LG유플러스가 ‘유독’으로 들여온다"
+    },
+    "source_fact:4628d2df5eea7a0014973891": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012169500109",
+      "source": "연합뉴스",
+      "source_body_digest": "153c464fed3491cde8f24e8280eb4fc1bd358b696617509a5029c8c1140c0af1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a91b90f91402a2a55b06b243c06e8c5bf2adb8d991f56baac765a6a07449695",
+      "source_fact_keys": [
+        "source_fact:v1:278b5e7f1fb5670ece15eef0e733b5d3657f79ee00968678ca008400539a1a95",
+        "source_fact:v1:27953ff05d1050c9a9ddfdfb61d54581ea1ad5fce2a65f7b2654c680f1230d61",
+        "source_fact:v1:987f49f1e5c4bd650aa47c9c4c6e6fced792cd5c801a8d29ab3934ec84363802",
+        "source_fact:v1:a0be4d176be20b581b9ef5eabb689f3a77301898ba71f4dfd40ab2310b68ccb1",
+        "source_fact:v1:abc37e0cf394da2951100be704fdff0970c7ef97f3a40043cd6b8b086e3b964d",
+        "source_fact:v1:b48b57bc25c99edf3c694fac301010b31957258956288e5db05491e7fbbc9315",
+        "source_fact:v1:ef5c4bad803222c560ef3e52ad6ce38c13777f8d4e7c71bf693212525f4cc325",
+        "source_fact:v1:f85b61cd61e34ab1016c7ae2522458a924620edbd8c3deac16f755f61535b3bb"
+      ],
+      "source_published_kst": "2026-10-12T19:06+09:00",
+      "source_title": "젤렌스키 \"러, 우크라 가스시설 공격…에너지 휴전 위반\" | 연합뉴스",
+      "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령은 12일(현지시간) 러시아가 밤새 우크라이나의 가스시설을 공격했다며 휴전에 동의하지 않으면 대응에 나설 것이라고 경고했다. 젤렌스키 대통령은 \"일반 주유소를 겨냥한 러시아의 공격도 있었다\"며 \"도널드 트럼프 미국 대통령이 발표한 에너지 휴전을 러시아가 위반한 사례들\"이라고 지적했다.",
+      "title": "젤렌스키 \"러, 우크라 가스시설 공격…에너지 휴전 위반\" | 연합뉴스"
     },
     "source_fact:46338c1ae2f83adac8a09fe8": {
       "first_seen_kst": "2026-10-06T23:46:46+09:00",
@@ -287673,6 +288636,25 @@
       "telegram_core_fact": "최근 액티브 ETF가 높은 성과를 낸 것은 변동성이 큰 제약·바이오주를 덜어내고 반도체 관련주를 적극 담아낸 결과로 풀이된다. 지난 7월 초 'DS 코스닥액티브'(이후 상장)를 제외한 5개 ETF 모두 주요 편입 종목에 제약·바이오를 포함했는데, 3개월 만에 포트폴리오가 크게 달라진 것이다.",
       "title": "반도체 담고 바이오 뺐더니 코스닥 액티브 ETF 웃었다"
     },
+    "source_fact:499c72bf67640083dbd24b9d": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.hankyung.com/article/2026101269241",
+      "source": "한국경제",
+      "source_body_digest": "ca712e859dd9390b6b727ab251d3208196481025e750fddf37cd2e71a1bfbdf7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d4d5922a3944a1e80427c33efde36f56633033e2cbc24b3a4c47f9cb63b17f0",
+      "source_fact_keys": [
+        "source_fact:v1:f1bbfea907b1d3a61e77bdf17686cf959ce6a2a9ff5a316e1fcbd702b8851bea"
+      ],
+      "source_published_kst": "2026-10-12T18:55+09:00",
+      "source_title": "오드리 찰스 \"韓 반도체 생태계 매력적…HBM패키징·초미세공정에 투자\"",
+      "telegram_core_fact": "16단 이상의 고용량 고대역폭메모리(HBM) 개발이 본격화함에 따라 차세대 패키징 신기술을 확보한 기업을 적극 물색할 방침이다.",
+      "title": "오드리 찰스 \"韓 반도체 생태계 매력적…HBM패키징·초미세공정에 투자\""
+    },
     "source_fact:499c763e8cbd5a77610624ed": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
       "lanes": {
@@ -288227,6 +289209,35 @@
       ],
       "source_published_kst": "2026-10-06T15:02+09:00",
       "title": "전남광주시, '장성 데이터센터' 첫 출자…48억 지분투자"
+    },
+    "source_fact:4a2bbd2437c9f18a400279fa": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.etnews.com/20261012000251",
+      "source": "전자신문",
+      "source_body_digest": "7ae738905fe20b77161d56580b06d0f1f75edda4f4ef2eb94bd7a99c6ca4ff77",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e0363632d10f31661fbcad564e3805ad8465b385a90051ba5fd3616f85bb7541",
+      "source_fact_keys": [
+        "source_fact:v1:14dbc5a84ee2d2af9f06c8b9f0cb9ab9b743ea280ab3b4ab6aa2078183194263",
+        "source_fact:v1:1a2bb7bd4b8d520850e553dd171f1cb33c76084ece7c221da38197358821fc66",
+        "source_fact:v1:1d81b9afb90c1609eba4053af2c25137b89d4d355272c8142e432847b0aee53a",
+        "source_fact:v1:36a17d22a1671857d40dfb1e7756edee5c1fee58d2603918c0c40a073a129083",
+        "source_fact:v1:492af0b567cf459988c953dd576de3306d4756c24e0a99ab4f7608cf1fd188fc",
+        "source_fact:v1:4cc38b8e4246235ce925d26e8ae57410cf3acaf847fc43ee6e63f0ee9d9b338d",
+        "source_fact:v1:78db2d61707eed0a36b946cfcd403e08a32fcdaa42d28ad7c202f000e7635b33",
+        "source_fact:v1:8f9ebb5e2e888028629789f8140f212630d83900cda1565f43f113eb371c2fbe",
+        "source_fact:v1:afd21902f13373e12cab6d17b461080f96a9422294f9b2a05d7bb607f2807822",
+        "source_fact:v1:e0d76979b342806663cd5478d45c6f956b70253c967138b7ba4bf7cea53fd4aa",
+        "source_fact:v1:fa219bc81bffc07d9e3faac81635b69ddbd5a4790f74ded0fa67d8603edd4347"
+      ],
+      "source_published_kst": "2026-10-12T17:00+09:00",
+      "source_title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진",
+      "telegram_core_fact": "기존 로봇을 해체해 활용할 수 있는 부품에 추가 설계를 적용하는 방안을 검토하고 있으며, 향후 공급 과정에서 규제가 걸림돌이 되지 않도록 선제적으로 승인 절차를 준비하고 있다.",
+      "title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진"
     },
     "source_fact:4a47782b94b2896b5fde5ee8": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
@@ -292453,6 +293464,35 @@
       ],
       "source_published_kst": "2026-10-06T13:55+09:00",
       "title": "제약바이오협회, 'R&D·임상·RA 역량강화' 세미나"
+    },
+    "source_fact:4f45b8a16878bfa1c7b7d37a": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.etnews.com/20261012000251",
+      "source": "전자신문",
+      "source_body_digest": "7ae738905fe20b77161d56580b06d0f1f75edda4f4ef2eb94bd7a99c6ca4ff77",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e0363632d10f31661fbcad564e3805ad8465b385a90051ba5fd3616f85bb7541",
+      "source_fact_keys": [
+        "source_fact:v1:14dbc5a84ee2d2af9f06c8b9f0cb9ab9b743ea280ab3b4ab6aa2078183194263",
+        "source_fact:v1:1a2bb7bd4b8d520850e553dd171f1cb33c76084ece7c221da38197358821fc66",
+        "source_fact:v1:1d81b9afb90c1609eba4053af2c25137b89d4d355272c8142e432847b0aee53a",
+        "source_fact:v1:36a17d22a1671857d40dfb1e7756edee5c1fee58d2603918c0c40a073a129083",
+        "source_fact:v1:492af0b567cf459988c953dd576de3306d4756c24e0a99ab4f7608cf1fd188fc",
+        "source_fact:v1:4cc38b8e4246235ce925d26e8ae57410cf3acaf847fc43ee6e63f0ee9d9b338d",
+        "source_fact:v1:78db2d61707eed0a36b946cfcd403e08a32fcdaa42d28ad7c202f000e7635b33",
+        "source_fact:v1:8f9ebb5e2e888028629789f8140f212630d83900cda1565f43f113eb371c2fbe",
+        "source_fact:v1:afd21902f13373e12cab6d17b461080f96a9422294f9b2a05d7bb607f2807822",
+        "source_fact:v1:e0d76979b342806663cd5478d45c6f956b70253c967138b7ba4bf7cea53fd4aa",
+        "source_fact:v1:fa219bc81bffc07d9e3faac81635b69ddbd5a4790f74ded0fa67d8603edd4347"
+      ],
+      "source_published_kst": "2026-10-12T17:00+09:00",
+      "source_title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진",
+      "telegram_core_fact": "기존 로봇을 해체해 활용할 수 있는 부품에 추가 설계를 적용하는 방안을 검토하고 있으며, 향후 공급 과정에서 규제가 걸림돌이 되지 않도록 선제적으로 승인 절차를 준비하고 있다.",
+      "title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진"
     },
     "source_fact:4f4f29ca6313002dcd7cc12b": {
       "first_seen_kst": "2026-10-12T06:42:49+09:00",
@@ -361828,6 +362868,32 @@
       "telegram_core_fact": "LG전자는 이번 계약에 따라 북미에서 구축되는 여러 AIDC에 총 5GW 고효율 칠러를 순차적으로 공급한다.",
       "title": "계약 한방에 수년치 먹거리 확보…삼성·LG, ‘AIDC 칠러’서 기회"
     },
+    "source_fact:9d1cdd020005b660bc046019": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012169500109",
+      "source": "연합뉴스",
+      "source_body_digest": "153c464fed3491cde8f24e8280eb4fc1bd358b696617509a5029c8c1140c0af1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a91b90f91402a2a55b06b243c06e8c5bf2adb8d991f56baac765a6a07449695",
+      "source_fact_keys": [
+        "source_fact:v1:278b5e7f1fb5670ece15eef0e733b5d3657f79ee00968678ca008400539a1a95",
+        "source_fact:v1:27953ff05d1050c9a9ddfdfb61d54581ea1ad5fce2a65f7b2654c680f1230d61",
+        "source_fact:v1:987f49f1e5c4bd650aa47c9c4c6e6fced792cd5c801a8d29ab3934ec84363802",
+        "source_fact:v1:a0be4d176be20b581b9ef5eabb689f3a77301898ba71f4dfd40ab2310b68ccb1",
+        "source_fact:v1:abc37e0cf394da2951100be704fdff0970c7ef97f3a40043cd6b8b086e3b964d",
+        "source_fact:v1:b48b57bc25c99edf3c694fac301010b31957258956288e5db05491e7fbbc9315",
+        "source_fact:v1:ef5c4bad803222c560ef3e52ad6ce38c13777f8d4e7c71bf693212525f4cc325",
+        "source_fact:v1:f85b61cd61e34ab1016c7ae2522458a924620edbd8c3deac16f755f61535b3bb"
+      ],
+      "source_published_kst": "2026-10-12T19:06+09:00",
+      "source_title": "젤렌스키 \"러, 우크라 가스시설 공격…에너지 휴전 위반\" | 연합뉴스",
+      "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령은 12일(현지시간) 러시아가 밤새 우크라이나의 가스시설을 공격했다며 휴전에 동의하지 않으면 대응에 나설 것이라고 경고했다. 젤렌스키 대통령은 \"일반 주유소를 겨냥한 러시아의 공격도 있었다\"며 \"도널드 트럼프 미국 대통령이 발표한 에너지 휴전을 러시아가 위반한 사례들\"이라고 지적했다.",
+      "title": "젤렌스키 \"러, 우크라 가스시설 공격…에너지 휴전 위반\" | 연합뉴스"
+    },
     "source_fact:9d21961f8f5af7ea3ab63f2f": {
       "first_seen_kst": "2026-10-11T16:16:50+09:00",
       "lanes": {
@@ -363714,6 +364780,27 @@
       "source_published_kst": "2026-10-07T10:30+09:00",
       "title": "홍지선 국토장관 \"주택 공급 속도 높인다\"⋯연내 신규택지 7.3만 가구+α 발표 [국감]"
     },
+    "source_fact:9efd3cffa7a68718f94827cd": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.etnews.com/20261012000152",
+      "source": "전자신문",
+      "source_body_digest": "dbba3f581de8bfb3a684798a771bd2209bebab513283eda0daad78c209e8fbe7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dd35f428f529a65d3017b48edff49c74ee235ccaf35f404d78aa96033608b686",
+      "source_fact_keys": [
+        "source_fact:v1:1f85537e19396e5abc986511b9a8f94fe291a5645ca34d8399e38f55c837dec7",
+        "source_fact:v1:3f3ae2ce93c0132fe8eba57fdcf5bf61f0aff616115f0a75c399e30fb80a8766",
+        "source_fact:v1:e1f8e96cc832131f387c83de416c34f2d62b72fd00f3adb110a4d6f0c4d8ff3f"
+      ],
+      "source_published_kst": "2026-10-12T11:15+09:00",
+      "source_title": "네오에이아이클라우드, 포항 AI 데이터센터 6,000억원 규모 자금조달 완료",
+      "telegram_core_fact": "AI 인프라 전문기업 네오에이아이클라우드가 경북 포항에서 추진 중인 AI 전용 데이터센터 개발사업에 필요한 총 6,000억 원의 자금조달을 최종 마무리했다.",
+      "title": "네오에이아이클라우드, 포항 AI 데이터센터 6,000억원 규모 자금조달 완료"
+    },
     "source_fact:9eff1c412650e9041002246b": {
       "first_seen_kst": "2026-10-11T18:15:28+09:00",
       "lanes": {
@@ -365128,6 +366215,35 @@
       "source_title": "\"미 검찰, 베네수 마두로 '미국인 고문 혐의' 추가 기소 예정\"",
       "telegram_core_fact": "CNN에 따르면 당시 마두로 정권은 미국인 12명 이상을 억류했고, 미국 정부는 베네수엘라가 금융 제재 완화 등의 양보를 얻어내고자 미국인을 억류하고 고문했다고 비난해 왔다.",
       "title": "\"미 검찰, 베네수 마두로 '미국인 고문 혐의' 추가 기소 예정\""
+    },
+    "source_fact:a0a229b216586649546e9202": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.etnews.com/20261012000251",
+      "source": "전자신문",
+      "source_body_digest": "7ae738905fe20b77161d56580b06d0f1f75edda4f4ef2eb94bd7a99c6ca4ff77",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e0363632d10f31661fbcad564e3805ad8465b385a90051ba5fd3616f85bb7541",
+      "source_fact_keys": [
+        "source_fact:v1:14dbc5a84ee2d2af9f06c8b9f0cb9ab9b743ea280ab3b4ab6aa2078183194263",
+        "source_fact:v1:1a2bb7bd4b8d520850e553dd171f1cb33c76084ece7c221da38197358821fc66",
+        "source_fact:v1:1d81b9afb90c1609eba4053af2c25137b89d4d355272c8142e432847b0aee53a",
+        "source_fact:v1:36a17d22a1671857d40dfb1e7756edee5c1fee58d2603918c0c40a073a129083",
+        "source_fact:v1:492af0b567cf459988c953dd576de3306d4756c24e0a99ab4f7608cf1fd188fc",
+        "source_fact:v1:4cc38b8e4246235ce925d26e8ae57410cf3acaf847fc43ee6e63f0ee9d9b338d",
+        "source_fact:v1:78db2d61707eed0a36b946cfcd403e08a32fcdaa42d28ad7c202f000e7635b33",
+        "source_fact:v1:8f9ebb5e2e888028629789f8140f212630d83900cda1565f43f113eb371c2fbe",
+        "source_fact:v1:afd21902f13373e12cab6d17b461080f96a9422294f9b2a05d7bb607f2807822",
+        "source_fact:v1:e0d76979b342806663cd5478d45c6f956b70253c967138b7ba4bf7cea53fd4aa",
+        "source_fact:v1:fa219bc81bffc07d9e3faac81635b69ddbd5a4790f74ded0fa67d8603edd4347"
+      ],
+      "source_published_kst": "2026-10-12T17:00+09:00",
+      "source_title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진",
+      "telegram_core_fact": "기존 로봇을 해체해 활용할 수 있는 부품에 추가 설계를 적용하는 방안을 검토하고 있으며, 향후 공급 과정에서 규제가 걸림돌이 되지 않도록 선제적으로 승인 절차를 준비하고 있다.",
+      "title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진"
     },
     "source_fact:a0a5545fcf63e9722133fe81": {
       "first_seen_kst": "2026-10-07T09:44:16+09:00",
@@ -367160,6 +368276,28 @@
       "source_title": "폐배터리서 리튬 캔다…웰크론한텍, ‘이차전지 자원회수’ 사업 확장",
       "telegram_core_fact": "실제 웰크론한텍 중국법인은 현지 주요 리튬이온배터리 분리막 생산시설을 대상으로 총 4건의 에너지 설비 프로젝트를 따내며 올해 3분기 누적 수주액 242억원을 달성했다.",
       "title": "폐배터리서 리튬 캔다…웰크론한텍, ‘이차전지 자원회수’ 사업 확장"
+    },
+    "source_fact:a2b6aab00621a016b958a8e1": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.hankyung.com/article/2026101255626",
+      "source": "한국경제",
+      "source_body_digest": "4db49d57146729b337678bf04bdbc33238fc16f601a8efb1e5db3ab831be4c69",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fe09e8078cf4ed38351293241d2700e5827b9c303ae2eea0172f36e5ad7ea0cf",
+      "source_fact_keys": [
+        "source_fact:v1:17e3e1679dd2657e7ce00ce9bb26c855511c37bdfcc24a238b16aa4522bb23c2",
+        "source_fact:v1:1eb4d55d6bddbeed299fcdc90b1e543ae450512c7c1e141aebdd8c3e1827b44b",
+        "source_fact:v1:289d263a3ba7a478f1e2eea7375aed28875025e9fbdf59a637e47b8525850084",
+        "source_fact:v1:55c49c941fbc885ec9bdc520c2fb423832a237f0fca230ed75e3265cd50d2e19"
+      ],
+      "source_published_kst": "2026-10-12T10:08+09:00",
+      "source_title": "효성중공업, 3분기 실적 눈높이 하향에 6%대 약세",
+      "telegram_core_fact": "한화투자증권은 효성중공업의 3분기 매출액을 전년비 6.4% 늘어난 1조7277억원, 영업이익은 32.9% 증가한 2920억원으로 추정하며 시장 컨센서스를 밑돌 것으로 전망했다.",
+      "title": "효성중공업, 3분기 실적 눈높이 하향에 6%대 약세"
     },
     "source_fact:a2c204021efaf09594b4b948": {
       "first_seen_kst": "2026-10-11T13:18:03+09:00",
@@ -373246,6 +374384,26 @@
       "telegram_core_fact": "강유정 청와대 수석대변인은 7일 서면브리핑을 내고 \"우리 정부는 러시아의 우크라이나 침공 이후 국제 사회와 긴밀히 공조, 대러 제재와 수출통제를 일관되게 이행해 왔다. 이러한 우리 정부의 기본 입장에는 변함이 없다\"며 이같이 밝혔다.",
       "title": "靑, 우크라 '러 석유제품 공급' 주장에 \"사실과 다르고 부적절\""
     },
+    "source_fact:a9f5d6b5e08b28cf6525baa9": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.hankyung.com/article/2026101268781",
+      "source": "한국경제",
+      "source_body_digest": "c2dec739b8d533a92cfc06391168b790ec3a0e9bd9907d786b1acfa0b92f1c25",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d10512fb77b1aa9d6e0fbed36f1613503c7b5a6c3f195a21b3eb557e8acdaa05",
+      "source_fact_keys": [
+        "source_fact:v1:285087f77f35f410a94cf6d4bd3aad2dd8dcff92574b2d1f7a1322ed728c91aa",
+        "source_fact:v1:d2c593639f07c7ddc735af720f33dd1a3fad14bdb426a8ede6dfbe9c3dfee761"
+      ],
+      "source_published_kst": "2026-10-12T19:08+09:00",
+      "source_title": "알테오젠 \"실탄 6300억, 새 기술 도입에 투자\"",
+      "telegram_core_fact": "알테오젠은 최근 국민성장펀드 출자금을 포함한 스카이레이크 펀드에서 총 2000억원의 투자를 유치하기로 했다. 발행을 완료하면 기존에 보유한 현금성 자산 4300억원과 합쳐 총 6300억원의 투자 재원을 확보하게 된다.",
+      "title": "알테오젠 \"실탄 6300억, 새 기술 도입에 투자\""
+    },
     "source_fact:a9fce40efc28d87671850f3e": {
       "first_seen_kst": "2026-10-08T13:46:05+09:00",
       "lanes": {
@@ -375820,6 +376978,35 @@
       "source_title": "국제유가, 美 멕시코만 원유 생산 차질 속 상승…WTI 0.39%↑ | 연합뉴스",
       "telegram_core_fact": "이날 뉴욕상업거래소에서 11월 인도분 서부텍사스산원유(WTI) 선물 종가는 전장보다 0.36달러(0.39%) 상승한 배럴당 91.85달러로 마감했다.",
       "title": "국제유가, 美 멕시코만 원유 생산 차질 속 상승…WTI 0.39%↑ | 연합뉴스"
+    },
+    "source_fact:acbfce8c76f9e864d86bde22": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.etnews.com/20261012000251",
+      "source": "전자신문",
+      "source_body_digest": "7ae738905fe20b77161d56580b06d0f1f75edda4f4ef2eb94bd7a99c6ca4ff77",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e0363632d10f31661fbcad564e3805ad8465b385a90051ba5fd3616f85bb7541",
+      "source_fact_keys": [
+        "source_fact:v1:14dbc5a84ee2d2af9f06c8b9f0cb9ab9b743ea280ab3b4ab6aa2078183194263",
+        "source_fact:v1:1a2bb7bd4b8d520850e553dd171f1cb33c76084ece7c221da38197358821fc66",
+        "source_fact:v1:1d81b9afb90c1609eba4053af2c25137b89d4d355272c8142e432847b0aee53a",
+        "source_fact:v1:36a17d22a1671857d40dfb1e7756edee5c1fee58d2603918c0c40a073a129083",
+        "source_fact:v1:492af0b567cf459988c953dd576de3306d4756c24e0a99ab4f7608cf1fd188fc",
+        "source_fact:v1:4cc38b8e4246235ce925d26e8ae57410cf3acaf847fc43ee6e63f0ee9d9b338d",
+        "source_fact:v1:78db2d61707eed0a36b946cfcd403e08a32fcdaa42d28ad7c202f000e7635b33",
+        "source_fact:v1:8f9ebb5e2e888028629789f8140f212630d83900cda1565f43f113eb371c2fbe",
+        "source_fact:v1:afd21902f13373e12cab6d17b461080f96a9422294f9b2a05d7bb607f2807822",
+        "source_fact:v1:e0d76979b342806663cd5478d45c6f956b70253c967138b7ba4bf7cea53fd4aa",
+        "source_fact:v1:fa219bc81bffc07d9e3faac81635b69ddbd5a4790f74ded0fa67d8603edd4347"
+      ],
+      "source_published_kst": "2026-10-12T17:00+09:00",
+      "source_title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진",
+      "telegram_core_fact": "기존 로봇을 해체해 활용할 수 있는 부품에 추가 설계를 적용하는 방안을 검토하고 있으며, 향후 공급 과정에서 규제가 걸림돌이 되지 않도록 선제적으로 승인 절차를 준비하고 있다.",
+      "title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진"
     },
     "source_fact:accb80bc23cf7027348d968e": {
       "first_seen_kst": "2026-10-08T19:27:03+09:00",
@@ -382760,6 +383947,32 @@
       "source_published_kst": "2026-10-06T10:19+09:00",
       "title": "김정관 장관 “1600조 지방투자 본격화…2030년 AI팩토리 500개 구축”"
     },
+    "source_fact:b4970c5addf11131ba17957a": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012169500109",
+      "source": "연합뉴스",
+      "source_body_digest": "153c464fed3491cde8f24e8280eb4fc1bd358b696617509a5029c8c1140c0af1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a91b90f91402a2a55b06b243c06e8c5bf2adb8d991f56baac765a6a07449695",
+      "source_fact_keys": [
+        "source_fact:v1:278b5e7f1fb5670ece15eef0e733b5d3657f79ee00968678ca008400539a1a95",
+        "source_fact:v1:27953ff05d1050c9a9ddfdfb61d54581ea1ad5fce2a65f7b2654c680f1230d61",
+        "source_fact:v1:987f49f1e5c4bd650aa47c9c4c6e6fced792cd5c801a8d29ab3934ec84363802",
+        "source_fact:v1:a0be4d176be20b581b9ef5eabb689f3a77301898ba71f4dfd40ab2310b68ccb1",
+        "source_fact:v1:abc37e0cf394da2951100be704fdff0970c7ef97f3a40043cd6b8b086e3b964d",
+        "source_fact:v1:b48b57bc25c99edf3c694fac301010b31957258956288e5db05491e7fbbc9315",
+        "source_fact:v1:ef5c4bad803222c560ef3e52ad6ce38c13777f8d4e7c71bf693212525f4cc325",
+        "source_fact:v1:f85b61cd61e34ab1016c7ae2522458a924620edbd8c3deac16f755f61535b3bb"
+      ],
+      "source_published_kst": "2026-10-12T19:06+09:00",
+      "source_title": "젤렌스키 \"러, 우크라 가스시설 공격…에너지 휴전 위반\" | 연합뉴스",
+      "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령은 12일(현지시간) 러시아가 밤새 우크라이나의 가스시설을 공격했다며 휴전에 동의하지 않으면 대응에 나설 것이라고 경고했다. 젤렌스키 대통령은 \"일반 주유소를 겨냥한 러시아의 공격도 있었다\"며 \"도널드 트럼프 미국 대통령이 발표한 에너지 휴전을 러시아가 위반한 사례들\"이라고 지적했다.",
+      "title": "젤렌스키 \"러, 우크라 가스시설 공격…에너지 휴전 위반\" | 연합뉴스"
+    },
     "source_fact:b49a68b79417678e75a8cc82": {
       "first_seen_kst": "2026-10-12T08:03:02+09:00",
       "lanes": {
@@ -389052,6 +390265,32 @@
       "source_title": "8월 유로존 산업생산 2.0%↑…\"건설 호조에 17개월 만에 최대폭\"",
       "telegram_core_fact": "RTT 뉴스와 마켓워치, dpa 통신에 따르면 독일 연방통계청은 7일 2026년 8월 산업생산이 계절 조정치로 전월 대비 2.0% 증대했다고 발표했다. 유럽 최대 경제국 독일의 8월 산업생산은 건설과 기계·설비 생산 호조에 힘입어 17개월 만에 가장 큰 폭으로 증가했다.",
       "title": "8월 유로존 산업생산 2.0%↑…\"건설 호조에 17개월 만에 최대폭\""
+    },
+    "source_fact:bc3aff926a16b03fecd242d5": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012169500109",
+      "source": "연합뉴스",
+      "source_body_digest": "153c464fed3491cde8f24e8280eb4fc1bd358b696617509a5029c8c1140c0af1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a91b90f91402a2a55b06b243c06e8c5bf2adb8d991f56baac765a6a07449695",
+      "source_fact_keys": [
+        "source_fact:v1:278b5e7f1fb5670ece15eef0e733b5d3657f79ee00968678ca008400539a1a95",
+        "source_fact:v1:27953ff05d1050c9a9ddfdfb61d54581ea1ad5fce2a65f7b2654c680f1230d61",
+        "source_fact:v1:987f49f1e5c4bd650aa47c9c4c6e6fced792cd5c801a8d29ab3934ec84363802",
+        "source_fact:v1:a0be4d176be20b581b9ef5eabb689f3a77301898ba71f4dfd40ab2310b68ccb1",
+        "source_fact:v1:abc37e0cf394da2951100be704fdff0970c7ef97f3a40043cd6b8b086e3b964d",
+        "source_fact:v1:b48b57bc25c99edf3c694fac301010b31957258956288e5db05491e7fbbc9315",
+        "source_fact:v1:ef5c4bad803222c560ef3e52ad6ce38c13777f8d4e7c71bf693212525f4cc325",
+        "source_fact:v1:f85b61cd61e34ab1016c7ae2522458a924620edbd8c3deac16f755f61535b3bb"
+      ],
+      "source_published_kst": "2026-10-12T19:06+09:00",
+      "source_title": "젤렌스키 \"러, 우크라 가스시설 공격…에너지 휴전 위반\" | 연합뉴스",
+      "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령은 12일(현지시간) 러시아가 밤새 우크라이나의 가스시설을 공격했다며 휴전에 동의하지 않으면 대응에 나설 것이라고 경고했다. 젤렌스키 대통령은 \"일반 주유소를 겨냥한 러시아의 공격도 있었다\"며 \"도널드 트럼프 미국 대통령이 발표한 에너지 휴전을 러시아가 위반한 사례들\"이라고 지적했다.",
+      "title": "젤렌스키 \"러, 우크라 가스시설 공격…에너지 휴전 위반\" | 연합뉴스"
     },
     "source_fact:bc430315ec928730fc21b51e": {
       "first_seen_kst": "2026-10-12T15:43:01+09:00",
@@ -416540,6 +417779,32 @@
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "\"관세 300%\"...벼랑 끝 트럼프, 한국 쥐어짜서 현금 지원 공약 '펑펑'"
     },
+    "source_fact:da99104d474e5ef855e424f3": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012169500109",
+      "source": "연합뉴스",
+      "source_body_digest": "153c464fed3491cde8f24e8280eb4fc1bd358b696617509a5029c8c1140c0af1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a91b90f91402a2a55b06b243c06e8c5bf2adb8d991f56baac765a6a07449695",
+      "source_fact_keys": [
+        "source_fact:v1:278b5e7f1fb5670ece15eef0e733b5d3657f79ee00968678ca008400539a1a95",
+        "source_fact:v1:27953ff05d1050c9a9ddfdfb61d54581ea1ad5fce2a65f7b2654c680f1230d61",
+        "source_fact:v1:987f49f1e5c4bd650aa47c9c4c6e6fced792cd5c801a8d29ab3934ec84363802",
+        "source_fact:v1:a0be4d176be20b581b9ef5eabb689f3a77301898ba71f4dfd40ab2310b68ccb1",
+        "source_fact:v1:abc37e0cf394da2951100be704fdff0970c7ef97f3a40043cd6b8b086e3b964d",
+        "source_fact:v1:b48b57bc25c99edf3c694fac301010b31957258956288e5db05491e7fbbc9315",
+        "source_fact:v1:ef5c4bad803222c560ef3e52ad6ce38c13777f8d4e7c71bf693212525f4cc325",
+        "source_fact:v1:f85b61cd61e34ab1016c7ae2522458a924620edbd8c3deac16f755f61535b3bb"
+      ],
+      "source_published_kst": "2026-10-12T19:06+09:00",
+      "source_title": "젤렌스키 \"러, 우크라 가스시설 공격…에너지 휴전 위반\" | 연합뉴스",
+      "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령은 12일(현지시간) 러시아가 밤새 우크라이나의 가스시설을 공격했다며 휴전에 동의하지 않으면 대응에 나설 것이라고 경고했다. 젤렌스키 대통령은 \"일반 주유소를 겨냥한 러시아의 공격도 있었다\"며 \"도널드 트럼프 미국 대통령이 발표한 에너지 휴전을 러시아가 위반한 사례들\"이라고 지적했다.",
+      "title": "젤렌스키 \"러, 우크라 가스시설 공격…에너지 휴전 위반\" | 연합뉴스"
+    },
     "source_fact:daa3f388bcc7975465adcf79": {
       "first_seen_kst": "2026-10-08T07:27:34+09:00",
       "lanes": {
@@ -417884,6 +419149,27 @@
       "telegram_core_fact": "[파이낸셜뉴스] 국민연금 기금 적립액이 한 달 만에 181조 원가량 감소하며 국내 증시의 향후 수급 향방에 비상이 걸렸다. 실제로 삼성전자와 SK하이닉스의 55조 원 규모 자사주 매입은 각각 97%, 83% 진행돼 사실상 마무리 단계다.",
       "title": "\"한 달 만에 181조가 증발했다\"…국민연금 쇼크, 개미들 떨게 만든 이유"
     },
+    "source_fact:dc3c7bc5efd678de08636040": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.etnews.com/20261012000152",
+      "source": "전자신문",
+      "source_body_digest": "dbba3f581de8bfb3a684798a771bd2209bebab513283eda0daad78c209e8fbe7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dd35f428f529a65d3017b48edff49c74ee235ccaf35f404d78aa96033608b686",
+      "source_fact_keys": [
+        "source_fact:v1:1f85537e19396e5abc986511b9a8f94fe291a5645ca34d8399e38f55c837dec7",
+        "source_fact:v1:3f3ae2ce93c0132fe8eba57fdcf5bf61f0aff616115f0a75c399e30fb80a8766",
+        "source_fact:v1:e1f8e96cc832131f387c83de416c34f2d62b72fd00f3adb110a4d6f0c4d8ff3f"
+      ],
+      "source_published_kst": "2026-10-12T11:15+09:00",
+      "source_title": "네오에이아이클라우드, 포항 AI 데이터센터 6,000억원 규모 자금조달 완료",
+      "telegram_core_fact": "AI 인프라 전문기업 네오에이아이클라우드가 경북 포항에서 추진 중인 AI 전용 데이터센터 개발사업에 필요한 총 6,000억 원의 자금조달을 최종 마무리했다.",
+      "title": "네오에이아이클라우드, 포항 AI 데이터센터 6,000억원 규모 자금조달 완료"
+    },
     "source_fact:dc44cf09f62ed39a1a98d627": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
@@ -419125,6 +420411,35 @@
       ],
       "source_published_kst": "2026-10-07T10:55+09:00",
       "title": "'적자 전락'에서 매출 8조원 돌파 기업으로…日 아식스의 부활 | 연합뉴스"
+    },
+    "source_fact:ddbfc1ce7b0754b5b4ce5624": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.etnews.com/20261012000251",
+      "source": "전자신문",
+      "source_body_digest": "7ae738905fe20b77161d56580b06d0f1f75edda4f4ef2eb94bd7a99c6ca4ff77",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e0363632d10f31661fbcad564e3805ad8465b385a90051ba5fd3616f85bb7541",
+      "source_fact_keys": [
+        "source_fact:v1:14dbc5a84ee2d2af9f06c8b9f0cb9ab9b743ea280ab3b4ab6aa2078183194263",
+        "source_fact:v1:1a2bb7bd4b8d520850e553dd171f1cb33c76084ece7c221da38197358821fc66",
+        "source_fact:v1:1d81b9afb90c1609eba4053af2c25137b89d4d355272c8142e432847b0aee53a",
+        "source_fact:v1:36a17d22a1671857d40dfb1e7756edee5c1fee58d2603918c0c40a073a129083",
+        "source_fact:v1:492af0b567cf459988c953dd576de3306d4756c24e0a99ab4f7608cf1fd188fc",
+        "source_fact:v1:4cc38b8e4246235ce925d26e8ae57410cf3acaf847fc43ee6e63f0ee9d9b338d",
+        "source_fact:v1:78db2d61707eed0a36b946cfcd403e08a32fcdaa42d28ad7c202f000e7635b33",
+        "source_fact:v1:8f9ebb5e2e888028629789f8140f212630d83900cda1565f43f113eb371c2fbe",
+        "source_fact:v1:afd21902f13373e12cab6d17b461080f96a9422294f9b2a05d7bb607f2807822",
+        "source_fact:v1:e0d76979b342806663cd5478d45c6f956b70253c967138b7ba4bf7cea53fd4aa",
+        "source_fact:v1:fa219bc81bffc07d9e3faac81635b69ddbd5a4790f74ded0fa67d8603edd4347"
+      ],
+      "source_published_kst": "2026-10-12T17:00+09:00",
+      "source_title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진",
+      "telegram_core_fact": "기존 로봇을 해체해 활용할 수 있는 부품에 추가 설계를 적용하는 방안을 검토하고 있으며, 향후 공급 과정에서 규제가 걸림돌이 되지 않도록 선제적으로 승인 절차를 준비하고 있다.",
+      "title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진"
     },
     "source_fact:ddc26f579d41fcfda802c2b3": {
       "first_seen_kst": "2026-10-08T06:57:59+09:00",
@@ -420687,6 +422002,28 @@
       ],
       "source_published_kst": "2026-10-06T23:31+09:00",
       "title": "우크라, '한국의 러 석유공급' 기사 인용해 韓 비판(종합) | 연합뉴스"
+    },
+    "source_fact:df7af08e847c8b4243732209": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.hankyung.com/article/2026101255626",
+      "source": "한국경제",
+      "source_body_digest": "4db49d57146729b337678bf04bdbc33238fc16f601a8efb1e5db3ab831be4c69",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fe09e8078cf4ed38351293241d2700e5827b9c303ae2eea0172f36e5ad7ea0cf",
+      "source_fact_keys": [
+        "source_fact:v1:17e3e1679dd2657e7ce00ce9bb26c855511c37bdfcc24a238b16aa4522bb23c2",
+        "source_fact:v1:1eb4d55d6bddbeed299fcdc90b1e543ae450512c7c1e141aebdd8c3e1827b44b",
+        "source_fact:v1:289d263a3ba7a478f1e2eea7375aed28875025e9fbdf59a637e47b8525850084",
+        "source_fact:v1:55c49c941fbc885ec9bdc520c2fb423832a237f0fca230ed75e3265cd50d2e19"
+      ],
+      "source_published_kst": "2026-10-12T10:08+09:00",
+      "source_title": "효성중공업, 3분기 실적 눈높이 하향에 6%대 약세",
+      "telegram_core_fact": "한화투자증권은 효성중공업의 3분기 매출액을 전년비 6.4% 늘어난 1조7277억원, 영업이익은 32.9% 증가한 2920억원으로 추정하며 시장 컨센서스를 밑돌 것으로 전망했다.",
+      "title": "효성중공업, 3분기 실적 눈높이 하향에 6%대 약세"
     },
     "source_fact:df7e4566d773f38235eac78b": {
       "first_seen_kst": "2026-10-09T22:37:15+09:00",
@@ -439423,6 +440760,28 @@
       "telegram_core_fact": "해상 봉쇄망을 뚫고 이란산 원유를 밀수출하던 유령선들을 대거 제재 명단에 올리면서 이란의 경제적 숨통을 완전히 끊겠다는 구상이다.",
       "title": "유령선 17척의 비밀…미국 ‘경제적 고립 작전’에 이란 숨통 막히나 [밀리터리노트]"
     },
+    "source_fact:f41fc255e87d74fa389b7575": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.hankyung.com/article/2026101255626",
+      "source": "한국경제",
+      "source_body_digest": "4db49d57146729b337678bf04bdbc33238fc16f601a8efb1e5db3ab831be4c69",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fe09e8078cf4ed38351293241d2700e5827b9c303ae2eea0172f36e5ad7ea0cf",
+      "source_fact_keys": [
+        "source_fact:v1:17e3e1679dd2657e7ce00ce9bb26c855511c37bdfcc24a238b16aa4522bb23c2",
+        "source_fact:v1:1eb4d55d6bddbeed299fcdc90b1e543ae450512c7c1e141aebdd8c3e1827b44b",
+        "source_fact:v1:289d263a3ba7a478f1e2eea7375aed28875025e9fbdf59a637e47b8525850084",
+        "source_fact:v1:55c49c941fbc885ec9bdc520c2fb423832a237f0fca230ed75e3265cd50d2e19"
+      ],
+      "source_published_kst": "2026-10-12T10:08+09:00",
+      "source_title": "효성중공업, 3분기 실적 눈높이 하향에 6%대 약세",
+      "telegram_core_fact": "한화투자증권은 효성중공업의 3분기 매출액을 전년비 6.4% 늘어난 1조7277억원, 영업이익은 32.9% 증가한 2920억원으로 추정하며 시장 컨센서스를 밑돌 것으로 전망했다.",
+      "title": "효성중공업, 3분기 실적 눈높이 하향에 6%대 약세"
+    },
     "source_fact:f42035e6b4e258babed9d5f5": {
       "first_seen_kst": "2026-10-07T16:15:21+09:00",
       "lanes": {
@@ -447361,6 +448720,26 @@
       ],
       "source_published_kst": "2026-10-05T03:42+09:00",
       "title": "\"호르무즈 해협서 또 유조선 피격\"…이달에만 최소 4차례 | 연합뉴스"
+    },
+    "source_fact:fdfb45c822a3929a65530652": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.hankyung.com/article/2026101268781",
+      "source": "한국경제",
+      "source_body_digest": "c2dec739b8d533a92cfc06391168b790ec3a0e9bd9907d786b1acfa0b92f1c25",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d10512fb77b1aa9d6e0fbed36f1613503c7b5a6c3f195a21b3eb557e8acdaa05",
+      "source_fact_keys": [
+        "source_fact:v1:285087f77f35f410a94cf6d4bd3aad2dd8dcff92574b2d1f7a1322ed728c91aa",
+        "source_fact:v1:d2c593639f07c7ddc735af720f33dd1a3fad14bdb426a8ede6dfbe9c3dfee761"
+      ],
+      "source_published_kst": "2026-10-12T19:08+09:00",
+      "source_title": "알테오젠 \"실탄 6300억, 새 기술 도입에 투자\"",
+      "telegram_core_fact": "알테오젠은 최근 국민성장펀드 출자금을 포함한 스카이레이크 펀드에서 총 2000억원의 투자를 유치하기로 했다. 발행을 완료하면 기존에 보유한 현금성 자산 4300억원과 합쳐 총 6300억원의 투자 재원을 확보하게 된다.",
+      "title": "알테오젠 \"실탄 6300억, 새 기술 도입에 투자\""
     },
     "source_fact:fe07201e1b7206eb6aac0673": {
       "first_seen_kst": "2026-10-12T20:14:14+09:00",
@@ -465260,6 +466639,25 @@
       "telegram_core_fact": "이번 사명 변경은 비상장사 오르파이 테라퓨틱스(Orphai Therapeutics)와의 합병 완료에 따른 후속 조치다.",
       "title": "퀸스 테라퓨틱스, IRulya로 사명 변경..12일 IRLA 거래 시작"
     },
+    "title:3d689de38d023282f4de3c78": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000021895",
+      "source": "국민일보",
+      "source_body_digest": "8caf4983db13ac2ffce92fd94281494c64cc8a479f448a1d044575d085138ba0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f94d3ea93b6fd1d5fbb3ec150a5854b7e49ef5c48987643a0c425806c76654e6",
+      "source_fact_keys": [
+        "source_fact:v1:e0c2495e77ebcc0ac7a5b081bf6ebd7db593b36c99eb360b072eb385cd79ced8"
+      ],
+      "source_published_kst": "2026-10-12T18:57+09:00",
+      "source_title": "“변압기 대기줄 5년”… 메모리 이어 전력 인프라도 ‘장기계약’이 대세",
+      "telegram_core_fact": "인공지능(AI) 데이터센터 급증과 북미·유럽 등의 노후 전력망 교체 수요가 맞물리면서 글로벌 전력 인프라 시장도 메모리 반도체 분야처럼 ‘공급자 우위’ 구도가 확고해진 영향이다.",
+      "title": "“변압기 대기줄 5년”… 메모리 이어 전력 인프라도 ‘장기계약’이 대세"
+    },
     "title:3d8d8e88dccbfa6ccd1d5b22": {
       "first_seen_kst": "2026-10-02T14:00:40+09:00",
       "lanes": {
@@ -473522,6 +474920,28 @@
       "link": "https://www.newsis.com/view/NISX20261001_0003811534",
       "source": "뉴시스",
       "title": "[올댓차이나] 대만 증시, 韓美 반도체 호조에 0.86%↑ 상승 마감…1주 만에 사상최고 경신"
+    },
+    "title:5cd8641a7f10981015c19711": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.hankyung.com/article/2026101255626",
+      "source": "한국경제",
+      "source_body_digest": "4db49d57146729b337678bf04bdbc33238fc16f601a8efb1e5db3ab831be4c69",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fe09e8078cf4ed38351293241d2700e5827b9c303ae2eea0172f36e5ad7ea0cf",
+      "source_fact_keys": [
+        "source_fact:v1:17e3e1679dd2657e7ce00ce9bb26c855511c37bdfcc24a238b16aa4522bb23c2",
+        "source_fact:v1:1eb4d55d6bddbeed299fcdc90b1e543ae450512c7c1e141aebdd8c3e1827b44b",
+        "source_fact:v1:289d263a3ba7a478f1e2eea7375aed28875025e9fbdf59a637e47b8525850084",
+        "source_fact:v1:55c49c941fbc885ec9bdc520c2fb423832a237f0fca230ed75e3265cd50d2e19"
+      ],
+      "source_published_kst": "2026-10-12T10:08+09:00",
+      "source_title": "효성중공업, 3분기 실적 눈높이 하향에 6%대 약세",
+      "telegram_core_fact": "한화투자증권은 효성중공업의 3분기 매출액을 전년비 6.4% 늘어난 1조7277억원, 영업이익은 32.9% 증가한 2920억원으로 추정하며 시장 컨센서스를 밑돌 것으로 전망했다.",
+      "title": "효성중공업, 3분기 실적 눈높이 하향에 6%대 약세"
     },
     "title:5cf26c767da76cc137688684": {
       "first_seen_kst": "2026-10-08T04:14:15+09:00",
@@ -487621,6 +489041,25 @@
       "source_published_kst": "2026-10-06T16:41+09:00",
       "title": "최수진 의원실 ‘삼성·SK하이닉스 출신 27명 CXMT 이직’ 주장 [국감2026]"
     },
+    "title:94076e0e07e3520669ef072b": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.hankyung.com/article/2026101269241",
+      "source": "한국경제",
+      "source_body_digest": "ca712e859dd9390b6b727ab251d3208196481025e750fddf37cd2e71a1bfbdf7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d4d5922a3944a1e80427c33efde36f56633033e2cbc24b3a4c47f9cb63b17f0",
+      "source_fact_keys": [
+        "source_fact:v1:f1bbfea907b1d3a61e77bdf17686cf959ce6a2a9ff5a316e1fcbd702b8851bea"
+      ],
+      "source_published_kst": "2026-10-12T18:55+09:00",
+      "source_title": "오드리 찰스 \"韓 반도체 생태계 매력적…HBM패키징·초미세공정에 투자\"",
+      "telegram_core_fact": "16단 이상의 고용량 고대역폭메모리(HBM) 개발이 본격화함에 따라 차세대 패키징 신기술을 확보한 기업을 적극 물색할 방침이다.",
+      "title": "오드리 찰스 \"韓 반도체 생태계 매력적…HBM패키징·초미세공정에 투자\""
+    },
     "title:9412e681c4427799da72c260": {
       "first_seen_kst": "2026-09-23T21:31:09+09:00",
       "lanes": {
@@ -496528,6 +497967,32 @@
       "source_published_kst": "2026-10-06T12:58+09:00",
       "title": "전세사기 피해 보증금 3분의 1 최소 보장⋯11월 13일 시행"
     },
+    "title:b5996065625e8278d9620dd0": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012169500109",
+      "source": "연합뉴스",
+      "source_body_digest": "153c464fed3491cde8f24e8280eb4fc1bd358b696617509a5029c8c1140c0af1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a91b90f91402a2a55b06b243c06e8c5bf2adb8d991f56baac765a6a07449695",
+      "source_fact_keys": [
+        "source_fact:v1:278b5e7f1fb5670ece15eef0e733b5d3657f79ee00968678ca008400539a1a95",
+        "source_fact:v1:27953ff05d1050c9a9ddfdfb61d54581ea1ad5fce2a65f7b2654c680f1230d61",
+        "source_fact:v1:987f49f1e5c4bd650aa47c9c4c6e6fced792cd5c801a8d29ab3934ec84363802",
+        "source_fact:v1:a0be4d176be20b581b9ef5eabb689f3a77301898ba71f4dfd40ab2310b68ccb1",
+        "source_fact:v1:abc37e0cf394da2951100be704fdff0970c7ef97f3a40043cd6b8b086e3b964d",
+        "source_fact:v1:b48b57bc25c99edf3c694fac301010b31957258956288e5db05491e7fbbc9315",
+        "source_fact:v1:ef5c4bad803222c560ef3e52ad6ce38c13777f8d4e7c71bf693212525f4cc325",
+        "source_fact:v1:f85b61cd61e34ab1016c7ae2522458a924620edbd8c3deac16f755f61535b3bb"
+      ],
+      "source_published_kst": "2026-10-12T19:06+09:00",
+      "source_title": "젤렌스키 \"러, 우크라 가스시설 공격…에너지 휴전 위반\" | 연합뉴스",
+      "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령은 12일(현지시간) 러시아가 밤새 우크라이나의 가스시설을 공격했다며 휴전에 동의하지 않으면 대응에 나설 것이라고 경고했다. 젤렌스키 대통령은 \"일반 주유소를 겨냥한 러시아의 공격도 있었다\"며 \"도널드 트럼프 미국 대통령이 발표한 에너지 휴전을 러시아가 위반한 사례들\"이라고 지적했다.",
+      "title": "젤렌스키 \"러, 우크라 가스시설 공격…에너지 휴전 위반\" | 연합뉴스"
+    },
     "title:b5c13c5ffa7513ce8ada1941": {
       "first_seen_kst": "2026-09-18T14:40:33+09:00",
       "lanes": {
@@ -503244,6 +504709,26 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=01298886645608984",
       "source": "이데일리",
       "title": "[美특징주]맥코믹, 예상치 웃도는 실적에도 비용 상승 우려에 하락"
+    },
+    "title:d09bd633df464ce2ecc5279b": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.hankyung.com/article/2026101268781",
+      "source": "한국경제",
+      "source_body_digest": "c2dec739b8d533a92cfc06391168b790ec3a0e9bd9907d786b1acfa0b92f1c25",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d10512fb77b1aa9d6e0fbed36f1613503c7b5a6c3f195a21b3eb557e8acdaa05",
+      "source_fact_keys": [
+        "source_fact:v1:285087f77f35f410a94cf6d4bd3aad2dd8dcff92574b2d1f7a1322ed728c91aa",
+        "source_fact:v1:d2c593639f07c7ddc735af720f33dd1a3fad14bdb426a8ede6dfbe9c3dfee761"
+      ],
+      "source_published_kst": "2026-10-12T19:08+09:00",
+      "source_title": "알테오젠 \"실탄 6300억, 새 기술 도입에 투자\"",
+      "telegram_core_fact": "알테오젠은 최근 국민성장펀드 출자금을 포함한 스카이레이크 펀드에서 총 2000억원의 투자를 유치하기로 했다. 발행을 완료하면 기존에 보유한 현금성 자산 4300억원과 합쳐 총 6300억원의 투자 재원을 확보하게 된다.",
+      "title": "알테오젠 \"실탄 6300억, 새 기술 도입에 투자\""
     },
     "title:d0a813feb25fe7d7d8b1f64a": {
       "first_seen_kst": "2026-10-07T18:44:00+09:00",
@@ -510321,6 +511806,27 @@
       "source": "연합뉴스",
       "title": "美 SEC, '토큰 주식' 거래 문턱 낮춘다…24시간 거래 확대되나 | 연합뉴스"
     },
+    "title:ea182e3c46237bba688d9a76": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.etnews.com/20261012000152",
+      "source": "전자신문",
+      "source_body_digest": "dbba3f581de8bfb3a684798a771bd2209bebab513283eda0daad78c209e8fbe7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dd35f428f529a65d3017b48edff49c74ee235ccaf35f404d78aa96033608b686",
+      "source_fact_keys": [
+        "source_fact:v1:1f85537e19396e5abc986511b9a8f94fe291a5645ca34d8399e38f55c837dec7",
+        "source_fact:v1:3f3ae2ce93c0132fe8eba57fdcf5bf61f0aff616115f0a75c399e30fb80a8766",
+        "source_fact:v1:e1f8e96cc832131f387c83de416c34f2d62b72fd00f3adb110a4d6f0c4d8ff3f"
+      ],
+      "source_published_kst": "2026-10-12T11:15+09:00",
+      "source_title": "네오에이아이클라우드, 포항 AI 데이터센터 6,000억원 규모 자금조달 완료",
+      "telegram_core_fact": "AI 인프라 전문기업 네오에이아이클라우드가 경북 포항에서 추진 중인 AI 전용 데이터센터 개발사업에 필요한 총 6,000억 원의 자금조달을 최종 마무리했다.",
+      "title": "네오에이아이클라우드, 포항 AI 데이터센터 6,000억원 규모 자금조달 완료"
+    },
     "title:ea1b53a32153eeac69a4e4cf": {
       "first_seen_kst": "2026-10-06T07:30:15+09:00",
       "lanes": {
@@ -511679,6 +513185,35 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-07T00:14+09:00",
       "title": "\"지금부터 겁먹을 이유 없다\"…미 국채금리 5% 시대, 증시 전망과 취약점"
+    },
+    "title:f070ff4baf60ae87887f7920": {
+      "first_seen_kst": "2026-10-12T21:20:33+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:20:33+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:20:33+09:00",
+      "link": "https://www.etnews.com/20261012000251",
+      "source": "전자신문",
+      "source_body_digest": "7ae738905fe20b77161d56580b06d0f1f75edda4f4ef2eb94bd7a99c6ca4ff77",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e0363632d10f31661fbcad564e3805ad8465b385a90051ba5fd3616f85bb7541",
+      "source_fact_keys": [
+        "source_fact:v1:14dbc5a84ee2d2af9f06c8b9f0cb9ab9b743ea280ab3b4ab6aa2078183194263",
+        "source_fact:v1:1a2bb7bd4b8d520850e553dd171f1cb33c76084ece7c221da38197358821fc66",
+        "source_fact:v1:1d81b9afb90c1609eba4053af2c25137b89d4d355272c8142e432847b0aee53a",
+        "source_fact:v1:36a17d22a1671857d40dfb1e7756edee5c1fee58d2603918c0c40a073a129083",
+        "source_fact:v1:492af0b567cf459988c953dd576de3306d4756c24e0a99ab4f7608cf1fd188fc",
+        "source_fact:v1:4cc38b8e4246235ce925d26e8ae57410cf3acaf847fc43ee6e63f0ee9d9b338d",
+        "source_fact:v1:78db2d61707eed0a36b946cfcd403e08a32fcdaa42d28ad7c202f000e7635b33",
+        "source_fact:v1:8f9ebb5e2e888028629789f8140f212630d83900cda1565f43f113eb371c2fbe",
+        "source_fact:v1:afd21902f13373e12cab6d17b461080f96a9422294f9b2a05d7bb607f2807822",
+        "source_fact:v1:e0d76979b342806663cd5478d45c6f956b70253c967138b7ba4bf7cea53fd4aa",
+        "source_fact:v1:fa219bc81bffc07d9e3faac81635b69ddbd5a4790f74ded0fa67d8603edd4347"
+      ],
+      "source_published_kst": "2026-10-12T17:00+09:00",
+      "source_title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진",
+      "telegram_core_fact": "기존 로봇을 해체해 활용할 수 있는 부품에 추가 설계를 적용하는 방안을 검토하고 있으며, 향후 공급 과정에서 규제가 걸림돌이 되지 않도록 선제적으로 승인 절차를 준비하고 있다.",
+      "title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진"
     },
     "title:f0918d18ced22761d1b1402b": {
       "first_seen_kst": "2026-10-05T15:34:30+09:00",
@@ -515766,5 +517301,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-12T20:59:01+09:00"
+  "updated_at_kst": "2026-10-12T21:20:33+09:00"
 }
