@@ -3,6 +3,7 @@ on:
   schedule:
     # Read-only daily audit: 09:23 KST, no Telegram sends or state mutations.
     - cron: '23 0 * * *'
+  workflow_dispatch:
   pull_request:
     paths:
       - 'scripts/bio_korean_guard.py'
@@ -85,10 +86,23 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           mkdir -p out
-          since=$(date -u -d '36 hours ago' '+%Y-%m-%d')
-          gh api --paginate "repos/${GITHUB_REPOSITORY}/actions/runs?created=%3E%3D${since}&per_page=100" \
-            --jq '.workflow_runs[] | {id,path,event,status,conclusion,created_at,html_url} | @json' \
-            > out/alert_operations_runs.jsonl
+          # GitHub limits filtered workflow-run searches to 1,000 results.
+          # Partition 32 hours into four eight-hour windows to avoid truncation.
+          : > out/alert_operations_runs.jsonl
+          for hours_back in 0 8 16 24; do
+            begin=$(date -u -d "$((hours_back + 8)) hours ago" '+%Y-%m-%dT%H:%M:%SZ')
+            end=$(date -u -d "${hours_back} hours ago" '+%Y-%m-%dT%H:%M:%SZ')
+            window_file="out/alert_operations_window_${hours_back}.jsonl"
+            gh api --paginate "repos/${GITHUB_REPOSITORY}/actions/runs?created=${begin}..${end}&per_page=100" \
+              --jq '.workflow_runs[] | {id,path,event,status,conclusion,created_at,html_url} | @json' \
+              > "$window_file"
+            window_count=$(wc -l < "$window_file")
+            if [ "$window_count" -ge 1000 ]; then
+              echo "::error::Workflow-run query capped at 1,000; audit window requires subdivision."
+              exit 1
+            fi
+            cat "$window_file" >> out/alert_operations_runs.jsonl
+          done
           gh api --paginate "repos/${GITHUB_REPOSITORY}/actions/workflows?per_page=100" \
             --jq '.workflows[] | {id,path,name,state} | @json' \
             > out/alert_operations_workflows.jsonl
