@@ -11809,6 +11809,25 @@
       "telegram_core_fact": "TSMC는 지난달 매출이 5,118억5,700만 대만달러로, 지난해 같은 달보다 54.6% 증가했다고 오늘(8일) 밝혔습니다.",
       "title": "TSMC 9월 매출 전년대비 54.6% 증가…전월보다는 감소"
     },
+    "core:65f55da340df6df62238f281": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003821053",
+      "source": "뉴시스",
+      "source_body_digest": "c6cda8bb486c4ac77300b90f173e85261bd7e32ef287f61a4570091eef189f41",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0033c487a79318a2c673a9ecac239aa15ac45ef2d65da3ddad46c751de661eab",
+      "source_fact_keys": [
+        "source_fact:v1:ce99b6b1a4e79be74ca7686024cb7aa3ef9bc866f2732c979350f708ef0eebfa"
+      ],
+      "source_published_kst": "2026-10-12T14:59+09:00",
+      "source_title": "과천 '중학교 2027 배정 지침' 고시, 과밀·원거리 우려 여전",
+      "telegram_core_fact": "경기 안양과천교육지원청이 2027학년도 과천시 중학교 배정 지침을 고시했으나, 지식정보타운 입주와 재건축 재입주로 인한 특정교 과밀 및 원거리 배정 대란을 막기엔 부족하다는 지적이 나온다.",
+      "title": "과천 '중학교 2027 배정 지침' 고시, 과밀·원거리 우려 여전"
+    },
     "core:665b0b2ccda083170f2cbe0c": {
       "first_seen_kst": "2026-10-12T13:18:48+09:00",
       "lanes": {
@@ -17938,6 +17957,25 @@
       "telegram_core_fact": "블룸버그통신에 따르면 월러 이사는 “경제지표가 예상대로 나온다면 인플레이션을 2% 목표치로 더 신속하게 되돌리기 위해 추가 금리 인상이 필요할 것으로 예상한다”고 말했다.",
       "title": "연준 무살렘·월러 \"추가 금리 인상 필요\"…시점엔 유연성"
     },
+    "core:9dd2271000f59f735ca74e81": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://www.etnews.com/20261012000270",
+      "source": "전자신문",
+      "source_body_digest": "1fa5ff90345b451fc797f881c17b9d5782ddbd92ec51c532ee248a0ee1305d64",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7659a03d046fbb8fadf0750bd1d0f43ad23407fb82d3ea78a37ff51ac2d7948",
+      "source_fact_keys": [
+        "source_fact:v1:6730649955896a039fa1240e75ed60fcc4b92da61df99d86990067fbbffc987c"
+      ],
+      "source_published_kst": "2026-10-12T14:48+09:00",
+      "source_title": "EU “中 하이브리드 車 수입 연간 35만대 제한”",
+      "telegram_core_fact": "EU는 중국산 전기차에 최대 45.3% 관세를 부과하고 있지만, 하이브리드는 기본 10% 관세만 부과해왔다.",
+      "title": "EU “中 하이브리드 車 수입 연간 35만대 제한”"
+    },
     "core:9dda611b2970a113c2e6a6b3": {
       "first_seen_kst": "2026-10-11T17:08:25+09:00",
       "lanes": {
@@ -18593,6 +18631,25 @@
       ],
       "source_published_kst": "2026-10-07T11:25+09:00",
       "title": "블룸버그 “AI 유망 투자처는 대만...코스피는 ‘위험’”"
+    },
+    "core:a2542d38442093e72dacccee": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814584",
+      "source": "뉴시스",
+      "source_body_digest": "a4b66df8409a10263e953b955f160f5e8af7bb0f207b8ac4ebcc36515671aeec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:031199fde4aba48f0614a6d626d4b9ec208897648c3b3ea53aeb0734b2115c79",
+      "source_fact_keys": [
+        "source_fact:v1:2dfbfd6d1b0aead8210af283266e4998f14ca6481251464f85ca9aee7b2898d0"
+      ],
+      "source_published_kst": "2026-10-12T16:04+09:00",
+      "source_title": "더퓨처, 1~3분기 글로벌본부 매출 841%↑…美 공략 가속",
+      "telegram_core_fact": "더퓨처는 올해 1~3분기 글로벌본부 매출이 전년 동기보다 841% 증가했다고 최근 밝혔다.",
+      "title": "더퓨처, 1~3분기 글로벌본부 매출 841%↑…美 공략 가속"
     },
     "core:a262b0238b62185d6bebfdac": {
       "first_seen_kst": "2026-10-12T10:56:38+09:00",
@@ -19273,6 +19330,29 @@
       "source_title": "“트럼프, 젤렌스키가 요청 무시하자 푸틴과 경유 거래 결정“",
       "telegram_core_fact": "트럼프 대통령은 푸틴 대통령과 통화한 뒤 러시아가 미국과 세계 시장에 경유 30만t 이상을 즉시 공급하고 11월에 50만t을, 그 직후엔 100만t을 추가 공급하기로 했다고 발표했습니다.",
       "title": "“트럼프, 젤렌스키가 요청 무시하자 푸틴과 경유 거래 결정“"
+    },
+    "core:a7aa05de034070300a8867b1": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822494",
+      "source": "뉴시스",
+      "source_body_digest": "0cbe26af4759b1a09f444ffedfdcc99deaf865958936b0f3db76aae312c9cd64",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4bf29caba7fbf936906d7bc139cbd6b99b0cc3c4a3206dcef59690951c9740b",
+      "source_fact_keys": [
+        "source_fact:v1:3216ad4bddd12d01037ce114ce65f13eab7c31663c3c2edf8604ac465a801f4b",
+        "source_fact:v1:52f0bbbe50364463331ade4ea8cdb3d1bf770521ec4b85c8b9d4f035b611e7a7",
+        "source_fact:v1:68234b9b97a61f254c8fdaf4db5fc7ec7429ef0953f07184041f39b79ce9e638",
+        "source_fact:v1:812294f9c735e2f511be053c9e99c77f971b21d20de6605b5e32f0fc7fdc22c7",
+        "source_fact:v1:beb9548c4ddc826ffa982ebd097b34b377e911f09466b5e87425d0f89235fc09"
+      ],
+      "source_published_kst": "2026-10-12T15:54+09:00",
+      "source_title": "KB운용 \"RISE 코리아밸류업위클리고정커버드콜 ETF 순자산 4000억 넘어\"",
+      "telegram_core_fact": "KB자산운용이 'RISE 코리아밸류업위클리고정커버드콜 ETF(상장지수펀드)' 순자산이 4000억원을 돌파했다고 12일 밝혔다. 지난달 3000억원을 넘어선 지 한 달 만으로, 최근 4거래일간 개인 순매수액만 약 800억원에 이른다.",
+      "title": "KB운용 \"RISE 코리아밸류업위클리고정커버드콜 ETF 순자산 4000억 넘어\""
     },
     "core:a7b930cb21b7c9e7f55daebe": {
       "first_seen_kst": "2026-10-10T01:06:33+09:00",
@@ -20972,6 +21052,26 @@
       "source_title": "[단독]역대 최대 수익 올렸는데...지급 안 된 국민연금 성과급",
       "telegram_core_fact": "8일 국회 보건복지위원회 소속 더불어민주당 이인영 의원실이 국민연금공단으로부터 제출받은 자료에 따르면 기금운용본부 일반직 75명과 준법지원실 운용직 12명·일반직 9명 등 총 96명의 성과급 21억5400만원이 현재까지 지급되지 않았다.",
       "title": "[단독]역대 최대 수익 올렸는데...지급 안 된 국민연금 성과급"
+    },
+    "core:b6d86997cee3a1bbb0d08843": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172955",
+      "source": "매일경제",
+      "source_body_digest": "43c70f0b93b96681ec34555ef2f62f7848ba561176fcf2741e871a038045c87b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:977ebc054dfba915f89ab0c47e5eea6c5b94d0d98ce8941746209f8dc79d94e8",
+      "source_fact_keys": [
+        "source_fact:v1:ab3cbf04635e90eb8e4740f10d31056dec5c8116c823f5efe5ac5b5c4cce6978",
+        "source_fact:v1:d9520b7a59fedda304d4b99729f564e9a731c984bb592b7e8f90c23ce47a867d"
+      ],
+      "source_published_kst": "2026-10-12T14:49+09:00",
+      "source_title": "방미통위, 불법스팸 부당이익 환수 과징금 신설…CI 유효기간제 추진",
+      "telegram_core_fact": "방송미디어통신위원회가 불법스팸 발송으로 얻은 부당이익을 환수하기 위한 과징금 제도를 신설하고, 통신시장 금지행위 위반에 대한 제재 수위를 대폭 끌어올린다.",
+      "title": "방미통위, 불법스팸 부당이익 환수 과징금 신설…CI 유효기간제 추진"
     },
     "core:b6f71642c68cd1234e8b3367": {
       "first_seen_kst": "2026-10-11T20:44:48+09:00",
@@ -39933,23 +40033,25 @@
     "event:ed9afcaa219ba32c7d3e20ee": {
       "first_seen_kst": "2026-10-12T09:53:29+09:00",
       "lanes": {
-        "live": "2026-10-12T15:02:00+09:00"
+        "live": "2026-10-12T16:08:52+09:00"
       },
-      "last_seen_kst": "2026-10-12T15:02:00+09:00",
-      "link": "https://www.fnnews.com/news/202610121358547857",
-      "source": "파이낸셜뉴스",
-      "source_body_digest": "c6803488c6b1d6419de5e85daac81b8040439f933ed1a600bb14dad41167b432",
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822494",
+      "source": "뉴시스",
+      "source_body_digest": "0cbe26af4759b1a09f444ffedfdcc99deaf865958936b0f3db76aae312c9cd64",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:d106fa0eec888d98ce7629b2a44421f41f5dc6b122561abc8c71bd488712b19f",
+      "source_fact_identity": "source_facts:v1:e4bf29caba7fbf936906d7bc139cbd6b99b0cc3c4a3206dcef59690951c9740b",
       "source_fact_keys": [
-        "source_fact:v1:37b3b455edbdaebb07828ef85c53b8a2061f5aa0cb94f955835ac3229fe9466b",
-        "source_fact:v1:4428db033b5abab09b496a557273f84c44a77e97b888b9a2a3ef31882fd17986",
-        "source_fact:v1:81d3eee34a635043cbebf599ccd19c4f3913a72a9d39de768838ca868b3737d9"
+        "source_fact:v1:3216ad4bddd12d01037ce114ce65f13eab7c31663c3c2edf8604ac465a801f4b",
+        "source_fact:v1:52f0bbbe50364463331ade4ea8cdb3d1bf770521ec4b85c8b9d4f035b611e7a7",
+        "source_fact:v1:68234b9b97a61f254c8fdaf4db5fc7ec7429ef0953f07184041f39b79ce9e638",
+        "source_fact:v1:812294f9c735e2f511be053c9e99c77f971b21d20de6605b5e32f0fc7fdc22c7",
+        "source_fact:v1:beb9548c4ddc826ffa982ebd097b34b377e911f09466b5e87425d0f89235fc09"
       ],
-      "source_published_kst": "2026-10-12T14:27+09:00",
-      "source_title": "코스피, 외국인 매도에 6400선도 위태…코스닥 4%대 동반↓[fn오후시황]",
-      "telegram_core_fact": "[파이낸셜뉴스] 코스피가 외국인의 대규모 순매도 속에 3% 가까이 급락하며 장중 6400선 초반까지 밀렸다.",
-      "title": "코스피, 외국인 매도에 6400선도 위태…코스닥 4%대 동반↓[fn오후시황]"
+      "source_published_kst": "2026-10-12T15:54+09:00",
+      "source_title": "KB운용 \"RISE 코리아밸류업위클리고정커버드콜 ETF 순자산 4000억 넘어\"",
+      "telegram_core_fact": "KB자산운용이 'RISE 코리아밸류업위클리고정커버드콜 ETF(상장지수펀드)' 순자산이 4000억원을 돌파했다고 12일 밝혔다. 지난달 3000억원을 넘어선 지 한 달 만으로, 최근 4거래일간 개인 순매수액만 약 800억원에 이른다.",
+      "title": "KB운용 \"RISE 코리아밸류업위클리고정커버드콜 ETF 순자산 4000억 넘어\""
     },
     "event:ee2445b0912c043ab1270e54": {
       "first_seen_kst": "2026-10-05T15:39:46+09:00",
@@ -54623,6 +54725,25 @@
       "source_published_kst": "2026-10-06T04:10+09:00",
       "title": "'AI 해킹 사태' 은행장 연임에 걸림돌 될까"
     },
+    "fact:53c701c8d7df9a0d1268e3f3": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814584",
+      "source": "뉴시스",
+      "source_body_digest": "a4b66df8409a10263e953b955f160f5e8af7bb0f207b8ac4ebcc36515671aeec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:031199fde4aba48f0614a6d626d4b9ec208897648c3b3ea53aeb0734b2115c79",
+      "source_fact_keys": [
+        "source_fact:v1:2dfbfd6d1b0aead8210af283266e4998f14ca6481251464f85ca9aee7b2898d0"
+      ],
+      "source_published_kst": "2026-10-12T16:04+09:00",
+      "source_title": "더퓨처, 1~3분기 글로벌본부 매출 841%↑…美 공략 가속",
+      "telegram_core_fact": "더퓨처는 올해 1~3분기 글로벌본부 매출이 전년 동기보다 841% 증가했다고 최근 밝혔다.",
+      "title": "더퓨처, 1~3분기 글로벌본부 매출 841%↑…美 공략 가속"
+    },
     "fact:53e5687b0a8bb6b9103cec80": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -63170,6 +63291,26 @@
       "telegram_core_fact": "원/엔 환율이 100엔당 840원대 초반까지 떨어지자 5대 은행의 엔화예금 잔액이 한 달여 사이 6% 가까이 증가했다. 금융권에 따르면 , KB국민·신한·하나·우리·NH농협 등 5대 은행의 엔화예금 잔액은 이달 7일 1조1439억엔으로 집계됐다.",
       "title": "“엔화 지금이 제일 싸” 일본여행 경비 모으기? 엔화예금 한달 새 5000억↑ [머니뭐니]"
     },
+    "fact:86475bc38479e3fbeb190754": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172955",
+      "source": "매일경제",
+      "source_body_digest": "43c70f0b93b96681ec34555ef2f62f7848ba561176fcf2741e871a038045c87b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:977ebc054dfba915f89ab0c47e5eea6c5b94d0d98ce8941746209f8dc79d94e8",
+      "source_fact_keys": [
+        "source_fact:v1:ab3cbf04635e90eb8e4740f10d31056dec5c8116c823f5efe5ac5b5c4cce6978",
+        "source_fact:v1:d9520b7a59fedda304d4b99729f564e9a731c984bb592b7e8f90c23ce47a867d"
+      ],
+      "source_published_kst": "2026-10-12T14:49+09:00",
+      "source_title": "방미통위, 불법스팸 부당이익 환수 과징금 신설…CI 유효기간제 추진",
+      "telegram_core_fact": "방송미디어통신위원회가 불법스팸 발송으로 얻은 부당이익을 환수하기 위한 과징금 제도를 신설하고, 통신시장 금지행위 위반에 대한 제재 수위를 대폭 끌어올린다.",
+      "title": "방미통위, 불법스팸 부당이익 환수 과징금 신설…CI 유효기간제 추진"
+    },
     "fact:86503760f0c0fee5dbb2db86": {
       "first_seen_kst": "2026-10-07T17:47:45+09:00",
       "lanes": {
@@ -70304,6 +70445,25 @@
       "telegram_core_fact": "인공지능(AI) 부품업계의 장기공급계약(LTA) 관행은 결국 오픈AI, 구글, 마이크로소프트(MS) 등 미국 빅테크가 AI 데이터센터 속도전을 벌인 결과로 풀이된다. 문제는 이 중 단 하나만 빠져도 AI 데이터센터 가동 자체가 불가능하다는 점이다.",
       "title": "부품 하나만 없어도 데이터센터 '올스톱'"
     },
+    "fact:ad609a235f5f77eba75bebe7": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://www.etnews.com/20261012000270",
+      "source": "전자신문",
+      "source_body_digest": "1fa5ff90345b451fc797f881c17b9d5782ddbd92ec51c532ee248a0ee1305d64",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7659a03d046fbb8fadf0750bd1d0f43ad23407fb82d3ea78a37ff51ac2d7948",
+      "source_fact_keys": [
+        "source_fact:v1:6730649955896a039fa1240e75ed60fcc4b92da61df99d86990067fbbffc987c"
+      ],
+      "source_published_kst": "2026-10-12T14:48+09:00",
+      "source_title": "EU “中 하이브리드 車 수입 연간 35만대 제한”",
+      "telegram_core_fact": "EU는 중국산 전기차에 최대 45.3% 관세를 부과하고 있지만, 하이브리드는 기본 10% 관세만 부과해왔다.",
+      "title": "EU “中 하이브리드 車 수입 연간 35만대 제한”"
+    },
     "fact:ad65621d03f3e087aeb3b5b3": {
       "first_seen_kst": "2026-10-08T00:24:24+09:00",
       "lanes": {
@@ -70662,6 +70822,29 @@
       "source_title": "한총리 “주택공급과 함께 주거서비스·공동체 운영에도 관심 기울여야”",
       "telegram_core_fact": "참석자들은 주택공급과 돌봄·복지서비스 연계, 공동체 운영 우수사례 확산, 매입임대주택의 권역별 통합관리, 지역 맞춤형 시범사업 등도 논의했다.",
       "title": "한총리 “주택공급과 함께 주거서비스·공동체 운영에도 관심 기울여야”"
+    },
+    "fact:af7fd7828953b2b4d453ff08": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822494",
+      "source": "뉴시스",
+      "source_body_digest": "0cbe26af4759b1a09f444ffedfdcc99deaf865958936b0f3db76aae312c9cd64",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4bf29caba7fbf936906d7bc139cbd6b99b0cc3c4a3206dcef59690951c9740b",
+      "source_fact_keys": [
+        "source_fact:v1:3216ad4bddd12d01037ce114ce65f13eab7c31663c3c2edf8604ac465a801f4b",
+        "source_fact:v1:52f0bbbe50364463331ade4ea8cdb3d1bf770521ec4b85c8b9d4f035b611e7a7",
+        "source_fact:v1:68234b9b97a61f254c8fdaf4db5fc7ec7429ef0953f07184041f39b79ce9e638",
+        "source_fact:v1:812294f9c735e2f511be053c9e99c77f971b21d20de6605b5e32f0fc7fdc22c7",
+        "source_fact:v1:beb9548c4ddc826ffa982ebd097b34b377e911f09466b5e87425d0f89235fc09"
+      ],
+      "source_published_kst": "2026-10-12T15:54+09:00",
+      "source_title": "KB운용 \"RISE 코리아밸류업위클리고정커버드콜 ETF 순자산 4000억 넘어\"",
+      "telegram_core_fact": "KB자산운용이 'RISE 코리아밸류업위클리고정커버드콜 ETF(상장지수펀드)' 순자산이 4000억원을 돌파했다고 12일 밝혔다. 지난달 3000억원을 넘어선 지 한 달 만으로, 최근 4거래일간 개인 순매수액만 약 800억원에 이른다.",
+      "title": "KB운용 \"RISE 코리아밸류업위클리고정커버드콜 ETF 순자산 4000억 넘어\""
     },
     "fact:afda98bcc916bf07f7fe6ef8": {
       "first_seen_kst": "2026-10-09T21:27:46+09:00",
@@ -80438,6 +80621,25 @@
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "산업부 국감 돌입…대미투자·호남 반도체·메가특구 '도마'"
     },
+    "fact:e55c40158fb226f6f045706e": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003821053",
+      "source": "뉴시스",
+      "source_body_digest": "c6cda8bb486c4ac77300b90f173e85261bd7e32ef287f61a4570091eef189f41",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0033c487a79318a2c673a9ecac239aa15ac45ef2d65da3ddad46c751de661eab",
+      "source_fact_keys": [
+        "source_fact:v1:ce99b6b1a4e79be74ca7686024cb7aa3ef9bc866f2732c979350f708ef0eebfa"
+      ],
+      "source_published_kst": "2026-10-12T14:59+09:00",
+      "source_title": "과천 '중학교 2027 배정 지침' 고시, 과밀·원거리 우려 여전",
+      "telegram_core_fact": "경기 안양과천교육지원청이 2027학년도 과천시 중학교 배정 지침을 고시했으나, 지식정보타운 입주와 재건축 재입주로 인한 특정교 과밀 및 원거리 배정 대란을 막기엔 부족하다는 지적이 나온다.",
+      "title": "과천 '중학교 2027 배정 지침' 고시, 과밀·원거리 우려 여전"
+    },
     "fact:e5650703c5da5e8caa4f66dd": {
       "first_seen_kst": "2026-10-11T16:32:27+09:00",
       "lanes": {
@@ -88506,6 +88708,26 @@
       "source_title": "삼전닉스 대신 방산·반도체 테마형으로…변화하는 레버리지 ETF 판도",
       "telegram_core_fact": "31일부터 단일종목 레버리지 ETF 규제가 시행돼 대형 반도체 쏠림 완화와 코스닥 우량 성장주 수급 회복 가능성이 제기됐습니다.",
       "title": "삼전닉스 대신 방산·반도체 테마형으로…변화하는 레버리지 ETF 판도"
+    },
+    "link:0de5a6ba313fdcf2bcd0d220": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172955",
+      "source": "매일경제",
+      "source_body_digest": "43c70f0b93b96681ec34555ef2f62f7848ba561176fcf2741e871a038045c87b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:977ebc054dfba915f89ab0c47e5eea6c5b94d0d98ce8941746209f8dc79d94e8",
+      "source_fact_keys": [
+        "source_fact:v1:ab3cbf04635e90eb8e4740f10d31056dec5c8116c823f5efe5ac5b5c4cce6978",
+        "source_fact:v1:d9520b7a59fedda304d4b99729f564e9a731c984bb592b7e8f90c23ce47a867d"
+      ],
+      "source_published_kst": "2026-10-12T14:49+09:00",
+      "source_title": "방미통위, 불법스팸 부당이익 환수 과징금 신설…CI 유효기간제 추진",
+      "telegram_core_fact": "방송미디어통신위원회가 불법스팸 발송으로 얻은 부당이익을 환수하기 위한 과징금 제도를 신설하고, 통신시장 금지행위 위반에 대한 제재 수위를 대폭 끌어올린다.",
+      "title": "방미통위, 불법스팸 부당이익 환수 과징금 신설…CI 유효기간제 추진"
     },
     "link:0deeae61722471d563faa701": {
       "first_seen_kst": "2026-10-07T16:57:09+09:00",
@@ -98367,6 +98589,25 @@
       "source_published_kst": "2026-10-05T09:00+09:00",
       "title": "반도체 5000억弗·자동차 700억弗…수출 양대품목 연말 희비"
     },
+    "link:324ddf3a4078d032efd2e012": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://www.etnews.com/20261012000270",
+      "source": "전자신문",
+      "source_body_digest": "1fa5ff90345b451fc797f881c17b9d5782ddbd92ec51c532ee248a0ee1305d64",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7659a03d046fbb8fadf0750bd1d0f43ad23407fb82d3ea78a37ff51ac2d7948",
+      "source_fact_keys": [
+        "source_fact:v1:6730649955896a039fa1240e75ed60fcc4b92da61df99d86990067fbbffc987c"
+      ],
+      "source_published_kst": "2026-10-12T14:48+09:00",
+      "source_title": "EU “中 하이브리드 車 수입 연간 35만대 제한”",
+      "telegram_core_fact": "EU는 중국산 전기차에 최대 45.3% 관세를 부과하고 있지만, 하이브리드는 기본 10% 관세만 부과해왔다.",
+      "title": "EU “中 하이브리드 車 수입 연간 35만대 제한”"
+    },
     "link:3250d6884147962e4191a480": {
       "first_seen_kst": "2026-10-07T17:23:27+09:00",
       "lanes": {
@@ -100199,6 +100440,25 @@
       "link": "https://www.etnews.com/20260921000268",
       "source": "전자신문",
       "title": "모태펀드 '글로벌 VC' 출자 1위는 佛 '졸트캐피탈'…유럽계 두각"
+    },
+    "link:3a612309ea6ec512e1d26578": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003821053",
+      "source": "뉴시스",
+      "source_body_digest": "c6cda8bb486c4ac77300b90f173e85261bd7e32ef287f61a4570091eef189f41",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0033c487a79318a2c673a9ecac239aa15ac45ef2d65da3ddad46c751de661eab",
+      "source_fact_keys": [
+        "source_fact:v1:ce99b6b1a4e79be74ca7686024cb7aa3ef9bc866f2732c979350f708ef0eebfa"
+      ],
+      "source_published_kst": "2026-10-12T14:59+09:00",
+      "source_title": "과천 '중학교 2027 배정 지침' 고시, 과밀·원거리 우려 여전",
+      "telegram_core_fact": "경기 안양과천교육지원청이 2027학년도 과천시 중학교 배정 지침을 고시했으나, 지식정보타운 입주와 재건축 재입주로 인한 특정교 과밀 및 원거리 배정 대란을 막기엔 부족하다는 지적이 나온다.",
+      "title": "과천 '중학교 2027 배정 지침' 고시, 과밀·원거리 우려 여전"
     },
     "link:3a893f891b60807f78e82421": {
       "first_seen_kst": "2026-10-08T17:21:28+09:00",
@@ -128059,6 +128319,23 @@
       "source_published_kst": "2026-10-07T05:11+09:00",
       "title": "\"보너스만 3억 넘었는데 올해는 더\"…월가 또 '성과급 잭팟' 예고"
     },
+    "link:a7af2620668d8753ed229860": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03371846645612264",
+      "source": "이데일리",
+      "source_body_digest": "08e1b23ba3bbebd74bf4bda482805770c358d2c1ecd81a15fe4943204d605a09",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T14:56+09:00",
+      "source_title": "씨앤엠, 코스닥 상장예비심사 승인…청구 4주 만",
+      "telegram_core_fact": "씨앤엠은 한국거래소로부터 코스닥시장 상장예비심사 승인을 받았다고 12일 밝혔다.",
+      "title": "씨앤엠, 코스닥 상장예비심사 승인…청구 4주 만"
+    },
     "link:a7f38dc68e117bc67c5a2f10": {
       "first_seen_kst": "2026-10-09T23:27:30+09:00",
       "lanes": {
@@ -139894,6 +140171,23 @@
       "source": "매일경제",
       "title": "삼성전기, `이익 컨센서스 상향 조정이 재가속화될 전망` 증권사 발표에 강세"
     },
+    "link:d5c9be04597cfe5cefdf0d0d": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://biz.heraldcorp.com/article/10899787",
+      "source": "헤럴드경제",
+      "source_body_digest": "6074eb8f26d9b6b861816d25759507cd87b195a1114fc097dafae6b04c4521b5",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T15:05+09:00",
+      "source_title": "경동나비엔, 美 동·서부에 기술거점 구축…현지 생산기지도 추진",
+      "telegram_core_fact": "미국 현지 생산기지 구축도 추진한다.",
+      "title": "경동나비엔, 美 동·서부에 기술거점 구축…현지 생산기지도 추진"
+    },
     "link:d5cdb5717b0a04f6d5c3cdd6": {
       "first_seen_kst": "2026-10-07T19:13:29+09:00",
       "lanes": {
@@ -147186,6 +147480,25 @@
       "telegram_core_fact": "미국 재무부가 대(對)중국 첨단기술 투자 규제 제도 도입 이후 처음으로 위반 사례를 적발해 벌금을 부과했다고 홍콩 사우스차이나모닝포스트(SCMP)가 7일(현지시간) 보도했다.",
       "title": "미국, '對중국 첨단기술 투자규제' 위반 첫 벌금 부과"
     },
+    "link:f3e3453175f646a6f7b9f43e": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814584",
+      "source": "뉴시스",
+      "source_body_digest": "a4b66df8409a10263e953b955f160f5e8af7bb0f207b8ac4ebcc36515671aeec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:031199fde4aba48f0614a6d626d4b9ec208897648c3b3ea53aeb0734b2115c79",
+      "source_fact_keys": [
+        "source_fact:v1:2dfbfd6d1b0aead8210af283266e4998f14ca6481251464f85ca9aee7b2898d0"
+      ],
+      "source_published_kst": "2026-10-12T16:04+09:00",
+      "source_title": "더퓨처, 1~3분기 글로벌본부 매출 841%↑…美 공략 가속",
+      "telegram_core_fact": "더퓨처는 올해 1~3분기 글로벌본부 매출이 전년 동기보다 841% 증가했다고 최근 밝혔다.",
+      "title": "더퓨처, 1~3분기 글로벌본부 매출 841%↑…美 공략 가속"
+    },
     "link:f3e4a7d801616bad227cbee4": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
       "lanes": {
@@ -148181,6 +148494,29 @@
       "link": "https://www.etoday.co.kr/news/view/2632164",
       "source": "이투데이",
       "title": "[베스트&워스트] 씨싸이트 75% 급등…‘SK하이닉스 수주 확대 기대’ 윈팩도 ↑"
+    },
+    "link:f8e458ca41522f94a7aa7a70": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822494",
+      "source": "뉴시스",
+      "source_body_digest": "0cbe26af4759b1a09f444ffedfdcc99deaf865958936b0f3db76aae312c9cd64",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4bf29caba7fbf936906d7bc139cbd6b99b0cc3c4a3206dcef59690951c9740b",
+      "source_fact_keys": [
+        "source_fact:v1:3216ad4bddd12d01037ce114ce65f13eab7c31663c3c2edf8604ac465a801f4b",
+        "source_fact:v1:52f0bbbe50364463331ade4ea8cdb3d1bf770521ec4b85c8b9d4f035b611e7a7",
+        "source_fact:v1:68234b9b97a61f254c8fdaf4db5fc7ec7429ef0953f07184041f39b79ce9e638",
+        "source_fact:v1:812294f9c735e2f511be053c9e99c77f971b21d20de6605b5e32f0fc7fdc22c7",
+        "source_fact:v1:beb9548c4ddc826ffa982ebd097b34b377e911f09466b5e87425d0f89235fc09"
+      ],
+      "source_published_kst": "2026-10-12T15:54+09:00",
+      "source_title": "KB운용 \"RISE 코리아밸류업위클리고정커버드콜 ETF 순자산 4000억 넘어\"",
+      "telegram_core_fact": "KB자산운용이 'RISE 코리아밸류업위클리고정커버드콜 ETF(상장지수펀드)' 순자산이 4000억원을 돌파했다고 12일 밝혔다. 지난달 3000억원을 넘어선 지 한 달 만으로, 최근 4거래일간 개인 순매수액만 약 800억원에 이른다.",
+      "title": "KB운용 \"RISE 코리아밸류업위클리고정커버드콜 ETF 순자산 4000억 넘어\""
     },
     "link:f916bde7b7663002b0c96004": {
       "first_seen_kst": "2026-10-07T04:49:54+09:00",
@@ -155884,6 +156220,25 @@
       "telegram_core_fact": "신한은행은 현대건설과의 전략적 협업을 바탕으로 2023년 7월 복정역세권 복합개발사업 공모사업 컨소시엄에 대표 재무적 투자자(FI)로 참여했고, 이후 금융주선기관으로 사업성 검토부터 금융구조 설계, 금융기관 모집과 자금조달 등 업무 전반을 수행했다.",
       "title": "신한은행, 복정역세권 복합개발사업에 2조3천억원 규모 금융주선 | 연합뉴스"
     },
+    "original:17a9710325927a3da06e9ac8": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003821053",
+      "source": "뉴시스",
+      "source_body_digest": "c6cda8bb486c4ac77300b90f173e85261bd7e32ef287f61a4570091eef189f41",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0033c487a79318a2c673a9ecac239aa15ac45ef2d65da3ddad46c751de661eab",
+      "source_fact_keys": [
+        "source_fact:v1:ce99b6b1a4e79be74ca7686024cb7aa3ef9bc866f2732c979350f708ef0eebfa"
+      ],
+      "source_published_kst": "2026-10-12T14:59+09:00",
+      "source_title": "과천 '중학교 2027 배정 지침' 고시, 과밀·원거리 우려 여전",
+      "telegram_core_fact": "경기 안양과천교육지원청이 2027학년도 과천시 중학교 배정 지침을 고시했으나, 지식정보타운 입주와 재건축 재입주로 인한 특정교 과밀 및 원거리 배정 대란을 막기엔 부족하다는 지적이 나온다.",
+      "title": "과천 '중학교 2027 배정 지침' 고시, 과밀·원거리 우려 여전"
+    },
     "original:17b79632740e7e66027783d9": {
       "first_seen_kst": "2026-10-11T07:59:15+09:00",
       "lanes": {
@@ -156081,6 +156436,29 @@
       "source_title": "정석근 SK하이퍼 대표 \"AI 인프라 산업 병목 변화하고 있다\"",
       "telegram_core_fact": "포럼 사무국인 한국정보통신진흥협회(KAIT)는 앞으로도 '디지털 인사이트 포럼'을 통해 AI·디지털 산업의 주요 기술·정책 이슈를 선제적으로 발굴하고, AI 인프라 경쟁력 강화를 위한 민관 협력을 지속적으로 확대해 나갈 계획이다.",
       "title": "정석근 SK하이퍼 대표 \"AI 인프라 산업 병목 변화하고 있다\""
+    },
+    "original:183cfbd31f39894eeeb450a1": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822494",
+      "source": "뉴시스",
+      "source_body_digest": "0cbe26af4759b1a09f444ffedfdcc99deaf865958936b0f3db76aae312c9cd64",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4bf29caba7fbf936906d7bc139cbd6b99b0cc3c4a3206dcef59690951c9740b",
+      "source_fact_keys": [
+        "source_fact:v1:3216ad4bddd12d01037ce114ce65f13eab7c31663c3c2edf8604ac465a801f4b",
+        "source_fact:v1:52f0bbbe50364463331ade4ea8cdb3d1bf770521ec4b85c8b9d4f035b611e7a7",
+        "source_fact:v1:68234b9b97a61f254c8fdaf4db5fc7ec7429ef0953f07184041f39b79ce9e638",
+        "source_fact:v1:812294f9c735e2f511be053c9e99c77f971b21d20de6605b5e32f0fc7fdc22c7",
+        "source_fact:v1:beb9548c4ddc826ffa982ebd097b34b377e911f09466b5e87425d0f89235fc09"
+      ],
+      "source_published_kst": "2026-10-12T15:54+09:00",
+      "source_title": "KB운용 \"RISE 코리아밸류업위클리고정커버드콜 ETF 순자산 4000억 넘어\"",
+      "telegram_core_fact": "KB자산운용이 'RISE 코리아밸류업위클리고정커버드콜 ETF(상장지수펀드)' 순자산이 4000억원을 돌파했다고 12일 밝혔다. 지난달 3000억원을 넘어선 지 한 달 만으로, 최근 4거래일간 개인 순매수액만 약 800억원에 이른다.",
+      "title": "KB운용 \"RISE 코리아밸류업위클리고정커버드콜 ETF 순자산 4000억 넘어\""
     },
     "original:183fd16b4339dd0558378ac3": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
@@ -165639,6 +166017,25 @@
       "source": "머니투데이",
       "title": "국채 금리 요동, 불안한 시장...닛케이 0.91%↓[Asia오전]"
     },
+    "original:3f925fb19f573dd05ecfe494": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://www.etnews.com/20261012000270",
+      "source": "전자신문",
+      "source_body_digest": "1fa5ff90345b451fc797f881c17b9d5782ddbd92ec51c532ee248a0ee1305d64",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7659a03d046fbb8fadf0750bd1d0f43ad23407fb82d3ea78a37ff51ac2d7948",
+      "source_fact_keys": [
+        "source_fact:v1:6730649955896a039fa1240e75ed60fcc4b92da61df99d86990067fbbffc987c"
+      ],
+      "source_published_kst": "2026-10-12T14:48+09:00",
+      "source_title": "EU “中 하이브리드 車 수입 연간 35만대 제한”",
+      "telegram_core_fact": "EU는 중국산 전기차에 최대 45.3% 관세를 부과하고 있지만, 하이브리드는 기본 10% 관세만 부과해왔다.",
+      "title": "EU “中 하이브리드 車 수입 연간 35만대 제한”"
+    },
     "original:3fa50a6cde99f19d13162dc0": {
       "first_seen_kst": "2026-10-12T05:35:02+09:00",
       "lanes": {
@@ -167105,6 +167502,25 @@
       "telegram_core_fact": "콘텐츠 IP 커머셜라이징 기업 페퍼앤솔트가 올해 상반기 매출 131억원을 기록한 가운데, 하반기에는 K-SNS 캐릭터의 해외 유통망 구축과 글로벌 IP 사업 확대에 나선다.",
       "title": "페퍼앤솔트, 상반기 매출 131억원 기록…K-캐릭터 해외 진출 본격화"
     },
+    "original:43d9e703b6a291fce5e51907": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814584",
+      "source": "뉴시스",
+      "source_body_digest": "a4b66df8409a10263e953b955f160f5e8af7bb0f207b8ac4ebcc36515671aeec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:031199fde4aba48f0614a6d626d4b9ec208897648c3b3ea53aeb0734b2115c79",
+      "source_fact_keys": [
+        "source_fact:v1:2dfbfd6d1b0aead8210af283266e4998f14ca6481251464f85ca9aee7b2898d0"
+      ],
+      "source_published_kst": "2026-10-12T16:04+09:00",
+      "source_title": "더퓨처, 1~3분기 글로벌본부 매출 841%↑…美 공략 가속",
+      "telegram_core_fact": "더퓨처는 올해 1~3분기 글로벌본부 매출이 전년 동기보다 841% 증가했다고 최근 밝혔다.",
+      "title": "더퓨처, 1~3분기 글로벌본부 매출 841%↑…美 공략 가속"
+    },
     "original:43db024ebcbef4e916f09bb8": {
       "first_seen_kst": "2026-10-02T01:28:56+09:00",
       "lanes": {
@@ -167512,6 +167928,26 @@
       "source_title": "李대통령 “주택 공급 조만간 정상화…서울·수도권 인허가와 착공 회복”",
       "telegram_core_fact": "이재명 대통령이 11일 서울·수도권의 주택건설 인허가와 착공이 회복되고 있다며 주택 공급이 조만간 정상화될 것으로 전망했다.",
       "title": "李대통령 “주택 공급 조만간 정상화…서울·수도권 인허가와 착공 회복”"
+    },
+    "original:45cdecd02931a543aba653f5": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172955",
+      "source": "매일경제",
+      "source_body_digest": "43c70f0b93b96681ec34555ef2f62f7848ba561176fcf2741e871a038045c87b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:977ebc054dfba915f89ab0c47e5eea6c5b94d0d98ce8941746209f8dc79d94e8",
+      "source_fact_keys": [
+        "source_fact:v1:ab3cbf04635e90eb8e4740f10d31056dec5c8116c823f5efe5ac5b5c4cce6978",
+        "source_fact:v1:d9520b7a59fedda304d4b99729f564e9a731c984bb592b7e8f90c23ce47a867d"
+      ],
+      "source_published_kst": "2026-10-12T14:49+09:00",
+      "source_title": "방미통위, 불법스팸 부당이익 환수 과징금 신설…CI 유효기간제 추진",
+      "telegram_core_fact": "방송미디어통신위원회가 불법스팸 발송으로 얻은 부당이익을 환수하기 위한 과징금 제도를 신설하고, 통신시장 금지행위 위반에 대한 제재 수위를 대폭 끌어올린다.",
+      "title": "방미통위, 불법스팸 부당이익 환수 과징금 신설…CI 유효기간제 추진"
     },
     "original:45cf79fccfe7d65311ed4ea6": {
       "first_seen_kst": "2026-09-28T18:02:59+09:00",
@@ -185180,6 +185616,23 @@
       "link": "https://www.fnnews.com/news/202610011654459279",
       "source": "파이낸셜뉴스",
       "title": "바이오협, 바이오기업 31곳 투자유치 지원…투자자 미팅 20건 연계"
+    },
+    "original:8e9bf3ef95bd23686c880d21": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://biz.heraldcorp.com/article/10899787",
+      "source": "헤럴드경제",
+      "source_body_digest": "6074eb8f26d9b6b861816d25759507cd87b195a1114fc097dafae6b04c4521b5",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T15:05+09:00",
+      "source_title": "경동나비엔, 美 동·서부에 기술거점 구축…현지 생산기지도 추진",
+      "telegram_core_fact": "미국 현지 생산기지 구축도 추진한다.",
+      "title": "경동나비엔, 美 동·서부에 기술거점 구축…현지 생산기지도 추진"
     },
     "original:8eaa62d88f73367a7267c248": {
       "first_seen_kst": "2026-10-06T22:21:21+09:00",
@@ -204561,6 +205014,23 @@
       "telegram_core_fact": "HD현대중공업은 올해 4월 에이페리온에너지그룹과 6271억 원, 8월 코반에너지그룹과 9560억 원 발전설비 공급계약을 체결했다.",
       "title": "HD현대, 3천억 베팅…‘엔진 MRO’ 글로벌 톱티어 인수"
     },
+    "original:dce3d429adc1a4ffef77ee86": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03371846645612264",
+      "source": "이데일리",
+      "source_body_digest": "08e1b23ba3bbebd74bf4bda482805770c358d2c1ecd81a15fe4943204d605a09",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T14:56+09:00",
+      "source_title": "씨앤엠, 코스닥 상장예비심사 승인…청구 4주 만",
+      "telegram_core_fact": "씨앤엠은 한국거래소로부터 코스닥시장 상장예비심사 승인을 받았다고 12일 밝혔다.",
+      "title": "씨앤엠, 코스닥 상장예비심사 승인…청구 4주 만"
+    },
     "original:dcf65c415f3d22c0d4d78fc5": {
       "first_seen_kst": "2026-10-04T08:04:25+09:00",
       "lanes": {
@@ -220739,6 +221209,29 @@
       "telegram_core_fact": "LG전자의 3분기 잠정 영업이익은 7818억원으로 전년비 13.5% 증가했지만 시장 기대치 약 1조301억원을 24.1% 밑돌았다.",
       "title": "LG전자, 실적 충격 속 이틀 새 14% 하락…AI 냉각·로봇에 쏠린 시선"
     },
+    "source_fact:0a2ebc3dc006abe166feeaba": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822494",
+      "source": "뉴시스",
+      "source_body_digest": "0cbe26af4759b1a09f444ffedfdcc99deaf865958936b0f3db76aae312c9cd64",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4bf29caba7fbf936906d7bc139cbd6b99b0cc3c4a3206dcef59690951c9740b",
+      "source_fact_keys": [
+        "source_fact:v1:3216ad4bddd12d01037ce114ce65f13eab7c31663c3c2edf8604ac465a801f4b",
+        "source_fact:v1:52f0bbbe50364463331ade4ea8cdb3d1bf770521ec4b85c8b9d4f035b611e7a7",
+        "source_fact:v1:68234b9b97a61f254c8fdaf4db5fc7ec7429ef0953f07184041f39b79ce9e638",
+        "source_fact:v1:812294f9c735e2f511be053c9e99c77f971b21d20de6605b5e32f0fc7fdc22c7",
+        "source_fact:v1:beb9548c4ddc826ffa982ebd097b34b377e911f09466b5e87425d0f89235fc09"
+      ],
+      "source_published_kst": "2026-10-12T15:54+09:00",
+      "source_title": "KB운용 \"RISE 코리아밸류업위클리고정커버드콜 ETF 순자산 4000억 넘어\"",
+      "telegram_core_fact": "KB자산운용이 'RISE 코리아밸류업위클리고정커버드콜 ETF(상장지수펀드)' 순자산이 4000억원을 돌파했다고 12일 밝혔다. 지난달 3000억원을 넘어선 지 한 달 만으로, 최근 4거래일간 개인 순매수액만 약 800억원에 이른다.",
+      "title": "KB운용 \"RISE 코리아밸류업위클리고정커버드콜 ETF 순자산 4000억 넘어\""
+    },
     "source_fact:0a514079fa3e9d37f37b8d7d": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -222421,6 +222914,26 @@
       ],
       "source_published_kst": "2026-10-06T11:31+09:00",
       "title": "[2026 국감]산업부, 대미투자 국익 최우선 추진…호남 반도체 등 1600조 속도전"
+    },
+    "source_fact:0c745b0bb9cf16662278aef3": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172955",
+      "source": "매일경제",
+      "source_body_digest": "43c70f0b93b96681ec34555ef2f62f7848ba561176fcf2741e871a038045c87b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:977ebc054dfba915f89ab0c47e5eea6c5b94d0d98ce8941746209f8dc79d94e8",
+      "source_fact_keys": [
+        "source_fact:v1:ab3cbf04635e90eb8e4740f10d31056dec5c8116c823f5efe5ac5b5c4cce6978",
+        "source_fact:v1:d9520b7a59fedda304d4b99729f564e9a731c984bb592b7e8f90c23ce47a867d"
+      ],
+      "source_published_kst": "2026-10-12T14:49+09:00",
+      "source_title": "방미통위, 불법스팸 부당이익 환수 과징금 신설…CI 유효기간제 추진",
+      "telegram_core_fact": "방송미디어통신위원회가 불법스팸 발송으로 얻은 부당이익을 환수하기 위한 과징금 제도를 신설하고, 통신시장 금지행위 위반에 대한 제재 수위를 대폭 끌어올린다.",
+      "title": "방미통위, 불법스팸 부당이익 환수 과징금 신설…CI 유효기간제 추진"
     },
     "source_fact:0c78dd7aa3fd6879d71c21b7": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
@@ -257095,6 +257608,26 @@
       "telegram_core_fact": "특히 캐터필러는 데이터센터 건설 장비뿐 아니라 전력 공급에 필요한 가스터빈 등도 공급하고 있어 AI 인프라 투자 확대의 수혜 기업으로 평가받고 있다. 미국 중장비 제조업체 캐터필러(CAT)가 인공지능(AI) 데이터센터 투자 확대와 글로벌 인프라 건설 수요에 힘입어 추가 상승할 가능성이 있다는 분석이 나왔다.",
       "title": "[美특징주]캐터필러, AI 데이터센터·인프라 투자 수혜 기대...개장 전↑"
     },
+    "source_fact:3402d97ebb5b68fae8af1694": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172955",
+      "source": "매일경제",
+      "source_body_digest": "43c70f0b93b96681ec34555ef2f62f7848ba561176fcf2741e871a038045c87b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:977ebc054dfba915f89ab0c47e5eea6c5b94d0d98ce8941746209f8dc79d94e8",
+      "source_fact_keys": [
+        "source_fact:v1:ab3cbf04635e90eb8e4740f10d31056dec5c8116c823f5efe5ac5b5c4cce6978",
+        "source_fact:v1:d9520b7a59fedda304d4b99729f564e9a731c984bb592b7e8f90c23ce47a867d"
+      ],
+      "source_published_kst": "2026-10-12T14:49+09:00",
+      "source_title": "방미통위, 불법스팸 부당이익 환수 과징금 신설…CI 유효기간제 추진",
+      "telegram_core_fact": "방송미디어통신위원회가 불법스팸 발송으로 얻은 부당이익을 환수하기 위한 과징금 제도를 신설하고, 통신시장 금지행위 위반에 대한 제재 수위를 대폭 끌어올린다.",
+      "title": "방미통위, 불법스팸 부당이익 환수 과징금 신설…CI 유효기간제 추진"
+    },
     "source_fact:34047604b1127ed4ce2ff333": {
       "first_seen_kst": "2026-10-12T13:36:34+09:00",
       "lanes": {
@@ -263137,6 +263670,29 @@
       "source_title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매",
       "telegram_core_fact": "10년 만기 미국채 금리는 7월 말 이후 60bp 급등했고, 같은 기간 미국 원유 가격은 20% 상승했다.",
       "title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매"
+    },
+    "source_fact:3b33af0e1392906920f10faf": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822494",
+      "source": "뉴시스",
+      "source_body_digest": "0cbe26af4759b1a09f444ffedfdcc99deaf865958936b0f3db76aae312c9cd64",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4bf29caba7fbf936906d7bc139cbd6b99b0cc3c4a3206dcef59690951c9740b",
+      "source_fact_keys": [
+        "source_fact:v1:3216ad4bddd12d01037ce114ce65f13eab7c31663c3c2edf8604ac465a801f4b",
+        "source_fact:v1:52f0bbbe50364463331ade4ea8cdb3d1bf770521ec4b85c8b9d4f035b611e7a7",
+        "source_fact:v1:68234b9b97a61f254c8fdaf4db5fc7ec7429ef0953f07184041f39b79ce9e638",
+        "source_fact:v1:812294f9c735e2f511be053c9e99c77f971b21d20de6605b5e32f0fc7fdc22c7",
+        "source_fact:v1:beb9548c4ddc826ffa982ebd097b34b377e911f09466b5e87425d0f89235fc09"
+      ],
+      "source_published_kst": "2026-10-12T15:54+09:00",
+      "source_title": "KB운용 \"RISE 코리아밸류업위클리고정커버드콜 ETF 순자산 4000억 넘어\"",
+      "telegram_core_fact": "KB자산운용이 'RISE 코리아밸류업위클리고정커버드콜 ETF(상장지수펀드)' 순자산이 4000억원을 돌파했다고 12일 밝혔다. 지난달 3000억원을 넘어선 지 한 달 만으로, 최근 4거래일간 개인 순매수액만 약 800억원에 이른다.",
+      "title": "KB운용 \"RISE 코리아밸류업위클리고정커버드콜 ETF 순자산 4000억 넘어\""
     },
     "source_fact:3b37ba6a4e49f1e0701fee0b": {
       "first_seen_kst": "2026-10-07T02:13:12+09:00",
@@ -300317,6 +300873,25 @@
       "source_published_kst": "2026-10-07T15:50+09:00",
       "title": "동서발전, 산불 복합재난 대응체계 면밀 점검한다 | 연합뉴스"
     },
+    "source_fact:65e816e7c4a3a7bca50b248e": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003821053",
+      "source": "뉴시스",
+      "source_body_digest": "c6cda8bb486c4ac77300b90f173e85261bd7e32ef287f61a4570091eef189f41",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0033c487a79318a2c673a9ecac239aa15ac45ef2d65da3ddad46c751de661eab",
+      "source_fact_keys": [
+        "source_fact:v1:ce99b6b1a4e79be74ca7686024cb7aa3ef9bc866f2732c979350f708ef0eebfa"
+      ],
+      "source_published_kst": "2026-10-12T14:59+09:00",
+      "source_title": "과천 '중학교 2027 배정 지침' 고시, 과밀·원거리 우려 여전",
+      "telegram_core_fact": "경기 안양과천교육지원청이 2027학년도 과천시 중학교 배정 지침을 고시했으나, 지식정보타운 입주와 재건축 재입주로 인한 특정교 과밀 및 원거리 배정 대란을 막기엔 부족하다는 지적이 나온다.",
+      "title": "과천 '중학교 2027 배정 지침' 고시, 과밀·원거리 우려 여전"
+    },
     "source_fact:65f4b4db10663db943bf20a0": {
       "first_seen_kst": "2026-10-09T16:53:11+09:00",
       "lanes": {
@@ -304092,6 +304667,25 @@
       "source_title": "\"SK하이닉스, HBM·범용 메모리 동반 호조..내년도 성장\"-유진證",
       "telegram_core_fact": "실적 개선의 핵심은 메모리 가격으로, 유진투자증권은 3·4분기 D램의 평균판매가격이 전 분기 대비 20%, 출하량은 저장용량 기준으로 12% 증가할 것으로 예상했다.",
       "title": "\"SK하이닉스, HBM·범용 메모리 동반 호조..내년도 성장\"-유진證"
+    },
+    "source_fact:6a3b75a8d49f1423b402f759": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://www.etnews.com/20261012000270",
+      "source": "전자신문",
+      "source_body_digest": "1fa5ff90345b451fc797f881c17b9d5782ddbd92ec51c532ee248a0ee1305d64",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7659a03d046fbb8fadf0750bd1d0f43ad23407fb82d3ea78a37ff51ac2d7948",
+      "source_fact_keys": [
+        "source_fact:v1:6730649955896a039fa1240e75ed60fcc4b92da61df99d86990067fbbffc987c"
+      ],
+      "source_published_kst": "2026-10-12T14:48+09:00",
+      "source_title": "EU “中 하이브리드 車 수입 연간 35만대 제한”",
+      "telegram_core_fact": "EU는 중국산 전기차에 최대 45.3% 관세를 부과하고 있지만, 하이브리드는 기본 10% 관세만 부과해왔다.",
+      "title": "EU “中 하이브리드 車 수입 연간 35만대 제한”"
     },
     "source_fact:6a3d4941eae9b5bfe8d2d6dd": {
       "first_seen_kst": "2026-10-12T06:42:49+09:00",
@@ -317294,6 +317888,25 @@
       "source_published_kst": "2026-10-05T11:20+09:00",
       "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
     },
+    "source_fact:7a291d3187deb779a5971ce7": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814584",
+      "source": "뉴시스",
+      "source_body_digest": "a4b66df8409a10263e953b955f160f5e8af7bb0f207b8ac4ebcc36515671aeec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:031199fde4aba48f0614a6d626d4b9ec208897648c3b3ea53aeb0734b2115c79",
+      "source_fact_keys": [
+        "source_fact:v1:2dfbfd6d1b0aead8210af283266e4998f14ca6481251464f85ca9aee7b2898d0"
+      ],
+      "source_published_kst": "2026-10-12T16:04+09:00",
+      "source_title": "더퓨처, 1~3분기 글로벌본부 매출 841%↑…美 공략 가속",
+      "telegram_core_fact": "더퓨처는 올해 1~3분기 글로벌본부 매출이 전년 동기보다 841% 증가했다고 최근 밝혔다.",
+      "title": "더퓨처, 1~3분기 글로벌본부 매출 841%↑…美 공략 가속"
+    },
     "source_fact:7a30d3fe714c424c66805947": {
       "first_seen_kst": "2026-10-06T10:04:04+09:00",
       "lanes": {
@@ -327400,6 +328013,29 @@
       "source_title": "최태원 SK그룹 회장 “반도체 생산능력 서둘러 키워야⋯미ㆍ중 증설 경쟁”",
       "telegram_core_fact": "반도체 수요가 큰 만큼 전남광주뿐 아니라 다른 지역에서도 공장 증설을 검토해야 한다는 취지다.",
       "title": "최태원 SK그룹 회장 “반도체 생산능력 서둘러 키워야⋯미ㆍ중 증설 경쟁”"
+    },
+    "source_fact:864079dcdff047f2b8a195d5": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822494",
+      "source": "뉴시스",
+      "source_body_digest": "0cbe26af4759b1a09f444ffedfdcc99deaf865958936b0f3db76aae312c9cd64",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4bf29caba7fbf936906d7bc139cbd6b99b0cc3c4a3206dcef59690951c9740b",
+      "source_fact_keys": [
+        "source_fact:v1:3216ad4bddd12d01037ce114ce65f13eab7c31663c3c2edf8604ac465a801f4b",
+        "source_fact:v1:52f0bbbe50364463331ade4ea8cdb3d1bf770521ec4b85c8b9d4f035b611e7a7",
+        "source_fact:v1:68234b9b97a61f254c8fdaf4db5fc7ec7429ef0953f07184041f39b79ce9e638",
+        "source_fact:v1:812294f9c735e2f511be053c9e99c77f971b21d20de6605b5e32f0fc7fdc22c7",
+        "source_fact:v1:beb9548c4ddc826ffa982ebd097b34b377e911f09466b5e87425d0f89235fc09"
+      ],
+      "source_published_kst": "2026-10-12T15:54+09:00",
+      "source_title": "KB운용 \"RISE 코리아밸류업위클리고정커버드콜 ETF 순자산 4000억 넘어\"",
+      "telegram_core_fact": "KB자산운용이 'RISE 코리아밸류업위클리고정커버드콜 ETF(상장지수펀드)' 순자산이 4000억원을 돌파했다고 12일 밝혔다. 지난달 3000억원을 넘어선 지 한 달 만으로, 최근 4거래일간 개인 순매수액만 약 800억원에 이른다.",
+      "title": "KB운용 \"RISE 코리아밸류업위클리고정커버드콜 ETF 순자산 4000억 넘어\""
     },
     "source_fact:8644f5f584ee7a78e8c38027": {
       "first_seen_kst": "2026-10-12T11:51:53+09:00",
@@ -370605,6 +371241,29 @@
       "source_published_kst": "2026-10-07T12:58+09:00",
       "title": "AI 에이전트 뜨자 CPU도 재부상…AMD·인텔 한 달 새 32%·21%↑"
     },
+    "source_fact:ba11a4c7edafefa0ca28596d": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822494",
+      "source": "뉴시스",
+      "source_body_digest": "0cbe26af4759b1a09f444ffedfdcc99deaf865958936b0f3db76aae312c9cd64",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4bf29caba7fbf936906d7bc139cbd6b99b0cc3c4a3206dcef59690951c9740b",
+      "source_fact_keys": [
+        "source_fact:v1:3216ad4bddd12d01037ce114ce65f13eab7c31663c3c2edf8604ac465a801f4b",
+        "source_fact:v1:52f0bbbe50364463331ade4ea8cdb3d1bf770521ec4b85c8b9d4f035b611e7a7",
+        "source_fact:v1:68234b9b97a61f254c8fdaf4db5fc7ec7429ef0953f07184041f39b79ce9e638",
+        "source_fact:v1:812294f9c735e2f511be053c9e99c77f971b21d20de6605b5e32f0fc7fdc22c7",
+        "source_fact:v1:beb9548c4ddc826ffa982ebd097b34b377e911f09466b5e87425d0f89235fc09"
+      ],
+      "source_published_kst": "2026-10-12T15:54+09:00",
+      "source_title": "KB운용 \"RISE 코리아밸류업위클리고정커버드콜 ETF 순자산 4000억 넘어\"",
+      "telegram_core_fact": "KB자산운용이 'RISE 코리아밸류업위클리고정커버드콜 ETF(상장지수펀드)' 순자산이 4000억원을 돌파했다고 12일 밝혔다. 지난달 3000억원을 넘어선 지 한 달 만으로, 최근 4거래일간 개인 순매수액만 약 800억원에 이른다.",
+      "title": "KB운용 \"RISE 코리아밸류업위클리고정커버드콜 ETF 순자산 4000억 넘어\""
+    },
     "source_fact:ba11d3553a25aaf77cd60bda": {
       "first_seen_kst": "2026-10-09T21:27:46+09:00",
       "lanes": {
@@ -379500,6 +380159,29 @@
       ],
       "source_published_kst": "2026-10-07T15:31+09:00",
       "title": "스페이스X, 엔비디아 칩 사려고 400억달러 조달 추진"
+    },
+    "source_fact:c47e731f9d48ac4644ff05af": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822494",
+      "source": "뉴시스",
+      "source_body_digest": "0cbe26af4759b1a09f444ffedfdcc99deaf865958936b0f3db76aae312c9cd64",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4bf29caba7fbf936906d7bc139cbd6b99b0cc3c4a3206dcef59690951c9740b",
+      "source_fact_keys": [
+        "source_fact:v1:3216ad4bddd12d01037ce114ce65f13eab7c31663c3c2edf8604ac465a801f4b",
+        "source_fact:v1:52f0bbbe50364463331ade4ea8cdb3d1bf770521ec4b85c8b9d4f035b611e7a7",
+        "source_fact:v1:68234b9b97a61f254c8fdaf4db5fc7ec7429ef0953f07184041f39b79ce9e638",
+        "source_fact:v1:812294f9c735e2f511be053c9e99c77f971b21d20de6605b5e32f0fc7fdc22c7",
+        "source_fact:v1:beb9548c4ddc826ffa982ebd097b34b377e911f09466b5e87425d0f89235fc09"
+      ],
+      "source_published_kst": "2026-10-12T15:54+09:00",
+      "source_title": "KB운용 \"RISE 코리아밸류업위클리고정커버드콜 ETF 순자산 4000억 넘어\"",
+      "telegram_core_fact": "KB자산운용이 'RISE 코리아밸류업위클리고정커버드콜 ETF(상장지수펀드)' 순자산이 4000억원을 돌파했다고 12일 밝혔다. 지난달 3000억원을 넘어선 지 한 달 만으로, 최근 4거래일간 개인 순매수액만 약 800억원에 이른다.",
+      "title": "KB운용 \"RISE 코리아밸류업위클리고정커버드콜 ETF 순자산 4000억 넘어\""
     },
     "source_fact:c47fd251a84feb5b0e793f61": {
       "first_seen_kst": "2026-10-08T13:46:05+09:00",
@@ -435409,6 +436091,25 @@
       "telegram_core_fact": "신한은행은 현대건설과의 전략적 협업을 바탕으로 2023년 7월 복정역세권 복합개발사업 공모사업 컨소시엄에 대표 재무적 투자자(FI)로 참여했고, 이후 금융주선기관으로 사업성 검토부터 금융구조 설계, 금융기관 모집과 자금조달 등 업무 전반을 수행했다.",
       "title": "신한은행, 복정역세권 복합개발사업에 2조3천억원 규모 금융주선 | 연합뉴스"
     },
+    "title:17a9710325927a3da06e9ac8": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261011_0003821053",
+      "source": "뉴시스",
+      "source_body_digest": "c6cda8bb486c4ac77300b90f173e85261bd7e32ef287f61a4570091eef189f41",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0033c487a79318a2c673a9ecac239aa15ac45ef2d65da3ddad46c751de661eab",
+      "source_fact_keys": [
+        "source_fact:v1:ce99b6b1a4e79be74ca7686024cb7aa3ef9bc866f2732c979350f708ef0eebfa"
+      ],
+      "source_published_kst": "2026-10-12T14:59+09:00",
+      "source_title": "과천 '중학교 2027 배정 지침' 고시, 과밀·원거리 우려 여전",
+      "telegram_core_fact": "경기 안양과천교육지원청이 2027학년도 과천시 중학교 배정 지침을 고시했으나, 지식정보타운 입주와 재건축 재입주로 인한 특정교 과밀 및 원거리 배정 대란을 막기엔 부족하다는 지적이 나온다.",
+      "title": "과천 '중학교 2027 배정 지침' 고시, 과밀·원거리 우려 여전"
+    },
     "title:17b79632740e7e66027783d9": {
       "first_seen_kst": "2026-10-11T07:59:15+09:00",
       "lanes": {
@@ -435606,6 +436307,29 @@
       "source_title": "정석근 SK하이퍼 대표 \"AI 인프라 산업 병목 변화하고 있다\"",
       "telegram_core_fact": "포럼 사무국인 한국정보통신진흥협회(KAIT)는 앞으로도 '디지털 인사이트 포럼'을 통해 AI·디지털 산업의 주요 기술·정책 이슈를 선제적으로 발굴하고, AI 인프라 경쟁력 강화를 위한 민관 협력을 지속적으로 확대해 나갈 계획이다.",
       "title": "정석근 SK하이퍼 대표 \"AI 인프라 산업 병목 변화하고 있다\""
+    },
+    "title:183cfbd31f39894eeeb450a1": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822494",
+      "source": "뉴시스",
+      "source_body_digest": "0cbe26af4759b1a09f444ffedfdcc99deaf865958936b0f3db76aae312c9cd64",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4bf29caba7fbf936906d7bc139cbd6b99b0cc3c4a3206dcef59690951c9740b",
+      "source_fact_keys": [
+        "source_fact:v1:3216ad4bddd12d01037ce114ce65f13eab7c31663c3c2edf8604ac465a801f4b",
+        "source_fact:v1:52f0bbbe50364463331ade4ea8cdb3d1bf770521ec4b85c8b9d4f035b611e7a7",
+        "source_fact:v1:68234b9b97a61f254c8fdaf4db5fc7ec7429ef0953f07184041f39b79ce9e638",
+        "source_fact:v1:812294f9c735e2f511be053c9e99c77f971b21d20de6605b5e32f0fc7fdc22c7",
+        "source_fact:v1:beb9548c4ddc826ffa982ebd097b34b377e911f09466b5e87425d0f89235fc09"
+      ],
+      "source_published_kst": "2026-10-12T15:54+09:00",
+      "source_title": "KB운용 \"RISE 코리아밸류업위클리고정커버드콜 ETF 순자산 4000억 넘어\"",
+      "telegram_core_fact": "KB자산운용이 'RISE 코리아밸류업위클리고정커버드콜 ETF(상장지수펀드)' 순자산이 4000억원을 돌파했다고 12일 밝혔다. 지난달 3000억원을 넘어선 지 한 달 만으로, 최근 4거래일간 개인 순매수액만 약 800억원에 이른다.",
+      "title": "KB운용 \"RISE 코리아밸류업위클리고정커버드콜 ETF 순자산 4000억 넘어\""
     },
     "title:183fd16b4339dd0558378ac3": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
@@ -445344,6 +446068,25 @@
       "source": "머니투데이",
       "title": "국채 금리 요동, 불안한 시장...닛케이 0.91%↓[Asia오전]"
     },
+    "title:3f925fb19f573dd05ecfe494": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://www.etnews.com/20261012000270",
+      "source": "전자신문",
+      "source_body_digest": "1fa5ff90345b451fc797f881c17b9d5782ddbd92ec51c532ee248a0ee1305d64",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7659a03d046fbb8fadf0750bd1d0f43ad23407fb82d3ea78a37ff51ac2d7948",
+      "source_fact_keys": [
+        "source_fact:v1:6730649955896a039fa1240e75ed60fcc4b92da61df99d86990067fbbffc987c"
+      ],
+      "source_published_kst": "2026-10-12T14:48+09:00",
+      "source_title": "EU “中 하이브리드 車 수입 연간 35만대 제한”",
+      "telegram_core_fact": "EU는 중국산 전기차에 최대 45.3% 관세를 부과하고 있지만, 하이브리드는 기본 10% 관세만 부과해왔다.",
+      "title": "EU “中 하이브리드 車 수입 연간 35만대 제한”"
+    },
     "title:3fa50a6cde99f19d13162dc0": {
       "first_seen_kst": "2026-10-12T05:35:02+09:00",
       "lanes": {
@@ -446825,6 +447568,25 @@
       "telegram_core_fact": "콘텐츠 IP 커머셜라이징 기업 페퍼앤솔트가 올해 상반기 매출 131억원을 기록한 가운데, 하반기에는 K-SNS 캐릭터의 해외 유통망 구축과 글로벌 IP 사업 확대에 나선다.",
       "title": "페퍼앤솔트, 상반기 매출 131억원 기록…K-캐릭터 해외 진출 본격화"
     },
+    "title:43d9e703b6a291fce5e51907": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814584",
+      "source": "뉴시스",
+      "source_body_digest": "a4b66df8409a10263e953b955f160f5e8af7bb0f207b8ac4ebcc36515671aeec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:031199fde4aba48f0614a6d626d4b9ec208897648c3b3ea53aeb0734b2115c79",
+      "source_fact_keys": [
+        "source_fact:v1:2dfbfd6d1b0aead8210af283266e4998f14ca6481251464f85ca9aee7b2898d0"
+      ],
+      "source_published_kst": "2026-10-12T16:04+09:00",
+      "source_title": "더퓨처, 1~3분기 글로벌본부 매출 841%↑…美 공략 가속",
+      "telegram_core_fact": "더퓨처는 올해 1~3분기 글로벌본부 매출이 전년 동기보다 841% 증가했다고 최근 밝혔다.",
+      "title": "더퓨처, 1~3분기 글로벌본부 매출 841%↑…美 공략 가속"
+    },
     "title:43db024ebcbef4e916f09bb8": {
       "first_seen_kst": "2026-10-02T01:28:56+09:00",
       "lanes": {
@@ -447232,6 +447994,26 @@
       "source_title": "李대통령 “주택 공급 조만간 정상화…서울·수도권 인허가와 착공 회복”",
       "telegram_core_fact": "이재명 대통령이 11일 서울·수도권의 주택건설 인허가와 착공이 회복되고 있다며 주택 공급이 조만간 정상화될 것으로 전망했다.",
       "title": "李대통령 “주택 공급 조만간 정상화…서울·수도권 인허가와 착공 회복”"
+    },
+    "title:45cdecd02931a543aba653f5": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172955",
+      "source": "매일경제",
+      "source_body_digest": "43c70f0b93b96681ec34555ef2f62f7848ba561176fcf2741e871a038045c87b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:977ebc054dfba915f89ab0c47e5eea6c5b94d0d98ce8941746209f8dc79d94e8",
+      "source_fact_keys": [
+        "source_fact:v1:ab3cbf04635e90eb8e4740f10d31056dec5c8116c823f5efe5ac5b5c4cce6978",
+        "source_fact:v1:d9520b7a59fedda304d4b99729f564e9a731c984bb592b7e8f90c23ce47a867d"
+      ],
+      "source_published_kst": "2026-10-12T14:49+09:00",
+      "source_title": "방미통위, 불법스팸 부당이익 환수 과징금 신설…CI 유효기간제 추진",
+      "telegram_core_fact": "방송미디어통신위원회가 불법스팸 발송으로 얻은 부당이익을 환수하기 위한 과징금 제도를 신설하고, 통신시장 금지행위 위반에 대한 제재 수위를 대폭 끌어올린다.",
+      "title": "방미통위, 불법스팸 부당이익 환수 과징금 신설…CI 유효기간제 추진"
     },
     "title:45cf79fccfe7d65311ed4ea6": {
       "first_seen_kst": "2026-09-28T18:02:59+09:00",
@@ -465189,6 +465971,23 @@
       "link": "https://www.fnnews.com/news/202610011654459279",
       "source": "파이낸셜뉴스",
       "title": "바이오협, 바이오기업 31곳 투자유치 지원…투자자 미팅 20건 연계"
+    },
+    "title:8e9bf3ef95bd23686c880d21": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://biz.heraldcorp.com/article/10899787",
+      "source": "헤럴드경제",
+      "source_body_digest": "6074eb8f26d9b6b861816d25759507cd87b195a1114fc097dafae6b04c4521b5",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T15:05+09:00",
+      "source_title": "경동나비엔, 美 동·서부에 기술거점 구축…현지 생산기지도 추진",
+      "telegram_core_fact": "미국 현지 생산기지 구축도 추진한다.",
+      "title": "경동나비엔, 美 동·서부에 기술거점 구축…현지 생산기지도 추진"
     },
     "title:8eaa62d88f73367a7267c248": {
       "first_seen_kst": "2026-10-06T22:21:21+09:00",
@@ -485173,6 +485972,23 @@
       "telegram_core_fact": "HD현대중공업은 올해 4월 에이페리온에너지그룹과 6271억 원, 8월 코반에너지그룹과 9560억 원 발전설비 공급계약을 체결했다.",
       "title": "HD현대, 3천억 베팅…‘엔진 MRO’ 글로벌 톱티어 인수"
     },
+    "title:dce3d429adc1a4ffef77ee86": {
+      "first_seen_kst": "2026-10-12T16:08:52+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:08:52+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:08:52+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03371846645612264",
+      "source": "이데일리",
+      "source_body_digest": "08e1b23ba3bbebd74bf4bda482805770c358d2c1ecd81a15fe4943204d605a09",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T14:56+09:00",
+      "source_title": "씨앤엠, 코스닥 상장예비심사 승인…청구 4주 만",
+      "telegram_core_fact": "씨앤엠은 한국거래소로부터 코스닥시장 상장예비심사 승인을 받았다고 12일 밝혔다.",
+      "title": "씨앤엠, 코스닥 상장예비심사 승인…청구 4주 만"
+    },
     "title:dcf65c415f3d22c0d4d78fc5": {
       "first_seen_kst": "2026-10-04T08:04:25+09:00",
       "lanes": {
@@ -493840,5 +494656,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-12T15:43:01+09:00"
+  "updated_at_kst": "2026-10-12T16:08:52+09:00"
 }
