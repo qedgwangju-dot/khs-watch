@@ -2,11 +2,17 @@ name: Treasury foreign demand Telegram alert
 
 on:
   push:
+    branches: [main]
     paths:
       - ".github/workflows/treasury-foreign-demand-telegram-alert.yml"
       - "scripts/treasury_foreign_demand_watch.py"
       - "scripts/treasury_foreign_demand_easy_alert.py"
       - "tests/test_treasury_foreign_demand_watch.py"
+      - "tests/test_treasury_state_commit.py"
+  pull_request:
+    paths:
+      - ".github/workflows/treasury-foreign-demand-telegram-alert.yml"
+      - "tests/test_treasury_state_commit.py"
   schedule:
     # 05:10 and 06:10 KST daily. TIC monthly release is normally 16:00 ET;
     # H.4.1 is normally published Thursday afternoon ET.
@@ -17,11 +23,27 @@ permissions:
   contents: write
 
 concurrency:
-  group: treasury-foreign-demand-telegram-alert
+  group: ${{ github.event_name == 'pull_request' && format('treasury-foreign-demand-pr-{0}', github.event.pull_request.number) || 'treasury-foreign-demand-telegram-alert' }}
   cancel-in-progress: true
 
 jobs:
+  offline-state-regression:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m unittest discover -s tests -p 'test_treasury_state_commit.py' -v
+
   monitor:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
@@ -39,6 +61,7 @@ jobs:
         run: |
           python -m py_compile scripts/treasury_foreign_demand_watch.py
           python -m py_compile scripts/treasury_foreign_demand_easy_alert.py
+          python -m unittest discover -s tests -p 'test_treasury_state_commit.py' -v
           if [ -f tests/test_treasury_foreign_demand_watch.py ]; then
             python -m unittest tests/test_treasury_foreign_demand_watch.py -v
           fi
@@ -147,14 +170,39 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/treasury_foreign_demand_state.json
+          state_file="data/treasury_foreign_demand_state.json"
+          git add -- "$state_file"
           if git diff --cached --quiet; then
             echo "상태 변경 없음"
-          else
-            git commit -m "Update Treasury foreign demand state"
-            git pull --rebase origin main
-            git push
+            exit 0
           fi
+          if git diff --cached --name-only | grep -Fvx "$state_file"; then
+            echo "treasury_state_commit_contains_unexpected_files=true" >&2
+            exit 1
+          fi
+          git commit -m "Update Treasury foreign demand state"
+          # Retry this state commit only. Never rerun collection, finalize or send.
+          for attempt in 1 2 3; do
+            if ! git pull --rebase origin main; then
+              git rebase --abort >/dev/null 2>&1 || true
+              echo "treasury_state_rebase_failed=true" >&2
+              exit 1
+            fi
+            if push_output=$(git push origin HEAD:refs/heads/main 2>&1); then
+              printf '%s\n' "$push_output"
+              echo "treasury_state_push_confirmed=true attempt=$attempt"
+              exit 0
+            fi
+            printf '%s\n' "$push_output" >&2
+            # Retry observed concurrent-ref races, not authentication/policy failures.
+            if ! printf '%s\n' "$push_output" | grep -Eq '\[rejected\].*(non-fast-forward|fetch first)|\[remote rejected\].*(cannot lock ref|incorrect old value provided)'; then
+              echo "treasury_state_push_nonretryable=true" >&2
+              exit 1
+            fi
+            if [ "$attempt" -lt 3 ]; then sleep $((attempt * 2)); fi
+          done
+          echo "treasury_state_push_failed_after_retries=true" >&2
+          exit 1
 
       - name: Upload verification artifacts
         if: always()
@@ -168,3 +216,4 @@ jobs:
             out/treasury_foreign_demand_telegram_confirmed.json
           if-no-files-found: ignore
           retention-days: 14
+
