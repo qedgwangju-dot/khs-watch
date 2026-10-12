@@ -428,9 +428,10 @@ def main():
     fx = base.get_usdkrw()
     curve, prev_curve = get_curve_pair()
     results, prev_rows = {}, {}
+    ishares_retry_budget = base.IsharesRetryBudget()
 
     for ticker, meta in FUNDS.items():
-        cur = base.get_ishares(ticker, meta)
+        cur = base.get_ishares(ticker, meta, retry_budget=ishares_retry_budget)
         hist = list(state["history"].get(ticker, []))
         prev = base.previous_snapshot(hist, cur["date"])
         prev_rows[ticker] = prev

@@ -1,0 +1,58 @@
+name: Treasury ETF offline regressions
+
+on:
+  pull_request:
+    paths:
+      - scripts/treasury_etf_flow_watch.py
+      - scripts/treasury_credit_flow_watch_ishares.py
+      - tests/test_treasury_ishares_timeout.py
+      - .github/workflows/treasury-etf-flow-telegram.yml
+      - .github/workflows/treasury-etf-offline-regressions.yml
+
+permissions:
+  contents: read
+
+jobs:
+  offline-regressions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out exact proposed head without saved credentials
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install test dependencies
+        run: python -m pip install --disable-pip-version-check requests==2.32.5 beautifulsoup4==4.13.4
+
+      - name: Run report and timeout regressions with networking blocked
+        env:
+          PYTHONPATH: scripts
+          TREASURY_REPORT_VALIDATE_ONLY: "1"
+        run: |
+          python - <<'PY'
+          import socket
+          import unittest
+
+          def blocked(*args, **kwargs):
+              raise AssertionError("External network disabled for Treasury offline regressions")
+
+          socket.socket.connect = blocked
+          socket.socket.connect_ex = blocked
+          socket.create_connection = blocked
+          socket.getaddrinfo = blocked
+          suite = unittest.TestSuite()
+          for pattern in (
+              "test_treasury_daily_report_integrity.py",
+              "test_treasury_ishares_timeout.py",
+          ):
+              suite.addTests(unittest.defaultTestLoader.discover("tests", pattern=pattern))
+          result = unittest.TextTestRunner(verbosity=2).run(suite)
+          raise SystemExit(0 if result.wasSuccessful() else 1)
+          PY
