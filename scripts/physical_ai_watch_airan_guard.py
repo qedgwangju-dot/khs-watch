@@ -607,6 +607,8 @@ STOCK_ONLY_REACTION = re.compile(
 
 
 def _is_stock_reaction_only(item: dict) -> bool:
+    if item.get('correction_for_false_stock_alerts') and item.get('source') == 'VNET':
+        return False  # Explicit one-time correction from issuer, not a market story.
     headline = item.get('title') or ''
     source = item.get('source') or ''
     # Reliable publishers may report stock movement: editorial trust does
