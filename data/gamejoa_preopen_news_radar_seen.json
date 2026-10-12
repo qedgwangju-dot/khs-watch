@@ -13265,6 +13265,29 @@
       "telegram_core_fact": "포르투나 마이닝(FSM)은 3분기 금환산온스(GEO) 기준 생산량이 6만9665온스로 전년 동기(7만2462온스) 대비 3.9%, 전분기(7만2217온스) 대비 3.5% 감소했다고 10월 7일 발표했다.",
       "title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소"
     },
+    "core:618200e4ec6eb824d7d480f3": {
+      "first_seen_kst": "2026-10-13T03:12:47+09:00",
+      "lanes": {
+        "live": "2026-10-13T03:12:47+09:00"
+      },
+      "last_seen_kst": "2026-10-13T03:12:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821549",
+      "source": "뉴시스",
+      "source_body_digest": "375fb37b5e9197d145742dc54b73d372295e8d8ae90e44b23296a55f5b5c1b4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3a4814546138d1ff013ccef98eae76310c6c8715f537469a4961c0b4de85dec",
+      "source_fact_keys": [
+        "source_fact:v1:00fcf43f5f4afe8e17bca05239a7d68700d2ae8dd7c9cb3b899bd833ba25b4f0",
+        "source_fact:v1:05bcf00b024fd3ce53c7f6194ce45748cc8976256b270885cdd6c05453ec94db",
+        "source_fact:v1:579b2f40c0c2914b573bed775ccb3c0b8ddb6758530d35f473dfbcbe9a8fa996",
+        "source_fact:v1:7f14d4ee881430553eb8b90ca4529e1f0417928f0a99e8f29a203c17409e3647",
+        "source_fact:v1:c22c36c7502f18195bd09603c99c4c6b822c0ca55ffd20a0c9705b2a710bf06f"
+      ],
+      "source_published_kst": "2026-10-12T09:20+09:00",
+      "source_title": "웹케시 '경리나라', 중국계 기업 시장 공략…위세얼과 협약",
+      "telegram_core_fact": "웹케시가 중국 기업의 한국 진출을 돕는 위세얼과 손잡고 국내에 들어온 중국계 기업에 경리 업무 플랫폼 '경리나라'를 공급한다.",
+      "title": "웹케시 '경리나라', 중국계 기업 시장 공략…위세얼과 협약"
+    },
     "core:61b249cfc2f9ebedcf1a7301": {
       "first_seen_kst": "2026-10-12T19:29:26+09:00",
       "lanes": {
@@ -22879,6 +22902,28 @@
       "telegram_core_fact": "10월 7일 금융정보업체 에프앤가이드에 따르면 삼성전자의 3분기 영업이익 컨센서스는 약 106조억원으로 집계됐다.",
       "title": "삼성전자 분기 영업이익 100조원 넘을까...하닉도 역대급 실적- 매경ECONOMY"
     },
+    "core:ad130299b42f4771dc9af0e2": {
+      "first_seen_kst": "2026-10-13T03:12:47+09:00",
+      "lanes": {
+        "live": "2026-10-13T03:12:47+09:00"
+      },
+      "last_seen_kst": "2026-10-13T03:12:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02256646645612264",
+      "source": "이데일리",
+      "source_body_digest": "b9a9df977c691254de56ee6018513e4413e02123966308f231ac2f7612fa6556",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d44dfd74feaeea415a1b964d47d55e39627d194899dd52a245c296f64a663890",
+      "source_fact_keys": [
+        "source_fact:v1:3d69477c6b64af07ba94c10329449a62f48d5940ba3137f3a6cfb8ced2cf2e53",
+        "source_fact:v1:582ac0ae2588c424f1263045cde901f03642e9e66b8d844818a18cb4acf00459",
+        "source_fact:v1:6c3162a8ae01d614bc5b36ac8fe55f617d9dc7c4118126e9a62bdeff4142e7a8",
+        "source_fact:v1:e1c4a9495757e9b46bb4fd600460115c89a647b85b3d7e9afef0ddd67747b1f8"
+      ],
+      "source_published_kst": "2026-10-12T09:04+09:00",
+      "source_title": "삼성물산, 반포푸르지오에 ‘넥스트 리모델링’ 첫 적용 제안",
+      "telegram_core_fact": "삼성물산이 노후 아파트의 기존 골조를 활용해 인허가와 공사기간을 줄이는 리모델링 방식을 서울 서초구 반포푸르지오에 처음 제안했다.",
+      "title": "삼성물산, 반포푸르지오에 ‘넥스트 리모델링’ 첫 적용 제안"
+    },
     "core:ad88ac59407b44764ddbd416": {
       "first_seen_kst": "2026-10-08T12:13:24+09:00",
       "lanes": {
@@ -24031,6 +24076,23 @@
       "source_title": "\"죽어야 할까 물으니 조롱한 AI\"… 청소년 보호 기능 작동 '먹통'",
       "telegram_core_fact": "그는 \"AI 캐릭터 챗 사업자가 청소년 보호조치와 안전성 검증 결과를 제출하도록 하는 등록제 도입을 검토해 달라\"며 \"서비스 운영 과정에서 보호조치 이행 여부를 점검하고, 위반 시 시정·제재할 수 있는 방안도 마련해야 한다\"고 말했다.",
       "title": "\"죽어야 할까 물으니 조롱한 AI\"… 청소년 보호 기능 작동 '먹통'"
+    },
+    "core:b6b7e13ff20ff41485e72d59": {
+      "first_seen_kst": "2026-10-13T03:12:47+09:00",
+      "lanes": {
+        "live": "2026-10-13T03:12:47+09:00"
+      },
+      "last_seen_kst": "2026-10-13T03:12:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821551",
+      "source": "뉴시스",
+      "source_body_digest": "383723aba57fb174c63219eba8248aaa0131f80348c42d8a250ff50b6a7bd4df",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T09:19+09:00",
+      "source_title": "식약처 \"국제인증표준품 관련 종합안내서 발간\"",
+      "telegram_core_fact": "식약처 소속 식품의약품안전평가원은 국제인증표준품(CRM) 및 NDMA 등 니트로사민류 표준품을 포함한 '2026 식품의약품안전처 표준품 종합안내서'를 발간하고 이날부터 표준품 분양을 시작한다고 12일 밝혔다.",
+      "title": "식약처 \"국제인증표준품 관련 종합안내서 발간\""
     },
     "core:b6b9da6f4f0aeff8052f5550": {
       "first_seen_kst": "2026-10-09T23:49:51+09:00",
@@ -27233,6 +27295,23 @@
       "source_title": "국세청, 구글코리아 1540억원대 법인세 취소소송에서 패소",
       "telegram_core_fact": "구글코리아가 1540억원대 법인세 부과에 불복해 낸 소송에서 과세당국이 최종 패소, 과세 처분이 취소된다.",
       "title": "국세청, 구글코리아 1540억원대 법인세 취소소송에서 패소"
+    },
+    "core:cff61981898660562ca8e6e7": {
+      "first_seen_kst": "2026-10-13T03:12:47+09:00",
+      "lanes": {
+        "live": "2026-10-13T03:12:47+09:00"
+      },
+      "last_seen_kst": "2026-10-13T03:12:47+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634470",
+      "source": "이투데이",
+      "source_body_digest": "a18ec1769e9f00c49934dc122265ad60b8e6110f8a310bd93753c2317286a4d0",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T09:17+09:00",
+      "source_title": "오리엔트바이오, ‘SPF 연구용 토끼’ 공급 본격화…전량 수입 대체 가속",
+      "telegram_core_fact": "오리엔트바이오는 정읍센터에서 양산 중인 SPF 연구용 토끼의 공급 라인을 확대하고 국내 연구현장 지원을 강화한다고 12일 밝혔다. 첨단 바이오 인프라 전문기업 오리엔트바이오가 전북 정읍센터를 통해 자체 생산한 특정병원체 부재(SPF) 연구용 토끼의 공급을 본격 확대한다.",
+      "title": "오리엔트바이오, ‘SPF 연구용 토끼’ 공급 본격화…전량 수입 대체 가속"
     },
     "core:d007d6d176f80e442907c6c3": {
       "first_seen_kst": "2026-10-11T17:50:48+09:00",
@@ -71654,6 +71733,28 @@
       "telegram_core_fact": "블룸버그통신에 따르면 스페이스X는 투자회사 그레인매니지먼트가 보유한 미국 전역의 800㎒대 주파수 면허를 인수하기로 했다.",
       "title": "주파수 탐내는 머스크…美 이동통신 3사 '긴장'"
     },
+    "fact:8f520a68e2feb79bbc2c565f": {
+      "first_seen_kst": "2026-10-13T03:12:47+09:00",
+      "lanes": {
+        "live": "2026-10-13T03:12:47+09:00"
+      },
+      "last_seen_kst": "2026-10-13T03:12:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02256646645612264",
+      "source": "이데일리",
+      "source_body_digest": "b9a9df977c691254de56ee6018513e4413e02123966308f231ac2f7612fa6556",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d44dfd74feaeea415a1b964d47d55e39627d194899dd52a245c296f64a663890",
+      "source_fact_keys": [
+        "source_fact:v1:3d69477c6b64af07ba94c10329449a62f48d5940ba3137f3a6cfb8ced2cf2e53",
+        "source_fact:v1:582ac0ae2588c424f1263045cde901f03642e9e66b8d844818a18cb4acf00459",
+        "source_fact:v1:6c3162a8ae01d614bc5b36ac8fe55f617d9dc7c4118126e9a62bdeff4142e7a8",
+        "source_fact:v1:e1c4a9495757e9b46bb4fd600460115c89a647b85b3d7e9afef0ddd67747b1f8"
+      ],
+      "source_published_kst": "2026-10-12T09:04+09:00",
+      "source_title": "삼성물산, 반포푸르지오에 ‘넥스트 리모델링’ 첫 적용 제안",
+      "telegram_core_fact": "삼성물산이 노후 아파트의 기존 골조를 활용해 인허가와 공사기간을 줄이는 리모델링 방식을 서울 서초구 반포푸르지오에 처음 제안했다.",
+      "title": "삼성물산, 반포푸르지오에 ‘넥스트 리모델링’ 첫 적용 제안"
+    },
     "fact:8f6955397e472bb5643c70cf": {
       "first_seen_kst": "2026-10-11T13:18:03+09:00",
       "lanes": {
@@ -83909,6 +84010,29 @@
       ],
       "source_published_kst": "2026-10-07T11:05+09:00",
       "title": "\"가전·전장 끌고 TV도 반등\"…LG전자, 3Q 영업익 7818억원…전년比 13.5% 증가"
+    },
+    "fact:ce4c8ba3cf839e9982379cc4": {
+      "first_seen_kst": "2026-10-13T03:12:47+09:00",
+      "lanes": {
+        "live": "2026-10-13T03:12:47+09:00"
+      },
+      "last_seen_kst": "2026-10-13T03:12:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821549",
+      "source": "뉴시스",
+      "source_body_digest": "375fb37b5e9197d145742dc54b73d372295e8d8ae90e44b23296a55f5b5c1b4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3a4814546138d1ff013ccef98eae76310c6c8715f537469a4961c0b4de85dec",
+      "source_fact_keys": [
+        "source_fact:v1:00fcf43f5f4afe8e17bca05239a7d68700d2ae8dd7c9cb3b899bd833ba25b4f0",
+        "source_fact:v1:05bcf00b024fd3ce53c7f6194ce45748cc8976256b270885cdd6c05453ec94db",
+        "source_fact:v1:579b2f40c0c2914b573bed775ccb3c0b8ddb6758530d35f473dfbcbe9a8fa996",
+        "source_fact:v1:7f14d4ee881430553eb8b90ca4529e1f0417928f0a99e8f29a203c17409e3647",
+        "source_fact:v1:c22c36c7502f18195bd09603c99c4c6b822c0ca55ffd20a0c9705b2a710bf06f"
+      ],
+      "source_published_kst": "2026-10-12T09:20+09:00",
+      "source_title": "웹케시 '경리나라', 중국계 기업 시장 공략…위세얼과 협약",
+      "telegram_core_fact": "웹케시가 중국 기업의 한국 진출을 돕는 위세얼과 손잡고 국내에 들어온 중국계 기업에 경리 업무 플랫폼 '경리나라'를 공급한다.",
+      "title": "웹케시 '경리나라', 중국계 기업 시장 공략…위세얼과 협약"
     },
     "fact:ce4fd474d2253b00124d115b": {
       "first_seen_kst": "2026-10-09T19:24:17+09:00",
@@ -115692,6 +115816,28 @@
       "telegram_core_fact": "한국수자원공사(한수원)가 용인 반도체 국가산단에 하루 107.2만톤의 공업용수를 공급하기 위해 추진 중인 이 사업은 팔당댐에서 수도권으로 향하는 하남 도수관 분기점에 서 광주를 거쳐 용인 국가산단까지 46.9km 길이의 관로를 신설한다.",
       "title": "용인은 돈벼락, 하남·광주는 물벼락..\"희생만 강요\""
     },
+    "link:51268886d46b6123e3b519cf": {
+      "first_seen_kst": "2026-10-13T03:12:47+09:00",
+      "lanes": {
+        "live": "2026-10-13T03:12:47+09:00"
+      },
+      "last_seen_kst": "2026-10-13T03:12:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02256646645612264",
+      "source": "이데일리",
+      "source_body_digest": "b9a9df977c691254de56ee6018513e4413e02123966308f231ac2f7612fa6556",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d44dfd74feaeea415a1b964d47d55e39627d194899dd52a245c296f64a663890",
+      "source_fact_keys": [
+        "source_fact:v1:3d69477c6b64af07ba94c10329449a62f48d5940ba3137f3a6cfb8ced2cf2e53",
+        "source_fact:v1:582ac0ae2588c424f1263045cde901f03642e9e66b8d844818a18cb4acf00459",
+        "source_fact:v1:6c3162a8ae01d614bc5b36ac8fe55f617d9dc7c4118126e9a62bdeff4142e7a8",
+        "source_fact:v1:e1c4a9495757e9b46bb4fd600460115c89a647b85b3d7e9afef0ddd67747b1f8"
+      ],
+      "source_published_kst": "2026-10-12T09:04+09:00",
+      "source_title": "삼성물산, 반포푸르지오에 ‘넥스트 리모델링’ 첫 적용 제안",
+      "telegram_core_fact": "삼성물산이 노후 아파트의 기존 골조를 활용해 인허가와 공사기간을 줄이는 리모델링 방식을 서울 서초구 반포푸르지오에 처음 제안했다.",
+      "title": "삼성물산, 반포푸르지오에 ‘넥스트 리모델링’ 첫 적용 제안"
+    },
     "link:5134888d95c22e7ead2708b4": {
       "first_seen_kst": "2026-10-04T04:29:39+09:00",
       "lanes": {
@@ -125470,6 +125616,23 @@
       "source_title": "신안산선 붕괴 4662억 '청구서'…영업정지에도 수주는 계속",
       "telegram_core_fact": "기존 계약에 따른 공사는 영업정지 중에도 계속할 수 있는 만큼 신규 계약과 입찰 제한이 언제 시작되는지가 제재의 실효성을 좌우한다.",
       "title": "신안산선 붕괴 4662억 '청구서'…영업정지에도 수주는 계속"
+    },
+    "link:747fb1784b4b366a734fc8f4": {
+      "first_seen_kst": "2026-10-13T03:12:47+09:00",
+      "lanes": {
+        "live": "2026-10-13T03:12:47+09:00"
+      },
+      "last_seen_kst": "2026-10-13T03:12:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821551",
+      "source": "뉴시스",
+      "source_body_digest": "383723aba57fb174c63219eba8248aaa0131f80348c42d8a250ff50b6a7bd4df",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T09:19+09:00",
+      "source_title": "식약처 \"국제인증표준품 관련 종합안내서 발간\"",
+      "telegram_core_fact": "식약처 소속 식품의약품안전평가원은 국제인증표준품(CRM) 및 NDMA 등 니트로사민류 표준품을 포함한 '2026 식품의약품안전처 표준품 종합안내서'를 발간하고 이날부터 표준품 분양을 시작한다고 12일 밝혔다.",
+      "title": "식약처 \"국제인증표준품 관련 종합안내서 발간\""
     },
     "link:7495263893005a81f0fff1af": {
       "first_seen_kst": "2026-09-19T20:13:35+09:00",
@@ -138729,6 +138892,23 @@
       "source_title": "IMF 총재 \"고유가·부채·AI 거품, 세계경제 거센 위협\" 경고",
       "telegram_core_fact": "크리스탈리나 게오르기에바(사진) 국제통화기금(IMF) 총재가 고유가 장기화, 치솟는 국가 부채, 인공지능(AI) 투자 열풍에 따른 위험성을 지적하며 세계 경제가 심각한 위협에 직면해 있다고 경고했다.",
       "title": "IMF 총재 \"고유가·부채·AI 거품, 세계경제 거센 위협\" 경고"
+    },
+    "link:a582267b549dcca2ac36484a": {
+      "first_seen_kst": "2026-10-13T03:12:47+09:00",
+      "lanes": {
+        "live": "2026-10-13T03:12:47+09:00"
+      },
+      "last_seen_kst": "2026-10-13T03:12:47+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634470",
+      "source": "이투데이",
+      "source_body_digest": "a18ec1769e9f00c49934dc122265ad60b8e6110f8a310bd93753c2317286a4d0",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T09:17+09:00",
+      "source_title": "오리엔트바이오, ‘SPF 연구용 토끼’ 공급 본격화…전량 수입 대체 가속",
+      "telegram_core_fact": "오리엔트바이오는 정읍센터에서 양산 중인 SPF 연구용 토끼의 공급 라인을 확대하고 국내 연구현장 지원을 강화한다고 12일 밝혔다. 첨단 바이오 인프라 전문기업 오리엔트바이오가 전북 정읍센터를 통해 자체 생산한 특정병원체 부재(SPF) 연구용 토끼의 공급을 본격 확대한다.",
+      "title": "오리엔트바이오, ‘SPF 연구용 토끼’ 공급 본격화…전량 수입 대체 가속"
     },
     "link:a59100257304ab32281616df": {
       "first_seen_kst": "2026-10-09T18:14:26+09:00",
@@ -160723,6 +160903,29 @@
       "source_published_kst": "2026-10-06T14:48+09:00",
       "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
     },
+    "link:f81672c546972fa6ffb8216f": {
+      "first_seen_kst": "2026-10-13T03:12:47+09:00",
+      "lanes": {
+        "live": "2026-10-13T03:12:47+09:00"
+      },
+      "last_seen_kst": "2026-10-13T03:12:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821549",
+      "source": "뉴시스",
+      "source_body_digest": "375fb37b5e9197d145742dc54b73d372295e8d8ae90e44b23296a55f5b5c1b4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3a4814546138d1ff013ccef98eae76310c6c8715f537469a4961c0b4de85dec",
+      "source_fact_keys": [
+        "source_fact:v1:00fcf43f5f4afe8e17bca05239a7d68700d2ae8dd7c9cb3b899bd833ba25b4f0",
+        "source_fact:v1:05bcf00b024fd3ce53c7f6194ce45748cc8976256b270885cdd6c05453ec94db",
+        "source_fact:v1:579b2f40c0c2914b573bed775ccb3c0b8ddb6758530d35f473dfbcbe9a8fa996",
+        "source_fact:v1:7f14d4ee881430553eb8b90ca4529e1f0417928f0a99e8f29a203c17409e3647",
+        "source_fact:v1:c22c36c7502f18195bd09603c99c4c6b822c0ca55ffd20a0c9705b2a710bf06f"
+      ],
+      "source_published_kst": "2026-10-12T09:20+09:00",
+      "source_title": "웹케시 '경리나라', 중국계 기업 시장 공략…위세얼과 협약",
+      "telegram_core_fact": "웹케시가 중국 기업의 한국 진출을 돕는 위세얼과 손잡고 국내에 들어온 중국계 기업에 경리 업무 플랫폼 '경리나라'를 공급한다.",
+      "title": "웹케시 '경리나라', 중국계 기업 시장 공략…위세얼과 협약"
+    },
     "link:f83b487106971cd363ae16c1": {
       "first_seen_kst": "2026-10-06T17:59:23+09:00",
       "lanes": {
@@ -180648,6 +180851,29 @@
       "source_published_kst": "2026-10-05T09:22+09:00",
       "title": "HD현대사이트솔루션, 국내 최대 18t 전동지게차 출시…조선소·항만도 전동화"
     },
+    "original:41f4ab6284f1f1af370c8020": {
+      "first_seen_kst": "2026-10-13T03:12:47+09:00",
+      "lanes": {
+        "live": "2026-10-13T03:12:47+09:00"
+      },
+      "last_seen_kst": "2026-10-13T03:12:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821549",
+      "source": "뉴시스",
+      "source_body_digest": "375fb37b5e9197d145742dc54b73d372295e8d8ae90e44b23296a55f5b5c1b4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3a4814546138d1ff013ccef98eae76310c6c8715f537469a4961c0b4de85dec",
+      "source_fact_keys": [
+        "source_fact:v1:00fcf43f5f4afe8e17bca05239a7d68700d2ae8dd7c9cb3b899bd833ba25b4f0",
+        "source_fact:v1:05bcf00b024fd3ce53c7f6194ce45748cc8976256b270885cdd6c05453ec94db",
+        "source_fact:v1:579b2f40c0c2914b573bed775ccb3c0b8ddb6758530d35f473dfbcbe9a8fa996",
+        "source_fact:v1:7f14d4ee881430553eb8b90ca4529e1f0417928f0a99e8f29a203c17409e3647",
+        "source_fact:v1:c22c36c7502f18195bd09603c99c4c6b822c0ca55ffd20a0c9705b2a710bf06f"
+      ],
+      "source_published_kst": "2026-10-12T09:20+09:00",
+      "source_title": "웹케시 '경리나라', 중국계 기업 시장 공략…위세얼과 협약",
+      "telegram_core_fact": "웹케시가 중국 기업의 한국 진출을 돕는 위세얼과 손잡고 국내에 들어온 중국계 기업에 경리 업무 플랫폼 '경리나라'를 공급한다.",
+      "title": "웹케시 '경리나라', 중국계 기업 시장 공략…위세얼과 협약"
+    },
     "original:4205fbd505b6766f19954525": {
       "first_seen_kst": "2026-09-18T11:44:00+09:00",
       "lanes": {
@@ -183763,6 +183989,23 @@
       ],
       "source_published_kst": "2026-10-06T05:55+09:00",
       "title": "금리 공포 누른 AI…나스닥 사상 최고치[뉴욕마감]"
+    },
+    "original:4d9ebe9e2a337646466df1dd": {
+      "first_seen_kst": "2026-10-13T03:12:47+09:00",
+      "lanes": {
+        "live": "2026-10-13T03:12:47+09:00"
+      },
+      "last_seen_kst": "2026-10-13T03:12:47+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634470",
+      "source": "이투데이",
+      "source_body_digest": "a18ec1769e9f00c49934dc122265ad60b8e6110f8a310bd93753c2317286a4d0",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T09:17+09:00",
+      "source_title": "오리엔트바이오, ‘SPF 연구용 토끼’ 공급 본격화…전량 수입 대체 가속",
+      "telegram_core_fact": "오리엔트바이오는 정읍센터에서 양산 중인 SPF 연구용 토끼의 공급 라인을 확대하고 국내 연구현장 지원을 강화한다고 12일 밝혔다. 첨단 바이오 인프라 전문기업 오리엔트바이오가 전북 정읍센터를 통해 자체 생산한 특정병원체 부재(SPF) 연구용 토끼의 공급을 본격 확대한다.",
+      "title": "오리엔트바이오, ‘SPF 연구용 토끼’ 공급 본격화…전량 수입 대체 가속"
     },
     "original:4d9f338925788413e02c6db0": {
       "first_seen_kst": "2026-10-08T07:12:10+09:00",
@@ -192799,6 +193042,28 @@
       "source_published_kst": "2026-10-06T10:58+09:00",
       "title": "신고가 엔비디아 따라 달린다…‘수혜주’ 두산·LG전자 랠리"
     },
+    "original:71db77eca7a5ebcf5c4fdb2b": {
+      "first_seen_kst": "2026-10-13T03:12:47+09:00",
+      "lanes": {
+        "live": "2026-10-13T03:12:47+09:00"
+      },
+      "last_seen_kst": "2026-10-13T03:12:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02256646645612264",
+      "source": "이데일리",
+      "source_body_digest": "b9a9df977c691254de56ee6018513e4413e02123966308f231ac2f7612fa6556",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d44dfd74feaeea415a1b964d47d55e39627d194899dd52a245c296f64a663890",
+      "source_fact_keys": [
+        "source_fact:v1:3d69477c6b64af07ba94c10329449a62f48d5940ba3137f3a6cfb8ced2cf2e53",
+        "source_fact:v1:582ac0ae2588c424f1263045cde901f03642e9e66b8d844818a18cb4acf00459",
+        "source_fact:v1:6c3162a8ae01d614bc5b36ac8fe55f617d9dc7c4118126e9a62bdeff4142e7a8",
+        "source_fact:v1:e1c4a9495757e9b46bb4fd600460115c89a647b85b3d7e9afef0ddd67747b1f8"
+      ],
+      "source_published_kst": "2026-10-12T09:04+09:00",
+      "source_title": "삼성물산, 반포푸르지오에 ‘넥스트 리모델링’ 첫 적용 제안",
+      "telegram_core_fact": "삼성물산이 노후 아파트의 기존 골조를 활용해 인허가와 공사기간을 줄이는 리모델링 방식을 서울 서초구 반포푸르지오에 처음 제안했다.",
+      "title": "삼성물산, 반포푸르지오에 ‘넥스트 리모델링’ 첫 적용 제안"
+    },
     "original:71e3fa09c3bcc1abc8eae43d": {
       "first_seen_kst": "2026-09-20T00:38:33+09:00",
       "lanes": {
@@ -200636,6 +200901,23 @@
       "link": "https://www.fnnews.com/news/202610011654459279",
       "source": "파이낸셜뉴스",
       "title": "바이오협, 바이오기업 31곳 투자유치 지원…투자자 미팅 20건 연계"
+    },
+    "original:8e870b563521ac523402afb8": {
+      "first_seen_kst": "2026-10-13T03:12:47+09:00",
+      "lanes": {
+        "live": "2026-10-13T03:12:47+09:00"
+      },
+      "last_seen_kst": "2026-10-13T03:12:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821551",
+      "source": "뉴시스",
+      "source_body_digest": "383723aba57fb174c63219eba8248aaa0131f80348c42d8a250ff50b6a7bd4df",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T09:19+09:00",
+      "source_title": "식약처 \"국제인증표준품 관련 종합안내서 발간\"",
+      "telegram_core_fact": "식약처 소속 식품의약품안전평가원은 국제인증표준품(CRM) 및 NDMA 등 니트로사민류 표준품을 포함한 '2026 식품의약품안전처 표준품 종합안내서'를 발간하고 이날부터 표준품 분양을 시작한다고 12일 밝혔다.",
+      "title": "식약처 \"국제인증표준품 관련 종합안내서 발간\""
     },
     "original:8e9bf3ef95bd23686c880d21": {
       "first_seen_kst": "2026-10-12T16:08:52+09:00",
@@ -260112,24 +260394,24 @@
     "source_fact:2085e403df0fb376231e865e": {
       "first_seen_kst": "2026-10-12T10:17:45+09:00",
       "lanes": {
-        "live": "2026-10-12T10:17:45+09:00"
+        "live": "2026-10-13T03:12:47+09:00"
       },
-      "last_seen_kst": "2026-10-12T10:17:45+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2634490",
-      "source": "이투데이",
-      "source_body_digest": "4650fa862220d4ea38739b90bc6b7a04e4900d3c1ba6289a0675b2e5d9431b8d",
+      "last_seen_kst": "2026-10-13T03:12:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02256646645612264",
+      "source": "이데일리",
+      "source_body_digest": "b9a9df977c691254de56ee6018513e4413e02123966308f231ac2f7612fa6556",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:2958a743f205ad855024f11885f51e237f89faf307fd5f98571e1d66664f37a9",
+      "source_fact_identity": "source_facts:v1:d44dfd74feaeea415a1b964d47d55e39627d194899dd52a245c296f64a663890",
       "source_fact_keys": [
         "source_fact:v1:3d69477c6b64af07ba94c10329449a62f48d5940ba3137f3a6cfb8ced2cf2e53",
+        "source_fact:v1:582ac0ae2588c424f1263045cde901f03642e9e66b8d844818a18cb4acf00459",
         "source_fact:v1:6c3162a8ae01d614bc5b36ac8fe55f617d9dc7c4118126e9a62bdeff4142e7a8",
-        "source_fact:v1:a16e2ae043e637270952912296c877076ca41fa78ce4793740cde1e19f0b0689",
-        "source_fact:v1:ba7ceb206d3ea16f74f7c730f0a2e4de39636ce79bb342f9516abd5be59d0791"
+        "source_fact:v1:e1c4a9495757e9b46bb4fd600460115c89a647b85b3d7e9afef0ddd67747b1f8"
       ],
-      "source_published_kst": "2026-10-12T09:31+09:00",
-      "source_title": "삼성물산, 반포푸르지오서 '넥스트 리모델링' 첫선⋯“신축급 주거 구현”",
-      "telegram_core_fact": "삼성물산은 반포푸르지오아파트 리모델링 사업에 넥스트 리모델링 설계안을 담은 입찰제안서를 제출했다고 12일 밝혔다.",
-      "title": "삼성물산, 반포푸르지오서 '넥스트 리모델링' 첫선⋯“신축급 주거 구현”"
+      "source_published_kst": "2026-10-12T09:04+09:00",
+      "source_title": "삼성물산, 반포푸르지오에 ‘넥스트 리모델링’ 첫 적용 제안",
+      "telegram_core_fact": "삼성물산이 노후 아파트의 기존 골조를 활용해 인허가와 공사기간을 줄이는 리모델링 방식을 서울 서초구 반포푸르지오에 처음 제안했다.",
+      "title": "삼성물산, 반포푸르지오에 ‘넥스트 리모델링’ 첫 적용 제안"
     },
     "source_fact:20868cb2bb6a3f623aeb3808": {
       "first_seen_kst": "2026-10-10T16:38:23+09:00",
@@ -368801,24 +369083,24 @@
     "source_fact:95804e9fe25c8cb9461a6a6c": {
       "first_seen_kst": "2026-10-12T10:17:45+09:00",
       "lanes": {
-        "live": "2026-10-12T10:17:45+09:00"
+        "live": "2026-10-13T03:12:47+09:00"
       },
-      "last_seen_kst": "2026-10-12T10:17:45+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2634490",
-      "source": "이투데이",
-      "source_body_digest": "4650fa862220d4ea38739b90bc6b7a04e4900d3c1ba6289a0675b2e5d9431b8d",
+      "last_seen_kst": "2026-10-13T03:12:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02256646645612264",
+      "source": "이데일리",
+      "source_body_digest": "b9a9df977c691254de56ee6018513e4413e02123966308f231ac2f7612fa6556",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:2958a743f205ad855024f11885f51e237f89faf307fd5f98571e1d66664f37a9",
+      "source_fact_identity": "source_facts:v1:d44dfd74feaeea415a1b964d47d55e39627d194899dd52a245c296f64a663890",
       "source_fact_keys": [
         "source_fact:v1:3d69477c6b64af07ba94c10329449a62f48d5940ba3137f3a6cfb8ced2cf2e53",
+        "source_fact:v1:582ac0ae2588c424f1263045cde901f03642e9e66b8d844818a18cb4acf00459",
         "source_fact:v1:6c3162a8ae01d614bc5b36ac8fe55f617d9dc7c4118126e9a62bdeff4142e7a8",
-        "source_fact:v1:a16e2ae043e637270952912296c877076ca41fa78ce4793740cde1e19f0b0689",
-        "source_fact:v1:ba7ceb206d3ea16f74f7c730f0a2e4de39636ce79bb342f9516abd5be59d0791"
+        "source_fact:v1:e1c4a9495757e9b46bb4fd600460115c89a647b85b3d7e9afef0ddd67747b1f8"
       ],
-      "source_published_kst": "2026-10-12T09:31+09:00",
-      "source_title": "삼성물산, 반포푸르지오서 '넥스트 리모델링' 첫선⋯“신축급 주거 구현”",
-      "telegram_core_fact": "삼성물산은 반포푸르지오아파트 리모델링 사업에 넥스트 리모델링 설계안을 담은 입찰제안서를 제출했다고 12일 밝혔다.",
-      "title": "삼성물산, 반포푸르지오서 '넥스트 리모델링' 첫선⋯“신축급 주거 구현”"
+      "source_published_kst": "2026-10-12T09:04+09:00",
+      "source_title": "삼성물산, 반포푸르지오에 ‘넥스트 리모델링’ 첫 적용 제안",
+      "telegram_core_fact": "삼성물산이 노후 아파트의 기존 골조를 활용해 인허가와 공사기간을 줄이는 리모델링 방식을 서울 서초구 반포푸르지오에 처음 제안했다.",
+      "title": "삼성물산, 반포푸르지오에 ‘넥스트 리모델링’ 첫 적용 제안"
     },
     "source_fact:95827bf643952f68f6cee740": {
       "first_seen_kst": "2026-10-07T12:49:48+09:00",
@@ -374661,6 +374943,29 @@
       "source_title": "중동 전쟁에도 44조 기름값 담합 의혹…SK에너지·HD현대오일뱅크 ‘공정위 심판대’",
       "telegram_core_fact": "공정위 심사관은 SK에너지·현대오일뱅크가 약 4년간 유류 가격정보를 교환하고 올해 3월 두 차례 가격을 담합했다는 혐의로 심의에 넘겼다. 관련 매출은 약 44.1조원이며 최종 위법 여부와 제재는 미확정이다.",
       "title": "중동 전쟁에도 44조 기름값 담합 의혹…SK에너지·HD현대오일뱅크 ‘공정위 심판대’"
+    },
+    "source_fact:9baef47f1d8ed64ebc58788a": {
+      "first_seen_kst": "2026-10-13T03:12:47+09:00",
+      "lanes": {
+        "live": "2026-10-13T03:12:47+09:00"
+      },
+      "last_seen_kst": "2026-10-13T03:12:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821549",
+      "source": "뉴시스",
+      "source_body_digest": "375fb37b5e9197d145742dc54b73d372295e8d8ae90e44b23296a55f5b5c1b4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3a4814546138d1ff013ccef98eae76310c6c8715f537469a4961c0b4de85dec",
+      "source_fact_keys": [
+        "source_fact:v1:00fcf43f5f4afe8e17bca05239a7d68700d2ae8dd7c9cb3b899bd833ba25b4f0",
+        "source_fact:v1:05bcf00b024fd3ce53c7f6194ce45748cc8976256b270885cdd6c05453ec94db",
+        "source_fact:v1:579b2f40c0c2914b573bed775ccb3c0b8ddb6758530d35f473dfbcbe9a8fa996",
+        "source_fact:v1:7f14d4ee881430553eb8b90ca4529e1f0417928f0a99e8f29a203c17409e3647",
+        "source_fact:v1:c22c36c7502f18195bd09603c99c4c6b822c0ca55ffd20a0c9705b2a710bf06f"
+      ],
+      "source_published_kst": "2026-10-12T09:20+09:00",
+      "source_title": "웹케시 '경리나라', 중국계 기업 시장 공략…위세얼과 협약",
+      "telegram_core_fact": "웹케시가 중국 기업의 한국 진출을 돕는 위세얼과 손잡고 국내에 들어온 중국계 기업에 경리 업무 플랫폼 '경리나라'를 공급한다.",
+      "title": "웹케시 '경리나라', 중국계 기업 시장 공략…위세얼과 협약"
     },
     "source_fact:9bb63f23b144ba5647ad71e5": {
       "first_seen_kst": "2026-10-08T19:11:41+09:00",
@@ -381477,6 +381782,29 @@
       "source_title": "\"코스피 5조 팔아 미장 10조 샀다\"…3분기 개미 '엑소더스'",
       "telegram_core_fact": "한국거래소에 따르면 개인투자자들은 올 3분기(7~9월) 코스피시장에서 5조5000억원대의 주식을 순매도하고, 미국 증시에서 76억 달러(약 10조2000억원의 주식을 순매수했다. 국내시장에서는 7월에 5조3000억원대, 8월에 3조2000억원대를 순매수했지만 9월 들어 14조원대 주식을 순매도했다.",
       "title": "\"코스피 5조 팔아 미장 10조 샀다\"…3분기 개미 '엑소더스'"
+    },
+    "source_fact:a2c821a998c8854ed3146049": {
+      "first_seen_kst": "2026-10-13T03:12:47+09:00",
+      "lanes": {
+        "live": "2026-10-13T03:12:47+09:00"
+      },
+      "last_seen_kst": "2026-10-13T03:12:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821549",
+      "source": "뉴시스",
+      "source_body_digest": "375fb37b5e9197d145742dc54b73d372295e8d8ae90e44b23296a55f5b5c1b4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3a4814546138d1ff013ccef98eae76310c6c8715f537469a4961c0b4de85dec",
+      "source_fact_keys": [
+        "source_fact:v1:00fcf43f5f4afe8e17bca05239a7d68700d2ae8dd7c9cb3b899bd833ba25b4f0",
+        "source_fact:v1:05bcf00b024fd3ce53c7f6194ce45748cc8976256b270885cdd6c05453ec94db",
+        "source_fact:v1:579b2f40c0c2914b573bed775ccb3c0b8ddb6758530d35f473dfbcbe9a8fa996",
+        "source_fact:v1:7f14d4ee881430553eb8b90ca4529e1f0417928f0a99e8f29a203c17409e3647",
+        "source_fact:v1:c22c36c7502f18195bd09603c99c4c6b822c0ca55ffd20a0c9705b2a710bf06f"
+      ],
+      "source_published_kst": "2026-10-12T09:20+09:00",
+      "source_title": "웹케시 '경리나라', 중국계 기업 시장 공략…위세얼과 협약",
+      "telegram_core_fact": "웹케시가 중국 기업의 한국 진출을 돕는 위세얼과 손잡고 국내에 들어온 중국계 기업에 경리 업무 플랫폼 '경리나라'를 공급한다.",
+      "title": "웹케시 '경리나라', 중국계 기업 시장 공략…위세얼과 협약"
     },
     "source_fact:a2c96037f8e068553ac021cb": {
       "first_seen_kst": "2026-10-07T08:57:59+09:00",
@@ -397181,6 +397509,28 @@
       "source_published_kst": "2026-10-05T20:58+09:00",
       "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
     },
+    "source_fact:b4259f268b4086317530a219": {
+      "first_seen_kst": "2026-10-13T03:12:47+09:00",
+      "lanes": {
+        "live": "2026-10-13T03:12:47+09:00"
+      },
+      "last_seen_kst": "2026-10-13T03:12:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02256646645612264",
+      "source": "이데일리",
+      "source_body_digest": "b9a9df977c691254de56ee6018513e4413e02123966308f231ac2f7612fa6556",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d44dfd74feaeea415a1b964d47d55e39627d194899dd52a245c296f64a663890",
+      "source_fact_keys": [
+        "source_fact:v1:3d69477c6b64af07ba94c10329449a62f48d5940ba3137f3a6cfb8ced2cf2e53",
+        "source_fact:v1:582ac0ae2588c424f1263045cde901f03642e9e66b8d844818a18cb4acf00459",
+        "source_fact:v1:6c3162a8ae01d614bc5b36ac8fe55f617d9dc7c4118126e9a62bdeff4142e7a8",
+        "source_fact:v1:e1c4a9495757e9b46bb4fd600460115c89a647b85b3d7e9afef0ddd67747b1f8"
+      ],
+      "source_published_kst": "2026-10-12T09:04+09:00",
+      "source_title": "삼성물산, 반포푸르지오에 ‘넥스트 리모델링’ 첫 적용 제안",
+      "telegram_core_fact": "삼성물산이 노후 아파트의 기존 골조를 활용해 인허가와 공사기간을 줄이는 리모델링 방식을 서울 서초구 반포푸르지오에 처음 제안했다.",
+      "title": "삼성물산, 반포푸르지오에 ‘넥스트 리모델링’ 첫 적용 제안"
+    },
     "source_fact:b42642c6eb813d0ded16e57a": {
       "first_seen_kst": "2026-10-12T23:37:27+09:00",
       "lanes": {
@@ -403941,6 +404291,29 @@
       "source_title": "[단독]역대 최대 수익 올렸는데...지급 안 된 국민연금 성과급",
       "telegram_core_fact": "8일 국회 보건복지위원회 소속 더불어민주당 이인영 의원실이 국민연금공단으로부터 제출받은 자료에 따르면 기금운용본부 일반직 75명과 준법지원실 운용직 12명·일반직 9명 등 총 96명의 성과급 21억5400만원이 현재까지 지급되지 않았다.",
       "title": "[단독]역대 최대 수익 올렸는데...지급 안 된 국민연금 성과급"
+    },
+    "source_fact:bc129c2ae344c8ee73727f06": {
+      "first_seen_kst": "2026-10-13T03:12:47+09:00",
+      "lanes": {
+        "live": "2026-10-13T03:12:47+09:00"
+      },
+      "last_seen_kst": "2026-10-13T03:12:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821549",
+      "source": "뉴시스",
+      "source_body_digest": "375fb37b5e9197d145742dc54b73d372295e8d8ae90e44b23296a55f5b5c1b4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3a4814546138d1ff013ccef98eae76310c6c8715f537469a4961c0b4de85dec",
+      "source_fact_keys": [
+        "source_fact:v1:00fcf43f5f4afe8e17bca05239a7d68700d2ae8dd7c9cb3b899bd833ba25b4f0",
+        "source_fact:v1:05bcf00b024fd3ce53c7f6194ce45748cc8976256b270885cdd6c05453ec94db",
+        "source_fact:v1:579b2f40c0c2914b573bed775ccb3c0b8ddb6758530d35f473dfbcbe9a8fa996",
+        "source_fact:v1:7f14d4ee881430553eb8b90ca4529e1f0417928f0a99e8f29a203c17409e3647",
+        "source_fact:v1:c22c36c7502f18195bd09603c99c4c6b822c0ca55ffd20a0c9705b2a710bf06f"
+      ],
+      "source_published_kst": "2026-10-12T09:20+09:00",
+      "source_title": "웹케시 '경리나라', 중국계 기업 시장 공략…위세얼과 협약",
+      "telegram_core_fact": "웹케시가 중국 기업의 한국 진출을 돕는 위세얼과 손잡고 국내에 들어온 중국계 기업에 경리 업무 플랫폼 '경리나라'를 공급한다.",
+      "title": "웹케시 '경리나라', 중국계 기업 시장 공략…위세얼과 협약"
     },
     "source_fact:bc1df93afa0ba8717a45b7e2": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
@@ -416644,6 +417017,29 @@
       "source_title": "스페이스X, 저대역 주파수 11조원에 인수 추진…통신업계 긴장",
       "telegram_core_fact": "일론 머스크가 이끄는 스페이스X가 약 11조원 저대역 주파수 인수를 추진하며 미국 이동통신 시장 공략에 나섰다.",
       "title": "스페이스X, 저대역 주파수 11조원에 인수 추진…통신업계 긴장"
+    },
+    "source_fact:c98928c7b4ecbbf17b5ae4cd": {
+      "first_seen_kst": "2026-10-13T03:12:47+09:00",
+      "lanes": {
+        "live": "2026-10-13T03:12:47+09:00"
+      },
+      "last_seen_kst": "2026-10-13T03:12:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821549",
+      "source": "뉴시스",
+      "source_body_digest": "375fb37b5e9197d145742dc54b73d372295e8d8ae90e44b23296a55f5b5c1b4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3a4814546138d1ff013ccef98eae76310c6c8715f537469a4961c0b4de85dec",
+      "source_fact_keys": [
+        "source_fact:v1:00fcf43f5f4afe8e17bca05239a7d68700d2ae8dd7c9cb3b899bd833ba25b4f0",
+        "source_fact:v1:05bcf00b024fd3ce53c7f6194ce45748cc8976256b270885cdd6c05453ec94db",
+        "source_fact:v1:579b2f40c0c2914b573bed775ccb3c0b8ddb6758530d35f473dfbcbe9a8fa996",
+        "source_fact:v1:7f14d4ee881430553eb8b90ca4529e1f0417928f0a99e8f29a203c17409e3647",
+        "source_fact:v1:c22c36c7502f18195bd09603c99c4c6b822c0ca55ffd20a0c9705b2a710bf06f"
+      ],
+      "source_published_kst": "2026-10-12T09:20+09:00",
+      "source_title": "웹케시 '경리나라', 중국계 기업 시장 공략…위세얼과 협약",
+      "telegram_core_fact": "웹케시가 중국 기업의 한국 진출을 돕는 위세얼과 손잡고 국내에 들어온 중국계 기업에 경리 업무 플랫폼 '경리나라'를 공급한다.",
+      "title": "웹케시 '경리나라', 중국계 기업 시장 공략…위세얼과 협약"
     },
     "source_fact:c98cf37f8dd4b1c1ec222bf6": {
       "first_seen_kst": "2026-10-07T18:12:46+09:00",
@@ -443619,6 +444015,28 @@
       "source_published_kst": "2026-10-06T11:00+09:00",
       "title": "규제합리화추진단 \"디스플레이 규제 개선…수입 간소화·AI 보안가이드 마련\""
     },
+    "source_fact:e5ee48ee76d78b8d0a0f3206": {
+      "first_seen_kst": "2026-10-13T03:12:47+09:00",
+      "lanes": {
+        "live": "2026-10-13T03:12:47+09:00"
+      },
+      "last_seen_kst": "2026-10-13T03:12:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02256646645612264",
+      "source": "이데일리",
+      "source_body_digest": "b9a9df977c691254de56ee6018513e4413e02123966308f231ac2f7612fa6556",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d44dfd74feaeea415a1b964d47d55e39627d194899dd52a245c296f64a663890",
+      "source_fact_keys": [
+        "source_fact:v1:3d69477c6b64af07ba94c10329449a62f48d5940ba3137f3a6cfb8ced2cf2e53",
+        "source_fact:v1:582ac0ae2588c424f1263045cde901f03642e9e66b8d844818a18cb4acf00459",
+        "source_fact:v1:6c3162a8ae01d614bc5b36ac8fe55f617d9dc7c4118126e9a62bdeff4142e7a8",
+        "source_fact:v1:e1c4a9495757e9b46bb4fd600460115c89a647b85b3d7e9afef0ddd67747b1f8"
+      ],
+      "source_published_kst": "2026-10-12T09:04+09:00",
+      "source_title": "삼성물산, 반포푸르지오에 ‘넥스트 리모델링’ 첫 적용 제안",
+      "telegram_core_fact": "삼성물산이 노후 아파트의 기존 골조를 활용해 인허가와 공사기간을 줄이는 리모델링 방식을 서울 서초구 반포푸르지오에 처음 제안했다.",
+      "title": "삼성물산, 반포푸르지오에 ‘넥스트 리모델링’ 첫 적용 제안"
+    },
     "source_fact:e5f3d9805eb18713dbaf64eb": {
       "first_seen_kst": "2026-10-12T14:17:50+09:00",
       "lanes": {
@@ -451404,6 +451822,29 @@
       ],
       "source_published_kst": "2026-10-06T17:24+09:00",
       "title": "포스코퓨처엠, 삼성SDI에 LFP 양극재 6조원어치 공급"
+    },
+    "source_fact:eeb181b614a4bfde48d1adad": {
+      "first_seen_kst": "2026-10-13T03:12:47+09:00",
+      "lanes": {
+        "live": "2026-10-13T03:12:47+09:00"
+      },
+      "last_seen_kst": "2026-10-13T03:12:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821549",
+      "source": "뉴시스",
+      "source_body_digest": "375fb37b5e9197d145742dc54b73d372295e8d8ae90e44b23296a55f5b5c1b4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3a4814546138d1ff013ccef98eae76310c6c8715f537469a4961c0b4de85dec",
+      "source_fact_keys": [
+        "source_fact:v1:00fcf43f5f4afe8e17bca05239a7d68700d2ae8dd7c9cb3b899bd833ba25b4f0",
+        "source_fact:v1:05bcf00b024fd3ce53c7f6194ce45748cc8976256b270885cdd6c05453ec94db",
+        "source_fact:v1:579b2f40c0c2914b573bed775ccb3c0b8ddb6758530d35f473dfbcbe9a8fa996",
+        "source_fact:v1:7f14d4ee881430553eb8b90ca4529e1f0417928f0a99e8f29a203c17409e3647",
+        "source_fact:v1:c22c36c7502f18195bd09603c99c4c6b822c0ca55ffd20a0c9705b2a710bf06f"
+      ],
+      "source_published_kst": "2026-10-12T09:20+09:00",
+      "source_title": "웹케시 '경리나라', 중국계 기업 시장 공략…위세얼과 협약",
+      "telegram_core_fact": "웹케시가 중국 기업의 한국 진출을 돕는 위세얼과 손잡고 국내에 들어온 중국계 기업에 경리 업무 플랫폼 '경리나라'를 공급한다.",
+      "title": "웹케시 '경리나라', 중국계 기업 시장 공략…위세얼과 협약"
     },
     "source_fact:eeb2bf25a9052541e723905a": {
       "first_seen_kst": "2026-10-12T07:27:08+09:00",
@@ -484471,6 +484912,29 @@
       "source_published_kst": "2026-10-05T09:22+09:00",
       "title": "HD현대사이트솔루션, 국내 최대 18t 전동지게차 출시…조선소·항만도 전동화"
     },
+    "title:41f4ab6284f1f1af370c8020": {
+      "first_seen_kst": "2026-10-13T03:12:47+09:00",
+      "lanes": {
+        "live": "2026-10-13T03:12:47+09:00"
+      },
+      "last_seen_kst": "2026-10-13T03:12:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821549",
+      "source": "뉴시스",
+      "source_body_digest": "375fb37b5e9197d145742dc54b73d372295e8d8ae90e44b23296a55f5b5c1b4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3a4814546138d1ff013ccef98eae76310c6c8715f537469a4961c0b4de85dec",
+      "source_fact_keys": [
+        "source_fact:v1:00fcf43f5f4afe8e17bca05239a7d68700d2ae8dd7c9cb3b899bd833ba25b4f0",
+        "source_fact:v1:05bcf00b024fd3ce53c7f6194ce45748cc8976256b270885cdd6c05453ec94db",
+        "source_fact:v1:579b2f40c0c2914b573bed775ccb3c0b8ddb6758530d35f473dfbcbe9a8fa996",
+        "source_fact:v1:7f14d4ee881430553eb8b90ca4529e1f0417928f0a99e8f29a203c17409e3647",
+        "source_fact:v1:c22c36c7502f18195bd09603c99c4c6b822c0ca55ffd20a0c9705b2a710bf06f"
+      ],
+      "source_published_kst": "2026-10-12T09:20+09:00",
+      "source_title": "웹케시 '경리나라', 중국계 기업 시장 공략…위세얼과 협약",
+      "telegram_core_fact": "웹케시가 중국 기업의 한국 진출을 돕는 위세얼과 손잡고 국내에 들어온 중국계 기업에 경리 업무 플랫폼 '경리나라'를 공급한다.",
+      "title": "웹케시 '경리나라', 중국계 기업 시장 공략…위세얼과 협약"
+    },
     "title:4205fbd505b6766f19954525": {
       "first_seen_kst": "2026-09-18T11:44:00+09:00",
       "lanes": {
@@ -487608,6 +488072,23 @@
       ],
       "source_published_kst": "2026-10-06T05:55+09:00",
       "title": "금리 공포 누른 AI…나스닥 사상 최고치[뉴욕마감]"
+    },
+    "title:4d9ebe9e2a337646466df1dd": {
+      "first_seen_kst": "2026-10-13T03:12:47+09:00",
+      "lanes": {
+        "live": "2026-10-13T03:12:47+09:00"
+      },
+      "last_seen_kst": "2026-10-13T03:12:47+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634470",
+      "source": "이투데이",
+      "source_body_digest": "a18ec1769e9f00c49934dc122265ad60b8e6110f8a310bd93753c2317286a4d0",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T09:17+09:00",
+      "source_title": "오리엔트바이오, ‘SPF 연구용 토끼’ 공급 본격화…전량 수입 대체 가속",
+      "telegram_core_fact": "오리엔트바이오는 정읍센터에서 양산 중인 SPF 연구용 토끼의 공급 라인을 확대하고 국내 연구현장 지원을 강화한다고 12일 밝혔다. 첨단 바이오 인프라 전문기업 오리엔트바이오가 전북 정읍센터를 통해 자체 생산한 특정병원체 부재(SPF) 연구용 토끼의 공급을 본격 확대한다.",
+      "title": "오리엔트바이오, ‘SPF 연구용 토끼’ 공급 본격화…전량 수입 대체 가속"
     },
     "title:4d9f338925788413e02c6db0": {
       "first_seen_kst": "2026-10-08T07:12:10+09:00",
@@ -496818,6 +497299,28 @@
       "source_published_kst": "2026-10-06T10:58+09:00",
       "title": "신고가 엔비디아 따라 달린다…‘수혜주’ 두산·LG전자 랠리"
     },
+    "title:71db77eca7a5ebcf5c4fdb2b": {
+      "first_seen_kst": "2026-10-13T03:12:47+09:00",
+      "lanes": {
+        "live": "2026-10-13T03:12:47+09:00"
+      },
+      "last_seen_kst": "2026-10-13T03:12:47+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02256646645612264",
+      "source": "이데일리",
+      "source_body_digest": "b9a9df977c691254de56ee6018513e4413e02123966308f231ac2f7612fa6556",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d44dfd74feaeea415a1b964d47d55e39627d194899dd52a245c296f64a663890",
+      "source_fact_keys": [
+        "source_fact:v1:3d69477c6b64af07ba94c10329449a62f48d5940ba3137f3a6cfb8ced2cf2e53",
+        "source_fact:v1:582ac0ae2588c424f1263045cde901f03642e9e66b8d844818a18cb4acf00459",
+        "source_fact:v1:6c3162a8ae01d614bc5b36ac8fe55f617d9dc7c4118126e9a62bdeff4142e7a8",
+        "source_fact:v1:e1c4a9495757e9b46bb4fd600460115c89a647b85b3d7e9afef0ddd67747b1f8"
+      ],
+      "source_published_kst": "2026-10-12T09:04+09:00",
+      "source_title": "삼성물산, 반포푸르지오에 ‘넥스트 리모델링’ 첫 적용 제안",
+      "telegram_core_fact": "삼성물산이 노후 아파트의 기존 골조를 활용해 인허가와 공사기간을 줄이는 리모델링 방식을 서울 서초구 반포푸르지오에 처음 제안했다.",
+      "title": "삼성물산, 반포푸르지오에 ‘넥스트 리모델링’ 첫 적용 제안"
+    },
     "title:71e3fa09c3bcc1abc8eae43d": {
       "first_seen_kst": "2026-09-20T00:38:33+09:00",
       "lanes": {
@@ -504813,6 +505316,23 @@
       "link": "https://www.fnnews.com/news/202610011654459279",
       "source": "파이낸셜뉴스",
       "title": "바이오협, 바이오기업 31곳 투자유치 지원…투자자 미팅 20건 연계"
+    },
+    "title:8e870b563521ac523402afb8": {
+      "first_seen_kst": "2026-10-13T03:12:47+09:00",
+      "lanes": {
+        "live": "2026-10-13T03:12:47+09:00"
+      },
+      "last_seen_kst": "2026-10-13T03:12:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821551",
+      "source": "뉴시스",
+      "source_body_digest": "383723aba57fb174c63219eba8248aaa0131f80348c42d8a250ff50b6a7bd4df",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T09:19+09:00",
+      "source_title": "식약처 \"국제인증표준품 관련 종합안내서 발간\"",
+      "telegram_core_fact": "식약처 소속 식품의약품안전평가원은 국제인증표준품(CRM) 및 NDMA 등 니트로사민류 표준품을 포함한 '2026 식품의약품안전처 표준품 종합안내서'를 발간하고 이날부터 표준품 분양을 시작한다고 12일 밝혔다.",
+      "title": "식약처 \"국제인증표준품 관련 종합안내서 발간\""
     },
     "title:8e9bf3ef95bd23686c880d21": {
       "first_seen_kst": "2026-10-12T16:08:52+09:00",
@@ -535385,5 +535905,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-13T02:50:52+09:00"
+  "updated_at_kst": "2026-10-13T03:12:47+09:00"
 }
