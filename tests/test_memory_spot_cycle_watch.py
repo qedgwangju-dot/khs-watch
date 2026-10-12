@@ -711,6 +711,111 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         self.assertTrue(w._is_dgx_spark_memory_price_item(item))
         self.assertIsNone(w._extract_dgx_spark_memory_price(item))
 
+    def test_pc_notebook_demand_tracks_two_separate_primary_sources(self):
+        base = w.PC_NOTEBOOK_DEMAND_BASELINE
+        self.assertEqual(w.PC_NOTEBOOK_DEMAND_TRACK_VERSION, 1)
+        self.assertEqual(base["notebook_2026_shipment_yoy_pct"], -9.4)
+        self.assertEqual(base["notebook_2027_base_outlook"], "low_single_digit_decline")
+        self.assertEqual(base["notebook_2027_downside_outlook"], "high_single_digit_decline")
+        self.assertEqual(base["cpu_dram_ssd_bom_share_q3_2026_pct"], 68.0)
+        self.assertEqual(base["cpu_supply_status"], "improving")
+        self.assertIn("20261008-13264", base["source_url"])
+        self.assertIn("20260904-13217", base["prior_source_url"])
+        self.assertIn(base["source_url"], w.TREND_PINNED_PRESS_URLS)
+
+    def test_pc_notebook_demand_parses_only_trendforce_official_article(self):
+        item = {
+            "title": "Rising Costs Threaten Notebook Demand in 2027, Says TrendForce",
+            "description": (
+                "Global notebook shipments are projected to decline by a low-single-digit "
+                "percentage in 2027. If DRAM and CPU prices remain elevated, the full-year "
+                "shipment decline could reach the high-single-digit range. "
+                "CPU supply has improved since 2Q26. PC DRAM faces limited supply growth. "
+                "In 3Q26 CPU, DRAM and SSD components accounted for approximately 68% "
+                "of the bill of materials cost. Lower-cost inventories are gradually depleted."
+            ),
+            "source": "TrendForce",
+            "link": "https://www.trendforce.com/presscenter/news/20261008-13264.html",
+            "published_kst": "2026-10-08T09:00:00+09:00",
+        }
+        observation = w._extract_pc_notebook_demand(item)
+        self.assertIsNotNone(observation)
+        self.assertEqual(observation["notebook_2027_base_outlook"], "low_single_digit_decline")
+        self.assertEqual(observation["notebook_2027_downside_outlook"], "high_single_digit_decline")
+        self.assertEqual(observation["cpu_supply_status"], "improving")
+        self.assertEqual(observation["cpu_dram_ssd_bom_share_q3_2026_pct"], 68.0)
+        self.assertTrue(observation["low_cost_inventory_depletion_risk"])
+        self.assertEqual(w._pc_notebook_demand_changes(w.PC_NOTEBOOK_DEMAND_BASELINE, observation), [])
+
+    def test_pc_notebook_news_cannot_promote_forecast_to_official(self):
+        bad = {
+            "title": "Notebook demand forecast weak in 2027",
+            "description": "Notebook shipments decline 18% in 2027 with CPU and DRAM supply shortage.",
+            "source": "매체의 TrendForce 인용 기사",
+            "link": "https://zdnet.co.kr/view/?no=20261012150902",
+            "published_kst": "2026-10-12T15:46:00+09:00",
+        }
+        self.assertIsNone(w._extract_pc_notebook_demand(bad))
+        # Lookalike URLs must not be treated as TrendForce.
+        bad["link"] = "https://www.trendforce.com.fake.example/presscenter/news/20261012-99999.html"
+        self.assertIsNone(w._extract_pc_notebook_demand(bad))
+        # Even on TrendForce, a product-price headline is not a notebook shipment forecast.
+        bad["link"] = "https://www.trendforce.com/presscenter/news/20261012-99999.html"
+        bad["title"] = "Server CPU prices surge"
+        self.assertIsNone(w._extract_pc_notebook_demand(bad))
+
+    def test_pc_notebook_numeric_revision_respects_annual_context_and_threshold(self):
+        base = dict(w.PC_NOTEBOOK_DEMAND_BASELINE)
+        unchanged = dict(base)
+        self.assertEqual(w._pc_notebook_demand_changes(base, unchanged), [])
+        up = dict(base, notebook_2027_shipments_yoy_pct=-8.5)
+        self.assertTrue(any("2027 노트북" in x and "-8.5%" in x
+                            for x in w._pc_notebook_demand_changes(base, up)))
+        prior = dict(base, notebook_2027_shipments_yoy_pct=-8.5)
+        small = dict(prior, notebook_2027_shipments_yoy_pct=-9.2)
+        self.assertEqual(w._pc_notebook_demand_changes(prior, small), [])
+        large = dict(prior, notebook_2027_shipments_yoy_pct=-11.0)
+        self.assertTrue(w._pc_notebook_demand_changes(prior, large))
+
+    def test_pc_notebook_numeric_forecast_requires_same_sentence(self):
+        item = {
+            "title": "Notebook shipments in 2027 outlook",
+            "description": (
+                "2027 notebook shipments face rising costs. "
+                "In 2026 another device line may decline 12%. "
+                "Consumer notebooks may be flat."
+            ),
+            "source": "TrendForce",
+            "link": "https://www.trendforce.com/presscenter/news/20261012-99999.html",
+            "published_kst": "2026-10-12T09:00:00+09:00",
+        }
+        self.assertIsNone(w._extract_pc_notebook_demand(item))
+        item["description"] += " In 2027 notebook shipments could decline 8.5%."
+        obs = w._extract_pc_notebook_demand(item)
+        self.assertEqual(obs["notebook_2027_shipments_yoy_pct"], -8.5)
+
+    def test_pc_notebook_baseline_single_alert_then_no_duplicate(self):
+        import json
+        with tempfile.TemporaryDirectory() as d:
+            root = pathlib.Path(d)
+            with patch.object(w, "STATE_PATH", root / "state.json"), \
+                 patch.object(w, "OUT_DIR", root), \
+                 patch.object(w, "PENDING_PATH", root / "pending.json"), \
+                 patch.object(w, "ALERT_PATH", root / "alert.txt"), \
+                 patch.object(w, "STATUS_PATH", root / "status.md"):
+                w.write_outputs([], [])
+                first = w.ALERT_PATH.read_text(encoding="utf-8")
+                self.assertIn("2027년 노트북 출하", first)
+                self.assertIn("20261008-13264.html", first)
+                self.assertIn("20260904-13217.html", first)
+                state = json.loads(w.PENDING_PATH.read_text(encoding="utf-8"))
+                self.assertEqual(state["pc_notebook_demand_track_version"], 1)
+                w.STATE_PATH.write_text(json.dumps(state, ensure_ascii=False), encoding="utf-8")
+                w.write_outputs([], [])
+                self.assertFalse(w.ALERT_PATH.exists())
+                saved = json.loads(w.PENDING_PATH.read_text(encoding="utf-8"))
+                self.assertEqual(saved["pc_notebook_demand_track_version"], 1)
+
     def test_main_runs_currency_guard_after_output_generation(self):
         with patch.object(w, "collect", return_value=([], [])), \
              patch.object(w, "write_outputs"), \
