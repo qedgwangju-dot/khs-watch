@@ -166,9 +166,24 @@ jobs:
           base=f"https://api.github.com/repos/{repo}/actions/workflows/{workflow}"
 
           def list_runs():
-              req=urllib.request.Request(f"{base}/runs?per_page=50",headers=headers)
-              with urllib.request.urlopen(req,timeout=20) as r:
-                  return json.loads(r.read().decode("utf-8")).get("workflow_runs",[])
+              # 수동 [kospi-rollout]에서도 최근 50건 조회를 금지한다.
+              # 오래된 정상 오후 production을 확인하기 전에는 중복 dispatch하지 않는다.
+              found={}
+              for status in ("in_progress","queued"):
+                  for page in range(1,11):
+                      req=urllib.request.Request(
+                          f"{base}/runs?status={status}&per_page=100&page={page}",
+                          headers=headers)
+                      with urllib.request.urlopen(req,timeout=20) as r:
+                          rows=json.loads(r.read().decode("utf-8")).get("workflow_runs",[])
+                      for run in rows:
+                          if run.get("status") in {"queued","in_progress"}:
+                              found[int(run["id"])]=run
+                      if len(rows)<100:
+                          break
+                  else:
+                      raise RuntimeError(f"KOSPI rollout scan incomplete: {status}")
+              return list(found.values())
 
           now=dt.datetime.now(ZoneInfo("Asia/Seoul"))
           session=session_state(now)
