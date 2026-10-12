@@ -969,7 +969,6 @@
   "errors": [],
   "seen_event_keys": [
     "750c96e096489fb937b03e315037",
-    "4af488384569bc82729cac60788c",
     "5b8c457ec070bbeac9cde6fb6a1b",
     "2b98138c898f518bfd94b256374b",
     "e41d8365ddb30d596c50648964c2",
@@ -1025,7 +1024,6 @@
     "24156fd2a109457a72de633612b4",
     "e5f01aceab5933c739e8d4e77e06",
     "a3910257c908d9138ed810debf33",
-    "e7787218944cf9eb48de1a02c678",
     "85fd9b09e444bd8e8d3407cd1cd1",
     "b5a17542560d1eb0ba30b388ed23"
   ],
@@ -1046,7 +1044,6 @@
     "d7cc3574f619e402d2d41385172d": 1,
     "a3b7a9e05e59df8555009709861e": 2,
     "133e2521c26f06fb8a1071c293e4": 1,
-    "e7787218944cf9eb48de1a02c678": 1,
     "bd2bd4a4094d3a0a9f65bf9bab2d": 1,
     "5558107f2629e24f1f894ed424c1": 1,
     "70c6ec331b05b96f32d2c5430d0c": 1,
@@ -1058,8 +1055,7 @@
     "d37233dbb8c942c7800ec641669b": 1,
     "999b7c0079ffdf178b3b249919af": 1,
     "1650c1bf2f21c1e6dba10dcab5d5": 1,
-    "750c96e096489fb937b03e315037": 1,
-    "4af488384569bc82729cac60788c": 1
+    "750c96e096489fb937b03e315037": 1
   },
   "seen_headline_keys": [
     "2ad641455738da6fe1ba3108",
@@ -1519,7 +1515,6 @@
     "d7cc3574f619e402d2d41385172d": 0,
     "a3b7a9e05e59df8555009709861e": 3,
     "133e2521c26f06fb8a1071c293e4": 1,
-    "e7787218944cf9eb48de1a02c678": 1,
     "bd2bd4a4094d3a0a9f65bf9bab2d": 0,
     "5558107f2629e24f1f894ed424c1": 2,
     "70c6ec331b05b96f32d2c5430d0c": 1,
@@ -1531,8 +1526,7 @@
     "d37233dbb8c942c7800ec641669b": 1,
     "999b7c0079ffdf178b3b249919af": 2,
     "1650c1bf2f21c1e6dba10dcab5d5": 1,
-    "750c96e096489fb937b03e315037": 0,
-    "4af488384569bc82729cac60788c": 1
+    "750c96e096489fb937b03e315037": 0
   },
   "dedupe_policy": "canonical_google_news_url_plus_canonical_headline_plus_event_family"
 }
