@@ -32,6 +32,8 @@ for _required in (
     "HUMANOID_DRAM_RECOVERY =",
     "OPTIMUS_HAND_MAGNET_RECOVERY =",
     "LFP_NA_CIF_PRICE_RECOVERY =",
+    "VNET_EQUITY_RECOVERY =",
+    "def _vnet_equity_recovery(",
     "def _lfp_na_price_recovery(",
     "def _humanoid_dram_recovery(",
     "def _digital_optimus_game_recovery(",
@@ -3152,6 +3154,70 @@ ess_actual_earnings = make(
     "LG에너지솔루션",
 )
 assert not watcher._is_ess_expectation_only(ess_actual_earnings),ess_actual_earnings
+
+
+
+# 54) CATL and VNET: 2026-09-21 indirect secondary equity closing
+# is NOT VNET sodium-ion 60GWh supply (HyperStrong is the actual buyer).
+vnet_recovered = watcher.query_news(watcher.VNET_EQUITY_RECOVERY)
+if base.NOW.astimezone(base.KST).date() <= dt.date(2026,10,19):
+    assert len(vnet_recovered)==1 and vnet_recovered[0]['source']=='VNET',vnet_recovered
+    assert vnet_recovered[0]['published'] is None, 'never invent the filing hour'
+    vg,vs,vc,vk=classify(vnet_recovered[0])
+    assert vg=='catl_vnet_infrastructure' and vs>=11,(vg,vs,vc)
+    assert vc=='CATL 관계사–VNET · 9/21 간접지분 38.1% 인수 종결',vc
+    assert '신주' in base.meaning(vc) and '독점' in base.meaning(vc)
+    assert '1,007MW' in base.meaning(vc) and '889MW' in base.meaning(vc)
+    assert '60GWh' in base.meaning(vc)
+    visible=vnet_recovered[0]['title']+' '+vnet_recovered[0]['description']
+    assert base.category(visible,vg)==vc,'source loss in Telegram renderer'
+    assert base.key(vnet_recovered[0])==vk
+else:
+    vnet_recovered=[]
+
+vnet_old_cooperation=make(
+    'CATL VNET strategic cooperation for data-center energy',
+    'VNET and CATL announced compute energy integration cooperation in August 2026, '
+    'with no signed sodium ESS purchase agreement.',
+    'VNET',
+)
+vg,vs,vc,vk2=classify(vnet_old_cooperation)
+assert vg=='catl_vnet_infrastructure' and vs<11,(vg,vs,vc)
+
+vnet_stale_mw=make(
+    'CATL VNET 889MW exclusive sodium-ion ESS 60GWh claim',
+    'CATL and HyperStrong signed 60 GWh sodium-ion supply agreement in April, '
+    'while VNET and CATL discussed compute-energy cooperation. '
+    'The 889MW value was end-2025 wholesale IDC installed capacity, '
+    'not 60 GWh or an exclusive order by VNET.',
+    'VNET',
+)
+sg,ss,sc,sk=classify(vnet_stale_mw)
+assert sg=='catl_vnet_infrastructure' and ss<11,(sg,ss,sc)
+assert sc.endswith('간접지분 38.1% 인수 종결'),sc
+
+vnet_future_real_contract=make(
+    'CATL VNET sodium-ion 2 GWh ESS new supply contract',
+    'VNET and CATL signed binding supply agreement for sodium-ion 2 GWh '
+    'battery storage for a named VNET data center, with actual delivery schedule.',
+    'VNET',
+)
+ng,ns,nc,nk=classify(vnet_future_real_contract)
+assert ng=='catl_vnet_infrastructure' and ns>=11,(ng,ns,nc)
+assert nc=='CATL–VNET · 나트륨 ESS 실명 공급계약',nc
+assert nk!=vk,'future confirmed sodium order must be separate from equity'
+assert 'MWh' in base.risk(nc),'future order must trace deployed ESS energy capacity'
+
+vnet_false_press=dict(vnet_future_real_contract,source='Unknown Financial Blog')
+bg,bs,bc,bk=classify(vnet_false_press)
+assert bg=='catl_vnet_infrastructure' and bs<11,(bg,bs,bc)
+
+old_vnet_date=base.NOW
+try:
+    base.NOW=dt.datetime(2026,10,20,0,0,tzinfo=dt.timezone.utc)
+    assert watcher.query_news(watcher.VNET_EQUITY_RECOVERY)==[]
+finally:
+    base.NOW=old_vnet_date
 
 
 print("Physical-AI watcher regression guards: PASS")
