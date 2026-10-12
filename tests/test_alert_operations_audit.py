@@ -29,8 +29,13 @@ class AlertOperationsAuditTest(unittest.TestCase):
                 '        env:\n          TOKEN: ' + chr(92) + '${{ secrets.BOT }}\n',
                 encoding="utf-8",
             )
+            (folder / "telegram-route-inventory-once.yml").write_text(
+                'name: diagnostic once\non:\n  workflow_dispatch:\njobs:\n  test:\n'
+                '    steps:\n      - run: sendMessage\n',
+                encoding="utf-8",
+            )
             summary = audit.audit_static(root)
-            self.assertEqual(summary["workflow_files"], 2)
+            self.assertEqual(summary["workflow_files"], 3)
             self.assertEqual(summary["scheduled_files"], 2)
             self.assertEqual(summary["risk_counts"]["escaped_github_expression"], 1)
             self.assertEqual(summary["risk_counts"]["direct_send_without_message_id_check"], 1)
@@ -40,7 +45,8 @@ class AlertOperationsAuditTest(unittest.TestCase):
 
     def test_runtime_preserves_failure_cancel_and_disabled_distinction(self):
         rows = [
-            {"path": ".github/workflows/a.yml", "conclusion": "success", "created_at": "2026-10-12T14:00:00Z"},
+            {"id": 1, "path": ".github/workflows/a.yml", "conclusion": "success", "created_at": "2026-10-12T14:00:00Z"},
+            {"id": 1, "path": ".github/workflows/a.yml", "conclusion": "success", "created_at": "2026-10-12T14:00:00Z"},
             {"path": ".github/workflows/a.yml", "conclusion": "failure", "created_at": "2026-10-12T13:00:00Z"},
             {"path": ".github/workflows/b.yml", "conclusion": "cancelled", "created_at": "2026-10-12T12:00:00Z"},
         ]
