@@ -1110,6 +1110,133 @@ def prune_seen(seen: dict, now: dt.datetime) -> dict:
     return kept
 
 
+# Issuer-verified IonQ / Elisity acquisition stage watcher.
+# This is a separate enterprise transaction category, NEVER a cyber incident,
+# a completed acquisition, or evidence of a newly deployed quantum computer.
+IONQ_ELISITY_SIGNED = "ionq-elisity-2026-10-12-signed"
+IONQ_NEWSROOM_URL = "https://www.ionq.com/news"
+IONQ_ELISITY_ANNOUNCEMENT_URL = (
+    "https://www.ionq.com/news/"
+    "ionq-to-acquire-elisity-to-accelerate-zero-trust-for-the-quantum-era"
+)
+
+
+def ionq_elisity_stage(title: str) -> str:
+    """Determine the action from the issuer article's headline only, never its future-tense body."""
+    low = strip_html(title).lower()
+    if "elisity" not in low:
+        return ""
+    if re.search(r"\\b(completes|completed|has closed|closes|closed)\\b", low) and "acquisition" in low:
+        return "closed"
+    if ("regulatory" in low or "antitrust" in low) and ("approval" in low or "clearance" in low):
+        return "regulatory_approval"
+    if "to acquire" in low or "definitive agreement" in low:
+        return "signed"
+    if any(term in low for term in ("deployment", "customer contract", "enterprise contract", "joint product launched")):
+        return "verified_customer_or_product"
+    return ""
+
+
+def _ionq_article_date(page: str) -> dt.datetime | None:
+    for pattern in (
+        r"(October|November|December)\\s+(\\d{1,2}),\\s*(2026)",
+        r"(2026)-(10|11|12)-(\\d{2})",
+    ):
+        match = re.search(pattern, page, re.I)
+        if not match:
+            continue
+        try:
+            if match.group(1).lower() in {"october", "november", "december"}:
+                month = {"october": 10, "november": 11, "december": 12}[match.group(1).lower()]
+                year, day = int(match.group(3)), int(match.group(2))
+            else:
+                year, month, day = int(match.group(1)), int(match.group(2)), int(match.group(3))
+            return dt.datetime(year, month, day, tzinfo=KST).astimezone(UTC)
+        except (ValueError, IndexError):
+            continue
+    return None
+
+
+def parse_ionq_elisity_official_updates(now: dt.datetime) -> tuple[list[dict], list[str]]:
+    """Read the actual IonQ issuer newsroom, not third-party RSS publication dates."""
+    diagnostics = []
+    candidates = {IONQ_ELISITY_ANNOUNCEMENT_URL}
+    try:
+        news_html = fetch_bytes(IONQ_NEWSROOM_URL, timeout=15).decode("utf-8", "replace")
+        for match in re.finditer(r'href=["\\\']([^"\\\']+)["\\\']', news_html, re.I):
+            href = html.unescape(match.group(1))
+            absolute = urllib.parse.urljoin(IONQ_NEWSROOM_URL, href)
+            parsed = urllib.parse.urlsplit(absolute)
+            if (parsed.netloc.lower() in ("www.ionq.com", "ionq.com")
+                and parsed.path.startswith("/news/")
+                and "elisity" in parsed.path.lower()):
+                candidates.add(urllib.parse.urlunsplit((parsed.scheme, parsed.netloc, parsed.path, "", "")))
+    except Exception as exc:
+        diagnostics.append(f"IonQ 공식 발표 목록 확인 불가: {type(exc).__name__}: {exc}")
+
+    verified = []
+    for url in sorted(candidates):
+        try:
+            raw = fetch_bytes(url, timeout=15).decode("utf-8", "replace")
+            match = re.search(r"<h1[^>]*>(.*?)</h1>", raw, re.I | re.S)
+            if not match:
+                diagnostics.append("IonQ 기사 제목 직접 검증 실패")
+                continue
+            headline = strip_html(match.group(1))
+            stage = ionq_elisity_stage(headline)
+            if not stage:
+                continue
+            body = strip_html(raw)
+            if "IonQ" not in body or "Elisity" not in body:
+                diagnostics.append("IonQ/Elisity 원문 당사자 검증 실패")
+                continue
+            published = _ionq_article_date(raw)
+            if not published or published.date() < dt.date(2026, 10, 12):
+                diagnostics.append("IonQ 발행일 검증 실패")
+                continue
+            if published > now + dt.timedelta(hours=24):
+                continue
+            key = ("ionq-elisity-2026-10-12-" + stage)
+            verified.append({
+                "key": key,
+                "stage": stage,
+                "headline": headline,
+                "url": url,
+                "published_at": published.isoformat(),
+            })
+        except Exception as exc:
+            diagnostics.append(f"IonQ 개별 공식 원문 확인 불가: {type(exc).__name__}: {exc}")
+    return verified, diagnostics
+
+
+def render_ionq_elisity_alert(rows: list[dict], now: dt.datetime) -> str:
+    from currency_krw_guard import enforce_text
+    amounts = enforce_text("13억달러"), enforce_text("1억5,000만달러")
+    lines = [
+        "<b>[IonQ·Elisity 양자보안 인수 단계 변화]</b>",
+        "• 당사자: IonQ (NYSE: IONQ) / Elisity",
+        f"• 거래규모: 최대 {amounts[0]} 전액 주식거래, 성과조건부 지급 최대 {amounts[1]} 포함",
+        "• 기존 단계: 2026년 10월 12일 확정 인수계약 체결 · 종결 목표 2026년 4분기",
+        "• 기존 고객·수익구조: Elisity의 100곳 이상 기업 고객 배치와 반복 보안 매출은 인수 완료 전까지 IonQ 연결 매출로 확정하지 않음",
+    ]
+    names = {
+        "regulatory_approval": "인수 규제 승인 확인 · 인수 종결과 구분",
+        "closed": "인수 종결을 발행사 공식 원문에서 확인",
+        "verified_customer_or_product": "구체적인 계약·고객 배치 또는 제품 출시",
+    }
+    for row in rows:
+        lines.extend([
+            f"• 신규 단계: {html.escape(names.get(row['stage'], row['stage']))}",
+            f"• 공식 발표일: {html.escape(row['published_at'][:10])}",
+            f'• 원문: <a href="{html.escape(row["url"], quote=True)}">IonQ 공식 보도자료</a>',
+        ])
+    lines.extend([
+        "• 다음 확인: 실제 종결일, 발행주식수·희석, 성과급 지급조건, 기존 고객 유지율, 보안 제품 통합과 매출 인식",
+        "• 역풍: 규제 승인 지연·주식 희석·고객 이탈·통합 비용. 인수 계약만으로 양자컴퓨터 상용화나 신규 고객배치를 확정하지 않음",
+    ])
+    return "\n".join(lines)
+
+
 def main() -> int:
     for path in (ALERT_TITLE, ALERT_BODY, CONFIRMED_PATH):
         path.unlink(missing_ok=True)
