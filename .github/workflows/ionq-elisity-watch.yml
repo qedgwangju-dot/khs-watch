@@ -1,0 +1,107 @@
+name: IonQ Elisity Acquisition Watch
+on:
+  schedule:
+    - cron: "13 * * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Do not send Telegram"
+        type: boolean
+        default: true
+  push:
+    paths:
+      - ".github/workflows/ionq-elisity-watch.yml"
+      - "scripts/ionq_elisity_watch.py"
+      - "tests/test_ionq_elisity_watch.py"
+permissions:
+  contents: write
+  actions: write
+concurrency:
+  group: ionq-elisity-watch
+  cancel-in-progress: true
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate watch and regression
+        run: |
+          python -m py_compile scripts/ionq_elisity_watch.py
+          PYTHONPATH=. python tests/test_ionq_elisity_watch.py
+      - name: Enable schedule
+        if: github.event_name == 'push'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api -X PUT "/repos/${GITHUB_REPOSITORY}/actions/workflows/ionq-elisity-watch.yml/enable"
+          echo "ionq_elisity_schedule_enable=confirmed"
+      - name: Watch official lifecycle events
+        run: python scripts/ionq_elisity_watch.py
+      - name: Send only true new stage
+        if: github.event_name != 'push' && inputs.dry_run != true && hashFiles('out/ionq_elisity_alert.html') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_AI_POLICY_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import datetime as dt, json, os, pathlib, urllib.request
+          from zoneinfo import ZoneInfo
+          token=(os.environ.get("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat=(os.environ.get("TELEGRAM_CHAT_ID") or "").strip()
+          if not token or not chat: raise RuntimeError("Quantum policy Telegram secrets missing")
+          root="https://api.telegram.org/bot"+token
+          with urllib.request.urlopen(root+"/getMe",timeout=25) as r:
+              obj=json.load(r)
+          got=str((obj.get("result") or {}).get("username") or "").lower()
+          if not obj.get("ok") or got!="khs88798879_bot":
+              raise RuntimeError("Wrong bot for IonQ event: "+got)
+          body=pathlib.Path("out/ionq_elisity_alert.html").read_text(encoding="utf-8")
+          payload=json.dumps({"chat_id":chat,"text":body,"parse_mode":"HTML","disable_web_page_preview":True}).encode("utf-8")
+          req=urllib.request.Request(root+"/sendMessage",data=payload,headers={"Content-Type":"application/json"},method="POST")
+          with urllib.request.urlopen(req,timeout=30) as r:
+              result=json.load(r)
+          mid=(result.get("result") or {}).get("message_id")
+          if not result.get("ok") or not isinstance(mid,int):
+              raise RuntimeError("Telegram send not confirmed")
+          pathlib.Path("out/ionq_elisity_delivery.json").write_text(json.dumps({"ok":True,"message_id":mid,"bot":got,"sent_at_kst":dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat()},ensure_ascii=False)+"\n",encoding="utf-8")
+          print("ionq_telegram_send_confirmed message_id="+str(mid))
+          PY
+      - name: Commit only confirmed or no-alert state
+        if: github.event_name != 'push' && inputs.dry_run != true && hashFiles('out/ionq_elisity_pending.json') != '' && (hashFiles('out/ionq_elisity_alert.html') == '' || hashFiles('out/ionq_elisity_delivery.json') != '')
+        run: |
+          cp out/ionq_elisity_pending.json data/ionq_elisity_watch_state.json
+          git config user.name "ionq-elisity-watch[bot]"
+          git config user.email "ionq-elisity-watch[bot]@users.noreply.github.com"
+          git add data/ionq_elisity_watch_state.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Update IonQ Elisity lifecycle state"
+            for attempt in 1 2 3; do
+              if git pull --rebase origin main && git push; then exit 0; fi
+              git rebase --abort 2>/dev/null || true
+              sleep $((attempt*3))
+            done
+            exit 1
+          fi
+      - name: Publish state
+        if: always()
+        run: |
+          if [ -f out/ionq_elisity_status.md ]; then
+            cat out/ionq_elisity_status.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Evidence artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ionq-elisity-${{ github.run_id }}
+          path: |
+            out/ionq_elisity_status.md
+            out/ionq_elisity_alert.html
+            out/ionq_elisity_delivery.json
+            out/ionq_elisity_pending.json
+          if-no-files-found: ignore
