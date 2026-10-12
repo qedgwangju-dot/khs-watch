@@ -673,9 +673,15 @@
       "source": "富途牛牛",
       "published_kst": "2026-10-02T16:23:20+09:00",
       "first_seen_kst": "2026-10-10T18:02:03+09:00"
+    },
+    "47a7191dd6a18a7de5516113": {
+      "title": "Rising Costs Threaten Notebook Demand in 2027, Raising Risks of Shipment Declines and Price Increases, Says TrendForce",
+      "source": "TrendForce",
+      "published_kst": "2026-10-08T09:00:00+09:00",
+      "first_seen_kst": "2026-10-12T23:35:39+09:00"
     }
   },
-  "updated_at_kst": "2026-10-12T18:46:29+09:00",
+  "updated_at_kst": "2026-10-12T23:35:39+09:00",
   "last_scan_count": 8,
   "last_new_count": 0,
   "hbm_market_pricing_track_version": 2,
@@ -727,30 +733,30 @@
     "secondary_fab_timeline_source_kind": "뉴시스 업계 관계자 익명 발언 · TrendForce 공식 가이던스 아님",
     "secondary_fab_timeline_source_url": "https://www.newsis.com/view/NISX20261002_0003812363",
     "source": "TrendForce",
-    "source_url": "https://www.trendforce.com/presscenter/news/20260930-13258.html",
+    "source_url": "https://www.trendforce.com/presscenter/news/20261008-13264.html",
     "research_url": "https://www.trendforce.com/research/download/RP260924PL",
     "capacity_source_url": "https://www.trendforce.com/research/download/RP260819HW",
     "easing_source_url": "https://www.trendforce.com/presscenter/news/20260721-13148.html",
     "secondary_source_url": "https://www.trendforce.com/presscenter/news/20260921-13246.html",
     "source_rank": 3,
-    "as_of": "2026-09-30"
+    "as_of": "2026-10-08"
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-10-10T18:02:13+09:00",
+  "last_successful_delivery_kst": "2026-10-12T23:35:49+09:00",
   "telegram_message_ids": [
-    278
+    282
   ],
-  "telegram_message_id": 278,
+  "telegram_message_id": 282,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      278
+      282
     ],
-    "confirmed_at_kst": "2026-10-10T18:02:13+09:00",
-    "alert_signature": "e51ac7fab06a04cf9705e0f7cdd4c9dfc8ac59ef3acd61ca521a669fb346b3ba"
+    "confirmed_at_kst": "2026-10-12T23:35:49+09:00",
+    "alert_signature": "89492928bcb30ef8b04555f4587086736e140cafe650c854f4bf0e7af1296b51"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
@@ -923,6 +929,24 @@
     "counterpoint_url": "https://counterpointresearch.com/default.htm/insights/server-led-essds-hit-48-percent-of-nand-shipments",
     "trendforce_url": "https://www.trendforce.com/presscenter/news/20260721-13148.html",
     "as_of": "2026-10-06",
+    "source_rank": 3
+  },
+  "pc_notebook_demand_track_version": 1,
+  "pc_notebook_demand": {
+    "as_of": "2026-10-08",
+    "notebook_2026_shipment_yoy_pct": -9.4,
+    "notebook_2027_base_outlook": "low_single_digit_decline",
+    "notebook_2027_downside_outlook": "high_single_digit_decline",
+    "cpu_dram_ssd_bom_share_q1_2025_pct": 45.0,
+    "cpu_dram_ssd_bom_share_q3_2026_pct": 68.0,
+    "reference_notebook_msrp_usd": 900.0,
+    "cpu_supply_status": "improving",
+    "pc_dram_supply_status": "tight",
+    "low_cost_inventory_depletion_risk": true,
+    "source": "TrendForce",
+    "source_url": "https://www.trendforce.com/presscenter/news/20261008-13264.html",
+    "prior_source_url": "https://www.trendforce.com/presscenter/news/20260904-13217.html",
+    "source_kind": "TrendForce 10월 8일 2027년 전망·9월 4일 2026년 전망(각각 공식자료)",
     "source_rank": 3
   }
 }
