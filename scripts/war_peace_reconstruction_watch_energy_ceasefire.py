@@ -48,7 +48,8 @@ ENERGY_TERMS = (
     'energy target','energy targets','energy facility','energy facilities','energy infrastructure',
     'oil refinery','oil refineries','refinery','refineries','diesel facility','diesel facilities',
     'fuel facility','fuel facilities','power grid','power infrastructure','energy grid',
-    '에너지 시설','에너지시설','에너지 인프라','정유시설','정유 시설','정유공장','정유 공장',
+    '에너지 시설','에너지시설','에너지 인프라','에너지 휴전','에너지 부분휴전', 'energy ceasefire', 'energy truce',
+    '정유시설','정유 시설','정유공장','정유 공장',
     '경유 시설','연료 시설','전력망','전력 시설','전력 인프라',
 )
 MUTUAL_HALT_TERMS = (
