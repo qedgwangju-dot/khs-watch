@@ -26,7 +26,7 @@ class AlertOperationsAuditTest(unittest.TestCase):
                 '  workflow_run:\n    workflows: [upstream]\n'
                 'concurrency:\n  cancel-in-progress: true\n'
                 'jobs:\n  watch:\n    steps:\n      - run: sendMessage\n'
-                '        env:\n          TOKEN: \${{ secrets.BOT }}\n',
+                '        env:\n          TOKEN: ' + chr(92) + '${{ secrets.BOT }}\n',
                 encoding="utf-8",
             )
             summary = audit.audit_static(root)
