@@ -564,6 +564,12 @@ def clean_official_headline_prefix(value: str) -> str:
 
 
 def material(item: dict) -> bool:
+    # Corporate acquisition stage is NOT an AI cyber breach or a deployment.
+    merger_text = f"{item.get('title','')} {item.get('description','')}".lower()
+    if "ionq" in merger_text and "elisity" in merger_text and any(
+        word in merger_text for word in ("acquisition", "acquire", "all-stock transaction", "인수")
+    ):
+        return False
     if is_policy_program_announcement(item):
         return False
     combined = f" {item.get('title','')} {item.get('description','')} "
@@ -1295,6 +1301,29 @@ def main() -> int:
     elif direct_baseline:
         new_items = [i for i in new_items if i.get("kind") != "official_direct"]
 
+    # Acquisition lifecycle is a separate, issuer-only signal.  The signing
+    # announcement supplied by the user is a known baseline, never a repeat.
+    quantum_seen = dict(state.get("quantum_mna_seen") or {})
+    quantum_seen.setdefault(IONQ_ELISITY_SIGNED, {
+        "stage": "signed",
+        "published_at": "2026-10-12T00:00:00+00:00",
+        "source_url": IONQ_ELISITY_ANNOUNCEMENT_URL,
+        "status": "기존 확정 인수계약, 완료 아님",
+    })
+    quantum_updates, quantum_errors = parse_ionq_elisity_official_updates(now)
+    errors.extend(quantum_errors)
+    new_quantum = []
+    for update in quantum_updates:
+        if update["key"] in quantum_seen:
+            continue
+        new_quantum.append(update)
+        quantum_seen[update["key"]] = {
+            "stage": update["stage"],
+            "published_at": update["published_at"],
+            "source_url": update["url"],
+            "status": "공식 발행사 확인",
+        }
+
     # Add all material current items to the pending seen set. This state is only
     # committed by the workflow after a successful/no-alert outcome.
     first_seen = now.isoformat()
@@ -1317,6 +1346,7 @@ def main() -> int:
         "direct_official_version": direct_source_version,
         "updated_at_kst": now.astimezone(KST).isoformat(timespec="seconds"),
         "seen": seen,
+        "quantum_mna_seen": quantum_seen,
         "last_collection": {
             "raw_items": len(raw_items),
             "direct_official_items": len(direct_items),
@@ -1334,6 +1364,18 @@ def main() -> int:
         ALERT_TITLE.write_text(title + "\n", encoding="utf-8")
         ALERT_BODY.write_text(body.rstrip() + "\n", encoding="utf-8")
 
+    if new_quantum:
+        # Preserve existing incident alerts; do not label an acquisition a breach.
+        quantum_section = render_ionq_elisity_alert(new_quantum, now)
+        if not ALERT_BODY.exists():
+            ALERT_TITLE.write_text(
+                "양자보안 기업인수 단계 변화 · IonQ·Elisity\n", encoding="utf-8"
+            )
+            ALERT_BODY.write_text(quantum_section + "\n", encoding="utf-8")
+        else:
+            with ALERT_BODY.open("a", encoding="utf-8") as fh:
+                fh.write("\n\n" + quantum_section + "\n")
+
     status = [
         "# AI 보안 웹감시",
         "",
@@ -1344,6 +1386,8 @@ def main() -> int:
         f"- 중요 필터 통과: {len(current)}건",
         f"- 신규 중요 기사: {len(new_items)}건",
         f"- 신규 중요 사건: {len(alert_events)}건",
+        f"- IonQ·Elisity 공식 단계: {len(quantum_updates)}건",
+        f"- IonQ·Elisity 신규 단계: {len(new_quantum)}건",
         f"- 수집 오류: {len(errors)}건",
     ]
     if errors:
