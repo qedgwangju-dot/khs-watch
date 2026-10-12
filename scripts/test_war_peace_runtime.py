@@ -366,6 +366,11 @@ class RuntimeTests(unittest.TestCase):
         self.assertNotIn('secrets.', pr_job)
         self.assertNotIn('ref: main', pr_job)
         self.assertIn('out/war_peace_reconstruction_coverage.json', workflow)
+        # A generic commit body containing 'test' must never send fake headlines
+        # or synthetic market prices to the production Telegram recipient.
+        self.assertNotIn("contains(github.event.head_commit.message, 'Test')", workflow)
+        self.assertIn("github.event_name == 'workflow_dispatch' && github.event.inputs.telegram_test == 'true'", workflow)
+
 
     def test_real_chain_all_227_queries_keep_fallbacks_and_no_network_on_replay(self):
         import war_peace_reconstruction_watch_oct04_guard as guard
