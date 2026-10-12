@@ -898,3 +898,104 @@ assert _lag_surge[0]["confidence"]=="중간",_lag_surge
 print("flow_surge_program_timestamp_confidence_regression=true")
 
 
+
+
+# 10/12 15:09 가짜 공백·중복기동 재현:
+# 워크플로 최근 전체 50건에 기존 장시간 runner가 보이지 않더라도
+# status=in_progress 별도 조회와 실제 production job 조회로 반드시 찾아야 한다.
+import datetime as _leader_dt
+import json as _leader_json
+import os as _leader_os
+import pathlib as _leader_pathlib
+import sys as _leader_sys
+import tempfile as _leader_tempfile
+import types as _leader_types
+import urllib.request as _leader_request
+from zoneinfo import ZoneInfo as _leader_zone
+import yaml as _leader_yaml
+
+_leader_wf = _leader_yaml.safe_load(
+    _leader_pathlib.Path(".github/workflows/kospi-derivatives-flow-ls-realtime.yml").read_text(encoding="utf-8")
+)
+_leader_step = next(
+    st for st in _leader_wf["jobs"]["gate"]["steps"]
+    if st.get("name")=="Elect single production workflow"
+)
+_leader_source = _leader_step["run"].split("python - <<'PY'\n",1)[1].rsplit("\nPY",1)[0]
+compile(_leader_source,"KOSPI gate active-run regression","exec")
+_leader_now = _leader_dt.datetime.now(_leader_zone("Asia/Seoul"))
+_leader_old = _leader_now.replace(hour=8,minute=11,second=0,microsecond=0)
+if _leader_old > _leader_now:
+    _leader_old = _leader_now.replace(hour=0,minute=0,second=0,microsecond=0)
+_leader_created = _leader_old.astimezone(_leader_dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+_leader_current = _leader_now.astimezone(_leader_dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+_leader_module = _leader_types.ModuleType("krx_session_calendar")
+_leader_module.session_state=lambda _now:{
+    "is_session":True,
+    "open":_now-_leader_dt.timedelta(minutes=15),
+    "close":_now+_leader_dt.timedelta(minutes=15),
+}
+_leader_real_module = _leader_sys.modules.get("krx_session_calendar")
+_leader_real_open = _leader_request.urlopen
+_leader_env = _leader_os.environ
+_leader_env_keys = ("GH_TOKEN","REPOSITORY","CURRENT_RUN_ID","GITHUB_OUTPUT","TELEGRAM_BOT_TOKEN","TELEGRAM_CHAT_ID")
+_leader_orig_env = {k:_leader_env.get(k) for k in _leader_env_keys}
+_leader_queries = []
+
+class _LeaderFakeResponse:
+    def __init__(self,value):
+        self.data=_leader_json.dumps(value).encode("utf-8")
+    def __enter__(self):return self
+    def __exit__(self,*_a):return False
+    def read(self):return self.data
+
+def _leader_urlopen(req,timeout=0):
+    url=req if isinstance(req,str) else req.full_url
+    _leader_queries.append(url)
+    if "status=in_progress" in url:
+        return _LeaderFakeResponse({"workflow_runs":[
+            {"id":101,"status":"in_progress","created_at":_leader_created},
+            {"id":1234,"status":"in_progress","created_at":_leader_current},
+        ]})
+    if "status=queued" in url:
+        return _LeaderFakeResponse({"workflow_runs":[]})
+    if "/actions/runs/101/jobs" in url:
+        return _LeaderFakeResponse({"jobs":[{"name":"afternoon","status":"in_progress"}]})
+    if "runs?per_page=50" in url:
+        return _LeaderFakeResponse({"workflow_runs":[
+            {"id":x,"status":"completed","created_at":_leader_current} for x in range(2000,2050)
+        ]})
+    raise AssertionError(f"Unexpected live request in deterministic gate regression: {url}")
+
+try:
+    with _leader_tempfile.TemporaryDirectory() as _tmp_leader:
+        _leader_output=_leader_pathlib.Path(_tmp_leader)/"output"
+        _leader_env.update({
+            "GH_TOKEN":"test-token",
+            "REPOSITORY":"test/kospi",
+            "CURRENT_RUN_ID":"1234",
+            "GITHUB_OUTPUT":str(_leader_output),
+            "TELEGRAM_BOT_TOKEN":"",
+            "TELEGRAM_CHAT_ID":"",
+        })
+        _leader_sys.modules["krx_session_calendar"]=_leader_module
+        _leader_request.urlopen=_leader_urlopen
+        exec(compile(_leader_source,"KOSPI gate active-run regression","exec"),{"__name__":"__main__"})
+        _leader_lines=_leader_output.read_text(encoding="utf-8")
+        assert "run_production=0" in _leader_lines, _leader_lines
+        assert "run_morning=0" in _leader_lines, _leader_lines
+        assert any("status=in_progress" in q for q in _leader_queries), _leader_queries
+        assert any("/actions/runs/101/jobs" in q for q in _leader_queries), _leader_queries
+        assert not any("runs?per_page=50" in q for q in _leader_queries), _leader_queries
+finally:
+    _leader_request.urlopen=_leader_real_open
+    if _leader_real_module is None:
+        _leader_sys.modules.pop("krx_session_calendar",None)
+    else:
+        _leader_sys.modules["krx_session_calendar"]=_leader_real_module
+    for _k,_v in _leader_orig_env.items():
+        if _v is None:
+            _leader_env.pop(_k,None)
+        else:
+            _leader_env[_k]=_v
+print("long_running_leader_hidden_recent50_regression=true")
