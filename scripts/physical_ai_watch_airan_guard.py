@@ -768,9 +768,12 @@ def _vnet_equity_recovery() -> list[dict]:
 
 
 
-# FundaAI's 3–4x ROBOT post-training GPU claim is user-supplied research,
-# NOT an independently reproducible measurement nor a signed GPU purchase.
-# Silent research baseline; later official post-training GPU-hour data may alert.
+# FUNDA's 2026-10-12 research note supplies an anonymous channel-check
+# 3–4x estimate for 7–13B robot post-training jobs, NOT independent,
+# same-hardware GPU-hour measurements or incremental GPU orders.
+# Extracted original article text was inspected via web search results;
+# opening its URL directly failed. It remains a silent research baseline.
+# Later first-party actual robot post-training GPU-hour disclosures may alert.
 ROBOT_POSTTRAIN_FUNDA_URL = 'https://fundaai.substack.com/p/deepphysical-ai-from-the-robot-data'
 ROBOT_POSTTRAIN_PRIMARY = {
     'NVIDIA', 'NVIDIA Research', 'NVIDIA Technical Blog', 'Tesla', 'Tesla AI',
@@ -796,8 +799,13 @@ ROBOT_POSTTRAIN_GPU_HOURS = re.compile(
     r'GPU\s*시간|GPU시간|가속기\s*시간)',re.I
 )
 ROBOT_POSTTRAIN_MEASURED = re.compile(
-    r'measured|reported|benchmark(?:ed)?|observed|actual|'
-    r'측정|실측|검증|기록|공식\s*발표',re.I
+    # "reported", "benchmark", "verified" or "official announcement"
+    # alone do NOT prove that GPU-hours were actually metered.
+    r'\bmeasured\b|\binstrumented\b|\bbenchmarked\b|'
+    r'\bmeasurement\s+(?:results?|data)\b|'
+    r'GPU[-\s]*hours?\s*(?:were\s*)?(?:measured|recorded)|'
+    r'실측|GPU\s*시간\s*(?:측정|계측)|'
+    r'측정\s*(?:결과|자료|데이터|기록)|실제\s*계측',re.I
 )
 ROBOT_POSTTRAIN_DENIAL = re.compile(
     r'not\s+(?:yet\s+)?measured|no\s+GPU[-\s]*hours?\s+disclosed|'
@@ -1196,10 +1204,18 @@ def meaning(cat: str) -> str:
                 '동일조건 비교·실제 활용률을 확인합니다. GPU시간은 GPU 발주나 '
                 '데이터센터 증설 계약·원화 매출과 다릅니다.')
     if cat == '로봇 사후학습 · Funda AI 3~4배 추정 기준선':
-        return ('Funda AI 발췌의 동일 파라미터 로봇 사후학습 GPU '
-                '3~4배 주장은 업계 조사 추정입니다. 비교모델, GPU 기종, '
-                '데이터 처리량과 실측 GPU시간은 직접 확인되지 않았으며 '
-                '확정 계약이나 GPU 증설 물량으로 해석하지 않습니다.')
+        return (
+            'Funda AI 2026-10-12 보고서의 익명 업계 조사로, 주로 70억~130억 '
+            '파라미터급 로봇 모델의 영상·관절·행동 신호 사후학습 작업이 '
+            '동일 파라미터 텍스트 사후학습보다 GPU 자원 약 3~4배를 '
+            '소모할 수 있다는 비교 추정입니다. 비교 GPU 종류·입력 길이·'
+            'GPU시간 원자료와 독립 재현은 공개되지 않았습니다. '
+            '단일 로봇 사후학습 작업은 초대형 언어모델의 전체 사전학습보다 '
+            '훨씬 작으며, 실제 산업 GPU 수요는 데이터 전처리·물리 시뮬레이션·'
+            '검증·반복 학습 및 프로젝트 수가 결정합니다. '
+            'Figure–Nscale 9/3 연산 서비스 약정은 별도 공식 계약으로 '
+            '이번 10/12 GPU 3~4배 추정의 검증 결과나 신규 계약이 아닙니다.'
+        )
     if cat == 'CATL 관계사–VNET · 10/12 주가 기사 오탐 정정':
         return (
             '이전 Telegram 208의 1·3번 ESS 주가 강세·수주 기대감 기사는 신규 수주·확정 분기 실적이 아니므로 고신호에서 제외합니다. '
@@ -1385,10 +1401,16 @@ def meaning(cat: str) -> str:
 
 def risk(cat: str) -> str:
     if cat.startswith('로봇 사후학습 · '):
-        return ('동일 파라미터라도 동영상 길이·해상도·행동 샘플률과 '
-                'GPU 세대·배치·이용률이 다르면 3~4배가 동등조건 비교가 '
-                '아닐 수 있습니다. 6~12개월 조기지표는 GPU시간/학습 '
-                '에피소드, 작업 성공률, 고객 유료채택과 실제 GPU 발주입니다.')
+        return (
+            '동일 파라미터라도 동영상 길이·프레임률·해상도, 행동 샘플률, '
+            'GPU 세대와 이용률이 다르면 3~4배를 일반화할 수 없습니다. '
+            '특히 동영상 디코딩·시계열 동기화·데이터 로딩 지연이 '
+            'GPU를 놀게 할 수 있어 계산량과 실제 유료 GPU시간을 구분합니다. '
+            '실패 경로는 데이터 구매가 늘어도 신규 과제 성공률이 개선되지 '
+            '않아 6~12개월 안에 다음 GPU 예약·집행이 늦어지는 경우입니다. '
+            'GPU시간/학습 에피소드·양품 데이터 비율·검증 작업 성공률·'
+            'GPU 이용률·실제 계약/전원 인가 시점을 먼저 확인합니다.'
+        )
     if cat.startswith('CATL 관계사–VNET · ') or cat.startswith('CATL–VNET · '):
         return (
             '지분취득과 VNET 데이터센터용 배터리 전속 공급권은 다릅니다. '
@@ -1474,7 +1496,11 @@ def verification(item: dict, group: str, text: str) -> str:
     if group == 'robot_posttrain_compute':
         if _robot_posttrain_stage(text,item.get('source') or '') == 'official_measured_posttraining':
             return '로봇 개발사 공식 GPU시간 측정 발표 · 실측 조건·계약 별도 확인'
-        return 'Funda AI 사용자 제공 인용 · 원문 직접 열람 실패 · 3~4배 독립 실측·GPU 계약 미확인'
+        return (
+            'Funda AI 2026-10-12 원문 검색 결과의 본문 확인 · '
+            '직접 URL 열람 실패 · 익명 업계 조사, 70억~130억 파라미터급 비교 추정 · '
+            '실측 GPU시간·동일조건 독립 재현·신규 GPU 발주 미확인'
+        )
     if group == 'catl_vnet_infrastructure':
         if item.get('correction_for_false_stock_alerts'):
             return '208번 메시지의 주가·수주 기대감 기사 2건 오류 정정 · VNET 9/21 공식 종결·미 SEC 공시만 유효 · 나트륨 ESS 전속 공급 미확인'
