@@ -14,6 +14,63 @@ SPEC.loader.exec_module(MODULE)
 
 
 class IranHormuzMarketTurnTests(unittest.TestCase):
+    def test_aramco_official_rss_requires_real_first_party_article_link(self):
+        now=dt.datetime(2026,10,12,10,0,tzinfo=dt.timezone.utc)
+        stamp="Mon, 12 Oct 2026 08:30:00 GMT"
+        content=f"""<rss><channel>
+            <item><title>Saudi Aramco awards pipeline contract for new Hormuz bypass alternative route</title>
+            <link>https://www.aramco.com/en/news-media/news/2026/new-hormuz-bypass-project</link>
+            <pubDate>{stamp}</pubDate></item>
+            <item><title>Saudi Aramco awards pipeline contract for new Hormuz bypass alternative route</title>
+            <link>https://news.google.com/rss/articles/unverified</link>
+            <pubDate>{stamp}</pubDate></item>
+            <item><title>Saudi Aramco awards pipeline contract for new Hormuz bypass alternative route</title>
+            <link>https://example.com/fake-aramco</link>
+            <pubDate>{stamp}</pubDate></item></channel></rss>"""
+        parsed=MODULE.parse_aramco_bypass_official_rss(content.encode(),now)
+        self.assertEqual(len(parsed),1)
+        self.assertTrue(MODULE._saudi_bypass_first_party_proof(parsed[0]))
+        self.assertEqual(MODULE._saudi_bypass_stage(parsed[0].title),"contract_awarded")
+        self.assertEqual(parsed[0].published_utc,"2026-10-12T08:30:00Z")
+
+    def test_aramco_official_rss_rejects_bad_dates_and_stale_reports(self):
+        now=dt.datetime(2026,10,12,10,0,tzinfo=dt.timezone.utc)
+        def feed(timestamp):
+            return f"""<rss><channel><item>
+              <title>Saudi Aramco awards pipeline contract for new Hormuz bypass alternative route</title>
+              <link>https://www.aramco.com/en/news-media/news/2026/new-hormuz-bypass-project</link>
+              <pubDate>{timestamp}</pubDate>
+            </item></channel></rss>""".encode()
+        self.assertEqual(MODULE.parse_aramco_bypass_official_rss(feed("Mon, 01 Jun 2026 12:00:00 GMT"),now),[])
+        self.assertEqual(MODULE.parse_aramco_bypass_official_rss(feed("garbage date"),now),[])
+        self.assertEqual(MODULE.parse_aramco_bypass_official_rss(feed("Tue, 13 Oct 2026 12:00:00 GMT"),now),[])
+
+    def test_aramco_official_article_must_corroborate_exact_stage(self):
+        from unittest import mock
+        now=dt.datetime(2026,10,12,10,0,tzinfo=dt.timezone.utc)
+        url="https://www.aramco.com/en/news-media/news/2026/new-hormuz-bypass-project"
+        rss=(f"""<rss><channel><item><title>Saudi Aramco awards pipeline contract for new Hormuz bypass alternative route</title>
+            <link>{url}</link><pubDate>Mon, 12 Oct 2026 08:30:00 GMT</pubDate></item></channel></rss>""").encode()
+        article=b"<html><body>Saudi Aramco awards pipeline contract for new Hormuz bypass alternative route. The new pipeline construction procurement award is signed.</body></html>"
+        def fake_fetch(got_url, **kwargs):
+            if got_url==MODULE.ARAMCO_OFFICIAL_RSS_URL: return rss
+            if got_url==url: return article
+            raise RuntimeError("unknown URL")
+        with mock.patch.object(MODULE,"fetch_bytes",side_effect=fake_fetch):
+            rows=MODULE.fetch_aramco_bypass_official_news(now)
+        self.assertEqual(len(rows),1)
+        self.assertIsNotNone(MODULE.confirm_event(rows))
+        forged_article=b"<html><body>Aramco reports old East-West pipeline operation, not a new award.</body></html>"
+        with mock.patch.object(MODULE,"fetch_bytes",side_effect=lambda got_url,**kw: rss if got_url==MODULE.ARAMCO_OFFICIAL_RSS_URL else forged_article):
+            rows=MODULE.fetch_aramco_bypass_official_news(now)
+        self.assertEqual(rows,[])
+
+    def test_aramco_rss_is_discovery_not_spoofable_company_proof(self):
+        self.assertFalse(MODULE._aramco_official_url("http://www.aramco.com/en/news"))
+        self.assertFalse(MODULE._aramco_official_url("https://www.aramco.com.evil.example/en/news"))
+        self.assertFalse(MODULE._aramco_official_url("https://news.google.com/rss/articles/abc"))
+        self.assertTrue(MODULE._aramco_official_url("https://www.aramco.com/en/news-media/news"))
+
     def test_saudi_bypass_new_plan_separate_from_existing_pipeline_operations(self):
         self.assertEqual(
             MODULE.classify_event("Saudi Arabia builds additional pipelines as alternative routes to Hormuz: Minister"),

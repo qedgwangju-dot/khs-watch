@@ -64,6 +64,7 @@ MMA_ISAIAS_VERIFIED_START_URLS = (
     MMA_OIL_ISAIAS_OCT8_URL,
     MMA_OIL_ISAIAS_OCT9_URL,
 )
+ARAMCO_OFFICIAL_RSS_URL = "https://www.aramco.com/api/v1/com/rss/news?sc_lang=en"
 SAUDI_BYPASS_STRATEGY_URL = "https://www.argaam.com/en/article/articledetail/id/1943047"
 SAUDI_BYPASS_REPORT_DATE = dt.date(2026, 10, 11)
 OPEC_WOO2026_URL = "https://www.opec.org/speech-detail/394-18-june-2026.html"
@@ -1051,6 +1052,97 @@ def _saudi_bypass_first_party_proof(row: NewsItem) -> bool:
     )
 
 
+def _aramco_official_url(url: str) -> bool:
+    parsed = urllib.parse.urlparse(url)
+    host = (parsed.hostname or "").lower()
+    return parsed.scheme == "https" and (
+        host == "aramco.com" or host.endswith(".aramco.com")
+    )
+
+
+def parse_aramco_bypass_official_rss(
+    payload: bytes,
+    current: dt.datetime,
+    max_age_days: int = 14,
+) -> list[NewsItem]:
+    """List candidate articles directly on the first-party Aramco RSS.
+
+    A Google News link or headline copied onto another site never qualifies
+    as official contract/commissioning evidence.
+    """
+    try:
+        root = ET.fromstring(payload)
+    except ET.ParseError as exc:
+        raise RuntimeError("Aramco 공식 RSS 형식 오류") from exc
+
+    rows: list[NewsItem] = []
+    max_items = 80
+    for item in root.findall(".//item")[:max_items]:
+        title = (item.findtext("title") or "").strip()
+        link = (item.findtext("link") or "").strip()
+        if not title or not _aramco_official_url(link):
+            continue
+        low = normalize_text(title)
+        if not any(word in low for word in ("pipeline", "pipelines", "hormuz", "송유관")):
+            continue
+
+        raw_date = (item.findtext("pubDate") or "").strip()
+        try:
+            when = email.utils.parsedate_to_datetime(raw_date)
+            if when.tzinfo is None:
+                when = when.replace(tzinfo=UTC)
+            when = when.astimezone(UTC)
+        except (ValueError, TypeError, OverflowError):
+            continue
+        if when > current + dt.timedelta(minutes=15):
+            continue
+        if current - when > dt.timedelta(days=max_age_days):
+            continue
+
+        if not _saudi_bypass_investment_headline(title):
+            continue
+        stage = _saudi_bypass_stage(title)
+        if stage == "unclassified":
+            continue
+        rows.append(NewsItem(
+            title=title, source="Saudi Aramco", link=link,
+            published_utc=when.isoformat().replace("+00:00", "Z"),
+            published_epoch=when.timestamp(), event_kind="saudi_bypass_investment",
+        ))
+    return rows
+
+
+def fetch_aramco_bypass_official_news(current: dt.datetime) -> list[NewsItem]:
+    rss_bytes=fetch_bytes(ARAMCO_OFFICIAL_RSS_URL,timeout=16,attempts=2)
+    candidates=parse_aramco_bypass_official_rss(rss_bytes,current)
+    confirmed=[]
+    for row in candidates[:8]:
+        if not _saudi_bypass_first_party_proof(row):
+            continue
+        try:
+            official_html=fetch_bytes(row.link,timeout=15,attempts=1).decode("utf-8","replace")
+        except Exception:
+            continue
+
+        visible=normalize_text(_visible_text(official_html))
+        # The article itself must corroborate exactly this project and stage:
+        # a legitimate host alone is insufficient.
+        if not _saudi_bypass_investment_headline(visible):
+            continue
+        page_stage=_saudi_bypass_stage(visible)
+        headline_stage=_saudi_bypass_stage(row.title)
+        if page_stage != headline_stage:
+            continue
+        if page_stage=="target_total_confirmed":
+            headline_value=_saudi_total_pipeline_target_mbd(row.title)
+            page_value=_saudi_total_pipeline_target_mbd(visible)
+            if headline_value is None or page_value != headline_value:
+                continue
+
+        confirmed.append(row)
+    return confirmed
+
+
 def parse_saudi_bypass_strategy_source(raw_html: str, current: dt.datetime) -> NewsItem:
     text = _visible_text(raw_html)
     low = normalize_text(text)
@@ -1721,6 +1813,11 @@ def fetch_news(current: dt.datetime) -> tuple[list[NewsItem], list[str]]:
         items.append(parse_eia_weekly_refining_snapshot(eia_html, current))
     except Exception as exc:
         errors.append(f"EIA refinery 3-2-1 official: {type(exc).__name__}: {exc}")
+
+    try:
+        items.extend(fetch_aramco_bypass_official_news(current))
+    except Exception as exc:
+        errors.append(f"사우디 Aramco 공식 RSS: {type(exc).__name__}: {exc}")
 
     direct_sources=(
         ("사우디 신규 우회 송유관 장관 발언", lambda: parse_saudi_bypass_strategy_source(
@@ -4325,7 +4422,7 @@ def run_monitor(current: dt.datetime) -> int:
     # Audit event selection and public-source failures without Telegram secrets or token logs.
     print(f"monitor_news_count={len(news_items)} candidate_kinds={[kind for kind, _ in confirmed_candidates]}")
     for issue in news_errors:
-        if any(v in issue for v in ("중국 Reuters", "호르무즈 신화통신", "허리케인 공식 MMA")):
+        if any(v in issue for v in ("중국 Reuters", "호르무즈 신화통신", "허리케인 공식 MMA", "사우디 Aramco 공식 RSS")):
             print(f"public_source_diagnostic={issue[:300]}")
     if not confirmed_candidates:
         lines = [
