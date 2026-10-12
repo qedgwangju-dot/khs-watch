@@ -246,14 +246,22 @@ jobs:
                      "X-GitHub-Api-Version": "2022-11-28"}
 
           def get(status):
-              req = urllib.request.Request(f"{base}/runs?status={status}&per_page=20", headers=headers)
-              with urllib.request.urlopen(req, timeout=20) as r:
-                  return json.loads(r.read().decode("utf-8")).get("workflow_runs", [])
+              # 최근 20개 제한으로 장전부터 살아 있는 production을 놓치지 않는다.
+              found=[]
+              for page in range(1,11):
+                  req = urllib.request.Request(f"{base}/runs?status={status}&per_page=100&page={page}", headers=headers)
+                  with urllib.request.urlopen(req, timeout=20) as r:
+                      rows = json.loads(r.read().decode("utf-8")).get("workflow_runs", [])
+                  found.extend(rows)
+                  if len(rows)<100:
+                      return found
+              raise RuntimeError(f"KOSPI active scan incomplete for {status}; do not dispatch duplicate")
 
           def classify_active():
               active = get("in_progress") + get("queued")
               healthy = []
               startup = []
+              unknown = []
               for run in active:
                   created = dt.datetime.fromisoformat(run["created_at"].replace("Z", "+00:00")).astimezone(ZoneInfo("Asia/Seoul"))
                   if created.date() != dt.datetime.now(ZoneInfo("Asia/Seoul")).date():
@@ -267,8 +275,10 @@ jobs:
                   try:
                       with urllib.request.urlopen(jobs_req, timeout=20) as r:
                           jobs = json.loads(r.read().decode("utf-8")).get("jobs", [])
-                  except Exception:
-                      jobs = []
+                  except Exception as exc:
+                      # 오래된 정상 runner 조회 실패는 '감시 없음'이 아니라 미확인이다.
+                      unknown.append((run_id,type(exc).__name__))
+                      continue
                   production_jobs = [
                       j for j in jobs
                       if str(j.get("name") or "") in {"watch", "morning", "afternoon"}
@@ -281,19 +291,19 @@ jobs:
                       ))
                   elif age_minutes <= 3:
                       startup.append((run_id, created.strftime("%H:%M:%S"), run.get("status")))
-              return healthy, startup
+              return healthy, startup, unknown
 
-          healthy, startup = classify_active()
+          healthy, startup, unknown = classify_active()
           if healthy:
               print(f"kospi_realtime_watchdog=alive production={healthy}")
               with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as f:
                   f.write("KOSPI_REALTIME_WATCH_ACTIVE=1\n")
               raise SystemExit(0)
 
-          if startup:
-              # run 자체만 생성되고 production job이 아직 없으면 살아 있다고 보지 않는다.
-              # 중복 dispatch는 피하되 같은 회차 rapid fallback은 계속 허용한다.
-              print(f"kospi_realtime_watchdog=startup_unverified fallback_kept_active startup={startup}")
+          if startup or unknown:
+              # 미확인/기동 중인 runner가 있으면 중복 dispatch를 하지 않고
+              # rapid fallback은 유지해 실제 급락도 누락하지 않는다.
+              print(f"kospi_realtime_watchdog=startup_unverified fallback_kept_active startup={startup} unknown={unknown}")
               with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as f:
                   f.write("KOSPI_REALTIME_WATCH_ACTIVE=0\n")
               raise SystemExit(0)
@@ -313,9 +323,10 @@ jobs:
           deadline=time.time()+90
           verified=[]
           startup_after=[]
+          unknown_after=[]
           while time.time() < deadline and not verified:
               time.sleep(5)
-              verified, startup_after = classify_active()
+              verified, startup_after, unknown_after = classify_active()
           with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as f:
               if verified:
                   f.write("KOSPI_REALTIME_WATCH_ACTIVE=1\n")
@@ -326,7 +337,7 @@ jobs:
           else:
               print(
                   "kospi_realtime_watchdog=production_unverified_fallback_enabled "
-                  f"startup={startup_after}"
+                  f"startup={startup_after} unknown={unknown_after}"
               )
           PY
 
