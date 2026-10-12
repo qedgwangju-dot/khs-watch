@@ -33,8 +33,10 @@ permissions:
   actions: write
 
 concurrency:
-  group: kospi-derivatives-flow-ci
-  cancel-in-progress: true
+  # 정기 실전검증은 코드수정(push)에 의해 취소되면 안 된다.
+  # 같은 종류의 잦은 push 검증만 최신 실행으로 교체한다.
+  group: kospi-derivatives-flow-ci-${{ github.event_name }}
+  cancel-in-progress: ${{ github.event_name == 'push' }}
 
 jobs:
   test:
@@ -69,6 +71,18 @@ jobs:
           python scripts/test_kospi_shock_episode.py
           python scripts/test_kospi_shock_enrichment.py
           python scripts/test_kospi_flow_attribution_strict.py
+
+      - name: Verify failure notifier syntax and independent handoff
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import yaml
+          wf=yaml.safe_load(Path(".github/workflows/kospi-derivatives-flow-ls-ci.yml").read_text(encoding="utf-8"))
+          cc=wf.get("concurrency") or {}
+          assert "github.event_name" in str(cc.get("group","")), "CI push/schedule share cancellation group"
+          assert "github.event_name == 'push'" in str(cc.get("cancel-in-progress","")), "CI scheduled run may be cancelled by a new push"
+          print("ci_schedule_push_concurrency_isolation_valid=true")
+          PY
 
       - name: Verify failure notifier syntax and independent handoff
         run: |
