@@ -147,7 +147,12 @@ def axios_world_page():
 def google_news_with_axios(query):
     # Axios 공개 RSS를 전용 센티널에서 직접 읽어 검색엔진 색인 지연·쿼리 순서 변경에 영향받지 않게 한다.
     if query == AXIOS_SENTINEL:
-        return axios_direct_feed() + axios_world_page(), None
+        # 2026-10: The legacy World HTML scrape targets one old, undated
+        # September meeting and is now access-denied (HTTP 403). It cannot
+        # qualify as a fresh item. Keep the verified live Axios RSS and the
+        # existing Axios news-search queries; do not let a blocked auxiliary
+        # page discard otherwise independently verified war alerts.
+        return axios_direct_feed(), None
     rows, err = _prev_google_news(query)
     return rows, err
 

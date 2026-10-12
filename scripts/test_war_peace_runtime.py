@@ -289,29 +289,67 @@ class RuntimeTests(unittest.TestCase):
         finally:
             watch.OUT, watch.req, watch.QUERIES = saved
 
-    def test_real_axios_swallowed_total_partial_and_malformed_failures_block(self):
+    def test_real_axios_feed_failure_or_malformed_xml_blocks_alert(self):
         import war_peace_reconstruction_watch_oct04_guard as guard
         watch = guard.watch
         saved = watch.OUT, watch.req, watch.QUERIES
         watch.QUERIES = ['__AXIOS_DIRECT_WAR_PEACE__']
         try:
-            for mode in ('all-failed', 'feed-failed', 'world-failed', 'malformed-feed'):
+            for mode in ('feed-failed', 'malformed-feed'):
                 with self.subTest(mode=mode):
                     watch.OUT = self.root/mode
                     def req(url, timeout=20):
-                        feed = url == 'https://api.axios.com/feed/'
-                        if (mode == 'all-failed' or (mode == 'feed-failed' and feed)
-                                or (mode == 'world-failed' and not feed)):
+                        if url != 'https://api.axios.com/feed/':
+                            raise AssertionError('obsolete Axios World page must not be requested')
+                        if mode == 'feed-failed':
                             raise TimeoutError('offline source unavailable')
-                        if mode == 'malformed-feed' and feed:
-                            return b'<html>bot challenge</html>'
-                        return b'<rss><channel/></rss>' if feed else b'<html></html>'
+                        return b'<html>bot challenge</html>'
                     watch.req = req
                     with self.assertRaises(runtime.IncompleteCoverage):
                         self.collect(watch)
                     report = json.loads((watch.OUT/'coverage.json').read_text())
                     self.assertEqual(report['news'][0]['status'], 'error')
-                    self.assertEqual(len(report['news'][0]['http']), 2)
+                    self.assertEqual(len(report['news'][0]['http']), 1)
+                    self.assertEqual(report['news'][0]['http'][0]['url'], 'https://api.axios.com/feed/')
+        finally:
+            watch.OUT, watch.req, watch.QUERIES = saved
+
+    def test_axios_valid_rss_without_legacy_world_page_replays_all_rows(self):
+        import war_peace_reconstruction_watch_oct04_guard as guard
+        watch = guard.watch
+        saved = watch.OUT, watch.req, watch.QUERIES
+        watch.OUT = self.root/'axios-rss-only'
+        watch.QUERIES = ['__AXIOS_DIRECT_WAR_PEACE__']
+        feed = (
+            b'<rss><channel><item><title>Ukraine peace talks continue</title>'
+            b'<link>https://www.axios.com/news/peace</link>'
+            b'<pubDate>Mon, 12 Oct 2026 06:00:00 GMT</pubDate>'
+            b'<description>Russia and Ukraine</description>'
+            b'</item></channel></rss>'
+        )
+        def req(url, timeout=20):
+            if url != 'https://api.axios.com/feed/':
+                raise AssertionError('obsolete Axios World page must not be requested')
+            return feed
+        watch.req = req
+        try:
+            queries, traces, report = self.collect(watch)
+            record = report['news'][0]
+            self.assertEqual(record['status'], 'ok')
+            self.assertEqual(record['rows'], 1)
+            self.assertEqual(record['requests'], 1)
+            self.assertEqual(record['http'][0]['url'], 'https://api.axios.com/feed/')
+            self.assertEqual(record['http'][0]['status'], 'ok')
+            watch.req = forbidden
+            restore, verify = runtime.install_replay(watch, queries, traces)
+            try:
+                rows, error = watch.google_news('__AXIOS_DIRECT_WAR_PEACE__')
+                self.assertIsNone(error)
+                self.assertEqual(len(rows), 1)
+                self.assertEqual(rows[0]['title'], 'Ukraine peace talks continue')
+                verify()
+            finally:
+                restore()
         finally:
             watch.OUT, watch.req, watch.QUERIES = saved
 
