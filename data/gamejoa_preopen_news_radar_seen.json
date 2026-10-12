@@ -2123,6 +2123,30 @@
       "telegram_core_fact": "장병탁 투모로로보틱스 대표는 “로봇 AI가 실제 산업 현장에서 쓰이려면 높은 작업 성공률뿐 아니라 반복 작업의 안정성과 예상치 못한 변화에 대한 대응력을 갖춰야 한다”며 “다양한 로봇의 조작 지능을 고도화하고, 파트너사와 현장 실증을 확대해 제조·물류 분야의 피지컬 AI 상용화를 앞당기겠다”고 말했다.",
       "title": "투모로로보틱스, 로봇 AI '하빌리스 브레인 0' 공개"
     },
+    "core:103b4a1209c69fe2f8124454": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822242",
+      "source": "뉴시스",
+      "source_body_digest": "d8b1ba77d8c7093e204b916f669c7ed8f0ceaea8a3a6edd0a0f6a3143b293301",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca31e30d15de772e53b77c5577b25baf1f03e7dbe5feeeed801cfb9bfc3fa5cf",
+      "source_fact_keys": [
+        "source_fact:v1:68dd127a47232f5e61470931db51c212722ce0796ca7a2f521ba4aa1b23a9c58",
+        "source_fact:v1:6c46b88fe9418b8438c1588619ceb757c190d7aa06c0017ab50c977d402add17",
+        "source_fact:v1:76e158ac32744bfdbdb1066a6e596aa53fe25dfe2779b256c13fec60c1778302",
+        "source_fact:v1:8fb44134d5c2b9191201428058eee166be975297c474d413eb302e1651156fda",
+        "source_fact:v1:c13779896dcef468928aec1b177d6041d1d58fa9c2fdbc8fad166e6968d538de",
+        "source_fact:v1:dd3089baeb7f18b3f401ce4dbd2694672bcdda66b918eebcc5646a4ce7a7f1a4"
+      ],
+      "source_published_kst": "2026-10-12T14:32+09:00",
+      "source_title": "메모리 원가 비중 40%로 급등…3분기 글로벌 PC 출하량 21% 감소",
+      "telegram_core_fact": "벤 예(Ben Yeh) 옴디아 수석 애널리스트는 \"PC에서 D램과 SSD(솔리드스테이트드라이브)가 차지하는 원가 비중이 통상 약 15%에서 40%로 급등했다\"며 \"가격은 4배 이상 올랐다\"고 밝혔다.",
+      "title": "메모리 원가 비중 40%로 급등…3분기 글로벌 PC 출하량 21% 감소"
+    },
     "core:1045227ebf38c52a650ef9e2": {
       "first_seen_kst": "2026-10-09T23:49:51+09:00",
       "lanes": {
@@ -13480,6 +13504,27 @@
       "telegram_core_fact": "국제에너지기구(IEA)가 비축유 방출을 앞당기기로 하면서 7일(현지시간) 국제유가가 하락했다.",
       "title": "국제유가, IEA 비축유 방출 가속에 하락…WTI 1.3%↓ | 연합뉴스"
     },
+    "core:77acc91b7bd796f0525a345e": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.hankyung.com/article/2026101261377",
+      "source": "한국경제",
+      "source_body_digest": "e9083ce7796397b95a5e484093f44efcd541670e117f81cc3d614cc850afdcfc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:368ec6816e6ea2d913b72fe0c0d474bd056075d258b30cd8310aa1075cd82545",
+      "source_fact_keys": [
+        "source_fact:v1:bed524f23965a796216185e9f638419981fdfd5815c34d8af54426225e141dcc",
+        "source_fact:v1:c9a155a9cef6fdb34bb0cf97cceb0d805095bba34d8ef4d68d4d0a4b592b2146",
+        "source_fact:v1:f56343719a4967d4571e422fa536facc1490e99c5d8bec6415cdc06a7a8249cf"
+      ],
+      "source_published_kst": "2026-10-12T13:54+09:00",
+      "source_title": "호남 반도체 전력망 1.4조 청구서…삼전닉스가 80% 떠안는다",
+      "telegram_core_fact": "호남 반도체 클러스터 1단계 전력 공급망 구축에 1조4000억원이 투입되는 가운데 한국전력이 부담하는 몫은 20% 미만에 그칠 것으로 나타났다.",
+      "title": "호남 반도체 전력망 1.4조 청구서…삼전닉스가 80% 떠안는다"
+    },
     "core:77cc97562c8eb4b87f55a927": {
       "first_seen_kst": "2026-10-07T15:30:27+09:00",
       "lanes": {
@@ -15186,6 +15231,37 @@
       "source_title": "\"트럼프, 젤렌스키가 요청 6차례 무시하자 푸틴과 경유 거래\"",
       "telegram_core_fact": "미 재무부는 곧바로 러시아 경유에 대한 제재 해제를 발표했는데, 중간선거를 앞두고 미국 내 경유가격 급등에 대한 불만이 커지자 트럼프 대통령이 푸틴 대통령에게 손을 내민 모양새다.",
       "title": "\"트럼프, 젤렌스키가 요청 6차례 무시하자 푸틴과 경유 거래\""
+    },
+    "core:86ca17d84df5facc8cd56fd1": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.etnews.com/20261012000281",
+      "source": "전자신문",
+      "source_body_digest": "3cda5558997d67a9e7c1331fabbf3b85f5e1e05502f185b4a1e0784f1401c656",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:54f2c20db0e127690733c4b28ed13aa66fb121e795bc80c9f2edff8b72c8df7b",
+      "source_fact_keys": [
+        "source_fact:v1:0dc99615dca16e1470e648c7509c4ab253eac0dc7f84b06a3a780a706a4d68e5",
+        "source_fact:v1:17d5459de891bdf5fbf3ac46151d5ec7301e01c5f2177fcd1a09495a479707bc",
+        "source_fact:v1:223178fd8fcbcd9e9303155ca74c8484e6d47a2aa112cf2dbbedddbe850c5089",
+        "source_fact:v1:2c326e0b7822abe800ad4e2d9178408b0a64f1a09f1dd6e68a7dd6c37aef7555",
+        "source_fact:v1:4243cc72560c130f0f0d044046437db1f028d632d1a9e3d790d22cad06a2d625",
+        "source_fact:v1:4c9694d38e8f9c95d5a863a58546edde69df2a6a46d82a284669cadfca0a3a59",
+        "source_fact:v1:7e11c12c47036a57c25c8fcc2ef5cc06651207e23ec1a08ff32fcb380f7edddd",
+        "source_fact:v1:8698983ae3bef6c596933bde4598574e7b7a11e907d59da12f65295530a58297",
+        "source_fact:v1:a5cc647150fe23ee8a6ccdbba1b9106d14388af00aaab2bd10a948cf231df20a",
+        "source_fact:v1:ab3a66fc43754185b5195263f9c31caecb147aef6893ceddbf21ea75af80a014",
+        "source_fact:v1:f4dace569463ab51de6bcbe0472dd1516ad7c4a39e2d0b115e9898f70040b1cf",
+        "source_fact:v1:f7bd51c3241f72d5f2c066b1e7f201e0ead5c3d6acf20647d03919b0b468fa7b",
+        "source_fact:v1:f900684dbe0509c934a95bc2cdaf0a5363ccb90f1ca9c1fd5cd7d1f5ac0b525e"
+      ],
+      "source_published_kst": "2026-10-12T15:02+09:00",
+      "source_title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의",
+      "telegram_core_fact": "반도체 산업 호황으로 촉발된 산업용 질소가스 공급난이 장기화하면서 정부가 가스 제조사와 반도체 대기업을 대상으로 수급 조정에 나선다.",
+      "title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의"
     },
     "core:86d6c4d4141f06960beff591": {
       "first_seen_kst": "2026-10-12T14:44:13+09:00",
@@ -25996,6 +26072,27 @@
       "telegram_core_fact": "최근 후티군은 미-이란 전쟁 등으로 이란이 공격을 받자 홍해와 사우디 본토에 대한 공격을 한층 강화해서 예멘 내전이 격렬한 국제전으로 확대된 양상을 보이고 있다.",
       "title": "예멘 정부군 \" 하루새 후티 반군 1900회 공격, 1150 명 살해\""
     },
+    "core:e48bdaf806eb517d9030d32c": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822265",
+      "source": "뉴시스",
+      "source_body_digest": "4b8a0830eb89147d1518b729fd2515a61e1b31a67c228b93d6eeefea6af97a14",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:510baa8c4df37c51d973d5cd2ebf760bbb2781ad69611e068b1e2eea37bc4b81",
+      "source_fact_keys": [
+        "source_fact:v1:68241b3f013fce92f003206a6cf4b131b05732a1bc1f079503c419d73c5613f6",
+        "source_fact:v1:75d3ccc3fa0d9a099516312fe4d455ff36673b405a7f562e0e7cc3942fefbb49",
+        "source_fact:v1:80e50f5323f9e26692f4d64a007d2cdf534ddbb58659d43b2936632428ff5fc9"
+      ],
+      "source_published_kst": "2026-10-12T14:34+09:00",
+      "source_title": "티제이이노베이션, 소프트뱅크에 고출력 광 DAS 공급",
+      "telegram_core_fact": "무선통신 인프라 장비 전문기업 티제이이노베이션(TJ Innovation)은 일본 이동통신사업자 소프트뱅크(SoftBank)에 고출력 광 DAS(분산안테나시스템)를 공급한다고 12일 밝혔다.",
+      "title": "티제이이노베이션, 소프트뱅크에 고출력 광 DAS 공급"
+    },
     "core:e4b52ba8ee113dac302949e1": {
       "first_seen_kst": "2026-10-11T22:57:06+09:00",
       "lanes": {
@@ -26195,6 +26292,26 @@
       "source_title": "어획량·조업 위치 데이터로 관리…연근해어업 규제 절반 줄인다",
       "telegram_core_fact": "해양수산부는 8일 열린 제15회 국가정책조정회의에서 이 같은 내용이 담긴 '데이터 기반 연근해어업 관리혁신 및 규제 합리화 방안'을 발표했다.",
       "title": "어획량·조업 위치 데이터로 관리…연근해어업 규제 절반 줄인다"
+    },
+    "core:e67943bf6e2a3222badbc5a6": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03289846645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "8726a2dfa01f44f53d037deafb2ea5b7b9b3e991db99ecf0a5a501a4b5af0a0e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a3a8901f0e9c9f8491aa4458671399ef73a477e603a0acda41ae7459d596b90",
+      "source_fact_keys": [
+        "source_fact:v1:7d81c4d1b1d96d749c10c027afa77147ff877aa12ba4ee366476e1db3ff8dfa9",
+        "source_fact:v1:94207d270ef8ec2d7db0c06855719010104d83943200654a6b26d1b1cbf2c2f5"
+      ],
+      "source_published_kst": "2026-10-12T14:21+09:00",
+      "source_title": "美 AI 공급망도 中 영향권…핵심 부품 5개 분야 점유율 50% 넘어",
+      "telegram_core_fact": "희토류와 전력장비, 반도체 등 주요 5개 분야에서 세계 시장 점유율이 각각 50%를 넘는 것으로 나타났다.",
+      "title": "美 AI 공급망도 中 영향권…핵심 부품 5개 분야 점유율 50% 넘어"
     },
     "core:e6a487f46b014e41f84b19dd": {
       "first_seen_kst": "2026-10-10T06:23:09+09:00",
@@ -30021,19 +30138,22 @@
     "event:16f9d94441c69ef83ffdcd63": {
       "first_seen_kst": "2026-10-12T15:02:00+09:00",
       "lanes": {
-        "live": "2026-10-12T15:02:00+09:00"
+        "live": "2026-10-12T15:20:09+09:00"
       },
-      "last_seen_kst": "2026-10-12T15:02:00+09:00",
-      "link": "https://www.etnews.com/20261012000248",
-      "source": "전자신문",
-      "source_body_digest": "a90df4f87084d4f2aa3e3a264164e40dffdc1f06eba655bdc2c08d27ab566219",
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03289846645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "8726a2dfa01f44f53d037deafb2ea5b7b9b3e991db99ecf0a5a501a4b5af0a0e",
       "source_event_identity": "",
-      "source_fact_identity": "",
-      "source_fact_keys": [],
-      "source_published_kst": "2026-10-12T14:19+09:00",
-      "source_title": "반도체 1조달러 이후 시대 전망…세미콘 웨스트 2026 '첨단 패키징·이종집적' 방점",
-      "telegram_core_fact": "반도체 산업이 연매출 1조달러를 돌파한 후 열리는 첫 '세미콘 웨스트(SEMICON West)' 행사가 오는 13일(현지시간)부터 미국 샌프란시스코 모스콘센터에서 개최된다.",
-      "title": "반도체 1조달러 이후 시대 전망…세미콘 웨스트 2026 '첨단 패키징·이종집적' 방점"
+      "source_fact_identity": "source_facts:v1:9a3a8901f0e9c9f8491aa4458671399ef73a477e603a0acda41ae7459d596b90",
+      "source_fact_keys": [
+        "source_fact:v1:7d81c4d1b1d96d749c10c027afa77147ff877aa12ba4ee366476e1db3ff8dfa9",
+        "source_fact:v1:94207d270ef8ec2d7db0c06855719010104d83943200654a6b26d1b1cbf2c2f5"
+      ],
+      "source_published_kst": "2026-10-12T14:21+09:00",
+      "source_title": "美 AI 공급망도 中 영향권…핵심 부품 5개 분야 점유율 50% 넘어",
+      "telegram_core_fact": "희토류와 전력장비, 반도체 등 주요 5개 분야에서 세계 시장 점유율이 각각 50%를 넘는 것으로 나타났다.",
+      "title": "美 AI 공급망도 中 영향권…핵심 부품 5개 분야 점유율 50% 넘어"
     },
     "event:17defdecf40efbd28e528c5a": {
       "first_seen_kst": "2026-09-20T19:20:28+09:00",
@@ -30786,24 +30906,25 @@
     "event:23586fc246b48e95da41f756": {
       "first_seen_kst": "2026-10-12T08:03:02+09:00",
       "lanes": {
-        "live": "2026-10-12T12:56:34+09:00"
+        "live": "2026-10-12T15:20:09+09:00"
       },
-      "last_seen_kst": "2026-10-12T12:56:34+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261012082200008",
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012086900008",
       "source": "연합뉴스",
-      "source_body_digest": "53b9196849a1dd8124c2422b0e5fc8c65db2aecd49d9f385e61b5b770a3ac06a",
+      "source_body_digest": "edb3c5164047c23e1bea89ffc3e0c8d65ebf8aa555a21e5a90fdfb8978ac014a",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:31bab63ed6c4a93ce7825f4c67b194c242245db0c7074730c243c60447564265",
+      "source_fact_identity": "source_facts:v1:e3c3fc838a78fd92fb40d89f40585151e3d0b5abc06c2bdfe26bc4fa4b4dd507",
       "source_fact_keys": [
-        "source_fact:v1:490dc6696e210d8973dbde885bd0725ffaf05af766b1de5de70d583886549f39",
-        "source_fact:v1:49a473be7a720f32608af014ccec9811b37814cb0910c600b6c52db490b81480",
-        "source_fact:v1:5e72c00d2791859b95bd9662958344d62df5cb4346c3e9b8beb71a641a26f0b3",
-        "source_fact:v1:a9a158cada44a55144771d1c28154d6ecb891df59e357de17b55fd3e370c4861"
+        "source_fact:v1:0b681b00e82523ced7ec6925c32e2629a1773ec792bf4f9631e13d24b08da8cf",
+        "source_fact:v1:2174794b39b070bc8875ef230ea8c4645e977ff26478762c72bc79857f600636",
+        "source_fact:v1:4236c2aacbda88ccda915b9c2d340726e3b2f2674a92a0d90b5d52dbadf39a4c",
+        "source_fact:v1:5531298895253b9715d72eff6d2ca18a8c9a5569abe5915b6ca8e76cac790f08",
+        "source_fact:v1:fc967e9608197d7a97ac66bfbeff87d5b48117aeb9277e5cc5ecd1b2fae04bb9"
       ],
-      "source_published_kst": "2026-10-12T11:45+09:00",
-      "source_title": "반등 활로 못 찾는 코스피…역대급 삼전 실적에도 오히려 낙폭 확대 | 연합뉴스",
-      "telegram_core_fact": "하지만 이는 실제 매출 감소가 아닌 회계상 매출 집계 방식의 차이에서 발생한 것으로 파악됐고, 이튿날인 9일 나스닥 지수가 0.64% 반등한 점을 고려하면 코스피의 부진을 오픈AI발 거품론으로만 설명하기는 어려운 듯 보인다.",
-      "title": "반등 활로 못 찾는 코스피…역대급 삼전 실적에도 오히려 낙폭 확대 | 연합뉴스"
+      "source_published_kst": "2026-10-12T15:09+09:00",
+      "source_title": "외국인, 올해 코스피서 199조 순매도…\"시장의 고민은 외인 수급\" | 연합뉴스",
+      "telegram_core_fact": "외국인은 올해 유가증권시장에서 약 199조원을 순매도했다.",
+      "title": "외국인, 올해 코스피서 199조 순매도…\"시장의 고민은 외인 수급\" | 연합뉴스"
     },
     "event:23ba8d5768f9754b1a01cfed": {
       "first_seen_kst": "2026-10-02T08:38:38+09:00",
@@ -32152,29 +32273,23 @@
     "event:4737714e3ad20fc71dee8088": {
       "first_seen_kst": "2026-10-12T05:58:12+09:00",
       "lanes": {
-        "live": "2026-10-12T14:17:50+09:00"
+        "live": "2026-10-12T15:20:09+09:00"
       },
-      "last_seen_kst": "2026-10-12T14:17:50+09:00",
-      "link": "https://www.dailian.co.kr/news/view/1699574/%EA%B5%AD%EC%9E%A5-%EB%B6%88%EC%95%88%ED%95%B4ETF-%ED%88%AC%EC%9E%90%EA%B8%88-4%EC%A1%B0%EC%9B%90-%EB%AA%B0%EB%A6%B0-2026",
-      "source": "데일리안",
-      "source_body_digest": "8118511f751963bc61e567d017967f2b9ba28d4b3f8c5c2be0a759d8e3ff45a7",
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.hankyung.com/article/2026101261377",
+      "source": "한국경제",
+      "source_body_digest": "e9083ce7796397b95a5e484093f44efcd541670e117f81cc3d614cc850afdcfc",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:ad7931b3f6475a7e6a56853d83efc645a9419f4bcc98cbd435ef4cccfafcde59",
+      "source_fact_identity": "source_facts:v1:368ec6816e6ea2d913b72fe0c0d474bd056075d258b30cd8310aa1075cd82545",
       "source_fact_keys": [
-        "source_fact:v1:24f7c15e96ef2c5a42ddad7978b918845fd14bc032388564d6bff6a11090a1e3",
-        "source_fact:v1:433ab2de318761aeb3c6f0ed147709a8754331f0b1273c42320d0eea89219076",
-        "source_fact:v1:6310c312254b11d5583564e0b718c6ab4cb254b11de9fb63d10b148e0c51df12",
-        "source_fact:v1:7f2b4aeead91d2d778d976bac6554ceed86afc0032ffbe8f5601ce6bdbf64d92",
-        "source_fact:v1:7f8bad1ce5a6b095d21a261aed2c67adec54bd9fc23c0fc4fdecb9d4f055d540",
-        "source_fact:v1:83bd085fa6a462b33b249a219de1c6a7bb117b768cc7fcfe15eba812c2bc42ec",
-        "source_fact:v1:85703227249fb8236776cd40da0bf4f401f53d4dfe262fa4063c388baf8ecaa1",
-        "source_fact:v1:8a57efa6325a062516ce7023c7c9b8ff855a6b39776e72c7435fd38abd3aa5a9",
-        "source_fact:v1:b2d2f58353e9f97f8abfd7f537560c1e0bc50c18981254998b11383fe0789916"
+        "source_fact:v1:bed524f23965a796216185e9f638419981fdfd5815c34d8af54426225e141dcc",
+        "source_fact:v1:c9a155a9cef6fdb34bb0cf97cceb0d805095bba34d8ef4d68d4d0a4b592b2146",
+        "source_fact:v1:f56343719a4967d4571e422fa536facc1490e99c5d8bec6415cdc06a7a8249cf"
       ],
-      "source_published_kst": "2026-10-12T07:05+09:00",
-      "source_title": "\"국장은 불안해\"…ETF 투자금 4조원 몰린 곳은?",
-      "telegram_core_fact": "최근 한달간 머니마켓·단기금리형 ETF 5종에 4조원 넘는 자금이 유입되며 수익률보다 안정성과 유동성을 중시하는 모습이다. 최근 1개월간 자금 순유입 상위 10개 ETF 중 현금성·단기금리형 상품 5종에 총 4조1599억원이 유입됐다.",
-      "title": "\"국장은 불안해\"…ETF 투자금 4조원 몰린 곳은?"
+      "source_published_kst": "2026-10-12T13:54+09:00",
+      "source_title": "호남 반도체 전력망 1.4조 청구서…삼전닉스가 80% 떠안는다",
+      "telegram_core_fact": "호남 반도체 클러스터 1단계 전력 공급망 구축에 1조4000억원이 투입되는 가운데 한국전력이 부담하는 몫은 20% 미만에 그칠 것으로 나타났다.",
+      "title": "호남 반도체 전력망 1.4조 청구서…삼전닉스가 80% 떠안는다"
     },
     "event:47441e982ce90f7c91ef1c61": {
       "first_seen_kst": "2026-10-12T11:11:48+09:00",
@@ -35783,25 +35898,26 @@
     "event:9863e2156d1d4e96f8f2f84b": {
       "first_seen_kst": "2026-10-12T05:35:02+09:00",
       "lanes": {
-        "live": "2026-10-12T12:09:58+09:00"
+        "live": "2026-10-12T15:20:09+09:00"
       },
-      "last_seen_kst": "2026-10-12T12:09:58+09:00",
-      "link": "https://www.newsis.com/view/NISX20261012_0003821623",
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822242",
       "source": "뉴시스",
-      "source_body_digest": "ae0e327eeb91136058b3549565272e651a212ff90c346c28043ae26d6e27cab5",
+      "source_body_digest": "d8b1ba77d8c7093e204b916f669c7ed8f0ceaea8a3a6edd0a0f6a3143b293301",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:cfa1eb4c54b6c75d6ae5223d7467cf6f9f992ac2d31996a92922d5d4a4d10803",
+      "source_fact_identity": "source_facts:v1:ca31e30d15de772e53b77c5577b25baf1f03e7dbe5feeeed801cfb9bfc3fa5cf",
       "source_fact_keys": [
-        "source_fact:v1:0c4f57a2cbb3cb516d9cda93083e551218133250f94021a73afdc16cc0105143",
-        "source_fact:v1:295afef7d5333ea39e55b73f5b2522926ba00c99bfea3480b41e7cac25aca91b",
-        "source_fact:v1:62b98b75db2cd2abb98a62d10e99884557caf12e598cc13d47f9617643fb98f3",
-        "source_fact:v1:aab9ff9e339fdc2f584847eab31d023da5a509bd3d4092b177e88895ca1b84e3",
-        "source_fact:v1:ae764edbaa3c4c08b984ada78b35e5db781c80dafcf601af92e0566a937b5b92"
+        "source_fact:v1:68dd127a47232f5e61470931db51c212722ce0796ca7a2f521ba4aa1b23a9c58",
+        "source_fact:v1:6c46b88fe9418b8438c1588619ceb757c190d7aa06c0017ab50c977d402add17",
+        "source_fact:v1:76e158ac32744bfdbdb1066a6e596aa53fe25dfe2779b256c13fec60c1778302",
+        "source_fact:v1:8fb44134d5c2b9191201428058eee166be975297c474d413eb302e1651156fda",
+        "source_fact:v1:c13779896dcef468928aec1b177d6041d1d58fa9c2fdbc8fad166e6968d538de",
+        "source_fact:v1:dd3089baeb7f18b3f401ce4dbd2694672bcdda66b918eebcc5646a4ce7a7f1a4"
       ],
-      "source_published_kst": "2026-10-12T12:00+09:00",
-      "source_title": "美 10년물, 올해 말 5.1% 찍고 내년 말 4.78%…고금리 오래 간다",
-      "telegram_core_fact": "시나이 사장은 10년물 국채금리가 2027년 6%에 근접할 수 있고 2020년대 말까지 5%를 웃돌 수 있다고 내다봤다.",
-      "title": "美 10년물, 올해 말 5.1% 찍고 내년 말 4.78%…고금리 오래 간다"
+      "source_published_kst": "2026-10-12T14:32+09:00",
+      "source_title": "메모리 원가 비중 40%로 급등…3분기 글로벌 PC 출하량 21% 감소",
+      "telegram_core_fact": "벤 예(Ben Yeh) 옴디아 수석 애널리스트는 \"PC에서 D램과 SSD(솔리드스테이트드라이브)가 차지하는 원가 비중이 통상 약 15%에서 40%로 급등했다\"며 \"가격은 4배 이상 올랐다\"고 밝혔다.",
+      "title": "메모리 원가 비중 40%로 급등…3분기 글로벌 PC 출하량 21% 감소"
     },
     "event:989b212ffe32167f3bef644a": {
       "first_seen_kst": "2026-09-30T18:09:05+09:00",
@@ -47445,6 +47561,29 @@
       "telegram_core_fact": "이란 정권 안보 최고 당국자는 도널드 트럼프 미국 행정부가 해상 봉쇄 해제, 동결 자산 반환 등 자국이 내걸었던 7개 조건을 전부 수용해야 호르무즈 해협 재개방이 가능하다는 입장을 밝혔다.",
       "title": "이란 \"美, 전체휴전·자산반환 등 '7개조건' 다 받아야 호르무즈 개방\""
     },
+    "fact:2878c64ea48e3814b4ab00be": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012086900008",
+      "source": "연합뉴스",
+      "source_body_digest": "edb3c5164047c23e1bea89ffc3e0c8d65ebf8aa555a21e5a90fdfb8978ac014a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3c3fc838a78fd92fb40d89f40585151e3d0b5abc06c2bdfe26bc4fa4b4dd507",
+      "source_fact_keys": [
+        "source_fact:v1:0b681b00e82523ced7ec6925c32e2629a1773ec792bf4f9631e13d24b08da8cf",
+        "source_fact:v1:2174794b39b070bc8875ef230ea8c4645e977ff26478762c72bc79857f600636",
+        "source_fact:v1:4236c2aacbda88ccda915b9c2d340726e3b2f2674a92a0d90b5d52dbadf39a4c",
+        "source_fact:v1:5531298895253b9715d72eff6d2ca18a8c9a5569abe5915b6ca8e76cac790f08",
+        "source_fact:v1:fc967e9608197d7a97ac66bfbeff87d5b48117aeb9277e5cc5ecd1b2fae04bb9"
+      ],
+      "source_published_kst": "2026-10-12T15:09+09:00",
+      "source_title": "외국인, 올해 코스피서 199조 순매도…\"시장의 고민은 외인 수급\" | 연합뉴스",
+      "telegram_core_fact": "외국인은 올해 유가증권시장에서 약 199조원을 순매도했다.",
+      "title": "외국인, 올해 코스피서 199조 순매도…\"시장의 고민은 외인 수급\" | 연합뉴스"
+    },
     "fact:2902ab2e0fb83048bed891ee": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
       "lanes": {
@@ -50372,6 +50511,37 @@
       ],
       "source_published_kst": "2026-10-05T16:20+09:00",
       "title": "'해킹 사태' 은행장 국감 줄줄이 소환될듯..연말 CEO 연임 '브레이크'"
+    },
+    "fact:3ad1e8f7ad2b006aaf766dab": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.etnews.com/20261012000281",
+      "source": "전자신문",
+      "source_body_digest": "3cda5558997d67a9e7c1331fabbf3b85f5e1e05502f185b4a1e0784f1401c656",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:54f2c20db0e127690733c4b28ed13aa66fb121e795bc80c9f2edff8b72c8df7b",
+      "source_fact_keys": [
+        "source_fact:v1:0dc99615dca16e1470e648c7509c4ab253eac0dc7f84b06a3a780a706a4d68e5",
+        "source_fact:v1:17d5459de891bdf5fbf3ac46151d5ec7301e01c5f2177fcd1a09495a479707bc",
+        "source_fact:v1:223178fd8fcbcd9e9303155ca74c8484e6d47a2aa112cf2dbbedddbe850c5089",
+        "source_fact:v1:2c326e0b7822abe800ad4e2d9178408b0a64f1a09f1dd6e68a7dd6c37aef7555",
+        "source_fact:v1:4243cc72560c130f0f0d044046437db1f028d632d1a9e3d790d22cad06a2d625",
+        "source_fact:v1:4c9694d38e8f9c95d5a863a58546edde69df2a6a46d82a284669cadfca0a3a59",
+        "source_fact:v1:7e11c12c47036a57c25c8fcc2ef5cc06651207e23ec1a08ff32fcb380f7edddd",
+        "source_fact:v1:8698983ae3bef6c596933bde4598574e7b7a11e907d59da12f65295530a58297",
+        "source_fact:v1:a5cc647150fe23ee8a6ccdbba1b9106d14388af00aaab2bd10a948cf231df20a",
+        "source_fact:v1:ab3a66fc43754185b5195263f9c31caecb147aef6893ceddbf21ea75af80a014",
+        "source_fact:v1:f4dace569463ab51de6bcbe0472dd1516ad7c4a39e2d0b115e9898f70040b1cf",
+        "source_fact:v1:f7bd51c3241f72d5f2c066b1e7f201e0ead5c3d6acf20647d03919b0b468fa7b",
+        "source_fact:v1:f900684dbe0509c934a95bc2cdaf0a5363ccb90f1ca9c1fd5cd7d1f5ac0b525e"
+      ],
+      "source_published_kst": "2026-10-12T15:02+09:00",
+      "source_title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의",
+      "telegram_core_fact": "반도체 산업 호황으로 촉발된 산업용 질소가스 공급난이 장기화하면서 정부가 가스 제조사와 반도체 대기업을 대상으로 수급 조정에 나선다.",
+      "title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의"
     },
     "fact:3ad9c4395ed5f488397b4c04": {
       "first_seen_kst": "2026-10-08T20:58:15+09:00",
@@ -57380,6 +57550,27 @@
       "telegram_core_fact": "한은은 지난해 수익 확대와 관련, 3월 발간한 '2025년도 연차 보고서'에서 \"원/달러 환율 상승, 유가증권 가격 상승 등의 영향으로 외화자산 관련 순이익이 전년 대비 크게 증가했다\"고 언급했다.",
       "title": "작년 한은 외화자산 운용수익 17조원 육박…역대 최대"
     },
+    "fact:6630a5f34c973a8eeca38af9": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822265",
+      "source": "뉴시스",
+      "source_body_digest": "4b8a0830eb89147d1518b729fd2515a61e1b31a67c228b93d6eeefea6af97a14",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:510baa8c4df37c51d973d5cd2ebf760bbb2781ad69611e068b1e2eea37bc4b81",
+      "source_fact_keys": [
+        "source_fact:v1:68241b3f013fce92f003206a6cf4b131b05732a1bc1f079503c419d73c5613f6",
+        "source_fact:v1:75d3ccc3fa0d9a099516312fe4d455ff36673b405a7f562e0e7cc3942fefbb49",
+        "source_fact:v1:80e50f5323f9e26692f4d64a007d2cdf534ddbb58659d43b2936632428ff5fc9"
+      ],
+      "source_published_kst": "2026-10-12T14:34+09:00",
+      "source_title": "티제이이노베이션, 소프트뱅크에 고출력 광 DAS 공급",
+      "telegram_core_fact": "무선통신 인프라 장비 전문기업 티제이이노베이션(TJ Innovation)은 일본 이동통신사업자 소프트뱅크(SoftBank)에 고출력 광 DAS(분산안테나시스템)를 공급한다고 12일 밝혔다.",
+      "title": "티제이이노베이션, 소프트뱅크에 고출력 광 DAS 공급"
+    },
     "fact:664877932747019a603d1760": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
       "lanes": {
@@ -57696,6 +57887,26 @@
       ],
       "source_published_kst": "2026-10-07T11:17+09:00",
       "title": "삼성SDS 합류한 LIG 컨소, KJCCS 우협 선정…내년 KCCS 수주전 채비"
+    },
+    "fact:68247d48c58a1340cc8531f3": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03289846645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "8726a2dfa01f44f53d037deafb2ea5b7b9b3e991db99ecf0a5a501a4b5af0a0e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a3a8901f0e9c9f8491aa4458671399ef73a477e603a0acda41ae7459d596b90",
+      "source_fact_keys": [
+        "source_fact:v1:7d81c4d1b1d96d749c10c027afa77147ff877aa12ba4ee366476e1db3ff8dfa9",
+        "source_fact:v1:94207d270ef8ec2d7db0c06855719010104d83943200654a6b26d1b1cbf2c2f5"
+      ],
+      "source_published_kst": "2026-10-12T14:21+09:00",
+      "source_title": "美 AI 공급망도 中 영향권…핵심 부품 5개 분야 점유율 50% 넘어",
+      "telegram_core_fact": "희토류와 전력장비, 반도체 등 주요 5개 분야에서 세계 시장 점유율이 각각 50%를 넘는 것으로 나타났다.",
+      "title": "美 AI 공급망도 中 영향권…핵심 부품 5개 분야 점유율 50% 넘어"
     },
     "fact:68629726ff44f641036d2ab8": {
       "first_seen_kst": "2026-10-06T15:44:02+09:00",
@@ -68961,6 +69172,27 @@
       "source_published_kst": "2026-10-06T09:21+09:00",
       "title": "CPTPP, 농산물 관세만의 문제 아니다…농가 지원·검역도 '시험대'"
     },
+    "fact:a92fa4ae24b6a80715f3626e": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.hankyung.com/article/2026101261377",
+      "source": "한국경제",
+      "source_body_digest": "e9083ce7796397b95a5e484093f44efcd541670e117f81cc3d614cc850afdcfc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:368ec6816e6ea2d913b72fe0c0d474bd056075d258b30cd8310aa1075cd82545",
+      "source_fact_keys": [
+        "source_fact:v1:bed524f23965a796216185e9f638419981fdfd5815c34d8af54426225e141dcc",
+        "source_fact:v1:c9a155a9cef6fdb34bb0cf97cceb0d805095bba34d8ef4d68d4d0a4b592b2146",
+        "source_fact:v1:f56343719a4967d4571e422fa536facc1490e99c5d8bec6415cdc06a7a8249cf"
+      ],
+      "source_published_kst": "2026-10-12T13:54+09:00",
+      "source_title": "호남 반도체 전력망 1.4조 청구서…삼전닉스가 80% 떠안는다",
+      "telegram_core_fact": "호남 반도체 클러스터 1단계 전력 공급망 구축에 1조4000억원이 투입되는 가운데 한국전력이 부담하는 몫은 20% 미만에 그칠 것으로 나타났다.",
+      "title": "호남 반도체 전력망 1.4조 청구서…삼전닉스가 80% 떠안는다"
+    },
     "fact:a954ccb993a69dd7768eb9d4": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
       "lanes": {
@@ -70721,6 +70953,30 @@
       ],
       "source_published_kst": "2026-10-05T22:45+09:00",
       "title": "[美특징주]PTC, 슈나이더일렉트릭에 피인수 소식에 급등"
+    },
+    "fact:b1d7b11098f3b238f544cf1c": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822242",
+      "source": "뉴시스",
+      "source_body_digest": "d8b1ba77d8c7093e204b916f669c7ed8f0ceaea8a3a6edd0a0f6a3143b293301",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca31e30d15de772e53b77c5577b25baf1f03e7dbe5feeeed801cfb9bfc3fa5cf",
+      "source_fact_keys": [
+        "source_fact:v1:68dd127a47232f5e61470931db51c212722ce0796ca7a2f521ba4aa1b23a9c58",
+        "source_fact:v1:6c46b88fe9418b8438c1588619ceb757c190d7aa06c0017ab50c977d402add17",
+        "source_fact:v1:76e158ac32744bfdbdb1066a6e596aa53fe25dfe2779b256c13fec60c1778302",
+        "source_fact:v1:8fb44134d5c2b9191201428058eee166be975297c474d413eb302e1651156fda",
+        "source_fact:v1:c13779896dcef468928aec1b177d6041d1d58fa9c2fdbc8fad166e6968d538de",
+        "source_fact:v1:dd3089baeb7f18b3f401ce4dbd2694672bcdda66b918eebcc5646a4ce7a7f1a4"
+      ],
+      "source_published_kst": "2026-10-12T14:32+09:00",
+      "source_title": "메모리 원가 비중 40%로 급등…3분기 글로벌 PC 출하량 21% 감소",
+      "telegram_core_fact": "벤 예(Ben Yeh) 옴디아 수석 애널리스트는 \"PC에서 D램과 SSD(솔리드스테이트드라이브)가 차지하는 원가 비중이 통상 약 15%에서 40%로 급등했다\"며 \"가격은 4배 이상 올랐다\"고 밝혔다.",
+      "title": "메모리 원가 비중 40%로 급등…3분기 글로벌 PC 출하량 21% 감소"
     },
     "fact:b1dd751e156f9954c2e01318": {
       "first_seen_kst": "2026-10-08T13:46:05+09:00",
@@ -77479,6 +77735,26 @@
       ],
       "source_published_kst": "2026-10-06T15:19+09:00",
       "title": "삼성전자 덜고 하이닉스 담는 ETF…8일 반도체주 수급 분기점"
+    },
+    "fact:d78b8e60c9e3eec6bd07fa23": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821769",
+      "source": "뉴시스",
+      "source_body_digest": "21db58e065a6dda24da7ce58607404e91737ac83222142766552ad36742c8f2a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:57254c64906efd6a44890f0b6154c01c3c96deb67686948c07feefc0c0960c35",
+      "source_fact_keys": [
+        "source_fact:v1:2de4ca1d3cb1094f53e560f8ac1aa11179db99ade858f04f71656cfe2a3774fa",
+        "source_fact:v1:b9c8f1447fb65b03394c079cc9442381c63ddd56dfbe5ad023172edd8551ae4e"
+      ],
+      "source_published_kst": "2026-10-12T10:48+09:00",
+      "source_title": "호르무즈 통항 75% 급감에 해운株 강세…팬오션 5%대↑",
+      "telegram_core_fact": "호르무즈 해협의 선박 통항량은 전쟁 이전의 약 4분의 1 수준에 머무른 것으로 나타났다.",
+      "title": "호르무즈 통항 75% 급감에 해운株 강세…팬오션 5%대↑"
     },
     "fact:d795e5f3d8c92cc358b9ef6d": {
       "first_seen_kst": "2026-10-07T07:12:15+09:00",
@@ -92528,6 +92804,26 @@
       "source_published_kst": "2026-10-07T08:53+09:00",
       "title": "유나이티드 마이크로일렉, 9월 매출 254억 대만달러…전년비 27% 증가"
     },
+    "link:20690e21ee0c1f4def29d3fd": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03289846645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "8726a2dfa01f44f53d037deafb2ea5b7b9b3e991db99ecf0a5a501a4b5af0a0e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a3a8901f0e9c9f8491aa4458671399ef73a477e603a0acda41ae7459d596b90",
+      "source_fact_keys": [
+        "source_fact:v1:7d81c4d1b1d96d749c10c027afa77147ff877aa12ba4ee366476e1db3ff8dfa9",
+        "source_fact:v1:94207d270ef8ec2d7db0c06855719010104d83943200654a6b26d1b1cbf2c2f5"
+      ],
+      "source_published_kst": "2026-10-12T14:21+09:00",
+      "source_title": "美 AI 공급망도 中 영향권…핵심 부품 5개 분야 점유율 50% 넘어",
+      "telegram_core_fact": "희토류와 전력장비, 반도체 등 주요 5개 분야에서 세계 시장 점유율이 각각 50%를 넘는 것으로 나타났다.",
+      "title": "美 AI 공급망도 中 영향권…핵심 부품 5개 분야 점유율 50% 넘어"
+    },
     "link:209d9dfaf8885643274b8019": {
       "first_seen_kst": "2026-10-04T19:34:44+09:00",
       "lanes": {
@@ -92792,6 +93088,37 @@
       ],
       "source_published_kst": "2026-10-06T11:35+09:00",
       "title": "日 ‘신중’ 알래스카 LNG 프로젝트…밴스 부통령 “韓과 조율…결국 이뤄질 일” [대미투자]"
+    },
+    "link:220063ffe0cdf94522a31695": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.etnews.com/20261012000281",
+      "source": "전자신문",
+      "source_body_digest": "3cda5558997d67a9e7c1331fabbf3b85f5e1e05502f185b4a1e0784f1401c656",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:54f2c20db0e127690733c4b28ed13aa66fb121e795bc80c9f2edff8b72c8df7b",
+      "source_fact_keys": [
+        "source_fact:v1:0dc99615dca16e1470e648c7509c4ab253eac0dc7f84b06a3a780a706a4d68e5",
+        "source_fact:v1:17d5459de891bdf5fbf3ac46151d5ec7301e01c5f2177fcd1a09495a479707bc",
+        "source_fact:v1:223178fd8fcbcd9e9303155ca74c8484e6d47a2aa112cf2dbbedddbe850c5089",
+        "source_fact:v1:2c326e0b7822abe800ad4e2d9178408b0a64f1a09f1dd6e68a7dd6c37aef7555",
+        "source_fact:v1:4243cc72560c130f0f0d044046437db1f028d632d1a9e3d790d22cad06a2d625",
+        "source_fact:v1:4c9694d38e8f9c95d5a863a58546edde69df2a6a46d82a284669cadfca0a3a59",
+        "source_fact:v1:7e11c12c47036a57c25c8fcc2ef5cc06651207e23ec1a08ff32fcb380f7edddd",
+        "source_fact:v1:8698983ae3bef6c596933bde4598574e7b7a11e907d59da12f65295530a58297",
+        "source_fact:v1:a5cc647150fe23ee8a6ccdbba1b9106d14388af00aaab2bd10a948cf231df20a",
+        "source_fact:v1:ab3a66fc43754185b5195263f9c31caecb147aef6893ceddbf21ea75af80a014",
+        "source_fact:v1:f4dace569463ab51de6bcbe0472dd1516ad7c4a39e2d0b115e9898f70040b1cf",
+        "source_fact:v1:f7bd51c3241f72d5f2c066b1e7f201e0ead5c3d6acf20647d03919b0b468fa7b",
+        "source_fact:v1:f900684dbe0509c934a95bc2cdaf0a5363ccb90f1ca9c1fd5cd7d1f5ac0b525e"
+      ],
+      "source_published_kst": "2026-10-12T15:02+09:00",
+      "source_title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의",
+      "telegram_core_fact": "반도체 산업 호황으로 촉발된 산업용 질소가스 공급난이 장기화하면서 정부가 가스 제조사와 반도체 대기업을 대상으로 수급 조정에 나선다.",
+      "title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의"
     },
     "link:2289d3de7404063b380aa72b": {
       "first_seen_kst": "2026-10-07T19:47:02+09:00",
@@ -99332,6 +99659,29 @@
       "source": "연합뉴스",
       "title": "연휴 뒤 코스피 7,000선 반납…삼전닉스 약세 | 연합뉴스"
     },
+    "link:39b17f2e17ba1c119f3cb4c0": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012086900008",
+      "source": "연합뉴스",
+      "source_body_digest": "edb3c5164047c23e1bea89ffc3e0c8d65ebf8aa555a21e5a90fdfb8978ac014a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3c3fc838a78fd92fb40d89f40585151e3d0b5abc06c2bdfe26bc4fa4b4dd507",
+      "source_fact_keys": [
+        "source_fact:v1:0b681b00e82523ced7ec6925c32e2629a1773ec792bf4f9631e13d24b08da8cf",
+        "source_fact:v1:2174794b39b070bc8875ef230ea8c4645e977ff26478762c72bc79857f600636",
+        "source_fact:v1:4236c2aacbda88ccda915b9c2d340726e3b2f2674a92a0d90b5d52dbadf39a4c",
+        "source_fact:v1:5531298895253b9715d72eff6d2ca18a8c9a5569abe5915b6ca8e76cac790f08",
+        "source_fact:v1:fc967e9608197d7a97ac66bfbeff87d5b48117aeb9277e5cc5ecd1b2fae04bb9"
+      ],
+      "source_published_kst": "2026-10-12T15:09+09:00",
+      "source_title": "외국인, 올해 코스피서 199조 순매도…\"시장의 고민은 외인 수급\" | 연합뉴스",
+      "telegram_core_fact": "외국인은 올해 유가증권시장에서 약 199조원을 순매도했다.",
+      "title": "외국인, 올해 코스피서 199조 순매도…\"시장의 고민은 외인 수급\" | 연합뉴스"
+    },
     "link:39b34d4b060c5653760e42ab": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
@@ -101312,6 +101662,27 @@
       "link": "https://view.asiae.co.kr/article/2026093010101002998",
       "source": "아시아경제",
       "title": "리사 수 AMD 회장 내달 방한…배경훈·하정우·국산 NPU 대표 회동"
+    },
+    "link:423786ce8b7607a8c04227dd": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.hankyung.com/article/2026101261377",
+      "source": "한국경제",
+      "source_body_digest": "e9083ce7796397b95a5e484093f44efcd541670e117f81cc3d614cc850afdcfc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:368ec6816e6ea2d913b72fe0c0d474bd056075d258b30cd8310aa1075cd82545",
+      "source_fact_keys": [
+        "source_fact:v1:bed524f23965a796216185e9f638419981fdfd5815c34d8af54426225e141dcc",
+        "source_fact:v1:c9a155a9cef6fdb34bb0cf97cceb0d805095bba34d8ef4d68d4d0a4b592b2146",
+        "source_fact:v1:f56343719a4967d4571e422fa536facc1490e99c5d8bec6415cdc06a7a8249cf"
+      ],
+      "source_published_kst": "2026-10-12T13:54+09:00",
+      "source_title": "호남 반도체 전력망 1.4조 청구서…삼전닉스가 80% 떠안는다",
+      "telegram_core_fact": "호남 반도체 클러스터 1단계 전력 공급망 구축에 1조4000억원이 투입되는 가운데 한국전력이 부담하는 몫은 20% 미만에 그칠 것으로 나타났다.",
+      "title": "호남 반도체 전력망 1.4조 청구서…삼전닉스가 80% 떠안는다"
     },
     "link:423f3112a9023817c99ca772": {
       "first_seen_kst": "2026-10-07T04:29:18+09:00",
@@ -110110,6 +110481,26 @@
       "link": "https://www.etnews.com/20260926000007",
       "source": "전자신문",
       "title": "앤트로픽, 아카마이와 16조원 규모 클라우드 컴퓨팅 계약"
+    },
+    "link:65469732e438f24945f118c0": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821769",
+      "source": "뉴시스",
+      "source_body_digest": "21db58e065a6dda24da7ce58607404e91737ac83222142766552ad36742c8f2a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:57254c64906efd6a44890f0b6154c01c3c96deb67686948c07feefc0c0960c35",
+      "source_fact_keys": [
+        "source_fact:v1:2de4ca1d3cb1094f53e560f8ac1aa11179db99ade858f04f71656cfe2a3774fa",
+        "source_fact:v1:b9c8f1447fb65b03394c079cc9442381c63ddd56dfbe5ad023172edd8551ae4e"
+      ],
+      "source_published_kst": "2026-10-12T10:48+09:00",
+      "source_title": "호르무즈 통항 75% 급감에 해운株 강세…팬오션 5%대↑",
+      "telegram_core_fact": "호르무즈 해협의 선박 통항량은 전쟁 이전의 약 4분의 1 수준에 머무른 것으로 나타났다.",
+      "title": "호르무즈 통항 75% 급감에 해운株 강세…팬오션 5%대↑"
     },
     "link:654adb01167313f983ac302e": {
       "first_seen_kst": "2026-10-04T08:29:55+09:00",
@@ -125457,6 +125848,30 @@
       "link": "https://www.etnews.com/20260929000207",
       "source": "전자신문",
       "title": "고려아연, 국내서 '친환경에너지' 20년간 확보…연간 11GWh 규모"
+    },
+    "link:a0951aa99a10cbab5b962a89": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822242",
+      "source": "뉴시스",
+      "source_body_digest": "d8b1ba77d8c7093e204b916f669c7ed8f0ceaea8a3a6edd0a0f6a3143b293301",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca31e30d15de772e53b77c5577b25baf1f03e7dbe5feeeed801cfb9bfc3fa5cf",
+      "source_fact_keys": [
+        "source_fact:v1:68dd127a47232f5e61470931db51c212722ce0796ca7a2f521ba4aa1b23a9c58",
+        "source_fact:v1:6c46b88fe9418b8438c1588619ceb757c190d7aa06c0017ab50c977d402add17",
+        "source_fact:v1:76e158ac32744bfdbdb1066a6e596aa53fe25dfe2779b256c13fec60c1778302",
+        "source_fact:v1:8fb44134d5c2b9191201428058eee166be975297c474d413eb302e1651156fda",
+        "source_fact:v1:c13779896dcef468928aec1b177d6041d1d58fa9c2fdbc8fad166e6968d538de",
+        "source_fact:v1:dd3089baeb7f18b3f401ce4dbd2694672bcdda66b918eebcc5646a4ce7a7f1a4"
+      ],
+      "source_published_kst": "2026-10-12T14:32+09:00",
+      "source_title": "메모리 원가 비중 40%로 급등…3분기 글로벌 PC 출하량 21% 감소",
+      "telegram_core_fact": "벤 예(Ben Yeh) 옴디아 수석 애널리스트는 \"PC에서 D램과 SSD(솔리드스테이트드라이브)가 차지하는 원가 비중이 통상 약 15%에서 40%로 급등했다\"며 \"가격은 4배 이상 올랐다\"고 밝혔다.",
+      "title": "메모리 원가 비중 40%로 급등…3분기 글로벌 PC 출하량 21% 감소"
     },
     "link:a0aab7753ebb36df7646a598": {
       "first_seen_kst": "2026-10-06T23:56:49+09:00",
@@ -141916,6 +142331,26 @@
       "source_published_kst": "2026-10-06T11:42+09:00",
       "title": "대전급식비 전국 꼴찌수준…허태정 시장 \"15%까지 인상\""
     },
+    "link:e378a5f9727e3d3fef0a47b5": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03289846645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "8726a2dfa01f44f53d037deafb2ea5b7b9b3e991db99ecf0a5a501a4b5af0a0e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a3a8901f0e9c9f8491aa4458671399ef73a477e603a0acda41ae7459d596b90",
+      "source_fact_keys": [
+        "source_fact:v1:7d81c4d1b1d96d749c10c027afa77147ff877aa12ba4ee366476e1db3ff8dfa9",
+        "source_fact:v1:94207d270ef8ec2d7db0c06855719010104d83943200654a6b26d1b1cbf2c2f5"
+      ],
+      "source_published_kst": "2026-10-12T14:21+09:00",
+      "source_title": "美 AI 공급망도 中 영향권…핵심 부품 5개 분야 점유율 50% 넘어",
+      "telegram_core_fact": "희토류와 전력장비, 반도체 등 주요 5개 분야에서 세계 시장 점유율이 각각 50%를 넘는 것으로 나타났다.",
+      "title": "美 AI 공급망도 中 영향권…핵심 부품 5개 분야 점유율 50% 넘어"
+    },
     "link:e38b23ea155a7f88130ca1cd": {
       "first_seen_kst": "2026-09-26T22:39:13+09:00",
       "lanes": {
@@ -142879,6 +143314,27 @@
       ],
       "source_published_kst": "2026-10-06T23:54+09:00",
       "title": "AI 전력난에 기존 원전 영끌…구글, 전력 3.6GW 확보"
+    },
+    "link:e75a08f675f237eedf26f66d": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822265",
+      "source": "뉴시스",
+      "source_body_digest": "4b8a0830eb89147d1518b729fd2515a61e1b31a67c228b93d6eeefea6af97a14",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:510baa8c4df37c51d973d5cd2ebf760bbb2781ad69611e068b1e2eea37bc4b81",
+      "source_fact_keys": [
+        "source_fact:v1:68241b3f013fce92f003206a6cf4b131b05732a1bc1f079503c419d73c5613f6",
+        "source_fact:v1:75d3ccc3fa0d9a099516312fe4d455ff36673b405a7f562e0e7cc3942fefbb49",
+        "source_fact:v1:80e50f5323f9e26692f4d64a007d2cdf534ddbb58659d43b2936632428ff5fc9"
+      ],
+      "source_published_kst": "2026-10-12T14:34+09:00",
+      "source_title": "티제이이노베이션, 소프트뱅크에 고출력 광 DAS 공급",
+      "telegram_core_fact": "무선통신 인프라 장비 전문기업 티제이이노베이션(TJ Innovation)은 일본 이동통신사업자 소프트뱅크(SoftBank)에 고출력 광 DAS(분산안테나시스템)를 공급한다고 12일 밝혔다.",
+      "title": "티제이이노베이션, 소프트뱅크에 고출력 광 DAS 공급"
     },
     "link:e75c7497afab2981e308aa4e": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
@@ -169071,6 +169527,29 @@
       "telegram_core_fact": "이 메시지는 ICC 재판관을 지낸 나비 필라이의 노벨평화상 수상 직후 트럼프 행정부가 ICC에 대한 고강도 제재를 발표한 지 얼마 지나지 않아 게시된 것이다.",
       "title": "다카이치, 美 ICC 제재 직후 \"깊은 우려…ICC 역할 지원\" | 연합뉴스"
     },
+    "original:4fd5a75a9d694ecbb05fee46": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012086900008",
+      "source": "연합뉴스",
+      "source_body_digest": "edb3c5164047c23e1bea89ffc3e0c8d65ebf8aa555a21e5a90fdfb8978ac014a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3c3fc838a78fd92fb40d89f40585151e3d0b5abc06c2bdfe26bc4fa4b4dd507",
+      "source_fact_keys": [
+        "source_fact:v1:0b681b00e82523ced7ec6925c32e2629a1773ec792bf4f9631e13d24b08da8cf",
+        "source_fact:v1:2174794b39b070bc8875ef230ea8c4645e977ff26478762c72bc79857f600636",
+        "source_fact:v1:4236c2aacbda88ccda915b9c2d340726e3b2f2674a92a0d90b5d52dbadf39a4c",
+        "source_fact:v1:5531298895253b9715d72eff6d2ca18a8c9a5569abe5915b6ca8e76cac790f08",
+        "source_fact:v1:fc967e9608197d7a97ac66bfbeff87d5b48117aeb9277e5cc5ecd1b2fae04bb9"
+      ],
+      "source_published_kst": "2026-10-12T15:09+09:00",
+      "source_title": "외국인, 올해 코스피서 199조 순매도…\"시장의 고민은 외인 수급\" | 연합뉴스",
+      "telegram_core_fact": "외국인은 올해 유가증권시장에서 약 199조원을 순매도했다.",
+      "title": "외국인, 올해 코스피서 199조 순매도…\"시장의 고민은 외인 수급\" | 연합뉴스"
+    },
     "original:4fe61b807e2218f675602cd8": {
       "first_seen_kst": "2026-10-11T18:34:27+09:00",
       "lanes": {
@@ -181600,6 +182079,37 @@
       "source": "연합뉴스",
       "title": "프락시스 CEO \"서울 모처에 디지털국가 대사관 짓겠다\" | 연합뉴스"
     },
+    "original:8555ed92cc1ce78295056bde": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.etnews.com/20261012000281",
+      "source": "전자신문",
+      "source_body_digest": "3cda5558997d67a9e7c1331fabbf3b85f5e1e05502f185b4a1e0784f1401c656",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:54f2c20db0e127690733c4b28ed13aa66fb121e795bc80c9f2edff8b72c8df7b",
+      "source_fact_keys": [
+        "source_fact:v1:0dc99615dca16e1470e648c7509c4ab253eac0dc7f84b06a3a780a706a4d68e5",
+        "source_fact:v1:17d5459de891bdf5fbf3ac46151d5ec7301e01c5f2177fcd1a09495a479707bc",
+        "source_fact:v1:223178fd8fcbcd9e9303155ca74c8484e6d47a2aa112cf2dbbedddbe850c5089",
+        "source_fact:v1:2c326e0b7822abe800ad4e2d9178408b0a64f1a09f1dd6e68a7dd6c37aef7555",
+        "source_fact:v1:4243cc72560c130f0f0d044046437db1f028d632d1a9e3d790d22cad06a2d625",
+        "source_fact:v1:4c9694d38e8f9c95d5a863a58546edde69df2a6a46d82a284669cadfca0a3a59",
+        "source_fact:v1:7e11c12c47036a57c25c8fcc2ef5cc06651207e23ec1a08ff32fcb380f7edddd",
+        "source_fact:v1:8698983ae3bef6c596933bde4598574e7b7a11e907d59da12f65295530a58297",
+        "source_fact:v1:a5cc647150fe23ee8a6ccdbba1b9106d14388af00aaab2bd10a948cf231df20a",
+        "source_fact:v1:ab3a66fc43754185b5195263f9c31caecb147aef6893ceddbf21ea75af80a014",
+        "source_fact:v1:f4dace569463ab51de6bcbe0472dd1516ad7c4a39e2d0b115e9898f70040b1cf",
+        "source_fact:v1:f7bd51c3241f72d5f2c066b1e7f201e0ead5c3d6acf20647d03919b0b468fa7b",
+        "source_fact:v1:f900684dbe0509c934a95bc2cdaf0a5363ccb90f1ca9c1fd5cd7d1f5ac0b525e"
+      ],
+      "source_published_kst": "2026-10-12T15:02+09:00",
+      "source_title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의",
+      "telegram_core_fact": "반도체 산업 호황으로 촉발된 산업용 질소가스 공급난이 장기화하면서 정부가 가스 제조사와 반도체 대기업을 대상으로 수급 조정에 나선다.",
+      "title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의"
+    },
     "original:8568ee646cb7b140b42e1a54": {
       "first_seen_kst": "2026-10-07T08:36:47+09:00",
       "lanes": {
@@ -186159,6 +186669,30 @@
       "source_published_kst": "2026-10-05T17:54+09:00",
       "title": "24년來 최고 금리도 AI 기세 못막아…나스닥 사상 최고[월스트리트in]"
     },
+    "original:96c360c8266dea67fa666ee8": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822242",
+      "source": "뉴시스",
+      "source_body_digest": "d8b1ba77d8c7093e204b916f669c7ed8f0ceaea8a3a6edd0a0f6a3143b293301",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca31e30d15de772e53b77c5577b25baf1f03e7dbe5feeeed801cfb9bfc3fa5cf",
+      "source_fact_keys": [
+        "source_fact:v1:68dd127a47232f5e61470931db51c212722ce0796ca7a2f521ba4aa1b23a9c58",
+        "source_fact:v1:6c46b88fe9418b8438c1588619ceb757c190d7aa06c0017ab50c977d402add17",
+        "source_fact:v1:76e158ac32744bfdbdb1066a6e596aa53fe25dfe2779b256c13fec60c1778302",
+        "source_fact:v1:8fb44134d5c2b9191201428058eee166be975297c474d413eb302e1651156fda",
+        "source_fact:v1:c13779896dcef468928aec1b177d6041d1d58fa9c2fdbc8fad166e6968d538de",
+        "source_fact:v1:dd3089baeb7f18b3f401ce4dbd2694672bcdda66b918eebcc5646a4ce7a7f1a4"
+      ],
+      "source_published_kst": "2026-10-12T14:32+09:00",
+      "source_title": "메모리 원가 비중 40%로 급등…3분기 글로벌 PC 출하량 21% 감소",
+      "telegram_core_fact": "벤 예(Ben Yeh) 옴디아 수석 애널리스트는 \"PC에서 D램과 SSD(솔리드스테이트드라이브)가 차지하는 원가 비중이 통상 약 15%에서 40%로 급등했다\"며 \"가격은 4배 이상 올랐다\"고 밝혔다.",
+      "title": "메모리 원가 비중 40%로 급등…3분기 글로벌 PC 출하량 21% 감소"
+    },
     "original:96d4eb7c69cd52773772f448": {
       "first_seen_kst": "2026-10-10T08:26:55+09:00",
       "lanes": {
@@ -188156,6 +188690,27 @@
       ],
       "source_published_kst": "2026-10-07T12:00+09:00",
       "title": "NH농협금융, 전남ㆍ광주 전략산업 지원 확대…‘금융허브’ 신설"
+    },
+    "original:9f422288bd544da9cec797c0": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822265",
+      "source": "뉴시스",
+      "source_body_digest": "4b8a0830eb89147d1518b729fd2515a61e1b31a67c228b93d6eeefea6af97a14",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:510baa8c4df37c51d973d5cd2ebf760bbb2781ad69611e068b1e2eea37bc4b81",
+      "source_fact_keys": [
+        "source_fact:v1:68241b3f013fce92f003206a6cf4b131b05732a1bc1f079503c419d73c5613f6",
+        "source_fact:v1:75d3ccc3fa0d9a099516312fe4d455ff36673b405a7f562e0e7cc3942fefbb49",
+        "source_fact:v1:80e50f5323f9e26692f4d64a007d2cdf534ddbb58659d43b2936632428ff5fc9"
+      ],
+      "source_published_kst": "2026-10-12T14:34+09:00",
+      "source_title": "티제이이노베이션, 소프트뱅크에 고출력 광 DAS 공급",
+      "telegram_core_fact": "무선통신 인프라 장비 전문기업 티제이이노베이션(TJ Innovation)은 일본 이동통신사업자 소프트뱅크(SoftBank)에 고출력 광 DAS(분산안테나시스템)를 공급한다고 12일 밝혔다.",
+      "title": "티제이이노베이션, 소프트뱅크에 고출력 광 DAS 공급"
     },
     "original:9f4f6f95e2886c676c05bf7d": {
       "first_seen_kst": "2026-10-08T02:12:43+09:00",
@@ -193066,6 +193621,26 @@
       ],
       "source_published_kst": "2026-10-07T15:13+09:00",
       "title": "日유가보조금 10조원 넘게 투입…\"재정압박·현실왜곡 부작용\" | 연합뉴스"
+    },
+    "original:b2e5870b41d58b0c856c7512": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821769",
+      "source": "뉴시스",
+      "source_body_digest": "21db58e065a6dda24da7ce58607404e91737ac83222142766552ad36742c8f2a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:57254c64906efd6a44890f0b6154c01c3c96deb67686948c07feefc0c0960c35",
+      "source_fact_keys": [
+        "source_fact:v1:2de4ca1d3cb1094f53e560f8ac1aa11179db99ade858f04f71656cfe2a3774fa",
+        "source_fact:v1:b9c8f1447fb65b03394c079cc9442381c63ddd56dfbe5ad023172edd8551ae4e"
+      ],
+      "source_published_kst": "2026-10-12T10:48+09:00",
+      "source_title": "호르무즈 통항 75% 급감에 해운株 강세…팬오션 5%대↑",
+      "telegram_core_fact": "호르무즈 해협의 선박 통항량은 전쟁 이전의 약 4분의 1 수준에 머무른 것으로 나타났다.",
+      "title": "호르무즈 통항 75% 급감에 해운株 강세…팬오션 5%대↑"
     },
     "original:b2e71eb4dc7ffb466bee0c1e": {
       "first_seen_kst": "2026-10-12T06:27:02+09:00",
@@ -198948,6 +199523,26 @@
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어 | 연합뉴스"
     },
+    "original:ccc12ca804e7a66e8414100e": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03289846645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "8726a2dfa01f44f53d037deafb2ea5b7b9b3e991db99ecf0a5a501a4b5af0a0e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a3a8901f0e9c9f8491aa4458671399ef73a477e603a0acda41ae7459d596b90",
+      "source_fact_keys": [
+        "source_fact:v1:7d81c4d1b1d96d749c10c027afa77147ff877aa12ba4ee366476e1db3ff8dfa9",
+        "source_fact:v1:94207d270ef8ec2d7db0c06855719010104d83943200654a6b26d1b1cbf2c2f5"
+      ],
+      "source_published_kst": "2026-10-12T14:21+09:00",
+      "source_title": "美 AI 공급망도 中 영향권…핵심 부품 5개 분야 점유율 50% 넘어",
+      "telegram_core_fact": "희토류와 전력장비, 반도체 등 주요 5개 분야에서 세계 시장 점유율이 각각 50%를 넘는 것으로 나타났다.",
+      "title": "美 AI 공급망도 中 영향권…핵심 부품 5개 분야 점유율 50% 넘어"
+    },
     "original:cccb37bdbb4f5568068cd7a1": {
       "first_seen_kst": "2026-10-07T05:33:37+09:00",
       "lanes": {
@@ -202188,6 +202783,27 @@
       "link": "https://www.etnews.com/20261001000337",
       "source": "전자신문",
       "title": "앰코, 韓 패키지 본딩 기술 'R-LTC' 美 시장 전면 배치"
+    },
+    "original:d8ffd1a99be96f767a4e6ed4": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.hankyung.com/article/2026101261377",
+      "source": "한국경제",
+      "source_body_digest": "e9083ce7796397b95a5e484093f44efcd541670e117f81cc3d614cc850afdcfc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:368ec6816e6ea2d913b72fe0c0d474bd056075d258b30cd8310aa1075cd82545",
+      "source_fact_keys": [
+        "source_fact:v1:bed524f23965a796216185e9f638419981fdfd5815c34d8af54426225e141dcc",
+        "source_fact:v1:c9a155a9cef6fdb34bb0cf97cceb0d805095bba34d8ef4d68d4d0a4b592b2146",
+        "source_fact:v1:f56343719a4967d4571e422fa536facc1490e99c5d8bec6415cdc06a7a8249cf"
+      ],
+      "source_published_kst": "2026-10-12T13:54+09:00",
+      "source_title": "호남 반도체 전력망 1.4조 청구서…삼전닉스가 80% 떠안는다",
+      "telegram_core_fact": "호남 반도체 클러스터 1단계 전력 공급망 구축에 1조4000억원이 투입되는 가운데 한국전력이 부담하는 몫은 20% 미만에 그칠 것으로 나타났다.",
+      "title": "호남 반도체 전력망 1.4조 청구서…삼전닉스가 80% 떠안는다"
     },
     "original:d911d0aff4618b5684360f24": {
       "first_seen_kst": "2026-10-12T12:56:34+09:00",
@@ -213809,6 +214425,27 @@
       "telegram_core_fact": "포르투나 마이닝(FSM)은 3분기 금환산온스(GEO) 기준 생산량이 6만9665온스로 전년 동기(7만2462온스) 대비 3.9%, 전분기(7만2217온스) 대비 3.5% 감소했다고 10월 7일 발표했다.",
       "title": "포르투나 마이닝, 3분기 금환산 7만온스 생산..전년비 3.9% 감소"
     },
+    "source_fact:02ee672b324c2472c6990b3c": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822265",
+      "source": "뉴시스",
+      "source_body_digest": "4b8a0830eb89147d1518b729fd2515a61e1b31a67c228b93d6eeefea6af97a14",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:510baa8c4df37c51d973d5cd2ebf760bbb2781ad69611e068b1e2eea37bc4b81",
+      "source_fact_keys": [
+        "source_fact:v1:68241b3f013fce92f003206a6cf4b131b05732a1bc1f079503c419d73c5613f6",
+        "source_fact:v1:75d3ccc3fa0d9a099516312fe4d455ff36673b405a7f562e0e7cc3942fefbb49",
+        "source_fact:v1:80e50f5323f9e26692f4d64a007d2cdf534ddbb58659d43b2936632428ff5fc9"
+      ],
+      "source_published_kst": "2026-10-12T14:34+09:00",
+      "source_title": "티제이이노베이션, 소프트뱅크에 고출력 광 DAS 공급",
+      "telegram_core_fact": "무선통신 인프라 장비 전문기업 티제이이노베이션(TJ Innovation)은 일본 이동통신사업자 소프트뱅크(SoftBank)에 고출력 광 DAS(분산안테나시스템)를 공급한다고 12일 밝혔다.",
+      "title": "티제이이노베이션, 소프트뱅크에 고출력 광 DAS 공급"
+    },
     "source_fact:030c0a2a90fa6a0f366c103c": {
       "first_seen_kst": "2026-10-07T06:41:04+09:00",
       "lanes": {
@@ -220628,6 +221265,37 @@
       "source_published_kst": "2026-10-06T12:07+09:00",
       "title": "'악수하고 춤까지' 中 휴머노이드 국감장 떴다...\"韓 투자 턱없이 부족\""
     },
+    "source_fact:0bfcf8dd2a0ce101069badf1": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.etnews.com/20261012000281",
+      "source": "전자신문",
+      "source_body_digest": "3cda5558997d67a9e7c1331fabbf3b85f5e1e05502f185b4a1e0784f1401c656",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:54f2c20db0e127690733c4b28ed13aa66fb121e795bc80c9f2edff8b72c8df7b",
+      "source_fact_keys": [
+        "source_fact:v1:0dc99615dca16e1470e648c7509c4ab253eac0dc7f84b06a3a780a706a4d68e5",
+        "source_fact:v1:17d5459de891bdf5fbf3ac46151d5ec7301e01c5f2177fcd1a09495a479707bc",
+        "source_fact:v1:223178fd8fcbcd9e9303155ca74c8484e6d47a2aa112cf2dbbedddbe850c5089",
+        "source_fact:v1:2c326e0b7822abe800ad4e2d9178408b0a64f1a09f1dd6e68a7dd6c37aef7555",
+        "source_fact:v1:4243cc72560c130f0f0d044046437db1f028d632d1a9e3d790d22cad06a2d625",
+        "source_fact:v1:4c9694d38e8f9c95d5a863a58546edde69df2a6a46d82a284669cadfca0a3a59",
+        "source_fact:v1:7e11c12c47036a57c25c8fcc2ef5cc06651207e23ec1a08ff32fcb380f7edddd",
+        "source_fact:v1:8698983ae3bef6c596933bde4598574e7b7a11e907d59da12f65295530a58297",
+        "source_fact:v1:a5cc647150fe23ee8a6ccdbba1b9106d14388af00aaab2bd10a948cf231df20a",
+        "source_fact:v1:ab3a66fc43754185b5195263f9c31caecb147aef6893ceddbf21ea75af80a014",
+        "source_fact:v1:f4dace569463ab51de6bcbe0472dd1516ad7c4a39e2d0b115e9898f70040b1cf",
+        "source_fact:v1:f7bd51c3241f72d5f2c066b1e7f201e0ead5c3d6acf20647d03919b0b468fa7b",
+        "source_fact:v1:f900684dbe0509c934a95bc2cdaf0a5363ccb90f1ca9c1fd5cd7d1f5ac0b525e"
+      ],
+      "source_published_kst": "2026-10-12T15:02+09:00",
+      "source_title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의",
+      "telegram_core_fact": "반도체 산업 호황으로 촉발된 산업용 질소가스 공급난이 장기화하면서 정부가 가스 제조사와 반도체 대기업을 대상으로 수급 조정에 나선다.",
+      "title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의"
+    },
     "source_fact:0bff0d38625f7c53b3811a58": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
       "lanes": {
@@ -224874,6 +225542,37 @@
       ],
       "source_published_kst": "2026-10-06T15:22+09:00",
       "title": "“中 AI 굴기 또 온다”…문샷, 기업가치 68조원 찍고 홍콩 상장 추진"
+    },
+    "source_fact:1092d30051ee67e61726f0c1": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.etnews.com/20261012000281",
+      "source": "전자신문",
+      "source_body_digest": "3cda5558997d67a9e7c1331fabbf3b85f5e1e05502f185b4a1e0784f1401c656",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:54f2c20db0e127690733c4b28ed13aa66fb121e795bc80c9f2edff8b72c8df7b",
+      "source_fact_keys": [
+        "source_fact:v1:0dc99615dca16e1470e648c7509c4ab253eac0dc7f84b06a3a780a706a4d68e5",
+        "source_fact:v1:17d5459de891bdf5fbf3ac46151d5ec7301e01c5f2177fcd1a09495a479707bc",
+        "source_fact:v1:223178fd8fcbcd9e9303155ca74c8484e6d47a2aa112cf2dbbedddbe850c5089",
+        "source_fact:v1:2c326e0b7822abe800ad4e2d9178408b0a64f1a09f1dd6e68a7dd6c37aef7555",
+        "source_fact:v1:4243cc72560c130f0f0d044046437db1f028d632d1a9e3d790d22cad06a2d625",
+        "source_fact:v1:4c9694d38e8f9c95d5a863a58546edde69df2a6a46d82a284669cadfca0a3a59",
+        "source_fact:v1:7e11c12c47036a57c25c8fcc2ef5cc06651207e23ec1a08ff32fcb380f7edddd",
+        "source_fact:v1:8698983ae3bef6c596933bde4598574e7b7a11e907d59da12f65295530a58297",
+        "source_fact:v1:a5cc647150fe23ee8a6ccdbba1b9106d14388af00aaab2bd10a948cf231df20a",
+        "source_fact:v1:ab3a66fc43754185b5195263f9c31caecb147aef6893ceddbf21ea75af80a014",
+        "source_fact:v1:f4dace569463ab51de6bcbe0472dd1516ad7c4a39e2d0b115e9898f70040b1cf",
+        "source_fact:v1:f7bd51c3241f72d5f2c066b1e7f201e0ead5c3d6acf20647d03919b0b468fa7b",
+        "source_fact:v1:f900684dbe0509c934a95bc2cdaf0a5363ccb90f1ca9c1fd5cd7d1f5ac0b525e"
+      ],
+      "source_published_kst": "2026-10-12T15:02+09:00",
+      "source_title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의",
+      "telegram_core_fact": "반도체 산업 호황으로 촉발된 산업용 질소가스 공급난이 장기화하면서 정부가 가스 제조사와 반도체 대기업을 대상으로 수급 조정에 나선다.",
+      "title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의"
     },
     "source_fact:109a9c2e3e4a78c6cd8c0910": {
       "first_seen_kst": "2026-10-08T07:12:10+09:00",
@@ -230854,6 +231553,29 @@
       "source_title": "경북도·안동시, 헴프 재배부터 의약품 생산까지 전 주기 산업체계 구축 나서",
       "telegram_core_fact": "사업을 맡은 네오켄바이오는 헴프 규제자유특구 핵심 참여기업으로 의료용 CBD 원료의약품 국산화 사업을 추진하고 있어 향후 의약품 상용화와 산업 생태계 조성에 속도가 붙을 것으로 기대된다.",
       "title": "경북도·안동시, 헴프 재배부터 의약품 생산까지 전 주기 산업체계 구축 나서"
+    },
+    "source_fact:17d21d817bc269b1fa7fd900": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012086900008",
+      "source": "연합뉴스",
+      "source_body_digest": "edb3c5164047c23e1bea89ffc3e0c8d65ebf8aa555a21e5a90fdfb8978ac014a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3c3fc838a78fd92fb40d89f40585151e3d0b5abc06c2bdfe26bc4fa4b4dd507",
+      "source_fact_keys": [
+        "source_fact:v1:0b681b00e82523ced7ec6925c32e2629a1773ec792bf4f9631e13d24b08da8cf",
+        "source_fact:v1:2174794b39b070bc8875ef230ea8c4645e977ff26478762c72bc79857f600636",
+        "source_fact:v1:4236c2aacbda88ccda915b9c2d340726e3b2f2674a92a0d90b5d52dbadf39a4c",
+        "source_fact:v1:5531298895253b9715d72eff6d2ca18a8c9a5569abe5915b6ca8e76cac790f08",
+        "source_fact:v1:fc967e9608197d7a97ac66bfbeff87d5b48117aeb9277e5cc5ecd1b2fae04bb9"
+      ],
+      "source_published_kst": "2026-10-12T15:09+09:00",
+      "source_title": "외국인, 올해 코스피서 199조 순매도…\"시장의 고민은 외인 수급\" | 연합뉴스",
+      "telegram_core_fact": "외국인은 올해 유가증권시장에서 약 199조원을 순매도했다.",
+      "title": "외국인, 올해 코스피서 199조 순매도…\"시장의 고민은 외인 수급\" | 연합뉴스"
     },
     "source_fact:17d304ca3374f56c13a1cab2": {
       "first_seen_kst": "2026-10-10T12:12:57+09:00",
@@ -239973,6 +240695,37 @@
       ],
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "\"일주일새 12% 올랐다\"…전고체 ETF 뛰는데 뭉칫돈 향한 곳은"
+    },
+    "source_fact:22417a076e4c394cb59e1c79": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.etnews.com/20261012000281",
+      "source": "전자신문",
+      "source_body_digest": "3cda5558997d67a9e7c1331fabbf3b85f5e1e05502f185b4a1e0784f1401c656",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:54f2c20db0e127690733c4b28ed13aa66fb121e795bc80c9f2edff8b72c8df7b",
+      "source_fact_keys": [
+        "source_fact:v1:0dc99615dca16e1470e648c7509c4ab253eac0dc7f84b06a3a780a706a4d68e5",
+        "source_fact:v1:17d5459de891bdf5fbf3ac46151d5ec7301e01c5f2177fcd1a09495a479707bc",
+        "source_fact:v1:223178fd8fcbcd9e9303155ca74c8484e6d47a2aa112cf2dbbedddbe850c5089",
+        "source_fact:v1:2c326e0b7822abe800ad4e2d9178408b0a64f1a09f1dd6e68a7dd6c37aef7555",
+        "source_fact:v1:4243cc72560c130f0f0d044046437db1f028d632d1a9e3d790d22cad06a2d625",
+        "source_fact:v1:4c9694d38e8f9c95d5a863a58546edde69df2a6a46d82a284669cadfca0a3a59",
+        "source_fact:v1:7e11c12c47036a57c25c8fcc2ef5cc06651207e23ec1a08ff32fcb380f7edddd",
+        "source_fact:v1:8698983ae3bef6c596933bde4598574e7b7a11e907d59da12f65295530a58297",
+        "source_fact:v1:a5cc647150fe23ee8a6ccdbba1b9106d14388af00aaab2bd10a948cf231df20a",
+        "source_fact:v1:ab3a66fc43754185b5195263f9c31caecb147aef6893ceddbf21ea75af80a014",
+        "source_fact:v1:f4dace569463ab51de6bcbe0472dd1516ad7c4a39e2d0b115e9898f70040b1cf",
+        "source_fact:v1:f7bd51c3241f72d5f2c066b1e7f201e0ead5c3d6acf20647d03919b0b468fa7b",
+        "source_fact:v1:f900684dbe0509c934a95bc2cdaf0a5363ccb90f1ca9c1fd5cd7d1f5ac0b525e"
+      ],
+      "source_published_kst": "2026-10-12T15:02+09:00",
+      "source_title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의",
+      "telegram_core_fact": "반도체 산업 호황으로 촉발된 산업용 질소가스 공급난이 장기화하면서 정부가 가스 제조사와 반도체 대기업을 대상으로 수급 조정에 나선다.",
+      "title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의"
     },
     "source_fact:2242b909c9f2e3a050c5ca16": {
       "first_seen_kst": "2026-10-07T20:05:17+09:00",
@@ -249296,6 +250049,26 @@
       "source_published_kst": "2026-10-07T05:00+09:00",
       "title": "테마 쪼개고 채권 섞고…ETF 신상품 설계 다변화 [ETF 지형도 변화]②"
     },
+    "source_fact:2c63f7fc6df58e77dbbadba5": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821769",
+      "source": "뉴시스",
+      "source_body_digest": "21db58e065a6dda24da7ce58607404e91737ac83222142766552ad36742c8f2a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:57254c64906efd6a44890f0b6154c01c3c96deb67686948c07feefc0c0960c35",
+      "source_fact_keys": [
+        "source_fact:v1:2de4ca1d3cb1094f53e560f8ac1aa11179db99ade858f04f71656cfe2a3774fa",
+        "source_fact:v1:b9c8f1447fb65b03394c079cc9442381c63ddd56dfbe5ad023172edd8551ae4e"
+      ],
+      "source_published_kst": "2026-10-12T10:48+09:00",
+      "source_title": "호르무즈 통항 75% 급감에 해운株 강세…팬오션 5%대↑",
+      "telegram_core_fact": "호르무즈 해협의 선박 통항량은 전쟁 이전의 약 4분의 1 수준에 머무른 것으로 나타났다.",
+      "title": "호르무즈 통항 75% 급감에 해운株 강세…팬오션 5%대↑"
+    },
     "source_fact:2c738e48f73a17ffc6d5e09e": {
       "first_seen_kst": "2026-10-08T06:57:59+09:00",
       "lanes": {
@@ -256119,6 +256892,30 @@
       "source_published_kst": "2026-10-05T23:29+09:00",
       "title": "[단독] 조원태 한진 회장 ‘배임’ 혐의 경찰 수사 본격화"
     },
+    "source_fact:34df8b2daf57ca1b74ffd710": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822242",
+      "source": "뉴시스",
+      "source_body_digest": "d8b1ba77d8c7093e204b916f669c7ed8f0ceaea8a3a6edd0a0f6a3143b293301",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca31e30d15de772e53b77c5577b25baf1f03e7dbe5feeeed801cfb9bfc3fa5cf",
+      "source_fact_keys": [
+        "source_fact:v1:68dd127a47232f5e61470931db51c212722ce0796ca7a2f521ba4aa1b23a9c58",
+        "source_fact:v1:6c46b88fe9418b8438c1588619ceb757c190d7aa06c0017ab50c977d402add17",
+        "source_fact:v1:76e158ac32744bfdbdb1066a6e596aa53fe25dfe2779b256c13fec60c1778302",
+        "source_fact:v1:8fb44134d5c2b9191201428058eee166be975297c474d413eb302e1651156fda",
+        "source_fact:v1:c13779896dcef468928aec1b177d6041d1d58fa9c2fdbc8fad166e6968d538de",
+        "source_fact:v1:dd3089baeb7f18b3f401ce4dbd2694672bcdda66b918eebcc5646a4ce7a7f1a4"
+      ],
+      "source_published_kst": "2026-10-12T14:32+09:00",
+      "source_title": "메모리 원가 비중 40%로 급등…3분기 글로벌 PC 출하량 21% 감소",
+      "telegram_core_fact": "벤 예(Ben Yeh) 옴디아 수석 애널리스트는 \"PC에서 D램과 SSD(솔리드스테이트드라이브)가 차지하는 원가 비중이 통상 약 15%에서 40%로 급등했다\"며 \"가격은 4배 이상 올랐다\"고 밝혔다.",
+      "title": "메모리 원가 비중 40%로 급등…3분기 글로벌 PC 출하량 21% 감소"
+    },
     "source_fact:34e23ea7cbc102fe69a61828": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -257453,6 +258250,30 @@
       "source_title": "삼성전자 '분기 영업이익 100조' 시대 열었다… 세계 테크기업 '최초'(2보)",
       "telegram_core_fact": "[파이낸셜뉴스]삼성전자는 올해 3·4분기 영업이익 107조4000억원을 기록하며 '분기 영업이익 100조 시대'를 열었다.",
       "title": "삼성전자 '분기 영업이익 100조' 시대 열었다… 세계 테크기업 '최초'(2보)"
+    },
+    "source_fact:369d2f7e75999dc81ef89b06": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822242",
+      "source": "뉴시스",
+      "source_body_digest": "d8b1ba77d8c7093e204b916f669c7ed8f0ceaea8a3a6edd0a0f6a3143b293301",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca31e30d15de772e53b77c5577b25baf1f03e7dbe5feeeed801cfb9bfc3fa5cf",
+      "source_fact_keys": [
+        "source_fact:v1:68dd127a47232f5e61470931db51c212722ce0796ca7a2f521ba4aa1b23a9c58",
+        "source_fact:v1:6c46b88fe9418b8438c1588619ceb757c190d7aa06c0017ab50c977d402add17",
+        "source_fact:v1:76e158ac32744bfdbdb1066a6e596aa53fe25dfe2779b256c13fec60c1778302",
+        "source_fact:v1:8fb44134d5c2b9191201428058eee166be975297c474d413eb302e1651156fda",
+        "source_fact:v1:c13779896dcef468928aec1b177d6041d1d58fa9c2fdbc8fad166e6968d538de",
+        "source_fact:v1:dd3089baeb7f18b3f401ce4dbd2694672bcdda66b918eebcc5646a4ce7a7f1a4"
+      ],
+      "source_published_kst": "2026-10-12T14:32+09:00",
+      "source_title": "메모리 원가 비중 40%로 급등…3분기 글로벌 PC 출하량 21% 감소",
+      "telegram_core_fact": "벤 예(Ben Yeh) 옴디아 수석 애널리스트는 \"PC에서 D램과 SSD(솔리드스테이트드라이브)가 차지하는 원가 비중이 통상 약 15%에서 40%로 급등했다\"며 \"가격은 4배 이상 올랐다\"고 밝혔다.",
+      "title": "메모리 원가 비중 40%로 급등…3분기 글로벌 PC 출하량 21% 감소"
     },
     "source_fact:36a0b9093007d4bc32a380c4": {
       "first_seen_kst": "2026-10-07T08:36:47+09:00",
@@ -263108,6 +263929,37 @@
       "source_title": "퀸스 테라퓨틱스, IRulya로 사명 변경..12일 IRLA 거래 시작",
       "telegram_core_fact": "이번 사명 변경은 비상장사 오르파이 테라퓨틱스(Orphai Therapeutics)와의 합병 완료에 따른 후속 조치다.",
       "title": "퀸스 테라퓨틱스, IRulya로 사명 변경..12일 IRLA 거래 시작"
+    },
+    "source_fact:3de1b60057aed1847daab980": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.etnews.com/20261012000281",
+      "source": "전자신문",
+      "source_body_digest": "3cda5558997d67a9e7c1331fabbf3b85f5e1e05502f185b4a1e0784f1401c656",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:54f2c20db0e127690733c4b28ed13aa66fb121e795bc80c9f2edff8b72c8df7b",
+      "source_fact_keys": [
+        "source_fact:v1:0dc99615dca16e1470e648c7509c4ab253eac0dc7f84b06a3a780a706a4d68e5",
+        "source_fact:v1:17d5459de891bdf5fbf3ac46151d5ec7301e01c5f2177fcd1a09495a479707bc",
+        "source_fact:v1:223178fd8fcbcd9e9303155ca74c8484e6d47a2aa112cf2dbbedddbe850c5089",
+        "source_fact:v1:2c326e0b7822abe800ad4e2d9178408b0a64f1a09f1dd6e68a7dd6c37aef7555",
+        "source_fact:v1:4243cc72560c130f0f0d044046437db1f028d632d1a9e3d790d22cad06a2d625",
+        "source_fact:v1:4c9694d38e8f9c95d5a863a58546edde69df2a6a46d82a284669cadfca0a3a59",
+        "source_fact:v1:7e11c12c47036a57c25c8fcc2ef5cc06651207e23ec1a08ff32fcb380f7edddd",
+        "source_fact:v1:8698983ae3bef6c596933bde4598574e7b7a11e907d59da12f65295530a58297",
+        "source_fact:v1:a5cc647150fe23ee8a6ccdbba1b9106d14388af00aaab2bd10a948cf231df20a",
+        "source_fact:v1:ab3a66fc43754185b5195263f9c31caecb147aef6893ceddbf21ea75af80a014",
+        "source_fact:v1:f4dace569463ab51de6bcbe0472dd1516ad7c4a39e2d0b115e9898f70040b1cf",
+        "source_fact:v1:f7bd51c3241f72d5f2c066b1e7f201e0ead5c3d6acf20647d03919b0b468fa7b",
+        "source_fact:v1:f900684dbe0509c934a95bc2cdaf0a5363ccb90f1ca9c1fd5cd7d1f5ac0b525e"
+      ],
+      "source_published_kst": "2026-10-12T15:02+09:00",
+      "source_title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의",
+      "telegram_core_fact": "반도체 산업 호황으로 촉발된 산업용 질소가스 공급난이 장기화하면서 정부가 가스 제조사와 반도체 대기업을 대상으로 수급 조정에 나선다.",
+      "title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의"
     },
     "source_fact:3de24c0b41613838c8b3b8a4": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
@@ -271249,6 +272101,29 @@
       "telegram_core_fact": "증권가 컨센서스에 따르면 3월 결산법인인 OKYO 파마는 아직 본격적인 매출이 발생하지 않는 단계다.",
       "title": "OKYO 파마, 각막통증 3상 첫 환자 등록 완료"
     },
+    "source_fact:473eb04c2c11fa01d37f9c55": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012086900008",
+      "source": "연합뉴스",
+      "source_body_digest": "edb3c5164047c23e1bea89ffc3e0c8d65ebf8aa555a21e5a90fdfb8978ac014a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3c3fc838a78fd92fb40d89f40585151e3d0b5abc06c2bdfe26bc4fa4b4dd507",
+      "source_fact_keys": [
+        "source_fact:v1:0b681b00e82523ced7ec6925c32e2629a1773ec792bf4f9631e13d24b08da8cf",
+        "source_fact:v1:2174794b39b070bc8875ef230ea8c4645e977ff26478762c72bc79857f600636",
+        "source_fact:v1:4236c2aacbda88ccda915b9c2d340726e3b2f2674a92a0d90b5d52dbadf39a4c",
+        "source_fact:v1:5531298895253b9715d72eff6d2ca18a8c9a5569abe5915b6ca8e76cac790f08",
+        "source_fact:v1:fc967e9608197d7a97ac66bfbeff87d5b48117aeb9277e5cc5ecd1b2fae04bb9"
+      ],
+      "source_published_kst": "2026-10-12T15:09+09:00",
+      "source_title": "외국인, 올해 코스피서 199조 순매도…\"시장의 고민은 외인 수급\" | 연합뉴스",
+      "telegram_core_fact": "외국인은 올해 유가증권시장에서 약 199조원을 순매도했다.",
+      "title": "외국인, 올해 코스피서 199조 순매도…\"시장의 고민은 외인 수급\" | 연합뉴스"
+    },
     "source_fact:47415594739c3fc3a7539126": {
       "first_seen_kst": "2026-10-06T19:10:36+09:00",
       "lanes": {
@@ -273938,6 +274813,27 @@
       "source_published_kst": "2026-10-07T01:15+09:00",
       "title": "캐나다 8월 무역흑자 4년만에 최대…관세 앞두고 대미수출 급증 | 연합뉴스"
     },
+    "source_fact:49c2a0c04861e6a1855dd975": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.hankyung.com/article/2026101261377",
+      "source": "한국경제",
+      "source_body_digest": "e9083ce7796397b95a5e484093f44efcd541670e117f81cc3d614cc850afdcfc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:368ec6816e6ea2d913b72fe0c0d474bd056075d258b30cd8310aa1075cd82545",
+      "source_fact_keys": [
+        "source_fact:v1:bed524f23965a796216185e9f638419981fdfd5815c34d8af54426225e141dcc",
+        "source_fact:v1:c9a155a9cef6fdb34bb0cf97cceb0d805095bba34d8ef4d68d4d0a4b592b2146",
+        "source_fact:v1:f56343719a4967d4571e422fa536facc1490e99c5d8bec6415cdc06a7a8249cf"
+      ],
+      "source_published_kst": "2026-10-12T13:54+09:00",
+      "source_title": "호남 반도체 전력망 1.4조 청구서…삼전닉스가 80% 떠안는다",
+      "telegram_core_fact": "호남 반도체 클러스터 1단계 전력 공급망 구축에 1조4000억원이 투입되는 가운데 한국전력이 부담하는 몫은 20% 미만에 그칠 것으로 나타났다.",
+      "title": "호남 반도체 전력망 1.4조 청구서…삼전닉스가 80% 떠안는다"
+    },
     "source_fact:49d294f0acae4c429a6d066e": {
       "first_seen_kst": "2026-10-05T23:05:12+09:00",
       "lanes": {
@@ -276392,6 +277288,26 @@
       "source_published_kst": "2026-10-06T18:04+09:00",
       "title": "HLB, 간암 신약 '4수' 도전"
     },
+    "source_fact:4d3e076f770588fce3ba7329": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03289846645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "8726a2dfa01f44f53d037deafb2ea5b7b9b3e991db99ecf0a5a501a4b5af0a0e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a3a8901f0e9c9f8491aa4458671399ef73a477e603a0acda41ae7459d596b90",
+      "source_fact_keys": [
+        "source_fact:v1:7d81c4d1b1d96d749c10c027afa77147ff877aa12ba4ee366476e1db3ff8dfa9",
+        "source_fact:v1:94207d270ef8ec2d7db0c06855719010104d83943200654a6b26d1b1cbf2c2f5"
+      ],
+      "source_published_kst": "2026-10-12T14:21+09:00",
+      "source_title": "美 AI 공급망도 中 영향권…핵심 부품 5개 분야 점유율 50% 넘어",
+      "telegram_core_fact": "희토류와 전력장비, 반도체 등 주요 5개 분야에서 세계 시장 점유율이 각각 50%를 넘는 것으로 나타났다.",
+      "title": "美 AI 공급망도 中 영향권…핵심 부품 5개 분야 점유율 50% 넘어"
+    },
     "source_fact:4d42ddd917344712506e6a7c": {
       "first_seen_kst": "2026-10-07T08:57:59+09:00",
       "lanes": {
@@ -276552,6 +277468,37 @@
       "source_title": "이달 수출액 261억달러 ‘역대 최대’ 기록…전체 중 절반은 반도체",
       "telegram_core_fact": "이달 1일부터 10일까지 수출액(통관 기준 잠정치)은 261억달러로, 전년비 102.0% 증가했다.",
       "title": "이달 수출액 261억달러 ‘역대 최대’ 기록…전체 중 절반은 반도체"
+    },
+    "source_fact:4d6bebcbd93d15cfb74625f4": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.etnews.com/20261012000281",
+      "source": "전자신문",
+      "source_body_digest": "3cda5558997d67a9e7c1331fabbf3b85f5e1e05502f185b4a1e0784f1401c656",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:54f2c20db0e127690733c4b28ed13aa66fb121e795bc80c9f2edff8b72c8df7b",
+      "source_fact_keys": [
+        "source_fact:v1:0dc99615dca16e1470e648c7509c4ab253eac0dc7f84b06a3a780a706a4d68e5",
+        "source_fact:v1:17d5459de891bdf5fbf3ac46151d5ec7301e01c5f2177fcd1a09495a479707bc",
+        "source_fact:v1:223178fd8fcbcd9e9303155ca74c8484e6d47a2aa112cf2dbbedddbe850c5089",
+        "source_fact:v1:2c326e0b7822abe800ad4e2d9178408b0a64f1a09f1dd6e68a7dd6c37aef7555",
+        "source_fact:v1:4243cc72560c130f0f0d044046437db1f028d632d1a9e3d790d22cad06a2d625",
+        "source_fact:v1:4c9694d38e8f9c95d5a863a58546edde69df2a6a46d82a284669cadfca0a3a59",
+        "source_fact:v1:7e11c12c47036a57c25c8fcc2ef5cc06651207e23ec1a08ff32fcb380f7edddd",
+        "source_fact:v1:8698983ae3bef6c596933bde4598574e7b7a11e907d59da12f65295530a58297",
+        "source_fact:v1:a5cc647150fe23ee8a6ccdbba1b9106d14388af00aaab2bd10a948cf231df20a",
+        "source_fact:v1:ab3a66fc43754185b5195263f9c31caecb147aef6893ceddbf21ea75af80a014",
+        "source_fact:v1:f4dace569463ab51de6bcbe0472dd1516ad7c4a39e2d0b115e9898f70040b1cf",
+        "source_fact:v1:f7bd51c3241f72d5f2c066b1e7f201e0ead5c3d6acf20647d03919b0b468fa7b",
+        "source_fact:v1:f900684dbe0509c934a95bc2cdaf0a5363ccb90f1ca9c1fd5cd7d1f5ac0b525e"
+      ],
+      "source_published_kst": "2026-10-12T15:02+09:00",
+      "source_title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의",
+      "telegram_core_fact": "반도체 산업 호황으로 촉발된 산업용 질소가스 공급난이 장기화하면서 정부가 가스 제조사와 반도체 대기업을 대상으로 수급 조정에 나선다.",
+      "title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의"
     },
     "source_fact:4d75bc61cf8fe2b816ffb83a": {
       "first_seen_kst": "2026-10-07T11:11:31+09:00",
@@ -280710,6 +281657,37 @@
       "source_title": "삼성전자, 올 3분기 실적 오늘 발표…韓기업 사상 첫 영업익 '100조' 달성하나",
       "telegram_core_fact": "삼성전자가 올해 3분기 성적표를 발표하는 가운데, 메모리 반도체 호황에 힘입어 국내 기업 사상 최초로 분기 영업이익 100조원을 달성할 지 주목된다.",
       "title": "삼성전자, 올 3분기 실적 오늘 발표…韓기업 사상 첫 영업익 '100조' 달성하나"
+    },
+    "source_fact:522b4e8c6a686ed560e32c42": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.etnews.com/20261012000281",
+      "source": "전자신문",
+      "source_body_digest": "3cda5558997d67a9e7c1331fabbf3b85f5e1e05502f185b4a1e0784f1401c656",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:54f2c20db0e127690733c4b28ed13aa66fb121e795bc80c9f2edff8b72c8df7b",
+      "source_fact_keys": [
+        "source_fact:v1:0dc99615dca16e1470e648c7509c4ab253eac0dc7f84b06a3a780a706a4d68e5",
+        "source_fact:v1:17d5459de891bdf5fbf3ac46151d5ec7301e01c5f2177fcd1a09495a479707bc",
+        "source_fact:v1:223178fd8fcbcd9e9303155ca74c8484e6d47a2aa112cf2dbbedddbe850c5089",
+        "source_fact:v1:2c326e0b7822abe800ad4e2d9178408b0a64f1a09f1dd6e68a7dd6c37aef7555",
+        "source_fact:v1:4243cc72560c130f0f0d044046437db1f028d632d1a9e3d790d22cad06a2d625",
+        "source_fact:v1:4c9694d38e8f9c95d5a863a58546edde69df2a6a46d82a284669cadfca0a3a59",
+        "source_fact:v1:7e11c12c47036a57c25c8fcc2ef5cc06651207e23ec1a08ff32fcb380f7edddd",
+        "source_fact:v1:8698983ae3bef6c596933bde4598574e7b7a11e907d59da12f65295530a58297",
+        "source_fact:v1:a5cc647150fe23ee8a6ccdbba1b9106d14388af00aaab2bd10a948cf231df20a",
+        "source_fact:v1:ab3a66fc43754185b5195263f9c31caecb147aef6893ceddbf21ea75af80a014",
+        "source_fact:v1:f4dace569463ab51de6bcbe0472dd1516ad7c4a39e2d0b115e9898f70040b1cf",
+        "source_fact:v1:f7bd51c3241f72d5f2c066b1e7f201e0ead5c3d6acf20647d03919b0b468fa7b",
+        "source_fact:v1:f900684dbe0509c934a95bc2cdaf0a5363ccb90f1ca9c1fd5cd7d1f5ac0b525e"
+      ],
+      "source_published_kst": "2026-10-12T15:02+09:00",
+      "source_title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의",
+      "telegram_core_fact": "반도체 산업 호황으로 촉발된 산업용 질소가스 공급난이 장기화하면서 정부가 가스 제조사와 반도체 대기업을 대상으로 수급 조정에 나선다.",
+      "title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의"
     },
     "source_fact:522e16de59e3d40b95931561": {
       "first_seen_kst": "2026-10-07T18:12:46+09:00",
@@ -296710,6 +297688,30 @@
       "source_published_kst": "2026-10-06T10:22+09:00",
       "title": "에코프로비엠, 삼성SDI와 '전고체' 개발 협력…상용화 목전"
     },
+    "source_fact:64487ae6f2ccfb0ba3cb7fd3": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822242",
+      "source": "뉴시스",
+      "source_body_digest": "d8b1ba77d8c7093e204b916f669c7ed8f0ceaea8a3a6edd0a0f6a3143b293301",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca31e30d15de772e53b77c5577b25baf1f03e7dbe5feeeed801cfb9bfc3fa5cf",
+      "source_fact_keys": [
+        "source_fact:v1:68dd127a47232f5e61470931db51c212722ce0796ca7a2f521ba4aa1b23a9c58",
+        "source_fact:v1:6c46b88fe9418b8438c1588619ceb757c190d7aa06c0017ab50c977d402add17",
+        "source_fact:v1:76e158ac32744bfdbdb1066a6e596aa53fe25dfe2779b256c13fec60c1778302",
+        "source_fact:v1:8fb44134d5c2b9191201428058eee166be975297c474d413eb302e1651156fda",
+        "source_fact:v1:c13779896dcef468928aec1b177d6041d1d58fa9c2fdbc8fad166e6968d538de",
+        "source_fact:v1:dd3089baeb7f18b3f401ce4dbd2694672bcdda66b918eebcc5646a4ce7a7f1a4"
+      ],
+      "source_published_kst": "2026-10-12T14:32+09:00",
+      "source_title": "메모리 원가 비중 40%로 급등…3분기 글로벌 PC 출하량 21% 감소",
+      "telegram_core_fact": "벤 예(Ben Yeh) 옴디아 수석 애널리스트는 \"PC에서 D램과 SSD(솔리드스테이트드라이브)가 차지하는 원가 비중이 통상 약 15%에서 40%로 급등했다\"며 \"가격은 4배 이상 올랐다\"고 밝혔다.",
+      "title": "메모리 원가 비중 40%로 급등…3분기 글로벌 PC 출하량 21% 감소"
+    },
     "source_fact:6460433ff2b0e34f2587b45f": {
       "first_seen_kst": "2026-10-11T13:40:09+09:00",
       "lanes": {
@@ -301184,6 +302186,27 @@
       "telegram_core_fact": "러시아와 에너지 시설 공격을 서로 중단하는 방안을 논의하러 미국을 찾은 우크라이나 대표단이 협상장에서 러시아산 경유 수출 제재 완화 방침을 전달받고 “함정처럼 느껴졌다”고 반발한 것으로 전해졌다.",
       "title": "에너지 휴전 논의하러 갔는데 美는 러 경유 제재 완화…우크라 \"함정 같았다\""
     },
+    "source_fact:69cb5be013facaba3411b80f": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.hankyung.com/article/2026101261377",
+      "source": "한국경제",
+      "source_body_digest": "e9083ce7796397b95a5e484093f44efcd541670e117f81cc3d614cc850afdcfc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:368ec6816e6ea2d913b72fe0c0d474bd056075d258b30cd8310aa1075cd82545",
+      "source_fact_keys": [
+        "source_fact:v1:bed524f23965a796216185e9f638419981fdfd5815c34d8af54426225e141dcc",
+        "source_fact:v1:c9a155a9cef6fdb34bb0cf97cceb0d805095bba34d8ef4d68d4d0a4b592b2146",
+        "source_fact:v1:f56343719a4967d4571e422fa536facc1490e99c5d8bec6415cdc06a7a8249cf"
+      ],
+      "source_published_kst": "2026-10-12T13:54+09:00",
+      "source_title": "호남 반도체 전력망 1.4조 청구서…삼전닉스가 80% 떠안는다",
+      "telegram_core_fact": "호남 반도체 클러스터 1단계 전력 공급망 구축에 1조4000억원이 투입되는 가운데 한국전력이 부담하는 몫은 20% 미만에 그칠 것으로 나타났다.",
+      "title": "호남 반도체 전력망 1.4조 청구서…삼전닉스가 80% 떠안는다"
+    },
     "source_fact:69cf39241133a5a02fdd5bff": {
       "first_seen_kst": "2026-10-09T21:27:46+09:00",
       "lanes": {
@@ -303022,6 +304045,29 @@
       "source_title": "결국 러시아산 경유 들이는 트럼프…민주당·우크라 “악마와의 거래‘ 맹폭",
       "telegram_core_fact": "경유 도입을 위해 미국이 대러 제재를 완화하자 우크라이나와 유럽연합(EU) 등이 강력 반발하면서 발발 4년째인 러시아·우크라이나 전쟁이 기로에 섰다.",
       "title": "결국 러시아산 경유 들이는 트럼프…민주당·우크라 “악마와의 거래‘ 맹폭"
+    },
+    "source_fact:6bd33a45e008014cfa9180f5": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012086900008",
+      "source": "연합뉴스",
+      "source_body_digest": "edb3c5164047c23e1bea89ffc3e0c8d65ebf8aa555a21e5a90fdfb8978ac014a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3c3fc838a78fd92fb40d89f40585151e3d0b5abc06c2bdfe26bc4fa4b4dd507",
+      "source_fact_keys": [
+        "source_fact:v1:0b681b00e82523ced7ec6925c32e2629a1773ec792bf4f9631e13d24b08da8cf",
+        "source_fact:v1:2174794b39b070bc8875ef230ea8c4645e977ff26478762c72bc79857f600636",
+        "source_fact:v1:4236c2aacbda88ccda915b9c2d340726e3b2f2674a92a0d90b5d52dbadf39a4c",
+        "source_fact:v1:5531298895253b9715d72eff6d2ca18a8c9a5569abe5915b6ca8e76cac790f08",
+        "source_fact:v1:fc967e9608197d7a97ac66bfbeff87d5b48117aeb9277e5cc5ecd1b2fae04bb9"
+      ],
+      "source_published_kst": "2026-10-12T15:09+09:00",
+      "source_title": "외국인, 올해 코스피서 199조 순매도…\"시장의 고민은 외인 수급\" | 연합뉴스",
+      "telegram_core_fact": "외국인은 올해 유가증권시장에서 약 199조원을 순매도했다.",
+      "title": "외국인, 올해 코스피서 199조 순매도…\"시장의 고민은 외인 수급\" | 연합뉴스"
     },
     "source_fact:6bd51c96dc2dbd320c4c8e07": {
       "first_seen_kst": "2026-10-09T23:27:30+09:00",
@@ -318109,6 +319155,37 @@
       "telegram_core_fact": "\"과거에는 통화와 재정이 같은 방향으로 움직였지만, 지금은 기준금리를 올리면서 재정 집행을 위해 국채 발행을 늘리다 보니 24년 만에 최고 수준의 국채금리 시대가 도래했다\"고 분석했다.",
       "title": "\"금리 올리며 돈 푸는 이상한 시대\"…국장 박스권 갇힐 동안 AI 주도주 쏠린다"
     },
+    "source_fact:7e02940d351d14ac8802017e": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.etnews.com/20261012000281",
+      "source": "전자신문",
+      "source_body_digest": "3cda5558997d67a9e7c1331fabbf3b85f5e1e05502f185b4a1e0784f1401c656",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:54f2c20db0e127690733c4b28ed13aa66fb121e795bc80c9f2edff8b72c8df7b",
+      "source_fact_keys": [
+        "source_fact:v1:0dc99615dca16e1470e648c7509c4ab253eac0dc7f84b06a3a780a706a4d68e5",
+        "source_fact:v1:17d5459de891bdf5fbf3ac46151d5ec7301e01c5f2177fcd1a09495a479707bc",
+        "source_fact:v1:223178fd8fcbcd9e9303155ca74c8484e6d47a2aa112cf2dbbedddbe850c5089",
+        "source_fact:v1:2c326e0b7822abe800ad4e2d9178408b0a64f1a09f1dd6e68a7dd6c37aef7555",
+        "source_fact:v1:4243cc72560c130f0f0d044046437db1f028d632d1a9e3d790d22cad06a2d625",
+        "source_fact:v1:4c9694d38e8f9c95d5a863a58546edde69df2a6a46d82a284669cadfca0a3a59",
+        "source_fact:v1:7e11c12c47036a57c25c8fcc2ef5cc06651207e23ec1a08ff32fcb380f7edddd",
+        "source_fact:v1:8698983ae3bef6c596933bde4598574e7b7a11e907d59da12f65295530a58297",
+        "source_fact:v1:a5cc647150fe23ee8a6ccdbba1b9106d14388af00aaab2bd10a948cf231df20a",
+        "source_fact:v1:ab3a66fc43754185b5195263f9c31caecb147aef6893ceddbf21ea75af80a014",
+        "source_fact:v1:f4dace569463ab51de6bcbe0472dd1516ad7c4a39e2d0b115e9898f70040b1cf",
+        "source_fact:v1:f7bd51c3241f72d5f2c066b1e7f201e0ead5c3d6acf20647d03919b0b468fa7b",
+        "source_fact:v1:f900684dbe0509c934a95bc2cdaf0a5363ccb90f1ca9c1fd5cd7d1f5ac0b525e"
+      ],
+      "source_published_kst": "2026-10-12T15:02+09:00",
+      "source_title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의",
+      "telegram_core_fact": "반도체 산업 호황으로 촉발된 산업용 질소가스 공급난이 장기화하면서 정부가 가스 제조사와 반도체 대기업을 대상으로 수급 조정에 나선다.",
+      "title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의"
+    },
     "source_fact:7e0693554fe1a2cfa1dc8aa8": {
       "first_seen_kst": "2026-10-12T04:17:35+09:00",
       "lanes": {
@@ -319892,6 +320969,37 @@
       "source_published_kst": "2026-10-06T08:02+09:00",
       "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
     },
+    "source_fact:80637f19c0711c90e8a9381a": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.etnews.com/20261012000281",
+      "source": "전자신문",
+      "source_body_digest": "3cda5558997d67a9e7c1331fabbf3b85f5e1e05502f185b4a1e0784f1401c656",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:54f2c20db0e127690733c4b28ed13aa66fb121e795bc80c9f2edff8b72c8df7b",
+      "source_fact_keys": [
+        "source_fact:v1:0dc99615dca16e1470e648c7509c4ab253eac0dc7f84b06a3a780a706a4d68e5",
+        "source_fact:v1:17d5459de891bdf5fbf3ac46151d5ec7301e01c5f2177fcd1a09495a479707bc",
+        "source_fact:v1:223178fd8fcbcd9e9303155ca74c8484e6d47a2aa112cf2dbbedddbe850c5089",
+        "source_fact:v1:2c326e0b7822abe800ad4e2d9178408b0a64f1a09f1dd6e68a7dd6c37aef7555",
+        "source_fact:v1:4243cc72560c130f0f0d044046437db1f028d632d1a9e3d790d22cad06a2d625",
+        "source_fact:v1:4c9694d38e8f9c95d5a863a58546edde69df2a6a46d82a284669cadfca0a3a59",
+        "source_fact:v1:7e11c12c47036a57c25c8fcc2ef5cc06651207e23ec1a08ff32fcb380f7edddd",
+        "source_fact:v1:8698983ae3bef6c596933bde4598574e7b7a11e907d59da12f65295530a58297",
+        "source_fact:v1:a5cc647150fe23ee8a6ccdbba1b9106d14388af00aaab2bd10a948cf231df20a",
+        "source_fact:v1:ab3a66fc43754185b5195263f9c31caecb147aef6893ceddbf21ea75af80a014",
+        "source_fact:v1:f4dace569463ab51de6bcbe0472dd1516ad7c4a39e2d0b115e9898f70040b1cf",
+        "source_fact:v1:f7bd51c3241f72d5f2c066b1e7f201e0ead5c3d6acf20647d03919b0b468fa7b",
+        "source_fact:v1:f900684dbe0509c934a95bc2cdaf0a5363ccb90f1ca9c1fd5cd7d1f5ac0b525e"
+      ],
+      "source_published_kst": "2026-10-12T15:02+09:00",
+      "source_title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의",
+      "telegram_core_fact": "반도체 산업 호황으로 촉발된 산업용 질소가스 공급난이 장기화하면서 정부가 가스 제조사와 반도체 대기업을 대상으로 수급 조정에 나선다.",
+      "title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의"
+    },
     "source_fact:806f2cb69cf5aaa9842021d1": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
       "lanes": {
@@ -320002,6 +321110,37 @@
       "source_published_kst": "2026-10-06T09:38+09:00",
       "title": "LG이노텍, `환율 우려를 걷어내면 보이는 바닥 시그널` 증권사 발표에 강세"
     },
+    "source_fact:80874085a9876b8ccf83c3f7": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.etnews.com/20261012000281",
+      "source": "전자신문",
+      "source_body_digest": "3cda5558997d67a9e7c1331fabbf3b85f5e1e05502f185b4a1e0784f1401c656",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:54f2c20db0e127690733c4b28ed13aa66fb121e795bc80c9f2edff8b72c8df7b",
+      "source_fact_keys": [
+        "source_fact:v1:0dc99615dca16e1470e648c7509c4ab253eac0dc7f84b06a3a780a706a4d68e5",
+        "source_fact:v1:17d5459de891bdf5fbf3ac46151d5ec7301e01c5f2177fcd1a09495a479707bc",
+        "source_fact:v1:223178fd8fcbcd9e9303155ca74c8484e6d47a2aa112cf2dbbedddbe850c5089",
+        "source_fact:v1:2c326e0b7822abe800ad4e2d9178408b0a64f1a09f1dd6e68a7dd6c37aef7555",
+        "source_fact:v1:4243cc72560c130f0f0d044046437db1f028d632d1a9e3d790d22cad06a2d625",
+        "source_fact:v1:4c9694d38e8f9c95d5a863a58546edde69df2a6a46d82a284669cadfca0a3a59",
+        "source_fact:v1:7e11c12c47036a57c25c8fcc2ef5cc06651207e23ec1a08ff32fcb380f7edddd",
+        "source_fact:v1:8698983ae3bef6c596933bde4598574e7b7a11e907d59da12f65295530a58297",
+        "source_fact:v1:a5cc647150fe23ee8a6ccdbba1b9106d14388af00aaab2bd10a948cf231df20a",
+        "source_fact:v1:ab3a66fc43754185b5195263f9c31caecb147aef6893ceddbf21ea75af80a014",
+        "source_fact:v1:f4dace569463ab51de6bcbe0472dd1516ad7c4a39e2d0b115e9898f70040b1cf",
+        "source_fact:v1:f7bd51c3241f72d5f2c066b1e7f201e0ead5c3d6acf20647d03919b0b468fa7b",
+        "source_fact:v1:f900684dbe0509c934a95bc2cdaf0a5363ccb90f1ca9c1fd5cd7d1f5ac0b525e"
+      ],
+      "source_published_kst": "2026-10-12T15:02+09:00",
+      "source_title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의",
+      "telegram_core_fact": "반도체 산업 호황으로 촉발된 산업용 질소가스 공급난이 장기화하면서 정부가 가스 제조사와 반도체 대기업을 대상으로 수급 조정에 나선다.",
+      "title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의"
+    },
     "source_fact:808f497c5eef08143f78c3dd": {
       "first_seen_kst": "2026-10-07T12:49:48+09:00",
       "lanes": {
@@ -320109,6 +321248,37 @@
       "source_title": "이상균 HD현대중공업 부회장, HD현대 조선사업 총괄한다",
       "telegram_core_fact": "이상균 HD현대중공업 부회장이 조선사업 총괄 부회장으로 선임됐다. HD현대중공업이 8300억 원을 투자할 예정인 데이터센터용 발전용 엔진 공장 증설은 물론 자회사인 HD현대마린엔진 및 HD현대엔진과의 시너지 확보에도 적극 나설 계획이다.",
       "title": "이상균 HD현대중공업 부회장, HD현대 조선사업 총괄한다"
+    },
+    "source_fact:80c145fbf8a6575ebbb97a9f": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.etnews.com/20261012000281",
+      "source": "전자신문",
+      "source_body_digest": "3cda5558997d67a9e7c1331fabbf3b85f5e1e05502f185b4a1e0784f1401c656",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:54f2c20db0e127690733c4b28ed13aa66fb121e795bc80c9f2edff8b72c8df7b",
+      "source_fact_keys": [
+        "source_fact:v1:0dc99615dca16e1470e648c7509c4ab253eac0dc7f84b06a3a780a706a4d68e5",
+        "source_fact:v1:17d5459de891bdf5fbf3ac46151d5ec7301e01c5f2177fcd1a09495a479707bc",
+        "source_fact:v1:223178fd8fcbcd9e9303155ca74c8484e6d47a2aa112cf2dbbedddbe850c5089",
+        "source_fact:v1:2c326e0b7822abe800ad4e2d9178408b0a64f1a09f1dd6e68a7dd6c37aef7555",
+        "source_fact:v1:4243cc72560c130f0f0d044046437db1f028d632d1a9e3d790d22cad06a2d625",
+        "source_fact:v1:4c9694d38e8f9c95d5a863a58546edde69df2a6a46d82a284669cadfca0a3a59",
+        "source_fact:v1:7e11c12c47036a57c25c8fcc2ef5cc06651207e23ec1a08ff32fcb380f7edddd",
+        "source_fact:v1:8698983ae3bef6c596933bde4598574e7b7a11e907d59da12f65295530a58297",
+        "source_fact:v1:a5cc647150fe23ee8a6ccdbba1b9106d14388af00aaab2bd10a948cf231df20a",
+        "source_fact:v1:ab3a66fc43754185b5195263f9c31caecb147aef6893ceddbf21ea75af80a014",
+        "source_fact:v1:f4dace569463ab51de6bcbe0472dd1516ad7c4a39e2d0b115e9898f70040b1cf",
+        "source_fact:v1:f7bd51c3241f72d5f2c066b1e7f201e0ead5c3d6acf20647d03919b0b468fa7b",
+        "source_fact:v1:f900684dbe0509c934a95bc2cdaf0a5363ccb90f1ca9c1fd5cd7d1f5ac0b525e"
+      ],
+      "source_published_kst": "2026-10-12T15:02+09:00",
+      "source_title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의",
+      "telegram_core_fact": "반도체 산업 호황으로 촉발된 산업용 질소가스 공급난이 장기화하면서 정부가 가스 제조사와 반도체 대기업을 대상으로 수급 조정에 나선다.",
+      "title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의"
     },
     "source_fact:80ca2e13697a3f55965dc2ac": {
       "first_seen_kst": "2026-10-10T00:12:46+09:00",
@@ -325527,6 +326697,30 @@
       ],
       "source_published_kst": "2026-10-06T13:35+09:00",
       "title": "조준희 KOSA 회장 \"AI 수요·공급기업 한자리에…실제 사업으로 연결\""
+    },
+    "source_fact:8724d11e301de17931f71cd7": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822242",
+      "source": "뉴시스",
+      "source_body_digest": "d8b1ba77d8c7093e204b916f669c7ed8f0ceaea8a3a6edd0a0f6a3143b293301",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca31e30d15de772e53b77c5577b25baf1f03e7dbe5feeeed801cfb9bfc3fa5cf",
+      "source_fact_keys": [
+        "source_fact:v1:68dd127a47232f5e61470931db51c212722ce0796ca7a2f521ba4aa1b23a9c58",
+        "source_fact:v1:6c46b88fe9418b8438c1588619ceb757c190d7aa06c0017ab50c977d402add17",
+        "source_fact:v1:76e158ac32744bfdbdb1066a6e596aa53fe25dfe2779b256c13fec60c1778302",
+        "source_fact:v1:8fb44134d5c2b9191201428058eee166be975297c474d413eb302e1651156fda",
+        "source_fact:v1:c13779896dcef468928aec1b177d6041d1d58fa9c2fdbc8fad166e6968d538de",
+        "source_fact:v1:dd3089baeb7f18b3f401ce4dbd2694672bcdda66b918eebcc5646a4ce7a7f1a4"
+      ],
+      "source_published_kst": "2026-10-12T14:32+09:00",
+      "source_title": "메모리 원가 비중 40%로 급등…3분기 글로벌 PC 출하량 21% 감소",
+      "telegram_core_fact": "벤 예(Ben Yeh) 옴디아 수석 애널리스트는 \"PC에서 D램과 SSD(솔리드스테이트드라이브)가 차지하는 원가 비중이 통상 약 15%에서 40%로 급등했다\"며 \"가격은 4배 이상 올랐다\"고 밝혔다.",
+      "title": "메모리 원가 비중 40%로 급등…3분기 글로벌 PC 출하량 21% 감소"
     },
     "source_fact:87306314c09e1188ce1c6bec": {
       "first_seen_kst": "2026-10-09T19:43:36+09:00",
@@ -342268,6 +343462,27 @@
       "telegram_core_fact": "국제 스포츠 대회에서 우수한 성적을 거둔 선수들에게 주어지는 '주택 특별공급(특공)' 혜택을 둘러싸고 공정성 논란이 일자 국토교통부가 관련 제도 개편을 검토하기로 한 것으로 알려졌다.",
       "title": "아시안게임 병역 특례논란 후폭풍… 국토부, 우수 선수 ‘아파트 특공’ 손본다"
     },
+    "source_fact:9b984358a04d085bb9e6aa83": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822265",
+      "source": "뉴시스",
+      "source_body_digest": "4b8a0830eb89147d1518b729fd2515a61e1b31a67c228b93d6eeefea6af97a14",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:510baa8c4df37c51d973d5cd2ebf760bbb2781ad69611e068b1e2eea37bc4b81",
+      "source_fact_keys": [
+        "source_fact:v1:68241b3f013fce92f003206a6cf4b131b05732a1bc1f079503c419d73c5613f6",
+        "source_fact:v1:75d3ccc3fa0d9a099516312fe4d455ff36673b405a7f562e0e7cc3942fefbb49",
+        "source_fact:v1:80e50f5323f9e26692f4d64a007d2cdf534ddbb58659d43b2936632428ff5fc9"
+      ],
+      "source_published_kst": "2026-10-12T14:34+09:00",
+      "source_title": "티제이이노베이션, 소프트뱅크에 고출력 광 DAS 공급",
+      "telegram_core_fact": "무선통신 인프라 장비 전문기업 티제이이노베이션(TJ Innovation)은 일본 이동통신사업자 소프트뱅크(SoftBank)에 고출력 광 DAS(분산안테나시스템)를 공급한다고 12일 밝혔다.",
+      "title": "티제이이노베이션, 소프트뱅크에 고출력 광 DAS 공급"
+    },
     "source_fact:9b98cf360b4c0d0630a049b7": {
       "first_seen_kst": "2026-10-12T00:21:39+09:00",
       "lanes": {
@@ -343930,6 +345145,29 @@
       "source_title": "'AIDC 확대' 美 초고압 변압기 주문량 폭발…한국산 수입액 1위",
       "telegram_core_fact": "미국에서 인공지능(AI) 데이터센터 건설 확대와 노후 전력망 교체 수요가 겹치면서 초고압 변압기를 주문한 뒤 납품 받기까지 최대 5년이 걸리는 공급난이 이어지고 있다.",
       "title": "'AIDC 확대' 美 초고압 변압기 주문량 폭발…한국산 수입액 1위"
+    },
+    "source_fact:9db36c17ee1942ca6cb663eb": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012086900008",
+      "source": "연합뉴스",
+      "source_body_digest": "edb3c5164047c23e1bea89ffc3e0c8d65ebf8aa555a21e5a90fdfb8978ac014a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3c3fc838a78fd92fb40d89f40585151e3d0b5abc06c2bdfe26bc4fa4b4dd507",
+      "source_fact_keys": [
+        "source_fact:v1:0b681b00e82523ced7ec6925c32e2629a1773ec792bf4f9631e13d24b08da8cf",
+        "source_fact:v1:2174794b39b070bc8875ef230ea8c4645e977ff26478762c72bc79857f600636",
+        "source_fact:v1:4236c2aacbda88ccda915b9c2d340726e3b2f2674a92a0d90b5d52dbadf39a4c",
+        "source_fact:v1:5531298895253b9715d72eff6d2ca18a8c9a5569abe5915b6ca8e76cac790f08",
+        "source_fact:v1:fc967e9608197d7a97ac66bfbeff87d5b48117aeb9277e5cc5ecd1b2fae04bb9"
+      ],
+      "source_published_kst": "2026-10-12T15:09+09:00",
+      "source_title": "외국인, 올해 코스피서 199조 순매도…\"시장의 고민은 외인 수급\" | 연합뉴스",
+      "telegram_core_fact": "외국인은 올해 유가증권시장에서 약 199조원을 순매도했다.",
+      "title": "외국인, 올해 코스피서 199조 순매도…\"시장의 고민은 외인 수급\" | 연합뉴스"
     },
     "source_fact:9db8245eba5ca2b90c013f4c": {
       "first_seen_kst": "2026-10-09T23:27:30+09:00",
@@ -362360,6 +363598,30 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령은 11일(현지시간) 러시아와 우크라이나가 에너지 시설 공격을 중단하는‘에너지 휴전’에 합의했다고 밝혔다. 트럼프 대통령은 수주 동안 젤렌스키 대통령에게 러시아 에너지 기반시설에 대한 공격을 중단하라고 압박해 왔다.",
       "title": "트럼프 “러시아·우크라이나, 에너지 휴전 합의”…구체적 내용은 미공개"
     },
+    "source_fact:b37b9e5a2879334c6bd7ac7f": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822242",
+      "source": "뉴시스",
+      "source_body_digest": "d8b1ba77d8c7093e204b916f669c7ed8f0ceaea8a3a6edd0a0f6a3143b293301",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca31e30d15de772e53b77c5577b25baf1f03e7dbe5feeeed801cfb9bfc3fa5cf",
+      "source_fact_keys": [
+        "source_fact:v1:68dd127a47232f5e61470931db51c212722ce0796ca7a2f521ba4aa1b23a9c58",
+        "source_fact:v1:6c46b88fe9418b8438c1588619ceb757c190d7aa06c0017ab50c977d402add17",
+        "source_fact:v1:76e158ac32744bfdbdb1066a6e596aa53fe25dfe2779b256c13fec60c1778302",
+        "source_fact:v1:8fb44134d5c2b9191201428058eee166be975297c474d413eb302e1651156fda",
+        "source_fact:v1:c13779896dcef468928aec1b177d6041d1d58fa9c2fdbc8fad166e6968d538de",
+        "source_fact:v1:dd3089baeb7f18b3f401ce4dbd2694672bcdda66b918eebcc5646a4ce7a7f1a4"
+      ],
+      "source_published_kst": "2026-10-12T14:32+09:00",
+      "source_title": "메모리 원가 비중 40%로 급등…3분기 글로벌 PC 출하량 21% 감소",
+      "telegram_core_fact": "벤 예(Ben Yeh) 옴디아 수석 애널리스트는 \"PC에서 D램과 SSD(솔리드스테이트드라이브)가 차지하는 원가 비중이 통상 약 15%에서 40%로 급등했다\"며 \"가격은 4배 이상 올랐다\"고 밝혔다.",
+      "title": "메모리 원가 비중 40%로 급등…3분기 글로벌 PC 출하량 21% 감소"
+    },
     "source_fact:b37f042c0b4cc11167db5e88": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
       "lanes": {
@@ -364566,6 +365828,27 @@
       "source_published_kst": "2026-10-06T17:00+09:00",
       "title": "금감원, '2.5만명 정보유출' 신한은행 현장검사 전환…점검 착수 엿새 만(종합)"
     },
+    "source_fact:b67dd284cc5eff37e4125545": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822265",
+      "source": "뉴시스",
+      "source_body_digest": "4b8a0830eb89147d1518b729fd2515a61e1b31a67c228b93d6eeefea6af97a14",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:510baa8c4df37c51d973d5cd2ebf760bbb2781ad69611e068b1e2eea37bc4b81",
+      "source_fact_keys": [
+        "source_fact:v1:68241b3f013fce92f003206a6cf4b131b05732a1bc1f079503c419d73c5613f6",
+        "source_fact:v1:75d3ccc3fa0d9a099516312fe4d455ff36673b405a7f562e0e7cc3942fefbb49",
+        "source_fact:v1:80e50f5323f9e26692f4d64a007d2cdf534ddbb58659d43b2936632428ff5fc9"
+      ],
+      "source_published_kst": "2026-10-12T14:34+09:00",
+      "source_title": "티제이이노베이션, 소프트뱅크에 고출력 광 DAS 공급",
+      "telegram_core_fact": "무선통신 인프라 장비 전문기업 티제이이노베이션(TJ Innovation)은 일본 이동통신사업자 소프트뱅크(SoftBank)에 고출력 광 DAS(분산안테나시스템)를 공급한다고 12일 밝혔다.",
+      "title": "티제이이노베이션, 소프트뱅크에 고출력 광 DAS 공급"
+    },
     "source_fact:b68068a0055df998ae0cc4d6": {
       "first_seen_kst": "2026-10-07T14:18:25+09:00",
       "lanes": {
@@ -366492,6 +367775,37 @@
       ],
       "source_published_kst": "2026-10-07T17:16+09:00",
       "title": "핀란드, 구글 데이터센터 2곳 건립 제동…\"환경 훼손 우려\""
+    },
+    "source_fact:b89ad549fdbf28c573bdcac6": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.etnews.com/20261012000281",
+      "source": "전자신문",
+      "source_body_digest": "3cda5558997d67a9e7c1331fabbf3b85f5e1e05502f185b4a1e0784f1401c656",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:54f2c20db0e127690733c4b28ed13aa66fb121e795bc80c9f2edff8b72c8df7b",
+      "source_fact_keys": [
+        "source_fact:v1:0dc99615dca16e1470e648c7509c4ab253eac0dc7f84b06a3a780a706a4d68e5",
+        "source_fact:v1:17d5459de891bdf5fbf3ac46151d5ec7301e01c5f2177fcd1a09495a479707bc",
+        "source_fact:v1:223178fd8fcbcd9e9303155ca74c8484e6d47a2aa112cf2dbbedddbe850c5089",
+        "source_fact:v1:2c326e0b7822abe800ad4e2d9178408b0a64f1a09f1dd6e68a7dd6c37aef7555",
+        "source_fact:v1:4243cc72560c130f0f0d044046437db1f028d632d1a9e3d790d22cad06a2d625",
+        "source_fact:v1:4c9694d38e8f9c95d5a863a58546edde69df2a6a46d82a284669cadfca0a3a59",
+        "source_fact:v1:7e11c12c47036a57c25c8fcc2ef5cc06651207e23ec1a08ff32fcb380f7edddd",
+        "source_fact:v1:8698983ae3bef6c596933bde4598574e7b7a11e907d59da12f65295530a58297",
+        "source_fact:v1:a5cc647150fe23ee8a6ccdbba1b9106d14388af00aaab2bd10a948cf231df20a",
+        "source_fact:v1:ab3a66fc43754185b5195263f9c31caecb147aef6893ceddbf21ea75af80a014",
+        "source_fact:v1:f4dace569463ab51de6bcbe0472dd1516ad7c4a39e2d0b115e9898f70040b1cf",
+        "source_fact:v1:f7bd51c3241f72d5f2c066b1e7f201e0ead5c3d6acf20647d03919b0b468fa7b",
+        "source_fact:v1:f900684dbe0509c934a95bc2cdaf0a5363ccb90f1ca9c1fd5cd7d1f5ac0b525e"
+      ],
+      "source_published_kst": "2026-10-12T15:02+09:00",
+      "source_title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의",
+      "telegram_core_fact": "반도체 산업 호황으로 촉발된 산업용 질소가스 공급난이 장기화하면서 정부가 가스 제조사와 반도체 대기업을 대상으로 수급 조정에 나선다.",
+      "title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의"
     },
     "source_fact:b89d43f2d75dedf33ae966f1": {
       "first_seen_kst": "2026-10-06T21:28:22+09:00",
@@ -370325,6 +371639,26 @@
       "source_published_kst": "2026-10-06T11:27+09:00",
       "title": "스페이스X, AI 사업 기대감에 날아 올랐다"
     },
+    "source_fact:bdca1c70552395357c52b37c": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821769",
+      "source": "뉴시스",
+      "source_body_digest": "21db58e065a6dda24da7ce58607404e91737ac83222142766552ad36742c8f2a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:57254c64906efd6a44890f0b6154c01c3c96deb67686948c07feefc0c0960c35",
+      "source_fact_keys": [
+        "source_fact:v1:2de4ca1d3cb1094f53e560f8ac1aa11179db99ade858f04f71656cfe2a3774fa",
+        "source_fact:v1:b9c8f1447fb65b03394c079cc9442381c63ddd56dfbe5ad023172edd8551ae4e"
+      ],
+      "source_published_kst": "2026-10-12T10:48+09:00",
+      "source_title": "호르무즈 통항 75% 급감에 해운株 강세…팬오션 5%대↑",
+      "telegram_core_fact": "호르무즈 해협의 선박 통항량은 전쟁 이전의 약 4분의 1 수준에 머무른 것으로 나타났다.",
+      "title": "호르무즈 통항 75% 급감에 해운株 강세…팬오션 5%대↑"
+    },
     "source_fact:bdd38efff984f9597a5dd2a8": {
       "first_seen_kst": "2026-10-12T12:32:44+09:00",
       "lanes": {
@@ -371855,6 +373189,37 @@
       "source_title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나",
       "telegram_core_fact": "특별성과급은 세금과 보험료 등을 공제한 뒤 자사주로 지급된다.",
       "title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나"
+    },
+    "source_fact:bff30f4745d69c164d3a2193": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.etnews.com/20261012000281",
+      "source": "전자신문",
+      "source_body_digest": "3cda5558997d67a9e7c1331fabbf3b85f5e1e05502f185b4a1e0784f1401c656",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:54f2c20db0e127690733c4b28ed13aa66fb121e795bc80c9f2edff8b72c8df7b",
+      "source_fact_keys": [
+        "source_fact:v1:0dc99615dca16e1470e648c7509c4ab253eac0dc7f84b06a3a780a706a4d68e5",
+        "source_fact:v1:17d5459de891bdf5fbf3ac46151d5ec7301e01c5f2177fcd1a09495a479707bc",
+        "source_fact:v1:223178fd8fcbcd9e9303155ca74c8484e6d47a2aa112cf2dbbedddbe850c5089",
+        "source_fact:v1:2c326e0b7822abe800ad4e2d9178408b0a64f1a09f1dd6e68a7dd6c37aef7555",
+        "source_fact:v1:4243cc72560c130f0f0d044046437db1f028d632d1a9e3d790d22cad06a2d625",
+        "source_fact:v1:4c9694d38e8f9c95d5a863a58546edde69df2a6a46d82a284669cadfca0a3a59",
+        "source_fact:v1:7e11c12c47036a57c25c8fcc2ef5cc06651207e23ec1a08ff32fcb380f7edddd",
+        "source_fact:v1:8698983ae3bef6c596933bde4598574e7b7a11e907d59da12f65295530a58297",
+        "source_fact:v1:a5cc647150fe23ee8a6ccdbba1b9106d14388af00aaab2bd10a948cf231df20a",
+        "source_fact:v1:ab3a66fc43754185b5195263f9c31caecb147aef6893ceddbf21ea75af80a014",
+        "source_fact:v1:f4dace569463ab51de6bcbe0472dd1516ad7c4a39e2d0b115e9898f70040b1cf",
+        "source_fact:v1:f7bd51c3241f72d5f2c066b1e7f201e0ead5c3d6acf20647d03919b0b468fa7b",
+        "source_fact:v1:f900684dbe0509c934a95bc2cdaf0a5363ccb90f1ca9c1fd5cd7d1f5ac0b525e"
+      ],
+      "source_published_kst": "2026-10-12T15:02+09:00",
+      "source_title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의",
+      "telegram_core_fact": "반도체 산업 호황으로 촉발된 산업용 질소가스 공급난이 장기화하면서 정부가 가스 제조사와 반도체 대기업을 대상으로 수급 조정에 나선다.",
+      "title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의"
     },
     "source_fact:bffca875101bbb30435a743b": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
@@ -373519,6 +374884,37 @@
       "source_published_kst": "2026-10-07T07:10+09:00",
       "title": "리사 수 \"수요가 공급보다 많아\"…AMD 주가 사상 최고"
     },
+    "source_fact:c1ce3453f9fec0eef02473ce": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.etnews.com/20261012000281",
+      "source": "전자신문",
+      "source_body_digest": "3cda5558997d67a9e7c1331fabbf3b85f5e1e05502f185b4a1e0784f1401c656",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:54f2c20db0e127690733c4b28ed13aa66fb121e795bc80c9f2edff8b72c8df7b",
+      "source_fact_keys": [
+        "source_fact:v1:0dc99615dca16e1470e648c7509c4ab253eac0dc7f84b06a3a780a706a4d68e5",
+        "source_fact:v1:17d5459de891bdf5fbf3ac46151d5ec7301e01c5f2177fcd1a09495a479707bc",
+        "source_fact:v1:223178fd8fcbcd9e9303155ca74c8484e6d47a2aa112cf2dbbedddbe850c5089",
+        "source_fact:v1:2c326e0b7822abe800ad4e2d9178408b0a64f1a09f1dd6e68a7dd6c37aef7555",
+        "source_fact:v1:4243cc72560c130f0f0d044046437db1f028d632d1a9e3d790d22cad06a2d625",
+        "source_fact:v1:4c9694d38e8f9c95d5a863a58546edde69df2a6a46d82a284669cadfca0a3a59",
+        "source_fact:v1:7e11c12c47036a57c25c8fcc2ef5cc06651207e23ec1a08ff32fcb380f7edddd",
+        "source_fact:v1:8698983ae3bef6c596933bde4598574e7b7a11e907d59da12f65295530a58297",
+        "source_fact:v1:a5cc647150fe23ee8a6ccdbba1b9106d14388af00aaab2bd10a948cf231df20a",
+        "source_fact:v1:ab3a66fc43754185b5195263f9c31caecb147aef6893ceddbf21ea75af80a014",
+        "source_fact:v1:f4dace569463ab51de6bcbe0472dd1516ad7c4a39e2d0b115e9898f70040b1cf",
+        "source_fact:v1:f7bd51c3241f72d5f2c066b1e7f201e0ead5c3d6acf20647d03919b0b468fa7b",
+        "source_fact:v1:f900684dbe0509c934a95bc2cdaf0a5363ccb90f1ca9c1fd5cd7d1f5ac0b525e"
+      ],
+      "source_published_kst": "2026-10-12T15:02+09:00",
+      "source_title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의",
+      "telegram_core_fact": "반도체 산업 호황으로 촉발된 산업용 질소가스 공급난이 장기화하면서 정부가 가스 제조사와 반도체 대기업을 대상으로 수급 조정에 나선다.",
+      "title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의"
+    },
     "source_fact:c1d5b0121033be4479b236bc": {
       "first_seen_kst": "2026-10-09T15:48:54+09:00",
       "lanes": {
@@ -374108,6 +375504,26 @@
       ],
       "source_published_kst": "2026-10-06T11:00+09:00",
       "title": "규제합리화추진단 \"디스플레이 규제 개선…수입 간소화·AI 보안가이드 마련\""
+    },
+    "source_fact:c26f1e6ac55a5b6d5541f0aa": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03289846645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "8726a2dfa01f44f53d037deafb2ea5b7b9b3e991db99ecf0a5a501a4b5af0a0e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a3a8901f0e9c9f8491aa4458671399ef73a477e603a0acda41ae7459d596b90",
+      "source_fact_keys": [
+        "source_fact:v1:7d81c4d1b1d96d749c10c027afa77147ff877aa12ba4ee366476e1db3ff8dfa9",
+        "source_fact:v1:94207d270ef8ec2d7db0c06855719010104d83943200654a6b26d1b1cbf2c2f5"
+      ],
+      "source_published_kst": "2026-10-12T14:21+09:00",
+      "source_title": "美 AI 공급망도 中 영향권…핵심 부품 5개 분야 점유율 50% 넘어",
+      "telegram_core_fact": "희토류와 전력장비, 반도체 등 주요 5개 분야에서 세계 시장 점유율이 각각 50%를 넘는 것으로 나타났다.",
+      "title": "美 AI 공급망도 中 영향권…핵심 부품 5개 분야 점유율 50% 넘어"
     },
     "source_fact:c26feee148bc1f0fd24ee72f": {
       "first_seen_kst": "2026-10-07T02:24:39+09:00",
@@ -391665,6 +393081,29 @@
       "telegram_core_fact": "발표를 맡은 최연정 뉴모달리티그룹 프로는 첨단 기술인 전산유체역학(CFD)을 활용해 ADC 생산규모 확대(scale-up) 시에도 일관된 품질을 유지하는 공정 기술을 통해 삼성바이오로직스의 고품질 제조 역량을 강조했다.",
       "title": "삼성바이오로직스, 日 공략 속도…엔드 투 엔드 서비스로 APAC 시장 확대"
     },
+    "source_fact:d6c7f0b9ac26d4dd974d8435": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012086900008",
+      "source": "연합뉴스",
+      "source_body_digest": "edb3c5164047c23e1bea89ffc3e0c8d65ebf8aa555a21e5a90fdfb8978ac014a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3c3fc838a78fd92fb40d89f40585151e3d0b5abc06c2bdfe26bc4fa4b4dd507",
+      "source_fact_keys": [
+        "source_fact:v1:0b681b00e82523ced7ec6925c32e2629a1773ec792bf4f9631e13d24b08da8cf",
+        "source_fact:v1:2174794b39b070bc8875ef230ea8c4645e977ff26478762c72bc79857f600636",
+        "source_fact:v1:4236c2aacbda88ccda915b9c2d340726e3b2f2674a92a0d90b5d52dbadf39a4c",
+        "source_fact:v1:5531298895253b9715d72eff6d2ca18a8c9a5569abe5915b6ca8e76cac790f08",
+        "source_fact:v1:fc967e9608197d7a97ac66bfbeff87d5b48117aeb9277e5cc5ecd1b2fae04bb9"
+      ],
+      "source_published_kst": "2026-10-12T15:09+09:00",
+      "source_title": "외국인, 올해 코스피서 199조 순매도…\"시장의 고민은 외인 수급\" | 연합뉴스",
+      "telegram_core_fact": "외국인은 올해 유가증권시장에서 약 199조원을 순매도했다.",
+      "title": "외국인, 올해 코스피서 199조 순매도…\"시장의 고민은 외인 수급\" | 연합뉴스"
+    },
     "source_fact:d6c86eb29dff0673209b93e7": {
       "first_seen_kst": "2026-10-10T06:02:39+09:00",
       "lanes": {
@@ -400957,6 +402396,30 @@
       ],
       "source_published_kst": "2026-10-07T07:55+09:00",
       "title": "삼성전기, 3분기 ‘깜짝 실적’ 전망…목표가 160만→260만원"
+    },
+    "source_fact:e1c63a126ef520a71a11e576": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822242",
+      "source": "뉴시스",
+      "source_body_digest": "d8b1ba77d8c7093e204b916f669c7ed8f0ceaea8a3a6edd0a0f6a3143b293301",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca31e30d15de772e53b77c5577b25baf1f03e7dbe5feeeed801cfb9bfc3fa5cf",
+      "source_fact_keys": [
+        "source_fact:v1:68dd127a47232f5e61470931db51c212722ce0796ca7a2f521ba4aa1b23a9c58",
+        "source_fact:v1:6c46b88fe9418b8438c1588619ceb757c190d7aa06c0017ab50c977d402add17",
+        "source_fact:v1:76e158ac32744bfdbdb1066a6e596aa53fe25dfe2779b256c13fec60c1778302",
+        "source_fact:v1:8fb44134d5c2b9191201428058eee166be975297c474d413eb302e1651156fda",
+        "source_fact:v1:c13779896dcef468928aec1b177d6041d1d58fa9c2fdbc8fad166e6968d538de",
+        "source_fact:v1:dd3089baeb7f18b3f401ce4dbd2694672bcdda66b918eebcc5646a4ce7a7f1a4"
+      ],
+      "source_published_kst": "2026-10-12T14:32+09:00",
+      "source_title": "메모리 원가 비중 40%로 급등…3분기 글로벌 PC 출하량 21% 감소",
+      "telegram_core_fact": "벤 예(Ben Yeh) 옴디아 수석 애널리스트는 \"PC에서 D램과 SSD(솔리드스테이트드라이브)가 차지하는 원가 비중이 통상 약 15%에서 40%로 급등했다\"며 \"가격은 4배 이상 올랐다\"고 밝혔다.",
+      "title": "메모리 원가 비중 40%로 급등…3분기 글로벌 PC 출하량 21% 감소"
     },
     "source_fact:e1cf2f8e95d03ea969264e5b": {
       "first_seen_kst": "2026-10-07T14:56:20+09:00",
@@ -410378,6 +411841,27 @@
       "source_title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심",
       "telegram_core_fact": "정부의 국채 발행 축소 발표 이후 금리는 3% 후반대로 내려왔지만, 지난 8일에는 다시 연 3.983%로 오르며 4% 턱밑까지 올라섰다.",
       "title": "국채 발행 줄여도 금리 다시 '4% 턱밑'…정부, 추가 안정책 고심"
+    },
+    "source_fact:ec976dc630d74edf3f140a8f": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.hankyung.com/article/2026101261377",
+      "source": "한국경제",
+      "source_body_digest": "e9083ce7796397b95a5e484093f44efcd541670e117f81cc3d614cc850afdcfc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:368ec6816e6ea2d913b72fe0c0d474bd056075d258b30cd8310aa1075cd82545",
+      "source_fact_keys": [
+        "source_fact:v1:bed524f23965a796216185e9f638419981fdfd5815c34d8af54426225e141dcc",
+        "source_fact:v1:c9a155a9cef6fdb34bb0cf97cceb0d805095bba34d8ef4d68d4d0a4b592b2146",
+        "source_fact:v1:f56343719a4967d4571e422fa536facc1490e99c5d8bec6415cdc06a7a8249cf"
+      ],
+      "source_published_kst": "2026-10-12T13:54+09:00",
+      "source_title": "호남 반도체 전력망 1.4조 청구서…삼전닉스가 80% 떠안는다",
+      "telegram_core_fact": "호남 반도체 클러스터 1단계 전력 공급망 구축에 1조4000억원이 투입되는 가운데 한국전력이 부담하는 몫은 20% 미만에 그칠 것으로 나타났다.",
+      "title": "호남 반도체 전력망 1.4조 청구서…삼전닉스가 80% 떠안는다"
     },
     "source_fact:ec9b04fd161670ef3765cb78": {
       "first_seen_kst": "2026-10-10T16:57:05+09:00",
@@ -446070,6 +447554,29 @@
       "telegram_core_fact": "이 메시지는 ICC 재판관을 지낸 나비 필라이의 노벨평화상 수상 직후 트럼프 행정부가 ICC에 대한 고강도 제재를 발표한 지 얼마 지나지 않아 게시된 것이다.",
       "title": "다카이치, 美 ICC 제재 직후 \"깊은 우려…ICC 역할 지원\" | 연합뉴스"
     },
+    "title:4fd5a75a9d694ecbb05fee46": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012086900008",
+      "source": "연합뉴스",
+      "source_body_digest": "edb3c5164047c23e1bea89ffc3e0c8d65ebf8aa555a21e5a90fdfb8978ac014a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3c3fc838a78fd92fb40d89f40585151e3d0b5abc06c2bdfe26bc4fa4b4dd507",
+      "source_fact_keys": [
+        "source_fact:v1:0b681b00e82523ced7ec6925c32e2629a1773ec792bf4f9631e13d24b08da8cf",
+        "source_fact:v1:2174794b39b070bc8875ef230ea8c4645e977ff26478762c72bc79857f600636",
+        "source_fact:v1:4236c2aacbda88ccda915b9c2d340726e3b2f2674a92a0d90b5d52dbadf39a4c",
+        "source_fact:v1:5531298895253b9715d72eff6d2ca18a8c9a5569abe5915b6ca8e76cac790f08",
+        "source_fact:v1:fc967e9608197d7a97ac66bfbeff87d5b48117aeb9277e5cc5ecd1b2fae04bb9"
+      ],
+      "source_published_kst": "2026-10-12T15:09+09:00",
+      "source_title": "외국인, 올해 코스피서 199조 순매도…\"시장의 고민은 외인 수급\" | 연합뉴스",
+      "telegram_core_fact": "외국인은 올해 유가증권시장에서 약 199조원을 순매도했다.",
+      "title": "외국인, 올해 코스피서 199조 순매도…\"시장의 고민은 외인 수급\" | 연합뉴스"
+    },
     "title:4fe61b807e2218f675602cd8": {
       "first_seen_kst": "2026-10-11T18:34:27+09:00",
       "lanes": {
@@ -458830,6 +460337,37 @@
       "source": "연합뉴스",
       "title": "프락시스 CEO \"서울 모처에 디지털국가 대사관 짓겠다\" | 연합뉴스"
     },
+    "title:8555ed92cc1ce78295056bde": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.etnews.com/20261012000281",
+      "source": "전자신문",
+      "source_body_digest": "3cda5558997d67a9e7c1331fabbf3b85f5e1e05502f185b4a1e0784f1401c656",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:54f2c20db0e127690733c4b28ed13aa66fb121e795bc80c9f2edff8b72c8df7b",
+      "source_fact_keys": [
+        "source_fact:v1:0dc99615dca16e1470e648c7509c4ab253eac0dc7f84b06a3a780a706a4d68e5",
+        "source_fact:v1:17d5459de891bdf5fbf3ac46151d5ec7301e01c5f2177fcd1a09495a479707bc",
+        "source_fact:v1:223178fd8fcbcd9e9303155ca74c8484e6d47a2aa112cf2dbbedddbe850c5089",
+        "source_fact:v1:2c326e0b7822abe800ad4e2d9178408b0a64f1a09f1dd6e68a7dd6c37aef7555",
+        "source_fact:v1:4243cc72560c130f0f0d044046437db1f028d632d1a9e3d790d22cad06a2d625",
+        "source_fact:v1:4c9694d38e8f9c95d5a863a58546edde69df2a6a46d82a284669cadfca0a3a59",
+        "source_fact:v1:7e11c12c47036a57c25c8fcc2ef5cc06651207e23ec1a08ff32fcb380f7edddd",
+        "source_fact:v1:8698983ae3bef6c596933bde4598574e7b7a11e907d59da12f65295530a58297",
+        "source_fact:v1:a5cc647150fe23ee8a6ccdbba1b9106d14388af00aaab2bd10a948cf231df20a",
+        "source_fact:v1:ab3a66fc43754185b5195263f9c31caecb147aef6893ceddbf21ea75af80a014",
+        "source_fact:v1:f4dace569463ab51de6bcbe0472dd1516ad7c4a39e2d0b115e9898f70040b1cf",
+        "source_fact:v1:f7bd51c3241f72d5f2c066b1e7f201e0ead5c3d6acf20647d03919b0b468fa7b",
+        "source_fact:v1:f900684dbe0509c934a95bc2cdaf0a5363ccb90f1ca9c1fd5cd7d1f5ac0b525e"
+      ],
+      "source_published_kst": "2026-10-12T15:02+09:00",
+      "source_title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의",
+      "telegram_core_fact": "반도체 산업 호황으로 촉발된 산업용 질소가스 공급난이 장기화하면서 정부가 가스 제조사와 반도체 대기업을 대상으로 수급 조정에 나선다.",
+      "title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의"
+    },
     "title:8568ee646cb7b140b42e1a54": {
       "first_seen_kst": "2026-10-07T08:36:47+09:00",
       "lanes": {
@@ -463495,6 +465033,30 @@
       "source_published_kst": "2026-10-05T17:54+09:00",
       "title": "24년來 최고 금리도 AI 기세 못막아…나스닥 사상 최고[월스트리트in]"
     },
+    "title:96c360c8266dea67fa666ee8": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822242",
+      "source": "뉴시스",
+      "source_body_digest": "d8b1ba77d8c7093e204b916f669c7ed8f0ceaea8a3a6edd0a0f6a3143b293301",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca31e30d15de772e53b77c5577b25baf1f03e7dbe5feeeed801cfb9bfc3fa5cf",
+      "source_fact_keys": [
+        "source_fact:v1:68dd127a47232f5e61470931db51c212722ce0796ca7a2f521ba4aa1b23a9c58",
+        "source_fact:v1:6c46b88fe9418b8438c1588619ceb757c190d7aa06c0017ab50c977d402add17",
+        "source_fact:v1:76e158ac32744bfdbdb1066a6e596aa53fe25dfe2779b256c13fec60c1778302",
+        "source_fact:v1:8fb44134d5c2b9191201428058eee166be975297c474d413eb302e1651156fda",
+        "source_fact:v1:c13779896dcef468928aec1b177d6041d1d58fa9c2fdbc8fad166e6968d538de",
+        "source_fact:v1:dd3089baeb7f18b3f401ce4dbd2694672bcdda66b918eebcc5646a4ce7a7f1a4"
+      ],
+      "source_published_kst": "2026-10-12T14:32+09:00",
+      "source_title": "메모리 원가 비중 40%로 급등…3분기 글로벌 PC 출하량 21% 감소",
+      "telegram_core_fact": "벤 예(Ben Yeh) 옴디아 수석 애널리스트는 \"PC에서 D램과 SSD(솔리드스테이트드라이브)가 차지하는 원가 비중이 통상 약 15%에서 40%로 급등했다\"며 \"가격은 4배 이상 올랐다\"고 밝혔다.",
+      "title": "메모리 원가 비중 40%로 급등…3분기 글로벌 PC 출하량 21% 감소"
+    },
     "title:96d4eb7c69cd52773772f448": {
       "first_seen_kst": "2026-10-10T08:26:55+09:00",
       "lanes": {
@@ -465609,6 +467171,27 @@
       ],
       "source_published_kst": "2026-10-07T12:00+09:00",
       "title": "NH농협금융, 전남ㆍ광주 전략산업 지원 확대…‘금융허브’ 신설"
+    },
+    "title:9f422288bd544da9cec797c0": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822265",
+      "source": "뉴시스",
+      "source_body_digest": "4b8a0830eb89147d1518b729fd2515a61e1b31a67c228b93d6eeefea6af97a14",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:510baa8c4df37c51d973d5cd2ebf760bbb2781ad69611e068b1e2eea37bc4b81",
+      "source_fact_keys": [
+        "source_fact:v1:68241b3f013fce92f003206a6cf4b131b05732a1bc1f079503c419d73c5613f6",
+        "source_fact:v1:75d3ccc3fa0d9a099516312fe4d455ff36673b405a7f562e0e7cc3942fefbb49",
+        "source_fact:v1:80e50f5323f9e26692f4d64a007d2cdf534ddbb58659d43b2936632428ff5fc9"
+      ],
+      "source_published_kst": "2026-10-12T14:34+09:00",
+      "source_title": "티제이이노베이션, 소프트뱅크에 고출력 광 DAS 공급",
+      "telegram_core_fact": "무선통신 인프라 장비 전문기업 티제이이노베이션(TJ Innovation)은 일본 이동통신사업자 소프트뱅크(SoftBank)에 고출력 광 DAS(분산안테나시스템)를 공급한다고 12일 밝혔다.",
+      "title": "티제이이노베이션, 소프트뱅크에 고출력 광 DAS 공급"
     },
     "title:9f4f6f95e2886c676c05bf7d": {
       "first_seen_kst": "2026-10-08T02:12:43+09:00",
@@ -470701,6 +472284,26 @@
       ],
       "source_published_kst": "2026-10-07T15:13+09:00",
       "title": "日유가보조금 10조원 넘게 투입…\"재정압박·현실왜곡 부작용\" | 연합뉴스"
+    },
+    "title:b2e5870b41d58b0c856c7512": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821769",
+      "source": "뉴시스",
+      "source_body_digest": "21db58e065a6dda24da7ce58607404e91737ac83222142766552ad36742c8f2a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:57254c64906efd6a44890f0b6154c01c3c96deb67686948c07feefc0c0960c35",
+      "source_fact_keys": [
+        "source_fact:v1:2de4ca1d3cb1094f53e560f8ac1aa11179db99ade858f04f71656cfe2a3774fa",
+        "source_fact:v1:b9c8f1447fb65b03394c079cc9442381c63ddd56dfbe5ad023172edd8551ae4e"
+      ],
+      "source_published_kst": "2026-10-12T10:48+09:00",
+      "source_title": "호르무즈 통항 75% 급감에 해운株 강세…팬오션 5%대↑",
+      "telegram_core_fact": "호르무즈 해협의 선박 통항량은 전쟁 이전의 약 4분의 1 수준에 머무른 것으로 나타났다.",
+      "title": "호르무즈 통항 75% 급감에 해운株 강세…팬오션 5%대↑"
     },
     "title:b2e71eb4dc7ffb466bee0c1e": {
       "first_seen_kst": "2026-10-12T06:27:02+09:00",
@@ -476810,6 +478413,26 @@
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어 | 연합뉴스"
     },
+    "title:ccc12ca804e7a66e8414100e": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03289846645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "8726a2dfa01f44f53d037deafb2ea5b7b9b3e991db99ecf0a5a501a4b5af0a0e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9a3a8901f0e9c9f8491aa4458671399ef73a477e603a0acda41ae7459d596b90",
+      "source_fact_keys": [
+        "source_fact:v1:7d81c4d1b1d96d749c10c027afa77147ff877aa12ba4ee366476e1db3ff8dfa9",
+        "source_fact:v1:94207d270ef8ec2d7db0c06855719010104d83943200654a6b26d1b1cbf2c2f5"
+      ],
+      "source_published_kst": "2026-10-12T14:21+09:00",
+      "source_title": "美 AI 공급망도 中 영향권…핵심 부품 5개 분야 점유율 50% 넘어",
+      "telegram_core_fact": "희토류와 전력장비, 반도체 등 주요 5개 분야에서 세계 시장 점유율이 각각 50%를 넘는 것으로 나타났다.",
+      "title": "美 AI 공급망도 中 영향권…핵심 부품 5개 분야 점유율 50% 넘어"
+    },
     "title:cccb37bdbb4f5568068cd7a1": {
       "first_seen_kst": "2026-10-07T05:33:37+09:00",
       "lanes": {
@@ -480069,6 +481692,27 @@
       "link": "https://www.etnews.com/20261001000337",
       "source": "전자신문",
       "title": "앰코, 韓 패키지 본딩 기술 'R-LTC' 美 시장 전면 배치"
+    },
+    "title:d8ffd1a99be96f767a4e6ed4": {
+      "first_seen_kst": "2026-10-12T15:20:09+09:00",
+      "lanes": {
+        "live": "2026-10-12T15:20:09+09:00"
+      },
+      "last_seen_kst": "2026-10-12T15:20:09+09:00",
+      "link": "https://www.hankyung.com/article/2026101261377",
+      "source": "한국경제",
+      "source_body_digest": "e9083ce7796397b95a5e484093f44efcd541670e117f81cc3d614cc850afdcfc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:368ec6816e6ea2d913b72fe0c0d474bd056075d258b30cd8310aa1075cd82545",
+      "source_fact_keys": [
+        "source_fact:v1:bed524f23965a796216185e9f638419981fdfd5815c34d8af54426225e141dcc",
+        "source_fact:v1:c9a155a9cef6fdb34bb0cf97cceb0d805095bba34d8ef4d68d4d0a4b592b2146",
+        "source_fact:v1:f56343719a4967d4571e422fa536facc1490e99c5d8bec6415cdc06a7a8249cf"
+      ],
+      "source_published_kst": "2026-10-12T13:54+09:00",
+      "source_title": "호남 반도체 전력망 1.4조 청구서…삼전닉스가 80% 떠안는다",
+      "telegram_core_fact": "호남 반도체 클러스터 1단계 전력 공급망 구축에 1조4000억원이 투입되는 가운데 한국전력이 부담하는 몫은 20% 미만에 그칠 것으로 나타났다.",
+      "title": "호남 반도체 전력망 1.4조 청구서…삼전닉스가 80% 떠안는다"
     },
     "title:d911d0aff4618b5684360f24": {
       "first_seen_kst": "2026-10-12T12:56:34+09:00",
@@ -489808,5 +491452,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-12T15:02:00+09:00"
+  "updated_at_kst": "2026-10-12T15:20:09+09:00"
 }
