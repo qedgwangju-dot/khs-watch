@@ -240,6 +240,9 @@ jobs:
           assert "startup_unverified fallback_kept_active" in korea, "unverified startup must not suppress fallback"
           assert "production_unverified_fallback_enabled" in korea, "dispatch without production verification must leave fallback enabled"
           assert "status={status}&per_page=100&page={page}" in korea, "secondary KOSPI watchdog must scan all active jobs"
+          rollout=korea.split("      - name: Roll KOSPI realtime watcher to latest commit",1)[1].split("      - name: Ensure KOSPI realtime watcher is alive",1)[0]
+          assert "runs?status={status}&per_page=100&page={page}" in rollout, "manual KOSPI rollout may not use unfiltered last 50 runs"
+          assert "runs?per_page=50" not in rollout, "rollout can hide still-running morning/afternoon jobs"
           assert "unknown.append((run_id,type(exc).__name__))" in korea, "secondary watchdog must fail closed on active-job API error"
           assert "if startup or unknown:" in korea, "secondary watchdog unknown status must block duplicate dispatch"
           assert "kospi_realtime_watchdog=verified_production" in korea, "recovery must verify real production job"
