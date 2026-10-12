@@ -72,7 +72,7 @@ jobs:
           python scripts/test_kospi_shock_enrichment.py
           python scripts/test_kospi_flow_attribution_strict.py
 
-      - name: Verify failure notifier syntax and independent handoff
+      - name: Verify KOSPI scheduled CI isolation
         run: |
           python - <<'PY'
           from pathlib import Path
