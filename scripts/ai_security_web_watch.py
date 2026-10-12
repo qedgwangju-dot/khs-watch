@@ -1132,7 +1132,7 @@ def ionq_elisity_stage(title: str) -> str:
     low = strip_html(title).lower()
     if "elisity" not in low:
         return ""
-    if re.search(r"\\b(completes|completed|has closed|closes|closed)\\b", low) and "acquisition" in low:
+    if re.search(r"\b(completes|completed|has closed|closes|closed)\b", low) and "acquisition" in low:
         return "closed"
     if ("regulatory" in low or "antitrust" in low) and ("approval" in low or "clearance" in low):
         return "regulatory_approval"
@@ -1145,8 +1145,8 @@ def ionq_elisity_stage(title: str) -> str:
 
 def _ionq_article_date(page: str) -> dt.datetime | None:
     for pattern in (
-        r"(October|November|December)\\s+(\\d{1,2}),\\s*(2026)",
-        r"(2026)-(10|11|12)-(\\d{2})",
+        r"(October|November|December)\s+(\d{1,2}),\s*(2026)",
+        r"(2026)-(10|11|12)-(\d{2})",
     ):
         match = re.search(pattern, page, re.I)
         if not match:
@@ -1169,7 +1169,7 @@ def parse_ionq_elisity_official_updates(now: dt.datetime) -> tuple[list[dict], l
     candidates = {IONQ_ELISITY_ANNOUNCEMENT_URL}
     try:
         news_html = fetch_bytes(IONQ_NEWSROOM_URL, timeout=15).decode("utf-8", "replace")
-        for match in re.finditer(r'href=["\\\']([^"\\\']+)["\\\']', news_html, re.I):
+        for match in re.finditer(r'href=["\']([^"\']+)["\']', news_html, re.I):
             href = html.unescape(match.group(1))
             absolute = urllib.parse.urljoin(IONQ_NEWSROOM_URL, href)
             parsed = urllib.parse.urlsplit(absolute)
