@@ -202,6 +202,10 @@ jobs:
           assert "코스피 급락 감시 공백 감지·자동 복구" in s, "late-start Telegram gap alert missing"
           assert "kospi_gap_recovery_alert=true" in s, "gap-recovery delivery audit missing"
           assert "production_jobs" in s and "age_minutes<=3" in s, "job-level KOSPI leader health gate missing"
+          assert "status={target_status}&per_page=100&page={page}" in s, "KOSPI leader active-status scan missing"
+          assert "kospi_active_status_scan_valid=true" in s, "KOSPI active-status scan audit missing"
+          assert "runs?per_page=50" not in s, "unfiltered 50-run listing can hide active morning/afternoon production"
+          assert "unknown.append((run_id,run.get" in s, "failed older-run job lookup must fail closed"
           assert "startup_leader" in s and "startup_candidates.sort" in s, "simultaneous KOSPI starter election missing"
           assert "session_state" in s and "session[\"close\"]+dt.timedelta(minutes=2)" in s, "KOSPI gate does not follow XKRX close"
           collector=Path("scripts/kospi_unified_industry_collector.py").read_text(encoding="utf-8")
@@ -359,9 +363,24 @@ jobs:
           headers={"Authorization":f"Bearer {os.environ['GH_TOKEN']}",
                    "Accept":"application/vnd.github+json",
                    "X-GitHub-Api-Version":"2022-11-28"}
-          url=f"https://api.github.com/repos/{repo}/actions/workflows/kospi-derivatives-flow-ls-realtime.yml/runs?per_page=50"
-          with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=20) as r:
-              runs=json.loads(r.read().decode("utf-8")).get("workflow_runs",[])
+          workflow_base=f"https://api.github.com/repos/{repo}/actions/workflows/kospi-derivatives-flow-ls-realtime.yml/runs"
+          def list_active_runs():
+              found={}
+              for target_status in ("in_progress","queued"):
+                  for page in range(1,11):
+                      url=f"{workflow_base}?status={target_status}&per_page=100&page={page}"
+                      with urllib.request.urlopen(urllib.request.Request(url,headers=headers),timeout=20) as r:
+                          rows=json.loads(r.read().decode("utf-8")).get("workflow_runs",[])
+                      for run in rows:
+                          if run.get("status") in {"queued","in_progress"}:
+                              found[int(run["id"])]=run
+                      if len(rows)<100:
+                          break
+                  else:
+                      raise AssertionError(f"incomplete KOSPI active-run scan: {target_status}")
+              return list(found.values())
+          runs=list_active_runs()
+          print(f"ci_kospi_active_scan_valid=true active_run_ids={[int(x['id']) for x in runs]}")
           today=dt.datetime.now(ZoneInfo("Asia/Seoul")).date()
           active=[]
           for run in runs:
@@ -417,8 +436,7 @@ jobs:
               recovered=[]
               while time.time() < recovery_deadline and not recovered:
                   time.sleep(5)
-                  with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=20) as r:
-                      recovery_runs=json.loads(r.read().decode("utf-8")).get("workflow_runs",[])
+                  recovery_runs=list_active_runs()
                   for run in recovery_runs:
                       if run.get("status") not in {"queued","in_progress"}:
                           continue
