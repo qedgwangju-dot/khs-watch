@@ -1482,6 +1482,25 @@
       "telegram_core_fact": "에스엠국일은 전기차와 내연기관 차량에 적용되는 전선 피복지를 중심으로 모빌리티용 고기능성 특수지 사업을 확대한다고 8일 밝혔다. 에스엠국일은 기존 고객사 공급을 확대하는 동시에 신규 고객사를 발굴해 자동차용 전선 피복지 매출을 늘릴 계획이다.",
       "title": "에스엠국일, 자동차용 전선 피복지 사업 확대…전기차·내연기관 적용처 넓힌다"
     },
+    "core:0d48b29b12fc1c2817d928c8": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822017",
+      "source": "뉴시스",
+      "source_body_digest": "8f769c1e7886588c7f9ce2dcd6268dd4e55a249c5bfdecad9f9f7d415249c174",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7e0d8b9e2ac850d920825cbad0e9d46a3c0f5cbf9717d23375e9d3251257ea7f",
+      "source_fact_keys": [
+        "source_fact:v1:582c6955f6a91e1d98d3d74923e814903fdc604cedcc9cba62024c0d2fadbb1a"
+      ],
+      "source_published_kst": "2026-10-12T13:46+09:00",
+      "source_title": "평창군, 연말까지 체납액 집중 징수…고액·상습 체납 제재",
+      "telegram_core_fact": "고의적인 체납에는 부동산과 차량 압류, 자동차 번호판 영치, 관허사업 제한 등 강력한 제재를 적용한다.",
+      "title": "평창군, 연말까지 체납액 집중 징수…고액·상습 체납 제재"
+    },
     "core:0d578d380147acdcd68dea57": {
       "first_seen_kst": "2026-10-11T15:10:51+09:00",
       "lanes": {
@@ -3106,6 +3125,29 @@
       "source_title": "개인정보유출 보상은 없다는 '듀오' 수천억 과징금 쿠팡과 역차별 논란",
       "telegram_core_fact": "개인정보보호위원회(이하 개보위)에 따르면 지난해 1월 듀오에서 개인정보를 취급하는 직원의 업무용 PC가 해킹돼 정회원 42만7464명의 개인정보가 유출됐다.",
       "title": "개인정보유출 보상은 없다는 '듀오' 수천억 과징금 쿠팡과 역차별 논란"
+    },
+    "core:19e9b8dfe56eba6c86d46e78": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03312806645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "4308f906b5d1500c2c5724f7e0636effa8ac8c76c5c94b2a50659d3e352ece15",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d152b02442608878b6e490bc6c489720589c7f4088ef733f919c431335976b5",
+      "source_fact_keys": [
+        "source_fact:v1:21ab484be6f919eb92a3a6521d25440c7af164d442adc30349fb22c83ca2af59",
+        "source_fact:v1:3082434796622d71a3d6f9831335cb9e619ff167db0da4b9076ed5c2ab2afa5c",
+        "source_fact:v1:981f236712553488ed852746c39bd1949b93bd160911dba264efa467b6fbf193",
+        "source_fact:v1:b042837737348136f5ec832831e4764c5f06df31eef129c78d34d3d6fdf888cb",
+        "source_fact:v1:dc301eb76038564e1f927ff093cd9fc58ce717ca7c412db796a5e8fce096d447"
+      ],
+      "source_published_kst": "2026-10-12T14:30+09:00",
+      "source_title": "김동철 한전 사장 \"반도체 클러스터 전력망 비용 80% 기업이 부담\"",
+      "telegram_core_fact": "호남 반도체 클러스터에 전력을 공급하기 위한 송전설비 구축 비용의 약 80%를 삼성전자와 SK하이닉스 등 수요 기업이 부담하는 것으로 나타났다. 김 사장은 이 가운데 80%를 실수요자인 삼성전자와 SK하이닉스가 부담하는 것이 맞느냐는 국민의힘 조지연 의원의 질의에도 “그렇다”고 답했다.",
+      "title": "김동철 한전 사장 \"반도체 클러스터 전력망 비용 80% 기업이 부담\""
     },
     "core:1a2592ea4f59aa8eea38b325": {
       "first_seen_kst": "2026-10-07T18:00:43+09:00",
@@ -6228,6 +6270,23 @@
       "source_title": "FT \"스타벅스, 치폴레 인수 검토…성사시 외식부문 역대 최대\" | 연합뉴스",
       "telegram_core_fact": "미국 커피 전문점 기업 스타벅스가 미국의 멕시코 음식점 브랜드인 치폴레 인수를 검토하고 있다고 영국 일간 파이낸셜타임스(FT)가 8일(현지시간) 보도했다.",
       "title": "FT \"스타벅스, 치폴레 인수 검토…성사시 외식부문 역대 최대\" | 연합뉴스"
+    },
+    "core:343455f11ae642a44eea0d28": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.dailian.co.kr/news/view/1700235/%EC%A0%84%EA%B8%B0%EC%95%88%EC%A0%84%EA%B3%B5%EC%82%AC-LS%EC%9D%BC%EB%A0%89%ED%8A%B8%EB%A6%AD-%ED%92%8D%EB%A0%A5%EB%B0%9C%EC%A0%84%EC%84%A4%EB%B9%84-2026",
+      "source": "데일리안",
+      "source_body_digest": "d7915a7dcb6a1265cd98c48d1ea3d7998647073cd40626a524d94d53559144c2",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T10:22+09:00",
+      "source_title": "전기안전공사-LS일렉트릭, 풍력발전설비 안전관리 기술 개발 협력",
+      "telegram_core_fact": "한국전기안전공사는 지난 8일 전력설비 전문기업인 LS일렉트릭과 서울 LS용산타워에서 '풍력발전설비 안전성 평가기술 개발 협력을 위한 업무협약'을 체결했다고 12일 밝혔다.",
+      "title": "전기안전공사-LS일렉트릭, 풍력발전설비 안전관리 기술 개발 협력"
     },
     "core:346102c2463c0a13976ba8c2": {
       "first_seen_kst": "2026-10-11T07:32:31+09:00",
@@ -14792,6 +14851,23 @@
       "telegram_core_fact": "이효진 메리츠증권 연구원은 8일 보고서에서 NAVER의 3분기 연결 매출액을 전년비 11.0% 증가한 3조4844억원, 영업이익을 14.9% 감소한 4858억원으로 추정했다.",
       "title": "NAVER, 하반기 실적 기대치 낮춰야…결국 수익 증명이 관건-메리츠"
     },
+    "core:83b3e9e7499d0d2037a77ce3": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012096200065",
+      "source": "연합뉴스",
+      "source_body_digest": "e627bcfbfcbff532691f056946420faf09c6304550000d1a0da64b7f18ee4b50",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T13:30+09:00",
+      "source_title": "동원파츠, 인천 남동첨단산단에 반도체 부품 공장 건립 | 연합뉴스",
+      "telegram_core_fact": "인천시 남동구는 고정밀 반도체 부품 제조 기업인 동원파츠가 남동도시첨단산업단지에 7공장을 건설할 예정이라고 12일 밝혔다. 동원파츠는 글로벌 반도체 장비 기업인 램리서치의 핵심 협력사다.",
+      "title": "동원파츠, 인천 남동첨단산단에 반도체 부품 공장 건립 | 연합뉴스"
+    },
     "core:83c090590f10136e8dd37b19": {
       "first_seen_kst": "2026-10-11T02:45:51+09:00",
       "lanes": {
@@ -14998,6 +15074,27 @@
       "source_title": "\"트럼프, 젤렌스키가 요청 6차례 무시하자 푸틴과 경유 거래\"",
       "telegram_core_fact": "미 재무부는 곧바로 러시아 경유에 대한 제재 해제를 발표했는데, 중간선거를 앞두고 미국 내 경유가격 급등에 대한 불만이 커지자 트럼프 대통령이 푸틴 대통령에게 손을 내민 모양새다.",
       "title": "\"트럼프, 젤렌스키가 요청 6차례 무시하자 푸틴과 경유 거래\""
+    },
+    "core:86d6c4d4141f06960beff591": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.fnnews.com/news/202610121103250743",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "04a5736c7b0b0b2794718769990ae879e3f40bf822bb45012e74d46a832209b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99d664ad3bcd53a0a5e73e9b467d7f191d55b9a710dfbbfecb73a33c51eb30ed",
+      "source_fact_keys": [
+        "source_fact:v1:457b7bc810bb79e98c625009c24d348a5d357bbbca6ab8a8450668d872d18199",
+        "source_fact:v1:51f9cae88629dfdb30b2afdca4255333923ccaf63b45e0665d718485db274530",
+        "source_fact:v1:80deac4687de85ecdfe77827a318ad35cd7d47c9ac0f8c8d91184dd29efb88ed"
+      ],
+      "source_published_kst": "2026-10-12T11:03+09:00",
+      "source_title": "LG이노텍 11% 급락…3분기 실적 추정치 하향[핫종목]",
+      "telegram_core_fact": "증권정보업체 에프앤가이드에 따르면 지난 8일 기준 LG이노텍의 3분기 영업이익 컨센서스(증권사 전망치 평균)는 2029억 원으로, 한 달 전 3020억 원보다 32.8% 감소했다.",
+      "title": "LG이노텍 11% 급락…3분기 실적 추정치 하향[핫종목]"
     },
     "core:86f49cd83a01a638f0c2eb56": {
       "first_seen_kst": "2026-10-10T08:26:55+09:00",
@@ -25462,6 +25559,26 @@
       "telegram_core_fact": "그는 한국을 단순한 메모리 공급처가 아닌 AMD의 AI 생태계를 함께 구축할 주요 파트너로 평가했다.",
       "title": "리사 수 AMD CEO, 韓 AI·반도체·게임 생태계 잇달아 접촉"
     },
+    "core:e1821eac2222fa9c261f2000": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822250",
+      "source": "뉴시스",
+      "source_body_digest": "9b0a89ab78844ff143fac3c2912c7c68198227f633fc86791b30fda6cab83d1e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0f31612c920a88b7ddadf028ca43129ed95b4f103c2f07c021338b6c7419ff6e",
+      "source_fact_keys": [
+        "source_fact:v1:284843c06d9b0adaec93c81b2769adbe61ee2940f4d416c5dd78c5675d8cb242",
+        "source_fact:v1:46e30c2db7bbed5a7439eb043cc28211aa6bb67423aadc690b01c23046d0b405"
+      ],
+      "source_published_kst": "2026-10-12T14:30+09:00",
+      "source_title": "온라인 보험광고 위반 4만7000건…제재금 부과는 10곳뿐",
+      "telegram_core_fact": "유튜브와 블로그 등 온라인 보험광고의 심의 규정 위반이 최근 4년 반 동안 4만7000건을 넘어선 것으로 나타났지만, 제재금을 부과받은 기관은 10곳에 그쳤다.",
+      "title": "온라인 보험광고 위반 4만7000건…제재금 부과는 10곳뿐"
+    },
     "core:e186a3e0ddbb2f8e5680a8c6": {
       "first_seen_kst": "2026-10-08T08:12:34+09:00",
       "lanes": {
@@ -26556,6 +26673,30 @@
       "source_title": "“경주서도 K뷰티 ‘푹’ 빠졌네”…국경절 맞은 중국인들 어디 갔나 했더니",
       "telegram_core_fact": "CJ올리브영에 따르면 올해 중국 국경절 연휴인 지난 1~7일 중 1~6일 매출을 집계한 결과, 외국인 고객의 일평균 매출은 지난해 국경절 연휴(10월 1~8일)보다 70% 증가했다. 같은 기간 비수도권 지역 올리브영 매장의 외국인 매출은 전년 대비 97% 증가했다.",
       "title": "“경주서도 K뷰티 ‘푹’ 빠졌네”…국경절 맞은 중국인들 어디 갔나 했더니"
+    },
+    "core:ebb8be3830c39ba31440ee45": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822249",
+      "source": "뉴시스",
+      "source_body_digest": "420784e86f2ce8bd2854faa2dad79acff552697f598174aa0889ad63c912cd93",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78a2676256d3a4f7bd44e94b9336922073bc19e9021668c29b99f04f8bf3d9f9",
+      "source_fact_keys": [
+        "source_fact:v1:00b9334850ad092b5516b796cf512f91e274c1703c60d8594dfcef969fb0fefc",
+        "source_fact:v1:134a915faf822bee89433c5f14bc9932a061ecd83aff8629b1d75acd5d08bb51",
+        "source_fact:v1:a15a21dd8cad0788496c396e56f7dc92c057135e258ec230c1f0c3633cbe2381",
+        "source_fact:v1:b27bf57af3db3d3818e7fc7a85a9118f38066ce7f9571876615f97a6017b6853",
+        "source_fact:v1:d4b8ddfa592608a2800b672d51297b7608ea6a82619538f35a6d1b24ea8f1b0d",
+        "source_fact:v1:f2d2b3f2bcd979912f86fe1b46cfb8be282d1af5440747359acd6687e3b9bf3f"
+      ],
+      "source_published_kst": "2026-10-12T14:36+09:00",
+      "source_title": "삼성SDS, 우정항공 인수 계약…인천공항 거점 항공물류 강화",
+      "telegram_core_fact": "삼성SDS는 12일 우정항공 지분 100%를 인수하는 주식양수도계약을 체결하고 이를 임직원에게 공지했다.",
+      "title": "삼성SDS, 우정항공 인수 계약…인천공항 거점 항공물류 강화"
     },
     "core:eca72ee5c67daf5222b81124": {
       "first_seen_kst": "2026-10-11T10:42:03+09:00",
@@ -36299,6 +36440,26 @@
       "telegram_core_fact": "한글날 연휴 이후 첫 거래일인 12일 코스피가 외국인 매도와 반도체주 약세에 2% 넘게 하락하고 있다. 미국 뉴욕증시에서 인공지능(AI) 산업의 성장성에 대한 우려로 반도체주에 가해진 매도 압력이 국내 증시로 이어진 것으로 보인다.",
       "title": "또 'AI 거품론'...반도체 매도 압력, 삼전닉스 약세"
     },
+    "event:ad3fd9c7aa9202967054f0fc": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822250",
+      "source": "뉴시스",
+      "source_body_digest": "9b0a89ab78844ff143fac3c2912c7c68198227f633fc86791b30fda6cab83d1e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0f31612c920a88b7ddadf028ca43129ed95b4f103c2f07c021338b6c7419ff6e",
+      "source_fact_keys": [
+        "source_fact:v1:284843c06d9b0adaec93c81b2769adbe61ee2940f4d416c5dd78c5675d8cb242",
+        "source_fact:v1:46e30c2db7bbed5a7439eb043cc28211aa6bb67423aadc690b01c23046d0b405"
+      ],
+      "source_published_kst": "2026-10-12T14:30+09:00",
+      "source_title": "온라인 보험광고 위반 4만7000건…제재금 부과는 10곳뿐",
+      "telegram_core_fact": "유튜브와 블로그 등 온라인 보험광고의 심의 규정 위반이 최근 4년 반 동안 4만7000건을 넘어선 것으로 나타났지만, 제재금을 부과받은 기관은 10곳에 그쳤다.",
+      "title": "온라인 보험광고 위반 4만7000건…제재금 부과는 10곳뿐"
+    },
     "event:ad69d6ca37fccb0fcc40113f": {
       "first_seen_kst": "2026-09-25T01:40:40+09:00",
       "lanes": {
@@ -39239,6 +39400,29 @@
       "source_title": "[단독] 메모리 넘어 AI 부품·전력기기 확보전…빅테크 '5년 계약' 줄섰다",
       "telegram_core_fact": "LG전자는 미국 AI 데이터센터 인프라 기업 에어와 5조원 규모 칠러 공급 계약을 체결했다.",
       "title": "[단독] 메모리 넘어 AI 부품·전력기기 확보전…빅테크 '5년 계약' 줄섰다"
+    },
+    "event:ed07ec20a704c33f92cbd539": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03312806645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "4308f906b5d1500c2c5724f7e0636effa8ac8c76c5c94b2a50659d3e352ece15",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d152b02442608878b6e490bc6c489720589c7f4088ef733f919c431335976b5",
+      "source_fact_keys": [
+        "source_fact:v1:21ab484be6f919eb92a3a6521d25440c7af164d442adc30349fb22c83ca2af59",
+        "source_fact:v1:3082434796622d71a3d6f9831335cb9e619ff167db0da4b9076ed5c2ab2afa5c",
+        "source_fact:v1:981f236712553488ed852746c39bd1949b93bd160911dba264efa467b6fbf193",
+        "source_fact:v1:b042837737348136f5ec832831e4764c5f06df31eef129c78d34d3d6fdf888cb",
+        "source_fact:v1:dc301eb76038564e1f927ff093cd9fc58ce717ca7c412db796a5e8fce096d447"
+      ],
+      "source_published_kst": "2026-10-12T14:30+09:00",
+      "source_title": "김동철 한전 사장 \"반도체 클러스터 전력망 비용 80% 기업이 부담\"",
+      "telegram_core_fact": "호남 반도체 클러스터에 전력을 공급하기 위한 송전설비 구축 비용의 약 80%를 삼성전자와 SK하이닉스 등 수요 기업이 부담하는 것으로 나타났다. 김 사장은 이 가운데 80%를 실수요자인 삼성전자와 SK하이닉스가 부담하는 것이 맞느냐는 국민의힘 조지연 의원의 질의에도 “그렇다”고 답했다.",
+      "title": "김동철 한전 사장 \"반도체 클러스터 전력망 비용 80% 기업이 부담\""
     },
     "event:ed5ed0d62394ba89a848cd55": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
@@ -51866,6 +52050,25 @@
       "source_published_kst": "2026-10-07T14:22+09:00",
       "title": "AI 전력난에 엔진도 뜬다…HD건설기계, 북미서 3900억원 수주"
     },
+    "fact:46dbb36d7019fe75b2b3cbc5": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822017",
+      "source": "뉴시스",
+      "source_body_digest": "8f769c1e7886588c7f9ce2dcd6268dd4e55a249c5bfdecad9f9f7d415249c174",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7e0d8b9e2ac850d920825cbad0e9d46a3c0f5cbf9717d23375e9d3251257ea7f",
+      "source_fact_keys": [
+        "source_fact:v1:582c6955f6a91e1d98d3d74923e814903fdc604cedcc9cba62024c0d2fadbb1a"
+      ],
+      "source_published_kst": "2026-10-12T13:46+09:00",
+      "source_title": "평창군, 연말까지 체납액 집중 징수…고액·상습 체납 제재",
+      "telegram_core_fact": "고의적인 체납에는 부동산과 차량 압류, 자동차 번호판 영치, 관허사업 제한 등 강력한 제재를 적용한다.",
+      "title": "평창군, 연말까지 체납액 집중 징수…고액·상습 체납 제재"
+    },
     "fact:46f9fe89b64cf4d7cec5b8bf": {
       "first_seen_kst": "2026-10-09T19:24:17+09:00",
       "lanes": {
@@ -59817,6 +60020,26 @@
       "source_published_kst": "2026-10-05T09:00+09:00",
       "title": "순창군, 대학생 생활비 지원사업 전개…10월6~23일 접수"
     },
+    "fact:7788f65e67022d2255264fb2": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822250",
+      "source": "뉴시스",
+      "source_body_digest": "9b0a89ab78844ff143fac3c2912c7c68198227f633fc86791b30fda6cab83d1e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0f31612c920a88b7ddadf028ca43129ed95b4f103c2f07c021338b6c7419ff6e",
+      "source_fact_keys": [
+        "source_fact:v1:284843c06d9b0adaec93c81b2769adbe61ee2940f4d416c5dd78c5675d8cb242",
+        "source_fact:v1:46e30c2db7bbed5a7439eb043cc28211aa6bb67423aadc690b01c23046d0b405"
+      ],
+      "source_published_kst": "2026-10-12T14:30+09:00",
+      "source_title": "온라인 보험광고 위반 4만7000건…제재금 부과는 10곳뿐",
+      "telegram_core_fact": "유튜브와 블로그 등 온라인 보험광고의 심의 규정 위반이 최근 4년 반 동안 4만7000건을 넘어선 것으로 나타났지만, 제재금을 부과받은 기관은 10곳에 그쳤다.",
+      "title": "온라인 보험광고 위반 4만7000건…제재금 부과는 10곳뿐"
+    },
     "fact:77a805cd20eae5f57c969040": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
       "lanes": {
@@ -61245,6 +61468,29 @@
       ],
       "source_published_kst": "2026-10-07T06:06+09:00",
       "title": "분기 영업익 200조 목전…삼전·닉스 기대치 높이는 증권가"
+    },
+    "fact:81244805b0e4a09865b393af": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03312806645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "4308f906b5d1500c2c5724f7e0636effa8ac8c76c5c94b2a50659d3e352ece15",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d152b02442608878b6e490bc6c489720589c7f4088ef733f919c431335976b5",
+      "source_fact_keys": [
+        "source_fact:v1:21ab484be6f919eb92a3a6521d25440c7af164d442adc30349fb22c83ca2af59",
+        "source_fact:v1:3082434796622d71a3d6f9831335cb9e619ff167db0da4b9076ed5c2ab2afa5c",
+        "source_fact:v1:981f236712553488ed852746c39bd1949b93bd160911dba264efa467b6fbf193",
+        "source_fact:v1:b042837737348136f5ec832831e4764c5f06df31eef129c78d34d3d6fdf888cb",
+        "source_fact:v1:dc301eb76038564e1f927ff093cd9fc58ce717ca7c412db796a5e8fce096d447"
+      ],
+      "source_published_kst": "2026-10-12T14:30+09:00",
+      "source_title": "김동철 한전 사장 \"반도체 클러스터 전력망 비용 80% 기업이 부담\"",
+      "telegram_core_fact": "호남 반도체 클러스터에 전력을 공급하기 위한 송전설비 구축 비용의 약 80%를 삼성전자와 SK하이닉스 등 수요 기업이 부담하는 것으로 나타났다. 김 사장은 이 가운데 80%를 실수요자인 삼성전자와 SK하이닉스가 부담하는 것이 맞느냐는 국민의힘 조지연 의원의 질의에도 “그렇다”고 답했다.",
+      "title": "김동철 한전 사장 \"반도체 클러스터 전력망 비용 80% 기업이 부담\""
     },
     "fact:813814288a8f63200f349c2f": {
       "first_seen_kst": "2026-10-11T09:50:45+09:00",
@@ -72792,6 +73038,30 @@
       "source_published_kst": "2026-10-07T14:20+09:00",
       "title": "기업 순자금운용 67조 ‘사상 최대’…반도체 호황에 여윳돈 쌓였다 [머니뭐니]"
     },
+    "fact:c081a6a6ce6f4c60abe42b52": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822249",
+      "source": "뉴시스",
+      "source_body_digest": "420784e86f2ce8bd2854faa2dad79acff552697f598174aa0889ad63c912cd93",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78a2676256d3a4f7bd44e94b9336922073bc19e9021668c29b99f04f8bf3d9f9",
+      "source_fact_keys": [
+        "source_fact:v1:00b9334850ad092b5516b796cf512f91e274c1703c60d8594dfcef969fb0fefc",
+        "source_fact:v1:134a915faf822bee89433c5f14bc9932a061ecd83aff8629b1d75acd5d08bb51",
+        "source_fact:v1:a15a21dd8cad0788496c396e56f7dc92c057135e258ec230c1f0c3633cbe2381",
+        "source_fact:v1:b27bf57af3db3d3818e7fc7a85a9118f38066ce7f9571876615f97a6017b6853",
+        "source_fact:v1:d4b8ddfa592608a2800b672d51297b7608ea6a82619538f35a6d1b24ea8f1b0d",
+        "source_fact:v1:f2d2b3f2bcd979912f86fe1b46cfb8be282d1af5440747359acd6687e3b9bf3f"
+      ],
+      "source_published_kst": "2026-10-12T14:36+09:00",
+      "source_title": "삼성SDS, 우정항공 인수 계약…인천공항 거점 항공물류 강화",
+      "telegram_core_fact": "삼성SDS는 12일 우정항공 지분 100%를 인수하는 주식양수도계약을 체결하고 이를 임직원에게 공지했다.",
+      "title": "삼성SDS, 우정항공 인수 계약…인천공항 거점 항공물류 강화"
+    },
     "fact:c098a06850def9c4e49bd282": {
       "first_seen_kst": "2026-10-11T07:07:11+09:00",
       "lanes": {
@@ -74429,6 +74699,27 @@
       "source_title": "'7억 성과급' 떴다… 동탄·영통 다시 들썩",
       "telegram_core_fact": "동탄은 7월 토지거래허가구역 지정 이후 매수세가 주춤했지만, 9월 정부 대출 규제에서 비교적 자유로운 사내대출이 시행되면서 문의가 다시 늘었다.",
       "title": "'7억 성과급' 떴다… 동탄·영통 다시 들썩"
+    },
+    "fact:caea8a7945035eb87ab7ed93": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.fnnews.com/news/202610121103250743",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "04a5736c7b0b0b2794718769990ae879e3f40bf822bb45012e74d46a832209b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99d664ad3bcd53a0a5e73e9b467d7f191d55b9a710dfbbfecb73a33c51eb30ed",
+      "source_fact_keys": [
+        "source_fact:v1:457b7bc810bb79e98c625009c24d348a5d357bbbca6ab8a8450668d872d18199",
+        "source_fact:v1:51f9cae88629dfdb30b2afdca4255333923ccaf63b45e0665d718485db274530",
+        "source_fact:v1:80deac4687de85ecdfe77827a318ad35cd7d47c9ac0f8c8d91184dd29efb88ed"
+      ],
+      "source_published_kst": "2026-10-12T11:03+09:00",
+      "source_title": "LG이노텍 11% 급락…3분기 실적 추정치 하향[핫종목]",
+      "telegram_core_fact": "증권정보업체 에프앤가이드에 따르면 지난 8일 기준 LG이노텍의 3분기 영업이익 컨센서스(증권사 전망치 평균)는 2029억 원으로, 한 달 전 3020억 원보다 32.8% 감소했다.",
+      "title": "LG이노텍 11% 급락…3분기 실적 추정치 하향[핫종목]"
     },
     "fact:caee04f80f2f6c56d8dd6a41": {
       "first_seen_kst": "2026-10-11T18:15:28+09:00",
@@ -84190,6 +84481,26 @@
       "source_published_kst": "2026-10-07T08:44+09:00",
       "title": "이자벨라 뱅크, 그랜드리버 합병 규제승인 완료..11월 2일 종결 예정"
     },
+    "link:00c8a30a85ccc50b06365562": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822250",
+      "source": "뉴시스",
+      "source_body_digest": "9b0a89ab78844ff143fac3c2912c7c68198227f633fc86791b30fda6cab83d1e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0f31612c920a88b7ddadf028ca43129ed95b4f103c2f07c021338b6c7419ff6e",
+      "source_fact_keys": [
+        "source_fact:v1:284843c06d9b0adaec93c81b2769adbe61ee2940f4d416c5dd78c5675d8cb242",
+        "source_fact:v1:46e30c2db7bbed5a7439eb043cc28211aa6bb67423aadc690b01c23046d0b405"
+      ],
+      "source_published_kst": "2026-10-12T14:30+09:00",
+      "source_title": "온라인 보험광고 위반 4만7000건…제재금 부과는 10곳뿐",
+      "telegram_core_fact": "유튜브와 블로그 등 온라인 보험광고의 심의 규정 위반이 최근 4년 반 동안 4만7000건을 넘어선 것으로 나타났지만, 제재금을 부과받은 기관은 10곳에 그쳤다.",
+      "title": "온라인 보험광고 위반 4만7000건…제재금 부과는 10곳뿐"
+    },
     "link:00d654739a44535b33e5ab8a": {
       "first_seen_kst": "2026-10-05T13:39:56+09:00",
       "lanes": {
@@ -86617,6 +86928,29 @@
       "link": "https://www.yna.co.kr/view/MYH20261001017000038",
       "source": "연합뉴스",
       "title": "[퇴근길머니] 삼전·닉스 자사주 매입 막바지…캐피탈 품은 한화생명 | 연합뉴스"
+    },
+    "link:0b0b580b2bb982c87c352e47": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03312806645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "4308f906b5d1500c2c5724f7e0636effa8ac8c76c5c94b2a50659d3e352ece15",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d152b02442608878b6e490bc6c489720589c7f4088ef733f919c431335976b5",
+      "source_fact_keys": [
+        "source_fact:v1:21ab484be6f919eb92a3a6521d25440c7af164d442adc30349fb22c83ca2af59",
+        "source_fact:v1:3082434796622d71a3d6f9831335cb9e619ff167db0da4b9076ed5c2ab2afa5c",
+        "source_fact:v1:981f236712553488ed852746c39bd1949b93bd160911dba264efa467b6fbf193",
+        "source_fact:v1:b042837737348136f5ec832831e4764c5f06df31eef129c78d34d3d6fdf888cb",
+        "source_fact:v1:dc301eb76038564e1f927ff093cd9fc58ce717ca7c412db796a5e8fce096d447"
+      ],
+      "source_published_kst": "2026-10-12T14:30+09:00",
+      "source_title": "김동철 한전 사장 \"반도체 클러스터 전력망 비용 80% 기업이 부담\"",
+      "telegram_core_fact": "호남 반도체 클러스터에 전력을 공급하기 위한 송전설비 구축 비용의 약 80%를 삼성전자와 SK하이닉스 등 수요 기업이 부담하는 것으로 나타났다. 김 사장은 이 가운데 80%를 실수요자인 삼성전자와 SK하이닉스가 부담하는 것이 맞느냐는 국민의힘 조지연 의원의 질의에도 “그렇다”고 답했다.",
+      "title": "김동철 한전 사장 \"반도체 클러스터 전력망 비용 80% 기업이 부담\""
     },
     "link:0b31c20297b8ecdc8b547c5b": {
       "first_seen_kst": "2026-10-03T06:13:51+09:00",
@@ -102946,6 +103280,23 @@
       "source": "머니투데이",
       "title": "5대 1 액면병합 끝낸 아이비젼웍스, 거래 재개일에 상한가"
     },
+    "link:4b4b3225953f0b7425a3549d": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.dailian.co.kr/news/view/1700235/%EC%A0%84%EA%B8%B0%EC%95%88%EC%A0%84%EA%B3%B5%EC%82%AC-LS%EC%9D%BC%EB%A0%89%ED%8A%B8%EB%A6%AD-%ED%92%8D%EB%A0%A5%EB%B0%9C%EC%A0%84%EC%84%A4%EB%B9%84-2026",
+      "source": "데일리안",
+      "source_body_digest": "d7915a7dcb6a1265cd98c48d1ea3d7998647073cd40626a524d94d53559144c2",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T10:22+09:00",
+      "source_title": "전기안전공사-LS일렉트릭, 풍력발전설비 안전관리 기술 개발 협력",
+      "telegram_core_fact": "한국전기안전공사는 지난 8일 전력설비 전문기업인 LS일렉트릭과 서울 LS용산타워에서 '풍력발전설비 안전성 평가기술 개발 협력을 위한 업무협약'을 체결했다고 12일 밝혔다.",
+      "title": "전기안전공사-LS일렉트릭, 풍력발전설비 안전관리 기술 개발 협력"
+    },
     "link:4b62782fb1441b5b6af70d5f": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -115750,6 +116101,29 @@
       "source_published_kst": "2026-10-06T10:33+09:00",
       "title": "브라질 대선 '우파' 보우소나루 약진에…증시 단숨에 사상 최고치"
     },
+    "link:7cd81bea4a65761bc006f766": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03312806645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "4308f906b5d1500c2c5724f7e0636effa8ac8c76c5c94b2a50659d3e352ece15",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d152b02442608878b6e490bc6c489720589c7f4088ef733f919c431335976b5",
+      "source_fact_keys": [
+        "source_fact:v1:21ab484be6f919eb92a3a6521d25440c7af164d442adc30349fb22c83ca2af59",
+        "source_fact:v1:3082434796622d71a3d6f9831335cb9e619ff167db0da4b9076ed5c2ab2afa5c",
+        "source_fact:v1:981f236712553488ed852746c39bd1949b93bd160911dba264efa467b6fbf193",
+        "source_fact:v1:b042837737348136f5ec832831e4764c5f06df31eef129c78d34d3d6fdf888cb",
+        "source_fact:v1:dc301eb76038564e1f927ff093cd9fc58ce717ca7c412db796a5e8fce096d447"
+      ],
+      "source_published_kst": "2026-10-12T14:30+09:00",
+      "source_title": "김동철 한전 사장 \"반도체 클러스터 전력망 비용 80% 기업이 부담\"",
+      "telegram_core_fact": "호남 반도체 클러스터에 전력을 공급하기 위한 송전설비 구축 비용의 약 80%를 삼성전자와 SK하이닉스 등 수요 기업이 부담하는 것으로 나타났다. 김 사장은 이 가운데 80%를 실수요자인 삼성전자와 SK하이닉스가 부담하는 것이 맞느냐는 국민의힘 조지연 의원의 질의에도 “그렇다”고 답했다.",
+      "title": "김동철 한전 사장 \"반도체 클러스터 전력망 비용 80% 기업이 부담\""
+    },
     "link:7cf92ca5f7f2addc8d65e649": {
       "first_seen_kst": "2026-10-07T14:56:20+09:00",
       "lanes": {
@@ -121140,6 +121514,30 @@
       "source_title": "‘예상보다 29%↓’…오픈AI 매출 우려에 뉴욕 증시까지 ‘찬물’",
       "telegram_core_fact": "미국의 인공지능(AI) 대표 기업이자 ‘챗GPT’ 개발사인 오픈AI의 연 매출이 예상보다 200억달러(약 27조원) 적은 것으로 나타났다.",
       "title": "‘예상보다 29%↓’…오픈AI 매출 우려에 뉴욕 증시까지 ‘찬물’"
+    },
+    "link:93f24756e1b1ac8851623370": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822249",
+      "source": "뉴시스",
+      "source_body_digest": "420784e86f2ce8bd2854faa2dad79acff552697f598174aa0889ad63c912cd93",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78a2676256d3a4f7bd44e94b9336922073bc19e9021668c29b99f04f8bf3d9f9",
+      "source_fact_keys": [
+        "source_fact:v1:00b9334850ad092b5516b796cf512f91e274c1703c60d8594dfcef969fb0fefc",
+        "source_fact:v1:134a915faf822bee89433c5f14bc9932a061ecd83aff8629b1d75acd5d08bb51",
+        "source_fact:v1:a15a21dd8cad0788496c396e56f7dc92c057135e258ec230c1f0c3633cbe2381",
+        "source_fact:v1:b27bf57af3db3d3818e7fc7a85a9118f38066ce7f9571876615f97a6017b6853",
+        "source_fact:v1:d4b8ddfa592608a2800b672d51297b7608ea6a82619538f35a6d1b24ea8f1b0d",
+        "source_fact:v1:f2d2b3f2bcd979912f86fe1b46cfb8be282d1af5440747359acd6687e3b9bf3f"
+      ],
+      "source_published_kst": "2026-10-12T14:36+09:00",
+      "source_title": "삼성SDS, 우정항공 인수 계약…인천공항 거점 항공물류 강화",
+      "telegram_core_fact": "삼성SDS는 12일 우정항공 지분 100%를 인수하는 주식양수도계약을 체결하고 이를 임직원에게 공지했다.",
+      "title": "삼성SDS, 우정항공 인수 계약…인천공항 거점 항공물류 강화"
     },
     "link:9435cd6c4da8359c6c45db53": {
       "first_seen_kst": "2026-10-09T21:51:45+09:00",
@@ -130816,6 +131214,23 @@
       "telegram_core_fact": "OK금융그룹이 예별손해보험 인수를 위한 주식매매계약(SPA)을 체결하며 손해보험업 진출에 나선다.",
       "title": "OK금융, 예별손보 인수로 보험업 본격 진입…추가 자금 1100억 이상 투입"
     },
+    "link:b8b7b02124da4409fa00548f": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012096200065",
+      "source": "연합뉴스",
+      "source_body_digest": "e627bcfbfcbff532691f056946420faf09c6304550000d1a0da64b7f18ee4b50",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T13:30+09:00",
+      "source_title": "동원파츠, 인천 남동첨단산단에 반도체 부품 공장 건립 | 연합뉴스",
+      "telegram_core_fact": "인천시 남동구는 고정밀 반도체 부품 제조 기업인 동원파츠가 남동도시첨단산업단지에 7공장을 건설할 예정이라고 12일 밝혔다. 동원파츠는 글로벌 반도체 장비 기업인 램리서치의 핵심 협력사다.",
+      "title": "동원파츠, 인천 남동첨단산단에 반도체 부품 공장 건립 | 연합뉴스"
+    },
     "link:b8c27460b99b91f957f620e3": {
       "first_seen_kst": "2026-10-11T13:18:03+09:00",
       "lanes": {
@@ -133209,6 +133624,27 @@
       "link": "https://www.etoday.co.kr/news/view/2631381",
       "source": "이투데이",
       "title": "구미시, LB세미콘 '전력반도체 증설투자' 유치"
+    },
+    "link:c1b725ec010024f7f5300493": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.fnnews.com/news/202610121103250743",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "04a5736c7b0b0b2794718769990ae879e3f40bf822bb45012e74d46a832209b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99d664ad3bcd53a0a5e73e9b467d7f191d55b9a710dfbbfecb73a33c51eb30ed",
+      "source_fact_keys": [
+        "source_fact:v1:457b7bc810bb79e98c625009c24d348a5d357bbbca6ab8a8450668d872d18199",
+        "source_fact:v1:51f9cae88629dfdb30b2afdca4255333923ccaf63b45e0665d718485db274530",
+        "source_fact:v1:80deac4687de85ecdfe77827a318ad35cd7d47c9ac0f8c8d91184dd29efb88ed"
+      ],
+      "source_published_kst": "2026-10-12T11:03+09:00",
+      "source_title": "LG이노텍 11% 급락…3분기 실적 추정치 하향[핫종목]",
+      "telegram_core_fact": "증권정보업체 에프앤가이드에 따르면 지난 8일 기준 LG이노텍의 3분기 영업이익 컨센서스(증권사 전망치 평균)는 2029억 원으로, 한 달 전 3020억 원보다 32.8% 감소했다.",
+      "title": "LG이노텍 11% 급락…3분기 실적 추정치 하향[핫종목]"
     },
     "link:c1bcf42161d9dfadc34c58f7": {
       "first_seen_kst": "2026-10-08T22:06:55+09:00",
@@ -146643,6 +147079,25 @@
       "telegram_core_fact": "업계에 따르면 삼성전자 DS부문은 지난 7일 특별경영성과급 세부 기준과 지급 일정을 공지했다.",
       "title": "\"성과급 최소 30억, 서민 탈출한 듯\"…삼성전자 '사내부부' 직원 글"
     },
+    "link:f9c74f677cc450711d9daf61": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822017",
+      "source": "뉴시스",
+      "source_body_digest": "8f769c1e7886588c7f9ce2dcd6268dd4e55a249c5bfdecad9f9f7d415249c174",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7e0d8b9e2ac850d920825cbad0e9d46a3c0f5cbf9717d23375e9d3251257ea7f",
+      "source_fact_keys": [
+        "source_fact:v1:582c6955f6a91e1d98d3d74923e814903fdc604cedcc9cba62024c0d2fadbb1a"
+      ],
+      "source_published_kst": "2026-10-12T13:46+09:00",
+      "source_title": "평창군, 연말까지 체납액 집중 징수…고액·상습 체납 제재",
+      "telegram_core_fact": "고의적인 체납에는 부동산과 차량 압류, 자동차 번호판 영치, 관허사업 제한 등 강력한 제재를 적용한다.",
+      "title": "평창군, 연말까지 체납액 집중 징수…고액·상습 체납 제재"
+    },
     "link:f9cd1afed5564e4a225621a0": {
       "first_seen_kst": "2026-10-11T14:23:21+09:00",
       "lanes": {
@@ -151985,6 +152440,23 @@
       "telegram_core_fact": "삼성전자는 올해 3분기 연결 기준 잠정 영업이익이 107조4000억원으로 집계됐다고 8일 공시했다.",
       "title": "[속보]\"100조 벽 깼다\" 삼성전자, 영업익 107조 '역대 최대'"
     },
+    "original:0f3d46cde5824a0f02b5db28": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.dailian.co.kr/news/view/1700235/%EC%A0%84%EA%B8%B0%EC%95%88%EC%A0%84%EA%B3%B5%EC%82%AC-LS%EC%9D%BC%EB%A0%89%ED%8A%B8%EB%A6%AD-%ED%92%8D%EB%A0%A5%EB%B0%9C%EC%A0%84%EC%84%A4%EB%B9%84-2026",
+      "source": "데일리안",
+      "source_body_digest": "d7915a7dcb6a1265cd98c48d1ea3d7998647073cd40626a524d94d53559144c2",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T10:22+09:00",
+      "source_title": "전기안전공사-LS일렉트릭, 풍력발전설비 안전관리 기술 개발 협력",
+      "telegram_core_fact": "한국전기안전공사는 지난 8일 전력설비 전문기업인 LS일렉트릭과 서울 LS용산타워에서 '풍력발전설비 안전성 평가기술 개발 협력을 위한 업무협약'을 체결했다고 12일 밝혔다.",
+      "title": "전기안전공사-LS일렉트릭, 풍력발전설비 안전관리 기술 개발 협력"
+    },
     "original:0f4474f404973d8d7f752964": {
       "first_seen_kst": "2026-10-11T11:26:05+09:00",
       "lanes": {
@@ -155727,6 +156199,27 @@
       "source_title": "오디세이, 누적 매출 1383억원 돌파…아바타2 제치고 역대 외화 1위",
       "telegram_core_fact": "영화 오디세이가 누적 관객 1200만명을 돌파한 데 이어 국내 극장가에서 역대 외화 최고 매출 기록을 세웠다.",
       "title": "오디세이, 누적 매출 1383억원 돌파…아바타2 제치고 역대 외화 1위"
+    },
+    "original:2024898c66738425d4b9e717": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.fnnews.com/news/202610121103250743",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "04a5736c7b0b0b2794718769990ae879e3f40bf822bb45012e74d46a832209b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99d664ad3bcd53a0a5e73e9b467d7f191d55b9a710dfbbfecb73a33c51eb30ed",
+      "source_fact_keys": [
+        "source_fact:v1:457b7bc810bb79e98c625009c24d348a5d357bbbca6ab8a8450668d872d18199",
+        "source_fact:v1:51f9cae88629dfdb30b2afdca4255333923ccaf63b45e0665d718485db274530",
+        "source_fact:v1:80deac4687de85ecdfe77827a318ad35cd7d47c9ac0f8c8d91184dd29efb88ed"
+      ],
+      "source_published_kst": "2026-10-12T11:03+09:00",
+      "source_title": "LG이노텍 11% 급락…3분기 실적 추정치 하향[핫종목]",
+      "telegram_core_fact": "증권정보업체 에프앤가이드에 따르면 지난 8일 기준 LG이노텍의 3분기 영업이익 컨센서스(증권사 전망치 평균)는 2029억 원으로, 한 달 전 3020억 원보다 32.8% 감소했다.",
+      "title": "LG이노텍 11% 급락…3분기 실적 추정치 하향[핫종목]"
     },
     "original:2032cc17818d8d5ced617441": {
       "first_seen_kst": "2026-10-08T00:54:18+09:00",
@@ -163336,6 +163829,29 @@
       "source": "아시아경제",
       "title": "[누리호, 발사를 넘어]①더 싣고, 싸게 쏜다…누리호 '상업 발사체'로 진화"
     },
+    "original:3ded791c1832e86ab466250c": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03312806645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "4308f906b5d1500c2c5724f7e0636effa8ac8c76c5c94b2a50659d3e352ece15",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d152b02442608878b6e490bc6c489720589c7f4088ef733f919c431335976b5",
+      "source_fact_keys": [
+        "source_fact:v1:21ab484be6f919eb92a3a6521d25440c7af164d442adc30349fb22c83ca2af59",
+        "source_fact:v1:3082434796622d71a3d6f9831335cb9e619ff167db0da4b9076ed5c2ab2afa5c",
+        "source_fact:v1:981f236712553488ed852746c39bd1949b93bd160911dba264efa467b6fbf193",
+        "source_fact:v1:b042837737348136f5ec832831e4764c5f06df31eef129c78d34d3d6fdf888cb",
+        "source_fact:v1:dc301eb76038564e1f927ff093cd9fc58ce717ca7c412db796a5e8fce096d447"
+      ],
+      "source_published_kst": "2026-10-12T14:30+09:00",
+      "source_title": "김동철 한전 사장 \"반도체 클러스터 전력망 비용 80% 기업이 부담\"",
+      "telegram_core_fact": "호남 반도체 클러스터에 전력을 공급하기 위한 송전설비 구축 비용의 약 80%를 삼성전자와 SK하이닉스 등 수요 기업이 부담하는 것으로 나타났다. 김 사장은 이 가운데 80%를 실수요자인 삼성전자와 SK하이닉스가 부담하는 것이 맞느냐는 국민의힘 조지연 의원의 질의에도 “그렇다”고 답했다.",
+      "title": "김동철 한전 사장 \"반도체 클러스터 전력망 비용 80% 기업이 부담\""
+    },
     "original:3e0da83b5cce741385741784": {
       "first_seen_kst": "2026-10-02T06:23:07+09:00",
       "lanes": {
@@ -165489,6 +166005,25 @@
       "source_title": "상위 10대 GA, 1200%룰 앞두고 설계사 1만명 늘렸다",
       "telegram_core_fact": "GA가 소속 설계사에게 지급하는 초년도 수수료가 월 납입보험료 12배 이내로 제한되면서 정착지원금 등을 활용한 영입 경쟁에 제약이 생겼다.",
       "title": "상위 10대 GA, 1200%룰 앞두고 설계사 1만명 늘렸다"
+    },
+    "original:45995f4e57cd750ae889e77d": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822017",
+      "source": "뉴시스",
+      "source_body_digest": "8f769c1e7886588c7f9ce2dcd6268dd4e55a249c5bfdecad9f9f7d415249c174",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7e0d8b9e2ac850d920825cbad0e9d46a3c0f5cbf9717d23375e9d3251257ea7f",
+      "source_fact_keys": [
+        "source_fact:v1:582c6955f6a91e1d98d3d74923e814903fdc604cedcc9cba62024c0d2fadbb1a"
+      ],
+      "source_published_kst": "2026-10-12T13:46+09:00",
+      "source_title": "평창군, 연말까지 체납액 집중 징수…고액·상습 체납 제재",
+      "telegram_core_fact": "고의적인 체납에는 부동산과 차량 압류, 자동차 번호판 영치, 관허사업 제한 등 강력한 제재를 적용한다.",
+      "title": "평창군, 연말까지 체납액 집중 징수…고액·상습 체납 제재"
     },
     "original:45c1841e49eeac21db1f7db5": {
       "first_seen_kst": "2026-10-12T03:14:53+09:00",
@@ -191111,6 +191646,23 @@
       "source": "뉴시스",
       "title": "HS효성, 멕시코 산루이스포토시주와 투자 MOU…\"북미 생산기지 구축\""
     },
+    "original:af123a4644d339f50dc9a9f8": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012096200065",
+      "source": "연합뉴스",
+      "source_body_digest": "e627bcfbfcbff532691f056946420faf09c6304550000d1a0da64b7f18ee4b50",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T13:30+09:00",
+      "source_title": "동원파츠, 인천 남동첨단산단에 반도체 부품 공장 건립 | 연합뉴스",
+      "telegram_core_fact": "인천시 남동구는 고정밀 반도체 부품 제조 기업인 동원파츠가 남동도시첨단산업단지에 7공장을 건설할 예정이라고 12일 밝혔다. 동원파츠는 글로벌 반도체 장비 기업인 램리서치의 핵심 협력사다.",
+      "title": "동원파츠, 인천 남동첨단산단에 반도체 부품 공장 건립 | 연합뉴스"
+    },
     "original:af1fdf11c21918887ace33ed": {
       "first_seen_kst": "2026-10-07T17:47:45+09:00",
       "lanes": {
@@ -198151,6 +198703,30 @@
       "source": "연합뉴스",
       "title": "與 한정애 \"알래스카 LNG 투자 확정 아냐…美입장 강조한 것\" | 연합뉴스"
     },
+    "original:ce4c67161a3d3873a0df9c82": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822249",
+      "source": "뉴시스",
+      "source_body_digest": "420784e86f2ce8bd2854faa2dad79acff552697f598174aa0889ad63c912cd93",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78a2676256d3a4f7bd44e94b9336922073bc19e9021668c29b99f04f8bf3d9f9",
+      "source_fact_keys": [
+        "source_fact:v1:00b9334850ad092b5516b796cf512f91e274c1703c60d8594dfcef969fb0fefc",
+        "source_fact:v1:134a915faf822bee89433c5f14bc9932a061ecd83aff8629b1d75acd5d08bb51",
+        "source_fact:v1:a15a21dd8cad0788496c396e56f7dc92c057135e258ec230c1f0c3633cbe2381",
+        "source_fact:v1:b27bf57af3db3d3818e7fc7a85a9118f38066ce7f9571876615f97a6017b6853",
+        "source_fact:v1:d4b8ddfa592608a2800b672d51297b7608ea6a82619538f35a6d1b24ea8f1b0d",
+        "source_fact:v1:f2d2b3f2bcd979912f86fe1b46cfb8be282d1af5440747359acd6687e3b9bf3f"
+      ],
+      "source_published_kst": "2026-10-12T14:36+09:00",
+      "source_title": "삼성SDS, 우정항공 인수 계약…인천공항 거점 항공물류 강화",
+      "telegram_core_fact": "삼성SDS는 12일 우정항공 지분 100%를 인수하는 주식양수도계약을 체결하고 이를 임직원에게 공지했다.",
+      "title": "삼성SDS, 우정항공 인수 계약…인천공항 거점 항공물류 강화"
+    },
     "original:ce5b5da4355a2c4c4230d599": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
       "lanes": {
@@ -202222,6 +202798,26 @@
       "link": "https://www.etnews.com/20260928000317",
       "source": "전자신문",
       "title": "최윤범 고려아연 회장, “향후 5년간 제품 포트폴리오 30종으로 확대”"
+    },
+    "original:ddaf7002a99b7e0f4948cb53": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822250",
+      "source": "뉴시스",
+      "source_body_digest": "9b0a89ab78844ff143fac3c2912c7c68198227f633fc86791b30fda6cab83d1e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0f31612c920a88b7ddadf028ca43129ed95b4f103c2f07c021338b6c7419ff6e",
+      "source_fact_keys": [
+        "source_fact:v1:284843c06d9b0adaec93c81b2769adbe61ee2940f4d416c5dd78c5675d8cb242",
+        "source_fact:v1:46e30c2db7bbed5a7439eb043cc28211aa6bb67423aadc690b01c23046d0b405"
+      ],
+      "source_published_kst": "2026-10-12T14:30+09:00",
+      "source_title": "온라인 보험광고 위반 4만7000건…제재금 부과는 10곳뿐",
+      "telegram_core_fact": "유튜브와 블로그 등 온라인 보험광고의 심의 규정 위반이 최근 4년 반 동안 4만7000건을 넘어선 것으로 나타났지만, 제재금을 부과받은 기관은 10곳에 그쳤다.",
+      "title": "온라인 보험광고 위반 4만7000건…제재금 부과는 10곳뿐"
     },
     "original:ddceb9f56166810f2f2c8c2c": {
       "first_seen_kst": "2026-10-10T12:12:57+09:00",
@@ -258441,6 +259037,30 @@
       "source_published_kst": "2026-10-07T03:11+09:00",
       "title": "\"지금 폰 바꿀까?\" AI 서버가 D램 싹쓸이…스마트폰값 더 비싸진다"
     },
+    "source_fact:396f314d5986d586dd5fe835": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822249",
+      "source": "뉴시스",
+      "source_body_digest": "420784e86f2ce8bd2854faa2dad79acff552697f598174aa0889ad63c912cd93",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78a2676256d3a4f7bd44e94b9336922073bc19e9021668c29b99f04f8bf3d9f9",
+      "source_fact_keys": [
+        "source_fact:v1:00b9334850ad092b5516b796cf512f91e274c1703c60d8594dfcef969fb0fefc",
+        "source_fact:v1:134a915faf822bee89433c5f14bc9932a061ecd83aff8629b1d75acd5d08bb51",
+        "source_fact:v1:a15a21dd8cad0788496c396e56f7dc92c057135e258ec230c1f0c3633cbe2381",
+        "source_fact:v1:b27bf57af3db3d3818e7fc7a85a9118f38066ce7f9571876615f97a6017b6853",
+        "source_fact:v1:d4b8ddfa592608a2800b672d51297b7608ea6a82619538f35a6d1b24ea8f1b0d",
+        "source_fact:v1:f2d2b3f2bcd979912f86fe1b46cfb8be282d1af5440747359acd6687e3b9bf3f"
+      ],
+      "source_published_kst": "2026-10-12T14:36+09:00",
+      "source_title": "삼성SDS, 우정항공 인수 계약…인천공항 거점 항공물류 강화",
+      "telegram_core_fact": "삼성SDS는 12일 우정항공 지분 100%를 인수하는 주식양수도계약을 체결하고 이를 임직원에게 공지했다.",
+      "title": "삼성SDS, 우정항공 인수 계약…인천공항 거점 항공물류 강화"
+    },
     "source_fact:397137d3d68937c526897ca5": {
       "first_seen_kst": "2026-10-09T19:43:36+09:00",
       "lanes": {
@@ -270206,6 +270826,29 @@
       "source_published_kst": "2026-10-07T14:22+09:00",
       "title": "AI 전력난에 엔진도 뜬다…HD건설기계, 북미서 3900억원 수주"
     },
+    "source_fact:4769d37f327f5d1164656085": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03312806645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "4308f906b5d1500c2c5724f7e0636effa8ac8c76c5c94b2a50659d3e352ece15",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d152b02442608878b6e490bc6c489720589c7f4088ef733f919c431335976b5",
+      "source_fact_keys": [
+        "source_fact:v1:21ab484be6f919eb92a3a6521d25440c7af164d442adc30349fb22c83ca2af59",
+        "source_fact:v1:3082434796622d71a3d6f9831335cb9e619ff167db0da4b9076ed5c2ab2afa5c",
+        "source_fact:v1:981f236712553488ed852746c39bd1949b93bd160911dba264efa467b6fbf193",
+        "source_fact:v1:b042837737348136f5ec832831e4764c5f06df31eef129c78d34d3d6fdf888cb",
+        "source_fact:v1:dc301eb76038564e1f927ff093cd9fc58ce717ca7c412db796a5e8fce096d447"
+      ],
+      "source_published_kst": "2026-10-12T14:30+09:00",
+      "source_title": "김동철 한전 사장 \"반도체 클러스터 전력망 비용 80% 기업이 부담\"",
+      "telegram_core_fact": "호남 반도체 클러스터에 전력을 공급하기 위한 송전설비 구축 비용의 약 80%를 삼성전자와 SK하이닉스 등 수요 기업이 부담하는 것으로 나타났다. 김 사장은 이 가운데 80%를 실수요자인 삼성전자와 SK하이닉스가 부담하는 것이 맞느냐는 국민의힘 조지연 의원의 질의에도 “그렇다”고 답했다.",
+      "title": "김동철 한전 사장 \"반도체 클러스터 전력망 비용 80% 기업이 부담\""
+    },
     "source_fact:477754e0389952f0d406ff4f": {
       "first_seen_kst": "2026-10-07T13:13:19+09:00",
       "lanes": {
@@ -273508,6 +274151,30 @@
       "source_title": "마스오토, 美 교통부와 자율주행 협력 모색",
       "telegram_core_fact": "자율주행 트럭 기업 마스오토가 미국 교통부와 자율주행 트럭 상용화 확대 방안을 논의한다. 노제경 마스오토 부대표는 21일 ‘자율주행에 대비한 운송 노선 구축’ 세션과 22일 ‘실증에서 상용화로: 자율주행 글로벌 투어’ 세션에 한국 측 연사로 참여한다.",
       "title": "마스오토, 美 교통부와 자율주행 협력 모색"
+    },
+    "source_fact:4b01b15a0b8a58e866a0bac7": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822249",
+      "source": "뉴시스",
+      "source_body_digest": "420784e86f2ce8bd2854faa2dad79acff552697f598174aa0889ad63c912cd93",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78a2676256d3a4f7bd44e94b9336922073bc19e9021668c29b99f04f8bf3d9f9",
+      "source_fact_keys": [
+        "source_fact:v1:00b9334850ad092b5516b796cf512f91e274c1703c60d8594dfcef969fb0fefc",
+        "source_fact:v1:134a915faf822bee89433c5f14bc9932a061ecd83aff8629b1d75acd5d08bb51",
+        "source_fact:v1:a15a21dd8cad0788496c396e56f7dc92c057135e258ec230c1f0c3633cbe2381",
+        "source_fact:v1:b27bf57af3db3d3818e7fc7a85a9118f38066ce7f9571876615f97a6017b6853",
+        "source_fact:v1:d4b8ddfa592608a2800b672d51297b7608ea6a82619538f35a6d1b24ea8f1b0d",
+        "source_fact:v1:f2d2b3f2bcd979912f86fe1b46cfb8be282d1af5440747359acd6687e3b9bf3f"
+      ],
+      "source_published_kst": "2026-10-12T14:36+09:00",
+      "source_title": "삼성SDS, 우정항공 인수 계약…인천공항 거점 항공물류 강화",
+      "telegram_core_fact": "삼성SDS는 12일 우정항공 지분 100%를 인수하는 주식양수도계약을 체결하고 이를 임직원에게 공지했다.",
+      "title": "삼성SDS, 우정항공 인수 계약…인천공항 거점 항공물류 강화"
     },
     "source_fact:4b0b1a479fc5092ff259a6de": {
       "first_seen_kst": "2026-10-08T11:49:03+09:00",
@@ -293073,6 +293740,30 @@
       "telegram_core_fact": "초소형위성 기업 나라스페이스테크놀로지는 플랫폼 본체 개발과 운용을 맡은 우주검증위성 'E3T 2호기'가 누리호 5차 발사 후 지상국과 양방향 교신에 성공했다고 8일 밝혔다. E3T 2호기는 국내에서 개발된 우주용 반도체와 전자소자, 부품 및 기술을 실제 우주환경에서 검증하기 위해 개발됐다.",
       "title": "누리호 탄 SK하이닉스 반도체, 우주서 성능 검증 나선다"
     },
+    "source_fact:6220cdc16d3054690ddb1bc1": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822249",
+      "source": "뉴시스",
+      "source_body_digest": "420784e86f2ce8bd2854faa2dad79acff552697f598174aa0889ad63c912cd93",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78a2676256d3a4f7bd44e94b9336922073bc19e9021668c29b99f04f8bf3d9f9",
+      "source_fact_keys": [
+        "source_fact:v1:00b9334850ad092b5516b796cf512f91e274c1703c60d8594dfcef969fb0fefc",
+        "source_fact:v1:134a915faf822bee89433c5f14bc9932a061ecd83aff8629b1d75acd5d08bb51",
+        "source_fact:v1:a15a21dd8cad0788496c396e56f7dc92c057135e258ec230c1f0c3633cbe2381",
+        "source_fact:v1:b27bf57af3db3d3818e7fc7a85a9118f38066ce7f9571876615f97a6017b6853",
+        "source_fact:v1:d4b8ddfa592608a2800b672d51297b7608ea6a82619538f35a6d1b24ea8f1b0d",
+        "source_fact:v1:f2d2b3f2bcd979912f86fe1b46cfb8be282d1af5440747359acd6687e3b9bf3f"
+      ],
+      "source_published_kst": "2026-10-12T14:36+09:00",
+      "source_title": "삼성SDS, 우정항공 인수 계약…인천공항 거점 항공물류 강화",
+      "telegram_core_fact": "삼성SDS는 12일 우정항공 지분 100%를 인수하는 주식양수도계약을 체결하고 이를 임직원에게 공지했다.",
+      "title": "삼성SDS, 우정항공 인수 계약…인천공항 거점 항공물류 강화"
+    },
     "source_fact:622164fb69cc304b2fb5cb8e": {
       "first_seen_kst": "2026-10-06T17:35:32+09:00",
       "lanes": {
@@ -299201,6 +299892,27 @@
       "telegram_core_fact": "정 실장은 \"여러 고민과 각고의 협상 과정이 허무하게도 노조는 최근 발생했던 하청지회와 동일한 방식으로 불법적인 고공농성에 돌입했다\"며 \"이는 현장의 안전과 생산활동을 모두 위협하는 것으로 경영진으로서 심각한 우려를 표한다\"고 밝혔다.",
       "title": "한화오션 \"안전·생산 위협은 타협안해\"…고공농성 중단 촉구 | 연합뉴스"
     },
+    "source_fact:695d1bd25b6378aea8d6e94b": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.fnnews.com/news/202610121103250743",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "04a5736c7b0b0b2794718769990ae879e3f40bf822bb45012e74d46a832209b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99d664ad3bcd53a0a5e73e9b467d7f191d55b9a710dfbbfecb73a33c51eb30ed",
+      "source_fact_keys": [
+        "source_fact:v1:457b7bc810bb79e98c625009c24d348a5d357bbbca6ab8a8450668d872d18199",
+        "source_fact:v1:51f9cae88629dfdb30b2afdca4255333923ccaf63b45e0665d718485db274530",
+        "source_fact:v1:80deac4687de85ecdfe77827a318ad35cd7d47c9ac0f8c8d91184dd29efb88ed"
+      ],
+      "source_published_kst": "2026-10-12T11:03+09:00",
+      "source_title": "LG이노텍 11% 급락…3분기 실적 추정치 하향[핫종목]",
+      "telegram_core_fact": "증권정보업체 에프앤가이드에 따르면 지난 8일 기준 LG이노텍의 3분기 영업이익 컨센서스(증권사 전망치 평균)는 2029억 원으로, 한 달 전 3020억 원보다 32.8% 감소했다.",
+      "title": "LG이노텍 11% 급락…3분기 실적 추정치 하향[핫종목]"
+    },
     "source_fact:696000bb55d9b548746f42e0": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
       "lanes": {
@@ -303241,6 +303953,29 @@
       ],
       "source_published_kst": "2026-10-06T14:09+09:00",
       "title": "신협자산관리회사, 부실채권 매입 가능해진다…건전성 강화 | 연합뉴스"
+    },
+    "source_fact:6e0209a6b1363f8c1c1f6473": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03312806645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "4308f906b5d1500c2c5724f7e0636effa8ac8c76c5c94b2a50659d3e352ece15",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d152b02442608878b6e490bc6c489720589c7f4088ef733f919c431335976b5",
+      "source_fact_keys": [
+        "source_fact:v1:21ab484be6f919eb92a3a6521d25440c7af164d442adc30349fb22c83ca2af59",
+        "source_fact:v1:3082434796622d71a3d6f9831335cb9e619ff167db0da4b9076ed5c2ab2afa5c",
+        "source_fact:v1:981f236712553488ed852746c39bd1949b93bd160911dba264efa467b6fbf193",
+        "source_fact:v1:b042837737348136f5ec832831e4764c5f06df31eef129c78d34d3d6fdf888cb",
+        "source_fact:v1:dc301eb76038564e1f927ff093cd9fc58ce717ca7c412db796a5e8fce096d447"
+      ],
+      "source_published_kst": "2026-10-12T14:30+09:00",
+      "source_title": "김동철 한전 사장 \"반도체 클러스터 전력망 비용 80% 기업이 부담\"",
+      "telegram_core_fact": "호남 반도체 클러스터에 전력을 공급하기 위한 송전설비 구축 비용의 약 80%를 삼성전자와 SK하이닉스 등 수요 기업이 부담하는 것으로 나타났다. 김 사장은 이 가운데 80%를 실수요자인 삼성전자와 SK하이닉스가 부담하는 것이 맞느냐는 국민의힘 조지연 의원의 질의에도 “그렇다”고 답했다.",
+      "title": "김동철 한전 사장 \"반도체 클러스터 전력망 비용 80% 기업이 부담\""
     },
     "source_fact:6e04baf647350c1a1c8ac997": {
       "first_seen_kst": "2026-10-07T22:37:58+09:00",
@@ -309888,6 +310623,27 @@
       ],
       "source_published_kst": "2026-10-06T14:46+09:00",
       "title": "두산에너빌, 스페이스XAI에 가스터빈 1호 출하…첫 해외 수출 | 연합뉴스"
+    },
+    "source_fact:7688972c88f0353784ecb235": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.fnnews.com/news/202610121103250743",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "04a5736c7b0b0b2794718769990ae879e3f40bf822bb45012e74d46a832209b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99d664ad3bcd53a0a5e73e9b467d7f191d55b9a710dfbbfecb73a33c51eb30ed",
+      "source_fact_keys": [
+        "source_fact:v1:457b7bc810bb79e98c625009c24d348a5d357bbbca6ab8a8450668d872d18199",
+        "source_fact:v1:51f9cae88629dfdb30b2afdca4255333923ccaf63b45e0665d718485db274530",
+        "source_fact:v1:80deac4687de85ecdfe77827a318ad35cd7d47c9ac0f8c8d91184dd29efb88ed"
+      ],
+      "source_published_kst": "2026-10-12T11:03+09:00",
+      "source_title": "LG이노텍 11% 급락…3분기 실적 추정치 하향[핫종목]",
+      "telegram_core_fact": "증권정보업체 에프앤가이드에 따르면 지난 8일 기준 LG이노텍의 3분기 영업이익 컨센서스(증권사 전망치 평균)는 2029억 원으로, 한 달 전 3020억 원보다 32.8% 감소했다.",
+      "title": "LG이노텍 11% 급락…3분기 실적 추정치 하향[핫종목]"
     },
     "source_fact:76957b76fbee9e1e8fa08e51": {
       "first_seen_kst": "2026-10-08T20:16:13+09:00",
@@ -331371,6 +332127,29 @@
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
     },
+    "source_fact:8ff306b88ce5a2807c08a39e": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03312806645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "4308f906b5d1500c2c5724f7e0636effa8ac8c76c5c94b2a50659d3e352ece15",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d152b02442608878b6e490bc6c489720589c7f4088ef733f919c431335976b5",
+      "source_fact_keys": [
+        "source_fact:v1:21ab484be6f919eb92a3a6521d25440c7af164d442adc30349fb22c83ca2af59",
+        "source_fact:v1:3082434796622d71a3d6f9831335cb9e619ff167db0da4b9076ed5c2ab2afa5c",
+        "source_fact:v1:981f236712553488ed852746c39bd1949b93bd160911dba264efa467b6fbf193",
+        "source_fact:v1:b042837737348136f5ec832831e4764c5f06df31eef129c78d34d3d6fdf888cb",
+        "source_fact:v1:dc301eb76038564e1f927ff093cd9fc58ce717ca7c412db796a5e8fce096d447"
+      ],
+      "source_published_kst": "2026-10-12T14:30+09:00",
+      "source_title": "김동철 한전 사장 \"반도체 클러스터 전력망 비용 80% 기업이 부담\"",
+      "telegram_core_fact": "호남 반도체 클러스터에 전력을 공급하기 위한 송전설비 구축 비용의 약 80%를 삼성전자와 SK하이닉스 등 수요 기업이 부담하는 것으로 나타났다. 김 사장은 이 가운데 80%를 실수요자인 삼성전자와 SK하이닉스가 부담하는 것이 맞느냐는 국민의힘 조지연 의원의 질의에도 “그렇다”고 답했다.",
+      "title": "김동철 한전 사장 \"반도체 클러스터 전력망 비용 80% 기업이 부담\""
+    },
     "source_fact:8ff550f3e7e473a34696881d": {
       "first_seen_kst": "2026-10-10T10:34:18+09:00",
       "lanes": {
@@ -333749,6 +334528,30 @@
       ],
       "source_published_kst": "2026-10-07T09:42+09:00",
       "title": "경기도, 생산단계 수산물 유해물질검사 항목 95→167개 확대 | 연합뉴스"
+    },
+    "source_fact:939ef2e498abb50cad916b61": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822249",
+      "source": "뉴시스",
+      "source_body_digest": "420784e86f2ce8bd2854faa2dad79acff552697f598174aa0889ad63c912cd93",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78a2676256d3a4f7bd44e94b9336922073bc19e9021668c29b99f04f8bf3d9f9",
+      "source_fact_keys": [
+        "source_fact:v1:00b9334850ad092b5516b796cf512f91e274c1703c60d8594dfcef969fb0fefc",
+        "source_fact:v1:134a915faf822bee89433c5f14bc9932a061ecd83aff8629b1d75acd5d08bb51",
+        "source_fact:v1:a15a21dd8cad0788496c396e56f7dc92c057135e258ec230c1f0c3633cbe2381",
+        "source_fact:v1:b27bf57af3db3d3818e7fc7a85a9118f38066ce7f9571876615f97a6017b6853",
+        "source_fact:v1:d4b8ddfa592608a2800b672d51297b7608ea6a82619538f35a6d1b24ea8f1b0d",
+        "source_fact:v1:f2d2b3f2bcd979912f86fe1b46cfb8be282d1af5440747359acd6687e3b9bf3f"
+      ],
+      "source_published_kst": "2026-10-12T14:36+09:00",
+      "source_title": "삼성SDS, 우정항공 인수 계약…인천공항 거점 항공물류 강화",
+      "telegram_core_fact": "삼성SDS는 12일 우정항공 지분 100%를 인수하는 주식양수도계약을 체결하고 이를 임직원에게 공지했다.",
+      "title": "삼성SDS, 우정항공 인수 계약…인천공항 거점 항공물류 강화"
     },
     "source_fact:93a196a6f446d640c9cbc3e7": {
       "first_seen_kst": "2026-10-10T01:47:39+09:00",
@@ -360320,6 +361123,29 @@
       "telegram_core_fact": "8일 국회 보건복지위원회 소속 더불어민주당 이인영 의원실이 국민연금공단으로부터 제출받은 자료에 따르면 기금운용본부 일반직 75명과 준법지원실 운용직 12명·일반직 9명 등 총 96명의 성과급 21억5400만원이 현재까지 지급되지 않았다.",
       "title": "[단독]역대 최대 수익 올렸는데...지급 안 된 국민연금 성과급"
     },
+    "source_fact:b34318fe6e720818b0e88c40": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03312806645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "4308f906b5d1500c2c5724f7e0636effa8ac8c76c5c94b2a50659d3e352ece15",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d152b02442608878b6e490bc6c489720589c7f4088ef733f919c431335976b5",
+      "source_fact_keys": [
+        "source_fact:v1:21ab484be6f919eb92a3a6521d25440c7af164d442adc30349fb22c83ca2af59",
+        "source_fact:v1:3082434796622d71a3d6f9831335cb9e619ff167db0da4b9076ed5c2ab2afa5c",
+        "source_fact:v1:981f236712553488ed852746c39bd1949b93bd160911dba264efa467b6fbf193",
+        "source_fact:v1:b042837737348136f5ec832831e4764c5f06df31eef129c78d34d3d6fdf888cb",
+        "source_fact:v1:dc301eb76038564e1f927ff093cd9fc58ce717ca7c412db796a5e8fce096d447"
+      ],
+      "source_published_kst": "2026-10-12T14:30+09:00",
+      "source_title": "김동철 한전 사장 \"반도체 클러스터 전력망 비용 80% 기업이 부담\"",
+      "telegram_core_fact": "호남 반도체 클러스터에 전력을 공급하기 위한 송전설비 구축 비용의 약 80%를 삼성전자와 SK하이닉스 등 수요 기업이 부담하는 것으로 나타났다. 김 사장은 이 가운데 80%를 실수요자인 삼성전자와 SK하이닉스가 부담하는 것이 맞느냐는 국민의힘 조지연 의원의 질의에도 “그렇다”고 답했다.",
+      "title": "김동철 한전 사장 \"반도체 클러스터 전력망 비용 80% 기업이 부담\""
+    },
     "source_fact:b34490ad8a72bb9c6bb42042": {
       "first_seen_kst": "2026-10-10T06:23:09+09:00",
       "lanes": {
@@ -371545,6 +372371,26 @@
       "source_published_kst": "2026-10-07T10:14+09:00",
       "title": "한국재료硏 \"초박막 코팅으로 수전해 촉매 성능 향상 성공\""
     },
+    "source_fact:c1b6923af9cf22e543b5a1a8": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822250",
+      "source": "뉴시스",
+      "source_body_digest": "9b0a89ab78844ff143fac3c2912c7c68198227f633fc86791b30fda6cab83d1e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0f31612c920a88b7ddadf028ca43129ed95b4f103c2f07c021338b6c7419ff6e",
+      "source_fact_keys": [
+        "source_fact:v1:284843c06d9b0adaec93c81b2769adbe61ee2940f4d416c5dd78c5675d8cb242",
+        "source_fact:v1:46e30c2db7bbed5a7439eb043cc28211aa6bb67423aadc690b01c23046d0b405"
+      ],
+      "source_published_kst": "2026-10-12T14:30+09:00",
+      "source_title": "온라인 보험광고 위반 4만7000건…제재금 부과는 10곳뿐",
+      "telegram_core_fact": "유튜브와 블로그 등 온라인 보험광고의 심의 규정 위반이 최근 4년 반 동안 4만7000건을 넘어선 것으로 나타났지만, 제재금을 부과받은 기관은 10곳에 그쳤다.",
+      "title": "온라인 보험광고 위반 4만7000건…제재금 부과는 10곳뿐"
+    },
     "source_fact:c1bef2c0837b66f08d7629f6": {
       "first_seen_kst": "2026-10-09T20:48:52+09:00",
       "lanes": {
@@ -376930,6 +377776,26 @@
       "source_published_kst": "2026-10-06T09:29+09:00",
       "title": "대신운용, ‘주주환원고배당펀드’ 출시⋯배당ㆍ자사주 매입 기업 투자"
     },
+    "source_fact:c79935ddb92c5d4992aa0dcc": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822250",
+      "source": "뉴시스",
+      "source_body_digest": "9b0a89ab78844ff143fac3c2912c7c68198227f633fc86791b30fda6cab83d1e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0f31612c920a88b7ddadf028ca43129ed95b4f103c2f07c021338b6c7419ff6e",
+      "source_fact_keys": [
+        "source_fact:v1:284843c06d9b0adaec93c81b2769adbe61ee2940f4d416c5dd78c5675d8cb242",
+        "source_fact:v1:46e30c2db7bbed5a7439eb043cc28211aa6bb67423aadc690b01c23046d0b405"
+      ],
+      "source_published_kst": "2026-10-12T14:30+09:00",
+      "source_title": "온라인 보험광고 위반 4만7000건…제재금 부과는 10곳뿐",
+      "telegram_core_fact": "유튜브와 블로그 등 온라인 보험광고의 심의 규정 위반이 최근 4년 반 동안 4만7000건을 넘어선 것으로 나타났지만, 제재금을 부과받은 기관은 10곳에 그쳤다.",
+      "title": "온라인 보험광고 위반 4만7000건…제재금 부과는 10곳뿐"
+    },
     "source_fact:c79acffd87ce12fa0346c4fd": {
       "first_seen_kst": "2026-10-11T09:50:45+09:00",
       "lanes": {
@@ -380417,6 +381283,25 @@
       "telegram_core_fact": "S&P 500지수는 전장보다 36.41포인트(0.47%) 내린 7,765.36, 나스닥 종합지수는 345.35포인트(1.25%) 하락한 27,193.34로 마쳤다.",
       "title": "뉴욕증시, AI 기술주 약세에 혼조 마감…나스닥 1.25%↓(종합) | 연합뉴스"
     },
+    "source_fact:cc072f67a1093914c4b4a1ac": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822017",
+      "source": "뉴시스",
+      "source_body_digest": "8f769c1e7886588c7f9ce2dcd6268dd4e55a249c5bfdecad9f9f7d415249c174",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7e0d8b9e2ac850d920825cbad0e9d46a3c0f5cbf9717d23375e9d3251257ea7f",
+      "source_fact_keys": [
+        "source_fact:v1:582c6955f6a91e1d98d3d74923e814903fdc604cedcc9cba62024c0d2fadbb1a"
+      ],
+      "source_published_kst": "2026-10-12T13:46+09:00",
+      "source_title": "평창군, 연말까지 체납액 집중 징수…고액·상습 체납 제재",
+      "telegram_core_fact": "고의적인 체납에는 부동산과 차량 압류, 자동차 번호판 영치, 관허사업 제한 등 강력한 제재를 적용한다.",
+      "title": "평창군, 연말까지 체납액 집중 징수…고액·상습 체납 제재"
+    },
     "source_fact:cc08c491838b1c977760ad44": {
       "first_seen_kst": "2026-10-12T03:58:42+09:00",
       "lanes": {
@@ -380693,6 +381578,30 @@
       "source_title": "삼성, 반도체 성과급 내년 3월 말 지급⋯8천만원 연봉시 최대 7.5억 [종합]",
       "telegram_core_fact": "성과급은 세금과 보험료 등을 공제한 뒤 삼성전자 자사주로 지급한다.",
       "title": "삼성, 반도체 성과급 내년 3월 말 지급⋯8천만원 연봉시 최대 7.5억 [종합]"
+    },
+    "source_fact:cc60cbc6fe2e975044fd0f98": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822249",
+      "source": "뉴시스",
+      "source_body_digest": "420784e86f2ce8bd2854faa2dad79acff552697f598174aa0889ad63c912cd93",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78a2676256d3a4f7bd44e94b9336922073bc19e9021668c29b99f04f8bf3d9f9",
+      "source_fact_keys": [
+        "source_fact:v1:00b9334850ad092b5516b796cf512f91e274c1703c60d8594dfcef969fb0fefc",
+        "source_fact:v1:134a915faf822bee89433c5f14bc9932a061ecd83aff8629b1d75acd5d08bb51",
+        "source_fact:v1:a15a21dd8cad0788496c396e56f7dc92c057135e258ec230c1f0c3633cbe2381",
+        "source_fact:v1:b27bf57af3db3d3818e7fc7a85a9118f38066ce7f9571876615f97a6017b6853",
+        "source_fact:v1:d4b8ddfa592608a2800b672d51297b7608ea6a82619538f35a6d1b24ea8f1b0d",
+        "source_fact:v1:f2d2b3f2bcd979912f86fe1b46cfb8be282d1af5440747359acd6687e3b9bf3f"
+      ],
+      "source_published_kst": "2026-10-12T14:36+09:00",
+      "source_title": "삼성SDS, 우정항공 인수 계약…인천공항 거점 항공물류 강화",
+      "telegram_core_fact": "삼성SDS는 12일 우정항공 지분 100%를 인수하는 주식양수도계약을 체결하고 이를 임직원에게 공지했다.",
+      "title": "삼성SDS, 우정항공 인수 계약…인천공항 거점 항공물류 강화"
     },
     "source_fact:cc61cda96c02f0daca01edc3": {
       "first_seen_kst": "2026-10-08T08:56:19+09:00",
@@ -391675,6 +392584,30 @@
       "source_title": "AMD 리사수, 삼성 전영현·SK 곽노정 만나 AI 협력방안 논의(종합)",
       "telegram_core_fact": "방한한 리사 수 AMD 회장 겸 최고경영자(CEO)가 삼성과 SK의 반도체 수장을 만나 AI 협력 강화 방안을 논의한다. 약 7개월 만에 다시 성사된 전 부회장과 수 회장의 이번 회동으로 삼성전자와 AMD는 고대역폭메모리(HBM)를 포함한 AI 반도체 협력을 강화할 전망이다.",
       "title": "AMD 리사수, 삼성 전영현·SK 곽노정 만나 AI 협력방안 논의(종합)"
+    },
+    "source_fact:d8e050cac33c374ca59151dc": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822249",
+      "source": "뉴시스",
+      "source_body_digest": "420784e86f2ce8bd2854faa2dad79acff552697f598174aa0889ad63c912cd93",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78a2676256d3a4f7bd44e94b9336922073bc19e9021668c29b99f04f8bf3d9f9",
+      "source_fact_keys": [
+        "source_fact:v1:00b9334850ad092b5516b796cf512f91e274c1703c60d8594dfcef969fb0fefc",
+        "source_fact:v1:134a915faf822bee89433c5f14bc9932a061ecd83aff8629b1d75acd5d08bb51",
+        "source_fact:v1:a15a21dd8cad0788496c396e56f7dc92c057135e258ec230c1f0c3633cbe2381",
+        "source_fact:v1:b27bf57af3db3d3818e7fc7a85a9118f38066ce7f9571876615f97a6017b6853",
+        "source_fact:v1:d4b8ddfa592608a2800b672d51297b7608ea6a82619538f35a6d1b24ea8f1b0d",
+        "source_fact:v1:f2d2b3f2bcd979912f86fe1b46cfb8be282d1af5440747359acd6687e3b9bf3f"
+      ],
+      "source_published_kst": "2026-10-12T14:36+09:00",
+      "source_title": "삼성SDS, 우정항공 인수 계약…인천공항 거점 항공물류 강화",
+      "telegram_core_fact": "삼성SDS는 12일 우정항공 지분 100%를 인수하는 주식양수도계약을 체결하고 이를 임직원에게 공지했다.",
+      "title": "삼성SDS, 우정항공 인수 계약…인천공항 거점 항공물류 강화"
     },
     "source_fact:d8e12d74ee5bc0b2844df091": {
       "first_seen_kst": "2026-10-12T10:17:45+09:00",
@@ -406383,6 +407316,27 @@
       ],
       "source_published_kst": "2026-10-06T07:32+09:00",
       "title": "\"공급이 못 따라간다\"…수퍼사이클 탄 AI반도체 기판 3인방 비교분석"
+    },
+    "source_fact:ea32b70acdd4423c06b878d1": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.fnnews.com/news/202610121103250743",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "04a5736c7b0b0b2794718769990ae879e3f40bf822bb45012e74d46a832209b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99d664ad3bcd53a0a5e73e9b467d7f191d55b9a710dfbbfecb73a33c51eb30ed",
+      "source_fact_keys": [
+        "source_fact:v1:457b7bc810bb79e98c625009c24d348a5d357bbbca6ab8a8450668d872d18199",
+        "source_fact:v1:51f9cae88629dfdb30b2afdca4255333923ccaf63b45e0665d718485db274530",
+        "source_fact:v1:80deac4687de85ecdfe77827a318ad35cd7d47c9ac0f8c8d91184dd29efb88ed"
+      ],
+      "source_published_kst": "2026-10-12T11:03+09:00",
+      "source_title": "LG이노텍 11% 급락…3분기 실적 추정치 하향[핫종목]",
+      "telegram_core_fact": "증권정보업체 에프앤가이드에 따르면 지난 8일 기준 LG이노텍의 3분기 영업이익 컨센서스(증권사 전망치 평균)는 2029억 원으로, 한 달 전 3020억 원보다 32.8% 감소했다.",
+      "title": "LG이노텍 11% 급락…3분기 실적 추정치 하향[핫종목]"
     },
     "source_fact:ea3531fa7ff8c2b2fc24b1f9": {
       "first_seen_kst": "2026-10-10T11:01:18+09:00",
@@ -422035,6 +422989,29 @@
       "telegram_core_fact": "주주환원 정책 공시 이후 한섬 보고서를 낸 증권사 5곳은 모두 ‘매수’ 의견을 냈고, 이 가운데 4곳이 목표주가를 올렸다.",
       "title": "3주 만에 32% 뛰어올라…한섬 주가 들썩이는 이유"
     },
+    "source_fact:fe5f74ab365f5129dff29630": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03312806645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "4308f906b5d1500c2c5724f7e0636effa8ac8c76c5c94b2a50659d3e352ece15",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d152b02442608878b6e490bc6c489720589c7f4088ef733f919c431335976b5",
+      "source_fact_keys": [
+        "source_fact:v1:21ab484be6f919eb92a3a6521d25440c7af164d442adc30349fb22c83ca2af59",
+        "source_fact:v1:3082434796622d71a3d6f9831335cb9e619ff167db0da4b9076ed5c2ab2afa5c",
+        "source_fact:v1:981f236712553488ed852746c39bd1949b93bd160911dba264efa467b6fbf193",
+        "source_fact:v1:b042837737348136f5ec832831e4764c5f06df31eef129c78d34d3d6fdf888cb",
+        "source_fact:v1:dc301eb76038564e1f927ff093cd9fc58ce717ca7c412db796a5e8fce096d447"
+      ],
+      "source_published_kst": "2026-10-12T14:30+09:00",
+      "source_title": "김동철 한전 사장 \"반도체 클러스터 전력망 비용 80% 기업이 부담\"",
+      "telegram_core_fact": "호남 반도체 클러스터에 전력을 공급하기 위한 송전설비 구축 비용의 약 80%를 삼성전자와 SK하이닉스 등 수요 기업이 부담하는 것으로 나타났다. 김 사장은 이 가운데 80%를 실수요자인 삼성전자와 SK하이닉스가 부담하는 것이 맞느냐는 국민의힘 조지연 의원의 질의에도 “그렇다”고 답했다.",
+      "title": "김동철 한전 사장 \"반도체 클러스터 전력망 비용 80% 기업이 부담\""
+    },
     "source_fact:fe61028cc1652eacbb8eaef0": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
       "lanes": {
@@ -427455,6 +428432,23 @@
       "telegram_core_fact": "삼성전자는 올해 3분기 연결 기준 잠정 영업이익이 107조4000억원으로 집계됐다고 8일 공시했다.",
       "title": "[속보]\"100조 벽 깼다\" 삼성전자, 영업익 107조 '역대 최대'"
     },
+    "title:0f3d46cde5824a0f02b5db28": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.dailian.co.kr/news/view/1700235/%EC%A0%84%EA%B8%B0%EC%95%88%EC%A0%84%EA%B3%B5%EC%82%AC-LS%EC%9D%BC%EB%A0%89%ED%8A%B8%EB%A6%AD-%ED%92%8D%EB%A0%A5%EB%B0%9C%EC%A0%84%EC%84%A4%EB%B9%84-2026",
+      "source": "데일리안",
+      "source_body_digest": "d7915a7dcb6a1265cd98c48d1ea3d7998647073cd40626a524d94d53559144c2",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T10:22+09:00",
+      "source_title": "전기안전공사-LS일렉트릭, 풍력발전설비 안전관리 기술 개발 협력",
+      "telegram_core_fact": "한국전기안전공사는 지난 8일 전력설비 전문기업인 LS일렉트릭과 서울 LS용산타워에서 '풍력발전설비 안전성 평가기술 개발 협력을 위한 업무협약'을 체결했다고 12일 밝혔다.",
+      "title": "전기안전공사-LS일렉트릭, 풍력발전설비 안전관리 기술 개발 협력"
+    },
     "title:0f4474f404973d8d7f752964": {
       "first_seen_kst": "2026-10-11T11:26:05+09:00",
       "lanes": {
@@ -431267,6 +432261,27 @@
       "source_title": "오디세이, 누적 매출 1383억원 돌파…아바타2 제치고 역대 외화 1위",
       "telegram_core_fact": "영화 오디세이가 누적 관객 1200만명을 돌파한 데 이어 국내 극장가에서 역대 외화 최고 매출 기록을 세웠다.",
       "title": "오디세이, 누적 매출 1383억원 돌파…아바타2 제치고 역대 외화 1위"
+    },
+    "title:2024898c66738425d4b9e717": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.fnnews.com/news/202610121103250743",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "04a5736c7b0b0b2794718769990ae879e3f40bf822bb45012e74d46a832209b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:99d664ad3bcd53a0a5e73e9b467d7f191d55b9a710dfbbfecb73a33c51eb30ed",
+      "source_fact_keys": [
+        "source_fact:v1:457b7bc810bb79e98c625009c24d348a5d357bbbca6ab8a8450668d872d18199",
+        "source_fact:v1:51f9cae88629dfdb30b2afdca4255333923ccaf63b45e0665d718485db274530",
+        "source_fact:v1:80deac4687de85ecdfe77827a318ad35cd7d47c9ac0f8c8d91184dd29efb88ed"
+      ],
+      "source_published_kst": "2026-10-12T11:03+09:00",
+      "source_title": "LG이노텍 11% 급락…3분기 실적 추정치 하향[핫종목]",
+      "telegram_core_fact": "증권정보업체 에프앤가이드에 따르면 지난 8일 기준 LG이노텍의 3분기 영업이익 컨센서스(증권사 전망치 평균)는 2029억 원으로, 한 달 전 3020억 원보다 32.8% 감소했다.",
+      "title": "LG이노텍 11% 급락…3분기 실적 추정치 하향[핫종목]"
     },
     "title:2032cc17818d8d5ced617441": {
       "first_seen_kst": "2026-10-08T00:54:18+09:00",
@@ -439036,6 +440051,29 @@
       "source": "뉴시스",
       "title": "9월 물가 2.9%↑…정부 \"석유 최고가격제 없었다면 3.5%\"(종합)"
     },
+    "title:3ded791c1832e86ab466250c": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03312806645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "4308f906b5d1500c2c5724f7e0636effa8ac8c76c5c94b2a50659d3e352ece15",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d152b02442608878b6e490bc6c489720589c7f4088ef733f919c431335976b5",
+      "source_fact_keys": [
+        "source_fact:v1:21ab484be6f919eb92a3a6521d25440c7af164d442adc30349fb22c83ca2af59",
+        "source_fact:v1:3082434796622d71a3d6f9831335cb9e619ff167db0da4b9076ed5c2ab2afa5c",
+        "source_fact:v1:981f236712553488ed852746c39bd1949b93bd160911dba264efa467b6fbf193",
+        "source_fact:v1:b042837737348136f5ec832831e4764c5f06df31eef129c78d34d3d6fdf888cb",
+        "source_fact:v1:dc301eb76038564e1f927ff093cd9fc58ce717ca7c412db796a5e8fce096d447"
+      ],
+      "source_published_kst": "2026-10-12T14:30+09:00",
+      "source_title": "김동철 한전 사장 \"반도체 클러스터 전력망 비용 80% 기업이 부담\"",
+      "telegram_core_fact": "호남 반도체 클러스터에 전력을 공급하기 위한 송전설비 구축 비용의 약 80%를 삼성전자와 SK하이닉스 등 수요 기업이 부담하는 것으로 나타났다. 김 사장은 이 가운데 80%를 실수요자인 삼성전자와 SK하이닉스가 부담하는 것이 맞느냐는 국민의힘 조지연 의원의 질의에도 “그렇다”고 답했다.",
+      "title": "김동철 한전 사장 \"반도체 클러스터 전력망 비용 80% 기업이 부담\""
+    },
     "title:3e0da83b5cce741385741784": {
       "first_seen_kst": "2026-10-02T06:23:07+09:00",
       "lanes": {
@@ -441204,6 +442242,25 @@
       "source_title": "상위 10대 GA, 1200%룰 앞두고 설계사 1만명 늘렸다",
       "telegram_core_fact": "GA가 소속 설계사에게 지급하는 초년도 수수료가 월 납입보험료 12배 이내로 제한되면서 정착지원금 등을 활용한 영입 경쟁에 제약이 생겼다.",
       "title": "상위 10대 GA, 1200%룰 앞두고 설계사 1만명 늘렸다"
+    },
+    "title:45995f4e57cd750ae889e77d": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822017",
+      "source": "뉴시스",
+      "source_body_digest": "8f769c1e7886588c7f9ce2dcd6268dd4e55a249c5bfdecad9f9f7d415249c174",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7e0d8b9e2ac850d920825cbad0e9d46a3c0f5cbf9717d23375e9d3251257ea7f",
+      "source_fact_keys": [
+        "source_fact:v1:582c6955f6a91e1d98d3d74923e814903fdc604cedcc9cba62024c0d2fadbb1a"
+      ],
+      "source_published_kst": "2026-10-12T13:46+09:00",
+      "source_title": "평창군, 연말까지 체납액 집중 징수…고액·상습 체납 제재",
+      "telegram_core_fact": "고의적인 체납에는 부동산과 차량 압류, 자동차 번호판 영치, 관허사업 제한 등 강력한 제재를 적용한다.",
+      "title": "평창군, 연말까지 체납액 집중 징수…고액·상습 체납 제재"
     },
     "title:45c1841e49eeac21db1f7db5": {
       "first_seen_kst": "2026-10-12T03:14:53+09:00",
@@ -467428,6 +468485,23 @@
       "source": "뉴시스",
       "title": "HS효성, 멕시코 산루이스포토시주와 투자 MOU…\"북미 생산기지 구축\""
     },
+    "title:af123a4644d339f50dc9a9f8": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012096200065",
+      "source": "연합뉴스",
+      "source_body_digest": "e627bcfbfcbff532691f056946420faf09c6304550000d1a0da64b7f18ee4b50",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T13:30+09:00",
+      "source_title": "동원파츠, 인천 남동첨단산단에 반도체 부품 공장 건립 | 연합뉴스",
+      "telegram_core_fact": "인천시 남동구는 고정밀 반도체 부품 제조 기업인 동원파츠가 남동도시첨단산업단지에 7공장을 건설할 예정이라고 12일 밝혔다. 동원파츠는 글로벌 반도체 장비 기업인 램리서치의 핵심 협력사다.",
+      "title": "동원파츠, 인천 남동첨단산단에 반도체 부품 공장 건립 | 연합뉴스"
+    },
     "title:af125f8508b48493dee5a53c": {
       "first_seen_kst": "2026-10-06T22:51:44+09:00",
       "lanes": {
@@ -474729,6 +475803,30 @@
       "source": "연합뉴스",
       "title": "與 한정애 \"알래스카 LNG 투자 확정 아냐…美입장 강조한 것\" | 연합뉴스"
     },
+    "title:ce4c67161a3d3873a0df9c82": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822249",
+      "source": "뉴시스",
+      "source_body_digest": "420784e86f2ce8bd2854faa2dad79acff552697f598174aa0889ad63c912cd93",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78a2676256d3a4f7bd44e94b9336922073bc19e9021668c29b99f04f8bf3d9f9",
+      "source_fact_keys": [
+        "source_fact:v1:00b9334850ad092b5516b796cf512f91e274c1703c60d8594dfcef969fb0fefc",
+        "source_fact:v1:134a915faf822bee89433c5f14bc9932a061ecd83aff8629b1d75acd5d08bb51",
+        "source_fact:v1:a15a21dd8cad0788496c396e56f7dc92c057135e258ec230c1f0c3633cbe2381",
+        "source_fact:v1:b27bf57af3db3d3818e7fc7a85a9118f38066ce7f9571876615f97a6017b6853",
+        "source_fact:v1:d4b8ddfa592608a2800b672d51297b7608ea6a82619538f35a6d1b24ea8f1b0d",
+        "source_fact:v1:f2d2b3f2bcd979912f86fe1b46cfb8be282d1af5440747359acd6687e3b9bf3f"
+      ],
+      "source_published_kst": "2026-10-12T14:36+09:00",
+      "source_title": "삼성SDS, 우정항공 인수 계약…인천공항 거점 항공물류 강화",
+      "telegram_core_fact": "삼성SDS는 12일 우정항공 지분 100%를 인수하는 주식양수도계약을 체결하고 이를 임직원에게 공지했다.",
+      "title": "삼성SDS, 우정항공 인수 계약…인천공항 거점 항공물류 강화"
+    },
     "title:ce5b5da4355a2c4c4230d599": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
       "lanes": {
@@ -478829,6 +479927,26 @@
       "link": "https://www.etnews.com/20260928000317",
       "source": "전자신문",
       "title": "최윤범 고려아연 회장, “향후 5년간 제품 포트폴리오 30종으로 확대”"
+    },
+    "title:ddaf7002a99b7e0f4948cb53": {
+      "first_seen_kst": "2026-10-12T14:44:13+09:00",
+      "lanes": {
+        "live": "2026-10-12T14:44:13+09:00"
+      },
+      "last_seen_kst": "2026-10-12T14:44:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822250",
+      "source": "뉴시스",
+      "source_body_digest": "9b0a89ab78844ff143fac3c2912c7c68198227f633fc86791b30fda6cab83d1e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0f31612c920a88b7ddadf028ca43129ed95b4f103c2f07c021338b6c7419ff6e",
+      "source_fact_keys": [
+        "source_fact:v1:284843c06d9b0adaec93c81b2769adbe61ee2940f4d416c5dd78c5675d8cb242",
+        "source_fact:v1:46e30c2db7bbed5a7439eb043cc28211aa6bb67423aadc690b01c23046d0b405"
+      ],
+      "source_published_kst": "2026-10-12T14:30+09:00",
+      "source_title": "온라인 보험광고 위반 4만7000건…제재금 부과는 10곳뿐",
+      "telegram_core_fact": "유튜브와 블로그 등 온라인 보험광고의 심의 규정 위반이 최근 4년 반 동안 4만7000건을 넘어선 것으로 나타났지만, 제재금을 부과받은 기관은 10곳에 그쳤다.",
+      "title": "온라인 보험광고 위반 4만7000건…제재금 부과는 10곳뿐"
     },
     "title:ddceb9f56166810f2f2c8c2c": {
       "first_seen_kst": "2026-10-10T12:12:57+09:00",
@@ -487353,5 +488471,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-12T14:17:50+09:00"
+  "updated_at_kst": "2026-10-12T14:44:13+09:00"
 }
