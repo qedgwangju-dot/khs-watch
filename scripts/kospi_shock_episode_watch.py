@@ -41,6 +41,18 @@ MAX_FLOW_HEALTH_AGE_SEC = 90.0  # API 응답 시각과 원자료 시각을 따�
 MAX_PROGRAM_SNAPSHOT_SKEW_SEC = 8.0
 MAX_PROGRAM_CROSSCHECK_RATIO_PCT = 1.0  # 1% 초과면 방향이 같아도 높은 확신도 부여 금지
 OPEN_GAP_ALERT_PCT = -1.0
+# 장중 가격 급락과 독립된 5분 수급 급유입 감시 (최초 보수적 기준값).
+# t1602 현물/선물은 억원 표기, t1640 프로그램은 원값을 유지한다.
+SURGE_WINDOW_SEC = 5 * 60
+SURGE_MAX_SAMPLE_SKEW_SEC = 30.0
+SURGE_MAX_END_AGE_SEC = 45.0
+SURGE_CONFIRM_SEC = 10.0
+SURGE_COOLDOWN_SEC = 20 * 60
+SURGE_COMBINED_SPOT_EOK = 300.0
+SURGE_COMBINED_FUT_EOK = 450.0
+SURGE_SINGLE_SPOT_EOK = 900.0
+SURGE_SINGLE_FUT_EOK = 1300.0
+
 
 
 def fnum(v: Any) -> float | None:
@@ -623,6 +635,144 @@ def program_quality_label(att: dict[str, Any]) -> str:
     return f"1% 이내 근사 일치(합계 차이 {ratio:.2f}%)"
 
 
+def _flow_surge_channel_pair(
+    rows: list[dict[str, Any]], channel: str, now_ts: float,
+) -> dict[str, Any] | None:
+    """원자료 시각 기준으로 5분 누적값의 시작/종료를 30초 이내 정렬한다."""
+    candidates: list[tuple[float, dict[str, Any]]] = []
+    for row in rows:
+        block = row.get(channel)
+        if not isinstance(block, dict):
+            continue
+        source_ts = fnum(block.get("sample_ts"))
+        if source_ts is None or source_ts > now_ts:
+            continue
+        if all(fnum(block.get(who)) is not None for who in ("외국인", "기관", "개인")):
+            candidates.append((source_ts, block))
+    if not candidates:
+        return None
+    end_ts, end = max(candidates, key=lambda x: x[0])
+    if not (0 <= now_ts - end_ts <= SURGE_MAX_END_AGE_SEC):
+        return None
+    target = end_ts - SURGE_WINDOW_SEC
+    before = [(ts, b) for ts, b in candidates if ts <= target]
+    if not before:
+        return None
+    start_ts, start = max(before, key=lambda x: x[0])
+    skew = target - start_ts
+    if skew > SURGE_MAX_SAMPLE_SKEW_SEC:
+        return None
+    return {
+        "start_ts": start_ts, "end_ts": end_ts,
+        "start": start, "end": end, "start_skew_sec": skew,
+        "end_age_sec": now_ts - end_ts,
+        "deltas": _actor_delta(start, end),
+    }
+
+
+def _flow_surge_program(
+    rows: list[dict[str, Any]], now_ts: float,
+) -> dict[str, Any] | None:
+    """프로그램 원값은 독립적으로 검산한다. 억원·투자자별 수급과 합산 금지."""
+    candidates = []
+    for row in rows:
+        block = row.get("프로그램")
+        if not isinstance(block, dict):
+            continue
+        ts = fnum(block.get("sample_ts"))
+        if ts is None or ts > now_ts:
+            continue
+        if all(fnum(block.get(k)) is not None for k in ("전체", "차익", "비차익")):
+            candidates.append((ts, block))
+    if not candidates:
+        return None
+    end_ts, end = max(candidates, key=lambda x: x[0])
+    if not (0 <= now_ts - end_ts <= SURGE_MAX_END_AGE_SEC):
+        return None
+    target = end_ts - SURGE_WINDOW_SEC
+    prev = [(ts, b) for ts, b in candidates if ts <= target]
+    if not prev:
+        return None
+    start_ts, start = max(prev, key=lambda x: x[0])
+    if target - start_ts > SURGE_MAX_SAMPLE_SKEW_SEC:
+        return None
+    values = _program_delta(start, end)
+    calc, direct, gap = (
+        fnum(values.get("전체")),
+        fnum(values.get("전체직접")),
+        fnum(values.get("검산차이")),
+    )
+    if calc is None or direct is None or gap is None:
+        return None
+    ratio = abs(gap) / max(abs(calc), abs(direct), 1.0) * 100
+    span = max(
+        fnum(start.get("표본시차초")) or float("inf"),
+        fnum(end.get("표본시차초")) or float("inf"),
+    )
+    aligned = (
+        span <= MAX_PROGRAM_SNAPSHOT_SKEW_SEC
+        and ratio <= MAX_PROGRAM_CROSSCHECK_RATIO_PCT
+        and ((calc == 0 and direct == 0) or (calc != 0 and direct != 0 and (calc < 0) == (direct < 0)))
+    )
+    return {
+        "delta": calc,
+        "direct": direct,
+        "gap": gap,
+        "ratio_pct": ratio,
+        "sample_span_sec": span,
+        "valid": aligned,
+    }
+
+
+def flow_surge_candidates(
+    rows: list[dict[str, Any]], now_ts: float,
+) -> list[dict[str, Any]]:
+    """급락과 관계없이 최근 5분의 '순매수 누적 변화'를 판정한다.
+
+    잔고와 신규 순매수 혼동, 시차가 큰 표본의 소급 재구성, 단위 혼합을 막는다.
+    """
+    spot = _flow_surge_channel_pair(rows, "현물", now_ts)
+    fut = _flow_surge_channel_pair(rows, "선물", now_ts)
+    if not spot and not fut:
+        return []
+    program = _flow_surge_program(rows, now_ts)
+    result = []
+    for actor in ("외국인", "기관", "개인"):
+        ds = fnum((spot or {}).get("deltas", {}).get(actor))
+        df = fnum((fut or {}).get("deltas", {}).get(actor))
+        both = (
+            ds is not None and df is not None
+            and ds >= SURGE_COMBINED_SPOT_EOK
+            and df >= SURGE_COMBINED_FUT_EOK
+        )
+        spot_only = ds is not None and ds >= SURGE_SINGLE_SPOT_EOK
+        fut_only = df is not None and df >= SURGE_SINGLE_FUT_EOK
+        if not (both or spot_only or fut_only):
+            continue
+        if both:
+            mode = "현물·선물 동시"
+            key_ts = min(float(spot["end_ts"]), float(fut["end_ts"]))
+        elif spot_only and (not fut_only or ds / SURGE_SINGLE_SPOT_EOK >= df / SURGE_SINGLE_FUT_EOK):
+            mode = "현물 중심"
+            key_ts = float(spot["end_ts"])
+        else:
+            mode = "선물 중심"
+            key_ts = float(fut["end_ts"])
+        result.append({
+            "actor": actor, "mode": mode,
+            "spot": ds, "futures": df, "sample_ts": key_ts,
+            "spot_start_skew_sec": (spot or {}).get("start_skew_sec"),
+            "futures_start_skew_sec": (fut or {}).get("start_skew_sec"),
+            "program": program,
+            # 프로그램 매수는 투자자별 매수주체 확증이 아니라 별도의 시장 보조정보.
+            "confidence": (
+                "높음" if both and program and program["valid"] and program["delta"] > 0
+                else "중간" if both else "단독 신호"
+            ),
+        })
+    return result
+
+
 class Watch:
     def __init__(self, token: str, puts: list[dict[str, Any]], front_future: str, test: bool):
         self.token = token; self.put_defs = puts; self.test = test
@@ -647,6 +797,10 @@ class Watch:
         self.opening_gap_sent = False
         self.handoff_path: str | None = None
         self.last_handoff_save_ts = 0.0
+        self.surge_last_processed_ts = 0.0
+        self.surge_pending: dict[str, dict[str, float]] = {}
+        self.surge_sent_at: dict[str, float] = {}
+
 
     @staticmethod
     def _nearest(buf: deque[tuple[float, float]], ts: float) -> tuple[float, float] | None:
@@ -1084,8 +1238,93 @@ class Watch:
                 self.raw["last_flow_error"] = f"{type(exc).__name__}: {exc}"
         self.flow_task = asyncio.create_task(run_one())
 
+    def build_flow_surge_alert(self, cand: dict[str, Any], now_ts: float) -> str:
+        actor = html.escape(str(cand["actor"]))
+        spot, fut = cand.get("spot"), cand.get("futures")
+        start_time = fmt_clock(float(cand["sample_ts"]) - SURGE_WINDOW_SEC)
+        lines = [
+            "⚡ <b>코스피 단기 순매수 급증</b>",
+            f"<code>{dt.datetime.fromtimestamp(now_ts, KST):%Y-%m-%d %H:%M:%S} KST</code>",
+            f"• <b>{actor}</b> · {html.escape(str(cand['mode']))} · 5분 ({start_time}~{fmt_clock(cand['sample_ts'])})",
+            f"• 현물(통합) {fmt_eok(spot)} · KOSPI200 선물 {fmt_eok(fut)}",
+            f"• 확인 수준: {html.escape(str(cand['confidence']))}",
+        ]
+        p = cand.get("program") or {}
+        if p.get("valid"):
+            trend = "순매수 증가" if p["delta"] > 0 else "순매도 증가" if p["delta"] < 0 else "변화 없음"
+            lines.append(f"• 프로그램 {trend} {fmt_raw(p.get('delta'))} (LS 원값, 투자자 미구분)")
+        else:
+            lines.append("• 프로그램 교차검증: 미충족·보류 (매수주체 판정에 사용하지 않음)")
+        if self.idx:
+            now_price_ts, now_price = self.idx[-1]
+            if 0 <= now_ts - now_price_ts <= SURGE_MAX_END_AGE_SEC:
+                prior = min(self.idx, key=lambda x: abs(x[0] - (now_price_ts - SURGE_WINDOW_SEC)))
+                if abs(prior[0] - (now_price_ts - SURGE_WINDOW_SEC)) <= SURGE_MAX_SAMPLE_SKEW_SEC:
+                    change = pct(prior[1], now_price)
+                    if change is not None:
+                        lines.append(f"• 같은 구간 KOSPI {change:+.2f}% (가격 보조지표)")
+        lines += [
+            "• 당일 누적 순매수의 5분 변화량입니다. 총거래대금·외부 신규자금 유입·향후 상승 확정값이 아닙니다.",
+            "• " + " · ".join([link(KOSPI_URL, "KOSPI"), link(LS_URL, "LS OpenAPI")]),
+        ]
+        return "\n".join(lines)
+
+    async def maybe_alert_flow_surge(self, now_ts: float | None = None) -> None:
+        """가격 급락과 독립적으로 동작하며 다른 경보의 상태를 수정하지 않는다."""
+        if self.test or not self.flows:
+            return
+        now_ts = time.time() if now_ts is None else now_ts
+        if (
+            self.session_open_ts is None
+            or self.session_close_ts is None
+            or not (self.session_open_ts <= now_ts < self.session_close_ts)
+            or (self.session_continuous_end_ts is not None and now_ts >= self.session_continuous_end_ts)
+        ):
+            return
+        latest_ts = fnum(self.flows[-1].get("ts"))
+        if latest_ts is None or latest_ts <= self.surge_last_processed_ts:
+            return
+        # 같은 원자료로 초당 여러 번 '새 유입'을 판정하지 않는다.
+        self.surge_last_processed_ts = latest_ts
+        candidates = flow_surge_candidates(list(self.flows), now_ts)
+        current = {str(x["actor"]): x for x in candidates}
+        for actor in list(self.surge_pending):
+            if actor not in current:
+                self.surge_pending.pop(actor, None)
+        for actor, cand in current.items():
+            sample_ts = float(cand["sample_ts"])
+            previous = self.surge_pending.get(actor)
+            if previous is None or sample_ts <= previous["sample_ts"] or (
+                now_ts - previous["seen_at"] > 120
+            ):
+                self.surge_pending[actor] = {"sample_ts": sample_ts, "seen_at": now_ts}
+                continue
+            if sample_ts - previous["sample_ts"] < SURGE_CONFIRM_SEC:
+                continue
+            if now_ts - self.surge_sent_at.get(actor, 0.0) < SURGE_COOLDOWN_SEC:
+                continue
+            msg_id = await asyncio.to_thread(
+                telegram_send, self.build_flow_surge_alert(cand, now_ts)
+            )
+            self.msg_ids.append(msg_id)
+            self.surge_sent_at[actor] = now_ts
+            self.surge_pending.pop(actor, None)
+            self.raw["last_flow_surge_alert"] = {
+                "actor": actor, "mode": cand["mode"],
+                "sample_ts": sample_ts, "message_id": msg_id,
+                "spot_5m_eok": cand["spot"], "futures_5m_eok": cand["futures"],
+                "confidence": cand["confidence"],
+            }
+            # 기존 급락과 동일한 실전 송출 기록/상태 인계 경로를 재사용한다.
+            self._record_delivery(
+                "flow_surge", msg_id,
+                {"start_ts": sample_ts - SURGE_WINDOW_SEC, "low_ts": sample_ts},
+                sample_ts,
+            )
+
     async def evaluate(self) -> None:
         await self.maybe_flow()
+        await self.maybe_alert_flow_surge()
         # CI 실데이터 조회(--test)는 소스와 API 품질만 검사한다.
         # 장중 급락 조건이 충족돼도 시험 실행이 실전 Telegram 알림을 보내서는 안 된다.
         if getattr(self, "test", False):
@@ -1253,6 +1492,9 @@ class Watch:
             "opening_gap_sent": self.opening_gap_sent,
             "msg_ids": self.msg_ids[-20:],
             "enrichment_msg_ids": self.enrichment_msg_ids[-20:],
+            "surge_last_processed_ts": self.surge_last_processed_ts,
+            "surge_pending": self.surge_pending,
+            "surge_sent_at": self.surge_sent_at,
         }
         p.parent.mkdir(parents=True, exist_ok=True)
         # 인계 파일을 직접 덮어쓰다 중단되면 손상된 JSON이 다음 작업에 넘어갈 수 있다.
@@ -1293,6 +1535,17 @@ class Watch:
             self.opening_gap_sent = bool(data.get("opening_gap_sent", False))
             self.msg_ids.extend(int(x) for x in (data.get("msg_ids") or []) if str(x).isdigit())
             self.enrichment_msg_ids.extend(int(x) for x in (data.get("enrichment_msg_ids") or []) if str(x).isdigit())
+            self.surge_last_processed_ts = fnum(data.get("surge_last_processed_ts")) or 0.0
+            self.surge_sent_at = {
+                str(k): float(v) for k, v in (data.get("surge_sent_at") or {}).items()
+                if str(k) in {"외국인", "기관", "개인"} and fnum(v) is not None
+            }
+            self.surge_pending = {
+                str(k): {"sample_ts": float(v["sample_ts"]), "seen_at": float(v["seen_at"])}
+                for k, v in (data.get("surge_pending") or {}).items()
+                if str(k) in {"외국인", "기관", "개인"} and isinstance(v, dict)
+                and fnum(v.get("sample_ts")) is not None and fnum(v.get("seen_at")) is not None
+            }
             if self.flows:
                 latest_snap = max(self.flows, key=lambda x: float(x.get("ts", 0)))
                 latest = float(latest_snap.get("ts", 0))
@@ -1370,6 +1623,10 @@ class Watch:
         close_dt = session["close"]
         self.session_open_ts = open_dt.timestamp() if open_dt is not None else None
         self.session_close_ts = close_dt.timestamp() if close_dt is not None else None
+        self.session_continuous_end_ts = (
+            session["continuous_end"].timestamp()
+            if session.get("continuous_end") is not None else self.session_close_ts
+        )
         poll_start_dt = (
             open_dt - dt.timedelta(seconds=90)
             if open_dt is not None else initial_now
@@ -1410,6 +1667,9 @@ class Watch:
             if price_poll_ok:
                 await self.evaluate()
             else:
+                # 가격 API 일시 장애 중에도 독립 수급 감지는 계속 수행한다.
+                await self.maybe_flow()
+                await self.maybe_alert_flow_surge()
                 self.raw["price_event_skipped_on_poll_failure"] = True
             self._checkpoint_handoff()
 
