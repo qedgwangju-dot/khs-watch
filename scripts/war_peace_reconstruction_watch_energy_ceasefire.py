@@ -176,7 +176,7 @@ def _signals(marks):
     if '러시아에너지중단확인' in marks:
         out.append('러시아·크렘린 측 에너지 시설 공격 중단 동참 확인 신호')
     if '양측에너지중단상호확인' in marks:
-        out.append('양측 확인 단계: 미국 발표를 넘어 우크라이나·러시아 양측의 상호 중단 확인 신호')
+        out.append('기사 문구에 양측 확인 주장이 등장 — 양국 정부의 독립적인 공식 확인·발효·실제 이행은 별도 검증 필요')
     return out
 
 
@@ -188,7 +188,13 @@ def score_item(row, now):
     if sig:
         row['signals_ko'] = list(dict.fromkeys(sig + list(row.get('signals_ko', []))))
     row['energy_ceasefire_marks'] = marks
-    row['forced_tags'] = list(dict.fromkeys(list(row.get('forced_tags', [])) + ['종전·협상','에너지부분휴전','우크라이나·러시아']))
+    # A single headline (even a presidential claim) is not an implemented
+    # ceasefire. Strip legacy positive tags until independently verified.
+    row['forced_tags'] = list(dict.fromkeys(
+        [t for t in row.get('forced_tags', [])
+         if t not in ('종전·협상', '휴전·평화', '재건', '에너지부분휴전')]
+        + ['에너지휴전발표미확정', '우크라이나·러시아', '상호확인대기']
+    ))
 
     if '양측에너지중단상호확인' in marks:
         score = 96
@@ -204,7 +210,7 @@ def score_item(row, now):
     age = watch.age_minutes(row, now)
     if age is not None and age <= 30:
         score += 2
-    return score, ['에너지부분휴전','우크라이나·러시아','종전·협상']
+    return score, ['에너지휴전발표미확정', '우크라이나·러시아', '상호확인대기']
 
 watch.score_item = score_item
 
@@ -229,7 +235,7 @@ watch.item_id = item_id
 
 def topic_label(row):
     if _marks(row):
-        return '우크라이나·러시아 · 에너지 부분휴전'
+        return '우크라이나·러시아 · 에너지 휴전 발표·양측 검증 대기'
     return _prev_topic_label(row)
 
 watch.topic_label = topic_label
@@ -241,23 +247,23 @@ def _verdict(items):
     if ec:
         marks = {m for x in ec for m in _marks(x)}
         if '양측에너지중단상호확인' in marks:
-            headline = '🟢 우크라이나·러시아 양측의 에너지 시설 상호 공격 중단 확인 단계로 진전'
-            certainty = '양측 확인 신호가 잡혔지만 발효 시각·대상 시설·위반 판정 기준은 별도 확인 필요'
+            headline = '🟡 에너지 시설 상호 공격 중단에 대한 양측 확인 보도'
+            certainty = '기사 표현만으로 양국 정부의 독립 확인·실제 공격 중단까지 확정하지 않음'
         elif '트럼프상호에너지중단발표' in marks:
-            headline = '🟢 트럼프: 우크라이나·러시아가 서로의 에너지 시설 공격 중단에 합의했다고 발표'
+            headline = '🟡 트럼프: 우크라이나·러시아가 에너지 시설 공격 중단에 합의했다고 발표'
             certainty = '미국 대통령 1차 발표 단계 — 양측의 별도 공식 확인 전에는 완전한 확정 합의로 단정하지 않음'
         elif '우크라이나에너지중단확인' in marks or '러시아에너지중단확인' in marks:
-            headline = '🟢 에너지 시설 공격 중단에 대한 당사자 확인이 추가됨'
+            headline = '🟡 에너지 시설 공격 중단에 대한 한쪽 당사자 확인 보도'
             certainty = '한쪽 확인만으로 상호 이행 완료로 보지 않고 반대편 확인을 계속 추적'
         else:
-            headline = '🟢 우크라이나·러시아 에너지 시설 상호 공격 중단 보도 감지'
+            headline = '🟡 우크라이나·러시아 에너지 시설 상호 공격 중단 보도 감지'
             certainty = '당사자 공식 확인과 실제 이행 여부를 후속 검증'
         block = (
             '<b>투자 판정</b>\n'
             f'- <b>핵심:</b> {headline}\n'
             f'- <b>확정 수준:</b> {certainty}\n'
-            '- <b>현재 단계:</b> 전면 종전이 아니라 정유시설·전력망 등 에너지 표적에 한정된 부분적 긴장완화 신호\n'
-            '- <b>시장:</b> 실제 이행 시 러시아 경유·정유 공급 차질과 우크라이나 전력망 파괴 위험이 줄어 디젤·유가·유럽 전력 위험프리미엄 완화 요인\n'
+            '- <b>현재 단계:</b> 미국 발표·보도 단계 — 양측 독립 확인·실제 공격 중단 전에는 휴전 발효로 판단하지 않음\n'
+            '- <b>시장:</b> 실제 이행 전에는 정유·전력망 공격과 경유 공급 차질 위험이 계속되므로 위험프리미엄 완화를 확정할 수 없음\n'
             '- <b>다음:</b> 우크라 대통령실·크렘린 별도 확인 → 발효 시각·기간·대상시설 → 24시간·72시간 실제 공격 중단 → 위반 여부'
         )
         if others:

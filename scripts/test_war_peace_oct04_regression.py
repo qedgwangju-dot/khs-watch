@@ -1218,4 +1218,33 @@ except RuntimeError as exc:
     check("china-fuel-quality-guard-red", "중국 정제연료" in str(exc))
 
 
+
+# 10/12 실운영 오류: 미 대통령의 에너지 휴전 발표만으로 실제 휴전을
+# 녹색 확정 신호로 표시하지 않는다. 우크라이나는 상호주의 조건부,
+# 러시아 독립 확인 및 실물 이행은 미확정이며 에너지 시설 공격이 이어졌다.
+energy_announcement = row(
+    "Trump says Russia and Ukraine agreed not to attack each other's energy facilities",
+    source="Reuters",
+    description=(
+        "President Trump said Russia and Ukraine agreed not to attack energy infrastructure. "
+        "Zelenskyy welcomed the proposal if Russia stops strikes first; "
+        "Russia has not independently confirmed and attacks continued."
+    ),
+    minutes_ago=9,
+)
+check("oct12-energy-unverified-detected", mod._energy_announcement_unverified(energy_announcement))
+energy_score, energy_tags = mod.score_item(energy_announcement, dt.datetime.now(mod.watch.KST))
+energy_announcement["score"] = energy_score
+energy_announcement["tags"] = energy_tags
+energy_announcement["age"] = mod.watch.age_minutes(energy_announcement, dt.datetime.now(mod.watch.KST))
+check("oct12-energy-announcement-yellow", mod.final_color(energy_announcement) == "yellow")
+check("oct12-energy-announcement-not-implemented", not ({"종전·협상", "휴전·평화", "에너지부분휴전"} & set(energy_tags)))
+check("oct12-energy-announcement-topic", mod.topic_label(energy_announcement) == "우크라이나·러시아 · 에너지 휴전 발표·양측 검증 대기")
+check("oct12-energy-announcement-title-caveat", "실제 이행 미확정" in energy_announcement["title_ko"])
+energy_rendered = mod.watch.build_alert([energy_announcement], [], dt.datetime.now(mod.watch.KST))
+check("oct12-energy-announcement-no-green", "🟢 <b>재건·휴전</b>" not in energy_rendered)
+check("oct12-energy-announcement-yellow-render", "🟡 [" in energy_rendered and "양측 검증 대기" in energy_rendered)
+mixed_energy = mod.watch.build_alert([bridge_attack, energy_announcement], [], dt.datetime.now(mod.watch.KST))
+check("oct12-energy-mixed-red-preserved", "🔴 <b>공격·확전</b>" in mixed_energy and "🟢 <b>재건·휴전</b>" not in mixed_energy)
+
 print("WAR_PEACE_OCT04_REGRESSION_OK")

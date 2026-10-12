@@ -14,6 +14,7 @@ import re
 import urllib.parse
 
 import war_peace_reconstruction_watch_diplomacy_flash as prev
+import war_peace_reconstruction_watch_energy_ceasefire as energy_pause
 
 watch = prev.watch
 # 기존 Google News 수집 경로에 '11월 3일 전 이란 공격' 방향 변화만 보강한다.
@@ -1013,6 +1014,11 @@ def _tass_largest_drone_attack(row):
     )
 
 
+def _energy_announcement_unverified(row):
+    """An announcement or press account is not independently verified implementation."""
+    return bool(energy_pause._marks(row)) and not row.get("energy_bilateral_implementation_verified", False)
+
+
 def emergency_marks(row):
     marks = list(_orig_emergency_marks(row))
     if _aramco_fire_unattributed(row):
@@ -1028,6 +1034,8 @@ def marks(row):
     if china_stage:
         return [CHINA_FUEL_MARKS[china_stage]]
     out = list(_orig_marks(row))
+    if _energy_announcement_unverified(row):
+        out.append("에너지휴전발표양측이행미확인")
     if _aramco_houthi_claim(row):
         out.append("후티리야드아람코공격주장")
     if _future_refinery_policy(row):
@@ -1084,6 +1092,8 @@ prev._marks = marks
 
 
 def korean_title(ms):
+    if "에너지휴전발표양측이행미확인" in ms:
+        return "트럼프의 우크라이나·러시아 에너지 휴전 발표 — 우크라이나 조건부 동참·러시아 공식 확인·실제 이행 미확정"
     if "후티리야드아람코공격주장" in ms:
         return "후티, 리야드 Aramco 시설 미사일·드론 공격 주장 — 사우디·Aramco 독립 확인 대기"
     if "리야드아람코화재원인미확정" in ms:
@@ -1136,6 +1146,8 @@ prev._korean_title = korean_title
 
 def signals(ms):
     out = []
+    if "에너지휴전발표양측이행미확인" in ms:
+        out.append("🟡 미국 대통령의 에너지 휴전 발표 단계 — 양측 독립 확인·발효 일정·실제 공격 중단 확인 전에는 휴전 성립으로 표시하지 않음")
     if "후티리야드아람코공격주장" in ms:
         out.append("🔴 후티가 리야드 Aramco 시설을 탄도미사일·드론으로 공격했다고 주장 — 현장 화재·연기와 별개로 사우디·Aramco의 피해·요격·원인 공식 확인은 후속 검증")
     if "리야드아람코화재원인미확정" in ms:
@@ -1194,7 +1206,7 @@ def signals(ms):
         "이란남부폭발원인미확정", "사우디동서송유관회복",
         "목하탈환공세", "러시아국방부타격주장", "TASS러시아최대드론공격집계",
         "예멘아덴공항후티공격클러스터", "종전전망성발언", "조건부군사위협",
-        "이란직접협상부인",
+        "이란직접협상부인", "에너지휴전발표양측이행미확인",
     }
     if set(ms) & custom:
         return out
@@ -1256,10 +1268,17 @@ def score_item(row, now):
         "러시아종전조건입장표명", "루코일종전협상연계상업거래",
         "이스라엘10월7일해외공격위험경고", "이란남부폭발원인미확정",
         "종전전망성발언", "조건부군사위협", "발언단독행동미확인",
+        "에너지휴전발표양측이행미확인",
     }
     if ms & yellow:
         tags = [t for t in tags if t not in ("확전", "휴전·평화", "재건", "종전·협상")]
         tags += ["협상·위협제약"]
+        score = max(score, 98)
+    if "에너지휴전발표양측이행미확인" in ms:
+        row["title_ko"] = korean_title(ms)
+        row["signals_ko"] = signals(ms)
+        tags = [t for t in tags if t not in ("확전", "휴전·평화", "재건", "종전·협상", "에너지부분휴전")]
+        tags += ["우크라이나·러시아", "미국대통령발표", "양측이행미확인", "휴전발효미확인"]
         score = max(score, 98)
     if "미국이란3일집중공격계획보도" in ms:
         row["title_ko"] = korean_title(ms)
@@ -1469,6 +1488,8 @@ watch.item_id = item_id
 
 
 def topic_label(row):
+    if _energy_announcement_unverified(row):
+        return "우크라이나·러시아 · 에너지 휴전 발표·양측 검증 대기"
     if _china_fuel_stage(row):
         return "중국 · 정제연료 수출·공급변화"
     ms = set(marks(row))
@@ -1531,6 +1552,8 @@ except Exception:
 
 
 def final_color(row):
+    if _energy_announcement_unverified(row):
+        return "yellow"
     china_stage = _china_fuel_stage(row)
     if china_stage:
         return "green" if china_stage == "customs" else "yellow"
@@ -1584,7 +1607,7 @@ guard.prev.core._body_color = final_color
 _PEACE_MARKS = {
     "아라치위트코프뉴욕회동확인", "이란뉴욕대표단외교전권", "뉴욕중재종전합의안협의",
     "미구체조치시외교재개환영", "이란직접협상확인", "정식휴전합의", "종전합의",
-    "크렘린에너지휴전긍정평가", "아라치미국체류추가협상",
+    "아라치미국체류추가협상",
 }
 
 
@@ -1657,6 +1680,14 @@ def verdict(items):
             "- <b>시장:</b> 추가 미국 공습 우려 완화 가능성과 호르무즈 실제 운항·보험 위험은 별개\n"
             "- <b>다음:</b> 유예 입장 변경 → 실제 군사 명령·타격 → 중재 협상 결과 → 11월 3일 이후 별도 판단"
         )
+    if yellow and any(_energy_announcement_unverified(x) for x in items):
+        return (
+            "<b>투자 판정</b>\n"
+            "- <b>핵심:</b> 트럼프의 에너지 휴전 발표는 외교적 제안·발표 단계로, 실제 휴전 성립이 아님\n"
+            "- <b>현재 단계:</b> 우크라이나의 조건부 동참 의사·러시아 공식 확인·실제 공격 중단을 각각 검증해야 함\n"
+            "- <b>시장:</b> 정유시설·전력망 공격과 경유·전력 위험프리미엄 완화를 확정할 수 없음\n"
+            "- <b>다음:</b> 양측 공식 합의 → 발효 시각 → 공격 중단 24·72시간 → 위반·피해 확인"
+        )
     if yellow:
         return (
             "<b>투자 판정</b>\n"
@@ -1690,7 +1721,13 @@ def semantic_fix(text):
         level, idx = m.group(1), m.group(2)
         marker = None
         topic = None
-        if "중국 · 정제연료 수출·공급변화" in block:
+        if any(x in block for x in (
+            "에너지 휴전 발표·양측 검증 대기",
+            "에너지 휴전 발표 — 우크라이나 조건부 동참",
+            "양측 독립 확인·발효 일정·실제 공격 중단 확인 전",
+        )):
+            marker, topic = "🟡", "우크라이나·러시아 · 에너지 휴전 발표·양측 검증 대기"
+        elif "중국 · 정제연료 수출·공급변화" in block:
             marker = "🟢" if "세관실적확인" in block else "🟡"
             topic = "중국 · 정제연료 수출·공급변화"
         elif any(x in block for x in ("11월 3일 미국 중간선거 전 이란 추가 공격 없다고 발표", "11월 3일 중간선거 이전 미국의 이란 추가공격")):
@@ -1774,6 +1811,11 @@ def verify_alert(test_mode=False):
     issues = []
     if re.search(r"(?m)^🔴\s+\[(?:속보|신규|후속)\].*중국 · 정제연료 수출·공급변화", text):
         issues.append("중국 정제연료 수출 변화를 전쟁 공격·확전으로 오분류")
+    if "트럼프의 우크라이나·러시아 에너지 휴전 발표" in text:
+        if re.search(r"(?m)^🟢\s+\[(?:속보|신규|후속)\].*(?:에너지 휴전|에너지 부분휴전)", text):
+            issues.append("미국 대통령 단독 에너지 휴전 발표를 양측 공식 이행 확정으로 표시")
+        if "양측 검증 대기" not in text and "실제 이행 미확정" not in text:
+            issues.append("일방적 에너지 휴전 발표에서 상대방 확인과 실물 이행 불확실성 누락")
     if "중국 · 정제연료 수출·공급변화" in text:
         if "수출 재개 예정" in text and ("세관 실적 확인 단계" in text or "수출 완료" in text):
             issues.append("중국 정제연료 수출예정 보도를 실제 완료 실적으로 승격")
