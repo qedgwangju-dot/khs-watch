@@ -1,7 +1,7 @@
 {
-  "last_alert_at_kst": "2026-10-12T05:34:54+09:00",
-  "last_event_kind": "us_gulf_isaias_shutin",
-  "last_event_id": "us_gulf_isaias_shutin:e15adea29d3ffd97",
+  "last_alert_at_kst": "2026-10-12T18:24:37+09:00",
+  "last_event_kind": "saudi_bypass_investment",
+  "last_event_id": "saudi_bypass_investment:16cbf971c8ea915e",
   "alerted_events": {
     "regional_export_recovery:66183575fab99015": "2026-09-29T19:49:06+09:00",
     "sts_reroute_expansion:a5a5b34c0694d3fd": "2026-09-29T20:06:00+09:00",
@@ -25,10 +25,31 @@
     "russia_diesel_supply_transition:b31ba68440a4dac7": "2026-10-10T09:12:47+09:00",
     "russia_diesel_supply_transition:70a442ea2ab48e1a": "2026-10-10T09:15:29+09:00",
     "us_gulf_isaias_shutin:f0902480ce443cdd": "2026-10-11T04:31:35+09:00",
-    "us_gulf_isaias_shutin:e15adea29d3ffd97": "2026-10-12T05:34:54+09:00"
+    "us_gulf_isaias_shutin:e15adea29d3ffd97": "2026-10-12T05:34:54+09:00",
+    "saudi_bypass_investment:16cbf971c8ea915e": "2026-10-12T18:24:37+09:00"
   },
   "last_market": {
-    "oil": null,
-    "usdkrw": null
+    "oil": {
+      "symbol": "BZ=F",
+      "label": "Brent",
+      "unit": "달러/배럴",
+      "price": 105.6,
+      "previous_close": 104.72,
+      "change": 0.8799999999999955,
+      "change_pct": 0.8403361344537772,
+      "timestamp_utc": "2026-10-12T09:15:01Z",
+      "timestamp_epoch": 1791796501.0
+    },
+    "usdkrw": {
+      "symbol": "KRW=X",
+      "label": "원·달러",
+      "unit": "원/달러",
+      "price": 1332.11,
+      "previous_close": 1340.02,
+      "change": -7.910000000000082,
+      "change_pct": -0.590289697168705,
+      "timestamp_utc": "2026-10-12T09:25:19Z",
+      "timestamp_epoch": 1791797119.0
+    }
   }
 }
