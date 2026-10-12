@@ -1183,6 +1183,31 @@
       "telegram_core_fact": "삼성전자가 올해 3분기 영업이익 107조4천억원을 기록해 국내 기업 사상 최초로 분기 영업익 100조원 시대를 열었다.",
       "title": "삼성전자 3분기 영업익 107조…글로벌 빅테크 최초 100조 돌파(종합2보)"
     },
+    "core:0a41f2e906d1501e53601dd1": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.dt.co.kr/article/12088561",
+      "source": "디지털타임스",
+      "source_body_digest": "a07b8b8678f1acb38e80595a266ac7b57adaad3b20796c15a025b46b737951cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b94fd0563f6cae63f01b97e1dd573ec94ba11fcede13a3ecff9d2c467e04edea",
+      "source_fact_keys": [
+        "source_fact:v1:0baf6229a319f0adbe49d50732f67f2165d6a7ca9efbbcfd8d3cff8042d55b7e",
+        "source_fact:v1:11c79f072a0d4c3bfd553e3a0050d327ed516fb15271dae85d92e5b08f9dcdfa",
+        "source_fact:v1:40e9bd58118462b1d105f1ae3fbb6abdb53f41a6992651c919f220dd422777a8",
+        "source_fact:v1:56871d3ba17ce6c65c9a7dbe60fc8d0e04dbe2e43e8d36e9ac66c7dbb9c8c325",
+        "source_fact:v1:65a280c1e07112c06932eae7d05fc4533a715334d69c361c6d505f1c5a0c4a28",
+        "source_fact:v1:80c696adb9eea197ea3af169677cac52296812ea6d9bfeceee5a6ce5b8bd907c",
+        "source_fact:v1:bbda3322dc77d908c72cb1bf0cda130c753eb0fb503f96fa5f14a6d60330c72e"
+      ],
+      "source_published_kst": "2026-10-12T16:09+09:00",
+      "source_title": "美 AI기업 데이터센터 확보 속도전…앤트로픽, 아이렌과 클라우드 계약",
+      "telegram_core_fact": "다음달 기업공개(IPO)를 할 예정인 앤트로픽은 인공지능(AI) 서비스 운영에 필요한 컴퓨팅 인프라 확보에 속도를 내고 있다.",
+      "title": "美 AI기업 데이터센터 확보 속도전…앤트로픽, 아이렌과 클라우드 계약"
+    },
     "core:0a83c9f9e4d3e99900c4da93": {
       "first_seen_kst": "2026-10-07T22:00:35+09:00",
       "lanes": {
@@ -4227,6 +4252,30 @@
       "telegram_core_fact": "정부가 공공 주도의 대규모 주택공급 확대를 추진하면서 한국토지주택공사(LH)의 역할과 업무량이 크게 늘어날 예정이지만, 정작 LH는 저임금과 인력유출로 이중고를 겪고 있는 것으로 나타났다. 실제로 2024~2026년 가덕도신공항건설공단이 채용한 경력직 가운데 20~30%가 LH 출신인 것으로 나타났다.",
       "title": "[단독] “주택공급 늘리라”는데...LH는 저임금·인력유출 이중고"
     },
+    "core:22c36d3798b2e5114484e493": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.mk.co.kr/news/pick/12173604",
+      "source": "매일경제",
+      "source_body_digest": "7c1cb6296315cafc98bf76fcf19c9badb4428235e1739190fa4bbc24f038d0d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ccb9431d8355c27b27fe6e443b6690e487357919e0ac306855afd6e6de4b6fb2",
+      "source_fact_keys": [
+        "source_fact:v1:264af22fead18dbe7b02ee441d3672ab43a6049d6a981a833c69b3a1b7099bf2",
+        "source_fact:v1:33eb1992783668307e2e0c4306abb806288fdf5aaa780ab23d1a2e645d428fed",
+        "source_fact:v1:43c6d2757360c3232a3a1898a9cecab65f2808be59bc8135911fe9d405756d77",
+        "source_fact:v1:4c501d12dde6a7f16e097dfadeb88c20eeb1f215e143d92be5e0c300768ee5eb",
+        "source_fact:v1:4cb7724d75214274c1649860eeace2ffdd101f65a90e749d14bf4e7252878b14",
+        "source_fact:v1:d8319692c16d76dd2aa84b6380161a798904ee897621c93dfb710d1bd6ec4c86"
+      ],
+      "source_published_kst": "2026-10-12T15:02+09:00",
+      "source_title": "오텍, 건자재 업체 노이리움에 냉난방 설비",
+      "telegram_core_fact": "오텍그룹의 계열사 오텍캐리어와 씨알케이(CRK)가 지난 7일 노이리움과 ‘전국 총판점·대리점 신설에 따른 설비 공급 협력을 위한 업무협약(MOU)’을 체결했다고 12일 밝혔다.",
+      "title": "오텍, 건자재 업체 노이리움에 냉난방 설비"
+    },
     "core:22ee196cdd2fa8ca27228aed": {
       "first_seen_kst": "2026-10-12T13:36:34+09:00",
       "lanes": {
@@ -4735,6 +4784,28 @@
       "source_title": "다카이치, 美 ICC 제재 직후 \"깊은 우려…ICC 역할 지원\" | 연합뉴스",
       "telegram_core_fact": "이 메시지는 ICC 재판관을 지낸 나비 필라이의 노벨평화상 수상 직후 트럼프 행정부가 ICC에 대한 고강도 제재를 발표한 지 얼마 지나지 않아 게시된 것이다.",
       "title": "다카이치, 美 ICC 제재 직후 \"깊은 우려…ICC 역할 지원\" | 연합뉴스"
+    },
+    "core:25e36899a1fc550e23b352c2": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://biz.heraldcorp.com/article/10899298",
+      "source": "헤럴드경제",
+      "source_body_digest": "72c1a187badfe875819fd6ce57b38c1069eca58dedfa2e7cd7ab8a7a62246349",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:483cf1db6a7a131b069f9d394ac9c51d5db0d9d002d8f6f9f74148c265b0c020",
+      "source_fact_keys": [
+        "source_fact:v1:63b3ed88429027ca3dd69a58bbf3d42bd52205fc4ae5b2e4f1169f0be8cd719d",
+        "source_fact:v1:9589771748d50e53f2bbe0fd0868238dcaa3174f13c19b883dcb4eabae430aa3",
+        "source_fact:v1:be23be450ed47cb79e4354f799c9c6f134a87ef911415e744f05f2cfd9eb439e",
+        "source_fact:v1:ca90f1681f98f2d694d9bb2d64f9d5d5e278156157828a3fcf555dff093739f2"
+      ],
+      "source_published_kst": "2026-10-12T10:38+09:00",
+      "source_title": "신현송 총재 “기준금리 추가 인상 시기, 물가·경기 흐름 보고 결정”",
+      "telegram_core_fact": "신현송 한국은행 총재는 향후 통화정책에 대해 “물가와 경기 흐름, 금융안정 상황을 면밀히 점검하면서 추가 인상의 시기와 속도 등을 결정해 나갈 계획”이라며 금리 인상 기조를 재차 확인했다.",
+      "title": "신현송 총재 “기준금리 추가 인상 시기, 물가·경기 흐름 보고 결정”"
     },
     "core:25f0c84d28d97b3eb614dd3b": {
       "first_seen_kst": "2026-10-08T15:16:19+09:00",
@@ -8969,6 +9040,28 @@
       "source_published_kst": "2026-10-07T07:20+09:00",
       "title": "리사 수 “반도체 수요가 공급보다 많아”…AMD 주가 사상 최고"
     },
+    "core:4a8cbfb9e73c0b7901e5a09b": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634775",
+      "source": "이투데이",
+      "source_body_digest": "4ed71ef7d05b9e547ba5862a09ec459a050e8d3e4fe6177f98d06047882c34b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2aaed2c2f6b5c040580be62a5f3b4373c79ed2bc324f89daf74286bedc7d5e47",
+      "source_fact_keys": [
+        "source_fact:v1:3b9dfca4b05e7236b688a95867dbdce85f5f36b1da0ca650b43d6712f1423728",
+        "source_fact:v1:62405005925306a81cdc2488de2826bb28ffa39f05d28723aed3686ed98af2c5",
+        "source_fact:v1:80dc5a97f373f24c327529603e5b60db3fce0890d078c02bcb76e2dcefb394bf",
+        "source_fact:v1:aea36e90259159d1f392a88b4aa30daea1d94c9a1e9ad728299886692afe232c"
+      ],
+      "source_published_kst": "2026-10-12T16:14+09:00",
+      "source_title": "외국인 2조 매도에 코스피 6400선 붕괴…39거래일 만",
+      "telegram_core_fact": "개인이 1조4790억원, 기타법인이 6620억원 순매수한 가운데 외국인이 2조120억원, 기관이 1290억원 순매도했다.",
+      "title": "외국인 2조 매도에 코스피 6400선 붕괴…39거래일 만"
+    },
     "core:4accb287bc25c7ef04e2dcdc": {
       "first_seen_kst": "2026-10-07T22:37:58+09:00",
       "lanes": {
@@ -12243,6 +12336,36 @@
       "source_title": "대미 투자 다음은 301조 관세…부처 합동 통상현안 대응",
       "telegram_core_fact": "산업통상부는 8일 제60차 통상추진위원회를 열고 대미 투자, 미국 301조 관세, 한중 FTA(자유무역협정) 2단계 협상 등 주요 통상현안 대응 방안을 논의했다고 밝혔다.",
       "title": "대미 투자 다음은 301조 관세…부처 합동 통상현안 대응"
+    },
+    "core:696907dd3ee6b9f24955fbc9": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03306246645612264",
+      "source": "이데일리",
+      "source_body_digest": "3d9941a1568946b4c60b01824bc6084971c02dc2c3196e46c0e82bb5c8ca9daf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4f49a9f48f3098e85ef90773d3eb37ffb45a44dc3879efce43d4b33973631c3b",
+      "source_fact_keys": [
+        "source_fact:v1:0608d1b8a5690232c2d1602c0737add81185f649471509ada0a92a0f1c8f0a92",
+        "source_fact:v1:1dfc6a917bda90cacf9e6ef525673c115c4710ecbe61c6f84d9fcecc067e3a24",
+        "source_fact:v1:1fb04963d453de9f6e4fa40f6955f57cd7b8244085fc11586ae1036ca6f748f1",
+        "source_fact:v1:2f601fd8c9a2a71a06797ce11b8c50877c21f7674068e7b9e4d2ee21a31dae68",
+        "source_fact:v1:4176e519acb4889d908b216c78331005645c75034f2cf8a3e0686569f59fa362",
+        "source_fact:v1:4e9cb31c66d4b64171a9244c52828d10db1d50f7a94d9554e5835f5d08742b52",
+        "source_fact:v1:8314ee0abcb018ff35be13c0627bc0ab2483cace0e1cee17fa06146bdd482e21",
+        "source_fact:v1:93bfcb56fcd35b5c4228b231504ce564762eff52210e69f7a6f63d8ef82ccc15",
+        "source_fact:v1:9609d9f80e3f39297b9674d8a00cf8d0cd083d6ebc63adca49e3be912dbc6f39",
+        "source_fact:v1:c14cb1b4de06f33e2ace062dd78f6db7c8013258163e77d289302b04fee1609e",
+        "source_fact:v1:d8ae5a4aa5a9aa3ea27677adf4be9e79636aa23d00d8fffc676fcba88ce0a897",
+        "source_fact:v1:e0de40166a73880527b439b492a3a1978a6051ba199dd69718f4ce651b7c3f02"
+      ],
+      "source_published_kst": "2026-10-12T14:27+09:00",
+      "source_title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향",
+      "telegram_core_fact": "금융투자협회가 12일 발표한 ‘2026년 9월 장외채권시장 동향’에 따르면 지난달 말 국고채 1년물 금리는 3.733%로 전월 말보다 29.2bp(1bp=0.01%포인트) 상승했다.",
+      "title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향"
     },
     "core:697f35855c13b1c76bd9d998": {
       "first_seen_kst": "2026-10-12T11:11:48+09:00",
@@ -31216,36 +31339,32 @@
     "event:242c04e115c71f36e3e5a541": {
       "first_seen_kst": "2026-10-12T01:34:33+09:00",
       "lanes": {
-        "live": "2026-10-12T15:43:01+09:00"
+        "live": "2026-10-12T16:29:45+09:00"
       },
-      "last_seen_kst": "2026-10-12T15:43:01+09:00",
-      "link": "https://www.newsis.com/view/NISX20261012_0003822437",
-      "source": "뉴시스",
-      "source_body_digest": "d2c20a3241794ef6b31f550e437478f0fafcdaa632baafb4b7468acaf7f66ccc",
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03306246645612264",
+      "source": "이데일리",
+      "source_body_digest": "3d9941a1568946b4c60b01824bc6084971c02dc2c3196e46c0e82bb5c8ca9daf",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:38ba61774f904112f881b4bb83fa5e7df3186ee1811db7ed2b9ac25078093a47",
+      "source_fact_identity": "source_facts:v1:4f49a9f48f3098e85ef90773d3eb37ffb45a44dc3879efce43d4b33973631c3b",
       "source_fact_keys": [
-        "source_fact:v1:12e798abbe8d434a0a932cfc45e417afce656de66cf73d5aa6371a771a76b29f",
-        "source_fact:v1:3646ff025b660705ba543eb1ae62e51526fa985260c89740c0eca2a453fed971",
-        "source_fact:v1:4818c85835df988fed555cbdcbfc8cfa82311d5879a8eb11e3da0a76e9db1f85",
-        "source_fact:v1:4dbca7c840e89b138f0f79ea577d8b6da61beebd916a4f819da90e130ea9c79b",
-        "source_fact:v1:514a1591b72616b055959f22c1b73ccf350438463b84bd6742b85554c82a4584",
-        "source_fact:v1:5570355878d5156f99eafc7f5d5a9e0a668915ee42a321ac3e9d4c46430db521",
-        "source_fact:v1:826cc91e59c6d0912cccb922895314b397f46cbb0b67c0bad2c09cdf3471c2d5",
-        "source_fact:v1:8acce9763c1279462df4f3d9aa190bd560c248f071d6bb1b75acf461ae96ceb5",
-        "source_fact:v1:8fcd1180fed862f667917d4cd585febfa0a507d5bdfb82401e7900e8cc96b803",
-        "source_fact:v1:9409a7fdcf5a1d9e0cc4038295efebcb1051dde99965245ef656bbcd61c7cb86",
-        "source_fact:v1:9e2e7961a5d48f46153b71b0dec8da756c48a5b2653c74615890cb06c790ed49",
-        "source_fact:v1:c8b00b3b88cb96897f3c960fad77bba9f89827482c3e90d7c9dca9f0a1ad8756",
-        "source_fact:v1:d50b1f7e67b5a73d00464785e4636c3f0f4a422965bf70ca63082e6adff3fab9",
-        "source_fact:v1:d79bfe38411102dabffc0cf7ebe046903f04330f22f9065d444ab788cf5be4af",
-        "source_fact:v1:e2ca74d39e2fe81f2ba036ceddfeb71b14a27e43dadfb22e0f935fd2945e18b5",
-        "source_fact:v1:fb3b40acbc7e581d4142e90cbe5231902272ee6f86efd266a8835b6a148c136e"
+        "source_fact:v1:0608d1b8a5690232c2d1602c0737add81185f649471509ada0a92a0f1c8f0a92",
+        "source_fact:v1:1dfc6a917bda90cacf9e6ef525673c115c4710ecbe61c6f84d9fcecc067e3a24",
+        "source_fact:v1:1fb04963d453de9f6e4fa40f6955f57cd7b8244085fc11586ae1036ca6f748f1",
+        "source_fact:v1:2f601fd8c9a2a71a06797ce11b8c50877c21f7674068e7b9e4d2ee21a31dae68",
+        "source_fact:v1:4176e519acb4889d908b216c78331005645c75034f2cf8a3e0686569f59fa362",
+        "source_fact:v1:4e9cb31c66d4b64171a9244c52828d10db1d50f7a94d9554e5835f5d08742b52",
+        "source_fact:v1:8314ee0abcb018ff35be13c0627bc0ab2483cace0e1cee17fa06146bdd482e21",
+        "source_fact:v1:93bfcb56fcd35b5c4228b231504ce564762eff52210e69f7a6f63d8ef82ccc15",
+        "source_fact:v1:9609d9f80e3f39297b9674d8a00cf8d0cd083d6ebc63adca49e3be912dbc6f39",
+        "source_fact:v1:c14cb1b4de06f33e2ace062dd78f6db7c8013258163e77d289302b04fee1609e",
+        "source_fact:v1:d8ae5a4aa5a9aa3ea27677adf4be9e79636aa23d00d8fffc676fcba88ce0a897",
+        "source_fact:v1:e0de40166a73880527b439b492a3a1978a6051ba199dd69718f4ce651b7c3f02"
       ],
-      "source_published_kst": "2026-10-12T15:36+09:00",
-      "source_title": "9월 채권 발행 87.4조…금융채·회사채 늘며 전월 대비 15.6%↑",
-      "telegram_core_fact": "국고채 발행이 크게 줄었지만 통안증권·금융채·회사채 발행이 늘며 전월 대비 15.6%(11조8000억원) 증가했다. 국고채 발행은 20조원으로 전월 대비 3조3000억원 감소했지만 금융채, 회사채, 통안증권 발행이 늘며 전체 발행규모가 증가했다.",
-      "title": "9월 채권 발행 87.4조…금융채·회사채 늘며 전월 대비 15.6%↑"
+      "source_published_kst": "2026-10-12T14:27+09:00",
+      "source_title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향",
+      "telegram_core_fact": "금융투자협회가 12일 발표한 ‘2026년 9월 장외채권시장 동향’에 따르면 지난달 말 국고채 1년물 금리는 3.733%로 전월 말보다 29.2bp(1bp=0.01%포인트) 상승했다.",
+      "title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향"
     },
     "event:243b9268c0c661c2e567eb0a": {
       "first_seen_kst": "2026-09-30T11:15:27+09:00",
@@ -31429,31 +31548,25 @@
     "event:2881a326637c21bd9c88bb6f": {
       "first_seen_kst": "2026-10-12T05:09:39+09:00",
       "lanes": {
-        "live": "2026-10-12T12:32:44+09:00",
+        "live": "2026-10-12T16:29:45+09:00",
         "preopen": "2026-10-12T06:42:49+09:00"
       },
-      "last_seen_kst": "2026-10-12T12:32:44+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=02961846645612264",
-      "source": "이데일리",
-      "source_body_digest": "2b2eee534b8ed38d492932eaec83f8bb83535a8f58cc06fcf8dbc4f39f0ddea4",
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://biz.heraldcorp.com/article/10899298",
+      "source": "헤럴드경제",
+      "source_body_digest": "72c1a187badfe875819fd6ce57b38c1069eca58dedfa2e7cd7ab8a7a62246349",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:6bce77f006ce43f0f985d14b78451766f66852b2ee3aa0a25d3ad2aed9b8f0b0",
+      "source_fact_identity": "source_facts:v1:483cf1db6a7a131b069f9d394ac9c51d5db0d9d002d8f6f9f74148c265b0c020",
       "source_fact_keys": [
-        "source_fact:v1:0d00c3368abc79d65726d5884bce4691bb057ed5d401322ed249d63ad1d27a20",
-        "source_fact:v1:1287d822fbd2e1be0a443689e8ea04bd54d7401bc9a163faa1e30b807181df2a",
-        "source_fact:v1:40ea467b3b9643fd90c4b0880e0863eb0b1febbfb2fa717f423a7de4b98d5998",
-        "source_fact:v1:44a71c8b44b0db8f6bdf39469c5d463f43796a595e557a66c70296f494857e74",
-        "source_fact:v1:4e6bbeb5e2661513db329a82b807d291565fec5aec55c795987516389e828548",
-        "source_fact:v1:7e8afa9cd341134c3624e9fdaab921139978899e615ad9c4fc288b91f2605824",
-        "source_fact:v1:96e43e61f0fa17299018423f5c35e56062c1c0b6282411a62b86925ac9344f6c",
-        "source_fact:v1:af6fc4b460d963bb4453dedc618f02597213f444927224024f95b0ab65029f88",
-        "source_fact:v1:ded3f2da37a37eb74481ab18daba193e42f8d1aa4f092646b1756559dab586fe",
-        "source_fact:v1:fc6eded782d93d17c1429f84ceb174d6e9d86b18f0cfc4dac73aa9d4560bce00"
+        "source_fact:v1:63b3ed88429027ca3dd69a58bbf3d42bd52205fc4ae5b2e4f1169f0be8cd719d",
+        "source_fact:v1:9589771748d50e53f2bbe0fd0868238dcaa3174f13c19b883dcb4eabae430aa3",
+        "source_fact:v1:be23be450ed47cb79e4354f799c9c6f134a87ef911415e744f05f2cfd9eb439e",
+        "source_fact:v1:ca90f1681f98f2d694d9bb2d64f9d5d5e278156157828a3fcf555dff093739f2"
       ],
-      "source_published_kst": "2026-10-12T11:42+09:00",
-      "source_title": "\"물가 상승, 유가·환율 때문인데 왜 금리 올렸나\"…한은 답변은",
-      "telegram_core_fact": "신 총재는 “중앙은행은 전체 경제 총량을 보고 통화정책을 펴는 것이 옳다”며, 소득 여건 개선에 다소 시간이 걸리더라도 전반적인 경제 흐름과 금융안정 리스크, 물가 상승세 확산 방지를 고려해 금리 인상이 불가피했음을 설명했다.",
-      "title": "\"물가 상승, 유가·환율 때문인데 왜 금리 올렸나\"…한은 답변은"
+      "source_published_kst": "2026-10-12T10:38+09:00",
+      "source_title": "신현송 총재 “기준금리 추가 인상 시기, 물가·경기 흐름 보고 결정”",
+      "telegram_core_fact": "신현송 한국은행 총재는 향후 통화정책에 대해 “물가와 경기 흐름, 금융안정 상황을 면밀히 점검하면서 추가 인상의 시기와 속도 등을 결정해 나갈 계획”이라며 금리 인상 기조를 재차 확인했다.",
+      "title": "신현송 총재 “기준금리 추가 인상 시기, 물가·경기 흐름 보고 결정”"
     },
     "event:28e538d8e978a0ccfdf6d9b3": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
@@ -33403,6 +33516,27 @@
       "source_published_kst": "2026-10-05T08:05+09:00",
       "title": "씨이앤에스, ‘AI 서버 폭발적 발열’ 미스트 정밀 분사로 잡는다"
     },
+    "event:59965fcc1a43e3bd97cebae8": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12173716",
+      "source": "매일경제",
+      "source_body_digest": "b26d5331ad2b2cec782833ca06d93a2ad3765c1cb252cd43faa956f7ac784aa8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b907815a8ac8a9bf38bae7113fe8f106ae4ed61115ae031334149f4977f4de8a",
+      "source_fact_keys": [
+        "source_fact:v1:9828f448bfbcd9688e065c46870bd924bcaab4848507eb64c926b407dc4f730b",
+        "source_fact:v1:a6a9df7bcc9648b921f88a3116c614fea0731b1149047d104deafad96f056ada",
+        "source_fact:v1:d93a4fa7abce09d1efe8118a4c4a56c236aca23394cfc1755ecec70347749dbe"
+      ],
+      "source_published_kst": "2026-10-12T16:15+09:00",
+      "source_title": "삼전 ‘실적 대박’에도 돌아오지 않는 외국인…올 코스피서 224조 순매도",
+      "telegram_core_fact": "외국인은 상반기에만 약 177조원을 순매도했다.",
+      "title": "삼전 ‘실적 대박’에도 돌아오지 않는 외국인…올 코스피서 224조 순매도"
+    },
     "event:59a3d1a34334ace769f66950": {
       "first_seen_kst": "2026-10-11T14:23:21+09:00",
       "lanes": {
@@ -34310,23 +34444,27 @@
     "event:6ff0a8713180ba1ab0e9bf44": {
       "first_seen_kst": "2026-10-12T07:43:12+09:00",
       "lanes": {
-        "live": "2026-10-12T07:43:12+09:00"
+        "live": "2026-10-12T16:29:45+09:00"
       },
-      "last_seen_kst": "2026-10-12T07:43:12+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261012008300009",
-      "source": "연합뉴스",
-      "source_body_digest": "a007476224ce89cc4a0a5af8213a0fe9152d9a38382cd95d61b03ee7910ce154",
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.dt.co.kr/article/12088561",
+      "source": "디지털타임스",
+      "source_body_digest": "a07b8b8678f1acb38e80595a266ac7b57adaad3b20796c15a025b46b737951cb",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:c3a8c29e7421588c086c888f78c4aa15f618f9eb1723554d4709796975571a6b",
+      "source_fact_identity": "source_facts:v1:b94fd0563f6cae63f01b97e1dd573ec94ba11fcede13a3ecff9d2c467e04edea",
       "source_fact_keys": [
-        "source_fact:v1:455b1e3d35f1dbdde34876b9ef74ee47b1c0a94119062f8d9e7b974d2ed7e141",
-        "source_fact:v1:a7b28c06ddb3fb136f725f4d66ca94effcc111520801461f7619ffd9c698dbec",
-        "source_fact:v1:fdd74ce0022b1926e7b76a25b151cd082f4d976e2eb5c1e2d1247fc1f5d51c7c"
+        "source_fact:v1:0baf6229a319f0adbe49d50732f67f2165d6a7ca9efbbcfd8d3cff8042d55b7e",
+        "source_fact:v1:11c79f072a0d4c3bfd553e3a0050d327ed516fb15271dae85d92e5b08f9dcdfa",
+        "source_fact:v1:40e9bd58118462b1d105f1ae3fbb6abdb53f41a6992651c919f220dd422777a8",
+        "source_fact:v1:56871d3ba17ce6c65c9a7dbe60fc8d0e04dbe2e43e8d36e9ac66c7dbb9c8c325",
+        "source_fact:v1:65a280c1e07112c06932eae7d05fc4533a715334d69c361c6d505f1c5a0c4a28",
+        "source_fact:v1:80c696adb9eea197ea3af169677cac52296812ea6d9bfeceee5a6ce5b8bd907c",
+        "source_fact:v1:bbda3322dc77d908c72cb1bf0cda130c753eb0fb503f96fa5f14a6d60330c72e"
       ],
-      "source_published_kst": "2026-10-12T07:30+09:00",
-      "source_title": "\"앤트로픽, 아이렌과 클라우드 계약\"…데이터센터 확보 속도전 | 연합뉴스",
-      "telegram_core_fact": "앤트로픽은 아이렌 외에도 아마존웹서비스(AWS)와 구글 등 10곳이 넘는 클라우드와 15기가와트(GW), 5천300억달러(약 720조원) 데이터센터 임차 계약을 맺고 협력사들에 가동을 서두르라고 요구하고 있다.",
-      "title": "\"앤트로픽, 아이렌과 클라우드 계약\"…데이터센터 확보 속도전 | 연합뉴스"
+      "source_published_kst": "2026-10-12T16:09+09:00",
+      "source_title": "美 AI기업 데이터센터 확보 속도전…앤트로픽, 아이렌과 클라우드 계약",
+      "telegram_core_fact": "다음달 기업공개(IPO)를 할 예정인 앤트로픽은 인공지능(AI) 서비스 운영에 필요한 컴퓨팅 인프라 확보에 속도를 내고 있다.",
+      "title": "美 AI기업 데이터센터 확보 속도전…앤트로픽, 아이렌과 클라우드 계약"
     },
     "event:70ef15e117a62a7e5766d539": {
       "first_seen_kst": "2026-10-02T07:25:31+09:00",
@@ -41837,6 +41975,28 @@
       "source_published_kst": "2026-10-05T17:23+09:00",
       "title": "AI 해킹 확산에 'AI 방패' 꺼낸 금융당국…'망분리 완화' 해법 될 수 있나"
     },
+    "fact:06c3a08aa0ea7d937116e2a3": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634775",
+      "source": "이투데이",
+      "source_body_digest": "4ed71ef7d05b9e547ba5862a09ec459a050e8d3e4fe6177f98d06047882c34b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2aaed2c2f6b5c040580be62a5f3b4373c79ed2bc324f89daf74286bedc7d5e47",
+      "source_fact_keys": [
+        "source_fact:v1:3b9dfca4b05e7236b688a95867dbdce85f5f36b1da0ca650b43d6712f1423728",
+        "source_fact:v1:62405005925306a81cdc2488de2826bb28ffa39f05d28723aed3686ed98af2c5",
+        "source_fact:v1:80dc5a97f373f24c327529603e5b60db3fce0890d078c02bcb76e2dcefb394bf",
+        "source_fact:v1:aea36e90259159d1f392a88b4aa30daea1d94c9a1e9ad728299886692afe232c"
+      ],
+      "source_published_kst": "2026-10-12T16:14+09:00",
+      "source_title": "외국인 2조 매도에 코스피 6400선 붕괴…39거래일 만",
+      "telegram_core_fact": "개인이 1조4790억원, 기타법인이 6620억원 순매수한 가운데 외국인이 2조120억원, 기관이 1290억원 순매도했다.",
+      "title": "외국인 2조 매도에 코스피 6400선 붕괴…39거래일 만"
+    },
     "fact:06cd86e95a87b08df0855783": {
       "first_seen_kst": "2026-10-07T05:13:11+09:00",
       "lanes": {
@@ -43541,6 +43701,27 @@
       "source_title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이",
       "telegram_core_fact": "코스피가 외국인의 거센 매도 폭탄과 미국 국채금리 반등, 주요 기업 실적에 대한 경계감에 밀려 2% 가까이 급락하며 간신히 6,800선을 지켜냈다.",
       "title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이"
+    },
+    "fact:103a47e846e7ca47a887265f": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12173716",
+      "source": "매일경제",
+      "source_body_digest": "b26d5331ad2b2cec782833ca06d93a2ad3765c1cb252cd43faa956f7ac784aa8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b907815a8ac8a9bf38bae7113fe8f106ae4ed61115ae031334149f4977f4de8a",
+      "source_fact_keys": [
+        "source_fact:v1:9828f448bfbcd9688e065c46870bd924bcaab4848507eb64c926b407dc4f730b",
+        "source_fact:v1:a6a9df7bcc9648b921f88a3116c614fea0731b1149047d104deafad96f056ada",
+        "source_fact:v1:d93a4fa7abce09d1efe8118a4c4a56c236aca23394cfc1755ecec70347749dbe"
+      ],
+      "source_published_kst": "2026-10-12T16:15+09:00",
+      "source_title": "삼전 ‘실적 대박’에도 돌아오지 않는 외국인…올 코스피서 224조 순매도",
+      "telegram_core_fact": "외국인은 상반기에만 약 177조원을 순매도했다.",
+      "title": "삼전 ‘실적 대박’에도 돌아오지 않는 외국인…올 코스피서 224조 순매도"
     },
     "fact:103cfac390a531b77843d0bb": {
       "first_seen_kst": "2026-10-10T00:39:56+09:00",
@@ -52560,6 +52741,31 @@
       "telegram_core_fact": "가을철 고온에도 안정적으로 속이 차는 배추 ‘청명가을’이 올해 대한민국 최고 품종으로 선정됐다. 스페인 주요 재배시장의 20%를 점유하고 있으며, 지난해 수출액은 112만달러로 단일 품종 기준 유럽 수출에서 역대 최고 실적을 기록했다.",
       "title": "고온에도 속 꽉 찬 배추 ‘청명가을’…대한민국 최고 품종 선정"
     },
+    "fact:455e711e57d64930a3346baa": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.dt.co.kr/article/12088561",
+      "source": "디지털타임스",
+      "source_body_digest": "a07b8b8678f1acb38e80595a266ac7b57adaad3b20796c15a025b46b737951cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b94fd0563f6cae63f01b97e1dd573ec94ba11fcede13a3ecff9d2c467e04edea",
+      "source_fact_keys": [
+        "source_fact:v1:0baf6229a319f0adbe49d50732f67f2165d6a7ca9efbbcfd8d3cff8042d55b7e",
+        "source_fact:v1:11c79f072a0d4c3bfd553e3a0050d327ed516fb15271dae85d92e5b08f9dcdfa",
+        "source_fact:v1:40e9bd58118462b1d105f1ae3fbb6abdb53f41a6992651c919f220dd422777a8",
+        "source_fact:v1:56871d3ba17ce6c65c9a7dbe60fc8d0e04dbe2e43e8d36e9ac66c7dbb9c8c325",
+        "source_fact:v1:65a280c1e07112c06932eae7d05fc4533a715334d69c361c6d505f1c5a0c4a28",
+        "source_fact:v1:80c696adb9eea197ea3af169677cac52296812ea6d9bfeceee5a6ce5b8bd907c",
+        "source_fact:v1:bbda3322dc77d908c72cb1bf0cda130c753eb0fb503f96fa5f14a6d60330c72e"
+      ],
+      "source_published_kst": "2026-10-12T16:09+09:00",
+      "source_title": "美 AI기업 데이터센터 확보 속도전…앤트로픽, 아이렌과 클라우드 계약",
+      "telegram_core_fact": "다음달 기업공개(IPO)를 할 예정인 앤트로픽은 인공지능(AI) 서비스 운영에 필요한 컴퓨팅 인프라 확보에 속도를 내고 있다.",
+      "title": "美 AI기업 데이터센터 확보 속도전…앤트로픽, 아이렌과 클라우드 계약"
+    },
     "fact:455f3f1dd23c9b71ffd8a5a1": {
       "first_seen_kst": "2026-10-07T05:13:11+09:00",
       "lanes": {
@@ -58380,6 +58586,30 @@
       "source_published_kst": "2026-10-06T07:07+09:00",
       "title": "스페이스X 주가 급등에 머스크 다시 조만장자 [마켓핫]"
     },
+    "fact:69892954ef14c583acc75966": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.mk.co.kr/news/pick/12173604",
+      "source": "매일경제",
+      "source_body_digest": "7c1cb6296315cafc98bf76fcf19c9badb4428235e1739190fa4bbc24f038d0d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ccb9431d8355c27b27fe6e443b6690e487357919e0ac306855afd6e6de4b6fb2",
+      "source_fact_keys": [
+        "source_fact:v1:264af22fead18dbe7b02ee441d3672ab43a6049d6a981a833c69b3a1b7099bf2",
+        "source_fact:v1:33eb1992783668307e2e0c4306abb806288fdf5aaa780ab23d1a2e645d428fed",
+        "source_fact:v1:43c6d2757360c3232a3a1898a9cecab65f2808be59bc8135911fe9d405756d77",
+        "source_fact:v1:4c501d12dde6a7f16e097dfadeb88c20eeb1f215e143d92be5e0c300768ee5eb",
+        "source_fact:v1:4cb7724d75214274c1649860eeace2ffdd101f65a90e749d14bf4e7252878b14",
+        "source_fact:v1:d8319692c16d76dd2aa84b6380161a798904ee897621c93dfb710d1bd6ec4c86"
+      ],
+      "source_published_kst": "2026-10-12T15:02+09:00",
+      "source_title": "오텍, 건자재 업체 노이리움에 냉난방 설비",
+      "telegram_core_fact": "오텍그룹의 계열사 오텍캐리어와 씨알케이(CRK)가 지난 7일 노이리움과 ‘전국 총판점·대리점 신설에 따른 설비 공급 협력을 위한 업무협약(MOU)’을 체결했다고 12일 밝혔다.",
+      "title": "오텍, 건자재 업체 노이리움에 냉난방 설비"
+    },
     "fact:69a6eb953a229c04b5d5139d": {
       "first_seen_kst": "2026-10-11T11:26:05+09:00",
       "lanes": {
@@ -62134,6 +62364,36 @@
       ],
       "source_published_kst": "2026-10-06T22:58+09:00",
       "title": "우크라, '한국의 러 석유공급' 보도에 韓 비판 | 연합뉴스"
+    },
+    "fact:802e7e08f6302f9ead57947f": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03306246645612264",
+      "source": "이데일리",
+      "source_body_digest": "3d9941a1568946b4c60b01824bc6084971c02dc2c3196e46c0e82bb5c8ca9daf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4f49a9f48f3098e85ef90773d3eb37ffb45a44dc3879efce43d4b33973631c3b",
+      "source_fact_keys": [
+        "source_fact:v1:0608d1b8a5690232c2d1602c0737add81185f649471509ada0a92a0f1c8f0a92",
+        "source_fact:v1:1dfc6a917bda90cacf9e6ef525673c115c4710ecbe61c6f84d9fcecc067e3a24",
+        "source_fact:v1:1fb04963d453de9f6e4fa40f6955f57cd7b8244085fc11586ae1036ca6f748f1",
+        "source_fact:v1:2f601fd8c9a2a71a06797ce11b8c50877c21f7674068e7b9e4d2ee21a31dae68",
+        "source_fact:v1:4176e519acb4889d908b216c78331005645c75034f2cf8a3e0686569f59fa362",
+        "source_fact:v1:4e9cb31c66d4b64171a9244c52828d10db1d50f7a94d9554e5835f5d08742b52",
+        "source_fact:v1:8314ee0abcb018ff35be13c0627bc0ab2483cace0e1cee17fa06146bdd482e21",
+        "source_fact:v1:93bfcb56fcd35b5c4228b231504ce564762eff52210e69f7a6f63d8ef82ccc15",
+        "source_fact:v1:9609d9f80e3f39297b9674d8a00cf8d0cd083d6ebc63adca49e3be912dbc6f39",
+        "source_fact:v1:c14cb1b4de06f33e2ace062dd78f6db7c8013258163e77d289302b04fee1609e",
+        "source_fact:v1:d8ae5a4aa5a9aa3ea27677adf4be9e79636aa23d00d8fffc676fcba88ce0a897",
+        "source_fact:v1:e0de40166a73880527b439b492a3a1978a6051ba199dd69718f4ce651b7c3f02"
+      ],
+      "source_published_kst": "2026-10-12T14:27+09:00",
+      "source_title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향",
+      "telegram_core_fact": "금융투자협회가 12일 발표한 ‘2026년 9월 장외채권시장 동향’에 따르면 지난달 말 국고채 1년물 금리는 3.733%로 전월 말보다 29.2bp(1bp=0.01%포인트) 상승했다.",
+      "title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향"
     },
     "fact:80434deb32e9a6db6a48e187": {
       "first_seen_kst": "2026-10-12T10:17:45+09:00",
@@ -66998,6 +67258,27 @@
       "telegram_core_fact": "이번 다카이치 총리의 입장은 트럼프 행정부가 ICC) 재판관 출신 나비 필레이가 노벨평화상 수상자로 발표된 9일(현지 시간) ICC에 대한 전면 제재를 발표한 직후 나왔다.",
       "title": "日다카이치, 美트럼프 행정부의 ICC 제재에 \"깊은 우려…ICC 지지\""
     },
+    "fact:9835e833c9f13e0108362e1d": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822010",
+      "source": "뉴시스",
+      "source_body_digest": "e62d375a2423f0c534ca9b781c251f86fae7c745c878de2bdf0ee814d711e4c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c4696e49348a924e361a319121b849f7b006bf057065049339518c633af380e0",
+      "source_fact_keys": [
+        "source_fact:v1:036963f522d5be7bf0a27a454dd3aad9c01c2143ab32c448e905d22f01f69521",
+        "source_fact:v1:3fabd4292822b365c0a4ef412479eb4795bbe4c8f3211e1eb114e977cd5739ed",
+        "source_fact:v1:e655bf0600ae43cca14d5af86686cfc7bf60df938c3a86f94c6e93dd754b04f2"
+      ],
+      "source_published_kst": "2026-10-12T11:47+09:00",
+      "source_title": "캠시스, 15억 규모 자사주 소각 결정",
+      "telegram_core_fact": "카메라 솔루션 전문기업 캠시스는 15억원 자사주 소각을 결정했다고 12일 밝혔다.",
+      "title": "캠시스, 15억 규모 자사주 소각 결정"
+    },
     "fact:989cf75b45e531b1fb3c9900": {
       "first_seen_kst": "2026-10-12T12:32:44+09:00",
       "lanes": {
@@ -70401,6 +70682,28 @@
       "source_title": "[美특징주]캐터필러, AI 데이터센터·인프라 투자 수혜 기대...개장 전↑",
       "telegram_core_fact": "특히 캐터필러는 데이터센터 건설 장비뿐 아니라 전력 공급에 필요한 가스터빈 등도 공급하고 있어 AI 인프라 투자 확대의 수혜 기업으로 평가받고 있다. 미국 중장비 제조업체 캐터필러(CAT)가 인공지능(AI) 데이터센터 투자 확대와 글로벌 인프라 건설 수요에 힘입어 추가 상승할 가능성이 있다는 분석이 나왔다.",
       "title": "[美특징주]캐터필러, AI 데이터센터·인프라 투자 수혜 기대...개장 전↑"
+    },
+    "fact:acfd7f049002fc8d71b2e5e1": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://biz.heraldcorp.com/article/10899298",
+      "source": "헤럴드경제",
+      "source_body_digest": "72c1a187badfe875819fd6ce57b38c1069eca58dedfa2e7cd7ab8a7a62246349",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:483cf1db6a7a131b069f9d394ac9c51d5db0d9d002d8f6f9f74148c265b0c020",
+      "source_fact_keys": [
+        "source_fact:v1:63b3ed88429027ca3dd69a58bbf3d42bd52205fc4ae5b2e4f1169f0be8cd719d",
+        "source_fact:v1:9589771748d50e53f2bbe0fd0868238dcaa3174f13c19b883dcb4eabae430aa3",
+        "source_fact:v1:be23be450ed47cb79e4354f799c9c6f134a87ef911415e744f05f2cfd9eb439e",
+        "source_fact:v1:ca90f1681f98f2d694d9bb2d64f9d5d5e278156157828a3fcf555dff093739f2"
+      ],
+      "source_published_kst": "2026-10-12T10:38+09:00",
+      "source_title": "신현송 총재 “기준금리 추가 인상 시기, 물가·경기 흐름 보고 결정”",
+      "telegram_core_fact": "신현송 한국은행 총재는 향후 통화정책에 대해 “물가와 경기 흐름, 금융안정 상황을 면밀히 점검하면서 추가 인상의 시기와 속도 등을 결정해 나갈 계획”이라며 금리 인상 기조를 재차 확인했다.",
+      "title": "신현송 총재 “기준금리 추가 인상 시기, 물가·경기 흐름 보고 결정”"
     },
     "fact:ad1c2752bc375237412312d1": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
@@ -91041,6 +91344,30 @@
       "source": "이투데이",
       "title": "[이더커넥트2026] ①투자부터 대출∙보험까지∙∙∙샤프링크 샬롬 CEO, 그린 ‘이더리움 위 AI 금융’"
     },
+    "link:1665e9d19f126aed0f6c0850": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.mk.co.kr/news/pick/12173604",
+      "source": "매일경제",
+      "source_body_digest": "7c1cb6296315cafc98bf76fcf19c9badb4428235e1739190fa4bbc24f038d0d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ccb9431d8355c27b27fe6e443b6690e487357919e0ac306855afd6e6de4b6fb2",
+      "source_fact_keys": [
+        "source_fact:v1:264af22fead18dbe7b02ee441d3672ab43a6049d6a981a833c69b3a1b7099bf2",
+        "source_fact:v1:33eb1992783668307e2e0c4306abb806288fdf5aaa780ab23d1a2e645d428fed",
+        "source_fact:v1:43c6d2757360c3232a3a1898a9cecab65f2808be59bc8135911fe9d405756d77",
+        "source_fact:v1:4c501d12dde6a7f16e097dfadeb88c20eeb1f215e143d92be5e0c300768ee5eb",
+        "source_fact:v1:4cb7724d75214274c1649860eeace2ffdd101f65a90e749d14bf4e7252878b14",
+        "source_fact:v1:d8319692c16d76dd2aa84b6380161a798904ee897621c93dfb710d1bd6ec4c86"
+      ],
+      "source_published_kst": "2026-10-12T15:02+09:00",
+      "source_title": "오텍, 건자재 업체 노이리움에 냉난방 설비",
+      "telegram_core_fact": "오텍그룹의 계열사 오텍캐리어와 씨알케이(CRK)가 지난 7일 노이리움과 ‘전국 총판점·대리점 신설에 따른 설비 공급 협력을 위한 업무협약(MOU)’을 체결했다고 12일 밝혔다.",
+      "title": "오텍, 건자재 업체 노이리움에 냉난방 설비"
+    },
     "link:16680211ef7e649008787a0f": {
       "first_seen_kst": "2026-10-07T07:24:41+09:00",
       "lanes": {
@@ -92811,6 +93138,28 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T06:43+09:00",
       "title": "치솟는 기름값에 지갑 닫힌 미국인…SUV 대신 세단 찾자 현대차·혼다 ‘반색’"
+    },
+    "link:1e3aaf69456e25dbb94b9ed9": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://biz.heraldcorp.com/article/10899298",
+      "source": "헤럴드경제",
+      "source_body_digest": "72c1a187badfe875819fd6ce57b38c1069eca58dedfa2e7cd7ab8a7a62246349",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:483cf1db6a7a131b069f9d394ac9c51d5db0d9d002d8f6f9f74148c265b0c020",
+      "source_fact_keys": [
+        "source_fact:v1:63b3ed88429027ca3dd69a58bbf3d42bd52205fc4ae5b2e4f1169f0be8cd719d",
+        "source_fact:v1:9589771748d50e53f2bbe0fd0868238dcaa3174f13c19b883dcb4eabae430aa3",
+        "source_fact:v1:be23be450ed47cb79e4354f799c9c6f134a87ef911415e744f05f2cfd9eb439e",
+        "source_fact:v1:ca90f1681f98f2d694d9bb2d64f9d5d5e278156157828a3fcf555dff093739f2"
+      ],
+      "source_published_kst": "2026-10-12T10:38+09:00",
+      "source_title": "신현송 총재 “기준금리 추가 인상 시기, 물가·경기 흐름 보고 결정”",
+      "telegram_core_fact": "신현송 한국은행 총재는 향후 통화정책에 대해 “물가와 경기 흐름, 금융안정 상황을 면밀히 점검하면서 추가 인상의 시기와 속도 등을 결정해 나갈 계획”이라며 금리 인상 기조를 재차 확인했다.",
+      "title": "신현송 총재 “기준금리 추가 인상 시기, 물가·경기 흐름 보고 결정”"
     },
     "link:1e3e0c8951c32271ca993b68": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
@@ -112202,6 +112551,36 @@
       "telegram_core_fact": "지난 9일(현지시간) 트럼프 대통령은 러시아산 경유를 미국 등에 공급하고 이에 맞춰 한시적으로 대러 제재를 완화하기로 블라디미르 푸틴 러시아 대통령과 합의했다고 밝혔다.",
       "title": "표심 급한 트럼프, 러 경유 전격 수입 …\"악마와의 거래\" 발칵"
     },
+    "link:69a95d1d2c7aac90c17e0568": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03306246645612264",
+      "source": "이데일리",
+      "source_body_digest": "3d9941a1568946b4c60b01824bc6084971c02dc2c3196e46c0e82bb5c8ca9daf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4f49a9f48f3098e85ef90773d3eb37ffb45a44dc3879efce43d4b33973631c3b",
+      "source_fact_keys": [
+        "source_fact:v1:0608d1b8a5690232c2d1602c0737add81185f649471509ada0a92a0f1c8f0a92",
+        "source_fact:v1:1dfc6a917bda90cacf9e6ef525673c115c4710ecbe61c6f84d9fcecc067e3a24",
+        "source_fact:v1:1fb04963d453de9f6e4fa40f6955f57cd7b8244085fc11586ae1036ca6f748f1",
+        "source_fact:v1:2f601fd8c9a2a71a06797ce11b8c50877c21f7674068e7b9e4d2ee21a31dae68",
+        "source_fact:v1:4176e519acb4889d908b216c78331005645c75034f2cf8a3e0686569f59fa362",
+        "source_fact:v1:4e9cb31c66d4b64171a9244c52828d10db1d50f7a94d9554e5835f5d08742b52",
+        "source_fact:v1:8314ee0abcb018ff35be13c0627bc0ab2483cace0e1cee17fa06146bdd482e21",
+        "source_fact:v1:93bfcb56fcd35b5c4228b231504ce564762eff52210e69f7a6f63d8ef82ccc15",
+        "source_fact:v1:9609d9f80e3f39297b9674d8a00cf8d0cd083d6ebc63adca49e3be912dbc6f39",
+        "source_fact:v1:c14cb1b4de06f33e2ace062dd78f6db7c8013258163e77d289302b04fee1609e",
+        "source_fact:v1:d8ae5a4aa5a9aa3ea27677adf4be9e79636aa23d00d8fffc676fcba88ce0a897",
+        "source_fact:v1:e0de40166a73880527b439b492a3a1978a6051ba199dd69718f4ce651b7c3f02"
+      ],
+      "source_published_kst": "2026-10-12T14:27+09:00",
+      "source_title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향",
+      "telegram_core_fact": "금융투자협회가 12일 발표한 ‘2026년 9월 장외채권시장 동향’에 따르면 지난달 말 국고채 1년물 금리는 3.733%로 전월 말보다 29.2bp(1bp=0.01%포인트) 상승했다.",
+      "title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향"
+    },
     "link:69ccd54bf96be76a16ee198e": {
       "first_seen_kst": "2026-10-08T12:46:54+09:00",
       "lanes": {
@@ -117357,6 +117736,27 @@
       ],
       "source_published_kst": "2026-10-07T07:20+09:00",
       "title": "리사 수 “반도체 수요가 공급보다 많아”…AMD 주가 사상 최고"
+    },
+    "link:7caa818f3aa7ff4cc7f9b861": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12173716",
+      "source": "매일경제",
+      "source_body_digest": "b26d5331ad2b2cec782833ca06d93a2ad3765c1cb252cd43faa956f7ac784aa8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b907815a8ac8a9bf38bae7113fe8f106ae4ed61115ae031334149f4977f4de8a",
+      "source_fact_keys": [
+        "source_fact:v1:9828f448bfbcd9688e065c46870bd924bcaab4848507eb64c926b407dc4f730b",
+        "source_fact:v1:a6a9df7bcc9648b921f88a3116c614fea0731b1149047d104deafad96f056ada",
+        "source_fact:v1:d93a4fa7abce09d1efe8118a4c4a56c236aca23394cfc1755ecec70347749dbe"
+      ],
+      "source_published_kst": "2026-10-12T16:15+09:00",
+      "source_title": "삼전 ‘실적 대박’에도 돌아오지 않는 외국인…올 코스피서 224조 순매도",
+      "telegram_core_fact": "외국인은 상반기에만 약 177조원을 순매도했다.",
+      "title": "삼전 ‘실적 대박’에도 돌아오지 않는 외국인…올 코스피서 224조 순매도"
     },
     "link:7cac0b8c84f0cbbe4c019d12": {
       "first_seen_kst": "2026-10-06T22:37:02+09:00",
@@ -131478,6 +131878,28 @@
       "source": "파이낸셜뉴스",
       "title": "수익률·개인 매수·연금 활용까지…한투운용, 추석 ETF 4종 제안"
     },
+    "link:b4196614f0c21259aa0add12": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634775",
+      "source": "이투데이",
+      "source_body_digest": "4ed71ef7d05b9e547ba5862a09ec459a050e8d3e4fe6177f98d06047882c34b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2aaed2c2f6b5c040580be62a5f3b4373c79ed2bc324f89daf74286bedc7d5e47",
+      "source_fact_keys": [
+        "source_fact:v1:3b9dfca4b05e7236b688a95867dbdce85f5f36b1da0ca650b43d6712f1423728",
+        "source_fact:v1:62405005925306a81cdc2488de2826bb28ffa39f05d28723aed3686ed98af2c5",
+        "source_fact:v1:80dc5a97f373f24c327529603e5b60db3fce0890d078c02bcb76e2dcefb394bf",
+        "source_fact:v1:aea36e90259159d1f392a88b4aa30daea1d94c9a1e9ad728299886692afe232c"
+      ],
+      "source_published_kst": "2026-10-12T16:14+09:00",
+      "source_title": "외국인 2조 매도에 코스피 6400선 붕괴…39거래일 만",
+      "telegram_core_fact": "개인이 1조4790억원, 기타법인이 6620억원 순매수한 가운데 외국인이 2조120억원, 기관이 1290억원 순매도했다.",
+      "title": "외국인 2조 매도에 코스피 6400선 붕괴…39거래일 만"
+    },
     "link:b421f8b163fffdb5fd33741b": {
       "first_seen_kst": "2026-10-08T14:21:54+09:00",
       "lanes": {
@@ -134565,6 +134987,31 @@
       "source_title": "[美특징주]워딩턴스틸, 1Q 이익 급감에 주가 9%↓…인수 영향 반영",
       "telegram_core_fact": "7일(현지시간) 오후1시5분 현재 워딩턴스틸 주가는 전일대비 9.09% 급락한 34.72달러에 거래되고 있다. CNBC에 따르면 워딩턴스틸의 1분기 조정 주당순이익(EPS)은 0.57달러를 기록했다.",
       "title": "[美특징주]워딩턴스틸, 1Q 이익 급감에 주가 9%↓…인수 영향 반영"
+    },
+    "link:bf936b29678401e2762e5d34": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.dt.co.kr/article/12088561",
+      "source": "디지털타임스",
+      "source_body_digest": "a07b8b8678f1acb38e80595a266ac7b57adaad3b20796c15a025b46b737951cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b94fd0563f6cae63f01b97e1dd573ec94ba11fcede13a3ecff9d2c467e04edea",
+      "source_fact_keys": [
+        "source_fact:v1:0baf6229a319f0adbe49d50732f67f2165d6a7ca9efbbcfd8d3cff8042d55b7e",
+        "source_fact:v1:11c79f072a0d4c3bfd553e3a0050d327ed516fb15271dae85d92e5b08f9dcdfa",
+        "source_fact:v1:40e9bd58118462b1d105f1ae3fbb6abdb53f41a6992651c919f220dd422777a8",
+        "source_fact:v1:56871d3ba17ce6c65c9a7dbe60fc8d0e04dbe2e43e8d36e9ac66c7dbb9c8c325",
+        "source_fact:v1:65a280c1e07112c06932eae7d05fc4533a715334d69c361c6d505f1c5a0c4a28",
+        "source_fact:v1:80c696adb9eea197ea3af169677cac52296812ea6d9bfeceee5a6ce5b8bd907c",
+        "source_fact:v1:bbda3322dc77d908c72cb1bf0cda130c753eb0fb503f96fa5f14a6d60330c72e"
+      ],
+      "source_published_kst": "2026-10-12T16:09+09:00",
+      "source_title": "美 AI기업 데이터센터 확보 속도전…앤트로픽, 아이렌과 클라우드 계약",
+      "telegram_core_fact": "다음달 기업공개(IPO)를 할 예정인 앤트로픽은 인공지능(AI) 서비스 운영에 필요한 컴퓨팅 인프라 확보에 속도를 내고 있다.",
+      "title": "美 AI기업 데이터센터 확보 속도전…앤트로픽, 아이렌과 클라우드 계약"
     },
     "link:bf95b90ad41a5bb61cd973e7": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
@@ -145658,6 +146105,27 @@
       "telegram_core_fact": "BofA가 32개 자산군과 업종을 대상으로 산출하는 자체 ‘버블위험지표(BRI)’에서 미국 기술주는 현재 가장 높은 수준을 기록했다. 뱅크오브아메리카(BofA)가 미국 기술주와 한국 증시에서 ‘버블형’ 가격 움직임이 나타나고 있다고 경고했다.",
       "title": "뱅크오브아메리카 \"기술주·코스피 버블 형성 중\""
     },
+    "link:ecb657beda075fd3d1d470d0": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822010",
+      "source": "뉴시스",
+      "source_body_digest": "e62d375a2423f0c534ca9b781c251f86fae7c745c878de2bdf0ee814d711e4c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c4696e49348a924e361a319121b849f7b006bf057065049339518c633af380e0",
+      "source_fact_keys": [
+        "source_fact:v1:036963f522d5be7bf0a27a454dd3aad9c01c2143ab32c448e905d22f01f69521",
+        "source_fact:v1:3fabd4292822b365c0a4ef412479eb4795bbe4c8f3211e1eb114e977cd5739ed",
+        "source_fact:v1:e655bf0600ae43cca14d5af86686cfc7bf60df938c3a86f94c6e93dd754b04f2"
+      ],
+      "source_published_kst": "2026-10-12T11:47+09:00",
+      "source_title": "캠시스, 15억 규모 자사주 소각 결정",
+      "telegram_core_fact": "카메라 솔루션 전문기업 캠시스는 15억원 자사주 소각을 결정했다고 12일 밝혔다.",
+      "title": "캠시스, 15억 규모 자사주 소각 결정"
+    },
     "link:ecb6dda25b98988f3740a3fd": {
       "first_seen_kst": "2026-10-09T21:11:52+09:00",
       "lanes": {
@@ -150981,6 +151449,31 @@
       "source_title": "美 10년물 급등에 빛바랜 금 ETF…3개월간 10% 안팎 하락",
       "telegram_core_fact": "한수진 삼성증권 연구원은 \"글로벌 금 ETF는 지난 7월 중순 이후 일시적인 순유출로 전환되며 지속되던 자금 유입에 제동이 걸리기도 했다\"며 \"이는 구조적인 수요 부진이라기보다는 미국 국채금리 상승세에 따라 금의 상대적 매력도가 낮아져 단기 수급 변화를 유발한 것\"이라고 진단했다.",
       "title": "美 10년물 급등에 빛바랜 금 ETF…3개월간 10% 안팎 하락"
+    },
+    "original:01e56ae0df430fe87d11ed86": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.dt.co.kr/article/12088561",
+      "source": "디지털타임스",
+      "source_body_digest": "a07b8b8678f1acb38e80595a266ac7b57adaad3b20796c15a025b46b737951cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b94fd0563f6cae63f01b97e1dd573ec94ba11fcede13a3ecff9d2c467e04edea",
+      "source_fact_keys": [
+        "source_fact:v1:0baf6229a319f0adbe49d50732f67f2165d6a7ca9efbbcfd8d3cff8042d55b7e",
+        "source_fact:v1:11c79f072a0d4c3bfd553e3a0050d327ed516fb15271dae85d92e5b08f9dcdfa",
+        "source_fact:v1:40e9bd58118462b1d105f1ae3fbb6abdb53f41a6992651c919f220dd422777a8",
+        "source_fact:v1:56871d3ba17ce6c65c9a7dbe60fc8d0e04dbe2e43e8d36e9ac66c7dbb9c8c325",
+        "source_fact:v1:65a280c1e07112c06932eae7d05fc4533a715334d69c361c6d505f1c5a0c4a28",
+        "source_fact:v1:80c696adb9eea197ea3af169677cac52296812ea6d9bfeceee5a6ce5b8bd907c",
+        "source_fact:v1:bbda3322dc77d908c72cb1bf0cda130c753eb0fb503f96fa5f14a6d60330c72e"
+      ],
+      "source_published_kst": "2026-10-12T16:09+09:00",
+      "source_title": "美 AI기업 데이터센터 확보 속도전…앤트로픽, 아이렌과 클라우드 계약",
+      "telegram_core_fact": "다음달 기업공개(IPO)를 할 예정인 앤트로픽은 인공지능(AI) 서비스 운영에 필요한 컴퓨팅 인프라 확보에 속도를 내고 있다.",
+      "title": "美 AI기업 데이터센터 확보 속도전…앤트로픽, 아이렌과 클라우드 계약"
     },
     "original:01e91b46963e6aa32612b9d6": {
       "first_seen_kst": "2026-10-12T05:58:12+09:00",
@@ -159311,6 +159804,28 @@
       "telegram_core_fact": "한은은 지난해 수익 확대와 관련, 3월 발간한 '2025년도 연차 보고서'에서 \"원/달러 환율 상승, 유가증권 가격 상승 등의 영향으로 외화자산 관련 순이익이 전년 대비 크게 증가했다\"고 언급했다.",
       "title": "작년 한은 외화자산 운용수익 17조원 육박…역대 최대"
     },
+    "original:24d097d50abfb62b85b8f659": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634775",
+      "source": "이투데이",
+      "source_body_digest": "4ed71ef7d05b9e547ba5862a09ec459a050e8d3e4fe6177f98d06047882c34b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2aaed2c2f6b5c040580be62a5f3b4373c79ed2bc324f89daf74286bedc7d5e47",
+      "source_fact_keys": [
+        "source_fact:v1:3b9dfca4b05e7236b688a95867dbdce85f5f36b1da0ca650b43d6712f1423728",
+        "source_fact:v1:62405005925306a81cdc2488de2826bb28ffa39f05d28723aed3686ed98af2c5",
+        "source_fact:v1:80dc5a97f373f24c327529603e5b60db3fce0890d078c02bcb76e2dcefb394bf",
+        "source_fact:v1:aea36e90259159d1f392a88b4aa30daea1d94c9a1e9ad728299886692afe232c"
+      ],
+      "source_published_kst": "2026-10-12T16:14+09:00",
+      "source_title": "외국인 2조 매도에 코스피 6400선 붕괴…39거래일 만",
+      "telegram_core_fact": "개인이 1조4790억원, 기타법인이 6620억원 순매수한 가운데 외국인이 2조120억원, 기관이 1290억원 순매도했다.",
+      "title": "외국인 2조 매도에 코스피 6400선 붕괴…39거래일 만"
+    },
     "original:24d0dc04933640faea4e6c5e": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
       "lanes": {
@@ -161525,6 +162040,30 @@
       ],
       "source_published_kst": "2026-10-05T17:00+09:00",
       "title": "금호석유화학, LFP 전지용 CNT 개발 본격화…내년 상업화 추진"
+    },
+    "original:2daecd56a06f2522ebe3849c": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.mk.co.kr/news/pick/12173604",
+      "source": "매일경제",
+      "source_body_digest": "7c1cb6296315cafc98bf76fcf19c9badb4428235e1739190fa4bbc24f038d0d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ccb9431d8355c27b27fe6e443b6690e487357919e0ac306855afd6e6de4b6fb2",
+      "source_fact_keys": [
+        "source_fact:v1:264af22fead18dbe7b02ee441d3672ab43a6049d6a981a833c69b3a1b7099bf2",
+        "source_fact:v1:33eb1992783668307e2e0c4306abb806288fdf5aaa780ab23d1a2e645d428fed",
+        "source_fact:v1:43c6d2757360c3232a3a1898a9cecab65f2808be59bc8135911fe9d405756d77",
+        "source_fact:v1:4c501d12dde6a7f16e097dfadeb88c20eeb1f215e143d92be5e0c300768ee5eb",
+        "source_fact:v1:4cb7724d75214274c1649860eeace2ffdd101f65a90e749d14bf4e7252878b14",
+        "source_fact:v1:d8319692c16d76dd2aa84b6380161a798904ee897621c93dfb710d1bd6ec4c86"
+      ],
+      "source_published_kst": "2026-10-12T15:02+09:00",
+      "source_title": "오텍, 건자재 업체 노이리움에 냉난방 설비",
+      "telegram_core_fact": "오텍그룹의 계열사 오텍캐리어와 씨알케이(CRK)가 지난 7일 노이리움과 ‘전국 총판점·대리점 신설에 따른 설비 공급 협력을 위한 업무협약(MOU)’을 체결했다고 12일 밝혔다.",
+      "title": "오텍, 건자재 업체 노이리움에 냉난방 설비"
     },
     "original:2db826a617d6f630918a6ef4": {
       "first_seen_kst": "2026-10-07T20:43:18+09:00",
@@ -167890,6 +168429,27 @@
       "source_title": "상위 10대 GA, 1200%룰 앞두고 설계사 1만명 늘렸다",
       "telegram_core_fact": "GA가 소속 설계사에게 지급하는 초년도 수수료가 월 납입보험료 12배 이내로 제한되면서 정착지원금 등을 활용한 영입 경쟁에 제약이 생겼다.",
       "title": "상위 10대 GA, 1200%룰 앞두고 설계사 1만명 늘렸다"
+    },
+    "original:458ef2502664be3f839f52e8": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822010",
+      "source": "뉴시스",
+      "source_body_digest": "e62d375a2423f0c534ca9b781c251f86fae7c745c878de2bdf0ee814d711e4c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c4696e49348a924e361a319121b849f7b006bf057065049339518c633af380e0",
+      "source_fact_keys": [
+        "source_fact:v1:036963f522d5be7bf0a27a454dd3aad9c01c2143ab32c448e905d22f01f69521",
+        "source_fact:v1:3fabd4292822b365c0a4ef412479eb4795bbe4c8f3211e1eb114e977cd5739ed",
+        "source_fact:v1:e655bf0600ae43cca14d5af86686cfc7bf60df938c3a86f94c6e93dd754b04f2"
+      ],
+      "source_published_kst": "2026-10-12T11:47+09:00",
+      "source_title": "캠시스, 15억 규모 자사주 소각 결정",
+      "telegram_core_fact": "카메라 솔루션 전문기업 캠시스는 15억원 자사주 소각을 결정했다고 12일 밝혔다.",
+      "title": "캠시스, 15억 규모 자사주 소각 결정"
     },
     "original:45995f4e57cd750ae889e77d": {
       "first_seen_kst": "2026-10-12T14:44:13+09:00",
@@ -193463,6 +194023,27 @@
       "telegram_core_fact": "감사위가 안성시 제출자료로 계산한 미부과 추정액은 69곳 7억5703만원, 116곳 2억637만3000원 등 185곳 9억6340만3000원이다.",
       "title": "안성시, 계약업체 아닌 곳에 '단톡방 공사 지시'…경기도 감사 79건 지적"
     },
+    "original:ade4d6c8186ee483c49a362a": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12173716",
+      "source": "매일경제",
+      "source_body_digest": "b26d5331ad2b2cec782833ca06d93a2ad3765c1cb252cd43faa956f7ac784aa8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b907815a8ac8a9bf38bae7113fe8f106ae4ed61115ae031334149f4977f4de8a",
+      "source_fact_keys": [
+        "source_fact:v1:9828f448bfbcd9688e065c46870bd924bcaab4848507eb64c926b407dc4f730b",
+        "source_fact:v1:a6a9df7bcc9648b921f88a3116c614fea0731b1149047d104deafad96f056ada",
+        "source_fact:v1:d93a4fa7abce09d1efe8118a4c4a56c236aca23394cfc1755ecec70347749dbe"
+      ],
+      "source_published_kst": "2026-10-12T16:15+09:00",
+      "source_title": "삼전 ‘실적 대박’에도 돌아오지 않는 외국인…올 코스피서 224조 순매도",
+      "telegram_core_fact": "외국인은 상반기에만 약 177조원을 순매도했다.",
+      "title": "삼전 ‘실적 대박’에도 돌아오지 않는 외국인…올 코스피서 224조 순매도"
+    },
     "original:ade5346840174fe5efc318c8": {
       "first_seen_kst": "2026-10-08T01:09:29+09:00",
       "lanes": {
@@ -196927,6 +197508,36 @@
       ],
       "source_published_kst": "2026-10-07T15:55+09:00",
       "title": "대구·전남광주, 공장 누비며 부품 나르는 '공정모빌리티' 개발 | 연합뉴스"
+    },
+    "original:bc8074ba14136d676f804554": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03306246645612264",
+      "source": "이데일리",
+      "source_body_digest": "3d9941a1568946b4c60b01824bc6084971c02dc2c3196e46c0e82bb5c8ca9daf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4f49a9f48f3098e85ef90773d3eb37ffb45a44dc3879efce43d4b33973631c3b",
+      "source_fact_keys": [
+        "source_fact:v1:0608d1b8a5690232c2d1602c0737add81185f649471509ada0a92a0f1c8f0a92",
+        "source_fact:v1:1dfc6a917bda90cacf9e6ef525673c115c4710ecbe61c6f84d9fcecc067e3a24",
+        "source_fact:v1:1fb04963d453de9f6e4fa40f6955f57cd7b8244085fc11586ae1036ca6f748f1",
+        "source_fact:v1:2f601fd8c9a2a71a06797ce11b8c50877c21f7674068e7b9e4d2ee21a31dae68",
+        "source_fact:v1:4176e519acb4889d908b216c78331005645c75034f2cf8a3e0686569f59fa362",
+        "source_fact:v1:4e9cb31c66d4b64171a9244c52828d10db1d50f7a94d9554e5835f5d08742b52",
+        "source_fact:v1:8314ee0abcb018ff35be13c0627bc0ab2483cace0e1cee17fa06146bdd482e21",
+        "source_fact:v1:93bfcb56fcd35b5c4228b231504ce564762eff52210e69f7a6f63d8ef82ccc15",
+        "source_fact:v1:9609d9f80e3f39297b9674d8a00cf8d0cd083d6ebc63adca49e3be912dbc6f39",
+        "source_fact:v1:c14cb1b4de06f33e2ace062dd78f6db7c8013258163e77d289302b04fee1609e",
+        "source_fact:v1:d8ae5a4aa5a9aa3ea27677adf4be9e79636aa23d00d8fffc676fcba88ce0a897",
+        "source_fact:v1:e0de40166a73880527b439b492a3a1978a6051ba199dd69718f4ce651b7c3f02"
+      ],
+      "source_published_kst": "2026-10-12T14:27+09:00",
+      "source_title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향",
+      "telegram_core_fact": "금융투자협회가 12일 발표한 ‘2026년 9월 장외채권시장 동향’에 따르면 지난달 말 국고채 1년물 금리는 3.733%로 전월 말보다 29.2bp(1bp=0.01%포인트) 상승했다.",
+      "title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향"
     },
     "original:bc86abc7cec676f5ae298277": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -205749,6 +206360,28 @@
       "link": "https://www.yna.co.kr/view/AKR20260924040200008",
       "source": "연합뉴스",
       "title": "[머니플로우] '국장'도 '미장'도 美대표지수 ETF 순매수 상위 | 연합뉴스"
+    },
+    "original:df8ebfb68eebb082b4837a9a": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://biz.heraldcorp.com/article/10899298",
+      "source": "헤럴드경제",
+      "source_body_digest": "72c1a187badfe875819fd6ce57b38c1069eca58dedfa2e7cd7ab8a7a62246349",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:483cf1db6a7a131b069f9d394ac9c51d5db0d9d002d8f6f9f74148c265b0c020",
+      "source_fact_keys": [
+        "source_fact:v1:63b3ed88429027ca3dd69a58bbf3d42bd52205fc4ae5b2e4f1169f0be8cd719d",
+        "source_fact:v1:9589771748d50e53f2bbe0fd0868238dcaa3174f13c19b883dcb4eabae430aa3",
+        "source_fact:v1:be23be450ed47cb79e4354f799c9c6f134a87ef911415e744f05f2cfd9eb439e",
+        "source_fact:v1:ca90f1681f98f2d694d9bb2d64f9d5d5e278156157828a3fcf555dff093739f2"
+      ],
+      "source_published_kst": "2026-10-12T10:38+09:00",
+      "source_title": "신현송 총재 “기준금리 추가 인상 시기, 물가·경기 흐름 보고 결정”",
+      "telegram_core_fact": "신현송 한국은행 총재는 향후 통화정책에 대해 “물가와 경기 흐름, 금융안정 상황을 면밀히 점검하면서 추가 인상의 시기와 속도 등을 결정해 나갈 계획”이라며 금리 인상 기조를 재차 확인했다.",
+      "title": "신현송 총재 “기준금리 추가 인상 시기, 물가·경기 흐름 보고 결정”"
     },
     "original:df9851138f186a0f558b54b2": {
       "first_seen_kst": "2026-10-08T07:50:51+09:00",
@@ -219470,6 +220103,30 @@
       "telegram_core_fact": "쿠르무크 가동 직전에 고품위 시추 결과가 나와 초기 고품위 구간 이후 생산 지속성에 대한 우려를 덜어줘요.",
       "title": "얼라이드 골드, 쿠르무크 아샤시레 고품위 금맥 확인..가동 임박"
     },
+    "source_fact:07c21a635c64106fc82fe731": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.mk.co.kr/news/pick/12173604",
+      "source": "매일경제",
+      "source_body_digest": "7c1cb6296315cafc98bf76fcf19c9badb4428235e1739190fa4bbc24f038d0d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ccb9431d8355c27b27fe6e443b6690e487357919e0ac306855afd6e6de4b6fb2",
+      "source_fact_keys": [
+        "source_fact:v1:264af22fead18dbe7b02ee441d3672ab43a6049d6a981a833c69b3a1b7099bf2",
+        "source_fact:v1:33eb1992783668307e2e0c4306abb806288fdf5aaa780ab23d1a2e645d428fed",
+        "source_fact:v1:43c6d2757360c3232a3a1898a9cecab65f2808be59bc8135911fe9d405756d77",
+        "source_fact:v1:4c501d12dde6a7f16e097dfadeb88c20eeb1f215e143d92be5e0c300768ee5eb",
+        "source_fact:v1:4cb7724d75214274c1649860eeace2ffdd101f65a90e749d14bf4e7252878b14",
+        "source_fact:v1:d8319692c16d76dd2aa84b6380161a798904ee897621c93dfb710d1bd6ec4c86"
+      ],
+      "source_published_kst": "2026-10-12T15:02+09:00",
+      "source_title": "오텍, 건자재 업체 노이리움에 냉난방 설비",
+      "telegram_core_fact": "오텍그룹의 계열사 오텍캐리어와 씨알케이(CRK)가 지난 7일 노이리움과 ‘전국 총판점·대리점 신설에 따른 설비 공급 협력을 위한 업무협약(MOU)’을 체결했다고 12일 밝혔다.",
+      "title": "오텍, 건자재 업체 노이리움에 냉난방 설비"
+    },
     "source_fact:07c307f81b0d3c18b0e72c2b": {
       "first_seen_kst": "2026-10-08T22:06:55+09:00",
       "lanes": {
@@ -227435,6 +228092,28 @@
       "telegram_core_fact": "앤트로픽은 아이렌 외에도 아마존웹서비스(AWS)와 구글 등 10곳이 넘는 클라우드와 15기가와트(GW), 5천300억달러(약 720조원) 데이터센터 임차 계약을 맺고 협력사들에 가동을 서두르라고 요구하고 있다.",
       "title": "\"앤트로픽, 아이렌과 클라우드 계약\"…데이터센터 확보 속도전 | 연합뉴스"
     },
+    "source_fact:1154d11853d8b2f93488e2c2": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634775",
+      "source": "이투데이",
+      "source_body_digest": "4ed71ef7d05b9e547ba5862a09ec459a050e8d3e4fe6177f98d06047882c34b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2aaed2c2f6b5c040580be62a5f3b4373c79ed2bc324f89daf74286bedc7d5e47",
+      "source_fact_keys": [
+        "source_fact:v1:3b9dfca4b05e7236b688a95867dbdce85f5f36b1da0ca650b43d6712f1423728",
+        "source_fact:v1:62405005925306a81cdc2488de2826bb28ffa39f05d28723aed3686ed98af2c5",
+        "source_fact:v1:80dc5a97f373f24c327529603e5b60db3fce0890d078c02bcb76e2dcefb394bf",
+        "source_fact:v1:aea36e90259159d1f392a88b4aa30daea1d94c9a1e9ad728299886692afe232c"
+      ],
+      "source_published_kst": "2026-10-12T16:14+09:00",
+      "source_title": "외국인 2조 매도에 코스피 6400선 붕괴…39거래일 만",
+      "telegram_core_fact": "개인이 1조4790억원, 기타법인이 6620억원 순매수한 가운데 외국인이 2조120억원, 기관이 1290억원 순매도했다.",
+      "title": "외국인 2조 매도에 코스피 6400선 붕괴…39거래일 만"
+    },
     "source_fact:115a1b18705d434b1e3f2403": {
       "first_seen_kst": "2026-10-10T06:23:09+09:00",
       "lanes": {
@@ -229383,6 +230062,36 @@
       "telegram_core_fact": "10년물 금리는 연 4.376%로 0.7bp 상승했다.",
       "title": "국고채 금리 대체로 상승…3년물 연 3.961% | 연합뉴스"
     },
+    "source_fact:13a36ef8cd38c0e91cda356a": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03306246645612264",
+      "source": "이데일리",
+      "source_body_digest": "3d9941a1568946b4c60b01824bc6084971c02dc2c3196e46c0e82bb5c8ca9daf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4f49a9f48f3098e85ef90773d3eb37ffb45a44dc3879efce43d4b33973631c3b",
+      "source_fact_keys": [
+        "source_fact:v1:0608d1b8a5690232c2d1602c0737add81185f649471509ada0a92a0f1c8f0a92",
+        "source_fact:v1:1dfc6a917bda90cacf9e6ef525673c115c4710ecbe61c6f84d9fcecc067e3a24",
+        "source_fact:v1:1fb04963d453de9f6e4fa40f6955f57cd7b8244085fc11586ae1036ca6f748f1",
+        "source_fact:v1:2f601fd8c9a2a71a06797ce11b8c50877c21f7674068e7b9e4d2ee21a31dae68",
+        "source_fact:v1:4176e519acb4889d908b216c78331005645c75034f2cf8a3e0686569f59fa362",
+        "source_fact:v1:4e9cb31c66d4b64171a9244c52828d10db1d50f7a94d9554e5835f5d08742b52",
+        "source_fact:v1:8314ee0abcb018ff35be13c0627bc0ab2483cace0e1cee17fa06146bdd482e21",
+        "source_fact:v1:93bfcb56fcd35b5c4228b231504ce564762eff52210e69f7a6f63d8ef82ccc15",
+        "source_fact:v1:9609d9f80e3f39297b9674d8a00cf8d0cd083d6ebc63adca49e3be912dbc6f39",
+        "source_fact:v1:c14cb1b4de06f33e2ace062dd78f6db7c8013258163e77d289302b04fee1609e",
+        "source_fact:v1:d8ae5a4aa5a9aa3ea27677adf4be9e79636aa23d00d8fffc676fcba88ce0a897",
+        "source_fact:v1:e0de40166a73880527b439b492a3a1978a6051ba199dd69718f4ce651b7c3f02"
+      ],
+      "source_published_kst": "2026-10-12T14:27+09:00",
+      "source_title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향",
+      "telegram_core_fact": "금융투자협회가 12일 발표한 ‘2026년 9월 장외채권시장 동향’에 따르면 지난달 말 국고채 1년물 금리는 3.733%로 전월 말보다 29.2bp(1bp=0.01%포인트) 상승했다.",
+      "title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향"
+    },
     "source_fact:13b32355686def4c955bb77f": {
       "first_seen_kst": "2026-10-12T00:21:39+09:00",
       "lanes": {
@@ -229649,6 +230358,36 @@
       ],
       "source_published_kst": "2026-10-05T16:01+09:00",
       "title": "이란 안보수장 “역사상 가장 어려운 시기”⋯경제 악화 이례적 시인"
+    },
+    "source_fact:13df2127664807b4ad4c0186": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03306246645612264",
+      "source": "이데일리",
+      "source_body_digest": "3d9941a1568946b4c60b01824bc6084971c02dc2c3196e46c0e82bb5c8ca9daf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4f49a9f48f3098e85ef90773d3eb37ffb45a44dc3879efce43d4b33973631c3b",
+      "source_fact_keys": [
+        "source_fact:v1:0608d1b8a5690232c2d1602c0737add81185f649471509ada0a92a0f1c8f0a92",
+        "source_fact:v1:1dfc6a917bda90cacf9e6ef525673c115c4710ecbe61c6f84d9fcecc067e3a24",
+        "source_fact:v1:1fb04963d453de9f6e4fa40f6955f57cd7b8244085fc11586ae1036ca6f748f1",
+        "source_fact:v1:2f601fd8c9a2a71a06797ce11b8c50877c21f7674068e7b9e4d2ee21a31dae68",
+        "source_fact:v1:4176e519acb4889d908b216c78331005645c75034f2cf8a3e0686569f59fa362",
+        "source_fact:v1:4e9cb31c66d4b64171a9244c52828d10db1d50f7a94d9554e5835f5d08742b52",
+        "source_fact:v1:8314ee0abcb018ff35be13c0627bc0ab2483cace0e1cee17fa06146bdd482e21",
+        "source_fact:v1:93bfcb56fcd35b5c4228b231504ce564762eff52210e69f7a6f63d8ef82ccc15",
+        "source_fact:v1:9609d9f80e3f39297b9674d8a00cf8d0cd083d6ebc63adca49e3be912dbc6f39",
+        "source_fact:v1:c14cb1b4de06f33e2ace062dd78f6db7c8013258163e77d289302b04fee1609e",
+        "source_fact:v1:d8ae5a4aa5a9aa3ea27677adf4be9e79636aa23d00d8fffc676fcba88ce0a897",
+        "source_fact:v1:e0de40166a73880527b439b492a3a1978a6051ba199dd69718f4ce651b7c3f02"
+      ],
+      "source_published_kst": "2026-10-12T14:27+09:00",
+      "source_title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향",
+      "telegram_core_fact": "금융투자협회가 12일 발표한 ‘2026년 9월 장외채권시장 동향’에 따르면 지난달 말 국고채 1년물 금리는 3.733%로 전월 말보다 29.2bp(1bp=0.01%포인트) 상승했다.",
+      "title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향"
     },
     "source_fact:13e7ffb7d7784725625d36df": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
@@ -239161,6 +239900,36 @@
       "source_published_kst": "2026-10-05T14:28+09:00",
       "title": "폭스바겐 ‘판매왕’에서 모빌리티 창업가로…차봇, 해외로 영토 확장"
     },
+    "source_fact:1f3699c40e7477b38de8e929": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03306246645612264",
+      "source": "이데일리",
+      "source_body_digest": "3d9941a1568946b4c60b01824bc6084971c02dc2c3196e46c0e82bb5c8ca9daf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4f49a9f48f3098e85ef90773d3eb37ffb45a44dc3879efce43d4b33973631c3b",
+      "source_fact_keys": [
+        "source_fact:v1:0608d1b8a5690232c2d1602c0737add81185f649471509ada0a92a0f1c8f0a92",
+        "source_fact:v1:1dfc6a917bda90cacf9e6ef525673c115c4710ecbe61c6f84d9fcecc067e3a24",
+        "source_fact:v1:1fb04963d453de9f6e4fa40f6955f57cd7b8244085fc11586ae1036ca6f748f1",
+        "source_fact:v1:2f601fd8c9a2a71a06797ce11b8c50877c21f7674068e7b9e4d2ee21a31dae68",
+        "source_fact:v1:4176e519acb4889d908b216c78331005645c75034f2cf8a3e0686569f59fa362",
+        "source_fact:v1:4e9cb31c66d4b64171a9244c52828d10db1d50f7a94d9554e5835f5d08742b52",
+        "source_fact:v1:8314ee0abcb018ff35be13c0627bc0ab2483cace0e1cee17fa06146bdd482e21",
+        "source_fact:v1:93bfcb56fcd35b5c4228b231504ce564762eff52210e69f7a6f63d8ef82ccc15",
+        "source_fact:v1:9609d9f80e3f39297b9674d8a00cf8d0cd083d6ebc63adca49e3be912dbc6f39",
+        "source_fact:v1:c14cb1b4de06f33e2ace062dd78f6db7c8013258163e77d289302b04fee1609e",
+        "source_fact:v1:d8ae5a4aa5a9aa3ea27677adf4be9e79636aa23d00d8fffc676fcba88ce0a897",
+        "source_fact:v1:e0de40166a73880527b439b492a3a1978a6051ba199dd69718f4ce651b7c3f02"
+      ],
+      "source_published_kst": "2026-10-12T14:27+09:00",
+      "source_title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향",
+      "telegram_core_fact": "금융투자협회가 12일 발표한 ‘2026년 9월 장외채권시장 동향’에 따르면 지난달 말 국고채 1년물 금리는 3.733%로 전월 말보다 29.2bp(1bp=0.01%포인트) 상승했다.",
+      "title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향"
+    },
     "source_fact:1f3adb700aab175713fd2070": {
       "first_seen_kst": "2026-10-11T11:26:05+09:00",
       "lanes": {
@@ -246708,6 +247477,28 @@
       "source_published_kst": "2026-10-05T16:40+09:00",
       "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
     },
+    "source_fact:27357fc63a5b70e8c5806cd8": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://biz.heraldcorp.com/article/10899298",
+      "source": "헤럴드경제",
+      "source_body_digest": "72c1a187badfe875819fd6ce57b38c1069eca58dedfa2e7cd7ab8a7a62246349",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:483cf1db6a7a131b069f9d394ac9c51d5db0d9d002d8f6f9f74148c265b0c020",
+      "source_fact_keys": [
+        "source_fact:v1:63b3ed88429027ca3dd69a58bbf3d42bd52205fc4ae5b2e4f1169f0be8cd719d",
+        "source_fact:v1:9589771748d50e53f2bbe0fd0868238dcaa3174f13c19b883dcb4eabae430aa3",
+        "source_fact:v1:be23be450ed47cb79e4354f799c9c6f134a87ef911415e744f05f2cfd9eb439e",
+        "source_fact:v1:ca90f1681f98f2d694d9bb2d64f9d5d5e278156157828a3fcf555dff093739f2"
+      ],
+      "source_published_kst": "2026-10-12T10:38+09:00",
+      "source_title": "신현송 총재 “기준금리 추가 인상 시기, 물가·경기 흐름 보고 결정”",
+      "telegram_core_fact": "신현송 한국은행 총재는 향후 통화정책에 대해 “물가와 경기 흐름, 금융안정 상황을 면밀히 점검하면서 추가 인상의 시기와 속도 등을 결정해 나갈 계획”이라며 금리 인상 기조를 재차 확인했다.",
+      "title": "신현송 총재 “기준금리 추가 인상 시기, 물가·경기 흐름 보고 결정”"
+    },
     "source_fact:2738aab98f9aebdee194d5d1": {
       "first_seen_kst": "2026-10-11T16:16:50+09:00",
       "lanes": {
@@ -251898,6 +252689,28 @@
       ],
       "source_published_kst": "2026-10-06T02:28+09:00",
       "title": "아람코 CEO \"세계 석유 공급 이미 압박…비축 최대 2년\""
+    },
+    "source_fact:2cbec1a27022ef568a85d3b4": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://biz.heraldcorp.com/article/10899298",
+      "source": "헤럴드경제",
+      "source_body_digest": "72c1a187badfe875819fd6ce57b38c1069eca58dedfa2e7cd7ab8a7a62246349",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:483cf1db6a7a131b069f9d394ac9c51d5db0d9d002d8f6f9f74148c265b0c020",
+      "source_fact_keys": [
+        "source_fact:v1:63b3ed88429027ca3dd69a58bbf3d42bd52205fc4ae5b2e4f1169f0be8cd719d",
+        "source_fact:v1:9589771748d50e53f2bbe0fd0868238dcaa3174f13c19b883dcb4eabae430aa3",
+        "source_fact:v1:be23be450ed47cb79e4354f799c9c6f134a87ef911415e744f05f2cfd9eb439e",
+        "source_fact:v1:ca90f1681f98f2d694d9bb2d64f9d5d5e278156157828a3fcf555dff093739f2"
+      ],
+      "source_published_kst": "2026-10-12T10:38+09:00",
+      "source_title": "신현송 총재 “기준금리 추가 인상 시기, 물가·경기 흐름 보고 결정”",
+      "telegram_core_fact": "신현송 한국은행 총재는 향후 통화정책에 대해 “물가와 경기 흐름, 금융안정 상황을 면밀히 점검하면서 추가 인상의 시기와 속도 등을 결정해 나갈 계획”이라며 금리 인상 기조를 재차 확인했다.",
+      "title": "신현송 총재 “기준금리 추가 인상 시기, 물가·경기 흐름 보고 결정”"
     },
     "source_fact:2cca54127c8a950219a3ef77": {
       "first_seen_kst": "2026-10-12T10:17:45+09:00",
@@ -277919,6 +278732,36 @@
       "source_published_kst": "2026-10-06T17:29+09:00",
       "title": "HK이노엔 도입 비만약, 청소년에서도 효과…“20주 체중 최대 12.1%↓”"
     },
+    "source_fact:4b3e50c644b6c61a646545e9": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03306246645612264",
+      "source": "이데일리",
+      "source_body_digest": "3d9941a1568946b4c60b01824bc6084971c02dc2c3196e46c0e82bb5c8ca9daf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4f49a9f48f3098e85ef90773d3eb37ffb45a44dc3879efce43d4b33973631c3b",
+      "source_fact_keys": [
+        "source_fact:v1:0608d1b8a5690232c2d1602c0737add81185f649471509ada0a92a0f1c8f0a92",
+        "source_fact:v1:1dfc6a917bda90cacf9e6ef525673c115c4710ecbe61c6f84d9fcecc067e3a24",
+        "source_fact:v1:1fb04963d453de9f6e4fa40f6955f57cd7b8244085fc11586ae1036ca6f748f1",
+        "source_fact:v1:2f601fd8c9a2a71a06797ce11b8c50877c21f7674068e7b9e4d2ee21a31dae68",
+        "source_fact:v1:4176e519acb4889d908b216c78331005645c75034f2cf8a3e0686569f59fa362",
+        "source_fact:v1:4e9cb31c66d4b64171a9244c52828d10db1d50f7a94d9554e5835f5d08742b52",
+        "source_fact:v1:8314ee0abcb018ff35be13c0627bc0ab2483cace0e1cee17fa06146bdd482e21",
+        "source_fact:v1:93bfcb56fcd35b5c4228b231504ce564762eff52210e69f7a6f63d8ef82ccc15",
+        "source_fact:v1:9609d9f80e3f39297b9674d8a00cf8d0cd083d6ebc63adca49e3be912dbc6f39",
+        "source_fact:v1:c14cb1b4de06f33e2ace062dd78f6db7c8013258163e77d289302b04fee1609e",
+        "source_fact:v1:d8ae5a4aa5a9aa3ea27677adf4be9e79636aa23d00d8fffc676fcba88ce0a897",
+        "source_fact:v1:e0de40166a73880527b439b492a3a1978a6051ba199dd69718f4ce651b7c3f02"
+      ],
+      "source_published_kst": "2026-10-12T14:27+09:00",
+      "source_title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향",
+      "telegram_core_fact": "금융투자협회가 12일 발표한 ‘2026년 9월 장외채권시장 동향’에 따르면 지난달 말 국고채 1년물 금리는 3.733%로 전월 말보다 29.2bp(1bp=0.01%포인트) 상승했다.",
+      "title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향"
+    },
     "source_fact:4b48bbe03c80836690070ed7": {
       "first_seen_kst": "2026-10-08T21:47:01+09:00",
       "lanes": {
@@ -282213,6 +283056,30 @@
       "source_title": "평택시, 반도체 배후산단에 하수처리수 공급…관로공사 착공",
       "telegram_core_fact": "평택시는 삼성전자 협력사 3곳 등에 하루 1만8천400t을 공급할 3.23㎞ 하수처리수 관로 공사를 착공했다. 공사비 225억원은 공급업체 3곳이 전액 부담하며, 내년 말 준공 목표다.",
       "title": "평택시, 반도체 배후산단에 하수처리수 공급…관로공사 착공"
+    },
+    "source_fact:50e420d2bdc610e53f99d776": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.mk.co.kr/news/pick/12173604",
+      "source": "매일경제",
+      "source_body_digest": "7c1cb6296315cafc98bf76fcf19c9badb4428235e1739190fa4bbc24f038d0d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ccb9431d8355c27b27fe6e443b6690e487357919e0ac306855afd6e6de4b6fb2",
+      "source_fact_keys": [
+        "source_fact:v1:264af22fead18dbe7b02ee441d3672ab43a6049d6a981a833c69b3a1b7099bf2",
+        "source_fact:v1:33eb1992783668307e2e0c4306abb806288fdf5aaa780ab23d1a2e645d428fed",
+        "source_fact:v1:43c6d2757360c3232a3a1898a9cecab65f2808be59bc8135911fe9d405756d77",
+        "source_fact:v1:4c501d12dde6a7f16e097dfadeb88c20eeb1f215e143d92be5e0c300768ee5eb",
+        "source_fact:v1:4cb7724d75214274c1649860eeace2ffdd101f65a90e749d14bf4e7252878b14",
+        "source_fact:v1:d8319692c16d76dd2aa84b6380161a798904ee897621c93dfb710d1bd6ec4c86"
+      ],
+      "source_published_kst": "2026-10-12T15:02+09:00",
+      "source_title": "오텍, 건자재 업체 노이리움에 냉난방 설비",
+      "telegram_core_fact": "오텍그룹의 계열사 오텍캐리어와 씨알케이(CRK)가 지난 7일 노이리움과 ‘전국 총판점·대리점 신설에 따른 설비 공급 협력을 위한 업무협약(MOU)’을 체결했다고 12일 밝혔다.",
+      "title": "오텍, 건자재 업체 노이리움에 냉난방 설비"
     },
     "source_fact:50eef35c13b24122f33d2413": {
       "first_seen_kst": "2026-10-07T16:44:58+09:00",
@@ -286963,6 +287830,30 @@
       ],
       "source_published_kst": "2026-10-07T11:06+09:00",
       "title": "[ESGX 이슈 5] 구글, 美 원전 11기 출력 높인다…AI 전력 확보에 43억달러 투자"
+    },
+    "source_fact:561013a0f7e2593e7a9aba2c": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.mk.co.kr/news/pick/12173604",
+      "source": "매일경제",
+      "source_body_digest": "7c1cb6296315cafc98bf76fcf19c9badb4428235e1739190fa4bbc24f038d0d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ccb9431d8355c27b27fe6e443b6690e487357919e0ac306855afd6e6de4b6fb2",
+      "source_fact_keys": [
+        "source_fact:v1:264af22fead18dbe7b02ee441d3672ab43a6049d6a981a833c69b3a1b7099bf2",
+        "source_fact:v1:33eb1992783668307e2e0c4306abb806288fdf5aaa780ab23d1a2e645d428fed",
+        "source_fact:v1:43c6d2757360c3232a3a1898a9cecab65f2808be59bc8135911fe9d405756d77",
+        "source_fact:v1:4c501d12dde6a7f16e097dfadeb88c20eeb1f215e143d92be5e0c300768ee5eb",
+        "source_fact:v1:4cb7724d75214274c1649860eeace2ffdd101f65a90e749d14bf4e7252878b14",
+        "source_fact:v1:d8319692c16d76dd2aa84b6380161a798904ee897621c93dfb710d1bd6ec4c86"
+      ],
+      "source_published_kst": "2026-10-12T15:02+09:00",
+      "source_title": "오텍, 건자재 업체 노이리움에 냉난방 설비",
+      "telegram_core_fact": "오텍그룹의 계열사 오텍캐리어와 씨알케이(CRK)가 지난 7일 노이리움과 ‘전국 총판점·대리점 신설에 따른 설비 공급 협력을 위한 업무협약(MOU)’을 체결했다고 12일 밝혔다.",
+      "title": "오텍, 건자재 업체 노이리움에 냉난방 설비"
     },
     "source_fact:5616957c4a249489aaec62f3": {
       "first_seen_kst": "2026-10-08T16:14:26+09:00",
@@ -295898,6 +296789,28 @@
       "telegram_core_fact": "수 회장은 차세대 인공지능(AI) 가속기 제품군에 6세대 고대역폭메모리(HBM4)를 탑재하고 있음을 공식화하며, 한국 핵심 파트너사들과 5년 이상 장기 공급망을 구축할 계획이라고 밝혔다.",
       "title": "\"반도체는 팀 스포츠\"…리사 수 \"삼성·SK와 HBM4 협력…전 세계 수백억달러 투자\""
     },
+    "source_fact:601ad368b2feed4c49698541": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634775",
+      "source": "이투데이",
+      "source_body_digest": "4ed71ef7d05b9e547ba5862a09ec459a050e8d3e4fe6177f98d06047882c34b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2aaed2c2f6b5c040580be62a5f3b4373c79ed2bc324f89daf74286bedc7d5e47",
+      "source_fact_keys": [
+        "source_fact:v1:3b9dfca4b05e7236b688a95867dbdce85f5f36b1da0ca650b43d6712f1423728",
+        "source_fact:v1:62405005925306a81cdc2488de2826bb28ffa39f05d28723aed3686ed98af2c5",
+        "source_fact:v1:80dc5a97f373f24c327529603e5b60db3fce0890d078c02bcb76e2dcefb394bf",
+        "source_fact:v1:aea36e90259159d1f392a88b4aa30daea1d94c9a1e9ad728299886692afe232c"
+      ],
+      "source_published_kst": "2026-10-12T16:14+09:00",
+      "source_title": "외국인 2조 매도에 코스피 6400선 붕괴…39거래일 만",
+      "telegram_core_fact": "개인이 1조4790억원, 기타법인이 6620억원 순매수한 가운데 외국인이 2조120억원, 기관이 1290억원 순매도했다.",
+      "title": "외국인 2조 매도에 코스피 6400선 붕괴…39거래일 만"
+    },
     "source_fact:60233ce1f6bd7a6093ab8cf6": {
       "first_seen_kst": "2026-10-09T22:25:54+09:00",
       "lanes": {
@@ -301532,6 +302445,31 @@
       "source_published_kst": "2026-10-06T11:22+09:00",
       "title": "\"2028년 전력 대란 온다\" 경고…잘나가던 삼전닉스 '빨간불'"
     },
+    "source_fact:66ceb2a778e2cba53421c6e8": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.dt.co.kr/article/12088561",
+      "source": "디지털타임스",
+      "source_body_digest": "a07b8b8678f1acb38e80595a266ac7b57adaad3b20796c15a025b46b737951cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b94fd0563f6cae63f01b97e1dd573ec94ba11fcede13a3ecff9d2c467e04edea",
+      "source_fact_keys": [
+        "source_fact:v1:0baf6229a319f0adbe49d50732f67f2165d6a7ca9efbbcfd8d3cff8042d55b7e",
+        "source_fact:v1:11c79f072a0d4c3bfd553e3a0050d327ed516fb15271dae85d92e5b08f9dcdfa",
+        "source_fact:v1:40e9bd58118462b1d105f1ae3fbb6abdb53f41a6992651c919f220dd422777a8",
+        "source_fact:v1:56871d3ba17ce6c65c9a7dbe60fc8d0e04dbe2e43e8d36e9ac66c7dbb9c8c325",
+        "source_fact:v1:65a280c1e07112c06932eae7d05fc4533a715334d69c361c6d505f1c5a0c4a28",
+        "source_fact:v1:80c696adb9eea197ea3af169677cac52296812ea6d9bfeceee5a6ce5b8bd907c",
+        "source_fact:v1:bbda3322dc77d908c72cb1bf0cda130c753eb0fb503f96fa5f14a6d60330c72e"
+      ],
+      "source_published_kst": "2026-10-12T16:09+09:00",
+      "source_title": "美 AI기업 데이터센터 확보 속도전…앤트로픽, 아이렌과 클라우드 계약",
+      "telegram_core_fact": "다음달 기업공개(IPO)를 할 예정인 앤트로픽은 인공지능(AI) 서비스 운영에 필요한 컴퓨팅 인프라 확보에 속도를 내고 있다.",
+      "title": "美 AI기업 데이터센터 확보 속도전…앤트로픽, 아이렌과 클라우드 계약"
+    },
     "source_fact:66d5094bfca83422512eb572": {
       "first_seen_kst": "2026-10-11T06:07:21+09:00",
       "lanes": {
@@ -302682,6 +303620,31 @@
       "source_published_kst": "2026-10-07T05:58+09:00",
       "title": "[뉴욕마감]S&P500·나스닥 사상 최고…유가·국채금리 진정"
     },
+    "source_fact:683e3410079278aee20a4882": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.dt.co.kr/article/12088561",
+      "source": "디지털타임스",
+      "source_body_digest": "a07b8b8678f1acb38e80595a266ac7b57adaad3b20796c15a025b46b737951cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b94fd0563f6cae63f01b97e1dd573ec94ba11fcede13a3ecff9d2c467e04edea",
+      "source_fact_keys": [
+        "source_fact:v1:0baf6229a319f0adbe49d50732f67f2165d6a7ca9efbbcfd8d3cff8042d55b7e",
+        "source_fact:v1:11c79f072a0d4c3bfd553e3a0050d327ed516fb15271dae85d92e5b08f9dcdfa",
+        "source_fact:v1:40e9bd58118462b1d105f1ae3fbb6abdb53f41a6992651c919f220dd422777a8",
+        "source_fact:v1:56871d3ba17ce6c65c9a7dbe60fc8d0e04dbe2e43e8d36e9ac66c7dbb9c8c325",
+        "source_fact:v1:65a280c1e07112c06932eae7d05fc4533a715334d69c361c6d505f1c5a0c4a28",
+        "source_fact:v1:80c696adb9eea197ea3af169677cac52296812ea6d9bfeceee5a6ce5b8bd907c",
+        "source_fact:v1:bbda3322dc77d908c72cb1bf0cda130c753eb0fb503f96fa5f14a6d60330c72e"
+      ],
+      "source_published_kst": "2026-10-12T16:09+09:00",
+      "source_title": "美 AI기업 데이터센터 확보 속도전…앤트로픽, 아이렌과 클라우드 계약",
+      "telegram_core_fact": "다음달 기업공개(IPO)를 할 예정인 앤트로픽은 인공지능(AI) 서비스 운영에 필요한 컴퓨팅 인프라 확보에 속도를 내고 있다.",
+      "title": "美 AI기업 데이터센터 확보 속도전…앤트로픽, 아이렌과 클라우드 계약"
+    },
     "source_fact:68426250d3520b91baacd152": {
       "first_seen_kst": "2026-10-06T16:30:27+09:00",
       "lanes": {
@@ -302818,6 +303781,31 @@
       "source_title": "영진약품, 프랑스 아테나와 라세카도트릴 산제 국내 도입 계약 체결",
       "telegram_core_fact": "영진약품은 프랑스 제약사 아테나와 라세카도트릴 산제의 국내 도입을 위한 라이선스 계약 및 제품 공급계약을 체결했다.",
       "title": "영진약품, 프랑스 아테나와 라세카도트릴 산제 국내 도입 계약 체결"
+    },
+    "source_fact:687c87d58055d9c018a2fd64": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.dt.co.kr/article/12088561",
+      "source": "디지털타임스",
+      "source_body_digest": "a07b8b8678f1acb38e80595a266ac7b57adaad3b20796c15a025b46b737951cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b94fd0563f6cae63f01b97e1dd573ec94ba11fcede13a3ecff9d2c467e04edea",
+      "source_fact_keys": [
+        "source_fact:v1:0baf6229a319f0adbe49d50732f67f2165d6a7ca9efbbcfd8d3cff8042d55b7e",
+        "source_fact:v1:11c79f072a0d4c3bfd553e3a0050d327ed516fb15271dae85d92e5b08f9dcdfa",
+        "source_fact:v1:40e9bd58118462b1d105f1ae3fbb6abdb53f41a6992651c919f220dd422777a8",
+        "source_fact:v1:56871d3ba17ce6c65c9a7dbe60fc8d0e04dbe2e43e8d36e9ac66c7dbb9c8c325",
+        "source_fact:v1:65a280c1e07112c06932eae7d05fc4533a715334d69c361c6d505f1c5a0c4a28",
+        "source_fact:v1:80c696adb9eea197ea3af169677cac52296812ea6d9bfeceee5a6ce5b8bd907c",
+        "source_fact:v1:bbda3322dc77d908c72cb1bf0cda130c753eb0fb503f96fa5f14a6d60330c72e"
+      ],
+      "source_published_kst": "2026-10-12T16:09+09:00",
+      "source_title": "美 AI기업 데이터센터 확보 속도전…앤트로픽, 아이렌과 클라우드 계약",
+      "telegram_core_fact": "다음달 기업공개(IPO)를 할 예정인 앤트로픽은 인공지능(AI) 서비스 운영에 필요한 컴퓨팅 인프라 확보에 속도를 내고 있다.",
+      "title": "美 AI기업 데이터센터 확보 속도전…앤트로픽, 아이렌과 클라우드 계약"
     },
     "source_fact:687e3d770ef05ee5348c4e7e": {
       "first_seen_kst": "2026-10-11T16:16:50+09:00",
@@ -308834,6 +309822,27 @@
       "source_title": "장인화, 글로벌 자원 확보전 진두지휘…포스코 리튬 2공장 준공",
       "telegram_core_fact": "포스코홀딩스는 염수리튬 2공장 상공정을 준공하고, 2033년 연산 10만톤 생산체제 구축을 공식화했다. 장인화 포스코그룹 회장이 글로벌 핵심광물 확보전 한복판인 아르헨티나에서 리튬 사업의 확장 신호탄을 쐈다.",
       "title": "장인화, 글로벌 자원 확보전 진두지휘…포스코 리튬 2공장 준공"
+    },
+    "source_fact:6f9b2e0700757de0673b9e8c": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12173716",
+      "source": "매일경제",
+      "source_body_digest": "b26d5331ad2b2cec782833ca06d93a2ad3765c1cb252cd43faa956f7ac784aa8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b907815a8ac8a9bf38bae7113fe8f106ae4ed61115ae031334149f4977f4de8a",
+      "source_fact_keys": [
+        "source_fact:v1:9828f448bfbcd9688e065c46870bd924bcaab4848507eb64c926b407dc4f730b",
+        "source_fact:v1:a6a9df7bcc9648b921f88a3116c614fea0731b1149047d104deafad96f056ada",
+        "source_fact:v1:d93a4fa7abce09d1efe8118a4c4a56c236aca23394cfc1755ecec70347749dbe"
+      ],
+      "source_published_kst": "2026-10-12T16:15+09:00",
+      "source_title": "삼전 ‘실적 대박’에도 돌아오지 않는 외국인…올 코스피서 224조 순매도",
+      "telegram_core_fact": "외국인은 상반기에만 약 177조원을 순매도했다.",
+      "title": "삼전 ‘실적 대박’에도 돌아오지 않는 외국인…올 코스피서 224조 순매도"
     },
     "source_fact:6fa0b3735250e5a4f1a1fb6b": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
@@ -318932,6 +319941,31 @@
       "telegram_core_fact": "유럽 미사일 전문기업과의 협력을 바탕으로 초기에는 MRO와 라이선스 생산에서 매출을 확보하고 장기적으로 독자 미사일 개발까지 사업을 확대한다는 구상이다.",
       "title": "밸류파인더 “MSDI, 구미시와 7000억 미사일 방산단지 추진…전주기 사업 첫발”"
     },
+    "source_fact:7b681394d663eaeeaa4b855a": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.dt.co.kr/article/12088561",
+      "source": "디지털타임스",
+      "source_body_digest": "a07b8b8678f1acb38e80595a266ac7b57adaad3b20796c15a025b46b737951cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b94fd0563f6cae63f01b97e1dd573ec94ba11fcede13a3ecff9d2c467e04edea",
+      "source_fact_keys": [
+        "source_fact:v1:0baf6229a319f0adbe49d50732f67f2165d6a7ca9efbbcfd8d3cff8042d55b7e",
+        "source_fact:v1:11c79f072a0d4c3bfd553e3a0050d327ed516fb15271dae85d92e5b08f9dcdfa",
+        "source_fact:v1:40e9bd58118462b1d105f1ae3fbb6abdb53f41a6992651c919f220dd422777a8",
+        "source_fact:v1:56871d3ba17ce6c65c9a7dbe60fc8d0e04dbe2e43e8d36e9ac66c7dbb9c8c325",
+        "source_fact:v1:65a280c1e07112c06932eae7d05fc4533a715334d69c361c6d505f1c5a0c4a28",
+        "source_fact:v1:80c696adb9eea197ea3af169677cac52296812ea6d9bfeceee5a6ce5b8bd907c",
+        "source_fact:v1:bbda3322dc77d908c72cb1bf0cda130c753eb0fb503f96fa5f14a6d60330c72e"
+      ],
+      "source_published_kst": "2026-10-12T16:09+09:00",
+      "source_title": "美 AI기업 데이터센터 확보 속도전…앤트로픽, 아이렌과 클라우드 계약",
+      "telegram_core_fact": "다음달 기업공개(IPO)를 할 예정인 앤트로픽은 인공지능(AI) 서비스 운영에 필요한 컴퓨팅 인프라 확보에 속도를 내고 있다.",
+      "title": "美 AI기업 데이터센터 확보 속도전…앤트로픽, 아이렌과 클라우드 계약"
+    },
     "source_fact:7b84f45e4b13d716d3629d7d": {
       "first_seen_kst": "2026-10-08T08:12:34+09:00",
       "lanes": {
@@ -321695,6 +322729,28 @@
       "source_title": "결국 러시아산 경유 들이는 트럼프…민주당·우크라 “악마와의 거래‘ 맹폭",
       "telegram_core_fact": "경유 도입을 위해 미국이 대러 제재를 완화하자 우크라이나와 유럽연합(EU) 등이 강력 반발하면서 발발 4년째인 러시아·우크라이나 전쟁이 기로에 섰다.",
       "title": "결국 러시아산 경유 들이는 트럼프…민주당·우크라 “악마와의 거래‘ 맹폭"
+    },
+    "source_fact:7e7096d27c6ef7e2aa989957": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634775",
+      "source": "이투데이",
+      "source_body_digest": "4ed71ef7d05b9e547ba5862a09ec459a050e8d3e4fe6177f98d06047882c34b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2aaed2c2f6b5c040580be62a5f3b4373c79ed2bc324f89daf74286bedc7d5e47",
+      "source_fact_keys": [
+        "source_fact:v1:3b9dfca4b05e7236b688a95867dbdce85f5f36b1da0ca650b43d6712f1423728",
+        "source_fact:v1:62405005925306a81cdc2488de2826bb28ffa39f05d28723aed3686ed98af2c5",
+        "source_fact:v1:80dc5a97f373f24c327529603e5b60db3fce0890d078c02bcb76e2dcefb394bf",
+        "source_fact:v1:aea36e90259159d1f392a88b4aa30daea1d94c9a1e9ad728299886692afe232c"
+      ],
+      "source_published_kst": "2026-10-12T16:14+09:00",
+      "source_title": "외국인 2조 매도에 코스피 6400선 붕괴…39거래일 만",
+      "telegram_core_fact": "개인이 1조4790억원, 기타법인이 6620억원 순매수한 가운데 외국인이 2조120억원, 기관이 1290억원 순매도했다.",
+      "title": "외국인 2조 매도에 코스피 6400선 붕괴…39거래일 만"
     },
     "source_fact:7e793620a2863ef14634739c": {
       "first_seen_kst": "2026-10-12T06:42:49+09:00",
@@ -326206,6 +327262,27 @@
       "telegram_core_fact": "LG전자는 미국 AI 데이터센터 인프라 기업 에어와 5조원 규모 칠러 공급 계약을 체결했다.",
       "title": "[단독] 메모리 넘어 AI 부품·전력기기 확보전…빅테크 '5년 계약' 줄섰다"
     },
+    "source_fact:84356ef9f9cafc2810ebbdec": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822010",
+      "source": "뉴시스",
+      "source_body_digest": "e62d375a2423f0c534ca9b781c251f86fae7c745c878de2bdf0ee814d711e4c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c4696e49348a924e361a319121b849f7b006bf057065049339518c633af380e0",
+      "source_fact_keys": [
+        "source_fact:v1:036963f522d5be7bf0a27a454dd3aad9c01c2143ab32c448e905d22f01f69521",
+        "source_fact:v1:3fabd4292822b365c0a4ef412479eb4795bbe4c8f3211e1eb114e977cd5739ed",
+        "source_fact:v1:e655bf0600ae43cca14d5af86686cfc7bf60df938c3a86f94c6e93dd754b04f2"
+      ],
+      "source_published_kst": "2026-10-12T11:47+09:00",
+      "source_title": "캠시스, 15억 규모 자사주 소각 결정",
+      "telegram_core_fact": "카메라 솔루션 전문기업 캠시스는 15억원 자사주 소각을 결정했다고 12일 밝혔다.",
+      "title": "캠시스, 15억 규모 자사주 소각 결정"
+    },
     "source_fact:8435cdc19fb5c87664b372a7": {
       "first_seen_kst": "2026-10-08T01:58:01+09:00",
       "lanes": {
@@ -328874,6 +329951,30 @@
       "telegram_core_fact": "벤 예(Ben Yeh) 옴디아 수석 애널리스트는 \"PC에서 D램과 SSD(솔리드스테이트드라이브)가 차지하는 원가 비중이 통상 약 15%에서 40%로 급등했다\"며 \"가격은 4배 이상 올랐다\"고 밝혔다.",
       "title": "메모리 원가 비중 40%로 급등…3분기 글로벌 PC 출하량 21% 감소"
     },
+    "source_fact:8727f9c1354fee80390fbda6": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.mk.co.kr/news/pick/12173604",
+      "source": "매일경제",
+      "source_body_digest": "7c1cb6296315cafc98bf76fcf19c9badb4428235e1739190fa4bbc24f038d0d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ccb9431d8355c27b27fe6e443b6690e487357919e0ac306855afd6e6de4b6fb2",
+      "source_fact_keys": [
+        "source_fact:v1:264af22fead18dbe7b02ee441d3672ab43a6049d6a981a833c69b3a1b7099bf2",
+        "source_fact:v1:33eb1992783668307e2e0c4306abb806288fdf5aaa780ab23d1a2e645d428fed",
+        "source_fact:v1:43c6d2757360c3232a3a1898a9cecab65f2808be59bc8135911fe9d405756d77",
+        "source_fact:v1:4c501d12dde6a7f16e097dfadeb88c20eeb1f215e143d92be5e0c300768ee5eb",
+        "source_fact:v1:4cb7724d75214274c1649860eeace2ffdd101f65a90e749d14bf4e7252878b14",
+        "source_fact:v1:d8319692c16d76dd2aa84b6380161a798904ee897621c93dfb710d1bd6ec4c86"
+      ],
+      "source_published_kst": "2026-10-12T15:02+09:00",
+      "source_title": "오텍, 건자재 업체 노이리움에 냉난방 설비",
+      "telegram_core_fact": "오텍그룹의 계열사 오텍캐리어와 씨알케이(CRK)가 지난 7일 노이리움과 ‘전국 총판점·대리점 신설에 따른 설비 공급 협력을 위한 업무협약(MOU)’을 체결했다고 12일 밝혔다.",
+      "title": "오텍, 건자재 업체 노이리움에 냉난방 설비"
+    },
     "source_fact:87306314c09e1188ce1c6bec": {
       "first_seen_kst": "2026-10-09T19:43:36+09:00",
       "lanes": {
@@ -329056,6 +330157,28 @@
       "source_title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’",
       "telegram_core_fact": "KAI 최대주주인 수출입은행의 지분 매각 가능성과 한화의 경영 참여 계획 등이 주요 질의 대상으로 거론된다.",
       "title": "한화의 KAI 인수 가능성, 국감 쟁점 부상⋯’방산 시너지’ vs ‘독과점 우려’"
+    },
+    "source_fact:8789f316fdd63f5c8bfc052c": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://biz.heraldcorp.com/article/10899298",
+      "source": "헤럴드경제",
+      "source_body_digest": "72c1a187badfe875819fd6ce57b38c1069eca58dedfa2e7cd7ab8a7a62246349",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:483cf1db6a7a131b069f9d394ac9c51d5db0d9d002d8f6f9f74148c265b0c020",
+      "source_fact_keys": [
+        "source_fact:v1:63b3ed88429027ca3dd69a58bbf3d42bd52205fc4ae5b2e4f1169f0be8cd719d",
+        "source_fact:v1:9589771748d50e53f2bbe0fd0868238dcaa3174f13c19b883dcb4eabae430aa3",
+        "source_fact:v1:be23be450ed47cb79e4354f799c9c6f134a87ef911415e744f05f2cfd9eb439e",
+        "source_fact:v1:ca90f1681f98f2d694d9bb2d64f9d5d5e278156157828a3fcf555dff093739f2"
+      ],
+      "source_published_kst": "2026-10-12T10:38+09:00",
+      "source_title": "신현송 총재 “기준금리 추가 인상 시기, 물가·경기 흐름 보고 결정”",
+      "telegram_core_fact": "신현송 한국은행 총재는 향후 통화정책에 대해 “물가와 경기 흐름, 금융안정 상황을 면밀히 점검하면서 추가 인상의 시기와 속도 등을 결정해 나갈 계획”이라며 금리 인상 기조를 재차 확인했다.",
+      "title": "신현송 총재 “기준금리 추가 인상 시기, 물가·경기 흐름 보고 결정”"
     },
     "source_fact:878b2dba854401360cafe7dc": {
       "first_seen_kst": "2026-10-06T23:46:46+09:00",
@@ -329422,6 +330545,30 @@
       ],
       "source_published_kst": "2026-10-06T14:42+09:00",
       "title": "中, 첫 해저 CO₂ 주입 플랫폼 건설…연 100만t 해저 저장"
+    },
+    "source_fact:87e0116ca2326ee057bd2bef": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.mk.co.kr/news/pick/12173604",
+      "source": "매일경제",
+      "source_body_digest": "7c1cb6296315cafc98bf76fcf19c9badb4428235e1739190fa4bbc24f038d0d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ccb9431d8355c27b27fe6e443b6690e487357919e0ac306855afd6e6de4b6fb2",
+      "source_fact_keys": [
+        "source_fact:v1:264af22fead18dbe7b02ee441d3672ab43a6049d6a981a833c69b3a1b7099bf2",
+        "source_fact:v1:33eb1992783668307e2e0c4306abb806288fdf5aaa780ab23d1a2e645d428fed",
+        "source_fact:v1:43c6d2757360c3232a3a1898a9cecab65f2808be59bc8135911fe9d405756d77",
+        "source_fact:v1:4c501d12dde6a7f16e097dfadeb88c20eeb1f215e143d92be5e0c300768ee5eb",
+        "source_fact:v1:4cb7724d75214274c1649860eeace2ffdd101f65a90e749d14bf4e7252878b14",
+        "source_fact:v1:d8319692c16d76dd2aa84b6380161a798904ee897621c93dfb710d1bd6ec4c86"
+      ],
+      "source_published_kst": "2026-10-12T15:02+09:00",
+      "source_title": "오텍, 건자재 업체 노이리움에 냉난방 설비",
+      "telegram_core_fact": "오텍그룹의 계열사 오텍캐리어와 씨알케이(CRK)가 지난 7일 노이리움과 ‘전국 총판점·대리점 신설에 따른 설비 공급 협력을 위한 업무협약(MOU)’을 체결했다고 12일 밝혔다.",
+      "title": "오텍, 건자재 업체 노이리움에 냉난방 설비"
     },
     "source_fact:87ec040a8fa99654075578e5": {
       "first_seen_kst": "2026-10-12T07:02:25+09:00",
@@ -339851,6 +340998,27 @@
       "source_published_kst": "2026-10-07T07:16+09:00",
       "title": "앞서가는 트럼프 \"韓, 최근 美조선업에 1500억불 줬다\""
     },
+    "source_fact:94d7dc6d02beaf37576c27a2": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822010",
+      "source": "뉴시스",
+      "source_body_digest": "e62d375a2423f0c534ca9b781c251f86fae7c745c878de2bdf0ee814d711e4c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c4696e49348a924e361a319121b849f7b006bf057065049339518c633af380e0",
+      "source_fact_keys": [
+        "source_fact:v1:036963f522d5be7bf0a27a454dd3aad9c01c2143ab32c448e905d22f01f69521",
+        "source_fact:v1:3fabd4292822b365c0a4ef412479eb4795bbe4c8f3211e1eb114e977cd5739ed",
+        "source_fact:v1:e655bf0600ae43cca14d5af86686cfc7bf60df938c3a86f94c6e93dd754b04f2"
+      ],
+      "source_published_kst": "2026-10-12T11:47+09:00",
+      "source_title": "캠시스, 15억 규모 자사주 소각 결정",
+      "telegram_core_fact": "카메라 솔루션 전문기업 캠시스는 15억원 자사주 소각을 결정했다고 12일 밝혔다.",
+      "title": "캠시스, 15억 규모 자사주 소각 결정"
+    },
     "source_fact:94e0ffa8a45caa7e1801451d": {
       "first_seen_kst": "2026-10-12T11:27:57+09:00",
       "lanes": {
@@ -342912,6 +344080,31 @@
       "telegram_core_fact": "세이프 프로 그룹(SPAI)이 9월 30일 종료된 2026년 3분기 잠정 매출액이 250만 달러를 넘어서 전년 동기 10만1422달러 대비 2300% 이상 증가할 것으로 예상된다고 7일 발표했다.",
       "title": "세이프 프로 그룹, 3분기 잠정매출 250만달러..전년비 2300%↑"
     },
+    "source_fact:97e7eb8b20657b0d2f542195": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.dt.co.kr/article/12088561",
+      "source": "디지털타임스",
+      "source_body_digest": "a07b8b8678f1acb38e80595a266ac7b57adaad3b20796c15a025b46b737951cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b94fd0563f6cae63f01b97e1dd573ec94ba11fcede13a3ecff9d2c467e04edea",
+      "source_fact_keys": [
+        "source_fact:v1:0baf6229a319f0adbe49d50732f67f2165d6a7ca9efbbcfd8d3cff8042d55b7e",
+        "source_fact:v1:11c79f072a0d4c3bfd553e3a0050d327ed516fb15271dae85d92e5b08f9dcdfa",
+        "source_fact:v1:40e9bd58118462b1d105f1ae3fbb6abdb53f41a6992651c919f220dd422777a8",
+        "source_fact:v1:56871d3ba17ce6c65c9a7dbe60fc8d0e04dbe2e43e8d36e9ac66c7dbb9c8c325",
+        "source_fact:v1:65a280c1e07112c06932eae7d05fc4533a715334d69c361c6d505f1c5a0c4a28",
+        "source_fact:v1:80c696adb9eea197ea3af169677cac52296812ea6d9bfeceee5a6ce5b8bd907c",
+        "source_fact:v1:bbda3322dc77d908c72cb1bf0cda130c753eb0fb503f96fa5f14a6d60330c72e"
+      ],
+      "source_published_kst": "2026-10-12T16:09+09:00",
+      "source_title": "美 AI기업 데이터센터 확보 속도전…앤트로픽, 아이렌과 클라우드 계약",
+      "telegram_core_fact": "다음달 기업공개(IPO)를 할 예정인 앤트로픽은 인공지능(AI) 서비스 운영에 필요한 컴퓨팅 인프라 확보에 속도를 내고 있다.",
+      "title": "美 AI기업 데이터센터 확보 속도전…앤트로픽, 아이렌과 클라우드 계약"
+    },
     "source_fact:97f283ee676ccf3f9e54bf65": {
       "first_seen_kst": "2026-10-08T14:55:40+09:00",
       "lanes": {
@@ -343036,6 +344229,31 @@
       "source_title": "\"벤처투자 늘어도 회수는 제자리…세컨더리 시장 활성화 시급\"",
       "telegram_core_fact": "\"세컨더리 시장은 자금만 공급한다고 거래가 이뤄지는 구조가 아니다\"라며 \"실제 매도 물량과 매수자의 가격 제시, 거래 성사 사례가 축적돼 시장에서 신뢰할 수 있는 가격 정보가 형성돼야 한다\"고 강조했다.",
       "title": "\"벤처투자 늘어도 회수는 제자리…세컨더리 시장 활성화 시급\""
+    },
+    "source_fact:98173304e1ad386f3cf3d274": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.dt.co.kr/article/12088561",
+      "source": "디지털타임스",
+      "source_body_digest": "a07b8b8678f1acb38e80595a266ac7b57adaad3b20796c15a025b46b737951cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b94fd0563f6cae63f01b97e1dd573ec94ba11fcede13a3ecff9d2c467e04edea",
+      "source_fact_keys": [
+        "source_fact:v1:0baf6229a319f0adbe49d50732f67f2165d6a7ca9efbbcfd8d3cff8042d55b7e",
+        "source_fact:v1:11c79f072a0d4c3bfd553e3a0050d327ed516fb15271dae85d92e5b08f9dcdfa",
+        "source_fact:v1:40e9bd58118462b1d105f1ae3fbb6abdb53f41a6992651c919f220dd422777a8",
+        "source_fact:v1:56871d3ba17ce6c65c9a7dbe60fc8d0e04dbe2e43e8d36e9ac66c7dbb9c8c325",
+        "source_fact:v1:65a280c1e07112c06932eae7d05fc4533a715334d69c361c6d505f1c5a0c4a28",
+        "source_fact:v1:80c696adb9eea197ea3af169677cac52296812ea6d9bfeceee5a6ce5b8bd907c",
+        "source_fact:v1:bbda3322dc77d908c72cb1bf0cda130c753eb0fb503f96fa5f14a6d60330c72e"
+      ],
+      "source_published_kst": "2026-10-12T16:09+09:00",
+      "source_title": "美 AI기업 데이터센터 확보 속도전…앤트로픽, 아이렌과 클라우드 계약",
+      "telegram_core_fact": "다음달 기업공개(IPO)를 할 예정인 앤트로픽은 인공지능(AI) 서비스 운영에 필요한 컴퓨팅 인프라 확보에 속도를 내고 있다.",
+      "title": "美 AI기업 데이터센터 확보 속도전…앤트로픽, 아이렌과 클라우드 계약"
     },
     "source_fact:981e8466fbc9181e56a81667": {
       "first_seen_kst": "2026-10-12T10:37:32+09:00",
@@ -345342,6 +346560,36 @@
       ],
       "source_published_kst": "2026-10-06T17:57+09:00",
       "title": "대학가 주택 '공공기숙사'로…LH, 서울대와 200가구 공급"
+    },
+    "source_fact:9ad1ed96520d5e30edf3da62": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03306246645612264",
+      "source": "이데일리",
+      "source_body_digest": "3d9941a1568946b4c60b01824bc6084971c02dc2c3196e46c0e82bb5c8ca9daf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4f49a9f48f3098e85ef90773d3eb37ffb45a44dc3879efce43d4b33973631c3b",
+      "source_fact_keys": [
+        "source_fact:v1:0608d1b8a5690232c2d1602c0737add81185f649471509ada0a92a0f1c8f0a92",
+        "source_fact:v1:1dfc6a917bda90cacf9e6ef525673c115c4710ecbe61c6f84d9fcecc067e3a24",
+        "source_fact:v1:1fb04963d453de9f6e4fa40f6955f57cd7b8244085fc11586ae1036ca6f748f1",
+        "source_fact:v1:2f601fd8c9a2a71a06797ce11b8c50877c21f7674068e7b9e4d2ee21a31dae68",
+        "source_fact:v1:4176e519acb4889d908b216c78331005645c75034f2cf8a3e0686569f59fa362",
+        "source_fact:v1:4e9cb31c66d4b64171a9244c52828d10db1d50f7a94d9554e5835f5d08742b52",
+        "source_fact:v1:8314ee0abcb018ff35be13c0627bc0ab2483cace0e1cee17fa06146bdd482e21",
+        "source_fact:v1:93bfcb56fcd35b5c4228b231504ce564762eff52210e69f7a6f63d8ef82ccc15",
+        "source_fact:v1:9609d9f80e3f39297b9674d8a00cf8d0cd083d6ebc63adca49e3be912dbc6f39",
+        "source_fact:v1:c14cb1b4de06f33e2ace062dd78f6db7c8013258163e77d289302b04fee1609e",
+        "source_fact:v1:d8ae5a4aa5a9aa3ea27677adf4be9e79636aa23d00d8fffc676fcba88ce0a897",
+        "source_fact:v1:e0de40166a73880527b439b492a3a1978a6051ba199dd69718f4ce651b7c3f02"
+      ],
+      "source_published_kst": "2026-10-12T14:27+09:00",
+      "source_title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향",
+      "telegram_core_fact": "금융투자협회가 12일 발표한 ‘2026년 9월 장외채권시장 동향’에 따르면 지난달 말 국고채 1년물 금리는 3.733%로 전월 말보다 29.2bp(1bp=0.01%포인트) 상승했다.",
+      "title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향"
     },
     "source_fact:9ad4f4f19b3b119fbc94ae4b": {
       "first_seen_kst": "2026-10-09T18:34:32+09:00",
@@ -360765,6 +362013,27 @@
       "source_published_kst": "2026-10-05T15:21+09:00",
       "title": "“영끌했는데 매달 이자 어쩌죠”...치솟는 주담대 금리- 매경ECONOMY"
     },
+    "source_fact:ad632d60e6888aed7af99b2d": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12173716",
+      "source": "매일경제",
+      "source_body_digest": "b26d5331ad2b2cec782833ca06d93a2ad3765c1cb252cd43faa956f7ac784aa8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b907815a8ac8a9bf38bae7113fe8f106ae4ed61115ae031334149f4977f4de8a",
+      "source_fact_keys": [
+        "source_fact:v1:9828f448bfbcd9688e065c46870bd924bcaab4848507eb64c926b407dc4f730b",
+        "source_fact:v1:a6a9df7bcc9648b921f88a3116c614fea0731b1149047d104deafad96f056ada",
+        "source_fact:v1:d93a4fa7abce09d1efe8118a4c4a56c236aca23394cfc1755ecec70347749dbe"
+      ],
+      "source_published_kst": "2026-10-12T16:15+09:00",
+      "source_title": "삼전 ‘실적 대박’에도 돌아오지 않는 외국인…올 코스피서 224조 순매도",
+      "telegram_core_fact": "외국인은 상반기에만 약 177조원을 순매도했다.",
+      "title": "삼전 ‘실적 대박’에도 돌아오지 않는 외국인…올 코스피서 224조 순매도"
+    },
     "source_fact:ad6452e82ce6a63fac6b4b26": {
       "first_seen_kst": "2026-10-09T23:03:47+09:00",
       "lanes": {
@@ -368164,6 +369433,36 @@
       "source_published_kst": "2026-10-07T07:35+09:00",
       "title": "KB證 “삼성전자, HBM4 업계 최고가 기대…주주환원도 4배 확대 가능”"
     },
+    "source_fact:b65eccab6ffdabbb89e0051f": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03306246645612264",
+      "source": "이데일리",
+      "source_body_digest": "3d9941a1568946b4c60b01824bc6084971c02dc2c3196e46c0e82bb5c8ca9daf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4f49a9f48f3098e85ef90773d3eb37ffb45a44dc3879efce43d4b33973631c3b",
+      "source_fact_keys": [
+        "source_fact:v1:0608d1b8a5690232c2d1602c0737add81185f649471509ada0a92a0f1c8f0a92",
+        "source_fact:v1:1dfc6a917bda90cacf9e6ef525673c115c4710ecbe61c6f84d9fcecc067e3a24",
+        "source_fact:v1:1fb04963d453de9f6e4fa40f6955f57cd7b8244085fc11586ae1036ca6f748f1",
+        "source_fact:v1:2f601fd8c9a2a71a06797ce11b8c50877c21f7674068e7b9e4d2ee21a31dae68",
+        "source_fact:v1:4176e519acb4889d908b216c78331005645c75034f2cf8a3e0686569f59fa362",
+        "source_fact:v1:4e9cb31c66d4b64171a9244c52828d10db1d50f7a94d9554e5835f5d08742b52",
+        "source_fact:v1:8314ee0abcb018ff35be13c0627bc0ab2483cace0e1cee17fa06146bdd482e21",
+        "source_fact:v1:93bfcb56fcd35b5c4228b231504ce564762eff52210e69f7a6f63d8ef82ccc15",
+        "source_fact:v1:9609d9f80e3f39297b9674d8a00cf8d0cd083d6ebc63adca49e3be912dbc6f39",
+        "source_fact:v1:c14cb1b4de06f33e2ace062dd78f6db7c8013258163e77d289302b04fee1609e",
+        "source_fact:v1:d8ae5a4aa5a9aa3ea27677adf4be9e79636aa23d00d8fffc676fcba88ce0a897",
+        "source_fact:v1:e0de40166a73880527b439b492a3a1978a6051ba199dd69718f4ce651b7c3f02"
+      ],
+      "source_published_kst": "2026-10-12T14:27+09:00",
+      "source_title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향",
+      "telegram_core_fact": "금융투자협회가 12일 발표한 ‘2026년 9월 장외채권시장 동향’에 따르면 지난달 말 국고채 1년물 금리는 3.733%로 전월 말보다 29.2bp(1bp=0.01%포인트) 상승했다.",
+      "title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향"
+    },
     "source_fact:b65ece6f0d73b0f7bba7561d": {
       "first_seen_kst": "2026-10-06T22:08:07+09:00",
       "lanes": {
@@ -370422,6 +371721,27 @@
       "source_title": "알래스카 LNG·301조에 다시 커지는 관세 불확실성",
       "telegram_core_fact": "알래스카 LNG 협상이 원만하게 진행되지 않을 경우 향후 미국이 과잉생산 관련 무역법 301조 조사를 활용해 우리나라에 추가 관세 부과 가능성도 배제할 수 없다는 진단이다.",
       "title": "알래스카 LNG·301조에 다시 커지는 관세 불확실성"
+    },
+    "source_fact:b8d52bea48bbe0903d0acadb": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822010",
+      "source": "뉴시스",
+      "source_body_digest": "e62d375a2423f0c534ca9b781c251f86fae7c745c878de2bdf0ee814d711e4c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c4696e49348a924e361a319121b849f7b006bf057065049339518c633af380e0",
+      "source_fact_keys": [
+        "source_fact:v1:036963f522d5be7bf0a27a454dd3aad9c01c2143ab32c448e905d22f01f69521",
+        "source_fact:v1:3fabd4292822b365c0a4ef412479eb4795bbe4c8f3211e1eb114e977cd5739ed",
+        "source_fact:v1:e655bf0600ae43cca14d5af86686cfc7bf60df938c3a86f94c6e93dd754b04f2"
+      ],
+      "source_published_kst": "2026-10-12T11:47+09:00",
+      "source_title": "캠시스, 15억 규모 자사주 소각 결정",
+      "telegram_core_fact": "카메라 솔루션 전문기업 캠시스는 15억원 자사주 소각을 결정했다고 12일 밝혔다.",
+      "title": "캠시스, 15억 규모 자사주 소각 결정"
     },
     "source_fact:b8db57bd87e228b3e02512a9": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
@@ -373868,6 +375188,30 @@
       "telegram_core_fact": "청와대는 7일 우크라이나가 '한국이 러시아에 경유 등 석유제품을 공급했다'는 외신을 인용해 한국을 비판한 데 대해 \"충분한 사실 확인 없이 대한민국의 관련 정책을 왜곡하거나 국제적 신뢰를 훼손할 수 있는 공개적 언급을 자제해달라\"고 반박했다.",
       "title": "靑, '러 석유공급' 우크라 주장에 반박…\"사실과 다르고 부적절\" | 연합뉴스"
     },
+    "source_fact:bd5e4fb5be6986915b57d2a8": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.mk.co.kr/news/pick/12173604",
+      "source": "매일경제",
+      "source_body_digest": "7c1cb6296315cafc98bf76fcf19c9badb4428235e1739190fa4bbc24f038d0d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ccb9431d8355c27b27fe6e443b6690e487357919e0ac306855afd6e6de4b6fb2",
+      "source_fact_keys": [
+        "source_fact:v1:264af22fead18dbe7b02ee441d3672ab43a6049d6a981a833c69b3a1b7099bf2",
+        "source_fact:v1:33eb1992783668307e2e0c4306abb806288fdf5aaa780ab23d1a2e645d428fed",
+        "source_fact:v1:43c6d2757360c3232a3a1898a9cecab65f2808be59bc8135911fe9d405756d77",
+        "source_fact:v1:4c501d12dde6a7f16e097dfadeb88c20eeb1f215e143d92be5e0c300768ee5eb",
+        "source_fact:v1:4cb7724d75214274c1649860eeace2ffdd101f65a90e749d14bf4e7252878b14",
+        "source_fact:v1:d8319692c16d76dd2aa84b6380161a798904ee897621c93dfb710d1bd6ec4c86"
+      ],
+      "source_published_kst": "2026-10-12T15:02+09:00",
+      "source_title": "오텍, 건자재 업체 노이리움에 냉난방 설비",
+      "telegram_core_fact": "오텍그룹의 계열사 오텍캐리어와 씨알케이(CRK)가 지난 7일 노이리움과 ‘전국 총판점·대리점 신설에 따른 설비 공급 협력을 위한 업무협약(MOU)’을 체결했다고 12일 밝혔다.",
+      "title": "오텍, 건자재 업체 노이리움에 냉난방 설비"
+    },
     "source_fact:bd6e33620eeb60b8fed44074": {
       "first_seen_kst": "2026-10-06T14:18:00+09:00",
       "lanes": {
@@ -374558,6 +375902,28 @@
       "source_title": "D램값 상승·주주환원 기대감… 삼성전자 주가 끌어올릴까",
       "telegram_core_fact": "이영곤 토스증권 리서치센터장도 \"투자자들은 앞으로도 이러한 높은 이익 성장세가 얼마만큼 더 이어질 수 있는 지 주목하고 있다\"며 \"확정실적을 통해 메모리 수급과 가격, HBM, 내년 실적 전망, 주주환원 등에 대한 회사의 구체적인 설명을 확인하는 것이 필요하다\"고 전했다.",
       "title": "D램값 상승·주주환원 기대감… 삼성전자 주가 끌어올릴까"
+    },
+    "source_fact:be4a800112a2010b31d4d81b": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634775",
+      "source": "이투데이",
+      "source_body_digest": "4ed71ef7d05b9e547ba5862a09ec459a050e8d3e4fe6177f98d06047882c34b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2aaed2c2f6b5c040580be62a5f3b4373c79ed2bc324f89daf74286bedc7d5e47",
+      "source_fact_keys": [
+        "source_fact:v1:3b9dfca4b05e7236b688a95867dbdce85f5f36b1da0ca650b43d6712f1423728",
+        "source_fact:v1:62405005925306a81cdc2488de2826bb28ffa39f05d28723aed3686ed98af2c5",
+        "source_fact:v1:80dc5a97f373f24c327529603e5b60db3fce0890d078c02bcb76e2dcefb394bf",
+        "source_fact:v1:aea36e90259159d1f392a88b4aa30daea1d94c9a1e9ad728299886692afe232c"
+      ],
+      "source_published_kst": "2026-10-12T16:14+09:00",
+      "source_title": "외국인 2조 매도에 코스피 6400선 붕괴…39거래일 만",
+      "telegram_core_fact": "개인이 1조4790억원, 기타법인이 6620억원 순매수한 가운데 외국인이 2조120억원, 기관이 1290억원 순매도했다.",
+      "title": "외국인 2조 매도에 코스피 6400선 붕괴…39거래일 만"
     },
     "source_fact:be4c20e0c60f5db9b54e3ec7": {
       "first_seen_kst": "2026-10-08T06:27:52+09:00",
@@ -378586,6 +379952,36 @@
       "telegram_core_fact": "일본 주요 전자재료 업체인 레조낙은 지난 3월부터 기판에 필수적인 동박적층판(CCL)과 프리프레그 전 제품의 가격을 30% 이상 인상했다. 세계 최대 반도체 조립·검사 전문 기업인 대만 ASE는 첨단 패키징 공급 견적 가격을 20% 이상 높인 것으로 알려졌다.",
       "title": "기판 20%·동박판 30% 껑충 … 日·대만 소부장 영향력 커져"
     },
+    "source_fact:c2f03fdc40aa8168d5d89951": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03306246645612264",
+      "source": "이데일리",
+      "source_body_digest": "3d9941a1568946b4c60b01824bc6084971c02dc2c3196e46c0e82bb5c8ca9daf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4f49a9f48f3098e85ef90773d3eb37ffb45a44dc3879efce43d4b33973631c3b",
+      "source_fact_keys": [
+        "source_fact:v1:0608d1b8a5690232c2d1602c0737add81185f649471509ada0a92a0f1c8f0a92",
+        "source_fact:v1:1dfc6a917bda90cacf9e6ef525673c115c4710ecbe61c6f84d9fcecc067e3a24",
+        "source_fact:v1:1fb04963d453de9f6e4fa40f6955f57cd7b8244085fc11586ae1036ca6f748f1",
+        "source_fact:v1:2f601fd8c9a2a71a06797ce11b8c50877c21f7674068e7b9e4d2ee21a31dae68",
+        "source_fact:v1:4176e519acb4889d908b216c78331005645c75034f2cf8a3e0686569f59fa362",
+        "source_fact:v1:4e9cb31c66d4b64171a9244c52828d10db1d50f7a94d9554e5835f5d08742b52",
+        "source_fact:v1:8314ee0abcb018ff35be13c0627bc0ab2483cace0e1cee17fa06146bdd482e21",
+        "source_fact:v1:93bfcb56fcd35b5c4228b231504ce564762eff52210e69f7a6f63d8ef82ccc15",
+        "source_fact:v1:9609d9f80e3f39297b9674d8a00cf8d0cd083d6ebc63adca49e3be912dbc6f39",
+        "source_fact:v1:c14cb1b4de06f33e2ace062dd78f6db7c8013258163e77d289302b04fee1609e",
+        "source_fact:v1:d8ae5a4aa5a9aa3ea27677adf4be9e79636aa23d00d8fffc676fcba88ce0a897",
+        "source_fact:v1:e0de40166a73880527b439b492a3a1978a6051ba199dd69718f4ce651b7c3f02"
+      ],
+      "source_published_kst": "2026-10-12T14:27+09:00",
+      "source_title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향",
+      "telegram_core_fact": "금융투자협회가 12일 발표한 ‘2026년 9월 장외채권시장 동향’에 따르면 지난달 말 국고채 1년물 금리는 3.733%로 전월 말보다 29.2bp(1bp=0.01%포인트) 상승했다.",
+      "title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향"
+    },
     "source_fact:c2f20aa590907c97672dbcdb": {
       "first_seen_kst": "2026-10-06T12:10:48+09:00",
       "lanes": {
@@ -378792,6 +380188,36 @@
       "source_title": "부품 하나만 없어도 데이터센터 '올스톱'",
       "telegram_core_fact": "인공지능(AI) 부품업계의 장기공급계약(LTA) 관행은 결국 오픈AI, 구글, 마이크로소프트(MS) 등 미국 빅테크가 AI 데이터센터 속도전을 벌인 결과로 풀이된다. 문제는 이 중 단 하나만 빠져도 AI 데이터센터 가동 자체가 불가능하다는 점이다.",
       "title": "부품 하나만 없어도 데이터센터 '올스톱'"
+    },
+    "source_fact:c32e3d1496ea9cf199a19e84": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03306246645612264",
+      "source": "이데일리",
+      "source_body_digest": "3d9941a1568946b4c60b01824bc6084971c02dc2c3196e46c0e82bb5c8ca9daf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4f49a9f48f3098e85ef90773d3eb37ffb45a44dc3879efce43d4b33973631c3b",
+      "source_fact_keys": [
+        "source_fact:v1:0608d1b8a5690232c2d1602c0737add81185f649471509ada0a92a0f1c8f0a92",
+        "source_fact:v1:1dfc6a917bda90cacf9e6ef525673c115c4710ecbe61c6f84d9fcecc067e3a24",
+        "source_fact:v1:1fb04963d453de9f6e4fa40f6955f57cd7b8244085fc11586ae1036ca6f748f1",
+        "source_fact:v1:2f601fd8c9a2a71a06797ce11b8c50877c21f7674068e7b9e4d2ee21a31dae68",
+        "source_fact:v1:4176e519acb4889d908b216c78331005645c75034f2cf8a3e0686569f59fa362",
+        "source_fact:v1:4e9cb31c66d4b64171a9244c52828d10db1d50f7a94d9554e5835f5d08742b52",
+        "source_fact:v1:8314ee0abcb018ff35be13c0627bc0ab2483cace0e1cee17fa06146bdd482e21",
+        "source_fact:v1:93bfcb56fcd35b5c4228b231504ce564762eff52210e69f7a6f63d8ef82ccc15",
+        "source_fact:v1:9609d9f80e3f39297b9674d8a00cf8d0cd083d6ebc63adca49e3be912dbc6f39",
+        "source_fact:v1:c14cb1b4de06f33e2ace062dd78f6db7c8013258163e77d289302b04fee1609e",
+        "source_fact:v1:d8ae5a4aa5a9aa3ea27677adf4be9e79636aa23d00d8fffc676fcba88ce0a897",
+        "source_fact:v1:e0de40166a73880527b439b492a3a1978a6051ba199dd69718f4ce651b7c3f02"
+      ],
+      "source_published_kst": "2026-10-12T14:27+09:00",
+      "source_title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향",
+      "telegram_core_fact": "금융투자협회가 12일 발표한 ‘2026년 9월 장외채권시장 동향’에 따르면 지난달 말 국고채 1년물 금리는 3.733%로 전월 말보다 29.2bp(1bp=0.01%포인트) 상승했다.",
+      "title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향"
     },
     "source_fact:c3323a77aee62ffea906ffef": {
       "first_seen_kst": "2026-10-06T18:16:47+09:00",
@@ -386691,6 +388117,36 @@
       "telegram_core_fact": "삼성SDS는 12일 우정항공 지분 100%를 인수하는 주식양수도계약을 체결하고 이를 임직원에게 공지했다.",
       "title": "삼성SDS, 우정항공 인수 계약…인천공항 거점 항공물류 강화"
     },
+    "source_fact:cc6162c31587e6a7a4848242": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03306246645612264",
+      "source": "이데일리",
+      "source_body_digest": "3d9941a1568946b4c60b01824bc6084971c02dc2c3196e46c0e82bb5c8ca9daf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4f49a9f48f3098e85ef90773d3eb37ffb45a44dc3879efce43d4b33973631c3b",
+      "source_fact_keys": [
+        "source_fact:v1:0608d1b8a5690232c2d1602c0737add81185f649471509ada0a92a0f1c8f0a92",
+        "source_fact:v1:1dfc6a917bda90cacf9e6ef525673c115c4710ecbe61c6f84d9fcecc067e3a24",
+        "source_fact:v1:1fb04963d453de9f6e4fa40f6955f57cd7b8244085fc11586ae1036ca6f748f1",
+        "source_fact:v1:2f601fd8c9a2a71a06797ce11b8c50877c21f7674068e7b9e4d2ee21a31dae68",
+        "source_fact:v1:4176e519acb4889d908b216c78331005645c75034f2cf8a3e0686569f59fa362",
+        "source_fact:v1:4e9cb31c66d4b64171a9244c52828d10db1d50f7a94d9554e5835f5d08742b52",
+        "source_fact:v1:8314ee0abcb018ff35be13c0627bc0ab2483cace0e1cee17fa06146bdd482e21",
+        "source_fact:v1:93bfcb56fcd35b5c4228b231504ce564762eff52210e69f7a6f63d8ef82ccc15",
+        "source_fact:v1:9609d9f80e3f39297b9674d8a00cf8d0cd083d6ebc63adca49e3be912dbc6f39",
+        "source_fact:v1:c14cb1b4de06f33e2ace062dd78f6db7c8013258163e77d289302b04fee1609e",
+        "source_fact:v1:d8ae5a4aa5a9aa3ea27677adf4be9e79636aa23d00d8fffc676fcba88ce0a897",
+        "source_fact:v1:e0de40166a73880527b439b492a3a1978a6051ba199dd69718f4ce651b7c3f02"
+      ],
+      "source_published_kst": "2026-10-12T14:27+09:00",
+      "source_title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향",
+      "telegram_core_fact": "금융투자협회가 12일 발표한 ‘2026년 9월 장외채권시장 동향’에 따르면 지난달 말 국고채 1년물 금리는 3.733%로 전월 말보다 29.2bp(1bp=0.01%포인트) 상승했다.",
+      "title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향"
+    },
     "source_fact:cc61cda96c02f0daca01edc3": {
       "first_seen_kst": "2026-10-08T08:56:19+09:00",
       "lanes": {
@@ -391980,6 +393436,28 @@
       ],
       "source_published_kst": "2026-10-07T09:00+09:00",
       "title": "하나證 “효성중공업, 고마진 매출 이연으로 3분기 실적 하회 …중장기 성장은 유효\""
+    },
+    "source_fact:d2d53ad7a1d30c00f48c91d9": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://biz.heraldcorp.com/article/10899298",
+      "source": "헤럴드경제",
+      "source_body_digest": "72c1a187badfe875819fd6ce57b38c1069eca58dedfa2e7cd7ab8a7a62246349",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:483cf1db6a7a131b069f9d394ac9c51d5db0d9d002d8f6f9f74148c265b0c020",
+      "source_fact_keys": [
+        "source_fact:v1:63b3ed88429027ca3dd69a58bbf3d42bd52205fc4ae5b2e4f1169f0be8cd719d",
+        "source_fact:v1:9589771748d50e53f2bbe0fd0868238dcaa3174f13c19b883dcb4eabae430aa3",
+        "source_fact:v1:be23be450ed47cb79e4354f799c9c6f134a87ef911415e744f05f2cfd9eb439e",
+        "source_fact:v1:ca90f1681f98f2d694d9bb2d64f9d5d5e278156157828a3fcf555dff093739f2"
+      ],
+      "source_published_kst": "2026-10-12T10:38+09:00",
+      "source_title": "신현송 총재 “기준금리 추가 인상 시기, 물가·경기 흐름 보고 결정”",
+      "telegram_core_fact": "신현송 한국은행 총재는 향후 통화정책에 대해 “물가와 경기 흐름, 금융안정 상황을 면밀히 점검하면서 추가 인상의 시기와 속도 등을 결정해 나갈 계획”이라며 금리 인상 기조를 재차 확인했다.",
+      "title": "신현송 총재 “기준금리 추가 인상 시기, 물가·경기 흐름 보고 결정”"
     },
     "source_fact:d2da942799a879a054394b5d": {
       "first_seen_kst": "2026-10-07T09:44:16+09:00",
@@ -403337,6 +404815,31 @@
       "source_published_kst": "2026-10-06T11:31+09:00",
       "title": "[2026 국감]산업부, 대미투자 국익 최우선 추진…호남 반도체 등 1600조 속도전"
     },
+    "source_fact:df8b7c35efa7a1df6bce84c4": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.dt.co.kr/article/12088561",
+      "source": "디지털타임스",
+      "source_body_digest": "a07b8b8678f1acb38e80595a266ac7b57adaad3b20796c15a025b46b737951cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b94fd0563f6cae63f01b97e1dd573ec94ba11fcede13a3ecff9d2c467e04edea",
+      "source_fact_keys": [
+        "source_fact:v1:0baf6229a319f0adbe49d50732f67f2165d6a7ca9efbbcfd8d3cff8042d55b7e",
+        "source_fact:v1:11c79f072a0d4c3bfd553e3a0050d327ed516fb15271dae85d92e5b08f9dcdfa",
+        "source_fact:v1:40e9bd58118462b1d105f1ae3fbb6abdb53f41a6992651c919f220dd422777a8",
+        "source_fact:v1:56871d3ba17ce6c65c9a7dbe60fc8d0e04dbe2e43e8d36e9ac66c7dbb9c8c325",
+        "source_fact:v1:65a280c1e07112c06932eae7d05fc4533a715334d69c361c6d505f1c5a0c4a28",
+        "source_fact:v1:80c696adb9eea197ea3af169677cac52296812ea6d9bfeceee5a6ce5b8bd907c",
+        "source_fact:v1:bbda3322dc77d908c72cb1bf0cda130c753eb0fb503f96fa5f14a6d60330c72e"
+      ],
+      "source_published_kst": "2026-10-12T16:09+09:00",
+      "source_title": "美 AI기업 데이터센터 확보 속도전…앤트로픽, 아이렌과 클라우드 계약",
+      "telegram_core_fact": "다음달 기업공개(IPO)를 할 예정인 앤트로픽은 인공지능(AI) 서비스 운영에 필요한 컴퓨팅 인프라 확보에 속도를 내고 있다.",
+      "title": "美 AI기업 데이터센터 확보 속도전…앤트로픽, 아이렌과 클라우드 계약"
+    },
     "source_fact:df9929d2c1059ca7e2d76460": {
       "first_seen_kst": "2026-10-07T00:54:50+09:00",
       "lanes": {
@@ -404413,6 +405916,36 @@
       ],
       "source_published_kst": "2026-10-06T09:44+09:00",
       "title": "[특징주] LG전자 5%대 강세⋯북미 AI 데이터센터 냉각 솔루션 공급 호재"
+    },
+    "source_fact:e0d7c3b49a1d46b9f1673657": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03306246645612264",
+      "source": "이데일리",
+      "source_body_digest": "3d9941a1568946b4c60b01824bc6084971c02dc2c3196e46c0e82bb5c8ca9daf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4f49a9f48f3098e85ef90773d3eb37ffb45a44dc3879efce43d4b33973631c3b",
+      "source_fact_keys": [
+        "source_fact:v1:0608d1b8a5690232c2d1602c0737add81185f649471509ada0a92a0f1c8f0a92",
+        "source_fact:v1:1dfc6a917bda90cacf9e6ef525673c115c4710ecbe61c6f84d9fcecc067e3a24",
+        "source_fact:v1:1fb04963d453de9f6e4fa40f6955f57cd7b8244085fc11586ae1036ca6f748f1",
+        "source_fact:v1:2f601fd8c9a2a71a06797ce11b8c50877c21f7674068e7b9e4d2ee21a31dae68",
+        "source_fact:v1:4176e519acb4889d908b216c78331005645c75034f2cf8a3e0686569f59fa362",
+        "source_fact:v1:4e9cb31c66d4b64171a9244c52828d10db1d50f7a94d9554e5835f5d08742b52",
+        "source_fact:v1:8314ee0abcb018ff35be13c0627bc0ab2483cace0e1cee17fa06146bdd482e21",
+        "source_fact:v1:93bfcb56fcd35b5c4228b231504ce564762eff52210e69f7a6f63d8ef82ccc15",
+        "source_fact:v1:9609d9f80e3f39297b9674d8a00cf8d0cd083d6ebc63adca49e3be912dbc6f39",
+        "source_fact:v1:c14cb1b4de06f33e2ace062dd78f6db7c8013258163e77d289302b04fee1609e",
+        "source_fact:v1:d8ae5a4aa5a9aa3ea27677adf4be9e79636aa23d00d8fffc676fcba88ce0a897",
+        "source_fact:v1:e0de40166a73880527b439b492a3a1978a6051ba199dd69718f4ce651b7c3f02"
+      ],
+      "source_published_kst": "2026-10-12T14:27+09:00",
+      "source_title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향",
+      "telegram_core_fact": "금융투자협회가 12일 발표한 ‘2026년 9월 장외채권시장 동향’에 따르면 지난달 말 국고채 1년물 금리는 3.733%로 전월 말보다 29.2bp(1bp=0.01%포인트) 상승했다.",
+      "title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향"
     },
     "source_fact:e0d939a1b4979e1941be4c43": {
       "first_seen_kst": "2026-10-07T22:24:07+09:00",
@@ -408091,6 +409624,36 @@
       "telegram_core_fact": "풍력터빈 전문기업 유니슨은 전날 대한상공회의소에서 열린 '한국형 녹색대전환(K-GX) 전략 국민보고회'에 풍력 분야 기업으로 참여했다고 8일 밝혔다. 이 가운데 해상풍력 분야에서는 유니슨을 포함한 참여기업들이 약 2조8500억원 민간 투자를 추진한다.",
       "title": "유니슨, '한국형 녹색대전환 전략 국민보고회' 참여"
     },
+    "source_fact:e4b40b3c6278062fca12fddf": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03306246645612264",
+      "source": "이데일리",
+      "source_body_digest": "3d9941a1568946b4c60b01824bc6084971c02dc2c3196e46c0e82bb5c8ca9daf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4f49a9f48f3098e85ef90773d3eb37ffb45a44dc3879efce43d4b33973631c3b",
+      "source_fact_keys": [
+        "source_fact:v1:0608d1b8a5690232c2d1602c0737add81185f649471509ada0a92a0f1c8f0a92",
+        "source_fact:v1:1dfc6a917bda90cacf9e6ef525673c115c4710ecbe61c6f84d9fcecc067e3a24",
+        "source_fact:v1:1fb04963d453de9f6e4fa40f6955f57cd7b8244085fc11586ae1036ca6f748f1",
+        "source_fact:v1:2f601fd8c9a2a71a06797ce11b8c50877c21f7674068e7b9e4d2ee21a31dae68",
+        "source_fact:v1:4176e519acb4889d908b216c78331005645c75034f2cf8a3e0686569f59fa362",
+        "source_fact:v1:4e9cb31c66d4b64171a9244c52828d10db1d50f7a94d9554e5835f5d08742b52",
+        "source_fact:v1:8314ee0abcb018ff35be13c0627bc0ab2483cace0e1cee17fa06146bdd482e21",
+        "source_fact:v1:93bfcb56fcd35b5c4228b231504ce564762eff52210e69f7a6f63d8ef82ccc15",
+        "source_fact:v1:9609d9f80e3f39297b9674d8a00cf8d0cd083d6ebc63adca49e3be912dbc6f39",
+        "source_fact:v1:c14cb1b4de06f33e2ace062dd78f6db7c8013258163e77d289302b04fee1609e",
+        "source_fact:v1:d8ae5a4aa5a9aa3ea27677adf4be9e79636aa23d00d8fffc676fcba88ce0a897",
+        "source_fact:v1:e0de40166a73880527b439b492a3a1978a6051ba199dd69718f4ce651b7c3f02"
+      ],
+      "source_published_kst": "2026-10-12T14:27+09:00",
+      "source_title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향",
+      "telegram_core_fact": "금융투자협회가 12일 발표한 ‘2026년 9월 장외채권시장 동향’에 따르면 지난달 말 국고채 1년물 금리는 3.733%로 전월 말보다 29.2bp(1bp=0.01%포인트) 상승했다.",
+      "title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향"
+    },
     "source_fact:e4b4fe41f20e96bc5c0ea3b8": {
       "first_seen_kst": "2026-10-11T17:08:25+09:00",
       "lanes": {
@@ -408782,6 +410345,27 @@
       "source_title": "한화 3형제 사업 재편 본격화…김동선, 한화M&S 지배력 키운다",
       "telegram_core_fact": "김승연 한화그룹 회장의 3남인 김동선 한화머시너리앤서비스홀딩스(한화 M&S) 미래전략사장이 대상 회사 지분 19.0%를 공개매수한다. 김동선 사장이 한화M&S 지분을 추가 확보해 독자적인 지배력을 강화하려는 움직임으로 풀이된다.",
       "title": "한화 3형제 사업 재편 본격화…김동선, 한화M&S 지배력 키운다"
+    },
+    "source_fact:e564e84d04a870c8bc55f01f": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12173716",
+      "source": "매일경제",
+      "source_body_digest": "b26d5331ad2b2cec782833ca06d93a2ad3765c1cb252cd43faa956f7ac784aa8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b907815a8ac8a9bf38bae7113fe8f106ae4ed61115ae031334149f4977f4de8a",
+      "source_fact_keys": [
+        "source_fact:v1:9828f448bfbcd9688e065c46870bd924bcaab4848507eb64c926b407dc4f730b",
+        "source_fact:v1:a6a9df7bcc9648b921f88a3116c614fea0731b1149047d104deafad96f056ada",
+        "source_fact:v1:d93a4fa7abce09d1efe8118a4c4a56c236aca23394cfc1755ecec70347749dbe"
+      ],
+      "source_published_kst": "2026-10-12T16:15+09:00",
+      "source_title": "삼전 ‘실적 대박’에도 돌아오지 않는 외국인…올 코스피서 224조 순매도",
+      "telegram_core_fact": "외국인은 상반기에만 약 177조원을 순매도했다.",
+      "title": "삼전 ‘실적 대박’에도 돌아오지 않는 외국인…올 코스피서 224조 순매도"
     },
     "source_fact:e56d2e71b1dd2cca2a401428": {
       "first_seen_kst": "2026-10-11T23:10:29+09:00",
@@ -415130,6 +416714,36 @@
       ],
       "source_published_kst": "2026-10-07T09:30+09:00",
       "title": "포스코홀딩스, 8년 투자 결실…아르헨티나 리튬 2공장 준공"
+    },
+    "source_fact:ed018642a17f419290ac4266": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03306246645612264",
+      "source": "이데일리",
+      "source_body_digest": "3d9941a1568946b4c60b01824bc6084971c02dc2c3196e46c0e82bb5c8ca9daf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4f49a9f48f3098e85ef90773d3eb37ffb45a44dc3879efce43d4b33973631c3b",
+      "source_fact_keys": [
+        "source_fact:v1:0608d1b8a5690232c2d1602c0737add81185f649471509ada0a92a0f1c8f0a92",
+        "source_fact:v1:1dfc6a917bda90cacf9e6ef525673c115c4710ecbe61c6f84d9fcecc067e3a24",
+        "source_fact:v1:1fb04963d453de9f6e4fa40f6955f57cd7b8244085fc11586ae1036ca6f748f1",
+        "source_fact:v1:2f601fd8c9a2a71a06797ce11b8c50877c21f7674068e7b9e4d2ee21a31dae68",
+        "source_fact:v1:4176e519acb4889d908b216c78331005645c75034f2cf8a3e0686569f59fa362",
+        "source_fact:v1:4e9cb31c66d4b64171a9244c52828d10db1d50f7a94d9554e5835f5d08742b52",
+        "source_fact:v1:8314ee0abcb018ff35be13c0627bc0ab2483cace0e1cee17fa06146bdd482e21",
+        "source_fact:v1:93bfcb56fcd35b5c4228b231504ce564762eff52210e69f7a6f63d8ef82ccc15",
+        "source_fact:v1:9609d9f80e3f39297b9674d8a00cf8d0cd083d6ebc63adca49e3be912dbc6f39",
+        "source_fact:v1:c14cb1b4de06f33e2ace062dd78f6db7c8013258163e77d289302b04fee1609e",
+        "source_fact:v1:d8ae5a4aa5a9aa3ea27677adf4be9e79636aa23d00d8fffc676fcba88ce0a897",
+        "source_fact:v1:e0de40166a73880527b439b492a3a1978a6051ba199dd69718f4ce651b7c3f02"
+      ],
+      "source_published_kst": "2026-10-12T14:27+09:00",
+      "source_title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향",
+      "telegram_core_fact": "금융투자협회가 12일 발표한 ‘2026년 9월 장외채권시장 동향’에 따르면 지난달 말 국고채 1년물 금리는 3.733%로 전월 말보다 29.2bp(1bp=0.01%포인트) 상승했다.",
+      "title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향"
     },
     "source_fact:ed082d27abc4bd6463925a95": {
       "first_seen_kst": "2026-10-08T22:06:55+09:00",
@@ -430731,6 +432345,31 @@
       "telegram_core_fact": "한수진 삼성증권 연구원은 \"글로벌 금 ETF는 지난 7월 중순 이후 일시적인 순유출로 전환되며 지속되던 자금 유입에 제동이 걸리기도 했다\"며 \"이는 구조적인 수요 부진이라기보다는 미국 국채금리 상승세에 따라 금의 상대적 매력도가 낮아져 단기 수급 변화를 유발한 것\"이라고 진단했다.",
       "title": "美 10년물 급등에 빛바랜 금 ETF…3개월간 10% 안팎 하락"
     },
+    "title:01e56ae0df430fe87d11ed86": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.dt.co.kr/article/12088561",
+      "source": "디지털타임스",
+      "source_body_digest": "a07b8b8678f1acb38e80595a266ac7b57adaad3b20796c15a025b46b737951cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b94fd0563f6cae63f01b97e1dd573ec94ba11fcede13a3ecff9d2c467e04edea",
+      "source_fact_keys": [
+        "source_fact:v1:0baf6229a319f0adbe49d50732f67f2165d6a7ca9efbbcfd8d3cff8042d55b7e",
+        "source_fact:v1:11c79f072a0d4c3bfd553e3a0050d327ed516fb15271dae85d92e5b08f9dcdfa",
+        "source_fact:v1:40e9bd58118462b1d105f1ae3fbb6abdb53f41a6992651c919f220dd422777a8",
+        "source_fact:v1:56871d3ba17ce6c65c9a7dbe60fc8d0e04dbe2e43e8d36e9ac66c7dbb9c8c325",
+        "source_fact:v1:65a280c1e07112c06932eae7d05fc4533a715334d69c361c6d505f1c5a0c4a28",
+        "source_fact:v1:80c696adb9eea197ea3af169677cac52296812ea6d9bfeceee5a6ce5b8bd907c",
+        "source_fact:v1:bbda3322dc77d908c72cb1bf0cda130c753eb0fb503f96fa5f14a6d60330c72e"
+      ],
+      "source_published_kst": "2026-10-12T16:09+09:00",
+      "source_title": "美 AI기업 데이터센터 확보 속도전…앤트로픽, 아이렌과 클라우드 계약",
+      "telegram_core_fact": "다음달 기업공개(IPO)를 할 예정인 앤트로픽은 인공지능(AI) 서비스 운영에 필요한 컴퓨팅 인프라 확보에 속도를 내고 있다.",
+      "title": "美 AI기업 데이터센터 확보 속도전…앤트로픽, 아이렌과 클라우드 계약"
+    },
     "title:01e91b46963e6aa32612b9d6": {
       "first_seen_kst": "2026-10-12T05:58:12+09:00",
       "lanes": {
@@ -439226,6 +440865,28 @@
       "telegram_core_fact": "한은은 지난해 수익 확대와 관련, 3월 발간한 '2025년도 연차 보고서'에서 \"원/달러 환율 상승, 유가증권 가격 상승 등의 영향으로 외화자산 관련 순이익이 전년 대비 크게 증가했다\"고 언급했다.",
       "title": "작년 한은 외화자산 운용수익 17조원 육박…역대 최대"
     },
+    "title:24d097d50abfb62b85b8f659": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634775",
+      "source": "이투데이",
+      "source_body_digest": "4ed71ef7d05b9e547ba5862a09ec459a050e8d3e4fe6177f98d06047882c34b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2aaed2c2f6b5c040580be62a5f3b4373c79ed2bc324f89daf74286bedc7d5e47",
+      "source_fact_keys": [
+        "source_fact:v1:3b9dfca4b05e7236b688a95867dbdce85f5f36b1da0ca650b43d6712f1423728",
+        "source_fact:v1:62405005925306a81cdc2488de2826bb28ffa39f05d28723aed3686ed98af2c5",
+        "source_fact:v1:80dc5a97f373f24c327529603e5b60db3fce0890d078c02bcb76e2dcefb394bf",
+        "source_fact:v1:aea36e90259159d1f392a88b4aa30daea1d94c9a1e9ad728299886692afe232c"
+      ],
+      "source_published_kst": "2026-10-12T16:14+09:00",
+      "source_title": "외국인 2조 매도에 코스피 6400선 붕괴…39거래일 만",
+      "telegram_core_fact": "개인이 1조4790억원, 기타법인이 6620억원 순매수한 가운데 외국인이 2조120억원, 기관이 1290억원 순매도했다.",
+      "title": "외국인 2조 매도에 코스피 6400선 붕괴…39거래일 만"
+    },
     "title:24d0dc04933640faea4e6c5e": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
       "lanes": {
@@ -441491,6 +443152,30 @@
       ],
       "source_published_kst": "2026-10-05T17:00+09:00",
       "title": "금호석유화학, LFP 전지용 CNT 개발 본격화…내년 상업화 추진"
+    },
+    "title:2daecd56a06f2522ebe3849c": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.mk.co.kr/news/pick/12173604",
+      "source": "매일경제",
+      "source_body_digest": "7c1cb6296315cafc98bf76fcf19c9badb4428235e1739190fa4bbc24f038d0d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ccb9431d8355c27b27fe6e443b6690e487357919e0ac306855afd6e6de4b6fb2",
+      "source_fact_keys": [
+        "source_fact:v1:264af22fead18dbe7b02ee441d3672ab43a6049d6a981a833c69b3a1b7099bf2",
+        "source_fact:v1:33eb1992783668307e2e0c4306abb806288fdf5aaa780ab23d1a2e645d428fed",
+        "source_fact:v1:43c6d2757360c3232a3a1898a9cecab65f2808be59bc8135911fe9d405756d77",
+        "source_fact:v1:4c501d12dde6a7f16e097dfadeb88c20eeb1f215e143d92be5e0c300768ee5eb",
+        "source_fact:v1:4cb7724d75214274c1649860eeace2ffdd101f65a90e749d14bf4e7252878b14",
+        "source_fact:v1:d8319692c16d76dd2aa84b6380161a798904ee897621c93dfb710d1bd6ec4c86"
+      ],
+      "source_published_kst": "2026-10-12T15:02+09:00",
+      "source_title": "오텍, 건자재 업체 노이리움에 냉난방 설비",
+      "telegram_core_fact": "오텍그룹의 계열사 오텍캐리어와 씨알케이(CRK)가 지난 7일 노이리움과 ‘전국 총판점·대리점 신설에 따른 설비 공급 협력을 위한 업무협약(MOU)’을 체결했다고 12일 밝혔다.",
+      "title": "오텍, 건자재 업체 노이리움에 냉난방 설비"
     },
     "title:2db826a617d6f630918a6ef4": {
       "first_seen_kst": "2026-10-07T20:43:18+09:00",
@@ -447956,6 +449641,27 @@
       "source_title": "상위 10대 GA, 1200%룰 앞두고 설계사 1만명 늘렸다",
       "telegram_core_fact": "GA가 소속 설계사에게 지급하는 초년도 수수료가 월 납입보험료 12배 이내로 제한되면서 정착지원금 등을 활용한 영입 경쟁에 제약이 생겼다.",
       "title": "상위 10대 GA, 1200%룰 앞두고 설계사 1만명 늘렸다"
+    },
+    "title:458ef2502664be3f839f52e8": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822010",
+      "source": "뉴시스",
+      "source_body_digest": "e62d375a2423f0c534ca9b781c251f86fae7c745c878de2bdf0ee814d711e4c7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c4696e49348a924e361a319121b849f7b006bf057065049339518c633af380e0",
+      "source_fact_keys": [
+        "source_fact:v1:036963f522d5be7bf0a27a454dd3aad9c01c2143ab32c448e905d22f01f69521",
+        "source_fact:v1:3fabd4292822b365c0a4ef412479eb4795bbe4c8f3211e1eb114e977cd5739ed",
+        "source_fact:v1:e655bf0600ae43cca14d5af86686cfc7bf60df938c3a86f94c6e93dd754b04f2"
+      ],
+      "source_published_kst": "2026-10-12T11:47+09:00",
+      "source_title": "캠시스, 15억 규모 자사주 소각 결정",
+      "telegram_core_fact": "카메라 솔루션 전문기업 캠시스는 15억원 자사주 소각을 결정했다고 12일 밝혔다.",
+      "title": "캠시스, 15억 규모 자사주 소각 결정"
     },
     "title:45995f4e57cd750ae889e77d": {
       "first_seen_kst": "2026-10-12T14:44:13+09:00",
@@ -474131,6 +475837,27 @@
       "telegram_core_fact": "감사위가 안성시 제출자료로 계산한 미부과 추정액은 69곳 7억5703만원, 116곳 2억637만3000원 등 185곳 9억6340만3000원이다.",
       "title": "안성시, 계약업체 아닌 곳에 '단톡방 공사 지시'…경기도 감사 79건 지적"
     },
+    "title:ade4d6c8186ee483c49a362a": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12173716",
+      "source": "매일경제",
+      "source_body_digest": "b26d5331ad2b2cec782833ca06d93a2ad3765c1cb252cd43faa956f7ac784aa8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b907815a8ac8a9bf38bae7113fe8f106ae4ed61115ae031334149f4977f4de8a",
+      "source_fact_keys": [
+        "source_fact:v1:9828f448bfbcd9688e065c46870bd924bcaab4848507eb64c926b407dc4f730b",
+        "source_fact:v1:a6a9df7bcc9648b921f88a3116c614fea0731b1149047d104deafad96f056ada",
+        "source_fact:v1:d93a4fa7abce09d1efe8118a4c4a56c236aca23394cfc1755ecec70347749dbe"
+      ],
+      "source_published_kst": "2026-10-12T16:15+09:00",
+      "source_title": "삼전 ‘실적 대박’에도 돌아오지 않는 외국인…올 코스피서 224조 순매도",
+      "telegram_core_fact": "외국인은 상반기에만 약 177조원을 순매도했다.",
+      "title": "삼전 ‘실적 대박’에도 돌아오지 않는 외국인…올 코스피서 224조 순매도"
+    },
     "title:ade5346840174fe5efc318c8": {
       "first_seen_kst": "2026-10-08T01:09:29+09:00",
       "lanes": {
@@ -477676,6 +479403,36 @@
       ],
       "source_published_kst": "2026-10-07T15:55+09:00",
       "title": "대구·전남광주, 공장 누비며 부품 나르는 '공정모빌리티' 개발 | 연합뉴스"
+    },
+    "title:bc8074ba14136d676f804554": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03306246645612264",
+      "source": "이데일리",
+      "source_body_digest": "3d9941a1568946b4c60b01824bc6084971c02dc2c3196e46c0e82bb5c8ca9daf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4f49a9f48f3098e85ef90773d3eb37ffb45a44dc3879efce43d4b33973631c3b",
+      "source_fact_keys": [
+        "source_fact:v1:0608d1b8a5690232c2d1602c0737add81185f649471509ada0a92a0f1c8f0a92",
+        "source_fact:v1:1dfc6a917bda90cacf9e6ef525673c115c4710ecbe61c6f84d9fcecc067e3a24",
+        "source_fact:v1:1fb04963d453de9f6e4fa40f6955f57cd7b8244085fc11586ae1036ca6f748f1",
+        "source_fact:v1:2f601fd8c9a2a71a06797ce11b8c50877c21f7674068e7b9e4d2ee21a31dae68",
+        "source_fact:v1:4176e519acb4889d908b216c78331005645c75034f2cf8a3e0686569f59fa362",
+        "source_fact:v1:4e9cb31c66d4b64171a9244c52828d10db1d50f7a94d9554e5835f5d08742b52",
+        "source_fact:v1:8314ee0abcb018ff35be13c0627bc0ab2483cace0e1cee17fa06146bdd482e21",
+        "source_fact:v1:93bfcb56fcd35b5c4228b231504ce564762eff52210e69f7a6f63d8ef82ccc15",
+        "source_fact:v1:9609d9f80e3f39297b9674d8a00cf8d0cd083d6ebc63adca49e3be912dbc6f39",
+        "source_fact:v1:c14cb1b4de06f33e2ace062dd78f6db7c8013258163e77d289302b04fee1609e",
+        "source_fact:v1:d8ae5a4aa5a9aa3ea27677adf4be9e79636aa23d00d8fffc676fcba88ce0a897",
+        "source_fact:v1:e0de40166a73880527b439b492a3a1978a6051ba199dd69718f4ce651b7c3f02"
+      ],
+      "source_published_kst": "2026-10-12T14:27+09:00",
+      "source_title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향",
+      "telegram_core_fact": "금융투자협회가 12일 발표한 ‘2026년 9월 장외채권시장 동향’에 따르면 지난달 말 국고채 1년물 금리는 3.733%로 전월 말보다 29.2bp(1bp=0.01%포인트) 상승했다.",
+      "title": "9월 국고채 단기금리 상승…중동 긴장·美 금리인상 영향"
     },
     "title:bc86abc7cec676f5ae298277": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -486708,6 +488465,28 @@
       "source": "연합뉴스",
       "title": "[머니플로우] '국장'도 '미장'도 美대표지수 ETF 순매수 상위 | 연합뉴스"
     },
+    "title:df8ebfb68eebb082b4837a9a": {
+      "first_seen_kst": "2026-10-12T16:29:45+09:00",
+      "lanes": {
+        "live": "2026-10-12T16:29:45+09:00"
+      },
+      "last_seen_kst": "2026-10-12T16:29:45+09:00",
+      "link": "https://biz.heraldcorp.com/article/10899298",
+      "source": "헤럴드경제",
+      "source_body_digest": "72c1a187badfe875819fd6ce57b38c1069eca58dedfa2e7cd7ab8a7a62246349",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:483cf1db6a7a131b069f9d394ac9c51d5db0d9d002d8f6f9f74148c265b0c020",
+      "source_fact_keys": [
+        "source_fact:v1:63b3ed88429027ca3dd69a58bbf3d42bd52205fc4ae5b2e4f1169f0be8cd719d",
+        "source_fact:v1:9589771748d50e53f2bbe0fd0868238dcaa3174f13c19b883dcb4eabae430aa3",
+        "source_fact:v1:be23be450ed47cb79e4354f799c9c6f134a87ef911415e744f05f2cfd9eb439e",
+        "source_fact:v1:ca90f1681f98f2d694d9bb2d64f9d5d5e278156157828a3fcf555dff093739f2"
+      ],
+      "source_published_kst": "2026-10-12T10:38+09:00",
+      "source_title": "신현송 총재 “기준금리 추가 인상 시기, 물가·경기 흐름 보고 결정”",
+      "telegram_core_fact": "신현송 한국은행 총재는 향후 통화정책에 대해 “물가와 경기 흐름, 금융안정 상황을 면밀히 점검하면서 추가 인상의 시기와 속도 등을 결정해 나갈 계획”이라며 금리 인상 기조를 재차 확인했다.",
+      "title": "신현송 총재 “기준금리 추가 인상 시기, 물가·경기 흐름 보고 결정”"
+    },
     "title:df9851138f186a0f558b54b2": {
       "first_seen_kst": "2026-10-08T07:50:51+09:00",
       "lanes": {
@@ -494656,5 +496435,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-12T16:08:52+09:00"
+  "updated_at_kst": "2026-10-12T16:29:45+09:00"
 }
