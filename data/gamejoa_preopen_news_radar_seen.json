@@ -6665,6 +6665,23 @@
       "telegram_core_fact": "한국해운협회는 지난 7일 여의도 해운빌딩에서 삼일회계법인 및 PwC관세법인과 공동으로 ‘2026년 개정세법(안) 및 해운업계 외환거래 유의점 설명회’를 개최했다고 8일 밝혔다.",
       "title": "외환거래 리스크 방지…해운협회, 세무·외환 설명회 개최"
     },
+    "core:39a5dc8f265e252fda794aa2": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012084600052",
+      "source": "연합뉴스",
+      "source_body_digest": "939511b783a54cea10aa735e72c08bc0fcf2f994c5b3efcc4f8c5cd4e2c8f8ea",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T11:40+09:00",
+      "source_title": "창원시, 조선기자재 생산기업 강림중공업과 860억 규모 투자협약 | 연합뉴스",
+      "telegram_core_fact": "경남 창원시는 12일 시청 접견실에서 조선기자재 생산기업 강림중공업과 860억원 규모 투자협약을 했다. 현재 성산구 웅남동에 공장을 둔 강림중공업은 증가하는 수주 물량과 신규 제품 양산에 대응하기 위해 창원국가산단에 선박용 보일러 등 생산공장을 신설하기로 했다.",
+      "title": "창원시, 조선기자재 생산기업 강림중공업과 860억 규모 투자협약 | 연합뉴스"
+    },
     "core:39e3f059820c9a6a317bc698": {
       "first_seen_kst": "2026-10-07T15:44:50+09:00",
       "lanes": {
@@ -9378,6 +9395,26 @@
       "source_published_kst": "2026-10-07T15:02+09:00",
       "title": "감사원 \"KBS, 드라마 제작비 집행 확인 안 해…출연료 부풀려 차액 빼돌려\""
     },
+    "core:53af83fa7dddc366d6221f3e": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821471",
+      "source": "뉴시스",
+      "source_body_digest": "cf37c84777cd01a4a76522f57ae861f7ac452d0d9fe0f1f46a39d5ab33d83b8f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4cf862d2d3d2646589c7c1d640ef4ad71abc68406836b47cc8fe4f288c98d246",
+      "source_fact_keys": [
+        "source_fact:v1:57f215ac0bffaf5d0a41450b36aa634fbb50c61200ae0866c9a8c91c0138d64d",
+        "source_fact:v1:7039e59801d0a914b56e34d49260a203f9604d077a349dbead6150ec0736e731"
+      ],
+      "source_published_kst": "2026-10-12T09:18+09:00",
+      "source_title": "이형일 \"수출 견조하지만 대외 리스크 여전\"…3조 해외건설펀드 신설",
+      "telegram_core_fact": "\"우리 기업의 해외수주 지원을 위해 3조원 해외건설 신(新)전략펀드를 신설하고, 해외 진출 사업의 연관 지역경제가 활성화될 수 있도록 패키지형 수주(개발·건설·유지보수)를 확대하겠다\"고 밝혔다.",
+      "title": "이형일 \"수출 견조하지만 대외 리스크 여전\"…3조 해외건설펀드 신설"
+    },
     "core:54441187ac9175d8aa886733": {
       "first_seen_kst": "2026-10-11T10:26:26+09:00",
       "lanes": {
@@ -11265,6 +11302,27 @@
       "source_title": "TSMC 9월 매출 전년대비 54.6% 증가…전월보다는 감소",
       "telegram_core_fact": "TSMC는 지난달 매출이 5,118억5,700만 대만달러로, 지난해 같은 달보다 54.6% 증가했다고 오늘(8일) 밝혔습니다.",
       "title": "TSMC 9월 매출 전년대비 54.6% 증가…전월보다는 감소"
+    },
+    "core:665b0b2ccda083170f2cbe0c": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03106166645612264",
+      "source": "이데일리",
+      "source_body_digest": "9a2532841fa012e858d89f73876e8d486a856ffb9814396711ed0cac754fe9e0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d83c54bb357ea2864ee6c9114452ec8e134869500ba7fd861693a37229e948df",
+      "source_fact_keys": [
+        "source_fact:v1:24ce6588322b47e77dc43ed20597c745c407764858e0e897aff82d720e28a59c",
+        "source_fact:v1:33aeb5964abc0417f7d2446603577adda82c8ea45f411f70323af09f8f30da11",
+        "source_fact:v1:43a9b6339b0edfd66fee922df676d741f27fd3abff296b09a206d7127fc95a4c"
+      ],
+      "source_published_kst": "2026-10-12T12:56+09:00",
+      "source_title": "연천군-한전, 산업단지 개발 전력 인프라 적기 구축 '맞손'",
+      "telegram_core_fact": "협약에 따라 연천군과 한국전력공사는 급증하는 전력수요에 선제적으로 대응하고 안정적인 전력공급 기반을 마련하기 위해 상호 협력체계를 구축해 개발사업 추진 시 전력공급설비 구축 방안을 사전에 협의하고 변전소 부지 확보와 인허가, 주민 수용성 제고를 위해 공동 노력하기로 뜻을 모았다.",
+      "title": "연천군-한전, 산업단지 개발 전력 인프라 적기 구축 '맞손'"
     },
     "core:6662336bfd8d81a73f0613aa": {
       "first_seen_kst": "2026-10-12T06:42:49+09:00",
@@ -15143,6 +15201,39 @@
       "telegram_core_fact": "엔비디아 칩을 구매하기 위해 400억달러(약 53조원)를 조달하기로 했다는 보도가 시장의 부도 대비 보험 비용을 끌어올렸다. 스페이스X가 400억달러 자금 조달을 계획하고 있다는 FT 보도가 CDS 스프레드 급등을 촉발했다.",
       "title": "스페이스X 부도 위험 보험료 사상 최고...\"엔비디아 칩 매수 위해 400억달러 조달\""
     },
+    "core:8bc9561237403964bae182d2": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02997926645612264",
+      "source": "이데일리",
+      "source_body_digest": "5cf5e74cea35d85a285b556cac22d6b47a30fb54b8e00477faa755c2bb1f3b7b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:63d55768a04beda6c325278a0ab6ccdc3dd49732db8227aa52576282e7599b81",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:096120a801818b12e9c1d5d7df028b0479e1cc13dae423e3a494d7458394e4c2",
+        "source_fact:v1:0e15e4c1f48429df7a7c9df447c055d1b1ab70e1e743b303e8f96e65c81b0a17",
+        "source_fact:v1:160a2459671cd8c61334a41d4ab2df32a3ecbcc73ca55f83b05d17313e5fe370",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:28e5336815057f18cc61890de2bb2f5d1e5ddb54f6eafffe77d38deab97fa005",
+        "source_fact:v1:3e61b3768891b231eaaf9549d9410ca21a7145267335eb3682c6152d51275e43",
+        "source_fact:v1:4c9235c4a307abac4eee828f18762b1990d2172aa87bf08ea5acc1b8d6e84b3c",
+        "source_fact:v1:4d3e0b8ca57fbde1b71473bc4e83db91cb8f3265324f05f65176036f51e7f986",
+        "source_fact:v1:527321f05608eea8b0770809051c0652b99a458225b13f71f1dd7664c06567e2",
+        "source_fact:v1:5f3a0fc935e0e02cfe159e69e019271547ff839f9f74f6331acd1b5b9fa9663e",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:b94787225d00090e965511a188ccfd83017ed6959222bd0d30d02441a1f94572",
+        "source_fact:v1:d0f572633db47127095c9dd438303d2623a18d7aaf53cf6037a80e4382a39aa2"
+      ],
+      "source_published_kst": "2026-10-12T11:56+09:00",
+      "source_title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 11일(현지시간) 러시아와 우크라이나 간 에너지 휴전이 즉각 발효됐다고 발표했다. 이번 계약에 따라 미국과 국제시장에 즉각 공급되는 러시아산 경유는 30만t(톤)으로, 약 225만배럴에 해당하는 물량이다.",
+      "title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)"
+    },
     "core:8be9dbcba0e1523a8c5c7316": {
       "first_seen_kst": "2026-10-12T08:46:35+09:00",
       "lanes": {
@@ -15925,6 +16016,25 @@
       ],
       "source_published_kst": "2026-10-07T15:55+09:00",
       "title": "대구·전남광주, 공장 누비며 부품 나르는 '공정모빌리티' 개발 | 연합뉴스"
+    },
+    "core:92ce9564ae9d476fbd32dc7e": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821932",
+      "source": "뉴시스",
+      "source_body_digest": "4f9dd2f4b02bede35edf51b896a6104595b96bd0f064499bd6af83da978d6437",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:604060a6ea4cc63298d60c0e08941269e82d20c48512644bbf867d52f3ae40da",
+      "source_fact_keys": [
+        "source_fact:v1:e75620dd5cb3b8e2c3b15f4b574866920efc01e0fbc8400038d99f40c2b9e79f"
+      ],
+      "source_published_kst": "2026-10-12T11:31+09:00",
+      "source_title": "케이엠제약, 생산·물류·영업 등 주요 직군 채용",
+      "telegram_core_fact": "케이엠제약 관계자는 \"이번 채용은 생산과 물류, 영업 등 주요 직군의 인력을 확보해 사업 확대에 대응하기 위한 것\"이라며 \"각 분야의 전문 인력을 통해 생산 안정성과 고객 대응력을 높여나갈 계획\"이라고 말했다.",
+      "title": "케이엠제약, 생산·물류·영업 등 주요 직군 채용"
     },
     "core:9331ac2779ce19ef31c201ac": {
       "first_seen_kst": "2026-10-11T11:48:17+09:00",
@@ -18492,6 +18602,26 @@
       "source_title": "브릴리아, 말레이시아 뉴보디 과반 인수..동남아 B2C 진출",
       "telegram_core_fact": "이번 거래는 뉴보디의 연매출 목표가 약 300만 달러에 그치는 소규모 인수여서 단기간에 브릴리아 전체 실적을 크게 바꾸기는 어려울 전망이다. 뉴보디 경영진의 2026년 12월 31일 종료 회계연도 예산 기준 순매출은 약 300만 달러, 예상 순이익률은 약 10~12%다.",
       "title": "브릴리아, 말레이시아 뉴보디 과반 인수..동남아 B2C 진출"
+    },
+    "core:a9db26c2eda0b893982f7a10": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822003",
+      "source": "뉴시스",
+      "source_body_digest": "e1165a949d4883a8321426da1160b2612b3c3452b25f22d96cd2943a67d4444d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:71d7b0fb38bb5f3d4addbd0eb932bc76deabe01a988cea3ede7a3acc2644a3dc",
+      "source_fact_keys": [
+        "source_fact:v1:3b94a3e3c12cb8faa2bd04702e72f52057177cce62e5cdb1264a75fa8cfb3433",
+        "source_fact:v1:8165ce12542c0c905ff88109e7ee69cd59a210f05486a786017258f064da0ce8"
+      ],
+      "source_published_kst": "2026-10-12T11:47+09:00",
+      "source_title": "구글코리아, 1540억원대 법인세 소송 최종 승소",
+      "telegram_core_fact": "반면 과세당국은 해당 소득이 국내 과세 대상인 사용료 소득에 해당한다고 판단해 법인세를 부과했고, 구글코리아는 이에 불복해 소송을 제기했다.",
+      "title": "구글코리아, 1540억원대 법인세 소송 최종 승소"
     },
     "core:aa01f9e31c7884f9cb8db911": {
       "first_seen_kst": "2026-10-08T11:28:27+09:00",
@@ -29908,22 +30038,35 @@
     "event:242c04e115c71f36e3e5a541": {
       "first_seen_kst": "2026-10-12T01:34:33+09:00",
       "lanes": {
-        "live": "2026-10-12T12:09:58+09:00"
+        "live": "2026-10-12T13:18:48+09:00"
       },
-      "last_seen_kst": "2026-10-12T12:09:58+09:00",
-      "link": "https://www.newsis.com/view/NISX20261012_0003821815",
-      "source": "뉴시스",
-      "source_body_digest": "969c56747f1b4ee2641e46870c599f170a7be9fe04294ce51c13c188af93cd78",
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02997926645612264",
+      "source": "이데일리",
+      "source_body_digest": "5cf5e74cea35d85a285b556cac22d6b47a30fb54b8e00477faa755c2bb1f3b7b",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:a00111d6f29ea1ec7c88b24913c342b25445f9306b1d63da74a02084b84a0d4c",
+      "source_fact_identity": "source_facts:v1:63d55768a04beda6c325278a0ab6ccdc3dd49732db8227aa52576282e7599b81",
       "source_fact_keys": [
-        "source_fact:v1:4562f19e8c9820fc4a2192769a237ec308de63fca3c71e297db1706863584daf",
-        "source_fact:v1:5711d81dc01f6a7d69f4d7d60ddafcc8ef25ccd4438fa1c961e4b1327d4218ad"
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:096120a801818b12e9c1d5d7df028b0479e1cc13dae423e3a494d7458394e4c2",
+        "source_fact:v1:0e15e4c1f48429df7a7c9df447c055d1b1ab70e1e743b303e8f96e65c81b0a17",
+        "source_fact:v1:160a2459671cd8c61334a41d4ab2df32a3ecbcc73ca55f83b05d17313e5fe370",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:28e5336815057f18cc61890de2bb2f5d1e5ddb54f6eafffe77d38deab97fa005",
+        "source_fact:v1:3e61b3768891b231eaaf9549d9410ca21a7145267335eb3682c6152d51275e43",
+        "source_fact:v1:4c9235c4a307abac4eee828f18762b1990d2172aa87bf08ea5acc1b8d6e84b3c",
+        "source_fact:v1:4d3e0b8ca57fbde1b71473bc4e83db91cb8f3265324f05f65176036f51e7f986",
+        "source_fact:v1:527321f05608eea8b0770809051c0652b99a458225b13f71f1dd7664c06567e2",
+        "source_fact:v1:5f3a0fc935e0e02cfe159e69e019271547ff839f9f74f6331acd1b5b9fa9663e",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:b94787225d00090e965511a188ccfd83017ed6959222bd0d30d02441a1f94572",
+        "source_fact:v1:d0f572633db47127095c9dd438303d2623a18d7aaf53cf6037a80e4382a39aa2"
       ],
-      "source_published_kst": "2026-10-12T11:47+09:00",
-      "source_title": "이란 \"美, 전체휴전·자산반환 등 '7개조건' 다 받아야 호르무즈 개방\"",
-      "telegram_core_fact": "이란 정권 안보 최고 당국자는 도널드 트럼프 미국 행정부가 해상 봉쇄 해제, 동결 자산 반환 등 자국이 내걸었던 7개 조건을 전부 수용해야 호르무즈 해협 재개방이 가능하다는 입장을 밝혔다.",
-      "title": "이란 \"美, 전체휴전·자산반환 등 '7개조건' 다 받아야 호르무즈 개방\""
+      "source_published_kst": "2026-10-12T11:56+09:00",
+      "source_title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 11일(현지시간) 러시아와 우크라이나 간 에너지 휴전이 즉각 발효됐다고 발표했다. 이번 계약에 따라 미국과 국제시장에 즉각 공급되는 러시아산 경유는 30만t(톤)으로, 약 225만배럴에 해당하는 물량이다.",
+      "title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)"
     },
     "event:243b9268c0c661c2e567eb0a": {
       "first_seen_kst": "2026-09-30T11:15:27+09:00",
@@ -40361,6 +40504,45 @@
       "source_published_kst": "2026-10-06T17:03+09:00",
       "title": "\"미래 성장동력 확보\"…알테오젠, 2천억 투자유치"
     },
+    "fact:060bdc3ed02b64020f0814d2": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822003",
+      "source": "뉴시스",
+      "source_body_digest": "e1165a949d4883a8321426da1160b2612b3c3452b25f22d96cd2943a67d4444d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:71d7b0fb38bb5f3d4addbd0eb932bc76deabe01a988cea3ede7a3acc2644a3dc",
+      "source_fact_keys": [
+        "source_fact:v1:3b94a3e3c12cb8faa2bd04702e72f52057177cce62e5cdb1264a75fa8cfb3433",
+        "source_fact:v1:8165ce12542c0c905ff88109e7ee69cd59a210f05486a786017258f064da0ce8"
+      ],
+      "source_published_kst": "2026-10-12T11:47+09:00",
+      "source_title": "구글코리아, 1540억원대 법인세 소송 최종 승소",
+      "telegram_core_fact": "반면 과세당국은 해당 소득이 국내 과세 대상인 사용료 소득에 해당한다고 판단해 법인세를 부과했고, 구글코리아는 이에 불복해 소송을 제기했다.",
+      "title": "구글코리아, 1540억원대 법인세 소송 최종 승소"
+    },
+    "fact:06238b4daafa70abec816de6": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821932",
+      "source": "뉴시스",
+      "source_body_digest": "4f9dd2f4b02bede35edf51b896a6104595b96bd0f064499bd6af83da978d6437",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:604060a6ea4cc63298d60c0e08941269e82d20c48512644bbf867d52f3ae40da",
+      "source_fact_keys": [
+        "source_fact:v1:e75620dd5cb3b8e2c3b15f4b574866920efc01e0fbc8400038d99f40c2b9e79f"
+      ],
+      "source_published_kst": "2026-10-12T11:31+09:00",
+      "source_title": "케이엠제약, 생산·물류·영업 등 주요 직군 채용",
+      "telegram_core_fact": "케이엠제약 관계자는 \"이번 채용은 생산과 물류, 영업 등 주요 직군의 인력을 확보해 사업 확대에 대응하기 위한 것\"이라며 \"각 분야의 전문 인력을 통해 생산 안정성과 고객 대응력을 높여나갈 계획\"이라고 말했다.",
+      "title": "케이엠제약, 생산·물류·영업 등 주요 직군 채용"
+    },
     "fact:06404cae290d6205a5fd302e": {
       "first_seen_kst": "2026-10-08T21:21:36+09:00",
       "lanes": {
@@ -48422,6 +48604,39 @@
       "telegram_core_fact": "도널드 트럼프 미국 행정부가 이란산 원유 등을 밀수해온 이른바 '그림자 선단'을 추가로 적발해 제재에 나섰다. 미 재무부 해외자산통제국(OFAC)은 8일(현지 시간) 미국 제재를 회피해 이란 원유와 석유화학 제품을 운송하는데 관여한 유조선 17척과 관련 선사들을 제재한다고 밝혔다.",
       "title": "美, 이란 '그림자 선단' 17척 제재…경제 압박 가속"
     },
+    "fact:357a41484cc2ad78b1cc2011": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02997926645612264",
+      "source": "이데일리",
+      "source_body_digest": "5cf5e74cea35d85a285b556cac22d6b47a30fb54b8e00477faa755c2bb1f3b7b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:63d55768a04beda6c325278a0ab6ccdc3dd49732db8227aa52576282e7599b81",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:096120a801818b12e9c1d5d7df028b0479e1cc13dae423e3a494d7458394e4c2",
+        "source_fact:v1:0e15e4c1f48429df7a7c9df447c055d1b1ab70e1e743b303e8f96e65c81b0a17",
+        "source_fact:v1:160a2459671cd8c61334a41d4ab2df32a3ecbcc73ca55f83b05d17313e5fe370",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:28e5336815057f18cc61890de2bb2f5d1e5ddb54f6eafffe77d38deab97fa005",
+        "source_fact:v1:3e61b3768891b231eaaf9549d9410ca21a7145267335eb3682c6152d51275e43",
+        "source_fact:v1:4c9235c4a307abac4eee828f18762b1990d2172aa87bf08ea5acc1b8d6e84b3c",
+        "source_fact:v1:4d3e0b8ca57fbde1b71473bc4e83db91cb8f3265324f05f65176036f51e7f986",
+        "source_fact:v1:527321f05608eea8b0770809051c0652b99a458225b13f71f1dd7664c06567e2",
+        "source_fact:v1:5f3a0fc935e0e02cfe159e69e019271547ff839f9f74f6331acd1b5b9fa9663e",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:b94787225d00090e965511a188ccfd83017ed6959222bd0d30d02441a1f94572",
+        "source_fact:v1:d0f572633db47127095c9dd438303d2623a18d7aaf53cf6037a80e4382a39aa2"
+      ],
+      "source_published_kst": "2026-10-12T11:56+09:00",
+      "source_title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 11일(현지시간) 러시아와 우크라이나 간 에너지 휴전이 즉각 발효됐다고 발표했다. 이번 계약에 따라 미국과 국제시장에 즉각 공급되는 러시아산 경유는 30만t(톤)으로, 약 225만배럴에 해당하는 물량이다.",
+      "title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)"
+    },
     "fact:359068fd2e850cbef215ffe6": {
       "first_seen_kst": "2026-10-12T11:11:48+09:00",
       "lanes": {
@@ -54675,6 +54890,27 @@
       "telegram_core_fact": "DS투자증권은 ‘매 분기 레벨 업’이라는 제목의 보고서에서 삼성전기의 목표주가를 기존 160만원에서 260만원으로 100만원 상향했다.",
       "title": "“150만원? 이건 너무 싸다” 주가 보고 ‘화들짝’…갑자기 100만원이나 더 올린 ‘국민 황제주’ 무슨 일이"
     },
+    "fact:5def88d92deaadf2f74edb90": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03106166645612264",
+      "source": "이데일리",
+      "source_body_digest": "9a2532841fa012e858d89f73876e8d486a856ffb9814396711ed0cac754fe9e0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d83c54bb357ea2864ee6c9114452ec8e134869500ba7fd861693a37229e948df",
+      "source_fact_keys": [
+        "source_fact:v1:24ce6588322b47e77dc43ed20597c745c407764858e0e897aff82d720e28a59c",
+        "source_fact:v1:33aeb5964abc0417f7d2446603577adda82c8ea45f411f70323af09f8f30da11",
+        "source_fact:v1:43a9b6339b0edfd66fee922df676d741f27fd3abff296b09a206d7127fc95a4c"
+      ],
+      "source_published_kst": "2026-10-12T12:56+09:00",
+      "source_title": "연천군-한전, 산업단지 개발 전력 인프라 적기 구축 '맞손'",
+      "telegram_core_fact": "협약에 따라 연천군과 한국전력공사는 급증하는 전력수요에 선제적으로 대응하고 안정적인 전력공급 기반을 마련하기 위해 상호 협력체계를 구축해 개발사업 추진 시 전력공급설비 구축 방안을 사전에 협의하고 변전소 부지 확보와 인허가, 주민 수용성 제고를 위해 공동 노력하기로 뜻을 모았다.",
+      "title": "연천군-한전, 산업단지 개발 전력 인프라 적기 구축 '맞손'"
+    },
     "fact:5df047fd698e1c1cf45c68fb": {
       "first_seen_kst": "2026-10-11T17:08:25+09:00",
       "lanes": {
@@ -54780,6 +55016,26 @@
       "source_title": "삼성전자, 오늘 3분기 실적 발표…사상 첫 영업익 100조 넘나",
       "telegram_core_fact": "금융정보업체 에프앤가이드에 따르면 삼성전자의 올해 3분기 연결 기준 매출 컨센서스(증권사 평균 전망치)는 200조6417억원, 영업이익은 106조6401억원으로 집계됐다.",
       "title": "삼성전자, 오늘 3분기 실적 발표…사상 첫 영업익 100조 넘나"
+    },
+    "fact:5e69d556e71f0e72cc916dad": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821471",
+      "source": "뉴시스",
+      "source_body_digest": "cf37c84777cd01a4a76522f57ae861f7ac452d0d9fe0f1f46a39d5ab33d83b8f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4cf862d2d3d2646589c7c1d640ef4ad71abc68406836b47cc8fe4f288c98d246",
+      "source_fact_keys": [
+        "source_fact:v1:57f215ac0bffaf5d0a41450b36aa634fbb50c61200ae0866c9a8c91c0138d64d",
+        "source_fact:v1:7039e59801d0a914b56e34d49260a203f9604d077a349dbead6150ec0736e731"
+      ],
+      "source_published_kst": "2026-10-12T09:18+09:00",
+      "source_title": "이형일 \"수출 견조하지만 대외 리스크 여전\"…3조 해외건설펀드 신설",
+      "telegram_core_fact": "\"우리 기업의 해외수주 지원을 위해 3조원 해외건설 신(新)전략펀드를 신설하고, 해외 진출 사업의 연관 지역경제가 활성화될 수 있도록 패키지형 수주(개발·건설·유지보수)를 확대하겠다\"고 밝혔다.",
+      "title": "이형일 \"수출 견조하지만 대외 리스크 여전\"…3조 해외건설펀드 신설"
     },
     "fact:5e88c75d268d4c1895a55f5b": {
       "first_seen_kst": "2026-10-08T06:27:52+09:00",
@@ -96262,6 +96518,26 @@
       "source": "이투데이",
       "title": "트럼프 “뉴욕서 李대통령과 2000억달러 대미투자 시작 합의”"
     },
+    "link:35256aedf4d55c0e48ee1d8d": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821471",
+      "source": "뉴시스",
+      "source_body_digest": "cf37c84777cd01a4a76522f57ae861f7ac452d0d9fe0f1f46a39d5ab33d83b8f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4cf862d2d3d2646589c7c1d640ef4ad71abc68406836b47cc8fe4f288c98d246",
+      "source_fact_keys": [
+        "source_fact:v1:57f215ac0bffaf5d0a41450b36aa634fbb50c61200ae0866c9a8c91c0138d64d",
+        "source_fact:v1:7039e59801d0a914b56e34d49260a203f9604d077a349dbead6150ec0736e731"
+      ],
+      "source_published_kst": "2026-10-12T09:18+09:00",
+      "source_title": "이형일 \"수출 견조하지만 대외 리스크 여전\"…3조 해외건설펀드 신설",
+      "telegram_core_fact": "\"우리 기업의 해외수주 지원을 위해 3조원 해외건설 신(新)전략펀드를 신설하고, 해외 진출 사업의 연관 지역경제가 활성화될 수 있도록 패키지형 수주(개발·건설·유지보수)를 확대하겠다\"고 밝혔다.",
+      "title": "이형일 \"수출 견조하지만 대외 리스크 여전\"…3조 해외건설펀드 신설"
+    },
     "link:352d094f5f0fda313e7531ea": {
       "first_seen_kst": "2026-10-07T21:47:30+09:00",
       "lanes": {
@@ -120933,6 +121209,23 @@
       "source": "매일경제",
       "title": "구글 AI칩 우주로 쐈다…‘우주 데이터센터’ 첫 실험"
     },
+    "link:980cdef795c7cca7872f75b7": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.etnews.com/20261012000160",
+      "source": "전자신문",
+      "source_body_digest": "c7f898ec2667fb0299b035f7d90878624da3a3b79c2679a729ce1ea1ef29519d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T11:25+09:00",
+      "source_title": "[2026 국감]주병기 “반복 담합 사업자 영업정지 추진…전속고발제 개편”",
+      "telegram_core_fact": "담합 제재를 강화하는 동시에 공정위에 집중된 법 집행 권한을 분산하는 구상이다.",
+      "title": "[2026 국감]주병기 “반복 담합 사업자 영업정지 추진…전속고발제 개편”"
+    },
     "link:98117ec25c72bee6fdf34161": {
       "first_seen_kst": "2026-10-02T13:15:57+09:00",
       "lanes": {
@@ -122004,6 +122297,23 @@
       "source_title": "피겨 기대주 최하빈, 2년 연속 주니어 그랑프리 파이널 진출",
       "telegram_core_fact": "여자 싱글과 아이스댄스, 페어 종목에선 파이널 진출자가 나오지 못했다.",
       "title": "피겨 기대주 최하빈, 2년 연속 주니어 그랑프리 파이널 진출"
+    },
+    "link:9cd9c302600526d7cd2e9ba1": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012084600052",
+      "source": "연합뉴스",
+      "source_body_digest": "939511b783a54cea10aa735e72c08bc0fcf2f994c5b3efcc4f8c5cd4e2c8f8ea",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T11:40+09:00",
+      "source_title": "창원시, 조선기자재 생산기업 강림중공업과 860억 규모 투자협약 | 연합뉴스",
+      "telegram_core_fact": "경남 창원시는 12일 시청 접견실에서 조선기자재 생산기업 강림중공업과 860억원 규모 투자협약을 했다. 현재 성산구 웅남동에 공장을 둔 강림중공업은 증가하는 수주 물량과 신규 제품 양산에 대응하기 위해 창원국가산단에 선박용 보일러 등 생산공장을 신설하기로 했다.",
+      "title": "창원시, 조선기자재 생산기업 강림중공업과 860억 규모 투자협약 | 연합뉴스"
     },
     "link:9ce5abb91cf80e24a1af68a4": {
       "first_seen_kst": "2026-10-01T19:22:15+09:00",
@@ -124874,6 +125184,39 @@
       "telegram_core_fact": "강원지역 마을 42곳이 정부의 '햇빛소득마을' 사업 대상에 선정됐지만, 대부분 전력망 부족으로 당장 사업을 추진하기 어려운 것으로 나타났다. 강원도에 따르면 행정안전부가 추진한 햇빛소득마을 2차 공모에 도내 45개 마을이 신청해 42개 마을이 선정됐다.",
       "title": "강원 햇빛소득마을 42곳 선정…'즉시 사업 추진'은 단 1곳뿐 | 연합뉴스"
     },
+    "link:a80ddbb9230efe5bc8ddffeb": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02997926645612264",
+      "source": "이데일리",
+      "source_body_digest": "5cf5e74cea35d85a285b556cac22d6b47a30fb54b8e00477faa755c2bb1f3b7b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:63d55768a04beda6c325278a0ab6ccdc3dd49732db8227aa52576282e7599b81",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:096120a801818b12e9c1d5d7df028b0479e1cc13dae423e3a494d7458394e4c2",
+        "source_fact:v1:0e15e4c1f48429df7a7c9df447c055d1b1ab70e1e743b303e8f96e65c81b0a17",
+        "source_fact:v1:160a2459671cd8c61334a41d4ab2df32a3ecbcc73ca55f83b05d17313e5fe370",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:28e5336815057f18cc61890de2bb2f5d1e5ddb54f6eafffe77d38deab97fa005",
+        "source_fact:v1:3e61b3768891b231eaaf9549d9410ca21a7145267335eb3682c6152d51275e43",
+        "source_fact:v1:4c9235c4a307abac4eee828f18762b1990d2172aa87bf08ea5acc1b8d6e84b3c",
+        "source_fact:v1:4d3e0b8ca57fbde1b71473bc4e83db91cb8f3265324f05f65176036f51e7f986",
+        "source_fact:v1:527321f05608eea8b0770809051c0652b99a458225b13f71f1dd7664c06567e2",
+        "source_fact:v1:5f3a0fc935e0e02cfe159e69e019271547ff839f9f74f6331acd1b5b9fa9663e",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:b94787225d00090e965511a188ccfd83017ed6959222bd0d30d02441a1f94572",
+        "source_fact:v1:d0f572633db47127095c9dd438303d2623a18d7aaf53cf6037a80e4382a39aa2"
+      ],
+      "source_published_kst": "2026-10-12T11:56+09:00",
+      "source_title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 11일(현지시간) 러시아와 우크라이나 간 에너지 휴전이 즉각 발효됐다고 발표했다. 이번 계약에 따라 미국과 국제시장에 즉각 공급되는 러시아산 경유는 30만t(톤)으로, 약 225만배럴에 해당하는 물량이다.",
+      "title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)"
+    },
     "link:a8118712ebd1bc62ead1a764": {
       "first_seen_kst": "2026-10-02T19:35:18+09:00",
       "lanes": {
@@ -127604,6 +127947,27 @@
       ],
       "source_published_kst": "2026-10-05T21:09+09:00",
       "title": "플렉스, 액시엄 20억달러 우선주 유치..가치 375억달러"
+    },
+    "link:b326e5b5fc8fe65fc20e4058": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03106166645612264",
+      "source": "이데일리",
+      "source_body_digest": "9a2532841fa012e858d89f73876e8d486a856ffb9814396711ed0cac754fe9e0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d83c54bb357ea2864ee6c9114452ec8e134869500ba7fd861693a37229e948df",
+      "source_fact_keys": [
+        "source_fact:v1:24ce6588322b47e77dc43ed20597c745c407764858e0e897aff82d720e28a59c",
+        "source_fact:v1:33aeb5964abc0417f7d2446603577adda82c8ea45f411f70323af09f8f30da11",
+        "source_fact:v1:43a9b6339b0edfd66fee922df676d741f27fd3abff296b09a206d7127fc95a4c"
+      ],
+      "source_published_kst": "2026-10-12T12:56+09:00",
+      "source_title": "연천군-한전, 산업단지 개발 전력 인프라 적기 구축 '맞손'",
+      "telegram_core_fact": "협약에 따라 연천군과 한국전력공사는 급증하는 전력수요에 선제적으로 대응하고 안정적인 전력공급 기반을 마련하기 위해 상호 협력체계를 구축해 개발사업 추진 시 전력공급설비 구축 방안을 사전에 협의하고 변전소 부지 확보와 인허가, 주민 수용성 제고를 위해 공동 노력하기로 뜻을 모았다.",
+      "title": "연천군-한전, 산업단지 개발 전력 인프라 적기 구축 '맞손'"
     },
     "link:b32ee34fc6687ef34b92d489": {
       "first_seen_kst": "2026-09-26T14:03:52+09:00",
@@ -131873,6 +132237,25 @@
       "link": "https://biz.chosun.com/science-chosun/bio/2026/10/02/UNQPARTJ2BHYLJ3GIGFEXNGEKQ/",
       "source": "조선비즈",
       "title": "진양곤 의장, HLB 계열사株 또 샀다…38억원 규모"
+    },
+    "link:c423010c2734a915d58ee19d": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821932",
+      "source": "뉴시스",
+      "source_body_digest": "4f9dd2f4b02bede35edf51b896a6104595b96bd0f064499bd6af83da978d6437",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:604060a6ea4cc63298d60c0e08941269e82d20c48512644bbf867d52f3ae40da",
+      "source_fact_keys": [
+        "source_fact:v1:e75620dd5cb3b8e2c3b15f4b574866920efc01e0fbc8400038d99f40c2b9e79f"
+      ],
+      "source_published_kst": "2026-10-12T11:31+09:00",
+      "source_title": "케이엠제약, 생산·물류·영업 등 주요 직군 채용",
+      "telegram_core_fact": "케이엠제약 관계자는 \"이번 채용은 생산과 물류, 영업 등 주요 직군의 인력을 확보해 사업 확대에 대응하기 위한 것\"이라며 \"각 분야의 전문 인력을 통해 생산 안정성과 고객 대응력을 높여나갈 계획\"이라고 말했다.",
+      "title": "케이엠제약, 생산·물류·영업 등 주요 직군 채용"
     },
     "link:c436ed8af35a2b7972fdb1a7": {
       "first_seen_kst": "2026-10-03T00:49:56+09:00",
@@ -141473,6 +141856,26 @@
       "source_title": "2000억弗 대미 투자 확정…이제 1500억달러 '마스가' 본격화",
       "telegram_core_fact": "2000억 달러 대미 전략투자 프로그램이 확정되면서, 1500억 달러 한미 조선 협력 프로젝트인 '마스가(MASGA)'도 본격적인 사업 발굴과 투자 집행 단계에 들어설 전망이다.",
       "title": "2000억弗 대미 투자 확정…이제 1500억달러 '마스가' 본격화"
+    },
+    "link:eb507dcf5e5415b381ed5927": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822003",
+      "source": "뉴시스",
+      "source_body_digest": "e1165a949d4883a8321426da1160b2612b3c3452b25f22d96cd2943a67d4444d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:71d7b0fb38bb5f3d4addbd0eb932bc76deabe01a988cea3ede7a3acc2644a3dc",
+      "source_fact_keys": [
+        "source_fact:v1:3b94a3e3c12cb8faa2bd04702e72f52057177cce62e5cdb1264a75fa8cfb3433",
+        "source_fact:v1:8165ce12542c0c905ff88109e7ee69cd59a210f05486a786017258f064da0ce8"
+      ],
+      "source_published_kst": "2026-10-12T11:47+09:00",
+      "source_title": "구글코리아, 1540억원대 법인세 소송 최종 승소",
+      "telegram_core_fact": "반면 과세당국은 해당 소득이 국내 과세 대상인 사용료 소득에 해당한다고 판단해 법인세를 부과했고, 구글코리아는 이에 불복해 소송을 제기했다.",
+      "title": "구글코리아, 1540억원대 법인세 소송 최종 승소"
     },
     "link:eb57bb8c2cd6a6c06709c33b": {
       "first_seen_kst": "2026-10-08T21:21:36+09:00",
@@ -167051,6 +167454,23 @@
       "source_published_kst": "2026-10-06T10:23+09:00",
       "title": "“고성~거제 24.6km 연결”…쌍용건설, 8000억 규모 남부내륙철도 9공구 수주"
     },
+    "original:5512217a02aa7b0a7cf68e48": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012084600052",
+      "source": "연합뉴스",
+      "source_body_digest": "939511b783a54cea10aa735e72c08bc0fcf2f994c5b3efcc4f8c5cd4e2c8f8ea",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T11:40+09:00",
+      "source_title": "창원시, 조선기자재 생산기업 강림중공업과 860억 규모 투자협약 | 연합뉴스",
+      "telegram_core_fact": "경남 창원시는 12일 시청 접견실에서 조선기자재 생산기업 강림중공업과 860억원 규모 투자협약을 했다. 현재 성산구 웅남동에 공장을 둔 강림중공업은 증가하는 수주 물량과 신규 제품 양산에 대응하기 위해 창원국가산단에 선박용 보일러 등 생산공장을 신설하기로 했다.",
+      "title": "창원시, 조선기자재 생산기업 강림중공업과 860억 규모 투자협약 | 연합뉴스"
+    },
     "original:5512a73714361cedbae0238c": {
       "first_seen_kst": "2026-10-07T12:06:36+09:00",
       "lanes": {
@@ -170908,6 +171328,26 @@
       "source_title": "김동선, 독립경영 강화 속도전 … 한화M&S 지분 19% 공개매수",
       "telegram_core_fact": "전략총괄 사장 8000원·개매수에 성공하면 김 사장 1285억원, 지분율 5.81→24.81%를 매수했습니다.",
       "title": "김동선, 독립경영 강화 속도전 … 한화M&S 지분 19% 공개매수"
+    },
+    "original:6603a3b370d0bdd7bc7aea7f": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821471",
+      "source": "뉴시스",
+      "source_body_digest": "cf37c84777cd01a4a76522f57ae861f7ac452d0d9fe0f1f46a39d5ab33d83b8f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4cf862d2d3d2646589c7c1d640ef4ad71abc68406836b47cc8fe4f288c98d246",
+      "source_fact_keys": [
+        "source_fact:v1:57f215ac0bffaf5d0a41450b36aa634fbb50c61200ae0866c9a8c91c0138d64d",
+        "source_fact:v1:7039e59801d0a914b56e34d49260a203f9604d077a349dbead6150ec0736e731"
+      ],
+      "source_published_kst": "2026-10-12T09:18+09:00",
+      "source_title": "이형일 \"수출 견조하지만 대외 리스크 여전\"…3조 해외건설펀드 신설",
+      "telegram_core_fact": "\"우리 기업의 해외수주 지원을 위해 3조원 해외건설 신(新)전략펀드를 신설하고, 해외 진출 사업의 연관 지역경제가 활성화될 수 있도록 패키지형 수주(개발·건설·유지보수)를 확대하겠다\"고 밝혔다.",
+      "title": "이형일 \"수출 견조하지만 대외 리스크 여전\"…3조 해외건설펀드 신설"
     },
     "original:6647335082be135a42defba1": {
       "first_seen_kst": "2026-10-11T18:15:28+09:00",
@@ -176366,6 +176806,26 @@
       "telegram_core_fact": "한국토지주택공사(LH)가 향후 3년간 서울 25개 자치구에 매입임대주택 2만가구 이상을 공급한다.",
       "title": "LH \"향후 3년간 서울 25개 자치구에 2만가구 이상 공급\" | 연합뉴스"
     },
+    "original:7d63be88841cfead0ba81252": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822003",
+      "source": "뉴시스",
+      "source_body_digest": "e1165a949d4883a8321426da1160b2612b3c3452b25f22d96cd2943a67d4444d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:71d7b0fb38bb5f3d4addbd0eb932bc76deabe01a988cea3ede7a3acc2644a3dc",
+      "source_fact_keys": [
+        "source_fact:v1:3b94a3e3c12cb8faa2bd04702e72f52057177cce62e5cdb1264a75fa8cfb3433",
+        "source_fact:v1:8165ce12542c0c905ff88109e7ee69cd59a210f05486a786017258f064da0ce8"
+      ],
+      "source_published_kst": "2026-10-12T11:47+09:00",
+      "source_title": "구글코리아, 1540억원대 법인세 소송 최종 승소",
+      "telegram_core_fact": "반면 과세당국은 해당 소득이 국내 과세 대상인 사용료 소득에 해당한다고 판단해 법인세를 부과했고, 구글코리아는 이에 불복해 소송을 제기했다.",
+      "title": "구글코리아, 1540억원대 법인세 소송 최종 승소"
+    },
     "original:7d6db47e9ebbc84ab7851adc": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -176637,6 +177097,27 @@
       "source_title": "환율·채권, 환율 1300원 초반 추가하락 가능성",
       "telegram_core_fact": "전문가들은 미국 물가 지표에 따라 이번주 환율이 1300원대 초반까지 하락할 가능성을 열어뒀다.",
       "title": "환율·채권, 환율 1300원 초반 추가하락 가능성"
+    },
+    "original:7e4ce6dd49473e41dbc9fe6f": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03106166645612264",
+      "source": "이데일리",
+      "source_body_digest": "9a2532841fa012e858d89f73876e8d486a856ffb9814396711ed0cac754fe9e0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d83c54bb357ea2864ee6c9114452ec8e134869500ba7fd861693a37229e948df",
+      "source_fact_keys": [
+        "source_fact:v1:24ce6588322b47e77dc43ed20597c745c407764858e0e897aff82d720e28a59c",
+        "source_fact:v1:33aeb5964abc0417f7d2446603577adda82c8ea45f411f70323af09f8f30da11",
+        "source_fact:v1:43a9b6339b0edfd66fee922df676d741f27fd3abff296b09a206d7127fc95a4c"
+      ],
+      "source_published_kst": "2026-10-12T12:56+09:00",
+      "source_title": "연천군-한전, 산업단지 개발 전력 인프라 적기 구축 '맞손'",
+      "telegram_core_fact": "협약에 따라 연천군과 한국전력공사는 급증하는 전력수요에 선제적으로 대응하고 안정적인 전력공급 기반을 마련하기 위해 상호 협력체계를 구축해 개발사업 추진 시 전력공급설비 구축 방안을 사전에 협의하고 변전소 부지 확보와 인허가, 주민 수용성 제고를 위해 공동 노력하기로 뜻을 모았다.",
+      "title": "연천군-한전, 산업단지 개발 전력 인프라 적기 구축 '맞손'"
     },
     "original:7ea10613ea08abee065664c0": {
       "first_seen_kst": "2026-10-08T07:27:34+09:00",
@@ -189335,6 +189816,39 @@
       "telegram_core_fact": "향후 글로벌 AI 인프라 경쟁에서는 중국의 대규모 데이터센터 건설 계획이 실제 가동으로 얼마나 이어지는지와 미국의 전력망 제약이 어떻게 작용하는지가 주요 변수로 남을 전망이다.",
       "title": "중국, 남아도는 전력으로 AI 승부…데이터센터 건설 가속"
     },
+    "original:b17abd1046cb5946b69ee353": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02997926645612264",
+      "source": "이데일리",
+      "source_body_digest": "5cf5e74cea35d85a285b556cac22d6b47a30fb54b8e00477faa755c2bb1f3b7b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:63d55768a04beda6c325278a0ab6ccdc3dd49732db8227aa52576282e7599b81",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:096120a801818b12e9c1d5d7df028b0479e1cc13dae423e3a494d7458394e4c2",
+        "source_fact:v1:0e15e4c1f48429df7a7c9df447c055d1b1ab70e1e743b303e8f96e65c81b0a17",
+        "source_fact:v1:160a2459671cd8c61334a41d4ab2df32a3ecbcc73ca55f83b05d17313e5fe370",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:28e5336815057f18cc61890de2bb2f5d1e5ddb54f6eafffe77d38deab97fa005",
+        "source_fact:v1:3e61b3768891b231eaaf9549d9410ca21a7145267335eb3682c6152d51275e43",
+        "source_fact:v1:4c9235c4a307abac4eee828f18762b1990d2172aa87bf08ea5acc1b8d6e84b3c",
+        "source_fact:v1:4d3e0b8ca57fbde1b71473bc4e83db91cb8f3265324f05f65176036f51e7f986",
+        "source_fact:v1:527321f05608eea8b0770809051c0652b99a458225b13f71f1dd7664c06567e2",
+        "source_fact:v1:5f3a0fc935e0e02cfe159e69e019271547ff839f9f74f6331acd1b5b9fa9663e",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:b94787225d00090e965511a188ccfd83017ed6959222bd0d30d02441a1f94572",
+        "source_fact:v1:d0f572633db47127095c9dd438303d2623a18d7aaf53cf6037a80e4382a39aa2"
+      ],
+      "source_published_kst": "2026-10-12T11:56+09:00",
+      "source_title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 11일(현지시간) 러시아와 우크라이나 간 에너지 휴전이 즉각 발효됐다고 발표했다. 이번 계약에 따라 미국과 국제시장에 즉각 공급되는 러시아산 경유는 30만t(톤)으로, 약 225만배럴에 해당하는 물량이다.",
+      "title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)"
+    },
     "original:b18679b05eda2f9ea8da388e": {
       "first_seen_kst": "2026-10-03T09:05:24+09:00",
       "lanes": {
@@ -191059,6 +191573,25 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T15:39+09:00",
       "title": "가상자산 업계도 금융권 해킹 확산에 '촉각'…보안태세 재정비"
+    },
+    "original:ba05f08e3374ad4e7d488919": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821932",
+      "source": "뉴시스",
+      "source_body_digest": "4f9dd2f4b02bede35edf51b896a6104595b96bd0f064499bd6af83da978d6437",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:604060a6ea4cc63298d60c0e08941269e82d20c48512644bbf867d52f3ae40da",
+      "source_fact_keys": [
+        "source_fact:v1:e75620dd5cb3b8e2c3b15f4b574866920efc01e0fbc8400038d99f40c2b9e79f"
+      ],
+      "source_published_kst": "2026-10-12T11:31+09:00",
+      "source_title": "케이엠제약, 생산·물류·영업 등 주요 직군 채용",
+      "telegram_core_fact": "케이엠제약 관계자는 \"이번 채용은 생산과 물류, 영업 등 주요 직군의 인력을 확보해 사업 확대에 대응하기 위한 것\"이라며 \"각 분야의 전문 인력을 통해 생산 안정성과 고객 대응력을 높여나갈 계획\"이라고 말했다.",
+      "title": "케이엠제약, 생산·물류·영업 등 주요 직군 채용"
     },
     "original:ba061a62e473e8c8da5fb3f7": {
       "first_seen_kst": "2026-10-04T11:57:24+09:00",
@@ -199610,6 +200143,23 @@
       "link": "https://www.edaily.co.kr/news/read?newsid=03234086645581432&parentid=04332886645581432&gubun=E",
       "source": "이데일리",
       "title": "李 “레버리지 ETF 부족했다...도입 절차 아직 파악 못해”"
+    },
+    "original:dc05aa4b95c6767e886348a9": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.etnews.com/20261012000160",
+      "source": "전자신문",
+      "source_body_digest": "c7f898ec2667fb0299b035f7d90878624da3a3b79c2679a729ce1ea1ef29519d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T11:25+09:00",
+      "source_title": "[2026 국감]주병기 “반복 담합 사업자 영업정지 추진…전속고발제 개편”",
+      "telegram_core_fact": "담합 제재를 강화하는 동시에 공정위에 집중된 법 집행 권한을 분산하는 구상이다.",
+      "title": "[2026 국감]주병기 “반복 담합 사업자 영업정지 추진…전속고발제 개편”"
     },
     "original:dc4f65a3615fb962a7f61782": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
@@ -213303,6 +213853,39 @@
       "source_published_kst": "2026-10-07T07:00+09:00",
       "title": "내년 세수 37%가 법인세…의존도 높아 세수 전망도 '출렁'"
     },
+    "source_fact:071d9f3c0c67ee37a0febd32": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02997926645612264",
+      "source": "이데일리",
+      "source_body_digest": "5cf5e74cea35d85a285b556cac22d6b47a30fb54b8e00477faa755c2bb1f3b7b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:63d55768a04beda6c325278a0ab6ccdc3dd49732db8227aa52576282e7599b81",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:096120a801818b12e9c1d5d7df028b0479e1cc13dae423e3a494d7458394e4c2",
+        "source_fact:v1:0e15e4c1f48429df7a7c9df447c055d1b1ab70e1e743b303e8f96e65c81b0a17",
+        "source_fact:v1:160a2459671cd8c61334a41d4ab2df32a3ecbcc73ca55f83b05d17313e5fe370",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:28e5336815057f18cc61890de2bb2f5d1e5ddb54f6eafffe77d38deab97fa005",
+        "source_fact:v1:3e61b3768891b231eaaf9549d9410ca21a7145267335eb3682c6152d51275e43",
+        "source_fact:v1:4c9235c4a307abac4eee828f18762b1990d2172aa87bf08ea5acc1b8d6e84b3c",
+        "source_fact:v1:4d3e0b8ca57fbde1b71473bc4e83db91cb8f3265324f05f65176036f51e7f986",
+        "source_fact:v1:527321f05608eea8b0770809051c0652b99a458225b13f71f1dd7664c06567e2",
+        "source_fact:v1:5f3a0fc935e0e02cfe159e69e019271547ff839f9f74f6331acd1b5b9fa9663e",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:b94787225d00090e965511a188ccfd83017ed6959222bd0d30d02441a1f94572",
+        "source_fact:v1:d0f572633db47127095c9dd438303d2623a18d7aaf53cf6037a80e4382a39aa2"
+      ],
+      "source_published_kst": "2026-10-12T11:56+09:00",
+      "source_title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 11일(현지시간) 러시아와 우크라이나 간 에너지 휴전이 즉각 발효됐다고 발표했다. 이번 계약에 따라 미국과 국제시장에 즉각 공급되는 러시아산 경유는 30만t(톤)으로, 약 225만배럴에 해당하는 물량이다.",
+      "title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)"
+    },
     "source_fact:0720b1abfdb402cb5e3efeda": {
       "first_seen_kst": "2026-10-06T19:46:03+09:00",
       "lanes": {
@@ -220996,6 +221579,27 @@
       "telegram_core_fact": "주요 7개국(G7)은 도널드 트럼프 미국 대통령의 압박에 따라 비상 비축유에서 경유와 원유 1억배럴을 방출하기로 합의했다. 중동 전쟁 장기화에 따른 에너지 공급 충격과 고금리, 부채 급증이 세계 경제를 위협하고 있다.",
       "title": "“겨울이 온다”…중동發 에너지 쇼크에 전 세계 금융수장들 '비상'"
     },
+    "source_fact:1070600e64c1d27d24a8c51b": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03106166645612264",
+      "source": "이데일리",
+      "source_body_digest": "9a2532841fa012e858d89f73876e8d486a856ffb9814396711ed0cac754fe9e0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d83c54bb357ea2864ee6c9114452ec8e134869500ba7fd861693a37229e948df",
+      "source_fact_keys": [
+        "source_fact:v1:24ce6588322b47e77dc43ed20597c745c407764858e0e897aff82d720e28a59c",
+        "source_fact:v1:33aeb5964abc0417f7d2446603577adda82c8ea45f411f70323af09f8f30da11",
+        "source_fact:v1:43a9b6339b0edfd66fee922df676d741f27fd3abff296b09a206d7127fc95a4c"
+      ],
+      "source_published_kst": "2026-10-12T12:56+09:00",
+      "source_title": "연천군-한전, 산업단지 개발 전력 인프라 적기 구축 '맞손'",
+      "telegram_core_fact": "협약에 따라 연천군과 한국전력공사는 급증하는 전력수요에 선제적으로 대응하고 안정적인 전력공급 기반을 마련하기 위해 상호 협력체계를 구축해 개발사업 추진 시 전력공급설비 구축 방안을 사전에 협의하고 변전소 부지 확보와 인허가, 주민 수용성 제고를 위해 공동 노력하기로 뜻을 모았다.",
+      "title": "연천군-한전, 산업단지 개발 전력 인프라 적기 구축 '맞손'"
+    },
     "source_fact:107c8b12d1abad827a35bc89": {
       "first_seen_kst": "2026-10-07T00:38:27+09:00",
       "lanes": {
@@ -221876,35 +222480,35 @@
     "source_fact:11c3ee16187c2e1bb182e9b0": {
       "first_seen_kst": "2026-10-12T07:02:25+09:00",
       "lanes": {
-        "live": "2026-10-12T07:02:25+09:00"
+        "live": "2026-10-12T13:18:48+09:00"
       },
-      "last_seen_kst": "2026-10-12T07:02:25+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=01744966645612264",
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02997926645612264",
       "source": "이데일리",
-      "source_body_digest": "0b1fa0d02485a2ca1c7973f03bb1128ca005ede1842f3a6027199eae0c619790",
+      "source_body_digest": "5cf5e74cea35d85a285b556cac22d6b47a30fb54b8e00477faa755c2bb1f3b7b",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:4a71649f9da30d30686ad42df6a9add1c9f966e438701fd8857bd270b33c37d4",
+      "source_fact_identity": "source_facts:v1:63d55768a04beda6c325278a0ab6ccdc3dd49732db8227aa52576282e7599b81",
       "source_fact_keys": [
         "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
-        "source_fact:v1:208ae731bf9eccfb74906f39b8b01120db59fc7b1aef53775c37ca23f304b28c",
+        "source_fact:v1:096120a801818b12e9c1d5d7df028b0479e1cc13dae423e3a494d7458394e4c2",
+        "source_fact:v1:0e15e4c1f48429df7a7c9df447c055d1b1ab70e1e743b303e8f96e65c81b0a17",
+        "source_fact:v1:160a2459671cd8c61334a41d4ab2df32a3ecbcc73ca55f83b05d17313e5fe370",
         "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
-        "source_fact:v1:4757fe180e75d831794352adb85a46459e3c5e5c4e432e8766df60925d58820d",
-        "source_fact:v1:532b7ab57a4039f344215c99c0d4e1b8e91a4dbfc1f2dce214b239617b46908d",
-        "source_fact:v1:59d6334f99b973eb66e595d3c4714c04849114dd18562be04fedeccb58bd4b39",
-        "source_fact:v1:6584fc2cff852908a1f1e1276de1b78c97b5aa6fa6dae833d81c24c899e8d2d2",
-        "source_fact:v1:81448971df5accd91451f983737ddcc3c32245a7a3dcb9fea30ee1fe7da4df2c",
+        "source_fact:v1:28e5336815057f18cc61890de2bb2f5d1e5ddb54f6eafffe77d38deab97fa005",
+        "source_fact:v1:3e61b3768891b231eaaf9549d9410ca21a7145267335eb3682c6152d51275e43",
+        "source_fact:v1:4c9235c4a307abac4eee828f18762b1990d2172aa87bf08ea5acc1b8d6e84b3c",
+        "source_fact:v1:4d3e0b8ca57fbde1b71473bc4e83db91cb8f3265324f05f65176036f51e7f986",
+        "source_fact:v1:527321f05608eea8b0770809051c0652b99a458225b13f71f1dd7664c06567e2",
+        "source_fact:v1:5f3a0fc935e0e02cfe159e69e019271547ff839f9f74f6331acd1b5b9fa9663e",
         "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
-        "source_fact:v1:9842afb810b158de357c1a0bf470bd4692b72b46f81aaf2851429dd36f93c367",
-        "source_fact:v1:99f38eca29eab1fb6a0b1939b9e4eddb6587edf5056d0eba67a609d8931caf88",
-        "source_fact:v1:9ca5b3fbafa3973e85860919911f6c6bd3d9b0812f69cc1ad820bc66662d81ac",
         "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
-        "source_fact:v1:e9836bff65de24b57ea6658f3f4e08379c7b530d06ad8dc15cca5143172b5e03",
-        "source_fact:v1:fa91f30ca98feddea318dd200e7dde298440a1617bb4c42c08c0e7208854f790"
+        "source_fact:v1:b94787225d00090e965511a188ccfd83017ed6959222bd0d30d02441a1f94572",
+        "source_fact:v1:d0f572633db47127095c9dd438303d2623a18d7aaf53cf6037a80e4382a39aa2"
       ],
-      "source_published_kst": "2026-10-12T06:29+09:00",
-      "source_title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다",
-      "telegram_core_fact": "젤렌스키 대통령은 전날 트럼프 대통령이 러시아와 경유 공급 계약을 체결했다고 발표한 데 대해서도 강하게 반발했다.",
-      "title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다"
+      "source_published_kst": "2026-10-12T11:56+09:00",
+      "source_title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 11일(현지시간) 러시아와 우크라이나 간 에너지 휴전이 즉각 발효됐다고 발표했다. 이번 계약에 따라 미국과 국제시장에 즉각 공급되는 러시아산 경유는 30만t(톤)으로, 약 225만배럴에 해당하는 물량이다.",
+      "title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)"
     },
     "source_fact:11c71cf9c291b29f100c4ed7": {
       "first_seen_kst": "2026-10-11T12:55:39+09:00",
@@ -223844,6 +224448,27 @@
       "source_title": "트럼프 \"내달 3일까지 이란 공격 안해\"",
       "telegram_core_fact": "트럼프 대통령은 8일(현지시간) SNS에서 “이란에 대한 봉쇄 조치는 전면적으로 유지될 것”이라면서도 “11월 3일 치러지는 중간선거 이전에는 어떤 시점에도 이란을 공격하지 않을 것”이라고 밝혔다. 도널드 트럼프 미국 대통령이 다음달 3일 중간선거 전까지 이란을 공격하지 않겠다고 밝히면서 급등하던 국제 유가가 하락했다.",
       "title": "트럼프 \"내달 3일까지 이란 공격 안해\""
+    },
+    "source_fact:140d6cf34c474684cc0e5019": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03106166645612264",
+      "source": "이데일리",
+      "source_body_digest": "9a2532841fa012e858d89f73876e8d486a856ffb9814396711ed0cac754fe9e0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d83c54bb357ea2864ee6c9114452ec8e134869500ba7fd861693a37229e948df",
+      "source_fact_keys": [
+        "source_fact:v1:24ce6588322b47e77dc43ed20597c745c407764858e0e897aff82d720e28a59c",
+        "source_fact:v1:33aeb5964abc0417f7d2446603577adda82c8ea45f411f70323af09f8f30da11",
+        "source_fact:v1:43a9b6339b0edfd66fee922df676d741f27fd3abff296b09a206d7127fc95a4c"
+      ],
+      "source_published_kst": "2026-10-12T12:56+09:00",
+      "source_title": "연천군-한전, 산업단지 개발 전력 인프라 적기 구축 '맞손'",
+      "telegram_core_fact": "협약에 따라 연천군과 한국전력공사는 급증하는 전력수요에 선제적으로 대응하고 안정적인 전력공급 기반을 마련하기 위해 상호 협력체계를 구축해 개발사업 추진 시 전력공급설비 구축 방안을 사전에 협의하고 변전소 부지 확보와 인허가, 주민 수용성 제고를 위해 공동 노력하기로 뜻을 모았다.",
+      "title": "연천군-한전, 산업단지 개발 전력 인프라 적기 구축 '맞손'"
     },
     "source_fact:140e250be85c1933e763b60d": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
@@ -229898,6 +230523,26 @@
       "source_title": "바이오카디아, 심부전 세포치료 학회 발표..FDA 승인 근거 부각",
       "telegram_core_fact": "규제 측면에서는 미 식품의약국(FDA)이 CardiAMP 세포치료 시스템에 대해 세 건의 별도 임상시험에서 카테고리 B 지정을 승인했다.",
       "title": "바이오카디아, 심부전 세포치료 학회 발표..FDA 승인 근거 부각"
+    },
+    "source_fact:1b8e2dc3e2db15c2dca3533c": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821471",
+      "source": "뉴시스",
+      "source_body_digest": "cf37c84777cd01a4a76522f57ae861f7ac452d0d9fe0f1f46a39d5ab33d83b8f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4cf862d2d3d2646589c7c1d640ef4ad71abc68406836b47cc8fe4f288c98d246",
+      "source_fact_keys": [
+        "source_fact:v1:57f215ac0bffaf5d0a41450b36aa634fbb50c61200ae0866c9a8c91c0138d64d",
+        "source_fact:v1:7039e59801d0a914b56e34d49260a203f9604d077a349dbead6150ec0736e731"
+      ],
+      "source_published_kst": "2026-10-12T09:18+09:00",
+      "source_title": "이형일 \"수출 견조하지만 대외 리스크 여전\"…3조 해외건설펀드 신설",
+      "telegram_core_fact": "\"우리 기업의 해외수주 지원을 위해 3조원 해외건설 신(新)전략펀드를 신설하고, 해외 진출 사업의 연관 지역경제가 활성화될 수 있도록 패키지형 수주(개발·건설·유지보수)를 확대하겠다\"고 밝혔다.",
+      "title": "이형일 \"수출 견조하지만 대외 리스크 여전\"…3조 해외건설펀드 신설"
     },
     "source_fact:1b92d15eaa6e0c64392d3db9": {
       "first_seen_kst": "2026-10-06T23:05:07+09:00",
@@ -245803,6 +246448,39 @@
       "source_published_kst": "2026-10-06T11:14+09:00",
       "title": "JW중외제약, 유럽당뇨병학회서 '엠파가드' 임상 3상 발표…3제 요법 유효성 입증"
     },
+    "source_fact:2d8e3837c8b4424d8bdf65d0": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02997926645612264",
+      "source": "이데일리",
+      "source_body_digest": "5cf5e74cea35d85a285b556cac22d6b47a30fb54b8e00477faa755c2bb1f3b7b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:63d55768a04beda6c325278a0ab6ccdc3dd49732db8227aa52576282e7599b81",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:096120a801818b12e9c1d5d7df028b0479e1cc13dae423e3a494d7458394e4c2",
+        "source_fact:v1:0e15e4c1f48429df7a7c9df447c055d1b1ab70e1e743b303e8f96e65c81b0a17",
+        "source_fact:v1:160a2459671cd8c61334a41d4ab2df32a3ecbcc73ca55f83b05d17313e5fe370",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:28e5336815057f18cc61890de2bb2f5d1e5ddb54f6eafffe77d38deab97fa005",
+        "source_fact:v1:3e61b3768891b231eaaf9549d9410ca21a7145267335eb3682c6152d51275e43",
+        "source_fact:v1:4c9235c4a307abac4eee828f18762b1990d2172aa87bf08ea5acc1b8d6e84b3c",
+        "source_fact:v1:4d3e0b8ca57fbde1b71473bc4e83db91cb8f3265324f05f65176036f51e7f986",
+        "source_fact:v1:527321f05608eea8b0770809051c0652b99a458225b13f71f1dd7664c06567e2",
+        "source_fact:v1:5f3a0fc935e0e02cfe159e69e019271547ff839f9f74f6331acd1b5b9fa9663e",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:b94787225d00090e965511a188ccfd83017ed6959222bd0d30d02441a1f94572",
+        "source_fact:v1:d0f572633db47127095c9dd438303d2623a18d7aaf53cf6037a80e4382a39aa2"
+      ],
+      "source_published_kst": "2026-10-12T11:56+09:00",
+      "source_title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 11일(현지시간) 러시아와 우크라이나 간 에너지 휴전이 즉각 발효됐다고 발표했다. 이번 계약에 따라 미국과 국제시장에 즉각 공급되는 러시아산 경유는 30만t(톤)으로, 약 225만배럴에 해당하는 물량이다.",
+      "title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)"
+    },
     "source_fact:2d99ca48fe8676efa518f4d0": {
       "first_seen_kst": "2026-10-09T20:02:39+09:00",
       "lanes": {
@@ -254058,6 +254736,27 @@
       "source_title": "정부, 해외수주 지원 ‘3조원 펀드’ 신설…통상·공급망 리스크 대응",
       "telegram_core_fact": "정부가 우리 기업의 해외 수주를 지원하기 위해 3조원 ‘해외건설 신전략 펀드’를 신설한다.",
       "title": "정부, 해외수주 지원 ‘3조원 펀드’ 신설…통상·공급망 리스크 대응"
+    },
+    "source_fact:37c81ecc405ed67009dadcf5": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03106166645612264",
+      "source": "이데일리",
+      "source_body_digest": "9a2532841fa012e858d89f73876e8d486a856ffb9814396711ed0cac754fe9e0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d83c54bb357ea2864ee6c9114452ec8e134869500ba7fd861693a37229e948df",
+      "source_fact_keys": [
+        "source_fact:v1:24ce6588322b47e77dc43ed20597c745c407764858e0e897aff82d720e28a59c",
+        "source_fact:v1:33aeb5964abc0417f7d2446603577adda82c8ea45f411f70323af09f8f30da11",
+        "source_fact:v1:43a9b6339b0edfd66fee922df676d741f27fd3abff296b09a206d7127fc95a4c"
+      ],
+      "source_published_kst": "2026-10-12T12:56+09:00",
+      "source_title": "연천군-한전, 산업단지 개발 전력 인프라 적기 구축 '맞손'",
+      "telegram_core_fact": "협약에 따라 연천군과 한국전력공사는 급증하는 전력수요에 선제적으로 대응하고 안정적인 전력공급 기반을 마련하기 위해 상호 협력체계를 구축해 개발사업 추진 시 전력공급설비 구축 방안을 사전에 협의하고 변전소 부지 확보와 인허가, 주민 수용성 제고를 위해 공동 노력하기로 뜻을 모았다.",
+      "title": "연천군-한전, 산업단지 개발 전력 인프라 적기 구축 '맞손'"
     },
     "source_fact:37cad6c366a51644fe9b2a06": {
       "first_seen_kst": "2026-10-10T03:26:28+09:00",
@@ -269923,6 +270622,26 @@
       "telegram_core_fact": "오늘(10일) 한국석유공사 유가정보시스템 오피넷에 따르면 10월 첫째 주 전국 주유소 휘발유 평균 판매가는 지난주보다 리터(L)당 0.4원 내린 1,857.6원이었습니다.",
       "title": "기름값 21주째 하락…휘발유·경유 1,800원대 | 연합뉴스"
     },
+    "source_fact:4ac118ccf33fd12e7b4313b3": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822003",
+      "source": "뉴시스",
+      "source_body_digest": "e1165a949d4883a8321426da1160b2612b3c3452b25f22d96cd2943a67d4444d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:71d7b0fb38bb5f3d4addbd0eb932bc76deabe01a988cea3ede7a3acc2644a3dc",
+      "source_fact_keys": [
+        "source_fact:v1:3b94a3e3c12cb8faa2bd04702e72f52057177cce62e5cdb1264a75fa8cfb3433",
+        "source_fact:v1:8165ce12542c0c905ff88109e7ee69cd59a210f05486a786017258f064da0ce8"
+      ],
+      "source_published_kst": "2026-10-12T11:47+09:00",
+      "source_title": "구글코리아, 1540억원대 법인세 소송 최종 승소",
+      "telegram_core_fact": "반면 과세당국은 해당 소득이 국내 과세 대상인 사용료 소득에 해당한다고 판단해 법인세를 부과했고, 구글코리아는 이에 불복해 소송을 제기했다.",
+      "title": "구글코리아, 1540억원대 법인세 소송 최종 승소"
+    },
     "source_fact:4ac5e00781e4bc406253cbba": {
       "first_seen_kst": "2026-10-09T23:03:47+09:00",
       "lanes": {
@@ -270265,35 +270984,35 @@
     "source_fact:4b21d16dadbf8191eeb39a68": {
       "first_seen_kst": "2026-10-12T07:02:25+09:00",
       "lanes": {
-        "live": "2026-10-12T07:02:25+09:00"
+        "live": "2026-10-12T13:18:48+09:00"
       },
-      "last_seen_kst": "2026-10-12T07:02:25+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=01744966645612264",
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02997926645612264",
       "source": "이데일리",
-      "source_body_digest": "0b1fa0d02485a2ca1c7973f03bb1128ca005ede1842f3a6027199eae0c619790",
+      "source_body_digest": "5cf5e74cea35d85a285b556cac22d6b47a30fb54b8e00477faa755c2bb1f3b7b",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:4a71649f9da30d30686ad42df6a9add1c9f966e438701fd8857bd270b33c37d4",
+      "source_fact_identity": "source_facts:v1:63d55768a04beda6c325278a0ab6ccdc3dd49732db8227aa52576282e7599b81",
       "source_fact_keys": [
         "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
-        "source_fact:v1:208ae731bf9eccfb74906f39b8b01120db59fc7b1aef53775c37ca23f304b28c",
+        "source_fact:v1:096120a801818b12e9c1d5d7df028b0479e1cc13dae423e3a494d7458394e4c2",
+        "source_fact:v1:0e15e4c1f48429df7a7c9df447c055d1b1ab70e1e743b303e8f96e65c81b0a17",
+        "source_fact:v1:160a2459671cd8c61334a41d4ab2df32a3ecbcc73ca55f83b05d17313e5fe370",
         "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
-        "source_fact:v1:4757fe180e75d831794352adb85a46459e3c5e5c4e432e8766df60925d58820d",
-        "source_fact:v1:532b7ab57a4039f344215c99c0d4e1b8e91a4dbfc1f2dce214b239617b46908d",
-        "source_fact:v1:59d6334f99b973eb66e595d3c4714c04849114dd18562be04fedeccb58bd4b39",
-        "source_fact:v1:6584fc2cff852908a1f1e1276de1b78c97b5aa6fa6dae833d81c24c899e8d2d2",
-        "source_fact:v1:81448971df5accd91451f983737ddcc3c32245a7a3dcb9fea30ee1fe7da4df2c",
+        "source_fact:v1:28e5336815057f18cc61890de2bb2f5d1e5ddb54f6eafffe77d38deab97fa005",
+        "source_fact:v1:3e61b3768891b231eaaf9549d9410ca21a7145267335eb3682c6152d51275e43",
+        "source_fact:v1:4c9235c4a307abac4eee828f18762b1990d2172aa87bf08ea5acc1b8d6e84b3c",
+        "source_fact:v1:4d3e0b8ca57fbde1b71473bc4e83db91cb8f3265324f05f65176036f51e7f986",
+        "source_fact:v1:527321f05608eea8b0770809051c0652b99a458225b13f71f1dd7664c06567e2",
+        "source_fact:v1:5f3a0fc935e0e02cfe159e69e019271547ff839f9f74f6331acd1b5b9fa9663e",
         "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
-        "source_fact:v1:9842afb810b158de357c1a0bf470bd4692b72b46f81aaf2851429dd36f93c367",
-        "source_fact:v1:99f38eca29eab1fb6a0b1939b9e4eddb6587edf5056d0eba67a609d8931caf88",
-        "source_fact:v1:9ca5b3fbafa3973e85860919911f6c6bd3d9b0812f69cc1ad820bc66662d81ac",
         "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
-        "source_fact:v1:e9836bff65de24b57ea6658f3f4e08379c7b530d06ad8dc15cca5143172b5e03",
-        "source_fact:v1:fa91f30ca98feddea318dd200e7dde298440a1617bb4c42c08c0e7208854f790"
+        "source_fact:v1:b94787225d00090e965511a188ccfd83017ed6959222bd0d30d02441a1f94572",
+        "source_fact:v1:d0f572633db47127095c9dd438303d2623a18d7aaf53cf6037a80e4382a39aa2"
       ],
-      "source_published_kst": "2026-10-12T06:29+09:00",
-      "source_title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다",
-      "telegram_core_fact": "젤렌스키 대통령은 전날 트럼프 대통령이 러시아와 경유 공급 계약을 체결했다고 발표한 데 대해서도 강하게 반발했다.",
-      "title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다"
+      "source_published_kst": "2026-10-12T11:56+09:00",
+      "source_title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 11일(현지시간) 러시아와 우크라이나 간 에너지 휴전이 즉각 발효됐다고 발표했다. 이번 계약에 따라 미국과 국제시장에 즉각 공급되는 러시아산 경유는 30만t(톤)으로, 약 225만배럴에 해당하는 물량이다.",
+      "title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)"
     },
     "source_fact:4b2289749fe0ab7eee51b0f2": {
       "first_seen_kst": "2026-10-12T10:56:38+09:00",
@@ -276020,6 +276739,39 @@
       "telegram_core_fact": "올해 판매 부진을 겪고 있는 현대차의 3분기 영업이익과 매출이 동반 감소할 것이라는 전망이 나온다.",
       "title": "현대차, 분기 영업이익 기아에 역전당하나…매출도 6년만에 감소 | 연합뉴스"
     },
+    "source_fact:525658ef8dbf6cf44134dbe2": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02997926645612264",
+      "source": "이데일리",
+      "source_body_digest": "5cf5e74cea35d85a285b556cac22d6b47a30fb54b8e00477faa755c2bb1f3b7b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:63d55768a04beda6c325278a0ab6ccdc3dd49732db8227aa52576282e7599b81",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:096120a801818b12e9c1d5d7df028b0479e1cc13dae423e3a494d7458394e4c2",
+        "source_fact:v1:0e15e4c1f48429df7a7c9df447c055d1b1ab70e1e743b303e8f96e65c81b0a17",
+        "source_fact:v1:160a2459671cd8c61334a41d4ab2df32a3ecbcc73ca55f83b05d17313e5fe370",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:28e5336815057f18cc61890de2bb2f5d1e5ddb54f6eafffe77d38deab97fa005",
+        "source_fact:v1:3e61b3768891b231eaaf9549d9410ca21a7145267335eb3682c6152d51275e43",
+        "source_fact:v1:4c9235c4a307abac4eee828f18762b1990d2172aa87bf08ea5acc1b8d6e84b3c",
+        "source_fact:v1:4d3e0b8ca57fbde1b71473bc4e83db91cb8f3265324f05f65176036f51e7f986",
+        "source_fact:v1:527321f05608eea8b0770809051c0652b99a458225b13f71f1dd7664c06567e2",
+        "source_fact:v1:5f3a0fc935e0e02cfe159e69e019271547ff839f9f74f6331acd1b5b9fa9663e",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:b94787225d00090e965511a188ccfd83017ed6959222bd0d30d02441a1f94572",
+        "source_fact:v1:d0f572633db47127095c9dd438303d2623a18d7aaf53cf6037a80e4382a39aa2"
+      ],
+      "source_published_kst": "2026-10-12T11:56+09:00",
+      "source_title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 11일(현지시간) 러시아와 우크라이나 간 에너지 휴전이 즉각 발효됐다고 발표했다. 이번 계약에 따라 미국과 국제시장에 즉각 공급되는 러시아산 경유는 30만t(톤)으로, 약 225만배럴에 해당하는 물량이다.",
+      "title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)"
+    },
     "source_fact:5264501e613193a36575832b": {
       "first_seen_kst": "2026-10-07T07:24:41+09:00",
       "lanes": {
@@ -278343,6 +279095,39 @@
       "source_title": "\"도쿄는 매년 10만채 짓는데 서울은 3만채…이 시스템 못 깨면 집값 상승 불가피\"",
       "telegram_core_fact": "반면 도쿄는 10만채 이상씩 공급하고 있으며, 공급량이 감소한 이후에도 연간 9만채 안팎의 주택을 공급하고 있다. 지난 7일 구독자 2만명을 보유한 유튜브 채널 '김원장의 보이는 경제'에는 삼프로TV 김원장 부사장이 출연해 지난 10년간 서울과 도쿄의 주택 공급을 비교하며 한국의 부동산 시장 구조를 설명했다.",
       "title": "\"도쿄는 매년 10만채 짓는데 서울은 3만채…이 시스템 못 깨면 집값 상승 불가피\""
+    },
+    "source_fact:5516e38bd834e775c67b3552": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02997926645612264",
+      "source": "이데일리",
+      "source_body_digest": "5cf5e74cea35d85a285b556cac22d6b47a30fb54b8e00477faa755c2bb1f3b7b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:63d55768a04beda6c325278a0ab6ccdc3dd49732db8227aa52576282e7599b81",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:096120a801818b12e9c1d5d7df028b0479e1cc13dae423e3a494d7458394e4c2",
+        "source_fact:v1:0e15e4c1f48429df7a7c9df447c055d1b1ab70e1e743b303e8f96e65c81b0a17",
+        "source_fact:v1:160a2459671cd8c61334a41d4ab2df32a3ecbcc73ca55f83b05d17313e5fe370",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:28e5336815057f18cc61890de2bb2f5d1e5ddb54f6eafffe77d38deab97fa005",
+        "source_fact:v1:3e61b3768891b231eaaf9549d9410ca21a7145267335eb3682c6152d51275e43",
+        "source_fact:v1:4c9235c4a307abac4eee828f18762b1990d2172aa87bf08ea5acc1b8d6e84b3c",
+        "source_fact:v1:4d3e0b8ca57fbde1b71473bc4e83db91cb8f3265324f05f65176036f51e7f986",
+        "source_fact:v1:527321f05608eea8b0770809051c0652b99a458225b13f71f1dd7664c06567e2",
+        "source_fact:v1:5f3a0fc935e0e02cfe159e69e019271547ff839f9f74f6331acd1b5b9fa9663e",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:b94787225d00090e965511a188ccfd83017ed6959222bd0d30d02441a1f94572",
+        "source_fact:v1:d0f572633db47127095c9dd438303d2623a18d7aaf53cf6037a80e4382a39aa2"
+      ],
+      "source_published_kst": "2026-10-12T11:56+09:00",
+      "source_title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 11일(현지시간) 러시아와 우크라이나 간 에너지 휴전이 즉각 발효됐다고 발표했다. 이번 계약에 따라 미국과 국제시장에 즉각 공급되는 러시아산 경유는 30만t(톤)으로, 약 225만배럴에 해당하는 물량이다.",
+      "title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)"
     },
     "source_fact:551fe68b8d8c883dc6efb98d": {
       "first_seen_kst": "2026-10-06T16:09:23+09:00",
@@ -308308,35 +309093,35 @@
     "source_fact:78e95b0a6d8a72edc451b0a7": {
       "first_seen_kst": "2026-10-12T07:02:25+09:00",
       "lanes": {
-        "live": "2026-10-12T07:02:25+09:00"
+        "live": "2026-10-12T13:18:48+09:00"
       },
-      "last_seen_kst": "2026-10-12T07:02:25+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=01744966645612264",
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02997926645612264",
       "source": "이데일리",
-      "source_body_digest": "0b1fa0d02485a2ca1c7973f03bb1128ca005ede1842f3a6027199eae0c619790",
+      "source_body_digest": "5cf5e74cea35d85a285b556cac22d6b47a30fb54b8e00477faa755c2bb1f3b7b",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:4a71649f9da30d30686ad42df6a9add1c9f966e438701fd8857bd270b33c37d4",
+      "source_fact_identity": "source_facts:v1:63d55768a04beda6c325278a0ab6ccdc3dd49732db8227aa52576282e7599b81",
       "source_fact_keys": [
         "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
-        "source_fact:v1:208ae731bf9eccfb74906f39b8b01120db59fc7b1aef53775c37ca23f304b28c",
+        "source_fact:v1:096120a801818b12e9c1d5d7df028b0479e1cc13dae423e3a494d7458394e4c2",
+        "source_fact:v1:0e15e4c1f48429df7a7c9df447c055d1b1ab70e1e743b303e8f96e65c81b0a17",
+        "source_fact:v1:160a2459671cd8c61334a41d4ab2df32a3ecbcc73ca55f83b05d17313e5fe370",
         "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
-        "source_fact:v1:4757fe180e75d831794352adb85a46459e3c5e5c4e432e8766df60925d58820d",
-        "source_fact:v1:532b7ab57a4039f344215c99c0d4e1b8e91a4dbfc1f2dce214b239617b46908d",
-        "source_fact:v1:59d6334f99b973eb66e595d3c4714c04849114dd18562be04fedeccb58bd4b39",
-        "source_fact:v1:6584fc2cff852908a1f1e1276de1b78c97b5aa6fa6dae833d81c24c899e8d2d2",
-        "source_fact:v1:81448971df5accd91451f983737ddcc3c32245a7a3dcb9fea30ee1fe7da4df2c",
+        "source_fact:v1:28e5336815057f18cc61890de2bb2f5d1e5ddb54f6eafffe77d38deab97fa005",
+        "source_fact:v1:3e61b3768891b231eaaf9549d9410ca21a7145267335eb3682c6152d51275e43",
+        "source_fact:v1:4c9235c4a307abac4eee828f18762b1990d2172aa87bf08ea5acc1b8d6e84b3c",
+        "source_fact:v1:4d3e0b8ca57fbde1b71473bc4e83db91cb8f3265324f05f65176036f51e7f986",
+        "source_fact:v1:527321f05608eea8b0770809051c0652b99a458225b13f71f1dd7664c06567e2",
+        "source_fact:v1:5f3a0fc935e0e02cfe159e69e019271547ff839f9f74f6331acd1b5b9fa9663e",
         "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
-        "source_fact:v1:9842afb810b158de357c1a0bf470bd4692b72b46f81aaf2851429dd36f93c367",
-        "source_fact:v1:99f38eca29eab1fb6a0b1939b9e4eddb6587edf5056d0eba67a609d8931caf88",
-        "source_fact:v1:9ca5b3fbafa3973e85860919911f6c6bd3d9b0812f69cc1ad820bc66662d81ac",
         "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
-        "source_fact:v1:e9836bff65de24b57ea6658f3f4e08379c7b530d06ad8dc15cca5143172b5e03",
-        "source_fact:v1:fa91f30ca98feddea318dd200e7dde298440a1617bb4c42c08c0e7208854f790"
+        "source_fact:v1:b94787225d00090e965511a188ccfd83017ed6959222bd0d30d02441a1f94572",
+        "source_fact:v1:d0f572633db47127095c9dd438303d2623a18d7aaf53cf6037a80e4382a39aa2"
       ],
-      "source_published_kst": "2026-10-12T06:29+09:00",
-      "source_title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다",
-      "telegram_core_fact": "젤렌스키 대통령은 전날 트럼프 대통령이 러시아와 경유 공급 계약을 체결했다고 발표한 데 대해서도 강하게 반발했다.",
-      "title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다"
+      "source_published_kst": "2026-10-12T11:56+09:00",
+      "source_title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 11일(현지시간) 러시아와 우크라이나 간 에너지 휴전이 즉각 발효됐다고 발표했다. 이번 계약에 따라 미국과 국제시장에 즉각 공급되는 러시아산 경유는 30만t(톤)으로, 약 225만배럴에 해당하는 물량이다.",
+      "title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)"
     },
     "source_fact:78ee18c0390f774f6755ec43": {
       "first_seen_kst": "2026-10-11T16:16:50+09:00",
@@ -309946,6 +310731,39 @@
       ],
       "source_published_kst": "2026-10-06T13:44+09:00",
       "title": "완성차 불황에 '군용차'로 눈 돌린다…기아·포드·GM·르노 방산 공략"
+    },
+    "source_fact:7b1ea1f2afc6f69fe70a9176": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02997926645612264",
+      "source": "이데일리",
+      "source_body_digest": "5cf5e74cea35d85a285b556cac22d6b47a30fb54b8e00477faa755c2bb1f3b7b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:63d55768a04beda6c325278a0ab6ccdc3dd49732db8227aa52576282e7599b81",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:096120a801818b12e9c1d5d7df028b0479e1cc13dae423e3a494d7458394e4c2",
+        "source_fact:v1:0e15e4c1f48429df7a7c9df447c055d1b1ab70e1e743b303e8f96e65c81b0a17",
+        "source_fact:v1:160a2459671cd8c61334a41d4ab2df32a3ecbcc73ca55f83b05d17313e5fe370",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:28e5336815057f18cc61890de2bb2f5d1e5ddb54f6eafffe77d38deab97fa005",
+        "source_fact:v1:3e61b3768891b231eaaf9549d9410ca21a7145267335eb3682c6152d51275e43",
+        "source_fact:v1:4c9235c4a307abac4eee828f18762b1990d2172aa87bf08ea5acc1b8d6e84b3c",
+        "source_fact:v1:4d3e0b8ca57fbde1b71473bc4e83db91cb8f3265324f05f65176036f51e7f986",
+        "source_fact:v1:527321f05608eea8b0770809051c0652b99a458225b13f71f1dd7664c06567e2",
+        "source_fact:v1:5f3a0fc935e0e02cfe159e69e019271547ff839f9f74f6331acd1b5b9fa9663e",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:b94787225d00090e965511a188ccfd83017ed6959222bd0d30d02441a1f94572",
+        "source_fact:v1:d0f572633db47127095c9dd438303d2623a18d7aaf53cf6037a80e4382a39aa2"
+      ],
+      "source_published_kst": "2026-10-12T11:56+09:00",
+      "source_title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 11일(현지시간) 러시아와 우크라이나 간 에너지 휴전이 즉각 발효됐다고 발표했다. 이번 계약에 따라 미국과 국제시장에 즉각 공급되는 러시아산 경유는 30만t(톤)으로, 약 225만배럴에 해당하는 물량이다.",
+      "title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)"
     },
     "source_fact:7b2649dda8ae48b5bfc4767e": {
       "first_seen_kst": "2026-10-07T00:54:50+09:00",
@@ -320213,35 +321031,35 @@
     "source_fact:87ec040a8fa99654075578e5": {
       "first_seen_kst": "2026-10-12T07:02:25+09:00",
       "lanes": {
-        "live": "2026-10-12T07:02:25+09:00"
+        "live": "2026-10-12T13:18:48+09:00"
       },
-      "last_seen_kst": "2026-10-12T07:02:25+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=01744966645612264",
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02997926645612264",
       "source": "이데일리",
-      "source_body_digest": "0b1fa0d02485a2ca1c7973f03bb1128ca005ede1842f3a6027199eae0c619790",
+      "source_body_digest": "5cf5e74cea35d85a285b556cac22d6b47a30fb54b8e00477faa755c2bb1f3b7b",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:4a71649f9da30d30686ad42df6a9add1c9f966e438701fd8857bd270b33c37d4",
+      "source_fact_identity": "source_facts:v1:63d55768a04beda6c325278a0ab6ccdc3dd49732db8227aa52576282e7599b81",
       "source_fact_keys": [
         "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
-        "source_fact:v1:208ae731bf9eccfb74906f39b8b01120db59fc7b1aef53775c37ca23f304b28c",
+        "source_fact:v1:096120a801818b12e9c1d5d7df028b0479e1cc13dae423e3a494d7458394e4c2",
+        "source_fact:v1:0e15e4c1f48429df7a7c9df447c055d1b1ab70e1e743b303e8f96e65c81b0a17",
+        "source_fact:v1:160a2459671cd8c61334a41d4ab2df32a3ecbcc73ca55f83b05d17313e5fe370",
         "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
-        "source_fact:v1:4757fe180e75d831794352adb85a46459e3c5e5c4e432e8766df60925d58820d",
-        "source_fact:v1:532b7ab57a4039f344215c99c0d4e1b8e91a4dbfc1f2dce214b239617b46908d",
-        "source_fact:v1:59d6334f99b973eb66e595d3c4714c04849114dd18562be04fedeccb58bd4b39",
-        "source_fact:v1:6584fc2cff852908a1f1e1276de1b78c97b5aa6fa6dae833d81c24c899e8d2d2",
-        "source_fact:v1:81448971df5accd91451f983737ddcc3c32245a7a3dcb9fea30ee1fe7da4df2c",
+        "source_fact:v1:28e5336815057f18cc61890de2bb2f5d1e5ddb54f6eafffe77d38deab97fa005",
+        "source_fact:v1:3e61b3768891b231eaaf9549d9410ca21a7145267335eb3682c6152d51275e43",
+        "source_fact:v1:4c9235c4a307abac4eee828f18762b1990d2172aa87bf08ea5acc1b8d6e84b3c",
+        "source_fact:v1:4d3e0b8ca57fbde1b71473bc4e83db91cb8f3265324f05f65176036f51e7f986",
+        "source_fact:v1:527321f05608eea8b0770809051c0652b99a458225b13f71f1dd7664c06567e2",
+        "source_fact:v1:5f3a0fc935e0e02cfe159e69e019271547ff839f9f74f6331acd1b5b9fa9663e",
         "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
-        "source_fact:v1:9842afb810b158de357c1a0bf470bd4692b72b46f81aaf2851429dd36f93c367",
-        "source_fact:v1:99f38eca29eab1fb6a0b1939b9e4eddb6587edf5056d0eba67a609d8931caf88",
-        "source_fact:v1:9ca5b3fbafa3973e85860919911f6c6bd3d9b0812f69cc1ad820bc66662d81ac",
         "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
-        "source_fact:v1:e9836bff65de24b57ea6658f3f4e08379c7b530d06ad8dc15cca5143172b5e03",
-        "source_fact:v1:fa91f30ca98feddea318dd200e7dde298440a1617bb4c42c08c0e7208854f790"
+        "source_fact:v1:b94787225d00090e965511a188ccfd83017ed6959222bd0d30d02441a1f94572",
+        "source_fact:v1:d0f572633db47127095c9dd438303d2623a18d7aaf53cf6037a80e4382a39aa2"
       ],
-      "source_published_kst": "2026-10-12T06:29+09:00",
-      "source_title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다",
-      "telegram_core_fact": "젤렌스키 대통령은 전날 트럼프 대통령이 러시아와 경유 공급 계약을 체결했다고 발표한 데 대해서도 강하게 반발했다.",
-      "title": "트럼프 \"러·우 에너지 시설 공격 중단\"…젤렌스키도 몰랐다"
+      "source_published_kst": "2026-10-12T11:56+09:00",
+      "source_title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 11일(현지시간) 러시아와 우크라이나 간 에너지 휴전이 즉각 발효됐다고 발표했다. 이번 계약에 따라 미국과 국제시장에 즉각 공급되는 러시아산 경유는 30만t(톤)으로, 약 225만배럴에 해당하는 물량이다.",
+      "title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)"
     },
     "source_fact:87f23e624e521e67715d3634": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
@@ -322991,6 +323809,39 @@
       "source_title": "충남 서천 기산면서 산불…주불 진화",
       "telegram_core_fact": "(서천=뉴스1) 9일 오후 2시 53분께 충남 서천군 기산면 월기리 한 산에서 발생한 산불이 56분 만에 진화됐다. 당국은 잔불 진화를 마치는 즉시 산림보호법 제42조에 따라 투입해 정확한 산불 피해 면적과 재산 피해 등을 조사할 계획이다.",
       "title": "충남 서천 기산면서 산불…주불 진화"
+    },
+    "source_fact:8af6564de64a0fb5fe4b6e9d": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02997926645612264",
+      "source": "이데일리",
+      "source_body_digest": "5cf5e74cea35d85a285b556cac22d6b47a30fb54b8e00477faa755c2bb1f3b7b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:63d55768a04beda6c325278a0ab6ccdc3dd49732db8227aa52576282e7599b81",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:096120a801818b12e9c1d5d7df028b0479e1cc13dae423e3a494d7458394e4c2",
+        "source_fact:v1:0e15e4c1f48429df7a7c9df447c055d1b1ab70e1e743b303e8f96e65c81b0a17",
+        "source_fact:v1:160a2459671cd8c61334a41d4ab2df32a3ecbcc73ca55f83b05d17313e5fe370",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:28e5336815057f18cc61890de2bb2f5d1e5ddb54f6eafffe77d38deab97fa005",
+        "source_fact:v1:3e61b3768891b231eaaf9549d9410ca21a7145267335eb3682c6152d51275e43",
+        "source_fact:v1:4c9235c4a307abac4eee828f18762b1990d2172aa87bf08ea5acc1b8d6e84b3c",
+        "source_fact:v1:4d3e0b8ca57fbde1b71473bc4e83db91cb8f3265324f05f65176036f51e7f986",
+        "source_fact:v1:527321f05608eea8b0770809051c0652b99a458225b13f71f1dd7664c06567e2",
+        "source_fact:v1:5f3a0fc935e0e02cfe159e69e019271547ff839f9f74f6331acd1b5b9fa9663e",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:b94787225d00090e965511a188ccfd83017ed6959222bd0d30d02441a1f94572",
+        "source_fact:v1:d0f572633db47127095c9dd438303d2623a18d7aaf53cf6037a80e4382a39aa2"
+      ],
+      "source_published_kst": "2026-10-12T11:56+09:00",
+      "source_title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 11일(현지시간) 러시아와 우크라이나 간 에너지 휴전이 즉각 발효됐다고 발표했다. 이번 계약에 따라 미국과 국제시장에 즉각 공급되는 러시아산 경유는 30만t(톤)으로, 약 225만배럴에 해당하는 물량이다.",
+      "title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)"
     },
     "source_fact:8af91b2d32e73b5caf300147": {
       "first_seen_kst": "2026-10-07T17:10:43+09:00",
@@ -328194,6 +329045,26 @@
       "source_title": "청년미래적금 내일부터 출생연도 관계없이 신청",
       "telegram_core_fact": "우대금리와 정부 기여금, 이자소득 비과세 혜택을 더하면 최고 19.4% 수준의 수익 효과를 기대할 수 있는 '청년미래적금' 가입 신청이 시작된 6월 22일 서울 중구 우리은행 본점에 관련 안내문이 게시돼 있다.",
       "title": "청년미래적금 내일부터 출생연도 관계없이 신청"
+    },
+    "source_fact:91aef608b6da628f0e1a69bb": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822003",
+      "source": "뉴시스",
+      "source_body_digest": "e1165a949d4883a8321426da1160b2612b3c3452b25f22d96cd2943a67d4444d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:71d7b0fb38bb5f3d4addbd0eb932bc76deabe01a988cea3ede7a3acc2644a3dc",
+      "source_fact_keys": [
+        "source_fact:v1:3b94a3e3c12cb8faa2bd04702e72f52057177cce62e5cdb1264a75fa8cfb3433",
+        "source_fact:v1:8165ce12542c0c905ff88109e7ee69cd59a210f05486a786017258f064da0ce8"
+      ],
+      "source_published_kst": "2026-10-12T11:47+09:00",
+      "source_title": "구글코리아, 1540억원대 법인세 소송 최종 승소",
+      "telegram_core_fact": "반면 과세당국은 해당 소득이 국내 과세 대상인 사용료 소득에 해당한다고 판단해 법인세를 부과했고, 구글코리아는 이에 불복해 소송을 제기했다.",
+      "title": "구글코리아, 1540억원대 법인세 소송 최종 승소"
     },
     "source_fact:91b3dbf85559af5ca1f3a204": {
       "first_seen_kst": "2026-10-10T06:02:39+09:00",
@@ -358907,6 +359778,25 @@
       "source_published_kst": "2026-10-07T08:54+09:00",
       "title": "LS에코에너지, 베트남에 80억 투자…에폭시 타입 버스덕트 신규 생산"
     },
+    "source_fact:b7b771549137980a3caf1dc4": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821932",
+      "source": "뉴시스",
+      "source_body_digest": "4f9dd2f4b02bede35edf51b896a6104595b96bd0f064499bd6af83da978d6437",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:604060a6ea4cc63298d60c0e08941269e82d20c48512644bbf867d52f3ae40da",
+      "source_fact_keys": [
+        "source_fact:v1:e75620dd5cb3b8e2c3b15f4b574866920efc01e0fbc8400038d99f40c2b9e79f"
+      ],
+      "source_published_kst": "2026-10-12T11:31+09:00",
+      "source_title": "케이엠제약, 생산·물류·영업 등 주요 직군 채용",
+      "telegram_core_fact": "케이엠제약 관계자는 \"이번 채용은 생산과 물류, 영업 등 주요 직군의 인력을 확보해 사업 확대에 대응하기 위한 것\"이라며 \"각 분야의 전문 인력을 통해 생산 안정성과 고객 대응력을 높여나갈 계획\"이라고 말했다.",
+      "title": "케이엠제약, 생산·물류·영업 등 주요 직군 채용"
+    },
     "source_fact:b7bdcdefcf246fc3d7488582": {
       "first_seen_kst": "2026-10-12T08:03:02+09:00",
       "lanes": {
@@ -363453,6 +364343,39 @@
       "source_title": "日에서 찾은 고령자 고용 해법…정년연장 아닌 단계적 재고용 필요",
       "telegram_core_fact": "이런 상황에서 고령자 고용을 확대하되 청년층의 일자리 진입을 가로막지 않고 기업의 인력운용 부담을 줄이는 방안이 정책 과제로 떠올랐다.",
       "title": "日에서 찾은 고령자 고용 해법…정년연장 아닌 단계적 재고용 필요"
+    },
+    "source_fact:bd96ea84510ce07377e12f92": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02997926645612264",
+      "source": "이데일리",
+      "source_body_digest": "5cf5e74cea35d85a285b556cac22d6b47a30fb54b8e00477faa755c2bb1f3b7b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:63d55768a04beda6c325278a0ab6ccdc3dd49732db8227aa52576282e7599b81",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:096120a801818b12e9c1d5d7df028b0479e1cc13dae423e3a494d7458394e4c2",
+        "source_fact:v1:0e15e4c1f48429df7a7c9df447c055d1b1ab70e1e743b303e8f96e65c81b0a17",
+        "source_fact:v1:160a2459671cd8c61334a41d4ab2df32a3ecbcc73ca55f83b05d17313e5fe370",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:28e5336815057f18cc61890de2bb2f5d1e5ddb54f6eafffe77d38deab97fa005",
+        "source_fact:v1:3e61b3768891b231eaaf9549d9410ca21a7145267335eb3682c6152d51275e43",
+        "source_fact:v1:4c9235c4a307abac4eee828f18762b1990d2172aa87bf08ea5acc1b8d6e84b3c",
+        "source_fact:v1:4d3e0b8ca57fbde1b71473bc4e83db91cb8f3265324f05f65176036f51e7f986",
+        "source_fact:v1:527321f05608eea8b0770809051c0652b99a458225b13f71f1dd7664c06567e2",
+        "source_fact:v1:5f3a0fc935e0e02cfe159e69e019271547ff839f9f74f6331acd1b5b9fa9663e",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:b94787225d00090e965511a188ccfd83017ed6959222bd0d30d02441a1f94572",
+        "source_fact:v1:d0f572633db47127095c9dd438303d2623a18d7aaf53cf6037a80e4382a39aa2"
+      ],
+      "source_published_kst": "2026-10-12T11:56+09:00",
+      "source_title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 11일(현지시간) 러시아와 우크라이나 간 에너지 휴전이 즉각 발효됐다고 발표했다. 이번 계약에 따라 미국과 국제시장에 즉각 공급되는 러시아산 경유는 30만t(톤)으로, 약 225만배럴에 해당하는 물량이다.",
+      "title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)"
     },
     "source_fact:bd9ab22beb62fee2083c222d": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
@@ -376141,6 +377064,39 @@
       "telegram_core_fact": "삼성전자는 3분기 영업이익률 55.1%를 기록했는데, 반도체를 담당하는 디바이스솔루션(DS) 부문은 70%를 넘어섰을 것으로 보인다.",
       "title": "삼성전자, 올 3분기 영업이익률 55% 신기록 …반도체 부문은 70% 돌파할 듯"
     },
+    "source_fact:cd082a8244bb2dac3b4a5985": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02997926645612264",
+      "source": "이데일리",
+      "source_body_digest": "5cf5e74cea35d85a285b556cac22d6b47a30fb54b8e00477faa755c2bb1f3b7b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:63d55768a04beda6c325278a0ab6ccdc3dd49732db8227aa52576282e7599b81",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:096120a801818b12e9c1d5d7df028b0479e1cc13dae423e3a494d7458394e4c2",
+        "source_fact:v1:0e15e4c1f48429df7a7c9df447c055d1b1ab70e1e743b303e8f96e65c81b0a17",
+        "source_fact:v1:160a2459671cd8c61334a41d4ab2df32a3ecbcc73ca55f83b05d17313e5fe370",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:28e5336815057f18cc61890de2bb2f5d1e5ddb54f6eafffe77d38deab97fa005",
+        "source_fact:v1:3e61b3768891b231eaaf9549d9410ca21a7145267335eb3682c6152d51275e43",
+        "source_fact:v1:4c9235c4a307abac4eee828f18762b1990d2172aa87bf08ea5acc1b8d6e84b3c",
+        "source_fact:v1:4d3e0b8ca57fbde1b71473bc4e83db91cb8f3265324f05f65176036f51e7f986",
+        "source_fact:v1:527321f05608eea8b0770809051c0652b99a458225b13f71f1dd7664c06567e2",
+        "source_fact:v1:5f3a0fc935e0e02cfe159e69e019271547ff839f9f74f6331acd1b5b9fa9663e",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:b94787225d00090e965511a188ccfd83017ed6959222bd0d30d02441a1f94572",
+        "source_fact:v1:d0f572633db47127095c9dd438303d2623a18d7aaf53cf6037a80e4382a39aa2"
+      ],
+      "source_published_kst": "2026-10-12T11:56+09:00",
+      "source_title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 11일(현지시간) 러시아와 우크라이나 간 에너지 휴전이 즉각 발효됐다고 발표했다. 이번 계약에 따라 미국과 국제시장에 즉각 공급되는 러시아산 경유는 30만t(톤)으로, 약 225만배럴에 해당하는 물량이다.",
+      "title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)"
+    },
     "source_fact:cd10c76e79f1c152176bb4ea": {
       "first_seen_kst": "2026-10-06T19:58:43+09:00",
       "lanes": {
@@ -379889,6 +380845,39 @@
       "source_title": "중기부, 2차 '모두의 창업' AI 솔루션 103개 선정…1인당 100만원 지원",
       "telegram_core_fact": "1라운드 진출자는 1인당 최대 100만원 범위에서 필요한 AI 솔루션을 이용할 수 있다. 중기부는 12일 '모두의 창업' 도전자에게 제공할 AI 솔루션 공급기업 50개사와 103개 솔루션을 공개한다고 11일 밝혔다.",
       "title": "중기부, 2차 '모두의 창업' AI 솔루션 103개 선정…1인당 100만원 지원"
+    },
+    "source_fact:d1a51ac5cf338c23f33d447c": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02997926645612264",
+      "source": "이데일리",
+      "source_body_digest": "5cf5e74cea35d85a285b556cac22d6b47a30fb54b8e00477faa755c2bb1f3b7b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:63d55768a04beda6c325278a0ab6ccdc3dd49732db8227aa52576282e7599b81",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:096120a801818b12e9c1d5d7df028b0479e1cc13dae423e3a494d7458394e4c2",
+        "source_fact:v1:0e15e4c1f48429df7a7c9df447c055d1b1ab70e1e743b303e8f96e65c81b0a17",
+        "source_fact:v1:160a2459671cd8c61334a41d4ab2df32a3ecbcc73ca55f83b05d17313e5fe370",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:28e5336815057f18cc61890de2bb2f5d1e5ddb54f6eafffe77d38deab97fa005",
+        "source_fact:v1:3e61b3768891b231eaaf9549d9410ca21a7145267335eb3682c6152d51275e43",
+        "source_fact:v1:4c9235c4a307abac4eee828f18762b1990d2172aa87bf08ea5acc1b8d6e84b3c",
+        "source_fact:v1:4d3e0b8ca57fbde1b71473bc4e83db91cb8f3265324f05f65176036f51e7f986",
+        "source_fact:v1:527321f05608eea8b0770809051c0652b99a458225b13f71f1dd7664c06567e2",
+        "source_fact:v1:5f3a0fc935e0e02cfe159e69e019271547ff839f9f74f6331acd1b5b9fa9663e",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:b94787225d00090e965511a188ccfd83017ed6959222bd0d30d02441a1f94572",
+        "source_fact:v1:d0f572633db47127095c9dd438303d2623a18d7aaf53cf6037a80e4382a39aa2"
+      ],
+      "source_published_kst": "2026-10-12T11:56+09:00",
+      "source_title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 11일(현지시간) 러시아와 우크라이나 간 에너지 휴전이 즉각 발효됐다고 발표했다. 이번 계약에 따라 미국과 국제시장에 즉각 공급되는 러시아산 경유는 30만t(톤)으로, 약 225만배럴에 해당하는 물량이다.",
+      "title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)"
     },
     "source_fact:d1afd21e5b99771be575ae1a": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
@@ -386388,6 +387377,26 @@
       "source_title": "올해 크레딧물 발행 24%↑…은행채 늘고 회사채는 줄고",
       "telegram_core_fact": "신한투자증권 김상인 연구원은 \"올해 은행채 발행은 시중은행채보다 특수은행채를 중심으로 늘어난 흐름\"이라며 \"정책 금융 확대와 기업 대출 수요 등에 따라 산업은행과 기업은행 등의 자금 조달 수요가 커진 영향이 반영된 것으로 보인다\"고 말했다.",
       "title": "올해 크레딧물 발행 24%↑…은행채 늘고 회사채는 줄고"
+    },
+    "source_fact:d8dc345ca2c0b4963573534e": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821471",
+      "source": "뉴시스",
+      "source_body_digest": "cf37c84777cd01a4a76522f57ae861f7ac452d0d9fe0f1f46a39d5ab33d83b8f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4cf862d2d3d2646589c7c1d640ef4ad71abc68406836b47cc8fe4f288c98d246",
+      "source_fact_keys": [
+        "source_fact:v1:57f215ac0bffaf5d0a41450b36aa634fbb50c61200ae0866c9a8c91c0138d64d",
+        "source_fact:v1:7039e59801d0a914b56e34d49260a203f9604d077a349dbead6150ec0736e731"
+      ],
+      "source_published_kst": "2026-10-12T09:18+09:00",
+      "source_title": "이형일 \"수출 견조하지만 대외 리스크 여전\"…3조 해외건설펀드 신설",
+      "telegram_core_fact": "\"우리 기업의 해외수주 지원을 위해 3조원 해외건설 신(新)전략펀드를 신설하고, 해외 진출 사업의 연관 지역경제가 활성화될 수 있도록 패키지형 수주(개발·건설·유지보수)를 확대하겠다\"고 밝혔다.",
+      "title": "이형일 \"수출 견조하지만 대외 리스크 여전\"…3조 해외건설펀드 신설"
     },
     "source_fact:d8de286210012751b3d0f9bb": {
       "first_seen_kst": "2026-10-07T17:47:45+09:00",
@@ -397212,6 +398221,39 @@
       "source_title": "중간선거 앞 기름값 급등에…트럼프, 대러 제재 풀고 경유 수입",
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 치솟는 경유 가격을 잡기 위해 러시아산 경유의 미국 수입 등을 허용하는 한시적인 대러 제재 완화 조치를 발표했다.",
       "title": "중간선거 앞 기름값 급등에…트럼프, 대러 제재 풀고 경유 수입"
+    },
+    "source_fact:e584d2e40bbeb0de46b3c559": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02997926645612264",
+      "source": "이데일리",
+      "source_body_digest": "5cf5e74cea35d85a285b556cac22d6b47a30fb54b8e00477faa755c2bb1f3b7b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:63d55768a04beda6c325278a0ab6ccdc3dd49732db8227aa52576282e7599b81",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:096120a801818b12e9c1d5d7df028b0479e1cc13dae423e3a494d7458394e4c2",
+        "source_fact:v1:0e15e4c1f48429df7a7c9df447c055d1b1ab70e1e743b303e8f96e65c81b0a17",
+        "source_fact:v1:160a2459671cd8c61334a41d4ab2df32a3ecbcc73ca55f83b05d17313e5fe370",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:28e5336815057f18cc61890de2bb2f5d1e5ddb54f6eafffe77d38deab97fa005",
+        "source_fact:v1:3e61b3768891b231eaaf9549d9410ca21a7145267335eb3682c6152d51275e43",
+        "source_fact:v1:4c9235c4a307abac4eee828f18762b1990d2172aa87bf08ea5acc1b8d6e84b3c",
+        "source_fact:v1:4d3e0b8ca57fbde1b71473bc4e83db91cb8f3265324f05f65176036f51e7f986",
+        "source_fact:v1:527321f05608eea8b0770809051c0652b99a458225b13f71f1dd7664c06567e2",
+        "source_fact:v1:5f3a0fc935e0e02cfe159e69e019271547ff839f9f74f6331acd1b5b9fa9663e",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:b94787225d00090e965511a188ccfd83017ed6959222bd0d30d02441a1f94572",
+        "source_fact:v1:d0f572633db47127095c9dd438303d2623a18d7aaf53cf6037a80e4382a39aa2"
+      ],
+      "source_published_kst": "2026-10-12T11:56+09:00",
+      "source_title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 11일(현지시간) 러시아와 우크라이나 간 에너지 휴전이 즉각 발효됐다고 발표했다. 이번 계약에 따라 미국과 국제시장에 즉각 공급되는 러시아산 경유는 30만t(톤)으로, 약 225만배럴에 해당하는 물량이다.",
+      "title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)"
     },
     "source_fact:e5856e318779dd149b0b41ae": {
       "first_seen_kst": "2026-10-10T15:50:47+09:00",
@@ -412394,6 +413436,39 @@
       "source_title": "[오늘의 증시]코스피, 낙폭 과대에 반등 시도 전망…6800선 회복 주목",
       "telegram_core_fact": "서 연구원은 \"AI 관련 콘퍼런스와 미국 소비자물가지수 발표, 본격적인 실적 시즌 등을 고려하면 추세적인 상승보다는 낙폭 과대에 따른 반등과 종목별 차별화가 진행될 것\"이라며 \"특히 반도체 업종의 변화와 외국인 수급이 중요하다\"고 짚었다.",
       "title": "[오늘의 증시]코스피, 낙폭 과대에 반등 시도 전망…6800선 회복 주목"
+    },
+    "source_fact:f95c3dcf6957823d08ada17d": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02997926645612264",
+      "source": "이데일리",
+      "source_body_digest": "5cf5e74cea35d85a285b556cac22d6b47a30fb54b8e00477faa755c2bb1f3b7b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:63d55768a04beda6c325278a0ab6ccdc3dd49732db8227aa52576282e7599b81",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:096120a801818b12e9c1d5d7df028b0479e1cc13dae423e3a494d7458394e4c2",
+        "source_fact:v1:0e15e4c1f48429df7a7c9df447c055d1b1ab70e1e743b303e8f96e65c81b0a17",
+        "source_fact:v1:160a2459671cd8c61334a41d4ab2df32a3ecbcc73ca55f83b05d17313e5fe370",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:28e5336815057f18cc61890de2bb2f5d1e5ddb54f6eafffe77d38deab97fa005",
+        "source_fact:v1:3e61b3768891b231eaaf9549d9410ca21a7145267335eb3682c6152d51275e43",
+        "source_fact:v1:4c9235c4a307abac4eee828f18762b1990d2172aa87bf08ea5acc1b8d6e84b3c",
+        "source_fact:v1:4d3e0b8ca57fbde1b71473bc4e83db91cb8f3265324f05f65176036f51e7f986",
+        "source_fact:v1:527321f05608eea8b0770809051c0652b99a458225b13f71f1dd7664c06567e2",
+        "source_fact:v1:5f3a0fc935e0e02cfe159e69e019271547ff839f9f74f6331acd1b5b9fa9663e",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:b94787225d00090e965511a188ccfd83017ed6959222bd0d30d02441a1f94572",
+        "source_fact:v1:d0f572633db47127095c9dd438303d2623a18d7aaf53cf6037a80e4382a39aa2"
+      ],
+      "source_published_kst": "2026-10-12T11:56+09:00",
+      "source_title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 11일(현지시간) 러시아와 우크라이나 간 에너지 휴전이 즉각 발효됐다고 발표했다. 이번 계약에 따라 미국과 국제시장에 즉각 공급되는 러시아산 경유는 30만t(톤)으로, 약 225만배럴에 해당하는 물량이다.",
+      "title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)"
     },
     "source_fact:f9620cfc47eefb8a92839449": {
       "first_seen_kst": "2026-10-06T19:58:43+09:00",
@@ -438816,6 +439891,23 @@
       "source_published_kst": "2026-10-06T10:23+09:00",
       "title": "“고성~거제 24.6km 연결”…쌍용건설, 8000억 규모 남부내륙철도 9공구 수주"
     },
+    "title:5512217a02aa7b0a7cf68e48": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012084600052",
+      "source": "연합뉴스",
+      "source_body_digest": "939511b783a54cea10aa735e72c08bc0fcf2f994c5b3efcc4f8c5cd4e2c8f8ea",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T11:40+09:00",
+      "source_title": "창원시, 조선기자재 생산기업 강림중공업과 860억 규모 투자협약 | 연합뉴스",
+      "telegram_core_fact": "경남 창원시는 12일 시청 접견실에서 조선기자재 생산기업 강림중공업과 860억원 규모 투자협약을 했다. 현재 성산구 웅남동에 공장을 둔 강림중공업은 증가하는 수주 물량과 신규 제품 양산에 대응하기 위해 창원국가산단에 선박용 보일러 등 생산공장을 신설하기로 했다.",
+      "title": "창원시, 조선기자재 생산기업 강림중공업과 860억 규모 투자협약 | 연합뉴스"
+    },
     "title:5512a73714361cedbae0238c": {
       "first_seen_kst": "2026-10-07T12:06:36+09:00",
       "lanes": {
@@ -442756,6 +443848,26 @@
       "source_title": "김동선, 독립경영 강화 속도전 … 한화M&S 지분 19% 공개매수",
       "telegram_core_fact": "전략총괄 사장 8000원·개매수에 성공하면 김 사장 1285억원, 지분율 5.81→24.81%를 매수했습니다.",
       "title": "김동선, 독립경영 강화 속도전 … 한화M&S 지분 19% 공개매수"
+    },
+    "title:6603a3b370d0bdd7bc7aea7f": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821471",
+      "source": "뉴시스",
+      "source_body_digest": "cf37c84777cd01a4a76522f57ae861f7ac452d0d9fe0f1f46a39d5ab33d83b8f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4cf862d2d3d2646589c7c1d640ef4ad71abc68406836b47cc8fe4f288c98d246",
+      "source_fact_keys": [
+        "source_fact:v1:57f215ac0bffaf5d0a41450b36aa634fbb50c61200ae0866c9a8c91c0138d64d",
+        "source_fact:v1:7039e59801d0a914b56e34d49260a203f9604d077a349dbead6150ec0736e731"
+      ],
+      "source_published_kst": "2026-10-12T09:18+09:00",
+      "source_title": "이형일 \"수출 견조하지만 대외 리스크 여전\"…3조 해외건설펀드 신설",
+      "telegram_core_fact": "\"우리 기업의 해외수주 지원을 위해 3조원 해외건설 신(新)전략펀드를 신설하고, 해외 진출 사업의 연관 지역경제가 활성화될 수 있도록 패키지형 수주(개발·건설·유지보수)를 확대하겠다\"고 밝혔다.",
+      "title": "이형일 \"수출 견조하지만 대외 리스크 여전\"…3조 해외건설펀드 신설"
     },
     "title:6647335082be135a42defba1": {
       "first_seen_kst": "2026-10-11T18:15:28+09:00",
@@ -448297,6 +449409,26 @@
       "telegram_core_fact": "한국토지주택공사(LH)가 향후 3년간 서울 25개 자치구에 매입임대주택 2만가구 이상을 공급한다.",
       "title": "LH \"향후 3년간 서울 25개 자치구에 2만가구 이상 공급\" | 연합뉴스"
     },
+    "title:7d63be88841cfead0ba81252": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822003",
+      "source": "뉴시스",
+      "source_body_digest": "e1165a949d4883a8321426da1160b2612b3c3452b25f22d96cd2943a67d4444d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:71d7b0fb38bb5f3d4addbd0eb932bc76deabe01a988cea3ede7a3acc2644a3dc",
+      "source_fact_keys": [
+        "source_fact:v1:3b94a3e3c12cb8faa2bd04702e72f52057177cce62e5cdb1264a75fa8cfb3433",
+        "source_fact:v1:8165ce12542c0c905ff88109e7ee69cd59a210f05486a786017258f064da0ce8"
+      ],
+      "source_published_kst": "2026-10-12T11:47+09:00",
+      "source_title": "구글코리아, 1540억원대 법인세 소송 최종 승소",
+      "telegram_core_fact": "반면 과세당국은 해당 소득이 국내 과세 대상인 사용료 소득에 해당한다고 판단해 법인세를 부과했고, 구글코리아는 이에 불복해 소송을 제기했다.",
+      "title": "구글코리아, 1540억원대 법인세 소송 최종 승소"
+    },
     "title:7d6db47e9ebbc84ab7851adc": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -448568,6 +449700,27 @@
       "source_title": "환율·채권, 환율 1300원 초반 추가하락 가능성",
       "telegram_core_fact": "전문가들은 미국 물가 지표에 따라 이번주 환율이 1300원대 초반까지 하락할 가능성을 열어뒀다.",
       "title": "환율·채권, 환율 1300원 초반 추가하락 가능성"
+    },
+    "title:7e4ce6dd49473e41dbc9fe6f": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03106166645612264",
+      "source": "이데일리",
+      "source_body_digest": "9a2532841fa012e858d89f73876e8d486a856ffb9814396711ed0cac754fe9e0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d83c54bb357ea2864ee6c9114452ec8e134869500ba7fd861693a37229e948df",
+      "source_fact_keys": [
+        "source_fact:v1:24ce6588322b47e77dc43ed20597c745c407764858e0e897aff82d720e28a59c",
+        "source_fact:v1:33aeb5964abc0417f7d2446603577adda82c8ea45f411f70323af09f8f30da11",
+        "source_fact:v1:43a9b6339b0edfd66fee922df676d741f27fd3abff296b09a206d7127fc95a4c"
+      ],
+      "source_published_kst": "2026-10-12T12:56+09:00",
+      "source_title": "연천군-한전, 산업단지 개발 전력 인프라 적기 구축 '맞손'",
+      "telegram_core_fact": "협약에 따라 연천군과 한국전력공사는 급증하는 전력수요에 선제적으로 대응하고 안정적인 전력공급 기반을 마련하기 위해 상호 협력체계를 구축해 개발사업 추진 시 전력공급설비 구축 방안을 사전에 협의하고 변전소 부지 확보와 인허가, 주민 수용성 제고를 위해 공동 노력하기로 뜻을 모았다.",
+      "title": "연천군-한전, 산업단지 개발 전력 인프라 적기 구축 '맞손'"
     },
     "title:7ea10613ea08abee065664c0": {
       "first_seen_kst": "2026-10-08T07:27:34+09:00",
@@ -461676,6 +462829,39 @@
       "telegram_core_fact": "향후 글로벌 AI 인프라 경쟁에서는 중국의 대규모 데이터센터 건설 계획이 실제 가동으로 얼마나 이어지는지와 미국의 전력망 제약이 어떻게 작용하는지가 주요 변수로 남을 전망이다.",
       "title": "중국, 남아도는 전력으로 AI 승부…데이터센터 건설 가속"
     },
+    "title:b17abd1046cb5946b69ee353": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02997926645612264",
+      "source": "이데일리",
+      "source_body_digest": "5cf5e74cea35d85a285b556cac22d6b47a30fb54b8e00477faa755c2bb1f3b7b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:63d55768a04beda6c325278a0ab6ccdc3dd49732db8227aa52576282e7599b81",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:096120a801818b12e9c1d5d7df028b0479e1cc13dae423e3a494d7458394e4c2",
+        "source_fact:v1:0e15e4c1f48429df7a7c9df447c055d1b1ab70e1e743b303e8f96e65c81b0a17",
+        "source_fact:v1:160a2459671cd8c61334a41d4ab2df32a3ecbcc73ca55f83b05d17313e5fe370",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:28e5336815057f18cc61890de2bb2f5d1e5ddb54f6eafffe77d38deab97fa005",
+        "source_fact:v1:3e61b3768891b231eaaf9549d9410ca21a7145267335eb3682c6152d51275e43",
+        "source_fact:v1:4c9235c4a307abac4eee828f18762b1990d2172aa87bf08ea5acc1b8d6e84b3c",
+        "source_fact:v1:4d3e0b8ca57fbde1b71473bc4e83db91cb8f3265324f05f65176036f51e7f986",
+        "source_fact:v1:527321f05608eea8b0770809051c0652b99a458225b13f71f1dd7664c06567e2",
+        "source_fact:v1:5f3a0fc935e0e02cfe159e69e019271547ff839f9f74f6331acd1b5b9fa9663e",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:b94787225d00090e965511a188ccfd83017ed6959222bd0d30d02441a1f94572",
+        "source_fact:v1:d0f572633db47127095c9dd438303d2623a18d7aaf53cf6037a80e4382a39aa2"
+      ],
+      "source_published_kst": "2026-10-12T11:56+09:00",
+      "source_title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 11일(현지시간) 러시아와 우크라이나 간 에너지 휴전이 즉각 발효됐다고 발표했다. 이번 계약에 따라 미국과 국제시장에 즉각 공급되는 러시아산 경유는 30만t(톤)으로, 약 225만배럴에 해당하는 물량이다.",
+      "title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)"
+    },
     "title:b17bb554c599ae93285e6e58": {
       "first_seen_kst": "2026-10-06T22:37:02+09:00",
       "lanes": {
@@ -463465,6 +464651,25 @@
       "source_published_kst": "2026-10-04T15:39+09:00",
       "title": "가상자산 업계도 금융권 해킹 확산에 '촉각'…보안태세 재정비"
     },
+    "title:ba05f08e3374ad4e7d488919": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821932",
+      "source": "뉴시스",
+      "source_body_digest": "4f9dd2f4b02bede35edf51b896a6104595b96bd0f064499bd6af83da978d6437",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:604060a6ea4cc63298d60c0e08941269e82d20c48512644bbf867d52f3ae40da",
+      "source_fact_keys": [
+        "source_fact:v1:e75620dd5cb3b8e2c3b15f4b574866920efc01e0fbc8400038d99f40c2b9e79f"
+      ],
+      "source_published_kst": "2026-10-12T11:31+09:00",
+      "source_title": "케이엠제약, 생산·물류·영업 등 주요 직군 채용",
+      "telegram_core_fact": "케이엠제약 관계자는 \"이번 채용은 생산과 물류, 영업 등 주요 직군의 인력을 확보해 사업 확대에 대응하기 위한 것\"이라며 \"각 분야의 전문 인력을 통해 생산 안정성과 고객 대응력을 높여나갈 계획\"이라고 말했다.",
+      "title": "케이엠제약, 생산·물류·영업 등 주요 직군 채용"
+    },
     "title:ba061a62e473e8c8da5fb3f7": {
       "first_seen_kst": "2026-10-04T11:57:24+09:00",
       "lanes": {
@@ -464428,6 +465633,39 @@
       "source_title": "팬 아메리칸 실버, 지니스 이사 10월 31일 퇴임..이퀴녹스 의장직 전념",
       "telegram_core_fact": "지니스 이사는 2019년 팬 아메리칸이 테이호 리소시스(Tahoe Resources)를 인수한 이후 이사회에 합류해 7년 가까이 활동했다.",
       "title": "팬 아메리칸 실버, 지니스 이사 10월 31일 퇴임..이퀴녹스 의장직 전념"
+    },
+    "title:bdd0b93d9be51a37208ebb19": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02997926645612264",
+      "source": "이데일리",
+      "source_body_digest": "5cf5e74cea35d85a285b556cac22d6b47a30fb54b8e00477faa755c2bb1f3b7b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:63d55768a04beda6c325278a0ab6ccdc3dd49732db8227aa52576282e7599b81",
+      "source_fact_keys": [
+        "source_fact:v1:050d73378988dbdf1c68315903635a2dd3e671ef9b08c7d8790db9a197d48af3",
+        "source_fact:v1:096120a801818b12e9c1d5d7df028b0479e1cc13dae423e3a494d7458394e4c2",
+        "source_fact:v1:0e15e4c1f48429df7a7c9df447c055d1b1ab70e1e743b303e8f96e65c81b0a17",
+        "source_fact:v1:160a2459671cd8c61334a41d4ab2df32a3ecbcc73ca55f83b05d17313e5fe370",
+        "source_fact:v1:2485fab166c1df615ced1ae73f9e71304159830dd7c6ca639a3dd2b83e34ce7c",
+        "source_fact:v1:28e5336815057f18cc61890de2bb2f5d1e5ddb54f6eafffe77d38deab97fa005",
+        "source_fact:v1:3e61b3768891b231eaaf9549d9410ca21a7145267335eb3682c6152d51275e43",
+        "source_fact:v1:4c9235c4a307abac4eee828f18762b1990d2172aa87bf08ea5acc1b8d6e84b3c",
+        "source_fact:v1:4d3e0b8ca57fbde1b71473bc4e83db91cb8f3265324f05f65176036f51e7f986",
+        "source_fact:v1:527321f05608eea8b0770809051c0652b99a458225b13f71f1dd7664c06567e2",
+        "source_fact:v1:5f3a0fc935e0e02cfe159e69e019271547ff839f9f74f6331acd1b5b9fa9663e",
+        "source_fact:v1:86a09494b455d8ba59711fde47b613925abadb9740ec3240d9fb2252a8671f27",
+        "source_fact:v1:a750e79bb39ebfa6b48ae2159c0e7dc55c4c4e5401e52248c7429e7836053826",
+        "source_fact:v1:b94787225d00090e965511a188ccfd83017ed6959222bd0d30d02441a1f94572",
+        "source_fact:v1:d0f572633db47127095c9dd438303d2623a18d7aaf53cf6037a80e4382a39aa2"
+      ],
+      "source_published_kst": "2026-10-12T11:56+09:00",
+      "source_title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 11일(현지시간) 러시아와 우크라이나 간 에너지 휴전이 즉각 발효됐다고 발표했다. 이번 계약에 따라 미국과 국제시장에 즉각 공급되는 러시아산 경유는 30만t(톤)으로, 약 225만배럴에 해당하는 물량이다.",
+      "title": "트럼프 \"러·우 에너지 휴전\" 일방 발표…러 공격 여전(종합)"
     },
     "title:bdecb50acb85d4b99c0ce83b": {
       "first_seen_kst": "2026-10-06T20:54:05+09:00",
@@ -472191,6 +473429,23 @@
       "link": "https://www.edaily.co.kr/news/read?newsid=03234086645581432&parentid=04332886645581432&gubun=E",
       "source": "이데일리",
       "title": "李 “레버리지 ETF 부족했다...도입 절차 아직 파악 못해”"
+    },
+    "title:dc05aa4b95c6767e886348a9": {
+      "first_seen_kst": "2026-10-12T13:18:48+09:00",
+      "lanes": {
+        "live": "2026-10-12T13:18:48+09:00"
+      },
+      "last_seen_kst": "2026-10-12T13:18:48+09:00",
+      "link": "https://www.etnews.com/20261012000160",
+      "source": "전자신문",
+      "source_body_digest": "c7f898ec2667fb0299b035f7d90878624da3a3b79c2679a729ce1ea1ef29519d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T11:25+09:00",
+      "source_title": "[2026 국감]주병기 “반복 담합 사업자 영업정지 추진…전속고발제 개편”",
+      "telegram_core_fact": "담합 제재를 강화하는 동시에 공정위에 집중된 법 집행 권한을 분산하는 구상이다.",
+      "title": "[2026 국감]주병기 “반복 담합 사업자 영업정지 추진…전속고발제 개편”"
     },
     "title:dc4f65a3615fb962a7f61782": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
@@ -480823,5 +482078,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-12T12:56:34+09:00"
+  "updated_at_kst": "2026-10-12T13:18:48+09:00"
 }
