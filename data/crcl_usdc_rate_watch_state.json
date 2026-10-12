@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-12T14:57:36+09:00",
+  "updated_at_kst": "2026-10-13T00:24:43+09:00",
   "circle": {
     "date": "2026-10-08",
     "circulation_usd_b": 73.0,
@@ -50,35 +50,35 @@
     "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
   },
   "crcl": {
-    "date": "2026-10-09",
-    "close": 84.51,
-    "prev_date": "2026-10-08",
-    "prev_close": 80.84,
-    "daily_pct": 4.54,
+    "date": "2026-10-12",
+    "close": 84.31,
+    "prev_date": "2026-10-09",
+    "prev_close": 84.51,
+    "daily_pct": -0.24,
     "source": "ChartExchange historical",
     "source_url": "https://chartexchange.com/symbol/nyse-crcl/historical/",
     "crosscheck_source": "Yahoo Finance chart",
-    "crosscheck_date": "2026-10-09",
-    "crosscheck_close": 84.51000213623047,
-    "crosscheck_daily_pct": 4.54,
+    "crosscheck_date": "2026-10-12",
+    "crosscheck_close": 84.30999755859375,
+    "crosscheck_daily_pct": -0.24,
     "crosscheck_gap_pct": 0.0,
     "crosscheck_status": "confirmed"
   },
   "tbx": {
-    "date": "2026-10-09",
-    "close": 29.81999969482422,
-    "prev_date": "2026-10-08",
-    "prev_close": 29.739999771118164,
-    "daily_pct": 0.27
+    "date": "2026-10-12",
+    "close": 29.822999954223633,
+    "prev_date": "2026-10-09",
+    "prev_close": 29.81999969482422,
+    "daily_pct": 0.01
   },
   "fx": {
-    "rate": 1339.2,
-    "date": "2026-10-08",
+    "rate": 1341.49,
+    "date": "2026-10-09",
     "requested_date": "2026-10-09",
-    "source": "한국은행 ECOS 원/미국달러(매매기준율)",
-    "source_url": "https://ecos.bok.or.kr/",
-    "official": true,
-    "crosscheck": "Yahoo Finance 1,342.99원, 차이 0.28%"
+    "source": "ECB/Frankfurter 일일 기준환율",
+    "source_url": "https://api.frankfurter.dev/v2/rates?base=USD&quotes=KRW&providers=ECB&date=2026-10-09",
+    "crosscheck": "단일 공식 API · 독립 교차검증 미완료",
+    "official": true
   },
   "crcl_last_alerted_close_date": "2026-10-09",
   "correction_pending": false,
