@@ -107,11 +107,14 @@ def _source_worker(connection, watch, blocked, gate_lock):
                 failed = [entry for entry in trace if entry[3]]
                 if trace and len(failed) == len(trace):
                     error = error or 'all source HTTP requests failed'
-                # Axios RSS and World are additive, not equivalent fallback routes;
-                # the legacy helpers swallow both transport and XML parse errors.
+                # Axios direct RSS is required and must be parseable. A retired,
+                # undated World HTML scrape is not a live monitoring requirement.
+                # The legacy RSS helper swallows transport/XML exceptions.
                 if query == '__AXIOS_DIRECT_WAR_PEACE__':
                     if failed:
-                        error = error or 'an additive Axios source failed'
+                        error = error or 'Axios direct RSS source failed'
+                    if not any(url == 'https://api.axios.com/feed/' for url, _, _, _ in trace):
+                        error = error or 'Axios RSS source was not requested'
                     for url, _, raw, failure in trace:
                         if url == 'https://api.axios.com/feed/' and not failure:
                             try:
