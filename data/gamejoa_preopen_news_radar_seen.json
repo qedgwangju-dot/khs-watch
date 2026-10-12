@@ -5655,6 +5655,25 @@
       "telegram_core_fact": "현재 복수의 부동산 자문사를 대상으로 매각 주관사 선정 절차를 진행 중인 초기 단계로, 입찰제안요청서(RFP)는 아직 배포하지 않았다.",
       "title": "미래운용, '스테이트타워 남산' 매각 검토…KIC 등 입주"
     },
+    "core:2a7289f6917fdf3581408289": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822855",
+      "source": "뉴시스",
+      "source_body_digest": "894d8bd5a26c867ed6c9c19c1306615678c8ee471ad8122322dea41935d03d8a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3d0cc12485f130c4f15e6fd95bff09358477412b4ebbd23f68ed8179299db9a4",
+      "source_fact_keys": [
+        "source_fact:v1:396d7f493cfb1d9edffe9c666dd5c8c90981e7d4aec6525c79545511bcc58443"
+      ],
+      "source_published_kst": "2026-10-12T20:18+09:00",
+      "source_title": "쿠팡, 공정위 조사 거부·개인정보 배상안 불수용…국감서 집중 추궁(종합)",
+      "telegram_core_fact": "공정위 조사에 응하지 않은 이유와 피해자 배상조정안을 수용하지 않은 배경을 둘러싸고 책임론이 불거졌고, 국회에서는 조사 거부에 대한 제재 강화와 피해 구제 실효성을 높이기 위한 입법 필요성까지 제기됐다.",
+      "title": "쿠팡, 공정위 조사 거부·개인정보 배상안 불수용…국감서 집중 추궁(종합)"
+    },
     "core:2a7dec15aedb9ea200340d4f": {
       "first_seen_kst": "2026-10-12T11:51:53+09:00",
       "lanes": {
@@ -5710,6 +5729,29 @@
       "source_title": "오션팔, NEAR 인프라 업체 패스트니어 인수 완료",
       "telegram_core_fact": "오션팔(SVRN)이 NEAR 프로토콜 네트워크 접속·데이터 인프라 업체 패스트니어(FastNEAR)를 인수해 완전 자회사로 편입했다고 9일 발표했다.",
       "title": "오션팔, NEAR 인프라 업체 패스트니어 인수 완료"
+    },
+    "core:2b218972e90a50d81bf15b6f": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03325926645612264",
+      "source": "이데일리",
+      "source_body_digest": "c207a1effaa8cbaf72ee589e2dcf1b8796f5aef815a0648a5c911fb215f1a071",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:96b9e00bf9fa0af8872eba0e89daa11046ddcb7d6fda15bf0204382e93343063",
+      "source_fact_keys": [
+        "source_fact:v1:0fbb4574910ac8e45467190d575c0451acaeca51376aac606020dbbd79577f6b",
+        "source_fact:v1:600998d56aa0a70ba39eb5547e0d46b4093848c2d75e2229064aeec9fd37f207",
+        "source_fact:v1:9dc2efe60df19c139185bf222c82af773e975f51c4594cdfb5e53e7e3c5148e0",
+        "source_fact:v1:f8e2338f8b70e693aa49a056267f3ad6c093564422d355c4a867b4540b9c570c",
+        "source_fact:v1:fad2f76a8b083cf4ac02df154cd2cfcbf89435eac270b171aba1279ca8a40f75"
+      ],
+      "source_published_kst": "2026-10-12T14:39+09:00",
+      "source_title": "'이란식 확전'에 심장부 뚫린 사우디…미국 참전 기로(종합)",
+      "telegram_core_fact": "후티가 ‘이란식 확전’(경제 급소 타격 전략)으로 사우디 수도 리야드의 공항을 일주일 새 네 차례 공격해 18명이 숨지고, 미국인 사망자까지 나오면서다. 올해 3.6% 역성장이 예상되는 사우디로선 이달 말 미래투자이니셔티브(FII)를 앞두고 악재가 겹쳤다.",
+      "title": "'이란식 확전'에 심장부 뚫린 사우디…미국 참전 기로(종합)"
     },
     "core:2b2774459b1052970ec1e6b4": {
       "first_seen_kst": "2026-10-11T09:50:45+09:00",
@@ -11593,6 +11635,23 @@
       "telegram_core_fact": "신 지사는 이날 중국의 대표적인 이차전지 양극재 기업인 닝보 롱바이와 4300억원 투자유치 업무협약을 체결했다. 닝보 롱바이는 충주 외국인투자지역에 오는 2030년까지 연면적 2만6000㎡ 공장을 증설하고 100명을 신규 고용할 계획이다.",
       "title": "투자유치에 판로개척까지…찾아가는 신용한 지사"
     },
+    "core:5bc383e9b4809220d9dd81d3": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173035",
+      "source": "매일경제",
+      "source_body_digest": "0a151e8566745f381ff79ad35f2ed0966f6c944339adeb3641187f088f53405a",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T16:31+09:00",
+      "source_title": "[구민정의 크립토포커스] 네이버·두나무 합병 다시 안갯속…디지털자산기본법 촉각",
+      "telegram_core_fact": "합병이 완료되면 네이버파이낸셜이 두나무 지분 100%를 보유하게 되기 때문에, 해당 규제가 도입될 경우 네이버파이낸셜이 두나무 지분을 대거 매각해야 하는 등 지배구조에도 변동이 일어날 것으로 보입니다.",
+      "title": "[구민정의 크립토포커스] 네이버·두나무 합병 다시 안갯속…디지털자산기본법 촉각"
+    },
     "core:5bc7d54ca2fcd9e69557a5e7": {
       "first_seen_kst": "2026-10-08T08:56:19+09:00",
       "lanes": {
@@ -15917,6 +15976,26 @@
       "telegram_core_fact": "권광조 하이트진로 프리미엄권역장은 \"기린은 그동안 아시아의 수입 파트너사에 생산 라이선스를 제공한 사례가 없었지만, 일본뿐만 아니라 해외 전반적으로 공급이 부족한 상황\"이라며 \"하이트진로의 생산 기술력을 충분히 신뢰할 수 있다고 판단해 기술협약 및 라이선스 계약이 체결됐다\"고 설명했다.",
       "title": "[현장]하이트진로 전주공장서 日기린 이치방 시보리 만든다…\"아시아 최초\""
     },
+    "core:806c7feafb9adef29a833048": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04647766645612264",
+      "source": "이데일리",
+      "source_body_digest": "ac63283d655e5b48f7bbfda71c8a51532442d7a1506471376dd0a3cb4a1a3b08",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ddc12fab2fd69b289e2793a679fa16fc29ce84c57b4850a619762616158245af",
+      "source_fact_keys": [
+        "source_fact:v1:7f4d1b413442ad92e575b469de17e8cdff5c84b125fbe6bdb4ab30b6ed3f3af6",
+        "source_fact:v1:f527d41eb4681bd59e7cba720e558a4402d6f1f005570dad838cb3bedc38e527"
+      ],
+      "source_published_kst": "2026-10-12T19:40+09:00",
+      "source_title": "[美특징주]아마존, AI 스타트업 디카트 인수 협상…개장전 ↑",
+      "telegram_core_fact": "아마존닷컴(AMZN)이 인공지능(AI) 스타트업 디카트 AI(Decart AI)를 약 70억달러에 인수하는 방안을 논의하고 있다.",
+      "title": "[美특징주]아마존, AI 스타트업 디카트 인수 협상…개장전 ↑"
+    },
     "core:80878c8b916cfc1f9532b9cc": {
       "first_seen_kst": "2026-10-08T05:44:23+09:00",
       "lanes": {
@@ -19083,6 +19162,25 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-07T15:25+09:00",
       "title": "두나무ㆍ네이버파이낸셜 주식교환 세 번째 연기⋯내년 3월 마무리"
+    },
+    "core:9b36f0cc788c2d524fc096ee": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173121",
+      "source": "매일경제",
+      "source_body_digest": "c62904473ce2b69737b89961b675b8bedca36ddf4ec76fa47a4199833ae96c35",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d172c8e79f6fce8b612293ea3e0944672a3a6845ec471104923facfe613e2eb9",
+      "source_fact_keys": [
+        "source_fact:v1:0ff373380018530b45e5f2e3551a620c68478a34dd17e676e796e6d878531157"
+      ],
+      "source_published_kst": "2026-10-12T18:27+09:00",
+      "source_title": "'오를땐 빨리, 내릴땐 늦게' 정유 4사",
+      "telegram_core_fact": "SK에너지, GS칼텍스, 에쓰오일, HD현대오일뱅크 등 정유 4사가 '전쟁으로 국제유가가 급등한 틈을 타 돈벌이를 한 것 아니냐'는 지적에 고개를 숙였다.",
+      "title": "'오를땐 빨리, 내릴땐 늦게' 정유 4사"
     },
     "core:9b38c91c13fd90ff2962bc90": {
       "first_seen_kst": "2026-10-10T12:36:00+09:00",
@@ -29504,6 +29602,28 @@
       "telegram_core_fact": "시장은 이를 사실상의 본계약 불발로 해석해 펩트론 주가는 장 마감을 앞두고 애프터마켓에서 28% 넘게 급락했다.",
       "title": "펩트론 \"릴리 본계약 없이 기술평가 종료\"…애프터마켓서 28% 급락"
     },
+    "core:ef649e3f1bbae5588be453c5": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634409",
+      "source": "이투데이",
+      "source_body_digest": "effb7230a30486cca8a75a2e35328a8c2c1b5bf591bbc198cada41174d5312d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b57eec371d3812217d6ac02214786b76477dec082785cf544fd3e8c8ebf7ec4e",
+      "source_fact_keys": [
+        "source_fact:v1:000747a59a0ee5095f529cf2218d0347599a5254131f0e947c0ba32a5173afaa",
+        "source_fact:v1:147efa9bbf91618f56e604accdfeba2a72ce79c308e9940b895a1285c67ce415",
+        "source_fact:v1:ad279ff7532bdd20042b9dc0c637aa0f6eb73def79cea1a342d74fe79e356a20",
+        "source_fact:v1:fd5dfb1bc017e891391388dbcfff40e4ae07aa1f1c15f2016d984862af2cf9d4"
+      ],
+      "source_published_kst": "2026-10-12T08:06+09:00",
+      "source_title": "한울반도체, 日 MLCC 제조사 AI 외관검사 성능개선 수주…해외 고객 확대",
+      "telegram_core_fact": "한울반도체가 일본 소재 글로벌 적층세라믹콘덴서(MLCC) 제조사로부터 외관검사설비의 AI 성능 개선 사업을 수주했다.",
+      "title": "한울반도체, 日 MLCC 제조사 AI 외관검사 성능개선 수주…해외 고객 확대"
+    },
     "core:f04dde79b11b42ce0c6f4b28": {
       "first_seen_kst": "2026-10-08T02:12:43+09:00",
       "lanes": {
@@ -31912,6 +32032,28 @@
       "telegram_core_fact": "블룸버그(Bloomberg)에 따르면 앤트로픽은 이르면 11월 중순 기업공개(IPO)를 추진한다.",
       "title": "[데스크시각] 앤트로픽 지분 너머 SKT의 AI 성적표"
     },
+    "event:07a210cdc655ba0af00ecfa2": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634409",
+      "source": "이투데이",
+      "source_body_digest": "effb7230a30486cca8a75a2e35328a8c2c1b5bf591bbc198cada41174d5312d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b57eec371d3812217d6ac02214786b76477dec082785cf544fd3e8c8ebf7ec4e",
+      "source_fact_keys": [
+        "source_fact:v1:000747a59a0ee5095f529cf2218d0347599a5254131f0e947c0ba32a5173afaa",
+        "source_fact:v1:147efa9bbf91618f56e604accdfeba2a72ce79c308e9940b895a1285c67ce415",
+        "source_fact:v1:ad279ff7532bdd20042b9dc0c637aa0f6eb73def79cea1a342d74fe79e356a20",
+        "source_fact:v1:fd5dfb1bc017e891391388dbcfff40e4ae07aa1f1c15f2016d984862af2cf9d4"
+      ],
+      "source_published_kst": "2026-10-12T08:06+09:00",
+      "source_title": "한울반도체, 日 MLCC 제조사 AI 외관검사 성능개선 수주…해외 고객 확대",
+      "telegram_core_fact": "한울반도체가 일본 소재 글로벌 적층세라믹콘덴서(MLCC) 제조사로부터 외관검사설비의 AI 성능 개선 사업을 수주했다.",
+      "title": "한울반도체, 日 MLCC 제조사 AI 외관검사 성능개선 수주…해외 고객 확대"
+    },
     "event:07fd16f375c8f11b6ec651a1": {
       "first_seen_kst": "2026-09-25T10:44:06+09:00",
       "lanes": {
@@ -33274,23 +33416,25 @@
     "event:242c04e115c71f36e3e5a541": {
       "first_seen_kst": "2026-10-12T01:34:33+09:00",
       "lanes": {
-        "live": "2026-10-12T20:59:01+09:00"
+        "live": "2026-10-12T21:44:29+09:00"
       },
-      "last_seen_kst": "2026-10-12T20:59:01+09:00",
-      "link": "https://www.newsis.com/view/NISX20261012_0003822803",
-      "source": "뉴시스",
-      "source_body_digest": "08b26a1a96f81df214556893cb5f647a85468752ed556508e8cd8fd1802edb47",
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03325926645612264",
+      "source": "이데일리",
+      "source_body_digest": "c207a1effaa8cbaf72ee589e2dcf1b8796f5aef815a0648a5c911fb215f1a071",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:27d6889a8b5ac2fdaa64784691b473fcade4cd8918268c9c4455b3d363b98ae0",
+      "source_fact_identity": "source_facts:v1:96b9e00bf9fa0af8872eba0e89daa11046ddcb7d6fda15bf0204382e93343063",
       "source_fact_keys": [
-        "source_fact:v1:bc055ee19d0a1d4ef034cdff89ee166cf0b29aa4ab98be9db4e3e28d0fb6282a",
-        "source_fact:v1:d66970c2258fae45cfeac893d247c5d3c4504bef7558291253a1ba8dd7792cca",
-        "source_fact:v1:f0cf9fcf1f69d69b8876987706074fcdaf14ffaa3b1fe9e86fa2addc9aad3673"
+        "source_fact:v1:0fbb4574910ac8e45467190d575c0451acaeca51376aac606020dbbd79577f6b",
+        "source_fact:v1:600998d56aa0a70ba39eb5547e0d46b4093848c2d75e2229064aeec9fd37f207",
+        "source_fact:v1:9dc2efe60df19c139185bf222c82af773e975f51c4594cdfb5e53e7e3c5148e0",
+        "source_fact:v1:f8e2338f8b70e693aa49a056267f3ad6c093564422d355c4a867b4540b9c570c",
+        "source_fact:v1:fad2f76a8b083cf4ac02df154cd2cfcbf89435eac270b171aba1279ca8a40f75"
       ],
-      "source_published_kst": "2026-10-12T18:36+09:00",
-      "source_title": "사우디, 후티 반군 공격 잇따랐던 수도 국제공항 이틀째 폐쇄",
-      "telegram_core_fact": "홍해 변의 제다에 이어 사우디 두 번째 크기 국제공항인 수도 내 칼리드국왕 공항은 앞서 10일(토) 후티 반군의 미사일 공격을 당해 13명이 죽고 300여 명이 다쳤다. 사우디아라비아 민항 당국은 12일 낮 수도 리야드 소재 칼리드국왕 국제공항을 계속 폐쇄한다고 발표했다.",
-      "title": "사우디, 후티 반군 공격 잇따랐던 수도 국제공항 이틀째 폐쇄"
+      "source_published_kst": "2026-10-12T14:39+09:00",
+      "source_title": "'이란식 확전'에 심장부 뚫린 사우디…미국 참전 기로(종합)",
+      "telegram_core_fact": "후티가 ‘이란식 확전’(경제 급소 타격 전략)으로 사우디 수도 리야드의 공항을 일주일 새 네 차례 공격해 18명이 숨지고, 미국인 사망자까지 나오면서다. 올해 3.6% 역성장이 예상되는 사우디로선 이달 말 미래투자이니셔티브(FII)를 앞두고 악재가 겹쳤다.",
+      "title": "'이란식 확전'에 심장부 뚫린 사우디…미국 참전 기로(종합)"
     },
     "event:243b9268c0c661c2e567eb0a": {
       "first_seen_kst": "2026-09-30T11:15:27+09:00",
@@ -56879,6 +57023,28 @@
       "telegram_core_fact": "그레이스케일은 지난 8월 지캐시 트러스트를 현물 ETF로 전환했고, 21셰어스는 유럽 최초의 지캐시 상장지수상품(ETP)을 출시했다.",
       "title": "1년간 810% 오른 지캐시…윙클보스 형제, 현물 ETF 신청"
     },
+    "fact:4e4a6de87497f4126a86cfbf": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634409",
+      "source": "이투데이",
+      "source_body_digest": "effb7230a30486cca8a75a2e35328a8c2c1b5bf591bbc198cada41174d5312d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b57eec371d3812217d6ac02214786b76477dec082785cf544fd3e8c8ebf7ec4e",
+      "source_fact_keys": [
+        "source_fact:v1:000747a59a0ee5095f529cf2218d0347599a5254131f0e947c0ba32a5173afaa",
+        "source_fact:v1:147efa9bbf91618f56e604accdfeba2a72ce79c308e9940b895a1285c67ce415",
+        "source_fact:v1:ad279ff7532bdd20042b9dc0c637aa0f6eb73def79cea1a342d74fe79e356a20",
+        "source_fact:v1:fd5dfb1bc017e891391388dbcfff40e4ae07aa1f1c15f2016d984862af2cf9d4"
+      ],
+      "source_published_kst": "2026-10-12T08:06+09:00",
+      "source_title": "한울반도체, 日 MLCC 제조사 AI 외관검사 성능개선 수주…해외 고객 확대",
+      "telegram_core_fact": "한울반도체가 일본 소재 글로벌 적층세라믹콘덴서(MLCC) 제조사로부터 외관검사설비의 AI 성능 개선 사업을 수주했다.",
+      "title": "한울반도체, 日 MLCC 제조사 AI 외관검사 성능개선 수주…해외 고객 확대"
+    },
     "fact:4e676bf6a7538b5366b5cddd": {
       "first_seen_kst": "2026-10-08T01:58:01+09:00",
       "lanes": {
@@ -59635,6 +59801,26 @@
       "source_title": "\"지금은 종목 투자 안 통합니다\"…최고민수 조언은?[부꾸미]",
       "telegram_core_fact": "미국과 이란의 전쟁, 국제 유가 상승, 고금리 상황 등을 고려할 때 개별 종목 투자보다는 ETF(상장지수펀드) 투자가 유리하다는 분석이 나왔다.",
       "title": "\"지금은 종목 투자 안 통합니다\"…최고민수 조언은?[부꾸미]"
+    },
+    "fact:5f6c5a330c4b3f60d60a33b4": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04647766645612264",
+      "source": "이데일리",
+      "source_body_digest": "ac63283d655e5b48f7bbfda71c8a51532442d7a1506471376dd0a3cb4a1a3b08",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ddc12fab2fd69b289e2793a679fa16fc29ce84c57b4850a619762616158245af",
+      "source_fact_keys": [
+        "source_fact:v1:7f4d1b413442ad92e575b469de17e8cdff5c84b125fbe6bdb4ab30b6ed3f3af6",
+        "source_fact:v1:f527d41eb4681bd59e7cba720e558a4402d6f1f005570dad838cb3bedc38e527"
+      ],
+      "source_published_kst": "2026-10-12T19:40+09:00",
+      "source_title": "[美특징주]아마존, AI 스타트업 디카트 인수 협상…개장전 ↑",
+      "telegram_core_fact": "아마존닷컴(AMZN)이 인공지능(AI) 스타트업 디카트 AI(Decart AI)를 약 70억달러에 인수하는 방안을 논의하고 있다.",
+      "title": "[美특징주]아마존, AI 스타트업 디카트 인수 협상…개장전 ↑"
     },
     "fact:5f6dfaf6a3d3f53eff8a55e0": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -74693,6 +74879,25 @@
       "source_published_kst": "2026-10-05T20:03+09:00",
       "title": "인스메드, CFO 10월 30일 사임…연간 매출 가이던스 유지"
     },
+    "fact:b05a061948a343da6d049c9c": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173121",
+      "source": "매일경제",
+      "source_body_digest": "c62904473ce2b69737b89961b675b8bedca36ddf4ec76fa47a4199833ae96c35",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d172c8e79f6fce8b612293ea3e0944672a3a6845ec471104923facfe613e2eb9",
+      "source_fact_keys": [
+        "source_fact:v1:0ff373380018530b45e5f2e3551a620c68478a34dd17e676e796e6d878531157"
+      ],
+      "source_published_kst": "2026-10-12T18:27+09:00",
+      "source_title": "'오를땐 빨리, 내릴땐 늦게' 정유 4사",
+      "telegram_core_fact": "SK에너지, GS칼텍스, 에쓰오일, HD현대오일뱅크 등 정유 4사가 '전쟁으로 국제유가가 급등한 틈을 타 돈벌이를 한 것 아니냐'는 지적에 고개를 숙였다.",
+      "title": "'오를땐 빨리, 내릴땐 늦게' 정유 4사"
+    },
     "fact:b06271daa8aada17550eef51": {
       "first_seen_kst": "2026-10-07T22:13:12+09:00",
       "lanes": {
@@ -84255,6 +84460,29 @@
       "source_published_kst": "2026-10-07T00:00+09:00",
       "title": "우크라 '韓, 러 석유공급' 보도에 비판…\"제재 정책과 어긋나\""
     },
+    "fact:e37b79b0b235e2223e7f3dd7": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03325926645612264",
+      "source": "이데일리",
+      "source_body_digest": "c207a1effaa8cbaf72ee589e2dcf1b8796f5aef815a0648a5c911fb215f1a071",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:96b9e00bf9fa0af8872eba0e89daa11046ddcb7d6fda15bf0204382e93343063",
+      "source_fact_keys": [
+        "source_fact:v1:0fbb4574910ac8e45467190d575c0451acaeca51376aac606020dbbd79577f6b",
+        "source_fact:v1:600998d56aa0a70ba39eb5547e0d46b4093848c2d75e2229064aeec9fd37f207",
+        "source_fact:v1:9dc2efe60df19c139185bf222c82af773e975f51c4594cdfb5e53e7e3c5148e0",
+        "source_fact:v1:f8e2338f8b70e693aa49a056267f3ad6c093564422d355c4a867b4540b9c570c",
+        "source_fact:v1:fad2f76a8b083cf4ac02df154cd2cfcbf89435eac270b171aba1279ca8a40f75"
+      ],
+      "source_published_kst": "2026-10-12T14:39+09:00",
+      "source_title": "'이란식 확전'에 심장부 뚫린 사우디…미국 참전 기로(종합)",
+      "telegram_core_fact": "후티가 ‘이란식 확전’(경제 급소 타격 전략)으로 사우디 수도 리야드의 공항을 일주일 새 네 차례 공격해 18명이 숨지고, 미국인 사망자까지 나오면서다. 올해 3.6% 역성장이 예상되는 사우디로선 이달 말 미래투자이니셔티브(FII)를 앞두고 악재가 겹쳤다.",
+      "title": "'이란식 확전'에 심장부 뚫린 사우디…미국 참전 기로(종합)"
+    },
     "fact:e386395ea0ed7499d98554af": {
       "first_seen_kst": "2026-10-08T20:39:20+09:00",
       "lanes": {
@@ -86135,6 +86363,25 @@
       ],
       "source_published_kst": "2026-10-06T11:45+09:00",
       "title": "車 디스플레이 유리 수입 간소화…재생에너지 '다수 대 다수' PPA 허용"
+    },
+    "fact:ec6d640c6102fcb14169aeb9": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822855",
+      "source": "뉴시스",
+      "source_body_digest": "894d8bd5a26c867ed6c9c19c1306615678c8ee471ad8122322dea41935d03d8a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3d0cc12485f130c4f15e6fd95bff09358477412b4ebbd23f68ed8179299db9a4",
+      "source_fact_keys": [
+        "source_fact:v1:396d7f493cfb1d9edffe9c666dd5c8c90981e7d4aec6525c79545511bcc58443"
+      ],
+      "source_published_kst": "2026-10-12T20:18+09:00",
+      "source_title": "쿠팡, 공정위 조사 거부·개인정보 배상안 불수용…국감서 집중 추궁(종합)",
+      "telegram_core_fact": "공정위 조사에 응하지 않은 이유와 피해자 배상조정안을 수용하지 않은 배경을 둘러싸고 책임론이 불거졌고, 국회에서는 조사 거부에 대한 제재 강화와 피해 구제 실효성을 높이기 위한 입법 필요성까지 제기됐다.",
+      "title": "쿠팡, 공정위 조사 거부·개인정보 배상안 불수용…국감서 집중 추궁(종합)"
     },
     "fact:ecab7b59bb943fd1fbcbc2df": {
       "first_seen_kst": "2026-10-08T10:43:48+09:00",
@@ -102705,6 +102952,23 @@
       "source_published_kst": "2026-10-04T16:39+09:00",
       "title": "데이터센터 전력 절실한데 … 직구매 한도 대폭 풀어줘야"
     },
+    "link:30d60b4cfd0c97b3739a871e": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173035",
+      "source": "매일경제",
+      "source_body_digest": "0a151e8566745f381ff79ad35f2ed0966f6c944339adeb3641187f088f53405a",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T16:31+09:00",
+      "source_title": "[구민정의 크립토포커스] 네이버·두나무 합병 다시 안갯속…디지털자산기본법 촉각",
+      "telegram_core_fact": "합병이 완료되면 네이버파이낸셜이 두나무 지분 100%를 보유하게 되기 때문에, 해당 규제가 도입될 경우 네이버파이낸셜이 두나무 지분을 대거 매각해야 하는 등 지배구조에도 변동이 일어날 것으로 보입니다.",
+      "title": "[구민정의 크립토포커스] 네이버·두나무 합병 다시 안갯속…디지털자산기본법 촉각"
+    },
     "link:30d6a2c4822659c3d634b02f": {
       "first_seen_kst": "2026-10-03T12:04:07+09:00",
       "lanes": {
@@ -104530,6 +104794,29 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T09:22+09:00",
       "title": "보조금 1억여원 부정수급 어린이집…법원 “폐쇄·명단 공표 정당”"
+    },
+    "link:3830e2e6a97b671bd990ac59": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03325926645612264",
+      "source": "이데일리",
+      "source_body_digest": "c207a1effaa8cbaf72ee589e2dcf1b8796f5aef815a0648a5c911fb215f1a071",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:96b9e00bf9fa0af8872eba0e89daa11046ddcb7d6fda15bf0204382e93343063",
+      "source_fact_keys": [
+        "source_fact:v1:0fbb4574910ac8e45467190d575c0451acaeca51376aac606020dbbd79577f6b",
+        "source_fact:v1:600998d56aa0a70ba39eb5547e0d46b4093848c2d75e2229064aeec9fd37f207",
+        "source_fact:v1:9dc2efe60df19c139185bf222c82af773e975f51c4594cdfb5e53e7e3c5148e0",
+        "source_fact:v1:f8e2338f8b70e693aa49a056267f3ad6c093564422d355c4a867b4540b9c570c",
+        "source_fact:v1:fad2f76a8b083cf4ac02df154cd2cfcbf89435eac270b171aba1279ca8a40f75"
+      ],
+      "source_published_kst": "2026-10-12T14:39+09:00",
+      "source_title": "'이란식 확전'에 심장부 뚫린 사우디…미국 참전 기로(종합)",
+      "telegram_core_fact": "후티가 ‘이란식 확전’(경제 급소 타격 전략)으로 사우디 수도 리야드의 공항을 일주일 새 네 차례 공격해 18명이 숨지고, 미국인 사망자까지 나오면서다. 올해 3.6% 역성장이 예상되는 사우디로선 이달 말 미래투자이니셔티브(FII)를 앞두고 악재가 겹쳤다.",
+      "title": "'이란식 확전'에 심장부 뚫린 사우디…미국 참전 기로(종합)"
     },
     "link:383e399bfe75d6d4e33e687f": {
       "first_seen_kst": "2026-10-08T03:51:03+09:00",
@@ -110161,6 +110448,26 @@
       "telegram_core_fact": "산업통상부는 7일 서울 롯데호텔에서 이집트 투자통상부와 공동으로 '한-이집트 비즈니스 라운드테이블(BRT)'을 개최했다고 밝혔다. 이번 MOU에 따라 현대로템은 이집트 터널청에 수소트램 44편성을 공급하고 건설, 시스템, 운영, 유지보수 등을 아우르는 사업 협력을 추진하기로 했다.",
       "title": "한·이집트 비즈니스 라운드테이블…수소트램 공급 양해각서"
     },
+    "link:4e7838172502f3eebd92b2e7": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04647766645612264",
+      "source": "이데일리",
+      "source_body_digest": "ac63283d655e5b48f7bbfda71c8a51532442d7a1506471376dd0a3cb4a1a3b08",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ddc12fab2fd69b289e2793a679fa16fc29ce84c57b4850a619762616158245af",
+      "source_fact_keys": [
+        "source_fact:v1:7f4d1b413442ad92e575b469de17e8cdff5c84b125fbe6bdb4ab30b6ed3f3af6",
+        "source_fact:v1:f527d41eb4681bd59e7cba720e558a4402d6f1f005570dad838cb3bedc38e527"
+      ],
+      "source_published_kst": "2026-10-12T19:40+09:00",
+      "source_title": "[美특징주]아마존, AI 스타트업 디카트 인수 협상…개장전 ↑",
+      "telegram_core_fact": "아마존닷컴(AMZN)이 인공지능(AI) 스타트업 디카트 AI(Decart AI)를 약 70억달러에 인수하는 방안을 논의하고 있다.",
+      "title": "[美특징주]아마존, AI 스타트업 디카트 인수 협상…개장전 ↑"
+    },
     "link:4e8f1a2ba382f9a98e142126": {
       "first_seen_kst": "2026-10-02T13:04:47+09:00",
       "lanes": {
@@ -114310,6 +114617,25 @@
       "source_title": "靑, '러 석유공급' 우크라 주장에 반박…\"사실과 다르고 부적절\" | 연합뉴스",
       "telegram_core_fact": "청와대는 7일 우크라이나가 '한국이 러시아에 경유 등 석유제품을 공급했다'는 외신을 인용해 한국을 비판한 데 대해 \"충분한 사실 확인 없이 대한민국의 관련 정책을 왜곡하거나 국제적 신뢰를 훼손할 수 있는 공개적 언급을 자제해달라\"고 반박했다.",
       "title": "靑, '러 석유공급' 우크라 주장에 반박…\"사실과 다르고 부적절\" | 연합뉴스"
+    },
+    "link:5ec10cd6d954bb9b28a3cb1c": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822855",
+      "source": "뉴시스",
+      "source_body_digest": "894d8bd5a26c867ed6c9c19c1306615678c8ee471ad8122322dea41935d03d8a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3d0cc12485f130c4f15e6fd95bff09358477412b4ebbd23f68ed8179299db9a4",
+      "source_fact_keys": [
+        "source_fact:v1:396d7f493cfb1d9edffe9c666dd5c8c90981e7d4aec6525c79545511bcc58443"
+      ],
+      "source_published_kst": "2026-10-12T20:18+09:00",
+      "source_title": "쿠팡, 공정위 조사 거부·개인정보 배상안 불수용…국감서 집중 추궁(종합)",
+      "telegram_core_fact": "공정위 조사에 응하지 않은 이유와 피해자 배상조정안을 수용하지 않은 배경을 둘러싸고 책임론이 불거졌고, 국회에서는 조사 거부에 대한 제재 강화와 피해 구제 실효성을 높이기 위한 입법 필요성까지 제기됐다.",
+      "title": "쿠팡, 공정위 조사 거부·개인정보 배상안 불수용…국감서 집중 추궁(종합)"
     },
     "link:5edcd57f0301763ddf0192a6": {
       "first_seen_kst": "2026-10-09T20:24:58+09:00",
@@ -129933,6 +130259,23 @@
       "telegram_core_fact": "한국형발사체 '누리호' 5차 발사로 우주에 오른 초소형군집위성 '네온샛' 2~6호 5기가 모두 지상국과 초기 교신에 성공했다.",
       "title": "네온샛 5기 모두 교신 성공…'하루 3번' 한반도 관측 군집위성 첫발(종합)"
     },
+    "link:986fbf2c3616cb08df20f968": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04637926645612264",
+      "source": "이데일리",
+      "source_body_digest": "0569d62aa0e233c0e623aca0a02b7c3aa2688acf8993b3ed000919f337bb53f0",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T19:37+09:00",
+      "source_title": "[美특징주]아마존, AI 스타트업 디카트 70억달러 인수 협상…개장전 '강보합'",
+      "telegram_core_fact": "WSJ에 따르면 양사의 인수 계약은 조만간 체결될 수 있다.",
+      "title": "[美특징주]아마존, AI 스타트업 디카트 70억달러 인수 협상…개장전 '강보합'"
+    },
     "link:9883b6010e9b4e5932014938": {
       "first_seen_kst": "2026-10-11T06:52:52+09:00",
       "lanes": {
@@ -141111,6 +141454,28 @@
       "source_published_kst": "2026-10-06T16:01+09:00",
       "title": "롯데백화점, 외국인 매출 첫 1조 달성…신세계·현대도 눈앞 [종합]"
     },
+    "link:c1cac64b3eb8f5ce9abf585d": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634409",
+      "source": "이투데이",
+      "source_body_digest": "effb7230a30486cca8a75a2e35328a8c2c1b5bf591bbc198cada41174d5312d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b57eec371d3812217d6ac02214786b76477dec082785cf544fd3e8c8ebf7ec4e",
+      "source_fact_keys": [
+        "source_fact:v1:000747a59a0ee5095f529cf2218d0347599a5254131f0e947c0ba32a5173afaa",
+        "source_fact:v1:147efa9bbf91618f56e604accdfeba2a72ce79c308e9940b895a1285c67ce415",
+        "source_fact:v1:ad279ff7532bdd20042b9dc0c637aa0f6eb73def79cea1a342d74fe79e356a20",
+        "source_fact:v1:fd5dfb1bc017e891391388dbcfff40e4ae07aa1f1c15f2016d984862af2cf9d4"
+      ],
+      "source_published_kst": "2026-10-12T08:06+09:00",
+      "source_title": "한울반도체, 日 MLCC 제조사 AI 외관검사 성능개선 수주…해외 고객 확대",
+      "telegram_core_fact": "한울반도체가 일본 소재 글로벌 적층세라믹콘덴서(MLCC) 제조사로부터 외관검사설비의 AI 성능 개선 사업을 수주했다.",
+      "title": "한울반도체, 日 MLCC 제조사 AI 외관검사 성능개선 수주…해외 고객 확대"
+    },
     "link:c1e5804aad04f2c9a6c95f13": {
       "first_seen_kst": "2026-10-12T20:59:01+09:00",
       "lanes": {
@@ -149181,6 +149546,25 @@
       "source_title": "스타 벌크 캐리어스, ATM 프로그램 갱신..한도 1억1600만 달러",
       "telegram_core_fact": "2027년에 매출은 10억3831만 달러 전망입니다.",
       "title": "스타 벌크 캐리어스, ATM 프로그램 갱신..한도 1억1600만 달러"
+    },
+    "link:e315c93d2c5120ab7f9a9834": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173121",
+      "source": "매일경제",
+      "source_body_digest": "c62904473ce2b69737b89961b675b8bedca36ddf4ec76fa47a4199833ae96c35",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d172c8e79f6fce8b612293ea3e0944672a3a6845ec471104923facfe613e2eb9",
+      "source_fact_keys": [
+        "source_fact:v1:0ff373380018530b45e5f2e3551a620c68478a34dd17e676e796e6d878531157"
+      ],
+      "source_published_kst": "2026-10-12T18:27+09:00",
+      "source_title": "'오를땐 빨리, 내릴땐 늦게' 정유 4사",
+      "telegram_core_fact": "SK에너지, GS칼텍스, 에쓰오일, HD현대오일뱅크 등 정유 4사가 '전쟁으로 국제유가가 급등한 틈을 타 돈벌이를 한 것 아니냐'는 지적에 고개를 숙였다.",
+      "title": "'오를땐 빨리, 내릴땐 늦게' 정유 4사"
     },
     "link:e33534d773d1e214d2b89e40": {
       "first_seen_kst": "2026-09-27T07:38:21+09:00",
@@ -167025,6 +167409,23 @@
       "source": "뉴시스",
       "title": "'배우 은퇴' 장동주, 기업 대표 반전 근황"
     },
+    "original:2892438a8169057656a44b15": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04637926645612264",
+      "source": "이데일리",
+      "source_body_digest": "0569d62aa0e233c0e623aca0a02b7c3aa2688acf8993b3ed000919f337bb53f0",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T19:37+09:00",
+      "source_title": "[美특징주]아마존, AI 스타트업 디카트 70억달러 인수 협상…개장전 '강보합'",
+      "telegram_core_fact": "WSJ에 따르면 양사의 인수 계약은 조만간 체결될 수 있다.",
+      "title": "[美특징주]아마존, AI 스타트업 디카트 70억달러 인수 협상…개장전 '강보합'"
+    },
     "original:28a60e17db35041f2846f115": {
       "first_seen_kst": "2026-10-04T10:19:34+09:00",
       "lanes": {
@@ -181504,6 +181905,23 @@
       "telegram_core_fact": "김승연 한화그룹 회장의 3남인 김동선 한화머시너리앤서비스홀딩스 미래전략실장은 대상 회사 지분 19.0%를 공개매수한다. 금융감독원 전자공시시스템에 따르면 김 실장은 한화머시너리앤서비스홀딩스 보통주 1606만주(발행주식총수의 19.0%)를 1주당 8000원에 공개매수한다고 공시했다.",
       "title": "한화 3세 김동선, 머시너리 지분 19% 공개매수…24.8%로 확대"
     },
+    "original:5f6839b8df33601e94d6ba3e": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173035",
+      "source": "매일경제",
+      "source_body_digest": "0a151e8566745f381ff79ad35f2ed0966f6c944339adeb3641187f088f53405a",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T16:31+09:00",
+      "source_title": "[구민정의 크립토포커스] 네이버·두나무 합병 다시 안갯속…디지털자산기본법 촉각",
+      "telegram_core_fact": "합병이 완료되면 네이버파이낸셜이 두나무 지분 100%를 보유하게 되기 때문에, 해당 규제가 도입될 경우 네이버파이낸셜이 두나무 지분을 대거 매각해야 하는 등 지배구조에도 변동이 일어날 것으로 보입니다.",
+      "title": "[구민정의 크립토포커스] 네이버·두나무 합병 다시 안갯속…디지털자산기본법 촉각"
+    },
     "original:5f7f26acede1ff7916ad65bb": {
       "first_seen_kst": "2026-10-08T00:54:18+09:00",
       "lanes": {
@@ -189839,6 +190257,28 @@
       "source": "아시아경제",
       "title": "\"SK하이닉스 HBM처럼\"…공대생도 '특허' 배운다"
     },
+    "original:817695d86b0759570181c332": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634409",
+      "source": "이투데이",
+      "source_body_digest": "effb7230a30486cca8a75a2e35328a8c2c1b5bf591bbc198cada41174d5312d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b57eec371d3812217d6ac02214786b76477dec082785cf544fd3e8c8ebf7ec4e",
+      "source_fact_keys": [
+        "source_fact:v1:000747a59a0ee5095f529cf2218d0347599a5254131f0e947c0ba32a5173afaa",
+        "source_fact:v1:147efa9bbf91618f56e604accdfeba2a72ce79c308e9940b895a1285c67ce415",
+        "source_fact:v1:ad279ff7532bdd20042b9dc0c637aa0f6eb73def79cea1a342d74fe79e356a20",
+        "source_fact:v1:fd5dfb1bc017e891391388dbcfff40e4ae07aa1f1c15f2016d984862af2cf9d4"
+      ],
+      "source_published_kst": "2026-10-12T08:06+09:00",
+      "source_title": "한울반도체, 日 MLCC 제조사 AI 외관검사 성능개선 수주…해외 고객 확대",
+      "telegram_core_fact": "한울반도체가 일본 소재 글로벌 적층세라믹콘덴서(MLCC) 제조사로부터 외관검사설비의 AI 성능 개선 사업을 수주했다.",
+      "title": "한울반도체, 日 MLCC 제조사 AI 외관검사 성능개선 수주…해외 고객 확대"
+    },
     "original:8188e0af821f1d62baa1b0ef": {
       "first_seen_kst": "2026-09-21T10:52:59+09:00",
       "lanes": {
@@ -190027,6 +190467,29 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T06:30+09:00",
       "title": "메모리 ‘오징어 게임’ 벌어지나…美 싱크탱크의 ‘메모리 공급 과잉’ 경고 [칩칩팹팹]"
+    },
+    "original:829fb4491f97f23df973e7ec": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03325926645612264",
+      "source": "이데일리",
+      "source_body_digest": "c207a1effaa8cbaf72ee589e2dcf1b8796f5aef815a0648a5c911fb215f1a071",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:96b9e00bf9fa0af8872eba0e89daa11046ddcb7d6fda15bf0204382e93343063",
+      "source_fact_keys": [
+        "source_fact:v1:0fbb4574910ac8e45467190d575c0451acaeca51376aac606020dbbd79577f6b",
+        "source_fact:v1:600998d56aa0a70ba39eb5547e0d46b4093848c2d75e2229064aeec9fd37f207",
+        "source_fact:v1:9dc2efe60df19c139185bf222c82af773e975f51c4594cdfb5e53e7e3c5148e0",
+        "source_fact:v1:f8e2338f8b70e693aa49a056267f3ad6c093564422d355c4a867b4540b9c570c",
+        "source_fact:v1:fad2f76a8b083cf4ac02df154cd2cfcbf89435eac270b171aba1279ca8a40f75"
+      ],
+      "source_published_kst": "2026-10-12T14:39+09:00",
+      "source_title": "'이란식 확전'에 심장부 뚫린 사우디…미국 참전 기로(종합)",
+      "telegram_core_fact": "후티가 ‘이란식 확전’(경제 급소 타격 전략)으로 사우디 수도 리야드의 공항을 일주일 새 네 차례 공격해 18명이 숨지고, 미국인 사망자까지 나오면서다. 올해 3.6% 역성장이 예상되는 사우디로선 이달 말 미래투자이니셔티브(FII)를 앞두고 악재가 겹쳤다.",
+      "title": "'이란식 확전'에 심장부 뚫린 사우디…미국 참전 기로(종합)"
     },
     "original:82c1a1c94c16f6c3d7ab720a": {
       "first_seen_kst": "2026-10-12T11:27:57+09:00",
@@ -196057,6 +196520,25 @@
       "source_title": "이창용 전 총재 \"반도체발 착시 경계⋯양극화·수퍼사이클 중단 대비해야\"",
       "telegram_core_fact": "이창용 전 한국은행 총재가 최근 반도체 호황에 따른 경제성장률 급등과 관련해 산업 양극화와 미·중 갈등 완화에 따른 판도 변화 가능성을 지적하며 \"국가 차원에서 낙관론 이면의 리스크에 철저히 대비해야 한다\"고 경고했다.",
       "title": "이창용 전 총재 \"반도체발 착시 경계⋯양극화·수퍼사이클 중단 대비해야\""
+    },
+    "original:9939b868b071961b8e12fa4d": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173121",
+      "source": "매일경제",
+      "source_body_digest": "c62904473ce2b69737b89961b675b8bedca36ddf4ec76fa47a4199833ae96c35",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d172c8e79f6fce8b612293ea3e0944672a3a6845ec471104923facfe613e2eb9",
+      "source_fact_keys": [
+        "source_fact:v1:0ff373380018530b45e5f2e3551a620c68478a34dd17e676e796e6d878531157"
+      ],
+      "source_published_kst": "2026-10-12T18:27+09:00",
+      "source_title": "'오를땐 빨리, 내릴땐 늦게' 정유 4사",
+      "telegram_core_fact": "SK에너지, GS칼텍스, 에쓰오일, HD현대오일뱅크 등 정유 4사가 '전쟁으로 국제유가가 급등한 틈을 타 돈벌이를 한 것 아니냐'는 지적에 고개를 숙였다.",
+      "title": "'오를땐 빨리, 내릴땐 늦게' 정유 4사"
     },
     "original:9941a9fbe7e3964565abb433": {
       "first_seen_kst": "2026-09-22T23:07:58+09:00",
@@ -202100,6 +202582,25 @@
       "telegram_core_fact": "최은옥 교육부 차관은 \"이번 사업은 대학이 자율적인 구조개선을 통해 특성화 분야에 역량을 집중하고 학생들에게 수준 높은 교육을 제공할 기회가 될 것\"이라며 사립대의 경쟁력 강화를 재정 지원과 규제 완화로 뒷받침하겠다고 말했다.",
       "title": "특성화 사립대 33곳에 5년간 6천억원…정원 3% 이상 감축 | 연합뉴스"
     },
+    "original:b101aded92033edecd982d3e": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822855",
+      "source": "뉴시스",
+      "source_body_digest": "894d8bd5a26c867ed6c9c19c1306615678c8ee471ad8122322dea41935d03d8a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3d0cc12485f130c4f15e6fd95bff09358477412b4ebbd23f68ed8179299db9a4",
+      "source_fact_keys": [
+        "source_fact:v1:396d7f493cfb1d9edffe9c666dd5c8c90981e7d4aec6525c79545511bcc58443"
+      ],
+      "source_published_kst": "2026-10-12T20:18+09:00",
+      "source_title": "쿠팡, 공정위 조사 거부·개인정보 배상안 불수용…국감서 집중 추궁(종합)",
+      "telegram_core_fact": "공정위 조사에 응하지 않은 이유와 피해자 배상조정안을 수용하지 않은 배경을 둘러싸고 책임론이 불거졌고, 국회에서는 조사 거부에 대한 제재 강화와 피해 구제 실효성을 높이기 위한 입법 필요성까지 제기됐다.",
+      "title": "쿠팡, 공정위 조사 거부·개인정보 배상안 불수용…국감서 집중 추궁(종합)"
+    },
     "original:b10b8c93a0751f853a890f6b": {
       "first_seen_kst": "2026-10-08T03:51:03+09:00",
       "lanes": {
@@ -206336,6 +206837,26 @@
       "source_title": "2035년까지 ‘녹색 대전환’에 1000조 투입…탄소중립·성장 동시 공략",
       "telegram_core_fact": "정부는 2035년까지 재정 200조원을 투입하고 산업은행 등 5대 정책금융기관을 통해 790조원 기후금융을 공급한다.",
       "title": "2035년까지 ‘녹색 대전환’에 1000조 투입…탄소중립·성장 동시 공략"
+    },
+    "original:c2d892f7c140c064d5683dcd": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04647766645612264",
+      "source": "이데일리",
+      "source_body_digest": "ac63283d655e5b48f7bbfda71c8a51532442d7a1506471376dd0a3cb4a1a3b08",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ddc12fab2fd69b289e2793a679fa16fc29ce84c57b4850a619762616158245af",
+      "source_fact_keys": [
+        "source_fact:v1:7f4d1b413442ad92e575b469de17e8cdff5c84b125fbe6bdb4ab30b6ed3f3af6",
+        "source_fact:v1:f527d41eb4681bd59e7cba720e558a4402d6f1f005570dad838cb3bedc38e527"
+      ],
+      "source_published_kst": "2026-10-12T19:40+09:00",
+      "source_title": "[美특징주]아마존, AI 스타트업 디카트 인수 협상…개장전 ↑",
+      "telegram_core_fact": "아마존닷컴(AMZN)이 인공지능(AI) 스타트업 디카트 AI(Decart AI)를 약 70억달러에 인수하는 방안을 논의하고 있다.",
+      "title": "[美특징주]아마존, AI 스타트업 디카트 인수 협상…개장전 ↑"
     },
     "original:c3009bef8a71353395c67400": {
       "first_seen_kst": "2026-10-08T02:57:10+09:00",
@@ -234448,6 +234969,29 @@
       "source_title": "트럼프 압박 통했나…IEA, '경유 중심' 전략비축유 방출 가속 합의",
       "telegram_core_fact": "G7은 향후 4개월 동안 비축유 1억배럴을 방출하기로 합의했다.",
       "title": "트럼프 압박 통했나…IEA, '경유 중심' 전략비축유 방출 가속 합의"
+    },
+    "source_fact:0ed834cb8f0a273868b21ed6": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03325926645612264",
+      "source": "이데일리",
+      "source_body_digest": "c207a1effaa8cbaf72ee589e2dcf1b8796f5aef815a0648a5c911fb215f1a071",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:96b9e00bf9fa0af8872eba0e89daa11046ddcb7d6fda15bf0204382e93343063",
+      "source_fact_keys": [
+        "source_fact:v1:0fbb4574910ac8e45467190d575c0451acaeca51376aac606020dbbd79577f6b",
+        "source_fact:v1:600998d56aa0a70ba39eb5547e0d46b4093848c2d75e2229064aeec9fd37f207",
+        "source_fact:v1:9dc2efe60df19c139185bf222c82af773e975f51c4594cdfb5e53e7e3c5148e0",
+        "source_fact:v1:f8e2338f8b70e693aa49a056267f3ad6c093564422d355c4a867b4540b9c570c",
+        "source_fact:v1:fad2f76a8b083cf4ac02df154cd2cfcbf89435eac270b171aba1279ca8a40f75"
+      ],
+      "source_published_kst": "2026-10-12T14:39+09:00",
+      "source_title": "'이란식 확전'에 심장부 뚫린 사우디…미국 참전 기로(종합)",
+      "telegram_core_fact": "후티가 ‘이란식 확전’(경제 급소 타격 전략)으로 사우디 수도 리야드의 공항을 일주일 새 네 차례 공격해 18명이 숨지고, 미국인 사망자까지 나오면서다. 올해 3.6% 역성장이 예상되는 사우디로선 이달 말 미래투자이니셔티브(FII)를 앞두고 악재가 겹쳤다.",
+      "title": "'이란식 확전'에 심장부 뚫린 사우디…미국 참전 기로(종합)"
     },
     "source_fact:0ed97683fe1ba4582474cf75": {
       "first_seen_kst": "2026-10-07T10:04:59+09:00",
@@ -272052,6 +272596,29 @@
       "telegram_core_fact": "블룸버그통신에 따르면 월러 이사는 “경제지표가 예상대로 나온다면 인플레이션을 2% 목표치로 더 신속하게 되돌리기 위해 추가 금리 인상이 필요할 것으로 예상한다”고 말했다.",
       "title": "연준 무살렘·월러 \"추가 금리 인상 필요\"…시점엔 유연성"
     },
+    "source_fact:3751e7043be878a87ae080d7": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03325926645612264",
+      "source": "이데일리",
+      "source_body_digest": "c207a1effaa8cbaf72ee589e2dcf1b8796f5aef815a0648a5c911fb215f1a071",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:96b9e00bf9fa0af8872eba0e89daa11046ddcb7d6fda15bf0204382e93343063",
+      "source_fact_keys": [
+        "source_fact:v1:0fbb4574910ac8e45467190d575c0451acaeca51376aac606020dbbd79577f6b",
+        "source_fact:v1:600998d56aa0a70ba39eb5547e0d46b4093848c2d75e2229064aeec9fd37f207",
+        "source_fact:v1:9dc2efe60df19c139185bf222c82af773e975f51c4594cdfb5e53e7e3c5148e0",
+        "source_fact:v1:f8e2338f8b70e693aa49a056267f3ad6c093564422d355c4a867b4540b9c570c",
+        "source_fact:v1:fad2f76a8b083cf4ac02df154cd2cfcbf89435eac270b171aba1279ca8a40f75"
+      ],
+      "source_published_kst": "2026-10-12T14:39+09:00",
+      "source_title": "'이란식 확전'에 심장부 뚫린 사우디…미국 참전 기로(종합)",
+      "telegram_core_fact": "후티가 ‘이란식 확전’(경제 급소 타격 전략)으로 사우디 수도 리야드의 공항을 일주일 새 네 차례 공격해 18명이 숨지고, 미국인 사망자까지 나오면서다. 올해 3.6% 역성장이 예상되는 사우디로선 이달 말 미래투자이니셔티브(FII)를 앞두고 악재가 겹쳤다.",
+      "title": "'이란식 확전'에 심장부 뚫린 사우디…미국 참전 기로(종합)"
+    },
     "source_fact:37568a0387b14bd391c422eb": {
       "first_seen_kst": "2026-10-11T19:37:28+09:00",
       "lanes": {
@@ -272673,6 +273240,28 @@
       ],
       "source_published_kst": "2026-10-06T05:30+09:00",
       "title": "車 부품 보던 AI, 로봇 관절 '가상검증' 나선다"
+    },
+    "source_fact:3813fad40448b93257a41395": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634409",
+      "source": "이투데이",
+      "source_body_digest": "effb7230a30486cca8a75a2e35328a8c2c1b5bf591bbc198cada41174d5312d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b57eec371d3812217d6ac02214786b76477dec082785cf544fd3e8c8ebf7ec4e",
+      "source_fact_keys": [
+        "source_fact:v1:000747a59a0ee5095f529cf2218d0347599a5254131f0e947c0ba32a5173afaa",
+        "source_fact:v1:147efa9bbf91618f56e604accdfeba2a72ce79c308e9940b895a1285c67ce415",
+        "source_fact:v1:ad279ff7532bdd20042b9dc0c637aa0f6eb73def79cea1a342d74fe79e356a20",
+        "source_fact:v1:fd5dfb1bc017e891391388dbcfff40e4ae07aa1f1c15f2016d984862af2cf9d4"
+      ],
+      "source_published_kst": "2026-10-12T08:06+09:00",
+      "source_title": "한울반도체, 日 MLCC 제조사 AI 외관검사 성능개선 수주…해외 고객 확대",
+      "telegram_core_fact": "한울반도체가 일본 소재 글로벌 적층세라믹콘덴서(MLCC) 제조사로부터 외관검사설비의 AI 성능 개선 사업을 수주했다.",
+      "title": "한울반도체, 日 MLCC 제조사 AI 외관검사 성능개선 수주…해외 고객 확대"
     },
     "source_fact:38169d2b506f6db7b7124c1b": {
       "first_seen_kst": "2026-10-06T14:52:12+09:00",
@@ -280796,6 +281385,25 @@
       "source_published_kst": "2026-10-07T12:50+09:00",
       "title": "반도체 호황에 기업 곳간 ‘최대’…가계는 예금 빼 주식으로"
     },
+    "source_fact:41973e2fdead4d117df0d6ef": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173121",
+      "source": "매일경제",
+      "source_body_digest": "c62904473ce2b69737b89961b675b8bedca36ddf4ec76fa47a4199833ae96c35",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d172c8e79f6fce8b612293ea3e0944672a3a6845ec471104923facfe613e2eb9",
+      "source_fact_keys": [
+        "source_fact:v1:0ff373380018530b45e5f2e3551a620c68478a34dd17e676e796e6d878531157"
+      ],
+      "source_published_kst": "2026-10-12T18:27+09:00",
+      "source_title": "'오를땐 빨리, 내릴땐 늦게' 정유 4사",
+      "telegram_core_fact": "SK에너지, GS칼텍스, 에쓰오일, HD현대오일뱅크 등 정유 4사가 '전쟁으로 국제유가가 급등한 틈을 타 돈벌이를 한 것 아니냐'는 지적에 고개를 숙였다.",
+      "title": "'오를땐 빨리, 내릴땐 늦게' 정유 4사"
+    },
     "source_fact:419fc6fddba6406471132d17": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
       "lanes": {
@@ -282728,6 +283336,29 @@
       "telegram_core_fact": "한 주(10월 5일~10월 9일) 국내 제약·바이오 업계에서 주목받은 임상 및 품목 허가 소식이다.",
       "title": "[임상 업데이트] HK이노엔 GLP-1 신약, 비만 청소년 임상서 효과 확인"
     },
+    "source_fact:439ddc693bf12d1d08f159e6": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03325926645612264",
+      "source": "이데일리",
+      "source_body_digest": "c207a1effaa8cbaf72ee589e2dcf1b8796f5aef815a0648a5c911fb215f1a071",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:96b9e00bf9fa0af8872eba0e89daa11046ddcb7d6fda15bf0204382e93343063",
+      "source_fact_keys": [
+        "source_fact:v1:0fbb4574910ac8e45467190d575c0451acaeca51376aac606020dbbd79577f6b",
+        "source_fact:v1:600998d56aa0a70ba39eb5547e0d46b4093848c2d75e2229064aeec9fd37f207",
+        "source_fact:v1:9dc2efe60df19c139185bf222c82af773e975f51c4594cdfb5e53e7e3c5148e0",
+        "source_fact:v1:f8e2338f8b70e693aa49a056267f3ad6c093564422d355c4a867b4540b9c570c",
+        "source_fact:v1:fad2f76a8b083cf4ac02df154cd2cfcbf89435eac270b171aba1279ca8a40f75"
+      ],
+      "source_published_kst": "2026-10-12T14:39+09:00",
+      "source_title": "'이란식 확전'에 심장부 뚫린 사우디…미국 참전 기로(종합)",
+      "telegram_core_fact": "후티가 ‘이란식 확전’(경제 급소 타격 전략)으로 사우디 수도 리야드의 공항을 일주일 새 네 차례 공격해 18명이 숨지고, 미국인 사망자까지 나오면서다. 올해 3.6% 역성장이 예상되는 사우디로선 이달 말 미래투자이니셔티브(FII)를 앞두고 악재가 겹쳤다.",
+      "title": "'이란식 확전'에 심장부 뚫린 사우디…미국 참전 기로(종합)"
+    },
     "source_fact:43a882c1e5c9f6963faaaa41": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
       "lanes": {
@@ -283832,6 +284463,29 @@
       "source_title": "에너지 휴전 논의하러 갔는데 美는 러 경유 제재 완화…우크라 \"함정 같았다\"",
       "telegram_core_fact": "러시아와 에너지 시설 공격을 서로 중단하는 방안을 논의하러 미국을 찾은 우크라이나 대표단이 협상장에서 러시아산 경유 수출 제재 완화 방침을 전달받고 “함정처럼 느껴졌다”고 반발한 것으로 전해졌다.",
       "title": "에너지 휴전 논의하러 갔는데 美는 러 경유 제재 완화…우크라 \"함정 같았다\""
+    },
+    "source_fact:4571d6fc8a8624821f54f18c": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03325926645612264",
+      "source": "이데일리",
+      "source_body_digest": "c207a1effaa8cbaf72ee589e2dcf1b8796f5aef815a0648a5c911fb215f1a071",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:96b9e00bf9fa0af8872eba0e89daa11046ddcb7d6fda15bf0204382e93343063",
+      "source_fact_keys": [
+        "source_fact:v1:0fbb4574910ac8e45467190d575c0451acaeca51376aac606020dbbd79577f6b",
+        "source_fact:v1:600998d56aa0a70ba39eb5547e0d46b4093848c2d75e2229064aeec9fd37f207",
+        "source_fact:v1:9dc2efe60df19c139185bf222c82af773e975f51c4594cdfb5e53e7e3c5148e0",
+        "source_fact:v1:f8e2338f8b70e693aa49a056267f3ad6c093564422d355c4a867b4540b9c570c",
+        "source_fact:v1:fad2f76a8b083cf4ac02df154cd2cfcbf89435eac270b171aba1279ca8a40f75"
+      ],
+      "source_published_kst": "2026-10-12T14:39+09:00",
+      "source_title": "'이란식 확전'에 심장부 뚫린 사우디…미국 참전 기로(종합)",
+      "telegram_core_fact": "후티가 ‘이란식 확전’(경제 급소 타격 전략)으로 사우디 수도 리야드의 공항을 일주일 새 네 차례 공격해 18명이 숨지고, 미국인 사망자까지 나오면서다. 올해 3.6% 역성장이 예상되는 사우디로선 이달 말 미래투자이니셔티브(FII)를 앞두고 악재가 겹쳤다.",
+      "title": "'이란식 확전'에 심장부 뚫린 사우디…미국 참전 기로(종합)"
     },
     "source_fact:45737a2a702b0dff29f6b325": {
       "first_seen_kst": "2026-10-07T09:22:01+09:00",
@@ -321524,6 +322178,28 @@
       "telegram_core_fact": "트럼프 대통령의 발언이 나온 이후 유가 상승폭은 일부 줄었지만, 중동의 원유 공급 불안이 이어지면서 국제유가는 결국 4% 넘게 오른 채 거래를 마쳤다.",
       "title": "트럼프, 이란 공격 유보했지만 … 유가는 4% 급등"
     },
+    "source_fact:6dcf8af5096cd5d3eb1f6320": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634409",
+      "source": "이투데이",
+      "source_body_digest": "effb7230a30486cca8a75a2e35328a8c2c1b5bf591bbc198cada41174d5312d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b57eec371d3812217d6ac02214786b76477dec082785cf544fd3e8c8ebf7ec4e",
+      "source_fact_keys": [
+        "source_fact:v1:000747a59a0ee5095f529cf2218d0347599a5254131f0e947c0ba32a5173afaa",
+        "source_fact:v1:147efa9bbf91618f56e604accdfeba2a72ce79c308e9940b895a1285c67ce415",
+        "source_fact:v1:ad279ff7532bdd20042b9dc0c637aa0f6eb73def79cea1a342d74fe79e356a20",
+        "source_fact:v1:fd5dfb1bc017e891391388dbcfff40e4ae07aa1f1c15f2016d984862af2cf9d4"
+      ],
+      "source_published_kst": "2026-10-12T08:06+09:00",
+      "source_title": "한울반도체, 日 MLCC 제조사 AI 외관검사 성능개선 수주…해외 고객 확대",
+      "telegram_core_fact": "한울반도체가 일본 소재 글로벌 적층세라믹콘덴서(MLCC) 제조사로부터 외관검사설비의 AI 성능 개선 사업을 수주했다.",
+      "title": "한울반도체, 日 MLCC 제조사 AI 외관검사 성능개선 수주…해외 고객 확대"
+    },
     "source_fact:6ddbc5db27cd4c685e652bc8": {
       "first_seen_kst": "2026-10-11T10:13:01+09:00",
       "lanes": {
@@ -323979,6 +324655,25 @@
       ],
       "source_published_kst": "2026-10-06T13:55+09:00",
       "title": "제약바이오협회, 'R&D·임상·RA 역량강화' 세미나"
+    },
+    "source_fact:70d282aec69612055787f0e2": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822855",
+      "source": "뉴시스",
+      "source_body_digest": "894d8bd5a26c867ed6c9c19c1306615678c8ee471ad8122322dea41935d03d8a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3d0cc12485f130c4f15e6fd95bff09358477412b4ebbd23f68ed8179299db9a4",
+      "source_fact_keys": [
+        "source_fact:v1:396d7f493cfb1d9edffe9c666dd5c8c90981e7d4aec6525c79545511bcc58443"
+      ],
+      "source_published_kst": "2026-10-12T20:18+09:00",
+      "source_title": "쿠팡, 공정위 조사 거부·개인정보 배상안 불수용…국감서 집중 추궁(종합)",
+      "telegram_core_fact": "공정위 조사에 응하지 않은 이유와 피해자 배상조정안을 수용하지 않은 배경을 둘러싸고 책임론이 불거졌고, 국회에서는 조사 거부에 대한 제재 강화와 피해 구제 실효성을 높이기 위한 입법 필요성까지 제기됐다.",
+      "title": "쿠팡, 공정위 조사 거부·개인정보 배상안 불수용…국감서 집중 추궁(종합)"
     },
     "source_fact:70d39034e10a4edf2351c2ff": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
@@ -348596,6 +349291,26 @@
       "telegram_core_fact": "상품·서비스 무역을 비롯해 경제협력과 공급망 회복력 등을 폭넓게 다루는 높은 수준의 무역협정을 추진해, 아프리카 제2위 경제국인 이집트와 교역·투자를 확대할 제도적 기반을 마련한다는 구상이다.",
       "title": "韓·이집트 CEPA 협상 내년 상반기 시작…조선·에너지 등 협력 확대"
     },
+    "source_fact:8c4bab36287c7a9b5aee819f": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04647766645612264",
+      "source": "이데일리",
+      "source_body_digest": "ac63283d655e5b48f7bbfda71c8a51532442d7a1506471376dd0a3cb4a1a3b08",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ddc12fab2fd69b289e2793a679fa16fc29ce84c57b4850a619762616158245af",
+      "source_fact_keys": [
+        "source_fact:v1:7f4d1b413442ad92e575b469de17e8cdff5c84b125fbe6bdb4ab30b6ed3f3af6",
+        "source_fact:v1:f527d41eb4681bd59e7cba720e558a4402d6f1f005570dad838cb3bedc38e527"
+      ],
+      "source_published_kst": "2026-10-12T19:40+09:00",
+      "source_title": "[美특징주]아마존, AI 스타트업 디카트 인수 협상…개장전 ↑",
+      "telegram_core_fact": "아마존닷컴(AMZN)이 인공지능(AI) 스타트업 디카트 AI(Decart AI)를 약 70억달러에 인수하는 방안을 논의하고 있다.",
+      "title": "[美특징주]아마존, AI 스타트업 디카트 인수 협상…개장전 ↑"
+    },
     "source_fact:8c504cb1aa500b9314382654": {
       "first_seen_kst": "2026-10-06T23:46:46+09:00",
       "lanes": {
@@ -348861,6 +349576,29 @@
       "source_title": "한국콜마, 'K선케어' 글로벌 기준 만든다…개발·임상·생산 전 과정 경쟁력↑",
       "telegram_core_fact": "한국콜마 2분기 영업이익은 1103억원으로 전년비 17.3% 증가했습니다.",
       "title": "한국콜마, 'K선케어' 글로벌 기준 만든다…개발·임상·생산 전 과정 경쟁력↑"
+    },
+    "source_fact:8c8e3328bd5b4fe2c2502fc9": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03325926645612264",
+      "source": "이데일리",
+      "source_body_digest": "c207a1effaa8cbaf72ee589e2dcf1b8796f5aef815a0648a5c911fb215f1a071",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:96b9e00bf9fa0af8872eba0e89daa11046ddcb7d6fda15bf0204382e93343063",
+      "source_fact_keys": [
+        "source_fact:v1:0fbb4574910ac8e45467190d575c0451acaeca51376aac606020dbbd79577f6b",
+        "source_fact:v1:600998d56aa0a70ba39eb5547e0d46b4093848c2d75e2229064aeec9fd37f207",
+        "source_fact:v1:9dc2efe60df19c139185bf222c82af773e975f51c4594cdfb5e53e7e3c5148e0",
+        "source_fact:v1:f8e2338f8b70e693aa49a056267f3ad6c093564422d355c4a867b4540b9c570c",
+        "source_fact:v1:fad2f76a8b083cf4ac02df154cd2cfcbf89435eac270b171aba1279ca8a40f75"
+      ],
+      "source_published_kst": "2026-10-12T14:39+09:00",
+      "source_title": "'이란식 확전'에 심장부 뚫린 사우디…미국 참전 기로(종합)",
+      "telegram_core_fact": "후티가 ‘이란식 확전’(경제 급소 타격 전략)으로 사우디 수도 리야드의 공항을 일주일 새 네 차례 공격해 18명이 숨지고, 미국인 사망자까지 나오면서다. 올해 3.6% 역성장이 예상되는 사우디로선 이달 말 미래투자이니셔티브(FII)를 앞두고 악재가 겹쳤다.",
+      "title": "'이란식 확전'에 심장부 뚫린 사우디…미국 참전 기로(종합)"
     },
     "source_fact:8c9359b31e5f11ab9e872cf5": {
       "first_seen_kst": "2026-10-06T17:35:32+09:00",
@@ -443930,6 +444668,28 @@
       "telegram_core_fact": "양사는 전력기기 공급을 중심으로 이어온 협력을 엔지니어링과 프로젝트 수주 사업까지 확대한다.",
       "title": "LS일렉트릭, 대만 최대 석화그룹과 JV 설립⋯전력솔루션 수주 확대"
     },
+    "source_fact:f807f758a03983ad9cf41c15": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634409",
+      "source": "이투데이",
+      "source_body_digest": "effb7230a30486cca8a75a2e35328a8c2c1b5bf591bbc198cada41174d5312d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b57eec371d3812217d6ac02214786b76477dec082785cf544fd3e8c8ebf7ec4e",
+      "source_fact_keys": [
+        "source_fact:v1:000747a59a0ee5095f529cf2218d0347599a5254131f0e947c0ba32a5173afaa",
+        "source_fact:v1:147efa9bbf91618f56e604accdfeba2a72ce79c308e9940b895a1285c67ce415",
+        "source_fact:v1:ad279ff7532bdd20042b9dc0c637aa0f6eb73def79cea1a342d74fe79e356a20",
+        "source_fact:v1:fd5dfb1bc017e891391388dbcfff40e4ae07aa1f1c15f2016d984862af2cf9d4"
+      ],
+      "source_published_kst": "2026-10-12T08:06+09:00",
+      "source_title": "한울반도체, 日 MLCC 제조사 AI 외관검사 성능개선 수주…해외 고객 확대",
+      "telegram_core_fact": "한울반도체가 일본 소재 글로벌 적층세라믹콘덴서(MLCC) 제조사로부터 외관검사설비의 AI 성능 개선 사업을 수주했다.",
+      "title": "한울반도체, 日 MLCC 제조사 AI 외관검사 성능개선 수주…해외 고객 확대"
+    },
     "source_fact:f817d4606c9fbf2f3f54cc8c": {
       "first_seen_kst": "2026-10-12T03:14:53+09:00",
       "lanes": {
@@ -448812,6 +449572,28 @@
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "\"일주일새 12% 올랐다\"…전고체 ETF 뛰는데 뭉칫돈 향한 곳은"
     },
+    "source_fact:fe24cdb35aa96ef6ec9f21ae": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634409",
+      "source": "이투데이",
+      "source_body_digest": "effb7230a30486cca8a75a2e35328a8c2c1b5bf591bbc198cada41174d5312d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b57eec371d3812217d6ac02214786b76477dec082785cf544fd3e8c8ebf7ec4e",
+      "source_fact_keys": [
+        "source_fact:v1:000747a59a0ee5095f529cf2218d0347599a5254131f0e947c0ba32a5173afaa",
+        "source_fact:v1:147efa9bbf91618f56e604accdfeba2a72ce79c308e9940b895a1285c67ce415",
+        "source_fact:v1:ad279ff7532bdd20042b9dc0c637aa0f6eb73def79cea1a342d74fe79e356a20",
+        "source_fact:v1:fd5dfb1bc017e891391388dbcfff40e4ae07aa1f1c15f2016d984862af2cf9d4"
+      ],
+      "source_published_kst": "2026-10-12T08:06+09:00",
+      "source_title": "한울반도체, 日 MLCC 제조사 AI 외관검사 성능개선 수주…해외 고객 확대",
+      "telegram_core_fact": "한울반도체가 일본 소재 글로벌 적층세라믹콘덴서(MLCC) 제조사로부터 외관검사설비의 AI 성능 개선 사업을 수주했다.",
+      "title": "한울반도체, 日 MLCC 제조사 AI 외관검사 성능개선 수주…해외 고객 확대"
+    },
     "source_fact:fe2930f6fcfec92870665a12": {
       "first_seen_kst": "2026-10-07T22:13:12+09:00",
       "lanes": {
@@ -448872,6 +449654,26 @@
       ],
       "source_published_kst": "2026-10-04T23:56+09:00",
       "title": "OPEC+, 11월 원유 생산 목표 유지 합의"
+    },
+    "source_fact:fe4ab4f25b9419bd6b719993": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04647766645612264",
+      "source": "이데일리",
+      "source_body_digest": "ac63283d655e5b48f7bbfda71c8a51532442d7a1506471376dd0a3cb4a1a3b08",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ddc12fab2fd69b289e2793a679fa16fc29ce84c57b4850a619762616158245af",
+      "source_fact_keys": [
+        "source_fact:v1:7f4d1b413442ad92e575b469de17e8cdff5c84b125fbe6bdb4ab30b6ed3f3af6",
+        "source_fact:v1:f527d41eb4681bd59e7cba720e558a4402d6f1f005570dad838cb3bedc38e527"
+      ],
+      "source_published_kst": "2026-10-12T19:40+09:00",
+      "source_title": "[美특징주]아마존, AI 스타트업 디카트 인수 협상…개장전 ↑",
+      "telegram_core_fact": "아마존닷컴(AMZN)이 인공지능(AI) 스타트업 디카트 AI(Decart AI)를 약 70억달러에 인수하는 방안을 논의하고 있다.",
+      "title": "[美특징주]아마존, AI 스타트업 디카트 인수 협상…개장전 ↑"
     },
     "source_fact:fe523c9e1725a96847aa6087": {
       "first_seen_kst": "2026-10-08T02:26:35+09:00",
@@ -460937,6 +461739,23 @@
       "link": "https://www.newsis.com/view/NISX20260921_0003799265",
       "source": "뉴시스",
       "title": "'배우 은퇴' 장동주, 기업 대표 반전 근황"
+    },
+    "title:2892438a8169057656a44b15": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04637926645612264",
+      "source": "이데일리",
+      "source_body_digest": "0569d62aa0e233c0e623aca0a02b7c3aa2688acf8993b3ed000919f337bb53f0",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T19:37+09:00",
+      "source_title": "[美특징주]아마존, AI 스타트업 디카트 70억달러 인수 협상…개장전 '강보합'",
+      "telegram_core_fact": "WSJ에 따르면 양사의 인수 계약은 조만간 체결될 수 있다.",
+      "title": "[美특징주]아마존, AI 스타트업 디카트 70억달러 인수 협상…개장전 '강보합'"
     },
     "title:28a60e17db35041f2846f115": {
       "first_seen_kst": "2026-10-04T10:19:34+09:00",
@@ -475043,6 +475862,29 @@
       "telegram_core_fact": "우주 전력시스템 전문기업 솔랩(대표 김정식)이 국제 달 탐사 프로젝트에 다단 전개형 태양전지판과 배터리 없는 전력시스템 등 핵심 우주 부품을 공급한다.",
       "title": "솔랩, 달 탐사 핵심부품 공급…5면 태양전지판·배터리리스 전력계 개발"
     },
+    "title:5d1275d37d9ab016ae433c4b": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03325926645612264",
+      "source": "이데일리",
+      "source_body_digest": "c207a1effaa8cbaf72ee589e2dcf1b8796f5aef815a0648a5c911fb215f1a071",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:96b9e00bf9fa0af8872eba0e89daa11046ddcb7d6fda15bf0204382e93343063",
+      "source_fact_keys": [
+        "source_fact:v1:0fbb4574910ac8e45467190d575c0451acaeca51376aac606020dbbd79577f6b",
+        "source_fact:v1:600998d56aa0a70ba39eb5547e0d46b4093848c2d75e2229064aeec9fd37f207",
+        "source_fact:v1:9dc2efe60df19c139185bf222c82af773e975f51c4594cdfb5e53e7e3c5148e0",
+        "source_fact:v1:f8e2338f8b70e693aa49a056267f3ad6c093564422d355c4a867b4540b9c570c",
+        "source_fact:v1:fad2f76a8b083cf4ac02df154cd2cfcbf89435eac270b171aba1279ca8a40f75"
+      ],
+      "source_published_kst": "2026-10-12T14:39+09:00",
+      "source_title": "'이란식 확전'에 심장부 뚫린 사우디…미국 참전 기로(종합)",
+      "telegram_core_fact": "후티가 ‘이란식 확전’(경제 급소 타격 전략)으로 사우디 수도 리야드의 공항을 일주일 새 네 차례 공격해 18명이 숨지고, 미국인 사망자까지 나오면서다. 올해 3.6% 역성장이 예상되는 사우디로선 이달 말 미래투자이니셔티브(FII)를 앞두고 악재가 겹쳤다.",
+      "title": "'이란식 확전'에 심장부 뚫린 사우디…미국 참전 기로(종합)"
+    },
     "title:5d1648b6e58ce59deb94db66": {
       "first_seen_kst": "2026-10-11T09:28:38+09:00",
       "lanes": {
@@ -475663,6 +476505,23 @@
       "source_title": "한화 3세 김동선, 머시너리 지분 19% 공개매수…24.8%로 확대",
       "telegram_core_fact": "김승연 한화그룹 회장의 3남인 김동선 한화머시너리앤서비스홀딩스 미래전략실장은 대상 회사 지분 19.0%를 공개매수한다. 금융감독원 전자공시시스템에 따르면 김 실장은 한화머시너리앤서비스홀딩스 보통주 1606만주(발행주식총수의 19.0%)를 1주당 8000원에 공개매수한다고 공시했다.",
       "title": "한화 3세 김동선, 머시너리 지분 19% 공개매수…24.8%로 확대"
+    },
+    "title:5f6839b8df33601e94d6ba3e": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173035",
+      "source": "매일경제",
+      "source_body_digest": "0a151e8566745f381ff79ad35f2ed0966f6c944339adeb3641187f088f53405a",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T16:31+09:00",
+      "source_title": "[구민정의 크립토포커스] 네이버·두나무 합병 다시 안갯속…디지털자산기본법 촉각",
+      "telegram_core_fact": "합병이 완료되면 네이버파이낸셜이 두나무 지분 100%를 보유하게 되기 때문에, 해당 규제가 도입될 경우 네이버파이낸셜이 두나무 지분을 대거 매각해야 하는 등 지배구조에도 변동이 일어날 것으로 보입니다.",
+      "title": "[구민정의 크립토포커스] 네이버·두나무 합병 다시 안갯속…디지털자산기본법 촉각"
     },
     "title:5f7f26acede1ff7916ad65bb": {
       "first_seen_kst": "2026-10-08T00:54:18+09:00",
@@ -484111,6 +484970,28 @@
       "source": "아시아경제",
       "title": "\"SK하이닉스 HBM처럼\"…공대생도 '특허' 배운다"
     },
+    "title:817695d86b0759570181c332": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634409",
+      "source": "이투데이",
+      "source_body_digest": "effb7230a30486cca8a75a2e35328a8c2c1b5bf591bbc198cada41174d5312d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b57eec371d3812217d6ac02214786b76477dec082785cf544fd3e8c8ebf7ec4e",
+      "source_fact_keys": [
+        "source_fact:v1:000747a59a0ee5095f529cf2218d0347599a5254131f0e947c0ba32a5173afaa",
+        "source_fact:v1:147efa9bbf91618f56e604accdfeba2a72ce79c308e9940b895a1285c67ce415",
+        "source_fact:v1:ad279ff7532bdd20042b9dc0c637aa0f6eb73def79cea1a342d74fe79e356a20",
+        "source_fact:v1:fd5dfb1bc017e891391388dbcfff40e4ae07aa1f1c15f2016d984862af2cf9d4"
+      ],
+      "source_published_kst": "2026-10-12T08:06+09:00",
+      "source_title": "한울반도체, 日 MLCC 제조사 AI 외관검사 성능개선 수주…해외 고객 확대",
+      "telegram_core_fact": "한울반도체가 일본 소재 글로벌 적층세라믹콘덴서(MLCC) 제조사로부터 외관검사설비의 AI 성능 개선 사업을 수주했다.",
+      "title": "한울반도체, 日 MLCC 제조사 AI 외관검사 성능개선 수주…해외 고객 확대"
+    },
     "title:8188e0af821f1d62baa1b0ef": {
       "first_seen_kst": "2026-09-21T10:52:59+09:00",
       "lanes": {
@@ -484318,6 +485199,29 @@
       ],
       "source_published_kst": "2026-10-05T21:20+09:00",
       "title": "이 대통령 \"부동산투기공화국 탈출 약속 반드시 지킬 것\"…하루에만 SNS 11건(종합2보)"
+    },
+    "title:829fb4491f97f23df973e7ec": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03325926645612264",
+      "source": "이데일리",
+      "source_body_digest": "c207a1effaa8cbaf72ee589e2dcf1b8796f5aef815a0648a5c911fb215f1a071",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:96b9e00bf9fa0af8872eba0e89daa11046ddcb7d6fda15bf0204382e93343063",
+      "source_fact_keys": [
+        "source_fact:v1:0fbb4574910ac8e45467190d575c0451acaeca51376aac606020dbbd79577f6b",
+        "source_fact:v1:600998d56aa0a70ba39eb5547e0d46b4093848c2d75e2229064aeec9fd37f207",
+        "source_fact:v1:9dc2efe60df19c139185bf222c82af773e975f51c4594cdfb5e53e7e3c5148e0",
+        "source_fact:v1:f8e2338f8b70e693aa49a056267f3ad6c093564422d355c4a867b4540b9c570c",
+        "source_fact:v1:fad2f76a8b083cf4ac02df154cd2cfcbf89435eac270b171aba1279ca8a40f75"
+      ],
+      "source_published_kst": "2026-10-12T14:39+09:00",
+      "source_title": "'이란식 확전'에 심장부 뚫린 사우디…미국 참전 기로(종합)",
+      "telegram_core_fact": "후티가 ‘이란식 확전’(경제 급소 타격 전략)으로 사우디 수도 리야드의 공항을 일주일 새 네 차례 공격해 18명이 숨지고, 미국인 사망자까지 나오면서다. 올해 3.6% 역성장이 예상되는 사우디로선 이달 말 미래투자이니셔티브(FII)를 앞두고 악재가 겹쳤다.",
+      "title": "'이란식 확전'에 심장부 뚫린 사우디…미국 참전 기로(종합)"
     },
     "title:82c1a1c94c16f6c3d7ab720a": {
       "first_seen_kst": "2026-10-12T11:27:57+09:00",
@@ -490494,6 +491398,25 @@
       "source_title": "이창용 전 총재 \"반도체발 착시 경계⋯양극화·수퍼사이클 중단 대비해야\"",
       "telegram_core_fact": "이창용 전 한국은행 총재가 최근 반도체 호황에 따른 경제성장률 급등과 관련해 산업 양극화와 미·중 갈등 완화에 따른 판도 변화 가능성을 지적하며 \"국가 차원에서 낙관론 이면의 리스크에 철저히 대비해야 한다\"고 경고했다.",
       "title": "이창용 전 총재 \"반도체발 착시 경계⋯양극화·수퍼사이클 중단 대비해야\""
+    },
+    "title:9939b868b071961b8e12fa4d": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173121",
+      "source": "매일경제",
+      "source_body_digest": "c62904473ce2b69737b89961b675b8bedca36ddf4ec76fa47a4199833ae96c35",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d172c8e79f6fce8b612293ea3e0944672a3a6845ec471104923facfe613e2eb9",
+      "source_fact_keys": [
+        "source_fact:v1:0ff373380018530b45e5f2e3551a620c68478a34dd17e676e796e6d878531157"
+      ],
+      "source_published_kst": "2026-10-12T18:27+09:00",
+      "source_title": "'오를땐 빨리, 내릴땐 늦게' 정유 4사",
+      "telegram_core_fact": "SK에너지, GS칼텍스, 에쓰오일, HD현대오일뱅크 등 정유 4사가 '전쟁으로 국제유가가 급등한 틈을 타 돈벌이를 한 것 아니냐'는 지적에 고개를 숙였다.",
+      "title": "'오를땐 빨리, 내릴땐 늦게' 정유 4사"
     },
     "title:9941a9fbe7e3964565abb433": {
       "first_seen_kst": "2026-09-22T23:07:58+09:00",
@@ -496821,6 +497744,25 @@
       "telegram_core_fact": "최은옥 교육부 차관은 \"이번 사업은 대학이 자율적인 구조개선을 통해 특성화 분야에 역량을 집중하고 학생들에게 수준 높은 교육을 제공할 기회가 될 것\"이라며 사립대의 경쟁력 강화를 재정 지원과 규제 완화로 뒷받침하겠다고 말했다.",
       "title": "특성화 사립대 33곳에 5년간 6천억원…정원 3% 이상 감축 | 연합뉴스"
     },
+    "title:b101aded92033edecd982d3e": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822855",
+      "source": "뉴시스",
+      "source_body_digest": "894d8bd5a26c867ed6c9c19c1306615678c8ee471ad8122322dea41935d03d8a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3d0cc12485f130c4f15e6fd95bff09358477412b4ebbd23f68ed8179299db9a4",
+      "source_fact_keys": [
+        "source_fact:v1:396d7f493cfb1d9edffe9c666dd5c8c90981e7d4aec6525c79545511bcc58443"
+      ],
+      "source_published_kst": "2026-10-12T20:18+09:00",
+      "source_title": "쿠팡, 공정위 조사 거부·개인정보 배상안 불수용…국감서 집중 추궁(종합)",
+      "telegram_core_fact": "공정위 조사에 응하지 않은 이유와 피해자 배상조정안을 수용하지 않은 배경을 둘러싸고 책임론이 불거졌고, 국회에서는 조사 거부에 대한 제재 강화와 피해 구제 실효성을 높이기 위한 입법 필요성까지 제기됐다.",
+      "title": "쿠팡, 공정위 조사 거부·개인정보 배상안 불수용…국감서 집중 추궁(종합)"
+    },
     "title:b10b8c93a0751f853a890f6b": {
       "first_seen_kst": "2026-10-08T03:51:03+09:00",
       "lanes": {
@@ -500797,6 +501739,25 @@
       "telegram_core_fact": "현대차는 첸나이 1·2공장(82만4천대)에 이어 푸네 신공장(17만대)을 본격 가동하며 인도 현지에서 총 100만대의 생산능력을 갖추게 됐다.",
       "title": "현대차, 인도 진출 30년만에 누적판매 1천만대 돌파 눈앞 | 연합뉴스"
     },
+    "title:c1216edeef8883d68bcf8a59": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822855",
+      "source": "뉴시스",
+      "source_body_digest": "894d8bd5a26c867ed6c9c19c1306615678c8ee471ad8122322dea41935d03d8a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3d0cc12485f130c4f15e6fd95bff09358477412b4ebbd23f68ed8179299db9a4",
+      "source_fact_keys": [
+        "source_fact:v1:396d7f493cfb1d9edffe9c666dd5c8c90981e7d4aec6525c79545511bcc58443"
+      ],
+      "source_published_kst": "2026-10-12T20:18+09:00",
+      "source_title": "쿠팡, 공정위 조사 거부·개인정보 배상안 불수용…국감서 집중 추궁(종합)",
+      "telegram_core_fact": "공정위 조사에 응하지 않은 이유와 피해자 배상조정안을 수용하지 않은 배경을 둘러싸고 책임론이 불거졌고, 국회에서는 조사 거부에 대한 제재 강화와 피해 구제 실효성을 높이기 위한 입법 필요성까지 제기됐다.",
+      "title": "쿠팡, 공정위 조사 거부·개인정보 배상안 불수용…국감서 집중 추궁(종합)"
+    },
     "title:c1479694d28a15ab9d3cf908": {
       "first_seen_kst": "2026-10-07T06:28:41+09:00",
       "lanes": {
@@ -501180,6 +502141,26 @@
       "source_title": "2035년까지 ‘녹색 대전환’에 1000조 투입…탄소중립·성장 동시 공략",
       "telegram_core_fact": "정부는 2035년까지 재정 200조원을 투입하고 산업은행 등 5대 정책금융기관을 통해 790조원 기후금융을 공급한다.",
       "title": "2035년까지 ‘녹색 대전환’에 1000조 투입…탄소중립·성장 동시 공략"
+    },
+    "title:c2d892f7c140c064d5683dcd": {
+      "first_seen_kst": "2026-10-12T21:44:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T21:44:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T21:44:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04647766645612264",
+      "source": "이데일리",
+      "source_body_digest": "ac63283d655e5b48f7bbfda71c8a51532442d7a1506471376dd0a3cb4a1a3b08",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ddc12fab2fd69b289e2793a679fa16fc29ce84c57b4850a619762616158245af",
+      "source_fact_keys": [
+        "source_fact:v1:7f4d1b413442ad92e575b469de17e8cdff5c84b125fbe6bdb4ab30b6ed3f3af6",
+        "source_fact:v1:f527d41eb4681bd59e7cba720e558a4402d6f1f005570dad838cb3bedc38e527"
+      ],
+      "source_published_kst": "2026-10-12T19:40+09:00",
+      "source_title": "[美특징주]아마존, AI 스타트업 디카트 인수 협상…개장전 ↑",
+      "telegram_core_fact": "아마존닷컴(AMZN)이 인공지능(AI) 스타트업 디카트 AI(Decart AI)를 약 70억달러에 인수하는 방안을 논의하고 있다.",
+      "title": "[美특징주]아마존, AI 스타트업 디카트 인수 협상…개장전 ↑"
     },
     "title:c3009bef8a71353395c67400": {
       "first_seen_kst": "2026-10-08T02:57:10+09:00",
@@ -517301,5 +518282,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-12T21:20:33+09:00"
+  "updated_at_kst": "2026-10-12T21:44:29+09:00"
 }
