@@ -24,6 +24,7 @@ STATUS=OUT/"ionq_elisity_status.md"
 KST=ZoneInfo("Asia/Seoul")
 BASELINE="ionq-elisity:agreement:2026-10-12"
 AGE_DAYS=14
+OFFICIAL_IONQ_AGREEMENT="https://ionq.com/news/ionq-to-acquire-elisity-to-accelerate-zero-trust-for-the-quantum-era"
 QUERIES=(
     'site:ionq.com/news/ Elisity IonQ acquisition',
     'site:investors.ionq.com/news/ Elisity IonQ acquisition',
@@ -90,8 +91,21 @@ def extract(root,now):
         rows.append({"key":identity,"stage":stage_name,"title":title,"publisher":publisher,"url":url,"published_kst":date.isoformat(timespec="seconds")})
     return rows
 
+def direct_official_baseline():
+    # A live request to the canonical issuer document is mandatory; RSS may be empty.
+    body=get(OFFICIAL_IONQ_AGREEMENT)
+    plain=clean(body).lower()
+    if not ("elisity" in plain and "ionq" in plain and "acquire" in plain):
+        raise RuntimeError("Official IonQ release did not match the actual acquisition")
+    return {"key":BASELINE,"stage":"인수 본계약 발표","title":"IonQ to Acquire Elisity to Accelerate Zero Trust for the Quantum Era","publisher":"IonQ 공식 보도자료","url":OFFICIAL_IONQ_AGREEMENT,"published_kst":"2026-10-12T00:00:00+09:00"}
+
 def collect(now):
     rows=[]; notes=[]
+    try:
+        rows.append(direct_official_baseline())
+        notes.append("IonQ 공식 계약 발표: 직접 열람·내용 검증 성공")
+    except Exception as exc:
+        notes.append(f"IonQ 공식 계약 발표: 직접 확인 실패 {type(exc).__name__}: {exc}")
     for query in QUERIES:
         try:
             parsed=extract(ET.fromstring(get(query_url(query))),now)
@@ -127,6 +141,8 @@ def main():
     seen=state.setdefault("seen",{})
     seen.setdefault(BASELINE,{"stage":"인수 본계약 발표","event_date":"2026-10-12","status":"기준사건"})
     rows,notes=collect(now)
+    if not any(row["key"]==BASELINE and row["publisher"]=="IonQ 공식 보도자료" for row in rows):
+        raise RuntimeError("Official IonQ acquisition baseline inaccessible: refuse to report normal monitoring")
     news=[r for r in rows if r["key"] not in seen]
     status=[
         f"# IonQ Elisity 인수 감시 · {now:%Y-%m-%d %H:%M KST}",
