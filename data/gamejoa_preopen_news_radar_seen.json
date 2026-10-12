@@ -1338,6 +1338,25 @@
       "telegram_core_fact": "김 의원은 \"아동·청소년 보호를 우려하는 신고가 1년 넘게 검토 단계에 머무는 동안 청소년 보호를 사업자의 자율규제에만 맡겨둘 수는 없다\"며 \"방미심위는 신고 접수 후 심의결정까지의 처리기한과 연장 기준을 마련하고 장기 미처리 민원의 지연 사유와 처리 예정일을 명확히 안내해야 한다\"고 말했다.",
       "title": "AI챗봇 유해콘텐츠 신고 64% '검토 중'…최장 494일 방치 논란 | 연합뉴스"
     },
+    "core:0cc2c38956198b4a5f53849a": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634418?trc=right_categori_news_estudio",
+      "source": "이투데이",
+      "source_body_digest": "09a399cb41c8e4b9282c8a5e29422fa8c2631064662b5a607ccced45208dcb43",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:478591cf4e2e377e48c2536fddcfa9867dd779f398d7189b0ab2fde8521283ec",
+      "source_fact_keys": [
+        "source_fact:v1:8c355bc477534add04abfb86af7adfba83ac0730cf960138e0f4ef25301b2374"
+      ],
+      "source_published_kst": "2026-10-12T08:22+09:00",
+      "source_title": "이란 안보수장 “美, 호르무즈 재개방 7개 조건 일부 수용⋯답변 불충분”",
+      "telegram_core_fact": "레자이 사무총장은 “미국은 이란에 여전히 불분명한 문제들을 명확히 해야 한다”며 “우리는 미국 측에 7가지 조건을 제시했고 이 조건들이 충족될 때까지 호르무즈해협을 미국에 개방하지 않을 것이며 어떠한 협상도 진행되지 않을 것이라고 분명히 밝혔다”고 말했다.",
+      "title": "이란 안보수장 “美, 호르무즈 재개방 7개 조건 일부 수용⋯답변 불충분”"
+    },
     "core:0cc7468607334f7ace549658": {
       "first_seen_kst": "2026-10-11T17:08:25+09:00",
       "lanes": {
@@ -7758,6 +7777,35 @@
       "source_title": "인천 남항 시멘트부두 사일로 증설 추진…인천해수청, 사업 허가",
       "telegram_core_fact": "인천지방해양수산청에 따르면 인천해수청은 최근 인천 남항 삼표시멘트 부두 시설을 증설하기 위해 삼표시멘트 측이 낸 비관리청 항만개발사업 시행을 허가했다.",
       "title": "인천 남항 시멘트부두 사일로 증설 추진…인천해수청, 사업 허가"
+    },
+    "core:46855f04d3582ae02bbe2254": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634518",
+      "source": "이투데이",
+      "source_body_digest": "3823e37e71c6546f03a94825420b65578dfabfdbdf969ec792601f3670c93864",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4b35446510dbde0a5ad35351bb5c63e24b28bf22c33422f1102beff243b4cef",
+      "source_fact_keys": [
+        "source_fact:v1:0d847ac3b575cee2d74536488c6d00c90dd312810362b13ab0a4a0b3f20ac713",
+        "source_fact:v1:0dc1ce2124f2e88f333a72ea6971b16929e31fadf2ad07acaa62a4c6ae4bec82",
+        "source_fact:v1:1d885ca958bfd51a599ac40339874d4c1a063d184204c666cba6ae6f8ab8766c",
+        "source_fact:v1:35a2d8b506bebe7137980b7e638882b0aabf69027a776ae06aebe25946de6964",
+        "source_fact:v1:83006461197cd41b79e092cbaddb1694d49341a3c1dc2e0f94683ff2c9e781e7",
+        "source_fact:v1:88d16c31d343c7e308b781ecc70b14d11a28565bc2edc370682a186112c72dd9",
+        "source_fact:v1:959674264d090ae5ca121cf5713b6e30d25b1b8b0311ea1fce1a7bbbaa26d08d",
+        "source_fact:v1:a7cb01e067c25f7c70fe0b3275e6c7df001ee834407617c9f43cc15a3a2873c4",
+        "source_fact:v1:b314af6b66ce527a4f8650165b697d4487d92185b63ccd0343c2ac84f632557c",
+        "source_fact:v1:dddfc534c4e8e3bcba596ea74f8fd743caea1a72a1a9f4f315b0100488584def",
+        "source_fact:v1:ece1c6f7a7eabbda86d3f644aa0507859a32c1c8a231ca0151cfea272c8a8831"
+      ],
+      "source_published_kst": "2026-10-12T09:48+09:00",
+      "source_title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파",
+      "telegram_core_fact": "KB자산운용의 'RISE 코리아밸류업위클리고정커버드콜 상장지수펀드(ETF)' 순자산이 4000억원을 돌파했다. KB자산운용에 따르면 'RISE 코리아밸류업위클리고정커버드콜 ETF'의 순자산이 4000억원을 넘어섰다.",
+      "title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파"
     },
     "core:46aab1f46f9593acf330fa79": {
       "first_seen_kst": "2026-10-11T22:57:06+09:00",
@@ -17753,6 +17801,27 @@
       "telegram_core_fact": "테크크런치에 따르면 미국 자율주행 철도 스타트업 패러렐시스템즈(Parallel Systems)는 최근 1억달러(약 1338억원) 시리즈C 투자를 유치했다.",
       "title": "\"2류 회사에 투자\"…VC 거물의 공개 저격에 실리콘밸리 '발칵'"
     },
+    "core:aab7dfbf216531b0ebba619b": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634414?trc=main_list_news",
+      "source": "이투데이",
+      "source_body_digest": "ac5207f6de1e83e64546a9240a2a5636bcfd2f9bcde46440260b3abe9e079374",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7f30c3e90e3368e3ade6203a73f0b8fc8433ad62a1c11ca1af74ae678a0288f2",
+      "source_fact_keys": [
+        "source_fact:v1:1294cee6d9d7df0042dedc9878e9b94b6d443627b34991b46e1417d6ddba95b5",
+        "source_fact:v1:6cd86506c9edb8279efed8a7f22b6ba4122d6004fa18d239fd0629f22bd44259",
+        "source_fact:v1:d4c2209ad1f5e3a33def285c95d1350f2d29c93ac5a14d955b0593e51cacb9c2"
+      ],
+      "source_published_kst": "2026-10-12T08:12+09:00",
+      "source_title": "키움운용, 국내 첫 'MLCC·AI기판 ETF' 상장…무라타·삼성전기 집중 투자",
+      "telegram_core_fact": "키움투자자산운용은 13일 'KIWOOM 글로벌MLCC&AI기판TOP4+ ETF'를 유가증권시장에 신규 상장한다고 12일 밝혔다.",
+      "title": "키움운용, 국내 첫 'MLCC·AI기판 ETF' 상장…무라타·삼성전기 집중 투자"
+    },
     "core:aad9ffb91714552029d59b92": {
       "first_seen_kst": "2026-10-12T08:26:25+09:00",
       "lanes": {
@@ -22892,6 +22961,25 @@
       "telegram_core_fact": "타이탄 마이닝(TII)은 전액 출자 자회사 엠파이어스테이트마인즈(ESM)가 미 육군과 앨라배마주 애니스턴 육군 보급창 내 약 97에이커 부지에 핵심 광물 가공시설을 짓기 위한 '강화 활용 임대(EUL)'의 주요 상업 조건을 담은 텀싯(term sheet)에 서명했다고 7일 발표했다.",
       "title": "타이탄 마이닝, 美 육군과 흑연시설 임대 합의..최장 100년 부지 확보"
     },
+    "core:da4afa4ba0a47b7731303dd6": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634462",
+      "source": "이투데이",
+      "source_body_digest": "7f5e4de77a9b71fbfa8fd2389c8d8a6c43f2df3061b761f958a1645e42f0620f",
+      "source_event_identity": "source_event:v2:intraday_equity:2c807e7c89767e2e461da44dc4f1db5e47bd1ceb6e3ee22e645f855d38d13052",
+      "source_fact_identity": "source_facts:v1:2d74049c82320a925d7c5fe2b205cf4ce6cc912860edb6603a902f26206f8b7c",
+      "source_fact_keys": [
+        "source_fact:v1:45e598a985f7d3b6a4ee6351255aabe2973c8b9664f8ac1c7cd672a8f1b48b5b"
+      ],
+      "source_published_kst": "2026-10-12T09:13+09:00",
+      "source_title": "[특징주] 납 배출 주사 논란…DN오토모티브, 8%대 급락",
+      "telegram_core_fact": "한국거래소 기준 12일 오전 9시6분 DN오토모티브는 8.74% 내린 4만4900원에 거래됐다. 등락률은 전 거래일 대비다.",
+      "title": "[특징주] 납 배출 주사 논란…DN오토모티브, 8%대 급락"
+    },
     "core:da946a0c0fad08753b9a4d5f": {
       "first_seen_kst": "2026-10-12T09:05:29+09:00",
       "lanes": {
@@ -22908,6 +22996,32 @@
       "source_title": "현대ENG, H형강 활용 모듈러 접합 기술 인증…조립 시간 20% 단축",
       "telegram_core_fact": "현대엔지니어링은 이번 인증을 계기로 데이터센터와 산업건축 분야를 중심으로 탈현장건설(OSC·Off-Site Construction) 기술 적용을 확대할 계획이다.",
       "title": "현대ENG, H형강 활용 모듈러 접합 기술 인증…조립 시간 20% 단축"
+    },
+    "core:dabe58b06750c3bfd73bd7d2": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675412",
+      "source": "블로터",
+      "source_body_digest": "8b59881ed958c18da1177b089f69ffe08d7c760f065468f129299e011b9235b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a43c8d9ef9dcd8954bc4a2a605bf35bbea03b55e3e4e9c5e977b90281f522420",
+      "source_fact_keys": [
+        "source_fact:v1:0b5f3d8bb194a910dd55b8906cf33917183f0abe490fc236d2c410ba99747e50",
+        "source_fact:v1:2307281151c300cf1c88afbbfd9d632481782328dda8772b61c1fc77d51b8012",
+        "source_fact:v1:49c62670eca5dfd8759f85a6bad20e472b3cc6ad542c0817ee6b9c2e05b459ec",
+        "source_fact:v1:715fcd69b849584f24eb9fede0e9181783702589e9101172b8209d0db8b0c50c",
+        "source_fact:v1:81019679967faa5a2f9dd0b81875d7f702faf58507980cdb185e7bf5d16af9d0",
+        "source_fact:v1:b1b81dee72a3aab297b06eeb08738ffd167b270a260b54eb40d4a5cadeff8d6a",
+        "source_fact:v1:b567f205fab1358c08af992d0149caebbb939c71e32d4f8db5cdb695d5588c04",
+        "source_fact:v1:c10310df02fffa31f49a8c47228a31424be329e3d8ef081c7d268bf266037a7b"
+      ],
+      "source_published_kst": "2026-10-12T09:24+09:00",
+      "source_title": "한화 3세 김동선, 머시너리 지분 19% 공개매수…24.8%로 확대",
+      "telegram_core_fact": "김승연 한화그룹 회장의 3남인 김동선 한화머시너리앤서비스홀딩스 미래전략실장은 대상 회사 지분 19.0%를 공개매수한다. 금융감독원 전자공시시스템에 따르면 김 실장은 한화머시너리앤서비스홀딩스 보통주 1606만주(발행주식총수의 19.0%)를 1주당 8000원에 공개매수한다고 공시했다.",
+      "title": "한화 3세 김동선, 머시너리 지분 19% 공개매수…24.8%로 확대"
     },
     "core:daffff8980018db87e1c4d87": {
       "first_seen_kst": "2026-10-08T12:46:54+09:00",
@@ -25546,6 +25660,30 @@
       "source_title": "위고비·마운자로 양강 깨질까…국산 비만약 '에페' 출격 | 연합뉴스",
       "telegram_core_fact": "비만약 시장을 외국 업체가 과점한 가운데 한미약품이 개발한 에페가 최근 식품의약품안전처로부터 국내 45번째 신약으로 허가를 얻었다.",
       "title": "위고비·마운자로 양강 깨질까…국산 비만약 '에페' 출격 | 연합뉴스"
+    },
+    "core:f4a7fad0d4355c9db13b436f": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://m.edaily.co.kr/News/Read?newsId=01872886645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "dc285a19b989385db35c5b67521aa481857db9d6fc1e3059fa4e553b03a4c425",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bdbc41d0280a355ada73d702026b1ffed3683bf025c00532de9cc1afc092562e",
+      "source_fact_keys": [
+        "source_fact:v1:37db4e7c72c52cb63d7e8fea1690af73d2922e0eb2a119f085e2d340027e2e47",
+        "source_fact:v1:5af73700b2f541e8d0aa28af87f8892c2b4e06a1efedbee74e913c5bb0e89c20",
+        "source_fact:v1:5fb66deca4c0ad44c5c87a1b92b51cd15fc241a673b6d0ab1771aa8f20f4b3e2",
+        "source_fact:v1:76c9639e3b7a3aa5a106923f8fca1fb57abb0267870674ae9ecc14d92f984da9",
+        "source_fact:v1:95d54b642efb8a4af81c36cf5b2c095c6e15c9f7cb97e2ee9aa949a8cf4fa014",
+        "source_fact:v1:a14906300b1b3b782635a3cc9e5aad6cdad38e811f90ee5721d1e7a655c6528c"
+      ],
+      "source_published_kst": "2026-10-12T07:08+09:00",
+      "source_title": "\"韓당국자, 알래스카에 'LNG 상업성 있어야 투자' 전달\"",
+      "telegram_core_fact": "이중 전략적 투자와 관련해 양국은 미 텍사스주 엔시날에 가스복합화력발전소를 건설하는 223억달러 사업을 프로젝트 1호로 확정했으며, 대형 원전 8기 건설 사업과 알래스카 액화천연가스(LNG) 프로젝트는 향후 추가 협의를 거치기로 발표한 상태다.",
+      "title": "\"韓당국자, 알래스카에 'LNG 상업성 있어야 투자' 전달\""
     },
     "core:f4cd30b7b4430facd2b3f2b0": {
       "first_seen_kst": "2026-10-10T06:02:39+09:00",
@@ -28467,28 +28605,21 @@
     "event:242c04e115c71f36e3e5a541": {
       "first_seen_kst": "2026-10-12T01:34:33+09:00",
       "lanes": {
-        "live": "2026-10-12T08:26:25+09:00"
+        "live": "2026-10-12T09:53:29+09:00"
       },
-      "last_seen_kst": "2026-10-12T08:26:25+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=02059846645612264",
-      "source": "이데일리",
-      "source_body_digest": "bf414b60892a16a816afd51336806a46e346f6907b511a06fde108cccd8be175",
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634418?trc=right_categori_news_estudio",
+      "source": "이투데이",
+      "source_body_digest": "09a399cb41c8e4b9282c8a5e29422fa8c2631064662b5a607ccced45208dcb43",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:41ba8bb1f58e20e456c209d196e52430135a467ee56011e0aac24658d1e4a53b",
+      "source_fact_identity": "source_facts:v1:478591cf4e2e377e48c2536fddcfa9867dd779f398d7189b0ab2fde8521283ec",
       "source_fact_keys": [
-        "source_fact:v1:1c02b2767ae93619e617761cdd386d97832c8b3510d2dd0047a5e51099053fb4",
-        "source_fact:v1:2e8ce7e2385cc0e76cccfd9f690f789ce17fa861b3155365d2675260db3bcff5",
-        "source_fact:v1:3d0b7b1c5cb38b40410146eb75611a56875f72d92440d590d9411d9039d2d282",
-        "source_fact:v1:43f5cd21b13f2a3f7b393774b2a23cb9a9e48cb16e3bc5bda8b0aeb7314afb80",
-        "source_fact:v1:814b27077838525b15c82c5283da00b218dcc63ae3684462d3a36084e7dd27d8",
-        "source_fact:v1:d173271a1c60d76fa69655cfec4240106fddcce76c2316f1c0a3af538da1357b",
-        "source_fact:v1:da1038a36845a2a756aa18b84927a391de4fd4f07aa51a9aba6908fa30801974",
-        "source_fact:v1:df14b665d0379db660e0d649d3cd799922beeeb47c059e0dc3b08081ac0a9b59"
+        "source_fact:v1:8c355bc477534add04abfb86af7adfba83ac0730cf960138e0f4ef25301b2374"
       ],
-      "source_published_kst": "2026-10-12T08:06+09:00",
-      "source_title": "중동발 유가 불안에 강달러까지…환율 상승 압력[외환브리핑]",
-      "telegram_core_fact": "지난 9일(현지시간) 브렌트유 선물은 배럴당 104.72달러로 전 거래일보다 0.42% 상승 마감했다.",
-      "title": "중동발 유가 불안에 강달러까지…환율 상승 압력[외환브리핑]"
+      "source_published_kst": "2026-10-12T08:22+09:00",
+      "source_title": "이란 안보수장 “美, 호르무즈 재개방 7개 조건 일부 수용⋯답변 불충분”",
+      "telegram_core_fact": "레자이 사무총장은 “미국은 이란에 여전히 불분명한 문제들을 명확히 해야 한다”며 “우리는 미국 측에 7가지 조건을 제시했고 이 조건들이 충족될 때까지 호르무즈해협을 미국에 개방하지 않을 것이며 어떠한 협상도 진행되지 않을 것이라고 분명히 밝혔다”고 말했다.",
+      "title": "이란 안보수장 “美, 호르무즈 재개방 7개 조건 일부 수용⋯답변 불충분”"
     },
     "event:243b9268c0c661c2e567eb0a": {
       "first_seen_kst": "2026-09-30T11:15:27+09:00",
@@ -29778,25 +29909,23 @@
     "event:4737714e3ad20fc71dee8088": {
       "first_seen_kst": "2026-10-12T05:58:12+09:00",
       "lanes": {
-        "live": "2026-10-12T09:29:59+09:00"
+        "live": "2026-10-12T09:53:29+09:00"
       },
-      "last_seen_kst": "2026-10-12T09:29:59+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261012029700008",
-      "source": "연합뉴스",
-      "source_body_digest": "dc90ff989b5486584d96903abdd0093c2a1953771e043551521acbd36df1a319",
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634414?trc=main_list_news",
+      "source": "이투데이",
+      "source_body_digest": "ac5207f6de1e83e64546a9240a2a5636bcfd2f9bcde46440260b3abe9e079374",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:c8c40747285dbcec899bc9c27665f4cdce90a47bb14a855093bab2cff8aa4ba4",
+      "source_fact_identity": "source_facts:v1:7f30c3e90e3368e3ade6203a73f0b8fc8433ad62a1c11ca1af74ae678a0288f2",
       "source_fact_keys": [
-        "source_fact:v1:1d2104d5835248dccced728509491896475672bd6aff6414f608028a5d8e4bce",
-        "source_fact:v1:95dfaad76b19a23990c566d0f19125314277fd05c2ef84cb5691fd2245ae72a8",
-        "source_fact:v1:b3c26909e5ba8488559a399f062db399e8eb970a509c2665ab81451f91ee1f69",
-        "source_fact:v1:b91063376df41c359caff6f1511be178ac3065458eff84a7be0443be844aee25",
-        "source_fact:v1:f0606c3cce7d814f8c6379f2737f4fdabef078ffc74bd7f7dea5f7f0f75a7d1a"
+        "source_fact:v1:1294cee6d9d7df0042dedc9878e9b94b6d443627b34991b46e1417d6ddba95b5",
+        "source_fact:v1:6cd86506c9edb8279efed8a7f22b6ba4122d6004fa18d239fd0629f22bd44259",
+        "source_fact:v1:d4c2209ad1f5e3a33def285c95d1350f2d29c93ac5a14d955b0593e51cacb9c2"
       ],
-      "source_published_kst": "2026-10-12T09:08+09:00",
-      "source_title": "DS운용, 'AI 반도체 밸류체인 투자' 액티브 ETF 13일 상장 | 연합뉴스",
-      "telegram_core_fact": "DS자산운용은 12일 인공지능(AI) 반도체 산업 관련 기업에 투자하는 'DS AI반도체액티브 상장지수펀드(ETF)'(종목코드 0243M0)를 오는 13일 유가증권시장에 상장한다고 밝혔다.",
-      "title": "DS운용, 'AI 반도체 밸류체인 투자' 액티브 ETF 13일 상장 | 연합뉴스"
+      "source_published_kst": "2026-10-12T08:12+09:00",
+      "source_title": "키움운용, 국내 첫 'MLCC·AI기판 ETF' 상장…무라타·삼성전기 집중 투자",
+      "telegram_core_fact": "키움투자자산운용은 13일 'KIWOOM 글로벌MLCC&AI기판TOP4+ ETF'를 유가증권시장에 신규 상장한다고 12일 밝혔다.",
+      "title": "키움운용, 국내 첫 'MLCC·AI기판 ETF' 상장…무라타·삼성전기 집중 투자"
     },
     "event:47c19f2c3fa5467af5330541": {
       "first_seen_kst": "2026-10-07T07:24:41+09:00",
@@ -30673,6 +30802,25 @@
       "source_title": "\"SK하이닉스 솔리다임, 내년 美IPO 위한 주관사 선정\"",
       "telegram_core_fact": "올해 8월 솔리다임은 코어위브와 기업용 솔리드스테이트드라이브(SSD) 용량 공급 계약을 체결했다.",
       "title": "\"SK하이닉스 솔리다임, 내년 美IPO 위한 주관사 선정\""
+    },
+    "event:5adf24a879e79c201907ca75": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634462",
+      "source": "이투데이",
+      "source_body_digest": "7f5e4de77a9b71fbfa8fd2389c8d8a6c43f2df3061b761f958a1645e42f0620f",
+      "source_event_identity": "source_event:v2:intraday_equity:2c807e7c89767e2e461da44dc4f1db5e47bd1ceb6e3ee22e645f855d38d13052",
+      "source_fact_identity": "source_facts:v1:2d74049c82320a925d7c5fe2b205cf4ce6cc912860edb6603a902f26206f8b7c",
+      "source_fact_keys": [
+        "source_fact:v1:45e598a985f7d3b6a4ee6351255aabe2973c8b9664f8ac1c7cd672a8f1b48b5b"
+      ],
+      "source_published_kst": "2026-10-12T09:13+09:00",
+      "source_title": "[특징주] 납 배출 주사 논란…DN오토모티브, 8%대 급락",
+      "telegram_core_fact": "한국거래소 기준 12일 오전 9시6분 DN오토모티브는 8.74% 내린 4만4900원에 거래됐다. 등락률은 전 거래일 대비다.",
+      "title": "[특징주] 납 배출 주사 논란…DN오토모티브, 8%대 급락"
     },
     "event:5b4ee437f1fc9c90592a5e3d": {
       "first_seen_kst": "2026-09-29T15:27:46+09:00",
@@ -36467,6 +36615,30 @@
       "source_published_kst": "2026-10-06T17:10+09:00",
       "title": "반도체 기판 전쟁 다음은 유리…삼성전기, 내년말 생산라인 가동 목표"
     },
+    "event:e2b1e22882adbfa731f28ef1": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://m.edaily.co.kr/News/Read?newsId=01872886645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "dc285a19b989385db35c5b67521aa481857db9d6fc1e3059fa4e553b03a4c425",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bdbc41d0280a355ada73d702026b1ffed3683bf025c00532de9cc1afc092562e",
+      "source_fact_keys": [
+        "source_fact:v1:37db4e7c72c52cb63d7e8fea1690af73d2922e0eb2a119f085e2d340027e2e47",
+        "source_fact:v1:5af73700b2f541e8d0aa28af87f8892c2b4e06a1efedbee74e913c5bb0e89c20",
+        "source_fact:v1:5fb66deca4c0ad44c5c87a1b92b51cd15fc241a673b6d0ab1771aa8f20f4b3e2",
+        "source_fact:v1:76c9639e3b7a3aa5a106923f8fca1fb57abb0267870674ae9ecc14d92f984da9",
+        "source_fact:v1:95d54b642efb8a4af81c36cf5b2c095c6e15c9f7cb97e2ee9aa949a8cf4fa014",
+        "source_fact:v1:a14906300b1b3b782635a3cc9e5aad6cdad38e811f90ee5721d1e7a655c6528c"
+      ],
+      "source_published_kst": "2026-10-12T07:08+09:00",
+      "source_title": "\"韓당국자, 알래스카에 'LNG 상업성 있어야 투자' 전달\"",
+      "telegram_core_fact": "이중 전략적 투자와 관련해 양국은 미 텍사스주 엔시날에 가스복합화력발전소를 건설하는 223억달러 사업을 프로젝트 1호로 확정했으며, 대형 원전 8기 건설 사업과 알래스카 액화천연가스(LNG) 프로젝트는 향후 추가 협의를 거치기로 발표한 상태다.",
+      "title": "\"韓당국자, 알래스카에 'LNG 상업성 있어야 투자' 전달\""
+    },
     "event:e3567ec4f7a11f57551dc919": {
       "first_seen_kst": "2026-10-12T05:09:39+09:00",
       "lanes": {
@@ -36958,6 +37130,35 @@
       "source_title": "트럼프 \"내달 3일까지 이란 공격 안해\"",
       "telegram_core_fact": "트럼프 대통령은 8일(현지시간) SNS에서 “이란에 대한 봉쇄 조치는 전면적으로 유지될 것”이라면서도 “11월 3일 치러지는 중간선거 이전에는 어떤 시점에도 이란을 공격하지 않을 것”이라고 밝혔다. 도널드 트럼프 미국 대통령이 다음달 3일 중간선거 전까지 이란을 공격하지 않겠다고 밝히면서 급등하던 국제 유가가 하락했다.",
       "title": "트럼프 \"내달 3일까지 이란 공격 안해\""
+    },
+    "event:ed9afcaa219ba32c7d3e20ee": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634518",
+      "source": "이투데이",
+      "source_body_digest": "3823e37e71c6546f03a94825420b65578dfabfdbdf969ec792601f3670c93864",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4b35446510dbde0a5ad35351bb5c63e24b28bf22c33422f1102beff243b4cef",
+      "source_fact_keys": [
+        "source_fact:v1:0d847ac3b575cee2d74536488c6d00c90dd312810362b13ab0a4a0b3f20ac713",
+        "source_fact:v1:0dc1ce2124f2e88f333a72ea6971b16929e31fadf2ad07acaa62a4c6ae4bec82",
+        "source_fact:v1:1d885ca958bfd51a599ac40339874d4c1a063d184204c666cba6ae6f8ab8766c",
+        "source_fact:v1:35a2d8b506bebe7137980b7e638882b0aabf69027a776ae06aebe25946de6964",
+        "source_fact:v1:83006461197cd41b79e092cbaddb1694d49341a3c1dc2e0f94683ff2c9e781e7",
+        "source_fact:v1:88d16c31d343c7e308b781ecc70b14d11a28565bc2edc370682a186112c72dd9",
+        "source_fact:v1:959674264d090ae5ca121cf5713b6e30d25b1b8b0311ea1fce1a7bbbaa26d08d",
+        "source_fact:v1:a7cb01e067c25f7c70fe0b3275e6c7df001ee834407617c9f43cc15a3a2873c4",
+        "source_fact:v1:b314af6b66ce527a4f8650165b697d4487d92185b63ccd0343c2ac84f632557c",
+        "source_fact:v1:dddfc534c4e8e3bcba596ea74f8fd743caea1a72a1a9f4f315b0100488584def",
+        "source_fact:v1:ece1c6f7a7eabbda86d3f644aa0507859a32c1c8a231ca0151cfea272c8a8831"
+      ],
+      "source_published_kst": "2026-10-12T09:48+09:00",
+      "source_title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파",
+      "telegram_core_fact": "KB자산운용의 'RISE 코리아밸류업위클리고정커버드콜 상장지수펀드(ETF)' 순자산이 4000억원을 돌파했다. KB자산운용에 따르면 'RISE 코리아밸류업위클리고정커버드콜 ETF'의 순자산이 4000억원을 넘어섰다.",
+      "title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파"
     },
     "event:ee2445b0912c043ab1270e54": {
       "first_seen_kst": "2026-10-05T15:39:46+09:00",
@@ -38092,6 +38293,25 @@
       ],
       "source_published_kst": "2026-10-07T11:31+09:00",
       "title": "역외IB, 국내 인가 없인 한국물 영업 제한…당국 의견수렴 | 연합뉴스"
+    },
+    "fact:0287dd2593288473c448ff05": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634462",
+      "source": "이투데이",
+      "source_body_digest": "7f5e4de77a9b71fbfa8fd2389c8d8a6c43f2df3061b761f958a1645e42f0620f",
+      "source_event_identity": "source_event:v2:intraday_equity:2c807e7c89767e2e461da44dc4f1db5e47bd1ceb6e3ee22e645f855d38d13052",
+      "source_fact_identity": "source_facts:v1:2d74049c82320a925d7c5fe2b205cf4ce6cc912860edb6603a902f26206f8b7c",
+      "source_fact_keys": [
+        "source_fact:v1:45e598a985f7d3b6a4ee6351255aabe2973c8b9664f8ac1c7cd672a8f1b48b5b"
+      ],
+      "source_published_kst": "2026-10-12T09:13+09:00",
+      "source_title": "[특징주] 납 배출 주사 논란…DN오토모티브, 8%대 급락",
+      "telegram_core_fact": "한국거래소 기준 12일 오전 9시6분 DN오토모티브는 8.74% 내린 4만4900원에 거래됐다. 등락률은 전 거래일 대비다.",
+      "title": "[특징주] 납 배출 주사 논란…DN오토모티브, 8%대 급락"
     },
     "fact:029fa146440a9671f99a020d": {
       "first_seen_kst": "2026-10-07T14:18:25+09:00",
@@ -48370,6 +48590,30 @@
       "source_published_kst": "2026-10-06T15:28+09:00",
       "title": "한솔케미칼, 대만에 340억원 규모 반도체 소재 기지 투자 승인"
     },
+    "fact:41de328fdcc3353bff4844e0": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://m.edaily.co.kr/News/Read?newsId=01872886645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "dc285a19b989385db35c5b67521aa481857db9d6fc1e3059fa4e553b03a4c425",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bdbc41d0280a355ada73d702026b1ffed3683bf025c00532de9cc1afc092562e",
+      "source_fact_keys": [
+        "source_fact:v1:37db4e7c72c52cb63d7e8fea1690af73d2922e0eb2a119f085e2d340027e2e47",
+        "source_fact:v1:5af73700b2f541e8d0aa28af87f8892c2b4e06a1efedbee74e913c5bb0e89c20",
+        "source_fact:v1:5fb66deca4c0ad44c5c87a1b92b51cd15fc241a673b6d0ab1771aa8f20f4b3e2",
+        "source_fact:v1:76c9639e3b7a3aa5a106923f8fca1fb57abb0267870674ae9ecc14d92f984da9",
+        "source_fact:v1:95d54b642efb8a4af81c36cf5b2c095c6e15c9f7cb97e2ee9aa949a8cf4fa014",
+        "source_fact:v1:a14906300b1b3b782635a3cc9e5aad6cdad38e811f90ee5721d1e7a655c6528c"
+      ],
+      "source_published_kst": "2026-10-12T07:08+09:00",
+      "source_title": "\"韓당국자, 알래스카에 'LNG 상업성 있어야 투자' 전달\"",
+      "telegram_core_fact": "이중 전략적 투자와 관련해 양국은 미 텍사스주 엔시날에 가스복합화력발전소를 건설하는 223억달러 사업을 프로젝트 1호로 확정했으며, 대형 원전 8기 건설 사업과 알래스카 액화천연가스(LNG) 프로젝트는 향후 추가 협의를 거치기로 발표한 상태다.",
+      "title": "\"韓당국자, 알래스카에 'LNG 상업성 있어야 투자' 전달\""
+    },
     "fact:422faf1fd764fce8de7fb7aa": {
       "first_seen_kst": "2026-10-12T02:27:00+09:00",
       "lanes": {
@@ -56829,6 +57073,27 @@
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "\"일주일새 12% 올랐다\"…전고체 ETF 뛰는데 뭉칫돈 향한 곳은"
     },
+    "fact:79a2ca63a035747609f0363f": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634414?trc=main_list_news",
+      "source": "이투데이",
+      "source_body_digest": "ac5207f6de1e83e64546a9240a2a5636bcfd2f9bcde46440260b3abe9e079374",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7f30c3e90e3368e3ade6203a73f0b8fc8433ad62a1c11ca1af74ae678a0288f2",
+      "source_fact_keys": [
+        "source_fact:v1:1294cee6d9d7df0042dedc9878e9b94b6d443627b34991b46e1417d6ddba95b5",
+        "source_fact:v1:6cd86506c9edb8279efed8a7f22b6ba4122d6004fa18d239fd0629f22bd44259",
+        "source_fact:v1:d4c2209ad1f5e3a33def285c95d1350f2d29c93ac5a14d955b0593e51cacb9c2"
+      ],
+      "source_published_kst": "2026-10-12T08:12+09:00",
+      "source_title": "키움운용, 국내 첫 'MLCC·AI기판 ETF' 상장…무라타·삼성전기 집중 투자",
+      "telegram_core_fact": "키움투자자산운용은 13일 'KIWOOM 글로벌MLCC&AI기판TOP4+ ETF'를 유가증권시장에 신규 상장한다고 12일 밝혔다.",
+      "title": "키움운용, 국내 첫 'MLCC·AI기판 ETF' 상장…무라타·삼성전기 집중 투자"
+    },
     "fact:79c7332816d904accd2e1639": {
       "first_seen_kst": "2026-10-10T07:01:20+09:00",
       "lanes": {
@@ -63549,6 +63814,25 @@
       "source_published_kst": "2026-10-06T10:35+09:00",
       "title": "거버넌스포럼, 최태원 회장 SK 지분 매각에 '3%룰 회피' 비판"
     },
+    "fact:9ea55cad43392a9e47d9e30b": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634418?trc=right_categori_news_estudio",
+      "source": "이투데이",
+      "source_body_digest": "09a399cb41c8e4b9282c8a5e29422fa8c2631064662b5a607ccced45208dcb43",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:478591cf4e2e377e48c2536fddcfa9867dd779f398d7189b0ab2fde8521283ec",
+      "source_fact_keys": [
+        "source_fact:v1:8c355bc477534add04abfb86af7adfba83ac0730cf960138e0f4ef25301b2374"
+      ],
+      "source_published_kst": "2026-10-12T08:22+09:00",
+      "source_title": "이란 안보수장 “美, 호르무즈 재개방 7개 조건 일부 수용⋯답변 불충분”",
+      "telegram_core_fact": "레자이 사무총장은 “미국은 이란에 여전히 불분명한 문제들을 명확히 해야 한다”며 “우리는 미국 측에 7가지 조건을 제시했고 이 조건들이 충족될 때까지 호르무즈해협을 미국에 개방하지 않을 것이며 어떠한 협상도 진행되지 않을 것이라고 분명히 밝혔다”고 말했다.",
+      "title": "이란 안보수장 “美, 호르무즈 재개방 7개 조건 일부 수용⋯답변 불충분”"
+    },
     "fact:9eef7b72dc8d62d084275aef": {
       "first_seen_kst": "2026-10-05T20:04:01+09:00",
       "lanes": {
@@ -66797,6 +67081,32 @@
       ],
       "source_published_kst": "2026-10-06T18:04+09:00",
       "title": "노벨티노빌리티, 7443억 기술 수출"
+    },
+    "fact:b38927f9c206eb4ceec62f99": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675412",
+      "source": "블로터",
+      "source_body_digest": "8b59881ed958c18da1177b089f69ffe08d7c760f065468f129299e011b9235b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a43c8d9ef9dcd8954bc4a2a605bf35bbea03b55e3e4e9c5e977b90281f522420",
+      "source_fact_keys": [
+        "source_fact:v1:0b5f3d8bb194a910dd55b8906cf33917183f0abe490fc236d2c410ba99747e50",
+        "source_fact:v1:2307281151c300cf1c88afbbfd9d632481782328dda8772b61c1fc77d51b8012",
+        "source_fact:v1:49c62670eca5dfd8759f85a6bad20e472b3cc6ad542c0817ee6b9c2e05b459ec",
+        "source_fact:v1:715fcd69b849584f24eb9fede0e9181783702589e9101172b8209d0db8b0c50c",
+        "source_fact:v1:81019679967faa5a2f9dd0b81875d7f702faf58507980cdb185e7bf5d16af9d0",
+        "source_fact:v1:b1b81dee72a3aab297b06eeb08738ffd167b270a260b54eb40d4a5cadeff8d6a",
+        "source_fact:v1:b567f205fab1358c08af992d0149caebbb939c71e32d4f8db5cdb695d5588c04",
+        "source_fact:v1:c10310df02fffa31f49a8c47228a31424be329e3d8ef081c7d268bf266037a7b"
+      ],
+      "source_published_kst": "2026-10-12T09:24+09:00",
+      "source_title": "한화 3세 김동선, 머시너리 지분 19% 공개매수…24.8%로 확대",
+      "telegram_core_fact": "김승연 한화그룹 회장의 3남인 김동선 한화머시너리앤서비스홀딩스 미래전략실장은 대상 회사 지분 19.0%를 공개매수한다. 금융감독원 전자공시시스템에 따르면 김 실장은 한화머시너리앤서비스홀딩스 보통주 1606만주(발행주식총수의 19.0%)를 1주당 8000원에 공개매수한다고 공시했다.",
+      "title": "한화 3세 김동선, 머시너리 지분 19% 공개매수…24.8%로 확대"
     },
     "fact:b392dd18cd349f1d33026320": {
       "first_seen_kst": "2026-10-06T22:51:44+09:00",
@@ -72339,6 +72649,35 @@
       "source_title": "SK하이닉스 솔리다임, 美 상장 채비…100억달러 조달 관측",
       "telegram_core_fact": "솔리다임은 이번 IPO를 통해 약 100억 달러(약 13조4000억원)를 조달할 것으로 예상된다. 두 은행은 솔리다임의 상장 전 자금 조달을 위한 투자 유치 작업에도 참여할 것으로 관측된다.",
       "title": "SK하이닉스 솔리다임, 美 상장 채비…100억달러 조달 관측"
+    },
+    "fact:d43d70f9e83ed456330d17de": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634518",
+      "source": "이투데이",
+      "source_body_digest": "3823e37e71c6546f03a94825420b65578dfabfdbdf969ec792601f3670c93864",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4b35446510dbde0a5ad35351bb5c63e24b28bf22c33422f1102beff243b4cef",
+      "source_fact_keys": [
+        "source_fact:v1:0d847ac3b575cee2d74536488c6d00c90dd312810362b13ab0a4a0b3f20ac713",
+        "source_fact:v1:0dc1ce2124f2e88f333a72ea6971b16929e31fadf2ad07acaa62a4c6ae4bec82",
+        "source_fact:v1:1d885ca958bfd51a599ac40339874d4c1a063d184204c666cba6ae6f8ab8766c",
+        "source_fact:v1:35a2d8b506bebe7137980b7e638882b0aabf69027a776ae06aebe25946de6964",
+        "source_fact:v1:83006461197cd41b79e092cbaddb1694d49341a3c1dc2e0f94683ff2c9e781e7",
+        "source_fact:v1:88d16c31d343c7e308b781ecc70b14d11a28565bc2edc370682a186112c72dd9",
+        "source_fact:v1:959674264d090ae5ca121cf5713b6e30d25b1b8b0311ea1fce1a7bbbaa26d08d",
+        "source_fact:v1:a7cb01e067c25f7c70fe0b3275e6c7df001ee834407617c9f43cc15a3a2873c4",
+        "source_fact:v1:b314af6b66ce527a4f8650165b697d4487d92185b63ccd0343c2ac84f632557c",
+        "source_fact:v1:dddfc534c4e8e3bcba596ea74f8fd743caea1a72a1a9f4f315b0100488584def",
+        "source_fact:v1:ece1c6f7a7eabbda86d3f644aa0507859a32c1c8a231ca0151cfea272c8a8831"
+      ],
+      "source_published_kst": "2026-10-12T09:48+09:00",
+      "source_title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파",
+      "telegram_core_fact": "KB자산운용의 'RISE 코리아밸류업위클리고정커버드콜 상장지수펀드(ETF)' 순자산이 4000억원을 돌파했다. KB자산운용에 따르면 'RISE 코리아밸류업위클리고정커버드콜 ETF'의 순자산이 4000억원을 넘어섰다.",
+      "title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파"
     },
     "fact:d43de330aaf3c13dda4fd7d7": {
       "first_seen_kst": "2026-10-11T09:08:30+09:00",
@@ -80718,6 +81057,30 @@
       "source": "뉴시스",
       "title": "9월 물가 2.9%↑…정부 \"석유 최고가격제 없었다면 3.5%\"(종합)"
     },
+    "link:049b13b8f8b74513a58acc42": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://m.edaily.co.kr/News/Read?newsId=01872886645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "dc285a19b989385db35c5b67521aa481857db9d6fc1e3059fa4e553b03a4c425",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bdbc41d0280a355ada73d702026b1ffed3683bf025c00532de9cc1afc092562e",
+      "source_fact_keys": [
+        "source_fact:v1:37db4e7c72c52cb63d7e8fea1690af73d2922e0eb2a119f085e2d340027e2e47",
+        "source_fact:v1:5af73700b2f541e8d0aa28af87f8892c2b4e06a1efedbee74e913c5bb0e89c20",
+        "source_fact:v1:5fb66deca4c0ad44c5c87a1b92b51cd15fc241a673b6d0ab1771aa8f20f4b3e2",
+        "source_fact:v1:76c9639e3b7a3aa5a106923f8fca1fb57abb0267870674ae9ecc14d92f984da9",
+        "source_fact:v1:95d54b642efb8a4af81c36cf5b2c095c6e15c9f7cb97e2ee9aa949a8cf4fa014",
+        "source_fact:v1:a14906300b1b3b782635a3cc9e5aad6cdad38e811f90ee5721d1e7a655c6528c"
+      ],
+      "source_published_kst": "2026-10-12T07:08+09:00",
+      "source_title": "\"韓당국자, 알래스카에 'LNG 상업성 있어야 투자' 전달\"",
+      "telegram_core_fact": "이중 전략적 투자와 관련해 양국은 미 텍사스주 엔시날에 가스복합화력발전소를 건설하는 223억달러 사업을 프로젝트 1호로 확정했으며, 대형 원전 8기 건설 사업과 알래스카 액화천연가스(LNG) 프로젝트는 향후 추가 협의를 거치기로 발표한 상태다.",
+      "title": "\"韓당국자, 알래스카에 'LNG 상업성 있어야 투자' 전달\""
+    },
     "link:04b4559cda3caf3da09d5523": {
       "first_seen_kst": "2026-10-08T02:41:45+09:00",
       "lanes": {
@@ -88702,6 +89065,25 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T11:30+09:00",
       "title": "AMRO, 한국 올해 성장률 3.3%로 상향…내년 2.7% 제시"
+    },
+    "link:2678ac9d2d2158b7d64fe7ff": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634418?trc=right_categori_news_estudio",
+      "source": "이투데이",
+      "source_body_digest": "09a399cb41c8e4b9282c8a5e29422fa8c2631064662b5a607ccced45208dcb43",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:478591cf4e2e377e48c2536fddcfa9867dd779f398d7189b0ab2fde8521283ec",
+      "source_fact_keys": [
+        "source_fact:v1:8c355bc477534add04abfb86af7adfba83ac0730cf960138e0f4ef25301b2374"
+      ],
+      "source_published_kst": "2026-10-12T08:22+09:00",
+      "source_title": "이란 안보수장 “美, 호르무즈 재개방 7개 조건 일부 수용⋯답변 불충분”",
+      "telegram_core_fact": "레자이 사무총장은 “미국은 이란에 여전히 불분명한 문제들을 명확히 해야 한다”며 “우리는 미국 측에 7가지 조건을 제시했고 이 조건들이 충족될 때까지 호르무즈해협을 미국에 개방하지 않을 것이며 어떠한 협상도 진행되지 않을 것이라고 분명히 밝혔다”고 말했다.",
+      "title": "이란 안보수장 “美, 호르무즈 재개방 7개 조건 일부 수용⋯답변 불충분”"
     },
     "link:268f8a3dc426992de9ced8d6": {
       "first_seen_kst": "2026-10-01T21:33:24+09:00",
@@ -98144,6 +98526,35 @@
       "source_published_kst": "2026-10-07T06:40+09:00",
       "title": "트럼프 \"한국에 관세 낮추려면 대가 지불해야 한다고 말해\" | 연합뉴스"
     },
+    "link:4c08d37d9d0bb01c51c7f3c8": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634518",
+      "source": "이투데이",
+      "source_body_digest": "3823e37e71c6546f03a94825420b65578dfabfdbdf969ec792601f3670c93864",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4b35446510dbde0a5ad35351bb5c63e24b28bf22c33422f1102beff243b4cef",
+      "source_fact_keys": [
+        "source_fact:v1:0d847ac3b575cee2d74536488c6d00c90dd312810362b13ab0a4a0b3f20ac713",
+        "source_fact:v1:0dc1ce2124f2e88f333a72ea6971b16929e31fadf2ad07acaa62a4c6ae4bec82",
+        "source_fact:v1:1d885ca958bfd51a599ac40339874d4c1a063d184204c666cba6ae6f8ab8766c",
+        "source_fact:v1:35a2d8b506bebe7137980b7e638882b0aabf69027a776ae06aebe25946de6964",
+        "source_fact:v1:83006461197cd41b79e092cbaddb1694d49341a3c1dc2e0f94683ff2c9e781e7",
+        "source_fact:v1:88d16c31d343c7e308b781ecc70b14d11a28565bc2edc370682a186112c72dd9",
+        "source_fact:v1:959674264d090ae5ca121cf5713b6e30d25b1b8b0311ea1fce1a7bbbaa26d08d",
+        "source_fact:v1:a7cb01e067c25f7c70fe0b3275e6c7df001ee834407617c9f43cc15a3a2873c4",
+        "source_fact:v1:b314af6b66ce527a4f8650165b697d4487d92185b63ccd0343c2ac84f632557c",
+        "source_fact:v1:dddfc534c4e8e3bcba596ea74f8fd743caea1a72a1a9f4f315b0100488584def",
+        "source_fact:v1:ece1c6f7a7eabbda86d3f644aa0507859a32c1c8a231ca0151cfea272c8a8831"
+      ],
+      "source_published_kst": "2026-10-12T09:48+09:00",
+      "source_title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파",
+      "telegram_core_fact": "KB자산운용의 'RISE 코리아밸류업위클리고정커버드콜 상장지수펀드(ETF)' 순자산이 4000억원을 돌파했다. KB자산운용에 따르면 'RISE 코리아밸류업위클리고정커버드콜 ETF'의 순자산이 4000억원을 넘어섰다.",
+      "title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파"
+    },
     "link:4c09e5a0753b7a6ef6a13836": {
       "first_seen_kst": "2026-10-02T19:35:18+09:00",
       "lanes": {
@@ -107299,6 +107710,27 @@
       ],
       "source_published_kst": "2026-10-05T21:08+09:00",
       "title": "포럼 마켓츠, AI 합작사 설립..2027년 매출 최대 1억7500만달러"
+    },
+    "link:70434fc0b0ba08a32d661e0e": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634414?trc=main_list_news",
+      "source": "이투데이",
+      "source_body_digest": "ac5207f6de1e83e64546a9240a2a5636bcfd2f9bcde46440260b3abe9e079374",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7f30c3e90e3368e3ade6203a73f0b8fc8433ad62a1c11ca1af74ae678a0288f2",
+      "source_fact_keys": [
+        "source_fact:v1:1294cee6d9d7df0042dedc9878e9b94b6d443627b34991b46e1417d6ddba95b5",
+        "source_fact:v1:6cd86506c9edb8279efed8a7f22b6ba4122d6004fa18d239fd0629f22bd44259",
+        "source_fact:v1:d4c2209ad1f5e3a33def285c95d1350f2d29c93ac5a14d955b0593e51cacb9c2"
+      ],
+      "source_published_kst": "2026-10-12T08:12+09:00",
+      "source_title": "키움운용, 국내 첫 'MLCC·AI기판 ETF' 상장…무라타·삼성전기 집중 투자",
+      "telegram_core_fact": "키움투자자산운용은 13일 'KIWOOM 글로벌MLCC&AI기판TOP4+ ETF'를 유가증권시장에 신규 상장한다고 12일 밝혔다.",
+      "title": "키움운용, 국내 첫 'MLCC·AI기판 ETF' 상장…무라타·삼성전기 집중 투자"
     },
     "link:704ec1e9ab1d7fb7b4d3a1c9": {
       "first_seen_kst": "2026-10-01T17:50:48+09:00",
@@ -118357,6 +118789,32 @@
       "telegram_core_fact": "11일 시에 따르면 이번 공모는 기존 운영사와의 협약 종료에 따른 것으로 중개수수료 2% 이하(부가세 별도) 적용, 대구로페이·온누리상품권·아동급식카드 결제 연계, 가맹점 모집·관리 및 고객센터 운영 등이 조건으로 명시됐다.",
       "title": "[대구소식]시, 공공배달앱 운영사 공개 모집 등"
     },
+    "link:9df79dcf0f1e6223c13c37af": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675412",
+      "source": "블로터",
+      "source_body_digest": "8b59881ed958c18da1177b089f69ffe08d7c760f065468f129299e011b9235b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a43c8d9ef9dcd8954bc4a2a605bf35bbea03b55e3e4e9c5e977b90281f522420",
+      "source_fact_keys": [
+        "source_fact:v1:0b5f3d8bb194a910dd55b8906cf33917183f0abe490fc236d2c410ba99747e50",
+        "source_fact:v1:2307281151c300cf1c88afbbfd9d632481782328dda8772b61c1fc77d51b8012",
+        "source_fact:v1:49c62670eca5dfd8759f85a6bad20e472b3cc6ad542c0817ee6b9c2e05b459ec",
+        "source_fact:v1:715fcd69b849584f24eb9fede0e9181783702589e9101172b8209d0db8b0c50c",
+        "source_fact:v1:81019679967faa5a2f9dd0b81875d7f702faf58507980cdb185e7bf5d16af9d0",
+        "source_fact:v1:b1b81dee72a3aab297b06eeb08738ffd167b270a260b54eb40d4a5cadeff8d6a",
+        "source_fact:v1:b567f205fab1358c08af992d0149caebbb939c71e32d4f8db5cdb695d5588c04",
+        "source_fact:v1:c10310df02fffa31f49a8c47228a31424be329e3d8ef081c7d268bf266037a7b"
+      ],
+      "source_published_kst": "2026-10-12T09:24+09:00",
+      "source_title": "한화 3세 김동선, 머시너리 지분 19% 공개매수…24.8%로 확대",
+      "telegram_core_fact": "김승연 한화그룹 회장의 3남인 김동선 한화머시너리앤서비스홀딩스 미래전략실장은 대상 회사 지분 19.0%를 공개매수한다. 금융감독원 전자공시시스템에 따르면 김 실장은 한화머시너리앤서비스홀딩스 보통주 1606만주(발행주식총수의 19.0%)를 1주당 8000원에 공개매수한다고 공시했다.",
+      "title": "한화 3세 김동선, 머시너리 지분 19% 공개매수…24.8%로 확대"
+    },
     "link:9e14d42244a27e9361196092": {
       "first_seen_kst": "2026-10-08T12:46:54+09:00",
       "lanes": {
@@ -126835,6 +127293,30 @@
       "telegram_core_fact": "반도체 호황으로 삼성전자와 SK하이닉스의 직원들이 수억원대 성과급을 받을 것으로 예상되지만, 이런 성과급이 소비 진작으로 이어지는 효과는 크지 않을 것이라는 분석이 나왔다.",
       "title": "“반도체 성과급 잔치에도… 소비 진작 효과는 제한적일 것”"
     },
+    "link:c0520142b8109061d597ad5a": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://m.edaily.co.kr/News/Read?newsId=01872886645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "dc285a19b989385db35c5b67521aa481857db9d6fc1e3059fa4e553b03a4c425",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bdbc41d0280a355ada73d702026b1ffed3683bf025c00532de9cc1afc092562e",
+      "source_fact_keys": [
+        "source_fact:v1:37db4e7c72c52cb63d7e8fea1690af73d2922e0eb2a119f085e2d340027e2e47",
+        "source_fact:v1:5af73700b2f541e8d0aa28af87f8892c2b4e06a1efedbee74e913c5bb0e89c20",
+        "source_fact:v1:5fb66deca4c0ad44c5c87a1b92b51cd15fc241a673b6d0ab1771aa8f20f4b3e2",
+        "source_fact:v1:76c9639e3b7a3aa5a106923f8fca1fb57abb0267870674ae9ecc14d92f984da9",
+        "source_fact:v1:95d54b642efb8a4af81c36cf5b2c095c6e15c9f7cb97e2ee9aa949a8cf4fa014",
+        "source_fact:v1:a14906300b1b3b782635a3cc9e5aad6cdad38e811f90ee5721d1e7a655c6528c"
+      ],
+      "source_published_kst": "2026-10-12T07:08+09:00",
+      "source_title": "\"韓당국자, 알래스카에 'LNG 상업성 있어야 투자' 전달\"",
+      "telegram_core_fact": "이중 전략적 투자와 관련해 양국은 미 텍사스주 엔시날에 가스복합화력발전소를 건설하는 223억달러 사업을 프로젝트 1호로 확정했으며, 대형 원전 8기 건설 사업과 알래스카 액화천연가스(LNG) 프로젝트는 향후 추가 협의를 거치기로 발표한 상태다.",
+      "title": "\"韓당국자, 알래스카에 'LNG 상업성 있어야 투자' 전달\""
+    },
     "link:c06f49b85267dd530979bbf9": {
       "first_seen_kst": "2026-10-08T11:49:03+09:00",
       "lanes": {
@@ -133820,6 +134302,25 @@
       "source_published_kst": "2026-10-05T22:00+09:00",
       "title": "LG전자 냉각솔루션 앞세워 북미서 5GW급 '칠러' 수주"
     },
+    "link:df21f60d1f33f949c16ae196": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634462",
+      "source": "이투데이",
+      "source_body_digest": "7f5e4de77a9b71fbfa8fd2389c8d8a6c43f2df3061b761f958a1645e42f0620f",
+      "source_event_identity": "source_event:v2:intraday_equity:2c807e7c89767e2e461da44dc4f1db5e47bd1ceb6e3ee22e645f855d38d13052",
+      "source_fact_identity": "source_facts:v1:2d74049c82320a925d7c5fe2b205cf4ce6cc912860edb6603a902f26206f8b7c",
+      "source_fact_keys": [
+        "source_fact:v1:45e598a985f7d3b6a4ee6351255aabe2973c8b9664f8ac1c7cd672a8f1b48b5b"
+      ],
+      "source_published_kst": "2026-10-12T09:13+09:00",
+      "source_title": "[특징주] 납 배출 주사 논란…DN오토모티브, 8%대 급락",
+      "telegram_core_fact": "한국거래소 기준 12일 오전 9시6분 DN오토모티브는 8.74% 내린 4만4900원에 거래됐다. 등락률은 전 거래일 대비다.",
+      "title": "[특징주] 납 배출 주사 논란…DN오토모티브, 8%대 급락"
+    },
     "link:df3c876e5a095ee707d77efd": {
       "first_seen_kst": "2026-10-02T12:38:28+09:00",
       "lanes": {
@@ -140789,6 +141290,23 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=04159046645583072",
       "source": "이데일리",
       "title": "자회사 상장, 누구를 위한 것인가…카카오가 던진 '주주가치'"
+    },
+    "link:fc4313d59ff702d6b2ed869a": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821548",
+      "source": "뉴시스",
+      "source_body_digest": "45bcb4b2d36692e9f426ce12fec3152b7e8e94f758d52786ef8799f4e24c3e9a",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T09:22+09:00",
+      "source_title": "삼성물산, 반포푸르지오 리모델링 제안…84㎡ 평면·공용공간 차별화",
+      "telegram_core_fact": "삼성물산은 반포푸르지오 리모델링 사업에 입찰제안서를 제출했다고 12일 밝혔다.",
+      "title": "삼성물산, 반포푸르지오 리모델링 제안…84㎡ 평면·공용공간 차별화"
     },
     "link:fc5848c35790dc74e36e129f": {
       "first_seen_kst": "2026-10-08T22:06:55+09:00",
@@ -158383,6 +158901,25 @@
       "source_published_kst": "2026-10-07T12:44+09:00",
       "title": "인도 9월 서비스업 PMI 55.2·1.1P↑…\"3개월 만에 최고\""
     },
+    "original:44e9cdc0f395567be6583214": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634462",
+      "source": "이투데이",
+      "source_body_digest": "7f5e4de77a9b71fbfa8fd2389c8d8a6c43f2df3061b761f958a1645e42f0620f",
+      "source_event_identity": "source_event:v2:intraday_equity:2c807e7c89767e2e461da44dc4f1db5e47bd1ceb6e3ee22e645f855d38d13052",
+      "source_fact_identity": "source_facts:v1:2d74049c82320a925d7c5fe2b205cf4ce6cc912860edb6603a902f26206f8b7c",
+      "source_fact_keys": [
+        "source_fact:v1:45e598a985f7d3b6a4ee6351255aabe2973c8b9664f8ac1c7cd672a8f1b48b5b"
+      ],
+      "source_published_kst": "2026-10-12T09:13+09:00",
+      "source_title": "[특징주] 납 배출 주사 논란…DN오토모티브, 8%대 급락",
+      "telegram_core_fact": "한국거래소 기준 12일 오전 9시6분 DN오토모티브는 8.74% 내린 4만4900원에 거래됐다. 등락률은 전 거래일 대비다.",
+      "title": "[특징주] 납 배출 주사 논란…DN오토모티브, 8%대 급락"
+    },
     "original:450263976aae7e756eccd846": {
       "first_seen_kst": "2026-10-07T00:23:09+09:00",
       "lanes": {
@@ -164510,6 +165047,32 @@
       "source_published_kst": "2026-10-06T00:12+09:00",
       "title": "\"AI 말고는 쳐다볼 게 없다\"…글로벌 투자 지도 바꾸는 '빅머니'"
     },
+    "original:5f65634a6bb50c4e0aec5b27": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675412",
+      "source": "블로터",
+      "source_body_digest": "8b59881ed958c18da1177b089f69ffe08d7c760f065468f129299e011b9235b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a43c8d9ef9dcd8954bc4a2a605bf35bbea03b55e3e4e9c5e977b90281f522420",
+      "source_fact_keys": [
+        "source_fact:v1:0b5f3d8bb194a910dd55b8906cf33917183f0abe490fc236d2c410ba99747e50",
+        "source_fact:v1:2307281151c300cf1c88afbbfd9d632481782328dda8772b61c1fc77d51b8012",
+        "source_fact:v1:49c62670eca5dfd8759f85a6bad20e472b3cc6ad542c0817ee6b9c2e05b459ec",
+        "source_fact:v1:715fcd69b849584f24eb9fede0e9181783702589e9101172b8209d0db8b0c50c",
+        "source_fact:v1:81019679967faa5a2f9dd0b81875d7f702faf58507980cdb185e7bf5d16af9d0",
+        "source_fact:v1:b1b81dee72a3aab297b06eeb08738ffd167b270a260b54eb40d4a5cadeff8d6a",
+        "source_fact:v1:b567f205fab1358c08af992d0149caebbb939c71e32d4f8db5cdb695d5588c04",
+        "source_fact:v1:c10310df02fffa31f49a8c47228a31424be329e3d8ef081c7d268bf266037a7b"
+      ],
+      "source_published_kst": "2026-10-12T09:24+09:00",
+      "source_title": "한화 3세 김동선, 머시너리 지분 19% 공개매수…24.8%로 확대",
+      "telegram_core_fact": "김승연 한화그룹 회장의 3남인 김동선 한화머시너리앤서비스홀딩스 미래전략실장은 대상 회사 지분 19.0%를 공개매수한다. 금융감독원 전자공시시스템에 따르면 김 실장은 한화머시너리앤서비스홀딩스 보통주 1606만주(발행주식총수의 19.0%)를 1주당 8000원에 공개매수한다고 공시했다.",
+      "title": "한화 3세 김동선, 머시너리 지분 19% 공개매수…24.8%로 확대"
+    },
     "original:5f7f26acede1ff7916ad65bb": {
       "first_seen_kst": "2026-10-08T00:54:18+09:00",
       "lanes": {
@@ -168454,6 +169017,25 @@
       ],
       "source_published_kst": "2026-10-07T09:38+09:00",
       "title": "BMW 코리아, 전동화차 판매 1만대 돌파…프리미엄 수입차 첫 기록"
+    },
+    "original:722674737433c2bb7e0dd52a": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634418?trc=right_categori_news_estudio",
+      "source": "이투데이",
+      "source_body_digest": "09a399cb41c8e4b9282c8a5e29422fa8c2631064662b5a607ccced45208dcb43",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:478591cf4e2e377e48c2536fddcfa9867dd779f398d7189b0ab2fde8521283ec",
+      "source_fact_keys": [
+        "source_fact:v1:8c355bc477534add04abfb86af7adfba83ac0730cf960138e0f4ef25301b2374"
+      ],
+      "source_published_kst": "2026-10-12T08:22+09:00",
+      "source_title": "이란 안보수장 “美, 호르무즈 재개방 7개 조건 일부 수용⋯답변 불충분”",
+      "telegram_core_fact": "레자이 사무총장은 “미국은 이란에 여전히 불분명한 문제들을 명확히 해야 한다”며 “우리는 미국 측에 7가지 조건을 제시했고 이 조건들이 충족될 때까지 호르무즈해협을 미국에 개방하지 않을 것이며 어떠한 협상도 진행되지 않을 것이라고 분명히 밝혔다”고 말했다.",
+      "title": "이란 안보수장 “美, 호르무즈 재개방 7개 조건 일부 수용⋯답변 불충분”"
     },
     "original:722e45b0aef6d78d50dbd57b": {
       "first_seen_kst": "2026-10-09T17:32:22+09:00",
@@ -172595,6 +173177,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T13:56+09:00",
       "title": "에스파 & 보이넥스트도어, 한터 주간 '월드·음반 차트' 정상"
+    },
+    "original:8434d6f7d3d80e9999cce4f5": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821548",
+      "source": "뉴시스",
+      "source_body_digest": "45bcb4b2d36692e9f426ce12fec3152b7e8e94f758d52786ef8799f4e24c3e9a",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T09:22+09:00",
+      "source_title": "삼성물산, 반포푸르지오 리모델링 제안…84㎡ 평면·공용공간 차별화",
+      "telegram_core_fact": "삼성물산은 반포푸르지오 리모델링 사업에 입찰제안서를 제출했다고 12일 밝혔다.",
+      "title": "삼성물산, 반포푸르지오 리모델링 제안…84㎡ 평면·공용공간 차별화"
     },
     "original:843f4842bee462f6d7ba82c6": {
       "first_seen_kst": "2026-10-10T00:39:56+09:00",
@@ -193431,6 +194030,30 @@
       "telegram_core_fact": "OK금융은 지난 7월 예별손보 공개매각 우선협상대상자로 선정됐다.",
       "title": "예보, OK금융과 예별손보 매각 본계약⋯대주주 변경승인 남아"
     },
+    "original:da9eeac7dbe895a0670b87f9": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://m.edaily.co.kr/News/Read?newsId=01872886645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "dc285a19b989385db35c5b67521aa481857db9d6fc1e3059fa4e553b03a4c425",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bdbc41d0280a355ada73d702026b1ffed3683bf025c00532de9cc1afc092562e",
+      "source_fact_keys": [
+        "source_fact:v1:37db4e7c72c52cb63d7e8fea1690af73d2922e0eb2a119f085e2d340027e2e47",
+        "source_fact:v1:5af73700b2f541e8d0aa28af87f8892c2b4e06a1efedbee74e913c5bb0e89c20",
+        "source_fact:v1:5fb66deca4c0ad44c5c87a1b92b51cd15fc241a673b6d0ab1771aa8f20f4b3e2",
+        "source_fact:v1:76c9639e3b7a3aa5a106923f8fca1fb57abb0267870674ae9ecc14d92f984da9",
+        "source_fact:v1:95d54b642efb8a4af81c36cf5b2c095c6e15c9f7cb97e2ee9aa949a8cf4fa014",
+        "source_fact:v1:a14906300b1b3b782635a3cc9e5aad6cdad38e811f90ee5721d1e7a655c6528c"
+      ],
+      "source_published_kst": "2026-10-12T07:08+09:00",
+      "source_title": "\"韓당국자, 알래스카에 'LNG 상업성 있어야 투자' 전달\"",
+      "telegram_core_fact": "이중 전략적 투자와 관련해 양국은 미 텍사스주 엔시날에 가스복합화력발전소를 건설하는 223억달러 사업을 프로젝트 1호로 확정했으며, 대형 원전 8기 건설 사업과 알래스카 액화천연가스(LNG) 프로젝트는 향후 추가 협의를 거치기로 발표한 상태다.",
+      "title": "\"韓당국자, 알래스카에 'LNG 상업성 있어야 투자' 전달\""
+    },
     "original:dab6a65619344cc44aa01e0a": {
       "first_seen_kst": "2026-10-11T18:15:28+09:00",
       "lanes": {
@@ -199211,6 +199834,35 @@
       "source": "머니투데이",
       "title": "'AI 속도조절' 불지른 앤트로픽, 상장 한달 연기"
     },
+    "original:f4a013210675941e03fb6f0c": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634518",
+      "source": "이투데이",
+      "source_body_digest": "3823e37e71c6546f03a94825420b65578dfabfdbdf969ec792601f3670c93864",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4b35446510dbde0a5ad35351bb5c63e24b28bf22c33422f1102beff243b4cef",
+      "source_fact_keys": [
+        "source_fact:v1:0d847ac3b575cee2d74536488c6d00c90dd312810362b13ab0a4a0b3f20ac713",
+        "source_fact:v1:0dc1ce2124f2e88f333a72ea6971b16929e31fadf2ad07acaa62a4c6ae4bec82",
+        "source_fact:v1:1d885ca958bfd51a599ac40339874d4c1a063d184204c666cba6ae6f8ab8766c",
+        "source_fact:v1:35a2d8b506bebe7137980b7e638882b0aabf69027a776ae06aebe25946de6964",
+        "source_fact:v1:83006461197cd41b79e092cbaddb1694d49341a3c1dc2e0f94683ff2c9e781e7",
+        "source_fact:v1:88d16c31d343c7e308b781ecc70b14d11a28565bc2edc370682a186112c72dd9",
+        "source_fact:v1:959674264d090ae5ca121cf5713b6e30d25b1b8b0311ea1fce1a7bbbaa26d08d",
+        "source_fact:v1:a7cb01e067c25f7c70fe0b3275e6c7df001ee834407617c9f43cc15a3a2873c4",
+        "source_fact:v1:b314af6b66ce527a4f8650165b697d4487d92185b63ccd0343c2ac84f632557c",
+        "source_fact:v1:dddfc534c4e8e3bcba596ea74f8fd743caea1a72a1a9f4f315b0100488584def",
+        "source_fact:v1:ece1c6f7a7eabbda86d3f644aa0507859a32c1c8a231ca0151cfea272c8a8831"
+      ],
+      "source_published_kst": "2026-10-12T09:48+09:00",
+      "source_title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파",
+      "telegram_core_fact": "KB자산운용의 'RISE 코리아밸류업위클리고정커버드콜 상장지수펀드(ETF)' 순자산이 4000억원을 돌파했다. KB자산운용에 따르면 'RISE 코리아밸류업위클리고정커버드콜 ETF'의 순자산이 4000억원을 넘어섰다.",
+      "title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파"
+    },
     "original:f4a26e8f48027b4f830d00fa": {
       "first_seen_kst": "2026-10-07T23:23:06+09:00",
       "lanes": {
@@ -201314,6 +201966,27 @@
       "source_title": "라이프존 메탈스, BHP 인수대가 800만달러 감액..이주계획 검증 통과",
       "telegram_core_fact": "라이프존 메탈스(LZM)는 탄자니아 카방가 니켈 프로젝트의 주민 이주 실행계획(RAP)이 국제금융공사(IFC) 성능표준 5(PS5)에 중대한 측면에서 계속 부합한다는 독립 전문가 검토 결과가 나오면서, 호주 광산업체 BHP에 지급할 인수 대가의 상한이 800만 달러 자동 감액됐다고 7일 발표했다.",
       "title": "라이프존 메탈스, BHP 인수대가 800만달러 감액..이주계획 검증 통과"
+    },
+    "original:fd97dd5a76fc07c8c1ba43f5": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634414?trc=main_list_news",
+      "source": "이투데이",
+      "source_body_digest": "ac5207f6de1e83e64546a9240a2a5636bcfd2f9bcde46440260b3abe9e079374",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7f30c3e90e3368e3ade6203a73f0b8fc8433ad62a1c11ca1af74ae678a0288f2",
+      "source_fact_keys": [
+        "source_fact:v1:1294cee6d9d7df0042dedc9878e9b94b6d443627b34991b46e1417d6ddba95b5",
+        "source_fact:v1:6cd86506c9edb8279efed8a7f22b6ba4122d6004fa18d239fd0629f22bd44259",
+        "source_fact:v1:d4c2209ad1f5e3a33def285c95d1350f2d29c93ac5a14d955b0593e51cacb9c2"
+      ],
+      "source_published_kst": "2026-10-12T08:12+09:00",
+      "source_title": "키움운용, 국내 첫 'MLCC·AI기판 ETF' 상장…무라타·삼성전기 집중 투자",
+      "telegram_core_fact": "키움투자자산운용은 13일 'KIWOOM 글로벌MLCC&AI기판TOP4+ ETF'를 유가증권시장에 신규 상장한다고 12일 밝혔다.",
+      "title": "키움운용, 국내 첫 'MLCC·AI기판 ETF' 상장…무라타·삼성전기 집중 투자"
     },
     "original:fd9d95aa4fdf86ec87bdd8f7": {
       "first_seen_kst": "2026-10-03T22:55:30+09:00",
@@ -204414,6 +205087,30 @@
       ],
       "source_published_kst": "2026-10-07T07:10+09:00",
       "title": "리사 수 \"수요가 공급보다 많아\"…AMD 주가 사상 최고"
+    },
+    "source_fact:03bf9f060844048474647df9": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://m.edaily.co.kr/News/Read?newsId=01872886645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "dc285a19b989385db35c5b67521aa481857db9d6fc1e3059fa4e553b03a4c425",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bdbc41d0280a355ada73d702026b1ffed3683bf025c00532de9cc1afc092562e",
+      "source_fact_keys": [
+        "source_fact:v1:37db4e7c72c52cb63d7e8fea1690af73d2922e0eb2a119f085e2d340027e2e47",
+        "source_fact:v1:5af73700b2f541e8d0aa28af87f8892c2b4e06a1efedbee74e913c5bb0e89c20",
+        "source_fact:v1:5fb66deca4c0ad44c5c87a1b92b51cd15fc241a673b6d0ab1771aa8f20f4b3e2",
+        "source_fact:v1:76c9639e3b7a3aa5a106923f8fca1fb57abb0267870674ae9ecc14d92f984da9",
+        "source_fact:v1:95d54b642efb8a4af81c36cf5b2c095c6e15c9f7cb97e2ee9aa949a8cf4fa014",
+        "source_fact:v1:a14906300b1b3b782635a3cc9e5aad6cdad38e811f90ee5721d1e7a655c6528c"
+      ],
+      "source_published_kst": "2026-10-12T07:08+09:00",
+      "source_title": "\"韓당국자, 알래스카에 'LNG 상업성 있어야 투자' 전달\"",
+      "telegram_core_fact": "이중 전략적 투자와 관련해 양국은 미 텍사스주 엔시날에 가스복합화력발전소를 건설하는 223억달러 사업을 프로젝트 1호로 확정했으며, 대형 원전 8기 건설 사업과 알래스카 액화천연가스(LNG) 프로젝트는 향후 추가 협의를 거치기로 발표한 상태다.",
+      "title": "\"韓당국자, 알래스카에 'LNG 상업성 있어야 투자' 전달\""
     },
     "source_fact:03e0fe6c418932aedd0b3725": {
       "first_seen_kst": "2026-10-09T18:34:32+09:00",
@@ -208250,6 +208947,35 @@
       "source_title": "밸류파인더 “MSDI, 구미시와 7000억 미사일 방산단지 추진…전주기 사업 첫발”",
       "telegram_core_fact": "유럽 미사일 전문기업과의 협력을 바탕으로 초기에는 MRO와 라이선스 생산에서 매출을 확보하고 장기적으로 독자 미사일 개발까지 사업을 확대한다는 구상이다.",
       "title": "밸류파인더 “MSDI, 구미시와 7000억 미사일 방산단지 추진…전주기 사업 첫발”"
+    },
+    "source_fact:0905d75d12e8426b80483267": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634518",
+      "source": "이투데이",
+      "source_body_digest": "3823e37e71c6546f03a94825420b65578dfabfdbdf969ec792601f3670c93864",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4b35446510dbde0a5ad35351bb5c63e24b28bf22c33422f1102beff243b4cef",
+      "source_fact_keys": [
+        "source_fact:v1:0d847ac3b575cee2d74536488c6d00c90dd312810362b13ab0a4a0b3f20ac713",
+        "source_fact:v1:0dc1ce2124f2e88f333a72ea6971b16929e31fadf2ad07acaa62a4c6ae4bec82",
+        "source_fact:v1:1d885ca958bfd51a599ac40339874d4c1a063d184204c666cba6ae6f8ab8766c",
+        "source_fact:v1:35a2d8b506bebe7137980b7e638882b0aabf69027a776ae06aebe25946de6964",
+        "source_fact:v1:83006461197cd41b79e092cbaddb1694d49341a3c1dc2e0f94683ff2c9e781e7",
+        "source_fact:v1:88d16c31d343c7e308b781ecc70b14d11a28565bc2edc370682a186112c72dd9",
+        "source_fact:v1:959674264d090ae5ca121cf5713b6e30d25b1b8b0311ea1fce1a7bbbaa26d08d",
+        "source_fact:v1:a7cb01e067c25f7c70fe0b3275e6c7df001ee834407617c9f43cc15a3a2873c4",
+        "source_fact:v1:b314af6b66ce527a4f8650165b697d4487d92185b63ccd0343c2ac84f632557c",
+        "source_fact:v1:dddfc534c4e8e3bcba596ea74f8fd743caea1a72a1a9f4f315b0100488584def",
+        "source_fact:v1:ece1c6f7a7eabbda86d3f644aa0507859a32c1c8a231ca0151cfea272c8a8831"
+      ],
+      "source_published_kst": "2026-10-12T09:48+09:00",
+      "source_title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파",
+      "telegram_core_fact": "KB자산운용의 'RISE 코리아밸류업위클리고정커버드콜 상장지수펀드(ETF)' 순자산이 4000억원을 돌파했다. KB자산운용에 따르면 'RISE 코리아밸류업위클리고정커버드콜 ETF'의 순자산이 4000억원을 넘어섰다.",
+      "title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파"
     },
     "source_fact:090f24bec1a7c6e0cf0ad85d": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
@@ -221202,6 +221928,25 @@
       ],
       "source_published_kst": "2026-10-05T05:18+09:00",
       "title": "“국산 AI반도체, 실험실 넘어 전력현장으로”…K-Perf 첫 적용"
+    },
+    "source_fact:19a13d8d406d9f0ae25558cf": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634462",
+      "source": "이투데이",
+      "source_body_digest": "7f5e4de77a9b71fbfa8fd2389c8d8a6c43f2df3061b761f958a1645e42f0620f",
+      "source_event_identity": "source_event:v2:intraday_equity:2c807e7c89767e2e461da44dc4f1db5e47bd1ceb6e3ee22e645f855d38d13052",
+      "source_fact_identity": "source_facts:v1:2d74049c82320a925d7c5fe2b205cf4ce6cc912860edb6603a902f26206f8b7c",
+      "source_fact_keys": [
+        "source_fact:v1:45e598a985f7d3b6a4ee6351255aabe2973c8b9664f8ac1c7cd672a8f1b48b5b"
+      ],
+      "source_published_kst": "2026-10-12T09:13+09:00",
+      "source_title": "[특징주] 납 배출 주사 논란…DN오토모티브, 8%대 급락",
+      "telegram_core_fact": "한국거래소 기준 12일 오전 9시6분 DN오토모티브는 8.74% 내린 4만4900원에 거래됐다. 등락률은 전 거래일 대비다.",
+      "title": "[특징주] 납 배출 주사 논란…DN오토모티브, 8%대 급락"
     },
     "source_fact:19a5a530bba96d6fa16a33eb": {
       "first_seen_kst": "2026-10-08T22:29:06+09:00",
@@ -242793,6 +243538,35 @@
       "telegram_core_fact": "연성회로기판(FPCB) 전문기업 이브이첨단소재가 피부에 접촉하지 않고 혈류를 측정하는 자기혈류파 기술 상용화에 나선다.",
       "title": "이브이첨단소재, 비접촉 심혈관 진단센서 국책과제 주관…상용화 추진"
     },
+    "source_fact:32a339988e70bf1bd5d2d392": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634518",
+      "source": "이투데이",
+      "source_body_digest": "3823e37e71c6546f03a94825420b65578dfabfdbdf969ec792601f3670c93864",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4b35446510dbde0a5ad35351bb5c63e24b28bf22c33422f1102beff243b4cef",
+      "source_fact_keys": [
+        "source_fact:v1:0d847ac3b575cee2d74536488c6d00c90dd312810362b13ab0a4a0b3f20ac713",
+        "source_fact:v1:0dc1ce2124f2e88f333a72ea6971b16929e31fadf2ad07acaa62a4c6ae4bec82",
+        "source_fact:v1:1d885ca958bfd51a599ac40339874d4c1a063d184204c666cba6ae6f8ab8766c",
+        "source_fact:v1:35a2d8b506bebe7137980b7e638882b0aabf69027a776ae06aebe25946de6964",
+        "source_fact:v1:83006461197cd41b79e092cbaddb1694d49341a3c1dc2e0f94683ff2c9e781e7",
+        "source_fact:v1:88d16c31d343c7e308b781ecc70b14d11a28565bc2edc370682a186112c72dd9",
+        "source_fact:v1:959674264d090ae5ca121cf5713b6e30d25b1b8b0311ea1fce1a7bbbaa26d08d",
+        "source_fact:v1:a7cb01e067c25f7c70fe0b3275e6c7df001ee834407617c9f43cc15a3a2873c4",
+        "source_fact:v1:b314af6b66ce527a4f8650165b697d4487d92185b63ccd0343c2ac84f632557c",
+        "source_fact:v1:dddfc534c4e8e3bcba596ea74f8fd743caea1a72a1a9f4f315b0100488584def",
+        "source_fact:v1:ece1c6f7a7eabbda86d3f644aa0507859a32c1c8a231ca0151cfea272c8a8831"
+      ],
+      "source_published_kst": "2026-10-12T09:48+09:00",
+      "source_title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파",
+      "telegram_core_fact": "KB자산운용의 'RISE 코리아밸류업위클리고정커버드콜 상장지수펀드(ETF)' 순자산이 4000억원을 돌파했다. KB자산운용에 따르면 'RISE 코리아밸류업위클리고정커버드콜 ETF'의 순자산이 4000억원을 넘어섰다.",
+      "title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파"
+    },
     "source_fact:32a637787b228c1aa72ca36f": {
       "first_seen_kst": "2026-10-08T13:07:52+09:00",
       "lanes": {
@@ -245049,6 +245823,35 @@
       "source_title": "靑, '러 석유공급' 우크라 주장에 반박…\"사실과 다르고 부적절\" | 연합뉴스",
       "telegram_core_fact": "청와대는 7일 우크라이나가 '한국이 러시아에 경유 등 석유제품을 공급했다'는 외신을 인용해 한국을 비판한 데 대해 \"충분한 사실 확인 없이 대한민국의 관련 정책을 왜곡하거나 국제적 신뢰를 훼손할 수 있는 공개적 언급을 자제해달라\"고 반박했다.",
       "title": "靑, '러 석유공급' 우크라 주장에 반박…\"사실과 다르고 부적절\" | 연합뉴스"
+    },
+    "source_fact:35b423b026a3c813507dd24e": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634518",
+      "source": "이투데이",
+      "source_body_digest": "3823e37e71c6546f03a94825420b65578dfabfdbdf969ec792601f3670c93864",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4b35446510dbde0a5ad35351bb5c63e24b28bf22c33422f1102beff243b4cef",
+      "source_fact_keys": [
+        "source_fact:v1:0d847ac3b575cee2d74536488c6d00c90dd312810362b13ab0a4a0b3f20ac713",
+        "source_fact:v1:0dc1ce2124f2e88f333a72ea6971b16929e31fadf2ad07acaa62a4c6ae4bec82",
+        "source_fact:v1:1d885ca958bfd51a599ac40339874d4c1a063d184204c666cba6ae6f8ab8766c",
+        "source_fact:v1:35a2d8b506bebe7137980b7e638882b0aabf69027a776ae06aebe25946de6964",
+        "source_fact:v1:83006461197cd41b79e092cbaddb1694d49341a3c1dc2e0f94683ff2c9e781e7",
+        "source_fact:v1:88d16c31d343c7e308b781ecc70b14d11a28565bc2edc370682a186112c72dd9",
+        "source_fact:v1:959674264d090ae5ca121cf5713b6e30d25b1b8b0311ea1fce1a7bbbaa26d08d",
+        "source_fact:v1:a7cb01e067c25f7c70fe0b3275e6c7df001ee834407617c9f43cc15a3a2873c4",
+        "source_fact:v1:b314af6b66ce527a4f8650165b697d4487d92185b63ccd0343c2ac84f632557c",
+        "source_fact:v1:dddfc534c4e8e3bcba596ea74f8fd743caea1a72a1a9f4f315b0100488584def",
+        "source_fact:v1:ece1c6f7a7eabbda86d3f644aa0507859a32c1c8a231ca0151cfea272c8a8831"
+      ],
+      "source_published_kst": "2026-10-12T09:48+09:00",
+      "source_title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파",
+      "telegram_core_fact": "KB자산운용의 'RISE 코리아밸류업위클리고정커버드콜 상장지수펀드(ETF)' 순자산이 4000억원을 돌파했다. KB자산운용에 따르면 'RISE 코리아밸류업위클리고정커버드콜 ETF'의 순자산이 4000억원을 넘어섰다.",
+      "title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파"
     },
     "source_fact:35c952d53d1e61e6da05acd0": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
@@ -247867,6 +248670,32 @@
       "telegram_core_fact": "알래스카 LNG 협상이 원만하게 진행되지 않을 경우 향후 미국이 과잉생산 관련 무역법 301조 조사를 활용해 우리나라에 추가 관세 부과 가능성도 배제할 수 없다는 진단이다.",
       "title": "알래스카 LNG·301조에 다시 커지는 관세 불확실성"
     },
+    "source_fact:398535dfe9f424d0815fddbc": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675412",
+      "source": "블로터",
+      "source_body_digest": "8b59881ed958c18da1177b089f69ffe08d7c760f065468f129299e011b9235b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a43c8d9ef9dcd8954bc4a2a605bf35bbea03b55e3e4e9c5e977b90281f522420",
+      "source_fact_keys": [
+        "source_fact:v1:0b5f3d8bb194a910dd55b8906cf33917183f0abe490fc236d2c410ba99747e50",
+        "source_fact:v1:2307281151c300cf1c88afbbfd9d632481782328dda8772b61c1fc77d51b8012",
+        "source_fact:v1:49c62670eca5dfd8759f85a6bad20e472b3cc6ad542c0817ee6b9c2e05b459ec",
+        "source_fact:v1:715fcd69b849584f24eb9fede0e9181783702589e9101172b8209d0db8b0c50c",
+        "source_fact:v1:81019679967faa5a2f9dd0b81875d7f702faf58507980cdb185e7bf5d16af9d0",
+        "source_fact:v1:b1b81dee72a3aab297b06eeb08738ffd167b270a260b54eb40d4a5cadeff8d6a",
+        "source_fact:v1:b567f205fab1358c08af992d0149caebbb939c71e32d4f8db5cdb695d5588c04",
+        "source_fact:v1:c10310df02fffa31f49a8c47228a31424be329e3d8ef081c7d268bf266037a7b"
+      ],
+      "source_published_kst": "2026-10-12T09:24+09:00",
+      "source_title": "한화 3세 김동선, 머시너리 지분 19% 공개매수…24.8%로 확대",
+      "telegram_core_fact": "김승연 한화그룹 회장의 3남인 김동선 한화머시너리앤서비스홀딩스 미래전략실장은 대상 회사 지분 19.0%를 공개매수한다. 금융감독원 전자공시시스템에 따르면 김 실장은 한화머시너리앤서비스홀딩스 보통주 1606만주(발행주식총수의 19.0%)를 1주당 8000원에 공개매수한다고 공시했다.",
+      "title": "한화 3세 김동선, 머시너리 지분 19% 공개매수…24.8%로 확대"
+    },
     "source_fact:39902e224611695d9459bcae": {
       "first_seen_kst": "2026-10-09T19:24:17+09:00",
       "lanes": {
@@ -250210,6 +251039,32 @@
       "source_title": "리바이스트라우스 앤 코, 3분기 매출 16억 달러 4%↑·EPS 전망 상향",
       "telegram_core_fact": "리바이스트라우스 앤 코(LEVI)는 8월 30일 종료된 2026 회계연도 3분기 매출액이 16억970만 달러로 전년비 4.3% 증가했고, 계속사업 희석 주당순이익(GAAP)은 0.43달러로 전년 동기(0.31달러) 대비 38.7% 늘었다고 7일(현지시간) 발표했다.",
       "title": "리바이스트라우스 앤 코, 3분기 매출 16억 달러 4%↑·EPS 전망 상향"
+    },
+    "source_fact:3c758dfe0ea1bb24564fc5db": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675412",
+      "source": "블로터",
+      "source_body_digest": "8b59881ed958c18da1177b089f69ffe08d7c760f065468f129299e011b9235b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a43c8d9ef9dcd8954bc4a2a605bf35bbea03b55e3e4e9c5e977b90281f522420",
+      "source_fact_keys": [
+        "source_fact:v1:0b5f3d8bb194a910dd55b8906cf33917183f0abe490fc236d2c410ba99747e50",
+        "source_fact:v1:2307281151c300cf1c88afbbfd9d632481782328dda8772b61c1fc77d51b8012",
+        "source_fact:v1:49c62670eca5dfd8759f85a6bad20e472b3cc6ad542c0817ee6b9c2e05b459ec",
+        "source_fact:v1:715fcd69b849584f24eb9fede0e9181783702589e9101172b8209d0db8b0c50c",
+        "source_fact:v1:81019679967faa5a2f9dd0b81875d7f702faf58507980cdb185e7bf5d16af9d0",
+        "source_fact:v1:b1b81dee72a3aab297b06eeb08738ffd167b270a260b54eb40d4a5cadeff8d6a",
+        "source_fact:v1:b567f205fab1358c08af992d0149caebbb939c71e32d4f8db5cdb695d5588c04",
+        "source_fact:v1:c10310df02fffa31f49a8c47228a31424be329e3d8ef081c7d268bf266037a7b"
+      ],
+      "source_published_kst": "2026-10-12T09:24+09:00",
+      "source_title": "한화 3세 김동선, 머시너리 지분 19% 공개매수…24.8%로 확대",
+      "telegram_core_fact": "김승연 한화그룹 회장의 3남인 김동선 한화머시너리앤서비스홀딩스 미래전략실장은 대상 회사 지분 19.0%를 공개매수한다. 금융감독원 전자공시시스템에 따르면 김 실장은 한화머시너리앤서비스홀딩스 보통주 1606만주(발행주식총수의 19.0%)를 1주당 8000원에 공개매수한다고 공시했다.",
+      "title": "한화 3세 김동선, 머시너리 지분 19% 공개매수…24.8%로 확대"
     },
     "source_fact:3c78af6cf542ce0d433d22f0": {
       "first_seen_kst": "2026-10-06T00:26:07+09:00",
@@ -257076,6 +257931,25 @@
       "telegram_core_fact": "8일 국회 보건복지위원회 소속 더불어민주당 이인영 의원실이 국민연금공단으로부터 제출받은 자료에 따르면 기금운용본부 일반직 75명과 준법지원실 운용직 12명·일반직 9명 등 총 96명의 성과급 21억5400만원이 현재까지 지급되지 않았다.",
       "title": "[단독]역대 최대 수익 올렸는데...지급 안 된 국민연금 성과급"
     },
+    "source_fact:45987af299a2dc3c9986d3c5": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634418?trc=right_categori_news_estudio",
+      "source": "이투데이",
+      "source_body_digest": "09a399cb41c8e4b9282c8a5e29422fa8c2631064662b5a607ccced45208dcb43",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:478591cf4e2e377e48c2536fddcfa9867dd779f398d7189b0ab2fde8521283ec",
+      "source_fact_keys": [
+        "source_fact:v1:8c355bc477534add04abfb86af7adfba83ac0730cf960138e0f4ef25301b2374"
+      ],
+      "source_published_kst": "2026-10-12T08:22+09:00",
+      "source_title": "이란 안보수장 “美, 호르무즈 재개방 7개 조건 일부 수용⋯답변 불충분”",
+      "telegram_core_fact": "레자이 사무총장은 “미국은 이란에 여전히 불분명한 문제들을 명확히 해야 한다”며 “우리는 미국 측에 7가지 조건을 제시했고 이 조건들이 충족될 때까지 호르무즈해협을 미국에 개방하지 않을 것이며 어떠한 협상도 진행되지 않을 것이라고 분명히 밝혔다”고 말했다.",
+      "title": "이란 안보수장 “美, 호르무즈 재개방 7개 조건 일부 수용⋯답변 불충분”"
+    },
     "source_fact:45a2efec06e8e263325b36f8": {
       "first_seen_kst": "2026-10-09T18:57:38+09:00",
       "lanes": {
@@ -262962,6 +263836,35 @@
       "source_published_kst": "2026-10-05T22:19+09:00",
       "title": "세노버스 에너지, 아사바스카오일 57억 캐나다달러 인수 합의"
     },
+    "source_fact:4c1af2079dab3d651fc45e86": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634518",
+      "source": "이투데이",
+      "source_body_digest": "3823e37e71c6546f03a94825420b65578dfabfdbdf969ec792601f3670c93864",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4b35446510dbde0a5ad35351bb5c63e24b28bf22c33422f1102beff243b4cef",
+      "source_fact_keys": [
+        "source_fact:v1:0d847ac3b575cee2d74536488c6d00c90dd312810362b13ab0a4a0b3f20ac713",
+        "source_fact:v1:0dc1ce2124f2e88f333a72ea6971b16929e31fadf2ad07acaa62a4c6ae4bec82",
+        "source_fact:v1:1d885ca958bfd51a599ac40339874d4c1a063d184204c666cba6ae6f8ab8766c",
+        "source_fact:v1:35a2d8b506bebe7137980b7e638882b0aabf69027a776ae06aebe25946de6964",
+        "source_fact:v1:83006461197cd41b79e092cbaddb1694d49341a3c1dc2e0f94683ff2c9e781e7",
+        "source_fact:v1:88d16c31d343c7e308b781ecc70b14d11a28565bc2edc370682a186112c72dd9",
+        "source_fact:v1:959674264d090ae5ca121cf5713b6e30d25b1b8b0311ea1fce1a7bbbaa26d08d",
+        "source_fact:v1:a7cb01e067c25f7c70fe0b3275e6c7df001ee834407617c9f43cc15a3a2873c4",
+        "source_fact:v1:b314af6b66ce527a4f8650165b697d4487d92185b63ccd0343c2ac84f632557c",
+        "source_fact:v1:dddfc534c4e8e3bcba596ea74f8fd743caea1a72a1a9f4f315b0100488584def",
+        "source_fact:v1:ece1c6f7a7eabbda86d3f644aa0507859a32c1c8a231ca0151cfea272c8a8831"
+      ],
+      "source_published_kst": "2026-10-12T09:48+09:00",
+      "source_title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파",
+      "telegram_core_fact": "KB자산운용의 'RISE 코리아밸류업위클리고정커버드콜 상장지수펀드(ETF)' 순자산이 4000억원을 돌파했다. KB자산운용에 따르면 'RISE 코리아밸류업위클리고정커버드콜 ETF'의 순자산이 4000억원을 넘어섰다.",
+      "title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파"
+    },
     "source_fact:4c398aa42bdb9101aa79ca63": {
       "first_seen_kst": "2026-10-07T09:44:16+09:00",
       "lanes": {
@@ -268065,6 +268968,32 @@
       ],
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "[ETF업&다운]3분기 엇갈린 반도체…삼전닉스 빠지고 소부장 버텼다"
+    },
+    "source_fact:527e4e2ab223e00191d8e316": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675412",
+      "source": "블로터",
+      "source_body_digest": "8b59881ed958c18da1177b089f69ffe08d7c760f065468f129299e011b9235b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a43c8d9ef9dcd8954bc4a2a605bf35bbea03b55e3e4e9c5e977b90281f522420",
+      "source_fact_keys": [
+        "source_fact:v1:0b5f3d8bb194a910dd55b8906cf33917183f0abe490fc236d2c410ba99747e50",
+        "source_fact:v1:2307281151c300cf1c88afbbfd9d632481782328dda8772b61c1fc77d51b8012",
+        "source_fact:v1:49c62670eca5dfd8759f85a6bad20e472b3cc6ad542c0817ee6b9c2e05b459ec",
+        "source_fact:v1:715fcd69b849584f24eb9fede0e9181783702589e9101172b8209d0db8b0c50c",
+        "source_fact:v1:81019679967faa5a2f9dd0b81875d7f702faf58507980cdb185e7bf5d16af9d0",
+        "source_fact:v1:b1b81dee72a3aab297b06eeb08738ffd167b270a260b54eb40d4a5cadeff8d6a",
+        "source_fact:v1:b567f205fab1358c08af992d0149caebbb939c71e32d4f8db5cdb695d5588c04",
+        "source_fact:v1:c10310df02fffa31f49a8c47228a31424be329e3d8ef081c7d268bf266037a7b"
+      ],
+      "source_published_kst": "2026-10-12T09:24+09:00",
+      "source_title": "한화 3세 김동선, 머시너리 지분 19% 공개매수…24.8%로 확대",
+      "telegram_core_fact": "김승연 한화그룹 회장의 3남인 김동선 한화머시너리앤서비스홀딩스 미래전략실장은 대상 회사 지분 19.0%를 공개매수한다. 금융감독원 전자공시시스템에 따르면 김 실장은 한화머시너리앤서비스홀딩스 보통주 1606만주(발행주식총수의 19.0%)를 1주당 8000원에 공개매수한다고 공시했다.",
+      "title": "한화 3세 김동선, 머시너리 지분 19% 공개매수…24.8%로 확대"
     },
     "source_fact:528644e0bdf35aafe3796464": {
       "first_seen_kst": "2026-10-11T13:40:09+09:00",
@@ -277993,6 +278922,32 @@
       "source_published_kst": "2026-10-06T09:21+09:00",
       "title": "CPTPP, 농산물 관세만의 문제 아니다…농가 지원·검역도 '시험대'"
     },
+    "source_fact:5da8cb5a90b0df60909b84a7": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675412",
+      "source": "블로터",
+      "source_body_digest": "8b59881ed958c18da1177b089f69ffe08d7c760f065468f129299e011b9235b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a43c8d9ef9dcd8954bc4a2a605bf35bbea03b55e3e4e9c5e977b90281f522420",
+      "source_fact_keys": [
+        "source_fact:v1:0b5f3d8bb194a910dd55b8906cf33917183f0abe490fc236d2c410ba99747e50",
+        "source_fact:v1:2307281151c300cf1c88afbbfd9d632481782328dda8772b61c1fc77d51b8012",
+        "source_fact:v1:49c62670eca5dfd8759f85a6bad20e472b3cc6ad542c0817ee6b9c2e05b459ec",
+        "source_fact:v1:715fcd69b849584f24eb9fede0e9181783702589e9101172b8209d0db8b0c50c",
+        "source_fact:v1:81019679967faa5a2f9dd0b81875d7f702faf58507980cdb185e7bf5d16af9d0",
+        "source_fact:v1:b1b81dee72a3aab297b06eeb08738ffd167b270a260b54eb40d4a5cadeff8d6a",
+        "source_fact:v1:b567f205fab1358c08af992d0149caebbb939c71e32d4f8db5cdb695d5588c04",
+        "source_fact:v1:c10310df02fffa31f49a8c47228a31424be329e3d8ef081c7d268bf266037a7b"
+      ],
+      "source_published_kst": "2026-10-12T09:24+09:00",
+      "source_title": "한화 3세 김동선, 머시너리 지분 19% 공개매수…24.8%로 확대",
+      "telegram_core_fact": "김승연 한화그룹 회장의 3남인 김동선 한화머시너리앤서비스홀딩스 미래전략실장은 대상 회사 지분 19.0%를 공개매수한다. 금융감독원 전자공시시스템에 따르면 김 실장은 한화머시너리앤서비스홀딩스 보통주 1606만주(발행주식총수의 19.0%)를 1주당 8000원에 공개매수한다고 공시했다.",
+      "title": "한화 3세 김동선, 머시너리 지분 19% 공개매수…24.8%로 확대"
+    },
     "source_fact:5dbb6793aeb12071ded6e536": {
       "first_seen_kst": "2026-10-07T23:10:06+09:00",
       "lanes": {
@@ -278246,6 +279201,30 @@
       ],
       "source_published_kst": "2026-10-06T13:55+09:00",
       "title": "제약바이오협회, 'R&D·임상·RA 역량강화' 세미나"
+    },
+    "source_fact:5e31d527676ecfbf1a0b9329": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://m.edaily.co.kr/News/Read?newsId=01872886645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "dc285a19b989385db35c5b67521aa481857db9d6fc1e3059fa4e553b03a4c425",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bdbc41d0280a355ada73d702026b1ffed3683bf025c00532de9cc1afc092562e",
+      "source_fact_keys": [
+        "source_fact:v1:37db4e7c72c52cb63d7e8fea1690af73d2922e0eb2a119f085e2d340027e2e47",
+        "source_fact:v1:5af73700b2f541e8d0aa28af87f8892c2b4e06a1efedbee74e913c5bb0e89c20",
+        "source_fact:v1:5fb66deca4c0ad44c5c87a1b92b51cd15fc241a673b6d0ab1771aa8f20f4b3e2",
+        "source_fact:v1:76c9639e3b7a3aa5a106923f8fca1fb57abb0267870674ae9ecc14d92f984da9",
+        "source_fact:v1:95d54b642efb8a4af81c36cf5b2c095c6e15c9f7cb97e2ee9aa949a8cf4fa014",
+        "source_fact:v1:a14906300b1b3b782635a3cc9e5aad6cdad38e811f90ee5721d1e7a655c6528c"
+      ],
+      "source_published_kst": "2026-10-12T07:08+09:00",
+      "source_title": "\"韓당국자, 알래스카에 'LNG 상업성 있어야 투자' 전달\"",
+      "telegram_core_fact": "이중 전략적 투자와 관련해 양국은 미 텍사스주 엔시날에 가스복합화력발전소를 건설하는 223억달러 사업을 프로젝트 1호로 확정했으며, 대형 원전 8기 건설 사업과 알래스카 액화천연가스(LNG) 프로젝트는 향후 추가 협의를 거치기로 발표한 상태다.",
+      "title": "\"韓당국자, 알래스카에 'LNG 상업성 있어야 투자' 전달\""
     },
     "source_fact:5e3b433be482916b08f74467": {
       "first_seen_kst": "2026-10-07T17:34:38+09:00",
@@ -283441,6 +284420,35 @@
       ],
       "source_published_kst": "2026-10-06T16:08+09:00",
       "title": "LG엔솔, 11개 분기 만에 매출 8조 복귀하나…북미 ESS가 견인"
+    },
+    "source_fact:64b66556930140d774fe1203": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634518",
+      "source": "이투데이",
+      "source_body_digest": "3823e37e71c6546f03a94825420b65578dfabfdbdf969ec792601f3670c93864",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4b35446510dbde0a5ad35351bb5c63e24b28bf22c33422f1102beff243b4cef",
+      "source_fact_keys": [
+        "source_fact:v1:0d847ac3b575cee2d74536488c6d00c90dd312810362b13ab0a4a0b3f20ac713",
+        "source_fact:v1:0dc1ce2124f2e88f333a72ea6971b16929e31fadf2ad07acaa62a4c6ae4bec82",
+        "source_fact:v1:1d885ca958bfd51a599ac40339874d4c1a063d184204c666cba6ae6f8ab8766c",
+        "source_fact:v1:35a2d8b506bebe7137980b7e638882b0aabf69027a776ae06aebe25946de6964",
+        "source_fact:v1:83006461197cd41b79e092cbaddb1694d49341a3c1dc2e0f94683ff2c9e781e7",
+        "source_fact:v1:88d16c31d343c7e308b781ecc70b14d11a28565bc2edc370682a186112c72dd9",
+        "source_fact:v1:959674264d090ae5ca121cf5713b6e30d25b1b8b0311ea1fce1a7bbbaa26d08d",
+        "source_fact:v1:a7cb01e067c25f7c70fe0b3275e6c7df001ee834407617c9f43cc15a3a2873c4",
+        "source_fact:v1:b314af6b66ce527a4f8650165b697d4487d92185b63ccd0343c2ac84f632557c",
+        "source_fact:v1:dddfc534c4e8e3bcba596ea74f8fd743caea1a72a1a9f4f315b0100488584def",
+        "source_fact:v1:ece1c6f7a7eabbda86d3f644aa0507859a32c1c8a231ca0151cfea272c8a8831"
+      ],
+      "source_published_kst": "2026-10-12T09:48+09:00",
+      "source_title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파",
+      "telegram_core_fact": "KB자산운용의 'RISE 코리아밸류업위클리고정커버드콜 상장지수펀드(ETF)' 순자산이 4000억원을 돌파했다. KB자산운용에 따르면 'RISE 코리아밸류업위클리고정커버드콜 ETF'의 순자산이 4000억원을 넘어섰다.",
+      "title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파"
     },
     "source_fact:64b790fbc9fea6dc771bbcae": {
       "first_seen_kst": "2026-10-08T01:58:01+09:00",
@@ -292067,6 +293075,35 @@
       "source_published_kst": "2026-10-07T11:58+09:00",
       "title": "LG전자, 3분기 누적 매출·영업익 '사상 최대'…가전·전장 호조"
     },
+    "source_fact:6fe65e7a0c1a49b22db394b5": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634518",
+      "source": "이투데이",
+      "source_body_digest": "3823e37e71c6546f03a94825420b65578dfabfdbdf969ec792601f3670c93864",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4b35446510dbde0a5ad35351bb5c63e24b28bf22c33422f1102beff243b4cef",
+      "source_fact_keys": [
+        "source_fact:v1:0d847ac3b575cee2d74536488c6d00c90dd312810362b13ab0a4a0b3f20ac713",
+        "source_fact:v1:0dc1ce2124f2e88f333a72ea6971b16929e31fadf2ad07acaa62a4c6ae4bec82",
+        "source_fact:v1:1d885ca958bfd51a599ac40339874d4c1a063d184204c666cba6ae6f8ab8766c",
+        "source_fact:v1:35a2d8b506bebe7137980b7e638882b0aabf69027a776ae06aebe25946de6964",
+        "source_fact:v1:83006461197cd41b79e092cbaddb1694d49341a3c1dc2e0f94683ff2c9e781e7",
+        "source_fact:v1:88d16c31d343c7e308b781ecc70b14d11a28565bc2edc370682a186112c72dd9",
+        "source_fact:v1:959674264d090ae5ca121cf5713b6e30d25b1b8b0311ea1fce1a7bbbaa26d08d",
+        "source_fact:v1:a7cb01e067c25f7c70fe0b3275e6c7df001ee834407617c9f43cc15a3a2873c4",
+        "source_fact:v1:b314af6b66ce527a4f8650165b697d4487d92185b63ccd0343c2ac84f632557c",
+        "source_fact:v1:dddfc534c4e8e3bcba596ea74f8fd743caea1a72a1a9f4f315b0100488584def",
+        "source_fact:v1:ece1c6f7a7eabbda86d3f644aa0507859a32c1c8a231ca0151cfea272c8a8831"
+      ],
+      "source_published_kst": "2026-10-12T09:48+09:00",
+      "source_title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파",
+      "telegram_core_fact": "KB자산운용의 'RISE 코리아밸류업위클리고정커버드콜 상장지수펀드(ETF)' 순자산이 4000억원을 돌파했다. KB자산운용에 따르면 'RISE 코리아밸류업위클리고정커버드콜 ETF'의 순자산이 4000억원을 넘어섰다.",
+      "title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파"
+    },
     "source_fact:6fe7600b1e33713cede0e67f": {
       "first_seen_kst": "2026-10-08T16:54:07+09:00",
       "lanes": {
@@ -299221,6 +300258,35 @@
       "source_title": "[단독]“주택공급 늘리라”는데...LH는 저임금·인력유출 이중고",
       "telegram_core_fact": "정부가 공공 주도의 대규모 주택공급 확대를 추진하면서 한국토지주택공사(LH)의 역할과 업무량이 많이 늘어날 예정이지만, 정작 LH는 저임금과 인력 유출로 이중고를 겪고 있는 것으로 나타났다. 실제로 2024~2026년 가덕도신공항건설공단이 채용한 경력직 가운데 20~30%가 LH 출신인 것으로 나타났다.",
       "title": "[단독]“주택공급 늘리라”는데...LH는 저임금·인력유출 이중고"
+    },
+    "source_fact:78caf69a89f7b9bbaf7706de": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634518",
+      "source": "이투데이",
+      "source_body_digest": "3823e37e71c6546f03a94825420b65578dfabfdbdf969ec792601f3670c93864",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4b35446510dbde0a5ad35351bb5c63e24b28bf22c33422f1102beff243b4cef",
+      "source_fact_keys": [
+        "source_fact:v1:0d847ac3b575cee2d74536488c6d00c90dd312810362b13ab0a4a0b3f20ac713",
+        "source_fact:v1:0dc1ce2124f2e88f333a72ea6971b16929e31fadf2ad07acaa62a4c6ae4bec82",
+        "source_fact:v1:1d885ca958bfd51a599ac40339874d4c1a063d184204c666cba6ae6f8ab8766c",
+        "source_fact:v1:35a2d8b506bebe7137980b7e638882b0aabf69027a776ae06aebe25946de6964",
+        "source_fact:v1:83006461197cd41b79e092cbaddb1694d49341a3c1dc2e0f94683ff2c9e781e7",
+        "source_fact:v1:88d16c31d343c7e308b781ecc70b14d11a28565bc2edc370682a186112c72dd9",
+        "source_fact:v1:959674264d090ae5ca121cf5713b6e30d25b1b8b0311ea1fce1a7bbbaa26d08d",
+        "source_fact:v1:a7cb01e067c25f7c70fe0b3275e6c7df001ee834407617c9f43cc15a3a2873c4",
+        "source_fact:v1:b314af6b66ce527a4f8650165b697d4487d92185b63ccd0343c2ac84f632557c",
+        "source_fact:v1:dddfc534c4e8e3bcba596ea74f8fd743caea1a72a1a9f4f315b0100488584def",
+        "source_fact:v1:ece1c6f7a7eabbda86d3f644aa0507859a32c1c8a231ca0151cfea272c8a8831"
+      ],
+      "source_published_kst": "2026-10-12T09:48+09:00",
+      "source_title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파",
+      "telegram_core_fact": "KB자산운용의 'RISE 코리아밸류업위클리고정커버드콜 상장지수펀드(ETF)' 순자산이 4000억원을 돌파했다. KB자산운용에 따르면 'RISE 코리아밸류업위클리고정커버드콜 ETF'의 순자산이 4000억원을 넘어섰다.",
+      "title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파"
     },
     "source_fact:78cb959a2ed4f23cc1eee824": {
       "first_seen_kst": "2026-10-07T12:49:48+09:00",
@@ -309976,6 +311042,32 @@
       "source_published_kst": "2026-10-06T20:10+09:00",
       "title": "콘스텔레이션, 구글과 10억 달러 이상 원전 전력 계약 임박 소식에 강세"
     },
+    "source_fact:86bb9aa0b7bf37e321bef5ec": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675412",
+      "source": "블로터",
+      "source_body_digest": "8b59881ed958c18da1177b089f69ffe08d7c760f065468f129299e011b9235b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a43c8d9ef9dcd8954bc4a2a605bf35bbea03b55e3e4e9c5e977b90281f522420",
+      "source_fact_keys": [
+        "source_fact:v1:0b5f3d8bb194a910dd55b8906cf33917183f0abe490fc236d2c410ba99747e50",
+        "source_fact:v1:2307281151c300cf1c88afbbfd9d632481782328dda8772b61c1fc77d51b8012",
+        "source_fact:v1:49c62670eca5dfd8759f85a6bad20e472b3cc6ad542c0817ee6b9c2e05b459ec",
+        "source_fact:v1:715fcd69b849584f24eb9fede0e9181783702589e9101172b8209d0db8b0c50c",
+        "source_fact:v1:81019679967faa5a2f9dd0b81875d7f702faf58507980cdb185e7bf5d16af9d0",
+        "source_fact:v1:b1b81dee72a3aab297b06eeb08738ffd167b270a260b54eb40d4a5cadeff8d6a",
+        "source_fact:v1:b567f205fab1358c08af992d0149caebbb939c71e32d4f8db5cdb695d5588c04",
+        "source_fact:v1:c10310df02fffa31f49a8c47228a31424be329e3d8ef081c7d268bf266037a7b"
+      ],
+      "source_published_kst": "2026-10-12T09:24+09:00",
+      "source_title": "한화 3세 김동선, 머시너리 지분 19% 공개매수…24.8%로 확대",
+      "telegram_core_fact": "김승연 한화그룹 회장의 3남인 김동선 한화머시너리앤서비스홀딩스 미래전략실장은 대상 회사 지분 19.0%를 공개매수한다. 금융감독원 전자공시시스템에 따르면 김 실장은 한화머시너리앤서비스홀딩스 보통주 1606만주(발행주식총수의 19.0%)를 1주당 8000원에 공개매수한다고 공시했다.",
+      "title": "한화 3세 김동선, 머시너리 지분 19% 공개매수…24.8%로 확대"
+    },
     "source_fact:86bc5a30824a5355d41fb1bf": {
       "first_seen_kst": "2026-10-08T16:14:26+09:00",
       "lanes": {
@@ -312492,6 +313584,30 @@
       ],
       "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "“내년에 터진다”…서울 전월세 대란 속 수도권 집값 동반 상승 우려"
+    },
+    "source_fact:89a3ac56bc660c7a38f1db0f": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://m.edaily.co.kr/News/Read?newsId=01872886645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "dc285a19b989385db35c5b67521aa481857db9d6fc1e3059fa4e553b03a4c425",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bdbc41d0280a355ada73d702026b1ffed3683bf025c00532de9cc1afc092562e",
+      "source_fact_keys": [
+        "source_fact:v1:37db4e7c72c52cb63d7e8fea1690af73d2922e0eb2a119f085e2d340027e2e47",
+        "source_fact:v1:5af73700b2f541e8d0aa28af87f8892c2b4e06a1efedbee74e913c5bb0e89c20",
+        "source_fact:v1:5fb66deca4c0ad44c5c87a1b92b51cd15fc241a673b6d0ab1771aa8f20f4b3e2",
+        "source_fact:v1:76c9639e3b7a3aa5a106923f8fca1fb57abb0267870674ae9ecc14d92f984da9",
+        "source_fact:v1:95d54b642efb8a4af81c36cf5b2c095c6e15c9f7cb97e2ee9aa949a8cf4fa014",
+        "source_fact:v1:a14906300b1b3b782635a3cc9e5aad6cdad38e811f90ee5721d1e7a655c6528c"
+      ],
+      "source_published_kst": "2026-10-12T07:08+09:00",
+      "source_title": "\"韓당국자, 알래스카에 'LNG 상업성 있어야 투자' 전달\"",
+      "telegram_core_fact": "이중 전략적 투자와 관련해 양국은 미 텍사스주 엔시날에 가스복합화력발전소를 건설하는 223억달러 사업을 프로젝트 1호로 확정했으며, 대형 원전 8기 건설 사업과 알래스카 액화천연가스(LNG) 프로젝트는 향후 추가 협의를 거치기로 발표한 상태다.",
+      "title": "\"韓당국자, 알래스카에 'LNG 상업성 있어야 투자' 전달\""
     },
     "source_fact:89ad930618fe807bf98631c5": {
       "first_seen_kst": "2026-10-11T20:44:48+09:00",
@@ -331944,6 +333060,35 @@
       "telegram_core_fact": "증권가는 아비언트의 2026년 매출액을 약 34억2,167만 달러로 전년 대비 4.95% 증가할 것으로 예상한다.",
       "title": "아비언트, 신임 대표에 마이크 프랭크 선임..가이던스 유지"
     },
+    "source_fact:a252d1127db268c8e93dd302": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634518",
+      "source": "이투데이",
+      "source_body_digest": "3823e37e71c6546f03a94825420b65578dfabfdbdf969ec792601f3670c93864",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4b35446510dbde0a5ad35351bb5c63e24b28bf22c33422f1102beff243b4cef",
+      "source_fact_keys": [
+        "source_fact:v1:0d847ac3b575cee2d74536488c6d00c90dd312810362b13ab0a4a0b3f20ac713",
+        "source_fact:v1:0dc1ce2124f2e88f333a72ea6971b16929e31fadf2ad07acaa62a4c6ae4bec82",
+        "source_fact:v1:1d885ca958bfd51a599ac40339874d4c1a063d184204c666cba6ae6f8ab8766c",
+        "source_fact:v1:35a2d8b506bebe7137980b7e638882b0aabf69027a776ae06aebe25946de6964",
+        "source_fact:v1:83006461197cd41b79e092cbaddb1694d49341a3c1dc2e0f94683ff2c9e781e7",
+        "source_fact:v1:88d16c31d343c7e308b781ecc70b14d11a28565bc2edc370682a186112c72dd9",
+        "source_fact:v1:959674264d090ae5ca121cf5713b6e30d25b1b8b0311ea1fce1a7bbbaa26d08d",
+        "source_fact:v1:a7cb01e067c25f7c70fe0b3275e6c7df001ee834407617c9f43cc15a3a2873c4",
+        "source_fact:v1:b314af6b66ce527a4f8650165b697d4487d92185b63ccd0343c2ac84f632557c",
+        "source_fact:v1:dddfc534c4e8e3bcba596ea74f8fd743caea1a72a1a9f4f315b0100488584def",
+        "source_fact:v1:ece1c6f7a7eabbda86d3f644aa0507859a32c1c8a231ca0151cfea272c8a8831"
+      ],
+      "source_published_kst": "2026-10-12T09:48+09:00",
+      "source_title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파",
+      "telegram_core_fact": "KB자산운용의 'RISE 코리아밸류업위클리고정커버드콜 상장지수펀드(ETF)' 순자산이 4000억원을 돌파했다. KB자산운용에 따르면 'RISE 코리아밸류업위클리고정커버드콜 ETF'의 순자산이 4000억원을 넘어섰다.",
+      "title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파"
+    },
     "source_fact:a26698de3e0690d05b891f55": {
       "first_seen_kst": "2026-10-09T20:02:39+09:00",
       "lanes": {
@@ -339639,6 +340784,32 @@
       "source_published_kst": "2026-10-06T11:09+09:00",
       "title": "재정부담에 재협상까지…고금리에 상업용 부동산 비상"
     },
+    "source_fact:ac6bb985a9ce6597077b9244": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675412",
+      "source": "블로터",
+      "source_body_digest": "8b59881ed958c18da1177b089f69ffe08d7c760f065468f129299e011b9235b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a43c8d9ef9dcd8954bc4a2a605bf35bbea03b55e3e4e9c5e977b90281f522420",
+      "source_fact_keys": [
+        "source_fact:v1:0b5f3d8bb194a910dd55b8906cf33917183f0abe490fc236d2c410ba99747e50",
+        "source_fact:v1:2307281151c300cf1c88afbbfd9d632481782328dda8772b61c1fc77d51b8012",
+        "source_fact:v1:49c62670eca5dfd8759f85a6bad20e472b3cc6ad542c0817ee6b9c2e05b459ec",
+        "source_fact:v1:715fcd69b849584f24eb9fede0e9181783702589e9101172b8209d0db8b0c50c",
+        "source_fact:v1:81019679967faa5a2f9dd0b81875d7f702faf58507980cdb185e7bf5d16af9d0",
+        "source_fact:v1:b1b81dee72a3aab297b06eeb08738ffd167b270a260b54eb40d4a5cadeff8d6a",
+        "source_fact:v1:b567f205fab1358c08af992d0149caebbb939c71e32d4f8db5cdb695d5588c04",
+        "source_fact:v1:c10310df02fffa31f49a8c47228a31424be329e3d8ef081c7d268bf266037a7b"
+      ],
+      "source_published_kst": "2026-10-12T09:24+09:00",
+      "source_title": "한화 3세 김동선, 머시너리 지분 19% 공개매수…24.8%로 확대",
+      "telegram_core_fact": "김승연 한화그룹 회장의 3남인 김동선 한화머시너리앤서비스홀딩스 미래전략실장은 대상 회사 지분 19.0%를 공개매수한다. 금융감독원 전자공시시스템에 따르면 김 실장은 한화머시너리앤서비스홀딩스 보통주 1606만주(발행주식총수의 19.0%)를 1주당 8000원에 공개매수한다고 공시했다.",
+      "title": "한화 3세 김동선, 머시너리 지분 19% 공개매수…24.8%로 확대"
+    },
     "source_fact:ac7789b79d2f23163bc6e18a": {
       "first_seen_kst": "2026-10-07T18:12:46+09:00",
       "lanes": {
@@ -340837,6 +342008,32 @@
       "source_title": "삼성전자 3Q 영업익 107.4조…세계 테크기업 최초 100조 돌파(종합)",
       "telegram_core_fact": "삼성전자(005930)가 올해 3분기 107조 4000억 원의 영업이익을 기록, 우리나라 기업 사상 처음으로 분기 영업익 100조 시대를 열었다.",
       "title": "삼성전자 3Q 영업익 107.4조…세계 테크기업 최초 100조 돌파(종합)"
+    },
+    "source_fact:ada9ead3136e41678841066a": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675412",
+      "source": "블로터",
+      "source_body_digest": "8b59881ed958c18da1177b089f69ffe08d7c760f065468f129299e011b9235b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a43c8d9ef9dcd8954bc4a2a605bf35bbea03b55e3e4e9c5e977b90281f522420",
+      "source_fact_keys": [
+        "source_fact:v1:0b5f3d8bb194a910dd55b8906cf33917183f0abe490fc236d2c410ba99747e50",
+        "source_fact:v1:2307281151c300cf1c88afbbfd9d632481782328dda8772b61c1fc77d51b8012",
+        "source_fact:v1:49c62670eca5dfd8759f85a6bad20e472b3cc6ad542c0817ee6b9c2e05b459ec",
+        "source_fact:v1:715fcd69b849584f24eb9fede0e9181783702589e9101172b8209d0db8b0c50c",
+        "source_fact:v1:81019679967faa5a2f9dd0b81875d7f702faf58507980cdb185e7bf5d16af9d0",
+        "source_fact:v1:b1b81dee72a3aab297b06eeb08738ffd167b270a260b54eb40d4a5cadeff8d6a",
+        "source_fact:v1:b567f205fab1358c08af992d0149caebbb939c71e32d4f8db5cdb695d5588c04",
+        "source_fact:v1:c10310df02fffa31f49a8c47228a31424be329e3d8ef081c7d268bf266037a7b"
+      ],
+      "source_published_kst": "2026-10-12T09:24+09:00",
+      "source_title": "한화 3세 김동선, 머시너리 지분 19% 공개매수…24.8%로 확대",
+      "telegram_core_fact": "김승연 한화그룹 회장의 3남인 김동선 한화머시너리앤서비스홀딩스 미래전략실장은 대상 회사 지분 19.0%를 공개매수한다. 금융감독원 전자공시시스템에 따르면 김 실장은 한화머시너리앤서비스홀딩스 보통주 1606만주(발행주식총수의 19.0%)를 1주당 8000원에 공개매수한다고 공시했다.",
+      "title": "한화 3세 김동선, 머시너리 지분 19% 공개매수…24.8%로 확대"
     },
     "source_fact:adaed53200945b33620d104c": {
       "first_seen_kst": "2026-10-07T07:39:19+09:00",
@@ -346490,6 +347687,27 @@
       "telegram_core_fact": "특별성과급은 세금과 보험료 등을 공제한 뒤 자사주로 지급된다.",
       "title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나"
     },
+    "source_fact:b4a9eff919ac06cd6fb7b9bc": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634414?trc=main_list_news",
+      "source": "이투데이",
+      "source_body_digest": "ac5207f6de1e83e64546a9240a2a5636bcfd2f9bcde46440260b3abe9e079374",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7f30c3e90e3368e3ade6203a73f0b8fc8433ad62a1c11ca1af74ae678a0288f2",
+      "source_fact_keys": [
+        "source_fact:v1:1294cee6d9d7df0042dedc9878e9b94b6d443627b34991b46e1417d6ddba95b5",
+        "source_fact:v1:6cd86506c9edb8279efed8a7f22b6ba4122d6004fa18d239fd0629f22bd44259",
+        "source_fact:v1:d4c2209ad1f5e3a33def285c95d1350f2d29c93ac5a14d955b0593e51cacb9c2"
+      ],
+      "source_published_kst": "2026-10-12T08:12+09:00",
+      "source_title": "키움운용, 국내 첫 'MLCC·AI기판 ETF' 상장…무라타·삼성전기 집중 투자",
+      "telegram_core_fact": "키움투자자산운용은 13일 'KIWOOM 글로벌MLCC&AI기판TOP4+ ETF'를 유가증권시장에 신규 상장한다고 12일 밝혔다.",
+      "title": "키움운용, 국내 첫 'MLCC·AI기판 ETF' 상장…무라타·삼성전기 집중 투자"
+    },
     "source_fact:b4acd40ac6a7ee3b4cf58c2f": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
@@ -350918,6 +352136,32 @@
       "telegram_core_fact": "브레마 호텔&리조트(BHR)가 포시즌스 리조트 스코츠데일을 3억7200만 달러에 매각하는 확정 계약을 체결하고, 2027년 연간 총매출액 가이던스를 4억700만~4억1200만 달러(중간값 4억900만 달러)로 제시했다고 8일(현지시간) 발표했다.",
       "title": "브레마 호텔&리조트, 스코츠데일 3억7200만 달러 매각..자문사 분리 가속"
     },
+    "source_fact:bae99f7d6bcd45c99faaa6ae": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675412",
+      "source": "블로터",
+      "source_body_digest": "8b59881ed958c18da1177b089f69ffe08d7c760f065468f129299e011b9235b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a43c8d9ef9dcd8954bc4a2a605bf35bbea03b55e3e4e9c5e977b90281f522420",
+      "source_fact_keys": [
+        "source_fact:v1:0b5f3d8bb194a910dd55b8906cf33917183f0abe490fc236d2c410ba99747e50",
+        "source_fact:v1:2307281151c300cf1c88afbbfd9d632481782328dda8772b61c1fc77d51b8012",
+        "source_fact:v1:49c62670eca5dfd8759f85a6bad20e472b3cc6ad542c0817ee6b9c2e05b459ec",
+        "source_fact:v1:715fcd69b849584f24eb9fede0e9181783702589e9101172b8209d0db8b0c50c",
+        "source_fact:v1:81019679967faa5a2f9dd0b81875d7f702faf58507980cdb185e7bf5d16af9d0",
+        "source_fact:v1:b1b81dee72a3aab297b06eeb08738ffd167b270a260b54eb40d4a5cadeff8d6a",
+        "source_fact:v1:b567f205fab1358c08af992d0149caebbb939c71e32d4f8db5cdb695d5588c04",
+        "source_fact:v1:c10310df02fffa31f49a8c47228a31424be329e3d8ef081c7d268bf266037a7b"
+      ],
+      "source_published_kst": "2026-10-12T09:24+09:00",
+      "source_title": "한화 3세 김동선, 머시너리 지분 19% 공개매수…24.8%로 확대",
+      "telegram_core_fact": "김승연 한화그룹 회장의 3남인 김동선 한화머시너리앤서비스홀딩스 미래전략실장은 대상 회사 지분 19.0%를 공개매수한다. 금융감독원 전자공시시스템에 따르면 김 실장은 한화머시너리앤서비스홀딩스 보통주 1606만주(발행주식총수의 19.0%)를 1주당 8000원에 공개매수한다고 공시했다.",
+      "title": "한화 3세 김동선, 머시너리 지분 19% 공개매수…24.8%로 확대"
+    },
     "source_fact:baee6d6a0c599d6d0a1312a1": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
       "lanes": {
@@ -354299,6 +355543,27 @@
       "source_published_kst": "2026-10-06T18:38+09:00",
       "title": "부산 스타트업 '데이터스피라' 伊 명품 돌체앤가바나 뚫었다"
     },
+    "source_fact:bfc81a6331781cfc7d066739": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634414?trc=main_list_news",
+      "source": "이투데이",
+      "source_body_digest": "ac5207f6de1e83e64546a9240a2a5636bcfd2f9bcde46440260b3abe9e079374",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7f30c3e90e3368e3ade6203a73f0b8fc8433ad62a1c11ca1af74ae678a0288f2",
+      "source_fact_keys": [
+        "source_fact:v1:1294cee6d9d7df0042dedc9878e9b94b6d443627b34991b46e1417d6ddba95b5",
+        "source_fact:v1:6cd86506c9edb8279efed8a7f22b6ba4122d6004fa18d239fd0629f22bd44259",
+        "source_fact:v1:d4c2209ad1f5e3a33def285c95d1350f2d29c93ac5a14d955b0593e51cacb9c2"
+      ],
+      "source_published_kst": "2026-10-12T08:12+09:00",
+      "source_title": "키움운용, 국내 첫 'MLCC·AI기판 ETF' 상장…무라타·삼성전기 집중 투자",
+      "telegram_core_fact": "키움투자자산운용은 13일 'KIWOOM 글로벌MLCC&AI기판TOP4+ ETF'를 유가증권시장에 신규 상장한다고 12일 밝혔다.",
+      "title": "키움운용, 국내 첫 'MLCC·AI기판 ETF' 상장…무라타·삼성전기 집중 투자"
+    },
     "source_fact:bfd2f53b8acd5d40484c7bca": {
       "first_seen_kst": "2026-10-11T17:08:25+09:00",
       "lanes": {
@@ -356393,6 +357658,30 @@
       ],
       "source_published_kst": "2026-10-06T12:08+09:00",
       "title": "삼성전기, 2856억 MLCC 추가 수주…올해 공급계약 약 4조원 추산(종합)"
+    },
+    "source_fact:c216e34b8e9b62e3fe53a855": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://m.edaily.co.kr/News/Read?newsId=01872886645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "dc285a19b989385db35c5b67521aa481857db9d6fc1e3059fa4e553b03a4c425",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bdbc41d0280a355ada73d702026b1ffed3683bf025c00532de9cc1afc092562e",
+      "source_fact_keys": [
+        "source_fact:v1:37db4e7c72c52cb63d7e8fea1690af73d2922e0eb2a119f085e2d340027e2e47",
+        "source_fact:v1:5af73700b2f541e8d0aa28af87f8892c2b4e06a1efedbee74e913c5bb0e89c20",
+        "source_fact:v1:5fb66deca4c0ad44c5c87a1b92b51cd15fc241a673b6d0ab1771aa8f20f4b3e2",
+        "source_fact:v1:76c9639e3b7a3aa5a106923f8fca1fb57abb0267870674ae9ecc14d92f984da9",
+        "source_fact:v1:95d54b642efb8a4af81c36cf5b2c095c6e15c9f7cb97e2ee9aa949a8cf4fa014",
+        "source_fact:v1:a14906300b1b3b782635a3cc9e5aad6cdad38e811f90ee5721d1e7a655c6528c"
+      ],
+      "source_published_kst": "2026-10-12T07:08+09:00",
+      "source_title": "\"韓당국자, 알래스카에 'LNG 상업성 있어야 투자' 전달\"",
+      "telegram_core_fact": "이중 전략적 투자와 관련해 양국은 미 텍사스주 엔시날에 가스복합화력발전소를 건설하는 223억달러 사업을 프로젝트 1호로 확정했으며, 대형 원전 8기 건설 사업과 알래스카 액화천연가스(LNG) 프로젝트는 향후 추가 협의를 거치기로 발표한 상태다.",
+      "title": "\"韓당국자, 알래스카에 'LNG 상업성 있어야 투자' 전달\""
     },
     "source_fact:c227559019f2c05eac1be298": {
       "first_seen_kst": "2026-10-07T18:12:46+09:00",
@@ -365721,6 +367010,27 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아 정유시설 공격을 계속하는 우크라이나에 정보 공유 중단을 경고하고 볼로디미르 젤렌스키 대통령의 교체 필요성까지 언급했다.",
       "title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고"
     },
+    "source_fact:cd771e1edaa9c12f2effefba": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634414?trc=main_list_news",
+      "source": "이투데이",
+      "source_body_digest": "ac5207f6de1e83e64546a9240a2a5636bcfd2f9bcde46440260b3abe9e079374",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7f30c3e90e3368e3ade6203a73f0b8fc8433ad62a1c11ca1af74ae678a0288f2",
+      "source_fact_keys": [
+        "source_fact:v1:1294cee6d9d7df0042dedc9878e9b94b6d443627b34991b46e1417d6ddba95b5",
+        "source_fact:v1:6cd86506c9edb8279efed8a7f22b6ba4122d6004fa18d239fd0629f22bd44259",
+        "source_fact:v1:d4c2209ad1f5e3a33def285c95d1350f2d29c93ac5a14d955b0593e51cacb9c2"
+      ],
+      "source_published_kst": "2026-10-12T08:12+09:00",
+      "source_title": "키움운용, 국내 첫 'MLCC·AI기판 ETF' 상장…무라타·삼성전기 집중 투자",
+      "telegram_core_fact": "키움투자자산운용은 13일 'KIWOOM 글로벌MLCC&AI기판TOP4+ ETF'를 유가증권시장에 신규 상장한다고 12일 밝혔다.",
+      "title": "키움운용, 국내 첫 'MLCC·AI기판 ETF' 상장…무라타·삼성전기 집중 투자"
+    },
     "source_fact:cd77761e5d0af7bcd8ca350b": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
       "lanes": {
@@ -369272,6 +370582,35 @@
       "source_title": "중국 AI스타트업 마누스, 메타 인수 무산 뒤 5억달러 투자유치 | 연합뉴스",
       "telegram_core_fact": "중국 정부의 제동으로 미국 빅테크 기업 메타의 인수 거래가 무산된 인공지능(AI) 스타트업 마누스가 5억달러(약 6천700억원) 이상의 신규 투자를 유치했다. 중국 IT 전문매체 IT즈자(IT之家) 등에 따르면 마누스의 모회사 버터플라이 이펙트는 이날 최근 5억달러 이상의 신규 자금 조달을 완료했다고 발표했다.",
       "title": "중국 AI스타트업 마누스, 메타 인수 무산 뒤 5억달러 투자유치 | 연합뉴스"
+    },
+    "source_fact:d21a3f859e14a30d815e4059": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634518",
+      "source": "이투데이",
+      "source_body_digest": "3823e37e71c6546f03a94825420b65578dfabfdbdf969ec792601f3670c93864",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4b35446510dbde0a5ad35351bb5c63e24b28bf22c33422f1102beff243b4cef",
+      "source_fact_keys": [
+        "source_fact:v1:0d847ac3b575cee2d74536488c6d00c90dd312810362b13ab0a4a0b3f20ac713",
+        "source_fact:v1:0dc1ce2124f2e88f333a72ea6971b16929e31fadf2ad07acaa62a4c6ae4bec82",
+        "source_fact:v1:1d885ca958bfd51a599ac40339874d4c1a063d184204c666cba6ae6f8ab8766c",
+        "source_fact:v1:35a2d8b506bebe7137980b7e638882b0aabf69027a776ae06aebe25946de6964",
+        "source_fact:v1:83006461197cd41b79e092cbaddb1694d49341a3c1dc2e0f94683ff2c9e781e7",
+        "source_fact:v1:88d16c31d343c7e308b781ecc70b14d11a28565bc2edc370682a186112c72dd9",
+        "source_fact:v1:959674264d090ae5ca121cf5713b6e30d25b1b8b0311ea1fce1a7bbbaa26d08d",
+        "source_fact:v1:a7cb01e067c25f7c70fe0b3275e6c7df001ee834407617c9f43cc15a3a2873c4",
+        "source_fact:v1:b314af6b66ce527a4f8650165b697d4487d92185b63ccd0343c2ac84f632557c",
+        "source_fact:v1:dddfc534c4e8e3bcba596ea74f8fd743caea1a72a1a9f4f315b0100488584def",
+        "source_fact:v1:ece1c6f7a7eabbda86d3f644aa0507859a32c1c8a231ca0151cfea272c8a8831"
+      ],
+      "source_published_kst": "2026-10-12T09:48+09:00",
+      "source_title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파",
+      "telegram_core_fact": "KB자산운용의 'RISE 코리아밸류업위클리고정커버드콜 상장지수펀드(ETF)' 순자산이 4000억원을 돌파했다. KB자산운용에 따르면 'RISE 코리아밸류업위클리고정커버드콜 ETF'의 순자산이 4000억원을 넘어섰다.",
+      "title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파"
     },
     "source_fact:d21e6a7d72a935783c3c5faf": {
       "first_seen_kst": "2026-10-06T18:34:25+09:00",
@@ -376068,6 +377407,30 @@
       "telegram_core_fact": "미 국채 10년물 금리는 현지시간 7일 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
       "title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스"
     },
+    "source_fact:da4799fb760dd49e401af0bd": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://m.edaily.co.kr/News/Read?newsId=01872886645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "dc285a19b989385db35c5b67521aa481857db9d6fc1e3059fa4e553b03a4c425",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bdbc41d0280a355ada73d702026b1ffed3683bf025c00532de9cc1afc092562e",
+      "source_fact_keys": [
+        "source_fact:v1:37db4e7c72c52cb63d7e8fea1690af73d2922e0eb2a119f085e2d340027e2e47",
+        "source_fact:v1:5af73700b2f541e8d0aa28af87f8892c2b4e06a1efedbee74e913c5bb0e89c20",
+        "source_fact:v1:5fb66deca4c0ad44c5c87a1b92b51cd15fc241a673b6d0ab1771aa8f20f4b3e2",
+        "source_fact:v1:76c9639e3b7a3aa5a106923f8fca1fb57abb0267870674ae9ecc14d92f984da9",
+        "source_fact:v1:95d54b642efb8a4af81c36cf5b2c095c6e15c9f7cb97e2ee9aa949a8cf4fa014",
+        "source_fact:v1:a14906300b1b3b782635a3cc9e5aad6cdad38e811f90ee5721d1e7a655c6528c"
+      ],
+      "source_published_kst": "2026-10-12T07:08+09:00",
+      "source_title": "\"韓당국자, 알래스카에 'LNG 상업성 있어야 투자' 전달\"",
+      "telegram_core_fact": "이중 전략적 투자와 관련해 양국은 미 텍사스주 엔시날에 가스복합화력발전소를 건설하는 223억달러 사업을 프로젝트 1호로 확정했으며, 대형 원전 8기 건설 사업과 알래스카 액화천연가스(LNG) 프로젝트는 향후 추가 협의를 거치기로 발표한 상태다.",
+      "title": "\"韓당국자, 알래스카에 'LNG 상업성 있어야 투자' 전달\""
+    },
     "source_fact:da4a76751fdf08f360a00dd1": {
       "first_seen_kst": "2026-10-07T22:37:58+09:00",
       "lanes": {
@@ -379782,6 +381145,35 @@
       "source_title": "李대통령 \"적자기업에 先보조금 검토하라\"",
       "telegram_core_fact": "이 대통령은 보고회에서 “생산세액공제는 이익이 발생하지 않으면 의미가 없다”며 “보조금을 일부 지급한 다음 나중에 이익이 나면 세액공제에서 차감하는 방법을 검토해보라”고 했다.",
       "title": "李대통령 \"적자기업에 先보조금 검토하라\""
+    },
+    "source_fact:df00e1d16307780639641075": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634518",
+      "source": "이투데이",
+      "source_body_digest": "3823e37e71c6546f03a94825420b65578dfabfdbdf969ec792601f3670c93864",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4b35446510dbde0a5ad35351bb5c63e24b28bf22c33422f1102beff243b4cef",
+      "source_fact_keys": [
+        "source_fact:v1:0d847ac3b575cee2d74536488c6d00c90dd312810362b13ab0a4a0b3f20ac713",
+        "source_fact:v1:0dc1ce2124f2e88f333a72ea6971b16929e31fadf2ad07acaa62a4c6ae4bec82",
+        "source_fact:v1:1d885ca958bfd51a599ac40339874d4c1a063d184204c666cba6ae6f8ab8766c",
+        "source_fact:v1:35a2d8b506bebe7137980b7e638882b0aabf69027a776ae06aebe25946de6964",
+        "source_fact:v1:83006461197cd41b79e092cbaddb1694d49341a3c1dc2e0f94683ff2c9e781e7",
+        "source_fact:v1:88d16c31d343c7e308b781ecc70b14d11a28565bc2edc370682a186112c72dd9",
+        "source_fact:v1:959674264d090ae5ca121cf5713b6e30d25b1b8b0311ea1fce1a7bbbaa26d08d",
+        "source_fact:v1:a7cb01e067c25f7c70fe0b3275e6c7df001ee834407617c9f43cc15a3a2873c4",
+        "source_fact:v1:b314af6b66ce527a4f8650165b697d4487d92185b63ccd0343c2ac84f632557c",
+        "source_fact:v1:dddfc534c4e8e3bcba596ea74f8fd743caea1a72a1a9f4f315b0100488584def",
+        "source_fact:v1:ece1c6f7a7eabbda86d3f644aa0507859a32c1c8a231ca0151cfea272c8a8831"
+      ],
+      "source_published_kst": "2026-10-12T09:48+09:00",
+      "source_title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파",
+      "telegram_core_fact": "KB자산운용의 'RISE 코리아밸류업위클리고정커버드콜 상장지수펀드(ETF)' 순자산이 4000억원을 돌파했다. KB자산운용에 따르면 'RISE 코리아밸류업위클리고정커버드콜 ETF'의 순자산이 4000억원을 넘어섰다.",
+      "title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파"
     },
     "source_fact:df089aa431ed357bd55a7ca2": {
       "first_seen_kst": "2026-10-07T11:25:20+09:00",
@@ -388060,6 +389452,35 @@
       "source_title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\"",
       "telegram_core_fact": "연준이 7일(현지시간) 공개한 9월 15~16일 연방공개시장위원회(FOMC) 의사록에 따르면 참석자 대부분은 향후 통화정책과 관련해 “연말까지 기준금리 목표범위를 한 차례 더 인상하는 것이 적절할 가능성이 높다”고 평가했다.",
       "title": "연준, 9월 의사록서 추가 인상 신호…\"대부분 연내 한차례 더 적절\""
+    },
+    "source_fact:e8faa397a3b6f884e8cc2877": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634518",
+      "source": "이투데이",
+      "source_body_digest": "3823e37e71c6546f03a94825420b65578dfabfdbdf969ec792601f3670c93864",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4b35446510dbde0a5ad35351bb5c63e24b28bf22c33422f1102beff243b4cef",
+      "source_fact_keys": [
+        "source_fact:v1:0d847ac3b575cee2d74536488c6d00c90dd312810362b13ab0a4a0b3f20ac713",
+        "source_fact:v1:0dc1ce2124f2e88f333a72ea6971b16929e31fadf2ad07acaa62a4c6ae4bec82",
+        "source_fact:v1:1d885ca958bfd51a599ac40339874d4c1a063d184204c666cba6ae6f8ab8766c",
+        "source_fact:v1:35a2d8b506bebe7137980b7e638882b0aabf69027a776ae06aebe25946de6964",
+        "source_fact:v1:83006461197cd41b79e092cbaddb1694d49341a3c1dc2e0f94683ff2c9e781e7",
+        "source_fact:v1:88d16c31d343c7e308b781ecc70b14d11a28565bc2edc370682a186112c72dd9",
+        "source_fact:v1:959674264d090ae5ca121cf5713b6e30d25b1b8b0311ea1fce1a7bbbaa26d08d",
+        "source_fact:v1:a7cb01e067c25f7c70fe0b3275e6c7df001ee834407617c9f43cc15a3a2873c4",
+        "source_fact:v1:b314af6b66ce527a4f8650165b697d4487d92185b63ccd0343c2ac84f632557c",
+        "source_fact:v1:dddfc534c4e8e3bcba596ea74f8fd743caea1a72a1a9f4f315b0100488584def",
+        "source_fact:v1:ece1c6f7a7eabbda86d3f644aa0507859a32c1c8a231ca0151cfea272c8a8831"
+      ],
+      "source_published_kst": "2026-10-12T09:48+09:00",
+      "source_title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파",
+      "telegram_core_fact": "KB자산운용의 'RISE 코리아밸류업위클리고정커버드콜 상장지수펀드(ETF)' 순자산이 4000억원을 돌파했다. KB자산운용에 따르면 'RISE 코리아밸류업위클리고정커버드콜 ETF'의 순자산이 4000억원을 넘어섰다.",
+      "title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파"
     },
     "source_fact:e8fcfdb5dd31fca11bb40af6": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
@@ -397523,6 +398944,30 @@
       "source_title": "이란군\" 호르무즈 불법통과 유조선 11일 기뢰에 또 폭발..벌써 3척 \"",
       "telegram_core_fact": "이란 혁명수비대(IRGC)해군은 11일(현지시간) 성명을 발표, 이 날 앞서 호르무즈해협 남단의 봉쇄선을 \"위반\"해서 불법 통과하던 대형 유조선 한 척이 또 해군의 기뢰에 걸려 폭발했다고 밝혔다.",
       "title": "이란군\" 호르무즈 불법통과 유조선 11일 기뢰에 또 폭발..벌써 3척 \""
+    },
+    "source_fact:f569ced32b5c2be16acee6c4": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://m.edaily.co.kr/News/Read?newsId=01872886645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "dc285a19b989385db35c5b67521aa481857db9d6fc1e3059fa4e553b03a4c425",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bdbc41d0280a355ada73d702026b1ffed3683bf025c00532de9cc1afc092562e",
+      "source_fact_keys": [
+        "source_fact:v1:37db4e7c72c52cb63d7e8fea1690af73d2922e0eb2a119f085e2d340027e2e47",
+        "source_fact:v1:5af73700b2f541e8d0aa28af87f8892c2b4e06a1efedbee74e913c5bb0e89c20",
+        "source_fact:v1:5fb66deca4c0ad44c5c87a1b92b51cd15fc241a673b6d0ab1771aa8f20f4b3e2",
+        "source_fact:v1:76c9639e3b7a3aa5a106923f8fca1fb57abb0267870674ae9ecc14d92f984da9",
+        "source_fact:v1:95d54b642efb8a4af81c36cf5b2c095c6e15c9f7cb97e2ee9aa949a8cf4fa014",
+        "source_fact:v1:a14906300b1b3b782635a3cc9e5aad6cdad38e811f90ee5721d1e7a655c6528c"
+      ],
+      "source_published_kst": "2026-10-12T07:08+09:00",
+      "source_title": "\"韓당국자, 알래스카에 'LNG 상업성 있어야 투자' 전달\"",
+      "telegram_core_fact": "이중 전략적 투자와 관련해 양국은 미 텍사스주 엔시날에 가스복합화력발전소를 건설하는 223억달러 사업을 프로젝트 1호로 확정했으며, 대형 원전 8기 건설 사업과 알래스카 액화천연가스(LNG) 프로젝트는 향후 추가 협의를 거치기로 발표한 상태다.",
+      "title": "\"韓당국자, 알래스카에 'LNG 상업성 있어야 투자' 전달\""
     },
     "source_fact:f576233ea231f7ffcf838c9f": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
@@ -422370,6 +423815,25 @@
       "source_published_kst": "2026-10-07T12:44+09:00",
       "title": "인도 9월 서비스업 PMI 55.2·1.1P↑…\"3개월 만에 최고\""
     },
+    "title:44e9cdc0f395567be6583214": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634462",
+      "source": "이투데이",
+      "source_body_digest": "7f5e4de77a9b71fbfa8fd2389c8d8a6c43f2df3061b761f958a1645e42f0620f",
+      "source_event_identity": "source_event:v2:intraday_equity:2c807e7c89767e2e461da44dc4f1db5e47bd1ceb6e3ee22e645f855d38d13052",
+      "source_fact_identity": "source_facts:v1:2d74049c82320a925d7c5fe2b205cf4ce6cc912860edb6603a902f26206f8b7c",
+      "source_fact_keys": [
+        "source_fact:v1:45e598a985f7d3b6a4ee6351255aabe2973c8b9664f8ac1c7cd672a8f1b48b5b"
+      ],
+      "source_published_kst": "2026-10-12T09:13+09:00",
+      "source_title": "[특징주] 납 배출 주사 논란…DN오토모티브, 8%대 급락",
+      "telegram_core_fact": "한국거래소 기준 12일 오전 9시6분 DN오토모티브는 8.74% 내린 4만4900원에 거래됐다. 등락률은 전 거래일 대비다.",
+      "title": "[특징주] 납 배출 주사 논란…DN오토모티브, 8%대 급락"
+    },
     "title:450263976aae7e756eccd846": {
       "first_seen_kst": "2026-10-07T00:23:09+09:00",
       "lanes": {
@@ -428561,6 +430025,32 @@
       "source_published_kst": "2026-10-06T00:12+09:00",
       "title": "\"AI 말고는 쳐다볼 게 없다\"…글로벌 투자 지도 바꾸는 '빅머니'"
     },
+    "title:5f65634a6bb50c4e0aec5b27": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.bloter.net/news/articleView.html?idxno=675412",
+      "source": "블로터",
+      "source_body_digest": "8b59881ed958c18da1177b089f69ffe08d7c760f065468f129299e011b9235b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a43c8d9ef9dcd8954bc4a2a605bf35bbea03b55e3e4e9c5e977b90281f522420",
+      "source_fact_keys": [
+        "source_fact:v1:0b5f3d8bb194a910dd55b8906cf33917183f0abe490fc236d2c410ba99747e50",
+        "source_fact:v1:2307281151c300cf1c88afbbfd9d632481782328dda8772b61c1fc77d51b8012",
+        "source_fact:v1:49c62670eca5dfd8759f85a6bad20e472b3cc6ad542c0817ee6b9c2e05b459ec",
+        "source_fact:v1:715fcd69b849584f24eb9fede0e9181783702589e9101172b8209d0db8b0c50c",
+        "source_fact:v1:81019679967faa5a2f9dd0b81875d7f702faf58507980cdb185e7bf5d16af9d0",
+        "source_fact:v1:b1b81dee72a3aab297b06eeb08738ffd167b270a260b54eb40d4a5cadeff8d6a",
+        "source_fact:v1:b567f205fab1358c08af992d0149caebbb939c71e32d4f8db5cdb695d5588c04",
+        "source_fact:v1:c10310df02fffa31f49a8c47228a31424be329e3d8ef081c7d268bf266037a7b"
+      ],
+      "source_published_kst": "2026-10-12T09:24+09:00",
+      "source_title": "한화 3세 김동선, 머시너리 지분 19% 공개매수…24.8%로 확대",
+      "telegram_core_fact": "김승연 한화그룹 회장의 3남인 김동선 한화머시너리앤서비스홀딩스 미래전략실장은 대상 회사 지분 19.0%를 공개매수한다. 금융감독원 전자공시시스템에 따르면 김 실장은 한화머시너리앤서비스홀딩스 보통주 1606만주(발행주식총수의 19.0%)를 1주당 8000원에 공개매수한다고 공시했다.",
+      "title": "한화 3세 김동선, 머시너리 지분 19% 공개매수…24.8%로 확대"
+    },
     "title:5f7f26acede1ff7916ad65bb": {
       "first_seen_kst": "2026-10-08T00:54:18+09:00",
       "lanes": {
@@ -432534,6 +434024,25 @@
       ],
       "source_published_kst": "2026-10-07T09:38+09:00",
       "title": "BMW 코리아, 전동화차 판매 1만대 돌파…프리미엄 수입차 첫 기록"
+    },
+    "title:722674737433c2bb7e0dd52a": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634418?trc=right_categori_news_estudio",
+      "source": "이투데이",
+      "source_body_digest": "09a399cb41c8e4b9282c8a5e29422fa8c2631064662b5a607ccced45208dcb43",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:478591cf4e2e377e48c2536fddcfa9867dd779f398d7189b0ab2fde8521283ec",
+      "source_fact_keys": [
+        "source_fact:v1:8c355bc477534add04abfb86af7adfba83ac0730cf960138e0f4ef25301b2374"
+      ],
+      "source_published_kst": "2026-10-12T08:22+09:00",
+      "source_title": "이란 안보수장 “美, 호르무즈 재개방 7개 조건 일부 수용⋯답변 불충분”",
+      "telegram_core_fact": "레자이 사무총장은 “미국은 이란에 여전히 불분명한 문제들을 명확히 해야 한다”며 “우리는 미국 측에 7가지 조건을 제시했고 이 조건들이 충족될 때까지 호르무즈해협을 미국에 개방하지 않을 것이며 어떠한 협상도 진행되지 않을 것이라고 분명히 밝혔다”고 말했다.",
+      "title": "이란 안보수장 “美, 호르무즈 재개방 7개 조건 일부 수용⋯답변 불충분”"
     },
     "title:722e45b0aef6d78d50dbd57b": {
       "first_seen_kst": "2026-10-09T17:32:22+09:00",
@@ -436758,6 +438267,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T13:56+09:00",
       "title": "에스파 & 보이넥스트도어, 한터 주간 '월드·음반 차트' 정상"
+    },
+    "title:8434d6f7d3d80e9999cce4f5": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821548",
+      "source": "뉴시스",
+      "source_body_digest": "45bcb4b2d36692e9f426ce12fec3152b7e8e94f758d52786ef8799f4e24c3e9a",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T09:22+09:00",
+      "source_title": "삼성물산, 반포푸르지오 리모델링 제안…84㎡ 평면·공용공간 차별화",
+      "telegram_core_fact": "삼성물산은 반포푸르지오 리모델링 사업에 입찰제안서를 제출했다고 12일 밝혔다.",
+      "title": "삼성물산, 반포푸르지오 리모델링 제안…84㎡ 평면·공용공간 차별화"
     },
     "title:843f4842bee462f6d7ba82c6": {
       "first_seen_kst": "2026-10-10T00:39:56+09:00",
@@ -458196,6 +459722,30 @@
       "telegram_core_fact": "OK금융은 지난 7월 예별손보 공개매각 우선협상대상자로 선정됐다.",
       "title": "예보, OK금융과 예별손보 매각 본계약⋯대주주 변경승인 남아"
     },
+    "title:da9eeac7dbe895a0670b87f9": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://m.edaily.co.kr/News/Read?newsId=01872886645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "dc285a19b989385db35c5b67521aa481857db9d6fc1e3059fa4e553b03a4c425",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bdbc41d0280a355ada73d702026b1ffed3683bf025c00532de9cc1afc092562e",
+      "source_fact_keys": [
+        "source_fact:v1:37db4e7c72c52cb63d7e8fea1690af73d2922e0eb2a119f085e2d340027e2e47",
+        "source_fact:v1:5af73700b2f541e8d0aa28af87f8892c2b4e06a1efedbee74e913c5bb0e89c20",
+        "source_fact:v1:5fb66deca4c0ad44c5c87a1b92b51cd15fc241a673b6d0ab1771aa8f20f4b3e2",
+        "source_fact:v1:76c9639e3b7a3aa5a106923f8fca1fb57abb0267870674ae9ecc14d92f984da9",
+        "source_fact:v1:95d54b642efb8a4af81c36cf5b2c095c6e15c9f7cb97e2ee9aa949a8cf4fa014",
+        "source_fact:v1:a14906300b1b3b782635a3cc9e5aad6cdad38e811f90ee5721d1e7a655c6528c"
+      ],
+      "source_published_kst": "2026-10-12T07:08+09:00",
+      "source_title": "\"韓당국자, 알래스카에 'LNG 상업성 있어야 투자' 전달\"",
+      "telegram_core_fact": "이중 전략적 투자와 관련해 양국은 미 텍사스주 엔시날에 가스복합화력발전소를 건설하는 223억달러 사업을 프로젝트 1호로 확정했으며, 대형 원전 8기 건설 사업과 알래스카 액화천연가스(LNG) 프로젝트는 향후 추가 협의를 거치기로 발표한 상태다.",
+      "title": "\"韓당국자, 알래스카에 'LNG 상업성 있어야 투자' 전달\""
+    },
     "title:dab6a65619344cc44aa01e0a": {
       "first_seen_kst": "2026-10-11T18:15:28+09:00",
       "lanes": {
@@ -464113,6 +465663,35 @@
       "source": "머니투데이",
       "title": "'AI 속도조절' 불지른 앤트로픽, 상장 한달 연기"
     },
+    "title:f4a013210675941e03fb6f0c": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634518",
+      "source": "이투데이",
+      "source_body_digest": "3823e37e71c6546f03a94825420b65578dfabfdbdf969ec792601f3670c93864",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4b35446510dbde0a5ad35351bb5c63e24b28bf22c33422f1102beff243b4cef",
+      "source_fact_keys": [
+        "source_fact:v1:0d847ac3b575cee2d74536488c6d00c90dd312810362b13ab0a4a0b3f20ac713",
+        "source_fact:v1:0dc1ce2124f2e88f333a72ea6971b16929e31fadf2ad07acaa62a4c6ae4bec82",
+        "source_fact:v1:1d885ca958bfd51a599ac40339874d4c1a063d184204c666cba6ae6f8ab8766c",
+        "source_fact:v1:35a2d8b506bebe7137980b7e638882b0aabf69027a776ae06aebe25946de6964",
+        "source_fact:v1:83006461197cd41b79e092cbaddb1694d49341a3c1dc2e0f94683ff2c9e781e7",
+        "source_fact:v1:88d16c31d343c7e308b781ecc70b14d11a28565bc2edc370682a186112c72dd9",
+        "source_fact:v1:959674264d090ae5ca121cf5713b6e30d25b1b8b0311ea1fce1a7bbbaa26d08d",
+        "source_fact:v1:a7cb01e067c25f7c70fe0b3275e6c7df001ee834407617c9f43cc15a3a2873c4",
+        "source_fact:v1:b314af6b66ce527a4f8650165b697d4487d92185b63ccd0343c2ac84f632557c",
+        "source_fact:v1:dddfc534c4e8e3bcba596ea74f8fd743caea1a72a1a9f4f315b0100488584def",
+        "source_fact:v1:ece1c6f7a7eabbda86d3f644aa0507859a32c1c8a231ca0151cfea272c8a8831"
+      ],
+      "source_published_kst": "2026-10-12T09:48+09:00",
+      "source_title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파",
+      "telegram_core_fact": "KB자산운용의 'RISE 코리아밸류업위클리고정커버드콜 상장지수펀드(ETF)' 순자산이 4000억원을 돌파했다. KB자산운용에 따르면 'RISE 코리아밸류업위클리고정커버드콜 ETF'의 순자산이 4000억원을 넘어섰다.",
+      "title": "KB운용, 'RISE 코리아밸류업 커버드콜 ETF' 순자산 4000억 돌파"
+    },
     "title:f4a26e8f48027b4f830d00fa": {
       "first_seen_kst": "2026-10-07T23:23:06+09:00",
       "lanes": {
@@ -466289,6 +467868,27 @@
       "telegram_core_fact": "라이프존 메탈스(LZM)는 탄자니아 카방가 니켈 프로젝트의 주민 이주 실행계획(RAP)이 국제금융공사(IFC) 성능표준 5(PS5)에 중대한 측면에서 계속 부합한다는 독립 전문가 검토 결과가 나오면서, 호주 광산업체 BHP에 지급할 인수 대가의 상한이 800만 달러 자동 감액됐다고 7일 발표했다.",
       "title": "라이프존 메탈스, BHP 인수대가 800만달러 감액..이주계획 검증 통과"
     },
+    "title:fd97dd5a76fc07c8c1ba43f5": {
+      "first_seen_kst": "2026-10-12T09:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-12T09:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-12T09:53:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634414?trc=main_list_news",
+      "source": "이투데이",
+      "source_body_digest": "ac5207f6de1e83e64546a9240a2a5636bcfd2f9bcde46440260b3abe9e079374",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7f30c3e90e3368e3ade6203a73f0b8fc8433ad62a1c11ca1af74ae678a0288f2",
+      "source_fact_keys": [
+        "source_fact:v1:1294cee6d9d7df0042dedc9878e9b94b6d443627b34991b46e1417d6ddba95b5",
+        "source_fact:v1:6cd86506c9edb8279efed8a7f22b6ba4122d6004fa18d239fd0629f22bd44259",
+        "source_fact:v1:d4c2209ad1f5e3a33def285c95d1350f2d29c93ac5a14d955b0593e51cacb9c2"
+      ],
+      "source_published_kst": "2026-10-12T08:12+09:00",
+      "source_title": "키움운용, 국내 첫 'MLCC·AI기판 ETF' 상장…무라타·삼성전기 집중 투자",
+      "telegram_core_fact": "키움투자자산운용은 13일 'KIWOOM 글로벌MLCC&AI기판TOP4+ ETF'를 유가증권시장에 신규 상장한다고 12일 밝혔다.",
+      "title": "키움운용, 국내 첫 'MLCC·AI기판 ETF' 상장…무라타·삼성전기 집중 투자"
+    },
     "title:fd9d95aa4fdf86ec87bdd8f7": {
       "first_seen_kst": "2026-10-03T22:55:30+09:00",
       "lanes": {
@@ -466889,5 +468489,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-12T09:29:59+09:00"
+  "updated_at_kst": "2026-10-12T09:53:29+09:00"
 }
