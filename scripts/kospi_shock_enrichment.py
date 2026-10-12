@@ -310,6 +310,7 @@ def direct_industry_interval(
         "investor": investor,
         "rows": out,
         "covered_industries": len(out),
+        "observed_industries": len(grouped),
         "source": "LS UBM 통합 업종별투자자별매매현황",
         "unit_note": "msval 누적 원값의 사건 시작→저점 변화. 임의 원화 환산 없음.",
     }
@@ -730,6 +731,144 @@ def _fmt_pct(v: Any) -> str:
     return "확인 불가" if n is None else f"{n:+.2f}%"
 
 
+def _enrichment_visible_length(value: str) -> int:
+    """Telegram HTML 해석 후 가시문자 수: HTML 중간 절단 방지."""
+    return len(html.unescape(re.sub(r"<[^>]*>", "", value)))
+
+
+def render_enrichment_summary(raw: dict[str, Any]) -> str:
+    """정밀 원자료는 그대로 보존하고 알림은 중복 없이 핵심순으로 출력한다."""
+    event = raw.get("event") or {}
+    market = event.get("market_attribution") or {}
+    stocks = raw.get("stocks") or []
+    industries = raw.get("industries") or []
+    themes = raw.get("themes") or []
+    etfs = raw.get("etfs") or []
+    by_actor = raw.get("direct_industry_by_actor") or {}
+    proxy = raw.get("cap_drop_proxy") or []
+    errors = raw.get("errors") or []
+    esc = lambda x: html.escape(str(x), quote=False)
+    event_time = str(raw.get("generated_at_kst") or "").replace("T", " ")[:19]
+    start = esc(event.get("start_kst") or "확인 불가")
+    low = esc(event.get("low_kst") or "확인 불가")
+
+    def _render(stock_limit: int, theme_limit: int, etf_limit: int, direct_limit: int) -> str:
+        lines = [
+            "🔎 <b>코스피 급락 · 수급·업종 정밀분해</b>",
+            f"<code>{esc(event_time)} KST</code>",
+            f"• 구간 <b>{start} → {low}</b> · 현물·프로그램 통합 / 선물 별도",
+        ]
+        spot = esc(market.get("spot_leader") or "확인 불가")
+        fut = esc(market.get("futures_leader") or "확인 불가")
+        confidence = esc(market.get("confidence") or "판정 보류")
+        verdict = str(market.get("verdict") or "")
+        if not market.get("available"):
+            lines.append("• <b>매도주체 판정 보류</b> · 사건구간 수급 정렬 부족")
+        elif market.get("single_leader") and "보류" not in verdict:
+            lines.append(f"• <b>매도 주도 후보: {spot}</b> · 확신도 {confidence}")
+        else:
+            lines.append(f"• 매도주체: 현물 {spot} / 선물 {fut} · 단일 주도자 보류")
+
+        lines.extend(["", "<b>① 현물 직접 업종</b> <i>(UBM 원값·30초 정렬)</i>"])
+        any_direct = False
+        spot_block = (raw.get("market_spot_deltas") or {})
+        for actor in ("외국인", "기관", "개인"):
+            val = fnum(spot_block.get(actor))
+            if val is None or val >= 0:
+                continue
+            block = by_actor.get(actor) or {}
+            valid = [r for r in block.get("rows", []) if (fnum(r.get("delta")) or 0) < 0]
+            if not valid:
+                continue
+            any_direct = True
+            prefix = f"• {esc(actor)} {val:+,.0f}억원 → "
+            entries = []
+            for item in valid[:direct_limit]:
+                age1, age2 = fnum(item.get("start_gap_sec")), fnum(item.get("end_gap_sec"))
+                align = f" ({age1:.0f}/{age2:.0f}초)" if age1 is not None and age2 is not None else ""
+                entries.append(f"{esc(item.get('name') or item.get('code') or '?')} {_fmt_program(item.get('delta'))}{align}")
+            covered = block.get("covered_industries")
+            observed = block.get("observed_industries")
+            coverage = (
+                f" [정렬 {covered}/{observed}업종]"
+                if isinstance(covered, int) and isinstance(observed, int) and observed > 0
+                else ""
+            )
+            lines.append(prefix + "; ".join(entries) + coverage)
+        if not any_direct:
+            lines.append("• 업종 직접 수급: <b>정렬 충족 표본 없음 · 판정 보류</b>")
+
+        lines.extend(["", "<b>② 하락 업종</b> <i>(업종 등락 / 후보 프로그램 합계·원값)</i>"])
+        if industries:
+            for ind in industries[:3]:
+                ret = _fmt_pct((ind.get("price") or {}).get("return_pct"))
+                members = "·".join(esc(v) for v in (ind.get("stocks") or [])[:3])
+                lines.append(
+                    f"• {esc(ind.get('name') or '?')} {ret} / {_fmt_program(ind.get('program_delta'))}"
+                    + (f" · {members}" if members else "")
+                )
+        else:
+            lines.append("• 구간 정렬을 충족한 업종 후보 없음")
+
+        lines.extend(["", "<b>③ 프로그램 순매도 종목</b> <i>(LS 원값 / 구간 등락)</i>"])
+        if stocks:
+            for row in stocks[:stock_limit]:
+                delta = (row.get("program") or {}).get("program_delta")
+                ret = (row.get("price") or {}).get("return_pct")
+                lines.append(f"• {esc(row.get('name') or row.get('code') or '?')} {_fmt_program(delta)} / {_fmt_pct(ret)}")
+        else:
+            lines.append("• 사건구간 순매도 검증 종목 없음")
+
+        lines.extend(["", "<b>④ 겹치는 테마</b> <i>(후보 연결·중복 허용)</i>"])
+        # 같은 구성·같은 원값의 테마는 한 행으로 묶는다.
+        merged: dict[tuple[Any, ...], dict[str, Any]] = {}
+        for th in themes[:theme_limit]:
+            delta = fnum(th.get("program_delta"))
+            member_key = tuple(str(v) for v in (th.get("stocks") or []))
+            key = (delta, member_key)
+            if key not in merged:
+                merged[key] = {"names": [], "delta": delta, "count": len(member_key)}
+            merged[key]["names"].append(str(th.get("name") or "?"))
+        for bucket in merged.values():
+            names = "·".join(esc(x) for x in bucket["names"])
+            lines.append(f"• {names} {_fmt_program(bucket['delta'])} <i>(연결 {bucket['count']}종목)</i>")
+        if not merged:
+            lines.append("• 확인된 연결 테마 없음")
+
+        lines.extend(["", "<b>⑤ ETF 구간 반응</b> <i>(가격 / 구성 겹침)</i>"])
+        display_etfs = [x for x in etfs if (x.get("price") or {}).get("available")]
+        if display_etfs:
+            for item in display_etfs[:etf_limit]:
+                overlap = fnum((item.get("overlap") or {}).get("overlap_weight"))
+                suffix = f" · 구성 겹침 {overlap:.1f}%" if overlap is not None and overlap > 0 else ""
+                lines.append(
+                    f"• {esc(item.get('name') or item.get('code') or '?')} "
+                    f"{_fmt_pct((item.get('price') or {}).get('return_pct'))}{suffix}"
+                )
+        else:
+            lines.append("• 사건구간 ETF 가격 확인 불가")
+
+        if proxy:
+            ranks = " → ".join(esc(x.get("name") or x.get("code") or "?") for x in proxy[:3])
+            lines.append(f"• 시총×낙폭 근사: {ranks}")
+
+        lines.extend([
+            "",
+            "※ 프로그램·UBM 수치는 <b>LS 원값</b>으로 억원 환산·합산 금지. "
+            "업종·종목은 상위 후보군, 테마는 중복, ETF 등락·구성 겹침은 자금 유출이 아닙니다.",
+            "※ 시총×낙폭은 지수 기여도가 아닌 근사치. "
+            + ("일부 자료 조회 실패 — 부분 검증." if errors else "표시 순위는 시간 정렬된 관측치 기준."),
+        ])
+        return "\n".join(lines)
+
+    # 항목을 임의의 문자 위치에서 자르지 않는다. 우선순위를 유지한 단계별 구성.
+    for limits in ((6, 4, 5, 3), (6, 3, 4, 2), (5, 2, 3, 2), (3, 1, 2, 1)):
+        text = _render(*limits)
+        if _enrichment_visible_length(text) <= 3800:
+            return text
+    raise ValueError("Telegram 정밀분해 메시지 길이 초과; 원자료 유지, 임의 절단 금지")
+
+
 def build_enrichment(
     token: str,
     episode: dict[str, Any],
@@ -918,6 +1057,7 @@ def build_enrichment(
         "stocks": top_stocks,
         "direct_industry": direct_industry,
         "direct_industry_by_actor": direct_industry_by_actor,
+        "market_spot_deltas": spot_block,
         "industries": industries,
         "themes": theme_rows,
         "etfs": etfs[:6],
@@ -931,129 +1071,7 @@ def build_enrichment(
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(raw, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
-    lines = [
-        "🔎 <b>코스피 급락 정밀 분해 · 통합</b>",
-        f"<code>{dt.datetime.now(KST):%Y-%m-%d %H:%M:%S} KST</code>",
-        "",
-        f"• 분석 구간 <b>{fmt_clock(start_ts)} → {fmt_clock(low_ts)}</b>",
-        "• 종목 체결·프로그램·ETF는 <b>통합 기준</b> · 선물은 파생시장 기준",
-    ]
-    if att.get("available"):
-        if single_leader:
-            lines.append(
-                f"• 시장 매도 주도 후보: <b>{html.escape(spot_leader)}</b>"
-                + (f" · 확신도 {html.escape(confidence)}" if confidence else "")
-            )
-        elif spot_leader or futures_leader:
-            lines.append(
-                f"• 시장 매도주체: 현물 <b>{html.escape(spot_leader or '확인 불가')}</b>"
-                f" / 선물 <b>{html.escape(futures_leader or '확인 불가')}</b> · "
-                "<b>단일 주도자 보류</b>"
-            )
-        else:
-            lines.append("• 시장 매도주체: <b>확정 보류</b>")
-    elif legacy_leader:
-        lines.append(f"• 시장 매도 주도 후보: <b>{html.escape(legacy_leader)}</b>")
-
-    lines += ["", "<b>현물 주체가 직접 판 업종</b>"]
-    rendered_direct = False
-    for actor, spot_delta in negative_spot_actors:
-        block = direct_industry_by_actor.get(actor) or {}
-        direct_rows = [
-            x for x in (block.get("rows") or [])
-            if (fnum(x.get("delta")) or 0.0) < 0
-        ]
-        if not block.get("available") or not direct_rows:
-            continue
-        rendered_direct = True
-        lines.append(
-            f"• <b>{html.escape(actor)}</b> 현물 사건구간 {spot_delta:+,.0f}억원 · "
-            "통합 UBM 업종 순매수 원값 변화"
-        )
-        for i, row in enumerate(direct_rows[:3], 1):
-            lines.append(
-                f"  {i}. <b>{html.escape(str(row.get('name') or row.get('code')))}</b> "
-                f"{_fmt_program(row.get('delta'))} <i>(LS UBM 원값)</i> · 기준점 시차 "
-                f"{float(row.get('start_gap_sec') or 0):.1f}초/{float(row.get('end_gap_sec') or 0):.1f}초"
-            )
-    if not rendered_direct:
-        reasons = [
-            str((direct_industry_by_actor.get(actor) or {}).get("reason") or "")
-            for actor, _ in negative_spot_actors
-        ]
-        reason = next((x for x in reasons if x), "통합 UBM 기준점 부족")
-        lines.append("• 직접 업종 수급 판정 보류 — " + html.escape(reason))
-
-    lines += ["", "<b>프로그램·가격으로 본 하락 업종</b>"]
-    if industries:
-        for i, ind in enumerate(industries[:3], 1):
-            ret = (ind.get("price") or {}).get("return_pct")
-            stocks_txt = ", ".join(ind.get("stocks", [])[:3])
-            lines.append(
-                f"• {i}. <b>{html.escape(ind['name'])}</b> · 업종지수 {_fmt_pct(ret)} · "
-                f"상위 프로그램 매도종목 합계 {_fmt_program(ind.get('program_delta'))} <i>(LS 원값)</i> · {html.escape(stocks_txt)}"
-            )
-    else:
-        lines.append("• 업종 분류 확인 불가")
-
-    lines += ["", "<b>상위 프로그램 매도 후보의 연결 테마 · 중복 허용</b>"]
-    if theme_rows:
-        for i, th in enumerate(theme_rows[:4], 1):
-            names = ", ".join(th.get("stocks", [])[:3])
-            lines.append(
-                f"• {i}. <b>{html.escape(th['name'])}</b> · 연결 매도후보 종목 프로그램 합계 "
-                f"{_fmt_program(th['program_delta'])} <i>(LS 원값)</i> · {html.escape(names)}"
-            )
-    else:
-        lines.append("• 상위 매도종목의 LS 테마 연결 확인 불가")
-
-    lines += ["", "<b>프로그램 매도 상위 후보 종목</b>"]
-    if top_stocks:
-        for i, stock in enumerate(top_stocks[:6], 1):
-            pd = stock.get("program", {}).get("program_delta")
-            ret = stock.get("price", {}).get("return_pct")
-            lines.append(
-                f"• {i}. <b>{html.escape(stock['name'])}</b> · 프로그램 {_fmt_program(pd)} <i>(LS 원값)</i> · 구간 {_fmt_pct(ret)}"
-            )
-    else:
-        lines.append("• 종목별 프로그램 매도 구간 확인 불가")
-
-    lines += ["", "<b>관련 ETF 구간 반응</b>"]
-    usable_etfs = [x for x in etfs if x.get("price", {}).get("available")]
-    if usable_etfs:
-        for i, etf in enumerate(usable_etfs[:5], 1):
-            ret = etf.get("price", {}).get("return_pct")
-            overlap = etf.get("overlap") or {}
-            weight = fnum(overlap.get("overlap_weight"))
-            suffix = f" · 핵심 매도종목 PDF 비중 {weight:.1f}%" if weight is not None and weight > 0 else ""
-            lines.append(
-                f"• {i}. <b>{html.escape(etf['name'])}</b> · 구간 {_fmt_pct(ret)}{suffix}"
-            )
-    else:
-        lines.append("• 연결 ETF의 구간 가격 확인 불가")
-
-    lines += ["", "<b>시가총액 기준 하락압력 후보</b>"]
-    if cap_proxy:
-        proxy_names = " → ".join(html.escape(x["name"]) for x in cap_proxy[:3])
-        lines.append(f"• 시가총액×구간수익률 단순 근사: <b>{proxy_names}</b>")
-    else:
-        lines.append("• 근사 기여도 계산 불가")
-
-    lines += [
-        "",
-        "<b>정확성</b>",
-        "• '현물 주체가 직접 판 업종'은 사건구간에 현물 순매도인 외국인·기관·개인을 각각 통합 UBM으로 직접 판정합니다. 기준점이 30초를 넘으면 해당 주체·업종 판정을 보류합니다.",
-        "• 프로그램·가격 업종·종목 순위는 장중 후보 중 사건구간 순매도와 시각 정렬이 확인된 종목만 사용합니다. 전체 상장종목의 완전 전수순위가 아니며 기준점 이전 90초 이내 표본이 없거나 구간 순매도가 아니면 해당 종목을 제외합니다.",
-        "• 테마는 동일 종목이 여러 테마에 동시에 속하므로 중복 허용 연결정보입니다. 테마별 직접 순매도액이나 상호배타적 시장점유율로 해석하지 않습니다.",
-        "• LS 프로그램 원값은 단위를 임의로 억원 환산하지 않습니다.",
-        "• 특정 업종·테마의 외국인 직접 순매도액으로 바꿔 쓰지 않습니다.",
-        "• ETF는 2차시장 가격과 PDF 겹침을 보여주며, ETF 자금 유출로 단정하지 않습니다.",
-        "• 시가총액 기준 하락압력 후보는 단순 근사치입니다. KOSPI 유동시가총액 가중치로 계산한 정확한 지수 포인트 기여도로 표현하지 않습니다.",
-    ]
-    text = "\n".join(lines)
-    if len(text) > 3900:
-        text = text[:3850].rsplit("\n", 1)[0] + "\n• 상세 원자료는 검증 아티팩트에 저장"
-    return text, raw
+    return render_enrichment_summary(raw), raw
 
 
 def latest_kospi_episode(token: str, minutes: int = 10) -> dict[str, Any]:
