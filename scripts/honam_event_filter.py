@@ -121,7 +121,7 @@ def _registered_visit_day(actor_code, publication_day):
             event_day = dt.datetime.strptime(day_text, "%Y%m%d").date()
         except ValueError:
             continue
-        if event_day - dt.timedelta(days=3) <= publication_day <= event_day + dt.timedelta(days=2):
+        if event_day - dt.timedelta(days=3) <= publication_day <= event_day + dt.timedelta(days=45):
             matches.add(day_text)
     # Two different visits within the window: ambiguous; never pick arbitrarily.
     return next(iter(matches)) if len(matches) == 1 else ""
@@ -184,7 +184,9 @@ def _executive_visit_date(item):
         verified_day = _registered_visit_day(actor[0] if actor else "", parsed.date())
         if verified_day:
             return verified_day
-        return parsed.strftime("%Y%m%d")
+        # An article publish day is NOT proof of a new visit date. Undated
+        # visits lacking a verified match must not create a new incident.
+        return "unknown"
     return "unknown"
 
 def _executive_visit_signal(item):
@@ -547,8 +549,15 @@ def main():
 
     groups = {}
     all_event_keys = []
+    unresolved_visits = 0
     for item in candidates:
         family = _event_family(item)
+        # Fail closed instead of promoting an undated press reprint to a
+        # brand-new site visit. Wait for an explicit visit date or independently
+        # registered event before notifying. Other execution events are kept.
+        if family.endswith("_site_visit_unknown"):
+            unresolved_visits += 1
+            continue
         key = hashlib.sha256(("family|" + family).encode("utf-8")).hexdigest()[:28] if family else _event_key(item)
         item["event_key"] = key
         item["event_family"] = family
@@ -599,10 +608,13 @@ def main():
     pending["seen_event_keys"] = list(dict.fromkeys(all_event_keys + list(seen_event_keys)))[:3000]
     pending["event_status_levels"] = current_levels
     pending["event_action_levels"] = current_action_levels
+    pending["unresolved_visit_count_last_check"] = unresolved_visits
     pending["alert_basis"] = "topic_event_official_state_change"
     pending["article_role"] = "evidence_and_crosscheck_only"
     pending["baseline_guard"] = "canonical_url_title_dedupe_plus_family_action_level_state_machine"
     PENDING_PATH.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    if unresolved_visits:
+        print(f"event_filter: quarantined_undated_visit={unresolved_visits} reason=missing_event_date")
 
     if not final_news and not final_official:
         ALERT_PATH.unlink(missing_ok=True)

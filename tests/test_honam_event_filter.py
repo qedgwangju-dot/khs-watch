@@ -448,6 +448,94 @@ class HonamEventFilterRegressionTest(unittest.TestCase):
         self.assertEqual(_executive_visit_signal(before), 1)
 
 
+    def _late_cbc_20261012(self):
+        return {
+            "title": "최태원 SK그룹 회장, 호남 반도체 부지 현장 방문 예정",
+            "description": "최태원 회장이 광주 반도체 클러스터 예정지를 찾아 기업투자와 부지를 점검한다는 내용을 재인용",
+            "published": "Mon, 12 Oct 2026 00:48:00 GMT",
+            "source": "CBC뉴스",
+            "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBrN3NjMUZDRkxLTF93eTNjT2UzNjd2T2ppZzVVbnpFNTYwS1V4djhjY1VhbkF6b1VYd3NPaFFWQVFFNFBiSVdtMFpDZnB1REZLRnhzR0ZoVURUUkszekhLSTFSQ0ZTalFu?oc=5",
+            "source_status": "보도 단계",
+            "stages": ["6_산단투자_기업일정"],
+            "stage_labels": ["⑥ 산단·기업투자·팹 일정"],
+        }
+
+    def test_oct12_cbc_reprint_is_oct9_visit_not_new_visit(self):
+        item = self._late_cbc_20261012()
+        self.assertEqual(_executive_visit_signal(item), 1)
+        self.assertEqual(_event_family(item), "honam_sk_chair_site_visit_20261009")
+        self.assertEqual(_action_level(item), 1)
+
+    def test_oct12_cbc_reprint_with_corrupt_20261012_state_is_suppressed(self):
+        old_family = "honam_sk_chair_site_visit_20261009"
+        fake_family = "honam_sk_chair_site_visit_20261012"
+        old_key = hashlib.sha256(("family|" + old_family).encode()).hexdigest()[:28]
+        fake_key = hashlib.sha256(("family|" + fake_family).encode()).hexdigest()[:28]
+        self.assertNotEqual(old_key, fake_key)
+        with tempfile.TemporaryDirectory() as td:
+            root = pathlib.Path(td)
+            alert, state, pending = (root / n for n in ("alert.json", "state.json", "pending.json"))
+            alert.write_text(json.dumps({
+                "new_items": [self._late_cbc_20261012()],
+                "official_changes": [],
+            }, ensure_ascii=False), encoding="utf-8")
+            state.write_text(json.dumps({
+                "seen_event_keys": [old_key, fake_key],
+                "event_action_levels": {old_key: 3, fake_key: 1},
+                "event_status_levels": {old_key: 2, fake_key: 1},
+            }), encoding="utf-8")
+            with patch("scripts.honam_event_filter.ALERT_PATH", alert), \
+                 patch("scripts.honam_event_filter.STATE_PATH", state), \
+                 patch("scripts.honam_event_filter.PENDING_PATH", pending):
+                event_filter_main()
+            self.assertFalse(alert.exists(), "Late duplicate generated another alert")
+            after = json.loads(pending.read_text(encoding="utf-8"))
+            self.assertEqual(after["event_action_levels"][old_key], 3)
+            self.assertEqual(after["unresolved_visit_count_last_check"], 0)
+
+    def test_oct9_visit_reprint_four_weeks_later_remains_same_incident(self):
+        item = self._late_cbc_20261012()
+        item["published"] = "Mon, 02 Nov 2026 00:48:00 GMT"
+        self.assertEqual(_event_family(item), "honam_sk_chair_site_visit_20261009")
+
+    def test_undated_visit_outside_verified_window_is_quarantined(self):
+        item = self._late_cbc_20261012()
+        item["published"] = "Fri, 12 Feb 2027 00:48:00 GMT"
+        self.assertEqual(_event_family(item), "honam_sk_chair_site_visit_unknown")
+        with tempfile.TemporaryDirectory() as td:
+            root = pathlib.Path(td)
+            alert, state, pending = (root / n for n in ("alert.json", "state.json", "pending.json"))
+            alert.write_text(json.dumps({
+                "new_items": [item],
+                "official_changes": [],
+            }, ensure_ascii=False), encoding="utf-8")
+            state.write_text(json.dumps({
+                "seen_event_keys": [],
+                "event_action_levels": {},
+                "event_status_levels": {},
+            }), encoding="utf-8")
+            with patch("scripts.honam_event_filter.ALERT_PATH", alert), \
+                 patch("scripts.honam_event_filter.STATE_PATH", state), \
+                 patch("scripts.honam_event_filter.PENDING_PATH", pending):
+                event_filter_main()
+            self.assertFalse(alert.exists())
+            after = json.loads(pending.read_text(encoding="utf-8"))
+            self.assertEqual(after["unresolved_visit_count_last_check"], 1)
+
+    def test_explicit_new_oct20_visit_remains_distinct_when_oct9_verified(self):
+        item = self._late_cbc_20261012()
+        item["title"] = "최태원 SK 회장, 20일 광주 군공항 반도체 부지 다시 방문 예정"
+        item["published"] = "Mon, 19 Oct 2026 00:48:00 GMT"
+        self.assertEqual(_event_family(item), "honam_sk_chair_site_visit_20261020")
+        self.assertEqual(_action_level(item), 1)
+
+    def test_completed_oct9_visit_cannot_regress_to_oct12_scheduled(self):
+        item = self._late_cbc_20261012()
+        item["title"] = "최태원 SK 회장, 지난 9일 광주 군공항 부지 방문 완료"
+        self.assertEqual(_event_family(item), "honam_sk_chair_site_visit_20261009")
+        self.assertEqual(_action_level(item), 3)
+
+
 
 if __name__ == "__main__":
     unittest.main()
