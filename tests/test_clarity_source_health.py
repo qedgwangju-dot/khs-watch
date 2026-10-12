@@ -51,6 +51,116 @@ class ClaritySourceHealthTest(unittest.TestCase):
                 self.assertEqual(open_.call_count, 1)
                 sleep.assert_not_called()
 
+    def federal_row(self):
+        return {"title": "SEC crypto asset proposed rule", "abstract": "A crypto rule proposal", "html_url": "https://www.federalregister.gov/documents/2026/10/09/2026-12345/example", "publication_date": "2026-10-09", "document_number": "2026-12345"}
+
+    def test_federal_response_diagnostics_separate_html_challenge_empty_and_bad_json(self):
+        samples = [(b"<html>ordinary search page</html>", "html"), (b"<html>Access Denied</html>", "access_challenge"), (b"", "empty"), (b"{broken", "json_like")]
+        for body, kind in samples:
+            mod.reset_fetch_cache()
+            with self.subTest(kind=kind), patch.object(mod, "fetch", return_value=body):
+                with self.assertRaisesRegex(ValueError, "Federal Register response invalid"):
+                    mod.fetch_federal_register_payload("SEC test", self.url)
+            diagnostic = mod._JSON_DIAGNOSTICS[-1]
+            self.assertEqual(diagnostic["response_kind"], kind)
+            self.assertFalse(diagnostic["schema_valid"])
+            self.assertEqual(diagnostic["byte_count"], len(body))
+            self.assertNotIn("body", diagnostic)
+            self.assertNotIn("ordinary search page", json.dumps(diagnostic))
+
+    def test_federal_valid_empty_results_are_not_confused_with_missing_results(self):
+        for payload in ({}, {"results": None}, {"results": {}}, []):
+            with patch.object(mod, "fetch", return_value=json.dumps(payload).encode()):
+                with self.assertRaisesRegex(ValueError, "results_schema"):
+                    mod.fetch_federal_register_payload("SEC test", self.url)
+        with patch.object(mod, "fetch", return_value=b'{"results": []}'):
+            self.assertEqual(mod.fetch_federal_register_payload("SEC test", self.url), {"results": []})
+        self.assertTrue(mod._JSON_DIAGNOSTICS[-1]["schema_valid"])
+
+    def test_federal_bom_json_and_challenge_word_inside_real_record_remain_valid(self):
+        payload = {"results": [self.federal_row()]}
+        payload["results"][0]["abstract"] = "Analysis of captcha and crypto asset rules"
+        with patch.object(mod, "fetch", return_value=b"\xef\xbb\xbf" + json.dumps(payload).encode()):
+            self.assertEqual(mod.fetch_federal_register_payload("SEC test", self.url), payload)
+
+    def test_federal_bom_challenge_still_stops_remaining_query_variations(self):
+        body = b"\xef\xbb\xbf<html>Access Denied</html>"
+        with patch.object(mod.urllib.request, "urlopen", return_value=self.response(body)) as fetch:
+            errors = []
+            self.assertEqual(mod.collect_federal_register(errors), [])
+        self.assertEqual(fetch.call_count, 1)
+        self.assertIn("kind=access_challenge", errors[0])
+        self.assertEqual(mod._JSON_DIAGNOSTICS[-1]["byte_count"], len(body))
+
+    def test_federal_diagnostic_urls_never_retain_userinfo(self):
+        dangerous = "https://private-user:private-password@www.federalregister.gov/documents/search?token=hidden#fragment"
+        self.assertEqual(mod.safe_response_url_path(dangerous), "https://www.federalregister.gov/documents/search")
+        response = self.response(b'{"results": []}')
+        response.__enter__.return_value.status = 200
+        response.__enter__.return_value.headers = {"Content-Type": "application/json"}
+        response.__enter__.return_value.geturl.return_value = dangerous
+        with patch.object(mod.urllib.request, "urlopen", return_value=response):
+            mod.fetch_federal_register_payload("SEC test", "https://www.federalregister.gov/documents/search?format=json")
+        self.assertNotIn("private-password", json.dumps(mod._JSON_DIAGNOSTICS))
+        self.assertNotIn("private-user", json.dumps(mod._JSON_DIAGNOSTICS))
+
+    def test_federal_missing_record_fields_and_unofficial_url_fail_closed(self):
+        rows = []
+        for field in ("title", "html_url", "publication_date", "document_number"):
+            row = self.federal_row(); row.pop(field); rows.append(row)
+        row = self.federal_row(); row["html_url"] = "https://example.com/news"; rows.append(row)
+        row = self.federal_row(); row["publication_date"] = "not a date"; rows.append(row)
+        for row in rows:
+            with patch.object(mod, "fetch", return_value=json.dumps({"results": [self.federal_row(), row]}).encode()):
+                with self.assertRaises(ValueError):
+                    mod.fetch_federal_register_payload("SEC test", self.url)
+
+    def test_federal_http_metadata_retains_status_type_and_strips_url_query(self):
+        body = json.dumps({"results": [self.federal_row()]}).encode()
+        response = self.response(body)
+        response.__enter__.return_value.status = 200
+        response.__enter__.return_value.headers = {"Content-Type": "application/json; charset=utf-8"}
+        response.__enter__.return_value.geturl.return_value = "https://www.federalregister.gov/documents/search?trace=not-for-logs#fragment"
+        with patch.object(mod.urllib.request, "urlopen", return_value=response):
+            mod.fetch_federal_register_payload("SEC test", "https://www.federalregister.gov/documents/search?format=json")
+        diagnostic = mod._JSON_DIAGNOSTICS[-1]
+        self.assertEqual(diagnostic["http_status"], 200)
+        self.assertEqual(diagnostic["content_type"], "application/json")
+        self.assertEqual(diagnostic["final_url_path"], "https://www.federalregister.gov/documents/search")
+        self.assertNotIn("not-for-logs", json.dumps(diagnostic))
+
+    def test_federal_mislabelled_html_cannot_be_accepted_as_json(self):
+        mod._FETCH_METADATA[self.url] = {"http_status": 200, "content_type": "text/html"}
+        with patch.object(mod, "fetch", return_value=b'{"results": []}'):
+            with self.assertRaisesRegex(ValueError, "unexpected_content_type"):
+                mod.fetch_federal_register_payload("SEC test", self.url)
+
+    def test_federal_diagnostic_patch_preserves_routes_and_event_identity(self):
+        row = self.federal_row()
+        with patch.object(mod, "fetch", return_value=json.dumps({"results": [row]}).encode()) as fetch:
+            errors = []
+            events = mod.collect_federal_register(errors)
+        self.assertEqual(errors, [])
+        self.assertEqual(len(events), 4)
+        for call in fetch.call_args_list:
+            self.assertTrue(call.args[0].startswith("https://www.federalregister.gov/documents/search?"))
+        expected = mod.Event("CFTC Federal Register 제안규칙", "SEC·CFTC 공식 규칙·해석·집행지침", row["title"], row["html_url"], date=row["publication_date"], detail="A crypto rule proposal | Document Number: 2026-12345 | Publication Date: 2026-10-09")
+        self.assertEqual(events[0].key, expected.key)
+
+    def test_federal_invalid_response_has_no_partial_events_and_is_not_retried(self):
+        with patch.object(mod.urllib.request, "urlopen", return_value=self.response(b"<html>Access Denied</html>")) as fetch:
+            errors = []
+            self.assertEqual(mod.collect_federal_register(errors), [])
+        self.assertEqual(fetch.call_count, 1)  # Stop all query variations after an access challenge.
+        self.assertEqual(len(errors), 4)
+        self.assertIn("kind=access_challenge", errors[0])
+        self.assertTrue(all("no further queries" in error for error in errors[1:]))
+
+    def test_federal_diagnostics_are_in_workflow_artifacts(self):
+        root = pathlib.Path(__file__).resolve().parents[1]
+        workflow = (root / ".github/workflows/clarity-watch-telegram.yml").read_text()
+        self.assertIn("out/clarity_source_response_diagnostics.json", workflow)
+
     def test_static_backfill_never_conceals_all_discovery_failures(self):
         with patch.object(mod, "fetch", side_effect=RuntimeError("blocked")):
             errors = []
