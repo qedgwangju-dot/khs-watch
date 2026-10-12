@@ -816,6 +816,41 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
                 saved = json.loads(w.PENDING_PATH.read_text(encoding="utf-8"))
                 self.assertEqual(saved["pc_notebook_demand_track_version"], 1)
 
+    def test_pc_notebook_reverse_cpu_and_dram_supply_is_alerted(self):
+        item = {
+            "title": "Notebook shipment outlook in 2027 revised",
+            "description": (
+                "2027 notebook shipments could decline 8.5% from higher costs. "
+                "CPU availability has tightened. PC DRAM supply has eased. "
+                "Lower-cost inventory has been replenished."
+            ),
+            "source": "TrendForce",
+            "link": "https://www.trendforce.com/presscenter/news/20261012-99999.html",
+            "published_kst": "2026-10-12T09:00:00+09:00",
+        }
+        obs = w._extract_pc_notebook_demand(item)
+        self.assertEqual(obs["cpu_supply_status"], "tightening")
+        self.assertEqual(obs["pc_dram_supply_status"], "easing")
+        self.assertFalse(obs["low_cost_inventory_depletion_risk"])
+        changes = w._pc_notebook_demand_changes(w.PC_NOTEBOOK_DEMAND_BASELINE, obs)
+        self.assertTrue(any("CPU 공급" in c for c in changes))
+        self.assertTrue(any("PC DRAM" in c for c in changes))
+
+    def test_pc_notebook_conflicting_cpu_supply_signals_do_not_override(self):
+        item = {
+            "title": "Notebook shipments 2027 outlook revised",
+            "description": (
+                "In 2027 notebook shipments could decline 8.5%. "
+                "CPU supply has improved but another report says CPU availability has tightened."
+            ),
+            "source": "TrendForce",
+            "link": "https://www.trendforce.com/presscenter/news/20261012-99999.html",
+            "published_kst": "2026-10-12T09:00:00+09:00",
+        }
+        obs = w._extract_pc_notebook_demand(item)
+        self.assertIsNotNone(obs)
+        self.assertNotIn("cpu_supply_status", obs)
+
     def test_main_runs_currency_guard_after_output_generation(self):
         with patch.object(w, "collect", return_value=([], [])), \
              patch.object(w, "write_outputs"), \
