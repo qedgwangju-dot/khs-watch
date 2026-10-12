@@ -3157,6 +3157,24 @@ assert not watcher._is_ess_expectation_only(ess_actual_earnings),ess_actual_earn
 
 
 
+
+# This was an actual 2026-10-12 false positive in Telegram message_id=208.
+# Both reputable publishers produced price-response articles, NOT new orders.
+ess_stock_fake_one=make(
+    "[특징주] 'ESS 기대감' 삼성SDI 3%·LG에너지솔루션 2% 상승",
+    "ESS 기대감에 중국 관세와 공급망 우려로 주가가 상승했다고 보도했다.",
+    "아이뉴스24",
+)
+ess_stock_fake_two=make(
+    "[특징주] 삼성SDI·LG에너지솔루션 강세…실적 개선·ESS 수주 기대",
+    "ESS 수주 기대감으로 주가가 올랐지만 신규 계약 체결 공시는 없다.",
+    "이투데이",
+)
+for stock_article in (ess_stock_fake_one,ess_stock_fake_two):
+    _,stock_score,_,_=classify(stock_article)
+    assert stock_score<11, ("Stock-price rewrite reached telegram",stock_score)
+    assert watcher._is_stock_reaction_only(stock_article),stock_article
+
 # 54) CATL and VNET: 2026-09-21 indirect secondary equity closing
 # is NOT VNET sodium-ion 60GWh supply (HyperStrong is the actual buyer).
 vnet_recovered = watcher.query_news(watcher.VNET_EQUITY_RECOVERY)
@@ -3165,10 +3183,14 @@ if base.NOW.astimezone(base.KST).date() <= dt.date(2026,10,19):
     assert vnet_recovered[0]['published'] is None, 'never invent the filing hour'
     vg,vs,vc,vk=classify(vnet_recovered[0])
     assert vg=='catl_vnet_infrastructure' and vs>=11,(vg,vs,vc)
-    assert vc=='CATL 관계사–VNET · 9/21 간접지분 38.1% 인수 종결',vc
-    assert any(word in base.meaning(vc) for word in ('신주','유상증자')) and '독점' in base.meaning(vc),base.meaning(vc)
+    assert vc=='CATL 관계사–VNET · 10/12 주가 기사 오탐 정정',vc
+    assert '기존주' in base.meaning(vc) and '독점' in base.meaning(vc),base.meaning(vc)
     assert '1,007MW' in base.meaning(vc) and '889MW' in base.meaning(vc)
     assert '60GWh' in base.meaning(vc)
+    assert '208' in base.meaning(vc) and '1·3번' in base.meaning(vc)
+    assert vnet_recovered[0].get('correction_for_false_stock_alerts') is True
+    assert base.key(vnet_recovered[0]) not in base.load_state().get('seen',[]), 'one-time correction key already marked in state before send'
+    assert base.clean_title(vnet_recovered[0]['title'],vnet_recovered[0]['source']).startswith('정정:'), 'corrective alert title overwritten'
     visible=vnet_recovered[0]['title']+' '+vnet_recovered[0]['description']
     assert base.category(visible,vg)==vc,'source loss in Telegram renderer'
     assert base.key(vnet_recovered[0])==vk
@@ -3211,6 +3233,7 @@ assert ng=='catl_vnet_infrastructure' and ns>=11,(ng,ns,nc)
 assert nc=='CATL–VNET · 나트륨 ESS 실명 공급계약',nc
 assert nk!=vk,'future confirmed sodium order must be separate from equity'
 assert 'MWh' in base.risk(nc),'future order must trace deployed ESS energy capacity'
+assert '공식 납품 계약' in base.clean_title(vnet_future_real_contract['title'],vnet_future_real_contract['source']), 'new sodium contract must not carry old equity-title'
 
 vnet_false_press=dict(vnet_future_real_contract,source='Unknown Financial Blog')
 bg,bs,bc,bk=classify(vnet_false_press)
