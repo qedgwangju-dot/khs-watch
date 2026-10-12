@@ -207,7 +207,13 @@ def _validate_alert_contract(text: str) -> None:
     # "예외 적용 완료: 대기"는 완료 주장 아닌 점검항목 명칭이다.
     # 차단은 실제 완료 주장에만 적용한다.
     pending_suffix = re.compile(r"[:：]\s*(?:대기|미완료|미체결|미확정|검토|예정|조건부)(?:\s|$|[.·])", re.I)
-    asserted_plain = "\n".join(line for line in plain.splitlines() if not pending_suffix.search(line))
+    # 미래 확인 과제와 '아직 미체결' 같은 부정 표현을 완료증거로 오인하지 않는다.
+    asserted_plain = "\n".join(
+        line for line in plain.splitlines()
+        if not pending_suffix.search(line)
+        and not re.search(r"미체결|미확정|미완료|아직|후속\s*조건|필요|추적|대기|예정", line, re.I)
+    )
+    asserted_plain = re.split(r"(?m)^\s*(?:[①-⑩]\s*)?다음 확인\s*$", asserted_plain, maxsplit=1)[0]
     if (
         project_power_context
         and re.search(r"(?:예외\s*적용|타협협정[^\n]{0,30}예외)[^\n]{0,20}(?:완료|체결|확정)", asserted_plain, re.I)
@@ -348,6 +354,10 @@ def self_test_mode() -> int:
     )
     _validate_alert_contract(good)
     _validate_alert_contract(good + "\n2025 타협협정 예외 적용 완료: 대기\nProject North Glenfarne FID 완료: 대기")
+    _validate_alert_contract(
+        good + "\n다음 확인\n2025 타협협정 일회성 예외계약 체결\n"
+        "2025 타협협정 예외 적용은 아직 미체결"
+    )
     print("telegram_alert_contract_self_test=passed project_power_fail_closed=true")
     return 0
 
