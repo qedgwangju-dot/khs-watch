@@ -213,3 +213,114 @@ holiday=dt.datetime(2026,10,9,11,10,tzinfo=KST)
 w_holiday=select_stock_chart_probe_window(oct_bars,holiday)
 assert w_holiday["available"] is False and w_holiday["mode"]=="휴장",w_holiday
 print("holiday_chart_probe_guard_regression=true")
+
+
+# 2026-10-12 11:45 실전 알림: 핵심 숫자를 모두 남기되 중복 테마를 합친다.
+import html as _html_compact
+from html.parser import HTMLParser as _HTMLParser_compact
+import kospi_shock_enrichment as _ks_enrich
+_fixture_1012 = {
+    "generated_at_kst": "2026-10-12T11:45:54+09:00",
+    "event": {
+        "start_kst": "11:33:55", "low_kst": "11:38:32",
+        "market_attribution": {
+            "available": True, "single_leader": True,
+            "spot_leader": "외국인", "futures_leader": "외국인",
+            "confidence": "높음", "verdict": "외국인: 현물·선물 모두 최다 매도",
+        },
+    },
+    "market_spot_deltas": {"외국인": -278, "기관": -158, "개인": 400},
+    "direct_industry_by_actor": {
+        "외국인": {"available": True, "covered_industries": 1, "observed_industries": 55, "rows": [
+            {"name": "오락문화", "delta": -1, "start_gap_sec": 18.6, "end_gap_sec": 25.9}
+        ]},
+        "기관": {"available": True, "covered_industries": 1, "observed_industries": 55, "rows": [
+            {"name": "IT 서비스", "delta": -5, "start_gap_sec": 20.2, "end_gap_sec": 27.5}
+        ]},
+    },
+    "industries": [
+        {"name": "전기전자", "program_delta": -27331332, "stocks": ["SK하이닉스", "삼성전자", "삼성SDI"], "price": {"return_pct": -0.40}},
+        {"name": "운수장비", "program_delta": -924657, "stocks": ["현대모비스", "한화에어로스페이스"], "price": {"return_pct": -0.26}},
+        {"name": "기계", "program_delta": -96851, "stocks": ["두산에너빌리티"], "price": {"return_pct": -0.17}},
+    ],
+    "stocks": [
+        {"name": name, "program": {"program_delta": d}, "price": {"return_pct": ret}}
+        for name, d, ret in [
+            ("SK하이닉스", -13987139, -0.55), ("삼성전자", -11877293, -0.58),
+            ("삼성SDI", -1466900, -0.52), ("현대모비스", -812138, -0.56),
+            ("한화에어로스페이스", -112519, 0.11), ("두산에너빌리티", -96851, -0.14),
+        ]
+    ],
+    "themes": [
+        {"name": "IT 대표주", "program_delta": -27331332, "stocks": ["SK하이닉스", "삼성전자", "삼성SDI"]},
+        {"name": "아이폰", "program_delta": -27331332, "stocks": ["SK하이닉스", "삼성전자", "삼성SDI"]},
+        {"name": "자율주행차", "program_delta": -26676570, "stocks": ["SK하이닉스", "삼성전자", "현대모비스"]},
+        {"name": "S7(삼성전자/SK하이닉스 등)", "program_delta": -25864432, "stocks": ["SK하이닉스", "삼성전자"]},
+    ],
+    "etfs": [
+        {"name": name, "price": {"available": True, "return_pct": ret}, "overlap": {"overlap_weight": weight} if weight is not None else None}
+        for name, ret, weight in [
+            ("ACE AI반도체TOP3+", -0.36, 45.6),
+            ("ACE 글로벌반도체TOP4", -0.17, 10.4),
+            ("HANARO Fn K-반도체", -0.51, None),
+            ("HANARO Fn조선해운", -0.10, None),
+            ("ACE 미국반도체데일리", -0.03, None),
+        ]
+    ],
+    "cap_drop_proxy": [
+        {"name": "삼성전자"}, {"name": "SK하이닉스"}, {"name": "삼성SDI"},
+    ],
+    "errors": [],
+}
+compact = _ks_enrich.render_enrichment_summary(_fixture_1012)
+assert "매도 주도 후보: 외국인" in compact, compact
+assert "외국인 -278억원" in compact and "기관 -158억원" in compact, compact
+assert "오락문화 -1" in compact and "IT 서비스 -5" in compact, compact
+assert "정렬 1/55업종" in compact, compact
+assert "전기전자 -0.40%" in compact and "-27,331,332" in compact, compact
+assert "SK하이닉스 -13,987,139 / -0.55%" in compact, compact
+assert "한화에어로스페이스 -112,519 / +0.11%" in compact, compact
+assert "IT 대표주·아이폰" in compact, compact
+assert "구성 겹침 45.6%" in compact, compact
+assert "ETF 등락·구성 겹침은 자금 유출이 아닙니다" in compact, compact
+assert "정확성</b>" not in compact and "상위 프로그램 매도 후보의 연결 테마" not in compact
+assert _ks_enrich._enrichment_visible_length(compact) < 3000, len(compact)
+
+class _CheckTags(_HTMLParser_compact):
+    def __init__(self):
+        super().__init__()
+        self.tags = []
+    def handle_starttag(self, tag, attrs):
+        assert tag in {"b", "i", "code"}, tag
+        self.tags.append(tag)
+    def handle_endtag(self, tag):
+        assert self.tags and self.tags.pop() == tag, tag
+check_tags = _CheckTags()
+check_tags.feed(compact)
+assert not check_tags.tags, check_tags.tags
+print("compact_enrichment_20261012_regression=true", "visible_chars=", _ks_enrich._enrichment_visible_length(compact))
+
+# 조회 실패 또는 업종 표본 부족도 숫자를 꾸미지 않고 명확히 표시.
+_partial = dict(_fixture_1012)
+_partial["errors"] = ["t1637 rate limit"]
+_partial["market_spot_deltas"] = {"외국인": -278}
+_partial["direct_industry_by_actor"] = {"외국인": {"available": False, "rows": [], "reason": "기준점 불충족"}}
+partial = _ks_enrich.render_enrichment_summary(_partial)
+assert "정렬 충족 표본 없음" in partial, partial
+assert "부분 검증" in partial, partial
+print("compact_enrichment_partial_data_regression=true")
+
+# 긴 종목명으로 발생하는 극단적 한도 초과도 HTML·문장을 임의 절단하지 않는다.
+_long = dict(_fixture_1012)
+_long["stocks"] = [{ "name": "초장문" * 1500, "program": {"program_delta": -100}, "price": {"return_pct": -1.0} }]
+_long["industries"] = []
+_long["themes"] = []
+_long["etfs"] = []
+_long["cap_drop_proxy"] = []
+bounded = _ks_enrich.render_enrichment_summary(_long)
+assert "상세 표시는 Telegram 글자 수를 초과" in bounded, bounded
+assert _ks_enrich._enrichment_visible_length(bounded) < 3800
+check_tags = _CheckTags()
+check_tags.feed(bounded)
+assert not check_tags.tags
+print("compact_enrichment_overflow_safe_regression=true")
