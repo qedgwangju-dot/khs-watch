@@ -4352,6 +4352,23 @@
       "source_published_kst": "2026-10-07T13:33+09:00",
       "title": "KT클라우드, 50㎿급 '청라 AIDC' 구축 참여…수도권 AI 인프라 수요 대응"
     },
+    "core:20dcc41f6dac3f907fd0e3f4": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://go.seoul.co.kr/news/newsView.php?id=20261013012004",
+      "source": "서울신문",
+      "source_body_digest": "b8550beee149eddae97ea2f27a6e2c01af462499bca1d847b2b6733166c7f62f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T18:08+09:00",
+      "source_title": "트럼프 “러·우 휴전” 젤렌스키 “금시초문”… 불신에 기름",
+      "telegram_core_fact": "트럼프 대통령은 대러 제재 완화 방침을 발표하고 이틀 뒤인 11일(현지시간) 러시아와 우크라이나가 에너지 부문에 대한 휴전에 합의했다고 소셜미디어를 통해 밝혔다.",
+      "title": "트럼프 “러·우 휴전” 젤렌스키 “금시초문”… 불신에 기름"
+    },
     "core:20f0a26dcfe348f585a71c63": {
       "first_seen_kst": "2026-10-09T20:48:52+09:00",
       "lanes": {
@@ -7076,6 +7093,26 @@
       "source_title": "전기안전공사-LS일렉트릭, 풍력발전설비 안전관리 기술 개발 협력",
       "telegram_core_fact": "한국전기안전공사는 지난 8일 전력설비 전문기업인 LS일렉트릭과 서울 LS용산타워에서 '풍력발전설비 안전성 평가기술 개발 협력을 위한 업무협약'을 체결했다고 12일 밝혔다.",
       "title": "전기안전공사-LS일렉트릭, 풍력발전설비 안전관리 기술 개발 협력"
+    },
+    "core:3434f589201f12896e509907": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.mt.co.kr/tech/2026/10/12/2026101218064494370",
+      "source": "머니투데이",
+      "source_body_digest": "8dded6eeb47d48ce8a5e60902a2e0a917d5b4473dbb3385b3d7b83ac09db3f1a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d22e8682243ce0916cea5e991abcba512871829f5dcc0f8a0888cd5d06dabdaa",
+      "source_fact_keys": [
+        "source_fact:v1:4d80043d5e7a034d7bbcac3db686638518e1a88a0383d97228b90120596768a4",
+        "source_fact:v1:ddb62761e6dc4d869488d8a53f556cdc2d54aa79780d242d2feb44ec9ee5c973"
+      ],
+      "source_published_kst": "2026-10-12T18:14+09:00",
+      "source_title": "SKT, '제타' 운영사 스캐터랩 지분 처분하나…\"확정된 것 없어\"",
+      "telegram_core_fact": "SK텔레콤이 AI(인공지능) 캐릭터챗 '제타' 운영사 스캐터랩의 보유 지분 전량 매각을 검토하는 것으로 알려졌다. 현재 논의 중인 매각 가격은 주당 약 24만원으로, 투자 당시 취득가인 약 13만9434원보다 72%가량 높다.",
+      "title": "SKT, '제타' 운영사 스캐터랩 지분 처분하나…\"확정된 것 없어\""
     },
     "core:346102c2463c0a13976ba8c2": {
       "first_seen_kst": "2026-10-11T07:32:31+09:00",
@@ -24728,6 +24765,27 @@
       "telegram_core_fact": "7일(현지 시간) 파이낸셜타임스(FT)에 따르면 골드만삭스는 S&P500 구성 기업들의 9월 분기 이익(earnings)이 전년비 27% 증가할 것이라고 분석했다.",
       "title": "실적 발표 앞둔 美 S&P500기업들…\"3분기 이익, 27% 증가할 듯\""
     },
+    "core:c1cc267ea97e0e3aff6e5750": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012000351071",
+      "source": "연합뉴스",
+      "source_body_digest": "a3bf6237495ce34096b38737190c74c8e5e520e5fd88ab7afb60b3dc3bfa8427",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:942a22fc4d5ce95cfd0146bcb9b0f4ff12bd40b51ec600eb1a01d79aa499aea4",
+      "source_fact_keys": [
+        "source_fact:v1:e01c5f78c55287dd2d00d7e8e917912ed05b9d099bfdf8066f21d8a0bd85d7d4",
+        "source_fact:v1:f74cd7c9c0bf457e18830ce76203dd15c1e4dc50421bb8f10c074ac10586f5cc",
+        "source_fact:v1:fc8e66e985a66d8ea291db787d9b00d14dc3134df6e02e25a11515995fc27457"
+      ],
+      "source_published_kst": "2026-10-12T06:39+09:00",
+      "source_title": "WSJ, '러 경유딜' 트럼프 질타…\"푸틴 편에 더 확고히 서\"(종합) | 연합뉴스",
+      "telegram_core_fact": "도널드 트럼프 미 대통령은 지난 9일 러시아산 경유를 미국과 세계 시장에 대규모로 공급하기로 블라디미르 푸틴 러시아 대통령과 합의했다고 밝혔다.",
+      "title": "WSJ, '러 경유딜' 트럼프 질타…\"푸틴 편에 더 확고히 서\"(종합) | 연합뉴스"
+    },
     "core:c245ff89184444fef2955784": {
       "first_seen_kst": "2026-10-07T22:24:07+09:00",
       "lanes": {
@@ -27517,6 +27575,26 @@
       "telegram_core_fact": "삼성전자가 올해 3분기 국내 기업 사상 최초로 분기 영업이익 100조원을 돌파한 가운데, 메모리 반도체 사업에서만 110조원에 이르는 영업이익을 거뒀을 것으로 분석된다.",
       "title": "삼성전자, 3Q 메모리서만 110조 넘게 벌었나…\"고부가 제품 수익성 극대화\""
     },
+    "core:d807211e65abbd5c2abaf782": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.hankyung.com/article/202610125411i",
+      "source": "한국경제",
+      "source_body_digest": "457d4d243eeb94bd9d783e1f21405a9e3d13134f8932a7a964e23b9a2be27ed1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:742bff2a7655c2afc3ce3091d65a6ef5bc9acfbb960de24bb1cd93b07cac1fce",
+      "source_fact_keys": [
+        "source_fact:v1:b556932efb6d5566ba759dfa13c0129cb1b6eaff3a732205001ab11c4bd3e064",
+        "source_fact:v1:f172953479f41e73d021c5c68169ebf24ec8b6d513e1ddd7c4f543f934679901"
+      ],
+      "source_published_kst": "2026-10-12T11:13+09:00",
+      "source_title": "오드리 찰스 램리서치 부사장 \"韓반도체 생태계 매력적…첨단 패키징·초미세공정에 투자할 것\"",
+      "telegram_core_fact": "오드리 찰스 램리서치 기업전략 및 첨단 패키징 부문 수석 부사장 겸 램캐피탈 사장(사진)은 지난 7일 한국경제신문과의 인터뷰에서 \"인공지능(AI) 반도체 성능이 고도화될수록 첨단 패키징이 매우 중요해지고 있다\"며 이같이 말했다.",
+      "title": "오드리 찰스 램리서치 부사장 \"韓반도체 생태계 매력적…첨단 패키징·초미세공정에 투자할 것\""
+    },
     "core:d809bef09474512b19c43f13": {
       "first_seen_kst": "2026-10-07T20:05:17+09:00",
       "lanes": {
@@ -28915,6 +28993,27 @@
       "telegram_core_fact": "중동 정세 불안으로 국제유가와 미국 국채금리가 상승했지만, 반도체 수출업체의 달러 매도 물량과 수출 호조에 따른 경상수지 흑자 기대가 환율 하락을 뒷받침했다.",
       "title": "중동 불안.고금리 악재에 코스피 3.65% 급락 마감"
     },
+    "core:e41d45042fe8a4f2a0b1b368": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.fnnews.com/news/202610121505305007",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "c8436acc1de3dbafc747e3c6c2c0892ab7e7cd6a2742bd6d4535d320b2b32038",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d565faabdb7f1ce31b904335d855506bcdb6805a2fd5a791dfce774220b884c3",
+      "source_fact_keys": [
+        "source_fact:v1:0b644cd59a9c045d1cae7878ac42b784164a76379139d43717f42311188e69bf",
+        "source_fact:v1:a0aa7f2c895690bd16aceec46320c67cd72071f655eae9883d3f9983d41425c7",
+        "source_fact:v1:ce4fe93b5cc8a10148bb008e6ae773240dc338b7b17dd00772022df23e846e5d"
+      ],
+      "source_published_kst": "2026-10-12T15:08+09:00",
+      "source_title": "SK하이닉스 美 상장 이후 커진 '밤사이 주가 변수'",
+      "telegram_core_fact": "[파이낸셜뉴스] SK하이닉스의 미국 주식예탁증서(ADR) 상장 이후 국내 투자자들이 고려해야 할 주가 변수가 늘어났다는 증권가의 분석이 나왔다.",
+      "title": "SK하이닉스 美 상장 이후 커진 '밤사이 주가 변수'"
+    },
     "core:e44e570d1a37768c85ce3100": {
       "first_seen_kst": "2026-10-11T06:52:52+09:00",
       "lanes": {
@@ -29522,6 +29621,23 @@
       "telegram_core_fact": "비상장 기업에 투자해 IPO 이후 차익을 거두는 전략을 택한 헤지펀드 상품의 수익률은 올해 들어 최저 -60%까지 떨어졌다.",
       "title": "코스피 입성 '케이뱅크' 딱 한곳…\"대어 멸종\" 중복상장 묶자 IPO '꽁꽁'"
     },
+    "core:e9f9bfe5b2151b4bab4e566f": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174043",
+      "source": "매일경제",
+      "source_body_digest": "014da07c233a48914c06327911e86d4abb5562ef008b41bd3b564dde58542241",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T23:40+09:00",
+      "source_title": "바이오어피니티, 400만 달러 직접공모 발표에 지분 희석 우려 부각",
+      "telegram_core_fact": "기관 대상 직접공모로 400만 달러를 조달하기로 했습니다. 신주와 최대 98만72주 워런트가 발행되면서 지분 희석 부담이 커졌습니다.",
+      "title": "바이오어피니티, 400만 달러 직접공모 발표에 지분 희석 우려 부각"
+    },
     "core:e9ff5fafadaa2483a683c362": {
       "first_seen_kst": "2026-10-08T08:56:19+09:00",
       "lanes": {
@@ -29914,6 +30030,25 @@
       "source_title": "보험약관 '표 안의 표' 읽는다…금융·공공 폐쇄망 파고든 AX 기업",
       "telegram_core_fact": "\"규제가 어느 정도 완화되더라도 금융과 공공 영역에서는 일정 부분 폐쇄망이 유지될 것이다.",
       "title": "보험약관 '표 안의 표' 읽는다…금융·공공 폐쇄망 파고든 AX 기업"
+    },
+    "core:ed339261f68ab0dff0b92823": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822279",
+      "source": "뉴시스",
+      "source_body_digest": "acfc647e4c246c3f7bcfc8b14d1c68e7caa36bb17f46d4d55fbae1b4abc73ffc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90f8af0991969fd453c0f13ba1f3038675f77c31f8b5ae443f890e9eaa4062b0",
+      "source_fact_keys": [
+        "source_fact:v1:4d7a639b40cd392059f9a977f65a0a150723752ea6ec977b3ca4cc81d8b3a50b"
+      ],
+      "source_published_kst": "2026-10-12T14:43+09:00",
+      "source_title": "제테마, '닥터레디' GLP-1 비만약 국내공급 계약",
+      "telegram_core_fact": "제테마는 최근 이탈리아 밀라노에서 열린 세계 제약바이오 전시회 'CPHI 2026'에서 글로벌 제약사 닥터레디와 GLP-1 수용체 작용제 기반 비만치료제의 국내 라이선스·공급 계약을 했다고 12일 밝혔다. 바이오의약품 기업 제테마가 글로벌 제약사와 GLP-1 계열 비만치료제를 국내로 도입하는 계약을 체결했다.",
+      "title": "제테마, '닥터레디' GLP-1 비만약 국내공급 계약"
     },
     "core:edb5064cd2b1fc33c7fab2e6": {
       "first_seen_kst": "2026-10-09T17:54:07+09:00",
@@ -38423,27 +38558,23 @@
     "event:83c53d4458cde3b63b606a9a": {
       "first_seen_kst": "2026-10-12T05:58:12+09:00",
       "lanes": {
-        "live": "2026-10-12T20:59:01+09:00"
+        "live": "2026-10-12T23:57:10+09:00"
       },
-      "last_seen_kst": "2026-10-12T20:59:01+09:00",
-      "link": "https://www.newsis.com/view/NISX20261012_0003822557",
-      "source": "뉴시스",
-      "source_body_digest": "f1c04795fb9d607fca8dd7b47579a6352372fc115b5cea59fceb540364ee7bb3",
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.fnnews.com/news/202610121505305007",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "c8436acc1de3dbafc747e3c6c2c0892ab7e7cd6a2742bd6d4535d320b2b32038",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:b7ffea23b19a6cf2e0d53d4470a1154473b927586a826bb1d93bed58edd384a5",
+      "source_fact_identity": "source_facts:v1:d565faabdb7f1ce31b904335d855506bcdb6805a2fd5a791dfce774220b884c3",
       "source_fact_keys": [
-        "source_fact:v1:2f68b7d5e7c8a0a05df8c696efc84f7e5267ee25455ef8316ad209ad11dc9a25",
-        "source_fact:v1:5c76b2043f3771a4bf5375d36a0fa6ed522252d55dbbe031942f077d0f8034b9",
-        "source_fact:v1:70301a10e1cc8fe5fba304bc4d079e1d9bdfe239d0aed40483bcdfdcb0f54858",
-        "source_fact:v1:7c7029da10625b63ca0c4c0dd22a431e3398c6803b415007eea76b8dc733bb8f",
-        "source_fact:v1:e7fde551a78d4dd4d512dba043dc4bf33851421958df3824c6abaf76352adef4",
-        "source_fact:v1:f29d5af0cb491710d27e0551cb4c16eaff03e1a3fde5f4b4649a60dc7b6bf071",
-        "source_fact:v1:f421167b882a2fc439a493beaac618411b3c8207ad155a3d9ce134dec8fa184c"
+        "source_fact:v1:0b644cd59a9c045d1cae7878ac42b784164a76379139d43717f42311188e69bf",
+        "source_fact:v1:a0aa7f2c895690bd16aceec46320c67cd72071f655eae9883d3f9983d41425c7",
+        "source_fact:v1:ce4fe93b5cc8a10148bb008e6ae773240dc338b7b17dd00772022df23e846e5d"
       ],
-      "source_published_kst": "2026-10-12T20:52+09:00",
-      "source_title": "한전 사장 \"한전채 한도 줄면 전기료 인상 필요…호남 전력망 삼성·SK 80% 부담\"(종합2보)",
-      "telegram_core_fact": "김동철 사장은 호남 반도체 클러스터 1단계 전력 공급을 위한 재원 중 80%를 삼성전자와 SK하이닉스 등 기업이 부담하고 20%를 한전이 비용을 낼 계획이라고 분명히 했다.",
-      "title": "한전 사장 \"한전채 한도 줄면 전기료 인상 필요…호남 전력망 삼성·SK 80% 부담\"(종합2보)"
+      "source_published_kst": "2026-10-12T15:08+09:00",
+      "source_title": "SK하이닉스 美 상장 이후 커진 '밤사이 주가 변수'",
+      "telegram_core_fact": "[파이낸셜뉴스] SK하이닉스의 미국 주식예탁증서(ADR) 상장 이후 국내 투자자들이 고려해야 할 주가 변수가 늘어났다는 증권가의 분석이 나왔다.",
+      "title": "SK하이닉스 美 상장 이후 커진 '밤사이 주가 변수'"
     },
     "event:83d6c410232a8f83eb701efd": {
       "first_seen_kst": "2026-10-11T08:19:03+09:00",
@@ -56011,6 +56142,25 @@
       "telegram_core_fact": "상품·서비스 무역을 비롯해 경제협력과 공급망 회복력 등을 폭넓게 다루는 높은 수준의 무역협정을 추진해, 아프리카 제2위 경제국인 이집트와 교역·투자를 확대할 제도적 기반을 마련한다는 구상이다.",
       "title": "韓·이집트 CEPA 협상 내년 상반기 시작…조선·에너지 등 협력 확대"
     },
+    "fact:42421c368118bfd33c590561": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822279",
+      "source": "뉴시스",
+      "source_body_digest": "acfc647e4c246c3f7bcfc8b14d1c68e7caa36bb17f46d4d55fbae1b4abc73ffc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90f8af0991969fd453c0f13ba1f3038675f77c31f8b5ae443f890e9eaa4062b0",
+      "source_fact_keys": [
+        "source_fact:v1:4d7a639b40cd392059f9a977f65a0a150723752ea6ec977b3ca4cc81d8b3a50b"
+      ],
+      "source_published_kst": "2026-10-12T14:43+09:00",
+      "source_title": "제테마, '닥터레디' GLP-1 비만약 국내공급 계약",
+      "telegram_core_fact": "제테마는 최근 이탈리아 밀라노에서 열린 세계 제약바이오 전시회 'CPHI 2026'에서 글로벌 제약사 닥터레디와 GLP-1 수용체 작용제 기반 비만치료제의 국내 라이선스·공급 계약을 했다고 12일 밝혔다. 바이오의약품 기업 제테마가 글로벌 제약사와 GLP-1 계열 비만치료제를 국내로 도입하는 계약을 체결했다.",
+      "title": "제테마, '닥터레디' GLP-1 비만약 국내공급 계약"
+    },
     "fact:424507810ede1e6081df92a4": {
       "first_seen_kst": "2026-10-07T07:54:25+09:00",
       "lanes": {
@@ -64859,6 +65009,27 @@
       "source_title": "코레일, 서버 증설 부실 검토 추석 예매 대란…이용객 최대 149분 대기",
       "telegram_core_fact": "정 의원은 \"코레일은 지난해 9월 사업계획을 마련하고 올해 1월 투자심의위원회에서 사업을 만장일치로 승인받았지만 심의 과정에서 기술적 우려는 제기되지 않은 것으로 알려졌다\"며 \"공급업체가 당초 서버 증설이 가능하다는 입장을 보였다고 코레일은 해명해 왔다\"고 설명했다.",
       "title": "코레일, 서버 증설 부실 검토 추석 예매 대란…이용객 최대 149분 대기"
+    },
+    "fact:7515f4196d4859d6330a579b": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.fnnews.com/news/202610121505305007",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "c8436acc1de3dbafc747e3c6c2c0892ab7e7cd6a2742bd6d4535d320b2b32038",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d565faabdb7f1ce31b904335d855506bcdb6805a2fd5a791dfce774220b884c3",
+      "source_fact_keys": [
+        "source_fact:v1:0b644cd59a9c045d1cae7878ac42b784164a76379139d43717f42311188e69bf",
+        "source_fact:v1:a0aa7f2c895690bd16aceec46320c67cd72071f655eae9883d3f9983d41425c7",
+        "source_fact:v1:ce4fe93b5cc8a10148bb008e6ae773240dc338b7b17dd00772022df23e846e5d"
+      ],
+      "source_published_kst": "2026-10-12T15:08+09:00",
+      "source_title": "SK하이닉스 美 상장 이후 커진 '밤사이 주가 변수'",
+      "telegram_core_fact": "[파이낸셜뉴스] SK하이닉스의 미국 주식예탁증서(ADR) 상장 이후 국내 투자자들이 고려해야 할 주가 변수가 늘어났다는 증권가의 분석이 나왔다.",
+      "title": "SK하이닉스 美 상장 이후 커진 '밤사이 주가 변수'"
     },
     "fact:751a4d037ec8fee376db0962": {
       "first_seen_kst": "2026-10-12T10:17:45+09:00",
@@ -76763,6 +76934,26 @@
       "telegram_core_fact": "포스코홀딩스가 올해 3분기 8000억원 안팎의 영업이익을 달성하며 실적 개선을 이어갈 전망이다.",
       "title": "장인화號 포스코홀딩스, 3분기 실적 개선 전망…\"리튬 사업 확장에 이익 커진다\""
     },
+    "fact:b2934e51dd71b757db1a1928": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.mt.co.kr/tech/2026/10/12/2026101218064494370",
+      "source": "머니투데이",
+      "source_body_digest": "8dded6eeb47d48ce8a5e60902a2e0a917d5b4473dbb3385b3d7b83ac09db3f1a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d22e8682243ce0916cea5e991abcba512871829f5dcc0f8a0888cd5d06dabdaa",
+      "source_fact_keys": [
+        "source_fact:v1:4d80043d5e7a034d7bbcac3db686638518e1a88a0383d97228b90120596768a4",
+        "source_fact:v1:ddb62761e6dc4d869488d8a53f556cdc2d54aa79780d242d2feb44ec9ee5c973"
+      ],
+      "source_published_kst": "2026-10-12T18:14+09:00",
+      "source_title": "SKT, '제타' 운영사 스캐터랩 지분 처분하나…\"확정된 것 없어\"",
+      "telegram_core_fact": "SK텔레콤이 AI(인공지능) 캐릭터챗 '제타' 운영사 스캐터랩의 보유 지분 전량 매각을 검토하는 것으로 알려졌다. 현재 논의 중인 매각 가격은 주당 약 24만원으로, 투자 당시 취득가인 약 13만9434원보다 72%가량 높다.",
+      "title": "SKT, '제타' 운영사 스캐터랩 지분 처분하나…\"확정된 것 없어\""
+    },
     "fact:b2973bd6bddf03f3a4342645": {
       "first_seen_kst": "2026-10-08T14:21:54+09:00",
       "lanes": {
@@ -87185,6 +87376,26 @@
       "source_published_kst": "2026-10-06T11:04+09:00",
       "title": "\"트럼프가 돈 준다고? 안 믿어\"…지지율 역대 최저, 히스패닉도 이탈"
     },
+    "fact:e8e44aa33b6a39d76ef70462": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.hankyung.com/article/202610125411i",
+      "source": "한국경제",
+      "source_body_digest": "457d4d243eeb94bd9d783e1f21405a9e3d13134f8932a7a964e23b9a2be27ed1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:742bff2a7655c2afc3ce3091d65a6ef5bc9acfbb960de24bb1cd93b07cac1fce",
+      "source_fact_keys": [
+        "source_fact:v1:b556932efb6d5566ba759dfa13c0129cb1b6eaff3a732205001ab11c4bd3e064",
+        "source_fact:v1:f172953479f41e73d021c5c68169ebf24ec8b6d513e1ddd7c4f543f934679901"
+      ],
+      "source_published_kst": "2026-10-12T11:13+09:00",
+      "source_title": "오드리 찰스 램리서치 부사장 \"韓반도체 생태계 매력적…첨단 패키징·초미세공정에 투자할 것\"",
+      "telegram_core_fact": "오드리 찰스 램리서치 기업전략 및 첨단 패키징 부문 수석 부사장 겸 램캐피탈 사장(사진)은 지난 7일 한국경제신문과의 인터뷰에서 \"인공지능(AI) 반도체 성능이 고도화될수록 첨단 패키징이 매우 중요해지고 있다\"며 이같이 말했다.",
+      "title": "오드리 찰스 램리서치 부사장 \"韓반도체 생태계 매력적…첨단 패키징·초미세공정에 투자할 것\""
+    },
     "fact:e9000be516af0d9bd5180acb": {
       "first_seen_kst": "2026-10-06T21:17:11+09:00",
       "lanes": {
@@ -88400,6 +88611,27 @@
       ],
       "source_published_kst": "2026-10-07T09:15+09:00",
       "title": "[태백소식]서학골 36홀 파크골프장 현장 점검 등"
+    },
+    "fact:ef728db4fff859f0851b7ef5": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012000351071",
+      "source": "연합뉴스",
+      "source_body_digest": "a3bf6237495ce34096b38737190c74c8e5e520e5fd88ab7afb60b3dc3bfa8427",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:942a22fc4d5ce95cfd0146bcb9b0f4ff12bd40b51ec600eb1a01d79aa499aea4",
+      "source_fact_keys": [
+        "source_fact:v1:e01c5f78c55287dd2d00d7e8e917912ed05b9d099bfdf8066f21d8a0bd85d7d4",
+        "source_fact:v1:f74cd7c9c0bf457e18830ce76203dd15c1e4dc50421bb8f10c074ac10586f5cc",
+        "source_fact:v1:fc8e66e985a66d8ea291db787d9b00d14dc3134df6e02e25a11515995fc27457"
+      ],
+      "source_published_kst": "2026-10-12T06:39+09:00",
+      "source_title": "WSJ, '러 경유딜' 트럼프 질타…\"푸틴 편에 더 확고히 서\"(종합) | 연합뉴스",
+      "telegram_core_fact": "도널드 트럼프 미 대통령은 지난 9일 러시아산 경유를 미국과 세계 시장에 대규모로 공급하기로 블라디미르 푸틴 러시아 대통령과 합의했다고 밝혔다.",
+      "title": "WSJ, '러 경유딜' 트럼프 질타…\"푸틴 편에 더 확고히 서\"(종합) | 연합뉴스"
     },
     "fact:ef75ed10c8bbe91da6df4c7c": {
       "first_seen_kst": "2026-10-07T17:47:45+09:00",
@@ -105376,6 +105608,26 @@
       "source_published_kst": "2026-10-06T09:41+09:00",
       "title": "HLB그룹주 연일 강세…리픽투 FDA 품목허가 효과"
     },
+    "link:339edd5d3be88b847d640c80": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.hankyung.com/article/202610125411i",
+      "source": "한국경제",
+      "source_body_digest": "457d4d243eeb94bd9d783e1f21405a9e3d13134f8932a7a964e23b9a2be27ed1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:742bff2a7655c2afc3ce3091d65a6ef5bc9acfbb960de24bb1cd93b07cac1fce",
+      "source_fact_keys": [
+        "source_fact:v1:b556932efb6d5566ba759dfa13c0129cb1b6eaff3a732205001ab11c4bd3e064",
+        "source_fact:v1:f172953479f41e73d021c5c68169ebf24ec8b6d513e1ddd7c4f543f934679901"
+      ],
+      "source_published_kst": "2026-10-12T11:13+09:00",
+      "source_title": "오드리 찰스 램리서치 부사장 \"韓반도체 생태계 매력적…첨단 패키징·초미세공정에 투자할 것\"",
+      "telegram_core_fact": "오드리 찰스 램리서치 기업전략 및 첨단 패키징 부문 수석 부사장 겸 램캐피탈 사장(사진)은 지난 7일 한국경제신문과의 인터뷰에서 \"인공지능(AI) 반도체 성능이 고도화될수록 첨단 패키징이 매우 중요해지고 있다\"며 이같이 말했다.",
+      "title": "오드리 찰스 램리서치 부사장 \"韓반도체 생태계 매력적…첨단 패키징·초미세공정에 투자할 것\""
+    },
     "link:33b47e3d96e15398937a1df2": {
       "first_seen_kst": "2026-10-08T15:53:45+09:00",
       "lanes": {
@@ -110186,6 +110438,23 @@
       "link": "https://zdnet.co.kr/view/?no=20261003083207",
       "source": "지디넷코리아",
       "title": "[소외된 SW ㊤] 예산안에서 사라진 SW...국가 경쟁력 우려"
+    },
+    "link:4712b1a0297e975bfb57978c": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174043",
+      "source": "매일경제",
+      "source_body_digest": "014da07c233a48914c06327911e86d4abb5562ef008b41bd3b564dde58542241",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T23:40+09:00",
+      "source_title": "바이오어피니티, 400만 달러 직접공모 발표에 지분 희석 우려 부각",
+      "telegram_core_fact": "기관 대상 직접공모로 400만 달러를 조달하기로 했습니다. 신주와 최대 98만72주 워런트가 발행되면서 지분 희석 부담이 커졌습니다.",
+      "title": "바이오어피니티, 400만 달러 직접공모 발표에 지분 희석 우려 부각"
     },
     "link:471307034bb281c8fb240339": {
       "first_seen_kst": "2026-09-24T11:54:33+09:00",
@@ -118634,6 +118903,23 @@
       ],
       "source_published_kst": "2026-10-06T16:02+09:00",
       "title": "후티 사우디 공격에…현대차 \"공장 건설현장·직원 피해 없어\" | 연합뉴스"
+    },
+    "link:6624cacca6078e2e51379fd1": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://go.seoul.co.kr/news/newsView.php?id=20261013012004",
+      "source": "서울신문",
+      "source_body_digest": "b8550beee149eddae97ea2f27a6e2c01af462499bca1d847b2b6733166c7f62f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T18:08+09:00",
+      "source_title": "트럼프 “러·우 휴전” 젤렌스키 “금시초문”… 불신에 기름",
+      "telegram_core_fact": "트럼프 대통령은 대러 제재 완화 방침을 발표하고 이틀 뒤인 11일(현지시간) 러시아와 우크라이나가 에너지 부문에 대한 휴전에 합의했다고 소셜미디어를 통해 밝혔다.",
+      "title": "트럼프 “러·우 휴전” 젤렌스키 “금시초문”… 불신에 기름"
     },
     "link:662aff53f21e1f9c22355e3b": {
       "first_seen_kst": "2026-10-01T23:00:18+09:00",
@@ -128429,6 +128715,26 @@
       "link": "https://biz.chosun.com/stock/stock_general/2026/10/02/GYZTGYJXME2DSYJSMQYWIMTEMM/",
       "source": "조선비즈",
       "title": "온라인 불법 대부광고 신고하면 최대 50만원…‘파파라치’ 도입"
+    },
+    "link:8bd560cd5e554faa0b029619": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.mt.co.kr/tech/2026/10/12/2026101218064494370",
+      "source": "머니투데이",
+      "source_body_digest": "8dded6eeb47d48ce8a5e60902a2e0a917d5b4473dbb3385b3d7b83ac09db3f1a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d22e8682243ce0916cea5e991abcba512871829f5dcc0f8a0888cd5d06dabdaa",
+      "source_fact_keys": [
+        "source_fact:v1:4d80043d5e7a034d7bbcac3db686638518e1a88a0383d97228b90120596768a4",
+        "source_fact:v1:ddb62761e6dc4d869488d8a53f556cdc2d54aa79780d242d2feb44ec9ee5c973"
+      ],
+      "source_published_kst": "2026-10-12T18:14+09:00",
+      "source_title": "SKT, '제타' 운영사 스캐터랩 지분 처분하나…\"확정된 것 없어\"",
+      "telegram_core_fact": "SK텔레콤이 AI(인공지능) 캐릭터챗 '제타' 운영사 스캐터랩의 보유 지분 전량 매각을 검토하는 것으로 알려졌다. 현재 논의 중인 매각 가격은 주당 약 24만원으로, 투자 당시 취득가인 약 13만9434원보다 72%가량 높다.",
+      "title": "SKT, '제타' 운영사 스캐터랩 지분 처분하나…\"확정된 것 없어\""
     },
     "link:8bd5e18ed653ec6113b55993": {
       "first_seen_kst": "2026-10-12T19:29:26+09:00",
@@ -144146,6 +144452,27 @@
       "telegram_core_fact": "세계 최대 독립 광고 판매 플랫폼 기업 매그나이트(MGNI)가 3억5800만 달러 규모 선순위 담보부 텀론B의 금리를 50bp(0.5%포인트) 낮추는 세 번째 리프라이싱을 완료해 연간 약 180만 달러의 현금 이자 비용을 절감하게 됐다고 7일(현지시간) 발표했다.",
       "title": "매그나이트, 텀론 금리 0.5%p 인하..연 180만 달러 절감"
     },
+    "link:c4fcb15d64df14d811595f2e": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.fnnews.com/news/202610121505305007",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "c8436acc1de3dbafc747e3c6c2c0892ab7e7cd6a2742bd6d4535d320b2b32038",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d565faabdb7f1ce31b904335d855506bcdb6805a2fd5a791dfce774220b884c3",
+      "source_fact_keys": [
+        "source_fact:v1:0b644cd59a9c045d1cae7878ac42b784164a76379139d43717f42311188e69bf",
+        "source_fact:v1:a0aa7f2c895690bd16aceec46320c67cd72071f655eae9883d3f9983d41425c7",
+        "source_fact:v1:ce4fe93b5cc8a10148bb008e6ae773240dc338b7b17dd00772022df23e846e5d"
+      ],
+      "source_published_kst": "2026-10-12T15:08+09:00",
+      "source_title": "SK하이닉스 美 상장 이후 커진 '밤사이 주가 변수'",
+      "telegram_core_fact": "[파이낸셜뉴스] SK하이닉스의 미국 주식예탁증서(ADR) 상장 이후 국내 투자자들이 고려해야 할 주가 변수가 늘어났다는 증권가의 분석이 나왔다.",
+      "title": "SK하이닉스 美 상장 이후 커진 '밤사이 주가 변수'"
+    },
     "link:c501a259bb6ec6be2969b809": {
       "first_seen_kst": "2026-10-12T10:56:38+09:00",
       "lanes": {
@@ -147219,6 +147546,27 @@
       ],
       "source_published_kst": "2026-10-06T08:34+09:00",
       "title": "한투증권, 산일전기 목표가↑…\"美·유럽, 중국산 규제 수혜\" | 연합뉴스"
+    },
+    "link:d01d3cf5b2c263947ed57326": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012000351071",
+      "source": "연합뉴스",
+      "source_body_digest": "a3bf6237495ce34096b38737190c74c8e5e520e5fd88ab7afb60b3dc3bfa8427",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:942a22fc4d5ce95cfd0146bcb9b0f4ff12bd40b51ec600eb1a01d79aa499aea4",
+      "source_fact_keys": [
+        "source_fact:v1:e01c5f78c55287dd2d00d7e8e917912ed05b9d099bfdf8066f21d8a0bd85d7d4",
+        "source_fact:v1:f74cd7c9c0bf457e18830ce76203dd15c1e4dc50421bb8f10c074ac10586f5cc",
+        "source_fact:v1:fc8e66e985a66d8ea291db787d9b00d14dc3134df6e02e25a11515995fc27457"
+      ],
+      "source_published_kst": "2026-10-12T06:39+09:00",
+      "source_title": "WSJ, '러 경유딜' 트럼프 질타…\"푸틴 편에 더 확고히 서\"(종합) | 연합뉴스",
+      "telegram_core_fact": "도널드 트럼프 미 대통령은 지난 9일 러시아산 경유를 미국과 세계 시장에 대규모로 공급하기로 블라디미르 푸틴 러시아 대통령과 합의했다고 밝혔다.",
+      "title": "WSJ, '러 경유딜' 트럼프 질타…\"푸틴 편에 더 확고히 서\"(종합) | 연합뉴스"
     },
     "link:d0231cfd3037560afec584ee": {
       "first_seen_kst": "2026-10-02T19:50:17+09:00",
@@ -156010,6 +156358,25 @@
       "source_published_kst": "2026-10-07T08:45+09:00",
       "title": "더 루비콘 프로젝트, MR탱커 3호선 인수..잠재 수주잔고 3억7500만 달러"
     },
+    "link:f2b62e79b45db2d09877fda2": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822279",
+      "source": "뉴시스",
+      "source_body_digest": "acfc647e4c246c3f7bcfc8b14d1c68e7caa36bb17f46d4d55fbae1b4abc73ffc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90f8af0991969fd453c0f13ba1f3038675f77c31f8b5ae443f890e9eaa4062b0",
+      "source_fact_keys": [
+        "source_fact:v1:4d7a639b40cd392059f9a977f65a0a150723752ea6ec977b3ca4cc81d8b3a50b"
+      ],
+      "source_published_kst": "2026-10-12T14:43+09:00",
+      "source_title": "제테마, '닥터레디' GLP-1 비만약 국내공급 계약",
+      "telegram_core_fact": "제테마는 최근 이탈리아 밀라노에서 열린 세계 제약바이오 전시회 'CPHI 2026'에서 글로벌 제약사 닥터레디와 GLP-1 수용체 작용제 기반 비만치료제의 국내 라이선스·공급 계약을 했다고 12일 밝혔다. 바이오의약품 기업 제테마가 글로벌 제약사와 GLP-1 계열 비만치료제를 국내로 도입하는 계약을 체결했다.",
+      "title": "제테마, '닥터레디' GLP-1 비만약 국내공급 계약"
+    },
     "link:f2c395d1df1d4f9529edf161": {
       "first_seen_kst": "2026-10-05T23:37:00+09:00",
       "lanes": {
@@ -161489,6 +161856,27 @@
       "source_title": "도미노피자, 5년 만에 가격 인상…L사이즈 1500원 뛴다",
       "telegram_core_fact": "도미노피자는 지난 5년간 물가 안정 기조에 발맞춰 본사 차원에서 원부자재 및 운영비 상승분을 자체 흡수해 왔으나, 원가 압박과 대내외적 불안정성이 지속되면서 본사와 가맹점의 경영 부담이 한계에 달해 조정을 단행하게 됐다고 설명했다.",
       "title": "도미노피자, 5년 만에 가격 인상…L사이즈 1500원 뛴다"
+    },
+    "original:085616fb98bac4caabb33b2b": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012000351071",
+      "source": "연합뉴스",
+      "source_body_digest": "a3bf6237495ce34096b38737190c74c8e5e520e5fd88ab7afb60b3dc3bfa8427",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:942a22fc4d5ce95cfd0146bcb9b0f4ff12bd40b51ec600eb1a01d79aa499aea4",
+      "source_fact_keys": [
+        "source_fact:v1:e01c5f78c55287dd2d00d7e8e917912ed05b9d099bfdf8066f21d8a0bd85d7d4",
+        "source_fact:v1:f74cd7c9c0bf457e18830ce76203dd15c1e4dc50421bb8f10c074ac10586f5cc",
+        "source_fact:v1:fc8e66e985a66d8ea291db787d9b00d14dc3134df6e02e25a11515995fc27457"
+      ],
+      "source_published_kst": "2026-10-12T06:39+09:00",
+      "source_title": "WSJ, '러 경유딜' 트럼프 질타…\"푸틴 편에 더 확고히 서\"(종합) | 연합뉴스",
+      "telegram_core_fact": "도널드 트럼프 미 대통령은 지난 9일 러시아산 경유를 미국과 세계 시장에 대규모로 공급하기로 블라디미르 푸틴 러시아 대통령과 합의했다고 밝혔다.",
+      "title": "WSJ, '러 경유딜' 트럼프 질타…\"푸틴 편에 더 확고히 서\"(종합) | 연합뉴스"
     },
     "original:08597c257bc9bd4cdcfea293": {
       "first_seen_kst": "2026-10-02T06:53:18+09:00",
@@ -197845,6 +198233,26 @@
       "telegram_core_fact": "16단 이상의 고용량 고대역폭메모리(HBM) 개발이 본격화함에 따라 차세대 패키징 신기술을 확보한 기업을 적극 물색할 방침이다.",
       "title": "오드리 찰스 \"韓 반도체 생태계 매력적…HBM패키징·초미세공정에 투자\""
     },
+    "original:940ccd92e2e67778e71c582a": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.mt.co.kr/tech/2026/10/12/2026101218064494370",
+      "source": "머니투데이",
+      "source_body_digest": "8dded6eeb47d48ce8a5e60902a2e0a917d5b4473dbb3385b3d7b83ac09db3f1a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d22e8682243ce0916cea5e991abcba512871829f5dcc0f8a0888cd5d06dabdaa",
+      "source_fact_keys": [
+        "source_fact:v1:4d80043d5e7a034d7bbcac3db686638518e1a88a0383d97228b90120596768a4",
+        "source_fact:v1:ddb62761e6dc4d869488d8a53f556cdc2d54aa79780d242d2feb44ec9ee5c973"
+      ],
+      "source_published_kst": "2026-10-12T18:14+09:00",
+      "source_title": "SKT, '제타' 운영사 스캐터랩 지분 처분하나…\"확정된 것 없어\"",
+      "telegram_core_fact": "SK텔레콤이 AI(인공지능) 캐릭터챗 '제타' 운영사 스캐터랩의 보유 지분 전량 매각을 검토하는 것으로 알려졌다. 현재 논의 중인 매각 가격은 주당 약 24만원으로, 투자 당시 취득가인 약 13만9434원보다 72%가량 높다.",
+      "title": "SKT, '제타' 운영사 스캐터랩 지분 처분하나…\"확정된 것 없어\""
+    },
     "original:9412e681c4427799da72c260": {
       "first_seen_kst": "2026-09-23T21:31:09+09:00",
       "lanes": {
@@ -199152,6 +199560,26 @@
       "source": "이데일리",
       "title": "추석에도 24시간…삼성·SK하닉 반도체, 수출 최전선 지킨다"
     },
+    "original:9895282791c6958a13c9c93d": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.hankyung.com/article/202610125411i",
+      "source": "한국경제",
+      "source_body_digest": "457d4d243eeb94bd9d783e1f21405a9e3d13134f8932a7a964e23b9a2be27ed1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:742bff2a7655c2afc3ce3091d65a6ef5bc9acfbb960de24bb1cd93b07cac1fce",
+      "source_fact_keys": [
+        "source_fact:v1:b556932efb6d5566ba759dfa13c0129cb1b6eaff3a732205001ab11c4bd3e064",
+        "source_fact:v1:f172953479f41e73d021c5c68169ebf24ec8b6d513e1ddd7c4f543f934679901"
+      ],
+      "source_published_kst": "2026-10-12T11:13+09:00",
+      "source_title": "오드리 찰스 램리서치 부사장 \"韓반도체 생태계 매력적…첨단 패키징·초미세공정에 투자할 것\"",
+      "telegram_core_fact": "오드리 찰스 램리서치 기업전략 및 첨단 패키징 부문 수석 부사장 겸 램캐피탈 사장(사진)은 지난 7일 한국경제신문과의 인터뷰에서 \"인공지능(AI) 반도체 성능이 고도화될수록 첨단 패키징이 매우 중요해지고 있다\"며 이같이 말했다.",
+      "title": "오드리 찰스 램리서치 부사장 \"韓반도체 생태계 매력적…첨단 패키징·초미세공정에 투자할 것\""
+    },
     "original:98a85aeaffc6cda5477855d9": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
       "lanes": {
@@ -199586,6 +200014,23 @@
       "source_title": "트럼프-푸틴 경유 거래 이튿날 러, 우크라 자포리자 공격 8명 사망",
       "telegram_core_fact": "미 재무부는 트럼프의 발언이 나온 직후 러시아 경유에 대한 수출 제재 해제를 발표했다.",
       "title": "트럼프-푸틴 경유 거래 이튿날 러, 우크라 자포리자 공격 8명 사망"
+    },
+    "original:9a707cb6bd7a4eb3af8ae462": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174043",
+      "source": "매일경제",
+      "source_body_digest": "014da07c233a48914c06327911e86d4abb5562ef008b41bd3b564dde58542241",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T23:40+09:00",
+      "source_title": "바이오어피니티, 400만 달러 직접공모 발표에 지분 희석 우려 부각",
+      "telegram_core_fact": "기관 대상 직접공모로 400만 달러를 조달하기로 했습니다. 신주와 최대 98만72주 워런트가 발행되면서 지분 희석 부담이 커졌습니다.",
+      "title": "바이오어피니티, 400만 달러 직접공모 발표에 지분 희석 우려 부각"
     },
     "original:9a75adee2f0e319fa92b8be8": {
       "first_seen_kst": "2026-10-12T20:14:14+09:00",
@@ -202702,6 +203147,25 @@
       "source_title": "HD건설기계, 美 데이터센터에 3900억 규모 발전용 엔진 공급",
       "telegram_core_fact": "HD건설기계는 미국 발전 인프라 솔루션 업체 이록(ERock)과 가스 발전용 엔진 롱블록(Long Block) 공급 계약을 체결했다고 7일 공시했다.",
       "title": "HD건설기계, 美 데이터센터에 3900억 규모 발전용 엔진 공급"
+    },
+    "original:a6f264e6e1a3b5fb83b79156": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822279",
+      "source": "뉴시스",
+      "source_body_digest": "acfc647e4c246c3f7bcfc8b14d1c68e7caa36bb17f46d4d55fbae1b4abc73ffc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90f8af0991969fd453c0f13ba1f3038675f77c31f8b5ae443f890e9eaa4062b0",
+      "source_fact_keys": [
+        "source_fact:v1:4d7a639b40cd392059f9a977f65a0a150723752ea6ec977b3ca4cc81d8b3a50b"
+      ],
+      "source_published_kst": "2026-10-12T14:43+09:00",
+      "source_title": "제테마, '닥터레디' GLP-1 비만약 국내공급 계약",
+      "telegram_core_fact": "제테마는 최근 이탈리아 밀라노에서 열린 세계 제약바이오 전시회 'CPHI 2026'에서 글로벌 제약사 닥터레디와 GLP-1 수용체 작용제 기반 비만치료제의 국내 라이선스·공급 계약을 했다고 12일 밝혔다. 바이오의약품 기업 제테마가 글로벌 제약사와 GLP-1 계열 비만치료제를 국내로 도입하는 계약을 체결했다.",
+      "title": "제테마, '닥터레디' GLP-1 비만약 국내공급 계약"
     },
     "original:a709910d3538664043d56b1f": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
@@ -209752,6 +210216,23 @@
       "source": "전자신문",
       "title": "반도체 강세에 코스피도 훈풍…7000선 복귀"
     },
+    "original:c33478b8b3df1c661b3db2a9": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://go.seoul.co.kr/news/newsView.php?id=20261013012004",
+      "source": "서울신문",
+      "source_body_digest": "b8550beee149eddae97ea2f27a6e2c01af462499bca1d847b2b6733166c7f62f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T18:08+09:00",
+      "source_title": "트럼프 “러·우 휴전” 젤렌스키 “금시초문”… 불신에 기름",
+      "telegram_core_fact": "트럼프 대통령은 대러 제재 완화 방침을 발표하고 이틀 뒤인 11일(현지시간) 러시아와 우크라이나가 에너지 부문에 대한 휴전에 합의했다고 소셜미디어를 통해 밝혔다.",
+      "title": "트럼프 “러·우 휴전” 젤렌스키 “금시초문”… 불신에 기름"
+    },
     "original:c34107f3253264dc1932cb19": {
       "first_seen_kst": "2026-10-11T13:18:03+09:00",
       "lanes": {
@@ -214339,6 +214820,27 @@
       ],
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "LK삼양–다온아이앤씨, 드론용 초경량 EO·IR 모듈 개발 MOU"
+    },
+    "original:d497cdb5e5c1653ec701f8a8": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.fnnews.com/news/202610121505305007",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "c8436acc1de3dbafc747e3c6c2c0892ab7e7cd6a2742bd6d4535d320b2b32038",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d565faabdb7f1ce31b904335d855506bcdb6805a2fd5a791dfce774220b884c3",
+      "source_fact_keys": [
+        "source_fact:v1:0b644cd59a9c045d1cae7878ac42b784164a76379139d43717f42311188e69bf",
+        "source_fact:v1:a0aa7f2c895690bd16aceec46320c67cd72071f655eae9883d3f9983d41425c7",
+        "source_fact:v1:ce4fe93b5cc8a10148bb008e6ae773240dc338b7b17dd00772022df23e846e5d"
+      ],
+      "source_published_kst": "2026-10-12T15:08+09:00",
+      "source_title": "SK하이닉스 美 상장 이후 커진 '밤사이 주가 변수'",
+      "telegram_core_fact": "[파이낸셜뉴스] SK하이닉스의 미국 주식예탁증서(ADR) 상장 이후 국내 투자자들이 고려해야 할 주가 변수가 늘어났다는 증권가의 분석이 나왔다.",
+      "title": "SK하이닉스 美 상장 이후 커진 '밤사이 주가 변수'"
     },
     "original:d498921f6dab507004a751a9": {
       "first_seen_kst": "2026-10-12T07:02:25+09:00",
@@ -253011,6 +253513,26 @@
       "telegram_core_fact": "결국 이날 반도체 시장에서는 ETF 리밸런싱에 따른 기계적인 수급 조정과 삼성전자 실적, 옵션 만기 및 외국인 매매가 동시에 맞물리면서 종목별 주가 차별화가 나타나는지가 주요 변수로 떠올랐다.",
       "title": "반도체 ETF 리밸런싱에 변동성 커져…삼성전자 2000억 팔고 소부장 더 담는다"
     },
+    "source_fact:1ef6d3ecfa5889a62bcfd02a": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.hankyung.com/article/202610125411i",
+      "source": "한국경제",
+      "source_body_digest": "457d4d243eeb94bd9d783e1f21405a9e3d13134f8932a7a964e23b9a2be27ed1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:742bff2a7655c2afc3ce3091d65a6ef5bc9acfbb960de24bb1cd93b07cac1fce",
+      "source_fact_keys": [
+        "source_fact:v1:b556932efb6d5566ba759dfa13c0129cb1b6eaff3a732205001ab11c4bd3e064",
+        "source_fact:v1:f172953479f41e73d021c5c68169ebf24ec8b6d513e1ddd7c4f543f934679901"
+      ],
+      "source_published_kst": "2026-10-12T11:13+09:00",
+      "source_title": "오드리 찰스 램리서치 부사장 \"韓반도체 생태계 매력적…첨단 패키징·초미세공정에 투자할 것\"",
+      "telegram_core_fact": "오드리 찰스 램리서치 기업전략 및 첨단 패키징 부문 수석 부사장 겸 램캐피탈 사장(사진)은 지난 7일 한국경제신문과의 인터뷰에서 \"인공지능(AI) 반도체 성능이 고도화될수록 첨단 패키징이 매우 중요해지고 있다\"며 이같이 말했다.",
+      "title": "오드리 찰스 램리서치 부사장 \"韓반도체 생태계 매력적…첨단 패키징·초미세공정에 투자할 것\""
+    },
     "source_fact:1f0174e8bc948b1257387514": {
       "first_seen_kst": "2026-10-11T09:08:30+09:00",
       "lanes": {
@@ -262573,6 +263095,26 @@
       "source_published_kst": "2026-10-06T18:00+09:00",
       "title": "박스피 갇힌 코스피, 11월 연말 랠리 올까?"
     },
+    "source_fact:28744ac43600528d6de89c3f": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.mt.co.kr/tech/2026/10/12/2026101218064494370",
+      "source": "머니투데이",
+      "source_body_digest": "8dded6eeb47d48ce8a5e60902a2e0a917d5b4473dbb3385b3d7b83ac09db3f1a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d22e8682243ce0916cea5e991abcba512871829f5dcc0f8a0888cd5d06dabdaa",
+      "source_fact_keys": [
+        "source_fact:v1:4d80043d5e7a034d7bbcac3db686638518e1a88a0383d97228b90120596768a4",
+        "source_fact:v1:ddb62761e6dc4d869488d8a53f556cdc2d54aa79780d242d2feb44ec9ee5c973"
+      ],
+      "source_published_kst": "2026-10-12T18:14+09:00",
+      "source_title": "SKT, '제타' 운영사 스캐터랩 지분 처분하나…\"확정된 것 없어\"",
+      "telegram_core_fact": "SK텔레콤이 AI(인공지능) 캐릭터챗 '제타' 운영사 스캐터랩의 보유 지분 전량 매각을 검토하는 것으로 알려졌다. 현재 논의 중인 매각 가격은 주당 약 24만원으로, 투자 당시 취득가인 약 13만9434원보다 72%가량 높다.",
+      "title": "SKT, '제타' 운영사 스캐터랩 지분 처분하나…\"확정된 것 없어\""
+    },
     "source_fact:287d87890befcd1a12b20f42": {
       "first_seen_kst": "2026-10-11T11:48:17+09:00",
       "lanes": {
@@ -262958,6 +263500,27 @@
       ],
       "source_published_kst": "2026-10-06T08:33+09:00",
       "title": "“광고·커머스 매출 성장 둔화, AI 비용 증가”…대신증권, NAVER 목표가↓"
+    },
+    "source_fact:28c97584055a5e2664a05a1c": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012000351071",
+      "source": "연합뉴스",
+      "source_body_digest": "a3bf6237495ce34096b38737190c74c8e5e520e5fd88ab7afb60b3dc3bfa8427",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:942a22fc4d5ce95cfd0146bcb9b0f4ff12bd40b51ec600eb1a01d79aa499aea4",
+      "source_fact_keys": [
+        "source_fact:v1:e01c5f78c55287dd2d00d7e8e917912ed05b9d099bfdf8066f21d8a0bd85d7d4",
+        "source_fact:v1:f74cd7c9c0bf457e18830ce76203dd15c1e4dc50421bb8f10c074ac10586f5cc",
+        "source_fact:v1:fc8e66e985a66d8ea291db787d9b00d14dc3134df6e02e25a11515995fc27457"
+      ],
+      "source_published_kst": "2026-10-12T06:39+09:00",
+      "source_title": "WSJ, '러 경유딜' 트럼프 질타…\"푸틴 편에 더 확고히 서\"(종합) | 연합뉴스",
+      "telegram_core_fact": "도널드 트럼프 미 대통령은 지난 9일 러시아산 경유를 미국과 세계 시장에 대규모로 공급하기로 블라디미르 푸틴 러시아 대통령과 합의했다고 밝혔다.",
+      "title": "WSJ, '러 경유딜' 트럼프 질타…\"푸틴 편에 더 확고히 서\"(종합) | 연합뉴스"
     },
     "source_fact:28d71564d9e9441da52d0ece": {
       "first_seen_kst": "2026-10-12T21:20:33+09:00",
@@ -303400,6 +303963,27 @@
       "source_published_kst": "2026-10-06T13:52+09:00",
       "title": "'KIWOOM 미국AI테크하이베타 ETF', 마이크론·스페이스X 편입"
     },
+    "source_fact:550ec38c8b11e11df744da25": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.fnnews.com/news/202610121505305007",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "c8436acc1de3dbafc747e3c6c2c0892ab7e7cd6a2742bd6d4535d320b2b32038",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d565faabdb7f1ce31b904335d855506bcdb6805a2fd5a791dfce774220b884c3",
+      "source_fact_keys": [
+        "source_fact:v1:0b644cd59a9c045d1cae7878ac42b784164a76379139d43717f42311188e69bf",
+        "source_fact:v1:a0aa7f2c895690bd16aceec46320c67cd72071f655eae9883d3f9983d41425c7",
+        "source_fact:v1:ce4fe93b5cc8a10148bb008e6ae773240dc338b7b17dd00772022df23e846e5d"
+      ],
+      "source_published_kst": "2026-10-12T15:08+09:00",
+      "source_title": "SK하이닉스 美 상장 이후 커진 '밤사이 주가 변수'",
+      "telegram_core_fact": "[파이낸셜뉴스] SK하이닉스의 미국 주식예탁증서(ADR) 상장 이후 국내 투자자들이 고려해야 할 주가 변수가 늘어났다는 증권가의 분석이 나왔다.",
+      "title": "SK하이닉스 美 상장 이후 커진 '밤사이 주가 변수'"
+    },
     "source_fact:551323da3f6c5a7d2deeb5fd": {
       "first_seen_kst": "2026-10-10T00:12:46+09:00",
       "lanes": {
@@ -315224,6 +315808,27 @@
       "telegram_core_fact": "엔비디아의 투자를 유치하고 오픈AI·메타와 대규모 AI 인프라 계약을 맺으며 호주 증시의 대형 기업공개(IPO) 후보로 주목받았던 데이터센터 기업 퍼머스(Firmus)가 상장 계획을 철회했다.",
       "title": "AI 데이터센터 몸값 시험대…엔비디아 투자받은 퍼머스 IPO 철회"
     },
+    "source_fact:61ef7d95a7279acf165aea1d": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.fnnews.com/news/202610121505305007",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "c8436acc1de3dbafc747e3c6c2c0892ab7e7cd6a2742bd6d4535d320b2b32038",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d565faabdb7f1ce31b904335d855506bcdb6805a2fd5a791dfce774220b884c3",
+      "source_fact_keys": [
+        "source_fact:v1:0b644cd59a9c045d1cae7878ac42b784164a76379139d43717f42311188e69bf",
+        "source_fact:v1:a0aa7f2c895690bd16aceec46320c67cd72071f655eae9883d3f9983d41425c7",
+        "source_fact:v1:ce4fe93b5cc8a10148bb008e6ae773240dc338b7b17dd00772022df23e846e5d"
+      ],
+      "source_published_kst": "2026-10-12T15:08+09:00",
+      "source_title": "SK하이닉스 美 상장 이후 커진 '밤사이 주가 변수'",
+      "telegram_core_fact": "[파이낸셜뉴스] SK하이닉스의 미국 주식예탁증서(ADR) 상장 이후 국내 투자자들이 고려해야 할 주가 변수가 늘어났다는 증권가의 분석이 나왔다.",
+      "title": "SK하이닉스 美 상장 이후 커진 '밤사이 주가 변수'"
+    },
     "source_fact:61f3b3f931adb555027e2a75": {
       "first_seen_kst": "2026-10-09T17:54:07+09:00",
       "lanes": {
@@ -317187,6 +317792,26 @@
       "source_title": "'스트레스테스트 미비' 지적에… 이억원 \"레버리지 ETF 위험성 점검했다\"[2026국감]",
       "telegram_core_fact": "금융위원회가 단일종목 레버리지 상장지수펀드(ETF) 도입 전 스트레스테스트를 시행하지 않았다는 지적에 이억원 금융위 위원장이 투자자 위험성, 시장 영향 등을 점검했다고 반박했다.",
       "title": "'스트레스테스트 미비' 지적에… 이억원 \"레버리지 ETF 위험성 점검했다\"[2026국감]"
+    },
+    "source_fact:63eabc4b63de9413300f9b5a": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.hankyung.com/article/202610125411i",
+      "source": "한국경제",
+      "source_body_digest": "457d4d243eeb94bd9d783e1f21405a9e3d13134f8932a7a964e23b9a2be27ed1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:742bff2a7655c2afc3ce3091d65a6ef5bc9acfbb960de24bb1cd93b07cac1fce",
+      "source_fact_keys": [
+        "source_fact:v1:b556932efb6d5566ba759dfa13c0129cb1b6eaff3a732205001ab11c4bd3e064",
+        "source_fact:v1:f172953479f41e73d021c5c68169ebf24ec8b6d513e1ddd7c4f543f934679901"
+      ],
+      "source_published_kst": "2026-10-12T11:13+09:00",
+      "source_title": "오드리 찰스 램리서치 부사장 \"韓반도체 생태계 매력적…첨단 패키징·초미세공정에 투자할 것\"",
+      "telegram_core_fact": "오드리 찰스 램리서치 기업전략 및 첨단 패키징 부문 수석 부사장 겸 램캐피탈 사장(사진)은 지난 7일 한국경제신문과의 인터뷰에서 \"인공지능(AI) 반도체 성능이 고도화될수록 첨단 패키징이 매우 중요해지고 있다\"며 이같이 말했다.",
+      "title": "오드리 찰스 램리서치 부사장 \"韓반도체 생태계 매력적…첨단 패키징·초미세공정에 투자할 것\""
     },
     "source_fact:63ef0cf45a689a0e98726115": {
       "first_seen_kst": "2026-10-09T17:13:50+09:00",
@@ -328573,6 +329198,27 @@
       "source_published_kst": "2026-10-06T15:10+09:00",
       "title": "파운드리發 반도체값 도미노 인상 예고…TSMC, 내년 파운드리 단가 10% 올린다"
     },
+    "source_fact:7093f6bfd97abe99bc40666a": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012000351071",
+      "source": "연합뉴스",
+      "source_body_digest": "a3bf6237495ce34096b38737190c74c8e5e520e5fd88ab7afb60b3dc3bfa8427",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:942a22fc4d5ce95cfd0146bcb9b0f4ff12bd40b51ec600eb1a01d79aa499aea4",
+      "source_fact_keys": [
+        "source_fact:v1:e01c5f78c55287dd2d00d7e8e917912ed05b9d099bfdf8066f21d8a0bd85d7d4",
+        "source_fact:v1:f74cd7c9c0bf457e18830ce76203dd15c1e4dc50421bb8f10c074ac10586f5cc",
+        "source_fact:v1:fc8e66e985a66d8ea291db787d9b00d14dc3134df6e02e25a11515995fc27457"
+      ],
+      "source_published_kst": "2026-10-12T06:39+09:00",
+      "source_title": "WSJ, '러 경유딜' 트럼프 질타…\"푸틴 편에 더 확고히 서\"(종합) | 연합뉴스",
+      "telegram_core_fact": "도널드 트럼프 미 대통령은 지난 9일 러시아산 경유를 미국과 세계 시장에 대규모로 공급하기로 블라디미르 푸틴 러시아 대통령과 합의했다고 밝혔다.",
+      "title": "WSJ, '러 경유딜' 트럼프 질타…\"푸틴 편에 더 확고히 서\"(종합) | 연합뉴스"
+    },
     "source_fact:7094564b61d0a8bc98a64230": {
       "first_seen_kst": "2026-10-08T18:46:25+09:00",
       "lanes": {
@@ -331583,6 +332229,27 @@
       "source_title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)",
       "telegram_core_fact": "그는 미국이 러시아의 전쟁 자금 조달을 막기 위해 부과했던 러시아산 연료 제재를 일시적으로 완화한 지 하루 만에 우크라이나가 러시아 정유시설을 공격한 걸 비난했다.",
       "title": "트럼프 \"러시아·우크라이나, 에너지 휴전 합의\"(종합)"
+    },
+    "source_fact:741784f0e3c715410e566120": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012000351071",
+      "source": "연합뉴스",
+      "source_body_digest": "a3bf6237495ce34096b38737190c74c8e5e520e5fd88ab7afb60b3dc3bfa8427",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:942a22fc4d5ce95cfd0146bcb9b0f4ff12bd40b51ec600eb1a01d79aa499aea4",
+      "source_fact_keys": [
+        "source_fact:v1:e01c5f78c55287dd2d00d7e8e917912ed05b9d099bfdf8066f21d8a0bd85d7d4",
+        "source_fact:v1:f74cd7c9c0bf457e18830ce76203dd15c1e4dc50421bb8f10c074ac10586f5cc",
+        "source_fact:v1:fc8e66e985a66d8ea291db787d9b00d14dc3134df6e02e25a11515995fc27457"
+      ],
+      "source_published_kst": "2026-10-12T06:39+09:00",
+      "source_title": "WSJ, '러 경유딜' 트럼프 질타…\"푸틴 편에 더 확고히 서\"(종합) | 연합뉴스",
+      "telegram_core_fact": "도널드 트럼프 미 대통령은 지난 9일 러시아산 경유를 미국과 세계 시장에 대규모로 공급하기로 블라디미르 푸틴 러시아 대통령과 합의했다고 밝혔다.",
+      "title": "WSJ, '러 경유딜' 트럼프 질타…\"푸틴 편에 더 확고히 서\"(종합) | 연합뉴스"
     },
     "source_fact:741adeea4feea97ac6fafcfe": {
       "first_seen_kst": "2026-10-08T10:43:48+09:00",
@@ -363819,6 +364486,26 @@
       "source_title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스",
       "telegram_core_fact": "11월 3일 중간선거를 앞둔 트럼프 대통령으로서는 후티 공격 동참을 통한 군사적 확전이 부담스러울 수밖에 없다.",
       "title": "후티 공세에 미국인도 사망…트럼프, 군사대응 결단할까 | 연합뉴스"
+    },
+    "source_fact:9797494c10a10485b1acabcb": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.mt.co.kr/tech/2026/10/12/2026101218064494370",
+      "source": "머니투데이",
+      "source_body_digest": "8dded6eeb47d48ce8a5e60902a2e0a917d5b4473dbb3385b3d7b83ac09db3f1a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d22e8682243ce0916cea5e991abcba512871829f5dcc0f8a0888cd5d06dabdaa",
+      "source_fact_keys": [
+        "source_fact:v1:4d80043d5e7a034d7bbcac3db686638518e1a88a0383d97228b90120596768a4",
+        "source_fact:v1:ddb62761e6dc4d869488d8a53f556cdc2d54aa79780d242d2feb44ec9ee5c973"
+      ],
+      "source_published_kst": "2026-10-12T18:14+09:00",
+      "source_title": "SKT, '제타' 운영사 스캐터랩 지분 처분하나…\"확정된 것 없어\"",
+      "telegram_core_fact": "SK텔레콤이 AI(인공지능) 캐릭터챗 '제타' 운영사 스캐터랩의 보유 지분 전량 매각을 검토하는 것으로 알려졌다. 현재 논의 중인 매각 가격은 주당 약 24만원으로, 투자 당시 취득가인 약 13만9434원보다 72%가량 높다.",
+      "title": "SKT, '제타' 운영사 스캐터랩 지분 처분하나…\"확정된 것 없어\""
     },
     "source_fact:97a30e6a605dd2f5ab786183": {
       "first_seen_kst": "2026-10-08T00:39:44+09:00",
@@ -439889,6 +440576,27 @@
       "source_published_kst": "2026-10-06T15:16+09:00",
       "title": "“유럽 첫 상용 SDV 뚫었다”… LG전자 차세대 콕핏 르노 공급"
     },
+    "source_fact:ebaafae89905ba7231f287bf": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.fnnews.com/news/202610121505305007",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "c8436acc1de3dbafc747e3c6c2c0892ab7e7cd6a2742bd6d4535d320b2b32038",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d565faabdb7f1ce31b904335d855506bcdb6805a2fd5a791dfce774220b884c3",
+      "source_fact_keys": [
+        "source_fact:v1:0b644cd59a9c045d1cae7878ac42b784164a76379139d43717f42311188e69bf",
+        "source_fact:v1:a0aa7f2c895690bd16aceec46320c67cd72071f655eae9883d3f9983d41425c7",
+        "source_fact:v1:ce4fe93b5cc8a10148bb008e6ae773240dc338b7b17dd00772022df23e846e5d"
+      ],
+      "source_published_kst": "2026-10-12T15:08+09:00",
+      "source_title": "SK하이닉스 美 상장 이후 커진 '밤사이 주가 변수'",
+      "telegram_core_fact": "[파이낸셜뉴스] SK하이닉스의 미국 주식예탁증서(ADR) 상장 이후 국내 투자자들이 고려해야 할 주가 변수가 늘어났다는 증권가의 분석이 나왔다.",
+      "title": "SK하이닉스 美 상장 이후 커진 '밤사이 주가 변수'"
+    },
     "source_fact:ebb41b0d480444957bc72a71": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -454157,6 +454865,25 @@
       "source_published_kst": "2026-10-05T22:06+09:00",
       "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
     },
+    "source_fact:fca0e9068778a1d76cf901c4": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822279",
+      "source": "뉴시스",
+      "source_body_digest": "acfc647e4c246c3f7bcfc8b14d1c68e7caa36bb17f46d4d55fbae1b4abc73ffc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90f8af0991969fd453c0f13ba1f3038675f77c31f8b5ae443f890e9eaa4062b0",
+      "source_fact_keys": [
+        "source_fact:v1:4d7a639b40cd392059f9a977f65a0a150723752ea6ec977b3ca4cc81d8b3a50b"
+      ],
+      "source_published_kst": "2026-10-12T14:43+09:00",
+      "source_title": "제테마, '닥터레디' GLP-1 비만약 국내공급 계약",
+      "telegram_core_fact": "제테마는 최근 이탈리아 밀라노에서 열린 세계 제약바이오 전시회 'CPHI 2026'에서 글로벌 제약사 닥터레디와 GLP-1 수용체 작용제 기반 비만치료제의 국내 라이선스·공급 계약을 했다고 12일 밝혔다. 바이오의약품 기업 제테마가 글로벌 제약사와 GLP-1 계열 비만치료제를 국내로 도입하는 계약을 체결했다.",
+      "title": "제테마, '닥터레디' GLP-1 비만약 국내공급 계약"
+    },
     "source_fact:fca619e4a1a21f18044955de": {
       "first_seen_kst": "2026-10-12T14:17:50+09:00",
       "lanes": {
@@ -459404,6 +460131,27 @@
       "source_title": "도미노피자, 5년 만에 가격 인상…L사이즈 1500원 뛴다",
       "telegram_core_fact": "도미노피자는 지난 5년간 물가 안정 기조에 발맞춰 본사 차원에서 원부자재 및 운영비 상승분을 자체 흡수해 왔으나, 원가 압박과 대내외적 불안정성이 지속되면서 본사와 가맹점의 경영 부담이 한계에 달해 조정을 단행하게 됐다고 설명했다.",
       "title": "도미노피자, 5년 만에 가격 인상…L사이즈 1500원 뛴다"
+    },
+    "title:085616fb98bac4caabb33b2b": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012000351071",
+      "source": "연합뉴스",
+      "source_body_digest": "a3bf6237495ce34096b38737190c74c8e5e520e5fd88ab7afb60b3dc3bfa8427",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:942a22fc4d5ce95cfd0146bcb9b0f4ff12bd40b51ec600eb1a01d79aa499aea4",
+      "source_fact_keys": [
+        "source_fact:v1:e01c5f78c55287dd2d00d7e8e917912ed05b9d099bfdf8066f21d8a0bd85d7d4",
+        "source_fact:v1:f74cd7c9c0bf457e18830ce76203dd15c1e4dc50421bb8f10c074ac10586f5cc",
+        "source_fact:v1:fc8e66e985a66d8ea291db787d9b00d14dc3134df6e02e25a11515995fc27457"
+      ],
+      "source_published_kst": "2026-10-12T06:39+09:00",
+      "source_title": "WSJ, '러 경유딜' 트럼프 질타…\"푸틴 편에 더 확고히 서\"(종합) | 연합뉴스",
+      "telegram_core_fact": "도널드 트럼프 미 대통령은 지난 9일 러시아산 경유를 미국과 세계 시장에 대규모로 공급하기로 블라디미르 푸틴 러시아 대통령과 합의했다고 밝혔다.",
+      "title": "WSJ, '러 경유딜' 트럼프 질타…\"푸틴 편에 더 확고히 서\"(종합) | 연합뉴스"
     },
     "title:08597c257bc9bd4cdcfea293": {
       "first_seen_kst": "2026-10-02T06:53:18+09:00",
@@ -496460,6 +497208,26 @@
       "telegram_core_fact": "16단 이상의 고용량 고대역폭메모리(HBM) 개발이 본격화함에 따라 차세대 패키징 신기술을 확보한 기업을 적극 물색할 방침이다.",
       "title": "오드리 찰스 \"韓 반도체 생태계 매력적…HBM패키징·초미세공정에 투자\""
     },
+    "title:940ccd92e2e67778e71c582a": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.mt.co.kr/tech/2026/10/12/2026101218064494370",
+      "source": "머니투데이",
+      "source_body_digest": "8dded6eeb47d48ce8a5e60902a2e0a917d5b4473dbb3385b3d7b83ac09db3f1a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d22e8682243ce0916cea5e991abcba512871829f5dcc0f8a0888cd5d06dabdaa",
+      "source_fact_keys": [
+        "source_fact:v1:4d80043d5e7a034d7bbcac3db686638518e1a88a0383d97228b90120596768a4",
+        "source_fact:v1:ddb62761e6dc4d869488d8a53f556cdc2d54aa79780d242d2feb44ec9ee5c973"
+      ],
+      "source_published_kst": "2026-10-12T18:14+09:00",
+      "source_title": "SKT, '제타' 운영사 스캐터랩 지분 처분하나…\"확정된 것 없어\"",
+      "telegram_core_fact": "SK텔레콤이 AI(인공지능) 캐릭터챗 '제타' 운영사 스캐터랩의 보유 지분 전량 매각을 검토하는 것으로 알려졌다. 현재 논의 중인 매각 가격은 주당 약 24만원으로, 투자 당시 취득가인 약 13만9434원보다 72%가량 높다.",
+      "title": "SKT, '제타' 운영사 스캐터랩 지분 처분하나…\"확정된 것 없어\""
+    },
     "title:9412e681c4427799da72c260": {
       "first_seen_kst": "2026-09-23T21:31:09+09:00",
       "lanes": {
@@ -497809,6 +498577,26 @@
       "source": "이데일리",
       "title": "추석에도 24시간…삼성·SK하닉 반도체, 수출 최전선 지킨다"
     },
+    "title:9895282791c6958a13c9c93d": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.hankyung.com/article/202610125411i",
+      "source": "한국경제",
+      "source_body_digest": "457d4d243eeb94bd9d783e1f21405a9e3d13134f8932a7a964e23b9a2be27ed1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:742bff2a7655c2afc3ce3091d65a6ef5bc9acfbb960de24bb1cd93b07cac1fce",
+      "source_fact_keys": [
+        "source_fact:v1:b556932efb6d5566ba759dfa13c0129cb1b6eaff3a732205001ab11c4bd3e064",
+        "source_fact:v1:f172953479f41e73d021c5c68169ebf24ec8b6d513e1ddd7c4f543f934679901"
+      ],
+      "source_published_kst": "2026-10-12T11:13+09:00",
+      "source_title": "오드리 찰스 램리서치 부사장 \"韓반도체 생태계 매력적…첨단 패키징·초미세공정에 투자할 것\"",
+      "telegram_core_fact": "오드리 찰스 램리서치 기업전략 및 첨단 패키징 부문 수석 부사장 겸 램캐피탈 사장(사진)은 지난 7일 한국경제신문과의 인터뷰에서 \"인공지능(AI) 반도체 성능이 고도화될수록 첨단 패키징이 매우 중요해지고 있다\"며 이같이 말했다.",
+      "title": "오드리 찰스 램리서치 부사장 \"韓반도체 생태계 매력적…첨단 패키징·초미세공정에 투자할 것\""
+    },
     "title:98a85aeaffc6cda5477855d9": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
       "lanes": {
@@ -498271,6 +499059,23 @@
       "source_title": "트럼프-푸틴 경유 거래 이튿날 러, 우크라 자포리자 공격 8명 사망",
       "telegram_core_fact": "미 재무부는 트럼프의 발언이 나온 직후 러시아 경유에 대한 수출 제재 해제를 발표했다.",
       "title": "트럼프-푸틴 경유 거래 이튿날 러, 우크라 자포리자 공격 8명 사망"
+    },
+    "title:9a707cb6bd7a4eb3af8ae462": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174043",
+      "source": "매일경제",
+      "source_body_digest": "014da07c233a48914c06327911e86d4abb5562ef008b41bd3b564dde58542241",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T23:40+09:00",
+      "source_title": "바이오어피니티, 400만 달러 직접공모 발표에 지분 희석 우려 부각",
+      "telegram_core_fact": "기관 대상 직접공모로 400만 달러를 조달하기로 했습니다. 신주와 최대 98만72주 워런트가 발행되면서 지분 희석 부담이 커졌습니다.",
+      "title": "바이오어피니티, 400만 달러 직접공모 발표에 지분 희석 우려 부각"
     },
     "title:9a75adee2f0e319fa92b8be8": {
       "first_seen_kst": "2026-10-12T20:14:14+09:00",
@@ -501595,6 +502400,25 @@
       "source_title": "HD건설기계, 美 데이터센터에 3900억 규모 발전용 엔진 공급",
       "telegram_core_fact": "HD건설기계는 미국 발전 인프라 솔루션 업체 이록(ERock)과 가스 발전용 엔진 롱블록(Long Block) 공급 계약을 체결했다고 7일 공시했다.",
       "title": "HD건설기계, 美 데이터센터에 3900억 규모 발전용 엔진 공급"
+    },
+    "title:a6f264e6e1a3b5fb83b79156": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822279",
+      "source": "뉴시스",
+      "source_body_digest": "acfc647e4c246c3f7bcfc8b14d1c68e7caa36bb17f46d4d55fbae1b4abc73ffc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90f8af0991969fd453c0f13ba1f3038675f77c31f8b5ae443f890e9eaa4062b0",
+      "source_fact_keys": [
+        "source_fact:v1:4d7a639b40cd392059f9a977f65a0a150723752ea6ec977b3ca4cc81d8b3a50b"
+      ],
+      "source_published_kst": "2026-10-12T14:43+09:00",
+      "source_title": "제테마, '닥터레디' GLP-1 비만약 국내공급 계약",
+      "telegram_core_fact": "제테마는 최근 이탈리아 밀라노에서 열린 세계 제약바이오 전시회 'CPHI 2026'에서 글로벌 제약사 닥터레디와 GLP-1 수용체 작용제 기반 비만치료제의 국내 라이선스·공급 계약을 했다고 12일 밝혔다. 바이오의약품 기업 제테마가 글로벌 제약사와 GLP-1 계열 비만치료제를 국내로 도입하는 계약을 체결했다.",
+      "title": "제테마, '닥터레디' GLP-1 비만약 국내공급 계약"
     },
     "title:a709910d3538664043d56b1f": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
@@ -508880,6 +509704,23 @@
       "telegram_core_fact": "최태원 SK그룹 회장이 호남권 반도체 생산거점을 용인 반도체 클러스터의 3분의 2 규모로 계획하고 있다고 밝혔다. 빠르게 늘어나는 반도체 수요에 대응하기 위해 용인과 광주에서 공장을 병행 건설할 가능성도 열어뒀다.",
       "title": "최태원 “호남 반도체, 전력·용수 늦어도 공사 먼저…용인 3분의 2 규모로”(종합)"
     },
+    "title:c33478b8b3df1c661b3db2a9": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://go.seoul.co.kr/news/newsView.php?id=20261013012004",
+      "source": "서울신문",
+      "source_body_digest": "b8550beee149eddae97ea2f27a6e2c01af462499bca1d847b2b6733166c7f62f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T18:08+09:00",
+      "source_title": "트럼프 “러·우 휴전” 젤렌스키 “금시초문”… 불신에 기름",
+      "telegram_core_fact": "트럼프 대통령은 대러 제재 완화 방침을 발표하고 이틀 뒤인 11일(현지시간) 러시아와 우크라이나가 에너지 부문에 대한 휴전에 합의했다고 소셜미디어를 통해 밝혔다.",
+      "title": "트럼프 “러·우 휴전” 젤렌스키 “금시초문”… 불신에 기름"
+    },
     "title:c34107f3253264dc1932cb19": {
       "first_seen_kst": "2026-10-11T13:18:03+09:00",
       "lanes": {
@@ -513614,6 +514455,27 @@
       ],
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "LK삼양–다온아이앤씨, 드론용 초경량 EO·IR 모듈 개발 MOU"
+    },
+    "title:d497cdb5e5c1653ec701f8a8": {
+      "first_seen_kst": "2026-10-12T23:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-12T23:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-12T23:57:10+09:00",
+      "link": "https://www.fnnews.com/news/202610121505305007",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "c8436acc1de3dbafc747e3c6c2c0892ab7e7cd6a2742bd6d4535d320b2b32038",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d565faabdb7f1ce31b904335d855506bcdb6805a2fd5a791dfce774220b884c3",
+      "source_fact_keys": [
+        "source_fact:v1:0b644cd59a9c045d1cae7878ac42b784164a76379139d43717f42311188e69bf",
+        "source_fact:v1:a0aa7f2c895690bd16aceec46320c67cd72071f655eae9883d3f9983d41425c7",
+        "source_fact:v1:ce4fe93b5cc8a10148bb008e6ae773240dc338b7b17dd00772022df23e846e5d"
+      ],
+      "source_published_kst": "2026-10-12T15:08+09:00",
+      "source_title": "SK하이닉스 美 상장 이후 커진 '밤사이 주가 변수'",
+      "telegram_core_fact": "[파이낸셜뉴스] SK하이닉스의 미국 주식예탁증서(ADR) 상장 이후 국내 투자자들이 고려해야 할 주가 변수가 늘어났다는 증권가의 분석이 나왔다.",
+      "title": "SK하이닉스 美 상장 이후 커진 '밤사이 주가 변수'"
     },
     "title:d498921f6dab507004a751a9": {
       "first_seen_kst": "2026-10-12T07:02:25+09:00",
@@ -525076,5 +525938,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-12T23:37:27+09:00"
+  "updated_at_kst": "2026-10-12T23:57:10+09:00"
 }
