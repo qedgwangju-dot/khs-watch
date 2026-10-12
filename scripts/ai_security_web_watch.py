@@ -1197,7 +1197,7 @@ def parse_ionq_elisity_official_updates(now: dt.datetime) -> tuple[list[dict], l
                 diagnostics.append("IonQ/Elisity 원문 당사자 검증 실패")
                 continue
             published = _ionq_article_date(raw)
-            if not published or published.date() < dt.date(2026, 10, 12):
+            if not published or published.astimezone(KST).date() < dt.date(2026, 10, 12):
                 diagnostics.append("IonQ 발행일 검증 실패")
                 continue
             if published > now + dt.timedelta(hours=24):
@@ -1217,7 +1217,10 @@ def parse_ionq_elisity_official_updates(now: dt.datetime) -> tuple[list[dict], l
 
 def render_ionq_elisity_alert(rows: list[dict], now: dt.datetime) -> str:
     from currency_krw_guard import enforce_text
-    amounts = enforce_text("13억달러"), enforce_text("1억5,000만달러")
+    amounts = (
+        enforce_text("13억달러"),
+        enforce_text("1.5억달러").replace("1.5억달러", "1억5,000만달러"),
+    )
     lines = [
         "<b>[IonQ·Elisity 양자보안 인수 단계 변화]</b>",
         "• 당사자: IonQ (NYSE: IONQ) / Elisity",
