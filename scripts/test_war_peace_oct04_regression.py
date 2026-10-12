@@ -1267,6 +1267,10 @@ for label, item in (("vietnam-a", energy_reprint_a), ("vietnam-b", energy_reprin
     _, classified_tags = mod.score_item(item, dt.datetime.now(mod.watch.KST))
     check("oct12-energy-reprint-yellow-"+label, mod.final_color(item) == "yellow")
     check("oct12-energy-reprint-no-peace-"+label, "종전·협상" not in classified_tags)
+print("DEBUG_ENERGY_CLUSTER_IDS", [
+    (mod.item_id(q), mod.energy_pause._marks(q), q.get("title_ko", "")[:75])
+    for q in (energy_announcement, energy_reprint_a, energy_reprint_b)
+], flush=True)
 check(
     "oct12-energy-reprints-same-event",
     mod.item_id(energy_announcement) == mod.item_id(energy_reprint_a) == mod.item_id(energy_reprint_b)
