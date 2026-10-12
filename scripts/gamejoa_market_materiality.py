@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 127
+VERSION = 128
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -3001,6 +3001,18 @@ def source_event_identity(alert: dict) -> str:
     honam_statement = sk_honam_project_statement_identity(alert)
     if honam_statement:
         return honam_statement
+    ai_chip_deployment = quantified_ai_chip_deployment_observation(title, body)
+    if ai_chip_deployment:
+        terms = {key: value for key, value in ai_chip_deployment.items() if key != 'source_excerpt'}
+        digest = hashlib.sha256(json.dumps(terms, ensure_ascii=False, sort_keys=True).encode('utf-8')).hexdigest()
+        return f'source_event:v2:ai_chip_deployment:{digest}'
+    robot_memory_outlook = robot_dram_demand_outlook_observation(
+        title, body, str(alert.get('published') or ''),
+    )
+    if robot_memory_outlook:
+        terms = {key: value for key, value in robot_memory_outlook.items() if key != 'source_excerpt'}
+        digest = hashlib.sha256(json.dumps(terms, ensure_ascii=False, sort_keys=True).encode('utf-8')).hexdigest()
+        return f'source_event:v2:robot_dram_demand_outlook:{digest}'
     for event, observation in (
         ('ai_infrastructure_credit_stress', ai_infrastructure_credit_stress_observation(title, body)),
         ('sovereign_credit_spread_stress', sovereign_credit_spread_observation(title, body)),
@@ -3891,6 +3903,10 @@ def equity_publication_assessment(
     if information_tool_launch:
         return {"eligible": False, "reason": "information_tool_launch_without_paid_adoption_or_revenue"}
 
+    ai_chip_deployment = quantified_ai_chip_deployment_observation(title, body)
+    if ai_chip_deployment:
+        return {"eligible": True, "reason": "quantified_named_ai_chip_deployment_plan"}
+
     primary_rows = source_rows[:12]
     firm_company_event = any(
         not ASPIRATION.search(row)
@@ -3909,6 +3925,21 @@ def equity_publication_assessment(
         )
         for row in primary_rows
     )
+
+    municipal_research_center_opening = bool(
+        LOCAL_AUTHORITY.search(headline_and_lead)
+        and re.search(r"(?:연구|혁신|기술).{0,8}센터|센터.{0,8}(?:연구|혁신|기술)", title + " " + lead)
+        and re.search(r"개소|문을\s*열|조성했다|설립했다", title + " " + lead)
+        and not firm_company_event
+        and not PUBLIC_MARKET_BUSINESS_LINK.search(headline_and_lead)
+        and not re.search(
+            r"(?:\d[\d,.]*\s*(?:조|천억|백억|억)\s*원).{0,45}(?:투자|계약|출자|예산)|"
+            r"(?:투자|계약|출자|예산).{0,45}\d[\d,.]*\s*(?:조|천억|백억|억)\s*원",
+            headline_and_lead,
+        )
+    )
+    if municipal_research_center_opening:
+        return {"eligible": False, "reason": "municipal_research_center_opening_without_listed_issuer_execution"}
 
     organization_only = bool(
         re.search(r"전담\s*(?:팀|조직)|사업팀\s*(?:신설|설치)|조직\s*개편|본부\s*신설", title + " " + lead)
@@ -4812,6 +4843,61 @@ def google_constellation_ppa_observation(title: str, body: str) -> dict[str, str
     return {"stage": "contracted_capacity_expansion", "source_excerpt": excerpt}
 
 
+def quantified_ai_chip_deployment_observation(title: str, body: str) -> dict:
+    """Keep a named AI accelerator launch only when a large deployment is sourced."""
+    if not re.search(r"(?:마이크로소프트|\bMS\b|Microsoft)", title, re.I):
+        return {}
+    if not re.search(r"(?:마이아\s*300|Maia\s*300)", title, re.I):
+        return {}
+    if not re.search(r"AI\s*(?:칩|가속기)|인공지능\s*(?:칩|가속기)|\bAI\b", title, re.I):
+        return {}
+    deployment = re.compile(r"배치|도입|가동|운영|deploy(?:ment)?|rollout", re.I)
+    large_quantity = re.compile(
+        r"(?P<count>\d[\d,.]*\s*만\s*(?:개|대|칩|가속기|units?|chips?)|"
+        r"\d{5,}\s*(?:개|대|칩|가속기|units?|chips?))",
+        re.I,
+    )
+    for sentence in source_sentences(source_article_body(source_reported_body(body))):
+        quantity = large_quantity.search(sentence)
+        if not quantity or not deployment.search(sentence):
+            continue
+        if not re.search(r"내년|202\d년|계획|목표|예정|will|plan|target", sentence, re.I):
+            continue
+        return {
+            "stage": "announced_large_scale_deployment_plan",
+            "deployment_count": re.sub(r"\s+", "", quantity.group("count")),
+            "source_excerpt": sentence,
+        }
+    return {}
+
+
+def robot_dram_demand_outlook_observation(title: str, body: str, published: str = "") -> dict:
+    """Normalize reprints of one quantified robotics-memory demand forecast."""
+    source = f"{title} {source_article_body(source_reported_body(body))}"
+    if not re.search(r"로봇|robot(?:ics)?", source, re.I):
+        return {}
+    if not re.search(r"D\s*램|DRAM|메모리|memory", source, re.I):
+        return {}
+    multiplier = re.search(r"(?<!\d)(\d+(?:\.\d+)?)\s*배|(?<!\d)(\d+(?:\.\d+)?)\s*(?:times|x)", source, re.I)
+    if not multiplier or not re.search(r"수요|demand", source, re.I):
+        return {}
+    year = re.search(r"(?<!\d)(20\d{2})년", source)
+    if year:
+        target_year = year.group(1)
+    else:
+        horizon = re.search(r"(\d{1,2})\s*년\s*(?:새|후|뒤)", source)
+        published_year = re.match(r"(20\d{2})", str(published or ""))
+        if not horizon or not published_year:
+            return {}
+        target_year = str(int(published_year.group(1)) + int(horizon.group(1)))
+    return {
+        "metric": "robot_dram_demand",
+        "target_year": target_year,
+        "multiplier": multiplier.group(1) or multiplier.group(2),
+        "stage": "forecast",
+    }
+
+
 def assess(title: str, body: str, *, source_url: str = "", published: str = "") -> dict:
     title = re.sub(r"\s+", " ", str(title or "")).strip()
     body = source_article_body(source_reported_body(str(body or ""))).strip()
@@ -5368,9 +5454,16 @@ def assess(title: str, body: str, *, source_url: str = "", published: str = "") 
         return result
     generic_tokens = {"기업", "대표", "회장", "공개", "협력", "강화", "발표", "미래", "신제품", "출시", "회동", "계획"}
     tokens = [word for word in re.findall(r"[A-Za-z0-9가-힣]+", title.lower()) if len(word) >= 2 and word not in generic_tokens]
+    ai_chip_deployment = quantified_ai_chip_deployment_observation(title, body)
     routine = bool(ROUTINE_HEADLINE.search(title) and not HARD_HEADLINE.search(title))
-    soft = bool(SOFT_HEADLINE.search(title) and not HARD_HEADLINE.search(title))
+    soft = bool(SOFT_HEADLINE.search(title) and not HARD_HEADLINE.search(title) and not ai_chip_deployment)
     matches = []
+    if ai_chip_deployment:
+        matches.append((3, 100, 0, ["earnings", "timeline"], {
+            "kind": "physical_supply_or_capacity",
+            "stage": ai_chip_deployment["stage"],
+            "source_excerpt": ai_chip_deployment["source_excerpt"],
+        }))
     openai_repricing = openai_revenue_market_repricing_observation(title, body)
     if openai_repricing:
         matches.append((2, 100, 0, ["earnings"], {

@@ -5509,6 +5509,44 @@ def financial_result_fact(title: str, sentences: list[str], source_context: str 
     return ""
 
 
+def analyst_quarterly_forecast_pair_core(title: str, body: str) -> str:
+    """Keep quarterly revenue and operating-profit growth rates bound to their metrics."""
+    source = article_summary_body(body)
+    if not re.search(r"증권|리서치|analyst|research", source, re.I):
+        return ""
+    issuer = financial_headline_subject(f"{title} 3분기 실적", source)
+    if not issuer:
+        return ""
+    amount = r"(\d[\d,.]*\s*(?:조|억|만|천)?\s*원)"
+    for sentence in market_materiality.source_sentences(source):
+        if not re.search(r"(?:추정|예상|전망)", sentence):
+            continue
+        revenue = re.search(
+            r"매출(?:액)?(?:을|은|는|이|가)?\s*(?:전년(?:\s*동기)?\s*대비\s*)?"
+            r"(\d+(?:\.\d+)?)%\s*(?:증가한|늘어난|증가|늘어)\s*" + amount,
+            sentence,
+        )
+        operating_profit = re.search(
+            r"영업이익(?:은|는|이|가)?\s*(\d+(?:\.\d+)?)%\s*"
+            r"(?:증가한|늘어난|증가|늘어)\s*" + amount,
+            sentence,
+        )
+        if not revenue or not operating_profit:
+            continue
+        quarter = re.search(r"([1-4])분기", sentence) or re.search(r"([1-4])분기", title)
+        if not quarter:
+            continue
+        revenue_amount = re.sub(r"\s+", "", revenue.group(2))
+        operating_profit_amount = re.sub(r"\s+", "", operating_profit.group(2))
+        revenue_amount = re.sub(r"원$", "", revenue_amount)
+        operating_profit_amount = re.sub(r"원$", "", operating_profit_amount)
+        core = (f"{issuer} {quarter.group(1)}분기 매출 {revenue_amount}(+{revenue.group(1)}%), "
+                f"영업이익 {operating_profit_amount}(+{operating_profit.group(1)}%)으로 추정된다.")
+        if len(core) <= 50 and core_sentence_is_complete(core):
+            return core
+    return ""
+
+
 def financial_context_fact(sentences: list[str]) -> str:
     for sentence in sentences:
         if "영업이익률" not in sentence and "가이던스" not in sentence:
@@ -12535,6 +12573,9 @@ def verified_alert_core(alert: dict, title: str) -> str:
     if is_business:
         if alert.get("body_verified"):
             body = str(alert.get("source_body") or alert.get("source_abstract") or "")
+            forecast_pair = analyst_quarterly_forecast_pair_core(source_title or title, body)
+            if forecast_pair and valid_source_fact(forecast_pair):
+                return forecast_pair
             event_core = iea_existing_stock_release_core(source_title or title, body)
             if not event_core:
                 event_core = fomc_minutes_guidance_core(source_title or title, body)
@@ -12625,6 +12666,13 @@ def source_core_fact_errors(alert: dict) -> list[str]:
     if not source or not core:
         return []
     errors = []
+    expected_analyst_forecast = analyst_quarterly_forecast_pair_core(title, source)
+    analyst_forecast_alignment = bool(
+        expected_analyst_forecast
+        and re.sub(r"\s+", "", expected_analyst_forecast) == re.sub(r"\s+", "", core)
+    )
+    if expected_analyst_forecast and not analyst_forecast_alignment:
+        errors.append("analyst_forecast_metric_amount_or_growth_mismatch")
     if (
         re.search(r"\bETF\b|상장지수펀드", title, re.I)
         and re.search(r"상장\s*(?:첫날|일)", title)
@@ -12685,7 +12733,8 @@ def source_core_fact_errors(alert: dict) -> list[str]:
     if expected_commercial and re.search(r"공급\s*계약|사업\s*수행기관", core):
         if re.sub(r"\s+", "", expected_commercial) != re.sub(r"\s+", "", core):
             errors.append("commercial_contract_actor_customer_or_stage_mismatch")
-    if not market_materiality.core_focus_aligned(title, core) and not petroleum_cartel_alignment and not event_specific_market_alignment:
+    if (not market_materiality.core_focus_aligned(title, core) and not petroleum_cartel_alignment
+            and not event_specific_market_alignment and not analyst_forecast_alignment):
         errors.append("headline_event_or_period_mismatch")
     if market_materiality.focus_kind(title) == "cyber_incident":
         expected_cyber = financial_cyber_incident_fact(title, source)
@@ -12818,7 +12867,7 @@ def source_core_fact_errors(alert: dict) -> list[str]:
             and expected_observation
             and market_materiality.canonical_source_fact(expected_observation) == market_materiality.canonical_source_fact(observation_core)
         )
-        if (core_audit["disposition"] != "keep" or not core_audit["evidence"]) and not source_bound_deployment:
+        if (core_audit["disposition"] != "keep" or not core_audit["evidence"]) and not source_bound_deployment and not analyst_forecast_alignment:
             errors.append("core_without_market_change_evidence")
     if core.count("“") != core.count("”"):
         errors.append("orphaned_source_quote")

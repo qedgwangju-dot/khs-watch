@@ -6420,6 +6420,13 @@ class ConcreteLiveSelectionRegressions(unittest.TestCase):
                 "사업하는 방안도 제안했다고 설명했다.",
                 "individual_tax_collection_interview_without_equity_channel",
             ),
+            (
+                "부산 금융단지에 블록체인·AI 디지털금융 혁신 연구센터 개소",
+                "부산에 블록체인과 인공지능(AI) 기술을 금융에 접목한 연구센터가 문을 열었다. "
+                "부산시는 기업수요 기반 공동 연구·개발과 현장 맞춤형 교육, 인재 양성을 추진한다. "
+                "센터는 기업의 기술개발과 사업화를 지원할 계획이다.",
+                "municipal_research_center_opening_without_listed_issuer_execution",
+            ),
         ]
         now = dt.datetime(2026, 10, 8, 18, 45, tzinfo=dt.timezone(dt.timedelta(hours=9)))
         for index, (title, body, expected_reason) in enumerate(cases):
@@ -6592,6 +6599,132 @@ class ConcreteLiveSelectionRegressions(unittest.TestCase):
         self.assertEqual(len(selected), 1)
         self.assertIn('약 226억6천여만원', selected[0]['telegram_core_fact'])
         self.assertIn('지난해 38만t이던 물동량이 2030년 100만t으로 늘어날 전망', selected[0]['telegram_core_fact'])
+
+    def test_quantified_maia_300_deployment_survives_launch_soft_gate_and_reprints_dedupe(self):
+        title = "MS, 자체 AI칩 '마이아 300' 공개…내년 100만개 이상 배치"
+        body = (
+            "마이크로소프트는 자체 개발한 AI 가속기 마이아 300을 공개했다. "
+            "회사는 내년부터 마이아 300을 100만 개 이상 데이터센터에 배치할 계획이라고 밝혔다. "
+            "칩 하나에는 HBM4 8개를 탑재한다."
+        )
+        observation = materiality.quantified_ai_chip_deployment_observation(title, body)
+        self.assertEqual(observation.get("deployment_count"), "100만개")
+        self.assertEqual(observation.get("stage"), "announced_large_scale_deployment_plan")
+        self.assertEqual(
+            materiality.quantified_ai_chip_deployment_observation(
+                "MS, 마이아 300 AI칩 공개…성능·전력효율 강화", "회사가 새 AI칩을 공개했다."
+            ),
+            {},
+            "A launch headline without a sourced large deployment remains insufficient.",
+        )
+
+        candidate = alert(title, body, "https://www.etnews.com/20261011000123")
+        candidate["published"] = "2026-10-11T16:45:00+09:00"
+        audit = radar.source_market_materiality(candidate)
+        self.assertEqual(audit["disposition"], "keep", audit)
+        self.assertEqual(audit["equity_publication"]["reason"], "quantified_named_ai_chip_deployment_plan", audit)
+        core = radar.verified_alert_core(candidate, title)
+        self.assertTrue(core)
+        self.assertIn("100만", core)
+        self.assertIn("배치", core)
+        self.assertFalse(radar.source_core_fact_errors({**candidate, "telegram_core_fact": core}), core)
+
+        reprint = alert(
+            "마이크로소프트, AI 가속기 마이아 300 내년 100만개 배치 계획",
+            body,
+            "https://www.newsis.com/view/NISX20261011_0003800001",
+        )
+        reprint["published"] = candidate["published"]
+        self.assertEqual(
+            materiality.source_event_identity(candidate),
+            materiality.source_event_identity(reprint),
+            "Cross-publisher reprints of the same product deployment plan share one event key.",
+        )
+
+    def test_robot_dram_reprints_share_forecast_event_but_new_multiplier_is_distinct(self):
+        first = alert(
+            "로봇용 D램 수요 4년 새 20배…삼성·SK, 새 시장 공략",
+            "시장조사업체에 따르면 로봇용 D램 수요는 4년 사이 20배로 증가할 전망이다.",
+            "https://www.inews24.com/view/2013631",
+        )
+        first["published"] = "2026-10-11T16:45:00+09:00"
+        reprint = alert(
+            "로봇용 D램 수요, 2030년 20배로",
+            "로봇용 D램 수요가 2030년까지 20배로 늘어날 것으로 전망된다.",
+            "https://www.hankyung.com/article/2026101144331",
+        )
+        reprint["published"] = "2026-10-11T18:45:00+09:00"
+        revision = alert(
+            "로봇용 D램 수요, 2030년 30배로",
+            "로봇용 D램 수요가 2030년까지 30배로 늘어날 것으로 전망된다.",
+            "https://example.com/robot-dram-revision",
+        )
+        revision["published"] = reprint["published"]
+        self.assertEqual(
+            materiality.source_event_identity(first),
+            materiality.source_event_identity(reprint),
+        )
+        self.assertNotEqual(
+            materiality.source_event_identity(reprint),
+            materiality.source_event_identity(revision),
+            "A revised demand multiplier is a changed fact, not a duplicate reprint.",
+        )
+
+    def test_market_wide_events_rank_ahead_of_narrower_issuer_stories(self):
+        now = NOW
+        macro = alert(
+            "미국 CPI 상승…연준 금리 경로 주목",
+            "미국 소비자물가지수(CPI)는 전년 대비 3.2% 상승했다.",
+            "https://example.com/us-cpi",
+        )
+        issuer = alert(
+            "삼성전자, HBM 공급계약 체결",
+            "삼성전자는 5조원 규모의 HBM 공급계약을 체결했다.",
+            "https://example.com/samsung-hbm-contract",
+        )
+        macro["published"] = issuer["published"] = now.isoformat()
+        ranks = {
+            macro["source_title"]: {
+                "disposition": "keep", "priority": 3, "transmission_scope_rank": 3,
+                "news_value_rank": 3, "focus": 1, "axes": [], "reason": "test",
+            },
+            issuer["source_title"]: {
+                "disposition": "keep", "priority": 3, "transmission_scope_rank": 1,
+                "news_value_rank": 3, "focus": 1, "axes": [], "reason": "test",
+            },
+        }
+        with (
+            patch.object(radar.telegram, "display_alerts", side_effect=lambda items, _limit: items),
+            patch.object(radar.base, "kst_now", return_value=now),
+            patch.object(radar, "source_market_materiality", side_effect=lambda item: ranks[item["source_title"]]),
+            patch.object(radar, "verified_alert_core", side_effect=lambda item, _title: item["telegram_core_fact"]),
+            patch.object(radar, "source_output_aligned", return_value=True),
+            patch.object(radar, "stock_market_channels", return_value=["macro", "semiconductor"]),
+            patch.object(radar, "has_stock_market_link", return_value=True),
+            patch.object(radar, "has_decision_impact", return_value=True),
+            patch.object(radar, "low_impact_live_publication_reason", return_value=""),
+        ):
+            selected = radar.quality_display_alerts([issuer, macro], 2)
+        self.assertEqual([item["source_title"] for item in selected], [macro["source_title"], issuer["source_title"]])
+
+    def test_analyst_forecast_summary_binds_growth_to_the_correct_financial_metric(self):
+        title = '에이피알, 수익성 둔화에도 성장세 견고…"주가 조정은 매수 기회"'
+        body = (
+            "메리츠증권은 에이피알에 대해 3분기 실적을 추정했다. "
+            "에이피알의 3분기 연결 기준 매출액을 전년 동기 대비 101% 증가한 7770억원, "
+            "영업이익은 78% 늘어난 1678억원으로 추정했다. "
+            "영업이익은 시장 기대치인 1973억원을 15% 밑돌 것으로 예상했다."
+        )
+        candidate = alert(title, body, "https://www.edaily.co.kr/news/read?newsid=02138566645612592")
+        core = radar.verified_alert_core(candidate, title)
+        self.assertIn("7770억(+101%)", core)
+        self.assertIn("1678억(+78%)", core)
+        self.assertLessEqual(len(core), 50, core)
+        wrong = "에이피알 3분기 영업이익은 1678억원으로 전년비 101% 증가할 전망입니다."
+        self.assertIn(
+            "analyst_forecast_metric_amount_or_growth_mismatch",
+            radar.source_core_fact_errors({**candidate, "telegram_core_fact": wrong}),
+        )
 
 
 if __name__ == "__main__":
