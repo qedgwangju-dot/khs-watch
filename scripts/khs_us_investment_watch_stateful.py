@@ -85,6 +85,11 @@ def _is_official(row: dict) -> bool:
     )
 
 
+def urllib_parse_host(value: str) -> str:
+    import urllib.parse
+    return (urllib.parse.urlsplit(value).hostname or "").lower()
+
+
 def _family(row: dict) -> str:
     low = _norm(f"{row.get('title', '')} {row.get('source', '')}")
 
@@ -845,6 +850,17 @@ def _candidate_facts(row: dict, family: str) -> set[str]:
         return facts | parties
 
     if family == "alaska_lng":
+        # 현지 의원이 전한 투자 선행조건은 정부 FID/투자 승인과 다른 보도 사실.
+        host = (urllib_parse_host(str(row.get("link") or "")))
+        summary = _norm(str(row.get("summary") or ""))
+        if (
+            _norm(str(row.get("source") or "")) == "alaska public media"
+            and host in {"alaskapublic.org", "www.alaskapublic.org"}
+            and "after final investment decision" in summary
+            and "commercially reasonable" in summary
+            and "korean" in summary
+        ):
+            facts.add("alaska_fid_after_commercial_review:reported")
         for match in re.finditer(r"(\d+(?:\.\d+)?)\s*mtpa\b", low):
             facts.add(f"alaska_mtpa:{match.group(1)}")
         if _is_official(row) and any(term in low for term in ["검토 착수", "검토에 착수", "project north"]):
@@ -951,7 +967,17 @@ def _accepted_facts_for_group(family: str, rows: list[dict]) -> tuple[set[str], 
         sources = {_source_key(r) for r in evidence}
         official = any(_is_official(r) for r in evidence)
         # 공식자료 1건 또는 서로 다른 출처 2곳 이상이 같은 상태값을 지지해야 승격한다.
-        if official or len(sources) >= 2:
+        firsthand_report = (
+            family == "alaska_lng"
+            and fact == "alaska_fid_after_commercial_review:reported"
+            and any(
+                _norm(str(x.get("source") or "")) == "alaska public media"
+                and urllib_parse_host(str(x.get("link") or ""))
+                    in {"alaskapublic.org", "www.alaskapublic.org"}
+                for x in evidence
+            )
+        )
+        if official or len(sources) >= 2 or firsthand_report:
             eligible[fact] = evidence
 
     # 한 슬롯에 상충하는 값이 여럿이면 공식성→독립 출처 수→최신성 순으로 하나만 채택한다.
@@ -1074,6 +1100,7 @@ def _human_fact(value: str) -> str:
         "equity_closing_status:completed": "지분투자 종결",
         "encinal_status:confirmed_first": "대미투자 1호 공식 확정",
         "alaska_bilateral_status:review_started": "한미 공식상태 검토 착수",
+        "alaska_fid_after_commercial_review:reported": "현지 주의원 발언 보도: Glenfarne FID 이후 한국 별도 상업성 심사, 아직 투자결정 없음",
         "funding_wait:45영업일": "선정 통지 후 최소 45영업일",
         "repayment_horizon:20년": "원리금 회수 기준 20년",
         "ppa_years:20": "전력계약 20년",
@@ -1955,6 +1982,11 @@ def _self_test() -> int:
     accepted_pending, _ = _accepted_facts_for_group("alaska_lng", pending_alaska)
     if "stage:착공" in accepted_pending or "stage:최종투자결정" in accepted_pending:
         raise RuntimeError(f"Alaska future-stage falsely completed: {accepted_pending}")
+    reported, _ = _accepted_facts_for_group("alaska_lng", _verified_alaska_fid_report_rows())
+    if "alaska_fid_after_commercial_review:reported" not in reported:
+        raise RuntimeError(f"verified Alaska report not recorded: {reported}")
+    if any(x in reported for x in ["stage:최종투자결정", "stage:착공"]):
+        raise RuntimeError(f"Alaska future event was promoted to completion: {reported}")
     print("state_event_guard_self_test=passed")
     return 0
 
@@ -1974,6 +2006,17 @@ def _verified_funding_baseline_rows() -> list[dict]:
             "published": "2026-10-01T05:30:00+00:00",
         },
     ]
+
+
+def _verified_alaska_fid_report_rows() -> list[dict]:
+    # 검증된 현지 언론 인터뷰 한 건을 일회성 사건증거로 기록하며 URL은 감시하지 않는다.
+    return [{
+        "title": "알래스카 LNG Glenfarne FID 이후 한국의 상업성 심사·투자 미결정 (현지 주의원 발언 보도)",
+        "summary": "Korean officials said after final investment decision they would consider investing if commercially reasonable",
+        "source": "Alaska Public Media",
+        "link": "https://alaskapublic.org/news/economy/energy/2026-10-09/trumps-push-for-50b-korean-investment-in-alaska-gasline-faces-familiar-economic-challenges",
+        "published": "2026-10-10T00:57:00+00:00",
+    }]
 
 
 def _official_project_baseline_rows() -> list[dict]:
@@ -2034,6 +2077,7 @@ def _rss(query: str) -> list[dict]:
 
     _RSS_BUFFER.extend(_official_project_baseline_rows())
     _RSS_BUFFER.extend(_verified_funding_baseline_rows())
+    _RSS_BUFFER.extend(_verified_alaska_fid_report_rows())
     flushed = _collapse_rows(_RSS_BUFFER)
     _RSS_BUFFER = []
     return flushed
