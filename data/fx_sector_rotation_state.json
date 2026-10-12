@@ -20,56 +20,60 @@
     {
       "ts": "2026-10-12T15:31:01+09:00",
       "value": 1335.3
+    },
+    {
+      "ts": "2026-10-12T17:05:26+09:00",
+      "value": 1331.9
     }
   ],
   "sent_level": 0,
   "sent_weakening": false,
   "last_signal": null,
   "latest": {
-    "checked_at": "2026-10-12T15:31:01+09:00",
-    "market_phase": "정규장",
+    "checked_at": "2026-10-12T17:05:26+09:00",
+    "market_phase": "장마감 후",
     "fx": {
-      "value": 1335.3,
-      "prev_close": 1342.8,
+      "value": 1331.9,
+      "prev_close": null,
       "naver_prev_close": 1344.0,
       "date": "2026-10-12",
       "source": "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5",
       "comparison_basis": "서울외환시장 15:30 USD/KRW 종가",
-      "prev_close_source": "https://ksureapi.einfomax.co.kr/v2/datafeed/ksure/fxview?id=20261009153331774",
-      "basis_error": null,
+      "prev_close_source": null,
+      "basis_error": "ConnectTimeout: HTTPSConnectionPool(host='ksureapi.einfomax.co.kr', port=443): Max retries exceeded with url: /v2/datafeed/ksure/fxlist?page=7 (Caused by ConnectTimeoutError(<HTTPSConnection(host='ksureapi.einfomax.co.kr', port=443) at 0x7fc94a82acc0>, 'Connection to ksureapi.einfomax.co.kr timed out. (connect timeout=25)'))",
       "basis_reused": false
     },
-    "session_low": 1335.3,
+    "session_low": 1331.9,
     "rebound_krw": 0.0,
     "rebound_pct": 0.0,
-    "daily_krw": -7.5,
-    "daily_pct": -0.5585344057193908,
+    "daily_krw": null,
+    "daily_pct": null,
     "kospi_pct": -3.65,
     "ship": {
-      "avg": -4.8774999999999995,
+      "avg": -5.345,
       "positive": 0,
-      "relative": -1.2274999999999996,
+      "relative": -1.6949999999999998,
       "valid": 4,
       "confirmed": false
     },
     "defense": {
-      "avg": -4.1825,
+      "avg": -4.55,
       "positive": 0,
-      "relative": -0.5325000000000002,
+      "relative": -0.8999999999999999,
       "valid": 4,
       "confirmed": false
     },
     "auto": {
-      "avg": -1.365,
+      "avg": -1.595,
       "positive": 1,
-      "relative": 2.285,
+      "relative": 2.0549999999999997,
       "valid": 4,
       "confirmed": false
     },
     "counter": {
-      "avg": -0.495,
+      "avg": -1.025,
       "positive": 1,
-      "relative": 3.155,
+      "relative": 2.625,
       "valid": 4,
       "confirmed": false
     }
