@@ -757,3 +757,100 @@ try:
 finally:
     ks.telegram_send=_old_sender
 print("test_mode_must_not_send_telegram_regression=true")
+
+
+# 급락과 독립적으로 발생하는 5분 현물·선물 순매수 급증 검증.
+import asyncio as _surge_async
+import tempfile as _surge_tempfile
+from pathlib import Path as _surge_Path
+from kospi_shock_episode_watch import flow_surge_candidates as _surge_scan
+
+def _surge_row(ts, spot, future, program):
+    return {
+        "ts":ts,
+        "현물":{"sample_ts":ts,"외국인":spot,"기관":-spot*.3,"개인":-spot*.7},
+        "선물":{"sample_ts":ts,"외국인":future,"기관":-future*.4,"개인":-future*.6},
+        "프로그램":{"sample_ts":ts,"전체":program,"차익":program*.4,
+                    "비차익":program*.6,"표본시차초":3.0},
+    }
+
+_surge_rows=[
+    _surge_row(10000,0,0,0),
+    _surge_row(10020,0,0,0),
+    _surge_row(10300,400,600,1000),
+]
+_surge_c=_surge_scan(_surge_rows,10303)
+assert len(_surge_c)==1 and _surge_c[0]["actor"]=="외국인",_surge_c
+assert _surge_c[0]["mode"]=="현물·선물 동시" and _surge_c[0]["confidence"]=="높음",_surge_c
+assert _surge_c[0]["spot"]==400 and _surge_c[0]["futures"]==600,_surge_c
+assert not _surge_scan(_surge_rows,10400),"오래된 수급을 새 급유입으로 판정"
+assert not _surge_scan([
+    _surge_row(10000,0,0,0),
+    _surge_row(10345,1400,1500,10000),
+],10348),"5분 기준점이 30초 넘게 비어 있는데 유입 판정"
+print("flow_surge_window_freshness_valid=true")
+
+_surge_single=_surge_scan([
+    _surge_row(10000,0,0,0),
+    _surge_row(10300,1050,-600,-1500),
+],10305)
+assert len(_surge_single)==1 and _surge_single[0]["mode"]=="현물 중심",_surge_single
+assert _surge_single[0]["confidence"]=="단독 신호",_surge_single
+assert not _surge_scan([
+    _surge_row(10000,0,0,0), _surge_row(10300,-800,-900,-10000)
+],10305),"순매도 급증을 순매수 유입으로 오인"
+print("flow_surge_direction_alignment_valid=true")
+
+_surge_watch=Watch("unused",[], "",False)
+_surge_watch.session_open_ts=9500
+_surge_watch.session_continuous_end_ts=15000
+_surge_watch.session_close_ts=16000
+_surge_watch.flows=deque(_surge_rows,maxlen=2500)
+_surge_watch.idx=deque([(10000,6800.0),(10300,6800.0)],maxlen=30000)
+_surge_sent=[]
+_surge_delivery=[]
+_surge_watch._record_delivery=lambda stage,message_id,ep,ts: _surge_delivery.append(
+    (stage,message_id,ep["start_ts"],ts)
+)
+_original_surge_sender=ks.telegram_send
+try:
+    def _synthetic_surge_sender(message):
+        _surge_sent.append(message)
+        return 888
+    ks.telegram_send=_synthetic_surge_sender
+    _surge_async.run(_surge_watch.maybe_alert_flow_surge(10303))
+    assert not _surge_sent,"독립 표본 1개로 알림이 나감"
+    _surge_watch.flows.append(_surge_row(10320,550,720,1400))
+    _surge_watch.idx.append((10320,6800.0))
+    _surge_async.run(_surge_watch.maybe_alert_flow_surge(10323))
+    assert len(_surge_sent)==1,_surge_sent
+    assert _surge_watch.surge_sent_at.get("외국인")==10323,_surge_watch.surge_sent_at
+    assert _surge_delivery and _surge_delivery[0][0:2]==("flow_surge",888),_surge_delivery
+    assert "현물(통합) +550억원" in _surge_sent[0],_surge_sent[0]
+    assert "KOSPI200 선물 +720억원" in _surge_sent[0],_surge_sent[0]
+    assert "KOSPI +0.00%" in _surge_sent[0],_surge_sent[0]
+    assert "외부 신규자금 유입" in _surge_sent[0],_surge_sent[0]
+    # 같은 샘플 반복 및 20분 안쪽의 새로운 샘플은 중복 금지.
+    _surge_async.run(_surge_watch.maybe_alert_flow_surge(10325))
+    _surge_watch.flows.append(_surge_row(10340,750,920,1600))
+    _surge_async.run(_surge_watch.maybe_alert_flow_surge(10342))
+    assert len(_surge_sent)==1,_surge_sent
+    # 종료된 거래시간 이후에는 새 수급 사건 금지.
+    _surge_watch.flows.append(_surge_row(15330,10000,10000,20000))
+    _surge_async.run(_surge_watch.maybe_alert_flow_surge(15335))
+    assert len(_surge_sent)==1,_surge_sent
+    # 오전/오후 handoff는 기존 파일을 재사용하고 알림 중복방지 상태도 보존한다.
+    with _surge_tempfile.TemporaryDirectory() as _tmp:
+        _path=_surge_Path(_tmp)/"handoff.json"
+        _surge_watch.save_handoff(_path)
+        _restored=Watch("unused",[], "",False)
+        _restored.load_handoff(_path)
+        assert _restored.surge_sent_at.get("외국인")==10323,_restored.surge_sent_at
+        assert _restored.surge_last_processed_ts>=10320,_restored.surge_last_processed_ts
+    _surge_watch.test=True
+    _surge_watch.flows.append(_surge_row(10400,15000,15000,15000))
+    _surge_async.run(_surge_watch.maybe_alert_flow_surge(10403))
+    assert len(_surge_sent)==1,_surge_sent
+finally:
+    ks.telegram_send=_original_surge_sender
+print("flow_surge_two_sample_confirm_valid=true dedup=20m handoff=true test_mode_silent=true")
