@@ -239,6 +239,9 @@ jobs:
           assert 'cron: "4 9 * * 1-5"' in korea and 'timezone: "Asia/Seoul"' in korea, "09:04 KST fallback schedule missing"
           assert "startup_unverified fallback_kept_active" in korea, "unverified startup must not suppress fallback"
           assert "production_unverified_fallback_enabled" in korea, "dispatch without production verification must leave fallback enabled"
+          assert "status={status}&per_page=100&page={page}" in korea, "secondary KOSPI watchdog must scan all active jobs"
+          assert "unknown.append((run_id,type(exc).__name__))" in korea, "secondary watchdog must fail closed on active-job API error"
+          assert "if startup or unknown:" in korea, "secondary watchdog unknown status must block duplicate dispatch"
           assert "kospi_realtime_watchdog=verified_production" in korea, "recovery must verify real production job"
           assert "deadline=time.time()+90" in korea, "post-dispatch production verification window missing"
           assert 'KOSPI_REALTIME_WATCH_ACTIVE=0' in korea, "fallback-safe inactive state missing"
@@ -381,6 +384,13 @@ jobs:
               return list(found.values())
           runs=list_active_runs()
           print(f"ci_kospi_active_scan_valid=true active_run_ids={[int(x['id']) for x in runs]}")
+          # 관측: 최근 전체 50건에서 누락됐지만 상태 조회에서 보이는 장기-running job 수.
+          recent_url=f"{workflow_base}?per_page=50"
+          with urllib.request.urlopen(urllib.request.Request(recent_url,headers=headers),timeout=20) as r:
+              recent=json.loads(r.read().decode("utf-8")).get("workflow_runs",[])
+          recent_ids={int(x["id"]) for x in recent}
+          hidden=[int(x["id"]) for x in runs if int(x["id"]) not in recent_ids]
+          print(f"historical_recent50_hidden_active_count={len(hidden)} run_ids={hidden}")
           today=dt.datetime.now(ZoneInfo("Asia/Seoul")).date()
           active=[]
           for run in runs:
