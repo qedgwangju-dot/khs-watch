@@ -3172,6 +3172,10 @@ if base.NOW.astimezone(base.KST).date() <= dt.date(2026,10,19):
     visible=vnet_recovered[0]['title']+' '+vnet_recovered[0]['description']
     assert base.category(visible,vg)==vc,'source loss in Telegram renderer'
     assert base.key(vnet_recovered[0])==vk
+    assert watcher.qty._skip_quantity_enrichment(
+        '<b>CATL 관계사–VNET · 9/21 간접지분 38.1% 인수 종결</b> '
+        'VNET 도매 IDC 889MW→1,007MW 주식 650,424,192주'
+    ), 'IDC MW are not BESS MWh or confirmed battery shipments'
 else:
     vnet_recovered=[]
 
