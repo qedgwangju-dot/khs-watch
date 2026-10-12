@@ -290,7 +290,27 @@ YMTC_NAND_DURATION_BASELINE = {
     "source_rank": 3,
 }
 
+PC_NOTEBOOK_DEMAND_TRACK_VERSION = 1
+PC_NOTEBOOK_DEMAND_BASELINE = {
+    "as_of": "2026-10-08",
+    "notebook_2026_shipment_yoy_pct": -9.4,
+    "notebook_2027_base_outlook": "low_single_digit_decline",
+    "notebook_2027_downside_outlook": "high_single_digit_decline",
+    "cpu_dram_ssd_bom_share_q1_2025_pct": 45.0,
+    "cpu_dram_ssd_bom_share_q3_2026_pct": 68.0,
+    "reference_notebook_msrp_usd": 900.0,
+    "cpu_supply_status": "improving",
+    "pc_dram_supply_status": "tight",
+    "low_cost_inventory_depletion_risk": True,
+    "source": "TrendForce",
+    "source_url": "https://www.trendforce.com/presscenter/news/20261008-13264.html",
+    "prior_source_url": "https://www.trendforce.com/presscenter/news/20260904-13217.html",
+    "source_kind": "TrendForce 10월 8일 2027년 전망·9월 4일 2026년 전망(각각 공식자료)",
+    "source_rank": 3,
+}
+
 TREND_PINNED_PRESS_URLS = [
+    "https://www.trendforce.com/presscenter/news/20261008-13264.html",
     "https://www.trendforce.com/presscenter/news/20260930-13258.html",
     "https://www.trendforce.com/presscenter/news/20260929-13255.html",
 ]
@@ -302,6 +322,7 @@ TREND_PINNED_REPORT_URLS = [
     "https://www.trendforce.com/research/download/RP260922FJ3",
 ]
 TREND_SEARCH_QUERIES = [
+    'site:trendforce.com/presscenter/news notebook shipments 2027 CPU DRAM SSD cost demand',
     'site:trendforce.com/research/download "Memory Price Forecast" DRAM NAND',
     'site:trendforce.com/research/download "DRAM Market Bulletin" TrendForce',
     'site:trendforce.com/research/download "NAND Flash Market Bulletin" TrendForce',
@@ -312,6 +333,8 @@ TREND_SEARCH_QUERIES = [
 ]
 
 QUERIES = [
+    ("ko", '노트북 출하량 전망 2027 CPU DRAM SSD 가격 원가 전가 TrendForce 소비 수요'),
+    ("en", 'TrendForce notebook shipments 2027 CPU DRAM SSD prices replacement cycle outlook'),
     ("ko", 'DRAM 현물 가격 공급 부족 BofA OR 뱅크오브아메리카'),
     ("ko", 'NAND 현물 가격 공급 부족 TrendForce OR 트렌드포스'),
     ("ko", 'TrendForce 4Q26 메모리 가격 전망 Enterprise SSD QLC KV 캐시 23 28 NAND 15 20'),
@@ -848,13 +871,19 @@ def _collect_trendforce_search(cutoff: dt.datetime) -> tuple[list[dict], list[st
                 if not title or not link:
                     continue
                 host = urllib.parse.urlparse(link).netloc.lower()
-                if "trendforce.com" not in host or "/research/download/" not in link:
+                is_report = "/research/download/" in link
+                is_pc_press = (
+                    "/presscenter/news/" in link
+                    and any(k in (title + " " + snippet).lower()
+                            for k in ("notebook", "laptop", "노트북"))
+                )
+                if host not in ("trendforce.com", "www.trendforce.com") or not (is_report or is_pc_press):
                     continue
                 if link in seen_links:
                     continue
                 seen_links.add(link)
 
-                pub = _trendforce_url_date(link)
+                pub = _trendforce_url_date(link) if is_report else _trendforce_press_date(link)
                 if pub and pub < cutoff:
                     continue
 
@@ -868,7 +897,7 @@ def _collect_trendforce_search(cutoff: dt.datetime) -> tuple[list[dict], list[st
                     "title": re.sub(r"\s*\|\s*TrendForce.*$", "", title, flags=re.IGNORECASE).strip(),
                     "link": link,
                     "description": detail_text,
-                    "source": "TrendForce Research",
+                    "source": "TrendForce Research" if is_report else "TrendForce",
                     "published_kst": pub.isoformat(timespec="seconds") if pub else None,
                     "query": f"bing:{query}",
                 }
@@ -2620,6 +2649,114 @@ def _extract_nand_divergence(item: dict) -> dict | None:
     return obs
 
 
+
+def _extract_pc_notebook_demand(item: dict) -> dict | None:
+    """Only an exact-domain TrendForce official notebook article can revise this axis.
+
+    A secondary news item (including a TrendForce quote) cannot overwrite official
+    forecast, supply, or shipment data.  Keep annual forecast separate from quarter.
+    """
+    url = str(item.get("link") or "")
+    parsed = urllib.parse.urlparse(url)
+    if parsed.hostname not in ("trendforce.com", "www.trendforce.com"):
+        return None
+    if not re.fullmatch(r"/presscenter/news/20\d{6}-\d+\.html", parsed.path):
+        return None
+
+    title = _clean(item.get("title") or "")
+    if not re.search(r"notebook|laptop|노트북", title, re.I):
+        return None
+    description = _clean(item.get("description") or "")
+    low = description.lower()
+    if "2027" not in low or not any(k in low for k in ("shipments", "shipment", "출하")):
+        return None
+    obs: dict = {}
+    if "low-single-digit" in low and any(k in low for k in ("decline", "fall", "drop")):
+        obs["notebook_2027_base_outlook"] = "low_single_digit_decline"
+    if "high-single-digit" in low and any(k in low for k in ("decline", "fall", "drop")):
+        obs["notebook_2027_downside_outlook"] = "high_single_digit_decline"
+
+    # Numeric 2027 forecast revisions are usable only when the year, notebook
+    # shipments, direction, and percentage appear in the SAME sentence.
+    for sentence in re.split(r"(?<=[.!?])\s+", description):
+        segment = sentence.lower()
+        if not ("2027" in segment and "notebook" in segment
+                and any(k in segment for k in ("shipment", "shipments"))):
+            continue
+        year_forecast = re.search(
+            r"(?:declin(?:e|es|ed|ing)?|fall(?:s|ing)?|drop(?:s|ped|ping)?)"
+            r"[^.!?%]{0,90}?(\d{1,2}(?:\.\d+)?)\s*%",
+            segment,
+        )
+        if year_forecast:
+            value = float(year_forecast.group(1))
+            if 0 < value <= 50:
+                obs["notebook_2027_shipments_yoy_pct"] = -value
+            break
+        growth_forecast = re.search(
+            r"(?:grow(?:th|ing)?|increas(?:e|es|ed|ing)?|rise|rising)"
+            r"[^.!?%]{0,90}?(\d{1,2}(?:\.\d+)?)\s*%",
+            segment,
+        )
+        if growth_forecast:
+            value = float(growth_forecast.group(1))
+            if 0 < value <= 50:
+                obs["notebook_2027_shipments_yoy_pct"] = value
+            break
+
+    if ("68%" in low and any(k in low for k in ("bill of materials", "bom"))
+            and any(k in low for k in ("3q26", "third quarter of 2026"))):
+        obs["cpu_dram_ssd_bom_share_q3_2026_pct"] = 68.0
+    if any(k in low for k in (
+        "cpu supply has improved", "cpu supply improved", "cpu availability",
+        "improved cpu availability", "cpu shortages ease",
+    )) and any(k in low for k in ("improved", "eas", "normalized")):
+        obs["cpu_supply_status"] = "improving"
+    if "pc dram" in low and any(k in low for k in ("tight", "limited supply growth")):
+        obs["pc_dram_supply_status"] = "tight"
+    if any(k in low for k in ("lower-cost inventories are gradually depleted",
+                              "lower-cost inventories gradually depleted",
+                              "lower-cost inventories are depleted",
+                              "lower-cost inventories are gradually exhausted")):
+        obs["low_cost_inventory_depletion_risk"] = True
+    if not obs:
+        return None
+    obs.update({
+        "source": "TrendForce",
+        "source_url": url,
+        "source_kind": "TrendForce 공식 2027년 노트북 전망 · 실적 확정치 아님",
+        "source_rank": 3,
+        "as_of": (item.get("published_kst") or "")[:10],
+    })
+    return obs
+
+
+def _pc_notebook_demand_changes(old: dict, new: dict) -> list[str]:
+    changes: list[str] = []
+    for key, label in (
+        ("notebook_2027_base_outlook", "2027 노트북 기본 출하 전망"),
+        ("notebook_2027_downside_outlook", "2027 노트북 악화 시나리오"),
+        ("cpu_supply_status", "PC CPU 공급 상태"),
+        ("pc_dram_supply_status", "PC DRAM 공급 상태"),
+        ("low_cost_inventory_depletion_risk", "저가 재고 소진 위험"),
+    ):
+        prior, current = old.get(key), new.get(key)
+        if current is not None and prior is not None and current != prior:
+            changes.append(f"{label}: {prior}→{current}")
+    for key, label, threshold in (
+        ("notebook_2027_shipments_yoy_pct", "2027 노트북 출하량 전년 대비 전망", 2.0),
+        ("notebook_2026_shipment_yoy_pct", "2026 노트북 출하량 전년 대비 전망", 2.0),
+        ("cpu_dram_ssd_bom_share_q3_2026_pct", "CPU·DRAM·SSD 제조원가 비중", 5.0),
+    ):
+        prior, current = old.get(key), new.get(key)
+        if current is None or (prior is not None and abs(float(current) - float(prior)) < threshold):
+            continue
+        if prior is None:
+            changes.append(f"{label}: {float(current):+.1f}% 신규 공식 전망")
+        else:
+            changes.append(f"{label}: {float(prior):+.1f}%→{float(current):+.1f}%")
+    return changes
+
 def _nand_divergence_changes(old: dict, new: dict) -> list[str]:
     changes: list[str] = []
     for key, label in (("enterprise_direction", "기업용 eSSD 방향"), ("consumer_direction", "소비자 SSD/UFS 방향")):
@@ -2801,6 +2938,17 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
     divergence_upgrade_due = int(state.get("nand_divergence_track_version") or 0) < NAND_DIVERGENCE_TRACK_VERSION
     if divergence_upgrade_due:
         state["nand_divergence_track_version"] = NAND_DIVERGENCE_TRACK_VERSION
+
+    pc_notebook_state = _merge_typed_state(
+        PC_NOTEBOOK_DEMAND_BASELINE,
+        dict(state.get("pc_notebook_demand") or {}),
+    )
+    pc_notebook_upgrade_due = (
+        int(state.get("pc_notebook_demand_track_version") or 0)
+        < PC_NOTEBOOK_DEMAND_TRACK_VERSION
+    )
+    if pc_notebook_upgrade_due:
+        state["pc_notebook_demand_track_version"] = PC_NOTEBOOK_DEMAND_TRACK_VERSION
 
     legacy_state = dict(state.get("legacy_dram") or {})
     if int(state.get("legacy_dram_track_version") or 0) < LEGACY_DRAM_TRACK_VERSION:
@@ -2990,6 +3138,24 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
             bernstein_changes.extend(changes)
             bernstein_source_url = bernstein_state.get("source_url") or obs.get("source_url") or bernstein_source_url
 
+    pc_notebook_changes: list[str] = []
+    pc_notebook_source_url = ""
+    if pc_notebook_upgrade_due:
+        pc_notebook_changes.append(
+            "PC 역풍 기준선 신규: 2027년 노트북 출하 기본 한 자릿수 초반 감소·가격 전가 시 한 자릿수 후반 감소 위험"
+        )
+        pc_notebook_source_url = PC_NOTEBOOK_DEMAND_BASELINE["source_url"]
+    for item in sorted(items, key=lambda x: x.get("published_kst") or ""):
+        observation = _extract_pc_notebook_demand(item)
+        if not observation:
+            continue
+        updated = _merge_typed_state(pc_notebook_state, observation)
+        changes = _pc_notebook_demand_changes(pc_notebook_state, updated)
+        pc_notebook_state = updated
+        if changes:
+            pc_notebook_changes.extend(changes)
+            pc_notebook_source_url = pc_notebook_state.get("source_url") or ""
+
     divergence_changes: list[str] = []
     divergence_source_url = ""
     if divergence_upgrade_due:
@@ -3046,6 +3212,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
             continue
         if _extract_trendforce_4q26_revision(x):
             continue
+        if _extract_pc_notebook_demand(x):
+            continue
         if _extract_nand_divergence(x) or _extract_legacy_dram_state(x):
             continue
         new_items.append(x)
@@ -3096,6 +3264,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         "trendforce_4q26_revision": trend_4q26_state,
         "trendforce_3q4q_pace_track_version": TREND_3Q4Q_PACE_TRACK_VERSION,
         "trendforce_3q4q_pace": trend_3q4q_state,
+        "pc_notebook_demand_track_version": PC_NOTEBOOK_DEMAND_TRACK_VERSION,
+        "pc_notebook_demand": pc_notebook_state,
         "nand_divergence_track_version": NAND_DIVERGENCE_TRACK_VERSION,
         "nand_divergence": divergence_state,
         "legacy_dram_track_version": LEGACY_DRAM_TRACK_VERSION,
@@ -3129,6 +3299,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         f"- TrendForce 4Q26 전망 리비전 변화: {len(trend_4q26_changes)}건",
         f"- TrendForce 3Q→4Q 가격속도 변화: {len(trend_3q4q_changes)}건",
         f"- NAND 소비자↔기업용 eSSD 양극화 변화: {len(divergence_changes)}건",
+        f"- PC 메모리·CPU 원가→노트북 수요 역풍 변화: {len(pc_notebook_changes)}건",
         f"- 구세대 DRAM EOL·배정 변화: {len(legacy_changes)}건",
         f"- 원천 오류: {len(errors)}건",
     ]
@@ -3138,11 +3309,11 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
 
     if ALERT_PATH.exists():
         ALERT_PATH.unlink()
-    if not prepared_items and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not legacy_changes:
+    if not prepared_items and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not pc_notebook_changes and not legacy_changes:
         return
 
     lines = ["<b>[메모리 수급 변화 감지]</b>"]
-    typed_changes = len(market_changes) + len(bernstein_changes) + len(korea_earnings_changes) + len(micron_supply_changes) + len(dgx_spark_changes) + len(goldman_structural_changes) + len(ymtc_nand_changes) + len(trend_4q26_changes) + len(trend_3q4q_changes) + len(divergence_changes) + len(legacy_changes)
+    typed_changes = len(market_changes) + len(bernstein_changes) + len(korea_earnings_changes) + len(micron_supply_changes) + len(dgx_spark_changes) + len(goldman_structural_changes) + len(ymtc_nand_changes) + len(trend_4q26_changes) + len(trend_3q4q_changes) + len(divergence_changes) + len(pc_notebook_changes) + len(legacy_changes)
     total_visible = typed_changes + len(prepared_items)
     lines.append(f"조회 {now.strftime('%Y-%m-%d %H:%M')} KST · 핵심 변화 {total_visible}건")
     if trend_4q26_changes:
@@ -3179,6 +3350,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
     elif divergence_changes:
         one = divergence_changes[0]
         lines.append("한눈에: <b>" + html.escape(one) + "</b>")
+    elif pc_notebook_changes:
+        lines.append("한눈에: <b>" + html.escape(pc_notebook_changes[0]) + "</b>")
     elif legacy_changes:
         one = legacy_changes[0]
         lines.append("한눈에: <b>" + html.escape(one) + "</b>")
@@ -3573,6 +3746,55 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         if secondary_url:
             lines.append('  <a href="' + html.escape(str(secondary_url), quote=True) + '">뉴시스 업계 관계자 발언</a>')
 
+    if pc_notebook_changes:
+        lines.append("• <b>PC·노트북 수요 역풍: CPU·DRAM·SSD 비용과 출하 전망</b>")
+        for change in list(dict.fromkeys(pc_notebook_changes)):
+            lines.append("  " + html.escape(change))
+        if pc_notebook_state.get("notebook_2026_shipment_yoy_pct") is not None:
+            lines.append(
+                f"  2026년 글로벌 노트북 출하 전망: 전년 대비 <b>{float(pc_notebook_state['notebook_2026_shipment_yoy_pct']):+.1f}%</b>"
+                " · 9월 4일 TrendForce 공식 전망, 실제 출하 확정치 아님"
+            )
+        lines.append(
+            "  2027년 기본 전망: 글로벌 노트북 출하량 <b>한 자릿수 초반 감소</b> · "
+            "가격 인상이 소비자에게 전가되면 <b>한 자릿수 후반 감소</b> 위험"
+        )
+        if pc_notebook_state.get("notebook_2027_shipments_yoy_pct") is not None:
+            lines.append(
+                f"  최신 수치 전망: 2027년 출하량 전년 대비 <b>{float(pc_notebook_state['notebook_2027_shipments_yoy_pct']):+.1f}%</b>"
+                " · 기존 범주형 전망과 별도 기록"
+            )
+        if pc_notebook_state.get("cpu_dram_ssd_bom_share_q3_2026_pct") is not None:
+            lines.append(
+                "  제조원가 비중: 기준 판매가격 900달러급 노트북의 CPU·DRAM·SSD가 "
+                f"2025년 1분기 <b>{float(pc_notebook_state.get('cpu_dram_ssd_bom_share_q1_2025_pct') or 0):.0f}%</b>→"
+                f"2026년 3분기 <b>{float(pc_notebook_state['cpu_dram_ssd_bom_share_q3_2026_pct']):.0f}%</b>"
+                " · 판매가격 대비 비중이 아닌 부품 제조원가 내 비중"
+            )
+        lines.append(
+            "  공급 구분: CPU 수급은 2026년 2분기부터 개선 · CPU 가격과 PC용 DRAM 배정 압박은 별개"
+        )
+        lines.append(
+            "  인과: 서버용 DRAM·HBM 생산 우선→PC용 메모리 조달 압박→저가 재고 소진→"
+            "완제품 가격 인상 또는 제조사 이익률 하락→구매·교체 연기→출하 전망 악화"
+        )
+        lines.append(
+            "  조기경보: 2027 출하 전망 재하향, CPU·DRAM·SSD 계약가격, PC 제조사 저가 재고·"
+            "제품 사양 축소, 실제 판매가격·재고일수 동시 확인"
+        )
+        lines.append(
+            "  실패 경로·반대축: 가격 전가가 예상보다 작거나 NAND 공급이 2027년 하반기 풀리면 "
+            "수요 감소폭이 줄 수 있음. PC 수요 감소가 메모리 공급사 서버용 수익 개선을 곧바로 뜻하지 않음"
+        )
+        pc_url = pc_notebook_source_url or pc_notebook_state.get("source_url") or PC_NOTEBOOK_DEMAND_BASELINE["source_url"]
+        prior_url = PC_NOTEBOOK_DEMAND_BASELINE["prior_source_url"]
+        lines.append(
+            '  <a href="' + html.escape(str(pc_url), quote=True) + '">TrendForce 2027 전망 원문</a>'
+        )
+        lines.append(
+            '  <a href="' + html.escape(str(prior_url), quote=True) + '">TrendForce 2026 전망·원가 비교</a>'
+        )
+
     emitted = 0
     for prepared in prepared_items:
         item = prepared["item"]
@@ -3610,7 +3832,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         emitted += 1
 
     # If all generic paid-price sheets were filtered, do not send an empty shell.
-    if emitted == 0 and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not legacy_changes:
+    if emitted == 0 and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not pc_notebook_changes and not legacy_changes:
         if ALERT_PATH.exists():
             ALERT_PATH.unlink()
         return
@@ -3636,7 +3858,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         if legacy_source_url:
             lines.append('• <a href="' + html.escape(legacy_source_url, quote=True) + '">근거 원문</a>')
 
-    lines.append("※ 가격·수급·LTA·DRAM/HBM CAPA·LPDDR5X 완제품 가격전가·웨이퍼 생산능력의 신규 변화만 알림")
+    lines.append("※ 기존 메모리·HBM·NAND 수급 및 PC 완제품 수요의 실질적 전망 변경만 알림")
     ALERT_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
 
 
