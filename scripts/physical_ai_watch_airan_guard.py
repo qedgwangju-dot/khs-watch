@@ -767,6 +767,65 @@ def _vnet_equity_recovery() -> list[dict]:
     }]
 
 
+
+# FundaAI's 3–4x ROBOT post-training GPU claim is user-supplied research,
+# NOT an independently reproducible measurement nor a signed GPU purchase.
+# Silent research baseline; later official post-training GPU-hour data may alert.
+ROBOT_POSTTRAIN_FUNDA_URL = 'https://fundaai.substack.com/p/deepphysical-ai-from-the-robot-data'
+ROBOT_POSTTRAIN_PRIMARY = {
+    'NVIDIA', 'NVIDIA Research', 'NVIDIA Technical Blog', 'Tesla', 'Tesla AI',
+    'Google DeepMind', 'Physical Intelligence', 'Skild AI', 'Figure AI',
+}
+ROBOT_POSTTRAIN_ROBOT = re.compile(
+    r'\brobot(?:ics|ic|s)?\b|\bhumanoid\b|\bVLA\b|'
+    r'로봇|휴머노이드|시각.언어.행동|피지컬\s*AI', re.I
+)
+ROBOT_POSTTRAIN_TOPIC = re.compile(
+    r'post[-\s]*train(?:ing)?|fine[-\s]*tun(?:ing|e)|'
+    r'사후\s*학습|미세\s*조정', re.I
+)
+ROBOT_POSTTRAIN_GPU = re.compile(r'\bGPU(?:s)?\b|\bH100\b|\bB200\b|가속기',re.I)
+ROBOT_POSTTRAIN_FUNDA = re.compile(r'\bFUNDA(?:AI)?\b|fundaai\.substack',re.I)
+ROBOT_POSTTRAIN_RATIO = re.compile(
+    r'3\s*[-~–—]\s*4\s*(?:x|배|times?)|'
+    r'(?:three|3)\s*to\s*(?:four|4)\s*times',re.I
+)
+ROBOT_POSTTRAIN_GPU_HOURS = re.compile(
+    r'\d[\d,]*\s*(?:H100|B200)?\s*'
+    r'(?:GPU[-\s]*hours?|GPUh|accelerator[-\s]*hours?|'
+    r'GPU\s*시간|GPU시간|가속기\s*시간)',re.I
+)
+ROBOT_POSTTRAIN_MEASURED = re.compile(
+    r'measured|reported|benchmark(?:ed)?|observed|actual|'
+    r'측정|실측|검증|기록|공식\s*발표',re.I
+)
+ROBOT_POSTTRAIN_DENIAL = re.compile(
+    r'not\s+(?:yet\s+)?measured|no\s+GPU[-\s]*hours?\s+disclosed|'
+    r'GPU\s*시간\s*(?:미공개|미확인)|실측\s*(?:없음|미확인)',re.I
+)
+
+def _is_robot_posttrain_compute(text: str) -> bool:
+    return bool(
+        ROBOT_POSTTRAIN_ROBOT.search(text)
+        and ROBOT_POSTTRAIN_TOPIC.search(text)
+        and ROBOT_POSTTRAIN_GPU.search(text)
+        and (ROBOT_POSTTRAIN_FUNDA.search(text)
+             or ROBOT_POSTTRAIN_GPU_HOURS.search(text))
+    )
+
+def _robot_posttrain_stage(text: str, source: str = '') -> str:
+    if not _is_robot_posttrain_compute(text):
+        return ''
+    if (source in ROBOT_POSTTRAIN_PRIMARY
+            and ROBOT_POSTTRAIN_GPU_HOURS.search(text)
+            and ROBOT_POSTTRAIN_MEASURED.search(text)
+            and not ROBOT_POSTTRAIN_DENIAL.search(text)):
+        return 'official_measured_posttraining'
+    if ROBOT_POSTTRAIN_FUNDA.search(text) and ROBOT_POSTTRAIN_RATIO.search(text):
+        return 'funda_research_estimate_baseline'
+    return 'unverified_or_general'
+
+
 _orig_query_news = base.query_news
 
 
@@ -791,6 +850,16 @@ def query_news(q: str) -> list[dict]:
 
 
 base.query_news = query_news
+for q in (
+    '("FUNDA" OR "FundaAI") ("Physical AI" OR 로봇) '
+    '("post-training" OR 사후학습) ("3-4x" OR "3~4배" OR GPU)',
+    '(NVIDIA OR "Physical Intelligence" OR "Google DeepMind" OR "Skild AI" OR Tesla) '
+    '(robot OR humanoid OR VLA OR 로봇) '
+    '("post-training" OR 사후학습) '
+    '("GPU-hours" OR GPU시간 OR "training compute" OR 훈련비용)',
+):
+    if q not in base.QUERIES:
+        base.QUERIES.append(q)
 if LFP_NA_CIF_PRICE_RECOVERY not in base.QUERIES:
     base.QUERIES.append(LFP_NA_CIF_PRICE_RECOVERY)
 if VNET_EQUITY_RECOVERY not in base.QUERIES:
@@ -923,6 +992,8 @@ def _is_airan(text: str) -> bool:
 
 
 def topic_group(text: str) -> str | None:
+    if _is_robot_posttrain_compute(text):
+        return 'robot_posttrain_compute'
     if _is_vnet_catl(text):
         return 'catl_vnet_infrastructure'
     if _is_lfp_na_314_price(text):
@@ -963,6 +1034,12 @@ def score(item: dict) -> int:
         return 0
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
     group = topic_group(text)
+    if group == 'robot_posttrain_compute':
+        return {'official_measured_posttraining':52,
+                'funda_research_estimate_baseline':0,
+                'unverified_or_general':0}.get(
+            _robot_posttrain_stage(text,item.get('source') or ''),0
+        )
     if group == 'catl_vnet_infrastructure':
         return {'equity_closing_baseline_recovery':45,'signed_vnet_sodium_contract':65,
                 'background':0}.get(_vnet_catl_stage(text,item.get('source') or ''),0)
@@ -1028,6 +1105,10 @@ def score(item: dict) -> int:
 
 
 def category(text: str, group: str) -> str:
+    if group == 'robot_posttrain_compute':
+        if ROBOT_POSTTRAIN_GPU_HOURS.search(text) and ROBOT_POSTTRAIN_MEASURED.search(text):
+            return '로봇 사후학습 · GPU시간 실측 공개'
+        return '로봇 사후학습 · Funda AI 3~4배 추정 기준선'
     if group == 'catl_vnet_infrastructure':
         if '정정:' in text and '주가' in text:
             return 'CATL 관계사–VNET · 10/12 주가 기사 오탐 정정'
@@ -1109,6 +1190,15 @@ def category(text: str, group: str) -> str:
 
 
 def meaning(cat: str) -> str:
+    if cat == '로봇 사후학습 · GPU시간 실측 공개':
+        return ('개발사의 실측 GPU시간 공개 단계입니다. GPU 수·경과시간·'
+                '동일조건 비교·실제 활용률을 확인합니다. GPU시간은 GPU 발주나 '
+                '데이터센터 증설 계약·원화 매출과 다릅니다.')
+    if cat == '로봇 사후학습 · Funda AI 3~4배 추정 기준선':
+        return ('Funda AI 발췌의 동일 파라미터 로봇 사후학습 GPU '
+                '3~4배 주장은 업계 조사 추정입니다. 비교모델, GPU 기종, '
+                '데이터 처리량과 실측 GPU시간은 직접 확인되지 않았으며 '
+                '확정 계약이나 GPU 증설 물량으로 해석하지 않습니다.')
     if cat == 'CATL 관계사–VNET · 10/12 주가 기사 오탐 정정':
         return (
             '이전 Telegram 208의 1·3번 ESS 주가 강세·수주 기대감 기사는 신규 수주·확정 분기 실적이 아니므로 고신호에서 제외합니다. '
@@ -1293,6 +1383,11 @@ def meaning(cat: str) -> str:
 
 
 def risk(cat: str) -> str:
+    if cat.startswith('로봇 사후학습 · '):
+        return ('동일 파라미터라도 동영상 길이·해상도·행동 샘플률과 '
+                'GPU 세대·배치·이용률이 다르면 3~4배가 동등조건 비교가 '
+                '아닐 수 있습니다. 6~12개월 조기지표는 GPU시간/학습 '
+                '에피소드, 작업 성공률, 고객 유료채택과 실제 GPU 발주입니다.')
     if cat.startswith('CATL 관계사–VNET · ') or cat.startswith('CATL–VNET · '):
         return (
             '지분취득과 VNET 데이터센터용 배터리 전속 공급권은 다릅니다. '
@@ -1375,6 +1470,10 @@ def risk(cat: str) -> str:
 
 
 def verification(item: dict, group: str, text: str) -> str:
+    if group == 'robot_posttrain_compute':
+        if _robot_posttrain_stage(text,item.get('source') or '') == 'official_measured_posttraining':
+            return '로봇 개발사 공식 GPU시간 측정 발표 · 실측 조건·계약 별도 확인'
+        return 'Funda AI 사용자 제공 인용 · 원문 직접 열람 실패 · 3~4배 독립 실측·GPU 계약 미확인'
     if group == 'catl_vnet_infrastructure':
         if item.get('correction_for_false_stock_alerts'):
             return '208번 메시지의 주가·수주 기대감 기사 2건 오류 정정 · VNET 9/21 공식 종결·미 SEC 공시만 유효 · 나트륨 ESS 전속 공급 미확인'
@@ -1453,6 +1552,10 @@ def verification(item: dict, group: str, text: str) -> str:
 
 
 def clean_title(title: str, source: str) -> str:
+    if _is_robot_posttrain_compute(title + ' ' + source):
+        if source in ROBOT_POSTTRAIN_PRIMARY and ROBOT_POSTTRAIN_GPU_HOURS.search(title):
+            return '로봇 개발사 사후학습 GPU시간 실측 공개'
+        return 'Funda AI 로봇 사후학습 GPU 자원 3~4배 추정'
     if _is_vnet_catl(title + ' ' + source):
         if title.startswith('정정:'):
             return title
@@ -1522,6 +1625,8 @@ def clean_title(title: str, source: str) -> str:
 
 
 def tag_for(group: str) -> str:
+    if group == 'robot_posttrain_compute':
+        return '피지컬AI 학습 연산'
     if group == 'catl_vnet_infrastructure':
         return 'CATL–VNET 데이터센터 ESS'
     if group == 'lfp_314_cif_north_america':
@@ -1545,6 +1650,16 @@ def tag_for(group: str) -> str:
 
 def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    if topic_group(text) == 'robot_posttrain_compute':
+        stage = _robot_posttrain_stage(text,item.get('source') or '')
+        if stage != 'official_measured_posttraining':
+            return hashlib.sha256(b'funda|robot-posttraining-3-4x|research-baseline').hexdigest()
+        m = ROBOT_POSTTRAIN_GPU_HOURS.search(text)
+        magnitude = re.sub(r'\s+','',m.group(0)) if m else 'unknown'
+        pub = (item.get('published') or '')[:7]
+        return hashlib.sha256(
+            f'robot-posttrain-measured|{item.get("source")}|{magnitude}|{pub}'.encode()
+        ).hexdigest()
     if topic_group(text) == 'catl_vnet_infrastructure':
         stage=_vnet_catl_stage(text,item.get('source') or '')
         if stage=='equity_closing_baseline_recovery' and item.get('correction_for_false_stock_alerts'):
