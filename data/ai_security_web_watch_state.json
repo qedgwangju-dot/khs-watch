@@ -4,10 +4,20 @@
   "initialized": true,
   "last_collection": {
     "direct_official_items": 26,
-    "errors": [],
+    "errors": [
+      "IonQ 발행일 검증 실패"
+    ],
     "material_items": 2,
     "new_material_items": 0,
     "raw_items": 59
+  },
+  "quantum_mna_seen": {
+    "ionq-elisity-2026-10-12-signed": {
+      "published_at": "2026-10-12T00:00:00+00:00",
+      "source_url": "https://www.ionq.com/news/ionq-to-acquire-elisity-to-accelerate-zero-trust-for-the-quantum-era",
+      "stage": "signed",
+      "status": "기존 확정 인수계약, 완료 아님"
+    }
   },
   "seen": {
     "027ea08934406a07812d619d": {
@@ -291,5 +301,5 @@
       "vendor": "Anthropic"
     }
   },
-  "updated_at_kst": "2026-10-12T22:34:27+09:00"
+  "updated_at_kst": "2026-10-12T22:35:36+09:00"
 }
