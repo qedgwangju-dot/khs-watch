@@ -1422,6 +1422,17 @@ def _stable_source_url(row):
 
 
 def item_id(row):
+    # Canonicalize a single U.S. ceasefire announcement across syndications.
+    # Separate truly new independent-party confirmation from mere reprints.
+    if _energy_announcement_unverified(row):
+        energy_marks = set(energy_pause._marks(row))
+        independent_update = bool(energy_marks & {
+            "우크라이나에너지중단확인", "러시아에너지중단확인",
+            "양측에너지중단상호확인",
+        })
+        if "트럼프상호에너지중단발표" in energy_marks and not independent_update:
+            key = f"event|ukraine-russia|us-energy-truce-announcement|{_cluster_day(row, 12)}"
+            return hashlib.sha256(key.encode()).hexdigest()[:20]
     china_stage = _china_fuel_stage(row)
     if china_stage:
         return _china_fuel_event_id(row, china_stage)
