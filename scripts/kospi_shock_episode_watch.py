@@ -721,6 +721,8 @@ def _flow_surge_program(
         "gap": gap,
         "ratio_pct": ratio,
         "sample_span_sec": span,
+        "start_ts": start_ts,
+        "end_ts": end_ts,
         "valid": aligned,
     }
 
@@ -741,10 +743,13 @@ def flow_surge_candidates(
     for actor in ("외국인", "기관", "개인"):
         ds = fnum((spot or {}).get("deltas", {}).get(actor))
         df = fnum((fut or {}).get("deltas", {}).get(actor))
+        # 현물과 선물 표본 종료시점이 서로 멀면 하나의 동시 유입으로 합치지 않는다.
+        # 각 채널은 독립적으로는 신선해도 서로 최대 90초 어긋날 수 있다.
         both = (
             ds is not None and df is not None
             and ds >= SURGE_COMBINED_SPOT_EOK
             and df >= SURGE_COMBINED_FUT_EOK
+            and abs(float(spot["end_ts"]) - float(fut["end_ts"])) <= SURGE_MAX_SAMPLE_SKEW_SEC
         )
         spot_only = ds is not None and ds >= SURGE_SINGLE_SPOT_EOK
         fut_only = df is not None and df >= SURGE_SINGLE_FUT_EOK
@@ -759,17 +764,22 @@ def flow_surge_candidates(
         else:
             mode = "선물 중심"
             key_ts = float(fut["end_ts"])
+        # 프로그램 자체의 차익·비차익 검산이 일치해도 사건 기준시점과
+        # 30초 이상 어긋난 프로그램 데이터를 동시 매수 근거로 사용하지 않는다.
+        program_aligned = bool(
+            program and program["valid"] and program["delta"] > 0
+            and abs(float(program["end_ts"]) - key_ts) <= SURGE_MAX_SAMPLE_SKEW_SEC
+        )
         result.append({
             "actor": actor, "mode": mode,
             "spot": ds, "futures": df, "sample_ts": key_ts,
+            "spot_window": (float(spot["start_ts"]), float(spot["end_ts"])) if spot else None,
+            "futures_window": (float(fut["start_ts"]), float(fut["end_ts"])) if fut else None,
             "spot_start_skew_sec": (spot or {}).get("start_skew_sec"),
             "futures_start_skew_sec": (fut or {}).get("start_skew_sec"),
             "program": program,
             # 프로그램 매수는 투자자별 매수주체 확증이 아니라 별도의 시장 보조정보.
-            "confidence": (
-                "높음" if both and program and program["valid"] and program["delta"] > 0
-                else "중간" if both else "단독 신호"
-            ),
+            "confidence": ("높음" if both and program_aligned else "중간" if both else "단독 신호"),
         })
     return result
 
@@ -1243,11 +1253,18 @@ class Watch:
     def build_flow_surge_alert(self, cand: dict[str, Any], now_ts: float) -> str:
         actor = html.escape(str(cand["actor"]))
         spot, fut = cand.get("spot"), cand.get("futures")
-        start_time = fmt_clock(float(cand["sample_ts"]) - SURGE_WINDOW_SEC)
+        # '표본 종료시각-300초'는 실제 조회된 시작시각이 아닐 수 있다.
+        # 전송 화면에는 반드시 관측된 현물·선물 원자료 구간을 그대로 표시한다.
+        windows = []
+        for label, key in (("현물", "spot_window"), ("선물", "futures_window")):
+            window = cand.get(key)
+            if window:
+                windows.append(f"{label} {fmt_clock(window[0])}~{fmt_clock(window[1])}")
         lines = [
             "⚡ <b>코스피 단기 순매수 급증</b>",
             f"<code>{dt.datetime.fromtimestamp(now_ts, KST):%Y-%m-%d %H:%M:%S} KST</code>",
-            f"• <b>{actor}</b> · {html.escape(str(cand['mode']))} · 5분 ({start_time}~{fmt_clock(cand['sample_ts'])})",
+            f"• <b>{actor}</b> · {html.escape(str(cand['mode']))} · 약 5분",
+            f"• 실제 수급 표본: {' / '.join(windows) if windows else '확인 불가'}",
             f"• 현물(통합) {fmt_eok(spot)} · KOSPI200 선물 {fmt_eok(fut)}",
             f"• 확인 수준: {html.escape(str(cand['confidence']))}",
         ]
