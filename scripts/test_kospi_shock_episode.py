@@ -796,9 +796,13 @@ _surge_single=_surge_scan([
 ],10305)
 assert len(_surge_single)==1 and _surge_single[0]["mode"]=="현물 중심",_surge_single
 assert _surge_single[0]["confidence"]=="단독 신호",_surge_single
-assert not _surge_scan([
+_surge_sell_side=_surge_scan([
     _surge_row(10000,0,0,0), _surge_row(10300,-800,-900,-10000)
-],10305),"순매도 급증을 순매수 유입으로 오인"
+],10305)
+assert all(x["actor"]!="외국인" for x in _surge_sell_side),_surge_sell_side
+assert any(x["actor"]=="개인" for x in _surge_sell_side),_surge_sell_side
+# 외국인 매도 반대편 개인 순매수는 '유입'으로 검출할 수 있지만
+# 외국인 자체를 순매수 주체로 반전시켜서는 안 된다.
 print("flow_surge_direction_alignment_valid=true")
 
 _surge_watch=Watch("unused",[], "",False)
