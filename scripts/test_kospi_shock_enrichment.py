@@ -281,6 +281,8 @@ assert "전기전자 -0.40%" in compact and "-27,331,332" in compact, compact
 assert "SK하이닉스 -13,987,139 / -0.55%" in compact, compact
 assert "한화에어로스페이스 -112,519 / +0.11%" in compact, compact
 assert "IT 대표주·아이폰" in compact, compact
+assert "IT 대표주·아이폰 -27,331,332 · SK하이닉스·삼성전자·삼성SDI" in compact, compact
+assert "자율주행차 -26,676,570 · SK하이닉스·삼성전자·현대모비스" in compact, compact
 assert "구성 겹침 45.6%" in compact, compact
 assert "ETF 등락·구성 겹침은 자금 유출이 아닙니다" in compact, compact
 assert "정확성</b>" not in compact and "상위 프로그램 매도 후보의 연결 테마" not in compact
