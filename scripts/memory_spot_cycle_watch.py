@@ -2707,18 +2707,43 @@ def _extract_pc_notebook_demand(item: dict) -> dict | None:
     if ("68%" in low and any(k in low for k in ("bill of materials", "bom"))
             and any(k in low for k in ("3q26", "third quarter of 2026"))):
         obs["cpu_dram_ssd_bom_share_q3_2026_pct"] = 68.0
-    if any(k in low for k in (
-        "cpu supply has improved", "cpu supply improved", "cpu availability",
-        "improved cpu availability", "cpu shortages ease",
-    )) and any(k in low for k in ("improved", "eas", "normalized")):
-        obs["cpu_supply_status"] = "improving"
-    if "pc dram" in low and any(k in low for k in ("tight", "limited supply growth")):
-        obs["pc_dram_supply_status"] = "tight"
-    if any(k in low for k in ("lower-cost inventories are gradually depleted",
-                              "lower-cost inventories gradually depleted",
-                              "lower-cost inventories are depleted",
-                              "lower-cost inventories are gradually exhausted")):
-        obs["low_cost_inventory_depletion_risk"] = True
+    cpu_improved = any(k in low for k in (
+        "cpu supply has improved", "cpu supply improved", "improved cpu availability",
+        "cpu shortages ease", "cpu shortages have eased",
+    ))
+    cpu_tightened = any(k in low for k in (
+        "cpu availability has tightened", "cpu shortages have returned",
+        "cpu shortages are worsening", "cpu supply has tightened",
+        "cpu supplies have tightened",
+    ))
+    # Contradictory text on the same page is not a valid supply status update.
+    if cpu_improved != cpu_tightened:
+        obs["cpu_supply_status"] = "improving" if cpu_improved else "tightening"
+
+    if "pc dram" in low:
+        pc_dram_tight = any(k in low for k in (
+            "limited supply growth", "pc dram stays tight", "pc dram remains tight",
+            "pc dram supply is tight", "pc dram faces tight supply",
+        ))
+        pc_dram_eases = any(k in low for k in (
+            "pc dram supply has eased", "pc dram supply is easing",
+            "pc dram supply improved", "pc dram supply normalizes",
+        ))
+        if pc_dram_tight != pc_dram_eases:
+            obs["pc_dram_supply_status"] = "tight" if pc_dram_tight else "easing"
+
+    inventory_depleting = any(k in low for k in (
+        "lower-cost inventories are gradually depleted",
+        "lower-cost inventories gradually depleted",
+        "lower-cost inventories are depleted",
+        "lower-cost inventories are gradually exhausted",
+    ))
+    inventory_replenished = any(k in low for k in (
+        "lower-cost inventories have been replenished",
+        "lower-cost inventory has been replenished",
+    ))
+    if inventory_depleting != inventory_replenished:
+        obs["low_cost_inventory_depletion_risk"] = inventory_depleting
     if not obs:
         return None
     obs.update({
@@ -3755,14 +3780,15 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
                 f"  2026년 글로벌 노트북 출하 전망: 전년 대비 <b>{float(pc_notebook_state['notebook_2026_shipment_yoy_pct']):+.1f}%</b>"
                 " · 9월 4일 TrendForce 공식 전망, 실제 출하 확정치 아님"
             )
-        lines.append(
-            "  2027년 기본 전망: 글로벌 노트북 출하량 <b>한 자릿수 초반 감소</b> · "
-            "가격 인상이 소비자에게 전가되면 <b>한 자릿수 후반 감소</b> 위험"
-        )
-        if pc_notebook_state.get("notebook_2027_shipments_yoy_pct") is not None:
+        if pc_notebook_state.get("notebook_2027_shipments_yoy_pct") is None:
             lines.append(
-                f"  최신 수치 전망: 2027년 출하량 전년 대비 <b>{float(pc_notebook_state['notebook_2027_shipments_yoy_pct']):+.1f}%</b>"
-                " · 기존 범주형 전망과 별도 기록"
+                "  2027년 공식 전망: 노트북 출하 <b>한 자릿수 초반 감소</b> · "
+                "소비자 가격 인상이 커지면 <b>한 자릿수 후반 감소</b> 위험"
+            )
+        else:
+            lines.append(
+                f"  최신 2027년 출하 전망: 전년 대비 <b>{float(pc_notebook_state['notebook_2027_shipments_yoy_pct']):+.1f}%</b>"
+                " · 10월 8일의 범주형 전망(기본 한 자릿수 초반 감소, 악화 시 후반 감소)을 수정하는 신규 공식 수치"
             )
         if pc_notebook_state.get("cpu_dram_ssd_bom_share_q3_2026_pct") is not None:
             lines.append(
@@ -3771,8 +3797,17 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
                 f"2026년 3분기 <b>{float(pc_notebook_state['cpu_dram_ssd_bom_share_q3_2026_pct']):.0f}%</b>"
                 " · 판매가격 대비 비중이 아닌 부품 제조원가 내 비중"
             )
+        cpu_status = (
+            "현재 공급 재긴축 신호" if pc_notebook_state.get("cpu_supply_status") == "tightening"
+            else "2026년 2분기 이후 공급 개선"
+        )
+        pc_dram_status = (
+            "최근 공급 완화 신호" if pc_notebook_state.get("pc_dram_supply_status") == "easing"
+            else "PC용 DRAM 공급 제약"
+        )
         lines.append(
-            "  공급 구분: CPU 수급은 2026년 2분기부터 개선 · CPU 가격과 PC용 DRAM 배정 압박은 별개"
+            "  공급 구분: CPU " + cpu_status + " · " + pc_dram_status
+            + " · CPU 가격 상승과 CPU 공급 부족은 별개"
         )
         lines.append(
             "  인과: 서버용 DRAM·HBM 생산 우선→PC용 메모리 조달 압박→저가 재고 소진→"
