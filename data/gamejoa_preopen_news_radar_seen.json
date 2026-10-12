@@ -2840,6 +2840,27 @@
       "telegram_core_fact": "투자 상품으로는 주변의 추천을 받아 국내 반도체 관련 상장지수펀드(ETF)를 집중적으로 매수했다. 코스피 지수가 9000을 넘어 1만을 넘어선다는 국내외 경제 전문가의 전망과 달리 한때 6000초반까지 떨어졌다.",
       "title": "“코스피 9000 찍자 예금 깨고 ‘반도체 ETF’에 다 걸었는데” 김 차장, 폭락 장서 생존했을까 [이연부]"
     },
+    "core:191a79b6e47b4b02717ee65b": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821942",
+      "source": "뉴시스",
+      "source_body_digest": "1d5b7f8ad53736a6627322ca77e2be5315f91e64d5877b9b179c1edd94a9ebc7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:76f8c435460c40466bb85a35ecf2944709d45b3f9610cd595e018637b68ebef9",
+      "source_fact_keys": [
+        "source_fact:v1:708a81fc187a4b2ca724c9f6f801d3b80010892e07d85161b65ff891a04fe0e3",
+        "source_fact:v1:7d111f3aba014b1638772c0fce40e86c4c4a8cb86a14bb2aebe7d64628a1e734",
+        "source_fact:v1:9bd55387805f5c6c0a1323ef33da9e72490d5741982fe3c76c11a17f5270afd4"
+      ],
+      "source_published_kst": "2026-10-12T11:20+09:00",
+      "source_title": "제주 AI 대전환 사업에 공공기관 참여 확대…16일 설명회",
+      "telegram_core_fact": "제주도가 40메가와트(MW)급 인공지능(AI) 데이터센터 구축과 지역 산업의 인공지능 전환(AX)을 추진하기 위해 도내 공공기관의 참여를 확대하고 분야별 실증과제를 발굴한다.",
+      "title": "제주 AI 대전환 사업에 공공기관 참여 확대…16일 설명회"
+    },
     "core:1920b3239d4fce6fb973b678": {
       "first_seen_kst": "2026-10-11T18:15:28+09:00",
       "lanes": {
@@ -4620,6 +4641,25 @@
       "source_title": "[고래사냥] '한미반도체·지앤비에스 에코·두산로보틱스! 내일장 고래 종목은?!",
       "telegram_core_fact": "SK하이닉스의 용인 1기 팹 가동이 임박함에 따라 케이씨텍과 지앤비에스 에코 등 관련 반도체 설비 기업들이 주목받았다. 한미반도체는 TC본더 장비 공급과 8공장 증설을 추진 중이며 곽동신 회장의 장내매수 소식이 전해졌다.",
       "title": "[고래사냥] '한미반도체·지앤비에스 에코·두산로보틱스! 내일장 고래 종목은?!"
+    },
+    "core:285a05807674c98daa35139f": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02253366645612264",
+      "source": "이데일리",
+      "source_body_digest": "4b99035d0fbe7dd8282b69425da0558e4e502c5f47e00a12b0bed2c22ec10e07",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:817f6d2002fc96e9815c60395e553e095e8f93f9907e1f3efc73b373ebfb5009",
+      "source_fact_keys": [
+        "source_fact:v1:59212b2ae4e23161a1be80d20c2d8694e854042a696225edb02fcdd134f8e3dd"
+      ],
+      "source_published_kst": "2026-10-12T09:03+09:00",
+      "source_title": "[속보]10월 초순 수출 261억달러로 102%↑…동기간 역대 최대",
+      "telegram_core_fact": "관세청이 발표한 ‘10월 1~10일 수출입 현황’에 따르면 , 이 기간 수출액(통관기준 잠정)은 261억 400만달러로 전년비 102.0% 증가했다.",
+      "title": "[속보]10월 초순 수출 261억달러로 102%↑…동기간 역대 최대"
     },
     "core:28be44d305c67bc5e80131b8": {
       "first_seen_kst": "2026-10-08T06:10:43+09:00",
@@ -9203,6 +9243,23 @@
       "source_title": "은행권 'AI 방어' 투자 확대…KB 내년 보안 예산 1천억원대로 | 연합뉴스",
       "telegram_core_fact": "NH농협은행도 내년 정보보호 투자를 늘려 서버 보안과 AI 안전성 검증, 취약점 관리에 집중할 계획이다. KB국민은행은 스텔스솔루션을 비롯한 복수의 보안업체와 AI 방어 기술의 성능을 검증하고 있다.",
       "title": "은행권 'AI 방어' 투자 확대…KB 내년 보안 예산 1천억원대로 | 연합뉴스"
+    },
+    "core:546f3532c9e345f3ad2f0b49": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261010_0003820563",
+      "source": "뉴시스",
+      "source_body_digest": "5567d8d28451d3df206bea23b715be75a6afa21cb78257437c0318de66fd1edf",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T11:26+09:00",
+      "source_title": "도부, 상반기 영업흑자…CM-77 조달 우수제품 지정 힘입어 공공시장 공략",
+      "telegram_core_fact": "도부는 내년 1월부터 중앙행정기관, 지방자치단체, 공공기관, 직장 민방위대 등을 대상으로 CM-77의 공급을 확대할 계획이다.",
+      "title": "도부, 상반기 영업흑자…CM-77 조달 우수제품 지정 힘입어 공공시장 공략"
     },
     "core:548a8e408972a035d9ab651e": {
       "first_seen_kst": "2026-10-07T18:30:29+09:00",
@@ -14997,6 +15054,23 @@
       "telegram_core_fact": "네팔 정부는 대홍수 사망자 유족에게 가족 중 첫 희생자에 대해 약 20만 네팔루피(약 174만원), 추가 사망자 1명 당 10만 네팔루피(약 86만8천원)의 보상금을 각각 지급하고 있으며, 이와 별도로 최대 2만5천 네팔루피(약 21만7천원)의 장례 비용을 지원하고 있다.",
       "title": "네팔, 실종자 5000명 곧 사망처리…유족 지원·상속 가능해진다"
     },
+    "core:8e09a8f9c2d436621a6b4941": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012058800008",
+      "source": "연합뉴스",
+      "source_body_digest": "5585d7301bbc50d5ceb6962632239a84e7fd0bb1ff7832065a30fc949e5c4786",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T11:14+09:00",
+      "source_title": "9월 장외채권 거래 증가…개인 순매수, 외국인은 '팔자' | 연합뉴스",
+      "telegram_core_fact": "이후 국제유가와 원·달러 환율이 안정되고, 외국인의 10년 국채선물 순매수 및 세계국채지수(WGBI) 편입 관련 중장기물 매수가 이어지면서 초장기물 금리는 하락했다.",
+      "title": "9월 장외채권 거래 증가…개인 순매수, 외국인은 '팔자' | 연합뉴스"
+    },
     "core:8e314fe2075ce633dd87aa7d": {
       "first_seen_kst": "2026-10-11T13:18:03+09:00",
       "lanes": {
@@ -19785,6 +19859,30 @@
       "telegram_core_fact": "올 3분기 누적 바이오의약품 수출 규모가 수출이 가장 많았던 지난해 3분기까지 수출액보다 15.8% 증가한 66억 달러(약 8조 8261억원)로 잠정집계됐다.",
       "title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대"
     },
+    "core:b942c9e2df4dff52380923ad": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172740",
+      "source": "매일경제",
+      "source_body_digest": "fec6ec7643fe6bc22d127d4653e9ac7de19292b5a332cb354729aed9e5b71c01",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a7cab95a6dc46175eb5148b3a7a68bdfbeaf807894547e7ebe88b7ceb432a87",
+      "source_fact_keys": [
+        "source_fact:v1:3447df2658e6887f47262ac49ae640e3f4f2104224ee4a58376a4abfe2c54f4c",
+        "source_fact:v1:6757945691f3640f3d0c55975f9d6b7904f7a3199985ccc632f89d59a6a5061d",
+        "source_fact:v1:9ee52add4cec96298977792a47159e42a474402a416bee0495c77b11552aa60e",
+        "source_fact:v1:bc9be1ed36833dbbbf31a7d954070204a8247abb12dd529f6a7d91a8d1ee6883",
+        "source_fact:v1:dc33a83a413d91c961c2535f5509f1d9e6112c384d28fc5471b521e50746f29c",
+        "source_fact:v1:ffaecec241577bf9536dd029e7fa96695765291473c7c2565e5c7f8d13339259"
+      ],
+      "source_published_kst": "2026-10-12T09:34+09:00",
+      "source_title": "STX그린로지스, 8% 급등…중동 불안에 운임 뛰자 해운株 줄줄이 상승",
+      "telegram_core_fact": "중동 지역의 지정학적 불안이 장기화하면서 해운 운임이 급등하자 해운 관련주가 일제히 강세를 보이고 있다.",
+      "title": "STX그린로지스, 8% 급등…중동 불안에 운임 뛰자 해운株 줄줄이 상승"
+    },
     "core:b9abbb464222d03099b2f7e7": {
       "first_seen_kst": "2026-10-09T23:27:30+09:00",
       "lanes": {
@@ -22838,6 +22936,35 @@
       "source_title": "국제유가, 美 멕시코만 원유 생산 차질 속 상승…WTI 0.39%↑ | 연합뉴스",
       "telegram_core_fact": "이날 뉴욕상업거래소에서 11월 인도분 서부텍사스산원유(WTI) 선물 종가는 전장보다 0.36달러(0.39%) 상승한 배럴당 91.85달러로 마감했다.",
       "title": "국제유가, 美 멕시코만 원유 생산 차질 속 상승…WTI 0.39%↑ | 연합뉴스"
+    },
+    "core:d41c80ab43d7f744324de8ea": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.fnnews.com/news/202610121007350412",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "23b0a8d0898efbb191a80786533125ca2a31b3ebd2957a68dab7da860c1a1d0f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:73eb268edb1740418eb4df997790ce47d75046adaa23aadb02cb4bd30ab16709",
+      "source_fact_keys": [
+        "source_fact:v1:0d3a7368e8938168e43917d68b4a23dc586458d79a6076a61b2f4d028bf1f564",
+        "source_fact:v1:1316a271ed98622398fc1548be94c1f07e913027c09efc583f79a041294b0b10",
+        "source_fact:v1:1a6b864839547ce74cdb5aa46d9df48d7753005cfe54f78839672766fa1cd2f6",
+        "source_fact:v1:2745359ed8d6d13f00e231789021e0fd7c6dc394f4db419d5b1751dc8e6dd1e8",
+        "source_fact:v1:3f29dcd683f1de01cccafe3b703eb3e3ef1200027f94e330f104bd30f62f6f76",
+        "source_fact:v1:3fd96e61f1ab6f6ba2796a6e837ed76f548ee15691226b6d3540f4f9b1f9c6a3",
+        "source_fact:v1:6065b13089c59ad7a94b3315dbb4c6e88cd39a813ad1b647d5b1f7bae5f6be3a",
+        "source_fact:v1:778f4804464f3b9099c6603ef8a6809095988b8e785ccc14d2e50e9f50fdab6e",
+        "source_fact:v1:839e40d42006d053e0ab4926ca7e0cb4ec1ff0272a6c4d3723b9ce1b951e1fc4",
+        "source_fact:v1:98c3c7100d5d7660ebb35414e4f7b3ecfd73b9f624ce7e9f9e1f24db3e46a563",
+        "source_fact:v1:bf8f62475816482330826709c79ead9e0e394ba9cb18abef942ec755fa2e8f0f"
+      ],
+      "source_published_kst": "2026-10-12T10:07+09:00",
+      "source_title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다",
+      "telegram_core_fact": "채권 기관투자자 결제 가운데 채권 결제대금은 일평균 12조5천억원으로 전 분기보다 11.3% 줄었다. 주식 결제대금은 일평균 8조8천억원으로 전 분기 대비 12.4% 감소했으며, 채권 결제 대금은 26조6천억원으로 17.7% 줄었다.",
+      "title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다"
     },
     "core:d479d27e038aa0339c0644eb": {
       "first_seen_kst": "2026-10-09T18:57:38+09:00",
@@ -26882,6 +27009,25 @@
       "source_title": "“음식배달 오토바이 엄청 늘었다했더니”…앱 이용 식당 매출 20% 급증",
       "telegram_core_fact": "배달앱을 이용하는 외식업체가 미이용 업체보다 최근 2년간 매출과 영업이익에서 상대적으로 높은 증가세를 보였다는 분석이 나왔다.",
       "title": "“음식배달 오토바이 엄청 늘었다했더니”…앱 이용 식당 매출 20% 급증"
+    },
+    "core:fa23632d3db41f9e0219c373": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821759",
+      "source": "뉴시스",
+      "source_body_digest": "84ea7f18f9c86f44962bd51f728cdf52a0a038cbbeb6a7ef1c28f5fae2e9aa71",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:661900157585823c91c0ec2887e7c69eb3d78b3520be9bf7d7c2adc2c0eefb40",
+      "source_fact_keys": [
+        "source_fact:v1:7b7eb3862eda1e3d260c97fd0bdb96bb504fbb0c5810eedc67256715d90129bd"
+      ],
+      "source_published_kst": "2026-10-12T10:34+09:00",
+      "source_title": "\"수돗물 누수 잡는다\" 안양시, 소블록 42곳 추가 정비",
+      "telegram_core_fact": "경기 안양시가 수돗물 누수를 막고 공급 효율성을 높이기 위해 관내 42개 소블록을 추가 구축하고 노후 상수도 시설에 대한 전면 정비에 나선다.",
+      "title": "\"수돗물 누수 잡는다\" 안양시, 소블록 42곳 추가 정비"
     },
     "core:fa3c616bb5a3188e88c67fd0": {
       "first_seen_kst": "2026-10-08T22:06:55+09:00",
@@ -37123,6 +37269,23 @@
       "telegram_core_fact": "KB증권은 삼성전자의 내년 고대역폭메모리(HBM) 판매가격이 올해보다 100% 이상 오를 것으로 예상했고, 메리츠증권은 서버 D램과 HBM으로의 생산능력 전환에 따라 모바일 메모리 판가도 내년 1분기부터 분기 기준 50% 이상 상승할 것으로 내다봤다.",
       "title": "삼성전자 HBM도 모바일 D램도 '가격 뛴다'…증권가 눈높이↑"
     },
+    "event:ddd1d26d294017ec236945ba": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261010_0003820563",
+      "source": "뉴시스",
+      "source_body_digest": "5567d8d28451d3df206bea23b715be75a6afa21cb78257437c0318de66fd1edf",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T11:26+09:00",
+      "source_title": "도부, 상반기 영업흑자…CM-77 조달 우수제품 지정 힘입어 공공시장 공략",
+      "telegram_core_fact": "도부는 내년 1월부터 중앙행정기관, 지방자치단체, 공공기관, 직장 민방위대 등을 대상으로 CM-77의 공급을 확대할 계획이다.",
+      "title": "도부, 상반기 영업흑자…CM-77 조달 우수제품 지정 힘입어 공공시장 공략"
+    },
     "event:de0944201f01ab6356bb27a3": {
       "first_seen_kst": "2026-10-07T09:44:16+09:00",
       "lanes": {
@@ -47274,6 +47437,25 @@
       "source_published_kst": "2026-10-06T04:20+09:00",
       "title": "[美특징주]에스티로더, 성장 회복 기대에 월가 투자의견 ‘매수’ 상향…주가 2%↑"
     },
+    "fact:34f82e0d40252915c20cd934": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02253366645612264",
+      "source": "이데일리",
+      "source_body_digest": "4b99035d0fbe7dd8282b69425da0558e4e502c5f47e00a12b0bed2c22ec10e07",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:817f6d2002fc96e9815c60395e553e095e8f93f9907e1f3efc73b373ebfb5009",
+      "source_fact_keys": [
+        "source_fact:v1:59212b2ae4e23161a1be80d20c2d8694e854042a696225edb02fcdd134f8e3dd"
+      ],
+      "source_published_kst": "2026-10-12T09:03+09:00",
+      "source_title": "[속보]10월 초순 수출 261억달러로 102%↑…동기간 역대 최대",
+      "telegram_core_fact": "관세청이 발표한 ‘10월 1~10일 수출입 현황’에 따르면 , 이 기간 수출액(통관기준 잠정)은 261억 400만달러로 전년비 102.0% 증가했다.",
+      "title": "[속보]10월 초순 수출 261억달러로 102%↑…동기간 역대 최대"
+    },
     "fact:34fa9f8eb7cc7c1a23d006fa": {
       "first_seen_kst": "2026-10-11T14:49:05+09:00",
       "lanes": {
@@ -56203,6 +56385,30 @@
       "source_title": "[제2서울핀테크랩 스타트업 CEO] 제로트러스트(Zero Trust) 기반 금융 보안·인증·결제 솔루션 개발하는 기업 ‘신영이노베이션’",
       "telegram_core_fact": "KB국민카드, 롯데카드, 웰컴저축은행 등 국내 금융사에 누적 1천만 명 이상 고객 기반으로 검증된 인증·보안 기술을 보유하고 있으며, 이 원천기술을 바탕으로 만든 솔루션이 TrustIn Gateway이다.",
       "title": "[제2서울핀테크랩 스타트업 CEO] 제로트러스트(Zero Trust) 기반 금융 보안·인증·결제 솔루션 개발하는 기업 ‘신영이노베이션’"
+    },
+    "fact:6db821f4c2ba11520de8499b": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172740",
+      "source": "매일경제",
+      "source_body_digest": "fec6ec7643fe6bc22d127d4653e9ac7de19292b5a332cb354729aed9e5b71c01",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a7cab95a6dc46175eb5148b3a7a68bdfbeaf807894547e7ebe88b7ceb432a87",
+      "source_fact_keys": [
+        "source_fact:v1:3447df2658e6887f47262ac49ae640e3f4f2104224ee4a58376a4abfe2c54f4c",
+        "source_fact:v1:6757945691f3640f3d0c55975f9d6b7904f7a3199985ccc632f89d59a6a5061d",
+        "source_fact:v1:9ee52add4cec96298977792a47159e42a474402a416bee0495c77b11552aa60e",
+        "source_fact:v1:bc9be1ed36833dbbbf31a7d954070204a8247abb12dd529f6a7d91a8d1ee6883",
+        "source_fact:v1:dc33a83a413d91c961c2535f5509f1d9e6112c384d28fc5471b521e50746f29c",
+        "source_fact:v1:ffaecec241577bf9536dd029e7fa96695765291473c7c2565e5c7f8d13339259"
+      ],
+      "source_published_kst": "2026-10-12T09:34+09:00",
+      "source_title": "STX그린로지스, 8% 급등…중동 불안에 운임 뛰자 해운株 줄줄이 상승",
+      "telegram_core_fact": "중동 지역의 지정학적 불안이 장기화하면서 해운 운임이 급등하자 해운 관련주가 일제히 강세를 보이고 있다.",
+      "title": "STX그린로지스, 8% 급등…중동 불안에 운임 뛰자 해운株 줄줄이 상승"
     },
     "fact:6dcf321feefdb4fc3f671cff": {
       "first_seen_kst": "2026-10-12T07:02:25+09:00",
@@ -65814,6 +66020,27 @@
       "telegram_core_fact": "EU는 중국산 하이브리드차에 수입 물량 제한과 추가 관세를 부과하는 방안을 검토하고 있다.",
       "title": "中, EU 하이브리드차 수출 제한 거부…한국차도 규제 영향권"
     },
+    "fact:a68eaf8861e4041f4868a639": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821942",
+      "source": "뉴시스",
+      "source_body_digest": "1d5b7f8ad53736a6627322ca77e2be5315f91e64d5877b9b179c1edd94a9ebc7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:76f8c435460c40466bb85a35ecf2944709d45b3f9610cd595e018637b68ebef9",
+      "source_fact_keys": [
+        "source_fact:v1:708a81fc187a4b2ca724c9f6f801d3b80010892e07d85161b65ff891a04fe0e3",
+        "source_fact:v1:7d111f3aba014b1638772c0fce40e86c4c4a8cb86a14bb2aebe7d64628a1e734",
+        "source_fact:v1:9bd55387805f5c6c0a1323ef33da9e72490d5741982fe3c76c11a17f5270afd4"
+      ],
+      "source_published_kst": "2026-10-12T11:20+09:00",
+      "source_title": "제주 AI 대전환 사업에 공공기관 참여 확대…16일 설명회",
+      "telegram_core_fact": "제주도가 40메가와트(MW)급 인공지능(AI) 데이터센터 구축과 지역 산업의 인공지능 전환(AX)을 추진하기 위해 도내 공공기관의 참여를 확대하고 분야별 실증과제를 발굴한다.",
+      "title": "제주 AI 대전환 사업에 공공기관 참여 확대…16일 설명회"
+    },
     "fact:a6a35a5f553cf31f8f38a05e": {
       "first_seen_kst": "2026-10-11T22:09:39+09:00",
       "lanes": {
@@ -66268,6 +66495,35 @@
       ],
       "source_published_kst": "2026-10-06T11:22+09:00",
       "title": "\"2028년 전력 대란 온다\" 경고…잘나가던 삼전닉스 '빨간불'"
+    },
+    "fact:a975c106f3f4830104edcb27": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.fnnews.com/news/202610121007350412",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "23b0a8d0898efbb191a80786533125ca2a31b3ebd2957a68dab7da860c1a1d0f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:73eb268edb1740418eb4df997790ce47d75046adaa23aadb02cb4bd30ab16709",
+      "source_fact_keys": [
+        "source_fact:v1:0d3a7368e8938168e43917d68b4a23dc586458d79a6076a61b2f4d028bf1f564",
+        "source_fact:v1:1316a271ed98622398fc1548be94c1f07e913027c09efc583f79a041294b0b10",
+        "source_fact:v1:1a6b864839547ce74cdb5aa46d9df48d7753005cfe54f78839672766fa1cd2f6",
+        "source_fact:v1:2745359ed8d6d13f00e231789021e0fd7c6dc394f4db419d5b1751dc8e6dd1e8",
+        "source_fact:v1:3f29dcd683f1de01cccafe3b703eb3e3ef1200027f94e330f104bd30f62f6f76",
+        "source_fact:v1:3fd96e61f1ab6f6ba2796a6e837ed76f548ee15691226b6d3540f4f9b1f9c6a3",
+        "source_fact:v1:6065b13089c59ad7a94b3315dbb4c6e88cd39a813ad1b647d5b1f7bae5f6be3a",
+        "source_fact:v1:778f4804464f3b9099c6603ef8a6809095988b8e785ccc14d2e50e9f50fdab6e",
+        "source_fact:v1:839e40d42006d053e0ab4926ca7e0cb4ec1ff0272a6c4d3723b9ce1b951e1fc4",
+        "source_fact:v1:98c3c7100d5d7660ebb35414e4f7b3ecfd73b9f624ce7e9f9e1f24db3e46a563",
+        "source_fact:v1:bf8f62475816482330826709c79ead9e0e394ba9cb18abef942ec755fa2e8f0f"
+      ],
+      "source_published_kst": "2026-10-12T10:07+09:00",
+      "source_title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다",
+      "telegram_core_fact": "채권 기관투자자 결제 가운데 채권 결제대금은 일평균 12조5천억원으로 전 분기보다 11.3% 줄었다. 주식 결제대금은 일평균 8조8천억원으로 전 분기 대비 12.4% 감소했으며, 채권 결제 대금은 26조6천억원으로 17.7% 줄었다.",
+      "title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다"
     },
     "fact:a9e371f2978c6dbe3b48fdb6": {
       "first_seen_kst": "2026-10-08T14:55:40+09:00",
@@ -67792,6 +68048,25 @@
       "source_title": "인티그라 라이프사이언스, 4억5000만 달러 선순위 담보채 금리 9.5% 확정",
       "telegram_core_fact": "인티그라 라이프사이언스 홀딩스(IART)는 만기 2033년, 연 9.500% 금리의 선순위 담보부 채권(senior secured notes) 4억5000만 달러 발행 가격을 확정했다고 10월 9일 발표했다.",
       "title": "인티그라 라이프사이언스, 4억5000만 달러 선순위 담보채 금리 9.5% 확정"
+    },
+    "fact:b1bcd5d95802c2d8f6a7f07c": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821759",
+      "source": "뉴시스",
+      "source_body_digest": "84ea7f18f9c86f44962bd51f728cdf52a0a038cbbeb6a7ef1c28f5fae2e9aa71",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:661900157585823c91c0ec2887e7c69eb3d78b3520be9bf7d7c2adc2c0eefb40",
+      "source_fact_keys": [
+        "source_fact:v1:7b7eb3862eda1e3d260c97fd0bdb96bb504fbb0c5810eedc67256715d90129bd"
+      ],
+      "source_published_kst": "2026-10-12T10:34+09:00",
+      "source_title": "\"수돗물 누수 잡는다\" 안양시, 소블록 42곳 추가 정비",
+      "telegram_core_fact": "경기 안양시가 수돗물 누수를 막고 공급 효율성을 높이기 위해 관내 42개 소블록을 추가 구축하고 노후 상수도 시설에 대한 전면 정비에 나선다.",
+      "title": "\"수돗물 누수 잡는다\" 안양시, 소블록 42곳 추가 정비"
     },
     "fact:b1c5cc5894aa20508429eaa7": {
       "first_seen_kst": "2026-10-07T18:58:51+09:00",
@@ -94124,6 +94399,23 @@
       "source_published_kst": "2026-10-04T06:20+09:00",
       "title": "3분기 약달러에 ETF 상승률 1∼3위 모두 '달러 곱버스' 차지"
     },
+    "link:333254b7953adc521a857735": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012058800008",
+      "source": "연합뉴스",
+      "source_body_digest": "5585d7301bbc50d5ceb6962632239a84e7fd0bb1ff7832065a30fc949e5c4786",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T11:14+09:00",
+      "source_title": "9월 장외채권 거래 증가…개인 순매수, 외국인은 '팔자' | 연합뉴스",
+      "telegram_core_fact": "이후 국제유가와 원·달러 환율이 안정되고, 외국인의 10년 국채선물 순매수 및 세계국채지수(WGBI) 편입 관련 중장기물 매수가 이어지면서 초장기물 금리는 하락했다.",
+      "title": "9월 장외채권 거래 증가…개인 순매수, 외국인은 '팔자' | 연합뉴스"
+    },
     "link:333e88107a85b5e62395ce0f": {
       "first_seen_kst": "2026-09-28T06:22:53+09:00",
       "lanes": {
@@ -94190,6 +94482,25 @@
       "source_title": "이라크산 원유 시리아 통해 육로수송…호르무즈 우회 | 연합뉴스",
       "telegram_core_fact": "이라크가 트럭으로 원유를 시리아를 거쳐 수출하는 방식이 이르면 이달 중순 시작될 전망이라고 블룸버그 통신이 7일(현지시간) 보도했다.",
       "title": "이라크산 원유 시리아 통해 육로수송…호르무즈 우회 | 연합뉴스"
+    },
+    "link:33d0f405d8b255d5f479b622": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02253366645612264",
+      "source": "이데일리",
+      "source_body_digest": "4b99035d0fbe7dd8282b69425da0558e4e502c5f47e00a12b0bed2c22ec10e07",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:817f6d2002fc96e9815c60395e553e095e8f93f9907e1f3efc73b373ebfb5009",
+      "source_fact_keys": [
+        "source_fact:v1:59212b2ae4e23161a1be80d20c2d8694e854042a696225edb02fcdd134f8e3dd"
+      ],
+      "source_published_kst": "2026-10-12T09:03+09:00",
+      "source_title": "[속보]10월 초순 수출 261억달러로 102%↑…동기간 역대 최대",
+      "telegram_core_fact": "관세청이 발표한 ‘10월 1~10일 수출입 현황’에 따르면 , 이 기간 수출액(통관기준 잠정)은 261억 400만달러로 전년비 102.0% 증가했다.",
+      "title": "[속보]10월 초순 수출 261억달러로 102%↑…동기간 역대 최대"
     },
     "link:34019ea656a947385e61a257": {
       "first_seen_kst": "2026-10-09T21:27:46+09:00",
@@ -103970,6 +104281,35 @@
       ],
       "source_published_kst": "2026-10-06T18:40+09:00",
       "title": "이형일 \"대미투자 24억弗 송금\"…레버리지 ETF 손실엔 \"송구\"(종합2보)"
+    },
+    "link:5c8801dcd189ae0683b069b6": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.fnnews.com/news/202610121007350412",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "23b0a8d0898efbb191a80786533125ca2a31b3ebd2957a68dab7da860c1a1d0f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:73eb268edb1740418eb4df997790ce47d75046adaa23aadb02cb4bd30ab16709",
+      "source_fact_keys": [
+        "source_fact:v1:0d3a7368e8938168e43917d68b4a23dc586458d79a6076a61b2f4d028bf1f564",
+        "source_fact:v1:1316a271ed98622398fc1548be94c1f07e913027c09efc583f79a041294b0b10",
+        "source_fact:v1:1a6b864839547ce74cdb5aa46d9df48d7753005cfe54f78839672766fa1cd2f6",
+        "source_fact:v1:2745359ed8d6d13f00e231789021e0fd7c6dc394f4db419d5b1751dc8e6dd1e8",
+        "source_fact:v1:3f29dcd683f1de01cccafe3b703eb3e3ef1200027f94e330f104bd30f62f6f76",
+        "source_fact:v1:3fd96e61f1ab6f6ba2796a6e837ed76f548ee15691226b6d3540f4f9b1f9c6a3",
+        "source_fact:v1:6065b13089c59ad7a94b3315dbb4c6e88cd39a813ad1b647d5b1f7bae5f6be3a",
+        "source_fact:v1:778f4804464f3b9099c6603ef8a6809095988b8e785ccc14d2e50e9f50fdab6e",
+        "source_fact:v1:839e40d42006d053e0ab4926ca7e0cb4ec1ff0272a6c4d3723b9ce1b951e1fc4",
+        "source_fact:v1:98c3c7100d5d7660ebb35414e4f7b3ecfd73b9f624ce7e9f9e1f24db3e46a563",
+        "source_fact:v1:bf8f62475816482330826709c79ead9e0e394ba9cb18abef942ec755fa2e8f0f"
+      ],
+      "source_published_kst": "2026-10-12T10:07+09:00",
+      "source_title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다",
+      "telegram_core_fact": "채권 기관투자자 결제 가운데 채권 결제대금은 일평균 12조5천억원으로 전 분기보다 11.3% 줄었다. 주식 결제대금은 일평균 8조8천억원으로 전 분기 대비 12.4% 감소했으며, 채권 결제 대금은 26조6천억원으로 17.7% 줄었다.",
+      "title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다"
     },
     "link:5ca8f578792ffb85cbb919a9": {
       "first_seen_kst": "2026-10-02T17:01:29+09:00",
@@ -118414,6 +118754,30 @@
       "source_published_kst": "2026-10-06T15:48+09:00",
       "title": "LG이노텍, 美서 HBM 적용 패키지 특허 공개…AI 기판 IP 넓힌다"
     },
+    "link:95d47985ea8730d0526da0a2": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172740",
+      "source": "매일경제",
+      "source_body_digest": "fec6ec7643fe6bc22d127d4653e9ac7de19292b5a332cb354729aed9e5b71c01",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a7cab95a6dc46175eb5148b3a7a68bdfbeaf807894547e7ebe88b7ceb432a87",
+      "source_fact_keys": [
+        "source_fact:v1:3447df2658e6887f47262ac49ae640e3f4f2104224ee4a58376a4abfe2c54f4c",
+        "source_fact:v1:6757945691f3640f3d0c55975f9d6b7904f7a3199985ccc632f89d59a6a5061d",
+        "source_fact:v1:9ee52add4cec96298977792a47159e42a474402a416bee0495c77b11552aa60e",
+        "source_fact:v1:bc9be1ed36833dbbbf31a7d954070204a8247abb12dd529f6a7d91a8d1ee6883",
+        "source_fact:v1:dc33a83a413d91c961c2535f5509f1d9e6112c384d28fc5471b521e50746f29c",
+        "source_fact:v1:ffaecec241577bf9536dd029e7fa96695765291473c7c2565e5c7f8d13339259"
+      ],
+      "source_published_kst": "2026-10-12T09:34+09:00",
+      "source_title": "STX그린로지스, 8% 급등…중동 불안에 운임 뛰자 해운株 줄줄이 상승",
+      "telegram_core_fact": "중동 지역의 지정학적 불안이 장기화하면서 해운 운임이 급등하자 해운 관련주가 일제히 강세를 보이고 있다.",
+      "title": "STX그린로지스, 8% 급등…중동 불안에 운임 뛰자 해운株 줄줄이 상승"
+    },
     "link:95e3da3438cf72b4bc2b86cd": {
       "first_seen_kst": "2026-10-11T12:11:12+09:00",
       "lanes": {
@@ -122325,6 +122689,27 @@
       "source_published_kst": "2026-10-06T09:21+09:00",
       "title": "[특징주] LG전자, 북미향 AI데이터센터 냉각솔루션 계약에 장초반 급등"
     },
+    "link:a5a82a10221f2c7450256e5c": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821942",
+      "source": "뉴시스",
+      "source_body_digest": "1d5b7f8ad53736a6627322ca77e2be5315f91e64d5877b9b179c1edd94a9ebc7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:76f8c435460c40466bb85a35ecf2944709d45b3f9610cd595e018637b68ebef9",
+      "source_fact_keys": [
+        "source_fact:v1:708a81fc187a4b2ca724c9f6f801d3b80010892e07d85161b65ff891a04fe0e3",
+        "source_fact:v1:7d111f3aba014b1638772c0fce40e86c4c4a8cb86a14bb2aebe7d64628a1e734",
+        "source_fact:v1:9bd55387805f5c6c0a1323ef33da9e72490d5741982fe3c76c11a17f5270afd4"
+      ],
+      "source_published_kst": "2026-10-12T11:20+09:00",
+      "source_title": "제주 AI 대전환 사업에 공공기관 참여 확대…16일 설명회",
+      "telegram_core_fact": "제주도가 40메가와트(MW)급 인공지능(AI) 데이터센터 구축과 지역 산업의 인공지능 전환(AX)을 추진하기 위해 도내 공공기관의 참여를 확대하고 분야별 실증과제를 발굴한다.",
+      "title": "제주 AI 대전환 사업에 공공기관 참여 확대…16일 설명회"
+    },
     "link:a5b8a99e310fba2dc436b17c": {
       "first_seen_kst": "2026-10-12T08:46:35+09:00",
       "lanes": {
@@ -125055,6 +125440,25 @@
       ],
       "source_published_kst": "2026-10-06T11:25+09:00",
       "title": "[속보]삼성전기, 2900억 규모 AI 서버용 MLCC 공급계약 체결"
+    },
+    "link:b0e7d3e0328e6bf0663ae1f5": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821759",
+      "source": "뉴시스",
+      "source_body_digest": "84ea7f18f9c86f44962bd51f728cdf52a0a038cbbeb6a7ef1c28f5fae2e9aa71",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:661900157585823c91c0ec2887e7c69eb3d78b3520be9bf7d7c2adc2c0eefb40",
+      "source_fact_keys": [
+        "source_fact:v1:7b7eb3862eda1e3d260c97fd0bdb96bb504fbb0c5810eedc67256715d90129bd"
+      ],
+      "source_published_kst": "2026-10-12T10:34+09:00",
+      "source_title": "\"수돗물 누수 잡는다\" 안양시, 소블록 42곳 추가 정비",
+      "telegram_core_fact": "경기 안양시가 수돗물 누수를 막고 공급 효율성을 높이기 위해 관내 42개 소블록을 추가 구축하고 노후 상수도 시설에 대한 전면 정비에 나선다.",
+      "title": "\"수돗물 누수 잡는다\" 안양시, 소블록 42곳 추가 정비"
     },
     "link:b0ec94791ec482b3eb987fa0": {
       "first_seen_kst": "2026-10-09T17:13:50+09:00",
@@ -136885,6 +137289,23 @@
       "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "수도권은 집 부족…지방은 수요 부족해 공공주택 착공 연기 | 연합뉴스"
     },
+    "link:e25735528a7ab3763c334b30": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261010_0003820563",
+      "source": "뉴시스",
+      "source_body_digest": "5567d8d28451d3df206bea23b715be75a6afa21cb78257437c0318de66fd1edf",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T11:26+09:00",
+      "source_title": "도부, 상반기 영업흑자…CM-77 조달 우수제품 지정 힘입어 공공시장 공략",
+      "telegram_core_fact": "도부는 내년 1월부터 중앙행정기관, 지방자치단체, 공공기관, 직장 민방위대 등을 대상으로 CM-77의 공급을 확대할 계획이다.",
+      "title": "도부, 상반기 영업흑자…CM-77 조달 우수제품 지정 힘입어 공공시장 공략"
+    },
     "link:e26397f290fbc357ef9ab156": {
       "first_seen_kst": "2026-10-10T11:21:03+09:00",
       "lanes": {
@@ -147058,6 +147479,30 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T10:58+09:00",
       "title": "고든앤맥페일, 도수 높인 '벤로막 12년'으로 韓 공략 속도…“셰리 캐스크·훈연 가장 좋은 균형”"
+    },
+    "original:0c5f13a5c78a6820a7cd7d2e": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172740",
+      "source": "매일경제",
+      "source_body_digest": "fec6ec7643fe6bc22d127d4653e9ac7de19292b5a332cb354729aed9e5b71c01",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a7cab95a6dc46175eb5148b3a7a68bdfbeaf807894547e7ebe88b7ceb432a87",
+      "source_fact_keys": [
+        "source_fact:v1:3447df2658e6887f47262ac49ae640e3f4f2104224ee4a58376a4abfe2c54f4c",
+        "source_fact:v1:6757945691f3640f3d0c55975f9d6b7904f7a3199985ccc632f89d59a6a5061d",
+        "source_fact:v1:9ee52add4cec96298977792a47159e42a474402a416bee0495c77b11552aa60e",
+        "source_fact:v1:bc9be1ed36833dbbbf31a7d954070204a8247abb12dd529f6a7d91a8d1ee6883",
+        "source_fact:v1:dc33a83a413d91c961c2535f5509f1d9e6112c384d28fc5471b521e50746f29c",
+        "source_fact:v1:ffaecec241577bf9536dd029e7fa96695765291473c7c2565e5c7f8d13339259"
+      ],
+      "source_published_kst": "2026-10-12T09:34+09:00",
+      "source_title": "STX그린로지스, 8% 급등…중동 불안에 운임 뛰자 해운株 줄줄이 상승",
+      "telegram_core_fact": "중동 지역의 지정학적 불안이 장기화하면서 해운 운임이 급등하자 해운 관련주가 일제히 강세를 보이고 있다.",
+      "title": "STX그린로지스, 8% 급등…중동 불안에 운임 뛰자 해운株 줄줄이 상승"
     },
     "original:0c734001ad25189eb4fb205a": {
       "first_seen_kst": "2026-10-08T18:02:43+09:00",
@@ -169133,6 +169578,23 @@
       "source_published_kst": "2026-10-06T17:51+09:00",
       "title": "알테오젠, 알테오젠바이오로직스 합병 결정 | 연합뉴스"
     },
+    "original:69346efc37b2e28bd2f34f5a": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261010_0003820563",
+      "source": "뉴시스",
+      "source_body_digest": "5567d8d28451d3df206bea23b715be75a6afa21cb78257437c0318de66fd1edf",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T11:26+09:00",
+      "source_title": "도부, 상반기 영업흑자…CM-77 조달 우수제품 지정 힘입어 공공시장 공략",
+      "telegram_core_fact": "도부는 내년 1월부터 중앙행정기관, 지방자치단체, 공공기관, 직장 민방위대 등을 대상으로 CM-77의 공급을 확대할 계획이다.",
+      "title": "도부, 상반기 영업흑자…CM-77 조달 우수제품 지정 힘입어 공공시장 공략"
+    },
     "original:693ee3b75b39c5d13da3b11f": {
       "first_seen_kst": "2026-10-08T05:17:22+09:00",
       "lanes": {
@@ -174380,6 +174842,25 @@
       "source_published_kst": "2026-10-07T10:00+09:00",
       "title": "테크다스 AI 가상센서, 정유공장 가열로서 안전성 향상·온실가스 저감 효과 동시 입증"
     },
+    "original:7fa409a86ddc7cb61cd81d49": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02253366645612264",
+      "source": "이데일리",
+      "source_body_digest": "4b99035d0fbe7dd8282b69425da0558e4e502c5f47e00a12b0bed2c22ec10e07",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:817f6d2002fc96e9815c60395e553e095e8f93f9907e1f3efc73b373ebfb5009",
+      "source_fact_keys": [
+        "source_fact:v1:59212b2ae4e23161a1be80d20c2d8694e854042a696225edb02fcdd134f8e3dd"
+      ],
+      "source_published_kst": "2026-10-12T09:03+09:00",
+      "source_title": "[속보]10월 초순 수출 261억달러로 102%↑…동기간 역대 최대",
+      "telegram_core_fact": "관세청이 발표한 ‘10월 1~10일 수출입 현황’에 따르면 , 이 기간 수출액(통관기준 잠정)은 261억 400만달러로 전년비 102.0% 증가했다.",
+      "title": "[속보]10월 초순 수출 261억달러로 102%↑…동기간 역대 최대"
+    },
     "original:7fcf4130e232f119e7880f67": {
       "first_seen_kst": "2026-10-06T23:46:46+09:00",
       "lanes": {
@@ -174958,6 +175439,35 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T06:30+09:00",
       "title": "메모리 ‘오징어 게임’ 벌어지나…美 싱크탱크의 ‘메모리 공급 과잉’ 경고 [칩칩팹팹]"
+    },
+    "original:82c1a1c94c16f6c3d7ab720a": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.fnnews.com/news/202610121007350412",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "23b0a8d0898efbb191a80786533125ca2a31b3ebd2957a68dab7da860c1a1d0f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:73eb268edb1740418eb4df997790ce47d75046adaa23aadb02cb4bd30ab16709",
+      "source_fact_keys": [
+        "source_fact:v1:0d3a7368e8938168e43917d68b4a23dc586458d79a6076a61b2f4d028bf1f564",
+        "source_fact:v1:1316a271ed98622398fc1548be94c1f07e913027c09efc583f79a041294b0b10",
+        "source_fact:v1:1a6b864839547ce74cdb5aa46d9df48d7753005cfe54f78839672766fa1cd2f6",
+        "source_fact:v1:2745359ed8d6d13f00e231789021e0fd7c6dc394f4db419d5b1751dc8e6dd1e8",
+        "source_fact:v1:3f29dcd683f1de01cccafe3b703eb3e3ef1200027f94e330f104bd30f62f6f76",
+        "source_fact:v1:3fd96e61f1ab6f6ba2796a6e837ed76f548ee15691226b6d3540f4f9b1f9c6a3",
+        "source_fact:v1:6065b13089c59ad7a94b3315dbb4c6e88cd39a813ad1b647d5b1f7bae5f6be3a",
+        "source_fact:v1:778f4804464f3b9099c6603ef8a6809095988b8e785ccc14d2e50e9f50fdab6e",
+        "source_fact:v1:839e40d42006d053e0ab4926ca7e0cb4ec1ff0272a6c4d3723b9ce1b951e1fc4",
+        "source_fact:v1:98c3c7100d5d7660ebb35414e4f7b3ecfd73b9f624ce7e9f9e1f24db3e46a563",
+        "source_fact:v1:bf8f62475816482330826709c79ead9e0e394ba9cb18abef942ec755fa2e8f0f"
+      ],
+      "source_published_kst": "2026-10-12T10:07+09:00",
+      "source_title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다",
+      "telegram_core_fact": "채권 기관투자자 결제 가운데 채권 결제대금은 일평균 12조5천억원으로 전 분기보다 11.3% 줄었다. 주식 결제대금은 일평균 8조8천억원으로 전 분기 대비 12.4% 감소했으며, 채권 결제 대금은 26조6천억원으로 17.7% 줄었다.",
+      "title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다"
     },
     "original:82c22414b957adeab9d3f8fa": {
       "first_seen_kst": "2026-10-02T07:36:51+09:00",
@@ -183872,6 +184382,27 @@
       ],
       "source_published_kst": "2026-10-06T11:12+09:00",
       "title": "LG전자, 5GW 북미 냉각 설루션 장기 계약"
+    },
+    "original:a70c17ed878fcc3091747e57": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821942",
+      "source": "뉴시스",
+      "source_body_digest": "1d5b7f8ad53736a6627322ca77e2be5315f91e64d5877b9b179c1edd94a9ebc7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:76f8c435460c40466bb85a35ecf2944709d45b3f9610cd595e018637b68ebef9",
+      "source_fact_keys": [
+        "source_fact:v1:708a81fc187a4b2ca724c9f6f801d3b80010892e07d85161b65ff891a04fe0e3",
+        "source_fact:v1:7d111f3aba014b1638772c0fce40e86c4c4a8cb86a14bb2aebe7d64628a1e734",
+        "source_fact:v1:9bd55387805f5c6c0a1323ef33da9e72490d5741982fe3c76c11a17f5270afd4"
+      ],
+      "source_published_kst": "2026-10-12T11:20+09:00",
+      "source_title": "제주 AI 대전환 사업에 공공기관 참여 확대…16일 설명회",
+      "telegram_core_fact": "제주도가 40메가와트(MW)급 인공지능(AI) 데이터센터 구축과 지역 산업의 인공지능 전환(AX)을 추진하기 위해 도내 공공기관의 참여를 확대하고 분야별 실증과제를 발굴한다.",
+      "title": "제주 AI 대전환 사업에 공공기관 참여 확대…16일 설명회"
     },
     "original:a71e2433deb5b4772ddca4f4": {
       "first_seen_kst": "2026-10-08T01:26:16+09:00",
@@ -193183,6 +193714,25 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03224246645608984",
       "source": "이데일리",
       "title": "네이버 노조 \"본사도 통합교섭 나서라\"…지노위에 시정신청"
+    },
+    "original:cf266f9111c865627c98e692": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821759",
+      "source": "뉴시스",
+      "source_body_digest": "84ea7f18f9c86f44962bd51f728cdf52a0a038cbbeb6a7ef1c28f5fae2e9aa71",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:661900157585823c91c0ec2887e7c69eb3d78b3520be9bf7d7c2adc2c0eefb40",
+      "source_fact_keys": [
+        "source_fact:v1:7b7eb3862eda1e3d260c97fd0bdb96bb504fbb0c5810eedc67256715d90129bd"
+      ],
+      "source_published_kst": "2026-10-12T10:34+09:00",
+      "source_title": "\"수돗물 누수 잡는다\" 안양시, 소블록 42곳 추가 정비",
+      "telegram_core_fact": "경기 안양시가 수돗물 누수를 막고 공급 효율성을 높이기 위해 관내 42개 소블록을 추가 구축하고 노후 상수도 시설에 대한 전면 정비에 나선다.",
+      "title": "\"수돗물 누수 잡는다\" 안양시, 소블록 42곳 추가 정비"
     },
     "original:cf2e72d9792d48b4f35a6477": {
       "first_seen_kst": "2026-10-09T21:27:46+09:00",
@@ -203839,6 +204389,23 @@
       "source_title": "트럼프, '러·우 에너지 휴전합의' 했다는데…러는 공습 계속(종합2보) | 연합뉴스",
       "telegram_core_fact": "도널드 트럼프 미국 대통령은 11일(현지시간) 러시아와 우크라이나가 에너지 부문에 대한 휴전에 합의했다고 밝혔다. 젤렌스키 대통령은 또 이날 저녁 영상 연설에서 러시아가 트럼프 대통령의 발표 이후에도 우크라이나 제2의 도시 하르키우의 열병합발전소를 공격하는 등 에너지 시설 공격을 지속했다고 밝혔다.",
       "title": "트럼프, '러·우 에너지 휴전합의' 했다는데…러는 공습 계속(종합2보) | 연합뉴스"
+    },
+    "original:fbbbd915de87c56b66ccb109": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012058800008",
+      "source": "연합뉴스",
+      "source_body_digest": "5585d7301bbc50d5ceb6962632239a84e7fd0bb1ff7832065a30fc949e5c4786",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T11:14+09:00",
+      "source_title": "9월 장외채권 거래 증가…개인 순매수, 외국인은 '팔자' | 연합뉴스",
+      "telegram_core_fact": "이후 국제유가와 원·달러 환율이 안정되고, 외국인의 10년 국채선물 순매수 및 세계국채지수(WGBI) 편입 관련 중장기물 매수가 이어지면서 초장기물 금리는 하락했다.",
+      "title": "9월 장외채권 거래 증가…개인 순매수, 외국인은 '팔자' | 연합뉴스"
     },
     "original:fbbf971d130a4ccab5110196": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
@@ -218874,6 +219441,30 @@
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "\"속옷도 가성비\"…롯데마트, 언더웨어 3000·5000원 균일가"
     },
+    "source_fact:11e37663f053d8ebfd8d52be": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172740",
+      "source": "매일경제",
+      "source_body_digest": "fec6ec7643fe6bc22d127d4653e9ac7de19292b5a332cb354729aed9e5b71c01",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a7cab95a6dc46175eb5148b3a7a68bdfbeaf807894547e7ebe88b7ceb432a87",
+      "source_fact_keys": [
+        "source_fact:v1:3447df2658e6887f47262ac49ae640e3f4f2104224ee4a58376a4abfe2c54f4c",
+        "source_fact:v1:6757945691f3640f3d0c55975f9d6b7904f7a3199985ccc632f89d59a6a5061d",
+        "source_fact:v1:9ee52add4cec96298977792a47159e42a474402a416bee0495c77b11552aa60e",
+        "source_fact:v1:bc9be1ed36833dbbbf31a7d954070204a8247abb12dd529f6a7d91a8d1ee6883",
+        "source_fact:v1:dc33a83a413d91c961c2535f5509f1d9e6112c384d28fc5471b521e50746f29c",
+        "source_fact:v1:ffaecec241577bf9536dd029e7fa96695765291473c7c2565e5c7f8d13339259"
+      ],
+      "source_published_kst": "2026-10-12T09:34+09:00",
+      "source_title": "STX그린로지스, 8% 급등…중동 불안에 운임 뛰자 해운株 줄줄이 상승",
+      "telegram_core_fact": "중동 지역의 지정학적 불안이 장기화하면서 해운 운임이 급등하자 해운 관련주가 일제히 강세를 보이고 있다.",
+      "title": "STX그린로지스, 8% 급등…중동 불안에 운임 뛰자 해운株 줄줄이 상승"
+    },
     "source_fact:11e5c22d87c9aa0951fe3ed0": {
       "first_seen_kst": "2026-10-07T21:31:57+09:00",
       "lanes": {
@@ -224876,6 +225467,30 @@
       "telegram_core_fact": "추가 환수금은 공공재정환수법상 제재부가금과 같은 성격으로, 부정수급액의 최대 5배까지 부과될 수 있다.",
       "title": "반복되는 산재예방 보조금 부정수급…상반기 66억 환수"
     },
+    "source_fact:19b302710b32555b15e400f9": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172740",
+      "source": "매일경제",
+      "source_body_digest": "fec6ec7643fe6bc22d127d4653e9ac7de19292b5a332cb354729aed9e5b71c01",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a7cab95a6dc46175eb5148b3a7a68bdfbeaf807894547e7ebe88b7ceb432a87",
+      "source_fact_keys": [
+        "source_fact:v1:3447df2658e6887f47262ac49ae640e3f4f2104224ee4a58376a4abfe2c54f4c",
+        "source_fact:v1:6757945691f3640f3d0c55975f9d6b7904f7a3199985ccc632f89d59a6a5061d",
+        "source_fact:v1:9ee52add4cec96298977792a47159e42a474402a416bee0495c77b11552aa60e",
+        "source_fact:v1:bc9be1ed36833dbbbf31a7d954070204a8247abb12dd529f6a7d91a8d1ee6883",
+        "source_fact:v1:dc33a83a413d91c961c2535f5509f1d9e6112c384d28fc5471b521e50746f29c",
+        "source_fact:v1:ffaecec241577bf9536dd029e7fa96695765291473c7c2565e5c7f8d13339259"
+      ],
+      "source_published_kst": "2026-10-12T09:34+09:00",
+      "source_title": "STX그린로지스, 8% 급등…중동 불안에 운임 뛰자 해운株 줄줄이 상승",
+      "telegram_core_fact": "중동 지역의 지정학적 불안이 장기화하면서 해운 운임이 급등하자 해운 관련주가 일제히 강세를 보이고 있다.",
+      "title": "STX그린로지스, 8% 급등…중동 불안에 운임 뛰자 해운株 줄줄이 상승"
+    },
     "source_fact:19b89d0d1253d3a51b36a3f6": {
       "first_seen_kst": "2026-10-07T23:23:06+09:00",
       "lanes": {
@@ -225408,6 +226023,27 @@
       "source_title": "빈 라덴 잡은 이 기업…AI 시대 승자 될까 [박신영의 월가 아나토미]",
       "telegram_core_fact": "앞으로 팔란티어를 평가할 핵심 기준은 AI 시대의 성장 가능성 자체보다, 실제 매출과 이익 증가가 높은 밸류에이션을 얼마나 빠르게 뒷받침할 수 있느냐가 될 전망입니다.",
       "title": "빈 라덴 잡은 이 기업…AI 시대 승자 될까 [박신영의 월가 아나토미]"
+    },
+    "source_fact:1a52a6b1fa827b432bd22309": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821942",
+      "source": "뉴시스",
+      "source_body_digest": "1d5b7f8ad53736a6627322ca77e2be5315f91e64d5877b9b179c1edd94a9ebc7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:76f8c435460c40466bb85a35ecf2944709d45b3f9610cd595e018637b68ebef9",
+      "source_fact_keys": [
+        "source_fact:v1:708a81fc187a4b2ca724c9f6f801d3b80010892e07d85161b65ff891a04fe0e3",
+        "source_fact:v1:7d111f3aba014b1638772c0fce40e86c4c4a8cb86a14bb2aebe7d64628a1e734",
+        "source_fact:v1:9bd55387805f5c6c0a1323ef33da9e72490d5741982fe3c76c11a17f5270afd4"
+      ],
+      "source_published_kst": "2026-10-12T11:20+09:00",
+      "source_title": "제주 AI 대전환 사업에 공공기관 참여 확대…16일 설명회",
+      "telegram_core_fact": "제주도가 40메가와트(MW)급 인공지능(AI) 데이터센터 구축과 지역 산업의 인공지능 전환(AX)을 추진하기 위해 도내 공공기관의 참여를 확대하고 분야별 실증과제를 발굴한다.",
+      "title": "제주 AI 대전환 사업에 공공기관 참여 확대…16일 설명회"
     },
     "source_fact:1a55d894579f42626cadb1ba": {
       "first_seen_kst": "2026-10-07T18:58:51+09:00",
@@ -227637,6 +228273,30 @@
       ],
       "source_published_kst": "2026-10-05T21:08+09:00",
       "title": "포럼 마켓츠, AI 합작사 설립..2027년 매출 최대 1억7500만달러"
+    },
+    "source_fact:1cd8ebef932ed2167f7dccf1": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172740",
+      "source": "매일경제",
+      "source_body_digest": "fec6ec7643fe6bc22d127d4653e9ac7de19292b5a332cb354729aed9e5b71c01",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a7cab95a6dc46175eb5148b3a7a68bdfbeaf807894547e7ebe88b7ceb432a87",
+      "source_fact_keys": [
+        "source_fact:v1:3447df2658e6887f47262ac49ae640e3f4f2104224ee4a58376a4abfe2c54f4c",
+        "source_fact:v1:6757945691f3640f3d0c55975f9d6b7904f7a3199985ccc632f89d59a6a5061d",
+        "source_fact:v1:9ee52add4cec96298977792a47159e42a474402a416bee0495c77b11552aa60e",
+        "source_fact:v1:bc9be1ed36833dbbbf31a7d954070204a8247abb12dd529f6a7d91a8d1ee6883",
+        "source_fact:v1:dc33a83a413d91c961c2535f5509f1d9e6112c384d28fc5471b521e50746f29c",
+        "source_fact:v1:ffaecec241577bf9536dd029e7fa96695765291473c7c2565e5c7f8d13339259"
+      ],
+      "source_published_kst": "2026-10-12T09:34+09:00",
+      "source_title": "STX그린로지스, 8% 급등…중동 불안에 운임 뛰자 해운株 줄줄이 상승",
+      "telegram_core_fact": "중동 지역의 지정학적 불안이 장기화하면서 해운 운임이 급등하자 해운 관련주가 일제히 강세를 보이고 있다.",
+      "title": "STX그린로지스, 8% 급등…중동 불안에 운임 뛰자 해운株 줄줄이 상승"
     },
     "source_fact:1cead38348671de3cc1537c1": {
       "first_seen_kst": "2026-10-10T16:38:23+09:00",
@@ -252231,6 +252891,35 @@
       "telegram_core_fact": "이영곤 토스증권 리서치센터장도 \"투자자들은 앞으로도 이러한 높은 이익 성장세가 얼마만큼 더 이어질 수 있는 지 주목하고 있다\"며 \"확정실적을 통해 메모리 수급과 가격, HBM, 내년 실적 전망, 주주환원 등에 대한 회사의 구체적인 설명을 확인하는 것이 필요하다\"고 전했다.",
       "title": "D램값 상승·주주환원 기대감… 삼성전자 주가 끌어올릴까"
     },
+    "source_fact:3a037a0394b90c020d70fbee": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.fnnews.com/news/202610121007350412",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "23b0a8d0898efbb191a80786533125ca2a31b3ebd2957a68dab7da860c1a1d0f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:73eb268edb1740418eb4df997790ce47d75046adaa23aadb02cb4bd30ab16709",
+      "source_fact_keys": [
+        "source_fact:v1:0d3a7368e8938168e43917d68b4a23dc586458d79a6076a61b2f4d028bf1f564",
+        "source_fact:v1:1316a271ed98622398fc1548be94c1f07e913027c09efc583f79a041294b0b10",
+        "source_fact:v1:1a6b864839547ce74cdb5aa46d9df48d7753005cfe54f78839672766fa1cd2f6",
+        "source_fact:v1:2745359ed8d6d13f00e231789021e0fd7c6dc394f4db419d5b1751dc8e6dd1e8",
+        "source_fact:v1:3f29dcd683f1de01cccafe3b703eb3e3ef1200027f94e330f104bd30f62f6f76",
+        "source_fact:v1:3fd96e61f1ab6f6ba2796a6e837ed76f548ee15691226b6d3540f4f9b1f9c6a3",
+        "source_fact:v1:6065b13089c59ad7a94b3315dbb4c6e88cd39a813ad1b647d5b1f7bae5f6be3a",
+        "source_fact:v1:778f4804464f3b9099c6603ef8a6809095988b8e785ccc14d2e50e9f50fdab6e",
+        "source_fact:v1:839e40d42006d053e0ab4926ca7e0cb4ec1ff0272a6c4d3723b9ce1b951e1fc4",
+        "source_fact:v1:98c3c7100d5d7660ebb35414e4f7b3ecfd73b9f624ce7e9f9e1f24db3e46a563",
+        "source_fact:v1:bf8f62475816482330826709c79ead9e0e394ba9cb18abef942ec755fa2e8f0f"
+      ],
+      "source_published_kst": "2026-10-12T10:07+09:00",
+      "source_title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다",
+      "telegram_core_fact": "채권 기관투자자 결제 가운데 채권 결제대금은 일평균 12조5천억원으로 전 분기보다 11.3% 줄었다. 주식 결제대금은 일평균 8조8천억원으로 전 분기 대비 12.4% 감소했으며, 채권 결제 대금은 26조6천억원으로 17.7% 줄었다.",
+      "title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다"
+    },
     "source_fact:3a0ea7eb6dfeedbfebca80a0": {
       "first_seen_kst": "2026-10-07T11:25:20+09:00",
       "lanes": {
@@ -270917,6 +271606,27 @@
       "source_published_kst": "2026-10-07T12:00+09:00",
       "title": "SK에너지·현대오일뱅크, 44조원대 유류 담합 혐의…공정위, 제재 착수"
     },
+    "source_fact:50f0629ce40f45ab3ca1dd71": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821942",
+      "source": "뉴시스",
+      "source_body_digest": "1d5b7f8ad53736a6627322ca77e2be5315f91e64d5877b9b179c1edd94a9ebc7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:76f8c435460c40466bb85a35ecf2944709d45b3f9610cd595e018637b68ebef9",
+      "source_fact_keys": [
+        "source_fact:v1:708a81fc187a4b2ca724c9f6f801d3b80010892e07d85161b65ff891a04fe0e3",
+        "source_fact:v1:7d111f3aba014b1638772c0fce40e86c4c4a8cb86a14bb2aebe7d64628a1e734",
+        "source_fact:v1:9bd55387805f5c6c0a1323ef33da9e72490d5741982fe3c76c11a17f5270afd4"
+      ],
+      "source_published_kst": "2026-10-12T11:20+09:00",
+      "source_title": "제주 AI 대전환 사업에 공공기관 참여 확대…16일 설명회",
+      "telegram_core_fact": "제주도가 40메가와트(MW)급 인공지능(AI) 데이터센터 구축과 지역 산업의 인공지능 전환(AX)을 추진하기 위해 도내 공공기관의 참여를 확대하고 분야별 실증과제를 발굴한다.",
+      "title": "제주 AI 대전환 사업에 공공기관 참여 확대…16일 설명회"
+    },
     "source_fact:50feac5cf60a3ce3104c7dff": {
       "first_seen_kst": "2026-10-06T18:16:47+09:00",
       "lanes": {
@@ -278693,6 +279403,35 @@
       ],
       "source_published_kst": "2026-10-07T11:00+09:00",
       "title": "폴스타, 9월 역대 최대 판매…年 판매목표 달성 성큼"
+    },
+    "source_fact:59c38edb8c189521b5992938": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.fnnews.com/news/202610121007350412",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "23b0a8d0898efbb191a80786533125ca2a31b3ebd2957a68dab7da860c1a1d0f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:73eb268edb1740418eb4df997790ce47d75046adaa23aadb02cb4bd30ab16709",
+      "source_fact_keys": [
+        "source_fact:v1:0d3a7368e8938168e43917d68b4a23dc586458d79a6076a61b2f4d028bf1f564",
+        "source_fact:v1:1316a271ed98622398fc1548be94c1f07e913027c09efc583f79a041294b0b10",
+        "source_fact:v1:1a6b864839547ce74cdb5aa46d9df48d7753005cfe54f78839672766fa1cd2f6",
+        "source_fact:v1:2745359ed8d6d13f00e231789021e0fd7c6dc394f4db419d5b1751dc8e6dd1e8",
+        "source_fact:v1:3f29dcd683f1de01cccafe3b703eb3e3ef1200027f94e330f104bd30f62f6f76",
+        "source_fact:v1:3fd96e61f1ab6f6ba2796a6e837ed76f548ee15691226b6d3540f4f9b1f9c6a3",
+        "source_fact:v1:6065b13089c59ad7a94b3315dbb4c6e88cd39a813ad1b647d5b1f7bae5f6be3a",
+        "source_fact:v1:778f4804464f3b9099c6603ef8a6809095988b8e785ccc14d2e50e9f50fdab6e",
+        "source_fact:v1:839e40d42006d053e0ab4926ca7e0cb4ec1ff0272a6c4d3723b9ce1b951e1fc4",
+        "source_fact:v1:98c3c7100d5d7660ebb35414e4f7b3ecfd73b9f624ce7e9f9e1f24db3e46a563",
+        "source_fact:v1:bf8f62475816482330826709c79ead9e0e394ba9cb18abef942ec755fa2e8f0f"
+      ],
+      "source_published_kst": "2026-10-12T10:07+09:00",
+      "source_title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다",
+      "telegram_core_fact": "채권 기관투자자 결제 가운데 채권 결제대금은 일평균 12조5천억원으로 전 분기보다 11.3% 줄었다. 주식 결제대금은 일평균 8조8천억원으로 전 분기 대비 12.4% 감소했으며, 채권 결제 대금은 26조6천억원으로 17.7% 줄었다.",
+      "title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다"
     },
     "source_fact:59c7c0157125544c3bee1439": {
       "first_seen_kst": "2026-10-08T16:14:26+09:00",
@@ -297181,6 +297920,25 @@
       "telegram_core_fact": "대신증권은 효성중공업의 3분기 매출을 1조9090억원, 영업이익을 3032억원으로 예상했다.",
       "title": "대신증권 \"효성중공업, 3분기 일시적 부진…업황 호조는 지속\""
     },
+    "source_fact:7063bbf846be289b5a8b3808": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821759",
+      "source": "뉴시스",
+      "source_body_digest": "84ea7f18f9c86f44962bd51f728cdf52a0a038cbbeb6a7ef1c28f5fae2e9aa71",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:661900157585823c91c0ec2887e7c69eb3d78b3520be9bf7d7c2adc2c0eefb40",
+      "source_fact_keys": [
+        "source_fact:v1:7b7eb3862eda1e3d260c97fd0bdb96bb504fbb0c5810eedc67256715d90129bd"
+      ],
+      "source_published_kst": "2026-10-12T10:34+09:00",
+      "source_title": "\"수돗물 누수 잡는다\" 안양시, 소블록 42곳 추가 정비",
+      "telegram_core_fact": "경기 안양시가 수돗물 누수를 막고 공급 효율성을 높이기 위해 관내 42개 소블록을 추가 구축하고 노후 상수도 시설에 대한 전면 정비에 나선다.",
+      "title": "\"수돗물 누수 잡는다\" 안양시, 소블록 42곳 추가 정비"
+    },
     "source_fact:7075ef889435170528a8c3bf": {
       "first_seen_kst": "2026-10-09T19:24:17+09:00",
       "lanes": {
@@ -301195,6 +301953,35 @@
       ],
       "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "수도권은 집 부족…지방은 수요 부족해 공공주택 착공 연기 | 연합뉴스"
+    },
+    "source_fact:75baff3a22198a87021e19e5": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.fnnews.com/news/202610121007350412",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "23b0a8d0898efbb191a80786533125ca2a31b3ebd2957a68dab7da860c1a1d0f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:73eb268edb1740418eb4df997790ce47d75046adaa23aadb02cb4bd30ab16709",
+      "source_fact_keys": [
+        "source_fact:v1:0d3a7368e8938168e43917d68b4a23dc586458d79a6076a61b2f4d028bf1f564",
+        "source_fact:v1:1316a271ed98622398fc1548be94c1f07e913027c09efc583f79a041294b0b10",
+        "source_fact:v1:1a6b864839547ce74cdb5aa46d9df48d7753005cfe54f78839672766fa1cd2f6",
+        "source_fact:v1:2745359ed8d6d13f00e231789021e0fd7c6dc394f4db419d5b1751dc8e6dd1e8",
+        "source_fact:v1:3f29dcd683f1de01cccafe3b703eb3e3ef1200027f94e330f104bd30f62f6f76",
+        "source_fact:v1:3fd96e61f1ab6f6ba2796a6e837ed76f548ee15691226b6d3540f4f9b1f9c6a3",
+        "source_fact:v1:6065b13089c59ad7a94b3315dbb4c6e88cd39a813ad1b647d5b1f7bae5f6be3a",
+        "source_fact:v1:778f4804464f3b9099c6603ef8a6809095988b8e785ccc14d2e50e9f50fdab6e",
+        "source_fact:v1:839e40d42006d053e0ab4926ca7e0cb4ec1ff0272a6c4d3723b9ce1b951e1fc4",
+        "source_fact:v1:98c3c7100d5d7660ebb35414e4f7b3ecfd73b9f624ce7e9f9e1f24db3e46a563",
+        "source_fact:v1:bf8f62475816482330826709c79ead9e0e394ba9cb18abef942ec755fa2e8f0f"
+      ],
+      "source_published_kst": "2026-10-12T10:07+09:00",
+      "source_title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다",
+      "telegram_core_fact": "채권 기관투자자 결제 가운데 채권 결제대금은 일평균 12조5천억원으로 전 분기보다 11.3% 줄었다. 주식 결제대금은 일평균 8조8천억원으로 전 분기 대비 12.4% 감소했으며, 채권 결제 대금은 26조6천억원으로 17.7% 줄었다.",
+      "title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다"
     },
     "source_fact:75be591f172a60731fc4cf90": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
@@ -307037,6 +307824,25 @@
       ],
       "source_published_kst": "2026-10-07T14:58+09:00",
       "title": "송미령 \"산란계협회, 경고에도 가격 고시…농가 짓밟았다는 비판 과해\""
+    },
+    "source_fact:7ce80173c17c9aa3f47e6e92": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02253366645612264",
+      "source": "이데일리",
+      "source_body_digest": "4b99035d0fbe7dd8282b69425da0558e4e502c5f47e00a12b0bed2c22ec10e07",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:817f6d2002fc96e9815c60395e553e095e8f93f9907e1f3efc73b373ebfb5009",
+      "source_fact_keys": [
+        "source_fact:v1:59212b2ae4e23161a1be80d20c2d8694e854042a696225edb02fcdd134f8e3dd"
+      ],
+      "source_published_kst": "2026-10-12T09:03+09:00",
+      "source_title": "[속보]10월 초순 수출 261억달러로 102%↑…동기간 역대 최대",
+      "telegram_core_fact": "관세청이 발표한 ‘10월 1~10일 수출입 현황’에 따르면 , 이 기간 수출액(통관기준 잠정)은 261억 400만달러로 전년비 102.0% 증가했다.",
+      "title": "[속보]10월 초순 수출 261억달러로 102%↑…동기간 역대 최대"
     },
     "source_fact:7cec1d23f0538c2047502636": {
       "first_seen_kst": "2026-10-08T00:24:24+09:00",
@@ -317067,6 +317873,35 @@
       "source_published_kst": "2026-10-06T13:21+09:00",
       "title": "유럽 로봇 유니콘도 미국행…로브코, 현지 생산·시장 공략"
     },
+    "source_fact:893f172e919fd5b2e8f8d43e": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.fnnews.com/news/202610121007350412",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "23b0a8d0898efbb191a80786533125ca2a31b3ebd2957a68dab7da860c1a1d0f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:73eb268edb1740418eb4df997790ce47d75046adaa23aadb02cb4bd30ab16709",
+      "source_fact_keys": [
+        "source_fact:v1:0d3a7368e8938168e43917d68b4a23dc586458d79a6076a61b2f4d028bf1f564",
+        "source_fact:v1:1316a271ed98622398fc1548be94c1f07e913027c09efc583f79a041294b0b10",
+        "source_fact:v1:1a6b864839547ce74cdb5aa46d9df48d7753005cfe54f78839672766fa1cd2f6",
+        "source_fact:v1:2745359ed8d6d13f00e231789021e0fd7c6dc394f4db419d5b1751dc8e6dd1e8",
+        "source_fact:v1:3f29dcd683f1de01cccafe3b703eb3e3ef1200027f94e330f104bd30f62f6f76",
+        "source_fact:v1:3fd96e61f1ab6f6ba2796a6e837ed76f548ee15691226b6d3540f4f9b1f9c6a3",
+        "source_fact:v1:6065b13089c59ad7a94b3315dbb4c6e88cd39a813ad1b647d5b1f7bae5f6be3a",
+        "source_fact:v1:778f4804464f3b9099c6603ef8a6809095988b8e785ccc14d2e50e9f50fdab6e",
+        "source_fact:v1:839e40d42006d053e0ab4926ca7e0cb4ec1ff0272a6c4d3723b9ce1b951e1fc4",
+        "source_fact:v1:98c3c7100d5d7660ebb35414e4f7b3ecfd73b9f624ce7e9f9e1f24db3e46a563",
+        "source_fact:v1:bf8f62475816482330826709c79ead9e0e394ba9cb18abef942ec755fa2e8f0f"
+      ],
+      "source_published_kst": "2026-10-12T10:07+09:00",
+      "source_title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다",
+      "telegram_core_fact": "채권 기관투자자 결제 가운데 채권 결제대금은 일평균 12조5천억원으로 전 분기보다 11.3% 줄었다. 주식 결제대금은 일평균 8조8천억원으로 전 분기 대비 12.4% 감소했으며, 채권 결제 대금은 26조6천억원으로 17.7% 줄었다.",
+      "title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다"
+    },
     "source_fact:894085c1ea187436b8675aca": {
       "first_seen_kst": "2026-10-11T11:01:00+09:00",
       "lanes": {
@@ -319510,6 +320345,35 @@
       ],
       "source_published_kst": "2026-10-06T12:08+09:00",
       "title": "삼성전기, 2856억 MLCC 추가 수주…올해 공급계약 약 4조원 추산(종합)"
+    },
+    "source_fact:8c203fc88578537c62044e5f": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.fnnews.com/news/202610121007350412",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "23b0a8d0898efbb191a80786533125ca2a31b3ebd2957a68dab7da860c1a1d0f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:73eb268edb1740418eb4df997790ce47d75046adaa23aadb02cb4bd30ab16709",
+      "source_fact_keys": [
+        "source_fact:v1:0d3a7368e8938168e43917d68b4a23dc586458d79a6076a61b2f4d028bf1f564",
+        "source_fact:v1:1316a271ed98622398fc1548be94c1f07e913027c09efc583f79a041294b0b10",
+        "source_fact:v1:1a6b864839547ce74cdb5aa46d9df48d7753005cfe54f78839672766fa1cd2f6",
+        "source_fact:v1:2745359ed8d6d13f00e231789021e0fd7c6dc394f4db419d5b1751dc8e6dd1e8",
+        "source_fact:v1:3f29dcd683f1de01cccafe3b703eb3e3ef1200027f94e330f104bd30f62f6f76",
+        "source_fact:v1:3fd96e61f1ab6f6ba2796a6e837ed76f548ee15691226b6d3540f4f9b1f9c6a3",
+        "source_fact:v1:6065b13089c59ad7a94b3315dbb4c6e88cd39a813ad1b647d5b1f7bae5f6be3a",
+        "source_fact:v1:778f4804464f3b9099c6603ef8a6809095988b8e785ccc14d2e50e9f50fdab6e",
+        "source_fact:v1:839e40d42006d053e0ab4926ca7e0cb4ec1ff0272a6c4d3723b9ce1b951e1fc4",
+        "source_fact:v1:98c3c7100d5d7660ebb35414e4f7b3ecfd73b9f624ce7e9f9e1f24db3e46a563",
+        "source_fact:v1:bf8f62475816482330826709c79ead9e0e394ba9cb18abef942ec755fa2e8f0f"
+      ],
+      "source_published_kst": "2026-10-12T10:07+09:00",
+      "source_title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다",
+      "telegram_core_fact": "채권 기관투자자 결제 가운데 채권 결제대금은 일평균 12조5천억원으로 전 분기보다 11.3% 줄었다. 주식 결제대금은 일평균 8조8천억원으로 전 분기 대비 12.4% 감소했으며, 채권 결제 대금은 26조6천억원으로 17.7% 줄었다.",
+      "title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다"
     },
     "source_fact:8c258e736103b08b200d47c8": {
       "first_seen_kst": "2026-10-06T17:24:43+09:00",
@@ -325768,6 +326632,35 @@
       "source_published_kst": "2026-10-07T07:16+09:00",
       "title": "앞서가는 트럼프 \"韓, 최근 美조선업에 1500억불 줬다\""
     },
+    "source_fact:94e0ffa8a45caa7e1801451d": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.fnnews.com/news/202610121007350412",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "23b0a8d0898efbb191a80786533125ca2a31b3ebd2957a68dab7da860c1a1d0f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:73eb268edb1740418eb4df997790ce47d75046adaa23aadb02cb4bd30ab16709",
+      "source_fact_keys": [
+        "source_fact:v1:0d3a7368e8938168e43917d68b4a23dc586458d79a6076a61b2f4d028bf1f564",
+        "source_fact:v1:1316a271ed98622398fc1548be94c1f07e913027c09efc583f79a041294b0b10",
+        "source_fact:v1:1a6b864839547ce74cdb5aa46d9df48d7753005cfe54f78839672766fa1cd2f6",
+        "source_fact:v1:2745359ed8d6d13f00e231789021e0fd7c6dc394f4db419d5b1751dc8e6dd1e8",
+        "source_fact:v1:3f29dcd683f1de01cccafe3b703eb3e3ef1200027f94e330f104bd30f62f6f76",
+        "source_fact:v1:3fd96e61f1ab6f6ba2796a6e837ed76f548ee15691226b6d3540f4f9b1f9c6a3",
+        "source_fact:v1:6065b13089c59ad7a94b3315dbb4c6e88cd39a813ad1b647d5b1f7bae5f6be3a",
+        "source_fact:v1:778f4804464f3b9099c6603ef8a6809095988b8e785ccc14d2e50e9f50fdab6e",
+        "source_fact:v1:839e40d42006d053e0ab4926ca7e0cb4ec1ff0272a6c4d3723b9ce1b951e1fc4",
+        "source_fact:v1:98c3c7100d5d7660ebb35414e4f7b3ecfd73b9f624ce7e9f9e1f24db3e46a563",
+        "source_fact:v1:bf8f62475816482330826709c79ead9e0e394ba9cb18abef942ec755fa2e8f0f"
+      ],
+      "source_published_kst": "2026-10-12T10:07+09:00",
+      "source_title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다",
+      "telegram_core_fact": "채권 기관투자자 결제 가운데 채권 결제대금은 일평균 12조5천억원으로 전 분기보다 11.3% 줄었다. 주식 결제대금은 일평균 8조8천억원으로 전 분기 대비 12.4% 감소했으며, 채권 결제 대금은 26조6천억원으로 17.7% 줄었다.",
+      "title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다"
+    },
     "source_fact:94e1323d9ad5b3d7b4d33a98": {
       "first_seen_kst": "2026-10-07T12:49:48+09:00",
       "lanes": {
@@ -331850,6 +332743,30 @@
       "telegram_core_fact": "이날 뉴욕상업거래소에서 11월 인도분 서부텍사스산원유(WTI) 선물 종가는 전장보다 0.36달러(0.39%) 상승한 배럴당 91.85달러로 마감했다.",
       "title": "국제유가, 美 멕시코만 원유 생산 차질 속 상승…WTI 0.39%↑ | 연합뉴스"
     },
+    "source_fact:9c10b3ebf941023900e578e0": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172740",
+      "source": "매일경제",
+      "source_body_digest": "fec6ec7643fe6bc22d127d4653e9ac7de19292b5a332cb354729aed9e5b71c01",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a7cab95a6dc46175eb5148b3a7a68bdfbeaf807894547e7ebe88b7ceb432a87",
+      "source_fact_keys": [
+        "source_fact:v1:3447df2658e6887f47262ac49ae640e3f4f2104224ee4a58376a4abfe2c54f4c",
+        "source_fact:v1:6757945691f3640f3d0c55975f9d6b7904f7a3199985ccc632f89d59a6a5061d",
+        "source_fact:v1:9ee52add4cec96298977792a47159e42a474402a416bee0495c77b11552aa60e",
+        "source_fact:v1:bc9be1ed36833dbbbf31a7d954070204a8247abb12dd529f6a7d91a8d1ee6883",
+        "source_fact:v1:dc33a83a413d91c961c2535f5509f1d9e6112c384d28fc5471b521e50746f29c",
+        "source_fact:v1:ffaecec241577bf9536dd029e7fa96695765291473c7c2565e5c7f8d13339259"
+      ],
+      "source_published_kst": "2026-10-12T09:34+09:00",
+      "source_title": "STX그린로지스, 8% 급등…중동 불안에 운임 뛰자 해운株 줄줄이 상승",
+      "telegram_core_fact": "중동 지역의 지정학적 불안이 장기화하면서 해운 운임이 급등하자 해운 관련주가 일제히 강세를 보이고 있다.",
+      "title": "STX그린로지스, 8% 급등…중동 불안에 운임 뛰자 해운株 줄줄이 상승"
+    },
     "source_fact:9c134fbc80acb121a856d3a3": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
       "lanes": {
@@ -334870,6 +335787,35 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 국제 제재로 거래가 금지된 러시아산 경유(디젤)를 미국과 세계 시장에 대규모로 공급하겠다고 발표했다.",
       "title": "경유값 급등에 표심 흔들…러시아産 들여오는 트럼프"
     },
+    "source_fact:9fa74cebf56c357d80de5dad": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.fnnews.com/news/202610121007350412",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "23b0a8d0898efbb191a80786533125ca2a31b3ebd2957a68dab7da860c1a1d0f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:73eb268edb1740418eb4df997790ce47d75046adaa23aadb02cb4bd30ab16709",
+      "source_fact_keys": [
+        "source_fact:v1:0d3a7368e8938168e43917d68b4a23dc586458d79a6076a61b2f4d028bf1f564",
+        "source_fact:v1:1316a271ed98622398fc1548be94c1f07e913027c09efc583f79a041294b0b10",
+        "source_fact:v1:1a6b864839547ce74cdb5aa46d9df48d7753005cfe54f78839672766fa1cd2f6",
+        "source_fact:v1:2745359ed8d6d13f00e231789021e0fd7c6dc394f4db419d5b1751dc8e6dd1e8",
+        "source_fact:v1:3f29dcd683f1de01cccafe3b703eb3e3ef1200027f94e330f104bd30f62f6f76",
+        "source_fact:v1:3fd96e61f1ab6f6ba2796a6e837ed76f548ee15691226b6d3540f4f9b1f9c6a3",
+        "source_fact:v1:6065b13089c59ad7a94b3315dbb4c6e88cd39a813ad1b647d5b1f7bae5f6be3a",
+        "source_fact:v1:778f4804464f3b9099c6603ef8a6809095988b8e785ccc14d2e50e9f50fdab6e",
+        "source_fact:v1:839e40d42006d053e0ab4926ca7e0cb4ec1ff0272a6c4d3723b9ce1b951e1fc4",
+        "source_fact:v1:98c3c7100d5d7660ebb35414e4f7b3ecfd73b9f624ce7e9f9e1f24db3e46a563",
+        "source_fact:v1:bf8f62475816482330826709c79ead9e0e394ba9cb18abef942ec755fa2e8f0f"
+      ],
+      "source_published_kst": "2026-10-12T10:07+09:00",
+      "source_title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다",
+      "telegram_core_fact": "채권 기관투자자 결제 가운데 채권 결제대금은 일평균 12조5천억원으로 전 분기보다 11.3% 줄었다. 주식 결제대금은 일평균 8조8천억원으로 전 분기 대비 12.4% 감소했으며, 채권 결제 대금은 26조6천억원으로 17.7% 줄었다.",
+      "title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다"
+    },
     "source_fact:9faa9c24530c72cded82c040": {
       "first_seen_kst": "2026-10-08T06:57:59+09:00",
       "lanes": {
@@ -337680,6 +338626,35 @@
       "source_published_kst": "2026-10-06T15:16+09:00",
       "title": "“유럽 첫 상용 SDV 뚫었다”… LG전자 차세대 콕핏 르노 공급"
     },
+    "source_fact:a317a083a0d9cf7a74bcda69": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.fnnews.com/news/202610121007350412",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "23b0a8d0898efbb191a80786533125ca2a31b3ebd2957a68dab7da860c1a1d0f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:73eb268edb1740418eb4df997790ce47d75046adaa23aadb02cb4bd30ab16709",
+      "source_fact_keys": [
+        "source_fact:v1:0d3a7368e8938168e43917d68b4a23dc586458d79a6076a61b2f4d028bf1f564",
+        "source_fact:v1:1316a271ed98622398fc1548be94c1f07e913027c09efc583f79a041294b0b10",
+        "source_fact:v1:1a6b864839547ce74cdb5aa46d9df48d7753005cfe54f78839672766fa1cd2f6",
+        "source_fact:v1:2745359ed8d6d13f00e231789021e0fd7c6dc394f4db419d5b1751dc8e6dd1e8",
+        "source_fact:v1:3f29dcd683f1de01cccafe3b703eb3e3ef1200027f94e330f104bd30f62f6f76",
+        "source_fact:v1:3fd96e61f1ab6f6ba2796a6e837ed76f548ee15691226b6d3540f4f9b1f9c6a3",
+        "source_fact:v1:6065b13089c59ad7a94b3315dbb4c6e88cd39a813ad1b647d5b1f7bae5f6be3a",
+        "source_fact:v1:778f4804464f3b9099c6603ef8a6809095988b8e785ccc14d2e50e9f50fdab6e",
+        "source_fact:v1:839e40d42006d053e0ab4926ca7e0cb4ec1ff0272a6c4d3723b9ce1b951e1fc4",
+        "source_fact:v1:98c3c7100d5d7660ebb35414e4f7b3ecfd73b9f624ce7e9f9e1f24db3e46a563",
+        "source_fact:v1:bf8f62475816482330826709c79ead9e0e394ba9cb18abef942ec755fa2e8f0f"
+      ],
+      "source_published_kst": "2026-10-12T10:07+09:00",
+      "source_title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다",
+      "telegram_core_fact": "채권 기관투자자 결제 가운데 채권 결제대금은 일평균 12조5천억원으로 전 분기보다 11.3% 줄었다. 주식 결제대금은 일평균 8조8천억원으로 전 분기 대비 12.4% 감소했으며, 채권 결제 대금은 26조6천억원으로 17.7% 줄었다.",
+      "title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다"
+    },
     "source_fact:a3191c30ab642a96c05369ea": {
       "first_seen_kst": "2026-10-12T05:09:39+09:00",
       "lanes": {
@@ -337769,6 +338744,30 @@
       "source_title": "'스트레스테스트 미비' 지적에… 이억원 \"레버리지 ETF 위험성 점검했다\"[2026국감]",
       "telegram_core_fact": "금융위원회가 단일종목 레버리지 상장지수펀드(ETF) 도입 전 스트레스테스트를 시행하지 않았다는 지적에 이억원 금융위 위원장이 투자자 위험성, 시장 영향 등을 점검했다고 반박했다.",
       "title": "'스트레스테스트 미비' 지적에… 이억원 \"레버리지 ETF 위험성 점검했다\"[2026국감]"
+    },
+    "source_fact:a3228dfde897d29e62e5c802": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172740",
+      "source": "매일경제",
+      "source_body_digest": "fec6ec7643fe6bc22d127d4653e9ac7de19292b5a332cb354729aed9e5b71c01",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a7cab95a6dc46175eb5148b3a7a68bdfbeaf807894547e7ebe88b7ceb432a87",
+      "source_fact_keys": [
+        "source_fact:v1:3447df2658e6887f47262ac49ae640e3f4f2104224ee4a58376a4abfe2c54f4c",
+        "source_fact:v1:6757945691f3640f3d0c55975f9d6b7904f7a3199985ccc632f89d59a6a5061d",
+        "source_fact:v1:9ee52add4cec96298977792a47159e42a474402a416bee0495c77b11552aa60e",
+        "source_fact:v1:bc9be1ed36833dbbbf31a7d954070204a8247abb12dd529f6a7d91a8d1ee6883",
+        "source_fact:v1:dc33a83a413d91c961c2535f5509f1d9e6112c384d28fc5471b521e50746f29c",
+        "source_fact:v1:ffaecec241577bf9536dd029e7fa96695765291473c7c2565e5c7f8d13339259"
+      ],
+      "source_published_kst": "2026-10-12T09:34+09:00",
+      "source_title": "STX그린로지스, 8% 급등…중동 불안에 운임 뛰자 해운株 줄줄이 상승",
+      "telegram_core_fact": "중동 지역의 지정학적 불안이 장기화하면서 해운 운임이 급등하자 해운 관련주가 일제히 강세를 보이고 있다.",
+      "title": "STX그린로지스, 8% 급등…중동 불안에 운임 뛰자 해운株 줄줄이 상승"
     },
     "source_fact:a339a2873216ed0555a22bb6": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -338848,6 +339847,35 @@
       "source_title": "포항시-아모지, 영일만산단 ‘무탄소 분산발전’ 가속화… 글로벌 투자사·대기업 총출동",
       "telegram_core_fact": "참석자들은 ▲영일만 무탄소 분산발전 프로젝트의 속도감 있는 추진 ▲원활한 사업 진행을 위한 부지 및 인허가 행정 지원 ▲안정적인 청정 암모니아 수입·저장·공급망 구축 ▲영일만산단 입주기업들의 무탄소 전력 공급 확대 방안 등을 논의했다.",
       "title": "포항시-아모지, 영일만산단 ‘무탄소 분산발전’ 가속화… 글로벌 투자사·대기업 총출동"
+    },
+    "source_fact:a47f22ec6f2cdd1fe718fea5": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.fnnews.com/news/202610121007350412",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "23b0a8d0898efbb191a80786533125ca2a31b3ebd2957a68dab7da860c1a1d0f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:73eb268edb1740418eb4df997790ce47d75046adaa23aadb02cb4bd30ab16709",
+      "source_fact_keys": [
+        "source_fact:v1:0d3a7368e8938168e43917d68b4a23dc586458d79a6076a61b2f4d028bf1f564",
+        "source_fact:v1:1316a271ed98622398fc1548be94c1f07e913027c09efc583f79a041294b0b10",
+        "source_fact:v1:1a6b864839547ce74cdb5aa46d9df48d7753005cfe54f78839672766fa1cd2f6",
+        "source_fact:v1:2745359ed8d6d13f00e231789021e0fd7c6dc394f4db419d5b1751dc8e6dd1e8",
+        "source_fact:v1:3f29dcd683f1de01cccafe3b703eb3e3ef1200027f94e330f104bd30f62f6f76",
+        "source_fact:v1:3fd96e61f1ab6f6ba2796a6e837ed76f548ee15691226b6d3540f4f9b1f9c6a3",
+        "source_fact:v1:6065b13089c59ad7a94b3315dbb4c6e88cd39a813ad1b647d5b1f7bae5f6be3a",
+        "source_fact:v1:778f4804464f3b9099c6603ef8a6809095988b8e785ccc14d2e50e9f50fdab6e",
+        "source_fact:v1:839e40d42006d053e0ab4926ca7e0cb4ec1ff0272a6c4d3723b9ce1b951e1fc4",
+        "source_fact:v1:98c3c7100d5d7660ebb35414e4f7b3ecfd73b9f624ce7e9f9e1f24db3e46a563",
+        "source_fact:v1:bf8f62475816482330826709c79ead9e0e394ba9cb18abef942ec755fa2e8f0f"
+      ],
+      "source_published_kst": "2026-10-12T10:07+09:00",
+      "source_title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다",
+      "telegram_core_fact": "채권 기관투자자 결제 가운데 채권 결제대금은 일평균 12조5천억원으로 전 분기보다 11.3% 줄었다. 주식 결제대금은 일평균 8조8천억원으로 전 분기 대비 12.4% 감소했으며, 채권 결제 대금은 26조6천억원으로 17.7% 줄었다.",
+      "title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다"
     },
     "source_fact:a48184b5464564322dc678f6": {
       "first_seen_kst": "2026-10-08T08:31:37+09:00",
@@ -355150,6 +356178,27 @@
       ],
       "source_published_kst": "2026-10-07T09:18+09:00",
       "title": "미래에셋 'TIGER 미국 타겟데일리커버드콜' 3종, 연초 이후 개인 순매수 1조 돌파"
+    },
+    "source_fact:b8fda75d3809e3688432bf92": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821942",
+      "source": "뉴시스",
+      "source_body_digest": "1d5b7f8ad53736a6627322ca77e2be5315f91e64d5877b9b179c1edd94a9ebc7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:76f8c435460c40466bb85a35ecf2944709d45b3f9610cd595e018637b68ebef9",
+      "source_fact_keys": [
+        "source_fact:v1:708a81fc187a4b2ca724c9f6f801d3b80010892e07d85161b65ff891a04fe0e3",
+        "source_fact:v1:7d111f3aba014b1638772c0fce40e86c4c4a8cb86a14bb2aebe7d64628a1e734",
+        "source_fact:v1:9bd55387805f5c6c0a1323ef33da9e72490d5741982fe3c76c11a17f5270afd4"
+      ],
+      "source_published_kst": "2026-10-12T11:20+09:00",
+      "source_title": "제주 AI 대전환 사업에 공공기관 참여 확대…16일 설명회",
+      "telegram_core_fact": "제주도가 40메가와트(MW)급 인공지능(AI) 데이터센터 구축과 지역 산업의 인공지능 전환(AX)을 추진하기 위해 도내 공공기관의 참여를 확대하고 분야별 실증과제를 발굴한다.",
+      "title": "제주 AI 대전환 사업에 공공기관 참여 확대…16일 설명회"
     },
     "source_fact:b8fe029ff1bbc685be59ae4f": {
       "first_seen_kst": "2026-10-06T16:52:01+09:00",
@@ -378812,6 +379861,35 @@
       "source_published_kst": "2026-10-06T17:35+09:00",
       "title": "엔비디아, 이틀째 사상 최고…시총 6조달러 고지 '눈앞'"
     },
+    "source_fact:d686fd21779e1591a9a15d23": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.fnnews.com/news/202610121007350412",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "23b0a8d0898efbb191a80786533125ca2a31b3ebd2957a68dab7da860c1a1d0f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:73eb268edb1740418eb4df997790ce47d75046adaa23aadb02cb4bd30ab16709",
+      "source_fact_keys": [
+        "source_fact:v1:0d3a7368e8938168e43917d68b4a23dc586458d79a6076a61b2f4d028bf1f564",
+        "source_fact:v1:1316a271ed98622398fc1548be94c1f07e913027c09efc583f79a041294b0b10",
+        "source_fact:v1:1a6b864839547ce74cdb5aa46d9df48d7753005cfe54f78839672766fa1cd2f6",
+        "source_fact:v1:2745359ed8d6d13f00e231789021e0fd7c6dc394f4db419d5b1751dc8e6dd1e8",
+        "source_fact:v1:3f29dcd683f1de01cccafe3b703eb3e3ef1200027f94e330f104bd30f62f6f76",
+        "source_fact:v1:3fd96e61f1ab6f6ba2796a6e837ed76f548ee15691226b6d3540f4f9b1f9c6a3",
+        "source_fact:v1:6065b13089c59ad7a94b3315dbb4c6e88cd39a813ad1b647d5b1f7bae5f6be3a",
+        "source_fact:v1:778f4804464f3b9099c6603ef8a6809095988b8e785ccc14d2e50e9f50fdab6e",
+        "source_fact:v1:839e40d42006d053e0ab4926ca7e0cb4ec1ff0272a6c4d3723b9ce1b951e1fc4",
+        "source_fact:v1:98c3c7100d5d7660ebb35414e4f7b3ecfd73b9f624ce7e9f9e1f24db3e46a563",
+        "source_fact:v1:bf8f62475816482330826709c79ead9e0e394ba9cb18abef942ec755fa2e8f0f"
+      ],
+      "source_published_kst": "2026-10-12T10:07+09:00",
+      "source_title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다",
+      "telegram_core_fact": "채권 기관투자자 결제 가운데 채권 결제대금은 일평균 12조5천억원으로 전 분기보다 11.3% 줄었다. 주식 결제대금은 일평균 8조8천억원으로 전 분기 대비 12.4% 감소했으며, 채권 결제 대금은 26조6천억원으로 17.7% 줄었다.",
+      "title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다"
+    },
     "source_fact:d68de7dc7179449ac5d56183": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
       "lanes": {
@@ -381530,6 +382608,30 @@
       "source_title": "[공공SW전략] 기업마다 다른 규제…참여제한 갈린다 | GS ITM㊦",
       "telegram_core_fact": "GS ITM이 삼성SDS·LG CNS와 다른 규제를 받는 이유는 상호출자제한기업집단 소속 여부에 있다.",
       "title": "[공공SW전략] 기업마다 다른 규제…참여제한 갈린다 | GS ITM㊦"
+    },
+    "source_fact:d9ac9acfac48db3e8685c309": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172740",
+      "source": "매일경제",
+      "source_body_digest": "fec6ec7643fe6bc22d127d4653e9ac7de19292b5a332cb354729aed9e5b71c01",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a7cab95a6dc46175eb5148b3a7a68bdfbeaf807894547e7ebe88b7ceb432a87",
+      "source_fact_keys": [
+        "source_fact:v1:3447df2658e6887f47262ac49ae640e3f4f2104224ee4a58376a4abfe2c54f4c",
+        "source_fact:v1:6757945691f3640f3d0c55975f9d6b7904f7a3199985ccc632f89d59a6a5061d",
+        "source_fact:v1:9ee52add4cec96298977792a47159e42a474402a416bee0495c77b11552aa60e",
+        "source_fact:v1:bc9be1ed36833dbbbf31a7d954070204a8247abb12dd529f6a7d91a8d1ee6883",
+        "source_fact:v1:dc33a83a413d91c961c2535f5509f1d9e6112c384d28fc5471b521e50746f29c",
+        "source_fact:v1:ffaecec241577bf9536dd029e7fa96695765291473c7c2565e5c7f8d13339259"
+      ],
+      "source_published_kst": "2026-10-12T09:34+09:00",
+      "source_title": "STX그린로지스, 8% 급등…중동 불안에 운임 뛰자 해운株 줄줄이 상승",
+      "telegram_core_fact": "중동 지역의 지정학적 불안이 장기화하면서 해운 운임이 급등하자 해운 관련주가 일제히 강세를 보이고 있다.",
+      "title": "STX그린로지스, 8% 급등…중동 불안에 운임 뛰자 해운株 줄줄이 상승"
     },
     "source_fact:d9b1d7857a9f7a0b6ee2a9ae": {
       "first_seen_kst": "2026-10-06T15:03:09+09:00",
@@ -391471,6 +392573,35 @@
       "source_title": "리사 수 \"삼성·SK 핵심 파트너…HBM 협력 여러 세대 간다\"(종합)",
       "telegram_core_fact": "수 회장은 이와 관련해 \"삼성과 SK하이닉스 모두로부터 큰 지원을 받았다\"며 HBM 협력이 \"한 세대에 그치지 않고 여러 세대에 걸쳐 이어질 것\"이라고 말했다.",
       "title": "리사 수 \"삼성·SK 핵심 파트너…HBM 협력 여러 세대 간다\"(종합)"
+    },
+    "source_fact:e557982f535801ec1cb86e6f": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.fnnews.com/news/202610121007350412",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "23b0a8d0898efbb191a80786533125ca2a31b3ebd2957a68dab7da860c1a1d0f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:73eb268edb1740418eb4df997790ce47d75046adaa23aadb02cb4bd30ab16709",
+      "source_fact_keys": [
+        "source_fact:v1:0d3a7368e8938168e43917d68b4a23dc586458d79a6076a61b2f4d028bf1f564",
+        "source_fact:v1:1316a271ed98622398fc1548be94c1f07e913027c09efc583f79a041294b0b10",
+        "source_fact:v1:1a6b864839547ce74cdb5aa46d9df48d7753005cfe54f78839672766fa1cd2f6",
+        "source_fact:v1:2745359ed8d6d13f00e231789021e0fd7c6dc394f4db419d5b1751dc8e6dd1e8",
+        "source_fact:v1:3f29dcd683f1de01cccafe3b703eb3e3ef1200027f94e330f104bd30f62f6f76",
+        "source_fact:v1:3fd96e61f1ab6f6ba2796a6e837ed76f548ee15691226b6d3540f4f9b1f9c6a3",
+        "source_fact:v1:6065b13089c59ad7a94b3315dbb4c6e88cd39a813ad1b647d5b1f7bae5f6be3a",
+        "source_fact:v1:778f4804464f3b9099c6603ef8a6809095988b8e785ccc14d2e50e9f50fdab6e",
+        "source_fact:v1:839e40d42006d053e0ab4926ca7e0cb4ec1ff0272a6c4d3723b9ce1b951e1fc4",
+        "source_fact:v1:98c3c7100d5d7660ebb35414e4f7b3ecfd73b9f624ce7e9f9e1f24db3e46a563",
+        "source_fact:v1:bf8f62475816482330826709c79ead9e0e394ba9cb18abef942ec755fa2e8f0f"
+      ],
+      "source_published_kst": "2026-10-12T10:07+09:00",
+      "source_title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다",
+      "telegram_core_fact": "채권 기관투자자 결제 가운데 채권 결제대금은 일평균 12조5천억원으로 전 분기보다 11.3% 줄었다. 주식 결제대금은 일평균 8조8천억원으로 전 분기 대비 12.4% 감소했으며, 채권 결제 대금은 26조6천억원으로 17.7% 줄었다.",
+      "title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다"
     },
     "source_fact:e557e6117b488970115fc8e2": {
       "first_seen_kst": "2026-10-12T02:27:00+09:00",
@@ -414925,6 +416056,30 @@
       "source_published_kst": "2026-10-05T10:58+09:00",
       "title": "고든앤맥페일, 도수 높인 '벤로막 12년'으로 韓 공략 속도…“셰리 캐스크·훈연 가장 좋은 균형”"
     },
+    "title:0c5f13a5c78a6820a7cd7d2e": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1172740",
+      "source": "매일경제",
+      "source_body_digest": "fec6ec7643fe6bc22d127d4653e9ac7de19292b5a332cb354729aed9e5b71c01",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a7cab95a6dc46175eb5148b3a7a68bdfbeaf807894547e7ebe88b7ceb432a87",
+      "source_fact_keys": [
+        "source_fact:v1:3447df2658e6887f47262ac49ae640e3f4f2104224ee4a58376a4abfe2c54f4c",
+        "source_fact:v1:6757945691f3640f3d0c55975f9d6b7904f7a3199985ccc632f89d59a6a5061d",
+        "source_fact:v1:9ee52add4cec96298977792a47159e42a474402a416bee0495c77b11552aa60e",
+        "source_fact:v1:bc9be1ed36833dbbbf31a7d954070204a8247abb12dd529f6a7d91a8d1ee6883",
+        "source_fact:v1:dc33a83a413d91c961c2535f5509f1d9e6112c384d28fc5471b521e50746f29c",
+        "source_fact:v1:ffaecec241577bf9536dd029e7fa96695765291473c7c2565e5c7f8d13339259"
+      ],
+      "source_published_kst": "2026-10-12T09:34+09:00",
+      "source_title": "STX그린로지스, 8% 급등…중동 불안에 운임 뛰자 해운株 줄줄이 상승",
+      "telegram_core_fact": "중동 지역의 지정학적 불안이 장기화하면서 해운 운임이 급등하자 해운 관련주가 일제히 강세를 보이고 있다.",
+      "title": "STX그린로지스, 8% 급등…중동 불안에 운임 뛰자 해운株 줄줄이 상승"
+    },
     "title:0c734001ad25189eb4fb205a": {
       "first_seen_kst": "2026-10-08T18:02:43+09:00",
       "lanes": {
@@ -437384,6 +438539,23 @@
       "source_published_kst": "2026-10-06T17:51+09:00",
       "title": "알테오젠, 알테오젠바이오로직스 합병 결정 | 연합뉴스"
     },
+    "title:69346efc37b2e28bd2f34f5a": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261010_0003820563",
+      "source": "뉴시스",
+      "source_body_digest": "5567d8d28451d3df206bea23b715be75a6afa21cb78257437c0318de66fd1edf",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T11:26+09:00",
+      "source_title": "도부, 상반기 영업흑자…CM-77 조달 우수제품 지정 힘입어 공공시장 공략",
+      "telegram_core_fact": "도부는 내년 1월부터 중앙행정기관, 지방자치단체, 공공기관, 직장 민방위대 등을 대상으로 CM-77의 공급을 확대할 계획이다.",
+      "title": "도부, 상반기 영업흑자…CM-77 조달 우수제품 지정 힘입어 공공시장 공략"
+    },
     "title:693ee3b75b39c5d13da3b11f": {
       "first_seen_kst": "2026-10-08T05:17:22+09:00",
       "lanes": {
@@ -442704,6 +443876,25 @@
       "source_published_kst": "2026-10-07T10:00+09:00",
       "title": "테크다스 AI 가상센서, 정유공장 가열로서 안전성 향상·온실가스 저감 효과 동시 입증"
     },
+    "title:7fa409a86ddc7cb61cd81d49": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02253366645612264",
+      "source": "이데일리",
+      "source_body_digest": "4b99035d0fbe7dd8282b69425da0558e4e502c5f47e00a12b0bed2c22ec10e07",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:817f6d2002fc96e9815c60395e553e095e8f93f9907e1f3efc73b373ebfb5009",
+      "source_fact_keys": [
+        "source_fact:v1:59212b2ae4e23161a1be80d20c2d8694e854042a696225edb02fcdd134f8e3dd"
+      ],
+      "source_published_kst": "2026-10-12T09:03+09:00",
+      "source_title": "[속보]10월 초순 수출 261억달러로 102%↑…동기간 역대 최대",
+      "telegram_core_fact": "관세청이 발표한 ‘10월 1~10일 수출입 현황’에 따르면 , 이 기간 수출액(통관기준 잠정)은 261억 400만달러로 전년비 102.0% 증가했다.",
+      "title": "[속보]10월 초순 수출 261억달러로 102%↑…동기간 역대 최대"
+    },
     "title:7fcf4130e232f119e7880f67": {
       "first_seen_kst": "2026-10-06T23:46:46+09:00",
       "lanes": {
@@ -443311,6 +444502,35 @@
       ],
       "source_published_kst": "2026-10-05T21:20+09:00",
       "title": "이 대통령 \"부동산투기공화국 탈출 약속 반드시 지킬 것\"…하루에만 SNS 11건(종합2보)"
+    },
+    "title:82c1a1c94c16f6c3d7ab720a": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.fnnews.com/news/202610121007350412",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "23b0a8d0898efbb191a80786533125ca2a31b3ebd2957a68dab7da860c1a1d0f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:73eb268edb1740418eb4df997790ce47d75046adaa23aadb02cb4bd30ab16709",
+      "source_fact_keys": [
+        "source_fact:v1:0d3a7368e8938168e43917d68b4a23dc586458d79a6076a61b2f4d028bf1f564",
+        "source_fact:v1:1316a271ed98622398fc1548be94c1f07e913027c09efc583f79a041294b0b10",
+        "source_fact:v1:1a6b864839547ce74cdb5aa46d9df48d7753005cfe54f78839672766fa1cd2f6",
+        "source_fact:v1:2745359ed8d6d13f00e231789021e0fd7c6dc394f4db419d5b1751dc8e6dd1e8",
+        "source_fact:v1:3f29dcd683f1de01cccafe3b703eb3e3ef1200027f94e330f104bd30f62f6f76",
+        "source_fact:v1:3fd96e61f1ab6f6ba2796a6e837ed76f548ee15691226b6d3540f4f9b1f9c6a3",
+        "source_fact:v1:6065b13089c59ad7a94b3315dbb4c6e88cd39a813ad1b647d5b1f7bae5f6be3a",
+        "source_fact:v1:778f4804464f3b9099c6603ef8a6809095988b8e785ccc14d2e50e9f50fdab6e",
+        "source_fact:v1:839e40d42006d053e0ab4926ca7e0cb4ec1ff0272a6c4d3723b9ce1b951e1fc4",
+        "source_fact:v1:98c3c7100d5d7660ebb35414e4f7b3ecfd73b9f624ce7e9f9e1f24db3e46a563",
+        "source_fact:v1:bf8f62475816482330826709c79ead9e0e394ba9cb18abef942ec755fa2e8f0f"
+      ],
+      "source_published_kst": "2026-10-12T10:07+09:00",
+      "source_title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다",
+      "telegram_core_fact": "채권 기관투자자 결제 가운데 채권 결제대금은 일평균 12조5천억원으로 전 분기보다 11.3% 줄었다. 주식 결제대금은 일평균 8조8천억원으로 전 분기 대비 12.4% 감소했으며, 채권 결제 대금은 26조6천억원으로 17.7% 줄었다.",
+      "title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다"
     },
     "title:82c22414b957adeab9d3f8fa": {
       "first_seen_kst": "2026-10-02T07:36:51+09:00",
@@ -452558,6 +453778,27 @@
       ],
       "source_published_kst": "2026-10-06T11:12+09:00",
       "title": "LG전자, 5GW 북미 냉각 설루션 장기 계약"
+    },
+    "title:a70c17ed878fcc3091747e57": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821942",
+      "source": "뉴시스",
+      "source_body_digest": "1d5b7f8ad53736a6627322ca77e2be5315f91e64d5877b9b179c1edd94a9ebc7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:76f8c435460c40466bb85a35ecf2944709d45b3f9610cd595e018637b68ebef9",
+      "source_fact_keys": [
+        "source_fact:v1:708a81fc187a4b2ca724c9f6f801d3b80010892e07d85161b65ff891a04fe0e3",
+        "source_fact:v1:7d111f3aba014b1638772c0fce40e86c4c4a8cb86a14bb2aebe7d64628a1e734",
+        "source_fact:v1:9bd55387805f5c6c0a1323ef33da9e72490d5741982fe3c76c11a17f5270afd4"
+      ],
+      "source_published_kst": "2026-10-12T11:20+09:00",
+      "source_title": "제주 AI 대전환 사업에 공공기관 참여 확대…16일 설명회",
+      "telegram_core_fact": "제주도가 40메가와트(MW)급 인공지능(AI) 데이터센터 구축과 지역 산업의 인공지능 전환(AX)을 추진하기 위해 도내 공공기관의 참여를 확대하고 분야별 실증과제를 발굴한다.",
+      "title": "제주 AI 대전환 사업에 공공기관 참여 확대…16일 설명회"
     },
     "title:a71e2433deb5b4772ddca4f4": {
       "first_seen_kst": "2026-10-08T01:26:16+09:00",
@@ -462128,6 +463369,25 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03224246645608984",
       "source": "이데일리",
       "title": "네이버 노조 \"본사도 통합교섭 나서라\"…지노위에 시정신청"
+    },
+    "title:cf266f9111c865627c98e692": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003821759",
+      "source": "뉴시스",
+      "source_body_digest": "84ea7f18f9c86f44962bd51f728cdf52a0a038cbbeb6a7ef1c28f5fae2e9aa71",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:661900157585823c91c0ec2887e7c69eb3d78b3520be9bf7d7c2adc2c0eefb40",
+      "source_fact_keys": [
+        "source_fact:v1:7b7eb3862eda1e3d260c97fd0bdb96bb504fbb0c5810eedc67256715d90129bd"
+      ],
+      "source_published_kst": "2026-10-12T10:34+09:00",
+      "source_title": "\"수돗물 누수 잡는다\" 안양시, 소블록 42곳 추가 정비",
+      "telegram_core_fact": "경기 안양시가 수돗물 누수를 막고 공급 효율성을 높이기 위해 관내 42개 소블록을 추가 구축하고 노후 상수도 시설에 대한 전면 정비에 나선다.",
+      "title": "\"수돗물 누수 잡는다\" 안양시, 소블록 42곳 추가 정비"
     },
     "title:cf2e72d9792d48b4f35a6477": {
       "first_seen_kst": "2026-10-09T21:27:46+09:00",
@@ -473012,6 +474272,23 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령은 11일(현지시간) 러시아와 우크라이나가 에너지 부문에 대한 휴전에 합의했다고 밝혔다. 젤렌스키 대통령은 또 이날 저녁 영상 연설에서 러시아가 트럼프 대통령의 발표 이후에도 우크라이나 제2의 도시 하르키우의 열병합발전소를 공격하는 등 에너지 시설 공격을 지속했다고 밝혔다.",
       "title": "트럼프, '러·우 에너지 휴전합의' 했다는데…러는 공습 계속(종합2보) | 연합뉴스"
     },
+    "title:fbbbd915de87c56b66ccb109": {
+      "first_seen_kst": "2026-10-12T11:27:57+09:00",
+      "lanes": {
+        "live": "2026-10-12T11:27:57+09:00"
+      },
+      "last_seen_kst": "2026-10-12T11:27:57+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261012058800008",
+      "source": "연합뉴스",
+      "source_body_digest": "5585d7301bbc50d5ceb6962632239a84e7fd0bb1ff7832065a30fc949e5c4786",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T11:14+09:00",
+      "source_title": "9월 장외채권 거래 증가…개인 순매수, 외국인은 '팔자' | 연합뉴스",
+      "telegram_core_fact": "이후 국제유가와 원·달러 환율이 안정되고, 외국인의 10년 국채선물 순매수 및 세계국채지수(WGBI) 편입 관련 중장기물 매수가 이어지면서 초장기물 금리는 하락했다.",
+      "title": "9월 장외채권 거래 증가…개인 순매수, 외국인은 '팔자' | 연합뉴스"
+    },
     "title:fbbf971d130a4ccab5110196": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
       "lanes": {
@@ -474227,5 +475504,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-12T11:11:48+09:00"
+  "updated_at_kst": "2026-10-12T11:27:57+09:00"
 }
