@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-08-24T21:32:19+09:00",
-  "last_checked_kst": "2026-10-12T15:51:26+09:00",
+  "last_checked_kst": "2026-10-12T16:38:38+09:00",
   "seen": {
     "74fd33cf93fb250c6b18ecd7": {
       "title": "리벨리온, 공공 CCTV 관제에 서버형 NPU 대규모 인프라 공급… 국산 AI 인프라 상용화로 기술 자립 가속",
@@ -3176,6 +3176,15 @@
       "material_stage": 1,
       "first_seen_kst": "2026-10-11T14:59:04+09:00",
       "suppressed_duplicate": "same_event:kepco|general|general"
+    },
+    "7dfe49f4ed0ca9acdbac7ada": {
+      "title": "CCK솔루션, 리벨리온서 전략적 투자 유치 - 뉴스톱",
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1yaXVaRGJ6d29RM2lDWlZpeFVDN2E2T1BnaTR0RW5OZE03MGY4YTBqRk5IcVh2NTNiQmZfVy11bEdkdnJxUE03QkVuRXY3eW5SWlVMTk91SFdpS2QxaU5HYUtaRzVicXB6bEJwdGt4bw?oc=5",
+      "summary": "CCK솔루션, 리벨리온서 전략적 투자 유치 뉴스톱",
+      "event_signature": "cck|capital|equity",
+      "material_stage": 5,
+      "first_seen_kst": "2026-10-12T16:38:38+09:00",
+      "suppressed_duplicate": "same_event:cck|capital|equity"
     }
   }
 }
