@@ -597,6 +597,25 @@ EV_ESS_OLD_NEWS = re.compile(
 # contracts, price observations, utilization, or customer orders. A live
 # run erroneously sent an Oct 12 "3분기 실적 기대감↑" story alongside the
 # true 314Ah CIF measurement. Filter this before inherited ESS scoring.
+
+STOCK_ONLY_REACTION = re.compile(
+    r'^\s*(?:\[(?:특징주|급등주|급락주|증시)\]|【(?:特征股|股价)】)|'
+    r'(?:주가|종목|주식).{0,30}(?:강세|상승|급등|약세|하락|급락)|'
+    r'(?:강세|상승|급등|약세|하락|급락).{0,30}(?:주가|주식)',
+    re.I,
+)
+
+
+def _is_stock_reaction_only(item: dict) -> bool:
+    headline = item.get('title') or ''
+    source = item.get('source') or ''
+    # Reliable publishers may report stock movement: editorial trust does
+    # not turn a price reaction into a new order or earnings release.
+    if source in base.OFFICIAL_OR_PRIMARY:
+        return False
+    return bool(STOCK_ONLY_REACTION.search(headline))
+
+
 ESS_EXPECTATION_ONLY_TITLE = re.compile(
     r'실적.{0,25}기대감|실적.{0,20}기대\s*(?:↑|증가|확대|커져)|'
     r'3\s*분기.{0,28}기대감|분기.{0,35}실적.{0,20}전망',
@@ -688,7 +707,7 @@ def _lfp_na_price_recovery() -> list[dict]:
 # VNET's strategic shareholder links and AIDC energy collaboration do NOT
 # constitute CATL sodium-ion ESS captive purchase orders.
 VNET_EQUITY_RECOVERY = 'DIRECT_VNET_PJ_MILLENNIUM_CATL_AFFILIATE_20260921'
-VNET_OFFICIAL = {'VNET', 'VNET Group', 'VNET IR'}
+VNET_OFFICIAL = {'VNET', 'VNET Group', 'VNET IR', 'CATL', '宁德时代'}
 VNET_ID = re.compile(r'VNET|21Vianet|世纪互联',re.I)
 VNET_CATL = re.compile(r'CATL|宁德时代|닝더스다이',re.I)
 VNET_EQUITY_CLOSED = re.compile(
@@ -721,9 +740,10 @@ def _vnet_equity_recovery() -> list[dict]:
     if base.NOW.astimezone(base.KST).date() > dt.date(2026,10,19):
         return []
     return [{
-        'title': '누락복원: CATL 비연결 관계사 연계 투자기구, VNET 지분 38.1% 인수 완료',
+        'title': '정정: 10/12 주가 상승·수주 기대 기사 2건은 알림 제외 — VNET 9/21 지분거래만 확인',
         'link': 'https://ir.vnet.com/news-releases/news-release-details/vnet-announces-closing-previously-announced-strategic-investment',
         'description': (
+            '앞서 발송한 Telegram message_id=208의 1번(아이뉴스24)과 3번(이투데이)은 주가 반응·ESS 수주 기대감 기사이므로 신규 계약이나 실적 고신호가 아니었습니다. 두 건은 제외하며 이후 같은 성격의 뉴스는 조용히 무시합니다. 2번 VNET 사실관계는 유지합니다. ' 
             'VNET 2026-09-21 회사 보도자료·미 SEC 공시: CATL의 비지배·비연결 '
             '관계사와 연관된 PJ Millennium 투자기구가 기존 주주로부터 '
             'Class A 주식 650,424,192주를 취득 완료해 38.1%를 보유한다. '
@@ -741,6 +761,7 @@ def _vnet_equity_recovery() -> list[dict]:
         'published':None,
         'direct_recovery':True,
         'historical_missed_equity_event':True,
+        'correction_for_false_stock_alerts':True,
     }]
 
 
@@ -936,7 +957,7 @@ def _stage(text: str) -> str:
 
 
 def score(item: dict) -> int:
-    if _is_ess_expectation_only(item):
+    if _is_stock_reaction_only(item) or _is_ess_expectation_only(item):
         return 0
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
     group = topic_group(text)
@@ -1006,6 +1027,8 @@ def score(item: dict) -> int:
 
 def category(text: str, group: str) -> str:
     if group == 'catl_vnet_infrastructure':
+        if '정정:' in text and '주가' in text:
+            return 'CATL 관계사–VNET · 10/12 주가 기사 오탐 정정'
         if (VNET_SODIUM.search(text) and VNET_ORDER.search(text)
                 and VNET_ESS_QTY.search(text) and not VNET_HYPERSTRONG_BASE.search(text)
                 and re.search(r'VNET.{0,230}(?:sodium|나트륨).{0,230}(?:GWh|MWh)',text,re.I)):
@@ -1084,6 +1107,14 @@ def category(text: str, group: str) -> str:
 
 
 def meaning(cat: str) -> str:
+    if cat == 'CATL 관계사–VNET · 10/12 주가 기사 오탐 정정':
+        return (
+            '이전 Telegram 208의 1·3번 ESS 주가 강세·수주 기대감 기사는 신규 수주·확정 분기 실적이 아니므로 고신호에서 제외합니다. '
+            '유효 사실은 9/21 CATL 비연결 관계사 연계 투자기구의 VNET 기존주 650,424,192주 취득·38.1% 보유입니다. '
+            '8월 데이터센터 전력 협력은 확인되지만 나트륨 ESS 독점계약·물량·설치·매출은 미확정입니다. '
+            'VNET 889MW는 2025년 말 도매 IDC 전력 용량이며 2026년 6월 말 1,007MW 가동·744MW 이용 규모와 구분합니다. '
+            '4월 CATL–HyperStrong 60GWh는 VNET 발주가 아닙니다.'
+        )
     if cat == 'CATL 관계사–VNET · 9/21 간접지분 38.1% 인수 종결':
         return (
             'VNET 9/21 공식 공시로 CATL 비지배·비연결 관계사와 연결된 '
@@ -1343,6 +1374,8 @@ def risk(cat: str) -> str:
 
 def verification(item: dict, group: str, text: str) -> str:
     if group == 'catl_vnet_infrastructure':
+        if item.get('correction_for_false_stock_alerts'):
+            return '208번 메시지의 주가·수주 기대감 기사 2건 오류 정정 · VNET 9/21 공식 종결·미 SEC 공시만 유효 · 나트륨 ESS 전속 공급 미확인'
         if _vnet_catl_stage(text,item.get('source') or '') == 'signed_vnet_sodium_contract':
             return 'CATL/VNET 회사 공식 나트륨 ESS 계약 발표 · 실제 납품·매출 별도 확인'
         return ('VNET 9/21 공식 지분거래 종결 발표·미 SEC 공시 교차확인 · '
@@ -1419,6 +1452,10 @@ def verification(item: dict, group: str, text: str) -> str:
 
 def clean_title(title: str, source: str) -> str:
     if _is_vnet_catl(title + ' ' + source):
+        if title.startswith('정정:'):
+            return title
+        if source in VNET_OFFICIAL and VNET_SODIUM.search(title) and VNET_ORDER.search(title) and VNET_ESS_QTY.search(title):
+            return 'CATL–VNET 나트륨 ESS 공식 납품 계약 확인'
         return '9/21 공식 확인: CATL 관계사 연계 투자기구, VNET 지분 38.1% 취득'
     if _is_lfp_na_314_price(title + ' ' + source):
         return '314Ah LFP 북미 CIF 61.99달러…관세 40.9%는 별도 가정'
@@ -1507,6 +1544,8 @@ def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
     if topic_group(text) == 'catl_vnet_infrastructure':
         stage=_vnet_catl_stage(text,item.get('source') or '')
+        if stage=='equity_closing_baseline_recovery' and item.get('correction_for_false_stock_alerts'):
+            return hashlib.sha256(b'vnet|sept21-2026|secondary-equity-closing|correction-20261012-stock-articles-208').hexdigest()
         if stage=='equity_closing_baseline_recovery':
             return hashlib.sha256(b'vnet|PJ-Millennium|CATL-affiliate|20260921|38.1|650424192|SECONDARY').hexdigest()
         vals='|'.join(sorted(set(VNET_ESS_QTY.findall(text))))
