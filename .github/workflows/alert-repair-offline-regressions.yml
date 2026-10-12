@@ -79,7 +79,8 @@ jobs:
           python scripts/alert_operations_audit.py
 
       - name: Inspect recent Actions runs and workflow activation states (read only)
-        if: github.event_name == 'schedule'
+        # Run during PR verification as well so the scheduled API path is tested before merge.
+        if: github.event_name != 'push'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
