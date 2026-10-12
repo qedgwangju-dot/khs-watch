@@ -1721,7 +1721,13 @@ def semantic_fix(text):
         level, idx = m.group(1), m.group(2)
         marker = None
         topic = None
-        if "중국 · 정제연료 수출·공급변화" in block:
+        if any(x in block for x in (
+            "에너지 휴전 발표·양측 검증 대기",
+            "에너지 휴전 발표 — 우크라이나 조건부 동참",
+            "양측 독립 확인·발효 일정·실제 공격 중단 확인 전",
+        )):
+            marker, topic = "🟡", "우크라이나·러시아 · 에너지 휴전 발표·양측 검증 대기"
+        elif "중국 · 정제연료 수출·공급변화" in block:
             marker = "🟢" if "세관실적확인" in block else "🟡"
             topic = "중국 · 정제연료 수출·공급변화"
         elif any(x in block for x in ("11월 3일 미국 중간선거 전 이란 추가 공격 없다고 발표", "11월 3일 중간선거 이전 미국의 이란 추가공격")):
@@ -1805,6 +1811,11 @@ def verify_alert(test_mode=False):
     issues = []
     if re.search(r"(?m)^🔴\s+\[(?:속보|신규|후속)\].*중국 · 정제연료 수출·공급변화", text):
         issues.append("중국 정제연료 수출 변화를 전쟁 공격·확전으로 오분류")
+    if "트럼프의 우크라이나·러시아 에너지 휴전 발표" in text:
+        if re.search(r"(?m)^🟢\s+\[(?:속보|신규|후속)\].*(?:에너지 휴전|에너지 부분휴전)", text):
+            issues.append("미국 대통령 단독 에너지 휴전 발표를 양측 공식 이행 확정으로 표시")
+        if "양측 검증 대기" not in text and "실제 이행 미확정" not in text:
+            issues.append("일방적 에너지 휴전 발표에서 상대방 확인과 실물 이행 불확실성 누락")
     if "중국 · 정제연료 수출·공급변화" in text:
         if "수출 재개 예정" in text and ("세관 실적 확인 단계" in text or "수출 완료" in text):
             issues.append("중국 정제연료 수출예정 보도를 실제 완료 실적으로 승격")
