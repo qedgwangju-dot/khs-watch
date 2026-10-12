@@ -80,6 +80,7 @@ def audit_static(root: pathlib.Path) -> dict[str, Any]:
     counts = collections.Counter(risk for row in rows for risk in row["risks"])
     return {
         "workflow_files": len(rows),
+        "workflow_paths": [row["path"] for row in rows],
         "scheduled_files": sum(row["schedule"] for row in rows),
         "inline_send_files": sum(row["inline_telegram_send"] for row in rows),
         "risk_counts": dict(sorted(counts.items())),
@@ -88,7 +89,11 @@ def audit_static(root: pathlib.Path) -> dict[str, Any]:
     }
 
 
-def audit_runtime(runs: list[dict[str, Any]], workflows: list[dict[str, Any]]) -> dict[str, Any]:
+def audit_runtime(
+    runs: list[dict[str, Any]],
+    workflows: list[dict[str, Any]],
+    known_paths: set[str] | None = None,
+) -> dict[str, Any]:
     # Adjacent API time windows may overlap at their exact boundary. Count
     # a workflow run ID once, not once per API page or window.
     unique: dict[str, dict[str, Any]] = {}
@@ -112,6 +117,7 @@ def audit_runtime(runs: list[dict[str, Any]], workflows: list[dict[str, Any]]) -
         totals.update(counts)
         if counts.get("failure") or counts.get("cancelled") or counts.get("timed_out"):
             latest = group[0]
+            latest_schedule = next((run for run in group if run.get("event") == "schedule"), None)
             failures.append({
                 "path": path,
                 "failures": counts.get("failure", 0),
@@ -121,15 +127,27 @@ def audit_runtime(runs: list[dict[str, Any]], workflows: list[dict[str, Any]]) -
                 "latest_event": latest.get("event") or "unknown",
                 "latest_at": latest.get("created_at") or "",
                 "latest_url": latest.get("html_url") or "",
+                "latest_schedule_conclusion": (
+                    (latest_schedule.get("conclusion") or latest_schedule.get("status") or "unknown")
+                    if latest_schedule else "not_observed"
+                ),
+                "latest_schedule_at": latest_schedule.get("created_at", "") if latest_schedule else "",
+                "latest_schedule_url": latest_schedule.get("html_url", "") if latest_schedule else "",
             })
     failures.sort(key=lambda x: (-x["failures"], -x["cancelled"], x["path"]))
     disabled = [
         {"path": w.get("path", ""), "state": w.get("state", ""), "name": w.get("name", "")}
         for w in workflows if str(w.get("state") or "") not in ("active", "")
     ]
+    registry_only = [
+        {"path": w.get("path", ""), "state": w.get("state", ""), "name": w.get("name", "")}
+        for w in workflows
+        if known_paths is not None and str(w.get("path") or "") not in known_paths
+    ]
     return {
         "runs_reviewed": len(runs),
         "workflow_groups_in_runs": len(by_path),
+        "registry_only_workflows": registry_only,
         "conclusions": dict(sorted(totals.items())),
         "failure_clusters": failures,
         "inactive_workflows": disabled,
@@ -161,9 +179,15 @@ def make_markdown(static: dict[str, Any], runtime: dict[str, Any] | None) -> str
         lines.extend([
             f"- 실행 {runtime['runs_reviewed']}건: 성공 {counts.get('success',0)} · 실패 {counts.get('failure',0)} · 취소 {counts.get('cancelled',0)}",
             f"- 등록 워크플로 {runtime['registry_size']}개 · 비활성 {len(runtime['inactive_workflows'])}개 (임의 재활성화 금지)",
+            f"- 현재 파일 목록과 불일치하는 등록 항목: {len(runtime['registry_only_workflows'])}개 (확인 전 삭제 금지)",
         ])
         for row in runtime["failure_clusters"][:12]:
-            lines.append(f"  - {row['path']}: 실패 {row['failures']} · 취소 {row['cancelled']} · 최신 {row['latest_conclusion']} · {row['latest_url']}")
+            lines.append(
+                f"  - {row['path']}: 실패 {row['failures']} · 취소 {row['cancelled']}"
+                f" · 최신 전체 {row['latest_event']}/{row['latest_conclusion']}"
+                f" · 마지막 예약 {row['latest_schedule_conclusion']}"
+                f" · {row['latest_url']}"
+            )
     lines += [
         "- 주의: 이 진단은 실제 전송 성공·상태 파일 갱신까지 입증하지 않음. 개별 message_id/로그는 별도 대조 필요.",
         "- 대상 워크플로의 설정·예약·전송·상태 파일을 수정하지 않음.",
@@ -180,7 +204,10 @@ def main() -> int:
     ap.add_argument("--markdown", type=pathlib.Path, default=pathlib.Path("out/alert_operations_audit.md"))
     args = ap.parse_args()
     static = audit_static(args.root)
-    runtime = audit_runtime(parse_jsonl(args.runs), parse_jsonl(args.workflows)) if args.runs and args.workflows else None
+    runtime = audit_runtime(
+        parse_jsonl(args.runs), parse_jsonl(args.workflows),
+        known_paths=set(static["workflow_paths"]),
+    ) if args.runs and args.workflows else None
     result = {"static": static, "runtime": runtime, "generated_at_utc": dt.datetime.now(dt.timezone.utc).isoformat()}
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.markdown.parent.mkdir(parents=True, exist_ok=True)
