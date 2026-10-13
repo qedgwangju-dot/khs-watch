@@ -811,8 +811,8 @@ def flow_surge_candidates(
             key_ts = float(fut["end_ts"])
         # 프로그램 자체의 차익·비차익 검산이 일치해도 사건 기준시점과
         # 30초 이상 어긋난 프로그램 데이터를 동시 매수 근거로 사용하지 않는다.
-        program_aligned = bool(
-            program and program["valid"] and program["delta"] > 0
+        program_time_aligned = bool(
+            program and program["valid"]
             and abs(float(program["end_ts"]) - key_ts) <= SURGE_MAX_SAMPLE_SKEW_SEC
         )
         confirming_channels = (
@@ -840,8 +840,10 @@ def flow_surge_candidates(
             "spot_start_skew_sec": (spot or {}).get("start_skew_sec"),
             "futures_start_skew_sec": (fut or {}).get("start_skew_sec"),
             "program": program,
+            "program_time_aligned": program_time_aligned,
             # 프로그램 매수는 투자자별 매수주체 확증이 아니라 별도의 시장 보조정보.
-            "confidence": ("높음" if both and program_aligned else "중간" if both else "단독 신호"),
+            "confidence": ("높음" if both and program_time_aligned and program["delta"] > 0
+                           else "중간" if both else "단독 신호"),
         })
     return result
 
@@ -1826,11 +1828,14 @@ class Watch:
         elif mode == "선물 중심" and spot is not None and spot < 0:
             lines.append("• 현물은 반대 방향입니다. 선물 매수의 동반 확인으로 보지 않습니다.")
         p = cand.get("program") or {}
-        if p.get("valid"):
+        if p.get("valid") and cand.get("program_time_aligned"):
             trend = "순매수 증가" if p["delta"] > 0 else "순매도 증가" if p["delta"] < 0 else "변화 없음"
-            lines.append(f"• 프로그램 {trend} (LS t1640 원값의 금액 단위 미검증·투자자 미구분, 수치 표시 보류)")
+            lines.append(
+                f"• 프로그램 {trend} {fmt_clock(p['start_ts'])}~{fmt_clock(p['end_ts'])} "
+                "(LS t1640 금액 단위 미검증·투자자 미구분, 수치 표시 보류)"
+            )
         else:
-            lines.append("• 프로그램 교차검증: 미충족·보류 (매수주체 판정에 사용하지 않음)")
+            lines.append("• 프로그램 교차검증: 값 또는 시각 미충족·보류 (매수주체 판정에 사용하지 않음)")
         if self.idx:
             now_price_ts, _ = self.idx[-1]
             signal_window = (

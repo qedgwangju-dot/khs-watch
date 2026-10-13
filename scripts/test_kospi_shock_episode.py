@@ -960,6 +960,7 @@ _lag_surge=_surge_scan(_program_lag_rows,20305)
 assert len(_lag_surge)==1 and _lag_surge[0]["mode"]=="현물·선물 동시",_lag_surge
 assert _lag_surge[0]["program"] is not None and _lag_surge[0]["program"]["valid"],_lag_surge
 assert _lag_surge[0]["confidence"]=="중간",_lag_surge
+assert "프로그램 순매수 증가" not in Watch("unused",[],"",False).build_flow_surge_alert(_lag_surge[0],20305)
 print("flow_surge_program_timestamp_confidence_regression=true")
 
 
