@@ -111,6 +111,48 @@ class RuntimeTests(unittest.TestCase):
         finally:
             restore()
 
+    def test_denied_primary_malformed_fallback_recovers_without_retrying_denial(self):
+        from urllib.error import HTTPError
+        watch = fake_watch(self.root, ['fallback'])
+        calls = mp.get_context('fork').Array('i', [0, 0])
+        valid = b'<rss><channel/></rss>'
+        def req(url, timeout=20):
+            index = 0 if 'api.gdeltproject.org' in url else 1
+            with calls.get_lock():
+                calls[index] += 1
+                attempt = calls[index]
+            if index == 0:
+                raise HTTPError(url, 429, 'rate limited', {}, None)
+            if attempt == 1:
+                raise SourcePayloadError(b'<html><body/></html>')
+            return valid
+        def news(query):
+            try:
+                raw = watch.req('https://api.gdeltproject.org/api/v2/doc/doc?format=json')
+            except Exception:
+                try:
+                    raw = watch.req('https://www.bing.com/news/search?q=fixture&format=RSS')
+                except Exception:
+                    return [], 'GDELT: HTTPError'
+            return [{'raw': raw}], None
+        watch.req, watch.google_news = req, news
+        queries, traces, report = self.collect(watch, workers=1)
+        self.assertEqual(list(calls), [1, 2])
+        record = report['news'][0]
+        self.assertEqual(record['status'], 'ok')
+        self.assertTrue(record['fallback_recovered'])
+        self.assertEqual(record['payload_retry_attempts'], 1)
+        self.assertEqual(record['initial_attempt']['status'], 'error')
+        self.assertEqual(report['blocked_providers']['api.gdeltproject.org']['code'], 429)
+        self.assertEqual(record['http'][-1]['status'], 'ok')
+        watch.req = forbidden
+        restore, verify = runtime.install_replay(watch, queries, traces)
+        try:
+            self.assertEqual(watch.google_news('fallback')[0][0]['raw'], valid)
+            verify()
+        finally:
+            restore()
+
     def test_empty_success_and_expired_no_request_sentinel_retained(self):
         watch = fake_watch(self.root, ['empty', 'expired'])
         watch.google_news = lambda q: ((watch.req(q) and []) if q == 'empty' else [], None)
@@ -306,16 +348,37 @@ class RuntimeTests(unittest.TestCase):
 
     def test_quality_failure_removes_partial_output_preserves_state(self):
         watch = fake_watch(self.root, ['one'])
+        watch.AUDIT = watch.OUT/'evidence.json'
         watch.ALERT.write_text('stale')
         watch.PENDING.write_text('stale')
         def run():
             watch.google_news('one')
             watch.ALERT.write_text('unverified')
             watch.PENDING.write_text('{"ids":["new"]}')
+            watch.AUDIT.write_text('{"fixture":"rejected evidence"}')
             raise ValueError('semantic quality gate')
         self.assertEqual(runtime.run_bounded(watch, run, total_seconds=3, collection_seconds=1), 1)
         self.assertFalse(watch.ALERT.exists())
         self.assertFalse(watch.PENDING.exists())
+        self.assertFalse(watch.AUDIT.exists())
+        self.assertEqual(json.loads(watch.STATE.read_text())['seen'], ['confirmed-old'])
+        report = json.loads((watch.OUT/'war_peace_reconstruction_coverage.json').read_text())
+        self.assertFalse(report['complete'])
+        retained = report['rejected_artifacts']
+        self.assertEqual({item['role'] for item in retained}, {'alert', 'pending', 'evidence'})
+        for item in retained:
+            raw = (watch.OUT/item['path']).read_bytes()
+            self.assertFalse(item['verified'])
+            self.assertEqual(item['bytes'], len(raw))
+            self.assertEqual(item['sha256'], hashlib.sha256(raw).hexdigest())
+        # A later execution must not attach rejected evidence from this failure.
+        def complete():
+            watch.google_news('one')
+        self.assertEqual(runtime.run_bounded(watch, complete, total_seconds=3, collection_seconds=1), 0)
+        self.assertFalse(any((watch.OUT/item['path']).exists() for item in retained))
+        later = json.loads((watch.OUT/'war_peace_reconstruction_coverage.json').read_text())
+        self.assertTrue(later['complete'])
+        self.assertNotIn('rejected_artifacts', later)
         self.assertEqual(json.loads(watch.STATE.read_text())['seen'], ['confirmed-old'])
 
     def test_full_run_timeout_removes_output_including_stalled_enrichment_threads(self):
@@ -342,6 +405,8 @@ class RuntimeTests(unittest.TestCase):
         report = json.loads((watch.OUT/'war_peace_reconstruction_coverage.json').read_text())
         self.assertFalse(report['complete'])
         self.assertIn('deadline', report['error'])
+        self.assertEqual({item['role'] for item in report['rejected_artifacts']}, {'alert', 'pending'})
+        self.assertTrue(all(not item['verified'] for item in report['rejected_artifacts']))
 
     def test_http_denials_and_challenge_never_retry_or_change_identity(self):
         import war_peace_reconstruction_watch_oct04_guard as guard
@@ -601,6 +666,28 @@ class RuntimeTests(unittest.TestCase):
                 restore()
         finally:
             watch.OUT, watch.req, guard.runner._signal_rows = saved
+
+
+class RetryEligibilityTests(unittest.TestCase):
+    def test_production_gdelt_denial_and_bing_payload_failure_is_eligible(self):
+        fixture = Path(__file__).resolve().parents[1]/'tests/fixtures/war_fallback_20261014.json'
+        data = json.loads(fixture.read_text(encoding='utf-8'))
+        self.assertTrue(runtime._payload_retry_eligible(data['record'], data['blocked_providers']))
+        malformed = data['record']['http'][-1]
+        raw = base64.b64decode(malformed['response_body_base64'], validate=True)
+        self.assertEqual(hashlib.sha256(raw).hexdigest(), malformed['sha256'])
+
+    def test_unknown_primary_error_remains_ineligible(self):
+        fixture = Path(__file__).resolve().parents[1]/'tests/fixtures/war_fallback_20261014.json'
+        data = json.loads(fixture.read_text(encoding='utf-8'))
+        data['record']['http'][0]['error'] = 'OSError: unspecified failure'
+        self.assertFalse(runtime._payload_retry_eligible(data['record'], data['blocked_providers']))
+
+    def test_denied_final_fallback_is_not_retried(self):
+        fixture = Path(__file__).resolve().parents[1]/'tests/fixtures/war_fallback_20261014.json'
+        data = json.loads(fixture.read_text(encoding='utf-8'))
+        data['record']['http'].reverse()
+        self.assertFalse(runtime._payload_retry_eligible(data['record'], data['blocked_providers']))
 
 
 if __name__ == '__main__':

@@ -1,0 +1,39 @@
+{
+  "run_id": 38446817981,
+  "record": {
+    "index": 172,
+    "query": "direct-gdelt-iran",
+    "status": "error",
+    "started_at_utc": "2026-10-13T18:27:21.410719+00:00",
+    "elapsed_seconds": 12.875,
+    "rows": 0,
+    "requests": 2,
+    "finished_at_utc": "2026-10-13T18:27:34.285651+00:00",
+    "http": [
+      {
+        "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28Iran+OR+Hormuz+OR+Tehran%29+%28Trump+OR+ceasefire+OR+peace+OR+strike+OR+war%29&mode=ArtList&format=json&maxrecords=100&timespan=15min&sort=DateDesc",
+        "status": "error",
+        "error": "HTTPError: HTTP Error 429: Too Many Requests"
+      },
+      {
+        "url": "https://www.bing.com/news/search?q=Iran+Hormuz+Tehran+Trump+ceasefire+peace+strike+war&qft=sortbydate%3d%221%22&format=RSS",
+        "status": "error",
+        "error": "SourcePayloadError: expected RSS/Atom; bytes=361 sha256=67168c0a5fb6",
+        "bytes": 361,
+        "sha256": "67168c0a5fb64075b2f1922cd5adc20e6ea4f6c83c404707be1807f453f651ec",
+        "response_body_base64": "PCFET0NUWVBFIGh0bWw+PGh0bWwgeG1sOmxhbmc9ImVuIiB4bWxucz1odHRwOi8vd3d3LnczLm9yZy8xOTk5L3hodG1sIHhtbG5zOldlYj1odHRwOi8vc2NoZW1hcy5saXZlLmNvbS9XZWI+PGhlYWQ+PG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9VVRGLTgiIC8+PHRpdGxlPkJpbmc8L3RpdGxlPjxtZXRhIGh0dHAtZXF1aXY9IlgtVUEtQ29tcGF0aWJsZSIgY29udGVudD0iSUU9ZWRnZSxjaHJvbWU9MSIgLz48bWV0YSBuYW1lPSJ2aWV3cG9ydCIgY29udGVudD0id2lkdGg9ZGV2aWNlLXdpZHRoLCBpbml0aWFsLXNjYWxlPTEiPjwvaGVhZD48Ym9keT48L2JvZHk+PC9odG1sPg==",
+        "response_body_truncated": false
+      }
+    ],
+    "reused_success_requests": 0,
+    "fallback_recovered": false,
+    "error": "GDELT: HTTPError"
+  },
+  "blocked_providers": {
+    "api.gdeltproject.org": {
+      "reason": "HTTPError",
+      "code": 429,
+      "observed_monotonic": 129.621702833
+    }
+  }
+}
