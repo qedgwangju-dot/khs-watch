@@ -1280,7 +1280,8 @@ def _kqd_send(msg):
     _kqd_out.append(msg)
     return 60000+len(_kqd_out)
 _kqd._record_delivery=lambda stage,mid,ep,ts: _kqd_delivery.append((stage,mid,dict(ep),ts))
-with _kqd_patch.object(ks,"telegram_send",_kqd_send):
+_kqd_fake_now=[_kqd_base+266.0]
+with _kqd_patch.object(ks.time,"time",lambda:_kqd_fake_now[0]), _kqd_patch.object(ks,"telegram_send",_kqd_send):
     _kqd_async.run(_kqd.maybe_alert_kosdaq_drop())
     assert len(_kqd_out)==1, _kqd_out
     assert "코스닥 급락 포착" in _kqd_out[0] and "코스피200 선물" in _kqd_out[0]
@@ -1292,15 +1293,18 @@ with _kqd_patch.object(ks,"telegram_send",_kqd_send):
     # 사건 확대는 처음보다 0.5%p 이상의 추가 하락일 때만 전송.
     _kqd.kosdaq_idx.append((_kqd_base+300,990.0))
     _kqd.kosdaq_flows.append(_kqd_flow(_kqd_base+292,-520,-230,670))
+    _kqd_fake_now[0]=_kqd_base+301.0
     _kqd_async.run(_kqd.maybe_alert_kosdaq_drop())
     assert len(_kqd_out)==2 and "코스닥 급락 확대" in _kqd_out[-1], _kqd_out
     # 저점 300초 뒤 일정 부분 반등하면 종료, 이후 같은 과거 고점 재발송 금지.
     _kqd.kosdaq_idx.append((_kqd_base+600,996.1))
     _kqd.kosdaq_flows.append(_kqd_flow(_kqd_base+590,-400,-240,610))
+    _kqd_fake_now[0]=_kqd_base+601.0
     _kqd_async.run(_kqd.maybe_alert_kosdaq_drop())
     assert len(_kqd_out)==3 and "코스닥 급락 종료·반등 확인" in _kqd_out[-1]
     assert _kqd.kosdaq_episode is None and _kqd.kosdaq_last_episode_end_ts==_kqd_base+600
     _kqd.kosdaq_idx.append((_kqd_base+620,995.0))
+    _kqd_fake_now[0]=_kqd_base+621.0
     _kqd_async.run(_kqd.maybe_alert_kosdaq_drop())
     assert len(_kqd_out)==3,"old KOSDAQ peak re-alerted after episode end"
 
