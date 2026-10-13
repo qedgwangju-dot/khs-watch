@@ -34,6 +34,7 @@
     "26c630720a6755e8a4aa9071",
     "270b45bbb62f82b139bd",
     "272788ac64e880fa1c35d661",
+    "27ac2a64ef86bb87676c",
     "286e5b13c54a5199e773",
     "288b57a33254f9731d66ca14",
     "28f452c067abb5cfcc745cfa",
@@ -72,6 +73,7 @@
     "417d44c9e60803bf50c2",
     "421899c95c175cc0ffb5f82c",
     "43106ddda662f2c2e4a4ba99",
+    "434c9b8fb1ec80dee94c",
     "43a68a6873895ceb909acedf",
     "451eaeb723707f89b8d94749",
     "46e005f14f6dcec8034743ac",
@@ -257,6 +259,7 @@
     "dd0f6f79e4c04101ef95",
     "dd36a91f55e321a11f35",
     "dd44dd878e72ce73db25f59b",
+    "ddc444e3c9641c448147",
     "df5ab7b5133ac7c1cd85f4bc",
     "dfdb9807d398f9d49ae2",
     "e1e8a834a1aed28d103c38fd",
@@ -268,6 +271,7 @@
     "e77ade26159eefcab76a",
     "e955e0b6773510979590",
     "e9f1b8eca7874584c57c0dec",
+    "eb9fa8d8b1a77f176140",
     "ebb545297e9c8d85402b499e",
     "ebe70e86d39dbc21e136f4cc",
     "eca6d9fcf6a54b28f1d6105c",
@@ -312,7 +316,7 @@
       "실패모드·일정 변화"
     ]
   },
-  "last_scan_kst": "2026-10-13T10:19:51+09:00",
+  "last_scan_kst": "2026-10-13T17:00:03+09:00",
   "errors": [],
   "seen_event_keys": [
     "memory:unconfirmed",
@@ -320,6 +324,10 @@
     "server:reported:2or4:2029"
   ],
   "observations": [],
-  "fetch_ok": 12,
-  "fetch_errors": []
+  "fetch_ok": 9,
+  "fetch_errors": [
+    "bing_news \"Apple\" \"M8 Ultra\" server: ParseError not well-formed (invalid token): line 1, column 41",
+    "bing_news \"Apple\" HBM server supplier contrac: ParseError not well-formed (invalid token): line 1, column 41",
+    "bing_news 애플 M8 서버 엔비디아: ParseError not well-formed (invalid token): line 1, column 41"
+  ]
 }
