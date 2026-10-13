@@ -267,6 +267,8 @@ def direct_industry_interval(
             # 코스닥 직접 업종은 3xx 업종만 인정한다. KOSPI 0xx는 혼합 금지.
             if market == "KOSDAQ" and not (len(code) == 3 and code.startswith("3")):
                 continue
+            if market == "KOSPI" and len(code) == 3 and code.startswith("3"):
+                continue
             ts = fnum(row.get("ts"))
             msval = fnum(row.get("msval"))
             if not code or ts is None or msval is None:
@@ -332,16 +334,21 @@ def stock_master(token: str) -> list[dict[str, Any]]:
     return _rows(data, "t8436OutBlock")
 
 
-def industry_master(token: str) -> list[dict[str, Any]]:
+def industry_master(token: str, market: str = "KOSPI") -> list[dict[str, Any]]:
     best: list[dict[str, Any]] = []
     errors = []
-    for gubun in ("1", "0"):
+    groups = ("2", "0", "1") if market == "KOSDAQ" else ("1", "0")
+    for gubun in groups:
         try:
             data = ls_post(
                 token, "/indtp/market-data", "t8424",
                 {"t8424InBlock": {"gubun1": gubun}},
             )
             rows = _rows(data, "t8424OutBlock")
+            if market == "KOSDAQ":
+                rows = [row for row in rows if str(row.get("upcode") or "").startswith("3")]
+            else:
+                rows = [row for row in rows if not str(row.get("upcode") or "").startswith("3")]
             if len(rows) > len(best):
                 best = rows
             if rows:
@@ -349,7 +356,7 @@ def industry_master(token: str) -> list[dict[str, Any]]:
         except Exception as exc:
             errors.append(str(exc))
     if not best:
-        raise RuntimeError("t8424 industry master unavailable: " + " | ".join(errors))
+        raise RuntimeError(f"t8424 {market} industry master unavailable: " + " | ".join(errors))
     return best
 
 
@@ -391,13 +398,14 @@ def map_industries(
 ) -> tuple[dict[str, list[dict[str, str]]], list[str]]:
     mapping: dict[str, list[dict[str, str]]] = defaultdict(list)
     errors: list[str] = []
-    industries = industry_master(token)
+    industries = industry_master(token, market=market)
     filtered = []
     for row in industries:
         name = _display_name(row.get("hname"))
         code = str(row.get("upcode") or "").strip()
         if _is_real_industry(name, code) and (
-            market != "KOSDAQ" or (len(code) == 3 and code.startswith("3"))
+            (market == "KOSDAQ" and len(code) == 3 and code.startswith("3"))
+            or (market == "KOSPI" and len(code) == 3 and not code.startswith("3"))
         ):
             filtered.append((name, code))
     for name, code in filtered[:max_industries]:
