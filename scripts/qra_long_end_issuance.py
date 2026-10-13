@@ -120,13 +120,13 @@ def summarize_long_end_supply(table: dict, fx: float | None = None) -> dict:
 def dealer_agenda_mentions_long_end(text: str) -> bool:
     """Ignore routine agenda listings; require a substantive long-end supply topic."""
     body = text or ""
-    tenor = bool(re.search(r"20[\\s-]*year|30[\\s-]*year|long[\\s-]*(?:dated|end|bond)", body, re.I))
+    tenor = bool(re.search(r"20[\s-]*year|30[\s-]*year|long[\s-]*(?:dated|end|bond)", body, re.I))
     issue = bool(re.search(
-        r"auction[\\s-]*siz|coupon[\\s-]*issuance|bond[\\s-]*issuance|"
-        r"issuance[\\s-]*(?:mix|pattern|strateg|plan)|"
+        r"auction[\s-]*siz|coupon[\s-]*issuance|bond[\s-]*issuance|"
+        r"issuance[\s-]*(?:mix|pattern|strateg|plan)|"
         r"reduce|reduction|cutback|cancell?ation|discontin|"
-        r"investor[\\s-]*demand|demand[\\s-]*(?:for|shift)|"
-        r"corporate[\\s-]*(?:bond|debt|issuance)|hyperscal",
+        r"investor[\s-]*demand|demand[\s-]*(?:for|shift)|"
+        r"corporate[\s-]*(?:bond|debt|issuance)|hyperscal",
         body, re.I))
     return tenor and issue
 
