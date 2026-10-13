@@ -1719,11 +1719,11 @@ class Watch:
         return "\n".join([
             "⚡ <b>코스닥 현물 순매수 증가</b>",
             f"<code>{dt.datetime.fromtimestamp(now_ts,KST):%Y-%m-%d %H:%M:%S} KST</code>",
-            f"• <b>{html.escape(actor)}</b> 코스닥 현물(통합) <b>{fmt_eok(delta)}</b> · 최근 5분",
+            f"• <b>{html.escape(actor)}</b> 코스닥 현물(통합) <b>{fmt_eok(delta)}</b> · 약 5분",
             f"• 실제 수급 표본: {fmt_clock(pair['start_ts'])}~{fmt_clock(pair['end_ts'])}",
             "• 확인 수준: 현물 단독 신호 (KOSPI200 선물·프로그램 수급과 합산하지 않음)",
-            f"• 감지 기준: 5분 순매수 증가 {KOSDAQ_SURGE_SINGLE_SPOT_EOK:,.0f}억원 이상 · 두 차례 연속 확인",
-            "• 누적 순매수 변화량이며 외부 신규자금 유입·주가 상승 확정값이 아닙니다.",
+            f"• 감지 기준: 약 5분 순매수 증가 {KOSDAQ_SURGE_SINGLE_SPOT_EOK:,.0f}억원 이상 · 두 차례 연속 확인",
+            "• 표기한 원자료 구간의 누적 순매수 변화량이며 외부 신규자금 유입·주가 상승 확정값이 아닙니다.",
             "• " + " · ".join([link(KOSDAQ_URL,"KOSDAQ"),link(LS_URL,"LS OpenAPI")]),
         ])
 
