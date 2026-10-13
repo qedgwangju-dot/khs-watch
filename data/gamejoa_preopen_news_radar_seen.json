@@ -1,5 +1,29 @@
 {
   "seen": {
+    "core:001ce6b0f11b45907ec5a7fb": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03411206645612592",
+      "source": "이데일리",
+      "source_body_digest": "4280921320f56f73b665ad7a02da63f58da4f75d9e95b6a82bb4ab502e362548",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ca4ad2b32d34644e30c6f106cbc770772bd27fdf794186ed9d0f74ea7b9d609",
+      "source_fact_keys": [
+        "source_fact:v1:20fa441bd521d003bd18ab14b0433487785e0ecdffb1d301d9bc41779a3f04ef",
+        "source_fact:v1:4a6142d662e5198eef9e282184755012b934d486f969441cf7c4910324fa4f72",
+        "source_fact:v1:8057070133295ce3632cae927c239043b42b1b92fbe21a6ffba0d8034589b3f0",
+        "source_fact:v1:bc307b5ee1395afb5734aab8a020823226df22dd204d0ba0dfbb20ecc8db9507",
+        "source_fact:v1:d114497907f4305fbcb1594e78e168681200463d0da8a5c0d5639e5e25ad0678"
+      ],
+      "source_published_kst": "2026-10-13T14:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"코인 과세 서두르다 레버리지ETF꼴 난다\"…국세청장 \"11월 고시 발표\"",
+      "telegram_core_fact": "내년 1월 가상자산 과세 시행을 앞두고 과세 기준조차 명확하지 않다는 지적이 제기되자 임광현 국세청장은 “11월에 가상자산 과세 관련 고시안을 발표할 수 있도록 준비 중”이라고 밝혔다.",
+      "title": "\"코인 과세 서두르다 레버리지ETF꼴 난다\"…국세청장 \"11월 고시 발표\""
+    },
     "core:0032ffa6a5eedc4b22b4cbdb": {
       "first_seen_kst": "2026-10-08T21:47:01+09:00",
       "lanes": {
@@ -2913,6 +2937,26 @@
       ],
       "source_published_kst": "2026-10-07T14:22+09:00",
       "title": "AI 전력난에 엔진도 뜬다…HD건설기계, 북미서 3900억원 수주"
+    },
+    "core:124a1a0606efacece507054f": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173571",
+      "source": "매일경제",
+      "source_body_digest": "dc5344b039b3a91825abaead7a772d44d0b56bc48de70c9b9306b4f8c5eae0a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9b3ec7c48748b1795d9f148ca3833d38ffed1448b8d915d54c06501bc8c904c6",
+      "source_fact_keys": [
+        "source_fact:v1:43ea2bceaca6e1d10a975acd42a2b834ea24ecb0ed09fe6bf4f3caf5c407460f"
+      ],
+      "source_published_kst": "2026-10-13T15:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"상표출원 심사 1년↑…소상공인·중소기업 피해 연간 3조 추정\"",
+      "telegram_core_fact": "\"상표 심사가 6개월 이상 지연될 경우 매출 감소에 따른 경제적 피해가 연간 약 3조원으로 추정된다\"고 질타했다. 우리나라 상표출원 건수는 2023년 31만3천533건 이후 매년 늘어나고 있으나 심사관 수는 2023년 160명에서 2024년 177명으로 17명 늘어난 이후 올해까지 변동이 없는 상황이다.",
+      "title": "\"상표출원 심사 1년↑…소상공인·중소기업 피해 연간 3조 추정\""
     },
     "core:12fbc53a264c9d9c7db2bdfc": {
       "first_seen_kst": "2026-10-11T06:36:16+09:00",
@@ -16735,6 +16779,33 @@
       "telegram_core_fact": "SK이노베이션의 자원개발 자회사 SK어스온이 베트남 신규 광구에서 첫 원유 생산에 성공하고 추가 유층까지 발견하며 현지 자원개발 성과를 확대하고 있다.",
       "title": "SK어스온, 베트남서 원유 생산 확대…원유층 추가 발견 '겹경사'"
     },
+    "core:6bd7d7725ac7ad4302d7f307": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003824150",
+      "source": "뉴시스",
+      "source_body_digest": "01fbae12e181fb34ed5830528b545ce7a136af216a82721a276119e3fa9fd608",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3efebd56d1e0f5a79793b91aa7c7caaf83176ef345bfeecd20efcf9e99c65df1",
+      "source_fact_keys": [
+        "source_fact:v1:101d80d74451a3b71f653ca3212067f996203e7357d5fe6d558708a37cdef0fc",
+        "source_fact:v1:1c53872b5b4135c5972e84e15b5f0b90e37d9973eac173220a4ca782e2d7483d",
+        "source_fact:v1:63e9b57f54121cb61ed402de13752e979fab2425ce015cc9fe3f73314024efd8",
+        "source_fact:v1:72b4cfb282efd5930aceb3c9605e93f30230941fd7f1e941f17e61398fc720c9",
+        "source_fact:v1:81a5026ab1914357570c36b9d914129e6c5b0bb2722b2fad50165de159602969",
+        "source_fact:v1:bd90c72b0d1ae4eb5491ce68adc564855cdd5be62e3a807f744ad2a740b22c06",
+        "source_fact:v1:c6a645a3ba6048e2476870791d0d365b340ad2da7cc3e1a592fecf6b47e3d3e5",
+        "source_fact:v1:eab1e1b670446d5f5744723063bbc7e102cd43044aceb9e1dc88f626ded19214"
+      ],
+      "source_published_kst": "2026-10-13T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성바이오 \"폴리펩타이드 공개매수 조건 충족\"",
+      "telegram_core_fact": "공개매수는 폴리펩타이드그룹 인수를 위해 설립한 특수목적법인(SPC) 자회사 삼성펩타이드(Samsung Peptide)를 통해 이뤄졌으며, 자사주를 제외한 발행주식 전량(3301만6411주)을 대상으로 주당 가격 44.31스위스프랑에 진행됐다.",
+      "title": "삼성바이오 \"폴리펩타이드 공개매수 조건 충족\""
+    },
     "core:6be5505cfa7c829dc609ad87": {
       "first_seen_kst": "2026-10-08T19:49:39+09:00",
       "lanes": {
@@ -23367,6 +23438,26 @@
       ],
       "source_published_kst": "2026-10-07T15:35+09:00",
       "title": "HD건설기계, 북미 AI 데이터센터에 전력 공급…3900억 계약 체결"
+    },
+    "core:9b001ec7f2c89d52b2a58775": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.fnnews.com/news/202610131520271395",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "17865e4aa74dcecbcc183602e4bc4c669746345d35541ce4dabd05c0bc7ac522",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c79d7103495bf784f06ece09e8ef765ef77d1fba9d705fa6971e4cac9806592c",
+      "source_fact_keys": [
+        "source_fact:v1:880969a9daa1d4ece29e4242c4fa590ef3a08635a608829af9c09719f59e86ad"
+      ],
+      "source_published_kst": "2026-10-13T15:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔비디아, 화웨이 약진으로 中 점유율 34%로 추락",
+      "telegram_core_fact": "미국 정부의 첨단 인공지능(AI) 칩의 중국 수출금지 여파로 엔비디아의 중국 시장 점유율이 34%로 급락했다.",
+      "title": "엔비디아, 화웨이 약진으로 中 점유율 34%로 추락"
     },
     "core:9b1239edb537053dfb0ca8e8": {
       "first_seen_kst": "2026-10-07T19:13:29+09:00",
@@ -33328,6 +33419,28 @@
       "telegram_core_fact": "특히, 전통적인 바이아웃(경영권 인수)뿐 아니라 세컨더리와 사모대출, 기업승계와 카브아웃 등으로 투자 전략이 다변화하면서 국민연금 출자금을 확보하기 위한 운용사들의 트랙레코드 경쟁 역시 한층 치열해질 것으로 보인다.",
       "title": "국민연금, 사모·벤처 투자 100조 넘었다…4년 만에 두 배"
     },
+    "core:dcfed05913cea185f096d276": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.hankyung.com/article/202610138869L",
+      "source": "한국경제",
+      "source_body_digest": "b74dddb2df29f68ac85be757aa6d74c6ab9c2780eb09f4d77eb51e09acb79a02",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5656156aab0a3862a302adbcc3fe216b5081ceb5299dc225c70ead5fb473a5a",
+      "source_fact_keys": [
+        "source_fact:v1:54ae2e360fbe111875f51567ee7f887fc78c0d2058c171398abe7633b2c3e222",
+        "source_fact:v1:8b27d42b5bf839c00386dabb874c630b9944ae44359900dbd4bb66152f65b021",
+        "source_fact:v1:94c5e0b16888ef163e3341da6f185e1e672c36a4f902dcc07584deb94cceca00"
+      ],
+      "source_published_kst": "2026-10-13T14:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "피델릭스 수주공시 - 메모리반도체 공급 60.9억원 (매출액대비 11.3 %)",
+      "telegram_core_fact": "피델릭스는 Telit Communications Cyprus LTD과 60.9억원 규모 메모리반도체 공급 계약을 공시했다. 기간은 2026년 10월 13일부터 2026년 11월 06일까지다.",
+      "title": "피델릭스 수주공시 - 메모리반도체 공급 60.9억원 (매출액대비 11.3 %)"
+    },
     "core:dd7751ae8b5354953776c86c": {
       "first_seen_kst": "2026-10-11T18:58:34+09:00",
       "lanes": {
@@ -34851,6 +34964,24 @@
       "telegram_core_fact": "강원지역 마을 42곳이 정부의 '햇빛소득마을' 사업 대상에 선정됐지만, 대부분 전력망 부족으로 당장 사업을 추진하기 어려운 것으로 나타났다. 강원도에 따르면 행정안전부가 추진한 햇빛소득마을 2차 공모에 도내 45개 마을이 신청해 42개 마을이 선정됐다.",
       "title": "강원 햇빛소득마을 42곳 선정…'즉시 사업 추진'은 단 1곳뿐 | 연합뉴스"
     },
+    "core:e98b20a1b7a84e4bf26e03d9": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173547",
+      "source": "매일경제",
+      "source_body_digest": "d2bbe0ad9e1252bf0ef17e42d48d684174a6456da8b25f58e0a2ce28da3194cd",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-13T14:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 급락에 채권으로 눈 돌릴까…금리 오르자 개인 매수 확대",
+      "telegram_core_fact": "올해 개인들의 채권 순매수 규모는 1∼4월 평균 3조원가량이었으나 주식시장이 강세를 보인 5월에는 1조7천억원 수준까지 쪼그라든 바 있다.",
+      "title": "증시 급락에 채권으로 눈 돌릴까…금리 오르자 개인 매수 확대"
+    },
     "core:e9ca218a6d08e576df832ab3": {
       "first_seen_kst": "2026-10-12T17:17:29+09:00",
       "lanes": {
@@ -35911,6 +36042,29 @@
       "source_title": "한울반도체, 日 MLCC 제조사 AI 외관검사 성능개선 수주…해외 고객 확대",
       "telegram_core_fact": "한울반도체가 일본 소재 글로벌 적층세라믹콘덴서(MLCC) 제조사로부터 외관검사설비의 AI 성능 개선 사업을 수주했다.",
       "title": "한울반도체, 日 MLCC 제조사 AI 외관검사 성능개선 수주…해외 고객 확대"
+    },
+    "core:efcb251aabaa7160cc873c66": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003824146",
+      "source": "뉴시스",
+      "source_body_digest": "17b88dc3330296c68277e649eeacff0ce9ff1bdabbb764c9f6e216cc60c06599",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:704ada653ce1adb74590d394f67f1f203980841fca4b8e14da7c2a747f912088",
+      "source_fact_keys": [
+        "source_fact:v1:0cb002aa2425c0bd4777058d514860563331c9ae4de85377e81417823eba3822",
+        "source_fact:v1:45e45374b75cba996d41b72bc24e2ee9e59ebcde01f40b7387a9b2c03d81edbd",
+        "source_fact:v1:480eb919bcdabd7c66907cb746ff8da9db5f1ed75f81502314c8fc3a2165ab52",
+        "source_fact:v1:6d44868b818fe3fbc704ef648814183e727bc87e8412c052d1eded3f8183658d"
+      ],
+      "source_published_kst": "2026-10-13T15:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "경북농업자원관리원, 영천포장 딸기묘 생산 거점 확대",
+      "telegram_core_fact": "경북도 농업자원관리원은 13일 영천포장을 연간 20만주의 딸기 우량 원묘를 생산·공급하는 거점으로 확대한다고 밝혔다. 이번 투자로 생산시설이 추가되면 공급 규모는 연간 20만주로 늘어난다.",
+      "title": "경북농업자원관리원, 영천포장 딸기묘 생산 거점 확대"
     },
     "core:efee1b699082ea6a5b0a8be3": {
       "first_seen_kst": "2026-10-12T23:37:27+09:00",
@@ -38376,27 +38530,29 @@
     "event:00d5ad2877b9c85549826c5d": {
       "first_seen_kst": "2026-10-13T07:52:07+09:00",
       "lanes": {
-        "live": "2026-10-13T18:11:03+09:00"
+        "live": "2026-10-13T18:41:17+09:00"
       },
-      "last_seen_kst": "2026-10-13T18:11:03+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261013122300017",
-      "source": "연합뉴스",
-      "source_body_digest": "ef240470c2954f3eac52de1b71787d0945d92ef178e33985d4aad28cc801ca8c",
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003824150",
+      "source": "뉴시스",
+      "source_body_digest": "01fbae12e181fb34ed5830528b545ce7a136af216a82721a276119e3fa9fd608",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:fa1f82ed1a8638bb767d8e419d3ca13554fb4c3d48fbbcaf0a292c0de79224e5",
+      "source_fact_identity": "source_facts:v1:3efebd56d1e0f5a79793b91aa7c7caaf83176ef345bfeecd20efcf9e99c65df1",
       "source_fact_keys": [
-        "source_fact:v1:1264689496e12568c7423582d4a993808282c3a0ef0abcbfad05223938fe2bd3",
-        "source_fact:v1:4bf075ef5ec95de604b16ebb2e676e2ddf0517e98993d6a8dabf1c32d34903bc",
-        "source_fact:v1:c2924178f1a2ba5743f558ce82666d1b094580c488dd55fb7387004be6cfd72d",
-        "source_fact:v1:cdc1e0199cc37481b81e6b1332be71a65c73e1fb17a2c4ddd5254c5a83ee5b2b",
-        "source_fact:v1:ce9cc3da71db0fc7e1ac24edbca1937c2dbdc3a33fae1496b1bec5aff4418416",
-        "source_fact:v1:d003c039b98a26e857da4b38526bd8b4f5e3ff725b46d3c5582b92355c827c82"
+        "source_fact:v1:101d80d74451a3b71f653ca3212067f996203e7357d5fe6d558708a37cdef0fc",
+        "source_fact:v1:1c53872b5b4135c5972e84e15b5f0b90e37d9973eac173220a4ca782e2d7483d",
+        "source_fact:v1:63e9b57f54121cb61ed402de13752e979fab2425ce015cc9fe3f73314024efd8",
+        "source_fact:v1:72b4cfb282efd5930aceb3c9605e93f30230941fd7f1e941f17e61398fc720c9",
+        "source_fact:v1:81a5026ab1914357570c36b9d914129e6c5b0bb2722b2fad50165de159602969",
+        "source_fact:v1:bd90c72b0d1ae4eb5491ce68adc564855cdd5be62e3a807f744ad2a740b22c06",
+        "source_fact:v1:c6a645a3ba6048e2476870791d0d365b340ad2da7cc3e1a592fecf6b47e3d3e5",
+        "source_fact:v1:eab1e1b670446d5f5744723063bbc7e102cd43044aceb9e1dc88f626ded19214"
       ],
-      "source_published_kst": "2026-10-13T14:48+09:00",
+      "source_published_kst": "2026-10-13T17:08+09:00",
       "source_supply_terms": {},
-      "source_title": "삼성바이오, 폴리펩타이드 공개매수서 최소 조건 충족 | 연합뉴스",
-      "telegram_core_fact": "삼성바이오로직스[207940]는 폴리펩타이드 그룹 인수를 위해 진행한 지분 공개 매수에서 거래 최소 조건을 충족하는 응모가 이뤄졌다고 13일 밝혔다.",
-      "title": "삼성바이오, 폴리펩타이드 공개매수서 최소 조건 충족 | 연합뉴스"
+      "source_title": "삼성바이오 \"폴리펩타이드 공개매수 조건 충족\"",
+      "telegram_core_fact": "공개매수는 폴리펩타이드그룹 인수를 위해 설립한 특수목적법인(SPC) 자회사 삼성펩타이드(Samsung Peptide)를 통해 이뤄졌으며, 자사주를 제외한 발행주식 전량(3301만6411주)을 대상으로 주당 가격 44.31스위스프랑에 진행됐다.",
+      "title": "삼성바이오 \"폴리펩타이드 공개매수 조건 충족\""
     },
     "event:00ded8c6a004186c8b7a6a10": {
       "first_seen_kst": "2026-10-02T12:38:28+09:00",
@@ -43674,24 +43830,24 @@
     "event:72b1681c15ef53d466104b7a": {
       "first_seen_kst": "2026-10-13T00:22:20+09:00",
       "lanes": {
-        "live": "2026-10-13T00:22:20+09:00"
+        "live": "2026-10-13T18:41:17+09:00"
       },
-      "last_seen_kst": "2026-10-13T00:22:20+09:00",
-      "link": "https://www.newsis.com/view/NISX20261012_0003821417",
-      "source": "뉴시스",
-      "source_body_digest": "95763acaa5d3aa6766f107afff8afe3dbf473a8856305984f7e0780438c3adfb",
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.hankyung.com/article/202610138869L",
+      "source": "한국경제",
+      "source_body_digest": "b74dddb2df29f68ac85be757aa6d74c6ab9c2780eb09f4d77eb51e09acb79a02",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:b71561e5f445bd91416024c8bba460c3c738ed03945d7c3edf3351b33be8b0b7",
+      "source_fact_identity": "source_facts:v1:e5656156aab0a3862a302adbcc3fe216b5081ceb5299dc225c70ead5fb473a5a",
       "source_fact_keys": [
-        "source_fact:v1:0b82488630e515af1f3a489c1757c1456964a313b83476891198f5ca9a2e2a39",
-        "source_fact:v1:43ebdd0c80845b780795cdbf594443a9fad161c02f53227682ef3f2c4c41c3b4",
-        "source_fact:v1:96b475ec3d6b08b698664d258dae3de96c9c29c7e03fd78fb56ca5917298feed",
-        "source_fact:v1:e91359173cd133799c26b349a53601bd71eb2e2351493b49350ce96ea63eaec6"
+        "source_fact:v1:54ae2e360fbe111875f51567ee7f887fc78c0d2058c171398abe7633b2c3e222",
+        "source_fact:v1:8b27d42b5bf839c00386dabb874c630b9944ae44359900dbd4bb66152f65b021",
+        "source_fact:v1:94c5e0b16888ef163e3341da6f185e1e672c36a4f902dcc07584deb94cceca00"
       ],
-      "source_published_kst": "2026-10-13T00:06+09:00",
-      "source_title": "AI로 '돈의 역류' 시작됐다…국채금리 24년 만에 최고인데 나스닥은 상승",
-      "telegram_core_fact": "미국 국채금리가 24년 만에 최고 수준을 기록했음에도 나스닥 지수가 상승하는 현상은 높은 이자 비용을 감당할 수 있는 특정 성장 분야인 인공지능(AI)으로 자금이 집중되고 있기 때문이라는 분석이 나왔다.",
-      "title": "AI로 '돈의 역류' 시작됐다…국채금리 24년 만에 최고인데 나스닥은 상승"
+      "source_published_kst": "2026-10-13T14:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "피델릭스 수주공시 - 메모리반도체 공급 60.9억원 (매출액대비 11.3 %)",
+      "telegram_core_fact": "피델릭스는 Telit Communications Cyprus LTD과 60.9억원 규모 메모리반도체 공급 계약을 공시했다. 기간은 2026년 10월 13일부터 2026년 11월 06일까지다.",
+      "title": "피델릭스 수주공시 - 메모리반도체 공급 60.9억원 (매출액대비 11.3 %)"
     },
     "event:7325088cc44ded01eef0d137": {
       "first_seen_kst": "2026-10-02T07:25:31+09:00",
@@ -56446,6 +56602,26 @@
       "telegram_core_fact": "오늘(10일) 한국석유공사 유가정보시스템 오피넷에 따르면 10월 첫째 주 전국 주유소 휘발유 평균 판매가는 지난주보다 리터(L)당 0.4원 내린 1,857.6원이었습니다.",
       "title": "기름값 21주째 하락…휘발유·경유 1,800원대 | 연합뉴스"
     },
+    "fact:1d23c474366cc5ad9167c2e5": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.fnnews.com/news/202610131520271395",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "17865e4aa74dcecbcc183602e4bc4c669746345d35541ce4dabd05c0bc7ac522",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c79d7103495bf784f06ece09e8ef765ef77d1fba9d705fa6971e4cac9806592c",
+      "source_fact_keys": [
+        "source_fact:v1:880969a9daa1d4ece29e4242c4fa590ef3a08635a608829af9c09719f59e86ad"
+      ],
+      "source_published_kst": "2026-10-13T15:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔비디아, 화웨이 약진으로 中 점유율 34%로 추락",
+      "telegram_core_fact": "미국 정부의 첨단 인공지능(AI) 칩의 중국 수출금지 여파로 엔비디아의 중국 시장 점유율이 34%로 급락했다.",
+      "title": "엔비디아, 화웨이 약진으로 中 점유율 34%로 추락"
+    },
     "fact:1d3202eb3343e6c62e3adcdc": {
       "first_seen_kst": "2026-10-11T23:10:29+09:00",
       "lanes": {
@@ -58882,6 +59058,29 @@
       "source_title": "송파구 송파삼성래미안 79.7㎡ 22억 5천만원… 최근 3년 신고가 [MAI부동산]",
       "telegram_core_fact": "2025년 3월 23일 매일경제 기사에서는 삼성물산이 송파구 한양3차 아파트 재건축 사업을 수주했다고 전했다.",
       "title": "송파구 송파삼성래미안 79.7㎡ 22억 5천만원… 최근 3년 신고가 [MAI부동산]"
+    },
+    "fact:292ddcc24895f29c147e923d": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003824146",
+      "source": "뉴시스",
+      "source_body_digest": "17b88dc3330296c68277e649eeacff0ce9ff1bdabbb764c9f6e216cc60c06599",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:704ada653ce1adb74590d394f67f1f203980841fca4b8e14da7c2a747f912088",
+      "source_fact_keys": [
+        "source_fact:v1:0cb002aa2425c0bd4777058d514860563331c9ae4de85377e81417823eba3822",
+        "source_fact:v1:45e45374b75cba996d41b72bc24e2ee9e59ebcde01f40b7387a9b2c03d81edbd",
+        "source_fact:v1:480eb919bcdabd7c66907cb746ff8da9db5f1ed75f81502314c8fc3a2165ab52",
+        "source_fact:v1:6d44868b818fe3fbc704ef648814183e727bc87e8412c052d1eded3f8183658d"
+      ],
+      "source_published_kst": "2026-10-13T15:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "경북농업자원관리원, 영천포장 딸기묘 생산 거점 확대",
+      "telegram_core_fact": "경북도 농업자원관리원은 13일 영천포장을 연간 20만주의 딸기 우량 원묘를 생산·공급하는 거점으로 확대한다고 밝혔다. 이번 투자로 생산시설이 추가되면 공급 규모는 연간 20만주로 늘어난다.",
+      "title": "경북농업자원관리원, 영천포장 딸기묘 생산 거점 확대"
     },
     "fact:293a49649f3e7875e240e13d": {
       "first_seen_kst": "2026-10-06T21:05:27+09:00",
@@ -73449,6 +73648,26 @@
       "telegram_core_fact": "정 실장은 \"여러 고민과 각고의 협상 과정이 허무하게도 노조는 최근 발생했던 하청지회와 동일한 방식으로 불법적인 고공농성에 돌입했다\"며 \"이는 현장의 안전과 생산활동을 모두 위협하는 것으로 경영진으로서 심각한 우려를 표한다\"고 밝혔다.",
       "title": "한화오션 \"안전·생산 위협은 타협안해\"…고공농성 중단 촉구 | 연합뉴스"
     },
+    "fact:71ecf4e2ac36aadc1ee88db5": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173571",
+      "source": "매일경제",
+      "source_body_digest": "dc5344b039b3a91825abaead7a772d44d0b56bc48de70c9b9306b4f8c5eae0a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9b3ec7c48748b1795d9f148ca3833d38ffed1448b8d915d54c06501bc8c904c6",
+      "source_fact_keys": [
+        "source_fact:v1:43ea2bceaca6e1d10a975acd42a2b834ea24ecb0ed09fe6bf4f3caf5c407460f"
+      ],
+      "source_published_kst": "2026-10-13T15:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"상표출원 심사 1년↑…소상공인·중소기업 피해 연간 3조 추정\"",
+      "telegram_core_fact": "\"상표 심사가 6개월 이상 지연될 경우 매출 감소에 따른 경제적 피해가 연간 약 3조원으로 추정된다\"고 질타했다. 우리나라 상표출원 건수는 2023년 31만3천533건 이후 매년 늘어나고 있으나 심사관 수는 2023년 160명에서 2024년 177명으로 17명 늘어난 이후 올해까지 변동이 없는 상황이다.",
+      "title": "\"상표출원 심사 1년↑…소상공인·중소기업 피해 연간 3조 추정\""
+    },
     "fact:722c59d8c70f466acb66f8be": {
       "first_seen_kst": "2026-10-11T16:32:27+09:00",
       "lanes": {
@@ -78156,6 +78375,28 @@
       "source_title": "아토사 제네틱스, CVR 1주당 1개 배당..PRV 순수익 25% 지급",
       "telegram_core_fact": "아토사 제네틱스(ATOS)가 보통주 1주당 FDA 우선심사권(PRV) 연계 조건부가치권(CVR) 1개를 배당하기로 하고, 첫 번째 적격 PRV 매각 등 현금화에서 발생하는 순수익의 25%를 최대 5000만 달러 한도로 주주에게 배분하는 CVR 계약을 체결했다고 10월 9일 발표했다.",
       "title": "아토사 제네틱스, CVR 1주당 1개 배당..PRV 순수익 25% 지급"
+    },
+    "fact:8962e2af8086e4addaf0565c": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.hankyung.com/article/202610138869L",
+      "source": "한국경제",
+      "source_body_digest": "b74dddb2df29f68ac85be757aa6d74c6ab9c2780eb09f4d77eb51e09acb79a02",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5656156aab0a3862a302adbcc3fe216b5081ceb5299dc225c70ead5fb473a5a",
+      "source_fact_keys": [
+        "source_fact:v1:54ae2e360fbe111875f51567ee7f887fc78c0d2058c171398abe7633b2c3e222",
+        "source_fact:v1:8b27d42b5bf839c00386dabb874c630b9944ae44359900dbd4bb66152f65b021",
+        "source_fact:v1:94c5e0b16888ef163e3341da6f185e1e672c36a4f902dcc07584deb94cceca00"
+      ],
+      "source_published_kst": "2026-10-13T14:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "피델릭스 수주공시 - 메모리반도체 공급 60.9억원 (매출액대비 11.3 %)",
+      "telegram_core_fact": "피델릭스는 Telit Communications Cyprus LTD과 60.9억원 규모 메모리반도체 공급 계약을 공시했다. 기간은 2026년 10월 13일부터 2026년 11월 06일까지다.",
+      "title": "피델릭스 수주공시 - 메모리반도체 공급 60.9억원 (매출액대비 11.3 %)"
     },
     "fact:896ec45e107cbec8e0182d21": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
@@ -86843,6 +87084,33 @@
       "source_title": "세계 최대 바이오 생산기지 송도의 역설…원부자재 95% 수입 | 연합뉴스",
       "telegram_core_fact": "보고서는 \"바이오 원부자재는 원가, 품질, 공급 안전성을 좌우하는 전략 자산\"이라며 \"의약품 제조 품목 허가에 등록된 원부자재는 교체 시 재검증 비용이 막대해 안정적 매출의 원천이 된다\"고 짚었다.",
       "title": "세계 최대 바이오 생산기지 송도의 역설…원부자재 95% 수입 | 연합뉴스"
+    },
+    "fact:b13e7bfe3ed1ebfc7cf2e821": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003824150",
+      "source": "뉴시스",
+      "source_body_digest": "01fbae12e181fb34ed5830528b545ce7a136af216a82721a276119e3fa9fd608",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3efebd56d1e0f5a79793b91aa7c7caaf83176ef345bfeecd20efcf9e99c65df1",
+      "source_fact_keys": [
+        "source_fact:v1:101d80d74451a3b71f653ca3212067f996203e7357d5fe6d558708a37cdef0fc",
+        "source_fact:v1:1c53872b5b4135c5972e84e15b5f0b90e37d9973eac173220a4ca782e2d7483d",
+        "source_fact:v1:63e9b57f54121cb61ed402de13752e979fab2425ce015cc9fe3f73314024efd8",
+        "source_fact:v1:72b4cfb282efd5930aceb3c9605e93f30230941fd7f1e941f17e61398fc720c9",
+        "source_fact:v1:81a5026ab1914357570c36b9d914129e6c5b0bb2722b2fad50165de159602969",
+        "source_fact:v1:bd90c72b0d1ae4eb5491ce68adc564855cdd5be62e3a807f744ad2a740b22c06",
+        "source_fact:v1:c6a645a3ba6048e2476870791d0d365b340ad2da7cc3e1a592fecf6b47e3d3e5",
+        "source_fact:v1:eab1e1b670446d5f5744723063bbc7e102cd43044aceb9e1dc88f626ded19214"
+      ],
+      "source_published_kst": "2026-10-13T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성바이오 \"폴리펩타이드 공개매수 조건 충족\"",
+      "telegram_core_fact": "공개매수는 폴리펩타이드그룹 인수를 위해 설립한 특수목적법인(SPC) 자회사 삼성펩타이드(Samsung Peptide)를 통해 이뤄졌으며, 자사주를 제외한 발행주식 전량(3301만6411주)을 대상으로 주당 가격 44.31스위스프랑에 진행됐다.",
+      "title": "삼성바이오 \"폴리펩타이드 공개매수 조건 충족\""
     },
     "fact:b14404dbf0b49d1fa3d89fdd": {
       "first_seen_kst": "2026-10-08T15:53:45+09:00",
@@ -98186,6 +98454,30 @@
       "source_title": "호르무즈 지나던 유조선, 기뢰 건드려 폭발·화재[영상]",
       "telegram_core_fact": "IRGC는 이란 국영 IRNA 등 매체를 통해 이날 원유 75만배럴을 실은 초대형 유조선이 기뢰에 부딪혀 배에서 폭발과 화재가 일어났다고 밝혔다.",
       "title": "호르무즈 지나던 유조선, 기뢰 건드려 폭발·화재[영상]"
+    },
+    "fact:e6bf65efe9ebeb16ae1a73f9": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03411206645612592",
+      "source": "이데일리",
+      "source_body_digest": "4280921320f56f73b665ad7a02da63f58da4f75d9e95b6a82bb4ab502e362548",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ca4ad2b32d34644e30c6f106cbc770772bd27fdf794186ed9d0f74ea7b9d609",
+      "source_fact_keys": [
+        "source_fact:v1:20fa441bd521d003bd18ab14b0433487785e0ecdffb1d301d9bc41779a3f04ef",
+        "source_fact:v1:4a6142d662e5198eef9e282184755012b934d486f969441cf7c4910324fa4f72",
+        "source_fact:v1:8057070133295ce3632cae927c239043b42b1b92fbe21a6ffba0d8034589b3f0",
+        "source_fact:v1:bc307b5ee1395afb5734aab8a020823226df22dd204d0ba0dfbb20ecc8db9507",
+        "source_fact:v1:d114497907f4305fbcb1594e78e168681200463d0da8a5c0d5639e5e25ad0678"
+      ],
+      "source_published_kst": "2026-10-13T14:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"코인 과세 서두르다 레버리지ETF꼴 난다\"…국세청장 \"11월 고시 발표\"",
+      "telegram_core_fact": "내년 1월 가상자산 과세 시행을 앞두고 과세 기준조차 명확하지 않다는 지적이 제기되자 임광현 국세청장은 “11월에 가상자산 과세 관련 고시안을 발표할 수 있도록 준비 중”이라고 밝혔다.",
+      "title": "\"코인 과세 서두르다 레버리지ETF꼴 난다\"…국세청장 \"11월 고시 발표\""
     },
     "fact:e6c3d9a3dff51c0762c55e8b": {
       "first_seen_kst": "2026-10-09T17:54:07+09:00",
@@ -110575,6 +110867,26 @@
       ],
       "source_published_kst": "2026-10-07T11:58+09:00",
       "title": "LG전자, 3분기 누적 매출·영업익 '사상 최대'…가전·전장 호조"
+    },
+    "link:18e4bfe3109e6862af81f660": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173571",
+      "source": "매일경제",
+      "source_body_digest": "dc5344b039b3a91825abaead7a772d44d0b56bc48de70c9b9306b4f8c5eae0a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9b3ec7c48748b1795d9f148ca3833d38ffed1448b8d915d54c06501bc8c904c6",
+      "source_fact_keys": [
+        "source_fact:v1:43ea2bceaca6e1d10a975acd42a2b834ea24ecb0ed09fe6bf4f3caf5c407460f"
+      ],
+      "source_published_kst": "2026-10-13T15:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"상표출원 심사 1년↑…소상공인·중소기업 피해 연간 3조 추정\"",
+      "telegram_core_fact": "\"상표 심사가 6개월 이상 지연될 경우 매출 감소에 따른 경제적 피해가 연간 약 3조원으로 추정된다\"고 질타했다. 우리나라 상표출원 건수는 2023년 31만3천533건 이후 매년 늘어나고 있으나 심사관 수는 2023년 160명에서 2024년 177명으로 17명 늘어난 이후 올해까지 변동이 없는 상황이다.",
+      "title": "\"상표출원 심사 1년↑…소상공인·중소기업 피해 연간 3조 추정\""
     },
     "link:18f2cbc1bf6f76e4c8147725": {
       "first_seen_kst": "2026-10-02T05:58:25+09:00",
@@ -140847,6 +141159,24 @@
       "telegram_core_fact": "자회사 위세샛이 계열사 SEALSQ로부터 1000만 달러 PIPE 투자를 유치하며 위성 사업 확대를 위한 자금 기반을 마련했습니다.",
       "title": "위스키인터내셔널, 자회사 1000만 달러 PIPE 유치로 위성 사업 확대 기대"
     },
+    "link:806812cfc2d82cc845e6fbcb": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173547",
+      "source": "매일경제",
+      "source_body_digest": "d2bbe0ad9e1252bf0ef17e42d48d684174a6456da8b25f58e0a2ce28da3194cd",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-13T14:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 급락에 채권으로 눈 돌릴까…금리 오르자 개인 매수 확대",
+      "telegram_core_fact": "올해 개인들의 채권 순매수 규모는 1∼4월 평균 3조원가량이었으나 주식시장이 강세를 보인 5월에는 1조7천억원 수준까지 쪼그라든 바 있다.",
+      "title": "증시 급락에 채권으로 눈 돌릴까…금리 오르자 개인 매수 확대"
+    },
     "link:806f6f89fedc727a36ccdc09": {
       "first_seen_kst": "2026-10-07T17:47:45+09:00",
       "lanes": {
@@ -141492,6 +141822,28 @@
       "source_title": "엘앤에프 국제 표준 탄소발자국 검증 획득…\"규제 대응 역량 강화\"",
       "telegram_core_fact": "박 부문장은 \"이번 제품 탄소발자국 검증은 엘앤에프가 글로벌 기준에 부합하는 탄소 데이터 관리 역량을 갖추고 있음을 공식적으로 인정받은 성과\"라며 \"앞으로도 전과정평가 기반의 탄소배출량을 정밀하게 관리하고 감축 활동을 고도화해 제품의 판매 경쟁력 강화와 지속가능한 이차전지 공급망 구축에 기여해 나가겠다\"고 말했다.",
       "title": "엘앤에프 국제 표준 탄소발자국 검증 획득…\"규제 대응 역량 강화\""
+    },
+    "link:823dc7dccd2495e9655493d5": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.hankyung.com/article/202610138869L",
+      "source": "한국경제",
+      "source_body_digest": "b74dddb2df29f68ac85be757aa6d74c6ab9c2780eb09f4d77eb51e09acb79a02",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5656156aab0a3862a302adbcc3fe216b5081ceb5299dc225c70ead5fb473a5a",
+      "source_fact_keys": [
+        "source_fact:v1:54ae2e360fbe111875f51567ee7f887fc78c0d2058c171398abe7633b2c3e222",
+        "source_fact:v1:8b27d42b5bf839c00386dabb874c630b9944ae44359900dbd4bb66152f65b021",
+        "source_fact:v1:94c5e0b16888ef163e3341da6f185e1e672c36a4f902dcc07584deb94cceca00"
+      ],
+      "source_published_kst": "2026-10-13T14:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "피델릭스 수주공시 - 메모리반도체 공급 60.9억원 (매출액대비 11.3 %)",
+      "telegram_core_fact": "피델릭스는 Telit Communications Cyprus LTD과 60.9억원 규모 메모리반도체 공급 계약을 공시했다. 기간은 2026년 10월 13일부터 2026년 11월 06일까지다.",
+      "title": "피델릭스 수주공시 - 메모리반도체 공급 60.9억원 (매출액대비 11.3 %)"
     },
     "link:824659e45d6256e2b27849fe": {
       "first_seen_kst": "2026-10-12T19:07:06+09:00",
@@ -143435,6 +143787,30 @@
       ],
       "source_published_kst": "2026-10-07T14:21+09:00",
       "title": "리사 수 방한 계기로 韓ㆍAMD 반도체 협력 확대⋯정부, 내년 실증사업 속도 [종합]"
+    },
+    "link:8ae10445d903094a23d7a1a8": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03411206645612592",
+      "source": "이데일리",
+      "source_body_digest": "4280921320f56f73b665ad7a02da63f58da4f75d9e95b6a82bb4ab502e362548",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ca4ad2b32d34644e30c6f106cbc770772bd27fdf794186ed9d0f74ea7b9d609",
+      "source_fact_keys": [
+        "source_fact:v1:20fa441bd521d003bd18ab14b0433487785e0ecdffb1d301d9bc41779a3f04ef",
+        "source_fact:v1:4a6142d662e5198eef9e282184755012b934d486f969441cf7c4910324fa4f72",
+        "source_fact:v1:8057070133295ce3632cae927c239043b42b1b92fbe21a6ffba0d8034589b3f0",
+        "source_fact:v1:bc307b5ee1395afb5734aab8a020823226df22dd204d0ba0dfbb20ecc8db9507",
+        "source_fact:v1:d114497907f4305fbcb1594e78e168681200463d0da8a5c0d5639e5e25ad0678"
+      ],
+      "source_published_kst": "2026-10-13T14:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"코인 과세 서두르다 레버리지ETF꼴 난다\"…국세청장 \"11월 고시 발표\"",
+      "telegram_core_fact": "내년 1월 가상자산 과세 시행을 앞두고 과세 기준조차 명확하지 않다는 지적이 제기되자 임광현 국세청장은 “11월에 가상자산 과세 관련 고시안을 발표할 수 있도록 준비 중”이라고 밝혔다.",
+      "title": "\"코인 과세 서두르다 레버리지ETF꼴 난다\"…국세청장 \"11월 고시 발표\""
     },
     "link:8aecfa556383b735f3229320": {
       "first_seen_kst": "2026-10-13T01:37:36+09:00",
@@ -150728,6 +151104,29 @@
       "source_title": "SK어스온, 베트남서 원유 생산 확대…원유층 추가 발견 '겹경사'",
       "telegram_core_fact": "SK이노베이션의 자원개발 자회사 SK어스온이 베트남 신규 광구에서 첫 원유 생산에 성공하고 추가 유층까지 발견하며 현지 자원개발 성과를 확대하고 있다.",
       "title": "SK어스온, 베트남서 원유 생산 확대…원유층 추가 발견 '겹경사'"
+    },
+    "link:a2250a410c952b7127544ccf": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003824146",
+      "source": "뉴시스",
+      "source_body_digest": "17b88dc3330296c68277e649eeacff0ce9ff1bdabbb764c9f6e216cc60c06599",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:704ada653ce1adb74590d394f67f1f203980841fca4b8e14da7c2a747f912088",
+      "source_fact_keys": [
+        "source_fact:v1:0cb002aa2425c0bd4777058d514860563331c9ae4de85377e81417823eba3822",
+        "source_fact:v1:45e45374b75cba996d41b72bc24e2ee9e59ebcde01f40b7387a9b2c03d81edbd",
+        "source_fact:v1:480eb919bcdabd7c66907cb746ff8da9db5f1ed75f81502314c8fc3a2165ab52",
+        "source_fact:v1:6d44868b818fe3fbc704ef648814183e727bc87e8412c052d1eded3f8183658d"
+      ],
+      "source_published_kst": "2026-10-13T15:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "경북농업자원관리원, 영천포장 딸기묘 생산 거점 확대",
+      "telegram_core_fact": "경북도 농업자원관리원은 13일 영천포장을 연간 20만주의 딸기 우량 원묘를 생산·공급하는 거점으로 확대한다고 밝혔다. 이번 투자로 생산시설이 추가되면 공급 규모는 연간 20만주로 늘어난다.",
+      "title": "경북농업자원관리원, 영천포장 딸기묘 생산 거점 확대"
     },
     "link:a2308feb217eba455dbe0b94": {
       "first_seen_kst": "2026-10-10T07:01:20+09:00",
@@ -173418,6 +173817,26 @@
       "source_published_kst": "2026-10-06T17:03+09:00",
       "title": "\"미래 성장동력 확보\"…알테오젠, 2천억 투자유치"
     },
+    "link:f0c112e370e4695e67e3d4ea": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.fnnews.com/news/202610131520271395",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "17865e4aa74dcecbcc183602e4bc4c669746345d35541ce4dabd05c0bc7ac522",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c79d7103495bf784f06ece09e8ef765ef77d1fba9d705fa6971e4cac9806592c",
+      "source_fact_keys": [
+        "source_fact:v1:880969a9daa1d4ece29e4242c4fa590ef3a08635a608829af9c09719f59e86ad"
+      ],
+      "source_published_kst": "2026-10-13T15:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔비디아, 화웨이 약진으로 中 점유율 34%로 추락",
+      "telegram_core_fact": "미국 정부의 첨단 인공지능(AI) 칩의 중국 수출금지 여파로 엔비디아의 중국 시장 점유율이 34%로 급락했다.",
+      "title": "엔비디아, 화웨이 약진으로 中 점유율 34%로 추락"
+    },
     "link:f0d4618a3266f95cf15230ae": {
       "first_seen_kst": "2026-10-06T18:46:35+09:00",
       "lanes": {
@@ -175125,6 +175544,33 @@
       ],
       "source_published_kst": "2026-10-06T18:09+09:00",
       "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어(종합) | 연합뉴스"
+    },
+    "link:f764bda121a92faff5847e8e": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003824150",
+      "source": "뉴시스",
+      "source_body_digest": "01fbae12e181fb34ed5830528b545ce7a136af216a82721a276119e3fa9fd608",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3efebd56d1e0f5a79793b91aa7c7caaf83176ef345bfeecd20efcf9e99c65df1",
+      "source_fact_keys": [
+        "source_fact:v1:101d80d74451a3b71f653ca3212067f996203e7357d5fe6d558708a37cdef0fc",
+        "source_fact:v1:1c53872b5b4135c5972e84e15b5f0b90e37d9973eac173220a4ca782e2d7483d",
+        "source_fact:v1:63e9b57f54121cb61ed402de13752e979fab2425ce015cc9fe3f73314024efd8",
+        "source_fact:v1:72b4cfb282efd5930aceb3c9605e93f30230941fd7f1e941f17e61398fc720c9",
+        "source_fact:v1:81a5026ab1914357570c36b9d914129e6c5b0bb2722b2fad50165de159602969",
+        "source_fact:v1:bd90c72b0d1ae4eb5491ce68adc564855cdd5be62e3a807f744ad2a740b22c06",
+        "source_fact:v1:c6a645a3ba6048e2476870791d0d365b340ad2da7cc3e1a592fecf6b47e3d3e5",
+        "source_fact:v1:eab1e1b670446d5f5744723063bbc7e102cd43044aceb9e1dc88f626ded19214"
+      ],
+      "source_published_kst": "2026-10-13T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성바이오 \"폴리펩타이드 공개매수 조건 충족\"",
+      "telegram_core_fact": "공개매수는 폴리펩타이드그룹 인수를 위해 설립한 특수목적법인(SPC) 자회사 삼성펩타이드(Samsung Peptide)를 통해 이뤄졌으며, 자사주를 제외한 발행주식 전량(3301만6411주)을 대상으로 주당 가격 44.31스위스프랑에 진행됐다.",
+      "title": "삼성바이오 \"폴리펩타이드 공개매수 조건 충족\""
     },
     "link:f787ea459521c0ee38a21316": {
       "first_seen_kst": "2026-10-06T21:54:00+09:00",
@@ -189191,6 +189637,28 @@
       "telegram_core_fact": "이재원 유안타증권 연구원은 “현재 국내 주식시장의 가장 큰 고민은 반도체 실적이 아닌 외국인 수급”이라며 “삼성전자 3분기 영업이익이 시장 기대를 상회했고 메모리 가격과 AI 인프라 투자도 견조하지만, 외국인 매도 지속에 코스피의 상대적 부진이 지속되고 있다”고 말했다.",
       "title": "코스피 199조 던진 외국인 이건 계속 샀다는데…10조 가량 담은 ‘ETF’"
     },
+    "original:28c839ef3f917010fe7054cb": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.hankyung.com/article/202610138869L",
+      "source": "한국경제",
+      "source_body_digest": "b74dddb2df29f68ac85be757aa6d74c6ab9c2780eb09f4d77eb51e09acb79a02",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5656156aab0a3862a302adbcc3fe216b5081ceb5299dc225c70ead5fb473a5a",
+      "source_fact_keys": [
+        "source_fact:v1:54ae2e360fbe111875f51567ee7f887fc78c0d2058c171398abe7633b2c3e222",
+        "source_fact:v1:8b27d42b5bf839c00386dabb874c630b9944ae44359900dbd4bb66152f65b021",
+        "source_fact:v1:94c5e0b16888ef163e3341da6f185e1e672c36a4f902dcc07584deb94cceca00"
+      ],
+      "source_published_kst": "2026-10-13T14:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "피델릭스 수주공시 - 메모리반도체 공급 60.9억원 (매출액대비 11.3 %)",
+      "telegram_core_fact": "피델릭스는 Telit Communications Cyprus LTD과 60.9억원 규모 메모리반도체 공급 계약을 공시했다. 기간은 2026년 10월 13일부터 2026년 11월 06일까지다.",
+      "title": "피델릭스 수주공시 - 메모리반도체 공급 60.9억원 (매출액대비 11.3 %)"
+    },
     "original:28d9c1d45b41c9d6e59e1c16": {
       "first_seen_kst": "2026-10-07T12:06:36+09:00",
       "lanes": {
@@ -190355,6 +190823,26 @@
       "source_title": "인도, 기준금리 5.5%로 0.25%P↑…\"인플레 대응 3년8개월 만에 인상\"",
       "telegram_core_fact": "은행이 중앙은행에 초과 유동성을 예치할 때 적용하는 상설예금제도(SDF) 금리는 5.25%, 긴급 유동성 지원 창구인 한계대출제도(MSF) 금리는 5.75%로 각각 0.25% 포인트 인상했다.",
       "title": "인도, 기준금리 5.5%로 0.25%P↑…\"인플레 대응 3년8개월 만에 인상\""
+    },
+    "original:2c8ca8fabf0a23b9f2ac3d3e": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173571",
+      "source": "매일경제",
+      "source_body_digest": "dc5344b039b3a91825abaead7a772d44d0b56bc48de70c9b9306b4f8c5eae0a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9b3ec7c48748b1795d9f148ca3833d38ffed1448b8d915d54c06501bc8c904c6",
+      "source_fact_keys": [
+        "source_fact:v1:43ea2bceaca6e1d10a975acd42a2b834ea24ecb0ed09fe6bf4f3caf5c407460f"
+      ],
+      "source_published_kst": "2026-10-13T15:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"상표출원 심사 1년↑…소상공인·중소기업 피해 연간 3조 추정\"",
+      "telegram_core_fact": "\"상표 심사가 6개월 이상 지연될 경우 매출 감소에 따른 경제적 피해가 연간 약 3조원으로 추정된다\"고 질타했다. 우리나라 상표출원 건수는 2023년 31만3천533건 이후 매년 늘어나고 있으나 심사관 수는 2023년 160명에서 2024년 177명으로 17명 늘어난 이후 올해까지 변동이 없는 상황이다.",
+      "title": "\"상표출원 심사 1년↑…소상공인·중소기업 피해 연간 3조 추정\""
     },
     "original:2c911ab01ccc45ac77d42f6f": {
       "first_seen_kst": "2026-10-12T17:38:53+09:00",
@@ -217979,6 +218467,30 @@
       "source_published_kst": "2026-10-05T18:43+09:00",
       "title": "JEDEC, 첫 '실리콘 포토닉스' 신뢰성 표준 발표…AI인프라 변혁 예고"
     },
+    "original:8d6293b5a4c6af9bb67f9a60": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03411206645612592",
+      "source": "이데일리",
+      "source_body_digest": "4280921320f56f73b665ad7a02da63f58da4f75d9e95b6a82bb4ab502e362548",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ca4ad2b32d34644e30c6f106cbc770772bd27fdf794186ed9d0f74ea7b9d609",
+      "source_fact_keys": [
+        "source_fact:v1:20fa441bd521d003bd18ab14b0433487785e0ecdffb1d301d9bc41779a3f04ef",
+        "source_fact:v1:4a6142d662e5198eef9e282184755012b934d486f969441cf7c4910324fa4f72",
+        "source_fact:v1:8057070133295ce3632cae927c239043b42b1b92fbe21a6ffba0d8034589b3f0",
+        "source_fact:v1:bc307b5ee1395afb5734aab8a020823226df22dd204d0ba0dfbb20ecc8db9507",
+        "source_fact:v1:d114497907f4305fbcb1594e78e168681200463d0da8a5c0d5639e5e25ad0678"
+      ],
+      "source_published_kst": "2026-10-13T14:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"코인 과세 서두르다 레버리지ETF꼴 난다\"…국세청장 \"11월 고시 발표\"",
+      "telegram_core_fact": "내년 1월 가상자산 과세 시행을 앞두고 과세 기준조차 명확하지 않다는 지적이 제기되자 임광현 국세청장은 “11월에 가상자산 과세 관련 고시안을 발표할 수 있도록 준비 중”이라고 밝혔다.",
+      "title": "\"코인 과세 서두르다 레버리지ETF꼴 난다\"…국세청장 \"11월 고시 발표\""
+    },
     "original:8d73828d31ba3ba8a816dbaa": {
       "first_seen_kst": "2026-10-02T18:02:38+09:00",
       "lanes": {
@@ -225524,6 +226036,33 @@
       "source": "연합뉴스",
       "title": "500억불 투자 VS 미정…알래스카 LNG 대미투자 새 '뇌관'(종합2보) | 연합뉴스"
     },
+    "original:a8753b4b2bfd88f5a335d66a": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003824150",
+      "source": "뉴시스",
+      "source_body_digest": "01fbae12e181fb34ed5830528b545ce7a136af216a82721a276119e3fa9fd608",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3efebd56d1e0f5a79793b91aa7c7caaf83176ef345bfeecd20efcf9e99c65df1",
+      "source_fact_keys": [
+        "source_fact:v1:101d80d74451a3b71f653ca3212067f996203e7357d5fe6d558708a37cdef0fc",
+        "source_fact:v1:1c53872b5b4135c5972e84e15b5f0b90e37d9973eac173220a4ca782e2d7483d",
+        "source_fact:v1:63e9b57f54121cb61ed402de13752e979fab2425ce015cc9fe3f73314024efd8",
+        "source_fact:v1:72b4cfb282efd5930aceb3c9605e93f30230941fd7f1e941f17e61398fc720c9",
+        "source_fact:v1:81a5026ab1914357570c36b9d914129e6c5b0bb2722b2fad50165de159602969",
+        "source_fact:v1:bd90c72b0d1ae4eb5491ce68adc564855cdd5be62e3a807f744ad2a740b22c06",
+        "source_fact:v1:c6a645a3ba6048e2476870791d0d365b340ad2da7cc3e1a592fecf6b47e3d3e5",
+        "source_fact:v1:eab1e1b670446d5f5744723063bbc7e102cd43044aceb9e1dc88f626ded19214"
+      ],
+      "source_published_kst": "2026-10-13T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성바이오 \"폴리펩타이드 공개매수 조건 충족\"",
+      "telegram_core_fact": "공개매수는 폴리펩타이드그룹 인수를 위해 설립한 특수목적법인(SPC) 자회사 삼성펩타이드(Samsung Peptide)를 통해 이뤄졌으며, 자사주를 제외한 발행주식 전량(3301만6411주)을 대상으로 주당 가격 44.31스위스프랑에 진행됐다.",
+      "title": "삼성바이오 \"폴리펩타이드 공개매수 조건 충족\""
+    },
     "original:a880b004cc920d3cc1d1b7cf": {
       "first_seen_kst": "2026-10-01T11:48:10+09:00",
       "lanes": {
@@ -226056,6 +226595,26 @@
       ],
       "source_published_kst": "2026-10-06T16:01+09:00",
       "title": "신세계그룹, 美 워너브라더스 인수에 전격 투자"
+    },
+    "original:aa62a59e82f80d44b59a0140": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.fnnews.com/news/202610131520271395",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "17865e4aa74dcecbcc183602e4bc4c669746345d35541ce4dabd05c0bc7ac522",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c79d7103495bf784f06ece09e8ef765ef77d1fba9d705fa6971e4cac9806592c",
+      "source_fact_keys": [
+        "source_fact:v1:880969a9daa1d4ece29e4242c4fa590ef3a08635a608829af9c09719f59e86ad"
+      ],
+      "source_published_kst": "2026-10-13T15:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔비디아, 화웨이 약진으로 中 점유율 34%로 추락",
+      "telegram_core_fact": "미국 정부의 첨단 인공지능(AI) 칩의 중국 수출금지 여파로 엔비디아의 중국 시장 점유율이 34%로 급락했다.",
+      "title": "엔비디아, 화웨이 약진으로 中 점유율 34%로 추락"
     },
     "original:aa6377d0693f7a8e5f2c7521": {
       "first_seen_kst": "2026-10-13T14:32:55+09:00",
@@ -240908,6 +241467,24 @@
       "telegram_core_fact": "지난달 30일 서울 태평로에 있는 규제합리화위원회 사무실에서 만난 그는 “규제 차르에게 대통령이 권한을 주고, 국무회의에도 참관할 수 있도록 해서 낡은 규제를 풀어야 한다”고 제안했다.",
       "title": "박용진 “부처간 꼬여있는 규제, 풀려면 ‘차르’ 필요” | 중앙일보"
     },
+    "original:df6c91e1ff4d78ef83e1bde9": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173547",
+      "source": "매일경제",
+      "source_body_digest": "d2bbe0ad9e1252bf0ef17e42d48d684174a6456da8b25f58e0a2ce28da3194cd",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-13T14:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 급락에 채권으로 눈 돌릴까…금리 오르자 개인 매수 확대",
+      "telegram_core_fact": "올해 개인들의 채권 순매수 규모는 1∼4월 평균 3조원가량이었으나 주식시장이 강세를 보인 5월에는 1조7천억원 수준까지 쪼그라든 바 있다.",
+      "title": "증시 급락에 채권으로 눈 돌릴까…금리 오르자 개인 매수 확대"
+    },
     "original:df747bc8ede00631d6ea5d9d": {
       "first_seen_kst": "2026-10-07T06:12:17+09:00",
       "lanes": {
@@ -246681,6 +247258,29 @@
       "telegram_core_fact": "미국 양자컴퓨팅 기업 아이온큐(IonQ)가 사이버보안 기업 엘리시티(Elisity)를 최대 13억달러(약 1조8천억원)에 인수한다. 인수가에는 엘리시티의 향후 실적에 따라 지급하는 최대 1억5천만달러(약 2천억원)의 성과보수가 포함됐다.",
       "title": "아이온큐, 사이버보안 기업 최대 1.8조원에 인수 | 연합뉴스"
     },
+    "original:f48b18370a2dfbf1da43f76f": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003824146",
+      "source": "뉴시스",
+      "source_body_digest": "17b88dc3330296c68277e649eeacff0ce9ff1bdabbb764c9f6e216cc60c06599",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:704ada653ce1adb74590d394f67f1f203980841fca4b8e14da7c2a747f912088",
+      "source_fact_keys": [
+        "source_fact:v1:0cb002aa2425c0bd4777058d514860563331c9ae4de85377e81417823eba3822",
+        "source_fact:v1:45e45374b75cba996d41b72bc24e2ee9e59ebcde01f40b7387a9b2c03d81edbd",
+        "source_fact:v1:480eb919bcdabd7c66907cb746ff8da9db5f1ed75f81502314c8fc3a2165ab52",
+        "source_fact:v1:6d44868b818fe3fbc704ef648814183e727bc87e8412c052d1eded3f8183658d"
+      ],
+      "source_published_kst": "2026-10-13T15:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "경북농업자원관리원, 영천포장 딸기묘 생산 거점 확대",
+      "telegram_core_fact": "경북도 농업자원관리원은 13일 영천포장을 연간 20만주의 딸기 우량 원묘를 생산·공급하는 거점으로 확대한다고 밝혔다. 이번 투자로 생산시설이 추가되면 공급 규모는 연간 20만주로 늘어난다.",
+      "title": "경북농업자원관리원, 영천포장 딸기묘 생산 거점 확대"
+    },
     "original:f4a013210675941e03fb6f0c": {
       "first_seen_kst": "2026-10-12T09:53:29+09:00",
       "lanes": {
@@ -250472,6 +251072,29 @@
       "source_published_kst": "2026-10-06T09:43+09:00",
       "title": "두산로보틱스, 국산 AI칩 기반 ‘피지컬 AI’ 개발…총 989억원 규모"
     },
+    "source_fact:00ad4e0cdf43b7880c7a39b9": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003824146",
+      "source": "뉴시스",
+      "source_body_digest": "17b88dc3330296c68277e649eeacff0ce9ff1bdabbb764c9f6e216cc60c06599",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:704ada653ce1adb74590d394f67f1f203980841fca4b8e14da7c2a747f912088",
+      "source_fact_keys": [
+        "source_fact:v1:0cb002aa2425c0bd4777058d514860563331c9ae4de85377e81417823eba3822",
+        "source_fact:v1:45e45374b75cba996d41b72bc24e2ee9e59ebcde01f40b7387a9b2c03d81edbd",
+        "source_fact:v1:480eb919bcdabd7c66907cb746ff8da9db5f1ed75f81502314c8fc3a2165ab52",
+        "source_fact:v1:6d44868b818fe3fbc704ef648814183e727bc87e8412c052d1eded3f8183658d"
+      ],
+      "source_published_kst": "2026-10-13T15:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "경북농업자원관리원, 영천포장 딸기묘 생산 거점 확대",
+      "telegram_core_fact": "경북도 농업자원관리원은 13일 영천포장을 연간 20만주의 딸기 우량 원묘를 생산·공급하는 거점으로 확대한다고 밝혔다. 이번 투자로 생산시설이 추가되면 공급 규모는 연간 20만주로 늘어난다.",
+      "title": "경북농업자원관리원, 영천포장 딸기묘 생산 거점 확대"
+    },
     "source_fact:00b5b40cc0b71e9896d5b34a": {
       "first_seen_kst": "2026-10-08T21:21:36+09:00",
       "lanes": {
@@ -253453,6 +254076,29 @@
       "source_title": "또 멀어진 칠천피...'삼전닉스 자사주 매입 종료' 상쇄할 카드는? [주간 증시 전망]",
       "telegram_core_fact": "이번주 국내 증시의 주요 변수 중 하나는 삼성전자와 SK하이닉스의 자사주 매입 종료에 따른 수급 변화다.",
       "title": "또 멀어진 칠천피...'삼전닉스 자사주 매입 종료' 상쇄할 카드는? [주간 증시 전망]"
+    },
+    "source_fact:040d4013e7e423684dfe2c04": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003824146",
+      "source": "뉴시스",
+      "source_body_digest": "17b88dc3330296c68277e649eeacff0ce9ff1bdabbb764c9f6e216cc60c06599",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:704ada653ce1adb74590d394f67f1f203980841fca4b8e14da7c2a747f912088",
+      "source_fact_keys": [
+        "source_fact:v1:0cb002aa2425c0bd4777058d514860563331c9ae4de85377e81417823eba3822",
+        "source_fact:v1:45e45374b75cba996d41b72bc24e2ee9e59ebcde01f40b7387a9b2c03d81edbd",
+        "source_fact:v1:480eb919bcdabd7c66907cb746ff8da9db5f1ed75f81502314c8fc3a2165ab52",
+        "source_fact:v1:6d44868b818fe3fbc704ef648814183e727bc87e8412c052d1eded3f8183658d"
+      ],
+      "source_published_kst": "2026-10-13T15:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "경북농업자원관리원, 영천포장 딸기묘 생산 거점 확대",
+      "telegram_core_fact": "경북도 농업자원관리원은 13일 영천포장을 연간 20만주의 딸기 우량 원묘를 생산·공급하는 거점으로 확대한다고 밝혔다. 이번 투자로 생산시설이 추가되면 공급 규모는 연간 20만주로 늘어난다.",
+      "title": "경북농업자원관리원, 영천포장 딸기묘 생산 거점 확대"
     },
     "source_fact:04109025d27a0f9dbb25877f": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
@@ -267729,6 +268375,33 @@
       "source_title": "답답한 삼전닉스를 어찌하오리까…증권 센터장 5인에게 물어보니",
       "telegram_core_fact": "박연주 미래에셋증권 AI리서치센터장은 오픈AI 매출 논란에 대해 \"집계 기준의 차이일 뿐, AI 수요 등 펀더멘털은 크게 변하지 않은 상황으로 본다\"고 말했다.",
       "title": "답답한 삼전닉스를 어찌하오리까…증권 센터장 5인에게 물어보니"
+    },
+    "source_fact:128b8d53c9ce94a2de3bdfcf": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003824150",
+      "source": "뉴시스",
+      "source_body_digest": "01fbae12e181fb34ed5830528b545ce7a136af216a82721a276119e3fa9fd608",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3efebd56d1e0f5a79793b91aa7c7caaf83176ef345bfeecd20efcf9e99c65df1",
+      "source_fact_keys": [
+        "source_fact:v1:101d80d74451a3b71f653ca3212067f996203e7357d5fe6d558708a37cdef0fc",
+        "source_fact:v1:1c53872b5b4135c5972e84e15b5f0b90e37d9973eac173220a4ca782e2d7483d",
+        "source_fact:v1:63e9b57f54121cb61ed402de13752e979fab2425ce015cc9fe3f73314024efd8",
+        "source_fact:v1:72b4cfb282efd5930aceb3c9605e93f30230941fd7f1e941f17e61398fc720c9",
+        "source_fact:v1:81a5026ab1914357570c36b9d914129e6c5b0bb2722b2fad50165de159602969",
+        "source_fact:v1:bd90c72b0d1ae4eb5491ce68adc564855cdd5be62e3a807f744ad2a740b22c06",
+        "source_fact:v1:c6a645a3ba6048e2476870791d0d365b340ad2da7cc3e1a592fecf6b47e3d3e5",
+        "source_fact:v1:eab1e1b670446d5f5744723063bbc7e102cd43044aceb9e1dc88f626ded19214"
+      ],
+      "source_published_kst": "2026-10-13T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성바이오 \"폴리펩타이드 공개매수 조건 충족\"",
+      "telegram_core_fact": "공개매수는 폴리펩타이드그룹 인수를 위해 설립한 특수목적법인(SPC) 자회사 삼성펩타이드(Samsung Peptide)를 통해 이뤄졌으며, 자사주를 제외한 발행주식 전량(3301만6411주)을 대상으로 주당 가격 44.31스위스프랑에 진행됐다.",
+      "title": "삼성바이오 \"폴리펩타이드 공개매수 조건 충족\""
     },
     "source_fact:128ca181345fecababa48579": {
       "first_seen_kst": "2026-10-08T07:27:34+09:00",
@@ -283232,6 +283905,29 @@
       "telegram_core_fact": "테크크런치에 따르면 미국 자율주행 철도 스타트업 패러렐시스템즈(Parallel Systems)는 최근 1억달러(약 1338억원) 시리즈C 투자를 유치했다.",
       "title": "\"2류 회사에 투자\"…VC 거물의 공개 저격에 실리콘밸리 '발칵'"
     },
+    "source_fact:21728a5a80792f717b126624": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003824146",
+      "source": "뉴시스",
+      "source_body_digest": "17b88dc3330296c68277e649eeacff0ce9ff1bdabbb764c9f6e216cc60c06599",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:704ada653ce1adb74590d394f67f1f203980841fca4b8e14da7c2a747f912088",
+      "source_fact_keys": [
+        "source_fact:v1:0cb002aa2425c0bd4777058d514860563331c9ae4de85377e81417823eba3822",
+        "source_fact:v1:45e45374b75cba996d41b72bc24e2ee9e59ebcde01f40b7387a9b2c03d81edbd",
+        "source_fact:v1:480eb919bcdabd7c66907cb746ff8da9db5f1ed75f81502314c8fc3a2165ab52",
+        "source_fact:v1:6d44868b818fe3fbc704ef648814183e727bc87e8412c052d1eded3f8183658d"
+      ],
+      "source_published_kst": "2026-10-13T15:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "경북농업자원관리원, 영천포장 딸기묘 생산 거점 확대",
+      "telegram_core_fact": "경북도 농업자원관리원은 13일 영천포장을 연간 20만주의 딸기 우량 원묘를 생산·공급하는 거점으로 확대한다고 밝혔다. 이번 투자로 생산시설이 추가되면 공급 규모는 연간 20만주로 늘어난다.",
+      "title": "경북농업자원관리원, 영천포장 딸기묘 생산 거점 확대"
+    },
     "source_fact:21880dc661ae7e59c5a2fb6b": {
       "first_seen_kst": "2026-10-06T18:16:47+09:00",
       "lanes": {
@@ -284312,6 +285008,30 @@
       "source_title": "정유주 동반약세…트럼프 \"러·우, 에너지 휴전\"",
       "telegram_core_fact": "트럼프 대통령은 11일(이하 현지시간) 자신의 소셜미디어 트루스소셜에 \"러시아와 우크라이나 간 전쟁에서 에너지 휴전이 즉시 발효됐다\"며 \"양측 모두 동의했다. 이를 깨뜨리지 말라\"고 밝혔다.",
       "title": "정유주 동반약세…트럼프 \"러·우, 에너지 휴전\""
+    },
+    "source_fact:227e4b2ebae471f590f2f43f": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03411206645612592",
+      "source": "이데일리",
+      "source_body_digest": "4280921320f56f73b665ad7a02da63f58da4f75d9e95b6a82bb4ab502e362548",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ca4ad2b32d34644e30c6f106cbc770772bd27fdf794186ed9d0f74ea7b9d609",
+      "source_fact_keys": [
+        "source_fact:v1:20fa441bd521d003bd18ab14b0433487785e0ecdffb1d301d9bc41779a3f04ef",
+        "source_fact:v1:4a6142d662e5198eef9e282184755012b934d486f969441cf7c4910324fa4f72",
+        "source_fact:v1:8057070133295ce3632cae927c239043b42b1b92fbe21a6ffba0d8034589b3f0",
+        "source_fact:v1:bc307b5ee1395afb5734aab8a020823226df22dd204d0ba0dfbb20ecc8db9507",
+        "source_fact:v1:d114497907f4305fbcb1594e78e168681200463d0da8a5c0d5639e5e25ad0678"
+      ],
+      "source_published_kst": "2026-10-13T14:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"코인 과세 서두르다 레버리지ETF꼴 난다\"…국세청장 \"11월 고시 발표\"",
+      "telegram_core_fact": "내년 1월 가상자산 과세 시행을 앞두고 과세 기준조차 명확하지 않다는 지적이 제기되자 임광현 국세청장은 “11월에 가상자산 과세 관련 고시안을 발표할 수 있도록 준비 중”이라고 밝혔다.",
+      "title": "\"코인 과세 서두르다 레버리지ETF꼴 난다\"…국세청장 \"11월 고시 발표\""
     },
     "source_fact:2283fcee1376d2a384cf042f": {
       "first_seen_kst": "2026-10-11T09:08:30+09:00",
@@ -288056,6 +288776,33 @@
       "source_title": "[단독] “사망사고 나자 민간에 떠넘기나”…한전, 정전복구 외주화 추진",
       "telegram_core_fact": "11일 국회 기후에너지환경노동위원회 소속 어기구 더불어민주당 의원(충남 당진시)이 한국전력공사로부터 제출받은 자료에 따르면, 2017년부터 2026년 8월까지 정전복구 작업 중 산업재해를 입은 한전 직원은 21명으로, 이 가운데 1명이 사망했다.",
       "title": "[단독] “사망사고 나자 민간에 떠넘기나”…한전, 정전복구 외주화 추진"
+    },
+    "source_fact:258cd03ee7cc12270e980b2b": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003824150",
+      "source": "뉴시스",
+      "source_body_digest": "01fbae12e181fb34ed5830528b545ce7a136af216a82721a276119e3fa9fd608",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3efebd56d1e0f5a79793b91aa7c7caaf83176ef345bfeecd20efcf9e99c65df1",
+      "source_fact_keys": [
+        "source_fact:v1:101d80d74451a3b71f653ca3212067f996203e7357d5fe6d558708a37cdef0fc",
+        "source_fact:v1:1c53872b5b4135c5972e84e15b5f0b90e37d9973eac173220a4ca782e2d7483d",
+        "source_fact:v1:63e9b57f54121cb61ed402de13752e979fab2425ce015cc9fe3f73314024efd8",
+        "source_fact:v1:72b4cfb282efd5930aceb3c9605e93f30230941fd7f1e941f17e61398fc720c9",
+        "source_fact:v1:81a5026ab1914357570c36b9d914129e6c5b0bb2722b2fad50165de159602969",
+        "source_fact:v1:bd90c72b0d1ae4eb5491ce68adc564855cdd5be62e3a807f744ad2a740b22c06",
+        "source_fact:v1:c6a645a3ba6048e2476870791d0d365b340ad2da7cc3e1a592fecf6b47e3d3e5",
+        "source_fact:v1:eab1e1b670446d5f5744723063bbc7e102cd43044aceb9e1dc88f626ded19214"
+      ],
+      "source_published_kst": "2026-10-13T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성바이오 \"폴리펩타이드 공개매수 조건 충족\"",
+      "telegram_core_fact": "공개매수는 폴리펩타이드그룹 인수를 위해 설립한 특수목적법인(SPC) 자회사 삼성펩타이드(Samsung Peptide)를 통해 이뤄졌으며, 자사주를 제외한 발행주식 전량(3301만6411주)을 대상으로 주당 가격 44.31스위스프랑에 진행됐다.",
+      "title": "삼성바이오 \"폴리펩타이드 공개매수 조건 충족\""
     },
     "source_fact:259539f16ef221bc9eebbf23": {
       "first_seen_kst": "2026-10-08T11:49:03+09:00",
@@ -309015,6 +309762,28 @@
       "source_published_kst": "2026-10-06T10:17+09:00",
       "title": "[바이오스냅] JW중외제약, 당뇨병약 '엠파가드' 임상 3상 결과 발표 | 연합뉴스"
     },
+    "source_fact:3aa07534e3ac8c73154eee1b": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.hankyung.com/article/202610138869L",
+      "source": "한국경제",
+      "source_body_digest": "b74dddb2df29f68ac85be757aa6d74c6ab9c2780eb09f4d77eb51e09acb79a02",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5656156aab0a3862a302adbcc3fe216b5081ceb5299dc225c70ead5fb473a5a",
+      "source_fact_keys": [
+        "source_fact:v1:54ae2e360fbe111875f51567ee7f887fc78c0d2058c171398abe7633b2c3e222",
+        "source_fact:v1:8b27d42b5bf839c00386dabb874c630b9944ae44359900dbd4bb66152f65b021",
+        "source_fact:v1:94c5e0b16888ef163e3341da6f185e1e672c36a4f902dcc07584deb94cceca00"
+      ],
+      "source_published_kst": "2026-10-13T14:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "피델릭스 수주공시 - 메모리반도체 공급 60.9억원 (매출액대비 11.3 %)",
+      "telegram_core_fact": "피델릭스는 Telit Communications Cyprus LTD과 60.9억원 규모 메모리반도체 공급 계약을 공시했다. 기간은 2026년 10월 13일부터 2026년 11월 06일까지다.",
+      "title": "피델릭스 수주공시 - 메모리반도체 공급 60.9억원 (매출액대비 11.3 %)"
+    },
     "source_fact:3aa3d5acf9ff5a7aece19d10": {
       "first_seen_kst": "2026-10-07T07:39:19+09:00",
       "lanes": {
@@ -329864,6 +330633,29 @@
       "telegram_core_fact": "30년물 금리도 5.73%대까지 오르며 24년 만에 가장 높은 수준을 기록했다.",
       "title": "국채금리 24년 만에 최고…3대 지수 일제히 하락 [뉴욕증시 브리핑]"
     },
+    "source_fact:4f264e20b295e7fdef1e7b59": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003824146",
+      "source": "뉴시스",
+      "source_body_digest": "17b88dc3330296c68277e649eeacff0ce9ff1bdabbb764c9f6e216cc60c06599",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:704ada653ce1adb74590d394f67f1f203980841fca4b8e14da7c2a747f912088",
+      "source_fact_keys": [
+        "source_fact:v1:0cb002aa2425c0bd4777058d514860563331c9ae4de85377e81417823eba3822",
+        "source_fact:v1:45e45374b75cba996d41b72bc24e2ee9e59ebcde01f40b7387a9b2c03d81edbd",
+        "source_fact:v1:480eb919bcdabd7c66907cb746ff8da9db5f1ed75f81502314c8fc3a2165ab52",
+        "source_fact:v1:6d44868b818fe3fbc704ef648814183e727bc87e8412c052d1eded3f8183658d"
+      ],
+      "source_published_kst": "2026-10-13T15:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "경북농업자원관리원, 영천포장 딸기묘 생산 거점 확대",
+      "telegram_core_fact": "경북도 농업자원관리원은 13일 영천포장을 연간 20만주의 딸기 우량 원묘를 생산·공급하는 거점으로 확대한다고 밝혔다. 이번 투자로 생산시설이 추가되면 공급 규모는 연간 20만주로 늘어난다.",
+      "title": "경북농업자원관리원, 영천포장 딸기묘 생산 거점 확대"
+    },
     "source_fact:4f29f98196f9f4aa058ff422": {
       "first_seen_kst": "2026-10-06T23:46:46+09:00",
       "lanes": {
@@ -338058,6 +338850,33 @@
       "source_title": "美증시, 3분기 실적이 계속 떠받칠까…\"이번주 판가름\"",
       "telegram_core_fact": "11일(현지시간) 마켓워치에 따르면 시장조사업체 팩트셋은 지난 9일 보고서에서 스탠더드앤드푸어스(S&P)500 기업들의 3분기 순이익이 29.6% 늘어날 것으로 예상했다.",
       "title": "美증시, 3분기 실적이 계속 떠받칠까…\"이번주 판가름\""
+    },
+    "source_fact:575c5ec59fa59349a3c108af": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003824150",
+      "source": "뉴시스",
+      "source_body_digest": "01fbae12e181fb34ed5830528b545ce7a136af216a82721a276119e3fa9fd608",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3efebd56d1e0f5a79793b91aa7c7caaf83176ef345bfeecd20efcf9e99c65df1",
+      "source_fact_keys": [
+        "source_fact:v1:101d80d74451a3b71f653ca3212067f996203e7357d5fe6d558708a37cdef0fc",
+        "source_fact:v1:1c53872b5b4135c5972e84e15b5f0b90e37d9973eac173220a4ca782e2d7483d",
+        "source_fact:v1:63e9b57f54121cb61ed402de13752e979fab2425ce015cc9fe3f73314024efd8",
+        "source_fact:v1:72b4cfb282efd5930aceb3c9605e93f30230941fd7f1e941f17e61398fc720c9",
+        "source_fact:v1:81a5026ab1914357570c36b9d914129e6c5b0bb2722b2fad50165de159602969",
+        "source_fact:v1:bd90c72b0d1ae4eb5491ce68adc564855cdd5be62e3a807f744ad2a740b22c06",
+        "source_fact:v1:c6a645a3ba6048e2476870791d0d365b340ad2da7cc3e1a592fecf6b47e3d3e5",
+        "source_fact:v1:eab1e1b670446d5f5744723063bbc7e102cd43044aceb9e1dc88f626ded19214"
+      ],
+      "source_published_kst": "2026-10-13T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성바이오 \"폴리펩타이드 공개매수 조건 충족\"",
+      "telegram_core_fact": "공개매수는 폴리펩타이드그룹 인수를 위해 설립한 특수목적법인(SPC) 자회사 삼성펩타이드(Samsung Peptide)를 통해 이뤄졌으며, 자사주를 제외한 발행주식 전량(3301만6411주)을 대상으로 주당 가격 44.31스위스프랑에 진행됐다.",
+      "title": "삼성바이오 \"폴리펩타이드 공개매수 조건 충족\""
     },
     "source_fact:576896f592716a9c5aa1d510": {
       "first_seen_kst": "2026-10-08T17:42:30+09:00",
@@ -350847,6 +351666,33 @@
       ],
       "source_published_kst": "2026-10-06T06:38+09:00",
       "title": "美 재무부 \"'이란 거래' 외국 금융기관, 사전 통보 없이 제재 부과\""
+    },
+    "source_fact:6396d9cd73b556ece3194f18": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003824150",
+      "source": "뉴시스",
+      "source_body_digest": "01fbae12e181fb34ed5830528b545ce7a136af216a82721a276119e3fa9fd608",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3efebd56d1e0f5a79793b91aa7c7caaf83176ef345bfeecd20efcf9e99c65df1",
+      "source_fact_keys": [
+        "source_fact:v1:101d80d74451a3b71f653ca3212067f996203e7357d5fe6d558708a37cdef0fc",
+        "source_fact:v1:1c53872b5b4135c5972e84e15b5f0b90e37d9973eac173220a4ca782e2d7483d",
+        "source_fact:v1:63e9b57f54121cb61ed402de13752e979fab2425ce015cc9fe3f73314024efd8",
+        "source_fact:v1:72b4cfb282efd5930aceb3c9605e93f30230941fd7f1e941f17e61398fc720c9",
+        "source_fact:v1:81a5026ab1914357570c36b9d914129e6c5b0bb2722b2fad50165de159602969",
+        "source_fact:v1:bd90c72b0d1ae4eb5491ce68adc564855cdd5be62e3a807f744ad2a740b22c06",
+        "source_fact:v1:c6a645a3ba6048e2476870791d0d365b340ad2da7cc3e1a592fecf6b47e3d3e5",
+        "source_fact:v1:eab1e1b670446d5f5744723063bbc7e102cd43044aceb9e1dc88f626ded19214"
+      ],
+      "source_published_kst": "2026-10-13T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성바이오 \"폴리펩타이드 공개매수 조건 충족\"",
+      "telegram_core_fact": "공개매수는 폴리펩타이드그룹 인수를 위해 설립한 특수목적법인(SPC) 자회사 삼성펩타이드(Samsung Peptide)를 통해 이뤄졌으며, 자사주를 제외한 발행주식 전량(3301만6411주)을 대상으로 주당 가격 44.31스위스프랑에 진행됐다.",
+      "title": "삼성바이오 \"폴리펩타이드 공개매수 조건 충족\""
     },
     "source_fact:63a29a8f750dcd0a6b3f5ab9": {
       "first_seen_kst": "2026-10-07T16:44:58+09:00",
@@ -386078,6 +386924,28 @@
       "telegram_core_fact": "미래에셋자산운용은 달러 단기자산 상장지수펀드(ETF) 2종 ‘TIGER 미국달러단기채권액티브’와 ‘TIGER 미국초단기(3개월이하)국채’의 합산 순자산이 1조원을 돌파했다고 8일 밝혔다.",
       "title": "미래에셋 'TIGER 달러 단기자산 ETF' 2종, 합산 순자산 1조 돌파"
     },
+    "source_fact:8709f9055307c9ebf3691408": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.hankyung.com/article/202610138869L",
+      "source": "한국경제",
+      "source_body_digest": "b74dddb2df29f68ac85be757aa6d74c6ab9c2780eb09f4d77eb51e09acb79a02",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5656156aab0a3862a302adbcc3fe216b5081ceb5299dc225c70ead5fb473a5a",
+      "source_fact_keys": [
+        "source_fact:v1:54ae2e360fbe111875f51567ee7f887fc78c0d2058c171398abe7633b2c3e222",
+        "source_fact:v1:8b27d42b5bf839c00386dabb874c630b9944ae44359900dbd4bb66152f65b021",
+        "source_fact:v1:94c5e0b16888ef163e3341da6f185e1e672c36a4f902dcc07584deb94cceca00"
+      ],
+      "source_published_kst": "2026-10-13T14:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "피델릭스 수주공시 - 메모리반도체 공급 60.9억원 (매출액대비 11.3 %)",
+      "telegram_core_fact": "피델릭스는 Telit Communications Cyprus LTD과 60.9억원 규모 메모리반도체 공급 계약을 공시했다. 기간은 2026년 10월 13일부터 2026년 11월 06일까지다.",
+      "title": "피델릭스 수주공시 - 메모리반도체 공급 60.9억원 (매출액대비 11.3 %)"
+    },
     "source_fact:870c92d586a9f3688dc03beb": {
       "first_seen_kst": "2026-10-08T16:54:07+09:00",
       "lanes": {
@@ -387593,6 +388461,33 @@
       "source_title": "역대급 엔저에 “일단 환전”…일본 여행 예약 ‘폭증’",
       "telegram_core_fact": "한국관광공사가 발간한 ‘엔화 약세가 방일시장과 소비에 미치는 영향’ 보고서에 따르면, 환율 변동에 따른 일본 여행 결정 영향도를 조사한 결과 응답자의 25.5%는 ‘엔화 강세 시 일본 여행을 망설일 가능성이 있다’고 답했다.",
       "title": "역대급 엔저에 “일단 환전”…일본 여행 예약 ‘폭증’"
+    },
+    "source_fact:886253de5b7ddab6be495bfe": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003824150",
+      "source": "뉴시스",
+      "source_body_digest": "01fbae12e181fb34ed5830528b545ce7a136af216a82721a276119e3fa9fd608",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3efebd56d1e0f5a79793b91aa7c7caaf83176ef345bfeecd20efcf9e99c65df1",
+      "source_fact_keys": [
+        "source_fact:v1:101d80d74451a3b71f653ca3212067f996203e7357d5fe6d558708a37cdef0fc",
+        "source_fact:v1:1c53872b5b4135c5972e84e15b5f0b90e37d9973eac173220a4ca782e2d7483d",
+        "source_fact:v1:63e9b57f54121cb61ed402de13752e979fab2425ce015cc9fe3f73314024efd8",
+        "source_fact:v1:72b4cfb282efd5930aceb3c9605e93f30230941fd7f1e941f17e61398fc720c9",
+        "source_fact:v1:81a5026ab1914357570c36b9d914129e6c5b0bb2722b2fad50165de159602969",
+        "source_fact:v1:bd90c72b0d1ae4eb5491ce68adc564855cdd5be62e3a807f744ad2a740b22c06",
+        "source_fact:v1:c6a645a3ba6048e2476870791d0d365b340ad2da7cc3e1a592fecf6b47e3d3e5",
+        "source_fact:v1:eab1e1b670446d5f5744723063bbc7e102cd43044aceb9e1dc88f626ded19214"
+      ],
+      "source_published_kst": "2026-10-13T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성바이오 \"폴리펩타이드 공개매수 조건 충족\"",
+      "telegram_core_fact": "공개매수는 폴리펩타이드그룹 인수를 위해 설립한 특수목적법인(SPC) 자회사 삼성펩타이드(Samsung Peptide)를 통해 이뤄졌으며, 자사주를 제외한 발행주식 전량(3301만6411주)을 대상으로 주당 가격 44.31스위스프랑에 진행됐다.",
+      "title": "삼성바이오 \"폴리펩타이드 공개매수 조건 충족\""
     },
     "source_fact:88641a69d9b1c0be024a180d": {
       "first_seen_kst": "2026-10-13T10:27:50+09:00",
@@ -414706,6 +415601,33 @@
       "source_published_kst": "2026-10-06T15:14+09:00",
       "title": "삼성전기, AI 서버용 MLCC 2900억 수주 ... 올해만 6번째 장기공급계약"
     },
+    "source_fact:a38d75742228ed3a713ac819": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003824150",
+      "source": "뉴시스",
+      "source_body_digest": "01fbae12e181fb34ed5830528b545ce7a136af216a82721a276119e3fa9fd608",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3efebd56d1e0f5a79793b91aa7c7caaf83176ef345bfeecd20efcf9e99c65df1",
+      "source_fact_keys": [
+        "source_fact:v1:101d80d74451a3b71f653ca3212067f996203e7357d5fe6d558708a37cdef0fc",
+        "source_fact:v1:1c53872b5b4135c5972e84e15b5f0b90e37d9973eac173220a4ca782e2d7483d",
+        "source_fact:v1:63e9b57f54121cb61ed402de13752e979fab2425ce015cc9fe3f73314024efd8",
+        "source_fact:v1:72b4cfb282efd5930aceb3c9605e93f30230941fd7f1e941f17e61398fc720c9",
+        "source_fact:v1:81a5026ab1914357570c36b9d914129e6c5b0bb2722b2fad50165de159602969",
+        "source_fact:v1:bd90c72b0d1ae4eb5491ce68adc564855cdd5be62e3a807f744ad2a740b22c06",
+        "source_fact:v1:c6a645a3ba6048e2476870791d0d365b340ad2da7cc3e1a592fecf6b47e3d3e5",
+        "source_fact:v1:eab1e1b670446d5f5744723063bbc7e102cd43044aceb9e1dc88f626ded19214"
+      ],
+      "source_published_kst": "2026-10-13T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성바이오 \"폴리펩타이드 공개매수 조건 충족\"",
+      "telegram_core_fact": "공개매수는 폴리펩타이드그룹 인수를 위해 설립한 특수목적법인(SPC) 자회사 삼성펩타이드(Samsung Peptide)를 통해 이뤄졌으며, 자사주를 제외한 발행주식 전량(3301만6411주)을 대상으로 주당 가격 44.31스위스프랑에 진행됐다.",
+      "title": "삼성바이오 \"폴리펩타이드 공개매수 조건 충족\""
+    },
     "source_fact:a391c90d1f96c8abdee8e34e": {
       "first_seen_kst": "2026-10-08T01:58:01+09:00",
       "lanes": {
@@ -419652,6 +420574,30 @@
       "source_title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]",
       "telegram_core_fact": "삼성전자와 SK하이닉스가 진행해 온 약 55조원 자사주 매입이 마무리 국면에 접어들면서 그동안 증시 하단을 지탱했던 수급 요인이 약해질 수 있다는 분석이 나온다.",
       "title": "'삼전닉스' 55조 자사주 매입 끝물…반도체 실적이 코스피 구원투수?[주간증시전망]"
+    },
+    "source_fact:a870c552229192ca88bec397": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03411206645612592",
+      "source": "이데일리",
+      "source_body_digest": "4280921320f56f73b665ad7a02da63f58da4f75d9e95b6a82bb4ab502e362548",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ca4ad2b32d34644e30c6f106cbc770772bd27fdf794186ed9d0f74ea7b9d609",
+      "source_fact_keys": [
+        "source_fact:v1:20fa441bd521d003bd18ab14b0433487785e0ecdffb1d301d9bc41779a3f04ef",
+        "source_fact:v1:4a6142d662e5198eef9e282184755012b934d486f969441cf7c4910324fa4f72",
+        "source_fact:v1:8057070133295ce3632cae927c239043b42b1b92fbe21a6ffba0d8034589b3f0",
+        "source_fact:v1:bc307b5ee1395afb5734aab8a020823226df22dd204d0ba0dfbb20ecc8db9507",
+        "source_fact:v1:d114497907f4305fbcb1594e78e168681200463d0da8a5c0d5639e5e25ad0678"
+      ],
+      "source_published_kst": "2026-10-13T14:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"코인 과세 서두르다 레버리지ETF꼴 난다\"…국세청장 \"11월 고시 발표\"",
+      "telegram_core_fact": "내년 1월 가상자산 과세 시행을 앞두고 과세 기준조차 명확하지 않다는 지적이 제기되자 임광현 국세청장은 “11월에 가상자산 과세 관련 고시안을 발표할 수 있도록 준비 중”이라고 밝혔다.",
+      "title": "\"코인 과세 서두르다 레버리지ETF꼴 난다\"…국세청장 \"11월 고시 발표\""
     },
     "source_fact:a8767c1cc417c2e6fafaf754": {
       "first_seen_kst": "2026-10-13T04:02:08+09:00",
@@ -431527,6 +432473,33 @@
       "source_title": "반도체 수출 호황에…달러 넘치는 외환시장",
       "telegram_core_fact": "문 연구원도 “반도체 기업들의 실적 호조에 따른 달러 공급이 내년에도 지속될 것으로 예상된다”며 “현재 1350원으로 제시한 내년 연평균 환율 전망치도 11월 연간 전망에서 하향 조정할 가능성이 높다”고 내다봤다.",
       "title": "반도체 수출 호황에…달러 넘치는 외환시장"
+    },
+    "source_fact:b415cf971839f4400d71535a": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003824150",
+      "source": "뉴시스",
+      "source_body_digest": "01fbae12e181fb34ed5830528b545ce7a136af216a82721a276119e3fa9fd608",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3efebd56d1e0f5a79793b91aa7c7caaf83176ef345bfeecd20efcf9e99c65df1",
+      "source_fact_keys": [
+        "source_fact:v1:101d80d74451a3b71f653ca3212067f996203e7357d5fe6d558708a37cdef0fc",
+        "source_fact:v1:1c53872b5b4135c5972e84e15b5f0b90e37d9973eac173220a4ca782e2d7483d",
+        "source_fact:v1:63e9b57f54121cb61ed402de13752e979fab2425ce015cc9fe3f73314024efd8",
+        "source_fact:v1:72b4cfb282efd5930aceb3c9605e93f30230941fd7f1e941f17e61398fc720c9",
+        "source_fact:v1:81a5026ab1914357570c36b9d914129e6c5b0bb2722b2fad50165de159602969",
+        "source_fact:v1:bd90c72b0d1ae4eb5491ce68adc564855cdd5be62e3a807f744ad2a740b22c06",
+        "source_fact:v1:c6a645a3ba6048e2476870791d0d365b340ad2da7cc3e1a592fecf6b47e3d3e5",
+        "source_fact:v1:eab1e1b670446d5f5744723063bbc7e102cd43044aceb9e1dc88f626ded19214"
+      ],
+      "source_published_kst": "2026-10-13T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성바이오 \"폴리펩타이드 공개매수 조건 충족\"",
+      "telegram_core_fact": "공개매수는 폴리펩타이드그룹 인수를 위해 설립한 특수목적법인(SPC) 자회사 삼성펩타이드(Samsung Peptide)를 통해 이뤄졌으며, 자사주를 제외한 발행주식 전량(3301만6411주)을 대상으로 주당 가격 44.31스위스프랑에 진행됐다.",
+      "title": "삼성바이오 \"폴리펩타이드 공개매수 조건 충족\""
     },
     "source_fact:b41868418463f09ad8d31806": {
       "first_seen_kst": "2026-10-07T23:36:14+09:00",
@@ -450201,6 +451174,30 @@
       "telegram_core_fact": "딥노이드는 뇌동맥류 진단 보조 AI 솔루션 '딥뉴로'를 충북대학교병원에 공급한다고 7일 밝혔다.",
       "title": "딥노이드, 충북대병원에 뇌동맥류 AI '딥뉴로' 공급…권역책임의료기관 첫 도입"
     },
+    "source_fact:c70687d6c943e284c0e9f010": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03411206645612592",
+      "source": "이데일리",
+      "source_body_digest": "4280921320f56f73b665ad7a02da63f58da4f75d9e95b6a82bb4ab502e362548",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ca4ad2b32d34644e30c6f106cbc770772bd27fdf794186ed9d0f74ea7b9d609",
+      "source_fact_keys": [
+        "source_fact:v1:20fa441bd521d003bd18ab14b0433487785e0ecdffb1d301d9bc41779a3f04ef",
+        "source_fact:v1:4a6142d662e5198eef9e282184755012b934d486f969441cf7c4910324fa4f72",
+        "source_fact:v1:8057070133295ce3632cae927c239043b42b1b92fbe21a6ffba0d8034589b3f0",
+        "source_fact:v1:bc307b5ee1395afb5734aab8a020823226df22dd204d0ba0dfbb20ecc8db9507",
+        "source_fact:v1:d114497907f4305fbcb1594e78e168681200463d0da8a5c0d5639e5e25ad0678"
+      ],
+      "source_published_kst": "2026-10-13T14:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"코인 과세 서두르다 레버리지ETF꼴 난다\"…국세청장 \"11월 고시 발표\"",
+      "telegram_core_fact": "내년 1월 가상자산 과세 시행을 앞두고 과세 기준조차 명확하지 않다는 지적이 제기되자 임광현 국세청장은 “11월에 가상자산 과세 관련 고시안을 발표할 수 있도록 준비 중”이라고 밝혔다.",
+      "title": "\"코인 과세 서두르다 레버리지ETF꼴 난다\"…국세청장 \"11월 고시 발표\""
+    },
     "source_fact:c70944de4bc55cb7d032e468": {
       "first_seen_kst": "2026-10-07T09:44:16+09:00",
       "lanes": {
@@ -451767,6 +452764,30 @@
       ],
       "source_published_kst": "2026-10-05T21:23+09:00",
       "title": "테라울프, 머스키 전력 1GW로 2배 확대..2단계 1년 앞당겨"
+    },
+    "source_fact:c897c586ca4570f34186c99e": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03411206645612592",
+      "source": "이데일리",
+      "source_body_digest": "4280921320f56f73b665ad7a02da63f58da4f75d9e95b6a82bb4ab502e362548",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ca4ad2b32d34644e30c6f106cbc770772bd27fdf794186ed9d0f74ea7b9d609",
+      "source_fact_keys": [
+        "source_fact:v1:20fa441bd521d003bd18ab14b0433487785e0ecdffb1d301d9bc41779a3f04ef",
+        "source_fact:v1:4a6142d662e5198eef9e282184755012b934d486f969441cf7c4910324fa4f72",
+        "source_fact:v1:8057070133295ce3632cae927c239043b42b1b92fbe21a6ffba0d8034589b3f0",
+        "source_fact:v1:bc307b5ee1395afb5734aab8a020823226df22dd204d0ba0dfbb20ecc8db9507",
+        "source_fact:v1:d114497907f4305fbcb1594e78e168681200463d0da8a5c0d5639e5e25ad0678"
+      ],
+      "source_published_kst": "2026-10-13T14:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"코인 과세 서두르다 레버리지ETF꼴 난다\"…국세청장 \"11월 고시 발표\"",
+      "telegram_core_fact": "내년 1월 가상자산 과세 시행을 앞두고 과세 기준조차 명확하지 않다는 지적이 제기되자 임광현 국세청장은 “11월에 가상자산 과세 관련 고시안을 발표할 수 있도록 준비 중”이라고 밝혔다.",
+      "title": "\"코인 과세 서두르다 레버리지ETF꼴 난다\"…국세청장 \"11월 고시 발표\""
     },
     "source_fact:c899e6c321b02631c76fe54e": {
       "first_seen_kst": "2026-10-11T11:01:00+09:00",
@@ -464578,6 +465599,33 @@
       "telegram_core_fact": "조선업계에 따르면 삼성중공업은 최근 아시아 지역 선주로부터 LNG 운반선 2척을 6722억원에 수주했다.",
       "title": "2030년 일감까지 채운다… 삼성중공업, LNG·FLNG '쌍끌이 수주' 랠리"
     },
+    "source_fact:d5f4911e90551002d6c23e40": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003824150",
+      "source": "뉴시스",
+      "source_body_digest": "01fbae12e181fb34ed5830528b545ce7a136af216a82721a276119e3fa9fd608",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3efebd56d1e0f5a79793b91aa7c7caaf83176ef345bfeecd20efcf9e99c65df1",
+      "source_fact_keys": [
+        "source_fact:v1:101d80d74451a3b71f653ca3212067f996203e7357d5fe6d558708a37cdef0fc",
+        "source_fact:v1:1c53872b5b4135c5972e84e15b5f0b90e37d9973eac173220a4ca782e2d7483d",
+        "source_fact:v1:63e9b57f54121cb61ed402de13752e979fab2425ce015cc9fe3f73314024efd8",
+        "source_fact:v1:72b4cfb282efd5930aceb3c9605e93f30230941fd7f1e941f17e61398fc720c9",
+        "source_fact:v1:81a5026ab1914357570c36b9d914129e6c5b0bb2722b2fad50165de159602969",
+        "source_fact:v1:bd90c72b0d1ae4eb5491ce68adc564855cdd5be62e3a807f744ad2a740b22c06",
+        "source_fact:v1:c6a645a3ba6048e2476870791d0d365b340ad2da7cc3e1a592fecf6b47e3d3e5",
+        "source_fact:v1:eab1e1b670446d5f5744723063bbc7e102cd43044aceb9e1dc88f626ded19214"
+      ],
+      "source_published_kst": "2026-10-13T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성바이오 \"폴리펩타이드 공개매수 조건 충족\"",
+      "telegram_core_fact": "공개매수는 폴리펩타이드그룹 인수를 위해 설립한 특수목적법인(SPC) 자회사 삼성펩타이드(Samsung Peptide)를 통해 이뤄졌으며, 자사주를 제외한 발행주식 전량(3301만6411주)을 대상으로 주당 가격 44.31스위스프랑에 진행됐다.",
+      "title": "삼성바이오 \"폴리펩타이드 공개매수 조건 충족\""
+    },
     "source_fact:d5f9176968bda0e0fc2a0ebb": {
       "first_seen_kst": "2026-10-11T21:51:07+09:00",
       "lanes": {
@@ -471271,6 +472319,26 @@
       "source_title": "靑, 우크라 '대러 유류수송' 주장에 \"사실과 달라\" | 연합뉴스",
       "telegram_core_fact": "우크라이나 대통령실이 러시아에 석유제품을 공급했다는 외신 보도를 인용해 한국 정부를 비판한 가운데 청와대는 사실과 다르다며 전면 반박했습니다.",
       "title": "靑, 우크라 '대러 유류수송' 주장에 \"사실과 달라\" | 연합뉴스"
+    },
+    "source_fact:dc1beef0f319df15f6bffa8e": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.fnnews.com/news/202610131520271395",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "17865e4aa74dcecbcc183602e4bc4c669746345d35541ce4dabd05c0bc7ac522",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c79d7103495bf784f06ece09e8ef765ef77d1fba9d705fa6971e4cac9806592c",
+      "source_fact_keys": [
+        "source_fact:v1:880969a9daa1d4ece29e4242c4fa590ef3a08635a608829af9c09719f59e86ad"
+      ],
+      "source_published_kst": "2026-10-13T15:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔비디아, 화웨이 약진으로 中 점유율 34%로 추락",
+      "telegram_core_fact": "미국 정부의 첨단 인공지능(AI) 칩의 중국 수출금지 여파로 엔비디아의 중국 시장 점유율이 34%로 급락했다.",
+      "title": "엔비디아, 화웨이 약진으로 中 점유율 34%로 추락"
     },
     "source_fact:dc2d1007251c3c3301f3bd16": {
       "first_seen_kst": "2026-10-13T02:02:36+09:00",
@@ -480417,6 +481485,26 @@
       "telegram_core_fact": "장영진 한국무역보험공사 사장은 12일 \"지난 9월1일 기준 무역보험 공급액은 198조원으로 전년동기대비 20.4% 증가했고 중소·중견기업 지원 급액은 13% 증가한 82조원을 기록했다\"고 밝혔다.",
       "title": "장영진 무보 사장 \"무역보험 공급액 198조…전년대비 20% 증가\""
     },
+    "source_fact:e483871836f192b72f4e0a29": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173571",
+      "source": "매일경제",
+      "source_body_digest": "dc5344b039b3a91825abaead7a772d44d0b56bc48de70c9b9306b4f8c5eae0a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9b3ec7c48748b1795d9f148ca3833d38ffed1448b8d915d54c06501bc8c904c6",
+      "source_fact_keys": [
+        "source_fact:v1:43ea2bceaca6e1d10a975acd42a2b834ea24ecb0ed09fe6bf4f3caf5c407460f"
+      ],
+      "source_published_kst": "2026-10-13T15:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"상표출원 심사 1년↑…소상공인·중소기업 피해 연간 3조 추정\"",
+      "telegram_core_fact": "\"상표 심사가 6개월 이상 지연될 경우 매출 감소에 따른 경제적 피해가 연간 약 3조원으로 추정된다\"고 질타했다. 우리나라 상표출원 건수는 2023년 31만3천533건 이후 매년 늘어나고 있으나 심사관 수는 2023년 160명에서 2024년 177명으로 17명 늘어난 이후 올해까지 변동이 없는 상황이다.",
+      "title": "\"상표출원 심사 1년↑…소상공인·중소기업 피해 연간 3조 추정\""
+    },
     "source_fact:e4866581d8646146c6c6ba8e": {
       "first_seen_kst": "2026-10-08T00:54:18+09:00",
       "lanes": {
@@ -481976,22 +483064,24 @@
     "source_fact:e5f1fb9da615be82fb907121": {
       "first_seen_kst": "2026-10-13T12:19:43+09:00",
       "lanes": {
-        "live": "2026-10-13T12:19:43+09:00"
+        "live": "2026-10-13T18:41:17+09:00"
       },
-      "last_seen_kst": "2026-10-13T12:19:43+09:00",
-      "link": "https://www.hankyung.com/article/202610138417L",
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.hankyung.com/article/202610138869L",
       "source": "한국경제",
-      "source_body_digest": "22676a3b63a7e0b07a4fbf1f574bbe5e85db8d55e97e2ea2119122223a3ec592",
+      "source_body_digest": "b74dddb2df29f68ac85be757aa6d74c6ab9c2780eb09f4d77eb51e09acb79a02",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:2795b2e4f856bcc3a1e34fef9f607263b44ee815244dd4cbf86f4a1284be1ac5",
+      "source_fact_identity": "source_facts:v1:e5656156aab0a3862a302adbcc3fe216b5081ceb5299dc225c70ead5fb473a5a",
       "source_fact_keys": [
-        "source_fact:v1:4b2e2faf5b4ef11d991253ae71faf808d319bc3f5f58e0e3c775e2608fbe172a",
+        "source_fact:v1:54ae2e360fbe111875f51567ee7f887fc78c0d2058c171398abe7633b2c3e222",
+        "source_fact:v1:8b27d42b5bf839c00386dabb874c630b9944ae44359900dbd4bb66152f65b021",
         "source_fact:v1:94c5e0b16888ef163e3341da6f185e1e672c36a4f902dcc07584deb94cceca00"
       ],
-      "source_published_kst": "2026-10-13T11:10+09:00",
-      "source_title": "세보엠이씨 수주공시 - 기흥 기계설비공사 970.2억원 (매출액대비 13.55 %)",
-      "telegram_core_fact": "세보엠이씨(011560)는 기흥 기계설비공사에 관한 단일판매ㆍ공급계약체결 을 13일에 공시했다.",
-      "title": "세보엠이씨 수주공시 - 기흥 기계설비공사 970.2억원 (매출액대비 13.55 %)"
+      "source_published_kst": "2026-10-13T14:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "피델릭스 수주공시 - 메모리반도체 공급 60.9억원 (매출액대비 11.3 %)",
+      "telegram_core_fact": "피델릭스는 Telit Communications Cyprus LTD과 60.9억원 규모 메모리반도체 공급 계약을 공시했다. 기간은 2026년 10월 13일부터 2026년 11월 06일까지다.",
+      "title": "피델릭스 수주공시 - 메모리반도체 공급 60.9억원 (매출액대비 11.3 %)"
     },
     "source_fact:e5f3d9805eb18713dbaf64eb": {
       "first_seen_kst": "2026-10-12T14:17:50+09:00",
@@ -485565,6 +486655,30 @@
       "source_title": "삼정KPMG \"디스플레이 경쟁, 화질 넘어 폼팩터·AI로…양산 역량이 관건\"",
       "telegram_core_fact": "폴더블·롤러블·스트레처블 등 화면 형태를 바꾸는 기술이 스마트폰과 TV를 넘어 차량·웨어러블·확장현실(XR)·로봇 등으로 적용 영역을 넓히면서 국내 디스플레이 기업들이 프리미엄 기술 경쟁력뿐 아니라 새로운 폼팩터의 양산 역량과 산업별 AI 대응력을 확보해야 한다는 분석이 나왔다.",
       "title": "삼정KPMG \"디스플레이 경쟁, 화질 넘어 폼팩터·AI로…양산 역량이 관건\""
+    },
+    "source_fact:e9aad5b8d0dd16c1b113c72e": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03411206645612592",
+      "source": "이데일리",
+      "source_body_digest": "4280921320f56f73b665ad7a02da63f58da4f75d9e95b6a82bb4ab502e362548",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ca4ad2b32d34644e30c6f106cbc770772bd27fdf794186ed9d0f74ea7b9d609",
+      "source_fact_keys": [
+        "source_fact:v1:20fa441bd521d003bd18ab14b0433487785e0ecdffb1d301d9bc41779a3f04ef",
+        "source_fact:v1:4a6142d662e5198eef9e282184755012b934d486f969441cf7c4910324fa4f72",
+        "source_fact:v1:8057070133295ce3632cae927c239043b42b1b92fbe21a6ffba0d8034589b3f0",
+        "source_fact:v1:bc307b5ee1395afb5734aab8a020823226df22dd204d0ba0dfbb20ecc8db9507",
+        "source_fact:v1:d114497907f4305fbcb1594e78e168681200463d0da8a5c0d5639e5e25ad0678"
+      ],
+      "source_published_kst": "2026-10-13T14:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"코인 과세 서두르다 레버리지ETF꼴 난다\"…국세청장 \"11월 고시 발표\"",
+      "telegram_core_fact": "내년 1월 가상자산 과세 시행을 앞두고 과세 기준조차 명확하지 않다는 지적이 제기되자 임광현 국세청장은 “11월에 가상자산 과세 관련 고시안을 발표할 수 있도록 준비 중”이라고 밝혔다.",
+      "title": "\"코인 과세 서두르다 레버리지ETF꼴 난다\"…국세청장 \"11월 고시 발표\""
     },
     "source_fact:e9afdf130266556431e0335c": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
@@ -518431,6 +519545,28 @@
       "telegram_core_fact": "이재원 유안타증권 연구원은 “현재 국내 주식시장의 가장 큰 고민은 반도체 실적이 아닌 외국인 수급”이라며 “삼성전자 3분기 영업이익이 시장 기대를 상회했고 메모리 가격과 AI 인프라 투자도 견조하지만, 외국인 매도 지속에 코스피의 상대적 부진이 지속되고 있다”고 말했다.",
       "title": "코스피 199조 던진 외국인 이건 계속 샀다는데…10조 가량 담은 ‘ETF’"
     },
+    "title:28c839ef3f917010fe7054cb": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.hankyung.com/article/202610138869L",
+      "source": "한국경제",
+      "source_body_digest": "b74dddb2df29f68ac85be757aa6d74c6ab9c2780eb09f4d77eb51e09acb79a02",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5656156aab0a3862a302adbcc3fe216b5081ceb5299dc225c70ead5fb473a5a",
+      "source_fact_keys": [
+        "source_fact:v1:54ae2e360fbe111875f51567ee7f887fc78c0d2058c171398abe7633b2c3e222",
+        "source_fact:v1:8b27d42b5bf839c00386dabb874c630b9944ae44359900dbd4bb66152f65b021",
+        "source_fact:v1:94c5e0b16888ef163e3341da6f185e1e672c36a4f902dcc07584deb94cceca00"
+      ],
+      "source_published_kst": "2026-10-13T14:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "피델릭스 수주공시 - 메모리반도체 공급 60.9억원 (매출액대비 11.3 %)",
+      "telegram_core_fact": "피델릭스는 Telit Communications Cyprus LTD과 60.9억원 규모 메모리반도체 공급 계약을 공시했다. 기간은 2026년 10월 13일부터 2026년 11월 06일까지다.",
+      "title": "피델릭스 수주공시 - 메모리반도체 공급 60.9억원 (매출액대비 11.3 %)"
+    },
     "title:28d9c1d45b41c9d6e59e1c16": {
       "first_seen_kst": "2026-10-07T12:06:36+09:00",
       "lanes": {
@@ -519595,6 +520731,26 @@
       "source_title": "인도, 기준금리 5.5%로 0.25%P↑…\"인플레 대응 3년8개월 만에 인상\"",
       "telegram_core_fact": "은행이 중앙은행에 초과 유동성을 예치할 때 적용하는 상설예금제도(SDF) 금리는 5.25%, 긴급 유동성 지원 창구인 한계대출제도(MSF) 금리는 5.75%로 각각 0.25% 포인트 인상했다.",
       "title": "인도, 기준금리 5.5%로 0.25%P↑…\"인플레 대응 3년8개월 만에 인상\""
+    },
+    "title:2c8ca8fabf0a23b9f2ac3d3e": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173571",
+      "source": "매일경제",
+      "source_body_digest": "dc5344b039b3a91825abaead7a772d44d0b56bc48de70c9b9306b4f8c5eae0a5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9b3ec7c48748b1795d9f148ca3833d38ffed1448b8d915d54c06501bc8c904c6",
+      "source_fact_keys": [
+        "source_fact:v1:43ea2bceaca6e1d10a975acd42a2b834ea24ecb0ed09fe6bf4f3caf5c407460f"
+      ],
+      "source_published_kst": "2026-10-13T15:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"상표출원 심사 1년↑…소상공인·중소기업 피해 연간 3조 추정\"",
+      "telegram_core_fact": "\"상표 심사가 6개월 이상 지연될 경우 매출 감소에 따른 경제적 피해가 연간 약 3조원으로 추정된다\"고 질타했다. 우리나라 상표출원 건수는 2023년 31만3천533건 이후 매년 늘어나고 있으나 심사관 수는 2023년 160명에서 2024년 177명으로 17명 늘어난 이후 올해까지 변동이 없는 상황이다.",
+      "title": "\"상표출원 심사 1년↑…소상공인·중소기업 피해 연간 3조 추정\""
     },
     "title:2c911ab01ccc45ac77d42f6f": {
       "first_seen_kst": "2026-10-12T17:38:53+09:00",
@@ -547768,6 +548924,30 @@
       "source_published_kst": "2026-10-05T18:43+09:00",
       "title": "JEDEC, 첫 '실리콘 포토닉스' 신뢰성 표준 발표…AI인프라 변혁 예고"
     },
+    "title:8d6293b5a4c6af9bb67f9a60": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03411206645612592",
+      "source": "이데일리",
+      "source_body_digest": "4280921320f56f73b665ad7a02da63f58da4f75d9e95b6a82bb4ab502e362548",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ca4ad2b32d34644e30c6f106cbc770772bd27fdf794186ed9d0f74ea7b9d609",
+      "source_fact_keys": [
+        "source_fact:v1:20fa441bd521d003bd18ab14b0433487785e0ecdffb1d301d9bc41779a3f04ef",
+        "source_fact:v1:4a6142d662e5198eef9e282184755012b934d486f969441cf7c4910324fa4f72",
+        "source_fact:v1:8057070133295ce3632cae927c239043b42b1b92fbe21a6ffba0d8034589b3f0",
+        "source_fact:v1:bc307b5ee1395afb5734aab8a020823226df22dd204d0ba0dfbb20ecc8db9507",
+        "source_fact:v1:d114497907f4305fbcb1594e78e168681200463d0da8a5c0d5639e5e25ad0678"
+      ],
+      "source_published_kst": "2026-10-13T14:52+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"코인 과세 서두르다 레버리지ETF꼴 난다\"…국세청장 \"11월 고시 발표\"",
+      "telegram_core_fact": "내년 1월 가상자산 과세 시행을 앞두고 과세 기준조차 명확하지 않다는 지적이 제기되자 임광현 국세청장은 “11월에 가상자산 과세 관련 고시안을 발표할 수 있도록 준비 중”이라고 밝혔다.",
+      "title": "\"코인 과세 서두르다 레버리지ETF꼴 난다\"…국세청장 \"11월 고시 발표\""
+    },
     "title:8d73828d31ba3ba8a816dbaa": {
       "first_seen_kst": "2026-10-02T18:02:38+09:00",
       "lanes": {
@@ -555637,6 +556817,33 @@
       "source": "연합뉴스",
       "title": "500억불 투자 VS 미정…알래스카 LNG 대미투자 새 '뇌관'(종합2보) | 연합뉴스"
     },
+    "title:a8753b4b2bfd88f5a335d66a": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003824150",
+      "source": "뉴시스",
+      "source_body_digest": "01fbae12e181fb34ed5830528b545ce7a136af216a82721a276119e3fa9fd608",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3efebd56d1e0f5a79793b91aa7c7caaf83176ef345bfeecd20efcf9e99c65df1",
+      "source_fact_keys": [
+        "source_fact:v1:101d80d74451a3b71f653ca3212067f996203e7357d5fe6d558708a37cdef0fc",
+        "source_fact:v1:1c53872b5b4135c5972e84e15b5f0b90e37d9973eac173220a4ca782e2d7483d",
+        "source_fact:v1:63e9b57f54121cb61ed402de13752e979fab2425ce015cc9fe3f73314024efd8",
+        "source_fact:v1:72b4cfb282efd5930aceb3c9605e93f30230941fd7f1e941f17e61398fc720c9",
+        "source_fact:v1:81a5026ab1914357570c36b9d914129e6c5b0bb2722b2fad50165de159602969",
+        "source_fact:v1:bd90c72b0d1ae4eb5491ce68adc564855cdd5be62e3a807f744ad2a740b22c06",
+        "source_fact:v1:c6a645a3ba6048e2476870791d0d365b340ad2da7cc3e1a592fecf6b47e3d3e5",
+        "source_fact:v1:eab1e1b670446d5f5744723063bbc7e102cd43044aceb9e1dc88f626ded19214"
+      ],
+      "source_published_kst": "2026-10-13T17:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성바이오 \"폴리펩타이드 공개매수 조건 충족\"",
+      "telegram_core_fact": "공개매수는 폴리펩타이드그룹 인수를 위해 설립한 특수목적법인(SPC) 자회사 삼성펩타이드(Samsung Peptide)를 통해 이뤄졌으며, 자사주를 제외한 발행주식 전량(3301만6411주)을 대상으로 주당 가격 44.31스위스프랑에 진행됐다.",
+      "title": "삼성바이오 \"폴리펩타이드 공개매수 조건 충족\""
+    },
     "title:a880b004cc920d3cc1d1b7cf": {
       "first_seen_kst": "2026-10-01T11:48:10+09:00",
       "lanes": {
@@ -556189,6 +557396,26 @@
       ],
       "source_published_kst": "2026-10-06T16:01+09:00",
       "title": "신세계그룹, 美 워너브라더스 인수에 전격 투자"
+    },
+    "title:aa62a59e82f80d44b59a0140": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.fnnews.com/news/202610131520271395",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "17865e4aa74dcecbcc183602e4bc4c669746345d35541ce4dabd05c0bc7ac522",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c79d7103495bf784f06ece09e8ef765ef77d1fba9d705fa6971e4cac9806592c",
+      "source_fact_keys": [
+        "source_fact:v1:880969a9daa1d4ece29e4242c4fa590ef3a08635a608829af9c09719f59e86ad"
+      ],
+      "source_published_kst": "2026-10-13T15:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "엔비디아, 화웨이 약진으로 中 점유율 34%로 추락",
+      "telegram_core_fact": "미국 정부의 첨단 인공지능(AI) 칩의 중국 수출금지 여파로 엔비디아의 중국 시장 점유율이 34%로 급락했다.",
+      "title": "엔비디아, 화웨이 약진으로 中 점유율 34%로 추락"
     },
     "title:aa6377d0693f7a8e5f2c7521": {
       "first_seen_kst": "2026-10-13T14:32:55+09:00",
@@ -571413,6 +572640,24 @@
       "telegram_core_fact": "지난달 30일 서울 태평로에 있는 규제합리화위원회 사무실에서 만난 그는 “규제 차르에게 대통령이 권한을 주고, 국무회의에도 참관할 수 있도록 해서 낡은 규제를 풀어야 한다”고 제안했다.",
       "title": "박용진 “부처간 꼬여있는 규제, 풀려면 ‘차르’ 필요” | 중앙일보"
     },
+    "title:df6c91e1ff4d78ef83e1bde9": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173547",
+      "source": "매일경제",
+      "source_body_digest": "d2bbe0ad9e1252bf0ef17e42d48d684174a6456da8b25f58e0a2ce28da3194cd",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-13T14:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "증시 급락에 채권으로 눈 돌릴까…금리 오르자 개인 매수 확대",
+      "telegram_core_fact": "올해 개인들의 채권 순매수 규모는 1∼4월 평균 3조원가량이었으나 주식시장이 강세를 보인 5월에는 1조7천억원 수준까지 쪼그라든 바 있다.",
+      "title": "증시 급락에 채권으로 눈 돌릴까…금리 오르자 개인 매수 확대"
+    },
     "title:df747bc8ede00631d6ea5d9d": {
       "first_seen_kst": "2026-10-07T06:12:17+09:00",
       "lanes": {
@@ -577323,6 +578568,29 @@
       "telegram_core_fact": "미국 양자컴퓨팅 기업 아이온큐(IonQ)가 사이버보안 기업 엘리시티(Elisity)를 최대 13억달러(약 1조8천억원)에 인수한다. 인수가에는 엘리시티의 향후 실적에 따라 지급하는 최대 1억5천만달러(약 2천억원)의 성과보수가 포함됐다.",
       "title": "아이온큐, 사이버보안 기업 최대 1.8조원에 인수 | 연합뉴스"
     },
+    "title:f48b18370a2dfbf1da43f76f": {
+      "first_seen_kst": "2026-10-13T18:41:17+09:00",
+      "lanes": {
+        "live": "2026-10-13T18:41:17+09:00"
+      },
+      "last_seen_kst": "2026-10-13T18:41:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003824146",
+      "source": "뉴시스",
+      "source_body_digest": "17b88dc3330296c68277e649eeacff0ce9ff1bdabbb764c9f6e216cc60c06599",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:704ada653ce1adb74590d394f67f1f203980841fca4b8e14da7c2a747f912088",
+      "source_fact_keys": [
+        "source_fact:v1:0cb002aa2425c0bd4777058d514860563331c9ae4de85377e81417823eba3822",
+        "source_fact:v1:45e45374b75cba996d41b72bc24e2ee9e59ebcde01f40b7387a9b2c03d81edbd",
+        "source_fact:v1:480eb919bcdabd7c66907cb746ff8da9db5f1ed75f81502314c8fc3a2165ab52",
+        "source_fact:v1:6d44868b818fe3fbc704ef648814183e727bc87e8412c052d1eded3f8183658d"
+      ],
+      "source_published_kst": "2026-10-13T15:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "경북농업자원관리원, 영천포장 딸기묘 생산 거점 확대",
+      "telegram_core_fact": "경북도 농업자원관리원은 13일 영천포장을 연간 20만주의 딸기 우량 원묘를 생산·공급하는 거점으로 확대한다고 밝혔다. 이번 투자로 생산시설이 추가되면 공급 규모는 연간 20만주로 늘어난다.",
+      "title": "경북농업자원관리원, 영천포장 딸기묘 생산 거점 확대"
+    },
     "title:f4a013210675941e03fb6f0c": {
       "first_seen_kst": "2026-10-12T09:53:29+09:00",
       "lanes": {
@@ -580767,5 +582035,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-13T18:11:03+09:00"
+  "updated_at_kst": "2026-10-13T18:41:17+09:00"
 }
