@@ -79,9 +79,13 @@ class IntegrityTests(unittest.TestCase):
 
     def test_aramco_topic_does_not_invent_an_unstated_country_or_facility(self):
         row = article('Aramco attacked, damage not yet assessed', source='Reuters')
-        # "not" here modifies the damage assessment, not the reported attack.
-        row['title_original'] = 'Aramco attacked, damage assessment pending'
         self.assertEqual(integrity._primary_topic(row), '아람코 · 아람코 공격 보도')
+
+    def test_aramco_attack_negation_stays_attached_to_attack_predicate(self):
+        for title in ('Aramco headquarters was not attacked', 'Saudi denies Aramco HQ was attacked',
+                      '사우디, 아람코 본사 공격 보도를 부인'):
+            with self.subTest(title=title):
+                self.assertIsNone(integrity._primary_topic(article(title)))
 
     def test_english_threat_headline_remains_a_statement_with_past_attacks(self):
         for actor in ('Trump', 'U.S.', 'US'):

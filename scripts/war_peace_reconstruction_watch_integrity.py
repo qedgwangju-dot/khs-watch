@@ -52,9 +52,13 @@ def _primary_topic(row):
     if kind == 'support_statement':
         label = '정보 지원·종전 의향 발언' if re.search(r'종전|peace|end.{0,8}war', title) else '지원 정책 발언'
         return _headline_group(title) + ' · ' + label
+    attack_denied = bool(re.search(
+        r'(?:공격|피격|타격)(?:(?:을|를|하지|받지|당하지)|\s*(?:보도|주장|설)(?:을|를)?)?\s*(?:부인|안\s*했|않|하지\s*않)|'
+        r'\b(?:not|never)\s+(?:been\s+)?(?:attacked|struck|hit|bombed)\b|'
+        r'\bno\s+(?:attack|strike)\b|\b(?:denies|denied)\b.{0,50}\b(?:attack|attacked|struck|hit)\b', title))
     if (kind is None and re.search(r'아람코|\baramco\b', title)
             and re.search(r'공격(?!적)|피격|\b(?:attack(?:s|ed)?|struck|hit)\b', title)
-            and not re.search(r'요격|intercept|(?:공격|피격|타격).{0,12}(?:부인|않|안\s*했)|\b(?:not|denies|denied)\b', title)):
+            and not attack_denied and not re.search(r'요격|intercept', title)):
         saudi = bool(re.search(r'사우디|\bsaudi\b', title))
         houthi = bool(re.search(r'후티|\bhouthi', title))
         group = ('사우디·후티' if houthi else '사우디·아람코') if saudi else ('후티·아람코' if houthi else '아람코')
