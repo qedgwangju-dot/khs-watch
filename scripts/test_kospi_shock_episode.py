@@ -1213,7 +1213,7 @@ print("oct13_preopen_attribution_guard_regression=true")
 
 # 코스닥 현물 독립 순매수 급증 감시. KOSPI200 선물/프로그램을 코스닥 확인값으로 섞지 않는다.
 from kospi_shock_episode_watch import KOSDAQ_SURGE_SINGLE_SPOT_EOK
-assert KOSDAQ_SURGE_SINGLE_SPOT_EOK == 300.0
+assert KOSDAQ_SURGE_SINGLE_SPOT_EOK == 150.0
 import asyncio as _kq_async
 import tempfile as _kq_tmp
 from pathlib import Path as _kq_Path
@@ -1234,7 +1234,7 @@ _kq.surge_sent_at["외국인"] = _kq_base+500  # 코스피 중복방지와 분�
 _kq.kosdaq_flows.append(_kq_row(_kq_base, 0))
 _kq.kosdaq_flows.append(_kq_row(_kq_base+20, 0))
 _kq.kosdaq_flows.append(_kq_row(_kq_base+40, 0))
-_kq.kosdaq_flows.append(_kq_row(_kq_base+300, 350))
+_kq.kosdaq_flows.append(_kq_row(_kq_base+300, 149))
 _kq_msgs, _kq_delivery = [], []
 _kq._record_delivery=lambda stage,mid,ep,ts,**kw: _kq_delivery.append((stage,mid,ep,ts,kw.get("evidence")))
 def _kq_fake_send(msg):
@@ -1242,25 +1242,29 @@ def _kq_fake_send(msg):
     return 32001
 with _kq_patch.object(ks, "telegram_send", _kq_fake_send):
     _kq_async.run(_kq.maybe_alert_kosdaq_surge(_kq_base+303))
-    assert not _kq_msgs, "단일 코스닥 표본만으로 즉시 발송"
-    _kq.kosdaq_flows.append(_kq_row(_kq_base+320, 350))
+    assert not _kq_msgs and not _kq.kosdaq_surge_pending, "150억원 미만에서 후보 생성"
+    _kq.kosdaq_flows.append(_kq_row(_kq_base+320, 150))
     _kq_async.run(_kq.maybe_alert_kosdaq_surge(_kq_base+323))
-    assert not _kq_msgs,"코스닥 동일 누적값 재전송으로 알림"
-    _kq.kosdaq_flows.append(_kq_row(_kq_base+340, 470))
+    assert not _kq_msgs and "외국인" in _kq.kosdaq_surge_pending, "150억원 첫 표본 확인 실패"
+    _kq.kosdaq_flows.append(_kq_row(_kq_base+340, 150))
     _kq_async.run(_kq.maybe_alert_kosdaq_surge(_kq_base+343))
+    assert not _kq_msgs, "코스닥 동일 누적값 재전송으로 알림"
+    _kq.kosdaq_flows.append(_kq_row(_kq_base+360, 170))
+    _kq_async.run(_kq.maybe_alert_kosdaq_surge(_kq_base+363))
     assert len(_kq_msgs)==1, _kq_msgs
     assert "코스닥 현물 순매수 증가" in _kq_msgs[0], _kq_msgs[0]
-    assert "코스닥 현물(통합)" in _kq_msgs[0] and "<b>+470억원</b>" in _kq_msgs[0], _kq_msgs[0]
+    assert "코스닥 현물(통합)" in _kq_msgs[0] and "<b>+170억원</b>" in _kq_msgs[0], _kq_msgs[0]
+    assert "150억원 이상" in _kq_msgs[0], _kq_msgs[0]
     assert "KOSPI200 선물·프로그램 수급과 합산하지 않음" in _kq_msgs[0], _kq_msgs[0]
     assert _kq_delivery[0][0:2] == ("kosdaq_flow_surge",32001), _kq_delivery
     assert _kq_delivery[0][2]["market"]=="KOSDAQ"
     assert _kq_delivery[0][2]["actor"]=="외국인"
     assert _kq_delivery[0][4]["spot_start_cumulative"]==0.0
-    assert _kq_delivery[0][4]["spot_end_cumulative"]==470.0
+    assert _kq_delivery[0][4]["spot_end_cumulative"]==170.0
     assert _kq.surge_sent_at["외국인"] == _kq_base+500  # 코스피 기존 데이터 보존
-    assert _kq.kosdaq_surge_sent_at["외국인"] == _kq_base+343
-    _kq.kosdaq_flows.append(_kq_row(_kq_base+355, 650))
-    _kq_async.run(_kq.maybe_alert_kosdaq_surge(_kq_base+358))
+    assert _kq.kosdaq_surge_sent_at["외국인"] == _kq_base+363
+    _kq.kosdaq_flows.append(_kq_row(_kq_base+375, 650))
+    _kq_async.run(_kq.maybe_alert_kosdaq_surge(_kq_base+378))
     assert len(_kq_msgs)==1, "코스닥 20분 중복방지 실패"
 
     with _kq_tmp.TemporaryDirectory() as directory:
@@ -1269,11 +1273,11 @@ with _kq_patch.object(ks, "telegram_send", _kq_fake_send):
         restored=Watch("unused",[],"",False)
         restored.load_handoff(handoff)
         assert len(restored.kosdaq_flows)>=3, restored.raw
-        assert restored.kosdaq_surge_sent_at["외국인"]==_kq_base+343, restored.kosdaq_surge_sent_at
+        assert restored.kosdaq_surge_sent_at["외국인"]==_kq_base+363, restored.kosdaq_surge_sent_at
         assert restored.surge_sent_at["외국인"]==_kq_base+500, restored.surge_sent_at
     _kq.test=True
-    _kq.kosdaq_flows.append(_kq_row(_kq_base+400, 1600))
-    _kq_async.run(_kq.maybe_alert_kosdaq_surge(_kq_base+402))
+    _kq.kosdaq_flows.append(_kq_row(_kq_base+420, 1600))
+    _kq_async.run(_kq.maybe_alert_kosdaq_surge(_kq_base+422))
     assert len(_kq_msgs)==1, "시험 모드에서 Telegram 전송"
 print("kosdaq_surge_two_sample_dedup_valid=true handoff=true separate_markets=true")
 

@@ -5509,6 +5509,148 @@ def financial_result_fact(title: str, sentences: list[str], source_context: str 
     return ""
 
 
+def primary_headline_measure_core(title: str, body: str, published: str = "") -> str:
+    """Prefer the headline's scoped announcement over unrelated article statistics."""
+    source = article_summary_body(body)
+    rows = market_materiality.source_sentences(source)
+
+    def complete(value: str) -> str:
+        value = normalized_article_sentence(value)
+        return value if core_sentence_is_complete(value) else ''
+
+    if re.search(r"원화\s*강세", title) and re.search(r"코스피", title):
+        row = next((value for value in rows if re.search(r"종가\s*기준", value)
+                    and '코스피' in value and re.search(r"\d+(?:\.\d+)?%", value)), '')
+        if row:
+            return complete(row)
+    if re.search(r"코스피", title) and re.search(r"이익\s*지속성", title):
+        row = next((value for value in rows if re.search(r"코스피.{0,35}선행.{0,25}PER|코스피.{0,35}주가수익비율", value, re.I)
+                    and re.search(r"\d+(?:\.\d+)?배.{0,45}\d+(?:\.\d+)?배", value)), '')
+        if row:
+            return complete(row)
+    if re.search(r"IMF|국제통화기금", title, re.I) and re.search(r"세계\s*(?:경제\s*)?성장률", title):
+        for index, row in enumerate(rows):
+            if (re.search(r"IMF|국제통화기금", row, re.I)
+                    and re.search(r"올해\s*세계\s*(?:경제\s*)?성장률", row)
+                    and re.search(r"\d+(?:\.\d+)?%", row)
+                    and re.search(r"전망|제시|상향|하향", row)):
+                core = complete(row)
+                next_year = next((value for value in rows[index + 1:index + 4]
+                                  if re.search(r"^내년\s*(?:경제\s*)?성장률", value)
+                                  and re.search(r"\d+(?:\.\d+)?%", value)), '')
+                return complete(core + ' ' + next_year) or core
+    if re.search(r"미국", title) and re.search(r"장비\s*지출", title):
+        quoted = re.search(r"[“\"](미국의\s*300mm[^”\"]{15,160})[”\"]", source)
+        if quoted and 'SEMI' in source and re.search(r"20\d{2}년.{0,25}달러.{0,30}20\d{2}년.{0,25}달러", quoted[1]):
+            return complete(f"SEMI는 {quoted[1]}이라고 전망했다.")
+    if re.search(r"OLED\s*노트북", title, re.I):
+        row = next((value for value in rows if re.search(r"OLED\s*노트북|노트북용\s*OLED", value, re.I)
+                    and re.search(r"\d+(?:\.\d+)?%", value)
+                    and re.search(r"전망|성장|늘", value)), '')
+        if row:
+            return complete(re.sub(r"^다만\s*이런\s*와중에\s*", '', row))
+    if re.search(r"한화", title) and re.search(r"K9|XM1776", title, re.I) and re.search(r"납품|인도", title):
+        row = next((value for value in rows if re.search(r"한화에어로스페이스", value)
+                    and re.search(r"시제품|K9|XM1776", value, re.I)
+                    and re.search(r"납품을\s*완료|인도를\s*완료|납품했다고|1호기를\s*납품한\s*상태", value)), '')
+        if row:
+            return complete(row)
+    if re.search(r"쌀", title) and re.search(r"생산|수급|초과", title):
+        row = next((value for value in rows if re.search(r"정부|농림축산식품부|농식품부", value)
+                    and re.search(r"올해.{0,20}초과생산량", value)
+                    and re.search(r"\d[\d,.만천]*\s*(?:t|톤)", value)
+                    and re.search(r"전망|격리|대책", value)), '')
+        if row:
+            return complete(row)
+        row = next((value for value in rows if '농림축산식품부' in value
+                    and re.search(r"올해\s*쌀\s*예상\s*생산량", value)
+                    and re.search(r"수요량.{0,25}웃돌", value)), '')
+        if row:
+            return complete(row)
+    package = market_materiality.dated_public_supply_package(title, source, published)
+    if package and package['actor'] == '서울시':
+        return complete(
+            f"서울시는 연내 착공을 추진할 {package['associations']}개 정비사업조합·"
+            f"{package['builders']}개 시공사·{package['boroughs']}개 자치구와 공동협력 협약을 체결했다. "
+            f"남은 {int(package['remaining_units']):,}가구의 공사비 갈등·인허가 지연 해소를 지원한다."
+        )
+    if re.search(r"양산", title) and re.search(r"내년\s*\d{1,2}월", title):
+        issuer = re.search(r"([A-Za-z0-9가-힣&·.-]{2,30})[,，]", re.sub(r"^\[[^]]+\]\s*", '', title))
+        if issuer:
+            row = next((value for value in rows if issuer[1] in value
+                        and re.search(r"이르면\s*내년\s*\d{1,2}월", value) and '양산' in value), '')
+            if row:
+                return complete(row)
+    if (re.search(r"수주|공급|수주공시", title)
+            and not re.search(r"누적|목표|주가|전망|예상|증액", title)):
+        if (market_materiality.focus_kind(title) == 'research_award'
+                or market_materiality.research_program_award_observation(title, source)
+                or ('MLCC' in source[:1400] and re.search(r"공급\s*계약|공급계약", source[:1400]))
+                or (re.search(r"계약\s*기간", source) and re.search(r"매출[^.!?\n]{0,55}%", source))
+                or market_materiality.commercial_order_terms(title, source, published)
+                or market_materiality.mlcc_contract_observation(title, source)
+                or market_materiality.anonymous_annual_mlcc_terms(title, source, published)
+                or market_materiality.scoped_anonymous_order_observation(title, source)
+                or market_materiality.construction_order_observation(title, source)
+                or market_materiality.structured_supply_contract_observation(title, source)
+                or (re.search(r"재개발|정비사업|구역\s*수주", title) and '누적 수주액' in source)
+                or (re.search(r"계약\s*기간은", source) and '지난해 매출액 대비' in source)):
+            return ''
+        named = market_materiality.named_supply_order_observation(title, source, published)
+        if named:
+            if named.get('duration_years'):
+                detailed = next((value for value in rows if named['issuer'] in value
+                                 and named['customer'] in value
+                                 and f"{named['duration_years']}년간" in value
+                                 and re.search(r"공급한다고|납품한다고", value)), '')
+                if detailed:
+                    return complete(detailed)
+            return complete(named['source_excerpt'])
+        head = re.sub(r"^\[[^]]+\]\s*", '', title)
+        issuer = re.match(r"^([A-Za-z0-9가-힣&·.-]{2,30})[,，\s]", head)
+        if issuer:
+            row = next((value for value in rows if issuer[1] in value
+                        and not market_materiality.PAST_ACTION.search(value)
+                        and re.search(market_materiality.SOURCE_MONEY, value)
+                        and re.search(r"공급한다고|계약을\s*체결|수주했", value)
+                        and not re.search(r"누적|이번\s*계약을\s*포함|추가\s*계약\s*체결\s*시", value)), '')
+            if row:
+                return complete(row)
+            for index, value in enumerate(rows[:12]):
+                if (issuer[1] in value and re.search(r"공급\s*계약을\s*체결했다고", value)
+                        and not market_materiality.PAST_ACTION.search(value)
+                        and index + 1 < len(rows)
+                        and re.match(r"계약\s*규모는", rows[index + 1])
+                        and re.search(market_materiality.SOURCE_MONEY, rows[index + 1])):
+                    core = value + ' ' + rows[index + 1]
+                    if index + 2 < len(rows) and re.match(r"공급은", rows[index + 2]):
+                        core += ' ' + rows[index + 2]
+                    return complete(core)
+            if re.search(r"수주공시", title):
+                product = re.search(r"는\s*([^.!?]{2,60}?)에\s*관한\s*단일판매", source)
+                terms = re.search(r"계약\s*상대방은\s*([^,]{2,40}?)(?:\s*주식회사)?이고,\s*계약금액은\s*(" + market_materiality.SOURCE_MONEY + r")", source)
+                if product and terms and re.search(rf"{re.escape(issuer[1])}\(\d{{6}}\).*공시했다", source):
+                    core = f"{issuer[1]}는 {terms[1]}과 {terms[2]} 규모 {product[1]} 계약을 공시했다."
+                    period = re.search(r"이번\s*계약의\s*기간은\s*(20\d{2}년\s*\d{1,2}월\s*\d{1,2}일)\s*부터\s*(20\d{2}년\s*\d{1,2}월\s*\d{1,2}일)까지", source)
+                    if period:
+                        core += f" 기간은 {period[1]}부터 {period[2]}까지다."
+                    return complete(core)
+    if (re.search(r"[1-4]분기", title) and re.search(r"매출|영업이익|영업익|순이익", title)
+            and not re.search(r"주가|전망|예상|추정|목표|누적", title)):
+        issuer = financial_headline_subject(title, source)
+        if issuer:
+            for index, row in enumerate(rows):
+                if (issuer in row and re.search(r"[1-4]분기", row)
+                        and re.search(r"매출|영업이익|순이익", row)
+                        and re.search(market_materiality.SOURCE_MONEY, row)
+                        and re.search(r"공시했다|기록했다|집계됐|발표했다", row)):
+                    core = complete(row)
+                    if index + 1 < len(rows) and re.match(r"같은\s*기간\s*영업이익", rows[index + 1]):
+                        core = complete(core + ' ' + rows[index + 1]) or core
+                    return core
+    return ''
+
+
 def analyst_quarterly_forecast_pair_core(title: str, body: str) -> str:
     """Keep quarterly revenue and operating-profit growth rates bound to their metrics."""
     source = article_summary_body(body)
@@ -10294,6 +10436,7 @@ def source_output_aligned(alert: dict) -> bool:
             and re.sub(r"\s+", "", event_specific_core) == re.sub(r"\s+", "", summary)
         )
         petroleum_cartel_alignment = korean_petroleum_cartel_core_matches(alert, summary)
+        primary_alignment = primary_headline_core_matches(alert, summary)
         return bool(
             (alert.get("body_verified") or alert.get("title_fact_verified"))
             and source_title
@@ -10302,10 +10445,10 @@ def source_output_aligned(alert: dict) -> bool:
             and not core_has_ui_garbage(summary)
             and korean_business_source_allowed(alert)
             and (korean_title_core_aligned(source_title, summary) or financing_alignment or preview_revision_alignment
-                 or petroleum_cartel_alignment or event_specific_market_alignment)
+                 or petroleum_cartel_alignment or event_specific_market_alignment or primary_alignment)
             and macro_release_core_aligned(source_title, summary)
             and (market_materiality.core_focus_aligned(source_title, summary) or petroleum_cartel_alignment
-                 or event_specific_market_alignment)
+                 or event_specific_market_alignment or primary_alignment)
             and not source_core_fact_errors(alert)
             and not direction_conflict
         )
@@ -11833,9 +11976,9 @@ def is_stale_opening_market_report(alert: dict, now) -> bool:
     if os.getenv("RADAR_RUN_MODE", "").strip().lower() != "live" or now.hour < 12:
         return False
     title = base.norm(str(alert.get("source_title") or alert.get("news") or ""))
-    return has_term(title, ("약세 출발", "강세 출발", "상승 출발", "하락 출발")) and has_term(
+    return has_term(title, ("약세 출발", "강세 출발", "상승 출발", "하락 출발", "프리마켓", "프리 마켓")) and has_term(
         title, ("삼성전자", "SK하이닉스", "삼전", "닉스", "코스피", "코스닥", "증시")
-    )
+    ) and not has_term(title, ("규정", "거래방식", "거래 방식", "규제", "시행", "전면 개편"))
 
 
 def is_stale_session_preview(alert: dict, now) -> bool:
@@ -12217,6 +12360,13 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
                     continue
                 prior_title = str(prior.get("source_title") or prior.get("original_news") or prior.get("news") or "")
                 prior_fact = str(prior.get("telegram_core_fact") or "")
+                current_terms = market_materiality.named_supply_order_observation(
+                    current_title, str(normalized.get('source_body') or ''), str(normalized.get('published') or ''))
+                prior_terms = market_materiality.named_supply_order_observation(
+                    prior_title, str(prior.get('source_body') or ''), str(prior.get('published') or ''))
+                if market_materiality.same_named_supply_order(current_terms, prior_terms):
+                    same_day_duplicate = True
+                    break
                 if market_materiality.same_headline_event(current_title, prior_title, current_fact, prior_fact):
                     same_day_duplicate = True
                     break
@@ -12573,6 +12723,9 @@ def verified_alert_core(alert: dict, title: str) -> str:
     if is_business:
         if alert.get("body_verified"):
             body = str(alert.get("source_body") or alert.get("source_abstract") or "")
+            primary_core = primary_headline_measure_core(source_title or title, body, str(alert.get('published') or ''))
+            if primary_core and valid_source_fact(primary_core):
+                return primary_core
             forecast_pair = analyst_quarterly_forecast_pair_core(source_title or title, body)
             if forecast_pair and valid_source_fact(forecast_pair):
                 return forecast_pair
@@ -12659,6 +12812,17 @@ def verified_alert_core(alert: dict, title: str) -> str:
     return ""
 
 
+def primary_headline_core_matches(alert: dict, core: str) -> bool:
+    expected = primary_headline_measure_core(
+        str(alert.get('source_title') or alert.get('news') or ''),
+        str(alert.get('source_body') or alert.get('source_abstract') or ''),
+        str(alert.get('published') or ''),
+    )
+    def comparable(value: str) -> str:
+        return market_materiality.canonical_source_fact(re.sub(r"\(\s*약\s*[^()]*?원\s*\)", '', value))
+    return bool(expected and comparable(expected) == comparable(core))
+
+
 def source_core_fact_errors(alert: dict) -> list[str]:
     title = str(alert.get("source_title") or alert.get("news") or "")
     source = article_summary_body(str(alert.get("source_body") or alert.get("source_abstract") or ""))
@@ -12666,6 +12830,10 @@ def source_core_fact_errors(alert: dict) -> list[str]:
     if not source or not core:
         return []
     errors = []
+    expected_primary = primary_headline_measure_core(title, source, str(alert.get('published') or ''))
+    primary_alignment = primary_headline_core_matches(alert, core)
+    if expected_primary and not primary_alignment:
+        errors.append('headline_primary_amount_period_or_population_mismatch')
     expected_analyst_forecast = analyst_quarterly_forecast_pair_core(title, source)
     analyst_forecast_alignment = bool(
         expected_analyst_forecast
@@ -12734,7 +12902,7 @@ def source_core_fact_errors(alert: dict) -> list[str]:
         if re.sub(r"\s+", "", expected_commercial) != re.sub(r"\s+", "", core):
             errors.append("commercial_contract_actor_customer_or_stage_mismatch")
     if (not market_materiality.core_focus_aligned(title, core) and not petroleum_cartel_alignment
-            and not event_specific_market_alignment and not analyst_forecast_alignment):
+            and not event_specific_market_alignment and not analyst_forecast_alignment and not primary_alignment):
         errors.append("headline_event_or_period_mismatch")
     if market_materiality.focus_kind(title) == "cyber_incident":
         expected_cyber = financial_cyber_incident_fact(title, source)
@@ -12867,7 +13035,7 @@ def source_core_fact_errors(alert: dict) -> list[str]:
             and expected_observation
             and market_materiality.canonical_source_fact(expected_observation) == market_materiality.canonical_source_fact(observation_core)
         )
-        if (core_audit["disposition"] != "keep" or not core_audit["evidence"]) and not source_bound_deployment and not analyst_forecast_alignment:
+        if (core_audit["disposition"] != "keep" or not core_audit["evidence"]) and not source_bound_deployment and not analyst_forecast_alignment and not primary_alignment:
             errors.append("core_without_market_change_evidence")
     if core.count("“") != core.count("”"):
         errors.append("orphaned_source_quote")

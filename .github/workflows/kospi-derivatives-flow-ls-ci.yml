@@ -200,6 +200,106 @@ jobs:
               print("kosdaq_t1602_live_probe=valid")
           PY
 
+      - name: Probe KOSDAQ five-minute inflows and deployed worker age
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          PYTHONPATH=scripts python - <<'PY'
+          import datetime as dt,json,os,pathlib,time,urllib.request
+          from zoneinfo import ZoneInfo
+          from krx_session_calendar import session_state
+          from kospi_shock_episode_watch import (
+              get_token,ls_post,market_clock_epoch,fnum,
+              SURGE_WINDOW_SEC,SURGE_MAX_SAMPLE_SKEW_SEC,KOSDAQ_SURGE_SINGLE_SPOT_EOK
+          )
+          now=dt.datetime.now(ZoneInfo("Asia/Seoul"))
+          sess=session_state(now)
+          status={"retrieved_at_kst":now.isoformat(),
+                  "source":"LS t1602 market=2 upcode=301 exchgubun=U",
+                  "threshold_5m_eok":KOSDAQ_SURGE_SINGLE_SPOT_EOK,
+                  "status":"outside_market"}
+          live=bool(sess["is_session"] and sess.get("open") and sess.get("continuous_end")
+                    and sess["open"]+dt.timedelta(minutes=6)<=now<sess["continuous_end"])
+          if live:
+              data=ls_post(get_token(),"/stock/investor","t1602",{
+                  "t1602InBlock":{"market":"2","upcode":"301","gubun1":"2",
+                  "gubun2":"0","cts_time":"","cts_idx":0,
+                  "cnt":100,"gubun3":"","exchgubun":"U"}},
+                  max_attempts=2,request_timeout=8.0)
+              raw=data.get("t1602OutBlock1") or []
+              if isinstance(raw,dict):raw=[raw]
+              observations={}
+              for row in raw:
+                  if not isinstance(row,dict):continue
+                  ts=market_clock_epoch(row.get("time"),time.time())
+                  if ts is None or not (sess["open"].timestamp()<=ts<=time.time()+5):continue
+                  v={who:fnum(row.get(field)) for who,field in
+                     (("외국인","sv_17"),("기관","sv_18"),("개인","sv_08"))}
+                  if all(x is not None for x in v.values()):observations[ts]={"ts":ts,**v}
+              samples=sorted(observations.values(),key=lambda x:x["ts"])
+              actors=("외국인","기관","개인")
+              peak={x:None for x in actors}
+              hits={x:[] for x in actors}
+              for i,end in enumerate(samples):
+                  if end["ts"]<sess["open"].timestamp()+SURGE_WINDOW_SEC:continue
+                  target=end["ts"]-SURGE_WINDOW_SEC
+                  before=[p for p in samples[:i] if p["ts"]<=target]
+                  if not before:continue
+                  start=max(before,key=lambda x:x["ts"])
+                  if target-start["ts"]>SURGE_MAX_SAMPLE_SKEW_SEC:continue
+                  for actor in actors:
+                      delta=round(end[actor]-start[actor],2)
+                      point={"delta_5m_eok":delta,"start_ts":start["ts"],"end_ts":end["ts"]}
+                      if peak[actor] is None or delta>peak[actor]["delta_5m_eok"]:peak[actor]=point
+                      if delta>=KOSDAQ_SURGE_SINGLE_SPOT_EOK:hits[actor].append(point)
+              confirmed={}
+              for actor in actors:
+                  pair=hits[actor]
+                  if any(10<=b["end_ts"]-a["end_ts"]<=120 for a,b in zip(pair,pair[1:])):
+                      confirmed[actor]=max(x["delta_5m_eok"] for x in pair)
+              status.update({"status":"market_history_checked","source_rows":len(raw),
+                             "time_samples":len(samples),
+                             "first_ts":samples[0]["ts"] if samples else None,
+                             "last_ts":samples[-1]["ts"] if samples else None,
+                             "max_5m_in_retained_history":peak,
+                             "two_source_sample_confirmed_peak":confirmed})
+          repo=os.environ["REPOSITORY"]
+          headers={"Authorization":f"Bearer {os.environ['GH_TOKEN']}",
+                   "Accept":"application/vnd.github+json"}
+          def get(url):
+              with urllib.request.urlopen(urllib.request.Request(url,headers=headers),timeout=20) as r:
+                  return json.loads(r.read().decode("utf-8"))
+          latest=get(f"https://api.github.com/repos/{repo}/commits?path=scripts%2Fkospi_shock_episode_watch.py&per_page=1")[0]
+          latest_time=dt.datetime.fromisoformat(latest["commit"]["committer"]["date"].replace("Z","+00:00"))
+          active=get(f"https://api.github.com/repos/{repo}/actions/workflows/kospi-derivatives-flow-ls-realtime.yml/runs?per_page=100").get("workflow_runs",[])
+          shifts=[]
+          for run in active:
+              if run["status"] not in ("queued","in_progress"):continue
+              created=dt.datetime.fromisoformat(run["created_at"].replace("Z","+00:00")).astimezone(ZoneInfo("Asia/Seoul"))
+              if created.date()!=now.date():continue
+              jobs=get(f"https://api.github.com/repos/{repo}/actions/runs/{run['id']}/jobs?per_page=100").get("jobs",[])
+              for job in jobs:
+                  if job.get("name") not in ("morning","afternoon") or job.get("status") not in ("queued","in_progress"):continue
+                  started=job.get("started_at")
+                  start_time=dt.datetime.fromisoformat(started.replace("Z","+00:00")) if started else None
+                  shifts.append({"run_id":run["id"],"job":job.get("name"),
+                                 "started_at":started,
+                                 "latest_code_commit":latest["sha"],
+                                 "latest_code_at":latest_time.isoformat(),
+                                 "latest_code_loaded":"NO" if start_time and start_time<latest_time
+                                 else "POSSIBLE" if start_time else "UNKNOWN"})
+          status["live_shifts"]=shifts
+          print("kosdaq_surge_source_audit=",json.dumps(status,ensure_ascii=False))
+          p=pathlib.Path("out/kosdaq_surge_history_probe.json")
+          p.parent.mkdir(parents=True,exist_ok=True)
+          p.write_text(json.dumps(status,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          with open(os.environ["GITHUB_STEP_SUMMARY"],"a",encoding="utf-8") as summary:
+              summary.write("\n### 코스닥 5분 수급·실전 배포 점검\n")
+              summary.write(f"- 수집: {status['status']} / 실행 중인 감시: {shifts}\n")
+              summary.write("- 과거 100행에서 확인한 범위만 재검증했습니다. 코드 테스트 성공은 실전 배포 성공이 아닙니다.\n")
+          PY
+
       - name: Probe live KOSDAQ composite index and minute-bar source
         run: |
           PYTHONPATH=scripts python - <<'PY'
@@ -821,6 +921,7 @@ jobs:
         with:
           name: kospi-derivatives-ci-${{ github.run_id }}
           path: |
+            out/kosdaq_surge_history_probe.json
             out/kospi_shock_episode_status.md
             out/kospi_shock_episode_raw.json
             out/ls_unified_flow_probe.json

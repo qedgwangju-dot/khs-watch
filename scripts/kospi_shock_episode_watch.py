@@ -53,7 +53,7 @@ SURGE_COMBINED_FUT_EOK = 450.0
 SURGE_SINGLE_SPOT_EOK = 900.0
 SURGE_SINGLE_FUT_EOK = 1300.0
 # 코스닥은 KOSPI200 선물과 섞지 않고 현물 독립 신호로 감시한다.
-KOSDAQ_SURGE_SINGLE_SPOT_EOK = 300.0
+KOSDAQ_SURGE_SINGLE_SPOT_EOK = 150.0
 KOSDAQ_URL = "https://m.stock.naver.com/domestic/index/KOSDAQ/total"
 KOSDAQ_NEWS_URL = "https://search.naver.com/search.naver?where=news&query=" + urllib.parse.quote("코스닥 급락")
 # 코스닥 가격/수급은 같은 기존 프로세스의 독립 상태로 관리하며 코스피 수급·파생과 합산하지 않는다.
