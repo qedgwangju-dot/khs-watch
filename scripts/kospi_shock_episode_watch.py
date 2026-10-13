@@ -558,7 +558,14 @@ def backfill_index_bars(token: str, max_rows: int = 500) -> list[tuple[float, fl
     if isinstance(rows, dict):
         rows = [rows]
     out: list[tuple[float, float]] = []
-    today = dt.datetime.now(KST).date()
+    local_now = dt.datetime.now(KST)
+    today = local_now.date()
+    session = session_state(local_now)
+    # 시초 첫 1분봉에 개장 전 전일 종가가 혼재할 수 있으므로 보수적으로 제외.
+    first_reliable_bar = (
+        session["open"] + dt.timedelta(minutes=1)
+        if session.get("open") is not None else None
+    )
     for row in rows:
         if not isinstance(row, dict):
             continue
@@ -574,6 +581,8 @@ def backfill_index_bars(token: str, max_rows: int = 500) -> list[tuple[float, fl
             ts = (ts + "000000")[:6]
             when = dt.datetime(day.year, day.month, day.day,
                                int(ts[:2]), int(ts[2:4]), int(ts[4:6]), tzinfo=KST)
+            if first_reliable_bar is not None and when < first_reliable_bar:
+                continue
             out.append((when.timestamp(), close))
         except Exception:
             continue
@@ -637,6 +646,7 @@ def program_quality_label(att: dict[str, Any]) -> str:
 
 def _flow_surge_channel_pair(
     rows: list[dict[str, Any]], channel: str, now_ts: float,
+    session_open_ts: float | None = None,
 ) -> dict[str, Any] | None:
     """원자료 시각 기준으로 5분 누적값의 시작/종료를 30초 이내 정렬한다."""
     candidates: list[tuple[float, dict[str, Any]]] = []
@@ -645,13 +655,16 @@ def _flow_surge_channel_pair(
         if not isinstance(block, dict):
             continue
         source_ts = fnum(block.get("sample_ts"))
-        if source_ts is None or source_ts > now_ts:
+        if (source_ts is None or source_ts > now_ts
+                or (session_open_ts is not None and source_ts < session_open_ts)):
             continue
         if all(fnum(block.get(who)) is not None for who in ("외국인", "기관", "개인")):
             candidates.append((source_ts, block))
     if not candidates:
         return None
     end_ts, end = max(candidates, key=lambda x: x[0])
+    if session_open_ts is not None and end_ts < session_open_ts + SURGE_WINDOW_SEC:
+        return None
     if not (0 <= now_ts - end_ts <= SURGE_MAX_END_AGE_SEC):
         return None
     target = end_ts - SURGE_WINDOW_SEC
@@ -672,6 +685,7 @@ def _flow_surge_channel_pair(
 
 def _flow_surge_program(
     rows: list[dict[str, Any]], now_ts: float,
+    session_open_ts: float | None = None,
 ) -> dict[str, Any] | None:
     """프로그램 원값은 독립적으로 검산한다. 억원·투자자별 수급과 합산 금지."""
     candidates = []
@@ -680,13 +694,16 @@ def _flow_surge_program(
         if not isinstance(block, dict):
             continue
         ts = fnum(block.get("sample_ts"))
-        if ts is None or ts > now_ts:
+        if (ts is None or ts > now_ts
+                or (session_open_ts is not None and ts < session_open_ts)):
             continue
         if all(fnum(block.get(k)) is not None for k in ("전체", "차익", "비차익")):
             candidates.append((ts, block))
     if not candidates:
         return None
     end_ts, end = max(candidates, key=lambda x: x[0])
+    if session_open_ts is not None and end_ts < session_open_ts + SURGE_WINDOW_SEC:
+        return None
     if not (0 <= now_ts - end_ts <= SURGE_MAX_END_AGE_SEC):
         return None
     target = end_ts - SURGE_WINDOW_SEC
@@ -729,16 +746,20 @@ def _flow_surge_program(
 
 def flow_surge_candidates(
     rows: list[dict[str, Any]], now_ts: float,
+    session_open_ts: float | None = None,
 ) -> list[dict[str, Any]]:
     """급락과 관계없이 최근 5분의 '순매수 누적 변화'를 판정한다.
 
     잔고와 신규 순매수 혼동, 시차가 큰 표본의 소급 재구성, 단위 혼합을 막는다.
     """
-    spot = _flow_surge_channel_pair(rows, "현물", now_ts)
-    fut = _flow_surge_channel_pair(rows, "선물", now_ts)
+    # 08:59 등 장전 순매수와 정규장 5분 순매수를 합치지 않는다.
+    if session_open_ts is not None and now_ts < session_open_ts + SURGE_WINDOW_SEC:
+        return []
+    spot = _flow_surge_channel_pair(rows, "현물", now_ts, session_open_ts)
+    fut = _flow_surge_channel_pair(rows, "선물", now_ts, session_open_ts)
     if not spot and not fut:
         return []
-    program = _flow_surge_program(rows, now_ts)
+    program = _flow_surge_program(rows, now_ts, session_open_ts)
     result = []
     for actor in ("외국인", "기관", "개인"):
         ds = fnum((spot or {}).get("deltas", {}).get(actor))
@@ -806,6 +827,8 @@ class Watch:
         self.session_open_ts: float | None = None
         self.session_close_ts: float | None = None
         self.session_continuous_end_ts: float | None = None
+        # 장전 전일 종가 유지값은 정규장 최초 가격으로 확정하지 않는다.
+        self.regular_price_ready = False
         self.opening_gap_sent = False
         self.handoff_path: str | None = None
         self.last_handoff_save_ts = 0.0
@@ -1306,7 +1329,7 @@ class Watch:
             return
         # 같은 원자료로 초당 여러 번 '새 유입'을 판정하지 않는다.
         self.surge_last_processed_ts = latest_ts
-        candidates = flow_surge_candidates(list(self.flows), now_ts)
+        candidates = flow_surge_candidates(list(self.flows), now_ts, start)
         current = {str(x["actor"]): x for x in candidates}
         for actor in list(self.surge_pending):
             if actor not in current:
@@ -1350,7 +1373,7 @@ class Watch:
         if getattr(self, "test", False):
             self.raw["test_mode_notification_suppressed"] = True
             return
-        if not self.idx:
+        if not self.idx or not getattr(self, "regular_price_ready", True):
             return
         now_t, cur = self.idx[-1]
 
@@ -1596,29 +1619,64 @@ class Watch:
             self.raw["backfill_error"] = f"{type(exc).__name__}: {exc}"
 
     def poll_market_once(self) -> None:
-        now_ts = time.time()
         idx = fetch_index_quote(self.token)
+        # 실제 수신 시각을 지수 가격 시각으로 사용한다. 호출 시작시각을 소급 사용하지 않는다.
+        idx_received_ts = time.time()
         fut = fetch_derivative_quote(self.token, self.front_future)
+        fut_received_ts = time.time()
 
-        self.idx.append((now_ts, float(idx["price"])))
-        self.fut.append((now_ts, float(fut["price"])))
-        self.last_idx_tick_ts = now_ts
-        self.last_fut_tick_ts = now_ts
-        cutoff = now_ts - PRICE_LOOKBACK_SEC
+        current_price = float(idx["price"])
+        opening = fnum(idx.get("open"))
+        previous_close = fnum(idx.get("prev_close"))
+        open_ts = getattr(self, "session_open_ts", None)
+        price_usable = True
+        price_block_reason = None
+        if open_ts is not None and idx_received_ts < open_ts:
+            price_usable = False
+            price_block_reason = "정규장 개장 전 전일종가 유지값"
+        elif open_ts is not None and not getattr(self, "regular_price_ready", False):
+            if opening is None or opening <= 0:
+                price_usable = False
+                price_block_reason = "개장 시가 미확인"
+            elif (
+                previous_close is not None and previous_close > 0
+                and abs((opening / previous_close - 1.0) * 100.0) >= 0.5
+                and abs((current_price / previous_close - 1.0) * 100.0) <= 0.01
+            ):
+                price_usable = False
+                price_block_reason = "시가 갭과 다른 전일종가 유지값 — 가짜 장중 급락 차단"
+
+        if price_usable:
+            self.idx.append((idx_received_ts, current_price))
+            self.regular_price_ready = True
+            self.last_idx_tick_ts = idx_received_ts
+        else:
+            self.raw["last_unconfirmed_price"] = {
+                "received_at_kst": fmt_clock(idx_received_ts),
+                "reason": price_block_reason,
+                "price": current_price, "open": opening,
+                "prev_close": previous_close,
+            }
+
+        self.fut.append((fut_received_ts, float(fut["price"])))
+        self.last_fut_tick_ts = fut_received_ts
+        cutoff = fut_received_ts - PRICE_LOOKBACK_SEC
         while self.idx and self.idx[0][0] < cutoff:
             self.idx.popleft()
         while self.fut and self.fut[0][0] < cutoff:
             self.fut.popleft()
 
         snap = {
-            "ts": now_ts,
+            "ts": idx_received_ts,
             "KOSPI": {k: idx.get(k) for k in ("price","prev_close","day_pct","open_pct","open_time","high","low","open","high_time","low_time")},
             "선물": {k: fut.get(k) for k in ("price","kpi200","basis","market_basis","time")},
+            "regular_price_usable": price_usable,
+            "index_received_ts": idx_received_ts,
+            "futures_received_ts": fut_received_ts,
         }
         self.raw["last_price_snapshot"] = snap
 
-        # 옵션은 핵심 가격/수급 감시와 분리한다.
-        # 느린 옵션 조회가 KOSPI·선물 폴링을 지연시키지 않도록 주 루프에서는 조회하지 않는다.
+        # 옵션 조회는 별도 경로에서 처리한다.
 
 
     async def run(self, until: dt.time, test_seconds: int | None = None) -> None:
