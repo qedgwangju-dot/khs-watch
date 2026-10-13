@@ -1309,12 +1309,54 @@ class IncrementalNewsTests(unittest.TestCase):
 
     def test_workflow_retains_receipt_backed_state_after_timeout(self):
         workflow = (ROOT / '.github/workflows/gamejoa-preopen-news-radar.yml').read_text(encoding='utf-8')
-        self.assertIn('timeout-minutes: 20', workflow)
+        self.assertIn('timeout-minutes: 40', workflow)
         step = workflow.split('- name: Commit GAMEJOA radar seen state', 1)[1].split('- name: Commit GAMEJOA article retrieval queue', 1)[0]
         self.assertIn('if: always()', step)
         self.assertIn('delivery_receipt_allows_seen_persistence', step)
         self.assertIn('python scripts/gamejoa_recover_delivered_seen.py', step)
         self.assertIn('No acknowledged Telegram delivery', step)
+
+    def test_live_selection_drops_unlisted_crime_and_unscoped_event_speech(self):
+        criminal_title = '무자료 석유 팔고 전표 위조해 외항선 공급…60대 대표 징역 3년'
+        criminal_body = (
+            '비상장 업체 대표가 출처 불명 석유를 팔고 정유업체 전표를 위조해 외항선에 공급한 혐의로 징역 3년을 선고받았다.'
+        )
+        private_case = alert(criminal_title, criminal_body)
+        listed_case = alert(
+            '상장 정유사 임원, 무자료 석유 거래 혐의로 징역 3년',
+            '상장사 임원이 회사 공시와 관련한 불법거래 혐의로 징역 3년을 선고받았다. 주주와 회사는 항소 방침을 밝혔다.',
+        )
+
+        event_title = '이소영 중기장관 "생산 자동화 넘어 제조AI 혁신 추진"'
+        event_body = (
+            '이 장관은 스마트비즈엑스포 개막식에서 제조AI 혁신 정책을 추진하겠다고 밝혔다. '
+            '2018년 이후 6천800여개 중소기업이 스마트공장 지원을 받아왔다. '
+            '새 예산, 모집 공고, 지원 대상, 시행일은 발표되지 않았다.'
+        )
+        policy_event = alert(event_title, event_body)
+        budgeted_policy_event = alert(
+            '중기부, 제조AI 지원사업 1,200억원 예산 확정',
+            '중기부는 스마트비즈엑스포에서 2027년 제조AI 지원사업 예산 1,200억원을 편성하고 1,000개 중소기업 모집을 공고했다.',
+        )
+        with patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}):
+            self.assertEqual(
+                radar.low_impact_live_publication_reason(private_case, NOW),
+                'private_business_criminal_case_without_listed_issuer_exposure',
+            )
+            self.assertEqual(radar.low_impact_live_publication_reason(listed_case, NOW), '')
+            self.assertEqual(
+                radar.low_impact_live_publication_reason(policy_event, NOW),
+                'official_policy_aspiration_at_event_without_new_instrument_or_budget',
+            )
+            self.assertEqual(radar.low_impact_live_publication_reason(budgeted_policy_event, NOW), '')
+
+    def test_quantified_global_industry_volume_shift_has_market_wide_scope(self):
+        scope = materiality.transmission_scope(
+            'AI 호황의 역설, 세계 스마트폰 출하량 20% 급감',
+            [{'kind': 'selling_price_or_cost',
+              'source_excerpt': '올해 3분기 세계 스마트폰 출하량은 전년 대비 20% 급감했다.'}],
+        )
+        self.assertEqual(scope, (3, 'quantified_global_industry_operating_shift'))
 
     def local_scope_alert(self, key):
         case = LOCAL_SCOPE_CASES[key]
@@ -6354,6 +6396,94 @@ class ConcreteLiveSelectionRegressions(unittest.TestCase):
             True, '2026-10-13T13:14:50+09:00',
         )
         self.assertNotEqual(execution, 'local_school_meal_cost_dispute_without_listed_market_execution')
+
+    def test_oct13_low_equity_signal_false_positives_are_withheld_but_execution_survives(self):
+        cases = (
+            (
+                '제조현장에 AI 비전검사·공정제어…스마트비즈엑스포 개막',
+                '스마트비즈엑스포가 개막해 AI 비전검사와 공정제어 솔루션을 전시했다. '
+                '참가 기업별 계약, 수주, 양산, 생산성 개선 수치는 공개되지 않았다.',
+                'industry_expo_or_showcase_without_company_execution_or_market_scale',
+                'physical_supply_or_capacity',
+            ),
+            (
+                '서울 달빛미식회 대행 용역 입찰 공고',
+                '서울시는 달빛미식회 개최를 위해 행사 대행 용역 제안요청서를 공개했다. '
+                '사업자 선정 및 계약은 아직 이뤄지지 않았다.',
+                'municipal_festival_or_event_tender_without_awarded_listed_company_contract',
+                'commercial_order',
+            ),
+            (
+                '카카오게임즈 신작, 구글 플레이스토어 매출 1위',
+                '출시 5일 만에 구글 플레이스토어 매출 순위 1위에 올랐다. '
+                '회사는 이를 기념해 쿠폰을 제공했으며 실제 매출액이나 이용자 수는 공개하지 않았다.',
+                'app_store_rank_without_measured_revenue_or_user_scale',
+                'earnings_or_guidance',
+            ),
+            (
+                '정부, 공공기관 44곳 세종 이전 계획 추진',
+                '정부는 공공기관 44곳과 직원 9,929명을 세종으로 이전하는 계획을 검토하고 '
+                '공청회와 의견 수렴을 진행한다. 이전 예산과 공사 발주, 시행일은 확정되지 않았다.',
+                'public_agency_relocation_plan_without_funded_implementation_or_award',
+                'policy_scope_or_stage',
+            ),
+        )
+        with patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}):
+            for title, body, expected_reason, evidence_kind in cases:
+                with self.subTest(title=title):
+                    reason = materiality.nonmaterial_publicity_reason(title, body, False, '2026-10-13T14:00:00+09:00')
+                    self.assertEqual(reason, expected_reason)
+                    publication = materiality.equity_publication_assessment(
+                        title,
+                        [{'kind': evidence_kind, 'source_excerpt': body}],
+                        body=body,
+                        published='2026-10-13T14:00:00+09:00',
+                    )
+                    self.assertFalse(publication['eligible'], publication)
+                    self.assertEqual(publication['reason'], expected_reason)
+
+        positive_controls = (
+            (
+                '반도체 기업, 스마트비즈엑스포서 500억원 장비 공급계약',
+                '상장사 A반도체는 스마트비즈엑스포에서 고객사와 500억원 규모의 AI 장비 공급계약을 체결했고 '
+                '2027년부터 납품한다.',
+                True,
+            ),
+            (
+                '서울 달빛미식회 행사 용역, 코스피 상장사 30억원 수주',
+                '상장사 A사는 서울시가 발주한 달빛미식회 행사 용역 사업자로 선정돼 30억원 계약을 체결했다.',
+                True,
+            ),
+            (
+                '카카오게임즈 신작, 앱스토어 매출 1위…첫 달 결제액 100억원',
+                '회사는 신작의 출시 첫 달 실제 결제액이 100억원, 다운로드는 200만건이라고 공시했다.',
+                True,
+            ),
+            (
+                '정부, 공공기관 44곳 세종 이전 확정…청사 공사 착수',
+                '정부는 이전 사업비 1조 2천억원을 예산에 편성하고 세종청사 공사 시공사를 선정했다.',
+                True,
+            ),
+        )
+        for title, body, firm_event in positive_controls:
+            with self.subTest(positive_title=title):
+                self.assertEqual(
+                    materiality.nonmaterial_publicity_reason(title, body, firm_event, '2026-10-13T14:00:00+09:00'),
+                    '',
+                )
+
+        disclosed_budget_body = ' '.join(
+            ['정부는 이전 계획을 발표하고 관계 기관과 협의했다.'] * 14
+            + ['청사 건립 예산은 3조1000억원으로 추산했으며 내년 기본설계 예산 286억원을 반영할 계획이다.']
+        )
+        disclosed_budget_plan = materiality.nonmaterial_publicity_reason(
+            '정부, 중앙행정기관 44곳 세종 이전 계획 발표',
+            '정부는 기관 44곳과 직원 9,929명을 2027년부터 2031년까지 단계적으로 이전한다. '
+            + disclosed_budget_body,
+            False,
+            '2026-10-13T14:00:00+09:00',
+        )
+        self.assertEqual(disclosed_budget_plan, '')
 
     def test_summary_guard_rejects_repeated_zelensky_claim(self):
         title = '젤렌스키 "정유시설 휴전은 러에만 유리…전력망도 포함해야"'

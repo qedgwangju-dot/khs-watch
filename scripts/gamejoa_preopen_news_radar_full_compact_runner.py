@@ -11931,6 +11931,42 @@ def low_impact_live_publication_reason(alert: dict, now) -> str:
         if not re.search(r'(?:매입\s*(?:완료|종료)|취득\s*완료)[^.!?\n]{0,30}?공시|공시[^.!?\n]{0,30}?(?:매입\s*(?:완료|종료)|취득\s*완료)', body):
             return 'unconfirmed_buyback_completion_commentary'
     combined = f'{title} {body}'
+    market_link_terms = r'상장사|상장\s*기업|코스피|코스닥|나스닥|뉴욕증권거래소|증권거래소|티커|종목코드|listed company|public company|stock exchange'
+    personal_criminal_case = bool(
+        re.search(r'징역|실형|유죄|기소|구속|벌금형|선고', title)
+        and re.search(r'대표|사업자|업체|법인', combined)
+        and re.search(r'위조|무자료|불법|사기|횡령|배임|밀수|탈세|범행', combined)
+        and not re.search(market_link_terms, combined, re.I)
+        and not stock_market_channels(alert)
+    )
+    if personal_criminal_case:
+        return 'private_business_criminal_case_without_listed_issuer_exposure'
+
+    official_event_aspiration = bool(
+        re.search(r'장관|정부|부처|청장|위원장', title)
+        and re.search(r'추진|육성|강화|혁신|마련하겠다|지원하겠다', f'{title} {body}')
+        and re.search(r'엑스포|박람회|전시회|개막식|포럼|행사|간담회|현장 방문', f'{title} {body}')
+    )
+    policy_instrument_text = ' '.join(
+        sentence for sentence in re.split(r'(?<=[.!?])\s+|[\r\n]+', body)
+        if not re.search(
+            r'(?:발표|공개|확정|편성|공고|시행|모집|예산|지원)[^.!?\n]{0,25}'
+            r'(?:되지\s*않|않았|없(?:다|음)|미정)|'
+            r'(?:구체적(?:인)?|세부).{0,20}(?:밝히지|공개되지|미정|없다|않)',
+            sentence,
+        )
+    )
+    new_policy_instrument = bool(re.search(
+        r'(?:예산|사업비|지원금|보조금|정책자금|출자금|지원\s*규모|세액공제|지원\s*대상)[^.!?\n]{0,55}'
+        r'\d[\d,.]*\s*(?:조|천억|백억|억|만원|원|%|개사|개\s*기업)|'
+        r'(?:예산|법안|시행령|규정|보조금|지원사업)[^.!?\n]{0,45}(?:확정|편성|배정|증액|의결|공포|시행|입법예고|모집|공고|선정)|'
+        r'(?:모집|공고|접수|신청|선정)[^.!?\n]{0,35}(?:지원사업|제조AI|스마트공장|중소기업)|'
+        r'(?:시행|발효)[^.!?\n]{0,30}(?:20\d{2}년|내년|다음\s*달|\d+월\s*\d+일)',
+        policy_instrument_text,
+        re.I,
+    ))
+    if official_event_aspiration and not new_policy_instrument:
+        return 'official_policy_aspiration_at_event_without_new_instrument_or_budget'
     if (re.search(r'감사원', title) and re.search(r'KBS|한국방송공사', f'{title} {body}')
             and re.search(r'드라마\s*외주제작', body) and 'A업체' in body and 'B업체' in body
             and re.search(r'제작비\s*95억원', body) and re.search(r'선급금\s*20억원', body)):
