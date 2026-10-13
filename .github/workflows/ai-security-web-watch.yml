@@ -62,12 +62,41 @@ jobs:
             exit 1
           fi
           python - <<'PY'
-          import json, os, pathlib, urllib.request
+          import json, os, pathlib, time, urllib.error, urllib.request
+          def route_json(url, *, opener=urllib.request.urlopen, sleep=time.sleep):
+              """Retry only transient Telegram transport errors; never bypass identity checks."""
+              for attempt in range(3):
+                  try:
+                      with opener(url, timeout=25) as response:
+                          return json.loads(response.read().decode("utf-8"))
+                  except urllib.error.HTTPError as exc:
+                      if exc.code not in {429, 500, 502, 503, 504} or attempt == 2:
+                          raise
+                  except (urllib.error.URLError, TimeoutError, OSError, ValueError):
+                      if attempt == 2:
+                          raise
+                  sleep(1 << attempt)
+              raise RuntimeError("Telegram route request exhausted")
+
+          if os.getenv("GITHUB_EVENT_NAME") == "push":
+              class _FakeResponse:
+                  def __enter__(self): return self
+                  def __exit__(self, *args): return False
+                  def read(self): return b'{"ok":true,"result":{"username":"test"}}'
+              _tries = {"n": 0}
+              def _flaky(url, timeout):
+                  _tries["n"] += 1
+                  if _tries["n"] < 3:
+                      raise TimeoutError("synthetic Telegram timeout")
+                  return _FakeResponse()
+              assert route_json("https://example.invalid", opener=_flaky, sleep=lambda _: None)["ok"]
+              assert _tries["n"] == 3
+              print("ai_security_telegram_route_retry_regression=true attempts=3")
+
           token = os.environ["AI_SECURITY_TELEGRAM_BOT_TOKEN"].strip()
           configured_chat = (os.environ.get("CONFIGURED_AI_SECURITY_TELEGRAM_CHAT_ID") or "").strip()
           expected = {x.strip().lstrip("@").lower() for x in (os.environ.get("EXPECTED_AI_SECURITY_BOT_USERNAMES") or "").split(",") if x.strip()}
-          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
-              identity = json.loads(r.read().decode("utf-8"))
+          identity = route_json(f"https://api.telegram.org/bot{token}/getMe")
           actual = str((identity.get("result") or {}).get("username") or "")
           if not identity.get("ok") or not actual:
               raise RuntimeError("Telegram getMe failed")
@@ -76,8 +105,7 @@ jobs:
           chat_id = configured_chat
           route = "secret"
           if not chat_id:
-              with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getUpdates?limit=100&timeout=0", timeout=25) as r:
-                  updates = json.loads(r.read().decode("utf-8"))
+              updates = route_json(f"https://api.telegram.org/bot{token}/getUpdates?limit=100&timeout=0")
               candidates = []
               for upd in updates.get("result") or []:
                   msg = upd.get("message") or upd.get("edited_message") or {}
