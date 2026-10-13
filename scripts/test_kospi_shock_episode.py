@@ -1143,3 +1143,73 @@ assert _oct13_valid_flow["spot_leader"]=="외국인",_oct13_valid_flow
 assert _oct13_valid_flow["futures_leader"]=="외국인",_oct13_valid_flow
 assert _oct13_valid_flow["program_quality"] is True,_oct13_valid_flow
 print("oct13_preopen_attribution_guard_regression=true")
+
+
+# 코스닥 현물 독립 순매수 급증 감시. KOSPI200 선물/프로그램을 코스닥 확인값으로 섞지 않는다.
+from kospi_shock_episode_watch import KOSDAQ_SURGE_SINGLE_SPOT_EOK
+assert KOSDAQ_SURGE_SINGLE_SPOT_EOK == 300.0
+import asyncio as _kq_async
+import tempfile as _kq_tmp
+from pathlib import Path as _kq_Path
+from unittest.mock import patch as _kq_patch
+
+_kq_base = time.time() - 400
+def _kq_row(ts, foreign, institution=0, individual=0):
+    return {"ts":ts, "market":"KOSDAQ", "현물":{
+        "sample_ts":ts,
+        "외국인":float(foreign), "기관":float(institution), "개인":float(individual),
+    }}
+_kq = Watch("unused", [], "", False)
+_kq.session_open_ts = _kq_base
+_kq.session_continuous_end_ts = _kq_base + 60*60
+_kq.session_close_ts = _kq_base + 60*60
+_kq.flows = deque(maxlen=2500)  # 기존 코스피 스냅샷은 변경하지 않음
+_kq.surge_sent_at["외국인"] = _kq_base+500  # 코스피 중복방지와 분리되어야 함
+_kq.kosdaq_flows.append(_kq_row(_kq_base, 0))
+_kq.kosdaq_flows.append(_kq_row(_kq_base+300, 350))
+_kq_msgs, _kq_delivery = [], []
+_kq._record_delivery=lambda stage,mid,ep,ts: _kq_delivery.append((stage,mid,ep,ts))
+def _kq_fake_send(msg):
+    _kq_msgs.append(msg)
+    return 32001
+with _kq_patch.object(ks, "telegram_send", _kq_fake_send):
+    _kq_async.run(_kq.maybe_alert_kosdaq_surge(_kq_base+303))
+    assert not _kq_msgs, "단일 코스닥 표본만으로 즉시 발송"
+    _kq.kosdaq_flows.append(_kq_row(_kq_base+320, 470))
+    _kq_async.run(_kq.maybe_alert_kosdaq_surge(_kq_base+323))
+    assert len(_kq_msgs)==1, _kq_msgs
+    assert "코스닥 단기 순매수 급증" in _kq_msgs[0], _kq_msgs[0]
+    assert "현물(통합) +470억원" in _kq_msgs[0], _kq_msgs[0]
+    assert "KOSPI200 선물·프로그램 수급과 합산하지 않음" in _kq_msgs[0], _kq_msgs[0]
+    assert _kq_delivery[0][0:2] == ("kosdaq_flow_surge",32001), _kq_delivery
+    assert _kq.surge_sent_at["외국인"] == _kq_base+500  # 코스피 기존 데이터 보존
+    assert _kq.kosdaq_surge_sent_at["외국인"] == _kq_base+323
+    _kq.kosdaq_flows.append(_kq_row(_kq_base+335, 650))
+    _kq_async.run(_kq.maybe_alert_kosdaq_surge(_kq_base+338))
+    assert len(_kq_msgs)==1, "코스닥 20분 중복방지 실패"
+
+    with _kq_tmp.TemporaryDirectory() as directory:
+        handoff=_kq_Path(directory)/"handoff.json"
+        _kq.save_handoff(handoff)
+        restored=Watch("unused",[],"",False)
+        restored.load_handoff(handoff)
+        assert len(restored.kosdaq_flows)>=3, restored.raw
+        assert restored.kosdaq_surge_sent_at["외국인"]==_kq_base+323, restored.kosdaq_surge_sent_at
+        assert restored.surge_sent_at["외국인"]==_kq_base+500, restored.surge_sent_at
+    _kq.test=True
+    _kq.kosdaq_flows.append(_kq_row(_kq_base+400, 1600))
+    _kq_async.run(_kq.maybe_alert_kosdaq_surge(_kq_base+402))
+    assert len(_kq_msgs)==1, "시험 모드에서 Telegram 전송"
+print("kosdaq_surge_two_sample_dedup_valid=true handoff=true separate_markets=true")
+
+# 코스닥 현물 표본도 5분 구간이 확보되기 전·장전 기준값에서는 절대 생성하지 않는다.
+_kq_pre=Watch("unused",[],"",False)
+_kq_pre.session_open_ts=_kq_base
+_kq_pre.session_continuous_end_ts=_kq_base+60*60
+_kq_pre.session_close_ts=_kq_base+60*60
+_kq_pre.kosdaq_flows.append(_kq_row(_kq_base-60,0))
+_kq_pre.kosdaq_flows.append(_kq_row(_kq_base+240,3000))
+assert ks._flow_surge_channel_pair(list(_kq_pre.kosdaq_flows),"현물",_kq_base+242,_kq_base) is None
+_kq_pre.kosdaq_flows.append(_kq_row(_kq_base+320,4000))
+assert ks._flow_surge_channel_pair(list(_kq_pre.kosdaq_flows),"현물",_kq_base+323,_kq_base) is None
+print("kosdaq_surge_no_preopen_reconstruction_valid=true")
