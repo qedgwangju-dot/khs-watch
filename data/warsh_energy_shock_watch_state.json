@@ -27,22 +27,22 @@
     "sloos": "신용 완화",
     "real_pce_3m_ann": 4.130494340236046,
     "real_pce_date": "2026-08-01",
-    "bei5y": 2.34,
+    "bei5y": 2.33,
     "bei5y_10d_bp": 0.0,
-    "bei_date": "2026-10-09"
+    "bei_date": "2026-10-13"
   },
   "verdict": "판정 유보 — 유가 충격은 크지만 물가 전이와 수요 파괴의 우열 불명확",
   "oil_rates": {
-    "date": "2026-10-08",
+    "date": "2026-10-09",
     "observations": 63,
-    "corr_3m": 0.6269660839342631,
+    "corr_3m": 0.6189704861073237,
     "corr_band": "강한 경보",
-    "beta_bp_per_1pct": 0.6373561018463028,
+    "beta_bp_per_1pct": 0.6508177317620787,
     "beta_hot": false,
-    "wti": 91.48999786376953,
-    "wti_move_pct": -1.4859533132330904,
-    "dgs10": 5.22,
-    "dgs10_move_bp": -2.000000000000046,
+    "wti": 91.8499984741211,
+    "wti_move_pct": 0.8122026767777735,
+    "dgs10": 5.24,
+    "dgs10_move_bp": -4.0000000000000036,
     "move_days": 5,
     "measurement_basis": "WTI 선물 완료 일봉·FRED DGS10 공통 거래일 자체 계산",
     "wti_url": "https://finance.yahoo.com/quote/CL=F/",
@@ -50,7 +50,7 @@
     "cboe_url": "https://www.cboe.com/insights/posts/week-of-9-21-2026-oil-rates-correlation-jumps-to-a-35-year-high"
   },
   "policy": {
-    "date": "2026-10-13T19:24:35.680729+00:00",
+    "date": "2026-10-13T23:21:47.212459+00:00",
     "meeting_date": null,
     "hike25_prob": null,
     "extra_bp": null,
@@ -60,5 +60,5 @@
     "fresh": false
   },
   "oil_rates_verdict": "유가·장기금리 연결 경계 — 단순 동행인지 정책 전이인지 확인",
-  "updated_at_utc": "2026-10-13T19:24:37.269372+00:00"
+  "updated_at_utc": "2026-10-13T23:21:48.358864+00:00"
 }
