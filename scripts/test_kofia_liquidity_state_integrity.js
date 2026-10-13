@@ -5,6 +5,7 @@ const crypto = require('crypto');
 const os = require('os');
 const path = require('path');
 const {loadStateStrict} = require('./kofia_liquidity_state_integrity');
+const {toNum, validDate, criticalDatesAligned} = require('./kofia_liquidity_watch');
 
 const root = fs.mkdtempSync(path.join(os.tmpdir(), 'kofia_state_guard_'));
 const file = path.join(root, 'state.json');
@@ -34,6 +35,15 @@ const check = (name, state, fails) => {
 };
 
 try {
+  for (const value of [null, undefined, '', '   ', false, true, {}, []]) {
+    assert.throws(() => toNum(value, 'source fixture'), Error);
+  }
+  assert.strictEqual(toNum('100,438,881', 'source fixture'), 100438881);
+  assert.strictEqual(toNum(0, 'source fixture'), 0);
+  assert(validDate('20261012'));
+  for (const value of ['20260230', '20261301', '2026101']) assert(!validDate(value));
+  assert(!criticalDatesAligned(Object.fromEntries(['deposit','mmf','cma','credit'].map(k=>[k,'20260230']))));
+  console.log('PASS strict source numeric types and calendar dates');
   check('valid baseline', base, false);
   check('missing state must block', null, true);
   check('corrupt JSON must block', '{bad-json', true);
@@ -45,5 +55,7 @@ try {
   check('duplicate 5D reference date must block', {...base,reference_dates:['20261007','20261006','20261002','20261001','20260930','20260930']}, true);
   console.log('PASS all KOFIA persisted-state failure-mode tests');
 } finally {
+  assert(path.resolve(root).startsWith(path.resolve(os.tmpdir()) + path.sep));
+  assert(path.basename(root).startsWith('kofia_state_guard_'));
   fs.rmSync(root,{recursive:true,force:true});
 }

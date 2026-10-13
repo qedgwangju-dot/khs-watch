@@ -10,6 +10,19 @@ on:
       - "scripts/kofia_liquidity_semantic_guard.py"
       - "scripts/kofia_liquidity_state_integrity.js"
       - "scripts/test_kofia_liquidity_state_integrity.js"
+      - "scripts/kofia_liquidity_interpretation.py"
+      - "scripts/kofia_liquidity_source_guard.py"
+      - "scripts/test_kofia_liquidity_source.py"
+      - "scripts/kofia_liquidity_commit_state.py"
+      - "scripts/test_kofia_liquidity_commit_state.py"
+      - "scripts/kofia_liquidity_delivery_guard.py"
+      - "scripts/test_kofia_liquidity_delivery.py"
+      - "tests/fixtures/kofia_source_20261012.json"
+  pull_request:
+    paths:
+      - ".github/workflows/kofia-liquidity-telegram-watch.yml"
+      - "scripts/*kofia_liquidity*"
+      - "tests/fixtures/kofia_source_20261012.json"
   schedule:
     # KST 직접 지정. 새 공식값/수정치가 없으면 Telegram은 보내지 않는다.
     - cron: "5,20,40 7 * * 1-5"
@@ -39,7 +52,25 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  offline-regressions:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Validate KOFIA state, source and message without sending
+        run: |
+          node scripts/test_kofia_liquidity_state_integrity.js
+          python scripts/test_kofia_liquidity_source.py
+          python scripts/test_kofia_liquidity_commit_state.py
+          python scripts/test_kofia_liquidity_delivery.py
+          python scripts/test_kofia_liquidity_interpretation.py
   watch:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 12
     env:
@@ -47,20 +78,25 @@ jobs:
       TELEGRAM_BOT_TOKEN: ${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.KOSPI_DERIV_TELEGRAM_CHAT_ID }}
       FORCE_SEND: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.force_send == 'true' && 'true' || 'false' }}
+      DRY_RUN: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, '[dry-run]') && 'true' || 'false' }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          ref: main
           fetch-depth: 0
+
+      - name: Refresh current code and confirmed state after queue wait
+        run: |
+          git fetch origin main
+          git reset --hard origin/main
+          echo "KOFIA_CODE_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
 
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: "24"
-
-      - name: Install browser driver
-        run: npm install --no-save playwright-core@1.48.2
 
       - name: Verify exact Telegram route
         run: |
@@ -82,6 +118,9 @@ jobs:
         run: |
           node --check scripts/kofia_liquidity_state_integrity.js
           node scripts/test_kofia_liquidity_state_integrity.js
+          python scripts/test_kofia_liquidity_source.py
+          python scripts/test_kofia_liquidity_commit_state.py
+          python scripts/test_kofia_liquidity_delivery.py
           python scripts/test_kofia_liquidity_interpretation.py
 
       - name: Query KOFIA official liquidity data
@@ -91,239 +130,25 @@ jobs:
           node scripts/kofia_liquidity_watch.js
           cat out/kofia_liquidity_status.md >> "$GITHUB_STEP_SUMMARY"
 
+      - name: Independently recalculate preserved official source responses
+        run: python scripts/kofia_liquidity_source_guard.py
+
       - name: Build detailed current interpretation
         if: hashFiles('out/kofia_liquidity_alert.html') != ''
-        run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-
-          alert_path = Path('out/kofia_liquidity_alert.html')
-          state_path = Path('out/kofia_liquidity_pending_state.json')
-          text = alert_path.read_text(encoding='utf-8')
-          state = json.loads(state_path.read_text(encoding='utf-8'))
-          v = state['values']
-
-          critical_dates = [state['dates'][k] for k in ('deposit','mmf','cma','credit')]
-          if state.get('alignment_ready') is not True or len(set(critical_dates)) != 1:
-              raise RuntimeError(f"KOFIA critical-date quality gate failed before interpretation: {critical_dates}")
-          if state.get('snapshot_date') != critical_dates[0]:
-              raise RuntimeError(
-                  f"KOFIA snapshot_date mismatch: snapshot={state.get('snapshot_date')} dates={critical_dates}"
-              )
-
-          def jo(raw_million):
-              return raw_million / 1_000_000
-
-          def fmt(raw_million):
-              x = jo(raw_million)
-              return f"{x:+.2f}조"
-
-          dep1, dep5 = v['deposit']['d1'], v['deposit']['d5']
-          mmf1, mmf5 = v['mmf']['d1'], v['mmf']['d5']
-          cma1, cma5 = v['cma']['d1'], v['cma']['d5']
-          cr1, cr5 = v['credit']['d1'], v['credit']['d5']
-
-          # 방향 판정용 최소 유의 변화. 단순 +/- 부호만으로 +0.01조를 '증가 추세'라고
-          # 과대해석하지 않는다: 최소 0.05조 또는 잔액의 0.05% 중 큰 값.
-          def mat(key):
-              level = abs(v[key]['value'])
-              return max(50_000, level * 0.0005)
-
-          def direction(change, key):
-              threshold = mat(key)
-              if abs(change) < threshold:
-                  return '보합'
-              return '증가' if change > 0 else '감소'
-
-          def arrow(change, key):
-              d = direction(change, key)
-              return '↑' if d == '증가' else '↓' if d == '감소' else '≈'
-
-          # 1D 큰 변동 기준은 기존 경보 기준을 그대로 유지.
-          thresholds = [
-              ('투자자예탁금', dep1, 2_000_000, '±2조'),
-              ('MMF', mmf1, 3_000_000, '±3조'),
-              ('CMA', cma1, 2_000_000, '±2조'),
-              ('신용융자', cr1, 500_000, '±0.5조'),
-          ]
-          triggered = [f"{name} {fmt(value)}(경보 기준 {label} 이상)" for name, value, threshold, label in thresholds if abs(value) >= threshold]
-          trigger_line = '• <b>큰 변동 항목</b>: ' + (' / '.join(triggered) if triggered else '1D 큰 변동 기준을 넘은 항목 없음')
-
-          # 당일 자금 방향은 예탁금·MMF만 보지 않고 CMA와 신용융자까지 같이 읽는다.
-          cash_line = (
-              f"• <b>자금 방향</b>: 예탁금 {fmt(dep1)}{arrow(dep1,'deposit')} · "
-              f"MMF {fmt(mmf1)}{arrow(mmf1,'mmf')} · "
-              f"CMA {fmt(cma1)}{arrow(cma1,'cma')} · "
-              f"신용융자 {fmt(cr1)}{arrow(cr1,'credit')} → "
-          )
-          if direction(mmf1,'mmf') == '감소' and direction(dep1,'deposit') == '감소' and direction(cma1,'cma') == '증가':
-              cash_line += (
-                  "MMF 자금이 감소했지만 투자자예탁금은 오히려 줄고 CMA는 늘었습니다. "
-                  "따라서 MMF 유출이 곧바로 주식 매수 대기자금으로 이동했다고 볼 수 없고, 목적지는 아직 불명확합니다."
-              )
-          elif direction(dep1,'deposit') == '증가' and direction(mmf1,'mmf') == '감소':
-              cash_line += (
-                  "주식 매수 대기자금은 늘고 MMF는 줄어 위험자산 쪽 이동 가능성이 커진 조합입니다. "
-                  "다만 동일 자금의 직접 이전으로 단정하지 않습니다."
-              )
-          elif direction(dep1,'deposit') == '감소' and direction(mmf1,'mmf') == '증가':
-              cash_line += (
-                  "주식 매수 대기자금은 줄고 단기금융상품 주차자금은 늘어난 방향입니다. "
-                  "같은 돈의 직접 이동으로 단정하지 않습니다."
-              )
-          else:
-              cash_line += "네 항목의 방향이 완전히 정렬되지 않아 단일한 위험선호 신호로 보지 않습니다."
-
-          # 5거래일은 '지속성'과 수급의 질을 함께 본다.
-          persistence_line = (
-              f"• <b>지속성</b>: 5D 예탁금 {fmt(dep5)}{arrow(dep5,'deposit')} · "
-              f"MMF {fmt(mmf5)}{arrow(mmf5,'mmf')} · "
-              f"CMA {fmt(cma5)}{arrow(cma5,'cma')} · "
-              f"신용융자 {fmt(cr5)}{arrow(cr5,'credit')} → "
-          )
-          def mmf_today_context(current_direction, five_day_direction):
-              # Explicit 3x3 state matrix: never equate a flat five-day trend with
-              # an increase or decrease merely because the daily sign is known.
-              if current_direction == '증가':
-                  if five_day_direction == '증가':
-                      return "당일에도 MMF가 증가해 5거래일 누적 증가 방향과 일치합니다."
-                  if five_day_direction == '감소':
-                      return "당일 MMF가 증가했으나 5거래일 누적 감소 흐름과는 반대입니다."
-                  return "당일 MMF가 증가했지만 5거래일 기준으로는 보합입니다."
-              if current_direction == '감소':
-                  if five_day_direction == '증가':
-                      return "당일 MMF는 감소해 5거래일 누적 증가 방향과 반대로 움직였습니다."
-                  if five_day_direction == '감소':
-                      return "당일 MMF도 감소해 5거래일 누적 감소 방향과 일치합니다."
-                  return "당일 MMF는 감소했지만 5거래일 기준으로는 보합입니다."
-              return "당일 MMF는 유의미한 증감 없이 보합입니다."
-
-          # Guard all three possible daily outcomes before live message construction.
-          assert '당일에도 MMF가 증가' in mmf_today_context('증가','증가')
-          assert '당일 MMF는 감소' in mmf_today_context('감소','증가')
-          assert '보합' in mmf_today_context('보합','증가')
-
-          if direction(dep5,'deposit') == '감소' and direction(mmf5,'mmf') == '증가' and direction(cr5,'credit') == '증가':
-              persistence_line += (
-                  "최근 5거래일에는 투자자예탁금이 감소하고 MMF·신용융자는 늘었습니다. "
-                  + mmf_today_context(direction(mmf1,'mmf'), direction(mmf5,'mmf'))
-              )
-          else:
-              persistence_line += (
-                  "1D와 5D 방향을 함께 봐 일시 반전인지 지속 추세인지 구분합니다. "
-                  + mmf_today_context(direction(mmf1,'mmf'), direction(mmf5,'mmf'))
-              )
-
-          cma_dir_1 = direction(cma1,'cma')
-          cma_dir_5 = direction(cma5,'cma')
-          if cma_dir_5 == '보합':
-              cma_meaning = "5거래일 기준 사실상 보합이라 추세 신호로 보지 않습니다."
-          elif cma_dir_1 == '보합':
-              cma_meaning = f"당일 변화는 제한적이지만 최근 5거래일에는 {cma_dir_5} 방향입니다."
-          elif cma_dir_1 == cma_dir_5:
-              cma_meaning = f"단기와 5거래일 모두 {cma_dir_5} 방향입니다."
-          else:
-              cma_meaning = "단기와 5거래일 방향이 엇갈려 추세가 뚜렷하지 않습니다."
-          cma_line = f"• <b>CMA</b>: 1D {fmt(cma1)}{arrow(cma1,'cma')} · 5D {fmt(cma5)}{arrow(cma5,'cma')} → {cma_meaning}"
-
-          cr_dir_5 = direction(cr5,'credit')
-          if cr_dir_5 == '증가':
-              leverage_line = f"• <b>레버리지</b>: 신용융자 1D {fmt(cr1)}{arrow(cr1,'credit')} · 5D {fmt(cr5)}↑ → 최근 5거래일 레버리지가 확대됐습니다."
-          elif cr_dir_5 == '감소':
-              leverage_line = f"• <b>레버리지</b>: 신용융자 1D {fmt(cr1)}{arrow(cr1,'credit')} · 5D {fmt(cr5)}↓ → 최근 5거래일 디레버리징 방향입니다."
-          else:
-              leverage_line = f"• <b>레버리지</b>: 신용융자 1D {fmt(cr1)}{arrow(cr1,'credit')} · 5D {fmt(cr5)}≈ → 레버리지 변화는 제한적입니다."
-
-          # 종합은 당일의 '수급의 질'과 5D 추세를 분리해서 판정한다.
-          dep1_dir = direction(dep1,'deposit')
-          mmf1_dir = direction(mmf1,'mmf')
-          cma1_dir = direction(cma1,'cma')
-          cr1_dir = direction(cr1,'credit')
-          dep5_dir = direction(dep5,'deposit')
-          mmf5_dir = direction(mmf5,'mmf')
-          cr5_dir = direction(cr5,'credit')
-          mmf_flow_caution = (
-              "다만 MMF 증가분이 주식에서 빠져나간 동일 자금이라고 단정하지 않습니다."
-              if mmf5_dir == '증가' else
-              "다만 MMF의 변화분을 주식시장 자금과 동일 자금의 직접 이동으로 단정하지 않습니다."
-          )
-
-          if dep1_dir == '증가' and cma1_dir == '증가' and mmf1_dir == '감소' and cr1_dir == '감소':
-              summary_line = (
-                  f"• <b>종합</b>: <b>당일 수급의 질은 개선</b>됐습니다. "
-                  f"투자자예탁금 {fmt(dep1)}와 CMA {fmt(cma1)}가 늘고, MMF는 {fmt(mmf1)} 감소했으며 신용융자는 {fmt(cr1)} 감소했습니다. "
-                  "즉 빚을 늘리지 않고 현금성 매수여력이 커진 조합입니다. "
-                  f"다만 5D 투자자예탁금은 아직 {fmt(dep5)}라 최근 5거래일 전체 추세가 완전히 반전됐다고 보기는 이릅니다."
-              )
-          elif dep5_dir == '감소' and cr5_dir == '증가':
-              summary_line = (
-                  f"• <b>종합</b>: 5D 기준 투자자예탁금 {fmt(dep5)}로 크게 줄었는데 신용융자는 {fmt(cr5)} 늘었습니다. "
-                  f"MMF는 {fmt(mmf5)}, CMA는 {fmt(cma5)}입니다. "
-                  "즉 현금으로 살 수 있는 주식 매수 여력은 약해진 반면 레버리지 의존도는 높아져 수급의 질이 이전보다 취약해진 조합입니다. "
-                  + mmf_flow_caution
-              )
-          elif dep5_dir == '증가' and cr5_dir != '증가':
-              summary_line = (
-                  "• <b>종합</b>: 현금성 주식 매수 대기자금이 늘고 레버리지는 크게 확대되지 않아 현금 매수 여력 개선 쪽에 가깝습니다."
-              )
-          else:
-              summary_line = (
-                  "• <b>종합</b>: 당일과 5거래일의 방향이 아직 완전히 일치하지 않습니다. "
-                  "당일 현금성 매수여력 변화와 5D 예탁금 추세를 분리해 보고, 다음 공식값에서 같은 방향이 이어지는지 확인합니다."
-              )
-
-          new_section = '\n'.join([
-              '<b>현재 판정</b>',
-              trigger_line,
-              cash_line,
-              persistence_line,
-              cma_line,
-              leverage_line,
-              summary_line,
-          ])
-
-          # Independent final output guard: direction claims must match the raw
-          # signed KOFIA values. Fail before Telegram rather than transmit nonsense.
-          mmf_day_dir = direction(mmf1, 'mmf')
-          mmf_five_dir = direction(mmf5, 'mmf')
-          assert mmf_today_context(mmf_day_dir, mmf_five_dir) in new_section, "MMF day-vs-five-day commentary missing"
-          if mmf_day_dir == '증가':
-              forbidden = ('당일 MMF 급감', '당일 MMF 감소', '당일 MMF 유출', '당일 MMF는 감소')
-          elif mmf_day_dir == '감소':
-              forbidden = ('당일 MMF 급증', '당일 MMF 증가', '당일 MMF 유입', '당일에도 MMF가 증가')
-          else:
-              forbidden = ('당일 MMF 급감', '당일 MMF 급증')
-          conflicting = [term for term in forbidden if term in new_section]
-          if conflicting:
-              raise RuntimeError(f"KOFIA directional text inconsistent with MMF 1D={fmt(mmf1)}: {conflicting}")
-
-          start_marker = '<b>현재 판정</b>'
-          end_marker = '<b>검증</b>'
-          start = text.index(start_marker)
-          end = text.index(end_marker, start)
-          text = text[:start] + new_section + '\n\n' + text[end:]
-
-          # 괄호 설명은 사용자가 요청한 MMF와 CMA에만 붙인다.
-          text = text.replace('MMF 설정원본 <b>', 'MMF 설정원본(단기금융상품에 투자하는 펀드의 투자원금 기준 규모) <b>')
-          text = text.replace('CMA 잔고 <b>', 'CMA 잔고(증권사 현금관리계좌에 머무는 단기자금) <b>')
-
-          alert_path.write_text(text, encoding='utf-8')
-          print('detailed_liquidity_interpretation_applied=true')
-          print(f"directional_narrative_guard=true mmf_1d={fmt(mmf1)} mmf_direction={mmf_day_dir} mmf_5d={fmt(mmf5)}")
-          print(trigger_line.replace('<b>', '').replace('</b>', ''))
-          print(summary_line.replace('<b>', '').replace('</b>', ''))
-          PY
+        run: python scripts/kofia_liquidity_interpretation.py
 
       - name: Validate signed final KOFIA Telegram message
         if: hashFiles('out/kofia_liquidity_alert.html') != ''
         run: python scripts/kofia_liquidity_semantic_guard.py
 
       - name: Send Telegram update
-        if: hashFiles('out/kofia_liquidity_alert.html') != ''
+        if: env.DRY_RUN != 'true' && hashFiles('out/kofia_liquidity_alert.html') != ''
         run: |
+          python scripts/kofia_liquidity_source_guard.py
+          python scripts/kofia_liquidity_semantic_guard.py
           python - <<'PY'
-          import json, os, pathlib, urllib.parse, urllib.request
+          import hashlib, json, os, pathlib, urllib.parse, urllib.request
+          from scripts.kofia_liquidity_delivery_guard import validate_acknowledgement
           token = os.environ['TELEGRAM_BOT_TOKEN'].strip()
           chat_id = os.environ['TELEGRAM_CHAT_ID'].strip()
           expected = os.environ['EXPECTED_TELEGRAM_BOT_USERNAME'].strip().lstrip('@')
@@ -350,17 +175,21 @@ jobs:
           req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=payload, method='POST')
           with urllib.request.urlopen(req, timeout=30) as response:
               result = json.loads(response.read().decode('utf-8'))
-          if not result.get('ok'):
-              raise RuntimeError(f"Telegram rejected message: {result}")
-          mid = (result.get('result') or {}).get('message_id')
-          if not isinstance(mid, int) or mid <= 0:
-              raise RuntimeError(f"Telegram acknowledged without a valid message_id: {mid!r}")
+          confirmation = validate_acknowledgement(result, text, expected, chat_id)
+          mid = confirmation['message_id']
           from datetime import datetime, timezone
           state['delivery_receipt'] = {
-              'message_id': mid,
+              **confirmation,
               'bot_username': actual,
               'timestamp_utc': datetime.now(timezone.utc).isoformat(),
+              'body_sha256': hashlib.sha256(text.encode()).hexdigest(),
+              'source_evidence_sha256': hashlib.sha256(pathlib.Path('out/kofia_liquidity_source_evidence.json').read_bytes()).hexdigest(),
+              'code_sha': os.environ['KOFIA_CODE_SHA'],
+              'run_id': os.environ['GITHUB_RUN_ID'],
           }
+          pathlib.Path('out/kofia_liquidity_delivery.json').write_text(
+              json.dumps(state['delivery_receipt'], ensure_ascii=False, indent=2) + '\n', encoding='utf-8'
+          )
           pathlib.Path('out/kofia_liquidity_pending_state.json').write_text(
               json.dumps(state, ensure_ascii=False, indent=2) + '\n',
               encoding='utf-8'
@@ -369,20 +198,21 @@ jobs:
           PY
 
       - name: Persist state only after successful delivery
-        if: success() && hashFiles('out/kofia_liquidity_pending_state.json') != ''
-        run: cp out/kofia_liquidity_pending_state.json data/kofia_liquidity_state.json
+        if: success() && env.DRY_RUN != 'true' && hashFiles('out/kofia_liquidity_delivery.json') != ''
+        run: |
+          test -f out/kofia_liquidity_delivery.json
 
       - name: Commit watcher state
-        if: success() && hashFiles('data/kofia_liquidity_state.json') != '' && hashFiles('out/kofia_liquidity_pending_state.json') != ''
+        if: success() && env.DRY_RUN != 'true' && hashFiles('out/kofia_liquidity_delivery.json') != ''
         run: |
           git config user.name "kofia-liquidity-watch[bot]"
           git config user.email "kofia-liquidity-watch[bot]@users.noreply.github.com"
-          cp data/kofia_liquidity_state.json /tmp/kofia_liquidity_state.json
+          cp out/kofia_liquidity_pending_state.json /tmp/kofia_liquidity_state.json
           for attempt in 1 2 3 4; do
             git fetch origin main
             git reset --hard origin/main
             mkdir -p data
-            cp /tmp/kofia_liquidity_state.json data/kofia_liquidity_state.json
+            python scripts/kofia_liquidity_commit_state.py /tmp/kofia_liquidity_state.json
             git add data/kofia_liquidity_state.json
             if git diff --cached --quiet; then
               echo "KOFIA liquidity state unchanged"
@@ -405,5 +235,8 @@ jobs:
             out/kofia_liquidity_status.md
             out/kofia_liquidity_alert.html
             out/kofia_liquidity_pending_state.json
+            out/kofia_liquidity_source_evidence.json
+            out/kofia_liquidity_delivery.json
+            data/kofia_liquidity_state.json
           if-no-files-found: ignore
           retention-days: 14

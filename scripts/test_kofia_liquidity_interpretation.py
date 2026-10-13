@@ -26,10 +26,7 @@ BASE = {
 
 
 def production_python():
-    workflow = WORKFLOW.read_text(encoding="utf-8")
-    section = workflow.split(START, 1)[1]
-    script = section.split(HEREDOC, 1)[1].split(END, 1)[0]
-    return textwrap.dedent(script)
+    return Path("scripts/kofia_liquidity_interpretation.py").read_text(encoding="utf-8")
 
 
 SCRIPT = production_python()
@@ -67,8 +64,8 @@ def trial(name, overrides=None, expected=None, forbidden=(), bad_dates=False, co
         }
         (base / "out/kofia_liquidity_pending_state.json").write_text(json.dumps(state), encoding="utf-8")
         done = subprocess.run(
-            [sys.executable, "-c", SCRIPT],
-            cwd=base, text=True, capture_output=True,
+            [sys.executable, "-X", "utf8", "-c", SCRIPT],
+            cwd=base, text=True, encoding="utf-8", capture_output=True,
         )
         if bad_dates:
             assert done.returncode != 0, (name, done.stdout, done.stderr)
@@ -114,7 +111,7 @@ def trial(name, overrides=None, expected=None, forbidden=(), bad_dates=False, co
 
 def run_all():
     trial(
-        "2026-10-07 real positive MMF", expected="당일에도 MMF가 증가해 5거래일 누적 증가 방향과 일치합니다.",
+        "2026-10-07 real positive MMF", expected="당일에도 MMF가 증가해 5개 공표구간 누적 증가 방향과 일치합니다.",
         forbidden=("당일 MMF 급감", "당일 MMF는 감소", "당일 MMF 감소"),
     )
 
@@ -140,15 +137,15 @@ def run_all():
     trial("deposit/cma increase with MMF decrease and credit decrease", overrides={
         "deposit":{"d1":3_000_000}, "mmf":{"d1":-4_000_000},
         "cma":{"d1":3_000_000}, "credit":{"d1":-100_000},
-    }, expected="당일 수급의 질은 개선")
+    }, expected="당일 현금성 잔액 개선 조합")
     trial("deposit decrease with MMF decrease and CMA increase", overrides={
         "deposit":{"d1":-3_000_000}, "mmf":{"d1":-4_000_000},
         "cma":{"d1":3_000_000},
-    }, expected="MMF 자금이 감소했지만")
-    trial("five-day low cash and high leverage", expected="수급의 질이 이전보다 취약")
+    }, expected="MMF 설정원본이 감소했지만")
+    trial("five-day low cash and high leverage", expected="신용거래 확대 부담을 점검할 조합")
     trial("five-day improving cash", overrides={
         "deposit":{"d5":5_000_000}, "credit":{"d5":-150_000}
-    }, expected="현금 매수 여력 개선")
+    }, expected="현금성 잔액 개선 조합")
     trial("MMF smaller-than-material movement", overrides={
         "mmf":{"d1":125_000}
     }, expected="당일 MMF는 유의미한 증감 없이 보합")
@@ -164,8 +161,8 @@ def run_all():
        forbidden=("MMF 증가분이 주식에서",))
     trial("MMF five-day flat cannot claim matching daily direction", overrides={
         "mmf":{"d1":-4_000_000, "d5":0}
-    }, expected="당일 MMF는 감소했지만 5거래일 기준으로는 보합입니다.",
-       forbidden=("5거래일 흐름과 같은 방향",))
+    }, expected="당일 MMF는 감소했지만 5개 공표구간 기준으로는 보합입니다.",
+       forbidden=("5개 공표구간 흐름과 같은 방향",))
 
     # This catches mutations after the narrative builder has completed.
     trial("tampered MMF narrative", corrupt=lambda text: text.replace(
@@ -181,6 +178,12 @@ def run_all():
         "실제 반대매매 192억원", "실제 반대매매 291억원", 1
     ))
     trial("mismatched KOFIA dates", bad_dates=True)
+    trial("unsupported risk-asset transfer claim", corrupt=lambda text: text.replace(
+        "<b>자금 방향</b>:", "<b>자금 방향</b>: 위험자산 쪽 이동 가능성이 커진 조합", 1))
+    trial("incorrect comparison date", corrupt=lambda text: text.replace(
+        "1D 10/6 → 10/7", "1D 10/2 → 10/7", 1))
+    trial("incorrect large-move verdict", corrupt=lambda text: text.replace(
+        "MMF +4.93조(경보 기준 ±3조 이상)", "MMF 변동 없음", 1))
     print("PASS all KOFIA directional and final-message regression scenarios")
 
 
