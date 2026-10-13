@@ -231,6 +231,40 @@ jobs:
                     "bars=",len(bars),"source=","LS t1511 301 + t8409 301")
           PY
 
+      - name: Probe KOSDAQ enrichment market-isolated source APIs
+        run: |
+          PYTHONPATH=scripts python - <<'PY'
+          import datetime as dt
+          from zoneinfo import ZoneInfo
+          from krx_session_calendar import session_state
+          from kospi_shock_enrichment import (
+              get_token,kosdaq_stock_master,kosdaq_program_candidates,industry_master,
+          )
+          now=dt.datetime.now(ZoneInfo("Asia/Seoul"))
+          session=session_state(now)
+          live=bool(
+              session["is_session"] and session.get("open") and session.get("continuous_end")
+              and session["open"]+dt.timedelta(minutes=10) <= now < session["continuous_end"]
+          )
+          if not live:
+              print("kosdaq_enrichment_market_probe=outside_live_market")
+          else:
+              token=get_token()
+              master=kosdaq_stock_master(token)
+              assert len(master)>100,("KOSDAQ gubun=2 market master too small",len(master))
+              rows,errors=kosdaq_program_candidates(token,max_rows=20)
+              valid=[r for r in rows if str(r.get("shcode") or "") in master]
+              industries=industry_master(token,market="KOSDAQ")
+              assert len(industries)>=4,("KOSDAQ 3xx industry source unavailable",len(industries))
+              assert all(str(r.get("upcode") or "").startswith("3") for r in industries),industries[:6]
+              print("kosdaq_enrichment_market_probe=valid",
+                    "stock_master=",len(master),"candidate_rank=",len(rows),
+                    "market_verified_rank=",len(valid),"industries=",len(industries),
+                    "rank_errors=",errors[:2])
+              # 잘못된 시장 프로그램 순위나 가격을 코스닥 경보에 사용하지 않는다.
+              # 데이터가 부족하면 종목 파트를 보류하되 실행 자체는 계속한다.
+          PY
+
       - name: Verify production workflow structure
         run: |
           python - <<'PY'
@@ -263,6 +297,8 @@ jobs:
           assert "actions/download-artifact@v4" in s, "handoff artifact download missing"
           assert "kospi_unified_industry_collector.py" in s, "UBM industry collector missing"
           assert "out/kospi_industry_flow.jsonl" in s, "UBM industry flow handoff missing"
+          assert "out/kosdaq_shock_enrichment_latest.json" in s, "KOSDAQ enrichment artifact missing"
+          assert "build_kosdaq_enrichment" in Path("scripts/kospi_shock_episode_watch.py").read_text(encoding="utf-8"), "KOSDAQ close-enrichment worker not wired"
           assert "requests ebest" in s, "production ebest dependency missing"
           assert "collector_supervisor()" in s, "UBM collector supervisor missing"
           assert "kospi_watcher_restart" in s, "KOSPI watcher restart loop missing"
