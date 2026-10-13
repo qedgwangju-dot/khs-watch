@@ -315,7 +315,13 @@ def build_financing_alert(current: ReleaseSection, previous: ReleaseSection | No
 def build_alert(current: ReleaseSection, previous: ReleaseSection | None) -> tuple[str, str, dict[str, object]]:
     current_policy_item = policy_link(current)
     previous_policy_item = policy_link(previous) if previous else None
-    current_policy = fetch_clean(current_policy_item)
+    current_raw_policy = ""
+    if current_policy_item is not None:
+        try:
+            current_raw_policy = fetch_text(current_policy_item.url, attempts=2, timeout=25)
+        except RuntimeError:
+            current_raw_policy = ""
+    current_policy = strip_html(current_raw_policy)
     previous_policy = fetch_clean(previous_policy_item)
     minutes = fetch_clean(tbac_minutes_link(current))
     report = fetch_clean(tbac_report_link(current))
@@ -324,6 +330,7 @@ def build_alert(current: ReleaseSection, previous: ReleaseSection | None) -> tup
     current_word = guidance_word(current_policy)
     previous_word = guidance_word(previous_policy)
     amounts = extract_refunding_amounts(current_policy)
+    supply = summarize_long_end_supply(nominal_long_end_table(current_raw_policy))
     shortfall, shortfall_years = extract_shortfall(minutes + " " + report)
 
     if maintain and current_word == "changes" and previous_word == "increases":
@@ -346,6 +353,22 @@ def build_alert(current: ReleaseSection, previous: ReleaseSection | None) -> tup
             "만기별 발행표와 정책문구를 보수적으로 확인해야 합니다."
         )
 
+    if supply.get("available"):
+        shift = supply["delta_bn"]
+        if shift < 0:
+            headline = "20·30년 장기국채 예정 발행 축소(공식 QRA)"
+            core = (
+                "공식 발행표에서 20·30년물의 다음 3개월 예정 발행 합계가 "
+                "직전 3개월보다 감소했습니다. 공급부담 완화와 국가채무 감소는 다르며 "
+                "단기국채 등 대체 조달을 함께 확인해야 합니다."
+            )
+        elif shift > 0:
+            headline = "20·30년 장기국채 예정 발행 확대(공식 QRA)"
+            core = (
+                "공식 발행표에서 20·30년물 예정 공급이 증가했습니다. "
+                "기존 바이백 집행액과 신규 발행액을 혼합하지 않습니다."
+            )
+
     amount_lines: list[str] = []
     for label in ("3년물", "10년물", "30년물"):
         if label in amounts:
@@ -353,7 +376,13 @@ def build_alert(current: ReleaseSection, previous: ReleaseSection | None) -> tup
 
     if amounts:
         total = sum(amounts.values())
-        amount_lines.append(f"• 3·10·30년물 합계: {total:g}0억달러")
+        amount_lines.append(f"• 3·10·30년물 환매차환 입찰 합계: {total:g}0억달러")
+    amount_lines.append(expectation_comparison(supply))
+    amount_lines.append(
+        "• Citi 미확정 시나리오(10/9): 20·30년물 각각 회당 30억달러 축소,"
+        " 3개월 총 180억달러 장기채 감축·단기국채 대체 예상."
+        " 20년물 중단은 추가 가능성이며 재무부 결정이 아닙니다."
+    )
 
     if current_word and previous_word and current_word != previous_word:
         wording = f"• 정책문구 변화: {previous_word} → {current_word}"
@@ -370,10 +399,22 @@ def build_alert(current: ReleaseSection, previous: ReleaseSection | None) -> tup
             "이는 당장 부족한 현금이 아니라 현 구조 지속 가정의 미래 부족분입니다."
         )
 
-    market = (
-        "장기채 증액 없음 → 장기국채 공급 충격 완화 → 기간 프리미엄·10년/30년 금리 상승 압력 완화 "
-        "→ 기업 할인율 부담 완화 → AI·성장주에는 단기 우호적입니다. 다만 이는 기업 실적을 직접 늘리는 호재가 아니라 할인율·수급 측 호재입니다."
-    )
+    if supply.get("available") and supply["delta_bn"] < 0:
+        market = (
+            "20·30년 예정 발행 감축은 장기 위험보상 압력 완화 가능성이 있으나,"
+            " 단기국채 대체 발행·물가·연준·회사채 경쟁 때문에 금리 하락이 보장되지는 않습니다."
+            " AI·성장주에는 직접 매출이 아닌 할인율의 간접 영향입니다."
+        )
+    elif supply.get("available") and supply["delta_bn"] > 0:
+        market = (
+            "20·30년 예정 공급 증가는 기간프리미엄 부담이 될 수 있습니다."
+            " 실제 금리·수요·인플레이션에 따라 반응이 달라지므로 공급만으로 예단하지 않습니다."
+        )
+    else:
+        market = (
+            "20·30년 공식 발행표 직접 검증 전에는 Citi 전망만으로 감축을 단정하지 않습니다."
+            " 11/4 QRA 확정표와 차입추정·단기국채 이전·장기금리 반응을 분리 확인합니다."
+        )
 
     risk = (
         "재정적자·차입 수요가 계속 늘면 단기국채만으로 부담을 흡수하기 어려워지고, 결국 이표채 증액 신호가 다시 나올 수 있습니다. "
@@ -425,6 +466,8 @@ def build_alert(current: ReleaseSection, previous: ReleaseSection | None) -> tup
         "amounts_billion_usd": amounts,
         "shortfall_trillion_usd": shortfall,
         "shortfall_years": shortfall_years,
+        "official_20y_30y_issuance": supply,
+        "analyst_comparator": CITI_20261009,
         "policy_url": current_policy_item.url if current_policy_item else None,
     }
     return title, body, detail
