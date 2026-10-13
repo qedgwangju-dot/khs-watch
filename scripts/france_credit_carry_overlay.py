@@ -173,12 +173,19 @@ def fetch_rating(*, fetch=None) -> tuple[dict | None, list[str]]:
     # Some GitHub runner IP ranges are rejected by AFT (HTTP 403). A text
     # recovery gateway can still preserve the AFT source attribution. It is
     # NOT sufficient on its own to assert a newly changed sovereign rating.
+    recovery_text = ""
     try:
-        rating = parse_aft_text_recovery(fetch(AFT_TEXT_RECOVERY))
+        recovery_text = fetch(AFT_TEXT_RECOVERY)
+        rating = parse_aft_text_recovery(recovery_text)
         rating["url"] = AFT_EN
         return rating, errors
     except Exception as exc:
         errors.append(f"Government text recovery: {type(exc).__name__} {str(exc)[:180]}")
+        if recovery_text:
+            # Public webpage debugging only: no credentials or user data.
+            base.OUT.mkdir(parents=True, exist_ok=True)
+            (base.OUT / "france_credit_recovery_debug.txt").write_text(
+                recovery_text[:15000], encoding="utf-8")
     return None, errors
 
 
