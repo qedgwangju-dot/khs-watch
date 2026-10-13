@@ -53,7 +53,7 @@ SURGE_COMBINED_FUT_EOK = 450.0
 SURGE_SINGLE_SPOT_EOK = 900.0
 SURGE_SINGLE_FUT_EOK = 1300.0
 # 코스닥은 KOSPI200 선물과 섞지 않고 현물 독립 신호로 감시한다.
-KOSDAQ_SURGE_SINGLE_SPOT_EOK = 300.0
+KOSDAQ_SURGE_SINGLE_SPOT_EOK = 150.0
 KOSDAQ_URL = "https://m.stock.naver.com/domestic/index/KOSDAQ/total"
 KOSDAQ_NEWS_URL = "https://search.naver.com/search.naver?where=news&query=" + urllib.parse.quote("코스닥 급락")
 # 코스닥 가격/수급은 같은 기존 프로세스의 독립 상태로 관리하며 코스피 수급·파생과 합산하지 않는다.
@@ -1743,14 +1743,21 @@ class Watch:
                 self.kosdaq_surge_pending.pop(actor, None)
         for actor, delta in candidates.items():
             sample_ts = float(pair["end_ts"])
+            end_value = fnum(pair["end"].get(actor))
             prev = self.kosdaq_surge_pending.get(actor)
             if (prev is None or sample_ts <= prev["sample_ts"]
-                    or now_ts - prev["seen_at"] > 120):
+                    or now_ts - prev["seen_at"] > 120
+                    or fnum(prev.get("end_value")) is None
+                    or (end_value is not None and end_value < float(prev["end_value"]))):
                 self.kosdaq_surge_pending[actor] = {
                     "sample_ts": sample_ts, "seen_at": now_ts,
+                    "end_value": end_value,
                 }
                 continue
             if sample_ts - prev["sample_ts"] < SURGE_CONFIRM_SEC:
+                continue
+            # 표본 시각만 바뀌고 누적 순매수가 그대로면 독립 확인이 아니다.
+            if end_value is None or end_value <= float(prev["end_value"]):
                 continue
             if now_ts - self.kosdaq_surge_sent_at.get(actor, 0.0) < SURGE_COOLDOWN_SEC:
                 continue
@@ -1763,12 +1770,23 @@ class Watch:
             self.raw["last_kosdaq_surge_alert"] = {
                 "actor": actor, "market": "KOSDAQ", "spot_5m_eok": delta,
                 "sample_ts": sample_ts, "message_id": msg_id,
+                "spot_window": [pair["start_ts"], pair["end_ts"]],
+                "spot_cumulative_start": fnum(pair["start"].get(actor)),
+                "spot_cumulative_end": end_value,
             }
             self._record_delivery(
                 "kosdaq_flow_surge", msg_id,
                 {"start_ts": pair["start_ts"], "low_ts": pair["end_ts"],
                  "market": "KOSDAQ", "actor": actor},
                 pair["end_ts"],
+                evidence={
+                    "source": "LS t1602 market=3 upcode=301 exchgubun=U gubun1=2",
+                    "spot_window": [pair["start_ts"], pair["end_ts"]],
+                    "spot_start_cumulative": fnum(pair["start"].get(actor)),
+                    "spot_end_cumulative": end_value,
+                    "spot_delta": delta,
+                    "display_unit": "억원",
+                },
             )
 
     def build_flow_surge_alert(self, cand: dict[str, Any], now_ts: float) -> str:
@@ -2007,7 +2025,8 @@ class Watch:
         self.save_handoff(self.handoff_path)
         self.last_handoff_save_ts = now
 
-    def _record_delivery(self, stage: str, message_id: int, ep: dict[str, Any], observed_ts: float) -> None:
+    def _record_delivery(self, stage: str, message_id: int, ep: dict[str, Any],
+                         observed_ts: float, evidence: dict[str, Any] | None = None) -> None:
         DELIVERY_LOG.parent.mkdir(parents=True, exist_ok=True)
         record = {
             "logged_at_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
@@ -2022,6 +2041,8 @@ class Watch:
             "observed_ts": observed_ts,
             "observed_kst": fmt_clock(observed_ts),
         }
+        if evidence is not None:
+            record["evidence"] = evidence
         with DELIVERY_LOG.open("a", encoding="utf-8") as fp:
             fp.write(json.dumps(record, ensure_ascii=False) + "\n")
         self._checkpoint_handoff(force=True)
@@ -2116,10 +2137,12 @@ class Watch:
                 if str(k) in {"외국인","기관","개인"} and fnum(v) is not None
             }
             self.kosdaq_surge_pending = {
-                str(k): {"sample_ts": float(v["sample_ts"]), "seen_at": float(v["seen_at"])}
+                str(k): {"sample_ts": float(v["sample_ts"]), "seen_at": float(v["seen_at"]),
+                         "end_value": float(v["end_value"])}
                 for k,v in (data.get("kosdaq_surge_pending") or {}).items()
                 if str(k) in {"외국인","기관","개인"} and isinstance(v,dict)
                 and fnum(v.get("sample_ts")) is not None and fnum(v.get("seen_at")) is not None
+                and fnum(v.get("end_value")) is not None
             }
             if self.kosdaq_flows:
                 self.kosdaq_last_success_ts = fnum((self.kosdaq_flows[-1].get("현물") or {}).get("sample_ts"))
