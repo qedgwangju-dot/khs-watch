@@ -28,6 +28,15 @@ AFT_FR = "https://www.aft.gouv.fr/fr/calendrier-notations-france"
 AFT_TEXT_RECOVERY = "https://r.jina.ai/https://www.aft.gouv.fr/en/frances-credit-ratings"
 ORIGINAL_STORY = "https://www.briefs.co/news/hedge-funds-scramble-as-french-bond-rout-blows-out-spreads/"
 REVIEW_DATE = dt.date(2026, 10, 23)
+# Verified from AFT's official published table on 2026-10-14 (Asia/Seoul).
+# Historical fallback is ONLY for an explicitly dated schedule reminder; do
+# not treat it as a live agency rating or a rating decision.
+VERIFIED_AFT_SNAPSHOT = {
+    "agency": "Moody's", "rating": "Aa3", "outlook": "Negative",
+    "decision_date": "2026-04-10", "next_review": "2026-10-23",
+    "url": AFT_EN, "source_kind": "historical_official_snapshot",
+    "verified_on": "2026-10-14",
+}
 MILESTONES = {7: "일주일 전", 1: "하루 전", 0: "당일"}
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 STATUS = ROOT / "out" / "france_credit_overlay_status.md"
@@ -199,7 +208,7 @@ def credit_events(now: dt.date, old: dict, rating: dict) -> list[dict]:
     changed_rating = bool(prev and (prev.get("rating") != rating["rating"]
                     or prev.get("outlook") != rating["outlook"]))
     new_official_review = bool(prev and last_old and last_new and last_new > last_old)
-    if (changed_rating or new_official_review) and rating.get("source_kind") != "secondary_text_recovery":
+    if (changed_rating or new_official_review) and rating.get("source_kind") == "official_document":
         key = f"decision:{last_new}:{rating['rating']}:{rating['outlook']}"
         if key not in delivered:
             events.append({"kind": "decision", "key": key})
@@ -239,12 +248,26 @@ def format_event(rating: dict, events: list[dict], pending: dict,
         status = (f"공식자료 기준 Moody’s {rating['rating']} / 전망 {rating['outlook']} / "
                   f"최근 결정일 {rating['decision_date']}.")
         caveat = "등급 변동·전망 변경 여부는 이전 공식 기록과 비교해 판단합니다."
-    else:
+    elif any(x["kind"] == "milestone" for x in events):
         days = min(x["days"] for x in events if x["kind"] == "milestone")
         name = f"프랑스 Moody’s 신용등급 검토 D-{days}"
-        status = (f"공식 일정: 2026-10-23(프랑스 현지 날짜), "
-                  f"현재 확인 등급 {rating['rating']}·전망 {rating['outlook']}.")
+        if rating.get("source_kind") in ("historical_official_snapshot", "secondary_text_recovery"):
+            status = (f"2026-10-14 확인한 AFT 공식 일정: 2026-10-23(프랑스 현지 날짜). "
+                      f"당일 공식 페이지 재조회는 제한되어 최신 일정 변경 여부는 확인 불가. "
+                      f"마지막 확인 등급 {rating['rating']}·전망 {rating['outlook']}.")
+        else:
+            status = (f"공식 최신 확인 일정: 2026-10-23(프랑스 현지 날짜), "
+                      f"등급 {rating['rating']}·전망 {rating['outlook']}.")
         caveat = "등급 강등 확정이 아닌 예정된 심사입니다. 포지션 청산 마감일도 아닙니다."
+    elif any(x["kind"] == "review_overdue" for x in events):
+        name = "프랑스 신용등급 결과 재검증 필요"
+        status = "10월 23일 예정일이 지났지만 신용등급 결과는 공식 원문 접근 제한으로 확인되지 않았습니다."
+        caveat = "심사 결과 발표 여부나 등급 유지는 확인되지 않았으므로 추정하지 않습니다."
+    else:
+        name = "프랑스 신용등급 공식자료 조회 장애"
+        status = ("프랑스 국채관리청의 Moody’s 등급표가 반복적으로 접근 제한 상태입니다. "
+                  "최근 공식 확인일은 2026-10-14입니다.")
+        caveat = "등급 변경이나 시장의 강등 가능성을 확정할 수 없습니다. 공식 결과 조회가 지연될 수 있습니다."
 
     msg = "\n".join([
         f"🔔 [프랑스 국채·신용등급] {name}",
@@ -283,20 +306,32 @@ def main() -> int:
     existing_credit = state.get("france_credit") or {}
     now = dt.datetime.now(KST)
     official, errors = fetch_rating()
-    if not official:
-        STATUS.write_text(
-            f"프랑스 신용등급 원천 확인 불가: {now.isoformat(timespec='seconds')}\n"
-            + "\n".join(errors) + "\n기존 금리 감시 알림은 유지. 등급 일정 관련 알림 보류.\n",
-            encoding="utf-8",
-        )
-        # Don't consume rating events if the official page is inaccessible.
-        return 0
+    source_ok = official is not None
+    fail_streak = 0 if source_ok else int(existing_credit.get("source_fail_streak") or 0) + 1
+    # Do not fabricate a live rating when the issuer website and proxy reject
+    # automation. Carry forward the date-stamped official snapshot only.
+    rating = official if source_ok else {
+        **(existing_credit.get("last_official") or VERIFIED_AFT_SNAPSHOT),
+        "source_kind": "historical_official_snapshot",
+        "verified_on": (existing_credit.get("last_official") or VERIFIED_AFT_SNAPSHOT).get("verified_on", "2026-10-14"),
+    }
+    events = credit_events(now.astimezone(PARIS).date(), existing_credit, rating)
+    delivered = set(existing_credit.get("sent_keys") or [])
+    if not source_ok and fail_streak >= 4:
+        key = "official_rating_source_unavailable:2026-10"
+        if key not in delivered:
+            events.append({"kind": "source_outage", "key": key})
+    if not source_ok and now.astimezone(PARIS).date() >= dt.date(2026, 10, 24):
+        key = "review_unverified_after_due:2026-10-23"
+        if key not in delivered:
+            events.append({"kind": "review_overdue", "key": key})
 
-    events = credit_events(now.astimezone(PARIS).date(), existing_credit, official)
     next_credit = {
-        "last_official": official,
+        "last_official": rating if source_ok else (existing_credit.get("last_official") or VERIFIED_AFT_SNAPSHOT),
         "sent_keys": list(existing_credit.get("sent_keys") or [])[-30:],
         "checked_at_kst": now.isoformat(timespec="seconds"),
+        "source_fail_streak": fail_streak,
+        "source_access": "official_document" if source_ok else "access_restricted",
     }
     if events:
         next_credit["sent_keys"] = (next_credit["sent_keys"] + [e["key"] for e in events])[-30:]
@@ -304,7 +339,7 @@ def main() -> int:
     base.PENDING.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     if events:
-        title, body = format_event(official, events, pending, now)
+        title, body = format_event(rating, events, pending, now)
         if base.ALERT.exists():
             # Preserve the existing sovereign-yield event and append new factual context.
             original = base.ALERT.read_text(encoding="utf-8").strip()
@@ -314,18 +349,21 @@ def main() -> int:
             base.TITLE.write_text(title + "\n", encoding="utf-8")
         detail = base.load_json(base.DETAIL, {})
         detail.setdefault("related_events", []).extend(events)
-        detail["moody_official"] = official
+        detail["moody_source"] = rating
         base.DETAIL.write_text(json.dumps(detail, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     STATUS.write_text(
         "\n".join([
             "# 프랑스 신용등급·국채 캐리 감시",
             f"- 조회: {now.isoformat(timespec='seconds')}",
-            f"- 공식: Moody's {official['rating']}, {official['outlook']}, {official['decision_date']}",
-            f"- 다음 심사: {official['next_review'] or '미게시'}",
+            f"- 출처 상태: {'공식 원문 조회' if source_ok else '접근 제한·2026-10-14 공식 확인값 참고'}",
+            f"- 최근 공식확인: Moody's {rating['rating']}, {rating['outlook']}, {rating['decision_date']}",
+            f"- 다음 심사: {rating['next_review'] or '미게시'}",
+            f"- 연속 원문 오류: {fail_streak}",
             f"- 이번 새 이벤트: {len(events)}",
             f"- 중복키: {', '.join(x['key'] for x in events) if events else '없음'}",
-            f"- 공식 페이지: {official['url']}",
+            f"- 공식 페이지: {rating['url']}",
+            *([f"- {x}" for x in errors[:3]] if errors else []),
         ]) + "\n",
         encoding="utf-8",
     )
