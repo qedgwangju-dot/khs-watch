@@ -342,7 +342,7 @@ def check() -> int:
     debt = None
     try:
         debt = parse_debt(json.loads(fetch_text(DEBT_API, timeout=18)))
-        status.append("공식 Debt to the Penny: " + debt["record_date"] + " · 총잔액 $" + f"{Decimal(debt[\"total\"]):,.2f}" + " (41조달러 발언과 실제 공식 잔액 분리)")
+        status.append("공식 Debt to the Penny: " + debt["record_date"] + " · 총잔액 $" + format(Decimal(debt["total"]), ",.2f") + " (41조달러 발언과 공식 잔액 분리)")
     except Exception as exc:
         status.append("국가채무 원천 장애: " + type(exc).__name__ + " " + str(exc)[:110])
     plan = None
