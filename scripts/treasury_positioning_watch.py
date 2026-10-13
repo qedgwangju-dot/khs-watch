@@ -15,6 +15,7 @@ from bs4 import BeautifulSoup
 from global_rates_watch import fetch_ust_curve
 
 KST = ZoneInfo("Asia/Seoul")
+NY = ZoneInfo("America/New_York")
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 STATE = ROOT / "data" / "treasury_positioning_state.json"
 OUT = ROOT / "out"
@@ -80,6 +81,86 @@ def ensure_recent_date(label, raw_date, max_days):
     if age < 0 or age > max_days:
         raise RuntimeError(f"{label} stale: {raw_date} ({age} days)")
     return age
+
+
+def _nth_weekday(year, month, weekday, nth):
+    first = dt.date(year, month, 1)
+    offset = (weekday - first.weekday()) % 7
+    return first + dt.timedelta(days=offset + 7 * (nth - 1))
+
+
+def _last_weekday(year, month, weekday):
+    next_month = dt.date(year + 1, 1, 1) if month == 12 else dt.date(year, month + 1, 1)
+    last = next_month - dt.timedelta(days=1)
+    return last - dt.timedelta(days=(last.weekday() - weekday) % 7)
+
+
+def _sunday_observed(year, month, day):
+    target = dt.date(year, month, day)
+    return target + dt.timedelta(days=1) if target.weekday() == 6 else target
+
+
+def nyfed_closed(date):
+    """NY Fed bank closure calendar, not the NYSE equity trading calendar.
+
+    NY Fed observes Sunday fixed-date holidays on Monday. A Saturday federal
+    holiday is not automatically a Friday bank closure; do not silently
+    invent an extra SOFR holiday.
+    """
+    if date.weekday() >= 5:
+        return True
+    y = date.year
+    dates = {
+        _sunday_observed(y, 1, 1),
+        _nth_weekday(y, 1, 0, 3),
+        _nth_weekday(y, 2, 0, 3),
+        _last_weekday(y, 5, 0),
+        _sunday_observed(y, 6, 19),
+        _sunday_observed(y, 7, 4),
+        _nth_weekday(y, 9, 0, 1),
+        _nth_weekday(y, 10, 0, 2),
+        _sunday_observed(y, 11, 11),
+        _nth_weekday(y, 11, 3, 4),
+        _sunday_observed(y, 12, 25),
+    }
+    return date in dates
+
+
+def completed_publication_days(raw_date, publish_hour, now_ny=None):
+    """Count only days whose official rate publication deadline has passed.
+
+    SOFR/TGCR are published around 8am ET; OFR repo data around 3pm ET.
+    Holidays and weekends are not counted as missing publication days.
+    """
+    now = now_ny or dt.datetime.now(NY)
+    if now.tzinfo is None:
+        raise RuntimeError("NY-aware timestamp required for funding freshness")
+    today = now.astimezone(NY).date()
+    try:
+        observed = dt.date.fromisoformat(str(raw_date)[:10])
+    except Exception as exc:
+        raise RuntimeError(f"Funding observation date invalid: {raw_date}") from exc
+    if observed > today:
+        raise RuntimeError(f"Funding observation future-dated: {raw_date}")
+    lag = 0
+    day = observed + dt.timedelta(days=1)
+    while day <= today:
+        if not nyfed_closed(day) and (
+            day < today or (now.astimezone(NY).hour, now.astimezone(NY).minute) >= (publish_hour, 15)
+        ):
+            lag += 1
+        day += dt.timedelta(days=1)
+    return lag
+
+
+def ensure_recent_funding_date(label, raw_date, publish_hour, max_lag, now_ny=None):
+    lag = completed_publication_days(raw_date, publish_hour, now_ny=now_ny)
+    if lag > max_lag:
+        raise RuntimeError(
+            f"{label} publication lag: {raw_date} ({lag} NY Fed business "
+            f"publication days; permitted {max_lag}; {publish_hour}:00 ET release)"
+        )
+    return lag
 
 
 def nyfed_rate(url, expected_type):
@@ -294,7 +375,7 @@ def repo_snapshot():
         raise RuntimeError(
             f"Repo source value mismatch: OFR SOFR/TGCR={s}/{t}, NYFed={ny_sofr['rate']}/{ny_tgcr['rate']}"
         )
-    ensure_recent_date("Repo", d, 4)
+    ensure_recent_funding_date("SOFR/TGCR", d, publish_hour=8, max_lag=1)
 
     if spread_bp >= 10 or move_bp >= 10:
         state = "스트레스"
@@ -311,7 +392,7 @@ def repo_snapshot():
         raise RuntimeError(
             f"OFR DVP endpoint mismatch: full={dvp_date}/{dvp_value}, timeseries={check_map.get(dvp_date)}"
         )
-    ensure_recent_date("OFR DVP Repo", dvp_date, 4)
+    ensure_recent_funding_date("OFR DVP Repo", dvp_date, publish_hour=15, max_lag=2)
     dvp_week_pct = (dvp_value / old_value - 1.0) * 100.0 if old_value else 0.0
 
     return {
