@@ -203,6 +203,12 @@ def build_alert(items, markets, now):
         for i, line in enumerate(lines):
             if needle in line:
                 lines[i] += f" · {html.escape(market.get('source', '출처 확인 대기'))} {html.escape(market.get('symbol', ''))}"
+    missing = [row for row in getattr(watch, 'market_source_status', {}).values() if row.get('status') != 'available']
+    if missing:
+        at = next((i for i, line in enumerate(lines) if line == '<b>투자 판정</b>'), len(lines))
+        note = '시장자료 확인 보류 · ' + ' / '.join(f"{row['name']} ({row['reason']})" for row in missing)
+        lines.insert(at, html.escape(note))
+        lines.insert(at + 1, '')
     return '\n'.join(lines).strip() + '\n'
 
 
@@ -247,6 +253,8 @@ def verify_alert(test_mode=False):
             raise RuntimeError('WAR_INTEGRITY_GATE: invalid market operands')
         if not math.isclose(pct, (price / close - 1) * 100, rel_tol=1e-12, abs_tol=1e-9):
             raise RuntimeError('WAR_INTEGRITY_GATE: market change differs from saved operands')
+        if row.get('previous_close_date_verified') is False and '전일' in row.get('basis', ''):
+            raise RuntimeError('WAR_INTEGRITY_GATE: undated comparison close labelled as previous day')
 
 
 watch.score_item, watch.topic_label, watch.build_alert = score_item, topic_label, build_alert

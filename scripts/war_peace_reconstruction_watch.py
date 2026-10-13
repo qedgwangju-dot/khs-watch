@@ -450,7 +450,7 @@ def run(test=False):
     markets = market_snapshot()
     if items:
         text = build_alert(items, markets, now)
-        receipt = evidence.alert_receipt(items, markets, now, text)
+        receipt = evidence.alert_receipt(items, markets, now, text, globals().get('market_source_status'))
         rendered_ids = [row['id'] for row in receipt['articles'] if row['rendered']]
         if text.strip() and not rendered_ids:
             raise RuntimeError('War alert has no identifiable rendered source items')
@@ -458,7 +458,7 @@ def run(test=False):
             ALERT.write_text(text, encoding="utf-8")
             PENDING.write_text(json.dumps({"ids": rendered_ids}, ensure_ascii=False), encoding="utf-8")
     else:
-        receipt = evidence.alert_receipt([], markets, now, '')
+        receipt = evidence.alert_receipt([], markets, now, '', globals().get('market_source_status'))
     AUDIT.write_text(json.dumps(receipt, ensure_ascii=False, indent=2, default=str) + '\n', encoding='utf-8')
 
     summary = [
