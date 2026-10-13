@@ -1337,5 +1337,5 @@ assert ks.KOSDAQ_PRICE_POLL_INTERVAL_SEC>=3.0
 _kqd_gap=Watch("unused",[],"",False)
 _kqd_gap.session_open_ts=_kqd_base
 _kqd_gap.kosdaq_last_price_snapshot={"price":960.0,"prev_close":1000.0,"open":960.0}
-assert ks.pct(1000.0,960.0)==-4.0
+assert abs(ks.pct(1000.0,960.0)-(-4.0))<1e-9
 print("kosdaq_opening_gap_independent_gate_valid=true")
