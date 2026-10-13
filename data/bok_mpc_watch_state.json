@@ -52,8 +52,8 @@
   },
   "rate_signal_upgrade": {
     "version": 4,
-    "updated_at_kst": "2026-10-13T10:18:27+09:00",
-    "risk_score": 4,
+    "updated_at_kst": "2026-10-13T18:20:50+09:00",
+    "risk_score": 3,
     "grade_emoji": "🟡",
     "grade_label": "추가인상 가능성 유지",
     "next_mpc_date": "2026-10-22",
@@ -84,8 +84,8 @@
       "housing": null,
       "oil": {
         "date": "2026-10-13",
-        "brent_usd": 105.57,
-        "change_5d_pct": 5.23,
+        "brent_usd": 105.05,
+        "change_5d_pct": 4.44,
         "source": "Yahoo Finance BZ=F",
         "source_tier": "시장자료",
         "stale": false
