@@ -691,10 +691,16 @@
       "source": "ASCII.jp",
       "published_kst": "2026-10-13T15:45:00+09:00",
       "first_seen_kst": "2026-10-14T01:28:08+09:00"
+    },
+    "7f411b8be107692d9fdd86c1": {
+      "title": "[News] CXMT Accelerates 4F² DRAM Push, Eyes Year-End Server DDR5 RDIMM Launch - TrendForce",
+      "source": "TrendForce",
+      "published_kst": "2026-10-12T14:10:46+09:00",
+      "first_seen_kst": "2026-10-14T07:17:17+09:00"
     }
   },
-  "updated_at_kst": "2026-10-14T06:34:21+09:00",
-  "last_scan_count": 9,
+  "updated_at_kst": "2026-10-14T07:17:17+09:00",
+  "last_scan_count": 10,
   "last_new_count": 0,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
@@ -755,20 +761,20 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-10-13T10:38:37+09:00",
+  "last_successful_delivery_kst": "2026-10-14T07:17:27+09:00",
   "telegram_message_ids": [
-    284
+    289
   ],
-  "telegram_message_id": 284,
+  "telegram_message_id": 289,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      284
+      289
     ],
-    "confirmed_at_kst": "2026-10-13T10:38:37+09:00",
-    "alert_signature": "79f1b4367c2a4c04c8762435c7d9a7a23d0ee86763468bed64bbdff9a8e47308"
+    "confirmed_at_kst": "2026-10-14T07:17:27+09:00",
+    "alert_signature": "e0106868807b4ba1e27ad3580ab4ed6d11ca7af962e2074b8f9ff8c030c63667"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
@@ -960,5 +966,27 @@
     "prior_source_url": "https://www.trendforce.com/presscenter/news/20260904-13217.html",
     "source_kind": "TrendForce 10월 8일 2027년 전망·9월 4일 2026년 전망(각각 공식자료)",
     "source_rank": 3
+  },
+  "china_dram_cycle_track_version": 1,
+  "china_dram_cycle": {
+    "as_of": "2026-10-13",
+    "ark_traditional_memory_stance": "avoid_reported",
+    "ark_actual_20261013_memory_sale_status": "unverified",
+    "ark_ai_productivity_view": "positive_reported",
+    "cxmt_g5_lpddr5x_official_mass_production": true,
+    "cxmt_4f2_rdimm_target_year": 2026,
+    "cxmt_4f2_rdimm_official_mass_production": false,
+    "cxmt_hbm3_official_customer_qualification": false,
+    "cxmt_now_wafer_per_month_industry_est": 320000,
+    "cxmt_2027_wafer_per_month_industry_est": 420000,
+    "cxmt_capacity_estimate_official": false,
+    "ark_quote_url": "https://www.stheadline.com/realtime-finance/3625651/",
+    "cxmt_g5_official_url": "https://www.cxmt.com/en/news/info_22.html",
+    "cxmt_4f2_report_url": "https://www.trendforce.com/news/2026/10/12/news-cxmt-accelerates-4f%C2%B2-dram-push-eyes-year-end-server-ddr5-rdimm-launch/",
+    "cxmt_capacity_report_url": "https://www.trendforce.com/news/2026/09/24/news-cxmt-ymtc-ramp-memory-capacity-but-chinas-ai-cloud-boom-could-soak-up-new-supply-through-2027/",
+    "cxmt_hbm_stage_report_url": "https://www.trendforce.com/research/download/RP260120JO3",
+    "source_kind": "ARK 홍콩 발언은 Bloomberg 재인용 · CXMT G5는 공식 양산 · 4F²/증설치는 보도·전망",
+    "source": "ARK 발언 재보도·CXMT 공식·TrendForce 업계 인용",
+    "source_rank": 2
   }
 }
