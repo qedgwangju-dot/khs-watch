@@ -53,27 +53,24 @@ def parse_until(value: str) -> dt.time:
 
 
 async def industry_master(api: ebest.OpenApi) -> list[dict]:
-    best: list[dict] = []
-    for gubun in ("1", "0"):
+    """기존 코스피 업종을 보존하고 코스닥 3xx 업종을 추가 수집한다."""
+    found: dict[str,dict] = {}
+    # LS 업종 마스터의 시장구분별 목록은 겹칠 수 있어 코드로 병합한다.
+    for gubun in ("1", "2", "0"):
         try:
             rsp = await api.request("t8424", {"t8424InBlock": {"gubun1": gubun}})
         except Exception:
             continue
         rows = (rsp.body.get("t8424OutBlock") or []) if rsp else []
-        if isinstance(rows, dict):
-            rows = [rows]
-        clean = [x for x in rows if isinstance(x, dict)]
-        if len(clean) > len(best):
-            best = clean
-        if clean:
-            break
-    out = []
-    for row in best:
-        code = str(row.get("upcode") or "").strip()
-        name = _display_name(row.get("hname"))
-        if len(code) == 3 and _is_real_industry(name, code):
-            out.append({"code": code, "name": name})
-    return out
+        if isinstance(rows,dict):
+            rows=[rows]
+        for row in rows if isinstance(rows,list) else []:
+            if not isinstance(row,dict):continue
+            code=str(row.get("upcode") or "").strip()
+            name=_display_name(row.get("hname"))
+            if len(code)==3 and _is_real_industry(name,code):
+                found[code]={"code":code,"name":name}
+    return list(found.values())
 
 
 async def main(out_path: Path, until: dt.time, test_seconds: int | None = None) -> int:
@@ -162,17 +159,28 @@ async def main(out_path: Path, until: dt.time, test_seconds: int | None = None) 
         api.on_realtime.connect(on_realtime)
 
         failed = []
+        kosdaq_failed = []
         for item in industries:
             key = "U" + item["code"]
             ok = await api.add_realtime("UBM", key)
             if ok:
                 registrations.append(("UBM", key))
+            elif str(item["code"]).startswith("3"):
+                # 코스닥 업종 구독이 거절돼도 기존 코스피 감시를 중단하지 않는다.
+                kosdaq_failed.append({"key": key, "message": str(api.last_message)})
             else:
                 failed.append({"key": key, "message": str(api.last_message)})
             await asyncio.sleep(0.03)
 
+        if kosdaq_failed:
+            print(f"kosdaq_ubm_degraded=true failed={kosdaq_failed}", flush=True)
         if failed:
             raise RuntimeError(f"UBM registration failures: {failed}")
+        print(
+            f"ubm_market_coverage kospi={sum(not x[1][1:].startswith('3') for x in registrations)} "
+            f"kosdaq={sum(x[1][1:].startswith('3') for x in registrations)}",
+            flush=True,
+        )
 
         print(
             f"ubm_collector_started=true industries={len(industries)} "
