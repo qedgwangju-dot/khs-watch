@@ -29,8 +29,10 @@ permissions:
   contents: write
 
 concurrency:
-  group: treasury-positioning-watch
-  cancel-in-progress: true
+  # A code-validation push must never cancel an active scheduled Telegram send.
+  # Serialize same-kind work so a pending job cannot interrupt state persistence.
+  group: treasury-positioning-watch-${{ github.event_name == 'push' && 'validation' || 'delivery' }}
+  cancel-in-progress: false
 
 jobs:
   monitor:
