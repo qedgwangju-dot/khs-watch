@@ -211,9 +211,13 @@ def _payload_retry_eligible(record, blocked):
         return (item.get('error', '').startswith('SourcePayloadError:')
                 and rss and host not in blocked)
 
+    # Keep recovery of grouped RSS queries whose later requests succeeded.
+    # Those good responses are reused from the initial execution transcript.
+    if all(malformed_rss(item) for item in failures):
+        return True
     # A denied primary must stay blocked; its already-configured RSS fallback
-    # can still recover from a malformed payload. A denied final source cannot.
-    if http[-1].get('status') != 'error' or not malformed_rss(http[-1]):
+    # can still recover. The final FAILED source itself must be malformed RSS.
+    if not malformed_rss(failures[-1]):
         return False
     for item in failures[:-1]:
         if malformed_rss(item):
