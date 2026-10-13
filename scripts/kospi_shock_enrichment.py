@@ -18,6 +18,7 @@ import requests
 KST = ZoneInfo("Asia/Seoul")
 BASE = "https://openapi.ls-sec.co.kr:8080"
 OUT = Path("out/kospi_shock_enrichment_latest.json")
+KOSDAQ_OUT = Path("out/kosdaq_shock_enrichment_latest.json")
 PROBE = Path("out/kospi_shock_enrichment_probe.json")
 INDUSTRY_FLOW = Path(os.getenv("KOSPI_INDUSTRY_FLOW_PATH", "out/kospi_industry_flow.jsonl"))
 
@@ -242,6 +243,7 @@ def direct_industry_interval(
     investor: str | None,
     path: Path | None = None,
     max_gap_sec: float = 30.0,
+    market: str = "KOSPI",
 ) -> dict[str, Any]:
     p = path or INDUSTRY_FLOW
     if not investor:
@@ -262,6 +264,9 @@ def direct_industry_interval(
             if str(row.get("investor") or "") != investor:
                 continue
             code = str(row.get("upcode") or "").strip()
+            # 코스닥 직접 업종은 3xx 업종만 인정한다. KOSPI 0xx는 혼합 금지.
+            if market == "KOSDAQ" and not (len(code) == 3 and code.startswith("3")):
+                continue
             ts = fnum(row.get("ts"))
             msval = fnum(row.get("msval"))
             if not code or ts is None or msval is None:
@@ -382,6 +387,7 @@ def map_industries(
     token: str,
     target_codes: set[str],
     max_industries: int = 40,
+    market: str = "KOSPI",
 ) -> tuple[dict[str, list[dict[str, str]]], list[str]]:
     mapping: dict[str, list[dict[str, str]]] = defaultdict(list)
     errors: list[str] = []
@@ -390,7 +396,9 @@ def map_industries(
     for row in industries:
         name = _display_name(row.get("hname"))
         code = str(row.get("upcode") or "").strip()
-        if _is_real_industry(name, code):
+        if _is_real_industry(name, code) and (
+            market != "KOSDAQ" or (len(code) == 3 and code.startswith("3"))
+        ):
             filtered.append((name, code))
     for name, code in filtered[:max_industries]:
         try:
@@ -1119,6 +1127,252 @@ def build_enrichment(
     OUT.write_text(json.dumps(raw, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     return render_enrichment_summary(raw), raw
+
+
+
+
+def kosdaq_stock_master(token: str) -> dict[str, dict[str, Any]]:
+    """LS t8436 gubun=2에서 확인되는 코스닥 종목만 결과에 포함."""
+    data=ls_post(token,"/stock/etc","t8436",{"t8436InBlock":{"gubun":"2"}})
+    rows=_rows(data,"t8436OutBlock")
+    out={
+        str(row.get("shcode") or "").strip():row
+        for row in rows
+        if re.fullmatch(r"\d{6}",str(row.get("shcode") or "").strip())
+        and str(row.get("etfgubun") or "") != "1"
+    }
+    if not out:
+        raise RuntimeError("코스닥 t8436 gubun=2 종목 마스터 누락 — 타 시장 종목 대입 금지")
+    return out
+
+
+def kosdaq_program_candidates(token: str, max_rows: int = 28) -> tuple[list[dict[str, Any]], list[str]]:
+    """t1636 구분 1=코스닥, 금액=1, 순매도상위=2. 다른 시장 순위와 합치지 않는다."""
+    errors=[]
+    found:dict[str,dict[str,Any]]={}
+    for order in ("2","0","3"):
+        body={"t1636InBlock":{
+            "gubun":"1","gubun1":"1","gubun2":order,
+            "shcode":"","cts_idx":0,"exchgubun":"U",
+        }}
+        try:
+            data=ls_post(token,"/stock/program","t1636",body)
+            rows=_rows(data,"t1636OutBlock1")
+        except Exception as exc:
+            errors.append(f"코스닥 t1636 순위 {order}: {type(exc).__name__}: {exc}")
+            continue
+        for row in rows:
+            code=str(row.get("shcode") or "").strip()
+            val=fnum(row.get("svalue"))
+            if not re.fullmatch(r"\d{6}",code) or val is None or val>=0:
+                continue
+            previous=found.get(code)
+            if previous is None or val < (fnum(previous.get("svalue")) or 0):
+                found[code]=row
+        if len(found)>=max_rows:
+            break
+    result=sorted(found.values(),key=lambda row:fnum(row.get("svalue")) or 0)
+    return result[:max_rows],errors
+
+
+def render_kosdaq_enrichment(raw: dict[str,Any]) -> str:
+    """코스닥만의 5축 정밀분해. 유효하지 않은 항목은 보류하며 빈 나열을 피한다."""
+    event=raw.get("event") or {}
+    stocks=raw.get("stocks") or []
+    industries=raw.get("industries") or []
+    themes=raw.get("themes") or []
+    etfs=raw.get("etfs") or []
+    direct=raw.get("direct_industry_by_actor") or {}
+    delta=(raw.get("market_spot_deltas") or {})
+    esc=lambda x:html.escape(str(x),quote=False)
+    kst=str(raw.get("generated_at_kst") or "").replace("T"," ")[:19]
+    line=[
+        "🔎 <b>코스닥 급락 · 수급·업종 정밀분해</b>",
+        f"<code>{esc(kst)} KST</code>",
+        f"• 구간 {esc(event.get('start_kst') or '?')} → {esc(event.get('low_kst') or '?')}",
+    ]
+    actor=event.get("spot_leader")
+    if event.get("attribution_available") and actor:
+        line.append(f"• 현물 최다매도: <b>{esc(actor)}</b> · 현물 단독 관측(선물 주도 판정 아님)")
+    elif event.get("attribution_available"):
+        line.append("• 코스닥 현물: 순매도 우위 주체 없음")
+    else:
+        line.append("• 현물 매도주체: 기준점 시간정렬 미충족 · 보류")
+
+    matched=[]
+    for k in ("외국인","기관","개인"):
+        amt=fnum(delta.get(k))
+        block=direct.get(k) or {}
+        cand=[x for x in block.get("rows",[]) if (fnum(x.get("delta")) or 0)<0]
+        if amt is not None and amt < 0 and cand:
+            for x in cand[:1]:
+                matched.append(f"{esc(k)} {amt:+,.0f}억원 → {esc(x.get('name') or '?')} {_fmt_program(x.get('delta'))}")
+    line.extend(["","<b>① 현물 직접 업종</b> <i>(코스닥 3xx UBM 원값)</i>"])
+    line.extend(f"• {x}" for x in matched[:3])
+    if not matched:
+        line.append("• 정렬된 코스닥 업종별 수급 없음 · 직접 판정 보류")
+    line.extend(["","<b>② 하락 업종</b> <i>(등락 / 후보 프로그램 원값)</i>"])
+    for ind in industries[:3]:
+        members="·".join(esc(x) for x in (ind.get("stocks") or [])[:2])
+        line.append(f"• {esc(ind.get('name') or '?')} {_fmt_pct((ind.get('price') or {}).get('return_pct'))} / {_fmt_program(ind.get('program_delta'))}"+(f" · {members}" if members else ""))
+    if not industries:line.append("• 검증된 코스닥 업종 후보 없음")
+    line.extend(["","<b>③ 프로그램 매도 후보 종목</b> <i>(LS 원값·사건구간)</i>"])
+    for row in stocks[:5]:
+        line.append(f"• {esc(row.get('name') or row.get('code') or '?')} {_fmt_program((row.get('program') or {}).get('program_delta'))} / {_fmt_pct((row.get('price') or {}).get('return_pct'))}")
+    if not stocks:line.append("• 코스닥 종목별 프로그램 구간 검증 없음")
+    line.extend(["","<b>④ 연결 테마</b> <i>(중복 허용)</i>"])
+    for th in themes[:2]:
+        line.append(f"• {esc(th.get('name') or '?')} {_fmt_program(th.get('program_delta'))} · {'·'.join(esc(x) for x in (th.get('stocks') or [])[:2])}")
+    if not themes:line.append("• 검증된 연결 테마 없음")
+    line.extend(["","<b>⑤ 관련 ETF 구간 반응</b> <i>(가격 / 구성 겹침)</i>"])
+    valid_etfs=[e for e in etfs if (e.get("price") or {}).get("available")]
+    for item in valid_etfs[:3]:
+        overlap=fnum((item.get("overlap") or {}).get("overlap_weight"))
+        tail=f" · 구성 겹침 {overlap:.1f}%" if overlap is not None and overlap>0 else ""
+        line.append(f"• {esc(item.get('name') or '?')} {_fmt_pct((item.get('price') or {}).get('return_pct'))}{tail}")
+    if not valid_etfs:line.append("• 사건구간 ETF 가격·구성 확인 불가")
+    line.extend([
+        "",
+        "※ 코스닥 현물·코스닥 종목만으로 판정. 코스피200 선물 및 코스피 프로그램과 합산하지 않습니다.",
+        "※ 업종·프로그램은 표본 후보이며 LS 원값은 원화로 임의 환산하지 않습니다. 테마는 중복, ETF 가격은 자금 유출이 아닙니다.",
+    ])
+    errors=raw.get("errors") or []
+    if errors:line.append("※ 일부 원자료 조회 실패 · 미확인 항목은 제외했습니다.")
+    text="\n".join(line)
+    if _enrichment_visible_length(text)<=3800:
+        return text
+    # 토큰 수 문제가 생기면 검증된 핵심 외의 연결테마·ETF 항목만 순차 압축.
+    for key in ("④ 연결 테마","⑤ 관련 ETF 구간 반응"):
+        if _enrichment_visible_length(text)<=3800: break
+        line=[x for x in line if key not in x]
+        text="\n".join(line)
+    if _enrichment_visible_length(text)>3800:
+        text="\n".join(line[:15]+["※ 상세 검증값은 GitHub Actions 산출물에 보관됩니다."])
+    if _enrichment_visible_length(text)>3800:
+        raise ValueError("코스닥 정밀분해 메시지가 Telegram 최대 길이를 초과")
+    return text
+
+
+def build_kosdaq_enrichment(
+    token: str, episode: dict[str,Any], attribution: dict[str,Any] | None=None,
+) -> tuple[str,dict[str,Any]]:
+    """기존 정밀분해 코드·아티팩트 경로를 재사용하되 시장 경계는 독립 검증."""
+    if str(episode.get("market") or "")!="KOSDAQ":
+        raise ValueError("코스닥 정밀분해에는 market=KOSDAQ 사건만 허용")
+    start_ts=float(episode["start_ts"])
+    low_ts=float(episode["low_ts"])
+    if low_ts<=start_ts:
+        raise ValueError("코스닥 사건 구간 시각 역전")
+    att=attribution if isinstance(attribution,dict) else {}
+    errors=[]
+    spot=dict(att.get("spot") or {}) if att.get("available") else {}
+    neg=[(k,fnum(spot.get(k))) for k in ("외국인","기관","개인")]
+    neg=[(k,v) for k,v in neg if v is not None and v<0]
+    neg.sort(key=lambda x:x[1])
+    direct={
+        k:direct_industry_interval(start_ts,low_ts,k,market="KOSDAQ")
+        for k,_ in neg
+    }
+    candidates=[]
+    try:
+        master=kosdaq_stock_master(token)
+        ranks,problems=kosdaq_program_candidates(token, max_rows=28)
+        errors.extend(problems)
+        for row in ranks:
+            code=str(row.get("shcode") or "").strip()
+            if code not in master:
+                continue
+            daily=fnum(row.get("svalue"))
+            if daily is None or daily>=0:
+                continue
+            candidates.append({
+                "code":code,"name":str(master[code].get("hname") or row.get("hname") or code).strip(),
+                "market":"KOSDAQ","daily_program":daily,
+                "marketcap":fnum(row.get("sgta")),
+            })
+            if len(candidates)>=7:break
+    except Exception as exc:
+        errors.append(f"KOSDAQ master/rank: {type(exc).__name__}: {exc}")
+    stocks=[]
+    for item in candidates:
+        code=item["code"]
+        try: pgm=program_interval(token,code,start_ts,low_ts)
+        except Exception as exc: pgm={"available":False,"error":str(exc)}
+        try: price=stock_interval_price(token,code,start_ts,low_ts)
+        except Exception as exc: price={"available":False,"error":str(exc)}
+        data={**item,"program":pgm,"price":price}
+        if pgm.get("available") and (fnum(pgm.get("program_delta")) or 0)<0:
+            stocks.append(data)
+    stocks=confirmed_interval_sellers(stocks)[:6]
+    themes_map={}
+    for stock in stocks[:5]:
+        try: ths=stock_themes(token,stock["code"])
+        except Exception as exc:
+            errors.append(f"theme {stock['code']}: {type(exc).__name__}: {exc}")
+            ths=[]
+        for th in ths:
+            name=str(th.get("name") or "")
+            if not _is_actionable_theme(name):continue
+            row=themes_map.setdefault(name,{"name":name,"program_delta":0.0,"stocks":[]})
+            row["program_delta"]+=float(stock["program"]["program_delta"])
+            row["stocks"].append(stock["name"])
+    themes=sorted(themes_map.values(),key=lambda x:x["program_delta"])[:3]
+    target={x["code"] for x in stocks}
+    industry_map={}
+    if target:
+        try:
+            industry_map,mapping_errors=map_industries(token,target,max_industries=80,market="KOSDAQ")
+            errors.extend(mapping_errors)
+        except Exception as exc:
+            errors.append(f"industry mapping: {type(exc).__name__}: {exc}")
+    buckets={}
+    for stock in stocks:
+        for ind in industry_map.get(stock["code"],[]):
+            key=(ind["name"],ind["code"])
+            b=buckets.setdefault(key,{"name":ind["name"],"code":ind["code"],"program_delta":0.0,"stocks":[]})
+            b["program_delta"]+=float(stock["program"]["program_delta"])
+            b["stocks"].append(stock["name"])
+    industries=sorted(buckets.values(),key=lambda x:x["program_delta"])[:3]
+    for ind in industries:
+        try: ind["price"]=industry_index_interval(token,ind["code"],start_ts,low_ts)
+        except Exception as exc:
+            errors.append(f"industry price {ind['code']}: {type(exc).__name__}: {exc}")
+            ind["price"]={"available":False}
+    etfs=[]
+    if target:
+        try:
+            keywords=_theme_keywords([x["name"] for x in themes+industries])
+            picks=select_etfs(etf_master(token),keywords,limit=5)
+            for row in picks:
+                code=str(row.get("shcode") or "").strip()
+                try: price=stock_interval_price(token,code,start_ts,low_ts)
+                except Exception as exc:
+                    price={"available":False,"error":str(exc)}
+                etfs.append({"name":str(row.get("hname") or code).strip(),
+                             "code":code,"price":price,"overlap":None})
+            for e in etfs[:3]:
+                e["overlap"]=etf_pdf_overlap(token,e["code"],target)
+            etfs.sort(key=lambda x:-(fnum((x.get("overlap") or {}).get("overlap_weight")) or 0))
+        except Exception as exc:
+            errors.append(f"KOSDAQ ETF: {type(exc).__name__}: {exc}")
+    raw={
+        "generated_at_kst":dt.datetime.now(KST).isoformat(timespec="seconds"),
+        "market_basis":"KOSDAQ t8436 gubun=2 / t1636 gubun=1 / t1602 현물 / UBM 3xx",
+        "event":{
+            "market":"KOSDAQ","start_ts":start_ts,"low_ts":low_ts,
+            "start_kst":fmt_clock(start_ts),"low_kst":fmt_clock(low_ts),
+            "spot_leader":att.get("leader"),
+            "attribution_available":bool(att.get("available")),
+        },
+        "market_spot_deltas":spot,
+        "direct_industry_by_actor":direct,
+        "stocks":stocks,"industries":industries,"themes":themes,"etfs":etfs,
+        "candidate_count":len(candidates),"validated_stock_count":len(stocks),
+        "errors":errors,
+    }
+    KOSDAQ_OUT.parent.mkdir(parents=True,exist_ok=True)
+    KOSDAQ_OUT.write_text(json.dumps(raw,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    return render_kosdaq_enrichment(raw),raw
 
 
 def latest_kospi_episode(token: str, minutes: int = 10) -> dict[str, Any]:
