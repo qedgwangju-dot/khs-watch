@@ -361,7 +361,7 @@ def main() -> int:
         previous_errors = [str(x) for x in (prev.get("errors") or [])]
         current_errors = [str(x) for x in (hb.get("errors") or [])]
         current_signature = " | ".join(sorted(set(current_errors)))[:1000]
-        previous_signature = str(prev.get("error_signature") or " | ".join(sorted(set(previous_errors)))[:1000]
+        previous_signature = str(prev.get("error_signature") or " | ".join(sorted(set(previous_errors))))[:1000]
         hb["error_signature"] = current_signature
 
         if not operational:
