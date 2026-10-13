@@ -14,6 +14,7 @@ import datetime as dt
 import multiprocessing as mp
 from multiprocessing.connection import wait
 import os
+import shutil
 import signal
 import time
 import urllib.parse
@@ -40,6 +41,37 @@ def _clean(watch):
         if path is None:
             continue
         path.unlink(missing_ok=True)
+
+
+def _rejected_paths(watch):
+    return (
+        ('alert', watch.ALERT, watch.OUT / 'war_peace_reconstruction_rejected_alert.txt'),
+        ('pending', watch.PENDING, watch.OUT / 'war_peace_reconstruction_rejected_pending.json'),
+        ('evidence', getattr(watch, 'AUDIT', None), watch.OUT / 'war_peace_reconstruction_rejected_evidence.json'),
+    )
+
+
+def _clean_rejected(watch):
+    for _, _, target in _rejected_paths(watch):
+        target.unlink(missing_ok=True)
+
+
+def _preserve_rejected(watch, report):
+    """Keep failed render evidence under names excluded from all send/state steps."""
+    if report.get('phase') != 'parse_render_verify':
+        return
+    retained = []
+    for role, source, target in _rejected_paths(watch):
+        if source is None or not source.is_file():
+            continue
+        if source.resolve().parent != watch.OUT.resolve():
+            raise ValueError('rejected diagnostic source must be within the output directory')
+        raw = source.read_bytes()
+        shutil.copyfile(source, target)
+        retained.append({'role': role, 'path': target.name, 'bytes': len(raw),
+                         'sha256': hashlib.sha256(raw).hexdigest(), 'verified': False})
+    if retained:
+        report['rejected_artifacts'] = retained
 
 
 class _ProviderBlocks:
@@ -165,17 +197,31 @@ def _http_record(url, value, error):
 
 
 def _payload_retry_eligible(record, blocked):
-    failures = [item for item in record.get('http', []) if item.get('status') == 'error']
+    http = record.get('http', [])
+    failures = [item for item in http if item.get('status') == 'error']
     if record.get('status') != 'error' or not failures:
         return False
-    for item in failures:
+
+    def malformed_rss(item):
         parsed = urllib.parse.urlparse(item['url'])
         host = (parsed.hostname or '').lower().removeprefix('www.')
         query = urllib.parse.parse_qs(parsed.query)
         rss = str((query.get('format') or [''])[0]).lower() == 'rss' or (
             parsed.hostname == 'news.google.com' and '/rss/' in parsed.path)
-        if (not item.get('error', '').startswith('SourcePayloadError:')
-                or not rss or host in blocked):
+        return (item.get('error', '').startswith('SourcePayloadError:')
+                and rss and host not in blocked)
+
+    # A denied primary must stay blocked; its already-configured RSS fallback
+    # can still recover from a malformed payload. A denied final source cannot.
+    if http[-1].get('status') != 'error' or not malformed_rss(http[-1]):
+        return False
+    for item in failures[:-1]:
+        if malformed_rss(item):
+            continue
+        host = (urllib.parse.urlparse(item['url']).hostname or '').lower().removeprefix('www.')
+        denial = blocked.get(host) or {}
+        if (denial.get('code') not in (401, 403, 429)
+                or not item.get('error', '').startswith(('HTTPError:', 'RecordedSourceError:'))):
             return False
     return True
 
@@ -381,6 +427,10 @@ def _child_run(watch, run_and_verify, report_path, seconds, workers):
         report.update(complete=True, phase='verified')
         _save(report_path, report)
     except BaseException as exc:
+        try:
+            _preserve_rejected(watch, report)
+        except (OSError, ValueError) as capture_error:
+            report['rejected_capture_error'] = type(capture_error).__name__ + ': ' + str(capture_error)
         _clean(watch)
         report.update(complete=False, phase='failed', error=type(exc).__name__ + ': ' + str(exc))
         _save(report_path, report)
@@ -393,6 +443,7 @@ def run_bounded(watch, run_and_verify, *, total_seconds=540, collection_seconds=
         raise ValueError('total budget must exceed positive collection budget')
     watch.OUT.mkdir(parents=True, exist_ok=True)
     _clean(watch)
+    _clean_rejected(watch)
     report_path = watch.OUT / 'war_peace_reconstruction_coverage.json'
     _save(report_path, {'complete': False, 'phase': 'starting', 'total_budget_seconds': total_seconds})
     process = mp.get_context('fork').Process(
@@ -413,6 +464,11 @@ def run_bounded(watch, run_and_verify, *, total_seconds=540, collection_seconds=
         report = {}
     report['total_budget_seconds'] = total_seconds
     if timed_out or process.exitcode != 0 or report.get('complete') is not True:
+        if not report.get('rejected_artifacts'):
+            try:
+                _preserve_rejected(watch, report)
+            except (OSError, ValueError) as capture_error:
+                report['rejected_capture_error'] = type(capture_error).__name__ + ': ' + str(capture_error)
         _clean(watch)
         report.update(complete=False, exit_code=process.exitcode)
         if timed_out:

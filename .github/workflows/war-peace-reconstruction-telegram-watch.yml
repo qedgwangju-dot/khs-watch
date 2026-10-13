@@ -251,6 +251,9 @@ jobs:
             out/war_peace_reconstruction_pending.json
             out/war_peace_reconstruction_coverage.json
             out/war_peace_reconstruction_evidence.json
+            out/war_peace_reconstruction_rejected_alert.txt
+            out/war_peace_reconstruction_rejected_pending.json
+            out/war_peace_reconstruction_rejected_evidence.json
             out/war_peace_reconstruction_delivery.json
             data/war_peace_reconstruction_watch_state.json
           if-no-files-found: ignore
