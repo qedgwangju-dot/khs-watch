@@ -7,6 +7,7 @@ import xml.etree.ElementTree as ET
 
 import war_peace_reconstruction_watch_bodycolor as core
 import war_peace_reconstruction_watch_bodycolor_parallel as parallel
+from war_peace_reconstruction_watch_evidence import attach_article
 
 watch = core.watch
 runner = core.runner
@@ -97,10 +98,8 @@ def _strict_enrich(row):
             final_url, page = core._request_text(url, timeout=8)
             body = core._extract_body(page)
             if body:
-                row["article_text"] = body
-                row["resolved_url"] = final_url or url
-                row["body_verified"] = True
-                return
+                if attach_article(row, final_url or url, page, body):
+                    return
         except Exception:
             continue
 

@@ -8,6 +8,7 @@ verification too, including stalled non-daemon article-enrichment threads.
 from __future__ import annotations
 
 import json
+import hashlib
 import multiprocessing as mp
 from multiprocessing.connection import wait
 import os
@@ -33,7 +34,9 @@ def _save(path, report):
 
 
 def _clean(watch):
-    for path in (watch.ALERT, watch.PENDING):
+    for path in (watch.ALERT, watch.PENDING, getattr(watch, 'AUDIT', None)):
+        if path is None:
+            continue
         path.unlink(missing_ok=True)
 
 
@@ -186,8 +189,9 @@ def prefetch(watch, report, report_path, *, seconds=360, workers=8):
                                   elapsed_seconds=round(elapsed, 3), rows=result['rows'],
                                   requests=len(result['trace']))
                     record['http'] = [dict(url=url, status='error' if error else 'ok',
-                                          **({'error': error} if error else {}))
-                                      for url, _, _, error in result['trace']]
+                                          **({'error': error} if error else {
+                                              'bytes': len(value), 'sha256': hashlib.sha256(value).hexdigest()}))
+                                      for url, _, value, error in result['trace']]
                     record['fallback_recovered'] = bool(
                         not result['error'] and any(entry[3] for entry in result['trace']))
                     if result['error']:

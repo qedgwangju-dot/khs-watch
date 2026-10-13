@@ -13,6 +13,7 @@ import urllib.request
 import xml.etree.ElementTree as ET
 from email.utils import parsedate_to_datetime
 from zoneinfo import ZoneInfo
+import war_peace_reconstruction_watch_evidence as evidence
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 STATE = ROOT / "data" / "war_peace_reconstruction_watch_state.json"
@@ -20,6 +21,7 @@ OUT = ROOT / "out"
 ALERT = OUT / "war_peace_reconstruction_alert.txt"
 PENDING = OUT / "war_peace_reconstruction_pending.json"
 SUMMARY = OUT / "war_peace_reconstruction_watch.md"
+AUDIT = OUT / "war_peace_reconstruction_evidence.json"
 KST = ZoneInfo("Asia/Seoul")
 
 TRUSTED = (
@@ -65,6 +67,34 @@ class SourceAccessBlocked(RuntimeError):
     provider_blocked = True
 
 
+class SourcePayloadError(ValueError):
+    pass
+
+
+def _validate_source_payload(url, data):
+    parsed = urllib.parse.urlparse(url)
+    query = urllib.parse.parse_qs(parsed.query)
+    fmt = str((query.get('format') or [''])[0]).lower()
+    rss = fmt == 'rss' or (parsed.hostname == 'news.google.com' and '/rss/' in parsed.path)
+    try:
+        if rss:
+            root = ET.fromstring(data)
+            if root.tag not in ('rss', '{http://www.w3.org/2005/Atom}feed'):
+                raise ValueError('not an RSS/Atom document')
+            if root.tag == 'rss' and root.find('channel') is None:
+                raise ValueError('missing RSS channel')
+        elif fmt == 'json':
+            value = json.loads(data)
+            if not isinstance(value, (dict, list)):
+                raise ValueError('not a JSON object/list')
+            if parsed.hostname == 'api.gdeltproject.org' and (
+                    not isinstance(value, dict) or not isinstance(value.get('articles'), list)):
+                raise ValueError('missing GDELT articles list')
+    except (ValueError, ET.ParseError) as exc:
+        digest = hashlib.sha256(data).hexdigest()[:12]
+        raise SourcePayloadError(f'expected {"RSS/Atom" if rss else "JSON"}; bytes={len(data)} sha256={digest}') from exc
+
+
 # Installed only inside isolated collection workers, never in delivery/finalize.
 _before_source_request = None
 
@@ -106,6 +136,9 @@ def req(url, timeout=20):
             with opener.open(request, timeout=min(timeout, 10 if attempt == 0 else 5)) as response:
                 data = response.read()
             sample = data[:16000].lower()
+            if urllib.parse.urlparse(url).hostname == 'api.gdeltproject.org' and any(
+                    marker in sample for marker in (b'too many requests', b'rate limit exceeded')):
+                raise SourceAccessBlocked('source returned a rate-limit denial')
             is_html = b'<html' in sample[:2000] or sample.lstrip().startswith(b'<!doctype html')
             if is_html and any(marker in sample for marker in (
                 b'cf-chl-', b'/cdn-cgi/challenge-platform/',
@@ -113,6 +146,7 @@ def req(url, timeout=20):
                 b'our systems have detected unusual traffic',
             )):
                 raise SourceAccessBlocked('source returned an access challenge')
+            _validate_source_payload(url, data)
             return data
         except SourceAccessBlocked:
             raise
@@ -184,6 +218,7 @@ def google_news(query):
             "link": link,
             "published": pub,
             "source": source,
+            "source_url": source_node.get('url', '') if source_node is not None else '',
             "description": desc,
         })
     return out, None
@@ -275,9 +310,12 @@ def load_state():
     if not STATE.exists():
         return {"seen": [], "updated_at": None}
     try:
-        return json.loads(STATE.read_text(encoding="utf-8"))
-    except Exception:
-        return {"seen": [], "updated_at": None}
+        state = json.loads(STATE.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        raise RuntimeError('War watch state is unreadable; seen history preserved') from exc
+    if not isinstance(state, dict) or not isinstance(state.get('seen'), list):
+        raise RuntimeError('War watch state has invalid seen history')
+    return state
 
 
 def freshness_label(x, now):
@@ -351,7 +389,7 @@ def build_alert(items, markets, now):
 def run(test=False):
     OUT.mkdir(parents=True, exist_ok=True)
     STATE.parent.mkdir(parents=True, exist_ok=True)
-    for p in (ALERT, PENDING):
+    for p in (ALERT, PENDING, AUDIT):
         if p.exists():
             p.unlink()
     now = dt.datetime.now(KST)
@@ -411,16 +449,25 @@ def run(test=False):
 
     markets = market_snapshot()
     if items:
-        ALERT.write_text(build_alert(items, markets, now), encoding="utf-8")
-        PENDING.write_text(json.dumps({"ids": [x["id"] for x in items]}, ensure_ascii=False), encoding="utf-8")
+        text = build_alert(items, markets, now)
+        receipt = evidence.alert_receipt(items, markets, now, text)
+        rendered_ids = [row['id'] for row in receipt['articles'] if row['rendered']]
+        if text.strip() and not rendered_ids:
+            raise RuntimeError('War alert has no identifiable rendered source items')
+        if rendered_ids:
+            ALERT.write_text(text, encoding="utf-8")
+            PENDING.write_text(json.dumps({"ids": rendered_ids}, ensure_ascii=False), encoding="utf-8")
+    else:
+        receipt = evidence.alert_receipt([], markets, now, '')
+    AUDIT.write_text(json.dumps(receipt, ensure_ascii=False, indent=2, default=str) + '\n', encoding='utf-8')
 
     summary = [
         "# 전쟁·종전·재건 웹감시 상태",
         "",
         f"- 조회: {now.isoformat(timespec='seconds')}",
         f"- 수집: {len(gathered)}건",
-        f"- 신규 강한 신호: {len(items)}건",
-        "- 속도: GitHub Actions 5분 주기 + 1시간 속보 검색창 우선",
+        f"- 신규 후보: {len(items)}건 / 실제 본문 포함: {sum(row['rendered'] for row in receipt['articles'])}건",
+        "- 실행 설정: GitHub Actions 5분 예약 + 1시간 속보 검색창 우선 (실제 실행 시각은 Actions 기록 기준)",
         "- 번역: 영문 제목은 한국어로 강제 변환, 실패 시 영문 원문 미노출",
         "- Telegram 형식: 핵심 변화 → 시장 반응 → 투자 판정 → 다음 확인 → 원문",
     ]

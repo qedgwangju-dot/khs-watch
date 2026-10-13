@@ -4,6 +4,7 @@ import csv
 import datetime as dt
 import io
 import json
+import math
 
 from zoneinfo import ZoneInfo
 
@@ -43,7 +44,8 @@ def _yahoo_quote(sym):
         return None
     ts, px = valid[-1]
     prev = float(meta.get("previousClose") or 0)
-    if not prev:
+    px = float(px)
+    if not all(math.isfinite(value) and value > 0 for value in (px, prev)):
         return None
     asof = dt.datetime.fromtimestamp(ts, KST)
     pct = (float(px) / prev - 1.0) * 100.0
@@ -69,6 +71,8 @@ def _stooq_quote(sym):
     if not close or close in ("N/D", "-") or not date_s or not time_s:
         return None
     px = float(close)
+    if not math.isfinite(px) or px <= 0:
+        return None
     local = dt.datetime.strptime(f"{date_s} {time_s}", "%Y-%m-%d %H:%M:%S").replace(tzinfo=WARSAW)
     return {
         "price": px,
@@ -98,24 +102,22 @@ def precise_market_snapshot():
             s = None
 
         # Yahoo 최신 1분봉이 20분보다 오래됐으면 값 자체를 발송하지 않는다.
-        if _fresh_minutes(y["asof"], now) > 20:
+        if _fresh_minutes(y["asof"], now) > 20 or y["asof"] > now + dt.timedelta(minutes=5):
             continue
 
         selected = y
         verified = False
         verify_note = ""
-        if s and _fresh_minutes(s["asof"], now) <= 20:
+        comparison = None
+        if s and _fresh_minutes(s["asof"], now) <= 20 and s["asof"] <= now + dt.timedelta(minutes=5):
             gap_pct = abs(s["price"] / y["price"] - 1.0) * 100.0
+            comparison = {'source': s['source'], 'symbol': STOOQ_SYMBOLS[sym],
+                          'price': s['price'], 'asof': s['asof'].isoformat(), 'gap_pct': gap_pct,
+                          'contract_identity_verified': False}
             if gap_pct <= 0.20:
-                verified = True
-                # 더 최신 시각의 가격을 사용하되 일간 등락률은 동일 계약의 전일 종가 기준으로 재계산한다.
-                if s["asof"] > y["asof"]:
-                    selected = dict(y)
-                    selected["price"] = s["price"]
-                    selected["asof"] = s["asof"]
-                    selected["source"] = "Stooq + Yahoo Finance 교차검증"
-                    selected["pct"] = (selected["price"] / y["prev"] - 1.0) * 100.0
-                verify_note = f"교차검증 일치(차이 {gap_pct:.2f}%)"
+                # Both generic futures symbols may roll differently. A nearby
+                # price is auxiliary evidence, not proof of the same contract.
+                verify_note = f"보조가격 차이 {gap_pct:.2f}% · 계약 동일성 미확인"
             else:
                 # 두 실시간 원천이 0.20% 넘게 어긋나면 잘못된 값을 보내느니 해당 항목을 생략한다.
                 continue
@@ -128,6 +130,11 @@ def precise_market_snapshot():
             "basis": "전일 종가 대비",
             "source": selected["source"],
             "asof": selected["asof"].strftime("%H:%M KST"),
+            "observed_at_kst": selected["asof"].isoformat(),
+            "symbol": sym,
+            "previous_close": y['prev'],
+            "source_url": f"https://query1.finance.yahoo.com/v8/finance/chart/{watch.urllib.parse.quote(sym)}?range=1d&interval=1m",
+            "comparison": comparison,
             "verified": verified,
             "verify_note": verify_note,
         })

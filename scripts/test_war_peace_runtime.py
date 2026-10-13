@@ -191,13 +191,20 @@ class RuntimeTests(unittest.TestCase):
         def run():
             from concurrent.futures import ThreadPoolExecutor
             watch.google_news('one')
+            (watch.OUT / 'render_started').write_text('started')
             watch.ALERT.write_text('partial')
             watch.PENDING.write_text('partial')
             with ThreadPoolExecutor(max_workers=1) as executor:
                 executor.submit(time.sleep, 60).result()
         started = time.monotonic()
-        self.assertEqual(runtime.run_bounded(watch, run, total_seconds=0.4, collection_seconds=0.1), 1)
+        # This tests the full-run supervisor during stalled rendering. A 100ms
+        # collection budget can expire on a busy CI host before rendering ever
+        # starts, which exercises a different already-covered failure branch.
+        transcript = {0: [('one', 20, b'one', None)]}
+        with patch.object(runtime, 'prefetch', return_value=(['one'], transcript)):
+            self.assertEqual(runtime.run_bounded(watch, run, total_seconds=0.4, collection_seconds=0.1), 1)
         self.assertLess(time.monotonic()-started, 2)
+        self.assertTrue((watch.OUT / 'render_started').exists())
         self.assertFalse(watch.ALERT.exists())
         self.assertFalse(watch.PENDING.exists())
         report = json.loads((watch.OUT/'war_peace_reconstruction_coverage.json').read_text())
