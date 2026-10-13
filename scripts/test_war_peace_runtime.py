@@ -174,6 +174,63 @@ class RuntimeTests(unittest.TestCase):
         self.assertEqual(report['news'][0]['payload_retry_attempts'], 1)
         self.assertFalse(report['complete'])
 
+    def test_successful_response_in_same_execution_is_not_refetched_or_replaced(self):
+        watch = fake_watch(self.root, ['group'])
+        calls = mp.get_context('fork').Array('i', [0, 0])
+        valid = b'<rss><channel/></rss>'
+        def req(url, timeout=20):
+            index = 0 if 'healthy' in url else 1
+            with calls.get_lock():
+                calls[index] += 1
+                attempt = calls[index]
+            if index == 0 and attempt > 1:
+                raise AssertionError('successful current response must not be refetched')
+            if index == 1 and attempt == 1:
+                raise SourcePayloadError(b'<html>unavailable</html>')
+            return valid
+        watch.req = req
+        watch.google_news = lambda q: ([{'first':watch.req('https://healthy.example/?format=rss'),
+                                        'second':watch.req('https://recover.example/?format=rss')}], None)
+        queries, traces, report = self.collect(watch, workers=1)
+        self.assertEqual(list(calls), [1, 2])
+        record = report['news'][0]
+        self.assertEqual(record['status'], 'ok')
+        self.assertEqual(record['reused_success_requests'], 1)
+        self.assertTrue(record['http'][0]['reused_from_initial_attempt'])
+        self.assertEqual(record['http'][0]['sha256'], record['initial_attempt']['http'][0]['sha256'])
+        self.assertNotIn('reused_from_initial_attempt', record['http'][1])
+        watch.req = forbidden
+        restore, verify = runtime.install_replay(watch, queries, traces)
+        try:
+            self.assertEqual(watch.google_news('group')[0][0], {'first':valid, 'second':valid})
+            verify()
+        finally:
+            restore()
+
+    def test_duplicate_url_occurrences_do_not_reuse_a_failed_body(self):
+        watch = fake_watch(self.root, ['group'])
+        calls = mp.get_context('fork').Value('i', 0)
+        first, recovered = b'<rss><channel><title>first</title></channel></rss>', b'<rss><channel><title>recovered</title></channel></rss>'
+        def req(url, timeout=20):
+            with calls.get_lock():
+                calls.value += 1
+                attempt = calls.value
+            if attempt == 2: raise SourcePayloadError(b'<html>unavailable</html>')
+            return first if attempt == 1 else recovered
+        watch.req = req
+        url = 'https://source.example/?format=rss'
+        watch.google_news = lambda q: ([{'first':watch.req(url), 'second':watch.req(url)}], None)
+        queries, traces, report = self.collect(watch, workers=1)
+        self.assertEqual(calls.value, 3)
+        self.assertEqual(report['news'][0]['reused_success_requests'], 1)
+        watch.req = forbidden
+        restore, verify = runtime.install_replay(watch, queries, traces)
+        try:
+            self.assertEqual(watch.google_news('group')[0][0], {'first':first, 'second':recovered})
+            verify()
+        finally:
+            restore()
+
     def test_recovery_retry_cannot_extend_total_deadline_or_leave_a_worker(self):
         watch = fake_watch(self.root, ['https://source.example/?format=rss'])
         calls = mp.get_context('fork').Value('i', 0)
@@ -421,6 +478,7 @@ class RuntimeTests(unittest.TestCase):
             self.assertEqual(calls.value, 2)
             self.assertEqual(report['news'][0]['status'], 'ok')
             self.assertEqual(report['news'][0]['requests'], 5)
+            self.assertEqual(report['news'][0]['reused_success_requests'], 4)
             self.assertEqual([h['url'] for h in report['news'][0]['http']],
                              [h['url'] for h in report['news'][0]['initial_attempt']['http']])
             watch.req = forbidden
