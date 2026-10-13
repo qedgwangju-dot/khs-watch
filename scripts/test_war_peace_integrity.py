@@ -142,6 +142,11 @@ class IntegrityTests(unittest.TestCase):
         self.assertFalse(row.get('body_verified', False))
         dashed = article('Iran talks - agreement signed by both sides')
         self.assertFalse(evidence.title_matches(dashed, 'Iran talks - agreement rejected by either side'))
+        actors = article('Russia attacks Ukraine', source='Reuters')
+        self.assertFalse(evidence.title_matches(actors, 'Ukraine attacks Russia'))
+        denial = article('이란, 공격 안 한다', source='Reuters')
+        self.assertFalse(evidence.title_matches(denial, '이란, 공격 한다'))
+        self.assertTrue(evidence.title_matches(actors, 'Russia attacks Ukraine | Reuters'))
 
     def test_old_origin_date_cannot_be_refreshed_by_recent_rss(self):
         row = article('EU, 러시아 군수 공급업체 제재 확대')
