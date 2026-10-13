@@ -45,9 +45,12 @@ def load_state():
     if not DATA.exists():
         return {"history": {}}
     try:
-        return json.loads(DATA.read_text(encoding="utf-8"))
-    except Exception:
-        return {"history": {}}
+        state = json.loads(DATA.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        raise RuntimeError(f"Treasury state is unreadable: {DATA}") from exc
+    if not isinstance(state, dict) or not isinstance(state.get("history"), dict):
+        raise RuntimeError(f"Treasury state has invalid history: {DATA}")
+    return state
 
 
 def save_state(state):
@@ -93,7 +96,10 @@ def get_ishares(ticker, meta, *, retry_budget=None):
     nav_m = re.search(r"NAV as of ([A-Za-z]{3} \d{1,2}, \d{4}).{0,35}?\$+\s*([0-9,.]+)", text)
     shares_m = re.search(r"Shares Outstanding\s+([0-9,]+(?:\.\d+)?)\s+as of\s+([A-Za-z]{3} \d{1,2}, \d{4})", text)
     sec_m = re.search(r"30 Day SEC Yield as of [A-Za-z]{3} \d{1,2}, \d{4}\s+([0-9.]+)%", text)
-    change_m = re.search(r"1 Day NAV Change as of [A-Za-z]{3} \d{1,2}, \d{4}.{0,110}?\(([-+]?\d+(?:\.\d+)?)%\)", text)
+    change_m = re.search(
+        r"1 Day NAV Change as of ([A-Za-z]{3} \d{1,2}, \d{4}).{0,110}?\(\s*([-+]?\d+(?:\.\d+)?)\s*%\s*\)",
+        text,
+    )
     assets_m = re.search(r"Net Assets of Fund\s+\$([0-9,]+(?:\.\d+)?)\s+as of\s+([A-Za-z]{3} \d{1,2}, \d{4})", text)
 
     if not nav_m or not shares_m:
@@ -117,9 +123,10 @@ def get_ishares(ticker, meta, *, retry_budget=None):
         "nav": money_number(nav_m.group(2)),
         "shares": money_number(shares_m.group(1)),
         "sec_yield": float(sec_m.group(1)) if sec_m else None,
-        "nav_change_pct": float(change_m.group(1)) if change_m else None,
+        "nav_change_pct": float(change_m.group(2)) if change_m and parse_date(change_m.group(1)) == nav_date else None,
         "net_assets": money_number(assets_m.group(1)) if assets_m else None,
         "source": meta["url"],
+        "fetched_at_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
     }
 
 
@@ -168,7 +175,7 @@ def compute_flow(current, history):
     if not prev:
         return None
     delta_shares = current["shares"] - float(prev["shares"])
-    return delta_shares * current["nav"]
+    return round(delta_shares * current["nav"], 2)
 
 
 def upsert_history(history, current, flow_usd):
@@ -188,13 +195,13 @@ def last_n_flows(history, n=5):
 def fmt_usd_flow(value):
     if value is None:
         return "기준점 수집 중"
-    sign = "+" if value > 0 else "" if value < 0 else "±"
+    sign = "+" if value > 0 else "-" if value < 0 else "±"
     av = abs(value)
     if av >= 1_000_000_000:
-        return f"{sign}${value/1_000_000_000:,.2f}B"
+        return f"{sign}${av/1_000_000_000:,.2f}B"
     if av >= 1_000_000:
-        return f"{sign}${value/1_000_000:,.1f}M"
-    return f"{sign}${value:,.0f}"
+        return f"{sign}${av/1_000_000:,.1f}M"
+    return f"{sign}${av:,.0f}"
 
 
 def fmt_krw(value, fx):

@@ -39,6 +39,23 @@ def example():
 
 
 class TreasuryReportIntegrity(unittest.TestCase):
+    def test_refinancing_krw_uses_unrounded_source_amounts(self):
+        # 2026-09-30 MSPD values and the 2026-10-09 ECB/Frankfurter rate.
+        refi = {
+            "next12_t": 10.640155363354076, "next12_share": 33.42294955600567,
+            "bills_t": 7.1181453141, "bill_share": 22.35958063026692,
+            "plus75_b": 53.38608985575,
+        }
+        line = report._refinancing_line(refi, 1341.49)
+        self.assertIn("$10.64T (약 1경4,274조원)", line)
+        self.assertIn("Bills $7.12T (약 9,549조원)", line)
+        self.assertIn("+$53.4B (약 71.62조원)", line)
+
+    def test_negative_usd_flow_places_sign_before_currency_symbol(self):
+        self.assertEqual(base.fmt_usd_flow(-8_934_000), "-$8.9M")
+        self.assertEqual(base.fmt_usd_flow(-1_210_000_000), "-$1.21B")
+        self.assertEqual(base.fmt_usd_flow(0), "±$0")
+
     def test_original_fund_flows_are_inferred_not_actual_provider_net_flows(self):
         self.assertEqual(
             base.compute_flow(
@@ -46,6 +63,13 @@ class TreasuryReportIntegrity(unittest.TestCase):
                 [{"date": "2026-10-07", "shares": 232200000}],
             ),
             -7698000,
+        )
+        self.assertEqual(
+            base.compute_flow(
+                {"date": "2026-10-12", "shares": 623_600_000, "nav": 78.01},
+                [{"date": "2026-10-09", "shares": 625_200_000}],
+            ),
+            -124_816_000.0,
         )
 
     def test_latest_market_date_is_independent_of_korean_date(self):
@@ -172,6 +196,7 @@ class TreasuryReportIntegrity(unittest.TestCase):
         self.assertIn("당일 30년물 -7bp 하락", rendered)
         self.assertIn("같은 거래일 동시 위험회피로 단정하지 않음", rendered)
         self.assertIn("Bills에 +75bp 적용 시", rendered)
+        self.assertIn("ETF 보유채권 포트폴리오 특성치", rendered)
 
 
     def test_jpm_30y_level_does_not_claim_a_new_breakout(self):
