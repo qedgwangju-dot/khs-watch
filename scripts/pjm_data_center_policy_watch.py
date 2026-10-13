@@ -364,7 +364,13 @@ new_grid_events = [
     event for event in grid_events
     if event.get("id") not in old_grid_ids and grid_event_is_alertable(event, grid_now)
 ]
-grid_seen = list(dict.fromkeys(old_grid_seen + [str(event.get("id")) for event in grid_events]))[-SEEN_ID_LIMIT:]
+# Never mark unsent grid events as seen.  The Telegram report intentionally
+# limits one batch to four notices; any additional eligible items must remain
+# available for the next run rather than being silently lost.
+grid_to_send = new_grid_events[:4]
+grid_seen = list(
+    dict.fromkeys(old_grid_seen + [str(event.get("id")) for event in grid_to_send])
+)[-SEEN_ID_LIMIT:]
 
 changes = []
 for key, label in (
@@ -519,11 +525,11 @@ if should_alert:
 
     ALERT.write_text(text + "\n", encoding="utf-8")
 
-if new_grid_events:
+if grid_to_send:
     GRID_ALERT.write_text(
         "\n\n---\n\n".join(
             render_grid_emergency_event(event, grid_now)
-            for event in new_grid_events[:4]
+            for event in grid_to_send
         )
         + "\n",
         encoding="utf-8",
@@ -540,7 +546,7 @@ STATUS.write_text(
     f"- 숫자 변경: **{len(changes)}건**\n"
     f"- 알림: **{'예' if should_alert else '아니오'}**\n"
     f"- 원천 오류: **{'; '.join(errors) if errors else '없음'}**\n"
-    f"- PJM·DOE 비상운영 신규 이벤트: **{len(new_grid_events)}건**\n"
+    f"- PJM·DOE 비상운영 신규 이벤트: **{len(new_grid_events)}건** · 이번 송출 **{len(grid_to_send)}건** · 다음 실행 이월 **{len(new_grid_events)-len(grid_to_send)}건**\n"
     f"- PJM·DOE 비상운영 원천 오류: **{'; '.join(grid_errors) if grid_errors else '없음'}**\n",
     encoding="utf-8",
 )
