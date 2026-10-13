@@ -405,6 +405,7 @@ msg_today = Watch.build_alert(w_today,"start",{
 },1332.0,6741.59)
 assert "확신도 중간" in msg_today, msg_today
 assert "방향 일치·합계 차이 3.53%" in msg_today, msg_today
+assert "-40,892" not in msg_today and "원값 수치 표시 보류" in msg_today, msg_today
 assert "주도 가능성 높음" not in msg_today, msg_today
 assert "5분 32초" in msg_today, msg_today
 print("20261008_flow_precision_regression=true program_gap=1444 raw_ratio=3.53 confidence=medium")
@@ -813,8 +814,8 @@ _surge_watch.flows=deque(_surge_rows,maxlen=2500)
 _surge_watch.idx=deque([(10000,6800.0),(10300,6800.0)],maxlen=30000)
 _surge_sent=[]
 _surge_delivery=[]
-_surge_watch._record_delivery=lambda stage,message_id,ep,ts: _surge_delivery.append(
-    (stage,message_id,ep,ts)
+_surge_watch._record_delivery=lambda stage,message_id,ep,ts,**kw: _surge_delivery.append(
+    (stage,message_id,ep,ts,kw.get("evidence"))
 )
 _original_surge_sender=ks.telegram_send
 try:
@@ -833,8 +834,10 @@ try:
     assert _surge_delivery[0][2]["market"]=="KOSPI" and _surge_delivery[0][2]["actor"]=="외국인"
     assert "현물(통합) +550억원" in _surge_sent[0],_surge_sent[0]
     assert "KOSPI200 선물 +720억원" in _surge_sent[0],_surge_sent[0]
-    assert "KOSPI +0.00%" in _surge_sent[0],_surge_sent[0]
+    assert "KOSPI 가격 " in _surge_sent[0] and "+0.00%" in _surge_sent[0],_surge_sent[0]
     assert "외부 신규자금 유입" in _surge_sent[0],_surge_sent[0]
+    assert _surge_delivery[0][4]["spot_cumulative"] == {"start":0.0,"end":550.0}
+    assert _surge_delivery[0][4]["futures_cumulative"] == {"start":0.0,"end":720.0}
     # 같은 샘플 반복 및 20분 안쪽의 새로운 샘플은 중복 금지.
     _surge_async.run(_surge_watch.maybe_alert_flow_surge(10325))
     _surge_watch.flows.append(_surge_row(10340,750,920,1600))
@@ -859,6 +862,67 @@ try:
 finally:
     ks.telegram_send=_original_surge_sender
 print("flow_surge_two_sample_confirm_valid=true dedup=20m handoff=true test_mode_silent=true")
+
+# LS 원자료 시각만 바뀐 재전송은 새 매수로 세지 않는다. 수급 채널이
+# 현물에서 선물로 바뀌어도 앞 채널의 확인 표본을 재사용하지 않는다.
+_surge_baselines=[_surge_row(t,0,0,0) for t in (10000,10020,10040)]
+_stale_watch=Watch("unused",[],"",False)
+_stale_watch.session_open_ts=9500
+_stale_watch.session_continuous_end_ts=15000
+_stale_watch.session_close_ts=16000
+_stale_watch.flows=deque(_surge_baselines+[_surge_row(10300,1050,-600,-1500)],maxlen=2500)
+_stale_msgs=[]
+_stale_watch._record_delivery=lambda *args,**kwargs: None
+try:
+    ks.telegram_send=lambda message: (_stale_msgs.append(message),889)[1]
+    _surge_async.run(_stale_watch.maybe_alert_flow_surge(10303))
+    _stale_watch.flows.append(_surge_row(10320,1050,-600,-1500))
+    _surge_async.run(_stale_watch.maybe_alert_flow_surge(10323))
+    assert not _stale_msgs,"동일 누적값의 새 시각을 독립 수급 확인으로 사용"
+    _stale_watch.flows.append(_surge_row(10340,1070,-600,-1500))
+    _surge_async.run(_stale_watch.maybe_alert_flow_surge(10343))
+    assert len(_stale_msgs)==1,_stale_msgs
+    assert "코스피 현물 순매수 증가" in _stale_msgs[0],_stale_msgs[0]
+    assert _stale_watch.raw["last_flow_surge_alert"]["spot_cumulative"] == {"start":0.0,"end":1070.0}
+finally:
+    ks.telegram_send=_original_surge_sender
+
+_mode_watch=Watch("unused",[],"",False)
+_mode_watch.session_open_ts=9500
+_mode_watch.session_continuous_end_ts=15000
+_mode_watch.session_close_ts=16000
+_mode_watch.flows=deque(_surge_baselines+[_surge_row(10300,1050,-600,0)],maxlen=2500)
+_mode_msgs=[]
+_mode_watch._record_delivery=lambda *args,**kwargs: None
+try:
+    ks.telegram_send=lambda message: (_mode_msgs.append(message),890)[1]
+    _surge_async.run(_mode_watch.maybe_alert_flow_surge(10303))
+    _mode_watch.flows.append(_surge_row(10320,0,1500,0))
+    _surge_async.run(_mode_watch.maybe_alert_flow_surge(10323))
+    assert not _mode_msgs,"현물 관찰을 선물 확인 표본으로 재사용"
+    _mode_watch.flows.append(_surge_row(10340,0,1520,0))
+    _surge_async.run(_mode_watch.maybe_alert_flow_surge(10343))
+    assert len(_mode_msgs)==1 and "KOSPI200 선물 순매수 증가" in _mode_msgs[0],_mode_msgs
+finally:
+    ks.telegram_send=_original_surge_sender
+print("flow_surge_distinct_cumulative_and_mode_confirmation=true")
+
+# 실제 14:11 알림 모양: 기관 현물 매수와 선물 매도가 반대 방향인 경우
+# 전체 시장 유입 제목을 쓰지 않고 단위 미검증 프로그램 원값은 노출하지 않는다.
+_oct13_spot=_surge_row(10300,0,0,49553)
+_oct13_spot["현물"]["기관"]=961.0
+_oct13_spot["선물"]["기관"]=-765.0
+_oct13_candidate=next(x for x in _surge_scan([_surge_row(10000,0,0,0),_oct13_spot],10305)
+                      if x["actor"]=="기관")
+_oct13_message=Watch("unused",[],"",False).build_flow_surge_alert(_oct13_candidate,10305)
+assert "코스피 현물 순매수 증가" in _oct13_message,_oct13_message
+assert "KOSPI200 선물 -765억원" in _oct13_message,_oct13_message
+assert "선물은 반대 방향입니다" in _oct13_message,_oct13_message
+assert "49,553" not in _oct13_message and "수치 표시 보류" in _oct13_message,_oct13_message
+_price_misaligned=Watch("unused",[],"",False)
+_price_misaligned.idx=deque([(10070,6800.0),(10300,6850.0)],maxlen=30000)
+assert "KOSPI 가격 " not in _price_misaligned.build_flow_surge_alert(_oct13_candidate,10305)
+print("oct13_opposite_futures_and_unverified_program_unit_display=true")
 
 # 두 시장의 원자료 종료 시각이 각각 신선하더라도 30초 이상 차이나면
 # 5분 '동시 유입'으로 합치면 안 된다.
@@ -1167,28 +1231,35 @@ _kq.session_close_ts = _kq_base + 60*60
 _kq.flows = deque(maxlen=2500)  # 기존 코스피 스냅샷은 변경하지 않음
 _kq.surge_sent_at["외국인"] = _kq_base+500  # 코스피 중복방지와 분리되어야 함
 _kq.kosdaq_flows.append(_kq_row(_kq_base, 0))
+_kq.kosdaq_flows.append(_kq_row(_kq_base+20, 0))
+_kq.kosdaq_flows.append(_kq_row(_kq_base+40, 0))
 _kq.kosdaq_flows.append(_kq_row(_kq_base+300, 350))
 _kq_msgs, _kq_delivery = [], []
-_kq._record_delivery=lambda stage,mid,ep,ts: _kq_delivery.append((stage,mid,ep,ts))
+_kq._record_delivery=lambda stage,mid,ep,ts,**kw: _kq_delivery.append((stage,mid,ep,ts,kw.get("evidence")))
 def _kq_fake_send(msg):
     _kq_msgs.append(msg)
     return 32001
 with _kq_patch.object(ks, "telegram_send", _kq_fake_send):
     _kq_async.run(_kq.maybe_alert_kosdaq_surge(_kq_base+303))
     assert not _kq_msgs, "단일 코스닥 표본만으로 즉시 발송"
-    _kq.kosdaq_flows.append(_kq_row(_kq_base+320, 470))
+    _kq.kosdaq_flows.append(_kq_row(_kq_base+320, 350))
     _kq_async.run(_kq.maybe_alert_kosdaq_surge(_kq_base+323))
+    assert not _kq_msgs,"코스닥 동일 누적값 재전송으로 알림"
+    _kq.kosdaq_flows.append(_kq_row(_kq_base+340, 470))
+    _kq_async.run(_kq.maybe_alert_kosdaq_surge(_kq_base+343))
     assert len(_kq_msgs)==1, _kq_msgs
-    assert "코스닥 단기 순매수 급증" in _kq_msgs[0], _kq_msgs[0]
+    assert "코스닥 현물 순매수 증가" in _kq_msgs[0], _kq_msgs[0]
     assert "코스닥 현물(통합)" in _kq_msgs[0] and "<b>+470억원</b>" in _kq_msgs[0], _kq_msgs[0]
     assert "KOSPI200 선물·프로그램 수급과 합산하지 않음" in _kq_msgs[0], _kq_msgs[0]
     assert _kq_delivery[0][0:2] == ("kosdaq_flow_surge",32001), _kq_delivery
     assert _kq_delivery[0][2]["market"]=="KOSDAQ"
     assert _kq_delivery[0][2]["actor"]=="외국인"
+    assert _kq_delivery[0][4]["spot_start_cumulative"]==0.0
+    assert _kq_delivery[0][4]["spot_end_cumulative"]==470.0
     assert _kq.surge_sent_at["외국인"] == _kq_base+500  # 코스피 기존 데이터 보존
-    assert _kq.kosdaq_surge_sent_at["외국인"] == _kq_base+323
-    _kq.kosdaq_flows.append(_kq_row(_kq_base+335, 650))
-    _kq_async.run(_kq.maybe_alert_kosdaq_surge(_kq_base+338))
+    assert _kq.kosdaq_surge_sent_at["외국인"] == _kq_base+343
+    _kq.kosdaq_flows.append(_kq_row(_kq_base+355, 650))
+    _kq_async.run(_kq.maybe_alert_kosdaq_surge(_kq_base+358))
     assert len(_kq_msgs)==1, "코스닥 20분 중복방지 실패"
 
     with _kq_tmp.TemporaryDirectory() as directory:
@@ -1197,7 +1268,7 @@ with _kq_patch.object(ks, "telegram_send", _kq_fake_send):
         restored=Watch("unused",[],"",False)
         restored.load_handoff(handoff)
         assert len(restored.kosdaq_flows)>=3, restored.raw
-        assert restored.kosdaq_surge_sent_at["외국인"]==_kq_base+323, restored.kosdaq_surge_sent_at
+        assert restored.kosdaq_surge_sent_at["외국인"]==_kq_base+343, restored.kosdaq_surge_sent_at
         assert restored.surge_sent_at["외국인"]==_kq_base+500, restored.surge_sent_at
     _kq.test=True
     _kq.kosdaq_flows.append(_kq_row(_kq_base+400, 1600))
