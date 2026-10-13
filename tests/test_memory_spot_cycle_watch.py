@@ -851,6 +851,64 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         self.assertIsNotNone(obs)
         self.assertNotIn("cpu_supply_status", obs)
 
+    def test_china_cycle_ark_stance_not_actual_sale(self):
+        item = {
+            "title": "Cathie Wood ARK avoids traditional memory-chip makers in Hong Kong",
+            "description": "ARK avoids traditional memory companies despite AI productivity growth. CXMT DRAM competition is rising.",
+            "link": "https://www.stheadline.com/realtime-finance/3625651/",
+            "source": "Bloomberg syndication",
+            "published_kst": "2026-10-13T17:30:00+09:00",
+        }
+        obs = w._extract_china_dram_cycle(item)
+        self.assertEqual(obs["ark_traditional_memory_stance"], "avoid_reported")
+        self.assertNotIn("ark_actual_20261013_memory_sale_status", obs)
+        self.assertFalse(w._china_dram_cycle_changes(w.CHINA_DRAM_CYCLE_BASELINE, obs))
+
+    def test_china_cycle_cxmt_official_g5_not_4f2_mass_production(self):
+        item = {
+            "title": "CXMT Announces Mass Production of 5th-Generation DRAM Technology Platform",
+            "description": "G5 Platform LPDDR5X has entered mass production.",
+            "link": "https://www.cxmt.com/en/news/info_22.html", "source": "CXMT",
+            "published_kst": "2026-09-20T09:00:00+09:00",
+        }
+        obs = w._extract_china_dram_cycle(item)
+        self.assertTrue(obs["cxmt_g5_lpddr5x_official_mass_production"])
+        self.assertNotIn("cxmt_4f2_rdimm_official_mass_production", obs)
+        plan = dict(item, title="CXMT 4F² DRAM DDR5 RDIMM",
+            description="CXMT plans by year-end to release 4F² DDR5 RDIMM for servers.",
+            link="https://www.trendforce.com/news/2026/10/12/cxmt-dram/",
+            published_kst="2026-10-12T09:00:00+09:00")
+        obs2 = w._extract_china_dram_cycle(plan)
+        self.assertEqual(obs2["cxmt_4f2_rdimm_target_year"], 2026)
+        self.assertNotIn("cxmt_4f2_rdimm_official_mass_production", obs2)
+
+    def test_china_cycle_capacity_estimate_material_threshold(self):
+        item = {
+            "title": "CXMT DRAM monthly wafer capacity by 2027",
+            "description": "CXMT DRAM grows from 320,000 wafers now to 480,000 wafers by 2027.",
+            "link": "https://www.trendforce.com/news/2026/10/14/cxmt-capacity/",
+            "source": "TrendForce News", "published_kst": "2026-10-14T09:00:00+09:00",
+        }
+        obs = w._extract_china_dram_cycle(item)
+        self.assertEqual(obs["cxmt_2027_wafer_per_month_industry_est"], 480000)
+        self.assertNotIn("cxmt_capacity_estimate_official", obs)
+        updated = w._merge_typed_state(w.CHINA_DRAM_CYCLE_BASELINE, obs)
+        self.assertTrue(any("420,000→480,000" in x for x in w._china_dram_cycle_changes(w.CHINA_DRAM_CYCLE_BASELINE, updated)))
+        small = dict(w.CHINA_DRAM_CYCLE_BASELINE, cxmt_2027_wafer_per_month_industry_est=440000)
+        self.assertFalse(w._china_dram_cycle_changes(w.CHINA_DRAM_CYCLE_BASELINE, small))
+
+    def test_china_cycle_fake_host_does_not_promote_hbm_or_capacity(self):
+        item = {
+            "title": "CXMT HBM3 4F² DDR5 RDIMM new memory chip",
+            "description": "CXMT HBM3 customer verified; 900,000 wafers now.",
+            "link": "https://cxmt.com.evil.example/fake",
+            "source": "unverified", "published_kst": "2026-10-14T09:00:00+09:00",
+        }
+        self.assertTrue(w._is_china_dram_cycle_item(item))
+        self.assertIsNone(w._extract_china_dram_cycle(item))
+        self.assertFalse(w.CHINA_DRAM_CYCLE_BASELINE["cxmt_hbm3_official_customer_qualification"])
+        self.assertFalse(w.CHINA_DRAM_CYCLE_BASELINE["cxmt_4f2_rdimm_official_mass_production"])
+
     def test_main_runs_currency_guard_after_output_generation(self):
         with patch.object(w, "collect", return_value=([], [])), \
              patch.object(w, "write_outputs"), \

@@ -309,6 +309,29 @@ PC_NOTEBOOK_DEMAND_BASELINE = {
     "source_rank": 3,
 }
 
+CHINA_DRAM_CYCLE_TRACK_VERSION = 1
+CHINA_DRAM_CYCLE_BASELINE = {
+    "as_of": "2026-10-13",
+    "ark_traditional_memory_stance": "avoid_reported",
+    "ark_actual_20261013_memory_sale_status": "unverified",
+    "ark_ai_productivity_view": "positive_reported",
+    "cxmt_g5_lpddr5x_official_mass_production": True,
+    "cxmt_4f2_rdimm_target_year": 2026,
+    "cxmt_4f2_rdimm_official_mass_production": False,
+    "cxmt_hbm3_official_customer_qualification": False,
+    "cxmt_now_wafer_per_month_industry_est": 320000,
+    "cxmt_2027_wafer_per_month_industry_est": 420000,
+    "cxmt_capacity_estimate_official": False,
+    "ark_quote_url": "https://www.stheadline.com/realtime-finance/3625651/",
+    "cxmt_g5_official_url": "https://www.cxmt.com/en/news/info_22.html",
+    "cxmt_4f2_report_url": "https://www.trendforce.com/news/2026/10/12/news-cxmt-accelerates-4f%C2%B2-dram-push-eyes-year-end-server-ddr5-rdimm-launch/",
+    "cxmt_capacity_report_url": "https://www.trendforce.com/news/2026/09/24/news-cxmt-ymtc-ramp-memory-capacity-but-chinas-ai-cloud-boom-could-soak-up-new-supply-through-2027/",
+    "cxmt_hbm_stage_report_url": "https://www.trendforce.com/research/download/RP260120JO3",
+    "source_kind": "ARK 홍콩 발언은 Bloomberg 재인용 · CXMT G5는 공식 양산 · 4F²/증설치는 보도·전망",
+    "source": "ARK 발언 재보도·CXMT 공식·TrendForce 업계 인용",
+    "source_rank": 2,
+}
+
 TREND_PINNED_PRESS_URLS = [
     "https://www.trendforce.com/presscenter/news/20261008-13264.html",
     "https://www.trendforce.com/presscenter/news/20260930-13258.html",
@@ -333,7 +356,13 @@ TREND_SEARCH_QUERIES = [
 ]
 
 QUERIES = [
+    ("ko", '캐시 우드 ARK 중국 CXMT DRAM 메모리 공급과잉 홍콩 10월 13일'),
+    ("ko", '창신메모리 CXMT 4F² 서버 DDR5 RDIMM 실제 양산 고객 검증 2027'),
+    ("ko", 'CXMT DRAM 웨이퍼 월 생산능력 2027 32만 42만 4F2'),
     ("ko", '노트북 출하량 전망 2027 CPU DRAM SSD 가격 원가 전가 TrendForce 소비 수요'),
+    ("en", 'Cathie Wood ARK Hong Kong China CXMT memory chip avoid vicious cycles'),
+    ("en", 'CXMT 4F2 4F squared DRAM DDR5 RDIMM commercial production customer validation'),
+    ("en", 'CXMT DRAM monthly wafers capacity 2027 320000 420000 trendforce'),
     ("en", 'TrendForce notebook shipments 2027 CPU DRAM SSD prices replacement cycle outlook'),
     ("ko", 'DRAM 현물 가격 공급 부족 BofA OR 뱅크오브아메리카'),
     ("ko", 'NAND 현물 가격 공급 부족 TrendForce OR 트렌드포스'),
@@ -421,6 +450,7 @@ HIGH_SIGNAL = {
     "삼성전자", "nvidia", "엔비디아", "broadcom", "브로드컴", "google", "구글", "amd",
     "applied materials", "amat", "어플라이드 머티어리얼즈", "citi tmt",
     "ymtc", "yangtze memory", "长江存储", "counterpoint", "the wire china",
+    "cxmt", "changxin", "长鑫", "cathie wood", "ark invest",
 }
 CRITICAL_MARKERS = {
     "sufficiency", "공급 충족", "under supply", "undersupply", "shortage", "공급부족",
@@ -2553,6 +2583,100 @@ def _merge_typed_state(old: dict, obs: dict) -> dict:
     return merged
 
 
+def _china_dram_cycle_rank(item: dict) -> int:
+    host = (urllib.parse.urlparse(str(item.get("link") or "")).hostname or "").lower()
+    if host == "cxmt.com" or host.endswith(".cxmt.com"):
+        return 3
+    trusted = (
+        "trendforce.com", "reuters.com", "bloomberg.com", "scmp.com",
+        "stheadline.com", "newsdig.tbs.co.jp", "qz.com", "finance.yahoo.com",
+    )
+    return 2 if any(host == d or host.endswith("." + d) for d in trusted) else 0
+
+
+def _is_china_dram_cycle_item(item: dict) -> bool:
+    text = _clean(f"{item.get('title', '')} {item.get('description', '')}").lower()
+    company = any(x in text for x in ("cxmt", "changxin", "长鑫", "창신메모리"))
+    investor = any(x in text for x in ("cathie wood", "캐시 우드", "ark invest"))
+    product = any(x in text for x in ("dram", "ddr5", "hbm", "memory", "메모리", "4f²", "4f2", "4f square"))
+    return product and (company or investor)
+
+
+def _extract_china_dram_cycle(item: dict) -> dict | None:
+    if not _is_china_dram_cycle_item(item) or _china_dram_cycle_rank(item) < 2:
+        return None
+    text = _clean(f"{item.get('title', '')} {item.get('description', '')}")
+    low = text.lower()
+    host = (urllib.parse.urlparse(str(item.get("link") or "")).hostname or "").lower()
+    official = host == "cxmt.com" or host.endswith(".cxmt.com")
+    cxmt = any(k in low for k in ("cxmt", "changxin", "长鑫", "창신메모리"))
+    ark = any(k in low for k in ("cathie wood", "캐시 우드", "ark invest"))
+    obs: dict = {}
+    if ark and any(k in low for k in (
+        "avoids traditional memory", "avoiding traditional memory",
+        "steers clear of traditional memory", "메모리 업체를 회피",
+    )):
+        obs["ark_traditional_memory_stance"] = "avoid_reported"
+    # An interview or syndicated article cannot establish an actual ARK sale.
+    if official and "lpddr5x" in low and any(k in low for k in ("g5 platform", "5th-generation dram")) and "mass production" in low:
+        obs["cxmt_g5_lpddr5x_official_mass_production"] = True
+    if cxmt:
+        has_4f2 = bool(re.search(r"4f\s*(?:²|2|\^2|square|squared)", low))
+        if has_4f2 and "rdimm" in low:
+            if any(k in low for k in ("delayed to 2027", "postponed to 2027", "2027년으로 연기")):
+                obs["cxmt_4f2_rdimm_target_year"] = 2027
+            elif any(k in low for k in ("by year-end", "by the end of 2026", "2026년 말")):
+                obs["cxmt_4f2_rdimm_target_year"] = 2026
+            # Require the same 4F² RDIMM sentence to assert actual mass production.
+            if official and re.search(
+                r"4f\s*(?:²|2|\^2|square|squared)[^.]{0,110}rdimm[^.]{0,90}"
+                r"(?:now in mass production|entered mass production|commercial shipments started)", low
+            ):
+                obs["cxmt_4f2_rdimm_official_mass_production"] = True
+        vals = [
+            int(x.replace(",", "")) for x in re.findall(
+                r"\b(\d{2,3}(?:,\d{3}){1,2})\s*(?:wafer|wafers|wspm)\b", low
+            )
+        ]
+        if "2027" in low and len(vals) >= 2 and 100000 <= vals[0] <= vals[1] <= 1000000:
+            obs["cxmt_now_wafer_per_month_industry_est"] = vals[0]
+            obs["cxmt_2027_wafer_per_month_industry_est"] = vals[1]
+            if official:
+                obs["cxmt_capacity_estimate_official"] = True
+        if official and re.search(
+            r"\bhbm3?\b[^.]{0,110}(?:passed customer qualification|customer acceptance completed)", low
+        ):
+            obs["cxmt_hbm3_official_customer_qualification"] = True
+    if not obs:
+        return None
+    obs.update({
+        "source": item.get("source") or "출처 미표시",
+        "source_url": item.get("link") or "",
+        "source_rank": _china_dram_cycle_rank(item),
+        "as_of": (item.get("published_kst") or "")[:10],
+    })
+    return obs
+
+
+def _china_dram_cycle_changes(old: dict, new: dict) -> list[str]:
+    changes: list[str] = []
+    a = old.get("cxmt_2027_wafer_per_month_industry_est")
+    b = new.get("cxmt_2027_wafer_per_month_industry_est")
+    if a and b and abs(float(b) / float(a) - 1) >= 0.05:
+        changes.append(f"CXMT 2027년 월 DRAM 웨이퍼 업계 추정: {int(a):,}→{int(b):,}장")
+    for key, label in (
+        ("cxmt_g5_lpddr5x_official_mass_production", "CXMT G5 LPDDR5X 양산"),
+        ("cxmt_4f2_rdimm_official_mass_production", "CXMT 4F² 서버 RDIMM 양산"),
+        ("cxmt_hbm3_official_customer_qualification", "CXMT HBM3 고객 승인"),
+    ):
+        if new.get(key) is True and old.get(key) is not True:
+            changes.append(label + ": 공식 확인")
+    a, b = old.get("cxmt_4f2_rdimm_target_year"), new.get("cxmt_4f2_rdimm_target_year")
+    if a and b and a != b:
+        changes.append(f"CXMT 4F² 서버 DDR5 출시 목표: {int(a)}→{int(b)}년")
+    return changes
+
+
 def _extract_nand_divergence(item: dict) -> dict | None:
     text = _clean(f"{item.get('title','')} {item.get('description','')}")
     low = text.lower()
@@ -2964,6 +3088,13 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
     if divergence_upgrade_due:
         state["nand_divergence_track_version"] = NAND_DIVERGENCE_TRACK_VERSION
 
+    china_cycle_state = _merge_typed_state(
+        CHINA_DRAM_CYCLE_BASELINE, dict(state.get("china_dram_cycle") or {}),
+    )
+    china_cycle_upgrade_due = int(state.get("china_dram_cycle_track_version") or 0) < CHINA_DRAM_CYCLE_TRACK_VERSION
+    if china_cycle_upgrade_due:
+        state["china_dram_cycle_track_version"] = CHINA_DRAM_CYCLE_TRACK_VERSION
+
     pc_notebook_state = _merge_typed_state(
         PC_NOTEBOOK_DEMAND_BASELINE,
         dict(state.get("pc_notebook_demand") or {}),
@@ -3163,6 +3294,21 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
             bernstein_changes.extend(changes)
             bernstein_source_url = bernstein_state.get("source_url") or obs.get("source_url") or bernstein_source_url
 
+    china_cycle_changes: list[str] = []
+    china_cycle_source = ""
+    if china_cycle_upgrade_due:
+        china_cycle_changes.append("신규 역풍: CXMT DRAM 증설·4F² 서버 출시계획과 ARK 메모리 투자 회피 구분")
+        china_cycle_source = CHINA_DRAM_CYCLE_BASELINE["ark_quote_url"]
+    for item in sorted(items, key=lambda x: x.get("published_kst") or ""):
+        obs = _extract_china_dram_cycle(item)
+        if obs:
+            merged = _merge_typed_state(china_cycle_state, obs)
+            changes = _china_dram_cycle_changes(china_cycle_state, merged)
+            china_cycle_state = merged
+            if changes:
+                china_cycle_changes.extend(changes)
+                china_cycle_source = obs.get("source_url") or ""
+
     pc_notebook_changes: list[str] = []
     pc_notebook_source_url = ""
     if pc_notebook_upgrade_due:
@@ -3239,6 +3385,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
             continue
         if _extract_pc_notebook_demand(x):
             continue
+        if _is_china_dram_cycle_item(x):
+            continue
         if _extract_nand_divergence(x) or _extract_legacy_dram_state(x):
             continue
         new_items.append(x)
@@ -3289,6 +3437,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         "trendforce_4q26_revision": trend_4q26_state,
         "trendforce_3q4q_pace_track_version": TREND_3Q4Q_PACE_TRACK_VERSION,
         "trendforce_3q4q_pace": trend_3q4q_state,
+        "china_dram_cycle_track_version": CHINA_DRAM_CYCLE_TRACK_VERSION,
+        "china_dram_cycle": china_cycle_state,
         "pc_notebook_demand_track_version": PC_NOTEBOOK_DEMAND_TRACK_VERSION,
         "pc_notebook_demand": pc_notebook_state,
         "nand_divergence_track_version": NAND_DIVERGENCE_TRACK_VERSION,
@@ -3324,6 +3474,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         f"- TrendForce 4Q26 전망 리비전 변화: {len(trend_4q26_changes)}건",
         f"- TrendForce 3Q→4Q 가격속도 변화: {len(trend_3q4q_changes)}건",
         f"- NAND 소비자↔기업용 eSSD 양극화 변화: {len(divergence_changes)}건",
+        f"- CXMT DRAM·ARK 투자 회피 역풍 변화: {len(china_cycle_changes)}건",
         f"- PC 메모리·CPU 원가→노트북 수요 역풍 변화: {len(pc_notebook_changes)}건",
         f"- 구세대 DRAM EOL·배정 변화: {len(legacy_changes)}건",
         f"- 원천 오류: {len(errors)}건",
@@ -3334,11 +3485,11 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
 
     if ALERT_PATH.exists():
         ALERT_PATH.unlink()
-    if not prepared_items and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not pc_notebook_changes and not legacy_changes:
+    if not prepared_items and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not pc_notebook_changes and not china_cycle_changes and not legacy_changes:
         return
 
     lines = ["<b>[메모리 수급 변화 감지]</b>"]
-    typed_changes = len(market_changes) + len(bernstein_changes) + len(korea_earnings_changes) + len(micron_supply_changes) + len(dgx_spark_changes) + len(goldman_structural_changes) + len(ymtc_nand_changes) + len(trend_4q26_changes) + len(trend_3q4q_changes) + len(divergence_changes) + len(pc_notebook_changes) + len(legacy_changes)
+    typed_changes = len(market_changes) + len(bernstein_changes) + len(korea_earnings_changes) + len(micron_supply_changes) + len(dgx_spark_changes) + len(goldman_structural_changes) + len(ymtc_nand_changes) + len(trend_4q26_changes) + len(trend_3q4q_changes) + len(divergence_changes) + len(pc_notebook_changes) + len(china_cycle_changes) + len(legacy_changes)
     total_visible = typed_changes + len(prepared_items)
     lines.append(f"조회 {now.strftime('%Y-%m-%d %H:%M')} KST · 핵심 변화 {total_visible}건")
     if trend_4q26_changes:
@@ -3375,6 +3526,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
     elif divergence_changes:
         one = divergence_changes[0]
         lines.append("한눈에: <b>" + html.escape(one) + "</b>")
+    elif china_cycle_changes:
+        lines.append("한눈에: <b>" + html.escape(china_cycle_changes[0]) + "</b>")
     elif pc_notebook_changes:
         lines.append("한눈에: <b>" + html.escape(pc_notebook_changes[0]) + "</b>")
     elif legacy_changes:
@@ -3771,6 +3924,44 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         if secondary_url:
             lines.append('  <a href="' + html.escape(str(secondary_url), quote=True) + '">뉴시스 업계 관계자 발언</a>')
 
+    if china_cycle_changes:
+        lines.append("• <b>중국 DRAM·HBM 경쟁과 ARK 메모리 사이클 역풍</b>")
+        for change in list(dict.fromkeys(china_cycle_changes)):
+            lines.append("  " + html.escape(change))
+        lines.append(
+            "  Cathie Wood 10/13 홍콩 발언: ARK는 전통 메모리 제조사 투자 회피 입장. "
+            "<b>10/13 실제 보유주식 매도 여부는 검증되지 않음</b> · AI 생산성 전망은 긍정적"
+        )
+        lines.append(
+            "  CXMT 실제 양산: <b>G5 공정 LPDDR5X</b>는 9/20 공식 확인. "
+            "<b>4F² 서버 DDR5 RDIMM</b>은 연말 출시 목표로, 현재 양산·고객 승인 공식 미확인"
+        )
+        lines.append(
+            "  CXMT HBM3: 연구·검증 단계. 고객 승인·양산·HBM 매출 확인 전 기존 3사와 직접 동급으로 계산 금지"
+        )
+        a = china_cycle_state.get("cxmt_now_wafer_per_month_industry_est")
+        b = china_cycle_state.get("cxmt_2027_wafer_per_month_industry_est")
+        if a and b:
+            lines.append(
+                f"  월간 DRAM 웨이퍼 업계 추정: <b>{int(a):,}장→{int(b):,}장</b>"
+                f"({(float(b)/float(a)-1)*100:+.1f}%) · CXMT 공식 생산실적 아님"
+            )
+        lines.append(
+            "  반대축: 2027 DRAM 공급부족과 중국 현지 AI 수요에 따른 신규 생산량 흡수 가능성. "
+            "HBM이 이미 공급과잉이라는 증거는 아님"
+        )
+        lines.append(
+            "  조기경보: 4F² 서버 RDIMM 실제 출하·고객 검증, HBM3 양산 수율·고온 검사, "
+            "웨이퍼 가동량, 범용 DRAM 계약가 하락·재고 증가와 2027 수급균형 수정"
+        )
+        for label, url in (
+            ("CXMT G5 공식 양산", CHINA_DRAM_CYCLE_BASELINE["cxmt_g5_official_url"]),
+            ("CXMT 4F² 계획", CHINA_DRAM_CYCLE_BASELINE["cxmt_4f2_report_url"]),
+            ("중국 증설 추정", CHINA_DRAM_CYCLE_BASELINE["cxmt_capacity_report_url"]),
+            ("ARK 홍콩 발언", china_cycle_source or CHINA_DRAM_CYCLE_BASELINE["ark_quote_url"]),
+        ):
+            lines.append('  <a href="' + html.escape(url, quote=True) + '">' + label + '</a>')
+
     if pc_notebook_changes:
         lines.append("• <b>PC·노트북 수요 역풍: CPU·DRAM·SSD 비용과 출하 전망</b>")
         for change in list(dict.fromkeys(pc_notebook_changes)):
@@ -3867,13 +4058,13 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         emitted += 1
 
     # If all generic paid-price sheets were filtered, do not send an empty shell.
-    if emitted == 0 and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not pc_notebook_changes and not legacy_changes:
+    if emitted == 0 and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not pc_notebook_changes and not china_cycle_changes and not legacy_changes:
         if ALERT_PATH.exists():
             ALERT_PATH.unlink()
         return
 
     if legacy_changes:
-        has_other_content = bool(market_changes or bernstein_changes or korea_earnings_changes or micron_supply_changes or dgx_spark_changes or goldman_structural_changes or ymtc_nand_changes or divergence_changes or prepared_items)
+        has_other_content = bool(market_changes or bernstein_changes or korea_earnings_changes or micron_supply_changes or dgx_spark_changes or goldman_structural_changes or ymtc_nand_changes or divergence_changes or china_cycle_changes or prepared_items)
         if has_other_content:
             lines.append("<<<TELEGRAM_MESSAGE_BREAK>>>")
         else:
@@ -3893,7 +4084,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         if legacy_source_url:
             lines.append('• <a href="' + html.escape(legacy_source_url, quote=True) + '">근거 원문</a>')
 
-    lines.append("※ 기존 메모리·HBM·NAND 수급 및 PC 완제품 수요의 실질적 전망 변경만 알림")
+    lines.append("※ 메모리 공급·가격·고객 승인 등 실질 변화만 재알림하며, 투자자 발언과 실제 매매를 구별함")
     ALERT_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
 
 
