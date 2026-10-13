@@ -679,11 +679,17 @@
       "source": "TrendForce",
       "published_kst": "2026-10-08T09:00:00+09:00",
       "first_seen_kst": "2026-10-12T23:35:39+09:00"
+    },
+    "150e11f3f7c69278d2096107": {
+      "title": "China's CXMT to Launch 4F² Server DRAM This Year; Micron, Samsung, SK Hynix Shares Slide - BigGo Finance",
+      "source": "BigGo Finance",
+      "published_kst": "2026-10-13T03:25:00+09:00",
+      "first_seen_kst": "2026-10-13T10:38:26+09:00"
     }
   },
-  "updated_at_kst": "2026-10-13T04:23:03+09:00",
-  "last_scan_count": 8,
-  "last_new_count": 0,
+  "updated_at_kst": "2026-10-13T10:38:26+09:00",
+  "last_scan_count": 9,
+  "last_new_count": 1,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
   "hbm_market_pricing": {
@@ -743,20 +749,20 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-10-12T23:35:49+09:00",
+  "last_successful_delivery_kst": "2026-10-13T10:38:37+09:00",
   "telegram_message_ids": [
-    282
+    284
   ],
-  "telegram_message_id": 282,
+  "telegram_message_id": 284,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      282
+      284
     ],
-    "confirmed_at_kst": "2026-10-12T23:35:49+09:00",
-    "alert_signature": "89492928bcb30ef8b04555f4587086736e140cafe650c854f4bf0e7af1296b51"
+    "confirmed_at_kst": "2026-10-13T10:38:37+09:00",
+    "alert_signature": "79f1b4367c2a4c04c8762435c7d9a7a23d0ee86763468bed64bbdff9a8e47308"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
