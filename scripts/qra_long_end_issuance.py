@@ -137,6 +137,14 @@ def expectation_comparison(supply: dict) -> str:
     match = ("Citi의 회당 30억달러 축소 시나리오와 만기별 일치"
              if supply["citi_base_case_matches"] else
              "Citi의 회당 30억달러 축소 시나리오와 불일치 또는 일부만 부합")
-    return (f"• 공식 20·30년물 다음 3개월 합계: {before:g}억달러 단위의 십억달러 → "
-            f"{after:g}억달러 단위의 십억달러 ({diff:+g}B USD), {result}\n"
-            f"• 전망 대조: {match} — 단기국채 보전 규모는 별도 공식 자료로만 확정")
+    krw_text = ""
+    if supply.get("fx"):
+        won = abs(diff) * 1_000_000_000 * float(supply["fx"])
+        jo = int(won // 1_000_000_000_000)
+        eok = round((won - jo * 1_000_000_000_000) / 100_000_000)
+        if eok >= 10000:
+            jo, eok = jo + 1, eok - 10000
+        krw_text = f" (변화 원화 약 {jo:,}조{eok:,.0f}억원)"
+    return (f"• 공식 20·30년물 3개월 합계: {before*10:,.0f}억달러 → "
+            f"{after*10:,.0f}억달러 (변화 {diff*10:+,.0f}억달러){krw_text}; {result}\n"
+            f"• Citi 전망 대비: {match}. 단기국채 대체액은 공식자료로 별도 확정")
