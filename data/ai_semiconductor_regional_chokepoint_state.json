@@ -69,10 +69,10 @@
       "comparable_75pct_refresh_public": false
     }
   },
-  "updated_at_kst": "2026-10-14T02:07:57+09:00",
-  "last_scan_count": 0,
+  "updated_at_kst": "2026-10-14T06:49:35+09:00",
+  "last_scan_count": 1,
   "last_eligible_count": 0,
-  "last_held_count": 0,
+  "last_held_count": 1,
   "seen_fingerprints": [
     "2b04eb17a0ebb0a08a2d3235",
     "2ff967f0a83d4f9d09737f69",
@@ -82,9 +82,17 @@
     "ab4bbf5bf49f2f1ddd6aba5b",
     "bbf6d84c3fbe067d2860a715",
     "c21f43569955742f3d6b1742",
+    "d598b87380cce293712421fa",
     "e3172365bd8c10ce9681459f",
     "ef0347fedd892f8507e3e383"
   ],
   "delivered_event_keys": [],
-  "last_held": []
+  "last_held": [
+    {
+      "event_key": "taiwan|capacity|TSMC|2nm",
+      "source": "Moomoo",
+      "reason": "출처 신뢰도 부족",
+      "published_kst": "2026-10-12T21:39:13+09:00"
+    }
+  ]
 }
