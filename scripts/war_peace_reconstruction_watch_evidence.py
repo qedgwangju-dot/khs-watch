@@ -130,13 +130,16 @@ def title_matches(row, headline):
         value = html.unescape(str(value or '')).lower()
         # Strip only a publisher suffix. A headline clause after a dash may
         # carry the very event/stage difference we need to verify.
-        suffix = re.search(r'\s+-\s+([^-]+)$', value)
+        suffix = re.search(r'\s+[-|]\s+([^-|]+)$', value)
         source = str(row.get('source') or '').strip().lower()
         if suffix and suffix.group(1).strip() == source:
             value = value[:suffix.start()]
-        return set(re.findall(r'[a-z0-9가-힣]{2,}', value))
+        return re.findall(r'[^\W_]+', value, re.UNICODE)
     a, b = tokens(row.get('title_original') or row.get('title')), tokens(headline)
-    return bool(a and b and len(a & b) / len(a | b) >= 0.65)
+    # A bag of words accepts "Russia attacks Ukraine" as the same headline as
+    # "Ukraine attacks Russia", and can erase short negations. Verification
+    # needs the same ordered words; shortened/edited headlines remain unverified.
+    return bool(a and b and a == b)
 
 
 def attach_article(row, url, page, body):
