@@ -75,7 +75,7 @@ def stage(title):
     if ("earnout" in t or "earn-out" in t) and re.search(r"\b(paid|pays|achieves|achieved|earns|earned|receives|received)\b",t):
         return ("earnout","조건부 대가 실현",92)
     if any(x in t for x in ("revenue","customer deployment","integrated platform","cross-selling","cross selling","subscription","recurring revenue")):
-        if re.search(r"\b(reports|reported|recognizes|recognized|records|recorded|launches|launched|deploys|deployed|signs|signed|wins|won|generates|generated|integrates|integrated)\b",t):
+        if re.search(r"\b(reports|reported|recognizes|recognized|records|recorded|launches|launched|deploys|deployed|signs|signed|wins|won|generates|generated|integrates)\b",t):
             return ("commercial","실제 고객·반복매출 변화",85)
     if ("to acquire" in t or "agreement to acquire" in t or "announces acquisition" in t):
         return ("agreement","인수 본계약 발표",70)
