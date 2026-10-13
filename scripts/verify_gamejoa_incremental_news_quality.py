@@ -6331,6 +6331,52 @@ class IncrementalNewsTests(unittest.TestCase):
 
 
 class ConcreteLiveSelectionRegressions(unittest.TestCase):
+    def test_oct14_low_signal_theme_rally_and_incubatee_profile_do_not_fill_live_slots(self):
+        now = dt.datetime(2026, 10, 14, 1, 23, tzinfo=dt.timezone(dt.timedelta(hours=9)))
+        cases = (
+            (
+                '"호남 반도체 속도전…최태원 한마디에 테마주 이틀 연속 불기둥',
+                '시장 일각에서는 반도체 팹(생산 시설) 착공에 필수적인 시멘트·전기 등 인프라 기업과 '
+                '반도체 부품·테스트 기업 등을 호남 반도체 클러스터 테마주로 꼽는다.',
+                'thematic_stock_rally_without_verified_company_or_market_event',
+            ),
+            (
+                '[한국건설기술연구원 스마트건설지원센터 보육기업 CEO] '
+                '초경량·고출력 태양광 모듈을 개발하는 기업 에이스인벤터',
+                '현재 경기도 화성에 50MW급 태양광 모듈 생산라인을 구축하고, 초경량·고출력 태양광 모듈과 '
+                '건물일체형 태양광 모듈을 개발·생산하고 있다. 에이스인벤터는 아이템을 인정받아 '
+                '한국건설기술연구원 스마트건설지원센터 보육기업으로 선정됐다.',
+                'startup_profile_without_new_verified_execution',
+            ),
+        )
+        with patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}), patch.object(radar.base, 'kst_now', return_value=now):
+            for index, (title, body, expected_reason) in enumerate(cases):
+                with self.subTest(title=title):
+                    candidate = alert(title, body, f'https://www.hankyung.com/article/20261014{index:05d}')
+                    candidate['published'] = '2026-10-13T15:00:00+09:00'
+                    audit = radar.source_market_materiality(candidate)
+                    self.assertEqual(audit['disposition'], 'exclude', audit)
+                    self.assertEqual(audit['reason'], expected_reason, audit)
+                    self.assertEqual(radar.quality_display_alerts([candidate], 7), [])
+
+        positive_controls = (
+            (
+                '호남 반도체 속도전…테마주 강세 속 상장사 500억원 장비 공급계약',
+                '코스닥 상장사 한미반도체는 호남 반도체 클러스터 신규 팹에 '
+                '500억원 규모의 테스트 장비 공급 계약을 체결했다고 공시했다.',
+            ),
+            (
+                '[한국건설기술연구원 보육기업 CEO] 에이스인벤터, 120억원 투자유치',
+                '에이스인벤터는 기관투자자로부터 120억원을 유치하고 '
+                'AI 데이터센터용 전력반도체 생산라인에 신규 투자한다고 공시했다.',
+            ),
+        )
+        for title, body in positive_controls:
+            with self.subTest(positive_title=title):
+                audit = materiality.assess(title, body, published='2026-10-14T01:00:00+09:00')
+                self.assertEqual(audit['disposition'], 'keep', audit)
+                self.assertGreaterEqual(audit['priority'], 2, audit)
+
     def test_oct13_live_low_signal_audit_estimate_and_local_seedling_asset_are_withheld(self):
         hearing_title = '"상표출원 심사 1년↑…소상공인·중소기업 피해 연간 3조 추정"'
         hearing_body = (

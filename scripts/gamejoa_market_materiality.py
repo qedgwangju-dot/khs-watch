@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 134
+VERSION = 135
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -5691,11 +5691,20 @@ def assess(title: str, body: str, *, source_url: str = "", published: str = "") 
     ):
         result.update(disposition="exclude", priority=0, reason="consumer_fashion_publicity_without_new_financial_change")
         return result
-    startup_profile = re.search(r"창업존.{0,40}인터뷰|입주기업\s*인터뷰|입주기업\s*대표를\s*만나", body[:800])
+    startup_profile = re.search(
+        r"창업존.{0,40}인터뷰|입주기업\s*인터뷰|입주기업\s*대표를\s*만나|"
+        r"보육기업.{0,20}CEO|스타트업.{0,20}(?:CEO|대표).{0,20}(?:인터뷰|프로필|소개)|"
+        r"(?:CEO|대표).{0,20}(?:스타트업|보육기업).{0,20}(?:인터뷰|소개)",
+        title + " " + body[:800], re.I,
+    )
     profile_execution = any(
         not PAST_ACTION.search(sentence) and not BACKGROUND.search(sentence)
         and (re.search(r"(?:공급|납품|기술이전)\s*계약.{0,30}체결|신규\s*고객.{0,30}(?:확보|납품)", sentence)
-             or (QUANTITY.search(sentence) and re.search(r"시험\s*결과|실증\s*결과|독립\s*검증|고객\s*검증", sentence)))
+             or (QUANTITY.search(sentence) and re.search(r"시험\s*결과|실증\s*결과|독립\s*검증|고객\s*검증", sentence))
+             or (QUANTITY.search(sentence) and re.search(
+                 r"투자유치|기관투자자|투자금|자금조달|시리즈\s*[A-F]|기업공개|\bIPO\b|상장|수주|매출|출하|양산",
+                 sentence, re.I,
+             ) and re.search(r"확보|유치|체결|기록|발표|공시|시작", sentence)))
         for sentence in source_sentences(body)[:5]
     )
     if startup_profile and not profile_execution and not DIRECT_HEADLINE_CHANGE.search(title):
@@ -5822,6 +5831,21 @@ def assess(title: str, body: str, *, source_url: str = "", published: str = "") 
         r"(?:연결|분기|반기|연간|전체|회사).{0,20}매출|영업이익|순이익|가이던스|설비투자|"
         r"공급\s*계약.{0,20}체결|공장.{0,20}(?:착공|증설)|규제.{0,20}(?:시행|발효)", headline_lead,
     ))
+    thematic_price_recap = bool(
+        re.search(r"(?:테마주|수혜주|관련주).{0,35}(?:불기둥|상한가|급등|폭등|강세)|"
+                  r"(?:불기둥|상한가|급등|폭등|강세).{0,35}(?:테마주|수혜주|관련주)", title)
+    )
+    verified_aggregate_flow = bool(
+        re.search(r"한국거래소|거래소\s*집계|KRX", headline_lead, re.I)
+        and QUANTITY.search(headline_lead)
+        and re.search(r"순매수|순매도|거래대금|자금\s*(?:유입|유출)", headline_lead)
+    )
+    if thematic_price_recap and not company_result_or_execution and not verified_aggregate_flow:
+        result.update(
+            disposition="exclude", priority=0,
+            reason="thematic_stock_rally_without_verified_company_or_market_event",
+        )
+        return result
     consumer_sku = bool(re.search(r"라면|칼국수|과자|음료|화장품|스킨케어|신발|생활용품|찹쌀떡|피자설기|디저트", title)
                         and re.search(r"['‘][^'’]{2,45}['’]|(?:신제품|단일\s*제품|개별\s*제품|특정\s*매장)", headline_lead)
                         and re.search(r"판매\s*호조|(?:매장|마트).{0,25}(?:점|1위)|제품.{0,30}매출|판매량", headline_lead))
