@@ -13,6 +13,7 @@ on:
       - "tests/test_europe_sovereign_yield_watch.py"
       - "tests/test_europe_sovereign_yield_telegram_html.py"
       - "scripts/france_credit_carry_overlay.py"
+      - "scripts/khs_source_fetch.py"
       - "tests/test_france_credit_carry_overlay.py"
       - "scripts/telegram_state_commit.py"
       - "tests/test_telegram_state_commit.py"
@@ -30,6 +31,10 @@ jobs:
     timeout-minutes: 12
     env:
       EXPECTED_TELEGRAM_BOT_USERNAME: "hs88798879887988798879_bot"
+      KHS_SOURCE_PROXY_URL: "https://tips-yield-telegram.gustnd1.workers.dev/policy-source/fetch"
+      KHS_SOURCE_PROXY_FIRST: "true"
+      KHS_SOURCE_PROXY_TIMEOUT_SECONDS: "20"
+      KHS_SOURCE_DIRECT_TIMEOUT_CAP_SECONDS: "10"
 
     steps:
       - name: Checkout
