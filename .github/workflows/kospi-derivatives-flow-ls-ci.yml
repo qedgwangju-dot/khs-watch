@@ -4,6 +4,8 @@ on:
   schedule:
     - cron: "5 9 * * 1-5"
       timezone: "Asia/Seoul"
+    # UTC 독립 예약: 09:05·10:10 KST 원예약 유실 시 11:17 KST 백업 검사.
+    - cron: "17 2 * * 1-5"
     - cron: "10 10 * * 1-5"
       timezone: "Asia/Seoul"
     - cron: "25 12 * * 1-5"
@@ -106,6 +108,22 @@ jobs:
           assert "CI 실패는 실시간 시장감시 중단" in script
           assert "실패 단계:" in script and "message_id" in script
           print("ci_failure_alert_syntax_valid=true independent_handoff=true")
+          PY
+
+      - name: Verify independent UTC CI recovery schedule
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          from pathlib import Path
+          from zoneinfo import ZoneInfo
+          source=Path(".github/workflows/kospi-derivatives-flow-ls-ci.yml").read_text(encoding="utf-8")
+          assert 'cron: "5 9 * * 1-5"' in source
+          assert 'cron: "10 10 * * 1-5"' in source
+          assert 'cron: "17 2 * * 1-5"' in source
+          utc=dt.datetime(2026,10,14,2,17,tzinfo=dt.timezone.utc)
+          kst=utc.astimezone(ZoneInfo("Asia/Seoul"))
+          assert kst.strftime("%H:%M") == "11:17",kst
+          print("kospi_ci_utc_fallback_schedule_valid=true backup_kst=",kst.isoformat())
           PY
 
       - name: Verify XKRX session calendar
