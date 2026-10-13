@@ -24,14 +24,29 @@ KIND_LABELS = {'sanctions': '제재·압박', 'reaction': '외교반응·개입�
 
 def mixed_restraint_attack(row):
     title = html.unescape(str(row.get('title_original') or row.get('title') or '')).lower()
-    restraint = bool(re.search(r'휴전|공격\s*(?:자제|중단|안)|ceasefire|truce|halt(?:ed)? attacks|stopp?ed attacks', title))
-    contrast = bool(re.search(r'하지만|했지만|에도|…|\.\.\.|\b(?:despite|but|while|although)\b', title))
+    title = title.replace('’', "'").replace('‘', "'")
+    korean_restraint = r'공격(?:을)?\s*(?:자제|중단|멈|안)'
+    english_restraint = r'\b(?:halt(?:ed)?|stopp?ed|paus(?:e|ed))\s+(?:energy\s+)?(?:attacks?|strikes?)\b'
+    contrast_clause = r'하지만|했지만|했으나|그러나|반면|에도|…|\.\.\.|\b(?:despite|but|while|although|yet)\b'
+    restraint = bool(re.search(r'휴전|ceasefire|truce|' + korean_restraint + '|' + english_restraint, title))
+    contrast = bool(re.search(contrast_clause, title))
     actor = r'(?:러시아|러는|러\s|이란|이스라엘|후티|우크라이나|미국|russia|iran|israel|houthi|ukraine|u\.s\.)'
     ongoing = bool(re.search(actor + r'.{0,35}(?:공격|공습|타격|attack|strike).{0,12}(?:계속|지속|재개|continu|resum)', title)
                    or re.search(actor + r'.{0,25}(?:계속|지속|continu|resum).{0,20}(?:공격|공습|타격|attack|strike)', title))
-    # Korean headlines can inherit the attack object: "공격 자제했지만 러는 계속".
-    inherited = bool(re.search(r'공격\s*(?:자제|중단|안).{0,35}(?:하지만|했지만|…).{0,8}러는\s*계속', title))
-    return restraint and contrast and (ongoing or inherited)
+    # The opponent can inherit the preceding predicate as well as its object:
+    # "공격 자제했지만 러는 아냐" / "halted attacks but Russia didn't".
+    # Require that action, contrast, opponent and denial occur in that order;
+    # an unrelated "reconstruction is not complete" must not erase a ceasefire.
+    korean_actor = r'(?<![가-힣a-z])(?:러시아|러|이란|이스라엘|후티|우크라이나|미국)(?:는|은|도|가|이)?'
+    korean_denial = r'(?:아냐|아님|아니(?:다|야|었|라)?|그렇지\s*않|안\s*(?:했|해|하))'
+    inherited = bool(re.search(korean_restraint + r'.{0,35}(?:' + contrast_clause + r').{0,8}'
+                               + korean_actor + r'\s*(?:계속|지속|' + korean_denial + ')', title))
+    english_actor = r'\b(?:russia|moscow|iran|tehran|israel|houthi(?:s)?|ukraine|kyiv|u\.s\.|us)\b'
+    english_denial = (r"(?:(?:did|does|has|have|had|is|was|were|will|would|do)\s+not\b|"
+                      r"(?:did|does|has|have|had|is|was|were|do)n't\b|won't\b)")
+    inherited_english = bool(re.search(english_restraint + r'.{0,55}(?:' + contrast_clause + r').{0,8}'
+                                       + english_actor + r'\s+' + english_denial, title))
+    return restraint and contrast and (ongoing or inherited or inherited_english)
 
 
 def refinery_attack_denial(row):
@@ -267,7 +282,9 @@ def verify_alert(test_mode=False):
         if (row.get('non_military_kind') == 'attack_pause' or refinery_attack_denial(row)) and any(
                 phrase in block for phrase in ('공격 확대 방침', '공격확대예고')):
             raise RuntimeError('WAR_INTEGRITY_GATE: attack denial rewritten as escalation')
-        if row.get('non_military_kind') == 'mixed_restraint' and lines[start].startswith('🟢'):
+        if (row.get('non_military_kind') == 'mixed_restraint' or mixed_restraint_attack(row)) and (
+                row.get('non_military_kind') != 'mixed_restraint'
+                or row.get('classification_color') != 'yellow' or not lines[start].startswith('🟡')):
             raise RuntimeError('WAR_INTEGRITY_GATE: unilateral restraint shown as bilateral peace')
     if set(matched) != set(ids):
         raise RuntimeError('WAR_INTEGRITY_GATE: duplicated or omitted rendered source')

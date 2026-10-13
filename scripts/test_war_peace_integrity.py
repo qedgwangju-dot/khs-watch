@@ -112,6 +112,58 @@ class IntegrityTests(unittest.TestCase):
         self.assertIsNone(integrity.non_military_kind(row))
         self.assertEqual(integrity.final_color(row), 'green')
 
+    def test_opponent_ellipsis_negation_keeps_unilateral_restraint_unconfirmed(self):
+        titles = (
+            '젤렌스키 "트럼프 휴전 언급에 공격 자제했지만 러는 아냐" - MBC 뉴스',
+            '젤렌스키 "공격 자제했지만 러시아는 아니다"',
+            '우크라이나, 공격 중단했으나 러시아는 그렇지 않아',
+            '이란, 공격 자제했지만 이스라엘은 아님',
+            "Zelensky halted attacks after Trump truce but Russia didn't",
+            'Ukraine stopped energy strikes while Russia did not',
+            'Ukraine paused attacks, but Moscow has not',
+        )
+        for title in titles:
+            with self.subTest(title=title):
+                row = article(title, source='MBC 뉴스')
+                self.assertTrue(integrity.mixed_restraint_attack(row))
+                _, row['tags'] = integrity.score_item(row, NOW)
+                text = integrity.build_alert([row], [], NOW)
+                self.assertEqual(integrity.final_color(row), 'yellow')
+                self.assertNotIn('🟢', text)
+                self.assertIn('🟡 [', text)
+                self.assertIn('양측 휴전 이행 미확인', text)
+                metadata = next(line for line in text.splitlines() if '<a href=' in line)
+                self.assertEqual(metadata.count(integrity.KIND_LABELS['mixed_restraint']), 1)
+
+    def test_unrelated_negation_does_not_erase_confirmed_bilateral_ceasefire(self):
+        row = article('러시아·우크라이나, 정식 휴전 합의…양측 공격 중단 이행 확인, 재건 완료는 아냐',
+                      source='Reuters')
+        self.assertFalse(integrity.mixed_restraint_attack(row))
+        self.assertIsNone(integrity.non_military_kind(row))
+        self.assertEqual(integrity.final_color(row), 'green')
+
+    def test_attack_object_is_not_mistaken_for_the_opponent_actor(self):
+        row = article('우크라이나, 공격 자제했지만 테러는 아냐')
+        self.assertFalse(integrity.mixed_restraint_attack(row))
+
+    def test_final_gate_rechecks_headline_even_when_saved_kind_and_color_are_wrong(self):
+        row = article('젤렌스키 "트럼프 휴전 언급에 공격 자제했지만 러는 아냐" - MBC 뉴스',
+                      source='MBC 뉴스')
+        row['classification_color'] = 'green'
+        row['non_military_kind'] = None
+        text = '🟢 [신규] <b>1. 우크라이나·러시아</b>\n<a href="' + row['link'] + '">원문</a>'
+        receipt = evidence.alert_receipt([row], [], NOW, text)
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            root = Path(folder)
+            for attr, name in {'ALERT': 'alert.txt', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                stack.enter_context(patch.object(watch, attr, root / name))
+            watch.ALERT.write_text(text, encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids': [row['id']]}), encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+            stack.enter_context(patch.object(integrity, '_verify'))
+            with self.assertRaisesRegex(RuntimeError, 'WAR_INTEGRITY_GATE.*unilateral restraint'):
+                integrity.verify_alert()
+
     def test_real_attack_and_sanctions_keep_separate_colors(self):
         attack = article('후티, 사우디 공항에 미사일 공격…여행객 부상', source='MBC 뉴스', link='https://imnews.imbc.com/example')
         attack['id'] = 'attack'
