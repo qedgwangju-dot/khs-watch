@@ -19,7 +19,19 @@ _verdict = previous.guard._verdict
 _future_refinery = previous._future_refinery_policy
 _verify = runner.verify_alert
 KIND_LABELS = {'sanctions': '제재·압박', 'reaction': '외교반응·개입검토',
-               'attack_pause': '공격 중단·부인 발언'}
+               'attack_pause': '공격 중단·부인 발언', 'mixed_restraint': '자제 발언·상대 공격 주장'}
+
+
+def mixed_restraint_attack(row):
+    title = html.unescape(str(row.get('title_original') or row.get('title') or '')).lower()
+    restraint = bool(re.search(r'휴전|공격\s*(?:자제|중단|안)|ceasefire|truce|halt(?:ed)? attacks|stopp?ed attacks', title))
+    contrast = bool(re.search(r'하지만|했지만|에도|…|\.\.\.|\b(?:despite|but|while|although)\b', title))
+    actor = r'(?:러시아|러는|러\s|이란|이스라엘|후티|우크라이나|미국|russia|iran|israel|houthi|ukraine|u\.s\.)'
+    ongoing = bool(re.search(actor + r'.{0,35}(?:공격|공습|타격|attack|strike).{0,12}(?:계속|지속|재개|continu|resum)', title)
+                   or re.search(actor + r'.{0,25}(?:계속|지속|continu|resum).{0,20}(?:공격|공습|타격|attack|strike)', title))
+    # Korean headlines can inherit the attack object: "공격 자제했지만 러는 계속".
+    inherited = bool(re.search(r'공격\s*(?:자제|중단|안).{0,35}(?:하지만|했지만|…).{0,8}러는\s*계속', title))
+    return restraint and contrast and (ongoing or inherited)
 
 
 def refinery_attack_denial(row):
@@ -40,6 +52,8 @@ def future_refinery_policy(row):
 
 def non_military_kind(row):
     title = html.unescape(str(row.get('title_original') or row.get('title') or row.get('title_ko') or '')).lower()
+    if mixed_restraint_attack(row):
+        return 'mixed_restraint'
     # Require an explicit new-action predicate before background weapon nouns
     # can turn a sanctions listing or a condemnation into a military event.
     actual = bool(re.search(
@@ -88,16 +102,22 @@ def topic_label(row):
 def verdict(items):
     kinds = [non_military_kind(row) for row in items]
     if kinds and all(kinds):
-        core = ('공격 중단·부인 발언과 제재·외교반응 관련 보도' if 'attack_pause' in kinds else
+        statement = bool(set(kinds) & {'attack_pause', 'mixed_restraint'})
+        core = ('공격 자제·중단 발언과 상대 공격 지속 관련 보도' if statement else
                 '제재·외교적 규탄·군사개입 검토 관련 보도')
+        market_line = ('한쪽의 자제 발언만으로 유가·해운·보험 위험프리미엄 하락을 단정할 수 없음' if statement else
+                       '거래 제한·협상 제약의 영향은 가능하나 유가·해운·보험료 방향은 별도 관측 필요')
+        next_line = ('발언 원문·양측 공식 동의 → 실제 공격·피해·운영 제한 → 휴전 이행 여부' if statement else
+                     '제재 발효·대상 확인 → 공식 군사 명령 여부 → 실제 작전·운영 영향')
         return (
             '<b>투자 판정</b>\n'
             f'- <b>핵심:</b> {core}\n'
-            '- <b>현재 단계:</b> 발언·경제·외교 조치와 검토 단계 — 새로운 군사작전 개시는 확인되지 않음\n'
-            + ('- <b>확인:</b> 공격 중단 발언만으로 양측 휴전 합의·실제 이행이 확인되지는 않음\n' if 'attack_pause' in kinds else '')
+            + ('- <b>현재 단계:</b> 일방적 자제 발언·상대 공격 지속 주장 — 양측 휴전 이행 미확인\n' if statement else
+               '- <b>현재 단계:</b> 발언·경제·외교 조치와 검토 단계 — 새로운 군사작전 개시는 확인되지 않음\n')
+            + ('- <b>확인:</b> 공격 중단 발언만으로 양측 휴전 합의·실제 이행이 확인되지는 않음\n' if statement else '')
             +
-            '- <b>시장:</b> 거래 제한·협상 제약의 영향은 가능하나 유가·해운·보험료 방향은 별도 관측 필요\n'
-            '- <b>다음:</b> 제재 발효·대상 확인 → 공식 군사 명령 여부 → 실제 작전·운영 영향'
+            f'- <b>시장:</b> {market_line}\n'
+            f'- <b>다음:</b> {next_line}'
         )
     # Weapon/attack words cited as the reason for sanctions or condemnation
     # must not decide the military stage of another negotiation item.
@@ -160,7 +180,7 @@ def build_alert(items, markets, now):
         row['classification_color'] = color
         marker = {'red': '🔴 ', 'yellow': '🟡 ', 'green': '🟢 '}.get(color, '')
         lines[start] = re.sub(r'^[🔴🟢🟡]?\s*', marker, lines[start])
-        if kind == 'attack_pause':
+        if kind in ('attack_pause', 'mixed_restraint'):
             # Preserve the original speaker and both clauses instead of the
             # older template's invented promise to increase Ukrainian strikes.
             lines[start + 1] = html.escape(str(row.get('title_ko') or row.get('title_original') or ''))
@@ -242,9 +262,11 @@ def verify_alert(test_mode=False):
         marker = {'red': '🔴', 'green': '🟢', 'yellow': '🟡'}.get(row.get('classification_color'), '')
         if marker and not lines[start].startswith(marker):
             raise RuntimeError('WAR_INTEGRITY_GATE: final marker differs from event stage')
-        if row.get('non_military_kind') == 'attack_pause' and any(
+        if (row.get('non_military_kind') == 'attack_pause' or refinery_attack_denial(row)) and any(
                 phrase in block for phrase in ('공격 확대 방침', '공격확대예고')):
             raise RuntimeError('WAR_INTEGRITY_GATE: attack denial rewritten as escalation')
+        if row.get('non_military_kind') == 'mixed_restraint' and lines[start].startswith('🟢'):
+            raise RuntimeError('WAR_INTEGRITY_GATE: unilateral restraint shown as bilateral peace')
     if set(matched) != set(ids):
         raise RuntimeError('WAR_INTEGRITY_GATE: duplicated or omitted rendered source')
     for row in receipt['markets']:
