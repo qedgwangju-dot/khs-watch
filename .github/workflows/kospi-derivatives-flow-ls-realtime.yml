@@ -229,7 +229,7 @@ jobs:
           PY
       - name: Run morning KOSPI watcher
         run: |
-          rm -f out/kospi_shock_episode_status.md out/kospi_shock_episode_raw.json out/kospi_shock_delivery_log.jsonl out/kospi_shock_enrichment_latest.json out/kospi_shock_handoff.json out/kospi_industry_flow.jsonl out/krx_market_closed.flag
+          rm -f out/kospi_shock_episode_status.md out/kospi_shock_episode_raw.json out/kospi_shock_delivery_log.jsonl out/kospi_shock_enrichment_latest.json out/kosdaq_shock_enrichment_latest.json out/kospi_shock_handoff.json out/kospi_industry_flow.jsonl out/krx_market_closed.flag
           python -m py_compile scripts/kospi_shock_episode_watch.py scripts/kospi_shock_enrichment.py scripts/kospi_unified_industry_collector.py scripts/krx_session_calendar.py
 
           collector_supervisor() {
@@ -330,6 +330,7 @@ jobs:
             out/kospi_shock_episode_raw.json
             out/kospi_shock_delivery_log.jsonl
             out/kospi_shock_enrichment_latest.json
+            out/kosdaq_shock_enrichment_latest.json
             out/kospi_industry_flow.jsonl
             out/krx_market_closed.flag
           if-no-files-found: ignore
@@ -380,7 +381,7 @@ jobs:
           PY
       - name: Run afternoon KOSPI watcher with handoff
         run: |
-          rm -f out/kospi_shock_episode_status.md out/kospi_shock_episode_raw.json out/kospi_shock_enrichment_latest.json
+          rm -f out/kospi_shock_episode_status.md out/kospi_shock_episode_raw.json out/kospi_shock_enrichment_latest.json out/kosdaq_shock_enrichment_latest.json
           python -m py_compile scripts/kospi_shock_episode_watch.py scripts/kospi_shock_enrichment.py scripts/kospi_unified_industry_collector.py scripts/krx_session_calendar.py
 
           collector_supervisor() {
@@ -476,6 +477,7 @@ jobs:
             out/kospi_shock_episode_raw.json
             out/kospi_shock_delivery_log.jsonl
             out/kospi_shock_enrichment_latest.json
+            out/kosdaq_shock_enrichment_latest.json
             out/kospi_shock_handoff.json
             out/kospi_industry_flow.jsonl
             out/krx_market_closed.flag
