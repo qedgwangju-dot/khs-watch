@@ -48,7 +48,7 @@ class FranceCreditCarryOverlayTests(unittest.TestCase):
 
     def test_official_rating_downgrade_requires_changed_official_row(self):
         old = {"last_official": watch.parse_moodys(EXAMPLE_EN)}
-        newest = {**old["last_official"], "rating": "A1", "decision_date": "2026-10-23", "next_review": None}
+        newest = {**old["last_official"], "rating": "A1", "decision_date": "2026-10-23", "next_review": None, "source_kind": "official_document"}
         events = watch.credit_events(dt.date(2026, 10, 24), old, newest)
         self.assertEqual(events, [{"kind": "decision", "key": "decision:2026-10-23:A1:Negative"}])
         old["sent_keys"] = [events[0]["key"]]
@@ -56,7 +56,7 @@ class FranceCreditCarryOverlayTests(unittest.TestCase):
 
     def test_rating_unchanged_but_review_done_generates_one_verified_result(self):
         old = {"last_official": watch.parse_moodys(EXAMPLE_EN)}
-        new = {**old["last_official"], "decision_date": "2026-10-23", "next_review": None}
+        new = {**old["last_official"], "decision_date": "2026-10-23", "next_review": None, "source_kind": "official_document"}
         event = watch.credit_events(dt.date(2026, 10, 24), old, new)
         self.assertEqual(len(event), 1)
         self.assertEqual(event[0]["kind"], "decision")
@@ -80,6 +80,27 @@ class FranceCreditCarryOverlayTests(unittest.TestCase):
         self.assertIn("포지션 청산 마감일도 아닙니다", msg)
         self.assertIn("메모리주 영향은 조건부", msg)
         self.assertIn("AFT France Moody's rating calendar:", msg)
+
+    def test_dated_official_snapshot_can_remind_but_not_assert_downgrade(self):
+        snapshot = dict(watch.VERIFIED_AFT_SNAPSHOT)
+        old = {"last_official": snapshot}
+        event = watch.credit_events(dt.date(2026, 10, 16), old, snapshot)
+        self.assertEqual([x["kind"] for x in event], ["milestone"])
+        changed = {**snapshot, "rating": "A1", "decision_date": "2026-10-23"}
+        self.assertFalse(any(x["kind"] == "decision" for x in watch.credit_events(
+            dt.date(2026, 10, 24), old, changed
+        )))
+        _, msg = watch.format_event(snapshot, event, {}, dt.datetime(
+            2026, 10, 16, tzinfo=watch.KST))
+        self.assertIn("최신 일정 변경 여부는 확인 불가", msg)
+
+    def test_outage_alert_is_labeled_source_failure_not_rating_result(self):
+        snapshot = dict(watch.VERIFIED_AFT_SNAPSHOT)
+        _, msg = watch.format_event(
+            snapshot, [{"kind": "source_outage", "key": "official_rating_source_unavailable:2026-10"}],
+            {}, dt.datetime(2026, 10, 14, tzinfo=watch.KST))
+        self.assertIn("조회 장애", msg)
+        self.assertIn("등급 변경이나 시장의 강등 가능성을 확정", msg)
 
     def test_source_attributed_text_recovery_only_schedules_not_downgrades(self):
         sample = (
