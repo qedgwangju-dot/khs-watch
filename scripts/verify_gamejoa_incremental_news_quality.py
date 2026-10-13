@@ -6327,6 +6327,86 @@ class IncrementalNewsTests(unittest.TestCase):
 
 
 class ConcreteLiveSelectionRegressions(unittest.TestCase):
+    def test_oct13_live_low_signal_audit_estimate_and_local_seedling_asset_are_withheld(self):
+        hearing_title = '"상표출원 심사 1년↑…소상공인·중소기업 피해 연간 3조 추정"'
+        hearing_body = (
+            '(대전=연합뉴스) 이주형 기자 = 13일 정부대전청사에서 열린 국회 산업통상자원중소벤처기업위원회의 '
+            '지식재산처 국정감사에서 특허·상표 심사가 장기간 지연되며 기업 기술 보호와 신제품 출시에 차질을 빚고 있다는 지적이 나왔다. '
+            '더불어민주당 전은수(충남 아산을) 의원은 "지난해 우리나라 상표 출원 심사 1차 처리 기간은 12.6개월로 '
+            '0.52개월이 걸리는 유럽연합(EU)은 물론, 미국(6.1개월)이나 일본(6.9개월)보다도 두배 가까이 길다"며 '
+            '"유행에 민감한 패션과 뷰티, 식품 분야는 아이디어가 나온 지 한 달 안에도 모방상품이 개발·출시되고 있다"고 말했다. '
+            '실제 화장품은 제조업자개발생산(ODM) 방식을 활용하면 2∼3개월 만에 출시할 수 있고, 식품은 유행에 따라 '
+            '2주 만에 신제품을 선보이는 사례도 있다. 우리나라 상표출원 건수는 2023년 31만3천533건 이후 매년 늘어나고 있으나 '
+            '심사관 수는 2023년 160명에서 2024년 177명으로 17명 늘어난 이후 올해까지 변동이 없는 상황이다. '
+            '올해 상반기 기준 상표 출원 건수는 약 18만 건으로 역대 최고치를 기록했으며, 개인과 소상공인이 전체 출원의 50.7%를 차지했다. '
+            '전 의원은 "자금과 법률 대응력이 부족한 소상공인과 중소기업은 상표 등록 지연으로 모방상품에 대응하기 어렵고, '
+            '상표 등록이 거절되면 제품 개발과 마케팅에 투입한 비용까지 손실을 볼 수 있다"고 우려했다. '
+            '이어 "상표 심사가 6개월 이상 지연될 경우 매출 감소에 따른 경제적 피해가 연간 약 3조원으로 추정된다"고 질타했다. '
+            '이에 대해 김용선 지식재산처장은 "심사 기간을 줄이려고 노력 중이나 워낙 물량이 늘어나다 보니 고민이 많다"며 '
+            '"바람직한 상표 심사 기간은 6개월 내로 하는 것을 목표로 하고 있다. 연도별 심사인력 증원과 예산 확보, AI 시스템 개발을 '
+            '포함한 실행계획을 마련해 보고하겠다"고 말했다.'
+        )
+        seedling_title = '경북농업자원관리원, 영천포장 딸기묘 생산 거점 확대'
+        seedling_body = (
+            '경북도 농업자원관리원은 13일 영천포장을 연간 20만주의 딸기 우량 원묘를 생산·공급하는 거점으로 확대한다고 밝혔다. '
+            "농림축산식품부 주관 '2027년 종자산업기반구축사업' 공모에 선정돼 최근 국비 7억원을 확보한 데 따른 것이다. "
+            '관리원은 국비 포함 14억원을 투입해 영천포장에 종묘생산온실 3300㎡와 저온저장시설·창고 165㎡를 추가로 건립한다. '
+            '현재 영천포장에는 종묘생산온실 5110㎡와 저온저장시설 251㎡가 있다. 관리원은 2017년부터 우량 종묘 생산·공급체계를 '
+            '구축해 현재 연간 12만주를 공급하고 있다. 이번 투자로 생산시설이 추가되면 공급 규모는 연간 20만주로 늘어난다. '
+            '관리원에 따르면 도내 딸기 농가의 80%가 자가육묘를 함으로써 매년 바이러스와 토양 전염성 병해 발생, 종자 순도 저하, '
+            '생산성 감소 등의 문제가 이어지고 있고 농가의 육묘 수요에 비해 전문적인 우량 종묘 공급은 부족한 실정이다. '
+            '우량 무병묘를 사용하면 주당 생산량이 기존 농가보다 20% 늘어나는 것으로 나타났다. '
+            '관리원은 딸기종묘 공급체계를 현재의 선도농가 중심에서 시·군 거점 전문육묘장, 농업기술센터, 수출시범단지 등과 '
+            '협력망을 구축하는 방향으로 개편해 무병묘 보급률을 2029년 68%, 2032년 100%로 올린다는 방침이다.'
+        )
+        published = '2026-10-13T15:12:00+09:00'
+        cases = (
+            (hearing_title, hearing_body, 'earnings_or_guidance',
+             'parliamentary_hearing_conditional_harm_estimate_without_executed_policy_or_listed_issuer'),
+            (seedling_title, seedling_body, 'physical_supply_or_capacity',
+             'regional_public_agriculture_capacity_without_listed_or_national_market_channel'),
+        )
+        now = dt.datetime(2026, 10, 13, 19, 0, tzinfo=dt.timezone(dt.timedelta(hours=9)))
+        with patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}), patch.object(radar.base, 'kst_now', return_value=now):
+            for title, body, kind, expected_reason in cases:
+                with self.subTest(title=title):
+                    assessment = materiality.assess(title, body, published=published)
+                    self.assertFalse(assessment['equity_publication']['eligible'], assessment)
+                    self.assertEqual(assessment['equity_publication']['reason'], expected_reason)
+                    candidate = alert(title, body, 'https://www.newsis.com/view/NISX20261013_0003824146')
+                    candidate.update(published=published, publisher='뉴시스')
+                    self.assertEqual(radar.quality_display_alerts([candidate], 7), [])
+
+        enacted_hearing_body = hearing_body + (
+            ' 지식재산처는 심사관 50명 증원 예산 80억원을 2027년도 예산에 편성하고, '
+            '2027년 1월 1일부터 6개월 심사 기준을 시행한다고 발표했다.'
+        )
+        enacted = materiality.equity_publication_assessment(
+            hearing_title, [{'kind': 'policy_scope_or_stage', 'source_excerpt': enacted_hearing_body}],
+            body=enacted_hearing_body, published=published,
+        )
+        self.assertTrue(enacted['eligible'], enacted)
+
+        listed_supplier_title = '농우바이오, 경북 영천포장에 딸기 무병묘 30억원 공급 계약'
+        listed_supplier_body = (
+            '코스닥 상장 종자기업 농우바이오는 경북 영천포장에 딸기 무병묘 30억원어치를 공급하는 계약을 체결했다. '
+            + seedling_body
+        )
+        listed_supplier = materiality.equity_publication_assessment(
+            listed_supplier_title, [{'kind': 'commercial_order', 'source_excerpt':
+                              '농우바이오는 딸기 무병묘 30억원 공급 계약을 체결했다.'}],
+            body=listed_supplier_body, published=published,
+        )
+        self.assertTrue(listed_supplier['eligible'], listed_supplier)
+
+        national_market_body = seedling_body + (
+            ' 전국 도매시장 딸기 평균 가격은 전년 동기보다 35% 상승했고 산지 출하량은 20% 감소했다.'
+        )
+        self.assertEqual(
+            materiality.nonmaterial_publicity_reason(seedling_title, national_market_body, False, published),
+            '',
+        )
+
     def test_oct13_crude_and_naphtha_briefing_reprints_share_event_identity(self):
         published = '2026-10-13T13:12:00+09:00'
         yonhap = alert(

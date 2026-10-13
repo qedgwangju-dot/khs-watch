@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 132
+VERSION = 133
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -4102,6 +4102,43 @@ def nonmaterial_publicity_reason(title: str, body: str, firm_event: bool, publis
         and re.search(r"대역폭|전력\s*효율|연산\s*성능|속도|용량|수율|나노초|GHz|Gbps|TOPS", row, re.I)
         for row in rows[:12]
     ))
+    hearing_harm_estimate = bool(
+        re.search(r"국정감사|국감", foreground)
+        and re.search(r"(?:피해|손실).{0,35}(?:추정|예상|전망)|(?:추정|예상|전망).{0,35}(?:피해|손실)", all_article_text)
+        and re.search(r"(?:경우|지연되면|지연될|차질이|부담이)", all_article_text)
+        and not firm_event
+        and not PUBLIC_MARKET_BUSINESS_LINK.search(foreground)
+        and not re.search(
+            r"(?:실제|확정된|집계된|발생한).{0,25}(?:피해|손실)|(?:피해|손실).{0,25}(?:실제|확정|집계|발생)",
+            all_article_text,
+        )
+        and not FORMAL_POLICY_EXECUTION.search(all_article_text)
+        and not re.search(
+            r"(?:예산|사업비|지원금|보조금|인력\s*증원).{0,30}(?:편성|배정|의결|확정|집행)|"
+            r"(?:편성|배정|의결|확정|집행).{0,30}(?:예산|사업비|지원금|보조금|인력\s*증원)",
+            all_article_text,
+        )
+    )
+    if hearing_harm_estimate:
+        return 'parliamentary_hearing_conditional_harm_estimate_without_executed_policy_or_listed_issuer'
+
+    local_public_agriculture_capacity = bool(
+        re.search(r"농업자원관리원|농업기술원|농업기술센터|농촌진흥청", foreground)
+        and re.search(r"(?:경북|경남|경기|강원|충북|충남|전북|전남|제주|도내|시·군|지역)", foreground)
+        and re.search(r"(?:종묘|육묘|원묘|묘목|모종|농산물)", foreground)
+        and re.search(r"(?:생산|공급).{0,28}(?:거점|시설|규모|능력|확대|늘)|(?:거점|시설).{0,28}(?:생산|공급)", all_article_text)
+        and not firm_event
+        and not PUBLIC_MARKET_BUSINESS_LINK.search(foreground)
+        and not any(
+            re.search(r"(?:전국|국내|국제|세계|글로벌)", row)
+            and re.search(r"(?:가격|수급|생산량|출하량|공급량|수출량|수입량)", row)
+            and re.search(r"\d|급등|급락|상승|하락|증가|감소|부족|중단|금지", row)
+            for row in rows
+        )
+    )
+    if local_public_agriculture_capacity:
+        return 'regional_public_agriculture_capacity_without_listed_or_national_market_channel'
+
     expo_or_showcase = bool(
         re.search(r"스마트\s*비즈\s*엑스포|산업전|전시회|박람회|쇼케이스|컨벤션", foreground, re.I)
         or re.search(r"엑스포(?!\s*센터)", foreground, re.I)
