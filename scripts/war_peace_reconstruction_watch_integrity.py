@@ -19,7 +19,53 @@ _verdict = previous.guard._verdict
 _future_refinery = previous._future_refinery_policy
 _verify = runner.verify_alert
 KIND_LABELS = {'sanctions': '제재·압박', 'reaction': '외교반응·개입검토',
-               'attack_pause': '공격 중단·부인 발언', 'mixed_restraint': '자제 발언·상대 공격 주장'}
+               'attack_pause': '공격 중단·부인 발언', 'mixed_restraint': '자제 발언·상대 공격 주장',
+               'military_statement': '군사 대응·보복 발언', 'support_statement': '지원 정책 발언'}
+
+
+def _headline(row):
+    return html.unescape(str(row.get('title_original') or row.get('title') or row.get('title_ko') or '')).lower()
+
+
+def _headline_group(title):
+    """Use actors in the current headline, before background actors or caches."""
+    us = bool(re.search(r'미국|트럼프|(?:^|\s)美(?:\s|,)|\b(?:trump|united states)\b|'
+                        r'\bu\.s\.(?=\s|$)|^us(?=\s|:|,)', title))
+    if re.search(r'후티|\bhouthi', title):
+        if us:
+            return '미국·후티'
+        return '사우디·후티' if re.search(r'사우디|\bsaudi\b', title) else '후티'
+    if re.search(r'우크라|러시아|\b(?:ukrain|russia)', title):
+        return '우크라이나·러시아'
+    if re.search(r'이란|\biran\b', title):
+        if re.search(r'이스라엘|\bisrael\b', title):
+            return '이스라엘·이란'
+        return '미국·이란' if us else '이란'
+    return '전쟁·외교'
+
+
+def _primary_topic(row):
+    title = _headline(row)
+    kind = non_military_kind(row)
+    if kind == 'military_statement':
+        return _headline_group(title) + ' · ' + KIND_LABELS[kind]
+    if kind == 'support_statement':
+        label = '정보 지원·종전 의향 발언' if re.search(r'종전|peace|end.{0,8}war', title) else '지원 정책 발언'
+        return _headline_group(title) + ' · ' + label
+    attack_denied = bool(re.search(
+        r'(?:공격|피격|타격)(?:(?:을|를|하지|받지|당하지)|\s*(?:보도|주장|설)(?:을|를)?)?\s*(?:부인|안\s*했|않|하지\s*않)|'
+        r'\b(?:not|never)\s+(?:been\s+)?(?:attacked|struck|hit|bombed)\b|'
+        r'\bno\s+(?:attack|strike)\b|\b(?:denies|denied)\b.{0,50}\b(?:attack|attacked|struck|hit)\b', title))
+    if (kind is None and re.search(r'아람코|\baramco\b', title)
+            and re.search(r'공격(?!적)|피격|\b(?:attack(?:s|ed)?|struck|hit)\b', title)
+            and not attack_denied and not re.search(r'요격|intercept', title)):
+        saudi = bool(re.search(r'사우디|\bsaudi\b', title))
+        houthi = bool(re.search(r'후티|\bhouthi', title))
+        group = ('사우디·후티' if houthi else '사우디·아람코') if saudi else ('후티·아람코' if houthi else '아람코')
+        target = '아람코 본사' if re.search(r'본사|headquarters|\bhq\b', title) else (
+            '아람코 시설' if re.search(r'시설|정유소|공장|refinery|facilit', title) else '아람코')
+        return group + ' · ' + target + ' 공격 보도'
+    return None
 
 
 def mixed_restraint_attack(row):
@@ -86,6 +132,16 @@ def non_military_kind(row):
             return 'sanctions'
     if re.search(r'규탄|비난|\bcondemns?\b|\bdenounces?\b', title):
         return 'reaction'
+    # The new event can be a statement even when its background describes real
+    # or historical attacks. An explicit newly launched attack above wins.
+    if re.search(r'(?:보복|공격|공습|군사작전|타격).{0,18}(?:시사|예고|경고|위협|검토|가능성)|'
+                 r'\b(?:warns?|threatens?|considers?).{0,55}(?:retaliat|attack|strike)|'
+                 r'\bretaliation.{0,30}(?:warning|threat)', title):
+        return 'military_statement'
+    if re.search(r'정보.{0,8}(?:지원|공유).{0,18}(?:유지|계속|부인|중단하지\s*않)|'
+                 r'\b(?:intelligence|information).{0,15}(?:support|sharing).{0,20}(?:maintain|continu)|'
+                 r'\b(?:maintains?|continues?).{0,20}(?:intelligence|information).{0,15}(?:support|sharing)', title):
+        return 'support_statement'
     return None
 
 
@@ -107,6 +163,9 @@ def final_color(row):
 
 
 def topic_label(row):
+    primary = _primary_topic(row)
+    if primary:
+        return primary
     topic = _topic(row)
     kind = non_military_kind(row)
     if kind:
@@ -118,6 +177,14 @@ def topic_label(row):
 def verdict(items):
     kinds = [non_military_kind(row) for row in items]
     if kinds and all(kinds):
+        if set(kinds) & {'military_statement', 'support_statement'} and not set(kinds) & {'attack_pause', 'mixed_restraint'}:
+            return (
+                '<b>투자 판정</b>\n'
+                '- <b>핵심:</b> 군사 대응·지원 정책·종전 의향에 관한 발언\n'
+                '- <b>현재 단계:</b> 발언·검토 단계 — 발언 자체로 새로운 군사작전 개시나 양측 휴전 이행을 확인할 수 없음\n'
+                '- <b>시장:</b> 군사 명령·실제 공격·운영 차질과 시장가격은 별도 확인 필요\n'
+                '- <b>다음:</b> 발언 원문·공식 명령 → 실제 작전·지원 정책 → 휴전 합의·이행 여부'
+            )
         statement = bool(set(kinds) & {'attack_pause', 'mixed_restraint'})
         core = ('공격 자제·중단 발언과 상대 공격 지속 관련 보도' if statement else
                 '제재·외교적 규탄·군사개입 검토 관련 보도')
@@ -197,10 +264,17 @@ def build_alert(items, markets, now):
         row['classification_color'] = color
         marker = {'red': '🔴 ', 'yellow': '🟡 ', 'green': '🟢 '}.get(color, '')
         lines[start] = re.sub(r'^[🔴🟢🟡]?\s*', marker, lines[start])
-        if kind in ('attack_pause', 'mixed_restraint'):
+        primary = _primary_topic(row)
+        if primary:
+            lines[start] = re.sub(r'(<b>\d+\.\s*).*?(</b>)',
+                                  lambda match: match.group(1) + html.escape(primary) + match.group(2),
+                                  lines[start], count=1)
+        if kind in ('attack_pause', 'mixed_restraint') or primary:
             # Preserve the original speaker and both clauses instead of the
             # older template's invented promise to increase Ukrainian strikes.
-            lines[start + 1] = html.escape(str(row.get('title_ko') or row.get('title_original') or ''))
+            original = str(row.get('title_original') or row.get('title') or '')
+            title = original if re.search(r'[가-힣]', original) else str(row.get('title_ko') or original)
+            lines[start + 1] = html.escape(title)
         for i in range(start + 1, end):
             line_urls = {html.unescape(value) for value in re.findall(r'<a href="([^"]+)"', lines[i])}
             if not line_urls & {row.get('link'), row.get('resolved_url')}:
@@ -276,6 +350,12 @@ def verify_alert(test_mode=False):
             raise RuntimeError('WAR_INTEGRITY_GATE: item lacks unique source evidence')
         row = candidates[0]
         matched.append(row['id'])
+        primary = _primary_topic(row)
+        if primary and html.escape(primary) not in lines[start]:
+            raise RuntimeError('WAR_INTEGRITY_GATE: rendered topic differs from headline event')
+        if non_military_kind(row) in ('military_statement', 'support_statement') and (
+                row.get('classification_color') != 'yellow' or not lines[start].startswith('🟡')):
+            raise RuntimeError('WAR_INTEGRITY_GATE: statement presented as a new attack or implemented peace')
         marker = {'red': '🔴', 'green': '🟢', 'yellow': '🟡'}.get(row.get('classification_color'), '')
         if marker and not lines[start].startswith(marker):
             raise RuntimeError('WAR_INTEGRITY_GATE: final marker differs from event stage')

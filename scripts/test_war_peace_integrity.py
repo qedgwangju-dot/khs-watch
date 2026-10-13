@@ -29,6 +29,97 @@ class IntegrityTests(unittest.TestCase):
         self.network.start()
         self.addCleanup(self.network.stop)
 
+    def test_retaliation_statement_ignores_background_attack_and_iran_actor(self):
+        row = article('美 트럼프, 중간선거 다음 후티 반군에 보복 시사 "잊지 않을 것"')
+        row['description'] = '발언은 선거 이후의 대응 가능성을 설명한다. 배경에는 과거 미국 폭격과 후티의 사우디 공격, 이란 관련 주장이 있다.'
+        row['signals_ko'] = ['사우디리야드후티미사일요격확인']
+        self.assertEqual(integrity.non_military_kind(row), 'military_statement')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+        self.assertEqual(integrity.topic_label(row), '미국·후티 · 군사 대응·보복 발언')
+        text = integrity.build_alert([row], [], NOW)
+        self.assertIn('🟡 [', text)
+        self.assertNotIn('🔴', text)
+        self.assertNotIn('이란·호르무즈', text)
+        self.assertIn('보복 시사', text)
+
+    def test_aramco_headquarters_headline_overrides_unrelated_interception_cache(self):
+        row = article('후티 반군, 사우디 아람코 본사 공격 정황…국제유가 긴장')
+        row['description'] = '본사 공격 보도에 관한 기사이며 피해 범위는 확인되지 않았다. 배경에 리야드 미사일 요격 소식이 언급된다.'
+        row['signals_ko'] = ['사우디리야드후티미사일요격확인']
+        self.assertEqual(integrity.topic_label(row), '사우디·후티 · 아람코 본사 공격 보도')
+        text = integrity.build_alert([row], [], NOW)
+        self.assertIn('아람코 본사 공격 보도', text)
+        self.assertNotIn('리야드 미사일 요격', text)
+        self.assertIn('공격 정황', text)
+
+    def test_support_statement_is_not_a_fresh_energy_ceasefire_announcement(self):
+        row = article('美 트럼프, 우크라 정보 지원 유지 "러시아도 종전 원해"')
+        row['description'] = '새 발언은 정보 공유 중단 의혹의 부인이다. 배경에는 앞선 에너지 휴전 주장과 그 이후 러시아의 공격이 있다.'
+        row['signals_ko'] = ['우크라러에너지휴전발표양측검증대기']
+        self.assertEqual(integrity.non_military_kind(row), 'support_statement')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+        text = integrity.build_alert([row], [], NOW)
+        self.assertIn('정보 지원·종전 의향 발언', text)
+        self.assertNotIn('에너지 휴전 발표', text)
+        self.assertNotIn('🔴', text)
+
+    def test_explicit_current_attack_wins_over_warning_in_same_headline(self):
+        row = article('후티, 사우디 미사일 공격 개시…미국 보복 경고')
+        self.assertIsNone(integrity.non_military_kind(row))
+        self.assertEqual(integrity.final_color(row), 'red')
+
+    def test_aramco_attack_denial_or_sanctions_do_not_gain_attack_report_topic(self):
+        for title in ('사우디, 아람코 본사 공격 부인', 'EU, 아람코 시설 공격 관련 업체 제재'):
+            with self.subTest(title=title):
+                self.assertIsNone(integrity._primary_topic(article(title)))
+
+    def test_aramco_aggressive_investment_is_not_a_military_attack(self):
+        row = article('아람코, 공격적 투자 확대…원유 사업 경쟁력 강화')
+        self.assertIsNone(integrity._primary_topic(row))
+
+    def test_aramco_topic_does_not_invent_an_unstated_country_or_facility(self):
+        row = article('Aramco attacked, damage not yet assessed', source='Reuters')
+        self.assertEqual(integrity._primary_topic(row), '아람코 · 아람코 공격 보도')
+
+    def test_aramco_attack_negation_stays_attached_to_attack_predicate(self):
+        for title in ('Aramco headquarters was not attacked', 'Saudi denies Aramco HQ was attacked',
+                      '사우디, 아람코 본사 공격 보도를 부인'):
+            with self.subTest(title=title):
+                self.assertIsNone(integrity._primary_topic(article(title)))
+
+    def test_english_threat_headline_remains_a_statement_with_past_attacks(self):
+        for actor in ('Trump', 'U.S.', 'US'):
+            with self.subTest(actor=actor):
+                row = article(actor + ' threatens retaliation against Houthis after election', source='Reuters')
+                row['description'] = 'Background mentions earlier airstrikes and ongoing attacks in Saudi Arabia.'
+                self.assertEqual(integrity.non_military_kind(row), 'military_statement')
+                self.assertEqual(integrity.final_color(row), 'yellow')
+                self.assertEqual(integrity.topic_label(row), '미국·후티 · 군사 대응·보복 발언')
+
+    def test_final_gate_rechecks_headline_topic_and_statement_color(self):
+        inputs = [
+            (article('후티 반군, 사우디 아람코 본사 공격 정황…국제유가 긴장'),
+             '사우디·후티 · 리야드 미사일 요격', 'red', 'headline event'),
+            (article('美 트럼프, 중간선거 다음 후티 반군에 보복 시사 "잊지 않을 것"'),
+             '미국·후티 · 군사 대응·보복 발언', 'red', 'statement presented'),
+        ]
+        for row, topic, color, reason in inputs:
+            with self.subTest(reason=reason), tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+                root = Path(folder)
+                row['classification_color'] = color
+                row['non_military_kind'] = None
+                marker = '🔴' if color == 'red' else '🟡'
+                text = marker + ' [신규] <b>1. ' + topic + '</b>\n<a href="' + row['link'] + '">원문</a>'
+                receipt = evidence.alert_receipt([row], [], NOW, text)
+                for attr, name in {'ALERT': 'alert.txt', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                    stack.enter_context(patch.object(watch, attr, root/name))
+                watch.ALERT.write_text(text, encoding='utf-8')
+                watch.PENDING.write_text(json.dumps({'ids':[row['id']]}), encoding='utf-8')
+                watch.AUDIT.write_text(json.dumps(receipt,ensure_ascii=False), encoding='utf-8')
+                stack.enter_context(patch.object(integrity,'_verify'))
+                with self.assertRaisesRegex(RuntimeError, reason):
+                    integrity.verify_alert()
+
     def test_weapon_nouns_in_sanctions_are_not_an_attack(self):
         row = article("EU, 러시아 무기망 겨냥 1569개 '역대 최대' 제재…北 미사일 기술자 등 7곳도 추가")
         row['description'] = '우크라이나 전쟁 관련 미사일·드론 핵심 부품 공급업체 826곳과 경영진 743명을 제재했다.'
