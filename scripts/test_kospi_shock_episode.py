@@ -814,7 +814,7 @@ _surge_watch.idx=deque([(10000,6800.0),(10300,6800.0)],maxlen=30000)
 _surge_sent=[]
 _surge_delivery=[]
 _surge_watch._record_delivery=lambda stage,message_id,ep,ts: _surge_delivery.append(
-    (stage,message_id,ep["start_ts"],ts)
+    (stage,message_id,ep,ts)
 )
 _original_surge_sender=ks.telegram_send
 try:
