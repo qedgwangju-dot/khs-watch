@@ -833,7 +833,22 @@ jobs:
               "sent_drop": 0.57,
               "alerted": True,
           }
-          w.msg_ids=[901]
+          # 동일한 기존 artifact 안에 코스닥 사건·가격·중복 상태까지 넣는다.
+          w.kosdaq_idx.extend([(now-200,1000.0),(now-6,990.0)])
+          w.kosdaq_episode={
+              "market":"KOSDAQ","start_ts":now-200,"start_price":1000.0,
+              "low_ts":now-6,"low_price":990.0,"sent_drop":1.0,
+          }
+          w.kosdaq_regular_price_ready=True
+          w.kosdaq_opening_gap_sent=True
+          w.kosdaq_last_price_processed_ts=now-6
+          w.kosdaq_flows.append({
+              "ts":now-6,"market":"KOSDAQ",
+              "현물":{"sample_ts":now-6,"외국인":-100.0,
+                      "기관":-50.0,"개인":150.0},
+          })
+          w.kosdaq_surge_sent_at["외국인"]=now-20
+          w.msg_ids=[901,902]
           w.save_handoff("out/kospi_shock_handoff_ci.json")
           print("handoff_producer_valid=true")
           PY
@@ -869,8 +884,16 @@ jobs:
           w.load_handoff("out/kospi_shock_handoff_ci.json")
           assert len(w.flows)==1, len(w.flows)
           assert w.episode and w.episode["start_price"]==7000.0, w.episode
-          assert 901 in w.msg_ids, w.msg_ids
+          assert 901 in w.msg_ids and 902 in w.msg_ids, w.msg_ids
+          assert len(w.kosdaq_idx)==2, w.kosdaq_idx
+          assert w.kosdaq_episode and w.kosdaq_episode["market"]=="KOSDAQ", w.kosdaq_episode
+          assert w.kosdaq_episode["start_price"]==1000.0
+          assert w.kosdaq_opening_gap_sent is True
+          assert w.kosdaq_regular_price_ready is True
+          assert len(w.kosdaq_flows)==1
+          assert w.kosdaq_surge_sent_at.get("외국인") is not None
           print("handoff_artifact_transfer_valid=true")
+          print("kosdaq_morning_afternoon_handoff_valid=true")
           PY
 
 
