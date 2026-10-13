@@ -69,7 +69,7 @@ class IntegrityTests(unittest.TestCase):
         _, tags = integrity.score_item(row, NOW)
         self.assertNotIn('공격확대예고', tags)
         row['tags'] = tags
-        self.assertEqual(integrity.non_military_kind(row), 'attack_pause')
+        self.assertEqual(integrity.non_military_kind(row), 'mixed_restraint')
         text = integrity.build_alert([row], [], NOW)
         self.assertIn('공격 안 했다', text)
         self.assertIn('러는 계속 공격', text)
@@ -89,6 +89,25 @@ class IntegrityTests(unittest.TestCase):
     def test_opponent_denial_is_not_reassigned_to_ukraine(self):
         row = article('러시아 "정유시설 공격 안 했다"…우크라이나는 공습 계속')
         self.assertFalse(integrity.refinery_attack_denial(row))
+
+    def test_restraint_and_opponent_attack_clauses_never_become_confirmed_peace(self):
+        titles = ('젤렌스키 "트럼프 휴전 언급에 공격 자제했지만 러는 계속" - 연합뉴스',
+                  '젤렌스키 "트럼프 에너지 휴전 언급에도 러 공격 계속" - 연합뉴스TV',
+                  'Zelensky halted attacks after Trump truce but Russia continues strikes')
+        for title in titles:
+            with self.subTest(title=title):
+                row = article(title, source='연합뉴스')
+                self.assertTrue(integrity.mixed_restraint_attack(row))
+                self.assertEqual(integrity.final_color(row), 'yellow')
+                text = integrity.build_alert([row], [], NOW)
+                self.assertNotIn('🟢', text)
+                self.assertIn('양측 휴전 이행 미확인', text)
+
+    def test_bilateral_agreement_and_implementation_without_attack_continuation_remains_green(self):
+        row = article('러시아·우크라이나, 정식 휴전 합의…양측 공격 중단 이행 확인', source='Reuters')
+        self.assertFalse(integrity.mixed_restraint_attack(row))
+        self.assertIsNone(integrity.non_military_kind(row))
+        self.assertEqual(integrity.final_color(row), 'green')
 
     def test_real_attack_and_sanctions_keep_separate_colors(self):
         attack = article('후티, 사우디 공항에 미사일 공격…여행객 부상', source='MBC 뉴스', link='https://imnews.imbc.com/example')
