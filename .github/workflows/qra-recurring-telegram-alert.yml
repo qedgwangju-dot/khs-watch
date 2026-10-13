@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - "scripts/qra_recurring_alert.py"
+      - "scripts/qra_long_end_issuance.py"
+      - "tests/test_qra_long_end_issuance.py"
       - "scripts/qra_recurring_state_commit.py"
       - "scripts/treasury_fiscal_plan_watch.py"
       - "scripts/treasury_fiscal_plan_state_commit.py"
@@ -17,6 +19,9 @@ on:
     # 3:00 PM ET borrowing estimates (DST/standard time); check at +10 minutes.
     - cron: "10 19,20 * * 1-5"
     - cron: "40 15,21 * * 0,6"
+    # 12:10 EDT on Fridays: prompt check after Treasury's 12:00 ET
+    # primary-dealer agenda/questionnaire release (not a new workflow).
+    - cron: "10 16 * * 5"
   workflow_dispatch:
     inputs:
       dry_run:
@@ -51,12 +56,17 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install dealer-agenda PDF parser
+        run: python -m pip install --quiet pypdf
+
       - name: Validate watcher
         run: |
           python -m py_compile scripts/qra_recurring_alert.py
+          python -m py_compile scripts/qra_long_end_issuance.py
           python -m py_compile scripts/qra_recurring_state_commit.py
           if [ -f tests/test_qra_recurring_alert.py ]; then
             python -m unittest tests/test_qra_recurring_alert.py -v
+          python -m unittest discover -s tests -p 'test_qra_long_end_issuance.py' -v
           fi
 
       - name: Validate fiscal policy watcher
