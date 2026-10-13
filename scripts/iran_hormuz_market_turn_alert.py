@@ -978,7 +978,7 @@ def _saudi_bypass_stage(title: str) -> str:
         return "unclassified"
     text = normalize_text(title)
 
-    if "saudi pipeline minister target total 10 mbd" in text and "2-3 years" in text:
+    if "minister target total 10 mbd" in text and "2-3 years" in text:
         return "minister_target_reported"
     if _saudi_total_pipeline_target_mbd(title) is not None:
         return "target_total_confirmed"
