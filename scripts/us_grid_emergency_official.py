@@ -430,6 +430,22 @@ def pjm_stage_explanation(event: dict) -> str:
         return "202(c) 관련 특별공지의 적용범위와 실제 운전지시를 확인해야 합니다."
     return "PJM 공식 비상운영 단계의 실제 의미는 메시지 정의와 운전지시를 함께 확인해야 합니다."
 
+def pjm_message_stage_label(event: dict) -> str:
+    message_type = str(event.get("message_type") or "")
+    low = message_type.lower()
+    if "eea 1" in low or "eea1" in low:
+        return "최대발전·부하관리 비상경보 / NERC EEA1"
+    if "special notice" in low:
+        return "특별공지(Special Notice)"
+    if "emergency use of back-up generator action" in low:
+        return "대형부하 비상 백업발전 실제 동원 지시"
+    if "emergency use of back-up generator warning" in low:
+        return "대형부하 비상 백업발전 동원 경고"
+    if "manual load dump" in low:
+        return "강제 부하차단 / NERC EEA3"
+    return message_type or "확인 필요"
+
+
 def doe_content(event: dict) -> tuple[str, str]:
     body = event.get("body", "")
     low = body.lower()
@@ -479,7 +495,7 @@ def render_event(event: dict, now: dt.datetime) -> str:
                 pjm_title(event),
                 "",
                 *timeline,
-                f"• 단계: {event.get('message_type', '확인 필요')}",
+                f"• 단계: {pjm_message_stage_label(event)}",
                 f"• 적용 지역: {event.get('regions') or 'PJM-RTO'}",
                 f"• 실제 내용: {pjm_stage_explanation(event)}",
                 "• 다음 확인: EEA 단계 상·하향, 수요반응·백업발전 실제 동원 MW·MWh, 지정자원 운전지시, 비상조치 해제시각",
@@ -684,6 +700,7 @@ def self_test() -> None:
     assert "2026년 10월 13일 13:00 KST" in t557
     assert "2026년 10월 14일 12:59 KST" in t557
     assert "경보 대상 운영시간" in t557 and "게시·발효" not in t557
+    assert "최대발전·부하관리 비상경보 / NERC EEA1" in t557
     assert "eDART" in t557 and "<a href=" in t557
 
     # Regression gate: source anchors must reach Telegram with HTML parsing.
