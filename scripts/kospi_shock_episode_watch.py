@@ -1583,8 +1583,11 @@ class Watch:
         now_t,price=self.kosdaq_idx[-1]
         if now_t<=self.kosdaq_last_price_processed_ts:
             return
-        if time.time()-now_t>KOSDAQ_PRICE_MAX_AGE_SEC:
-            self.raw["kosdaq_stale_price_alert_suppressed"]=True
+        age=time.time()-now_t
+        if not (-5.0<=age<=KOSDAQ_PRICE_MAX_AGE_SEC):
+            self.raw["kosdaq_stale_price_alert_suppressed"]={
+                "source_time":fmt_clock(now_t),"age_sec":round(age,1),
+            }
             return
         if not price_event_window_open(now_t,getattr(self,"session_close_ts",None),time.time()):
             return
