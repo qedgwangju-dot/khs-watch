@@ -1,0 +1,281 @@
+#!/usr/bin/env python3
+"""France sovereign-rating milestone overlay for the existing European yield watcher.
+
+Runs AFTER europe_sovereign_yield_watch.py and BEFORE the same Telegram delivery.
+AFT official rating table is mandatory; press speculation cannot become a rating event.
+The shared Europe pending state is finalized only on safe no-alert or Telegram ACK.
+No separate bot, schedule, or state writer is created.
+"""
+from __future__ import annotations
+
+import datetime as dt
+import html
+import json
+import pathlib
+import re
+import urllib.error
+import urllib.request
+from html.parser import HTMLParser
+from zoneinfo import ZoneInfo
+
+from scripts import europe_sovereign_yield_watch as base
+
+KST = ZoneInfo("Asia/Seoul")
+PARIS = ZoneInfo("Europe/Paris")
+AFT_EN = "https://www.aft.gouv.fr/en/frances-credit-ratings"
+AFT_FR = "https://www.aft.gouv.fr/fr/calendrier-notations-france"
+ORIGINAL_STORY = "https://www.briefs.co/news/hedge-funds-scramble-as-french-bond-rout-blows-out-spreads/"
+REVIEW_DATE = dt.date(2026, 10, 23)
+MILESTONES = {7: "일주일 전", 1: "하루 전", 0: "당일"}
+ROOT = pathlib.Path(__file__).resolve().parents[1]
+STATUS = ROOT / "out" / "france_credit_overlay_status.md"
+
+
+class RatingTable(HTMLParser):
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.rows: list[list[str]] = []
+        self._row: list[str] | None = None
+        self._cell: list[str] | None = None
+
+    def handle_starttag(self, tag, attrs):
+        if tag.lower() == "tr":
+            self._row = []
+        elif tag.lower() in ("td", "th") and self._row is not None:
+            self._cell = []
+
+    def handle_data(self, data):
+        if self._cell is not None:
+            self._cell.append(data)
+
+    def handle_endtag(self, tag):
+        if tag.lower() in ("td", "th") and self._cell is not None and self._row is not None:
+            self._row.append(" ".join(" ".join(self._cell).split()))
+            self._cell = None
+        elif tag.lower() == "tr" and self._row is not None:
+            if self._row:
+                self.rows.append(self._row)
+            self._row = None
+
+
+_MONTHS = {
+    "january": 1, "february": 2, "march": 3, "april": 4, "may": 5,
+    "june": 6, "july": 7, "august": 8, "september": 9, "october": 10,
+    "november": 11, "december": 12, "janvier": 1, "fevrier": 2,
+    "février": 2, "mars": 3, "avril": 4, "mai": 5, "juin": 6,
+    "juillet": 7, "aout": 8, "août": 8, "septembre": 9,
+    "octobre": 10, "novembre": 11, "decembre": 12, "décembre": 12,
+}
+
+
+def parse_date(cell: str) -> str | None:
+    txt = " ".join(cell.strip().split()).lower()
+    m = re.search(r"(\d{1,2})\s+([a-zàâéêîôûù]+)\s+(20\d{2})", txt, re.I)
+    if m:
+        month = _MONTHS.get(m.group(2).lower())
+        if month:
+            try:
+                return dt.date(int(m.group(3)), month, int(m.group(1))).isoformat()
+            except ValueError:
+                pass
+    m = re.search(r"([a-zàâéêîôûù]+)\s+(\d{1,2}),?\s+(20\d{2})", txt, re.I)
+    if m:
+        month = _MONTHS.get(m.group(1).lower())
+        if month:
+            try:
+                return dt.date(int(m.group(3)), month, int(m.group(2))).isoformat()
+            except ValueError:
+                pass
+    return None
+
+
+def parse_moodys(html_text: str) -> dict:
+    table = RatingTable()
+    table.feed(html_text)
+    rows = [cells for cells in table.rows if cells and "moody" in cells[0].casefold()]
+    if len(rows) != 1:
+        raise ValueError("Official AFT Moody's rating row missing or ambiguous")
+    cells = rows[0]
+    if len(cells) < 5:
+        raise ValueError("Official rating row missing columns")
+    # Agency | rating | outlook | last action | next review
+    agency, grade, outlook = cells[:3]
+    grade = grade.strip().replace(" ", "")
+    if not re.fullmatch(r"(?:Aaa|Aa[1-3]|A[1-3]|Baa[1-3]|Ba[1-3]|B[1-3]|Caa[1-3]|Ca|C)", grade, re.I):
+        raise ValueError("Unrecognized Moody's rating; refusing to generate alert")
+    if len(outlook) > 60 or not outlook:
+        raise ValueError("Unrecognized Moody's outlook")
+    last = parse_date(cells[3])
+    next_date = parse_date(cells[4])
+    if last is None:
+        raise ValueError("AFT latest Moody's decision date missing")
+    return {"agency": "Moody's", "rating": grade, "outlook": outlook,
+            "decision_date": last, "next_review": next_date}
+
+
+def fetch_rating(*, fetch=None) -> tuple[dict | None, list[str]]:
+    if fetch is None:
+        def fetch(url: str) -> str:
+            req = urllib.request.Request(
+                url,
+                headers={"User-Agent": "Mozilla/5.0 (khs-france-credit-monitor/1.0)",
+                         "Cache-Control": "no-cache", "Accept": "text/html"},
+            )
+            with urllib.request.urlopen(req, timeout=14) as res:
+                return res.read().decode("utf-8", errors="replace")
+    errors = []
+    for url in (AFT_EN, AFT_FR):
+        try:
+            rating = parse_moodys(fetch(url))
+            rating["url"] = url
+            return rating, errors
+        except Exception as exc:
+            errors.append(f"{url}: {type(exc).__name__}")
+    return None, errors
+
+
+def credit_events(now: dt.date, old: dict, rating: dict) -> list[dict]:
+    """A verified future event, or a changed official rating/decision, only once."""
+    delivered = set(old.get("sent_keys") or [])
+    events = []
+    prev = old.get("last_official") or {}
+    last_old = prev.get("decision_date")
+    last_new = rating.get("decision_date")
+    changed_rating = bool(prev and (prev.get("rating") != rating["rating"]
+                    or prev.get("outlook") != rating["outlook"]))
+    new_official_review = bool(prev and last_old and last_new and last_new > last_old)
+    if changed_rating or new_official_review:
+        key = f"decision:{last_new}:{rating['rating']}:{rating['outlook']}"
+        if key not in delivered:
+            events.append({"kind": "decision", "key": key})
+    # Pre-review milestones are derived from VERIFIED official next-review date.
+    review = rating.get("next_review")
+    if review == REVIEW_DATE.isoformat() and now <= REVIEW_DATE:
+        remaining = (REVIEW_DATE - now).days
+        if remaining in MILESTONES:
+            key = f"milestone:{review}:D-{remaining}"
+            if key not in delivered:
+                events.append({"kind": "milestone", "key": key,
+                               "days": remaining})
+    return events
+
+
+def money_spread(pending: dict) -> tuple[str, str]:
+    data = pending.get("last_values") or {}
+    dates = pending.get("last_source_dates") or {}
+    stale = pending.get("stale") or []
+    if dates.get("fr_mkt") and dates.get("fr_mkt") == dates.get("de_mkt") and not (
+        "fr_mkt" in stale or "de_mkt" in stale
+    ):
+        try:
+            gap = (float(data["fr_mkt"]) - float(data["de_mkt"])) * 100
+            return f"{gap:.1f}bp", dates["fr_mkt"]
+        except (KeyError, ValueError, TypeError):
+            pass
+    return "확인 불가(동일 기준일 자료 부족)", "확인 불가"
+
+
+def format_event(rating: dict, events: list[dict], pending: dict,
+                 now_kst: dt.datetime) -> tuple[str, str]:
+    spread, date = money_spread(pending)
+    changed = any(event["kind"] == "decision" for event in events)
+    if changed:
+        name = "프랑스 Moody’s 공식 신용등급 검토 결과"
+        status = (f"공식자료 기준 Moody’s {rating['rating']} / 전망 {rating['outlook']} / "
+                  f"최근 결정일 {rating['decision_date']}.")
+        caveat = "등급 변동·전망 변경 여부는 이전 공식 기록과 비교해 판단합니다."
+    else:
+        days = min(x["days"] for x in events if x["kind"] == "milestone")
+        name = f"프랑스 Moody’s 신용등급 검토 D-{days}"
+        status = (f"공식 일정: 2026-10-23(프랑스 현지 날짜), "
+                  f"현재 확인 등급 {rating['rating']}·전망 {rating['outlook']}.")
+        caveat = "등급 강등 확정이 아닌 예정된 심사입니다. 포지션 청산 마감일도 아닙니다."
+
+    msg = "\n".join([
+        f"🔔 [프랑스 국채·신용등급] {name}",
+        "",
+        f"■ 확인 시각: {now_kst.strftime('%Y-%m-%d %H:%M')} 한국시간",
+        f"• {status}",
+        f"• 같은 제공사 기준 프랑스-독일 10년 금리차: {spread} (기준일 {date}).",
+        f"• 주의: {caveat}",
+        "",
+        "■ 캐리거래와 글로벌 시장 연결",
+        "• 보도된 구조: 프랑스 국채와 금리스와프 사이 가격 차이에 레버리지 투자 → "
+        "국채가격 급락 → 담보가치 감소·증거금 요구 증가 → 차입 축소·포지션 정리.",
+        "• 메모리주 영향은 조건부: 프랑스 국채 금리차 재확대 + 금융시장 변동성 상승"
+        " + 기술주 동반 매도가 겹칠 때 광범위한 레버리지 축소 가능성을 점검합니다.",
+        "• 반대 경로: 스프레드 축소와 국채 입찰 수요 회복이 확인되면"
+        " 재정위기·캐리 청산 전염 가설은 약해집니다.",
+        "",
+        "■ 먼저 확인할 지표",
+        "• 프랑스-독일 동일 기준일 국채금리차 150bp 재진입 및 일간 변화",
+        "• 유럽 국채 유동성·매수/매도 호가차·환매조건부채권 거래조건",
+        "• 프랑스 10월 23일 공식 신용등급 결과와 2027년 예산 논의",
+        "",
+        f"• AFT France Moody's rating calendar: {rating['url']}",
+        f"• Briefs France carry story: {ORIGINAL_STORY}",
+    ])
+    return name, msg
+
+
+def main() -> int:
+    base.OUT.mkdir(parents=True, exist_ok=True)
+    pending = base.load_json(base.PENDING, {})
+    if not pending:
+        STATUS.write_text("공식 국채 감시 대기: 공유 상태 파일 없음\n", encoding="utf-8")
+        return 0
+    state = base.load_json(base.STATE, {})
+    existing_credit = state.get("france_credit") or {}
+    now = dt.datetime.now(KST)
+    official, errors = fetch_rating()
+    if not official:
+        STATUS.write_text(
+            f"프랑스 신용등급 원천 확인 불가: {now.isoformat(timespec='seconds')}\n"
+            + "\n".join(errors) + "\n기존 금리 감시 알림은 유지. 등급 일정 관련 알림 보류.\n",
+            encoding="utf-8",
+        )
+        # Don't consume rating events if the official page is inaccessible.
+        return 0
+
+    events = credit_events(now.astimezone(PARIS).date(), existing_credit, official)
+    next_credit = {
+        "last_official": official,
+        "sent_keys": list(existing_credit.get("sent_keys") or [])[-30:],
+        "checked_at_kst": now.isoformat(timespec="seconds"),
+    }
+    if events:
+        next_credit["sent_keys"] = (next_credit["sent_keys"] + [e["key"] for e in events])[-30:]
+    pending["france_credit"] = next_credit
+    base.PENDING.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+    if events:
+        title, body = format_event(official, events, pending, now)
+        if base.ALERT.exists():
+            # Preserve the existing sovereign-yield event and append new factual context.
+            original = base.ALERT.read_text(encoding="utf-8").strip()
+            base.ALERT.write_text(original + "\n\n" + body + "\n", encoding="utf-8")
+        else:
+            base.ALERT.write_text(body + "\n", encoding="utf-8")
+            base.TITLE.write_text(title + "\n", encoding="utf-8")
+        detail = base.load_json(base.DETAIL, {})
+        detail.setdefault("related_events", []).extend(events)
+        detail["moody_official"] = official
+        base.DETAIL.write_text(json.dumps(detail, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+    STATUS.write_text(
+        "\n".join([
+            "# 프랑스 신용등급·국채 캐리 감시",
+            f"- 조회: {now.isoformat(timespec='seconds')}",
+            f"- 공식: Moody's {official['rating']}, {official['outlook']}, {official['decision_date']}",
+            f"- 다음 심사: {official['next_review'] or '미게시'}",
+            f"- 이번 새 이벤트: {len(events)}",
+            f"- 중복키: {', '.join(x['key'] for x in events) if events else '없음'}",
+            f"- 공식 페이지: {official['url']}",
+        ]) + "\n",
+        encoding="utf-8",
+    )
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
