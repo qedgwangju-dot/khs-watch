@@ -118,17 +118,22 @@ def summarize_long_end_supply(table: dict, fx: float | None = None) -> dict:
 
 
 def dealer_agenda_mentions_long_end(text: str) -> bool:
-    """Ignore routine agenda listings; require a substantive long-end supply topic."""
-    body = text or ""
-    tenor = bool(re.search(r"20[\s-]*year|30[\s-]*year|long[\s-]*(?:dated|end|bond)", body, re.I))
-    issue = bool(re.search(
+    """Require supply/demand issue close to a long-bond tenor, not scattered terms."""
+    source = " ".join((text or "").split())
+    tenor = re.compile(r"20[\s-]*year|30[\s-]*year|long[\s-]*(?:dated|end|bond)", re.I)
+    issue = re.compile(
         r"auction[\s-]*siz|coupon[\s-]*issuance|bond[\s-]*issuance|"
         r"issuance[\s-]*(?:mix|pattern|strateg|plan)|"
         r"reduce|reduction|cutback|cancell?ation|discontin|"
         r"investor[\s-]*demand|demand[\s-]*(?:for|shift)|"
         r"corporate[\s-]*(?:bond|debt|issuance)|hyperscal",
-        body, re.I))
-    return tenor and issue
+        re.I,
+    )
+    for found in tenor.finditer(source):
+        fragment = source[max(0, found.start()-180):min(len(source),found.end()+180)]
+        if issue.search(fragment):
+            return True
+    return False
 
 
 def expectation_comparison(supply: dict) -> str:
