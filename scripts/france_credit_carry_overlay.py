@@ -296,6 +296,35 @@ def format_event(rating: dict, events: list[dict], pending: dict,
     return name, msg
 
 
+def add_market_carry_context(existing: str, pending: dict, local_day: dt.date) -> str:
+    """Add context to a genuine bond-spread alert; never emit a separate alert."""
+    gap_text, asof = money_spread(pending)
+    if "확인 불가" in gap_text or not gap_text.endswith("bp"):
+        return existing
+    try:
+        gap = float(gap_text[:-2])
+    except ValueError:
+        return existing
+    if gap < 125.0 or "■ 캐리·레버리지 전염 확인" in existing:
+        return existing
+    review = (
+        "• Moody’s 프랑스 등급 검토는 10월 23일 예정(10월 14일 공식 확인 기준)."
+        " 강등이나 포지션 청산 마감일은 확정되지 않았습니다."
+        if local_day <= REVIEW_DATE else
+        "• 10월 23일 예정됐던 Moody’s 등급 검토 결과는 새 공식 발표로 확인해야 합니다."
+    )
+    section = "\n".join([
+        "■ 캐리·레버리지 전염 확인",
+        f"• 동일 기준일 프랑스-독일 시장금리차: {gap:.1f}bp ({asof}).",
+        "• 10월 2일 보도: 프랑스 국채·금리스와프 가격차에 투자한 레버리지 포지션 축소가 관측됐습니다.",
+        "• 메모리주에 직접 영향을 줬는지는 미확인입니다."
+        " 국채 유동성 악화·달러 및 엔화 변화·기술주 동반 매도가 확인돼야 전염 가설을 강화할 수 있습니다.",
+        review,
+    ])
+    marker = "■ 시장 영향"
+    return existing.replace(marker, section + "\n\n" + marker, 1) if marker in existing else existing + "\n\n" + section
+
+
 def main() -> int:
     base.OUT.mkdir(parents=True, exist_ok=True)
     pending = base.load_json(base.PENDING, {})
@@ -337,6 +366,13 @@ def main() -> int:
         next_credit["sent_keys"] = (next_credit["sent_keys"] + [e["key"] for e in events])[-30:]
     pending["france_credit"] = next_credit
     base.PENDING.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+    if base.ALERT.exists() and not events:
+        # Same alert ID and delivery lane: no independent memory alert.
+        original = base.ALERT.read_text(encoding="utf-8").strip()
+        enriched = add_market_carry_context(original, pending, now.astimezone(PARIS).date())
+        if enriched != original:
+            base.ALERT.write_text(enriched + "\n", encoding="utf-8")
 
     if events:
         title, body = format_event(rating, events, pending, now)
