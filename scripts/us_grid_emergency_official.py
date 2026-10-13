@@ -212,38 +212,73 @@ def doe_party(text: str) -> str:
     return "대상 기관 확인 필요"
 
 
+DOE_DATE_PATTERN = (
+    r"(?:January|February|March|April|May|June|July|August|"
+    r"September|October|November|December)\s+\d{1,2},\s+\d{4}"
+)
+
+
+def parse_doe_effective_period(text: str) -> tuple[dt.date | None, dt.date | None]:
+    """Read the complete effective window from the SAME DOE order text."""
+    patterns = (
+        # "is effective October 13, 2026, through October 16, 2026"
+        rf"\b(?:is\s+)?(?:effective|in\s+effect)\s+"
+        rf"(?:beginning\s+(?:on\s+)?|from\s+|on\s+)?"
+        rf"({DOE_DATE_PATTERN})\s*,?\s*(?:through|until|to)\s+({DOE_DATE_PATTERN})",
+        # "effective from July 14, 2026 and shall expire ... on July 21, 2026"
+        rf"\b(?:effective|in\s+effect)\s+"
+        rf"(?:beginning\s+(?:on\s+)?|from\s+|on\s+)?"
+        rf"({DOE_DATE_PATTERN}).{{0,180}}?"
+        rf"(?:shall\s+expire|expires?|until|through)\s+"
+        rf"(?:at\s+[^.]{0,45}?\s+)?(?:on\s+)?({DOE_DATE_PATTERN})",
+    )
+    for pattern in patterns:
+        match = re.search(pattern, text, re.I)
+        if match:
+            start, end = parse_english_date(match.group(1)), parse_english_date(match.group(2))
+            if start and end and start <= end and (end - start).days <= 366:
+                return start, end
+
+    # "The order is effective September 17 through September 18, 2026"
+    match = re.search(
+        r"\b(?:effective|in\s+effect)\s+"
+        r"(?:beginning\s+(?:on\s+)?|from\s+|on\s+)?"
+        r"(January|February|March|April|May|June|July|August|September|October|November|December)"
+        r"\s+(\d{1,2})\s+through\s+"
+        r"(January|February|March|April|May|June|July|August|September|October|November|December)"
+        r"\s+(\d{1,2}),\s+(\d{4})",
+        text,
+        re.I,
+    )
+    if match:
+        year = int(match.group(5))
+        start = dt.date(year, MONTHS[match.group(1).lower()], int(match.group(2)))
+        end = dt.date(year, MONTHS[match.group(3).lower()], int(match.group(4)))
+        if start <= end and (end - start).days <= 366:
+            return start, end
+    return None, None
+
+
 def parse_doe_detail_html(raw: str, url: str) -> dict | None:
     text = text_from_html(raw)
     order_match = re.search(r"Order No\.?\s*(202-\d{2}-\d{1,2}[A-Z]?)", text, re.I)
     if not order_match:
         return None
     order_no = order_match.group(1).upper()
+    # Prevent a related-order link or outdated response from being mistaken for
+    # the order named in the URL.
+    url_match = re.search(r"(?:order-no-|order-)(202-\d{2}-\d{1,2}[A-Z]?)", url, re.I)
+    if url_match and url_match.group(1).upper() != order_no:
+        return None
+
     issue_match = re.search(
-        r"On\s+((?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},\s+\d{4})",
+        r"On\s+((?:January|February|March|April|May|June|July|August|September|October|November|December)"
+        r"\s+\d{1,2},\s+\d{4})",
         text,
         re.I,
     )
     issue_date = parse_english_date(issue_match.group(1)) if issue_match else None
-
-    start_date = end_date = None
-    m = re.search(
-        r"(?:in effect|effective).*?beginning\s+(?:on\s+)?((?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},\s+\d{4}).*?(?:through|until|expire(?:s|d)?(?:\s+at.*?)?\s+on?)\s+((?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},\s+\d{4})",
-        text,
-        re.I,
-    )
-    if m:
-        start_date = parse_english_date(m.group(1))
-        end_date = parse_english_date(m.group(2))
-    else:
-        # PJM orders can say "effective ... September 17 through September 18, 2026".
-        m = re.search(
-            r"effective.*?(September|October|November|December|January|February|March|April|May|June|July|August)\s+(\d{1,2})\s+through\s+(September|October|November|December|January|February|March|April|May|June|July|August)\s+(\d{1,2}),\s+(\d{4})",
-            text,
-            re.I,
-        )
-        if m:
-            start_date = dt.date(int(m.group(5)), MONTHS[m.group(1).lower()], int(m.group(2)))
-            end_date = dt.date(int(m.group(5)), MONTHS[m.group(3).lower()], int(m.group(4)))
+    start_date, end_date = parse_doe_effective_period(text)
 
     return {
         "kind": "doe",
@@ -256,7 +291,6 @@ def parse_doe_detail_html(raw: str, url: str) -> dict | None:
         "body": text,
         "url": url,
     }
-
 
 def collect_doe(now: dt.datetime) -> tuple[list[dict], list[str]]:
     errors: list[str] = []
@@ -297,6 +331,24 @@ def event_is_alertable(event: dict, now: dt.datetime) -> bool:
     return 0 <= (now_kst.date() - issue).days <= 2
 
 
+def pjm_notice_stage(event: dict) -> str:
+    """Differentiate a filed request, an obtained order, and resource need."""
+    body = event.get("body", "").lower()
+    if "has identified a reliability need to utilize" in body:
+        return "resources_needed"
+    if "has not identified a reliability need to utilize" in body:
+        return "resources_not_needed"
+    if "has received doe 202(c)" in body or "applicability" in body:
+        return "order_applicability"
+    if "has obtained a 202(c) order" in body or "has obtained a 202(c)" in body:
+        return "order_obtained"
+    if "has requested a 202(c) order" in body or "has requested a 202(c)" in body:
+        return "order_requested"
+    if "request for 202(c)" in body:
+        return "request_mentioned"
+    return "other"
+
+
 def pjm_title(event: dict) -> str:
     t = event.get("message_type", "")
     low = t.lower()
@@ -308,20 +360,36 @@ def pjm_title(event: dict) -> str:
         return "PJM, 대형부하 비상 백업발전 동원 경고 발령"
     if "manual load dump" in low:
         return "PJM, EEA3·수동 부하차단 단계 진입"
-    if "special notice" in low and "202(c)" in event.get("body", ""):
-        body_low = event.get("body", "").lower()
-        if "request for 202(c)" in body_low or "requested a 202(c) order" in body_low:
-            return "PJM, DOE 202(c) 긴급명령 요청·사전 준비 공지"
-        if "has received doe 202(c)" in body_low or "applicability" in body_low:
+    if "special notice" in low and "202(c)" in event.get("body", "").lower():
+        stage = pjm_notice_stage(event)
+        if stage == "resources_needed":
+            return "PJM, DOE 202(c) 지정자원 운영 필요 판정"
+        if stage == "resources_not_needed":
+            return "PJM, DOE 202(c) 지정자원 운영 불필요 판정"
+        if stage == "order_applicability":
             return "PJM, DOE 202(c) 명령의 운영 적용 공지"
+        if stage == "order_obtained":
+            return "PJM, DOE 202(c) 명령 확보·사전 조율 공지"
+        if stage in {"order_requested", "request_mentioned"}:
+            return "PJM, DOE 202(c) 긴급명령 요청·사전 준비 공지"
         return "PJM, DOE 202(c) 관련 특별공지"
     return f"PJM, {t}"
 
 
 def pjm_stage_explanation(event: dict) -> str:
     low = event.get("message_type", "").lower()
+    body_low = event.get("body", "").lower()
     if "eea 1" in low or "eea1" in low:
-        return "EEA1은 공급여력이 빡빡해 비상자원을 준비하는 경보 단계이며, 순환정전 지시나 백업발전 실제 동원을 뜻하지 않습니다."
+        explanation = (
+            "EEA1은 공급여력이 부족해질 가능성에 대비하는 조기경보이며, "
+            "순환정전 지시나 대형부하 백업발전 실제 동원을 뜻하지 않습니다."
+        )
+        if "early return time" in body_low and "planned outage" in body_low:
+            explanation += (
+                " 계획정비 중인 발전기에 대해 운전자는 조기 복귀 예상시간을 PJM에 제공하고 "
+                "eDART에 갱신해야 합니다. 이는 기존 정비 종료 예정일을 바꾸는 지시는 아닙니다."
+            )
+        return explanation
     if "emergency use of back-up generator action" in low:
         return "대형부하가 백업발전을 실제 가동하도록 지시하는 단계입니다."
     if "emergency use of back-up generator warning" in low:
@@ -329,25 +397,37 @@ def pjm_stage_explanation(event: dict) -> str:
     if "manual load dump" in low:
         return "EEA3에서 추가 비상자원으로도 부족해 강제 부하차단이 필요한 단계입니다."
     if "special notice" in low:
-        body_low = event.get("body", "").lower()
-        if "request for 202(c)" in body_low or "requested a 202(c) order" in body_low:
+        stage = pjm_notice_stage(event)
+        if stage == "resources_not_needed":
             return (
-                "PJM이 DOE에 202(c) 긴급명령을 요청하거나 대형부하·발전자원에 사전 준비를 요구한 단계입니다. "
-                "DOE 명령 발령이나 백업발전 실제 동원을 뜻하지 않습니다."
+                "DOE 202(c) 명령은 존재하지만 PJM은 해당 운영일에 Exhibit A 지정자원을 "
+                "사용할 필요가 없다고 판정했습니다. 실제 급전·백업발전 동원이 아닙니다."
             )
-        if "has not identified a reliability need to utilize" in body_low:
+        if stage == "resources_needed":
             return (
-                "DOE 202(c) 명령은 존재하지만 PJM이 해당 운영일에 지정자원을 사용할 신뢰도 필요를 확인하지 않았다는 공지입니다. "
-                "상시 최대출력 운전이나 백업발전 실제 동원을 뜻하지 않습니다."
+                "PJM은 해당 운영일에 DOE 202(c) 명령의 Exhibit A 지정자원이 "
+                "필요하다고 판정했습니다. 실제 급전은 별도 운전지시에 따르며 "
+                "최대출력 상시운전 지시나 대형부하 백업발전 실제 가동을 뜻하지 않습니다."
             )
-        if "has identified a reliability need to utilize" in body_low:
+        if stage == "order_applicability":
             return (
-                "PJM이 해당 운영일에 DOE 202(c) 지정자원을 사용할 신뢰도 필요를 확인한 공지입니다. "
-                "다만 대형부하 백업발전 실제 가동은 별도의 Back-Up Generator Action을 확인해야 합니다."
+                "DOE 202(c) 명령의 지정자원별 운영 적용범위를 알린 공지입니다. "
+                "급전 및 백업발전 실제 가동 여부는 별도 지시로 확인해야 합니다."
             )
-        return "202(c) 관련 특별공지의 적용범위와 실제 필요 판정을 확인해야 하며, 명령 존재 자체가 최대출력 상시운전을 뜻하지 않습니다."
-    return "PJM 공식 비상운영 단계의 실제 의미는 메시지 정의와 운영지시를 함께 확인해야 합니다."
-
+        if stage == "order_obtained":
+            return (
+                "PJM은 DOE 202(c) 명령을 이미 확보했다고 공지했습니다. "
+                "송전사업자·배전회사·전력공급회사가 배출제한 발전기와 대형부하 "
+                "비상 백업발전의 비상운영을 사전 조율하도록 안내했으며, "
+                "이는 백업발전 실제 가동 지시가 아닙니다."
+            )
+        if stage in {"order_requested", "request_mentioned"}:
+            return (
+                "PJM이 DOE에 202(c) 긴급명령을 요청하고 비상자원 운용을 준비하는 공지입니다. "
+                "명령 발령 또는 실제 백업발전 동원 여부는 이후 공식 문서로 확인해야 합니다."
+            )
+        return "202(c) 관련 특별공지의 적용범위와 실제 운전지시를 확인해야 합니다."
+    return "PJM 공식 비상운영 단계의 실제 의미는 메시지 정의와 운전지시를 함께 확인해야 합니다."
 
 def doe_content(event: dict) -> tuple[str, str]:
     body = event.get("body", "")
@@ -381,11 +461,11 @@ def render_event(event: dict, now: dt.datetime) -> str:
         timeline = []
         if eff_start:
             timeline.append(
-                f"• 게시·발효: {ko_datetime(eff_start, KST)} ({ko_date(eff_start.astimezone(EPT))} {eff_start.astimezone(EPT):%H:%M} EPT)"
+                f"• 공식 효력 시작: {ko_datetime(eff_start, KST)} ({ko_date(eff_start.astimezone(EPT))} {eff_start.astimezone(EPT):%H:%M} EPT)"
             )
         if op_start and op_end:
             timeline.append(
-                f"• 실제 적용: {ko_datetime(op_start, KST)} ~ {ko_datetime(op_end, KST)}"
+                f"• 경보 대상 운영시간: {ko_datetime(op_start, KST)} ~ {ko_datetime(op_end, KST)}"
             )
         elif eff_end:
             timeline.append(
