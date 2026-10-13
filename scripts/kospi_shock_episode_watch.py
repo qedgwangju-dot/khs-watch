@@ -52,6 +52,9 @@ SURGE_COMBINED_SPOT_EOK = 300.0
 SURGE_COMBINED_FUT_EOK = 450.0
 SURGE_SINGLE_SPOT_EOK = 900.0
 SURGE_SINGLE_FUT_EOK = 1300.0
+# 코스닥은 KOSPI200 선물과 섞지 않고 현물 독립 신호로 감시한다.
+KOSDAQ_SURGE_SINGLE_SPOT_EOK = 300.0
+KOSDAQ_URL = "https://m.stock.naver.com/domestic/index/KOSDAQ/total"
 
 
 
@@ -287,19 +290,20 @@ def get_token() -> str:
     raise RuntimeError(last_error or "LS access token issue failed")
 
 
-def ls_post(token: str, path: str, tr: str, body: dict[str, Any]) -> dict[str, Any]:
+def ls_post(token: str, path: str, tr: str, body: dict[str, Any], *,
+            max_attempts: int = 5, request_timeout: float = 20.0) -> dict[str, Any]:
     last_error = ""
-    for attempt in range(5):
+    for attempt in range(max_attempts):
         try:
             r = requests.post(
                 BASE + path,
                 headers={"content-type": "application/json; charset=utf-8",
                          "authorization": "Bearer " + token, "tr_cd": tr,
                          "tr_cont": "N", "tr_cont_key": ""},
-                data=json.dumps(body), timeout=20)
+                data=json.dumps(body), timeout=request_timeout)
         except requests.RequestException as exc:
             last_error = f"{tr} transport error: {type(exc).__name__}: {exc}"
-            if attempt < 4:
+            if attempt < max_attempts - 1:
                 time.sleep(min(8.0, 0.8 * (2 ** attempt)))
                 continue
             raise RuntimeError(last_error) from exc
@@ -310,7 +314,7 @@ def ls_post(token: str, path: str, tr: str, body: dict[str, Any]) -> dict[str, A
         retryable_http = r.status_code in {429, 500, 502, 503, 504} or gateway_503_as_404
         if not r.ok:
             last_error = f"{tr} HTTP {r.status_code}: {text[:250]}"
-            if attempt < 4 and retryable_http:
+            if attempt < max_attempts - 1 and retryable_http:
                 time.sleep(min(8.0, 0.8 * (2 ** attempt)))
                 continue
             raise RuntimeError(last_error)
@@ -320,14 +324,14 @@ def ls_post(token: str, path: str, tr: str, body: dict[str, Any]) -> dict[str, A
                 raise ValueError("LS response is not a JSON object")
         except (ValueError, TypeError) as exc:
             last_error = f"{tr} invalid JSON: {type(exc).__name__}: {text[:200]}"
-            if attempt < 4:
+            if attempt < max_attempts - 1:
                 time.sleep(min(8.0, 0.8 * (2 ** attempt)))
                 continue
             raise RuntimeError(last_error) from exc
         code = str(d.get("rsp_cd") or "")
         if code and code not in {"00000", "0000"}:
             last_error = f"{tr} rejected {code}: {d.get('rsp_msg')}"
-            if attempt < 4 and code in {"IGW00201"}:
+            if attempt < max_attempts - 1 and code in {"IGW00201"}:
                 time.sleep(min(8.0, 1.0 * (2 ** attempt)))
                 continue
             raise RuntimeError(last_error)
@@ -351,11 +355,16 @@ def _latest_time_row(rows: Any) -> dict[str, Any] | None:
     return max(valid, key=lambda x: x[0])[1] if valid else None
 
 
-def investor_current(token: str, market: str, upcode: str, exchgubun: str = "K") -> dict[str, Any] | None:
+def investor_current(token: str, market: str, upcode: str, exchgubun: str = "K", *,
+                     max_attempts: int = 5, request_timeout: float = 20.0) -> dict[str, Any] | None:
     body = {"t1602InBlock": {"market": market, "upcode": upcode,
             "gubun1": "2", "gubun2": "0", "cts_time": "", "cts_idx": 0,
             "cnt": 100, "gubun3": "", "exchgubun": exchgubun}}
-    d = ls_post(token, "/stock/investor", "t1602", body)
+    if max_attempts == 5 and request_timeout == 20.0:
+        d = ls_post(token, "/stock/investor", "t1602", body)
+    else:
+        d = ls_post(token, "/stock/investor", "t1602", body,
+                    max_attempts=max_attempts, request_timeout=request_timeout)
     row = _latest_time_row(d.get("t1602OutBlock1"))
     if not row:
         return None
@@ -835,6 +844,14 @@ class Watch:
         self.surge_last_processed_ts = 0.0
         self.surge_pending: dict[str, dict[str, float]] = {}
         self.surge_sent_at: dict[str, float] = {}
+        # 같은 프로세스에서 별도로 조회하되 코스피 급락·수급 작업을 막지 않는다.
+        self.kosdaq_flows: deque[dict[str, Any]] = deque(maxlen=1500)
+        self.kosdaq_flow_task: asyncio.Task | None = None
+        self.kosdaq_last_poll = 0.0
+        self.kosdaq_last_success_ts: float | None = None
+        self.kosdaq_surge_last_processed_ts = 0.0
+        self.kosdaq_surge_pending: dict[str, dict[str, float]] = {}
+        self.kosdaq_surge_sent_at: dict[str, float] = {}
 
 
     @staticmethod
@@ -1285,6 +1302,114 @@ class Watch:
                 self.raw["last_flow_error"] = f"{type(exc).__name__}: {exc}"
         self.flow_task = asyncio.create_task(run_one())
 
+
+    async def maybe_kosdaq_flow(self) -> None:
+        """t1602 코스닥 현물만 독립 조회. 실패해도 KOSPI 주 감시를 지연시키지 않는다."""
+        now = time.time()
+        if self.kosdaq_flow_task and not self.kosdaq_flow_task.done():
+            return
+        if now - self.kosdaq_last_poll < FLOW_INTERVAL_SEC:
+            return
+        self.kosdaq_last_poll = now
+
+        async def run_one():
+            try:
+                # 주 감시 API보다 재시도·대기시간을 짧게 제한한다.
+                block = await asyncio.to_thread(
+                    investor_current, self.token, "2", "301", "U",
+                    max_attempts=2, request_timeout=8.0,
+                )
+                if not isinstance(block, dict):
+                    raise RuntimeError("KOSDAQ t1602 missing row")
+                sample_ts = fnum(block.get("sample_ts"))
+                age = time.time() - float(sample_ts or 0.0)
+                if not (-5.0 <= age <= MAX_FLOW_HEALTH_AGE_SEC):
+                    raise RuntimeError(f"KOSDAQ t1602 source time stale {age:.1f}s")
+                if any(fnum(block.get(actor)) is None for actor in ("외국인", "기관", "개인")):
+                    raise RuntimeError("KOSDAQ t1602 missing actor values")
+                self.kosdaq_flows.append({"ts": time.time(), "현물": block, "market": "KOSDAQ"})
+                self.kosdaq_last_success_ts = float(sample_ts)
+                self.raw["last_kosdaq_flow"] = {
+                    "sample_at_kst": fmt_clock(sample_ts),
+                    "last_received_at_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
+                    "market": "KOSDAQ", "source": "LS t1602",
+                }
+                self.raw.pop("last_kosdaq_flow_error", None)
+                cutoff = time.time() - FLOW_LOOKBACK_SEC
+                while self.kosdaq_flows and float(self.kosdaq_flows[0].get("ts", 0)) < cutoff:
+                    self.kosdaq_flows.popleft()
+            except Exception as exc:
+                self.raw["last_kosdaq_flow_error"] = f"{type(exc).__name__}: {exc}"
+
+        self.kosdaq_flow_task = asyncio.create_task(run_one())
+
+    @staticmethod
+    def build_kosdaq_flow_surge_alert(actor: str, delta: float, pair: dict[str, Any],
+                                     now_ts: float) -> str:
+        return "\n".join([
+            "⚡ <b>코스닥 단기 순매수 급증</b>",
+            f"<code>{dt.datetime.fromtimestamp(now_ts,KST):%Y-%m-%d %H:%M:%S} KST</code>",
+            f"• <b>{html.escape(actor)}</b> 코스닥 현물(통합) <b>{fmt_eok(delta)}</b> · 최근 5분",
+            f"• 실제 수급 표본: {fmt_clock(pair['start_ts'])}~{fmt_clock(pair['end_ts'])}",
+            "• 확인 수준: 현물 단독 신호 (KOSPI200 선물·프로그램 수급과 합산하지 않음)",
+            f"• 감지 기준: 5분 순매수 증가 {KOSDAQ_SURGE_SINGLE_SPOT_EOK:,.0f}억원 이상 · 두 차례 연속 확인",
+            "• 누적 순매수 변화량이며 외부 신규자금 유입·주가 상승 확정값이 아닙니다.",
+            "• " + " · ".join([link(KOSDAQ_URL,"KOSDAQ"),link(LS_URL,"LS OpenAPI")]),
+        ])
+
+    async def maybe_alert_kosdaq_surge(self, now_ts: float | None = None) -> None:
+        if getattr(self, "test", False) or not self.kosdaq_flows:
+            return
+        now_ts = time.time() if now_ts is None else now_ts
+        start = getattr(self, "session_open_ts", None)
+        end = getattr(self, "session_close_ts", None)
+        continuous_end = getattr(self, "session_continuous_end_ts", None)
+        if (start is None or end is None or not (start <= now_ts < end)
+                or (continuous_end is not None and now_ts >= continuous_end)):
+            return
+        latest = fnum((self.kosdaq_flows[-1].get("현물") or {}).get("sample_ts"))
+        if latest is None or latest <= self.kosdaq_surge_last_processed_ts:
+            return
+        self.kosdaq_surge_last_processed_ts = latest
+        pair = _flow_surge_channel_pair(list(self.kosdaq_flows), "현물", now_ts, start)
+        candidates = {}
+        if pair is not None:
+            for actor in ("외국인", "기관", "개인"):
+                delta = fnum((pair.get("deltas") or {}).get(actor))
+                if delta is not None and delta >= KOSDAQ_SURGE_SINGLE_SPOT_EOK:
+                    candidates[actor] = delta
+        for actor in list(self.kosdaq_surge_pending):
+            if actor not in candidates:
+                self.kosdaq_surge_pending.pop(actor, None)
+        for actor, delta in candidates.items():
+            sample_ts = float(pair["end_ts"])
+            prev = self.kosdaq_surge_pending.get(actor)
+            if (prev is None or sample_ts <= prev["sample_ts"]
+                    or now_ts - prev["seen_at"] > 120):
+                self.kosdaq_surge_pending[actor] = {
+                    "sample_ts": sample_ts, "seen_at": now_ts,
+                }
+                continue
+            if sample_ts - prev["sample_ts"] < SURGE_CONFIRM_SEC:
+                continue
+            if now_ts - self.kosdaq_surge_sent_at.get(actor, 0.0) < SURGE_COOLDOWN_SEC:
+                continue
+            msg_id = await asyncio.to_thread(
+                telegram_send, self.build_kosdaq_flow_surge_alert(actor, delta, pair, now_ts)
+            )
+            self.msg_ids.append(msg_id)
+            self.kosdaq_surge_sent_at[actor] = now_ts
+            self.kosdaq_surge_pending.pop(actor, None)
+            self.raw["last_kosdaq_surge_alert"] = {
+                "actor": actor, "market": "KOSDAQ", "spot_5m_eok": delta,
+                "sample_ts": sample_ts, "message_id": msg_id,
+            }
+            self._record_delivery(
+                "kosdaq_flow_surge", msg_id,
+                {"start_ts": pair["start_ts"], "low_ts": pair["end_ts"]},
+                pair["end_ts"],
+            )
+
     def build_flow_surge_alert(self, cand: dict[str, Any], now_ts: float) -> str:
         actor = html.escape(str(cand["actor"]))
         spot, fut = cand.get("spot"), cand.get("futures")
@@ -1379,7 +1504,9 @@ class Watch:
 
     async def evaluate(self) -> None:
         await self.maybe_flow()
+        await self.maybe_kosdaq_flow()
         await self.maybe_alert_flow_surge()
+        await self.maybe_alert_kosdaq_surge()
         # CI 실데이터 조회(--test)는 소스와 API 품질만 검사한다.
         # 장중 급락 조건이 충족돼도 시험 실행이 실전 Telegram 알림을 보내서는 안 된다.
         if getattr(self, "test", False):
@@ -1550,6 +1677,10 @@ class Watch:
             "surge_last_processed_ts": self.surge_last_processed_ts,
             "surge_pending": self.surge_pending,
             "surge_sent_at": self.surge_sent_at,
+            "kosdaq_flows": [x for x in self.kosdaq_flows if float(x.get("ts",0)) >= cutoff],
+            "kosdaq_surge_last_processed_ts": self.kosdaq_surge_last_processed_ts,
+            "kosdaq_surge_pending": self.kosdaq_surge_pending,
+            "kosdaq_surge_sent_at": self.kosdaq_surge_sent_at,
         }
         p.parent.mkdir(parents=True, exist_ok=True)
         # 인계 파일을 직접 덮어쓰다 중단되면 손상된 JSON이 다음 작업에 넘어갈 수 있다.
@@ -1601,6 +1732,23 @@ class Watch:
                 if str(k) in {"외국인", "기관", "개인"} and isinstance(v, dict)
                 and fnum(v.get("sample_ts")) is not None and fnum(v.get("seen_at")) is not None
             }
+            # 기존 KOSPI handoff 형식도 정상 복원하고 코스닥은 독립 보관한다.
+            for snap in data.get("kosdaq_flows") or []:
+                if isinstance(snap, dict) and isinstance(snap.get("현물"), dict) and float(snap.get("ts",0)) >= cutoff:
+                    self.kosdaq_flows.append(snap)
+            self.kosdaq_surge_last_processed_ts = fnum(data.get("kosdaq_surge_last_processed_ts")) or 0.0
+            self.kosdaq_surge_sent_at = {
+                str(k): float(v) for k,v in (data.get("kosdaq_surge_sent_at") or {}).items()
+                if str(k) in {"외국인","기관","개인"} and fnum(v) is not None
+            }
+            self.kosdaq_surge_pending = {
+                str(k): {"sample_ts": float(v["sample_ts"]), "seen_at": float(v["seen_at"])}
+                for k,v in (data.get("kosdaq_surge_pending") or {}).items()
+                if str(k) in {"외국인","기관","개인"} and isinstance(v,dict)
+                and fnum(v.get("sample_ts")) is not None and fnum(v.get("seen_at")) is not None
+            }
+            if self.kosdaq_flows:
+                self.kosdaq_last_success_ts = fnum((self.kosdaq_flows[-1].get("현물") or {}).get("sample_ts"))
             if self.flows:
                 latest_snap = max(self.flows, key=lambda x: float(x.get("ts", 0)))
                 latest = float(latest_snap.get("ts", 0))
@@ -1759,7 +1907,9 @@ class Watch:
             else:
                 # 가격 API 일시 장애 중에도 독립 수급 감지는 계속 수행한다.
                 await self.maybe_flow()
+                await self.maybe_kosdaq_flow()
                 await self.maybe_alert_flow_surge()
+                await self.maybe_alert_kosdaq_surge()
                 self.raw["price_event_skipped_on_poll_failure"] = True
             self._checkpoint_handoff()
 
@@ -1808,6 +1958,11 @@ class Watch:
                 await asyncio.wait_for(self.flow_task, timeout=8)
             except Exception:
                 pass
+        if self.kosdaq_flow_task:
+            try:
+                await asyncio.wait_for(self.kosdaq_flow_task, timeout=8)
+            except Exception:
+                pass
         if self.enrichment_tasks:
             try:
                 await asyncio.wait_for(
@@ -1824,6 +1979,7 @@ def write_status(w: Watch, started: dt.datetime, status: str) -> None:
         "# 코스피 급락 사건구간 감시", "",
         f"- 시작: {started:%Y-%m-%d %H:%M:%S} KST", f"- 상태: {status}",
         f"- KOSPI 틱: {len(w.idx)}", f"- 선물 틱: {len(w.fut)}", f"- 수급 스냅샷: {len(w.flows)}",
+        f"- 코스닥 현물 수급 스냅샷: {len(w.kosdaq_flows)}",
         f"- 최근월물 선물: {w.front_future or '미확인'}", f"- 구독 풋옵션: {len(w.put_defs)}",
         f"- 진행 중 사건: {'있음' if w.episode else '없음'}", f"- 텔레그램 ID: {w.msg_ids}",
         f"- 정밀분해 텔레그램 ID: {w.enrichment_msg_ids}",
