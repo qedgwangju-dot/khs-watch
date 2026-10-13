@@ -90,6 +90,8 @@ class IntegrityTests(unittest.TestCase):
         wrong = '<meta property="og:title" content="사우디 공항 신규 공격 여행객 사망">'
         self.assertFalse(evidence.attach_article(row, row['link'], wrong, 'body'))
         self.assertFalse(row.get('body_verified', False))
+        dashed = article('Iran talks - agreement signed by both sides')
+        self.assertFalse(evidence.title_matches(dashed, 'Iran talks - agreement rejected by either side'))
 
     def test_old_origin_date_cannot_be_refreshed_by_recent_rss(self):
         row = article('EU, 러시아 군수 공급업체 제재 확대')
@@ -108,6 +110,9 @@ class IntegrityTests(unittest.TestCase):
         self.assertEqual(receipt['code_sha'], 'actual-checkout')
         self.assertEqual([x['id'] for x in receipt['articles'] if x['rendered']], ['shown'])
         self.assertFalse(receipt['articles'][0]['body_verified'])
+        shown['source_metadata'] = {'publication_status': 'unavailable'}
+        receipt = evidence.alert_receipt([shown], [], NOW, text)
+        self.assertEqual(receipt['articles'][0]['publication_basis'], 'discovery_feed')
 
     def test_run_and_final_gate_only_mark_rendered_article_seen(self):
         now = dt.datetime.now(watch.KST)

@@ -128,7 +128,12 @@ def article_metadata(page, url):
 def title_matches(row, headline):
     def tokens(value):
         value = html.unescape(str(value or '')).lower()
-        value = re.sub(r'\s+-\s+[^-]+$', '', value)
+        # Strip only a publisher suffix. A headline clause after a dash may
+        # carry the very event/stage difference we need to verify.
+        suffix = re.search(r'\s+-\s+([^-]+)$', value)
+        source = str(row.get('source') or '').strip().lower()
+        if suffix and suffix.group(1).strip() == source:
+            value = value[:suffix.start()]
         return set(re.findall(r'[a-z0-9가-힣]{2,}', value))
     a, b = tokens(row.get('title_original') or row.get('title')), tokens(headline)
     return bool(a and b and len(a & b) / len(a | b) >= 0.65)
@@ -159,7 +164,9 @@ def alert_receipt(items, markets, now, text):
     for row in items:
         item = {key: row.get(key) for key in keys if key in row}
         item['body_verified'] = bool(row.get('body_verified'))
-        item['publication_basis'] = 'publisher' if row.get('source_metadata') else 'discovery_feed'
+        publication_status = (row.get('source_metadata') or {}).get('publication_status')
+        item['publication_basis'] = ('publisher' if publication_status == 'verified' else
+                                     'publisher_conflict' if publication_status == 'conflict' else 'discovery_feed')
         item['rendered'] = bool({row.get('link'), row.get('resolved_url')} & urls)
         item['article_text_sha256'] = hashlib.sha256(str(row.get('article_text') or '').encode()).hexdigest()
         articles.append(item)
