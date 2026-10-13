@@ -999,3 +999,97 @@ finally:
         else:
             _leader_env[_k]=_v
 print("long_running_leader_hidden_recent50_regression=true")
+
+
+# 2026-10-13 개장 갭 -3.10%를 5초 장중 급락으로 중복 인식한 실전 문제 재현.
+# REST의 개장 전 전일종가 유지가격과 시가 확정 후 가격을 반드시 분리한다.
+import kospi_shock_episode_watch as _oct13_mod
+import datetime as _oct13_dt
+from zoneinfo import ZoneInfo as _oct13_zone
+_oct13_open = _oct13_dt.datetime(2026, 10, 13, 9, 0, tzinfo=_oct13_zone("Asia/Seoul")).timestamp()
+_oct13_w = Watch("synthetic", [], "synthetic", False)
+_oct13_w.session_open_ts = _oct13_open
+_oct13_quotes = [
+    {"price":6384.24,"prev_close":6384.24,"open":0.0,"open_pct":-3.10},
+    {"price":6384.24,"prev_close":6384.24,"open":6186.08,"open_pct":-3.10},
+    {"price":6186.08,"prev_close":6384.24,"open":6186.08,"open_pct":-3.10},
+    {"price":6152.86,"prev_close":6384.24,"open":6186.08,"open_pct":-3.10},
+]
+_oct13_clock = [_oct13_open-30]
+_oct13_stage = [0]
+_oct13_orig_idx = _oct13_mod.fetch_index_quote
+_oct13_orig_fut = _oct13_mod.fetch_derivative_quote
+_oct13_orig_time = _oct13_mod.time.time
+try:
+    _oct13_mod.fetch_index_quote=lambda _token: _oct13_quotes[_oct13_stage[0]]
+    _oct13_mod.fetch_derivative_quote=lambda _token,_code: {"price":1000.0}
+    _oct13_mod.time.time=lambda: _oct13_clock[0]
+    for stage, secs in enumerate((-30,25,30,279)):
+        _oct13_stage[0] = stage
+        _oct13_clock[0] = _oct13_open + secs
+        _oct13_w.poll_market_once()
+        if stage <= 1:
+            assert not _oct13_w.idx, "개장 전/미갱신 전일종가가 장중 틱으로 삽입됨"
+        elif stage == 2:
+            assert len(_oct13_w.idx)==1 and _oct13_w.idx[-1][1]==6186.08
+            assert _oct13_w._trigger()[0] is False, "개장 갭을 5초 급락으로 중복 검출"
+    ok, trig = _oct13_w._trigger()
+    assert ok and abs(trig["peak"]-6186.08)<0.01, trig
+    assert -0.60 < trig["drop"] < -0.50, trig
+    assert all(abs(price-6384.24)>0.01 for ts,price in _oct13_w.idx)
+finally:
+    _oct13_mod.fetch_index_quote=_oct13_orig_idx
+    _oct13_mod.fetch_derivative_quote=_oct13_orig_fut
+    _oct13_mod.time.time=_oct13_orig_time
+print("oct13_preopen_price_isolation_regression=true gap=-3.10 intraday_drop_uses_open=true")
+
+
+# 08:59~09:04 누적 현물 수급은 정규장 5분 순매수 급증으로 송출 금지.
+# 09:00:30~09:05:30 실제 정규장 표본은 유지해야 함.
+from kospi_shock_episode_watch import flow_surge_candidates as _oct13_surge
+def _oct13_flow(ts, institution=0.0, individual=0.0, program=0.0):
+    return {
+        "ts":ts,
+        "현물":{"sample_ts":ts, "외국인":0.0, "기관":institution, "개인":individual},
+        "선물":{"sample_ts":ts, "외국인":0.0, "기관":0.0, "개인":0.0},
+        "프로그램":{"sample_ts":ts, "전체":program, "차익":0.0, "비차익":program,"표본시차초":2.0},
+    }
+_oct13_early = [
+    _oct13_flow(_oct13_open-60),
+    _oct13_flow(_oct13_open+240, institution=1770.0, program=-173758.0),
+]
+assert not _oct13_surge(_oct13_early,_oct13_open+243,_oct13_open), "장전 기준점으로 정규장 5분 매수 급증 오검출"
+_oct13_valid = [
+    _oct13_flow(_oct13_open-60),
+    _oct13_flow(_oct13_open+30),
+    _oct13_flow(_oct13_open+330, individual=1369.0, program=-227103.0),
+]
+_oct13_c = _oct13_surge(_oct13_valid,_oct13_open+335,_oct13_open)
+assert any(x["actor"]=="개인" and x["mode"]=="현물 중심"
+           and x["spot_window"]==(_oct13_open+30,_oct13_open+330)
+           for x in _oct13_c), _oct13_c
+assert all(not x["spot_window"] or x["spot_window"][0]>=_oct13_open for x in _oct13_c),_oct13_c
+print("oct13_five_minute_inflow_open_boundary_regression=true preopen_excluded=true live_buy_kept=true")
+
+
+# 장전·시초 첫 분봉 중 전일 종가 유지값이 이후 급락의 가짜 고점이 되지 않도록 복구 차단.
+_orig_backfill_ls=_oct13_mod.ls_post
+_orig_backfill_session=_oct13_mod.session_state
+try:
+    today=_oct13_dt.datetime.now(_oct13_zone("Asia/Seoul")).strftime("%Y%m%d")
+    _oct13_mod.ls_post=lambda *_args,**_kwargs: {
+       "t8409OutBlock1":[
+           {"date":today,"time":"085900","close":"6384.24"},
+           {"date":today,"time":"090000","close":"6384.24"},
+           {"date":today,"time":"090100","close":"6178.00"},
+           {"date":today,"time":"090200","close":"6168.00"},
+       ]
+    }
+    _oct13_mod.session_state=lambda now: {"open":_oct13_dt.datetime(
+        now.year,now.month,now.day,9,0,tzinfo=_oct13_zone("Asia/Seoul"))}
+    _oct13_bars=_oct13_mod.backfill_index_bars("test")
+    assert [x[1] for x in _oct13_bars]==[6178.0,6168.0],_oct13_bars
+finally:
+    _oct13_mod.ls_post=_orig_backfill_ls
+    _oct13_mod.session_state=_orig_backfill_session
+print("oct13_opening_bar_backfill_boundary_regression=true")
