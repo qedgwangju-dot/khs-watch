@@ -12,6 +12,15 @@ def main():
     assert not q.publisher_allowed("AD HOC NEWS")
     assert not q.publisher_allowed("Fake IonQ News")
     assert q.BASELINE=="ionq-elisity:agreement:2026-10-12"
+    # Future/conditional language must never become an executed milestone.
+    assert q.stage("IonQ Elisity acquisition closing expected in fourth quarter") is None
+    assert q.stage("IonQ Elisity acquisition expected to be completed in Q4") is None
+    assert q.stage("IonQ expects regulatory approval for Elisity acquisition") is None
+    assert q.stage("IonQ Elisity earnout payment expected next year") is None
+    assert q.stage("IonQ Elisity acquisition integrated platform revenue expectations") is None
+    assert q.stage("IonQ officially closes Elisity acquisition")[0]=="closing"
+    assert q.stage("IonQ received regulatory approval for Elisity acquisition")[0]=="regulatory"
+    assert q.stage("IonQ reports Elisity recurring revenue growth")[0]=="commercial"
     # A real RSS item must decode the three-part stage tuple without raising.
     import email.utils
     import xml.etree.ElementTree as ET

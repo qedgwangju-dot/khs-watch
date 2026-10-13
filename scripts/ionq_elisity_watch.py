@@ -53,20 +53,30 @@ def publisher_allowed(p):
 def stage(title):
     t=clean(title).lower()
     if not ("elisity" in t and ("ionq" in t or "acquisition" in t or "merger" in t)): return None
-    if re.search(r"\b(terminat(?:es|ed|ion)|cancel(?:s|led|lation)|abandon(?:s|ed))\b",t):
+    # Only a completed act is a new milestone: expectations, applications and
+    # anticipated closing must not be reported as completion or approval.
+    if re.search(r"\b(terminates|terminated|cancels|cancelled|abandons|abandoned)\b",t):
         return ("termination","인수 계약 종료",95)
-    if re.search(r"\b(complet(?:es|ed|ion)|clos(?:es|ed|ing))\b",t) and ("acqui" in t or "deal" in t or "transaction" in t):
+    closing=bool(re.search(r"\b(completes|completed|closes|closed)\b",t) or
+                 re.search(r"\b(announces|announced|official|successful)\s+(the\s+)?closing\b",t))
+    closing_future=bool(re.search(
+        r"\b(expected|expects|anticipates|planned|planning|pending|scheduled|set|due|will|may|might|could|aims|intends|seeks)\b.{0,45}\b(to\s+be\s+)?(close|closing|closes|closed|complete|completion|completes|completed)\b",t
+    ) or re.search(r"\bto\s+be\s+(closed|completed)\b",t))
+    if closing and not closing_future and any(x in t for x in ("acqui","deal","transaction")):
         return ("closing","인수 거래 종결",100)
-    if ("regulatory" in t or "antitrust" in t) and ("approval" in t or "clearance" in t or "approved" in t):
-        return ("regulatory","규제 승인",93)
+    if ("regulatory" in t or "antitrust" in t or "clearance" in t) and ("approval" in t or "clearance" in t or "approved" in t):
+        if re.search(r"\b(receives|received|obtains|obtained|secures|secured|grants|granted|approves|approved|clears|cleared|wins|won)\b",t) and not re.search(r"\b(approval|clearance)\s+(expected|pending|anticipated|planned|sought)\b",t):
+            return ("regulatory","규제 승인",93)
     if ("shareholder" in t or "stockholder" in t) and ("approval" in t or "approved" in t):
-        return ("shareholder","주주 승인",92)
-    if ("amend" in t or "revis" in t or "modif" in t) and ("agreement" in t or "terms" in t or "deal" in t):
+        if re.search(r"\b(receives|received|obtains|obtained|secures|secured|grants|granted|approves|approved|wins|won)\b",t) and not re.search(r"\bapproval\s+(expected|pending|anticipated)\b",t):
+            return ("shareholder","주주 승인",92)
+    if ("agreement" in t or "terms" in t or "deal" in t) and re.search(r"\b(amends|amended|revises|revised|modifies|modified)\b",t):
         return ("amendment","거래 조건 변경",96)
-    if ("earnout" in t or "earn-out" in t) and ("payment" in t or "achiev" in t or "milestone" in t):
+    if ("earnout" in t or "earn-out" in t) and re.search(r"\b(paid|pays|achieves|achieved|earns|earned|receives|received)\b",t):
         return ("earnout","조건부 대가 실현",92)
     if any(x in t for x in ("revenue","customer deployment","integrated platform","cross-selling","cross selling","subscription","recurring revenue")):
-        return ("commercial","실제 고객·반복매출 변화",85)
+        if re.search(r"\b(reports|reported|recognizes|recognized|records|recorded|launches|launched|deploys|deployed|signs|signed|wins|won|generates|generated|integrates|integrated)\b",t):
+            return ("commercial","실제 고객·반복매출 변화",85)
     if ("to acquire" in t or "agreement to acquire" in t or "announces acquisition" in t):
         return ("agreement","인수 본계약 발표",70)
     return None
