@@ -1461,6 +1461,204 @@ class Watch:
 
         self.kosdaq_flow_task = asyncio.create_task(run_one())
 
+    async def seed_kosdaq_backfill(self) -> None:
+        """코스닥도 오늘의 1분봉으로 최근 고점을 복원한다. KOSPI 수집은 독립 실행."""
+        try:
+            rows=await asyncio.to_thread(backfill_index_bars, self.token, 300, "301")
+            cutoff=time.time()-PRICE_LOOKBACK_SEC
+            merged={float(ts):float(price) for ts,price in rows
+                    if ts>=cutoff and price>0}
+            merged.update({float(ts):float(price) for ts,price in self.kosdaq_idx
+                           if ts>=cutoff and price>0})
+            self.kosdaq_idx=deque(sorted(merged.items()),maxlen=30000)
+            self.raw["kosdaq_backfill_rows"]=len(rows)
+        except Exception as exc:
+            self.raw["kosdaq_backfill_error"]=f"{type(exc).__name__}: {exc}"
+
+    async def maybe_kosdaq_price(self) -> None:
+        """t1511 코스닥 현재가를 별도로 조회한다. 가격 지연이 코스피 루프를 막지 않는다."""
+        if not hasattr(self,"kosdaq_idx") or not getattr(self,"token",None):
+            return
+        now=time.time()
+        if self.kosdaq_price_task and not self.kosdaq_price_task.done():
+            return
+        if now-self.kosdaq_last_price_poll<KOSDAQ_PRICE_POLL_INTERVAL_SEC:
+            return
+        self.kosdaq_last_price_poll=now
+
+        async def run_one():
+            try:
+                idx=await asyncio.to_thread(fetch_kosdaq_index_quote,self.token)
+                received_ts=time.time()
+                price=float(idx["price"])
+                opening=fnum(idx.get("open"))
+                prev_close=fnum(idx.get("prev_close"))
+                open_ts=getattr(self,"session_open_ts",None)
+                usable=True
+                reason=None
+                if open_ts is not None and received_ts<open_ts:
+                    usable=False
+                    reason="정규장 개장 전 전일종가 유지값"
+                elif open_ts is not None and not self.kosdaq_regular_price_ready:
+                    if opening is None or opening<=0:
+                        usable=False
+                        reason="코스닥 개장 시가 미확인"
+                    elif (prev_close is not None and prev_close>0
+                          and abs((opening/prev_close-1.0)*100)>=0.5
+                          and abs((price/prev_close-1.0)*100)<=0.01):
+                        usable=False
+                        reason="코스닥 시가 갭과 다른 전일종가 유지값"
+                if usable:
+                    self.kosdaq_idx.append((received_ts,price))
+                    self.kosdaq_regular_price_ready=True
+                    self.kosdaq_last_idx_tick_ts=received_ts
+                    cutoff=received_ts-PRICE_LOOKBACK_SEC
+                    while self.kosdaq_idx and self.kosdaq_idx[0][0]<cutoff:
+                        self.kosdaq_idx.popleft()
+                    if self.raw.pop("last_kosdaq_price_error",None):
+                        self.raw["kosdaq_price_recovered_at_kst"]=fmt_clock(received_ts)
+                else:
+                    self.raw["last_kosdaq_unconfirmed_price"]={
+                        "observed_at":fmt_clock(received_ts),"reason":reason,
+                        "price":price,"open":opening,"prev_close":prev_close,
+                    }
+                self.kosdaq_last_price_snapshot=dict(idx)
+                self.raw["last_kosdaq_price_snapshot"]={
+                    "market":"KOSDAQ","source":"LS t1511 upcode=301",
+                    "received_at_kst":fmt_clock(received_ts),
+                    "price":price,"open":opening,"prev_close":prev_close,
+                    "regular_price_usable":usable,
+                }
+            except Exception as exc:
+                self.raw["last_kosdaq_price_error"]=f"{type(exc).__name__}: {exc}"
+                self.raw["kosdaq_price_poll_failures_total"]=int(
+                    self.raw.get("kosdaq_price_poll_failures_total",0)
+                )+1
+
+        self.kosdaq_price_task=asyncio.create_task(run_one())
+
+    def build_kosdaq_drop_alert(self, stage: str, ep: dict[str, Any],
+                                now_ts: float, price: float,
+                                session_close: bool=False) -> str:
+        label={"start":"🚨 코스닥 급락 포착", "expand":"🔴 코스닥 급락 확대",
+               "end":"🟢 코스닥 급락 종료·반등 확인",
+               "close":"🟣 코스닥 급락 장마감 확정"}.get(stage,"코스닥 급락")
+        start_ts=float(ep["start_ts"])
+        low_ts=float(ep["low_ts"])
+        low=float(ep["low_price"])
+        is_final=stage in {"end","close"}
+        end_point=low if is_final else price
+        change=pct(float(ep["start_price"]),end_point)
+        att=self._kosdaq_attribution(start_ts, low_ts if is_final else now_ts)
+        lines=[
+            f"<b>{label}</b>",
+            f"<code>{dt.datetime.fromtimestamp(time.time(),KST):%Y-%m-%d %H:%M:%S} KST</code>",
+            f"• 구간 <b>{fmt_clock(start_ts)} → {fmt_clock(low_ts if is_final else now_ts)}</b> · {fmt_duration(int(low_ts if is_final else now_ts)-int(start_ts))}",
+            f"• 코스닥 <b>{float(ep['start_price']):,.2f} → {end_point:,.2f}</b> ({change:+.2f}%)",
+        ]
+        if is_final:
+            rebound=pct(low,price) or 0.0
+            lines.append(f"• 저점 이후 현재 {price:,.2f} · 반등 {rebound:+.2f}%")
+        if att.get("available"):
+            spot=att["spot"]
+            leader=att.get("leader") or "매도 우위 주체 없음"
+            lines += [
+                f"• 코스닥 현물: 외국인 {fmt_eok(spot.get('외국인'))} / 기관 {fmt_eok(spot.get('기관'))} / 개인 {fmt_eok(spot.get('개인'))}",
+                f"• 현물 최다매도: <b>{html.escape(str(leader))}</b> (현물 단독 참고, 원인 확정 아님)",
+                f"• 수급 기준점 시차 {att['start_gap']:.1f}초 / {att['end_gap']:.1f}초",
+            ]
+        else:
+            lines.append(f"• 코스닥 현물 매도주체 판정 보류 — {html.escape(str(att.get('reason') or '기준점 없음'))}")
+        lines.extend([
+            "• 코스피200 선물·코스피 프로그램 수급은 코스닥 매도주체로 사용하지 않습니다.",
+            "• "+ " · ".join([link(KOSDAQ_URL,"KOSDAQ"),link(KOSDAQ_NEWS_URL,"관련 뉴스")]),
+        ])
+        return "\n".join(lines)
+
+    async def maybe_alert_kosdaq_drop(self) -> None:
+        if getattr(self,"test",False) or not getattr(self,"kosdaq_idx",None):
+            return
+        if not getattr(self,"kosdaq_regular_price_ready",False):
+            return
+        now_t,price=self.kosdaq_idx[-1]
+        if now_t<=self.kosdaq_last_price_processed_ts:
+            return
+        if time.time()-now_t>KOSDAQ_PRICE_MAX_AGE_SEC:
+            self.raw["kosdaq_stale_price_alert_suppressed"]=True
+            return
+        if not price_event_window_open(now_t,getattr(self,"session_close_ts",None),time.time()):
+            return
+        self.kosdaq_last_price_processed_ts=now_t
+
+        if (not self.kosdaq_opening_gap_sent
+                and self.session_open_ts is not None
+                and self.session_open_ts<=now_t<=self.session_open_ts+15*60):
+            idx=self.kosdaq_last_price_snapshot
+            prev=fnum(idx.get("prev_close"))
+            opn=fnum(idx.get("open"))
+            gap=pct(prev,opn)
+            if gap is not None and gap<=OPEN_GAP_ALERT_PCT:
+                text="\n".join([
+                    "⚠️ <b>코스닥 개장 갭다운</b>",
+                    f"<code>{dt.datetime.now(KST):%Y-%m-%d %H:%M:%S} KST</code>",
+                    f"• 전일 종가 {prev:,.2f} → 시가 {opn:,.2f} · <b>{gap:+.2f}%</b>",
+                    "• 전일 종가→시가 갭과 개장 이후 현물 순매도를 별도로 판정합니다.",
+                    "• "+link(KOSDAQ_URL,"코스닥 지수"),
+                ])
+                msg_id=await asyncio.to_thread(telegram_send,text)
+                self.msg_ids.append(msg_id)
+                self.kosdaq_opening_gap_sent=True
+                self._record_delivery("kosdaq_open_gap",msg_id,
+                                      {"market":"KOSDAQ","start_ts":now_t,"low_ts":now_t},now_t)
+        if self.kosdaq_episode is None:
+            hit,info=self._kosdaq_trigger()
+            if not hit:
+                return
+            ep={
+                "market":"KOSDAQ","start_ts":info["peak_ts"],
+                "start_price":info["peak"],"low_ts":now_t,"low_price":price,
+                "sent_drop":abs(float(info["drop"])),"trigger":info,
+            }
+            msg_id=await asyncio.to_thread(
+                telegram_send,self.build_kosdaq_drop_alert("start",ep,now_t,price)
+            )
+            self.kosdaq_episode=ep
+            self.msg_ids.append(msg_id)
+            self._record_delivery("kosdaq_shock_start",msg_id,ep,now_t)
+            return
+        ep=self.kosdaq_episode
+        if price<float(ep["low_price"]):
+            ep["low_price"]=price
+            ep["low_ts"]=now_t
+        total_drop=abs(pct(float(ep["start_price"]),price) or 0.0)
+        if total_drop>=float(ep.get("sent_drop",0.0))+0.50:
+            msg_id=await asyncio.to_thread(
+                telegram_send,self.build_kosdaq_drop_alert("expand",ep,now_t,price)
+            )
+            ep["sent_drop"]=total_drop
+            self.msg_ids.append(msg_id)
+            self._record_delivery("kosdaq_shock_expand",msg_id,ep,now_t)
+        low_age=now_t-float(ep["low_ts"])
+        full_drop=abs(pct(float(ep["start_price"]),float(ep["low_price"])) or 0.0)
+        rebound=pct(float(ep["low_price"]),price) or 0.0
+        need_rebound=max(0.30,min(0.70,full_drop*0.30))
+        recovery_ratio=(
+            (price-float(ep["low_price"]))/
+            (float(ep["start_price"])-float(ep["low_price"]))
+            if float(ep["start_price"])>float(ep["low_price"]) else 0.0
+        )
+        ended=((low_age>=NEW_LOW_CONFIRM_SEC and rebound>=need_rebound)
+               or (low_age>=120 and recovery_ratio>=0.45)
+               or (now_t-float(ep["start_ts"])>=MAX_EPISODE_SEC and low_age>=600))
+        if ended:
+            msg_id=await asyncio.to_thread(
+                telegram_send,self.build_kosdaq_drop_alert("end",ep,now_t,price)
+            )
+            self.kosdaq_episode=None
+            self.kosdaq_last_episode_end_ts=now_t
+            self.msg_ids.append(msg_id)
+            self._record_delivery("kosdaq_shock_end",msg_id,ep,now_t)
+
     @staticmethod
     def build_kosdaq_flow_surge_alert(actor: str, delta: float, pair: dict[str, Any],
                                      now_ts: float) -> str:
@@ -1625,8 +1823,10 @@ class Watch:
     async def evaluate(self) -> None:
         await self.maybe_flow()
         await self.maybe_kosdaq_flow()
+        await self.maybe_kosdaq_price()
         await self.maybe_alert_flow_surge()
         await self.maybe_alert_kosdaq_surge()
+        await self.maybe_alert_kosdaq_drop()
         # CI 실데이터 조회(--test)는 소스와 API 품질만 검사한다.
         # 장중 급락 조건이 충족돼도 시험 실행이 실전 Telegram 알림을 보내서는 안 된다.
         if getattr(self, "test", False):
@@ -1963,6 +2163,7 @@ class Watch:
 
     async def run(self, until: dt.time, test_seconds: int | None = None) -> None:
         self.seed_backfill()
+        self.kosdaq_backfill_task=asyncio.create_task(self.seed_kosdaq_backfill())
         started = time.time()
         last_poll_error: str | None = None
 
@@ -2030,8 +2231,10 @@ class Watch:
                 # 가격 API 일시 장애 중에도 독립 수급 감지는 계속 수행한다.
                 await self.maybe_flow()
                 await self.maybe_kosdaq_flow()
+                await self.maybe_kosdaq_price()
                 await self.maybe_alert_flow_surge()
                 await self.maybe_alert_kosdaq_surge()
+                await self.maybe_alert_kosdaq_drop()
                 self.raw["price_event_skipped_on_poll_failure"] = True
             self._checkpoint_handoff()
 
