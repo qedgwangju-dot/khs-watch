@@ -1179,7 +1179,7 @@ with _kq_patch.object(ks, "telegram_send", _kq_fake_send):
     _kq_async.run(_kq.maybe_alert_kosdaq_surge(_kq_base+323))
     assert len(_kq_msgs)==1, _kq_msgs
     assert "코스닥 단기 순매수 급증" in _kq_msgs[0], _kq_msgs[0]
-    assert "현물(통합) +470억원" in _kq_msgs[0], _kq_msgs[0]
+    assert "코스닥 현물(통합)" in _kq_msgs[0] and "<b>+470억원</b>" in _kq_msgs[0], _kq_msgs[0]
     assert "KOSPI200 선물·프로그램 수급과 합산하지 않음" in _kq_msgs[0], _kq_msgs[0]
     assert _kq_delivery[0][0:2] == ("kosdaq_flow_surge",32001), _kq_delivery
     assert _kq.surge_sent_at["외국인"] == _kq_base+500  # 코스피 기존 데이터 보존
