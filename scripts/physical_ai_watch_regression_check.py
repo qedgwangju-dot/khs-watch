@@ -3361,4 +3361,117 @@ assert watcher.qty._skip_quantity_enrichment(
     '동영상·행동 신호의 사후학습 추정치'
 )
 
+
+# 54) 2026-10-13 Korean ministry original 14-page sandbox approval.
+# This already generated Telegram message_id=213 in Run #573.
+# It is a conditional 20-robot PLAN and must not be resent or rendered
+# as 20 delivered sales; actual site KPIs/contracts are separate upgrades.
+robros_approval = make(
+    "산업통상부 제6차 규제특례 승인 로브로스 휴머노이드 20대",
+    "산업통상부는 로브로스 이동형 휴머노이드 20대를 네패스 반도체, "
+    "성우하이텍 자동차, HD현대삼호 조선, 딜리버리랩 물류 "
+    "현장에서 실증특례 승인했다. 위험성평가와 위험감소 조건을 따른다.",
+    "파이낸셜뉴스",
+)
+arg, ars, arc, ark = classify(robros_approval)
+assert arg == "robros_industrial_sandbox" and ars >= 11, (arg,ars,arc)
+assert arc == "로브로스 산업실증 · 이동형 휴머노이드 20대 규제특례 승인",arc
+assert "20대를" in base.meaning(arc) and "30억원" in base.meaning(arc)
+assert "정부 예산·확정 매출이 아닙니다" in base.meaning(arc)
+assert "14쪽 공식 보도자료" in base.verification(
+    robros_approval,arg,robros_approval["title"]+" "+robros_approval["description"]
+)
+assert "작업 성공률" in base.risk(arc)
+assert "보험" in base.risk(arc) and "6~12개월" in base.risk(arc)
+
+robros_reprint = make(
+    "로브로스 반도체 자동차 조선 물류 휴머노이드 20대 규제특례 승인",
+    "로브로스가 네패스·성우하이텍·HD현대삼호·딜리버리랩 "
+    "현장에 휴머노이드 로봇 20대 실증특례 승인을 받았다.",
+    "연합뉴스",
+)
+rpg,rps,rpc,rpk=classify(robros_reprint)
+assert rpg==arg and rps>=11 and rpk==ark, (rpg,rps,rpc,rpk)
+
+robros_old_yield = make(
+    "로브로스 과거 IGRIS-C 9대 유상공급",
+    "로브로스 2026-08-19 이그리스-C 9대 유상 공급을 발표했다. "
+    "휴머노이드 20대 규제특례 승인 전의 기존 납품 건이다.",
+    "로브로스",
+)
+yg,ys,yc,yk=classify(robros_old_yield)
+assert yg != "robros_industrial_sandbox" or ys < 11, (yg,ys,yc)
+
+robros_installed = make(
+    "로브로스 네패스 반도체 제조현장 휴머노이드 실제 배치 완료",
+    "로브로스가 네패스 반도체 클리닝 제조현장에 "
+    "휴머노이드 이그리스 실증 로봇 실제 배치 완료를 발표했다.",
+    "로브로스",
+)
+dg,ds,dc,dk=classify(robros_installed)
+assert dg==arg and ds>=11 and dc.endswith("실제 배치 개시"),(dg,ds,dc)
+assert dk!=ark,"Site deployment must upgrade from government approval"
+
+robros_kpi = make(
+    "로브로스 성우하이텍 휴머노이드 로봇 작업 성공률 92% 측정",
+    "로브로스가 성우하이텍 자동차 현장 휴머노이드 작업 성공률 "
+    "92% 측정 결과를 발표했다.",
+    "로브로스",
+)
+kg,ks,kc,kk=classify(robros_kpi)
+assert kg==arg and ks>=11 and kc.endswith("작업 KPI 실측"), (kg,ks,kc)
+assert kk not in {ark,dk}
+
+robros_order = make(
+    "로브로스 HD현대삼호 휴머노이드 정식 구매 계약 체결",
+    "로브로스는 HD현대삼호 조선소 휴머노이드 로봇 정식 "
+    "납품 계약 체결을 발표했다.",
+    "로브로스",
+)
+og,os,oc,ok=classify(robros_order)
+assert og==arg and os>=11 and oc.endswith("고객 정식 유상계약"),(og,os,oc)
+assert ok not in {ark,dk,kk}
+
+robros_news_expectation = dict(robros_order,source="출처 불명 테마 블로그")
+ng,ns,nc,nk=classify(robros_news_expectation)
+assert ng==arg and ns<11,(ng,ns,nc)
+
+robros_recovered = watcher.query_news(watcher.ROBROS_PILOT_20261013)
+if base.NOW.astimezone(base.KST).date()<=dt.date(2026,10,20):
+    assert len(robros_recovered)==1,robros_recovered
+    p=robros_recovered[0]
+    assert p["published"]=="2026-10-13T06:00:00+00:00",p
+    assert "공식 보도자료" in p["description"],p
+    assert "실제 현장 운영일자" in p["description"],p
+    bg,bs,bc,bk=classify(p)
+    assert bg==arg and bs>=11 and bk==ark,(bg,bs,bc,bk)
+    assert "규제특례 승인" in base.category(p["title"]+" "+p["description"],bg)
+
+# Real false positives seen in Run #573 (message_id=213).
+price_only_false_alert=make(
+    "24만4500원…로봇 양산 기대 속 4.86% 조정",
+    "로보티즈 주가는 조정됐지만 신규 발주·출하량 발표는 없다.",
+    "잡포스트",
+)
+assert watcher._is_stock_reaction_only(price_only_false_alert)
+pg,ps,pc,pk=classify(price_only_false_alert)
+assert ps<11,(pg,ps,pc)
+
+editorial_only_false_alert=make(
+    "[심층분석] LG전자, 가전 넘어 AI 데이터센터·스마트팩토리로…생활기술의 산업화 시험대",
+    "LG전자의 스마트팩토리 사업과 AI데이터센터 기회에 관한 일반 전망",
+    "뉴스밸류",
+)
+assert watcher._is_stock_reaction_only(editorial_only_false_alert)
+eg,es,ec,ek=classify(editorial_only_false_alert)
+assert es<11,(eg,es,ec)
+
+material_editorial=make(
+    "[심층분석] 로브로스 신규 공급계약 체결",
+    "로브로스·네패스 산업현장 휴머노이드 20대 정식 신규 공급계약 체결",
+    "연합뉴스",
+)
+assert not watcher._is_stock_reaction_only(material_editorial),material_editorial
+
+
 print("Physical-AI watcher regression guards: PASS")
