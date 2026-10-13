@@ -1113,3 +1113,33 @@ assert "감시 공백 또는 수급 기준점 부족" not in _oct13_stale_text,_
 assert "수급 시차 30초" in _oct13_stale_text,_oct13_stale_text
 assert "프로그램 합계 차이 1% 초과" in _oct13_stale_text,_oct13_stale_text
 print("oct13_stale_flow_is_not_monitor_outage_regression=true")
+
+
+# 10/13 개장 직후 09:00:25 수급 출발점 시차 25.9초 = 08:59:59.1.
+# 30초 이내라는 이유만으로 장전 기준점을 '정규장 매도주체' 근거로 삼으면 안 된다.
+_oct13_attribution_guard=Watch.__new__(Watch)
+_oct13_attribution_guard.session_open_ts=1000.0
+_oct13_attribution_guard.flows=deque([
+    {"ts":999.1,
+     "현물":{"sample_ts":999.1,"외국인":0.0,"기관":0.0,"개인":0.0},
+     "선물":{"sample_ts":999.1,"외국인":0.0,"기관":0.0,"개인":0.0},
+     "프로그램":{"sample_ts":999.1,"전체":0.0,"차익":0.0,"비차익":0.0,"표본시차초":2.0}},
+    {"ts":1100.0,
+     "현물":{"sample_ts":1100.0,"외국인":-50.0,"기관":40.0,"개인":10.0},
+     "선물":{"sample_ts":1100.0,"외국인":-30.0,"기관":25.0,"개인":5.0},
+     "프로그램":{"sample_ts":1100.0,"전체":-100.0,"차익":10.0,"비차익":-110.0,"표본시차초":2.0}},
+    {"ts":1500.0,
+     "현물":{"sample_ts":1500.0,"외국인":-200.0,"기관":130.0,"개인":70.0},
+     "선물":{"sample_ts":1500.0,"외국인":-100.0,"기관":75.0,"개인":25.0},
+     "프로그램":{"sample_ts":1500.0,"전체":-500.0,"차익":10.0,"비차익":-510.0,"표본시차초":2.0}},
+],maxlen=2500)
+assert _oct13_attribution_guard._flow_channel_near(1025.0,"현물") is None
+assert _oct13_attribution_guard._flow_channel_near(1025.0,"선물") is None
+_oct13_out=_oct13_attribution_guard.attribution(1025.0,1500.0)
+assert _oct13_out["available"] is False, _oct13_out
+_oct13_valid_flow=_oct13_attribution_guard.attribution(1110.0,1500.0)
+assert _oct13_valid_flow["available"] is True,_oct13_valid_flow
+assert _oct13_valid_flow["spot_leader"]=="외국인",_oct13_valid_flow
+assert _oct13_valid_flow["futures_leader"]=="외국인",_oct13_valid_flow
+assert _oct13_valid_flow["program_quality"] is True,_oct13_valid_flow
+print("oct13_preopen_attribution_guard_regression=true")
