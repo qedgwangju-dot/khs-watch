@@ -610,6 +610,49 @@ def dated_values(obj: dict) -> dict[str, float]:
     return result
 
 
+SOURCE_ERROR_LABELS = {
+    "buyback": "미 재무부 바이백",
+    "rates": "미 국채 금리",
+    "btc_etf": "BTC ETF",
+}
+
+
+def source_error_keys(state: dict) -> set[str]:
+    return {
+        str(error).split(":", 1)[0]
+        for error in (state.get("errors") or [])
+        if str(error).split(":", 1)[0] in SOURCE_ERROR_LABELS
+    }
+
+
+def operational_triggers(old: dict, new: dict, now_kst: str) -> list[str]:
+    """Report new source failures/recoveries and missed monitoring intervals once."""
+    triggers: list[str] = []
+    old_errors = source_error_keys(old)
+    new_errors = source_error_keys(new)
+    for keys, heading in (
+        (new_errors - old_errors, "원천자료 조회 이상"),
+        (old_errors - new_errors, "원천자료 조회 복구"),
+    ):
+        if keys:
+            sources = ", ".join(SOURCE_ERROR_LABELS[key] for key in sorted(keys))
+            triggers.append(f"{heading}: {sources}")
+
+    try:
+        previous = dt.datetime.fromisoformat(str(old.get("updated_at_kst") or ""))
+        current = dt.datetime.fromisoformat(now_kst)
+        gap_seconds = (current - previous).total_seconds()
+    except (TypeError, ValueError):
+        gap_seconds = 0
+    if gap_seconds >= 45 * 60:
+        minutes = int(round(gap_seconds / 60))
+        triggers.append(
+            f"감시 실행 공백: 직전 조회 {previous.isoformat(timespec='seconds')} 이후 "
+            f"{minutes}분 (설정 15분 간격)"
+        )
+    return triggers
+
+
 def main() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     ALERT_PATH.unlink(missing_ok=True)
@@ -674,7 +717,7 @@ def main() -> None:
         atomic_write(STATUS_PATH, "\n".join(status) + "\n")
         return
 
-    triggers: list[str] = []
+    triggers: list[str] = operational_triggers(old, new_state, now_kst)
     if correction_pending:
         triggers.append(
             "BTC 현물 ETF 종합해석 정정: 10월 9일 기준 최근 5거래일은 "

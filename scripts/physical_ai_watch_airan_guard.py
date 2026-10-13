@@ -838,6 +838,127 @@ def _robot_posttrain_stage(text: str, source: str = '') -> str:
     return 'unverified_or_general'
 
 
+
+# 2026-10-13 Korean industrial-sandbox approval: Robros 20 planned
+# humanoids across four NAMED trial sites. Regulatory approval is not
+# commissioning, unit sales, operational KPI or blanket safety-law repeal.
+ROBROS_PILOT_20261013 = 'DIRECT_ROBROS_20261013_INDUSTRIAL_SANDBOX_20_APPROVAL'
+ROBROS_ID = re.compile(r'로브로스|\bRobros\b', re.I)
+ROBROS_ROBOT = re.compile(r'휴머노이드|humanoid|이족보행|이동형\s*로봇|이그리스|IGRIS', re.I)
+ROBROS_CLIENTS = re.compile(
+    r'네패스|Nepes|성우하이텍|Sungwoo|HD현대삼호|HD\s*Hyundai\s*Samho|'
+    r'딜리버리랩|Delivery\s*Lab', re.I
+)
+ROBROS_TWENTY = re.compile(r'(?:\b20\s*(?:대|기|units?|robots?)|스무\s*대)', re.I)
+ROBROS_PILOT_APPROVAL = re.compile(
+    r'(?:실증\s*특례|규제\s*특례|규제\s*샌드박스).{0,100}'
+    r'(?:승인|허용|의결|approved?|authorized?)|'
+    r'(?:승인|허용|의결|approved?).{0,90}(?:실증\s*특례|규제\s*특례|'
+    r'실증\s*사업|industrial\s*pilot)', re.I
+)
+ROBROS_DEPLOYED = re.compile(
+    r'(?:(?:현장|공장|실증\s*현장).{0,35})?'
+    r'(?:실제\s*)?(?:투입|배치|설치|운영|가동)\s*(?:시작|개시|완료|확인)|'
+    r'actual\s+(?:deployment|installation|commissioning)\s+(?:began|completed)|'
+    r'(?:began|started)\s+(?:operating|work)\s+at\s+(?:site|factory)',
+    re.I,
+)
+ROBROS_MEASURED = re.compile(
+    r'(?:작업\s*성공률|사람\s*개입률|직행\s*수율|가동률|작업\s*사이클|'
+    r'cycle\s*time|task\s*success\s*rate|intervention\s*rate|uptime).{0,65}'
+    r'(?:\d+(?:\.\d+)?\s*(?:%|초|분|시간|s|sec|min)|실측|측정|recorded)|'
+    r'(?:실측|측정|recorded).{0,65}'
+    r'(?:작업\s*성공률|사람\s*개입률|가동률|cycle\s*time)',
+    re.I,
+)
+ROBROS_ORDER = re.compile(
+    r'(?:정식\s*)?(?:납품|공급|구매|양산)\s*(?:계약|발주)\s*(?:체결|확정|완료)|'
+    r'(?:유상|추가|후속)\s*(?:납품|수주|구매|발주)\s*(?:완료|확정|체결)|'
+    r'(?:signed|firm)\s+(?:supply|purchase|production)\s+(?:contract|order)',
+    re.I,
+)
+ROBROS_REVERSE = re.compile(
+    r'(?:실증|특례|승인|허가|운영).{0,80}(?:취소|철회|중단|정지|연기|revoked|cancelled|suspended)|'
+    r'(?:취소|철회|중단|정지|연기).{0,80}(?:실증|특례|승인|운영)',
+    re.I,
+)
+ROBROS_OFFICIAL = {
+    '로브로스','Robros','네패스','Nepes','성우하이텍',
+    'HD현대삼호','딜리버리랩','산업통상부','한국산업기술진흥원',
+}
+ROBROS_NEWS = {'파이낸셜뉴스','머니투데이','이투데이','연합뉴스','뉴시스'}
+ROBROS_PILOT_GROUP = 'robros_industrial_sandbox'
+
+
+def _is_robros_pilot(text: str) -> bool:
+    return bool(
+        ROBROS_ID.search(text) and ROBROS_ROBOT.search(text)
+        and ROBROS_CLIENTS.search(text)
+        and (ROBROS_PILOT_APPROVAL.search(text) or ROBROS_DEPLOYED.search(text)
+             or ROBROS_MEASURED.search(text) or ROBROS_ORDER.search(text)
+             or ROBROS_REVERSE.search(text)
+             or ROBROS_TWENTY.search(text))
+    )
+
+
+def _robros_pilot_stage(text: str, source: str = '') -> str:
+    if not _is_robros_pilot(text):
+        return ''
+    # A first-party dated operational milestone can exceed the permit.
+    if source in ROBROS_OFFICIAL:
+        if ROBROS_REVERSE.search(text):
+            return 'official_pilot_reversal'
+        if ROBROS_MEASURED.search(text):
+            return 'official_site_kpi'
+        if ROBROS_ORDER.search(text) and not re.search(
+            r'계약\s*(?:전|미확정)|수주\s*(?:전|미확인)|'
+            r'not\s+(?:a\s+)?(?:signed|firm)\s+contract',text,re.I
+        ):
+            return 'official_site_contract'
+        if ROBROS_DEPLOYED.search(text):
+            return 'official_site_deployment'
+    if (source in (ROBROS_NEWS | ROBROS_OFFICIAL)
+            and ROBROS_TWENTY.search(text)
+            and ROBROS_PILOT_APPROVAL.search(text)):
+        return 'approved_pilot_report'
+    return 'existing_or_unverified_baseline'
+
+
+def _robros_pilot_recovery() -> list[dict]:
+    # First media reports are 2026-10-13 15:00 KST; public government
+    # original attached notice may not yet be accessible from search.
+    if base.NOW.astimezone(base.KST).date() > dt.date(2026,10,20):
+        return []
+    return [{
+        'title': '산업통상부 규제특례 승인: 로브로스 휴머노이드 20대 제조·물류 현장 실증',
+        'link': 'https://www.fnnews.com/news/202610131103564249',
+        'description': (
+            '2026-10-13 15:00 KST 산업통상부 제6차 산업융합 규제특례심의위원회 '
+            '승인 사실을 파이낸셜뉴스·이투데이·머니투데이 발표 보도로 대조. '
+            '로브로스 휴머노이드 20대는 네패스 반도체 후공정 부품 세척, '
+            '성우하이텍 자동차 차체부품 안착, HD현대삼호 조선 기자재 적재, '
+            '딜리버리랩 냉장 물류포장체 적재 등에 실증 투입하는 계획이다. '
+            '기존 산업용 로봇 안전펜스 규칙 때문에 어려웠던 사람과 로봇 '
+            '혼재 공정의 지정 실증특례를 승인한 것이며 '
+            '전국 공장에 대한 전면 규제 폐지나 무조건 무인 운전 허가가 아니다. '
+            '정부 당일 공식 보도자료·개별 승인공고 원문을 직접 확보하지 못했으므로 '
+            '보도에 명시된 심의 결과 기준으로 등급을 표시한다. '
+            '이번 20대의 실제 현장 설치대수·계약금액·유상 납품 여부·'
+            '고객별 배정수량·실증 시작일과 마감일·안전관리 조건·'
+            '정부 신규 배정 예산은 미공개다. '
+            '로브로스는 2026-08-19 과거 공식 홍보에서 실증용 '
+            'IGRIS-C 9대 유상 공급, 누적 생산 36대·판매 18대라고 발표했으나 '
+            '과거 9대와 이번 20대가 중복인지 확인되지 않아 합산 금지. '
+            '확정 고객 실증 참여와 향후 부품 공급계약·유상 반복매출·'
+            '정상 운영은 별도 증거로만 확인한다.'
+        ),
+        'source':'파이낸셜뉴스',
+        'published':'2026-10-13T06:00:00+00:00',
+        'direct_recovery':True,
+        'regulatory_approval_news':True,
+    }]
+
+
 _orig_query_news = base.query_news
 
 
@@ -858,10 +979,23 @@ def query_news(q: str) -> list[dict]:
         return _lfp_na_price_recovery()
     if q == VNET_EQUITY_RECOVERY:
         return _vnet_equity_recovery()
+    if q == ROBROS_PILOT_20261013:
+        return _robros_pilot_recovery()
     return _orig_query_news(q)
 
 
 base.query_news = query_news
+if ROBROS_PILOT_20261013 not in base.QUERIES:
+    base.QUERIES.append(ROBROS_PILOT_20261013)
+for q in (
+    '(로브로스 OR Robros) (네패스 OR 성우하이텍 OR HD현대삼호 OR 딜리버리랩) '
+    '(휴머노이드 OR humanoid) (실증특례 OR 규제특례 OR 승인 OR 안전펜스 OR 실증 시작)',
+    '(로브로스 OR Robros) (네패스 OR 성우하이텍 OR HD현대삼호 OR 딜리버리랩) '
+    '(휴머노이드 OR humanoid) (가동률 OR 작업 성공률 OR 현장 투입 완료 '
+    'OR 후속 발주 OR 유상계약 OR 안전사고 OR 실증 중단)',
+):
+    if q not in base.QUERIES:
+        base.QUERIES.append(q)
 for q in (
     '("FUNDA" OR "FundaAI") ("Physical AI" OR 로봇) '
     '("post-training" OR 사후학습) ("3-4x" OR "3~4배" OR GPU)',
@@ -1004,6 +1138,8 @@ def _is_airan(text: str) -> bool:
 
 
 def topic_group(text: str) -> str | None:
+    if _is_robros_pilot(text):
+        return ROBROS_PILOT_GROUP
     if _is_robot_posttrain_compute(text):
         return 'robot_posttrain_compute'
     if _is_vnet_catl(text):
@@ -1046,6 +1182,15 @@ def score(item: dict) -> int:
         return 0
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
     group = topic_group(text)
+    if group == ROBROS_PILOT_GROUP:
+        return {
+            'approved_pilot_report': 55,
+            'official_site_deployment': 66,
+            'official_site_kpi': 72,
+            'official_site_contract': 76,
+            'official_pilot_reversal': 80,
+            'existing_or_unverified_baseline': 0,
+        }.get(_robros_pilot_stage(text,item.get('source') or ''),0)
     if group == 'robot_posttrain_compute':
         return {'official_measured_posttraining':52,
                 'funda_research_estimate_baseline':0,
@@ -1117,6 +1262,18 @@ def score(item: dict) -> int:
 
 
 def category(text: str, group: str) -> str:
+    if group == ROBROS_PILOT_GROUP:
+        # Renderer calls category(title+description) without source. Each
+        # rendering class must match the corresponding scored source-tier.
+        if ROBROS_REVERSE.search(text):
+            return '로브로스 실증특례 · 승인 후퇴·현장 안전 역풍'
+        if ROBROS_MEASURED.search(text):
+            return '로브로스 제조현장 · 작업 KPI 실측'
+        if ROBROS_ORDER.search(text):
+            return '로브로스 제조현장 · 고객 정식 유상계약'
+        if ROBROS_DEPLOYED.search(text):
+            return '로브로스 제조현장 · 실제 배치 개시'
+        return '로브로스 산업실증 · 이동형 휴머노이드 20대 규제특례 승인'
     if group == 'robot_posttrain_compute':
         if ROBOT_POSTTRAIN_GPU_HOURS.search(text) and ROBOT_POSTTRAIN_MEASURED.search(text):
             return '로봇 사후학습 · GPU시간 실측 공개'
@@ -1202,6 +1359,45 @@ def category(text: str, group: str) -> str:
 
 
 def meaning(cat: str) -> str:
+    if cat == '로브로스 산업실증 · 이동형 휴머노이드 20대 규제특례 승인':
+        return (
+            '10/13 산업통상부 제6차 산업융합 규제특례 승인 보도: '
+            '로브로스 이동형 휴머노이드 20대를 네패스 반도체 부품 세척, '
+            '성우하이텍 차체부품 안착, HD현대삼호 조선 기자재 적재, '
+            '딜리버리랩 냉장 물류 적재에 실증 투입하도록 허용했습니다. '
+            '이번 20대는 설치·납품 완료나 확정 구매매출이 아니며 '
+            '고객별 대수·단가·계약액·새 정부예산도 미공개입니다. '
+            '로브로스 8/19 유상 실증 공급 9대와의 겹침도 불명이므로 '
+            '9+20을 판매·설치 합계로 표시하지 않습니다. '
+            '핵심 후속은 실제 설치→안전펜스 대안 검증→'
+            '작업 성공률·사람 개입률·가동률→반복 구매계약입니다.'
+        )
+    if cat == '로브로스 제조현장 · 실제 배치 개시':
+        return (
+            '규제 승인 후 지정 현장에 실제 로봇이 설치·시운전되기 시작한 '
+            '회사 1차자료 신호입니다. 현장별 대수·계약액·유상 공급 여부·'
+            '안전관리 조건을 확인하고 이미 발표된 승인 수량과 중복 집계하지 않습니다.'
+        )
+    if cat == '로브로스 제조현장 · 작업 KPI 실측':
+        return (
+            '로봇의 공장 투입을 넘어 실제 사람-로봇 혼재 공정에서 '
+            '작업 성공률·사람 개입률·정지시간·작업 사이클을 공개한 '
+            '1차 정량 성능 신호입니다. 기존 공정 대비 생산성·안전성 개선과 '
+            '정비비를 확인해 다음 고객 반복 발주 가능성을 평가합니다.'
+        )
+    if cat == '로브로스 제조현장 · 고객 정식 유상계약':
+        return (
+            '실증 승인 또는 협약이 아니라 로브로스·고객사 직접 '
+            '유상 구매·반복 주문 계약을 발표한 단계입니다. '
+            '원화 계약액과 납품 물량, 검수 시점·유지보수 조건을 '
+            '별도 확인한 후에만 매출로 환산합니다.'
+        )
+    if cat == '로브로스 실증특례 · 승인 후퇴·현장 안전 역풍':
+        return (
+            '실증 허용 범위 축소·중단 또는 현장 안전사고로 '
+            '실증 일정이 늦춰진 회사·규제당국의 역방향 확인입니다. '
+            '중단 사유·책임주체·재개 조건·영향받는 대수를 구분합니다.'
+        )
     if cat == '로봇 사후학습 · GPU시간 실측 공개':
         return ('개발사의 실측 GPU시간 공개 단계입니다. GPU 수·경과시간·'
                 '동일조건 비교·실제 활용률을 확인합니다. GPU시간은 GPU 발주나 '
@@ -1403,6 +1599,20 @@ def meaning(cat: str) -> str:
 
 
 def risk(cat: str) -> str:
+    if cat.startswith('로브로스 산업실증 · ') or cat.startswith('로브로스 제조현장 · ') or cat.startswith('로브로스 실증특례 · '):
+        return (
+            '허가특례는 전국 상시 무인 허가가 아닙니다. '
+            '가장 현실적인 6~12개월 실패 경로는 사람과 로봇의 동선 충돌, '
+            '클린룸·냉장·조선 현장의 작업·지면 변화에 따른 '
+            '정밀도·그립 수율 저하, 안전인증·보험·책임소재 협의 지연으로 '
+            '시운전 후 정규 공정 편입과 유상 반복 주문이 늦어지는 경우입니다. '
+            '20대는 사업계획 전체이므로 안전사고 1건도 전체 승인 범위에 '
+            '부정적 영향을 줄 수 있습니다. '
+            '조기지표는 현장별 실제 설치 대수(20대 중 몇 대인지), '
+            '작업 성공률·사람 개입률·비상정지 횟수·고장수리 시간·'
+            '안전관리 계획 이행과 보험 가입입니다. '
+            '완화책은 구역 제한·사람 감독·비상정지·안전 검수 후 단계별 확대입니다.'
+        )
     if cat.startswith('로봇 사후학습 · '):
         return (
             '동일 파라미터라도 동영상 길이·프레임률·해상도, 행동 샘플률, '
@@ -1496,6 +1706,17 @@ def risk(cat: str) -> str:
 
 
 def verification(item: dict, group: str, text: str) -> str:
+    if group == ROBROS_PILOT_GROUP:
+        stage = _robros_pilot_stage(text,item.get('source') or '')
+        if stage == 'approved_pilot_report':
+            return (
+                '10/13 파이낸셜뉴스·이투데이·머니투데이 산업통상부 '
+                '심의결과 보도 대조 · 개별 정부 승인공고 원문 직접 열람 미완료 · '
+                '20대 현장 배치 계획, 실제 납품·계약매출 아님'
+            )
+        if stage in {'official_site_deployment','official_site_kpi','official_site_contract','official_pilot_reversal'}:
+            return '로브로스·고객사·규제당국 1차자료 확인 단계 · 계획·실적 별도'
+        return '기존 로브로스 실증 이력 또는 공식 승인 전 추정, 새 계약 아님'
     if group == 'robot_posttrain_compute':
         if _robot_posttrain_stage(text,item.get('source') or '') == 'official_measured_posttraining':
             return '로봇 개발사 공식 GPU시간 측정 발표 · 실측 조건·계약 별도 확인'
@@ -1582,6 +1803,16 @@ def verification(item: dict, group: str, text: str) -> str:
 
 
 def clean_title(title: str, source: str) -> str:
+    if _is_robros_pilot(title + ' ' + source):
+        if ROBROS_PILOT_APPROVAL.search(title):
+            return '산업부, 로브로스 휴머노이드 20대·4개 현장 실증특례 승인'
+        if ROBROS_DEPLOYED.search(title):
+            return '로브로스 휴머노이드 실증 현장 실제 설치·가동 확인'
+        if ROBROS_MEASURED.search(title):
+            return '로브로스 산업현장 휴머노이드 작업 성능 실측 발표'
+        if ROBROS_ORDER.search(title):
+            return '로브로스 산업현장 휴머노이드 고객 유상계약 확인'
+        return '로브로스 휴머노이드 산업 현장 실증 진행'
     if _is_robot_posttrain_compute(title + ' ' + source):
         if source in ROBOT_POSTTRAIN_PRIMARY and ROBOT_POSTTRAIN_GPU_HOURS.search(title):
             return '로봇 개발사 사후학습 GPU시간 실측 공개'
@@ -1655,6 +1886,8 @@ def clean_title(title: str, source: str) -> str:
 
 
 def tag_for(group: str) -> str:
+    if group == ROBROS_PILOT_GROUP:
+        return '로브로스 제조실증 규제특례'
     if group == 'robot_posttrain_compute':
         return '피지컬AI 학습 연산'
     if group == 'catl_vnet_infrastructure':
@@ -1680,6 +1913,25 @@ def tag_for(group: str) -> str:
 
 def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    if topic_group(text) == ROBROS_PILOT_GROUP:
+        stage=_robros_pilot_stage(text,item.get('source') or '')
+        if stage == 'approved_pilot_report':
+            return hashlib.sha256(b'robros|sandbox-industrial|20261013|20units|4sites|approval').hexdigest()
+        site='unknown'
+        for canonical,pattern in (
+            ('nepes',r'네패스|Nepes'),
+            ('sungwoo',r'성우하이텍|Sungwoo'),
+            ('samho',r'HD현대삼호|HD\s*Hyundai\s*Samho'),
+            ('deliverylab',r'딜리버리랩|Delivery\s*Lab'),
+        ):
+            if re.search(pattern,text,re.I):
+                site=canonical
+                break
+        stamp=(item.get('published') or '')[:10]
+        numbers='-'.join(sorted(set(re.findall(r'\d+(?:\.\d+)?\s*(?:%|초|대|hours?|s)',text,re.I))))
+        return hashlib.sha256(
+            f'robros|industrial|{site}|{stage}|{stamp}|{numbers}'.encode()
+        ).hexdigest()
     if topic_group(text) == 'robot_posttrain_compute':
         stage = _robot_posttrain_stage(text,item.get('source') or '')
         if stage != 'official_measured_posttraining':
@@ -1800,6 +2052,9 @@ def key(item: dict) -> str:
 def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -> list[dict]:
     chosen = _orig_select_diverse(items, seen, force, limit)
     candidates = items if force else [x for x in items if x.get('key') not in seen]
+    industrial_pilot=next((x for x in candidates if x.get('group')==ROBROS_PILOT_GROUP),None)
+    if industrial_pilot and not any(x.get('key')==industrial_pilot.get('key') for x in chosen):
+        chosen=([industrial_pilot,*chosen] if len(chosen)<limit else [industrial_pilot,*chosen[:-1]])
     vnet=next((x for x in candidates if x.get('group')=='catl_vnet_infrastructure'),None)
     if vnet and not any(x.get('key')==vnet.get('key') for x in chosen):
         chosen=([vnet,*chosen] if len(chosen)<limit else [vnet,*chosen[:-1]])

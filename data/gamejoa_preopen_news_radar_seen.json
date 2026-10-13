@@ -4805,7 +4805,7 @@
       "link": "https://www.etoday.co.kr/news/view/2634954",
       "source": "이투데이",
       "source_body_digest": "49893cc6a93c1e17687b976ddad479feb82fac306a6c3cc3b13e57a349ec91d5",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:fcaa144506780eb661206b0ec500856f8955bed8d87a2ebf64a2c36b84f63aee",
       "source_fact_identity": "source_facts:v1:2f5474725b555ff78d02ad7c371f1fa43b9c7625d4406ba0bcfbf6c0b3940d8c",
       "source_fact_keys": [
         "source_fact:v1:0f75a4be600d081f4c6e6808c8432588efe13348a6f3189210bfce88e18cd2d3",
@@ -7209,7 +7209,7 @@
       "link": "https://www.newsis.com/view/NISX20261013_0003823115",
       "source": "뉴시스",
       "source_body_digest": "1e28a389e24b472b0885ed7332250f5f6b08dcd278a6621f7dbbb6ce5b138850",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:724c77828def5c1c640116c56d1cf85184f5f930ed764f926a63e64f36e73a89",
       "source_fact_identity": "source_facts:v1:ceb416c093090f0944d62867ebf1634d153b652ddfbc55d8114511e1756f100e",
       "source_fact_keys": [
         "source_fact:v1:c12e4bf4e95bfc6fdc870fab267c155528609fa564baaae6afacdf52509021b5",
@@ -7851,6 +7851,30 @@
       "source_title": "과방위, 오늘 방미통위 국감…YTN 민영화·구글·텔레그램 도마",
       "telegram_core_fact": "이날 과방위 국감의 가장 큰 쟁점은 YTN 민영화 과정이다. YTN 지분 매각 당시 정부의 개입 과정과 구글 앱마켓 거래 조건, 텔레그램의 불법정보 유통 대응이 방송미디어통신위원회 국정감사 주요 쟁점으로 다뤄질 전망이다.",
       "title": "과방위, 오늘 방미통위 국감…YTN 민영화·구글·텔레그램 도마"
+    },
+    "core:32beb0c56c83e24a15c46a83": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823912",
+      "source": "뉴시스",
+      "source_body_digest": "3934f7cf21c089c61109aaa8fe04b3c3ea5f99a5e9f0e87dd82e1a20c867c47a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:495b7e941bdf3da3d42e1171018aa2d00544eec90d22682065213abd71ea08f8",
+      "source_fact_keys": [
+        "source_fact:v1:2033394372bea8d917d3b785ead31335e576b241d44d77fbcde56579c38a90d6",
+        "source_fact:v1:57e3831ae2939b92da274dac9f9f635ea1cb275b48f4998eed3cdce29450ebb0",
+        "source_fact:v1:7f0798ec8f8cd62f302254505912cbe7e797a7388deccab99fe215822eec8c29",
+        "source_fact:v1:c0a100349bc5ed310c509826f19682bdca39b212bd1e09eb4337bd5df6443e16",
+        "source_fact:v1:f3436f35f241832d4b301c8d3ab0a627746bb922df2834a8a808abc4a10bbc6d"
+      ],
+      "source_published_kst": "2026-10-13T13:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 中 9월 신차 295만대 판매·8.4%↓…“수출은 61% 급증”",
+      "telegram_core_fact": "중국 자동차 시장에서 수출 급증에도 정부의 보조금 축소와 내수 부진으로 신차 판매량이 9월 전년 동월 대비 8.4% 크게 줄었다. 이재망(理財網)과 홍콩경제일보, 경제통, 재신쾌보는 13일 중국자동차공업협회(CAAM) 최신통계를 인용해 2026년 9월 중국 신차 판매량이 295만6000대로 이같이 감소했다고 보도했다.",
+      "title": "[올댓차이나] 中 9월 신차 295만대 판매·8.4%↓…“수출은 61% 급증”"
     },
     "core:32d3b51e931e81ae58c25b9d": {
       "first_seen_kst": "2026-10-12T17:38:53+09:00",
@@ -13437,6 +13461,27 @@
       "telegram_core_fact": "3개월 전 발생한 인천 쿠팡 물류센터 대형화재가 리튬배터리에서 시작된 것으로 추정된다는 감정 결과가 나왔으나 발화 원인은 여전히 밝혀지지 못한 것으로 파악됐다.",
       "title": "'109시간만에 진화' 인천 쿠팡 화재 원인 '리튬배터리' 추정 | 연합뉴스"
     },
+    "core:57eebf4fd3d448033444b72c": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823893",
+      "source": "뉴시스",
+      "source_body_digest": "45a2d749cfada580f89c08eaca99ec686612cb98f1166ca058408bd2d2c2291f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:926359fbe632a9b8a9487062a2d573bbe6d1c78ec40cd75267f00adce38d82b1",
+      "source_fact_keys": [
+        "source_fact:v1:01958d02bb723b8bcd4b9a4791309eb4cdcfa236cc4b4c1003f64b2468e83b84",
+        "source_fact:v1:7e4adc7eed2122a367816e1d86367ab7af25567a6ed62a22a1005b10ce0629aa"
+      ],
+      "source_published_kst": "2026-10-13T13:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "LH 사장, 고양창릉 점검…\"주택 공급 속도 과감히 높여야\"",
+      "telegram_core_fact": "이성훈 한국토지주택공사(LH) 사장이 13일 3기 신도시 고양창릉 공공주택지구를 찾아 주택 공급 추진 현황을 점검하고 속도감 있는 사업 추진을 당부했다. 이번 현장 방문은 전날 국감에서 제기된 국민의 주거 안정과 주택 공급 확대 주문을 현장에서 속도감 있게 실현하겠다는 의지가 담긴 것이라고 LH 측은 설명했다.",
+      "title": "LH 사장, 고양창릉 점검…\"주택 공급 속도 과감히 높여야\""
+    },
     "core:57fabdf348551d691645768a": {
       "first_seen_kst": "2026-10-08T15:16:19+09:00",
       "lanes": {
@@ -13742,7 +13787,7 @@
       "link": "https://www.yna.co.kr/view/AKR20261013074800030",
       "source": "연합뉴스",
       "source_body_digest": "7ab4f264188d6906892b52a22a60009e0e4a363242f36990525532e0afbe15f6",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:724c77828def5c1c640116c56d1cf85184f5f930ed764f926a63e64f36e73a89",
       "source_fact_identity": "source_facts:v1:ff10b3a116a88f23d4ab3fe7dc4ccbd4a81be297b885acf8d8f75dfc49b43ad1",
       "source_fact_keys": [
         "source_fact:v1:d3e27beb044b57198af10e8fdf61259d5b6f914979edeac54c116b344b8a328b",
@@ -14521,6 +14566,28 @@
       "telegram_core_fact": "2015년 브로드웨이 초연 이후 티켓 품귀 현상까지 빚으며 하나의 문화 현상으로 자리 잡은 작품이다.",
       "title": "브로드웨이 메가히트작 ‘해밀턴’ 드디어 한국 온다…12월 개막"
     },
+    "core:5fcb098f6fdfff22a80ea502": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173495",
+      "source": "매일경제",
+      "source_body_digest": "4c5b0a94c416504186369efe194a6f138fbc5e11db6ab71bcf52a21a0481b5e6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1e39700cbffabbda9f563c3f31b2fb2cbfd1987e28a4bda66c202344e2496a6a",
+      "source_fact_keys": [
+        "source_fact:v1:157b7f7f270e2ba68372326e99c2a41b0dc77fd02f097c3a4b8b46d5bb70b7e9",
+        "source_fact:v1:652600a0ba8e83a8464316fdbf490da14a45d05c06ff6a4ea4d9a9dda633917c",
+        "source_fact:v1:d9f2952408117413a9fa6b88f4645e588af2117d35944a3704f75c3ee5c7a7c1"
+      ],
+      "source_published_kst": "2026-10-13T13:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "국가안보·정보보호 위협하는 물품 22일부터 수출입 막힌다",
+      "telegram_core_fact": "정부가 국가안보와 개인·기업의 정보 보호를 위협하는 물품의 수출입을 제한할 수 있도록 관련 제도를 정비했다.",
+      "title": "국가안보·정보보호 위협하는 물품 22일부터 수출입 막힌다"
+    },
     "core:5fcd1ffa61328ef436f2ba66": {
       "first_seen_kst": "2026-10-08T04:26:05+09:00",
       "lanes": {
@@ -15056,7 +15123,7 @@
       "link": "https://www.yna.co.kr/view/AKR20261013039200003",
       "source": "연합뉴스",
       "source_body_digest": "8b76779c1b4e628f543e8a77e0e666a62ff02ee97ff793553827aac388acf013",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:named_supply_order:d27f53bc887f0eae393b088feaf143c1b7e144c0ea0a9287ffa3cb0ecca19524",
       "source_fact_identity": "source_facts:v1:fee0ed148bd339e62792f46f1b04f8da7db5e4768d6836dc7d49fd5488c6cf0c",
       "source_fact_keys": [
         "source_fact:v1:4b2bfaff86d750656fa07d5f8feaec9f7997864ae54e8c2393136358b9ace67a",
@@ -15065,6 +15132,24 @@
         "source_fact:v1:f53c0b1c96ef6b3d83fe140ffc85269a114f9f2b60ffb1e7c54f7d2c1073fc8e"
       ],
       "source_published_kst": "2026-10-13T09:18+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "185300000000"
+          ]
+        ],
+        "customer": "블룸에너지",
+        "delivery_period": "2027-04/2027-07",
+        "disclosure_date": "2026-10-13",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "LS일렉트릭",
+        "product": "수배전반및배전용변압기",
+        "quantities": [],
+        "stage": "signed"
+      },
       "source_title": "LS일렉, 미국 데이터센터에 1천853억원 규모 배전설비 공급 | 연합뉴스",
       "telegram_core_fact": "LS일렉트릭은 글로벌 전력기업 블룸에너지와 1천853억원 수배전반 및 배전용 변압기 공급 계약을 체결했다고 13일 공시했다.",
       "title": "LS일렉, 미국 데이터센터에 1천853억원 규모 배전설비 공급 | 연합뉴스"
@@ -16780,6 +16865,30 @@
       "source_title": "\"포카·가챠 뽑아볼까\"…'뽑파민'에 놀이터 된 편의점",
       "telegram_core_fact": "편의점업계에 따르면 세븐일레븐이 운영하는 아이돌 포토카드 뽑기 서비스 '포카아이'와 캐릭터·K굿즈 가챠 서비스 '액션플레이존'의 누적 판매량은 최근 5만개를 넘어섰다. 후발 오픈한 2개점을 제외한 서비스 운영 점포 4곳의 올해 1~9월 전체 매출은 전년비 31% 증가했다.",
       "title": "\"포카·가챠 뽑아볼까\"…'뽑파민'에 놀이터 된 편의점"
+    },
+    "core:6d04a89004d1feb09a9a22dd": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822791",
+      "source": "뉴시스",
+      "source_body_digest": "374e38e034c150b9588c58e552c485a74f4f1f5776533728305452a6a8988385",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6c8fbf3a2ae23ba90dd267aebf4621c2ebe1ed968dc8c73e83c0530bcc1b2768",
+      "source_fact_keys": [
+        "source_fact:v1:26b60754f947f5a946dae7b064d1503386b4292c93760d808d4f7c434239c434",
+        "source_fact:v1:645913c691cc36744eaf72ea0a2d2257f5d6a04686a206d45efa63fc70b15aa5",
+        "source_fact:v1:677216711ab487f352844e8d55fb1037a88ec255ba65fcb752e009ade79c6236",
+        "source_fact:v1:cd020eae3b6d0dedcfaf15d3680c71c844e0fbc9494086c5c64fb04379ac8d27",
+        "source_fact:v1:d4323b1db6a44e32d0197bb27968795a38ad114352195362037168a2b6714480"
+      ],
+      "source_published_kst": "2026-10-13T12:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"재택의료·단기보호 부족\"…통합돌봄 지역 격차 좁힌다",
+      "telegram_core_fact": "지역사회 통합돌봄 첫 실태조사 결과 재택의료센터와 장애인건강주치의, 단기보호 등의 서비스가 수요 대비 공급이 부족한 것으로 나타났다. 방문진료 충족률은 일반지역 25.5%, 인구감소지역 10.7%였고 재택의료센터는 일반지역 20.6%, 인구감소지역 8.3%였다.",
+      "title": "\"재택의료·단기보호 부족\"…통합돌봄 지역 격차 좁힌다"
     },
     "core:6d39a4bd471d662b8fd244b2": {
       "first_seen_kst": "2026-10-13T02:50:52+09:00",
@@ -22511,6 +22620,29 @@
       "telegram_core_fact": "비철금속을 중심으로 광산 투자가 확대되는 가운데 인공지능(AI) 데이터센터 건설까지 가세하면서 비주택 시장을 중심으로 건설장비 수요가 늘고 있어서다.",
       "title": "건설기계 바닥 다졌나..비철금속·AIDC 수요 딛고 턴어라운드"
     },
+    "core:95ea69ff000709cd8b1725bc": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173498",
+      "source": "매일경제",
+      "source_body_digest": "2acd83195e9c27729b79d66de24235a312d580f9b0c479b07e4e3dee0f205ddc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c3a4fea0d58222192ce27ed463f84e08b188822271a60e209e3c99e4ae06590",
+      "source_fact_keys": [
+        "source_fact:v1:bb5611f2474b8c66035c4188bc22e9b96256f7c16fe42aa9966912ebfa238097",
+        "source_fact:v1:c1bdb2cbe90cf2fdc68106fc905e717075e8c5ed6ac33df392633ad04b7bb526",
+        "source_fact:v1:d496145177f8b583667dfee7f80d10ba98384c61e484970724198180f230cec2",
+        "source_fact:v1:f120138315bb1ffa53e0b71abf8ea497c98dc6d05c7665c9e4b99c36ccce2c47"
+      ],
+      "source_published_kst": "2026-10-13T13:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "전국 3개지역 교복 담합…대리점 10곳·과징금 1억",
+      "telegram_core_fact": "지난 4월 공정위는 과징금 부과 기준율 하한을 대폭 높이고 반복 담합 사업자에 대한 제재를 강화하도록 고시를 개정했다.",
+      "title": "전국 3개지역 교복 담합…대리점 10곳·과징금 1억"
+    },
     "core:9602bd6e8c6049256589790a": {
       "first_seen_kst": "2026-10-12T08:03:02+09:00",
       "lanes": {
@@ -23616,6 +23748,26 @@
       "source_title": "\"돈 안돼\" 백신·항암제 공급중단…올해만 47건",
       "telegram_core_fact": "11일 국회 보건복지위원회 허종식 더불어민주당 의원이 식품의약품안전처로부터 제출 받은 '2021년~2026 공급중단·부족 의약품 목록'에 따르면 올해 상반기(1~6월) 접수된 공급중단·부족 의약품 135건 가운데 34.8%인 47건이 '채산성 문제(20건)' 또는 '판매부진'(27건) 때문인 것으로 나타났다.",
       "title": "\"돈 안돼\" 백신·항암제 공급중단…올해만 47건"
+    },
+    "core:9eb163422bc180662062c0ca": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173487",
+      "source": "매일경제",
+      "source_body_digest": "b3535371be820170c2766eeabd448b74a28bd62bd17b74aa2f000adc991ddc91",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6aaa182e8f1c1c03ac3793ac3fcdd1810f6e73700ac5c47d7e7e322cd560c777",
+      "source_fact_keys": [
+        "source_fact:v1:aa4c6f07ce31030ce16dce7b02ec99b7cb8d2c132bc2fa2143fd29bf1b5ba24e"
+      ],
+      "source_published_kst": "2026-10-13T13:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "[AI픽] 정부사업으로 만든 AI 데이터, AI허브로 모은다",
+      "telegram_core_fact": "정부가 정부사업으로 구축한 인공지능(AI) 학습용 데이터 공급을 늘리고, 공공·민간 데이터의 소재 정보도 통합적으로 제공하기로 했다. 과학기술정보통신부는 국가 데이터 연계 및 AI 학습·활용 촉진을 위한 'AI기본법'과 '데이터산업법 개정안이 13일 국무회의를 통과했다고 밝혔다.",
+      "title": "[AI픽] 정부사업으로 만든 AI 데이터, AI허브로 모은다"
     },
     "core:9eb7755451955fd348f33e01": {
       "first_seen_kst": "2026-10-09T16:07:27+09:00",
@@ -28380,6 +28532,26 @@
       "telegram_core_fact": "평택시는 삼성전자 협력사 3곳 등에 하루 1만8천400t을 공급할 3.23㎞ 하수처리수 관로 공사를 착공했다. 공사비 225억원은 공급업체 3곳이 전액 부담하며, 내년 말 준공 목표다.",
       "title": "평택시, 반도체 배후산단에 하수처리수 공급…관로공사 착공"
     },
+    "core:bcbf85d6a37286614822fbcc": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822835",
+      "source": "뉴시스",
+      "source_body_digest": "d4de1043826dc1c320b0955d42940fc2f5abe532f07d28c5003b0f8c3e22ba58",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ef277ba0477de444deb09ec74d6d31e46f4d32e3f2f2c81820b1d5d992cead1d",
+      "source_fact_keys": [
+        "source_fact:v1:8cae788146809f15794f5a85932373227bb8dd752ff1f5549c1b76b1b5aeaec7"
+      ],
+      "source_published_kst": "2026-10-13T14:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "영어유치원 '7세 고시' 금지…레벨테스트 꼼수 각양각색",
+      "telegram_core_fact": "이달부터 유아 대상 영어학원의 입학 레벨테스트인 이른바 '7세 고시'가 금지되면서 울산지역 영어학원가에서도 혼란이 일고 있다.",
+      "title": "영어유치원 '7세 고시' 금지…레벨테스트 꼼수 각양각색"
+    },
     "core:bd2d0e9a6811dc510836d6bc": {
       "first_seen_kst": "2026-10-12T05:35:02+09:00",
       "lanes": {
@@ -30410,7 +30582,7 @@
       "link": "https://www.yna.co.kr/view/AKR20261013046151004",
       "source": "연합뉴스",
       "source_body_digest": "d67e513ce05ca92d8d21e41449bae926ff4aa67cca423e093f05475f79598de2",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:fcaa144506780eb661206b0ec500856f8955bed8d87a2ebf64a2c36b84f63aee",
       "source_fact_identity": "source_facts:v1:ba101a112ab0d06ed161c34859330b43c2bd03f405e3b310fbefbb040ac7df1e",
       "source_fact_keys": [
         "source_fact:v1:1bbb5b047e691516fa9076a446ded0fd9d4ee3519c7838447a9eadf05666760e",
@@ -41546,6 +41718,30 @@
       "source": "파이낸셜뉴스",
       "title": "키움증권, ISA 계좌 ETF 거래 이벤트...9개사 참여"
     },
+    "event:4ba0a73522e076a21b109f0a": {
+      "event_alias_evidence_message_id": 2722,
+      "event_alias_evidence_run_id": 38333023311,
+      "first_seen_kst": "2026-10-13T10:49:34+09:00",
+      "lanes": {
+        "live": "2026-10-13T10:49:34+09:00"
+      },
+      "last_seen_kst": "2026-10-13T10:49:34+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634954",
+      "source": "이투데이",
+      "source_body_digest": "49893cc6a93c1e17687b976ddad479feb82fac306a6c3cc3b13e57a349ec91d5",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:fcaa144506780eb661206b0ec500856f8955bed8d87a2ebf64a2c36b84f63aee",
+      "source_fact_identity": "source_facts:v1:2f5474725b555ff78d02ad7c371f1fa43b9c7625d4406ba0bcfbf6c0b3940d8c",
+      "source_fact_keys": [
+        "source_fact:v1:0f75a4be600d081f4c6e6808c8432588efe13348a6f3189210bfce88e18cd2d3",
+        "source_fact:v1:437fd320f1ecf7d817f9f1c8df0e385143e46577d5d677c7e9287133d5f08342",
+        "source_fact:v1:ab898b345c9f9e6ca197b7b4546d7d83444db1fe494272697013f01e96a5e44a",
+        "source_fact:v1:fc21791f884423e07fe105a501df9cd08533c04d80d75614af8a04505ef7e66d"
+      ],
+      "source_published_kst": "2026-10-13T10:00+09:00",
+      "source_title": "오세훈, 올해 3만 가구 착공 총력⋯“정비사업 직접 챙긴다”",
+      "telegram_core_fact": "서울시는 2028년까지 착공을 목표로 하는 85개 핵심공급 전략사업, 약 8만5000가구의 공정을 밀착 관리하고 있다.",
+      "title": "오세훈, 올해 3만 가구 착공 총력⋯“정비사업 직접 챙긴다”"
+    },
     "event:4ba92d539128333cf55740c9": {
       "first_seen_kst": "2026-10-07T06:12:17+09:00",
       "lanes": {
@@ -42366,6 +42562,48 @@
       "source_published_kst": "2026-10-05T17:22+09:00",
       "title": "\"美中의존 줄이자\"…정부, CPTPP 가입 속도"
     },
+    "event:5bfb1a6165e8c17ba59c38b0": {
+      "event_alias_evidence_message_id": 2720,
+      "event_alias_evidence_run_id": 38329644567,
+      "first_seen_kst": "2026-10-13T10:05:20+09:00",
+      "lanes": {
+        "live": "2026-10-13T10:05:20+09:00"
+      },
+      "last_seen_kst": "2026-10-13T10:05:20+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261013039200003",
+      "source": "연합뉴스",
+      "source_body_digest": "8b76779c1b4e628f543e8a77e0e666a62ff02ee97ff793553827aac388acf013",
+      "source_event_identity": "source_event:v2:named_supply_order:d27f53bc887f0eae393b088feaf143c1b7e144c0ea0a9287ffa3cb0ecca19524",
+      "source_fact_identity": "source_facts:v1:fee0ed148bd339e62792f46f1b04f8da7db5e4768d6836dc7d49fd5488c6cf0c",
+      "source_fact_keys": [
+        "source_fact:v1:4b2bfaff86d750656fa07d5f8feaec9f7997864ae54e8c2393136358b9ace67a",
+        "source_fact:v1:4d3907881e8a3e508ad350857c12bfc2c1da2d541b6135cde05d8fc4a7e92308",
+        "source_fact:v1:6aa433d29cb8d93e16da973fe67ec2dd6dc03791b73ddc8ee8c2a8739d583b9e",
+        "source_fact:v1:f53c0b1c96ef6b3d83fe140ffc85269a114f9f2b60ffb1e7c54f7d2c1073fc8e"
+      ],
+      "source_published_kst": "2026-10-13T09:18+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "185300000000"
+          ]
+        ],
+        "customer": "블룸에너지",
+        "delivery_period": "2027-04/2027-07",
+        "disclosure_date": "2026-10-13",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "LS일렉트릭",
+        "product": "수배전반및배전용변압기",
+        "quantities": [],
+        "stage": "signed"
+      },
+      "source_title": "LS일렉, 미국 데이터센터에 1천853억원 규모 배전설비 공급 | 연합뉴스",
+      "telegram_core_fact": "LS일렉트릭은 글로벌 전력기업 블룸에너지와 1천853억원 수배전반 및 배전용 변압기 공급 계약을 체결했다고 13일 공시했다.",
+      "title": "LS일렉, 미국 데이터센터에 1천853억원 규모 배전설비 공급 | 연합뉴스"
+    },
     "event:5c37a6924d91c6f400c105ed": {
       "first_seen_kst": "2026-10-05T06:25:21+09:00",
       "lanes": {
@@ -42990,6 +43228,47 @@
       "link": "https://www.newsis.com/view/NISX20260918_0003796041",
       "source": "뉴시스",
       "title": "이번주 김건희 '매관매직' 혐의 2심 선고…1심 징역 7년"
+    },
+    "event:6c0591e6d4bfb3f7c016fbf4": {
+      "event_alias_evidence_message_id": 2719,
+      "event_alias_evidence_run_id": 38327760457,
+      "first_seen_kst": "2026-10-13T09:41:33+09:00",
+      "lanes": {
+        "live": "2026-10-13T09:41:33+09:00"
+      },
+      "last_seen_kst": "2026-10-13T09:41:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634992",
+      "source": "이투데이",
+      "source_body_digest": "855ba19bc609260454af77c79e188aed3baf3f837e31c5a2121a73f9b8423a77",
+      "source_event_identity": "source_event:v2:named_supply_order:b9b9b1a7e028532438e46e48e4719ff729d47f9a2af6b7e4d789b8e8609a0d18",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-13T09:14+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "달러",
+            "138458284"
+          ],
+          [
+            "원",
+            "185300000000"
+          ]
+        ],
+        "customer": "블룸에너지",
+        "delivery_period": "2027-04/2027-07",
+        "disclosure_date": "2026-10-13",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "LS일렉트릭",
+        "product": "수배전반및배전용변압기",
+        "quantities": [],
+        "stage": "signed"
+      },
+      "source_title": "LS일렉트릭, 美 빅테크 데이터센터에 1853억원 규모 배전설비 공급",
+      "telegram_core_fact": "LS일렉트릭이 미국 빅테크 기업의 데이터센터에 1853억원 배전설비를 공급한다.",
+      "title": "LS일렉트릭, 美 빅테크 데이터센터에 1853억원 규모 배전설비 공급"
     },
     "event:6c97ed34469babf9fa9dea5e": {
       "first_seen_kst": "2026-10-01T17:28:33+09:00",
@@ -44451,6 +44730,38 @@
       "link": "https://www.mk.co.kr/news/world/12162935",
       "source": "매일경제",
       "title": "TSMC 패키징공장 5곳 추가 건설"
+    },
+    "event:887d406ace679b66e18a613a": {
+      "event_alias_evidence_message_id": 2725,
+      "event_alias_evidence_run_id": 38338429460,
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.etnews.com/20261013000097",
+      "source": "전자신문",
+      "source_body_digest": "410c516ae58e39b8976228623320a06174e49bc1862f06081b89ffafc91a8f53",
+      "source_event_identity": "source_event:v2:named_supply_order:89cda50337284e7c49b804a6532aa6d3960adc6af84ffebeb24516b1059968c2",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-13T10:18+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [],
+        "customer": "대우건설",
+        "delivery_period": "",
+        "disclosure_date": "2026-10-13",
+        "duration_years": "2",
+        "explicit_revision": false,
+        "issuer": "쿠쿠",
+        "product": "빌트인정수기",
+        "quantities": [],
+        "stage": "signed"
+      },
+      "source_title": "쿠쿠, 대우건설에 빌트인 정수기 공급…2년간 납품",
+      "telegram_core_fact": "쿠쿠가 대우건설 빌트인 정수기 공급 계약을 수주했다.",
+      "title": "쿠쿠, 대우건설에 빌트인 정수기 공급…2년간 납품"
     },
     "event:88f963c9ef72bbb16d0015e4": {
       "first_seen_kst": "2026-10-07T00:23:09+09:00",
@@ -49927,6 +50238,28 @@
       "source_title": "“역시 주주환원은 뒷전입니까”…코스피 자사주 매입, 삼전닉스 뺐더니 줄었다",
       "telegram_core_fact": "11일 금융감독원 OpenDART 공시자료 집계 결과 올해 1월 1일부터 9월 28일까지 코스피 상장사의 자기주식 직접취득 결정액은 74조629억원으로 집계됐다.",
       "title": "“역시 주주환원은 뒷전입니까”…코스피 자사주 매입, 삼전닉스 뺐더니 줄었다"
+    },
+    "event:fb04406a5d8fb9c58b982cf2": {
+      "event_alias_evidence_message_id": 2726,
+      "event_alias_evidence_run_id": 38340212461,
+      "first_seen_kst": "2026-10-13T12:19:43+09:00",
+      "lanes": {
+        "live": "2026-10-13T12:19:43+09:00"
+      },
+      "last_seen_kst": "2026-10-13T12:19:43+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823115",
+      "source": "뉴시스",
+      "source_body_digest": "1e28a389e24b472b0885ed7332250f5f6b08dcd278a6621f7dbbb6ce5b138850",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:724c77828def5c1c640116c56d1cf85184f5f930ed764f926a63e64f36e73a89",
+      "source_fact_identity": "source_facts:v1:ceb416c093090f0944d62867ebf1634d153b652ddfbc55d8114511e1756f100e",
+      "source_fact_keys": [
+        "source_fact:v1:c12e4bf4e95bfc6fdc870fab267c155528609fa564baaae6afacdf52509021b5",
+        "source_fact:v1:ff62a70173894eb72c3e2102941b43472bbddf6e718f13dce9ba9d30e044567d"
+      ],
+      "source_published_kst": "2026-10-13T11:00+09:00",
+      "source_title": "올해 쌀 6.6만t 초과 생산 전망…대여곡 반납으로 최대 격리",
+      "telegram_core_fact": "정부가 올해 쌀 초과생산량을 6만6000t으로 전망하고, 빌려준 정부양곡을 올해 생산한 쌀로 돌려받아 시장에서 최대한 격리하기로 했다. 정부는 올해 처음 도입한 수급조절용벼로 적정 생산 기반을 마련한 데 이어 정부양곡 대여곡 반납을 통해 수확기 초과물량을 최대한 격리할 방침이다.",
+      "title": "올해 쌀 6.6만t 초과 생산 전망…대여곡 반납으로 최대 격리"
     },
     "event:fb2632070e85c814715d3769": {
       "first_seen_kst": "2026-10-01T08:48:03+09:00",
@@ -57141,6 +57474,27 @@
       "telegram_core_fact": "포스코그룹은 한국형 수소환원제철 기술인 '하이렉스(HyREX)'를 중심으로 정부와 협력해 청정에너지 공급부터 저탄소 철강 활용까지 아우르는 생태계를 구축한다.",
       "title": "포스코그룹, K-GX 참여…철강 탈탄소 전환 선도"
     },
+    "fact:234c462619328178f2f3dee8": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823893",
+      "source": "뉴시스",
+      "source_body_digest": "45a2d749cfada580f89c08eaca99ec686612cb98f1166ca058408bd2d2c2291f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:926359fbe632a9b8a9487062a2d573bbe6d1c78ec40cd75267f00adce38d82b1",
+      "source_fact_keys": [
+        "source_fact:v1:01958d02bb723b8bcd4b9a4791309eb4cdcfa236cc4b4c1003f64b2468e83b84",
+        "source_fact:v1:7e4adc7eed2122a367816e1d86367ab7af25567a6ed62a22a1005b10ce0629aa"
+      ],
+      "source_published_kst": "2026-10-13T13:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "LH 사장, 고양창릉 점검…\"주택 공급 속도 과감히 높여야\"",
+      "telegram_core_fact": "이성훈 한국토지주택공사(LH) 사장이 13일 3기 신도시 고양창릉 공공주택지구를 찾아 주택 공급 추진 현황을 점검하고 속도감 있는 사업 추진을 당부했다. 이번 현장 방문은 전날 국감에서 제기된 국민의 주거 안정과 주택 공급 확대 주문을 현장에서 속도감 있게 실현하겠다는 의지가 담긴 것이라고 LH 측은 설명했다.",
+      "title": "LH 사장, 고양창릉 점검…\"주택 공급 속도 과감히 높여야\""
+    },
     "fact:235f88bb912a082271973ba3": {
       "first_seen_kst": "2026-10-06T19:58:43+09:00",
       "lanes": {
@@ -61193,7 +61547,7 @@
       "link": "https://www.yna.co.kr/view/AKR20261013074800030",
       "source": "연합뉴스",
       "source_body_digest": "7ab4f264188d6906892b52a22a60009e0e4a363242f36990525532e0afbe15f6",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:724c77828def5c1c640116c56d1cf85184f5f930ed764f926a63e64f36e73a89",
       "source_fact_identity": "source_facts:v1:ff10b3a116a88f23d4ab3fe7dc4ccbd4a81be297b885acf8d8f75dfc49b43ad1",
       "source_fact_keys": [
         "source_fact:v1:d3e27beb044b57198af10e8fdf61259d5b6f914979edeac54c116b344b8a328b",
@@ -61877,7 +62231,7 @@
       "link": "https://www.yna.co.kr/view/AKR20261013046151004",
       "source": "연합뉴스",
       "source_body_digest": "d67e513ce05ca92d8d21e41449bae926ff4aa67cca423e093f05475f79598de2",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:fcaa144506780eb661206b0ec500856f8955bed8d87a2ebf64a2c36b84f63aee",
       "source_fact_identity": "source_facts:v1:ba101a112ab0d06ed161c34859330b43c2bd03f405e3b310fbefbb040ac7df1e",
       "source_fact_keys": [
         "source_fact:v1:1bbb5b047e691516fa9076a446ded0fd9d4ee3519c7838447a9eadf05666760e",
@@ -63669,6 +64023,26 @@
       "source_title": "셀트리온 3분기 영업이익 5천100억원…69.2%↑ | 연합뉴스",
       "telegram_core_fact": "코스피 상장사 셀트리온[068270]은 연결 기준 올해 3분기 영업이익이 5천100억원으로 지난해 동기보다 69.2% 증가한 것으로 잠정 집계됐다고 12일 공시했다.",
       "title": "셀트리온 3분기 영업이익 5천100억원…69.2%↑ | 연합뉴스"
+    },
+    "fact:43217009a9984d3cb9d05e5e": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822835",
+      "source": "뉴시스",
+      "source_body_digest": "d4de1043826dc1c320b0955d42940fc2f5abe532f07d28c5003b0f8c3e22ba58",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ef277ba0477de444deb09ec74d6d31e46f4d32e3f2f2c81820b1d5d992cead1d",
+      "source_fact_keys": [
+        "source_fact:v1:8cae788146809f15794f5a85932373227bb8dd752ff1f5549c1b76b1b5aeaec7"
+      ],
+      "source_published_kst": "2026-10-13T14:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "영어유치원 '7세 고시' 금지…레벨테스트 꼼수 각양각색",
+      "telegram_core_fact": "이달부터 유아 대상 영어학원의 입학 레벨테스트인 이른바 '7세 고시'가 금지되면서 울산지역 영어학원가에서도 혼란이 일고 있다.",
+      "title": "영어유치원 '7세 고시' 금지…레벨테스트 꼼수 각양각색"
     },
     "fact:4329c41e471526dafb512563": {
       "first_seen_kst": "2026-10-06T21:05:27+09:00",
@@ -65924,6 +66298,28 @@
       "source_title": "'1.8조' 미아2구역 재입찰 현장설명회에 현대건설만 참석",
       "telegram_core_fact": "강세훈 기자, 총공사비 약 1조7700억원 서울 강북구 미아2재정비촉진구역 재개발사업이 시공사 선정 절차를 이어가고 있다.",
       "title": "'1.8조' 미아2구역 재입찰 현장설명회에 현대건설만 참석"
+    },
+    "fact:4eed0b96a71b7e6121378d57": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173495",
+      "source": "매일경제",
+      "source_body_digest": "4c5b0a94c416504186369efe194a6f138fbc5e11db6ab71bcf52a21a0481b5e6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1e39700cbffabbda9f563c3f31b2fb2cbfd1987e28a4bda66c202344e2496a6a",
+      "source_fact_keys": [
+        "source_fact:v1:157b7f7f270e2ba68372326e99c2a41b0dc77fd02f097c3a4b8b46d5bb70b7e9",
+        "source_fact:v1:652600a0ba8e83a8464316fdbf490da14a45d05c06ff6a4ea4d9a9dda633917c",
+        "source_fact:v1:d9f2952408117413a9fa6b88f4645e588af2117d35944a3704f75c3ee5c7a7c1"
+      ],
+      "source_published_kst": "2026-10-13T13:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "국가안보·정보보호 위협하는 물품 22일부터 수출입 막힌다",
+      "telegram_core_fact": "정부가 국가안보와 개인·기업의 정보 보호를 위협하는 물품의 수출입을 제한할 수 있도록 관련 제도를 정비했다.",
+      "title": "국가안보·정보보호 위협하는 물품 22일부터 수출입 막힌다"
     },
     "fact:4f04bc1670f3be8b55797df8": {
       "first_seen_kst": "2026-10-07T03:04:14+09:00",
@@ -68704,6 +69100,30 @@
       "telegram_core_fact": "올해 상반기 금융지주회사 순이익이 금융투자 등 비은행 부문 호조에 힘입어 전년 동기보다 13.7% 증가했다.",
       "title": "금융지주, 상반기 순익 17.6조원…비은행 성장 속 건전성은 악화"
     },
+    "fact:5e8fa0dd4e39b516f13ca1b8": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823912",
+      "source": "뉴시스",
+      "source_body_digest": "3934f7cf21c089c61109aaa8fe04b3c3ea5f99a5e9f0e87dd82e1a20c867c47a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:495b7e941bdf3da3d42e1171018aa2d00544eec90d22682065213abd71ea08f8",
+      "source_fact_keys": [
+        "source_fact:v1:2033394372bea8d917d3b785ead31335e576b241d44d77fbcde56579c38a90d6",
+        "source_fact:v1:57e3831ae2939b92da274dac9f9f635ea1cb275b48f4998eed3cdce29450ebb0",
+        "source_fact:v1:7f0798ec8f8cd62f302254505912cbe7e797a7388deccab99fe215822eec8c29",
+        "source_fact:v1:c0a100349bc5ed310c509826f19682bdca39b212bd1e09eb4337bd5df6443e16",
+        "source_fact:v1:f3436f35f241832d4b301c8d3ab0a627746bb922df2834a8a808abc4a10bbc6d"
+      ],
+      "source_published_kst": "2026-10-13T13:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 中 9월 신차 295만대 판매·8.4%↓…“수출은 61% 급증”",
+      "telegram_core_fact": "중국 자동차 시장에서 수출 급증에도 정부의 보조금 축소와 내수 부진으로 신차 판매량이 9월 전년 동월 대비 8.4% 크게 줄었다. 이재망(理財網)과 홍콩경제일보, 경제통, 재신쾌보는 13일 중국자동차공업협회(CAAM) 최신통계를 인용해 2026년 9월 중국 신차 판매량이 295만6000대로 이같이 감소했다고 보도했다.",
+      "title": "[올댓차이나] 中 9월 신차 295만대 판매·8.4%↓…“수출은 61% 급증”"
+    },
     "fact:5e8fd94e72a7ff20fee7b295": {
       "first_seen_kst": "2026-10-07T11:11:31+09:00",
       "lanes": {
@@ -71108,6 +71528,30 @@
       ],
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "\"관세 300%\"...벼랑 끝 트럼프, 한국 쥐어짜서 현금 지원 공약 '펑펑'"
+    },
+    "fact:6b246db29a3f134e325a6e4e": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822791",
+      "source": "뉴시스",
+      "source_body_digest": "374e38e034c150b9588c58e552c485a74f4f1f5776533728305452a6a8988385",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6c8fbf3a2ae23ba90dd267aebf4621c2ebe1ed968dc8c73e83c0530bcc1b2768",
+      "source_fact_keys": [
+        "source_fact:v1:26b60754f947f5a946dae7b064d1503386b4292c93760d808d4f7c434239c434",
+        "source_fact:v1:645913c691cc36744eaf72ea0a2d2257f5d6a04686a206d45efa63fc70b15aa5",
+        "source_fact:v1:677216711ab487f352844e8d55fb1037a88ec255ba65fcb752e009ade79c6236",
+        "source_fact:v1:cd020eae3b6d0dedcfaf15d3680c71c844e0fbc9494086c5c64fb04379ac8d27",
+        "source_fact:v1:d4323b1db6a44e32d0197bb27968795a38ad114352195362037168a2b6714480"
+      ],
+      "source_published_kst": "2026-10-13T12:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"재택의료·단기보호 부족\"…통합돌봄 지역 격차 좁힌다",
+      "telegram_core_fact": "지역사회 통합돌봄 첫 실태조사 결과 재택의료센터와 장애인건강주치의, 단기보호 등의 서비스가 수요 대비 공급이 부족한 것으로 나타났다. 방문진료 충족률은 일반지역 25.5%, 인구감소지역 10.7%였고 재택의료센터는 일반지역 20.6%, 인구감소지역 8.3%였다.",
+      "title": "\"재택의료·단기보호 부족\"…통합돌봄 지역 격차 좁힌다"
     },
     "fact:6b25f374fa408b9812e9b08b": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
@@ -77228,7 +77672,7 @@
       "link": "https://www.etoday.co.kr/news/view/2634954",
       "source": "이투데이",
       "source_body_digest": "49893cc6a93c1e17687b976ddad479feb82fac306a6c3cc3b13e57a349ec91d5",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:fcaa144506780eb661206b0ec500856f8955bed8d87a2ebf64a2c36b84f63aee",
       "source_fact_identity": "source_facts:v1:2f5474725b555ff78d02ad7c371f1fa43b9c7625d4406ba0bcfbf6c0b3940d8c",
       "source_fact_keys": [
         "source_fact:v1:0f75a4be600d081f4c6e6808c8432588efe13348a6f3189210bfce88e18cd2d3",
@@ -80579,6 +81023,26 @@
       "source_title": "코스피, 장중 6400선까지 밀려…삼전·하이닉스 3%대 ‘뚝’",
       "telegram_core_fact": "코스피가 12일 삼성전자(005930)와 SK하이닉스(000660) 동반 약세로 인해 장중 3% 넘게 급락해 결국 6400선까지 밀렸다.",
       "title": "코스피, 장중 6400선까지 밀려…삼전·하이닉스 3%대 ‘뚝’"
+    },
+    "fact:96265b056488e8cc51635332": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173487",
+      "source": "매일경제",
+      "source_body_digest": "b3535371be820170c2766eeabd448b74a28bd62bd17b74aa2f000adc991ddc91",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6aaa182e8f1c1c03ac3793ac3fcdd1810f6e73700ac5c47d7e7e322cd560c777",
+      "source_fact_keys": [
+        "source_fact:v1:aa4c6f07ce31030ce16dce7b02ec99b7cb8d2c132bc2fa2143fd29bf1b5ba24e"
+      ],
+      "source_published_kst": "2026-10-13T13:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "[AI픽] 정부사업으로 만든 AI 데이터, AI허브로 모은다",
+      "telegram_core_fact": "정부가 정부사업으로 구축한 인공지능(AI) 학습용 데이터 공급을 늘리고, 공공·민간 데이터의 소재 정보도 통합적으로 제공하기로 했다. 과학기술정보통신부는 국가 데이터 연계 및 AI 학습·활용 촉진을 위한 'AI기본법'과 '데이터산업법 개정안이 13일 국무회의를 통과했다고 밝혔다.",
+      "title": "[AI픽] 정부사업으로 만든 AI 데이터, AI허브로 모은다"
     },
     "fact:9645d52b2630c0f55fb97864": {
       "first_seen_kst": "2026-10-06T19:33:48+09:00",
@@ -85918,7 +86382,7 @@
       "link": "https://www.newsis.com/view/NISX20261013_0003823115",
       "source": "뉴시스",
       "source_body_digest": "1e28a389e24b472b0885ed7332250f5f6b08dcd278a6621f7dbbb6ce5b138850",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:724c77828def5c1c640116c56d1cf85184f5f930ed764f926a63e64f36e73a89",
       "source_fact_identity": "source_facts:v1:ceb416c093090f0944d62867ebf1634d153b652ddfbc55d8114511e1756f100e",
       "source_fact_keys": [
         "source_fact:v1:c12e4bf4e95bfc6fdc870fab267c155528609fa564baaae6afacdf52509021b5",
@@ -87772,6 +88236,29 @@
       ],
       "source_published_kst": "2026-10-07T02:50+09:00",
       "title": "마이크론, 넷리스트와 특허소송 합의…8천억원 라이선스 계약 | 연합뉴스"
+    },
+    "fact:b7c537b920be8392623597f5": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173498",
+      "source": "매일경제",
+      "source_body_digest": "2acd83195e9c27729b79d66de24235a312d580f9b0c479b07e4e3dee0f205ddc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c3a4fea0d58222192ce27ed463f84e08b188822271a60e209e3c99e4ae06590",
+      "source_fact_keys": [
+        "source_fact:v1:bb5611f2474b8c66035c4188bc22e9b96256f7c16fe42aa9966912ebfa238097",
+        "source_fact:v1:c1bdb2cbe90cf2fdc68106fc905e717075e8c5ed6ac33df392633ad04b7bb526",
+        "source_fact:v1:d496145177f8b583667dfee7f80d10ba98384c61e484970724198180f230cec2",
+        "source_fact:v1:f120138315bb1ffa53e0b71abf8ea497c98dc6d05c7665c9e4b99c36ccce2c47"
+      ],
+      "source_published_kst": "2026-10-13T13:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "전국 3개지역 교복 담합…대리점 10곳·과징금 1억",
+      "telegram_core_fact": "지난 4월 공정위는 과징금 부과 기준율 하한을 대폭 높이고 반복 담합 사업자에 대한 제재를 강화하도록 고시를 개정했다.",
+      "title": "전국 3개지역 교복 담합…대리점 10곳·과징금 1억"
     },
     "fact:b7d01258fcccb69043207473": {
       "first_seen_kst": "2026-10-09T21:27:46+09:00",
@@ -101725,7 +102212,7 @@
       "link": "https://www.yna.co.kr/view/AKR20261013039200003",
       "source": "연합뉴스",
       "source_body_digest": "8b76779c1b4e628f543e8a77e0e666a62ff02ee97ff793553827aac388acf013",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:named_supply_order:d27f53bc887f0eae393b088feaf143c1b7e144c0ea0a9287ffa3cb0ecca19524",
       "source_fact_identity": "source_facts:v1:fee0ed148bd339e62792f46f1b04f8da7db5e4768d6836dc7d49fd5488c6cf0c",
       "source_fact_keys": [
         "source_fact:v1:4b2bfaff86d750656fa07d5f8feaec9f7997864ae54e8c2393136358b9ace67a",
@@ -101734,6 +102221,24 @@
         "source_fact:v1:f53c0b1c96ef6b3d83fe140ffc85269a114f9f2b60ffb1e7c54f7d2c1073fc8e"
       ],
       "source_published_kst": "2026-10-13T09:18+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "185300000000"
+          ]
+        ],
+        "customer": "블룸에너지",
+        "delivery_period": "2027-04/2027-07",
+        "disclosure_date": "2026-10-13",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "LS일렉트릭",
+        "product": "수배전반및배전용변압기",
+        "quantities": [],
+        "stage": "signed"
+      },
       "source_title": "LS일렉, 미국 데이터센터에 1천853억원 규모 배전설비 공급 | 연합뉴스",
       "telegram_core_fact": "LS일렉트릭은 글로벌 전력기업 블룸에너지와 1천853억원 수배전반 및 배전용 변압기 공급 계약을 체결했다고 13일 공시했다.",
       "title": "LS일렉, 미국 데이터센터에 1천853억원 규모 배전설비 공급 | 연합뉴스"
@@ -104877,7 +105382,7 @@
       "link": "https://www.yna.co.kr/view/AKR20261013046151004",
       "source": "연합뉴스",
       "source_body_digest": "d67e513ce05ca92d8d21e41449bae926ff4aa67cca423e093f05475f79598de2",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:fcaa144506780eb661206b0ec500856f8955bed8d87a2ebf64a2c36b84f63aee",
       "source_fact_identity": "source_facts:v1:ba101a112ab0d06ed161c34859330b43c2bd03f405e3b310fbefbb040ac7df1e",
       "source_fact_keys": [
         "source_fact:v1:1bbb5b047e691516fa9076a446ded0fd9d4ee3519c7838447a9eadf05666760e",
@@ -112037,6 +112542,29 @@
       ],
       "source_published_kst": "2026-10-06T11:35+09:00",
       "title": "日 ‘신중’ 알래스카 LNG 프로젝트…밴스 부통령 “韓과 조율…결국 이뤄질 일” [대미투자]"
+    },
+    "link:21fc316070c9315ad9334afb": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173498",
+      "source": "매일경제",
+      "source_body_digest": "2acd83195e9c27729b79d66de24235a312d580f9b0c479b07e4e3dee0f205ddc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c3a4fea0d58222192ce27ed463f84e08b188822271a60e209e3c99e4ae06590",
+      "source_fact_keys": [
+        "source_fact:v1:bb5611f2474b8c66035c4188bc22e9b96256f7c16fe42aa9966912ebfa238097",
+        "source_fact:v1:c1bdb2cbe90cf2fdc68106fc905e717075e8c5ed6ac33df392633ad04b7bb526",
+        "source_fact:v1:d496145177f8b583667dfee7f80d10ba98384c61e484970724198180f230cec2",
+        "source_fact:v1:f120138315bb1ffa53e0b71abf8ea497c98dc6d05c7665c9e4b99c36ccce2c47"
+      ],
+      "source_published_kst": "2026-10-13T13:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "전국 3개지역 교복 담합…대리점 10곳·과징금 1억",
+      "telegram_core_fact": "지난 4월 공정위는 과징금 부과 기준율 하한을 대폭 높이고 반복 담합 사업자에 대한 제재를 강화하도록 고시를 개정했다.",
+      "title": "전국 3개지역 교복 담합…대리점 10곳·과징금 1억"
     },
     "link:220063ffe0cdf94522a31695": {
       "first_seen_kst": "2026-10-12T15:20:09+09:00",
@@ -120680,6 +121208,30 @@
       "source_published_kst": "2026-10-06T17:18+09:00",
       "title": "국고채 금리, 대외금리 연동하며 혼조세…3년물 3.933%(종합) | 연합뉴스"
     },
+    "link:3dfb97eb6ed81ac4fb3ec7f1": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822791",
+      "source": "뉴시스",
+      "source_body_digest": "374e38e034c150b9588c58e552c485a74f4f1f5776533728305452a6a8988385",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6c8fbf3a2ae23ba90dd267aebf4621c2ebe1ed968dc8c73e83c0530bcc1b2768",
+      "source_fact_keys": [
+        "source_fact:v1:26b60754f947f5a946dae7b064d1503386b4292c93760d808d4f7c434239c434",
+        "source_fact:v1:645913c691cc36744eaf72ea0a2d2257f5d6a04686a206d45efa63fc70b15aa5",
+        "source_fact:v1:677216711ab487f352844e8d55fb1037a88ec255ba65fcb752e009ade79c6236",
+        "source_fact:v1:cd020eae3b6d0dedcfaf15d3680c71c844e0fbc9494086c5c64fb04379ac8d27",
+        "source_fact:v1:d4323b1db6a44e32d0197bb27968795a38ad114352195362037168a2b6714480"
+      ],
+      "source_published_kst": "2026-10-13T12:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"재택의료·단기보호 부족\"…통합돌봄 지역 격차 좁힌다",
+      "telegram_core_fact": "지역사회 통합돌봄 첫 실태조사 결과 재택의료센터와 장애인건강주치의, 단기보호 등의 서비스가 수요 대비 공급이 부족한 것으로 나타났다. 방문진료 충족률은 일반지역 25.5%, 인구감소지역 10.7%였고 재택의료센터는 일반지역 20.6%, 인구감소지역 8.3%였다.",
+      "title": "\"재택의료·단기보호 부족\"…통합돌봄 지역 격차 좁힌다"
+    },
     "link:3dff3435fb3ec2f1ec455f57": {
       "first_seen_kst": "2026-10-06T18:58:43+09:00",
       "lanes": {
@@ -121336,6 +121888,28 @@
       "link": "https://www.asiae.co.kr/article/2026093006463354912",
       "source": "아시아경제",
       "title": "\"역대 투싼 중 최고\"…현대차, '디 올 뉴 투싼' 뉴욕서 글로벌 공략 시동"
+    },
+    "link:3f85df54cc9fb0c1f5d809f9": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173495",
+      "source": "매일경제",
+      "source_body_digest": "4c5b0a94c416504186369efe194a6f138fbc5e11db6ab71bcf52a21a0481b5e6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1e39700cbffabbda9f563c3f31b2fb2cbfd1987e28a4bda66c202344e2496a6a",
+      "source_fact_keys": [
+        "source_fact:v1:157b7f7f270e2ba68372326e99c2a41b0dc77fd02f097c3a4b8b46d5bb70b7e9",
+        "source_fact:v1:652600a0ba8e83a8464316fdbf490da14a45d05c06ff6a4ea4d9a9dda633917c",
+        "source_fact:v1:d9f2952408117413a9fa6b88f4645e588af2117d35944a3704f75c3ee5c7a7c1"
+      ],
+      "source_published_kst": "2026-10-13T13:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "국가안보·정보보호 위협하는 물품 22일부터 수출입 막힌다",
+      "telegram_core_fact": "정부가 국가안보와 개인·기업의 정보 보호를 위협하는 물품의 수출입을 제한할 수 있도록 관련 제도를 정비했다.",
+      "title": "국가안보·정보보호 위협하는 물품 22일부터 수출입 막힌다"
     },
     "link:3f8de5fe452cad822de41107": {
       "first_seen_kst": "2026-09-18T00:19:03+09:00",
@@ -122521,6 +123095,26 @@
       "telegram_core_fact": "글로벌 해상 운임 지수인 상하이 컨테이너 운임 지수(SCFI)도 전주보다 1.81포인트(0.1%) 오른 3662.3이다.",
       "title": "컨테이너 운임 지수 보합…\"미주동안·중동항로↑\""
     },
+    "link:44f7d55c8525cd920f4dbb97": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173487",
+      "source": "매일경제",
+      "source_body_digest": "b3535371be820170c2766eeabd448b74a28bd62bd17b74aa2f000adc991ddc91",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6aaa182e8f1c1c03ac3793ac3fcdd1810f6e73700ac5c47d7e7e322cd560c777",
+      "source_fact_keys": [
+        "source_fact:v1:aa4c6f07ce31030ce16dce7b02ec99b7cb8d2c132bc2fa2143fd29bf1b5ba24e"
+      ],
+      "source_published_kst": "2026-10-13T13:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "[AI픽] 정부사업으로 만든 AI 데이터, AI허브로 모은다",
+      "telegram_core_fact": "정부가 정부사업으로 구축한 인공지능(AI) 학습용 데이터 공급을 늘리고, 공공·민간 데이터의 소재 정보도 통합적으로 제공하기로 했다. 과학기술정보통신부는 국가 데이터 연계 및 AI 학습·활용 촉진을 위한 'AI기본법'과 '데이터산업법 개정안이 13일 국무회의를 통과했다고 밝혔다.",
+      "title": "[AI픽] 정부사업으로 만든 AI 데이터, AI허브로 모은다"
+    },
     "link:450360846be695a862fadf3e": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
       "lanes": {
@@ -122860,6 +123454,27 @@
       "source_title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다[간추린 주말 뉴스]",
       "telegram_core_fact": "삼성전자와 SK하이닉스가 올해 반도체 호황으로 역대급 수익을 내고 있는 가운데, 이르면 내년 3월 양사 직원들은 일제히 수억원대의 성과급을 지급 받을 전망이다. 국가데이터처의 '2025년 가계금융복지조사'에 따르면 지난해 3월 말 기준 가구당 평균 순자산은 4억7144만원으로 전년대비 5.0% 증가했다.",
       "title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다[간추린 주말 뉴스]"
+    },
+    "link:465d328d23235e7ffa81ba7a": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823893",
+      "source": "뉴시스",
+      "source_body_digest": "45a2d749cfada580f89c08eaca99ec686612cb98f1166ca058408bd2d2c2291f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:926359fbe632a9b8a9487062a2d573bbe6d1c78ec40cd75267f00adce38d82b1",
+      "source_fact_keys": [
+        "source_fact:v1:01958d02bb723b8bcd4b9a4791309eb4cdcfa236cc4b4c1003f64b2468e83b84",
+        "source_fact:v1:7e4adc7eed2122a367816e1d86367ab7af25567a6ed62a22a1005b10ce0629aa"
+      ],
+      "source_published_kst": "2026-10-13T13:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "LH 사장, 고양창릉 점검…\"주택 공급 속도 과감히 높여야\"",
+      "telegram_core_fact": "이성훈 한국토지주택공사(LH) 사장이 13일 3기 신도시 고양창릉 공공주택지구를 찾아 주택 공급 추진 현황을 점검하고 속도감 있는 사업 추진을 당부했다. 이번 현장 방문은 전날 국감에서 제기된 국민의 주거 안정과 주택 공급 확대 주문을 현장에서 속도감 있게 실현하겠다는 의지가 담긴 것이라고 LH 측은 설명했다.",
+      "title": "LH 사장, 고양창릉 점검…\"주택 공급 속도 과감히 높여야\""
     },
     "link:468110f9a86c2a1b9dc7eced": {
       "first_seen_kst": "2026-10-10T08:48:09+09:00",
@@ -126117,7 +126732,7 @@
       "link": "https://www.yna.co.kr/view/AKR20261013039200003",
       "source": "연합뉴스",
       "source_body_digest": "8b76779c1b4e628f543e8a77e0e666a62ff02ee97ff793553827aac388acf013",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:named_supply_order:d27f53bc887f0eae393b088feaf143c1b7e144c0ea0a9287ffa3cb0ecca19524",
       "source_fact_identity": "source_facts:v1:fee0ed148bd339e62792f46f1b04f8da7db5e4768d6836dc7d49fd5488c6cf0c",
       "source_fact_keys": [
         "source_fact:v1:4b2bfaff86d750656fa07d5f8feaec9f7997864ae54e8c2393136358b9ace67a",
@@ -126126,6 +126741,24 @@
         "source_fact:v1:f53c0b1c96ef6b3d83fe140ffc85269a114f9f2b60ffb1e7c54f7d2c1073fc8e"
       ],
       "source_published_kst": "2026-10-13T09:18+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "185300000000"
+          ]
+        ],
+        "customer": "블룸에너지",
+        "delivery_period": "2027-04/2027-07",
+        "disclosure_date": "2026-10-13",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "LS일렉트릭",
+        "product": "수배전반및배전용변압기",
+        "quantities": [],
+        "stage": "signed"
+      },
       "source_title": "LS일렉, 미국 데이터센터에 1천853억원 규모 배전설비 공급 | 연합뉴스",
       "telegram_core_fact": "LS일렉트릭은 글로벌 전력기업 블룸에너지와 1천853억원 수배전반 및 배전용 변압기 공급 계약을 체결했다고 13일 공시했다.",
       "title": "LS일렉, 미국 데이터센터에 1천853억원 규모 배전설비 공급 | 연합뉴스"
@@ -132718,10 +133351,23 @@
       "link": "https://www.etnews.com/20261013000097",
       "source": "전자신문",
       "source_body_digest": "410c516ae58e39b8976228623320a06174e49bc1862f06081b89ffafc91a8f53",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:named_supply_order:89cda50337284e7c49b804a6532aa6d3960adc6af84ffebeb24516b1059968c2",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-13T10:18+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [],
+        "customer": "대우건설",
+        "delivery_period": "",
+        "disclosure_date": "2026-10-13",
+        "duration_years": "2",
+        "explicit_revision": false,
+        "issuer": "쿠쿠",
+        "product": "빌트인정수기",
+        "quantities": [],
+        "stage": "signed"
+      },
       "source_title": "쿠쿠, 대우건설에 빌트인 정수기 공급…2년간 납품",
       "telegram_core_fact": "쿠쿠가 대우건설 빌트인 정수기 공급 계약을 수주했다.",
       "title": "쿠쿠, 대우건설에 빌트인 정수기 공급…2년간 납품"
@@ -140922,6 +141568,30 @@
       "telegram_core_fact": "러시아 기술기업 얀덱스의 블라디미르주 데이터센터가 드론 공격을 받은 것으로 전해진 뒤 가동을 전면 중단했다.",
       "title": "드론에 '러시아판 구글' 얀덱스 또 멈췄다…나흘 새 데이터센터 세 번째 피격"
     },
+    "link:848086147302273a8fc47d9d": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823912",
+      "source": "뉴시스",
+      "source_body_digest": "3934f7cf21c089c61109aaa8fe04b3c3ea5f99a5e9f0e87dd82e1a20c867c47a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:495b7e941bdf3da3d42e1171018aa2d00544eec90d22682065213abd71ea08f8",
+      "source_fact_keys": [
+        "source_fact:v1:2033394372bea8d917d3b785ead31335e576b241d44d77fbcde56579c38a90d6",
+        "source_fact:v1:57e3831ae2939b92da274dac9f9f635ea1cb275b48f4998eed3cdce29450ebb0",
+        "source_fact:v1:7f0798ec8f8cd62f302254505912cbe7e797a7388deccab99fe215822eec8c29",
+        "source_fact:v1:c0a100349bc5ed310c509826f19682bdca39b212bd1e09eb4337bd5df6443e16",
+        "source_fact:v1:f3436f35f241832d4b301c8d3ab0a627746bb922df2834a8a808abc4a10bbc6d"
+      ],
+      "source_published_kst": "2026-10-13T13:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 中 9월 신차 295만대 판매·8.4%↓…“수출은 61% 급증”",
+      "telegram_core_fact": "중국 자동차 시장에서 수출 급증에도 정부의 보조금 축소와 내수 부진으로 신차 판매량이 9월 전년 동월 대비 8.4% 크게 줄었다. 이재망(理財網)과 홍콩경제일보, 경제통, 재신쾌보는 13일 중국자동차공업협회(CAAM) 최신통계를 인용해 2026년 9월 중국 신차 판매량이 295만6000대로 이같이 감소했다고 보도했다.",
+      "title": "[올댓차이나] 中 9월 신차 295만대 판매·8.4%↓…“수출은 61% 급증”"
+    },
     "link:8491e921a49cb9601315dd32": {
       "first_seen_kst": "2026-10-02T18:30:04+09:00",
       "lanes": {
@@ -144284,7 +144954,7 @@
       "link": "https://www.newsis.com/view/NISX20261013_0003823115",
       "source": "뉴시스",
       "source_body_digest": "1e28a389e24b472b0885ed7332250f5f6b08dcd278a6621f7dbbb6ce5b138850",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:724c77828def5c1c640116c56d1cf85184f5f930ed764f926a63e64f36e73a89",
       "source_fact_identity": "source_facts:v1:ceb416c093090f0944d62867ebf1634d153b652ddfbc55d8114511e1756f100e",
       "source_fact_keys": [
         "source_fact:v1:c12e4bf4e95bfc6fdc870fab267c155528609fa564baaae6afacdf52509021b5",
@@ -145333,6 +146003,26 @@
       "source_title": "\"엔비디아칩 사려고 54조원 빚낸다\"…스페이스X, 400억달러 조달 추진",
       "telegram_core_fact": "일론 머스크가 이끄는 스페이스X가 엔비디아의 칩을 사기 위해 약 300억달러 회사채를 포함, 400억달러(약 54조원)의 자금 조달에 나설 계획이다. 마켓워치에 따르면, 400억달러는 스페이스X의 올해 예상 매출 445억달러에 거의 맞먹는 규모이다.",
       "title": "\"엔비디아칩 사려고 54조원 빚낸다\"…스페이스X, 400억달러 조달 추진"
+    },
+    "link:9485c62dac6e0d9036265df6": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822835",
+      "source": "뉴시스",
+      "source_body_digest": "d4de1043826dc1c320b0955d42940fc2f5abe532f07d28c5003b0f8c3e22ba58",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ef277ba0477de444deb09ec74d6d31e46f4d32e3f2f2c81820b1d5d992cead1d",
+      "source_fact_keys": [
+        "source_fact:v1:8cae788146809f15794f5a85932373227bb8dd752ff1f5549c1b76b1b5aeaec7"
+      ],
+      "source_published_kst": "2026-10-13T14:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "영어유치원 '7세 고시' 금지…레벨테스트 꼼수 각양각색",
+      "telegram_core_fact": "이달부터 유아 대상 영어학원의 입학 레벨테스트인 이른바 '7세 고시'가 금지되면서 울산지역 영어학원가에서도 혼란이 일고 있다.",
+      "title": "영어유치원 '7세 고시' 금지…레벨테스트 꼼수 각양각색"
     },
     "link:9488e8438134a0bf094d2e66": {
       "first_seen_kst": "2026-10-05T23:14:24+09:00",
@@ -153332,7 +154022,7 @@
       "link": "https://www.etoday.co.kr/news/view/2634954",
       "source": "이투데이",
       "source_body_digest": "49893cc6a93c1e17687b976ddad479feb82fac306a6c3cc3b13e57a349ec91d5",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:fcaa144506780eb661206b0ec500856f8955bed8d87a2ebf64a2c36b84f63aee",
       "source_fact_identity": "source_facts:v1:2f5474725b555ff78d02ad7c371f1fa43b9c7625d4406ba0bcfbf6c0b3940d8c",
       "source_fact_keys": [
         "source_fact:v1:0f75a4be600d081f4c6e6808c8432588efe13348a6f3189210bfce88e18cd2d3",
@@ -154432,10 +155122,23 @@
       "link": "https://www.newsis.com/view/NISX20261013_0003823622",
       "source": "뉴시스",
       "source_body_digest": "4390ecc3b97d8008d66f7253a6e7f6c89639162b749e0bd6be4bc44bb9ee81fa",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:named_supply_order:89cda50337284e7c49b804a6532aa6d3960adc6af84ffebeb24516b1059968c2",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-13T11:00+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [],
+        "customer": "대우건설",
+        "delivery_period": "",
+        "disclosure_date": "2026-10-13",
+        "duration_years": "2",
+        "explicit_revision": false,
+        "issuer": "쿠쿠",
+        "product": "빌트인정수기",
+        "quantities": [],
+        "stage": "signed"
+      },
       "source_title": "쿠쿠, 대우건설 빌트인 정수기 수주…\"B2B 확대\"",
       "telegram_core_fact": "쿠쿠가 대우건설의 빌트인 정수기 공급 계약을 수주했다.",
       "title": "쿠쿠, 대우건설 빌트인 정수기 수주…\"B2B 확대\""
@@ -162717,10 +163420,32 @@
       "link": "https://www.etoday.co.kr/news/view/2634992",
       "source": "이투데이",
       "source_body_digest": "855ba19bc609260454af77c79e188aed3baf3f837e31c5a2121a73f9b8423a77",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:named_supply_order:b9b9b1a7e028532438e46e48e4719ff729d47f9a2af6b7e4d789b8e8609a0d18",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-13T09:14+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "달러",
+            "138458284"
+          ],
+          [
+            "원",
+            "185300000000"
+          ]
+        ],
+        "customer": "블룸에너지",
+        "delivery_period": "2027-04/2027-07",
+        "disclosure_date": "2026-10-13",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "LS일렉트릭",
+        "product": "수배전반및배전용변압기",
+        "quantities": [],
+        "stage": "signed"
+      },
       "source_title": "LS일렉트릭, 美 빅테크 데이터센터에 1853억원 규모 배전설비 공급",
       "telegram_core_fact": "LS일렉트릭이 미국 빅테크 기업의 데이터센터에 1853억원 배전설비를 공급한다.",
       "title": "LS일렉트릭, 美 빅테크 데이터센터에 1853억원 규모 배전설비 공급"
@@ -169025,7 +169750,7 @@
       "link": "https://www.yna.co.kr/view/AKR20261013074800030",
       "source": "연합뉴스",
       "source_body_digest": "7ab4f264188d6906892b52a22a60009e0e4a363242f36990525532e0afbe15f6",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:724c77828def5c1c640116c56d1cf85184f5f930ed764f926a63e64f36e73a89",
       "source_fact_identity": "source_facts:v1:ff10b3a116a88f23d4ab3fe7dc4ccbd4a81be297b885acf8d8f75dfc49b43ad1",
       "source_fact_keys": [
         "source_fact:v1:d3e27beb044b57198af10e8fdf61259d5b6f914979edeac54c116b344b8a328b",
@@ -178140,7 +178865,7 @@
       "link": "https://www.yna.co.kr/view/AKR20261013039200003",
       "source": "연합뉴스",
       "source_body_digest": "8b76779c1b4e628f543e8a77e0e666a62ff02ee97ff793553827aac388acf013",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:named_supply_order:d27f53bc887f0eae393b088feaf143c1b7e144c0ea0a9287ffa3cb0ecca19524",
       "source_fact_identity": "source_facts:v1:fee0ed148bd339e62792f46f1b04f8da7db5e4768d6836dc7d49fd5488c6cf0c",
       "source_fact_keys": [
         "source_fact:v1:4b2bfaff86d750656fa07d5f8feaec9f7997864ae54e8c2393136358b9ace67a",
@@ -178149,6 +178874,24 @@
         "source_fact:v1:f53c0b1c96ef6b3d83fe140ffc85269a114f9f2b60ffb1e7c54f7d2c1073fc8e"
       ],
       "source_published_kst": "2026-10-13T09:18+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "185300000000"
+          ]
+        ],
+        "customer": "블룸에너지",
+        "delivery_period": "2027-04/2027-07",
+        "disclosure_date": "2026-10-13",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "LS일렉트릭",
+        "product": "수배전반및배전용변압기",
+        "quantities": [],
+        "stage": "signed"
+      },
       "source_title": "LS일렉, 미국 데이터센터에 1천853억원 규모 배전설비 공급 | 연합뉴스",
       "telegram_core_fact": "LS일렉트릭은 글로벌 전력기업 블룸에너지와 1천853억원 수배전반 및 배전용 변압기 공급 계약을 체결했다고 13일 공시했다.",
       "title": "LS일렉, 미국 데이터센터에 1천853억원 규모 배전설비 공급 | 연합뉴스"
@@ -183458,6 +184201,29 @@
       "source_published_kst": "2026-10-06T09:24+09:00",
       "title": "특징주, 아이티센씨티에스-네트워크통합 테마 상승세에 2.22% ↑"
     },
+    "original:181f2cc7a405e5f0c687f562": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173498",
+      "source": "매일경제",
+      "source_body_digest": "2acd83195e9c27729b79d66de24235a312d580f9b0c479b07e4e3dee0f205ddc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c3a4fea0d58222192ce27ed463f84e08b188822271a60e209e3c99e4ae06590",
+      "source_fact_keys": [
+        "source_fact:v1:bb5611f2474b8c66035c4188bc22e9b96256f7c16fe42aa9966912ebfa238097",
+        "source_fact:v1:c1bdb2cbe90cf2fdc68106fc905e717075e8c5ed6ac33df392633ad04b7bb526",
+        "source_fact:v1:d496145177f8b583667dfee7f80d10ba98384c61e484970724198180f230cec2",
+        "source_fact:v1:f120138315bb1ffa53e0b71abf8ea497c98dc6d05c7665c9e4b99c36ccce2c47"
+      ],
+      "source_published_kst": "2026-10-13T13:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "전국 3개지역 교복 담합…대리점 10곳·과징금 1억",
+      "telegram_core_fact": "지난 4월 공정위는 과징금 부과 기준율 하한을 대폭 높이고 반복 담합 사업자에 대한 제재를 강화하도록 고시를 개정했다.",
+      "title": "전국 3개지역 교복 담합…대리점 10곳·과징금 1억"
+    },
     "original:182c019b3810d02ebd82fc4e": {
       "first_seen_kst": "2026-10-08T12:46:54+09:00",
       "lanes": {
@@ -186043,10 +186809,23 @@
       "link": "https://www.newsis.com/view/NISX20261013_0003823622",
       "source": "뉴시스",
       "source_body_digest": "4390ecc3b97d8008d66f7253a6e7f6c89639162b749e0bd6be4bc44bb9ee81fa",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:named_supply_order:89cda50337284e7c49b804a6532aa6d3960adc6af84ffebeb24516b1059968c2",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-13T11:00+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [],
+        "customer": "대우건설",
+        "delivery_period": "",
+        "disclosure_date": "2026-10-13",
+        "duration_years": "2",
+        "explicit_revision": false,
+        "issuer": "쿠쿠",
+        "product": "빌트인정수기",
+        "quantities": [],
+        "stage": "signed"
+      },
       "source_title": "쿠쿠, 대우건설 빌트인 정수기 수주…\"B2B 확대\"",
       "telegram_core_fact": "쿠쿠가 대우건설의 빌트인 정수기 공급 계약을 수주했다.",
       "title": "쿠쿠, 대우건설 빌트인 정수기 수주…\"B2B 확대\""
@@ -186244,7 +187023,7 @@
       "link": "https://www.etoday.co.kr/news/view/2634954",
       "source": "이투데이",
       "source_body_digest": "49893cc6a93c1e17687b976ddad479feb82fac306a6c3cc3b13e57a349ec91d5",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:fcaa144506780eb661206b0ec500856f8955bed8d87a2ebf64a2c36b84f63aee",
       "source_fact_identity": "source_facts:v1:2f5474725b555ff78d02ad7c371f1fa43b9c7625d4406ba0bcfbf6c0b3940d8c",
       "source_fact_keys": [
         "source_fact:v1:0f75a4be600d081f4c6e6808c8432588efe13348a6f3189210bfce88e18cd2d3",
@@ -192297,7 +193076,7 @@
       "link": "https://www.yna.co.kr/view/AKR20261013074800030",
       "source": "연합뉴스",
       "source_body_digest": "7ab4f264188d6906892b52a22a60009e0e4a363242f36990525532e0afbe15f6",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:724c77828def5c1c640116c56d1cf85184f5f930ed764f926a63e64f36e73a89",
       "source_fact_identity": "source_facts:v1:ff10b3a116a88f23d4ab3fe7dc4ccbd4a81be297b885acf8d8f75dfc49b43ad1",
       "source_fact_keys": [
         "source_fact:v1:d3e27beb044b57198af10e8fdf61259d5b6f914979edeac54c116b344b8a328b",
@@ -197280,7 +198059,7 @@
       "link": "https://www.newsis.com/view/NISX20261013_0003823115",
       "source": "뉴시스",
       "source_body_digest": "1e28a389e24b472b0885ed7332250f5f6b08dcd278a6621f7dbbb6ce5b138850",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:724c77828def5c1c640116c56d1cf85184f5f930ed764f926a63e64f36e73a89",
       "source_fact_identity": "source_facts:v1:ceb416c093090f0944d62867ebf1634d153b652ddfbc55d8114511e1756f100e",
       "source_fact_keys": [
         "source_fact:v1:c12e4bf4e95bfc6fdc870fab267c155528609fa564baaae6afacdf52509021b5",
@@ -216880,10 +217659,23 @@
       "link": "https://www.etnews.com/20261013000097",
       "source": "전자신문",
       "source_body_digest": "410c516ae58e39b8976228623320a06174e49bc1862f06081b89ffafc91a8f53",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:named_supply_order:89cda50337284e7c49b804a6532aa6d3960adc6af84ffebeb24516b1059968c2",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-13T10:18+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [],
+        "customer": "대우건설",
+        "delivery_period": "",
+        "disclosure_date": "2026-10-13",
+        "duration_years": "2",
+        "explicit_revision": false,
+        "issuer": "쿠쿠",
+        "product": "빌트인정수기",
+        "quantities": [],
+        "stage": "signed"
+      },
       "source_title": "쿠쿠, 대우건설에 빌트인 정수기 공급…2년간 납품",
       "telegram_core_fact": "쿠쿠가 대우건설 빌트인 정수기 공급 계약을 수주했다.",
       "title": "쿠쿠, 대우건설에 빌트인 정수기 공급…2년간 납품"
@@ -221135,6 +221927,26 @@
       "source_title": "일본, 우크라산 요격 드론 구매 계약…방위상 \"신속 도입 추진\"",
       "telegram_core_fact": "유철종 전문위원 = 일본 방위성이 우크라이나 방산업체 '스카이폴'(SkyFall)이 생산하는 요격 드론 구매 계약을 체결하고 신속한 도입을 추진 중인 것으로 전해졌다.",
       "title": "일본, 우크라산 요격 드론 구매 계약…방위상 \"신속 도입 추진\""
+    },
+    "original:9d3055a08ebbaa6affe6ee6f": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822835",
+      "source": "뉴시스",
+      "source_body_digest": "d4de1043826dc1c320b0955d42940fc2f5abe532f07d28c5003b0f8c3e22ba58",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ef277ba0477de444deb09ec74d6d31e46f4d32e3f2f2c81820b1d5d992cead1d",
+      "source_fact_keys": [
+        "source_fact:v1:8cae788146809f15794f5a85932373227bb8dd752ff1f5549c1b76b1b5aeaec7"
+      ],
+      "source_published_kst": "2026-10-13T14:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "영어유치원 '7세 고시' 금지…레벨테스트 꼼수 각양각색",
+      "telegram_core_fact": "이달부터 유아 대상 영어학원의 입학 레벨테스트인 이른바 '7세 고시'가 금지되면서 울산지역 영어학원가에서도 혼란이 일고 있다.",
+      "title": "영어유치원 '7세 고시' 금지…레벨테스트 꼼수 각양각색"
     },
     "original:9d699f81e8cb7c2bb346d22a": {
       "first_seen_kst": "2026-10-08T14:21:54+09:00",
@@ -238822,6 +239634,28 @@
       "telegram_core_fact": "씨앤엠은 한국거래소로부터 코스닥시장 상장예비심사 승인을 받았다고 12일 밝혔다.",
       "title": "씨앤엠, 코스닥 상장예비심사 승인…청구 4주 만"
     },
+    "original:dce82987ae01ad50aff72eab": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173495",
+      "source": "매일경제",
+      "source_body_digest": "4c5b0a94c416504186369efe194a6f138fbc5e11db6ab71bcf52a21a0481b5e6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1e39700cbffabbda9f563c3f31b2fb2cbfd1987e28a4bda66c202344e2496a6a",
+      "source_fact_keys": [
+        "source_fact:v1:157b7f7f270e2ba68372326e99c2a41b0dc77fd02f097c3a4b8b46d5bb70b7e9",
+        "source_fact:v1:652600a0ba8e83a8464316fdbf490da14a45d05c06ff6a4ea4d9a9dda633917c",
+        "source_fact:v1:d9f2952408117413a9fa6b88f4645e588af2117d35944a3704f75c3ee5c7a7c1"
+      ],
+      "source_published_kst": "2026-10-13T13:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "국가안보·정보보호 위협하는 물품 22일부터 수출입 막힌다",
+      "telegram_core_fact": "정부가 국가안보와 개인·기업의 정보 보호를 위협하는 물품의 수출입을 제한할 수 있도록 관련 제도를 정비했다.",
+      "title": "국가안보·정보보호 위협하는 물품 22일부터 수출입 막힌다"
+    },
     "original:dcf65c415f3d22c0d4d78fc5": {
       "first_seen_kst": "2026-10-04T08:04:25+09:00",
       "lanes": {
@@ -239128,6 +239962,26 @@
       "source_title": "中, EU 하이브리드차 수출 제한 거부…한국차도 규제 영향권",
       "telegram_core_fact": "EU는 중국산 하이브리드차에 수입 물량 제한과 추가 관세를 부과하는 방안을 검토하고 있다.",
       "title": "中, EU 하이브리드차 수출 제한 거부…한국차도 규제 영향권"
+    },
+    "original:de6b88bf0aacf20978d4bdcb": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173487",
+      "source": "매일경제",
+      "source_body_digest": "b3535371be820170c2766eeabd448b74a28bd62bd17b74aa2f000adc991ddc91",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6aaa182e8f1c1c03ac3793ac3fcdd1810f6e73700ac5c47d7e7e322cd560c777",
+      "source_fact_keys": [
+        "source_fact:v1:aa4c6f07ce31030ce16dce7b02ec99b7cb8d2c132bc2fa2143fd29bf1b5ba24e"
+      ],
+      "source_published_kst": "2026-10-13T13:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "[AI픽] 정부사업으로 만든 AI 데이터, AI허브로 모은다",
+      "telegram_core_fact": "정부가 정부사업으로 구축한 인공지능(AI) 학습용 데이터 공급을 늘리고, 공공·민간 데이터의 소재 정보도 통합적으로 제공하기로 했다. 과학기술정보통신부는 국가 데이터 연계 및 AI 학습·활용 촉진을 위한 'AI기본법'과 '데이터산업법 개정안이 13일 국무회의를 통과했다고 밝혔다.",
+      "title": "[AI픽] 정부사업으로 만든 AI 데이터, AI허브로 모은다"
     },
     "original:de6bcdd77c98deb85ec5bf12": {
       "first_seen_kst": "2026-10-07T01:59:08+09:00",
@@ -240730,6 +241584,30 @@
       "source_published_kst": "2026-10-06T14:16+09:00",
       "title": "\"최태원 9440억 SK 지분 매각, 3%룰 회피 목적 아닌지 밝혀야\""
     },
+    "original:e427acd1ac8f969e88d71803": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822791",
+      "source": "뉴시스",
+      "source_body_digest": "374e38e034c150b9588c58e552c485a74f4f1f5776533728305452a6a8988385",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6c8fbf3a2ae23ba90dd267aebf4621c2ebe1ed968dc8c73e83c0530bcc1b2768",
+      "source_fact_keys": [
+        "source_fact:v1:26b60754f947f5a946dae7b064d1503386b4292c93760d808d4f7c434239c434",
+        "source_fact:v1:645913c691cc36744eaf72ea0a2d2257f5d6a04686a206d45efa63fc70b15aa5",
+        "source_fact:v1:677216711ab487f352844e8d55fb1037a88ec255ba65fcb752e009ade79c6236",
+        "source_fact:v1:cd020eae3b6d0dedcfaf15d3680c71c844e0fbc9494086c5c64fb04379ac8d27",
+        "source_fact:v1:d4323b1db6a44e32d0197bb27968795a38ad114352195362037168a2b6714480"
+      ],
+      "source_published_kst": "2026-10-13T12:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"재택의료·단기보호 부족\"…통합돌봄 지역 격차 좁힌다",
+      "telegram_core_fact": "지역사회 통합돌봄 첫 실태조사 결과 재택의료센터와 장애인건강주치의, 단기보호 등의 서비스가 수요 대비 공급이 부족한 것으로 나타났다. 방문진료 충족률은 일반지역 25.5%, 인구감소지역 10.7%였고 재택의료센터는 일반지역 20.6%, 인구감소지역 8.3%였다.",
+      "title": "\"재택의료·단기보호 부족\"…통합돌봄 지역 격차 좁힌다"
+    },
     "original:e42b1d8144103b59861e4db0": {
       "first_seen_kst": "2026-10-09T19:24:17+09:00",
       "lanes": {
@@ -241785,7 +242663,7 @@
       "link": "https://www.yna.co.kr/view/AKR20261013046151004",
       "source": "연합뉴스",
       "source_body_digest": "d67e513ce05ca92d8d21e41449bae926ff4aa67cca423e093f05475f79598de2",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:fcaa144506780eb661206b0ec500856f8955bed8d87a2ebf64a2c36b84f63aee",
       "source_fact_identity": "source_facts:v1:ba101a112ab0d06ed161c34859330b43c2bd03f405e3b310fbefbb040ac7df1e",
       "source_fact_keys": [
         "source_fact:v1:1bbb5b047e691516fa9076a446ded0fd9d4ee3519c7838447a9eadf05666760e",
@@ -244323,6 +245201,27 @@
       "source_title": "유진투자증권 “러시아 제재 완화에도 디젤 공급난 지속…정제마진 강세 전망”",
       "telegram_core_fact": "유진투자증권은 13일 미국이 디젤 가격 안정을 위해 러시아산 경유에 대한 제재를 한시적으로 완화했지만 글로벌 공급 부족을 해소하기는 어려울 것으로 전망했다.",
       "title": "유진투자증권 “러시아 제재 완화에도 디젤 공급난 지속…정제마진 강세 전망”"
+    },
+    "original:f13d056ebd97f665e25661f2": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823893",
+      "source": "뉴시스",
+      "source_body_digest": "45a2d749cfada580f89c08eaca99ec686612cb98f1166ca058408bd2d2c2291f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:926359fbe632a9b8a9487062a2d573bbe6d1c78ec40cd75267f00adce38d82b1",
+      "source_fact_keys": [
+        "source_fact:v1:01958d02bb723b8bcd4b9a4791309eb4cdcfa236cc4b4c1003f64b2468e83b84",
+        "source_fact:v1:7e4adc7eed2122a367816e1d86367ab7af25567a6ed62a22a1005b10ce0629aa"
+      ],
+      "source_published_kst": "2026-10-13T13:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "LH 사장, 고양창릉 점검…\"주택 공급 속도 과감히 높여야\"",
+      "telegram_core_fact": "이성훈 한국토지주택공사(LH) 사장이 13일 3기 신도시 고양창릉 공공주택지구를 찾아 주택 공급 추진 현황을 점검하고 속도감 있는 사업 추진을 당부했다. 이번 현장 방문은 전날 국감에서 제기된 국민의 주거 안정과 주택 공급 확대 주문을 현장에서 속도감 있게 실현하겠다는 의지가 담긴 것이라고 LH 측은 설명했다.",
+      "title": "LH 사장, 고양창릉 점검…\"주택 공급 속도 과감히 높여야\""
     },
     "original:f14270f326b233848c927192": {
       "first_seen_kst": "2026-10-03T07:28:32+09:00",
@@ -247727,10 +248626,32 @@
       "link": "https://www.etoday.co.kr/news/view/2634992",
       "source": "이투데이",
       "source_body_digest": "855ba19bc609260454af77c79e188aed3baf3f837e31c5a2121a73f9b8423a77",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:named_supply_order:b9b9b1a7e028532438e46e48e4719ff729d47f9a2af6b7e4d789b8e8609a0d18",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-13T09:14+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "달러",
+            "138458284"
+          ],
+          [
+            "원",
+            "185300000000"
+          ]
+        ],
+        "customer": "블룸에너지",
+        "delivery_period": "2027-04/2027-07",
+        "disclosure_date": "2026-10-13",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "LS일렉트릭",
+        "product": "수배전반및배전용변압기",
+        "quantities": [],
+        "stage": "signed"
+      },
       "source_title": "LS일렉트릭, 美 빅테크 데이터센터에 1853억원 규모 배전설비 공급",
       "telegram_core_fact": "LS일렉트릭이 미국 빅테크 기업의 데이터센터에 1853억원 배전설비를 공급한다.",
       "title": "LS일렉트릭, 美 빅테크 데이터센터에 1853억원 규모 배전설비 공급"
@@ -248224,6 +249145,30 @@
       ],
       "source_published_kst": "2026-10-06T13:28+09:00",
       "title": "전세사기 피해 보증금 3분의 1 회복 보장…지원금 산정기준 마련 | 연합뉴스"
+    },
+    "original:feffc119873ad6ca80708565": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823912",
+      "source": "뉴시스",
+      "source_body_digest": "3934f7cf21c089c61109aaa8fe04b3c3ea5f99a5e9f0e87dd82e1a20c867c47a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:495b7e941bdf3da3d42e1171018aa2d00544eec90d22682065213abd71ea08f8",
+      "source_fact_keys": [
+        "source_fact:v1:2033394372bea8d917d3b785ead31335e576b241d44d77fbcde56579c38a90d6",
+        "source_fact:v1:57e3831ae2939b92da274dac9f9f635ea1cb275b48f4998eed3cdce29450ebb0",
+        "source_fact:v1:7f0798ec8f8cd62f302254505912cbe7e797a7388deccab99fe215822eec8c29",
+        "source_fact:v1:c0a100349bc5ed310c509826f19682bdca39b212bd1e09eb4337bd5df6443e16",
+        "source_fact:v1:f3436f35f241832d4b301c8d3ab0a627746bb922df2834a8a808abc4a10bbc6d"
+      ],
+      "source_published_kst": "2026-10-13T13:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 中 9월 신차 295만대 판매·8.4%↓…“수출은 61% 급증”",
+      "telegram_core_fact": "중국 자동차 시장에서 수출 급증에도 정부의 보조금 축소와 내수 부진으로 신차 판매량이 9월 전년 동월 대비 8.4% 크게 줄었다. 이재망(理財網)과 홍콩경제일보, 경제통, 재신쾌보는 13일 중국자동차공업협회(CAAM) 최신통계를 인용해 2026년 9월 중국 신차 판매량이 295만6000대로 이같이 감소했다고 보도했다.",
+      "title": "[올댓차이나] 中 9월 신차 295만대 판매·8.4%↓…“수출은 61% 급증”"
     },
     "original:ff016e5e8e08fa4b994f07d2": {
       "first_seen_kst": "2026-10-02T15:40:35+09:00",
@@ -249177,6 +250122,30 @@
       ],
       "source_published_kst": "2026-10-06T07:10+09:00",
       "title": "5만 가구 ‘한강2’ 연계 5호선 2034년 개통할까 [교통지옥 김포 ③]"
+    },
+    "source_fact:00f34e842cabec4192f65c99": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822791",
+      "source": "뉴시스",
+      "source_body_digest": "374e38e034c150b9588c58e552c485a74f4f1f5776533728305452a6a8988385",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6c8fbf3a2ae23ba90dd267aebf4621c2ebe1ed968dc8c73e83c0530bcc1b2768",
+      "source_fact_keys": [
+        "source_fact:v1:26b60754f947f5a946dae7b064d1503386b4292c93760d808d4f7c434239c434",
+        "source_fact:v1:645913c691cc36744eaf72ea0a2d2257f5d6a04686a206d45efa63fc70b15aa5",
+        "source_fact:v1:677216711ab487f352844e8d55fb1037a88ec255ba65fcb752e009ade79c6236",
+        "source_fact:v1:cd020eae3b6d0dedcfaf15d3680c71c844e0fbc9494086c5c64fb04379ac8d27",
+        "source_fact:v1:d4323b1db6a44e32d0197bb27968795a38ad114352195362037168a2b6714480"
+      ],
+      "source_published_kst": "2026-10-13T12:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"재택의료·단기보호 부족\"…통합돌봄 지역 격차 좁힌다",
+      "telegram_core_fact": "지역사회 통합돌봄 첫 실태조사 결과 재택의료센터와 장애인건강주치의, 단기보호 등의 서비스가 수요 대비 공급이 부족한 것으로 나타났다. 방문진료 충족률은 일반지역 25.5%, 인구감소지역 10.7%였고 재택의료센터는 일반지역 20.6%, 인구감소지역 8.3%였다.",
+      "title": "\"재택의료·단기보호 부족\"…통합돌봄 지역 격차 좁힌다"
     },
     "source_fact:00f4732905d2027a6afe1091": {
       "first_seen_kst": "2026-10-10T07:44:19+09:00",
@@ -262827,7 +263796,7 @@
       "link": "https://www.newsis.com/view/NISX20261013_0003823115",
       "source": "뉴시스",
       "source_body_digest": "1e28a389e24b472b0885ed7332250f5f6b08dcd278a6621f7dbbb6ce5b138850",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:724c77828def5c1c640116c56d1cf85184f5f930ed764f926a63e64f36e73a89",
       "source_fact_identity": "source_facts:v1:ceb416c093090f0944d62867ebf1634d153b652ddfbc55d8114511e1756f100e",
       "source_fact_keys": [
         "source_fact:v1:c12e4bf4e95bfc6fdc870fab267c155528609fa564baaae6afacdf52509021b5",
@@ -265107,6 +266076,29 @@
       "source_title": "삼성전자, 올 3분기 영업이익률 55% 신기록 …반도체 부문은 70% 돌파할 듯",
       "telegram_core_fact": "삼성전자는 3분기 영업이익률 55.1%를 기록했는데, 반도체를 담당하는 디바이스솔루션(DS) 부문은 70%를 넘어섰을 것으로 보인다.",
       "title": "삼성전자, 올 3분기 영업이익률 55% 신기록 …반도체 부문은 70% 돌파할 듯"
+    },
+    "source_fact:1145a3c2498d783c4d256360": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173498",
+      "source": "매일경제",
+      "source_body_digest": "2acd83195e9c27729b79d66de24235a312d580f9b0c479b07e4e3dee0f205ddc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c3a4fea0d58222192ce27ed463f84e08b188822271a60e209e3c99e4ae06590",
+      "source_fact_keys": [
+        "source_fact:v1:bb5611f2474b8c66035c4188bc22e9b96256f7c16fe42aa9966912ebfa238097",
+        "source_fact:v1:c1bdb2cbe90cf2fdc68106fc905e717075e8c5ed6ac33df392633ad04b7bb526",
+        "source_fact:v1:d496145177f8b583667dfee7f80d10ba98384c61e484970724198180f230cec2",
+        "source_fact:v1:f120138315bb1ffa53e0b71abf8ea497c98dc6d05c7665c9e4b99c36ccce2c47"
+      ],
+      "source_published_kst": "2026-10-13T13:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "전국 3개지역 교복 담합…대리점 10곳·과징금 1억",
+      "telegram_core_fact": "지난 4월 공정위는 과징금 부과 기준율 하한을 대폭 높이고 반복 담합 사업자에 대한 제재를 강화하도록 고시를 개정했다.",
+      "title": "전국 3개지역 교복 담합…대리점 10곳·과징금 1억"
     },
     "source_fact:114918ef365626923bc4ff29": {
       "first_seen_kst": "2026-10-12T07:43:12+09:00",
@@ -267852,7 +268844,7 @@
       "link": "https://www.yna.co.kr/view/AKR20261013046151004",
       "source": "연합뉴스",
       "source_body_digest": "d67e513ce05ca92d8d21e41449bae926ff4aa67cca423e093f05475f79598de2",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:fcaa144506780eb661206b0ec500856f8955bed8d87a2ebf64a2c36b84f63aee",
       "source_fact_identity": "source_facts:v1:ba101a112ab0d06ed161c34859330b43c2bd03f405e3b310fbefbb040ac7df1e",
       "source_fact_keys": [
         "source_fact:v1:1bbb5b047e691516fa9076a446ded0fd9d4ee3519c7838447a9eadf05666760e",
@@ -268946,6 +269938,30 @@
       "source_title": "포스코그룹, K-GX 참여…철강 탈탄소 전환 선도",
       "telegram_core_fact": "포스코그룹은 한국형 수소환원제철 기술인 '하이렉스(HyREX)'를 중심으로 정부와 협력해 청정에너지 공급부터 저탄소 철강 활용까지 아우르는 생태계를 구축한다.",
       "title": "포스코그룹, K-GX 참여…철강 탈탄소 전환 선도"
+    },
+    "source_fact:152498473b42aeeb5ef43a1a": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822791",
+      "source": "뉴시스",
+      "source_body_digest": "374e38e034c150b9588c58e552c485a74f4f1f5776533728305452a6a8988385",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6c8fbf3a2ae23ba90dd267aebf4621c2ebe1ed968dc8c73e83c0530bcc1b2768",
+      "source_fact_keys": [
+        "source_fact:v1:26b60754f947f5a946dae7b064d1503386b4292c93760d808d4f7c434239c434",
+        "source_fact:v1:645913c691cc36744eaf72ea0a2d2257f5d6a04686a206d45efa63fc70b15aa5",
+        "source_fact:v1:677216711ab487f352844e8d55fb1037a88ec255ba65fcb752e009ade79c6236",
+        "source_fact:v1:cd020eae3b6d0dedcfaf15d3680c71c844e0fbc9494086c5c64fb04379ac8d27",
+        "source_fact:v1:d4323b1db6a44e32d0197bb27968795a38ad114352195362037168a2b6714480"
+      ],
+      "source_published_kst": "2026-10-13T12:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"재택의료·단기보호 부족\"…통합돌봄 지역 격차 좁힌다",
+      "telegram_core_fact": "지역사회 통합돌봄 첫 실태조사 결과 재택의료센터와 장애인건강주치의, 단기보호 등의 서비스가 수요 대비 공급이 부족한 것으로 나타났다. 방문진료 충족률은 일반지역 25.5%, 인구감소지역 10.7%였고 재택의료센터는 일반지역 20.6%, 인구감소지역 8.3%였다.",
+      "title": "\"재택의료·단기보호 부족\"…통합돌봄 지역 격차 좁힌다"
     },
     "source_fact:152deab6b4b25bf4c0a771a7": {
       "first_seen_kst": "2026-10-08T08:31:37+09:00",
@@ -271761,6 +272777,30 @@
       ],
       "source_published_kst": "2026-10-06T18:06+09:00",
       "title": "[단독]서울 지하철 인력충원 둘러싸고 노사갈등…파업 신호탄 되나"
+    },
+    "source_fact:18335e38c84da645ecb98d2e": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823912",
+      "source": "뉴시스",
+      "source_body_digest": "3934f7cf21c089c61109aaa8fe04b3c3ea5f99a5e9f0e87dd82e1a20c867c47a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:495b7e941bdf3da3d42e1171018aa2d00544eec90d22682065213abd71ea08f8",
+      "source_fact_keys": [
+        "source_fact:v1:2033394372bea8d917d3b785ead31335e576b241d44d77fbcde56579c38a90d6",
+        "source_fact:v1:57e3831ae2939b92da274dac9f9f635ea1cb275b48f4998eed3cdce29450ebb0",
+        "source_fact:v1:7f0798ec8f8cd62f302254505912cbe7e797a7388deccab99fe215822eec8c29",
+        "source_fact:v1:c0a100349bc5ed310c509826f19682bdca39b212bd1e09eb4337bd5df6443e16",
+        "source_fact:v1:f3436f35f241832d4b301c8d3ab0a627746bb922df2834a8a808abc4a10bbc6d"
+      ],
+      "source_published_kst": "2026-10-13T13:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 中 9월 신차 295만대 판매·8.4%↓…“수출은 61% 급증”",
+      "telegram_core_fact": "중국 자동차 시장에서 수출 급증에도 정부의 보조금 축소와 내수 부진으로 신차 판매량이 9월 전년 동월 대비 8.4% 크게 줄었다. 이재망(理財網)과 홍콩경제일보, 경제통, 재신쾌보는 13일 중국자동차공업협회(CAAM) 최신통계를 인용해 2026년 9월 중국 신차 판매량이 295만6000대로 이같이 감소했다고 보도했다.",
+      "title": "[올댓차이나] 中 9월 신차 295만대 판매·8.4%↓…“수출은 61% 급증”"
     },
     "source_fact:183435873ecae55dd515bab9": {
       "first_seen_kst": "2026-10-12T20:37:19+09:00",
@@ -279297,6 +280337,30 @@
       "source_title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주",
       "telegram_core_fact": "회사 매출은 2억2000만 달러 전망입니다.",
       "title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주"
+    },
+    "source_fact:1f7ccad15dca469b318fbc6f": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822791",
+      "source": "뉴시스",
+      "source_body_digest": "374e38e034c150b9588c58e552c485a74f4f1f5776533728305452a6a8988385",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6c8fbf3a2ae23ba90dd267aebf4621c2ebe1ed968dc8c73e83c0530bcc1b2768",
+      "source_fact_keys": [
+        "source_fact:v1:26b60754f947f5a946dae7b064d1503386b4292c93760d808d4f7c434239c434",
+        "source_fact:v1:645913c691cc36744eaf72ea0a2d2257f5d6a04686a206d45efa63fc70b15aa5",
+        "source_fact:v1:677216711ab487f352844e8d55fb1037a88ec255ba65fcb752e009ade79c6236",
+        "source_fact:v1:cd020eae3b6d0dedcfaf15d3680c71c844e0fbc9494086c5c64fb04379ac8d27",
+        "source_fact:v1:d4323b1db6a44e32d0197bb27968795a38ad114352195362037168a2b6714480"
+      ],
+      "source_published_kst": "2026-10-13T12:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"재택의료·단기보호 부족\"…통합돌봄 지역 격차 좁힌다",
+      "telegram_core_fact": "지역사회 통합돌봄 첫 실태조사 결과 재택의료센터와 장애인건강주치의, 단기보호 등의 서비스가 수요 대비 공급이 부족한 것으로 나타났다. 방문진료 충족률은 일반지역 25.5%, 인구감소지역 10.7%였고 재택의료센터는 일반지역 20.6%, 인구감소지역 8.3%였다.",
+      "title": "\"재택의료·단기보호 부족\"…통합돌봄 지역 격차 좁힌다"
     },
     "source_fact:1f8094784204ba7d54db4caf": {
       "first_seen_kst": "2026-10-08T11:28:27+09:00",
@@ -294378,6 +295442,30 @@
       ],
       "source_published_kst": "2026-10-06T10:59+09:00",
       "title": "엠플러스, 유럽 글로벌 배터리 기업에 각형 장비 공급"
+    },
+    "source_fact:2d6de4ecdc1b17466dd323ca": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823912",
+      "source": "뉴시스",
+      "source_body_digest": "3934f7cf21c089c61109aaa8fe04b3c3ea5f99a5e9f0e87dd82e1a20c867c47a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:495b7e941bdf3da3d42e1171018aa2d00544eec90d22682065213abd71ea08f8",
+      "source_fact_keys": [
+        "source_fact:v1:2033394372bea8d917d3b785ead31335e576b241d44d77fbcde56579c38a90d6",
+        "source_fact:v1:57e3831ae2939b92da274dac9f9f635ea1cb275b48f4998eed3cdce29450ebb0",
+        "source_fact:v1:7f0798ec8f8cd62f302254505912cbe7e797a7388deccab99fe215822eec8c29",
+        "source_fact:v1:c0a100349bc5ed310c509826f19682bdca39b212bd1e09eb4337bd5df6443e16",
+        "source_fact:v1:f3436f35f241832d4b301c8d3ab0a627746bb922df2834a8a808abc4a10bbc6d"
+      ],
+      "source_published_kst": "2026-10-13T13:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 中 9월 신차 295만대 판매·8.4%↓…“수출은 61% 급증”",
+      "telegram_core_fact": "중국 자동차 시장에서 수출 급증에도 정부의 보조금 축소와 내수 부진으로 신차 판매량이 9월 전년 동월 대비 8.4% 크게 줄었다. 이재망(理財網)과 홍콩경제일보, 경제통, 재신쾌보는 13일 중국자동차공업협회(CAAM) 최신통계를 인용해 2026년 9월 중국 신차 판매량이 295만6000대로 이같이 감소했다고 보도했다.",
+      "title": "[올댓차이나] 中 9월 신차 295만대 판매·8.4%↓…“수출은 61% 급증”"
     },
     "source_fact:2d6fb3a125a501a6c6440bb5": {
       "first_seen_kst": "2026-10-07T01:33:00+09:00",
@@ -309470,6 +310558,30 @@
       "source_published_kst": "2026-10-07T08:51+09:00",
       "title": "비욘드스프링, 중국 자회사 매각 완료..처분이익 5400만 달러"
     },
+    "source_fact:3cd07238ea7c2975011d261b": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823912",
+      "source": "뉴시스",
+      "source_body_digest": "3934f7cf21c089c61109aaa8fe04b3c3ea5f99a5e9f0e87dd82e1a20c867c47a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:495b7e941bdf3da3d42e1171018aa2d00544eec90d22682065213abd71ea08f8",
+      "source_fact_keys": [
+        "source_fact:v1:2033394372bea8d917d3b785ead31335e576b241d44d77fbcde56579c38a90d6",
+        "source_fact:v1:57e3831ae2939b92da274dac9f9f635ea1cb275b48f4998eed3cdce29450ebb0",
+        "source_fact:v1:7f0798ec8f8cd62f302254505912cbe7e797a7388deccab99fe215822eec8c29",
+        "source_fact:v1:c0a100349bc5ed310c509826f19682bdca39b212bd1e09eb4337bd5df6443e16",
+        "source_fact:v1:f3436f35f241832d4b301c8d3ab0a627746bb922df2834a8a808abc4a10bbc6d"
+      ],
+      "source_published_kst": "2026-10-13T13:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 中 9월 신차 295만대 판매·8.4%↓…“수출은 61% 급증”",
+      "telegram_core_fact": "중국 자동차 시장에서 수출 급증에도 정부의 보조금 축소와 내수 부진으로 신차 판매량이 9월 전년 동월 대비 8.4% 크게 줄었다. 이재망(理財網)과 홍콩경제일보, 경제통, 재신쾌보는 13일 중국자동차공업협회(CAAM) 최신통계를 인용해 2026년 9월 중국 신차 판매량이 295만6000대로 이같이 감소했다고 보도했다.",
+      "title": "[올댓차이나] 中 9월 신차 295만대 판매·8.4%↓…“수출은 61% 급증”"
+    },
     "source_fact:3ce34e9acf3b2062cb313959": {
       "first_seen_kst": "2026-10-06T17:24:43+09:00",
       "lanes": {
@@ -315245,7 +316357,7 @@
       "link": "https://www.etoday.co.kr/news/view/2634954",
       "source": "이투데이",
       "source_body_digest": "49893cc6a93c1e17687b976ddad479feb82fac306a6c3cc3b13e57a349ec91d5",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:fcaa144506780eb661206b0ec500856f8955bed8d87a2ebf64a2c36b84f63aee",
       "source_fact_identity": "source_facts:v1:2f5474725b555ff78d02ad7c371f1fa43b9c7625d4406ba0bcfbf6c0b3940d8c",
       "source_fact_keys": [
         "source_fact:v1:0f75a4be600d081f4c6e6808c8432588efe13348a6f3189210bfce88e18cd2d3",
@@ -320250,6 +321362,26 @@
       "telegram_core_fact": "스타벅스 매출은 탱크데이 논란 직후 한 주(5월 21∼27일) 동안 전주보다 23.5% 줄어 급감한 뒤 저점인 6월 4∼10일 주에는 전년 같은 주보다 33.2% 감소했다.",
       "title": "\"스벅은 타격 여전…버거킹은 '암살자들' 불매운동에도 매출↑\" | 연합뉴스"
     },
+    "source_fact:478dcf42efde8f7b5604e94d": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173487",
+      "source": "매일경제",
+      "source_body_digest": "b3535371be820170c2766eeabd448b74a28bd62bd17b74aa2f000adc991ddc91",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6aaa182e8f1c1c03ac3793ac3fcdd1810f6e73700ac5c47d7e7e322cd560c777",
+      "source_fact_keys": [
+        "source_fact:v1:aa4c6f07ce31030ce16dce7b02ec99b7cb8d2c132bc2fa2143fd29bf1b5ba24e"
+      ],
+      "source_published_kst": "2026-10-13T13:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "[AI픽] 정부사업으로 만든 AI 데이터, AI허브로 모은다",
+      "telegram_core_fact": "정부가 정부사업으로 구축한 인공지능(AI) 학습용 데이터 공급을 늘리고, 공공·민간 데이터의 소재 정보도 통합적으로 제공하기로 했다. 과학기술정보통신부는 국가 데이터 연계 및 AI 학습·활용 촉진을 위한 'AI기본법'과 '데이터산업법 개정안이 13일 국무회의를 통과했다고 밝혔다.",
+      "title": "[AI픽] 정부사업으로 만든 AI 데이터, AI허브로 모은다"
+    },
     "source_fact:47901691acdc9004d24c789d": {
       "first_seen_kst": "2026-10-07T06:41:04+09:00",
       "lanes": {
@@ -324670,7 +325802,7 @@
       "link": "https://www.yna.co.kr/view/AKR20261013039200003",
       "source": "연합뉴스",
       "source_body_digest": "8b76779c1b4e628f543e8a77e0e666a62ff02ee97ff793553827aac388acf013",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:named_supply_order:d27f53bc887f0eae393b088feaf143c1b7e144c0ea0a9287ffa3cb0ecca19524",
       "source_fact_identity": "source_facts:v1:fee0ed148bd339e62792f46f1b04f8da7db5e4768d6836dc7d49fd5488c6cf0c",
       "source_fact_keys": [
         "source_fact:v1:4b2bfaff86d750656fa07d5f8feaec9f7997864ae54e8c2393136358b9ace67a",
@@ -324679,6 +325811,24 @@
         "source_fact:v1:f53c0b1c96ef6b3d83fe140ffc85269a114f9f2b60ffb1e7c54f7d2c1073fc8e"
       ],
       "source_published_kst": "2026-10-13T09:18+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "185300000000"
+          ]
+        ],
+        "customer": "블룸에너지",
+        "delivery_period": "2027-04/2027-07",
+        "disclosure_date": "2026-10-13",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "LS일렉트릭",
+        "product": "수배전반및배전용변압기",
+        "quantities": [],
+        "stage": "signed"
+      },
       "source_title": "LS일렉, 미국 데이터센터에 1천853억원 규모 배전설비 공급 | 연합뉴스",
       "telegram_core_fact": "LS일렉트릭은 글로벌 전력기업 블룸에너지와 1천853억원 수배전반 및 배전용 변압기 공급 계약을 체결했다고 13일 공시했다.",
       "title": "LS일렉, 미국 데이터센터에 1천853억원 규모 배전설비 공급 | 연합뉴스"
@@ -329993,6 +331143,27 @@
       "source_title": "\"美, 러 정유소 공격 멈추라며 우크라에 정보공유 중단 경고\" | 연합뉴스",
       "telegram_core_fact": "미국이 우크라이나에 러시아 정유시설 공격을 멈추지 않으면 핵심정보 공유를 중단하겠다고 경고했다고 파이낸셜타임스(FT)가 10일(현지시간) 보도했다. 이어 러시아 정유시설 공격이 '세계적 문제'를 일으킨다는 자신의 경고에도 우크라이나가 계속 공격했다면서 \"당장 그만두는 게 좋을 것\"이라고 압박했다.",
       "title": "\"美, 러 정유소 공격 멈추라며 우크라에 정보공유 중단 경고\" | 연합뉴스"
+    },
+    "source_fact:51267c4cc7007ab228e060da": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823893",
+      "source": "뉴시스",
+      "source_body_digest": "45a2d749cfada580f89c08eaca99ec686612cb98f1166ca058408bd2d2c2291f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:926359fbe632a9b8a9487062a2d573bbe6d1c78ec40cd75267f00adce38d82b1",
+      "source_fact_keys": [
+        "source_fact:v1:01958d02bb723b8bcd4b9a4791309eb4cdcfa236cc4b4c1003f64b2468e83b84",
+        "source_fact:v1:7e4adc7eed2122a367816e1d86367ab7af25567a6ed62a22a1005b10ce0629aa"
+      ],
+      "source_published_kst": "2026-10-13T13:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "LH 사장, 고양창릉 점검…\"주택 공급 속도 과감히 높여야\"",
+      "telegram_core_fact": "이성훈 한국토지주택공사(LH) 사장이 13일 3기 신도시 고양창릉 공공주택지구를 찾아 주택 공급 추진 현황을 점검하고 속도감 있는 사업 추진을 당부했다. 이번 현장 방문은 전날 국감에서 제기된 국민의 주거 안정과 주택 공급 확대 주문을 현장에서 속도감 있게 실현하겠다는 의지가 담긴 것이라고 LH 측은 설명했다.",
+      "title": "LH 사장, 고양창릉 점검…\"주택 공급 속도 과감히 높여야\""
     },
     "source_fact:512b4309d217d2ae0d57ebad": {
       "first_seen_kst": "2026-10-06T22:21:21+09:00",
@@ -342559,6 +343730,30 @@
       ],
       "source_published_kst": "2026-10-05T13:09+09:00",
       "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
+    },
+    "source_fact:5cf968ff15888dc48e05dc58": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822791",
+      "source": "뉴시스",
+      "source_body_digest": "374e38e034c150b9588c58e552c485a74f4f1f5776533728305452a6a8988385",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6c8fbf3a2ae23ba90dd267aebf4621c2ebe1ed968dc8c73e83c0530bcc1b2768",
+      "source_fact_keys": [
+        "source_fact:v1:26b60754f947f5a946dae7b064d1503386b4292c93760d808d4f7c434239c434",
+        "source_fact:v1:645913c691cc36744eaf72ea0a2d2257f5d6a04686a206d45efa63fc70b15aa5",
+        "source_fact:v1:677216711ab487f352844e8d55fb1037a88ec255ba65fcb752e009ade79c6236",
+        "source_fact:v1:cd020eae3b6d0dedcfaf15d3680c71c844e0fbc9494086c5c64fb04379ac8d27",
+        "source_fact:v1:d4323b1db6a44e32d0197bb27968795a38ad114352195362037168a2b6714480"
+      ],
+      "source_published_kst": "2026-10-13T12:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"재택의료·단기보호 부족\"…통합돌봄 지역 격차 좁힌다",
+      "telegram_core_fact": "지역사회 통합돌봄 첫 실태조사 결과 재택의료센터와 장애인건강주치의, 단기보호 등의 서비스가 수요 대비 공급이 부족한 것으로 나타났다. 방문진료 충족률은 일반지역 25.5%, 인구감소지역 10.7%였고 재택의료센터는 일반지역 20.6%, 인구감소지역 8.3%였다.",
+      "title": "\"재택의료·단기보호 부족\"…통합돌봄 지역 격차 좁힌다"
     },
     "source_fact:5cfa15453255e17fdcb34766": {
       "first_seen_kst": "2026-10-07T03:04:14+09:00",
@@ -363245,6 +364440,30 @@
       "source_published_kst": "2026-10-06T08:41+09:00",
       "title": "AI 데이터센터 늘자 전력 수요도 급증…ETF 투자처도 '전력 인프라'로"
     },
+    "source_fact:71f036aa274341558bb7bcae": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823912",
+      "source": "뉴시스",
+      "source_body_digest": "3934f7cf21c089c61109aaa8fe04b3c3ea5f99a5e9f0e87dd82e1a20c867c47a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:495b7e941bdf3da3d42e1171018aa2d00544eec90d22682065213abd71ea08f8",
+      "source_fact_keys": [
+        "source_fact:v1:2033394372bea8d917d3b785ead31335e576b241d44d77fbcde56579c38a90d6",
+        "source_fact:v1:57e3831ae2939b92da274dac9f9f635ea1cb275b48f4998eed3cdce29450ebb0",
+        "source_fact:v1:7f0798ec8f8cd62f302254505912cbe7e797a7388deccab99fe215822eec8c29",
+        "source_fact:v1:c0a100349bc5ed310c509826f19682bdca39b212bd1e09eb4337bd5df6443e16",
+        "source_fact:v1:f3436f35f241832d4b301c8d3ab0a627746bb922df2834a8a808abc4a10bbc6d"
+      ],
+      "source_published_kst": "2026-10-13T13:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 中 9월 신차 295만대 판매·8.4%↓…“수출은 61% 급증”",
+      "telegram_core_fact": "중국 자동차 시장에서 수출 급증에도 정부의 보조금 축소와 내수 부진으로 신차 판매량이 9월 전년 동월 대비 8.4% 크게 줄었다. 이재망(理財網)과 홍콩경제일보, 경제통, 재신쾌보는 13일 중국자동차공업협회(CAAM) 최신통계를 인용해 2026년 9월 중국 신차 판매량이 295만6000대로 이같이 감소했다고 보도했다.",
+      "title": "[올댓차이나] 中 9월 신차 295만대 판매·8.4%↓…“수출은 61% 급증”"
+    },
     "source_fact:71f92715696b3c00c3f5f54d": {
       "first_seen_kst": "2026-10-07T12:49:48+09:00",
       "lanes": {
@@ -372356,6 +373575,30 @@
       "telegram_core_fact": "링코베이션은 올해 문화체육관광부·한국관광공사 주관 제 17 회 관광벤처사업에서 성장관광벤처로 최종 선정되었고, 마이리얼트립과 데일리호텔에 투자한 프라이머로부터 시드투자를 유치했다.",
       "title": "[제2서울핀테크랩 스타트업 CEO] 현지 전문가 기반 가족 맞춤 자유여행 서비스 ‘오아세스’ 운영하는 기업 ‘링코베이션’"
     },
+    "source_fact:7b0c722b8170db916ff45862": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822791",
+      "source": "뉴시스",
+      "source_body_digest": "374e38e034c150b9588c58e552c485a74f4f1f5776533728305452a6a8988385",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6c8fbf3a2ae23ba90dd267aebf4621c2ebe1ed968dc8c73e83c0530bcc1b2768",
+      "source_fact_keys": [
+        "source_fact:v1:26b60754f947f5a946dae7b064d1503386b4292c93760d808d4f7c434239c434",
+        "source_fact:v1:645913c691cc36744eaf72ea0a2d2257f5d6a04686a206d45efa63fc70b15aa5",
+        "source_fact:v1:677216711ab487f352844e8d55fb1037a88ec255ba65fcb752e009ade79c6236",
+        "source_fact:v1:cd020eae3b6d0dedcfaf15d3680c71c844e0fbc9494086c5c64fb04379ac8d27",
+        "source_fact:v1:d4323b1db6a44e32d0197bb27968795a38ad114352195362037168a2b6714480"
+      ],
+      "source_published_kst": "2026-10-13T12:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"재택의료·단기보호 부족\"…통합돌봄 지역 격차 좁힌다",
+      "telegram_core_fact": "지역사회 통합돌봄 첫 실태조사 결과 재택의료센터와 장애인건강주치의, 단기보호 등의 서비스가 수요 대비 공급이 부족한 것으로 나타났다. 방문진료 충족률은 일반지역 25.5%, 인구감소지역 10.7%였고 재택의료센터는 일반지역 20.6%, 인구감소지역 8.3%였다.",
+      "title": "\"재택의료·단기보호 부족\"…통합돌봄 지역 격차 좁힌다"
+    },
     "source_fact:7b0e19bb3540db2a96dbae25": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
       "lanes": {
@@ -372856,7 +374099,7 @@
       "link": "https://www.etoday.co.kr/news/view/2634954",
       "source": "이투데이",
       "source_body_digest": "49893cc6a93c1e17687b976ddad479feb82fac306a6c3cc3b13e57a349ec91d5",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:fcaa144506780eb661206b0ec500856f8955bed8d87a2ebf64a2c36b84f63aee",
       "source_fact_identity": "source_facts:v1:2f5474725b555ff78d02ad7c371f1fa43b9c7625d4406ba0bcfbf6c0b3940d8c",
       "source_fact_keys": [
         "source_fact:v1:0f75a4be600d081f4c6e6808c8432588efe13348a6f3189210bfce88e18cd2d3",
@@ -390365,6 +391608,28 @@
       "telegram_core_fact": "10년 만기 미국 국채금리는 장중 연 5.36%까지 상승해 2002년 이후 최고치를 기록했다.",
       "title": "뉴욕증시, 국채금리 24년래 최고에 휘청⋯3대 지수 동반 하락[종합]"
     },
+    "source_fact:8ce7d5358d1c1a86bd2c74f6": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173495",
+      "source": "매일경제",
+      "source_body_digest": "4c5b0a94c416504186369efe194a6f138fbc5e11db6ab71bcf52a21a0481b5e6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1e39700cbffabbda9f563c3f31b2fb2cbfd1987e28a4bda66c202344e2496a6a",
+      "source_fact_keys": [
+        "source_fact:v1:157b7f7f270e2ba68372326e99c2a41b0dc77fd02f097c3a4b8b46d5bb70b7e9",
+        "source_fact:v1:652600a0ba8e83a8464316fdbf490da14a45d05c06ff6a4ea4d9a9dda633917c",
+        "source_fact:v1:d9f2952408117413a9fa6b88f4645e588af2117d35944a3704f75c3ee5c7a7c1"
+      ],
+      "source_published_kst": "2026-10-13T13:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "국가안보·정보보호 위협하는 물품 22일부터 수출입 막힌다",
+      "telegram_core_fact": "정부가 국가안보와 개인·기업의 정보 보호를 위협하는 물품의 수출입을 제한할 수 있도록 관련 제도를 정비했다.",
+      "title": "국가안보·정보보호 위협하는 물품 22일부터 수출입 막힌다"
+    },
     "source_fact:8cec2bcb80c0003d9dfa237e": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
@@ -395033,7 +396298,7 @@
       "link": "https://www.yna.co.kr/view/AKR20261013074800030",
       "source": "연합뉴스",
       "source_body_digest": "7ab4f264188d6906892b52a22a60009e0e4a363242f36990525532e0afbe15f6",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:724c77828def5c1c640116c56d1cf85184f5f930ed764f926a63e64f36e73a89",
       "source_fact_identity": "source_facts:v1:ff10b3a116a88f23d4ab3fe7dc4ccbd4a81be297b885acf8d8f75dfc49b43ad1",
       "source_fact_keys": [
         "source_fact:v1:d3e27beb044b57198af10e8fdf61259d5b6f914979edeac54c116b344b8a328b",
@@ -415478,6 +416743,26 @@
       "source_published_kst": "2026-10-06T16:55+09:00",
       "title": "알테오젠, 국민성장펀드‧스카이레이크서 2000억원 투자 유치"
     },
+    "source_fact:a64a6538316a6bd8fe1d8f81": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822835",
+      "source": "뉴시스",
+      "source_body_digest": "d4de1043826dc1c320b0955d42940fc2f5abe532f07d28c5003b0f8c3e22ba58",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ef277ba0477de444deb09ec74d6d31e46f4d32e3f2f2c81820b1d5d992cead1d",
+      "source_fact_keys": [
+        "source_fact:v1:8cae788146809f15794f5a85932373227bb8dd752ff1f5549c1b76b1b5aeaec7"
+      ],
+      "source_published_kst": "2026-10-13T14:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "영어유치원 '7세 고시' 금지…레벨테스트 꼼수 각양각색",
+      "telegram_core_fact": "이달부터 유아 대상 영어학원의 입학 레벨테스트인 이른바 '7세 고시'가 금지되면서 울산지역 영어학원가에서도 혼란이 일고 있다.",
+      "title": "영어유치원 '7세 고시' 금지…레벨테스트 꼼수 각양각색"
+    },
     "source_fact:a6514213484e60abaaa0bba6": {
       "first_seen_kst": "2026-10-10T20:30:39+09:00",
       "lanes": {
@@ -421597,7 +422882,7 @@
       "link": "https://www.yna.co.kr/view/AKR20261013039200003",
       "source": "연합뉴스",
       "source_body_digest": "8b76779c1b4e628f543e8a77e0e666a62ff02ee97ff793553827aac388acf013",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:named_supply_order:d27f53bc887f0eae393b088feaf143c1b7e144c0ea0a9287ffa3cb0ecca19524",
       "source_fact_identity": "source_facts:v1:fee0ed148bd339e62792f46f1b04f8da7db5e4768d6836dc7d49fd5488c6cf0c",
       "source_fact_keys": [
         "source_fact:v1:4b2bfaff86d750656fa07d5f8feaec9f7997864ae54e8c2393136358b9ace67a",
@@ -421606,6 +422891,24 @@
         "source_fact:v1:f53c0b1c96ef6b3d83fe140ffc85269a114f9f2b60ffb1e7c54f7d2c1073fc8e"
       ],
       "source_published_kst": "2026-10-13T09:18+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "185300000000"
+          ]
+        ],
+        "customer": "블룸에너지",
+        "delivery_period": "2027-04/2027-07",
+        "disclosure_date": "2026-10-13",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "LS일렉트릭",
+        "product": "수배전반및배전용변압기",
+        "quantities": [],
+        "stage": "signed"
+      },
       "source_title": "LS일렉, 미국 데이터센터에 1천853억원 규모 배전설비 공급 | 연합뉴스",
       "telegram_core_fact": "LS일렉트릭은 글로벌 전력기업 블룸에너지와 1천853억원 수배전반 및 배전용 변압기 공급 계약을 체결했다고 13일 공시했다.",
       "title": "LS일렉, 미국 데이터센터에 1천853억원 규모 배전설비 공급 | 연합뉴스"
@@ -436288,6 +437591,28 @@
       "telegram_core_fact": "이날 기준 올해 외국인의 코스피 누적 순매도는 약 227조원에 이른다. 하나증권 집계에 따르면 코스피 7000~9000 구간에서 개인의 누적 순매수는 약 83조6000억원이다.",
       "title": "“코스피 오르기만 기다렸는데”…개미가 산 83조, 반등 발목 잡나"
     },
+    "source_fact:bb842b48af351b6c740c6717": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173495",
+      "source": "매일경제",
+      "source_body_digest": "4c5b0a94c416504186369efe194a6f138fbc5e11db6ab71bcf52a21a0481b5e6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1e39700cbffabbda9f563c3f31b2fb2cbfd1987e28a4bda66c202344e2496a6a",
+      "source_fact_keys": [
+        "source_fact:v1:157b7f7f270e2ba68372326e99c2a41b0dc77fd02f097c3a4b8b46d5bb70b7e9",
+        "source_fact:v1:652600a0ba8e83a8464316fdbf490da14a45d05c06ff6a4ea4d9a9dda633917c",
+        "source_fact:v1:d9f2952408117413a9fa6b88f4645e588af2117d35944a3704f75c3ee5c7a7c1"
+      ],
+      "source_published_kst": "2026-10-13T13:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "국가안보·정보보호 위협하는 물품 22일부터 수출입 막힌다",
+      "telegram_core_fact": "정부가 국가안보와 개인·기업의 정보 보호를 위협하는 물품의 수출입을 제한할 수 있도록 관련 제도를 정비했다.",
+      "title": "국가안보·정보보호 위협하는 물품 22일부터 수출입 막힌다"
+    },
     "source_fact:bb8498afd5881e5ea3cccaba": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
       "lanes": {
@@ -436991,7 +438316,7 @@
       "link": "https://www.newsis.com/view/NISX20261013_0003823115",
       "source": "뉴시스",
       "source_body_digest": "1e28a389e24b472b0885ed7332250f5f6b08dcd278a6621f7dbbb6ce5b138850",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:724c77828def5c1c640116c56d1cf85184f5f930ed764f926a63e64f36e73a89",
       "source_fact_identity": "source_facts:v1:ceb416c093090f0944d62867ebf1634d153b652ddfbc55d8114511e1756f100e",
       "source_fact_keys": [
         "source_fact:v1:c12e4bf4e95bfc6fdc870fab267c155528609fa564baaae6afacdf52509021b5",
@@ -438167,6 +439492,27 @@
       ],
       "source_published_kst": "2026-10-06T16:11+09:00",
       "title": "[속보] “해리포터를 스타필드로?”…신세계, 워너브라더스 인수에 1.4조 베팅"
+    },
+    "source_fact:bd826381ceb6265f80562fc7": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823893",
+      "source": "뉴시스",
+      "source_body_digest": "45a2d749cfada580f89c08eaca99ec686612cb98f1166ca058408bd2d2c2291f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:926359fbe632a9b8a9487062a2d573bbe6d1c78ec40cd75267f00adce38d82b1",
+      "source_fact_keys": [
+        "source_fact:v1:01958d02bb723b8bcd4b9a4791309eb4cdcfa236cc4b4c1003f64b2468e83b84",
+        "source_fact:v1:7e4adc7eed2122a367816e1d86367ab7af25567a6ed62a22a1005b10ce0629aa"
+      ],
+      "source_published_kst": "2026-10-13T13:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "LH 사장, 고양창릉 점검…\"주택 공급 속도 과감히 높여야\"",
+      "telegram_core_fact": "이성훈 한국토지주택공사(LH) 사장이 13일 3기 신도시 고양창릉 공공주택지구를 찾아 주택 공급 추진 현황을 점검하고 속도감 있는 사업 추진을 당부했다. 이번 현장 방문은 전날 국감에서 제기된 국민의 주거 안정과 주택 공급 확대 주문을 현장에서 속도감 있게 실현하겠다는 의지가 담긴 것이라고 LH 측은 설명했다.",
+      "title": "LH 사장, 고양창릉 점검…\"주택 공급 속도 과감히 높여야\""
     },
     "source_fact:bd8c29ab3ec88a665367ff71": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
@@ -439515,7 +440861,7 @@
       "link": "https://www.yna.co.kr/view/AKR20261013046151004",
       "source": "연합뉴스",
       "source_body_digest": "d67e513ce05ca92d8d21e41449bae926ff4aa67cca423e093f05475f79598de2",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:fcaa144506780eb661206b0ec500856f8955bed8d87a2ebf64a2c36b84f63aee",
       "source_fact_identity": "source_facts:v1:ba101a112ab0d06ed161c34859330b43c2bd03f405e3b310fbefbb040ac7df1e",
       "source_fact_keys": [
         "source_fact:v1:1bbb5b047e691516fa9076a446ded0fd9d4ee3519c7838447a9eadf05666760e",
@@ -439944,7 +441290,7 @@
       "link": "https://www.yna.co.kr/view/AKR20261013039200003",
       "source": "연합뉴스",
       "source_body_digest": "8b76779c1b4e628f543e8a77e0e666a62ff02ee97ff793553827aac388acf013",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:named_supply_order:d27f53bc887f0eae393b088feaf143c1b7e144c0ea0a9287ffa3cb0ecca19524",
       "source_fact_identity": "source_facts:v1:fee0ed148bd339e62792f46f1b04f8da7db5e4768d6836dc7d49fd5488c6cf0c",
       "source_fact_keys": [
         "source_fact:v1:4b2bfaff86d750656fa07d5f8feaec9f7997864ae54e8c2393136358b9ace67a",
@@ -439953,6 +441299,24 @@
         "source_fact:v1:f53c0b1c96ef6b3d83fe140ffc85269a114f9f2b60ffb1e7c54f7d2c1073fc8e"
       ],
       "source_published_kst": "2026-10-13T09:18+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "185300000000"
+          ]
+        ],
+        "customer": "블룸에너지",
+        "delivery_period": "2027-04/2027-07",
+        "disclosure_date": "2026-10-13",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "LS일렉트릭",
+        "product": "수배전반및배전용변압기",
+        "quantities": [],
+        "stage": "signed"
+      },
       "source_title": "LS일렉, 미국 데이터센터에 1천853억원 규모 배전설비 공급 | 연합뉴스",
       "telegram_core_fact": "LS일렉트릭은 글로벌 전력기업 블룸에너지와 1천853억원 수배전반 및 배전용 변압기 공급 계약을 체결했다고 13일 공시했다.",
       "title": "LS일렉, 미국 데이터센터에 1천853억원 규모 배전설비 공급 | 연합뉴스"
@@ -447977,6 +449341,29 @@
       ],
       "source_published_kst": "2026-10-07T08:42+09:00",
       "title": "네이처 우드 그룹, 상반기 매출 64% 급감..174만달러 순손실"
+    },
+    "source_fact:c709bfa145c1181f83dae202": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173498",
+      "source": "매일경제",
+      "source_body_digest": "2acd83195e9c27729b79d66de24235a312d580f9b0c479b07e4e3dee0f205ddc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c3a4fea0d58222192ce27ed463f84e08b188822271a60e209e3c99e4ae06590",
+      "source_fact_keys": [
+        "source_fact:v1:bb5611f2474b8c66035c4188bc22e9b96256f7c16fe42aa9966912ebfa238097",
+        "source_fact:v1:c1bdb2cbe90cf2fdc68106fc905e717075e8c5ed6ac33df392633ad04b7bb526",
+        "source_fact:v1:d496145177f8b583667dfee7f80d10ba98384c61e484970724198180f230cec2",
+        "source_fact:v1:f120138315bb1ffa53e0b71abf8ea497c98dc6d05c7665c9e4b99c36ccce2c47"
+      ],
+      "source_published_kst": "2026-10-13T13:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "전국 3개지역 교복 담합…대리점 10곳·과징금 1억",
+      "telegram_core_fact": "지난 4월 공정위는 과징금 부과 기준율 하한을 대폭 높이고 반복 담합 사업자에 대한 제재를 강화하도록 고시를 개정했다.",
+      "title": "전국 3개지역 교복 담합…대리점 10곳·과징금 1억"
     },
     "source_fact:c70b866c792b6da32e397b30": {
       "first_seen_kst": "2026-10-06T21:54:00+09:00",
@@ -456340,6 +457727,29 @@
       "telegram_core_fact": "이번 ‘에너지 휴전’은 지난 9일 트럼프 대통령이 블라디미르 푸틴 러시아 대통령과 미국 및 전 세계 시장에 러시아산 경유를 공급하기로 합의했다고 공개한 뒤 이틀 만이다.",
       "title": "트럼프 \"러-우크라, '에너지 부문 휴전 합의'…즉각 발효\""
     },
+    "source_fact:d029b29bacf42810b425f8aa": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173498",
+      "source": "매일경제",
+      "source_body_digest": "2acd83195e9c27729b79d66de24235a312d580f9b0c479b07e4e3dee0f205ddc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c3a4fea0d58222192ce27ed463f84e08b188822271a60e209e3c99e4ae06590",
+      "source_fact_keys": [
+        "source_fact:v1:bb5611f2474b8c66035c4188bc22e9b96256f7c16fe42aa9966912ebfa238097",
+        "source_fact:v1:c1bdb2cbe90cf2fdc68106fc905e717075e8c5ed6ac33df392633ad04b7bb526",
+        "source_fact:v1:d496145177f8b583667dfee7f80d10ba98384c61e484970724198180f230cec2",
+        "source_fact:v1:f120138315bb1ffa53e0b71abf8ea497c98dc6d05c7665c9e4b99c36ccce2c47"
+      ],
+      "source_published_kst": "2026-10-13T13:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "전국 3개지역 교복 담합…대리점 10곳·과징금 1억",
+      "telegram_core_fact": "지난 4월 공정위는 과징금 부과 기준율 하한을 대폭 높이고 반복 담합 사업자에 대한 제재를 강화하도록 고시를 개정했다.",
+      "title": "전국 3개지역 교복 담합…대리점 10곳·과징금 1억"
+    },
     "source_fact:d02cfa92adfb6fc914e7737a": {
       "first_seen_kst": "2026-10-08T04:14:15+09:00",
       "lanes": {
@@ -460821,6 +462231,28 @@
       "source_title": "계속되는 'AI 거품론'…TSMC가 답을 할까 [다음주 주요변수 미리보기]",
       "telegram_core_fact": "지난주 후반 오픈AI의 매출을 둘러싼 논란으로 AI·반도체주가 급락한 만큼 TSMC의 실적과 가이던스는 최근 불거진 ‘AI 거품론’의 시험대가 될 전망이다. 다음주 국내외 증시는 미국 물가와 소비, 반도체 실적이 동시에 시장을 시험하는 한 주가 될 전망이다.",
       "title": "계속되는 'AI 거품론'…TSMC가 답을 할까 [다음주 주요변수 미리보기]"
+    },
+    "source_fact:d4d872604ff26c280d2cffce": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173495",
+      "source": "매일경제",
+      "source_body_digest": "4c5b0a94c416504186369efe194a6f138fbc5e11db6ab71bcf52a21a0481b5e6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1e39700cbffabbda9f563c3f31b2fb2cbfd1987e28a4bda66c202344e2496a6a",
+      "source_fact_keys": [
+        "source_fact:v1:157b7f7f270e2ba68372326e99c2a41b0dc77fd02f097c3a4b8b46d5bb70b7e9",
+        "source_fact:v1:652600a0ba8e83a8464316fdbf490da14a45d05c06ff6a4ea4d9a9dda633917c",
+        "source_fact:v1:d9f2952408117413a9fa6b88f4645e588af2117d35944a3704f75c3ee5c7a7c1"
+      ],
+      "source_published_kst": "2026-10-13T13:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "국가안보·정보보호 위협하는 물품 22일부터 수출입 막힌다",
+      "telegram_core_fact": "정부가 국가안보와 개인·기업의 정보 보호를 위협하는 물품의 수출입을 제한할 수 있도록 관련 제도를 정비했다.",
+      "title": "국가안보·정보보호 위협하는 물품 22일부터 수출입 막힌다"
     },
     "source_fact:d4dbd57fed75d38110fc14e3": {
       "first_seen_kst": "2026-10-12T20:37:19+09:00",
@@ -467960,6 +469392,29 @@
       "telegram_core_fact": "인공지능(AI) 인프라 스타트업 베슬AI가 업스테이지의 거대언어모델(LLM) '솔라 프로4'에 글로벌 인퍼런스(추론) 인프라를 공급해 서비스 운영을 지원했다고 12일 밝혔다. 베슬AI는 해당 협업을 계기로 GPU 인프라 공급을 넘어 AI 모델의 추론 운영 전문 기업으로 사업 영역을 확대한다는 방침이다.",
       "title": "베슬AI, '솔라 프로4' 인프라 공급…AI '추론 운영'으로 영역 확대"
     },
+    "source_fact:db25cdc33ae1707e3daa491d": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173498",
+      "source": "매일경제",
+      "source_body_digest": "2acd83195e9c27729b79d66de24235a312d580f9b0c479b07e4e3dee0f205ddc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c3a4fea0d58222192ce27ed463f84e08b188822271a60e209e3c99e4ae06590",
+      "source_fact_keys": [
+        "source_fact:v1:bb5611f2474b8c66035c4188bc22e9b96256f7c16fe42aa9966912ebfa238097",
+        "source_fact:v1:c1bdb2cbe90cf2fdc68106fc905e717075e8c5ed6ac33df392633ad04b7bb526",
+        "source_fact:v1:d496145177f8b583667dfee7f80d10ba98384c61e484970724198180f230cec2",
+        "source_fact:v1:f120138315bb1ffa53e0b71abf8ea497c98dc6d05c7665c9e4b99c36ccce2c47"
+      ],
+      "source_published_kst": "2026-10-13T13:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "전국 3개지역 교복 담합…대리점 10곳·과징금 1억",
+      "telegram_core_fact": "지난 4월 공정위는 과징금 부과 기준율 하한을 대폭 높이고 반복 담합 사업자에 대한 제재를 강화하도록 고시를 개정했다.",
+      "title": "전국 3개지역 교복 담합…대리점 10곳·과징금 1억"
+    },
     "source_fact:db2b97e01552c2bb6ca79a21": {
       "first_seen_kst": "2026-10-07T00:54:50+09:00",
       "lanes": {
@@ -470407,7 +471862,7 @@
       "link": "https://www.yna.co.kr/view/AKR20261013074800030",
       "source": "연합뉴스",
       "source_body_digest": "7ab4f264188d6906892b52a22a60009e0e4a363242f36990525532e0afbe15f6",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:724c77828def5c1c640116c56d1cf85184f5f930ed764f926a63e64f36e73a89",
       "source_fact_identity": "source_facts:v1:ff10b3a116a88f23d4ab3fe7dc4ccbd4a81be297b885acf8d8f75dfc49b43ad1",
       "source_fact_keys": [
         "source_fact:v1:d3e27beb044b57198af10e8fdf61259d5b6f914979edeac54c116b344b8a328b",
@@ -472299,7 +473754,7 @@
       "link": "https://www.etoday.co.kr/news/view/2634954",
       "source": "이투데이",
       "source_body_digest": "49893cc6a93c1e17687b976ddad479feb82fac306a6c3cc3b13e57a349ec91d5",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:fcaa144506780eb661206b0ec500856f8955bed8d87a2ebf64a2c36b84f63aee",
       "source_fact_identity": "source_facts:v1:2f5474725b555ff78d02ad7c371f1fa43b9c7625d4406ba0bcfbf6c0b3940d8c",
       "source_fact_keys": [
         "source_fact:v1:0f75a4be600d081f4c6e6808c8432588efe13348a6f3189210bfce88e18cd2d3",
@@ -481193,7 +482648,7 @@
       "link": "https://www.etoday.co.kr/news/view/2634954",
       "source": "이투데이",
       "source_body_digest": "49893cc6a93c1e17687b976ddad479feb82fac306a6c3cc3b13e57a349ec91d5",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:fcaa144506780eb661206b0ec500856f8955bed8d87a2ebf64a2c36b84f63aee",
       "source_fact_identity": "source_facts:v1:2f5474725b555ff78d02ad7c371f1fa43b9c7625d4406ba0bcfbf6c0b3940d8c",
       "source_fact_keys": [
         "source_fact:v1:0f75a4be600d081f4c6e6808c8432588efe13348a6f3189210bfce88e18cd2d3",
@@ -487620,6 +489075,30 @@
       "source_published_kst": "2026-10-06T16:06+09:00",
       "title": "건설로봇, 연구실 넘어 현장으로…“상용화 위한 실증 확대·제도 개선 필요”"
     },
+    "source_fact:ee52caac17b88af5b01a7dfb": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823912",
+      "source": "뉴시스",
+      "source_body_digest": "3934f7cf21c089c61109aaa8fe04b3c3ea5f99a5e9f0e87dd82e1a20c867c47a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:495b7e941bdf3da3d42e1171018aa2d00544eec90d22682065213abd71ea08f8",
+      "source_fact_keys": [
+        "source_fact:v1:2033394372bea8d917d3b785ead31335e576b241d44d77fbcde56579c38a90d6",
+        "source_fact:v1:57e3831ae2939b92da274dac9f9f635ea1cb275b48f4998eed3cdce29450ebb0",
+        "source_fact:v1:7f0798ec8f8cd62f302254505912cbe7e797a7388deccab99fe215822eec8c29",
+        "source_fact:v1:c0a100349bc5ed310c509826f19682bdca39b212bd1e09eb4337bd5df6443e16",
+        "source_fact:v1:f3436f35f241832d4b301c8d3ab0a627746bb922df2834a8a808abc4a10bbc6d"
+      ],
+      "source_published_kst": "2026-10-13T13:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 中 9월 신차 295만대 판매·8.4%↓…“수출은 61% 급증”",
+      "telegram_core_fact": "중국 자동차 시장에서 수출 급증에도 정부의 보조금 축소와 내수 부진으로 신차 판매량이 9월 전년 동월 대비 8.4% 크게 줄었다. 이재망(理財網)과 홍콩경제일보, 경제통, 재신쾌보는 13일 중국자동차공업협회(CAAM) 최신통계를 인용해 2026년 9월 중국 신차 판매량이 295만6000대로 이같이 감소했다고 보도했다.",
+      "title": "[올댓차이나] 中 9월 신차 295만대 판매·8.4%↓…“수출은 61% 급증”"
+    },
     "source_fact:ee5d47a078f3f74bea96f971": {
       "first_seen_kst": "2026-10-12T10:17:45+09:00",
       "lanes": {
@@ -490952,7 +492431,7 @@
       "link": "https://www.yna.co.kr/view/AKR20261013046151004",
       "source": "연합뉴스",
       "source_body_digest": "d67e513ce05ca92d8d21e41449bae926ff4aa67cca423e093f05475f79598de2",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:fcaa144506780eb661206b0ec500856f8955bed8d87a2ebf64a2c36b84f63aee",
       "source_fact_identity": "source_facts:v1:ba101a112ab0d06ed161c34859330b43c2bd03f405e3b310fbefbb040ac7df1e",
       "source_fact_keys": [
         "source_fact:v1:1bbb5b047e691516fa9076a446ded0fd9d4ee3519c7838447a9eadf05666760e",
@@ -496447,7 +497926,7 @@
       "link": "https://www.yna.co.kr/view/AKR20261013039200003",
       "source": "연합뉴스",
       "source_body_digest": "8b76779c1b4e628f543e8a77e0e666a62ff02ee97ff793553827aac388acf013",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:named_supply_order:d27f53bc887f0eae393b088feaf143c1b7e144c0ea0a9287ffa3cb0ecca19524",
       "source_fact_identity": "source_facts:v1:fee0ed148bd339e62792f46f1b04f8da7db5e4768d6836dc7d49fd5488c6cf0c",
       "source_fact_keys": [
         "source_fact:v1:4b2bfaff86d750656fa07d5f8feaec9f7997864ae54e8c2393136358b9ace67a",
@@ -496456,6 +497935,24 @@
         "source_fact:v1:f53c0b1c96ef6b3d83fe140ffc85269a114f9f2b60ffb1e7c54f7d2c1073fc8e"
       ],
       "source_published_kst": "2026-10-13T09:18+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "185300000000"
+          ]
+        ],
+        "customer": "블룸에너지",
+        "delivery_period": "2027-04/2027-07",
+        "disclosure_date": "2026-10-13",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "LS일렉트릭",
+        "product": "수배전반및배전용변압기",
+        "quantities": [],
+        "stage": "signed"
+      },
       "source_title": "LS일렉, 미국 데이터센터에 1천853억원 규모 배전설비 공급 | 연합뉴스",
       "telegram_core_fact": "LS일렉트릭은 글로벌 전력기업 블룸에너지와 1천853억원 수배전반 및 배전용 변압기 공급 계약을 체결했다고 13일 공시했다.",
       "title": "LS일렉, 미국 데이터센터에 1천853억원 규모 배전설비 공급 | 연합뉴스"
@@ -505854,7 +507351,7 @@
       "link": "https://www.yna.co.kr/view/AKR20261013039200003",
       "source": "연합뉴스",
       "source_body_digest": "8b76779c1b4e628f543e8a77e0e666a62ff02ee97ff793553827aac388acf013",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:named_supply_order:d27f53bc887f0eae393b088feaf143c1b7e144c0ea0a9287ffa3cb0ecca19524",
       "source_fact_identity": "source_facts:v1:fee0ed148bd339e62792f46f1b04f8da7db5e4768d6836dc7d49fd5488c6cf0c",
       "source_fact_keys": [
         "source_fact:v1:4b2bfaff86d750656fa07d5f8feaec9f7997864ae54e8c2393136358b9ace67a",
@@ -505863,6 +507360,24 @@
         "source_fact:v1:f53c0b1c96ef6b3d83fe140ffc85269a114f9f2b60ffb1e7c54f7d2c1073fc8e"
       ],
       "source_published_kst": "2026-10-13T09:18+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "185300000000"
+          ]
+        ],
+        "customer": "블룸에너지",
+        "delivery_period": "2027-04/2027-07",
+        "disclosure_date": "2026-10-13",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "LS일렉트릭",
+        "product": "수배전반및배전용변압기",
+        "quantities": [],
+        "stage": "signed"
+      },
       "source_title": "LS일렉, 미국 데이터센터에 1천853억원 규모 배전설비 공급 | 연합뉴스",
       "telegram_core_fact": "LS일렉트릭은 글로벌 전력기업 블룸에너지와 1천853억원 수배전반 및 배전용 변압기 공급 계약을 체결했다고 13일 공시했다.",
       "title": "LS일렉, 미국 데이터센터에 1천853억원 규모 배전설비 공급 | 연합뉴스"
@@ -511294,6 +512809,29 @@
       "source_published_kst": "2026-10-06T09:24+09:00",
       "title": "특징주, 아이티센씨티에스-네트워크통합 테마 상승세에 2.22% ↑"
     },
+    "title:181f2cc7a405e5f0c687f562": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173498",
+      "source": "매일경제",
+      "source_body_digest": "2acd83195e9c27729b79d66de24235a312d580f9b0c479b07e4e3dee0f205ddc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c3a4fea0d58222192ce27ed463f84e08b188822271a60e209e3c99e4ae06590",
+      "source_fact_keys": [
+        "source_fact:v1:bb5611f2474b8c66035c4188bc22e9b96256f7c16fe42aa9966912ebfa238097",
+        "source_fact:v1:c1bdb2cbe90cf2fdc68106fc905e717075e8c5ed6ac33df392633ad04b7bb526",
+        "source_fact:v1:d496145177f8b583667dfee7f80d10ba98384c61e484970724198180f230cec2",
+        "source_fact:v1:f120138315bb1ffa53e0b71abf8ea497c98dc6d05c7665c9e4b99c36ccce2c47"
+      ],
+      "source_published_kst": "2026-10-13T13:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "전국 3개지역 교복 담합…대리점 10곳·과징금 1억",
+      "telegram_core_fact": "지난 4월 공정위는 과징금 부과 기준율 하한을 대폭 높이고 반복 담합 사업자에 대한 제재를 강화하도록 고시를 개정했다.",
+      "title": "전국 3개지역 교복 담합…대리점 10곳·과징금 1억"
+    },
     "title:182c019b3810d02ebd82fc4e": {
       "first_seen_kst": "2026-10-08T12:46:54+09:00",
       "lanes": {
@@ -513923,10 +515461,23 @@
       "link": "https://www.newsis.com/view/NISX20261013_0003823622",
       "source": "뉴시스",
       "source_body_digest": "4390ecc3b97d8008d66f7253a6e7f6c89639162b749e0bd6be4bc44bb9ee81fa",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:named_supply_order:89cda50337284e7c49b804a6532aa6d3960adc6af84ffebeb24516b1059968c2",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-13T11:00+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [],
+        "customer": "대우건설",
+        "delivery_period": "",
+        "disclosure_date": "2026-10-13",
+        "duration_years": "2",
+        "explicit_revision": false,
+        "issuer": "쿠쿠",
+        "product": "빌트인정수기",
+        "quantities": [],
+        "stage": "signed"
+      },
       "source_title": "쿠쿠, 대우건설 빌트인 정수기 수주…\"B2B 확대\"",
       "telegram_core_fact": "쿠쿠가 대우건설의 빌트인 정수기 공급 계약을 수주했다.",
       "title": "쿠쿠, 대우건설 빌트인 정수기 수주…\"B2B 확대\""
@@ -514124,7 +515675,7 @@
       "link": "https://www.etoday.co.kr/news/view/2634954",
       "source": "이투데이",
       "source_body_digest": "49893cc6a93c1e17687b976ddad479feb82fac306a6c3cc3b13e57a349ec91d5",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:fcaa144506780eb661206b0ec500856f8955bed8d87a2ebf64a2c36b84f63aee",
       "source_fact_identity": "source_facts:v1:2f5474725b555ff78d02ad7c371f1fa43b9c7625d4406ba0bcfbf6c0b3940d8c",
       "source_fact_keys": [
         "source_fact:v1:0f75a4be600d081f4c6e6808c8432588efe13348a6f3189210bfce88e18cd2d3",
@@ -520324,7 +521875,7 @@
       "link": "https://www.yna.co.kr/view/AKR20261013074800030",
       "source": "연합뉴스",
       "source_body_digest": "7ab4f264188d6906892b52a22a60009e0e4a363242f36990525532e0afbe15f6",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:724c77828def5c1c640116c56d1cf85184f5f930ed764f926a63e64f36e73a89",
       "source_fact_identity": "source_facts:v1:ff10b3a116a88f23d4ab3fe7dc4ccbd4a81be297b885acf8d8f75dfc49b43ad1",
       "source_fact_keys": [
         "source_fact:v1:d3e27beb044b57198af10e8fdf61259d5b6f914979edeac54c116b344b8a328b",
@@ -525375,7 +526926,7 @@
       "link": "https://www.newsis.com/view/NISX20261013_0003823115",
       "source": "뉴시스",
       "source_body_digest": "1e28a389e24b472b0885ed7332250f5f6b08dcd278a6621f7dbbb6ce5b138850",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:724c77828def5c1c640116c56d1cf85184f5f930ed764f926a63e64f36e73a89",
       "source_fact_identity": "source_facts:v1:ceb416c093090f0944d62867ebf1634d153b652ddfbc55d8114511e1756f100e",
       "source_fact_keys": [
         "source_fact:v1:c12e4bf4e95bfc6fdc870fab267c155528609fa564baaae6afacdf52509021b5",
@@ -545355,10 +546906,23 @@
       "link": "https://www.etnews.com/20261013000097",
       "source": "전자신문",
       "source_body_digest": "410c516ae58e39b8976228623320a06174e49bc1862f06081b89ffafc91a8f53",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:named_supply_order:89cda50337284e7c49b804a6532aa6d3960adc6af84ffebeb24516b1059968c2",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-13T10:18+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [],
+        "customer": "대우건설",
+        "delivery_period": "",
+        "disclosure_date": "2026-10-13",
+        "duration_years": "2",
+        "explicit_revision": false,
+        "issuer": "쿠쿠",
+        "product": "빌트인정수기",
+        "quantities": [],
+        "stage": "signed"
+      },
       "source_title": "쿠쿠, 대우건설에 빌트인 정수기 공급…2년간 납품",
       "telegram_core_fact": "쿠쿠가 대우건설 빌트인 정수기 공급 계약을 수주했다.",
       "title": "쿠쿠, 대우건설에 빌트인 정수기 공급…2년간 납품"
@@ -549734,6 +551298,26 @@
       "source_title": "일본, 우크라산 요격 드론 구매 계약…방위상 \"신속 도입 추진\"",
       "telegram_core_fact": "유철종 전문위원 = 일본 방위성이 우크라이나 방산업체 '스카이폴'(SkyFall)이 생산하는 요격 드론 구매 계약을 체결하고 신속한 도입을 추진 중인 것으로 전해졌다.",
       "title": "일본, 우크라산 요격 드론 구매 계약…방위상 \"신속 도입 추진\""
+    },
+    "title:9d3055a08ebbaa6affe6ee6f": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822835",
+      "source": "뉴시스",
+      "source_body_digest": "d4de1043826dc1c320b0955d42940fc2f5abe532f07d28c5003b0f8c3e22ba58",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ef277ba0477de444deb09ec74d6d31e46f4d32e3f2f2c81820b1d5d992cead1d",
+      "source_fact_keys": [
+        "source_fact:v1:8cae788146809f15794f5a85932373227bb8dd752ff1f5549c1b76b1b5aeaec7"
+      ],
+      "source_published_kst": "2026-10-13T14:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "영어유치원 '7세 고시' 금지…레벨테스트 꼼수 각양각색",
+      "telegram_core_fact": "이달부터 유아 대상 영어학원의 입학 레벨테스트인 이른바 '7세 고시'가 금지되면서 울산지역 영어학원가에서도 혼란이 일고 있다.",
+      "title": "영어유치원 '7세 고시' 금지…레벨테스트 꼼수 각양각색"
     },
     "title:9d699f81e8cb7c2bb346d22a": {
       "first_seen_kst": "2026-10-08T14:21:54+09:00",
@@ -567996,6 +569580,28 @@
       "telegram_core_fact": "씨앤엠은 한국거래소로부터 코스닥시장 상장예비심사 승인을 받았다고 12일 밝혔다.",
       "title": "씨앤엠, 코스닥 상장예비심사 승인…청구 4주 만"
     },
+    "title:dce82987ae01ad50aff72eab": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173495",
+      "source": "매일경제",
+      "source_body_digest": "4c5b0a94c416504186369efe194a6f138fbc5e11db6ab71bcf52a21a0481b5e6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1e39700cbffabbda9f563c3f31b2fb2cbfd1987e28a4bda66c202344e2496a6a",
+      "source_fact_keys": [
+        "source_fact:v1:157b7f7f270e2ba68372326e99c2a41b0dc77fd02f097c3a4b8b46d5bb70b7e9",
+        "source_fact:v1:652600a0ba8e83a8464316fdbf490da14a45d05c06ff6a4ea4d9a9dda633917c",
+        "source_fact:v1:d9f2952408117413a9fa6b88f4645e588af2117d35944a3704f75c3ee5c7a7c1"
+      ],
+      "source_published_kst": "2026-10-13T13:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "국가안보·정보보호 위협하는 물품 22일부터 수출입 막힌다",
+      "telegram_core_fact": "정부가 국가안보와 개인·기업의 정보 보호를 위협하는 물품의 수출입을 제한할 수 있도록 관련 제도를 정비했다.",
+      "title": "국가안보·정보보호 위협하는 물품 22일부터 수출입 막힌다"
+    },
     "title:dcf65c415f3d22c0d4d78fc5": {
       "first_seen_kst": "2026-10-04T08:04:25+09:00",
       "lanes": {
@@ -568302,6 +569908,26 @@
       "source_title": "中, EU 하이브리드차 수출 제한 거부…한국차도 규제 영향권",
       "telegram_core_fact": "EU는 중국산 하이브리드차에 수입 물량 제한과 추가 관세를 부과하는 방안을 검토하고 있다.",
       "title": "中, EU 하이브리드차 수출 제한 거부…한국차도 규제 영향권"
+    },
+    "title:de6b88bf0aacf20978d4bdcb": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1173487",
+      "source": "매일경제",
+      "source_body_digest": "b3535371be820170c2766eeabd448b74a28bd62bd17b74aa2f000adc991ddc91",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6aaa182e8f1c1c03ac3793ac3fcdd1810f6e73700ac5c47d7e7e322cd560c777",
+      "source_fact_keys": [
+        "source_fact:v1:aa4c6f07ce31030ce16dce7b02ec99b7cb8d2c132bc2fa2143fd29bf1b5ba24e"
+      ],
+      "source_published_kst": "2026-10-13T13:22+09:00",
+      "source_supply_terms": {},
+      "source_title": "[AI픽] 정부사업으로 만든 AI 데이터, AI허브로 모은다",
+      "telegram_core_fact": "정부가 정부사업으로 구축한 인공지능(AI) 학습용 데이터 공급을 늘리고, 공공·민간 데이터의 소재 정보도 통합적으로 제공하기로 했다. 과학기술정보통신부는 국가 데이터 연계 및 AI 학습·활용 촉진을 위한 'AI기본법'과 '데이터산업법 개정안이 13일 국무회의를 통과했다고 밝혔다.",
+      "title": "[AI픽] 정부사업으로 만든 AI 데이터, AI허브로 모은다"
     },
     "title:de6bcdd77c98deb85ec5bf12": {
       "first_seen_kst": "2026-10-07T01:59:08+09:00",
@@ -569930,6 +571556,30 @@
       "source_published_kst": "2026-10-06T14:16+09:00",
       "title": "\"최태원 9440억 SK 지분 매각, 3%룰 회피 목적 아닌지 밝혀야\""
     },
+    "title:e427acd1ac8f969e88d71803": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822791",
+      "source": "뉴시스",
+      "source_body_digest": "374e38e034c150b9588c58e552c485a74f4f1f5776533728305452a6a8988385",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6c8fbf3a2ae23ba90dd267aebf4621c2ebe1ed968dc8c73e83c0530bcc1b2768",
+      "source_fact_keys": [
+        "source_fact:v1:26b60754f947f5a946dae7b064d1503386b4292c93760d808d4f7c434239c434",
+        "source_fact:v1:645913c691cc36744eaf72ea0a2d2257f5d6a04686a206d45efa63fc70b15aa5",
+        "source_fact:v1:677216711ab487f352844e8d55fb1037a88ec255ba65fcb752e009ade79c6236",
+        "source_fact:v1:cd020eae3b6d0dedcfaf15d3680c71c844e0fbc9494086c5c64fb04379ac8d27",
+        "source_fact:v1:d4323b1db6a44e32d0197bb27968795a38ad114352195362037168a2b6714480"
+      ],
+      "source_published_kst": "2026-10-13T12:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"재택의료·단기보호 부족\"…통합돌봄 지역 격차 좁힌다",
+      "telegram_core_fact": "지역사회 통합돌봄 첫 실태조사 결과 재택의료센터와 장애인건강주치의, 단기보호 등의 서비스가 수요 대비 공급이 부족한 것으로 나타났다. 방문진료 충족률은 일반지역 25.5%, 인구감소지역 10.7%였고 재택의료센터는 일반지역 20.6%, 인구감소지역 8.3%였다.",
+      "title": "\"재택의료·단기보호 부족\"…통합돌봄 지역 격차 좁힌다"
+    },
     "title:e42b1d8144103b59861e4db0": {
       "first_seen_kst": "2026-10-09T19:24:17+09:00",
       "lanes": {
@@ -571038,7 +572688,7 @@
       "link": "https://www.yna.co.kr/view/AKR20261013046151004",
       "source": "연합뉴스",
       "source_body_digest": "d67e513ce05ca92d8d21e41449bae926ff4aa67cca423e093f05475f79598de2",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:fcaa144506780eb661206b0ec500856f8955bed8d87a2ebf64a2c36b84f63aee",
       "source_fact_identity": "source_facts:v1:ba101a112ab0d06ed161c34859330b43c2bd03f405e3b310fbefbb040ac7df1e",
       "source_fact_keys": [
         "source_fact:v1:1bbb5b047e691516fa9076a446ded0fd9d4ee3519c7838447a9eadf05666760e",
@@ -573634,6 +575284,27 @@
       "source_title": "유진투자증권 “러시아 제재 완화에도 디젤 공급난 지속…정제마진 강세 전망”",
       "telegram_core_fact": "유진투자증권은 13일 미국이 디젤 가격 안정을 위해 러시아산 경유에 대한 제재를 한시적으로 완화했지만 글로벌 공급 부족을 해소하기는 어려울 것으로 전망했다.",
       "title": "유진투자증권 “러시아 제재 완화에도 디젤 공급난 지속…정제마진 강세 전망”"
+    },
+    "title:f13d056ebd97f665e25661f2": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823893",
+      "source": "뉴시스",
+      "source_body_digest": "45a2d749cfada580f89c08eaca99ec686612cb98f1166ca058408bd2d2c2291f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:926359fbe632a9b8a9487062a2d573bbe6d1c78ec40cd75267f00adce38d82b1",
+      "source_fact_keys": [
+        "source_fact:v1:01958d02bb723b8bcd4b9a4791309eb4cdcfa236cc4b4c1003f64b2468e83b84",
+        "source_fact:v1:7e4adc7eed2122a367816e1d86367ab7af25567a6ed62a22a1005b10ce0629aa"
+      ],
+      "source_published_kst": "2026-10-13T13:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "LH 사장, 고양창릉 점검…\"주택 공급 속도 과감히 높여야\"",
+      "telegram_core_fact": "이성훈 한국토지주택공사(LH) 사장이 13일 3기 신도시 고양창릉 공공주택지구를 찾아 주택 공급 추진 현황을 점검하고 속도감 있는 사업 추진을 당부했다. 이번 현장 방문은 전날 국감에서 제기된 국민의 주거 안정과 주택 공급 확대 주문을 현장에서 속도감 있게 실현하겠다는 의지가 담긴 것이라고 LH 측은 설명했다.",
+      "title": "LH 사장, 고양창릉 점검…\"주택 공급 속도 과감히 높여야\""
     },
     "title:f14270f326b233848c927192": {
       "first_seen_kst": "2026-10-03T07:28:32+09:00",
@@ -577135,10 +578806,32 @@
       "link": "https://www.etoday.co.kr/news/view/2634992",
       "source": "이투데이",
       "source_body_digest": "855ba19bc609260454af77c79e188aed3baf3f837e31c5a2121a73f9b8423a77",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:named_supply_order:b9b9b1a7e028532438e46e48e4719ff729d47f9a2af6b7e4d789b8e8609a0d18",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-13T09:14+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "달러",
+            "138458284"
+          ],
+          [
+            "원",
+            "185300000000"
+          ]
+        ],
+        "customer": "블룸에너지",
+        "delivery_period": "2027-04/2027-07",
+        "disclosure_date": "2026-10-13",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "LS일렉트릭",
+        "product": "수배전반및배전용변압기",
+        "quantities": [],
+        "stage": "signed"
+      },
       "source_title": "LS일렉트릭, 美 빅테크 데이터센터에 1853억원 규모 배전설비 공급",
       "telegram_core_fact": "LS일렉트릭이 미국 빅테크 기업의 데이터센터에 1853억원 배전설비를 공급한다.",
       "title": "LS일렉트릭, 美 빅테크 데이터센터에 1853억원 규모 배전설비 공급"
@@ -577633,6 +579326,30 @@
       "source_published_kst": "2026-10-06T13:28+09:00",
       "title": "전세사기 피해 보증금 3분의 1 회복 보장…지원금 산정기준 마련 | 연합뉴스"
     },
+    "title:feffc119873ad6ca80708565": {
+      "first_seen_kst": "2026-10-13T16:01:00+09:00",
+      "lanes": {
+        "live": "2026-10-13T16:01:00+09:00"
+      },
+      "last_seen_kst": "2026-10-13T16:01:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823912",
+      "source": "뉴시스",
+      "source_body_digest": "3934f7cf21c089c61109aaa8fe04b3c3ea5f99a5e9f0e87dd82e1a20c867c47a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:495b7e941bdf3da3d42e1171018aa2d00544eec90d22682065213abd71ea08f8",
+      "source_fact_keys": [
+        "source_fact:v1:2033394372bea8d917d3b785ead31335e576b241d44d77fbcde56579c38a90d6",
+        "source_fact:v1:57e3831ae2939b92da274dac9f9f635ea1cb275b48f4998eed3cdce29450ebb0",
+        "source_fact:v1:7f0798ec8f8cd62f302254505912cbe7e797a7388deccab99fe215822eec8c29",
+        "source_fact:v1:c0a100349bc5ed310c509826f19682bdca39b212bd1e09eb4337bd5df6443e16",
+        "source_fact:v1:f3436f35f241832d4b301c8d3ab0a627746bb922df2834a8a808abc4a10bbc6d"
+      ],
+      "source_published_kst": "2026-10-13T13:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "[올댓차이나] 中 9월 신차 295만대 판매·8.4%↓…“수출은 61% 급증”",
+      "telegram_core_fact": "중국 자동차 시장에서 수출 급증에도 정부의 보조금 축소와 내수 부진으로 신차 판매량이 9월 전년 동월 대비 8.4% 크게 줄었다. 이재망(理財網)과 홍콩경제일보, 경제통, 재신쾌보는 13일 중국자동차공업협회(CAAM) 최신통계를 인용해 2026년 9월 중국 신차 판매량이 295만6000대로 이같이 감소했다고 보도했다.",
+      "title": "[올댓차이나] 中 9월 신차 295만대 판매·8.4%↓…“수출은 61% 급증”"
+    },
     "title:ff016e5e8e08fa4b994f07d2": {
       "first_seen_kst": "2026-10-02T15:40:35+09:00",
       "lanes": {
@@ -577976,5 +579693,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-13T14:54:18+09:00"
+  "updated_at_kst": "2026-10-13T16:01:00+09:00"
 }
