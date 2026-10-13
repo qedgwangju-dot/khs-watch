@@ -1,6 +1,6 @@
 {
   "status": "degraded",
-  "checked_at_kst": "2026-10-14T06:54:13+09:00",
+  "checked_at_kst": "2026-10-14T06:54:36+09:00",
   "route_source": "encrypted-route",
   "telegram_route_ok": true,
   "qlex_collector_rc": 0,
@@ -31,11 +31,11 @@
   "halozyme_search_task_count": 72,
   "intismeran_retry_pending": false,
   "last_health_notice_date": "2026-10-13",
-  "failure_notice_message_id": 171,
+  "failure_notice_message_id": 173,
   "last_qlex_telegram_message_ids": [
-    170
+    172
   ],
-  "last_qlex_telegram_sent_at_kst": "2026-10-14T06:54:47+09:00",
+  "last_qlex_telegram_sent_at_kst": "2026-10-14T06:55:12+09:00",
   "errors": [
     "Intismeran sender rc=1: RuntimeError: 한국어 송출 검증 실패 — 일반 영어/일본어 설명어가 남아 있어 발송 차단: IIB"
   ],
