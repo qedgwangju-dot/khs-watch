@@ -140,5 +140,84 @@ class InferenceStructureWatchTests(unittest.TestCase):
         self.assertEqual(parsed["cpu_per_gpu"], 1.0)
 
 
+    def test_ocp_official_demo_metrics_are_scoped(self):
+        body=("OCP Global Summit 2026. Samsung and AMD collaborated to validate CXL memory. "
+              "CMM-D MD310 provides DCD-based CXL memory pooling. "
+              "The demo delivers up to 38% lower TTFT and up to 3.3x higher goodput. "
+              "A production deployment at Samsung Semiconductor's US campus with SGLang "
+              "delivered 5–7x KV cache utilization. "
+              "BM1773 256TB QLC SSD; PM1763 up to 28.4 GB/s sequential read. "
+              "FDP LMCache KV cache. LPDDR5X-PIM up to 8x higher effective bandwidth "
+              "and LLM inference performance (TPS) by up to 3x.")
+        state=m.parse_samsung_ocp_2026(body,m.OCP_SOURCE)
+        self.assertEqual(state["demo_ttft_reduction_max_pct"],38)
+        self.assertEqual(state["demo_goodput_max_x"],3.3)
+        self.assertEqual(state["internal_kv_cache_min_x"],5)
+        self.assertEqual(state["internal_kv_cache_max_x"],7)
+        self.assertEqual(state["bm1773_qlc_capacity_tb"],256)
+        self.assertEqual(state["pm1763_read_gbps"],28.4)
+        self.assertEqual(state["lpddr5x_pim_tps_max_x"],3)
+        self.assertFalse(state["external_amd_paid_order_confirmed"])
+        self.assertFalse(state["groq_2nm_lpu_confirmed"])
+
+    def test_trendforce_reprint_cannot_fake_official_ocp_source(self):
+        text=("OCP Global Summit 2026 Samsung and AMD collaborated to validate CXL memory "
+              "CMM-D MD310 DCD-based CXL memory pooling 38% 3.3x")
+        self.assertEqual(m.parse_samsung_ocp_2026(text,"https://www.trendforce.com/news/foo"),{})
+
+    def test_ocp_demo_replays_are_silent_after_initial_event(self):
+        a={"product":"CMM-D MD310","amd_cxl_joint_validation":True,
+           "demo_ttft_reduction_max_pct":38.0,"demo_goodput_max_x":3.3}
+        self.assertEqual(len(m.compare_ocp_memory({},a)),1)
+        self.assertEqual(m.compare_ocp_memory(a,a),[])
+        b=dict(a,demo_goodput_max_x=3.6)
+        self.assertEqual(len(m.compare_ocp_memory(a,b)),1)
+
+    def test_amd_joint_demo_is_not_new_paid_contract(self):
+        body=("OCP Global Summit 2026 Samsung and AMD collaborated to validate CXL memory "
+              "CMM-D MD310 provides DCD-based CXL memory pooling.")
+        s=m.parse_samsung_ocp_2026(body,m.OCP_SOURCE)
+        self.assertFalse(s["external_amd_paid_order_confirmed"])
+        self.assertNotIn("mass_production",str(s))
+
+    def test_groq_generic_2nm_wafer_display_does_not_promote_4nm_lpu(self):
+        text=("Samsung Foundry showed Groq 3 LPU 4nm wafers. "
+              "Separately, it displayed a 2nm GAA wafer.")
+        self.assertEqual(m.parse_samsung_official_ai_milestone(
+            text,"https://semiconductor.samsung.com/news-events/tech-blog/ocp"),{})
+
+    def test_groq_mass_production_requires_samsung_owned_completion(self):
+        text="Samsung has begun mass production of Groq 3 LPU with Samsung Foundry at 4nm."
+        good=m.parse_samsung_official_ai_milestone(
+            text,"https://semiconductor.samsung.com/news-events/news/groq")
+        self.assertEqual(good["kind"],"groq_foundry")
+        self.assertEqual(good["stage"],"mass_production")
+        self.assertEqual(m.parse_samsung_official_ai_milestone(
+            text,"https://www.zdnet.co.kr/article/groq"),{})
+
+    def test_groq_future_plan_cannot_become_actual_production(self):
+        text="Samsung Foundry plans to begin mass production of Groq 3 LPU at 4nm in 2027."
+        self.assertEqual(m.parse_samsung_official_ai_milestone(
+            text,"https://semiconductor.samsung.com/news-events/news/groq"),{})
+
+    def test_prior_4nm_groq_wafer_baseline_is_not_resent(self):
+        self.assertEqual(m.BASELINE["groq_foundry"]["stage"],"wafer_display")
+        self.assertEqual(m.stage_upgrade(m.BASELINE["groq_foundry"],
+                         {"kind":"groq_foundry","company":"삼성전자","stage":"wafer_display"}),[])
+
+    def test_ocp_alert_explains_internal_vs_customer_and_links_official_source(self):
+        latest={"ocp_memory_system":{"demo_ttft_reduction_max_pct":38,
+                 "demo_goodput_max_x":3.3,"internal_memory_node_deployed":True,
+                 "internal_kv_cache_min_x":5,"internal_kv_cache_max_x":7}}
+        text=m.build_alert([{"kind":"ocp_memory","company":"삼성전자·AMD",
+             "label":"공식 검증"}],latest,[m.OCP_SOURCE])
+        self.assertIn("3.3배",text)
+        self.assertIn("사내",text)
+        self.assertIn("외부",text)
+        self.assertIn(m.OCP_SOURCE,text)
+        self.assertNotIn("CoreWeave:",text)
+
+
+
 if __name__ == "__main__":
     unittest.main()

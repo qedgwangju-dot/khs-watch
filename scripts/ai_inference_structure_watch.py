@@ -24,6 +24,8 @@ PENDING_PATH = ROOT / "out" / "ai_inference_structure_pending_state.json"
 ALERT_PATH = ROOT / "out" / "ai_inference_structure_alert.html"
 RUBIN_STATE_PATH = ROOT / "data" / "rubin_hbm_watch_state.json"
 UA = "Mozilla/5.0 (compatible; khs-watch/inference-structure)"
+OCP_SOURCE = "https://semiconductor.samsung.com/events/ocp-2026/"
+GROQ_GTC_SOURCE = "https://semiconductor.samsung.com/kr/news-events/tech-blog/architecting-the-ai-era-samsung-electronics-and-nvidia-define-the-future-at-gtc-2026/"
 
 BASELINE = {
     "as_of": "2026-09-28",
@@ -51,6 +53,12 @@ BASELINE = {
         },
     },
     "upstream_snapshot": {},
+    # Groq 3 LPU 4nm wafer and partnership were already disclosed at GTC 2026.
+    # Do not re-alert simply because a new OCP article repeats the wafer display.
+    "groq_foundry": {"stage":"wafer_display","node_nm":4,"mass_production_confirmed":False,
+                      "source":GROQ_GTC_SOURCE},
+    "cxl_customer_stage": {"stage":"joint_validation","external_paid_contract_confirmed":False},
+    "ocp_memory_system": {},
     "seen_urls": [
         "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html",
         "https://www.intel.com/content/www/us/en/newsroom/news/artificial-intelligence/computex-2026-an-intelligent-world-built-on-silicon.html",
@@ -74,6 +82,8 @@ SEARCHES = [
     'site:nebius.com OR site:assets.nebius.com Nebius active power connected power contracted power servicing capacity tranche 2026',
     'site:ytlpowerinternational.com YTL data center contracted MW operational capacity revenue data halls 2026',
     '(site:att.com OR site:verizon.com OR site:t-mobile.com OR site:microsoft.com OR site:aws.amazon.com OR site:cloud.google.com OR site:oracle.com) edge regional inference AI contract MW deployed',
+    'site:semiconductor.samsung.com OR site:news.samsung.com CMM-D AMD CXL pooling qualification orders mass production shipment',
+    'site:semiconductor.samsung.com OR site:news.samsung.com Groq 3 LPU 4nm wafer Samsung Foundry production shipment contract',
 ]
 
 OFFICIAL_DOMAINS = (
@@ -82,6 +92,7 @@ OFFICIAL_DOMAINS = (
     "ytlpowerinternational.com", "ytl.com",
     "att.com", "verizon.com", "t-mobile.com", "microsoft.com", "aws.amazon.com",
     "cloud.google.com", "googlecloudpresscorner.com", "oracle.com",
+    "semiconductor.samsung.com", "news.samsung.com",
 )
 
 def fetch(url: str, timeout: int = 20) -> bytes:
@@ -196,6 +207,124 @@ def metric_near(text: str, label_pattern: str) -> float | None:
         if m:
             return _to_gw(float(m.group(1)), m.group(2))
     return None
+
+
+# Samsung's OCP demo numbers are workload measurements, not AMD purchase volumes.
+def _ocp_num(text, pattern):
+    m=re.search(pattern,text,re.I)
+    return float(m[1]) if m else None
+
+
+def parse_samsung_ocp_2026(text: str, url: str) -> dict:
+    if host_of(url) not in ("semiconductor.samsung.com","www.semiconductor.samsung.com"):
+        return {}
+    if urlparse(url).path.rstrip("/") != "/events/ocp-2026":
+        return {}
+    content=re.sub(r"\s+"," ",text or "")
+    if not (re.search(r"OCP Global Summit 2026",content,re.I)
+            and re.search(r"\bCMM[- ]D\b",content,re.I)
+            and re.search(r"Samsung and AMD collaborated to validate CXL memory",content,re.I)
+            and re.search(r"DCD-based CXL memory pooling",content,re.I)):
+        return {}
+    ttft=_ocp_num(content,r"up to\s*(\d+(?:\.\d+)?)\s*%\s*lower\s*TTFT")
+    goodput=_ocp_num(content,r"up to\s*(\d+(?:\.\d+)?)\s*x\s*higher\s*goodput")
+    internal=bool(re.search(r"production deployment.{0,240}?Samsung Semiconductor.s US campus",content,re.I)
+                  and "SGLang" in content)
+    kv=re.search(r"(\d+(?:\.\d+)?)\s*[–—-]\s*(\d+(?:\.\d+)?)\s*x\s*KV cache utilization",content,re.I)
+    pm=_ocp_num(content,r"PM1763.{0,750}?up to\s*(\d+(?:\.\d+)?)\s*GB/s")
+    bm=_ocp_num(content,r"BM1773.{0,180}?(\d+(?:\.\d+)?)\s*TB\s*QLC")
+    pim=_ocp_num(content,r"LPDDR5X-PIM.{0,400}?up to\s*(\d+(?:\.\d+)?)\s*x\s*higher effective bandwidth")
+    pim_tps=_ocp_num(content,r"LPDDR5X-PIM.{0,650}?TPS\).{0,100}?up to\s*(\d+(?:\.\d+)?)\s*x")
+    return {
+        "amd_cxl_joint_validation":True,"product":"CMM-D MD310",
+        "cxl_dcd_memory_pool":True,
+        "demo_ttft_reduction_max_pct":ttft,"demo_goodput_max_x":goodput,
+        "internal_memory_node_deployed":internal,
+        "internal_kv_cache_min_x":float(kv[1]) if internal and kv else None,
+        "internal_kv_cache_max_x":float(kv[2]) if internal and kv else None,
+        "internal_sglang_collaboration":internal,
+        "bm1773_qlc_capacity_tb":bm,"pm1763_read_gbps":pm,
+        "fdp_lmcache_kvcache":bool(re.search(r"\bFDP\b",content,re.I)
+                                  and re.search(r"\bLMCache\b",content,re.I)
+                                  and re.search(r"KV.cache",content,re.I)),
+        "lpddr5x_pim_bandwidth_max_x":pim,
+        "lpddr5x_pim_tps_max_x":pim_tps,
+        "external_amd_paid_order_confirmed":False,
+        "groq_2nm_lpu_confirmed":False,
+        "as_of":"2026-10-13",
+        "source":OCP_SOURCE,
+    }
+
+
+def compare_ocp_memory(before: dict, after: dict) -> list[dict]:
+    if not after:
+        return []
+    if not before:
+        return [{"kind":"ocp_memory","company":"삼성전자·AMD",
+                 "label":"CMM-D 공동 검증 및 삼성 AI 메모리·저장계층 실증 공식 확인"}]
+    material=False
+    for name,limit in (("demo_ttft_reduction_max_pct",2),("demo_goodput_max_x",0.2),
+                       ("internal_kv_cache_min_x",0.5),("internal_kv_cache_max_x",0.5),
+                       ("bm1773_qlc_capacity_tb",16),("pm1763_read_gbps",1),
+                       ("lpddr5x_pim_bandwidth_max_x",1),("lpddr5x_pim_tps_max_x",0.5)):
+        old,new=before.get(name),after.get(name)
+        if new is not None and (old is None or abs(float(new)-float(old))>=limit):
+            material=True
+    for name in ("internal_memory_node_deployed","fdp_lmcache_kvcache",
+                 "external_amd_paid_order_confirmed"):
+        if not before.get(name) and after.get(name):
+            material=True
+    return ([{"kind":"ocp_memory","company":"삼성전자·AMD",
+              "label":"OCP 메모리 풀링·저장계층 실증 수치 변경"}] if material else [])
+
+
+_SAMSUNG_STAGES={"joint_validation":0,"customer_qualified":1,"contract_signed":2,
+                 "mass_production":3,"commercial_shipment":4}
+_GROQ_STAGES={"wafer_display":0,"customer_qualified":1,
+              "mass_production":2,"commercial_shipment":3}
+
+
+def parse_samsung_official_ai_milestone(text: str, url: str) -> dict:
+    """Do not treat generic 2nm/Groq displays or future intentions as orders/shipments."""
+    if not is_official(url) or host_of(url) not in (
+        "semiconductor.samsung.com","news.samsung.com","nvidianews.nvidia.com"):
+        return {}
+    for sentence in re.split(r"(?<=[.!?])\s+|[。；;\r\n]+",text):
+        low=sentence.lower()
+        if re.search(r"\b(?:will|would|expect(?:ed|s)?|target|plan(?:s|ned)?|could|may)\b|"
+                     r"예정|목표|전망|계획",sentence,re.I):
+            continue
+        if re.search(r"groq\s*3\s*lpu|그록\s*3\s*lpu|그록3\s*lpu",low,re.I) and re.search(
+            r"samsung|삼성|foundry|파운드리",low,re.I) and re.search(r"4\s*nm|4\s*나노",low,re.I):
+            if re.search(r"(?:has\s+begun|began|started|commenced|이미|시작|개시).{0,100}"
+                         r"(?:commercial\s+shipments?|shipping|납품|출하)",low,re.I):
+                return {"kind":"groq_foundry","company":"삼성전자",
+                        "stage":"commercial_shipment","node_nm":4}
+            if re.search(r"(?:has\s+begun|began|started|commenced|이미|시작|개시).{0,100}"
+                         r"(?:mass\s+production|volume\s+production|양산)",low,re.I):
+                return {"kind":"groq_foundry","company":"삼성전자",
+                        "stage":"mass_production","node_nm":4}
+        if re.search(r"\bCMM[- ]D\b",sentence,re.I) and re.search(r"\bAMD\b",sentence,re.I):
+            if re.search(r"(?:has\s+begun|began|started|commenced|시작|개시).{0,100}"
+                         r"(?:commercial\s+shipments?|shipping|납품|출하)",sentence,re.I):
+                return {"kind":"cxl_customer_stage","company":"삼성전자·AMD",
+                        "stage":"commercial_shipment"}
+            if re.search(r"(?:signed|executed|체결|수주).{0,100}"
+                         r"(?:supply\s+contract|purchase\s+order|supply\s+agreement|공급계약|발주|계약)",sentence,re.I):
+                return {"kind":"cxl_customer_stage","company":"삼성전자·AMD",
+                        "stage":"contract_signed"}
+    return {}
+
+
+def stage_upgrade(before: dict, parsed: dict) -> list[dict]:
+    kind=parsed["kind"]
+    order=_GROQ_STAGES if kind=="groq_foundry" else _SAMSUNG_STAGES
+    if order.get(parsed.get("stage"),-1)>order.get(before.get("stage"),0):
+        return [{"kind":kind,"company":parsed["company"],
+                 "label":("Groq 3 LPU 4나노 제조" if kind=="groq_foundry" else "AMD CMM-D")+
+                         " 공식 단계 "+before.get("stage","미확인")+"→"+parsed["stage"]}]
+    return []
+
 
 def parse_cpu_ratio(text: str, url: str) -> dict:
     low = text.lower()
@@ -472,6 +601,7 @@ def discover(previous: dict) -> list[dict]:
                 or parse_ytl(text, url)
                 or parse_cpu_ratio(text, url)
                 or parse_edge_actual(text, url, item.get("title") or "")
+                or parse_samsung_official_ai_milestone(text, url)
             )
             if parsed:
                 rows.append({**item, "url": url, "parsed": parsed})
@@ -495,6 +625,8 @@ def event_line(event: dict) -> str:
         detail = " / ".join(x for x in (str(event.get("scale") or ""), str(event.get("money") or "")) if x)
         suffix = f" ({html.escape(detail)})" if detail else ""
         return f"• <b>에지·지역 추론 상용화:</b> {html.escape(event['company'])} — {html.escape(event['title'])}{suffix}"
+    if kind in ("ocp_memory","groq_foundry","cxl_customer_stage"):
+        return f"• <b>{html.escape(event.get('company') or '삼성전자')}:</b> {html.escape(event.get('label') or '')}"
     if kind == "upstream":
         return f"• <b>{html.escape(event['label'])}:</b> {html.escape(str(event.get('before')))} → {html.escape(str(event.get('after')))}"
     return "• 구조 변화 감지"
@@ -508,14 +640,18 @@ def build_alert(events: list[dict], latest: dict, sources: list[str]) -> str:
     labels = " ".join(str(e.get("label") or "") for e in events)
     event_companies = {str(e.get("company") or "") for e in events if e.get("company")}
 
+    ocp_only = bool(kinds) and kinds <= {"ocp_memory","groq_foundry","cxl_customer_stage"}
+    title = "<b>삼성 OCP·AMD CXL·Groq 파운드리 단계 변화</b>" if ocp_only else "<b>AI 추론 수익화 변화</b>"
     lines = [
-        "<b>🚨 AI 추론 수익화 변화</b>",
+        title,
         "",
         "<b>변화</b>",
         *[event_line(e) for e in events],
         "",
         "<b>의미</b>",
-        "• Agentic AI → CPU 비중 상승 → FCBGA·지역 인프라 → 실제 MW·매출로 이어지는지 확인하는 신호입니다.",
+        ("• CXL로 추론 메모리 용량을 확장하고 SSD·FDP로 KV 캐시를 저장하며, HBM은 고대역폭 작업 메모리로 구분합니다."
+         if ocp_only else
+         "• Agentic AI → CPU 비중 상승 → FCBGA·지역 인프라 → 실제 MW·매출로 이어지는지 확인하는 신호입니다."),
     ]
 
     current = []
@@ -541,6 +677,22 @@ def build_alert(events: list[dict], latest: dict, sources: list[str]) -> str:
                 f"• YTL: 계약 {float(ytl.get('contracted_power_gw') or 0):.3f}GW / "
                 f"데이터센터 부문 기준 매출 MYR {float(ytl.get('data_center_segment_revenue_myr_m') or 0):.1f} million"
             )
+    if "ocp_memory" in kinds:
+        v = latest.get("ocp_memory_system") or {}
+        if v.get("demo_ttft_reduction_max_pct") is not None:
+            current.append(f"• 삼성 CMM-D CXL 시연 첫 토큰 응답시간 최대 {v['demo_ttft_reduction_max_pct']:g}% 단축")
+        if v.get("demo_goodput_max_x") is not None:
+            current.append(f"• 삼성 CXL 시연 추론 유효 처리량 최대 {v['demo_goodput_max_x']:g}배")
+        if v.get("internal_memory_node_deployed"):
+            current.append(f"• 삼성 미국 사내 AI Memory Node 실운영·KV 캐시 활용 {v.get('internal_kv_cache_min_x') or '?'}~{v.get('internal_kv_cache_max_x') or '?'}배")
+        if v.get("bm1773_qlc_capacity_tb"):
+            current.append(f"• BM1773 QLC SSD {v['bm1773_qlc_capacity_tb']:g}TB 전시·PM1763 최고 {v.get('pm1763_read_gbps') or '?'}GB/s")
+        if v.get("fdp_lmcache_kvcache"):
+            current.append("• FDP·LMCache KV 캐시 저장 최적화 시연")
+        if v.get("lpddr5x_pim_tps_max_x"):
+            current.append(f"• LPDDR5X-PIM 추론 처리량 최대 {v['lpddr5x_pim_tps_max_x']:g}배")
+        current.append("• AMD 공동 검증·사내 운영은 외부 고객 유상 공급·양산 매출이 아닙니다.")
+        current.append("• Groq 3 LPU 4나노 웨이퍼는 GTC 2026 기존 공개, 별도 2나노 GAA와 구별합니다.")
     if current:
         lines += ["", "<b>현재 숫자</b>", *current]
 
@@ -556,6 +708,9 @@ def build_alert(events: list[dict], latest: dict, sources: list[str]) -> str:
             checks.append("계약 GW→활성 GW·MW당 매출")
     if "edge_actual" in kinds:
         checks.append("실제 가동 MW·상용 매출")
+    if kinds & {"ocp_memory","groq_foundry","cxl_customer_stage"}:
+        checks.append("CMM-D AMD 실제 발주·고객 인증·양산·매출 / Groq 3 LPU 4나노 실제 출하")
+        checks.append("CXL 상호운용성·응답 지연·SSD 쓰기증폭·보험·냉각·운영비")
     if not checks:
         checks.append("실제 주문·양산·MW·매출")
     lines += ["", "<b>다음 확인</b>", "• " + " / ".join(dict.fromkeys(checks))]
@@ -577,6 +732,10 @@ def main() -> None:
     source_urls = []
 
     latest.setdefault("cpu_ratio", copy.deepcopy(BASELINE["cpu_ratio"]))
+    latest.setdefault("groq_foundry",copy.deepcopy(BASELINE["groq_foundry"]))
+    latest.setdefault("cxl_customer_stage",copy.deepcopy(BASELINE["cxl_customer_stage"]))
+    latest.setdefault("ocp_memory_system",{})
+
     latest.setdefault("neocloud", copy.deepcopy(BASELINE["neocloud"]))
     latest["neocloud"].setdefault("YTL", copy.deepcopy(BASELINE["neocloud"]["YTL"]))
     seen = set(latest.get("seen_urls") or [])
@@ -598,7 +757,30 @@ def main() -> None:
             latest["neocloud"].setdefault(parsed["company"], {}).update(parsed["metrics"])
         elif parsed["kind"] == "edge_actual":
             events.append(parsed)
+        elif parsed["kind"] in ("groq_foundry","cxl_customer_stage"):
+            key=parsed["kind"]
+            events.extend(stage_upgrade(latest.get(key) or {},parsed))
+            if events and any(e.get("kind")==key for e in events):
+                latest.setdefault(key,{}).update({"stage":parsed["stage"],"source":url})
 
+
+    # The official event page is polled directly because Google News snippets can
+    # omit the exact CXL/SSD/benchmark paragraphs. Failures remain retryable.
+    ocp_source_status = "not_checked"
+    try:
+        body = article_text(OCP_SOURCE)
+        parsed = parse_samsung_ocp_2026(body,OCP_SOURCE)
+        if parsed:
+            ocp_source_status="official_body_verified"
+            events.extend(compare_ocp_memory(latest.get("ocp_memory_system") or {},parsed))
+            latest["ocp_memory_system"].update({k:v for k,v in parsed.items() if v is not None})
+            if any(e.get("kind")=="ocp_memory" for e in events):
+                source_urls.append(OCP_SOURCE)
+        else:
+            ocp_source_status="no_verifiable_official_body"
+    except Exception:
+        ocp_source_status="source_fetch_failed"
+    latest["ocp_source_status"]=ocp_source_status
     snap = upstream_snapshot()
     events.extend(upstream_events(previous.get("upstream_snapshot") or {}, snap))
     latest["upstream_snapshot"] = snap
