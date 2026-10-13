@@ -282,6 +282,10 @@ def _skip_quantity_enrichment(block: str) -> bool:
         return True
     if "Optimus 손·자석" in block or "2025년 자석" in block and "Optimus" in block:
         return True
+    if "로브로스 산업실증" in block or "로브로스 제조현장" in block or "로브로스 제조실증" in block:
+        return True
+    if "로브로스" in block and "실증특례" in block:
+        return True
     if "Digital Optimus" in block or "디지털 에이전트" in block or "디지털 옵티머스" in block:
         return True
     # VNET's 889/1007 MW are IDC POWER capacity, not deployed ESS MWh.
