@@ -298,6 +298,31 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         rows = MODULE.parse_rss(rss, current, 24)
         self.assertEqual(rows, [])
 
+    def test_saudi_minister_target_is_not_contract_or_confirmed_build(self):
+        current=dt.datetime(2026,10,13,12,tzinfo=dt.timezone.utc)
+        page="""<html><body>12/10/2026 Abdulaziz bin Salman says Saudi Arabia could
+        raise oil pipeline capacity to 10 million barrels per day within three years.
+        A gas pipeline could carry 1.2 million barrels per day before returning to gas.
+        </body></html>"""
+        row=MODULE.parse_saudi_10m_minister_report(page,current)
+        self.assertEqual(row.event_kind,"saudi_bypass_investment")
+        self.assertEqual(MODULE._saudi_bypass_stage(row.title),"minister_target_reported")
+        self.assertNotEqual(MODULE._saudi_bypass_stage(row.title),"target_total_confirmed")
+        body=MODULE._build_saudi_bypass_investment_alert_body([row],None,current,None)
+        self.assertIn("2~3년 목표",body)
+        self.assertIn("확정 수주 업체 없음",body)
+        self.assertIn("하루 총 1,000만 배럴",body)
+        self.assertIsNotNone(MODULE.confirm_event([row]))
+        self.assertNotIn("공식 최종 총수송능력",body)
+
+    def test_saudi_minister_report_rejects_unsubstantiated_number(self):
+        current=dt.datetime(2026,10,13,12,tzinfo=dt.timezone.utc)
+        with self.assertRaises(RuntimeError):
+            MODULE.parse_saudi_10m_minister_report(
+                "Abdulaziz bin Salman plan 10 million within three years",
+                current
+            )
+
     def test_saudi_osp_reuters_parser(self):
         now = dt.datetime(2026, 10, 5, 11, 0, tzinfo=dt.timezone.utc)
         html = """

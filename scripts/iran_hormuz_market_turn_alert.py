@@ -67,6 +67,8 @@ MMA_ISAIAS_VERIFIED_START_URLS = (
 ARAMCO_OFFICIAL_RSS_URL = "https://www.aramco.com/api/v1/com/rss/news?sc_lang=en"
 SAUDI_BYPASS_STRATEGY_URL = "https://www.argaam.com/en/article/articledetail/id/1943047"
 SAUDI_BYPASS_REPORT_DATE = dt.date(2026, 10, 11)
+SAUDI_10M_MINISTER_REPORT_URL = "https://www.argaam.com/en/article/articledetail/id/1943269"
+SAUDI_10M_MINISTER_REPORT_DATE = dt.date(2026, 10, 12)
 OPEC_WOO2026_URL = "https://www.opec.org/speech-detail/394-18-june-2026.html"
 # Baseline published 18 June 2026; NOT a new investment commitment or alert trigger.
 OPEC_WOO2026_ENERGY_GROWTH_PCT = 23
@@ -976,6 +978,8 @@ def _saudi_bypass_stage(title: str) -> str:
         return "unclassified"
     text = normalize_text(title)
 
+    if "saudi pipeline minister target total 10 mbd" in text and "2-3 years" in text:
+        return "minister_target_reported"
     if _saudi_total_pipeline_target_mbd(title) is not None:
         return "target_total_confirmed"
 
@@ -1029,6 +1033,7 @@ def _saudi_bypass_stage_label(stage: str) -> str:
     return {
         "strategy_announced": "사우디, 호르무즈 우회 송유관 추가 개발 방침",
         "partners_sought": "사우디, 신규 우회 송유관에 국제 참여 모색",
+        "minister_target_reported": "사우디 장관, 총용량 하루 1,000만 배럴·2~3년 목표 발표(사업 미확정)",
         "feasibility": "사우디, 신규 우회 송유관 타당성 조사·기본설계",
         "target_total_confirmed": "사우디, 신규 송유관 최종 총수송능력 공식 확인",
         "tender_issued": "사우디, 신규 우회 송유관 입찰 공고",
@@ -1143,6 +1148,24 @@ def fetch_aramco_bypass_official_news(current: dt.datetime) -> list[NewsItem]:
     return confirmed
 
 
+def parse_saudi_10m_minister_report(raw_html: str, current: dt.datetime) -> NewsItem:
+    visible=_visible_text(raw_html)
+    low=normalize_text(visible)
+    markers=("abdulaziz bin salman", "10 million", "three years", "1.2 million", "gas pipeline")
+    if not all(x in low for x in markers):
+        raise RuntimeError("사우디 장관 1,000만 배럴 보도 날짜·목표·가스관 전환 검증 실패")
+    published=dt.datetime.combine(SAUDI_10M_MINISTER_REPORT_DATE,dt.time(),tzinfo=UTC)
+    if published>current+dt.timedelta(days=1):
+        raise RuntimeError("미래 발표 자료 제외")
+    title="Saudi Hormuz alternative pipeline minister target total 10 Mbd in 2-3 years; interim 1.2 Mbd gas pipeline conversion"
+    if _saudi_bypass_stage(title)!="minister_target_reported":
+        # Synthetic attribution still must satisfy classification logic.
+        raise RuntimeError("장관 목표 단계 판정 실패")
+    return NewsItem(title,"Argaam",SAUDI_10M_MINISTER_REPORT_URL,
+                    published.isoformat().replace("+00:00","Z"),
+                    published.timestamp(),"saudi_bypass_investment")
+
+
 def parse_saudi_bypass_strategy_source(raw_html: str, current: dt.datetime) -> NewsItem:
     text = _visible_text(raw_html)
     low = normalize_text(text)
@@ -1189,6 +1212,16 @@ def _build_saudi_bypass_investment_alert_body(
         "기존 가동      East-West Pipeline · 최근 발표 580만 배럴/일(10월 6일)",
         "기존 명목능력  하루 700만 배럴 · 최신 실제 가동량과 구분",
     ]
+    if stage == "minister_target_reported":
+        if not any(row.source=="Argaam" and row.link==SAUDI_10M_MINISTER_REPORT_URL for row in news_rows):
+            raise RuntimeError("사우디 1,000만 배럴 목표 원문 확인 실패")
+        lines += [
+            "장관 목표      하루 총 1,000만 배럴 · 기존 명목 700만보다 +300만 배럴/일",
+            "일정          2~3년 목표(2028~2029년) · 공식 착공/완공 확정 아님",
+            "단기 전환     가스관 전환 시 7~8주 안에 +120만 배럴/일 가능성",
+            "복귀 제약     2027년 5월 전후 가스 운송 복귀 필요",
+            "투자 주체     국제 운영·설계·자금 참여 모색 · 확정 수주 업체 없음",
+        ]
     if stage == "target_total_confirmed":
         candidates={_saudi_total_pipeline_target_mbd(row.title) for row in news_rows}
         candidates.discard(None)
@@ -1820,6 +1853,8 @@ def fetch_news(current: dt.datetime) -> tuple[list[NewsItem], list[str]]:
         errors.append(f"사우디 Aramco 공식 RSS: {type(exc).__name__}: {exc}")
 
     direct_sources=(
+        ("사우디 장관 1,000만 배럴·2~3년 목표", lambda: parse_saudi_10m_minister_report(
+            fetch_bytes(SAUDI_10M_MINISTER_REPORT_URL,timeout=18,attempts=2).decode("utf-8","replace"),current)),
         ("사우디 신규 우회 송유관 장관 발언", lambda: parse_saudi_bypass_strategy_source(
             fetch_bytes(SAUDI_BYPASS_STRATEGY_URL,timeout=18,attempts=2).decode("utf-8","replace"),current)),
         ("OFAC 러시아 경유 일반허가 제135호", lambda: parse_ofac_russian_diesel_license(
@@ -1957,6 +1992,9 @@ def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tupl
             and any(row.source == "Argaam" and row.link == SAUDI_BYPASS_STRATEGY_URL
                     for row in selected)
         )
+        saudi_minister_report = kind=="saudi_bypass_investment" and stage=="minister_target_reported" and any(
+            row.source=="Argaam" and row.link==SAUDI_10M_MINISTER_REPORT_URL for row in selected
+        )
         saudi_official_advanced = (
             kind == "saudi_bypass_investment"
             and stage in ("target_total_confirmed", "tender_issued", "contract_awarded",
@@ -1989,7 +2027,7 @@ def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tupl
             for row in selected
         )
 
-        if len(selected) >= minimum_sources or has_primary_data or regional_primary or broker_snapshot or eu_primary_interview or pipeline_cross_checked or pipeline_bloomberg_material or osp_cross_checked or eia_primary or china_report or hormuz_primary or mma_primary or russian_ofac_primary or saudi_minister_direct or saudi_official_advanced:
+        if len(selected) >= minimum_sources or has_primary_data or regional_primary or broker_snapshot or eu_primary_interview or pipeline_cross_checked or pipeline_bloomberg_material or osp_cross_checked or eia_primary or china_report or hormuz_primary or mma_primary or russian_ofac_primary or saudi_minister_direct or saudi_minister_report or saudi_official_advanced:
             candidates.append((max(row.published_epoch for row in selected), kind, selected))
 
     candidates.sort(key=lambda value: value[0], reverse=True)
