@@ -81,6 +81,27 @@ class FranceCreditCarryOverlayTests(unittest.TestCase):
         self.assertIn("메모리주 영향은 조건부", msg)
         self.assertIn("AFT France Moody's rating calendar:", msg)
 
+    def test_source_attributed_text_recovery_only_schedules_not_downgrades(self):
+        sample = (
+            "Title: France's credit ratings\n"
+            "URL Source: https://www.aft.gouv.fr/en/frances-credit-ratings\n"
+            "| Agency | Rating | Outlook | Latest rating | Next rating date |\n"
+            "| Moody's | Aa3 | Negative | 10 April 2026 | 23 October 2026 |\n"
+        )
+        row = watch.parse_aft_text_recovery(sample)
+        self.assertEqual(row["rating"], "Aa3")
+        self.assertEqual(row["source_kind"], "secondary_text_recovery")
+        events = watch.credit_events(dt.date(2026, 10, 16), {}, row)
+        self.assertEqual(len(events), 1)
+        old = {"last_official": watch.parse_moodys(EXAMPLE_EN)}
+        changed = {**row, "rating": "A1", "decision_date": "2026-10-23", "next_review": None}
+        self.assertEqual(watch.credit_events(dt.date(2026, 10, 24), old, changed), [])
+
+    def test_text_recovery_wrong_origin_is_rejected(self):
+        sample = "URL Source: https://fake.example/rating\n| Moody's | A1 | Negative | 23 October 2026 | - |"
+        with self.assertRaises(ValueError):
+            watch.parse_aft_text_recovery(sample)
+
     def test_official_fetch_fallback(self):
         def fetch(url):
             if "/en/" in url:
