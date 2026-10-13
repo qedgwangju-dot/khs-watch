@@ -326,3 +326,26 @@ check_tags = _CheckTags()
 check_tags.feed(bounded)
 assert not check_tags.tags
 print("compact_enrichment_overflow_safe_regression=true")
+
+
+# 10월 13일 09:26 정밀분해에 검증된 업종·종목·ETF가 전혀 없던 실제 사례:
+# 다섯 개의 빈 목록을 반복하지 않고 근거 부족을 짧게 표시한다.
+_oct13_empty = {
+    "generated_at_kst":"2026-10-13T09:26:47+09:00",
+    "event":{"start_kst":"09:00:25","low_kst":"09:19:20",
+             "market_attribution":{"available":True,
+                 "spot_leader":"외국인","futures_leader":"외국인",
+                 "confidence":"높음","verdict":"외국인 후보"}},
+    "market_spot_deltas":{"외국인":-7705.0},
+    "direct_industry_by_actor":{"외국인":{"rows":[],"available":False}},
+    "industries":[],"stocks":[],"themes":[],"etfs":[],
+    "cap_drop_proxy":[],"errors":[],
+}
+_oct13_empty_text = _ks_enrich.render_enrichment_summary(_oct13_empty)
+assert "정밀분해 자료 보류" in _oct13_empty_text,_oct13_empty_text
+assert "09:00:25 → 09:19:20" in _oct13_empty_text,_oct13_empty_text
+assert "매도주체: 외국인" in _oct13_empty_text,_oct13_empty_text
+assert "유효 자료 없음" in _oct13_empty_text,_oct13_empty_text
+assert "<b>①" not in _oct13_empty_text and "<b>⑤" not in _oct13_empty_text,_oct13_empty_text
+assert _ks_enrich._enrichment_visible_length(_oct13_empty_text)<600,_oct13_empty_text
+print("oct13_enrichment_empty_compact_regression=true")
