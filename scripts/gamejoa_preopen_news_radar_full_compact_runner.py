@@ -11791,7 +11791,13 @@ def explanation_for(alert: dict) -> dict[str, str]:
 
 def normalize_alert_for_output(alert: dict) -> dict:
     out = dict(alert)
-    if out.get("korean_business_news") and out.get("body_verified"):
+    source_bound_business = bool(out.get("korean_business_news") and out.get("body_verified"))
+    if source_bound_business:
+        for key in (
+            "investment_view", "interpretation", "korea_market_impact",
+            "telegram_investment_fact", "supply_chain_theme",
+        ):
+            out.pop(key, None)
         repaired_core = verified_alert_core(out, str(out.get("source_title") or out.get("news") or ""))
         if repaired_core:
             out["telegram_core_fact"] = repaired_core
@@ -11855,6 +11861,24 @@ def normalize_alert_for_output(alert: dict) -> dict:
         out["investment_view"] = explanation["view"]
     if profile or not out.get("korea_market_impact"):
         out["korea_market_impact"] = explanation["korea"]
+    if source_bound_business and not profile:
+        source_title = str(out.get("source_title") or out.get("news") or "")
+        source_body = market_materiality.source_reported_body(str(out.get("source_body") or ""))
+        article_investment = article_investment_point(source_title, source_body, impacts)
+        if article_investment:
+            out["telegram_investment_fact"] = article_investment
+            out["investment_view"] = article_investment
+            out["interpretation"] = article_investment
+        summary = article_sentences(
+            source_body, korean_business_title_terms(source_title), 2, title=source_title,
+        )
+        source_focus = f"{source_title} {summary}"
+        source_sectors = korean_business_source_sectors(source_title, summary)
+        companies = [name for name in KOREAN_BUSINESS_COMPANIES if name.lower() in source_focus.lower()]
+        exposure = "·".join(companies[:5]) if companies else "원문에 직접 언급된 기업"
+        out["korea_market_impact"] = (
+            f"한국장에서는 {exposure}, {', '.join(source_sectors)} 중 원문에 직접 근거가 있는 노출만 연결합니다."
+        )
     if profile or not out.get("priced_in"):
         out["priced_in"] = explanation["priced"]
     generic_counter_terms = [
@@ -11940,6 +11964,20 @@ def low_impact_live_publication_reason(alert: dict, now) -> str:
     ))
     if ytd_market_cap_recap and not company_execution:
         return 'year_to_date_rally_and_market_cap_recap_without_company_execution'
+    historical_cumulative_energy = bool(
+        re.search(r'(?:2022년\s*이후|전쟁\s*시작\s*(?:이후|후)|침공\s*이후|since\s+2022|since\s+(?:the\s+)?(?:war|invasion))', title + ' ' + body, re.I)
+        and re.search(r'(?:누적|구매|수입|지출|총액|탄화수소|energy\s+imports|purchased|spent|cumulative)', title + ' ' + body, re.I)
+        and re.search(r'(?:러시아|러시아산|유럽|원유|천연가스|에너지|russia|europe|oil|gas|energy)', title + ' ' + body, re.I)
+    )
+    current_energy_change = bool(re.search(
+        r'(?:신규\s*제재|제재를?\s*(?:발표|시행|의결)|수입\s*(?:금지|중단)|공급\s*(?:중단|차질)|'
+        r'(?:브렌트|WTI|국제유가|유가).{0,25}(?:상승|하락|급등|급락|돌파)|'
+        r'(?:공격|공습|피격|휴전|협상\s*재개|봉쇄|통항\s*중단))',
+        title,
+        re.I,
+    ))
+    if historical_cumulative_energy and not current_energy_change:
+        return 'historical_cumulative_energy_trade_without_current_market_change'
     if (re.search(r'NH농협생명', title) and re.search(r'신계약\s*CSM', title)
             and re.search(r'1조원\s*(?:목표|추진|달성)', title)
             and re.search(r'(?:목표|추진)\s*선포식|전사적\s*목표를\s*공유', body)
@@ -12004,6 +12042,12 @@ def low_impact_live_publication_reason(alert: dict, now) -> str:
     ))
     if official_event_aspiration and not new_policy_instrument:
         return 'official_policy_aspiration_at_event_without_new_instrument_or_budget'
+    official_praise_only = bool(
+        re.search(r'대통령|장관|정부|부처|위원장|청장|minister|president|government', combined, re.I)
+        and re.search(r'모범(?:적)?|칭찬|훌륭|좋은\s*(?:대표적\s*)?사례|상생\s*최고|great\s+example|best\s+model', combined, re.I)
+    )
+    if official_praise_only and not new_policy_instrument and not company_execution:
+        return 'official_praise_without_policy_instrument_or_company_execution'
     if (re.search(r'감사원', title) and re.search(r'KBS|한국방송공사', f'{title} {body}')
             and re.search(r'드라마\s*외주제작', body) and 'A업체' in body and 'B업체' in body
             and re.search(r'제작비\s*95억원', body) and re.search(r'선급금\s*20억원', body)):

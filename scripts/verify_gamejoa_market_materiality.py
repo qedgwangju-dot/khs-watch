@@ -1455,6 +1455,42 @@ class MaterialityChecks(unittest.TestCase):
         result = materiality.assess("우주 프로젝트 관련주 상승", "국내 기업은 위성 고객과 발사계약을 체결했다. S-Oil(163200원 ▲14400 +9.68%)이 9%대 급등했다.")
         self.assertNotIn("energy_geopolitics_or_supply_risk", {row["kind"] for row in result["evidence"]})
 
+    def test_options_story_does_not_turn_concessive_oil_and_rate_context_into_events(self):
+        title = "중동전쟁·100달러 유가에도 美개미 상승 베팅…옵션 거래 '밈주식 광풍' 수준"
+        body = (
+            "금리 상승과 배럴당 100달러 수준의 유가, 중동전쟁에도 단일종목 옵션 거래가 2021년 당시 수준으로 돌아갔다. "
+            "옵션 투자전략 전문 운용사의 집계에 따르면 단일종목 옵션의 하루 명목 거래 규모는 약 7000억달러다. "
+            "7000억달러는 실제 주식 매수액이나 옵션 매수대금이 아니라 계약의 명목상 기초자산 규모다. "
+            "미국 개인투자자협회의 주간 조사에서 향후 6개월 주가 상승을 예상한 응답자는 40.3%였다."
+        )
+        result = materiality.assess(title, body)
+        kinds = {row["kind"] for row in result["evidence"]}
+        self.assertFalse(materiality.foreground_evidence_is_material(title, "금리 상승과 배럴당 100달러 수준의 유가, 중동전쟁에도 단일종목 옵션 거래가 2021년 당시 수준으로 돌아갔다.", "rates_fx_or_macro"))
+        self.assertFalse(materiality.foreground_evidence_is_material(title, "금리 상승과 배럴당 100달러 수준의 유가, 중동전쟁에도 단일종목 옵션 거래가 2021년 당시 수준으로 돌아갔다.", "energy_geopolitics_or_supply_risk"))
+        self.assertTrue(materiality.foreground_evidence_is_material(title, "옵션 명목 거래가 크게 늘었다.", "market_price_or_flow"))
+        self.assertNotIn("rates_fx_or_macro", kinds, result)
+        self.assertNotIn("energy_geopolitics_or_supply_risk", kinds, result)
+
+    def test_foreign_won_borrowing_reporting_threshold_is_policy_not_physical_supply(self):
+        title = "韓기업 해외원화 조달 숨통…신고기준 10억→500억 완화"
+        body = (
+            "재정경제부가 국내 기업이 해외 금융기관에서 원화를 빌릴 때 적용되는 사전신고 기준을 "
+            "연간 10억원 초과에서 500억원 초과로 높이는 외국환거래규정 개정안을 행정예고했다."
+        )
+        result = materiality.assess(title, body)
+        kinds = {row["kind"] for row in result["evidence"]}
+        self.assertIn("policy_scope_or_stage", kinds, result)
+        self.assertNotIn("physical_supply_or_capacity", kinds, result)
+
+    def test_measured_oil_move_remains_a_current_energy_event(self):
+        title = "중동발 유가상승·증시 급락에…환율 10원 오른 1,345.1원"
+        body = (
+            "국제유가는 3거래일 연속 상승했다. 브렌트유는 전장보다 1.84% 오른 배럴당 106.65달러, "
+            "서부텍사스산원유(WTI)는 2.06% 오른 배럴당 93.74달러에 거래를 마쳤다."
+        )
+        result = materiality.assess(title, body)
+        self.assertIn("energy_geopolitics_or_supply_risk", {row["kind"] for row in result["evidence"]}, result)
+
     def test_bid_execution_replaces_generic_order_history(self):
         title = "IPARK현대산업개발, 수도권 정비사업 확장"
         body = "IPARK현대산업개발은 최근 수도권 정비사업 수주를 이어가고 있다. IPARK현대산업개발은 능곡3구역 시공사 입찰제안서를 단독 제출했다. 시공사 선정은 오는 11월 예정이다."
