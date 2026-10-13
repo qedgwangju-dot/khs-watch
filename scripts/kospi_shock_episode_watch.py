@@ -956,6 +956,11 @@ class Watch:
                 sample_ts = fnum(snap.get("ts"))
             if sample_ts is None or sample_ts > ts:
                 continue
+            # 시가 갭과 당일 수급은 개장 전 스냅샷을 사건 시작점으로 섞지 않는다.
+            # 시차가 30초 이내라도 정규장 09:00 이전 표본이면 사용할 수 없다.
+            regular_open_ts = fnum(getattr(self, "session_open_ts", None))
+            if regular_open_ts is not None and sample_ts < regular_open_ts:
+                continue
             candidates.append((block, sample_ts))
         return max(candidates, key=lambda x: x[1]) if candidates else None
 
