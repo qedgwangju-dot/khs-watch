@@ -8253,6 +8253,28 @@
       "telegram_core_fact": "신용평가업계 관계자는 \"올해 하향 조정 건수 증가는 일부 그룹의 유동성 문제가 집중적으로 반영된 측면이 큰 만큼 기업 신용도가 전반적으로 악화했다고 보기는 어렵다\"며 \"다만 이차전지 등 업황 회복이 지연되는 업종에서는 실적과 재무 부담이 신용도에 미치는 영향을 계속 지켜볼 필요가 있다\"고 말했다.",
       "title": "올해 신용등급 하향, 기업 수는 줄었지만 건수로는 48% 늘어"
     },
+    "core:37438455955cd16a5b603aff": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634941",
+      "source": "이투데이",
+      "source_body_digest": "16da39d64d4d3d7994f30e53945e26dfc02b213987dca046bf15f7387b8ba06a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:67356faafd4c2e45a2ff284c8d0aa2467814238e9a309de85aad986516d4b1ba",
+      "source_fact_keys": [
+        "source_fact:v1:3cc9715e27fc10449a7bb6c6f4f9edd33fc2a2582f8884a359a2f51e906678d2",
+        "source_fact:v1:4780c80cd0728dcab57f93385b8bcf9097ffb5bc139a9b3b48be7638263646c0",
+        "source_fact:v1:918321c35b0fa1f64a984626504bbc09f29e4a717f8903fa32af9d17b0103d4c",
+        "source_fact:v1:a267ac8b614c4c138bb52889fe48acc682113eaedb17266c287ca6996e14cb2b"
+      ],
+      "source_published_kst": "2026-10-13T08:40+09:00",
+      "source_title": "한투운용, 만기채권형 ETF 신규 상장⋯AA- 이상 회사채 분산투자",
+      "telegram_core_fact": "한국투자신탁운용은 13일 만기매칭형 채권 상장지수펀드(ETF)인 ‘ACE 29-11회사채(AA-이상)액티브 ETF’를 신규 상장한다고 밝혔다.",
+      "title": "한투운용, 만기채권형 ETF 신규 상장⋯AA- 이상 회사채 분산투자"
+    },
     "core:376835d409ebb3e4240c8d1e": {
       "first_seen_kst": "2026-10-11T12:11:12+09:00",
       "lanes": {
@@ -11323,6 +11345,29 @@
       "source_title": "민형배 \"내년 농어촌기본소득 전면시행…통합지원금 활용 가능\"",
       "telegram_core_fact": "발언, 확대 시행을 위한 협의 구상 단계이지만 민 시장이 통합지원금 활용 가능성까지 열어두면서 논의는 구체화될 전망이다.",
       "title": "민형배 \"내년 농어촌기본소득 전면시행…통합지원금 활용 가능\""
+    },
+    "core:4e0d25fd28dfb90d82fe01aa": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823178",
+      "source": "뉴시스",
+      "source_body_digest": "81077b89c9da3a7f5fb010ada8af185dccab082a293c114ac20d1f0ddc675ea5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d8459848fcb78cb47dd59f656b513d328f6d36d0fea183aba7d97b4c54fc635a",
+      "source_fact_keys": [
+        "source_fact:v1:3d5a4e9868b4f5f3815e46627b340c5a70b79a36ed01d312d0884e4b4d011511",
+        "source_fact:v1:3ea5f33f88ba14070428f93be39c239696b27dad47dfed1b3df430de8ec86e60",
+        "source_fact:v1:b3141b7564f4d1c6bf4097571a805ce3bb0fb3e164871b0d7fb49aa2552f2ab1",
+        "source_fact:v1:c2eac5e0f7762f4abdeba7baa0bdf12b016b2aa9caf6be2d4abcea255cf48ab1",
+        "source_fact:v1:f1e299a87559ab0baddcd27ba27032c97f2d4981b9a0c107a1456784d36f0d5a"
+      ],
+      "source_published_kst": "2026-10-13T08:52+09:00",
+      "source_title": "\"국장 탈출은 지능순\" 커뮤니티 분통…개인 투자자 10조원 미국 증시로 이동",
+      "telegram_core_fact": "국내 증시의 지지부진한 흐름에 실망한 개인 투자자들이 국내 주식을 대거 매도하고 미국 증시로 눈을 돌려 3분기 동안 10조원 넘는 자금을 쏟아부은 것으로 나타났다. 최근 금융투자업계와 한국예탁결제원에 따르면 개인 투자자들은 지난 7월부터 9월까지 국내 유가증권시장에서 5조5000억원 이상을 순매도했다.",
+      "title": "\"국장 탈출은 지능순\" 커뮤니티 분통…개인 투자자 10조원 미국 증시로 이동"
     },
     "core:4e87835583ad0f759f26f0a6": {
       "first_seen_kst": "2026-10-11T14:49:05+09:00",
@@ -15277,6 +15322,32 @@
       "telegram_core_fact": "■반도체 온기, 부품·장비주로 확산 11일 키움증권이 제공하는 '수익률 상위 고객(직전 3개월 수익률 상위 2만5000명) 매매 상세 현황'에 따르면 수익률 상위 투자자들이 지난 6~8일 가장 많이 순매수한 종목은 SK하이닉스로, 순매수액은 572억원이었다.",
       "title": "투자 고수들, '삼전닉스' 매수 줄였다…반도체 장비·배터리로 확산 [1% 고수의 선택]"
     },
+    "core:6ab14f0a476d241fb547372d": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823169",
+      "source": "뉴시스",
+      "source_body_digest": "3a605b6f04b590dc0a67db51ba906c0da03f083022c2596d4cd1a3c38bfc47db",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c4a35156fc4572cde194417c379dcb8ca9cf6fa58d4e21e0c554ce7551f595ac",
+      "source_fact_keys": [
+        "source_fact:v1:33ffe8563e40ec4f9a3689a0f6a57fc6d984c207271853bb65b56b698086d622",
+        "source_fact:v1:42d10d6abe569ca058f52c175fa1b8a24a613f3608df782d0bfacbb94b67b72b",
+        "source_fact:v1:5f6aecb54db2243ff152ee3d752b3b825141f88d65f2664e44ab53e01a805440",
+        "source_fact:v1:85de41591358b9cebb0736ede4b78e3ed2426e13cb0dfcdb4f4849e0f5dde337",
+        "source_fact:v1:a77f31840aaebdcf7accc348d13a43aff0a1dddd0705b71a394c64050da1350a",
+        "source_fact:v1:cca2719ce1ba7a343d0b08e134a894dff21308f4043db3203f47e16f11b97bdd",
+        "source_fact:v1:de6bd639db90fb448d6423c72a752d605773173efc9c1b76a3e394f06b0f81bd",
+        "source_fact:v1:eb4f156c130946d75c8c8b447d0cbbf7e6c0ba911e971a32f620e99eb970e6de"
+      ],
+      "source_published_kst": "2026-10-13T08:51+09:00",
+      "source_title": "나신평 \"HD현대마린 '골텐스' 인수, 단기 수익성 희석 가능성\"",
+      "telegram_core_fact": "HD현대마린솔루션은 지난 8일 글로벌 선박·육상 발전용 엔진 서비스 전문 기업 골텐스 지분 100%를 인수하는 주식 매매 계약을 체결했다고 밝혔다.",
+      "title": "나신평 \"HD현대마린 '골텐스' 인수, 단기 수익성 희석 가능성\""
+    },
     "core:6ae512cdeb9cf23fa1290e3a": {
       "first_seen_kst": "2026-10-09T18:34:32+09:00",
       "lanes": {
@@ -16022,6 +16093,28 @@
       "source_title": "디티에스, 코스닥 상장 추진…\"글로벌 열관리 솔루션 기업으로 도약\"",
       "telegram_core_fact": "공랭식 열관리 전문기업 디티에스가 코스닥 상장을 통해 주력 에너지 플랜트 사업의 수주 기반을 강화하고 인공지능(AI) 데이터센터 냉각과 폐열발전 분야로 사업 영역을 확대한다.",
       "title": "디티에스, 코스닥 상장 추진…\"글로벌 열관리 솔루션 기업으로 도약\""
+    },
+    "core:7024a3a80d3dd1b4190ba70c": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261013030100008",
+      "source": "연합뉴스",
+      "source_body_digest": "5dad9378301e64a565769db9d15158b96cf0a6f03577fdc6e86010012fb2a8b9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48d7c1864eb56ba69d996a4c95823fbb8edb9dd39d7f878e9d417ab10cf8b8b5",
+      "source_fact_keys": [
+        "source_fact:v1:0752a27d3a4e1c39806adcf4e12a479561a4ccae6ed5b51a7702652f60dcdf3a",
+        "source_fact:v1:3fd8496fc1ab2811dcc5e226804b31dfd9ba0e6a9d65694ce02e9d95da8f6c95",
+        "source_fact:v1:dfac1df8dedb02dd7119b38a3e03f1bf5004d738132c492d6ed0b1349fb2d607",
+        "source_fact:v1:dfbb2d5a3cf2e325870c7048125acb1b2565347ca81584358497c0394b92b334"
+      ],
+      "source_published_kst": "2026-10-13T08:55+09:00",
+      "source_title": "NH증권 \"셀트리온, 경기 방어와 성장 매력 동시 보유\" | 연합뉴스",
+      "telegram_core_fact": "한승연 연구원은 이날 보고서에서 \"올해 코스피 의약품 주가가 27% 내린 데 비해 셀트리온은 6% 하락에 그쳐 코스피 제약사 내 상대적 견조한 모습\"이라며 \"업종 둔화에도 강력한 신제품 효과로 올해 영업이익이 전년 대비 62%의 고성장이 예상된다\"고 전망했다.",
+      "title": "NH증권 \"셀트리온, 경기 방어와 성장 매력 동시 보유\" | 연합뉴스"
     },
     "core:7063a914eb507d04226b17d1": {
       "first_seen_kst": "2026-10-08T07:12:10+09:00",
@@ -17209,6 +17302,26 @@
       "source_published_kst": "2026-10-07T15:29+09:00",
       "title": "삼성전자, 공동주택 냉난방 전기화 나선다…2030년 글로벌 확대"
     },
+    "core:7bd4acd6a5c019a558bd7e2c": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634934",
+      "source": "이투데이",
+      "source_body_digest": "64e7645e34503960f5aec2180d3bbbe93aa98304a6ab17e62b61df21da3841e8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4760e739511b6bdb6755f2c5f24027323e4a6c9a721cfbf22db964fc54a67232",
+      "source_fact_keys": [
+        "source_fact:v1:27519bae28958c4b80c20edd526a40ea368eb6623398d835002364fb289d4fca",
+        "source_fact:v1:530229416c052172abac061b68a19d1a0b1ceab936aad7b9328a3b868f466a62"
+      ],
+      "source_published_kst": "2026-10-13T08:48+09:00",
+      "source_title": "노벨경제학상 우드퍼드 \"시장과 소통해야\"⋯연준 '포워드 가이던스 축소' 겨냥",
+      "telegram_core_fact": "포워드 가이던스는 기준금리 발표를 앞두고 연준 의장 및 위원들이 내비치는 새 금리에 대한 신호다.",
+      "title": "노벨경제학상 우드퍼드 \"시장과 소통해야\"⋯연준 '포워드 가이던스 축소' 겨냥"
+    },
     "core:7bf706255b9f8afd518fa968": {
       "first_seen_kst": "2026-10-07T16:15:21+09:00",
       "lanes": {
@@ -18213,6 +18326,35 @@
       "source_title": "트럼프 “러·우크라 에너지 휴전”…러 확인 없고 젤렌스키 “금시초문”",
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아와 우크라이나가 서로의 에너지 시설을 공격하지 않는 ‘에너지 휴전’에 합의했다고 발표했다. 11일(현지시간) 트럼프 대통령은 트루스소셜에 “러시아와 우크라이나 전쟁에서 에너지 휴전이 즉각 발효된다”며 “양측 모두 동의했다. 이를 위반하지 말라”고 밝혔다.",
       "title": "트럼프 “러·우크라 에너지 휴전”…러 확인 없고 젤렌스키 “금시초문”"
+    },
+    "core:81e79beab5014b0f05a4d218": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822582",
+      "source": "뉴시스",
+      "source_body_digest": "ded13bf159fe7e63b658913c31dbe81e369ceed8c6c26fc04a200474419056e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb779f24d12685263ce09036553d25e122b1db1a153af5186e04c8c459beb34c",
+      "source_fact_keys": [
+        "source_fact:v1:2172b85501d79dc9144c7b53d583b1103b4aed767f8efe0815f73c9bc9d8eb77",
+        "source_fact:v1:6dc4e04e46aae0e3f4aef1d78ddd8ca303c0df18af31b5441ab30e9c89294b71",
+        "source_fact:v1:7be9f3a03ab06d0e665141206ae000bdfcfb21d5aac57ab4dce81d42e3edec89",
+        "source_fact:v1:7d3712fc603ba7ee6e687a9e228ff013e329a86648b77886dd381dc8e6c9eeb9",
+        "source_fact:v1:847cda64df5d04bee8b5c8065e78f6dd18acbd6be39dc9a7bc446b37b9d6701b",
+        "source_fact:v1:b2666c85dbda8db8c9251124cc70672fcb73d14cfab8ba1dc3c211d0d8ff8a25",
+        "source_fact:v1:be0d64c85384d95c2bf7e0b6bc812fe4c0140c5c8e0de325dec78890a87caf57",
+        "source_fact:v1:d3394daa42b3d2ed0a54a91187c5d6e2a31bf82afe3076376b805048ed907ead",
+        "source_fact:v1:e2e855f851927552c0fdb8ce439ae56b2b413727aa300d2e8e9c1c8df9c41a78",
+        "source_fact:v1:fa0bfd4e16e4e6caddff48e7e18af1717f37ee517d307fac5e6faa5cbb3c8859",
+        "source_fact:v1:fba459d2cc2cc8186b7932c292928ead4c877e086b72089b051ca49358bccb0a"
+      ],
+      "source_published_kst": "2026-10-13T08:41+09:00",
+      "source_title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?",
+      "telegram_core_fact": "SK하이닉스가 미국 낸드플래시 손자회사 '솔리다임'의 미국 증시 상장(IPO)을 추진할 것으로 알려진 가운데, 양사가 상장을 통해 어떠한 실익을 얻을 수 있을 지 관심이 쏠린다.",
+      "title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?"
     },
     "core:81e8c6b06684e3d5cc0b3da2": {
       "first_seen_kst": "2026-10-12T20:14:14+09:00",
@@ -32989,6 +33131,25 @@
       "telegram_core_fact": "삼성SDS는 12일 우정항공 지분 100%를 인수하는 주식양수도계약을 체결하고 이를 임직원에게 공지했다.",
       "title": "삼성SDS, 우정항공 인수 계약…인천공항 거점 항공물류 강화"
     },
+    "core:ebfdb08c7c711e3d05a4770e": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261013026000003",
+      "source": "연합뉴스",
+      "source_body_digest": "3708e9b1cb0f605e80d01d199665b150bf58361e1f2e5c87d6ebf2b7dd921017",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bfa28f76e0f32cae3ba3151aabab874c4069a6da0232426529d0b64404eaf2bd",
+      "source_fact_keys": [
+        "source_fact:v1:5ebed8b0506a0539b21c85478ac3b4cad5b180f36d6f67e493f16326028024d4"
+      ],
+      "source_published_kst": "2026-10-13T08:35+09:00",
+      "source_title": "SK어스온, 베트남 광구 '황금낙타' 구조서 원유 생산 개시 | 연합뉴스",
+      "telegram_core_fact": "이번 15-1/05 광구 생산 개시로 SK어스온은 2003년 원유 생산을 시작한 15-1 광구에 이어 베트남 내 생산 거점을 확대하는 데 성공하고, 안정적인 수익 창출을 기대하고 있다.",
+      "title": "SK어스온, 베트남 광구 '황금낙타' 구조서 원유 생산 개시 | 연합뉴스"
+    },
     "core:eca72ee5c67daf5222b81124": {
       "first_seen_kst": "2026-10-11T10:42:03+09:00",
       "lanes": {
@@ -35794,22 +35955,28 @@
     "event:00d5ad2877b9c85549826c5d": {
       "first_seen_kst": "2026-10-13T07:52:07+09:00",
       "lanes": {
-        "live": "2026-10-13T07:52:07+09:00"
+        "live": "2026-10-13T08:59:28+09:00"
       },
-      "last_seen_kst": "2026-10-13T07:52:07+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261013017000009",
-      "source": "연합뉴스",
-      "source_body_digest": "9b8144edeaf78a2c9f5fecbb44e90e2418dee9a2cbb5f822390545d1a049dcdc",
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823169",
+      "source": "뉴시스",
+      "source_body_digest": "3a605b6f04b590dc0a67db51ba906c0da03f083022c2596d4cd1a3c38bfc47db",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:9de66648b9d4af3600da3f077b99b4d0bc7f76de6097412a8b44e856abb82498",
+      "source_fact_identity": "source_facts:v1:c4a35156fc4572cde194417c379dcb8ca9cf6fa58d4e21e0c554ce7551f595ac",
       "source_fact_keys": [
-        "source_fact:v1:23296d901dad43f202a4a422835613b7f29194f49219e3cc8e679306f0859b55",
-        "source_fact:v1:af53837df53ba75c6e4c9e25e7b8b43e2e1df52e5f04ce35a5fc4c27683d278a"
+        "source_fact:v1:33ffe8563e40ec4f9a3689a0f6a57fc6d984c207271853bb65b56b698086d622",
+        "source_fact:v1:42d10d6abe569ca058f52c175fa1b8a24a613f3608df782d0bfacbb94b67b72b",
+        "source_fact:v1:5f6aecb54db2243ff152ee3d752b3b825141f88d65f2664e44ab53e01a805440",
+        "source_fact:v1:85de41591358b9cebb0736ede4b78e3ed2426e13cb0dfcdb4f4849e0f5dde337",
+        "source_fact:v1:a77f31840aaebdcf7accc348d13a43aff0a1dddd0705b71a394c64050da1350a",
+        "source_fact:v1:cca2719ce1ba7a343d0b08e134a894dff21308f4043db3203f47e16f11b97bdd",
+        "source_fact:v1:de6bd639db90fb448d6423c72a752d605773173efc9c1b76a3e394f06b0f81bd",
+        "source_fact:v1:eb4f156c130946d75c8c8b447d0cbbf7e6c0ba911e971a32f620e99eb970e6de"
       ],
-      "source_published_kst": "2026-10-13T07:46+09:00",
-      "source_title": "아이온큐, 사이버보안 기업 최대 1.8조원에 인수 | 연합뉴스",
-      "telegram_core_fact": "미국 양자컴퓨팅 기업 아이온큐(IonQ)가 사이버보안 기업 엘리시티(Elisity)를 최대 13억달러(약 1조8천억원)에 인수한다. 인수가에는 엘리시티의 향후 실적에 따라 지급하는 최대 1억5천만달러(약 2천억원)의 성과보수가 포함됐다.",
-      "title": "아이온큐, 사이버보안 기업 최대 1.8조원에 인수 | 연합뉴스"
+      "source_published_kst": "2026-10-13T08:51+09:00",
+      "source_title": "나신평 \"HD현대마린 '골텐스' 인수, 단기 수익성 희석 가능성\"",
+      "telegram_core_fact": "HD현대마린솔루션은 지난 8일 글로벌 선박·육상 발전용 엔진 서비스 전문 기업 골텐스 지분 100%를 인수하는 주식 매매 계약을 체결했다고 밝혔다.",
+      "title": "나신평 \"HD현대마린 '골텐스' 인수, 단기 수익성 희석 가능성\""
     },
     "event:00ded8c6a004186c8b7a6a10": {
       "first_seen_kst": "2026-10-02T12:38:28+09:00",
@@ -39250,6 +39417,29 @@
       ],
       "source_published_kst": "2026-10-05T23:41+09:00",
       "title": "[美특징주]메타, 상승…\"뮤즈 2030년까지 전체 매출의 최대 8% 도달 가능\""
+    },
+    "event:4c7528e121ac90f2aa316142": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823178",
+      "source": "뉴시스",
+      "source_body_digest": "81077b89c9da3a7f5fb010ada8af185dccab082a293c114ac20d1f0ddc675ea5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d8459848fcb78cb47dd59f656b513d328f6d36d0fea183aba7d97b4c54fc635a",
+      "source_fact_keys": [
+        "source_fact:v1:3d5a4e9868b4f5f3815e46627b340c5a70b79a36ed01d312d0884e4b4d011511",
+        "source_fact:v1:3ea5f33f88ba14070428f93be39c239696b27dad47dfed1b3df430de8ec86e60",
+        "source_fact:v1:b3141b7564f4d1c6bf4097571a805ce3bb0fb3e164871b0d7fb49aa2552f2ab1",
+        "source_fact:v1:c2eac5e0f7762f4abdeba7baa0bdf12b016b2aa9caf6be2d4abcea255cf48ab1",
+        "source_fact:v1:f1e299a87559ab0baddcd27ba27032c97f2d4981b9a0c107a1456784d36f0d5a"
+      ],
+      "source_published_kst": "2026-10-13T08:52+09:00",
+      "source_title": "\"국장 탈출은 지능순\" 커뮤니티 분통…개인 투자자 10조원 미국 증시로 이동",
+      "telegram_core_fact": "국내 증시의 지지부진한 흐름에 실망한 개인 투자자들이 국내 주식을 대거 매도하고 미국 증시로 눈을 돌려 3분기 동안 10조원 넘는 자금을 쏟아부은 것으로 나타났다. 최근 금융투자업계와 한국예탁결제원에 따르면 개인 투자자들은 지난 7월부터 9월까지 국내 유가증권시장에서 5조5000억원 이상을 순매도했다.",
+      "title": "\"국장 탈출은 지능순\" 커뮤니티 분통…개인 투자자 10조원 미국 증시로 이동"
     },
     "event:4dabb2eed3d09dde52454678": {
       "first_seen_kst": "2026-09-18T13:11:00+09:00",
@@ -47215,6 +47405,35 @@
       "link": "https://biz.heraldcorp.com/article/10890394",
       "source": "헤럴드경제",
       "title": "마이크론 뚫은 에코프로HN, 수주 2500억 쌓았다…내년 2분기 HBM 소재 양산 [비즈360]"
+    },
+    "event:f686ea80f7a2418382c53518": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822582",
+      "source": "뉴시스",
+      "source_body_digest": "ded13bf159fe7e63b658913c31dbe81e369ceed8c6c26fc04a200474419056e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb779f24d12685263ce09036553d25e122b1db1a153af5186e04c8c459beb34c",
+      "source_fact_keys": [
+        "source_fact:v1:2172b85501d79dc9144c7b53d583b1103b4aed767f8efe0815f73c9bc9d8eb77",
+        "source_fact:v1:6dc4e04e46aae0e3f4aef1d78ddd8ca303c0df18af31b5441ab30e9c89294b71",
+        "source_fact:v1:7be9f3a03ab06d0e665141206ae000bdfcfb21d5aac57ab4dce81d42e3edec89",
+        "source_fact:v1:7d3712fc603ba7ee6e687a9e228ff013e329a86648b77886dd381dc8e6c9eeb9",
+        "source_fact:v1:847cda64df5d04bee8b5c8065e78f6dd18acbd6be39dc9a7bc446b37b9d6701b",
+        "source_fact:v1:b2666c85dbda8db8c9251124cc70672fcb73d14cfab8ba1dc3c211d0d8ff8a25",
+        "source_fact:v1:be0d64c85384d95c2bf7e0b6bc812fe4c0140c5c8e0de325dec78890a87caf57",
+        "source_fact:v1:d3394daa42b3d2ed0a54a91187c5d6e2a31bf82afe3076376b805048ed907ead",
+        "source_fact:v1:e2e855f851927552c0fdb8ce439ae56b2b413727aa300d2e8e9c1c8df9c41a78",
+        "source_fact:v1:fa0bfd4e16e4e6caddff48e7e18af1717f37ee517d307fac5e6faa5cbb3c8859",
+        "source_fact:v1:fba459d2cc2cc8186b7932c292928ead4c877e086b72089b051ca49358bccb0a"
+      ],
+      "source_published_kst": "2026-10-13T08:41+09:00",
+      "source_title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?",
+      "telegram_core_fact": "SK하이닉스가 미국 낸드플래시 손자회사 '솔리다임'의 미국 증시 상장(IPO)을 추진할 것으로 알려진 가운데, 양사가 상장을 통해 어떠한 실익을 얻을 수 있을 지 관심이 쏠린다.",
+      "title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?"
     },
     "event:f6b2c37dfd717b5dfad1f883": {
       "event_alias_evidence_message_id": 2339,
@@ -57529,6 +57748,29 @@
       "telegram_core_fact": "RTT 뉴스와 마켓워치, dpa 통신에 따르면 독일 연방통계청은 7일 2026년 8월 산업생산이 계절 조정치로 전월 대비 2.0% 증대했다고 발표했다. 유럽 최대 경제국 독일의 8월 산업생산은 건설과 기계·설비 생산 호조에 힘입어 17개월 만에 가장 큰 폭으로 증가했다.",
       "title": "8월 유로존 산업생산 2.0%↑…\"건설 호조에 17개월 만에 최대폭\""
     },
+    "fact:34000a8ed29d3f81616830b1": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823178",
+      "source": "뉴시스",
+      "source_body_digest": "81077b89c9da3a7f5fb010ada8af185dccab082a293c114ac20d1f0ddc675ea5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d8459848fcb78cb47dd59f656b513d328f6d36d0fea183aba7d97b4c54fc635a",
+      "source_fact_keys": [
+        "source_fact:v1:3d5a4e9868b4f5f3815e46627b340c5a70b79a36ed01d312d0884e4b4d011511",
+        "source_fact:v1:3ea5f33f88ba14070428f93be39c239696b27dad47dfed1b3df430de8ec86e60",
+        "source_fact:v1:b3141b7564f4d1c6bf4097571a805ce3bb0fb3e164871b0d7fb49aa2552f2ab1",
+        "source_fact:v1:c2eac5e0f7762f4abdeba7baa0bdf12b016b2aa9caf6be2d4abcea255cf48ab1",
+        "source_fact:v1:f1e299a87559ab0baddcd27ba27032c97f2d4981b9a0c107a1456784d36f0d5a"
+      ],
+      "source_published_kst": "2026-10-13T08:52+09:00",
+      "source_title": "\"국장 탈출은 지능순\" 커뮤니티 분통…개인 투자자 10조원 미국 증시로 이동",
+      "telegram_core_fact": "국내 증시의 지지부진한 흐름에 실망한 개인 투자자들이 국내 주식을 대거 매도하고 미국 증시로 눈을 돌려 3분기 동안 10조원 넘는 자금을 쏟아부은 것으로 나타났다. 최근 금융투자업계와 한국예탁결제원에 따르면 개인 투자자들은 지난 7월부터 9월까지 국내 유가증권시장에서 5조5000억원 이상을 순매도했다.",
+      "title": "\"국장 탈출은 지능순\" 커뮤니티 분통…개인 투자자 10조원 미국 증시로 이동"
+    },
     "fact:343281e32c4106696333aa17": {
       "first_seen_kst": "2026-10-06T23:05:07+09:00",
       "lanes": {
@@ -59439,6 +59681,35 @@
       ],
       "source_published_kst": "2026-10-06T06:31+09:00",
       "title": "GKL, 해외서 고객 접촉 논란…\"현지법·중국 형법 저촉 소지\" | 연합뉴스"
+    },
+    "fact:3e2eceb9ad7e84b464de67ff": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822582",
+      "source": "뉴시스",
+      "source_body_digest": "ded13bf159fe7e63b658913c31dbe81e369ceed8c6c26fc04a200474419056e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb779f24d12685263ce09036553d25e122b1db1a153af5186e04c8c459beb34c",
+      "source_fact_keys": [
+        "source_fact:v1:2172b85501d79dc9144c7b53d583b1103b4aed767f8efe0815f73c9bc9d8eb77",
+        "source_fact:v1:6dc4e04e46aae0e3f4aef1d78ddd8ca303c0df18af31b5441ab30e9c89294b71",
+        "source_fact:v1:7be9f3a03ab06d0e665141206ae000bdfcfb21d5aac57ab4dce81d42e3edec89",
+        "source_fact:v1:7d3712fc603ba7ee6e687a9e228ff013e329a86648b77886dd381dc8e6c9eeb9",
+        "source_fact:v1:847cda64df5d04bee8b5c8065e78f6dd18acbd6be39dc9a7bc446b37b9d6701b",
+        "source_fact:v1:b2666c85dbda8db8c9251124cc70672fcb73d14cfab8ba1dc3c211d0d8ff8a25",
+        "source_fact:v1:be0d64c85384d95c2bf7e0b6bc812fe4c0140c5c8e0de325dec78890a87caf57",
+        "source_fact:v1:d3394daa42b3d2ed0a54a91187c5d6e2a31bf82afe3076376b805048ed907ead",
+        "source_fact:v1:e2e855f851927552c0fdb8ce439ae56b2b413727aa300d2e8e9c1c8df9c41a78",
+        "source_fact:v1:fa0bfd4e16e4e6caddff48e7e18af1717f37ee517d307fac5e6faa5cbb3c8859",
+        "source_fact:v1:fba459d2cc2cc8186b7932c292928ead4c877e086b72089b051ca49358bccb0a"
+      ],
+      "source_published_kst": "2026-10-13T08:41+09:00",
+      "source_title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?",
+      "telegram_core_fact": "SK하이닉스가 미국 낸드플래시 손자회사 '솔리다임'의 미국 증시 상장(IPO)을 추진할 것으로 알려진 가운데, 양사가 상장을 통해 어떠한 실익을 얻을 수 있을 지 관심이 쏠린다.",
+      "title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?"
     },
     "fact:3e323248d1bea62dd20b3269": {
       "first_seen_kst": "2026-10-11T11:01:00+09:00",
@@ -65202,6 +65473,32 @@
       "telegram_core_fact": "전 세계 70개국 3만여 개 도서관 인프라를 보유한 기업과 독점 공급 계약을 체결하며, 향후 3년간 100대 이상의 수출 물량을 조기 확보했다.",
       "title": "앤로보틱스, 비블리오테카와 맞손…AI 도서관 로봇 ‘로미’ 글로벌 독점 공급"
     },
+    "fact:5deeaf1eebe12a66170a6c8e": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823169",
+      "source": "뉴시스",
+      "source_body_digest": "3a605b6f04b590dc0a67db51ba906c0da03f083022c2596d4cd1a3c38bfc47db",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c4a35156fc4572cde194417c379dcb8ca9cf6fa58d4e21e0c554ce7551f595ac",
+      "source_fact_keys": [
+        "source_fact:v1:33ffe8563e40ec4f9a3689a0f6a57fc6d984c207271853bb65b56b698086d622",
+        "source_fact:v1:42d10d6abe569ca058f52c175fa1b8a24a613f3608df782d0bfacbb94b67b72b",
+        "source_fact:v1:5f6aecb54db2243ff152ee3d752b3b825141f88d65f2664e44ab53e01a805440",
+        "source_fact:v1:85de41591358b9cebb0736ede4b78e3ed2426e13cb0dfcdb4f4849e0f5dde337",
+        "source_fact:v1:a77f31840aaebdcf7accc348d13a43aff0a1dddd0705b71a394c64050da1350a",
+        "source_fact:v1:cca2719ce1ba7a343d0b08e134a894dff21308f4043db3203f47e16f11b97bdd",
+        "source_fact:v1:de6bd639db90fb448d6423c72a752d605773173efc9c1b76a3e394f06b0f81bd",
+        "source_fact:v1:eb4f156c130946d75c8c8b447d0cbbf7e6c0ba911e971a32f620e99eb970e6de"
+      ],
+      "source_published_kst": "2026-10-13T08:51+09:00",
+      "source_title": "나신평 \"HD현대마린 '골텐스' 인수, 단기 수익성 희석 가능성\"",
+      "telegram_core_fact": "HD현대마린솔루션은 지난 8일 글로벌 선박·육상 발전용 엔진 서비스 전문 기업 골텐스 지분 100%를 인수하는 주식 매매 계약을 체결했다고 밝혔다.",
+      "title": "나신평 \"HD현대마린 '골텐스' 인수, 단기 수익성 희석 가능성\""
+    },
     "fact:5def88d92deaadf2f74edb90": {
       "first_seen_kst": "2026-10-12T13:18:48+09:00",
       "lanes": {
@@ -68359,6 +68656,48 @@
       ],
       "source_published_kst": "2026-10-05T10:35+09:00",
       "title": "삼성바이오·SK바이오팜·한미약품, 아태 바이오 ‘10대 거래’ 선정"
+    },
+    "fact:6ded56a9c01e4a0acc336426": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261013030100008",
+      "source": "연합뉴스",
+      "source_body_digest": "5dad9378301e64a565769db9d15158b96cf0a6f03577fdc6e86010012fb2a8b9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48d7c1864eb56ba69d996a4c95823fbb8edb9dd39d7f878e9d417ab10cf8b8b5",
+      "source_fact_keys": [
+        "source_fact:v1:0752a27d3a4e1c39806adcf4e12a479561a4ccae6ed5b51a7702652f60dcdf3a",
+        "source_fact:v1:3fd8496fc1ab2811dcc5e226804b31dfd9ba0e6a9d65694ce02e9d95da8f6c95",
+        "source_fact:v1:dfac1df8dedb02dd7119b38a3e03f1bf5004d738132c492d6ed0b1349fb2d607",
+        "source_fact:v1:dfbb2d5a3cf2e325870c7048125acb1b2565347ca81584358497c0394b92b334"
+      ],
+      "source_published_kst": "2026-10-13T08:55+09:00",
+      "source_title": "NH증권 \"셀트리온, 경기 방어와 성장 매력 동시 보유\" | 연합뉴스",
+      "telegram_core_fact": "한승연 연구원은 이날 보고서에서 \"올해 코스피 의약품 주가가 27% 내린 데 비해 셀트리온은 6% 하락에 그쳐 코스피 제약사 내 상대적 견조한 모습\"이라며 \"업종 둔화에도 강력한 신제품 효과로 올해 영업이익이 전년 대비 62%의 고성장이 예상된다\"고 전망했다.",
+      "title": "NH증권 \"셀트리온, 경기 방어와 성장 매력 동시 보유\" | 연합뉴스"
+    },
+    "fact:6e120419166c8670434e536d": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634934",
+      "source": "이투데이",
+      "source_body_digest": "64e7645e34503960f5aec2180d3bbbe93aa98304a6ab17e62b61df21da3841e8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4760e739511b6bdb6755f2c5f24027323e4a6c9a721cfbf22db964fc54a67232",
+      "source_fact_keys": [
+        "source_fact:v1:27519bae28958c4b80c20edd526a40ea368eb6623398d835002364fb289d4fca",
+        "source_fact:v1:530229416c052172abac061b68a19d1a0b1ceab936aad7b9328a3b868f466a62"
+      ],
+      "source_published_kst": "2026-10-13T08:48+09:00",
+      "source_title": "노벨경제학상 우드퍼드 \"시장과 소통해야\"⋯연준 '포워드 가이던스 축소' 겨냥",
+      "telegram_core_fact": "포워드 가이던스는 기준금리 발표를 앞두고 연준 의장 및 위원들이 내비치는 새 금리에 대한 신호다.",
+      "title": "노벨경제학상 우드퍼드 \"시장과 소통해야\"⋯연준 '포워드 가이던스 축소' 겨냥"
     },
     "fact:6e39749d76ee03bb508f67cc": {
       "first_seen_kst": "2026-10-06T15:14:29+09:00",
@@ -75712,6 +76051,28 @@
       "source_title": "중복상장 안막는 선진시장…설명책임·이해상충 관리로 규율",
       "telegram_core_fact": "SK하이닉스의 미국 자회사 솔리다임의 나스닥 상장(IPO) 추진 소식에 중복상장 논란이 일고 있다.",
       "title": "중복상장 안막는 선진시장…설명책임·이해상충 관리로 규율"
+    },
+    "fact:92e9be58a523111c9429f95f": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634941",
+      "source": "이투데이",
+      "source_body_digest": "16da39d64d4d3d7994f30e53945e26dfc02b213987dca046bf15f7387b8ba06a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:67356faafd4c2e45a2ff284c8d0aa2467814238e9a309de85aad986516d4b1ba",
+      "source_fact_keys": [
+        "source_fact:v1:3cc9715e27fc10449a7bb6c6f4f9edd33fc2a2582f8884a359a2f51e906678d2",
+        "source_fact:v1:4780c80cd0728dcab57f93385b8bcf9097ffb5bc139a9b3b48be7638263646c0",
+        "source_fact:v1:918321c35b0fa1f64a984626504bbc09f29e4a717f8903fa32af9d17b0103d4c",
+        "source_fact:v1:a267ac8b614c4c138bb52889fe48acc682113eaedb17266c287ca6996e14cb2b"
+      ],
+      "source_published_kst": "2026-10-13T08:40+09:00",
+      "source_title": "한투운용, 만기채권형 ETF 신규 상장⋯AA- 이상 회사채 분산투자",
+      "telegram_core_fact": "한국투자신탁운용은 13일 만기매칭형 채권 상장지수펀드(ETF)인 ‘ACE 29-11회사채(AA-이상)액티브 ETF’를 신규 상장한다고 밝혔다.",
+      "title": "한투운용, 만기채권형 ETF 신규 상장⋯AA- 이상 회사채 분산투자"
     },
     "fact:92fe110a363ee25798110aa0": {
       "first_seen_kst": "2026-10-07T07:12:15+09:00",
@@ -90536,6 +90897,25 @@
       "telegram_core_fact": "테크크런치에 따르면 미국 자율주행 철도 스타트업 패러렐시스템즈(Parallel Systems)는 최근 1억달러(약 1338억원) 시리즈C 투자를 유치했다.",
       "title": "\"2류 회사에 투자\"…VC 거물의 공개 저격에 실리콘밸리 '발칵'"
     },
+    "fact:db7f389c22ece0b5ef80184e": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261013026000003",
+      "source": "연합뉴스",
+      "source_body_digest": "3708e9b1cb0f605e80d01d199665b150bf58361e1f2e5c87d6ebf2b7dd921017",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bfa28f76e0f32cae3ba3151aabab874c4069a6da0232426529d0b64404eaf2bd",
+      "source_fact_keys": [
+        "source_fact:v1:5ebed8b0506a0539b21c85478ac3b4cad5b180f36d6f67e493f16326028024d4"
+      ],
+      "source_published_kst": "2026-10-13T08:35+09:00",
+      "source_title": "SK어스온, 베트남 광구 '황금낙타' 구조서 원유 생산 개시 | 연합뉴스",
+      "telegram_core_fact": "이번 15-1/05 광구 생산 개시로 SK어스온은 2003년 원유 생산을 시작한 15-1 광구에 이어 베트남 내 생산 거점을 확대하는 데 성공하고, 안정적인 수익 창출을 기대하고 있다.",
+      "title": "SK어스온, 베트남 광구 '황금낙타' 구조서 원유 생산 개시 | 연합뉴스"
+    },
     "fact:dbc63dad365951b880c86687": {
       "first_seen_kst": "2026-10-12T23:14:39+09:00",
       "lanes": {
@@ -98346,6 +98726,29 @@
       "telegram_core_fact": "허 지사장은 \"워크데이 채용 솔루션은 AI가 지원자를 자동으로 진행시키거나 탈락시키는 등 고용 관련 결정을 자동으로 내리지 않도록 설계됐다\"며 \"AI는 등급이나 추천 정보를 제시할 뿐이며, 실제 채용 의사결정은 항상 채용담당자와 관리자가 내린다\"고 말했다.",
       "title": "\"1시간 만에 불합격 통보\"…이력서 읽는 AI 채용, 차별 잔혹사 되나"
     },
+    "link:021a209a4363cf6edb6dc770": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823178",
+      "source": "뉴시스",
+      "source_body_digest": "81077b89c9da3a7f5fb010ada8af185dccab082a293c114ac20d1f0ddc675ea5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d8459848fcb78cb47dd59f656b513d328f6d36d0fea183aba7d97b4c54fc635a",
+      "source_fact_keys": [
+        "source_fact:v1:3d5a4e9868b4f5f3815e46627b340c5a70b79a36ed01d312d0884e4b4d011511",
+        "source_fact:v1:3ea5f33f88ba14070428f93be39c239696b27dad47dfed1b3df430de8ec86e60",
+        "source_fact:v1:b3141b7564f4d1c6bf4097571a805ce3bb0fb3e164871b0d7fb49aa2552f2ab1",
+        "source_fact:v1:c2eac5e0f7762f4abdeba7baa0bdf12b016b2aa9caf6be2d4abcea255cf48ab1",
+        "source_fact:v1:f1e299a87559ab0baddcd27ba27032c97f2d4981b9a0c107a1456784d36f0d5a"
+      ],
+      "source_published_kst": "2026-10-13T08:52+09:00",
+      "source_title": "\"국장 탈출은 지능순\" 커뮤니티 분통…개인 투자자 10조원 미국 증시로 이동",
+      "telegram_core_fact": "국내 증시의 지지부진한 흐름에 실망한 개인 투자자들이 국내 주식을 대거 매도하고 미국 증시로 눈을 돌려 3분기 동안 10조원 넘는 자금을 쏟아부은 것으로 나타났다. 최근 금융투자업계와 한국예탁결제원에 따르면 개인 투자자들은 지난 7월부터 9월까지 국내 유가증권시장에서 5조5000억원 이상을 순매도했다.",
+      "title": "\"국장 탈출은 지능순\" 커뮤니티 분통…개인 투자자 10조원 미국 증시로 이동"
+    },
     "link:022cea7b78b16fbfd7c07c8f": {
       "first_seen_kst": "2026-10-11T15:10:51+09:00",
       "lanes": {
@@ -100849,6 +101252,28 @@
       "source": "뉴시스",
       "title": "AI 해킹 먹잇감 된 은행권…금융당국도 보안 대응 '비상'"
     },
+    "link:0b41eb5ff3c960fba962719a": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634941",
+      "source": "이투데이",
+      "source_body_digest": "16da39d64d4d3d7994f30e53945e26dfc02b213987dca046bf15f7387b8ba06a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:67356faafd4c2e45a2ff284c8d0aa2467814238e9a309de85aad986516d4b1ba",
+      "source_fact_keys": [
+        "source_fact:v1:3cc9715e27fc10449a7bb6c6f4f9edd33fc2a2582f8884a359a2f51e906678d2",
+        "source_fact:v1:4780c80cd0728dcab57f93385b8bcf9097ffb5bc139a9b3b48be7638263646c0",
+        "source_fact:v1:918321c35b0fa1f64a984626504bbc09f29e4a717f8903fa32af9d17b0103d4c",
+        "source_fact:v1:a267ac8b614c4c138bb52889fe48acc682113eaedb17266c287ca6996e14cb2b"
+      ],
+      "source_published_kst": "2026-10-13T08:40+09:00",
+      "source_title": "한투운용, 만기채권형 ETF 신규 상장⋯AA- 이상 회사채 분산투자",
+      "telegram_core_fact": "한국투자신탁운용은 13일 만기매칭형 채권 상장지수펀드(ETF)인 ‘ACE 29-11회사채(AA-이상)액티브 ETF’를 신규 상장한다고 밝혔다.",
+      "title": "한투운용, 만기채권형 ETF 신규 상장⋯AA- 이상 회사채 분산투자"
+    },
     "link:0b50d9eac59db2726bbb7d9e": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
       "lanes": {
@@ -101920,6 +102345,25 @@
       ],
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "주담대 금리도 '들썩'…한은 추가 인상에 이자 더 오르나[금리 쇼크③]"
+    },
+    "link:0ef409ecc685b8dacfce13ea": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261013026000003",
+      "source": "연합뉴스",
+      "source_body_digest": "3708e9b1cb0f605e80d01d199665b150bf58361e1f2e5c87d6ebf2b7dd921017",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bfa28f76e0f32cae3ba3151aabab874c4069a6da0232426529d0b64404eaf2bd",
+      "source_fact_keys": [
+        "source_fact:v1:5ebed8b0506a0539b21c85478ac3b4cad5b180f36d6f67e493f16326028024d4"
+      ],
+      "source_published_kst": "2026-10-13T08:35+09:00",
+      "source_title": "SK어스온, 베트남 광구 '황금낙타' 구조서 원유 생산 개시 | 연합뉴스",
+      "telegram_core_fact": "이번 15-1/05 광구 생산 개시로 SK어스온은 2003년 원유 생산을 시작한 15-1 광구에 이어 베트남 내 생산 거점을 확대하는 데 성공하고, 안정적인 수익 창출을 기대하고 있다.",
+      "title": "SK어스온, 베트남 광구 '황금낙타' 구조서 원유 생산 개시 | 연합뉴스"
     },
     "link:0ef7e5ab056a14bccc8a0372": {
       "first_seen_kst": "2026-10-02T16:53:54+09:00",
@@ -112815,6 +113259,32 @@
       "source_published_kst": "2026-10-06T21:25+09:00",
       "title": "[美특징주]콘스텔레이션 에너지, 구글과 20년 원전 전력 공급 계약에 개장 전↑"
     },
+    "link:3462bb455c105aef11dff968": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823169",
+      "source": "뉴시스",
+      "source_body_digest": "3a605b6f04b590dc0a67db51ba906c0da03f083022c2596d4cd1a3c38bfc47db",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c4a35156fc4572cde194417c379dcb8ca9cf6fa58d4e21e0c554ce7551f595ac",
+      "source_fact_keys": [
+        "source_fact:v1:33ffe8563e40ec4f9a3689a0f6a57fc6d984c207271853bb65b56b698086d622",
+        "source_fact:v1:42d10d6abe569ca058f52c175fa1b8a24a613f3608df782d0bfacbb94b67b72b",
+        "source_fact:v1:5f6aecb54db2243ff152ee3d752b3b825141f88d65f2664e44ab53e01a805440",
+        "source_fact:v1:85de41591358b9cebb0736ede4b78e3ed2426e13cb0dfcdb4f4849e0f5dde337",
+        "source_fact:v1:a77f31840aaebdcf7accc348d13a43aff0a1dddd0705b71a394c64050da1350a",
+        "source_fact:v1:cca2719ce1ba7a343d0b08e134a894dff21308f4043db3203f47e16f11b97bdd",
+        "source_fact:v1:de6bd639db90fb448d6423c72a752d605773173efc9c1b76a3e394f06b0f81bd",
+        "source_fact:v1:eb4f156c130946d75c8c8b447d0cbbf7e6c0ba911e971a32f620e99eb970e6de"
+      ],
+      "source_published_kst": "2026-10-13T08:51+09:00",
+      "source_title": "나신평 \"HD현대마린 '골텐스' 인수, 단기 수익성 희석 가능성\"",
+      "telegram_core_fact": "HD현대마린솔루션은 지난 8일 글로벌 선박·육상 발전용 엔진 서비스 전문 기업 골텐스 지분 100%를 인수하는 주식 매매 계약을 체결했다고 밝혔다.",
+      "title": "나신평 \"HD현대마린 '골텐스' 인수, 단기 수익성 희석 가능성\""
+    },
     "link:3462faa46fd2458dc770229c": {
       "first_seen_kst": "2026-10-07T16:15:21+09:00",
       "lanes": {
@@ -118090,6 +118560,26 @@
       "link": "https://www.dt.co.kr/article/12087170",
       "source": "디지털타임스",
       "title": "최태원, 9440억 SK지분 매각 추진…‘노소영 재산분할’ 소요 자금 마련"
+    },
+    "link:488c77975de0cc8bcac98eb3": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634934",
+      "source": "이투데이",
+      "source_body_digest": "64e7645e34503960f5aec2180d3bbbe93aa98304a6ab17e62b61df21da3841e8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4760e739511b6bdb6755f2c5f24027323e4a6c9a721cfbf22db964fc54a67232",
+      "source_fact_keys": [
+        "source_fact:v1:27519bae28958c4b80c20edd526a40ea368eb6623398d835002364fb289d4fca",
+        "source_fact:v1:530229416c052172abac061b68a19d1a0b1ceab936aad7b9328a3b868f466a62"
+      ],
+      "source_published_kst": "2026-10-13T08:48+09:00",
+      "source_title": "노벨경제학상 우드퍼드 \"시장과 소통해야\"⋯연준 '포워드 가이던스 축소' 겨냥",
+      "telegram_core_fact": "포워드 가이던스는 기준금리 발표를 앞두고 연준 의장 및 위원들이 내비치는 새 금리에 대한 신호다.",
+      "title": "노벨경제학상 우드퍼드 \"시장과 소통해야\"⋯연준 '포워드 가이던스 축소' 겨냥"
     },
     "link:489a919f69a056d416f44a47": {
       "first_seen_kst": "2026-10-12T09:05:29+09:00",
@@ -134758,6 +135248,28 @@
       "link": "https://www.fnnews.com/news/202610011516122828",
       "source": "파이낸셜뉴스",
       "title": "하이즈복합재산업-한화에어로, K-무인기 생태계 구축 MOU"
+    },
+    "link:8352fa2ce88bcb88329fa4d9": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261013030100008",
+      "source": "연합뉴스",
+      "source_body_digest": "5dad9378301e64a565769db9d15158b96cf0a6f03577fdc6e86010012fb2a8b9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48d7c1864eb56ba69d996a4c95823fbb8edb9dd39d7f878e9d417ab10cf8b8b5",
+      "source_fact_keys": [
+        "source_fact:v1:0752a27d3a4e1c39806adcf4e12a479561a4ccae6ed5b51a7702652f60dcdf3a",
+        "source_fact:v1:3fd8496fc1ab2811dcc5e226804b31dfd9ba0e6a9d65694ce02e9d95da8f6c95",
+        "source_fact:v1:dfac1df8dedb02dd7119b38a3e03f1bf5004d738132c492d6ed0b1349fb2d607",
+        "source_fact:v1:dfbb2d5a3cf2e325870c7048125acb1b2565347ca81584358497c0394b92b334"
+      ],
+      "source_published_kst": "2026-10-13T08:55+09:00",
+      "source_title": "NH증권 \"셀트리온, 경기 방어와 성장 매력 동시 보유\" | 연합뉴스",
+      "telegram_core_fact": "한승연 연구원은 이날 보고서에서 \"올해 코스피 의약품 주가가 27% 내린 데 비해 셀트리온은 6% 하락에 그쳐 코스피 제약사 내 상대적 견조한 모습\"이라며 \"업종 둔화에도 강력한 신제품 효과로 올해 영업이익이 전년 대비 62%의 고성장이 예상된다\"고 전망했다.",
+      "title": "NH증권 \"셀트리온, 경기 방어와 성장 매력 동시 보유\" | 연합뉴스"
     },
     "link:835e0a7231002439e6cd0c94": {
       "first_seen_kst": "2026-10-04T07:39:13+09:00",
@@ -163123,6 +163635,35 @@
       "telegram_core_fact": "이번 제재 대상에는 EU 입국 제한과 역내 자산 동결, 자금 및 경제적 자원 제공 금지 등의 조치가 적용된다.",
       "title": "EU, 러시아 군수기업·경영진 '역대급 제재'…북·러 밀착도 정조준"
     },
+    "link:e8e1c75708dd9d9749d2843b": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822582",
+      "source": "뉴시스",
+      "source_body_digest": "ded13bf159fe7e63b658913c31dbe81e369ceed8c6c26fc04a200474419056e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb779f24d12685263ce09036553d25e122b1db1a153af5186e04c8c459beb34c",
+      "source_fact_keys": [
+        "source_fact:v1:2172b85501d79dc9144c7b53d583b1103b4aed767f8efe0815f73c9bc9d8eb77",
+        "source_fact:v1:6dc4e04e46aae0e3f4aef1d78ddd8ca303c0df18af31b5441ab30e9c89294b71",
+        "source_fact:v1:7be9f3a03ab06d0e665141206ae000bdfcfb21d5aac57ab4dce81d42e3edec89",
+        "source_fact:v1:7d3712fc603ba7ee6e687a9e228ff013e329a86648b77886dd381dc8e6c9eeb9",
+        "source_fact:v1:847cda64df5d04bee8b5c8065e78f6dd18acbd6be39dc9a7bc446b37b9d6701b",
+        "source_fact:v1:b2666c85dbda8db8c9251124cc70672fcb73d14cfab8ba1dc3c211d0d8ff8a25",
+        "source_fact:v1:be0d64c85384d95c2bf7e0b6bc812fe4c0140c5c8e0de325dec78890a87caf57",
+        "source_fact:v1:d3394daa42b3d2ed0a54a91187c5d6e2a31bf82afe3076376b805048ed907ead",
+        "source_fact:v1:e2e855f851927552c0fdb8ce439ae56b2b413727aa300d2e8e9c1c8df9c41a78",
+        "source_fact:v1:fa0bfd4e16e4e6caddff48e7e18af1717f37ee517d307fac5e6faa5cbb3c8859",
+        "source_fact:v1:fba459d2cc2cc8186b7932c292928ead4c877e086b72089b051ca49358bccb0a"
+      ],
+      "source_published_kst": "2026-10-13T08:41+09:00",
+      "source_title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?",
+      "telegram_core_fact": "SK하이닉스가 미국 낸드플래시 손자회사 '솔리다임'의 미국 증시 상장(IPO)을 추진할 것으로 알려진 가운데, 양사가 상장을 통해 어떠한 실익을 얻을 수 있을 지 관심이 쏠린다.",
+      "title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?"
+    },
     "link:e8f7c7f02a22e8f6d7f95984": {
       "first_seen_kst": "2026-10-10T08:01:49+09:00",
       "lanes": {
@@ -171104,6 +171645,28 @@
       "source_published_kst": "2026-10-07T10:36+09:00",
       "title": "파라택시스 합병 무산…코리아-상폐 대응, 이더리움-독자 경영"
     },
+    "original:0603c981b9704ecb45d8879f": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261013030100008",
+      "source": "연합뉴스",
+      "source_body_digest": "5dad9378301e64a565769db9d15158b96cf0a6f03577fdc6e86010012fb2a8b9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48d7c1864eb56ba69d996a4c95823fbb8edb9dd39d7f878e9d417ab10cf8b8b5",
+      "source_fact_keys": [
+        "source_fact:v1:0752a27d3a4e1c39806adcf4e12a479561a4ccae6ed5b51a7702652f60dcdf3a",
+        "source_fact:v1:3fd8496fc1ab2811dcc5e226804b31dfd9ba0e6a9d65694ce02e9d95da8f6c95",
+        "source_fact:v1:dfac1df8dedb02dd7119b38a3e03f1bf5004d738132c492d6ed0b1349fb2d607",
+        "source_fact:v1:dfbb2d5a3cf2e325870c7048125acb1b2565347ca81584358497c0394b92b334"
+      ],
+      "source_published_kst": "2026-10-13T08:55+09:00",
+      "source_title": "NH증권 \"셀트리온, 경기 방어와 성장 매력 동시 보유\" | 연합뉴스",
+      "telegram_core_fact": "한승연 연구원은 이날 보고서에서 \"올해 코스피 의약품 주가가 27% 내린 데 비해 셀트리온은 6% 하락에 그쳐 코스피 제약사 내 상대적 견조한 모습\"이라며 \"업종 둔화에도 강력한 신제품 효과로 올해 영업이익이 전년 대비 62%의 고성장이 예상된다\"고 전망했다.",
+      "title": "NH증권 \"셀트리온, 경기 방어와 성장 매력 동시 보유\" | 연합뉴스"
+    },
     "original:06107e22ccc14ef4d26d57bd": {
       "first_seen_kst": "2026-10-08T03:26:42+09:00",
       "lanes": {
@@ -173122,6 +173685,28 @@
       "source_published_kst": "2026-10-06T14:21+09:00",
       "title": "IPARK현대산업개발, 부산 연산13구역 재개발 수주…2812억 규모"
     },
+    "original:0e11ee34f6a0ff197ee7194c": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634941",
+      "source": "이투데이",
+      "source_body_digest": "16da39d64d4d3d7994f30e53945e26dfc02b213987dca046bf15f7387b8ba06a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:67356faafd4c2e45a2ff284c8d0aa2467814238e9a309de85aad986516d4b1ba",
+      "source_fact_keys": [
+        "source_fact:v1:3cc9715e27fc10449a7bb6c6f4f9edd33fc2a2582f8884a359a2f51e906678d2",
+        "source_fact:v1:4780c80cd0728dcab57f93385b8bcf9097ffb5bc139a9b3b48be7638263646c0",
+        "source_fact:v1:918321c35b0fa1f64a984626504bbc09f29e4a717f8903fa32af9d17b0103d4c",
+        "source_fact:v1:a267ac8b614c4c138bb52889fe48acc682113eaedb17266c287ca6996e14cb2b"
+      ],
+      "source_published_kst": "2026-10-13T08:40+09:00",
+      "source_title": "한투운용, 만기채권형 ETF 신규 상장⋯AA- 이상 회사채 분산투자",
+      "telegram_core_fact": "한국투자신탁운용은 13일 만기매칭형 채권 상장지수펀드(ETF)인 ‘ACE 29-11회사채(AA-이상)액티브 ETF’를 신규 상장한다고 밝혔다.",
+      "title": "한투운용, 만기채권형 ETF 신규 상장⋯AA- 이상 회사채 분산투자"
+    },
     "original:0e15c5d0a3cb14bf940f3ddd": {
       "first_seen_kst": "2026-10-09T17:54:07+09:00",
       "lanes": {
@@ -173401,6 +173986,35 @@
       "link": "https://www.yna.co.kr/view/AKR20261002151600008",
       "source": "연합뉴스",
       "title": "한국투자증권, SK 주식 4천억원어치 취득…지분율 0.9% | 연합뉴스"
+    },
+    "original:0f1cffaf1cd124f1e715c34f": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822582",
+      "source": "뉴시스",
+      "source_body_digest": "ded13bf159fe7e63b658913c31dbe81e369ceed8c6c26fc04a200474419056e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb779f24d12685263ce09036553d25e122b1db1a153af5186e04c8c459beb34c",
+      "source_fact_keys": [
+        "source_fact:v1:2172b85501d79dc9144c7b53d583b1103b4aed767f8efe0815f73c9bc9d8eb77",
+        "source_fact:v1:6dc4e04e46aae0e3f4aef1d78ddd8ca303c0df18af31b5441ab30e9c89294b71",
+        "source_fact:v1:7be9f3a03ab06d0e665141206ae000bdfcfb21d5aac57ab4dce81d42e3edec89",
+        "source_fact:v1:7d3712fc603ba7ee6e687a9e228ff013e329a86648b77886dd381dc8e6c9eeb9",
+        "source_fact:v1:847cda64df5d04bee8b5c8065e78f6dd18acbd6be39dc9a7bc446b37b9d6701b",
+        "source_fact:v1:b2666c85dbda8db8c9251124cc70672fcb73d14cfab8ba1dc3c211d0d8ff8a25",
+        "source_fact:v1:be0d64c85384d95c2bf7e0b6bc812fe4c0140c5c8e0de325dec78890a87caf57",
+        "source_fact:v1:d3394daa42b3d2ed0a54a91187c5d6e2a31bf82afe3076376b805048ed907ead",
+        "source_fact:v1:e2e855f851927552c0fdb8ce439ae56b2b413727aa300d2e8e9c1c8df9c41a78",
+        "source_fact:v1:fa0bfd4e16e4e6caddff48e7e18af1717f37ee517d307fac5e6faa5cbb3c8859",
+        "source_fact:v1:fba459d2cc2cc8186b7932c292928ead4c877e086b72089b051ca49358bccb0a"
+      ],
+      "source_published_kst": "2026-10-13T08:41+09:00",
+      "source_title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?",
+      "telegram_core_fact": "SK하이닉스가 미국 낸드플래시 손자회사 '솔리다임'의 미국 증시 상장(IPO)을 추진할 것으로 알려진 가운데, 양사가 상장을 통해 어떠한 실익을 얻을 수 있을 지 관심이 쏠린다.",
+      "title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?"
     },
     "original:0f2f687f500fbd5e03673aa6": {
       "first_seen_kst": "2026-10-08T01:58:01+09:00",
@@ -174784,6 +175398,32 @@
       "link": "https://www.mt.co.kr/stock/2026/09/18/2026091811395989717",
       "source": "머니투데이",
       "title": "티로보틱스, 美 수주 확대에 현지 생산거점 구축 추진…북미 대응 강화"
+    },
+    "original:14bed89d6f17325d754c3b3c": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823169",
+      "source": "뉴시스",
+      "source_body_digest": "3a605b6f04b590dc0a67db51ba906c0da03f083022c2596d4cd1a3c38bfc47db",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c4a35156fc4572cde194417c379dcb8ca9cf6fa58d4e21e0c554ce7551f595ac",
+      "source_fact_keys": [
+        "source_fact:v1:33ffe8563e40ec4f9a3689a0f6a57fc6d984c207271853bb65b56b698086d622",
+        "source_fact:v1:42d10d6abe569ca058f52c175fa1b8a24a613f3608df782d0bfacbb94b67b72b",
+        "source_fact:v1:5f6aecb54db2243ff152ee3d752b3b825141f88d65f2664e44ab53e01a805440",
+        "source_fact:v1:85de41591358b9cebb0736ede4b78e3ed2426e13cb0dfcdb4f4849e0f5dde337",
+        "source_fact:v1:a77f31840aaebdcf7accc348d13a43aff0a1dddd0705b71a394c64050da1350a",
+        "source_fact:v1:cca2719ce1ba7a343d0b08e134a894dff21308f4043db3203f47e16f11b97bdd",
+        "source_fact:v1:de6bd639db90fb448d6423c72a752d605773173efc9c1b76a3e394f06b0f81bd",
+        "source_fact:v1:eb4f156c130946d75c8c8b447d0cbbf7e6c0ba911e971a32f620e99eb970e6de"
+      ],
+      "source_published_kst": "2026-10-13T08:51+09:00",
+      "source_title": "나신평 \"HD현대마린 '골텐스' 인수, 단기 수익성 희석 가능성\"",
+      "telegram_core_fact": "HD현대마린솔루션은 지난 8일 글로벌 선박·육상 발전용 엔진 서비스 전문 기업 골텐스 지분 100%를 인수하는 주식 매매 계약을 체결했다고 밝혔다.",
+      "title": "나신평 \"HD현대마린 '골텐스' 인수, 단기 수익성 희석 가능성\""
     },
     "original:14c6e13d440d8cbb4c124fdb": {
       "first_seen_kst": "2026-09-21T16:03:34+09:00",
@@ -201445,6 +202085,26 @@
       "source_published_kst": "2026-10-06T08:35+09:00",
       "title": "[포토] 금천구, 고령자친화기업 재지정"
     },
+    "original:7559fc4578671e78796850fc": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634934",
+      "source": "이투데이",
+      "source_body_digest": "64e7645e34503960f5aec2180d3bbbe93aa98304a6ab17e62b61df21da3841e8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4760e739511b6bdb6755f2c5f24027323e4a6c9a721cfbf22db964fc54a67232",
+      "source_fact_keys": [
+        "source_fact:v1:27519bae28958c4b80c20edd526a40ea368eb6623398d835002364fb289d4fca",
+        "source_fact:v1:530229416c052172abac061b68a19d1a0b1ceab936aad7b9328a3b868f466a62"
+      ],
+      "source_published_kst": "2026-10-13T08:48+09:00",
+      "source_title": "노벨경제학상 우드퍼드 \"시장과 소통해야\"⋯연준 '포워드 가이던스 축소' 겨냥",
+      "telegram_core_fact": "포워드 가이던스는 기준금리 발표를 앞두고 연준 의장 및 위원들이 내비치는 새 금리에 대한 신호다.",
+      "title": "노벨경제학상 우드퍼드 \"시장과 소통해야\"⋯연준 '포워드 가이던스 축소' 겨냥"
+    },
     "original:7579ce386d5005b5222e2f11": {
       "first_seen_kst": "2026-10-12T18:02:18+09:00",
       "lanes": {
@@ -217216,6 +217876,25 @@
       "telegram_core_fact": "반도체·디스플레이 장비 핵심부품 전문기업 영광와이케이엠씨(영광YKMC)가 금융위원회에 증권신고서를 제출하고 코스닥 상장을 위한 공모 절차에 착수했다고 12일 밝혔다. 오는 27일부터 11월 2일까지 기관투자자 대상 수요예측을 진행하고 11월 4~5일 일반청약을 거쳐 연내 코스닥 시장에 입성한다는 계획이다.",
       "title": "'첨단공정 장비 핵심부품' 영광와이케이엠씨, 증권신고서 제출…연내 코스닥 입성"
     },
+    "original:aecdc3600cfd03d99c3535c4": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261013026000003",
+      "source": "연합뉴스",
+      "source_body_digest": "3708e9b1cb0f605e80d01d199665b150bf58361e1f2e5c87d6ebf2b7dd921017",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bfa28f76e0f32cae3ba3151aabab874c4069a6da0232426529d0b64404eaf2bd",
+      "source_fact_keys": [
+        "source_fact:v1:5ebed8b0506a0539b21c85478ac3b4cad5b180f36d6f67e493f16326028024d4"
+      ],
+      "source_published_kst": "2026-10-13T08:35+09:00",
+      "source_title": "SK어스온, 베트남 광구 '황금낙타' 구조서 원유 생산 개시 | 연합뉴스",
+      "telegram_core_fact": "이번 15-1/05 광구 생산 개시로 SK어스온은 2003년 원유 생산을 시작한 15-1 광구에 이어 베트남 내 생산 거점을 확대하는 데 성공하고, 안정적인 수익 창출을 기대하고 있다.",
+      "title": "SK어스온, 베트남 광구 '황금낙타' 구조서 원유 생산 개시 | 연합뉴스"
+    },
     "original:aed4491d9f002af261106b1e": {
       "first_seen_kst": "2026-10-11T12:11:12+09:00",
       "lanes": {
@@ -223696,6 +224375,29 @@
       "link": "https://www.mk.co.kr/news/stock/12164151",
       "source": "매일경제",
       "title": "카맥스, 2분기 EPS 81% 급증..자사주 매입 재개"
+    },
+    "original:c972c40fb7a41da6bb3bb599": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823178",
+      "source": "뉴시스",
+      "source_body_digest": "81077b89c9da3a7f5fb010ada8af185dccab082a293c114ac20d1f0ddc675ea5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d8459848fcb78cb47dd59f656b513d328f6d36d0fea183aba7d97b4c54fc635a",
+      "source_fact_keys": [
+        "source_fact:v1:3d5a4e9868b4f5f3815e46627b340c5a70b79a36ed01d312d0884e4b4d011511",
+        "source_fact:v1:3ea5f33f88ba14070428f93be39c239696b27dad47dfed1b3df430de8ec86e60",
+        "source_fact:v1:b3141b7564f4d1c6bf4097571a805ce3bb0fb3e164871b0d7fb49aa2552f2ab1",
+        "source_fact:v1:c2eac5e0f7762f4abdeba7baa0bdf12b016b2aa9caf6be2d4abcea255cf48ab1",
+        "source_fact:v1:f1e299a87559ab0baddcd27ba27032c97f2d4981b9a0c107a1456784d36f0d5a"
+      ],
+      "source_published_kst": "2026-10-13T08:52+09:00",
+      "source_title": "\"국장 탈출은 지능순\" 커뮤니티 분통…개인 투자자 10조원 미국 증시로 이동",
+      "telegram_core_fact": "국내 증시의 지지부진한 흐름에 실망한 개인 투자자들이 국내 주식을 대거 매도하고 미국 증시로 눈을 돌려 3분기 동안 10조원 넘는 자금을 쏟아부은 것으로 나타났다. 최근 금융투자업계와 한국예탁결제원에 따르면 개인 투자자들은 지난 7월부터 9월까지 국내 유가증권시장에서 5조5000억원 이상을 순매도했다.",
+      "title": "\"국장 탈출은 지능순\" 커뮤니티 분통…개인 투자자 10조원 미국 증시로 이동"
     },
     "original:c974e9632ce1cebefca0aebc": {
       "first_seen_kst": "2026-10-06T21:17:11+09:00",
@@ -241559,6 +242261,35 @@
       "telegram_core_fact": "향후 글로벌 AI 인프라 경쟁에서는 중국의 대규모 데이터센터 건설 계획이 실제 가동으로 얼마나 이어지는지와 미국의 전력망 제약이 어떻게 작용하는지가 주요 변수로 남을 전망이다.",
       "title": "중국, 남아도는 전력으로 AI 승부…데이터센터 건설 가속"
     },
+    "source_fact:035045877d96ed1db8507075": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822582",
+      "source": "뉴시스",
+      "source_body_digest": "ded13bf159fe7e63b658913c31dbe81e369ceed8c6c26fc04a200474419056e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb779f24d12685263ce09036553d25e122b1db1a153af5186e04c8c459beb34c",
+      "source_fact_keys": [
+        "source_fact:v1:2172b85501d79dc9144c7b53d583b1103b4aed767f8efe0815f73c9bc9d8eb77",
+        "source_fact:v1:6dc4e04e46aae0e3f4aef1d78ddd8ca303c0df18af31b5441ab30e9c89294b71",
+        "source_fact:v1:7be9f3a03ab06d0e665141206ae000bdfcfb21d5aac57ab4dce81d42e3edec89",
+        "source_fact:v1:7d3712fc603ba7ee6e687a9e228ff013e329a86648b77886dd381dc8e6c9eeb9",
+        "source_fact:v1:847cda64df5d04bee8b5c8065e78f6dd18acbd6be39dc9a7bc446b37b9d6701b",
+        "source_fact:v1:b2666c85dbda8db8c9251124cc70672fcb73d14cfab8ba1dc3c211d0d8ff8a25",
+        "source_fact:v1:be0d64c85384d95c2bf7e0b6bc812fe4c0140c5c8e0de325dec78890a87caf57",
+        "source_fact:v1:d3394daa42b3d2ed0a54a91187c5d6e2a31bf82afe3076376b805048ed907ead",
+        "source_fact:v1:e2e855f851927552c0fdb8ce439ae56b2b413727aa300d2e8e9c1c8df9c41a78",
+        "source_fact:v1:fa0bfd4e16e4e6caddff48e7e18af1717f37ee517d307fac5e6faa5cbb3c8859",
+        "source_fact:v1:fba459d2cc2cc8186b7932c292928ead4c877e086b72089b051ca49358bccb0a"
+      ],
+      "source_published_kst": "2026-10-13T08:41+09:00",
+      "source_title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?",
+      "telegram_core_fact": "SK하이닉스가 미국 낸드플래시 손자회사 '솔리다임'의 미국 증시 상장(IPO)을 추진할 것으로 알려진 가운데, 양사가 상장을 통해 어떠한 실익을 얻을 수 있을 지 관심이 쏠린다.",
+      "title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?"
+    },
     "source_fact:035252da0dc04a0119ab1a49": {
       "first_seen_kst": "2026-10-07T17:23:27+09:00",
       "lanes": {
@@ -241724,6 +242455,35 @@
       "source_title": "특성화 사립대 33곳에 5년간 6천억원…정원 3% 이상 감축 | 연합뉴스",
       "telegram_core_fact": "최은옥 교육부 차관은 \"이번 사업은 대학이 자율적인 구조개선을 통해 특성화 분야에 역량을 집중하고 학생들에게 수준 높은 교육을 제공할 기회가 될 것\"이라며 사립대의 경쟁력 강화를 재정 지원과 규제 완화로 뒷받침하겠다고 말했다.",
       "title": "특성화 사립대 33곳에 5년간 6천억원…정원 3% 이상 감축 | 연합뉴스"
+    },
+    "source_fact:03935343ab537c9bdce2f45d": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822582",
+      "source": "뉴시스",
+      "source_body_digest": "ded13bf159fe7e63b658913c31dbe81e369ceed8c6c26fc04a200474419056e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb779f24d12685263ce09036553d25e122b1db1a153af5186e04c8c459beb34c",
+      "source_fact_keys": [
+        "source_fact:v1:2172b85501d79dc9144c7b53d583b1103b4aed767f8efe0815f73c9bc9d8eb77",
+        "source_fact:v1:6dc4e04e46aae0e3f4aef1d78ddd8ca303c0df18af31b5441ab30e9c89294b71",
+        "source_fact:v1:7be9f3a03ab06d0e665141206ae000bdfcfb21d5aac57ab4dce81d42e3edec89",
+        "source_fact:v1:7d3712fc603ba7ee6e687a9e228ff013e329a86648b77886dd381dc8e6c9eeb9",
+        "source_fact:v1:847cda64df5d04bee8b5c8065e78f6dd18acbd6be39dc9a7bc446b37b9d6701b",
+        "source_fact:v1:b2666c85dbda8db8c9251124cc70672fcb73d14cfab8ba1dc3c211d0d8ff8a25",
+        "source_fact:v1:be0d64c85384d95c2bf7e0b6bc812fe4c0140c5c8e0de325dec78890a87caf57",
+        "source_fact:v1:d3394daa42b3d2ed0a54a91187c5d6e2a31bf82afe3076376b805048ed907ead",
+        "source_fact:v1:e2e855f851927552c0fdb8ce439ae56b2b413727aa300d2e8e9c1c8df9c41a78",
+        "source_fact:v1:fa0bfd4e16e4e6caddff48e7e18af1717f37ee517d307fac5e6faa5cbb3c8859",
+        "source_fact:v1:fba459d2cc2cc8186b7932c292928ead4c877e086b72089b051ca49358bccb0a"
+      ],
+      "source_published_kst": "2026-10-13T08:41+09:00",
+      "source_title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?",
+      "telegram_core_fact": "SK하이닉스가 미국 낸드플래시 손자회사 '솔리다임'의 미국 증시 상장(IPO)을 추진할 것으로 알려진 가운데, 양사가 상장을 통해 어떠한 실익을 얻을 수 있을 지 관심이 쏠린다.",
+      "title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?"
     },
     "source_fact:03955849949df1132d7113df": {
       "first_seen_kst": "2026-10-07T20:28:48+09:00",
@@ -249555,6 +250315,35 @@
       "source_title": "디티에스 \"코스닥 상장으로 글로벌 열 관리 솔루션 리더 도약\"",
       "telegram_core_fact": "회사는 상장 이후 LNG 설비 증설과 발전 인프라 투자 확대에 맞춰 주력사업 수주를 늘린다는 목표다.",
       "title": "디티에스 \"코스닥 상장으로 글로벌 열 관리 솔루션 리더 도약\""
+    },
+    "source_fact:0c1c9e8d05bc70f494866ed9": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822582",
+      "source": "뉴시스",
+      "source_body_digest": "ded13bf159fe7e63b658913c31dbe81e369ceed8c6c26fc04a200474419056e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb779f24d12685263ce09036553d25e122b1db1a153af5186e04c8c459beb34c",
+      "source_fact_keys": [
+        "source_fact:v1:2172b85501d79dc9144c7b53d583b1103b4aed767f8efe0815f73c9bc9d8eb77",
+        "source_fact:v1:6dc4e04e46aae0e3f4aef1d78ddd8ca303c0df18af31b5441ab30e9c89294b71",
+        "source_fact:v1:7be9f3a03ab06d0e665141206ae000bdfcfb21d5aac57ab4dce81d42e3edec89",
+        "source_fact:v1:7d3712fc603ba7ee6e687a9e228ff013e329a86648b77886dd381dc8e6c9eeb9",
+        "source_fact:v1:847cda64df5d04bee8b5c8065e78f6dd18acbd6be39dc9a7bc446b37b9d6701b",
+        "source_fact:v1:b2666c85dbda8db8c9251124cc70672fcb73d14cfab8ba1dc3c211d0d8ff8a25",
+        "source_fact:v1:be0d64c85384d95c2bf7e0b6bc812fe4c0140c5c8e0de325dec78890a87caf57",
+        "source_fact:v1:d3394daa42b3d2ed0a54a91187c5d6e2a31bf82afe3076376b805048ed907ead",
+        "source_fact:v1:e2e855f851927552c0fdb8ce439ae56b2b413727aa300d2e8e9c1c8df9c41a78",
+        "source_fact:v1:fa0bfd4e16e4e6caddff48e7e18af1717f37ee517d307fac5e6faa5cbb3c8859",
+        "source_fact:v1:fba459d2cc2cc8186b7932c292928ead4c877e086b72089b051ca49358bccb0a"
+      ],
+      "source_published_kst": "2026-10-13T08:41+09:00",
+      "source_title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?",
+      "telegram_core_fact": "SK하이닉스가 미국 낸드플래시 손자회사 '솔리다임'의 미국 증시 상장(IPO)을 추진할 것으로 알려진 가운데, 양사가 상장을 통해 어떠한 실익을 얻을 수 있을 지 관심이 쏠린다.",
+      "title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?"
     },
     "source_fact:0c1ff22c01865b5c1f37f208": {
       "first_seen_kst": "2026-10-08T14:21:54+09:00",
@@ -267668,6 +268457,29 @@
       "source_title": "[속보]\"100조 벽 깼다\" 삼성전자, 영업익 107조 '역대 최대'",
       "telegram_core_fact": "삼성전자는 올해 3분기 연결 기준 잠정 영업이익이 107조4000억원으로 집계됐다고 8일 공시했다.",
       "title": "[속보]\"100조 벽 깼다\" 삼성전자, 영업익 107조 '역대 최대'"
+    },
+    "source_fact:1e6e1ec7d6d173b5247a5f19": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823178",
+      "source": "뉴시스",
+      "source_body_digest": "81077b89c9da3a7f5fb010ada8af185dccab082a293c114ac20d1f0ddc675ea5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d8459848fcb78cb47dd59f656b513d328f6d36d0fea183aba7d97b4c54fc635a",
+      "source_fact_keys": [
+        "source_fact:v1:3d5a4e9868b4f5f3815e46627b340c5a70b79a36ed01d312d0884e4b4d011511",
+        "source_fact:v1:3ea5f33f88ba14070428f93be39c239696b27dad47dfed1b3df430de8ec86e60",
+        "source_fact:v1:b3141b7564f4d1c6bf4097571a805ce3bb0fb3e164871b0d7fb49aa2552f2ab1",
+        "source_fact:v1:c2eac5e0f7762f4abdeba7baa0bdf12b016b2aa9caf6be2d4abcea255cf48ab1",
+        "source_fact:v1:f1e299a87559ab0baddcd27ba27032c97f2d4981b9a0c107a1456784d36f0d5a"
+      ],
+      "source_published_kst": "2026-10-13T08:52+09:00",
+      "source_title": "\"국장 탈출은 지능순\" 커뮤니티 분통…개인 투자자 10조원 미국 증시로 이동",
+      "telegram_core_fact": "국내 증시의 지지부진한 흐름에 실망한 개인 투자자들이 국내 주식을 대거 매도하고 미국 증시로 눈을 돌려 3분기 동안 10조원 넘는 자금을 쏟아부은 것으로 나타났다. 최근 금융투자업계와 한국예탁결제원에 따르면 개인 투자자들은 지난 7월부터 9월까지 국내 유가증권시장에서 5조5000억원 이상을 순매도했다.",
+      "title": "\"국장 탈출은 지능순\" 커뮤니티 분통…개인 투자자 10조원 미국 증시로 이동"
     },
     "source_fact:1e79ddcd6e1490965f68f6fb": {
       "first_seen_kst": "2026-10-13T01:37:36+09:00",
@@ -291950,6 +292762,28 @@
       "telegram_core_fact": "포스코홀딩스는 염수리튬 2공장 상공정을 준공하고, 2033년 연산 10만톤 생산체제 구축을 공식화했다. 장인화 포스코그룹 회장이 글로벌 핵심광물 확보전 한복판인 아르헨티나에서 리튬 사업의 확장 신호탄을 쐈다.",
       "title": "장인화, 글로벌 자원 확보전 진두지휘…포스코 리튬 2공장 준공"
     },
+    "source_fact:36b1f419f44c3f2af9a34bbb": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634941",
+      "source": "이투데이",
+      "source_body_digest": "16da39d64d4d3d7994f30e53945e26dfc02b213987dca046bf15f7387b8ba06a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:67356faafd4c2e45a2ff284c8d0aa2467814238e9a309de85aad986516d4b1ba",
+      "source_fact_keys": [
+        "source_fact:v1:3cc9715e27fc10449a7bb6c6f4f9edd33fc2a2582f8884a359a2f51e906678d2",
+        "source_fact:v1:4780c80cd0728dcab57f93385b8bcf9097ffb5bc139a9b3b48be7638263646c0",
+        "source_fact:v1:918321c35b0fa1f64a984626504bbc09f29e4a717f8903fa32af9d17b0103d4c",
+        "source_fact:v1:a267ac8b614c4c138bb52889fe48acc682113eaedb17266c287ca6996e14cb2b"
+      ],
+      "source_published_kst": "2026-10-13T08:40+09:00",
+      "source_title": "한투운용, 만기채권형 ETF 신규 상장⋯AA- 이상 회사채 분산투자",
+      "telegram_core_fact": "한국투자신탁운용은 13일 만기매칭형 채권 상장지수펀드(ETF)인 ‘ACE 29-11회사채(AA-이상)액티브 ETF’를 신규 상장한다고 밝혔다.",
+      "title": "한투운용, 만기채권형 ETF 신규 상장⋯AA- 이상 회사채 분산투자"
+    },
     "source_fact:36bed988e8809894bf09bf84": {
       "first_seen_kst": "2026-10-07T15:44:50+09:00",
       "lanes": {
@@ -297456,6 +298290,29 @@
       "source_title": "NH證 “LS, NAV 대비 66% 할인⋯과도한 저평가 구간”",
       "telegram_core_fact": "NH투자증권 자료에 따르면 LS전선과 국내·해외 종속회사를 합산한 수주잔고는 2022년 1분기 3조원대에서 올해 2분기 9조원대까지 확대됐다.",
       "title": "NH證 “LS, NAV 대비 66% 할인⋯과도한 저평가 구간”"
+    },
+    "source_fact:3c8dbdda93d31d3cb8a22aff": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823178",
+      "source": "뉴시스",
+      "source_body_digest": "81077b89c9da3a7f5fb010ada8af185dccab082a293c114ac20d1f0ddc675ea5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d8459848fcb78cb47dd59f656b513d328f6d36d0fea183aba7d97b4c54fc635a",
+      "source_fact_keys": [
+        "source_fact:v1:3d5a4e9868b4f5f3815e46627b340c5a70b79a36ed01d312d0884e4b4d011511",
+        "source_fact:v1:3ea5f33f88ba14070428f93be39c239696b27dad47dfed1b3df430de8ec86e60",
+        "source_fact:v1:b3141b7564f4d1c6bf4097571a805ce3bb0fb3e164871b0d7fb49aa2552f2ab1",
+        "source_fact:v1:c2eac5e0f7762f4abdeba7baa0bdf12b016b2aa9caf6be2d4abcea255cf48ab1",
+        "source_fact:v1:f1e299a87559ab0baddcd27ba27032c97f2d4981b9a0c107a1456784d36f0d5a"
+      ],
+      "source_published_kst": "2026-10-13T08:52+09:00",
+      "source_title": "\"국장 탈출은 지능순\" 커뮤니티 분통…개인 투자자 10조원 미국 증시로 이동",
+      "telegram_core_fact": "국내 증시의 지지부진한 흐름에 실망한 개인 투자자들이 국내 주식을 대거 매도하고 미국 증시로 눈을 돌려 3분기 동안 10조원 넘는 자금을 쏟아부은 것으로 나타났다. 최근 금융투자업계와 한국예탁결제원에 따르면 개인 투자자들은 지난 7월부터 9월까지 국내 유가증권시장에서 5조5000억원 이상을 순매도했다.",
+      "title": "\"국장 탈출은 지능순\" 커뮤니티 분통…개인 투자자 10조원 미국 증시로 이동"
     },
     "source_fact:3c9392f8b7d526a65a8f1179": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
@@ -303237,6 +304094,26 @@
       "source_title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매",
       "telegram_core_fact": "10년 만기 미국채 금리는 7월 말 이후 60bp 급등했고, 같은 기간 미국 원유 가격은 20% 상승했다.",
       "title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매"
+    },
+    "source_fact:426e9de558a3a359b09b91de": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634934",
+      "source": "이투데이",
+      "source_body_digest": "64e7645e34503960f5aec2180d3bbbe93aa98304a6ab17e62b61df21da3841e8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4760e739511b6bdb6755f2c5f24027323e4a6c9a721cfbf22db964fc54a67232",
+      "source_fact_keys": [
+        "source_fact:v1:27519bae28958c4b80c20edd526a40ea368eb6623398d835002364fb289d4fca",
+        "source_fact:v1:530229416c052172abac061b68a19d1a0b1ceab936aad7b9328a3b868f466a62"
+      ],
+      "source_published_kst": "2026-10-13T08:48+09:00",
+      "source_title": "노벨경제학상 우드퍼드 \"시장과 소통해야\"⋯연준 '포워드 가이던스 축소' 겨냥",
+      "telegram_core_fact": "포워드 가이던스는 기준금리 발표를 앞두고 연준 의장 및 위원들이 내비치는 새 금리에 대한 신호다.",
+      "title": "노벨경제학상 우드퍼드 \"시장과 소통해야\"⋯연준 '포워드 가이던스 축소' 겨냥"
     },
     "source_fact:427500e5e90d013dbb4823ec": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
@@ -313274,6 +314151,35 @@
       "telegram_core_fact": "예멘 정부군과 사우디 주도 연합군이 지난 4일 후티가 장악한 영토를 탈환하기 위한 '예멘의 새벽' 작전을 선언하고 대규모 공세에 나서자 후티는 이후 사우디 본토의 공항과 정유시설을 탄도미사일과 드론으로 잇달아 공격했다고 밝히고 있다.",
       "title": "사우디 \"리야드·아브하 공항서 3명 사망\"…후티 잇단 공습 주장(종합) | 연합뉴스"
     },
+    "source_fact:4cd1a38fac92259d4aac87b0": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822582",
+      "source": "뉴시스",
+      "source_body_digest": "ded13bf159fe7e63b658913c31dbe81e369ceed8c6c26fc04a200474419056e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb779f24d12685263ce09036553d25e122b1db1a153af5186e04c8c459beb34c",
+      "source_fact_keys": [
+        "source_fact:v1:2172b85501d79dc9144c7b53d583b1103b4aed767f8efe0815f73c9bc9d8eb77",
+        "source_fact:v1:6dc4e04e46aae0e3f4aef1d78ddd8ca303c0df18af31b5441ab30e9c89294b71",
+        "source_fact:v1:7be9f3a03ab06d0e665141206ae000bdfcfb21d5aac57ab4dce81d42e3edec89",
+        "source_fact:v1:7d3712fc603ba7ee6e687a9e228ff013e329a86648b77886dd381dc8e6c9eeb9",
+        "source_fact:v1:847cda64df5d04bee8b5c8065e78f6dd18acbd6be39dc9a7bc446b37b9d6701b",
+        "source_fact:v1:b2666c85dbda8db8c9251124cc70672fcb73d14cfab8ba1dc3c211d0d8ff8a25",
+        "source_fact:v1:be0d64c85384d95c2bf7e0b6bc812fe4c0140c5c8e0de325dec78890a87caf57",
+        "source_fact:v1:d3394daa42b3d2ed0a54a91187c5d6e2a31bf82afe3076376b805048ed907ead",
+        "source_fact:v1:e2e855f851927552c0fdb8ce439ae56b2b413727aa300d2e8e9c1c8df9c41a78",
+        "source_fact:v1:fa0bfd4e16e4e6caddff48e7e18af1717f37ee517d307fac5e6faa5cbb3c8859",
+        "source_fact:v1:fba459d2cc2cc8186b7932c292928ead4c877e086b72089b051ca49358bccb0a"
+      ],
+      "source_published_kst": "2026-10-13T08:41+09:00",
+      "source_title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?",
+      "telegram_core_fact": "SK하이닉스가 미국 낸드플래시 손자회사 '솔리다임'의 미국 증시 상장(IPO)을 추진할 것으로 알려진 가운데, 양사가 상장을 통해 어떠한 실익을 얻을 수 있을 지 관심이 쏠린다.",
+      "title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?"
+    },
     "source_fact:4cee36191c43d4a07a3a45b0": {
       "first_seen_kst": "2026-10-11T17:31:47+09:00",
       "lanes": {
@@ -315989,6 +316895,29 @@
       "telegram_core_fact": "분기 기준 사상 최대 매출을 기록한 LG에너지솔루션[373220]이 8일 2%대 강세를 보였다.",
       "title": "'분기 최대 매출' LG엔솔, 2%대↑…이차전지주 동반 강세(종합) | 연합뉴스"
     },
+    "source_fact:4f9242d858d940554b75d54a": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823178",
+      "source": "뉴시스",
+      "source_body_digest": "81077b89c9da3a7f5fb010ada8af185dccab082a293c114ac20d1f0ddc675ea5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d8459848fcb78cb47dd59f656b513d328f6d36d0fea183aba7d97b4c54fc635a",
+      "source_fact_keys": [
+        "source_fact:v1:3d5a4e9868b4f5f3815e46627b340c5a70b79a36ed01d312d0884e4b4d011511",
+        "source_fact:v1:3ea5f33f88ba14070428f93be39c239696b27dad47dfed1b3df430de8ec86e60",
+        "source_fact:v1:b3141b7564f4d1c6bf4097571a805ce3bb0fb3e164871b0d7fb49aa2552f2ab1",
+        "source_fact:v1:c2eac5e0f7762f4abdeba7baa0bdf12b016b2aa9caf6be2d4abcea255cf48ab1",
+        "source_fact:v1:f1e299a87559ab0baddcd27ba27032c97f2d4981b9a0c107a1456784d36f0d5a"
+      ],
+      "source_published_kst": "2026-10-13T08:52+09:00",
+      "source_title": "\"국장 탈출은 지능순\" 커뮤니티 분통…개인 투자자 10조원 미국 증시로 이동",
+      "telegram_core_fact": "국내 증시의 지지부진한 흐름에 실망한 개인 투자자들이 국내 주식을 대거 매도하고 미국 증시로 눈을 돌려 3분기 동안 10조원 넘는 자금을 쏟아부은 것으로 나타났다. 최근 금융투자업계와 한국예탁결제원에 따르면 개인 투자자들은 지난 7월부터 9월까지 국내 유가증권시장에서 5조5000억원 이상을 순매도했다.",
+      "title": "\"국장 탈출은 지능순\" 커뮤니티 분통…개인 투자자 10조원 미국 증시로 이동"
+    },
     "source_fact:4f939e696a9b3c78e90cb47f": {
       "first_seen_kst": "2026-10-07T18:00:43+09:00",
       "lanes": {
@@ -316096,6 +317025,32 @@
       "source_title": "후티, 사우디 리야드 공항 대공습…12명 사망·309명 부상(종합)",
       "telegram_core_fact": "후티는 올해 7월 사우디 및 사우디 지원을 받는 예멘 정부군을 상대로 2022년 휴전 이후 4년 만에 공세를 재개한 뒤 홍해 일부 지역을 장악하고 사우디 공격 범위를 확대하고 있다.",
       "title": "후티, 사우디 리야드 공항 대공습…12명 사망·309명 부상(종합)"
+    },
+    "source_fact:4fa459326678f0477abd0c8e": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823169",
+      "source": "뉴시스",
+      "source_body_digest": "3a605b6f04b590dc0a67db51ba906c0da03f083022c2596d4cd1a3c38bfc47db",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c4a35156fc4572cde194417c379dcb8ca9cf6fa58d4e21e0c554ce7551f595ac",
+      "source_fact_keys": [
+        "source_fact:v1:33ffe8563e40ec4f9a3689a0f6a57fc6d984c207271853bb65b56b698086d622",
+        "source_fact:v1:42d10d6abe569ca058f52c175fa1b8a24a613f3608df782d0bfacbb94b67b72b",
+        "source_fact:v1:5f6aecb54db2243ff152ee3d752b3b825141f88d65f2664e44ab53e01a805440",
+        "source_fact:v1:85de41591358b9cebb0736ede4b78e3ed2426e13cb0dfcdb4f4849e0f5dde337",
+        "source_fact:v1:a77f31840aaebdcf7accc348d13a43aff0a1dddd0705b71a394c64050da1350a",
+        "source_fact:v1:cca2719ce1ba7a343d0b08e134a894dff21308f4043db3203f47e16f11b97bdd",
+        "source_fact:v1:de6bd639db90fb448d6423c72a752d605773173efc9c1b76a3e394f06b0f81bd",
+        "source_fact:v1:eb4f156c130946d75c8c8b447d0cbbf7e6c0ba911e971a32f620e99eb970e6de"
+      ],
+      "source_published_kst": "2026-10-13T08:51+09:00",
+      "source_title": "나신평 \"HD현대마린 '골텐스' 인수, 단기 수익성 희석 가능성\"",
+      "telegram_core_fact": "HD현대마린솔루션은 지난 8일 글로벌 선박·육상 발전용 엔진 서비스 전문 기업 골텐스 지분 100%를 인수하는 주식 매매 계약을 체결했다고 밝혔다.",
+      "title": "나신평 \"HD현대마린 '골텐스' 인수, 단기 수익성 희석 가능성\""
     },
     "source_fact:4fb428d2a5fab492e3457241": {
       "first_seen_kst": "2026-10-12T08:03:02+09:00",
@@ -334146,6 +335101,26 @@
       "telegram_core_fact": "하지만 전쟁 이후 2년 만기 주택담보대출 평균 금리가 1%포인트 가까이 상승하면서 최근 6%에 근접했다.",
       "title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박"
     },
+    "source_fact:61fbc05bf89b8461c19cc431": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634934",
+      "source": "이투데이",
+      "source_body_digest": "64e7645e34503960f5aec2180d3bbbe93aa98304a6ab17e62b61df21da3841e8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4760e739511b6bdb6755f2c5f24027323e4a6c9a721cfbf22db964fc54a67232",
+      "source_fact_keys": [
+        "source_fact:v1:27519bae28958c4b80c20edd526a40ea368eb6623398d835002364fb289d4fca",
+        "source_fact:v1:530229416c052172abac061b68a19d1a0b1ceab936aad7b9328a3b868f466a62"
+      ],
+      "source_published_kst": "2026-10-13T08:48+09:00",
+      "source_title": "노벨경제학상 우드퍼드 \"시장과 소통해야\"⋯연준 '포워드 가이던스 축소' 겨냥",
+      "telegram_core_fact": "포워드 가이던스는 기준금리 발표를 앞두고 연준 의장 및 위원들이 내비치는 새 금리에 대한 신호다.",
+      "title": "노벨경제학상 우드퍼드 \"시장과 소통해야\"⋯연준 '포워드 가이던스 축소' 겨냥"
+    },
     "source_fact:621ada060d173417ec0d86f0": {
       "first_seen_kst": "2026-10-09T20:48:52+09:00",
       "lanes": {
@@ -337170,6 +338145,35 @@
       "source_published_kst": "2026-10-06T17:12+09:00",
       "title": "포스코퓨처엠, 삼성SDI와 6조 계약…LFP 물량 두 배 넘게 확대"
     },
+    "source_fact:64f59c477750c7d73d326a65": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822582",
+      "source": "뉴시스",
+      "source_body_digest": "ded13bf159fe7e63b658913c31dbe81e369ceed8c6c26fc04a200474419056e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb779f24d12685263ce09036553d25e122b1db1a153af5186e04c8c459beb34c",
+      "source_fact_keys": [
+        "source_fact:v1:2172b85501d79dc9144c7b53d583b1103b4aed767f8efe0815f73c9bc9d8eb77",
+        "source_fact:v1:6dc4e04e46aae0e3f4aef1d78ddd8ca303c0df18af31b5441ab30e9c89294b71",
+        "source_fact:v1:7be9f3a03ab06d0e665141206ae000bdfcfb21d5aac57ab4dce81d42e3edec89",
+        "source_fact:v1:7d3712fc603ba7ee6e687a9e228ff013e329a86648b77886dd381dc8e6c9eeb9",
+        "source_fact:v1:847cda64df5d04bee8b5c8065e78f6dd18acbd6be39dc9a7bc446b37b9d6701b",
+        "source_fact:v1:b2666c85dbda8db8c9251124cc70672fcb73d14cfab8ba1dc3c211d0d8ff8a25",
+        "source_fact:v1:be0d64c85384d95c2bf7e0b6bc812fe4c0140c5c8e0de325dec78890a87caf57",
+        "source_fact:v1:d3394daa42b3d2ed0a54a91187c5d6e2a31bf82afe3076376b805048ed907ead",
+        "source_fact:v1:e2e855f851927552c0fdb8ce439ae56b2b413727aa300d2e8e9c1c8df9c41a78",
+        "source_fact:v1:fa0bfd4e16e4e6caddff48e7e18af1717f37ee517d307fac5e6faa5cbb3c8859",
+        "source_fact:v1:fba459d2cc2cc8186b7932c292928ead4c877e086b72089b051ca49358bccb0a"
+      ],
+      "source_published_kst": "2026-10-13T08:41+09:00",
+      "source_title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?",
+      "telegram_core_fact": "SK하이닉스가 미국 낸드플래시 손자회사 '솔리다임'의 미국 증시 상장(IPO)을 추진할 것으로 알려진 가운데, 양사가 상장을 통해 어떠한 실익을 얻을 수 있을 지 관심이 쏠린다.",
+      "title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?"
+    },
     "source_fact:650d6973a1cb1be83d1bdd54": {
       "first_seen_kst": "2026-10-11T15:53:29+09:00",
       "lanes": {
@@ -339687,6 +340691,35 @@
       "source_title": "3분기까지 영업이익 4조원 … LG전자 올해 역대급 실적 '예고편'",
       "telegram_core_fact": "LG전자는 3분기 연결기준 매출액이 23조8270억원, 영업이익이 7818억원으로 잠정 집계됐다고 7일 밝혔다.",
       "title": "3분기까지 영업이익 4조원 … LG전자 올해 역대급 실적 '예고편'"
+    },
+    "source_fact:67e2ac4a7febec9c8cec7d07": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822582",
+      "source": "뉴시스",
+      "source_body_digest": "ded13bf159fe7e63b658913c31dbe81e369ceed8c6c26fc04a200474419056e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb779f24d12685263ce09036553d25e122b1db1a153af5186e04c8c459beb34c",
+      "source_fact_keys": [
+        "source_fact:v1:2172b85501d79dc9144c7b53d583b1103b4aed767f8efe0815f73c9bc9d8eb77",
+        "source_fact:v1:6dc4e04e46aae0e3f4aef1d78ddd8ca303c0df18af31b5441ab30e9c89294b71",
+        "source_fact:v1:7be9f3a03ab06d0e665141206ae000bdfcfb21d5aac57ab4dce81d42e3edec89",
+        "source_fact:v1:7d3712fc603ba7ee6e687a9e228ff013e329a86648b77886dd381dc8e6c9eeb9",
+        "source_fact:v1:847cda64df5d04bee8b5c8065e78f6dd18acbd6be39dc9a7bc446b37b9d6701b",
+        "source_fact:v1:b2666c85dbda8db8c9251124cc70672fcb73d14cfab8ba1dc3c211d0d8ff8a25",
+        "source_fact:v1:be0d64c85384d95c2bf7e0b6bc812fe4c0140c5c8e0de325dec78890a87caf57",
+        "source_fact:v1:d3394daa42b3d2ed0a54a91187c5d6e2a31bf82afe3076376b805048ed907ead",
+        "source_fact:v1:e2e855f851927552c0fdb8ce439ae56b2b413727aa300d2e8e9c1c8df9c41a78",
+        "source_fact:v1:fa0bfd4e16e4e6caddff48e7e18af1717f37ee517d307fac5e6faa5cbb3c8859",
+        "source_fact:v1:fba459d2cc2cc8186b7932c292928ead4c877e086b72089b051ca49358bccb0a"
+      ],
+      "source_published_kst": "2026-10-13T08:41+09:00",
+      "source_title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?",
+      "telegram_core_fact": "SK하이닉스가 미국 낸드플래시 손자회사 '솔리다임'의 미국 증시 상장(IPO)을 추진할 것으로 알려진 가운데, 양사가 상장을 통해 어떠한 실익을 얻을 수 있을 지 관심이 쏠린다.",
+      "title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?"
     },
     "source_fact:67ee3e167c1c0fcad2e96203": {
       "first_seen_kst": "2026-10-06T19:46:03+09:00",
@@ -343604,6 +344637,35 @@
       "telegram_core_fact": "특히 미 국채 10년물 금리가 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했고, 30년물 금리도 5.73%대까지 오르며 증시에 부담을 줬다.",
       "title": "삼전 ‘107조 서프라이즈’도 못 막았다…금리 급등·외인 매도에 코스피↓[투자360]"
     },
+    "source_fact:6b9b44586c42e7214e70850e": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822582",
+      "source": "뉴시스",
+      "source_body_digest": "ded13bf159fe7e63b658913c31dbe81e369ceed8c6c26fc04a200474419056e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb779f24d12685263ce09036553d25e122b1db1a153af5186e04c8c459beb34c",
+      "source_fact_keys": [
+        "source_fact:v1:2172b85501d79dc9144c7b53d583b1103b4aed767f8efe0815f73c9bc9d8eb77",
+        "source_fact:v1:6dc4e04e46aae0e3f4aef1d78ddd8ca303c0df18af31b5441ab30e9c89294b71",
+        "source_fact:v1:7be9f3a03ab06d0e665141206ae000bdfcfb21d5aac57ab4dce81d42e3edec89",
+        "source_fact:v1:7d3712fc603ba7ee6e687a9e228ff013e329a86648b77886dd381dc8e6c9eeb9",
+        "source_fact:v1:847cda64df5d04bee8b5c8065e78f6dd18acbd6be39dc9a7bc446b37b9d6701b",
+        "source_fact:v1:b2666c85dbda8db8c9251124cc70672fcb73d14cfab8ba1dc3c211d0d8ff8a25",
+        "source_fact:v1:be0d64c85384d95c2bf7e0b6bc812fe4c0140c5c8e0de325dec78890a87caf57",
+        "source_fact:v1:d3394daa42b3d2ed0a54a91187c5d6e2a31bf82afe3076376b805048ed907ead",
+        "source_fact:v1:e2e855f851927552c0fdb8ce439ae56b2b413727aa300d2e8e9c1c8df9c41a78",
+        "source_fact:v1:fa0bfd4e16e4e6caddff48e7e18af1717f37ee517d307fac5e6faa5cbb3c8859",
+        "source_fact:v1:fba459d2cc2cc8186b7932c292928ead4c877e086b72089b051ca49358bccb0a"
+      ],
+      "source_published_kst": "2026-10-13T08:41+09:00",
+      "source_title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?",
+      "telegram_core_fact": "SK하이닉스가 미국 낸드플래시 손자회사 '솔리다임'의 미국 증시 상장(IPO)을 추진할 것으로 알려진 가운데, 양사가 상장을 통해 어떠한 실익을 얻을 수 있을 지 관심이 쏠린다.",
+      "title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?"
+    },
     "source_fact:6b9c9997e6e2bec8c3df3200": {
       "first_seen_kst": "2026-10-13T01:37:36+09:00",
       "lanes": {
@@ -344288,6 +345350,25 @@
       ],
       "source_published_kst": "2026-10-05T18:03+09:00",
       "title": "'빚의 제국 빛을 잃다' 보도 인상적 … 고금리 위험요인 더 짚어달라"
+    },
+    "source_fact:6c6e6f157f2ed81bf551aba6": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261013026000003",
+      "source": "연합뉴스",
+      "source_body_digest": "3708e9b1cb0f605e80d01d199665b150bf58361e1f2e5c87d6ebf2b7dd921017",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bfa28f76e0f32cae3ba3151aabab874c4069a6da0232426529d0b64404eaf2bd",
+      "source_fact_keys": [
+        "source_fact:v1:5ebed8b0506a0539b21c85478ac3b4cad5b180f36d6f67e493f16326028024d4"
+      ],
+      "source_published_kst": "2026-10-13T08:35+09:00",
+      "source_title": "SK어스온, 베트남 광구 '황금낙타' 구조서 원유 생산 개시 | 연합뉴스",
+      "telegram_core_fact": "이번 15-1/05 광구 생산 개시로 SK어스온은 2003년 원유 생산을 시작한 15-1 광구에 이어 베트남 내 생산 거점을 확대하는 데 성공하고, 안정적인 수익 창출을 기대하고 있다.",
+      "title": "SK어스온, 베트남 광구 '황금낙타' 구조서 원유 생산 개시 | 연합뉴스"
     },
     "source_fact:6c71f79229ae4672ddfcf6e5": {
       "first_seen_kst": "2026-10-08T01:09:29+09:00",
@@ -345263,6 +346344,29 @@
       ],
       "source_published_kst": "2026-10-05T21:41+09:00",
       "title": "ESS 테크, NYSE 거래정지·상장폐지 개시..OTC서 GWHT 거래"
+    },
+    "source_fact:6d83c0785e67704d08b5c9a7": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823178",
+      "source": "뉴시스",
+      "source_body_digest": "81077b89c9da3a7f5fb010ada8af185dccab082a293c114ac20d1f0ddc675ea5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d8459848fcb78cb47dd59f656b513d328f6d36d0fea183aba7d97b4c54fc635a",
+      "source_fact_keys": [
+        "source_fact:v1:3d5a4e9868b4f5f3815e46627b340c5a70b79a36ed01d312d0884e4b4d011511",
+        "source_fact:v1:3ea5f33f88ba14070428f93be39c239696b27dad47dfed1b3df430de8ec86e60",
+        "source_fact:v1:b3141b7564f4d1c6bf4097571a805ce3bb0fb3e164871b0d7fb49aa2552f2ab1",
+        "source_fact:v1:c2eac5e0f7762f4abdeba7baa0bdf12b016b2aa9caf6be2d4abcea255cf48ab1",
+        "source_fact:v1:f1e299a87559ab0baddcd27ba27032c97f2d4981b9a0c107a1456784d36f0d5a"
+      ],
+      "source_published_kst": "2026-10-13T08:52+09:00",
+      "source_title": "\"국장 탈출은 지능순\" 커뮤니티 분통…개인 투자자 10조원 미국 증시로 이동",
+      "telegram_core_fact": "국내 증시의 지지부진한 흐름에 실망한 개인 투자자들이 국내 주식을 대거 매도하고 미국 증시로 눈을 돌려 3분기 동안 10조원 넘는 자금을 쏟아부은 것으로 나타났다. 최근 금융투자업계와 한국예탁결제원에 따르면 개인 투자자들은 지난 7월부터 9월까지 국내 유가증권시장에서 5조5000억원 이상을 순매도했다.",
+      "title": "\"국장 탈출은 지능순\" 커뮤니티 분통…개인 투자자 10조원 미국 증시로 이동"
     },
     "source_fact:6d87b20f40f0d700eb65aafd": {
       "first_seen_kst": "2026-10-13T08:34:55+09:00",
@@ -349884,6 +350988,28 @@
       "telegram_core_fact": "최태원 SK그룹 회장이 전남광주통합특별시 반도체 생산기지 구축에 속도를 내겠다는 의지를 밝혔다. SK하이닉스는 지난 6월 호남권에 400조원 신규 클러스터를 조성하겠다는 구상을 밝힌 뒤 경영진의 광주 방문과 지자체 협의를 이어왔다.",
       "title": "“용인만으론 안 된다”…최태원, 광주 반도체 승부수"
     },
+    "source_fact:72557dcbab62ac9152d51e3e": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261013030100008",
+      "source": "연합뉴스",
+      "source_body_digest": "5dad9378301e64a565769db9d15158b96cf0a6f03577fdc6e86010012fb2a8b9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48d7c1864eb56ba69d996a4c95823fbb8edb9dd39d7f878e9d417ab10cf8b8b5",
+      "source_fact_keys": [
+        "source_fact:v1:0752a27d3a4e1c39806adcf4e12a479561a4ccae6ed5b51a7702652f60dcdf3a",
+        "source_fact:v1:3fd8496fc1ab2811dcc5e226804b31dfd9ba0e6a9d65694ce02e9d95da8f6c95",
+        "source_fact:v1:dfac1df8dedb02dd7119b38a3e03f1bf5004d738132c492d6ed0b1349fb2d607",
+        "source_fact:v1:dfbb2d5a3cf2e325870c7048125acb1b2565347ca81584358497c0394b92b334"
+      ],
+      "source_published_kst": "2026-10-13T08:55+09:00",
+      "source_title": "NH증권 \"셀트리온, 경기 방어와 성장 매력 동시 보유\" | 연합뉴스",
+      "telegram_core_fact": "한승연 연구원은 이날 보고서에서 \"올해 코스피 의약품 주가가 27% 내린 데 비해 셀트리온은 6% 하락에 그쳐 코스피 제약사 내 상대적 견조한 모습\"이라며 \"업종 둔화에도 강력한 신제품 효과로 올해 영업이익이 전년 대비 62%의 고성장이 예상된다\"고 전망했다.",
+      "title": "NH증권 \"셀트리온, 경기 방어와 성장 매력 동시 보유\" | 연합뉴스"
+    },
     "source_fact:72648ae63cf231333c588559": {
       "first_seen_kst": "2026-10-07T00:09:35+09:00",
       "lanes": {
@@ -350901,6 +352027,35 @@
       "source_title": "시지메드텍, 코오롱제약과 hECM 사업 첫 상업생산 돌입…10~11월 첫 납품",
       "telegram_core_fact": "양사 계약에 따른 첫 납품은 10~11월이 목표다.",
       "title": "시지메드텍, 코오롱제약과 hECM 사업 첫 상업생산 돌입…10~11월 첫 납품"
+    },
+    "source_fact:73747a48e180c832f9f5b51d": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822582",
+      "source": "뉴시스",
+      "source_body_digest": "ded13bf159fe7e63b658913c31dbe81e369ceed8c6c26fc04a200474419056e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb779f24d12685263ce09036553d25e122b1db1a153af5186e04c8c459beb34c",
+      "source_fact_keys": [
+        "source_fact:v1:2172b85501d79dc9144c7b53d583b1103b4aed767f8efe0815f73c9bc9d8eb77",
+        "source_fact:v1:6dc4e04e46aae0e3f4aef1d78ddd8ca303c0df18af31b5441ab30e9c89294b71",
+        "source_fact:v1:7be9f3a03ab06d0e665141206ae000bdfcfb21d5aac57ab4dce81d42e3edec89",
+        "source_fact:v1:7d3712fc603ba7ee6e687a9e228ff013e329a86648b77886dd381dc8e6c9eeb9",
+        "source_fact:v1:847cda64df5d04bee8b5c8065e78f6dd18acbd6be39dc9a7bc446b37b9d6701b",
+        "source_fact:v1:b2666c85dbda8db8c9251124cc70672fcb73d14cfab8ba1dc3c211d0d8ff8a25",
+        "source_fact:v1:be0d64c85384d95c2bf7e0b6bc812fe4c0140c5c8e0de325dec78890a87caf57",
+        "source_fact:v1:d3394daa42b3d2ed0a54a91187c5d6e2a31bf82afe3076376b805048ed907ead",
+        "source_fact:v1:e2e855f851927552c0fdb8ce439ae56b2b413727aa300d2e8e9c1c8df9c41a78",
+        "source_fact:v1:fa0bfd4e16e4e6caddff48e7e18af1717f37ee517d307fac5e6faa5cbb3c8859",
+        "source_fact:v1:fba459d2cc2cc8186b7932c292928ead4c877e086b72089b051ca49358bccb0a"
+      ],
+      "source_published_kst": "2026-10-13T08:41+09:00",
+      "source_title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?",
+      "telegram_core_fact": "SK하이닉스가 미국 낸드플래시 손자회사 '솔리다임'의 미국 증시 상장(IPO)을 추진할 것으로 알려진 가운데, 양사가 상장을 통해 어떠한 실익을 얻을 수 있을 지 관심이 쏠린다.",
+      "title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?"
     },
     "source_fact:737c5a990c6ebb6f15425cb7": {
       "first_seen_kst": "2026-10-11T11:01:00+09:00",
@@ -359952,6 +361107,32 @@
       ],
       "source_published_kst": "2026-10-06T11:08+09:00",
       "title": "현대차그룹, 1~8월 글로벌 전기차 판매 20%↑…\"亞·유럽서 지속 성장\""
+    },
+    "source_fact:7cd3eaed8d5c049a67304c4a": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823169",
+      "source": "뉴시스",
+      "source_body_digest": "3a605b6f04b590dc0a67db51ba906c0da03f083022c2596d4cd1a3c38bfc47db",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c4a35156fc4572cde194417c379dcb8ca9cf6fa58d4e21e0c554ce7551f595ac",
+      "source_fact_keys": [
+        "source_fact:v1:33ffe8563e40ec4f9a3689a0f6a57fc6d984c207271853bb65b56b698086d622",
+        "source_fact:v1:42d10d6abe569ca058f52c175fa1b8a24a613f3608df782d0bfacbb94b67b72b",
+        "source_fact:v1:5f6aecb54db2243ff152ee3d752b3b825141f88d65f2664e44ab53e01a805440",
+        "source_fact:v1:85de41591358b9cebb0736ede4b78e3ed2426e13cb0dfcdb4f4849e0f5dde337",
+        "source_fact:v1:a77f31840aaebdcf7accc348d13a43aff0a1dddd0705b71a394c64050da1350a",
+        "source_fact:v1:cca2719ce1ba7a343d0b08e134a894dff21308f4043db3203f47e16f11b97bdd",
+        "source_fact:v1:de6bd639db90fb448d6423c72a752d605773173efc9c1b76a3e394f06b0f81bd",
+        "source_fact:v1:eb4f156c130946d75c8c8b447d0cbbf7e6c0ba911e971a32f620e99eb970e6de"
+      ],
+      "source_published_kst": "2026-10-13T08:51+09:00",
+      "source_title": "나신평 \"HD현대마린 '골텐스' 인수, 단기 수익성 희석 가능성\"",
+      "telegram_core_fact": "HD현대마린솔루션은 지난 8일 글로벌 선박·육상 발전용 엔진 서비스 전문 기업 골텐스 지분 100%를 인수하는 주식 매매 계약을 체결했다고 밝혔다.",
+      "title": "나신평 \"HD현대마린 '골텐스' 인수, 단기 수익성 희석 가능성\""
     },
     "source_fact:7ce380b211522599516b7ce2": {
       "first_seen_kst": "2026-10-07T16:15:21+09:00",
@@ -373758,6 +374939,35 @@
       "source_published_kst": "2026-10-06T17:15+09:00",
       "title": "태블릿·이어폰·위치추적기까지…‘갤럭시 생태계’ 힘주는 삼성전자"
     },
+    "source_fact:8b368a6b69e080a3981f5ed5": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822582",
+      "source": "뉴시스",
+      "source_body_digest": "ded13bf159fe7e63b658913c31dbe81e369ceed8c6c26fc04a200474419056e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb779f24d12685263ce09036553d25e122b1db1a153af5186e04c8c459beb34c",
+      "source_fact_keys": [
+        "source_fact:v1:2172b85501d79dc9144c7b53d583b1103b4aed767f8efe0815f73c9bc9d8eb77",
+        "source_fact:v1:6dc4e04e46aae0e3f4aef1d78ddd8ca303c0df18af31b5441ab30e9c89294b71",
+        "source_fact:v1:7be9f3a03ab06d0e665141206ae000bdfcfb21d5aac57ab4dce81d42e3edec89",
+        "source_fact:v1:7d3712fc603ba7ee6e687a9e228ff013e329a86648b77886dd381dc8e6c9eeb9",
+        "source_fact:v1:847cda64df5d04bee8b5c8065e78f6dd18acbd6be39dc9a7bc446b37b9d6701b",
+        "source_fact:v1:b2666c85dbda8db8c9251124cc70672fcb73d14cfab8ba1dc3c211d0d8ff8a25",
+        "source_fact:v1:be0d64c85384d95c2bf7e0b6bc812fe4c0140c5c8e0de325dec78890a87caf57",
+        "source_fact:v1:d3394daa42b3d2ed0a54a91187c5d6e2a31bf82afe3076376b805048ed907ead",
+        "source_fact:v1:e2e855f851927552c0fdb8ce439ae56b2b413727aa300d2e8e9c1c8df9c41a78",
+        "source_fact:v1:fa0bfd4e16e4e6caddff48e7e18af1717f37ee517d307fac5e6faa5cbb3c8859",
+        "source_fact:v1:fba459d2cc2cc8186b7932c292928ead4c877e086b72089b051ca49358bccb0a"
+      ],
+      "source_published_kst": "2026-10-13T08:41+09:00",
+      "source_title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?",
+      "telegram_core_fact": "SK하이닉스가 미국 낸드플래시 손자회사 '솔리다임'의 미국 증시 상장(IPO)을 추진할 것으로 알려진 가운데, 양사가 상장을 통해 어떠한 실익을 얻을 수 있을 지 관심이 쏠린다.",
+      "title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?"
+    },
     "source_fact:8b4478b3fa79fe414606014b": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
       "lanes": {
@@ -377576,6 +378786,29 @@
       "source_title": "'이상기후 대응' 농진청, 여름철 배추 재배 적지 확대 등 지원 | 연합뉴스",
       "telegram_core_fact": "김대현 국립원예특작과학원장은 \"준고랭지 여름철 배추 재배 적지를 확대하고 신품종·신기술을 확산해 여름철 배추의 안정적인 생산·공급 기반을 더 강화해 나가겠다\"고 말했다. 농촌진흥청은 여름철 배추 수급 불안에 대응하기 위해 '준고랭지 여름철 배추 안정 생산 체계 구축 사업'을 한다고 8일 밝혔다.",
       "title": "'이상기후 대응' 농진청, 여름철 배추 재배 적지 확대 등 지원 | 연합뉴스"
+    },
+    "source_fact:8f5b7ef54cfa9cca546937b4": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823178",
+      "source": "뉴시스",
+      "source_body_digest": "81077b89c9da3a7f5fb010ada8af185dccab082a293c114ac20d1f0ddc675ea5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d8459848fcb78cb47dd59f656b513d328f6d36d0fea183aba7d97b4c54fc635a",
+      "source_fact_keys": [
+        "source_fact:v1:3d5a4e9868b4f5f3815e46627b340c5a70b79a36ed01d312d0884e4b4d011511",
+        "source_fact:v1:3ea5f33f88ba14070428f93be39c239696b27dad47dfed1b3df430de8ec86e60",
+        "source_fact:v1:b3141b7564f4d1c6bf4097571a805ce3bb0fb3e164871b0d7fb49aa2552f2ab1",
+        "source_fact:v1:c2eac5e0f7762f4abdeba7baa0bdf12b016b2aa9caf6be2d4abcea255cf48ab1",
+        "source_fact:v1:f1e299a87559ab0baddcd27ba27032c97f2d4981b9a0c107a1456784d36f0d5a"
+      ],
+      "source_published_kst": "2026-10-13T08:52+09:00",
+      "source_title": "\"국장 탈출은 지능순\" 커뮤니티 분통…개인 투자자 10조원 미국 증시로 이동",
+      "telegram_core_fact": "국내 증시의 지지부진한 흐름에 실망한 개인 투자자들이 국내 주식을 대거 매도하고 미국 증시로 눈을 돌려 3분기 동안 10조원 넘는 자금을 쏟아부은 것으로 나타났다. 최근 금융투자업계와 한국예탁결제원에 따르면 개인 투자자들은 지난 7월부터 9월까지 국내 유가증권시장에서 5조5000억원 이상을 순매도했다.",
+      "title": "\"국장 탈출은 지능순\" 커뮤니티 분통…개인 투자자 10조원 미국 증시로 이동"
     },
     "source_fact:8f6fcb79b1345899ce90598f": {
       "first_seen_kst": "2026-10-12T07:27:08+09:00",
@@ -387662,6 +388895,32 @@
       "telegram_core_fact": "이달 1일부터 10일까지 수출액(통관 기준 잠정치)은 261억달러로, 전년비 102.0% 증가했다.",
       "title": "이달 수출액 261억달러 ‘역대 최대’ 기록…전체 중 절반은 반도체"
     },
+    "source_fact:99fbfa4b639463c8e1f280d4": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823169",
+      "source": "뉴시스",
+      "source_body_digest": "3a605b6f04b590dc0a67db51ba906c0da03f083022c2596d4cd1a3c38bfc47db",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c4a35156fc4572cde194417c379dcb8ca9cf6fa58d4e21e0c554ce7551f595ac",
+      "source_fact_keys": [
+        "source_fact:v1:33ffe8563e40ec4f9a3689a0f6a57fc6d984c207271853bb65b56b698086d622",
+        "source_fact:v1:42d10d6abe569ca058f52c175fa1b8a24a613f3608df782d0bfacbb94b67b72b",
+        "source_fact:v1:5f6aecb54db2243ff152ee3d752b3b825141f88d65f2664e44ab53e01a805440",
+        "source_fact:v1:85de41591358b9cebb0736ede4b78e3ed2426e13cb0dfcdb4f4849e0f5dde337",
+        "source_fact:v1:a77f31840aaebdcf7accc348d13a43aff0a1dddd0705b71a394c64050da1350a",
+        "source_fact:v1:cca2719ce1ba7a343d0b08e134a894dff21308f4043db3203f47e16f11b97bdd",
+        "source_fact:v1:de6bd639db90fb448d6423c72a752d605773173efc9c1b76a3e394f06b0f81bd",
+        "source_fact:v1:eb4f156c130946d75c8c8b447d0cbbf7e6c0ba911e971a32f620e99eb970e6de"
+      ],
+      "source_published_kst": "2026-10-13T08:51+09:00",
+      "source_title": "나신평 \"HD현대마린 '골텐스' 인수, 단기 수익성 희석 가능성\"",
+      "telegram_core_fact": "HD현대마린솔루션은 지난 8일 글로벌 선박·육상 발전용 엔진 서비스 전문 기업 골텐스 지분 100%를 인수하는 주식 매매 계약을 체결했다고 밝혔다.",
+      "title": "나신평 \"HD현대마린 '골텐스' 인수, 단기 수익성 희석 가능성\""
+    },
     "source_fact:9a137ee462db08ea6aa4e8d1": {
       "first_seen_kst": "2026-10-11T21:07:10+09:00",
       "lanes": {
@@ -389891,6 +391150,28 @@
       "source_title": "삼전 역대급 실적에도 외국인 ‘팔자’…코스피 두 달 만에 6300선으로 | 중앙일보",
       "telegram_core_fact": "이경민 대신증권 연구원은 “뚜렷한 상승 모멘텀이 부재한 가운데 외국인 순매도가 이어지며 약세를 보였다”며 “특히 오픈AI의 연환산 매출이 (시장의 기대를 밑도는) 500억 달러 수준이라는 보도가 나오면서 인공지능(AI) 투자심리가 위축됐다”고 진단했다.",
       "title": "삼전 역대급 실적에도 외국인 ‘팔자’…코스피 두 달 만에 6300선으로 | 중앙일보"
+    },
+    "source_fact:9c36cc4aaaba21ee98253c5e": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634941",
+      "source": "이투데이",
+      "source_body_digest": "16da39d64d4d3d7994f30e53945e26dfc02b213987dca046bf15f7387b8ba06a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:67356faafd4c2e45a2ff284c8d0aa2467814238e9a309de85aad986516d4b1ba",
+      "source_fact_keys": [
+        "source_fact:v1:3cc9715e27fc10449a7bb6c6f4f9edd33fc2a2582f8884a359a2f51e906678d2",
+        "source_fact:v1:4780c80cd0728dcab57f93385b8bcf9097ffb5bc139a9b3b48be7638263646c0",
+        "source_fact:v1:918321c35b0fa1f64a984626504bbc09f29e4a717f8903fa32af9d17b0103d4c",
+        "source_fact:v1:a267ac8b614c4c138bb52889fe48acc682113eaedb17266c287ca6996e14cb2b"
+      ],
+      "source_published_kst": "2026-10-13T08:40+09:00",
+      "source_title": "한투운용, 만기채권형 ETF 신규 상장⋯AA- 이상 회사채 분산투자",
+      "telegram_core_fact": "한국투자신탁운용은 13일 만기매칭형 채권 상장지수펀드(ETF)인 ‘ACE 29-11회사채(AA-이상)액티브 ETF’를 신규 상장한다고 밝혔다.",
+      "title": "한투운용, 만기채권형 ETF 신규 상장⋯AA- 이상 회사채 분산투자"
     },
     "source_fact:9c39ae9ad69ce172c4c21565": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
@@ -398708,6 +399989,28 @@
       "telegram_core_fact": "국내 가상자산 적립식 매수 서비스 '모으기'의 누적 투자액이 1조원에 육박한 것으로 나타났다. 디지털엑스는 이용자가 3천830명(11.3%) 증가한 3만7천659명을 기록했지만, 투자액은 278억원(14.1%) 감소한 1천699억원으로 집계됐다.",
       "title": "국내 가상자산 적립식 매수 1조원 육박…하락장에도 꾸준 | 연합뉴스"
     },
+    "source_fact:a572e9abe0999ef091730124": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634941",
+      "source": "이투데이",
+      "source_body_digest": "16da39d64d4d3d7994f30e53945e26dfc02b213987dca046bf15f7387b8ba06a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:67356faafd4c2e45a2ff284c8d0aa2467814238e9a309de85aad986516d4b1ba",
+      "source_fact_keys": [
+        "source_fact:v1:3cc9715e27fc10449a7bb6c6f4f9edd33fc2a2582f8884a359a2f51e906678d2",
+        "source_fact:v1:4780c80cd0728dcab57f93385b8bcf9097ffb5bc139a9b3b48be7638263646c0",
+        "source_fact:v1:918321c35b0fa1f64a984626504bbc09f29e4a717f8903fa32af9d17b0103d4c",
+        "source_fact:v1:a267ac8b614c4c138bb52889fe48acc682113eaedb17266c287ca6996e14cb2b"
+      ],
+      "source_published_kst": "2026-10-13T08:40+09:00",
+      "source_title": "한투운용, 만기채권형 ETF 신규 상장⋯AA- 이상 회사채 분산투자",
+      "telegram_core_fact": "한국투자신탁운용은 13일 만기매칭형 채권 상장지수펀드(ETF)인 ‘ACE 29-11회사채(AA-이상)액티브 ETF’를 신규 상장한다고 밝혔다.",
+      "title": "한투운용, 만기채권형 ETF 신규 상장⋯AA- 이상 회사채 분산투자"
+    },
     "source_fact:a5740046590dfc185f891358": {
       "first_seen_kst": "2026-10-06T18:34:25+09:00",
       "lanes": {
@@ -400754,6 +402057,32 @@
       "source_title": "광주 팹 부지 찾은 최태원 회장 \"가장 빠르게…용수·전력 늦어도 착공\"",
       "telegram_core_fact": "최 회장은 이날 반도체 국가산단 후보지 광주군공항 내 탄약고 이전 대상부지에서 취재진과 만나 \"빠른 속도로 지금 (반도체) 수요가 늘기 때문에 그걸 쫓아가는 공급 속도를 더 빨리 당겨야 한다. 착공 시점은 답을 못하지만 '최대한 빨리 간다'고 이야기하고 싶다\"며 이같이 말했다.",
       "title": "광주 팹 부지 찾은 최태원 회장 \"가장 빠르게…용수·전력 늦어도 착공\""
+    },
+    "source_fact:a778e3848ecf27c8f89c59bc": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823169",
+      "source": "뉴시스",
+      "source_body_digest": "3a605b6f04b590dc0a67db51ba906c0da03f083022c2596d4cd1a3c38bfc47db",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c4a35156fc4572cde194417c379dcb8ca9cf6fa58d4e21e0c554ce7551f595ac",
+      "source_fact_keys": [
+        "source_fact:v1:33ffe8563e40ec4f9a3689a0f6a57fc6d984c207271853bb65b56b698086d622",
+        "source_fact:v1:42d10d6abe569ca058f52c175fa1b8a24a613f3608df782d0bfacbb94b67b72b",
+        "source_fact:v1:5f6aecb54db2243ff152ee3d752b3b825141f88d65f2664e44ab53e01a805440",
+        "source_fact:v1:85de41591358b9cebb0736ede4b78e3ed2426e13cb0dfcdb4f4849e0f5dde337",
+        "source_fact:v1:a77f31840aaebdcf7accc348d13a43aff0a1dddd0705b71a394c64050da1350a",
+        "source_fact:v1:cca2719ce1ba7a343d0b08e134a894dff21308f4043db3203f47e16f11b97bdd",
+        "source_fact:v1:de6bd639db90fb448d6423c72a752d605773173efc9c1b76a3e394f06b0f81bd",
+        "source_fact:v1:eb4f156c130946d75c8c8b447d0cbbf7e6c0ba911e971a32f620e99eb970e6de"
+      ],
+      "source_published_kst": "2026-10-13T08:51+09:00",
+      "source_title": "나신평 \"HD현대마린 '골텐스' 인수, 단기 수익성 희석 가능성\"",
+      "telegram_core_fact": "HD현대마린솔루션은 지난 8일 글로벌 선박·육상 발전용 엔진 서비스 전문 기업 골텐스 지분 100%를 인수하는 주식 매매 계약을 체결했다고 밝혔다.",
+      "title": "나신평 \"HD현대마린 '골텐스' 인수, 단기 수익성 희석 가능성\""
     },
     "source_fact:a77e5015a3416cd7006b4cac": {
       "first_seen_kst": "2026-10-13T05:27:22+09:00",
@@ -403440,6 +404769,32 @@
       "telegram_core_fact": "허리케인 이사이아스(ISAIAS)가 미국 남동부 플로리다 팬핸들 지역을 공격한 뒤 10일 북쪽으로 빠져 나가면서 폭우와 홍수, 토네이도로 최소 4명의 사망자가 발생했다. 사망자 4명 가운데 2명은 플로리다주와 앨라배마에서 허리케인으로 인해 거대한 나무가 집 위로 쓰러지는 사고로 사망했다.",
       "title": "미 남동부 허리케인 이사이아스로 4명 사망.. 플로리다 큰 피해"
     },
+    "source_fact:aa97a39b00f8660d5f730f9f": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823169",
+      "source": "뉴시스",
+      "source_body_digest": "3a605b6f04b590dc0a67db51ba906c0da03f083022c2596d4cd1a3c38bfc47db",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c4a35156fc4572cde194417c379dcb8ca9cf6fa58d4e21e0c554ce7551f595ac",
+      "source_fact_keys": [
+        "source_fact:v1:33ffe8563e40ec4f9a3689a0f6a57fc6d984c207271853bb65b56b698086d622",
+        "source_fact:v1:42d10d6abe569ca058f52c175fa1b8a24a613f3608df782d0bfacbb94b67b72b",
+        "source_fact:v1:5f6aecb54db2243ff152ee3d752b3b825141f88d65f2664e44ab53e01a805440",
+        "source_fact:v1:85de41591358b9cebb0736ede4b78e3ed2426e13cb0dfcdb4f4849e0f5dde337",
+        "source_fact:v1:a77f31840aaebdcf7accc348d13a43aff0a1dddd0705b71a394c64050da1350a",
+        "source_fact:v1:cca2719ce1ba7a343d0b08e134a894dff21308f4043db3203f47e16f11b97bdd",
+        "source_fact:v1:de6bd639db90fb448d6423c72a752d605773173efc9c1b76a3e394f06b0f81bd",
+        "source_fact:v1:eb4f156c130946d75c8c8b447d0cbbf7e6c0ba911e971a32f620e99eb970e6de"
+      ],
+      "source_published_kst": "2026-10-13T08:51+09:00",
+      "source_title": "나신평 \"HD현대마린 '골텐스' 인수, 단기 수익성 희석 가능성\"",
+      "telegram_core_fact": "HD현대마린솔루션은 지난 8일 글로벌 선박·육상 발전용 엔진 서비스 전문 기업 골텐스 지분 100%를 인수하는 주식 매매 계약을 체결했다고 밝혔다.",
+      "title": "나신평 \"HD현대마린 '골텐스' 인수, 단기 수익성 희석 가능성\""
+    },
     "source_fact:aa9ba9dc2d135c1a299869e5": {
       "first_seen_kst": "2026-10-12T10:17:45+09:00",
       "lanes": {
@@ -405547,6 +406902,28 @@
       "telegram_core_fact": "회사 매출은 2억2000만 달러 전망입니다.",
       "title": "드릴링 툴스 인터내셔널, 솔티레 인수 확정..현금 8000만 달러·신주 1740만주"
     },
+    "source_fact:ac850ffb3402350fcee8401e": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261013030100008",
+      "source": "연합뉴스",
+      "source_body_digest": "5dad9378301e64a565769db9d15158b96cf0a6f03577fdc6e86010012fb2a8b9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48d7c1864eb56ba69d996a4c95823fbb8edb9dd39d7f878e9d417ab10cf8b8b5",
+      "source_fact_keys": [
+        "source_fact:v1:0752a27d3a4e1c39806adcf4e12a479561a4ccae6ed5b51a7702652f60dcdf3a",
+        "source_fact:v1:3fd8496fc1ab2811dcc5e226804b31dfd9ba0e6a9d65694ce02e9d95da8f6c95",
+        "source_fact:v1:dfac1df8dedb02dd7119b38a3e03f1bf5004d738132c492d6ed0b1349fb2d607",
+        "source_fact:v1:dfbb2d5a3cf2e325870c7048125acb1b2565347ca81584358497c0394b92b334"
+      ],
+      "source_published_kst": "2026-10-13T08:55+09:00",
+      "source_title": "NH증권 \"셀트리온, 경기 방어와 성장 매력 동시 보유\" | 연합뉴스",
+      "telegram_core_fact": "한승연 연구원은 이날 보고서에서 \"올해 코스피 의약품 주가가 27% 내린 데 비해 셀트리온은 6% 하락에 그쳐 코스피 제약사 내 상대적 견조한 모습\"이라며 \"업종 둔화에도 강력한 신제품 효과로 올해 영업이익이 전년 대비 62%의 고성장이 예상된다\"고 전망했다.",
+      "title": "NH증권 \"셀트리온, 경기 방어와 성장 매력 동시 보유\" | 연합뉴스"
+    },
     "source_fact:ac94b5095acc9b1e3be19b7c": {
       "first_seen_kst": "2026-10-10T07:44:19+09:00",
       "lanes": {
@@ -405674,6 +407051,28 @@
       "source_title": "트럼프, '러·우 에너지 휴전합의' 했다는데…러는 공습 계속(종합2보) | 연합뉴스",
       "telegram_core_fact": "도널드 트럼프 미국 대통령은 11일(현지시간) 러시아와 우크라이나가 에너지 부문에 대한 휴전에 합의했다고 밝혔다. 젤렌스키 대통령은 또 이날 저녁 영상 연설에서 러시아가 트럼프 대통령의 발표 이후에도 우크라이나 제2의 도시 하르키우의 열병합발전소를 공격하는 등 에너지 시설 공격을 지속했다고 밝혔다.",
       "title": "트럼프, '러·우 에너지 휴전합의' 했다는데…러는 공습 계속(종합2보) | 연합뉴스"
+    },
+    "source_fact:acaea512b045d8d429cfaa5a": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261013030100008",
+      "source": "연합뉴스",
+      "source_body_digest": "5dad9378301e64a565769db9d15158b96cf0a6f03577fdc6e86010012fb2a8b9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48d7c1864eb56ba69d996a4c95823fbb8edb9dd39d7f878e9d417ab10cf8b8b5",
+      "source_fact_keys": [
+        "source_fact:v1:0752a27d3a4e1c39806adcf4e12a479561a4ccae6ed5b51a7702652f60dcdf3a",
+        "source_fact:v1:3fd8496fc1ab2811dcc5e226804b31dfd9ba0e6a9d65694ce02e9d95da8f6c95",
+        "source_fact:v1:dfac1df8dedb02dd7119b38a3e03f1bf5004d738132c492d6ed0b1349fb2d607",
+        "source_fact:v1:dfbb2d5a3cf2e325870c7048125acb1b2565347ca81584358497c0394b92b334"
+      ],
+      "source_published_kst": "2026-10-13T08:55+09:00",
+      "source_title": "NH증권 \"셀트리온, 경기 방어와 성장 매력 동시 보유\" | 연합뉴스",
+      "telegram_core_fact": "한승연 연구원은 이날 보고서에서 \"올해 코스피 의약품 주가가 27% 내린 데 비해 셀트리온은 6% 하락에 그쳐 코스피 제약사 내 상대적 견조한 모습\"이라며 \"업종 둔화에도 강력한 신제품 효과로 올해 영업이익이 전년 대비 62%의 고성장이 예상된다\"고 전망했다.",
+      "title": "NH증권 \"셀트리온, 경기 방어와 성장 매력 동시 보유\" | 연합뉴스"
     },
     "source_fact:acb0425c61a99ecbd7792360": {
       "first_seen_kst": "2026-10-12T13:36:34+09:00",
@@ -419790,6 +421189,32 @@
       "telegram_core_fact": "국고채 발행이 크게 줄었지만 통안증권·금융채·회사채 발행이 늘며 전월 대비 15.6%(11조8000억원) 증가했다. 국고채 발행은 20조원으로 전월 대비 3조3000억원 감소했지만 금융채, 회사채, 통안증권 발행이 늘며 전체 발행규모가 증가했다.",
       "title": "9월 채권 발행 87.4조…금융채·회사채 늘며 전월 대비 15.6%↑"
     },
+    "source_fact:bbd7507033377b11a19c3b06": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823169",
+      "source": "뉴시스",
+      "source_body_digest": "3a605b6f04b590dc0a67db51ba906c0da03f083022c2596d4cd1a3c38bfc47db",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c4a35156fc4572cde194417c379dcb8ca9cf6fa58d4e21e0c554ce7551f595ac",
+      "source_fact_keys": [
+        "source_fact:v1:33ffe8563e40ec4f9a3689a0f6a57fc6d984c207271853bb65b56b698086d622",
+        "source_fact:v1:42d10d6abe569ca058f52c175fa1b8a24a613f3608df782d0bfacbb94b67b72b",
+        "source_fact:v1:5f6aecb54db2243ff152ee3d752b3b825141f88d65f2664e44ab53e01a805440",
+        "source_fact:v1:85de41591358b9cebb0736ede4b78e3ed2426e13cb0dfcdb4f4849e0f5dde337",
+        "source_fact:v1:a77f31840aaebdcf7accc348d13a43aff0a1dddd0705b71a394c64050da1350a",
+        "source_fact:v1:cca2719ce1ba7a343d0b08e134a894dff21308f4043db3203f47e16f11b97bdd",
+        "source_fact:v1:de6bd639db90fb448d6423c72a752d605773173efc9c1b76a3e394f06b0f81bd",
+        "source_fact:v1:eb4f156c130946d75c8c8b447d0cbbf7e6c0ba911e971a32f620e99eb970e6de"
+      ],
+      "source_published_kst": "2026-10-13T08:51+09:00",
+      "source_title": "나신평 \"HD현대마린 '골텐스' 인수, 단기 수익성 희석 가능성\"",
+      "telegram_core_fact": "HD현대마린솔루션은 지난 8일 글로벌 선박·육상 발전용 엔진 서비스 전문 기업 골텐스 지분 100%를 인수하는 주식 매매 계약을 체결했다고 밝혔다.",
+      "title": "나신평 \"HD현대마린 '골텐스' 인수, 단기 수익성 희석 가능성\""
+    },
     "source_fact:bbe34b752d782adddded0153": {
       "first_seen_kst": "2026-10-09T18:34:32+09:00",
       "lanes": {
@@ -431478,6 +432903,28 @@
       "telegram_core_fact": "보고서에 따르면 삼기에너지솔루션즈의 올해 상반기 연결 매출액은 1133억원, 영업이익은 49억원을 기록했다.",
       "title": "스몰인사이트 \"삼기에너지솔루션즈, 북미 사업 성장축 부상\""
     },
+    "source_fact:c7d04398a78b775cfee01cbf": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634941",
+      "source": "이투데이",
+      "source_body_digest": "16da39d64d4d3d7994f30e53945e26dfc02b213987dca046bf15f7387b8ba06a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:67356faafd4c2e45a2ff284c8d0aa2467814238e9a309de85aad986516d4b1ba",
+      "source_fact_keys": [
+        "source_fact:v1:3cc9715e27fc10449a7bb6c6f4f9edd33fc2a2582f8884a359a2f51e906678d2",
+        "source_fact:v1:4780c80cd0728dcab57f93385b8bcf9097ffb5bc139a9b3b48be7638263646c0",
+        "source_fact:v1:918321c35b0fa1f64a984626504bbc09f29e4a717f8903fa32af9d17b0103d4c",
+        "source_fact:v1:a267ac8b614c4c138bb52889fe48acc682113eaedb17266c287ca6996e14cb2b"
+      ],
+      "source_published_kst": "2026-10-13T08:40+09:00",
+      "source_title": "한투운용, 만기채권형 ETF 신규 상장⋯AA- 이상 회사채 분산투자",
+      "telegram_core_fact": "한국투자신탁운용은 13일 만기매칭형 채권 상장지수펀드(ETF)인 ‘ACE 29-11회사채(AA-이상)액티브 ETF’를 신규 상장한다고 밝혔다.",
+      "title": "한투운용, 만기채권형 ETF 신규 상장⋯AA- 이상 회사채 분산투자"
+    },
     "source_fact:c7d3fba1b0e3888cc381514a": {
       "first_seen_kst": "2026-10-08T21:47:01+09:00",
       "lanes": {
@@ -432248,6 +433695,28 @@
       "source_title": "\"금리 올리며 돈 푸는 이상한 시대\"…국장 박스권 갇힐 동안 AI 주도주 쏠린다",
       "telegram_core_fact": "\"과거에는 통화와 재정이 같은 방향으로 움직였지만, 지금은 기준금리를 올리면서 재정 집행을 위해 국채 발행을 늘리다 보니 24년 만에 최고 수준의 국채금리 시대가 도래했다\"고 분석했다.",
       "title": "\"금리 올리며 돈 푸는 이상한 시대\"…국장 박스권 갇힐 동안 AI 주도주 쏠린다"
+    },
+    "source_fact:c8a8ab34d31387168cedeae2": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261013030100008",
+      "source": "연합뉴스",
+      "source_body_digest": "5dad9378301e64a565769db9d15158b96cf0a6f03577fdc6e86010012fb2a8b9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48d7c1864eb56ba69d996a4c95823fbb8edb9dd39d7f878e9d417ab10cf8b8b5",
+      "source_fact_keys": [
+        "source_fact:v1:0752a27d3a4e1c39806adcf4e12a479561a4ccae6ed5b51a7702652f60dcdf3a",
+        "source_fact:v1:3fd8496fc1ab2811dcc5e226804b31dfd9ba0e6a9d65694ce02e9d95da8f6c95",
+        "source_fact:v1:dfac1df8dedb02dd7119b38a3e03f1bf5004d738132c492d6ed0b1349fb2d607",
+        "source_fact:v1:dfbb2d5a3cf2e325870c7048125acb1b2565347ca81584358497c0394b92b334"
+      ],
+      "source_published_kst": "2026-10-13T08:55+09:00",
+      "source_title": "NH증권 \"셀트리온, 경기 방어와 성장 매력 동시 보유\" | 연합뉴스",
+      "telegram_core_fact": "한승연 연구원은 이날 보고서에서 \"올해 코스피 의약품 주가가 27% 내린 데 비해 셀트리온은 6% 하락에 그쳐 코스피 제약사 내 상대적 견조한 모습\"이라며 \"업종 둔화에도 강력한 신제품 효과로 올해 영업이익이 전년 대비 62%의 고성장이 예상된다\"고 전망했다.",
+      "title": "NH증권 \"셀트리온, 경기 방어와 성장 매력 동시 보유\" | 연합뉴스"
     },
     "source_fact:c8ad450595def891efc64623": {
       "first_seen_kst": "2026-10-13T03:37:13+09:00",
@@ -440726,6 +442195,35 @@
       "source_title": "마이크론은 10% 뛰는데 삼전·하닉은 뒷걸음…메모리 호황 속 ‘엇갈린 성적표’",
       "telegram_core_fact": "한동희 SK증권 연구원은 “원·달러 환율 가정을 7% 낮췄음에도 2027년 이익 전망을 상향한 것은 AI 메모리 수요 강세와 공급 부족, 장기공급계약이 견인하는 가격 강세 때문”이라며 “시장에서 우려하는 메모리 업황 둔화와 감익 시나리오는 실현되지 않을 것”이라고 말했다.",
       "title": "마이크론은 10% 뛰는데 삼전·하닉은 뒷걸음…메모리 호황 속 ‘엇갈린 성적표’"
+    },
+    "source_fact:d1f7b2412fd2003b9f3c8446": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822582",
+      "source": "뉴시스",
+      "source_body_digest": "ded13bf159fe7e63b658913c31dbe81e369ceed8c6c26fc04a200474419056e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb779f24d12685263ce09036553d25e122b1db1a153af5186e04c8c459beb34c",
+      "source_fact_keys": [
+        "source_fact:v1:2172b85501d79dc9144c7b53d583b1103b4aed767f8efe0815f73c9bc9d8eb77",
+        "source_fact:v1:6dc4e04e46aae0e3f4aef1d78ddd8ca303c0df18af31b5441ab30e9c89294b71",
+        "source_fact:v1:7be9f3a03ab06d0e665141206ae000bdfcfb21d5aac57ab4dce81d42e3edec89",
+        "source_fact:v1:7d3712fc603ba7ee6e687a9e228ff013e329a86648b77886dd381dc8e6c9eeb9",
+        "source_fact:v1:847cda64df5d04bee8b5c8065e78f6dd18acbd6be39dc9a7bc446b37b9d6701b",
+        "source_fact:v1:b2666c85dbda8db8c9251124cc70672fcb73d14cfab8ba1dc3c211d0d8ff8a25",
+        "source_fact:v1:be0d64c85384d95c2bf7e0b6bc812fe4c0140c5c8e0de325dec78890a87caf57",
+        "source_fact:v1:d3394daa42b3d2ed0a54a91187c5d6e2a31bf82afe3076376b805048ed907ead",
+        "source_fact:v1:e2e855f851927552c0fdb8ce439ae56b2b413727aa300d2e8e9c1c8df9c41a78",
+        "source_fact:v1:fa0bfd4e16e4e6caddff48e7e18af1717f37ee517d307fac5e6faa5cbb3c8859",
+        "source_fact:v1:fba459d2cc2cc8186b7932c292928ead4c877e086b72089b051ca49358bccb0a"
+      ],
+      "source_published_kst": "2026-10-13T08:41+09:00",
+      "source_title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?",
+      "telegram_core_fact": "SK하이닉스가 미국 낸드플래시 손자회사 '솔리다임'의 미국 증시 상장(IPO)을 추진할 것으로 알려진 가운데, 양사가 상장을 통해 어떠한 실익을 얻을 수 있을 지 관심이 쏠린다.",
+      "title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?"
     },
     "source_fact:d20376d7e7f63546ebcca2de": {
       "first_seen_kst": "2026-10-11T11:01:00+09:00",
@@ -470099,6 +471597,35 @@
       "telegram_core_fact": "인공지능 데이터센터(AIDC) 확대와 전기화 흐름 속에 냉난방공조(HVAC)가 가전업계의 새로운 기업간거래(B2B) 성장동력으로 부상하고 있다.",
       "title": "50조원대 AI 냉각시장 열린다…삼성·LG HVAC 사업 성과 가시화"
     },
+    "source_fact:ef341a509fcd843bcac5f8d1": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822582",
+      "source": "뉴시스",
+      "source_body_digest": "ded13bf159fe7e63b658913c31dbe81e369ceed8c6c26fc04a200474419056e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb779f24d12685263ce09036553d25e122b1db1a153af5186e04c8c459beb34c",
+      "source_fact_keys": [
+        "source_fact:v1:2172b85501d79dc9144c7b53d583b1103b4aed767f8efe0815f73c9bc9d8eb77",
+        "source_fact:v1:6dc4e04e46aae0e3f4aef1d78ddd8ca303c0df18af31b5441ab30e9c89294b71",
+        "source_fact:v1:7be9f3a03ab06d0e665141206ae000bdfcfb21d5aac57ab4dce81d42e3edec89",
+        "source_fact:v1:7d3712fc603ba7ee6e687a9e228ff013e329a86648b77886dd381dc8e6c9eeb9",
+        "source_fact:v1:847cda64df5d04bee8b5c8065e78f6dd18acbd6be39dc9a7bc446b37b9d6701b",
+        "source_fact:v1:b2666c85dbda8db8c9251124cc70672fcb73d14cfab8ba1dc3c211d0d8ff8a25",
+        "source_fact:v1:be0d64c85384d95c2bf7e0b6bc812fe4c0140c5c8e0de325dec78890a87caf57",
+        "source_fact:v1:d3394daa42b3d2ed0a54a91187c5d6e2a31bf82afe3076376b805048ed907ead",
+        "source_fact:v1:e2e855f851927552c0fdb8ce439ae56b2b413727aa300d2e8e9c1c8df9c41a78",
+        "source_fact:v1:fa0bfd4e16e4e6caddff48e7e18af1717f37ee517d307fac5e6faa5cbb3c8859",
+        "source_fact:v1:fba459d2cc2cc8186b7932c292928ead4c877e086b72089b051ca49358bccb0a"
+      ],
+      "source_published_kst": "2026-10-13T08:41+09:00",
+      "source_title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?",
+      "telegram_core_fact": "SK하이닉스가 미국 낸드플래시 손자회사 '솔리다임'의 미국 증시 상장(IPO)을 추진할 것으로 알려진 가운데, 양사가 상장을 통해 어떠한 실익을 얻을 수 있을 지 관심이 쏠린다.",
+      "title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?"
+    },
     "source_fact:ef3f031ad4451ca00597ed19": {
       "first_seen_kst": "2026-10-12T06:27:02+09:00",
       "lanes": {
@@ -471178,6 +472705,32 @@
       ],
       "source_published_kst": "2026-10-06T14:46+09:00",
       "title": "두산에너빌, 스페이스XAI에 가스터빈 1호 출하…첫 해외 수출 | 연합뉴스"
+    },
+    "source_fact:f069c7a2c1a3ef9da0b2b9c2": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823169",
+      "source": "뉴시스",
+      "source_body_digest": "3a605b6f04b590dc0a67db51ba906c0da03f083022c2596d4cd1a3c38bfc47db",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c4a35156fc4572cde194417c379dcb8ca9cf6fa58d4e21e0c554ce7551f595ac",
+      "source_fact_keys": [
+        "source_fact:v1:33ffe8563e40ec4f9a3689a0f6a57fc6d984c207271853bb65b56b698086d622",
+        "source_fact:v1:42d10d6abe569ca058f52c175fa1b8a24a613f3608df782d0bfacbb94b67b72b",
+        "source_fact:v1:5f6aecb54db2243ff152ee3d752b3b825141f88d65f2664e44ab53e01a805440",
+        "source_fact:v1:85de41591358b9cebb0736ede4b78e3ed2426e13cb0dfcdb4f4849e0f5dde337",
+        "source_fact:v1:a77f31840aaebdcf7accc348d13a43aff0a1dddd0705b71a394c64050da1350a",
+        "source_fact:v1:cca2719ce1ba7a343d0b08e134a894dff21308f4043db3203f47e16f11b97bdd",
+        "source_fact:v1:de6bd639db90fb448d6423c72a752d605773173efc9c1b76a3e394f06b0f81bd",
+        "source_fact:v1:eb4f156c130946d75c8c8b447d0cbbf7e6c0ba911e971a32f620e99eb970e6de"
+      ],
+      "source_published_kst": "2026-10-13T08:51+09:00",
+      "source_title": "나신평 \"HD현대마린 '골텐스' 인수, 단기 수익성 희석 가능성\"",
+      "telegram_core_fact": "HD현대마린솔루션은 지난 8일 글로벌 선박·육상 발전용 엔진 서비스 전문 기업 골텐스 지분 100%를 인수하는 주식 매매 계약을 체결했다고 밝혔다.",
+      "title": "나신평 \"HD현대마린 '골텐스' 인수, 단기 수익성 희석 가능성\""
     },
     "source_fact:f06ee6cd3a8b7c3094ba6621": {
       "first_seen_kst": "2026-10-09T20:48:52+09:00",
@@ -480646,6 +482199,32 @@
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
     },
+    "source_fact:fb20ac7745d25390c2153f9d": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823169",
+      "source": "뉴시스",
+      "source_body_digest": "3a605b6f04b590dc0a67db51ba906c0da03f083022c2596d4cd1a3c38bfc47db",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c4a35156fc4572cde194417c379dcb8ca9cf6fa58d4e21e0c554ce7551f595ac",
+      "source_fact_keys": [
+        "source_fact:v1:33ffe8563e40ec4f9a3689a0f6a57fc6d984c207271853bb65b56b698086d622",
+        "source_fact:v1:42d10d6abe569ca058f52c175fa1b8a24a613f3608df782d0bfacbb94b67b72b",
+        "source_fact:v1:5f6aecb54db2243ff152ee3d752b3b825141f88d65f2664e44ab53e01a805440",
+        "source_fact:v1:85de41591358b9cebb0736ede4b78e3ed2426e13cb0dfcdb4f4849e0f5dde337",
+        "source_fact:v1:a77f31840aaebdcf7accc348d13a43aff0a1dddd0705b71a394c64050da1350a",
+        "source_fact:v1:cca2719ce1ba7a343d0b08e134a894dff21308f4043db3203f47e16f11b97bdd",
+        "source_fact:v1:de6bd639db90fb448d6423c72a752d605773173efc9c1b76a3e394f06b0f81bd",
+        "source_fact:v1:eb4f156c130946d75c8c8b447d0cbbf7e6c0ba911e971a32f620e99eb970e6de"
+      ],
+      "source_published_kst": "2026-10-13T08:51+09:00",
+      "source_title": "나신평 \"HD현대마린 '골텐스' 인수, 단기 수익성 희석 가능성\"",
+      "telegram_core_fact": "HD현대마린솔루션은 지난 8일 글로벌 선박·육상 발전용 엔진 서비스 전문 기업 골텐스 지분 100%를 인수하는 주식 매매 계약을 체결했다고 밝혔다.",
+      "title": "나신평 \"HD현대마린 '골텐스' 인수, 단기 수익성 희석 가능성\""
+    },
     "source_fact:fb230c5fbff9c60a765e0f21": {
       "first_seen_kst": "2026-10-11T11:26:05+09:00",
       "lanes": {
@@ -486993,6 +488572,28 @@
       "source_published_kst": "2026-10-07T10:36+09:00",
       "title": "파라택시스 합병 무산…코리아-상폐 대응, 이더리움-독자 경영"
     },
+    "title:0603c981b9704ecb45d8879f": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261013030100008",
+      "source": "연합뉴스",
+      "source_body_digest": "5dad9378301e64a565769db9d15158b96cf0a6f03577fdc6e86010012fb2a8b9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48d7c1864eb56ba69d996a4c95823fbb8edb9dd39d7f878e9d417ab10cf8b8b5",
+      "source_fact_keys": [
+        "source_fact:v1:0752a27d3a4e1c39806adcf4e12a479561a4ccae6ed5b51a7702652f60dcdf3a",
+        "source_fact:v1:3fd8496fc1ab2811dcc5e226804b31dfd9ba0e6a9d65694ce02e9d95da8f6c95",
+        "source_fact:v1:dfac1df8dedb02dd7119b38a3e03f1bf5004d738132c492d6ed0b1349fb2d607",
+        "source_fact:v1:dfbb2d5a3cf2e325870c7048125acb1b2565347ca81584358497c0394b92b334"
+      ],
+      "source_published_kst": "2026-10-13T08:55+09:00",
+      "source_title": "NH증권 \"셀트리온, 경기 방어와 성장 매력 동시 보유\" | 연합뉴스",
+      "telegram_core_fact": "한승연 연구원은 이날 보고서에서 \"올해 코스피 의약품 주가가 27% 내린 데 비해 셀트리온은 6% 하락에 그쳐 코스피 제약사 내 상대적 견조한 모습\"이라며 \"업종 둔화에도 강력한 신제품 효과로 올해 영업이익이 전년 대비 62%의 고성장이 예상된다\"고 전망했다.",
+      "title": "NH증권 \"셀트리온, 경기 방어와 성장 매력 동시 보유\" | 연합뉴스"
+    },
     "title:06107e22ccc14ef4d26d57bd": {
       "first_seen_kst": "2026-10-08T03:26:42+09:00",
       "lanes": {
@@ -489083,6 +490684,28 @@
       "source_published_kst": "2026-10-06T14:21+09:00",
       "title": "IPARK현대산업개발, 부산 연산13구역 재개발 수주…2812억 규모"
     },
+    "title:0e11ee34f6a0ff197ee7194c": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634941",
+      "source": "이투데이",
+      "source_body_digest": "16da39d64d4d3d7994f30e53945e26dfc02b213987dca046bf15f7387b8ba06a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:67356faafd4c2e45a2ff284c8d0aa2467814238e9a309de85aad986516d4b1ba",
+      "source_fact_keys": [
+        "source_fact:v1:3cc9715e27fc10449a7bb6c6f4f9edd33fc2a2582f8884a359a2f51e906678d2",
+        "source_fact:v1:4780c80cd0728dcab57f93385b8bcf9097ffb5bc139a9b3b48be7638263646c0",
+        "source_fact:v1:918321c35b0fa1f64a984626504bbc09f29e4a717f8903fa32af9d17b0103d4c",
+        "source_fact:v1:a267ac8b614c4c138bb52889fe48acc682113eaedb17266c287ca6996e14cb2b"
+      ],
+      "source_published_kst": "2026-10-13T08:40+09:00",
+      "source_title": "한투운용, 만기채권형 ETF 신규 상장⋯AA- 이상 회사채 분산투자",
+      "telegram_core_fact": "한국투자신탁운용은 13일 만기매칭형 채권 상장지수펀드(ETF)인 ‘ACE 29-11회사채(AA-이상)액티브 ETF’를 신규 상장한다고 밝혔다.",
+      "title": "한투운용, 만기채권형 ETF 신규 상장⋯AA- 이상 회사채 분산투자"
+    },
     "title:0e15c5d0a3cb14bf940f3ddd": {
       "first_seen_kst": "2026-10-09T17:54:07+09:00",
       "lanes": {
@@ -489362,6 +490985,35 @@
       "link": "https://www.yna.co.kr/view/AKR20261002151600008",
       "source": "연합뉴스",
       "title": "한국투자증권, SK 주식 4천억원어치 취득…지분율 0.9% | 연합뉴스"
+    },
+    "title:0f1cffaf1cd124f1e715c34f": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822582",
+      "source": "뉴시스",
+      "source_body_digest": "ded13bf159fe7e63b658913c31dbe81e369ceed8c6c26fc04a200474419056e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eb779f24d12685263ce09036553d25e122b1db1a153af5186e04c8c459beb34c",
+      "source_fact_keys": [
+        "source_fact:v1:2172b85501d79dc9144c7b53d583b1103b4aed767f8efe0815f73c9bc9d8eb77",
+        "source_fact:v1:6dc4e04e46aae0e3f4aef1d78ddd8ca303c0df18af31b5441ab30e9c89294b71",
+        "source_fact:v1:7be9f3a03ab06d0e665141206ae000bdfcfb21d5aac57ab4dce81d42e3edec89",
+        "source_fact:v1:7d3712fc603ba7ee6e687a9e228ff013e329a86648b77886dd381dc8e6c9eeb9",
+        "source_fact:v1:847cda64df5d04bee8b5c8065e78f6dd18acbd6be39dc9a7bc446b37b9d6701b",
+        "source_fact:v1:b2666c85dbda8db8c9251124cc70672fcb73d14cfab8ba1dc3c211d0d8ff8a25",
+        "source_fact:v1:be0d64c85384d95c2bf7e0b6bc812fe4c0140c5c8e0de325dec78890a87caf57",
+        "source_fact:v1:d3394daa42b3d2ed0a54a91187c5d6e2a31bf82afe3076376b805048ed907ead",
+        "source_fact:v1:e2e855f851927552c0fdb8ce439ae56b2b413727aa300d2e8e9c1c8df9c41a78",
+        "source_fact:v1:fa0bfd4e16e4e6caddff48e7e18af1717f37ee517d307fac5e6faa5cbb3c8859",
+        "source_fact:v1:fba459d2cc2cc8186b7932c292928ead4c877e086b72089b051ca49358bccb0a"
+      ],
+      "source_published_kst": "2026-10-13T08:41+09:00",
+      "source_title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?",
+      "telegram_core_fact": "SK하이닉스가 미국 낸드플래시 손자회사 '솔리다임'의 미국 증시 상장(IPO)을 추진할 것으로 알려진 가운데, 양사가 상장을 통해 어떠한 실익을 얻을 수 있을 지 관심이 쏠린다.",
+      "title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?"
     },
     "title:0f2f687f500fbd5e03673aa6": {
       "first_seen_kst": "2026-10-08T01:58:01+09:00",
@@ -490745,6 +492397,32 @@
       "link": "https://www.mt.co.kr/stock/2026/09/18/2026091811395989717",
       "source": "머니투데이",
       "title": "티로보틱스, 美 수주 확대에 현지 생산거점 구축 추진…북미 대응 강화"
+    },
+    "title:14bed89d6f17325d754c3b3c": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823169",
+      "source": "뉴시스",
+      "source_body_digest": "3a605b6f04b590dc0a67db51ba906c0da03f083022c2596d4cd1a3c38bfc47db",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c4a35156fc4572cde194417c379dcb8ca9cf6fa58d4e21e0c554ce7551f595ac",
+      "source_fact_keys": [
+        "source_fact:v1:33ffe8563e40ec4f9a3689a0f6a57fc6d984c207271853bb65b56b698086d622",
+        "source_fact:v1:42d10d6abe569ca058f52c175fa1b8a24a613f3608df782d0bfacbb94b67b72b",
+        "source_fact:v1:5f6aecb54db2243ff152ee3d752b3b825141f88d65f2664e44ab53e01a805440",
+        "source_fact:v1:85de41591358b9cebb0736ede4b78e3ed2426e13cb0dfcdb4f4849e0f5dde337",
+        "source_fact:v1:a77f31840aaebdcf7accc348d13a43aff0a1dddd0705b71a394c64050da1350a",
+        "source_fact:v1:cca2719ce1ba7a343d0b08e134a894dff21308f4043db3203f47e16f11b97bdd",
+        "source_fact:v1:de6bd639db90fb448d6423c72a752d605773173efc9c1b76a3e394f06b0f81bd",
+        "source_fact:v1:eb4f156c130946d75c8c8b447d0cbbf7e6c0ba911e971a32f620e99eb970e6de"
+      ],
+      "source_published_kst": "2026-10-13T08:51+09:00",
+      "source_title": "나신평 \"HD현대마린 '골텐스' 인수, 단기 수익성 희석 가능성\"",
+      "telegram_core_fact": "HD현대마린솔루션은 지난 8일 글로벌 선박·육상 발전용 엔진 서비스 전문 기업 골텐스 지분 100%를 인수하는 주식 매매 계약을 체결했다고 밝혔다.",
+      "title": "나신평 \"HD현대마린 '골텐스' 인수, 단기 수익성 희석 가능성\""
     },
     "title:14c6e13d440d8cbb4c124fdb": {
       "first_seen_kst": "2026-09-21T16:03:34+09:00",
@@ -517949,6 +519627,26 @@
       "source_published_kst": "2026-10-06T08:35+09:00",
       "title": "[포토] 금천구, 고령자친화기업 재지정"
     },
+    "title:7559fc4578671e78796850fc": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634934",
+      "source": "이투데이",
+      "source_body_digest": "64e7645e34503960f5aec2180d3bbbe93aa98304a6ab17e62b61df21da3841e8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4760e739511b6bdb6755f2c5f24027323e4a6c9a721cfbf22db964fc54a67232",
+      "source_fact_keys": [
+        "source_fact:v1:27519bae28958c4b80c20edd526a40ea368eb6623398d835002364fb289d4fca",
+        "source_fact:v1:530229416c052172abac061b68a19d1a0b1ceab936aad7b9328a3b868f466a62"
+      ],
+      "source_published_kst": "2026-10-13T08:48+09:00",
+      "source_title": "노벨경제학상 우드퍼드 \"시장과 소통해야\"⋯연준 '포워드 가이던스 축소' 겨냥",
+      "telegram_core_fact": "포워드 가이던스는 기준금리 발표를 앞두고 연준 의장 및 위원들이 내비치는 새 금리에 대한 신호다.",
+      "title": "노벨경제학상 우드퍼드 \"시장과 소통해야\"⋯연준 '포워드 가이던스 축소' 겨냥"
+    },
     "title:7579ce386d5005b5222e2f11": {
       "first_seen_kst": "2026-10-12T18:02:18+09:00",
       "lanes": {
@@ -534204,6 +535902,25 @@
       "telegram_core_fact": "반도체·디스플레이 장비 핵심부품 전문기업 영광와이케이엠씨(영광YKMC)가 금융위원회에 증권신고서를 제출하고 코스닥 상장을 위한 공모 절차에 착수했다고 12일 밝혔다. 오는 27일부터 11월 2일까지 기관투자자 대상 수요예측을 진행하고 11월 4~5일 일반청약을 거쳐 연내 코스닥 시장에 입성한다는 계획이다.",
       "title": "'첨단공정 장비 핵심부품' 영광와이케이엠씨, 증권신고서 제출…연내 코스닥 입성"
     },
+    "title:aecdc3600cfd03d99c3535c4": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261013026000003",
+      "source": "연합뉴스",
+      "source_body_digest": "3708e9b1cb0f605e80d01d199665b150bf58361e1f2e5c87d6ebf2b7dd921017",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bfa28f76e0f32cae3ba3151aabab874c4069a6da0232426529d0b64404eaf2bd",
+      "source_fact_keys": [
+        "source_fact:v1:5ebed8b0506a0539b21c85478ac3b4cad5b180f36d6f67e493f16326028024d4"
+      ],
+      "source_published_kst": "2026-10-13T08:35+09:00",
+      "source_title": "SK어스온, 베트남 광구 '황금낙타' 구조서 원유 생산 개시 | 연합뉴스",
+      "telegram_core_fact": "이번 15-1/05 광구 생산 개시로 SK어스온은 2003년 원유 생산을 시작한 15-1 광구에 이어 베트남 내 생산 거점을 확대하는 데 성공하고, 안정적인 수익 창출을 기대하고 있다.",
+      "title": "SK어스온, 베트남 광구 '황금낙타' 구조서 원유 생산 개시 | 연합뉴스"
+    },
     "title:aed4491d9f002af261106b1e": {
       "first_seen_kst": "2026-10-11T12:11:12+09:00",
       "lanes": {
@@ -540974,6 +542691,29 @@
       "link": "https://www.mk.co.kr/news/stock/12164151",
       "source": "매일경제",
       "title": "카맥스, 2분기 EPS 81% 급증..자사주 매입 재개"
+    },
+    "title:c972c40fb7a41da6bb3bb599": {
+      "first_seen_kst": "2026-10-13T08:59:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T08:59:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T08:59:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823178",
+      "source": "뉴시스",
+      "source_body_digest": "81077b89c9da3a7f5fb010ada8af185dccab082a293c114ac20d1f0ddc675ea5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d8459848fcb78cb47dd59f656b513d328f6d36d0fea183aba7d97b4c54fc635a",
+      "source_fact_keys": [
+        "source_fact:v1:3d5a4e9868b4f5f3815e46627b340c5a70b79a36ed01d312d0884e4b4d011511",
+        "source_fact:v1:3ea5f33f88ba14070428f93be39c239696b27dad47dfed1b3df430de8ec86e60",
+        "source_fact:v1:b3141b7564f4d1c6bf4097571a805ce3bb0fb3e164871b0d7fb49aa2552f2ab1",
+        "source_fact:v1:c2eac5e0f7762f4abdeba7baa0bdf12b016b2aa9caf6be2d4abcea255cf48ab1",
+        "source_fact:v1:f1e299a87559ab0baddcd27ba27032c97f2d4981b9a0c107a1456784d36f0d5a"
+      ],
+      "source_published_kst": "2026-10-13T08:52+09:00",
+      "source_title": "\"국장 탈출은 지능순\" 커뮤니티 분통…개인 투자자 10조원 미국 증시로 이동",
+      "telegram_core_fact": "국내 증시의 지지부진한 흐름에 실망한 개인 투자자들이 국내 주식을 대거 매도하고 미국 증시로 눈을 돌려 3분기 동안 10조원 넘는 자금을 쏟아부은 것으로 나타났다. 최근 금융투자업계와 한국예탁결제원에 따르면 개인 투자자들은 지난 7월부터 9월까지 국내 유가증권시장에서 5조5000억원 이상을 순매도했다.",
+      "title": "\"국장 탈출은 지능순\" 커뮤니티 분통…개인 투자자 10조원 미국 증시로 이동"
     },
     "title:c974e9632ce1cebefca0aebc": {
       "first_seen_kst": "2026-10-06T21:17:11+09:00",
@@ -556399,5 +558139,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-13T08:34:55+09:00"
+  "updated_at_kst": "2026-10-13T08:59:28+09:00"
 }
