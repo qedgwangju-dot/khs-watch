@@ -19,6 +19,7 @@ from html.parser import HTMLParser
 from zoneinfo import ZoneInfo
 
 from scripts import europe_sovereign_yield_watch as base
+from scripts.khs_source_fetch import fetch_text
 
 KST = ZoneInfo("Asia/Seoul")
 PARIS = ZoneInfo("Europe/Paris")
@@ -116,13 +117,16 @@ def parse_moodys(html_text: str) -> dict:
 def fetch_rating(*, fetch=None) -> tuple[dict | None, list[str]]:
     if fetch is None:
         def fetch(url: str) -> str:
-            req = urllib.request.Request(
+            body, error = fetch_text(
                 url,
-                headers={"User-Agent": "Mozilla/5.0 (khs-france-credit-monitor/1.0)",
-                         "Cache-Control": "no-cache", "Accept": "text/html"},
+                "Mozilla/5.0 (khs-france-credit-monitor/1.0)",
+                timeout=13,
+                attempts=1,
+                accept="text/html",
             )
-            with urllib.request.urlopen(req, timeout=14) as res:
-                return res.read().decode("utf-8", errors="replace")
+            if error is not None or not body:
+                raise RuntimeError(error or "official rating page was empty")
+            return body
     errors = []
     for url in (AFT_EN, AFT_FR):
         try:
