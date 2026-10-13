@@ -55,6 +55,10 @@ SURGE_SINGLE_FUT_EOK = 1300.0
 # 코스닥은 KOSPI200 선물과 섞지 않고 현물 독립 신호로 감시한다.
 KOSDAQ_SURGE_SINGLE_SPOT_EOK = 300.0
 KOSDAQ_URL = "https://m.stock.naver.com/domestic/index/KOSDAQ/total"
+KOSDAQ_NEWS_URL = "https://search.naver.com/search.naver?where=news&query=" + urllib.parse.quote("코스닥 급락")
+# 코스닥 가격/수급은 같은 기존 프로세스의 독립 상태로 관리하며 코스피 수급·파생과 합산하지 않는다.
+KOSDAQ_PRICE_POLL_INTERVAL_SEC = 5.0
+KOSDAQ_PRICE_MAX_AGE_SEC = 30.0
 
 
 
@@ -538,6 +542,23 @@ def fetch_index_quote(token: str) -> dict[str, Any]:
     }
 
 
+def fetch_kosdaq_index_quote(token: str) -> dict[str, Any]:
+    """LS t1511 코스닥 종합지수 301. 가격·시가가 부재하면 이전 값으로 대체하지 않는다."""
+    d = ls_post(token, "/indtp/market-data", "t1511",
+                {"t1511InBlock": {"upcode": "301"}},
+                max_attempts=2, request_timeout=8.0)
+    row = d.get("t1511OutBlock") or {}
+    price = fnum(row.get("pricejisu"))
+    if price is None or price <= 0:
+        raise RuntimeError(f"t1511 KOSDAQ 301 price missing: {row}")
+    return {
+        "price": price, "prev_close": fnum(row.get("jniljisu")),
+        "open": fnum(row.get("openjisu")), "high": fnum(row.get("highjisu")),
+        "low": fnum(row.get("lowjisu")), "open_time": str(row.get("opentime") or ""),
+        "source": "LS t1511 upcode=301",
+    }
+
+
 def fetch_derivative_quote(token: str, code: str) -> dict[str, Any]:
     d = ls_post(token, "/futureoption/market-data", "t2111",
                 {"t2111InBlock": {"focode": code}})
@@ -555,10 +576,10 @@ def fetch_derivative_quote(token: str, code: str) -> dict[str, Any]:
     }
 
 
-def backfill_index_bars(token: str, max_rows: int = 500) -> list[tuple[float, float]]:
+def backfill_index_bars(token: str, max_rows: int = 500, upcode: str = "001") -> list[tuple[float, float]]:
     # 재기동 시 당일 KOSPI 1분봉을 복구해 오전/직전 급락 시작점을 잃지 않는다.
     body = {"t8409InBlock": {
-        "shcode": "001", "ncnt": 1, "qrycnt": max_rows, "nday": "1",
+        "shcode": upcode, "ncnt": 1, "qrycnt": max_rows, "nday": "1",
         "sdate": " ", "stime": "", "edate": "99999999", "etime": "",
         "cts_date": " ", "cts_time": "", "comp_yn": "N"
     }}
@@ -852,6 +873,18 @@ class Watch:
         self.kosdaq_surge_last_processed_ts = 0.0
         self.kosdaq_surge_pending: dict[str, dict[str, float]] = {}
         self.kosdaq_surge_sent_at: dict[str, float] = {}
+        # 코스닥 급락 가격 사건은 별도 지수·최저점·중복키·시가갭을 보관한다.
+        self.kosdaq_idx: deque[tuple[float, float]] = deque(maxlen=30000)
+        self.kosdaq_episode: dict[str, Any] | None = None
+        self.kosdaq_last_episode_end_ts: float | None = None
+        self.kosdaq_regular_price_ready = False
+        self.kosdaq_opening_gap_sent = False
+        self.kosdaq_last_price_poll = 0.0
+        self.kosdaq_last_idx_tick_ts: float | None = None
+        self.kosdaq_last_price_processed_ts = 0.0
+        self.kosdaq_price_task: asyncio.Task | None = None
+        self.kosdaq_backfill_task: asyncio.Task | None = None
+        self.kosdaq_last_price_snapshot: dict[str, Any] = {}
 
 
     @staticmethod
@@ -951,6 +984,88 @@ class Watch:
                 "r60": returns.get(60),
             }
         return False, {}
+
+    def _kosdaq_trigger(self) -> tuple[bool, dict[str, Any]]:
+        """코스피와 동일한 국소 급락 문턱값, 코스닥 가격·종료 시각만 사용."""
+        if len(self.kosdaq_idx) < 2:
+            return False, {}
+        now_t, cur = self.kosdaq_idx[-1]
+        rows = list(self.kosdaq_idx)
+        last_end = self.kosdaq_last_episode_end_ts
+        returns: dict[int, float | None] = {}
+        for minutes in (5, 10, 15, 30, 60):
+            target = now_t - minutes * 60
+            p = min(rows, key=lambda x: abs(x[0]-target))
+            returns[minutes] = (
+                pct(p[1], cur) if now_t-p[0] >= minutes*60*0.65 else None
+            )
+        rules = [
+            (5, -0.35, 2), (10, -0.55, 3), (15, -0.70, 5),
+            (20, -0.90, 5), (30, -1.00, 7), (45, -1.10, 10),
+            (60, -1.20, 10), (90, -1.30, 15), (120, -1.40, 20),
+            (180, -1.50, 20),
+        ]
+        for window, threshold, pad in rules:
+            eligible = [x for x in rows
+                        if x[0] >= now_t-(window+pad)*60
+                        and (last_end is None or x[0] > last_end)]
+            if not eligible:
+                continue
+            high = max(v for _,v in eligible)
+            peak = [x for x in eligible if x[1]==high][-1]
+            duration = now_t-peak[0]
+            drop = pct(peak[1], cur)
+            if duration <= 0 or drop is None or drop > threshold:
+                continue
+            if window > 20 and window <= 60:
+                active = any(returns.get(m) is not None and returns[m] <= lim
+                             for m,lim in ((10,-0.20),(15,-0.30),(30,-0.45)))
+            elif window > 60:
+                active = any(returns.get(m) is not None and returns[m] <= lim
+                             for m,lim in ((15,-0.55),(30,-0.70),(60,-0.90)))
+            else:
+                active = True
+            if not active:
+                continue
+            return True, {
+                "peak_ts": peak[0], "peak": peak[1], "cur_ts": now_t,
+                "cur": cur, "drop": drop, "duration": duration,
+                "threshold": threshold, "window_minutes": window,
+            }
+        return False, {}
+
+    def _kosdaq_attribution(self, start_ts: float, end_ts: float) -> dict[str, Any]:
+        """코스닥 통합 현물 t1602만 사용. KOSPI200 선물·t1640을 결합하지 않는다."""
+        start_open = self.session_open_ts
+        pairs = []
+        for point in (start_ts,end_ts):
+            eligible = []
+            for snap in self.kosdaq_flows:
+                block = snap.get("현물")
+                if not isinstance(block,dict):
+                    continue
+                ts = fnum(block.get("sample_ts"))
+                if ts is None or ts > point or (start_open is not None and ts < start_open):
+                    continue
+                if any(fnum(block.get(actor)) is None for actor in ("외국인","기관","개인")):
+                    continue
+                eligible.append((ts,block))
+            if not eligible:
+                return {"available":False, "reason":"코스닥 사건 시작·끝 이전 현물 기준점 미확보"}
+            sample_ts, block = max(eligible,key=lambda x:x[0])
+            gap=point-sample_ts
+            if gap > MAX_FLOW_ALIGNMENT_SEC:
+                return {"available":False,
+                        "reason":f"코스닥 현물 기준점 시차 {gap:.1f}초(허용 30초) 초과"}
+            pairs.append((sample_ts,block,gap))
+        diffs=_actor_delta(pairs[0][1],pairs[1][1])
+        sellers=[(k,v) for k,v in diffs.items() if v is not None and v<0]
+        leader=min(sellers,key=lambda x:x[1])[0] if sellers else None
+        return {
+            "available":True, "spot":diffs, "leader":leader,
+            "start_gap":pairs[0][2], "end_gap":pairs[1][2],
+            "confidence":"현물 단독 관측",
+        }
 
     def _flow_near(self, ts: float, prefer_before: bool = True) -> dict[str, Any] | None:
         rows = list(self.flows)
