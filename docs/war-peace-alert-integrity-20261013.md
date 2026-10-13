@@ -1,0 +1,28 @@
+# 2026-10-13 전쟁·종전·재건 알림 감사
+
+## 실제 기록
+
+- 원 알림: [Actions 38280855865](https://github.com/qedgwangju-dot/khs-watch/actions/runs/38280855865). 조회 01:57 KST, Telegram 확인 ID 323, 전송 확인 01:59:36 KST.
+- 같은 실행의 아티팩트에서 본문과 선택 4건을 확인했다. 당시 pending에는 ID만 저장됐고 시장 가격의 계산 피연산자와 선택 기사 원자료는 저장되지 않았다.
+- 오늘 [38322846080](https://github.com/qedgwangju-dot/khs-watch/actions/runs/38322846080), [38343708102](https://github.com/qedgwangju-dot/khs-watch/actions/runs/38343708102)는 Bing RSS 파싱과 GDELT JSON·HTTP 오류로 수집 완결 조건을 통과하지 못했다. 잘못된 부분 수집 알림은 발송되지 않았다.
+- 워크플로는 active이고 예약은 `*/5 * * * *`이다. 실제 schedule 생성은 01:56, 08:34, 12:51 KST였다. 설정만으로 5분 간격의 실제 실행을 보장할 수 없으며, 실행 생성 공백의 원인은 이 기록만으로 확정할 수 없다.
+
+## 확인한 내용과 수정
+
+1. EU 제재 기사: 무기·미사일이라는 배경 단어가 실제 군사행동 분류에 영향을 줬다. 신규 조치는 제재 명단 추가이며 군사작전 개시가 아니다. 제재·압박으로 분리한다. [EU Council 원문](https://www.consilium.europa.eu/en/press/press-releases/2026/10/12/russia-s-war-of-aggression-against-ukraine-eu-agrees-largest-ever-package-of-listings-targeting-almost-1600-individuals-and-entities-in-russia-s-military-industrial-complex/)의 826개 기업과 743명 합계는 1,569다.
+2. All Israel News: 기존 공항 피격에 대한 규탄과 미국의 개입 요구 보도를 신규 공습과 구분한다. 본문에서 별도 새 군사행동을 확인하지 못했으므로 외교반응·개입검토로 표시한다. [매체 원문](https://allisraelnews.com/israel-condemns-deadly-houthi-attack-on-saudi-airport-amid-reports-us-wants-israel-to-strike-in-yemen).
+3. MBC: RSS와 원문 메타데이터는 00:10, 화면 입력 표기는 00:15다. 단순 RSS 오류로 단정하지 않고 출처 내부 시각 불일치를 표시한다. 기사 시각과 실제 공격 발생시각을 구분한다. [원문](https://imnews.imbc.com/replay/2026/nw2500/article/6857411_36989.html).
+4. 본문 확보: 다른 출판사나 다른 제목의 검색 결과를 해당 기사 본문으로 채택하지 않는다. 출판사 도메인과 원문 제목을 모두 대조한다. 확인한 원문 링크를 표시하고, 미확인 Google RSS 링크는 검색 링크로 구분한다.
+5. 시각: 원문 공표일이 오래되거나 미래인데 RSS만 최근인 경우 발송에서 제외하고 이유를 기록한다. 최종 렌더링에 포함된 ID만 pending에 넣어 미발송 기사가 seen 처리되는 것을 막는다. 저장 상태가 손상됐으면 이력을 빈 배열로 초기화하지 않고 실패시킨다.
+6. 시장: Stooq 가격과 Yahoo 전일 종가를 섞어 등락률을 계산하던 경로를 제거한다. Yahoo 가격·전일 종가를 같은 응답에서 사용하며 가격·시각·심볼·출처·보조 비교값을 증거 파일에 남긴다. 두 제공자의 가격 근접만으로 선물 계약 동일성을 확인했다고 표시하지 않는다. 비정상 수치와 미래 시각은 제외한다.
+7. 원천 오류: RSS/JSON 응답 모양을 HTTP 요청 단계에서 검사해 기존 2회 한도 안에서 같은 URL을 재시도한다. 접근 차단·과다 요청은 우회하지 않는다. 지속 실패 시 기존 수집 완결 보호 조건으로 발송을 중단한다. 응답 크기와 SHA256을 수집 기록에 추가한다.
+8. 발송 증거: 실제 checkout SHA, 본문 SHA256, 선택 기사 메타데이터, 가격 계산 피연산자, Telegram 확인 ID, 최종 상태를 아티팩트에 보존한다. Telegram에서 확인받은 뒤 seen 상태를 갱신하는 순서를 유지한다.
+
+## 검증과 한계
+
+- Windows에서 네트워크를 차단하고 기존 회귀 검증 63+247개, 신규 unittest 16개를 통과했다. 247개는 새 운영 진입점이 설치된 상태로 실행했다.
+- Linux 전용 프로세스 수집·재생·시간제한 검증은 GitHub PR CI에서 확인해야 한다.
+- 원 알림의 4개 시장 수치는 당시 원자료가 없으므로 미검증이다. 현재값이나 반올림된 표시값으로 과거 가격·종가를 추정하지 않는다.
+- Tokenpost 원문의 세부 조건은 이 변경에서 확정하지 않았다. 일반 분류·시각·본문 검증 규칙을 적용한다.
+- 예약 공백, 제공처의 지속적인 접근·응답 오류, 수정 코드의 첫 실제 발송은 후속 실행 증거가 필요하다.
+- 기존 PR #278의 세 파일, KOSPI PR #283, 크립토·국채 보고서 변경과 상태·예약·권한은 수정 범위에 포함하지 않는다.

@@ -6,7 +6,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS = ('test_war_peace_runtime.py', 'test_war_peace_regression.py',
-           'test_war_peace_oct04_regression.py')
+           'test_war_peace_oct04_regression.py', 'test_war_peace_integrity.py')
 BOOTSTRAP = '''
 import runpy, socket, sys, urllib.request
 from pathlib import Path
@@ -23,6 +23,9 @@ def offline_connect(sock, address):
     return original_connect(sock, address)
 socket.socket.connect = offline_connect
 sys.path.insert(0, str(Path(sys.argv[1]).resolve().parent))
+# Exercise the production wrapper with the full existing Oct04 guard fixtures.
+if Path(sys.argv[1]).name == "test_war_peace_oct04_regression.py":
+    import war_peace_reconstruction_watch_integrity
 path = sys.argv[1]
 sys.argv = [path]
 runpy.run_path(path, run_name="__main__")

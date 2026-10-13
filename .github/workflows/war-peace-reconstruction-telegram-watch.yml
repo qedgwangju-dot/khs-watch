@@ -67,6 +67,7 @@ jobs:
         run: |
           git fetch origin main --depth=1
           git reset --hard origin/main
+          echo "WAR_WATCH_CODE_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
       - name: Set up Python
         uses: actions/setup-python@v7
         with:
@@ -110,13 +111,15 @@ jobs:
           python -m py_compile scripts/test_war_peace_regression.py
           python -m py_compile scripts/test_war_peace_oct04_regression.py
           python -m py_compile scripts/war_peace_reconstruction_watch_runtime.py
+          python -m py_compile scripts/war_peace_reconstruction_watch_evidence.py
+          python -m py_compile scripts/war_peace_reconstruction_watch_integrity.py
           python scripts/test_war_peace_offline.py
       - name: Check war peace reconstruction conditions
         run: |
           if [ "$TELEGRAM_TEST" = "true" ]; then
-            python scripts/war_peace_reconstruction_watch_oct04_guard.py --telegram-test
+            python scripts/war_peace_reconstruction_watch_integrity.py --telegram-test
           else
-            python scripts/war_peace_reconstruction_watch_oct04_guard.py
+            python scripts/war_peace_reconstruction_watch_integrity.py
           fi
       - name: Publish status summary
         if: always()
@@ -131,7 +134,7 @@ jobs:
           EXPECTED_TELEGRAM_BOT_USERNAME: "khs887900887900_bot"
         run: |
           python - <<'PY'
-          import json, os, pathlib, time, urllib.error, urllib.parse, urllib.request
+          import datetime as dt, hashlib, json, os, pathlib, time, urllib.error, urllib.parse, urllib.request
 
           def request_json(req, retries=3):
               last = None
@@ -204,6 +207,12 @@ jobs:
               message_ids.append(message_id)
               print(f"telegram_chunk_confirmed={idx}/{len(chunks)} message_id={message_id}")
 
+          pathlib.Path("out/war_peace_reconstruction_delivery.json").write_text(json.dumps({
+              "status": "confirmed", "bot_username": actual, "message_ids": message_ids,
+              "confirmed_at_kst": dt.datetime.now(dt.timezone(dt.timedelta(hours=9))).isoformat(),
+              "code_sha": os.environ.get("WAR_WATCH_CODE_SHA"), "run_id": os.environ.get("GITHUB_RUN_ID"),
+              "alert_sha256": hashlib.sha256(text.encode()).hexdigest(),
+          }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
           print(
               f"telegram_delivery_confirmed=true bot=@{actual} "
               f"message_ids={','.join(map(str, message_ids))}"
@@ -211,7 +220,7 @@ jobs:
           PY
       - name: Finalize state after confirmed delivery
         if: success() && env.DRY_RUN != 'true' && hashFiles('out/war_peace_reconstruction_alert.txt') != ''
-        run: python scripts/war_peace_reconstruction_watch_oct04_guard.py --finalize
+        run: python scripts/war_peace_reconstruction_watch_integrity.py --finalize
       - name: Commit confirmed alert state
         if: success() && env.DRY_RUN != 'true' && hashFiles('data/war_peace_reconstruction_watch_state.json') != ''
         run: |
@@ -241,6 +250,9 @@ jobs:
             out/war_peace_reconstruction_alert.txt
             out/war_peace_reconstruction_pending.json
             out/war_peace_reconstruction_coverage.json
+            out/war_peace_reconstruction_evidence.json
+            out/war_peace_reconstruction_delivery.json
+            data/war_peace_reconstruction_watch_state.json
           if-no-files-found: ignore
           retention-days: 7
 
