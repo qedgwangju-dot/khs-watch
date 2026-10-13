@@ -514,9 +514,22 @@ def build_dealer_survey_alert(section: ReleaseSection) -> tuple[str, str, dict] 
     ]
     if not items:
         return None
-    primary = items[0]
-    inspected_text = official_dealer_document_text(primary)
-    if not dealer_agenda_mentions_long_end(inspected_text):
+    primary = None
+    inspected_text = ""
+    failures = []
+    for document in items:
+        try:
+            body = official_dealer_document_text(document)
+        except Exception as exc:
+            failures.append(f"{document.url}: {type(exc).__name__}")
+            continue
+        if dealer_agenda_mentions_long_end(body):
+            primary = document
+            inspected_text = body
+            break
+    if primary is None:
+        if failures and len(failures) == len(items):
+            raise RuntimeError("공식 딜러 자료 전부 접근 실패: " + "; ".join(failures))
         return None
     checks = {
         "20년물": r"20[\s-]*year",
