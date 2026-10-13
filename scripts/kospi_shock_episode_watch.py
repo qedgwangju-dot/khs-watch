@@ -2003,6 +2003,14 @@ class Watch:
             "kosdaq_surge_last_processed_ts": self.kosdaq_surge_last_processed_ts,
             "kosdaq_surge_pending": self.kosdaq_surge_pending,
             "kosdaq_surge_sent_at": self.kosdaq_surge_sent_at,
+            "kosdaq_idx": [[ts,v] for ts,v in self.kosdaq_idx
+                           if ts >= time.time()-PRICE_LOOKBACK_SEC][-4000:],
+            "kosdaq_episode": self.kosdaq_episode,
+            "kosdaq_last_episode_end_ts": self.kosdaq_last_episode_end_ts,
+            "kosdaq_regular_price_ready": self.kosdaq_regular_price_ready,
+            "kosdaq_opening_gap_sent": self.kosdaq_opening_gap_sent,
+            "kosdaq_last_price_processed_ts": self.kosdaq_last_price_processed_ts,
+            "kosdaq_last_price_snapshot": self.kosdaq_last_price_snapshot,
         }
         p.parent.mkdir(parents=True, exist_ok=True)
         # 인계 파일을 직접 덮어쓰다 중단되면 손상된 JSON이 다음 작업에 넘어갈 수 있다.
@@ -2071,6 +2079,27 @@ class Watch:
             }
             if self.kosdaq_flows:
                 self.kosdaq_last_success_ts = fnum((self.kosdaq_flows[-1].get("현물") or {}).get("sample_ts"))
+            # 코스닥 가격 사건과 현물 수급 인계는 기존 KOSPI 사건과 완전히 분리한다.
+            price_cutoff=time.time()-PRICE_LOOKBACK_SEC
+            for row in data.get("kosdaq_idx") or []:
+                if not isinstance(row,(list,tuple)) or len(row)!=2:
+                    continue
+                ts,v=fnum(row[0]),fnum(row[1])
+                if ts is not None and v is not None and v>0 and ts>=price_cutoff:
+                    self.kosdaq_idx.append((ts,v))
+            if self.kosdaq_idx:
+                self.kosdaq_idx=deque(sorted(self.kosdaq_idx),maxlen=30000)
+                self.kosdaq_last_idx_tick_ts=self.kosdaq_idx[-1][0]
+            raw_ep=data.get("kosdaq_episode")
+            if isinstance(raw_ep,dict) and fnum(raw_ep.get("start_ts")) is not None and fnum(raw_ep.get("start_price")):
+                self.kosdaq_episode=raw_ep
+            self.kosdaq_last_episode_end_ts=fnum(data.get("kosdaq_last_episode_end_ts"))
+            self.kosdaq_regular_price_ready=bool(data.get("kosdaq_regular_price_ready",False))
+            self.kosdaq_opening_gap_sent=bool(data.get("kosdaq_opening_gap_sent",False))
+            self.kosdaq_last_price_processed_ts=fnum(data.get("kosdaq_last_price_processed_ts")) or 0.0
+            cached_quote=data.get("kosdaq_last_price_snapshot")
+            if isinstance(cached_quote,dict):
+                self.kosdaq_last_price_snapshot=cached_quote
             if self.flows:
                 latest_snap = max(self.flows, key=lambda x: float(x.get("ts", 0)))
                 latest = float(latest_snap.get("ts", 0))
@@ -2278,6 +2307,30 @@ class Watch:
             self.enrichment_tasks.add(task)
             task.add_done_callback(self.enrichment_tasks.discard)
 
+        # 오전·오후 경계는 장마감이 아니다. 코스닥 사건도 실제 시장 종료에만 확정한다.
+        if (self.kosdaq_episode is not None and self.kosdaq_idx
+                and should_finalize_market_close(dt.datetime.now(KST),close_dt,test_seconds)):
+            ep=self.kosdaq_episode
+            end_ts,end_price=self.kosdaq_idx[-1]
+            msg_id=await asyncio.to_thread(
+                telegram_send,self.build_kosdaq_drop_alert("close",ep,end_ts,end_price,session_close=True)
+            )
+            self.kosdaq_episode=None
+            self.kosdaq_last_episode_end_ts=end_ts
+            self.msg_ids.append(msg_id)
+            self._record_delivery("kosdaq_shock_close",msg_id,ep,end_ts)
+
+        if self.kosdaq_price_task:
+            try:
+                await asyncio.wait_for(self.kosdaq_price_task, timeout=10)
+            except Exception:
+                pass
+        if self.kosdaq_backfill_task:
+            try:
+                await asyncio.wait_for(self.kosdaq_backfill_task, timeout=10)
+            except Exception:
+                pass
+
         if self.flow_task:
             try:
                 await asyncio.wait_for(self.flow_task, timeout=8)
@@ -2305,6 +2358,9 @@ def write_status(w: Watch, started: dt.datetime, status: str) -> None:
         f"- 시작: {started:%Y-%m-%d %H:%M:%S} KST", f"- 상태: {status}",
         f"- KOSPI 틱: {len(w.idx)}", f"- 선물 틱: {len(w.fut)}", f"- 수급 스냅샷: {len(w.flows)}",
         f"- 코스닥 현물 수급 스냅샷: {len(w.kosdaq_flows)}",
+        f"- 코스닥 가격 틱: {len(w.kosdaq_idx)}",
+        f"- 코스닥 급락 진행 중: {'있음' if w.kosdaq_episode else '없음'}",
+        f"- 코스닥 가격 최근 오류: {w.raw.get('last_kosdaq_price_error') or '없음'}",
         f"- 최근월물 선물: {w.front_future or '미확인'}", f"- 구독 풋옵션: {len(w.put_defs)}",
         f"- 진행 중 사건: {'있음' if w.episode else '없음'}", f"- 텔레그램 ID: {w.msg_ids}",
         f"- 정밀분해 텔레그램 ID: {w.enrichment_msg_ids}",
