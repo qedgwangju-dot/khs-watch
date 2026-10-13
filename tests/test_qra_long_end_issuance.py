@@ -61,6 +61,10 @@ class TreasuryLongEndQraTests(unittest.TestCase):
             "Welcome primary dealers. Discussion of cash management." ))
         self.assertFalse(issuance.dealer_agenda_mentions_long_end(
             "The 20-year and 30-year securities are listed on the routine meeting agenda." ))
+        self.assertFalse(issuance.dealer_agenda_mentions_long_end(
+            "A routine 20-year Treasury security was mentioned. "
+            + ("Unrelated administrative matters. " * 50)
+            + "The auction size for short-dated bills may change." ))
         self.assertTrue(issuance.dealer_agenda_mentions_long_end(
             "Should Treasury reduce the size of 20-year bond auctions?" ))
         official=qra.ReleaseSection(
@@ -75,6 +79,23 @@ class TreasuryLongEndQraTests(unittest.TestCase):
         self.assertIn("장기국채 공급 검토",title)
         self.assertIn("결정이 아닙니다",body)
         self.assertEqual(detail["decision_status"],"survey_not_final_policy")
+
+    def test_second_dealer_document_is_examined_if_first_not_relevant(self):
+        agenda=qra.ReleaseSection(
+            heading="DOCUMENTS RELEASED at 12:00 PM Friday, October 16, 2026",
+            links=[
+                qra.LinkItem("Primary Dealer Meeting Agenda","https://home.treasury.gov/agenda.pdf"),
+                qra.LinkItem("Primary Dealer Auction Size Survey","https://home.treasury.gov/survey.pdf"),
+            ],
+        )
+        def read(link):
+            if link.url.endswith("agenda.pdf"):
+                return "Routine non-market opening agenda."
+            return "Is investor demand for 20-year bonds affected by hyperscaler issuance?"
+        with patch.object(qra,"official_dealer_document_text",side_effect=read):
+            title,body,detail=qra.build_dealer_survey_alert(agenda)
+        self.assertIn("장기국채",title)
+        self.assertEqual(detail["official_url"],"https://home.treasury.gov/survey.pdf")
 
     def test_scenario_is_not_a_government_announcement(self):
         compared=issuance.summarize_long_end_supply(
