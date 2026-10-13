@@ -1004,6 +1004,37 @@ def _robros_pilot_recovery() -> list[dict]:
     }]
 
 
+
+def _robros_213_214_correction() -> list[dict]:
+    # One-time correction, preserving the real Robros conditional approval.
+    if base.NOW.astimezone(base.KST).date() > dt.date(2026,10,16):
+        return []
+    return [{
+        'title': '정정: Telegram 213·214 오탐 3건 제외, 로브로스 실증특례 20대 승인은 유효',
+        'link': 'https://www.yna.co.kr/view/AKR20261013140800003',
+        'description': (
+            '로브로스 휴머노이드 20대 산업실증특례 승인 관련 사후 검증. '
+            '산업통상부 2026-10-13 공식 14쪽 보도자료 2·3·9쪽과 연합뉴스 대조. '
+            '로브로스 네패스·성우하이텍·HD현대삼호·딜리버리랩 산업현장 '
+            '이동형 휴머노이드 20대 조건부 실증특례 승인은 유효. '
+            '노동부 위험성평가·위험 감소조치가 전제이며 실제 배치완료·매출은 아니다. '
+            '기존 Telegram message_id=213의 1번 로보티즈 4.86% 주가 조정은 '
+            '신규 수주·출하가 아니므로 고신호에서 제외한다. '
+            '같은 메시지 3번 LG전자 일반 산업화 심층분석도 '
+            '신규 계약·실적 없는 전망 기사로 제외한다. '
+            'Telegram message_id=214의 ESS 수요 폭증 보도도 '
+            '신규 수주·가격 실측·현장 ESS 설치 없는 일반 수요 전망으로 제외한다. '
+            '213번 2번 로브로스 규제특례 승인 알림은 유지한다. '
+            '2025년 로브로스 IGRIS-C 사전예약가 약 1억5천만원×20대=30억원은 '
+            '가상 비교금액이지 정부 예산·실제 구매계약액·발생 매출이 아니다.'
+        ),
+        'source': '연합뉴스',
+        'published': None,
+        'direct_recovery': True,
+        'robros_false_alert_correction': True,
+    }]
+
+
 _orig_query_news = base.query_news
 
 
@@ -1025,7 +1056,7 @@ def query_news(q: str) -> list[dict]:
     if q == VNET_EQUITY_RECOVERY:
         return _vnet_equity_recovery()
     if q == ROBROS_PILOT_20261013:
-        return _robros_pilot_recovery()
+        return _robros_pilot_recovery() + _robros_213_214_correction()
     return _orig_query_news(q)
 
 
@@ -1223,6 +1254,10 @@ def _stage(text: str) -> str:
 
 
 def score(item: dict) -> int:
+    if item.get('robros_false_alert_correction'):
+        return 90 if _is_robros_pilot(
+            f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+        ) else 0
     if (_is_stock_reaction_only(item)
             or _is_ess_expectation_only(item)
             or _is_generic_ess_demand_story(item)):
@@ -1310,6 +1345,8 @@ def score(item: dict) -> int:
 
 def category(text: str, group: str) -> str:
     if group == ROBROS_PILOT_GROUP:
+        if '정정: Telegram 213·214' in text:
+            return '로브로스 실증특례 · Telegram 오탐 정정'
         # Renderer calls category(title+description) without source. Each
         # rendering class must match the corresponding scored source-tier.
         if ROBROS_REVERSE.search(text):
@@ -1406,6 +1443,16 @@ def category(text: str, group: str) -> str:
 
 
 def meaning(cat: str) -> str:
+    if cat == '로브로스 실증특례 · Telegram 오탐 정정':
+        return (
+            '10/13 Telegram 213번 1번 로보티즈 주가 4.86% 조정과 '
+            '3번 LG전자 일반 심층분석, 214번 ESS 수요 폭증 전망은 '
+            '신규 계약·출하·실측이 없는 오탐이므로 제외합니다. '
+            '213번 2번 로브로스 휴머노이드 20대 규제특례 승인은 '
+            '산업통상부 공식 보도자료 2~3·9쪽 확인으로 유효합니다. '
+            '위험성평가·안전조치 전제이며 20대 실제 배치나 유상 판매가 아닙니다. '
+            '30억원은 과거 공개가를 이용한 참고 계산으로 계약금액이 아닙니다.'
+        )
     if cat == '로브로스 산업실증 · 이동형 휴머노이드 20대 규제특례 승인':
         return (
             '10/13 산업통상부 제6차 산업융합 규제특례 승인 보도: '
@@ -1649,6 +1696,11 @@ def meaning(cat: str) -> str:
 
 
 def risk(cat: str) -> str:
+    if cat == '로브로스 실증특례 · Telegram 오탐 정정':
+        return (
+            '20대 계획은 확정 납품이 아닙니다. '
+            '향후 실제 설치·위험성평가·작업 성공률·유상 고객계약 변화만 재알림합니다.'
+        )
     if cat.startswith('로브로스 산업실증 · ') or cat.startswith('로브로스 제조현장 · ') or cat.startswith('로브로스 실증특례 · '):
         return (
             '허가특례는 전국 상시 무인 허가가 아닙니다. '
@@ -1757,6 +1809,11 @@ def risk(cat: str) -> str:
 
 def verification(item: dict, group: str, text: str) -> str:
     if group == ROBROS_PILOT_GROUP:
+        if item.get('robros_false_alert_correction'):
+            return (
+                'Telegram 213·214 실발송 기록 · 산업통상부 14쪽 공식 PDF '
+                '및 연합뉴스 확인 · 일반 주가/전망 오탐 3건 정정'
+            )
         stage = _robros_pilot_stage(text,item.get('source') or '')
         if stage == 'approved_pilot_report':
             return (
@@ -1853,6 +1910,8 @@ def verification(item: dict, group: str, text: str) -> str:
 
 
 def clean_title(title: str, source: str) -> str:
+    if title.startswith('정정: Telegram 213·214'):
+        return '정정: 10/13 오탐 3건 제외·로브로스 승인 유지'
     if _is_robros_pilot(title + ' ' + source):
         if ROBROS_PILOT_APPROVAL.search(title):
             return '산업부, 로브로스 휴머노이드 20대·4개 현장 실증특례 승인'
@@ -1964,6 +2023,10 @@ def tag_for(group: str) -> str:
 def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
     if topic_group(text) == ROBROS_PILOT_GROUP:
+        if item.get('robros_false_alert_correction'):
+            return hashlib.sha256(
+                b'robros|20261013|telegram213-214|false-alert-correction-v1'
+            ).hexdigest()
         stage=_robros_pilot_stage(text,item.get('source') or '')
         if stage == 'approved_pilot_report':
             return hashlib.sha256(b'robros|sandbox-industrial|20261013|20units|4sites|approval').hexdigest()
