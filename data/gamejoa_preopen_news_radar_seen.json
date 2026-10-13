@@ -7940,6 +7940,29 @@
       "telegram_core_fact": "유니클로를 운영하는 일본 패스트리테일링이 연 매출 33조원을 기록하며 역대 최대 실적을 낸 가운데, 스웨덴 패션기업 H&M을 제치고 세계 의류 소매업계 매출 2위에 오를 가능성이 커졌다.",
       "title": "'불매운동 그 브랜드' 매출 33조 '역대 최대'…H&M 제치고 세계 2위 눈앞"
     },
+    "core:2df3d41fc3e55993bcdadfe8": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01420246645612920",
+      "source": "이데일리",
+      "source_body_digest": "d307ba5905908e87af1be7bef7c7111d0fd0026865bc83901f2b341cc123bb22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b61aa7721f889a8abb36bdee5c887f117f8a6b99dd99f5e853620daf3531f63",
+      "source_fact_keys": [
+        "source_fact:v1:9f24f8782c76a046259a2d518f7a2a6597e17d405f63495817d9e4caf9bd4890",
+        "source_fact:v1:e612d1a91567ea022b410d4624b21477170eebd703902886c719d6f67985ddc9",
+        "source_fact:v1:f35f797d5f4985c888538e268ab62c6d1dc7f20441e586f07a99e0116f0a4983",
+        "source_fact:v1:f867b400663082a9996be32a3ffacd209404b8b4574e10160f41e31f28ea5f7c"
+      ],
+      "source_published_kst": "2026-10-14T04:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한은 \"반도체 아직 괜찮지만..AI 투자 축소·中 추격 대비해야\"",
+      "telegram_core_fact": "생산이 늘어 반도체 가격이 떨어지거나 미국 대형 기술기업(빅테크)이 AI 투자를 줄이면 수출 증가세가 빠르게 둔화할 수 있다는 것이다.",
+      "title": "한은 \"반도체 아직 괜찮지만..AI 투자 축소·中 추격 대비해야\""
+    },
     "core:2e00d2b9a6de0fbaf886ffb6": {
       "first_seen_kst": "2026-10-08T18:24:19+09:00",
       "lanes": {
@@ -9406,6 +9429,32 @@
       "source_title": "사우디, 후티 '공습지원' 넘어 전면전 나설까…승산은 불투명",
       "telegram_core_fact": "예멘 친(親)이란 무장 세력 후티의 사우디아라비아 내륙 인프라 연쇄 공습으로 민간 피해가 누적되고 있는 가운데, 사우디가 결국 직접 참전을 결정할지 관심이 집중되고 있다.",
       "title": "사우디, 후티 '공습지원' 넘어 전면전 나설까…승산은 불투명"
+    },
+    "core:35d1049768b815468ae45519": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261013143300",
+      "source": "지디넷코리아",
+      "source_body_digest": "f5bffdee726bc7fd755c7e3669420c3a3d76813858fa14239a184fe2e747827a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:372723fbf526e756f8b357e384aa2219774b874876823ccf18669ab5c9e9dc6a",
+      "source_fact_keys": [
+        "source_fact:v1:164ebf194d75127c84d5cabc380987de89f67b2f9d285bf636d691ed4486ed67",
+        "source_fact:v1:4dd8c91749111b13277e7c76adbf5e310a01dd2d8b71f8ff4e8b4de97b6006d6",
+        "source_fact:v1:538f9d52d8e25c0730fd8c49175e4f424eea50f7de7e5a63052393fb2ee5299e",
+        "source_fact:v1:7f8bd08cb39afece8ff99b220c6021fdbb280a1f9894fd8d1ddb5d52f0a13878",
+        "source_fact:v1:b739c9bf56b9aa7ddd208f564ed655704d9001c8339d2edce1807addb033dceb",
+        "source_fact:v1:be983aa5d53f330b637d4e0bed39f9342752b5fd4fc82c2ac21bd84dd911eab7",
+        "source_fact:v1:c17b4b465aa659b6de1392232dcc8aa24845cfdfa2d66ea1cf572ef7dd1829fe"
+      ],
+      "source_published_kst": "2026-10-13T14:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "인텔 \"실험실에선 잘 움직이는 로봇, 실제 현장은 다르다\"",
+      "telegram_core_fact": "인텔이 전 세계 기업·산업 관계자 800명을 조사한 결과, 응답자의 약 3분의 2는 향후 5년간 로봇 도입이 불가피하다고 봤지만 실제 도입 전략을 마련한 곳은 40%에 그쳤다.",
+      "title": "인텔 \"실험실에선 잘 움직이는 로봇, 실제 현장은 다르다\""
     },
     "core:35e38e62a6c7af44aa5efbc8": {
       "first_seen_kst": "2026-10-07T17:23:27+09:00",
@@ -13215,6 +13264,32 @@
       "source_title": "'되는 곳'에만 몰렸다…서울 60대1인데 부산 0.6대1[청약, 선별의 시대①]",
       "telegram_core_fact": "높아진 분양가와 강화된 대출 규제, 고금리에 대한 부담이 겹치며 청약 시장이 실수요자 위주로 재편되는 가운데, 역세권·직주근접 등 양호한 주거환경에 가격 경쟁력까지 갖춘 곳으로만 청약 통장이 움직이고 있다는 해석이 나온다.",
       "title": "'되는 곳'에만 몰렸다…서울 60대1인데 부산 0.6대1[청약, 선별의 시대①]"
+    },
+    "core:4c8475495ef4fb37a485f13f": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.hankyung.com/article/202610138778P",
+      "source": "한국경제",
+      "source_body_digest": "283499c700733674cf9309d5139108a01be5ce6cdfedbf265d9b8be860997001",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f98c127b8e78792db0768406a6736c8698c05ff1d97021712897c57205a4306d",
+      "source_fact_keys": [
+        "source_fact:v1:012ccc142669839fdeb6955ae00423f8ec6f46c6fbac7a66a1dba72b9ead31cc",
+        "source_fact:v1:101d80d74451a3b71f653ca3212067f996203e7357d5fe6d558708a37cdef0fc",
+        "source_fact:v1:2578964c4e45f2e75d07001e69d388038438889d551325a6f20674b5d498a0e2",
+        "source_fact:v1:a304789a0a1ee203a91b33b2557c207da54172044de7343d9502b8465beab6ba",
+        "source_fact:v1:c6a645a3ba6048e2476870791d0d365b340ad2da7cc3e1a592fecf6b47e3d3e5",
+        "source_fact:v1:cb66bfb03450694be908b27defff967b420c810ec90a56baaa3bc35208fbb941",
+        "source_fact:v1:e8084cc68c55be2dcea6f6ba684ab4f2ed5065c42cb2af2d41e0a08d11f4eff4"
+      ],
+      "source_published_kst": "2026-10-13T14:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성바이오로직스, 폴리펩타이드그룹 공개매수 최소 조건 충족… 응모 지분 66.7% 넘겼다",
+      "telegram_core_fact": "삼성바이오로직스가 글로벌 펩타이드 위탁개발생산(CDMO) 기업 '폴리펩타이드그룹(PolyPeptide Group)' 공개매수 중간 결과에서 응모 지분 87.88%를 기록하며 거래 수락 최소 조건인 66.7%를 넘어섰다. 이는 매수 대상 주식의 87.88%에 해당하는 규모로, 수락 최소 조건인 66.7%를 넘어선 수치다.",
+      "title": "삼성바이오로직스, 폴리펩타이드그룹 공개매수 최소 조건 충족… 응모 지분 66.7% 넘겼다"
     },
     "core:4cc099badbd2fde1d5c1434f": {
       "first_seen_kst": "2026-10-08T10:20:20+09:00",
@@ -32561,6 +32636,26 @@
       "telegram_core_fact": "스탠다드 리튬(SLI)은 9월 30일 종료된 3분기 동안 시장가 유상증자(ATM) 프로그램을 통해 보통주 10만7631주를 평균 2.78달러에 발행하고 총수익 29만9569달러를 조달했다고 10월 9일 발표했다.",
       "title": "스탠다드 리튬, 3분기 ATM으로 30만달러 조달..10만주 발행"
     },
+    "core:c41bc03832e1a1749fdbce85": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://biz.heraldcorp.com/article/10901578",
+      "source": "헤럴드경제",
+      "source_body_digest": "0356cd9bcf8c3b2de7ac3a8b600938d15dd10a3dd730ad5128d6fbd288eca756",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:df30d7b8fea4554669251c98e03633ce1a66bbd2f2c16723fb38a3fbc8dcae4a",
+      "source_fact_keys": [
+        "source_fact:v1:8e739ad9e841a667dc65819c4f1a2a11e0d3cf5a885e827900fba8bf0282589a"
+      ],
+      "source_published_kst": "2026-10-14T00:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "KES 2026 | 파이보콤 LE270-KR, KC 인증과 KT 망 연동 승인 획득하며 스마트 미터링 및 기타 IoT 배포 지원",
+      "telegram_core_fact": "LE270-KR은 한국에서 사용되는 LTE 주파수 대역을 지원하며 KC 인증 및 KT 망 연동 승인을 획득해 한국 시장에 진출하는 기기 제조업체에 신뢰할 수 있는 연결 기반이 된다.",
+      "title": "KES 2026 | 파이보콤 LE270-KR, KC 인증과 KT 망 연동 승인 획득하며 스마트 미터링 및 기타 IoT 배포 지원"
+    },
     "core:c43deaa049421654308326cf": {
       "first_seen_kst": "2026-10-12T13:56:47+09:00",
       "lanes": {
@@ -35303,6 +35398,33 @@
       "telegram_core_fact": "우크라이나 총참모부는 7일 당시 공격으로 저장탱크 14기와 송유관 일부, 석유제품 자동 출하시설이 손상된 것으로 확인됐다고 발표했다. 우크라이나 총참모부는 우랄스유가 러시아 전체 원유 수출의 최대 50%를 차지하며 사마라 기지가 러시아군 수요를 충족하는 데도 관여한다고 설명했다.",
       "title": "러 사마라 핵심 석유거점 또 대형 화재…우크라 \"2일 공격 때 탱크 14기 손상\""
     },
+    "core:d632cf944126a80bb5ddd364": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174834",
+      "source": "매일경제",
+      "source_body_digest": "3033fc2b4f9bff53dcbbe985f43a2f1a9236e4356d567b56c87ec4b85ac60bfd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d231a6f29e54a68d00df881e621451da824ddf22df29d5a2fd339b15ea73190",
+      "source_fact_keys": [
+        "source_fact:v1:007959b243b37f79470abce35a537fb9847aaa4fd0bbe40912abf74e867c718a",
+        "source_fact:v1:38bf0df29241ddb4b78c2605d774b92475e275ee597b8ae1ad618a1938e97322",
+        "source_fact:v1:60421f57ecdd981d703c629a7b11712340061ea0aa67679713a568a3fcef4b46",
+        "source_fact:v1:65239e2f54d1756403c876811f37ad7b44629d7095201c68abe5679e00102756",
+        "source_fact:v1:9fd6f77e1b41288091bb33ea6fa8f13a435d01dee0c9ece90bf2f0fb82e31461",
+        "source_fact:v1:a3de22007f2f3a095d9117cb88ecf562918e969ba9ae7f9a65c275a8ded85201",
+        "source_fact:v1:e6718e1867acb3fb5a2262ec0d5bee7bbdf19dc4e55825dcbd8d8b15752a4254",
+        "source_fact:v1:fab532a698191c98f02ccafddee9ecd22645f5e9f9e2a4b7a6db80ce682798c5"
+      ],
+      "source_published_kst": "2026-10-13T19:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "SSR 마이닝, 마리골드 매장량 396만 온스..세후 NPV 33억 달러",
+      "telegram_core_fact": "월가 증권사 컨센서스에 따르면 SSR 마이닝의 2026년 예상 매출액은 23억957만 달러로 전년 대비 41.72% 증가할 전망이다. 매장량 산정에는 온스당 2,200달러의 금 가격 가정이 적용됐으며, 가정 상향 등에 따라 기존 추정치 대비 함유 금량이 73% 증가했다.",
+      "title": "SSR 마이닝, 마리골드 매장량 396만 온스..세후 NPV 33억 달러"
+    },
     "core:d66de059dec3c21ecfff4d9f": {
       "first_seen_kst": "2026-10-09T23:49:51+09:00",
       "lanes": {
@@ -35723,6 +35845,33 @@
       "source_title": "日에서 찾은 고령자 고용 해법…정년연장 아닌 단계적 재고용 필요",
       "telegram_core_fact": "이런 상황에서 고령자 고용을 확대하되 청년층의 일자리 진입을 가로막지 않고 기업의 인력운용 부담을 줄이는 방안이 정책 과제로 떠올랐다.",
       "title": "日에서 찾은 고령자 고용 해법…정년연장 아닌 단계적 재고용 필요"
+    },
+    "core:d909cfa4ac259779d0cc42fe": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://biz.chosun.com/industry/car/2026/10/14/RI5DSZJRORBNRJ55DSMFNUJSPE/",
+      "source": "조선비즈",
+      "source_body_digest": "3f13c0935beca2dfee8e319c932c82d6531eab7b906c9d45b56d2e0017f7420a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9923ce11c3b4cdd6377ca13cc199d0c5d28671e5c2b0ae1d3f5c224b8f753674",
+      "source_fact_keys": [
+        "source_fact:v1:3aa1548c57bff320e51c4fc57cd457f6c13b71668ba08afa91a98a566f7ab3ab",
+        "source_fact:v1:4a7aac95c3fe121c2e5c1cdd1d81742aa80bf2f617909ab38f33ae497336a2f9",
+        "source_fact:v1:5a77d97a3344f8bd8f2a2a5058d8b2e0f0154d51de00a5c7b04c49455fdc668c",
+        "source_fact:v1:658c6207786a45b1bbd2a84fd20a2f4dd952f5bc870cfa2ac7d11a4e42e2019a",
+        "source_fact:v1:c8e947ef191a6864ee65cebb2d3b49a0c0654d5fa0f48ee9d78ecd232724a8f4",
+        "source_fact:v1:db3138d7e6f42b0aaf70d757b7c54db2246af5fbddcb2fc00a8cd2f013918fab",
+        "source_fact:v1:e415d3fef76395c2dc2a848e8cd9f3e73db4c1bf226d5a17813b05ccaebc44eb",
+        "source_fact:v1:fbf4985a3e002de0f30df2aa57859c666ab281581fc618053d55f9bd5aa7215b"
+      ],
+      "source_published_kst": "2026-10-14T00:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차그룹, 인도에 20조원대 투자…생산·R&D 거점 키운다",
+      "telegram_core_fact": "현대자동차그룹이 2032년까지 인도에 20조원 넘게 투자해 생산시설과 연구개발(R&D) 거점을 확대한다.",
+      "title": "현대차그룹, 인도에 20조원대 투자…생산·R&D 거점 키운다"
     },
     "core:d91d7afe5b4b89d78e04a5d0": {
       "first_seen_kst": "2026-10-08T06:27:52+09:00",
@@ -40602,6 +40751,24 @@
       "source_published_kst": "2026-10-07T09:48+09:00",
       "title": "러 북한에 제트 드론 기술 대거 이전 가능성"
     },
+    "core:f7c9d641dfe6d3912a0ae04b": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174979",
+      "source": "매일경제",
+      "source_body_digest": "b8cfe0ebf3a94042344cad0ca25bb584ee58f8e1c22fa8a37e936aea45556812",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-13T22:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "SSR 마이닝, 록스모어 4억6000만달러 전액 현금 인수",
+      "telegram_core_fact": "SSR 마이닝(SSRM)이 캐나다 토론토증권거래소(TSX) 상장사 록스모어 리소시스(Roxmore Resources)를 주당 6.75캐나다달러 전액 현금으로 인수하는 최종 계약을 체결했다고 10월 13일 발표했다.",
+      "title": "SSR 마이닝, 록스모어 4억6000만달러 전액 현금 인수"
+    },
     "core:f7f57286874251b0269734ea": {
       "first_seen_kst": "2026-10-08T15:16:19+09:00",
       "lanes": {
@@ -44245,6 +44412,29 @@
       "source_title": "지출 늘리면 국채 신뢰 ‘흔들', 긴축땐 '민심 폭발'…佛 딜레마",
       "telegram_core_fact": "정부가 사회적 반발을 달래기 위해 지출을 늘리면 국채시장의 신뢰를 잃고, 반대로 긴축을 강화하면 정치·사회적 반발이 거세지는 딜레마에 빠진 것이다. 10일(현지시간) 로이터통신에 따르면 프랑스 10년 만기 국채금리는 이달 초 5%에 근접해 2002년 이후 최고 수준을 기록했다.",
       "title": "지출 늘리면 국채 신뢰 ‘흔들', 긴축땐 '민심 폭발'…佛 딜레마"
+    },
+    "event:2d661690e1508ffd19821c60": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01420246645612920",
+      "source": "이데일리",
+      "source_body_digest": "d307ba5905908e87af1be7bef7c7111d0fd0026865bc83901f2b341cc123bb22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b61aa7721f889a8abb36bdee5c887f117f8a6b99dd99f5e853620daf3531f63",
+      "source_fact_keys": [
+        "source_fact:v1:9f24f8782c76a046259a2d518f7a2a6597e17d405f63495817d9e4caf9bd4890",
+        "source_fact:v1:e612d1a91567ea022b410d4624b21477170eebd703902886c719d6f67985ddc9",
+        "source_fact:v1:f35f797d5f4985c888538e268ab62c6d1dc7f20441e586f07a99e0116f0a4983",
+        "source_fact:v1:f867b400663082a9996be32a3ffacd209404b8b4574e10160f41e31f28ea5f7c"
+      ],
+      "source_published_kst": "2026-10-14T04:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한은 \"반도체 아직 괜찮지만..AI 투자 축소·中 추격 대비해야\"",
+      "telegram_core_fact": "생산이 늘어 반도체 가격이 떨어지거나 미국 대형 기술기업(빅테크)이 AI 투자를 줄이면 수출 증가세가 빠르게 둔화할 수 있다는 것이다.",
+      "title": "한은 \"반도체 아직 괜찮지만..AI 투자 축소·中 추격 대비해야\""
     },
     "event:2da188b8d971de076b20a5df": {
       "first_seen_kst": "2026-09-18T13:11:00+09:00",
@@ -52301,22 +52491,28 @@
     "event:cf835f76693641e467fb51ff": {
       "first_seen_kst": "2026-10-13T10:49:34+09:00",
       "lanes": {
-        "live": "2026-10-14T00:31:46+09:00"
+        "live": "2026-10-14T04:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-14T00:31:46+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=01807286645612592",
-      "source": "이데일리",
-      "source_body_digest": "4b7fa2edf10436f72fb28a5192c69016e4982606714d602fe4c6f9695141b923",
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.hankyung.com/article/202610138778P",
+      "source": "한국경제",
+      "source_body_digest": "283499c700733674cf9309d5139108a01be5ce6cdfedbf265d9b8be860997001",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:c95ae79d3cbf02fd323a1eb704410133fa33e5f1ab64154313abd4240280e7a8",
+      "source_fact_identity": "source_facts:v1:f98c127b8e78792db0768406a6736c8698c05ff1d97021712897c57205a4306d",
       "source_fact_keys": [
-        "source_fact:v1:bfdab1e99b6a769a1eb33c2f179a9ad278a05c5afe58361043138140d30ecaf3"
+        "source_fact:v1:012ccc142669839fdeb6955ae00423f8ec6f46c6fbac7a66a1dba72b9ead31cc",
+        "source_fact:v1:101d80d74451a3b71f653ca3212067f996203e7357d5fe6d558708a37cdef0fc",
+        "source_fact:v1:2578964c4e45f2e75d07001e69d388038438889d551325a6f20674b5d498a0e2",
+        "source_fact:v1:a304789a0a1ee203a91b33b2557c207da54172044de7343d9502b8465beab6ba",
+        "source_fact:v1:c6a645a3ba6048e2476870791d0d365b340ad2da7cc3e1a592fecf6b47e3d3e5",
+        "source_fact:v1:cb66bfb03450694be908b27defff967b420c810ec90a56baaa3bc35208fbb941",
+        "source_fact:v1:e8084cc68c55be2dcea6f6ba684ab4f2ed5065c42cb2af2d41e0a08d11f4eff4"
       ],
-      "source_published_kst": "2026-10-13T06:10+09:00",
+      "source_published_kst": "2026-10-13T14:01+09:00",
       "source_supply_terms": {},
-      "source_title": "[TODAY애플]3Q 스마트폰 점유율 22%로 확대…주가 상승",
-      "telegram_core_fact": "벤징가에 따르면 시장조사업체 카운터포인트리서치는 애플의 3분기 글로벌 스마트폰 시장점유율이 22%로 확대됐다고 밝혔다.",
-      "title": "[TODAY애플]3Q 스마트폰 점유율 22%로 확대…주가 상승"
+      "source_title": "삼성바이오로직스, 폴리펩타이드그룹 공개매수 최소 조건 충족… 응모 지분 66.7% 넘겼다",
+      "telegram_core_fact": "삼성바이오로직스가 글로벌 펩타이드 위탁개발생산(CDMO) 기업 '폴리펩타이드그룹(PolyPeptide Group)' 공개매수 중간 결과에서 응모 지분 87.88%를 기록하며 거래 수락 최소 조건인 66.7%를 넘어섰다. 이는 매수 대상 주식의 87.88%에 해당하는 규모로, 수락 최소 조건인 66.7%를 넘어선 수치다.",
+      "title": "삼성바이오로직스, 폴리펩타이드그룹 공개매수 최소 조건 충족… 응모 지분 66.7% 넘겼다"
     },
     "event:cfa91f2d7b874d500a38469f": {
       "first_seen_kst": "2026-10-08T02:41:45+09:00",
@@ -63702,6 +63898,26 @@
       "telegram_core_fact": "2025년 3월 23일 매일경제 기사에서는 삼성물산이 송파구 한양3차 아파트 재건축 사업을 수주했다고 전했다.",
       "title": "송파구 송파삼성래미안 79.7㎡ 22억 5천만원… 최근 3년 신고가 [MAI부동산]"
     },
+    "fact:29131141dad732931e0ff838": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://biz.heraldcorp.com/article/10901578",
+      "source": "헤럴드경제",
+      "source_body_digest": "0356cd9bcf8c3b2de7ac3a8b600938d15dd10a3dd730ad5128d6fbd288eca756",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:df30d7b8fea4554669251c98e03633ce1a66bbd2f2c16723fb38a3fbc8dcae4a",
+      "source_fact_keys": [
+        "source_fact:v1:8e739ad9e841a667dc65819c4f1a2a11e0d3cf5a885e827900fba8bf0282589a"
+      ],
+      "source_published_kst": "2026-10-14T00:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "KES 2026 | 파이보콤 LE270-KR, KC 인증과 KT 망 연동 승인 획득하며 스마트 미터링 및 기타 IoT 배포 지원",
+      "telegram_core_fact": "LE270-KR은 한국에서 사용되는 LTE 주파수 대역을 지원하며 KC 인증 및 KT 망 연동 승인을 획득해 한국 시장에 진출하는 기기 제조업체에 신뢰할 수 있는 연결 기반이 된다.",
+      "title": "KES 2026 | 파이보콤 LE270-KR, KC 인증과 KT 망 연동 승인 획득하며 스마트 미터링 및 기타 IoT 배포 지원"
+    },
     "fact:292ddcc24895f29c147e923d": {
       "first_seen_kst": "2026-10-13T18:41:17+09:00",
       "lanes": {
@@ -69663,6 +69879,32 @@
       "source_title": "日 오므론, 美 온로직 인수⋯공장 ‘피지컬 AI’ 박차",
       "telegram_core_fact": "일본의 제어기기 업체 오므론이 미국의 산업용 컴퓨터 제조사 온로직을 6억7500만달러에 인수했다. 미국과 중국이 앞서가는 생성형 AI 개발과 달리, 피지컬 AI 분야에서는 제조업의 경험과 지식을 활용할 수 있는 일본이 강점을 지닌 것으로 평가된다고 닛케이는 설명했다.",
       "title": "日 오므론, 美 온로직 인수⋯공장 ‘피지컬 AI’ 박차"
+    },
+    "fact:454f753d5dba1f323cdf1289": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.hankyung.com/article/202610138778P",
+      "source": "한국경제",
+      "source_body_digest": "283499c700733674cf9309d5139108a01be5ce6cdfedbf265d9b8be860997001",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f98c127b8e78792db0768406a6736c8698c05ff1d97021712897c57205a4306d",
+      "source_fact_keys": [
+        "source_fact:v1:012ccc142669839fdeb6955ae00423f8ec6f46c6fbac7a66a1dba72b9ead31cc",
+        "source_fact:v1:101d80d74451a3b71f653ca3212067f996203e7357d5fe6d558708a37cdef0fc",
+        "source_fact:v1:2578964c4e45f2e75d07001e69d388038438889d551325a6f20674b5d498a0e2",
+        "source_fact:v1:a304789a0a1ee203a91b33b2557c207da54172044de7343d9502b8465beab6ba",
+        "source_fact:v1:c6a645a3ba6048e2476870791d0d365b340ad2da7cc3e1a592fecf6b47e3d3e5",
+        "source_fact:v1:cb66bfb03450694be908b27defff967b420c810ec90a56baaa3bc35208fbb941",
+        "source_fact:v1:e8084cc68c55be2dcea6f6ba684ab4f2ed5065c42cb2af2d41e0a08d11f4eff4"
+      ],
+      "source_published_kst": "2026-10-13T14:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성바이오로직스, 폴리펩타이드그룹 공개매수 최소 조건 충족… 응모 지분 66.7% 넘겼다",
+      "telegram_core_fact": "삼성바이오로직스가 글로벌 펩타이드 위탁개발생산(CDMO) 기업 '폴리펩타이드그룹(PolyPeptide Group)' 공개매수 중간 결과에서 응모 지분 87.88%를 기록하며 거래 수락 최소 조건인 66.7%를 넘어섰다. 이는 매수 대상 주식의 87.88%에 해당하는 규모로, 수락 최소 조건인 66.7%를 넘어선 수치다.",
+      "title": "삼성바이오로직스, 폴리펩타이드그룹 공개매수 최소 조건 충족… 응모 지분 66.7% 넘겼다"
     },
     "fact:4554db48f2963776647e6179": {
       "first_seen_kst": "2026-10-08T17:42:30+09:00",
@@ -75977,6 +76219,33 @@
       "telegram_core_fact": "한화투자증권이 일본 종합금융투자회사 GI캐피털매니지먼트의 증권 부문 지분을 인수하는 주식매매계약을 체결했다. 한화투자증권에 따르면 회사는 지난달 이사회에서 GI캐피털매니지먼트 증권 부문 지분 인수를 결의한 데 이어 일본 도쿄에서 계약식을 열었다.",
       "title": "한화투자증권, 일본 GI캐피털매니지먼트 증권 부문 주식 취득 계약"
     },
+    "fact:6448a21b454356018bb763fc": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174834",
+      "source": "매일경제",
+      "source_body_digest": "3033fc2b4f9bff53dcbbe985f43a2f1a9236e4356d567b56c87ec4b85ac60bfd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d231a6f29e54a68d00df881e621451da824ddf22df29d5a2fd339b15ea73190",
+      "source_fact_keys": [
+        "source_fact:v1:007959b243b37f79470abce35a537fb9847aaa4fd0bbe40912abf74e867c718a",
+        "source_fact:v1:38bf0df29241ddb4b78c2605d774b92475e275ee597b8ae1ad618a1938e97322",
+        "source_fact:v1:60421f57ecdd981d703c629a7b11712340061ea0aa67679713a568a3fcef4b46",
+        "source_fact:v1:65239e2f54d1756403c876811f37ad7b44629d7095201c68abe5679e00102756",
+        "source_fact:v1:9fd6f77e1b41288091bb33ea6fa8f13a435d01dee0c9ece90bf2f0fb82e31461",
+        "source_fact:v1:a3de22007f2f3a095d9117cb88ecf562918e969ba9ae7f9a65c275a8ded85201",
+        "source_fact:v1:e6718e1867acb3fb5a2262ec0d5bee7bbdf19dc4e55825dcbd8d8b15752a4254",
+        "source_fact:v1:fab532a698191c98f02ccafddee9ecd22645f5e9f9e2a4b7a6db80ce682798c5"
+      ],
+      "source_published_kst": "2026-10-13T19:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "SSR 마이닝, 마리골드 매장량 396만 온스..세후 NPV 33억 달러",
+      "telegram_core_fact": "월가 증권사 컨센서스에 따르면 SSR 마이닝의 2026년 예상 매출액은 23억957만 달러로 전년 대비 41.72% 증가할 전망이다. 매장량 산정에는 온스당 2,200달러의 금 가격 가정이 적용됐으며, 가정 상향 등에 따라 기존 추정치 대비 함유 금량이 73% 증가했다.",
+      "title": "SSR 마이닝, 마리골드 매장량 396만 온스..세후 NPV 33억 달러"
+    },
     "fact:6451edbeddf08a23756022ae": {
       "first_seen_kst": "2026-10-06T21:05:27+09:00",
       "lanes": {
@@ -78185,6 +78454,33 @@
       "source_published_kst": "2026-10-06T05:08+09:00",
       "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
     },
+    "fact:6e4f873b30ca97c8eede16fd": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://biz.chosun.com/industry/car/2026/10/14/RI5DSZJRORBNRJ55DSMFNUJSPE/",
+      "source": "조선비즈",
+      "source_body_digest": "3f13c0935beca2dfee8e319c932c82d6531eab7b906c9d45b56d2e0017f7420a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9923ce11c3b4cdd6377ca13cc199d0c5d28671e5c2b0ae1d3f5c224b8f753674",
+      "source_fact_keys": [
+        "source_fact:v1:3aa1548c57bff320e51c4fc57cd457f6c13b71668ba08afa91a98a566f7ab3ab",
+        "source_fact:v1:4a7aac95c3fe121c2e5c1cdd1d81742aa80bf2f617909ab38f33ae497336a2f9",
+        "source_fact:v1:5a77d97a3344f8bd8f2a2a5058d8b2e0f0154d51de00a5c7b04c49455fdc668c",
+        "source_fact:v1:658c6207786a45b1bbd2a84fd20a2f4dd952f5bc870cfa2ac7d11a4e42e2019a",
+        "source_fact:v1:c8e947ef191a6864ee65cebb2d3b49a0c0654d5fa0f48ee9d78ecd232724a8f4",
+        "source_fact:v1:db3138d7e6f42b0aaf70d757b7c54db2246af5fbddcb2fc00a8cd2f013918fab",
+        "source_fact:v1:e415d3fef76395c2dc2a848e8cd9f3e73db4c1bf226d5a17813b05ccaebc44eb",
+        "source_fact:v1:fbf4985a3e002de0f30df2aa57859c666ab281581fc618053d55f9bd5aa7215b"
+      ],
+      "source_published_kst": "2026-10-14T00:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차그룹, 인도에 20조원대 투자…생산·R&D 거점 키운다",
+      "telegram_core_fact": "현대자동차그룹이 2032년까지 인도에 20조원 넘게 투자해 생산시설과 연구개발(R&D) 거점을 확대한다.",
+      "title": "현대차그룹, 인도에 20조원대 투자…생산·R&D 거점 키운다"
+    },
     "fact:6e6ff69e56f27d1d2f338f77": {
       "first_seen_kst": "2026-10-06T10:04:04+09:00",
       "lanes": {
@@ -79568,6 +79864,29 @@
       "source_title": "식약처, 한미약품 ‘에페글레나타이드’ 국산 1호 비만치료제로 허가",
       "telegram_core_fact": "한미약품은 지난해 12월 식약처에 허가를 신청했고, 식약처의 글로벌 혁신제품 신속심사(GIFT) 대상에 지정돼 일반 허가 절차보다 심사 기간이 단축돼 이번에 품목허가를 받았다.",
       "title": "식약처, 한미약품 ‘에페글레나타이드’ 국산 1호 비만치료제로 허가"
+    },
+    "fact:748b0b3aea56ed8ad0352c38": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01420246645612920",
+      "source": "이데일리",
+      "source_body_digest": "d307ba5905908e87af1be7bef7c7111d0fd0026865bc83901f2b341cc123bb22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b61aa7721f889a8abb36bdee5c887f117f8a6b99dd99f5e853620daf3531f63",
+      "source_fact_keys": [
+        "source_fact:v1:9f24f8782c76a046259a2d518f7a2a6597e17d405f63495817d9e4caf9bd4890",
+        "source_fact:v1:e612d1a91567ea022b410d4624b21477170eebd703902886c719d6f67985ddc9",
+        "source_fact:v1:f35f797d5f4985c888538e268ab62c6d1dc7f20441e586f07a99e0116f0a4983",
+        "source_fact:v1:f867b400663082a9996be32a3ffacd209404b8b4574e10160f41e31f28ea5f7c"
+      ],
+      "source_published_kst": "2026-10-14T04:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한은 \"반도체 아직 괜찮지만..AI 투자 축소·中 추격 대비해야\"",
+      "telegram_core_fact": "생산이 늘어 반도체 가격이 떨어지거나 미국 대형 기술기업(빅테크)이 AI 투자를 줄이면 수출 증가세가 빠르게 둔화할 수 있다는 것이다.",
+      "title": "한은 \"반도체 아직 괜찮지만..AI 투자 축소·中 추격 대비해야\""
     },
     "fact:74aacad73deb91b155dbc31e": {
       "first_seen_kst": "2026-10-06T20:37:39+09:00",
@@ -91333,6 +91652,32 @@
       "source_title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다",
       "telegram_core_fact": "채권 기관투자자 결제 가운데 채권 결제대금은 일평균 12조5천억원으로 전 분기보다 11.3% 줄었다. 주식 결제대금은 일평균 8조8천억원으로 전 분기 대비 12.4% 감소했으며, 채권 결제 대금은 26조6천억원으로 17.7% 줄었다.",
       "title": "증시 조정에…3분기 증권결제대금, 전 분기보다 17% 줄었다"
+    },
+    "fact:a9773caf36eb2c6baa38b3db": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261013143300",
+      "source": "지디넷코리아",
+      "source_body_digest": "f5bffdee726bc7fd755c7e3669420c3a3d76813858fa14239a184fe2e747827a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:372723fbf526e756f8b357e384aa2219774b874876823ccf18669ab5c9e9dc6a",
+      "source_fact_keys": [
+        "source_fact:v1:164ebf194d75127c84d5cabc380987de89f67b2f9d285bf636d691ed4486ed67",
+        "source_fact:v1:4dd8c91749111b13277e7c76adbf5e310a01dd2d8b71f8ff4e8b4de97b6006d6",
+        "source_fact:v1:538f9d52d8e25c0730fd8c49175e4f424eea50f7de7e5a63052393fb2ee5299e",
+        "source_fact:v1:7f8bd08cb39afece8ff99b220c6021fdbb280a1f9894fd8d1ddb5d52f0a13878",
+        "source_fact:v1:b739c9bf56b9aa7ddd208f564ed655704d9001c8339d2edce1807addb033dceb",
+        "source_fact:v1:be983aa5d53f330b637d4e0bed39f9342752b5fd4fc82c2ac21bd84dd911eab7",
+        "source_fact:v1:c17b4b465aa659b6de1392232dcc8aa24845cfdfa2d66ea1cf572ef7dd1829fe"
+      ],
+      "source_published_kst": "2026-10-13T14:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "인텔 \"실험실에선 잘 움직이는 로봇, 실제 현장은 다르다\"",
+      "telegram_core_fact": "인텔이 전 세계 기업·산업 관계자 800명을 조사한 결과, 응답자의 약 3분의 2는 향후 5년간 로봇 도입이 불가피하다고 봤지만 실제 도입 전략을 마련한 곳은 40%에 그쳤다.",
+      "title": "인텔 \"실험실에선 잘 움직이는 로봇, 실제 현장은 다르다\""
     },
     "fact:a9e371f2978c6dbe3b48fdb6": {
       "first_seen_kst": "2026-10-08T14:55:40+09:00",
@@ -129316,6 +129661,33 @@
       "source_published_kst": "2026-10-06T17:42+09:00",
       "title": "코스피, 외인 팔자에 또다시 7000선 밑으로…코스닥 3%↑"
     },
+    "link:3b6f7f9eaf04bc88457e59ca": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://biz.chosun.com/industry/car/2026/10/14/RI5DSZJRORBNRJ55DSMFNUJSPE/",
+      "source": "조선비즈",
+      "source_body_digest": "3f13c0935beca2dfee8e319c932c82d6531eab7b906c9d45b56d2e0017f7420a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9923ce11c3b4cdd6377ca13cc199d0c5d28671e5c2b0ae1d3f5c224b8f753674",
+      "source_fact_keys": [
+        "source_fact:v1:3aa1548c57bff320e51c4fc57cd457f6c13b71668ba08afa91a98a566f7ab3ab",
+        "source_fact:v1:4a7aac95c3fe121c2e5c1cdd1d81742aa80bf2f617909ab38f33ae497336a2f9",
+        "source_fact:v1:5a77d97a3344f8bd8f2a2a5058d8b2e0f0154d51de00a5c7b04c49455fdc668c",
+        "source_fact:v1:658c6207786a45b1bbd2a84fd20a2f4dd952f5bc870cfa2ac7d11a4e42e2019a",
+        "source_fact:v1:c8e947ef191a6864ee65cebb2d3b49a0c0654d5fa0f48ee9d78ecd232724a8f4",
+        "source_fact:v1:db3138d7e6f42b0aaf70d757b7c54db2246af5fbddcb2fc00a8cd2f013918fab",
+        "source_fact:v1:e415d3fef76395c2dc2a848e8cd9f3e73db4c1bf226d5a17813b05ccaebc44eb",
+        "source_fact:v1:fbf4985a3e002de0f30df2aa57859c666ab281581fc618053d55f9bd5aa7215b"
+      ],
+      "source_published_kst": "2026-10-14T00:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차그룹, 인도에 20조원대 투자…생산·R&D 거점 키운다",
+      "telegram_core_fact": "현대자동차그룹이 2032년까지 인도에 20조원 넘게 투자해 생산시설과 연구개발(R&D) 거점을 확대한다.",
+      "title": "현대차그룹, 인도에 20조원대 투자…생산·R&D 거점 키운다"
+    },
     "link:3b748deb5b130797dc21f089": {
       "first_seen_kst": "2026-09-21T16:34:04+09:00",
       "lanes": {
@@ -145841,6 +146213,32 @@
       "telegram_core_fact": "이달 1일부터 10일까지 수출액(통관 기준 잠정치)은 261억달러로, 전년비 102.0% 증가했다.",
       "title": "이달 수출액 261억달러 ‘역대 최대’ 기록…전체 중 절반은 반도체"
     },
+    "link:70ac05b801f68fc220bf9f75": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261013143300",
+      "source": "지디넷코리아",
+      "source_body_digest": "f5bffdee726bc7fd755c7e3669420c3a3d76813858fa14239a184fe2e747827a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:372723fbf526e756f8b357e384aa2219774b874876823ccf18669ab5c9e9dc6a",
+      "source_fact_keys": [
+        "source_fact:v1:164ebf194d75127c84d5cabc380987de89f67b2f9d285bf636d691ed4486ed67",
+        "source_fact:v1:4dd8c91749111b13277e7c76adbf5e310a01dd2d8b71f8ff4e8b4de97b6006d6",
+        "source_fact:v1:538f9d52d8e25c0730fd8c49175e4f424eea50f7de7e5a63052393fb2ee5299e",
+        "source_fact:v1:7f8bd08cb39afece8ff99b220c6021fdbb280a1f9894fd8d1ddb5d52f0a13878",
+        "source_fact:v1:b739c9bf56b9aa7ddd208f564ed655704d9001c8339d2edce1807addb033dceb",
+        "source_fact:v1:be983aa5d53f330b637d4e0bed39f9342752b5fd4fc82c2ac21bd84dd911eab7",
+        "source_fact:v1:c17b4b465aa659b6de1392232dcc8aa24845cfdfa2d66ea1cf572ef7dd1829fe"
+      ],
+      "source_published_kst": "2026-10-13T14:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "인텔 \"실험실에선 잘 움직이는 로봇, 실제 현장은 다르다\"",
+      "telegram_core_fact": "인텔이 전 세계 기업·산업 관계자 800명을 조사한 결과, 응답자의 약 3분의 2는 향후 5년간 로봇 도입이 불가피하다고 봤지만 실제 도입 전략을 마련한 곳은 40%에 그쳤다.",
+      "title": "인텔 \"실험실에선 잘 움직이는 로봇, 실제 현장은 다르다\""
+    },
     "link:70bc75c047a176ef3b7959cf": {
       "first_seen_kst": "2026-10-08T11:49:03+09:00",
       "lanes": {
@@ -151416,6 +151814,47 @@
       "source_title": "브로드웨이 메가히트작 ‘해밀턴’ 드디어 한국 온다…12월 개막",
       "telegram_core_fact": "2015년 브로드웨이 초연 이후 티켓 품귀 현상까지 빚으며 하나의 문화 현상으로 자리 잡은 작품이다.",
       "title": "브로드웨이 메가히트작 ‘해밀턴’ 드디어 한국 온다…12월 개막"
+    },
+    "link:83268a97c004e282685d70cb": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174979",
+      "source": "매일경제",
+      "source_body_digest": "b8cfe0ebf3a94042344cad0ca25bb584ee58f8e1c22fa8a37e936aea45556812",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-13T22:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "SSR 마이닝, 록스모어 4억6000만달러 전액 현금 인수",
+      "telegram_core_fact": "SSR 마이닝(SSRM)이 캐나다 토론토증권거래소(TSX) 상장사 록스모어 리소시스(Roxmore Resources)를 주당 6.75캐나다달러 전액 현금으로 인수하는 최종 계약을 체결했다고 10월 13일 발표했다.",
+      "title": "SSR 마이닝, 록스모어 4억6000만달러 전액 현금 인수"
+    },
+    "link:83454e23251efda824478cbc": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01420246645612920",
+      "source": "이데일리",
+      "source_body_digest": "d307ba5905908e87af1be7bef7c7111d0fd0026865bc83901f2b341cc123bb22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b61aa7721f889a8abb36bdee5c887f117f8a6b99dd99f5e853620daf3531f63",
+      "source_fact_keys": [
+        "source_fact:v1:9f24f8782c76a046259a2d518f7a2a6597e17d405f63495817d9e4caf9bd4890",
+        "source_fact:v1:e612d1a91567ea022b410d4624b21477170eebd703902886c719d6f67985ddc9",
+        "source_fact:v1:f35f797d5f4985c888538e268ab62c6d1dc7f20441e586f07a99e0116f0a4983",
+        "source_fact:v1:f867b400663082a9996be32a3ffacd209404b8b4574e10160f41e31f28ea5f7c"
+      ],
+      "source_published_kst": "2026-10-14T04:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한은 \"반도체 아직 괜찮지만..AI 투자 축소·中 추격 대비해야\"",
+      "telegram_core_fact": "생산이 늘어 반도체 가격이 떨어지거나 미국 대형 기술기업(빅테크)이 AI 투자를 줄이면 수출 증가세가 빠르게 둔화할 수 있다는 것이다.",
+      "title": "한은 \"반도체 아직 괜찮지만..AI 투자 축소·中 추격 대비해야\""
     },
     "link:834ff9d156fcfc5bf7a3dcdd": {
       "first_seen_kst": "2026-10-02T13:04:47+09:00",
@@ -167820,6 +168259,26 @@
       "telegram_core_fact": "금융투자협회와 한국거래소에 따르면 올 3분기(7~9월) 개인투자자의 장외채권 순매수액은 10조4028억원으로 집계됐다. 지난 3분기에 개인들은 유가증권시장에서 7조원 넘게 순매도하면서 채권은 10조원 넘게 사들였다.",
       "title": "개미, 주식 7조 던지고 채권 10조 담았다"
     },
+    "link:b97729491b07ca899f878bef": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://biz.heraldcorp.com/article/10901578",
+      "source": "헤럴드경제",
+      "source_body_digest": "0356cd9bcf8c3b2de7ac3a8b600938d15dd10a3dd730ad5128d6fbd288eca756",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:df30d7b8fea4554669251c98e03633ce1a66bbd2f2c16723fb38a3fbc8dcae4a",
+      "source_fact_keys": [
+        "source_fact:v1:8e739ad9e841a667dc65819c4f1a2a11e0d3cf5a885e827900fba8bf0282589a"
+      ],
+      "source_published_kst": "2026-10-14T00:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "KES 2026 | 파이보콤 LE270-KR, KC 인증과 KT 망 연동 승인 획득하며 스마트 미터링 및 기타 IoT 배포 지원",
+      "telegram_core_fact": "LE270-KR은 한국에서 사용되는 LTE 주파수 대역을 지원하며 KC 인증 및 KT 망 연동 승인을 획득해 한국 시장에 진출하는 기기 제조업체에 신뢰할 수 있는 연결 기반이 된다.",
+      "title": "KES 2026 | 파이보콤 LE270-KR, KC 인증과 KT 망 연동 승인 획득하며 스마트 미터링 및 기타 IoT 배포 지원"
+    },
     "link:b986a9b2c9ed422ac5d3f057": {
       "first_seen_kst": "2026-10-07T20:43:18+09:00",
       "lanes": {
@@ -170378,6 +170837,32 @@
       ],
       "source_published_kst": "2026-10-05T09:00+09:00",
       "title": "KT 이어 LG유플러스도 뱅고와 손잡았다…‘유독’에 해외 AI 서비스 확대"
+    },
+    "link:c16f49b8ba9f3df1353840ab": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.hankyung.com/article/202610138778P",
+      "source": "한국경제",
+      "source_body_digest": "283499c700733674cf9309d5139108a01be5ce6cdfedbf265d9b8be860997001",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f98c127b8e78792db0768406a6736c8698c05ff1d97021712897c57205a4306d",
+      "source_fact_keys": [
+        "source_fact:v1:012ccc142669839fdeb6955ae00423f8ec6f46c6fbac7a66a1dba72b9ead31cc",
+        "source_fact:v1:101d80d74451a3b71f653ca3212067f996203e7357d5fe6d558708a37cdef0fc",
+        "source_fact:v1:2578964c4e45f2e75d07001e69d388038438889d551325a6f20674b5d498a0e2",
+        "source_fact:v1:a304789a0a1ee203a91b33b2557c207da54172044de7343d9502b8465beab6ba",
+        "source_fact:v1:c6a645a3ba6048e2476870791d0d365b340ad2da7cc3e1a592fecf6b47e3d3e5",
+        "source_fact:v1:cb66bfb03450694be908b27defff967b420c810ec90a56baaa3bc35208fbb941",
+        "source_fact:v1:e8084cc68c55be2dcea6f6ba684ab4f2ed5065c42cb2af2d41e0a08d11f4eff4"
+      ],
+      "source_published_kst": "2026-10-13T14:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성바이오로직스, 폴리펩타이드그룹 공개매수 최소 조건 충족… 응모 지분 66.7% 넘겼다",
+      "telegram_core_fact": "삼성바이오로직스가 글로벌 펩타이드 위탁개발생산(CDMO) 기업 '폴리펩타이드그룹(PolyPeptide Group)' 공개매수 중간 결과에서 응모 지분 87.88%를 기록하며 거래 수락 최소 조건인 66.7%를 넘어섰다. 이는 매수 대상 주식의 87.88%에 해당하는 규모로, 수락 최소 조건인 66.7%를 넘어선 수치다.",
+      "title": "삼성바이오로직스, 폴리펩타이드그룹 공개매수 최소 조건 충족… 응모 지분 66.7% 넘겼다"
     },
     "link:c188b96816e0182fd5369843": {
       "first_seen_kst": "2026-10-11T17:50:48+09:00",
@@ -181060,6 +181545,33 @@
       "source_title": "현대ENG, 인천 데이터센터 공사 수주",
       "telegram_core_fact": "현대엔지니어링은 인천 서해구 원창동 데이터센터 신축 사업(투시도)을 수주했다고 7일 밝혔다.",
       "title": "현대ENG, 인천 데이터센터 공사 수주"
+    },
+    "link:e65a9e882c767bba3c4d7e14": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174834",
+      "source": "매일경제",
+      "source_body_digest": "3033fc2b4f9bff53dcbbe985f43a2f1a9236e4356d567b56c87ec4b85ac60bfd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d231a6f29e54a68d00df881e621451da824ddf22df29d5a2fd339b15ea73190",
+      "source_fact_keys": [
+        "source_fact:v1:007959b243b37f79470abce35a537fb9847aaa4fd0bbe40912abf74e867c718a",
+        "source_fact:v1:38bf0df29241ddb4b78c2605d774b92475e275ee597b8ae1ad618a1938e97322",
+        "source_fact:v1:60421f57ecdd981d703c629a7b11712340061ea0aa67679713a568a3fcef4b46",
+        "source_fact:v1:65239e2f54d1756403c876811f37ad7b44629d7095201c68abe5679e00102756",
+        "source_fact:v1:9fd6f77e1b41288091bb33ea6fa8f13a435d01dee0c9ece90bf2f0fb82e31461",
+        "source_fact:v1:a3de22007f2f3a095d9117cb88ecf562918e969ba9ae7f9a65c275a8ded85201",
+        "source_fact:v1:e6718e1867acb3fb5a2262ec0d5bee7bbdf19dc4e55825dcbd8d8b15752a4254",
+        "source_fact:v1:fab532a698191c98f02ccafddee9ecd22645f5e9f9e2a4b7a6db80ce682798c5"
+      ],
+      "source_published_kst": "2026-10-13T19:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "SSR 마이닝, 마리골드 매장량 396만 온스..세후 NPV 33억 달러",
+      "telegram_core_fact": "월가 증권사 컨센서스에 따르면 SSR 마이닝의 2026년 예상 매출액은 23억957만 달러로 전년 대비 41.72% 증가할 전망이다. 매장량 산정에는 온스당 2,200달러의 금 가격 가정이 적용됐으며, 가정 상향 등에 따라 기존 추정치 대비 함유 금량이 73% 증가했다.",
+      "title": "SSR 마이닝, 마리골드 매장량 396만 온스..세후 NPV 33억 달러"
     },
     "link:e66c88bbf90b01fba7c55f98": {
       "first_seen_kst": "2026-09-24T06:34:46+09:00",
@@ -206168,6 +206680,32 @@
       "source": "이투데이",
       "title": "우진엔텍, 3개월 공공 입찰참가 제한에 법적 대응…“기존 용역 수행 및 매출 실현과는 무관”"
     },
+    "original:38a7bf193ccb95f659bdcd57": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.hankyung.com/article/202610138778P",
+      "source": "한국경제",
+      "source_body_digest": "283499c700733674cf9309d5139108a01be5ce6cdfedbf265d9b8be860997001",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f98c127b8e78792db0768406a6736c8698c05ff1d97021712897c57205a4306d",
+      "source_fact_keys": [
+        "source_fact:v1:012ccc142669839fdeb6955ae00423f8ec6f46c6fbac7a66a1dba72b9ead31cc",
+        "source_fact:v1:101d80d74451a3b71f653ca3212067f996203e7357d5fe6d558708a37cdef0fc",
+        "source_fact:v1:2578964c4e45f2e75d07001e69d388038438889d551325a6f20674b5d498a0e2",
+        "source_fact:v1:a304789a0a1ee203a91b33b2557c207da54172044de7343d9502b8465beab6ba",
+        "source_fact:v1:c6a645a3ba6048e2476870791d0d365b340ad2da7cc3e1a592fecf6b47e3d3e5",
+        "source_fact:v1:cb66bfb03450694be908b27defff967b420c810ec90a56baaa3bc35208fbb941",
+        "source_fact:v1:e8084cc68c55be2dcea6f6ba684ab4f2ed5065c42cb2af2d41e0a08d11f4eff4"
+      ],
+      "source_published_kst": "2026-10-13T14:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성바이오로직스, 폴리펩타이드그룹 공개매수 최소 조건 충족… 응모 지분 66.7% 넘겼다",
+      "telegram_core_fact": "삼성바이오로직스가 글로벌 펩타이드 위탁개발생산(CDMO) 기업 '폴리펩타이드그룹(PolyPeptide Group)' 공개매수 중간 결과에서 응모 지분 87.88%를 기록하며 거래 수락 최소 조건인 66.7%를 넘어섰다. 이는 매수 대상 주식의 87.88%에 해당하는 규모로, 수락 최소 조건인 66.7%를 넘어선 수치다.",
+      "title": "삼성바이오로직스, 폴리펩타이드그룹 공개매수 최소 조건 충족… 응모 지분 66.7% 넘겼다"
+    },
     "original:38afc340a78f8c370e475cd3": {
       "first_seen_kst": "2026-10-06T22:51:44+09:00",
       "lanes": {
@@ -210243,6 +210781,32 @@
       "source_title": "美물가·연준 발언에 쏠린 눈…환율 하락세 이어질까[주간외환전망]",
       "telegram_core_fact": "국제유가 상승에 따른 휘발유 가격 반등으로 헤드라인 물가 상승률은 전년 동월 대비 3% 중후반까지 확대될 것으로 예상된다.",
       "title": "美물가·연준 발언에 쏠린 눈…환율 하락세 이어질까[주간외환전망]"
+    },
+    "original:448a20781c514f6777980df4": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261013143300",
+      "source": "지디넷코리아",
+      "source_body_digest": "f5bffdee726bc7fd755c7e3669420c3a3d76813858fa14239a184fe2e747827a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:372723fbf526e756f8b357e384aa2219774b874876823ccf18669ab5c9e9dc6a",
+      "source_fact_keys": [
+        "source_fact:v1:164ebf194d75127c84d5cabc380987de89f67b2f9d285bf636d691ed4486ed67",
+        "source_fact:v1:4dd8c91749111b13277e7c76adbf5e310a01dd2d8b71f8ff4e8b4de97b6006d6",
+        "source_fact:v1:538f9d52d8e25c0730fd8c49175e4f424eea50f7de7e5a63052393fb2ee5299e",
+        "source_fact:v1:7f8bd08cb39afece8ff99b220c6021fdbb280a1f9894fd8d1ddb5d52f0a13878",
+        "source_fact:v1:b739c9bf56b9aa7ddd208f564ed655704d9001c8339d2edce1807addb033dceb",
+        "source_fact:v1:be983aa5d53f330b637d4e0bed39f9342752b5fd4fc82c2ac21bd84dd911eab7",
+        "source_fact:v1:c17b4b465aa659b6de1392232dcc8aa24845cfdfa2d66ea1cf572ef7dd1829fe"
+      ],
+      "source_published_kst": "2026-10-13T14:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "인텔 \"실험실에선 잘 움직이는 로봇, 실제 현장은 다르다\"",
+      "telegram_core_fact": "인텔이 전 세계 기업·산업 관계자 800명을 조사한 결과, 응답자의 약 3분의 2는 향후 5년간 로봇 도입이 불가피하다고 봤지만 실제 도입 전략을 마련한 곳은 40%에 그쳤다.",
+      "title": "인텔 \"실험실에선 잘 움직이는 로봇, 실제 현장은 다르다\""
     },
     "original:449763b1829e1af6cb7dcd81": {
       "first_seen_kst": "2026-10-11T06:07:21+09:00",
@@ -218242,6 +218806,29 @@
       "source_title": "中 반도체 공습·외국인 매도… 주저앉은 코스피",
       "telegram_core_fact": "한국거래소에 따르면 외국인 투자자는 올해 들어 지난 12일까지 코스피에서 약 199조1000억원을 순매도(매도가 매수보다 많은 것)했다.",
       "title": "中 반도체 공습·외국인 매도… 주저앉은 코스피"
+    },
+    "original:6034e0e7d6f9882c5713b210": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01420246645612920",
+      "source": "이데일리",
+      "source_body_digest": "d307ba5905908e87af1be7bef7c7111d0fd0026865bc83901f2b341cc123bb22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b61aa7721f889a8abb36bdee5c887f117f8a6b99dd99f5e853620daf3531f63",
+      "source_fact_keys": [
+        "source_fact:v1:9f24f8782c76a046259a2d518f7a2a6597e17d405f63495817d9e4caf9bd4890",
+        "source_fact:v1:e612d1a91567ea022b410d4624b21477170eebd703902886c719d6f67985ddc9",
+        "source_fact:v1:f35f797d5f4985c888538e268ab62c6d1dc7f20441e586f07a99e0116f0a4983",
+        "source_fact:v1:f867b400663082a9996be32a3ffacd209404b8b4574e10160f41e31f28ea5f7c"
+      ],
+      "source_published_kst": "2026-10-14T04:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한은 \"반도체 아직 괜찮지만..AI 투자 축소·中 추격 대비해야\"",
+      "telegram_core_fact": "생산이 늘어 반도체 가격이 떨어지거나 미국 대형 기술기업(빅테크)이 AI 투자를 줄이면 수출 증가세가 빠르게 둔화할 수 있다는 것이다.",
+      "title": "한은 \"반도체 아직 괜찮지만..AI 투자 축소·中 추격 대비해야\""
     },
     "original:6044441ba1f64c9bede8df1a": {
       "first_seen_kst": "2026-10-14T00:12:03+09:00",
@@ -227125,6 +227712,33 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T18:01+09:00",
       "title": "\"럭셔리카 자존심 살린다\" 신형 벤츠 S-클래스 '수입차 베스트셀링 빅5' 복귀"
+    },
+    "original:7f1fec00fb884f0d9468eab4": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://biz.chosun.com/industry/car/2026/10/14/RI5DSZJRORBNRJ55DSMFNUJSPE/",
+      "source": "조선비즈",
+      "source_body_digest": "3f13c0935beca2dfee8e319c932c82d6531eab7b906c9d45b56d2e0017f7420a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9923ce11c3b4cdd6377ca13cc199d0c5d28671e5c2b0ae1d3f5c224b8f753674",
+      "source_fact_keys": [
+        "source_fact:v1:3aa1548c57bff320e51c4fc57cd457f6c13b71668ba08afa91a98a566f7ab3ab",
+        "source_fact:v1:4a7aac95c3fe121c2e5c1cdd1d81742aa80bf2f617909ab38f33ae497336a2f9",
+        "source_fact:v1:5a77d97a3344f8bd8f2a2a5058d8b2e0f0154d51de00a5c7b04c49455fdc668c",
+        "source_fact:v1:658c6207786a45b1bbd2a84fd20a2f4dd952f5bc870cfa2ac7d11a4e42e2019a",
+        "source_fact:v1:c8e947ef191a6864ee65cebb2d3b49a0c0654d5fa0f48ee9d78ecd232724a8f4",
+        "source_fact:v1:db3138d7e6f42b0aaf70d757b7c54db2246af5fbddcb2fc00a8cd2f013918fab",
+        "source_fact:v1:e415d3fef76395c2dc2a848e8cd9f3e73db4c1bf226d5a17813b05ccaebc44eb",
+        "source_fact:v1:fbf4985a3e002de0f30df2aa57859c666ab281581fc618053d55f9bd5aa7215b"
+      ],
+      "source_published_kst": "2026-10-14T00:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차그룹, 인도에 20조원대 투자…생산·R&D 거점 키운다",
+      "telegram_core_fact": "현대자동차그룹이 2032년까지 인도에 20조원 넘게 투자해 생산시설과 연구개발(R&D) 거점을 확대한다.",
+      "title": "현대차그룹, 인도에 20조원대 투자…생산·R&D 거점 키운다"
     },
     "original:7f24d9c071874d9c48dc7330": {
       "first_seen_kst": "2026-10-12T12:09:58+09:00",
@@ -237153,6 +237767,24 @@
       "source_published_kst": "2026-10-05T11:20+09:00",
       "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
     },
+    "original:9f6a13e3ffc767eed1b01027": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174979",
+      "source": "매일경제",
+      "source_body_digest": "b8cfe0ebf3a94042344cad0ca25bb584ee58f8e1c22fa8a37e936aea45556812",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-13T22:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "SSR 마이닝, 록스모어 4억6000만달러 전액 현금 인수",
+      "telegram_core_fact": "SSR 마이닝(SSRM)이 캐나다 토론토증권거래소(TSX) 상장사 록스모어 리소시스(Roxmore Resources)를 주당 6.75캐나다달러 전액 현금으로 인수하는 최종 계약을 체결했다고 10월 13일 발표했다.",
+      "title": "SSR 마이닝, 록스모어 4억6000만달러 전액 현금 인수"
+    },
     "original:9f71532dc985e7f25b9c8116": {
       "first_seen_kst": "2026-10-07T16:57:09+09:00",
       "lanes": {
@@ -239333,6 +239965,26 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T08:00+09:00",
       "title": "“물량 넘치는데 배가 없다”…현대글로비스 ‘100척 시대’, 매출 40조 조기달성 청신호 [비즈360]"
+    },
+    "original:a7740941edef75469630e23e": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://biz.heraldcorp.com/article/10901578",
+      "source": "헤럴드경제",
+      "source_body_digest": "0356cd9bcf8c3b2de7ac3a8b600938d15dd10a3dd730ad5128d6fbd288eca756",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:df30d7b8fea4554669251c98e03633ce1a66bbd2f2c16723fb38a3fbc8dcae4a",
+      "source_fact_keys": [
+        "source_fact:v1:8e739ad9e841a667dc65819c4f1a2a11e0d3cf5a885e827900fba8bf0282589a"
+      ],
+      "source_published_kst": "2026-10-14T00:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "KES 2026 | 파이보콤 LE270-KR, KC 인증과 KT 망 연동 승인 획득하며 스마트 미터링 및 기타 IoT 배포 지원",
+      "telegram_core_fact": "LE270-KR은 한국에서 사용되는 LTE 주파수 대역을 지원하며 KC 인증 및 KT 망 연동 승인을 획득해 한국 시장에 진출하는 기기 제조업체에 신뢰할 수 있는 연결 기반이 된다.",
+      "title": "KES 2026 | 파이보콤 LE270-KR, KC 인증과 KT 망 연동 승인 획득하며 스마트 미터링 및 기타 IoT 배포 지원"
     },
     "original:a782bf1381b84d9b097cd69a": {
       "first_seen_kst": "2026-10-09T17:54:07+09:00",
@@ -259687,6 +260339,33 @@
       "telegram_core_fact": "국민의힘 구자근 국회의원(경북 구미시갑)이 12일 한국제품안전관리원으로부터 제출받은 자료에 따르면 2021년부터 2026년 7월까지 해외 리콜제품 1만 9102개를 대상으로 해외 직구 플랫폼을 모니터링한 결과, 국내 판매가 확인된 사례는 총 1138건으로 집계됐다.",
       "title": "구자근 의원 \"해외서 리콜된 제품 국내서 버젓이 판매\""
     },
+    "original:ed94839476f19ae8c4cd69b6": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174834",
+      "source": "매일경제",
+      "source_body_digest": "3033fc2b4f9bff53dcbbe985f43a2f1a9236e4356d567b56c87ec4b85ac60bfd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d231a6f29e54a68d00df881e621451da824ddf22df29d5a2fd339b15ea73190",
+      "source_fact_keys": [
+        "source_fact:v1:007959b243b37f79470abce35a537fb9847aaa4fd0bbe40912abf74e867c718a",
+        "source_fact:v1:38bf0df29241ddb4b78c2605d774b92475e275ee597b8ae1ad618a1938e97322",
+        "source_fact:v1:60421f57ecdd981d703c629a7b11712340061ea0aa67679713a568a3fcef4b46",
+        "source_fact:v1:65239e2f54d1756403c876811f37ad7b44629d7095201c68abe5679e00102756",
+        "source_fact:v1:9fd6f77e1b41288091bb33ea6fa8f13a435d01dee0c9ece90bf2f0fb82e31461",
+        "source_fact:v1:a3de22007f2f3a095d9117cb88ecf562918e969ba9ae7f9a65c275a8ded85201",
+        "source_fact:v1:e6718e1867acb3fb5a2262ec0d5bee7bbdf19dc4e55825dcbd8d8b15752a4254",
+        "source_fact:v1:fab532a698191c98f02ccafddee9ecd22645f5e9f9e2a4b7a6db80ce682798c5"
+      ],
+      "source_published_kst": "2026-10-13T19:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "SSR 마이닝, 마리골드 매장량 396만 온스..세후 NPV 33억 달러",
+      "telegram_core_fact": "월가 증권사 컨센서스에 따르면 SSR 마이닝의 2026년 예상 매출액은 23억957만 달러로 전년 대비 41.72% 증가할 전망이다. 매장량 산정에는 온스당 2,200달러의 금 가격 가정이 적용됐으며, 가정 상향 등에 따라 기존 추정치 대비 함유 금량이 73% 증가했다.",
+      "title": "SSR 마이닝, 마리골드 매장량 396만 온스..세후 NPV 33억 달러"
+    },
     "original:ed956a14dffcd948ac9a9106": {
       "first_seen_kst": "2026-10-13T07:02:46+09:00",
       "lanes": {
@@ -273267,6 +273946,32 @@
       "source_title": "다카이치, 美 ICC 제재 직후 \"깊은 우려…ICC 역할 지원\" | 연합뉴스",
       "telegram_core_fact": "이 메시지는 ICC 재판관을 지낸 나비 필라이의 노벨평화상 수상 직후 트럼프 행정부가 ICC에 대한 고강도 제재를 발표한 지 얼마 지나지 않아 게시된 것이다.",
       "title": "다카이치, 美 ICC 제재 직후 \"깊은 우려…ICC 역할 지원\" | 연합뉴스"
+    },
+    "source_fact:07fbe91d504810d05003f026": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.hankyung.com/article/202610138778P",
+      "source": "한국경제",
+      "source_body_digest": "283499c700733674cf9309d5139108a01be5ce6cdfedbf265d9b8be860997001",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f98c127b8e78792db0768406a6736c8698c05ff1d97021712897c57205a4306d",
+      "source_fact_keys": [
+        "source_fact:v1:012ccc142669839fdeb6955ae00423f8ec6f46c6fbac7a66a1dba72b9ead31cc",
+        "source_fact:v1:101d80d74451a3b71f653ca3212067f996203e7357d5fe6d558708a37cdef0fc",
+        "source_fact:v1:2578964c4e45f2e75d07001e69d388038438889d551325a6f20674b5d498a0e2",
+        "source_fact:v1:a304789a0a1ee203a91b33b2557c207da54172044de7343d9502b8465beab6ba",
+        "source_fact:v1:c6a645a3ba6048e2476870791d0d365b340ad2da7cc3e1a592fecf6b47e3d3e5",
+        "source_fact:v1:cb66bfb03450694be908b27defff967b420c810ec90a56baaa3bc35208fbb941",
+        "source_fact:v1:e8084cc68c55be2dcea6f6ba684ab4f2ed5065c42cb2af2d41e0a08d11f4eff4"
+      ],
+      "source_published_kst": "2026-10-13T14:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성바이오로직스, 폴리펩타이드그룹 공개매수 최소 조건 충족… 응모 지분 66.7% 넘겼다",
+      "telegram_core_fact": "삼성바이오로직스가 글로벌 펩타이드 위탁개발생산(CDMO) 기업 '폴리펩타이드그룹(PolyPeptide Group)' 공개매수 중간 결과에서 응모 지분 87.88%를 기록하며 거래 수락 최소 조건인 66.7%를 넘어섰다. 이는 매수 대상 주식의 87.88%에 해당하는 규모로, 수락 최소 조건인 66.7%를 넘어선 수치다.",
+      "title": "삼성바이오로직스, 폴리펩타이드그룹 공개매수 최소 조건 충족… 응모 지분 66.7% 넘겼다"
     },
     "source_fact:080be0be957bbf765faa1883": {
       "first_seen_kst": "2026-10-07T13:13:19+09:00",
@@ -292908,6 +293613,33 @@
       "source_title": "美, 우크라 전방위 압박…\"무기도 안 준다\" 위협",
       "telegram_core_fact": "도널드 트럼프 미국 행정부가 우크라이나에 러시아 에너지 시설 공격을 중단하도록 압박하기 위해 무기 공급 중단을 위협했다고 파이낸셜타임스(FT)가 11일(현지 시간) 보도했다. 미국의 메시지에는 정보 공유 중단, '우크라이나 우선요구목록(PURL)'을 중단할 수 있다는 위협이 포함된 것으로 전해졌다.",
       "title": "美, 우크라 전방위 압박…\"무기도 안 준다\" 위협"
+    },
+    "source_fact:1a36a1bf5e3949a011aa5049": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://biz.chosun.com/industry/car/2026/10/14/RI5DSZJRORBNRJ55DSMFNUJSPE/",
+      "source": "조선비즈",
+      "source_body_digest": "3f13c0935beca2dfee8e319c932c82d6531eab7b906c9d45b56d2e0017f7420a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9923ce11c3b4cdd6377ca13cc199d0c5d28671e5c2b0ae1d3f5c224b8f753674",
+      "source_fact_keys": [
+        "source_fact:v1:3aa1548c57bff320e51c4fc57cd457f6c13b71668ba08afa91a98a566f7ab3ab",
+        "source_fact:v1:4a7aac95c3fe121c2e5c1cdd1d81742aa80bf2f617909ab38f33ae497336a2f9",
+        "source_fact:v1:5a77d97a3344f8bd8f2a2a5058d8b2e0f0154d51de00a5c7b04c49455fdc668c",
+        "source_fact:v1:658c6207786a45b1bbd2a84fd20a2f4dd952f5bc870cfa2ac7d11a4e42e2019a",
+        "source_fact:v1:c8e947ef191a6864ee65cebb2d3b49a0c0654d5fa0f48ee9d78ecd232724a8f4",
+        "source_fact:v1:db3138d7e6f42b0aaf70d757b7c54db2246af5fbddcb2fc00a8cd2f013918fab",
+        "source_fact:v1:e415d3fef76395c2dc2a848e8cd9f3e73db4c1bf226d5a17813b05ccaebc44eb",
+        "source_fact:v1:fbf4985a3e002de0f30df2aa57859c666ab281581fc618053d55f9bd5aa7215b"
+      ],
+      "source_published_kst": "2026-10-14T00:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차그룹, 인도에 20조원대 투자…생산·R&D 거점 키운다",
+      "telegram_core_fact": "현대자동차그룹이 2032년까지 인도에 20조원 넘게 투자해 생산시설과 연구개발(R&D) 거점을 확대한다.",
+      "title": "현대차그룹, 인도에 20조원대 투자…생산·R&D 거점 키운다"
     },
     "source_fact:1a3c4261f8e89add6081ee5a": {
       "first_seen_kst": "2026-10-07T22:37:58+09:00",
@@ -315598,6 +316330,33 @@
       "telegram_core_fact": "한국콜마 2분기 영업이익은 1103억원으로 전년비 17.3% 증가했습니다.",
       "title": "한국콜마, 'K선케어' 글로벌 기준 만든다…개발·임상·생산 전 과정 경쟁력↑"
     },
+    "source_fact:2d848f6c9355b473f0e341df": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174834",
+      "source": "매일경제",
+      "source_body_digest": "3033fc2b4f9bff53dcbbe985f43a2f1a9236e4356d567b56c87ec4b85ac60bfd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d231a6f29e54a68d00df881e621451da824ddf22df29d5a2fd339b15ea73190",
+      "source_fact_keys": [
+        "source_fact:v1:007959b243b37f79470abce35a537fb9847aaa4fd0bbe40912abf74e867c718a",
+        "source_fact:v1:38bf0df29241ddb4b78c2605d774b92475e275ee597b8ae1ad618a1938e97322",
+        "source_fact:v1:60421f57ecdd981d703c629a7b11712340061ea0aa67679713a568a3fcef4b46",
+        "source_fact:v1:65239e2f54d1756403c876811f37ad7b44629d7095201c68abe5679e00102756",
+        "source_fact:v1:9fd6f77e1b41288091bb33ea6fa8f13a435d01dee0c9ece90bf2f0fb82e31461",
+        "source_fact:v1:a3de22007f2f3a095d9117cb88ecf562918e969ba9ae7f9a65c275a8ded85201",
+        "source_fact:v1:e6718e1867acb3fb5a2262ec0d5bee7bbdf19dc4e55825dcbd8d8b15752a4254",
+        "source_fact:v1:fab532a698191c98f02ccafddee9ecd22645f5e9f9e2a4b7a6db80ce682798c5"
+      ],
+      "source_published_kst": "2026-10-13T19:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "SSR 마이닝, 마리골드 매장량 396만 온스..세후 NPV 33억 달러",
+      "telegram_core_fact": "월가 증권사 컨센서스에 따르면 SSR 마이닝의 2026년 예상 매출액은 23억957만 달러로 전년 대비 41.72% 증가할 전망이다. 매장량 산정에는 온스당 2,200달러의 금 가격 가정이 적용됐으며, 가정 상향 등에 따라 기존 추정치 대비 함유 금량이 73% 증가했다.",
+      "title": "SSR 마이닝, 마리골드 매장량 396만 온스..세후 NPV 33억 달러"
+    },
     "source_fact:2d84b095902e8db5ebe1cca3": {
       "first_seen_kst": "2026-10-09T20:24:58+09:00",
       "lanes": {
@@ -316191,6 +316950,32 @@
       ],
       "source_published_kst": "2026-10-07T08:00+09:00",
       "title": "반도체가 끌어올린 한국 성장률 ‘눈높이’…해외 IB 전망 한달 새 3.3%→3.5%"
+    },
+    "source_fact:2e2ba4ec1a0126ccd0c6119f": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261013143300",
+      "source": "지디넷코리아",
+      "source_body_digest": "f5bffdee726bc7fd755c7e3669420c3a3d76813858fa14239a184fe2e747827a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:372723fbf526e756f8b357e384aa2219774b874876823ccf18669ab5c9e9dc6a",
+      "source_fact_keys": [
+        "source_fact:v1:164ebf194d75127c84d5cabc380987de89f67b2f9d285bf636d691ed4486ed67",
+        "source_fact:v1:4dd8c91749111b13277e7c76adbf5e310a01dd2d8b71f8ff4e8b4de97b6006d6",
+        "source_fact:v1:538f9d52d8e25c0730fd8c49175e4f424eea50f7de7e5a63052393fb2ee5299e",
+        "source_fact:v1:7f8bd08cb39afece8ff99b220c6021fdbb280a1f9894fd8d1ddb5d52f0a13878",
+        "source_fact:v1:b739c9bf56b9aa7ddd208f564ed655704d9001c8339d2edce1807addb033dceb",
+        "source_fact:v1:be983aa5d53f330b637d4e0bed39f9342752b5fd4fc82c2ac21bd84dd911eab7",
+        "source_fact:v1:c17b4b465aa659b6de1392232dcc8aa24845cfdfa2d66ea1cf572ef7dd1829fe"
+      ],
+      "source_published_kst": "2026-10-13T14:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "인텔 \"실험실에선 잘 움직이는 로봇, 실제 현장은 다르다\"",
+      "telegram_core_fact": "인텔이 전 세계 기업·산업 관계자 800명을 조사한 결과, 응답자의 약 3분의 2는 향후 5년간 로봇 도입이 불가피하다고 봤지만 실제 도입 전략을 마련한 곳은 40%에 그쳤다.",
+      "title": "인텔 \"실험실에선 잘 움직이는 로봇, 실제 현장은 다르다\""
     },
     "source_fact:2e3257a555256bf1010318b8": {
       "first_seen_kst": "2026-10-13T14:54:18+09:00",
@@ -321590,6 +322375,26 @@
       "source_title": "\"작년 역대급 기록 넘었다\" 동아시아 황금연휴에 백화점·면세점 '방긋'",
       "telegram_core_fact": "동아시아 주요국의 연휴가 집중된 이번 10월에도 외국인 관광객의 소비가 백화점과 면세점 매출 증가에 힘을 보탠 것으로 분석된다.",
       "title": "\"작년 역대급 기록 넘었다\" 동아시아 황금연휴에 백화점·면세점 '방긋'"
+    },
+    "source_fact:32c57868bf9cf409b050f69b": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://biz.heraldcorp.com/article/10901578",
+      "source": "헤럴드경제",
+      "source_body_digest": "0356cd9bcf8c3b2de7ac3a8b600938d15dd10a3dd730ad5128d6fbd288eca756",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:df30d7b8fea4554669251c98e03633ce1a66bbd2f2c16723fb38a3fbc8dcae4a",
+      "source_fact_keys": [
+        "source_fact:v1:8e739ad9e841a667dc65819c4f1a2a11e0d3cf5a885e827900fba8bf0282589a"
+      ],
+      "source_published_kst": "2026-10-14T00:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "KES 2026 | 파이보콤 LE270-KR, KC 인증과 KT 망 연동 승인 획득하며 스마트 미터링 및 기타 IoT 배포 지원",
+      "telegram_core_fact": "LE270-KR은 한국에서 사용되는 LTE 주파수 대역을 지원하며 KC 인증 및 KT 망 연동 승인을 획득해 한국 시장에 진출하는 기기 제조업체에 신뢰할 수 있는 연결 기반이 된다.",
+      "title": "KES 2026 | 파이보콤 LE270-KR, KC 인증과 KT 망 연동 승인 획득하며 스마트 미터링 및 기타 IoT 배포 지원"
     },
     "source_fact:32c6bf8bc674bc52dbfd92c1": {
       "first_seen_kst": "2026-10-13T21:12:07+09:00",
@@ -327042,6 +327847,33 @@
       "source_published_kst": "2026-10-05T19:06+09:00",
       "title": "HDFC 은행, 분기 평균 예수금 32조 루피·17% 증가"
     },
+    "source_fact:37e63198c69d6597e8d14bde": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://biz.chosun.com/industry/car/2026/10/14/RI5DSZJRORBNRJ55DSMFNUJSPE/",
+      "source": "조선비즈",
+      "source_body_digest": "3f13c0935beca2dfee8e319c932c82d6531eab7b906c9d45b56d2e0017f7420a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9923ce11c3b4cdd6377ca13cc199d0c5d28671e5c2b0ae1d3f5c224b8f753674",
+      "source_fact_keys": [
+        "source_fact:v1:3aa1548c57bff320e51c4fc57cd457f6c13b71668ba08afa91a98a566f7ab3ab",
+        "source_fact:v1:4a7aac95c3fe121c2e5c1cdd1d81742aa80bf2f617909ab38f33ae497336a2f9",
+        "source_fact:v1:5a77d97a3344f8bd8f2a2a5058d8b2e0f0154d51de00a5c7b04c49455fdc668c",
+        "source_fact:v1:658c6207786a45b1bbd2a84fd20a2f4dd952f5bc870cfa2ac7d11a4e42e2019a",
+        "source_fact:v1:c8e947ef191a6864ee65cebb2d3b49a0c0654d5fa0f48ee9d78ecd232724a8f4",
+        "source_fact:v1:db3138d7e6f42b0aaf70d757b7c54db2246af5fbddcb2fc00a8cd2f013918fab",
+        "source_fact:v1:e415d3fef76395c2dc2a848e8cd9f3e73db4c1bf226d5a17813b05ccaebc44eb",
+        "source_fact:v1:fbf4985a3e002de0f30df2aa57859c666ab281581fc618053d55f9bd5aa7215b"
+      ],
+      "source_published_kst": "2026-10-14T00:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차그룹, 인도에 20조원대 투자…생산·R&D 거점 키운다",
+      "telegram_core_fact": "현대자동차그룹이 2032년까지 인도에 20조원 넘게 투자해 생산시설과 연구개발(R&D) 거점을 확대한다.",
+      "title": "현대차그룹, 인도에 20조원대 투자…생산·R&D 거점 키운다"
+    },
     "source_fact:37ee096c46521c02a89417ef": {
       "first_seen_kst": "2026-10-10T01:47:39+09:00",
       "lanes": {
@@ -327102,6 +327934,32 @@
       ],
       "source_published_kst": "2026-10-07T14:58+09:00",
       "title": "송미령 \"산란계협회, 경고에도 가격 고시…농가 짓밟았다는 비판 과해\""
+    },
+    "source_fact:37fac9364c8e8bae0d87fa57": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.hankyung.com/article/202610138778P",
+      "source": "한국경제",
+      "source_body_digest": "283499c700733674cf9309d5139108a01be5ce6cdfedbf265d9b8be860997001",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f98c127b8e78792db0768406a6736c8698c05ff1d97021712897c57205a4306d",
+      "source_fact_keys": [
+        "source_fact:v1:012ccc142669839fdeb6955ae00423f8ec6f46c6fbac7a66a1dba72b9ead31cc",
+        "source_fact:v1:101d80d74451a3b71f653ca3212067f996203e7357d5fe6d558708a37cdef0fc",
+        "source_fact:v1:2578964c4e45f2e75d07001e69d388038438889d551325a6f20674b5d498a0e2",
+        "source_fact:v1:a304789a0a1ee203a91b33b2557c207da54172044de7343d9502b8465beab6ba",
+        "source_fact:v1:c6a645a3ba6048e2476870791d0d365b340ad2da7cc3e1a592fecf6b47e3d3e5",
+        "source_fact:v1:cb66bfb03450694be908b27defff967b420c810ec90a56baaa3bc35208fbb941",
+        "source_fact:v1:e8084cc68c55be2dcea6f6ba684ab4f2ed5065c42cb2af2d41e0a08d11f4eff4"
+      ],
+      "source_published_kst": "2026-10-13T14:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성바이오로직스, 폴리펩타이드그룹 공개매수 최소 조건 충족… 응모 지분 66.7% 넘겼다",
+      "telegram_core_fact": "삼성바이오로직스가 글로벌 펩타이드 위탁개발생산(CDMO) 기업 '폴리펩타이드그룹(PolyPeptide Group)' 공개매수 중간 결과에서 응모 지분 87.88%를 기록하며 거래 수락 최소 조건인 66.7%를 넘어섰다. 이는 매수 대상 주식의 87.88%에 해당하는 규모로, 수락 최소 조건인 66.7%를 넘어선 수치다.",
+      "title": "삼성바이오로직스, 폴리펩타이드그룹 공개매수 최소 조건 충족… 응모 지분 66.7% 넘겼다"
     },
     "source_fact:37ff0e0fade7f19d523cf1ea": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
@@ -339943,6 +340801,33 @@
       "telegram_core_fact": "이재원 유안타증권 연구원은 \"현재 국내 주식시장의 가장 큰 고민은 반도체 실적이 아닌 외국인 수급\"이라며 \"삼성전자 3·4분기 영업이익이 시장 기대를 상회했고 메모리 가격과 AI 인프라 투자도 견조하지만, 외국인 매도 지속에 코스피의 상대적 부진이 지속되고 있다\"고 말했다.",
       "title": "반도체株 던진 외국인… 코스피 6400 밑으로 끌어내렸다"
     },
+    "source_fact:441463a8d6f41a6b48d97d73": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://biz.chosun.com/industry/car/2026/10/14/RI5DSZJRORBNRJ55DSMFNUJSPE/",
+      "source": "조선비즈",
+      "source_body_digest": "3f13c0935beca2dfee8e319c932c82d6531eab7b906c9d45b56d2e0017f7420a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9923ce11c3b4cdd6377ca13cc199d0c5d28671e5c2b0ae1d3f5c224b8f753674",
+      "source_fact_keys": [
+        "source_fact:v1:3aa1548c57bff320e51c4fc57cd457f6c13b71668ba08afa91a98a566f7ab3ab",
+        "source_fact:v1:4a7aac95c3fe121c2e5c1cdd1d81742aa80bf2f617909ab38f33ae497336a2f9",
+        "source_fact:v1:5a77d97a3344f8bd8f2a2a5058d8b2e0f0154d51de00a5c7b04c49455fdc668c",
+        "source_fact:v1:658c6207786a45b1bbd2a84fd20a2f4dd952f5bc870cfa2ac7d11a4e42e2019a",
+        "source_fact:v1:c8e947ef191a6864ee65cebb2d3b49a0c0654d5fa0f48ee9d78ecd232724a8f4",
+        "source_fact:v1:db3138d7e6f42b0aaf70d757b7c54db2246af5fbddcb2fc00a8cd2f013918fab",
+        "source_fact:v1:e415d3fef76395c2dc2a848e8cd9f3e73db4c1bf226d5a17813b05ccaebc44eb",
+        "source_fact:v1:fbf4985a3e002de0f30df2aa57859c666ab281581fc618053d55f9bd5aa7215b"
+      ],
+      "source_published_kst": "2026-10-14T00:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차그룹, 인도에 20조원대 투자…생산·R&D 거점 키운다",
+      "telegram_core_fact": "현대자동차그룹이 2032년까지 인도에 20조원 넘게 투자해 생산시설과 연구개발(R&D) 거점을 확대한다.",
+      "title": "현대차그룹, 인도에 20조원대 투자…생산·R&D 거점 키운다"
+    },
     "source_fact:4417b8f3114622744ab45890": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
       "lanes": {
@@ -345307,6 +346192,32 @@
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
     },
+    "source_fact:487eb3ba20da9b50f90d27a2": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261013143300",
+      "source": "지디넷코리아",
+      "source_body_digest": "f5bffdee726bc7fd755c7e3669420c3a3d76813858fa14239a184fe2e747827a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:372723fbf526e756f8b357e384aa2219774b874876823ccf18669ab5c9e9dc6a",
+      "source_fact_keys": [
+        "source_fact:v1:164ebf194d75127c84d5cabc380987de89f67b2f9d285bf636d691ed4486ed67",
+        "source_fact:v1:4dd8c91749111b13277e7c76adbf5e310a01dd2d8b71f8ff4e8b4de97b6006d6",
+        "source_fact:v1:538f9d52d8e25c0730fd8c49175e4f424eea50f7de7e5a63052393fb2ee5299e",
+        "source_fact:v1:7f8bd08cb39afece8ff99b220c6021fdbb280a1f9894fd8d1ddb5d52f0a13878",
+        "source_fact:v1:b739c9bf56b9aa7ddd208f564ed655704d9001c8339d2edce1807addb033dceb",
+        "source_fact:v1:be983aa5d53f330b637d4e0bed39f9342752b5fd4fc82c2ac21bd84dd911eab7",
+        "source_fact:v1:c17b4b465aa659b6de1392232dcc8aa24845cfdfa2d66ea1cf572ef7dd1829fe"
+      ],
+      "source_published_kst": "2026-10-13T14:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "인텔 \"실험실에선 잘 움직이는 로봇, 실제 현장은 다르다\"",
+      "telegram_core_fact": "인텔이 전 세계 기업·산업 관계자 800명을 조사한 결과, 응답자의 약 3분의 2는 향후 5년간 로봇 도입이 불가피하다고 봤지만 실제 도입 전략을 마련한 곳은 40%에 그쳤다.",
+      "title": "인텔 \"실험실에선 잘 움직이는 로봇, 실제 현장은 다르다\""
+    },
     "source_fact:487f5c24ba303596190dcdb1": {
       "first_seen_kst": "2026-10-09T17:32:22+09:00",
       "lanes": {
@@ -345629,6 +346540,33 @@
       "source_title": "'1.8조' 미아2구역 재입찰 현장설명회에 현대건설만 참석",
       "telegram_core_fact": "강세훈 기자, 총공사비 약 1조7700억원 서울 강북구 미아2재정비촉진구역 재개발사업이 시공사 선정 절차를 이어가고 있다.",
       "title": "'1.8조' 미아2구역 재입찰 현장설명회에 현대건설만 참석"
+    },
+    "source_fact:48c8610a8d7cd7ddf2812e35": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174834",
+      "source": "매일경제",
+      "source_body_digest": "3033fc2b4f9bff53dcbbe985f43a2f1a9236e4356d567b56c87ec4b85ac60bfd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d231a6f29e54a68d00df881e621451da824ddf22df29d5a2fd339b15ea73190",
+      "source_fact_keys": [
+        "source_fact:v1:007959b243b37f79470abce35a537fb9847aaa4fd0bbe40912abf74e867c718a",
+        "source_fact:v1:38bf0df29241ddb4b78c2605d774b92475e275ee597b8ae1ad618a1938e97322",
+        "source_fact:v1:60421f57ecdd981d703c629a7b11712340061ea0aa67679713a568a3fcef4b46",
+        "source_fact:v1:65239e2f54d1756403c876811f37ad7b44629d7095201c68abe5679e00102756",
+        "source_fact:v1:9fd6f77e1b41288091bb33ea6fa8f13a435d01dee0c9ece90bf2f0fb82e31461",
+        "source_fact:v1:a3de22007f2f3a095d9117cb88ecf562918e969ba9ae7f9a65c275a8ded85201",
+        "source_fact:v1:e6718e1867acb3fb5a2262ec0d5bee7bbdf19dc4e55825dcbd8d8b15752a4254",
+        "source_fact:v1:fab532a698191c98f02ccafddee9ecd22645f5e9f9e2a4b7a6db80ce682798c5"
+      ],
+      "source_published_kst": "2026-10-13T19:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "SSR 마이닝, 마리골드 매장량 396만 온스..세후 NPV 33억 달러",
+      "telegram_core_fact": "월가 증권사 컨센서스에 따르면 SSR 마이닝의 2026년 예상 매출액은 23억957만 달러로 전년 대비 41.72% 증가할 전망이다. 매장량 산정에는 온스당 2,200달러의 금 가격 가정이 적용됐으며, 가정 상향 등에 따라 기존 추정치 대비 함유 금량이 73% 증가했다.",
+      "title": "SSR 마이닝, 마리골드 매장량 396만 온스..세후 NPV 33억 달러"
     },
     "source_fact:48cbae6389e6bbd9b48a70d6": {
       "first_seen_kst": "2026-10-09T15:48:54+09:00",
@@ -359115,6 +360053,33 @@
       "telegram_core_fact": "반면 도쿄는 10만채 이상씩 공급하고 있으며, 공급량이 감소한 이후에도 연간 9만채 안팎의 주택을 공급하고 있다. 지난 7일 구독자 2만명을 보유한 유튜브 채널 '김원장의 보이는 경제'에는 삼프로TV 김원장 부사장이 출연해 지난 10년간 서울과 도쿄의 주택 공급을 비교하며 한국의 부동산 시장 구조를 설명했다.",
       "title": "\"도쿄는 매년 10만채 짓는데 서울은 3만채…이 시스템 못 깨면 집값 상승 불가피\""
     },
+    "source_fact:55142587f427af98157bfa3a": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://biz.chosun.com/industry/car/2026/10/14/RI5DSZJRORBNRJ55DSMFNUJSPE/",
+      "source": "조선비즈",
+      "source_body_digest": "3f13c0935beca2dfee8e319c932c82d6531eab7b906c9d45b56d2e0017f7420a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9923ce11c3b4cdd6377ca13cc199d0c5d28671e5c2b0ae1d3f5c224b8f753674",
+      "source_fact_keys": [
+        "source_fact:v1:3aa1548c57bff320e51c4fc57cd457f6c13b71668ba08afa91a98a566f7ab3ab",
+        "source_fact:v1:4a7aac95c3fe121c2e5c1cdd1d81742aa80bf2f617909ab38f33ae497336a2f9",
+        "source_fact:v1:5a77d97a3344f8bd8f2a2a5058d8b2e0f0154d51de00a5c7b04c49455fdc668c",
+        "source_fact:v1:658c6207786a45b1bbd2a84fd20a2f4dd952f5bc870cfa2ac7d11a4e42e2019a",
+        "source_fact:v1:c8e947ef191a6864ee65cebb2d3b49a0c0654d5fa0f48ee9d78ecd232724a8f4",
+        "source_fact:v1:db3138d7e6f42b0aaf70d757b7c54db2246af5fbddcb2fc00a8cd2f013918fab",
+        "source_fact:v1:e415d3fef76395c2dc2a848e8cd9f3e73db4c1bf226d5a17813b05ccaebc44eb",
+        "source_fact:v1:fbf4985a3e002de0f30df2aa57859c666ab281581fc618053d55f9bd5aa7215b"
+      ],
+      "source_published_kst": "2026-10-14T00:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차그룹, 인도에 20조원대 투자…생산·R&D 거점 키운다",
+      "telegram_core_fact": "현대자동차그룹이 2032년까지 인도에 20조원 넘게 투자해 생산시설과 연구개발(R&D) 거점을 확대한다.",
+      "title": "현대차그룹, 인도에 20조원대 투자…생산·R&D 거점 키운다"
+    },
     "source_fact:5516e38bd834e775c67b3552": {
       "first_seen_kst": "2026-10-12T13:18:48+09:00",
       "lanes": {
@@ -359242,6 +360207,32 @@
       "source_title": "[속보] '반도체 강세' 8월 경상흑자 461억달러…누적 2800억달러 육박",
       "telegram_core_fact": "올해 들어 8월까지 쌓인 경상수지 흑자도 2800억달러에 육박했다. 반도체 수출 증가세가 더욱 강해지면서 지난 8월 경상수지 흑자가 460억달러를 넘어섰다.",
       "title": "[속보] '반도체 강세' 8월 경상흑자 461억달러…누적 2800억달러 육박"
+    },
+    "source_fact:552de9312259da2b19e25e31": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261013143300",
+      "source": "지디넷코리아",
+      "source_body_digest": "f5bffdee726bc7fd755c7e3669420c3a3d76813858fa14239a184fe2e747827a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:372723fbf526e756f8b357e384aa2219774b874876823ccf18669ab5c9e9dc6a",
+      "source_fact_keys": [
+        "source_fact:v1:164ebf194d75127c84d5cabc380987de89f67b2f9d285bf636d691ed4486ed67",
+        "source_fact:v1:4dd8c91749111b13277e7c76adbf5e310a01dd2d8b71f8ff4e8b4de97b6006d6",
+        "source_fact:v1:538f9d52d8e25c0730fd8c49175e4f424eea50f7de7e5a63052393fb2ee5299e",
+        "source_fact:v1:7f8bd08cb39afece8ff99b220c6021fdbb280a1f9894fd8d1ddb5d52f0a13878",
+        "source_fact:v1:b739c9bf56b9aa7ddd208f564ed655704d9001c8339d2edce1807addb033dceb",
+        "source_fact:v1:be983aa5d53f330b637d4e0bed39f9342752b5fd4fc82c2ac21bd84dd911eab7",
+        "source_fact:v1:c17b4b465aa659b6de1392232dcc8aa24845cfdfa2d66ea1cf572ef7dd1829fe"
+      ],
+      "source_published_kst": "2026-10-13T14:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "인텔 \"실험실에선 잘 움직이는 로봇, 실제 현장은 다르다\"",
+      "telegram_core_fact": "인텔이 전 세계 기업·산업 관계자 800명을 조사한 결과, 응답자의 약 3분의 2는 향후 5년간 로봇 도입이 불가피하다고 봤지만 실제 도입 전략을 마련한 곳은 40%에 그쳤다.",
+      "title": "인텔 \"실험실에선 잘 움직이는 로봇, 실제 현장은 다르다\""
     },
     "source_fact:552fb9e0503b6384b1106dc9": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
@@ -378830,6 +379821,29 @@
       "source_title": "AMD가 찜한 망고부스트…'AI 팩토리' 앞세워 추론 시장 승부수",
       "telegram_core_fact": "인공지능(AI) 인프라 기업 망고부스트가 AMD와의 협력을 바탕으로 자체 AI 데이터센터와 추론 서비스를 결합한 'AI 팩토리' 사업에 본격적으로 나선다.",
       "title": "AMD가 찜한 망고부스트…'AI 팩토리' 앞세워 추론 시장 승부수"
+    },
+    "source_fact:67137c857050ae4b0be22e77": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01420246645612920",
+      "source": "이데일리",
+      "source_body_digest": "d307ba5905908e87af1be7bef7c7111d0fd0026865bc83901f2b341cc123bb22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b61aa7721f889a8abb36bdee5c887f117f8a6b99dd99f5e853620daf3531f63",
+      "source_fact_keys": [
+        "source_fact:v1:9f24f8782c76a046259a2d518f7a2a6597e17d405f63495817d9e4caf9bd4890",
+        "source_fact:v1:e612d1a91567ea022b410d4624b21477170eebd703902886c719d6f67985ddc9",
+        "source_fact:v1:f35f797d5f4985c888538e268ab62c6d1dc7f20441e586f07a99e0116f0a4983",
+        "source_fact:v1:f867b400663082a9996be32a3ffacd209404b8b4574e10160f41e31f28ea5f7c"
+      ],
+      "source_published_kst": "2026-10-14T04:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한은 \"반도체 아직 괜찮지만..AI 투자 축소·中 추격 대비해야\"",
+      "telegram_core_fact": "생산이 늘어 반도체 가격이 떨어지거나 미국 대형 기술기업(빅테크)이 AI 투자를 줄이면 수출 증가세가 빠르게 둔화할 수 있다는 것이다.",
+      "title": "한은 \"반도체 아직 괜찮지만..AI 투자 축소·中 추격 대비해야\""
     },
     "source_fact:671555e8e7d6070b710418bc": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
@@ -415270,29 +416284,28 @@
     "source_fact:886253de5b7ddab6be495bfe": {
       "first_seen_kst": "2026-10-13T18:41:17+09:00",
       "lanes": {
-        "live": "2026-10-13T18:41:17+09:00"
+        "live": "2026-10-14T04:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-13T18:41:17+09:00",
-      "link": "https://www.newsis.com/view/NISX20261013_0003824150",
-      "source": "뉴시스",
-      "source_body_digest": "01fbae12e181fb34ed5830528b545ce7a136af216a82721a276119e3fa9fd608",
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.hankyung.com/article/202610138778P",
+      "source": "한국경제",
+      "source_body_digest": "283499c700733674cf9309d5139108a01be5ce6cdfedbf265d9b8be860997001",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:3efebd56d1e0f5a79793b91aa7c7caaf83176ef345bfeecd20efcf9e99c65df1",
+      "source_fact_identity": "source_facts:v1:f98c127b8e78792db0768406a6736c8698c05ff1d97021712897c57205a4306d",
       "source_fact_keys": [
+        "source_fact:v1:012ccc142669839fdeb6955ae00423f8ec6f46c6fbac7a66a1dba72b9ead31cc",
         "source_fact:v1:101d80d74451a3b71f653ca3212067f996203e7357d5fe6d558708a37cdef0fc",
-        "source_fact:v1:1c53872b5b4135c5972e84e15b5f0b90e37d9973eac173220a4ca782e2d7483d",
-        "source_fact:v1:63e9b57f54121cb61ed402de13752e979fab2425ce015cc9fe3f73314024efd8",
-        "source_fact:v1:72b4cfb282efd5930aceb3c9605e93f30230941fd7f1e941f17e61398fc720c9",
-        "source_fact:v1:81a5026ab1914357570c36b9d914129e6c5b0bb2722b2fad50165de159602969",
-        "source_fact:v1:bd90c72b0d1ae4eb5491ce68adc564855cdd5be62e3a807f744ad2a740b22c06",
+        "source_fact:v1:2578964c4e45f2e75d07001e69d388038438889d551325a6f20674b5d498a0e2",
+        "source_fact:v1:a304789a0a1ee203a91b33b2557c207da54172044de7343d9502b8465beab6ba",
         "source_fact:v1:c6a645a3ba6048e2476870791d0d365b340ad2da7cc3e1a592fecf6b47e3d3e5",
-        "source_fact:v1:eab1e1b670446d5f5744723063bbc7e102cd43044aceb9e1dc88f626ded19214"
+        "source_fact:v1:cb66bfb03450694be908b27defff967b420c810ec90a56baaa3bc35208fbb941",
+        "source_fact:v1:e8084cc68c55be2dcea6f6ba684ab4f2ed5065c42cb2af2d41e0a08d11f4eff4"
       ],
-      "source_published_kst": "2026-10-13T17:08+09:00",
+      "source_published_kst": "2026-10-13T14:01+09:00",
       "source_supply_terms": {},
-      "source_title": "삼성바이오 \"폴리펩타이드 공개매수 조건 충족\"",
-      "telegram_core_fact": "공개매수는 폴리펩타이드그룹 인수를 위해 설립한 특수목적법인(SPC) 자회사 삼성펩타이드(Samsung Peptide)를 통해 이뤄졌으며, 자사주를 제외한 발행주식 전량(3301만6411주)을 대상으로 주당 가격 44.31스위스프랑에 진행됐다.",
-      "title": "삼성바이오 \"폴리펩타이드 공개매수 조건 충족\""
+      "source_title": "삼성바이오로직스, 폴리펩타이드그룹 공개매수 최소 조건 충족… 응모 지분 66.7% 넘겼다",
+      "telegram_core_fact": "삼성바이오로직스가 글로벌 펩타이드 위탁개발생산(CDMO) 기업 '폴리펩타이드그룹(PolyPeptide Group)' 공개매수 중간 결과에서 응모 지분 87.88%를 기록하며 거래 수락 최소 조건인 66.7%를 넘어섰다. 이는 매수 대상 주식의 87.88%에 해당하는 규모로, 수락 최소 조건인 66.7%를 넘어선 수치다.",
+      "title": "삼성바이오로직스, 폴리펩타이드그룹 공개매수 최소 조건 충족… 응모 지분 66.7% 넘겼다"
     },
     "source_fact:88641a69d9b1c0be024a180d": {
       "first_seen_kst": "2026-10-13T10:27:50+09:00",
@@ -420080,6 +421093,32 @@
       "source_title": "국가필수의약품 공급 차질 4년 새 2.8배…식약처는 상당수 '조치 불필요'",
       "telegram_core_fact": "일부 의약품은 공급 차질이 반복되고 있지만 식품의약품안전처가 상당수 사례를 별도 조치가 필요하지 않은 것으로 판단하면서 공급 안정화를 위한 관리체계 개선이 필요하다는 지적이 나온다. 그가 제시한 자료에서는 국가필수의약품 공급 중단·부족 보고 56건 가운데 38건이 '조치 불필요'로 분류됐다.",
       "title": "국가필수의약품 공급 차질 4년 새 2.8배…식약처는 상당수 '조치 불필요'"
+    },
+    "source_fact:8c94af60fe6b6c6db632fa85": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261013143300",
+      "source": "지디넷코리아",
+      "source_body_digest": "f5bffdee726bc7fd755c7e3669420c3a3d76813858fa14239a184fe2e747827a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:372723fbf526e756f8b357e384aa2219774b874876823ccf18669ab5c9e9dc6a",
+      "source_fact_keys": [
+        "source_fact:v1:164ebf194d75127c84d5cabc380987de89f67b2f9d285bf636d691ed4486ed67",
+        "source_fact:v1:4dd8c91749111b13277e7c76adbf5e310a01dd2d8b71f8ff4e8b4de97b6006d6",
+        "source_fact:v1:538f9d52d8e25c0730fd8c49175e4f424eea50f7de7e5a63052393fb2ee5299e",
+        "source_fact:v1:7f8bd08cb39afece8ff99b220c6021fdbb280a1f9894fd8d1ddb5d52f0a13878",
+        "source_fact:v1:b739c9bf56b9aa7ddd208f564ed655704d9001c8339d2edce1807addb033dceb",
+        "source_fact:v1:be983aa5d53f330b637d4e0bed39f9342752b5fd4fc82c2ac21bd84dd911eab7",
+        "source_fact:v1:c17b4b465aa659b6de1392232dcc8aa24845cfdfa2d66ea1cf572ef7dd1829fe"
+      ],
+      "source_published_kst": "2026-10-13T14:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "인텔 \"실험실에선 잘 움직이는 로봇, 실제 현장은 다르다\"",
+      "telegram_core_fact": "인텔이 전 세계 기업·산업 관계자 800명을 조사한 결과, 응답자의 약 3분의 2는 향후 5년간 로봇 도입이 불가피하다고 봤지만 실제 도입 전략을 마련한 곳은 40%에 그쳤다.",
+      "title": "인텔 \"실험실에선 잘 움직이는 로봇, 실제 현장은 다르다\""
     },
     "source_fact:8c9b224b773a1f7369c65e0c": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
@@ -424951,6 +425990,29 @@
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
     },
+    "source_fact:918e26143ec6ba48bc812e5f": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01420246645612920",
+      "source": "이데일리",
+      "source_body_digest": "d307ba5905908e87af1be7bef7c7111d0fd0026865bc83901f2b341cc123bb22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b61aa7721f889a8abb36bdee5c887f117f8a6b99dd99f5e853620daf3531f63",
+      "source_fact_keys": [
+        "source_fact:v1:9f24f8782c76a046259a2d518f7a2a6597e17d405f63495817d9e4caf9bd4890",
+        "source_fact:v1:e612d1a91567ea022b410d4624b21477170eebd703902886c719d6f67985ddc9",
+        "source_fact:v1:f35f797d5f4985c888538e268ab62c6d1dc7f20441e586f07a99e0116f0a4983",
+        "source_fact:v1:f867b400663082a9996be32a3ffacd209404b8b4574e10160f41e31f28ea5f7c"
+      ],
+      "source_published_kst": "2026-10-14T04:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한은 \"반도체 아직 괜찮지만..AI 투자 축소·中 추격 대비해야\"",
+      "telegram_core_fact": "생산이 늘어 반도체 가격이 떨어지거나 미국 대형 기술기업(빅테크)이 AI 투자를 줄이면 수출 증가세가 빠르게 둔화할 수 있다는 것이다.",
+      "title": "한은 \"반도체 아직 괜찮지만..AI 투자 축소·中 추격 대비해야\""
+    },
     "source_fact:918e8dd93a4cd976001860f1": {
       "first_seen_kst": "2026-10-07T08:15:28+09:00",
       "lanes": {
@@ -425768,6 +426830,29 @@
       "source_title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성",
       "telegram_core_fact": "(런던=뉴스1) 러시아가 10일(현지시간) 도널드 트럼프 미국 대통령과 블라디미르 푸틴 러시아 대통령의 합의에 따라 자국산 경유 수출 금지 조치를 부분적으로 해제했다고 밝혔다.",
       "title": "러, '경유 수출 금지' 부분 해제…美 특사단, 2주 내 방러 가능성"
+    },
+    "source_fact:92368b4dc899625cab002fbf": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01420246645612920",
+      "source": "이데일리",
+      "source_body_digest": "d307ba5905908e87af1be7bef7c7111d0fd0026865bc83901f2b341cc123bb22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b61aa7721f889a8abb36bdee5c887f117f8a6b99dd99f5e853620daf3531f63",
+      "source_fact_keys": [
+        "source_fact:v1:9f24f8782c76a046259a2d518f7a2a6597e17d405f63495817d9e4caf9bd4890",
+        "source_fact:v1:e612d1a91567ea022b410d4624b21477170eebd703902886c719d6f67985ddc9",
+        "source_fact:v1:f35f797d5f4985c888538e268ab62c6d1dc7f20441e586f07a99e0116f0a4983",
+        "source_fact:v1:f867b400663082a9996be32a3ffacd209404b8b4574e10160f41e31f28ea5f7c"
+      ],
+      "source_published_kst": "2026-10-14T04:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한은 \"반도체 아직 괜찮지만..AI 투자 축소·中 추격 대비해야\"",
+      "telegram_core_fact": "생산이 늘어 반도체 가격이 떨어지거나 미국 대형 기술기업(빅테크)이 AI 투자를 줄이면 수출 증가세가 빠르게 둔화할 수 있다는 것이다.",
+      "title": "한은 \"반도체 아직 괜찮지만..AI 투자 축소·中 추격 대비해야\""
     },
     "source_fact:923b6fef6180d36c66458fbc": {
       "first_seen_kst": "2026-10-13T07:52:07+09:00",
@@ -436177,6 +437262,32 @@
       "telegram_core_fact": "KT클라우드는 인천 청라 지역 AI DC 사업에 DBO(설계·구축·운영) 파트너로 함께 한다고 7일 밝혔다. KT클라우드가 청라 AI 데이터센터(DC) 구축 사업에 참여하며 수도권 공급 기반을 확대한다.",
       "title": "KT클라우드, 인천 청라 50㎿ AIDC 구축 사업 참여"
     },
+    "source_fact:9c1fddb089519a73c35400e0": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.hankyung.com/article/202610138778P",
+      "source": "한국경제",
+      "source_body_digest": "283499c700733674cf9309d5139108a01be5ce6cdfedbf265d9b8be860997001",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f98c127b8e78792db0768406a6736c8698c05ff1d97021712897c57205a4306d",
+      "source_fact_keys": [
+        "source_fact:v1:012ccc142669839fdeb6955ae00423f8ec6f46c6fbac7a66a1dba72b9ead31cc",
+        "source_fact:v1:101d80d74451a3b71f653ca3212067f996203e7357d5fe6d558708a37cdef0fc",
+        "source_fact:v1:2578964c4e45f2e75d07001e69d388038438889d551325a6f20674b5d498a0e2",
+        "source_fact:v1:a304789a0a1ee203a91b33b2557c207da54172044de7343d9502b8465beab6ba",
+        "source_fact:v1:c6a645a3ba6048e2476870791d0d365b340ad2da7cc3e1a592fecf6b47e3d3e5",
+        "source_fact:v1:cb66bfb03450694be908b27defff967b420c810ec90a56baaa3bc35208fbb941",
+        "source_fact:v1:e8084cc68c55be2dcea6f6ba684ab4f2ed5065c42cb2af2d41e0a08d11f4eff4"
+      ],
+      "source_published_kst": "2026-10-13T14:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성바이오로직스, 폴리펩타이드그룹 공개매수 최소 조건 충족… 응모 지분 66.7% 넘겼다",
+      "telegram_core_fact": "삼성바이오로직스가 글로벌 펩타이드 위탁개발생산(CDMO) 기업 '폴리펩타이드그룹(PolyPeptide Group)' 공개매수 중간 결과에서 응모 지분 87.88%를 기록하며 거래 수락 최소 조건인 66.7%를 넘어섰다. 이는 매수 대상 주식의 87.88%에 해당하는 규모로, 수락 최소 조건인 66.7%를 넘어선 수치다.",
+      "title": "삼성바이오로직스, 폴리펩타이드그룹 공개매수 최소 조건 충족… 응모 지분 66.7% 넘겼다"
+    },
     "source_fact:9c2011f5165effe9e2d564f1": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
       "lanes": {
@@ -439486,6 +440597,33 @@
       "source_title": "\"한 달 만에 181조가 증발했다\"…국민연금 쇼크, 개미들 떨게 만든 이유",
       "telegram_core_fact": "[파이낸셜뉴스] 국민연금 기금 적립액이 한 달 만에 181조 원가량 감소하며 국내 증시의 향후 수급 향방에 비상이 걸렸다. 실제로 삼성전자와 SK하이닉스의 55조 원 규모 자사주 매입은 각각 97%, 83% 진행돼 사실상 마무리 단계다.",
       "title": "\"한 달 만에 181조가 증발했다\"…국민연금 쇼크, 개미들 떨게 만든 이유"
+    },
+    "source_fact:9f207efa8a07565a1d126070": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://biz.chosun.com/industry/car/2026/10/14/RI5DSZJRORBNRJ55DSMFNUJSPE/",
+      "source": "조선비즈",
+      "source_body_digest": "3f13c0935beca2dfee8e319c932c82d6531eab7b906c9d45b56d2e0017f7420a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9923ce11c3b4cdd6377ca13cc199d0c5d28671e5c2b0ae1d3f5c224b8f753674",
+      "source_fact_keys": [
+        "source_fact:v1:3aa1548c57bff320e51c4fc57cd457f6c13b71668ba08afa91a98a566f7ab3ab",
+        "source_fact:v1:4a7aac95c3fe121c2e5c1cdd1d81742aa80bf2f617909ab38f33ae497336a2f9",
+        "source_fact:v1:5a77d97a3344f8bd8f2a2a5058d8b2e0f0154d51de00a5c7b04c49455fdc668c",
+        "source_fact:v1:658c6207786a45b1bbd2a84fd20a2f4dd952f5bc870cfa2ac7d11a4e42e2019a",
+        "source_fact:v1:c8e947ef191a6864ee65cebb2d3b49a0c0654d5fa0f48ee9d78ecd232724a8f4",
+        "source_fact:v1:db3138d7e6f42b0aaf70d757b7c54db2246af5fbddcb2fc00a8cd2f013918fab",
+        "source_fact:v1:e415d3fef76395c2dc2a848e8cd9f3e73db4c1bf226d5a17813b05ccaebc44eb",
+        "source_fact:v1:fbf4985a3e002de0f30df2aa57859c666ab281581fc618053d55f9bd5aa7215b"
+      ],
+      "source_published_kst": "2026-10-14T00:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차그룹, 인도에 20조원대 투자…생산·R&D 거점 키운다",
+      "telegram_core_fact": "현대자동차그룹이 2032년까지 인도에 20조원 넘게 투자해 생산시설과 연구개발(R&D) 거점을 확대한다.",
+      "title": "현대차그룹, 인도에 20조원대 투자…생산·R&D 거점 키운다"
     },
     "source_fact:9f2145a31c90f31cf1c83e49": {
       "first_seen_kst": "2026-10-10T03:26:28+09:00",
@@ -454132,6 +455270,32 @@
       "telegram_core_fact": "휴매나(HUM)는 자회사 센터웰의 시니어 일차의료 클리닉 약 150곳을 운영할 새 합작법인을 블랙록 산하 HPS 인베스트먼트 파트너스와 설립하고, 블랙록이 기존 파트너 WCAS의 센터웰 합작법인 지분(약 28억 달러 규모)을 인수하는 계약을 체결했다고 10월 13일 발표했다.",
       "title": "휴매나, 블랙록 WCAS 지분 28억 달러 인수..센터웰 합작 재편"
     },
+    "source_fact:ac8056c56af5672cf6e6ffd3": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261013143300",
+      "source": "지디넷코리아",
+      "source_body_digest": "f5bffdee726bc7fd755c7e3669420c3a3d76813858fa14239a184fe2e747827a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:372723fbf526e756f8b357e384aa2219774b874876823ccf18669ab5c9e9dc6a",
+      "source_fact_keys": [
+        "source_fact:v1:164ebf194d75127c84d5cabc380987de89f67b2f9d285bf636d691ed4486ed67",
+        "source_fact:v1:4dd8c91749111b13277e7c76adbf5e310a01dd2d8b71f8ff4e8b4de97b6006d6",
+        "source_fact:v1:538f9d52d8e25c0730fd8c49175e4f424eea50f7de7e5a63052393fb2ee5299e",
+        "source_fact:v1:7f8bd08cb39afece8ff99b220c6021fdbb280a1f9894fd8d1ddb5d52f0a13878",
+        "source_fact:v1:b739c9bf56b9aa7ddd208f564ed655704d9001c8339d2edce1807addb033dceb",
+        "source_fact:v1:be983aa5d53f330b637d4e0bed39f9342752b5fd4fc82c2ac21bd84dd911eab7",
+        "source_fact:v1:c17b4b465aa659b6de1392232dcc8aa24845cfdfa2d66ea1cf572ef7dd1829fe"
+      ],
+      "source_published_kst": "2026-10-13T14:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "인텔 \"실험실에선 잘 움직이는 로봇, 실제 현장은 다르다\"",
+      "telegram_core_fact": "인텔이 전 세계 기업·산업 관계자 800명을 조사한 결과, 응답자의 약 3분의 2는 향후 5년간 로봇 도입이 불가피하다고 봤지만 실제 도입 전략을 마련한 곳은 40%에 그쳤다.",
+      "title": "인텔 \"실험실에선 잘 움직이는 로봇, 실제 현장은 다르다\""
+    },
     "source_fact:ac81b037fb13da4d76bce350": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
       "lanes": {
@@ -456795,6 +457959,33 @@
       "source_published_kst": "2026-10-06T10:57+09:00",
       "title": "오텍캐리어, AI 데이터센터용 CDU 제품 라인업 강화"
     },
+    "source_fact:aeb49e850220ef75df09eddf": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174834",
+      "source": "매일경제",
+      "source_body_digest": "3033fc2b4f9bff53dcbbe985f43a2f1a9236e4356d567b56c87ec4b85ac60bfd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d231a6f29e54a68d00df881e621451da824ddf22df29d5a2fd339b15ea73190",
+      "source_fact_keys": [
+        "source_fact:v1:007959b243b37f79470abce35a537fb9847aaa4fd0bbe40912abf74e867c718a",
+        "source_fact:v1:38bf0df29241ddb4b78c2605d774b92475e275ee597b8ae1ad618a1938e97322",
+        "source_fact:v1:60421f57ecdd981d703c629a7b11712340061ea0aa67679713a568a3fcef4b46",
+        "source_fact:v1:65239e2f54d1756403c876811f37ad7b44629d7095201c68abe5679e00102756",
+        "source_fact:v1:9fd6f77e1b41288091bb33ea6fa8f13a435d01dee0c9ece90bf2f0fb82e31461",
+        "source_fact:v1:a3de22007f2f3a095d9117cb88ecf562918e969ba9ae7f9a65c275a8ded85201",
+        "source_fact:v1:e6718e1867acb3fb5a2262ec0d5bee7bbdf19dc4e55825dcbd8d8b15752a4254",
+        "source_fact:v1:fab532a698191c98f02ccafddee9ecd22645f5e9f9e2a4b7a6db80ce682798c5"
+      ],
+      "source_published_kst": "2026-10-13T19:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "SSR 마이닝, 마리골드 매장량 396만 온스..세후 NPV 33억 달러",
+      "telegram_core_fact": "월가 증권사 컨센서스에 따르면 SSR 마이닝의 2026년 예상 매출액은 23억957만 달러로 전년 대비 41.72% 증가할 전망이다. 매장량 산정에는 온스당 2,200달러의 금 가격 가정이 적용됐으며, 가정 상향 등에 따라 기존 추정치 대비 함유 금량이 73% 증가했다.",
+      "title": "SSR 마이닝, 마리골드 매장량 396만 온스..세후 NPV 33억 달러"
+    },
     "source_fact:aeb67e0a4f904639e67abace": {
       "first_seen_kst": "2026-10-12T05:35:02+09:00",
       "lanes": {
@@ -458817,6 +460008,29 @@
       ],
       "source_published_kst": "2026-10-05T09:55+09:00",
       "title": "日라피더스, 삼성·TSMC식 설계동맹 생태계 구축"
+    },
+    "source_fact:b0c1f6450ba5656960a02281": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01420246645612920",
+      "source": "이데일리",
+      "source_body_digest": "d307ba5905908e87af1be7bef7c7111d0fd0026865bc83901f2b341cc123bb22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b61aa7721f889a8abb36bdee5c887f117f8a6b99dd99f5e853620daf3531f63",
+      "source_fact_keys": [
+        "source_fact:v1:9f24f8782c76a046259a2d518f7a2a6597e17d405f63495817d9e4caf9bd4890",
+        "source_fact:v1:e612d1a91567ea022b410d4624b21477170eebd703902886c719d6f67985ddc9",
+        "source_fact:v1:f35f797d5f4985c888538e268ab62c6d1dc7f20441e586f07a99e0116f0a4983",
+        "source_fact:v1:f867b400663082a9996be32a3ffacd209404b8b4574e10160f41e31f28ea5f7c"
+      ],
+      "source_published_kst": "2026-10-14T04:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한은 \"반도체 아직 괜찮지만..AI 투자 축소·中 추격 대비해야\"",
+      "telegram_core_fact": "생산이 늘어 반도체 가격이 떨어지거나 미국 대형 기술기업(빅테크)이 AI 투자를 줄이면 수출 증가세가 빠르게 둔화할 수 있다는 것이다.",
+      "title": "한은 \"반도체 아직 괜찮지만..AI 투자 축소·中 추격 대비해야\""
     },
     "source_fact:b0c8d0f67102d218c1ab6738": {
       "first_seen_kst": "2026-10-08T18:46:25+09:00",
@@ -467489,6 +468703,33 @@
       "telegram_core_fact": "서 연구원은 \"AI 관련 콘퍼런스와 미국 소비자물가지수 발표, 본격적인 실적 시즌 등을 고려하면 추세적인 상승보다는 낙폭 과대에 따른 반등과 종목별 차별화가 진행될 것\"이라며 \"특히 반도체 업종의 변화와 외국인 수급이 중요하다\"고 짚었다.",
       "title": "[오늘의 증시]코스피, 낙폭 과대에 반등 시도 전망…6800선 회복 주목"
     },
+    "source_fact:b8e26578ed528a5dad7dd4f4": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174834",
+      "source": "매일경제",
+      "source_body_digest": "3033fc2b4f9bff53dcbbe985f43a2f1a9236e4356d567b56c87ec4b85ac60bfd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d231a6f29e54a68d00df881e621451da824ddf22df29d5a2fd339b15ea73190",
+      "source_fact_keys": [
+        "source_fact:v1:007959b243b37f79470abce35a537fb9847aaa4fd0bbe40912abf74e867c718a",
+        "source_fact:v1:38bf0df29241ddb4b78c2605d774b92475e275ee597b8ae1ad618a1938e97322",
+        "source_fact:v1:60421f57ecdd981d703c629a7b11712340061ea0aa67679713a568a3fcef4b46",
+        "source_fact:v1:65239e2f54d1756403c876811f37ad7b44629d7095201c68abe5679e00102756",
+        "source_fact:v1:9fd6f77e1b41288091bb33ea6fa8f13a435d01dee0c9ece90bf2f0fb82e31461",
+        "source_fact:v1:a3de22007f2f3a095d9117cb88ecf562918e969ba9ae7f9a65c275a8ded85201",
+        "source_fact:v1:e6718e1867acb3fb5a2262ec0d5bee7bbdf19dc4e55825dcbd8d8b15752a4254",
+        "source_fact:v1:fab532a698191c98f02ccafddee9ecd22645f5e9f9e2a4b7a6db80ce682798c5"
+      ],
+      "source_published_kst": "2026-10-13T19:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "SSR 마이닝, 마리골드 매장량 396만 온스..세후 NPV 33억 달러",
+      "telegram_core_fact": "월가 증권사 컨센서스에 따르면 SSR 마이닝의 2026년 예상 매출액은 23억957만 달러로 전년 대비 41.72% 증가할 전망이다. 매장량 산정에는 온스당 2,200달러의 금 가격 가정이 적용됐으며, 가정 상향 등에 따라 기존 추정치 대비 함유 금량이 73% 증가했다.",
+      "title": "SSR 마이닝, 마리골드 매장량 396만 온스..세후 NPV 33억 달러"
+    },
     "source_fact:b8e2dbb464f922d725191e1e": {
       "first_seen_kst": "2026-10-13T22:33:57+09:00",
       "lanes": {
@@ -467737,6 +468978,32 @@
       "source_title": "1억 넣으면 월 200만원 나온다는데…배당 부자들만 몰래 쓰는 '세금 0원' 기술",
       "telegram_core_fact": "배당금을 먼저 확정하고 배당 기준일을 정하는 '선배당 후투자' 방식이 확산하면서 결산 배당일이 2~4월 봄철로 분산되고 있다.",
       "title": "1억 넣으면 월 200만원 나온다는데…배당 부자들만 몰래 쓰는 '세금 0원' 기술"
+    },
+    "source_fact:b91d448ce4fdf082f053fddd": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.hankyung.com/article/202610138778P",
+      "source": "한국경제",
+      "source_body_digest": "283499c700733674cf9309d5139108a01be5ce6cdfedbf265d9b8be860997001",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f98c127b8e78792db0768406a6736c8698c05ff1d97021712897c57205a4306d",
+      "source_fact_keys": [
+        "source_fact:v1:012ccc142669839fdeb6955ae00423f8ec6f46c6fbac7a66a1dba72b9ead31cc",
+        "source_fact:v1:101d80d74451a3b71f653ca3212067f996203e7357d5fe6d558708a37cdef0fc",
+        "source_fact:v1:2578964c4e45f2e75d07001e69d388038438889d551325a6f20674b5d498a0e2",
+        "source_fact:v1:a304789a0a1ee203a91b33b2557c207da54172044de7343d9502b8465beab6ba",
+        "source_fact:v1:c6a645a3ba6048e2476870791d0d365b340ad2da7cc3e1a592fecf6b47e3d3e5",
+        "source_fact:v1:cb66bfb03450694be908b27defff967b420c810ec90a56baaa3bc35208fbb941",
+        "source_fact:v1:e8084cc68c55be2dcea6f6ba684ab4f2ed5065c42cb2af2d41e0a08d11f4eff4"
+      ],
+      "source_published_kst": "2026-10-13T14:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성바이오로직스, 폴리펩타이드그룹 공개매수 최소 조건 충족… 응모 지분 66.7% 넘겼다",
+      "telegram_core_fact": "삼성바이오로직스가 글로벌 펩타이드 위탁개발생산(CDMO) 기업 '폴리펩타이드그룹(PolyPeptide Group)' 공개매수 중간 결과에서 응모 지분 87.88%를 기록하며 거래 수락 최소 조건인 66.7%를 넘어섰다. 이는 매수 대상 주식의 87.88%에 해당하는 규모로, 수락 최소 조건인 66.7%를 넘어선 수치다.",
+      "title": "삼성바이오로직스, 폴리펩타이드그룹 공개매수 최소 조건 충족… 응모 지분 66.7% 넘겼다"
     },
     "source_fact:b92131e3305ba2d1d756592e": {
       "first_seen_kst": "2026-10-14T01:23:44+09:00",
@@ -468779,6 +470046,33 @@
       "source_title": "[단독] 4대 신항 국산 장비비중 35%...中제품 더 많이 쓴다",
       "telegram_core_fact": "국내 주요 신항만에 설치된 항만장비의 국산 비중이 35%에 그치는 것으로 나타났다. 11일 서삼석 더불어민주당 의원이 해양수산부로부터 제출받은 ‘4대 항만공사 신항 지역 항만장비 도입현황’에 따르면 부산신항과 인천신항, 울산신항, 광양항에 도입된 항만장비 3325대 가운데 국산 비중은 35%에 그쳤다.",
       "title": "[단독] 4대 신항 국산 장비비중 35%...中제품 더 많이 쓴다"
+    },
+    "source_fact:ba449d1af09f76ec6e80858b": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://biz.chosun.com/industry/car/2026/10/14/RI5DSZJRORBNRJ55DSMFNUJSPE/",
+      "source": "조선비즈",
+      "source_body_digest": "3f13c0935beca2dfee8e319c932c82d6531eab7b906c9d45b56d2e0017f7420a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9923ce11c3b4cdd6377ca13cc199d0c5d28671e5c2b0ae1d3f5c224b8f753674",
+      "source_fact_keys": [
+        "source_fact:v1:3aa1548c57bff320e51c4fc57cd457f6c13b71668ba08afa91a98a566f7ab3ab",
+        "source_fact:v1:4a7aac95c3fe121c2e5c1cdd1d81742aa80bf2f617909ab38f33ae497336a2f9",
+        "source_fact:v1:5a77d97a3344f8bd8f2a2a5058d8b2e0f0154d51de00a5c7b04c49455fdc668c",
+        "source_fact:v1:658c6207786a45b1bbd2a84fd20a2f4dd952f5bc870cfa2ac7d11a4e42e2019a",
+        "source_fact:v1:c8e947ef191a6864ee65cebb2d3b49a0c0654d5fa0f48ee9d78ecd232724a8f4",
+        "source_fact:v1:db3138d7e6f42b0aaf70d757b7c54db2246af5fbddcb2fc00a8cd2f013918fab",
+        "source_fact:v1:e415d3fef76395c2dc2a848e8cd9f3e73db4c1bf226d5a17813b05ccaebc44eb",
+        "source_fact:v1:fbf4985a3e002de0f30df2aa57859c666ab281581fc618053d55f9bd5aa7215b"
+      ],
+      "source_published_kst": "2026-10-14T00:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차그룹, 인도에 20조원대 투자…생산·R&D 거점 키운다",
+      "telegram_core_fact": "현대자동차그룹이 2032년까지 인도에 20조원 넘게 투자해 생산시설과 연구개발(R&D) 거점을 확대한다.",
+      "title": "현대차그룹, 인도에 20조원대 투자…생산·R&D 거점 키운다"
     },
     "source_fact:ba4c7e68eead55a01324f663": {
       "first_seen_kst": "2026-10-06T18:58:43+09:00",
@@ -476826,6 +478120,33 @@
       "source_published_kst": "2026-10-05T08:05+09:00",
       "title": "씨이앤에스, ‘AI 서버 폭발적 발열’ 미스트 정밀 분사로 잡는다"
     },
+    "source_fact:c1f080ce00549aed0f0543f2": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174834",
+      "source": "매일경제",
+      "source_body_digest": "3033fc2b4f9bff53dcbbe985f43a2f1a9236e4356d567b56c87ec4b85ac60bfd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d231a6f29e54a68d00df881e621451da824ddf22df29d5a2fd339b15ea73190",
+      "source_fact_keys": [
+        "source_fact:v1:007959b243b37f79470abce35a537fb9847aaa4fd0bbe40912abf74e867c718a",
+        "source_fact:v1:38bf0df29241ddb4b78c2605d774b92475e275ee597b8ae1ad618a1938e97322",
+        "source_fact:v1:60421f57ecdd981d703c629a7b11712340061ea0aa67679713a568a3fcef4b46",
+        "source_fact:v1:65239e2f54d1756403c876811f37ad7b44629d7095201c68abe5679e00102756",
+        "source_fact:v1:9fd6f77e1b41288091bb33ea6fa8f13a435d01dee0c9ece90bf2f0fb82e31461",
+        "source_fact:v1:a3de22007f2f3a095d9117cb88ecf562918e969ba9ae7f9a65c275a8ded85201",
+        "source_fact:v1:e6718e1867acb3fb5a2262ec0d5bee7bbdf19dc4e55825dcbd8d8b15752a4254",
+        "source_fact:v1:fab532a698191c98f02ccafddee9ecd22645f5e9f9e2a4b7a6db80ce682798c5"
+      ],
+      "source_published_kst": "2026-10-13T19:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "SSR 마이닝, 마리골드 매장량 396만 온스..세후 NPV 33억 달러",
+      "telegram_core_fact": "월가 증권사 컨센서스에 따르면 SSR 마이닝의 2026년 예상 매출액은 23억957만 달러로 전년 대비 41.72% 증가할 전망이다. 매장량 산정에는 온스당 2,200달러의 금 가격 가정이 적용됐으며, 가정 상향 등에 따라 기존 추정치 대비 함유 금량이 73% 증가했다.",
+      "title": "SSR 마이닝, 마리골드 매장량 396만 온스..세후 NPV 33억 달러"
+    },
     "source_fact:c1f72273aca4b8bf71f665b0": {
       "first_seen_kst": "2026-10-08T18:24:19+09:00",
       "lanes": {
@@ -477450,6 +478771,32 @@
       "source_title": "싸서 택한 주담대 변동금리, 상승폭 고정형 추월⋯커지는 차주 부담",
       "telegram_core_fact": "고정형 주담대 금리는 4.88%로 전월보다 0.12%p 상승했다.",
       "title": "싸서 택한 주담대 변동금리, 상승폭 고정형 추월⋯커지는 차주 부담"
+    },
+    "source_fact:c2798a907948b176f608fbb5": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261013143300",
+      "source": "지디넷코리아",
+      "source_body_digest": "f5bffdee726bc7fd755c7e3669420c3a3d76813858fa14239a184fe2e747827a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:372723fbf526e756f8b357e384aa2219774b874876823ccf18669ab5c9e9dc6a",
+      "source_fact_keys": [
+        "source_fact:v1:164ebf194d75127c84d5cabc380987de89f67b2f9d285bf636d691ed4486ed67",
+        "source_fact:v1:4dd8c91749111b13277e7c76adbf5e310a01dd2d8b71f8ff4e8b4de97b6006d6",
+        "source_fact:v1:538f9d52d8e25c0730fd8c49175e4f424eea50f7de7e5a63052393fb2ee5299e",
+        "source_fact:v1:7f8bd08cb39afece8ff99b220c6021fdbb280a1f9894fd8d1ddb5d52f0a13878",
+        "source_fact:v1:b739c9bf56b9aa7ddd208f564ed655704d9001c8339d2edce1807addb033dceb",
+        "source_fact:v1:be983aa5d53f330b637d4e0bed39f9342752b5fd4fc82c2ac21bd84dd911eab7",
+        "source_fact:v1:c17b4b465aa659b6de1392232dcc8aa24845cfdfa2d66ea1cf572ef7dd1829fe"
+      ],
+      "source_published_kst": "2026-10-13T14:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "인텔 \"실험실에선 잘 움직이는 로봇, 실제 현장은 다르다\"",
+      "telegram_core_fact": "인텔이 전 세계 기업·산업 관계자 800명을 조사한 결과, 응답자의 약 3분의 2는 향후 5년간 로봇 도입이 불가피하다고 봤지만 실제 도입 전략을 마련한 곳은 40%에 그쳤다.",
+      "title": "인텔 \"실험실에선 잘 움직이는 로봇, 실제 현장은 다르다\""
     },
     "source_fact:c27e34b0b2b0eb86abaf929a": {
       "first_seen_kst": "2026-10-07T06:28:41+09:00",
@@ -484088,6 +485435,33 @@
       "telegram_core_fact": "보고서는 \"바이오 원부자재는 원가, 품질, 공급 안전성을 좌우하는 전략 자산\"이라며 \"의약품 제조 품목 허가에 등록된 원부자재는 교체 시 재검증 비용이 막대해 안정적 매출의 원천이 된다\"고 짚었다.",
       "title": "세계 최대 바이오 생산기지 송도의 역설…원부자재 95% 수입 | 연합뉴스"
     },
+    "source_fact:c82b38d18396c636487f1157": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://biz.chosun.com/industry/car/2026/10/14/RI5DSZJRORBNRJ55DSMFNUJSPE/",
+      "source": "조선비즈",
+      "source_body_digest": "3f13c0935beca2dfee8e319c932c82d6531eab7b906c9d45b56d2e0017f7420a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9923ce11c3b4cdd6377ca13cc199d0c5d28671e5c2b0ae1d3f5c224b8f753674",
+      "source_fact_keys": [
+        "source_fact:v1:3aa1548c57bff320e51c4fc57cd457f6c13b71668ba08afa91a98a566f7ab3ab",
+        "source_fact:v1:4a7aac95c3fe121c2e5c1cdd1d81742aa80bf2f617909ab38f33ae497336a2f9",
+        "source_fact:v1:5a77d97a3344f8bd8f2a2a5058d8b2e0f0154d51de00a5c7b04c49455fdc668c",
+        "source_fact:v1:658c6207786a45b1bbd2a84fd20a2f4dd952f5bc870cfa2ac7d11a4e42e2019a",
+        "source_fact:v1:c8e947ef191a6864ee65cebb2d3b49a0c0654d5fa0f48ee9d78ecd232724a8f4",
+        "source_fact:v1:db3138d7e6f42b0aaf70d757b7c54db2246af5fbddcb2fc00a8cd2f013918fab",
+        "source_fact:v1:e415d3fef76395c2dc2a848e8cd9f3e73db4c1bf226d5a17813b05ccaebc44eb",
+        "source_fact:v1:fbf4985a3e002de0f30df2aa57859c666ab281581fc618053d55f9bd5aa7215b"
+      ],
+      "source_published_kst": "2026-10-14T00:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차그룹, 인도에 20조원대 투자…생산·R&D 거점 키운다",
+      "telegram_core_fact": "현대자동차그룹이 2032년까지 인도에 20조원 넘게 투자해 생산시설과 연구개발(R&D) 거점을 확대한다.",
+      "title": "현대차그룹, 인도에 20조원대 투자…생산·R&D 거점 키운다"
+    },
     "source_fact:c83275edaa91cc3240d3f159": {
       "first_seen_kst": "2026-10-12T11:11:48+09:00",
       "lanes": {
@@ -484496,6 +485870,32 @@
       "source_title": "NH증권 \"셀트리온, 경기 방어와 성장 매력 동시 보유\" | 연합뉴스",
       "telegram_core_fact": "한승연 연구원은 이날 보고서에서 \"올해 코스피 의약품 주가가 27% 내린 데 비해 셀트리온은 6% 하락에 그쳐 코스피 제약사 내 상대적 견조한 모습\"이라며 \"업종 둔화에도 강력한 신제품 효과로 올해 영업이익이 전년 대비 62%의 고성장이 예상된다\"고 전망했다.",
       "title": "NH증권 \"셀트리온, 경기 방어와 성장 매력 동시 보유\" | 연합뉴스"
+    },
+    "source_fact:c8aae32931af5b9f91d18c70": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261013143300",
+      "source": "지디넷코리아",
+      "source_body_digest": "f5bffdee726bc7fd755c7e3669420c3a3d76813858fa14239a184fe2e747827a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:372723fbf526e756f8b357e384aa2219774b874876823ccf18669ab5c9e9dc6a",
+      "source_fact_keys": [
+        "source_fact:v1:164ebf194d75127c84d5cabc380987de89f67b2f9d285bf636d691ed4486ed67",
+        "source_fact:v1:4dd8c91749111b13277e7c76adbf5e310a01dd2d8b71f8ff4e8b4de97b6006d6",
+        "source_fact:v1:538f9d52d8e25c0730fd8c49175e4f424eea50f7de7e5a63052393fb2ee5299e",
+        "source_fact:v1:7f8bd08cb39afece8ff99b220c6021fdbb280a1f9894fd8d1ddb5d52f0a13878",
+        "source_fact:v1:b739c9bf56b9aa7ddd208f564ed655704d9001c8339d2edce1807addb033dceb",
+        "source_fact:v1:be983aa5d53f330b637d4e0bed39f9342752b5fd4fc82c2ac21bd84dd911eab7",
+        "source_fact:v1:c17b4b465aa659b6de1392232dcc8aa24845cfdfa2d66ea1cf572ef7dd1829fe"
+      ],
+      "source_published_kst": "2026-10-13T14:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "인텔 \"실험실에선 잘 움직이는 로봇, 실제 현장은 다르다\"",
+      "telegram_core_fact": "인텔이 전 세계 기업·산업 관계자 800명을 조사한 결과, 응답자의 약 3분의 2는 향후 5년간 로봇 도입이 불가피하다고 봤지만 실제 도입 전략을 마련한 곳은 40%에 그쳤다.",
+      "title": "인텔 \"실험실에선 잘 움직이는 로봇, 실제 현장은 다르다\""
     },
     "source_fact:c8ac9627229cf00e3043c580": {
       "first_seen_kst": "2026-10-13T19:34:14+09:00",
@@ -485117,6 +486517,33 @@
       "source_title": "\"지금은 종목 투자 안 통합니다\"…최고민수 조언은?[부꾸미]",
       "telegram_core_fact": "미국과 이란의 전쟁, 국제 유가 상승, 고금리 상황 등을 고려할 때 개별 종목 투자보다는 ETF(상장지수펀드) 투자가 유리하다는 분석이 나왔다.",
       "title": "\"지금은 종목 투자 안 통합니다\"…최고민수 조언은?[부꾸미]"
+    },
+    "source_fact:c9389263e6bbc6ab23d5b12b": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://biz.chosun.com/industry/car/2026/10/14/RI5DSZJRORBNRJ55DSMFNUJSPE/",
+      "source": "조선비즈",
+      "source_body_digest": "3f13c0935beca2dfee8e319c932c82d6531eab7b906c9d45b56d2e0017f7420a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9923ce11c3b4cdd6377ca13cc199d0c5d28671e5c2b0ae1d3f5c224b8f753674",
+      "source_fact_keys": [
+        "source_fact:v1:3aa1548c57bff320e51c4fc57cd457f6c13b71668ba08afa91a98a566f7ab3ab",
+        "source_fact:v1:4a7aac95c3fe121c2e5c1cdd1d81742aa80bf2f617909ab38f33ae497336a2f9",
+        "source_fact:v1:5a77d97a3344f8bd8f2a2a5058d8b2e0f0154d51de00a5c7b04c49455fdc668c",
+        "source_fact:v1:658c6207786a45b1bbd2a84fd20a2f4dd952f5bc870cfa2ac7d11a4e42e2019a",
+        "source_fact:v1:c8e947ef191a6864ee65cebb2d3b49a0c0654d5fa0f48ee9d78ecd232724a8f4",
+        "source_fact:v1:db3138d7e6f42b0aaf70d757b7c54db2246af5fbddcb2fc00a8cd2f013918fab",
+        "source_fact:v1:e415d3fef76395c2dc2a848e8cd9f3e73db4c1bf226d5a17813b05ccaebc44eb",
+        "source_fact:v1:fbf4985a3e002de0f30df2aa57859c666ab281581fc618053d55f9bd5aa7215b"
+      ],
+      "source_published_kst": "2026-10-14T00:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차그룹, 인도에 20조원대 투자…생산·R&D 거점 키운다",
+      "telegram_core_fact": "현대자동차그룹이 2032년까지 인도에 20조원 넘게 투자해 생산시설과 연구개발(R&D) 거점을 확대한다.",
+      "title": "현대차그룹, 인도에 20조원대 투자…생산·R&D 거점 키운다"
     },
     "source_fact:c93bfb480ae0695d2b5a5f36": {
       "first_seen_kst": "2026-10-07T06:28:41+09:00",
@@ -491646,6 +493073,32 @@
       "telegram_core_fact": "미래에셋자산운용은 미국 3대 대표지수를 기초로 하는 'TIGER 미국 타겟데일리커버드콜 ETF(상장지수펀드)' 3종의 올해 개인 누적 순매수가 1조원을 돌파했다고 7일 밝혔다.",
       "title": "미래에셋 \"美타겟데일리커버드콜 3종, 올해 개인 1조 넘게 매수\""
     },
+    "source_fact:cfd012fda5f8782c429243db": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.hankyung.com/article/202610138778P",
+      "source": "한국경제",
+      "source_body_digest": "283499c700733674cf9309d5139108a01be5ce6cdfedbf265d9b8be860997001",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f98c127b8e78792db0768406a6736c8698c05ff1d97021712897c57205a4306d",
+      "source_fact_keys": [
+        "source_fact:v1:012ccc142669839fdeb6955ae00423f8ec6f46c6fbac7a66a1dba72b9ead31cc",
+        "source_fact:v1:101d80d74451a3b71f653ca3212067f996203e7357d5fe6d558708a37cdef0fc",
+        "source_fact:v1:2578964c4e45f2e75d07001e69d388038438889d551325a6f20674b5d498a0e2",
+        "source_fact:v1:a304789a0a1ee203a91b33b2557c207da54172044de7343d9502b8465beab6ba",
+        "source_fact:v1:c6a645a3ba6048e2476870791d0d365b340ad2da7cc3e1a592fecf6b47e3d3e5",
+        "source_fact:v1:cb66bfb03450694be908b27defff967b420c810ec90a56baaa3bc35208fbb941",
+        "source_fact:v1:e8084cc68c55be2dcea6f6ba684ab4f2ed5065c42cb2af2d41e0a08d11f4eff4"
+      ],
+      "source_published_kst": "2026-10-13T14:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성바이오로직스, 폴리펩타이드그룹 공개매수 최소 조건 충족… 응모 지분 66.7% 넘겼다",
+      "telegram_core_fact": "삼성바이오로직스가 글로벌 펩타이드 위탁개발생산(CDMO) 기업 '폴리펩타이드그룹(PolyPeptide Group)' 공개매수 중간 결과에서 응모 지분 87.88%를 기록하며 거래 수락 최소 조건인 66.7%를 넘어섰다. 이는 매수 대상 주식의 87.88%에 해당하는 규모로, 수락 최소 조건인 66.7%를 넘어선 수치다.",
+      "title": "삼성바이오로직스, 폴리펩타이드그룹 공개매수 최소 조건 충족… 응모 지분 66.7% 넘겼다"
+    },
     "source_fact:cfd3daef8b1f35513a3bd11c": {
       "first_seen_kst": "2026-10-06T04:08:54+09:00",
       "lanes": {
@@ -496926,6 +498379,33 @@
       "source_published_kst": "2026-10-07T06:01+09:00",
       "title": "글로벌 공급기지 된 K-제약사들…잇단 수출계약"
     },
+    "source_fact:d4fd6ee322af738f1c74f86b": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174834",
+      "source": "매일경제",
+      "source_body_digest": "3033fc2b4f9bff53dcbbe985f43a2f1a9236e4356d567b56c87ec4b85ac60bfd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d231a6f29e54a68d00df881e621451da824ddf22df29d5a2fd339b15ea73190",
+      "source_fact_keys": [
+        "source_fact:v1:007959b243b37f79470abce35a537fb9847aaa4fd0bbe40912abf74e867c718a",
+        "source_fact:v1:38bf0df29241ddb4b78c2605d774b92475e275ee597b8ae1ad618a1938e97322",
+        "source_fact:v1:60421f57ecdd981d703c629a7b11712340061ea0aa67679713a568a3fcef4b46",
+        "source_fact:v1:65239e2f54d1756403c876811f37ad7b44629d7095201c68abe5679e00102756",
+        "source_fact:v1:9fd6f77e1b41288091bb33ea6fa8f13a435d01dee0c9ece90bf2f0fb82e31461",
+        "source_fact:v1:a3de22007f2f3a095d9117cb88ecf562918e969ba9ae7f9a65c275a8ded85201",
+        "source_fact:v1:e6718e1867acb3fb5a2262ec0d5bee7bbdf19dc4e55825dcbd8d8b15752a4254",
+        "source_fact:v1:fab532a698191c98f02ccafddee9ecd22645f5e9f9e2a4b7a6db80ce682798c5"
+      ],
+      "source_published_kst": "2026-10-13T19:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "SSR 마이닝, 마리골드 매장량 396만 온스..세후 NPV 33억 달러",
+      "telegram_core_fact": "월가 증권사 컨센서스에 따르면 SSR 마이닝의 2026년 예상 매출액은 23억957만 달러로 전년 대비 41.72% 증가할 전망이다. 매장량 산정에는 온스당 2,200달러의 금 가격 가정이 적용됐으며, 가정 상향 등에 따라 기존 추정치 대비 함유 금량이 73% 증가했다.",
+      "title": "SSR 마이닝, 마리골드 매장량 396만 온스..세후 NPV 33억 달러"
+    },
     "source_fact:d4fe636279abab28a3e71ac1": {
       "first_seen_kst": "2026-10-07T02:13:12+09:00",
       "lanes": {
@@ -498132,29 +499612,28 @@
     "source_fact:d5f4911e90551002d6c23e40": {
       "first_seen_kst": "2026-10-13T18:41:17+09:00",
       "lanes": {
-        "live": "2026-10-13T18:41:17+09:00"
+        "live": "2026-10-14T04:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-13T18:41:17+09:00",
-      "link": "https://www.newsis.com/view/NISX20261013_0003824150",
-      "source": "뉴시스",
-      "source_body_digest": "01fbae12e181fb34ed5830528b545ce7a136af216a82721a276119e3fa9fd608",
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.hankyung.com/article/202610138778P",
+      "source": "한국경제",
+      "source_body_digest": "283499c700733674cf9309d5139108a01be5ce6cdfedbf265d9b8be860997001",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:3efebd56d1e0f5a79793b91aa7c7caaf83176ef345bfeecd20efcf9e99c65df1",
+      "source_fact_identity": "source_facts:v1:f98c127b8e78792db0768406a6736c8698c05ff1d97021712897c57205a4306d",
       "source_fact_keys": [
+        "source_fact:v1:012ccc142669839fdeb6955ae00423f8ec6f46c6fbac7a66a1dba72b9ead31cc",
         "source_fact:v1:101d80d74451a3b71f653ca3212067f996203e7357d5fe6d558708a37cdef0fc",
-        "source_fact:v1:1c53872b5b4135c5972e84e15b5f0b90e37d9973eac173220a4ca782e2d7483d",
-        "source_fact:v1:63e9b57f54121cb61ed402de13752e979fab2425ce015cc9fe3f73314024efd8",
-        "source_fact:v1:72b4cfb282efd5930aceb3c9605e93f30230941fd7f1e941f17e61398fc720c9",
-        "source_fact:v1:81a5026ab1914357570c36b9d914129e6c5b0bb2722b2fad50165de159602969",
-        "source_fact:v1:bd90c72b0d1ae4eb5491ce68adc564855cdd5be62e3a807f744ad2a740b22c06",
+        "source_fact:v1:2578964c4e45f2e75d07001e69d388038438889d551325a6f20674b5d498a0e2",
+        "source_fact:v1:a304789a0a1ee203a91b33b2557c207da54172044de7343d9502b8465beab6ba",
         "source_fact:v1:c6a645a3ba6048e2476870791d0d365b340ad2da7cc3e1a592fecf6b47e3d3e5",
-        "source_fact:v1:eab1e1b670446d5f5744723063bbc7e102cd43044aceb9e1dc88f626ded19214"
+        "source_fact:v1:cb66bfb03450694be908b27defff967b420c810ec90a56baaa3bc35208fbb941",
+        "source_fact:v1:e8084cc68c55be2dcea6f6ba684ab4f2ed5065c42cb2af2d41e0a08d11f4eff4"
       ],
-      "source_published_kst": "2026-10-13T17:08+09:00",
+      "source_published_kst": "2026-10-13T14:01+09:00",
       "source_supply_terms": {},
-      "source_title": "삼성바이오 \"폴리펩타이드 공개매수 조건 충족\"",
-      "telegram_core_fact": "공개매수는 폴리펩타이드그룹 인수를 위해 설립한 특수목적법인(SPC) 자회사 삼성펩타이드(Samsung Peptide)를 통해 이뤄졌으며, 자사주를 제외한 발행주식 전량(3301만6411주)을 대상으로 주당 가격 44.31스위스프랑에 진행됐다.",
-      "title": "삼성바이오 \"폴리펩타이드 공개매수 조건 충족\""
+      "source_title": "삼성바이오로직스, 폴리펩타이드그룹 공개매수 최소 조건 충족… 응모 지분 66.7% 넘겼다",
+      "telegram_core_fact": "삼성바이오로직스가 글로벌 펩타이드 위탁개발생산(CDMO) 기업 '폴리펩타이드그룹(PolyPeptide Group)' 공개매수 중간 결과에서 응모 지분 87.88%를 기록하며 거래 수락 최소 조건인 66.7%를 넘어섰다. 이는 매수 대상 주식의 87.88%에 해당하는 규모로, 수락 최소 조건인 66.7%를 넘어선 수치다.",
+      "title": "삼성바이오로직스, 폴리펩타이드그룹 공개매수 최소 조건 충족… 응모 지분 66.7% 넘겼다"
     },
     "source_fact:d5f9176968bda0e0fc2a0ebb": {
       "first_seen_kst": "2026-10-11T21:51:07+09:00",
@@ -505367,6 +506846,33 @@
       "source_title": "EU, 북러 군사·경제 협력 관련 3명·4개 단체 추가 제재",
       "telegram_core_fact": "제재 대상의 EU 내 자산은 동결되며, 이들에게 직간접적으로 자금이나 경제적 자원을 제공하는 행위가 금지된다.",
       "title": "EU, 북러 군사·경제 협력 관련 3명·4개 단체 추가 제재"
+    },
+    "source_fact:dc0b9e2efb15dcf7e31c13ef": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174834",
+      "source": "매일경제",
+      "source_body_digest": "3033fc2b4f9bff53dcbbe985f43a2f1a9236e4356d567b56c87ec4b85ac60bfd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d231a6f29e54a68d00df881e621451da824ddf22df29d5a2fd339b15ea73190",
+      "source_fact_keys": [
+        "source_fact:v1:007959b243b37f79470abce35a537fb9847aaa4fd0bbe40912abf74e867c718a",
+        "source_fact:v1:38bf0df29241ddb4b78c2605d774b92475e275ee597b8ae1ad618a1938e97322",
+        "source_fact:v1:60421f57ecdd981d703c629a7b11712340061ea0aa67679713a568a3fcef4b46",
+        "source_fact:v1:65239e2f54d1756403c876811f37ad7b44629d7095201c68abe5679e00102756",
+        "source_fact:v1:9fd6f77e1b41288091bb33ea6fa8f13a435d01dee0c9ece90bf2f0fb82e31461",
+        "source_fact:v1:a3de22007f2f3a095d9117cb88ecf562918e969ba9ae7f9a65c275a8ded85201",
+        "source_fact:v1:e6718e1867acb3fb5a2262ec0d5bee7bbdf19dc4e55825dcbd8d8b15752a4254",
+        "source_fact:v1:fab532a698191c98f02ccafddee9ecd22645f5e9f9e2a4b7a6db80ce682798c5"
+      ],
+      "source_published_kst": "2026-10-13T19:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "SSR 마이닝, 마리골드 매장량 396만 온스..세후 NPV 33억 달러",
+      "telegram_core_fact": "월가 증권사 컨센서스에 따르면 SSR 마이닝의 2026년 예상 매출액은 23억957만 달러로 전년 대비 41.72% 증가할 전망이다. 매장량 산정에는 온스당 2,200달러의 금 가격 가정이 적용됐으며, 가정 상향 등에 따라 기존 추정치 대비 함유 금량이 73% 증가했다.",
+      "title": "SSR 마이닝, 마리골드 매장량 396만 온스..세후 NPV 33억 달러"
     },
     "source_fact:dc0c17479cb7819c61d81c43": {
       "first_seen_kst": "2026-10-07T07:24:41+09:00",
@@ -526555,6 +528061,33 @@
       ],
       "source_published_kst": "2026-10-06T17:17+09:00",
       "title": "테라뷰, 11억 규모 반도체 검사장비 공급계약"
+    },
+    "source_fact:eee9b8eda7bba0924a7b4e8f": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174834",
+      "source": "매일경제",
+      "source_body_digest": "3033fc2b4f9bff53dcbbe985f43a2f1a9236e4356d567b56c87ec4b85ac60bfd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d231a6f29e54a68d00df881e621451da824ddf22df29d5a2fd339b15ea73190",
+      "source_fact_keys": [
+        "source_fact:v1:007959b243b37f79470abce35a537fb9847aaa4fd0bbe40912abf74e867c718a",
+        "source_fact:v1:38bf0df29241ddb4b78c2605d774b92475e275ee597b8ae1ad618a1938e97322",
+        "source_fact:v1:60421f57ecdd981d703c629a7b11712340061ea0aa67679713a568a3fcef4b46",
+        "source_fact:v1:65239e2f54d1756403c876811f37ad7b44629d7095201c68abe5679e00102756",
+        "source_fact:v1:9fd6f77e1b41288091bb33ea6fa8f13a435d01dee0c9ece90bf2f0fb82e31461",
+        "source_fact:v1:a3de22007f2f3a095d9117cb88ecf562918e969ba9ae7f9a65c275a8ded85201",
+        "source_fact:v1:e6718e1867acb3fb5a2262ec0d5bee7bbdf19dc4e55825dcbd8d8b15752a4254",
+        "source_fact:v1:fab532a698191c98f02ccafddee9ecd22645f5e9f9e2a4b7a6db80ce682798c5"
+      ],
+      "source_published_kst": "2026-10-13T19:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "SSR 마이닝, 마리골드 매장량 396만 온스..세후 NPV 33억 달러",
+      "telegram_core_fact": "월가 증권사 컨센서스에 따르면 SSR 마이닝의 2026년 예상 매출액은 23억957만 달러로 전년 대비 41.72% 증가할 전망이다. 매장량 산정에는 온스당 2,200달러의 금 가격 가정이 적용됐으며, 가정 상향 등에 따라 기존 추정치 대비 함유 금량이 73% 증가했다.",
+      "title": "SSR 마이닝, 마리골드 매장량 396만 온스..세후 NPV 33억 달러"
     },
     "source_fact:eef11a8f770a8a636db80f2f": {
       "first_seen_kst": "2026-10-14T00:31:46+09:00",
@@ -561598,6 +563131,32 @@
       "source": "이투데이",
       "title": "우진엔텍, 3개월 공공 입찰참가 제한에 법적 대응…“기존 용역 수행 및 매출 실현과는 무관”"
     },
+    "title:38a7bf193ccb95f659bdcd57": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.hankyung.com/article/202610138778P",
+      "source": "한국경제",
+      "source_body_digest": "283499c700733674cf9309d5139108a01be5ce6cdfedbf265d9b8be860997001",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f98c127b8e78792db0768406a6736c8698c05ff1d97021712897c57205a4306d",
+      "source_fact_keys": [
+        "source_fact:v1:012ccc142669839fdeb6955ae00423f8ec6f46c6fbac7a66a1dba72b9ead31cc",
+        "source_fact:v1:101d80d74451a3b71f653ca3212067f996203e7357d5fe6d558708a37cdef0fc",
+        "source_fact:v1:2578964c4e45f2e75d07001e69d388038438889d551325a6f20674b5d498a0e2",
+        "source_fact:v1:a304789a0a1ee203a91b33b2557c207da54172044de7343d9502b8465beab6ba",
+        "source_fact:v1:c6a645a3ba6048e2476870791d0d365b340ad2da7cc3e1a592fecf6b47e3d3e5",
+        "source_fact:v1:cb66bfb03450694be908b27defff967b420c810ec90a56baaa3bc35208fbb941",
+        "source_fact:v1:e8084cc68c55be2dcea6f6ba684ab4f2ed5065c42cb2af2d41e0a08d11f4eff4"
+      ],
+      "source_published_kst": "2026-10-13T14:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성바이오로직스, 폴리펩타이드그룹 공개매수 최소 조건 충족… 응모 지분 66.7% 넘겼다",
+      "telegram_core_fact": "삼성바이오로직스가 글로벌 펩타이드 위탁개발생산(CDMO) 기업 '폴리펩타이드그룹(PolyPeptide Group)' 공개매수 중간 결과에서 응모 지분 87.88%를 기록하며 거래 수락 최소 조건인 66.7%를 넘어섰다. 이는 매수 대상 주식의 87.88%에 해당하는 규모로, 수락 최소 조건인 66.7%를 넘어선 수치다.",
+      "title": "삼성바이오로직스, 폴리펩타이드그룹 공개매수 최소 조건 충족… 응모 지분 66.7% 넘겼다"
+    },
     "title:38afc340a78f8c370e475cd3": {
       "first_seen_kst": "2026-10-06T22:51:44+09:00",
       "lanes": {
@@ -565752,6 +567311,32 @@
       "source_title": "美물가·연준 발언에 쏠린 눈…환율 하락세 이어질까[주간외환전망]",
       "telegram_core_fact": "국제유가 상승에 따른 휘발유 가격 반등으로 헤드라인 물가 상승률은 전년 동월 대비 3% 중후반까지 확대될 것으로 예상된다.",
       "title": "美물가·연준 발언에 쏠린 눈…환율 하락세 이어질까[주간외환전망]"
+    },
+    "title:448a20781c514f6777980df4": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261013143300",
+      "source": "지디넷코리아",
+      "source_body_digest": "f5bffdee726bc7fd755c7e3669420c3a3d76813858fa14239a184fe2e747827a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:372723fbf526e756f8b357e384aa2219774b874876823ccf18669ab5c9e9dc6a",
+      "source_fact_keys": [
+        "source_fact:v1:164ebf194d75127c84d5cabc380987de89f67b2f9d285bf636d691ed4486ed67",
+        "source_fact:v1:4dd8c91749111b13277e7c76adbf5e310a01dd2d8b71f8ff4e8b4de97b6006d6",
+        "source_fact:v1:538f9d52d8e25c0730fd8c49175e4f424eea50f7de7e5a63052393fb2ee5299e",
+        "source_fact:v1:7f8bd08cb39afece8ff99b220c6021fdbb280a1f9894fd8d1ddb5d52f0a13878",
+        "source_fact:v1:b739c9bf56b9aa7ddd208f564ed655704d9001c8339d2edce1807addb033dceb",
+        "source_fact:v1:be983aa5d53f330b637d4e0bed39f9342752b5fd4fc82c2ac21bd84dd911eab7",
+        "source_fact:v1:c17b4b465aa659b6de1392232dcc8aa24845cfdfa2d66ea1cf572ef7dd1829fe"
+      ],
+      "source_published_kst": "2026-10-13T14:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "인텔 \"실험실에선 잘 움직이는 로봇, 실제 현장은 다르다\"",
+      "telegram_core_fact": "인텔이 전 세계 기업·산업 관계자 800명을 조사한 결과, 응답자의 약 3분의 2는 향후 5년간 로봇 도입이 불가피하다고 봤지만 실제 도입 전략을 마련한 곳은 40%에 그쳤다.",
+      "title": "인텔 \"실험실에선 잘 움직이는 로봇, 실제 현장은 다르다\""
     },
     "title:449763b1829e1af6cb7dcd81": {
       "first_seen_kst": "2026-10-11T06:07:21+09:00",
@@ -573901,6 +575486,29 @@
       "source_title": "中 반도체 공습·외국인 매도… 주저앉은 코스피",
       "telegram_core_fact": "한국거래소에 따르면 외국인 투자자는 올해 들어 지난 12일까지 코스피에서 약 199조1000억원을 순매도(매도가 매수보다 많은 것)했다.",
       "title": "中 반도체 공습·외국인 매도… 주저앉은 코스피"
+    },
+    "title:6034e0e7d6f9882c5713b210": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01420246645612920",
+      "source": "이데일리",
+      "source_body_digest": "d307ba5905908e87af1be7bef7c7111d0fd0026865bc83901f2b341cc123bb22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b61aa7721f889a8abb36bdee5c887f117f8a6b99dd99f5e853620daf3531f63",
+      "source_fact_keys": [
+        "source_fact:v1:9f24f8782c76a046259a2d518f7a2a6597e17d405f63495817d9e4caf9bd4890",
+        "source_fact:v1:e612d1a91567ea022b410d4624b21477170eebd703902886c719d6f67985ddc9",
+        "source_fact:v1:f35f797d5f4985c888538e268ab62c6d1dc7f20441e586f07a99e0116f0a4983",
+        "source_fact:v1:f867b400663082a9996be32a3ffacd209404b8b4574e10160f41e31f28ea5f7c"
+      ],
+      "source_published_kst": "2026-10-14T04:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한은 \"반도체 아직 괜찮지만..AI 투자 축소·中 추격 대비해야\"",
+      "telegram_core_fact": "생산이 늘어 반도체 가격이 떨어지거나 미국 대형 기술기업(빅테크)이 AI 투자를 줄이면 수출 증가세가 빠르게 둔화할 수 있다는 것이다.",
+      "title": "한은 \"반도체 아직 괜찮지만..AI 투자 축소·中 추격 대비해야\""
     },
     "title:6044441ba1f64c9bede8df1a": {
       "first_seen_kst": "2026-10-14T00:12:03+09:00",
@@ -582928,6 +584536,33 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T18:01+09:00",
       "title": "\"럭셔리카 자존심 살린다\" 신형 벤츠 S-클래스 '수입차 베스트셀링 빅5' 복귀"
+    },
+    "title:7f1fec00fb884f0d9468eab4": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://biz.chosun.com/industry/car/2026/10/14/RI5DSZJRORBNRJ55DSMFNUJSPE/",
+      "source": "조선비즈",
+      "source_body_digest": "3f13c0935beca2dfee8e319c932c82d6531eab7b906c9d45b56d2e0017f7420a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9923ce11c3b4cdd6377ca13cc199d0c5d28671e5c2b0ae1d3f5c224b8f753674",
+      "source_fact_keys": [
+        "source_fact:v1:3aa1548c57bff320e51c4fc57cd457f6c13b71668ba08afa91a98a566f7ab3ab",
+        "source_fact:v1:4a7aac95c3fe121c2e5c1cdd1d81742aa80bf2f617909ab38f33ae497336a2f9",
+        "source_fact:v1:5a77d97a3344f8bd8f2a2a5058d8b2e0f0154d51de00a5c7b04c49455fdc668c",
+        "source_fact:v1:658c6207786a45b1bbd2a84fd20a2f4dd952f5bc870cfa2ac7d11a4e42e2019a",
+        "source_fact:v1:c8e947ef191a6864ee65cebb2d3b49a0c0654d5fa0f48ee9d78ecd232724a8f4",
+        "source_fact:v1:db3138d7e6f42b0aaf70d757b7c54db2246af5fbddcb2fc00a8cd2f013918fab",
+        "source_fact:v1:e415d3fef76395c2dc2a848e8cd9f3e73db4c1bf226d5a17813b05ccaebc44eb",
+        "source_fact:v1:fbf4985a3e002de0f30df2aa57859c666ab281581fc618053d55f9bd5aa7215b"
+      ],
+      "source_published_kst": "2026-10-14T00:50+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대차그룹, 인도에 20조원대 투자…생산·R&D 거점 키운다",
+      "telegram_core_fact": "현대자동차그룹이 2032년까지 인도에 20조원 넘게 투자해 생산시설과 연구개발(R&D) 거점을 확대한다.",
+      "title": "현대차그룹, 인도에 20조원대 투자…생산·R&D 거점 키운다"
     },
     "title:7f24d9c071874d9c48dc7330": {
       "first_seen_kst": "2026-10-12T12:09:58+09:00",
@@ -593250,6 +594885,24 @@
       "source_published_kst": "2026-10-05T11:20+09:00",
       "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
     },
+    "title:9f6a13e3ffc767eed1b01027": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174979",
+      "source": "매일경제",
+      "source_body_digest": "b8cfe0ebf3a94042344cad0ca25bb584ee58f8e1c22fa8a37e936aea45556812",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-13T22:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "SSR 마이닝, 록스모어 4억6000만달러 전액 현금 인수",
+      "telegram_core_fact": "SSR 마이닝(SSRM)이 캐나다 토론토증권거래소(TSX) 상장사 록스모어 리소시스(Roxmore Resources)를 주당 6.75캐나다달러 전액 현금으로 인수하는 최종 계약을 체결했다고 10월 13일 발표했다.",
+      "title": "SSR 마이닝, 록스모어 4억6000만달러 전액 현금 인수"
+    },
     "title:9f71532dc985e7f25b9c8116": {
       "first_seen_kst": "2026-10-07T16:57:09+09:00",
       "lanes": {
@@ -595547,6 +597200,26 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T08:00+09:00",
       "title": "“물량 넘치는데 배가 없다”…현대글로비스 ‘100척 시대’, 매출 40조 조기달성 청신호 [비즈360]"
+    },
+    "title:a7740941edef75469630e23e": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://biz.heraldcorp.com/article/10901578",
+      "source": "헤럴드경제",
+      "source_body_digest": "0356cd9bcf8c3b2de7ac3a8b600938d15dd10a3dd730ad5128d6fbd288eca756",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:df30d7b8fea4554669251c98e03633ce1a66bbd2f2c16723fb38a3fbc8dcae4a",
+      "source_fact_keys": [
+        "source_fact:v1:8e739ad9e841a667dc65819c4f1a2a11e0d3cf5a885e827900fba8bf0282589a"
+      ],
+      "source_published_kst": "2026-10-14T00:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "KES 2026 | 파이보콤 LE270-KR, KC 인증과 KT 망 연동 승인 획득하며 스마트 미터링 및 기타 IoT 배포 지원",
+      "telegram_core_fact": "LE270-KR은 한국에서 사용되는 LTE 주파수 대역을 지원하며 KC 인증 및 KT 망 연동 승인을 획득해 한국 시장에 진출하는 기기 제조업체에 신뢰할 수 있는 연결 기반이 된다.",
+      "title": "KES 2026 | 파이보콤 LE270-KR, KC 인증과 KT 망 연동 승인 획득하며 스마트 미터링 및 기타 IoT 배포 지원"
     },
     "title:a782bf1381b84d9b097cd69a": {
       "first_seen_kst": "2026-10-09T17:54:07+09:00",
@@ -616458,6 +618131,33 @@
       "telegram_core_fact": "국민의힘 구자근 국회의원(경북 구미시갑)이 12일 한국제품안전관리원으로부터 제출받은 자료에 따르면 2021년부터 2026년 7월까지 해외 리콜제품 1만 9102개를 대상으로 해외 직구 플랫폼을 모니터링한 결과, 국내 판매가 확인된 사례는 총 1138건으로 집계됐다.",
       "title": "구자근 의원 \"해외서 리콜된 제품 국내서 버젓이 판매\""
     },
+    "title:ed94839476f19ae8c4cd69b6": {
+      "first_seen_kst": "2026-10-14T04:36:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T04:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T04:36:31+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174834",
+      "source": "매일경제",
+      "source_body_digest": "3033fc2b4f9bff53dcbbe985f43a2f1a9236e4356d567b56c87ec4b85ac60bfd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7d231a6f29e54a68d00df881e621451da824ddf22df29d5a2fd339b15ea73190",
+      "source_fact_keys": [
+        "source_fact:v1:007959b243b37f79470abce35a537fb9847aaa4fd0bbe40912abf74e867c718a",
+        "source_fact:v1:38bf0df29241ddb4b78c2605d774b92475e275ee597b8ae1ad618a1938e97322",
+        "source_fact:v1:60421f57ecdd981d703c629a7b11712340061ea0aa67679713a568a3fcef4b46",
+        "source_fact:v1:65239e2f54d1756403c876811f37ad7b44629d7095201c68abe5679e00102756",
+        "source_fact:v1:9fd6f77e1b41288091bb33ea6fa8f13a435d01dee0c9ece90bf2f0fb82e31461",
+        "source_fact:v1:a3de22007f2f3a095d9117cb88ecf562918e969ba9ae7f9a65c275a8ded85201",
+        "source_fact:v1:e6718e1867acb3fb5a2262ec0d5bee7bbdf19dc4e55825dcbd8d8b15752a4254",
+        "source_fact:v1:fab532a698191c98f02ccafddee9ecd22645f5e9f9e2a4b7a6db80ce682798c5"
+      ],
+      "source_published_kst": "2026-10-13T19:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "SSR 마이닝, 마리골드 매장량 396만 온스..세후 NPV 33억 달러",
+      "telegram_core_fact": "월가 증권사 컨센서스에 따르면 SSR 마이닝의 2026년 예상 매출액은 23억957만 달러로 전년 대비 41.72% 증가할 전망이다. 매장량 산정에는 온스당 2,200달러의 금 가격 가정이 적용됐으며, 가정 상향 등에 따라 기존 추정치 대비 함유 금량이 73% 증가했다.",
+      "title": "SSR 마이닝, 마리골드 매장량 396만 온스..세후 NPV 33억 달러"
+    },
     "title:ed956a14dffcd948ac9a9106": {
       "first_seen_kst": "2026-10-13T07:02:46+09:00",
       "lanes": {
@@ -622070,5 +623770,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-14T04:09:16+09:00"
+  "updated_at_kst": "2026-10-14T04:36:31+09:00"
 }
