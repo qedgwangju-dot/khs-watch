@@ -752,6 +752,36 @@ def render_enrichment_summary(raw: dict[str, Any]) -> str:
     start = esc(event.get("start_kst") or "확인 불가")
     low = esc(event.get("low_kst") or "확인 불가")
 
+    # 사건구간에 정렬된 업종·종목·ETF 자료가 하나도 없으면 다섯 개의 빈 목록을
+    # 보낸 것처럼 보이게 하지 않는다. 실패 자료와 원인은 기존 raw에 그대로 보존.
+    has_direct = any(
+        (fnum((raw.get("market_spot_deltas") or {}).get(actor)) or 0) < 0
+        and any((fnum(item.get("delta")) or 0) < 0
+                for item in (by_actor.get(actor) or {}).get("rows", []))
+        for actor in ("외국인", "기관", "개인")
+    )
+    has_etf = any((item.get("price") or {}).get("available") for item in etfs)
+    if not (has_direct or industries or stocks or themes or has_etf or proxy):
+        if market.get("available") and market.get("spot_leader"):
+            market_line = (
+                "• 현물·선물 시장 매도주체: "
+                + esc(market.get("spot_leader")) + " / "
+                + esc(market.get("futures_leader") or "확인 불가")
+                + " · 해당 사건 시장 수급 판정만 유지"
+            )
+        else:
+            market_line = "• 시장 매도주체: 수급 시각 정렬 미충족 · 판정 보류"
+        return "\n".join([
+            "🔎 <b>코스피 급락 · 정밀분해 자료 보류</b>",
+            f"<code>{esc(event_time)} KST</code>",
+            f"• 구간 <b>{start} → {low}</b>",
+            market_line,
+            "• 사건구간 업종·종목·테마·ETF 유효 자료 없음 — 순위·순매도액을 추정하지 않습니다.",
+            ("• 원자료 조회 오류 있음 · GitHub Actions 아티팩트에 기록"
+             if errors else "• 자료 시각 정렬·후보 검증 미충족 · GitHub Actions 아티팩트에 기록"),
+            "• LS 프로그램·UBM 원값은 억원으로 임의 환산하지 않습니다.",
+        ])
+
     def _render(stock_limit: int, theme_limit: int, etf_limit: int, direct_limit: int) -> str:
         lines = [
             "🔎 <b>코스피 급락 · 수급·업종 정밀분해</b>",
