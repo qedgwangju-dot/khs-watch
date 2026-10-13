@@ -22,6 +22,10 @@ from datetime import datetime
 from html.parser import HTMLParser
 from pathlib import Path
 from zoneinfo import ZoneInfo
+from qra_long_end_issuance import (
+    nominal_long_end_table, summarize_long_end_supply,
+    expectation_comparison, dealer_agenda_mentions_long_end, CITI_20261009,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = ROOT / "out"
@@ -116,7 +120,7 @@ class ReleaseParser(HTMLParser):
             heading = clean_text(" ".join(self._h3_parts))
             self._in_h3 = False
             self._h3_parts = []
-            if re.search(r"documents\s+released\s+at\s+(?:8:30|3:00)", heading, re.I):
+            if re.search(r"documents\s+released\s+at\s+(?:8:30|3:00|12:00)", heading, re.I):
                 self._current = ReleaseSection(heading=heading, links=[])
                 self.sections.append(self._current)
             else:
@@ -142,7 +146,7 @@ def section_date_key(section: ReleaseSection) -> tuple[str, int]:
         ).date().isoformat()
     except ValueError:
         return ("", 0)
-    clock = 15 if "3:00" in section.heading else 8
+    clock = 15 if "3:00" in section.heading else 12 if "12:00" in section.heading else 8
     return day, clock
 
 
@@ -426,6 +430,69 @@ def build_alert(current: ReleaseSection, previous: ReleaseSection | None) -> tup
     return title, body, detail
 
 
+def official_dealer_document_text(link: LinkItem) -> str:
+    """Read actual Treasury agenda/questionnaire; a title is not evidence."""
+    req = urllib.request.Request(
+        link.url, headers={"User-Agent": "Mozilla/5.0 KHS-QRA-Dealer/1.0"}
+    )
+    with urllib.request.urlopen(req, timeout=25) as response:
+        raw = response.read()
+        media = str(response.headers.get("Content-Type") or "").lower()
+    if raw.startswith(b"%PDF") or "application/pdf" in media:
+        import io
+        from pypdf import PdfReader
+        reader = PdfReader(io.BytesIO(raw))
+        return clean_text(" ".join(page.extract_text() or "" for page in reader.pages))
+    return strip_html(raw.decode("utf-8", errors="replace"))
+
+
+def build_dealer_survey_alert(section: ReleaseSection) -> tuple[str, str, dict] | None:
+    items = [
+        link for link in section.links
+        if any(word in link.text.lower() for word in (
+            "primary dealer meeting agenda", "primary dealer survey",
+            "primary dealer auction size survey", "dealer questionnaire",
+        ))
+    ]
+    if not items:
+        return None
+    primary = items[0]
+    inspected_text = official_dealer_document_text(primary)
+    if not dealer_agenda_mentions_long_end(inspected_text):
+        return None
+    checks = {
+        "20년물": r"20[\s-]*year",
+        "30년물": r"30[\s-]*year",
+        "장기채 수요": r"long[\s-]*(?:dated|end|bond)|coupon\s+issuance",
+        "대형 기술기업 회사채 경쟁": r"hyperscal|corporate\s+(?:bond|debt|issuance)|investment[\s-]*grade",
+        "연기금 장기수요": r"pension\s+fund",
+        "국채 경매규모": r"auction\s+siz",
+    }
+    signals = [label for label, pattern in checks.items() if re.search(pattern, inspected_text, re.I)]
+    if not signals:
+        return None
+    title = "미 재무부 딜러 자료 | 장기국채 공급 검토 신호"
+    body = "\n".join([
+        "확정 단계: 공식 딜러 설문·의제 공개. 장기채 감축 결정이 아닙니다.",
+        "• 공식 공개일: " + section_date_key(section)[0] + " · 확인 주제: " + "·".join(signals),
+        "• Citi 미확정 예상: 20년·30년물 각각 회당 30억달러 감축"
+        " → 3개월 180억달러 장기채 공급 감축·단기국채 대체 가능."
+        " 20년물 발행 중단은 추가 시나리오.",
+        "• 정부 질문·설문은 정책 검토의 증거이지 시행 결정이 아닙니다.",
+        "• 다음 확인: 11/2 분기 차입추정, 11/4 QRA 확정 발행표·가이던스.",
+        "• 역풍: 단기국채 차환 위험·대형 기술기업 회사채 경쟁·인플레이션·기간프리미엄.",
+        "공식 문서: " + primary.url,
+        "시장 예상: " + CITI_20261009,
+    ])
+    return title, body, {
+        "type": "dealer_long_end_survey_official_document",
+        "heading": section.heading,
+        "official_url": primary.url,
+        "signals": signals,
+        "decision_status": "survey_not_final_policy",
+    }
+
+
 def write_watch(status: str, detail: str = "") -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     text = (
@@ -460,9 +527,11 @@ def main() -> int:
         raise RuntimeError("미 재무부 공식 발표일 추출 실패 — 오래된 발표 재발송 방지")
     current = sections[0]
     is_financing = "3:00" in current.heading
+    is_dealer = "12:00" in current.heading
     previous = next(
         (section for section in sections[1:]
-         if ("3:00" in section.heading) == is_financing),
+         if ("3:00" in section.heading) == is_financing
+         and ("12:00" in section.heading) == is_dealer),
         None,
     )
     state = load_state()
@@ -470,10 +539,20 @@ def main() -> int:
         write_watch("새 QRA 없음", current.heading)
         return 0
 
-    title, body, detail = (
-        build_financing_alert(current, previous)
-        if is_financing else build_alert(current, previous)
-    )
+    if is_dealer:
+        if section_date_key(current)[0] < "2026-10-13":
+            write_watch("과거 딜러 의제 기준선", current.heading)
+            return 0
+        report = build_dealer_survey_alert(current)
+        if report is None:
+            write_watch("공식 딜러 자료의 장기채 검토 의제 미확인", current.heading)
+            return 0
+        title, body, detail = report
+    else:
+        title, body, detail = (
+            build_financing_alert(current, previous)
+            if is_financing else build_alert(current, previous)
+        )
     TITLE_PATH.write_text(title + "\n", encoding="utf-8")
     ALERT_PATH.write_text(body + "\n", encoding="utf-8")
     DETAIL_PATH.write_text(json.dumps(detail, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
