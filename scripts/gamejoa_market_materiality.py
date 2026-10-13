@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 129
+VERSION = 131
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -2813,6 +2813,68 @@ def same_named_supply_order(left: dict, right: dict) -> bool:
     return bool(left.get('duration_years') or left.get('delivery_period') or left.get('quantities'))
 
 
+def public_energy_supply_assurance_observation(title: str, body: str, published: str) -> dict:
+    """Identify one official crude-oil/naphtha coverage briefing across outlets."""
+    if (not re.match(r"20\d{2}-\d{2}-\d{2}", published)
+            or not re.search(r"원유|나프타", title)
+            or not re.search(r"산업통상부|산업부", body)):
+        return {}
+    source = source_reported_body(body)
+    if not all(re.search(term, source) for term in (r"원유", r"나프타", r"확보", r"%")):
+        return {}
+
+    def coverage(commodity: str, basis_pattern: str, basis_label: str) -> dict:
+        relevant = []
+        for row in source_sentences(source):
+            subjects = list(re.finditer(r"원유|나프타", row))
+            for index, subject in enumerate(subjects):
+                if subject.group(0) != commodity:
+                    continue
+                end = subjects[index + 1].start() if index + 1 < len(subjects) else len(row)
+                clause = row[subject.start():end]
+                period_context = row[max(0, subject.start() - 28):subject.start()] + clause
+                months = set(re.findall(r"(?<!\d)(1[0-2]|[1-9])\s*월", period_context))
+                month_range = re.search(
+                    r"(?<!\d)(1[0-2]|[1-9])\s*[~∼～-]\s*(1[0-2]|[1-9])\s*월",
+                    period_context,
+                )
+                if month_range:
+                    months.update(month_range.groups())
+                if (len(months) == 2 and re.search(basis_pattern, clause)
+                        and re.search(r"확보|도입|수급", clause)
+                        and re.search(r"\d+(?:\.\d+)?\s*%", clause)):
+                    relevant.append((clause, months))
+        if not relevant:
+            return {}
+        text = " ".join(clause for clause, _ in relevant)
+        months = set().union(*(observed_months for _, observed_months in relevant))
+        if len(months) != 2:
+            return {}
+        ratios = set()
+        for match in re.finditer(r"(\d+(?:\.\d+)?)\s*%\s*(이상|수준|이하|미만|초과)?", text):
+            value = format(Decimal(match.group(1)).normalize(), "f")
+            ratios.add((value, match.group(2) or ""))
+        if not ratios:
+            return {}
+        return {"months": sorted(int(month) for month in months), "basis": basis_label,
+                "coverage_percent": [list(item) for item in sorted(ratios)]}
+
+    crude = coverage("원유", r"전년\s*평균\s*대비", "prior_year_average")
+    naphtha = coverage("나프타", r"수요\s*대비", "demand")
+    if not crude or not naphtha:
+        return {}
+    event_date = dt.date.fromisoformat(published[:10])
+    briefing_day = re.search(r"(?:산업통상부|산업부)(?:는|은)?\s*(\d{1,2})일", source)
+    if briefing_day:
+        for days_back in range(4):
+            candidate_date = event_date - dt.timedelta(days=days_back)
+            if candidate_date.day == int(briefing_day[1]):
+                event_date = candidate_date
+                break
+    return {"actor": "산업통상부", "event_date": event_date.isoformat(),
+            "commodities": {"crude_oil": crude, "naphtha": naphtha}}
+
+
 def dated_public_supply_package(title: str, body: str, published: str) -> dict:
     """Match a named signed housing agreement or annual harvest package, not its theme."""
     if not re.match(r"20\d{2}-\d{2}-\d{2}", published):
@@ -3133,6 +3195,12 @@ def source_event_identity(alert: dict) -> str:
     """
     title = str(alert.get('source_title') or alert.get('original_news') or alert.get('news') or '')
     body = str(alert.get('source_body') or '') if alert.get('body_verified') else ''
+    energy_supply = public_energy_supply_assurance_observation(
+        title, body, str(alert.get('published') or ''),
+    )
+    if energy_supply:
+        digest = hashlib.sha256(json.dumps(energy_supply, ensure_ascii=False, sort_keys=True).encode('utf-8')).hexdigest()
+        return f'source_event:v2:public_energy_supply_assurance:{digest}'
     honam_statement = sk_honam_project_statement_identity(alert)
     if honam_statement:
         return honam_statement
@@ -4059,6 +4127,24 @@ def nonmaterial_publicity_reason(title: str, body: str, firm_event: bool, publis
             return 'small_research_license_without_downstream_market_scale'
     local = bool(LOCAL_AUTHORITY.search(foreground) or re.search(
         r"(?<![가-힣])[가-힣]{2,8}(?:시|군|구)의\s*스타트업", foreground))
+    local_school_meal_dispute = bool(
+        (local or re.search(r"(?<![가-힣])[가-힣]{2,8}(?:시|군|구)(?=[^가-힣]|$)", foreground))
+        and re.search(r"무상\s*급식|학교\s*급식|급식비", foreground)
+        and re.search(r"규탄|성명|촉구|반발|비판", foreground)
+        and re.search(r"분담|지원|예산|축소|삭감", foreground)
+    )
+    national_school_policy = bool(re.search(
+        r"전국\s*(?:의\s*)?(?:학교|급식|학생)|(?:정부|교육부|국회).{0,30}(?:전국|의무화|법률|급식\s*예산)",
+        foreground,
+    ))
+    priced_school_execution = bool(re.search(
+        r"(?:급식|식자재|농산물).{0,35}(?:업체|기업|입찰|계약|낙찰|수주|발주)|"
+        r"(?:입찰|공급\s*계약|납품\s*계약|수주).{0,35}(?:급식|식자재|농산물)",
+        foreground,
+    ))
+    if (local_school_meal_dispute and not firm_event and not national_school_policy
+            and not priced_school_execution and not PUBLIC_MARKET_BUSINESS_LINK.search(foreground)):
+        return 'local_school_meal_cost_dispute_without_listed_market_execution'
     if (local and re.match(r"\[[^]]{1,20}소식\]", title) and not firm_event
             and not re.search(r"정전|폐사|사망|수출\s*금지|생산\s*중단|가동\s*중단", foreground)):
         return 'municipal_service_roundup_without_listed_issuer_execution'

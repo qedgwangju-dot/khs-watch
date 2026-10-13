@@ -6285,6 +6285,92 @@ class IncrementalNewsTests(unittest.TestCase):
 
 
 class ConcreteLiveSelectionRegressions(unittest.TestCase):
+    def test_oct13_crude_and_naphtha_briefing_reprints_share_event_identity(self):
+        published = '2026-10-13T13:12:00+09:00'
+        yonhap = alert(
+            '경유 공급 우려에 정부 "물량 문제 없어…11월까지 원유 100%" | 연합뉴스',
+            '정부가 10∼11월 원유 물량을 전년 평균 대비 100% 이상 확보했다고 밝혔다. '
+            '산업통상부는 13일 "10∼11월 원유 도입물량은 전년 평균 대비 100% 이상 확보하고 있다"며 '
+            '"나프타는 10월 물량을 수요 대비 100% 이상, 11월 물량도 수요 대비 100% 수준으로 확보했다"고 설명했다.',
+            'https://www.yna.co.kr/view/AKR20261013086800003',
+        )
+        newsis = alert(
+            '"11월까지 100% 이상 확보"…원유·나프타 수급 이상無',
+            '산업통상부는 13일 브리핑을 통해 10월과 11월 원유 도입 물량은 전년 평균 대비 100% 이상 확보했다고 밝혔다. '
+            '석유화학 원료인 나프타도 10월 물량은 수요 대비 100% 이상 확보했고 '
+            '11월 물량은 수요 대비 100% 수준으로 확보했다.',
+            'https://www.newsis.com/view/NISX20261013_0003823838',
+        )
+        for candidate in (yonhap, newsis):
+            candidate['published'] = published
+        yonhap_terms = materiality.public_energy_supply_assurance_observation(
+            yonhap['source_title'], yonhap['source_body'], published,
+        )
+        newsis_terms = materiality.public_energy_supply_assurance_observation(
+            newsis['source_title'], newsis['source_body'], published,
+        )
+        self.assertTrue(yonhap_terms, yonhap['source_body'])
+        self.assertTrue(newsis_terms, newsis['source_body'])
+        self.assertEqual(yonhap_terms, newsis_terms, (yonhap_terms, newsis_terms))
+        yonhap_identity = materiality.source_event_identity(yonhap)
+        newsis_identity = materiality.source_event_identity(newsis)
+        self.assertTrue(yonhap_identity.startswith('source_event:v2:public_energy_supply_assurance:'), yonhap_identity)
+        self.assertEqual(yonhap_identity, newsis_identity)
+        self.assertEqual(radar.alert_dedup_key(yonhap), radar.alert_dedup_key(newsis))
+        next_day = {**newsis, 'published': '2026-10-14T08:00:00+09:00'}
+        self.assertEqual(materiality.source_event_identity(newsis), materiality.source_event_identity(next_day))
+        now = dt.datetime.fromisoformat(published)
+        with tempfile.TemporaryDirectory() as folder, patch.object(telegram, 'SEEN_PATH', Path(folder) / 'seen.json'):
+            telegram.record_seen_alerts([yonhap], now)
+            fresh, skipped = telegram.filter_previously_seen_alerts(
+                [newsis], now + dt.timedelta(hours=1), 'live',
+            )
+            self.assertFalse(fresh)
+            self.assertEqual(len(skipped), 1)
+        revised = {**newsis, 'source_body': newsis['source_body'].replace('100% 수준', '90% 수준')}
+        self.assertNotEqual(materiality.source_event_identity(newsis), materiality.source_event_identity(revised))
+        changed_period = {**newsis, 'source_body': newsis['source_body'].replace('10월과 11월', '9월과 10월')}
+        self.assertNotEqual(materiality.source_event_identity(newsis), materiality.source_event_identity(changed_period))
+
+    def test_local_school_meal_union_dispute_is_withheld_but_market_execution_survives(self):
+        title = '전교조, 세종시 급식비 분담 축소 강력 규탄'
+        body = (
+            '전국교직원노동조합 세종지부가 세종시의 무상급식 지원 축소 추진을 규탄했다. '
+            '세종시와 교육청은 그동안 무상급식 식품비를 50대 50으로 분담해 왔으나, '
+            '세종시는 재정난을 이유로 2027년부터 분담 비율을 낮추겠다는 방침이다. '
+            '노조는 시와 교육청에 현행 분담 원칙 유지를 촉구했다.'
+        )
+        reason = materiality.nonmaterial_publicity_reason(title, body, False, '2026-10-13T13:14:50+09:00')
+        self.assertEqual(reason, 'local_school_meal_cost_dispute_without_listed_market_execution')
+        national = materiality.nonmaterial_publicity_reason(
+            '정부, 전국 학교급식 식품비 지원 기준 개편',
+            '교육부는 전국 학교급식 식품비 지원 기준을 개편하고 내년부터 적용한다고 밝혔다.',
+            False, '2026-10-13T13:14:50+09:00',
+        )
+        self.assertNotEqual(national, 'local_school_meal_cost_dispute_without_listed_market_execution')
+        execution = materiality.nonmaterial_publicity_reason(
+            title + '…급식업체와 120억원 납품 계약',
+            body + ' 상장 식자재업체는 세종시와 120억원 규모의 급식 납품 계약을 체결했다.',
+            True, '2026-10-13T13:14:50+09:00',
+        )
+        self.assertNotEqual(execution, 'local_school_meal_cost_dispute_without_listed_market_execution')
+
+    def test_summary_guard_rejects_repeated_zelensky_claim(self):
+        title = '젤렌스키 "정유시설 휴전은 러에만 유리…전력망도 포함해야"'
+        body = (
+            '젤렌스키 대통령은 에너지 휴전에는 정유시설뿐 아니라 전력망에 대한 공격 중단도 포함해야 한다고 요구했다. '
+            '그는 러시아가 휴전 발표 뒤 우크라이나 에너지 시설 6곳을 공격했다고 주장했다.'
+        )
+        repeated = (
+            '젤렌스키 대통령은 "에너지 휴전에는 정유시설뿐 아니라 전력망에 대한 공격 중단도 포함해야 한다"고 요구했다. '
+            '특히 휴전에는 정유시설뿐 아니라 전력망에 대한 공격 중단도 포함해야 한다고 요구했다.'
+        )
+        errors = radar.source_core_fact_errors({**alert(title, body), 'telegram_core_fact': repeated})
+        self.assertIn('repeated_core_claim', errors)
+        concise = '젤렌스키는 정유시설 공격만 중단하는 휴전은 러시아에 유리하다며 전력망 공격 중단도 포함하라고 요구했다.'
+        errors = radar.source_core_fact_errors({**alert(title, body), 'telegram_core_fact': concise})
+        self.assertNotIn('repeated_core_claim', errors)
+
     def test_oct10_iran_market_updates_keep_distinct_events_and_drop_same_event_reprint(self):
         now = dt.datetime(2026, 10, 8, 22, 30, tzinfo=dt.timezone(dt.timedelta(hours=9)))
         operation_title = "美, 이란 대규모 군사작전 검토…브렌트유 105달러 돌파"

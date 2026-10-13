@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import concurrent.futures
 import datetime as dt
+from difflib import SequenceMatcher
 import html
 import hashlib
 import json
@@ -10732,6 +10733,15 @@ def semantic_event_theme(alert: dict) -> str:
 
 
 def alert_dedup_key(alert: dict) -> tuple[str, str]:
+    energy_supply = market_materiality.public_energy_supply_assurance_observation(
+        str(alert.get("source_title") or alert.get("original_news") or alert.get("news") or ""),
+        str(alert.get("source_body") or "") if alert.get("body_verified") else "",
+        str(alert.get("published") or ""),
+    )
+    if energy_supply:
+        source_identity = market_materiality.source_event_identity(alert)
+        if source_identity:
+            return (source_identity, "event")
     pricing_controls_theme = sk_energy_pricing_controls_event_theme(alert)
     if pricing_controls_theme:
         return (pricing_controls_theme, "event")
@@ -12830,6 +12840,24 @@ def source_core_fact_errors(alert: dict) -> list[str]:
     if not source or not core:
         return []
     errors = []
+    core_sentences = market_materiality.source_sentences(core)
+    normalized_core_sentences = [
+        re.sub(r"[^a-z0-9가-힣]", "", sentence.casefold())
+        for sentence in core_sentences
+    ]
+    for index, left in enumerate(normalized_core_sentences):
+        for right in normalized_core_sentences[index + 1:]:
+            shorter, longer = sorted((left, right), key=len)
+            if len(shorter) < 24:
+                continue
+            overlap = SequenceMatcher(None, shorter, longer, autojunk=False).find_longest_match(
+                0, len(shorter), 0, len(longer),
+            ).size
+            if overlap / len(shorter) >= 0.82:
+                errors.append("repeated_core_claim")
+                break
+        if "repeated_core_claim" in errors:
+            break
     expected_primary = primary_headline_measure_core(title, source, str(alert.get('published') or ''))
     primary_alignment = primary_headline_core_matches(alert, core)
     if expected_primary and not primary_alignment:
