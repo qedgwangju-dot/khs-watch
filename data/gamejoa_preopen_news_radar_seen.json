@@ -9149,6 +9149,23 @@
       "telegram_core_fact": "미국 커피 전문점 체인 스타벅스가 멕시코 음식 전문 외식 체인 '치폴레' 인수설을 부인했다.",
       "title": "스타벅스 \"치폴레 인수 안 한다\"…보도 나흘 만에 부인"
     },
+    "core:3c3ce309ed192421f6825492": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.mt.co.kr/index.php/estate/2026/10/12/2026101212041066403",
+      "source": "머니투데이",
+      "source_body_digest": "b9db00122583c75cbeb58e375700e47031f3be2fe40822ae77d20be5fdaaa1b4",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T13:54+09:00",
+      "source_title": "LH 임대손실 지적에…이성훈 \"보편형 임대는 재무 영향 크지 않아\"",
+      "telegram_core_fact": "이성훈 LH 사장은 건설원가 상승과 개발사업 수익 감소를 재무 부담의 원인으로 꼽으면서 보편형 임대주택은 기존 저소득층 대상 임대주택과 임대료 구조가 다르다고 설명했다.",
+      "title": "LH 임대손실 지적에…이성훈 \"보편형 임대는 재무 영향 크지 않아\""
+    },
     "core:3c3ceb2f2298456f49230409": {
       "first_seen_kst": "2026-10-08T10:20:20+09:00",
       "lanes": {
@@ -10081,6 +10098,32 @@
       "source_title": "기름값 21주째 하락…휘발유·경유 1,800원대 | 연합뉴스",
       "telegram_core_fact": "오늘(10일) 한국석유공사 유가정보시스템 오피넷에 따르면 10월 첫째 주 전국 주유소 휘발유 평균 판매가는 지난주보다 리터(L)당 0.4원 내린 1,857.6원이었습니다.",
       "title": "기름값 21주째 하락…휘발유·경유 1,800원대 | 연합뉴스"
+    },
+    "core:4181e0d4a3c8c6ebc9727b6a": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635063",
+      "source": "이투데이",
+      "source_body_digest": "d5985c3270ee54dfcd64511811e532272d039f720f7d92591f804e0bf2505ed5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b22226f9dd441d8503fd3c0662e2f7a4f2ce0b67a10e8ea1466b68eefdd2e939",
+      "source_fact_keys": [
+        "source_fact:v1:0b30427cee657bfafacdff1fd8e7c334f59fe732e36e82008dbd2fc2063ebb15",
+        "source_fact:v1:26d014e1a9f18985368640ca28d65a183f9b503dbb67f2daafac78ee20efe8b0",
+        "source_fact:v1:33532ce1a0e5b13c916a22a6431573e0812c435f0fbd2fdfd72c6e95428bf40d",
+        "source_fact:v1:50722209d5f52174d87083ef54d720fd45fe4dff7b752d1b0a27380ade93b7b9",
+        "source_fact:v1:969469c8fef6557a3ae2dd9e4d5192ca4905680c817a229b5c32fc15d442f413",
+        "source_fact:v1:b55901b6af4a1d92603612495cb3813cfd7ebf72af577a330c9f642c580c6f2f",
+        "source_fact:v1:df16a5e27cdf548d09f35d891d4a20ee32e20dad16c5bfb0ae119abaf33d1552",
+        "source_fact:v1:feefc264a6c0ac2829d55fcba8e7af351c4dcdad171f0cdbeb8b583f70d4228d"
+      ],
+      "source_published_kst": "2026-10-13T10:15+09:00",
+      "source_title": "키움운용, '삼성전자·SK하이닉스 채권혼합 ETF' 10월 주당 146원 지급",
+      "telegram_core_fact": "이 상품은 주식 편입 비중이 50%인 채권혼합형 ETF로, 퇴직연금 확정기여형(DC)과 개인형퇴직연금(IRP) 계좌에서 투자금의 최대 100%까지 편입할 수 있다.",
+      "title": "키움운용, '삼성전자·SK하이닉스 채권혼합 ETF' 10월 주당 146원 지급"
     },
     "core:4184c578add9188ee7dc38a1": {
       "first_seen_kst": "2026-10-08T20:16:13+09:00",
@@ -13698,6 +13741,28 @@
       "source_title": "네이버클라우드, 베트남 FPT와 AI 팩토리 구축…아태시장 공략",
       "telegram_core_fact": "김유원 네이버클라우드 대표는 “네이버클라우드가 축적해 온 AI 기술과 경험을 FPT의 AI 팩토리 및 엔터프라이즈 사업 역량과 결합할 수 있게 됐다”며 “한국과 베트남을 넘어 APAC 시장에서 고객의 다양한 AI 수요에 대응하고 실제 비즈니스 성과로 연결하는 협력을 만들어가겠다”고 말했다.",
       "title": "네이버클라우드, 베트남 FPT와 AI 팩토리 구축…아태시장 공략"
+    },
+    "core:5d6313c0225d023f8e559c52": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822974",
+      "source": "뉴시스",
+      "source_body_digest": "8fbcf5eb962f4831b7de6e7a7ec7163e0ae67e436e4886f3e869eba5e705a628",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4d8d8ba5b8b0a8148cd02f110be7a18790ad1184b209d74ebb0a49e71bc84e0",
+      "source_fact_keys": [
+        "source_fact:v1:00ffa4c63435135927921e37cb794a451bc4a34c1116bf8a9f2f35fe88150645",
+        "source_fact:v1:b040813d747b7823e98bc220233cff8190b5dc2d48fb0ca35e433449b17c37d9",
+        "source_fact:v1:c6a6bfa2c2784f0e9f02b2807291a177e72afe001464b1397b0de156eb604f42",
+        "source_fact:v1:ce35f025ebec014adcf5c5a0e4229d8c4c0e69c46a5e82b7474ccfab2b15728c"
+      ],
+      "source_published_kst": "2026-10-13T10:19+09:00",
+      "source_title": "켄텍, 개교 이래 최대 기술이전 계약…5억 규모",
+      "telegram_core_fact": "한국에너지공과대학교(KENTECH·켄텍)가 액화수소 플랜트 엔지니어링 원천기술로 개교 4년 만에 최대 기술이전 계약을 체결했다. 연구책임자이자 대표 발명자인 황지현 교수가 개발·축적한 기술로켄텍 개교 이후 최대 노하우 기술이전 계약이다.",
+      "title": "켄텍, 개교 이래 최대 기술이전 계약…5억 규모"
     },
     "core:5d680f75e672cead2000165e": {
       "first_seen_kst": "2026-10-11T13:40:09+09:00",
@@ -20105,6 +20170,31 @@
       "telegram_core_fact": "관련 업계에 따르면 삼성SDS는 우정항공의 지분 100%를 인수하는 주식양수도계약을 이날 체결했다. 삼성SDS가 항공운송 물류 전문기업인 우정항공을 인수했다.",
       "title": "삼성SDS, 항공물류업체 '우정항공' 인수 | 연합뉴스"
     },
+    "core:8a5d9b1d74aee07dd3039e54": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.hankyung.com/article/202610126048O",
+      "source": "한국경제",
+      "source_body_digest": "ced695fcd31aded319b3957e4cea9c1516a67bb24ec5eb32950ca9f07254b3a0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:41f6f3cab3c938bc25273cf7ac2f4ca22ab3a9b19929249972ef35621b8e653e",
+      "source_fact_keys": [
+        "source_fact:v1:162cd5e1bc21ae56efeee804433d1a9ddb0618c76ac18596fb4a132d11cef65b",
+        "source_fact:v1:17b246ea98671f7c52f858b95720c56bc12428105e6ac0e564b6f41aea6217f1",
+        "source_fact:v1:23ed5bf113ee39bd9b5c7953e6acd8a83e2ce13231293c1244538878403fe88a",
+        "source_fact:v1:3366a0e773f6cbef3387c2d74d1c7e699b1405cb6741690af5f88bc9d83a08a7",
+        "source_fact:v1:4534d07224670ce8e469b4f0335bcc875ce3929e6b912add99f42723c87ad8f5",
+        "source_fact:v1:bbc3d2767be76243ee5e1f680bb24ec9f9f341e334a910af59aff4dad825023b",
+        "source_fact:v1:fd256311c8ad20a3ab013a3a297ecf3e99232fa7581334da97ace51ff345021c"
+      ],
+      "source_published_kst": "2026-10-12T13:49+09:00",
+      "source_title": "빌드블록, '초기 거점 구축 서비스' 출시…한국 기업 미국 생산시설 구축 지원",
+      "telegram_core_fact": "빌드블록이 미국에 생산시설을 마련하려는 한국 기업을 대상으로 부지·건물의 사용 적합성과 기반시설, 인허가 조건을 사전 검토하는 서비스를 출시한다.",
+      "title": "빌드블록, '초기 거점 구축 서비스' 출시…한국 기업 미국 생산시설 구축 지원"
+    },
     "core:8a6f7add6752f3486d52308e": {
       "first_seen_kst": "2026-10-08T04:45:20+09:00",
       "lanes": {
@@ -26356,6 +26446,29 @@
       "source_title": "부천시, 개발제한구역 내 건축물·토지 변동 61곳 현장 조사",
       "telegram_core_fact": "시는 사전 검토를 마치는 대로 대상지를 순차적으로 방문해 건축물과 토지의 실제 이용 현황과 관련 인허가 여부 등을 확인할 계획이다.",
       "title": "부천시, 개발제한구역 내 건축물·토지 변동 61곳 현장 조사"
+    },
+    "core:b62a4699d7b33ee4112c4f90": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03230806645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "8ad9b1414381a6806487e99f64e0a892e2f97535f9f298fa122f5782dd256ad5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fe12ffe8ccf039803a53a117ad130ab89288e32d79692e6d5bd72bb9c7904d84",
+      "source_fact_keys": [
+        "source_fact:v1:17ac43f63c383295485f7a0eb7f4920294a6dc108484deb1de638a34bfa1b574",
+        "source_fact:v1:24ffae7faa6a8e22ea7a15875831d22002eca4aa5866ff2a935aaa16382c6cf1",
+        "source_fact:v1:425f71df11bde746066f0ef5936b62a3e04a6091c43aed257d47f56ed9ec6a48",
+        "source_fact:v1:878884a31519573075ade243279ffede46afaab49589b01549d77bb8b7e6956f",
+        "source_fact:v1:cb2a56eac24042ccd3882a5bdf3c6efdfb43d5ce0dd7d29c0504e0ff06eca431"
+      ],
+      "source_published_kst": "2026-10-12T14:01+09:00",
+      "source_title": "유니켐, 美 루미아 지분 100% 인수 본계약…‘로봇 전자피부’ 사업 본격화",
+      "telegram_core_fact": "유니켐(011330)이 미국 유연전자 기술기업 루미아 테크놀로지스(Loomia Technologies) 지분 100% 인수를 위한 본계약을 체결하고 로봇 전자피부 사업 확대에 나선다.",
+      "title": "유니켐, 美 루미아 지분 100% 인수 본계약…‘로봇 전자피부’ 사업 본격화"
     },
     "core:b62c1fd5a81f49a11d01e424": {
       "first_seen_kst": "2026-10-11T11:26:05+09:00",
@@ -39129,22 +39242,29 @@
     "event:331ddeb04512b3fddd93e5d9": {
       "first_seen_kst": "2026-10-13T06:41:52+09:00",
       "lanes": {
-        "live": "2026-10-13T09:21:17+09:00",
+        "live": "2026-10-13T11:35:08+09:00",
         "preopen": "2026-10-13T06:41:52+09:00"
       },
-      "last_seen_kst": "2026-10-13T09:21:17+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261013034900008",
-      "source": "연합뉴스",
-      "source_body_digest": "29204d2e0a8f0aca5e1078d38c6041bd86d14ae430a473b7f872a25594effe00",
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635063",
+      "source": "이투데이",
+      "source_body_digest": "d5985c3270ee54dfcd64511811e532272d039f720f7d92591f804e0bf2505ed5",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:015ebf5ddbb59b42cd2fc51c597427f372a0eec833f6661d0d29fffef11d1d17",
+      "source_fact_identity": "source_facts:v1:b22226f9dd441d8503fd3c0662e2f7a4f2ce0b67a10e8ea1466b68eefdd2e939",
       "source_fact_keys": [
-        "source_fact:v1:e0c16d32bd825ab32426674a16f65944cf0b15303693c80a9668807cc0dc17f8"
+        "source_fact:v1:0b30427cee657bfafacdff1fd8e7c334f59fe732e36e82008dbd2fc2063ebb15",
+        "source_fact:v1:26d014e1a9f18985368640ca28d65a183f9b503dbb67f2daafac78ee20efe8b0",
+        "source_fact:v1:33532ce1a0e5b13c916a22a6431573e0812c435f0fbd2fdfd72c6e95428bf40d",
+        "source_fact:v1:50722209d5f52174d87083ef54d720fd45fe4dff7b752d1b0a27380ade93b7b9",
+        "source_fact:v1:969469c8fef6557a3ae2dd9e4d5192ca4905680c817a229b5c32fc15d442f413",
+        "source_fact:v1:b55901b6af4a1d92603612495cb3813cfd7ebf72af577a330c9f642c580c6f2f",
+        "source_fact:v1:df16a5e27cdf548d09f35d891d4a20ee32e20dad16c5bfb0ae119abaf33d1552",
+        "source_fact:v1:feefc264a6c0ac2829d55fcba8e7af351c4dcdad171f0cdbeb8b583f70d4228d"
       ],
-      "source_published_kst": "2026-10-13T08:57+09:00",
-      "source_title": "삼성운용, 메타·팔란티어 담은 AI 에이전트 ETF 신규 상장 | 연합뉴스",
-      "telegram_core_fact": "삼성자산운용은 인공지능(AI) 에이전트 관련 미국 기업에 투자하는 'KODEX 미국AI에이전트액티브' 상장지수펀드(ETF)를 신규 상장한다고 13일 밝혔다.",
-      "title": "삼성운용, 메타·팔란티어 담은 AI 에이전트 ETF 신규 상장 | 연합뉴스"
+      "source_published_kst": "2026-10-13T10:15+09:00",
+      "source_title": "키움운용, '삼성전자·SK하이닉스 채권혼합 ETF' 10월 주당 146원 지급",
+      "telegram_core_fact": "이 상품은 주식 편입 비중이 50%인 채권혼합형 ETF로, 퇴직연금 확정기여형(DC)과 개인형퇴직연금(IRP) 계좌에서 투자금의 최대 100%까지 편입할 수 있다.",
+      "title": "키움운용, '삼성전자·SK하이닉스 채권혼합 ETF' 10월 주당 146원 지급"
     },
     "event:33f101e589ed6c9817f7a41d": {
       "first_seen_kst": "2026-10-05T17:30:42+09:00",
@@ -42825,22 +42945,27 @@
     "event:83c53d4458cde3b63b606a9a": {
       "first_seen_kst": "2026-10-12T05:58:12+09:00",
       "lanes": {
-        "live": "2026-10-13T06:17:31+09:00"
+        "live": "2026-10-13T11:35:08+09:00"
       },
-      "last_seen_kst": "2026-10-13T06:17:31+09:00",
-      "link": "https://www.mk.co.kr/news/it/12173702",
-      "source": "매일경제",
-      "source_body_digest": "88c9dc7382d24aa0d2efec275824b3666099a0b7d54909f35e52649acd2b25e4",
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.hankyung.com/article/202610126048O",
+      "source": "한국경제",
+      "source_body_digest": "ced695fcd31aded319b3957e4cea9c1516a67bb24ec5eb32950ca9f07254b3a0",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:75742daaf9cf9aff39636c92decc763c99ba829c199e2aa878b558a35b7d2d98",
+      "source_fact_identity": "source_facts:v1:41f6f3cab3c938bc25273cf7ac2f4ca22ab3a9b19929249972ef35621b8e653e",
       "source_fact_keys": [
-        "source_fact:v1:24f5c0ebf42be25cbd8280e51d550b8959a5924a95d134d56616f2c634958b2d",
-        "source_fact:v1:cda2d953b5fa629e79afd74d808c0f071b47184ce2dd566e41e3605ba654fd36"
+        "source_fact:v1:162cd5e1bc21ae56efeee804433d1a9ddb0618c76ac18596fb4a132d11cef65b",
+        "source_fact:v1:17b246ea98671f7c52f858b95720c56bc12428105e6ac0e564b6f41aea6217f1",
+        "source_fact:v1:23ed5bf113ee39bd9b5c7953e6acd8a83e2ce13231293c1244538878403fe88a",
+        "source_fact:v1:3366a0e773f6cbef3387c2d74d1c7e699b1405cb6741690af5f88bc9d83a08a7",
+        "source_fact:v1:4534d07224670ce8e469b4f0335bcc875ce3929e6b912add99f42723c87ad8f5",
+        "source_fact:v1:bbc3d2767be76243ee5e1f680bb24ec9f9f341e334a910af59aff4dad825023b",
+        "source_fact:v1:fd256311c8ad20a3ab013a3a297ecf3e99232fa7581334da97ace51ff345021c"
       ],
-      "source_published_kst": "2026-10-12T16:09+09:00",
-      "source_title": "\"AI 데이터센터 亞 허브 … 韓이 차지할 가능성 높아\"",
-      "telegram_core_fact": "이스칸다르 디렉터는 \"AI 하드웨어는 2~3년마다 교체되는데 데이터센터를 확보하기 위해 7년을 기다릴 수는 없다\"며 \"한국은 일본과 같은 공급 지연 문제나 홍콩의 정치적 불확실성이 상대적으로 적다\"고 말했다.",
-      "title": "\"AI 데이터센터 亞 허브 … 韓이 차지할 가능성 높아\""
+      "source_published_kst": "2026-10-12T13:49+09:00",
+      "source_title": "빌드블록, '초기 거점 구축 서비스' 출시…한국 기업 미국 생산시설 구축 지원",
+      "telegram_core_fact": "빌드블록이 미국에 생산시설을 마련하려는 한국 기업을 대상으로 부지·건물의 사용 적합성과 기반시설, 인허가 조건을 사전 검토하는 서비스를 출시한다.",
+      "title": "빌드블록, '초기 거점 구축 서비스' 출시…한국 기업 미국 생산시설 구축 지원"
     },
     "event:83cedd0d501accde1cc66e01": {
       "first_seen_kst": "2026-10-13T08:14:23+09:00",
@@ -52913,6 +53038,28 @@
       "telegram_core_fact": "최근 부동산 시장을 '매매·전세·월세의 트리플 강세'로 진단하며, 무리한 '영끌' 매수와 변동금리 대출에 대해 경고한 전문가의 분석이 나왔다.",
       "title": "'트리플 강세'에 갇힌 부동산…\"지금 안 사면 큰일? '영끌 매수' 경계해야\""
     },
+    "fact:157786499b0f6f785a7a99cc": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822974",
+      "source": "뉴시스",
+      "source_body_digest": "8fbcf5eb962f4831b7de6e7a7ec7163e0ae67e436e4886f3e869eba5e705a628",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4d8d8ba5b8b0a8148cd02f110be7a18790ad1184b209d74ebb0a49e71bc84e0",
+      "source_fact_keys": [
+        "source_fact:v1:00ffa4c63435135927921e37cb794a451bc4a34c1116bf8a9f2f35fe88150645",
+        "source_fact:v1:b040813d747b7823e98bc220233cff8190b5dc2d48fb0ca35e433449b17c37d9",
+        "source_fact:v1:c6a6bfa2c2784f0e9f02b2807291a177e72afe001464b1397b0de156eb604f42",
+        "source_fact:v1:ce35f025ebec014adcf5c5a0e4229d8c4c0e69c46a5e82b7474ccfab2b15728c"
+      ],
+      "source_published_kst": "2026-10-13T10:19+09:00",
+      "source_title": "켄텍, 개교 이래 최대 기술이전 계약…5억 규모",
+      "telegram_core_fact": "한국에너지공과대학교(KENTECH·켄텍)가 액화수소 플랜트 엔지니어링 원천기술로 개교 4년 만에 최대 기술이전 계약을 체결했다. 연구책임자이자 대표 발명자인 황지현 교수가 개발·축적한 기술로켄텍 개교 이후 최대 노하우 기술이전 계약이다.",
+      "title": "켄텍, 개교 이래 최대 기술이전 계약…5억 규모"
+    },
     "fact:15872aaf172b42d1fc2dd4ad": {
       "first_seen_kst": "2026-10-08T09:33:54+09:00",
       "lanes": {
@@ -55120,6 +55267,31 @@
       "source_title": "AI 투자·물가 압력에…美 금리 또 오른다?[주末머니]",
       "telegram_core_fact": "특히 이번 의사록에서는 AI 투자 확대가 경제성장을 견인하는 동시에 기업의 비용과 총수요를 높여 중기적으로 물가 압력을 확대할 수 있다는 점이 부각됐다.",
       "title": "AI 투자·물가 압력에…美 금리 또 오른다?[주末머니]"
+    },
+    "fact:21729f85e95a6541b8fcdaca": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.hankyung.com/article/202610126048O",
+      "source": "한국경제",
+      "source_body_digest": "ced695fcd31aded319b3957e4cea9c1516a67bb24ec5eb32950ca9f07254b3a0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:41f6f3cab3c938bc25273cf7ac2f4ca22ab3a9b19929249972ef35621b8e653e",
+      "source_fact_keys": [
+        "source_fact:v1:162cd5e1bc21ae56efeee804433d1a9ddb0618c76ac18596fb4a132d11cef65b",
+        "source_fact:v1:17b246ea98671f7c52f858b95720c56bc12428105e6ac0e564b6f41aea6217f1",
+        "source_fact:v1:23ed5bf113ee39bd9b5c7953e6acd8a83e2ce13231293c1244538878403fe88a",
+        "source_fact:v1:3366a0e773f6cbef3387c2d74d1c7e699b1405cb6741690af5f88bc9d83a08a7",
+        "source_fact:v1:4534d07224670ce8e469b4f0335bcc875ce3929e6b912add99f42723c87ad8f5",
+        "source_fact:v1:bbc3d2767be76243ee5e1f680bb24ec9f9f341e334a910af59aff4dad825023b",
+        "source_fact:v1:fd256311c8ad20a3ab013a3a297ecf3e99232fa7581334da97ace51ff345021c"
+      ],
+      "source_published_kst": "2026-10-12T13:49+09:00",
+      "source_title": "빌드블록, '초기 거점 구축 서비스' 출시…한국 기업 미국 생산시설 구축 지원",
+      "telegram_core_fact": "빌드블록이 미국에 생산시설을 마련하려는 한국 기업을 대상으로 부지·건물의 사용 적합성과 기반시설, 인허가 조건을 사전 검토하는 서비스를 출시한다.",
+      "title": "빌드블록, '초기 거점 구축 서비스' 출시…한국 기업 미국 생산시설 구축 지원"
     },
     "fact:21a67fe5fee872a15e36f4f1": {
       "first_seen_kst": "2026-10-13T01:09:54+09:00",
@@ -65827,6 +65999,29 @@
       ],
       "source_published_kst": "2026-10-06T14:55+09:00",
       "title": "대전시 아이들 밥상 챙긴다…학교급식 식품비 15% 인상"
+    },
+    "fact:58ce0971404169439259dc41": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03230806645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "8ad9b1414381a6806487e99f64e0a892e2f97535f9f298fa122f5782dd256ad5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fe12ffe8ccf039803a53a117ad130ab89288e32d79692e6d5bd72bb9c7904d84",
+      "source_fact_keys": [
+        "source_fact:v1:17ac43f63c383295485f7a0eb7f4920294a6dc108484deb1de638a34bfa1b574",
+        "source_fact:v1:24ffae7faa6a8e22ea7a15875831d22002eca4aa5866ff2a935aaa16382c6cf1",
+        "source_fact:v1:425f71df11bde746066f0ef5936b62a3e04a6091c43aed257d47f56ed9ec6a48",
+        "source_fact:v1:878884a31519573075ade243279ffede46afaab49589b01549d77bb8b7e6956f",
+        "source_fact:v1:cb2a56eac24042ccd3882a5bdf3c6efdfb43d5ce0dd7d29c0504e0ff06eca431"
+      ],
+      "source_published_kst": "2026-10-12T14:01+09:00",
+      "source_title": "유니켐, 美 루미아 지분 100% 인수 본계약…‘로봇 전자피부’ 사업 본격화",
+      "telegram_core_fact": "유니켐(011330)이 미국 유연전자 기술기업 루미아 테크놀로지스(Loomia Technologies) 지분 100% 인수를 위한 본계약을 체결하고 로봇 전자피부 사업 확대에 나선다.",
+      "title": "유니켐, 美 루미아 지분 100% 인수 본계약…‘로봇 전자피부’ 사업 본격화"
     },
     "fact:58e8742caa83f93f62186d34": {
       "first_seen_kst": "2026-10-07T00:09:35+09:00",
@@ -84790,6 +84985,32 @@
       "source_published_kst": "2026-10-06T09:55+09:00",
       "title": "어기구 \"5년간 2천억원 썼는데 연간 조류 정전 2배로\" | 연합뉴스"
     },
+    "fact:b4d1148564e3fbadc864f3de": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634682",
+      "source": "이투데이",
+      "source_body_digest": "6b22b69b90551db8ee33a989a0aa5b0565004bd20b2bfe33b5f28b0f856106fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ad2220db88f9ca3db3629ff5195a4416a10ea6a86ffe829df47a3cd5c4743a47",
+      "source_fact_keys": [
+        "source_fact:v1:05496e61eb8ae4b7e9f260b95f1732fed2982a0db3ad76eb6d944fcf2ab32f07",
+        "source_fact:v1:28741b32c157a1cec20d3fd3e7ce36bab1e667dc0d9c22834c212f35ef12aed5",
+        "source_fact:v1:29d0ea810c0670937abdb47a164c1a4224534eb5aebb870fbe707d2fe1dfb2c6",
+        "source_fact:v1:93c0bcbc8883f4a87a1f6b3d29d8b9aedb8a795afbde4c39003f4b5d304f8d5b",
+        "source_fact:v1:ab3f8506a620063228a8c3cc4f2afe967bd64db6de57b2c0c22259b1bb834244",
+        "source_fact:v1:b1627422dc45886bd848ba041d49a3bcef7acbfe8256747f0d977bdbc9591455",
+        "source_fact:v1:d447df5b0b5ac5727f4d43db8555961c6048626ac553929f7f467ad53e715564",
+        "source_fact:v1:d832c4fe2dc244307e009b96d9773c1f3530b9c9d1bd4b235872c298e665f7dd"
+      ],
+      "source_published_kst": "2026-10-12T14:06+09:00",
+      "source_title": "뷰티스킨, 중국 대규모 화장품 수출 계약 초도물량 발주서 수령",
+      "telegram_core_fact": "회사는 중국과 베트남 관련 공급 계약을 체결했으며 초도 물량 발주도 받은 상태다.",
+      "title": "뷰티스킨, 중국 대규모 화장품 수출 계약 초도물량 발주서 수령"
+    },
     "fact:b5378a07748115665474f524": {
       "first_seen_kst": "2026-10-09T17:13:50+09:00",
       "lanes": {
@@ -98447,6 +98668,32 @@
       "source_title": "노벨문학상 앤 카슨, 서점가 돌풍…교보 판매량 203.9배 ↑",
       "telegram_core_fact": "교보문고에 따르면 노벨문학상 수상자가 발표된 지난 8일 오후 8시부터 이날 오전 9시까지 카슨 도서 판매량은 수상자 발표 전 평균 판매량의 203.9배로 늘었다. 올해 노벨문학상을 받은 캐나다 작가 앤 카슨(76)의 작품이 국내 서점가에서 판매 급증세를 이어가고 있다.",
       "title": "노벨문학상 앤 카슨, 서점가 돌풍…교보 판매량 203.9배 ↑"
+    },
+    "fact:f91a4aa4aa86b0db3269689e": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635063",
+      "source": "이투데이",
+      "source_body_digest": "d5985c3270ee54dfcd64511811e532272d039f720f7d92591f804e0bf2505ed5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b22226f9dd441d8503fd3c0662e2f7a4f2ce0b67a10e8ea1466b68eefdd2e939",
+      "source_fact_keys": [
+        "source_fact:v1:0b30427cee657bfafacdff1fd8e7c334f59fe732e36e82008dbd2fc2063ebb15",
+        "source_fact:v1:26d014e1a9f18985368640ca28d65a183f9b503dbb67f2daafac78ee20efe8b0",
+        "source_fact:v1:33532ce1a0e5b13c916a22a6431573e0812c435f0fbd2fdfd72c6e95428bf40d",
+        "source_fact:v1:50722209d5f52174d87083ef54d720fd45fe4dff7b752d1b0a27380ade93b7b9",
+        "source_fact:v1:969469c8fef6557a3ae2dd9e4d5192ca4905680c817a229b5c32fc15d442f413",
+        "source_fact:v1:b55901b6af4a1d92603612495cb3813cfd7ebf72af577a330c9f642c580c6f2f",
+        "source_fact:v1:df16a5e27cdf548d09f35d891d4a20ee32e20dad16c5bfb0ae119abaf33d1552",
+        "source_fact:v1:feefc264a6c0ac2829d55fcba8e7af351c4dcdad171f0cdbeb8b583f70d4228d"
+      ],
+      "source_published_kst": "2026-10-13T10:15+09:00",
+      "source_title": "키움운용, '삼성전자·SK하이닉스 채권혼합 ETF' 10월 주당 146원 지급",
+      "telegram_core_fact": "이 상품은 주식 편입 비중이 50%인 채권혼합형 ETF로, 퇴직연금 확정기여형(DC)과 개인형퇴직연금(IRP) 계좌에서 투자금의 최대 100%까지 편입할 수 있다.",
+      "title": "키움운용, '삼성전자·SK하이닉스 채권혼합 ETF' 10월 주당 146원 지급"
     },
     "fact:f94573ca049b07980a1ab1f8": {
       "first_seen_kst": "2026-10-06T11:41:27+09:00",
@@ -126252,6 +126499,32 @@
       "source": "뉴시스",
       "title": "[속보]뉴욕증시, 혼조 출발…연준 금리 인상 속 나스닥 0.3%↑"
     },
+    "link:5dcac2bbb298a58b23f7cd6f": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634682",
+      "source": "이투데이",
+      "source_body_digest": "6b22b69b90551db8ee33a989a0aa5b0565004bd20b2bfe33b5f28b0f856106fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ad2220db88f9ca3db3629ff5195a4416a10ea6a86ffe829df47a3cd5c4743a47",
+      "source_fact_keys": [
+        "source_fact:v1:05496e61eb8ae4b7e9f260b95f1732fed2982a0db3ad76eb6d944fcf2ab32f07",
+        "source_fact:v1:28741b32c157a1cec20d3fd3e7ce36bab1e667dc0d9c22834c212f35ef12aed5",
+        "source_fact:v1:29d0ea810c0670937abdb47a164c1a4224534eb5aebb870fbe707d2fe1dfb2c6",
+        "source_fact:v1:93c0bcbc8883f4a87a1f6b3d29d8b9aedb8a795afbde4c39003f4b5d304f8d5b",
+        "source_fact:v1:ab3f8506a620063228a8c3cc4f2afe967bd64db6de57b2c0c22259b1bb834244",
+        "source_fact:v1:b1627422dc45886bd848ba041d49a3bcef7acbfe8256747f0d977bdbc9591455",
+        "source_fact:v1:d447df5b0b5ac5727f4d43db8555961c6048626ac553929f7f467ad53e715564",
+        "source_fact:v1:d832c4fe2dc244307e009b96d9773c1f3530b9c9d1bd4b235872c298e665f7dd"
+      ],
+      "source_published_kst": "2026-10-12T14:06+09:00",
+      "source_title": "뷰티스킨, 중국 대규모 화장품 수출 계약 초도물량 발주서 수령",
+      "telegram_core_fact": "회사는 중국과 베트남 관련 공급 계약을 체결했으며 초도 물량 발주도 받은 상태다.",
+      "title": "뷰티스킨, 중국 대규모 화장품 수출 계약 초도물량 발주서 수령"
+    },
     "link:5dd396a85e32edc285072307": {
       "first_seen_kst": "2026-10-06T12:10:48+09:00",
       "lanes": {
@@ -129754,6 +130027,31 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-03T10:05+09:00",
       "title": "나스닥 1%, 美반도체지수 2% 상승…연휴 뒤 韓증시도 따라 웃을까"
+    },
+    "link:6a1a9a49c06b7cf50e85ff89": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.hankyung.com/article/202610126048O",
+      "source": "한국경제",
+      "source_body_digest": "ced695fcd31aded319b3957e4cea9c1516a67bb24ec5eb32950ca9f07254b3a0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:41f6f3cab3c938bc25273cf7ac2f4ca22ab3a9b19929249972ef35621b8e653e",
+      "source_fact_keys": [
+        "source_fact:v1:162cd5e1bc21ae56efeee804433d1a9ddb0618c76ac18596fb4a132d11cef65b",
+        "source_fact:v1:17b246ea98671f7c52f858b95720c56bc12428105e6ac0e564b6f41aea6217f1",
+        "source_fact:v1:23ed5bf113ee39bd9b5c7953e6acd8a83e2ce13231293c1244538878403fe88a",
+        "source_fact:v1:3366a0e773f6cbef3387c2d74d1c7e699b1405cb6741690af5f88bc9d83a08a7",
+        "source_fact:v1:4534d07224670ce8e469b4f0335bcc875ce3929e6b912add99f42723c87ad8f5",
+        "source_fact:v1:bbc3d2767be76243ee5e1f680bb24ec9f9f341e334a910af59aff4dad825023b",
+        "source_fact:v1:fd256311c8ad20a3ab013a3a297ecf3e99232fa7581334da97ace51ff345021c"
+      ],
+      "source_published_kst": "2026-10-12T13:49+09:00",
+      "source_title": "빌드블록, '초기 거점 구축 서비스' 출시…한국 기업 미국 생산시설 구축 지원",
+      "telegram_core_fact": "빌드블록이 미국에 생산시설을 마련하려는 한국 기업을 대상으로 부지·건물의 사용 적합성과 기반시설, 인허가 조건을 사전 검토하는 서비스를 출시한다.",
+      "title": "빌드블록, '초기 거점 구축 서비스' 출시…한국 기업 미국 생산시설 구축 지원"
     },
     "link:6a2c26eeea5808dd5040d3f1": {
       "first_seen_kst": "2026-10-08T08:12:34+09:00",
@@ -138532,6 +138830,32 @@
       ],
       "source_published_kst": "2026-10-07T08:37+09:00",
       "title": "LS에코에너지, AI데이터센터용 대용량 버스덕트에 80억원 투자 | 연합뉴스"
+    },
+    "link:88b0ee97296bdb023491c8e9": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635063",
+      "source": "이투데이",
+      "source_body_digest": "d5985c3270ee54dfcd64511811e532272d039f720f7d92591f804e0bf2505ed5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b22226f9dd441d8503fd3c0662e2f7a4f2ce0b67a10e8ea1466b68eefdd2e939",
+      "source_fact_keys": [
+        "source_fact:v1:0b30427cee657bfafacdff1fd8e7c334f59fe732e36e82008dbd2fc2063ebb15",
+        "source_fact:v1:26d014e1a9f18985368640ca28d65a183f9b503dbb67f2daafac78ee20efe8b0",
+        "source_fact:v1:33532ce1a0e5b13c916a22a6431573e0812c435f0fbd2fdfd72c6e95428bf40d",
+        "source_fact:v1:50722209d5f52174d87083ef54d720fd45fe4dff7b752d1b0a27380ade93b7b9",
+        "source_fact:v1:969469c8fef6557a3ae2dd9e4d5192ca4905680c817a229b5c32fc15d442f413",
+        "source_fact:v1:b55901b6af4a1d92603612495cb3813cfd7ebf72af577a330c9f642c580c6f2f",
+        "source_fact:v1:df16a5e27cdf548d09f35d891d4a20ee32e20dad16c5bfb0ae119abaf33d1552",
+        "source_fact:v1:feefc264a6c0ac2829d55fcba8e7af351c4dcdad171f0cdbeb8b583f70d4228d"
+      ],
+      "source_published_kst": "2026-10-13T10:15+09:00",
+      "source_title": "키움운용, '삼성전자·SK하이닉스 채권혼합 ETF' 10월 주당 146원 지급",
+      "telegram_core_fact": "이 상품은 주식 편입 비중이 50%인 채권혼합형 ETF로, 퇴직연금 확정기여형(DC)과 개인형퇴직연금(IRP) 계좌에서 투자금의 최대 100%까지 편입할 수 있다.",
+      "title": "키움운용, '삼성전자·SK하이닉스 채권혼합 ETF' 10월 주당 146원 지급"
     },
     "link:88b1dcb78b123a4666c62a60": {
       "first_seen_kst": "2026-10-07T20:28:48+09:00",
@@ -149830,6 +150154,29 @@
       "source_published_kst": "2026-10-06T23:43+09:00",
       "title": "에이로봇, 방산혁신기업 선정…휴머노이드 군 시범운용 추진"
     },
+    "link:aed4c5e4e5dd373c3b2f6047": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03230806645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "8ad9b1414381a6806487e99f64e0a892e2f97535f9f298fa122f5782dd256ad5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fe12ffe8ccf039803a53a117ad130ab89288e32d79692e6d5bd72bb9c7904d84",
+      "source_fact_keys": [
+        "source_fact:v1:17ac43f63c383295485f7a0eb7f4920294a6dc108484deb1de638a34bfa1b574",
+        "source_fact:v1:24ffae7faa6a8e22ea7a15875831d22002eca4aa5866ff2a935aaa16382c6cf1",
+        "source_fact:v1:425f71df11bde746066f0ef5936b62a3e04a6091c43aed257d47f56ed9ec6a48",
+        "source_fact:v1:878884a31519573075ade243279ffede46afaab49589b01549d77bb8b7e6956f",
+        "source_fact:v1:cb2a56eac24042ccd3882a5bdf3c6efdfb43d5ce0dd7d29c0504e0ff06eca431"
+      ],
+      "source_published_kst": "2026-10-12T14:01+09:00",
+      "source_title": "유니켐, 美 루미아 지분 100% 인수 본계약…‘로봇 전자피부’ 사업 본격화",
+      "telegram_core_fact": "유니켐(011330)이 미국 유연전자 기술기업 루미아 테크놀로지스(Loomia Technologies) 지분 100% 인수를 위한 본계약을 체결하고 로봇 전자피부 사업 확대에 나선다.",
+      "title": "유니켐, 美 루미아 지분 100% 인수 본계약…‘로봇 전자피부’ 사업 본격화"
+    },
     "link:aeef6d70fa87779322f54ed6": {
       "first_seen_kst": "2026-10-09T17:32:22+09:00",
       "lanes": {
@@ -150009,6 +150356,29 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T11:30+09:00",
       "title": "AMRO, 한국 올해 성장률 3.3%로 상향…내년 2.7% 제시 | 연합뉴스"
+    },
+    "link:afafa1957b1ed837377f4beb": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03230806645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "8ad9b1414381a6806487e99f64e0a892e2f97535f9f298fa122f5782dd256ad5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fe12ffe8ccf039803a53a117ad130ab89288e32d79692e6d5bd72bb9c7904d84",
+      "source_fact_keys": [
+        "source_fact:v1:17ac43f63c383295485f7a0eb7f4920294a6dc108484deb1de638a34bfa1b574",
+        "source_fact:v1:24ffae7faa6a8e22ea7a15875831d22002eca4aa5866ff2a935aaa16382c6cf1",
+        "source_fact:v1:425f71df11bde746066f0ef5936b62a3e04a6091c43aed257d47f56ed9ec6a48",
+        "source_fact:v1:878884a31519573075ade243279ffede46afaab49589b01549d77bb8b7e6956f",
+        "source_fact:v1:cb2a56eac24042ccd3882a5bdf3c6efdfb43d5ce0dd7d29c0504e0ff06eca431"
+      ],
+      "source_published_kst": "2026-10-12T14:01+09:00",
+      "source_title": "유니켐, 美 루미아 지분 100% 인수 본계약…‘로봇 전자피부’ 사업 본격화",
+      "telegram_core_fact": "유니켐(011330)이 미국 유연전자 기술기업 루미아 테크놀로지스(Loomia Technologies) 지분 100% 인수를 위한 본계약을 체결하고 로봇 전자피부 사업 확대에 나선다.",
+      "title": "유니켐, 美 루미아 지분 100% 인수 본계약…‘로봇 전자피부’ 사업 본격화"
     },
     "link:afbe52647821713c65e31163": {
       "first_seen_kst": "2026-10-06T18:46:35+09:00",
@@ -150439,6 +150809,23 @@
       "source_title": "'158억원 무차입 공매도 혐의' 홍콩 HSBC, 대법서 무죄 확정 | 연합뉴스",
       "telegram_core_fact": "HSBC 홍콩법인 트레이더 A씨 등 3명은 2021년 8∼12월 무차입 방식으로 호텔신라 등 9개 상장사 주식 31만8천781주(157억8천468만원)를 공매도한 혐의로 2024년 3월 기소됐다.",
       "title": "'158억원 무차입 공매도 혐의' 홍콩 HSBC, 대법서 무죄 확정 | 연합뉴스"
+    },
+    "link:b1ce32edd26510374a0b3617": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634679",
+      "source": "이투데이",
+      "source_body_digest": "eeb5aac9dda862d568703775c1d5aede674f689d83e90789c6bda4d2d6f8ad2b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T14:02+09:00",
+      "source_title": "김종철 방미통위원장 “불법스팸 부당이익 환수 과징금 신설…불공정행위 제재 강화” [국감]",
+      "telegram_core_fact": "통신시장 금지행위 위반에 대한 과징금도 상향해 불공정행위에 대한 제재 수위를 높인다.",
+      "title": "김종철 방미통위원장 “불법스팸 부당이익 환수 과징금 신설…불공정행위 제재 강화” [국감]"
     },
     "link:b1d78d8a7135cd25aae1f67e": {
       "first_seen_kst": "2026-10-07T02:49:10+09:00",
@@ -155002,6 +155389,28 @@
       "source_title": "달러 약세에 수출 네고까지…환율 1330원대로 하락 시도[외환브리핑]",
       "telegram_core_fact": "유로·달러 환율은 1.12597달러로 0.35% 상승했다.",
       "title": "달러 약세에 수출 네고까지…환율 1330원대로 하락 시도[외환브리핑]"
+    },
+    "link:c1631a556db9530a5866a042": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822974",
+      "source": "뉴시스",
+      "source_body_digest": "8fbcf5eb962f4831b7de6e7a7ec7163e0ae67e436e4886f3e869eba5e705a628",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4d8d8ba5b8b0a8148cd02f110be7a18790ad1184b209d74ebb0a49e71bc84e0",
+      "source_fact_keys": [
+        "source_fact:v1:00ffa4c63435135927921e37cb794a451bc4a34c1116bf8a9f2f35fe88150645",
+        "source_fact:v1:b040813d747b7823e98bc220233cff8190b5dc2d48fb0ca35e433449b17c37d9",
+        "source_fact:v1:c6a6bfa2c2784f0e9f02b2807291a177e72afe001464b1397b0de156eb604f42",
+        "source_fact:v1:ce35f025ebec014adcf5c5a0e4229d8c4c0e69c46a5e82b7474ccfab2b15728c"
+      ],
+      "source_published_kst": "2026-10-13T10:19+09:00",
+      "source_title": "켄텍, 개교 이래 최대 기술이전 계약…5억 규모",
+      "telegram_core_fact": "한국에너지공과대학교(KENTECH·켄텍)가 액화수소 플랜트 엔지니어링 원천기술로 개교 4년 만에 최대 기술이전 계약을 체결했다. 연구책임자이자 대표 발명자인 황지현 교수가 개발·축적한 기술로켄텍 개교 이후 최대 노하우 기술이전 계약이다.",
+      "title": "켄텍, 개교 이래 최대 기술이전 계약…5억 규모"
     },
     "link:c168e3c62ad0c70ae66cafb1": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
@@ -162736,6 +163145,23 @@
       "source_title": "\"투자유치 성과 구체화\"…세종시장, 100여일만 시청 집무실 복귀 | 연합뉴스",
       "telegram_core_fact": "취임 100일을 기점으로 기업의 투자 계획이 구체화한 것이 시청 집무실 복귀를 결정한 배경이 됐다. 세종시는 삼성전기의 8조원대 투자계획, 다이소 물류센터 확장계획, 8조8천억원대 인공지능 데이터센터 유치 등을 조 시장 취임 후 주요 투자유치 성과로 꼽았다.",
       "title": "\"투자유치 성과 구체화\"…세종시장, 100여일만 시청 집무실 복귀 | 연합뉴스"
+    },
+    "link:dd381c631969a5d6fdc10883": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.mt.co.kr/index.php/estate/2026/10/12/2026101212041066403",
+      "source": "머니투데이",
+      "source_body_digest": "b9db00122583c75cbeb58e375700e47031f3be2fe40822ae77d20be5fdaaa1b4",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T13:54+09:00",
+      "source_title": "LH 임대손실 지적에…이성훈 \"보편형 임대는 재무 영향 크지 않아\"",
+      "telegram_core_fact": "이성훈 LH 사장은 건설원가 상승과 개발사업 수익 감소를 재무 부담의 원인으로 꼽으면서 보편형 임대주택은 기존 저소득층 대상 임대주택과 임대료 구조가 다르다고 설명했다.",
+      "title": "LH 임대손실 지적에…이성훈 \"보편형 임대는 재무 영향 크지 않아\""
     },
     "link:dd5ce5b2f217c643af59b239": {
       "first_seen_kst": "2026-10-06T19:58:43+09:00",
@@ -173750,6 +174176,29 @@
       "telegram_core_fact": "승인받은 크레딧은 투자국의 국가 온실가스 감축목표(NDC)나 국제항공 탄소상쇄·감축제도인 코르시아 등 규제 대응과 ESG 활동에 활용하는 방향으로 추진한다.",
       "title": "정부, 내년 글로벌 ‘고신뢰 탄소시장’ 가동…탄소 크레딧 디지털자산 발행 검토"
     },
+    "original:04e8fe38486afa15468014c9": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03230806645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "8ad9b1414381a6806487e99f64e0a892e2f97535f9f298fa122f5782dd256ad5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fe12ffe8ccf039803a53a117ad130ab89288e32d79692e6d5bd72bb9c7904d84",
+      "source_fact_keys": [
+        "source_fact:v1:17ac43f63c383295485f7a0eb7f4920294a6dc108484deb1de638a34bfa1b574",
+        "source_fact:v1:24ffae7faa6a8e22ea7a15875831d22002eca4aa5866ff2a935aaa16382c6cf1",
+        "source_fact:v1:425f71df11bde746066f0ef5936b62a3e04a6091c43aed257d47f56ed9ec6a48",
+        "source_fact:v1:878884a31519573075ade243279ffede46afaab49589b01549d77bb8b7e6956f",
+        "source_fact:v1:cb2a56eac24042ccd3882a5bdf3c6efdfb43d5ce0dd7d29c0504e0ff06eca431"
+      ],
+      "source_published_kst": "2026-10-12T14:01+09:00",
+      "source_title": "유니켐, 美 루미아 지분 100% 인수 본계약…‘로봇 전자피부’ 사업 본격화",
+      "telegram_core_fact": "유니켐(011330)이 미국 유연전자 기술기업 루미아 테크놀로지스(Loomia Technologies) 지분 100% 인수를 위한 본계약을 체결하고 로봇 전자피부 사업 확대에 나선다.",
+      "title": "유니켐, 美 루미아 지분 100% 인수 본계약…‘로봇 전자피부’ 사업 본격화"
+    },
     "original:04f86303ebdb71eeb23282c9": {
       "first_seen_kst": "2026-10-13T10:05:20+09:00",
       "lanes": {
@@ -181940,6 +182389,32 @@
       ],
       "source_published_kst": "2026-10-07T16:08+09:00",
       "title": "금속노조 \"충주 킬른 설비 사망사고, 위험의 외주화 여전\""
+    },
+    "original:23d14da3869a6e9c7f43937b": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635063",
+      "source": "이투데이",
+      "source_body_digest": "d5985c3270ee54dfcd64511811e532272d039f720f7d92591f804e0bf2505ed5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b22226f9dd441d8503fd3c0662e2f7a4f2ce0b67a10e8ea1466b68eefdd2e939",
+      "source_fact_keys": [
+        "source_fact:v1:0b30427cee657bfafacdff1fd8e7c334f59fe732e36e82008dbd2fc2063ebb15",
+        "source_fact:v1:26d014e1a9f18985368640ca28d65a183f9b503dbb67f2daafac78ee20efe8b0",
+        "source_fact:v1:33532ce1a0e5b13c916a22a6431573e0812c435f0fbd2fdfd72c6e95428bf40d",
+        "source_fact:v1:50722209d5f52174d87083ef54d720fd45fe4dff7b752d1b0a27380ade93b7b9",
+        "source_fact:v1:969469c8fef6557a3ae2dd9e4d5192ca4905680c817a229b5c32fc15d442f413",
+        "source_fact:v1:b55901b6af4a1d92603612495cb3813cfd7ebf72af577a330c9f642c580c6f2f",
+        "source_fact:v1:df16a5e27cdf548d09f35d891d4a20ee32e20dad16c5bfb0ae119abaf33d1552",
+        "source_fact:v1:feefc264a6c0ac2829d55fcba8e7af351c4dcdad171f0cdbeb8b583f70d4228d"
+      ],
+      "source_published_kst": "2026-10-13T10:15+09:00",
+      "source_title": "키움운용, '삼성전자·SK하이닉스 채권혼합 ETF' 10월 주당 146원 지급",
+      "telegram_core_fact": "이 상품은 주식 편입 비중이 50%인 채권혼합형 ETF로, 퇴직연금 확정기여형(DC)과 개인형퇴직연금(IRP) 계좌에서 투자금의 최대 100%까지 편입할 수 있다.",
+      "title": "키움운용, '삼성전자·SK하이닉스 채권혼합 ETF' 10월 주당 146원 지급"
     },
     "original:23e532e0900d46027842e930": {
       "first_seen_kst": "2026-10-11T12:11:12+09:00",
@@ -192008,6 +192483,28 @@
       "source": "머니투데이",
       "title": "정무위, 국감 증인 채택 또 불발...野 \"레버리지 ETF 김용범 불러야\""
     },
+    "original:45d541c7ca594b93814ff87f": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822974",
+      "source": "뉴시스",
+      "source_body_digest": "8fbcf5eb962f4831b7de6e7a7ec7163e0ae67e436e4886f3e869eba5e705a628",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4d8d8ba5b8b0a8148cd02f110be7a18790ad1184b209d74ebb0a49e71bc84e0",
+      "source_fact_keys": [
+        "source_fact:v1:00ffa4c63435135927921e37cb794a451bc4a34c1116bf8a9f2f35fe88150645",
+        "source_fact:v1:b040813d747b7823e98bc220233cff8190b5dc2d48fb0ca35e433449b17c37d9",
+        "source_fact:v1:c6a6bfa2c2784f0e9f02b2807291a177e72afe001464b1397b0de156eb604f42",
+        "source_fact:v1:ce35f025ebec014adcf5c5a0e4229d8c4c0e69c46a5e82b7474ccfab2b15728c"
+      ],
+      "source_published_kst": "2026-10-13T10:19+09:00",
+      "source_title": "켄텍, 개교 이래 최대 기술이전 계약…5억 규모",
+      "telegram_core_fact": "한국에너지공과대학교(KENTECH·켄텍)가 액화수소 플랜트 엔지니어링 원천기술로 개교 4년 만에 최대 기술이전 계약을 체결했다. 연구책임자이자 대표 발명자인 황지현 교수가 개발·축적한 기술로켄텍 개교 이후 최대 노하우 기술이전 계약이다.",
+      "title": "켄텍, 개교 이래 최대 기술이전 계약…5억 규모"
+    },
     "original:45e2aa14a4dfdd1a8e0ac9fe": {
       "first_seen_kst": "2026-10-08T16:54:07+09:00",
       "lanes": {
@@ -198637,6 +199134,23 @@
       "source_published_kst": "2026-10-07T08:23+09:00",
       "title": "\"삼전닉스 3분기 실적 추정치 상향…우려보다 견조할 것\""
     },
+    "original:5e49378c8d3a0fe3e30ee2f9": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.mt.co.kr/index.php/estate/2026/10/12/2026101212041066403",
+      "source": "머니투데이",
+      "source_body_digest": "b9db00122583c75cbeb58e375700e47031f3be2fe40822ae77d20be5fdaaa1b4",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T13:54+09:00",
+      "source_title": "LH 임대손실 지적에…이성훈 \"보편형 임대는 재무 영향 크지 않아\"",
+      "telegram_core_fact": "이성훈 LH 사장은 건설원가 상승과 개발사업 수익 감소를 재무 부담의 원인으로 꼽으면서 보편형 임대주택은 기존 저소득층 대상 임대주택과 임대료 구조가 다르다고 설명했다.",
+      "title": "LH 임대손실 지적에…이성훈 \"보편형 임대는 재무 영향 크지 않아\""
+    },
     "original:5e5609aa487d8e24ca679aa3": {
       "first_seen_kst": "2026-10-05T09:13:59+09:00",
       "lanes": {
@@ -199094,6 +199608,31 @@
       ],
       "source_published_kst": "2026-10-06T17:34+09:00",
       "title": "기업 DB, 계열사에만 제공…조사協, 한국평가데이터 공정위 신고"
+    },
+    "original:5fd8078a9689c49e30ad681b": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.hankyung.com/article/202610126048O",
+      "source": "한국경제",
+      "source_body_digest": "ced695fcd31aded319b3957e4cea9c1516a67bb24ec5eb32950ca9f07254b3a0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:41f6f3cab3c938bc25273cf7ac2f4ca22ab3a9b19929249972ef35621b8e653e",
+      "source_fact_keys": [
+        "source_fact:v1:162cd5e1bc21ae56efeee804433d1a9ddb0618c76ac18596fb4a132d11cef65b",
+        "source_fact:v1:17b246ea98671f7c52f858b95720c56bc12428105e6ac0e564b6f41aea6217f1",
+        "source_fact:v1:23ed5bf113ee39bd9b5c7953e6acd8a83e2ce13231293c1244538878403fe88a",
+        "source_fact:v1:3366a0e773f6cbef3387c2d74d1c7e699b1405cb6741690af5f88bc9d83a08a7",
+        "source_fact:v1:4534d07224670ce8e469b4f0335bcc875ce3929e6b912add99f42723c87ad8f5",
+        "source_fact:v1:bbc3d2767be76243ee5e1f680bb24ec9f9f341e334a910af59aff4dad825023b",
+        "source_fact:v1:fd256311c8ad20a3ab013a3a297ecf3e99232fa7581334da97ace51ff345021c"
+      ],
+      "source_published_kst": "2026-10-12T13:49+09:00",
+      "source_title": "빌드블록, '초기 거점 구축 서비스' 출시…한국 기업 미국 생산시설 구축 지원",
+      "telegram_core_fact": "빌드블록이 미국에 생산시설을 마련하려는 한국 기업을 대상으로 부지·건물의 사용 적합성과 기반시설, 인허가 조건을 사전 검토하는 서비스를 출시한다.",
+      "title": "빌드블록, '초기 거점 구축 서비스' 출시…한국 기업 미국 생산시설 구축 지원"
     },
     "original:5fe4b7cb445547f6b1228927": {
       "first_seen_kst": "2026-10-05T01:05:10+09:00",
@@ -226682,6 +227221,23 @@
       "source_published_kst": "2026-10-06T16:27+09:00",
       "title": "[올댓차이나] 中 AI 스타트업 문샷, 내년 1분기 홍콩 상장…\"기업가치 500억＄\""
     },
+    "original:c67c2c9b7a0c67f24922a70d": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634679",
+      "source": "이투데이",
+      "source_body_digest": "eeb5aac9dda862d568703775c1d5aede674f689d83e90789c6bda4d2d6f8ad2b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T14:02+09:00",
+      "source_title": "김종철 방미통위원장 “불법스팸 부당이익 환수 과징금 신설…불공정행위 제재 강화” [국감]",
+      "telegram_core_fact": "통신시장 금지행위 위반에 대한 과징금도 상향해 불공정행위에 대한 제재 수위를 높인다.",
+      "title": "김종철 방미통위원장 “불법스팸 부당이익 환수 과징금 신설…불공정행위 제재 강화” [국감]"
+    },
     "original:c689c43796c82b97e4c9cc46": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
@@ -237355,6 +237911,32 @@
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "지식재산처, 상표 분류도 '속도전'…하역용 협동로봇 등 72개 신규 명칭 발굴"
     },
+    "original:ec34825587632949ddf3de09": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634682",
+      "source": "이투데이",
+      "source_body_digest": "6b22b69b90551db8ee33a989a0aa5b0565004bd20b2bfe33b5f28b0f856106fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ad2220db88f9ca3db3629ff5195a4416a10ea6a86ffe829df47a3cd5c4743a47",
+      "source_fact_keys": [
+        "source_fact:v1:05496e61eb8ae4b7e9f260b95f1732fed2982a0db3ad76eb6d944fcf2ab32f07",
+        "source_fact:v1:28741b32c157a1cec20d3fd3e7ce36bab1e667dc0d9c22834c212f35ef12aed5",
+        "source_fact:v1:29d0ea810c0670937abdb47a164c1a4224534eb5aebb870fbe707d2fe1dfb2c6",
+        "source_fact:v1:93c0bcbc8883f4a87a1f6b3d29d8b9aedb8a795afbde4c39003f4b5d304f8d5b",
+        "source_fact:v1:ab3f8506a620063228a8c3cc4f2afe967bd64db6de57b2c0c22259b1bb834244",
+        "source_fact:v1:b1627422dc45886bd848ba041d49a3bcef7acbfe8256747f0d977bdbc9591455",
+        "source_fact:v1:d447df5b0b5ac5727f4d43db8555961c6048626ac553929f7f467ad53e715564",
+        "source_fact:v1:d832c4fe2dc244307e009b96d9773c1f3530b9c9d1bd4b235872c298e665f7dd"
+      ],
+      "source_published_kst": "2026-10-12T14:06+09:00",
+      "source_title": "뷰티스킨, 중국 대규모 화장품 수출 계약 초도물량 발주서 수령",
+      "telegram_core_fact": "회사는 중국과 베트남 관련 공급 계약을 체결했으며 초도 물량 발주도 받은 상태다.",
+      "title": "뷰티스킨, 중국 대규모 화장품 수출 계약 초도물량 발주서 수령"
+    },
     "original:ec366ad26889180b6bf024cc": {
       "first_seen_kst": "2026-10-13T03:37:13+09:00",
       "lanes": {
@@ -247329,6 +247911,32 @@
       "telegram_core_fact": "미국과 러시아가 합의한 공급 물량은 이달 중 30만톤, 다음달 50만톤 등으로 트럼프 대통령이 밝힌 러시아의 총공급 물량은 480만톤이다. 트럼프 대통령은 지난 9일(현지시간) 트루스소셜을 통해 러시아산 경유를 미국과 세계 시장에 대규모 공급하기로 푸틴 대통령과 합의했다고 밝혔다.",
       "title": "종전보다 장사… 푸틴에 승리 안긴 트럼프 ‘거래의 기술’"
     },
+    "source_fact:0563fdd7d0f1b840ad90a6fb": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635063",
+      "source": "이투데이",
+      "source_body_digest": "d5985c3270ee54dfcd64511811e532272d039f720f7d92591f804e0bf2505ed5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b22226f9dd441d8503fd3c0662e2f7a4f2ce0b67a10e8ea1466b68eefdd2e939",
+      "source_fact_keys": [
+        "source_fact:v1:0b30427cee657bfafacdff1fd8e7c334f59fe732e36e82008dbd2fc2063ebb15",
+        "source_fact:v1:26d014e1a9f18985368640ca28d65a183f9b503dbb67f2daafac78ee20efe8b0",
+        "source_fact:v1:33532ce1a0e5b13c916a22a6431573e0812c435f0fbd2fdfd72c6e95428bf40d",
+        "source_fact:v1:50722209d5f52174d87083ef54d720fd45fe4dff7b752d1b0a27380ade93b7b9",
+        "source_fact:v1:969469c8fef6557a3ae2dd9e4d5192ca4905680c817a229b5c32fc15d442f413",
+        "source_fact:v1:b55901b6af4a1d92603612495cb3813cfd7ebf72af577a330c9f642c580c6f2f",
+        "source_fact:v1:df16a5e27cdf548d09f35d891d4a20ee32e20dad16c5bfb0ae119abaf33d1552",
+        "source_fact:v1:feefc264a6c0ac2829d55fcba8e7af351c4dcdad171f0cdbeb8b583f70d4228d"
+      ],
+      "source_published_kst": "2026-10-13T10:15+09:00",
+      "source_title": "키움운용, '삼성전자·SK하이닉스 채권혼합 ETF' 10월 주당 146원 지급",
+      "telegram_core_fact": "이 상품은 주식 편입 비중이 50%인 채권혼합형 ETF로, 퇴직연금 확정기여형(DC)과 개인형퇴직연금(IRP) 계좌에서 투자금의 최대 100%까지 편입할 수 있다.",
+      "title": "키움운용, '삼성전자·SK하이닉스 채권혼합 ETF' 10월 주당 146원 지급"
+    },
     "source_fact:056ffe5c8af29ed02e8c899e": {
       "first_seen_kst": "2026-10-07T18:12:46+09:00",
       "lanes": {
@@ -251657,6 +252265,32 @@
       "source_title": "롯데百, LA서 K뷰티 알린다…국내 브랜드 7곳 해외 진출 지원",
       "telegram_core_fact": "롯데백화점이 미국 로스앤젤레스(LA)에서 K뷰티 브랜드를 알리고 국내 신진 브랜드의 해외 진출을 지원한다. 최근 롯데백화점에서 북미 고객의 K뷰티 매출이 120% 증가하는 등 높아진 관심을 바탕으로 현지에서 스킨케어와 프래그런스 브랜드를 직접 경험할 수 있는 팝업을 연다.",
       "title": "롯데百, LA서 K뷰티 알린다…국내 브랜드 7곳 해외 진출 지원"
+    },
+    "source_fact:09f0e1e47d4045f14331c0a0": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634682",
+      "source": "이투데이",
+      "source_body_digest": "6b22b69b90551db8ee33a989a0aa5b0565004bd20b2bfe33b5f28b0f856106fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ad2220db88f9ca3db3629ff5195a4416a10ea6a86ffe829df47a3cd5c4743a47",
+      "source_fact_keys": [
+        "source_fact:v1:05496e61eb8ae4b7e9f260b95f1732fed2982a0db3ad76eb6d944fcf2ab32f07",
+        "source_fact:v1:28741b32c157a1cec20d3fd3e7ce36bab1e667dc0d9c22834c212f35ef12aed5",
+        "source_fact:v1:29d0ea810c0670937abdb47a164c1a4224534eb5aebb870fbe707d2fe1dfb2c6",
+        "source_fact:v1:93c0bcbc8883f4a87a1f6b3d29d8b9aedb8a795afbde4c39003f4b5d304f8d5b",
+        "source_fact:v1:ab3f8506a620063228a8c3cc4f2afe967bd64db6de57b2c0c22259b1bb834244",
+        "source_fact:v1:b1627422dc45886bd848ba041d49a3bcef7acbfe8256747f0d977bdbc9591455",
+        "source_fact:v1:d447df5b0b5ac5727f4d43db8555961c6048626ac553929f7f467ad53e715564",
+        "source_fact:v1:d832c4fe2dc244307e009b96d9773c1f3530b9c9d1bd4b235872c298e665f7dd"
+      ],
+      "source_published_kst": "2026-10-12T14:06+09:00",
+      "source_title": "뷰티스킨, 중국 대규모 화장품 수출 계약 초도물량 발주서 수령",
+      "telegram_core_fact": "회사는 중국과 베트남 관련 공급 계약을 체결했으며 초도 물량 발주도 받은 상태다.",
+      "title": "뷰티스킨, 중국 대규모 화장품 수출 계약 초도물량 발주서 수령"
     },
     "source_fact:09f1f7f3592a300335a2650b": {
       "first_seen_kst": "2026-10-07T18:12:46+09:00",
@@ -272752,6 +273386,32 @@
       "source_published_kst": "2026-10-06T18:09+09:00",
       "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어(종합) | 연합뉴스"
     },
+    "source_fact:1f66885888956366f74dc3dc": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634682",
+      "source": "이투데이",
+      "source_body_digest": "6b22b69b90551db8ee33a989a0aa5b0565004bd20b2bfe33b5f28b0f856106fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ad2220db88f9ca3db3629ff5195a4416a10ea6a86ffe829df47a3cd5c4743a47",
+      "source_fact_keys": [
+        "source_fact:v1:05496e61eb8ae4b7e9f260b95f1732fed2982a0db3ad76eb6d944fcf2ab32f07",
+        "source_fact:v1:28741b32c157a1cec20d3fd3e7ce36bab1e667dc0d9c22834c212f35ef12aed5",
+        "source_fact:v1:29d0ea810c0670937abdb47a164c1a4224534eb5aebb870fbe707d2fe1dfb2c6",
+        "source_fact:v1:93c0bcbc8883f4a87a1f6b3d29d8b9aedb8a795afbde4c39003f4b5d304f8d5b",
+        "source_fact:v1:ab3f8506a620063228a8c3cc4f2afe967bd64db6de57b2c0c22259b1bb834244",
+        "source_fact:v1:b1627422dc45886bd848ba041d49a3bcef7acbfe8256747f0d977bdbc9591455",
+        "source_fact:v1:d447df5b0b5ac5727f4d43db8555961c6048626ac553929f7f467ad53e715564",
+        "source_fact:v1:d832c4fe2dc244307e009b96d9773c1f3530b9c9d1bd4b235872c298e665f7dd"
+      ],
+      "source_published_kst": "2026-10-12T14:06+09:00",
+      "source_title": "뷰티스킨, 중국 대규모 화장품 수출 계약 초도물량 발주서 수령",
+      "telegram_core_fact": "회사는 중국과 베트남 관련 공급 계약을 체결했으며 초도 물량 발주도 받은 상태다.",
+      "title": "뷰티스킨, 중국 대규모 화장품 수출 계약 초도물량 발주서 수령"
+    },
     "source_fact:1f66b49967265132d009ba2a": {
       "first_seen_kst": "2026-10-09T16:07:27+09:00",
       "lanes": {
@@ -274027,6 +274687,31 @@
       "source_title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이",
       "telegram_core_fact": "코스피가 외국인의 거센 매도 폭탄과 미국 국채금리 반등, 주요 기업 실적에 대한 경계감에 밀려 2% 가까이 급락하며 간신히 6,800선을 지켜냈다.",
       "title": "외인 2.6조 매도에 코스피 2% 급락…6800선 턱걸이"
+    },
+    "source_fact:207936a2dd5adbb04c980fd7": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.hankyung.com/article/202610126048O",
+      "source": "한국경제",
+      "source_body_digest": "ced695fcd31aded319b3957e4cea9c1516a67bb24ec5eb32950ca9f07254b3a0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:41f6f3cab3c938bc25273cf7ac2f4ca22ab3a9b19929249972ef35621b8e653e",
+      "source_fact_keys": [
+        "source_fact:v1:162cd5e1bc21ae56efeee804433d1a9ddb0618c76ac18596fb4a132d11cef65b",
+        "source_fact:v1:17b246ea98671f7c52f858b95720c56bc12428105e6ac0e564b6f41aea6217f1",
+        "source_fact:v1:23ed5bf113ee39bd9b5c7953e6acd8a83e2ce13231293c1244538878403fe88a",
+        "source_fact:v1:3366a0e773f6cbef3387c2d74d1c7e699b1405cb6741690af5f88bc9d83a08a7",
+        "source_fact:v1:4534d07224670ce8e469b4f0335bcc875ce3929e6b912add99f42723c87ad8f5",
+        "source_fact:v1:bbc3d2767be76243ee5e1f680bb24ec9f9f341e334a910af59aff4dad825023b",
+        "source_fact:v1:fd256311c8ad20a3ab013a3a297ecf3e99232fa7581334da97ace51ff345021c"
+      ],
+      "source_published_kst": "2026-10-12T13:49+09:00",
+      "source_title": "빌드블록, '초기 거점 구축 서비스' 출시…한국 기업 미국 생산시설 구축 지원",
+      "telegram_core_fact": "빌드블록이 미국에 생산시설을 마련하려는 한국 기업을 대상으로 부지·건물의 사용 적합성과 기반시설, 인허가 조건을 사전 검토하는 서비스를 출시한다.",
+      "title": "빌드블록, '초기 거점 구축 서비스' 출시…한국 기업 미국 생산시설 구축 지원"
     },
     "source_fact:2079fffc14ca22da617d82a1": {
       "first_seen_kst": "2026-10-08T11:28:27+09:00",
@@ -302697,6 +303382,32 @@
       "source_published_kst": "2026-10-07T06:15+09:00",
       "title": "AI 에이전트 뜨자 CPU도 부활…AMD 시총 1조달러 돌파"
     },
+    "source_fact:3d78953f7ea810c79d453d15": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635063",
+      "source": "이투데이",
+      "source_body_digest": "d5985c3270ee54dfcd64511811e532272d039f720f7d92591f804e0bf2505ed5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b22226f9dd441d8503fd3c0662e2f7a4f2ce0b67a10e8ea1466b68eefdd2e939",
+      "source_fact_keys": [
+        "source_fact:v1:0b30427cee657bfafacdff1fd8e7c334f59fe732e36e82008dbd2fc2063ebb15",
+        "source_fact:v1:26d014e1a9f18985368640ca28d65a183f9b503dbb67f2daafac78ee20efe8b0",
+        "source_fact:v1:33532ce1a0e5b13c916a22a6431573e0812c435f0fbd2fdfd72c6e95428bf40d",
+        "source_fact:v1:50722209d5f52174d87083ef54d720fd45fe4dff7b752d1b0a27380ade93b7b9",
+        "source_fact:v1:969469c8fef6557a3ae2dd9e4d5192ca4905680c817a229b5c32fc15d442f413",
+        "source_fact:v1:b55901b6af4a1d92603612495cb3813cfd7ebf72af577a330c9f642c580c6f2f",
+        "source_fact:v1:df16a5e27cdf548d09f35d891d4a20ee32e20dad16c5bfb0ae119abaf33d1552",
+        "source_fact:v1:feefc264a6c0ac2829d55fcba8e7af351c4dcdad171f0cdbeb8b583f70d4228d"
+      ],
+      "source_published_kst": "2026-10-13T10:15+09:00",
+      "source_title": "키움운용, '삼성전자·SK하이닉스 채권혼합 ETF' 10월 주당 146원 지급",
+      "telegram_core_fact": "이 상품은 주식 편입 비중이 50%인 채권혼합형 ETF로, 퇴직연금 확정기여형(DC)과 개인형퇴직연금(IRP) 계좌에서 투자금의 최대 100%까지 편입할 수 있다.",
+      "title": "키움운용, '삼성전자·SK하이닉스 채권혼합 ETF' 10월 주당 146원 지급"
+    },
     "source_fact:3d858c5e05857a4c6343bc75": {
       "first_seen_kst": "2026-10-11T14:23:21+09:00",
       "lanes": {
@@ -309268,6 +309979,31 @@
       "source_published_kst": "2026-10-05T20:05+09:00",
       "title": "마이크로소프트, 기업 보안 수요 확대…투자의견↑-멜리우스"
     },
+    "source_fact:441c4abfae9c9e5da4b1d48b": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.hankyung.com/article/202610126048O",
+      "source": "한국경제",
+      "source_body_digest": "ced695fcd31aded319b3957e4cea9c1516a67bb24ec5eb32950ca9f07254b3a0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:41f6f3cab3c938bc25273cf7ac2f4ca22ab3a9b19929249972ef35621b8e653e",
+      "source_fact_keys": [
+        "source_fact:v1:162cd5e1bc21ae56efeee804433d1a9ddb0618c76ac18596fb4a132d11cef65b",
+        "source_fact:v1:17b246ea98671f7c52f858b95720c56bc12428105e6ac0e564b6f41aea6217f1",
+        "source_fact:v1:23ed5bf113ee39bd9b5c7953e6acd8a83e2ce13231293c1244538878403fe88a",
+        "source_fact:v1:3366a0e773f6cbef3387c2d74d1c7e699b1405cb6741690af5f88bc9d83a08a7",
+        "source_fact:v1:4534d07224670ce8e469b4f0335bcc875ce3929e6b912add99f42723c87ad8f5",
+        "source_fact:v1:bbc3d2767be76243ee5e1f680bb24ec9f9f341e334a910af59aff4dad825023b",
+        "source_fact:v1:fd256311c8ad20a3ab013a3a297ecf3e99232fa7581334da97ace51ff345021c"
+      ],
+      "source_published_kst": "2026-10-12T13:49+09:00",
+      "source_title": "빌드블록, '초기 거점 구축 서비스' 출시…한국 기업 미국 생산시설 구축 지원",
+      "telegram_core_fact": "빌드블록이 미국에 생산시설을 마련하려는 한국 기업을 대상으로 부지·건물의 사용 적합성과 기반시설, 인허가 조건을 사전 검토하는 서비스를 출시한다.",
+      "title": "빌드블록, '초기 거점 구축 서비스' 출시…한국 기업 미국 생산시설 구축 지원"
+    },
     "source_fact:44354484e1971b69302578a3": {
       "first_seen_kst": "2026-10-07T17:23:27+09:00",
       "lanes": {
@@ -309449,6 +310185,29 @@
       ],
       "source_published_kst": "2026-10-07T05:57+09:00",
       "title": "삼전 ‘영업익 100조’ 예고에도 주가는 영…8일도 심상치않다는데"
+    },
+    "source_fact:445d8e1332c9da690286d468": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03230806645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "8ad9b1414381a6806487e99f64e0a892e2f97535f9f298fa122f5782dd256ad5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fe12ffe8ccf039803a53a117ad130ab89288e32d79692e6d5bd72bb9c7904d84",
+      "source_fact_keys": [
+        "source_fact:v1:17ac43f63c383295485f7a0eb7f4920294a6dc108484deb1de638a34bfa1b574",
+        "source_fact:v1:24ffae7faa6a8e22ea7a15875831d22002eca4aa5866ff2a935aaa16382c6cf1",
+        "source_fact:v1:425f71df11bde746066f0ef5936b62a3e04a6091c43aed257d47f56ed9ec6a48",
+        "source_fact:v1:878884a31519573075ade243279ffede46afaab49589b01549d77bb8b7e6956f",
+        "source_fact:v1:cb2a56eac24042ccd3882a5bdf3c6efdfb43d5ce0dd7d29c0504e0ff06eca431"
+      ],
+      "source_published_kst": "2026-10-12T14:01+09:00",
+      "source_title": "유니켐, 美 루미아 지분 100% 인수 본계약…‘로봇 전자피부’ 사업 본격화",
+      "telegram_core_fact": "유니켐(011330)이 미국 유연전자 기술기업 루미아 테크놀로지스(Loomia Technologies) 지분 100% 인수를 위한 본계약을 체결하고 로봇 전자피부 사업 확대에 나선다.",
+      "title": "유니켐, 美 루미아 지분 100% 인수 본계약…‘로봇 전자피부’ 사업 본격화"
     },
     "source_fact:44747d07bd5171405d474305": {
       "first_seen_kst": "2026-10-06T16:52:01+09:00",
@@ -316208,6 +316967,31 @@
       "telegram_core_fact": "오늘(10일) 한국석유공사 유가정보시스템 오피넷에 따르면 10월 첫째 주 전국 주유소 휘발유 평균 판매가는 지난주보다 리터(L)당 0.4원 내린 1,857.6원이었습니다.",
       "title": "기름값 21주째 하락…휘발유·경유 1,800원대 | 연합뉴스"
     },
+    "source_fact:4abed5f1e3e26ef4a3d30e71": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.hankyung.com/article/202610126048O",
+      "source": "한국경제",
+      "source_body_digest": "ced695fcd31aded319b3957e4cea9c1516a67bb24ec5eb32950ca9f07254b3a0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:41f6f3cab3c938bc25273cf7ac2f4ca22ab3a9b19929249972ef35621b8e653e",
+      "source_fact_keys": [
+        "source_fact:v1:162cd5e1bc21ae56efeee804433d1a9ddb0618c76ac18596fb4a132d11cef65b",
+        "source_fact:v1:17b246ea98671f7c52f858b95720c56bc12428105e6ac0e564b6f41aea6217f1",
+        "source_fact:v1:23ed5bf113ee39bd9b5c7953e6acd8a83e2ce13231293c1244538878403fe88a",
+        "source_fact:v1:3366a0e773f6cbef3387c2d74d1c7e699b1405cb6741690af5f88bc9d83a08a7",
+        "source_fact:v1:4534d07224670ce8e469b4f0335bcc875ce3929e6b912add99f42723c87ad8f5",
+        "source_fact:v1:bbc3d2767be76243ee5e1f680bb24ec9f9f341e334a910af59aff4dad825023b",
+        "source_fact:v1:fd256311c8ad20a3ab013a3a297ecf3e99232fa7581334da97ace51ff345021c"
+      ],
+      "source_published_kst": "2026-10-12T13:49+09:00",
+      "source_title": "빌드블록, '초기 거점 구축 서비스' 출시…한국 기업 미국 생산시설 구축 지원",
+      "telegram_core_fact": "빌드블록이 미국에 생산시설을 마련하려는 한국 기업을 대상으로 부지·건물의 사용 적합성과 기반시설, 인허가 조건을 사전 검토하는 서비스를 출시한다.",
+      "title": "빌드블록, '초기 거점 구축 서비스' 출시…한국 기업 미국 생산시설 구축 지원"
+    },
     "source_fact:4ac118ccf33fd12e7b4313b3": {
       "first_seen_kst": "2026-10-12T13:18:48+09:00",
       "lanes": {
@@ -317967,6 +318751,32 @@
       ],
       "source_published_kst": "2026-10-07T10:36+09:00",
       "title": "파라택시스 합병 무산…코리아-상폐 대응, 이더리움-독자 경영"
+    },
+    "source_fact:4cbecad66a8c2d2ed0eecef1": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634682",
+      "source": "이투데이",
+      "source_body_digest": "6b22b69b90551db8ee33a989a0aa5b0565004bd20b2bfe33b5f28b0f856106fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ad2220db88f9ca3db3629ff5195a4416a10ea6a86ffe829df47a3cd5c4743a47",
+      "source_fact_keys": [
+        "source_fact:v1:05496e61eb8ae4b7e9f260b95f1732fed2982a0db3ad76eb6d944fcf2ab32f07",
+        "source_fact:v1:28741b32c157a1cec20d3fd3e7ce36bab1e667dc0d9c22834c212f35ef12aed5",
+        "source_fact:v1:29d0ea810c0670937abdb47a164c1a4224534eb5aebb870fbe707d2fe1dfb2c6",
+        "source_fact:v1:93c0bcbc8883f4a87a1f6b3d29d8b9aedb8a795afbde4c39003f4b5d304f8d5b",
+        "source_fact:v1:ab3f8506a620063228a8c3cc4f2afe967bd64db6de57b2c0c22259b1bb834244",
+        "source_fact:v1:b1627422dc45886bd848ba041d49a3bcef7acbfe8256747f0d977bdbc9591455",
+        "source_fact:v1:d447df5b0b5ac5727f4d43db8555961c6048626ac553929f7f467ad53e715564",
+        "source_fact:v1:d832c4fe2dc244307e009b96d9773c1f3530b9c9d1bd4b235872c298e665f7dd"
+      ],
+      "source_published_kst": "2026-10-12T14:06+09:00",
+      "source_title": "뷰티스킨, 중국 대규모 화장품 수출 계약 초도물량 발주서 수령",
+      "telegram_core_fact": "회사는 중국과 베트남 관련 공급 계약을 체결했으며 초도 물량 발주도 받은 상태다.",
+      "title": "뷰티스킨, 중국 대규모 화장품 수출 계약 초도물량 발주서 수령"
     },
     "source_fact:4cc443c79e5c8f5d6772b4f1": {
       "first_seen_kst": "2026-10-08T04:14:15+09:00",
@@ -323286,6 +324096,32 @@
       "source_title": "네이버파이낸셜·두나무 결합, 내년 3월로 재연기…“기업결합·규제절차 영향”(종합)",
       "telegram_core_fact": "공정거래위원회의 기업결합 심사를 비롯해 금융당국의 대주주 변경 승인 등 정부 인허가 절차가 길어지고 있는 데다, 국회 내 디지털자산기본법 제정 논의 지연 등이 복합적으로 작용한 결과로 풀이된다.",
       "title": "네이버파이낸셜·두나무 결합, 내년 3월로 재연기…“기업결합·규제절차 영향”(종합)"
+    },
+    "source_fact:5212eae3ff8536f36a798554": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635063",
+      "source": "이투데이",
+      "source_body_digest": "d5985c3270ee54dfcd64511811e532272d039f720f7d92591f804e0bf2505ed5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b22226f9dd441d8503fd3c0662e2f7a4f2ce0b67a10e8ea1466b68eefdd2e939",
+      "source_fact_keys": [
+        "source_fact:v1:0b30427cee657bfafacdff1fd8e7c334f59fe732e36e82008dbd2fc2063ebb15",
+        "source_fact:v1:26d014e1a9f18985368640ca28d65a183f9b503dbb67f2daafac78ee20efe8b0",
+        "source_fact:v1:33532ce1a0e5b13c916a22a6431573e0812c435f0fbd2fdfd72c6e95428bf40d",
+        "source_fact:v1:50722209d5f52174d87083ef54d720fd45fe4dff7b752d1b0a27380ade93b7b9",
+        "source_fact:v1:969469c8fef6557a3ae2dd9e4d5192ca4905680c817a229b5c32fc15d442f413",
+        "source_fact:v1:b55901b6af4a1d92603612495cb3813cfd7ebf72af577a330c9f642c580c6f2f",
+        "source_fact:v1:df16a5e27cdf548d09f35d891d4a20ee32e20dad16c5bfb0ae119abaf33d1552",
+        "source_fact:v1:feefc264a6c0ac2829d55fcba8e7af351c4dcdad171f0cdbeb8b583f70d4228d"
+      ],
+      "source_published_kst": "2026-10-13T10:15+09:00",
+      "source_title": "키움운용, '삼성전자·SK하이닉스 채권혼합 ETF' 10월 주당 146원 지급",
+      "telegram_core_fact": "이 상품은 주식 편입 비중이 50%인 채권혼합형 ETF로, 퇴직연금 확정기여형(DC)과 개인형퇴직연금(IRP) 계좌에서 투자금의 최대 100%까지 편입할 수 있다.",
+      "title": "키움운용, '삼성전자·SK하이닉스 채권혼합 ETF' 10월 주당 146원 지급"
     },
     "source_fact:521a92715f6c4cd6e8ab9019": {
       "first_seen_kst": "2026-10-10T06:02:39+09:00",
@@ -332085,6 +332921,32 @@
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
     },
+    "source_fact:5abc27682712099406ba61cb": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634682",
+      "source": "이투데이",
+      "source_body_digest": "6b22b69b90551db8ee33a989a0aa5b0565004bd20b2bfe33b5f28b0f856106fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ad2220db88f9ca3db3629ff5195a4416a10ea6a86ffe829df47a3cd5c4743a47",
+      "source_fact_keys": [
+        "source_fact:v1:05496e61eb8ae4b7e9f260b95f1732fed2982a0db3ad76eb6d944fcf2ab32f07",
+        "source_fact:v1:28741b32c157a1cec20d3fd3e7ce36bab1e667dc0d9c22834c212f35ef12aed5",
+        "source_fact:v1:29d0ea810c0670937abdb47a164c1a4224534eb5aebb870fbe707d2fe1dfb2c6",
+        "source_fact:v1:93c0bcbc8883f4a87a1f6b3d29d8b9aedb8a795afbde4c39003f4b5d304f8d5b",
+        "source_fact:v1:ab3f8506a620063228a8c3cc4f2afe967bd64db6de57b2c0c22259b1bb834244",
+        "source_fact:v1:b1627422dc45886bd848ba041d49a3bcef7acbfe8256747f0d977bdbc9591455",
+        "source_fact:v1:d447df5b0b5ac5727f4d43db8555961c6048626ac553929f7f467ad53e715564",
+        "source_fact:v1:d832c4fe2dc244307e009b96d9773c1f3530b9c9d1bd4b235872c298e665f7dd"
+      ],
+      "source_published_kst": "2026-10-12T14:06+09:00",
+      "source_title": "뷰티스킨, 중국 대규모 화장품 수출 계약 초도물량 발주서 수령",
+      "telegram_core_fact": "회사는 중국과 베트남 관련 공급 계약을 체결했으며 초도 물량 발주도 받은 상태다.",
+      "title": "뷰티스킨, 중국 대규모 화장품 수출 계약 초도물량 발주서 수령"
+    },
     "source_fact:5abd74722b2a8eb3cc37c003": {
       "first_seen_kst": "2026-10-08T19:11:41+09:00",
       "lanes": {
@@ -332431,6 +333293,31 @@
       ],
       "source_published_kst": "2026-10-05T08:55+09:00",
       "title": "매크로 공백+SEC 규제완화 효과…8.6만달러 회복[코인 모닝콜]"
+    },
+    "source_fact:5b1cc56c508f7f5873133691": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.hankyung.com/article/202610126048O",
+      "source": "한국경제",
+      "source_body_digest": "ced695fcd31aded319b3957e4cea9c1516a67bb24ec5eb32950ca9f07254b3a0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:41f6f3cab3c938bc25273cf7ac2f4ca22ab3a9b19929249972ef35621b8e653e",
+      "source_fact_keys": [
+        "source_fact:v1:162cd5e1bc21ae56efeee804433d1a9ddb0618c76ac18596fb4a132d11cef65b",
+        "source_fact:v1:17b246ea98671f7c52f858b95720c56bc12428105e6ac0e564b6f41aea6217f1",
+        "source_fact:v1:23ed5bf113ee39bd9b5c7953e6acd8a83e2ce13231293c1244538878403fe88a",
+        "source_fact:v1:3366a0e773f6cbef3387c2d74d1c7e699b1405cb6741690af5f88bc9d83a08a7",
+        "source_fact:v1:4534d07224670ce8e469b4f0335bcc875ce3929e6b912add99f42723c87ad8f5",
+        "source_fact:v1:bbc3d2767be76243ee5e1f680bb24ec9f9f341e334a910af59aff4dad825023b",
+        "source_fact:v1:fd256311c8ad20a3ab013a3a297ecf3e99232fa7581334da97ace51ff345021c"
+      ],
+      "source_published_kst": "2026-10-12T13:49+09:00",
+      "source_title": "빌드블록, '초기 거점 구축 서비스' 출시…한국 기업 미국 생산시설 구축 지원",
+      "telegram_core_fact": "빌드블록이 미국에 생산시설을 마련하려는 한국 기업을 대상으로 부지·건물의 사용 적합성과 기반시설, 인허가 조건을 사전 검토하는 서비스를 출시한다.",
+      "title": "빌드블록, '초기 거점 구축 서비스' 출시…한국 기업 미국 생산시설 구축 지원"
     },
     "source_fact:5b22dc126fdccadaafeeb423": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
@@ -335861,6 +336748,32 @@
       "source_title": "트럼프, 러시아산 디젤 제재 완화 비판에 \"미국 위한 올바른 선택\"",
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아산 디젤 수출 제한을 일시적으로 완화한 결정에 대한 미국 정치권의 비판이 확산하자 \"미국 국민을 위한 올바른 선택\"이라며 반박했다.",
       "title": "트럼프, 러시아산 디젤 제재 완화 비판에 \"미국 위한 올바른 선택\""
+    },
+    "source_fact:5e25309bbb86fc18ecf8983b": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635063",
+      "source": "이투데이",
+      "source_body_digest": "d5985c3270ee54dfcd64511811e532272d039f720f7d92591f804e0bf2505ed5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b22226f9dd441d8503fd3c0662e2f7a4f2ce0b67a10e8ea1466b68eefdd2e939",
+      "source_fact_keys": [
+        "source_fact:v1:0b30427cee657bfafacdff1fd8e7c334f59fe732e36e82008dbd2fc2063ebb15",
+        "source_fact:v1:26d014e1a9f18985368640ca28d65a183f9b503dbb67f2daafac78ee20efe8b0",
+        "source_fact:v1:33532ce1a0e5b13c916a22a6431573e0812c435f0fbd2fdfd72c6e95428bf40d",
+        "source_fact:v1:50722209d5f52174d87083ef54d720fd45fe4dff7b752d1b0a27380ade93b7b9",
+        "source_fact:v1:969469c8fef6557a3ae2dd9e4d5192ca4905680c817a229b5c32fc15d442f413",
+        "source_fact:v1:b55901b6af4a1d92603612495cb3813cfd7ebf72af577a330c9f642c580c6f2f",
+        "source_fact:v1:df16a5e27cdf548d09f35d891d4a20ee32e20dad16c5bfb0ae119abaf33d1552",
+        "source_fact:v1:feefc264a6c0ac2829d55fcba8e7af351c4dcdad171f0cdbeb8b583f70d4228d"
+      ],
+      "source_published_kst": "2026-10-13T10:15+09:00",
+      "source_title": "키움운용, '삼성전자·SK하이닉스 채권혼합 ETF' 10월 주당 146원 지급",
+      "telegram_core_fact": "이 상품은 주식 편입 비중이 50%인 채권혼합형 ETF로, 퇴직연금 확정기여형(DC)과 개인형퇴직연금(IRP) 계좌에서 투자금의 최대 100%까지 편입할 수 있다.",
+      "title": "키움운용, '삼성전자·SK하이닉스 채권혼합 ETF' 10월 주당 146원 지급"
     },
     "source_fact:5e31d527676ecfbf1a0b9329": {
       "first_seen_kst": "2026-10-12T09:53:29+09:00",
@@ -341719,6 +342632,28 @@
       "telegram_core_fact": "실제 웰크론한텍 중국법인은 현지 주요 리튬이온배터리 분리막 생산시설을 대상으로 총 4건의 에너지 설비 프로젝트를 따내며 올해 3분기 누적 수주액 242억원을 달성했다.",
       "title": "폐배터리서 리튬 캔다…웰크론한텍, ‘이차전지 자원회수’ 사업 확장"
     },
+    "source_fact:648b9303b01c8c5ea713354e": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822974",
+      "source": "뉴시스",
+      "source_body_digest": "8fbcf5eb962f4831b7de6e7a7ec7163e0ae67e436e4886f3e869eba5e705a628",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4d8d8ba5b8b0a8148cd02f110be7a18790ad1184b209d74ebb0a49e71bc84e0",
+      "source_fact_keys": [
+        "source_fact:v1:00ffa4c63435135927921e37cb794a451bc4a34c1116bf8a9f2f35fe88150645",
+        "source_fact:v1:b040813d747b7823e98bc220233cff8190b5dc2d48fb0ca35e433449b17c37d9",
+        "source_fact:v1:c6a6bfa2c2784f0e9f02b2807291a177e72afe001464b1397b0de156eb604f42",
+        "source_fact:v1:ce35f025ebec014adcf5c5a0e4229d8c4c0e69c46a5e82b7474ccfab2b15728c"
+      ],
+      "source_published_kst": "2026-10-13T10:19+09:00",
+      "source_title": "켄텍, 개교 이래 최대 기술이전 계약…5억 규모",
+      "telegram_core_fact": "한국에너지공과대학교(KENTECH·켄텍)가 액화수소 플랜트 엔지니어링 원천기술로 개교 4년 만에 최대 기술이전 계약을 체결했다. 연구책임자이자 대표 발명자인 황지현 교수가 개발·축적한 기술로켄텍 개교 이후 최대 노하우 기술이전 계약이다.",
+      "title": "켄텍, 개교 이래 최대 기술이전 계약…5억 규모"
+    },
     "source_fact:6495ac0d3e666fdc4abb4f3d": {
       "first_seen_kst": "2026-10-09T22:25:54+09:00",
       "lanes": {
@@ -344533,6 +345468,32 @@
       ],
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
+    },
+    "source_fact:679f7711e007900e81a50b09": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634682",
+      "source": "이투데이",
+      "source_body_digest": "6b22b69b90551db8ee33a989a0aa5b0565004bd20b2bfe33b5f28b0f856106fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ad2220db88f9ca3db3629ff5195a4416a10ea6a86ffe829df47a3cd5c4743a47",
+      "source_fact_keys": [
+        "source_fact:v1:05496e61eb8ae4b7e9f260b95f1732fed2982a0db3ad76eb6d944fcf2ab32f07",
+        "source_fact:v1:28741b32c157a1cec20d3fd3e7ce36bab1e667dc0d9c22834c212f35ef12aed5",
+        "source_fact:v1:29d0ea810c0670937abdb47a164c1a4224534eb5aebb870fbe707d2fe1dfb2c6",
+        "source_fact:v1:93c0bcbc8883f4a87a1f6b3d29d8b9aedb8a795afbde4c39003f4b5d304f8d5b",
+        "source_fact:v1:ab3f8506a620063228a8c3cc4f2afe967bd64db6de57b2c0c22259b1bb834244",
+        "source_fact:v1:b1627422dc45886bd848ba041d49a3bcef7acbfe8256747f0d977bdbc9591455",
+        "source_fact:v1:d447df5b0b5ac5727f4d43db8555961c6048626ac553929f7f467ad53e715564",
+        "source_fact:v1:d832c4fe2dc244307e009b96d9773c1f3530b9c9d1bd4b235872c298e665f7dd"
+      ],
+      "source_published_kst": "2026-10-12T14:06+09:00",
+      "source_title": "뷰티스킨, 중국 대규모 화장품 수출 계약 초도물량 발주서 수령",
+      "telegram_core_fact": "회사는 중국과 베트남 관련 공급 계약을 체결했으며 초도 물량 발주도 받은 상태다.",
+      "title": "뷰티스킨, 중국 대규모 화장품 수출 계약 초도물량 발주서 수령"
     },
     "source_fact:67a0510214c06edca07a02f2": {
       "first_seen_kst": "2026-10-07T02:49:10+09:00",
@@ -362540,6 +363501,28 @@
       "telegram_core_fact": "이날 금융투자협회와 한국거래소 통계에 따르면 3분기 ETF 순유입액은 28조8305억원으로 7월 20조3910억원, 8월 4조4984억원, 9월 3조9411억원 등 석 달 연속으로 순유입이 유지됐다.",
       "title": "3분기 주식결제대금 12% 뚝 ETF 순자산도 54조원 빠져"
     },
+    "source_fact:79cb6efef4744cfeef771794": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822974",
+      "source": "뉴시스",
+      "source_body_digest": "8fbcf5eb962f4831b7de6e7a7ec7163e0ae67e436e4886f3e869eba5e705a628",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4d8d8ba5b8b0a8148cd02f110be7a18790ad1184b209d74ebb0a49e71bc84e0",
+      "source_fact_keys": [
+        "source_fact:v1:00ffa4c63435135927921e37cb794a451bc4a34c1116bf8a9f2f35fe88150645",
+        "source_fact:v1:b040813d747b7823e98bc220233cff8190b5dc2d48fb0ca35e433449b17c37d9",
+        "source_fact:v1:c6a6bfa2c2784f0e9f02b2807291a177e72afe001464b1397b0de156eb604f42",
+        "source_fact:v1:ce35f025ebec014adcf5c5a0e4229d8c4c0e69c46a5e82b7474ccfab2b15728c"
+      ],
+      "source_published_kst": "2026-10-13T10:19+09:00",
+      "source_title": "켄텍, 개교 이래 최대 기술이전 계약…5억 규모",
+      "telegram_core_fact": "한국에너지공과대학교(KENTECH·켄텍)가 액화수소 플랜트 엔지니어링 원천기술로 개교 4년 만에 최대 기술이전 계약을 체결했다. 연구책임자이자 대표 발명자인 황지현 교수가 개발·축적한 기술로켄텍 개교 이후 최대 노하우 기술이전 계약이다.",
+      "title": "켄텍, 개교 이래 최대 기술이전 계약…5억 규모"
+    },
     "source_fact:79cc2361c77d833d63a9c417": {
       "first_seen_kst": "2026-10-12T06:27:02+09:00",
       "lanes": {
@@ -372401,6 +373384,29 @@
       "telegram_core_fact": "LG전자는 미국 AI 데이터센터 인프라 기업 에어와 5조원 규모 칠러 공급 계약을 체결했다.",
       "title": "[단독] 메모리 넘어 AI 부품·전력기기 확보전…빅테크 '5년 계약' 줄섰다"
     },
+    "source_fact:8429c457d1875a8fc81ea5e0": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03230806645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "8ad9b1414381a6806487e99f64e0a892e2f97535f9f298fa122f5782dd256ad5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fe12ffe8ccf039803a53a117ad130ab89288e32d79692e6d5bd72bb9c7904d84",
+      "source_fact_keys": [
+        "source_fact:v1:17ac43f63c383295485f7a0eb7f4920294a6dc108484deb1de638a34bfa1b574",
+        "source_fact:v1:24ffae7faa6a8e22ea7a15875831d22002eca4aa5866ff2a935aaa16382c6cf1",
+        "source_fact:v1:425f71df11bde746066f0ef5936b62a3e04a6091c43aed257d47f56ed9ec6a48",
+        "source_fact:v1:878884a31519573075ade243279ffede46afaab49589b01549d77bb8b7e6956f",
+        "source_fact:v1:cb2a56eac24042ccd3882a5bdf3c6efdfb43d5ce0dd7d29c0504e0ff06eca431"
+      ],
+      "source_published_kst": "2026-10-12T14:01+09:00",
+      "source_title": "유니켐, 美 루미아 지분 100% 인수 본계약…‘로봇 전자피부’ 사업 본격화",
+      "telegram_core_fact": "유니켐(011330)이 미국 유연전자 기술기업 루미아 테크놀로지스(Loomia Technologies) 지분 100% 인수를 위한 본계약을 체결하고 로봇 전자피부 사업 확대에 나선다.",
+      "title": "유니켐, 美 루미아 지분 100% 인수 본계약…‘로봇 전자피부’ 사업 본격화"
+    },
     "source_fact:84356ef9f9cafc2810ebbdec": {
       "first_seen_kst": "2026-10-12T16:29:45+09:00",
       "lanes": {
@@ -377851,6 +378857,32 @@
       "telegram_core_fact": "Fed가 공개한 9월 15~16일 연방공개시장위원회(FOMC) 의사록에 따르면 모든 참석자는 연방기금금리 목표범위를 0.25%포인트 인상해 연 3.75~4.00%로 높이는 데 찬성했다.",
       "title": "9월 FOMC \"연내 금리 인상 한 번 더\"…인상 근거 놓고는 시각차 [Fed 워치]"
     },
+    "source_fact:898b86b9e9954e83a6e269b2": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635063",
+      "source": "이투데이",
+      "source_body_digest": "d5985c3270ee54dfcd64511811e532272d039f720f7d92591f804e0bf2505ed5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b22226f9dd441d8503fd3c0662e2f7a4f2ce0b67a10e8ea1466b68eefdd2e939",
+      "source_fact_keys": [
+        "source_fact:v1:0b30427cee657bfafacdff1fd8e7c334f59fe732e36e82008dbd2fc2063ebb15",
+        "source_fact:v1:26d014e1a9f18985368640ca28d65a183f9b503dbb67f2daafac78ee20efe8b0",
+        "source_fact:v1:33532ce1a0e5b13c916a22a6431573e0812c435f0fbd2fdfd72c6e95428bf40d",
+        "source_fact:v1:50722209d5f52174d87083ef54d720fd45fe4dff7b752d1b0a27380ade93b7b9",
+        "source_fact:v1:969469c8fef6557a3ae2dd9e4d5192ca4905680c817a229b5c32fc15d442f413",
+        "source_fact:v1:b55901b6af4a1d92603612495cb3813cfd7ebf72af577a330c9f642c580c6f2f",
+        "source_fact:v1:df16a5e27cdf548d09f35d891d4a20ee32e20dad16c5bfb0ae119abaf33d1552",
+        "source_fact:v1:feefc264a6c0ac2829d55fcba8e7af351c4dcdad171f0cdbeb8b583f70d4228d"
+      ],
+      "source_published_kst": "2026-10-13T10:15+09:00",
+      "source_title": "키움운용, '삼성전자·SK하이닉스 채권혼합 ETF' 10월 주당 146원 지급",
+      "telegram_core_fact": "이 상품은 주식 편입 비중이 50%인 채권혼합형 ETF로, 퇴직연금 확정기여형(DC)과 개인형퇴직연금(IRP) 계좌에서 투자금의 최대 100%까지 편입할 수 있다.",
+      "title": "키움운용, '삼성전자·SK하이닉스 채권혼합 ETF' 10월 주당 146원 지급"
+    },
     "source_fact:898de38cb3a835cde2261ff1": {
       "first_seen_kst": "2026-10-07T11:25:20+09:00",
       "lanes": {
@@ -377878,6 +378910,32 @@
       ],
       "source_published_kst": "2026-10-07T11:11+09:00",
       "title": "골드만삭스 \"삼성전자 8일 변동성 확대…이벤트 3건 동시 발생\""
+    },
+    "source_fact:899390b9fbec8ede7ed092c2": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634682",
+      "source": "이투데이",
+      "source_body_digest": "6b22b69b90551db8ee33a989a0aa5b0565004bd20b2bfe33b5f28b0f856106fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ad2220db88f9ca3db3629ff5195a4416a10ea6a86ffe829df47a3cd5c4743a47",
+      "source_fact_keys": [
+        "source_fact:v1:05496e61eb8ae4b7e9f260b95f1732fed2982a0db3ad76eb6d944fcf2ab32f07",
+        "source_fact:v1:28741b32c157a1cec20d3fd3e7ce36bab1e667dc0d9c22834c212f35ef12aed5",
+        "source_fact:v1:29d0ea810c0670937abdb47a164c1a4224534eb5aebb870fbe707d2fe1dfb2c6",
+        "source_fact:v1:93c0bcbc8883f4a87a1f6b3d29d8b9aedb8a795afbde4c39003f4b5d304f8d5b",
+        "source_fact:v1:ab3f8506a620063228a8c3cc4f2afe967bd64db6de57b2c0c22259b1bb834244",
+        "source_fact:v1:b1627422dc45886bd848ba041d49a3bcef7acbfe8256747f0d977bdbc9591455",
+        "source_fact:v1:d447df5b0b5ac5727f4d43db8555961c6048626ac553929f7f467ad53e715564",
+        "source_fact:v1:d832c4fe2dc244307e009b96d9773c1f3530b9c9d1bd4b235872c298e665f7dd"
+      ],
+      "source_published_kst": "2026-10-12T14:06+09:00",
+      "source_title": "뷰티스킨, 중국 대규모 화장품 수출 계약 초도물량 발주서 수령",
+      "telegram_core_fact": "회사는 중국과 베트남 관련 공급 계약을 체결했으며 초도 물량 발주도 받은 상태다.",
+      "title": "뷰티스킨, 중국 대규모 화장품 수출 계약 초도물량 발주서 수령"
     },
     "source_fact:899f536c3d301436b490ecca": {
       "first_seen_kst": "2026-10-12T05:35:02+09:00",
@@ -381562,6 +382620,29 @@
       ],
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "\"일주일새 12% 올랐다\"…전고체 ETF 뛰는데 뭉칫돈 향한 곳은"
+    },
+    "source_fact:8d8ebe61319627bad140efda": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03230806645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "8ad9b1414381a6806487e99f64e0a892e2f97535f9f298fa122f5782dd256ad5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fe12ffe8ccf039803a53a117ad130ab89288e32d79692e6d5bd72bb9c7904d84",
+      "source_fact_keys": [
+        "source_fact:v1:17ac43f63c383295485f7a0eb7f4920294a6dc108484deb1de638a34bfa1b574",
+        "source_fact:v1:24ffae7faa6a8e22ea7a15875831d22002eca4aa5866ff2a935aaa16382c6cf1",
+        "source_fact:v1:425f71df11bde746066f0ef5936b62a3e04a6091c43aed257d47f56ed9ec6a48",
+        "source_fact:v1:878884a31519573075ade243279ffede46afaab49589b01549d77bb8b7e6956f",
+        "source_fact:v1:cb2a56eac24042ccd3882a5bdf3c6efdfb43d5ce0dd7d29c0504e0ff06eca431"
+      ],
+      "source_published_kst": "2026-10-12T14:01+09:00",
+      "source_title": "유니켐, 美 루미아 지분 100% 인수 본계약…‘로봇 전자피부’ 사업 본격화",
+      "telegram_core_fact": "유니켐(011330)이 미국 유연전자 기술기업 루미아 테크놀로지스(Loomia Technologies) 지분 100% 인수를 위한 본계약을 체결하고 로봇 전자피부 사업 확대에 나선다.",
+      "title": "유니켐, 美 루미아 지분 100% 인수 본계약…‘로봇 전자피부’ 사업 본격화"
     },
     "source_fact:8d9c1621b273c2bca2174cbe": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
@@ -408637,6 +409718,31 @@
       "telegram_core_fact": "최태원 SK그룹 회장이 전남광주통합특별시 반도체 생산기지 구축에 속도를 내겠다는 의지를 밝혔다. SK하이닉스는 지난 6월 호남권에 400조원 신규 클러스터를 조성하겠다는 구상을 밝힌 뒤 경영진의 광주 방문과 지자체 협의를 이어왔다.",
       "title": "“용인만으론 안 된다”…최태원, 광주 반도체 승부수"
     },
+    "source_fact:a9b219c071ce7c66895b3ca1": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.hankyung.com/article/202610126048O",
+      "source": "한국경제",
+      "source_body_digest": "ced695fcd31aded319b3957e4cea9c1516a67bb24ec5eb32950ca9f07254b3a0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:41f6f3cab3c938bc25273cf7ac2f4ca22ab3a9b19929249972ef35621b8e653e",
+      "source_fact_keys": [
+        "source_fact:v1:162cd5e1bc21ae56efeee804433d1a9ddb0618c76ac18596fb4a132d11cef65b",
+        "source_fact:v1:17b246ea98671f7c52f858b95720c56bc12428105e6ac0e564b6f41aea6217f1",
+        "source_fact:v1:23ed5bf113ee39bd9b5c7953e6acd8a83e2ce13231293c1244538878403fe88a",
+        "source_fact:v1:3366a0e773f6cbef3387c2d74d1c7e699b1405cb6741690af5f88bc9d83a08a7",
+        "source_fact:v1:4534d07224670ce8e469b4f0335bcc875ce3929e6b912add99f42723c87ad8f5",
+        "source_fact:v1:bbc3d2767be76243ee5e1f680bb24ec9f9f341e334a910af59aff4dad825023b",
+        "source_fact:v1:fd256311c8ad20a3ab013a3a297ecf3e99232fa7581334da97ace51ff345021c"
+      ],
+      "source_published_kst": "2026-10-12T13:49+09:00",
+      "source_title": "빌드블록, '초기 거점 구축 서비스' 출시…한국 기업 미국 생산시설 구축 지원",
+      "telegram_core_fact": "빌드블록이 미국에 생산시설을 마련하려는 한국 기업을 대상으로 부지·건물의 사용 적합성과 기반시설, 인허가 조건을 사전 검토하는 서비스를 출시한다.",
+      "title": "빌드블록, '초기 거점 구축 서비스' 출시…한국 기업 미국 생산시설 구축 지원"
+    },
     "source_fact:a9b67fe3b026d150e848e0df": {
       "first_seen_kst": "2026-10-08T20:58:15+09:00",
       "lanes": {
@@ -409237,6 +410343,29 @@
       "source_title": "삼성전자 분기 영업이익 100조원 넘을까...하닉도 역대급 실적- 매경ECONOMY",
       "telegram_core_fact": "10월 7일 금융정보업체 에프앤가이드에 따르면 삼성전자의 3분기 영업이익 컨센서스는 약 106조억원으로 집계됐다.",
       "title": "삼성전자 분기 영업이익 100조원 넘을까...하닉도 역대급 실적- 매경ECONOMY"
+    },
+    "source_fact:aa3f6828901982e7c361792c": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03230806645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "8ad9b1414381a6806487e99f64e0a892e2f97535f9f298fa122f5782dd256ad5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fe12ffe8ccf039803a53a117ad130ab89288e32d79692e6d5bd72bb9c7904d84",
+      "source_fact_keys": [
+        "source_fact:v1:17ac43f63c383295485f7a0eb7f4920294a6dc108484deb1de638a34bfa1b574",
+        "source_fact:v1:24ffae7faa6a8e22ea7a15875831d22002eca4aa5866ff2a935aaa16382c6cf1",
+        "source_fact:v1:425f71df11bde746066f0ef5936b62a3e04a6091c43aed257d47f56ed9ec6a48",
+        "source_fact:v1:878884a31519573075ade243279ffede46afaab49589b01549d77bb8b7e6956f",
+        "source_fact:v1:cb2a56eac24042ccd3882a5bdf3c6efdfb43d5ce0dd7d29c0504e0ff06eca431"
+      ],
+      "source_published_kst": "2026-10-12T14:01+09:00",
+      "source_title": "유니켐, 美 루미아 지분 100% 인수 본계약…‘로봇 전자피부’ 사업 본격화",
+      "telegram_core_fact": "유니켐(011330)이 미국 유연전자 기술기업 루미아 테크놀로지스(Loomia Technologies) 지분 100% 인수를 위한 본계약을 체결하고 로봇 전자피부 사업 확대에 나선다.",
+      "title": "유니켐, 美 루미아 지분 100% 인수 본계약…‘로봇 전자피부’ 사업 본격화"
     },
     "source_fact:aa42e11595f3be6f6d1ebc85": {
       "first_seen_kst": "2026-10-07T08:36:47+09:00",
@@ -411353,6 +412482,32 @@
       "source_title": "커피 홀딩, 250만달러 규모 자사주 매입 승인",
       "telegram_core_fact": "커피 홀딩(JVA)은 이사회가 발행 보통주를 최대 250만 달러까지 매입할 수 있는 자사주 매입 프로그램을 승인했다고 10월 7일 발표했다.",
       "title": "커피 홀딩, 250만달러 규모 자사주 매입 승인"
+    },
+    "source_fact:ac38d16fb177d8d9db950f9f": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634682",
+      "source": "이투데이",
+      "source_body_digest": "6b22b69b90551db8ee33a989a0aa5b0565004bd20b2bfe33b5f28b0f856106fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ad2220db88f9ca3db3629ff5195a4416a10ea6a86ffe829df47a3cd5c4743a47",
+      "source_fact_keys": [
+        "source_fact:v1:05496e61eb8ae4b7e9f260b95f1732fed2982a0db3ad76eb6d944fcf2ab32f07",
+        "source_fact:v1:28741b32c157a1cec20d3fd3e7ce36bab1e667dc0d9c22834c212f35ef12aed5",
+        "source_fact:v1:29d0ea810c0670937abdb47a164c1a4224534eb5aebb870fbe707d2fe1dfb2c6",
+        "source_fact:v1:93c0bcbc8883f4a87a1f6b3d29d8b9aedb8a795afbde4c39003f4b5d304f8d5b",
+        "source_fact:v1:ab3f8506a620063228a8c3cc4f2afe967bd64db6de57b2c0c22259b1bb834244",
+        "source_fact:v1:b1627422dc45886bd848ba041d49a3bcef7acbfe8256747f0d977bdbc9591455",
+        "source_fact:v1:d447df5b0b5ac5727f4d43db8555961c6048626ac553929f7f467ad53e715564",
+        "source_fact:v1:d832c4fe2dc244307e009b96d9773c1f3530b9c9d1bd4b235872c298e665f7dd"
+      ],
+      "source_published_kst": "2026-10-12T14:06+09:00",
+      "source_title": "뷰티스킨, 중국 대규모 화장품 수출 계약 초도물량 발주서 수령",
+      "telegram_core_fact": "회사는 중국과 베트남 관련 공급 계약을 체결했으며 초도 물량 발주도 받은 상태다.",
+      "title": "뷰티스킨, 중국 대규모 화장품 수출 계약 초도물량 발주서 수령"
     },
     "source_fact:ac3eee77e76196aaecbabe0b": {
       "first_seen_kst": "2026-10-07T04:49:54+09:00",
@@ -414623,6 +415778,31 @@
       ],
       "source_published_kst": "2026-10-05T22:29+09:00",
       "title": "토스뱅크서도 해킹 시도…일부 보험사도 공격 흔적 포착"
+    },
+    "source_fact:af7fa74048c16db18caea32f": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.hankyung.com/article/202610126048O",
+      "source": "한국경제",
+      "source_body_digest": "ced695fcd31aded319b3957e4cea9c1516a67bb24ec5eb32950ca9f07254b3a0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:41f6f3cab3c938bc25273cf7ac2f4ca22ab3a9b19929249972ef35621b8e653e",
+      "source_fact_keys": [
+        "source_fact:v1:162cd5e1bc21ae56efeee804433d1a9ddb0618c76ac18596fb4a132d11cef65b",
+        "source_fact:v1:17b246ea98671f7c52f858b95720c56bc12428105e6ac0e564b6f41aea6217f1",
+        "source_fact:v1:23ed5bf113ee39bd9b5c7953e6acd8a83e2ce13231293c1244538878403fe88a",
+        "source_fact:v1:3366a0e773f6cbef3387c2d74d1c7e699b1405cb6741690af5f88bc9d83a08a7",
+        "source_fact:v1:4534d07224670ce8e469b4f0335bcc875ce3929e6b912add99f42723c87ad8f5",
+        "source_fact:v1:bbc3d2767be76243ee5e1f680bb24ec9f9f341e334a910af59aff4dad825023b",
+        "source_fact:v1:fd256311c8ad20a3ab013a3a297ecf3e99232fa7581334da97ace51ff345021c"
+      ],
+      "source_published_kst": "2026-10-12T13:49+09:00",
+      "source_title": "빌드블록, '초기 거점 구축 서비스' 출시…한국 기업 미국 생산시설 구축 지원",
+      "telegram_core_fact": "빌드블록이 미국에 생산시설을 마련하려는 한국 기업을 대상으로 부지·건물의 사용 적합성과 기반시설, 인허가 조건을 사전 검토하는 서비스를 출시한다.",
+      "title": "빌드블록, '초기 거점 구축 서비스' 출시…한국 기업 미국 생산시설 구축 지원"
     },
     "source_fact:af8d082be9b3a00ae582a2a7": {
       "first_seen_kst": "2026-10-10T07:01:20+09:00",
@@ -418008,6 +419188,32 @@
       "source_title": "추미애 \"보육예산 임의삭감 아냐\"…어린이집 지원단가는 1만2600원→6000원",
       "telegram_core_fact": "추미애 경기도지사가 보육예산 '임의삭감'을 공개 부인하면서 어린이집 운영지원비의 원아당 도 지원단가를 1만2600원에서 6000원으로 조정한 내역을 직접 밝혔다. 추 지사는 보육예산 임의 삭감을 부인하면서 어린이집 운영지원비 원아당 도 지원단가를 1만2600원에서 6000원으로 조정했다고 밝혔다.",
       "title": "추미애 \"보육예산 임의삭감 아냐\"…어린이집 지원단가는 1만2600원→6000원"
+    },
+    "source_fact:b2fa60a3a065dfea755ae0dd": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634682",
+      "source": "이투데이",
+      "source_body_digest": "6b22b69b90551db8ee33a989a0aa5b0565004bd20b2bfe33b5f28b0f856106fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ad2220db88f9ca3db3629ff5195a4416a10ea6a86ffe829df47a3cd5c4743a47",
+      "source_fact_keys": [
+        "source_fact:v1:05496e61eb8ae4b7e9f260b95f1732fed2982a0db3ad76eb6d944fcf2ab32f07",
+        "source_fact:v1:28741b32c157a1cec20d3fd3e7ce36bab1e667dc0d9c22834c212f35ef12aed5",
+        "source_fact:v1:29d0ea810c0670937abdb47a164c1a4224534eb5aebb870fbe707d2fe1dfb2c6",
+        "source_fact:v1:93c0bcbc8883f4a87a1f6b3d29d8b9aedb8a795afbde4c39003f4b5d304f8d5b",
+        "source_fact:v1:ab3f8506a620063228a8c3cc4f2afe967bd64db6de57b2c0c22259b1bb834244",
+        "source_fact:v1:b1627422dc45886bd848ba041d49a3bcef7acbfe8256747f0d977bdbc9591455",
+        "source_fact:v1:d447df5b0b5ac5727f4d43db8555961c6048626ac553929f7f467ad53e715564",
+        "source_fact:v1:d832c4fe2dc244307e009b96d9773c1f3530b9c9d1bd4b235872c298e665f7dd"
+      ],
+      "source_published_kst": "2026-10-12T14:06+09:00",
+      "source_title": "뷰티스킨, 중국 대규모 화장품 수출 계약 초도물량 발주서 수령",
+      "telegram_core_fact": "회사는 중국과 베트남 관련 공급 계약을 체결했으며 초도 물량 발주도 받은 상태다.",
+      "title": "뷰티스킨, 중국 대규모 화장품 수출 계약 초도물량 발주서 수령"
     },
     "source_fact:b2fac63857acf57d7eedab97": {
       "first_seen_kst": "2026-10-08T11:49:03+09:00",
@@ -428765,6 +429971,32 @@
       "telegram_core_fact": "반도체 실적 개선으로 대규모 특별성과급 지급이 예고되면서 삼성전자 직원들의 보상 규모에도 관심이 쏠리고 있다.",
       "title": "“삼성전자 들어온게 인생 최대 업적”…성과급 30억 부부 “진지하게 서민 탈출한 것 같다”"
     },
+    "source_fact:be8e8d4034a384ff6c9fcf77": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635063",
+      "source": "이투데이",
+      "source_body_digest": "d5985c3270ee54dfcd64511811e532272d039f720f7d92591f804e0bf2505ed5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b22226f9dd441d8503fd3c0662e2f7a4f2ce0b67a10e8ea1466b68eefdd2e939",
+      "source_fact_keys": [
+        "source_fact:v1:0b30427cee657bfafacdff1fd8e7c334f59fe732e36e82008dbd2fc2063ebb15",
+        "source_fact:v1:26d014e1a9f18985368640ca28d65a183f9b503dbb67f2daafac78ee20efe8b0",
+        "source_fact:v1:33532ce1a0e5b13c916a22a6431573e0812c435f0fbd2fdfd72c6e95428bf40d",
+        "source_fact:v1:50722209d5f52174d87083ef54d720fd45fe4dff7b752d1b0a27380ade93b7b9",
+        "source_fact:v1:969469c8fef6557a3ae2dd9e4d5192ca4905680c817a229b5c32fc15d442f413",
+        "source_fact:v1:b55901b6af4a1d92603612495cb3813cfd7ebf72af577a330c9f642c580c6f2f",
+        "source_fact:v1:df16a5e27cdf548d09f35d891d4a20ee32e20dad16c5bfb0ae119abaf33d1552",
+        "source_fact:v1:feefc264a6c0ac2829d55fcba8e7af351c4dcdad171f0cdbeb8b583f70d4228d"
+      ],
+      "source_published_kst": "2026-10-13T10:15+09:00",
+      "source_title": "키움운용, '삼성전자·SK하이닉스 채권혼합 ETF' 10월 주당 146원 지급",
+      "telegram_core_fact": "이 상품은 주식 편입 비중이 50%인 채권혼합형 ETF로, 퇴직연금 확정기여형(DC)과 개인형퇴직연금(IRP) 계좌에서 투자금의 최대 100%까지 편입할 수 있다.",
+      "title": "키움운용, '삼성전자·SK하이닉스 채권혼합 ETF' 10월 주당 146원 지급"
+    },
     "source_fact:be95b1f47a7d9e1ed1447727": {
       "first_seen_kst": "2026-10-09T15:48:54+09:00",
       "lanes": {
@@ -437432,6 +438664,57 @@
       ],
       "source_published_kst": "2026-10-06T17:35+09:00",
       "title": "엔비디아, 이틀째 사상 최고…시총 6조달러 고지 '눈앞'"
+    },
+    "source_fact:c71f0a46d05a48b276e061f7": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635063",
+      "source": "이투데이",
+      "source_body_digest": "d5985c3270ee54dfcd64511811e532272d039f720f7d92591f804e0bf2505ed5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b22226f9dd441d8503fd3c0662e2f7a4f2ce0b67a10e8ea1466b68eefdd2e939",
+      "source_fact_keys": [
+        "source_fact:v1:0b30427cee657bfafacdff1fd8e7c334f59fe732e36e82008dbd2fc2063ebb15",
+        "source_fact:v1:26d014e1a9f18985368640ca28d65a183f9b503dbb67f2daafac78ee20efe8b0",
+        "source_fact:v1:33532ce1a0e5b13c916a22a6431573e0812c435f0fbd2fdfd72c6e95428bf40d",
+        "source_fact:v1:50722209d5f52174d87083ef54d720fd45fe4dff7b752d1b0a27380ade93b7b9",
+        "source_fact:v1:969469c8fef6557a3ae2dd9e4d5192ca4905680c817a229b5c32fc15d442f413",
+        "source_fact:v1:b55901b6af4a1d92603612495cb3813cfd7ebf72af577a330c9f642c580c6f2f",
+        "source_fact:v1:df16a5e27cdf548d09f35d891d4a20ee32e20dad16c5bfb0ae119abaf33d1552",
+        "source_fact:v1:feefc264a6c0ac2829d55fcba8e7af351c4dcdad171f0cdbeb8b583f70d4228d"
+      ],
+      "source_published_kst": "2026-10-13T10:15+09:00",
+      "source_title": "키움운용, '삼성전자·SK하이닉스 채권혼합 ETF' 10월 주당 146원 지급",
+      "telegram_core_fact": "이 상품은 주식 편입 비중이 50%인 채권혼합형 ETF로, 퇴직연금 확정기여형(DC)과 개인형퇴직연금(IRP) 계좌에서 투자금의 최대 100%까지 편입할 수 있다.",
+      "title": "키움운용, '삼성전자·SK하이닉스 채권혼합 ETF' 10월 주당 146원 지급"
+    },
+    "source_fact:c72251393cca8650fa62cdbc": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.hankyung.com/article/202610126048O",
+      "source": "한국경제",
+      "source_body_digest": "ced695fcd31aded319b3957e4cea9c1516a67bb24ec5eb32950ca9f07254b3a0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:41f6f3cab3c938bc25273cf7ac2f4ca22ab3a9b19929249972ef35621b8e653e",
+      "source_fact_keys": [
+        "source_fact:v1:162cd5e1bc21ae56efeee804433d1a9ddb0618c76ac18596fb4a132d11cef65b",
+        "source_fact:v1:17b246ea98671f7c52f858b95720c56bc12428105e6ac0e564b6f41aea6217f1",
+        "source_fact:v1:23ed5bf113ee39bd9b5c7953e6acd8a83e2ce13231293c1244538878403fe88a",
+        "source_fact:v1:3366a0e773f6cbef3387c2d74d1c7e699b1405cb6741690af5f88bc9d83a08a7",
+        "source_fact:v1:4534d07224670ce8e469b4f0335bcc875ce3929e6b912add99f42723c87ad8f5",
+        "source_fact:v1:bbc3d2767be76243ee5e1f680bb24ec9f9f341e334a910af59aff4dad825023b",
+        "source_fact:v1:fd256311c8ad20a3ab013a3a297ecf3e99232fa7581334da97ace51ff345021c"
+      ],
+      "source_published_kst": "2026-10-12T13:49+09:00",
+      "source_title": "빌드블록, '초기 거점 구축 서비스' 출시…한국 기업 미국 생산시설 구축 지원",
+      "telegram_core_fact": "빌드블록이 미국에 생산시설을 마련하려는 한국 기업을 대상으로 부지·건물의 사용 적합성과 기반시설, 인허가 조건을 사전 검토하는 서비스를 출시한다.",
+      "title": "빌드블록, '초기 거점 구축 서비스' 출시…한국 기업 미국 생산시설 구축 지원"
     },
     "source_fact:c72495e63a4bed61901f08dc": {
       "first_seen_kst": "2026-10-09T21:51:45+09:00",
@@ -461679,6 +462962,29 @@
       "telegram_core_fact": "2024년에는 한화갤러리아의 실적 부진에 따른 책임경영에 초점을 맞췄다면, 이번에는 주가 하락에 대한 주주 불만을 해소하고 한화M&S의 성장 가능성에 대한 확신을 보여주려는 취지다. 김동선 한화(000880)머시너리앤서비스홀딩스(한화M&S) 미래전략총괄 사장이 1285억원을 들여 자사 주식 공개매수에 나선다.",
       "title": "한화3남 김동선, 1285억 투입해 한화M&S 최대주주로…'책임경영’ 승부수(종합)"
     },
+    "source_fact:dfe1c3385bfd9dacf2b082de": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03230806645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "8ad9b1414381a6806487e99f64e0a892e2f97535f9f298fa122f5782dd256ad5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fe12ffe8ccf039803a53a117ad130ab89288e32d79692e6d5bd72bb9c7904d84",
+      "source_fact_keys": [
+        "source_fact:v1:17ac43f63c383295485f7a0eb7f4920294a6dc108484deb1de638a34bfa1b574",
+        "source_fact:v1:24ffae7faa6a8e22ea7a15875831d22002eca4aa5866ff2a935aaa16382c6cf1",
+        "source_fact:v1:425f71df11bde746066f0ef5936b62a3e04a6091c43aed257d47f56ed9ec6a48",
+        "source_fact:v1:878884a31519573075ade243279ffede46afaab49589b01549d77bb8b7e6956f",
+        "source_fact:v1:cb2a56eac24042ccd3882a5bdf3c6efdfb43d5ce0dd7d29c0504e0ff06eca431"
+      ],
+      "source_published_kst": "2026-10-12T14:01+09:00",
+      "source_title": "유니켐, 美 루미아 지분 100% 인수 본계약…‘로봇 전자피부’ 사업 본격화",
+      "telegram_core_fact": "유니켐(011330)이 미국 유연전자 기술기업 루미아 테크놀로지스(Loomia Technologies) 지분 100% 인수를 위한 본계약을 체결하고 로봇 전자피부 사업 확대에 나선다.",
+      "title": "유니켐, 美 루미아 지분 100% 인수 본계약…‘로봇 전자피부’ 사업 본격화"
+    },
     "source_fact:dfe60e67e1ef4a2e52fcf82a": {
       "first_seen_kst": "2026-10-13T08:14:23+09:00",
       "lanes": {
@@ -479512,6 +480818,28 @@
       "source_published_kst": "2026-10-07T11:08+09:00",
       "title": "LG전자, 3분기 누적 영업이익 4조 첫 돌파…가전·전장 '캐시카우'가 끌었다"
     },
+    "source_fact:f1b942cacdc62af15a8e45cb": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822974",
+      "source": "뉴시스",
+      "source_body_digest": "8fbcf5eb962f4831b7de6e7a7ec7163e0ae67e436e4886f3e869eba5e705a628",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4d8d8ba5b8b0a8148cd02f110be7a18790ad1184b209d74ebb0a49e71bc84e0",
+      "source_fact_keys": [
+        "source_fact:v1:00ffa4c63435135927921e37cb794a451bc4a34c1116bf8a9f2f35fe88150645",
+        "source_fact:v1:b040813d747b7823e98bc220233cff8190b5dc2d48fb0ca35e433449b17c37d9",
+        "source_fact:v1:c6a6bfa2c2784f0e9f02b2807291a177e72afe001464b1397b0de156eb604f42",
+        "source_fact:v1:ce35f025ebec014adcf5c5a0e4229d8c4c0e69c46a5e82b7474ccfab2b15728c"
+      ],
+      "source_published_kst": "2026-10-13T10:19+09:00",
+      "source_title": "켄텍, 개교 이래 최대 기술이전 계약…5억 규모",
+      "telegram_core_fact": "한국에너지공과대학교(KENTECH·켄텍)가 액화수소 플랜트 엔지니어링 원천기술로 개교 4년 만에 최대 기술이전 계약을 체결했다. 연구책임자이자 대표 발명자인 황지현 교수가 개발·축적한 기술로켄텍 개교 이후 최대 노하우 기술이전 계약이다.",
+      "title": "켄텍, 개교 이래 최대 기술이전 계약…5억 규모"
+    },
     "source_fact:f1cd67a0d506f215cd047204": {
       "first_seen_kst": "2026-10-09T18:14:26+09:00",
       "lanes": {
@@ -483888,6 +485216,28 @@
       "source_title": "'호남팹' 속도전 나선 SK 최태원… \"전력·용수 늦어져도 먼저 건설\"",
       "telegram_core_fact": "최 회장은 이날 민형배 전남광주시장, 용지를 둘러보고 시 관계자로부터 전력·용수 등 기반시설 확보와 인허가 등 주요 현안에 대한 추진 계획을 듣기도 했다.",
       "title": "'호남팹' 속도전 나선 SK 최태원… \"전력·용수 늦어져도 먼저 건설\""
+    },
+    "source_fact:f6730da47de92caef424837f": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822974",
+      "source": "뉴시스",
+      "source_body_digest": "8fbcf5eb962f4831b7de6e7a7ec7163e0ae67e436e4886f3e869eba5e705a628",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4d8d8ba5b8b0a8148cd02f110be7a18790ad1184b209d74ebb0a49e71bc84e0",
+      "source_fact_keys": [
+        "source_fact:v1:00ffa4c63435135927921e37cb794a451bc4a34c1116bf8a9f2f35fe88150645",
+        "source_fact:v1:b040813d747b7823e98bc220233cff8190b5dc2d48fb0ca35e433449b17c37d9",
+        "source_fact:v1:c6a6bfa2c2784f0e9f02b2807291a177e72afe001464b1397b0de156eb604f42",
+        "source_fact:v1:ce35f025ebec014adcf5c5a0e4229d8c4c0e69c46a5e82b7474ccfab2b15728c"
+      ],
+      "source_published_kst": "2026-10-13T10:19+09:00",
+      "source_title": "켄텍, 개교 이래 최대 기술이전 계약…5억 규모",
+      "telegram_core_fact": "한국에너지공과대학교(KENTECH·켄텍)가 액화수소 플랜트 엔지니어링 원천기술로 개교 4년 만에 최대 기술이전 계약을 체결했다. 연구책임자이자 대표 발명자인 황지현 교수가 개발·축적한 기술로켄텍 개교 이후 최대 노하우 기술이전 계약이다.",
+      "title": "켄텍, 개교 이래 최대 기술이전 계약…5억 규모"
     },
     "source_fact:f67f8a668c908a4a04bd7aac": {
       "first_seen_kst": "2026-10-12T12:09:58+09:00",
@@ -491491,6 +492841,32 @@
       "source_published_kst": "2026-10-06T11:30+09:00",
       "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
     },
+    "source_fact:ff183ed8d6cd00105804d0a9": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635063",
+      "source": "이투데이",
+      "source_body_digest": "d5985c3270ee54dfcd64511811e532272d039f720f7d92591f804e0bf2505ed5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b22226f9dd441d8503fd3c0662e2f7a4f2ce0b67a10e8ea1466b68eefdd2e939",
+      "source_fact_keys": [
+        "source_fact:v1:0b30427cee657bfafacdff1fd8e7c334f59fe732e36e82008dbd2fc2063ebb15",
+        "source_fact:v1:26d014e1a9f18985368640ca28d65a183f9b503dbb67f2daafac78ee20efe8b0",
+        "source_fact:v1:33532ce1a0e5b13c916a22a6431573e0812c435f0fbd2fdfd72c6e95428bf40d",
+        "source_fact:v1:50722209d5f52174d87083ef54d720fd45fe4dff7b752d1b0a27380ade93b7b9",
+        "source_fact:v1:969469c8fef6557a3ae2dd9e4d5192ca4905680c817a229b5c32fc15d442f413",
+        "source_fact:v1:b55901b6af4a1d92603612495cb3813cfd7ebf72af577a330c9f642c580c6f2f",
+        "source_fact:v1:df16a5e27cdf548d09f35d891d4a20ee32e20dad16c5bfb0ae119abaf33d1552",
+        "source_fact:v1:feefc264a6c0ac2829d55fcba8e7af351c4dcdad171f0cdbeb8b583f70d4228d"
+      ],
+      "source_published_kst": "2026-10-13T10:15+09:00",
+      "source_title": "키움운용, '삼성전자·SK하이닉스 채권혼합 ETF' 10월 주당 146원 지급",
+      "telegram_core_fact": "이 상품은 주식 편입 비중이 50%인 채권혼합형 ETF로, 퇴직연금 확정기여형(DC)과 개인형퇴직연금(IRP) 계좌에서 투자금의 최대 100%까지 편입할 수 있다.",
+      "title": "키움운용, '삼성전자·SK하이닉스 채권혼합 ETF' 10월 주당 146원 지급"
+    },
     "source_fact:ff197d89d70ced6aedbe5f1f": {
       "first_seen_kst": "2026-10-10T00:39:56+09:00",
       "lanes": {
@@ -493966,6 +495342,29 @@
       "source_title": "정부, 내년 글로벌 ‘고신뢰 탄소시장’ 가동…탄소 크레딧 디지털자산 발행 검토",
       "telegram_core_fact": "승인받은 크레딧은 투자국의 국가 온실가스 감축목표(NDC)나 국제항공 탄소상쇄·감축제도인 코르시아 등 규제 대응과 ESG 활동에 활용하는 방향으로 추진한다.",
       "title": "정부, 내년 글로벌 ‘고신뢰 탄소시장’ 가동…탄소 크레딧 디지털자산 발행 검토"
+    },
+    "title:04e8fe38486afa15468014c9": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03230806645612264&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "8ad9b1414381a6806487e99f64e0a892e2f97535f9f298fa122f5782dd256ad5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fe12ffe8ccf039803a53a117ad130ab89288e32d79692e6d5bd72bb9c7904d84",
+      "source_fact_keys": [
+        "source_fact:v1:17ac43f63c383295485f7a0eb7f4920294a6dc108484deb1de638a34bfa1b574",
+        "source_fact:v1:24ffae7faa6a8e22ea7a15875831d22002eca4aa5866ff2a935aaa16382c6cf1",
+        "source_fact:v1:425f71df11bde746066f0ef5936b62a3e04a6091c43aed257d47f56ed9ec6a48",
+        "source_fact:v1:878884a31519573075ade243279ffede46afaab49589b01549d77bb8b7e6956f",
+        "source_fact:v1:cb2a56eac24042ccd3882a5bdf3c6efdfb43d5ce0dd7d29c0504e0ff06eca431"
+      ],
+      "source_published_kst": "2026-10-12T14:01+09:00",
+      "source_title": "유니켐, 美 루미아 지분 100% 인수 본계약…‘로봇 전자피부’ 사업 본격화",
+      "telegram_core_fact": "유니켐(011330)이 미국 유연전자 기술기업 루미아 테크놀로지스(Loomia Technologies) 지분 100% 인수를 위한 본계약을 체결하고 로봇 전자피부 사업 확대에 나선다.",
+      "title": "유니켐, 美 루미아 지분 100% 인수 본계약…‘로봇 전자피부’ 사업 본격화"
     },
     "title:04f86303ebdb71eeb23282c9": {
       "first_seen_kst": "2026-10-13T10:05:20+09:00",
@@ -502323,6 +503722,32 @@
       ],
       "source_published_kst": "2026-10-07T16:08+09:00",
       "title": "금속노조 \"충주 킬른 설비 사망사고, 위험의 외주화 여전\""
+    },
+    "title:23d14da3869a6e9c7f43937b": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635063",
+      "source": "이투데이",
+      "source_body_digest": "d5985c3270ee54dfcd64511811e532272d039f720f7d92591f804e0bf2505ed5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b22226f9dd441d8503fd3c0662e2f7a4f2ce0b67a10e8ea1466b68eefdd2e939",
+      "source_fact_keys": [
+        "source_fact:v1:0b30427cee657bfafacdff1fd8e7c334f59fe732e36e82008dbd2fc2063ebb15",
+        "source_fact:v1:26d014e1a9f18985368640ca28d65a183f9b503dbb67f2daafac78ee20efe8b0",
+        "source_fact:v1:33532ce1a0e5b13c916a22a6431573e0812c435f0fbd2fdfd72c6e95428bf40d",
+        "source_fact:v1:50722209d5f52174d87083ef54d720fd45fe4dff7b752d1b0a27380ade93b7b9",
+        "source_fact:v1:969469c8fef6557a3ae2dd9e4d5192ca4905680c817a229b5c32fc15d442f413",
+        "source_fact:v1:b55901b6af4a1d92603612495cb3813cfd7ebf72af577a330c9f642c580c6f2f",
+        "source_fact:v1:df16a5e27cdf548d09f35d891d4a20ee32e20dad16c5bfb0ae119abaf33d1552",
+        "source_fact:v1:feefc264a6c0ac2829d55fcba8e7af351c4dcdad171f0cdbeb8b583f70d4228d"
+      ],
+      "source_published_kst": "2026-10-13T10:15+09:00",
+      "source_title": "키움운용, '삼성전자·SK하이닉스 채권혼합 ETF' 10월 주당 146원 지급",
+      "telegram_core_fact": "이 상품은 주식 편입 비중이 50%인 채권혼합형 ETF로, 퇴직연금 확정기여형(DC)과 개인형퇴직연금(IRP) 계좌에서 투자금의 최대 100%까지 편입할 수 있다.",
+      "title": "키움운용, '삼성전자·SK하이닉스 채권혼합 ETF' 10월 주당 146원 지급"
     },
     "title:23e532e0900d46027842e930": {
       "first_seen_kst": "2026-10-11T12:11:12+09:00",
@@ -512606,6 +514031,28 @@
       "source": "머니투데이",
       "title": "정무위, 국감 증인 채택 또 불발...野 \"레버리지 ETF 김용범 불러야\""
     },
+    "title:45d541c7ca594b93814ff87f": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261012_0003822974",
+      "source": "뉴시스",
+      "source_body_digest": "8fbcf5eb962f4831b7de6e7a7ec7163e0ae67e436e4886f3e869eba5e705a628",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4d8d8ba5b8b0a8148cd02f110be7a18790ad1184b209d74ebb0a49e71bc84e0",
+      "source_fact_keys": [
+        "source_fact:v1:00ffa4c63435135927921e37cb794a451bc4a34c1116bf8a9f2f35fe88150645",
+        "source_fact:v1:b040813d747b7823e98bc220233cff8190b5dc2d48fb0ca35e433449b17c37d9",
+        "source_fact:v1:c6a6bfa2c2784f0e9f02b2807291a177e72afe001464b1397b0de156eb604f42",
+        "source_fact:v1:ce35f025ebec014adcf5c5a0e4229d8c4c0e69c46a5e82b7474ccfab2b15728c"
+      ],
+      "source_published_kst": "2026-10-13T10:19+09:00",
+      "source_title": "켄텍, 개교 이래 최대 기술이전 계약…5억 규모",
+      "telegram_core_fact": "한국에너지공과대학교(KENTECH·켄텍)가 액화수소 플랜트 엔지니어링 원천기술로 개교 4년 만에 최대 기술이전 계약을 체결했다. 연구책임자이자 대표 발명자인 황지현 교수가 개발·축적한 기술로켄텍 개교 이후 최대 노하우 기술이전 계약이다.",
+      "title": "켄텍, 개교 이래 최대 기술이전 계약…5억 규모"
+    },
     "title:45e2aa14a4dfdd1a8e0ac9fe": {
       "first_seen_kst": "2026-10-08T16:54:07+09:00",
       "lanes": {
@@ -519361,6 +520808,23 @@
       "source_published_kst": "2026-10-07T08:23+09:00",
       "title": "\"삼전닉스 3분기 실적 추정치 상향…우려보다 견조할 것\""
     },
+    "title:5e49378c8d3a0fe3e30ee2f9": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.mt.co.kr/index.php/estate/2026/10/12/2026101212041066403",
+      "source": "머니투데이",
+      "source_body_digest": "b9db00122583c75cbeb58e375700e47031f3be2fe40822ae77d20be5fdaaa1b4",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T13:54+09:00",
+      "source_title": "LH 임대손실 지적에…이성훈 \"보편형 임대는 재무 영향 크지 않아\"",
+      "telegram_core_fact": "이성훈 LH 사장은 건설원가 상승과 개발사업 수익 감소를 재무 부담의 원인으로 꼽으면서 보편형 임대주택은 기존 저소득층 대상 임대주택과 임대료 구조가 다르다고 설명했다.",
+      "title": "LH 임대손실 지적에…이성훈 \"보편형 임대는 재무 영향 크지 않아\""
+    },
     "title:5e5609aa487d8e24ca679aa3": {
       "first_seen_kst": "2026-10-05T09:13:59+09:00",
       "lanes": {
@@ -519842,6 +521306,31 @@
       ],
       "source_published_kst": "2026-10-06T17:34+09:00",
       "title": "기업 DB, 계열사에만 제공…조사協, 한국평가데이터 공정위 신고"
+    },
+    "title:5fd8078a9689c49e30ad681b": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.hankyung.com/article/202610126048O",
+      "source": "한국경제",
+      "source_body_digest": "ced695fcd31aded319b3957e4cea9c1516a67bb24ec5eb32950ca9f07254b3a0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:41f6f3cab3c938bc25273cf7ac2f4ca22ab3a9b19929249972ef35621b8e653e",
+      "source_fact_keys": [
+        "source_fact:v1:162cd5e1bc21ae56efeee804433d1a9ddb0618c76ac18596fb4a132d11cef65b",
+        "source_fact:v1:17b246ea98671f7c52f858b95720c56bc12428105e6ac0e564b6f41aea6217f1",
+        "source_fact:v1:23ed5bf113ee39bd9b5c7953e6acd8a83e2ce13231293c1244538878403fe88a",
+        "source_fact:v1:3366a0e773f6cbef3387c2d74d1c7e699b1405cb6741690af5f88bc9d83a08a7",
+        "source_fact:v1:4534d07224670ce8e469b4f0335bcc875ce3929e6b912add99f42723c87ad8f5",
+        "source_fact:v1:bbc3d2767be76243ee5e1f680bb24ec9f9f341e334a910af59aff4dad825023b",
+        "source_fact:v1:fd256311c8ad20a3ab013a3a297ecf3e99232fa7581334da97ace51ff345021c"
+      ],
+      "source_published_kst": "2026-10-12T13:49+09:00",
+      "source_title": "빌드블록, '초기 거점 구축 서비스' 출시…한국 기업 미국 생산시설 구축 지원",
+      "telegram_core_fact": "빌드블록이 미국에 생산시설을 마련하려는 한국 기업을 대상으로 부지·건물의 사용 적합성과 기반시설, 인허가 조건을 사전 검토하는 서비스를 출시한다.",
+      "title": "빌드블록, '초기 거점 구축 서비스' 출시…한국 기업 미국 생산시설 구축 지원"
     },
     "title:5fe4b7cb445547f6b1228927": {
       "first_seen_kst": "2026-10-05T01:05:10+09:00",
@@ -548227,6 +549716,23 @@
       "source_published_kst": "2026-10-06T16:27+09:00",
       "title": "[올댓차이나] 中 AI 스타트업 문샷, 내년 1분기 홍콩 상장…\"기업가치 500억＄\""
     },
+    "title:c67c2c9b7a0c67f24922a70d": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634679",
+      "source": "이투데이",
+      "source_body_digest": "eeb5aac9dda862d568703775c1d5aede674f689d83e90789c6bda4d2d6f8ad2b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-12T14:02+09:00",
+      "source_title": "김종철 방미통위원장 “불법스팸 부당이익 환수 과징금 신설…불공정행위 제재 강화” [국감]",
+      "telegram_core_fact": "통신시장 금지행위 위반에 대한 과징금도 상향해 불공정행위에 대한 제재 수위를 높인다.",
+      "title": "김종철 방미통위원장 “불법스팸 부당이익 환수 과징금 신설…불공정행위 제재 강화” [국감]"
+    },
     "title:c689c43796c82b97e4c9cc46": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
@@ -559136,6 +560642,32 @@
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "지식재산처, 상표 분류도 '속도전'…하역용 협동로봇 등 72개 신규 명칭 발굴"
     },
+    "title:ec34825587632949ddf3de09": {
+      "first_seen_kst": "2026-10-13T11:35:08+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:35:08+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:35:08+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2634682",
+      "source": "이투데이",
+      "source_body_digest": "6b22b69b90551db8ee33a989a0aa5b0565004bd20b2bfe33b5f28b0f856106fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ad2220db88f9ca3db3629ff5195a4416a10ea6a86ffe829df47a3cd5c4743a47",
+      "source_fact_keys": [
+        "source_fact:v1:05496e61eb8ae4b7e9f260b95f1732fed2982a0db3ad76eb6d944fcf2ab32f07",
+        "source_fact:v1:28741b32c157a1cec20d3fd3e7ce36bab1e667dc0d9c22834c212f35ef12aed5",
+        "source_fact:v1:29d0ea810c0670937abdb47a164c1a4224534eb5aebb870fbe707d2fe1dfb2c6",
+        "source_fact:v1:93c0bcbc8883f4a87a1f6b3d29d8b9aedb8a795afbde4c39003f4b5d304f8d5b",
+        "source_fact:v1:ab3f8506a620063228a8c3cc4f2afe967bd64db6de57b2c0c22259b1bb834244",
+        "source_fact:v1:b1627422dc45886bd848ba041d49a3bcef7acbfe8256747f0d977bdbc9591455",
+        "source_fact:v1:d447df5b0b5ac5727f4d43db8555961c6048626ac553929f7f467ad53e715564",
+        "source_fact:v1:d832c4fe2dc244307e009b96d9773c1f3530b9c9d1bd4b235872c298e665f7dd"
+      ],
+      "source_published_kst": "2026-10-12T14:06+09:00",
+      "source_title": "뷰티스킨, 중국 대규모 화장품 수출 계약 초도물량 발주서 수령",
+      "telegram_core_fact": "회사는 중국과 베트남 관련 공급 계약을 체결했으며 초도 물량 발주도 받은 상태다.",
+      "title": "뷰티스킨, 중국 대규모 화장품 수출 계약 초도물량 발주서 수령"
+    },
     "title:ec366ad26889180b6bf024cc": {
       "first_seen_kst": "2026-10-13T03:37:13+09:00",
       "lanes": {
@@ -564629,5 +566161,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-13T11:12:56+09:00"
+  "updated_at_kst": "2026-10-13T11:35:08+09:00"
 }
