@@ -55,7 +55,7 @@ jobs:
         run: python scripts/europe_sovereign_yield_watch.py
 
       - name: Check official France Moody rating and carry-event milestones
-        run: python scripts/france_credit_carry_overlay.py
+        run: python -m scripts.france_credit_carry_overlay
 
       - name: Publish status summary
         if: always()
