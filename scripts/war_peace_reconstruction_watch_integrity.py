@@ -83,6 +83,7 @@ def score_item(row, now):
         tags = [tag for tag in tags if tag not in ('확전', '확전위험', '재확전위험', '휴전·평화')]
         tags = [tag for tag in tags if tag != '공격확대예고']
         tags.append(KIND_LABELS[kind])
+        tags = list(dict.fromkeys(tags))
     return score, tags
 
 
@@ -164,6 +165,7 @@ def build_alert(items, markets, now):
             row['non_military_kind'] = kind
             row['tags'] = [tag for tag in row.get('tags', []) if tag not in ('확전', '확전위험', '공격확대예고')]
             row['tags'].append(KIND_LABELS[kind])
+            row['tags'] = list(dict.fromkeys(row['tags']))
             row['signals_ko'] = []
     text = _build(visible, markets, now)
     lines = text.splitlines()
