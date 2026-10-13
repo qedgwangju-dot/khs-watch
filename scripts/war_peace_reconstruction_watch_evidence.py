@@ -157,9 +157,10 @@ def attach_article(row, url, page, body):
 
 def alert_receipt(items, markets, now, text):
     urls = {html.unescape(url) for url in re.findall(r'<a href="([^"]+)"', text)}
-    keys = ('id', 'title_original', 'title_ko', 'source', 'source_url', 'link', 'discovery_url',
+    keys = ('id', 'title_original', 'title_ko', 'description', 'source', 'source_url', 'link', 'discovery_url',
             'resolved_url', 'published', 'rss_published', 'source_metadata', 'score', 'tags',
-            'body_checked', 'body_verified', 'non_military_kind', 'render_withheld')
+            'body_checked', 'body_verified', 'signals_ko', 'forced_tags', 'classification_color',
+            'non_military_kind', 'render_withheld')
     articles = []
     for row in items:
         item = {key: row.get(key) for key in keys if key in row}
