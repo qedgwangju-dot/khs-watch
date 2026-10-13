@@ -62,6 +62,34 @@ class IntegrityTests(unittest.TestCase):
         self.assertNotIn('실제 공격·', rendered)
         self.assertNotIn('신규 변화의 중심은 실제 공격', rendered)
 
+    def test_refinery_denial_and_opponent_attacks_keep_speaker_and_negation(self):
+        row = article('젤렌스키 "러 정유시설 이틀간 공격 안 했다…러는 계속 공격" - 뉴스1',
+                      source='뉴스1', link='https://news.google.com/rss/articles/fixture')
+        self.assertFalse(integrity.future_refinery_policy(row))
+        _, tags = integrity.score_item(row, NOW)
+        self.assertNotIn('공격확대예고', tags)
+        row['tags'] = tags
+        self.assertEqual(integrity.non_military_kind(row), 'attack_pause')
+        text = integrity.build_alert([row], [], NOW)
+        self.assertIn('공격 안 했다', text)
+        self.assertIn('러는 계속 공격', text)
+        self.assertNotIn('공격 확대 방침', text)
+        self.assertNotIn('🔴', text)
+        self.assertNotIn('🟢', text)
+        self.assertIn('휴전 합의·실제 이행이 확인되지는 않음', text)
+
+    def test_explicit_future_refinery_warning_is_yellow_after_final_render(self):
+        row = article('젤렌스키, 러시아 정유시설 공격을 강화하고 계속 타격할 것')
+        row['description'] = '우크라이나가 러시아의 새 공습 교리에 대응해 정유시설 공격을 강화할 방침이다.'
+        self.assertTrue(integrity.future_refinery_policy(row))
+        text = integrity.build_alert([row], [], NOW)
+        self.assertNotIn('🔴 [', text)
+        self.assertIn('🟡 [', text)
+
+    def test_opponent_denial_is_not_reassigned_to_ukraine(self):
+        row = article('러시아 "정유시설 공격 안 했다"…우크라이나는 공습 계속')
+        self.assertFalse(integrity.refinery_attack_denial(row))
+
     def test_real_attack_and_sanctions_keep_separate_colors(self):
         attack = article('후티, 사우디 공항에 미사일 공격…여행객 부상', source='MBC 뉴스', link='https://imnews.imbc.com/example')
         attack['id'] = 'attack'
@@ -143,6 +171,9 @@ class IntegrityTests(unittest.TestCase):
             self.assertEqual([row['id'] for row in receipt['articles'] if row['rendered']], [shown['id']])
             self.assertNotIn(stale['id'], pending['ids'])
             self.assertEqual(json.loads(watch.STATE.read_text())['seen'], ['already-confirmed'])
+            watch.PENDING.write_text(json.dumps({'ids': [stale['id']]}), encoding='utf-8')
+            with self.assertRaisesRegex(RuntimeError, 'WAR_INTEGRITY_GATE.*pending'):
+                integrity.runner.verify_alert()
 
     def test_stooq_price_never_uses_yahoo_previous_close(self):
         now = dt.datetime.now(watch.KST)
