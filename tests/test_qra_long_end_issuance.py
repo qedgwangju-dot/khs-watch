@@ -59,6 +59,8 @@ class TreasuryLongEndQraTests(unittest.TestCase):
     def test_dealer_document_must_have_long_end_question(self):
         self.assertFalse(issuance.dealer_agenda_mentions_long_end(
             "Welcome primary dealers. Discussion of cash management." ))
+        self.assertFalse(issuance.dealer_agenda_mentions_long_end(
+            "The 20-year and 30-year securities are listed on the routine meeting agenda." ))
         self.assertTrue(issuance.dealer_agenda_mentions_long_end(
             "Should Treasury reduce the size of 20-year bond auctions?" ))
         official=qra.ReleaseSection(
