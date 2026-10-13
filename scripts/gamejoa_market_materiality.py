@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 131
+VERSION = 132
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -4030,6 +4030,11 @@ def transmission_scope(title: str, evidence: list[dict]) -> tuple[int, str]:
         return 3, 'market_wide_policy_terms'
     if focus_kind(title) in {'macro_release', 'market_macro_response'} and kinds & {'rates_fx_or_macro'} and QUANTITY.search(excerpts) and not REGIONAL_CPI.search(title):
         return 3, 'national_macro_release'
+    if (kinds & {'industry_market_share', 'selling_price_or_cost', 'physical_supply_or_capacity', 'sector_demand_outlook'}
+            and QUANTITY.search(excerpts)
+            and re.search(r"전\s*세계|세계|글로벌|worldwide|global", f"{title} {excerpts}", re.I)
+            and re.search(r"출하량|생산량|수요|점유율|가격|시장", f"{title} {excerpts}", re.I)):
+        return 3, 'quantified_global_industry_operating_shift'
     if kinds & {'energy_stockpile_action', 'energy_geopolitics_or_supply_risk'} and re.search(
         rf"{OIL_PRICE}|원유|비축|경유|천연가스|호르무즈|이란|우크라이나|oil|stockpile|hormuz|iran|ukraine", f"{title} {excerpts}", re.I,
     ):
@@ -4080,6 +4085,74 @@ def nonmaterial_publicity_reason(title: str, body: str, firm_event: bool, publis
     rows = source_sentences(source_article_body(source_reported_body(body)))
     lead = ' '.join(rows[:6])
     foreground = title + ' ' + lead
+    full_text = title + ' ' + ' '.join(rows[:12])
+    all_article_text = title + ' ' + ' '.join(rows)
+    quantified_company_result = bool(firm_event or any(
+        QUANTITY.search(row)
+        and re.search(
+            r"매출(?:액)?|영업이익|순이익|수주|공급\s*계약|납품\s*계약|출하량|생산능력|"
+            r"판매량|유료\s*(?:이용자|고객)|다운로드|계약금액|공사\s*계약",
+            row,
+        )
+        and not ASPIRATION.search(row)
+        for row in rows[:12]
+    ) or any(
+        QUANTITY.search(row)
+        and re.search(r"검증을\s*완료|시험을\s*완료|실증(?:했다|을\s*완료)|양산을\s*시작|성능을\s*확인", row)
+        and re.search(r"대역폭|전력\s*효율|연산\s*성능|속도|용량|수율|나노초|GHz|Gbps|TOPS", row, re.I)
+        for row in rows[:12]
+    ))
+    expo_or_showcase = bool(
+        re.search(r"스마트\s*비즈\s*엑스포|산업전|전시회|박람회|쇼케이스|컨벤션", foreground, re.I)
+        or re.search(r"엑스포(?!\s*센터)", foreground, re.I)
+    ) and bool(re.search(r"개막|개최|참가|참석|전시|참여|부스|상담|체험|홍보|행사|준공식", foreground))
+    operating_asset_or_execution = bool(re.search(
+        r"공장|생산\s*(?:시설|라인|능력|설비)|양산(?:을)?\s*(?:시작|중)|"
+        r"가동\s*(?:중|을\s*시작|에\s*들어)|상업\s*규모(?:로)?\s*가동|상업생산|"
+        r"(?:공급|납품|기술\s*이전|라이선스|라이센스)\s*계약을?\s*(?:체결|서명)|"
+        r"수주(?:했다|를\s*확보|를\s*기록)|"
+        r"임상\s*[123]\s*상[^.!?\n]{0,65}(?:결과|반응률|개선|유효성|안전성|평가지표)",
+        all_article_text,
+    ))
+    local_event_procurement = bool(
+        (LOCAL_AUTHORITY.search(foreground)
+         or re.search(r"(?<![가-힣])[가-힣]{2,8}(?:시|군|구)(?=[^가-힣]|$)", foreground))
+        and re.search(r"야시장|미식회|먹거리\s*(?:축제|행사)|지역\s*축제|관광\s*축제|불꽃축제", foreground)
+        and re.search(r"제안요청서|입찰\s*공고|입찰공고|용역\s*(?:발주|공고)|RFP", full_text, re.I)
+        and not quantified_company_result
+    )
+    if local_event_procurement:
+        return 'municipal_festival_or_event_tender_without_awarded_listed_company_contract'
+
+    app_store_rank = bool(
+        re.search(r"구글\s*플레이|플레이스토어|애플\s*앱스토어|앱스토어|게임\s*순위|스토어\s*순위", foreground, re.I)
+        and re.search(r"1\s*위|순위|랭킹|상위권|매출\s*순위", foreground)
+    )
+    measured_app_kpi = bool(re.search(
+        r"(?:실제\s*)?(?:매출액|결제액|매출|다운로드|누적\s*이용자|유료\s*(?:이용자|가입자)|DAU|MAU)"
+        r"[^.!?\n]{0,35}\d[\d,.]*\s*(?:조\s*원|억\s*원|만\s*원|원|만\s*명|명|만\s*건|건|백만\s*회|회|%)",
+        full_text,
+        re.I,
+    ))
+    if app_store_rank and not measured_app_kpi:
+        return 'app_store_rank_without_measured_revenue_or_user_scale'
+
+    public_relocation_plan = bool(
+        re.search(r"공공기관|정부기관|행정기관|중앙부처", foreground)
+        and re.search(r"이전|이주|재배치", foreground)
+        and re.search(r"검토|계획|추진|협의|공청회|의견\s*수렴|수정안", full_text)
+    )
+    materially_scoped_relocation = bool(
+        firm_event
+        or re.search(
+            rf"(?:예산|사업비|이전비|공사비)[^.!?\n]{{0,45}}{SOURCE_MONEY}[^.!?\n]{{0,40}}(?:확정(?:했다|됐다|되었다)|편성(?:했다|됐다|되었다)|배정(?:했다|됐다|되었다)|의결(?:했다|됐다|되었다)|승인(?:했다|됐다|되었다)|국회\s*통과|추산(?:했(?:으며|다|다고)?|된다)|예상(?:된다|했다)|산정(?:했다|됐다|되었다))|"
+            r"(?:공사\s*계약(?:을)?\s*체결(?:했다|됐다)|시공사(?:를)?\s*선정(?:했다|됐다)|공사\s*발주(?:를)?\s*(?:결정|공고)(?:했다|됐다)|착공(?:했다|에\s*착수)|법률(?:이)?\s*통과(?:했다|됐다)|시행일(?:을)?\s*확정(?:했다|됐다))",
+            all_article_text,
+        )
+    )
+    if public_relocation_plan and not materially_scoped_relocation:
+        return 'public_agency_relocation_plan_without_funded_implementation_or_award'
+
     licensed_or_validated = bool(
         re.search(r"기술이전|임상|검증|실증|인증", title)
         and any(not PAST_ACTION.search(row) and not ASPIRATION.search(row) and (
@@ -4196,6 +4269,8 @@ def nonmaterial_publicity_reason(title: str, body: str, firm_event: bool, publis
         if years and min(years) < current_year and not re.search(
                 r"계약을\s*취소했다|제재를\s*확정했다|환수하기로\s*결정|재발주하기로\s*결정", lead):
             return 'historical_procurement_audit_without_new_business_action'
+    if expo_or_showcase and not quantified_company_result and not operating_asset_or_execution:
+        return 'industry_expo_or_showcase_without_company_execution_or_market_scale'
     return ''
 
 
