@@ -22,10 +22,16 @@ from datetime import datetime
 from html.parser import HTMLParser
 from pathlib import Path
 from zoneinfo import ZoneInfo
-from qra_long_end_issuance import (
-    nominal_long_end_table, summarize_long_end_supply,
-    expectation_comparison, dealer_agenda_mentions_long_end, CITI_20261009,
-)
+try:
+    from scripts.qra_long_end_issuance import (
+        nominal_long_end_table, summarize_long_end_supply,
+        expectation_comparison, dealer_agenda_mentions_long_end, CITI_20261009,
+    )
+except ModuleNotFoundError:
+    from qra_long_end_issuance import (
+        nominal_long_end_table, summarize_long_end_supply,
+        expectation_comparison, dealer_agenda_mentions_long_end, CITI_20261009,
+    )
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = ROOT / "out"
