@@ -129,3 +129,54 @@ def test_ctd_switch_requires_delivery_basket_not_cash_bond_yield():
     assert "cmegroup.com" in watch.CME_CTD_EDUCATION_URL
     assert watch.CONTRACTS["초장기(UB)"]["name"] == "ULTRA UST BOND"
     assert "6.00%" in watch.jpm_30y_signal(6.0)
+
+
+def test_us_rate_holiday_skips_columbus_day_2026():
+    import datetime as dt
+    from zoneinfo import ZoneInfo
+
+    assert watch.nyfed_closed(dt.date(2026, 10, 12))
+    assert not watch.nyfed_closed(dt.date(2026, 10, 9))
+    before = dt.datetime(2026, 10, 13, 5, 22, tzinfo=ZoneInfo("America/New_York"))
+    assert watch.completed_publication_days("2026-10-08", 8, before) == 1
+    assert watch.ensure_recent_funding_date(
+        "SOFR/TGCR", "2026-10-08", publish_hour=8, max_lag=1, now_ny=before
+    ) == 1
+
+
+def test_sofr_lag_becomes_stale_after_expected_publication():
+    import datetime as dt
+    from zoneinfo import ZoneInfo
+
+    after = dt.datetime(2026, 10, 13, 8, 20, tzinfo=ZoneInfo("America/New_York"))
+    assert watch.completed_publication_days("2026-10-08", 8, after) == 2
+    with pytest.raises(RuntimeError, match="publication lag"):
+        watch.ensure_recent_funding_date(
+            "SOFR/TGCR", "2026-10-08", publish_hour=8, max_lag=1, now_ny=after
+        )
+
+
+def test_ofr_cutoff_is_3pm_ny_and_holidays_not_calendar_days():
+    import datetime as dt
+    from zoneinfo import ZoneInfo
+
+    before = dt.datetime(2026, 10, 13, 14, 40, tzinfo=ZoneInfo("America/New_York"))
+    after = dt.datetime(2026, 10, 13, 15, 20, tzinfo=ZoneInfo("America/New_York"))
+    assert watch.completed_publication_days("2026-10-08", 15, before) == 1
+    assert watch.completed_publication_days("2026-10-08", 15, after) == 2
+    assert watch.ensure_recent_funding_date(
+        "OFR DVP Repo", "2026-10-08", publish_hour=15, max_lag=2, now_ny=after
+    ) == 2
+
+
+def test_funding_freshness_fails_for_future_date_and_real_staleness():
+    import datetime as dt
+    from zoneinfo import ZoneInfo
+
+    now = dt.datetime(2026, 10, 14, 16, 0, tzinfo=ZoneInfo("America/New_York"))
+    with pytest.raises(RuntimeError, match="future-dated"):
+        watch.completed_publication_days("2026-10-15", 8, now)
+    with pytest.raises(RuntimeError, match="publication lag"):
+        watch.ensure_recent_funding_date(
+            "OFR DVP Repo", "2026-10-08", publish_hour=15, max_lag=2, now_ny=now
+        )
