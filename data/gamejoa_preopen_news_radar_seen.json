@@ -11575,6 +11575,24 @@
       "telegram_core_fact": "오라클과 메타에 이어 스페이스X까지 AI 인프라 투자를 위해 대규모 자금조달에 나서면서 ‘AI 부채’에 대한 시장의 경계감이 커지고 있다. 2분기 AI 관련 매출은 26억달러로 전년비 247% 증가했다.",
       "title": "오라클·메타 이어 스페이스X…‘AI 빚더미’ 논란, 고공행진 주가에 찬물 [투자360]"
     },
+    "core:3fc7c81902223bfb2ac85d15": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12175046",
+      "source": "매일경제",
+      "source_body_digest": "525d05f5a40c196c3723362ba0c5f662b0084143add7ead5a518b6b67729aed6",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-14T05:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "TORM, 올해 EBITDA 가이던스 13억~15억 달러 상향",
+      "telegram_core_fact": "월가 증권사들은 TORM의 2026년 매출액을 15억2600만 달러로 예상하며, 이는 전년 대비 13.92% 늘어난 수준이다.",
+      "title": "TORM, 올해 EBITDA 가이던스 13억~15억 달러 상향"
+    },
     "core:3ff025ceeed60fb77bca97ee": {
       "first_seen_kst": "2026-10-13T01:09:54+09:00",
       "lanes": {
@@ -13221,6 +13239,26 @@
       "source_title": "외국인 2조 매도에 코스피 6400선 붕괴…39거래일 만",
       "telegram_core_fact": "개인이 1조4790억원, 기타법인이 6620억원 순매수한 가운데 외국인이 2조120억원, 기관이 1290억원 순매도했다.",
       "title": "외국인 2조 매도에 코스피 6400선 붕괴…39거래일 만"
+    },
+    "core:4ac0597fd0f278b855c31446": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.hankyung.com/article/2026101394951",
+      "source": "한국경제",
+      "source_body_digest": "384945a268d50d20d10c2ed96ed07b0ea4de2641e7fcc98eb8885f3d86c02f7d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ffefd9259f5a93a55e0fbdb31b2366e59bb141661fe8aeb1f554c200304ca5d0",
+      "source_fact_keys": [
+        "source_fact:v1:53b634006cda0e73a62f9659e71e3dffec0929693e68d67c30b2d5e4add71853"
+      ],
+      "source_published_kst": "2026-10-13T17:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디 때리는 후티…브렌트유 106달러 돌파",
+      "telegram_core_fact": "12일(현지시간) 영국 런던 ICE선물거래소에서 12월 인도분 브렌트유는 전장보다 1.84% 오른 배럴당 106.65달러를 기록했다.",
+      "title": "사우디 때리는 후티…브렌트유 106달러 돌파"
     },
     "core:4accb287bc25c7ef04e2dcdc": {
       "first_seen_kst": "2026-10-07T22:37:58+09:00",
@@ -21839,6 +21877,31 @@
       "telegram_core_fact": "오픈AI의 지난달 말 기준 연 환산 매출이 시장 기대치를 200억달러(약 27조원) 밑도는 500억달러(약 67조원) 수준인 것으로 알려진 가운데, '연말엔 700억달러 달성이 가능하다'는 분석이 나왔다.",
       "title": "블룸버그 \"오픈AI, 올 연말엔 연 환산 매출 700억달러 달성\""
     },
+    "core:8048526b76d07be33d369b07": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635115",
+      "source": "이투데이",
+      "source_body_digest": "beacb4d11b3415cb13c9552e27a8d3d1e20e413547c019769cc296349ba724cd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:abcb185eed5dcda1df180c2d32de89808cbc0637e3de402757967de90cd80cb7",
+      "source_fact_keys": [
+        "source_fact:v1:0886ef755ad9d15357b274b54dbcd3c8ba647699a401a229b5b2f42e50c0d319",
+        "source_fact:v1:5e5945d93f8d89aab180c9fe3bd62cfedf78e8c1d0cb3bd3f8e8001b72211457",
+        "source_fact:v1:6177b9c5173fb75f39f2af7ed19ffdf93c0c5a2c59050add85eb0f316c04df74",
+        "source_fact:v1:63b5d3c459f9631ead6650a65ae6a4f1179262dc7c1f55677d2dbd4f9ec15ce3",
+        "source_fact:v1:677345291537d3962d1ccc119a74a2726449a5d0f57e3a2c709bb6f86a5f20b2",
+        "source_fact:v1:8e4048a8ebdcb75b1e60d81d92605d90003733577706c56cf12c6d8a51e008a7"
+      ],
+      "source_published_kst": "2026-10-14T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한경협 \"주식 5% 공시로는 부족…숨은 지분도 공개해야\"",
+      "telegram_core_fact": "보고서는 현재 5%인 주식 보유 공시 기준을 낮추는 방안을 검토하고, 파생상품을 통해 실질적으로 확보한 지분도 파악할 수 있도록 제도를 개선할 것을 제안했다. 현행 자본시장법에 따르면 상장기업 주식을 5% 이상 보유한 투자자는 보유 목적과 지분 등을 금융당국에 보고해야 한다.",
+      "title": "한경협 \"주식 5% 공시로는 부족…숨은 지분도 공개해야\""
+    },
     "core:805688e75c47b9b4f744a339": {
       "first_seen_kst": "2026-10-12T09:05:29+09:00",
       "lanes": {
@@ -22044,6 +22107,33 @@
       "source_title": "중동전쟁·100달러 유가에도 美개미 상승 베팅…옵션 거래 '밈주식 광풍' 수준",
       "telegram_core_fact": "금리 상승과 배럴당 100달러 수준의 유가, 중동전쟁에도 단일종목 옵션 거래가 2021년 '밈주식 광풍' 당시 수준으로 돌아갔다.",
       "title": "중동전쟁·100달러 유가에도 美개미 상승 베팅…옵션 거래 '밈주식 광풍' 수준"
+    },
+    "core:81af2786cdbc5a7941379a85": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.fnnews.com/news/202610140602364076",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "965d66249a2b607977cde70f255ca0f42596d6900c97bee0b71e5d46bcefd389",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eba20b6f63447430f14fd67d63a602c7fc11fec7100f4f2820d915ea226dd888",
+      "source_fact_keys": [
+        "source_fact:v1:040b05a506fe88992209842f2da72bfcce66421885896f5cce769875db24580c",
+        "source_fact:v1:275fc7f1b46504e21360a4e00e0017a7c26f6cee7ad0080bbf0724e3edd6c0fc",
+        "source_fact:v1:4054b45725eed6d8d16c8512b4215bd190d54bc2c628f175c568f42c9f32b2d2",
+        "source_fact:v1:4fb76f7158fdb48b64c378680b958d0271b988fe3f71a53e2463f8ed40fbf766",
+        "source_fact:v1:6fb96308e4b8c3a1db9efdf9af6f97f418b2f9a9621c603fe6c492a6e59ed765",
+        "source_fact:v1:998fc74e568125e63066ebb35a1a7a9d38899d4bcecd69fdd98d5fe8a92c1560",
+        "source_fact:v1:a09c084e02e7cf711749e3fc461b45c38d1d0b8fbb673aaf4639d8e5e5642e0f",
+        "source_fact:v1:f4c6f8ca7f2f1da0912865233b691c1a9c39f128c4bfa65fbe75357b8b6dd773"
+      ],
+      "source_published_kst": "2026-10-14T06:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "'50조 매도세' 받아낸 자사주 매입 '끝'…새 수급 변수는 실적·주주환원",
+      "telegram_core_fact": "삼성전자(005930)와 SK하이닉스(000660)의 총 55조 원 규모 자사주 매입이 마무리 국면에 접어들면서 증시 재반등을 위해 새로운 수급 주체의 부상이 필요한 시점이다.",
+      "title": "'50조 매도세' 받아낸 자사주 매입 '끝'…새 수급 변수는 실적·주주환원"
     },
     "core:81d106987e96073eeec72032": {
       "first_seen_kst": "2026-10-12T06:42:49+09:00",
@@ -26072,6 +26162,27 @@
       "telegram_core_fact": "한국형발사체 누리호가 지난 7일 5차 발사에 성공하며 초소형군집위성 5기와 큐브위성 9기를 우주로 보냈다.",
       "title": "\"누리호 핵심 위성들도 관제···우주데이터센터 시대에도 지상국 필수\""
     },
+    "core:9a449ec03ba6a844c7dda4f1": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635392",
+      "source": "이투데이",
+      "source_body_digest": "10d18fef49a410fdceb68bd6e3e8d088c1e6e7c429465ba69ca1bf285a0d4e6f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ef3cdb6ec85b627f052763eb61d396a5f69676039311f4857b3d47352d0a6a94",
+      "source_fact_keys": [
+        "source_fact:v1:7665ac3e8fce8c2d6022e3d4aee0dfade83946b199f88fba09298f630fb6f699",
+        "source_fact:v1:d48f063c208d58ea23b9131627e2587a4c06598e05613ad2c462cf33272db677"
+      ],
+      "source_published_kst": "2026-10-14T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "농지조사·중국산 드론 논란…온라인 장터 6822억 이상거래도 도마 [국감]",
+      "telegram_core_fact": "국감에서는 거래의 실질을 확인하는 절차와 운송비 등 지원금 지급이 적절했는지, 온라인시장 확대가 실제 유통비 절감으로 이어졌는지 등을 살펴볼 것으로 보인다.",
+      "title": "농지조사·중국산 드론 논란…온라인 장터 6822억 이상거래도 도마 [국감]"
+    },
     "core:9a465b2eca65ff27dd2ca98e": {
       "first_seen_kst": "2026-10-07T19:13:29+09:00",
       "lanes": {
@@ -26570,6 +26681,33 @@
       "source_title": "107조 벌어도 외국인은 팔았다…삼전 지분율 18년9개월 최저[종합]",
       "telegram_core_fact": "외국인은 올해 코스피 시장에서 누적 197조원 넘게 순매도했다. 2008년 1월 11일 46.35% 이후 약 18년9개월 만에 가장 낮은 수준이다.",
       "title": "107조 벌어도 외국인은 팔았다…삼전 지분율 18년9개월 최저[종합]"
+    },
+    "core:9e2d0a77802fcfa36f6a014a": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.fnnews.com/news/202610140501337119",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "28bb4ba0a71716b76f9f5870f5971beef3f9f5c9a1e57dfdd1099a0c005092b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3282eb9201982f38a80e8932ed93437a56a0454d5a91ba95f39c1b7fe1efce2a",
+      "source_fact_keys": [
+        "source_fact:v1:14e0295caa214e10d872f8f76188556bbbc0ee6bc8562a7ef626d1a4a3447564",
+        "source_fact:v1:243f8b34b69a130964699ed25ed713526bddbff32bcf30b19a16891338774a0c",
+        "source_fact:v1:51026b753ba5e484b988b9cbebf026bb8daab226bc65cc4c5a58abc2b5411ddd",
+        "source_fact:v1:c3761d78684285427fb84b69f255a094cf896a5690ec681764b4afb6e61a966c",
+        "source_fact:v1:da01068349e2d4dc6c589867385fd15e55e56d2274b3629fd7317ebf1cb88629",
+        "source_fact:v1:edb952f372fda805fb1400fa16a6b109cddd6e5f850e22ee2ab8b6987cedaea1",
+        "source_fact:v1:f92ea9c41b3cea91192f27abcea5fd08133eca0289cb6507ec8289f15a24bf0f",
+        "source_fact:v1:fe50eeb40c4cfdbcf20c6c4cf45a265fd83867e431f3f3df0f28490443a1a4ee"
+      ],
+      "source_published_kst": "2026-10-14T05:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG엔솔 이어 삼성SDI도 3Q 흑자 유지 전망…\"K배터리, 실적 개선 본격화\"",
+      "telegram_core_fact": "LG에너지솔루션이 3분기 7560억원의 영업이익을 기록한 가운데, 삼성SDI도 3분기 흑자 흐름을 이어갈 전망이다.",
+      "title": "LG엔솔 이어 삼성SDI도 3Q 흑자 유지 전망…\"K배터리, 실적 개선 본격화\""
     },
     "core:9e2d89c853dcb060409ebe10": {
       "first_seen_kst": "2026-10-12T04:17:35+09:00",
@@ -38065,6 +38203,39 @@
       "source_title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스",
       "telegram_core_fact": "일단 삼성전자는 올해 3분기 연결 기준 영업이익이 107조4천억원으로 지난해 동기보다 782.5% 증가한 것으로 잠정 집계됐다고 공시했다.",
       "title": "[마켓뷰] 6,800대까지 밀린 코스피…삼성전자 잠정 실적 주시 | 연합뉴스"
+    },
+    "core:e18af93e089056811c1c8fc4": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003824797",
+      "source": "뉴시스",
+      "source_body_digest": "ab7ae5925d01c8561ebe5903dbb38dead02ba1d446d8119181ab173cd5734136",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ca56bf89709b369d91787c7856af6f350ad9a7c3a1fd4c7150443c9cbe0c7d9",
+      "source_fact_keys": [
+        "source_fact:v1:114618dd059c47e0ea4631890865a6b19d607f807004358f637eb5e85a7707a0",
+        "source_fact:v1:1a0ce8acd793526b10ab2e2c79427be9047428fac85249359f69de8d9a5b67a1",
+        "source_fact:v1:434b8362e10390744c281098223003cc711c25d9117c1488d53f55f052e52dc9",
+        "source_fact:v1:68ce7600d4541e2d48b654f9decf314f308b44d8870d793382f618eb01db74c2",
+        "source_fact:v1:70baa040664b3488b0b61a13fb7f4128c95ee57b844ecf203f6f6949d1bf2c6c",
+        "source_fact:v1:7273ba3e6da06a3feb990160455a9128cf462c13cc84d18505eea40630d6e14f",
+        "source_fact:v1:94b9e8544d9b768702068bcfb5549b508efdadcf945362880c4dc319d8a0ce25",
+        "source_fact:v1:9a4c52995b08a2a0c4faa3228c58e31fee4a3b6615dceaac5400b67a814d9827",
+        "source_fact:v1:9ca237c1752492a5d0490a703bfc75e664f867ff59c4ca9e7a87366ad2e7519a",
+        "source_fact:v1:b24a3bdb777b7f7e9366ccaee624e56e3632c7733255ba05e4752dd1ed623fbc",
+        "source_fact:v1:be609a50afa67105efd2492b06b0f864c49be54c108352256deaacdccd898786",
+        "source_fact:v1:c718c10ad15962949a24c3cc842a412a71d63fb735f9b99ee790614950f3886f",
+        "source_fact:v1:ec89804dc0ee893f314f0db1e47907aaceaf40821d1d526e26060e895419bd70",
+        "source_fact:v1:ef98f9e354f942ff4e926c7c41d6c40c9eab49da18720cd5520c9ee24bba1d8b"
+      ],
+      "source_published_kst": "2026-10-14T07:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까",
+      "telegram_core_fact": "코스피200 야간선물은 1.7% 상승했다. 코스피가 '검은화요일'의 충격을 딛고 14일 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까"
     },
     "core:e212313b3cd5aa61987bd639": {
       "first_seen_kst": "2026-10-13T14:54:18+09:00",
@@ -51288,34 +51459,22 @@
     "event:a2ada729c8a1c69f551905af": {
       "first_seen_kst": "2026-10-13T00:43:08+09:00",
       "lanes": {
-        "live": "2026-10-14T05:39:44+09:00"
+        "live": "2026-10-14T07:46:13+09:00"
       },
-      "last_seen_kst": "2026-10-14T05:39:44+09:00",
-      "link": "https://www.mt.co.kr/index.php/world/2026/10/13/2026101310091767502",
-      "source": "머니투데이",
-      "source_body_digest": "c6cc1ac13a42c5e26f89263a5a08f1cae0dc56cebbd6244139b7d76a4880cdca",
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.hankyung.com/article/2026101394951",
+      "source": "한국경제",
+      "source_body_digest": "384945a268d50d20d10c2ed96ed07b0ea4de2641e7fcc98eb8885f3d86c02f7d",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:be418361539d82416bd6dbef7119ea4f0694445dc04637026295488a5e36a413",
+      "source_fact_identity": "source_facts:v1:ffefd9259f5a93a55e0fbdb31b2366e59bb141661fe8aeb1f554c200304ca5d0",
       "source_fact_keys": [
-        "source_fact:v1:12852fa6d706194c7befb5f000aceb9049fa7fe529b424ed7bc81e57eb8758dd",
-        "source_fact:v1:26e14f7efaa7354fa1ad48271c99d18daa13c51fe9b0040ec59681eaa80c65ae",
-        "source_fact:v1:27336e6fe1f1fbcb1f44a4ac4ef39a26e7809cc47099092b4040aac43b6393f1",
-        "source_fact:v1:28482c33aef47e18fde0f22a33cf0b4af1f01f7a3231ed58205b96983fd0d2d9",
-        "source_fact:v1:5fff7c1ffee49849750d1841d572a8bd83efa80d2cc1462854b268f27c03db04",
-        "source_fact:v1:7bbf20235cfbd1ab3369836fd040aa8b688471f07a80a2eb225a29a38009a565",
-        "source_fact:v1:8b036e04a6f79730b8a666932234c447acfc7e4998460485cd989d7d7f00bfa0",
-        "source_fact:v1:8bbde83bffaaf87efcd50d3019fa86254cf2ef8b95e878047e8fde78535264b4",
-        "source_fact:v1:9ce0eed9878f4778a9422c5709bccc688b059f4baca86e1a7ef2a397cc20bb35",
-        "source_fact:v1:9d68aa4e34d7c05df6f64cd423a2ecf968b3c3af32d1c5713994ad5297cf74eb",
-        "source_fact:v1:b6936079b634d83a3ae26ce74abc9906b99f8f56d9422c1d432807fb21dbd51e",
-        "source_fact:v1:d42ef49ae8c91f66dc5b97e65d3ed3b79d7df1f0a2031058b5f93440342c8d36",
-        "source_fact:v1:e8b20d57dec68fc02f5dd9d3a28be7aeb772ef91dbc6b99700d4ab4600cd35a5"
+        "source_fact:v1:53b634006cda0e73a62f9659e71e3dffec0929693e68d67c30b2d5e4add71853"
       ],
-      "source_published_kst": "2026-10-13T17:14+09:00",
+      "source_published_kst": "2026-10-13T17:24+09:00",
       "source_supply_terms": {},
-      "source_title": "트럼프, 선거용 \"에너지 휴전\" 일방발표…꿈쩍않는 러·우 공방 지속",
-      "telegram_core_fact": "휴전 합의 발표에 앞서 트럼프 대통령은 러시아가 미국과 세계 시장에 경유 480만톤을 공급키로 했다고 밝혔다. 도널드 트럼프 대통령의 '러시아-우크라이나 에너지 휴전' 발표에도 러시아·우크라이나간 충돌이 계속되고 있다.",
-      "title": "트럼프, 선거용 \"에너지 휴전\" 일방발표…꿈쩍않는 러·우 공방 지속"
+      "source_title": "사우디 때리는 후티…브렌트유 106달러 돌파",
+      "telegram_core_fact": "12일(현지시간) 영국 런던 ICE선물거래소에서 12월 인도분 브렌트유는 전장보다 1.84% 오른 배럴당 106.65달러를 기록했다.",
+      "title": "사우디 때리는 후티…브렌트유 106달러 돌파"
     },
     "event:a2cfc7b6b0a3bbbd0bed93bb": {
       "first_seen_kst": "2026-09-24T00:05:53+09:00",
@@ -53340,6 +53499,39 @@
       "source_title": "테마 떴다하면 찍어내는 ETF … 하위 50개 순자산 고작 1700억",
       "telegram_core_fact": "반면에 순자산총액 하위 50개 ETF의 합산 순자산은 1700억원으로 지난해 말보다 오히려 줄었다. 신규 상장된 우주 ETF 가운데 순자산 규모가 가장 컸던 'TIGER 미국우주테크'의 6월 하루 평균 거래대금은 2000억원에 육박할 정도였다.",
       "title": "테마 떴다하면 찍어내는 ETF … 하위 50개 순자산 고작 1700억"
+    },
+    "event:cc9f64e0a094831a142a7314": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003824797",
+      "source": "뉴시스",
+      "source_body_digest": "ab7ae5925d01c8561ebe5903dbb38dead02ba1d446d8119181ab173cd5734136",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ca56bf89709b369d91787c7856af6f350ad9a7c3a1fd4c7150443c9cbe0c7d9",
+      "source_fact_keys": [
+        "source_fact:v1:114618dd059c47e0ea4631890865a6b19d607f807004358f637eb5e85a7707a0",
+        "source_fact:v1:1a0ce8acd793526b10ab2e2c79427be9047428fac85249359f69de8d9a5b67a1",
+        "source_fact:v1:434b8362e10390744c281098223003cc711c25d9117c1488d53f55f052e52dc9",
+        "source_fact:v1:68ce7600d4541e2d48b654f9decf314f308b44d8870d793382f618eb01db74c2",
+        "source_fact:v1:70baa040664b3488b0b61a13fb7f4128c95ee57b844ecf203f6f6949d1bf2c6c",
+        "source_fact:v1:7273ba3e6da06a3feb990160455a9128cf462c13cc84d18505eea40630d6e14f",
+        "source_fact:v1:94b9e8544d9b768702068bcfb5549b508efdadcf945362880c4dc319d8a0ce25",
+        "source_fact:v1:9a4c52995b08a2a0c4faa3228c58e31fee4a3b6615dceaac5400b67a814d9827",
+        "source_fact:v1:9ca237c1752492a5d0490a703bfc75e664f867ff59c4ca9e7a87366ad2e7519a",
+        "source_fact:v1:b24a3bdb777b7f7e9366ccaee624e56e3632c7733255ba05e4752dd1ed623fbc",
+        "source_fact:v1:be609a50afa67105efd2492b06b0f864c49be54c108352256deaacdccd898786",
+        "source_fact:v1:c718c10ad15962949a24c3cc842a412a71d63fb735f9b99ee790614950f3886f",
+        "source_fact:v1:ec89804dc0ee893f314f0db1e47907aaceaf40821d1d526e26060e895419bd70",
+        "source_fact:v1:ef98f9e354f942ff4e926c7c41d6c40c9eab49da18720cd5520c9ee24bba1d8b"
+      ],
+      "source_published_kst": "2026-10-14T07:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까",
+      "telegram_core_fact": "코스피200 야간선물은 1.7% 상승했다. 코스피가 '검은화요일'의 충격을 딛고 14일 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까"
     },
     "event:ccd90e359dba6ef37264b12c": {
       "first_seen_kst": "2026-09-20T06:23:53+09:00",
@@ -55530,20 +55722,29 @@
     "event:f620c229b162d68af5ce3027": {
       "first_seen_kst": "2026-10-14T06:36:25+09:00",
       "lanes": {
-        "live": "2026-10-14T06:36:25+09:00"
+        "live": "2026-10-14T07:46:13+09:00"
       },
-      "last_seen_kst": "2026-10-14T06:36:25+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261013176000003",
-      "source": "연합뉴스",
-      "source_body_digest": "62d95a699f01fac9aabf6aaf0c32cdce954d20f337bb295fb4bbe04caff588b2",
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.fnnews.com/news/202610140602364076",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "965d66249a2b607977cde70f255ca0f42596d6900c97bee0b71e5d46bcefd389",
       "source_event_identity": "",
-      "source_fact_identity": "",
-      "source_fact_keys": [],
-      "source_published_kst": "2026-10-14T06:05+09:00",
+      "source_fact_identity": "source_facts:v1:eba20b6f63447430f14fd67d63a602c7fc11fec7100f4f2820d915ea226dd888",
+      "source_fact_keys": [
+        "source_fact:v1:040b05a506fe88992209842f2da72bfcce66421885896f5cce769875db24580c",
+        "source_fact:v1:275fc7f1b46504e21360a4e00e0017a7c26f6cee7ad0080bbf0724e3edd6c0fc",
+        "source_fact:v1:4054b45725eed6d8d16c8512b4215bd190d54bc2c628f175c568f42c9f32b2d2",
+        "source_fact:v1:4fb76f7158fdb48b64c378680b958d0271b988fe3f71a53e2463f8ed40fbf766",
+        "source_fact:v1:6fb96308e4b8c3a1db9efdf9af6f97f418b2f9a9621c603fe6c492a6e59ed765",
+        "source_fact:v1:998fc74e568125e63066ebb35a1a7a9d38899d4bcecd69fdd98d5fe8a92c1560",
+        "source_fact:v1:a09c084e02e7cf711749e3fc461b45c38d1d0b8fbb673aaf4639d8e5e5642e0f",
+        "source_fact:v1:f4c6f8ca7f2f1da0912865233b691c1a9c39f128c4bfa65fbe75357b8b6dd773"
+      ],
+      "source_published_kst": "2026-10-14T06:02+09:00",
       "source_supply_terms": {},
-      "source_title": "상장사, 자사주 62조 소각해 1년 새 156%↑…삼전닉스가 절반 | 연합뉴스",
-      "telegram_core_fact": "상장사가 자사주 취득·소각을 발표했습니다.",
-      "title": "상장사, 자사주 62조 소각해 1년 새 156%↑…삼전닉스가 절반 | 연합뉴스"
+      "source_title": "'50조 매도세' 받아낸 자사주 매입 '끝'…새 수급 변수는 실적·주주환원",
+      "telegram_core_fact": "삼성전자(005930)와 SK하이닉스(000660)의 총 55조 원 규모 자사주 매입이 마무리 국면에 접어들면서 증시 재반등을 위해 새로운 수급 주체의 부상이 필요한 시점이다.",
+      "title": "'50조 매도세' 받아낸 자사주 매입 '끝'…새 수급 변수는 실적·주주환원"
     },
     "event:f621b4d31b03cf678d2c0aa7": {
       "first_seen_kst": "2026-09-23T09:05:43+09:00",
@@ -65726,6 +65927,33 @@
       "telegram_core_fact": "현대엔지니어링은 이번 과제를 통해 재생에너지를 활용한 수소 생산 기술의 기반을 확대하고, 저탄소 수소 생산 확대와 수소경제 활성화에 기여할 것으로 기대하고 있다.",
       "title": "[게시판] 현대엔지니어링, 재생에너지 연계 수전해 플랜트 기술 개발 참여 | 연합뉴스"
     },
+    "fact:2cb46efc0176090177e9a69d": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.fnnews.com/news/202610140602364076",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "965d66249a2b607977cde70f255ca0f42596d6900c97bee0b71e5d46bcefd389",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eba20b6f63447430f14fd67d63a602c7fc11fec7100f4f2820d915ea226dd888",
+      "source_fact_keys": [
+        "source_fact:v1:040b05a506fe88992209842f2da72bfcce66421885896f5cce769875db24580c",
+        "source_fact:v1:275fc7f1b46504e21360a4e00e0017a7c26f6cee7ad0080bbf0724e3edd6c0fc",
+        "source_fact:v1:4054b45725eed6d8d16c8512b4215bd190d54bc2c628f175c568f42c9f32b2d2",
+        "source_fact:v1:4fb76f7158fdb48b64c378680b958d0271b988fe3f71a53e2463f8ed40fbf766",
+        "source_fact:v1:6fb96308e4b8c3a1db9efdf9af6f97f418b2f9a9621c603fe6c492a6e59ed765",
+        "source_fact:v1:998fc74e568125e63066ebb35a1a7a9d38899d4bcecd69fdd98d5fe8a92c1560",
+        "source_fact:v1:a09c084e02e7cf711749e3fc461b45c38d1d0b8fbb673aaf4639d8e5e5642e0f",
+        "source_fact:v1:f4c6f8ca7f2f1da0912865233b691c1a9c39f128c4bfa65fbe75357b8b6dd773"
+      ],
+      "source_published_kst": "2026-10-14T06:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "'50조 매도세' 받아낸 자사주 매입 '끝'…새 수급 변수는 실적·주주환원",
+      "telegram_core_fact": "삼성전자(005930)와 SK하이닉스(000660)의 총 55조 원 규모 자사주 매입이 마무리 국면에 접어들면서 증시 재반등을 위해 새로운 수급 주체의 부상이 필요한 시점이다.",
+      "title": "'50조 매도세' 받아낸 자사주 매입 '끝'…새 수급 변수는 실적·주주환원"
+    },
     "fact:2cc4b1195d5f749c2e2bb374": {
       "first_seen_kst": "2026-10-06T12:10:48+09:00",
       "lanes": {
@@ -73753,6 +73981,31 @@
       "source_published_kst": "2026-10-07T09:51+09:00",
       "title": "삼미금속, 한화파워에 ‘가스터빈 블레이드’ 납품 개시…후속 수주 논의"
     },
+    "fact:514678288f05dbad83f61a6d": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635115",
+      "source": "이투데이",
+      "source_body_digest": "beacb4d11b3415cb13c9552e27a8d3d1e20e413547c019769cc296349ba724cd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:abcb185eed5dcda1df180c2d32de89808cbc0637e3de402757967de90cd80cb7",
+      "source_fact_keys": [
+        "source_fact:v1:0886ef755ad9d15357b274b54dbcd3c8ba647699a401a229b5b2f42e50c0d319",
+        "source_fact:v1:5e5945d93f8d89aab180c9fe3bd62cfedf78e8c1d0cb3bd3f8e8001b72211457",
+        "source_fact:v1:6177b9c5173fb75f39f2af7ed19ffdf93c0c5a2c59050add85eb0f316c04df74",
+        "source_fact:v1:63b5d3c459f9631ead6650a65ae6a4f1179262dc7c1f55677d2dbd4f9ec15ce3",
+        "source_fact:v1:677345291537d3962d1ccc119a74a2726449a5d0f57e3a2c709bb6f86a5f20b2",
+        "source_fact:v1:8e4048a8ebdcb75b1e60d81d92605d90003733577706c56cf12c6d8a51e008a7"
+      ],
+      "source_published_kst": "2026-10-14T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한경협 \"주식 5% 공시로는 부족…숨은 지분도 공개해야\"",
+      "telegram_core_fact": "보고서는 현재 5%인 주식 보유 공시 기준을 낮추는 방안을 검토하고, 파생상품을 통해 실질적으로 확보한 지분도 파악할 수 있도록 제도를 개선할 것을 제안했다. 현행 자본시장법에 따르면 상장기업 주식을 5% 이상 보유한 투자자는 보유 목적과 지분 등을 금융당국에 보고해야 한다.",
+      "title": "한경협 \"주식 5% 공시로는 부족…숨은 지분도 공개해야\""
+    },
     "fact:5185b8e00ff0bd3e5e0f2bfa": {
       "first_seen_kst": "2026-10-06T00:41:11+09:00",
       "lanes": {
@@ -80776,6 +81029,39 @@
       "telegram_core_fact": "\"상표 심사가 6개월 이상 지연될 경우 매출 감소에 따른 경제적 피해가 연간 약 3조원으로 추정된다\"고 질타했다. 우리나라 상표출원 건수는 2023년 31만3천533건 이후 매년 늘어나고 있으나 심사관 수는 2023년 160명에서 2024년 177명으로 17명 늘어난 이후 올해까지 변동이 없는 상황이다.",
       "title": "\"상표출원 심사 1년↑…소상공인·중소기업 피해 연간 3조 추정\""
     },
+    "fact:72208ce2a35e5ea8d187e8b1": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003824797",
+      "source": "뉴시스",
+      "source_body_digest": "ab7ae5925d01c8561ebe5903dbb38dead02ba1d446d8119181ab173cd5734136",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ca56bf89709b369d91787c7856af6f350ad9a7c3a1fd4c7150443c9cbe0c7d9",
+      "source_fact_keys": [
+        "source_fact:v1:114618dd059c47e0ea4631890865a6b19d607f807004358f637eb5e85a7707a0",
+        "source_fact:v1:1a0ce8acd793526b10ab2e2c79427be9047428fac85249359f69de8d9a5b67a1",
+        "source_fact:v1:434b8362e10390744c281098223003cc711c25d9117c1488d53f55f052e52dc9",
+        "source_fact:v1:68ce7600d4541e2d48b654f9decf314f308b44d8870d793382f618eb01db74c2",
+        "source_fact:v1:70baa040664b3488b0b61a13fb7f4128c95ee57b844ecf203f6f6949d1bf2c6c",
+        "source_fact:v1:7273ba3e6da06a3feb990160455a9128cf462c13cc84d18505eea40630d6e14f",
+        "source_fact:v1:94b9e8544d9b768702068bcfb5549b508efdadcf945362880c4dc319d8a0ce25",
+        "source_fact:v1:9a4c52995b08a2a0c4faa3228c58e31fee4a3b6615dceaac5400b67a814d9827",
+        "source_fact:v1:9ca237c1752492a5d0490a703bfc75e664f867ff59c4ca9e7a87366ad2e7519a",
+        "source_fact:v1:b24a3bdb777b7f7e9366ccaee624e56e3632c7733255ba05e4752dd1ed623fbc",
+        "source_fact:v1:be609a50afa67105efd2492b06b0f864c49be54c108352256deaacdccd898786",
+        "source_fact:v1:c718c10ad15962949a24c3cc842a412a71d63fb735f9b99ee790614950f3886f",
+        "source_fact:v1:ec89804dc0ee893f314f0db1e47907aaceaf40821d1d526e26060e895419bd70",
+        "source_fact:v1:ef98f9e354f942ff4e926c7c41d6c40c9eab49da18720cd5520c9ee24bba1d8b"
+      ],
+      "source_published_kst": "2026-10-14T07:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까",
+      "telegram_core_fact": "코스피200 야간선물은 1.7% 상승했다. 코스피가 '검은화요일'의 충격을 딛고 14일 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까"
+    },
     "fact:722c59d8c70f466acb66f8be": {
       "first_seen_kst": "2026-10-11T16:32:27+09:00",
       "lanes": {
@@ -87690,6 +87976,26 @@
       ],
       "source_published_kst": "2026-10-06T15:07+09:00",
       "title": "\"K-콘텐츠 금융지원\"…부산은행·신보, 100억원 보증지원"
+    },
+    "fact:921db07e4a216c3a0a1c886f": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.hankyung.com/article/2026101394951",
+      "source": "한국경제",
+      "source_body_digest": "384945a268d50d20d10c2ed96ed07b0ea4de2641e7fcc98eb8885f3d86c02f7d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ffefd9259f5a93a55e0fbdb31b2366e59bb141661fe8aeb1f554c200304ca5d0",
+      "source_fact_keys": [
+        "source_fact:v1:53b634006cda0e73a62f9659e71e3dffec0929693e68d67c30b2d5e4add71853"
+      ],
+      "source_published_kst": "2026-10-13T17:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디 때리는 후티…브렌트유 106달러 돌파",
+      "telegram_core_fact": "12일(현지시간) 영국 런던 ICE선물거래소에서 12월 인도분 브렌트유는 전장보다 1.84% 오른 배럴당 106.65달러를 기록했다.",
+      "title": "사우디 때리는 후티…브렌트유 106달러 돌파"
     },
     "fact:92273d69413fa4abf5737e97": {
       "first_seen_kst": "2026-10-08T20:39:20+09:00",
@@ -97514,6 +97820,27 @@
       "source_published_kst": "2026-10-07T09:35+09:00",
       "title": "KT클라우드, ‘청라 AI 데이터센터’ 구축 참여…50MW급 규모로 수도권 확장"
     },
+    "fact:ba980888ea04403c00b1eb78": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635392",
+      "source": "이투데이",
+      "source_body_digest": "10d18fef49a410fdceb68bd6e3e8d088c1e6e7c429465ba69ca1bf285a0d4e6f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ef3cdb6ec85b627f052763eb61d396a5f69676039311f4857b3d47352d0a6a94",
+      "source_fact_keys": [
+        "source_fact:v1:7665ac3e8fce8c2d6022e3d4aee0dfade83946b199f88fba09298f630fb6f699",
+        "source_fact:v1:d48f063c208d58ea23b9131627e2587a4c06598e05613ad2c462cf33272db677"
+      ],
+      "source_published_kst": "2026-10-14T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "농지조사·중국산 드론 논란…온라인 장터 6822억 이상거래도 도마 [국감]",
+      "telegram_core_fact": "국감에서는 거래의 실질을 확인하는 절차와 운송비 등 지원금 지급이 적절했는지, 온라인시장 확대가 실제 유통비 절감으로 이어졌는지 등을 살펴볼 것으로 보인다.",
+      "title": "농지조사·중국산 드론 논란…온라인 장터 6822억 이상거래도 도마 [국감]"
+    },
     "fact:bab3d92f3b1cb9a778e6565a": {
       "first_seen_kst": "2026-10-08T06:57:59+09:00",
       "lanes": {
@@ -98768,6 +99095,33 @@
       "source_title": "트럼프, 리사 쿡 연준 이사 해임 '2차전'… 연준 독립성 또다시 시험대",
       "telegram_core_fact": "AP통신은 트럼프 대통령이 연준에 금리 인하를 거듭 압박하는 가운데 쿡 이사의 해임을 재추진하면서 연준의 독립성이 훼손될 수 있다는 우려가 다시 제기될 것으로 보인다고 지적했다. 도널드 트럼프 대통령이 리사 쿡 연방준비제도(Fed·연준) 이사 해임 카드를 다시 꺼내 들었다.",
       "title": "트럼프, 리사 쿡 연준 이사 해임 '2차전'… 연준 독립성 또다시 시험대"
+    },
+    "fact:c0f3398d7ce17fd719864139": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.fnnews.com/news/202610140501337119",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "28bb4ba0a71716b76f9f5870f5971beef3f9f5c9a1e57dfdd1099a0c005092b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3282eb9201982f38a80e8932ed93437a56a0454d5a91ba95f39c1b7fe1efce2a",
+      "source_fact_keys": [
+        "source_fact:v1:14e0295caa214e10d872f8f76188556bbbc0ee6bc8562a7ef626d1a4a3447564",
+        "source_fact:v1:243f8b34b69a130964699ed25ed713526bddbff32bcf30b19a16891338774a0c",
+        "source_fact:v1:51026b753ba5e484b988b9cbebf026bb8daab226bc65cc4c5a58abc2b5411ddd",
+        "source_fact:v1:c3761d78684285427fb84b69f255a094cf896a5690ec681764b4afb6e61a966c",
+        "source_fact:v1:da01068349e2d4dc6c589867385fd15e55e56d2274b3629fd7317ebf1cb88629",
+        "source_fact:v1:edb952f372fda805fb1400fa16a6b109cddd6e5f850e22ee2ab8b6987cedaea1",
+        "source_fact:v1:f92ea9c41b3cea91192f27abcea5fd08133eca0289cb6507ec8289f15a24bf0f",
+        "source_fact:v1:fe50eeb40c4cfdbcf20c6c4cf45a265fd83867e431f3f3df0f28490443a1a4ee"
+      ],
+      "source_published_kst": "2026-10-14T05:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG엔솔 이어 삼성SDI도 3Q 흑자 유지 전망…\"K배터리, 실적 개선 본격화\"",
+      "telegram_core_fact": "LG에너지솔루션이 3분기 7560억원의 영업이익을 기록한 가운데, 삼성SDI도 3분기 흑자 흐름을 이어갈 전망이다.",
+      "title": "LG엔솔 이어 삼성SDI도 3Q 흑자 유지 전망…\"K배터리, 실적 개선 본격화\""
     },
     "fact:c10bad0897aebae10cd3e44b": {
       "first_seen_kst": "2026-10-06T12:10:48+09:00",
@@ -122794,6 +123148,33 @@
       "telegram_core_fact": "“제재 면제 신청 및 언론 공개라는 ‘공개적 방식’으로 추진한 점이 김여정의 극렬한 반발을 끌어낸 핵심 포인트”라며 “이번 사태로 불신이 배가 될 것”이라고 우려했다.",
       "title": "김여정, 의료장비 지원계획에 또 반발…\"한국 인간쓰레기 무시할 것\""
     },
+    "link:203e205421bb48e3e882a175": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.fnnews.com/news/202610140501337119",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "28bb4ba0a71716b76f9f5870f5971beef3f9f5c9a1e57dfdd1099a0c005092b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3282eb9201982f38a80e8932ed93437a56a0454d5a91ba95f39c1b7fe1efce2a",
+      "source_fact_keys": [
+        "source_fact:v1:14e0295caa214e10d872f8f76188556bbbc0ee6bc8562a7ef626d1a4a3447564",
+        "source_fact:v1:243f8b34b69a130964699ed25ed713526bddbff32bcf30b19a16891338774a0c",
+        "source_fact:v1:51026b753ba5e484b988b9cbebf026bb8daab226bc65cc4c5a58abc2b5411ddd",
+        "source_fact:v1:c3761d78684285427fb84b69f255a094cf896a5690ec681764b4afb6e61a966c",
+        "source_fact:v1:da01068349e2d4dc6c589867385fd15e55e56d2274b3629fd7317ebf1cb88629",
+        "source_fact:v1:edb952f372fda805fb1400fa16a6b109cddd6e5f850e22ee2ab8b6987cedaea1",
+        "source_fact:v1:f92ea9c41b3cea91192f27abcea5fd08133eca0289cb6507ec8289f15a24bf0f",
+        "source_fact:v1:fe50eeb40c4cfdbcf20c6c4cf45a265fd83867e431f3f3df0f28490443a1a4ee"
+      ],
+      "source_published_kst": "2026-10-14T05:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG엔솔 이어 삼성SDI도 3Q 흑자 유지 전망…\"K배터리, 실적 개선 본격화\"",
+      "telegram_core_fact": "LG에너지솔루션이 3분기 7560억원의 영업이익을 기록한 가운데, 삼성SDI도 3분기 흑자 흐름을 이어갈 전망이다.",
+      "title": "LG엔솔 이어 삼성SDI도 3Q 흑자 유지 전망…\"K배터리, 실적 개선 본격화\""
+    },
     "link:20414437e63f3c31a4962d2c": {
       "first_seen_kst": "2026-10-08T11:06:13+09:00",
       "lanes": {
@@ -139130,6 +139511,26 @@
       "source_published_kst": "2026-10-07T09:59+09:00",
       "title": "파라마운트, 워너 인수 완료⋯미디어공룡 ‘스카이댄스’ 출범"
     },
+    "link:52e39c4cc6c4207d7c8e2240": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.hankyung.com/article/2026101394951",
+      "source": "한국경제",
+      "source_body_digest": "384945a268d50d20d10c2ed96ed07b0ea4de2641e7fcc98eb8885f3d86c02f7d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ffefd9259f5a93a55e0fbdb31b2366e59bb141661fe8aeb1f554c200304ca5d0",
+      "source_fact_keys": [
+        "source_fact:v1:53b634006cda0e73a62f9659e71e3dffec0929693e68d67c30b2d5e4add71853"
+      ],
+      "source_published_kst": "2026-10-13T17:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디 때리는 후티…브렌트유 106달러 돌파",
+      "telegram_core_fact": "12일(현지시간) 영국 런던 ICE선물거래소에서 12월 인도분 브렌트유는 전장보다 1.84% 오른 배럴당 106.65달러를 기록했다.",
+      "title": "사우디 때리는 후티…브렌트유 106달러 돌파"
+    },
     "link:52ee510a7f40410ac47ecda0": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
       "lanes": {
@@ -148750,6 +149151,24 @@
       "telegram_core_fact": "로이터통신에 따르면 트럼프 대통령은 지난 9일(현지시간) 블라디미르 푸틴 러시아 대통령과의 통화 후 러시아가 즉시 30만톤(t) 이상의 경유를 미국과 글로벌 시장에 공급한다고 자신의 사회관계망서비스(SNS) ‘트루스소셜’을 통해 발표했다.",
       "title": "중간선거 앞둔 트럼프 ‘폭주’…꼬여만 가는 러-우크라戰"
     },
+    "link:711d9965823d7d02e160acba": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12175046",
+      "source": "매일경제",
+      "source_body_digest": "525d05f5a40c196c3723362ba0c5f662b0084143add7ead5a518b6b67729aed6",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-14T05:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "TORM, 올해 EBITDA 가이던스 13억~15억 달러 상향",
+      "telegram_core_fact": "월가 증권사들은 TORM의 2026년 매출액을 15억2600만 달러로 예상하며, 이는 전년 대비 13.92% 늘어난 수준이다.",
+      "title": "TORM, 올해 EBITDA 가이던스 13억~15억 달러 상향"
+    },
     "link:713697ae2c12642c221c28cb": {
       "first_seen_kst": "2026-10-12T06:42:49+09:00",
       "lanes": {
@@ -157414,6 +157833,33 @@
       "telegram_core_fact": "외국인이 997억원 순매도하며 지수를 끌어내리고 있다.",
       "title": "연휴 끝나자 외국인 ‘팔자’…코스피, 하락 출발"
     },
+    "link:8f14f581fda164350051ed5c": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.fnnews.com/news/202610140602364076",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "965d66249a2b607977cde70f255ca0f42596d6900c97bee0b71e5d46bcefd389",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eba20b6f63447430f14fd67d63a602c7fc11fec7100f4f2820d915ea226dd888",
+      "source_fact_keys": [
+        "source_fact:v1:040b05a506fe88992209842f2da72bfcce66421885896f5cce769875db24580c",
+        "source_fact:v1:275fc7f1b46504e21360a4e00e0017a7c26f6cee7ad0080bbf0724e3edd6c0fc",
+        "source_fact:v1:4054b45725eed6d8d16c8512b4215bd190d54bc2c628f175c568f42c9f32b2d2",
+        "source_fact:v1:4fb76f7158fdb48b64c378680b958d0271b988fe3f71a53e2463f8ed40fbf766",
+        "source_fact:v1:6fb96308e4b8c3a1db9efdf9af6f97f418b2f9a9621c603fe6c492a6e59ed765",
+        "source_fact:v1:998fc74e568125e63066ebb35a1a7a9d38899d4bcecd69fdd98d5fe8a92c1560",
+        "source_fact:v1:a09c084e02e7cf711749e3fc461b45c38d1d0b8fbb673aaf4639d8e5e5642e0f",
+        "source_fact:v1:f4c6f8ca7f2f1da0912865233b691c1a9c39f128c4bfa65fbe75357b8b6dd773"
+      ],
+      "source_published_kst": "2026-10-14T06:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "'50조 매도세' 받아낸 자사주 매입 '끝'…새 수급 변수는 실적·주주환원",
+      "telegram_core_fact": "삼성전자(005930)와 SK하이닉스(000660)의 총 55조 원 규모 자사주 매입이 마무리 국면에 접어들면서 증시 재반등을 위해 새로운 수급 주체의 부상이 필요한 시점이다.",
+      "title": "'50조 매도세' 받아낸 자사주 매입 '끝'…새 수급 변수는 실적·주주환원"
+    },
     "link:8f19448f698a4b4d36050de9": {
       "first_seen_kst": "2026-10-08T03:26:42+09:00",
       "lanes": {
@@ -160781,6 +161227,27 @@
       "source_title": "SK하이닉스 이르면 28일 실적 공개…영업이익률 80% 돌파하나",
       "telegram_core_fact": "삼성전자가 '분기 영업이익 100조' 시대를 열었고 SK하이닉스는 꿈의 영업이익률 기록을 세울 것으로 기대된다.",
       "title": "SK하이닉스 이르면 28일 실적 공개…영업이익률 80% 돌파하나"
+    },
+    "link:98923208d96c9f2c66bcfe71": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635392",
+      "source": "이투데이",
+      "source_body_digest": "10d18fef49a410fdceb68bd6e3e8d088c1e6e7c429465ba69ca1bf285a0d4e6f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ef3cdb6ec85b627f052763eb61d396a5f69676039311f4857b3d47352d0a6a94",
+      "source_fact_keys": [
+        "source_fact:v1:7665ac3e8fce8c2d6022e3d4aee0dfade83946b199f88fba09298f630fb6f699",
+        "source_fact:v1:d48f063c208d58ea23b9131627e2587a4c06598e05613ad2c462cf33272db677"
+      ],
+      "source_published_kst": "2026-10-14T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "농지조사·중국산 드론 논란…온라인 장터 6822억 이상거래도 도마 [국감]",
+      "telegram_core_fact": "국감에서는 거래의 실질을 확인하는 절차와 운송비 등 지원금 지급이 적절했는지, 온라인시장 확대가 실제 유통비 절감으로 이어졌는지 등을 살펴볼 것으로 보인다.",
+      "title": "농지조사·중국산 드론 논란…온라인 장터 6822억 이상거래도 도마 [국감]"
     },
     "link:98bc418e4b040ae3cb4908ef": {
       "first_seen_kst": "2026-10-08T06:27:52+09:00",
@@ -175531,6 +175998,31 @@
       "telegram_core_fact": "구글코리아가 1540억원대 법인세 부과에 불복해 낸 소송에서 과세당국이 최종 패소, 과세 처분이 취소된다.",
       "title": "국세청, 구글코리아 1540억원대 법인세 취소소송에서 패소"
     },
+    "link:c7f5b53a29cc54bbd8dc3c64": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635115",
+      "source": "이투데이",
+      "source_body_digest": "beacb4d11b3415cb13c9552e27a8d3d1e20e413547c019769cc296349ba724cd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:abcb185eed5dcda1df180c2d32de89808cbc0637e3de402757967de90cd80cb7",
+      "source_fact_keys": [
+        "source_fact:v1:0886ef755ad9d15357b274b54dbcd3c8ba647699a401a229b5b2f42e50c0d319",
+        "source_fact:v1:5e5945d93f8d89aab180c9fe3bd62cfedf78e8c1d0cb3bd3f8e8001b72211457",
+        "source_fact:v1:6177b9c5173fb75f39f2af7ed19ffdf93c0c5a2c59050add85eb0f316c04df74",
+        "source_fact:v1:63b5d3c459f9631ead6650a65ae6a4f1179262dc7c1f55677d2dbd4f9ec15ce3",
+        "source_fact:v1:677345291537d3962d1ccc119a74a2726449a5d0f57e3a2c709bb6f86a5f20b2",
+        "source_fact:v1:8e4048a8ebdcb75b1e60d81d92605d90003733577706c56cf12c6d8a51e008a7"
+      ],
+      "source_published_kst": "2026-10-14T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한경협 \"주식 5% 공시로는 부족…숨은 지분도 공개해야\"",
+      "telegram_core_fact": "보고서는 현재 5%인 주식 보유 공시 기준을 낮추는 방안을 검토하고, 파생상품을 통해 실질적으로 확보한 지분도 파악할 수 있도록 제도를 개선할 것을 제안했다. 현행 자본시장법에 따르면 상장기업 주식을 5% 이상 보유한 투자자는 보유 목적과 지분 등을 금융당국에 보고해야 한다.",
+      "title": "한경협 \"주식 5% 공시로는 부족…숨은 지분도 공개해야\""
+    },
     "link:c7facbf386587ae34e2daef5": {
       "first_seen_kst": "2026-10-05T09:13:59+09:00",
       "lanes": {
@@ -181871,6 +182363,39 @@
       "source_title": "LH 임대손실 지적에…이성훈 \"보편형 임대는 재무 영향 크지 않아\"",
       "telegram_core_fact": "이성훈 LH 사장은 건설원가 상승과 개발사업 수익 감소를 재무 부담의 원인으로 꼽으면서 보편형 임대주택은 기존 저소득층 대상 임대주택과 임대료 구조가 다르다고 설명했다.",
       "title": "LH 임대손실 지적에…이성훈 \"보편형 임대는 재무 영향 크지 않아\""
+    },
+    "link:dd4ad6c50be98733d63a1e44": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003824797",
+      "source": "뉴시스",
+      "source_body_digest": "ab7ae5925d01c8561ebe5903dbb38dead02ba1d446d8119181ab173cd5734136",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ca56bf89709b369d91787c7856af6f350ad9a7c3a1fd4c7150443c9cbe0c7d9",
+      "source_fact_keys": [
+        "source_fact:v1:114618dd059c47e0ea4631890865a6b19d607f807004358f637eb5e85a7707a0",
+        "source_fact:v1:1a0ce8acd793526b10ab2e2c79427be9047428fac85249359f69de8d9a5b67a1",
+        "source_fact:v1:434b8362e10390744c281098223003cc711c25d9117c1488d53f55f052e52dc9",
+        "source_fact:v1:68ce7600d4541e2d48b654f9decf314f308b44d8870d793382f618eb01db74c2",
+        "source_fact:v1:70baa040664b3488b0b61a13fb7f4128c95ee57b844ecf203f6f6949d1bf2c6c",
+        "source_fact:v1:7273ba3e6da06a3feb990160455a9128cf462c13cc84d18505eea40630d6e14f",
+        "source_fact:v1:94b9e8544d9b768702068bcfb5549b508efdadcf945362880c4dc319d8a0ce25",
+        "source_fact:v1:9a4c52995b08a2a0c4faa3228c58e31fee4a3b6615dceaac5400b67a814d9827",
+        "source_fact:v1:9ca237c1752492a5d0490a703bfc75e664f867ff59c4ca9e7a87366ad2e7519a",
+        "source_fact:v1:b24a3bdb777b7f7e9366ccaee624e56e3632c7733255ba05e4752dd1ed623fbc",
+        "source_fact:v1:be609a50afa67105efd2492b06b0f864c49be54c108352256deaacdccd898786",
+        "source_fact:v1:c718c10ad15962949a24c3cc842a412a71d63fb735f9b99ee790614950f3886f",
+        "source_fact:v1:ec89804dc0ee893f314f0db1e47907aaceaf40821d1d526e26060e895419bd70",
+        "source_fact:v1:ef98f9e354f942ff4e926c7c41d6c40c9eab49da18720cd5520c9ee24bba1d8b"
+      ],
+      "source_published_kst": "2026-10-14T07:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까",
+      "telegram_core_fact": "코스피200 야간선물은 1.7% 상승했다. 코스피가 '검은화요일'의 충격을 딛고 14일 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까"
     },
     "link:dd5ce5b2f217c643af59b239": {
       "first_seen_kst": "2026-10-06T19:58:43+09:00",
@@ -205730,6 +206255,26 @@
       "source_title": "日다카이치, 美트럼프 행정부의 ICC 제재에 \"깊은 우려…ICC 지지\"",
       "telegram_core_fact": "이번 다카이치 총리의 입장은 트럼프 행정부가 ICC) 재판관 출신 나비 필레이가 노벨평화상 수상자로 발표된 9일(현지 시간) ICC에 대한 전면 제재를 발표한 직후 나왔다.",
       "title": "日다카이치, 美트럼프 행정부의 ICC 제재에 \"깊은 우려…ICC 지지\""
+    },
+    "original:2b5d50c8071afdb7751adcf6": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.hankyung.com/article/2026101394951",
+      "source": "한국경제",
+      "source_body_digest": "384945a268d50d20d10c2ed96ed07b0ea4de2641e7fcc98eb8885f3d86c02f7d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ffefd9259f5a93a55e0fbdb31b2366e59bb141661fe8aeb1f554c200304ca5d0",
+      "source_fact_keys": [
+        "source_fact:v1:53b634006cda0e73a62f9659e71e3dffec0929693e68d67c30b2d5e4add71853"
+      ],
+      "source_published_kst": "2026-10-13T17:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디 때리는 후티…브렌트유 106달러 돌파",
+      "telegram_core_fact": "12일(현지시간) 영국 런던 ICE선물거래소에서 12월 인도분 브렌트유는 전장보다 1.84% 오른 배럴당 106.65달러를 기록했다.",
+      "title": "사우디 때리는 후티…브렌트유 106달러 돌파"
     },
     "original:2b620311c646040cd754c378": {
       "first_seen_kst": "2026-09-28T16:33:01+09:00",
@@ -231682,6 +232227,39 @@
       "source_published_kst": "2026-10-06T10:12+09:00",
       "title": "산업장관 “대미투자 국익 최우선”…초광역특구법 제정·1600조 지방투자"
     },
+    "original:8050b3be43a7102b1549c259": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003824797",
+      "source": "뉴시스",
+      "source_body_digest": "ab7ae5925d01c8561ebe5903dbb38dead02ba1d446d8119181ab173cd5734136",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ca56bf89709b369d91787c7856af6f350ad9a7c3a1fd4c7150443c9cbe0c7d9",
+      "source_fact_keys": [
+        "source_fact:v1:114618dd059c47e0ea4631890865a6b19d607f807004358f637eb5e85a7707a0",
+        "source_fact:v1:1a0ce8acd793526b10ab2e2c79427be9047428fac85249359f69de8d9a5b67a1",
+        "source_fact:v1:434b8362e10390744c281098223003cc711c25d9117c1488d53f55f052e52dc9",
+        "source_fact:v1:68ce7600d4541e2d48b654f9decf314f308b44d8870d793382f618eb01db74c2",
+        "source_fact:v1:70baa040664b3488b0b61a13fb7f4128c95ee57b844ecf203f6f6949d1bf2c6c",
+        "source_fact:v1:7273ba3e6da06a3feb990160455a9128cf462c13cc84d18505eea40630d6e14f",
+        "source_fact:v1:94b9e8544d9b768702068bcfb5549b508efdadcf945362880c4dc319d8a0ce25",
+        "source_fact:v1:9a4c52995b08a2a0c4faa3228c58e31fee4a3b6615dceaac5400b67a814d9827",
+        "source_fact:v1:9ca237c1752492a5d0490a703bfc75e664f867ff59c4ca9e7a87366ad2e7519a",
+        "source_fact:v1:b24a3bdb777b7f7e9366ccaee624e56e3632c7733255ba05e4752dd1ed623fbc",
+        "source_fact:v1:be609a50afa67105efd2492b06b0f864c49be54c108352256deaacdccd898786",
+        "source_fact:v1:c718c10ad15962949a24c3cc842a412a71d63fb735f9b99ee790614950f3886f",
+        "source_fact:v1:ec89804dc0ee893f314f0db1e47907aaceaf40821d1d526e26060e895419bd70",
+        "source_fact:v1:ef98f9e354f942ff4e926c7c41d6c40c9eab49da18720cd5520c9ee24bba1d8b"
+      ],
+      "source_published_kst": "2026-10-14T07:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까",
+      "telegram_core_fact": "코스피200 야간선물은 1.7% 상승했다. 코스피가 '검은화요일'의 충격을 딛고 14일 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까"
+    },
     "original:8073bf6f9a2fb0bb433cf5c4": {
       "first_seen_kst": "2026-10-12T23:14:39+09:00",
       "lanes": {
@@ -254459,6 +255037,33 @@
       "telegram_core_fact": "영업정지까지 도입하는 정부의 반복담합 제재 강화 기조에 대해선 자진신고를 위축시킬 수 있다는 우려도 나오고 있어 그 사이 균형점을 찾는 것이 관건이 될 전망이다.",
       "title": "반복되는 정유업계 담합…'자진신고 유도냐, 엄벌이냐' 공정위 딜레마"
     },
+    "original:cd45453b5e4fa9a238a002f6": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.fnnews.com/news/202610140501337119",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "28bb4ba0a71716b76f9f5870f5971beef3f9f5c9a1e57dfdd1099a0c005092b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3282eb9201982f38a80e8932ed93437a56a0454d5a91ba95f39c1b7fe1efce2a",
+      "source_fact_keys": [
+        "source_fact:v1:14e0295caa214e10d872f8f76188556bbbc0ee6bc8562a7ef626d1a4a3447564",
+        "source_fact:v1:243f8b34b69a130964699ed25ed713526bddbff32bcf30b19a16891338774a0c",
+        "source_fact:v1:51026b753ba5e484b988b9cbebf026bb8daab226bc65cc4c5a58abc2b5411ddd",
+        "source_fact:v1:c3761d78684285427fb84b69f255a094cf896a5690ec681764b4afb6e61a966c",
+        "source_fact:v1:da01068349e2d4dc6c589867385fd15e55e56d2274b3629fd7317ebf1cb88629",
+        "source_fact:v1:edb952f372fda805fb1400fa16a6b109cddd6e5f850e22ee2ab8b6987cedaea1",
+        "source_fact:v1:f92ea9c41b3cea91192f27abcea5fd08133eca0289cb6507ec8289f15a24bf0f",
+        "source_fact:v1:fe50eeb40c4cfdbcf20c6c4cf45a265fd83867e431f3f3df0f28490443a1a4ee"
+      ],
+      "source_published_kst": "2026-10-14T05:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG엔솔 이어 삼성SDI도 3Q 흑자 유지 전망…\"K배터리, 실적 개선 본격화\"",
+      "telegram_core_fact": "LG에너지솔루션이 3분기 7560억원의 영업이익을 기록한 가운데, 삼성SDI도 3분기 흑자 흐름을 이어갈 전망이다.",
+      "title": "LG엔솔 이어 삼성SDI도 3Q 흑자 유지 전망…\"K배터리, 실적 개선 본격화\""
+    },
     "original:cd7071a7d4b0e04702dd8be0": {
       "first_seen_kst": "2026-10-05T00:49:19+09:00",
       "lanes": {
@@ -255709,6 +256314,31 @@
       "source_title": "LG전자, 실적 충격 속 이틀 새 14% 하락…AI 냉각·로봇에 쏠린 시선",
       "telegram_core_fact": "LG전자의 3분기 잠정 영업이익은 7818억원으로 전년비 13.5% 증가했지만 시장 기대치 약 1조301억원을 24.1% 밑돌았다.",
       "title": "LG전자, 실적 충격 속 이틀 새 14% 하락…AI 냉각·로봇에 쏠린 시선"
+    },
+    "original:d1b225521ba71a5ce4f7aeac": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635115",
+      "source": "이투데이",
+      "source_body_digest": "beacb4d11b3415cb13c9552e27a8d3d1e20e413547c019769cc296349ba724cd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:abcb185eed5dcda1df180c2d32de89808cbc0637e3de402757967de90cd80cb7",
+      "source_fact_keys": [
+        "source_fact:v1:0886ef755ad9d15357b274b54dbcd3c8ba647699a401a229b5b2f42e50c0d319",
+        "source_fact:v1:5e5945d93f8d89aab180c9fe3bd62cfedf78e8c1d0cb3bd3f8e8001b72211457",
+        "source_fact:v1:6177b9c5173fb75f39f2af7ed19ffdf93c0c5a2c59050add85eb0f316c04df74",
+        "source_fact:v1:63b5d3c459f9631ead6650a65ae6a4f1179262dc7c1f55677d2dbd4f9ec15ce3",
+        "source_fact:v1:677345291537d3962d1ccc119a74a2726449a5d0f57e3a2c709bb6f86a5f20b2",
+        "source_fact:v1:8e4048a8ebdcb75b1e60d81d92605d90003733577706c56cf12c6d8a51e008a7"
+      ],
+      "source_published_kst": "2026-10-14T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한경협 \"주식 5% 공시로는 부족…숨은 지분도 공개해야\"",
+      "telegram_core_fact": "보고서는 현재 5%인 주식 보유 공시 기준을 낮추는 방안을 검토하고, 파생상품을 통해 실질적으로 확보한 지분도 파악할 수 있도록 제도를 개선할 것을 제안했다. 현행 자본시장법에 따르면 상장기업 주식을 5% 이상 보유한 투자자는 보유 목적과 지분 등을 금융당국에 보고해야 한다.",
+      "title": "한경협 \"주식 5% 공시로는 부족…숨은 지분도 공개해야\""
     },
     "original:d1bc06368fa2d7edaf4b64ec": {
       "first_seen_kst": "2026-10-08T20:58:15+09:00",
@@ -263409,6 +264039,27 @@
       "source_event_identity": "",
       "title": "트럼프 특사·푸틴, 종전 협상서 '러 석유업체 빅딜' 논의"
     },
+    "original:ea9fed3f49a5d03c9ef81f8c": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635392",
+      "source": "이투데이",
+      "source_body_digest": "10d18fef49a410fdceb68bd6e3e8d088c1e6e7c429465ba69ca1bf285a0d4e6f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ef3cdb6ec85b627f052763eb61d396a5f69676039311f4857b3d47352d0a6a94",
+      "source_fact_keys": [
+        "source_fact:v1:7665ac3e8fce8c2d6022e3d4aee0dfade83946b199f88fba09298f630fb6f699",
+        "source_fact:v1:d48f063c208d58ea23b9131627e2587a4c06598e05613ad2c462cf33272db677"
+      ],
+      "source_published_kst": "2026-10-14T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "농지조사·중국산 드론 논란…온라인 장터 6822억 이상거래도 도마 [국감]",
+      "telegram_core_fact": "국감에서는 거래의 실질을 확인하는 절차와 운송비 등 지원금 지급이 적절했는지, 온라인시장 확대가 실제 유통비 절감으로 이어졌는지 등을 살펴볼 것으로 보인다.",
+      "title": "농지조사·중국산 드론 논란…온라인 장터 6822억 이상거래도 도마 [국감]"
+    },
     "original:eaa7e6820224cd5f53ba8433": {
       "first_seen_kst": "2026-10-01T16:31:12+09:00",
       "lanes": {
@@ -264690,6 +265341,33 @@
       "source_title": "씨이랩, AI 데이터센터 인프라 컨퍼런스 개최…기업 고객 확대 추진",
       "telegram_core_fact": "인공지능(AI) 인프라 소프트웨어 전문기업 씨이랩(189330)이 기업의 AI 데이터센터(AIDC) 전환을 지원하기 위한 컨퍼런스를 개최하고 기업 고객 확대에 나섰다.",
       "title": "씨이랩, AI 데이터센터 인프라 컨퍼런스 개최…기업 고객 확대 추진"
+    },
+    "original:ef8afbafe3a0cfbdf6bf354b": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.fnnews.com/news/202610140602364076",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "965d66249a2b607977cde70f255ca0f42596d6900c97bee0b71e5d46bcefd389",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eba20b6f63447430f14fd67d63a602c7fc11fec7100f4f2820d915ea226dd888",
+      "source_fact_keys": [
+        "source_fact:v1:040b05a506fe88992209842f2da72bfcce66421885896f5cce769875db24580c",
+        "source_fact:v1:275fc7f1b46504e21360a4e00e0017a7c26f6cee7ad0080bbf0724e3edd6c0fc",
+        "source_fact:v1:4054b45725eed6d8d16c8512b4215bd190d54bc2c628f175c568f42c9f32b2d2",
+        "source_fact:v1:4fb76f7158fdb48b64c378680b958d0271b988fe3f71a53e2463f8ed40fbf766",
+        "source_fact:v1:6fb96308e4b8c3a1db9efdf9af6f97f418b2f9a9621c603fe6c492a6e59ed765",
+        "source_fact:v1:998fc74e568125e63066ebb35a1a7a9d38899d4bcecd69fdd98d5fe8a92c1560",
+        "source_fact:v1:a09c084e02e7cf711749e3fc461b45c38d1d0b8fbb673aaf4639d8e5e5642e0f",
+        "source_fact:v1:f4c6f8ca7f2f1da0912865233b691c1a9c39f128c4bfa65fbe75357b8b6dd773"
+      ],
+      "source_published_kst": "2026-10-14T06:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "'50조 매도세' 받아낸 자사주 매입 '끝'…새 수급 변수는 실적·주주환원",
+      "telegram_core_fact": "삼성전자(005930)와 SK하이닉스(000660)의 총 55조 원 규모 자사주 매입이 마무리 국면에 접어들면서 증시 재반등을 위해 새로운 수급 주체의 부상이 필요한 시점이다.",
+      "title": "'50조 매도세' 받아낸 자사주 매입 '끝'…새 수급 변수는 실적·주주환원"
     },
     "original:ef8df5fbe33de59e2dab0d76": {
       "first_seen_kst": "2026-10-04T00:19:00+09:00",
@@ -266430,6 +267108,24 @@
       ],
       "source_published_kst": "2026-10-06T19:18+09:00",
       "title": "“발전공기업 최초”…남부발전, 한국형 녹색분류체계 기반 녹색여신 약정 체결"
+    },
+    "original:f56e624233a60bb1c88ebf05": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12175046",
+      "source": "매일경제",
+      "source_body_digest": "525d05f5a40c196c3723362ba0c5f662b0084143add7ead5a518b6b67729aed6",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-14T05:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "TORM, 올해 EBITDA 가이던스 13억~15억 달러 상향",
+      "telegram_core_fact": "월가 증권사들은 TORM의 2026년 매출액을 15억2600만 달러로 예상하며, 이는 전년 대비 13.92% 늘어난 수준이다.",
+      "title": "TORM, 올해 EBITDA 가이던스 13억~15억 달러 상향"
     },
     "original:f57df72ce532a7800535614d": {
       "first_seen_kst": "2026-10-01T16:14:13+09:00",
@@ -272187,6 +272883,31 @@
       "telegram_core_fact": "높아진 분양가와 강화된 대출 규제, 고금리에 대한 부담이 겹치며 청약 시장이 실수요자 위주로 재편되는 가운데, 역세권·직주근접 등 양호한 주거환경에 가격 경쟁력까지 갖춘 곳으로만 청약 통장이 움직이고 있다는 해석이 나온다.",
       "title": "'되는 곳'에만 몰렸다…서울 60대1인데 부산 0.6대1[청약, 선별의 시대①]"
     },
+    "source_fact:02749de35befcf4eec052120": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635115",
+      "source": "이투데이",
+      "source_body_digest": "beacb4d11b3415cb13c9552e27a8d3d1e20e413547c019769cc296349ba724cd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:abcb185eed5dcda1df180c2d32de89808cbc0637e3de402757967de90cd80cb7",
+      "source_fact_keys": [
+        "source_fact:v1:0886ef755ad9d15357b274b54dbcd3c8ba647699a401a229b5b2f42e50c0d319",
+        "source_fact:v1:5e5945d93f8d89aab180c9fe3bd62cfedf78e8c1d0cb3bd3f8e8001b72211457",
+        "source_fact:v1:6177b9c5173fb75f39f2af7ed19ffdf93c0c5a2c59050add85eb0f316c04df74",
+        "source_fact:v1:63b5d3c459f9631ead6650a65ae6a4f1179262dc7c1f55677d2dbd4f9ec15ce3",
+        "source_fact:v1:677345291537d3962d1ccc119a74a2726449a5d0f57e3a2c709bb6f86a5f20b2",
+        "source_fact:v1:8e4048a8ebdcb75b1e60d81d92605d90003733577706c56cf12c6d8a51e008a7"
+      ],
+      "source_published_kst": "2026-10-14T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한경협 \"주식 5% 공시로는 부족…숨은 지분도 공개해야\"",
+      "telegram_core_fact": "보고서는 현재 5%인 주식 보유 공시 기준을 낮추는 방안을 검토하고, 파생상품을 통해 실질적으로 확보한 지분도 파악할 수 있도록 제도를 개선할 것을 제안했다. 현행 자본시장법에 따르면 상장기업 주식을 5% 이상 보유한 투자자는 보유 목적과 지분 등을 금융당국에 보고해야 한다.",
+      "title": "한경협 \"주식 5% 공시로는 부족…숨은 지분도 공개해야\""
+    },
     "source_fact:027d16d41a0ab54f1c68f63e": {
       "first_seen_kst": "2026-10-07T18:30:29+09:00",
       "lanes": {
@@ -274719,6 +275440,39 @@
       "telegram_core_fact": "코스피가 12일 삼성전자(005930)와 SK하이닉스(000660) 동반 약세로 인해 장중 3% 넘게 급락해 결국 6400선까지 밀렸다.",
       "title": "코스피, 장중 6400선까지 밀려…삼전·하이닉스 3%대 ‘뚝’"
     },
+    "source_fact:052ddff1595e0fdb19565a38": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003824797",
+      "source": "뉴시스",
+      "source_body_digest": "ab7ae5925d01c8561ebe5903dbb38dead02ba1d446d8119181ab173cd5734136",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ca56bf89709b369d91787c7856af6f350ad9a7c3a1fd4c7150443c9cbe0c7d9",
+      "source_fact_keys": [
+        "source_fact:v1:114618dd059c47e0ea4631890865a6b19d607f807004358f637eb5e85a7707a0",
+        "source_fact:v1:1a0ce8acd793526b10ab2e2c79427be9047428fac85249359f69de8d9a5b67a1",
+        "source_fact:v1:434b8362e10390744c281098223003cc711c25d9117c1488d53f55f052e52dc9",
+        "source_fact:v1:68ce7600d4541e2d48b654f9decf314f308b44d8870d793382f618eb01db74c2",
+        "source_fact:v1:70baa040664b3488b0b61a13fb7f4128c95ee57b844ecf203f6f6949d1bf2c6c",
+        "source_fact:v1:7273ba3e6da06a3feb990160455a9128cf462c13cc84d18505eea40630d6e14f",
+        "source_fact:v1:94b9e8544d9b768702068bcfb5549b508efdadcf945362880c4dc319d8a0ce25",
+        "source_fact:v1:9a4c52995b08a2a0c4faa3228c58e31fee4a3b6615dceaac5400b67a814d9827",
+        "source_fact:v1:9ca237c1752492a5d0490a703bfc75e664f867ff59c4ca9e7a87366ad2e7519a",
+        "source_fact:v1:b24a3bdb777b7f7e9366ccaee624e56e3632c7733255ba05e4752dd1ed623fbc",
+        "source_fact:v1:be609a50afa67105efd2492b06b0f864c49be54c108352256deaacdccd898786",
+        "source_fact:v1:c718c10ad15962949a24c3cc842a412a71d63fb735f9b99ee790614950f3886f",
+        "source_fact:v1:ec89804dc0ee893f314f0db1e47907aaceaf40821d1d526e26060e895419bd70",
+        "source_fact:v1:ef98f9e354f942ff4e926c7c41d6c40c9eab49da18720cd5520c9ee24bba1d8b"
+      ],
+      "source_published_kst": "2026-10-14T07:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까",
+      "telegram_core_fact": "코스피200 야간선물은 1.7% 상승했다. 코스피가 '검은화요일'의 충격을 딛고 14일 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까"
+    },
     "source_fact:052e5a508b5d4eab1ab9e237": {
       "first_seen_kst": "2026-10-07T03:30:59+09:00",
       "lanes": {
@@ -276346,6 +277100,33 @@
       "source_published_kst": "2026-10-06T15:25+09:00",
       "title": "유류세 5년 인하…“온실가스 400만t 감축 기회 놓쳤다”"
     },
+    "source_fact:067c88236d15dd2f861f13c4": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.fnnews.com/news/202610140602364076",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "965d66249a2b607977cde70f255ca0f42596d6900c97bee0b71e5d46bcefd389",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eba20b6f63447430f14fd67d63a602c7fc11fec7100f4f2820d915ea226dd888",
+      "source_fact_keys": [
+        "source_fact:v1:040b05a506fe88992209842f2da72bfcce66421885896f5cce769875db24580c",
+        "source_fact:v1:275fc7f1b46504e21360a4e00e0017a7c26f6cee7ad0080bbf0724e3edd6c0fc",
+        "source_fact:v1:4054b45725eed6d8d16c8512b4215bd190d54bc2c628f175c568f42c9f32b2d2",
+        "source_fact:v1:4fb76f7158fdb48b64c378680b958d0271b988fe3f71a53e2463f8ed40fbf766",
+        "source_fact:v1:6fb96308e4b8c3a1db9efdf9af6f97f418b2f9a9621c603fe6c492a6e59ed765",
+        "source_fact:v1:998fc74e568125e63066ebb35a1a7a9d38899d4bcecd69fdd98d5fe8a92c1560",
+        "source_fact:v1:a09c084e02e7cf711749e3fc461b45c38d1d0b8fbb673aaf4639d8e5e5642e0f",
+        "source_fact:v1:f4c6f8ca7f2f1da0912865233b691c1a9c39f128c4bfa65fbe75357b8b6dd773"
+      ],
+      "source_published_kst": "2026-10-14T06:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "'50조 매도세' 받아낸 자사주 매입 '끝'…새 수급 변수는 실적·주주환원",
+      "telegram_core_fact": "삼성전자(005930)와 SK하이닉스(000660)의 총 55조 원 규모 자사주 매입이 마무리 국면에 접어들면서 증시 재반등을 위해 새로운 수급 주체의 부상이 필요한 시점이다.",
+      "title": "'50조 매도세' 받아낸 자사주 매입 '끝'…새 수급 변수는 실적·주주환원"
+    },
     "source_fact:067db9e4c46dc6a7ca20ccaf": {
       "first_seen_kst": "2026-10-07T07:24:41+09:00",
       "lanes": {
@@ -277948,6 +278729,33 @@
       "source_title": "삼성바이오로직스, 폴리펩타이드그룹 공개매수 최소 조건 충족… 응모 지분 66.7% 넘겼다",
       "telegram_core_fact": "삼성바이오로직스가 글로벌 펩타이드 위탁개발생산(CDMO) 기업 '폴리펩타이드그룹(PolyPeptide Group)' 공개매수 중간 결과에서 응모 지분 87.88%를 기록하며 거래 수락 최소 조건인 66.7%를 넘어섰다. 이는 매수 대상 주식의 87.88%에 해당하는 규모로, 수락 최소 조건인 66.7%를 넘어선 수치다.",
       "title": "삼성바이오로직스, 폴리펩타이드그룹 공개매수 최소 조건 충족… 응모 지분 66.7% 넘겼다"
+    },
+    "source_fact:080393c43d4ee607fe3460cc": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.fnnews.com/news/202610140602364076",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "965d66249a2b607977cde70f255ca0f42596d6900c97bee0b71e5d46bcefd389",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eba20b6f63447430f14fd67d63a602c7fc11fec7100f4f2820d915ea226dd888",
+      "source_fact_keys": [
+        "source_fact:v1:040b05a506fe88992209842f2da72bfcce66421885896f5cce769875db24580c",
+        "source_fact:v1:275fc7f1b46504e21360a4e00e0017a7c26f6cee7ad0080bbf0724e3edd6c0fc",
+        "source_fact:v1:4054b45725eed6d8d16c8512b4215bd190d54bc2c628f175c568f42c9f32b2d2",
+        "source_fact:v1:4fb76f7158fdb48b64c378680b958d0271b988fe3f71a53e2463f8ed40fbf766",
+        "source_fact:v1:6fb96308e4b8c3a1db9efdf9af6f97f418b2f9a9621c603fe6c492a6e59ed765",
+        "source_fact:v1:998fc74e568125e63066ebb35a1a7a9d38899d4bcecd69fdd98d5fe8a92c1560",
+        "source_fact:v1:a09c084e02e7cf711749e3fc461b45c38d1d0b8fbb673aaf4639d8e5e5642e0f",
+        "source_fact:v1:f4c6f8ca7f2f1da0912865233b691c1a9c39f128c4bfa65fbe75357b8b6dd773"
+      ],
+      "source_published_kst": "2026-10-14T06:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "'50조 매도세' 받아낸 자사주 매입 '끝'…새 수급 변수는 실적·주주환원",
+      "telegram_core_fact": "삼성전자(005930)와 SK하이닉스(000660)의 총 55조 원 규모 자사주 매입이 마무리 국면에 접어들면서 증시 재반등을 위해 새로운 수급 주체의 부상이 필요한 시점이다.",
+      "title": "'50조 매도세' 받아낸 자사주 매입 '끝'…새 수급 변수는 실적·주주환원"
     },
     "source_fact:080be0be957bbf765faa1883": {
       "first_seen_kst": "2026-10-07T13:13:19+09:00",
@@ -281513,6 +282321,31 @@
       ],
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
+    },
+    "source_fact:0b5d83f49cce186f8efcbd90": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635115",
+      "source": "이투데이",
+      "source_body_digest": "beacb4d11b3415cb13c9552e27a8d3d1e20e413547c019769cc296349ba724cd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:abcb185eed5dcda1df180c2d32de89808cbc0637e3de402757967de90cd80cb7",
+      "source_fact_keys": [
+        "source_fact:v1:0886ef755ad9d15357b274b54dbcd3c8ba647699a401a229b5b2f42e50c0d319",
+        "source_fact:v1:5e5945d93f8d89aab180c9fe3bd62cfedf78e8c1d0cb3bd3f8e8001b72211457",
+        "source_fact:v1:6177b9c5173fb75f39f2af7ed19ffdf93c0c5a2c59050add85eb0f316c04df74",
+        "source_fact:v1:63b5d3c459f9631ead6650a65ae6a4f1179262dc7c1f55677d2dbd4f9ec15ce3",
+        "source_fact:v1:677345291537d3962d1ccc119a74a2726449a5d0f57e3a2c709bb6f86a5f20b2",
+        "source_fact:v1:8e4048a8ebdcb75b1e60d81d92605d90003733577706c56cf12c6d8a51e008a7"
+      ],
+      "source_published_kst": "2026-10-14T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한경협 \"주식 5% 공시로는 부족…숨은 지분도 공개해야\"",
+      "telegram_core_fact": "보고서는 현재 5%인 주식 보유 공시 기준을 낮추는 방안을 검토하고, 파생상품을 통해 실질적으로 확보한 지분도 파악할 수 있도록 제도를 개선할 것을 제안했다. 현행 자본시장법에 따르면 상장기업 주식을 5% 이상 보유한 투자자는 보유 목적과 지분 등을 금융당국에 보고해야 한다.",
+      "title": "한경협 \"주식 5% 공시로는 부족…숨은 지분도 공개해야\""
     },
     "source_fact:0b674844f02e186d6ccd59e9": {
       "first_seen_kst": "2026-10-08T00:24:24+09:00",
@@ -293630,6 +294463,39 @@
       "telegram_core_fact": "미취학 아동을 대상으로 하는 학원 레벨테스트, 이른바 ‘4세 고시 금지법’을 전면 시행했지만 전국 대부분 교육청은 처벌기준도 마련하지 못한 것으로 확인됐다.",
       "title": "‘4세 고시’ 금지에도 꼼수 난무…교육청 행정처분 기준도 미비"
     },
+    "source_fact:160d6f0e1bb573449b7951bf": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003824797",
+      "source": "뉴시스",
+      "source_body_digest": "ab7ae5925d01c8561ebe5903dbb38dead02ba1d446d8119181ab173cd5734136",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ca56bf89709b369d91787c7856af6f350ad9a7c3a1fd4c7150443c9cbe0c7d9",
+      "source_fact_keys": [
+        "source_fact:v1:114618dd059c47e0ea4631890865a6b19d607f807004358f637eb5e85a7707a0",
+        "source_fact:v1:1a0ce8acd793526b10ab2e2c79427be9047428fac85249359f69de8d9a5b67a1",
+        "source_fact:v1:434b8362e10390744c281098223003cc711c25d9117c1488d53f55f052e52dc9",
+        "source_fact:v1:68ce7600d4541e2d48b654f9decf314f308b44d8870d793382f618eb01db74c2",
+        "source_fact:v1:70baa040664b3488b0b61a13fb7f4128c95ee57b844ecf203f6f6949d1bf2c6c",
+        "source_fact:v1:7273ba3e6da06a3feb990160455a9128cf462c13cc84d18505eea40630d6e14f",
+        "source_fact:v1:94b9e8544d9b768702068bcfb5549b508efdadcf945362880c4dc319d8a0ce25",
+        "source_fact:v1:9a4c52995b08a2a0c4faa3228c58e31fee4a3b6615dceaac5400b67a814d9827",
+        "source_fact:v1:9ca237c1752492a5d0490a703bfc75e664f867ff59c4ca9e7a87366ad2e7519a",
+        "source_fact:v1:b24a3bdb777b7f7e9366ccaee624e56e3632c7733255ba05e4752dd1ed623fbc",
+        "source_fact:v1:be609a50afa67105efd2492b06b0f864c49be54c108352256deaacdccd898786",
+        "source_fact:v1:c718c10ad15962949a24c3cc842a412a71d63fb735f9b99ee790614950f3886f",
+        "source_fact:v1:ec89804dc0ee893f314f0db1e47907aaceaf40821d1d526e26060e895419bd70",
+        "source_fact:v1:ef98f9e354f942ff4e926c7c41d6c40c9eab49da18720cd5520c9ee24bba1d8b"
+      ],
+      "source_published_kst": "2026-10-14T07:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까",
+      "telegram_core_fact": "코스피200 야간선물은 1.7% 상승했다. 코스피가 '검은화요일'의 충격을 딛고 14일 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까"
+    },
     "source_fact:1614848f6201c5229809ba1d": {
       "first_seen_kst": "2026-10-06T18:46:35+09:00",
       "lanes": {
@@ -294766,6 +295632,31 @@
       "source_title": "BGF, KNW 자회사로 편입…사업구조 3개 축으로 재편",
       "telegram_core_fact": "BGF에코머티리얼즈가 보유한 자기주식 84만2699주도 다음달 중 전량 소각할 예정이다. 업계에 따르면 BGF는 이날 케이엔더블유 보통주 911만3891주(지분율 56.9%)를 BGF에코머티리얼즈로부터 매입한다고 공시했다.",
       "title": "BGF, KNW 자회사로 편입…사업구조 3개 축으로 재편"
+    },
+    "source_fact:170e54d0c212e1e8608c3a98": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635115",
+      "source": "이투데이",
+      "source_body_digest": "beacb4d11b3415cb13c9552e27a8d3d1e20e413547c019769cc296349ba724cd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:abcb185eed5dcda1df180c2d32de89808cbc0637e3de402757967de90cd80cb7",
+      "source_fact_keys": [
+        "source_fact:v1:0886ef755ad9d15357b274b54dbcd3c8ba647699a401a229b5b2f42e50c0d319",
+        "source_fact:v1:5e5945d93f8d89aab180c9fe3bd62cfedf78e8c1d0cb3bd3f8e8001b72211457",
+        "source_fact:v1:6177b9c5173fb75f39f2af7ed19ffdf93c0c5a2c59050add85eb0f316c04df74",
+        "source_fact:v1:63b5d3c459f9631ead6650a65ae6a4f1179262dc7c1f55677d2dbd4f9ec15ce3",
+        "source_fact:v1:677345291537d3962d1ccc119a74a2726449a5d0f57e3a2c709bb6f86a5f20b2",
+        "source_fact:v1:8e4048a8ebdcb75b1e60d81d92605d90003733577706c56cf12c6d8a51e008a7"
+      ],
+      "source_published_kst": "2026-10-14T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한경협 \"주식 5% 공시로는 부족…숨은 지분도 공개해야\"",
+      "telegram_core_fact": "보고서는 현재 5%인 주식 보유 공시 기준을 낮추는 방안을 검토하고, 파생상품을 통해 실질적으로 확보한 지분도 파악할 수 있도록 제도를 개선할 것을 제안했다. 현행 자본시장법에 따르면 상장기업 주식을 5% 이상 보유한 투자자는 보유 목적과 지분 등을 금융당국에 보고해야 한다.",
+      "title": "한경협 \"주식 5% 공시로는 부족…숨은 지분도 공개해야\""
     },
     "source_fact:171d3554264bbd73a82903c7": {
       "first_seen_kst": "2026-10-09T16:07:27+09:00",
@@ -296624,6 +297515,33 @@
       ],
       "source_published_kst": "2026-10-05T17:11+09:00",
       "title": "유로화, 17개월 만에 최저…프랑스 등 재정 불안에 채권시장 흔들 | 연합뉴스"
+    },
+    "source_fact:18e2e28d60674d3d61428b66": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.fnnews.com/news/202610140501337119",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "28bb4ba0a71716b76f9f5870f5971beef3f9f5c9a1e57dfdd1099a0c005092b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3282eb9201982f38a80e8932ed93437a56a0454d5a91ba95f39c1b7fe1efce2a",
+      "source_fact_keys": [
+        "source_fact:v1:14e0295caa214e10d872f8f76188556bbbc0ee6bc8562a7ef626d1a4a3447564",
+        "source_fact:v1:243f8b34b69a130964699ed25ed713526bddbff32bcf30b19a16891338774a0c",
+        "source_fact:v1:51026b753ba5e484b988b9cbebf026bb8daab226bc65cc4c5a58abc2b5411ddd",
+        "source_fact:v1:c3761d78684285427fb84b69f255a094cf896a5690ec681764b4afb6e61a966c",
+        "source_fact:v1:da01068349e2d4dc6c589867385fd15e55e56d2274b3629fd7317ebf1cb88629",
+        "source_fact:v1:edb952f372fda805fb1400fa16a6b109cddd6e5f850e22ee2ab8b6987cedaea1",
+        "source_fact:v1:f92ea9c41b3cea91192f27abcea5fd08133eca0289cb6507ec8289f15a24bf0f",
+        "source_fact:v1:fe50eeb40c4cfdbcf20c6c4cf45a265fd83867e431f3f3df0f28490443a1a4ee"
+      ],
+      "source_published_kst": "2026-10-14T05:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG엔솔 이어 삼성SDI도 3Q 흑자 유지 전망…\"K배터리, 실적 개선 본격화\"",
+      "telegram_core_fact": "LG에너지솔루션이 3분기 7560억원의 영업이익을 기록한 가운데, 삼성SDI도 3분기 흑자 흐름을 이어갈 전망이다.",
+      "title": "LG엔솔 이어 삼성SDI도 3Q 흑자 유지 전망…\"K배터리, 실적 개선 본격화\""
     },
     "source_fact:18e4cd253d7a1c7fde584c2c": {
       "first_seen_kst": "2026-10-13T08:14:23+09:00",
@@ -300036,6 +300954,39 @@
       "source_title": "글로벌테크놀로지, UV 경화 LED 드라이버 IC 개발 착수",
       "telegram_core_fact": "GT는 TV·모니터용 미니·RGB(적녹청) LED 백라이트와 마이크로 LED 구동 IC를 글로벌 고객사에 양산 공급하며 고정밀 정전류 제어, 시분할 구동, 실시간 온도보상 기술을 확보해 왔다.",
       "title": "글로벌테크놀로지, UV 경화 LED 드라이버 IC 개발 착수"
+    },
+    "source_fact:1bcbcbe6d561d92cd1972d9d": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003824797",
+      "source": "뉴시스",
+      "source_body_digest": "ab7ae5925d01c8561ebe5903dbb38dead02ba1d446d8119181ab173cd5734136",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ca56bf89709b369d91787c7856af6f350ad9a7c3a1fd4c7150443c9cbe0c7d9",
+      "source_fact_keys": [
+        "source_fact:v1:114618dd059c47e0ea4631890865a6b19d607f807004358f637eb5e85a7707a0",
+        "source_fact:v1:1a0ce8acd793526b10ab2e2c79427be9047428fac85249359f69de8d9a5b67a1",
+        "source_fact:v1:434b8362e10390744c281098223003cc711c25d9117c1488d53f55f052e52dc9",
+        "source_fact:v1:68ce7600d4541e2d48b654f9decf314f308b44d8870d793382f618eb01db74c2",
+        "source_fact:v1:70baa040664b3488b0b61a13fb7f4128c95ee57b844ecf203f6f6949d1bf2c6c",
+        "source_fact:v1:7273ba3e6da06a3feb990160455a9128cf462c13cc84d18505eea40630d6e14f",
+        "source_fact:v1:94b9e8544d9b768702068bcfb5549b508efdadcf945362880c4dc319d8a0ce25",
+        "source_fact:v1:9a4c52995b08a2a0c4faa3228c58e31fee4a3b6615dceaac5400b67a814d9827",
+        "source_fact:v1:9ca237c1752492a5d0490a703bfc75e664f867ff59c4ca9e7a87366ad2e7519a",
+        "source_fact:v1:b24a3bdb777b7f7e9366ccaee624e56e3632c7733255ba05e4752dd1ed623fbc",
+        "source_fact:v1:be609a50afa67105efd2492b06b0f864c49be54c108352256deaacdccd898786",
+        "source_fact:v1:c718c10ad15962949a24c3cc842a412a71d63fb735f9b99ee790614950f3886f",
+        "source_fact:v1:ec89804dc0ee893f314f0db1e47907aaceaf40821d1d526e26060e895419bd70",
+        "source_fact:v1:ef98f9e354f942ff4e926c7c41d6c40c9eab49da18720cd5520c9ee24bba1d8b"
+      ],
+      "source_published_kst": "2026-10-14T07:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까",
+      "telegram_core_fact": "코스피200 야간선물은 1.7% 상승했다. 코스피가 '검은화요일'의 충격을 딛고 14일 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까"
     },
     "source_fact:1bce27dcc33a6604ccf2092b": {
       "first_seen_kst": "2026-10-08T11:28:27+09:00",
@@ -305307,6 +306258,33 @@
       ],
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
+    },
+    "source_fact:202fe3727967ec1ab5a24e9b": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.fnnews.com/news/202610140501337119",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "28bb4ba0a71716b76f9f5870f5971beef3f9f5c9a1e57dfdd1099a0c005092b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3282eb9201982f38a80e8932ed93437a56a0454d5a91ba95f39c1b7fe1efce2a",
+      "source_fact_keys": [
+        "source_fact:v1:14e0295caa214e10d872f8f76188556bbbc0ee6bc8562a7ef626d1a4a3447564",
+        "source_fact:v1:243f8b34b69a130964699ed25ed713526bddbff32bcf30b19a16891338774a0c",
+        "source_fact:v1:51026b753ba5e484b988b9cbebf026bb8daab226bc65cc4c5a58abc2b5411ddd",
+        "source_fact:v1:c3761d78684285427fb84b69f255a094cf896a5690ec681764b4afb6e61a966c",
+        "source_fact:v1:da01068349e2d4dc6c589867385fd15e55e56d2274b3629fd7317ebf1cb88629",
+        "source_fact:v1:edb952f372fda805fb1400fa16a6b109cddd6e5f850e22ee2ab8b6987cedaea1",
+        "source_fact:v1:f92ea9c41b3cea91192f27abcea5fd08133eca0289cb6507ec8289f15a24bf0f",
+        "source_fact:v1:fe50eeb40c4cfdbcf20c6c4cf45a265fd83867e431f3f3df0f28490443a1a4ee"
+      ],
+      "source_published_kst": "2026-10-14T05:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG엔솔 이어 삼성SDI도 3Q 흑자 유지 전망…\"K배터리, 실적 개선 본격화\"",
+      "telegram_core_fact": "LG에너지솔루션이 3분기 7560억원의 영업이익을 기록한 가운데, 삼성SDI도 3분기 흑자 흐름을 이어갈 전망이다.",
+      "title": "LG엔솔 이어 삼성SDI도 3Q 흑자 유지 전망…\"K배터리, 실적 개선 본격화\""
     },
     "source_fact:20330b15814db389ce64033c": {
       "first_seen_kst": "2026-10-07T01:33:00+09:00",
@@ -313501,6 +314479,27 @@
       "source_title": "전남·경남 초고령 어르신 많지만…'통돌' 공급 턱없이 부족",
       "telegram_core_fact": "돌봄 수요는 높지만 공급이 부족한 기초자치단체의 비율은 경남 38.9%, 전남 38.4%, 경북 34.7%, 전북 33.9%로 나타났다. 특히 경남과 전남에서는 기초자치단체 3곳 중 1곳 이상이 돌봄 수요는 높지만 공급은 부족한 지역으로 분류됐다.",
       "title": "전남·경남 초고령 어르신 많지만…'통돌' 공급 턱없이 부족"
+    },
+    "source_fact:2700a79a86687cbfbf2d13c5": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635392",
+      "source": "이투데이",
+      "source_body_digest": "10d18fef49a410fdceb68bd6e3e8d088c1e6e7c429465ba69ca1bf285a0d4e6f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ef3cdb6ec85b627f052763eb61d396a5f69676039311f4857b3d47352d0a6a94",
+      "source_fact_keys": [
+        "source_fact:v1:7665ac3e8fce8c2d6022e3d4aee0dfade83946b199f88fba09298f630fb6f699",
+        "source_fact:v1:d48f063c208d58ea23b9131627e2587a4c06598e05613ad2c462cf33272db677"
+      ],
+      "source_published_kst": "2026-10-14T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "농지조사·중국산 드론 논란…온라인 장터 6822억 이상거래도 도마 [국감]",
+      "telegram_core_fact": "국감에서는 거래의 실질을 확인하는 절차와 운송비 등 지원금 지급이 적절했는지, 온라인시장 확대가 실제 유통비 절감으로 이어졌는지 등을 살펴볼 것으로 보인다.",
+      "title": "농지조사·중국산 드론 논란…온라인 장터 6822억 이상거래도 도마 [국감]"
     },
     "source_fact:27021abb4d2e16fb18b796cb": {
       "first_seen_kst": "2026-10-09T15:48:54+09:00",
@@ -324118,6 +325117,33 @@
       "telegram_core_fact": "KRX 반도체에는 삼성전자와 SK하이닉스를 비롯해 주성엔지니어링, 리노공업, 원익IPS, 심텍, 이오테크닉스 등 소부장 종목이 다수 편입돼 있다. 한국거래소에 따르면 지난 한 달간 KRX 주가지수 가운데 수익률이 가장 높았던 지수는 ‘KRX 반도체’로 11.42% 상승했다.",
       "title": "삼전·SK하닉 부진에도…반도체 소부장 강세에 KRX 반도체 11%↑"
     },
+    "source_fact:306d4da8e0dda4348fcfe8fb": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.fnnews.com/news/202610140501337119",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "28bb4ba0a71716b76f9f5870f5971beef3f9f5c9a1e57dfdd1099a0c005092b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3282eb9201982f38a80e8932ed93437a56a0454d5a91ba95f39c1b7fe1efce2a",
+      "source_fact_keys": [
+        "source_fact:v1:14e0295caa214e10d872f8f76188556bbbc0ee6bc8562a7ef626d1a4a3447564",
+        "source_fact:v1:243f8b34b69a130964699ed25ed713526bddbff32bcf30b19a16891338774a0c",
+        "source_fact:v1:51026b753ba5e484b988b9cbebf026bb8daab226bc65cc4c5a58abc2b5411ddd",
+        "source_fact:v1:c3761d78684285427fb84b69f255a094cf896a5690ec681764b4afb6e61a966c",
+        "source_fact:v1:da01068349e2d4dc6c589867385fd15e55e56d2274b3629fd7317ebf1cb88629",
+        "source_fact:v1:edb952f372fda805fb1400fa16a6b109cddd6e5f850e22ee2ab8b6987cedaea1",
+        "source_fact:v1:f92ea9c41b3cea91192f27abcea5fd08133eca0289cb6507ec8289f15a24bf0f",
+        "source_fact:v1:fe50eeb40c4cfdbcf20c6c4cf45a265fd83867e431f3f3df0f28490443a1a4ee"
+      ],
+      "source_published_kst": "2026-10-14T05:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG엔솔 이어 삼성SDI도 3Q 흑자 유지 전망…\"K배터리, 실적 개선 본격화\"",
+      "telegram_core_fact": "LG에너지솔루션이 3분기 7560억원의 영업이익을 기록한 가운데, 삼성SDI도 3분기 흑자 흐름을 이어갈 전망이다.",
+      "title": "LG엔솔 이어 삼성SDI도 3Q 흑자 유지 전망…\"K배터리, 실적 개선 본격화\""
+    },
     "source_fact:306e02fe03a3586e748819b8": {
       "first_seen_kst": "2026-10-07T08:57:59+09:00",
       "lanes": {
@@ -325829,6 +326855,39 @@
       "source_title": "유나이티드헬스 그룹, 3분기 희석 EPS 4.56달러..전년비 76% 증가",
       "telegram_core_fact": "유나이티드헬스 그룹(UNH)은 3분기 매출액이 1126억9400만 달러로 전년비 0.4% 감소했지만, 영업이익은 65억6300만 달러로 52.1% 늘고 GAAP 희석 주당순이익(EPS)은 4.56달러로 76.1% 증가했다고 10월 13일 발표했다.",
       "title": "유나이티드헬스 그룹, 3분기 희석 EPS 4.56달러..전년비 76% 증가"
+    },
+    "source_fact:3190f411ecec3798b62b43b8": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003824797",
+      "source": "뉴시스",
+      "source_body_digest": "ab7ae5925d01c8561ebe5903dbb38dead02ba1d446d8119181ab173cd5734136",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ca56bf89709b369d91787c7856af6f350ad9a7c3a1fd4c7150443c9cbe0c7d9",
+      "source_fact_keys": [
+        "source_fact:v1:114618dd059c47e0ea4631890865a6b19d607f807004358f637eb5e85a7707a0",
+        "source_fact:v1:1a0ce8acd793526b10ab2e2c79427be9047428fac85249359f69de8d9a5b67a1",
+        "source_fact:v1:434b8362e10390744c281098223003cc711c25d9117c1488d53f55f052e52dc9",
+        "source_fact:v1:68ce7600d4541e2d48b654f9decf314f308b44d8870d793382f618eb01db74c2",
+        "source_fact:v1:70baa040664b3488b0b61a13fb7f4128c95ee57b844ecf203f6f6949d1bf2c6c",
+        "source_fact:v1:7273ba3e6da06a3feb990160455a9128cf462c13cc84d18505eea40630d6e14f",
+        "source_fact:v1:94b9e8544d9b768702068bcfb5549b508efdadcf945362880c4dc319d8a0ce25",
+        "source_fact:v1:9a4c52995b08a2a0c4faa3228c58e31fee4a3b6615dceaac5400b67a814d9827",
+        "source_fact:v1:9ca237c1752492a5d0490a703bfc75e664f867ff59c4ca9e7a87366ad2e7519a",
+        "source_fact:v1:b24a3bdb777b7f7e9366ccaee624e56e3632c7733255ba05e4752dd1ed623fbc",
+        "source_fact:v1:be609a50afa67105efd2492b06b0f864c49be54c108352256deaacdccd898786",
+        "source_fact:v1:c718c10ad15962949a24c3cc842a412a71d63fb735f9b99ee790614950f3886f",
+        "source_fact:v1:ec89804dc0ee893f314f0db1e47907aaceaf40821d1d526e26060e895419bd70",
+        "source_fact:v1:ef98f9e354f942ff4e926c7c41d6c40c9eab49da18720cd5520c9ee24bba1d8b"
+      ],
+      "source_published_kst": "2026-10-14T07:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까",
+      "telegram_core_fact": "코스피200 야간선물은 1.7% 상승했다. 코스피가 '검은화요일'의 충격을 딛고 14일 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까"
     },
     "source_fact:31a613f37af32b2a809c5cee": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
@@ -331406,6 +332465,33 @@
       "source_title": "앤로보틱스, 비블리오테카와 AI 도서관 로봇 ‘로미’ 글로벌 계약",
       "telegram_core_fact": "양사는 이번 계약을 계기로 전 세계 시장을 겨냥해 로미의 공급을 확대하고 신규 사업 발굴을 공동으로 추진할 방침이다.",
       "title": "앤로보틱스, 비블리오테카와 AI 도서관 로봇 ‘로미’ 글로벌 계약"
+    },
+    "source_fact:36e6dbbd0dcc8a4867fe96ad": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.fnnews.com/news/202610140602364076",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "965d66249a2b607977cde70f255ca0f42596d6900c97bee0b71e5d46bcefd389",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eba20b6f63447430f14fd67d63a602c7fc11fec7100f4f2820d915ea226dd888",
+      "source_fact_keys": [
+        "source_fact:v1:040b05a506fe88992209842f2da72bfcce66421885896f5cce769875db24580c",
+        "source_fact:v1:275fc7f1b46504e21360a4e00e0017a7c26f6cee7ad0080bbf0724e3edd6c0fc",
+        "source_fact:v1:4054b45725eed6d8d16c8512b4215bd190d54bc2c628f175c568f42c9f32b2d2",
+        "source_fact:v1:4fb76f7158fdb48b64c378680b958d0271b988fe3f71a53e2463f8ed40fbf766",
+        "source_fact:v1:6fb96308e4b8c3a1db9efdf9af6f97f418b2f9a9621c603fe6c492a6e59ed765",
+        "source_fact:v1:998fc74e568125e63066ebb35a1a7a9d38899d4bcecd69fdd98d5fe8a92c1560",
+        "source_fact:v1:a09c084e02e7cf711749e3fc461b45c38d1d0b8fbb673aaf4639d8e5e5642e0f",
+        "source_fact:v1:f4c6f8ca7f2f1da0912865233b691c1a9c39f128c4bfa65fbe75357b8b6dd773"
+      ],
+      "source_published_kst": "2026-10-14T06:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "'50조 매도세' 받아낸 자사주 매입 '끝'…새 수급 변수는 실적·주주환원",
+      "telegram_core_fact": "삼성전자(005930)와 SK하이닉스(000660)의 총 55조 원 규모 자사주 매입이 마무리 국면에 접어들면서 증시 재반등을 위해 새로운 수급 주체의 부상이 필요한 시점이다.",
+      "title": "'50조 매도세' 받아낸 자사주 매입 '끝'…새 수급 변수는 실적·주주환원"
     },
     "source_fact:36e6e6904d61686c21bd4b0b": {
       "first_seen_kst": "2026-10-06T21:17:11+09:00",
@@ -355522,6 +356608,39 @@
       "telegram_core_fact": "SK하이닉스의 용인 1기 팹 가동이 임박함에 따라 케이씨텍과 지앤비에스 에코 등 관련 반도체 설비 기업들이 주목받았다. 한미반도체는 TC본더 장비 공급과 8공장 증설을 추진 중이며 곽동신 회장의 장내매수 소식이 전해졌다.",
       "title": "[고래사냥] '한미반도체·지앤비에스 에코·두산로보틱스! 내일장 고래 종목은?!"
     },
+    "source_fact:4c030f6c33a2da7333afd031": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003824797",
+      "source": "뉴시스",
+      "source_body_digest": "ab7ae5925d01c8561ebe5903dbb38dead02ba1d446d8119181ab173cd5734136",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ca56bf89709b369d91787c7856af6f350ad9a7c3a1fd4c7150443c9cbe0c7d9",
+      "source_fact_keys": [
+        "source_fact:v1:114618dd059c47e0ea4631890865a6b19d607f807004358f637eb5e85a7707a0",
+        "source_fact:v1:1a0ce8acd793526b10ab2e2c79427be9047428fac85249359f69de8d9a5b67a1",
+        "source_fact:v1:434b8362e10390744c281098223003cc711c25d9117c1488d53f55f052e52dc9",
+        "source_fact:v1:68ce7600d4541e2d48b654f9decf314f308b44d8870d793382f618eb01db74c2",
+        "source_fact:v1:70baa040664b3488b0b61a13fb7f4128c95ee57b844ecf203f6f6949d1bf2c6c",
+        "source_fact:v1:7273ba3e6da06a3feb990160455a9128cf462c13cc84d18505eea40630d6e14f",
+        "source_fact:v1:94b9e8544d9b768702068bcfb5549b508efdadcf945362880c4dc319d8a0ce25",
+        "source_fact:v1:9a4c52995b08a2a0c4faa3228c58e31fee4a3b6615dceaac5400b67a814d9827",
+        "source_fact:v1:9ca237c1752492a5d0490a703bfc75e664f867ff59c4ca9e7a87366ad2e7519a",
+        "source_fact:v1:b24a3bdb777b7f7e9366ccaee624e56e3632c7733255ba05e4752dd1ed623fbc",
+        "source_fact:v1:be609a50afa67105efd2492b06b0f864c49be54c108352256deaacdccd898786",
+        "source_fact:v1:c718c10ad15962949a24c3cc842a412a71d63fb735f9b99ee790614950f3886f",
+        "source_fact:v1:ec89804dc0ee893f314f0db1e47907aaceaf40821d1d526e26060e895419bd70",
+        "source_fact:v1:ef98f9e354f942ff4e926c7c41d6c40c9eab49da18720cd5520c9ee24bba1d8b"
+      ],
+      "source_published_kst": "2026-10-14T07:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까",
+      "telegram_core_fact": "코스피200 야간선물은 1.7% 상승했다. 코스피가 '검은화요일'의 충격을 딛고 14일 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까"
+    },
     "source_fact:4c056493f621fe6f4698c0f4": {
       "first_seen_kst": "2026-10-12T15:43:01+09:00",
       "lanes": {
@@ -371948,6 +373067,26 @@
       "telegram_core_fact": "금융권에 따르면 신한금융은 이날 사모펀드 운용사 JKL파트너스가 보유한 롯데손보 지분 77.04%를 6933억원에 인수하는 주식매매계약(SPA)을 체결했다. 신한인도네시아은행이 금융지주회사 역할을 겸하는 사업지주회사로 전환하면서 신한인도파이낸스와 신한투자증권 인도네시아의 지분을 각각 50%+1주씩 확보했다.",
       "title": "롯데손보 품고 인니 지주 출범⋯진옥동 신한 회장 '국내외 영토확장 승부수'"
     },
+    "source_fact:5a6038f1cf4d562247331131": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.hankyung.com/article/2026101394951",
+      "source": "한국경제",
+      "source_body_digest": "384945a268d50d20d10c2ed96ed07b0ea4de2641e7fcc98eb8885f3d86c02f7d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ffefd9259f5a93a55e0fbdb31b2366e59bb141661fe8aeb1f554c200304ca5d0",
+      "source_fact_keys": [
+        "source_fact:v1:53b634006cda0e73a62f9659e71e3dffec0929693e68d67c30b2d5e4add71853"
+      ],
+      "source_published_kst": "2026-10-13T17:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디 때리는 후티…브렌트유 106달러 돌파",
+      "telegram_core_fact": "12일(현지시간) 영국 런던 ICE선물거래소에서 12월 인도분 브렌트유는 전장보다 1.84% 오른 배럴당 106.65달러를 기록했다.",
+      "title": "사우디 때리는 후티…브렌트유 106달러 돌파"
+    },
     "source_fact:5a60e938dd33848281a47b89": {
       "first_seen_kst": "2026-10-08T04:14:15+09:00",
       "lanes": {
@@ -379350,6 +380489,31 @@
       "telegram_core_fact": "LG전자는 3분기 연결기준 매출 23조 8270억원, 영업이익 7822억원 잠정실적을 기록했다.",
       "title": "LG전자 3분기 실적 컨센서스 하회…증권가 \"일시적 요인, 본업 건재\""
     },
+    "source_fact:60c94cbd0dfd6414a07ae430": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635115",
+      "source": "이투데이",
+      "source_body_digest": "beacb4d11b3415cb13c9552e27a8d3d1e20e413547c019769cc296349ba724cd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:abcb185eed5dcda1df180c2d32de89808cbc0637e3de402757967de90cd80cb7",
+      "source_fact_keys": [
+        "source_fact:v1:0886ef755ad9d15357b274b54dbcd3c8ba647699a401a229b5b2f42e50c0d319",
+        "source_fact:v1:5e5945d93f8d89aab180c9fe3bd62cfedf78e8c1d0cb3bd3f8e8001b72211457",
+        "source_fact:v1:6177b9c5173fb75f39f2af7ed19ffdf93c0c5a2c59050add85eb0f316c04df74",
+        "source_fact:v1:63b5d3c459f9631ead6650a65ae6a4f1179262dc7c1f55677d2dbd4f9ec15ce3",
+        "source_fact:v1:677345291537d3962d1ccc119a74a2726449a5d0f57e3a2c709bb6f86a5f20b2",
+        "source_fact:v1:8e4048a8ebdcb75b1e60d81d92605d90003733577706c56cf12c6d8a51e008a7"
+      ],
+      "source_published_kst": "2026-10-14T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한경협 \"주식 5% 공시로는 부족…숨은 지분도 공개해야\"",
+      "telegram_core_fact": "보고서는 현재 5%인 주식 보유 공시 기준을 낮추는 방안을 검토하고, 파생상품을 통해 실질적으로 확보한 지분도 파악할 수 있도록 제도를 개선할 것을 제안했다. 현행 자본시장법에 따르면 상장기업 주식을 5% 이상 보유한 투자자는 보유 목적과 지분 등을 금융당국에 보고해야 한다.",
+      "title": "한경협 \"주식 5% 공시로는 부족…숨은 지분도 공개해야\""
+    },
     "source_fact:60d7e14e3b52c12952dc4571": {
       "first_seen_kst": "2026-10-11T09:08:30+09:00",
       "lanes": {
@@ -382962,6 +384126,39 @@
       ],
       "source_published_kst": "2026-10-06T08:46+09:00",
       "title": "“코스피, 7100만 찍으면 7700까지 간다”…장밋빛 전망 근거는? [오늘 나온 보고서]"
+    },
+    "source_fact:64367972c4574f136610610a": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003824797",
+      "source": "뉴시스",
+      "source_body_digest": "ab7ae5925d01c8561ebe5903dbb38dead02ba1d446d8119181ab173cd5734136",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ca56bf89709b369d91787c7856af6f350ad9a7c3a1fd4c7150443c9cbe0c7d9",
+      "source_fact_keys": [
+        "source_fact:v1:114618dd059c47e0ea4631890865a6b19d607f807004358f637eb5e85a7707a0",
+        "source_fact:v1:1a0ce8acd793526b10ab2e2c79427be9047428fac85249359f69de8d9a5b67a1",
+        "source_fact:v1:434b8362e10390744c281098223003cc711c25d9117c1488d53f55f052e52dc9",
+        "source_fact:v1:68ce7600d4541e2d48b654f9decf314f308b44d8870d793382f618eb01db74c2",
+        "source_fact:v1:70baa040664b3488b0b61a13fb7f4128c95ee57b844ecf203f6f6949d1bf2c6c",
+        "source_fact:v1:7273ba3e6da06a3feb990160455a9128cf462c13cc84d18505eea40630d6e14f",
+        "source_fact:v1:94b9e8544d9b768702068bcfb5549b508efdadcf945362880c4dc319d8a0ce25",
+        "source_fact:v1:9a4c52995b08a2a0c4faa3228c58e31fee4a3b6615dceaac5400b67a814d9827",
+        "source_fact:v1:9ca237c1752492a5d0490a703bfc75e664f867ff59c4ca9e7a87366ad2e7519a",
+        "source_fact:v1:b24a3bdb777b7f7e9366ccaee624e56e3632c7733255ba05e4752dd1ed623fbc",
+        "source_fact:v1:be609a50afa67105efd2492b06b0f864c49be54c108352256deaacdccd898786",
+        "source_fact:v1:c718c10ad15962949a24c3cc842a412a71d63fb735f9b99ee790614950f3886f",
+        "source_fact:v1:ec89804dc0ee893f314f0db1e47907aaceaf40821d1d526e26060e895419bd70",
+        "source_fact:v1:ef98f9e354f942ff4e926c7c41d6c40c9eab49da18720cd5520c9ee24bba1d8b"
+      ],
+      "source_published_kst": "2026-10-14T07:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까",
+      "telegram_core_fact": "코스피200 야간선물은 1.7% 상승했다. 코스피가 '검은화요일'의 충격을 딛고 14일 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까"
     },
     "source_fact:64386e98a3674fd3876427b5": {
       "first_seen_kst": "2026-10-12T08:03:02+09:00",
@@ -389063,6 +390260,39 @@
       "telegram_core_fact": "러시아와 에너지 시설 공격을 서로 중단하는 방안을 논의하러 미국을 찾은 우크라이나 대표단이 협상장에서 러시아산 경유 수출 제재 완화 방침을 전달받고 “함정처럼 느껴졌다”고 반발한 것으로 전해졌다.",
       "title": "에너지 휴전 논의하러 갔는데 美는 러 경유 제재 완화…우크라 \"함정 같았다\""
     },
+    "source_fact:69c7c6d38753dc81d02094f6": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003824797",
+      "source": "뉴시스",
+      "source_body_digest": "ab7ae5925d01c8561ebe5903dbb38dead02ba1d446d8119181ab173cd5734136",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ca56bf89709b369d91787c7856af6f350ad9a7c3a1fd4c7150443c9cbe0c7d9",
+      "source_fact_keys": [
+        "source_fact:v1:114618dd059c47e0ea4631890865a6b19d607f807004358f637eb5e85a7707a0",
+        "source_fact:v1:1a0ce8acd793526b10ab2e2c79427be9047428fac85249359f69de8d9a5b67a1",
+        "source_fact:v1:434b8362e10390744c281098223003cc711c25d9117c1488d53f55f052e52dc9",
+        "source_fact:v1:68ce7600d4541e2d48b654f9decf314f308b44d8870d793382f618eb01db74c2",
+        "source_fact:v1:70baa040664b3488b0b61a13fb7f4128c95ee57b844ecf203f6f6949d1bf2c6c",
+        "source_fact:v1:7273ba3e6da06a3feb990160455a9128cf462c13cc84d18505eea40630d6e14f",
+        "source_fact:v1:94b9e8544d9b768702068bcfb5549b508efdadcf945362880c4dc319d8a0ce25",
+        "source_fact:v1:9a4c52995b08a2a0c4faa3228c58e31fee4a3b6615dceaac5400b67a814d9827",
+        "source_fact:v1:9ca237c1752492a5d0490a703bfc75e664f867ff59c4ca9e7a87366ad2e7519a",
+        "source_fact:v1:b24a3bdb777b7f7e9366ccaee624e56e3632c7733255ba05e4752dd1ed623fbc",
+        "source_fact:v1:be609a50afa67105efd2492b06b0f864c49be54c108352256deaacdccd898786",
+        "source_fact:v1:c718c10ad15962949a24c3cc842a412a71d63fb735f9b99ee790614950f3886f",
+        "source_fact:v1:ec89804dc0ee893f314f0db1e47907aaceaf40821d1d526e26060e895419bd70",
+        "source_fact:v1:ef98f9e354f942ff4e926c7c41d6c40c9eab49da18720cd5520c9ee24bba1d8b"
+      ],
+      "source_published_kst": "2026-10-14T07:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까",
+      "telegram_core_fact": "코스피200 야간선물은 1.7% 상승했다. 코스피가 '검은화요일'의 충격을 딛고 14일 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까"
+    },
     "source_fact:69cb1651ae58788585e8cfe5": {
       "first_seen_kst": "2026-10-13T22:33:57+09:00",
       "lanes": {
@@ -393708,6 +394938,31 @@
       ],
       "source_published_kst": "2026-10-05T09:00+09:00",
       "title": "순창군, 대학생 생활비 지원사업 전개…10월6~23일 접수"
+    },
+    "source_fact:6dbbdfc03f4d3c4cc4f0af9e": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635115",
+      "source": "이투데이",
+      "source_body_digest": "beacb4d11b3415cb13c9552e27a8d3d1e20e413547c019769cc296349ba724cd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:abcb185eed5dcda1df180c2d32de89808cbc0637e3de402757967de90cd80cb7",
+      "source_fact_keys": [
+        "source_fact:v1:0886ef755ad9d15357b274b54dbcd3c8ba647699a401a229b5b2f42e50c0d319",
+        "source_fact:v1:5e5945d93f8d89aab180c9fe3bd62cfedf78e8c1d0cb3bd3f8e8001b72211457",
+        "source_fact:v1:6177b9c5173fb75f39f2af7ed19ffdf93c0c5a2c59050add85eb0f316c04df74",
+        "source_fact:v1:63b5d3c459f9631ead6650a65ae6a4f1179262dc7c1f55677d2dbd4f9ec15ce3",
+        "source_fact:v1:677345291537d3962d1ccc119a74a2726449a5d0f57e3a2c709bb6f86a5f20b2",
+        "source_fact:v1:8e4048a8ebdcb75b1e60d81d92605d90003733577706c56cf12c6d8a51e008a7"
+      ],
+      "source_published_kst": "2026-10-14T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한경협 \"주식 5% 공시로는 부족…숨은 지분도 공개해야\"",
+      "telegram_core_fact": "보고서는 현재 5%인 주식 보유 공시 기준을 낮추는 방안을 검토하고, 파생상품을 통해 실질적으로 확보한 지분도 파악할 수 있도록 제도를 개선할 것을 제안했다. 현행 자본시장법에 따르면 상장기업 주식을 5% 이상 보유한 투자자는 보유 목적과 지분 등을 금융당국에 보고해야 한다.",
+      "title": "한경협 \"주식 5% 공시로는 부족…숨은 지분도 공개해야\""
     },
     "source_fact:6dbd45f8678d5d5795576b3d": {
       "first_seen_kst": "2026-10-08T20:16:13+09:00",
@@ -402301,6 +403556,39 @@
       "telegram_core_fact": "앤드루 펠드먼 세레브라스 CEO는 13일(현지시간) 미국 샌프란시스코에서 열린 ‘테크크런치 디스럽트 2026’ 대담에서 “AI 수요는 엄청난 속도로 증가하고 있다”면서도 “지난 몇 년간 AI 업계는 데이터센터가 들어서는 지역사회와 제대로 협력하지 못했다”고 밝혔다.",
       "title": "“AI 기술은 앞서가는데 데이터센터가 없다”…세레브라스 CEO의 경고"
     },
+    "source_fact:75b78299a04404db7f8984c1": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003824797",
+      "source": "뉴시스",
+      "source_body_digest": "ab7ae5925d01c8561ebe5903dbb38dead02ba1d446d8119181ab173cd5734136",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ca56bf89709b369d91787c7856af6f350ad9a7c3a1fd4c7150443c9cbe0c7d9",
+      "source_fact_keys": [
+        "source_fact:v1:114618dd059c47e0ea4631890865a6b19d607f807004358f637eb5e85a7707a0",
+        "source_fact:v1:1a0ce8acd793526b10ab2e2c79427be9047428fac85249359f69de8d9a5b67a1",
+        "source_fact:v1:434b8362e10390744c281098223003cc711c25d9117c1488d53f55f052e52dc9",
+        "source_fact:v1:68ce7600d4541e2d48b654f9decf314f308b44d8870d793382f618eb01db74c2",
+        "source_fact:v1:70baa040664b3488b0b61a13fb7f4128c95ee57b844ecf203f6f6949d1bf2c6c",
+        "source_fact:v1:7273ba3e6da06a3feb990160455a9128cf462c13cc84d18505eea40630d6e14f",
+        "source_fact:v1:94b9e8544d9b768702068bcfb5549b508efdadcf945362880c4dc319d8a0ce25",
+        "source_fact:v1:9a4c52995b08a2a0c4faa3228c58e31fee4a3b6615dceaac5400b67a814d9827",
+        "source_fact:v1:9ca237c1752492a5d0490a703bfc75e664f867ff59c4ca9e7a87366ad2e7519a",
+        "source_fact:v1:b24a3bdb777b7f7e9366ccaee624e56e3632c7733255ba05e4752dd1ed623fbc",
+        "source_fact:v1:be609a50afa67105efd2492b06b0f864c49be54c108352256deaacdccd898786",
+        "source_fact:v1:c718c10ad15962949a24c3cc842a412a71d63fb735f9b99ee790614950f3886f",
+        "source_fact:v1:ec89804dc0ee893f314f0db1e47907aaceaf40821d1d526e26060e895419bd70",
+        "source_fact:v1:ef98f9e354f942ff4e926c7c41d6c40c9eab49da18720cd5520c9ee24bba1d8b"
+      ],
+      "source_published_kst": "2026-10-14T07:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까",
+      "telegram_core_fact": "코스피200 야간선물은 1.7% 상승했다. 코스피가 '검은화요일'의 충격을 딛고 14일 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까"
+    },
     "source_fact:75baff3a22198a87021e19e5": {
       "first_seen_kst": "2026-10-12T11:27:57+09:00",
       "lanes": {
@@ -402443,6 +403731,33 @@
       ],
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "AI株 숨고르기 반사익…美바이오 ETF 순풍"
+    },
+    "source_fact:75d33887f04ddc4d6a19ee06": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.fnnews.com/news/202610140501337119",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "28bb4ba0a71716b76f9f5870f5971beef3f9f5c9a1e57dfdd1099a0c005092b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3282eb9201982f38a80e8932ed93437a56a0454d5a91ba95f39c1b7fe1efce2a",
+      "source_fact_keys": [
+        "source_fact:v1:14e0295caa214e10d872f8f76188556bbbc0ee6bc8562a7ef626d1a4a3447564",
+        "source_fact:v1:243f8b34b69a130964699ed25ed713526bddbff32bcf30b19a16891338774a0c",
+        "source_fact:v1:51026b753ba5e484b988b9cbebf026bb8daab226bc65cc4c5a58abc2b5411ddd",
+        "source_fact:v1:c3761d78684285427fb84b69f255a094cf896a5690ec681764b4afb6e61a966c",
+        "source_fact:v1:da01068349e2d4dc6c589867385fd15e55e56d2274b3629fd7317ebf1cb88629",
+        "source_fact:v1:edb952f372fda805fb1400fa16a6b109cddd6e5f850e22ee2ab8b6987cedaea1",
+        "source_fact:v1:f92ea9c41b3cea91192f27abcea5fd08133eca0289cb6507ec8289f15a24bf0f",
+        "source_fact:v1:fe50eeb40c4cfdbcf20c6c4cf45a265fd83867e431f3f3df0f28490443a1a4ee"
+      ],
+      "source_published_kst": "2026-10-14T05:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG엔솔 이어 삼성SDI도 3Q 흑자 유지 전망…\"K배터리, 실적 개선 본격화\"",
+      "telegram_core_fact": "LG에너지솔루션이 3분기 7560억원의 영업이익을 기록한 가운데, 삼성SDI도 3분기 흑자 흐름을 이어갈 전망이다.",
+      "title": "LG엔솔 이어 삼성SDI도 3Q 흑자 유지 전망…\"K배터리, 실적 개선 본격화\""
     },
     "source_fact:75d6e2f9a2df3df3c8cf94b9": {
       "first_seen_kst": "2026-10-12T08:03:02+09:00",
@@ -411270,6 +412585,39 @@
       "telegram_core_fact": "내년까지 국내 공급 기반을 구축하고 2028년부터 전국 단위 보급을 본격화한다는 계획이다.",
       "title": "삼성전자, 아파트 냉난방 전기화 나선다…2028년 히트펌프 전국 보급"
     },
+    "source_fact:7db8bbc91752a956686d6706": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003824797",
+      "source": "뉴시스",
+      "source_body_digest": "ab7ae5925d01c8561ebe5903dbb38dead02ba1d446d8119181ab173cd5734136",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ca56bf89709b369d91787c7856af6f350ad9a7c3a1fd4c7150443c9cbe0c7d9",
+      "source_fact_keys": [
+        "source_fact:v1:114618dd059c47e0ea4631890865a6b19d607f807004358f637eb5e85a7707a0",
+        "source_fact:v1:1a0ce8acd793526b10ab2e2c79427be9047428fac85249359f69de8d9a5b67a1",
+        "source_fact:v1:434b8362e10390744c281098223003cc711c25d9117c1488d53f55f052e52dc9",
+        "source_fact:v1:68ce7600d4541e2d48b654f9decf314f308b44d8870d793382f618eb01db74c2",
+        "source_fact:v1:70baa040664b3488b0b61a13fb7f4128c95ee57b844ecf203f6f6949d1bf2c6c",
+        "source_fact:v1:7273ba3e6da06a3feb990160455a9128cf462c13cc84d18505eea40630d6e14f",
+        "source_fact:v1:94b9e8544d9b768702068bcfb5549b508efdadcf945362880c4dc319d8a0ce25",
+        "source_fact:v1:9a4c52995b08a2a0c4faa3228c58e31fee4a3b6615dceaac5400b67a814d9827",
+        "source_fact:v1:9ca237c1752492a5d0490a703bfc75e664f867ff59c4ca9e7a87366ad2e7519a",
+        "source_fact:v1:b24a3bdb777b7f7e9366ccaee624e56e3632c7733255ba05e4752dd1ed623fbc",
+        "source_fact:v1:be609a50afa67105efd2492b06b0f864c49be54c108352256deaacdccd898786",
+        "source_fact:v1:c718c10ad15962949a24c3cc842a412a71d63fb735f9b99ee790614950f3886f",
+        "source_fact:v1:ec89804dc0ee893f314f0db1e47907aaceaf40821d1d526e26060e895419bd70",
+        "source_fact:v1:ef98f9e354f942ff4e926c7c41d6c40c9eab49da18720cd5520c9ee24bba1d8b"
+      ],
+      "source_published_kst": "2026-10-14T07:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까",
+      "telegram_core_fact": "코스피200 야간선물은 1.7% 상승했다. 코스피가 '검은화요일'의 충격을 딛고 14일 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까"
+    },
     "source_fact:7dbb846440aee5dbd4533a44": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
       "lanes": {
@@ -417217,6 +418565,39 @@
       "telegram_core_fact": "한국투자신탁운용은 7일 ACE 미국빅테크TOP7Plus 상장지수펀드(ETF)의 순자산액이 1조2000억원을 돌파했다고 밝혔다. ACE 미국빅테크TOP7Plus ETF는 미국 나스닥 시장에 상장된 빅테크 기업에 집중적으로 투자하는 상품으로 2023년 9월 상장했다.",
       "title": "한투운용, 미국 빅테크 집중 ETF 순자산 1조2000억 돌파"
     },
+    "source_fact:8336d608c0bdac19ff513553": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003824797",
+      "source": "뉴시스",
+      "source_body_digest": "ab7ae5925d01c8561ebe5903dbb38dead02ba1d446d8119181ab173cd5734136",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ca56bf89709b369d91787c7856af6f350ad9a7c3a1fd4c7150443c9cbe0c7d9",
+      "source_fact_keys": [
+        "source_fact:v1:114618dd059c47e0ea4631890865a6b19d607f807004358f637eb5e85a7707a0",
+        "source_fact:v1:1a0ce8acd793526b10ab2e2c79427be9047428fac85249359f69de8d9a5b67a1",
+        "source_fact:v1:434b8362e10390744c281098223003cc711c25d9117c1488d53f55f052e52dc9",
+        "source_fact:v1:68ce7600d4541e2d48b654f9decf314f308b44d8870d793382f618eb01db74c2",
+        "source_fact:v1:70baa040664b3488b0b61a13fb7f4128c95ee57b844ecf203f6f6949d1bf2c6c",
+        "source_fact:v1:7273ba3e6da06a3feb990160455a9128cf462c13cc84d18505eea40630d6e14f",
+        "source_fact:v1:94b9e8544d9b768702068bcfb5549b508efdadcf945362880c4dc319d8a0ce25",
+        "source_fact:v1:9a4c52995b08a2a0c4faa3228c58e31fee4a3b6615dceaac5400b67a814d9827",
+        "source_fact:v1:9ca237c1752492a5d0490a703bfc75e664f867ff59c4ca9e7a87366ad2e7519a",
+        "source_fact:v1:b24a3bdb777b7f7e9366ccaee624e56e3632c7733255ba05e4752dd1ed623fbc",
+        "source_fact:v1:be609a50afa67105efd2492b06b0f864c49be54c108352256deaacdccd898786",
+        "source_fact:v1:c718c10ad15962949a24c3cc842a412a71d63fb735f9b99ee790614950f3886f",
+        "source_fact:v1:ec89804dc0ee893f314f0db1e47907aaceaf40821d1d526e26060e895419bd70",
+        "source_fact:v1:ef98f9e354f942ff4e926c7c41d6c40c9eab49da18720cd5520c9ee24bba1d8b"
+      ],
+      "source_published_kst": "2026-10-14T07:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까",
+      "telegram_core_fact": "코스피200 야간선물은 1.7% 상승했다. 코스피가 '검은화요일'의 충격을 딛고 14일 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까"
+    },
     "source_fact:833c9fa59e586cb33aee7caf": {
       "first_seen_kst": "2026-10-07T22:53:53+09:00",
       "lanes": {
@@ -419761,6 +421142,33 @@
       ],
       "source_published_kst": "2026-10-06T17:35+09:00",
       "title": "포스코퓨처엠, 삼성SDI와 LFP 6조원 규모 공급계약 체결"
+    },
+    "source_fact:85cf9c8886efad2591f5be0d": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.fnnews.com/news/202610140501337119",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "28bb4ba0a71716b76f9f5870f5971beef3f9f5c9a1e57dfdd1099a0c005092b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3282eb9201982f38a80e8932ed93437a56a0454d5a91ba95f39c1b7fe1efce2a",
+      "source_fact_keys": [
+        "source_fact:v1:14e0295caa214e10d872f8f76188556bbbc0ee6bc8562a7ef626d1a4a3447564",
+        "source_fact:v1:243f8b34b69a130964699ed25ed713526bddbff32bcf30b19a16891338774a0c",
+        "source_fact:v1:51026b753ba5e484b988b9cbebf026bb8daab226bc65cc4c5a58abc2b5411ddd",
+        "source_fact:v1:c3761d78684285427fb84b69f255a094cf896a5690ec681764b4afb6e61a966c",
+        "source_fact:v1:da01068349e2d4dc6c589867385fd15e55e56d2274b3629fd7317ebf1cb88629",
+        "source_fact:v1:edb952f372fda805fb1400fa16a6b109cddd6e5f850e22ee2ab8b6987cedaea1",
+        "source_fact:v1:f92ea9c41b3cea91192f27abcea5fd08133eca0289cb6507ec8289f15a24bf0f",
+        "source_fact:v1:fe50eeb40c4cfdbcf20c6c4cf45a265fd83867e431f3f3df0f28490443a1a4ee"
+      ],
+      "source_published_kst": "2026-10-14T05:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG엔솔 이어 삼성SDI도 3Q 흑자 유지 전망…\"K배터리, 실적 개선 본격화\"",
+      "telegram_core_fact": "LG에너지솔루션이 3분기 7560억원의 영업이익을 기록한 가운데, 삼성SDI도 3분기 흑자 흐름을 이어갈 전망이다.",
+      "title": "LG엔솔 이어 삼성SDI도 3Q 흑자 유지 전망…\"K배터리, 실적 개선 본격화\""
     },
     "source_fact:85d541dbb843185f8a124c42": {
       "first_seen_kst": "2026-10-12T18:39:51+09:00",
@@ -429045,6 +430453,27 @@
       "source_title": "삼성전자, '쌓는 D램' 성능↑ 기술 축적…전류 흐름 2.6배 향상",
       "telegram_core_fact": "비트라인과 전류가 흐르는 통로인 채널 사이의 저항을 낮춰 메모리 셀의 동작 성능을 높이는 방식이다.",
       "title": "삼성전자, '쌓는 D램' 성능↑ 기술 축적…전류 흐름 2.6배 향상"
+    },
+    "source_fact:8dda416af903ee6ad903115c": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635392",
+      "source": "이투데이",
+      "source_body_digest": "10d18fef49a410fdceb68bd6e3e8d088c1e6e7c429465ba69ca1bf285a0d4e6f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ef3cdb6ec85b627f052763eb61d396a5f69676039311f4857b3d47352d0a6a94",
+      "source_fact_keys": [
+        "source_fact:v1:7665ac3e8fce8c2d6022e3d4aee0dfade83946b199f88fba09298f630fb6f699",
+        "source_fact:v1:d48f063c208d58ea23b9131627e2587a4c06598e05613ad2c462cf33272db677"
+      ],
+      "source_published_kst": "2026-10-14T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "농지조사·중국산 드론 논란…온라인 장터 6822억 이상거래도 도마 [국감]",
+      "telegram_core_fact": "국감에서는 거래의 실질을 확인하는 절차와 운송비 등 지원금 지급이 적절했는지, 온라인시장 확대가 실제 유통비 절감으로 이어졌는지 등을 살펴볼 것으로 보인다.",
+      "title": "농지조사·중국산 드론 논란…온라인 장터 6822억 이상거래도 도마 [국감]"
     },
     "source_fact:8dda8a55c0f6598a655babe0": {
       "first_seen_kst": "2026-10-11T09:50:45+09:00",
@@ -445104,6 +446533,39 @@
       ],
       "source_published_kst": "2026-10-06T15:28+09:00",
       "title": "한 주에 10% 뛴 광통신 ETF…\"AI 데이터센터 전력난이 복병\""
+    },
+    "source_fact:9ce0049b5f12eed538a307a6": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003824797",
+      "source": "뉴시스",
+      "source_body_digest": "ab7ae5925d01c8561ebe5903dbb38dead02ba1d446d8119181ab173cd5734136",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ca56bf89709b369d91787c7856af6f350ad9a7c3a1fd4c7150443c9cbe0c7d9",
+      "source_fact_keys": [
+        "source_fact:v1:114618dd059c47e0ea4631890865a6b19d607f807004358f637eb5e85a7707a0",
+        "source_fact:v1:1a0ce8acd793526b10ab2e2c79427be9047428fac85249359f69de8d9a5b67a1",
+        "source_fact:v1:434b8362e10390744c281098223003cc711c25d9117c1488d53f55f052e52dc9",
+        "source_fact:v1:68ce7600d4541e2d48b654f9decf314f308b44d8870d793382f618eb01db74c2",
+        "source_fact:v1:70baa040664b3488b0b61a13fb7f4128c95ee57b844ecf203f6f6949d1bf2c6c",
+        "source_fact:v1:7273ba3e6da06a3feb990160455a9128cf462c13cc84d18505eea40630d6e14f",
+        "source_fact:v1:94b9e8544d9b768702068bcfb5549b508efdadcf945362880c4dc319d8a0ce25",
+        "source_fact:v1:9a4c52995b08a2a0c4faa3228c58e31fee4a3b6615dceaac5400b67a814d9827",
+        "source_fact:v1:9ca237c1752492a5d0490a703bfc75e664f867ff59c4ca9e7a87366ad2e7519a",
+        "source_fact:v1:b24a3bdb777b7f7e9366ccaee624e56e3632c7733255ba05e4752dd1ed623fbc",
+        "source_fact:v1:be609a50afa67105efd2492b06b0f864c49be54c108352256deaacdccd898786",
+        "source_fact:v1:c718c10ad15962949a24c3cc842a412a71d63fb735f9b99ee790614950f3886f",
+        "source_fact:v1:ec89804dc0ee893f314f0db1e47907aaceaf40821d1d526e26060e895419bd70",
+        "source_fact:v1:ef98f9e354f942ff4e926c7c41d6c40c9eab49da18720cd5520c9ee24bba1d8b"
+      ],
+      "source_published_kst": "2026-10-14T07:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까",
+      "telegram_core_fact": "코스피200 야간선물은 1.7% 상승했다. 코스피가 '검은화요일'의 충격을 딛고 14일 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까"
     },
     "source_fact:9ce2ead93bcb262495c9c4ca": {
       "first_seen_kst": "2026-10-12T18:02:18+09:00",
@@ -464759,6 +466221,31 @@
       "source_published_kst": "2026-10-06T08:03+09:00",
       "title": "대신證, “삼성바이오로직스, 3분기 실적 선방⋯4분기엔 반등 전망”"
     },
+    "source_fact:adde38dea67ad4d0db774d08": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635115",
+      "source": "이투데이",
+      "source_body_digest": "beacb4d11b3415cb13c9552e27a8d3d1e20e413547c019769cc296349ba724cd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:abcb185eed5dcda1df180c2d32de89808cbc0637e3de402757967de90cd80cb7",
+      "source_fact_keys": [
+        "source_fact:v1:0886ef755ad9d15357b274b54dbcd3c8ba647699a401a229b5b2f42e50c0d319",
+        "source_fact:v1:5e5945d93f8d89aab180c9fe3bd62cfedf78e8c1d0cb3bd3f8e8001b72211457",
+        "source_fact:v1:6177b9c5173fb75f39f2af7ed19ffdf93c0c5a2c59050add85eb0f316c04df74",
+        "source_fact:v1:63b5d3c459f9631ead6650a65ae6a4f1179262dc7c1f55677d2dbd4f9ec15ce3",
+        "source_fact:v1:677345291537d3962d1ccc119a74a2726449a5d0f57e3a2c709bb6f86a5f20b2",
+        "source_fact:v1:8e4048a8ebdcb75b1e60d81d92605d90003733577706c56cf12c6d8a51e008a7"
+      ],
+      "source_published_kst": "2026-10-14T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한경협 \"주식 5% 공시로는 부족…숨은 지분도 공개해야\"",
+      "telegram_core_fact": "보고서는 현재 5%인 주식 보유 공시 기준을 낮추는 방안을 검토하고, 파생상품을 통해 실질적으로 확보한 지분도 파악할 수 있도록 제도를 개선할 것을 제안했다. 현행 자본시장법에 따르면 상장기업 주식을 5% 이상 보유한 투자자는 보유 목적과 지분 등을 금융당국에 보고해야 한다.",
+      "title": "한경협 \"주식 5% 공시로는 부족…숨은 지분도 공개해야\""
+    },
     "source_fact:addeafad5972deca26e29e9a": {
       "first_seen_kst": "2026-10-13T21:12:07+09:00",
       "lanes": {
@@ -475013,6 +476500,33 @@
       "source_published_kst": "2026-10-07T08:54+09:00",
       "title": "LS에코에너지, 베트남에 80억 투자…에폭시 타입 버스덕트 신규 생산"
     },
+    "source_fact:b7b68b6567e2eb44dc496117": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.fnnews.com/news/202610140602364076",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "965d66249a2b607977cde70f255ca0f42596d6900c97bee0b71e5d46bcefd389",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eba20b6f63447430f14fd67d63a602c7fc11fec7100f4f2820d915ea226dd888",
+      "source_fact_keys": [
+        "source_fact:v1:040b05a506fe88992209842f2da72bfcce66421885896f5cce769875db24580c",
+        "source_fact:v1:275fc7f1b46504e21360a4e00e0017a7c26f6cee7ad0080bbf0724e3edd6c0fc",
+        "source_fact:v1:4054b45725eed6d8d16c8512b4215bd190d54bc2c628f175c568f42c9f32b2d2",
+        "source_fact:v1:4fb76f7158fdb48b64c378680b958d0271b988fe3f71a53e2463f8ed40fbf766",
+        "source_fact:v1:6fb96308e4b8c3a1db9efdf9af6f97f418b2f9a9621c603fe6c492a6e59ed765",
+        "source_fact:v1:998fc74e568125e63066ebb35a1a7a9d38899d4bcecd69fdd98d5fe8a92c1560",
+        "source_fact:v1:a09c084e02e7cf711749e3fc461b45c38d1d0b8fbb673aaf4639d8e5e5642e0f",
+        "source_fact:v1:f4c6f8ca7f2f1da0912865233b691c1a9c39f128c4bfa65fbe75357b8b6dd773"
+      ],
+      "source_published_kst": "2026-10-14T06:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "'50조 매도세' 받아낸 자사주 매입 '끝'…새 수급 변수는 실적·주주환원",
+      "telegram_core_fact": "삼성전자(005930)와 SK하이닉스(000660)의 총 55조 원 규모 자사주 매입이 마무리 국면에 접어들면서 증시 재반등을 위해 새로운 수급 주체의 부상이 필요한 시점이다.",
+      "title": "'50조 매도세' 받아낸 자사주 매입 '끝'…새 수급 변수는 실적·주주환원"
+    },
     "source_fact:b7b771549137980a3caf1dc4": {
       "first_seen_kst": "2026-10-12T13:18:48+09:00",
       "lanes": {
@@ -477303,6 +478817,39 @@
       "source_title": "망고부스트, ‘AI 팩토리’ 사업 본격화…AI 추론 플랫폼 ‘망고 인퍼런스’ 공개",
       "telegram_core_fact": "‘망고 인퍼런스’라는 서버리스 AI 추론 플랫폼을 출시한 망고부스트는 내년 서울에 1메가와트(MW) AI 데이터센터(AIDC)를 구축한다.",
       "title": "망고부스트, ‘AI 팩토리’ 사업 본격화…AI 추론 플랫폼 ‘망고 인퍼런스’ 공개"
+    },
+    "source_fact:b9b7784650475f990936f9e2": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003824797",
+      "source": "뉴시스",
+      "source_body_digest": "ab7ae5925d01c8561ebe5903dbb38dead02ba1d446d8119181ab173cd5734136",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ca56bf89709b369d91787c7856af6f350ad9a7c3a1fd4c7150443c9cbe0c7d9",
+      "source_fact_keys": [
+        "source_fact:v1:114618dd059c47e0ea4631890865a6b19d607f807004358f637eb5e85a7707a0",
+        "source_fact:v1:1a0ce8acd793526b10ab2e2c79427be9047428fac85249359f69de8d9a5b67a1",
+        "source_fact:v1:434b8362e10390744c281098223003cc711c25d9117c1488d53f55f052e52dc9",
+        "source_fact:v1:68ce7600d4541e2d48b654f9decf314f308b44d8870d793382f618eb01db74c2",
+        "source_fact:v1:70baa040664b3488b0b61a13fb7f4128c95ee57b844ecf203f6f6949d1bf2c6c",
+        "source_fact:v1:7273ba3e6da06a3feb990160455a9128cf462c13cc84d18505eea40630d6e14f",
+        "source_fact:v1:94b9e8544d9b768702068bcfb5549b508efdadcf945362880c4dc319d8a0ce25",
+        "source_fact:v1:9a4c52995b08a2a0c4faa3228c58e31fee4a3b6615dceaac5400b67a814d9827",
+        "source_fact:v1:9ca237c1752492a5d0490a703bfc75e664f867ff59c4ca9e7a87366ad2e7519a",
+        "source_fact:v1:b24a3bdb777b7f7e9366ccaee624e56e3632c7733255ba05e4752dd1ed623fbc",
+        "source_fact:v1:be609a50afa67105efd2492b06b0f864c49be54c108352256deaacdccd898786",
+        "source_fact:v1:c718c10ad15962949a24c3cc842a412a71d63fb735f9b99ee790614950f3886f",
+        "source_fact:v1:ec89804dc0ee893f314f0db1e47907aaceaf40821d1d526e26060e895419bd70",
+        "source_fact:v1:ef98f9e354f942ff4e926c7c41d6c40c9eab49da18720cd5520c9ee24bba1d8b"
+      ],
+      "source_published_kst": "2026-10-14T07:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까",
+      "telegram_core_fact": "코스피200 야간선물은 1.7% 상승했다. 코스피가 '검은화요일'의 충격을 딛고 14일 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까"
     },
     "source_fact:b9c6e1359d530605edb7de3f": {
       "first_seen_kst": "2026-10-11T14:49:05+09:00",
@@ -480986,6 +482533,33 @@
       "telegram_core_fact": "방한한 리사 수 AMD 회장 겸 최고경영자(CEO)가 삼성과 SK의 반도체 수장을 만나 AI 협력 강화 방안을 논의한다. 약 7개월 만에 다시 성사된 전 부회장과 수 회장의 이번 회동으로 삼성전자와 AMD는 고대역폭메모리(HBM)를 포함한 AI 반도체 협력을 강화할 전망이다.",
       "title": "AMD 리사수, 삼성 전영현·SK 곽노정 만나 AI 협력방안 논의(종합)"
     },
+    "source_fact:bd3b8eddde0e7e9487757a2f": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.fnnews.com/news/202610140602364076",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "965d66249a2b607977cde70f255ca0f42596d6900c97bee0b71e5d46bcefd389",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eba20b6f63447430f14fd67d63a602c7fc11fec7100f4f2820d915ea226dd888",
+      "source_fact_keys": [
+        "source_fact:v1:040b05a506fe88992209842f2da72bfcce66421885896f5cce769875db24580c",
+        "source_fact:v1:275fc7f1b46504e21360a4e00e0017a7c26f6cee7ad0080bbf0724e3edd6c0fc",
+        "source_fact:v1:4054b45725eed6d8d16c8512b4215bd190d54bc2c628f175c568f42c9f32b2d2",
+        "source_fact:v1:4fb76f7158fdb48b64c378680b958d0271b988fe3f71a53e2463f8ed40fbf766",
+        "source_fact:v1:6fb96308e4b8c3a1db9efdf9af6f97f418b2f9a9621c603fe6c492a6e59ed765",
+        "source_fact:v1:998fc74e568125e63066ebb35a1a7a9d38899d4bcecd69fdd98d5fe8a92c1560",
+        "source_fact:v1:a09c084e02e7cf711749e3fc461b45c38d1d0b8fbb673aaf4639d8e5e5642e0f",
+        "source_fact:v1:f4c6f8ca7f2f1da0912865233b691c1a9c39f128c4bfa65fbe75357b8b6dd773"
+      ],
+      "source_published_kst": "2026-10-14T06:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "'50조 매도세' 받아낸 자사주 매입 '끝'…새 수급 변수는 실적·주주환원",
+      "telegram_core_fact": "삼성전자(005930)와 SK하이닉스(000660)의 총 55조 원 규모 자사주 매입이 마무리 국면에 접어들면서 증시 재반등을 위해 새로운 수급 주체의 부상이 필요한 시점이다.",
+      "title": "'50조 매도세' 받아낸 자사주 매입 '끝'…새 수급 변수는 실적·주주환원"
+    },
     "source_fact:bd479d849d31049d807703ef": {
       "first_seen_kst": "2026-10-11T12:55:39+09:00",
       "lanes": {
@@ -484482,6 +486056,33 @@
       "source_title": "이소영 \"납품대금연동제 전면 검토…기술탈취 과징금 피해구제 개선\"(종합)",
       "telegram_core_fact": "이소영 중소벤처기업부 장관이 납품대금 연동제의 실효성이 부족하다며 적용 요건과 제재 등을 전반적으로 재검토하겠다고 밝혔다.",
       "title": "이소영 \"납품대금연동제 전면 검토…기술탈취 과징금 피해구제 개선\"(종합)"
+    },
+    "source_fact:c04ae12b8fb580028cc276f8": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.fnnews.com/news/202610140602364076",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "965d66249a2b607977cde70f255ca0f42596d6900c97bee0b71e5d46bcefd389",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eba20b6f63447430f14fd67d63a602c7fc11fec7100f4f2820d915ea226dd888",
+      "source_fact_keys": [
+        "source_fact:v1:040b05a506fe88992209842f2da72bfcce66421885896f5cce769875db24580c",
+        "source_fact:v1:275fc7f1b46504e21360a4e00e0017a7c26f6cee7ad0080bbf0724e3edd6c0fc",
+        "source_fact:v1:4054b45725eed6d8d16c8512b4215bd190d54bc2c628f175c568f42c9f32b2d2",
+        "source_fact:v1:4fb76f7158fdb48b64c378680b958d0271b988fe3f71a53e2463f8ed40fbf766",
+        "source_fact:v1:6fb96308e4b8c3a1db9efdf9af6f97f418b2f9a9621c603fe6c492a6e59ed765",
+        "source_fact:v1:998fc74e568125e63066ebb35a1a7a9d38899d4bcecd69fdd98d5fe8a92c1560",
+        "source_fact:v1:a09c084e02e7cf711749e3fc461b45c38d1d0b8fbb673aaf4639d8e5e5642e0f",
+        "source_fact:v1:f4c6f8ca7f2f1da0912865233b691c1a9c39f128c4bfa65fbe75357b8b6dd773"
+      ],
+      "source_published_kst": "2026-10-14T06:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "'50조 매도세' 받아낸 자사주 매입 '끝'…새 수급 변수는 실적·주주환원",
+      "telegram_core_fact": "삼성전자(005930)와 SK하이닉스(000660)의 총 55조 원 규모 자사주 매입이 마무리 국면에 접어들면서 증시 재반등을 위해 새로운 수급 주체의 부상이 필요한 시점이다.",
+      "title": "'50조 매도세' 받아낸 자사주 매입 '끝'…새 수급 변수는 실적·주주환원"
     },
     "source_fact:c0540eb113411ae67c332939": {
       "first_seen_kst": "2026-10-12T03:58:42+09:00",
@@ -489582,6 +491183,33 @@
       ],
       "source_published_kst": "2026-10-06T12:40+09:00",
       "title": "이형일 \"대미 원전 100억달러, 국내법 절차 완료 후 가능\""
+    },
+    "source_fact:c48aeb38ff7e996aa9fc4b44": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.fnnews.com/news/202610140602364076",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "965d66249a2b607977cde70f255ca0f42596d6900c97bee0b71e5d46bcefd389",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eba20b6f63447430f14fd67d63a602c7fc11fec7100f4f2820d915ea226dd888",
+      "source_fact_keys": [
+        "source_fact:v1:040b05a506fe88992209842f2da72bfcce66421885896f5cce769875db24580c",
+        "source_fact:v1:275fc7f1b46504e21360a4e00e0017a7c26f6cee7ad0080bbf0724e3edd6c0fc",
+        "source_fact:v1:4054b45725eed6d8d16c8512b4215bd190d54bc2c628f175c568f42c9f32b2d2",
+        "source_fact:v1:4fb76f7158fdb48b64c378680b958d0271b988fe3f71a53e2463f8ed40fbf766",
+        "source_fact:v1:6fb96308e4b8c3a1db9efdf9af6f97f418b2f9a9621c603fe6c492a6e59ed765",
+        "source_fact:v1:998fc74e568125e63066ebb35a1a7a9d38899d4bcecd69fdd98d5fe8a92c1560",
+        "source_fact:v1:a09c084e02e7cf711749e3fc461b45c38d1d0b8fbb673aaf4639d8e5e5642e0f",
+        "source_fact:v1:f4c6f8ca7f2f1da0912865233b691c1a9c39f128c4bfa65fbe75357b8b6dd773"
+      ],
+      "source_published_kst": "2026-10-14T06:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "'50조 매도세' 받아낸 자사주 매입 '끝'…새 수급 변수는 실적·주주환원",
+      "telegram_core_fact": "삼성전자(005930)와 SK하이닉스(000660)의 총 55조 원 규모 자사주 매입이 마무리 국면에 접어들면서 증시 재반등을 위해 새로운 수급 주체의 부상이 필요한 시점이다.",
+      "title": "'50조 매도세' 받아낸 자사주 매입 '끝'…새 수급 변수는 실적·주주환원"
     },
     "source_fact:c48b253d63790763852f7029": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
@@ -500015,6 +501643,39 @@
       "telegram_core_fact": "지난 3월 '기관전용 사모펀드 업무집행사원 표준내부통제 기준'을 발표하고 약 반년이 지난 시점에서 점검을 통해 자율규제 체계·문화가 자리 잡게 유도한다는 취지다.",
       "title": "금감원, PEF운용사 30곳 내부통제 점검…\"사회적물의 사건 예방\" | 연합뉴스"
     },
+    "source_fact:cea93c005ac49b254bb28162": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003824797",
+      "source": "뉴시스",
+      "source_body_digest": "ab7ae5925d01c8561ebe5903dbb38dead02ba1d446d8119181ab173cd5734136",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ca56bf89709b369d91787c7856af6f350ad9a7c3a1fd4c7150443c9cbe0c7d9",
+      "source_fact_keys": [
+        "source_fact:v1:114618dd059c47e0ea4631890865a6b19d607f807004358f637eb5e85a7707a0",
+        "source_fact:v1:1a0ce8acd793526b10ab2e2c79427be9047428fac85249359f69de8d9a5b67a1",
+        "source_fact:v1:434b8362e10390744c281098223003cc711c25d9117c1488d53f55f052e52dc9",
+        "source_fact:v1:68ce7600d4541e2d48b654f9decf314f308b44d8870d793382f618eb01db74c2",
+        "source_fact:v1:70baa040664b3488b0b61a13fb7f4128c95ee57b844ecf203f6f6949d1bf2c6c",
+        "source_fact:v1:7273ba3e6da06a3feb990160455a9128cf462c13cc84d18505eea40630d6e14f",
+        "source_fact:v1:94b9e8544d9b768702068bcfb5549b508efdadcf945362880c4dc319d8a0ce25",
+        "source_fact:v1:9a4c52995b08a2a0c4faa3228c58e31fee4a3b6615dceaac5400b67a814d9827",
+        "source_fact:v1:9ca237c1752492a5d0490a703bfc75e664f867ff59c4ca9e7a87366ad2e7519a",
+        "source_fact:v1:b24a3bdb777b7f7e9366ccaee624e56e3632c7733255ba05e4752dd1ed623fbc",
+        "source_fact:v1:be609a50afa67105efd2492b06b0f864c49be54c108352256deaacdccd898786",
+        "source_fact:v1:c718c10ad15962949a24c3cc842a412a71d63fb735f9b99ee790614950f3886f",
+        "source_fact:v1:ec89804dc0ee893f314f0db1e47907aaceaf40821d1d526e26060e895419bd70",
+        "source_fact:v1:ef98f9e354f942ff4e926c7c41d6c40c9eab49da18720cd5520c9ee24bba1d8b"
+      ],
+      "source_published_kst": "2026-10-14T07:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까",
+      "telegram_core_fact": "코스피200 야간선물은 1.7% 상승했다. 코스피가 '검은화요일'의 충격을 딛고 14일 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까"
+    },
     "source_fact:ceadec4a7120d8fdd73ac8ce": {
       "first_seen_kst": "2026-10-06T20:37:39+09:00",
       "lanes": {
@@ -500509,6 +502170,33 @@
       "source_title": "“삼성전자 최대 실적 냈는데 왜?”…외국인은 팔고 개미는 미국行",
       "telegram_core_fact": "삼성전자가 3분기 영업이익이 107조원에 달하는 사상 최대 실적을 발표했지만, 외국인 지분율은 글로벌 금융위기 이후 최저 수준인 46%대로 떨어졌다.",
       "title": "“삼성전자 최대 실적 냈는데 왜?”…외국인은 팔고 개미는 미국行"
+    },
+    "source_fact:cf0c371cdd2081960d92b711": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.fnnews.com/news/202610140501337119",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "28bb4ba0a71716b76f9f5870f5971beef3f9f5c9a1e57dfdd1099a0c005092b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3282eb9201982f38a80e8932ed93437a56a0454d5a91ba95f39c1b7fe1efce2a",
+      "source_fact_keys": [
+        "source_fact:v1:14e0295caa214e10d872f8f76188556bbbc0ee6bc8562a7ef626d1a4a3447564",
+        "source_fact:v1:243f8b34b69a130964699ed25ed713526bddbff32bcf30b19a16891338774a0c",
+        "source_fact:v1:51026b753ba5e484b988b9cbebf026bb8daab226bc65cc4c5a58abc2b5411ddd",
+        "source_fact:v1:c3761d78684285427fb84b69f255a094cf896a5690ec681764b4afb6e61a966c",
+        "source_fact:v1:da01068349e2d4dc6c589867385fd15e55e56d2274b3629fd7317ebf1cb88629",
+        "source_fact:v1:edb952f372fda805fb1400fa16a6b109cddd6e5f850e22ee2ab8b6987cedaea1",
+        "source_fact:v1:f92ea9c41b3cea91192f27abcea5fd08133eca0289cb6507ec8289f15a24bf0f",
+        "source_fact:v1:fe50eeb40c4cfdbcf20c6c4cf45a265fd83867e431f3f3df0f28490443a1a4ee"
+      ],
+      "source_published_kst": "2026-10-14T05:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG엔솔 이어 삼성SDI도 3Q 흑자 유지 전망…\"K배터리, 실적 개선 본격화\"",
+      "telegram_core_fact": "LG에너지솔루션이 3분기 7560억원의 영업이익을 기록한 가운데, 삼성SDI도 3분기 흑자 흐름을 이어갈 전망이다.",
+      "title": "LG엔솔 이어 삼성SDI도 3Q 흑자 유지 전망…\"K배터리, 실적 개선 본격화\""
     },
     "source_fact:cf0d92c45ab1c21bcbd6ad81": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
@@ -501602,6 +503290,33 @@
       "source_title": "경유값 급등에 표심 흔들…러시아産 들여오는 트럼프",
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 국제 제재로 거래가 금지된 러시아산 경유(디젤)를 미국과 세계 시장에 대규모로 공급하겠다고 발표했다.",
       "title": "경유값 급등에 표심 흔들…러시아産 들여오는 트럼프"
+    },
+    "source_fact:d04756a410495fe0b5f90092": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.fnnews.com/news/202610140501337119",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "28bb4ba0a71716b76f9f5870f5971beef3f9f5c9a1e57dfdd1099a0c005092b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3282eb9201982f38a80e8932ed93437a56a0454d5a91ba95f39c1b7fe1efce2a",
+      "source_fact_keys": [
+        "source_fact:v1:14e0295caa214e10d872f8f76188556bbbc0ee6bc8562a7ef626d1a4a3447564",
+        "source_fact:v1:243f8b34b69a130964699ed25ed713526bddbff32bcf30b19a16891338774a0c",
+        "source_fact:v1:51026b753ba5e484b988b9cbebf026bb8daab226bc65cc4c5a58abc2b5411ddd",
+        "source_fact:v1:c3761d78684285427fb84b69f255a094cf896a5690ec681764b4afb6e61a966c",
+        "source_fact:v1:da01068349e2d4dc6c589867385fd15e55e56d2274b3629fd7317ebf1cb88629",
+        "source_fact:v1:edb952f372fda805fb1400fa16a6b109cddd6e5f850e22ee2ab8b6987cedaea1",
+        "source_fact:v1:f92ea9c41b3cea91192f27abcea5fd08133eca0289cb6507ec8289f15a24bf0f",
+        "source_fact:v1:fe50eeb40c4cfdbcf20c6c4cf45a265fd83867e431f3f3df0f28490443a1a4ee"
+      ],
+      "source_published_kst": "2026-10-14T05:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG엔솔 이어 삼성SDI도 3Q 흑자 유지 전망…\"K배터리, 실적 개선 본격화\"",
+      "telegram_core_fact": "LG에너지솔루션이 3분기 7560억원의 영업이익을 기록한 가운데, 삼성SDI도 3분기 흑자 흐름을 이어갈 전망이다.",
+      "title": "LG엔솔 이어 삼성SDI도 3Q 흑자 유지 전망…\"K배터리, 실적 개선 본격화\""
     },
     "source_fact:d0489de4a74dcda0489b1260": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
@@ -503392,6 +505107,33 @@
       ],
       "source_published_kst": "2026-10-06T15:14+09:00",
       "title": "삼성전기, AI 서버용 MLCC 2900억 수주 ... 올해만 6번째 장기공급계약"
+    },
+    "source_fact:d1da7fbbe13dd16aea7e9b76": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.fnnews.com/news/202610140501337119",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "28bb4ba0a71716b76f9f5870f5971beef3f9f5c9a1e57dfdd1099a0c005092b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3282eb9201982f38a80e8932ed93437a56a0454d5a91ba95f39c1b7fe1efce2a",
+      "source_fact_keys": [
+        "source_fact:v1:14e0295caa214e10d872f8f76188556bbbc0ee6bc8562a7ef626d1a4a3447564",
+        "source_fact:v1:243f8b34b69a130964699ed25ed713526bddbff32bcf30b19a16891338774a0c",
+        "source_fact:v1:51026b753ba5e484b988b9cbebf026bb8daab226bc65cc4c5a58abc2b5411ddd",
+        "source_fact:v1:c3761d78684285427fb84b69f255a094cf896a5690ec681764b4afb6e61a966c",
+        "source_fact:v1:da01068349e2d4dc6c589867385fd15e55e56d2274b3629fd7317ebf1cb88629",
+        "source_fact:v1:edb952f372fda805fb1400fa16a6b109cddd6e5f850e22ee2ab8b6987cedaea1",
+        "source_fact:v1:f92ea9c41b3cea91192f27abcea5fd08133eca0289cb6507ec8289f15a24bf0f",
+        "source_fact:v1:fe50eeb40c4cfdbcf20c6c4cf45a265fd83867e431f3f3df0f28490443a1a4ee"
+      ],
+      "source_published_kst": "2026-10-14T05:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG엔솔 이어 삼성SDI도 3Q 흑자 유지 전망…\"K배터리, 실적 개선 본격화\"",
+      "telegram_core_fact": "LG에너지솔루션이 3분기 7560억원의 영업이익을 기록한 가운데, 삼성SDI도 3분기 흑자 흐름을 이어갈 전망이다.",
+      "title": "LG엔솔 이어 삼성SDI도 3Q 흑자 유지 전망…\"K배터리, 실적 개선 본격화\""
     },
     "source_fact:d1daa0837a5b14337ea1e828": {
       "first_seen_kst": "2026-10-08T21:47:01+09:00",
@@ -516196,6 +517938,39 @@
       "telegram_core_fact": "실제 웰크론한텍 중국법인은 현지 주요 리튬이온배터리 분리막 생산시설을 대상으로 총 4건의 에너지 설비 프로젝트를 따내며 올해 3분기 누적 수주액 242억원을 달성했다.",
       "title": "폐배터리서 리튬 캔다…웰크론한텍, ‘이차전지 자원회수’ 사업 확장"
     },
+    "source_fact:dd1f032e4c56cbe297251269": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003824797",
+      "source": "뉴시스",
+      "source_body_digest": "ab7ae5925d01c8561ebe5903dbb38dead02ba1d446d8119181ab173cd5734136",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ca56bf89709b369d91787c7856af6f350ad9a7c3a1fd4c7150443c9cbe0c7d9",
+      "source_fact_keys": [
+        "source_fact:v1:114618dd059c47e0ea4631890865a6b19d607f807004358f637eb5e85a7707a0",
+        "source_fact:v1:1a0ce8acd793526b10ab2e2c79427be9047428fac85249359f69de8d9a5b67a1",
+        "source_fact:v1:434b8362e10390744c281098223003cc711c25d9117c1488d53f55f052e52dc9",
+        "source_fact:v1:68ce7600d4541e2d48b654f9decf314f308b44d8870d793382f618eb01db74c2",
+        "source_fact:v1:70baa040664b3488b0b61a13fb7f4128c95ee57b844ecf203f6f6949d1bf2c6c",
+        "source_fact:v1:7273ba3e6da06a3feb990160455a9128cf462c13cc84d18505eea40630d6e14f",
+        "source_fact:v1:94b9e8544d9b768702068bcfb5549b508efdadcf945362880c4dc319d8a0ce25",
+        "source_fact:v1:9a4c52995b08a2a0c4faa3228c58e31fee4a3b6615dceaac5400b67a814d9827",
+        "source_fact:v1:9ca237c1752492a5d0490a703bfc75e664f867ff59c4ca9e7a87366ad2e7519a",
+        "source_fact:v1:b24a3bdb777b7f7e9366ccaee624e56e3632c7733255ba05e4752dd1ed623fbc",
+        "source_fact:v1:be609a50afa67105efd2492b06b0f864c49be54c108352256deaacdccd898786",
+        "source_fact:v1:c718c10ad15962949a24c3cc842a412a71d63fb735f9b99ee790614950f3886f",
+        "source_fact:v1:ec89804dc0ee893f314f0db1e47907aaceaf40821d1d526e26060e895419bd70",
+        "source_fact:v1:ef98f9e354f942ff4e926c7c41d6c40c9eab49da18720cd5520c9ee24bba1d8b"
+      ],
+      "source_published_kst": "2026-10-14T07:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까",
+      "telegram_core_fact": "코스피200 야간선물은 1.7% 상승했다. 코스피가 '검은화요일'의 충격을 딛고 14일 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까"
+    },
     "source_fact:dd1f9267bf9a7448badd938e": {
       "first_seen_kst": "2026-10-08T01:26:16+09:00",
       "lanes": {
@@ -519427,6 +521202,33 @@
       ],
       "source_published_kst": "2026-10-06T08:10+09:00",
       "title": "씨엑스아이, 고수 보이차 폴리페놀 공급 사업 추진"
+    },
+    "source_fact:dfbb0ce4da052fa6fc2eee62": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.fnnews.com/news/202610140602364076",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "965d66249a2b607977cde70f255ca0f42596d6900c97bee0b71e5d46bcefd389",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eba20b6f63447430f14fd67d63a602c7fc11fec7100f4f2820d915ea226dd888",
+      "source_fact_keys": [
+        "source_fact:v1:040b05a506fe88992209842f2da72bfcce66421885896f5cce769875db24580c",
+        "source_fact:v1:275fc7f1b46504e21360a4e00e0017a7c26f6cee7ad0080bbf0724e3edd6c0fc",
+        "source_fact:v1:4054b45725eed6d8d16c8512b4215bd190d54bc2c628f175c568f42c9f32b2d2",
+        "source_fact:v1:4fb76f7158fdb48b64c378680b958d0271b988fe3f71a53e2463f8ed40fbf766",
+        "source_fact:v1:6fb96308e4b8c3a1db9efdf9af6f97f418b2f9a9621c603fe6c492a6e59ed765",
+        "source_fact:v1:998fc74e568125e63066ebb35a1a7a9d38899d4bcecd69fdd98d5fe8a92c1560",
+        "source_fact:v1:a09c084e02e7cf711749e3fc461b45c38d1d0b8fbb673aaf4639d8e5e5642e0f",
+        "source_fact:v1:f4c6f8ca7f2f1da0912865233b691c1a9c39f128c4bfa65fbe75357b8b6dd773"
+      ],
+      "source_published_kst": "2026-10-14T06:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "'50조 매도세' 받아낸 자사주 매입 '끝'…새 수급 변수는 실적·주주환원",
+      "telegram_core_fact": "삼성전자(005930)와 SK하이닉스(000660)의 총 55조 원 규모 자사주 매입이 마무리 국면에 접어들면서 증시 재반등을 위해 새로운 수급 주체의 부상이 필요한 시점이다.",
+      "title": "'50조 매도세' 받아낸 자사주 매입 '끝'…새 수급 변수는 실적·주주환원"
     },
     "source_fact:dfbc9bab9a638bc40a7b2aec": {
       "first_seen_kst": "2026-10-12T15:43:01+09:00",
@@ -568364,6 +570166,26 @@
       "telegram_core_fact": "이번 다카이치 총리의 입장은 트럼프 행정부가 ICC) 재판관 출신 나비 필레이가 노벨평화상 수상자로 발표된 9일(현지 시간) ICC에 대한 전면 제재를 발표한 직후 나왔다.",
       "title": "日다카이치, 美트럼프 행정부의 ICC 제재에 \"깊은 우려…ICC 지지\""
     },
+    "title:2b5d50c8071afdb7751adcf6": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.hankyung.com/article/2026101394951",
+      "source": "한국경제",
+      "source_body_digest": "384945a268d50d20d10c2ed96ed07b0ea4de2641e7fcc98eb8885f3d86c02f7d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ffefd9259f5a93a55e0fbdb31b2366e59bb141661fe8aeb1f554c200304ca5d0",
+      "source_fact_keys": [
+        "source_fact:v1:53b634006cda0e73a62f9659e71e3dffec0929693e68d67c30b2d5e4add71853"
+      ],
+      "source_published_kst": "2026-10-13T17:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "사우디 때리는 후티…브렌트유 106달러 돌파",
+      "telegram_core_fact": "12일(현지시간) 영국 런던 ICE선물거래소에서 12월 인도분 브렌트유는 전장보다 1.84% 오른 배럴당 106.65달러를 기록했다.",
+      "title": "사우디 때리는 후티…브렌트유 106달러 돌파"
+    },
     "title:2b620311c646040cd754c378": {
       "first_seen_kst": "2026-09-28T16:33:01+09:00",
       "lanes": {
@@ -594843,6 +596665,39 @@
       "source_published_kst": "2026-10-06T10:12+09:00",
       "title": "산업장관 “대미투자 국익 최우선”…초광역특구법 제정·1600조 지방투자"
     },
+    "title:8050b3be43a7102b1549c259": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003824797",
+      "source": "뉴시스",
+      "source_body_digest": "ab7ae5925d01c8561ebe5903dbb38dead02ba1d446d8119181ab173cd5734136",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ca56bf89709b369d91787c7856af6f350ad9a7c3a1fd4c7150443c9cbe0c7d9",
+      "source_fact_keys": [
+        "source_fact:v1:114618dd059c47e0ea4631890865a6b19d607f807004358f637eb5e85a7707a0",
+        "source_fact:v1:1a0ce8acd793526b10ab2e2c79427be9047428fac85249359f69de8d9a5b67a1",
+        "source_fact:v1:434b8362e10390744c281098223003cc711c25d9117c1488d53f55f052e52dc9",
+        "source_fact:v1:68ce7600d4541e2d48b654f9decf314f308b44d8870d793382f618eb01db74c2",
+        "source_fact:v1:70baa040664b3488b0b61a13fb7f4128c95ee57b844ecf203f6f6949d1bf2c6c",
+        "source_fact:v1:7273ba3e6da06a3feb990160455a9128cf462c13cc84d18505eea40630d6e14f",
+        "source_fact:v1:94b9e8544d9b768702068bcfb5549b508efdadcf945362880c4dc319d8a0ce25",
+        "source_fact:v1:9a4c52995b08a2a0c4faa3228c58e31fee4a3b6615dceaac5400b67a814d9827",
+        "source_fact:v1:9ca237c1752492a5d0490a703bfc75e664f867ff59c4ca9e7a87366ad2e7519a",
+        "source_fact:v1:b24a3bdb777b7f7e9366ccaee624e56e3632c7733255ba05e4752dd1ed623fbc",
+        "source_fact:v1:be609a50afa67105efd2492b06b0f864c49be54c108352256deaacdccd898786",
+        "source_fact:v1:c718c10ad15962949a24c3cc842a412a71d63fb735f9b99ee790614950f3886f",
+        "source_fact:v1:ec89804dc0ee893f314f0db1e47907aaceaf40821d1d526e26060e895419bd70",
+        "source_fact:v1:ef98f9e354f942ff4e926c7c41d6c40c9eab49da18720cd5520c9ee24bba1d8b"
+      ],
+      "source_published_kst": "2026-10-14T07:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까",
+      "telegram_core_fact": "코스피200 야간선물은 1.7% 상승했다. 코스피가 '검은화요일'의 충격을 딛고 14일 반등을 시도할 전망이다.",
+      "title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까"
+    },
     "title:8073bf6f9a2fb0bb433cf5c4": {
       "first_seen_kst": "2026-10-12T23:14:39+09:00",
       "lanes": {
@@ -618422,6 +620277,33 @@
       "telegram_core_fact": "영업정지까지 도입하는 정부의 반복담합 제재 강화 기조에 대해선 자진신고를 위축시킬 수 있다는 우려도 나오고 있어 그 사이 균형점을 찾는 것이 관건이 될 전망이다.",
       "title": "반복되는 정유업계 담합…'자진신고 유도냐, 엄벌이냐' 공정위 딜레마"
     },
+    "title:cd45453b5e4fa9a238a002f6": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.fnnews.com/news/202610140501337119",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "28bb4ba0a71716b76f9f5870f5971beef3f9f5c9a1e57dfdd1099a0c005092b2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3282eb9201982f38a80e8932ed93437a56a0454d5a91ba95f39c1b7fe1efce2a",
+      "source_fact_keys": [
+        "source_fact:v1:14e0295caa214e10d872f8f76188556bbbc0ee6bc8562a7ef626d1a4a3447564",
+        "source_fact:v1:243f8b34b69a130964699ed25ed713526bddbff32bcf30b19a16891338774a0c",
+        "source_fact:v1:51026b753ba5e484b988b9cbebf026bb8daab226bc65cc4c5a58abc2b5411ddd",
+        "source_fact:v1:c3761d78684285427fb84b69f255a094cf896a5690ec681764b4afb6e61a966c",
+        "source_fact:v1:da01068349e2d4dc6c589867385fd15e55e56d2274b3629fd7317ebf1cb88629",
+        "source_fact:v1:edb952f372fda805fb1400fa16a6b109cddd6e5f850e22ee2ab8b6987cedaea1",
+        "source_fact:v1:f92ea9c41b3cea91192f27abcea5fd08133eca0289cb6507ec8289f15a24bf0f",
+        "source_fact:v1:fe50eeb40c4cfdbcf20c6c4cf45a265fd83867e431f3f3df0f28490443a1a4ee"
+      ],
+      "source_published_kst": "2026-10-14T05:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "LG엔솔 이어 삼성SDI도 3Q 흑자 유지 전망…\"K배터리, 실적 개선 본격화\"",
+      "telegram_core_fact": "LG에너지솔루션이 3분기 7560억원의 영업이익을 기록한 가운데, 삼성SDI도 3분기 흑자 흐름을 이어갈 전망이다.",
+      "title": "LG엔솔 이어 삼성SDI도 3Q 흑자 유지 전망…\"K배터리, 실적 개선 본격화\""
+    },
     "title:cd7071a7d4b0e04702dd8be0": {
       "first_seen_kst": "2026-10-05T00:49:19+09:00",
       "lanes": {
@@ -619672,6 +621554,31 @@
       "source_title": "LG전자, 실적 충격 속 이틀 새 14% 하락…AI 냉각·로봇에 쏠린 시선",
       "telegram_core_fact": "LG전자의 3분기 잠정 영업이익은 7818억원으로 전년비 13.5% 증가했지만 시장 기대치 약 1조301억원을 24.1% 밑돌았다.",
       "title": "LG전자, 실적 충격 속 이틀 새 14% 하락…AI 냉각·로봇에 쏠린 시선"
+    },
+    "title:d1b225521ba71a5ce4f7aeac": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635115",
+      "source": "이투데이",
+      "source_body_digest": "beacb4d11b3415cb13c9552e27a8d3d1e20e413547c019769cc296349ba724cd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:abcb185eed5dcda1df180c2d32de89808cbc0637e3de402757967de90cd80cb7",
+      "source_fact_keys": [
+        "source_fact:v1:0886ef755ad9d15357b274b54dbcd3c8ba647699a401a229b5b2f42e50c0d319",
+        "source_fact:v1:5e5945d93f8d89aab180c9fe3bd62cfedf78e8c1d0cb3bd3f8e8001b72211457",
+        "source_fact:v1:6177b9c5173fb75f39f2af7ed19ffdf93c0c5a2c59050add85eb0f316c04df74",
+        "source_fact:v1:63b5d3c459f9631ead6650a65ae6a4f1179262dc7c1f55677d2dbd4f9ec15ce3",
+        "source_fact:v1:677345291537d3962d1ccc119a74a2726449a5d0f57e3a2c709bb6f86a5f20b2",
+        "source_fact:v1:8e4048a8ebdcb75b1e60d81d92605d90003733577706c56cf12c6d8a51e008a7"
+      ],
+      "source_published_kst": "2026-10-14T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "한경협 \"주식 5% 공시로는 부족…숨은 지분도 공개해야\"",
+      "telegram_core_fact": "보고서는 현재 5%인 주식 보유 공시 기준을 낮추는 방안을 검토하고, 파생상품을 통해 실질적으로 확보한 지분도 파악할 수 있도록 제도를 개선할 것을 제안했다. 현행 자본시장법에 따르면 상장기업 주식을 5% 이상 보유한 투자자는 보유 목적과 지분 등을 금융당국에 보고해야 한다.",
+      "title": "한경협 \"주식 5% 공시로는 부족…숨은 지분도 공개해야\""
     },
     "title:d1bc06368fa2d7edaf4b64ec": {
       "first_seen_kst": "2026-10-08T20:58:15+09:00",
@@ -627495,6 +629402,27 @@
       "source_event_identity": "",
       "title": "트럼프 특사·푸틴, 종전 협상서 '러 석유업체 빅딜' 논의"
     },
+    "title:ea9fed3f49a5d03c9ef81f8c": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635392",
+      "source": "이투데이",
+      "source_body_digest": "10d18fef49a410fdceb68bd6e3e8d088c1e6e7c429465ba69ca1bf285a0d4e6f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ef3cdb6ec85b627f052763eb61d396a5f69676039311f4857b3d47352d0a6a94",
+      "source_fact_keys": [
+        "source_fact:v1:7665ac3e8fce8c2d6022e3d4aee0dfade83946b199f88fba09298f630fb6f699",
+        "source_fact:v1:d48f063c208d58ea23b9131627e2587a4c06598e05613ad2c462cf33272db677"
+      ],
+      "source_published_kst": "2026-10-14T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "농지조사·중국산 드론 논란…온라인 장터 6822억 이상거래도 도마 [국감]",
+      "telegram_core_fact": "국감에서는 거래의 실질을 확인하는 절차와 운송비 등 지원금 지급이 적절했는지, 온라인시장 확대가 실제 유통비 절감으로 이어졌는지 등을 살펴볼 것으로 보인다.",
+      "title": "농지조사·중국산 드론 논란…온라인 장터 6822억 이상거래도 도마 [국감]"
+    },
     "title:eaa7e6820224cd5f53ba8433": {
       "first_seen_kst": "2026-10-01T16:31:12+09:00",
       "lanes": {
@@ -628819,6 +630747,33 @@
       "source_title": "씨이랩, AI 데이터센터 인프라 컨퍼런스 개최…기업 고객 확대 추진",
       "telegram_core_fact": "인공지능(AI) 인프라 소프트웨어 전문기업 씨이랩(189330)이 기업의 AI 데이터센터(AIDC) 전환을 지원하기 위한 컨퍼런스를 개최하고 기업 고객 확대에 나섰다.",
       "title": "씨이랩, AI 데이터센터 인프라 컨퍼런스 개최…기업 고객 확대 추진"
+    },
+    "title:ef8afbafe3a0cfbdf6bf354b": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.fnnews.com/news/202610140602364076",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "965d66249a2b607977cde70f255ca0f42596d6900c97bee0b71e5d46bcefd389",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:eba20b6f63447430f14fd67d63a602c7fc11fec7100f4f2820d915ea226dd888",
+      "source_fact_keys": [
+        "source_fact:v1:040b05a506fe88992209842f2da72bfcce66421885896f5cce769875db24580c",
+        "source_fact:v1:275fc7f1b46504e21360a4e00e0017a7c26f6cee7ad0080bbf0724e3edd6c0fc",
+        "source_fact:v1:4054b45725eed6d8d16c8512b4215bd190d54bc2c628f175c568f42c9f32b2d2",
+        "source_fact:v1:4fb76f7158fdb48b64c378680b958d0271b988fe3f71a53e2463f8ed40fbf766",
+        "source_fact:v1:6fb96308e4b8c3a1db9efdf9af6f97f418b2f9a9621c603fe6c492a6e59ed765",
+        "source_fact:v1:998fc74e568125e63066ebb35a1a7a9d38899d4bcecd69fdd98d5fe8a92c1560",
+        "source_fact:v1:a09c084e02e7cf711749e3fc461b45c38d1d0b8fbb673aaf4639d8e5e5642e0f",
+        "source_fact:v1:f4c6f8ca7f2f1da0912865233b691c1a9c39f128c4bfa65fbe75357b8b6dd773"
+      ],
+      "source_published_kst": "2026-10-14T06:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "'50조 매도세' 받아낸 자사주 매입 '끝'…새 수급 변수는 실적·주주환원",
+      "telegram_core_fact": "삼성전자(005930)와 SK하이닉스(000660)의 총 55조 원 규모 자사주 매입이 마무리 국면에 접어들면서 증시 재반등을 위해 새로운 수급 주체의 부상이 필요한 시점이다.",
+      "title": "'50조 매도세' 받아낸 자사주 매입 '끝'…새 수급 변수는 실적·주주환원"
     },
     "title:ef8df5fbe33de59e2dab0d76": {
       "first_seen_kst": "2026-10-04T00:19:00+09:00",
@@ -630604,6 +632559,24 @@
       ],
       "source_published_kst": "2026-10-06T19:18+09:00",
       "title": "“발전공기업 최초”…남부발전, 한국형 녹색분류체계 기반 녹색여신 약정 체결"
+    },
+    "title:f56e624233a60bb1c88ebf05": {
+      "first_seen_kst": "2026-10-14T07:46:13+09:00",
+      "lanes": {
+        "live": "2026-10-14T07:46:13+09:00"
+      },
+      "last_seen_kst": "2026-10-14T07:46:13+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12175046",
+      "source": "매일경제",
+      "source_body_digest": "525d05f5a40c196c3723362ba0c5f662b0084143add7ead5a518b6b67729aed6",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-14T05:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "TORM, 올해 EBITDA 가이던스 13억~15억 달러 상향",
+      "telegram_core_fact": "월가 증권사들은 TORM의 2026년 매출액을 15억2600만 달러로 예상하며, 이는 전년 대비 13.92% 늘어난 수준이다.",
+      "title": "TORM, 올해 EBITDA 가이던스 13억~15억 달러 상향"
     },
     "title:f57df72ce532a7800535614d": {
       "first_seen_kst": "2026-10-01T16:14:13+09:00",
@@ -633969,5 +635942,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-14T07:18:46+09:00"
+  "updated_at_kst": "2026-10-14T07:46:13+09:00"
 }
