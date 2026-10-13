@@ -123,6 +123,23 @@ class FranceCreditCarryOverlayTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             watch.parse_aft_text_recovery(sample)
 
+    def test_existing_market_alert_gets_carry_context_without_new_event(self):
+        pending = {"last_values": {"fr_mkt": 4.88, "de_mkt": 3.45},
+                   "last_source_dates": {"fr_mkt": "2026-10-13", "de_mkt": "2026-10-13"}, "stale": []}
+        original = "🔴 [유럽 국채금리 경보]\n■ 시장 영향\n• 주식 영향"
+        changed = watch.add_market_carry_context(original, pending, dt.date(2026, 10, 14))
+        self.assertIn("■ 캐리·레버리지 전염 확인", changed)
+        self.assertIn("직접 영향을 줬는지는 미확인", changed)
+        self.assertEqual(watch.add_market_carry_context(changed, pending, dt.date(2026, 10, 14)), changed)
+
+    def test_context_not_added_to_low_or_uncomparable_spreads(self):
+        original = "■ 시장 영향"
+        empty = {"last_values": {}, "last_source_dates": {}, "stale": []}
+        self.assertEqual(watch.add_market_carry_context(original, empty, dt.date(2026, 10, 14)), original)
+        pending = {"last_values": {"fr_mkt": 4.60, "de_mkt": 3.50},
+                   "last_source_dates": {"fr_mkt": "2026-10-13", "de_mkt": "2026-10-13"}, "stale": []}
+        self.assertEqual(watch.add_market_carry_context(original, pending, dt.date(2026, 10, 14)), original)
+
     def test_official_fetch_fallback(self):
         def fetch(url):
             if "/en/" in url:
