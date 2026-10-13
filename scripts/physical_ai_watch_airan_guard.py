@@ -601,8 +601,22 @@ EV_ESS_OLD_NEWS = re.compile(
 STOCK_ONLY_REACTION = re.compile(
     r'^\s*(?:\[(?:특징주|급등주|급락주|증시)\]|【(?:特征股|股价)】)|'
     r'(?:주가|종목|주식).{0,30}(?:강세|상승|급등|약세|하락|급락)|'
-    r'(?:강세|상승|급등|약세|하락|급락).{0,30}(?:주가|주식)',
+    r'(?:강세|상승|급등|약세|하락|급락).{0,30}(?:주가|주식)|'
+    # 2026-10-13 real failure: "24만4500원…양산 기대 속 4.86% 조정"
+    # was scored as a supply-chain alert with no new order or shipment.
+    r'^\s*\d+(?:,\d{3})*(?:만\d{1,4})?원.{0,100}'
+    r'\d+(?:\.\d+)?\s*%\s*(?:조정|하락|상승|급등|반등|급락|등락)|'
+    r'^\s*\d+(?:\.\d+)?\s*%\s*(?:조정|하락|상승|급등|반등|급락|등락)',
     re.I,
+)
+EDITORIAL_ONLY_HEADLINE = re.compile(
+    r'^\s*\[\s*(?:심층\s*분석|기획\s*진단|증시\s*진단)\s*\]', re.I
+)
+EDITORIAL_MATERIAL_EVENT = re.compile(
+    r'신규\s*(?:수주|계약|투자|실증\s*승인)|'
+    r'공급\s*계약\s*체결|고객\s*계약\s*확정|'
+    r'실제\s*(?:배치|출하)\s*(?:개시|완료)|'
+    r'양산\s*(?:개시|시작)|공식\s*실적\s*발표', re.I
 )
 
 
@@ -615,6 +629,8 @@ def _is_stock_reaction_only(item: dict) -> bool:
     # not turn a price reaction into a new order or earnings release.
     if source in base.OFFICIAL_OR_PRIMARY:
         return False
+    if EDITORIAL_ONLY_HEADLINE.search(headline) and not EDITORIAL_MATERIAL_EVENT.search(headline):
+        return True  # Commentary is not a dated commercial/operational milestone.
     return bool(STOCK_ONLY_REACTION.search(headline))
 
 
@@ -925,24 +941,27 @@ def _robros_pilot_stage(text: str, source: str = '') -> str:
 
 
 def _robros_pilot_recovery() -> list[dict]:
-    # First media reports are 2026-10-13 15:00 KST; public government
-    # original attached notice may not yet be accessible from search.
+    # Industrial Ministry's 2026-10-13 14-page original press release
+    # was subsequently supplied by the user and checked against Yonhap.
+    # Its 15:00 embargo is NOT proof of site deployment or revenue.
     if base.NOW.astimezone(base.KST).date() > dt.date(2026,10,20):
         return []
     return [{
         'title': '산업통상부 규제특례 승인: 로브로스 휴머노이드 20대 제조·물류 현장 실증',
         'link': 'https://www.fnnews.com/news/202610131103564249',
         'description': (
-            '2026-10-13 15:00 KST 산업통상부 제6차 산업융합 규제특례심의위원회 '
-            '승인 사실을 파이낸셜뉴스·이투데이·머니투데이 발표 보도로 대조. '
+            '2026-10-13 15:00 KST 산업통상부 보도자료 보도시점. '
+            '산업통상부 14쪽 공식 보도자료 2~3·9쪽을 사용자가 첨부하여 '
+            '공식 실증특례 승인과 위험성평가·위험 감소 조치 전제 조건을 직접 확인. '
+            '파이낸셜뉴스(15:00)·연합뉴스(15:55) 보도와 교차 검증. '
             '로브로스 휴머노이드 20대는 네패스 반도체 후공정 부품 세척, '
             '성우하이텍 자동차 차체부품 안착, HD현대삼호 조선 기자재 적재, '
             '딜리버리랩 냉장 물류포장체 적재 등에 실증 투입하는 계획이다. '
             '기존 산업용 로봇 안전펜스 규칙 때문에 어려웠던 사람과 로봇 '
             '혼재 공정의 지정 실증특례를 승인한 것이며 '
             '전국 공장에 대한 전면 규제 폐지나 무조건 무인 운전 허가가 아니다. '
-            '정부 당일 공식 보도자료·개별 승인공고 원문을 직접 확보하지 못했으므로 '
-            '보도에 명시된 심의 결과 기준으로 등급을 표시한다. '
+            '정부 공식 보도자료는 직접 확인했지만 개별 허가증의 추가 부가조건 '
+            '전문·실제 현장 운영일자·고객별 납품계약은 확인되지 않았다. '
             '이번 20대의 실제 현장 설치대수·계약금액·유상 납품 여부·'
             '고객별 배정수량·실증 시작일과 마감일·안전관리 조건·'
             '정부 신규 배정 예산은 미공개다. '
@@ -1366,7 +1385,10 @@ def meaning(cat: str) -> str:
             '성우하이텍 차체부품 안착, HD현대삼호 조선 기자재 적재, '
             '딜리버리랩 냉장 물류 적재에 실증 투입하도록 허용했습니다. '
             '이번 20대는 설치·납품 완료나 확정 구매매출이 아니며 '
-            '고객별 대수·단가·계약액·새 정부예산도 미공개입니다. '
+            '고객별 대수·실제 납품단가·계약액·새 정부예산도 미공개입니다. '
+            '2025년 IGRIS-C 회사 공개 사전예약가 1대 약 1억5천만원을 '
+            '20대에 일률 적용한 30억원은 참고 계산일 뿐 '
+            '이번 계약액·정부 예산·확정 매출이 아닙니다. '
             '로브로스 8/19 유상 실증 공급 9대와의 겹침도 불명이므로 '
             '9+20을 판매·설치 합계로 표시하지 않습니다. '
             '핵심 후속은 실제 설치→안전펜스 대안 검증→'
@@ -1710,9 +1732,9 @@ def verification(item: dict, group: str, text: str) -> str:
         stage = _robros_pilot_stage(text,item.get('source') or '')
         if stage == 'approved_pilot_report':
             return (
-                '10/13 파이낸셜뉴스·이투데이·머니투데이 산업통상부 '
-                '심의결과 보도 대조 · 개별 정부 승인공고 원문 직접 열람 미완료 · '
-                '20대 현장 배치 계획, 실제 납품·계약매출 아님'
+                '10/13 산업통상부 14쪽 공식 보도자료 2~3·9쪽 확인 · '
+                '연합뉴스·파이낸셜뉴스 교차검증 · 노동부 위험성평가·위험 감소조치 전제 · '
+                '개별 허가증 전문은 미확인 · 20대 계획, 실제 납품·계약매출 아님'
             )
         if stage in {'official_site_deployment','official_site_kpi','official_site_contract','official_pilot_reversal'}:
             return '로브로스·고객사·규제당국 1차자료 확인 단계 · 계획·실적 별도'
