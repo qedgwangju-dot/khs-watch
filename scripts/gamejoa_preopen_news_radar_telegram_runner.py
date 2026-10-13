@@ -314,12 +314,16 @@ def migrate_seen_verified_event_aliases(state: dict) -> None:
         published = parse_seen_time(proof.get("source_published_kst"))
         if not (
             (identity.startswith("source_event:v1:us:equity_close:")
-             or re.fullmatch(r"source_event:v2:(?:license|odd_lot_rule|merger_agreement|broker_earnings|commercial_order|commercial_delivery|scoped_anonymous_order|construction_order|regulatory_package|industrial_product_milestone|legislative_action|capacity_supply_contract|industrial_adoption|industrial_development_mou|site_development_mou|project_safety_assessment|conditional_remittance|listing_suspension_ruling|capital_participation|research_award|analyst_target|industrial_route_study|conditional_index_outlook|intraday_equity|cumulative_foreign_sales|macro_model_report|issuer_quarterly_earnings):[0-9a-f]{64}", identity)) and published
+             or re.fullmatch(r"source_event:v2:(?:license|odd_lot_rule|merger_agreement|broker_earnings|commercial_order|commercial_delivery|named_supply_order|dated_public_supply_package|scoped_anonymous_order|construction_order|regulatory_package|industrial_product_milestone|legislative_action|industrial_development_mou|capacity_supply_contract|industrial_adoption|site_development_mou|project_safety_assessment|conditional_remittance|listing_suspension_ruling|capital_participation|research_award|analyst_target|industrial_route_study|conditional_index_outlook|intraday_equity|cumulative_foreign_sales|macro_model_report|issuer_quarterly_earnings):[0-9a-f]{64}", identity)) and published
             and re.fullmatch(r"[0-9a-f]{64}", str(proof.get("source_body_sha256") or ""))
             and (not proof.get('source_body_digest') or re.fullmatch(r'[0-9a-f]{64}', str(proof['source_body_digest'])))
             and proof.get("run_id") and proof.get("message_id")
         ):
             raise ValueError("Invalid verified event-alias evidence")
+        if proof.get('source_supply_terms'):
+            terms_digest = hashlib.sha256(json.dumps(proof['source_supply_terms'], ensure_ascii=False, sort_keys=True).encode('utf-8')).hexdigest()
+            if identity != f'source_event:v2:named_supply_order:{terms_digest}':
+                raise ValueError('Verified supply terms do not match the event identity')
         # A discovery-side equivalence references another article's receipt;
         # it cannot create sent history for the still-unsent source.
         if 'receipt_source' in proof:
@@ -338,6 +342,8 @@ def migrate_seen_verified_event_aliases(state: dict) -> None:
             if existing_identity and existing_identity != identity:
                 continue
             entry["source_event_identity"] = identity
+            if proof.get('source_supply_terms'):
+                entry['source_supply_terms'] = proof['source_supply_terms']
             entry.setdefault("source_published_kst", proof["source_published_kst"])
             seen.setdefault(f"event:{digest_seen(identity)}", {
                 **entry, "source_event_identity": identity,
@@ -445,6 +451,11 @@ def filter_previously_seen_alerts(
         fact_identity = market_materiality.verified_source_fact_identity(canonical)
         body_digest = market_materiality.verified_source_body_digest(canonical)
         verified_fact_keys = market_materiality.verified_source_fact_keys(canonical)
+        supply_terms = market_materiality.named_supply_order_observation(
+            str(canonical.get('source_title') or canonical.get('news') or ''),
+            str(canonical.get('source_body') or '') if canonical.get('body_verified') else '',
+            str(canonical.get('published') or ''),
+        )
         fact_keys = [f"source_fact:{digest_seen(key)}" for key in verified_fact_keys]
         candidate_core = normalized_telegram_core(canonical)
         # A sourced change of amount/stage may keep the same title or URL.
@@ -463,6 +474,10 @@ def filter_previously_seen_alerts(
             # A rule upgrade is not a new event, even when fact kinds change.
             matching_entries = [entry for entry in coarse_entries
                                 if entry.get("source_body_digest") == body_digest]
+        if not matching_entries and identity.startswith('source_event:v2:named_supply_order:') and supply_terms:
+            matching_entries = [entry for entry in recent_seen_event_entries(seen, now, 'all')
+                                if str(entry.get('source_event_identity') or '').startswith('source_event:v2:named_supply_order:')
+                                and market_materiality.same_named_supply_order(supply_terms, entry.get('source_supply_terms') or {})]
         if not identity and fact_keys and not matching_entries:
             # A shorter syndication may omit a previously sent secondary fact.
             # An added fact must remain fresh; matching just one is insufficient.
@@ -593,6 +608,13 @@ def record_seen_alerts(alerts: list[dict], now) -> None:
                 "source": alert.get("publisher") or alert.get("source") or "",
                 "link": alert.get("link") or "",
                 "source_event_identity": market_materiality.source_event_identity(alert),
+                "source_supply_terms": {
+                    field: value for field, value in market_materiality.named_supply_order_observation(
+                        str(alert.get('source_title') or alert.get('news') or ''),
+                        str(alert.get('source_body') or '') if alert.get('body_verified') else '',
+                        str(alert.get('published') or ''),
+                    ).items() if field != 'source_excerpt'
+                },
                 "source_fact_identity": market_materiality.verified_source_fact_identity(canonical_alert_for_seen(alert)),
                 "source_fact_keys": market_materiality.verified_source_fact_keys(canonical_alert_for_seen(alert)),
                 "source_body_digest": market_materiality.verified_source_body_digest(canonical_alert_for_seen(alert)),

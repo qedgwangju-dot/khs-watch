@@ -19,6 +19,13 @@ Every defect or requested change must follow this sequence:
 6. **실제 송출 상태**: inspect the runtime delivery result separately from the
    workflow conclusion.
 
+Pull requests touching radar source, selection, summary, event keys or fixtures
+run `.github/workflows/gamejoa-radar-quality-ci.yml` without Telegram credentials
+or sends. Full production article bodies are replayed locally from acknowledged
+artifacts; public CI stores an independently phrased, full-inventory regression
+fixture plus original hashes, not republished articles. CI success and a local
+replay remain separate from the main workflow's real Telegram acknowledgement.
+
 ## Completion Labels
 
 - `반영 완료` means the intended code or contract is committed and pushed.
@@ -54,6 +61,23 @@ Every defect or requested change must follow this sequence:
   into a risk/company section because of incidental words. Oversized bundles
   split at article/field boundaries with all source content retained.
 - Headline, summary, source URL, and source body must describe the same event.
+- Ordinary supply orders do not need an uppercase product acronym to dedupe.
+  Bind the disclosed issuer, named customer, product, announcement date, stage,
+  delivery period/duration and exact same-currency amount. A reprint may omit the
+  original currency while retaining the exact reported KRW amount; conflicting
+  amounts, changed customers, periods, stages or additional funded execution
+  remain new. Never compare approximate converted currency values as exact terms.
+  Receipt-backed aliases may upgrade matching acknowledged history, but cannot
+  create history for unsent candidates or overwrite incompatible event evidence.
+- A named signed housing cooperation agreement and a dated annual harvest package
+  use their participating/supply populations and terms across publishers. Changed
+  year, volume, support amount or actual execution is not a duplicate theme.
+- Customer coupon promotions, unpriced single-bank/hospital service installations,
+  municipal startup roundups, conference agenda/roadmap announcements without
+  measured milestones, and product-application marketing do not fill live slots.
+  Preserve priced/scaled business execution, actual technical validation and new
+  market-wide rate, energy, trade and capital-flow observations. Do not require a
+  Korean issuer or an already observed stock-price response for a global catalyst.
 - The compact core must retain the headline's primary actor, action or result,
   period, and material amount or price direction when the source reports them.
   A background growth rate, peer-company comparison, intro lead, or generic

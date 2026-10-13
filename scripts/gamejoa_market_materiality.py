@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 128
+VERSION = 129
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -2724,6 +2724,141 @@ def commercial_order_terms(title: str, body: str, published: str = "") -> dict[s
     return terms
 
 
+def named_supply_order_observation(title: str, body: str, published: str = "") -> dict:
+    """Bind ordinary product orders to disclosed parties, date and contract terms."""
+    if (not re.search(r"수주|공급|납품|계약", title)
+            or re.search(r"납품\s*(?:시작|완료)|출하\s*(?:시작|완료)|협상|검토|논의|주가", title)
+            or not re.match(r"20\d{2}-\d{2}-\d{2}", published)):
+        return {}
+    rows = source_sentences(source_reported_body(body))
+    party = r"[A-Za-z0-9가-힣&·.-]{2,30}"
+    for row in rows[:12]:
+        if PAST_ACTION.search(row) or not re.search(r"공급\s*계약(?:을|를)?\s*(?:체결|수주)|공급\s*계약을\s*따냈", row):
+            continue
+        issuer_match = re.search(rf"(?P<issuer>{party}?)(?:\(\d{{6}}\))?(?:은|는|가|이)\s+", row)
+        if not issuer_match:
+            continue
+        issuer = issuer_match['issuer']
+        title_issuer = title.replace('LS일렉,', 'LS일렉트릭,')
+        if issuer not in title_issuer:
+            continue
+        tail = row[issuer_match.end():]
+        customer_match = re.search(rf"(?P<customer>{party})(?:와|과)\s+", tail)
+        if not customer_match:
+            customer_match = re.match(rf"(?P<customer>{party}?)(?:의\s+|\s+)", tail)
+        if not customer_match or customer_match['customer'] in {'글로벌', '미국', '기업', '고객사', '국내'}:
+            continue
+        customer = customer_match['customer']
+        product_tail = tail[customer_match.end():]
+        product_match = re.search(r"(?P<product>.*?)공급\s*계약", product_tail)
+        if not product_match:
+            continue
+        product = re.sub(SOURCE_MONEY, '', product_match['product'])
+        product = re.sub(r"\([^)]*\)|\b(?:총|약|규모의|규모)\b", ' ', product)
+        product = re.sub(r"\s+", ' ', product).strip(' ,:·')
+        if not 2 <= len(product) <= 80 or not re.search(r"[A-Za-z가-힣]{2}", product):
+            continue
+        related = [value for value in rows[:12] if not PAST_ACTION.search(value)
+                   and (issuer in value or customer in value)
+                   and re.search(r"공급|납품|계약", value)]
+        day = next((match for value in related
+                    if (match := re.search(r"(?<!\d)(\d{1,2})일\s*(?:공시했다|밝혔다)", value))), None)
+        if not day:
+            day = re.search(r"(?<!\d)(\d{1,2})일\s+", row)
+        if not day:
+            continue
+        try:
+            disclosure = dt.date(int(published[:4]), int(published[5:7]), int(day[1])).isoformat()
+        except ValueError:
+            continue
+        if disclosure > published[:10]:
+            continue
+        amounts = sorted({(match[2], korean_amount_value(match[1]))
+                          for match in re.finditer(SOURCE_MONEY, row)
+                          if korean_amount_value(match[1])})
+        duration = next((match[1] for value in related
+                         if (match := re.search(r"(?<!\d)(\d+)년간", value))), '')
+        timing = next((match for value in related if (match := re.search(
+            r"(20\d{2}년|내년)\s*(\d{1,2})(?:월)?\s*(?:부터|[~∼-])\s*(\d{1,2})월", value))), None)
+        delivery_period = ''
+        if timing:
+            year = int(published[:4]) + 1 if timing[1] == '내년' else int(timing[1][:4])
+            delivery_period = f"{year}-{int(timing[2]):02d}/{year}-{int(timing[3]):02d}"
+        quantities = sorted(set(re.findall(r"\d[\d,.]*\s*(?:만|천)?\s*(?:대|개|톤)\b", row)))
+        if not (amounts or duration or delivery_period or quantities):
+            continue
+        return {'issuer': issuer, 'customer': customer, 'product': canonical_source_fact(product),
+                'disclosure_date': disclosure, 'stage': 'signed', 'amounts': [list(value) for value in amounts],
+                'duration_years': duration, 'delivery_period': delivery_period, 'quantities': quantities,
+                'explicit_revision': bool(re.search(r"정정|계약\s*(?:변경|수정)|추가\s*수주", title)),
+                'additional_execution': additional_committed_execution(source_reported_body(body)),
+                'source_excerpt': row}
+    return {}
+
+
+def same_named_supply_order(left: dict, right: dict) -> bool:
+    """A reprint may omit a currency, but conflicting disclosed terms stay fresh."""
+    if not left or not right or left.get('explicit_revision') or right.get('explicit_revision'):
+        return False
+    required = ('issuer', 'customer', 'product', 'disclosure_date', 'stage')
+    if any(not left.get(key) or left.get(key) != right.get(key) for key in required):
+        return False
+    for key in ('duration_years', 'delivery_period', 'quantities', 'additional_execution'):
+        if left.get(key) != right.get(key):
+            return False
+    left_amounts, right_amounts = dict(left.get('amounts') or []), dict(right.get('amounts') or [])
+    if left_amounts or right_amounts:
+        shared = left_amounts.keys() & right_amounts.keys()
+        return bool(shared and all(left_amounts[key] == right_amounts[key] for key in shared))
+    return bool(left.get('duration_years') or left.get('delivery_period') or left.get('quantities'))
+
+
+def dated_public_supply_package(title: str, body: str, published: str) -> dict:
+    """Match a named signed housing agreement or annual harvest package, not its theme."""
+    if not re.match(r"20\d{2}-\d{2}-\d{2}", published):
+        return {}
+    source = source_reported_body(body)
+    number = r"\d[\d,.]*(?:[조억만천백십]\d*)*"
+    if (re.search(r"서울|오세훈", title) and re.search(r"착공|협약", title)
+            and not re.search(r"착공\s*완료|완공|착공식|착공했다고", title)
+            and re.search(r"주택공급\s*목표\s*달성\s*공동협력\s*협약", source)):
+        agreement = next((row for row in source_sentences(source)
+                          if '서울시' in row and re.search(r"협약.{0,30}체결", row)), '')
+        day = re.search(r"(?<!\d)(\d{1,2})일", agreement)
+        fields = {}
+        for label, pattern in (
+            ('associations', r"(\d+)개\s*정비사업\s*(?:조합|장)"),
+            ('builders', r"(\d+)개\s*시공사"),
+            ('boroughs', r"(\d+)개\s*자치구"),
+            ('remaining_units', rf"({number})\s*(?:가구|호)(?:의\s*착공이\s*예정|가\s*연내\s*첫\s*삽)"),
+        ):
+            match = re.search(pattern, source)
+            if not match:
+                return {}
+            fields[label] = korean_amount_value(match[1])
+        if day and re.search(r"올해.{0,20}3만\s*(?:가구|호)|연내.{0,20}3만\s*(?:가구|호)", source):
+            return {'actor': '서울시', 'package': '주택공급목표달성공동협력협약',
+                    'disclosure_date': published[:8] + day[1].zfill(2), 'year': published[:4],
+                    'stage': 'signed_cooperation_not_completed_construction', **fields}
+    if re.search(r"쌀", title) and re.search(r"생산|수급|초과", title):
+        package = re.search(r"(20\d{2})년산\s*쌀\s*수급\s*안정\s*대책", source)
+        day = re.search(r"(?:농림축산식품부|농식품부)[^\n.!?]{0,200}?(\d{1,2})일\s*밝혔다", source)
+        production = re.search(rf"(?:예상\s*생산량|생산량이)\s*(?:은|약|\s)*({number})\s*(?:t|톤)", source)
+        surplus = re.search(rf"(?:초과생산량[^.!?\n]{{0,30}}?|수요량을\s*약\s*)({number})\s*(?:t|톤)", source)
+        purchase = re.search(rf"공공\s*비축미\s*({number})\s*(?:t|톤)|({number})\s*(?:t|톤)을\s*공공\s*비축미", source)
+        support = re.search(rf"(?:총\s*)?({number})\s*원(?:을)?\s*지원", source)
+        advance = re.search(rf"중간\s*정산금[^.!?\n]{{0,50}}?({number})\s*원(?:으로|을)", source)
+        if all((package, day, production, surplus, purchase, support, advance)):
+            return {'actor': '농림축산식품부', 'package': '쌀수급안정대책', 'year': package[1],
+                    'disclosure_date': published[:8] + day[1].zfill(2), 'stage': 'announced_harvest_package',
+                    'production_tonnes': korean_amount_value(production[1]),
+                    'surplus_tonnes': korean_amount_value(surplus[1]),
+                    'public_purchase_tonnes': korean_amount_value(purchase[1] or purchase[2]),
+                    'support_krw': korean_amount_value(support[1]), 'advance_krw_per_40kg': korean_amount_value(advance[1]),
+                    'explicit_revision': bool(re.search(r"대책\s*(?:변경|수정)|추가\s*대책|최종\s*생산량", title))}
+    return {}
+
+
 def anonymous_annual_mlcc_terms(title: str, body: str, published: str) -> dict:
     """Anonymous contracts require a dated filing, annual ordinal and full term."""
     if (focus_kind(title) != 'commercial_order' or 'MLCC' not in title
@@ -3027,6 +3162,10 @@ def source_event_identity(alert: dict) -> str:
     if quarterly_earnings:
         digest = hashlib.sha256(json.dumps(quarterly_earnings, ensure_ascii=False, sort_keys=True).encode('utf-8')).hexdigest()
         return f'source_event:v2:issuer_quarterly_earnings:{digest}'
+    public_package = dated_public_supply_package(title, body, str(alert.get('published') or ''))
+    if public_package:
+        digest = hashlib.sha256(json.dumps(public_package, ensure_ascii=False, sort_keys=True).encode('utf-8')).hexdigest()
+        return f'source_event:v2:dated_public_supply_package:{digest}'
     annual_contract = anonymous_annual_mlcc_terms(title, body, str(alert.get('published') or ''))
     if annual_contract:
         for proof in verified_event_aliases():
@@ -3226,6 +3365,11 @@ def source_event_identity(alert: dict) -> str:
             response = focus_kind(title) == "project_response" and DENIAL_SOURCE.search(body)
             stage = "denial" if DENIAL_HEADLINE.search(title) or response else "signed" if re.search(r"서명|계약\s*체결|signed", title, re.I) else "statement"
             return f"source_event:v1:trump:korea:us_oil_investment:{stage}:usd={dollars:.12g}"
+    named_supply = named_supply_order_observation(title, body, str(alert.get('published') or ''))
+    if named_supply:
+        terms = {key: value for key, value in named_supply.items() if key != 'source_excerpt'}
+        digest = hashlib.sha256(json.dumps(terms, ensure_ascii=False, sort_keys=True).encode('utf-8')).hexdigest()
+        return f'source_event:v2:named_supply_order:{digest}'
     return ""
 
 
@@ -3863,6 +4007,112 @@ def openai_revenue_market_repricing_observation(title: str, body: str) -> dict[s
     }
 
 
+def nonmaterial_publicity_reason(title: str, body: str, firm_event: bool, published: str) -> str:
+    """Exclude foreground notices whose economic words describe promotion or routine service."""
+    rows = source_sentences(source_article_body(source_reported_body(body)))
+    lead = ' '.join(rows[:6])
+    foreground = title + ' ' + lead
+    licensed_or_validated = bool(
+        re.search(r"기술이전|임상|검증|실증|인증", title)
+        and any(not PAST_ACTION.search(row) and not ASPIRATION.search(row) and (
+            re.search(r"기술이전\s*계약.{0,35}체결|임상\s*3상.{0,45}결과", row)
+            and (re.search(r"계약을\s*체결했다", row) or QUANTITY.search(row))
+        ) for row in rows[:12])
+    )
+    if (re.search(r"이벤트|프로모션|고객\s*행사", title)
+            and re.search(r"상품권|커피\s*쿠폰|커피쿠폰|경품|사은품|추첨|선착순", lead)
+            and not firm_event):
+        return 'customer_reward_promotion_not_aggregate_market_flow'
+    if (re.search(r"ETF|상장지수펀드", title, re.I) and re.search(r"신규\s*상장|새로\s*상장", title)
+            and not re.search(r"규제|예탁금|제도|인가|레버리지|공매도|순매수|순유입|자금\s*유입|거래대금", title)
+            and not any(re.search(r"실제\s*(?:순매수|순유입)|순유입액|첫날\s*거래대금|설정액.{0,25}돌파", row)
+                        and QUANTITY.search(row) for row in rows)):
+        return 'routine_etf_product_listing_without_market_flow'
+    if (re.search(r"미리보는.{0,20}(?:서밋|포럼|컨퍼런스)|(?:서밋|포럼).{0,25}(?:청사진|로드맵)", title)
+            and not firm_event):
+        return 'conference_agenda_preview_without_current_execution'
+    if (re.search(r"참가|참석|전시|선보", title)
+            and re.search(r"산업전|컨벤션|전시회|박람회|전시\s*부스", foreground)
+            and not firm_event and not licensed_or_validated):
+        return 'exhibition_attendance_without_current_business_execution'
+    if (re.search(r"적용\s*(?:분야\s*)?확대|소재\s*확대|솔루션.{0,35}공급\s*확대", title)
+            and re.search(r"포트폴리오|소재\s*솔루션|적용\s*분야|솔루션", lead)
+            and not firm_event
+            and not any(re.search(r"(?:고객|고객사|제조사).{0,30}(?:채택했다|도입했다)|"
+                                 r"(?:매출|출하량|수주잔고).{0,35}\d|검증\s*결과.{0,35}\d", row)
+                        for row in rows[:12])):
+        return 'product_application_marketing_without_customer_or_operating_scale'
+    if (re.search(r"핵심\s*역할\s*가능|협력\s*성과\s*기대|미래\s*청사진", title)
+            and re.search(r"얼라이언스\s*데이|포럼|서밋|행사|간담회", body)
+            and not firm_event):
+        return 'conference_aspiration_without_new_contract_or_validation'
+    if (re.search(r"연구소|연구원|공과대|대학교|KENTECH", foreground, re.I)
+            and re.search(r"실증\s*(?:나선다|착수|추진)|실증에\s*나선|현장\s*적용성.{0,25}검증하기", foreground)
+            and not firm_event
+            and not re.search(r"실증\s*결과|검증\s*완료|양산\s*시작|공급\s*계약", lead)):
+        return 'public_research_pilot_without_results_or_commercial_execution'
+    if re.search(r"공과대|대학교|KENTECH", foreground, re.I) and re.search(r"기술이전|기술사용", title + ' ' + lead):
+        fees = [Decimal(value) for row in rows[:4] for money in re.finditer(SOURCE_MONEY, row)
+                if money[2] == '원' and (value := korean_amount_value(money[1]))]
+        if fees and max(fees) < Decimal(10_000_000_000) and not re.search(
+                r"상용화\s*(?:수주|계약)|양산\s*(?:계약|시작)|공장\s*착공|사업화\s*매출", lead):
+            return 'small_research_license_without_downstream_market_scale'
+    local = bool(LOCAL_AUTHORITY.search(foreground) or re.search(
+        r"(?<![가-힣])[가-힣]{2,8}(?:시|군|구)의\s*스타트업", foreground))
+    if (local and re.match(r"\[[^]]{1,20}소식\]", title) and not firm_event
+            and not re.search(r"정전|폐사|사망|수출\s*금지|생산\s*중단|가동\s*중단", foreground)):
+        return 'municipal_service_roundup_without_listed_issuer_execution'
+    if (local and re.search(r"수소\s*충전\s*요금|수소충전\s*요금|주차\s*요금|공영\s*요금", title)
+            and not re.search(r"전국\s*(?:요금을|일괄|충전소에)|정부.{0,15}(?:세율|세금|부담금)|상장사.{0,25}(?:매출|이익)", lead)):
+        return 'single_municipality_service_fee_without_broad_market_scope'
+    if (local and re.search(r"스타트업.{0,20}(?:날개|성과)|스타트업\s*육성", foreground)
+            and re.search(r"프로젝트|육성|지원", lead)
+            and re.search(r"지난달|지난\s*\d+일", body)
+            and not re.search(r"상장사|코스피|코스닥|신규\s*공급\s*계약|공장\s*착공", lead)):
+        return 'regional_startup_program_showcase_without_new_issuer_execution'
+    priced_execution = any(not PAST_ACTION.search(row) and re.search(SOURCE_MONEY, row)
+                           and re.search(r"계약금액|공급금액|수주금액|공급\s*계약|도입\s*계약", row)
+                           for row in rows[:12])
+    operating_scale = any(re.search(r"(?:매출|출하량|유료\s*(?:고객|이용자)|임상\s*(?:결과|성공)|"
+                                    r"검증\s*결과|도입\s*(?:기관|병원|기업)\s*수).{0,40}\d", row)
+                          for row in rows[:12])
+    if (re.search(r"백업\s*인프라|사이버\s*복원력|병원.{0,30}공급|병원에", foreground)
+            and re.search(r"솔루션|백업|모니터링", lead)
+            and not priced_execution and not operating_scale):
+        return 'single_customer_service_installation_without_priced_or_scaled_execution'
+    if (re.search(r"공동\s*개발", title) and re.search(r"현재\s*시제품\s*단계", body)
+            and re.search(r"상용화\s*시점.{0,30}(?:아직|구체화되지|미정)", body)
+            and not priced_execution and not operating_scale):
+        return 'prototype_collaboration_without_commercial_timing_or_commitment'
+    if (re.search(r"차세대\s*전략\s*공개|메모리\s*전략\s*공개", title)
+            and re.search(r"OCP|서밋|전시회", lead, re.I) and not firm_event
+            and not any(re.search(r"대역폭|전력\s*효율|양산\s*시점|생산능력|공급\s*계약|검증\s*완료", row)
+                        and QUANTITY.search(row) for row in rows[:12])):
+        return 'conference_technology_roadmap_without_measured_or_commercial_milestone'
+    if (re.search(r"집값.{0,20}(?:급락|가능성)|지금\s*사지", title)
+            and re.search(r"LH\s*사장|LH.{0,20}국정감사", foreground)
+            and not re.search(r"입법예고|시행일|대출\s*한도.{0,25}변경|공급\s*계획.{0,25}확정", lead)):
+        return 'public_official_house_price_opinion_without_new_market_action'
+    if (re.search(r"분양시장.{0,20}기대|분양\s*전망", title)
+            and re.search(r"주택사업자.{0,25}설문조사|분양전망지수", lead)
+            and not re.search(r"상장\s*건설사|PF\s*부도|대출\s*한도\s*변경|규정\s*시행", lead, re.I)):
+        return 'developer_sentiment_survey_without_current_equity_or_policy_action'
+    if (re.search(r"장관|공직자|의원", title) and re.search(r"제재", title)
+            and re.search(r"입국\s*금지|자산\s*동결", lead)
+            and not re.search(r"기업|수출\s*통제|수입\s*금지|교역|원유|결제망|은행", title + ' ' + lead)):
+        return 'individual_diplomatic_sanction_without_trade_or_capital_channel'
+    if re.search(r"온실가스\s*배출량", title) and re.search(r"20\d{2}년부터\s*20\d{2}년까지", lead):
+        if not re.search(r"배출권\s*가격|탄소세|규정\s*시행|감축\s*의무\s*확정|과징금", lead):
+            return 'historical_emissions_inventory_without_current_pricing_or_rule'
+    if re.search(r"선정\s*부실|업체\s*선정\s*부실", title) and re.search(r"국회|국정감사|의원", lead):
+        years = [int(value) for value in re.findall(r"(20\d{2})년", lead)]
+        current_year = int(published[:4]) if re.match(r"20\d{2}", published) else dt.date.today().year
+        if years and min(years) < current_year and not re.search(
+                r"계약을\s*취소했다|제재를\s*확정했다|환수하기로\s*결정|재발주하기로\s*결정", lead):
+            return 'historical_procurement_audit_without_new_business_action'
+    return ''
+
+
 def equity_publication_assessment(
     title: str,
     evidence: list[dict],
@@ -3925,6 +4175,10 @@ def equity_publication_assessment(
         )
         for row in primary_rows
     )
+
+    publicity_reason = nonmaterial_publicity_reason(title, body, firm_company_event, published)
+    if publicity_reason:
+        return {'eligible': False, 'reason': publicity_reason}
 
     municipal_research_center_opening = bool(
         LOCAL_AUTHORITY.search(headline_and_lead)
