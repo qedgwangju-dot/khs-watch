@@ -310,7 +310,7 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-10",
-  "updated_at_kst": "2026-10-14T07:13:05+09:00",
+  "updated_at_kst": "2026-10-14T07:21:48+09:00",
   "last_event_count": 0,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
@@ -318,13 +318,7 @@
   "compare_version": 5,
   "official_month": "",
   "official_data_ok": false,
-  "official_errors": [
-    "공공데이터포털 전국 API 실패: ConnectTimeout; fallback=전국 202609 KCS 조회 실패: ConnectTimeout",
-    "공공데이터포털 시도 API 실패: ConnectTimeout",
-    "충남 202609 KCS 조회 실패: ConnectTimeout",
-    "공공데이터포털 시도 API 실패: ConnectTimeout",
-    "충북 202609 KCS 조회 실패: ConnectTimeout"
-  ],
+  "official_errors": [],
   "last_official_alert_month": "202608",
   "official_api_key_configured": true,
   "official_api_used": false,
@@ -2356,7 +2350,7 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-10-14T07:13:05+09:00",
+      "last_checked_at_kst": "2026-10-14T07:21:48+09:00",
       "gaps": [
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
       ],
@@ -2429,8 +2423,8 @@
     "payload_hash": "889b4b54cfdd8192500a4ab0fbfb1285ed165141e5068c9a537742c94c6f6e8b"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-10-14T07:16:53+09:00",
-    "status": "confirmed"
+    "checked_at_kst": "2026-10-14T07:22:42+09:00",
+    "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null,
   "state_corrections": [
@@ -2528,7 +2522,7 @@
     "first_seen_at_kst": "2026-10-14T07:13:05+09:00"
   },
   "official_source_health_version": 3,
-  "official_poll_interval_hours": 3,
+  "official_poll_interval_hours": 1,
   "last_official_poll_attempt_kst": "2026-10-14T07:13:05+09:00",
   "official_availability_notes": [
     "공공데이터포털 시도 API 44 202609 HSK 8542323000 데이터 없음",
