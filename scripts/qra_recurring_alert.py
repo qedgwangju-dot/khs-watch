@@ -393,9 +393,10 @@ def build_alert(current: ReleaseSection, previous: ReleaseSection | None) -> tup
         amount_lines.append(f"• 3·10·30년물 환매차환 입찰 합계: {total:g}0억달러")
     amount_lines.append(expectation_comparison(supply))
     amount_lines.append(
-        "• Citi 미확정 시나리오(10/9): 20·30년물 각각 회당 30억달러 축소,"
-        " 3개월 총 180억달러 장기채 감축·단기국채 대체 예상."
-        " 20년물 중단은 추가 가능성이며 재무부 결정이 아닙니다."
+        f"• Citi 미확정 시나리오(10/9): 20·30년물 각각 회당 "
+        f"30억달러({financing_krw(3, supply_fx)}) 축소, 3개월 총 "
+        f"180억달러({financing_krw(18, supply_fx)}) 장기채 감축·단기국채 대체 예상. "
+        "20년물 발행 중단은 추가 가능성으로 확정 결정이 아닙니다."
     )
 
     if current_word and previous_word and current_word != previous_word:
@@ -504,7 +505,7 @@ def official_dealer_document_text(link: LinkItem) -> str:
     return strip_html(raw.decode("utf-8", errors="replace"))
 
 
-def build_dealer_survey_alert(section: ReleaseSection) -> tuple[str, str, dict] | None:
+def build_dealer_survey_alert(section: ReleaseSection, fx: float | None = None) -> tuple[str, str, dict] | None:
     items = [
         link for link in section.links
         if any(word in link.text.lower() for word in (
@@ -546,9 +547,10 @@ def build_dealer_survey_alert(section: ReleaseSection) -> tuple[str, str, dict] 
     body = "\n".join([
         "확정 단계: 공식 딜러 설문·의제 공개. 장기채 감축 결정이 아닙니다.",
         "• 공식 공개일: " + section_date_key(section)[0] + " · 확인 주제: " + "·".join(signals),
-        "• Citi 미확정 예상: 20년·30년물 각각 회당 30억달러 감축"
-        " → 3개월 180억달러 장기채 공급 감축·단기국채 대체 가능."
-        " 20년물 발행 중단은 추가 시나리오.",
+        f"• Citi 미확정 예상: 20년·30년물 각각 회당 "
+        f"30억달러({financing_krw(3, fx)}) 감축 → 3개월 "
+        f"180억달러({financing_krw(18, fx)}) 공급 감축·단기국채 대체 가능. "
+        "20년물 발행 중단은 추가 시나리오.",
         "• 정부 질문·설문은 정책 검토의 증거이지 시행 결정이 아닙니다.",
         "• 다음 확인: 11/2 분기 차입추정, 11/4 QRA 확정 발행표·가이던스.",
         "• 역풍: 단기국채 차환 위험·대형 기술기업 회사채 경쟁·인플레이션·기간프리미엄.",
@@ -614,7 +616,12 @@ def main() -> int:
         if section_date_key(current)[0] < "2026-10-13":
             write_watch("과거 딜러 의제 기준선", current.heading)
             return 0
-        report = build_dealer_survey_alert(current)
+        try:
+            from fx_api import daily_krw
+            fx = daily_krw().rate
+        except Exception:
+            fx = None
+        report = build_dealer_survey_alert(current, fx=fx)
         if report is None:
             write_watch("공식 딜러 자료의 장기채 검토 의제 미확인", current.heading)
             return 0
