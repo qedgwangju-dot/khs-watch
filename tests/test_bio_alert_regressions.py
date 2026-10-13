@@ -148,6 +148,14 @@ class BioAlertRegressionTests(unittest.TestCase):
         self.assertIn("- 발표: ESMO 학회", converted)
         self.assertIn("- 학회: ESMO", converted)
 
+    def test_bio_oncology_stage_labels_are_not_blocked(self):
+        report = "- 임상: IIB~IV기 흑색종 대상\n- 병기: IIIA, IIIB, IIIC\n- 평가: ESMO"
+        with patch.object(base_korean_guard, "translate_to_korean", side_effect=AssertionError("unexpected translation network")):
+            converted = guard.ensure_korean_text(report)
+        self.assertIn("IIB~IV기", converted)
+        self.assertIn("IIIA, IIIB, IIIC", converted)
+        self.assertIn("ESMO", converted)
+
     def test_bio_unknown_general_english_still_fails_closed(self):
         with patch.object(base_korean_guard, "translate_to_korean", side_effect=RuntimeError("translation unavailable")):
             with self.assertRaises(RuntimeError):
