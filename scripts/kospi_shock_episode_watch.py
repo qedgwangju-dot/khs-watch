@@ -1409,7 +1409,8 @@ class Watch:
             }
             self._record_delivery(
                 "kosdaq_flow_surge", msg_id,
-                {"start_ts": pair["start_ts"], "low_ts": pair["end_ts"]},
+                {"start_ts": pair["start_ts"], "low_ts": pair["end_ts"],
+                 "market": "KOSDAQ", "actor": actor},
                 pair["end_ts"],
             )
 
@@ -1501,7 +1502,8 @@ class Watch:
             # 기존 급락과 동일한 실전 송출 기록/상태 인계 경로를 재사용한다.
             self._record_delivery(
                 "flow_surge", msg_id,
-                {"start_ts": sample_ts - SURGE_WINDOW_SEC, "low_ts": sample_ts},
+                {"start_ts": sample_ts - SURGE_WINDOW_SEC, "low_ts": sample_ts,
+                 "market": "KOSPI", "actor": actor},
                 sample_ts,
             )
 
@@ -1652,6 +1654,8 @@ class Watch:
             "logged_at_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
             "stage": stage,
             "message_id": message_id,
+            "market": str(ep.get("market") or "KOSPI"),
+            "actor": str(ep.get("actor") or ""),
             "event_start_ts": ep.get("start_ts"),
             "event_start_kst": fmt_clock(ep.get("start_ts")),
             "event_low_ts": ep.get("low_ts"),
