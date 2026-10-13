@@ -1,6 +1,6 @@
 {
   "status": "degraded",
-  "checked_at_kst": "2026-10-14T01:27:15+09:00",
+  "checked_at_kst": "2026-10-14T03:23:36+09:00",
   "route_source": "encrypted-route",
   "telegram_route_ok": true,
   "qlex_collector_rc": 0,
@@ -11,18 +11,18 @@
   "halozyme_collector_rc": 0,
   "qlex_alert_present": true,
   "qlex_wac_alert_present": false,
-  "intismeran_alert_present": false,
+  "intismeran_alert_present": true,
   "jemperli_alert_present": false,
   "enhertu_alert_present": false,
   "qlex_send_outcome": "failure",
   "qlex_wac_send_outcome": "skipped",
-  "intismeran_send_outcome": "skipped",
+  "intismeran_send_outcome": "failure",
   "jemperli_send_outcome": "skipped",
   "enhertu_send_outcome": "skipped",
   "halozyme_run_outcome": "success",
   "qlex_state_persisted": false,
   "qlex_wac_state_persisted": true,
-  "intismeran_state_persisted": true,
+  "intismeran_state_persisted": false,
   "jemperli_state_persisted": true,
   "enhertu_state_persisted": true,
   "halozyme_state_persisted": true,
@@ -32,7 +32,8 @@
   "intismeran_retry_pending": false,
   "last_health_notice_date": "2026-10-13",
   "errors": [
-    "QLEX sender rc=1: Traceback (most recent call last):\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/qlex_telegram_send_v2.py\", line 17, in <module>\n    raise SystemExit(base.main())\n                     ^^^^^^^^^^^\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/qlex_telegram_send.py\", line 483, in main\n    text = normalize_alert_language(text)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/qlex_telegram_send_v2.py\", line 10, in normalize_alert_language\n    return ensure_korean_text(_original_normalize(text))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/bio_korean_guard_strict_v2.py\", line 31, in ensure_korean_text\n    return '\\n'.join(strict_translate_line(line) for line in text.splitlines())\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/bio_korean_guard_strict_v2.py\", line 31, in <genexpr>\n    return '\\n'.join(strict_translate_line(line) for line in text.splitlines())\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/bio_korean_guard_strict_v2.py\", line 27, in strict_translate_line\n    return korean_first_regulatory_terms(base.strict_translate_line(line))\n                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/bio_korean_guard_strict.py\", line 15, in strict_translate_line\n    converted = base.translate_line(line)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/bio_korean_guard.py\", line 170, in translate_line\n    raise RuntimeError(\nRuntimeError: 한국어 송출 검증 실패 — 일반 영어/일본어 설명어가 남아 있음: Bing, News"
+    "QLEX sender rc=1: Traceback (most recent call last):\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/qlex_telegram_send_v2.py\", line 17, in <module>\n    raise SystemExit(base.main())\n                     ^^^^^^^^^^^\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/qlex_telegram_send.py\", line 483, in main\n    text = normalize_alert_language(text)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/qlex_telegram_send_v2.py\", line 10, in normalize_alert_language\n    return ensure_korean_text(_original_normalize(text))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/bio_korean_guard_strict_v2.py\", line 31, in ensure_korean_text\n    return '\\n'.join(strict_translate_line(line) for line in text.splitlines())\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/bio_korean_guard_strict_v2.py\", line 31, in <genexpr>\n    return '\\n'.join(strict_translate_line(line) for line in text.splitlines())\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/bio_korean_guard_strict_v2.py\", line 27, in strict_translate_line\n    return korean_first_regulatory_terms(base.strict_translate_line(line))\n                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/bio_korean_guard_strict.py\", line 15, in strict_translate_line\n    converted = base.translate_line(line)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/bio_korean_guard.py\", line 170, in translate_line\n    raise RuntimeError(\nRuntimeError: 한국어 송출 검증 실패 — 일반 영어/일본어 설명어가 남아 있음: Bing, News",
+    "Intismeran sender rc=1: Traceback (most recent call last):\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/intismeran_structured_telegram_send_v2.py\", line 17, in <module>\n    raise SystemExit(base.main())\n                     ^^^^^^^^^^^\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/intismeran_structured_telegram_send.py\", line 265, in main\n    ids = send_message(message)\n          ^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/intismeran_structured_telegram_send_v2.py\", line 10, in send_message\n    return _original_send_message(ensure_korean_text(text))\n                                  ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/bio_korean_guard_strict_v2.py\", line 31, in ensure_korean_text\n    return '\\n'.join(strict_translate_line(line) for line in text.splitlines())\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/bio_korean_guard_strict_v2.py\", line 31, in <genexpr>\n    return '\\n'.join(strict_translate_line(line) for line in text.splitlines())\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/bio_korean_guard_strict_v2.py\", line 27, in strict_translate_line\n    return korean_first_regulatory_terms(base.strict_translate_line(line))\n                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/bio_korean_guard_strict.py\", line 23, in strict_translate_line\n    raise RuntimeError(\nRuntimeError: 한국어 송출 검증 실패 — 일반 영어/일본어 설명어가 남아 있어 발송 차단: ESMO"
   ],
   "failed_component": "바이오 통합 감시",
   "error_signature": "QLEX sender rc=1: Traceback (most recent call last):\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/qlex_telegram_send_v2.py\", line 17, in <module>\n    raise SystemExit(base.main())\n                     ^^^^^^^^^^^\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/qlex_telegram_send.py\", line 483, in main\n    text = normalize_alert_language(text)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/qlex_telegram_send_v2.py\", line 10, in normalize_alert_language\n    return ensure_korean_text(_original_normalize(text))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/bio_korean_guard_strict_v2.py\", line 31, in ensure_korean_text\n    return '\\n'.join(strict_translate_line(line) for line in text.splitlines())\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/khs-watch/khs-watch/scripts/bio_korean_guard_strict_v2.py\", lin"
