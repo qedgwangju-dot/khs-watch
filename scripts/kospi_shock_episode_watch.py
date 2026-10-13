@@ -1136,11 +1136,18 @@ class Watch:
                  f"• KOSPI <b>{float(ep['start_price']):,.2f}</b> → <b>{end_price:,.2f}</b> · <b>{drop:+.2f}%</b>",
                  f"• 현재 구간 저점 <b>{float(ep['low_price']):,.2f}</b> ({fmt_clock(ep['low_ts'])})", ""]
         if ep.get("price_only"):
-            lines += [
-                "⚠️ <b>감시 공백 또는 수급 기준점 부족</b> — 가격 급락은 확인됐지만",
-                "• 사건 시작 이전의 정확한 현물·선물·프로그램 기준점이 없어 매도주체는 소급 추정하지 않습니다.",
-                "",
-            ]
+            if "alignment exceeds" in str(ep.get("price_only_reason") or ""):
+                lines += [
+                    "⚠️ <b>수급 기준점 시간 정렬 미충족</b> — 가격 급락은 확인됐지만",
+                    "• 사건 시작 직전 수급 시차가 30초를 넘어 주체 판정을 보류합니다. 감시 중단으로 단정하지 않습니다.",
+                    "",
+                ]
+            else:
+                lines += [
+                    "⚠️ <b>수급 기준점 미확보</b> — 가격 급락은 확인됐지만",
+                    "• 사건 시작 이전의 정확한 현물·선물·프로그램 기준점이 없어 매도주체는 소급 추정하지 않습니다.",
+                    "",
+                ]
         lines += ["<b>그 구간에서 누가 팔았나</b>"]
         if att.get("available"):
             s, f, p = att["spot"], att["futures"], att["program"]
@@ -1161,12 +1168,12 @@ class Watch:
         opt = self.option_move(float(ep["start_ts"]), end_ts)
         if opt:
             lines += ["", "<b>파생 증폭 확인</b>", f"• 근접 위클리 풋 <b>{html.escape(opt[0])}</b> · 사건 시작 대비 <b>{opt[1]:.1f}배</b>"]
-        lines += ["", "<b>읽는 법</b>",
-                  "• 하루 누적 수급이 아니라 <b>급락 시작 직전 → 현재</b> 변화량만 비교합니다.",
-                  "• 현물·프로그램은 <b>통합 기준</b>, KOSPI200 선물은 파생시장 기준입니다.",
-                  "• 현물·선물·프로그램이 같은 방향으로 겹칠 때만 특정 주체를 급락 주도 후보로 올립니다.",
-                  "• 프로그램 전체는 차익 변화+비차익 변화로 계산하며, LS 전체 직접값과 방향·수치 차이를 별도 검증합니다. t1640 3종은 순차 조회이고 차이가 1%를 넘으면 높은 확신도로 판정하지 않습니다.", "",
-                  "• " + " · ".join([link(KOSPI_URL,"KOSPI"), link(NEWS_URL,"급락 뉴스"), link(LS_URL,"LS OpenAPI")])]
+        lines += [
+            "",
+            "• 판정: 사건 시작 직전→현재 수급 변화(현물·프로그램 통합, KOSPI200 선물 별도).",
+            "• 검증: 수급 시차 30초·프로그램 합계 차이 1% 초과 시 확신도 보류. 프로그램 수급은 특정 투자자에게 귀속하지 않으며 LS 원값을 임의 환산하지 않습니다.",
+            "• " + " · ".join([link(KOSPI_URL,"KOSPI"), link(NEWS_URL,"급락 뉴스"), link(LS_URL,"LS OpenAPI")]),
+        ]
         return "\n".join(lines)
 
     def build_end(
