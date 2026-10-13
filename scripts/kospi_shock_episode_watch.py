@@ -651,12 +651,6 @@ def fmt_eok(v: float | None) -> str:
     return f"{v:+,.0f}억원"
 
 
-def fmt_raw(v: float | None) -> str:
-    if v is None:
-        return "확인 불가"
-    return f"{v:+,.0f}"
-
-
 def program_quality_label(att: dict[str, Any]) -> str:
     """직접값과 차익+비차익의 엄밀한 수치 차이를 '일치'로 오표기하지 않는다."""
     ratio = fnum(att.get("program_crosscheck_ratio_pct"))
@@ -817,20 +811,39 @@ def flow_surge_candidates(
             key_ts = float(fut["end_ts"])
         # 프로그램 자체의 차익·비차익 검산이 일치해도 사건 기준시점과
         # 30초 이상 어긋난 프로그램 데이터를 동시 매수 근거로 사용하지 않는다.
-        program_aligned = bool(
-            program and program["valid"] and program["delta"] > 0
+        program_time_aligned = bool(
+            program and program["valid"]
             and abs(float(program["end_ts"]) - key_ts) <= SURGE_MAX_SAMPLE_SKEW_SEC
         )
+        confirming_channels = (
+            ("현물", "선물") if both else ("현물",) if mode == "현물 중심" else ("선물",)
+        )
+        signal_values = {
+            channel: fnum((pair or {}).get("end", {}).get(actor))
+            for channel, pair in (("현물", spot), ("선물", fut))
+            if channel in confirming_channels
+        }
         result.append({
             "actor": actor, "mode": mode,
             "spot": ds, "futures": df, "sample_ts": key_ts,
+            "signal_values": signal_values,
+            "spot_cumulative": {
+                "start": fnum(spot["start"].get(actor)),
+                "end": fnum(spot["end"].get(actor)),
+            } if spot else None,
+            "futures_cumulative": {
+                "start": fnum(fut["start"].get(actor)),
+                "end": fnum(fut["end"].get(actor)),
+            } if fut else None,
             "spot_window": (float(spot["start_ts"]), float(spot["end_ts"])) if spot else None,
             "futures_window": (float(fut["start_ts"]), float(fut["end_ts"])) if fut else None,
             "spot_start_skew_sec": (spot or {}).get("start_skew_sec"),
             "futures_start_skew_sec": (fut or {}).get("start_skew_sec"),
             "program": program,
+            "program_time_aligned": program_time_aligned,
             # 프로그램 매수는 투자자별 매수주체 확증이 아니라 별도의 시장 보조정보.
-            "confidence": ("높음" if both and program_aligned else "중간" if both else "단독 신호"),
+            "confidence": ("높음" if both and program_time_aligned and program["delta"] > 0
+                           else "중간" if both else "단독 신호"),
         })
     return result
 
@@ -863,7 +876,7 @@ class Watch:
         self.handoff_path: str | None = None
         self.last_handoff_save_ts = 0.0
         self.surge_last_processed_ts = 0.0
-        self.surge_pending: dict[str, dict[str, float]] = {}
+        self.surge_pending: dict[str, dict[str, Any]] = {}
         self.surge_sent_at: dict[str, float] = {}
         # 같은 프로세스에서 별도로 조회하되 코스피 급락·수급 작업을 막지 않는다.
         self.kosdaq_flows: deque[dict[str, Any]] = deque(maxlen=1500)
@@ -1287,16 +1300,14 @@ class Watch:
                 ]
         lines += ["<b>그 구간에서 누가 팔았나</b>"]
         if att.get("available"):
-            s, f, p = att["spot"], att["futures"], att["program"]
+            s, f = att["spot"], att["futures"]
             cross = ", ".join(att.get("cross_sellers") or []) or "없음"
             lines += [f"• 현물(통합): 외국인 <b>{fmt_eok(s.get('외국인'))}</b> · 기관 <b>{fmt_eok(s.get('기관'))}</b> · 개인 <b>{fmt_eok(s.get('개인'))}</b>",
                       f"• KOSPI200 선물: 외국인 <b>{fmt_eok(f.get('외국인'))}</b> · 기관 <b>{fmt_eok(f.get('기관'))}</b> · 개인 <b>{fmt_eok(f.get('개인'))}</b>",
                       f"• 현물 최다매도: <b>{html.escape(str(att.get('spot_leader') or '없음'))}</b> {fmt_eok(att.get('spot_leader_value'))}",
                       f"• 선물 최다매도: <b>{html.escape(str(att.get('futures_leader') or '없음'))}</b> {fmt_eok(att.get('futures_leader_value'))}",
                       f"• 양시장 동시매도: <b>{html.escape(cross)}</b>",
-                      f"• 프로그램 전체(차익+비차익) <b>{fmt_raw(p.get('전체'))}</b> · 차익 <b>{fmt_raw(p.get('차익'))}</b> · 비차익 <b>{fmt_raw(p.get('비차익'))}</b> <i>(LS t1640 사건구간 변화)</i>",
-                      f"• LS 전체 직접값 변화 <b>{fmt_raw(p.get('전체직접'))}</b> · 계산합계와 차이 <b>{fmt_raw(p.get('검산차이'))}</b> ({float(att.get('program_crosscheck_ratio_pct') or 0):.2f}%)",
-                      f"• 프로그램 방향: <b>{html.escape(str(att.get('program_kind')))}</b>",
+                       f"• 프로그램 방향: <b>{html.escape(str(att.get('program_kind')))}</b> · LS t1640 금액 단위 미검증으로 원값 수치 표시 보류",
                       f"• 수급 기준점 시차: 시작 <b>{float(att.get('start_alignment_sec') or 0):.1f}초</b> · 종료 <b>{float(att.get('end_alignment_sec') or 0):.1f}초</b> · 프로그램 3종 조회시차 최대 <b>{float(att.get('program_sample_span_sec') or 0):.1f}초</b>",
                       f"• 프로그램 교차검증 품질: <b>{html.escape(program_quality_label(att))}</b>", "",
                       "<b>판정</b>", f"• <b>{html.escape(str(att.get('verdict')))}</b> · 확신도 {html.escape(str(att.get('confidence')))}"]
@@ -1346,15 +1357,14 @@ class Watch:
                  ), "",
                  "<b>저점까지 실제 매도주체</b>"]
         if att.get("available"):
-            s, f, p = att["spot"], att["futures"], att["program"]
+            s, f = att["spot"], att["futures"]
             cross = ", ".join(att.get("cross_sellers") or []) or "없음"
             lines += [f"• 현물(통합): 외국인 <b>{fmt_eok(s.get('외국인'))}</b> · 기관 <b>{fmt_eok(s.get('기관'))}</b> · 개인 <b>{fmt_eok(s.get('개인'))}</b>",
                       f"• KOSPI200 선물: 외국인 <b>{fmt_eok(f.get('외국인'))}</b> · 기관 <b>{fmt_eok(f.get('기관'))}</b> · 개인 <b>{fmt_eok(f.get('개인'))}</b>",
                       f"• 현물 최다매도: <b>{html.escape(str(att.get('spot_leader') or '없음'))}</b> {fmt_eok(att.get('spot_leader_value'))}",
                       f"• 선물 최다매도: <b>{html.escape(str(att.get('futures_leader') or '없음'))}</b> {fmt_eok(att.get('futures_leader_value'))}",
                       f"• 양시장 동시매도: <b>{html.escape(cross)}</b>",
-                      f"• 프로그램 전체(차익+비차익) <b>{fmt_raw(p.get('전체'))}</b> · 차익 <b>{fmt_raw(p.get('차익'))}</b> · 비차익 <b>{fmt_raw(p.get('비차익'))}</b> <i>(LS t1640 사건구간 변화)</i>",
-                      f"• LS 전체 직접값 변화 <b>{fmt_raw(p.get('전체직접'))}</b> · 계산합계와 차이 <b>{fmt_raw(p.get('검산차이'))}</b> ({float(att.get('program_crosscheck_ratio_pct') or 0):.2f}%)",
+                       f"• 프로그램 방향: <b>{html.escape(str(att.get('program_kind')))}</b> · LS t1640 금액 단위 미검증으로 원값 수치 표시 보류",
                       f"• 수급 기준점 시차: 시작 <b>{float(att.get('start_alignment_sec') or 0):.1f}초</b> · 저점 <b>{float(att.get('end_alignment_sec') or 0):.1f}초</b> · 프로그램 3종 조회시차 최대 <b>{float(att.get('program_sample_span_sec') or 0):.1f}초</b>",
                       f"• 프로그램 교차검증 품질: <b>{html.escape(program_quality_label(att))}</b>",
                       f"• 최종 판정: <b>{html.escape(str(att.get('verdict')))}</b> · 확신도 {html.escape(str(att.get('confidence')))}"]
@@ -1707,13 +1717,13 @@ class Watch:
     def build_kosdaq_flow_surge_alert(actor: str, delta: float, pair: dict[str, Any],
                                      now_ts: float) -> str:
         return "\n".join([
-            "⚡ <b>코스닥 단기 순매수 급증</b>",
+            "⚡ <b>코스닥 현물 순매수 증가</b>",
             f"<code>{dt.datetime.fromtimestamp(now_ts,KST):%Y-%m-%d %H:%M:%S} KST</code>",
-            f"• <b>{html.escape(actor)}</b> 코스닥 현물(통합) <b>{fmt_eok(delta)}</b> · 최근 5분",
+            f"• <b>{html.escape(actor)}</b> 코스닥 현물(통합) <b>{fmt_eok(delta)}</b> · 약 5분",
             f"• 실제 수급 표본: {fmt_clock(pair['start_ts'])}~{fmt_clock(pair['end_ts'])}",
             "• 확인 수준: 현물 단독 신호 (KOSPI200 선물·프로그램 수급과 합산하지 않음)",
-            f"• 감지 기준: 5분 순매수 증가 {KOSDAQ_SURGE_SINGLE_SPOT_EOK:,.0f}억원 이상 · 두 차례 연속 확인",
-            "• 누적 순매수 변화량이며 외부 신규자금 유입·주가 상승 확정값이 아닙니다.",
+            f"• 감지 기준: 약 5분 순매수 증가 {KOSDAQ_SURGE_SINGLE_SPOT_EOK:,.0f}억원 이상 · 두 차례 연속 확인",
+            "• 표기한 원자료 구간의 누적 순매수 변화량이며 외부 신규자금 유입·주가 상승 확정값이 아닙니다.",
             "• " + " · ".join([link(KOSDAQ_URL,"KOSDAQ"),link(LS_URL,"LS OpenAPI")]),
         ])
 
@@ -1792,6 +1802,12 @@ class Watch:
     def build_flow_surge_alert(self, cand: dict[str, Any], now_ts: float) -> str:
         actor = html.escape(str(cand["actor"]))
         spot, fut = cand.get("spot"), cand.get("futures")
+        mode = str(cand["mode"])
+        title = {
+            "현물·선물 동시": "코스피 현물·KOSPI200 선물 순매수 동반 증가",
+            "현물 중심": "코스피 현물 순매수 증가",
+            "선물 중심": "KOSPI200 선물 순매수 증가",
+        }.get(mode, "코스피 수급 변화")
         # '표본 종료시각-300초'는 실제 조회된 시작시각이 아닐 수 있다.
         # 전송 화면에는 반드시 관측된 현물·선물 원자료 구간을 그대로 표시한다.
         windows = []
@@ -1800,29 +1816,45 @@ class Watch:
             if window:
                 windows.append(f"{label} {fmt_clock(window[0])}~{fmt_clock(window[1])}")
         lines = [
-            "⚡ <b>코스피 단기 순매수 급증</b>",
+            f"⚡ <b>{title}</b>",
             f"<code>{dt.datetime.fromtimestamp(now_ts, KST):%Y-%m-%d %H:%M:%S} KST</code>",
-            f"• <b>{actor}</b> · {html.escape(str(cand['mode']))} · 약 5분",
+            f"• <b>{actor}</b> · {html.escape(mode)} · 약 5분",
             f"• 실제 수급 표본: {' / '.join(windows) if windows else '확인 불가'}",
             f"• 현물(통합) {fmt_eok(spot)} · KOSPI200 선물 {fmt_eok(fut)}",
             f"• 확인 수준: {html.escape(str(cand['confidence']))}",
         ]
+        if mode == "현물 중심" and fut is not None and fut < 0:
+            lines.append("• 선물은 반대 방향입니다. 현물 매수의 동반 확인으로 보지 않습니다.")
+        elif mode == "선물 중심" and spot is not None and spot < 0:
+            lines.append("• 현물은 반대 방향입니다. 선물 매수의 동반 확인으로 보지 않습니다.")
         p = cand.get("program") or {}
-        if p.get("valid"):
+        if p.get("valid") and cand.get("program_time_aligned"):
             trend = "순매수 증가" if p["delta"] > 0 else "순매도 증가" if p["delta"] < 0 else "변화 없음"
-            lines.append(f"• 프로그램 {trend} {fmt_raw(p.get('delta'))} (LS 원값, 투자자 미구분)")
+            lines.append(
+                f"• 프로그램 {trend} {fmt_clock(p['start_ts'])}~{fmt_clock(p['end_ts'])} "
+                "(LS t1640 금액 단위 미검증·투자자 미구분, 수치 표시 보류)"
+            )
         else:
-            lines.append("• 프로그램 교차검증: 미충족·보류 (매수주체 판정에 사용하지 않음)")
+            lines.append("• 프로그램 교차검증: 값 또는 시각 미충족·보류 (매수주체 판정에 사용하지 않음)")
         if self.idx:
-            now_price_ts, now_price = self.idx[-1]
-            if 0 <= now_ts - now_price_ts <= SURGE_MAX_END_AGE_SEC:
-                prior = min(self.idx, key=lambda x: abs(x[0] - (now_price_ts - SURGE_WINDOW_SEC)))
-                if abs(prior[0] - (now_price_ts - SURGE_WINDOW_SEC)) <= SURGE_MAX_SAMPLE_SKEW_SEC:
-                    change = pct(prior[1], now_price)
+            now_price_ts, _ = self.idx[-1]
+            signal_window = (
+                cand.get("futures_window") if mode == "선물 중심"
+                else cand.get("spot_window")
+            )
+            if signal_window and 0 <= now_ts - now_price_ts <= SURGE_MAX_END_AGE_SEC:
+                prior = min(self.idx, key=lambda x: abs(x[0] - signal_window[0]))
+                last = min(self.idx, key=lambda x: abs(x[0] - signal_window[1]))
+                if (abs(prior[0] - signal_window[0]) <= SURGE_MAX_SAMPLE_SKEW_SEC
+                        and abs(last[0] - signal_window[1]) <= SURGE_MAX_SAMPLE_SKEW_SEC):
+                    change = pct(prior[1], last[1])
                     if change is not None:
-                        lines.append(f"• 같은 구간 KOSPI {change:+.2f}% (가격 보조지표)")
+                        lines.append(
+                            f"• KOSPI 가격 {fmt_clock(prior[0])}~{fmt_clock(last[0])} "
+                            f"{change:+.2f}% (가격 보조지표)"
+                        )
         lines += [
-            "• 당일 누적 순매수의 5분 변화량입니다. 총거래대금·외부 신규자금 유입·향후 상승 확정값이 아닙니다.",
+            "• 표기한 원자료 구간의 누적 순매수 변화량입니다. 총거래대금·외부 신규자금 유입·향후 상승 확정값이 아닙니다.",
             "• " + " · ".join([link(KOSPI_URL, "KOSPI"), link(LS_URL, "LS OpenAPI")]),
         ]
         return "\n".join(lines)
@@ -1852,13 +1884,30 @@ class Watch:
                 self.surge_pending.pop(actor, None)
         for actor, cand in current.items():
             sample_ts = float(cand["sample_ts"])
+            signal_values = cand["signal_values"]
             previous = self.surge_pending.get(actor)
             if previous is None or sample_ts <= previous["sample_ts"] or (
                 now_ts - previous["seen_at"] > 120
+            ) or previous.get("mode") != cand["mode"] or (
+                set((previous.get("signal_values") or {}).keys()) != set(signal_values.keys())
+            ) or any(
+                fnum((previous.get("signal_values") or {}).get(channel)) is None
+                or fnum(value) is None
+                or float(value) < float(previous["signal_values"][channel])
+                for channel, value in signal_values.items()
             ):
-                self.surge_pending[actor] = {"sample_ts": sample_ts, "seen_at": now_ts}
+                self.surge_pending[actor] = {
+                    "sample_ts": sample_ts, "seen_at": now_ts,
+                    "mode": cand["mode"], "signal_values": signal_values,
+                }
                 continue
             if sample_ts - previous["sample_ts"] < SURGE_CONFIRM_SEC:
+                continue
+            # 동일한 누적 수급값을 새 시각으로 재수신한 것은 두 번째 확인이 아니다.
+            if not all(
+                float(value) > float(previous["signal_values"][channel])
+                for channel, value in signal_values.items()
+            ):
                 continue
             if now_ts - self.surge_sent_at.get(actor, 0.0) < SURGE_COOLDOWN_SEC:
                 continue
@@ -1873,13 +1922,37 @@ class Watch:
                 "sample_ts": sample_ts, "message_id": msg_id,
                 "spot_5m_eok": cand["spot"], "futures_5m_eok": cand["futures"],
                 "confidence": cand["confidence"],
+                "spot_window": cand["spot_window"],
+                "futures_window": cand["futures_window"],
+                "spot_cumulative": cand["spot_cumulative"],
+                "futures_cumulative": cand["futures_cumulative"],
+                "program_raw": cand["program"],
             }
             # 기존 급락과 동일한 실전 송출 기록/상태 인계 경로를 재사용한다.
             self._record_delivery(
                 "flow_surge", msg_id,
-                {"start_ts": sample_ts - SURGE_WINDOW_SEC, "low_ts": sample_ts,
+                {"start_ts": (cand["futures_window"] if cand["mode"] == "선물 중심"
+                               else cand["spot_window"])[0],
+                 "low_ts": (cand["futures_window"] if cand["mode"] == "선물 중심"
+                            else cand["spot_window"])[1],
                  "market": "KOSPI", "actor": actor},
                 sample_ts,
+                evidence={
+                    "spot_source": "LS t1602 market=1 upcode=001 exchgubun=U gubun1=2",
+                    "futures_source": "LS t1602 market=4 upcode=900 exchgubun=K gubun1=2",
+                    "program_source": "LS t1640 gubun=11/12/13 exchgubun=U",
+                    "mode": cand["mode"],
+                    "spot_window": cand["spot_window"],
+                    "futures_window": cand["futures_window"],
+                    "spot_cumulative": cand["spot_cumulative"],
+                    "futures_cumulative": cand["futures_cumulative"],
+                    "spot_delta": cand["spot"],
+                    "futures_delta": cand["futures"],
+                    "program_raw": cand["program"],
+                    "spot_futures_display_unit": "억원",
+                    "spot_futures_unit_basis": "repository_contract; LS t1602 guide omits explicit unit",
+                    "program_unit_status": "unverified_raw",
+                },
             )
 
     async def evaluate(self) -> None:
@@ -2040,6 +2113,7 @@ class Watch:
             "event_low_kst": fmt_clock(ep.get("low_ts")),
             "observed_ts": observed_ts,
             "observed_kst": fmt_clock(observed_ts),
+            "code_sha": os.getenv("GITHUB_SHA") or None,
         }
         if evidence is not None:
             record["evidence"] = evidence
@@ -2122,10 +2196,19 @@ class Watch:
                 if str(k) in {"외국인", "기관", "개인"} and fnum(v) is not None
             }
             self.surge_pending = {
-                str(k): {"sample_ts": float(v["sample_ts"]), "seen_at": float(v["seen_at"])}
+                str(k): {
+                    "sample_ts": float(v["sample_ts"]), "seen_at": float(v["seen_at"]),
+                    "mode": str(v["mode"]),
+                    "signal_values": {str(channel): float(value)
+                                      for channel, value in v["signal_values"].items()},
+                }
                 for k, v in (data.get("surge_pending") or {}).items()
                 if str(k) in {"외국인", "기관", "개인"} and isinstance(v, dict)
                 and fnum(v.get("sample_ts")) is not None and fnum(v.get("seen_at")) is not None
+                and v.get("mode") in {"현물·선물 동시", "현물 중심", "선물 중심"}
+                and isinstance(v.get("signal_values"), dict)
+                and v["signal_values"]
+                and all(fnum(value) is not None for value in v["signal_values"].values())
             }
             # 기존 KOSPI handoff 형식도 정상 복원하고 코스닥은 독립 보관한다.
             for snap in data.get("kosdaq_flows") or []:
