@@ -9,6 +9,8 @@ from __future__ import annotations
 
 import json
 import hashlib
+import base64
+import datetime as dt
 import multiprocessing as mp
 from multiprocessing.connection import wait
 import os
@@ -98,7 +100,7 @@ def _source_worker(connection, watch, blocked, gate_lock):
                     value = original_req(url, timeout)
                 except Exception as exc:
                     mark_block(url, exc)
-                    trace.append((url, timeout, None, type(exc).__name__ + ': ' + str(exc)))
+                    trace.append((url, timeout, getattr(exc, 'response_body', None), type(exc).__name__ + ': ' + str(exc)))
                     raise
                 trace.append((url, timeout, value, None))
                 return value
@@ -136,9 +138,37 @@ def _source_worker(connection, watch, blocked, gate_lock):
         connection.close()
 
 
-def prefetch(watch, report, report_path, *, seconds=360, workers=8):
+def _http_record(url, value, error):
+    item = {'url': url, 'status': 'error' if error else 'ok'}
+    if error:
+        item['error'] = error
+    if value is not None:
+        item.update(bytes=len(value), sha256=hashlib.sha256(value).hexdigest())
+        if error:
+            item['response_body_base64'] = base64.b64encode(value[:65536]).decode('ascii')
+            item['response_body_truncated'] = len(value) > 65536
+    return item
+
+
+def _payload_retry_eligible(record, blocked):
+    failures = [item for item in record.get('http', []) if item.get('status') == 'error']
+    if record.get('status') != 'error' or not failures:
+        return False
+    for item in failures:
+        parsed = urllib.parse.urlparse(item['url'])
+        host = (parsed.hostname or '').lower().removeprefix('www.')
+        query = urllib.parse.parse_qs(parsed.query)
+        rss = str((query.get('format') or [''])[0]).lower() == 'rss' or (
+            parsed.hostname == 'news.google.com' and '/rss/' in parsed.path)
+        if (not item.get('error', '').startswith('SourcePayloadError:')
+                or not rss or host in blocked):
+            return False
+    return True
+
+
+def prefetch(watch, report, report_path, *, seconds=360, workers=8, payload_retry_delay=0.5):
     """Every configured query must complete, including its existing fallbacks."""
-    if seconds <= 0 or workers < 1:
+    if seconds <= 0 or workers < 1 or payload_retry_delay < 0:
         raise ValueError('collection budget and workers must be positive')
     queries = list(watch.QUERIES)
     if not queries:
@@ -150,6 +180,7 @@ def prefetch(watch, report, report_path, *, seconds=360, workers=8):
     deadline = time.monotonic() + seconds
     blocked, gate_lock = _ProviderBlocks(context), context.RLock()
     active, processes, traces = {}, [], {}
+    pending_indices = list(range(len(queries)))
     next_index = 0
     try:
         for _ in range(min(workers, len(queries))):
@@ -161,48 +192,71 @@ def prefetch(watch, report, report_path, *, seconds=360, workers=8):
 
         def submit(connection):
             nonlocal next_index
-            if next_index >= len(queries) or time.monotonic() >= deadline:
+            if next_index >= len(pending_indices) or time.monotonic() >= deadline:
                 return
-            index = next_index
+            index = pending_indices[next_index]
             next_index += 1
             connection.send((index, queries[index]))
             active[connection] = index
             report['news'][index]['status'] = 'running'
+            report['news'][index]['started_at_utc'] = dt.datetime.now(dt.timezone.utc).isoformat()
             print(f'war_collection_start index={index}', flush=True)
+
+        def drain():
+            while active and time.monotonic() < deadline:
+                ready = wait(list(active), timeout=min(0.2, max(0, deadline - time.monotonic())))
+                for connection in ready:
+                    index = active.pop(connection)
+                    record = report['news'][index]
+                    try:
+                        returned, elapsed, result = connection.recv()
+                        if returned != index:
+                            raise IncompleteCoverage('source worker returned wrong query index')
+                        if time.monotonic() >= deadline:
+                            record['status'] = 'deadline'
+                            continue
+                        record.update(status='error' if result['error'] else 'ok',
+                                      elapsed_seconds=round(elapsed, 3), rows=result['rows'],
+                                      requests=len(result['trace']),
+                                      finished_at_utc=dt.datetime.now(dt.timezone.utc).isoformat())
+                        record['http'] = [_http_record(url, value, error)
+                                          for url, _, value, error in result['trace']]
+                        record['fallback_recovered'] = bool(
+                            not result['error'] and any(entry[3] for entry in result['trace']))
+                        if result['error']:
+                            record['error'] = result['error']
+                        else:
+                            record.pop('error', None)
+                            traces[index] = result['trace']
+                        print(f"war_collection_done index={index} status={record['status']} elapsed={elapsed:.3f}s", flush=True)
+                    except (EOFError, OSError) as exc:
+                        record.update(status='worker_error', error=type(exc).__name__)
+                        continue
+                    submit(connection)
+                _save(report_path, report)
 
         for _, connection in processes:
             submit(connection)
         _save(report_path, report)
-        while active and time.monotonic() < deadline:
-            ready = wait(list(active), timeout=min(0.2, max(0, deadline - time.monotonic())))
-            for connection in ready:
-                index = active.pop(connection)
-                record = report['news'][index]
-                try:
-                    returned, elapsed, result = connection.recv()
-                    if returned != index:
-                        raise IncompleteCoverage('source worker returned wrong query index')
-                    if time.monotonic() >= deadline:
-                        record['status'] = 'deadline'
-                        continue
-                    record.update(status='error' if result['error'] else 'ok',
-                                  elapsed_seconds=round(elapsed, 3), rows=result['rows'],
-                                  requests=len(result['trace']))
-                    record['http'] = [dict(url=url, status='error' if error else 'ok',
-                                          **({'error': error} if error else {
-                                              'bytes': len(value), 'sha256': hashlib.sha256(value).hexdigest()}))
-                                      for url, _, value, error in result['trace']]
-                    record['fallback_recovered'] = bool(
-                        not result['error'] and any(entry[3] for entry in result['trace']))
-                    if result['error']:
-                        record['error'] = result['error']
-                    else:
-                        traces[index] = result['trace']
-                    print(f"war_collection_done index={index} status={record['status']} elapsed={elapsed:.3f}s", flush=True)
-                except (EOFError, OSError) as exc:
-                    record.update(status='worker_error', error=type(exc).__name__)
-                    continue
-                submit(connection)
+        drain()
+        # After the initial batch drains, retry only malformed RSS queries once.
+        # Keep the same URL/identity, denial circuits and original total deadline.
+        # The original failed response remains visible alongside the recovery.
+        if not active:
+            blocked_now = blocked.snapshot()
+            retry = [r['index'] for r in report['news'] if _payload_retry_eligible(r, blocked_now)]
+            if retry and deadline - time.monotonic() > payload_retry_delay:
+                time.sleep(payload_retry_delay)
+                pending_indices, next_index = retry, 0
+                report['payload_retry_queries'] = retry
+                for index in retry:
+                    record = report['news'][index]
+                    record['initial_attempt'] = dict(record)
+                    record['payload_retry_attempts'] = 1
+                    record['status'] = 'retry_waiting'
+                for _, connection in processes:
+                    submit(connection)
+                drain()
             _save(report_path, report)
     finally:
         for process, connection in processes:
@@ -225,6 +279,8 @@ def prefetch(watch, report, report_path, *, seconds=360, workers=8):
                 record['status'] = 'deadline'
             elif record['status'] == 'not_started':
                 record['status'] = 'not_started_deadline'
+            elif record['status'] == 'retry_waiting':
+                record['status'] = 'retry_not_started_deadline'
         _save(report_path, report)
     if any(record['status'] != 'ok' for record in report['news']):
         raise IncompleteCoverage('one or more configured queries did not complete')

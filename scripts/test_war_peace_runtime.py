@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import datetime as dt
+import base64
+import hashlib
 import json
 import multiprocessing as mp
 from pathlib import Path
@@ -19,6 +21,12 @@ import war_peace_reconstruction_watch_runtime as runtime
 
 def forbidden(*args, **kwargs):
     raise AssertionError('live network/send prohibited in offline tests')
+
+
+class SourcePayloadError(ValueError):
+    def __init__(self, body):
+        super().__init__('expected RSS/Atom')
+        self.response_body = body
 
 
 def fake_watch(root, queries, *, req=None, news=None):
@@ -48,7 +56,8 @@ class RuntimeTests(unittest.TestCase):
     def collect(self, watch, seconds=2, workers=3):
         report = {'complete': False}
         path = watch.OUT/'coverage.json'
-        queries, traces = runtime.prefetch(watch, report, path, seconds=seconds, workers=workers)
+        queries, traces = runtime.prefetch(watch, report, path, seconds=seconds, workers=workers,
+                                          payload_retry_delay=0)
         return queries, traces, report
 
     def test_all_queries_parallel_and_ordered_replay_preserves_parent_signals(self):
@@ -118,6 +127,72 @@ class RuntimeTests(unittest.TestCase):
         report = json.loads((watch.OUT/'coverage.json').read_text())
         self.assertEqual([x['status'] for x in report['news']], ['ok', 'error'])
         self.assertFalse(report['complete'])
+
+    def test_malformed_rss_recovers_once_after_initial_batch_and_replays_only_verified_bytes(self):
+        watch = fake_watch(self.root, ['https://source.example/?format=rss', 'https://healthy.example/'])
+        calls = mp.get_context('fork').Value('i', 0)
+        original = b'<html>temporarily unavailable</html>'
+        valid = b'<rss><channel/></rss>'
+        def req(url, timeout=20):
+            if 'source.example' in url:
+                with calls.get_lock():
+                    calls.value += 1
+                    attempt = calls.value
+                if attempt == 1:
+                    raise SourcePayloadError(original)
+            return valid
+        watch.req = req
+        queries, traces, report = self.collect(watch, workers=1)
+        self.assertEqual(calls.value, 2)
+        record = report['news'][0]
+        self.assertEqual(record['status'], 'ok')
+        self.assertNotIn('error', record)
+        self.assertEqual(report['payload_retry_queries'], [0])
+        failure = record['initial_attempt']['http'][0]
+        self.assertEqual(base64.b64decode(failure['response_body_base64']), original)
+        self.assertEqual(failure['sha256'], hashlib.sha256(original).hexdigest())
+        watch.req = forbidden
+        restore, verify = runtime.install_replay(watch, queries, traces)
+        try:
+            self.assertEqual([watch.google_news(q)[0][0]['raw'] for q in queries], [valid, valid])
+            verify()
+        finally:
+            restore()
+        self.assertEqual(json.loads(watch.STATE.read_text())['seen'], ['confirmed-old'])
+
+    def test_persistently_malformed_rss_still_fails_after_only_one_recovery_attempt(self):
+        watch = fake_watch(self.root, ['https://source.example/?format=rss'])
+        calls = mp.get_context('fork').Value('i', 0)
+        def req(url, timeout=20):
+            with calls.get_lock(): calls.value += 1
+            raise SourcePayloadError(b'<html>unavailable</html>')
+        watch.req = req
+        with self.assertRaises(runtime.IncompleteCoverage): self.collect(watch)
+        self.assertEqual(calls.value, 2)
+        report = json.loads((watch.OUT/'coverage.json').read_text())
+        self.assertEqual(report['news'][0]['status'], 'error')
+        self.assertEqual(report['news'][0]['payload_retry_attempts'], 1)
+        self.assertFalse(report['complete'])
+
+    def test_recovery_retry_cannot_extend_total_deadline_or_leave_a_worker(self):
+        watch = fake_watch(self.root, ['https://source.example/?format=rss'])
+        calls = mp.get_context('fork').Value('i', 0)
+        before = {p.pid for p in mp.active_children()}
+        def req(url, timeout=20):
+            with calls.get_lock():
+                calls.value += 1
+                attempt = calls.value
+            if attempt == 1: raise SourcePayloadError(b'<html>unavailable</html>')
+            time.sleep(60)
+        watch.req = req
+        started = time.monotonic()
+        with self.assertRaises(runtime.IncompleteCoverage): self.collect(watch, seconds=0.6, workers=1)
+        self.assertLess(time.monotonic()-started, 2)
+        self.assertEqual(calls.value, 2)
+        self.assertEqual({p.pid for p in mp.active_children()}, before)
+        report = json.loads((watch.OUT/'coverage.json').read_text())
+        self.assertEqual(report['news'][0]['status'], 'deadline')
+        self.assertEqual(report['news'][0]['initial_attempt']['status'], 'error')
 
     def test_stalled_source_bounded_and_no_orphan(self):
         watch = fake_watch(self.root, ['stalled', 'not-started'])
@@ -280,6 +355,27 @@ class RuntimeTests(unittest.TestCase):
         self.assertEqual(report['news'][-1]['status'], 'ok')
         self.assertEqual(report['max_inflight_source_requests'], 1)
         self.assertTrue(all(x['status'] == 'error' for x in report['news'][:-1]))
+        self.assertNotIn('payload_retry_queries', report)
+
+    def test_mixed_malformed_payload_and_access_denial_never_retries_query(self):
+        from urllib.error import HTTPError
+        watch = fake_watch(self.root, ['mixed'])
+        calls = mp.get_context('fork').Value('i', 0)
+        def req(url, timeout=20):
+            with calls.get_lock(): calls.value += 1
+            if 'malformed' in url: raise SourcePayloadError(b'<html>unavailable</html>')
+            raise HTTPError(url, 429, 'blocked', {}, None)
+        def news(query):
+            for url in ('https://malformed.example/?format=rss', 'https://denied.example/?format=rss'):
+                try: watch.req(url)
+                except Exception: pass
+            return [], 'mixed source failure'
+        watch.req, watch.google_news = req, news
+        with self.assertRaises(runtime.IncompleteCoverage): self.collect(watch)
+        self.assertEqual(calls.value, 2)
+        report = json.loads((watch.OUT/'coverage.json').read_text())
+        self.assertNotIn('payload_retry_queries', report)
+        self.assertEqual(report['blocked_providers']['denied.example']['code'], 429)
 
     def test_real_google_html_response_cannot_be_complete_empty_feed(self):
         import war_peace_reconstruction_watch_oct04_guard as guard
@@ -293,6 +389,49 @@ class RuntimeTests(unittest.TestCase):
                 self.collect(watch)
             report = json.loads((watch.OUT/'coverage.json').read_text())
             self.assertEqual(report['news'][0]['status'], 'error')
+        finally:
+            watch.OUT, watch.req, watch.QUERIES = saved
+
+    def test_production_payload_error_carries_actual_failed_response(self):
+        import war_peace_reconstruction_watch_oct04_guard as guard
+        body = b'<html>temporarily unavailable</html>'
+        with self.assertRaises(guard.watch.SourcePayloadError) as caught:
+            guard.watch._validate_source_payload('https://www.bing.com/news/search?format=rss&q=example', body)
+        self.assertEqual(caught.exception.response_body, body)
+
+    def test_real_bing_emergency_failure_recovers_same_five_requests_and_replays(self):
+        import war_peace_reconstruction_watch_oct04_guard as guard
+        watch = guard.watch
+        saved = watch.OUT, watch.req, watch.QUERIES
+        watch.OUT = self.root/'bing-emergency'
+        watch.QUERIES = ['__BING_MIDDLE_EAST_EMERGENCY__']
+        calls = mp.get_context('fork').Value('i', 0)
+        valid = b'<rss><channel/></rss>'
+        def req(url, timeout=20):
+            if 'The%20Hormuz%20Letter' in url:
+                with calls.get_lock():
+                    calls.value += 1
+                    attempt = calls.value
+                if attempt == 1:
+                    watch._validate_source_payload(url, b'<html>temporarily unavailable</html>')
+            return valid
+        watch.req = req
+        try:
+            queries, traces, report = self.collect(watch, workers=1)
+            self.assertEqual(calls.value, 2)
+            self.assertEqual(report['news'][0]['status'], 'ok')
+            self.assertEqual(report['news'][0]['requests'], 5)
+            self.assertEqual([h['url'] for h in report['news'][0]['http']],
+                             [h['url'] for h in report['news'][0]['initial_attempt']['http']])
+            watch.req = forbidden
+            restore, verify = runtime.install_replay(watch, queries, traces)
+            try:
+                rows, error = watch.google_news(queries[0])
+                self.assertEqual(rows, [])
+                self.assertIsNone(error)
+                verify()
+            finally:
+                restore()
         finally:
             watch.OUT, watch.req, watch.QUERIES = saved
 

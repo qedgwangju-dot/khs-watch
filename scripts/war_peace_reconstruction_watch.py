@@ -92,7 +92,11 @@ def _validate_source_payload(url, data):
                 raise ValueError('missing GDELT articles list')
     except (ValueError, ET.ParseError) as exc:
         digest = hashlib.sha256(data).hexdigest()[:12]
-        raise SourcePayloadError(f'expected {"RSS/Atom" if rss else "JSON"}; bytes={len(data)} sha256={digest}') from exc
+        failure = SourcePayloadError(f'expected {"RSS/Atom" if rss else "JSON"}; bytes={len(data)} sha256={digest}')
+        # The runtime must retain the response that caused the gate failure.
+        # A byte count/hash alone cannot distinguish a provider error page.
+        failure.response_body = data
+        raise failure from exc
 
 
 # Installed only inside isolated collection workers, never in delivery/finalize.
