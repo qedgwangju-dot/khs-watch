@@ -330,7 +330,15 @@ def build_alert(current: ReleaseSection, previous: ReleaseSection | None) -> tup
     current_word = guidance_word(current_policy)
     previous_word = guidance_word(previous_policy)
     amounts = extract_refunding_amounts(current_policy)
-    supply = summarize_long_end_supply(nominal_long_end_table(current_raw_policy))
+    supply_fx = None
+    try:
+        from fx_api import daily_krw
+        supply_fx = daily_krw().rate
+    except Exception:
+        pass
+    supply = summarize_long_end_supply(
+        nominal_long_end_table(current_raw_policy), fx=supply_fx
+    )
     shortfall, shortfall_years = extract_shortfall(minutes + " " + report)
 
     if maintain and current_word == "changes" and previous_word == "increases":
@@ -467,6 +475,7 @@ def build_alert(current: ReleaseSection, previous: ReleaseSection | None) -> tup
         "shortfall_trillion_usd": shortfall,
         "shortfall_years": shortfall_years,
         "official_20y_30y_issuance": supply,
+        "source_version": "official_qra_monthly_table_if_available",
         "analyst_comparator": CITI_20261009,
         "policy_url": current_policy_item.url if current_policy_item else None,
     }
