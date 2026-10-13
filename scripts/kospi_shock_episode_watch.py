@@ -19,7 +19,7 @@ from zoneinfo import ZoneInfo
 
 import requests
 
-from kospi_shock_enrichment import build_enrichment
+from kospi_shock_enrichment import build_enrichment, build_kosdaq_enrichment
 from krx_session_calendar import session_state
 
 KST = ZoneInfo("Asia/Seoul")
@@ -1389,6 +1389,42 @@ class Watch:
                 self.raw["last_enrichment_error"] = f"{type(exc).__name__}: {exc}"
                 print(f"kospi_enrichment_error={type(exc).__name__}: {exc}", flush=True)
 
+    async def _run_kosdaq_enrichment(self, ep: dict[str,Any], att: dict[str,Any]) -> None:
+        """기존 코스피 정밀분해의 송출·인계 경로를 재사용하되 시장은 코스닥으로 한정."""
+        async with self.enrichment_sem:
+            try:
+                text, detail = await asyncio.to_thread(build_kosdaq_enrichment,self.token,ep,att)
+                msg_id = await asyncio.to_thread(telegram_send,text)
+                self.enrichment_msg_ids.append(msg_id)
+                self._record_delivery("kosdaq_enrichment",msg_id,ep,float(ep.get("low_ts") or time.time()))
+                self.raw["last_kosdaq_enrichment"]={
+                    "generated_at_kst":detail.get("generated_at_kst"),
+                    "market_basis":detail.get("market_basis"),
+                    "stock_count":len(detail.get("stocks") or []),
+                    "industry_count":len(detail.get("industries") or []),
+                    "theme_count":len(detail.get("themes") or []),
+                    "etf_count":len(detail.get("etfs") or []),
+                    "errors":detail.get("errors") or [],
+                    "message_id":msg_id,
+                }
+            except Exception as exc:
+                self.raw["last_kosdaq_enrichment_error"]=f"{type(exc).__name__}: {exc}"
+                print(f"kosdaq_enrichment_error={type(exc).__name__}: {exc}",flush=True)
+                # 원자료가 부족할 때 코스피 종목·선물 수급을 대신 쓰지 않는다.
+                # Telegram을 통한 오류 상태 고지는 별도 후보 숫자를 꾸며내지 않는다.
+                try:
+                    lines=[
+                        "🔎 <b>코스닥 급락 정밀분해 · 원자료 확인 보류</b>",
+                        f"• 사건구간 {fmt_clock(ep.get('start_ts'))} → {fmt_clock(ep.get('low_ts'))}",
+                        "• 코스닥 업종·종목·ETF에 필요한 LS 자료 확보 실패 — 매도종목을 추정하지 않습니다.",
+                        "• 코스피200 선물과 코스피 종목 자료를 코스닥 근거로 대체하지 않습니다.",
+                    ]
+                    msg_id=await asyncio.to_thread(telegram_send,"\n".join(lines))
+                    self.enrichment_msg_ids.append(msg_id)
+                    self._record_delivery("kosdaq_enrichment_hold",msg_id,ep,float(ep.get("low_ts") or time.time()))
+                except Exception as notify_exc:
+                    self.raw["last_kosdaq_enrichment_hold_notify_error"]=f"{type(notify_exc).__name__}: {notify_exc}"
+
     async def maybe_flow(self) -> None:
         now = time.time()
         if self.flow_task and not self.flow_task.done():
@@ -1661,6 +1697,11 @@ class Watch:
             self.kosdaq_last_episode_end_ts=now_t
             self.msg_ids.append(msg_id)
             self._record_delivery("kosdaq_shock_end",msg_id,ep,now_t)
+            ep_copy=json.loads(json.dumps(ep))
+            final_att=self._kosdaq_attribution(float(ep["start_ts"]),float(ep["low_ts"]))
+            task=asyncio.create_task(self._run_kosdaq_enrichment(ep_copy,final_att))
+            self.enrichment_tasks.add(task)
+            task.add_done_callback(self.enrichment_tasks.discard)
 
     @staticmethod
     def build_kosdaq_flow_surge_alert(actor: str, delta: float, pair: dict[str, Any],
@@ -2322,6 +2363,11 @@ class Watch:
             self.kosdaq_last_episode_end_ts=end_ts
             self.msg_ids.append(msg_id)
             self._record_delivery("kosdaq_shock_close",msg_id,ep,end_ts)
+            ep_copy=json.loads(json.dumps(ep))
+            final_att=self._kosdaq_attribution(float(ep["start_ts"]),float(ep["low_ts"]))
+            task=asyncio.create_task(self._run_kosdaq_enrichment(ep_copy,final_att))
+            self.enrichment_tasks.add(task)
+            task.add_done_callback(self.enrichment_tasks.discard)
 
         if self.kosdaq_price_task:
             try:
