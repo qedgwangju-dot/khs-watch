@@ -68,6 +68,57 @@ class AlertOperationsAuditTest(unittest.TestCase):
         self.assertIn("임의 재활성화 금지", md)
         self.assertIn("message_id", md)
 
+    def test_schedule_silence_excludes_disabled_and_uncertain_windows(self):
+        import datetime as dt
+
+        self.assertEqual(audit.conservative_schedule_gap_hours("7,27,47 * * * *"), 3)
+        self.assertEqual(audit.conservative_schedule_gap_hours("23 0 * * *"), 48)
+        self.assertIsNone(audit.conservative_schedule_gap_hours("15 9 * * 1-5"))
+        self.assertIsNone(audit.conservative_schedule_gap_hours("invalid"))
+
+        now = dt.datetime(2026, 10, 13, 12, tzinfo=dt.timezone.utc)
+        records = [
+            {"id": 1, "path": ".github/workflows/fast.yml", "event": "schedule",
+             "created_at": "2026-10-13T06:00:00Z", "conclusion": "success",
+             "html_url": "https://github.com/org/repo/actions/runs/1"},
+            {"id": 2, "path": ".github/workflows/healthy.yml", "event": "schedule",
+             "created_at": "2026-10-13T11:30:00Z", "conclusion": "success"},
+            {"id": 3, "path": ".github/workflows/other.yml", "event": "schedule",
+             "created_at": "2026-10-11T09:00:00Z", "conclusion": "success"},
+        ]
+        registry = [
+            {"path": ".github/workflows/fast.yml", "state": "active"},
+            {"path": ".github/workflows/healthy.yml", "state": "active"},
+            {"path": ".github/workflows/no-runs.yml", "state": "active"},
+            {"path": ".github/workflows/daily.yml", "state": "active"},
+            {"path": ".github/workflows/disabled.yml", "state": "disabled_manually"},
+        ]
+        gaps = audit.audit_runtime(
+            records, registry,
+            schedule_max_gap_hours={
+                ".github/workflows/fast.yml": 3,
+                ".github/workflows/healthy.yml": 3,
+                ".github/workflows/no-runs.yml": 3,
+                ".github/workflows/daily.yml": 48,
+                ".github/workflows/disabled.yml": 3,
+            },
+            now_utc=now,
+        )["schedule_silence_candidates"]
+        by_path = {row["path"]: row for row in gaps}
+        self.assertEqual(by_path[".github/workflows/fast.yml"]["reason"], "scheduled_run_overdue")
+        self.assertEqual(by_path[".github/workflows/no-runs.yml"]["reason"], "no_scheduled_run_in_observed_window")
+        self.assertIn(".github/workflows/daily.yml", by_path)
+        self.assertNotIn(".github/workflows/healthy.yml", by_path)
+        self.assertNotIn(".github/workflows/disabled.yml", by_path)
+
+        # A short partial API sample must not falsely flag a daily schedule.
+        short = audit.audit_runtime(
+            records[1:2], registry,
+            schedule_max_gap_hours={".github/workflows/daily.yml": 48},
+            now_utc=now,
+        )
+        self.assertFalse(short["schedule_silence_candidates"])
+
     def test_corrupt_run_input_fails_not_false_all_clear(self):
         with tempfile.TemporaryDirectory() as directory:
             path = pathlib.Path(directory) / "runs.jsonl"
