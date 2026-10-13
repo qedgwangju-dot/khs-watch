@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-14T08:26:18+09:00",
+  "updated_at_kst": "2026-10-14T08:58:21+09:00",
   "correction_pending": false,
   "buyback": {
     "sha256": "3e691d164254d161d0d814e87c0eb3b88203e8985bb2f046aff70278f43ae5d4",
@@ -25,12 +25,11 @@
     "date": "2026-10-13",
     "total_usd_m": 6.7,
     "status": "partial",
-    "reported_funds": 6,
-    "missing_funds": 6,
+    "reported_funds": 7,
+    "missing_funds": 5,
     "missing_tickers": [
       "IBIT",
       "FBTC",
-      "BTCO",
       "EZBC",
       "BRRR",
       "HODL"
@@ -149,6 +148,13 @@
         "reported_funds": 6,
         "missing_funds": 6,
         "coverage": "6/12"
+      },
+      {
+        "observed_at_kst": "2026-10-14T08:58:21+09:00",
+        "total_usd_m": 6.7,
+        "reported_funds": 7,
+        "missing_funds": 5,
+        "coverage": "7/12"
       }
     ]
   },
