@@ -5,6 +5,7 @@ import datetime as dt
 import re
 import urllib.parse
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Iterable
 from zoneinfo import ZoneInfo
 
@@ -684,6 +685,15 @@ def self_test() -> None:
     assert "2026년 10월 14일 12:59 KST" in t557
     assert "경보 대상 운영시간" in t557 and "게시·발효" not in t557
     assert "eDART" in t557 and "<a href=" in t557
+
+    # Regression gate: source anchors must reach Telegram with HTML parsing.
+    wf_path = Path(__file__).resolve().parents[1] / ".github" / "workflows" / "data-center-growth-telegram-watch.yml"
+    if wf_path.exists():
+        wf = wf_path.read_text(encoding="utf-8")
+        route = wf.split('elif p.name == "us_grid_emergency_alert.txt":', 1)
+        assert len(route) == 2, "PJM/DOE Telegram source-link route disappeared"
+        branch = route[1].split('elif p.name ==', 1)[0]
+        assert 'payload["parse_mode"] = "HTML"' in branch, "PJM/DOE HTML links would show literally"
 
     unknown = {
         "kind": "doe",
