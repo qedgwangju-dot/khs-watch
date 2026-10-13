@@ -3438,7 +3438,8 @@ assert ng==arg and ns<11,(ng,ns,nc)
 
 robros_recovered = watcher.query_news(watcher.ROBROS_PILOT_20261013)
 if base.NOW.astimezone(base.KST).date()<=dt.date(2026,10,20):
-    assert len(robros_recovered)==1,robros_recovered
+    expected_count = 2 if base.NOW.astimezone(base.KST).date() <= dt.date(2026,10,16) else 1
+    assert len(robros_recovered) == expected_count, robros_recovered
     p=robros_recovered[0]
     assert p["published"]=="2026-10-13T06:00:00+00:00",p
     assert "공식 보도자료" in p["description"],p
@@ -3472,6 +3473,52 @@ material_editorial=make(
     "연합뉴스",
 )
 assert not watcher._is_stock_reaction_only(material_editorial),material_editorial
+
+
+
+# Real Run #574 false positive: generic AI data-center ESS demand, no
+# contracted deployment, meter reading, or price observation.
+ess_ai_demand_only=make(
+    '"AI가 삼키는 전력, 배터리가 받친다"… AI 데이터센터發 ESS 수요 폭증',
+    '기존 자료를 인용한 AI 데이터센터 ESS 수요 시장 전망으로 '
+    '별도 신규 수주 계약액·실제 현장 설치·관측 가격 발표는 없음',
+    '글로벌이코노믹',
+)
+assert watcher._is_generic_ess_demand_story(ess_ai_demand_only)
+eg, es, ec, ek = classify(ess_ai_demand_only)
+assert es < 11, (eg,es,ec)
+
+material_ess_headline=make(
+    'ESS 수요 급증 속 삼성SDI 신규 공급계약 체결',
+    '삼성SDI의 고객 실명 공식 신규 수주가 별도로 공시됐다.',
+    '연합뉴스',
+)
+assert not watcher._is_generic_ess_demand_story(material_ess_headline)
+
+# One-time, user-visible correction of three false positives from messages
+# #213 (two invalid topics) and #214 (one general demand article).
+old_robros_now=base.NOW
+try:
+    base.NOW=dt.datetime(2026,10,13,10,0,tzinfo=dt.timezone.utc)
+    recovered=watcher.query_news(watcher.ROBROS_PILOT_20261013)
+    corrections=[x for x in recovered if x.get('robros_false_alert_correction')]
+    assert len(corrections)==1, corrections
+    corr=corrections[0]
+    cg,cs,cc,ck=classify(corr)
+    assert cg=="robros_industrial_sandbox" and cs>=11, (cg,cs,cc)
+    assert cc=="로브로스 실증특례 · Telegram 오탐 정정",cc
+    assert ck!=ark,"Correction must not reissue the approval event key"
+    rendered=corr["title"]+" "+corr["description"]
+    assert base.category(rendered,base.topic_group(rendered))==cc
+    assert base.clean_title(corr["title"],corr["source"]).startswith("정정:")
+    assert "실발송" in base.verification(corr,cg,rendered)
+    for expected in ["213번 1번","3번 LG전자","214번 ESS","공식 보도자료","30억원"]:
+        assert expected in base.meaning(cc),(expected,base.meaning(cc))
+    # Historical correction cannot be replayed after de-dup state rotation.
+    base.NOW=dt.datetime(2026,10,17,10,0,tzinfo=dt.timezone.utc)
+    assert watcher._robros_213_214_correction()==[]
+finally:
+    base.NOW=old_robros_now
 
 
 print("Physical-AI watcher regression guards: PASS")
