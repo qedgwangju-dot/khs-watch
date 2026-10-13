@@ -14,8 +14,8 @@ class EuropeYieldTelegramHtmlTests(unittest.TestCase):
         ]
         chunks = render_chunks("🔴 [유럽 국채금리 경보] 높은 수준\n\n■ 출처\n" + "\n".join(lines))
         combined = "\n".join(chunks)
-        self.assertEqual(combined.count("<a href="), 7)
-        self.assertEqual(combined.count("</a>"), 7)
+        self.assertEqual(combined.count("<a href="), len(LINKS))
+        self.assertEqual(combined.count("</a>"), len(LINKS))
         self.assertIn("&amp;series=10y", combined)
         self.assertIn("<b>■ 출처</b>", combined)
         self.assertIn("이탈리아 10년물 시장자료", combined)
