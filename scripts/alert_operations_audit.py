@@ -41,7 +41,7 @@ def conservative_schedule_gap_hours(cron: str) -> int | None:
         return None
     if hour == "*":
         return 3  # Hourly cadence plus GitHub scheduling delay tolerance.
-    if re.fullmatch(r"(?:[01]?\\d|2[0-3])", hour):
+    if re.fullmatch(r"(?:[01]?\d|2[0-3])", hour):
         return 48  # Daily cadence plus generous delay tolerance.
     return None
 
