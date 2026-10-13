@@ -293,3 +293,9 @@ jobs:
             out/treasury_fiscal_plan_telegram_confirmed.json
           if-no-files-found: ignore
           retention-days: 14
+
+      - name: Flag incomplete fiscal watcher verification
+        if: always() && (steps.fiscal_tests.outcome == 'failure' || steps.fiscal_scan.outcome == 'failure')
+        run: |
+          echo "미 재무부 QRA 기본 감시와 재정건전화 보조 감시 중 보조 검증이 실패했습니다. 전송·상태 결과를 개별 확인하세요." >> "$GITHUB_STEP_SUMMARY"
+          exit 1
