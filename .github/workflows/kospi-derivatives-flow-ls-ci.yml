@@ -202,8 +202,8 @@ jobs:
 
       - name: Probe KOSDAQ five-minute inflows and deployed worker age
         env:
-          GH_TOKEN: \${{ github.token }}
-          REPOSITORY: \${{ github.repository }}
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
         run: |
           PYTHONPATH=scripts python - <<'PY'
           import datetime as dt,json,os,pathlib,time,urllib.request
