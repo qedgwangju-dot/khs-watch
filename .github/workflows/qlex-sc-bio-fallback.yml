@@ -14,8 +14,9 @@ permissions:
   contents: write
 
 concurrency:
-  group: qlex-sc-bio-fallback
-  cancel-in-progress: true
+  # Shared with the primary bio workflow: prevent concurrent Telegram delivery retries.
+  group: bio-qlex-intismeran-watch
+  cancel-in-progress: false
 
 jobs:
   recover-if-stale:
