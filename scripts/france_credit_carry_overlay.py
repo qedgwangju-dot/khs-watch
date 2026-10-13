@@ -28,8 +28,8 @@ AFT_FR = "https://www.aft.gouv.fr/fr/calendrier-notations-france"
 AFT_TEXT_RECOVERY = "https://r.jina.ai/https://www.aft.gouv.fr/en/frances-credit-ratings"
 ORIGINAL_STORY = "https://www.briefs.co/news/hedge-funds-scramble-as-french-bond-rout-blows-out-spreads/"
 REVIEW_DATE = dt.date(2026, 10, 23)
-# Verified from AFT's official published table on 2026-10-14 (Asia/Seoul).
-# Historical fallback is ONLY for an explicitly dated schedule reminder; do
+# AFT official-site indexed table was cross-checked with Reuters on 2026-10-14.
+# This is NOT an AFT live-page fetch. Historical baseline is ONLY for reminders; do
 # not treat it as a live agency rating or a rating decision.
 VERIFIED_AFT_SNAPSHOT = {
     "agency": "Moody's", "rating": "Aa3", "outlook": "Negative",
@@ -252,7 +252,7 @@ def format_event(rating: dict, events: list[dict], pending: dict,
         days = min(x["days"] for x in events if x["kind"] == "milestone")
         name = f"프랑스 Moody’s 신용등급 검토 D-{days}"
         if rating.get("source_kind") in ("historical_official_snapshot", "secondary_text_recovery"):
-            status = (f"2026-10-14 확인한 AFT 공식 일정: 2026-10-23(프랑스 현지 날짜). "
+            status = (f"2026-10-14 확인한 AFT 공식 페이지 검색 색인의 일정: 2026-10-23(프랑스 현지 날짜). "
                       f"당일 공식 페이지 재조회는 제한되어 최신 일정 변경 여부는 확인 불가. "
                       f"마지막 확인 등급 {rating['rating']}·전망 {rating['outlook']}.")
         else:
@@ -266,7 +266,7 @@ def format_event(rating: dict, events: list[dict], pending: dict,
     else:
         name = "프랑스 신용등급 공식자료 조회 장애"
         status = ("프랑스 국채관리청의 Moody’s 등급표가 반복적으로 접근 제한 상태입니다. "
-                  "최근 공식 확인일은 2026-10-14입니다.")
+                  "AFT 공식 페이지 검색 색인 확인일은 2026-10-14이며 직접 원문 조회는 제한됐습니다.")
         caveat = "등급 변경이나 시장의 강등 가능성을 확정할 수 없습니다. 공식 결과 조회가 지연될 수 있습니다."
 
     msg = "\n".join([
@@ -392,7 +392,7 @@ def main() -> int:
         "\n".join([
             "# 프랑스 신용등급·국채 캐리 감시",
             f"- 조회: {now.isoformat(timespec='seconds')}",
-            f"- 출처 상태: {'공식 원문 조회' if source_ok else '접근 제한·2026-10-14 공식 확인값 참고'}",
+            f"- 출처 상태: {'공식 원문 조회' if source_ok else '접근 제한·2026-10-14 AFT 검색 색인 참고'}",
             f"- 최근 공식확인: Moody's {rating['rating']}, {rating['outlook']}, {rating['decision_date']}",
             f"- 다음 심사: {rating['next_review'] or '미게시'}",
             f"- 연속 원문 오류: {fail_streak}",
