@@ -151,7 +151,10 @@ def ls_post(token: str, path: str, tr: str, body: dict[str, Any]) -> dict[str, A
                 continue
             raise RuntimeError(last_error) from exc
         text = r.text or ""
-        retryable_http = r.status_code in {429, 500, 502, 503, 504}
+        # LS 임시 게이트웨이 장애는 /503.html로 라우팅한 뒤 HTTP 404로 반환될 수 있다.
+        # 존재하지 않는 정상 API 경로의 진짜 404와 구분하여 임시 장애만 재시도한다.
+        gateway_503_as_404 = r.status_code == 404 and "/503.html" in text
+        retryable_http = r.status_code in {429, 500, 502, 503, 504} or gateway_503_as_404
         if not r.ok:
             last_error = f"{tr} HTTP {r.status_code}: {text[:300]}"
             if attempt < 4 and retryable_http:
