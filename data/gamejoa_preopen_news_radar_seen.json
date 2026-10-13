@@ -1319,6 +1319,24 @@
       "telegram_core_fact": "최근 한달간 머니마켓·단기금리형 ETF 5종에 4조원 넘는 자금이 유입되며 수익률보다 안정성과 유동성을 중시하는 모습이다. 최근 1개월간 자금 순유입 상위 10개 ETF 중 현금성·단기금리형 상품 5종에 총 4조1599억원이 유입됐다.",
       "title": "\"국장은 불안해\"…ETF 투자금 4조원 몰린 곳은?"
     },
+    "core:08f5dc8f24f9b5d3979a4ff0": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003824422",
+      "source": "뉴시스",
+      "source_body_digest": "0b933444e42f0cf239108fa0f2479443287c71a40db54265a2d16225ede3278f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-13T17:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK가스, 900억 규모 자사주 매입·소각…주주환원 강화 '승부수'",
+      "telegram_core_fact": "SK가스는 13일 이사회에서 올해부터 오는 2028년까지 매년 300억원 자사주를 매입·소각하는 중기 주주환원 계획을 보고하고, 첫해 분 자사주 취득을 의결했다고 밝혔다.",
+      "title": "SK가스, 900억 규모 자사주 매입·소각…주주환원 강화 '승부수'"
+    },
     "core:090cdb71780ebac996d36ed7": {
       "first_seen_kst": "2026-10-11T16:32:27+09:00",
       "lanes": {
@@ -2416,6 +2434,33 @@
       "source_title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표 | 연합뉴스",
       "telegram_core_fact": "반도체 초호황 속 삼성전자가 국내 기업 사상 최초로 분기 영업이익 100조원 달성을 가시권에 두고 있다.",
       "title": "삼성전자, 분기 영업익 100조시대 열까…내일 3분기 실적발표 | 연합뉴스"
+    },
+    "core:0e41acb5ade76313ae8d49ab": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174942",
+      "source": "매일경제",
+      "source_body_digest": "0f88dd29e757cb2560115c719610ff533c7ef921d451586bd6449895e7d243bc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3af5db21e105c9f54ec33cc04e28b1c05a4b9762586d0a387b4b9f127a08556",
+      "source_fact_keys": [
+        "source_fact:v1:57ff7b4bf66811f5d46f19304a47ff290874453a51d8c2d88be1d1fb52e5b4f2",
+        "source_fact:v1:618a313c8fb8cdf7c21c24261aab051f4bea9f838875db40b1e9c8cb1fa956d3",
+        "source_fact:v1:7e78dca30b6f20bfe5f3566beebc3acb327443fe7f4348c76728a75e956fb403",
+        "source_fact:v1:83b41c67fc70af55581ad13f3737af19415cb5af2fed405bdcb736f029bdd3a0",
+        "source_fact:v1:895e67526e6b387b93b8d0eb855ec44ec7a68b06e3a8266e9c39d759d58fdcc7",
+        "source_fact:v1:9341fe8bd745b03db98226ed2099d335535bc1cd0fae336d28225b485ab08685",
+        "source_fact:v1:9a5f1adcac3d82152ded582e86f15e14170b2ccb01ab5b9611a1b87fcd42dc0b",
+        "source_fact:v1:b5a37b054d7bf9df40a077f3fc74e0f61d25e5c528a7a7388f90bbbbc1ba4edd"
+      ],
+      "source_published_kst": "2026-10-13T21:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "에이트코 홀딩스, 나스닥 최소입찰가 요건 회복..상장 리스크 해소",
+      "telegram_core_fact": "에이트코 홀딩스(ORBS)가 나스닥 상장 규정상 최소 입찰가 요건(주당 1달러)을 다시 충족해 관련 사안이 종결됐다는 나스닥 상장심사팀의 통보를 받았다고 10월 13일 발표했다. 나스닥 최소 입찰가 요건을 회복해 상장폐지 우려가 해소된 점은 투자심리에 긍정적이에요.",
+      "title": "에이트코 홀딩스, 나스닥 최소입찰가 요건 회복..상장 리스크 해소"
     },
     "core:0e584b348bb8dc969e272925": {
       "first_seen_kst": "2026-10-11T22:09:39+09:00",
@@ -13297,6 +13342,29 @@
       "source_title": "\"국장 탈출은 지능순\" 커뮤니티 분통…개인 투자자 10조원 미국 증시로 이동",
       "telegram_core_fact": "국내 증시의 지지부진한 흐름에 실망한 개인 투자자들이 국내 주식을 대거 매도하고 미국 증시로 눈을 돌려 3분기 동안 10조원 넘는 자금을 쏟아부은 것으로 나타났다. 최근 금융투자업계와 한국예탁결제원에 따르면 개인 투자자들은 지난 7월부터 9월까지 국내 유가증권시장에서 5조5000억원 이상을 순매도했다.",
       "title": "\"국장 탈출은 지능순\" 커뮤니티 분통…개인 투자자 10조원 미국 증시로 이동"
+    },
+    "core:4e76adbcb34bd0ced1b9e862": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://biz.heraldcorp.com/article/10901072",
+      "source": "헤럴드경제",
+      "source_body_digest": "aade0671b1cd18c2977c2a6ecd1a8a5f6bcb768e866765640ce4957180b953ad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d03416d0375bc370ed184a4dd21d52e09b8a5bb5189b0ac42a25edc19b4cd2ae",
+      "source_fact_keys": [
+        "source_fact:v1:6e59176d6c656cbe3887cbd2a29a332a11c6637629bf8d20885a1c1498c3f8bf",
+        "source_fact:v1:a6a85f25ee1b206f76094a7bafd2345ec3880e1a576cd2bb50d3cfdc5b123344",
+        "source_fact:v1:b359414f1517155581accc77d7f0e8eede66fe81412a9af4a1528d7d404613cf",
+        "source_fact:v1:e54a1905f37137de0550170d1cb908e4be7ccce47ef171fca3abbfdbd14a7d2c"
+      ],
+      "source_published_kst": "2026-10-13T21:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "자사주 매입도 무용지물…SK하닉마저 떠나면 ‘보릿고개’ 어쩌나 [투자360]",
+      "telegram_core_fact": "김록호 하나증권 연구원은 “삼성전자 2027년 1월 이사회에서 추가 주주환원 방안을 발표한다는 입장이나 3분기 실적 발표에서 추가 주주환원 방안으로 연내 자사주 매입이 언급된다면 매물대 해소에 도움이 될 것”이라고 전망했다.",
+      "title": "자사주 매입도 무용지물…SK하닉마저 떠나면 ‘보릿고개’ 어쩌나 [투자360]"
     },
     "core:4e854a0e8e24b0a6704ff696": {
       "first_seen_kst": "2026-10-13T10:27:50+09:00",
@@ -30745,6 +30813,27 @@
       "telegram_core_fact": "월스트리트저널(WSJ)에 따르면 브로드컴은 오픈AI와 개발 중인 맞춤형 AI 칩 사업과 연계해 500억달러가 넘는 자금조달을 추진하고 있다. 반도체업체 브로드컴(AVGO)은 오픈AI와 공동 개발 중인 맞춤형 인공지능(AI) 칩과 관련해 대규모 자금조달을 추진하고 있다는 소식에 주가가 하락하고 있다.",
       "title": "[美특징주]브로드컴, 오픈AI 관련 500억달러 조달 추진…주가 5%↓"
     },
+    "core:bad92dad971c4bdd03bb1553": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/14/MZRTAZRRGFSDGYRQGA4GIMZSGY/",
+      "source": "조선비즈",
+      "source_body_digest": "81db2443ce355e1391dcecbc8351c077727308437509db92ab78ca4b308bb6a3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:121eee7dcd00b4adca52811a2d46fe5cee15808885d8b08d11f8fb293bd3f21c",
+      "source_fact_keys": [
+        "source_fact:v1:69c25cce4f11cb7d194ef4e72625bfbb3791b51bdb1aaaaf21553b400c431262",
+        "source_fact:v1:6a422dce912fe39ae7922e54f0f5b23312f70e5e49c632457e817de89b66dc32"
+      ],
+      "source_published_kst": "2026-10-14T00:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 반도체 공습·외국인 매도… 주저앉은 코스피",
+      "telegram_core_fact": "한국거래소에 따르면 외국인 투자자는 올해 들어 지난 12일까지 코스피에서 약 199조1000억원을 순매도(매도가 매수보다 많은 것)했다.",
+      "title": "中 반도체 공습·외국인 매도… 주저앉은 코스피"
+    },
     "core:badb411ee799901a311132ae": {
       "first_seen_kst": "2026-10-08T12:13:24+09:00",
       "lanes": {
@@ -41655,6 +41744,27 @@
       "link": "https://www.mk.co.kr/news/world/12165409",
       "source": "매일경제",
       "title": "美 8월 PCE 물가 전년 대비 3.4% 상승"
+    },
+    "event:005e9fdad05206770f767e21": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/14/MZRTAZRRGFSDGYRQGA4GIMZSGY/",
+      "source": "조선비즈",
+      "source_body_digest": "81db2443ce355e1391dcecbc8351c077727308437509db92ab78ca4b308bb6a3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:121eee7dcd00b4adca52811a2d46fe5cee15808885d8b08d11f8fb293bd3f21c",
+      "source_fact_keys": [
+        "source_fact:v1:69c25cce4f11cb7d194ef4e72625bfbb3791b51bdb1aaaaf21553b400c431262",
+        "source_fact:v1:6a422dce912fe39ae7922e54f0f5b23312f70e5e49c632457e817de89b66dc32"
+      ],
+      "source_published_kst": "2026-10-14T00:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 반도체 공습·외국인 매도… 주저앉은 코스피",
+      "telegram_core_fact": "한국거래소에 따르면 외국인 투자자는 올해 들어 지난 12일까지 코스피에서 약 199조1000억원을 순매도(매도가 매수보다 많은 것)했다.",
+      "title": "中 반도체 공습·외국인 매도… 주저앉은 코스피"
     },
     "event:00d5ad2877b9c85549826c5d": {
       "first_seen_kst": "2026-10-13T07:52:07+09:00",
@@ -53940,23 +54050,25 @@
     "event:f51b571ffc3ff1d202160484": {
       "first_seen_kst": "2026-10-13T00:22:20+09:00",
       "lanes": {
-        "live": "2026-10-14T02:42:17+09:00"
+        "live": "2026-10-14T03:39:25+09:00"
       },
-      "last_seen_kst": "2026-10-14T02:42:17+09:00",
-      "link": "https://www.yna.co.kr/view/MYH20261013019500038",
-      "source": "연합뉴스",
-      "source_body_digest": "9c6e279d45fbb0bae8bed62a3fbb939f23711dbc354d48e97bfd7cce5c27e05d",
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://biz.heraldcorp.com/article/10901072",
+      "source": "헤럴드경제",
+      "source_body_digest": "aade0671b1cd18c2977c2a6ecd1a8a5f6bcb768e866765640ce4957180b953ad",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:77fc8bea7c49cb38afb3cc6f318a24800028285848bb0322cc8742744a52f7e5",
+      "source_fact_identity": "source_facts:v1:d03416d0375bc370ed184a4dd21d52e09b8a5bb5189b0ac42a25edc19b4cd2ae",
       "source_fact_keys": [
-        "source_fact:v1:5e850a09200e4b693d75ea4f33e550595a70faad4d7e2e8ec3b7930ca73e1794",
-        "source_fact:v1:5ec3533e4c633c7532b1767f612eb0bcf7d8ffbf1726d479c26969f3dd77e15d"
+        "source_fact:v1:6e59176d6c656cbe3887cbd2a29a332a11c6637629bf8d20885a1c1498c3f8bf",
+        "source_fact:v1:a6a85f25ee1b206f76094a7bafd2345ec3880e1a576cd2bb50d3cfdc5b123344",
+        "source_fact:v1:b359414f1517155581accc77d7f0e8eede66fe81412a9af4a1528d7d404613cf",
+        "source_fact:v1:e54a1905f37137de0550170d1cb908e4be7ccce47ef171fca3abbfdbd14a7d2c"
       ],
-      "source_published_kst": "2026-10-13T21:00+09:00",
+      "source_published_kst": "2026-10-13T21:40+09:00",
       "source_supply_terms": {},
-      "source_title": "\"수급·中반도체 추격 우려\"…美금리·빅테크 실적 주목 | 연합뉴스",
-      "telegram_core_fact": "특히 미국 금리의 향방을 가늠할 이번 주 소비자물가지수 발표와 AI 투자 지속 여부를 확인할 빅테크 기업들의 실적 발표에 관심이 쏠립니다.",
-      "title": "\"수급·中반도체 추격 우려\"…美금리·빅테크 실적 주목 | 연합뉴스"
+      "source_title": "자사주 매입도 무용지물…SK하닉마저 떠나면 ‘보릿고개’ 어쩌나 [투자360]",
+      "telegram_core_fact": "김록호 하나증권 연구원은 “삼성전자 2027년 1월 이사회에서 추가 주주환원 방안을 발표한다는 입장이나 3분기 실적 발표에서 추가 주주환원 방안으로 연내 자사주 매입이 언급된다면 매물대 해소에 도움이 될 것”이라고 전망했다.",
+      "title": "자사주 매입도 무용지물…SK하닉마저 떠나면 ‘보릿고개’ 어쩌나 [투자360]"
     },
     "event:f5b0143b56634dd6a6788dff": {
       "first_seen_kst": "2026-10-08T04:14:15+09:00",
@@ -61183,6 +61295,29 @@
       "source_title": "설탕·밀가루·전분당 담합…삼양사, 공정위 과징금 1위 불명예",
       "telegram_core_fact": "\"여러 품목에서 담합이 적발되고 같은 기업에 제재가 집중되는 만큼, 과징금 부과와 함께 재발 방지 대책의 실효성을 점검해야 한다\"며 \"공정위는 제재 이후 시정조치 이행을 철저히 확인하고, 먹거리 분야의 담합 감시를 강화해야 한다\"고 강조했다.",
       "title": "설탕·밀가루·전분당 담합…삼양사, 공정위 과징금 1위 불명예"
+    },
+    "fact:1f826ef22419516cec2a027b": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610138098b",
+      "source": "한국경제",
+      "source_body_digest": "05c5bb5275f496ae5d8f8127d412deec3a99eb7d9aae89872c6b1a498ecefb25",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48d9a39803a04b031c0867ef8a351d8af61ccf34af38c95a5df752ae523fcb4f",
+      "source_fact_keys": [
+        "source_fact:v1:4dea972c6582ffd6ccf2222721b9a9f3dc41d2e7792d110baf66087eca3b35e2",
+        "source_fact:v1:7503d031487659e987ed26c33214597970fdb13204d3948db65a998c950f2d1d",
+        "source_fact:v1:b61295cb296efd3058d5c1de2c2985383e42a55dd601e6b3812a3557d5edd176",
+        "source_fact:v1:bdcc35342bfef2c08f8563cd5cb865837b8bfc3f63912cbbb2e59c7543c4b7df"
+      ],
+      "source_published_kst": "2026-10-13T10:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "두 달 만에 코스피 매도 사이드카 발동···4% 급락",
+      "telegram_core_fact": "코스피·코스닥은 각각 4.06%·2.46% 하락해 양 시장에 매도 사이드카가 발동됐다.",
+      "title": "두 달 만에 코스피 매도 사이드카 발동···4% 급락"
     },
     "fact:1fb3638202e9c9412ec187d6": {
       "first_seen_kst": "2026-10-07T17:10:43+09:00",
@@ -92686,6 +92821,29 @@
       "source_published_kst": "2026-10-06T12:16+09:00",
       "title": "기후부, '에너지 대전환' 속도…2030년 재생e 100GW·석탄발전 2040년 퇴출"
     },
+    "fact:b019922574b86c6d68e29774": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://biz.heraldcorp.com/article/10901072",
+      "source": "헤럴드경제",
+      "source_body_digest": "aade0671b1cd18c2977c2a6ecd1a8a5f6bcb768e866765640ce4957180b953ad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d03416d0375bc370ed184a4dd21d52e09b8a5bb5189b0ac42a25edc19b4cd2ae",
+      "source_fact_keys": [
+        "source_fact:v1:6e59176d6c656cbe3887cbd2a29a332a11c6637629bf8d20885a1c1498c3f8bf",
+        "source_fact:v1:a6a85f25ee1b206f76094a7bafd2345ec3880e1a576cd2bb50d3cfdc5b123344",
+        "source_fact:v1:b359414f1517155581accc77d7f0e8eede66fe81412a9af4a1528d7d404613cf",
+        "source_fact:v1:e54a1905f37137de0550170d1cb908e4be7ccce47ef171fca3abbfdbd14a7d2c"
+      ],
+      "source_published_kst": "2026-10-13T21:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "자사주 매입도 무용지물…SK하닉마저 떠나면 ‘보릿고개’ 어쩌나 [투자360]",
+      "telegram_core_fact": "김록호 하나증권 연구원은 “삼성전자 2027년 1월 이사회에서 추가 주주환원 방안을 발표한다는 입장이나 3분기 실적 발표에서 추가 주주환원 방안으로 연내 자사주 매입이 언급된다면 매물대 해소에 도움이 될 것”이라고 전망했다.",
+      "title": "자사주 매입도 무용지물…SK하닉마저 떠나면 ‘보릿고개’ 어쩌나 [투자360]"
+    },
     "fact:b058fc70d6e01f8e78ec6a63": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
       "lanes": {
@@ -95467,6 +95625,27 @@
       ],
       "source_published_kst": "2026-10-06T18:04+09:00",
       "title": "HLB, 간암 신약 '4수' 도전"
+    },
+    "fact:bcf201c7921dc3a1e721b07a": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/14/MZRTAZRRGFSDGYRQGA4GIMZSGY/",
+      "source": "조선비즈",
+      "source_body_digest": "81db2443ce355e1391dcecbc8351c077727308437509db92ab78ca4b308bb6a3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:121eee7dcd00b4adca52811a2d46fe5cee15808885d8b08d11f8fb293bd3f21c",
+      "source_fact_keys": [
+        "source_fact:v1:69c25cce4f11cb7d194ef4e72625bfbb3791b51bdb1aaaaf21553b400c431262",
+        "source_fact:v1:6a422dce912fe39ae7922e54f0f5b23312f70e5e49c632457e817de89b66dc32"
+      ],
+      "source_published_kst": "2026-10-14T00:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 반도체 공습·외국인 매도… 주저앉은 코스피",
+      "telegram_core_fact": "한국거래소에 따르면 외국인 투자자는 올해 들어 지난 12일까지 코스피에서 약 199조1000억원을 순매도(매도가 매수보다 많은 것)했다.",
+      "title": "中 반도체 공습·외국인 매도… 주저앉은 코스피"
     },
     "fact:bd3c43dd7b2b8613b6d86d62": {
       "first_seen_kst": "2026-10-06T21:17:11+09:00",
@@ -99687,6 +99866,33 @@
       ],
       "source_published_kst": "2026-10-04T23:56+09:00",
       "title": "OPEC+, 11월 원유 생산 목표 유지 합의"
+    },
+    "fact:d0464d2711c83616a0ccab52": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174942",
+      "source": "매일경제",
+      "source_body_digest": "0f88dd29e757cb2560115c719610ff533c7ef921d451586bd6449895e7d243bc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3af5db21e105c9f54ec33cc04e28b1c05a4b9762586d0a387b4b9f127a08556",
+      "source_fact_keys": [
+        "source_fact:v1:57ff7b4bf66811f5d46f19304a47ff290874453a51d8c2d88be1d1fb52e5b4f2",
+        "source_fact:v1:618a313c8fb8cdf7c21c24261aab051f4bea9f838875db40b1e9c8cb1fa956d3",
+        "source_fact:v1:7e78dca30b6f20bfe5f3566beebc3acb327443fe7f4348c76728a75e956fb403",
+        "source_fact:v1:83b41c67fc70af55581ad13f3737af19415cb5af2fed405bdcb736f029bdd3a0",
+        "source_fact:v1:895e67526e6b387b93b8d0eb855ec44ec7a68b06e3a8266e9c39d759d58fdcc7",
+        "source_fact:v1:9341fe8bd745b03db98226ed2099d335535bc1cd0fae336d28225b485ab08685",
+        "source_fact:v1:9a5f1adcac3d82152ded582e86f15e14170b2ccb01ab5b9611a1b87fcd42dc0b",
+        "source_fact:v1:b5a37b054d7bf9df40a077f3fc74e0f61d25e5c528a7a7388f90bbbbc1ba4edd"
+      ],
+      "source_published_kst": "2026-10-13T21:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "에이트코 홀딩스, 나스닥 최소입찰가 요건 회복..상장 리스크 해소",
+      "telegram_core_fact": "에이트코 홀딩스(ORBS)가 나스닥 상장 규정상 최소 입찰가 요건(주당 1달러)을 다시 충족해 관련 사안이 종결됐다는 나스닥 상장심사팀의 통보를 받았다고 10월 13일 발표했다. 나스닥 최소 입찰가 요건을 회복해 상장폐지 우려가 해소된 점은 투자심리에 긍정적이에요.",
+      "title": "에이트코 홀딩스, 나스닥 최소입찰가 요건 회복..상장 리스크 해소"
     },
     "fact:d05b908ec47226062983332d": {
       "first_seen_kst": "2026-10-08T20:16:13+09:00",
@@ -124443,6 +124649,33 @@
       "source": "머니투데이",
       "title": "물가 상승, 수요보다 유가·환율 영향…김영환 \"추가 금리인상 신중해야\""
     },
+    "link:2e110a17d24f7541efeb947d": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174942",
+      "source": "매일경제",
+      "source_body_digest": "0f88dd29e757cb2560115c719610ff533c7ef921d451586bd6449895e7d243bc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3af5db21e105c9f54ec33cc04e28b1c05a4b9762586d0a387b4b9f127a08556",
+      "source_fact_keys": [
+        "source_fact:v1:57ff7b4bf66811f5d46f19304a47ff290874453a51d8c2d88be1d1fb52e5b4f2",
+        "source_fact:v1:618a313c8fb8cdf7c21c24261aab051f4bea9f838875db40b1e9c8cb1fa956d3",
+        "source_fact:v1:7e78dca30b6f20bfe5f3566beebc3acb327443fe7f4348c76728a75e956fb403",
+        "source_fact:v1:83b41c67fc70af55581ad13f3737af19415cb5af2fed405bdcb736f029bdd3a0",
+        "source_fact:v1:895e67526e6b387b93b8d0eb855ec44ec7a68b06e3a8266e9c39d759d58fdcc7",
+        "source_fact:v1:9341fe8bd745b03db98226ed2099d335535bc1cd0fae336d28225b485ab08685",
+        "source_fact:v1:9a5f1adcac3d82152ded582e86f15e14170b2ccb01ab5b9611a1b87fcd42dc0b",
+        "source_fact:v1:b5a37b054d7bf9df40a077f3fc74e0f61d25e5c528a7a7388f90bbbbc1ba4edd"
+      ],
+      "source_published_kst": "2026-10-13T21:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "에이트코 홀딩스, 나스닥 최소입찰가 요건 회복..상장 리스크 해소",
+      "telegram_core_fact": "에이트코 홀딩스(ORBS)가 나스닥 상장 규정상 최소 입찰가 요건(주당 1달러)을 다시 충족해 관련 사안이 종결됐다는 나스닥 상장심사팀의 통보를 받았다고 10월 13일 발표했다. 나스닥 최소 입찰가 요건을 회복해 상장폐지 우려가 해소된 점은 투자심리에 긍정적이에요.",
+      "title": "에이트코 홀딩스, 나스닥 최소입찰가 요건 회복..상장 리스크 해소"
+    },
     "link:2e474a96a681baa2421ab669": {
       "first_seen_kst": "2026-10-06T23:56:49+09:00",
       "lanes": {
@@ -125080,6 +125313,24 @@
       ],
       "source_published_kst": "2026-10-06T07:10+09:00",
       "title": "5만 가구 ‘한강2’ 연계 5호선 2034년 개통할까 [교통지옥 김포 ③]"
+    },
+    "link:3039434df9de431896bbc207": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://view.asiae.co.kr/article/2026101223004958343",
+      "source": "아시아경제",
+      "source_body_digest": "b2d0f5421aa278af2b68d2ab3da267ffa63d635e25b98ec1ac1d68aaf0f53433",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-13T13:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "뮤직비디오 제작사가 등급 매긴다…자율분류 허용",
+      "telegram_core_fact": "뮤직비디오 유통의 걸림돌로 지적돼 온 사전 등급심사 규제가 완화된다.",
+      "title": "뮤직비디오 제작사가 등급 매긴다…자율분류 허용"
     },
     "link:304b04bf0f237c46293027e0": {
       "first_seen_kst": "2026-10-10T00:39:56+09:00",
@@ -134309,6 +134560,24 @@
       "telegram_core_fact": "이런 상황에서 SK오션플랜트 최대 주주 SK에코플랜트가 지난해 9월 1일 SK오션플랜트 매각 우선협상대상자로 디오션자산운용 컨소시엄을 선정했다고 공시하자 도, 고성군 모두 크게 반발했다.",
       "title": "SK오션플랜트 인수 디오션, 지역상생 내용에 관심 | 연합뉴스"
     },
+    "link:4ea16e3a0cacd982313a6d4b": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174998",
+      "source": "매일경제",
+      "source_body_digest": "4eebab784ca59aebe2d7189038cde4e9b4d57dbd957779b0f92412a844b81d55",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-13T23:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "선라이즈리얼티, 2000만 달러 자사주 매입 승인으로 주주환원 기대감 부각",
+      "telegram_core_fact": "2027년 말까지 최대 2000만 달러 자사주 매입이 승인되었습니다.",
+      "title": "선라이즈리얼티, 2000만 달러 자사주 매입 승인으로 주주환원 기대감 부각"
+    },
     "link:4ea3f4db3e45f612d980caa9": {
       "first_seen_kst": "2026-10-08T00:39:44+09:00",
       "lanes": {
@@ -135383,6 +135652,27 @@
       "telegram_core_fact": "최 회장은 이날 민형배 전남광주시장, 용지를 둘러보고 시 관계자로부터 전력·용수 등 기반시설 확보와 인허가 등 주요 현안에 대한 추진 계획을 듣기도 했다.",
       "title": "'호남팹' 속도전 나선 SK 최태원… \"전력·용수 늦어져도 먼저 건설\""
     },
+    "link:51a0bb75100f3f1eef934745": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/14/MZRTAZRRGFSDGYRQGA4GIMZSGY/",
+      "source": "조선비즈",
+      "source_body_digest": "81db2443ce355e1391dcecbc8351c077727308437509db92ab78ca4b308bb6a3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:121eee7dcd00b4adca52811a2d46fe5cee15808885d8b08d11f8fb293bd3f21c",
+      "source_fact_keys": [
+        "source_fact:v1:69c25cce4f11cb7d194ef4e72625bfbb3791b51bdb1aaaaf21553b400c431262",
+        "source_fact:v1:6a422dce912fe39ae7922e54f0f5b23312f70e5e49c632457e817de89b66dc32"
+      ],
+      "source_published_kst": "2026-10-14T00:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 반도체 공습·외국인 매도… 주저앉은 코스피",
+      "telegram_core_fact": "한국거래소에 따르면 외국인 투자자는 올해 들어 지난 12일까지 코스피에서 약 199조1000억원을 순매도(매도가 매수보다 많은 것)했다.",
+      "title": "中 반도체 공습·외국인 매도… 주저앉은 코스피"
+    },
     "link:51c03402cf111eb20cc630ff": {
       "first_seen_kst": "2026-10-13T13:05:30+09:00",
       "lanes": {
@@ -135558,6 +135848,29 @@
       "source_title": "미, 우크라에 \"러 정유설비 공격하면 핵심 정보 끊겠다\" 경고",
       "telegram_core_fact": "협상에서 트럼프 특사인 스티브 윗코프와 사위 재러드 쿠슈너는 우크라이나가 미국의 러시아 정유설비 공습 중단 경고를 무시하면 정보 공유를 중단할 수 있다고 경고했다. 우크라이나는 미국이 제공하는 정보의 도움을 받아 러시아 전쟁비용의 핵심 원천인 석유 산업을 공격해왔다.",
       "title": "미, 우크라에 \"러 정유설비 공격하면 핵심 정보 끊겠다\" 경고"
+    },
+    "link:523562c94d48fb70b0bec4fb": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://biz.heraldcorp.com/article/10901072",
+      "source": "헤럴드경제",
+      "source_body_digest": "aade0671b1cd18c2977c2a6ecd1a8a5f6bcb768e866765640ce4957180b953ad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d03416d0375bc370ed184a4dd21d52e09b8a5bb5189b0ac42a25edc19b4cd2ae",
+      "source_fact_keys": [
+        "source_fact:v1:6e59176d6c656cbe3887cbd2a29a332a11c6637629bf8d20885a1c1498c3f8bf",
+        "source_fact:v1:a6a85f25ee1b206f76094a7bafd2345ec3880e1a576cd2bb50d3cfdc5b123344",
+        "source_fact:v1:b359414f1517155581accc77d7f0e8eede66fe81412a9af4a1528d7d404613cf",
+        "source_fact:v1:e54a1905f37137de0550170d1cb908e4be7ccce47ef171fca3abbfdbd14a7d2c"
+      ],
+      "source_published_kst": "2026-10-13T21:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "자사주 매입도 무용지물…SK하닉마저 떠나면 ‘보릿고개’ 어쩌나 [투자360]",
+      "telegram_core_fact": "김록호 하나증권 연구원은 “삼성전자 2027년 1월 이사회에서 추가 주주환원 방안을 발표한다는 입장이나 3분기 실적 발표에서 추가 주주환원 방안으로 연내 자사주 매입이 언급된다면 매물대 해소에 도움이 될 것”이라고 전망했다.",
+      "title": "자사주 매입도 무용지물…SK하닉마저 떠나면 ‘보릿고개’ 어쩌나 [투자360]"
     },
     "link:523ed9885528dbc5a358d05f": {
       "first_seen_kst": "2026-10-03T09:05:24+09:00",
@@ -137919,6 +138232,24 @@
       ],
       "source_published_kst": "2026-10-06T10:28+09:00",
       "title": "에이프릴바이오 “APB-R3 임상결과 매우 고무적…다음 임상서 효능 확대 기대”"
+    },
+    "link:5a2c572c7d2df5470661bee9": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003824422",
+      "source": "뉴시스",
+      "source_body_digest": "0b933444e42f0cf239108fa0f2479443287c71a40db54265a2d16225ede3278f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-13T17:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK가스, 900억 규모 자사주 매입·소각…주주환원 강화 '승부수'",
+      "telegram_core_fact": "SK가스는 13일 이사회에서 올해부터 오는 2028년까지 매년 300억원 자사주를 매입·소각하는 중기 주주환원 계획을 보고하고, 첫해 분 자사주 취득을 의결했다고 밝혔다.",
+      "title": "SK가스, 900억 규모 자사주 매입·소각…주주환원 강화 '승부수'"
     },
     "link:5a3345aaf610f68eec81e79b": {
       "first_seen_kst": "2026-10-13T19:34:14+09:00",
@@ -142361,6 +142692,29 @@
       "source_title": "쿠쿠, 대우건설에 빌트인 정수기 공급…2년간 납품",
       "telegram_core_fact": "쿠쿠가 대우건설 빌트인 정수기 공급 계약을 수주했다.",
       "title": "쿠쿠, 대우건설에 빌트인 정수기 공급…2년간 납품"
+    },
+    "link:68a0e76a7995b4d8495e09f7": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610138098b",
+      "source": "한국경제",
+      "source_body_digest": "05c5bb5275f496ae5d8f8127d412deec3a99eb7d9aae89872c6b1a498ecefb25",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48d9a39803a04b031c0867ef8a351d8af61ccf34af38c95a5df752ae523fcb4f",
+      "source_fact_keys": [
+        "source_fact:v1:4dea972c6582ffd6ccf2222721b9a9f3dc41d2e7792d110baf66087eca3b35e2",
+        "source_fact:v1:7503d031487659e987ed26c33214597970fdb13204d3948db65a998c950f2d1d",
+        "source_fact:v1:b61295cb296efd3058d5c1de2c2985383e42a55dd601e6b3812a3557d5edd176",
+        "source_fact:v1:bdcc35342bfef2c08f8563cd5cb865837b8bfc3f63912cbbb2e59c7543c4b7df"
+      ],
+      "source_published_kst": "2026-10-13T10:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "두 달 만에 코스피 매도 사이드카 발동···4% 급락",
+      "telegram_core_fact": "코스피·코스닥은 각각 4.06%·2.46% 하락해 양 시장에 매도 사이드카가 발동됐다.",
+      "title": "두 달 만에 코스피 매도 사이드카 발동···4% 급락"
     },
     "link:68a7dfb93efb36af9001e111": {
       "first_seen_kst": "2026-10-02T21:24:19+09:00",
@@ -192086,6 +192440,24 @@
       "source_published_kst": "2026-10-07T12:00+09:00",
       "title": "'선박왕' 권혁, 15년 만에 체납세금 3938억 완납 의사…1000억 우선 납부"
     },
+    "original:0ccbe4aa593feb2c5e94c231": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://view.asiae.co.kr/article/2026101223004958343",
+      "source": "아시아경제",
+      "source_body_digest": "b2d0f5421aa278af2b68d2ab3da267ffa63d635e25b98ec1ac1d68aaf0f53433",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-13T13:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "뮤직비디오 제작사가 등급 매긴다…자율분류 허용",
+      "telegram_core_fact": "뮤직비디오 유통의 걸림돌로 지적돼 온 사전 등급심사 규제가 완화된다.",
+      "title": "뮤직비디오 제작사가 등급 매긴다…자율분류 허용"
+    },
     "original:0cda7f33b418d22f33a32a9e": {
       "first_seen_kst": "2026-10-13T22:04:42+09:00",
       "lanes": {
@@ -217279,6 +217651,24 @@
       "source": "머니투데이",
       "title": "하드·소프트웨어 경쟁력 통했다… K배터리 유일 'DSX 레디'"
     },
+    "original:5fef778e6c124034d08df227": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174998",
+      "source": "매일경제",
+      "source_body_digest": "4eebab784ca59aebe2d7189038cde4e9b4d57dbd957779b0f92412a844b81d55",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-13T23:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "선라이즈리얼티, 2000만 달러 자사주 매입 승인으로 주주환원 기대감 부각",
+      "telegram_core_fact": "2027년 말까지 최대 2000만 달러 자사주 매입이 승인되었습니다.",
+      "title": "선라이즈리얼티, 2000만 달러 자사주 매입 승인으로 주주환원 기대감 부각"
+    },
     "original:5ffdd5f150e15139ae3039b9": {
       "first_seen_kst": "2026-10-08T11:49:03+09:00",
       "lanes": {
@@ -217328,6 +217718,27 @@
       ],
       "source_published_kst": "2026-10-07T07:33+09:00",
       "title": "[마켓무버]뉴욕증시, 금리 부담 완화에 일제 상승…AI·반도체가 랠리 주도"
+    },
+    "original:603425c5f6dd8a508b0bba28": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/14/MZRTAZRRGFSDGYRQGA4GIMZSGY/",
+      "source": "조선비즈",
+      "source_body_digest": "81db2443ce355e1391dcecbc8351c077727308437509db92ab78ca4b308bb6a3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:121eee7dcd00b4adca52811a2d46fe5cee15808885d8b08d11f8fb293bd3f21c",
+      "source_fact_keys": [
+        "source_fact:v1:69c25cce4f11cb7d194ef4e72625bfbb3791b51bdb1aaaaf21553b400c431262",
+        "source_fact:v1:6a422dce912fe39ae7922e54f0f5b23312f70e5e49c632457e817de89b66dc32"
+      ],
+      "source_published_kst": "2026-10-14T00:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 반도체 공습·외국인 매도… 주저앉은 코스피",
+      "telegram_core_fact": "한국거래소에 따르면 외국인 투자자는 올해 들어 지난 12일까지 코스피에서 약 199조1000억원을 순매도(매도가 매수보다 많은 것)했다.",
+      "title": "中 반도체 공습·외국인 매도… 주저앉은 코스피"
     },
     "original:6044441ba1f64c9bede8df1a": {
       "first_seen_kst": "2026-10-14T00:12:03+09:00",
@@ -217462,6 +217873,33 @@
       "source_title": "BGF, KNW 지분 전량 인수로 지배구조 단순화…'반도체 소재' 직접 챙긴다",
       "telegram_core_fact": "BGF가 자회사인 BGF에코머티리얼즈가 보유한 케이엔더블유(KNW) 지분 전량을 인수하며 반도체 소재 사업에 대한 지배력을 강화한다. BGF는 7일 케이엔더블유 보통주 911만3891주(지분율 56.9%)를 매입한다고 공시했다.",
       "title": "BGF, KNW 지분 전량 인수로 지배구조 단순화…'반도체 소재' 직접 챙긴다"
+    },
+    "original:60bb8bed3b22a257644f7d11": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174942",
+      "source": "매일경제",
+      "source_body_digest": "0f88dd29e757cb2560115c719610ff533c7ef921d451586bd6449895e7d243bc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3af5db21e105c9f54ec33cc04e28b1c05a4b9762586d0a387b4b9f127a08556",
+      "source_fact_keys": [
+        "source_fact:v1:57ff7b4bf66811f5d46f19304a47ff290874453a51d8c2d88be1d1fb52e5b4f2",
+        "source_fact:v1:618a313c8fb8cdf7c21c24261aab051f4bea9f838875db40b1e9c8cb1fa956d3",
+        "source_fact:v1:7e78dca30b6f20bfe5f3566beebc3acb327443fe7f4348c76728a75e956fb403",
+        "source_fact:v1:83b41c67fc70af55581ad13f3737af19415cb5af2fed405bdcb736f029bdd3a0",
+        "source_fact:v1:895e67526e6b387b93b8d0eb855ec44ec7a68b06e3a8266e9c39d759d58fdcc7",
+        "source_fact:v1:9341fe8bd745b03db98226ed2099d335535bc1cd0fae336d28225b485ab08685",
+        "source_fact:v1:9a5f1adcac3d82152ded582e86f15e14170b2ccb01ab5b9611a1b87fcd42dc0b",
+        "source_fact:v1:b5a37b054d7bf9df40a077f3fc74e0f61d25e5c528a7a7388f90bbbbc1ba4edd"
+      ],
+      "source_published_kst": "2026-10-13T21:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "에이트코 홀딩스, 나스닥 최소입찰가 요건 회복..상장 리스크 해소",
+      "telegram_core_fact": "에이트코 홀딩스(ORBS)가 나스닥 상장 규정상 최소 입찰가 요건(주당 1달러)을 다시 충족해 관련 사안이 종결됐다는 나스닥 상장심사팀의 통보를 받았다고 10월 13일 발표했다. 나스닥 최소 입찰가 요건을 회복해 상장폐지 우려가 해소된 점은 투자심리에 긍정적이에요.",
+      "title": "에이트코 홀딩스, 나스닥 최소입찰가 요건 회복..상장 리스크 해소"
     },
     "original:60c0ead3210dba4ae395370f": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
@@ -224683,6 +225121,29 @@
       "link": "https://www.mt.co.kr/world/2026/10/03/2026100306094814060",
       "source": "머니투데이",
       "title": "\"한국 합의 안 하면 2배로 청구\"…트럼프, 알래스카 투자 노골적 압박"
+    },
+    "original:7973618442434871090d78fb": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610138098b",
+      "source": "한국경제",
+      "source_body_digest": "05c5bb5275f496ae5d8f8127d412deec3a99eb7d9aae89872c6b1a498ecefb25",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48d9a39803a04b031c0867ef8a351d8af61ccf34af38c95a5df752ae523fcb4f",
+      "source_fact_keys": [
+        "source_fact:v1:4dea972c6582ffd6ccf2222721b9a9f3dc41d2e7792d110baf66087eca3b35e2",
+        "source_fact:v1:7503d031487659e987ed26c33214597970fdb13204d3948db65a998c950f2d1d",
+        "source_fact:v1:b61295cb296efd3058d5c1de2c2985383e42a55dd601e6b3812a3557d5edd176",
+        "source_fact:v1:bdcc35342bfef2c08f8563cd5cb865837b8bfc3f63912cbbb2e59c7543c4b7df"
+      ],
+      "source_published_kst": "2026-10-13T10:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "두 달 만에 코스피 매도 사이드카 발동···4% 급락",
+      "telegram_core_fact": "코스피·코스닥은 각각 4.06%·2.46% 하락해 양 시장에 매도 사이드카가 발동됐다.",
+      "title": "두 달 만에 코스피 매도 사이드카 발동···4% 급락"
     },
     "original:7973be11688315842e28f0bf": {
       "first_seen_kst": "2026-10-11T12:55:39+09:00",
@@ -236272,6 +236733,29 @@
       "telegram_core_fact": "제안된 K-DAMS는 개별 거래소의 감시 기능을 없애는 방식이 아니라 거래소, 자율규제기구, 감독기관이 주문∙체결 정보와 온체인 자산 이동, 지갑 주소, 자금세탁방지 정보 등을 함께 연계하는 구조다.",
       "title": "[국내 5대 거래소] 제도화 지연 속 보안∙감시 체계 정비 경쟁"
     },
+    "original:a0186798e0c9ece020b3faa3": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://biz.heraldcorp.com/article/10901072",
+      "source": "헤럴드경제",
+      "source_body_digest": "aade0671b1cd18c2977c2a6ecd1a8a5f6bcb768e866765640ce4957180b953ad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d03416d0375bc370ed184a4dd21d52e09b8a5bb5189b0ac42a25edc19b4cd2ae",
+      "source_fact_keys": [
+        "source_fact:v1:6e59176d6c656cbe3887cbd2a29a332a11c6637629bf8d20885a1c1498c3f8bf",
+        "source_fact:v1:a6a85f25ee1b206f76094a7bafd2345ec3880e1a576cd2bb50d3cfdc5b123344",
+        "source_fact:v1:b359414f1517155581accc77d7f0e8eede66fe81412a9af4a1528d7d404613cf",
+        "source_fact:v1:e54a1905f37137de0550170d1cb908e4be7ccce47ef171fca3abbfdbd14a7d2c"
+      ],
+      "source_published_kst": "2026-10-13T21:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "자사주 매입도 무용지물…SK하닉마저 떠나면 ‘보릿고개’ 어쩌나 [투자360]",
+      "telegram_core_fact": "김록호 하나증권 연구원은 “삼성전자 2027년 1월 이사회에서 추가 주주환원 방안을 발표한다는 입장이나 3분기 실적 발표에서 추가 주주환원 방안으로 연내 자사주 매입이 언급된다면 매물대 해소에 도움이 될 것”이라고 전망했다.",
+      "title": "자사주 매입도 무용지물…SK하닉마저 떠나면 ‘보릿고개’ 어쩌나 [투자360]"
+    },
     "original:a04dba781d83290b091395d1": {
       "first_seen_kst": "2026-10-09T18:14:26+09:00",
       "lanes": {
@@ -245502,6 +245986,24 @@
       "source_title": "현대차, 인도 진출 30년만에 누적판매 1천만대 돌파 눈앞 | 연합뉴스",
       "telegram_core_fact": "현대차는 첸나이 1·2공장(82만4천대)에 이어 푸네 신공장(17만대)을 본격 가동하며 인도 현지에서 총 100만대의 생산능력을 갖추게 됐다.",
       "title": "현대차, 인도 진출 30년만에 누적판매 1천만대 돌파 눈앞 | 연합뉴스"
+    },
+    "original:c12524c71c1b7ba7d9f3d9e7": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003824422",
+      "source": "뉴시스",
+      "source_body_digest": "0b933444e42f0cf239108fa0f2479443287c71a40db54265a2d16225ede3278f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-13T17:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK가스, 900억 규모 자사주 매입·소각…주주환원 강화 '승부수'",
+      "telegram_core_fact": "SK가스는 13일 이사회에서 올해부터 오는 2028년까지 매년 300억원 자사주를 매입·소각하는 중기 주주환원 계획을 보고하고, 첫해 분 자사주 취득을 의결했다고 밝혔다.",
+      "title": "SK가스, 900억 규모 자사주 매입·소각…주주환원 강화 '승부수'"
     },
     "original:c1479694d28a15ab9d3cf908": {
       "first_seen_kst": "2026-10-07T06:28:41+09:00",
@@ -320666,6 +321168,29 @@
       "telegram_core_fact": "코스피·코스닥은 각각 5.46%·1.43% 하락해 양 시장에 매도 사이드카가 발동됐다. 삼성전자·SK하이닉스는 각각 7.29%·10.09% 하락했다.",
       "title": "코스피 5% 급락…중국발 반도체 공급 우려·외인 순매도에 휘청"
     },
+    "source_fact:32ff4eed4de6dd4a4731d2c2": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://biz.heraldcorp.com/article/10901072",
+      "source": "헤럴드경제",
+      "source_body_digest": "aade0671b1cd18c2977c2a6ecd1a8a5f6bcb768e866765640ce4957180b953ad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d03416d0375bc370ed184a4dd21d52e09b8a5bb5189b0ac42a25edc19b4cd2ae",
+      "source_fact_keys": [
+        "source_fact:v1:6e59176d6c656cbe3887cbd2a29a332a11c6637629bf8d20885a1c1498c3f8bf",
+        "source_fact:v1:a6a85f25ee1b206f76094a7bafd2345ec3880e1a576cd2bb50d3cfdc5b123344",
+        "source_fact:v1:b359414f1517155581accc77d7f0e8eede66fe81412a9af4a1528d7d404613cf",
+        "source_fact:v1:e54a1905f37137de0550170d1cb908e4be7ccce47ef171fca3abbfdbd14a7d2c"
+      ],
+      "source_published_kst": "2026-10-13T21:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "자사주 매입도 무용지물…SK하닉마저 떠나면 ‘보릿고개’ 어쩌나 [투자360]",
+      "telegram_core_fact": "김록호 하나증권 연구원은 “삼성전자 2027년 1월 이사회에서 추가 주주환원 방안을 발표한다는 입장이나 3분기 실적 발표에서 추가 주주환원 방안으로 연내 자사주 매입이 언급된다면 매물대 해소에 도움이 될 것”이라고 전망했다.",
+      "title": "자사주 매입도 무용지물…SK하닉마저 떠나면 ‘보릿고개’ 어쩌나 [투자360]"
+    },
     "source_fact:3302608a3de98737ad89d09c": {
       "first_seen_kst": "2026-10-12T10:17:45+09:00",
       "lanes": {
@@ -323736,6 +324261,29 @@
       "source_title": "현대차, 인도 진출 30년만에 누적판매 1천만대 돌파 눈앞 | 연합뉴스",
       "telegram_core_fact": "현대차는 첸나이 1·2공장(82만4천대)에 이어 푸네 신공장(17만대)을 본격 가동하며 인도 현지에서 총 100만대의 생산능력을 갖추게 됐다.",
       "title": "현대차, 인도 진출 30년만에 누적판매 1천만대 돌파 눈앞 | 연합뉴스"
+    },
+    "source_fact:3617e42c6e3e5a35d581fab4": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://biz.heraldcorp.com/article/10901072",
+      "source": "헤럴드경제",
+      "source_body_digest": "aade0671b1cd18c2977c2a6ecd1a8a5f6bcb768e866765640ce4957180b953ad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d03416d0375bc370ed184a4dd21d52e09b8a5bb5189b0ac42a25edc19b4cd2ae",
+      "source_fact_keys": [
+        "source_fact:v1:6e59176d6c656cbe3887cbd2a29a332a11c6637629bf8d20885a1c1498c3f8bf",
+        "source_fact:v1:a6a85f25ee1b206f76094a7bafd2345ec3880e1a576cd2bb50d3cfdc5b123344",
+        "source_fact:v1:b359414f1517155581accc77d7f0e8eede66fe81412a9af4a1528d7d404613cf",
+        "source_fact:v1:e54a1905f37137de0550170d1cb908e4be7ccce47ef171fca3abbfdbd14a7d2c"
+      ],
+      "source_published_kst": "2026-10-13T21:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "자사주 매입도 무용지물…SK하닉마저 떠나면 ‘보릿고개’ 어쩌나 [투자360]",
+      "telegram_core_fact": "김록호 하나증권 연구원은 “삼성전자 2027년 1월 이사회에서 추가 주주환원 방안을 발표한다는 입장이나 3분기 실적 발표에서 추가 주주환원 방안으로 연내 자사주 매입이 언급된다면 매물대 해소에 도움이 될 것”이라고 전망했다.",
+      "title": "자사주 매입도 무용지물…SK하닉마저 떠나면 ‘보릿고개’ 어쩌나 [투자360]"
     },
     "source_fact:361d983f7631d54e35466ce0": {
       "first_seen_kst": "2026-10-08T15:16:19+09:00",
@@ -334294,6 +334842,29 @@
       "telegram_core_fact": "이형일 부총리 겸 재정경제부 장관은 12일 \"단기적인 위기대응을 넘어 공급망의 취약한 고리를 선제적으로 발굴하고 보강해 나가야 한다\"고 말했다. 산업군별 '공급망 특허전략맵'을 구축해 기술 확보와 특허 선점이 필요한 분야를 선제적으로 발굴하고, 향후 산업전략 수립에도 활용해 나갈 계획이다.",
       "title": "이형일 \"공급망 취약한 고리 선제적으로 발굴·보강해야\" | 연합뉴스"
     },
+    "source_fact:4038699877abd7b93a047ead": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610138098b",
+      "source": "한국경제",
+      "source_body_digest": "05c5bb5275f496ae5d8f8127d412deec3a99eb7d9aae89872c6b1a498ecefb25",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48d9a39803a04b031c0867ef8a351d8af61ccf34af38c95a5df752ae523fcb4f",
+      "source_fact_keys": [
+        "source_fact:v1:4dea972c6582ffd6ccf2222721b9a9f3dc41d2e7792d110baf66087eca3b35e2",
+        "source_fact:v1:7503d031487659e987ed26c33214597970fdb13204d3948db65a998c950f2d1d",
+        "source_fact:v1:b61295cb296efd3058d5c1de2c2985383e42a55dd601e6b3812a3557d5edd176",
+        "source_fact:v1:bdcc35342bfef2c08f8563cd5cb865837b8bfc3f63912cbbb2e59c7543c4b7df"
+      ],
+      "source_published_kst": "2026-10-13T10:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "두 달 만에 코스피 매도 사이드카 발동···4% 급락",
+      "telegram_core_fact": "코스피·코스닥은 각각 4.06%·2.46% 하락해 양 시장에 매도 사이드카가 발동됐다.",
+      "title": "두 달 만에 코스피 매도 사이드카 발동···4% 급락"
+    },
     "source_fact:403b50f2be90c82076d59d7c": {
       "first_seen_kst": "2026-10-08T00:54:18+09:00",
       "lanes": {
@@ -338730,6 +339301,29 @@
       "source_published_kst": "2026-10-07T09:42+09:00",
       "title": "샌프란시스코 연은 총재 \"AI발 인플레, 단발성 아닐 수도\""
     },
+    "source_fact:443f03bfc0db6ae71cd27873": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://biz.heraldcorp.com/article/10901072",
+      "source": "헤럴드경제",
+      "source_body_digest": "aade0671b1cd18c2977c2a6ecd1a8a5f6bcb768e866765640ce4957180b953ad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d03416d0375bc370ed184a4dd21d52e09b8a5bb5189b0ac42a25edc19b4cd2ae",
+      "source_fact_keys": [
+        "source_fact:v1:6e59176d6c656cbe3887cbd2a29a332a11c6637629bf8d20885a1c1498c3f8bf",
+        "source_fact:v1:a6a85f25ee1b206f76094a7bafd2345ec3880e1a576cd2bb50d3cfdc5b123344",
+        "source_fact:v1:b359414f1517155581accc77d7f0e8eede66fe81412a9af4a1528d7d404613cf",
+        "source_fact:v1:e54a1905f37137de0550170d1cb908e4be7ccce47ef171fca3abbfdbd14a7d2c"
+      ],
+      "source_published_kst": "2026-10-13T21:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "자사주 매입도 무용지물…SK하닉마저 떠나면 ‘보릿고개’ 어쩌나 [투자360]",
+      "telegram_core_fact": "김록호 하나증권 연구원은 “삼성전자 2027년 1월 이사회에서 추가 주주환원 방안을 발표한다는 입장이나 3분기 실적 발표에서 추가 주주환원 방안으로 연내 자사주 매입이 언급된다면 매물대 해소에 도움이 될 것”이라고 전망했다.",
+      "title": "자사주 매입도 무용지물…SK하닉마저 떠나면 ‘보릿고개’ 어쩌나 [투자360]"
+    },
     "source_fact:4441b6ab0650905309e720fa": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
       "lanes": {
@@ -339540,6 +340134,33 @@
       ],
       "source_published_kst": "2026-10-05T19:05+09:00",
       "title": "오메가 헬스케어 인베스터, 플로리다 32곳 운영사 교체..1년차 임대료 2600만 달러 증액"
+    },
+    "source_fact:453470ddb14c24911dbcd259": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174942",
+      "source": "매일경제",
+      "source_body_digest": "0f88dd29e757cb2560115c719610ff533c7ef921d451586bd6449895e7d243bc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3af5db21e105c9f54ec33cc04e28b1c05a4b9762586d0a387b4b9f127a08556",
+      "source_fact_keys": [
+        "source_fact:v1:57ff7b4bf66811f5d46f19304a47ff290874453a51d8c2d88be1d1fb52e5b4f2",
+        "source_fact:v1:618a313c8fb8cdf7c21c24261aab051f4bea9f838875db40b1e9c8cb1fa956d3",
+        "source_fact:v1:7e78dca30b6f20bfe5f3566beebc3acb327443fe7f4348c76728a75e956fb403",
+        "source_fact:v1:83b41c67fc70af55581ad13f3737af19415cb5af2fed405bdcb736f029bdd3a0",
+        "source_fact:v1:895e67526e6b387b93b8d0eb855ec44ec7a68b06e3a8266e9c39d759d58fdcc7",
+        "source_fact:v1:9341fe8bd745b03db98226ed2099d335535bc1cd0fae336d28225b485ab08685",
+        "source_fact:v1:9a5f1adcac3d82152ded582e86f15e14170b2ccb01ab5b9611a1b87fcd42dc0b",
+        "source_fact:v1:b5a37b054d7bf9df40a077f3fc74e0f61d25e5c528a7a7388f90bbbbc1ba4edd"
+      ],
+      "source_published_kst": "2026-10-13T21:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "에이트코 홀딩스, 나스닥 최소입찰가 요건 회복..상장 리스크 해소",
+      "telegram_core_fact": "에이트코 홀딩스(ORBS)가 나스닥 상장 규정상 최소 입찰가 요건(주당 1달러)을 다시 충족해 관련 사안이 종결됐다는 나스닥 상장심사팀의 통보를 받았다고 10월 13일 발표했다. 나스닥 최소 입찰가 요건을 회복해 상장폐지 우려가 해소된 점은 투자심리에 긍정적이에요.",
+      "title": "에이트코 홀딩스, 나스닥 최소입찰가 요건 회복..상장 리스크 해소"
     },
     "source_fact:45430c4295fabd569cf5ded6": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
@@ -365865,6 +366486,33 @@
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
     },
+    "source_fact:5c37a55329f00537d7e99d2f": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174942",
+      "source": "매일경제",
+      "source_body_digest": "0f88dd29e757cb2560115c719610ff533c7ef921d451586bd6449895e7d243bc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3af5db21e105c9f54ec33cc04e28b1c05a4b9762586d0a387b4b9f127a08556",
+      "source_fact_keys": [
+        "source_fact:v1:57ff7b4bf66811f5d46f19304a47ff290874453a51d8c2d88be1d1fb52e5b4f2",
+        "source_fact:v1:618a313c8fb8cdf7c21c24261aab051f4bea9f838875db40b1e9c8cb1fa956d3",
+        "source_fact:v1:7e78dca30b6f20bfe5f3566beebc3acb327443fe7f4348c76728a75e956fb403",
+        "source_fact:v1:83b41c67fc70af55581ad13f3737af19415cb5af2fed405bdcb736f029bdd3a0",
+        "source_fact:v1:895e67526e6b387b93b8d0eb855ec44ec7a68b06e3a8266e9c39d759d58fdcc7",
+        "source_fact:v1:9341fe8bd745b03db98226ed2099d335535bc1cd0fae336d28225b485ab08685",
+        "source_fact:v1:9a5f1adcac3d82152ded582e86f15e14170b2ccb01ab5b9611a1b87fcd42dc0b",
+        "source_fact:v1:b5a37b054d7bf9df40a077f3fc74e0f61d25e5c528a7a7388f90bbbbc1ba4edd"
+      ],
+      "source_published_kst": "2026-10-13T21:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "에이트코 홀딩스, 나스닥 최소입찰가 요건 회복..상장 리스크 해소",
+      "telegram_core_fact": "에이트코 홀딩스(ORBS)가 나스닥 상장 규정상 최소 입찰가 요건(주당 1달러)을 다시 충족해 관련 사안이 종결됐다는 나스닥 상장심사팀의 통보를 받았다고 10월 13일 발표했다. 나스닥 최소 입찰가 요건을 회복해 상장폐지 우려가 해소된 점은 투자심리에 긍정적이에요.",
+      "title": "에이트코 홀딩스, 나스닥 최소입찰가 요건 회복..상장 리스크 해소"
+    },
     "source_fact:5c38358fccf9e932b5384ad3": {
       "first_seen_kst": "2026-10-12T06:27:02+09:00",
       "lanes": {
@@ -367876,6 +368524,29 @@
       ],
       "source_published_kst": "2026-10-06T18:17+09:00",
       "title": "한미반도체, 삼성전기서 첫 수주… MSVP 매출 탄력"
+    },
+    "source_fact:5d8073ea5e3290c4531ff7ee": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://biz.heraldcorp.com/article/10901072",
+      "source": "헤럴드경제",
+      "source_body_digest": "aade0671b1cd18c2977c2a6ecd1a8a5f6bcb768e866765640ce4957180b953ad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d03416d0375bc370ed184a4dd21d52e09b8a5bb5189b0ac42a25edc19b4cd2ae",
+      "source_fact_keys": [
+        "source_fact:v1:6e59176d6c656cbe3887cbd2a29a332a11c6637629bf8d20885a1c1498c3f8bf",
+        "source_fact:v1:a6a85f25ee1b206f76094a7bafd2345ec3880e1a576cd2bb50d3cfdc5b123344",
+        "source_fact:v1:b359414f1517155581accc77d7f0e8eede66fe81412a9af4a1528d7d404613cf",
+        "source_fact:v1:e54a1905f37137de0550170d1cb908e4be7ccce47ef171fca3abbfdbd14a7d2c"
+      ],
+      "source_published_kst": "2026-10-13T21:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "자사주 매입도 무용지물…SK하닉마저 떠나면 ‘보릿고개’ 어쩌나 [투자360]",
+      "telegram_core_fact": "김록호 하나증권 연구원은 “삼성전자 2027년 1월 이사회에서 추가 주주환원 방안을 발표한다는 입장이나 3분기 실적 발표에서 추가 주주환원 방안으로 연내 자사주 매입이 언급된다면 매물대 해소에 도움이 될 것”이라고 전망했다.",
+      "title": "자사주 매입도 무용지물…SK하닉마저 떠나면 ‘보릿고개’ 어쩌나 [투자360]"
     },
     "source_fact:5d96b2736e5b1bdc91e83989": {
       "first_seen_kst": "2026-10-13T22:33:57+09:00",
@@ -376086,6 +376757,29 @@
       "telegram_core_fact": "인공지능(AI) 인프라 스타트업 베슬AI가 업스테이지의 거대언어모델(LLM) '솔라 프로4'에 글로벌 인퍼런스(추론) 인프라를 공급해 서비스 운영을 지원했다고 12일 밝혔다. 베슬AI는 해당 협업을 계기로 GPU 인프라 공급을 넘어 AI 모델의 추론 운영 전문 기업으로 사업 영역을 확대한다는 방침이다.",
       "title": "베슬AI, '솔라 프로4' 인프라 공급…AI '추론 운영'으로 영역 확대"
     },
+    "source_fact:659405868158bb79a1ec97c2": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610138098b",
+      "source": "한국경제",
+      "source_body_digest": "05c5bb5275f496ae5d8f8127d412deec3a99eb7d9aae89872c6b1a498ecefb25",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48d9a39803a04b031c0867ef8a351d8af61ccf34af38c95a5df752ae523fcb4f",
+      "source_fact_keys": [
+        "source_fact:v1:4dea972c6582ffd6ccf2222721b9a9f3dc41d2e7792d110baf66087eca3b35e2",
+        "source_fact:v1:7503d031487659e987ed26c33214597970fdb13204d3948db65a998c950f2d1d",
+        "source_fact:v1:b61295cb296efd3058d5c1de2c2985383e42a55dd601e6b3812a3557d5edd176",
+        "source_fact:v1:bdcc35342bfef2c08f8563cd5cb865837b8bfc3f63912cbbb2e59c7543c4b7df"
+      ],
+      "source_published_kst": "2026-10-13T10:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "두 달 만에 코스피 매도 사이드카 발동···4% 급락",
+      "telegram_core_fact": "코스피·코스닥은 각각 4.06%·2.46% 하락해 양 시장에 매도 사이드카가 발동됐다.",
+      "title": "두 달 만에 코스피 매도 사이드카 발동···4% 급락"
+    },
     "source_fact:659797d03aace8d2f7315d19": {
       "first_seen_kst": "2026-10-13T08:14:23+09:00",
       "lanes": {
@@ -378264,6 +378958,33 @@
       ],
       "source_published_kst": "2026-10-06T17:33+09:00",
       "title": "구미시·MSDI, 방위산업 맞손…\"미사일 방산 거점으로\""
+    },
+    "source_fact:67ef5de9fab5a269cee25539": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174942",
+      "source": "매일경제",
+      "source_body_digest": "0f88dd29e757cb2560115c719610ff533c7ef921d451586bd6449895e7d243bc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3af5db21e105c9f54ec33cc04e28b1c05a4b9762586d0a387b4b9f127a08556",
+      "source_fact_keys": [
+        "source_fact:v1:57ff7b4bf66811f5d46f19304a47ff290874453a51d8c2d88be1d1fb52e5b4f2",
+        "source_fact:v1:618a313c8fb8cdf7c21c24261aab051f4bea9f838875db40b1e9c8cb1fa956d3",
+        "source_fact:v1:7e78dca30b6f20bfe5f3566beebc3acb327443fe7f4348c76728a75e956fb403",
+        "source_fact:v1:83b41c67fc70af55581ad13f3737af19415cb5af2fed405bdcb736f029bdd3a0",
+        "source_fact:v1:895e67526e6b387b93b8d0eb855ec44ec7a68b06e3a8266e9c39d759d58fdcc7",
+        "source_fact:v1:9341fe8bd745b03db98226ed2099d335535bc1cd0fae336d28225b485ab08685",
+        "source_fact:v1:9a5f1adcac3d82152ded582e86f15e14170b2ccb01ab5b9611a1b87fcd42dc0b",
+        "source_fact:v1:b5a37b054d7bf9df40a077f3fc74e0f61d25e5c528a7a7388f90bbbbc1ba4edd"
+      ],
+      "source_published_kst": "2026-10-13T21:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "에이트코 홀딩스, 나스닥 최소입찰가 요건 회복..상장 리스크 해소",
+      "telegram_core_fact": "에이트코 홀딩스(ORBS)가 나스닥 상장 규정상 최소 입찰가 요건(주당 1달러)을 다시 충족해 관련 사안이 종결됐다는 나스닥 상장심사팀의 통보를 받았다고 10월 13일 발표했다. 나스닥 최소 입찰가 요건을 회복해 상장폐지 우려가 해소된 점은 투자심리에 긍정적이에요.",
+      "title": "에이트코 홀딩스, 나스닥 최소입찰가 요건 회복..상장 리스크 해소"
     },
     "source_fact:67f99f792f847b1bdc849016": {
       "first_seen_kst": "2026-10-09T18:34:32+09:00",
@@ -384155,6 +384876,29 @@
       "source_title": "기그캐피털8, 퀀티시모와 합병계약..기업가치 6억6600만 달러",
       "telegram_core_fact": "기그캐피털8(GIW)이 위즈키(WISeKey)와 씰SQ(SEALSQ)가 설립한 양자기술 플랫폼 기업 퀀티시모(Quantisimo)와 확정적 합병계약을 체결했으며, 합병 후 퀀티시모의 지분가치는 주당 10달러 기준 약 6억6610만 달러로 평가됐다고 9일(현지시간) 발표했다.",
       "title": "기그캐피털8, 퀀티시모와 합병계약..기업가치 6억6600만 달러"
+    },
+    "source_fact:6d007a0d27829ae89b32d27d": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610138098b",
+      "source": "한국경제",
+      "source_body_digest": "05c5bb5275f496ae5d8f8127d412deec3a99eb7d9aae89872c6b1a498ecefb25",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48d9a39803a04b031c0867ef8a351d8af61ccf34af38c95a5df752ae523fcb4f",
+      "source_fact_keys": [
+        "source_fact:v1:4dea972c6582ffd6ccf2222721b9a9f3dc41d2e7792d110baf66087eca3b35e2",
+        "source_fact:v1:7503d031487659e987ed26c33214597970fdb13204d3948db65a998c950f2d1d",
+        "source_fact:v1:b61295cb296efd3058d5c1de2c2985383e42a55dd601e6b3812a3557d5edd176",
+        "source_fact:v1:bdcc35342bfef2c08f8563cd5cb865837b8bfc3f63912cbbb2e59c7543c4b7df"
+      ],
+      "source_published_kst": "2026-10-13T10:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "두 달 만에 코스피 매도 사이드카 발동···4% 급락",
+      "telegram_core_fact": "코스피·코스닥은 각각 4.06%·2.46% 하락해 양 시장에 매도 사이드카가 발동됐다.",
+      "title": "두 달 만에 코스피 매도 사이드카 발동···4% 급락"
     },
     "source_fact:6d034889912f762f0e3cd5d5": {
       "first_seen_kst": "2026-10-13T12:19:43+09:00",
@@ -402958,6 +403702,33 @@
       "source_published_kst": "2026-10-05T22:05+09:00",
       "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
     },
+    "source_fact:7e601bc8ad6e8c77f4022260": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174942",
+      "source": "매일경제",
+      "source_body_digest": "0f88dd29e757cb2560115c719610ff533c7ef921d451586bd6449895e7d243bc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3af5db21e105c9f54ec33cc04e28b1c05a4b9762586d0a387b4b9f127a08556",
+      "source_fact_keys": [
+        "source_fact:v1:57ff7b4bf66811f5d46f19304a47ff290874453a51d8c2d88be1d1fb52e5b4f2",
+        "source_fact:v1:618a313c8fb8cdf7c21c24261aab051f4bea9f838875db40b1e9c8cb1fa956d3",
+        "source_fact:v1:7e78dca30b6f20bfe5f3566beebc3acb327443fe7f4348c76728a75e956fb403",
+        "source_fact:v1:83b41c67fc70af55581ad13f3737af19415cb5af2fed405bdcb736f029bdd3a0",
+        "source_fact:v1:895e67526e6b387b93b8d0eb855ec44ec7a68b06e3a8266e9c39d759d58fdcc7",
+        "source_fact:v1:9341fe8bd745b03db98226ed2099d335535bc1cd0fae336d28225b485ab08685",
+        "source_fact:v1:9a5f1adcac3d82152ded582e86f15e14170b2ccb01ab5b9611a1b87fcd42dc0b",
+        "source_fact:v1:b5a37b054d7bf9df40a077f3fc74e0f61d25e5c528a7a7388f90bbbbc1ba4edd"
+      ],
+      "source_published_kst": "2026-10-13T21:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "에이트코 홀딩스, 나스닥 최소입찰가 요건 회복..상장 리스크 해소",
+      "telegram_core_fact": "에이트코 홀딩스(ORBS)가 나스닥 상장 규정상 최소 입찰가 요건(주당 1달러)을 다시 충족해 관련 사안이 종결됐다는 나스닥 상장심사팀의 통보를 받았다고 10월 13일 발표했다. 나스닥 최소 입찰가 요건을 회복해 상장폐지 우려가 해소된 점은 투자심리에 긍정적이에요.",
+      "title": "에이트코 홀딩스, 나스닥 최소입찰가 요건 회복..상장 리스크 해소"
+    },
     "source_fact:7e625e2a2c614df64931487d": {
       "first_seen_kst": "2026-10-10T05:10:14+09:00",
       "lanes": {
@@ -415067,6 +415838,33 @@
       "telegram_core_fact": "이중 전략적 투자와 관련해 양국은 미 텍사스주 엔시날에 가스복합화력발전소를 건설하는 223억달러 사업을 프로젝트 1호로 확정했으며, 대형 원전 8기 건설 사업과 알래스카 액화천연가스(LNG) 프로젝트는 향후 추가 협의를 거치기로 발표한 상태다.",
       "title": "\"韓당국자, 알래스카에 'LNG 상업성 있어야 투자' 전달\""
     },
+    "source_fact:89a6a3df44c2e5a61a5d42fc": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174942",
+      "source": "매일경제",
+      "source_body_digest": "0f88dd29e757cb2560115c719610ff533c7ef921d451586bd6449895e7d243bc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3af5db21e105c9f54ec33cc04e28b1c05a4b9762586d0a387b4b9f127a08556",
+      "source_fact_keys": [
+        "source_fact:v1:57ff7b4bf66811f5d46f19304a47ff290874453a51d8c2d88be1d1fb52e5b4f2",
+        "source_fact:v1:618a313c8fb8cdf7c21c24261aab051f4bea9f838875db40b1e9c8cb1fa956d3",
+        "source_fact:v1:7e78dca30b6f20bfe5f3566beebc3acb327443fe7f4348c76728a75e956fb403",
+        "source_fact:v1:83b41c67fc70af55581ad13f3737af19415cb5af2fed405bdcb736f029bdd3a0",
+        "source_fact:v1:895e67526e6b387b93b8d0eb855ec44ec7a68b06e3a8266e9c39d759d58fdcc7",
+        "source_fact:v1:9341fe8bd745b03db98226ed2099d335535bc1cd0fae336d28225b485ab08685",
+        "source_fact:v1:9a5f1adcac3d82152ded582e86f15e14170b2ccb01ab5b9611a1b87fcd42dc0b",
+        "source_fact:v1:b5a37b054d7bf9df40a077f3fc74e0f61d25e5c528a7a7388f90bbbbc1ba4edd"
+      ],
+      "source_published_kst": "2026-10-13T21:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "에이트코 홀딩스, 나스닥 최소입찰가 요건 회복..상장 리스크 해소",
+      "telegram_core_fact": "에이트코 홀딩스(ORBS)가 나스닥 상장 규정상 최소 입찰가 요건(주당 1달러)을 다시 충족해 관련 사안이 종결됐다는 나스닥 상장심사팀의 통보를 받았다고 10월 13일 발표했다. 나스닥 최소 입찰가 요건을 회복해 상장폐지 우려가 해소된 점은 투자심리에 긍정적이에요.",
+      "title": "에이트코 홀딩스, 나스닥 최소입찰가 요건 회복..상장 리스크 해소"
+    },
     "source_fact:89ad930618fe807bf98631c5": {
       "first_seen_kst": "2026-10-11T20:44:48+09:00",
       "lanes": {
@@ -424927,6 +425725,27 @@
       "source_title": "고금리에 금값 올들어 27% 하락…\"이때다\" 골드바 수요 3배 증가",
       "telegram_core_fact": "최근 미국 국채금리가 치솟은 데다 지난달 17일 미국 연방준비제도(Fed)가 3년 2개월 만에 기준금리를 인상하면서 안전자산 수요가 미국채·달러로 이동해 금값이 급락한 것으로 분석된다.",
       "title": "고금리에 금값 올들어 27% 하락…\"이때다\" 골드바 수요 3배 증가"
+    },
+    "source_fact:9362444e0036b3452a08a0b8": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/14/MZRTAZRRGFSDGYRQGA4GIMZSGY/",
+      "source": "조선비즈",
+      "source_body_digest": "81db2443ce355e1391dcecbc8351c077727308437509db92ab78ca4b308bb6a3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:121eee7dcd00b4adca52811a2d46fe5cee15808885d8b08d11f8fb293bd3f21c",
+      "source_fact_keys": [
+        "source_fact:v1:69c25cce4f11cb7d194ef4e72625bfbb3791b51bdb1aaaaf21553b400c431262",
+        "source_fact:v1:6a422dce912fe39ae7922e54f0f5b23312f70e5e49c632457e817de89b66dc32"
+      ],
+      "source_published_kst": "2026-10-14T00:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 반도체 공습·외국인 매도… 주저앉은 코스피",
+      "telegram_core_fact": "한국거래소에 따르면 외국인 투자자는 올해 들어 지난 12일까지 코스피에서 약 199조1000억원을 순매도(매도가 매수보다 많은 것)했다.",
+      "title": "中 반도체 공습·외국인 매도… 주저앉은 코스피"
     },
     "source_fact:93779fdae0f64b4df93709e9": {
       "first_seen_kst": "2026-10-08T13:07:52+09:00",
@@ -470176,6 +470995,33 @@
       "telegram_core_fact": "오텍그룹의 계열사 오텍캐리어와 씨알케이(CRK)가 지난 7일 노이리움과 ‘전국 총판점·대리점 신설에 따른 설비 공급 협력을 위한 업무협약(MOU)’을 체결했다고 12일 밝혔다.",
       "title": "오텍, 건자재 업체 노이리움에 냉난방 설비"
     },
+    "source_fact:bd6ce043b94f360070549548": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174942",
+      "source": "매일경제",
+      "source_body_digest": "0f88dd29e757cb2560115c719610ff533c7ef921d451586bd6449895e7d243bc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3af5db21e105c9f54ec33cc04e28b1c05a4b9762586d0a387b4b9f127a08556",
+      "source_fact_keys": [
+        "source_fact:v1:57ff7b4bf66811f5d46f19304a47ff290874453a51d8c2d88be1d1fb52e5b4f2",
+        "source_fact:v1:618a313c8fb8cdf7c21c24261aab051f4bea9f838875db40b1e9c8cb1fa956d3",
+        "source_fact:v1:7e78dca30b6f20bfe5f3566beebc3acb327443fe7f4348c76728a75e956fb403",
+        "source_fact:v1:83b41c67fc70af55581ad13f3737af19415cb5af2fed405bdcb736f029bdd3a0",
+        "source_fact:v1:895e67526e6b387b93b8d0eb855ec44ec7a68b06e3a8266e9c39d759d58fdcc7",
+        "source_fact:v1:9341fe8bd745b03db98226ed2099d335535bc1cd0fae336d28225b485ab08685",
+        "source_fact:v1:9a5f1adcac3d82152ded582e86f15e14170b2ccb01ab5b9611a1b87fcd42dc0b",
+        "source_fact:v1:b5a37b054d7bf9df40a077f3fc74e0f61d25e5c528a7a7388f90bbbbc1ba4edd"
+      ],
+      "source_published_kst": "2026-10-13T21:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "에이트코 홀딩스, 나스닥 최소입찰가 요건 회복..상장 리스크 해소",
+      "telegram_core_fact": "에이트코 홀딩스(ORBS)가 나스닥 상장 규정상 최소 입찰가 요건(주당 1달러)을 다시 충족해 관련 사안이 종결됐다는 나스닥 상장심사팀의 통보를 받았다고 10월 13일 발표했다. 나스닥 최소 입찰가 요건을 회복해 상장폐지 우려가 해소된 점은 투자심리에 긍정적이에요.",
+      "title": "에이트코 홀딩스, 나스닥 최소입찰가 요건 회복..상장 리스크 해소"
+    },
     "source_fact:bd6e33620eeb60b8fed44074": {
       "first_seen_kst": "2026-10-06T14:18:00+09:00",
       "lanes": {
@@ -485018,6 +485864,27 @@
       "telegram_core_fact": "트럼프 대통령은 8일(현지시간) SNS에서 “이란에 대한 봉쇄 조치는 전면적으로 유지될 것”이라면서도 “11월 3일 치러지는 중간선거 이전에는 어떤 시점에도 이란을 공격하지 않을 것”이라고 밝혔다. 도널드 트럼프 미국 대통령이 다음달 3일 중간선거 전까지 이란을 공격하지 않겠다고 밝히면서 급등하던 국제 유가가 하락했다.",
       "title": "트럼프 \"내달 3일까지 이란 공격 안해\""
     },
+    "source_fact:cb1f456ed97f730d882513b8": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/14/MZRTAZRRGFSDGYRQGA4GIMZSGY/",
+      "source": "조선비즈",
+      "source_body_digest": "81db2443ce355e1391dcecbc8351c077727308437509db92ab78ca4b308bb6a3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:121eee7dcd00b4adca52811a2d46fe5cee15808885d8b08d11f8fb293bd3f21c",
+      "source_fact_keys": [
+        "source_fact:v1:69c25cce4f11cb7d194ef4e72625bfbb3791b51bdb1aaaaf21553b400c431262",
+        "source_fact:v1:6a422dce912fe39ae7922e54f0f5b23312f70e5e49c632457e817de89b66dc32"
+      ],
+      "source_published_kst": "2026-10-14T00:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 반도체 공습·외국인 매도… 주저앉은 코스피",
+      "telegram_core_fact": "한국거래소에 따르면 외국인 투자자는 올해 들어 지난 12일까지 코스피에서 약 199조1000억원을 순매도(매도가 매수보다 많은 것)했다.",
+      "title": "中 반도체 공습·외국인 매도… 주저앉은 코스피"
+    },
     "source_fact:cb29e05ce997fca2192a785a": {
       "first_seen_kst": "2026-10-12T13:56:47+09:00",
       "lanes": {
@@ -486261,6 +487128,33 @@
       "source_title": "홍라희, 삼성 지분 2.6조 이재용에 증여 | 중앙일보",
       "telegram_core_fact": "이재용 삼성전자 회장이 모친인 홍라희(사진) 리움미술관 명예관장의 삼성전자 주식 1115만8000주(0.17%)를 증여받는다고 13일 공시했다. 증여 완료 시 이 회장의 주식 수는 1억1637만7053주, 지분율은 1.75%로 늘어나며 홍 관장의 지분율은 0.98%에서 0.81%로 감소한다.",
       "title": "홍라희, 삼성 지분 2.6조 이재용에 증여 | 중앙일보"
+    },
+    "source_fact:cc83977517fb9cad4c0de73e": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174942",
+      "source": "매일경제",
+      "source_body_digest": "0f88dd29e757cb2560115c719610ff533c7ef921d451586bd6449895e7d243bc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3af5db21e105c9f54ec33cc04e28b1c05a4b9762586d0a387b4b9f127a08556",
+      "source_fact_keys": [
+        "source_fact:v1:57ff7b4bf66811f5d46f19304a47ff290874453a51d8c2d88be1d1fb52e5b4f2",
+        "source_fact:v1:618a313c8fb8cdf7c21c24261aab051f4bea9f838875db40b1e9c8cb1fa956d3",
+        "source_fact:v1:7e78dca30b6f20bfe5f3566beebc3acb327443fe7f4348c76728a75e956fb403",
+        "source_fact:v1:83b41c67fc70af55581ad13f3737af19415cb5af2fed405bdcb736f029bdd3a0",
+        "source_fact:v1:895e67526e6b387b93b8d0eb855ec44ec7a68b06e3a8266e9c39d759d58fdcc7",
+        "source_fact:v1:9341fe8bd745b03db98226ed2099d335535bc1cd0fae336d28225b485ab08685",
+        "source_fact:v1:9a5f1adcac3d82152ded582e86f15e14170b2ccb01ab5b9611a1b87fcd42dc0b",
+        "source_fact:v1:b5a37b054d7bf9df40a077f3fc74e0f61d25e5c528a7a7388f90bbbbc1ba4edd"
+      ],
+      "source_published_kst": "2026-10-13T21:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "에이트코 홀딩스, 나스닥 최소입찰가 요건 회복..상장 리스크 해소",
+      "telegram_core_fact": "에이트코 홀딩스(ORBS)가 나스닥 상장 규정상 최소 입찰가 요건(주당 1달러)을 다시 충족해 관련 사안이 종결됐다는 나스닥 상장심사팀의 통보를 받았다고 10월 13일 발표했다. 나스닥 최소 입찰가 요건을 회복해 상장폐지 우려가 해소된 점은 투자심리에 긍정적이에요.",
+      "title": "에이트코 홀딩스, 나스닥 최소입찰가 요건 회복..상장 리스크 해소"
     },
     "source_fact:cc9016dbf4ed5a43f7bdd000": {
       "first_seen_kst": "2026-10-09T17:32:22+09:00",
@@ -505440,6 +506334,29 @@
       "telegram_core_fact": "HD현대중공업을 비롯한 국내 조선·원자력 분야 주요 기업과 대학 등 12개 기관은 지난 6일 울산과학기술원(UNIST)에서 ‘SMR 해양 기술 실증센터’ 출범을 위한 업무협약을 체결했다고 7일(수) 밝혔다.",
       "title": "HD현대重 등 조선·원자력 분야 12개 기관 ‘SMR 해양 기술 실증센터’ 출범"
     },
+    "source_fact:ddf57866439e6c09c97e8b0e": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610138098b",
+      "source": "한국경제",
+      "source_body_digest": "05c5bb5275f496ae5d8f8127d412deec3a99eb7d9aae89872c6b1a498ecefb25",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48d9a39803a04b031c0867ef8a351d8af61ccf34af38c95a5df752ae523fcb4f",
+      "source_fact_keys": [
+        "source_fact:v1:4dea972c6582ffd6ccf2222721b9a9f3dc41d2e7792d110baf66087eca3b35e2",
+        "source_fact:v1:7503d031487659e987ed26c33214597970fdb13204d3948db65a998c950f2d1d",
+        "source_fact:v1:b61295cb296efd3058d5c1de2c2985383e42a55dd601e6b3812a3557d5edd176",
+        "source_fact:v1:bdcc35342bfef2c08f8563cd5cb865837b8bfc3f63912cbbb2e59c7543c4b7df"
+      ],
+      "source_published_kst": "2026-10-13T10:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "두 달 만에 코스피 매도 사이드카 발동···4% 급락",
+      "telegram_core_fact": "코스피·코스닥은 각각 4.06%·2.46% 하락해 양 시장에 매도 사이드카가 발동됐다.",
+      "title": "두 달 만에 코스피 매도 사이드카 발동···4% 급락"
+    },
     "source_fact:de12933d8a69baa4de80b61e": {
       "first_seen_kst": "2026-10-06T00:57:01+09:00",
       "lanes": {
@@ -508650,6 +509567,33 @@
       "source_title": "나신평 \"이마트, 워너브라더스 인수 1.4조 투자로 재무부담 확대…과중한 투자\"",
       "telegram_core_fact": "스타필드 프로퍼티스가 투자기구 'RB텐트폴' 지분 100%를 취득해 파라마운트와 워너브라더스 합병 관련 신주에 간접 투자하는 구조다.",
       "title": "나신평 \"이마트, 워너브라더스 인수 1.4조 투자로 재무부담 확대…과중한 투자\""
+    },
+    "source_fact:e0c8cb96293826f41815cef6": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174942",
+      "source": "매일경제",
+      "source_body_digest": "0f88dd29e757cb2560115c719610ff533c7ef921d451586bd6449895e7d243bc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3af5db21e105c9f54ec33cc04e28b1c05a4b9762586d0a387b4b9f127a08556",
+      "source_fact_keys": [
+        "source_fact:v1:57ff7b4bf66811f5d46f19304a47ff290874453a51d8c2d88be1d1fb52e5b4f2",
+        "source_fact:v1:618a313c8fb8cdf7c21c24261aab051f4bea9f838875db40b1e9c8cb1fa956d3",
+        "source_fact:v1:7e78dca30b6f20bfe5f3566beebc3acb327443fe7f4348c76728a75e956fb403",
+        "source_fact:v1:83b41c67fc70af55581ad13f3737af19415cb5af2fed405bdcb736f029bdd3a0",
+        "source_fact:v1:895e67526e6b387b93b8d0eb855ec44ec7a68b06e3a8266e9c39d759d58fdcc7",
+        "source_fact:v1:9341fe8bd745b03db98226ed2099d335535bc1cd0fae336d28225b485ab08685",
+        "source_fact:v1:9a5f1adcac3d82152ded582e86f15e14170b2ccb01ab5b9611a1b87fcd42dc0b",
+        "source_fact:v1:b5a37b054d7bf9df40a077f3fc74e0f61d25e5c528a7a7388f90bbbbc1ba4edd"
+      ],
+      "source_published_kst": "2026-10-13T21:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "에이트코 홀딩스, 나스닥 최소입찰가 요건 회복..상장 리스크 해소",
+      "telegram_core_fact": "에이트코 홀딩스(ORBS)가 나스닥 상장 규정상 최소 입찰가 요건(주당 1달러)을 다시 충족해 관련 사안이 종결됐다는 나스닥 상장심사팀의 통보를 받았다고 10월 13일 발표했다. 나스닥 최소 입찰가 요건을 회복해 상장폐지 우려가 해소된 점은 투자심리에 긍정적이에요.",
+      "title": "에이트코 홀딩스, 나스닥 최소입찰가 요건 회복..상장 리스크 해소"
     },
     "source_fact:e0cc0dc1bfb8f8c0e6973bec": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
@@ -545918,6 +546862,24 @@
       "source_published_kst": "2026-10-07T16:16+09:00",
       "title": "'선박왕' 권혁, 15년 만에 체납세금 3938억 완납 의사…1000억 우선 납부(종합)"
     },
+    "title:0ccbe4aa593feb2c5e94c231": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://view.asiae.co.kr/article/2026101223004958343",
+      "source": "아시아경제",
+      "source_body_digest": "b2d0f5421aa278af2b68d2ab3da267ffa63d635e25b98ec1ac1d68aaf0f53433",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-13T13:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "뮤직비디오 제작사가 등급 매긴다…자율분류 허용",
+      "telegram_core_fact": "뮤직비디오 유통의 걸림돌로 지적돼 온 사전 등급심사 규제가 완화된다.",
+      "title": "뮤직비디오 제작사가 등급 매긴다…자율분류 허용"
+    },
     "title:0cda7f33b418d22f33a32a9e": {
       "first_seen_kst": "2026-10-13T22:04:42+09:00",
       "lanes": {
@@ -571618,6 +572580,24 @@
       "source": "머니투데이",
       "title": "하드·소프트웨어 경쟁력 통했다… K배터리 유일 'DSX 레디'"
     },
+    "title:5fef778e6c124034d08df227": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174998",
+      "source": "매일경제",
+      "source_body_digest": "4eebab784ca59aebe2d7189038cde4e9b4d57dbd957779b0f92412a844b81d55",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-13T23:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "선라이즈리얼티, 2000만 달러 자사주 매입 승인으로 주주환원 기대감 부각",
+      "telegram_core_fact": "2027년 말까지 최대 2000만 달러 자사주 매입이 승인되었습니다.",
+      "title": "선라이즈리얼티, 2000만 달러 자사주 매입 승인으로 주주환원 기대감 부각"
+    },
     "title:5ffdd5f150e15139ae3039b9": {
       "first_seen_kst": "2026-10-08T11:49:03+09:00",
       "lanes": {
@@ -571667,6 +572647,27 @@
       ],
       "source_published_kst": "2026-10-07T07:33+09:00",
       "title": "[마켓무버]뉴욕증시, 금리 부담 완화에 일제 상승…AI·반도체가 랠리 주도"
+    },
+    "title:603425c5f6dd8a508b0bba28": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/14/MZRTAZRRGFSDGYRQGA4GIMZSGY/",
+      "source": "조선비즈",
+      "source_body_digest": "81db2443ce355e1391dcecbc8351c077727308437509db92ab78ca4b308bb6a3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:121eee7dcd00b4adca52811a2d46fe5cee15808885d8b08d11f8fb293bd3f21c",
+      "source_fact_keys": [
+        "source_fact:v1:69c25cce4f11cb7d194ef4e72625bfbb3791b51bdb1aaaaf21553b400c431262",
+        "source_fact:v1:6a422dce912fe39ae7922e54f0f5b23312f70e5e49c632457e817de89b66dc32"
+      ],
+      "source_published_kst": "2026-10-14T00:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 반도체 공습·외국인 매도… 주저앉은 코스피",
+      "telegram_core_fact": "한국거래소에 따르면 외국인 투자자는 올해 들어 지난 12일까지 코스피에서 약 199조1000억원을 순매도(매도가 매수보다 많은 것)했다.",
+      "title": "中 반도체 공습·외국인 매도… 주저앉은 코스피"
     },
     "title:6044441ba1f64c9bede8df1a": {
       "first_seen_kst": "2026-10-14T00:12:03+09:00",
@@ -571801,6 +572802,33 @@
       "source_title": "BGF, KNW 지분 전량 인수로 지배구조 단순화…'반도체 소재' 직접 챙긴다",
       "telegram_core_fact": "BGF가 자회사인 BGF에코머티리얼즈가 보유한 케이엔더블유(KNW) 지분 전량을 인수하며 반도체 소재 사업에 대한 지배력을 강화한다. BGF는 7일 케이엔더블유 보통주 911만3891주(지분율 56.9%)를 매입한다고 공시했다.",
       "title": "BGF, KNW 지분 전량 인수로 지배구조 단순화…'반도체 소재' 직접 챙긴다"
+    },
+    "title:60bb8bed3b22a257644f7d11": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174942",
+      "source": "매일경제",
+      "source_body_digest": "0f88dd29e757cb2560115c719610ff533c7ef921d451586bd6449895e7d243bc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3af5db21e105c9f54ec33cc04e28b1c05a4b9762586d0a387b4b9f127a08556",
+      "source_fact_keys": [
+        "source_fact:v1:57ff7b4bf66811f5d46f19304a47ff290874453a51d8c2d88be1d1fb52e5b4f2",
+        "source_fact:v1:618a313c8fb8cdf7c21c24261aab051f4bea9f838875db40b1e9c8cb1fa956d3",
+        "source_fact:v1:7e78dca30b6f20bfe5f3566beebc3acb327443fe7f4348c76728a75e956fb403",
+        "source_fact:v1:83b41c67fc70af55581ad13f3737af19415cb5af2fed405bdcb736f029bdd3a0",
+        "source_fact:v1:895e67526e6b387b93b8d0eb855ec44ec7a68b06e3a8266e9c39d759d58fdcc7",
+        "source_fact:v1:9341fe8bd745b03db98226ed2099d335535bc1cd0fae336d28225b485ab08685",
+        "source_fact:v1:9a5f1adcac3d82152ded582e86f15e14170b2ccb01ab5b9611a1b87fcd42dc0b",
+        "source_fact:v1:b5a37b054d7bf9df40a077f3fc74e0f61d25e5c528a7a7388f90bbbbc1ba4edd"
+      ],
+      "source_published_kst": "2026-10-13T21:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "에이트코 홀딩스, 나스닥 최소입찰가 요건 회복..상장 리스크 해소",
+      "telegram_core_fact": "에이트코 홀딩스(ORBS)가 나스닥 상장 규정상 최소 입찰가 요건(주당 1달러)을 다시 충족해 관련 사안이 종결됐다는 나스닥 상장심사팀의 통보를 받았다고 10월 13일 발표했다. 나스닥 최소 입찰가 요건을 회복해 상장폐지 우려가 해소된 점은 투자심리에 긍정적이에요.",
+      "title": "에이트코 홀딩스, 나스닥 최소입찰가 요건 회복..상장 리스크 해소"
     },
     "title:60c0ead3210dba4ae395370f": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
@@ -579148,6 +580176,29 @@
       "link": "https://www.mt.co.kr/world/2026/10/03/2026100306094814060",
       "source": "머니투데이",
       "title": "\"한국 합의 안 하면 2배로 청구\"…트럼프, 알래스카 투자 노골적 압박"
+    },
+    "title:7973618442434871090d78fb": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610138098b",
+      "source": "한국경제",
+      "source_body_digest": "05c5bb5275f496ae5d8f8127d412deec3a99eb7d9aae89872c6b1a498ecefb25",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48d9a39803a04b031c0867ef8a351d8af61ccf34af38c95a5df752ae523fcb4f",
+      "source_fact_keys": [
+        "source_fact:v1:4dea972c6582ffd6ccf2222721b9a9f3dc41d2e7792d110baf66087eca3b35e2",
+        "source_fact:v1:7503d031487659e987ed26c33214597970fdb13204d3948db65a998c950f2d1d",
+        "source_fact:v1:b61295cb296efd3058d5c1de2c2985383e42a55dd601e6b3812a3557d5edd176",
+        "source_fact:v1:bdcc35342bfef2c08f8563cd5cb865837b8bfc3f63912cbbb2e59c7543c4b7df"
+      ],
+      "source_published_kst": "2026-10-13T10:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "두 달 만에 코스피 매도 사이드카 발동···4% 급락",
+      "telegram_core_fact": "코스피·코스닥은 각각 4.06%·2.46% 하락해 양 시장에 매도 사이드카가 발동됐다.",
+      "title": "두 달 만에 코스피 매도 사이드카 발동···4% 급락"
     },
     "title:7973be11688315842e28f0bf": {
       "first_seen_kst": "2026-10-11T12:55:39+09:00",
@@ -591049,6 +592100,29 @@
       "telegram_core_fact": "제안된 K-DAMS는 개별 거래소의 감시 기능을 없애는 방식이 아니라 거래소, 자율규제기구, 감독기관이 주문∙체결 정보와 온체인 자산 이동, 지갑 주소, 자금세탁방지 정보 등을 함께 연계하는 구조다.",
       "title": "[국내 5대 거래소] 제도화 지연 속 보안∙감시 체계 정비 경쟁"
     },
+    "title:a0186798e0c9ece020b3faa3": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://biz.heraldcorp.com/article/10901072",
+      "source": "헤럴드경제",
+      "source_body_digest": "aade0671b1cd18c2977c2a6ecd1a8a5f6bcb768e866765640ce4957180b953ad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d03416d0375bc370ed184a4dd21d52e09b8a5bb5189b0ac42a25edc19b4cd2ae",
+      "source_fact_keys": [
+        "source_fact:v1:6e59176d6c656cbe3887cbd2a29a332a11c6637629bf8d20885a1c1498c3f8bf",
+        "source_fact:v1:a6a85f25ee1b206f76094a7bafd2345ec3880e1a576cd2bb50d3cfdc5b123344",
+        "source_fact:v1:b359414f1517155581accc77d7f0e8eede66fe81412a9af4a1528d7d404613cf",
+        "source_fact:v1:e54a1905f37137de0550170d1cb908e4be7ccce47ef171fca3abbfdbd14a7d2c"
+      ],
+      "source_published_kst": "2026-10-13T21:40+09:00",
+      "source_supply_terms": {},
+      "source_title": "자사주 매입도 무용지물…SK하닉마저 떠나면 ‘보릿고개’ 어쩌나 [투자360]",
+      "telegram_core_fact": "김록호 하나증권 연구원은 “삼성전자 2027년 1월 이사회에서 추가 주주환원 방안을 발표한다는 입장이나 3분기 실적 발표에서 추가 주주환원 방안으로 연내 자사주 매입이 언급된다면 매물대 해소에 도움이 될 것”이라고 전망했다.",
+      "title": "자사주 매입도 무용지물…SK하닉마저 떠나면 ‘보릿고개’ 어쩌나 [투자360]"
+    },
     "title:a037f674cc20397a38556eeb": {
       "first_seen_kst": "2026-10-08T02:57:10+09:00",
       "lanes": {
@@ -600640,6 +601714,24 @@
       "source_title": "쿠팡, 공정위 조사 거부·개인정보 배상안 불수용…국감서 집중 추궁(종합)",
       "telegram_core_fact": "공정위 조사에 응하지 않은 이유와 피해자 배상조정안을 수용하지 않은 배경을 둘러싸고 책임론이 불거졌고, 국회에서는 조사 거부에 대한 제재 강화와 피해 구제 실효성을 높이기 위한 입법 필요성까지 제기됐다.",
       "title": "쿠팡, 공정위 조사 거부·개인정보 배상안 불수용…국감서 집중 추궁(종합)"
+    },
+    "title:c12524c71c1b7ba7d9f3d9e7": {
+      "first_seen_kst": "2026-10-14T03:39:25+09:00",
+      "lanes": {
+        "live": "2026-10-14T03:39:25+09:00"
+      },
+      "last_seen_kst": "2026-10-14T03:39:25+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003824422",
+      "source": "뉴시스",
+      "source_body_digest": "0b933444e42f0cf239108fa0f2479443287c71a40db54265a2d16225ede3278f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-13T17:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "SK가스, 900억 규모 자사주 매입·소각…주주환원 강화 '승부수'",
+      "telegram_core_fact": "SK가스는 13일 이사회에서 올해부터 오는 2028년까지 매년 300억원 자사주를 매입·소각하는 중기 주주환원 계획을 보고하고, 첫해 분 자사주 취득을 의결했다고 밝혔다.",
+      "title": "SK가스, 900억 규모 자사주 매입·소각…주주환원 강화 '승부수'"
     },
     "title:c1479694d28a15ab9d3cf908": {
       "first_seen_kst": "2026-10-07T06:28:41+09:00",
@@ -619629,5 +620721,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-14T03:10:24+09:00"
+  "updated_at_kst": "2026-10-14T03:39:25+09:00"
 }
