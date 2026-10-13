@@ -1093,3 +1093,23 @@ finally:
     _oct13_mod.ls_post=_orig_backfill_ls
     _oct13_mod.session_state=_orig_backfill_session
 print("oct13_opening_bar_backfill_boundary_regression=true")
+
+
+# 09:26 재급락: 정확한 가격 급락은 확인되지만 시작 수급이 50.8초 늦어
+# '감시 자체가 끊겼다'고 오해하지 않도록 원인별 메시지를 분리한다.
+_oct13_stale = Watch.__new__(Watch)
+_oct13_stale.flows=deque(maxlen=2500)
+_oct13_stale.put_defs=[]
+_oct13_stale.puts={}
+_oct13_stale_ep={
+    "start_ts":1000.0,"start_price":6134.05,
+    "low_ts":1081.0,"low_price":6107.55,"price_only":True,
+    "price_only_reason":"start channel alignment exceeds 30s",
+}
+_oct13_stale_text=Watch.build_alert(_oct13_stale,"start",_oct13_stale_ep,1081.0,6107.55)
+assert "수급 기준점 시간 정렬 미충족" in _oct13_stale_text,_oct13_stale_text
+assert "감시 중단으로 단정하지 않습니다" in _oct13_stale_text,_oct13_stale_text
+assert "감시 공백 또는 수급 기준점 부족" not in _oct13_stale_text,_oct13_stale_text
+assert "수급 시차 30초" in _oct13_stale_text,_oct13_stale_text
+assert "프로그램 합계 차이 1% 초과" in _oct13_stale_text,_oct13_stale_text
+print("oct13_stale_flow_is_not_monitor_outage_regression=true")
