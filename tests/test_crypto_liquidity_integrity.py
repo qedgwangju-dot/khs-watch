@@ -1,8 +1,15 @@
 import unittest
 from unittest.mock import patch
+import datetime as dt
+import contextlib
+import io
+import json
+import pathlib
+import tempfile
 
 from scripts import crypto_liquidity_watch as watch
 from scripts import crypto_alert_format as fmt
+from scripts import crypto_alert_krw as krw
 
 
 DAYS = [
@@ -37,6 +44,105 @@ class CryptoLiquidityDataIntegrityTest(unittest.TestCase):
     def fetch_btc(self, html):
         with patch.object(watch, "fetch", return_value=html.encode("utf-8")):
             return watch.btc_etf_flow()
+
+    def test_operational_failures_and_schedule_gap_are_visible_once(self):
+        old = {"updated_at_kst": "2026-10-13T10:00:00+09:00", "errors": []}
+        failed = {"updated_at_kst": "2026-10-13T10:16:00+09:00", "errors": ["btc_etf: timeout"]}
+        first = watch.operational_triggers(old, failed, failed["updated_at_kst"])
+        self.assertEqual(first, ["원천자료 조회 이상: BTC ETF"])
+        repeated = watch.operational_triggers(failed, failed, "2026-10-13T10:31:00+09:00")
+        self.assertEqual(repeated, [])
+        recovered = {"errors": []}
+        self.assertEqual(
+            watch.operational_triggers(failed, recovered, "2026-10-13T10:31:00+09:00"),
+            ["원천자료 조회 복구: BTC ETF"],
+        )
+        gap = watch.operational_triggers(old, old, "2026-10-13T11:00:00+09:00")
+        self.assertEqual(len(gap), 1)
+        self.assertIn("60분 (설정 15분 간격)", gap[0])
+
+    def test_core_source_error_blocks_fresh_market_verdict(self):
+        state = {
+            "rates": {"date": "2026-10-12", "daily_10y_bp": 3.0, "daily_30y_bp": 4.0},
+            "btc_etf": {"date": "2026-10-12", "total_usd_m": -65.4, "status": "complete"},
+            "errors": ["btc_etf: Farside timeout; prior validated snapshot retained"],
+        }
+        verdict, reason = fmt.compact_judgement(state)
+        self.assertEqual(verdict, "판정 보류")
+        self.assertIn("BTC ETF 조회·검증 이상", reason)
+
+    def test_ecos_failure_does_not_substitute_another_fx_series(self):
+        with patch.object(krw, "ecos_usdkrw", return_value=None):
+            with self.assertRaisesRegex(RuntimeError, "한국은행 ECOS"):
+                krw.get_usdkrw(dt.date(2026, 10, 12))
+
+    def test_fx_failure_survives_converter_and_final_formatter(self):
+        state = {
+            "btc_etf": {"date": "2026-10-12", "total_usd_m": -65.4, "status": "complete"},
+            "rates": {"date": "2026-10-09", "10y": 5.24, "30y": 5.60},
+            "errors": [],
+        }
+        raw = """[크립토 유동성 변화 감지]
+조회시각(KST): 2026-10-13T16:06:25+09:00
+• BTC 현물 ETF 새 일간 자금흐름(현재 전체 집계): -65.4백만달러
+미 국채 — 미 재무부 공식 수익률곡선 기준일 2026-10-09
+공식·데이터 원천:
+• BTC 현물 ETF: <a href="https://farside.co.uk/btc/">원문</a>
+"""
+        with tempfile.TemporaryDirectory() as tmp:
+            alert_path = pathlib.Path(tmp) / "alert.txt"
+            state_path = pathlib.Path(tmp) / "pending.json"
+            alert_path.write_text(raw, encoding="utf-8")
+            state_path.write_text(json.dumps(state), encoding="utf-8")
+            with (
+                patch.object(krw, "ALERT_PATH", alert_path),
+                patch.object(krw, "STATE_PATH", state_path),
+                patch.object(krw, "ecos_usdkrw", return_value=None),
+                patch.object(fmt, "ALERT_PATH", alert_path),
+                patch.object(fmt, "PENDING_STATE_PATH", state_path),
+            ):
+                with contextlib.redirect_stdout(io.StringIO()):
+                    krw.main()
+                fmt.main()
+            final = alert_path.read_text(encoding="utf-8")
+        self.assertIn("원화 환산 보류", final)
+        self.assertIn("-65.4백만달러", final)
+        self.assertNotIn("약 -", final)
+
+    def test_final_alert_exposes_fx_failure_and_source_warning(self):
+        state = {
+            "rates": {"date": "2026-10-12", "10y": 5.24, "30y": 5.60},
+            "btc_etf": {"date": "2026-10-12", "total_usd_m": -65.4, "status": "complete"},
+            "errors": ["btc_etf: Farside timeout"],
+        }
+        raw = """[크립토 유동성 변화 감지]
+조회시각(KST): 2026-10-13T16:06:25+09:00
+• 원천자료 조회 이상: BTC ETF
+미 국채 — 미 재무부 공식 수익률곡선 기준일 2026-10-12
+원화 환산 보류: 한국은행 ECOS 매매기준율 확인 실패
+공식·데이터 원천:
+• BTC 현물 ETF: <a href="https://farside.co.uk/btc/">원문</a>
+"""
+        with patch.object(fmt, "load_pending_state", return_value=state):
+            alert = fmt.format_alert(raw)
+        self.assertIn("<b>원천자료 조회 이상</b> · BTC ETF", alert)
+        self.assertIn("관련 수치는 이번 실행에서 재확인되지 않음", alert)
+        self.assertIn("판정 · 판정 보류", alert)
+        self.assertIn("원화 환산 보류", alert)
+        self.assertNotIn("약 -", alert)
+        self.assertIn("<code>조회 2026-10-13T16:06:25+09:00</code>", alert)
+
+        fallback = raw.replace(
+            "원화 환산 보류: 한국은행 ECOS 매매기준율 확인 실패",
+            "원화 환산 기준: 1달러=1,338.00원 | 기준일 2026-10-12 | ECB via Frankfurter 일일 기준환율 | 교차검증: 접근 불가",
+        ).replace(
+            "공식·데이터 원천:",
+            "공식·데이터 원천:\n• 원/달러 환율: <a href=\"https://api.frankfurter.dev/v2/rates\">원문</a>",
+        )
+        with patch.object(fmt, "load_pending_state", return_value=state):
+            legacy_alert = fmt.format_alert(fallback)
+        self.assertIn(">대체 환율 원문</a>", legacy_alert)
+        self.assertNotIn(">ECOS</a>", legacy_alert)
 
     def test_unreported_ibit_prevents_premature_overall_verdict(self):
         state = {
@@ -184,7 +290,7 @@ class CryptoLiquidityDataIntegrityTest(unittest.TestCase):
         }
         rows = fmt.calendar_window_reading(state, "3m", 1339.2)
         self.assertTrue(any("거래일평균" in row for row in rows))
-        self.assertTrue(any("미보고일 최근 2/직전 0" in row for row in rows))
+        self.assertTrue(any("일부 종목 미보고 거래일 최근 2/직전 0" in row for row in rows))
         note = fmt.horizon_reading(state)
         self.assertIn("최근5 순유출", note)
         self.assertIn("1개월 순유입", note)
