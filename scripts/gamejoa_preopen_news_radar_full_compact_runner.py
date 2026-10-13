@@ -2962,6 +2962,42 @@ def pyeongtaek_recycled_water_core(title: str, body: str) -> str:
     return fact if core_sentence_is_complete(fact) else ""
 
 
+def smartphone_memory_mix_core(title: str, body: str) -> str:
+    """Keep the low-end versus premium handset outlook tied to its own source facts."""
+    if not (
+        re.search(r"메모리", title)
+        and re.search(r"저가폰|저가\s*스마트폰|보급형\s*스마트폰", title)
+        and re.search(r"프리미엄폰|프리미엄\s*스마트폰", title)
+    ):
+        return ""
+    source = re.sub(r"\s+", " ", market_materiality.source_reported_body(body))
+    price = re.search(
+        r"(?P<usd>\d[\d,]*)\s*달러\s*"
+        r"(?:\(\s*약\s*(?P<krw>[\d,]+)\s*만원?\s*\))?\s*미만\s*스마트폰",
+        source,
+    )
+    period = re.search(r"(?P<start>20\d{2})년부터\s*(?P<end>20\d{2})년까지", source)
+    decline = re.search(r"(?P<amount>\d+\s*억\s*\d+\s*만\s*대)\s*(?:이|가)?\s*(?:감소|줄어)", source)
+    decline_rate = re.search(r"(?:약\s*)?(?P<rate>\d+(?:\.\d+)?)\s*%\s*(?:줄어|감소)", source)
+    premium = re.search(
+        r"프리미엄\s*스마트폰.{0,90}?연평균\s*(?P<rate>\d+(?:\.\d+)?)\s*%\s*성장",
+        source,
+    )
+    if not all((price, period, decline, decline_rate, premium)):
+        return ""
+    price_text = f"{price.group('usd')}달러"
+    if price.group("krw"):
+        price_text += f"(약 {price.group('krw')}만원)"
+    decline_text = re.sub(r"\s+", "", decline.group("amount"))
+    fact = (
+        f"{period.group('start')}~{period.group('end')}년 메모리값 상승으로 "
+        f"{price_text} 미만폰은 {decline_text}"
+        f"(약 {decline_rate.group('rate')}%) 감소, 프리미엄폰은 연 "
+        f"{premium.group('rate')}% 성장 전망입니다."
+    )
+    return fact if core_sentence_is_complete(fact) else ""
+
+
 def source_headline_event_fact(title: str, body: str) -> str:
     """Bind a compact observation to its source actor, population and period."""
     focus = market_materiality.focus_kind(title)
@@ -2969,6 +3005,7 @@ def source_headline_event_fact(title: str, body: str) -> str:
     rows = market_materiality.source_sentences(source)
     flat_source = re.sub(r"\s+", " ", source)
     for headline_core in (
+        smartphone_memory_mix_core(title, source),
         openai_revenue_gap_market_core(title, source),
         samsung_record_earnings_market_reaction_core(title, source),
         sk_hynix_quarterly_outlook_core(title, source),
@@ -12769,6 +12806,9 @@ def verified_alert_core(alert: dict, title: str) -> str:
     if is_business:
         if alert.get("body_verified"):
             body = str(alert.get("source_body") or alert.get("source_abstract") or "")
+            smartphone_mix = smartphone_memory_mix_core(source_title or title, body)
+            if smartphone_mix and valid_source_fact(smartphone_mix):
+                return smartphone_mix
             primary_core = primary_headline_measure_core(source_title or title, body, str(alert.get('published') or ''))
             if primary_core and valid_source_fact(primary_core):
                 return primary_core
@@ -12912,7 +12952,9 @@ def source_core_fact_errors(alert: dict) -> list[str]:
         and re.search(r"순매수\s*인증\s*이벤트|경품\s*이벤트", core)
     ):
         errors.append("promotional_tail_not_headline_market_fact")
-    event_specific_core = iea_existing_stock_release_core(title, source)
+    event_specific_core = smartphone_memory_mix_core(title, source)
+    if not event_specific_core:
+        event_specific_core = iea_existing_stock_release_core(title, source)
     if not event_specific_core:
         event_specific_core = monthly_product_export_core(title, source)
     if not event_specific_core:

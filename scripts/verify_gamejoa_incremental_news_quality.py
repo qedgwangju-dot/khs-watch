@@ -92,6 +92,10 @@ ATTACHMENT_QUALITY_20261010 = json.loads(
     (ROOT / 'data/gamejoa_attachment_quality_fixtures_20261010.json').read_text(encoding='utf-8'))
 ATTACHMENT_QUALITY_20261011 = json.loads(
     (ROOT / 'data/gamejoa_attachment_quality_fixtures_20261011.json').read_text(encoding='utf-8'))
+ATTACHMENT_TRIAGE_20261013 = [
+    line.split('\t')
+    for line in (ROOT / 'data/gamejoa_market_attachment_triage_20261013.tsv').read_text(encoding='utf-8').splitlines()[1:]
+]
 HEADLINE_ANCHOR_FIXTURE = json.loads((ROOT / 'data/gamejoa_headline_anchor_fixtures_20261006.json').read_text(encoding='utf-8'))
 HEADLINE_ANCHOR_CASES = {case['id']: case for case in HEADLINE_ANCHOR_FIXTURE['cases']}
 LIVE_NOW = NOW.replace(hour=19)
@@ -7025,6 +7029,75 @@ class ConcreteLiveSelectionRegressions(unittest.TestCase):
             radar.source_core_fact_errors({**candidate, "telegram_core_fact": wrong}),
         )
 
+
+    def test_oct13_market_attachment_triage_is_exhaustive_and_event_scoped(self):
+        rows = ATTACHMENT_TRIAGE_20261013
+        self.assertEqual(len(rows), 54)
+        self.assertTrue(all(len(row) == 8 for row in rows))
+        ids = [row[0] for row in rows]
+        urls = [row[6] for row in rows]
+        self.assertEqual(ids, [f"{index:02}" for index in range(1, 55)])
+        self.assertEqual(len(set(urls)), 54)
+        self.assertTrue(all(url.startswith(("https://", "http://")) for url in urls))
+
+        counts = {}
+        by_id = {row[0]: row for row in rows}
+        for row in rows:
+            counts[row[1]] = counts.get(row[1], 0) + 1
+            self.assertTrue(row[2] and row[4] and row[5] and row[7], row[0])
+            if row[1] == "duplicate_same_event":
+                representative = by_id[row[3]]
+                self.assertEqual(row[2], representative[2], row[0])
+                self.assertNotEqual(representative[1], "duplicate_same_event", row[0])
+        self.assertEqual(counts, {
+            "send_candidate": 5,
+            "watch_confirmation": 18,
+            "already_sent": 3,
+            "duplicate_same_event": 12,
+            "exclude_low_materiality": 16,
+        })
+        self.assertEqual(
+            [row[0] for row in rows if row[1] == "already_sent"],
+            ["03", "21", "37"],
+        )
+        self.assertEqual(
+            [row[0] for row in rows if row[1] == "send_candidate"],
+            ["20", "42", "45", "46", "52"],
+        )
+        self.assertEqual(by_id["40"][1], "watch_confirmation")
+        self.assertEqual(by_id["53"][1], "watch_confirmation")
+        self.assertTrue(all(
+            row[4] == "google_news_origin_unresolved"
+            for row in rows if row[0] in {"46", "47", "48", "50", "51", "53"}
+        ))
+        self.assertTrue(all(
+            row[4] == "verified_in_prior_production_artifact"
+            for row in rows if row[1] == "already_sent"
+        ))
+
+    def test_smartphone_memory_mix_core_rejects_unrelated_issuer_earnings(self):
+        title = "메모리 호황의 역설…저가폰 2.3억대 줄고 프리미엄폰 뜬다"
+        body = (
+            "메모리 가격 급등으로 200달러(약 28만원) 미만 스마트폰 출하량이 2030년까지 줄어들 전망이다. "
+            "2025년부터 2030년까지 200달러 미만 스마트폰 출하량은 2억3000만대가 감소해 약 40% 줄어들 것으로 예상된다. "
+            "반면 프리미엄 스마트폰 시장은 같은 기간 연평균 7% 성장할 전망이다. "
+            "삼성전자는 3분기 매출 195조원, 영업이익 107조4000억원을 기록해 전년비 각각 126.6%, 782.5% 증가했다."
+        )
+        core = radar.source_headline_event_fact(title, body)
+        self.assertTrue(core)
+        for term in ("2025~2030년", "200달러", "28만원", "2억3000만대", "40%", "프리미엄폰", "7%"):
+            self.assertIn(term, core)
+        self.assertNotIn("126.6%", core)
+        self.assertNotIn("782.5%", core)
+
+        unrelated_earnings = (
+            "전년비 각각 126.6%, 782.5% 증가한 수치로, 메모리 가격 상승이 실적 개선의 핵심 동력으로 꼽혔다."
+        )
+        errors = radar.source_core_fact_errors({
+            **alert(title, body), "telegram_core_fact": unrelated_earnings,
+        })
+        self.assertIn("event_specific_market_fact_missing_or_mismatched", errors)
+        self.assertIn("headline_actor_population_period_or_standard_mismatch", errors)
 
     def test_acknowledged_oct13_entire_inventory_replays_quality_core_and_seen_state(self):
         fixture = ACKNOWLEDGED_QUALITY_FIXTURE
