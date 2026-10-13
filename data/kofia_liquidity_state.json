@@ -1,54 +1,54 @@
 {
-  "fingerprint": "8e3d559111951e2d225a3d4f809f90ab9c85f374148ba805811297f42f34752e",
-  "snapshot_date": "20261008",
+  "fingerprint": "766d1e820fb4c08b5cdd29d48a88c1ae07ea0fb91b939242c015b25d7a5a5919",
+  "snapshot_date": "20261012",
   "alignment_ready": true,
   "dates": {
-    "deposit": "20261008",
-    "mmf": "20261008",
-    "cma": "20261008",
-    "credit": "20261008"
+    "deposit": "20261012",
+    "mmf": "20261012",
+    "cma": "20261012",
+    "credit": "20261012"
   },
   "reference_dates": [
+    "20261012",
     "20261008",
     "20261007",
     "20261006",
     "20261002",
-    "20261001",
-    "20260930"
+    "20261001"
   ],
   "values": {
     "deposit": {
-      "date": "20261008",
-      "value": 100109941,
-      "d1": -269666,
-      "d5": -4554459
+      "date": "20261012",
+      "value": 100438881,
+      "d1": 328940,
+      "d5": -4198785
     },
     "mmf": {
-      "date": "20261008",
-      "value": 260214383,
-      "d1": -2680315,
-      "d5": 28637258
+      "date": "20261012",
+      "value": 257296292,
+      "d1": -2918091,
+      "d5": 20425443
     },
     "cma": {
-      "date": "20261008",
-      "value": 101097147,
-      "d1": -4527165,
-      "d5": -5507875
+      "date": "20261012",
+      "value": 99689321,
+      "d1": -1407826,
+      "d5": -6715780
     },
     "credit": {
-      "date": "20261008",
-      "value": 33811321,
-      "d1": 294582,
-      "d5": 421192
+      "date": "20261012",
+      "value": 34288699,
+      "d1": 477378,
+      "d5": 807856
     },
     "receivable": {
-      "date": "20261008",
-      "value": 991462
+      "date": "20261012",
+      "value": 1063467
     },
     "forced": {
-      "date": "20261008",
-      "value": 6359,
-      "ratio": 0.7
+      "date": "20261012",
+      "value": 27083,
+      "ratio": 2.7
     }
   },
   "message_version": "kofia-direction-20261008-v1",
@@ -56,8 +56,8 @@
   "source": "KOFIA FreeSIS",
   "source_url": "https://freesis.kofia.or.kr/stat/main.do",
   "delivery_receipt": {
-    "message_id": 275,
+    "message_id": 352,
     "bot_username": "khs887900887900008879_bot",
-    "timestamp_utc": "2026-10-12T10:39:14.507846+00:00"
+    "timestamp_utc": "2026-10-13T11:41:59.259404+00:00"
   }
 }
