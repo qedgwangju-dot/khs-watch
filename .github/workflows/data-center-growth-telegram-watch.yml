@@ -389,6 +389,12 @@ jobs:
                           ],
                       ]
                   }
+              elif p.name == "us_grid_emergency_alert.txt":
+                  # The verified official PJM/DOE renderer emits a safe HTML
+                  # <a href="...">원문</a>; without parse_mode the raw tag
+                  # appeared literally in Telegram.
+                  payload["parse_mode"] = "HTML"
+                  payload["link_preview_options"] = {"is_disabled": True}
               elif p.name == "us_data_center_time_to_power_alert.txt":
                   payload["parse_mode"] = "HTML"
                   payload["link_preview_options"] = {"is_disabled": True}
