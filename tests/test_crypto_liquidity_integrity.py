@@ -190,6 +190,24 @@ class CryptoLiquidityDataIntegrityTest(unittest.TestCase):
         self.assertIn("1개월 순유입", note)
         self.assertIn("3개월 순유입", note)
 
+    def test_three_month_averages_convert_both_periods(self):
+        state = {"windows": {"3m": {
+            "valid": True, "start": "2026-07-13", "end": "2026-10-12",
+            "trading_days": 65, "value_usd_m": 5783.0,
+            "prev_value_usd_m": -5437.6, "change_usd_m": 11220.6,
+            "avg_usd_m_per_session": 89.0, "prev_avg_usd_m_per_session": -87.7,
+            "direction": "순유출→순유입 전환", "status": "잠정",
+        }}}
+        rows = fmt.calendar_window_reading(state, "3m", 1338.0)
+        alert = fmt.ensure_krw_for_bare_usd("\n".join(rows), 1338.0)
+        self.assertIn(
+            "거래일평균 최근 +89.0백만달러 (약 +1,191억원)"
+            " / 직전 -87.7백만달러 (약 -1,173억원)", alert
+        )
+        self.assertNotIn("+89.0/-87.7백만달러", alert)
+        self.assertEqual(alert.count("+1,191억원"), 1)
+        self.assertEqual(alert.count("-1,173억원"), 1)
+
     def test_middle_gap_blocks_three_month_only(self):
         import datetime as dt
         day,end=dt.date(2026,4,10),dt.date(2026,10,9)
