@@ -185,8 +185,12 @@ class BioAlertRegressionTests(unittest.TestCase):
 
     def test_watchdog_does_not_repeat_primary_failure_notice(self):
         source = (ROOT / ".github/workflows/qlex-sc-bio-fallback.yml").read_text(encoding="utf-8")
+        primary = (ROOT / ".github/workflows/bio-qlex-intismeran-watch.yml").read_text(encoding="utf-8")
         self.assertIn("failure() && steps.stale.outputs.previous_status == 'ok'", source)
         self.assertIn("bio_watchdog_failure_notice=skipped_existing_primary_notice", source)
+        for workflow in (source, primary):
+            self.assertIn("group: bio-qlex-intismeran-watch", workflow)
+            self.assertIn("cancel-in-progress: false", workflow)
 
     def test_regulatory_identifiers_render_korean_first(self):
         rendered = guard.ensure_korean_text(
