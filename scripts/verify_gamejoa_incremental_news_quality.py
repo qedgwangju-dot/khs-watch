@@ -92,6 +92,10 @@ ATTACHMENT_QUALITY_20261010 = json.loads(
     (ROOT / 'data/gamejoa_attachment_quality_fixtures_20261010.json').read_text(encoding='utf-8'))
 ATTACHMENT_QUALITY_20261011 = json.loads(
     (ROOT / 'data/gamejoa_attachment_quality_fixtures_20261011.json').read_text(encoding='utf-8'))
+ATTACHMENT_TRIAGE_20261013 = [
+    line.split('\t')
+    for line in (ROOT / 'data/gamejoa_market_attachment_triage_20261013.tsv').read_text(encoding='utf-8').splitlines()[1:]
+]
 HEADLINE_ANCHOR_FIXTURE = json.loads((ROOT / 'data/gamejoa_headline_anchor_fixtures_20261006.json').read_text(encoding='utf-8'))
 HEADLINE_ANCHOR_CASES = {case['id']: case for case in HEADLINE_ANCHOR_FIXTURE['cases']}
 LIVE_NOW = NOW.replace(hour=19)
@@ -6327,6 +6331,52 @@ class IncrementalNewsTests(unittest.TestCase):
 
 
 class ConcreteLiveSelectionRegressions(unittest.TestCase):
+    def test_oct14_low_signal_theme_rally_and_incubatee_profile_do_not_fill_live_slots(self):
+        now = dt.datetime(2026, 10, 14, 1, 23, tzinfo=dt.timezone(dt.timedelta(hours=9)))
+        cases = (
+            (
+                '"호남 반도체 속도전…최태원 한마디에 테마주 이틀 연속 불기둥',
+                '시장 일각에서는 반도체 팹(생산 시설) 착공에 필수적인 시멘트·전기 등 인프라 기업과 '
+                '반도체 부품·테스트 기업 등을 호남 반도체 클러스터 테마주로 꼽는다.',
+                'thematic_stock_rally_without_verified_company_or_market_event',
+            ),
+            (
+                '[한국건설기술연구원 스마트건설지원센터 보육기업 CEO] '
+                '초경량·고출력 태양광 모듈을 개발하는 기업 에이스인벤터',
+                '현재 경기도 화성에 50MW급 태양광 모듈 생산라인을 구축하고, 초경량·고출력 태양광 모듈과 '
+                '건물일체형 태양광 모듈을 개발·생산하고 있다. 에이스인벤터는 아이템을 인정받아 '
+                '한국건설기술연구원 스마트건설지원센터 보육기업으로 선정됐다.',
+                'startup_profile_without_new_verified_execution',
+            ),
+        )
+        with patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}), patch.object(radar.base, 'kst_now', return_value=now):
+            for index, (title, body, expected_reason) in enumerate(cases):
+                with self.subTest(title=title):
+                    candidate = alert(title, body, f'https://www.hankyung.com/article/20261014{index:05d}')
+                    candidate['published'] = '2026-10-13T15:00:00+09:00'
+                    audit = radar.source_market_materiality(candidate)
+                    self.assertEqual(audit['disposition'], 'exclude', audit)
+                    self.assertEqual(audit['reason'], expected_reason, audit)
+                    self.assertEqual(radar.quality_display_alerts([candidate], 7), [])
+
+        positive_controls = (
+            (
+                '호남 반도체 속도전…테마주 강세 속 상장사 500억원 장비 공급계약',
+                '코스닥 상장사 한미반도체는 호남 반도체 클러스터 신규 팹에 '
+                '500억원 규모의 테스트 장비 공급 계약을 체결했다고 공시했다.',
+            ),
+            (
+                '[한국건설기술연구원 보육기업 CEO] 에이스인벤터, 120억원 투자유치',
+                '에이스인벤터는 기관투자자로부터 120억원을 유치하고 '
+                'AI 데이터센터용 전력반도체 생산라인에 신규 투자한다고 공시했다.',
+            ),
+        )
+        for title, body in positive_controls:
+            with self.subTest(positive_title=title):
+                audit = materiality.assess(title, body, published='2026-10-14T01:00:00+09:00')
+                self.assertEqual(audit['disposition'], 'keep', audit)
+                self.assertGreaterEqual(audit['priority'], 2, audit)
+
     def test_oct13_live_low_signal_audit_estimate_and_local_seedling_asset_are_withheld(self):
         hearing_title = '"상표출원 심사 1년↑…소상공인·중소기업 피해 연간 3조 추정"'
         hearing_body = (
@@ -7025,6 +7075,126 @@ class ConcreteLiveSelectionRegressions(unittest.TestCase):
             radar.source_core_fact_errors({**candidate, "telegram_core_fact": wrong}),
         )
 
+
+    def test_oct13_market_attachment_triage_is_exhaustive_and_event_scoped(self):
+        rows = ATTACHMENT_TRIAGE_20261013
+        self.assertEqual(len(rows), 54)
+        self.assertTrue(all(len(row) == 8 for row in rows))
+        ids = [row[0] for row in rows]
+        urls = [row[6] for row in rows]
+        self.assertEqual(ids, [f"{index:02}" for index in range(1, 55)])
+        self.assertEqual(len(set(urls)), 54)
+        self.assertTrue(all(url.startswith(("https://", "http://")) for url in urls))
+
+        counts = {}
+        by_id = {row[0]: row for row in rows}
+        for row in rows:
+            counts[row[1]] = counts.get(row[1], 0) + 1
+            self.assertTrue(row[2] and row[4] and row[5] and row[7], row[0])
+            if row[1] == "duplicate_same_event":
+                representative = by_id[row[3]]
+                self.assertEqual(row[2], representative[2], row[0])
+                self.assertNotEqual(representative[1], "duplicate_same_event", row[0])
+        self.assertEqual(counts, {
+            "send_candidate": 5,
+            "watch_confirmation": 18,
+            "already_sent": 3,
+            "duplicate_same_event": 12,
+            "exclude_low_materiality": 16,
+        })
+        self.assertEqual(
+            [row[0] for row in rows if row[1] == "already_sent"],
+            ["03", "21", "37"],
+        )
+        self.assertEqual(
+            [row[0] for row in rows if row[1] == "send_candidate"],
+            ["20", "42", "45", "46", "52"],
+        )
+        self.assertEqual(by_id["40"][1], "watch_confirmation")
+        self.assertEqual(by_id["53"][1], "watch_confirmation")
+        self.assertTrue(all(
+            row[4] == "google_news_origin_unresolved"
+            for row in rows if row[0] in {"46", "47", "48", "50", "51", "53"}
+        ))
+        self.assertTrue(all(
+            row[4] == "verified_in_prior_production_artifact"
+            for row in rows if row[1] == "already_sent"
+        ))
+
+    def test_live_quality_suppresses_praise_and_historical_cumulative_context_only(self):
+        now = dt.datetime(2026, 10, 14, 9, 0, tzinfo=dt.timezone(dt.timedelta(hours=9)))
+        praise = alert(
+            '이소영 "스마트공장은 상생 최고 모범"',
+            '이 장관은 "AI 혁명과 반도체 호황"을 언급하며 상생형 스마트공장이 좋은 대표적 사례라고 밝혔다.',
+        )
+        historical_energy = alert(
+            "EU, 우크라전 시작후 약 430조원 러 에너지 수입",
+            "유럽 국가들이 2022년 이후 3200억 달러가 넘는 러시아산 탄화수소를 구매했다고 보도됐다.",
+        )
+        options = alert(
+            "중동전쟁·100달러 유가에도 美개미 상승 베팅…옵션 거래 '밈주식 광풍' 수준",
+            "금리 상승과 배럴당 100달러 유가, 중동전쟁에도 단일종목 옵션 거래가 2021년 수준으로 돌아갔다. "
+            "하루 옵션 명목 거래 규모는 7000억달러이며 실제 주식 매수액은 아니다.",
+        )
+        oil_move = alert(
+            "중동발 유가상승·증시 급락에…환율 10원 오른 1,345.1원",
+            "브렌트유는 전장보다 1.84% 오른 배럴당 106.65달러에 거래를 마쳤다.",
+        )
+        with patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}):
+            self.assertEqual(radar.low_impact_live_publication_reason(praise, now),
+                             "official_praise_without_policy_instrument_or_company_execution")
+            self.assertEqual(radar.low_impact_live_publication_reason(historical_energy, now),
+                             "historical_cumulative_energy_trade_without_current_market_change")
+            self.assertEqual(radar.low_impact_live_publication_reason(options, now), "")
+            self.assertEqual(radar.low_impact_live_publication_reason(oil_move, now), "")
+
+    def test_normalizer_rebuilds_commentary_and_event_key_from_verified_source(self):
+        title = "중동전쟁·100달러 유가에도 美개미 상승 베팅…옵션 거래 '밈주식 광풍' 수준"
+        body = (
+            "금리 상승과 배럴당 100달러 수준의 유가, 중동전쟁에도 단일종목 옵션 거래가 2021년 당시 수준으로 돌아갔다. "
+            "옵션 운용사 집계에서 단일종목 옵션의 하루 명목 거래 규모는 약 7000억달러였다. "
+            "이는 실제 주식 매수액이나 옵션 매수대금이 아니라 계약의 명목상 기초자산 규모다."
+        )
+        item = alert(title, body, "https://www.newsis.com/view/NISX20261013_0003824428")
+        item.update({
+            "korean_business_news": True,
+            "investment_view": "신규 ETF 상장은 해당 바스켓의 거래 접근성과 초기 편입 수요를 만듭니다.",
+            "interpretation": "신규 ETF 상장으로 리밸런싱 수요를 확인합니다.",
+            "korea_market_impact": "삼성전자·SK하이닉스와 금융·지주 편입 비중을 확인합니다.",
+            "telegram_investment_fact": "신규 ETF 상장은 순자산·설정액·거래대금으로 확인해야 합니다.",
+            "supply_chain_theme": "korea_strategic_etf_listing:2026-10-13",
+        })
+        normalized = radar.normalize_alert_for_output(item)
+        self.assertIn("옵션", normalized["telegram_core_fact"])
+        self.assertNotIn("ETF", normalized["telegram_core_fact"])
+        self.assertNotIn("신규 ETF 상장", normalized["investment_view"])
+        self.assertNotIn("신규 ETF 상장", normalized["telegram_investment_fact"])
+        self.assertNotIn("삼성전자·SK하이닉스와 금융·지주", normalized["korea_market_impact"])
+        self.assertNotEqual(normalized.get("supply_chain_theme"), "korea_strategic_etf_listing:2026-10-13")
+
+    def test_smartphone_memory_mix_core_rejects_unrelated_issuer_earnings(self):
+        title = "메모리 호황의 역설…저가폰 2.3억대 줄고 프리미엄폰 뜬다"
+        body = (
+            "메모리 가격 급등으로 200달러(약 28만원) 미만 스마트폰 출하량이 2030년까지 줄어들 전망이다. "
+            "2025년부터 2030년까지 200달러 미만 스마트폰 출하량은 2억3000만대가 감소해 약 40% 줄어들 것으로 예상된다. "
+            "반면 프리미엄 스마트폰 시장은 같은 기간 연평균 7% 성장할 전망이다. "
+            "삼성전자는 3분기 매출 195조원, 영업이익 107조4000억원을 기록해 전년비 각각 126.6%, 782.5% 증가했다."
+        )
+        core = radar.source_headline_event_fact(title, body)
+        self.assertTrue(core)
+        for term in ("2025~2030년", "200달러", "28만원", "2억3000만대", "40%", "프리미엄폰", "7%"):
+            self.assertIn(term, core)
+        self.assertNotIn("126.6%", core)
+        self.assertNotIn("782.5%", core)
+
+        unrelated_earnings = (
+            "전년비 각각 126.6%, 782.5% 증가한 수치로, 메모리 가격 상승이 실적 개선의 핵심 동력으로 꼽혔다."
+        )
+        errors = radar.source_core_fact_errors({
+            **alert(title, body), "telegram_core_fact": unrelated_earnings,
+        })
+        self.assertIn("event_specific_market_fact_missing_or_mismatched", errors)
+        self.assertIn("headline_actor_population_period_or_standard_mismatch", errors)
 
     def test_acknowledged_oct13_entire_inventory_replays_quality_core_and_seen_state(self):
         fixture = ACKNOWLEDGED_QUALITY_FIXTURE

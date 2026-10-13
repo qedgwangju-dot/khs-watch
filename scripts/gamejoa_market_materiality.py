@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 133
+VERSION = 135
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -3611,7 +3611,7 @@ RULES = (
     ("attributed_fx_forecast", ("discount_rate",),
      r"원[·/]달러|달러[·/]원|환율", r"전망|예상"),
     ("policy_scope_or_stage", ("timeline",),
-     r"관세|법인세|소비세|면세(?!점)|세율|세금|H-1B.{0,30}(?:비자|수수료)|수출통제|수출.{0,12}(?:금지|제한)|수입금지|수입 금지|수입 제한|수입제한|수입\s*승인|수출입공고|보안\s*가이드라인|과잉생산.{0,20}(?:대응|조치)|제재|보조금|지원금|예탁금|긴급조치권|규제|인허가|허가\s*절차|고시|조례|환경심사|환경영향평가|주파수|tariff|tax rate|corporate tax|export control|import ban|sanction|subsid|licens|environmental review|spectrum|\bban(?:s|ned)?\b",
+     r"관세|법인세|소비세|면세(?!점)|세율|세금|H-1B.{0,30}(?:비자|수수료)|외국환거래(?:규정|법)|외환거래|해외\s*원화\s*차입|원화\s*차입\s*신고|수출통제|수출.{0,12}(?:금지|제한)|수입금지|수입 금지|수입 제한|수입제한|수입\s*승인|수출입공고|보안\s*가이드라인|과잉생산.{0,20}(?:대응|조치)|제재|보조금|지원금|예탁금|긴급조치권|규제|인허가|허가\s*절차|고시|조례|환경심사|환경영향평가|주파수|tariff|tax rate|corporate tax|export control|import ban|sanction|subsid|licens|environmental review|spectrum|\bban(?:s|ned)?\b",
      r"제안|검토|추진|인상|인하|부과|올리|올렸|낮추|낮췄|상향|하향|완화|강화|시행|발효|금지|제한|(?<!인)허가(?:했|한다|를\s*(?:내|받|취득))|승인(?:했|한다|을\s*(?:받|획득|취득))|제정|개정|철회|의견수렴|입법예고|면제|배정|의결|착수|발표|propos|draft|\bban(?:s|ned)?\b|prohibit|restrict|approv|enact|implement|consider|exempt|allocat|adopt"),
     ("economic_restriction_response", ("discount_rate", "timeline"),
      r"경제\s*전쟁|제재", r"새로운\s*조치.{0,30}(?:도입|발표)|대응\s*조치.{0,30}(?:도입|발표|시행)"),
@@ -3967,6 +3967,21 @@ def evidence_is_new_event(kind: str, sentence: str) -> bool:
         if re.search(r"(?:피해|정전|차질).{0,15}(?:방지|예방)|예방.{0,15}(?:피해|정전)|prevent.{0,25}(?:outage|damage)", sentence, re.I):
             return False
     return True
+
+
+def foreground_evidence_is_material(title: str, sentence: str, kind: str) -> bool:
+    """Do not promote concessive macro context into a second event."""
+    if kind not in {"rates_fx_or_macro", "energy_geopolitics_or_supply_risk"}:
+        return True
+    options_headline = bool(
+        re.search(r"옵션|options?", title, re.I)
+        and re.search(r"베팅|거래|급증|몰려|활발|bet|trad|surge", title, re.I)
+    )
+    options_sentence = bool(
+        re.search(r"옵션.{0,45}(?:거래|베팅|명목|계약)|(?:거래|베팅).{0,45}옵션|options?", sentence, re.I)
+    )
+    concessive_context = bool(re.search(r"에도|속에서도|amid|despite|even as", sentence, re.I))
+    return not (options_headline and options_sentence and concessive_context)
 
 
 def news_value_rank(evidence: list[dict]) -> int:
@@ -5676,11 +5691,20 @@ def assess(title: str, body: str, *, source_url: str = "", published: str = "") 
     ):
         result.update(disposition="exclude", priority=0, reason="consumer_fashion_publicity_without_new_financial_change")
         return result
-    startup_profile = re.search(r"창업존.{0,40}인터뷰|입주기업\s*인터뷰|입주기업\s*대표를\s*만나", body[:800])
+    startup_profile = re.search(
+        r"창업존.{0,40}인터뷰|입주기업\s*인터뷰|입주기업\s*대표를\s*만나|"
+        r"보육기업.{0,20}CEO|스타트업.{0,20}(?:CEO|대표).{0,20}(?:인터뷰|프로필|소개)|"
+        r"(?:CEO|대표).{0,20}(?:스타트업|보육기업).{0,20}(?:인터뷰|소개)",
+        title + " " + body[:800], re.I,
+    )
     profile_execution = any(
         not PAST_ACTION.search(sentence) and not BACKGROUND.search(sentence)
         and (re.search(r"(?:공급|납품|기술이전)\s*계약.{0,30}체결|신규\s*고객.{0,30}(?:확보|납품)", sentence)
-             or (QUANTITY.search(sentence) and re.search(r"시험\s*결과|실증\s*결과|독립\s*검증|고객\s*검증", sentence)))
+             or (QUANTITY.search(sentence) and re.search(r"시험\s*결과|실증\s*결과|독립\s*검증|고객\s*검증", sentence))
+             or (QUANTITY.search(sentence) and re.search(
+                 r"투자유치|기관투자자|투자금|자금조달|시리즈\s*[A-F]|기업공개|\bIPO\b|상장|수주|매출|출하|양산",
+                 sentence, re.I,
+             ) and re.search(r"확보|유치|체결|기록|발표|공시|시작", sentence)))
         for sentence in source_sentences(body)[:5]
     )
     if startup_profile and not profile_execution and not DIRECT_HEADLINE_CHANGE.search(title):
@@ -5807,6 +5831,21 @@ def assess(title: str, body: str, *, source_url: str = "", published: str = "") 
         r"(?:연결|분기|반기|연간|전체|회사).{0,20}매출|영업이익|순이익|가이던스|설비투자|"
         r"공급\s*계약.{0,20}체결|공장.{0,20}(?:착공|증설)|규제.{0,20}(?:시행|발효)", headline_lead,
     ))
+    thematic_price_recap = bool(
+        re.search(r"(?:테마주|수혜주|관련주).{0,35}(?:불기둥|상한가|급등|폭등|강세)|"
+                  r"(?:불기둥|상한가|급등|폭등|강세).{0,35}(?:테마주|수혜주|관련주)", title)
+    )
+    verified_aggregate_flow = bool(
+        re.search(r"한국거래소|거래소\s*집계|KRX", headline_lead, re.I)
+        and QUANTITY.search(headline_lead)
+        and re.search(r"순매수|순매도|거래대금|자금\s*(?:유입|유출)", headline_lead)
+    )
+    if thematic_price_recap and not company_result_or_execution and not verified_aggregate_flow:
+        result.update(
+            disposition="exclude", priority=0,
+            reason="thematic_stock_rally_without_verified_company_or_market_event",
+        )
+        return result
     consumer_sku = bool(re.search(r"라면|칼국수|과자|음료|화장품|스킨케어|신발|생활용품|찹쌀떡|피자설기|디저트", title)
                         and re.search(r"['‘][^'’]{2,45}['’]|(?:신제품|단일\s*제품|개별\s*제품|특정\s*매장)", headline_lead)
                         and re.search(r"판매\s*호조|(?:매장|마트).{0,25}(?:점|1위)|제품.{0,30}매출|판매량", headline_lead))
@@ -6186,6 +6225,8 @@ def assess(title: str, body: str, *, source_url: str = "", published: str = "") 
                 continue
             if not evidence_is_new_event(kind, sentence):
                 continue
+            if not foreground_evidence_is_material(title, sentence, kind):
+                continue
             if kind == "customer_supply_start" and DENIAL_HEADLINE.search(title) and DENIAL_SOURCE.search(sentence):
                 continue
             # A late company-only forecast cannot replace an unrecognised
@@ -6253,6 +6294,13 @@ def assess(title: str, body: str, *, source_url: str = "", published: str = "") 
             ):
                 continue
             if kind == "physical_supply_or_capacity":
+                if re.search(
+                    r"(?:외국환거래|외환거래|해외\s*원화\s*차입|원화\s*차입).{0,45}(?:신고|보고|기준|조달)|"
+                    r"(?:신고|보고)\s*기준.{0,30}(?:원화|외환|외국환)",
+                    sentence,
+                    re.I,
+                ):
+                    continue
                 if re.search(r"공공서비스.{0,12}확대|(?:쉼터|라운지).{0,20}(?:개방|개관|확대)", sentence):
                     continue
                 if re.search(r"(?:가동|공급|생산).{0,8}중단을?\s*(?:방지|막|예방)|prevent.{0,25}(?:outage|shutdown)", sentence, re.I):

@@ -2962,6 +2962,42 @@ def pyeongtaek_recycled_water_core(title: str, body: str) -> str:
     return fact if core_sentence_is_complete(fact) else ""
 
 
+def smartphone_memory_mix_core(title: str, body: str) -> str:
+    """Keep the low-end versus premium handset outlook tied to its own source facts."""
+    if not (
+        re.search(r"메모리", title)
+        and re.search(r"저가폰|저가\s*스마트폰|보급형\s*스마트폰", title)
+        and re.search(r"프리미엄폰|프리미엄\s*스마트폰", title)
+    ):
+        return ""
+    source = re.sub(r"\s+", " ", market_materiality.source_reported_body(body))
+    price = re.search(
+        r"(?P<usd>\d[\d,]*)\s*달러\s*"
+        r"(?:\(\s*약\s*(?P<krw>[\d,]+)\s*만원?\s*\))?\s*미만\s*스마트폰",
+        source,
+    )
+    period = re.search(r"(?P<start>20\d{2})년부터\s*(?P<end>20\d{2})년까지", source)
+    decline = re.search(r"(?P<amount>\d+\s*억\s*\d+\s*만\s*대)\s*(?:이|가)?\s*(?:감소|줄어)", source)
+    decline_rate = re.search(r"(?:약\s*)?(?P<rate>\d+(?:\.\d+)?)\s*%\s*(?:줄어|감소)", source)
+    premium = re.search(
+        r"프리미엄\s*스마트폰.{0,90}?연평균\s*(?P<rate>\d+(?:\.\d+)?)\s*%\s*성장",
+        source,
+    )
+    if not all((price, period, decline, decline_rate, premium)):
+        return ""
+    price_text = f"{price.group('usd')}달러"
+    if price.group("krw"):
+        price_text += f"(약 {price.group('krw')}만원)"
+    decline_text = re.sub(r"\s+", "", decline.group("amount"))
+    fact = (
+        f"{period.group('start')}~{period.group('end')}년 메모리값 상승으로 "
+        f"{price_text} 미만폰은 {decline_text}"
+        f"(약 {decline_rate.group('rate')}%) 감소, 프리미엄폰은 연 "
+        f"{premium.group('rate')}% 성장 전망입니다."
+    )
+    return fact if core_sentence_is_complete(fact) else ""
+
+
 def source_headline_event_fact(title: str, body: str) -> str:
     """Bind a compact observation to its source actor, population and period."""
     focus = market_materiality.focus_kind(title)
@@ -2969,6 +3005,7 @@ def source_headline_event_fact(title: str, body: str) -> str:
     rows = market_materiality.source_sentences(source)
     flat_source = re.sub(r"\s+", " ", source)
     for headline_core in (
+        smartphone_memory_mix_core(title, source),
         openai_revenue_gap_market_core(title, source),
         samsung_record_earnings_market_reaction_core(title, source),
         sk_hynix_quarterly_outlook_core(title, source),
@@ -11754,7 +11791,13 @@ def explanation_for(alert: dict) -> dict[str, str]:
 
 def normalize_alert_for_output(alert: dict) -> dict:
     out = dict(alert)
-    if out.get("korean_business_news") and out.get("body_verified"):
+    source_bound_business = bool(out.get("korean_business_news") and out.get("body_verified"))
+    if source_bound_business:
+        for key in (
+            "investment_view", "interpretation", "korea_market_impact",
+            "telegram_investment_fact", "supply_chain_theme",
+        ):
+            out.pop(key, None)
         repaired_core = verified_alert_core(out, str(out.get("source_title") or out.get("news") or ""))
         if repaired_core:
             out["telegram_core_fact"] = repaired_core
@@ -11818,6 +11861,24 @@ def normalize_alert_for_output(alert: dict) -> dict:
         out["investment_view"] = explanation["view"]
     if profile or not out.get("korea_market_impact"):
         out["korea_market_impact"] = explanation["korea"]
+    if source_bound_business and not profile:
+        source_title = str(out.get("source_title") or out.get("news") or "")
+        source_body = market_materiality.source_reported_body(str(out.get("source_body") or ""))
+        article_investment = article_investment_point(source_title, source_body, impacts)
+        if article_investment:
+            out["telegram_investment_fact"] = article_investment
+            out["investment_view"] = article_investment
+            out["interpretation"] = article_investment
+        summary = article_sentences(
+            source_body, korean_business_title_terms(source_title), 2, title=source_title,
+        )
+        source_focus = f"{source_title} {summary}"
+        source_sectors = korean_business_source_sectors(source_title, summary)
+        companies = [name for name in KOREAN_BUSINESS_COMPANIES if name.lower() in source_focus.lower()]
+        exposure = "·".join(companies[:5]) if companies else "원문에 직접 언급된 기업"
+        out["korea_market_impact"] = (
+            f"한국장에서는 {exposure}, {', '.join(source_sectors)} 중 원문에 직접 근거가 있는 노출만 연결합니다."
+        )
     if profile or not out.get("priced_in"):
         out["priced_in"] = explanation["priced"]
     generic_counter_terms = [
@@ -11903,6 +11964,20 @@ def low_impact_live_publication_reason(alert: dict, now) -> str:
     ))
     if ytd_market_cap_recap and not company_execution:
         return 'year_to_date_rally_and_market_cap_recap_without_company_execution'
+    historical_cumulative_energy = bool(
+        re.search(r'(?:2022년\s*이후|전쟁\s*시작\s*(?:이후|후)|침공\s*이후|since\s+2022|since\s+(?:the\s+)?(?:war|invasion))', title + ' ' + body, re.I)
+        and re.search(r'(?:누적|구매|수입|지출|총액|탄화수소|energy\s+imports|purchased|spent|cumulative)', title + ' ' + body, re.I)
+        and re.search(r'(?:러시아|러시아산|유럽|원유|천연가스|에너지|russia|europe|oil|gas|energy)', title + ' ' + body, re.I)
+    )
+    current_energy_change = bool(re.search(
+        r'(?:신규\s*제재|제재를?\s*(?:발표|시행|의결)|수입\s*(?:금지|중단)|공급\s*(?:중단|차질)|'
+        r'(?:브렌트|WTI|국제유가|유가).{0,25}(?:상승|하락|급등|급락|돌파)|'
+        r'(?:공격|공습|피격|휴전|협상\s*재개|봉쇄|통항\s*중단))',
+        title,
+        re.I,
+    ))
+    if historical_cumulative_energy and not current_energy_change:
+        return 'historical_cumulative_energy_trade_without_current_market_change'
     if (re.search(r'NH농협생명', title) and re.search(r'신계약\s*CSM', title)
             and re.search(r'1조원\s*(?:목표|추진|달성)', title)
             and re.search(r'(?:목표|추진)\s*선포식|전사적\s*목표를\s*공유', body)
@@ -11967,6 +12042,12 @@ def low_impact_live_publication_reason(alert: dict, now) -> str:
     ))
     if official_event_aspiration and not new_policy_instrument:
         return 'official_policy_aspiration_at_event_without_new_instrument_or_budget'
+    official_praise_only = bool(
+        re.search(r'대통령|장관|정부|부처|위원장|청장|minister|president|government', combined, re.I)
+        and re.search(r'모범(?:적)?|칭찬|훌륭|좋은\s*(?:대표적\s*)?사례|상생\s*최고|great\s+example|best\s+model', combined, re.I)
+    )
+    if official_praise_only and not new_policy_instrument and not company_execution:
+        return 'official_praise_without_policy_instrument_or_company_execution'
     if (re.search(r'감사원', title) and re.search(r'KBS|한국방송공사', f'{title} {body}')
             and re.search(r'드라마\s*외주제작', body) and 'A업체' in body and 'B업체' in body
             and re.search(r'제작비\s*95억원', body) and re.search(r'선급금\s*20억원', body)):
@@ -12769,6 +12850,9 @@ def verified_alert_core(alert: dict, title: str) -> str:
     if is_business:
         if alert.get("body_verified"):
             body = str(alert.get("source_body") or alert.get("source_abstract") or "")
+            smartphone_mix = smartphone_memory_mix_core(source_title or title, body)
+            if smartphone_mix and valid_source_fact(smartphone_mix):
+                return smartphone_mix
             primary_core = primary_headline_measure_core(source_title or title, body, str(alert.get('published') or ''))
             if primary_core and valid_source_fact(primary_core):
                 return primary_core
@@ -12912,7 +12996,9 @@ def source_core_fact_errors(alert: dict) -> list[str]:
         and re.search(r"순매수\s*인증\s*이벤트|경품\s*이벤트", core)
     ):
         errors.append("promotional_tail_not_headline_market_fact")
-    event_specific_core = iea_existing_stock_release_core(title, source)
+    event_specific_core = smartphone_memory_mix_core(title, source)
+    if not event_specific_core:
+        event_specific_core = iea_existing_stock_release_core(title, source)
     if not event_specific_core:
         event_specific_core = monthly_product_export_core(title, source)
     if not event_specific_core:
