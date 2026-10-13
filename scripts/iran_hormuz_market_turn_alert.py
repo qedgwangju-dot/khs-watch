@@ -967,7 +967,7 @@ def _saudi_bypass_investment_headline(title: str) -> bool:
     material_step = any(term in text for term in (
         "develop", "build", "plan", "project", "study", "tender",
         "invite", "participation", "finance", "investment", "award",
-        "construction", "expand", "capacity", "commission", "new",
+        "construction", "expand", "capacity", "commission", "new", "target",
         "개발", "신설", "증설", "설계", "국제 참여", "투자", "발주", "착공", "계약",
     ))
     return route_context and material_step
