@@ -6813,6 +6813,9 @@ class ConcreteLiveSelectionRegressions(unittest.TestCase):
         first = ACKNOWLEDGED_QUALITY_CASES['38327760457_1']['alert']
         baseline = materiality.named_supply_order_observation(first['source_title'], first['source_body'], first['published'])
         self.assertTrue(baseline)
+        self.assertFalse(materiality.named_supply_order_observation(
+            first['source_title'], first['source_body'], '2026-10-12T12:00:00+09:00'),
+            'A disclosure date later than publication must not become an event identity.')
         for field, value in (('customer', '다른고객사'), ('product', '다른제품'),
                              ('disclosure_date', '2026-10-14'), ('stage', 'delivered'),
                              ('delivery_period', '2028-04/2028-07'), ('explicit_revision', True),

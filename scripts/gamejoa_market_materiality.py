@@ -2771,6 +2771,8 @@ def named_supply_order_observation(title: str, body: str, published: str = "") -
             disclosure = dt.date(int(published[:4]), int(published[5:7]), int(day[1])).isoformat()
         except ValueError:
             continue
+        if disclosure > published[:10]:
+            continue
         amounts = sorted({(match[2], korean_amount_value(match[1]))
                           for match in re.finditer(SOURCE_MONEY, row)
                           if korean_amount_value(match[1])})
