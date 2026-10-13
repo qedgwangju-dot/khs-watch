@@ -112,6 +112,27 @@ class IsharesTimeoutRegression(unittest.TestCase):
         self.assertEqual(row["nav_date"], "2026-10-09")
         self.assertEqual(row["shares_date"], "2026-10-08")
 
+    def test_parser_reads_official_nav_change_with_spaced_percent(self):
+        html = HTML.replace("(+0.25%)", "$ $ 0.04 ( 0.05 %)")
+        with patch.object(base.requests, "get", return_value=response(html)):
+            row = base.get_ishares("IEF", watch.FUNDS["IEF"])
+        self.assertEqual(row["nav_change_pct"], 0.05)
+
+    def test_parser_rejects_nav_change_from_other_date(self):
+        html = HTML.replace("1 Day NAV Change as of Oct 09", "1 Day NAV Change as of Oct 08")
+        with patch.object(base.requests, "get", return_value=response(html)):
+            row = base.get_ishares("IEF", watch.FUNDS["IEF"])
+        self.assertIsNone(row["nav_change_pct"])
+
+    def test_invalid_saved_state_is_not_silently_reset(self):
+        with tempfile.TemporaryDirectory() as folder:
+            state_path = Path(folder) / "state.json"
+            state_path.write_text("{broken", encoding="utf-8")
+            with patch.object(base, "DATA", state_path):
+                with self.assertRaisesRegex(RuntimeError, "state is unreadable"):
+                    base.load_state()
+            self.assertEqual(state_path.read_text(encoding="utf-8"), "{broken")
+
     def main_context(self):
         state = {"history": {}, "last_delivery": {"treasury_date": "2026-10-08", "message_ids": [123], "bot_username": "khs8879887988798879_bot"}}
         self.stack.enter_context(patch.dict(os.environ, {"GITHUB_EVENT_NAME": "schedule", "TREASURY_REPORT_VALIDATE_ONLY": "0"}))
@@ -150,7 +171,12 @@ class IsharesTimeoutRegression(unittest.TestCase):
 
     def test_main_recovers_to_validation_without_send_or_state_save(self):
         self.main_context()
+        history = {
+            ticker: [{"date": "2026-10-08", "shares": 99_000, "nav": 79.0, "oas_bps": 89.0, "oas_date": "2026-10-08"}]
+            for ticker in watch.FUNDS
+        }
         with patch.dict(os.environ, {"TREASURY_REPORT_VALIDATE_ONLY": "1"}), \
+             patch.object(base, "load_state", return_value={"history": history}), \
              patch.object(watch, "parse_oas_snapshot", return_value={"value": 90, "date": "2026-10-09"}), \
              patch.object(base.requests, "get", side_effect=[requests.ReadTimeout()] + [response() for _ in range(5)]) as get:
             watch.main()
@@ -160,6 +186,17 @@ class IsharesTimeoutRegression(unittest.TestCase):
         self.assertIn("treasury_report_validation_only=true telegram_sent=false", self.output.getvalue())
         self.assertTrue((self.out / "treasury_etf_flow_status.md").exists())
 
+    def test_missing_previous_fund_rows_saves_baseline_without_sending(self):
+        self.main_context()
+        with patch.object(watch, "parse_oas_snapshot", return_value={"value": 90, "date": "2026-10-09"}), \
+             patch.object(base.requests, "get", return_value=response()), \
+             patch.object(base, "save_state") as save:
+            watch.main()
+        self.sender.assert_not_called()
+        save.assert_called_once()
+        self.assertIn('"report_withheld": "fund_baseline_missing"', self.output.getvalue())
+        self.assertEqual(list(self.out.iterdir()), [])
+
     def test_recovery_still_withholds_mismatched_component_dates(self):
         self.main_context()
         bad_date = HTML.replace("100,000 as of Oct 09, 2026", "100,000 as of Oct 08, 2026")
@@ -168,7 +205,23 @@ class IsharesTimeoutRegression(unittest.TestCase):
             watch.main()
         self.sender.assert_not_called()
         self.saver.assert_not_called()
+        self.assertIn('"report_withheld": "fund_component_date_mismatch"', self.output.getvalue())
+        self.assertEqual(list(self.out.iterdir()), [])
+
+    def test_treasury_holiday_withholds_report_but_saves_etf_baseline(self):
+        self.main_context()
+        stale_curve = {"date": "2026-10-08", "2Y": 4.5, "10Y": 5.0, "30Y": 5.5}
+        with patch.object(watch, "get_curve_pair", return_value=(stale_curve, None)), \
+             patch.object(watch, "parse_oas_snapshot", return_value={"value": 90, "date": "2026-10-09"}), \
+             patch.object(base.requests, "get", return_value=response()), \
+             patch.object(base, "save_state") as save:
+            watch.main()
+        self.sender.assert_not_called()
+        save.assert_called_once()
+        saved = save.call_args.args[0]
+        self.assertTrue(all(saved["history"][ticker][-1]["date"] == "2026-10-09" for ticker in watch.FUNDS))
         self.assertIn('"report_withheld": "source_date_mismatch"', self.output.getvalue())
+        self.assertIn('"fund_baseline_saved": true', self.output.getvalue())
         self.assertEqual(list(self.out.iterdir()), [])
 
     def test_already_delivered_market_date_skips_provider_and_send(self):

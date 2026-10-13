@@ -344,6 +344,19 @@ def _fmt_krw_trillion(value_trillion):
     return f"약 {value_trillion:,.2f}조원"
 
 
+def _refinancing_line(refi, fx_rate):
+    # Convert the source precision, then round only the displayed currency.
+    # Converting rounded USD displays can shift the KRW result by trillions.
+    next12_krw = _fmt_krw_trillion(refi["next12_t"] * fx_rate if fx_rate else None)
+    bills_krw = _fmt_krw_trillion(refi["bills_t"] * fx_rate if fx_rate else None)
+    plus75_krw = _fmt_krw_trillion(refi["plus75_b"] * fx_rate / 1000.0 if fx_rate else None)
+    return (
+        f"차환: 12개월 ${refi['next12_t']:.2f}T ({next12_krw}) ({refi['next12_share']:.1f}%) | "
+        f"Bills ${refi['bills_t']:.2f}T ({bills_krw}) ({refi['bill_share']:.1f}%) | "
+        f"Bills에 +75bp 적용 시 단순 연율 이자부담 +${refi['plus75_b']:.1f}B ({plus75_krw})"
+    )
+
+
 def _next_alert(y10, y30, hyg_flow, hyg_oas):
     parts = []
     if y10 is not None:
@@ -451,17 +464,7 @@ def _compact_report(raw_text):
 
     try:
         refi = get_refinancing_snapshot()
-        next12_t_display = round(refi["next12_t"], 2)
-        bills_t_display = round(refi["bills_t"], 2)
-        plus75_b_display = round(refi["plus75_b"], 1)
-        next12_krw = _fmt_krw_trillion(next12_t_display * fx_rate if fx_rate else None)
-        bills_krw = _fmt_krw_trillion(bills_t_display * fx_rate if fx_rate else None)
-        plus75_krw = _fmt_krw_trillion(plus75_b_display * fx_rate / 1000.0 if fx_rate else None)
-        refi_line = (
-            f"차환: 12개월 ${next12_t_display:.2f}T ({next12_krw}) ({refi['next12_share']:.1f}%) | "
-            f"Bills ${bills_t_display:.2f}T ({bills_krw}) ({refi['bill_share']:.1f}%) | "
-            f"Bills에 +75bp 적용 시 단순 연율 이자부담 +${plus75_b_display:.1f}B ({plus75_krw})"
-        )
+        refi_line = _refinancing_line(refi, fx_rate)
         refi_date = refi["record_date"]
     except Exception:
         refi_line = "차환: MSPD 최신값 조회 실패 → 판정 보류"
@@ -522,6 +525,7 @@ def _compact_report(raw_text):
         "",
         f"기준: ETF·미 재무부 {treasury_date} | MSPD {refi_date}",
         "자금흐름: iShares 공식 발행좌수 변화 × 해당일 NAV로 계산한 추정치이며 iShares가 공표한 공식 일간 순유입액은 아님.",
+        "OAS: iShares LQD·HYG ETF 보유채권 포트폴리오 특성치이며 회사채 시장 전체 스프레드는 아님.",
         "출처: iShares · U.S. Treasury · Treasury FiscalData · OFR/NY Fed · BEA · JPM 기술기준(사용자 제공 2026-09-29 자료)",
     ]
     report = "\n".join(lines)

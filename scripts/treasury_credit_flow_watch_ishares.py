@@ -484,11 +484,28 @@ def main():
         if lag_days < 0 or lag_days > 4:
             oas_stale[ticker] = {"fund_date": fund_d, "oas_date": oas_d, "calendar_lag_days": lag_days}
     curve_missing = [tenor for tenor in ("2Y", "10Y", "30Y") if curve.get(tenor) is None]
-    if len(unique_fund_dates) != 1 or curve.get("date") not in unique_fund_dates:
+    if component_date_mismatch:
+        print(json.dumps({
+            "report_withheld": "fund_component_date_mismatch",
+            "details": component_date_mismatch,
+        }, ensure_ascii=False))
+        return
+    if len(unique_fund_dates) != 1:
+        print(json.dumps({
+            "report_withheld": "fund_dates_not_aligned",
+            "fund_dates": fund_dates,
+        }, ensure_ascii=False))
+        return
+    if curve.get("date") not in unique_fund_dates:
+        # ETFs can trade on a Treasury holiday. Keep their verified baseline so
+        # the next ETF observation is not mislabelled as a one-day flow.
+        if not validate_only:
+            base.save_state(state)
         print(json.dumps({
             "report_withheld": "source_date_mismatch",
             "treasury_date": curve.get("date"),
             "fund_dates": fund_dates,
+            "fund_baseline_saved": not validate_only,
         }, ensure_ascii=False))
         return
     # The prior U.S. market session must be represented. Do not send an
@@ -499,12 +516,6 @@ def main():
             "expected_us_weekday": expected_market_date,
             "treasury_date": curve.get("date"),
             "fund_dates": fund_dates,
-        }, ensure_ascii=False))
-        return
-    if component_date_mismatch:
-        print(json.dumps({
-            "report_withheld": "fund_component_date_mismatch",
-            "details": component_date_mismatch,
         }, ensure_ascii=False))
         return
     if missing_oas:
@@ -531,6 +542,16 @@ def main():
             "report_withheld": "treasury_curve_incomplete",
             "missing": curve_missing,
             "treasury_date": curve.get("date"),
+        }, ensure_ascii=False))
+        return
+    missing_baseline = [ticker for ticker in FUNDS if results[ticker].get("flow_usd") is None]
+    if missing_baseline:
+        if not validate_only:
+            base.save_state(state)
+        print(json.dumps({
+            "report_withheld": "fund_baseline_missing",
+            "tickers": missing_baseline,
+            "fund_baseline_saved": not validate_only,
         }, ensure_ascii=False))
         return
 
