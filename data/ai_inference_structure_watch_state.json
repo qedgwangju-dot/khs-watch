@@ -61,156 +61,57 @@
     "https://www.intel.com/content/www/us/en/newsroom/news/artificial-intelligence/computex-2026-an-intelligent-world-built-on-silicon.html",
     "https://www.sem.samsung.com/global/newsroom/news/view.do?id=10462"
   ],
-  "last_checked_at_kst": "2026-10-13T18:39:31+09:00",
+  "last_checked_at_kst": "2026-10-13T19:35:32+09:00",
   "candidate_count": 0,
-  "event_count": 0,
+  "event_count": 1,
   "delivery_check": {
-    "checked_at_kst": "2026-10-13T18:39:33+09:00",
-    "status": "no_message_due"
+    "checked_at_kst": "2026-10-13T19:35:40+09:00",
+    "status": "confirmed"
   },
-  "last_successful_delivery_kst": "2026-09-29T08:31:55+09:00",
+  "last_successful_delivery_kst": "2026-10-13T19:35:40+09:00",
   "telegram_message_ids": [
-    165
+    285
   ],
-  "telegram_message_id": 165,
+  "telegram_message_id": 285,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      165
-    ],
-    "confirmed_at_kst": "2026-09-29T08:31:55+09:00",
-    "payload_hash": "17acb3723ee192fc0b177a32b905b7163553825988fe8f9160c026edc3cb3998"
-  },
-  "_delivery": {
-    "id": "af61e256ecc57853eb8edd56d0d855de98db6b309bf4f14b7370b8b782603756",
-    "status": "partial",
-    "created_at_kst": "2026-10-13T19:35:36+09:00",
-    "chunks": [
-      "<b>삼성 OCP·AMD CXL·Groq 파운드리 단계 변화</b>\n\n<b>변화</b>\n• <b>삼성전자·AMD:</b> CMM-D 공동 검증 및 삼성 AI 메모리·저장계층 실증 공식 확인\n\n<b>의미</b>\n• CXL로 추론 메모리 용량을 확장하고 SSD·FDP로 KV 캐시를 저장하며, HBM은 고대역폭 작업 메모리로 구분합니다.\n\n<b>현재 숫자</b>\n• 삼성 CMM-D CXL 시연 첫 토큰 응답시간 최대 38% 단축\n• 삼성 CXL 시연 추론 유효 처리량 최대 3.3배\n• 삼성 미국 사내 AI Memory Node 실운영·KV 캐시 활용 5.0~7.0배\n• BM1773 QLC SSD 256TB 전시·PM1763 최고 28.4GB/s\n• FDP·LMCache KV 캐시 저장 최적화 시연\n• LPDDR5X-PIM 추론 처리량 최대 3배\n• AMD 공동 검증·사내 운영은 외부 고객 유상 공급·양산 매출이 아닙니다.\n• Groq 3 LPU 4나노 웨이퍼는 GTC 2026 기존 공개, 별도 2나노 GAA와 구별합니다.\n\n<b>다음 확인</b>\n• CMM-D AMD 실제 발주·고객 인증·양산·매출 / Groq 3 LPU 4나노 실제 출하 / CXL 상호운용성·응답 지연·SSD 쓰기증폭·보험·냉각·운영비\n\n<b>원문</b>\n• <a href=\"https://semiconductor.samsung.com/events/ocp-2026/\">근거 원문</a>"
-    ],
-    "next_chunk": 1,
-    "message_ids": [
       285
     ],
-    "candidate": {
-      "as_of": "2026-09-28",
-      "cpu_ratio": {
-        "AMD": {
-          "cpu_per_gpu": 1,
-          "source": "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
-        },
-        "Intel": {
-          "cpu_per_gpu": 1,
-          "source": "https://www.intel.com/content/www/us/en/newsroom/news/artificial-intelligence/computex-2026-an-intelligent-world-built-on-silicon.html"
-        },
-        "Dell": {
-          "cpu_per_gpu": 1,
-          "source": "https://www.amd.com/en/corporate/events/advancing-ai/sessions-catalog/dell-technologies--balancing-cpu-and-gpu-for-the-agentic-ai-era.html"
-        }
-      },
-      "neocloud": {
-        "CoreWeave": {
-          "active_power_gw": 1.5,
-          "contracted_power_gw": 4.2,
-          "annualized_revenue_per_mw_usd_m": 40
-        },
-        "Nebius": {
-          "contracted_power_gw": 3.5,
-          "contracted_power_guidance_gw": 4,
-          "microsoft_servicing": true
-        },
-        "YTL": {
-          "contracted_power_gw": 0.298,
-          "green_dc_park_planned_gw": 1.0,
-          "sedenak_planned_gw": 1.2,
-          "data_center_segment_revenue_myr_m": 225.0
-        }
-      },
-      "upstream_snapshot": {
-        "agentic_ratio": "1:1",
-        "server_cpu_tam_2030_usd_bn": 210.6,
-        "samsung_q3_revenue_forecast_krw_100m": 38200,
-        "samsung_q3_operating_profit_forecast_krw_100m": 6571,
-        "samsung_cpu_abf_share_floor_pct": 45,
-        "samsung_server_cpu_fcbga_mass_production": true,
-        "samsung_q3_actual_revenue_krw_100m": null,
-        "samsung_q3_actual_operating_profit_krw_100m": null,
-        "samsung_venice_large_scale_deployment_confirmed": null,
-        "ibiden_sap_capacity_multiple": 2,
-        "ibiden_capex_jpy_bn": 500,
-        "ibiden_asic_share_pct": 10,
-        "ibiden_pricing_stance": "현 판매가격 유지 + 원재료비 고객 전가",
-        "ibiden_abf_price_increase": false,
-        "ibiden_nvidia_cpu_substrate_confirmed": false
-      },
-      "seen_urls": [
-        "https://investors.coreweave.com/news/news-details/2026/CoreWeave-Continues-to-Contract-New-Compute-Capacity-at-Higher-Prices/default.aspx",
-        "https://investors.coreweave.com/news/news-details/2026/CoreWeave-Reports-Strong-Second-Quarter-2026-Results/default.aspx",
-        "https://nebius.com/newsroom/nebius-raises-775-million-in-first-secured-debt-financing-to-accelerate-global-buildout",
-        "https://nebius.com/newsroom/nebius-reports-first-quarter-2026-financial-results",
-        "https://newsroom.amd.com/news/amd-acquire-world-labs/",
-        "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html",
-        "https://www.amd.com/en/corporate/events/advancing-ai/sessions-catalog/dell-technologies--balancing-cpu-and-gpu-for-the-agentic-ai-era.html",
-        "https://www.dell.com/en-us/blog/a-new-era-of-ai-agents-demands-a-new-security-model/",
-        "https://www.intel.com/content/www/us/en/newsroom/news/artificial-intelligence/computex-2026-an-intelligent-world-built-on-silicon.html",
-        "https://www.sem.samsung.com/global/newsroom/news/view.do?id=10462"
-      ],
-      "last_checked_at_kst": "2026-10-13T19:35:32+09:00",
-      "candidate_count": 0,
-      "event_count": 1,
-      "delivery_check": {
-        "checked_at_kst": "2026-10-13T18:39:33+09:00",
-        "status": "no_message_due"
-      },
-      "last_successful_delivery_kst": "2026-09-29T08:31:55+09:00",
-      "telegram_message_ids": [
-        165
-      ],
-      "telegram_message_id": 165,
-      "bot_username": "khs88798879887988798879_bot",
-      "delivery_receipt": {
-        "status": "confirmed",
-        "bot_username": "khs88798879887988798879_bot",
-        "message_ids": [
-          165
-        ],
-        "confirmed_at_kst": "2026-09-29T08:31:55+09:00",
-        "payload_hash": "17acb3723ee192fc0b177a32b905b7163553825988fe8f9160c026edc3cb3998"
-      },
-      "groq_foundry": {
-        "stage": "wafer_display",
-        "node_nm": 4,
-        "mass_production_confirmed": false,
-        "source": "https://semiconductor.samsung.com/kr/news-events/tech-blog/architecting-the-ai-era-samsung-electronics-and-nvidia-define-the-future-at-gtc-2026/"
-      },
-      "cxl_customer_stage": {
-        "stage": "joint_validation",
-        "external_paid_contract_confirmed": false
-      },
-      "ocp_memory_system": {
-        "amd_cxl_joint_validation": true,
-        "product": "CMM-D MD310",
-        "cxl_dcd_memory_pool": true,
-        "demo_ttft_reduction_max_pct": 38.0,
-        "demo_goodput_max_x": 3.3,
-        "internal_memory_node_deployed": true,
-        "internal_kv_cache_min_x": 5.0,
-        "internal_kv_cache_max_x": 7.0,
-        "internal_sglang_collaboration": true,
-        "bm1773_qlc_capacity_tb": 256.0,
-        "pm1763_read_gbps": 28.4,
-        "fdp_lmcache_kvcache": true,
-        "lpddr5x_pim_bandwidth_max_x": 8.0,
-        "lpddr5x_pim_tps_max_x": 3.0,
-        "external_amd_paid_order_confirmed": false,
-        "groq_2nm_lpu_confirmed": false,
-        "as_of": "2026-10-13",
-        "source": "https://semiconductor.samsung.com/events/ocp-2026/"
-      },
-      "ocp_source_status": "official_body_verified"
-    },
-    "attempt_at_kst": "2026-10-13T19:35:37+09:00"
-  }
+    "confirmed_at_kst": "2026-10-13T19:35:40+09:00",
+    "payload_hash": "409f46753e5d64a1153f0102489c914d56a18b4baa2563cd704ff9800616f2a5"
+  },
+  "groq_foundry": {
+    "stage": "wafer_display",
+    "node_nm": 4,
+    "mass_production_confirmed": false,
+    "source": "https://semiconductor.samsung.com/kr/news-events/tech-blog/architecting-the-ai-era-samsung-electronics-and-nvidia-define-the-future-at-gtc-2026/"
+  },
+  "cxl_customer_stage": {
+    "stage": "joint_validation",
+    "external_paid_contract_confirmed": false
+  },
+  "ocp_memory_system": {
+    "amd_cxl_joint_validation": true,
+    "product": "CMM-D MD310",
+    "cxl_dcd_memory_pool": true,
+    "demo_ttft_reduction_max_pct": 38.0,
+    "demo_goodput_max_x": 3.3,
+    "internal_memory_node_deployed": true,
+    "internal_kv_cache_min_x": 5.0,
+    "internal_kv_cache_max_x": 7.0,
+    "internal_sglang_collaboration": true,
+    "bm1773_qlc_capacity_tb": 256.0,
+    "pm1763_read_gbps": 28.4,
+    "fdp_lmcache_kvcache": true,
+    "lpddr5x_pim_bandwidth_max_x": 8.0,
+    "lpddr5x_pim_tps_max_x": 3.0,
+    "external_amd_paid_order_confirmed": false,
+    "groq_2nm_lpu_confirmed": false,
+    "as_of": "2026-10-13",
+    "source": "https://semiconductor.samsung.com/events/ocp-2026/"
+  },
+  "ocp_source_status": "official_body_verified"
 }
