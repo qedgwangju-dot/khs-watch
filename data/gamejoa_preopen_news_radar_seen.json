@@ -4512,6 +4512,30 @@
       "telegram_core_fact": "넥센타이어가 서호주 퍼스에 물류센터를 신설해 호주 내 공급망을 서부 지역까지 확대했다고 7일 밝혔다. 호주법인의 올해 상반기 매출은 전년 동기보다 50% 이상 증가했다.",
       "title": "넥센타이어, 호주에 네 번째 물류센터…현지 공급망 확대"
     },
+    "core:1e19fdadd41e12ab62561385": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/13/2026101311065463095",
+      "source": "머니투데이",
+      "source_body_digest": "11d878e145dd1675202caa840e880ce090a943b6cba159aff0183b210b0e0368",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:be3a239b6e321e28ebc98b04bee5eda976dbc3d7272c9b7bcb7004ad0161c1f2",
+      "source_fact_keys": [
+        "source_fact:v1:0c2028e9f374f5f5a0df2116df21b2dc7b44d214c6e3719596972517edbdb6dc",
+        "source_fact:v1:1342f0e1b66538399379620a8020e70b082373ffce8f970cc5a72668687fa3e5",
+        "source_fact:v1:ac3ba5d34be9690a0cf6495a208e102edd274b5470547aa9fceced806842b60d",
+        "source_fact:v1:ce4a9b9d2e67f91814ff4beb620d1f91464b82a31539c48a1dc652da898c53e1",
+        "source_fact:v1:d39ac5470d611a4662189b1e19fd9f08d85a069667ba0d10120b32653d199c74",
+        "source_fact:v1:f88225b7bbdbb4752aa097be0ff9526b500ee430b238e15cd3cd920fb51e5e90"
+      ],
+      "source_published_kst": "2026-10-13T11:14+09:00",
+      "source_title": "바이오솔루션, 동물대체 인체조직모델 솔루오랄 첫 해외 공급 추진",
+      "telegram_core_fact": "바이오솔루션은 이번 국제 검증 연구에서 도출된 데이터를 바탕으로 솔루오랄의 ISO 국제표준 등재를 확정 짓고, 유럽 등 해외 임상시험수탁기관(CRO)과 글로벌 의료기기 제조사를 상대로 인체조직모델 공급 및 시험서비스 협력을 본격화해 해외 매출을 확대할 방침이다.",
+      "title": "바이오솔루션, 동물대체 인체조직모델 솔루오랄 첫 해외 공급 추진"
+    },
     "core:1e2b167b1a015543d947c98c": {
       "first_seen_kst": "2026-10-08T11:49:03+09:00",
       "lanes": {
@@ -10678,6 +10702,25 @@
       "source_title": "두나무·네이버파이낸셜 빅딜 내년 3월로 또 연기",
       "telegram_core_fact": "네이버가 공시한 ‘주식교환·이전 결정’ 정정공시에 따르면 네이버파이낸셜과 두나무의 주식교환일은 기존 올해 12월 31일에서 내년 3월 31일로 변경됐다. 주식교환 비율은 네이버파이낸셜 1주당 두나무 2.5422618주다.",
       "title": "두나무·네이버파이낸셜 빅딜 내년 3월로 또 연기"
+    },
+    "core:44bcf01ddef56e508783df38": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823721",
+      "source": "뉴시스",
+      "source_body_digest": "3f0b7a12c09e9772039421b15b3dd15de93be303a09837f52500a575aa270e4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a29b96dcadf2a69796278909b20943d60ddd6b6f14b668b10285350168f2b00f",
+      "source_fact_keys": [
+        "source_fact:v1:c5d8f218fc833108c770f53a2a229c9d8bff110dfceef52d0eda59798e32715d"
+      ],
+      "source_published_kst": "2026-10-13T11:30+09:00",
+      "source_title": "대우건설, 4130억 규모 공사 수주",
+      "telegram_core_fact": "대우건설은 4130억원 용인 첨단시스템반도체 클러스터 국가산업단지 조성공사 1공구 공사를 수주했다고 13일 공시했다.",
+      "title": "대우건설, 4130억 규모 공사 수주"
     },
     "core:44c5365ab237ab62e0207f07": {
       "first_seen_kst": "2026-10-12T08:46:35+09:00",
@@ -17473,6 +17516,27 @@
       "source_title": "'분기 최대 매출' LG엔솔, 2%대↑…이차전지주 동반 강세(종합) | 연합뉴스",
       "telegram_core_fact": "분기 기준 사상 최대 매출을 기록한 LG에너지솔루션[373220]이 8일 2%대 강세를 보였다.",
       "title": "'분기 최대 매출' LG엔솔, 2%대↑…이차전지주 동반 강세(종합) | 연합뉴스"
+    },
+    "core:75e7b35e09cfc1e8f52c2965": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635108",
+      "source": "이투데이",
+      "source_body_digest": "92080cfc35f307a4b56a574e1fbcb455380d9e27c25c0cc427672756cbfae21a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b8d5e98bee70e24c1df3d267c6d7d0ea382899b637236cd7d332f0d21a3eed2d",
+      "source_fact_keys": [
+        "source_fact:v1:545acea51a383d8706a778a3491d0866006e4b8d6cf003a5c09d61d94ce95fcf",
+        "source_fact:v1:a8d8f2c710dd2cbb8dcb803088a05b34c7f2fc858c51f0e027ea451a40ebe79f",
+        "source_fact:v1:ab55a96946f6562625b2efe82da96de030bac9340a33f6285b2ca56afb3cbdf8"
+      ],
+      "source_published_kst": "2026-10-13T11:13+09:00",
+      "source_title": "EU, 유가 급등에 석유·가스 ‘횡재세’ 부활 검토",
+      "telegram_core_fact": "유럽연합(EU)이 유가 급등으로 막대한 이익을 거둔 석유·가스 기업에 이른바 ‘횡재세’를 부과하는 방안을 검토하고 있다.",
+      "title": "EU, 유가 급등에 석유·가스 ‘횡재세’ 부활 검토"
     },
     "core:75ea22daee38d3e6a9610f9f": {
       "first_seen_kst": "2026-10-13T10:49:34+09:00",
@@ -28454,6 +28518,31 @@
       "telegram_core_fact": "삼성전자가 내년 미국 텍사스주 테일러 파운드리(반도체 위탁생산) 공장의 2나노미터(나노미터·1㎚=10억분의 1m) 반도체 본격 양산을 앞두고 기술 인력과 현지 운영조직 확충에 속도를 내고 있다.",
       "title": "삼성 美 테일러팹 2나노 양산 임박…'수율 특공대' 파견"
     },
+    "core:c0aa6e814a45306514e9290e": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261013120304",
+      "source": "지디넷코리아",
+      "source_body_digest": "17a13f6fe289f40dcc0bb820bdcd03002b364d87cf02fbf5a25a1804400d76fb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c8853f8d15c004e6516e3a752a2b53abc252b671f58ead6f7df9d81fa951abb4",
+      "source_fact_keys": [
+        "source_fact:v1:191585447a602f10fc1d6b8d01f158f1ee263f4d3c43dba4133805a2ff23d3c5",
+        "source_fact:v1:6234293afe078140e04201c43af119766c9d890b27d6de559cce5432d97d88c2",
+        "source_fact:v1:657198d58ea4bb164937c4d24304e87e8dd772b48109299911bb06bff6d1a1ef",
+        "source_fact:v1:9db305786319ba7a0d3cc94438a0c5a2812485cd8d211388b18f8091d2542962",
+        "source_fact:v1:a5dc8c44f196d4b0a2cd62999760908838b7b92ca2a436a0f91e34b26a291107",
+        "source_fact:v1:b12be8ec5cbd048a08eadf6317080a627a6bdd0d10070f58856930020d7a6e96",
+        "source_fact:v1:e676c3d48851c41970489d1bba7e86304c8345066d05a93023cca7aed4132643"
+      ],
+      "source_published_kst": "2026-10-13T13:09+09:00",
+      "source_title": "엔비디아 \"피지컬 AI 공급망, 한국 제조업에 기회\"",
+      "telegram_core_fact": "엔비디아가 한국의 제조업과 인공지능(AI) 기술력을 높이 평가하며 피지컬 AI 산업의 성장으로 글로벌 공급망에서 한국 기업의 역할이 확대될 수 있다고 전망했다.",
+      "title": "엔비디아 \"피지컬 AI 공급망, 한국 제조업에 기회\""
+    },
     "core:c0b188612605e2cd118ec762": {
       "first_seen_kst": "2026-10-09T16:53:11+09:00",
       "lanes": {
@@ -29209,6 +29298,33 @@
       "source_title": "\"일률적 정년 확대보다 재고용\"…경총, 일본 사례 주목",
       "telegram_core_fact": "경총은 11일 발표한 '일본의 정년연장 사례와 시사점' 보고서에서 일본이 법정 정년을 60세로 유지하면서 재고용을 중심으로 65세까지 고용을 보장하는 제도를 도입한 사례를 소개했다.",
       "title": "\"일률적 정년 확대보다 재고용\"…경총, 일본 사례 주목"
+    },
+    "core:c70611371a51e878b7ab8b38": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261012135552",
+      "source": "지디넷코리아",
+      "source_body_digest": "64feebbc0fc1071993161973936f9e8d976efe5777c0a2dd3891bfcc6978274b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cb3b46eb710ffc09e31ced5692e6500d4a863b5a9e8bc8c179770ea9543eeb87",
+      "source_fact_keys": [
+        "source_fact:v1:458f161f7703c4324124fd0b3638ea6bbf6d293a62d6a0a518cc0b9d31b97eac",
+        "source_fact:v1:475dfb874402031dad71cc4f460a5d10880250b0a5b0733be157c11ca0e5d417",
+        "source_fact:v1:636cdf0269e1dd2ed262c15734f116c47d3b552bf0e692dd8a4f3bbfa0bf541a",
+        "source_fact:v1:65e8f389e6d7c86d6998ff623eeafa3f5319ccf918a6ba589690e469674dda53",
+        "source_fact:v1:706a3a1f48b305f2aebced2295e01510a9fc8b177fff587f01233c9c5033329f",
+        "source_fact:v1:80adab6ec326bc8739bf2ae9dc148ef3b78b57572a21c4cc309f26aeb9f8d2c3",
+        "source_fact:v1:9a759501d5a7cfa02ed5eefabfa26aa214f79909a96648624deab65d26985eae",
+        "source_fact:v1:c5f4cc8d9c370f59bad9e3bf209fa3fdcee96f2c091f3e06fedf11ef2a9903aa",
+        "source_fact:v1:d825b64554bf10090566c2037c3f23e3f736b38b1a7f28bf8adca14941bfdf8b"
+      ],
+      "source_published_kst": "2026-10-12T14:11+09:00",
+      "source_title": "AMD가 찜한 망고부스트…'AI 팩토리' 앞세워 추론 시장 승부수",
+      "telegram_core_fact": "인공지능(AI) 인프라 기업 망고부스트가 AMD와의 협력을 바탕으로 자체 AI 데이터센터와 추론 서비스를 결합한 'AI 팩토리' 사업에 본격적으로 나선다.",
+      "title": "AMD가 찜한 망고부스트…'AI 팩토리' 앞세워 추론 시장 승부수"
     },
     "core:c71481fa639572771bf63351": {
       "first_seen_kst": "2026-10-13T03:37:13+09:00",
@@ -36876,6 +36992,27 @@
       "source_title": "美국채 10년물 장중 5.36%까지 치솟아…24년 만에 최고",
       "telegram_core_fact": "미국 10년물 국채 금리는 장중 5.36%를 넘어 2002년 이후 최고치를 새로 썼고, 30년물 금리도 5.73%까지 치솟았다. 7일(현지 시각) 미국 국채시장에서 10년물 금리는 장중 전장보다 약 8bp(1bp=0.01%포인트) 오른 5.3640%까지 상승했다.",
       "title": "美국채 10년물 장중 5.36%까지 치솟아…24년 만에 최고"
+    },
+    "core:fc47e87c1ebc9294df808f12": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261013052900008",
+      "source": "연합뉴스",
+      "source_body_digest": "971015f924bf18c0c376aabb7aacb7c212cd7f73a455ffba6b60daadda6d6b25",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1b9cfdee8fc00574aefd5b71e3dcc52ab657d523dc832534c39c3f44bf869f7a",
+      "source_fact_keys": [
+        "source_fact:v1:57c63465df0f0c3cf1ab067e8c9a3c0459b6f6e3228bacadd2e6c5bdb4cd0ad5",
+        "source_fact:v1:7a1b5651637d6a9922963604d4bb0f7e66da60a4199a2d83f68211cf21ee067b",
+        "source_fact:v1:be7ec2c01a3ac93eb62cd29b4920899f43fdca8b9966904c066a5e98f5355aa0"
+      ],
+      "source_published_kst": "2026-10-13T10:02+09:00",
+      "source_title": "글로벌 금리 급등에도 韓 국채 '선방'…외국인 역대 두번째 선물 순매수 | 연합뉴스",
+      "telegram_core_fact": "국내 채권시장이 연휴로 휴장하는 동안 미국 장기금리 상승세가 진정된 영향도 있지만, 외국인의 국채선물 매수세가 투자 심리를 뒷받침했다.",
+      "title": "글로벌 금리 급등에도 韓 국채 '선방'…외국인 역대 두번째 선물 순매수 | 연합뉴스"
     },
     "core:fc95d7105d20c85d7fc65876": {
       "first_seen_kst": "2026-10-12T19:07:06+09:00",
@@ -46347,6 +46484,27 @@
       "telegram_core_fact": "미 국채 10년물 금리는 현지시간 7일 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했다.",
       "title": "꺾이지 않는 美금리 고공행진…\"韓증시, 실적중심 선별 장세 전망\" | 연합뉴스"
     },
+    "event:c197844816603c3630807eac": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635108",
+      "source": "이투데이",
+      "source_body_digest": "92080cfc35f307a4b56a574e1fbcb455380d9e27c25c0cc427672756cbfae21a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b8d5e98bee70e24c1df3d267c6d7d0ea382899b637236cd7d332f0d21a3eed2d",
+      "source_fact_keys": [
+        "source_fact:v1:545acea51a383d8706a778a3491d0866006e4b8d6cf003a5c09d61d94ce95fcf",
+        "source_fact:v1:a8d8f2c710dd2cbb8dcb803088a05b34c7f2fc858c51f0e027ea451a40ebe79f",
+        "source_fact:v1:ab55a96946f6562625b2efe82da96de030bac9340a33f6285b2ca56afb3cbdf8"
+      ],
+      "source_published_kst": "2026-10-13T11:13+09:00",
+      "source_title": "EU, 유가 급등에 석유·가스 ‘횡재세’ 부활 검토",
+      "telegram_core_fact": "유럽연합(EU)이 유가 급등으로 막대한 이익을 거둔 석유·가스 기업에 이른바 ‘횡재세’를 부과하는 방안을 검토하고 있다.",
+      "title": "EU, 유가 급등에 석유·가스 ‘횡재세’ 부활 검토"
+    },
     "event:c1e317ded2d88411e7e58d30": {
       "first_seen_kst": "2026-09-28T05:09:16+09:00",
       "lanes": {
@@ -51933,6 +52091,30 @@
       ],
       "source_published_kst": "2026-10-06T08:03+09:00",
       "title": "뉴욕증시, 국채금리 상승에도 강세⋯나스닥, 사상 최고치 [글로벌마켓 모닝 브리핑]"
+    },
+    "fact:0ce53d3688f79a337f302e44": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/13/2026101311065463095",
+      "source": "머니투데이",
+      "source_body_digest": "11d878e145dd1675202caa840e880ce090a943b6cba159aff0183b210b0e0368",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:be3a239b6e321e28ebc98b04bee5eda976dbc3d7272c9b7bcb7004ad0161c1f2",
+      "source_fact_keys": [
+        "source_fact:v1:0c2028e9f374f5f5a0df2116df21b2dc7b44d214c6e3719596972517edbdb6dc",
+        "source_fact:v1:1342f0e1b66538399379620a8020e70b082373ffce8f970cc5a72668687fa3e5",
+        "source_fact:v1:ac3ba5d34be9690a0cf6495a208e102edd274b5470547aa9fceced806842b60d",
+        "source_fact:v1:ce4a9b9d2e67f91814ff4beb620d1f91464b82a31539c48a1dc652da898c53e1",
+        "source_fact:v1:d39ac5470d611a4662189b1e19fd9f08d85a069667ba0d10120b32653d199c74",
+        "source_fact:v1:f88225b7bbdbb4752aa097be0ff9526b500ee430b238e15cd3cd920fb51e5e90"
+      ],
+      "source_published_kst": "2026-10-13T11:14+09:00",
+      "source_title": "바이오솔루션, 동물대체 인체조직모델 솔루오랄 첫 해외 공급 추진",
+      "telegram_core_fact": "바이오솔루션은 이번 국제 검증 연구에서 도출된 데이터를 바탕으로 솔루오랄의 ISO 국제표준 등재를 확정 짓고, 유럽 등 해외 임상시험수탁기관(CRO)과 글로벌 의료기기 제조사를 상대로 인체조직모델 공급 및 시험서비스 협력을 본격화해 해외 매출을 확대할 방침이다.",
+      "title": "바이오솔루션, 동물대체 인체조직모델 솔루오랄 첫 해외 공급 추진"
     },
     "fact:0ce7a886247d35c48b381142": {
       "first_seen_kst": "2026-10-12T08:03:02+09:00",
@@ -62466,6 +62648,27 @@
       ],
       "source_published_kst": "2026-10-06T15:28+09:00",
       "title": "한솔케미칼, 대만에 340억원 규모 반도체 소재 기지 투자 승인"
+    },
+    "fact:41d5c40a91a10d28ce15c24b": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261013052900008",
+      "source": "연합뉴스",
+      "source_body_digest": "971015f924bf18c0c376aabb7aacb7c212cd7f73a455ffba6b60daadda6d6b25",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1b9cfdee8fc00574aefd5b71e3dcc52ab657d523dc832534c39c3f44bf869f7a",
+      "source_fact_keys": [
+        "source_fact:v1:57c63465df0f0c3cf1ab067e8c9a3c0459b6f6e3228bacadd2e6c5bdb4cd0ad5",
+        "source_fact:v1:7a1b5651637d6a9922963604d4bb0f7e66da60a4199a2d83f68211cf21ee067b",
+        "source_fact:v1:be7ec2c01a3ac93eb62cd29b4920899f43fdca8b9966904c066a5e98f5355aa0"
+      ],
+      "source_published_kst": "2026-10-13T10:02+09:00",
+      "source_title": "글로벌 금리 급등에도 韓 국채 '선방'…외국인 역대 두번째 선물 순매수 | 연합뉴스",
+      "telegram_core_fact": "국내 채권시장이 연휴로 휴장하는 동안 미국 장기금리 상승세가 진정된 영향도 있지만, 외국인의 국채선물 매수세가 투자 심리를 뒷받침했다.",
+      "title": "글로벌 금리 급등에도 韓 국채 '선방'…외국인 역대 두번째 선물 순매수 | 연합뉴스"
     },
     "fact:41de328fdcc3353bff4844e0": {
       "first_seen_kst": "2026-10-12T09:53:29+09:00",
@@ -89900,6 +90103,31 @@
       "source_published_kst": "2026-10-06T16:07+09:00",
       "title": "불광5구역 21년 만에 철거 시작…2406가구 들어선다"
     },
+    "fact:c9db2dcd93665b2f273bbaad": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261013120304",
+      "source": "지디넷코리아",
+      "source_body_digest": "17a13f6fe289f40dcc0bb820bdcd03002b364d87cf02fbf5a25a1804400d76fb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c8853f8d15c004e6516e3a752a2b53abc252b671f58ead6f7df9d81fa951abb4",
+      "source_fact_keys": [
+        "source_fact:v1:191585447a602f10fc1d6b8d01f158f1ee263f4d3c43dba4133805a2ff23d3c5",
+        "source_fact:v1:6234293afe078140e04201c43af119766c9d890b27d6de559cce5432d97d88c2",
+        "source_fact:v1:657198d58ea4bb164937c4d24304e87e8dd772b48109299911bb06bff6d1a1ef",
+        "source_fact:v1:9db305786319ba7a0d3cc94438a0c5a2812485cd8d211388b18f8091d2542962",
+        "source_fact:v1:a5dc8c44f196d4b0a2cd62999760908838b7b92ca2a436a0f91e34b26a291107",
+        "source_fact:v1:b12be8ec5cbd048a08eadf6317080a627a6bdd0d10070f58856930020d7a6e96",
+        "source_fact:v1:e676c3d48851c41970489d1bba7e86304c8345066d05a93023cca7aed4132643"
+      ],
+      "source_published_kst": "2026-10-13T13:09+09:00",
+      "source_title": "엔비디아 \"피지컬 AI 공급망, 한국 제조업에 기회\"",
+      "telegram_core_fact": "엔비디아가 한국의 제조업과 인공지능(AI) 기술력을 높이 평가하며 피지컬 AI 산업의 성장으로 글로벌 공급망에서 한국 기업의 역할이 확대될 수 있다고 전망했다.",
+      "title": "엔비디아 \"피지컬 AI 공급망, 한국 제조업에 기회\""
+    },
     "fact:c9ea3bbd604c9999532d1232": {
       "first_seen_kst": "2026-10-08T20:58:15+09:00",
       "lanes": {
@@ -91414,6 +91642,27 @@
       "source_title": "‘앓던 이’도 AI가 해결…디오·LG CNS, 임플란트 플랫폼 ‘DIO AX’ 첫선",
       "telegram_core_fact": "DIO AX 플랫폼에서 발생하는 직접적인 구독료 수익은 물론, 시너지 효과로 디오 임플란트 제품 매출도 증가할 수 있다는 것이 회사 측의 기대다.",
       "title": "‘앓던 이’도 AI가 해결…디오·LG CNS, 임플란트 플랫폼 ‘DIO AX’ 첫선"
+    },
+    "fact:d0c967a776946724999347ff": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635108",
+      "source": "이투데이",
+      "source_body_digest": "92080cfc35f307a4b56a574e1fbcb455380d9e27c25c0cc427672756cbfae21a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b8d5e98bee70e24c1df3d267c6d7d0ea382899b637236cd7d332f0d21a3eed2d",
+      "source_fact_keys": [
+        "source_fact:v1:545acea51a383d8706a778a3491d0866006e4b8d6cf003a5c09d61d94ce95fcf",
+        "source_fact:v1:a8d8f2c710dd2cbb8dcb803088a05b34c7f2fc858c51f0e027ea451a40ebe79f",
+        "source_fact:v1:ab55a96946f6562625b2efe82da96de030bac9340a33f6285b2ca56afb3cbdf8"
+      ],
+      "source_published_kst": "2026-10-13T11:13+09:00",
+      "source_title": "EU, 유가 급등에 석유·가스 ‘횡재세’ 부활 검토",
+      "telegram_core_fact": "유럽연합(EU)이 유가 급등으로 막대한 이익을 거둔 석유·가스 기업에 이른바 ‘횡재세’를 부과하는 방안을 검토하고 있다.",
+      "title": "EU, 유가 급등에 석유·가스 ‘횡재세’ 부활 검토"
     },
     "fact:d0e9d8ad018ec470be6dc05a": {
       "first_seen_kst": "2026-10-07T19:13:29+09:00",
@@ -97277,6 +97526,33 @@
       "telegram_core_fact": "김재준 전북 군산시장이 18일 취임 100일 기자회견을 열고 현대차그룹 9조원 투자 지원과 새만금 물류망 구축 등을 골자로 한 시정 운영 방향을 발표했다.",
       "title": "김재준 군산시장, 취임 100일 \"현대차 9조 투자 원스톱 지원\""
     },
+    "fact:ebe8513346abfbffae948b0b": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261012135552",
+      "source": "지디넷코리아",
+      "source_body_digest": "64feebbc0fc1071993161973936f9e8d976efe5777c0a2dd3891bfcc6978274b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cb3b46eb710ffc09e31ced5692e6500d4a863b5a9e8bc8c179770ea9543eeb87",
+      "source_fact_keys": [
+        "source_fact:v1:458f161f7703c4324124fd0b3638ea6bbf6d293a62d6a0a518cc0b9d31b97eac",
+        "source_fact:v1:475dfb874402031dad71cc4f460a5d10880250b0a5b0733be157c11ca0e5d417",
+        "source_fact:v1:636cdf0269e1dd2ed262c15734f116c47d3b552bf0e692dd8a4f3bbfa0bf541a",
+        "source_fact:v1:65e8f389e6d7c86d6998ff623eeafa3f5319ccf918a6ba589690e469674dda53",
+        "source_fact:v1:706a3a1f48b305f2aebced2295e01510a9fc8b177fff587f01233c9c5033329f",
+        "source_fact:v1:80adab6ec326bc8739bf2ae9dc148ef3b78b57572a21c4cc309f26aeb9f8d2c3",
+        "source_fact:v1:9a759501d5a7cfa02ed5eefabfa26aa214f79909a96648624deab65d26985eae",
+        "source_fact:v1:c5f4cc8d9c370f59bad9e3bf209fa3fdcee96f2c091f3e06fedf11ef2a9903aa",
+        "source_fact:v1:d825b64554bf10090566c2037c3f23e3f736b38b1a7f28bf8adca14941bfdf8b"
+      ],
+      "source_published_kst": "2026-10-12T14:11+09:00",
+      "source_title": "AMD가 찜한 망고부스트…'AI 팩토리' 앞세워 추론 시장 승부수",
+      "telegram_core_fact": "인공지능(AI) 인프라 기업 망고부스트가 AMD와의 협력을 바탕으로 자체 AI 데이터센터와 추론 서비스를 결합한 'AI 팩토리' 사업에 본격적으로 나선다.",
+      "title": "AMD가 찜한 망고부스트…'AI 팩토리' 앞세워 추론 시장 승부수"
+    },
     "fact:ebf266f32f24ae8871862a39": {
       "first_seen_kst": "2026-10-07T08:15:28+09:00",
       "lanes": {
@@ -99692,6 +99968,25 @@
       "source_title": "靑, 우크라 '러 석유제품 공급' 주장에 \"사실과 다르고 부적절\"",
       "telegram_core_fact": "강유정 청와대 수석대변인은 7일 서면브리핑을 내고 \"우리 정부는 러시아의 우크라이나 침공 이후 국제 사회와 긴밀히 공조, 대러 제재와 수출통제를 일관되게 이행해 왔다. 이러한 우리 정부의 기본 입장에는 변함이 없다\"며 이같이 밝혔다.",
       "title": "靑, 우크라 '러 석유제품 공급' 주장에 \"사실과 다르고 부적절\""
+    },
+    "fact:f8a1935d84d34df7efe5c274": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823721",
+      "source": "뉴시스",
+      "source_body_digest": "3f0b7a12c09e9772039421b15b3dd15de93be303a09837f52500a575aa270e4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a29b96dcadf2a69796278909b20943d60ddd6b6f14b668b10285350168f2b00f",
+      "source_fact_keys": [
+        "source_fact:v1:c5d8f218fc833108c770f53a2a229c9d8bff110dfceef52d0eda59798e32715d"
+      ],
+      "source_published_kst": "2026-10-13T11:30+09:00",
+      "source_title": "대우건설, 4130억 규모 공사 수주",
+      "telegram_core_fact": "대우건설은 4130억원 용인 첨단시스템반도체 클러스터 국가산업단지 조성공사 1공구 공사를 수주했다고 13일 공시했다.",
+      "title": "대우건설, 4130억 규모 공사 수주"
     },
     "fact:f8c2ae53550499cbfe01ff63": {
       "first_seen_kst": "2026-10-06T18:46:35+09:00",
@@ -124522,6 +124817,27 @@
       "source_published_kst": "2026-10-06T11:21+09:00",
       "title": "넥스틴, SK하이닉스와 254억 규모 공급계약"
     },
+    "link:5153e039f0d56c07ae036290": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261013052900008",
+      "source": "연합뉴스",
+      "source_body_digest": "971015f924bf18c0c376aabb7aacb7c212cd7f73a455ffba6b60daadda6d6b25",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1b9cfdee8fc00574aefd5b71e3dcc52ab657d523dc832534c39c3f44bf869f7a",
+      "source_fact_keys": [
+        "source_fact:v1:57c63465df0f0c3cf1ab067e8c9a3c0459b6f6e3228bacadd2e6c5bdb4cd0ad5",
+        "source_fact:v1:7a1b5651637d6a9922963604d4bb0f7e66da60a4199a2d83f68211cf21ee067b",
+        "source_fact:v1:be7ec2c01a3ac93eb62cd29b4920899f43fdca8b9966904c066a5e98f5355aa0"
+      ],
+      "source_published_kst": "2026-10-13T10:02+09:00",
+      "source_title": "글로벌 금리 급등에도 韓 국채 '선방'…외국인 역대 두번째 선물 순매수 | 연합뉴스",
+      "telegram_core_fact": "국내 채권시장이 연휴로 휴장하는 동안 미국 장기금리 상승세가 진정된 영향도 있지만, 외국인의 국채선물 매수세가 투자 심리를 뒷받침했다.",
+      "title": "글로벌 금리 급등에도 韓 국채 '선방'…외국인 역대 두번째 선물 순매수 | 연합뉴스"
+    },
     "link:5176a602653ecdd7ba4417f9": {
       "first_seen_kst": "2026-10-13T10:05:20+09:00",
       "lanes": {
@@ -126450,6 +126766,33 @@
       "source_title": "개인정보유출 보상은 없다는 '듀오' 수천억 과징금 쿠팡과 역차별 논란",
       "telegram_core_fact": "개인정보보호위원회(이하 개보위)에 따르면 지난해 1월 듀오에서 개인정보를 취급하는 직원의 업무용 PC가 해킹돼 정회원 42만7464명의 개인정보가 유출됐다.",
       "title": "개인정보유출 보상은 없다는 '듀오' 수천억 과징금 쿠팡과 역차별 논란"
+    },
+    "link:58cf1dbccefae2211ea53783": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261012135552",
+      "source": "지디넷코리아",
+      "source_body_digest": "64feebbc0fc1071993161973936f9e8d976efe5777c0a2dd3891bfcc6978274b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cb3b46eb710ffc09e31ced5692e6500d4a863b5a9e8bc8c179770ea9543eeb87",
+      "source_fact_keys": [
+        "source_fact:v1:458f161f7703c4324124fd0b3638ea6bbf6d293a62d6a0a518cc0b9d31b97eac",
+        "source_fact:v1:475dfb874402031dad71cc4f460a5d10880250b0a5b0733be157c11ca0e5d417",
+        "source_fact:v1:636cdf0269e1dd2ed262c15734f116c47d3b552bf0e692dd8a4f3bbfa0bf541a",
+        "source_fact:v1:65e8f389e6d7c86d6998ff623eeafa3f5319ccf918a6ba589690e469674dda53",
+        "source_fact:v1:706a3a1f48b305f2aebced2295e01510a9fc8b177fff587f01233c9c5033329f",
+        "source_fact:v1:80adab6ec326bc8739bf2ae9dc148ef3b78b57572a21c4cc309f26aeb9f8d2c3",
+        "source_fact:v1:9a759501d5a7cfa02ed5eefabfa26aa214f79909a96648624deab65d26985eae",
+        "source_fact:v1:c5f4cc8d9c370f59bad9e3bf209fa3fdcee96f2c091f3e06fedf11ef2a9903aa",
+        "source_fact:v1:d825b64554bf10090566c2037c3f23e3f736b38b1a7f28bf8adca14941bfdf8b"
+      ],
+      "source_published_kst": "2026-10-12T14:11+09:00",
+      "source_title": "AMD가 찜한 망고부스트…'AI 팩토리' 앞세워 추론 시장 승부수",
+      "telegram_core_fact": "인공지능(AI) 인프라 기업 망고부스트가 AMD와의 협력을 바탕으로 자체 AI 데이터센터와 추론 서비스를 결합한 'AI 팩토리' 사업에 본격적으로 나선다.",
+      "title": "AMD가 찜한 망고부스트…'AI 팩토리' 앞세워 추론 시장 승부수"
     },
     "link:58d72d70b1004d6b99f76d92": {
       "first_seen_kst": "2026-10-04T17:14:34+09:00",
@@ -136717,6 +137060,31 @@
       "telegram_core_fact": "김 장관은 \"반도체 메가프로젝트는 부지와 전력·용수 등 투자기반을 차질없이 마련해 투자가 적기에 이행되도록 뒷받침하고, 조선산업은 설계·생산 현장에 AI를 적용해 조선소의 생산성과 근로자의 작업환경을 획기적으로 개선하겠다\"고 말했다.",
       "title": "산업장관, 서남권 반도체 부지 현장점검…조선업 AX도 촉진 | 연합뉴스"
     },
+    "link:7ba6987a9e46a99f2e214fc5": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261013120304",
+      "source": "지디넷코리아",
+      "source_body_digest": "17a13f6fe289f40dcc0bb820bdcd03002b364d87cf02fbf5a25a1804400d76fb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c8853f8d15c004e6516e3a752a2b53abc252b671f58ead6f7df9d81fa951abb4",
+      "source_fact_keys": [
+        "source_fact:v1:191585447a602f10fc1d6b8d01f158f1ee263f4d3c43dba4133805a2ff23d3c5",
+        "source_fact:v1:6234293afe078140e04201c43af119766c9d890b27d6de559cce5432d97d88c2",
+        "source_fact:v1:657198d58ea4bb164937c4d24304e87e8dd772b48109299911bb06bff6d1a1ef",
+        "source_fact:v1:9db305786319ba7a0d3cc94438a0c5a2812485cd8d211388b18f8091d2542962",
+        "source_fact:v1:a5dc8c44f196d4b0a2cd62999760908838b7b92ca2a436a0f91e34b26a291107",
+        "source_fact:v1:b12be8ec5cbd048a08eadf6317080a627a6bdd0d10070f58856930020d7a6e96",
+        "source_fact:v1:e676c3d48851c41970489d1bba7e86304c8345066d05a93023cca7aed4132643"
+      ],
+      "source_published_kst": "2026-10-13T13:09+09:00",
+      "source_title": "엔비디아 \"피지컬 AI 공급망, 한국 제조업에 기회\"",
+      "telegram_core_fact": "엔비디아가 한국의 제조업과 인공지능(AI) 기술력을 높이 평가하며 피지컬 AI 산업의 성장으로 글로벌 공급망에서 한국 기업의 역할이 확대될 수 있다고 전망했다.",
+      "title": "엔비디아 \"피지컬 AI 공급망, 한국 제조업에 기회\""
+    },
     "link:7bab8993d22f5b2aff4bca64": {
       "first_seen_kst": "2026-10-12T02:27:00+09:00",
       "lanes": {
@@ -138584,6 +138952,30 @@
       "telegram_core_fact": "특히 기존 OLED보다 밝기와 수명을 높이면서 소비전력을 줄일 수 있는 '탠덤 OLED'가 핵심 기술로 떠오르면서 삼성디스플레이와 LG디스플레이의 경쟁도 치열해지고 있다. 시장조사업체 옴디아에 따르면 올해 2분기 미국 PC 출하량은 전년비 1.0% 증가하는 데 그쳤지만, 매출은 13.1% 늘었다.",
       "title": "PC 시장 고급화에 OLED 수요 급증…삼성·LG디스플레이 ‘탠덤’ 기술 경쟁"
     },
+    "link:818497b309df99ea3bd0839b": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/13/2026101311065463095",
+      "source": "머니투데이",
+      "source_body_digest": "11d878e145dd1675202caa840e880ce090a943b6cba159aff0183b210b0e0368",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:be3a239b6e321e28ebc98b04bee5eda976dbc3d7272c9b7bcb7004ad0161c1f2",
+      "source_fact_keys": [
+        "source_fact:v1:0c2028e9f374f5f5a0df2116df21b2dc7b44d214c6e3719596972517edbdb6dc",
+        "source_fact:v1:1342f0e1b66538399379620a8020e70b082373ffce8f970cc5a72668687fa3e5",
+        "source_fact:v1:ac3ba5d34be9690a0cf6495a208e102edd274b5470547aa9fceced806842b60d",
+        "source_fact:v1:ce4a9b9d2e67f91814ff4beb620d1f91464b82a31539c48a1dc652da898c53e1",
+        "source_fact:v1:d39ac5470d611a4662189b1e19fd9f08d85a069667ba0d10120b32653d199c74",
+        "source_fact:v1:f88225b7bbdbb4752aa097be0ff9526b500ee430b238e15cd3cd920fb51e5e90"
+      ],
+      "source_published_kst": "2026-10-13T11:14+09:00",
+      "source_title": "바이오솔루션, 동물대체 인체조직모델 솔루오랄 첫 해외 공급 추진",
+      "telegram_core_fact": "바이오솔루션은 이번 국제 검증 연구에서 도출된 데이터를 바탕으로 솔루오랄의 ISO 국제표준 등재를 확정 짓고, 유럽 등 해외 임상시험수탁기관(CRO)과 글로벌 의료기기 제조사를 상대로 인체조직모델 공급 및 시험서비스 협력을 본격화해 해외 매출을 확대할 방침이다.",
+      "title": "바이오솔루션, 동물대체 인체조직모델 솔루오랄 첫 해외 공급 추진"
+    },
     "link:8185192324550087456eb702": {
       "first_seen_kst": "2026-10-08T16:54:07+09:00",
       "lanes": {
@@ -138624,6 +139016,23 @@
       "source_title": "동탄 갭투자 막히자…사내대출·사채 자금 3배로 늘어",
       "telegram_core_fact": "특히 경기 남부지역에서 상대적으로 자금 부담이 적은 소형·중저가 주택 중심으로 거래가 이뤄진 데다, 7월부터 자금조달계획서 제출 대상도 기존 6억원 이상 주택에서 전체 주택으로 확대된 영향도 반영된 것으로 보인다.",
       "title": "동탄 갭투자 막히자…사내대출·사채 자금 3배로 늘어"
+    },
+    "link:81980a7bd9c5b54bd1661e41": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261013081400017",
+      "source": "연합뉴스",
+      "source_body_digest": "611b9444314ebb6759fac0bb186e147dff3382d88e8a404181d3ed4a2b099692",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-13T11:25+09:00",
+      "source_title": "식약처장 \"식품 부당광고 AI 감시…인체조직 규제 강화\" | 연합뉴스",
+      "telegram_core_fact": "식약처는 인체조직 사용에 대한 규제도 강화하겠다고 강조했다.",
+      "title": "식약처장 \"식품 부당광고 AI 감시…인체조직 규제 강화\" | 연합뉴스"
     },
     "link:819cab2ebeb2627ca486bc3a": {
       "first_seen_kst": "2026-10-10T00:12:46+09:00",
@@ -142430,6 +142839,27 @@
       "source_title": "상반기 금융지주 순이익 17.6조…전년比 13.7% 증가",
       "telegram_core_fact": "올해 상반기 금융지주회사의 당기순이익이 17조6000억원으로 전년 대비 13.7% 증가한 것으로 나타났다.",
       "title": "상반기 금융지주 순이익 17.6조…전년比 13.7% 증가"
+    },
+    "link:90e2ab726c09d456bc8cefa0": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635108",
+      "source": "이투데이",
+      "source_body_digest": "92080cfc35f307a4b56a574e1fbcb455380d9e27c25c0cc427672756cbfae21a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b8d5e98bee70e24c1df3d267c6d7d0ea382899b637236cd7d332f0d21a3eed2d",
+      "source_fact_keys": [
+        "source_fact:v1:545acea51a383d8706a778a3491d0866006e4b8d6cf003a5c09d61d94ce95fcf",
+        "source_fact:v1:a8d8f2c710dd2cbb8dcb803088a05b34c7f2fc858c51f0e027ea451a40ebe79f",
+        "source_fact:v1:ab55a96946f6562625b2efe82da96de030bac9340a33f6285b2ca56afb3cbdf8"
+      ],
+      "source_published_kst": "2026-10-13T11:13+09:00",
+      "source_title": "EU, 유가 급등에 석유·가스 ‘횡재세’ 부활 검토",
+      "telegram_core_fact": "유럽연합(EU)이 유가 급등으로 막대한 이익을 거둔 석유·가스 기업에 이른바 ‘횡재세’를 부과하는 방안을 검토하고 있다.",
+      "title": "EU, 유가 급등에 석유·가스 ‘횡재세’ 부활 검토"
     },
     "link:90e5b84aedcd382c3c40eec0": {
       "first_seen_kst": "2026-10-05T14:04:17+09:00",
@@ -155425,6 +155855,25 @@
       "source_title": "3% 내린 하이닉스 사고, 18% 뛴 주성 팔았다…초고수의 ‘역발상’",
       "telegram_core_fact": "반면 하루 만에 18% 넘게 뛴 주성엔지니어링을 비롯해 최근 강세가 뚜렷했던 반도체 장비·기판주는 대거 순매도했다. 투자 수익률 상위 1%의 초고수들이 지난 6일 국내 증시에서 주가가 내린 SK하이닉스와 삼성전자를 가장 많이 순매수한 것으로 나타났다.",
       "title": "3% 내린 하이닉스 사고, 18% 뛴 주성 팔았다…초고수의 ‘역발상’"
+    },
+    "link:bcbcbf0d6debf859b537a40b": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823721",
+      "source": "뉴시스",
+      "source_body_digest": "3f0b7a12c09e9772039421b15b3dd15de93be303a09837f52500a575aa270e4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a29b96dcadf2a69796278909b20943d60ddd6b6f14b668b10285350168f2b00f",
+      "source_fact_keys": [
+        "source_fact:v1:c5d8f218fc833108c770f53a2a229c9d8bff110dfceef52d0eda59798e32715d"
+      ],
+      "source_published_kst": "2026-10-13T11:30+09:00",
+      "source_title": "대우건설, 4130억 규모 공사 수주",
+      "telegram_core_fact": "대우건설은 4130억원 용인 첨단시스템반도체 클러스터 국가산업단지 조성공사 1공구 공사를 수주했다고 13일 공시했다.",
+      "title": "대우건설, 4130억 규모 공사 수주"
     },
     "link:bcc86e1d579a5a6b368a3cbe": {
       "first_seen_kst": "2026-10-12T12:32:44+09:00",
@@ -176748,6 +177197,30 @@
       "source": "연합뉴스",
       "title": "\"美국무, 협상 진전 없자 이란 대표단 내쫒아\" | 연합뉴스"
     },
+    "original:0865114f47ae9d26c2ec5f15": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/13/2026101311065463095",
+      "source": "머니투데이",
+      "source_body_digest": "11d878e145dd1675202caa840e880ce090a943b6cba159aff0183b210b0e0368",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:be3a239b6e321e28ebc98b04bee5eda976dbc3d7272c9b7bcb7004ad0161c1f2",
+      "source_fact_keys": [
+        "source_fact:v1:0c2028e9f374f5f5a0df2116df21b2dc7b44d214c6e3719596972517edbdb6dc",
+        "source_fact:v1:1342f0e1b66538399379620a8020e70b082373ffce8f970cc5a72668687fa3e5",
+        "source_fact:v1:ac3ba5d34be9690a0cf6495a208e102edd274b5470547aa9fceced806842b60d",
+        "source_fact:v1:ce4a9b9d2e67f91814ff4beb620d1f91464b82a31539c48a1dc652da898c53e1",
+        "source_fact:v1:d39ac5470d611a4662189b1e19fd9f08d85a069667ba0d10120b32653d199c74",
+        "source_fact:v1:f88225b7bbdbb4752aa097be0ff9526b500ee430b238e15cd3cd920fb51e5e90"
+      ],
+      "source_published_kst": "2026-10-13T11:14+09:00",
+      "source_title": "바이오솔루션, 동물대체 인체조직모델 솔루오랄 첫 해외 공급 추진",
+      "telegram_core_fact": "바이오솔루션은 이번 국제 검증 연구에서 도출된 데이터를 바탕으로 솔루오랄의 ISO 국제표준 등재를 확정 짓고, 유럽 등 해외 임상시험수탁기관(CRO)과 글로벌 의료기기 제조사를 상대로 인체조직모델 공급 및 시험서비스 협력을 본격화해 해외 매출을 확대할 방침이다.",
+      "title": "바이오솔루션, 동물대체 인체조직모델 솔루오랄 첫 해외 공급 추진"
+    },
     "original:086f62373eb0b99ebeecaaf6": {
       "first_seen_kst": "2026-10-04T01:43:50+09:00",
       "lanes": {
@@ -187047,6 +187520,33 @@
       "source_title": "마이디어, 에사오테 인수 완료",
       "telegram_core_fact": "제노바, 이탈리아, 2026년 10월 9일 /PRNewswire/ -- 의료 영상 분야의 선도기업 에사오테(Esaote S.p.A.)가 중국 포산시 순더구에 본사를 둔 글로벌 기술 기업 마이디어 그룹(Midea Group)이 자사의 지배지분 인수를 완료했다고 발표했다.",
       "title": "마이디어, 에사오테 인수 완료"
+    },
+    "original:2d450c77ed2f2fbf50611a62": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261012135552",
+      "source": "지디넷코리아",
+      "source_body_digest": "64feebbc0fc1071993161973936f9e8d976efe5777c0a2dd3891bfcc6978274b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cb3b46eb710ffc09e31ced5692e6500d4a863b5a9e8bc8c179770ea9543eeb87",
+      "source_fact_keys": [
+        "source_fact:v1:458f161f7703c4324124fd0b3638ea6bbf6d293a62d6a0a518cc0b9d31b97eac",
+        "source_fact:v1:475dfb874402031dad71cc4f460a5d10880250b0a5b0733be157c11ca0e5d417",
+        "source_fact:v1:636cdf0269e1dd2ed262c15734f116c47d3b552bf0e692dd8a4f3bbfa0bf541a",
+        "source_fact:v1:65e8f389e6d7c86d6998ff623eeafa3f5319ccf918a6ba589690e469674dda53",
+        "source_fact:v1:706a3a1f48b305f2aebced2295e01510a9fc8b177fff587f01233c9c5033329f",
+        "source_fact:v1:80adab6ec326bc8739bf2ae9dc148ef3b78b57572a21c4cc309f26aeb9f8d2c3",
+        "source_fact:v1:9a759501d5a7cfa02ed5eefabfa26aa214f79909a96648624deab65d26985eae",
+        "source_fact:v1:c5f4cc8d9c370f59bad9e3bf209fa3fdcee96f2c091f3e06fedf11ef2a9903aa",
+        "source_fact:v1:d825b64554bf10090566c2037c3f23e3f736b38b1a7f28bf8adca14941bfdf8b"
+      ],
+      "source_published_kst": "2026-10-12T14:11+09:00",
+      "source_title": "AMD가 찜한 망고부스트…'AI 팩토리' 앞세워 추론 시장 승부수",
+      "telegram_core_fact": "인공지능(AI) 인프라 기업 망고부스트가 AMD와의 협력을 바탕으로 자체 AI 데이터센터와 추론 서비스를 결합한 'AI 팩토리' 사업에 본격적으로 나선다.",
+      "title": "AMD가 찜한 망고부스트…'AI 팩토리' 앞세워 추론 시장 승부수"
     },
     "original:2d50e6b21e4612c428965621": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -208898,6 +209398,25 @@
       "source_published_kst": "2026-10-04T06:15+09:00",
       "title": "HBM에 호남까지 갈길 바쁜 SK하이닉스…솔리다임 자금조달 고심 | 연합뉴스"
     },
+    "original:7a7dbfbeb37dccae406742bc": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823721",
+      "source": "뉴시스",
+      "source_body_digest": "3f0b7a12c09e9772039421b15b3dd15de93be303a09837f52500a575aa270e4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a29b96dcadf2a69796278909b20943d60ddd6b6f14b668b10285350168f2b00f",
+      "source_fact_keys": [
+        "source_fact:v1:c5d8f218fc833108c770f53a2a229c9d8bff110dfceef52d0eda59798e32715d"
+      ],
+      "source_published_kst": "2026-10-13T11:30+09:00",
+      "source_title": "대우건설, 4130억 규모 공사 수주",
+      "telegram_core_fact": "대우건설은 4130억원 용인 첨단시스템반도체 클러스터 국가산업단지 조성공사 1공구 공사를 수주했다고 13일 공시했다.",
+      "title": "대우건설, 4130억 규모 공사 수주"
+    },
     "original:7acb35db8621f805cc49b0bc": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
       "lanes": {
@@ -214394,6 +214913,27 @@
       "source_title": "상표 계약 맺어놓고 “사용료 아냐” 프라다, 33억 세금소송 최종 패소",
       "telegram_core_fact": "강남세무서는 이 지급액을 국내에서 상표권을 사용한 대가인 ‘국내 원천 사용료 소득’으로 보고, 2019년 12월 프라다코리아에 가산세를 포함한 약 33억원의 법인세를 부과했다.",
       "title": "상표 계약 맺어놓고 “사용료 아냐” 프라다, 33억 세금소송 최종 패소"
+    },
+    "original:8e6b2d51a39c265d9730f2be": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261013052900008",
+      "source": "연합뉴스",
+      "source_body_digest": "971015f924bf18c0c376aabb7aacb7c212cd7f73a455ffba6b60daadda6d6b25",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1b9cfdee8fc00574aefd5b71e3dcc52ab657d523dc832534c39c3f44bf869f7a",
+      "source_fact_keys": [
+        "source_fact:v1:57c63465df0f0c3cf1ab067e8c9a3c0459b6f6e3228bacadd2e6c5bdb4cd0ad5",
+        "source_fact:v1:7a1b5651637d6a9922963604d4bb0f7e66da60a4199a2d83f68211cf21ee067b",
+        "source_fact:v1:be7ec2c01a3ac93eb62cd29b4920899f43fdca8b9966904c066a5e98f5355aa0"
+      ],
+      "source_published_kst": "2026-10-13T10:02+09:00",
+      "source_title": "글로벌 금리 급등에도 韓 국채 '선방'…외국인 역대 두번째 선물 순매수 | 연합뉴스",
+      "telegram_core_fact": "국내 채권시장이 연휴로 휴장하는 동안 미국 장기금리 상승세가 진정된 영향도 있지만, 외국인의 국채선물 매수세가 투자 심리를 뒷받침했다.",
+      "title": "글로벌 금리 급등에도 韓 국채 '선방'…외국인 역대 두번째 선물 순매수 | 연합뉴스"
     },
     "original:8e7d0a2b38ba4c03bd999914": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
@@ -220945,6 +221485,31 @@
       "source_title": "실적 발표 앞둔 美 S&P500기업들…\"3분기 이익, 27% 증가할 듯\"",
       "telegram_core_fact": "7일(현지 시간) 파이낸셜타임스(FT)에 따르면 골드만삭스는 S&P500 구성 기업들의 9월 분기 이익(earnings)이 전년비 27% 증가할 것이라고 분석했다.",
       "title": "실적 발표 앞둔 美 S&P500기업들…\"3분기 이익, 27% 증가할 듯\""
+    },
+    "original:a64259fc00c60694eb385c44": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261013120304",
+      "source": "지디넷코리아",
+      "source_body_digest": "17a13f6fe289f40dcc0bb820bdcd03002b364d87cf02fbf5a25a1804400d76fb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c8853f8d15c004e6516e3a752a2b53abc252b671f58ead6f7df9d81fa951abb4",
+      "source_fact_keys": [
+        "source_fact:v1:191585447a602f10fc1d6b8d01f158f1ee263f4d3c43dba4133805a2ff23d3c5",
+        "source_fact:v1:6234293afe078140e04201c43af119766c9d890b27d6de559cce5432d97d88c2",
+        "source_fact:v1:657198d58ea4bb164937c4d24304e87e8dd772b48109299911bb06bff6d1a1ef",
+        "source_fact:v1:9db305786319ba7a0d3cc94438a0c5a2812485cd8d211388b18f8091d2542962",
+        "source_fact:v1:a5dc8c44f196d4b0a2cd62999760908838b7b92ca2a436a0f91e34b26a291107",
+        "source_fact:v1:b12be8ec5cbd048a08eadf6317080a627a6bdd0d10070f58856930020d7a6e96",
+        "source_fact:v1:e676c3d48851c41970489d1bba7e86304c8345066d05a93023cca7aed4132643"
+      ],
+      "source_published_kst": "2026-10-13T13:09+09:00",
+      "source_title": "엔비디아 \"피지컬 AI 공급망, 한국 제조업에 기회\"",
+      "telegram_core_fact": "엔비디아가 한국의 제조업과 인공지능(AI) 기술력을 높이 평가하며 피지컬 AI 산업의 성장으로 글로벌 공급망에서 한국 기업의 역할이 확대될 수 있다고 전망했다.",
+      "title": "엔비디아 \"피지컬 AI 공급망, 한국 제조업에 기회\""
     },
     "original:a650eaad23c57486ebe0eec2": {
       "first_seen_kst": "2026-10-06T06:44:01+09:00",
@@ -240967,6 +241532,27 @@
       "source": "매일경제",
       "title": "리토 에코 솔루션즈, 1,500만 달러 유상증자 완료..주당 1.5달러"
     },
+    "original:ef5e5be6484d9f199ff54297": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635108",
+      "source": "이투데이",
+      "source_body_digest": "92080cfc35f307a4b56a574e1fbcb455380d9e27c25c0cc427672756cbfae21a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b8d5e98bee70e24c1df3d267c6d7d0ea382899b637236cd7d332f0d21a3eed2d",
+      "source_fact_keys": [
+        "source_fact:v1:545acea51a383d8706a778a3491d0866006e4b8d6cf003a5c09d61d94ce95fcf",
+        "source_fact:v1:a8d8f2c710dd2cbb8dcb803088a05b34c7f2fc858c51f0e027ea451a40ebe79f",
+        "source_fact:v1:ab55a96946f6562625b2efe82da96de030bac9340a33f6285b2ca56afb3cbdf8"
+      ],
+      "source_published_kst": "2026-10-13T11:13+09:00",
+      "source_title": "EU, 유가 급등에 석유·가스 ‘횡재세’ 부활 검토",
+      "telegram_core_fact": "유럽연합(EU)이 유가 급등으로 막대한 이익을 거둔 석유·가스 기업에 이른바 ‘횡재세’를 부과하는 방안을 검토하고 있다.",
+      "title": "EU, 유가 급등에 석유·가스 ‘횡재세’ 부활 검토"
+    },
     "original:ef6b9531695c4f949aa69f30": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
       "lanes": {
@@ -242092,6 +242678,23 @@
       "source_title": "LG전자, 3분기 누적 영업이익 4조 첫 돌파…매출 9% 늘 때 이익 56% 뛰었다",
       "telegram_core_fact": "LG전자는 2026년 3분기 연결기준 매출 23조8270억원, 영업이익 7818억원을 잠정 기록했다고 7일 발표했다.",
       "title": "LG전자, 3분기 누적 영업이익 4조 첫 돌파…매출 9% 늘 때 이익 56% 뛰었다"
+    },
+    "original:f3618b7eafb094d1a0d8e752": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261013081400017",
+      "source": "연합뉴스",
+      "source_body_digest": "611b9444314ebb6759fac0bb186e147dff3382d88e8a404181d3ed4a2b099692",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-13T11:25+09:00",
+      "source_title": "식약처장 \"식품 부당광고 AI 감시…인체조직 규제 강화\" | 연합뉴스",
+      "telegram_core_fact": "식약처는 인체조직 사용에 대한 규제도 강화하겠다고 강조했다.",
+      "title": "식약처장 \"식품 부당광고 AI 감시…인체조직 규제 강화\" | 연합뉴스"
     },
     "original:f36cc6a34fde091dbb6e0485": {
       "first_seen_kst": "2026-10-05T15:39:46+09:00",
@@ -271616,6 +272219,31 @@
       "telegram_core_fact": "젤렌스키 대통령이 이를 “푸틴에게 주는 생일 선물”이라고 비판하자 트럼프 대통령은 우크라이나에 종전 합의를 끌어낼 “새로운 지도자”가 필요하다고 맞받아쳤다. 11월 중간 선거를 앞둔 트럼프 대통령은 최근 우크라이나가 러시아 정유시설 공격을 계속하면서 국제 경유 가격 상승을 부추기고 있다고 비판해왔다.",
       "title": "트럼프 ‘새 지도자’ 압박에⋯젤렌스키 “푸틴 60일 휴전하면 선거 실시”"
     },
+    "source_fact:1b54e995c86167d1232ad481": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261013120304",
+      "source": "지디넷코리아",
+      "source_body_digest": "17a13f6fe289f40dcc0bb820bdcd03002b364d87cf02fbf5a25a1804400d76fb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c8853f8d15c004e6516e3a752a2b53abc252b671f58ead6f7df9d81fa951abb4",
+      "source_fact_keys": [
+        "source_fact:v1:191585447a602f10fc1d6b8d01f158f1ee263f4d3c43dba4133805a2ff23d3c5",
+        "source_fact:v1:6234293afe078140e04201c43af119766c9d890b27d6de559cce5432d97d88c2",
+        "source_fact:v1:657198d58ea4bb164937c4d24304e87e8dd772b48109299911bb06bff6d1a1ef",
+        "source_fact:v1:9db305786319ba7a0d3cc94438a0c5a2812485cd8d211388b18f8091d2542962",
+        "source_fact:v1:a5dc8c44f196d4b0a2cd62999760908838b7b92ca2a436a0f91e34b26a291107",
+        "source_fact:v1:b12be8ec5cbd048a08eadf6317080a627a6bdd0d10070f58856930020d7a6e96",
+        "source_fact:v1:e676c3d48851c41970489d1bba7e86304c8345066d05a93023cca7aed4132643"
+      ],
+      "source_published_kst": "2026-10-13T13:09+09:00",
+      "source_title": "엔비디아 \"피지컬 AI 공급망, 한국 제조업에 기회\"",
+      "telegram_core_fact": "엔비디아가 한국의 제조업과 인공지능(AI) 기술력을 높이 평가하며 피지컬 AI 산업의 성장으로 글로벌 공급망에서 한국 기업의 역할이 확대될 수 있다고 전망했다.",
+      "title": "엔비디아 \"피지컬 AI 공급망, 한국 제조업에 기회\""
+    },
     "source_fact:1b62e47c68a1c69637782766": {
       "first_seen_kst": "2026-10-11T19:59:25+09:00",
       "lanes": {
@@ -277697,6 +278325,30 @@
       "source_published_kst": "2026-10-06T14:48+09:00",
       "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
     },
+    "source_fact:20c97dd322edb2136203d21c": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/13/2026101311065463095",
+      "source": "머니투데이",
+      "source_body_digest": "11d878e145dd1675202caa840e880ce090a943b6cba159aff0183b210b0e0368",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:be3a239b6e321e28ebc98b04bee5eda976dbc3d7272c9b7bcb7004ad0161c1f2",
+      "source_fact_keys": [
+        "source_fact:v1:0c2028e9f374f5f5a0df2116df21b2dc7b44d214c6e3719596972517edbdb6dc",
+        "source_fact:v1:1342f0e1b66538399379620a8020e70b082373ffce8f970cc5a72668687fa3e5",
+        "source_fact:v1:ac3ba5d34be9690a0cf6495a208e102edd274b5470547aa9fceced806842b60d",
+        "source_fact:v1:ce4a9b9d2e67f91814ff4beb620d1f91464b82a31539c48a1dc652da898c53e1",
+        "source_fact:v1:d39ac5470d611a4662189b1e19fd9f08d85a069667ba0d10120b32653d199c74",
+        "source_fact:v1:f88225b7bbdbb4752aa097be0ff9526b500ee430b238e15cd3cd920fb51e5e90"
+      ],
+      "source_published_kst": "2026-10-13T11:14+09:00",
+      "source_title": "바이오솔루션, 동물대체 인체조직모델 솔루오랄 첫 해외 공급 추진",
+      "telegram_core_fact": "바이오솔루션은 이번 국제 검증 연구에서 도출된 데이터를 바탕으로 솔루오랄의 ISO 국제표준 등재를 확정 짓고, 유럽 등 해외 임상시험수탁기관(CRO)과 글로벌 의료기기 제조사를 상대로 인체조직모델 공급 및 시험서비스 협력을 본격화해 해외 매출을 확대할 방침이다.",
+      "title": "바이오솔루션, 동물대체 인체조직모델 솔루오랄 첫 해외 공급 추진"
+    },
     "source_fact:20cb225467f9c03742281847": {
       "first_seen_kst": "2026-10-11T09:28:38+09:00",
       "lanes": {
@@ -277806,6 +278458,31 @@
       "source_title": "'158억원 무차입 공매도 혐의' 홍콩 HSBC, 대법서 무죄 확정 | 연합뉴스",
       "telegram_core_fact": "HSBC 홍콩법인 트레이더 A씨 등 3명은 2021년 8∼12월 무차입 방식으로 호텔신라 등 9개 상장사 주식 31만8천781주(157억8천468만원)를 공매도한 혐의로 2024년 3월 기소됐다.",
       "title": "'158억원 무차입 공매도 혐의' 홍콩 HSBC, 대법서 무죄 확정 | 연합뉴스"
+    },
+    "source_fact:20eb5228107278942805551a": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261013120304",
+      "source": "지디넷코리아",
+      "source_body_digest": "17a13f6fe289f40dcc0bb820bdcd03002b364d87cf02fbf5a25a1804400d76fb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c8853f8d15c004e6516e3a752a2b53abc252b671f58ead6f7df9d81fa951abb4",
+      "source_fact_keys": [
+        "source_fact:v1:191585447a602f10fc1d6b8d01f158f1ee263f4d3c43dba4133805a2ff23d3c5",
+        "source_fact:v1:6234293afe078140e04201c43af119766c9d890b27d6de559cce5432d97d88c2",
+        "source_fact:v1:657198d58ea4bb164937c4d24304e87e8dd772b48109299911bb06bff6d1a1ef",
+        "source_fact:v1:9db305786319ba7a0d3cc94438a0c5a2812485cd8d211388b18f8091d2542962",
+        "source_fact:v1:a5dc8c44f196d4b0a2cd62999760908838b7b92ca2a436a0f91e34b26a291107",
+        "source_fact:v1:b12be8ec5cbd048a08eadf6317080a627a6bdd0d10070f58856930020d7a6e96",
+        "source_fact:v1:e676c3d48851c41970489d1bba7e86304c8345066d05a93023cca7aed4132643"
+      ],
+      "source_published_kst": "2026-10-13T13:09+09:00",
+      "source_title": "엔비디아 \"피지컬 AI 공급망, 한국 제조업에 기회\"",
+      "telegram_core_fact": "엔비디아가 한국의 제조업과 인공지능(AI) 기술력을 높이 평가하며 피지컬 AI 산업의 성장으로 글로벌 공급망에서 한국 기업의 역할이 확대될 수 있다고 전망했다.",
+      "title": "엔비디아 \"피지컬 AI 공급망, 한국 제조업에 기회\""
     },
     "source_fact:20f0032c1eb275712f533191": {
       "first_seen_kst": "2026-10-09T23:27:30+09:00",
@@ -281321,6 +281998,30 @@
       "telegram_core_fact": "삼성전자와 SK하이닉스가 올해 반도체 호황으로 역대급 수익을 내고 있는 가운데, 이르면 내년 3월 양사 직원들은 일제히 수억원대의 성과급을 지급 받을 전망이다. 국가데이터처의 '2025년 가계금융복지조사'에 따르면 지난해 3월 말 기준 가구당 평균 순자산은 4억7144만원으로 전년대비 5.0% 증가했다.",
       "title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다[간추린 주말 뉴스]"
     },
+    "source_fact:24316a8f7f76b791dacd0615": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/13/2026101311065463095",
+      "source": "머니투데이",
+      "source_body_digest": "11d878e145dd1675202caa840e880ce090a943b6cba159aff0183b210b0e0368",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:be3a239b6e321e28ebc98b04bee5eda976dbc3d7272c9b7bcb7004ad0161c1f2",
+      "source_fact_keys": [
+        "source_fact:v1:0c2028e9f374f5f5a0df2116df21b2dc7b44d214c6e3719596972517edbdb6dc",
+        "source_fact:v1:1342f0e1b66538399379620a8020e70b082373ffce8f970cc5a72668687fa3e5",
+        "source_fact:v1:ac3ba5d34be9690a0cf6495a208e102edd274b5470547aa9fceced806842b60d",
+        "source_fact:v1:ce4a9b9d2e67f91814ff4beb620d1f91464b82a31539c48a1dc652da898c53e1",
+        "source_fact:v1:d39ac5470d611a4662189b1e19fd9f08d85a069667ba0d10120b32653d199c74",
+        "source_fact:v1:f88225b7bbdbb4752aa097be0ff9526b500ee430b238e15cd3cd920fb51e5e90"
+      ],
+      "source_published_kst": "2026-10-13T11:14+09:00",
+      "source_title": "바이오솔루션, 동물대체 인체조직모델 솔루오랄 첫 해외 공급 추진",
+      "telegram_core_fact": "바이오솔루션은 이번 국제 검증 연구에서 도출된 데이터를 바탕으로 솔루오랄의 ISO 국제표준 등재를 확정 짓고, 유럽 등 해외 임상시험수탁기관(CRO)과 글로벌 의료기기 제조사를 상대로 인체조직모델 공급 및 시험서비스 협력을 본격화해 해외 매출을 확대할 방침이다.",
+      "title": "바이오솔루션, 동물대체 인체조직모델 솔루오랄 첫 해외 공급 추진"
+    },
     "source_fact:2431ef98369ad5bb3fb9e823": {
       "first_seen_kst": "2026-10-10T15:05:36+09:00",
       "lanes": {
@@ -282338,6 +283039,33 @@
       ],
       "source_published_kst": "2026-10-06T13:52+09:00",
       "title": "'KIWOOM 미국AI테크하이베타 ETF', 마이크론·스페이스X 편입"
+    },
+    "source_fact:2501e4032f85314ddccbe0fd": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261012135552",
+      "source": "지디넷코리아",
+      "source_body_digest": "64feebbc0fc1071993161973936f9e8d976efe5777c0a2dd3891bfcc6978274b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cb3b46eb710ffc09e31ced5692e6500d4a863b5a9e8bc8c179770ea9543eeb87",
+      "source_fact_keys": [
+        "source_fact:v1:458f161f7703c4324124fd0b3638ea6bbf6d293a62d6a0a518cc0b9d31b97eac",
+        "source_fact:v1:475dfb874402031dad71cc4f460a5d10880250b0a5b0733be157c11ca0e5d417",
+        "source_fact:v1:636cdf0269e1dd2ed262c15734f116c47d3b552bf0e692dd8a4f3bbfa0bf541a",
+        "source_fact:v1:65e8f389e6d7c86d6998ff623eeafa3f5319ccf918a6ba589690e469674dda53",
+        "source_fact:v1:706a3a1f48b305f2aebced2295e01510a9fc8b177fff587f01233c9c5033329f",
+        "source_fact:v1:80adab6ec326bc8739bf2ae9dc148ef3b78b57572a21c4cc309f26aeb9f8d2c3",
+        "source_fact:v1:9a759501d5a7cfa02ed5eefabfa26aa214f79909a96648624deab65d26985eae",
+        "source_fact:v1:c5f4cc8d9c370f59bad9e3bf209fa3fdcee96f2c091f3e06fedf11ef2a9903aa",
+        "source_fact:v1:d825b64554bf10090566c2037c3f23e3f736b38b1a7f28bf8adca14941bfdf8b"
+      ],
+      "source_published_kst": "2026-10-12T14:11+09:00",
+      "source_title": "AMD가 찜한 망고부스트…'AI 팩토리' 앞세워 추론 시장 승부수",
+      "telegram_core_fact": "인공지능(AI) 인프라 기업 망고부스트가 AMD와의 협력을 바탕으로 자체 AI 데이터센터와 추론 서비스를 결합한 'AI 팩토리' 사업에 본격적으로 나선다.",
+      "title": "AMD가 찜한 망고부스트…'AI 팩토리' 앞세워 추론 시장 승부수"
     },
     "source_fact:25047ef3234fdca441c97385": {
       "first_seen_kst": "2026-10-10T06:41:01+09:00",
@@ -287818,6 +288546,27 @@
       "telegram_core_fact": "성과급은 세금과 보험료 등을 공제한 뒤 삼성전자 자사주로 지급한다.",
       "title": "삼성, 반도체 성과급 내년 3월 말 지급⋯8천만원 연봉시 최대 7.5억 [종합]"
     },
+    "source_fact:2a6cabd3c60853f2146ef13d": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261013052900008",
+      "source": "연합뉴스",
+      "source_body_digest": "971015f924bf18c0c376aabb7aacb7c212cd7f73a455ffba6b60daadda6d6b25",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1b9cfdee8fc00574aefd5b71e3dcc52ab657d523dc832534c39c3f44bf869f7a",
+      "source_fact_keys": [
+        "source_fact:v1:57c63465df0f0c3cf1ab067e8c9a3c0459b6f6e3228bacadd2e6c5bdb4cd0ad5",
+        "source_fact:v1:7a1b5651637d6a9922963604d4bb0f7e66da60a4199a2d83f68211cf21ee067b",
+        "source_fact:v1:be7ec2c01a3ac93eb62cd29b4920899f43fdca8b9966904c066a5e98f5355aa0"
+      ],
+      "source_published_kst": "2026-10-13T10:02+09:00",
+      "source_title": "글로벌 금리 급등에도 韓 국채 '선방'…외국인 역대 두번째 선물 순매수 | 연합뉴스",
+      "telegram_core_fact": "국내 채권시장이 연휴로 휴장하는 동안 미국 장기금리 상승세가 진정된 영향도 있지만, 외국인의 국채선물 매수세가 투자 심리를 뒷받침했다.",
+      "title": "글로벌 금리 급등에도 韓 국채 '선방'…외국인 역대 두번째 선물 순매수 | 연합뉴스"
+    },
     "source_fact:2a70415807cff70a09507713": {
       "first_seen_kst": "2026-10-12T08:03:02+09:00",
       "lanes": {
@@ -287988,6 +288737,27 @@
       "source_title": "바이오어피니티 테크놀러, 400만 달러 직접공모 조달..주당 6.122달러",
       "telegram_core_fact": "워런트 행사가격은 주당 6.122달러이며 주주 승인 이후부터 행사할 수 있다. 보통주 공모가는 주당 6.122달러, 선행 출자 워런트(pre-funded warrant)는 주당 6.115달러다.",
       "title": "바이오어피니티 테크놀러, 400만 달러 직접공모 조달..주당 6.122달러"
+    },
+    "source_fact:2a8be362b8ac8eecb1b95ae4": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635108",
+      "source": "이투데이",
+      "source_body_digest": "92080cfc35f307a4b56a574e1fbcb455380d9e27c25c0cc427672756cbfae21a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b8d5e98bee70e24c1df3d267c6d7d0ea382899b637236cd7d332f0d21a3eed2d",
+      "source_fact_keys": [
+        "source_fact:v1:545acea51a383d8706a778a3491d0866006e4b8d6cf003a5c09d61d94ce95fcf",
+        "source_fact:v1:a8d8f2c710dd2cbb8dcb803088a05b34c7f2fc858c51f0e027ea451a40ebe79f",
+        "source_fact:v1:ab55a96946f6562625b2efe82da96de030bac9340a33f6285b2ca56afb3cbdf8"
+      ],
+      "source_published_kst": "2026-10-13T11:13+09:00",
+      "source_title": "EU, 유가 급등에 석유·가스 ‘횡재세’ 부활 검토",
+      "telegram_core_fact": "유럽연합(EU)이 유가 급등으로 막대한 이익을 거둔 석유·가스 기업에 이른바 ‘횡재세’를 부과하는 방안을 검토하고 있다.",
+      "title": "EU, 유가 급등에 석유·가스 ‘횡재세’ 부활 검토"
     },
     "source_fact:2a911bf172ae7b0c8c5cf990": {
       "first_seen_kst": "2026-10-05T22:57:49+09:00",
@@ -301926,6 +302696,60 @@
       "source_published_kst": "2026-10-06T11:19+09:00",
       "title": "디스플레이 규제합리화 브리핑하는 김민성 부단장 | 연합뉴스"
     },
+    "source_fact:38d9cd80eb87bdf96b7c7a30": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261012135552",
+      "source": "지디넷코리아",
+      "source_body_digest": "64feebbc0fc1071993161973936f9e8d976efe5777c0a2dd3891bfcc6978274b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cb3b46eb710ffc09e31ced5692e6500d4a863b5a9e8bc8c179770ea9543eeb87",
+      "source_fact_keys": [
+        "source_fact:v1:458f161f7703c4324124fd0b3638ea6bbf6d293a62d6a0a518cc0b9d31b97eac",
+        "source_fact:v1:475dfb874402031dad71cc4f460a5d10880250b0a5b0733be157c11ca0e5d417",
+        "source_fact:v1:636cdf0269e1dd2ed262c15734f116c47d3b552bf0e692dd8a4f3bbfa0bf541a",
+        "source_fact:v1:65e8f389e6d7c86d6998ff623eeafa3f5319ccf918a6ba589690e469674dda53",
+        "source_fact:v1:706a3a1f48b305f2aebced2295e01510a9fc8b177fff587f01233c9c5033329f",
+        "source_fact:v1:80adab6ec326bc8739bf2ae9dc148ef3b78b57572a21c4cc309f26aeb9f8d2c3",
+        "source_fact:v1:9a759501d5a7cfa02ed5eefabfa26aa214f79909a96648624deab65d26985eae",
+        "source_fact:v1:c5f4cc8d9c370f59bad9e3bf209fa3fdcee96f2c091f3e06fedf11ef2a9903aa",
+        "source_fact:v1:d825b64554bf10090566c2037c3f23e3f736b38b1a7f28bf8adca14941bfdf8b"
+      ],
+      "source_published_kst": "2026-10-12T14:11+09:00",
+      "source_title": "AMD가 찜한 망고부스트…'AI 팩토리' 앞세워 추론 시장 승부수",
+      "telegram_core_fact": "인공지능(AI) 인프라 기업 망고부스트가 AMD와의 협력을 바탕으로 자체 AI 데이터센터와 추론 서비스를 결합한 'AI 팩토리' 사업에 본격적으로 나선다.",
+      "title": "AMD가 찜한 망고부스트…'AI 팩토리' 앞세워 추론 시장 승부수"
+    },
+    "source_fact:38dfd116c88e245a92f20801": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261012135552",
+      "source": "지디넷코리아",
+      "source_body_digest": "64feebbc0fc1071993161973936f9e8d976efe5777c0a2dd3891bfcc6978274b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cb3b46eb710ffc09e31ced5692e6500d4a863b5a9e8bc8c179770ea9543eeb87",
+      "source_fact_keys": [
+        "source_fact:v1:458f161f7703c4324124fd0b3638ea6bbf6d293a62d6a0a518cc0b9d31b97eac",
+        "source_fact:v1:475dfb874402031dad71cc4f460a5d10880250b0a5b0733be157c11ca0e5d417",
+        "source_fact:v1:636cdf0269e1dd2ed262c15734f116c47d3b552bf0e692dd8a4f3bbfa0bf541a",
+        "source_fact:v1:65e8f389e6d7c86d6998ff623eeafa3f5319ccf918a6ba589690e469674dda53",
+        "source_fact:v1:706a3a1f48b305f2aebced2295e01510a9fc8b177fff587f01233c9c5033329f",
+        "source_fact:v1:80adab6ec326bc8739bf2ae9dc148ef3b78b57572a21c4cc309f26aeb9f8d2c3",
+        "source_fact:v1:9a759501d5a7cfa02ed5eefabfa26aa214f79909a96648624deab65d26985eae",
+        "source_fact:v1:c5f4cc8d9c370f59bad9e3bf209fa3fdcee96f2c091f3e06fedf11ef2a9903aa",
+        "source_fact:v1:d825b64554bf10090566c2037c3f23e3f736b38b1a7f28bf8adca14941bfdf8b"
+      ],
+      "source_published_kst": "2026-10-12T14:11+09:00",
+      "source_title": "AMD가 찜한 망고부스트…'AI 팩토리' 앞세워 추론 시장 승부수",
+      "telegram_core_fact": "인공지능(AI) 인프라 기업 망고부스트가 AMD와의 협력을 바탕으로 자체 AI 데이터센터와 추론 서비스를 결합한 'AI 팩토리' 사업에 본격적으로 나선다.",
+      "title": "AMD가 찜한 망고부스트…'AI 팩토리' 앞세워 추론 시장 승부수"
+    },
     "source_fact:38e70daac7be3b8def66d263": {
       "first_seen_kst": "2026-10-12T00:21:39+09:00",
       "lanes": {
@@ -306759,6 +307583,27 @@
       ],
       "source_published_kst": "2026-10-05T19:19+09:00",
       "title": "프랑스 채무에 유로화 17개월만에 최저치 급락…살까 말까"
+    },
+    "source_fact:3e1856ccfa3cf1a2b902efe1": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635108",
+      "source": "이투데이",
+      "source_body_digest": "92080cfc35f307a4b56a574e1fbcb455380d9e27c25c0cc427672756cbfae21a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b8d5e98bee70e24c1df3d267c6d7d0ea382899b637236cd7d332f0d21a3eed2d",
+      "source_fact_keys": [
+        "source_fact:v1:545acea51a383d8706a778a3491d0866006e4b8d6cf003a5c09d61d94ce95fcf",
+        "source_fact:v1:a8d8f2c710dd2cbb8dcb803088a05b34c7f2fc858c51f0e027ea451a40ebe79f",
+        "source_fact:v1:ab55a96946f6562625b2efe82da96de030bac9340a33f6285b2ca56afb3cbdf8"
+      ],
+      "source_published_kst": "2026-10-13T11:13+09:00",
+      "source_title": "EU, 유가 급등에 석유·가스 ‘횡재세’ 부활 검토",
+      "telegram_core_fact": "유럽연합(EU)이 유가 급등으로 막대한 이익을 거둔 석유·가스 기업에 이른바 ‘횡재세’를 부과하는 방안을 검토하고 있다.",
+      "title": "EU, 유가 급등에 석유·가스 ‘횡재세’ 부활 검토"
     },
     "source_fact:3e18fc7db5db55eea6f8989f": {
       "first_seen_kst": "2026-10-10T06:41:01+09:00",
@@ -312118,6 +312963,33 @@
       "telegram_core_fact": "우크라이나 총참모부는 7일 당시 공격으로 저장탱크 14기와 송유관 일부, 석유제품 자동 출하시설이 손상된 것으로 확인됐다고 발표했다. 우크라이나 총참모부는 우랄스유가 러시아 전체 원유 수출의 최대 50%를 차지하며 사마라 기지가 러시아군 수요를 충족하는 데도 관여한다고 설명했다.",
       "title": "러 사마라 핵심 석유거점 또 대형 화재…우크라 \"2일 공격 때 탱크 14기 손상\""
     },
+    "source_fact:4332099572f26387e8827094": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261012135552",
+      "source": "지디넷코리아",
+      "source_body_digest": "64feebbc0fc1071993161973936f9e8d976efe5777c0a2dd3891bfcc6978274b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cb3b46eb710ffc09e31ced5692e6500d4a863b5a9e8bc8c179770ea9543eeb87",
+      "source_fact_keys": [
+        "source_fact:v1:458f161f7703c4324124fd0b3638ea6bbf6d293a62d6a0a518cc0b9d31b97eac",
+        "source_fact:v1:475dfb874402031dad71cc4f460a5d10880250b0a5b0733be157c11ca0e5d417",
+        "source_fact:v1:636cdf0269e1dd2ed262c15734f116c47d3b552bf0e692dd8a4f3bbfa0bf541a",
+        "source_fact:v1:65e8f389e6d7c86d6998ff623eeafa3f5319ccf918a6ba589690e469674dda53",
+        "source_fact:v1:706a3a1f48b305f2aebced2295e01510a9fc8b177fff587f01233c9c5033329f",
+        "source_fact:v1:80adab6ec326bc8739bf2ae9dc148ef3b78b57572a21c4cc309f26aeb9f8d2c3",
+        "source_fact:v1:9a759501d5a7cfa02ed5eefabfa26aa214f79909a96648624deab65d26985eae",
+        "source_fact:v1:c5f4cc8d9c370f59bad9e3bf209fa3fdcee96f2c091f3e06fedf11ef2a9903aa",
+        "source_fact:v1:d825b64554bf10090566c2037c3f23e3f736b38b1a7f28bf8adca14941bfdf8b"
+      ],
+      "source_published_kst": "2026-10-12T14:11+09:00",
+      "source_title": "AMD가 찜한 망고부스트…'AI 팩토리' 앞세워 추론 시장 승부수",
+      "telegram_core_fact": "인공지능(AI) 인프라 기업 망고부스트가 AMD와의 협력을 바탕으로 자체 AI 데이터센터와 추론 서비스를 결합한 'AI 팩토리' 사업에 본격적으로 나선다.",
+      "title": "AMD가 찜한 망고부스트…'AI 팩토리' 앞세워 추론 시장 승부수"
+    },
     "source_fact:433de656bab94446d4f01960": {
       "first_seen_kst": "2026-10-06T21:28:22+09:00",
       "lanes": {
@@ -313145,6 +314017,33 @@
       ],
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "주담대 금리도 '들썩'…한은 추가 인상에 이자 더 오르나[금리 쇼크③]"
+    },
+    "source_fact:4490d0ec885721ade8ab4cde": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261012135552",
+      "source": "지디넷코리아",
+      "source_body_digest": "64feebbc0fc1071993161973936f9e8d976efe5777c0a2dd3891bfcc6978274b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cb3b46eb710ffc09e31ced5692e6500d4a863b5a9e8bc8c179770ea9543eeb87",
+      "source_fact_keys": [
+        "source_fact:v1:458f161f7703c4324124fd0b3638ea6bbf6d293a62d6a0a518cc0b9d31b97eac",
+        "source_fact:v1:475dfb874402031dad71cc4f460a5d10880250b0a5b0733be157c11ca0e5d417",
+        "source_fact:v1:636cdf0269e1dd2ed262c15734f116c47d3b552bf0e692dd8a4f3bbfa0bf541a",
+        "source_fact:v1:65e8f389e6d7c86d6998ff623eeafa3f5319ccf918a6ba589690e469674dda53",
+        "source_fact:v1:706a3a1f48b305f2aebced2295e01510a9fc8b177fff587f01233c9c5033329f",
+        "source_fact:v1:80adab6ec326bc8739bf2ae9dc148ef3b78b57572a21c4cc309f26aeb9f8d2c3",
+        "source_fact:v1:9a759501d5a7cfa02ed5eefabfa26aa214f79909a96648624deab65d26985eae",
+        "source_fact:v1:c5f4cc8d9c370f59bad9e3bf209fa3fdcee96f2c091f3e06fedf11ef2a9903aa",
+        "source_fact:v1:d825b64554bf10090566c2037c3f23e3f736b38b1a7f28bf8adca14941bfdf8b"
+      ],
+      "source_published_kst": "2026-10-12T14:11+09:00",
+      "source_title": "AMD가 찜한 망고부스트…'AI 팩토리' 앞세워 추론 시장 승부수",
+      "telegram_core_fact": "인공지능(AI) 인프라 기업 망고부스트가 AMD와의 협력을 바탕으로 자체 AI 데이터센터와 추론 서비스를 결합한 'AI 팩토리' 사업에 본격적으로 나선다.",
+      "title": "AMD가 찜한 망고부스트…'AI 팩토리' 앞세워 추론 시장 승부수"
     },
     "source_fact:4493cdb92223e3bc0b8da3de": {
       "first_seen_kst": "2026-10-07T22:37:58+09:00",
@@ -318450,6 +319349,27 @@
       "source_title": "[제2서울핀테크랩 스타트업 CEO] 현지 전문가 기반 가족 맞춤 자유여행 서비스 ‘오아세스’ 운영하는 기업 ‘링코베이션’",
       "telegram_core_fact": "링코베이션은 올해 문화체육관광부·한국관광공사 주관 제 17 회 관광벤처사업에서 성장관광벤처로 최종 선정되었고, 마이리얼트립과 데일리호텔에 투자한 프라이머로부터 시드투자를 유치했다.",
       "title": "[제2서울핀테크랩 스타트업 CEO] 현지 전문가 기반 가족 맞춤 자유여행 서비스 ‘오아세스’ 운영하는 기업 ‘링코베이션’"
+    },
+    "source_fact:494a39cee40aaa94dbdfd923": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261013052900008",
+      "source": "연합뉴스",
+      "source_body_digest": "971015f924bf18c0c376aabb7aacb7c212cd7f73a455ffba6b60daadda6d6b25",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1b9cfdee8fc00574aefd5b71e3dcc52ab657d523dc832534c39c3f44bf869f7a",
+      "source_fact_keys": [
+        "source_fact:v1:57c63465df0f0c3cf1ab067e8c9a3c0459b6f6e3228bacadd2e6c5bdb4cd0ad5",
+        "source_fact:v1:7a1b5651637d6a9922963604d4bb0f7e66da60a4199a2d83f68211cf21ee067b",
+        "source_fact:v1:be7ec2c01a3ac93eb62cd29b4920899f43fdca8b9966904c066a5e98f5355aa0"
+      ],
+      "source_published_kst": "2026-10-13T10:02+09:00",
+      "source_title": "글로벌 금리 급등에도 韓 국채 '선방'…외국인 역대 두번째 선물 순매수 | 연합뉴스",
+      "telegram_core_fact": "국내 채권시장이 연휴로 휴장하는 동안 미국 장기금리 상승세가 진정된 영향도 있지만, 외국인의 국채선물 매수세가 투자 심리를 뒷받침했다.",
+      "title": "글로벌 금리 급등에도 韓 국채 '선방'…외국인 역대 두번째 선물 순매수 | 연합뉴스"
     },
     "source_fact:494d240caee53b2a31679ab6": {
       "first_seen_kst": "2026-10-07T16:57:09+09:00",
@@ -327043,6 +327963,31 @@
       "source_title": "네이버파이낸셜·두나무 결합, 내년 3월로 재연기…“기업결합·규제절차 영향”(종합)",
       "telegram_core_fact": "공정거래위원회의 기업결합 심사를 비롯해 금융당국의 대주주 변경 승인 등 정부 인허가 절차가 길어지고 있는 데다, 국회 내 디지털자산기본법 제정 논의 지연 등이 복합적으로 작용한 결과로 풀이된다.",
       "title": "네이버파이낸셜·두나무 결합, 내년 3월로 재연기…“기업결합·규제절차 영향”(종합)"
+    },
+    "source_fact:5210b4ef29d314a1d701056a": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261013120304",
+      "source": "지디넷코리아",
+      "source_body_digest": "17a13f6fe289f40dcc0bb820bdcd03002b364d87cf02fbf5a25a1804400d76fb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c8853f8d15c004e6516e3a752a2b53abc252b671f58ead6f7df9d81fa951abb4",
+      "source_fact_keys": [
+        "source_fact:v1:191585447a602f10fc1d6b8d01f158f1ee263f4d3c43dba4133805a2ff23d3c5",
+        "source_fact:v1:6234293afe078140e04201c43af119766c9d890b27d6de559cce5432d97d88c2",
+        "source_fact:v1:657198d58ea4bb164937c4d24304e87e8dd772b48109299911bb06bff6d1a1ef",
+        "source_fact:v1:9db305786319ba7a0d3cc94438a0c5a2812485cd8d211388b18f8091d2542962",
+        "source_fact:v1:a5dc8c44f196d4b0a2cd62999760908838b7b92ca2a436a0f91e34b26a291107",
+        "source_fact:v1:b12be8ec5cbd048a08eadf6317080a627a6bdd0d10070f58856930020d7a6e96",
+        "source_fact:v1:e676c3d48851c41970489d1bba7e86304c8345066d05a93023cca7aed4132643"
+      ],
+      "source_published_kst": "2026-10-13T13:09+09:00",
+      "source_title": "엔비디아 \"피지컬 AI 공급망, 한국 제조업에 기회\"",
+      "telegram_core_fact": "엔비디아가 한국의 제조업과 인공지능(AI) 기술력을 높이 평가하며 피지컬 AI 산업의 성장으로 글로벌 공급망에서 한국 기업의 역할이 확대될 수 있다고 전망했다.",
+      "title": "엔비디아 \"피지컬 AI 공급망, 한국 제조업에 기회\""
     },
     "source_fact:5212eae3ff8536f36a798554": {
       "first_seen_kst": "2026-10-13T11:35:08+09:00",
@@ -348051,6 +348996,33 @@
       "source_published_kst": "2026-10-07T08:51+09:00",
       "title": "SK온, 포드 'Q1 인증' 획득…\"헝가리 생산거점 품질 경쟁력 입증\""
     },
+    "source_fact:670c3d0fcca0711ba5faec0c": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261012135552",
+      "source": "지디넷코리아",
+      "source_body_digest": "64feebbc0fc1071993161973936f9e8d976efe5777c0a2dd3891bfcc6978274b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cb3b46eb710ffc09e31ced5692e6500d4a863b5a9e8bc8c179770ea9543eeb87",
+      "source_fact_keys": [
+        "source_fact:v1:458f161f7703c4324124fd0b3638ea6bbf6d293a62d6a0a518cc0b9d31b97eac",
+        "source_fact:v1:475dfb874402031dad71cc4f460a5d10880250b0a5b0733be157c11ca0e5d417",
+        "source_fact:v1:636cdf0269e1dd2ed262c15734f116c47d3b552bf0e692dd8a4f3bbfa0bf541a",
+        "source_fact:v1:65e8f389e6d7c86d6998ff623eeafa3f5319ccf918a6ba589690e469674dda53",
+        "source_fact:v1:706a3a1f48b305f2aebced2295e01510a9fc8b177fff587f01233c9c5033329f",
+        "source_fact:v1:80adab6ec326bc8739bf2ae9dc148ef3b78b57572a21c4cc309f26aeb9f8d2c3",
+        "source_fact:v1:9a759501d5a7cfa02ed5eefabfa26aa214f79909a96648624deab65d26985eae",
+        "source_fact:v1:c5f4cc8d9c370f59bad9e3bf209fa3fdcee96f2c091f3e06fedf11ef2a9903aa",
+        "source_fact:v1:d825b64554bf10090566c2037c3f23e3f736b38b1a7f28bf8adca14941bfdf8b"
+      ],
+      "source_published_kst": "2026-10-12T14:11+09:00",
+      "source_title": "AMD가 찜한 망고부스트…'AI 팩토리' 앞세워 추론 시장 승부수",
+      "telegram_core_fact": "인공지능(AI) 인프라 기업 망고부스트가 AMD와의 협력을 바탕으로 자체 AI 데이터센터와 추론 서비스를 결합한 'AI 팩토리' 사업에 본격적으로 나선다.",
+      "title": "AMD가 찜한 망고부스트…'AI 팩토리' 앞세워 추론 시장 승부수"
+    },
     "source_fact:671555e8e7d6070b710418bc": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
       "lanes": {
@@ -348230,6 +349202,30 @@
       "source_title": "AI 데이터센터 몸값 시험대…엔비디아 투자받은 퍼머스 IPO 철회",
       "telegram_core_fact": "엔비디아의 투자를 유치하고 오픈AI·메타와 대규모 AI 인프라 계약을 맺으며 호주 증시의 대형 기업공개(IPO) 후보로 주목받았던 데이터센터 기업 퍼머스(Firmus)가 상장 계획을 철회했다.",
       "title": "AI 데이터센터 몸값 시험대…엔비디아 투자받은 퍼머스 IPO 철회"
+    },
+    "source_fact:673e288aefd61d6f674946da": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/13/2026101311065463095",
+      "source": "머니투데이",
+      "source_body_digest": "11d878e145dd1675202caa840e880ce090a943b6cba159aff0183b210b0e0368",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:be3a239b6e321e28ebc98b04bee5eda976dbc3d7272c9b7bcb7004ad0161c1f2",
+      "source_fact_keys": [
+        "source_fact:v1:0c2028e9f374f5f5a0df2116df21b2dc7b44d214c6e3719596972517edbdb6dc",
+        "source_fact:v1:1342f0e1b66538399379620a8020e70b082373ffce8f970cc5a72668687fa3e5",
+        "source_fact:v1:ac3ba5d34be9690a0cf6495a208e102edd274b5470547aa9fceced806842b60d",
+        "source_fact:v1:ce4a9b9d2e67f91814ff4beb620d1f91464b82a31539c48a1dc652da898c53e1",
+        "source_fact:v1:d39ac5470d611a4662189b1e19fd9f08d85a069667ba0d10120b32653d199c74",
+        "source_fact:v1:f88225b7bbdbb4752aa097be0ff9526b500ee430b238e15cd3cd920fb51e5e90"
+      ],
+      "source_published_kst": "2026-10-13T11:14+09:00",
+      "source_title": "바이오솔루션, 동물대체 인체조직모델 솔루오랄 첫 해외 공급 추진",
+      "telegram_core_fact": "바이오솔루션은 이번 국제 검증 연구에서 도출된 데이터를 바탕으로 솔루오랄의 ISO 국제표준 등재를 확정 짓고, 유럽 등 해외 임상시험수탁기관(CRO)과 글로벌 의료기기 제조사를 상대로 인체조직모델 공급 및 시험서비스 협력을 본격화해 해외 매출을 확대할 방침이다.",
+      "title": "바이오솔루션, 동물대체 인체조직모델 솔루오랄 첫 해외 공급 추진"
     },
     "source_fact:674820fc21f4e3f4c95468cb": {
       "first_seen_kst": "2026-10-13T01:09:54+09:00",
@@ -362242,6 +363238,31 @@
       "source_title": "표심 급한 트럼프, 러 경유 전격 수입 …\"악마와의 거래\" 발칵",
       "telegram_core_fact": "지난 9일(현지시간) 트럼프 대통령은 러시아산 경유를 미국 등에 공급하고 이에 맞춰 한시적으로 대러 제재를 완화하기로 블라디미르 푸틴 러시아 대통령과 합의했다고 밝혔다.",
       "title": "표심 급한 트럼프, 러 경유 전격 수입 …\"악마와의 거래\" 발칵"
+    },
+    "source_fact:755a4be7f3e028a850da9542": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261013120304",
+      "source": "지디넷코리아",
+      "source_body_digest": "17a13f6fe289f40dcc0bb820bdcd03002b364d87cf02fbf5a25a1804400d76fb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c8853f8d15c004e6516e3a752a2b53abc252b671f58ead6f7df9d81fa951abb4",
+      "source_fact_keys": [
+        "source_fact:v1:191585447a602f10fc1d6b8d01f158f1ee263f4d3c43dba4133805a2ff23d3c5",
+        "source_fact:v1:6234293afe078140e04201c43af119766c9d890b27d6de559cce5432d97d88c2",
+        "source_fact:v1:657198d58ea4bb164937c4d24304e87e8dd772b48109299911bb06bff6d1a1ef",
+        "source_fact:v1:9db305786319ba7a0d3cc94438a0c5a2812485cd8d211388b18f8091d2542962",
+        "source_fact:v1:a5dc8c44f196d4b0a2cd62999760908838b7b92ca2a436a0f91e34b26a291107",
+        "source_fact:v1:b12be8ec5cbd048a08eadf6317080a627a6bdd0d10070f58856930020d7a6e96",
+        "source_fact:v1:e676c3d48851c41970489d1bba7e86304c8345066d05a93023cca7aed4132643"
+      ],
+      "source_published_kst": "2026-10-13T13:09+09:00",
+      "source_title": "엔비디아 \"피지컬 AI 공급망, 한국 제조업에 기회\"",
+      "telegram_core_fact": "엔비디아가 한국의 제조업과 인공지능(AI) 기술력을 높이 평가하며 피지컬 AI 산업의 성장으로 글로벌 공급망에서 한국 기업의 역할이 확대될 수 있다고 전망했다.",
+      "title": "엔비디아 \"피지컬 AI 공급망, 한국 제조업에 기회\""
     },
     "source_fact:756124ec78109ab3229056c5": {
       "first_seen_kst": "2026-10-09T20:48:52+09:00",
@@ -379404,6 +380425,31 @@
       "telegram_core_fact": "당시 양기욱 산업부 산업자원안보실장은 \"국제유가 상황을 살피면서 서민 물가 부담과 지난 최고가격 지정 동향, 환율 하락 추세 등을 종합적으로 고려해 민생 안정에 무게를 두고 이번 최고가격 동결을 결정했다\"고 설명했다.",
       "title": "4개월째 묶인 기름값 상한…16일 11차 최고가격 동결 '촉각'"
     },
+    "source_fact:86c75011c66074f705f6cde9": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261013120304",
+      "source": "지디넷코리아",
+      "source_body_digest": "17a13f6fe289f40dcc0bb820bdcd03002b364d87cf02fbf5a25a1804400d76fb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c8853f8d15c004e6516e3a752a2b53abc252b671f58ead6f7df9d81fa951abb4",
+      "source_fact_keys": [
+        "source_fact:v1:191585447a602f10fc1d6b8d01f158f1ee263f4d3c43dba4133805a2ff23d3c5",
+        "source_fact:v1:6234293afe078140e04201c43af119766c9d890b27d6de559cce5432d97d88c2",
+        "source_fact:v1:657198d58ea4bb164937c4d24304e87e8dd772b48109299911bb06bff6d1a1ef",
+        "source_fact:v1:9db305786319ba7a0d3cc94438a0c5a2812485cd8d211388b18f8091d2542962",
+        "source_fact:v1:a5dc8c44f196d4b0a2cd62999760908838b7b92ca2a436a0f91e34b26a291107",
+        "source_fact:v1:b12be8ec5cbd048a08eadf6317080a627a6bdd0d10070f58856930020d7a6e96",
+        "source_fact:v1:e676c3d48851c41970489d1bba7e86304c8345066d05a93023cca7aed4132643"
+      ],
+      "source_published_kst": "2026-10-13T13:09+09:00",
+      "source_title": "엔비디아 \"피지컬 AI 공급망, 한국 제조업에 기회\"",
+      "telegram_core_fact": "엔비디아가 한국의 제조업과 인공지능(AI) 기술력을 높이 평가하며 피지컬 AI 산업의 성장으로 글로벌 공급망에서 한국 기업의 역할이 확대될 수 있다고 전망했다.",
+      "title": "엔비디아 \"피지컬 AI 공급망, 한국 제조업에 기회\""
+    },
     "source_fact:86cac8ae6069e7bcb7034316": {
       "first_seen_kst": "2026-10-10T07:01:20+09:00",
       "lanes": {
@@ -380317,6 +381363,30 @@
       "source_title": "에너지 휴전 논의하러 갔는데 美는 러 경유 제재 완화…우크라 \"함정 같았다\"",
       "telegram_core_fact": "러시아와 에너지 시설 공격을 서로 중단하는 방안을 논의하러 미국을 찾은 우크라이나 대표단이 협상장에서 러시아산 경유 수출 제재 완화 방침을 전달받고 “함정처럼 느껴졌다”고 반발한 것으로 전해졌다.",
       "title": "에너지 휴전 논의하러 갔는데 美는 러 경유 제재 완화…우크라 \"함정 같았다\""
+    },
+    "source_fact:87c32f978bb6dda75a6ee056": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/13/2026101311065463095",
+      "source": "머니투데이",
+      "source_body_digest": "11d878e145dd1675202caa840e880ce090a943b6cba159aff0183b210b0e0368",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:be3a239b6e321e28ebc98b04bee5eda976dbc3d7272c9b7bcb7004ad0161c1f2",
+      "source_fact_keys": [
+        "source_fact:v1:0c2028e9f374f5f5a0df2116df21b2dc7b44d214c6e3719596972517edbdb6dc",
+        "source_fact:v1:1342f0e1b66538399379620a8020e70b082373ffce8f970cc5a72668687fa3e5",
+        "source_fact:v1:ac3ba5d34be9690a0cf6495a208e102edd274b5470547aa9fceced806842b60d",
+        "source_fact:v1:ce4a9b9d2e67f91814ff4beb620d1f91464b82a31539c48a1dc652da898c53e1",
+        "source_fact:v1:d39ac5470d611a4662189b1e19fd9f08d85a069667ba0d10120b32653d199c74",
+        "source_fact:v1:f88225b7bbdbb4752aa097be0ff9526b500ee430b238e15cd3cd920fb51e5e90"
+      ],
+      "source_published_kst": "2026-10-13T11:14+09:00",
+      "source_title": "바이오솔루션, 동물대체 인체조직모델 솔루오랄 첫 해외 공급 추진",
+      "telegram_core_fact": "바이오솔루션은 이번 국제 검증 연구에서 도출된 데이터를 바탕으로 솔루오랄의 ISO 국제표준 등재를 확정 짓고, 유럽 등 해외 임상시험수탁기관(CRO)과 글로벌 의료기기 제조사를 상대로 인체조직모델 공급 및 시험서비스 협력을 본격화해 해외 매출을 확대할 방침이다.",
+      "title": "바이오솔루션, 동물대체 인체조직모델 솔루오랄 첫 해외 공급 추진"
     },
     "source_fact:87c9104c4180bfcda256dc0a": {
       "first_seen_kst": "2026-10-07T13:13:19+09:00",
@@ -407370,6 +408440,33 @@
       "telegram_core_fact": "WSJ 설문⋯올해 말 10년물 5.1% 전망 물가 둔화에도 재정적자ㆍAI 투자 부담 2028년까지 5%대 유지 가능성 제기 ▲그래픽=AI 기반 편집 이미지 (Chat GPT) 미국의 장기 국채금리가 5%대에 고착될 수 있다는 설문 결과가 나왔다.",
       "title": "美경제전문가들 \"국채금리 5%대 고착\"⋯고금리 지속 관측"
     },
+    "source_fact:a30a14fcf74fcd8db2af682a": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261012135552",
+      "source": "지디넷코리아",
+      "source_body_digest": "64feebbc0fc1071993161973936f9e8d976efe5777c0a2dd3891bfcc6978274b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cb3b46eb710ffc09e31ced5692e6500d4a863b5a9e8bc8c179770ea9543eeb87",
+      "source_fact_keys": [
+        "source_fact:v1:458f161f7703c4324124fd0b3638ea6bbf6d293a62d6a0a518cc0b9d31b97eac",
+        "source_fact:v1:475dfb874402031dad71cc4f460a5d10880250b0a5b0733be157c11ca0e5d417",
+        "source_fact:v1:636cdf0269e1dd2ed262c15734f116c47d3b552bf0e692dd8a4f3bbfa0bf541a",
+        "source_fact:v1:65e8f389e6d7c86d6998ff623eeafa3f5319ccf918a6ba589690e469674dda53",
+        "source_fact:v1:706a3a1f48b305f2aebced2295e01510a9fc8b177fff587f01233c9c5033329f",
+        "source_fact:v1:80adab6ec326bc8739bf2ae9dc148ef3b78b57572a21c4cc309f26aeb9f8d2c3",
+        "source_fact:v1:9a759501d5a7cfa02ed5eefabfa26aa214f79909a96648624deab65d26985eae",
+        "source_fact:v1:c5f4cc8d9c370f59bad9e3bf209fa3fdcee96f2c091f3e06fedf11ef2a9903aa",
+        "source_fact:v1:d825b64554bf10090566c2037c3f23e3f736b38b1a7f28bf8adca14941bfdf8b"
+      ],
+      "source_published_kst": "2026-10-12T14:11+09:00",
+      "source_title": "AMD가 찜한 망고부스트…'AI 팩토리' 앞세워 추론 시장 승부수",
+      "telegram_core_fact": "인공지능(AI) 인프라 기업 망고부스트가 AMD와의 협력을 바탕으로 자체 AI 데이터센터와 추론 서비스를 결합한 'AI 팩토리' 사업에 본격적으로 나선다.",
+      "title": "AMD가 찜한 망고부스트…'AI 팩토리' 앞세워 추론 시장 승부수"
+    },
     "source_fact:a30b6482299cdcdac9cbc79b": {
       "first_seen_kst": "2026-10-07T13:13:19+09:00",
       "lanes": {
@@ -409861,6 +410958,30 @@
       "source_title": "한은 국감 본 채권 전문가들 “11월·내년 1분기 추가 인상”",
       "telegram_core_fact": "11월과 내년 1분기 추가 인상을 거쳐 기준금리가 현 3.0%에서 3.5%까지 오를 것이라는 전망을 유지했다. 우 연구원은 “11월 금통위에서 내년 상반기 기준금리 경로가 확인되고 추가 인상이 한 차례 정도라는 인식이 자리 잡으면 시장이 안도할 수 있다”며 “국채 공급 감소도 금리 안정에 힘을 보탤 것”이라고 예상했다.",
       "title": "한은 국감 본 채권 전문가들 “11월·내년 1분기 추가 인상”"
+    },
+    "source_fact:a59862c3745cc1f9a2873d00": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/13/2026101311065463095",
+      "source": "머니투데이",
+      "source_body_digest": "11d878e145dd1675202caa840e880ce090a943b6cba159aff0183b210b0e0368",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:be3a239b6e321e28ebc98b04bee5eda976dbc3d7272c9b7bcb7004ad0161c1f2",
+      "source_fact_keys": [
+        "source_fact:v1:0c2028e9f374f5f5a0df2116df21b2dc7b44d214c6e3719596972517edbdb6dc",
+        "source_fact:v1:1342f0e1b66538399379620a8020e70b082373ffce8f970cc5a72668687fa3e5",
+        "source_fact:v1:ac3ba5d34be9690a0cf6495a208e102edd274b5470547aa9fceced806842b60d",
+        "source_fact:v1:ce4a9b9d2e67f91814ff4beb620d1f91464b82a31539c48a1dc652da898c53e1",
+        "source_fact:v1:d39ac5470d611a4662189b1e19fd9f08d85a069667ba0d10120b32653d199c74",
+        "source_fact:v1:f88225b7bbdbb4752aa097be0ff9526b500ee430b238e15cd3cd920fb51e5e90"
+      ],
+      "source_published_kst": "2026-10-13T11:14+09:00",
+      "source_title": "바이오솔루션, 동물대체 인체조직모델 솔루오랄 첫 해외 공급 추진",
+      "telegram_core_fact": "바이오솔루션은 이번 국제 검증 연구에서 도출된 데이터를 바탕으로 솔루오랄의 ISO 국제표준 등재를 확정 짓고, 유럽 등 해외 임상시험수탁기관(CRO)과 글로벌 의료기기 제조사를 상대로 인체조직모델 공급 및 시험서비스 협력을 본격화해 해외 매출을 확대할 방침이다.",
+      "title": "바이오솔루션, 동물대체 인체조직모델 솔루오랄 첫 해외 공급 추진"
     },
     "source_fact:a59f1a661374d89794a5a653": {
       "first_seen_kst": "2026-10-12T08:03:02+09:00",
@@ -419154,6 +420275,25 @@
       "telegram_core_fact": "미국이 우크라이나에 러시아 정유시설 공격을 중단하지 않으면 미국산 무기의 공급 통로를 차단하겠다고 위협했다고 영국 파이낸셜타임스(FT)가 11일(현지시간) 보도했다.",
       "title": "\"美, 러 정유시설 공격 멈추라며 우크라에 무기공급 차단 위협\" | 연합뉴스"
     },
+    "source_fact:aebadec1438e237b5201c8e0": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823721",
+      "source": "뉴시스",
+      "source_body_digest": "3f0b7a12c09e9772039421b15b3dd15de93be303a09837f52500a575aa270e4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a29b96dcadf2a69796278909b20943d60ddd6b6f14b668b10285350168f2b00f",
+      "source_fact_keys": [
+        "source_fact:v1:c5d8f218fc833108c770f53a2a229c9d8bff110dfceef52d0eda59798e32715d"
+      ],
+      "source_published_kst": "2026-10-13T11:30+09:00",
+      "source_title": "대우건설, 4130억 규모 공사 수주",
+      "telegram_core_fact": "대우건설은 4130억원 용인 첨단시스템반도체 클러스터 국가산업단지 조성공사 1공구 공사를 수주했다고 13일 공시했다.",
+      "title": "대우건설, 4130억 규모 공사 수주"
+    },
     "source_fact:aebbc7c493a4383d8b80e556": {
       "first_seen_kst": "2026-10-07T22:00:35+09:00",
       "lanes": {
@@ -419822,6 +420962,30 @@
       "source_title": "美 주담대 금리 폭등에…트럼프 \"연준, 나라 경제 망치려는 듯\"",
       "telegram_core_fact": "미 모기지은행협회(MBA)에 따르면 지난 2일 기준 30년물 고정 모기지 평균 금리는 전주 대비 19bp 오른 7.49%를 기록했다.",
       "title": "美 주담대 금리 폭등에…트럼프 \"연준, 나라 경제 망치려는 듯\""
+    },
+    "source_fact:afb3466583e43080e71a3a13": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/13/2026101311065463095",
+      "source": "머니투데이",
+      "source_body_digest": "11d878e145dd1675202caa840e880ce090a943b6cba159aff0183b210b0e0368",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:be3a239b6e321e28ebc98b04bee5eda976dbc3d7272c9b7bcb7004ad0161c1f2",
+      "source_fact_keys": [
+        "source_fact:v1:0c2028e9f374f5f5a0df2116df21b2dc7b44d214c6e3719596972517edbdb6dc",
+        "source_fact:v1:1342f0e1b66538399379620a8020e70b082373ffce8f970cc5a72668687fa3e5",
+        "source_fact:v1:ac3ba5d34be9690a0cf6495a208e102edd274b5470547aa9fceced806842b60d",
+        "source_fact:v1:ce4a9b9d2e67f91814ff4beb620d1f91464b82a31539c48a1dc652da898c53e1",
+        "source_fact:v1:d39ac5470d611a4662189b1e19fd9f08d85a069667ba0d10120b32653d199c74",
+        "source_fact:v1:f88225b7bbdbb4752aa097be0ff9526b500ee430b238e15cd3cd920fb51e5e90"
+      ],
+      "source_published_kst": "2026-10-13T11:14+09:00",
+      "source_title": "바이오솔루션, 동물대체 인체조직모델 솔루오랄 첫 해외 공급 추진",
+      "telegram_core_fact": "바이오솔루션은 이번 국제 검증 연구에서 도출된 데이터를 바탕으로 솔루오랄의 ISO 국제표준 등재를 확정 짓고, 유럽 등 해외 임상시험수탁기관(CRO)과 글로벌 의료기기 제조사를 상대로 인체조직모델 공급 및 시험서비스 협력을 본격화해 해외 매출을 확대할 방침이다.",
+      "title": "바이오솔루션, 동물대체 인체조직모델 솔루오랄 첫 해외 공급 추진"
     },
     "source_fact:afb3f3c1333a7519d96a8e76": {
       "first_seen_kst": "2026-10-11T02:45:51+09:00",
@@ -424012,6 +425176,33 @@
       "source_title": "LG전자 美빌더 사업 고성장…\"올해도 두 자릿수 훌쩍 넘는다\"",
       "telegram_core_fact": "LG전자에 따르면 미국 빌더 사업 매출은 2024년 전년 대비 약 64%, 2025년에는 40% 이상 증가했다. [뉴욕=이데일리 성주원 특파원] LG전자가 미국 주택건설업체를 대상으로 한 빌더(Builder) 사업에서 올해도 두 자릿수를 크게 웃도는 성장세를 이어가고 있다.",
       "title": "LG전자 美빌더 사업 고성장…\"올해도 두 자릿수 훌쩍 넘는다\""
+    },
+    "source_fact:b3e0f7f29af66df8dd452529": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261012135552",
+      "source": "지디넷코리아",
+      "source_body_digest": "64feebbc0fc1071993161973936f9e8d976efe5777c0a2dd3891bfcc6978274b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cb3b46eb710ffc09e31ced5692e6500d4a863b5a9e8bc8c179770ea9543eeb87",
+      "source_fact_keys": [
+        "source_fact:v1:458f161f7703c4324124fd0b3638ea6bbf6d293a62d6a0a518cc0b9d31b97eac",
+        "source_fact:v1:475dfb874402031dad71cc4f460a5d10880250b0a5b0733be157c11ca0e5d417",
+        "source_fact:v1:636cdf0269e1dd2ed262c15734f116c47d3b552bf0e692dd8a4f3bbfa0bf541a",
+        "source_fact:v1:65e8f389e6d7c86d6998ff623eeafa3f5319ccf918a6ba589690e469674dda53",
+        "source_fact:v1:706a3a1f48b305f2aebced2295e01510a9fc8b177fff587f01233c9c5033329f",
+        "source_fact:v1:80adab6ec326bc8739bf2ae9dc148ef3b78b57572a21c4cc309f26aeb9f8d2c3",
+        "source_fact:v1:9a759501d5a7cfa02ed5eefabfa26aa214f79909a96648624deab65d26985eae",
+        "source_fact:v1:c5f4cc8d9c370f59bad9e3bf209fa3fdcee96f2c091f3e06fedf11ef2a9903aa",
+        "source_fact:v1:d825b64554bf10090566c2037c3f23e3f736b38b1a7f28bf8adca14941bfdf8b"
+      ],
+      "source_published_kst": "2026-10-12T14:11+09:00",
+      "source_title": "AMD가 찜한 망고부스트…'AI 팩토리' 앞세워 추론 시장 승부수",
+      "telegram_core_fact": "인공지능(AI) 인프라 기업 망고부스트가 AMD와의 협력을 바탕으로 자체 AI 데이터센터와 추론 서비스를 결합한 'AI 팩토리' 사업에 본격적으로 나선다.",
+      "title": "AMD가 찜한 망고부스트…'AI 팩토리' 앞세워 추론 시장 승부수"
     },
     "source_fact:b3f126d2200b53be3ce59810": {
       "first_seen_kst": "2026-10-09T18:57:38+09:00",
@@ -432675,6 +433866,27 @@
       "source_title": "국채금리 24년 만에 최고…3대 지수 일제히 하락 [뉴욕증시 브리핑]",
       "telegram_core_fact": "30년물 금리도 5.73%대까지 오르며 24년 만에 가장 높은 수준을 기록했다.",
       "title": "국채금리 24년 만에 최고…3대 지수 일제히 하락 [뉴욕증시 브리핑]"
+    },
+    "source_fact:bd559867dffcadf39e22ee54": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635108",
+      "source": "이투데이",
+      "source_body_digest": "92080cfc35f307a4b56a574e1fbcb455380d9e27c25c0cc427672756cbfae21a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b8d5e98bee70e24c1df3d267c6d7d0ea382899b637236cd7d332f0d21a3eed2d",
+      "source_fact_keys": [
+        "source_fact:v1:545acea51a383d8706a778a3491d0866006e4b8d6cf003a5c09d61d94ce95fcf",
+        "source_fact:v1:a8d8f2c710dd2cbb8dcb803088a05b34c7f2fc858c51f0e027ea451a40ebe79f",
+        "source_fact:v1:ab55a96946f6562625b2efe82da96de030bac9340a33f6285b2ca56afb3cbdf8"
+      ],
+      "source_published_kst": "2026-10-13T11:13+09:00",
+      "source_title": "EU, 유가 급등에 석유·가스 ‘횡재세’ 부활 검토",
+      "telegram_core_fact": "유럽연합(EU)이 유가 급등으로 막대한 이익을 거둔 석유·가스 기업에 이른바 ‘횡재세’를 부과하는 방안을 검토하고 있다.",
+      "title": "EU, 유가 급등에 석유·가스 ‘횡재세’ 부활 검토"
     },
     "source_fact:bd5883464545745a6b4e7aac": {
       "first_seen_kst": "2026-10-06T20:12:00+09:00",
@@ -448457,6 +449669,33 @@
       "telegram_core_fact": "파라다이스가 공모 회사채 수요예측에서 모집액의 3.4배에 달하는 투자 수요를 확보하며 2년 연속 흥행에 성공했다. 파라다이스에 따르면 회사는 지난 6일 총 600억원 공모 회사채 발행을 위한 수요예측을 실시한 결과 모집액의 3.42배인 총 2050억원의 주문이 접수됐다.",
       "title": "파라다이스, 회사채 수요예측에 2050억 몰려…모집액 3.4배"
     },
+    "source_fact:cd5a438c7eac0ad8e3229b88": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261012135552",
+      "source": "지디넷코리아",
+      "source_body_digest": "64feebbc0fc1071993161973936f9e8d976efe5777c0a2dd3891bfcc6978274b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cb3b46eb710ffc09e31ced5692e6500d4a863b5a9e8bc8c179770ea9543eeb87",
+      "source_fact_keys": [
+        "source_fact:v1:458f161f7703c4324124fd0b3638ea6bbf6d293a62d6a0a518cc0b9d31b97eac",
+        "source_fact:v1:475dfb874402031dad71cc4f460a5d10880250b0a5b0733be157c11ca0e5d417",
+        "source_fact:v1:636cdf0269e1dd2ed262c15734f116c47d3b552bf0e692dd8a4f3bbfa0bf541a",
+        "source_fact:v1:65e8f389e6d7c86d6998ff623eeafa3f5319ccf918a6ba589690e469674dda53",
+        "source_fact:v1:706a3a1f48b305f2aebced2295e01510a9fc8b177fff587f01233c9c5033329f",
+        "source_fact:v1:80adab6ec326bc8739bf2ae9dc148ef3b78b57572a21c4cc309f26aeb9f8d2c3",
+        "source_fact:v1:9a759501d5a7cfa02ed5eefabfa26aa214f79909a96648624deab65d26985eae",
+        "source_fact:v1:c5f4cc8d9c370f59bad9e3bf209fa3fdcee96f2c091f3e06fedf11ef2a9903aa",
+        "source_fact:v1:d825b64554bf10090566c2037c3f23e3f736b38b1a7f28bf8adca14941bfdf8b"
+      ],
+      "source_published_kst": "2026-10-12T14:11+09:00",
+      "source_title": "AMD가 찜한 망고부스트…'AI 팩토리' 앞세워 추론 시장 승부수",
+      "telegram_core_fact": "인공지능(AI) 인프라 기업 망고부스트가 AMD와의 협력을 바탕으로 자체 AI 데이터센터와 추론 서비스를 결합한 'AI 팩토리' 사업에 본격적으로 나선다.",
+      "title": "AMD가 찜한 망고부스트…'AI 팩토리' 앞세워 추론 시장 승부수"
+    },
     "source_fact:cd5bddf130ba9265050338e5": {
       "first_seen_kst": "2026-10-08T20:39:20+09:00",
       "lanes": {
@@ -451132,6 +452371,27 @@
       ],
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
+    },
+    "source_fact:d04ec4372edfe8cee1a07dfe": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261013052900008",
+      "source": "연합뉴스",
+      "source_body_digest": "971015f924bf18c0c376aabb7aacb7c212cd7f73a455ffba6b60daadda6d6b25",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1b9cfdee8fc00574aefd5b71e3dcc52ab657d523dc832534c39c3f44bf869f7a",
+      "source_fact_keys": [
+        "source_fact:v1:57c63465df0f0c3cf1ab067e8c9a3c0459b6f6e3228bacadd2e6c5bdb4cd0ad5",
+        "source_fact:v1:7a1b5651637d6a9922963604d4bb0f7e66da60a4199a2d83f68211cf21ee067b",
+        "source_fact:v1:be7ec2c01a3ac93eb62cd29b4920899f43fdca8b9966904c066a5e98f5355aa0"
+      ],
+      "source_published_kst": "2026-10-13T10:02+09:00",
+      "source_title": "글로벌 금리 급등에도 韓 국채 '선방'…외국인 역대 두번째 선물 순매수 | 연합뉴스",
+      "telegram_core_fact": "국내 채권시장이 연휴로 휴장하는 동안 미국 장기금리 상승세가 진정된 영향도 있지만, 외국인의 국채선물 매수세가 투자 심리를 뒷받침했다.",
+      "title": "글로벌 금리 급등에도 韓 국채 '선방'…외국인 역대 두번째 선물 순매수 | 연합뉴스"
     },
     "source_fact:d04fac015f634f35c4041dd5": {
       "first_seen_kst": "2026-10-08T12:13:24+09:00",
@@ -470718,6 +471978,31 @@
       "telegram_core_fact": "이번 제재 대상에는 EU 입국 제한과 역내 자산 동결, 자금 및 경제적 자원 제공 금지 등의 조치가 적용된다.",
       "title": "EU, 러시아 군수기업·경영진 '역대급 제재'…북·러 밀착도 정조준"
     },
+    "source_fact:e2d83e27127e6e414e014330": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261013120304",
+      "source": "지디넷코리아",
+      "source_body_digest": "17a13f6fe289f40dcc0bb820bdcd03002b364d87cf02fbf5a25a1804400d76fb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c8853f8d15c004e6516e3a752a2b53abc252b671f58ead6f7df9d81fa951abb4",
+      "source_fact_keys": [
+        "source_fact:v1:191585447a602f10fc1d6b8d01f158f1ee263f4d3c43dba4133805a2ff23d3c5",
+        "source_fact:v1:6234293afe078140e04201c43af119766c9d890b27d6de559cce5432d97d88c2",
+        "source_fact:v1:657198d58ea4bb164937c4d24304e87e8dd772b48109299911bb06bff6d1a1ef",
+        "source_fact:v1:9db305786319ba7a0d3cc94438a0c5a2812485cd8d211388b18f8091d2542962",
+        "source_fact:v1:a5dc8c44f196d4b0a2cd62999760908838b7b92ca2a436a0f91e34b26a291107",
+        "source_fact:v1:b12be8ec5cbd048a08eadf6317080a627a6bdd0d10070f58856930020d7a6e96",
+        "source_fact:v1:e676c3d48851c41970489d1bba7e86304c8345066d05a93023cca7aed4132643"
+      ],
+      "source_published_kst": "2026-10-13T13:09+09:00",
+      "source_title": "엔비디아 \"피지컬 AI 공급망, 한국 제조업에 기회\"",
+      "telegram_core_fact": "엔비디아가 한국의 제조업과 인공지능(AI) 기술력을 높이 평가하며 피지컬 AI 산업의 성장으로 글로벌 공급망에서 한국 기업의 역할이 확대될 수 있다고 전망했다.",
+      "title": "엔비디아 \"피지컬 AI 공급망, 한국 제조업에 기회\""
+    },
     "source_fact:e2fdf413219258a2fdc0311a": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
       "lanes": {
@@ -483128,6 +484413,31 @@
       "source_title": "아이티센엔텍, 2173억 'K-에듀파인 고도화' 수주",
       "telegram_core_fact": "아이티센엔텍은 한국교육학술정보원(KERIS)이 발주한 'K-에듀파인 운영환경 고도화 및 재해복구 체계 구축' 사업의 우선협상대상자로 선정됐다고 7일 밝혔다.",
       "title": "아이티센엔텍, 2173억 'K-에듀파인 고도화' 수주"
+    },
+    "source_fact:ef55896ee1cfe20e551b4116": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261013120304",
+      "source": "지디넷코리아",
+      "source_body_digest": "17a13f6fe289f40dcc0bb820bdcd03002b364d87cf02fbf5a25a1804400d76fb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c8853f8d15c004e6516e3a752a2b53abc252b671f58ead6f7df9d81fa951abb4",
+      "source_fact_keys": [
+        "source_fact:v1:191585447a602f10fc1d6b8d01f158f1ee263f4d3c43dba4133805a2ff23d3c5",
+        "source_fact:v1:6234293afe078140e04201c43af119766c9d890b27d6de559cce5432d97d88c2",
+        "source_fact:v1:657198d58ea4bb164937c4d24304e87e8dd772b48109299911bb06bff6d1a1ef",
+        "source_fact:v1:9db305786319ba7a0d3cc94438a0c5a2812485cd8d211388b18f8091d2542962",
+        "source_fact:v1:a5dc8c44f196d4b0a2cd62999760908838b7b92ca2a436a0f91e34b26a291107",
+        "source_fact:v1:b12be8ec5cbd048a08eadf6317080a627a6bdd0d10070f58856930020d7a6e96",
+        "source_fact:v1:e676c3d48851c41970489d1bba7e86304c8345066d05a93023cca7aed4132643"
+      ],
+      "source_published_kst": "2026-10-13T13:09+09:00",
+      "source_title": "엔비디아 \"피지컬 AI 공급망, 한국 제조업에 기회\"",
+      "telegram_core_fact": "엔비디아가 한국의 제조업과 인공지능(AI) 기술력을 높이 평가하며 피지컬 AI 산업의 성장으로 글로벌 공급망에서 한국 기업의 역할이 확대될 수 있다고 전망했다.",
+      "title": "엔비디아 \"피지컬 AI 공급망, 한국 제조업에 기회\""
     },
     "source_fact:ef5888bca156698d2067c5f8": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
@@ -500699,6 +502009,30 @@
       "source": "연합뉴스",
       "title": "\"美국무, 협상 진전 없자 이란 대표단 내쫒아\" | 연합뉴스"
     },
+    "title:0865114f47ae9d26c2ec5f15": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/13/2026101311065463095",
+      "source": "머니투데이",
+      "source_body_digest": "11d878e145dd1675202caa840e880ce090a943b6cba159aff0183b210b0e0368",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:be3a239b6e321e28ebc98b04bee5eda976dbc3d7272c9b7bcb7004ad0161c1f2",
+      "source_fact_keys": [
+        "source_fact:v1:0c2028e9f374f5f5a0df2116df21b2dc7b44d214c6e3719596972517edbdb6dc",
+        "source_fact:v1:1342f0e1b66538399379620a8020e70b082373ffce8f970cc5a72668687fa3e5",
+        "source_fact:v1:ac3ba5d34be9690a0cf6495a208e102edd274b5470547aa9fceced806842b60d",
+        "source_fact:v1:ce4a9b9d2e67f91814ff4beb620d1f91464b82a31539c48a1dc652da898c53e1",
+        "source_fact:v1:d39ac5470d611a4662189b1e19fd9f08d85a069667ba0d10120b32653d199c74",
+        "source_fact:v1:f88225b7bbdbb4752aa097be0ff9526b500ee430b238e15cd3cd920fb51e5e90"
+      ],
+      "source_published_kst": "2026-10-13T11:14+09:00",
+      "source_title": "바이오솔루션, 동물대체 인체조직모델 솔루오랄 첫 해외 공급 추진",
+      "telegram_core_fact": "바이오솔루션은 이번 국제 검증 연구에서 도출된 데이터를 바탕으로 솔루오랄의 ISO 국제표준 등재를 확정 짓고, 유럽 등 해외 임상시험수탁기관(CRO)과 글로벌 의료기기 제조사를 상대로 인체조직모델 공급 및 시험서비스 협력을 본격화해 해외 매출을 확대할 방침이다.",
+      "title": "바이오솔루션, 동물대체 인체조직모델 솔루오랄 첫 해외 공급 추진"
+    },
     "title:086f62373eb0b99ebeecaaf6": {
       "first_seen_kst": "2026-10-04T01:43:50+09:00",
       "lanes": {
@@ -511215,6 +512549,33 @@
       "source_title": "마이디어, 에사오테 인수 완료",
       "telegram_core_fact": "제노바, 이탈리아, 2026년 10월 9일 /PRNewswire/ -- 의료 영상 분야의 선도기업 에사오테(Esaote S.p.A.)가 중국 포산시 순더구에 본사를 둔 글로벌 기술 기업 마이디어 그룹(Midea Group)이 자사의 지배지분 인수를 완료했다고 발표했다.",
       "title": "마이디어, 에사오테 인수 완료"
+    },
+    "title:2d450c77ed2f2fbf50611a62": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261012135552",
+      "source": "지디넷코리아",
+      "source_body_digest": "64feebbc0fc1071993161973936f9e8d976efe5777c0a2dd3891bfcc6978274b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cb3b46eb710ffc09e31ced5692e6500d4a863b5a9e8bc8c179770ea9543eeb87",
+      "source_fact_keys": [
+        "source_fact:v1:458f161f7703c4324124fd0b3638ea6bbf6d293a62d6a0a518cc0b9d31b97eac",
+        "source_fact:v1:475dfb874402031dad71cc4f460a5d10880250b0a5b0733be157c11ca0e5d417",
+        "source_fact:v1:636cdf0269e1dd2ed262c15734f116c47d3b552bf0e692dd8a4f3bbfa0bf541a",
+        "source_fact:v1:65e8f389e6d7c86d6998ff623eeafa3f5319ccf918a6ba589690e469674dda53",
+        "source_fact:v1:706a3a1f48b305f2aebced2295e01510a9fc8b177fff587f01233c9c5033329f",
+        "source_fact:v1:80adab6ec326bc8739bf2ae9dc148ef3b78b57572a21c4cc309f26aeb9f8d2c3",
+        "source_fact:v1:9a759501d5a7cfa02ed5eefabfa26aa214f79909a96648624deab65d26985eae",
+        "source_fact:v1:c5f4cc8d9c370f59bad9e3bf209fa3fdcee96f2c091f3e06fedf11ef2a9903aa",
+        "source_fact:v1:d825b64554bf10090566c2037c3f23e3f736b38b1a7f28bf8adca14941bfdf8b"
+      ],
+      "source_published_kst": "2026-10-12T14:11+09:00",
+      "source_title": "AMD가 찜한 망고부스트…'AI 팩토리' 앞세워 추론 시장 승부수",
+      "telegram_core_fact": "인공지능(AI) 인프라 기업 망고부스트가 AMD와의 협력을 바탕으로 자체 AI 데이터센터와 추론 서비스를 결합한 'AI 팩토리' 사업에 본격적으로 나선다.",
+      "title": "AMD가 찜한 망고부스트…'AI 팩토리' 앞세워 추론 시장 승부수"
     },
     "title:2d50e6b21e4612c428965621": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -533506,6 +534867,25 @@
       "source_published_kst": "2026-10-04T06:15+09:00",
       "title": "HBM에 호남까지 갈길 바쁜 SK하이닉스…솔리다임 자금조달 고심 | 연합뉴스"
     },
+    "title:7a7dbfbeb37dccae406742bc": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823721",
+      "source": "뉴시스",
+      "source_body_digest": "3f0b7a12c09e9772039421b15b3dd15de93be303a09837f52500a575aa270e4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a29b96dcadf2a69796278909b20943d60ddd6b6f14b668b10285350168f2b00f",
+      "source_fact_keys": [
+        "source_fact:v1:c5d8f218fc833108c770f53a2a229c9d8bff110dfceef52d0eda59798e32715d"
+      ],
+      "source_published_kst": "2026-10-13T11:30+09:00",
+      "source_title": "대우건설, 4130억 규모 공사 수주",
+      "telegram_core_fact": "대우건설은 4130억원 용인 첨단시스템반도체 클러스터 국가산업단지 조성공사 1공구 공사를 수주했다고 13일 공시했다.",
+      "title": "대우건설, 4130억 규모 공사 수주"
+    },
     "title:7acb35db8621f805cc49b0bc": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
       "lanes": {
@@ -539106,6 +540486,27 @@
       "source_title": "상표 계약 맺어놓고 “사용료 아냐” 프라다, 33억 세금소송 최종 패소",
       "telegram_core_fact": "강남세무서는 이 지급액을 국내에서 상표권을 사용한 대가인 ‘국내 원천 사용료 소득’으로 보고, 2019년 12월 프라다코리아에 가산세를 포함한 약 33억원의 법인세를 부과했다.",
       "title": "상표 계약 맺어놓고 “사용료 아냐” 프라다, 33억 세금소송 최종 패소"
+    },
+    "title:8e6b2d51a39c265d9730f2be": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261013052900008",
+      "source": "연합뉴스",
+      "source_body_digest": "971015f924bf18c0c376aabb7aacb7c212cd7f73a455ffba6b60daadda6d6b25",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1b9cfdee8fc00574aefd5b71e3dcc52ab657d523dc832534c39c3f44bf869f7a",
+      "source_fact_keys": [
+        "source_fact:v1:57c63465df0f0c3cf1ab067e8c9a3c0459b6f6e3228bacadd2e6c5bdb4cd0ad5",
+        "source_fact:v1:7a1b5651637d6a9922963604d4bb0f7e66da60a4199a2d83f68211cf21ee067b",
+        "source_fact:v1:be7ec2c01a3ac93eb62cd29b4920899f43fdca8b9966904c066a5e98f5355aa0"
+      ],
+      "source_published_kst": "2026-10-13T10:02+09:00",
+      "source_title": "글로벌 금리 급등에도 韓 국채 '선방'…외국인 역대 두번째 선물 순매수 | 연합뉴스",
+      "telegram_core_fact": "국내 채권시장이 연휴로 휴장하는 동안 미국 장기금리 상승세가 진정된 영향도 있지만, 외국인의 국채선물 매수세가 투자 심리를 뒷받침했다.",
+      "title": "글로벌 금리 급등에도 韓 국채 '선방'…외국인 역대 두번째 선물 순매수 | 연합뉴스"
     },
     "title:8e7d0a2b38ba4c03bd999914": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
@@ -545964,6 +547365,31 @@
       "source_title": "실적 발표 앞둔 美 S&P500기업들…\"3분기 이익, 27% 증가할 듯\"",
       "telegram_core_fact": "7일(현지 시간) 파이낸셜타임스(FT)에 따르면 골드만삭스는 S&P500 구성 기업들의 9월 분기 이익(earnings)이 전년비 27% 증가할 것이라고 분석했다.",
       "title": "실적 발표 앞둔 美 S&P500기업들…\"3분기 이익, 27% 증가할 듯\""
+    },
+    "title:a64259fc00c60694eb385c44": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261013120304",
+      "source": "지디넷코리아",
+      "source_body_digest": "17a13f6fe289f40dcc0bb820bdcd03002b364d87cf02fbf5a25a1804400d76fb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c8853f8d15c004e6516e3a752a2b53abc252b671f58ead6f7df9d81fa951abb4",
+      "source_fact_keys": [
+        "source_fact:v1:191585447a602f10fc1d6b8d01f158f1ee263f4d3c43dba4133805a2ff23d3c5",
+        "source_fact:v1:6234293afe078140e04201c43af119766c9d890b27d6de559cce5432d97d88c2",
+        "source_fact:v1:657198d58ea4bb164937c4d24304e87e8dd772b48109299911bb06bff6d1a1ef",
+        "source_fact:v1:9db305786319ba7a0d3cc94438a0c5a2812485cd8d211388b18f8091d2542962",
+        "source_fact:v1:a5dc8c44f196d4b0a2cd62999760908838b7b92ca2a436a0f91e34b26a291107",
+        "source_fact:v1:b12be8ec5cbd048a08eadf6317080a627a6bdd0d10070f58856930020d7a6e96",
+        "source_fact:v1:e676c3d48851c41970489d1bba7e86304c8345066d05a93023cca7aed4132643"
+      ],
+      "source_published_kst": "2026-10-13T13:09+09:00",
+      "source_title": "엔비디아 \"피지컬 AI 공급망, 한국 제조업에 기회\"",
+      "telegram_core_fact": "엔비디아가 한국의 제조업과 인공지능(AI) 기술력을 높이 평가하며 피지컬 AI 산업의 성장으로 글로벌 공급망에서 한국 기업의 역할이 확대될 수 있다고 전망했다.",
+      "title": "엔비디아 \"피지컬 AI 공급망, 한국 제조업에 기회\""
     },
     "title:a650eaad23c57486ebe0eec2": {
       "first_seen_kst": "2026-10-06T06:44:01+09:00",
@@ -566515,6 +567941,27 @@
       "source": "매일경제",
       "title": "리토 에코 솔루션즈, 1,500만 달러 유상증자 완료..주당 1.5달러"
     },
+    "title:ef5e5be6484d9f199ff54297": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635108",
+      "source": "이투데이",
+      "source_body_digest": "92080cfc35f307a4b56a574e1fbcb455380d9e27c25c0cc427672756cbfae21a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b8d5e98bee70e24c1df3d267c6d7d0ea382899b637236cd7d332f0d21a3eed2d",
+      "source_fact_keys": [
+        "source_fact:v1:545acea51a383d8706a778a3491d0866006e4b8d6cf003a5c09d61d94ce95fcf",
+        "source_fact:v1:a8d8f2c710dd2cbb8dcb803088a05b34c7f2fc858c51f0e027ea451a40ebe79f",
+        "source_fact:v1:ab55a96946f6562625b2efe82da96de030bac9340a33f6285b2ca56afb3cbdf8"
+      ],
+      "source_published_kst": "2026-10-13T11:13+09:00",
+      "source_title": "EU, 유가 급등에 석유·가스 ‘횡재세’ 부활 검토",
+      "telegram_core_fact": "유럽연합(EU)이 유가 급등으로 막대한 이익을 거둔 석유·가스 기업에 이른바 ‘횡재세’를 부과하는 방안을 검토하고 있다.",
+      "title": "EU, 유가 급등에 석유·가스 ‘횡재세’ 부활 검토"
+    },
     "title:ef6b9531695c4f949aa69f30": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
       "lanes": {
@@ -567640,6 +569087,23 @@
       "source_title": "LG전자, 3분기 누적 영업이익 4조 첫 돌파…매출 9% 늘 때 이익 56% 뛰었다",
       "telegram_core_fact": "LG전자는 2026년 3분기 연결기준 매출 23조8270억원, 영업이익 7818억원을 잠정 기록했다고 7일 발표했다.",
       "title": "LG전자, 3분기 누적 영업이익 4조 첫 돌파…매출 9% 늘 때 이익 56% 뛰었다"
+    },
+    "title:f3618b7eafb094d1a0d8e752": {
+      "first_seen_kst": "2026-10-13T13:27:52+09:00",
+      "lanes": {
+        "live": "2026-10-13T13:27:52+09:00"
+      },
+      "last_seen_kst": "2026-10-13T13:27:52+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261013081400017",
+      "source": "연합뉴스",
+      "source_body_digest": "611b9444314ebb6759fac0bb186e147dff3382d88e8a404181d3ed4a2b099692",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-13T11:25+09:00",
+      "source_title": "식약처장 \"식품 부당광고 AI 감시…인체조직 규제 강화\" | 연합뉴스",
+      "telegram_core_fact": "식약처는 인체조직 사용에 대한 규제도 강화하겠다고 강조했다.",
+      "title": "식약처장 \"식품 부당광고 AI 감시…인체조직 규제 강화\" | 연합뉴스"
     },
     "title:f36cc6a34fde091dbb6e0485": {
       "first_seen_kst": "2026-10-05T15:39:46+09:00",
@@ -571289,5 +572753,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-13T13:05:30+09:00"
+  "updated_at_kst": "2026-10-13T13:27:52+09:00"
 }
