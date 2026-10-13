@@ -31,6 +31,21 @@ def parse_jsonl(path: pathlib.Path | None) -> list[dict[str, Any]]:
     return records
 
 
+def conservative_schedule_gap_hours(cron: str) -> int | None:
+    """Flag only predictable hourly or daily schedules, never guess on weekly/custom cron."""
+    parts = cron.strip().split()
+    if len(parts) != 5:
+        return None
+    minute, hour, day_of_month, month, day_of_week = parts
+    if (day_of_month, month, day_of_week) != ("*", "*", "*"):
+        return None
+    if hour == "*":
+        return 3  # Hourly cadence plus GitHub scheduling delay tolerance.
+    if re.fullmatch(r"(?:[01]?\\d|2[0-3])", hour):
+        return 48  # Daily cadence plus generous delay tolerance.
+    return None
+
+
 def inspect_workflow(path: pathlib.Path) -> dict[str, Any]:
     body = path.read_text(encoding="utf-8")
     is_schedule = bool(re.search(r"(?m)^  schedule:\s*$", body))
@@ -39,6 +54,7 @@ def inspect_workflow(path: pathlib.Path) -> dict[str, Any]:
     is_active_alert = bool(re.search(r"(?i)(telegram|alert|watch)", path.name))
     is_one_shot = bool(re.search(r"(?i)(-once|-smoketest|-smoke-test|-test|-ci|route-inventory)", path.name))
     risks = []
+    crons: list[str] = []
     if r"\${{" in body:
         risks.append("escaped_github_expression")
     if direct_send and not is_one_shot and not re.search(r"\bmessage_id\b", body):
@@ -63,6 +79,10 @@ def inspect_workflow(path: pathlib.Path) -> dict[str, Any]:
         "inline_telegram_send": direct_send,
         "receipt_marker": bool(re.search(r"\bmessage_id\b", body)),
         "one_shot_or_test": is_one_shot,
+        "schedule_max_gap_hours": (
+            min(limits) if (limits := [gap for cron in crons if (gap := conservative_schedule_gap_hours(cron)) is not None])
+            else None
+        ),
         "risks": sorted(set(risks)),
     }
 
@@ -83,6 +103,10 @@ def audit_static(root: pathlib.Path) -> dict[str, Any]:
         "workflow_paths": [row["path"] for row in rows],
         "scheduled_files": sum(row["schedule"] for row in rows),
         "inline_send_files": sum(row["inline_telegram_send"] for row in rows),
+        "schedule_max_gap_hours": {
+            row["path"]: row["schedule_max_gap_hours"]
+            for row in rows if row["schedule_max_gap_hours"] is not None
+        },
         "risk_counts": dict(sorted(counts.items())),
         "findings": [{"path": row["path"], "risks": row["risks"]} for row in rows if row["risks"]],
         "scope": "static read-only; does not prove a workflow is enabled or has sent Telegram",
@@ -93,6 +117,8 @@ def audit_runtime(
     runs: list[dict[str, Any]],
     workflows: list[dict[str, Any]],
     known_paths: set[str] | None = None,
+    schedule_max_gap_hours: dict[str, int] | None = None,
+    now_utc: dt.datetime | None = None,
 ) -> dict[str, Any]:
     # Adjacent API time windows may overlap at their exact boundary. Count
     # a workflow run ID once, not once per API page or window.
@@ -144,12 +170,50 @@ def audit_runtime(
         for w in workflows
         if known_paths is not None and str(w.get("path") or "") not in known_paths
     ]
+    now = now_utc or dt.datetime.now(dt.timezone.utc)
+    if now.tzinfo is None:
+        raise ValueError("Audit clock must be timezone-aware")
+    schedule_gaps = []
+    for workflow in workflows:
+        # Never diagnose or reactivate a disabled workflow; only the registry
+        # can establish whether a workflow is currently active.
+        if str(workflow.get("state") or "") != "active":
+            continue
+        path = str(workflow.get("path") or "")
+        max_gap = (schedule_max_gap_hours or {}).get(path)
+        if max_gap is None:
+            continue
+        schedules = [run for run in by_path.get(path, []) if run.get("event") == "schedule"]
+        latest = schedules[0] if schedules else None
+        if not latest:
+            schedule_gaps.append({
+                "path": path, "max_gap_hours": max_gap,
+                "reason": "no_scheduled_run_in_observed_window",
+                "latest_run_url": "", "hours_since_run": None,
+            })
+            continue
+        raw_time = str(latest.get("created_at") or "")
+        try:
+            created = dt.datetime.fromisoformat(raw_time.replace("Z", "+00:00"))
+            if created.tzinfo is None:
+                continue
+        except ValueError:
+            continue
+        age = (now - created).total_seconds() / 3600
+        if age > max_gap:
+            schedule_gaps.append({
+                "path": path, "max_gap_hours": max_gap,
+                "reason": "scheduled_run_overdue",
+                "latest_run_url": str(latest.get("html_url") or ""),
+                "hours_since_run": round(age, 2),
+            })
     return {
         "runs_reviewed": len(runs),
         "workflow_groups_in_runs": len(by_path),
         "registry_only_workflows": registry_only,
         "conclusions": dict(sorted(totals.items())),
         "failure_clusters": failures,
+        "schedule_silence_candidates": schedule_gaps,
         "inactive_workflows": disabled,
         "registry_size": len(workflows),
         "limitations": [
@@ -157,6 +221,7 @@ def audit_runtime(
             "Cancelled runs cannot be called lost alerts without their job logs and dedupe state",
             "A source coverage fail-closed result must not be reclassified as no news",
             "Never auto-enable inactive or manually disabled workflows",
+            "Schedule silence is a candidate requiring activation metadata, run-log and sampling-window checks, not proof of missing Telegram delivery",
         ],
     }
 
@@ -180,7 +245,14 @@ def make_markdown(static: dict[str, Any], runtime: dict[str, Any] | None) -> str
             f"- 실행 {runtime['runs_reviewed']}건: 성공 {counts.get('success',0)} · 실패 {counts.get('failure',0)} · 취소 {counts.get('cancelled',0)}",
             f"- 등록 워크플로 {runtime['registry_size']}개 · 비활성 {len(runtime['inactive_workflows'])}개 (임의 재활성화 금지)",
             f"- 현재 파일 목록과 불일치하는 등록 항목: {len(runtime['registry_only_workflows'])}개 (확인 전 삭제 금지)",
+            f"- 활성 작업 예약 실행 공백 후보: {len(runtime.get('schedule_silence_candidates', []))}개 (등록일·조회 기간 확인 전 장애 단정 금지)",
         ])
+        for gap in runtime.get("schedule_silence_candidates", [])[:12]:
+            lines.append(
+                f"  - {gap['path']}: {gap['reason']}"
+                f" · 확인 허용간격 {gap['max_gap_hours']}시간"
+                f" · 마지막 관측 {gap.get('hours_since_run') if gap.get('hours_since_run') is not None else '자료 없음'}"
+            )
         for row in runtime["failure_clusters"][:12]:
             lines.append(
                 f"  - {row['path']}: 실패 {row['failures']} · 취소 {row['cancelled']}"
@@ -207,6 +279,7 @@ def main() -> int:
     runtime = audit_runtime(
         parse_jsonl(args.runs), parse_jsonl(args.workflows),
         known_paths=set(static["workflow_paths"]),
+        schedule_max_gap_hours=static["schedule_max_gap_hours"],
     ) if args.runs and args.workflows else None
     result = {"static": static, "runtime": runtime, "generated_at_utc": dt.datetime.now(dt.timezone.utc).isoformat()}
     args.output.parent.mkdir(parents=True, exist_ok=True)
