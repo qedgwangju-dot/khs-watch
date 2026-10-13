@@ -1,6 +1,7 @@
 import pathlib
 import sys
 import unittest
+from unittest.mock import patch
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "scripts"))
 import nvidia_exec_signal_watch as w
@@ -106,6 +107,31 @@ class NvidiaExecCapitalReturnTests(unittest.TestCase):
         self.assertIn("$99.3 billion", out)
         self.assertIn("$19.7 billion", out)
         self.assertIn("$39.8 billion", out)
+
+
+class NvidiaScienceFollowupTests(unittest.TestCase):
+    def test_official_science_deployment_is_detected_with_iso_date(self):
+        # An actual issuer release (not a syndicated headline) must advance
+        # beyond the baseline; old double-escaped date regex dropped it.
+        url = "https://nvidianews.nvidia.com/news/nvidia-genesis-mission-quantum-deployment"
+        listing = f'<a href="{url}">New issuer release</a>'
+        article = (
+            '<html><h1>NVIDIA Deploys Quantum Systems for Genesis Mission</h1>'
+            '<meta property="article:published_time" content="2026-10-13T12:00:00Z">'
+            '<p>NVIDIA quantum Genesis Mission deployment now installed.</p></html>'
+        )
+        def fake_fetch(target, timeout=18):
+            if target == w.OFFICIAL_PRESS_RELEASES:
+                return listing.encode("utf-8")
+            if target == url:
+                return article.encode("utf-8")
+            raise OSError("Other issuer source intentionally unavailable")
+        with patch.object(w, "fetch", side_effect=fake_fetch):
+            events = w._official_science_events()
+        matches = [e for e in events if e.get("kind") == "science_execution"]
+        self.assertEqual(len(matches), 1)
+        self.assertEqual(matches[0]["published_at_kst"][:10], "2026-10-13")
+        self.assertEqual(matches[0]["direct_link"], url)
 
 
 if __name__ == "__main__":

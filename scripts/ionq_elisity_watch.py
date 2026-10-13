@@ -85,7 +85,7 @@ def extract(root,now):
         if not (-1<=age<=AGE_DAYS): continue
         result=stage(title)
         if result is None: continue
-        key,stage_name=result
+        key,stage_name,_confidence=result
         # A dated semantic stage key prevents a rehashed announcement from appearing new.
         identity=BASELINE if key=="agreement" else f"ionq-elisity:{key}:{date.date().isoformat()}"
         rows.append({"key":identity,"stage":stage_name,"title":title,"publisher":publisher,"url":url,"published_kst":date.isoformat(timespec="seconds")})

@@ -346,7 +346,7 @@ def _official_science_events() -> list[dict]:
         else:
             # Future awards/actual resource deployment are keyed by the
             # first-party announcement, not by syndication or title updates.
-            date_match = re.search(r'(20\\d{2})-(\\d{2})-(\\d{2})', raw)
+            date_match = re.search(r'(20\d{2})-(\d{2})-(\d{2})', raw)
             if not date_match:
                 continue
             published = f"{date_match.group(1)}-{date_match.group(2)}-{date_match.group(3)}T00:00:00+09:00"

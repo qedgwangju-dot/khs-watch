@@ -70,7 +70,11 @@ jobs:
         run: |
           python -m py_compile scripts/nvidia_exec_signal_watch.py scripts/currency_krw_guard.py scripts/fx_api.py
           python -m unittest discover -s tests -p 'test_nvidia_exec_signal*.py' -v
-          python scripts/nvidia_exec_signal_watch.py
+          if [ "${{ github.event_name }}" != "push" ]; then
+            python scripts/nvidia_exec_signal_watch.py
+          else
+            echo "push_regression_only=true"
+          fi
 
       - name: Format NVIDIA executive alert for readability
         run: |
@@ -91,7 +95,7 @@ jobs:
           fi
 
       - name: Send NVIDIA executive signal to Telegram
-        if: hashFiles('out/nvidia_exec_signal_alert.html') != ''
+        if: github.event_name != 'push' && hashFiles('out/nvidia_exec_signal_alert.html') != ''
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.HBM_TELEGRAM_CHAT_ID }}
@@ -153,7 +157,7 @@ jobs:
           PY
 
       - name: Commit watcher state
-        if: success() && hashFiles('data/nvidia_exec_signal_state.json') != ''
+        if: github.event_name != 'push' && success() && hashFiles('data/nvidia_exec_signal_state.json') != ''
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
