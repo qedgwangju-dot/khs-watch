@@ -310,7 +310,7 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-10",
-  "updated_at_kst": "2026-10-13T19:35:57+09:00",
+  "updated_at_kst": "2026-10-14T02:45:18+09:00",
   "last_event_count": 0,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
@@ -323,10 +323,10 @@
   "official_api_key_configured": true,
   "official_api_used": true,
   "last_successful_official_month": "202608",
-  "last_successful_official_at_kst": "2026-10-13T18:39:47+09:00",
+  "last_successful_official_at_kst": "2026-10-14T02:45:18+09:00",
   "malaysia_official_month": "202608",
-  "malaysia_hsk10_amount_usd": null,
-  "malaysia_public_available": false,
+  "malaysia_hsk10_amount_usd": 1624534854.0,
+  "malaysia_public_available": true,
   "malaysia_revision_due": false,
   "last_successful_delivery_kst": "2026-10-12T03:15:09+09:00",
   "telegram_message_id": 280,
@@ -1624,7 +1624,7 @@
         },
         "unit": "USD/kg",
         "period": "2026-08",
-        "as_of": "2026-10-13",
+        "as_of": "2026-10-14",
         "evidence": "official",
         "source_url": "https://www.data.go.kr/data/15100475/openapi.do",
         "source_title": "관세청 품목별 국가별 수출입실적 HSK 8542323000 말레이시아",
@@ -2350,11 +2350,11 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-10-13T19:35:57+09:00",
+      "last_checked_at_kst": "2026-10-14T02:45:18+09:00",
       "gaps": [
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
       ],
-      "observations": 2,
+      "observations": 3,
       "rdimm_paired_observations": 0,
       "wafer_share|trendforce|industry|2026-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
       "wafer_share|trendforce|industry|2027-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
@@ -2423,10 +2423,10 @@
     "payload_hash": "a4952371a575ba109f9211f4811b9c87c05f7e5044a260f4fb6faa5da992161c"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-10-13T19:36:53+09:00",
+    "checked_at_kst": "2026-10-14T02:46:36+09:00",
     "status": "no_message_due"
   },
-  "malaysia_hsk10_weight_kg": null,
+  "malaysia_hsk10_weight_kg": 3833.0,
   "state_corrections": [
     {
       "at_kst": "2026-09-25T15:48:00+09:00",
@@ -2514,12 +2514,12 @@
     "version": 3,
     "status": "waiting_publication",
     "target_month": "202609",
-    "last_checked_at_kst": "2026-10-13T18:39:47+09:00",
+    "last_checked_at_kst": "2026-10-14T02:45:18+09:00",
     "selected_official_month": "202608"
   },
   "official_source_health_version": 3,
   "official_poll_interval_hours": 3,
-  "last_official_poll_attempt_kst": "2026-10-13T18:39:47+09:00",
+  "last_official_poll_attempt_kst": "2026-10-14T02:45:18+09:00",
   "official_availability_notes": [
     "공공데이터포털 시도 API 44 202609 HSK 8542323000 데이터 없음",
     "충남 202609 HS6 854232 미검출: {\"count\": 0, \"searchPaging\": \"0\", \"items\": []}",
