@@ -605,6 +605,86 @@ def self_test() -> None:
     assert "경제급전" in rendered46
     assert "대형부하 백업발전 명령이 아니며" in rendered46
 
+    # October 13 incident: one legally issued order, two distinct Special
+    # Notices, and a forward-looking EEA1 warning.  Do not conflate stages.
+    doe50 = """
+    On October 12, 2026, the Department of Energy (DOE) issued emergency DOE Order No. 202-26-50
+    to PJM Interconnection, L.L.C. (PJM). The order directs PJM to dispatch specified units
+    and permits backup generation as a last resort before or during EEA 3.
+    The order is effective October 13, 2026, through October 16, 2026.
+    """
+    d50 = parse_doe_detail_html(
+        doe50,
+        "https://www.energy.gov/ceser/federal-power-act-section-202c-pjm-interconnection-llc-pjm-order-no-202-26-50",
+    )
+    assert d50 and d50["order_no"] == "202-26-50" and d50["party"] == "PJM"
+    assert d50["issue_date"] == dt.date(2026, 10, 12)
+    assert d50["effective_start_date"] == dt.date(2026, 10, 13)
+    assert d50["effective_end_date"] == dt.date(2026, 10, 16)
+    assert "확인 불가" not in render_event(d50, dt.datetime(2026, 10, 13, 13, 0, tzinfo=KST))
+    assert parse_doe_detail_html(
+        doe50,
+        "https://www.energy.gov/ceser/federal-power-act-section-202c-other-order-no-202-26-49",
+    ) is None
+
+    pjm_common = """
+    Message Type: Special Notice
+    Priority: Informational
+    Effective Start Time: 10.12.2026 14:49
+    Regions PJM-RTO
+    """
+    p555 = parse_pjm_posting_html(
+        "<html><body>Msg ID: 105555 " + pjm_common +
+        """A Special Notice : Request for 202(c) Emergency Use of Back-up Generators
+        and Running Emissions Limited Generation Additional Comments: In accordance
+        with PJM Manual 13: Emergency Operations, PJM has obtained a 202(c) order
+        to permit the use of Emissions Limited Generation and Emergency Back-up Generation
+        and coordinate with Large Loads in advance. Order issued through 10/16 @ 23:59.
+        </body></html>""",
+        PJM_POSTING.format(msg_id="105555"),
+    )
+    assert p555 and pjm_notice_stage(p555) == "order_obtained"
+    assert "명령 확보" in pjm_title(p555) and "요청·사전" not in pjm_title(p555)
+    assert "이미 확보" in pjm_stage_explanation(p555)
+    assert "실제 가동 지시가 아닙니다" in pjm_stage_explanation(p555)
+
+    p556 = parse_pjm_posting_html(
+        """<html><body>Msg ID: 105556
+        Message Type: Special Notice Priority: Informational
+        Effective Start Time: 10.12.2026 14:56 Regions PJM-RTO
+        A Special Notice : DOE 202(c) Order No. 202-26-50 Applicability
+        Additional Comments: PJM has received DOE 202(c) No. 202-26-50.
+        PJM has identified a reliability need to utilize the Specified Resources
+        identified in Exhibit A for the 10/13 operating day.
+        The order does not constitute a directive to operate at maximum output or full load.
+        </body></html>""",
+        PJM_POSTING.format(msg_id="105556"),
+    )
+    assert p556 and pjm_notice_stage(p556) == "resources_needed"
+    assert "지정자원 운영 필요" in pjm_title(p556)
+    assert "최대출력 상시운전 지시" in pjm_stage_explanation(p556)
+
+    p557 = parse_pjm_posting_html(
+        """<html><body>Msg ID: 105557
+        Message Type: Maximum Generation Emergency/Load Management Alert-Capacity Emergency-NERC EEA 1
+        Priority: Alert Effective Start Time: 10.12.2026 15:49 Regions PJM-RTO
+        A Maximum Generation Emergency/Load Management Alert-Capacity Emergency-NERC EEA 1
+        has been issued from 00:00 on 10.13.2026 through 23:59 on 10.13.2026.
+        Per M-13, Generation Dispatchers should provide PJM with an estimate of the amount
+        of time they need to return to service any generator on a Planned Outage.
+        This 'Early Return Time' should be updated via eDART, and will not affect
+        the Planned Outage estimated end date.
+        </body></html>""",
+        PJM_POSTING.format(msg_id="105557"),
+    )
+    assert p557 and "eDART" in pjm_stage_explanation(p557)
+    t557 = render_event(p557, dt.datetime(2026, 10, 13, 13, 9, tzinfo=KST))
+    assert "2026년 10월 13일 04:49 KST" in t557
+    assert "2026년 10월 13일 13:00 KST" in t557
+    assert "2026년 10월 14일 12:59 KST" in t557
+    assert "경보 대상 운영시간" in t557 and "게시·발효" not in t557
+    assert "eDART" in t557 and "<a href=" in t557
+
     unknown = {
         "kind": "doe",
         "id": "doe:202-26-99",
