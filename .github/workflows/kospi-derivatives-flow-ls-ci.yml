@@ -200,6 +200,37 @@ jobs:
               print("kosdaq_t1602_live_probe=valid")
           PY
 
+      - name: Probe live KOSDAQ composite index and minute-bar source
+        run: |
+          PYTHONPATH=scripts python - <<'PY'
+          import datetime as dt
+          from zoneinfo import ZoneInfo
+          from krx_session_calendar import session_state
+          from kospi_shock_episode_watch import (
+              get_token, fetch_kosdaq_index_quote, backfill_index_bars,
+          )
+          now=dt.datetime.now(ZoneInfo("Asia/Seoul"))
+          session=session_state(now)
+          live=bool(
+              session["is_session"] and session.get("open") and session.get("continuous_end")
+              and session["open"]+dt.timedelta(minutes=10) <= now < session["continuous_end"]
+          )
+          if not live:
+              print("kosdaq_t1511_t8409_live_probe=outside_continuous_market")
+          else:
+              token=get_token()
+              quote=fetch_kosdaq_index_quote(token)
+              assert quote.get("price",0)>0, quote
+              assert (quote.get("open") or 0)>0, quote
+              assert (quote.get("prev_close") or 0)>0, quote
+              bars=backfill_index_bars(token,120,"301")
+              assert bars, "KOSDAQ t8409 minute bars empty on live session"
+              assert all(v>0 for ts,v in bars), bars[:3]
+              assert all(bars[i][0]<=bars[i+1][0] for i in range(len(bars)-1))
+              print("kosdaq_t1511_t8409_live_probe=valid", "index=",quote["price"],
+                    "bars=",len(bars),"source=","LS t1511 301 + t8409 301")
+          PY
+
       - name: Verify production workflow structure
         run: |
           python - <<'PY'
