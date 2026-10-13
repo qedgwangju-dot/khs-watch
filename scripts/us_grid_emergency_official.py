@@ -424,7 +424,7 @@ def pjm_stage_explanation(event: dict) -> str:
         if stage in {"order_requested", "request_mentioned"}:
             return (
                 "PJM이 DOE에 202(c) 긴급명령을 요청하고 비상자원 운용을 준비하는 공지입니다. "
-                "명령 발령 또는 실제 백업발전 동원 여부는 이후 공식 문서로 확인해야 합니다."
+                "DOE 명령 발령이나 백업발전 실제 동원을 뜻하지 않습니다."
             )
         return "202(c) 관련 특별공지의 적용범위와 실제 운전지시를 확인해야 합니다."
     return "PJM 공식 비상운영 단계의 실제 의미는 메시지 정의와 운전지시를 함께 확인해야 합니다."
