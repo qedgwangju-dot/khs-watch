@@ -155,7 +155,7 @@ def attach_article(row, url, page, body):
     return True
 
 
-def alert_receipt(items, markets, now, text):
+def alert_receipt(items, markets, now, text, market_status=None):
     urls = {html.unescape(url) for url in re.findall(r'<a href="([^"]+)"', text)}
     keys = ('id', 'title_original', 'title_ko', 'description', 'source', 'source_url', 'link', 'discovery_url',
             'resolved_url', 'published', 'rss_published', 'source_metadata', 'score', 'tags',
@@ -174,4 +174,4 @@ def alert_receipt(items, markets, now, text):
     return {'schema_version': 1, 'queried_at_kst': now.isoformat(),
             'run_id': os.getenv('GITHUB_RUN_ID'), 'code_sha': os.getenv('WAR_WATCH_CODE_SHA') or os.getenv('GITHUB_SHA'),
             'alert_sha256': hashlib.sha256(text.strip().encode()).hexdigest(),
-            'articles': articles, 'markets': markets}
+            'articles': articles, 'markets': markets, 'market_source_status': market_status or {}}

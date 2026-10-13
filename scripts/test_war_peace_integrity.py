@@ -197,10 +197,49 @@ class IntegrityTests(unittest.TestCase):
 
     def test_invalid_price_or_previous_close_never_reaches_report(self):
         for px, previous in [(0, 98), (100, 0), (-1, 98), (float('nan'), 98), (100, float('inf'))]:
-            fixture = {'chart': {'result': [{'meta': {'previousClose': previous},
+            fixture = {'chart': {'result': [{'meta': {'symbol': 'NQ=F', 'previousClose': previous},
                 'timestamp': [int(NOW.timestamp())], 'indicators': {'quote': [{'close': [px]}]}}]}}
             with self.subTest(price=px, previous=previous), patch.object(watch, 'req', return_value=json.dumps(fixture).encode()):
                 self.assertIsNone(market._yahoo_quote('NQ=F'))
+
+    def test_provider_comparison_closes_must_agree(self):
+        meta = {'symbol': 'DX-Y.NYB', 'previousClose': 102.21, 'chartPreviousClose': 102.589,
+                'exchangeTimezoneName': 'America/New_York', 'instrumentType': 'INDEX'}
+        fixture = {'chart': {'result': [{'meta': meta, 'timestamp': [int(NOW.timestamp())],
+                   'indicators': {'quote': [{'close': [102.263]}]}}]}}
+        with patch.object(watch, 'req', return_value=json.dumps(fixture).encode()):
+            self.assertIsNone(market._yahoo_quote('DX-Y.NYB'))
+        diagnostic = market.QUOTE_DIAGNOSTICS['DX-Y.NYB']
+        self.assertEqual(diagnostic['reason'], '제공처 비교종가 필드 불일치')
+        self.assertEqual(diagnostic['quote_metadata']['previousClose'], 102.21)
+        self.assertEqual(diagnostic['quote_metadata']['chartPreviousClose'], 102.589)
+
+    def test_matching_close_fields_keep_exact_field_and_date_limit(self):
+        for fields, expected in [({'previousClose': 98, 'chartPreviousClose': 98}, 'chartPreviousClose'),
+                                 ({'previousClose': 98}, 'previousClose')]:
+            fixture = {'chart': {'result': [{'meta': {'symbol': 'NQ=F', **fields},
+                'timestamp': [int(NOW.timestamp())], 'indicators': {'quote': [{'close': [100]}]}}]}}
+            with self.subTest(fields=fields), patch.object(watch, 'req', return_value=json.dumps(fixture).encode()):
+                quote = market._yahoo_quote('NQ=F')
+            self.assertEqual(quote['previous_close_field'], expected)
+            self.assertFalse(quote['previous_close_date_verified'])
+            self.assertAlmostEqual(quote['pct'], (100 / 98 - 1) * 100)
+
+    def test_wrong_instrument_is_withheld_even_when_numbers_are_valid(self):
+        fixture = {'chart': {'result': [{'meta': {'symbol': 'OTHER', 'previousClose': 98},
+            'timestamp': [int(NOW.timestamp())], 'indicators': {'quote': [{'close': [100]}]}}]}}
+        with patch.object(watch, 'req', return_value=json.dumps(fixture).encode()):
+            self.assertIsNone(market._yahoo_quote('NQ=F'))
+        self.assertEqual(market.QUOTE_DIAGNOSTICS['NQ=F']['reason'], '제공처 종목 코드 불일치')
+
+    def test_missing_market_reason_is_visible_and_saved(self):
+        statuses = {'DX-Y.NYB': {'name': '달러지수', 'status': 'withheld', 'reason': '제공처 비교종가 필드 불일치'}}
+        row = article('EU, 러시아 군수 공급업체 제재 확대')
+        with patch.object(watch, 'market_source_status', statuses, create=True):
+            text = integrity.build_alert([row], [], NOW)
+        self.assertIn('달러지수 (제공처 비교종가 필드 불일치)', text)
+        receipt = evidence.alert_receipt([row], [], NOW, text, statuses)
+        self.assertEqual(receipt['market_source_status'], statuses)
 
     def test_future_market_timestamp_is_withheld(self):
         quote = {'price': 100, 'prev': 98, 'pct': 2.0,
