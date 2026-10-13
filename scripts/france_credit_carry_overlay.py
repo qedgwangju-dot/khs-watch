@@ -25,6 +25,7 @@ KST = ZoneInfo("Asia/Seoul")
 PARIS = ZoneInfo("Europe/Paris")
 AFT_EN = "https://www.aft.gouv.fr/en/frances-credit-ratings"
 AFT_FR = "https://www.aft.gouv.fr/fr/calendrier-notations-france"
+AFT_TEXT_RECOVERY = "https://r.jina.ai/https://www.aft.gouv.fr/en/frances-credit-ratings"
 ORIGINAL_STORY = "https://www.briefs.co/news/hedge-funds-scramble-as-french-bond-rout-blows-out-spreads/"
 REVIEW_DATE = dt.date(2026, 10, 23)
 MILESTONES = {7: "일주일 전", 1: "하루 전", 0: "당일"}
@@ -114,6 +115,39 @@ def parse_moodys(html_text: str) -> dict:
             "decision_date": last, "next_review": next_date}
 
 
+def parse_aft_text_recovery(text: str) -> dict:
+    """Read a text-only rendition of AFT, never a generic third-party headline.
+
+    The text must explicitly attribute the URL Source to the exact AFT page.
+    This recovery route is used only for scheduled reminders, NOT new rating
+    changes unless the official live table has been directly verified.
+    """
+    if not re.search(r"URL Source:\s*https://www\.aft\.gouv\.fr/en/frances-credit-ratings",
+                     text, re.I):
+        raise ValueError("AFT text recovery does not identify the original government URL")
+    line = next((line for line in text.splitlines()
+                 if re.search(r"^\s*\|?\s*Moody'?s\b", line, re.I)), None)
+    if line is None:
+        raise ValueError("AFT Moody's row absent from recovered text")
+    if "|" in line:
+        cells = [x.strip() for x in line.split("|") if x.strip()]
+    else:
+        cells = [x.strip() for x in re.split(r"\s{2,}", line.strip()) if x.strip()]
+    if len(cells) < 5 or not re.fullmatch(r"Aa[1-3]|A[1-3]|Baa[1-3]|Aaa", cells[1]):
+        raise ValueError("Text recovery rating row does not match expected structure")
+    last, upcoming = parse_date(cells[3]), parse_date(cells[4])
+    if last is None:
+        raise ValueError("Text recovery last-rating date missing")
+    return {
+        "agency": "Moody's",
+        "rating": cells[1],
+        "outlook": cells[2],
+        "decision_date": last,
+        "next_review": upcoming,
+        "source_kind": "secondary_text_recovery",
+    }
+
+
 def fetch_rating(*, fetch=None) -> tuple[dict | None, list[str]]:
     if fetch is None:
         def fetch(url: str) -> str:
@@ -132,9 +166,19 @@ def fetch_rating(*, fetch=None) -> tuple[dict | None, list[str]]:
         try:
             rating = parse_moodys(fetch(url))
             rating["url"] = url
+            rating["source_kind"] = "official_document"
             return rating, errors
         except Exception as exc:
-            errors.append(f"{url}: {type(exc).__name__}")
+            errors.append(f"{url}: {type(exc).__name__} {str(exc)[:180]}")
+    # Some GitHub runner IP ranges are rejected by AFT (HTTP 403). A text
+    # recovery gateway can still preserve the AFT source attribution. It is
+    # NOT sufficient on its own to assert a newly changed sovereign rating.
+    try:
+        rating = parse_aft_text_recovery(fetch(AFT_TEXT_RECOVERY))
+        rating["url"] = AFT_EN
+        return rating, errors
+    except Exception as exc:
+        errors.append(f"Government text recovery: {type(exc).__name__} {str(exc)[:180]}")
     return None, errors
 
 
@@ -148,7 +192,7 @@ def credit_events(now: dt.date, old: dict, rating: dict) -> list[dict]:
     changed_rating = bool(prev and (prev.get("rating") != rating["rating"]
                     or prev.get("outlook") != rating["outlook"]))
     new_official_review = bool(prev and last_old and last_new and last_new > last_old)
-    if changed_rating or new_official_review:
+    if (changed_rating or new_official_review) and rating.get("source_kind") != "secondary_text_recovery":
         key = f"decision:{last_new}:{rating['rating']}:{rating['outlook']}"
         if key not in delivered:
             events.append({"kind": "decision", "key": key})
