@@ -73,6 +73,16 @@ class IntegrityTests(unittest.TestCase):
             with self.subTest(title=title):
                 self.assertIsNone(integrity._primary_topic(article(title)))
 
+    def test_aramco_aggressive_investment_is_not_a_military_attack(self):
+        row = article('아람코, 공격적 투자 확대…원유 사업 경쟁력 강화')
+        self.assertIsNone(integrity._primary_topic(row))
+
+    def test_aramco_topic_does_not_invent_an_unstated_country_or_facility(self):
+        row = article('Aramco attacked, damage not yet assessed', source='Reuters')
+        # "not" here modifies the damage assessment, not the reported attack.
+        row['title_original'] = 'Aramco attacked, damage assessment pending'
+        self.assertEqual(integrity._primary_topic(row), '아람코 · 아람코 공격 보도')
+
     def test_english_threat_headline_remains_a_statement_with_past_attacks(self):
         for actor in ('Trump', 'U.S.', 'US'):
             with self.subTest(actor=actor):

@@ -52,10 +52,14 @@ def _primary_topic(row):
     if kind == 'support_statement':
         label = '정보 지원·종전 의향 발언' if re.search(r'종전|peace|end.{0,8}war', title) else '지원 정책 발언'
         return _headline_group(title) + ' · ' + label
-    if (kind is None and re.search(r'아람코|\baramco\b', title) and re.search(r'공격|피격|타격|attack|struck|hit', title)
+    if (kind is None and re.search(r'아람코|\baramco\b', title)
+            and re.search(r'공격(?!적)|피격|\b(?:attack(?:s|ed)?|struck|hit)\b', title)
             and not re.search(r'요격|intercept|(?:공격|피격|타격).{0,12}(?:부인|않|안\s*했)|\b(?:not|denies|denied)\b', title)):
-        group = '사우디·후티' if re.search(r'후티|\bhouthi', title) else '사우디·아람코'
-        target = '아람코 본사' if re.search(r'본사|headquarters|\bhq\b', title) else '아람코 시설'
+        saudi = bool(re.search(r'사우디|\bsaudi\b', title))
+        houthi = bool(re.search(r'후티|\bhouthi', title))
+        group = ('사우디·후티' if houthi else '사우디·아람코') if saudi else ('후티·아람코' if houthi else '아람코')
+        target = '아람코 본사' if re.search(r'본사|headquarters|\bhq\b', title) else (
+            '아람코 시설' if re.search(r'시설|정유소|공장|refinery|facilit', title) else '아람코')
         return group + ' · ' + target + ' 공격 보도'
     return None
 
