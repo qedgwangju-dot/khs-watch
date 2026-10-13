@@ -91,10 +91,22 @@ def _source_worker(connection, watch, blocked, gate_lock):
             task = connection.recv()
             if task is None:
                 return
-            index, query = task
+            index, query, successful_snapshot = task
             trace = []
+            reused = []
+            cached = {}
+            for url, _, value, error in successful_snapshot:
+                if error is None:
+                    cached.setdefault(url, []).append(value)
 
             def record(url, timeout=20):
+                available = cached.get(url)
+                if available:
+                    value = available.pop(0)
+                    trace.append((url, timeout, value, None))
+                    reused.append(True)
+                    return value
+                reused.append(False)
                 try:
                     admit(url)
                     value = original_req(url, timeout)
@@ -129,9 +141,11 @@ def _source_worker(connection, watch, blocked, gate_lock):
                                     raise ValueError('not an RSS/Atom feed')
                             except (ET.ParseError, ValueError, TypeError):
                                 error = error or 'Axios feed is not valid RSS/Atom'
-                result = {'error': str(error) if error else None, 'rows': len(rows), 'trace': trace}
+                result = {'error': str(error) if error else None, 'rows': len(rows), 'trace': trace,
+                          'reused': reused}
             except Exception as exc:
-                result = {'error': type(exc).__name__ + ': ' + str(exc), 'rows': 0, 'trace': trace}
+                result = {'error': type(exc).__name__ + ': ' + str(exc), 'rows': 0, 'trace': trace,
+                          'reused': reused}
             connection.send((index, time.monotonic() - start, result))
     finally:
         watch._before_source_request = original_hook
@@ -180,6 +194,7 @@ def prefetch(watch, report, report_path, *, seconds=360, workers=8, payload_retr
     deadline = time.monotonic() + seconds
     blocked, gate_lock = _ProviderBlocks(context), context.RLock()
     active, processes, traces = {}, [], {}
+    failed_transcripts = {}
     pending_indices = list(range(len(queries)))
     next_index = 0
     try:
@@ -196,7 +211,8 @@ def prefetch(watch, report, report_path, *, seconds=360, workers=8, payload_retr
                 return
             index = pending_indices[next_index]
             next_index += 1
-            connection.send((index, queries[index]))
+            reusable = [entry for entry in failed_transcripts.get(index, []) if entry[3] is None]
+            connection.send((index, queries[index], reusable))
             active[connection] = index
             report['news'][index]['status'] = 'running'
             report['news'][index]['started_at_utc'] = dt.datetime.now(dt.timezone.utc).isoformat()
@@ -221,10 +237,18 @@ def prefetch(watch, report, report_path, *, seconds=360, workers=8, payload_retr
                                       finished_at_utc=dt.datetime.now(dt.timezone.utc).isoformat())
                         record['http'] = [_http_record(url, value, error)
                                           for url, _, value, error in result['trace']]
+                        for item, reused in zip(record['http'], result['reused']):
+                            if reused:
+                                item['reused_from_initial_attempt'] = True
+                                item['initial_collection_started_at_utc'] = record['initial_attempt']['started_at_utc']
+                                item['initial_collection_finished_at_utc'] = record['initial_attempt']['finished_at_utc']
+                        record['reused_success_requests'] = sum(result['reused'])
                         record['fallback_recovered'] = bool(
                             not result['error'] and any(entry[3] for entry in result['trace']))
                         if result['error']:
                             record['error'] = result['error']
+                            if 'initial_attempt' not in record:
+                                failed_transcripts[index] = result['trace']
                         else:
                             record.pop('error', None)
                             traces[index] = result['trace']
@@ -240,6 +264,8 @@ def prefetch(watch, report, report_path, *, seconds=360, workers=8, payload_retr
         _save(report_path, report)
         drain()
         # After the initial batch drains, retry only malformed RSS queries once.
+        # Reuse only verified responses from this SAME execution, so formerly
+        # healthy endpoints cannot create new failures during a whole-query retry.
         # Keep the same URL/identity, denial circuits and original total deadline.
         # The original failed response remains visible alongside the recovery.
         if not active:
