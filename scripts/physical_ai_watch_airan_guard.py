@@ -634,6 +634,32 @@ def _is_stock_reaction_only(item: dict) -> bool:
     return bool(STOCK_ONLY_REACTION.search(headline))
 
 
+ESS_GENERIC_DEMAND_HEADLINE = re.compile(
+    r'(?:ESS|BESS|에너지저장|배터리|battery).{0,38}'
+    r'수요\s*(?:폭증|급증|폭발|확대|성장)|'
+    r'수요\s*(?:폭증|급증|폭발|확대).{0,38}'
+    r'(?:ESS|BESS|에너지저장|배터리|battery)',
+    re.I,
+)
+ESS_CONCRETE_NEW_EVENT = re.compile(
+    r'(?:신규|정식|첫|초도|확정|최초).{0,50}'
+    r'(?:공급\s*계약|수주|발주|납품|출하|양산|실증\s*승인)|'
+    r'(?:공급|구매)\s*계약\s*체결|'
+    r'실제\s*(?:출하|생산|설치)\s*(?:완료|개시)',
+    re.I,
+)
+
+
+def _is_generic_ess_demand_story(item: dict) -> bool:
+    title = item.get('title') or ''
+    if item.get('source') in base.OFFICIAL_OR_PRIMARY:
+        return False
+    # Message 214 was a recycled market narrative, not a signed order.
+    if ESS_GENERIC_DEMAND_HEADLINE.search(title):
+        return not ESS_CONCRETE_NEW_EVENT.search(title)
+    return False
+
+
 ESS_EXPECTATION_ONLY_TITLE = re.compile(
     r'실적.{0,25}기대감|실적.{0,20}기대\s*(?:↑|증가|확대|커져)|'
     r'3\s*분기.{0,28}기대감|분기.{0,35}실적.{0,20}전망',
@@ -1197,7 +1223,9 @@ def _stage(text: str) -> str:
 
 
 def score(item: dict) -> int:
-    if _is_stock_reaction_only(item) or _is_ess_expectation_only(item):
+    if (_is_stock_reaction_only(item)
+            or _is_ess_expectation_only(item)
+            or _is_generic_ess_demand_story(item)):
         return 0
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
     group = topic_group(text)
