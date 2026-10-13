@@ -140,6 +140,25 @@ class FranceCreditCarryOverlayTests(unittest.TestCase):
                    "last_source_dates": {"fr_mkt": "2026-10-13", "de_mkt": "2026-10-13"}, "stale": []}
         self.assertEqual(watch.add_market_carry_context(original, pending, dt.date(2026, 10, 14)), original)
 
+    def test_milestone_telegram_has_two_clickable_verified_source_links(self):
+        from scripts.europe_sovereign_yield_telegram_html import render_chunks
+        snapshot = dict(watch.VERIFIED_AFT_SNAPSHOT)
+        _, msg = watch.format_event(
+            snapshot,
+            [{"kind": "milestone", "key": "milestone:2026-10-23:D-7", "days": 7}],
+            {"last_values": {"fr_mkt": 4.84, "de_mkt": 3.46},
+             "last_source_dates": {"fr_mkt": "2026-10-13", "de_mkt": "2026-10-13"},
+             "stale": []},
+            dt.datetime(2026, 10, 16, 8, 0, tzinfo=watch.KST),
+        )
+        chunks = render_chunks(msg)
+        html = "\n".join(chunks)
+        self.assertEqual(html.count("<a href="), 2)
+        self.assertEqual(html.count("</a>"), 2)
+        self.assertIn("프랑스 국채관리청 Moody’s 공식 신용등급 일정", html)
+        self.assertIn("프랑스 헤지펀드 캐리 청산 보도", html)
+        self.assertTrue(all(len(x) <= 3900 for x in chunks))
+
     def test_official_fetch_fallback(self):
         def fetch(url):
             if "/en/" in url:
