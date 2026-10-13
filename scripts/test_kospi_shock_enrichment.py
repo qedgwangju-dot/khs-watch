@@ -407,3 +407,91 @@ finally:
     _ks_enrich.time.sleep=_orig_enrichment_sleep
     _ks_enrich._pace=_orig_enrichment_pace
 print("enrichment_ls_genuine_404_no_retry_regression=true")
+
+
+# 코스닥 정밀분해: KOSPI 프로그램순위/종목/업종을 절대 섞지 않고 같은
+# 사건구간 시각 및 코스닥 종목마스터로 재검증한다. 외부 API는 가짜 응답으로 격리.
+import json as _kq_json
+import tempfile as _kq_tempfile
+from pathlib import Path as _kq_Path
+import kospi_shock_enrichment as _kq_mod
+_kq_orig={k:getattr(_kq_mod,k) for k in (
+    "ls_post","program_interval","stock_interval_price","stock_themes",
+    "map_industries","industry_index_interval","etf_master","etf_pdf_overlap",
+    "direct_industry_interval","KOSDAQ_OUT",
+)}
+_kq_calls=[]
+def _kq_fake_post(token,path,tr,body):
+    _kq_calls.append((tr,body))
+    if tr=="t8436":
+        assert body["t8436InBlock"]["gubun"]=="2",body
+        return {"t8436OutBlock":[
+            {"shcode":"222222","hname":"코스닥검증기업","etfgubun":"0"},
+        ]}
+    if tr=="t1636":
+        assert body["t1636InBlock"]["gubun"]=="1",body
+        return {"t1636OutBlock1":[
+            {"shcode":"005930","hname":"코스피오염종목","svalue":-999999999},
+            {"shcode":"222222","hname":"코스닥검증기업","svalue":-20000},
+        ]}
+    raise AssertionError((path,tr,body))
+def _kq_fake_map(token,codes,max_industries=40,market="KOSPI"):
+    assert codes=={"222222"} and market=="KOSDAQ",(codes,market)
+    return {"222222":[{"code":"350","name":"코스닥검증업종"}]},[]
+def _kq_fake_direct(start,end,actor,path=None,max_gap_sec=30.0,market="KOSPI"):
+    assert market=="KOSDAQ"
+    return {"available":True,"rows":[{"name":"코스닥검증업종","delta":-10.0,
+        "start_gap_sec":5.0,"end_gap_sec":5.0}]}
+_kq_tmp=_kq_tempfile.TemporaryDirectory()
+try:
+    _kq_mod.ls_post=_kq_fake_post
+    _kq_mod.program_interval=lambda *args:{"available":True,"program_delta":-5000.0}
+    _kq_mod.stock_interval_price=lambda *args:{"available":True,"return_pct":-0.77}
+    _kq_mod.stock_themes=lambda *args:[{"name":"바이오","code":"X"}]
+    _kq_mod.map_industries=_kq_fake_map
+    _kq_mod.industry_index_interval=lambda *args:{"available":True,"return_pct":-0.55}
+    _kq_mod.etf_master=lambda *args:[{"shcode":"333333","hname":"코스닥 바이오 ETF","etfgubun":"1"}]
+    _kq_mod.etf_pdf_overlap=lambda *args:{"available":True,"overlap_weight":52.0,"overlap":[]}
+    _kq_mod.direct_industry_interval=_kq_fake_direct
+    _kq_mod.KOSDAQ_OUT=_kq_Path(_kq_tmp.name)/"kosdaq_enrichment.json"
+    episode={"market":"KOSDAQ","start_ts":1791876000.0,"low_ts":1791876600.0,
+             "start_price":1000.0,"low_price":990.0}
+    attribution={"available":True,"leader":"외국인",
+                 "spot":{"외국인":-250.0,"기관":120.0,"개인":130.0}}
+    txt,detail=_kq_mod.build_kosdaq_enrichment("dummy",episode,attribution)
+    assert detail["event"]["market"]=="KOSDAQ",detail
+    assert len(detail["stocks"])==1 and detail["stocks"][0]["code"]=="222222",detail
+    assert "005930" not in _kq_json.dumps(detail,ensure_ascii=False),detail
+    assert "코스피오염종목" not in txt and "코스닥검증기업" in txt,txt
+    assert "코스닥 현물" in txt and "코스피200 선물" in txt,txt
+    assert "①" in txt and "⑤" in txt and "ETF" in txt,txt
+    assert _kq_mod.KOSDAQ_OUT.exists()
+    assert _kq_mod._enrichment_visible_length(txt)<3800
+    assert "gubun=1" in detail["market_basis"]
+    print("kosdaq_enrichment_market_isolation_regression=true")
+
+    # KOSPI 전용 모듈에 잘못된 시장 사건을 주면 하드 거부.
+    try:
+        _kq_mod.build_kosdaq_enrichment("dummy",{**episode,"market":"KOSPI"},attribution)
+        raise AssertionError("KOSPI event must be rejected")
+    except ValueError:
+        pass
+    print("kosdaq_enrichment_wrong_market_rejected=true")
+finally:
+    for _name,_val in _kq_orig.items():setattr(_kq_mod,_name,_val)
+    _kq_tmp.cleanup()
+
+# 통합 UBM 종목 업종 이름이 같아도 코스닥 3xx만 직접 수급에 사용.
+with _kq_tempfile.TemporaryDirectory() as _test_dir:
+    path=_kq_Path(_test_dir)/"industry.jsonl"
+    ticks=[
+        {"upcode":"013","industry":"코스피","investor":"외국인","msval":0,"ts":1000.0},
+        {"upcode":"013","industry":"코스피","investor":"외국인","msval":-9999,"ts":1100.0},
+        {"upcode":"350","industry":"코스닥검증업종","investor":"외국인","msval":0,"ts":1000.0},
+        {"upcode":"350","industry":"코스닥검증업종","investor":"외국인","msval":-10,"ts":1100.0},
+    ]
+    path.write_text("\n".join(_kq_json.dumps(t,ensure_ascii=False) for t in ticks)+"\n",encoding="utf-8")
+    result=direct_industry_interval(1010.0,1110.0,"외국인",path=path,market="KOSDAQ")
+    assert result["available"] and len(result["rows"])==1,result
+    assert result["rows"][0]["code"]=="350" and result["rows"][0]["delta"]==-10,result
+print("kosdaq_ubm_3xx_market_boundary_regression=true")
