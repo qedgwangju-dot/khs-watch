@@ -99,9 +99,12 @@ class IntegrityTests(unittest.TestCase):
                 row = article(title, source='연합뉴스')
                 self.assertTrue(integrity.mixed_restraint_attack(row))
                 self.assertEqual(integrity.final_color(row), 'yellow')
+                _, row['tags'] = integrity.score_item(row, NOW)
                 text = integrity.build_alert([row], [], NOW)
                 self.assertNotIn('🟢', text)
                 self.assertIn('양측 휴전 이행 미확인', text)
+                metadata_line = next(line for line in text.splitlines() if '<a href=' in line)
+                self.assertEqual(metadata_line.count(integrity.KIND_LABELS['mixed_restraint']), 1)
 
     def test_bilateral_agreement_and_implementation_without_attack_continuation_remains_green(self):
         row = article('러시아·우크라이나, 정식 휴전 합의…양측 공격 중단 이행 확인', source='Reuters')
