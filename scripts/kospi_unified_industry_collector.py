@@ -56,7 +56,10 @@ async def industry_master(api: ebest.OpenApi) -> list[dict]:
     """기존 코스피 업종을 보존하고 코스닥 3xx 업종을 추가 수집한다."""
     found: dict[str,dict] = {}
     # LS 업종 마스터의 시장구분별 목록은 겹칠 수 있어 코드로 병합한다.
-    for gubun in ("1", "2", "0"):
+    for index, gubun in enumerate(("1", "2", "0")):
+        # LS t8424는 초당 1회 조회 제한. 시장별 마스터 요청은 최소 1.1초 간격으로 수행.
+        if index:
+            await asyncio.sleep(1.1)
         try:
             rsp = await api.request("t8424", {"t8424InBlock": {"gubun1": gubun}})
         except Exception:
