@@ -1,63 +1,63 @@
 {
   "seen": {
-    "Nasdaq SOX|sox": "c1ac2e74766ff29031cc0151e1a6e6a9e89d8113c54709d3acd9fad1cf571b57",
-    "Cboe|options": "539c4f143dedb4ee6aca059c3ebc31f76f4027bbefc173db9de00c68c906a7c0",
+    "Nasdaq SOX|sox": "c4e655de9af74bdebc20a6dd9d412f8b46de2ad6fdf4fb4d8386ee98b98c00d3",
+    "Cboe|options": "d5e93af60c7e36067e392fe084c03f0c371d679b88dd7e28e82100fb1c6eea38",
     "CFTC|cot": "d77b13b2f03d88b50e2d4d0bdd6e751cb9f97f7c6584a27913310107f1469edf"
   },
   "values": {
     "Nasdaq SOX|sox": {
       "source": "Nasdaq SOX",
       "kind": "sox",
-      "period": "10/09/2026",
+      "period": "10/12/2026",
       "metrics": {
-        "value": 12572.42,
-        "previous_close": 12623.7099609375,
+        "value": 12236.79,
+        "previous_close": 12572.419921875,
         "previous_close_source": "Yahoo daily close cross-check",
-        "net_change": -51.28996093749993,
+        "net_change": -335.6299218749991,
         "net_change_source": "Nasdaq official completed close minus Yahoo prior daily close",
-        "pct": -0.4062986324639084,
-        "d1_pct": -0.4062986324639084,
+        "pct": -2.6695729538195767,
+        "d1_pct": -2.6695729538195767,
         "official_overview_url": "https://indexes.nasdaq.com/Index/History/SOX",
         "crosscheck_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ESOX?range=10d&interval=1d",
         "crosscheck_same_date": true,
-        "crosscheck_close_diff": 7.812500007275958e-05,
+        "crosscheck_close_diff": 0.001914062500873115,
         "final_close_confirmed": true,
-        "expected_completed_session": "2026-10-09",
-        "d3_pct": -4.88280499633248,
-        "d5_pct": -4.295228572809151
+        "expected_completed_session": "2026-10-12",
+        "d3_pct": -6.347411287126848,
+        "d5_pct": -7.10521980836668
       },
       "url": "https://indexes.nasdaq.com/Index/History/SOX",
-      "fingerprint": "c1ac2e74766ff29031cc0151e1a6e6a9e89d8113c54709d3acd9fad1cf571b57"
+      "fingerprint": "c4e655de9af74bdebc20a6dd9d412f8b46de2ad6fdf4fb4d8386ee98b98c00d3"
     },
     "Cboe|options": {
       "source": "Cboe",
       "kind": "options",
-      "period": "Friday, October 9, 2026",
+      "period": "Monday, October 12, 2026",
       "metrics": {
-        "total_pc_ratio": 0.82,
-        "total_calls": 7463236,
-        "total_puts": 6089102,
+        "total_pc_ratio": 0.91,
+        "total_calls": 5671790,
+        "total_puts": 5151235,
         "total_time_ct": "일별 마감",
-        "equity_pc_ratio": 0.56,
-        "equity_calls": 3165640,
-        "equity_puts": 1777507,
+        "equity_pc_ratio": 0.62,
+        "equity_calls": 2200758,
+        "equity_puts": 1370007,
         "equity_time_ct": "일별 마감",
-        "index_pc_ratio": 1.13,
-        "index_calls": 2644077,
-        "index_puts": 2996837,
+        "index_pc_ratio": 0.98,
+        "index_calls": 2277757,
+        "index_puts": 2237563,
         "index_time_ct": "일별 마감",
         "snapshot_type": "cboe_daily_eod",
         "final_snapshot": true,
         "daily_ratio_crosscheck": {
-          "date": "2026-10-09",
-          "total": 0.82,
-          "index": 1.13,
-          "equity": 0.56,
-          "url": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-10-09"
+          "date": "2026-10-12",
+          "total": 0.91,
+          "index": 0.98,
+          "equity": 0.62,
+          "url": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-10-12"
         }
       },
-      "url": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-10-09",
-      "fingerprint": "539c4f143dedb4ee6aca059c3ebc31f76f4027bbefc173db9de00c68c906a7c0"
+      "url": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-10-12",
+      "fingerprint": "d5e93af60c7e36067e392fe084c03f0c371d679b88dd7e28e82100fb1c6eea38"
     },
     "CFTC|cot": {
       "source": "CFTC",
@@ -159,5 +159,5 @@
       "source_mode": "CFTC TFF live HTML"
     }
   },
-  "updated_at_kst": "2026-10-10T11:17:49.358994+09:00"
+  "updated_at_kst": "2026-10-13T12:31:34.981261+09:00"
 }
