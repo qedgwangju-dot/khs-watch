@@ -95,6 +95,9 @@ ATTACHMENT_QUALITY_20261011 = json.loads(
 HEADLINE_ANCHOR_FIXTURE = json.loads((ROOT / 'data/gamejoa_headline_anchor_fixtures_20261006.json').read_text(encoding='utf-8'))
 HEADLINE_ANCHOR_CASES = {case['id']: case for case in HEADLINE_ANCHOR_FIXTURE['cases']}
 LIVE_NOW = NOW.replace(hour=19)
+ACKNOWLEDGED_QUALITY_FIXTURE = json.loads(
+    (ROOT / 'data/gamejoa_acknowledged_quality_fixtures_20261013.json').read_text(encoding='utf-8'))
+ACKNOWLEDGED_QUALITY_CASES = {case['id']: case for case in ACKNOWLEDGED_QUALITY_FIXTURE['cases']}
 CONTRACT_BODY = "AMD는 삼성전자와 2027년 데이터센터용 인공지능(AI) 반도체 공동개발을 위한 100억원 규모의 공급 계약을 체결했다고 밝혔다."
 ADDITIONAL_FACT = " AMD는 해당 공급 계약을 위한 반도체 설비투자 예산 500억원을 확정했다고 공시했다."
 PUBLISHERS = {"yna.co.kr": "연합뉴스", "hankyung.com": "한국경제", "etnews.com": "전자신문",
@@ -5866,7 +5869,7 @@ class IncrementalNewsTests(unittest.TestCase):
             body=twim_body,
         )
         self.assertFalse(twim['eligible'], twim)
-        self.assertEqual(twim['reason'], 'order_without_disclosed_value_customer_or_delivery_scope')
+        self.assertEqual(twim['reason'], 'product_application_marketing_without_customer_or_operating_scale')
 
         scoped_twim = materiality.equity_publication_assessment(
             twim_title,
@@ -6725,6 +6728,148 @@ class ConcreteLiveSelectionRegressions(unittest.TestCase):
             "analyst_forecast_metric_amount_or_growth_mismatch",
             radar.source_core_fact_errors({**candidate, "telegram_core_fact": wrong}),
         )
+
+
+    def test_acknowledged_oct13_entire_inventory_replays_quality_core_and_seen_state(self):
+        fixture = ACKNOWLEDGED_QUALITY_FIXTURE
+        self.assertEqual(fixture['original_count'], 56)
+        self.assertEqual(fixture['unique_link_count'], 56)
+        self.assertEqual(len(ACKNOWLEDGED_QUALITY_CASES), 56)
+        original_replay_path = os.environ.get('GAMEJOA_FULL_ORIGINAL_REPLAY_PATH', '').strip()
+        if not original_replay_path:
+            # Public CI fixtures contain source-derived test facts, not complete
+            # republished articles. Full-body publication replay is run locally.
+            for case in fixture['cases']:
+                item = case['alert']
+                self.assertRegex(case['original_source_body_sha256'], r'^[0-9a-f]{64}$')
+                self.assertEqual(hashlib.sha256(item['source_body'].encode('utf-8')).hexdigest(), case['fixture_body_sha256'])
+                if case['expected'] == 'quality_excluded':
+                    if case['expected_reason'] == 'stale_opening_market_report':
+                        with patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}):
+                            self.assertTrue(radar.is_stale_opening_market_report(item, dt.datetime.fromisoformat(case['query_time'])))
+                    else:
+                        reason = materiality.nonmaterial_publicity_reason(item['source_title'], item['source_body'], False, item['published'])
+                        self.assertEqual(reason, case['expected_reason'], case['id'])
+            self.assertEqual(sum(case['expected'] == 'retained' for case in fixture['cases']), 29)
+            self.assertEqual(sum(case['expected'] == 'duplicate' for case in fixture['cases']), 4)
+            self.assertEqual(sum(case['expected'] == 'quality_excluded' for case in fixture['cases']), 23)
+            return
+        originals = json.loads(Path(original_replay_path).read_text(encoding='utf-8'))
+        original_alerts = {f"{run['run_id']}_{index}": item for run in originals for index, item in enumerate(run['alerts'], 1)}
+        self.assertEqual(set(original_alerts), set(ACKNOWLEDGED_QUALITY_CASES))
+        state = {'seen': {}}
+        counts = {'retained': 0, 'duplicate': 0, 'quality_excluded': 0}
+        original_assess, assessments = materiality.assess, {}
+        def cached_assess(title, body, **kwargs):
+            key = (title, body, tuple(sorted(kwargs.items())))
+            if key not in assessments:
+                assessments[key] = original_assess(title, body, **kwargs)
+            return copy.deepcopy(assessments[key])
+        for run in sorted(fixture['runs'], key=lambda row: row['query_time']):
+            now = dt.datetime.fromisoformat(run['query_time'])
+            cases = [case for case in fixture['cases'] if case['run_id'] == run['run_id']]
+            candidates = [copy.deepcopy(original_alerts[case['id']]) for case in cases]
+            self.assertEqual(run['delivery']['status'], 'sent')
+            self.assertTrue(run['delivery']['message_id'])
+            with (patch.dict(os.environ, {'RADAR_RUN_MODE': 'live', 'SEND_TELEGRAM': 'false'}),
+                  patch.object(radar.base, 'kst_now', return_value=now),
+                  patch.object(telegram, 'load_seen_state', return_value=state),
+                  patch.object(telegram, 'save_seen_state', return_value=None),
+                  patch.object(materiality, 'assess', side_effect=cached_assess)):
+                selected = radar.quality_display_alerts(candidates, len(candidates))
+                fresh, duplicates = telegram.filter_previously_seen_alerts(selected, now, 'live')
+                telegram.record_seen_alerts(fresh, now)
+            fresh_by_link = {item['link']: item for item in fresh}
+            duplicate_links = {item['link'] for item in duplicates}
+            for case, candidate in zip(cases, candidates):
+                with self.subTest(id=case['id'], title=candidate['source_title']):
+                    self.assertEqual(hashlib.sha256(candidate['source_body'].encode('utf-8')).hexdigest(), case['original_source_body_sha256'])
+                    self.assertRegex(case['original_source_body_sha256'], r'^[0-9a-f]{64}$')
+                    result = 'retained' if candidate['link'] in fresh_by_link else 'duplicate' if candidate['link'] in duplicate_links else 'quality_excluded'
+                    self.assertEqual(result, case['expected'], candidate.get('_exclusion_reason'))
+                    counts[result] += 1
+                    if result == 'quality_excluded':
+                        self.assertIn(case['expected_reason'], candidate.get('_exclusion_reason') or '')
+                    if result == 'retained':
+                        item = fresh_by_link[candidate['link']]
+                        self.assertTrue(radar.core_sentence_is_complete(item['telegram_core_fact']))
+                        for term in case['required_core_terms']:
+                            self.assertIn(term, item['telegram_core_fact'])
+        self.assertEqual(counts, {'retained': 29, 'duplicate': 4, 'quality_excluded': 23})
+
+    def test_acknowledged_oct13_named_orders_reprint_in_batch_and_across_publishers(self):
+        for first_id, second_id in (('38327760457_1', '38329644567_1'), ('38338429460_6', '38342049527_3')):
+            first = copy.deepcopy(ACKNOWLEDGED_QUALITY_CASES[first_id]['alert'])
+            second = copy.deepcopy(ACKNOWLEDGED_QUALITY_CASES[second_id]['alert'])
+            first_terms = materiality.named_supply_order_observation(first['source_title'], first['source_body'], first['published'])
+            second_terms = materiality.named_supply_order_observation(second['source_title'], second['source_body'], second['published'])
+            self.assertTrue(materiality.same_named_supply_order(first_terms, second_terms))
+            now = dt.datetime.fromisoformat(ACKNOWLEDGED_QUALITY_CASES[second_id]['query_time'])
+            with patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}), patch.object(radar.base, 'kst_now', return_value=now):
+                selected = radar.quality_display_alerts([first, second], 7)
+            self.assertEqual(len(selected), 1, (first_id, second_id))
+
+    def test_acknowledged_oct13_changed_contract_terms_are_not_reprints(self):
+        first = ACKNOWLEDGED_QUALITY_CASES['38327760457_1']['alert']
+        baseline = materiality.named_supply_order_observation(first['source_title'], first['source_body'], first['published'])
+        self.assertTrue(baseline)
+        for field, value in (('customer', '다른고객사'), ('product', '다른제품'),
+                             ('disclosure_date', '2026-10-14'), ('stage', 'delivered'),
+                             ('delivery_period', '2028-04/2028-07'), ('explicit_revision', True),
+                             ('amounts', [['원', '195300000000']]), ('additional_execution', ['newfundedcapex'])):
+            with self.subTest(field=field):
+                changed = {**baseline, field: value}
+                self.assertFalse(materiality.same_named_supply_order(baseline, changed))
+        original_currency_conflict = {**baseline, 'amounts': [['원', '185300000000'], ['달러', '140000000']]}
+        self.assertFalse(materiality.same_named_supply_order(baseline, original_currency_conflict))
+
+    def test_acknowledged_oct13_public_packages_keep_revisions_and_distinct_populations(self):
+        for first_id, second_id in (('38333023311_5', '38342049527_2'), ('38340212461_6', '38342049527_6')):
+            first = ACKNOWLEDGED_QUALITY_CASES[first_id]['alert']
+            second = ACKNOWLEDGED_QUALITY_CASES[second_id]['alert']
+            self.assertEqual(materiality.source_event_identity(first), materiality.source_event_identity(second))
+            self.assertTrue(materiality.source_event_identity(first).startswith('source_event:v2:dated_public_supply_package:'))
+        rice = ACKNOWLEDGED_QUALITY_CASES['38340212461_6']['alert']
+        for old, new in (('6만6000', '7만6000'), ('40만', '50만'), ('3조9000', '4조9000')):
+            revised = {**rice, 'source_body': rice['source_body'].replace(old, new)}
+            self.assertNotEqual(materiality.source_event_identity(rice), materiality.source_event_identity(revised))
+
+    def test_acknowledged_oct13_legacy_alias_upgrade_requires_existing_matching_receipt(self):
+        first = copy.deepcopy(ACKNOWLEDGED_QUALITY_CASES['38327760457_1']['alert'])
+        second = copy.deepcopy(ACKNOWLEDGED_QUALITY_CASES['38329644567_1']['alert'])
+        now = dt.datetime.fromisoformat(ACKNOWLEDGED_QUALITY_CASES['38329644567_1']['query_time'])
+        proof = next(row for row in materiality.verified_event_aliases() if row['link'] == first['link'])
+        empty = {'seen': {}}
+        telegram.migrate_seen_verified_event_aliases(empty)
+        self.assertEqual(empty, {'seen': {}}, 'Proof records must not manufacture sent history.')
+        receipt = {'title': first['source_title'], 'link': first['link'], 'source_body_digest': proof['source_body_digest'],
+                   'telegram_core_fact': first['telegram_core_fact'], 'first_seen_kst': now.isoformat(),
+                   'last_seen_kst': now.isoformat(), 'lanes': {'live': now.isoformat()}}
+        state = {'seen': {'legacy_test': receipt}}
+        telegram.migrate_seen_verified_event_aliases(state)
+        self.assertEqual(receipt['source_event_identity'], proof['source_event_identity'])
+        self.assertEqual(receipt['source_supply_terms'], proof['source_supply_terms'])
+        with patch.object(telegram, 'load_seen_state', return_value=state):
+            fresh, duplicates = telegram.filter_previously_seen_alerts([second], now, 'live')
+        self.assertFalse(fresh)
+        self.assertEqual(len(duplicates), 1)
+        changed = copy.deepcopy(proof)
+        changed['source_supply_terms']['customer'] = 'wrong'
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'aliases.json'
+            path.write_text(json.dumps({'entries': [changed]}, ensure_ascii=False), encoding='utf-8')
+            with patch.object(telegram, 'VERIFIED_EVENT_ALIAS_PATH', path), self.assertRaises(ValueError):
+                telegram.migrate_seen_verified_event_aliases({'seen': {}})
+
+    def test_acknowledged_oct13_background_measure_cannot_own_headline_core(self):
+        for case_id in ('38329644567_4', '38329644567_5', '38333023311_1', '38333023311_3',
+                        '38334847605_1', '38338429460_7', '38340212461_5', '38342049527_1'):
+            item = copy.deepcopy(ACKNOWLEDGED_QUALITY_CASES[case_id]['alert'])
+            with self.subTest(id=case_id):
+                self.assertIn('headline_primary_amount_period_or_population_mismatch', radar.source_core_fact_errors(item))
+                regenerated = radar.primary_headline_measure_core(item['source_title'], item['source_body'], item['published'])
+                self.assertTrue(regenerated)
+                self.assertNotIn('headline_primary_amount_period_or_population_mismatch', radar.source_core_fact_errors({**item, 'telegram_core_fact': regenerated}))
 
 
 if __name__ == "__main__":

@@ -630,6 +630,152 @@
       "source_event_identity": "source_event:v2:issuer_quarterly_earnings:e2acfca755fa0f0c638b15ca1cf389ba52ff33f8df246288f3149c1e0a1e123e",
       "run_id": 37568006684,
       "message_id": 2388
+    },
+    {
+      "source_title": "LS일렉트릭, 美 빅테크 데이터센터에 1853억원 규모 배전설비 공급",
+      "link": "https://www.etoday.co.kr/news/view/2634992",
+      "source_published_kst": "2026-10-13T09:14+09:00",
+      "source_body_sha256": "12edca5f27beb8f1e23784d45d0f738f0ec1c8cb9ad3128aae5e9e6f1e8ff6cc",
+      "source_body_digest": "855ba19bc609260454af77c79e188aed3baf3f837e31c5a2121a73f9b8423a77",
+      "source_event_identity": "source_event:v2:named_supply_order:b9b9b1a7e028532438e46e48e4719ff729d47f9a2af6b7e4d789b8e8609a0d18",
+      "run_id": 38327760457,
+      "message_id": 2719,
+      "source_supply_terms": {
+        "issuer": "LS일렉트릭",
+        "customer": "블룸에너지",
+        "product": "수배전반및배전용변압기",
+        "disclosure_date": "2026-10-13",
+        "stage": "signed",
+        "amounts": [
+          [
+            "달러",
+            "138458284"
+          ],
+          [
+            "원",
+            "185300000000"
+          ]
+        ],
+        "duration_years": "",
+        "delivery_period": "2027-04/2027-07",
+        "quantities": [],
+        "explicit_revision": false,
+        "additional_execution": []
+      }
+    },
+    {
+      "source_title": "LS일렉, 미국 데이터센터에 1천853억원 규모 배전설비 공급 | 연합뉴스",
+      "link": "https://www.yna.co.kr/view/AKR20261013039200003",
+      "source_published_kst": "2026-10-13T09:18+09:00",
+      "source_body_sha256": "4f89d46089375554cc97465a928a9f3b1ace97fea6f0bb0a2ea5c601bfbc269d",
+      "source_body_digest": "8b76779c1b4e628f543e8a77e0e666a62ff02ee97ff793553827aac388acf013",
+      "source_event_identity": "source_event:v2:named_supply_order:d27f53bc887f0eae393b088feaf143c1b7e144c0ea0a9287ffa3cb0ecca19524",
+      "run_id": 38329644567,
+      "message_id": 2720,
+      "source_supply_terms": {
+        "issuer": "LS일렉트릭",
+        "customer": "블룸에너지",
+        "product": "수배전반및배전용변압기",
+        "disclosure_date": "2026-10-13",
+        "stage": "signed",
+        "amounts": [
+          [
+            "원",
+            "185300000000"
+          ]
+        ],
+        "duration_years": "",
+        "delivery_period": "2027-04/2027-07",
+        "quantities": [],
+        "explicit_revision": false,
+        "additional_execution": []
+      }
+    },
+    {
+      "source_title": "오세훈, 올해 3만 가구 착공 총력⋯“정비사업 직접 챙긴다”",
+      "link": "https://www.etoday.co.kr/news/view/2634954",
+      "source_published_kst": "2026-10-13T10:00+09:00",
+      "source_body_sha256": "8b5f9717febd0b5794b7d6fc999c5dff1767fd03da3b8f8a99804a78ec2b2898",
+      "source_body_digest": "49893cc6a93c1e17687b976ddad479feb82fac306a6c3cc3b13e57a349ec91d5",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:fcaa144506780eb661206b0ec500856f8955bed8d87a2ebf64a2c36b84f63aee",
+      "run_id": 38333023311,
+      "message_id": 2722
+    },
+    {
+      "source_title": "쿠쿠, 대우건설에 빌트인 정수기 공급…2년간 납품",
+      "link": "https://www.etnews.com/20261013000097",
+      "source_published_kst": "2026-10-13T10:18+09:00",
+      "source_body_sha256": "b88ec474009e4c8770aaa94b979baee6aead0ef6ddcec59b6a0e2e84896f2139",
+      "source_body_digest": "410c516ae58e39b8976228623320a06174e49bc1862f06081b89ffafc91a8f53",
+      "source_event_identity": "source_event:v2:named_supply_order:89cda50337284e7c49b804a6532aa6d3960adc6af84ffebeb24516b1059968c2",
+      "run_id": 38338429460,
+      "message_id": 2725,
+      "source_supply_terms": {
+        "issuer": "쿠쿠",
+        "customer": "대우건설",
+        "product": "빌트인정수기",
+        "disclosure_date": "2026-10-13",
+        "stage": "signed",
+        "amounts": [],
+        "duration_years": "2",
+        "delivery_period": "",
+        "quantities": [],
+        "explicit_revision": false,
+        "additional_execution": []
+      }
+    },
+    {
+      "source_title": "올해 쌀 6.6만t 초과 생산 전망…대여곡 반납으로 최대 격리",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823115",
+      "source_published_kst": "2026-10-13T11:00+09:00",
+      "source_body_sha256": "facda64e24ea9ca0fa01d03f0a40f0325a8722eadb7b1d23404f804a600b9fbb",
+      "source_body_digest": "1e28a389e24b472b0885ed7332250f5f6b08dcd278a6621f7dbbb6ce5b138850",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:724c77828def5c1c640116c56d1cf85184f5f930ed764f926a63e64f36e73a89",
+      "run_id": 38340212461,
+      "message_id": 2726
+    },
+    {
+      "source_title": "서울시, 정비사업조합과 협약…\"크리스마스 전 3만호 착공\"(종합) | 연합뉴스",
+      "link": "https://www.yna.co.kr/view/AKR20261013046151004",
+      "source_published_kst": "2026-10-13T11:02+09:00",
+      "source_body_sha256": "829eecd42bb951da9728139e5c33a53609c3af27fae7eefc80d6d0f11af9e44f",
+      "source_body_digest": "d67e513ce05ca92d8d21e41449bae926ff4aa67cca423e093f05475f79598de2",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:fcaa144506780eb661206b0ec500856f8955bed8d87a2ebf64a2c36b84f63aee",
+      "run_id": 38342049527,
+      "message_id": 2727
+    },
+    {
+      "source_title": "쿠쿠, 대우건설 빌트인 정수기 수주…\"B2B 확대\"",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823622",
+      "source_published_kst": "2026-10-13T11:00+09:00",
+      "source_body_sha256": "500851c18de2d649175a30d74c937942479f21536c37adcf15f7624a86a47435",
+      "source_body_digest": "4390ecc3b97d8008d66f7253a6e7f6c89639162b749e0bd6be4bc44bb9ee81fa",
+      "source_event_identity": "source_event:v2:named_supply_order:89cda50337284e7c49b804a6532aa6d3960adc6af84ffebeb24516b1059968c2",
+      "run_id": 38342049527,
+      "message_id": 2727,
+      "source_supply_terms": {
+        "issuer": "쿠쿠",
+        "customer": "대우건설",
+        "product": "빌트인정수기",
+        "disclosure_date": "2026-10-13",
+        "stage": "signed",
+        "amounts": [],
+        "duration_years": "2",
+        "delivery_period": "",
+        "quantities": [],
+        "explicit_revision": false,
+        "additional_execution": []
+      }
+    },
+    {
+      "source_title": "농식품부 \"올해 쌀 생산 약 346만t…6.6만t 초과에도 수급 안정\" | 연합뉴스",
+      "link": "https://www.yna.co.kr/view/AKR20261013074800030",
+      "source_published_kst": "2026-10-13T11:00+09:00",
+      "source_body_sha256": "f09a284755f3c830a581f1b5ce51b6f1bf569485c7ad5f7f52bef1cd8a36665c",
+      "source_body_digest": "7ab4f264188d6906892b52a22a60009e0e4a363242f36990525532e0afbe15f6",
+      "source_event_identity": "source_event:v2:dated_public_supply_package:724c77828def5c1c640116c56d1cf85184f5f930ed764f926a63e64f36e73a89",
+      "run_id": 38342049527,
+      "message_id": 2727
     }
   ]
 }

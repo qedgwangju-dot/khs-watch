@@ -1,0 +1,57 @@
+name: GAMEJOA radar quality regressions
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/gamejoa_market_materiality.py'
+      - 'scripts/gamejoa_preopen_news_radar*.py'
+      - 'scripts/verify_gamejoa*.py'
+      - 'data/gamejoa_*fixtures*.json'
+      - 'data/gamejoa_verified_event_aliases.json'
+      - 'docs/gamejoa_maintenance_contract.md'
+      - '.github/workflows/gamejoa-radar-quality-ci.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/gamejoa_market_materiality.py'
+      - 'scripts/gamejoa_preopen_news_radar*.py'
+      - 'scripts/verify_gamejoa*.py'
+      - 'data/gamejoa_*fixtures*.json'
+      - 'data/gamejoa_verified_event_aliases.json'
+      - 'docs/gamejoa_maintenance_contract.md'
+      - '.github/workflows/gamejoa-radar-quality-ci.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gamejoa-radar-quality-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  source-and-event-regressions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      SEND_TELEGRAM: 'false'
+      TELEGRAM_DRY_RUN: 'true'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify source, materiality, deduplication and delivery contracts
+        run: |
+          python scripts/verify_gamejoa_market_materiality.py
+          python scripts/verify_gamejoa_incremental_news_quality.py
+          python scripts/verify_gamejoa_delivery_contract.py
+      - name: Save regression evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gamejoa-radar-quality-regressions
+          path: out/gamejoa_incremental_news_verification.json
+          if-no-files-found: warn
