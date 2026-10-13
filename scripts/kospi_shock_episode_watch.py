@@ -1305,6 +1305,9 @@ class Watch:
 
     async def maybe_kosdaq_flow(self) -> None:
         """t1602 코스닥 현물만 독립 조회. 실패해도 KOSPI 주 감시를 지연시키지 않는다."""
+        # 기존 가격·급락 회귀시험의 __new__ 부분 객체에는 신규 필드가 없다.
+        if not hasattr(self, "kosdaq_flows") or not getattr(self, "token", None):
+            return
         now = time.time()
         if self.kosdaq_flow_task and not self.kosdaq_flow_task.done():
             return
@@ -1358,7 +1361,7 @@ class Watch:
         ])
 
     async def maybe_alert_kosdaq_surge(self, now_ts: float | None = None) -> None:
-        if getattr(self, "test", False) or not self.kosdaq_flows:
+        if getattr(self, "test", False) or not getattr(self, "kosdaq_flows", None):
             return
         now_ts = time.time() if now_ts is None else now_ts
         start = getattr(self, "session_open_ts", None)
