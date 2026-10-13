@@ -4,6 +4,7 @@ import datetime as dt
 import json
 import os
 import pathlib
+import re
 import shutil
 import subprocess
 import sys
@@ -34,6 +35,28 @@ def run(cmd: list[str], timeout: int = 240) -> tuple[int, str]:
         return 124, f"TimeoutExpired after {timeout}s: {rendered}"
     text = ((proc.stdout or "") + "\n" + (proc.stderr or "")).strip()
     return proc.returncode, text[-6000:]
+
+
+def concise_delivery_error(log: str) -> str:
+    """Normalize stack traces to the final durable cause, avoiding signature churn."""
+    for line in reversed(str(log).splitlines()):
+        text = line.strip()
+        if re.match(r'^(?:RuntimeError|ValueError|TypeError|NameError|HTTPError|URLError|TimeoutError|AssertionError|KeyError|UnicodeError|PermissionError):', text):
+            return text[:450]
+    return (str(log).strip().splitlines() or ['원인 확인 불가'])[-1][:450]
+
+
+def confirmed_telegram_ids(log: str) -> list[int]:
+    if 'telegram_delivery_confirmed=true' not in str(log):
+        return []
+    m = re.search(r'message_ids=\[([^\]]+)\]', str(log))
+    if not m:
+        return []
+    parts = [part.strip() for part in m.group(1).split(',')]
+    if not parts or any(not part.isdecimal() for part in parts):
+        return []
+    ids = [int(part) for part in parts]
+    return ids if all(value > 0 for value in ids) else []
 
 
 def decrypt_chat_id(token: str) -> str:
@@ -144,6 +167,9 @@ def main() -> int:
         "halozyme_search_task_count": None,
         "intismeran_retry_pending": False,
         "last_health_notice_date": prev.get("last_health_notice_date", ""),
+        "failure_notice_message_id": prev.get("failure_notice_message_id", 0),
+        "last_qlex_telegram_message_ids": prev.get("last_qlex_telegram_message_ids", []),
+        "last_qlex_telegram_sent_at_kst": prev.get("last_qlex_telegram_sent_at_kst", ""),
         "errors": [],
         "failed_component": "",
     }
@@ -223,10 +249,16 @@ def main() -> int:
         qlex_handled = qlex_rc == 0
         if qlex_rc == 0 and qlex_alert.exists():
             rc, log = run([sys.executable, "scripts/qlex_telegram_send.py", str(qlex_alert.relative_to(ROOT))])
-            hb["qlex_send_outcome"] = "success" if rc == 0 else "failure"
-            qlex_handled = rc == 0
-            if rc != 0:
-                hb["errors"].append(f"QLEX sender rc={rc}: {log}")
+            ids = confirmed_telegram_ids(log) if rc == 0 else []
+            qlex_handled = rc == 0 and bool(ids)
+            hb["qlex_send_outcome"] = "success" if qlex_handled else "failure"
+            if qlex_handled:
+                hb["last_qlex_telegram_message_ids"] = ids
+                hb["last_qlex_telegram_sent_at_kst"] = dt.datetime.now(KST).isoformat(timespec="seconds")
+            else:
+                hb["failed_component"] = "QLEX Telegram 전송"
+                reason = concise_delivery_error(log) if rc != 0 else "Telegram message_id 미확인"
+                hb["errors"].append(f"QLEX sender rc={rc}: {reason}")
 
         qlex_pending = OUT / "qlex_sc_conversion_watch_state_pending.json"
         if qlex_handled and qlex_pending.exists():
@@ -236,10 +268,13 @@ def main() -> int:
         wac_handled = wac_rc == 0
         if wac_rc == 0 and wac_alert.exists():
             rc, log = run([sys.executable, "scripts/qlex_telegram_send.py", str(wac_alert.relative_to(ROOT))])
-            hb["qlex_wac_send_outcome"] = "success" if rc == 0 else "failure"
-            wac_handled = rc == 0
-            if rc != 0:
-                hb["errors"].append(f"QLEX WAC sender rc={rc}: {log}")
+            ids = confirmed_telegram_ids(log) if rc == 0 else []
+            wac_handled = rc == 0 and bool(ids)
+            hb["qlex_wac_send_outcome"] = "success" if wac_handled else "failure"
+            if not wac_handled:
+                hb["failed_component"] = "월간 WAC Telegram 전송"
+                reason = concise_delivery_error(log) if rc != 0 else "Telegram message_id 미확인"
+                hb["errors"].append(f"QLEX WAC sender rc={rc}: {reason}")
 
         wac_pending = OUT / "qlex_wac_ir_watch_state_pending.json"
         if wac_handled and wac_pending.exists():
@@ -258,7 +293,8 @@ def main() -> int:
                 hb["intismeran_retry_pending"] = True
             else:
                 int_handled = False
-                hb["errors"].append(f"Intismeran sender rc={rc}: {log}")
+                hb["failed_component"] = "Intismeran Telegram 전송"
+                hb["errors"].append(f"Intismeran sender rc={rc}: {concise_delivery_error(log)}")
 
         int_pending = OUT / "intismeran_qlex_watch_state_pending.json"
         if int_handled and int_pending.exists():
@@ -268,10 +304,13 @@ def main() -> int:
         jemp_handled = jemp_rc == 0
         if jemp_rc == 0 and jemp_alert.exists():
             rc, log = run([sys.executable, "scripts/qlex_telegram_send.py", str(jemp_alert.relative_to(ROOT))])
-            hb["jemperli_send_outcome"] = "success" if rc == 0 else "failure"
-            jemp_handled = rc == 0
-            if rc != 0:
-                hb["errors"].append(f"Jemperli sender rc={rc}: {log}")
+            ids = confirmed_telegram_ids(log) if rc == 0 else []
+            jemp_handled = rc == 0 and bool(ids)
+            hb["jemperli_send_outcome"] = "success" if jemp_handled else "failure"
+            if not jemp_handled:
+                hb["failed_component"] = "Jemperli Telegram 전송"
+                reason = concise_delivery_error(log) if rc != 0 else "Telegram message_id 미확인"
+                hb["errors"].append(f"Jemperli sender rc={rc}: {reason}")
 
         jemp_pending = OUT / "jemperli_altb4_watch_state_pending.json"
         if jemp_handled and jemp_pending.exists():
@@ -281,10 +320,13 @@ def main() -> int:
         enh_handled = enh_rc == 0
         if enh_rc == 0 and enh_alert.exists():
             rc, log = run([sys.executable, "scripts/qlex_telegram_send.py", str(enh_alert.relative_to(ROOT))])
-            hb["enhertu_send_outcome"] = "success" if rc == 0 else "failure"
-            enh_handled = rc == 0
-            if rc != 0:
-                hb["errors"].append(f"Enhertu sender rc={rc}: {log}")
+            ids = confirmed_telegram_ids(log) if rc == 0 else []
+            enh_handled = rc == 0 and bool(ids)
+            hb["enhertu_send_outcome"] = "success" if enh_handled else "failure"
+            if not enh_handled:
+                hb["failed_component"] = "Enhertu Telegram 전송"
+                reason = concise_delivery_error(log) if rc != 0 else "Telegram message_id 미확인"
+                hb["errors"].append(f"Enhertu sender rc={rc}: {reason}")
 
         enh_pending = OUT / "enhertu_altb4_watch_state_pending.json"
         if enh_handled and enh_pending.exists():
@@ -318,8 +360,8 @@ def main() -> int:
         previous_status = str(prev.get("status") or "")
         previous_errors = [str(x) for x in (prev.get("errors") or [])]
         current_errors = [str(x) for x in (hb.get("errors") or [])]
-        current_signature = " | ".join(current_errors)[:1000]
-        previous_signature = str(prev.get("error_signature") or " | ".join(previous_errors))[:1000]
+        current_signature = " | ".join(sorted(set(current_errors)))[:1000]
+        previous_signature = str(prev.get("error_signature") or " | ".join(sorted(set(previous_errors)))[:1000]
         hb["error_signature"] = current_signature
 
         if not operational:
@@ -377,7 +419,10 @@ def main() -> int:
             hb["failed_component"] = "Halozyme 특허분쟁 감시"
         hb["failed_at_kst"] = failure_dt.isoformat(timespec="seconds")
         hb["errors"].append(detail)
-        if token and chat_id:
+        hb["error_signature"] = f"{type(exc).__name__}: {str(exc)[:250]}"
+        previous_signature = str(prev.get("error_signature") or "")
+        should_notify_failure = str(prev.get("status") or "") == "ok" or hb["error_signature"] != previous_signature
+        if token and chat_id and should_notify_failure:
             try:
                 hb["failure_notice_message_id"] = send_text(
                     token,

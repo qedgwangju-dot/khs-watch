@@ -184,16 +184,24 @@ jobs:
           PY
 
       - name: Notify watchdog recovery failure
-        if: steps.stale.outputs.run_bio == 'true' && failure()
+        # A degraded heartbeat already owns the failure notice. Avoid repeated recovery-failure spam.
+        if: steps.stale.outputs.run_bio == 'true' && failure() && steps.stale.outputs.previous_status == 'ok'
         shell: bash
         run: |
           python - <<'PY'
+          import json
+          import pathlib
           import sys
 
           sys.path.insert(0, "scripts")
           import bio_single_runner
 
           try:
+              heartbeat_path = pathlib.Path("data/bio_watch_heartbeat.json")
+              heartbeat = json.loads(heartbeat_path.read_text(encoding="utf-8"))
+              if int(heartbeat.get("failure_notice_message_id") or 0) > 0:
+                  print("bio_watchdog_failure_notice=skipped_existing_primary_notice")
+                  raise SystemExit(0)
               token, chat_id, source = bio_single_runner.verify_route()
               message_id = bio_single_runner.send_text(
                   token,

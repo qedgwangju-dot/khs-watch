@@ -4,6 +4,7 @@ import datetime as dt
 import pathlib
 import sys
 import unittest
+from unittest.mock import patch
 import xml.etree.ElementTree as ET
 from unittest.mock import patch
 
@@ -13,6 +14,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import bio_korean_guard_strict_v2 as guard
 import bio_korean_guard as basic_guard
 import bio_single_runner as bio_runner
+import bio_korean_guard as base_korean_guard
 import optogenetics_translation_watch as optogenetics
 import jemperli_altb4_watch as jem_base
 import jemperli_altb4_watch_v2 as jem
@@ -136,6 +138,47 @@ class BioAlertRegressionTests(unittest.TestCase):
         self.assertTrue(jem_base.is_relevant(item))
         self.assertEqual(jem._stage(item), "material")
         self.assertFalse(jem.is_relevant(item))
+
+    def test_bio_sources_and_esmo_are_korean_without_network(self):
+        report = "- 출처: Bing News\n- 출처: Google News\n- 발표: ESMO Congress\n- 학회: ESMO"
+        with patch.object(base_korean_guard, "translate_to_korean", side_effect=AssertionError("unexpected translation network")):
+            converted = guard.ensure_korean_text(report)
+        self.assertIn("- 출처: Bing 뉴스", converted)
+        self.assertIn("- 출처: Google 뉴스", converted)
+        self.assertIn("- 발표: ESMO 학회", converted)
+        self.assertIn("- 학회: ESMO", converted)
+
+    def test_bio_unknown_general_english_still_fails_closed(self):
+        with patch.object(base_korean_guard, "translate_to_korean", side_effect=RuntimeError("translation unavailable")):
+            with self.assertRaises(RuntimeError):
+                guard.ensure_korean_text("- 설명: unknownuntranslatedgeneralword")
+
+    def test_bio_message_ids_require_real_sender_acknowledgment(self):
+        self.assertEqual(bio_runner.confirmed_telegram_ids(
+            "telegram_delivery_confirmed=true bot=@sample message_ids=[170, 171]"), [170, 171])
+        self.assertEqual(bio_runner.confirmed_telegram_ids(
+            "telegram_delivery_confirmed=false message_ids=[170]"), [])
+        self.assertEqual(bio_runner.confirmed_telegram_ids("message_ids=[170]"), [])
+        self.assertEqual(bio_runner.confirmed_telegram_ids(
+            "telegram_delivery_confirmed=true message_ids=[0]"), [])
+        self.assertEqual(bio_runner.confirmed_telegram_ids(
+            "telegram_delivery_confirmed=true message_ids=[]"), [])
+
+    def test_bio_delivery_error_signature_is_stable_and_specific(self):
+        example = (
+            'Traceback (most recent call last):\n'
+            '  File "/home/runner/a.py", line 17, in main\n'
+            'RuntimeError: 한국어 송출 검증 실패 — 일반 영어/일본어 설명어가 남아 있음: Bing, News'
+        )
+        self.assertEqual(
+            bio_runner.concise_delivery_error(example),
+            "RuntimeError: 한국어 송출 검증 실패 — 일반 영어/일본어 설명어가 남아 있음: Bing, News",
+        )
+
+    def test_watchdog_does_not_repeat_primary_failure_notice(self):
+        source = (ROOT / ".github/workflows/qlex-sc-bio-fallback.yml").read_text(encoding="utf-8")
+        self.assertIn("failure() && steps.stale.outputs.previous_status == 'ok'", source)
+        self.assertIn("bio_watchdog_failure_notice=skipped_existing_primary_notice", source)
 
     def test_regulatory_identifiers_render_korean_first(self):
         rendered = guard.ensure_korean_text(

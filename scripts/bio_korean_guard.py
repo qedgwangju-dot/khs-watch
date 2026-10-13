@@ -18,6 +18,7 @@ ALLOWED_IDENTIFIERS = (
     'AZUR-1', 'AZUR-2', 'AZUR-4', 'DOMENICA', 'JADE', 'INTerpath-001', 'INTerpath-014',
     'KEYNOTE-942', 'HER2', 'dMMR', 'MSI-H', 'sBLA', 'RFS', 'DMFS', 'OS', 'HR', 'PFS',
     'ORR', 'cCR12', 'mRNA', 'SC', 'IV', 'THP', 'WAC', 'QoQ', 'YoY', 'USD', 'KRW',
+    'ESMO', 'Bing', 'Google',
     # optogenetics_translation_watch의 실제 회사·제품·임상 식별자만 허용한다.
     # RTx 같은 접두어나 임의의 대문자 단어를 포괄적으로 허용하지 않는다.
     'Ray Therapeutics', 'Nanoscope Therapeutics', 'GenSight Biologics',
@@ -31,6 +32,11 @@ ALLOWED_IDENTIFIERS = (
 )
 
 COMMON_REPLACEMENTS = (
+    # 검색 플랫폼의 고유명만 보존하고, 설명어 News/Web/Congress는 한국어로 표시한다.
+    (r'\bBing\s+News\b', 'Bing 뉴스'),
+    (r'\bGoogle\s+News\b', 'Google 뉴스'),
+    (r'\bBing\s+Web\b', 'Bing 웹'),
+    (r'\bESMO\s+Congress\b', 'ESMO 학회'),
     (r'\boptogenetics\b', '광유전학'),
     (r'\bopsin\b', '옵신'),
     (r'\bFast Track\b', '신속심사'),
