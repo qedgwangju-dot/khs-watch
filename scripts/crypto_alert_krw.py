@@ -229,21 +229,7 @@ def get_usdkrw(target: dt.date) -> dict:
         else:
             crosscheck = "Yahoo Finance 교차검증 접근 불가"
         return {**ecos, "crosscheck": crosscheck}
-
-    try:
-        from .fx_api import historical_krw
-    except ImportError:
-        from fx_api import historical_krw
-    q = historical_krw("USD", target)
-    return {
-        "rate": q.rate,
-        "date": q.date,
-        "requested_date": target.isoformat(),
-        "source": q.source + " 일일 기준환율",
-        "source_url": "https://api.frankfurter.dev/v2/rates?base=USD&quotes=KRW&providers=ECB&date=" + q.date,
-        "crosscheck": q.check,
-        "official": True,
-    }
+    raise RuntimeError(f"{target} 한국은행 ECOS 원/미국달러 매매기준율 조회 실패")
 
 
 def format_krw_from_usd_m(value_usd_m: float, rate: float) -> str:
@@ -403,7 +389,7 @@ def enrich_text(text: str, fx: dict) -> str:
 def append_fx_failure(text: str, reason: str) -> str:
     now = dt.datetime.now(KST).isoformat(timespec="seconds")
     safe_reason = " ".join(str(reason).split())[:180]
-    line = f"원화 환산 보류: 한국은행 ECOS 및 보조 환율 원천 확인 실패 | 조회 {now} | {safe_reason}"
+    line = f"원화 환산 보류: 한국은행 ECOS 매매기준율 확인 실패 | 조회 {now} | {safe_reason}"
     marker = "\n공식·데이터 원천:\n"
     if marker in text:
         return text.replace(marker, f"\n{line}\n\n공식·데이터 원천:\n", 1)

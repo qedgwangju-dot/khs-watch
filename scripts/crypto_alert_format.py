@@ -8,6 +8,11 @@ import re
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 ALERT_PATH = ROOT / "out" / "crypto_liquidity_watch_telegram.txt"
 PENDING_STATE_PATH = ROOT / "out" / "crypto_liquidity_watch_pending_state.json"
+SOURCE_ERROR_LABELS = {
+    "btc_etf": "BTC ETF",
+    "rates": "미 국채 금리",
+    "buyback": "미 재무부 바이백",
+}
 
 
 def load_pending_state() -> dict:
@@ -80,6 +85,10 @@ def ensure_krw_for_bare_usd(text: str, rate: float | None) -> str:
 
 def format_trigger(line: str, is_partial: bool = False) -> list[str]:
     text = line.removeprefix("• ").strip()
+
+    for heading in ("원천자료 조회 이상", "원천자료 조회 복구", "감시 실행 공백"):
+        if text.startswith(heading + ":"):
+            return [f"• <b>{heading}</b> · {text.split(':', 1)[1].strip()}"]
 
     if text.startswith("BTC 현물 ETF 새 일간 자금흐름"):
         m = re.match(r"BTC 현물 ETF 새 일간 자금흐름\(([^)]+)\):\s*(.+)", text)
@@ -180,7 +189,10 @@ def calendar_window_reading(etf: dict, label: str, rate: float | None) -> list[s
     status = " · 잠정" if item.get("status") == "잠정" else ""
     partial = int(item.get("partial_days", 0) or 0)
     prev_partial = int(item.get("prev_partial_days", 0) or 0)
-    caveat = f" · 미보고일 최근 {partial}/직전 {prev_partial}" if partial or prev_partial else ""
+    caveat = (
+        f" · 일부 종목 미보고 거래일 최근 {partial}/직전 {prev_partial}"
+        if partial or prev_partial else ""
+    )
     dates = item.get("partial_dates") or []
     if dates and len(dates) <= 3:
         caveat += " (" + ", ".join(dates) + ")"
@@ -403,9 +415,22 @@ def detailed_judgement(source_text: str) -> str | None:
     return "\n".join(lines)
 
 
+def source_error_labels(state: dict) -> list[str]:
+    errors = [str(error).split(":", 1)[0] for error in (state.get("errors") or [])]
+    return [label for key, label in SOURCE_ERROR_LABELS.items() if key in errors]
+
+
 def compact_judgement(state: dict) -> tuple[str, str]:
     rates = state.get("rates") or {}
     etf = state.get("btc_etf") or {}
+    failed_labels = source_error_labels(state)
+    failed_core = [
+        label for key, label in SOURCE_ERROR_LABELS.items()
+        if key in {"btc_etf", "rates"}
+        and label in failed_labels
+    ]
+    if failed_core:
+        return "판정 보류", f"{', '.join(failed_core)} 조회·검증 이상으로 종합 방향을 판정하지 않음"
     if not rates or not etf:
         return "판정 보류", "핵심 데이터가 부족해 종합 방향을 확정하지 않음"
 
@@ -556,7 +581,7 @@ def format_alert(text: str) -> str:
             lookup = stripped.removeprefix("<code>조회 ").removesuffix("</code>").strip()
             break
     if lookup:
-        out.append(f"<code>{lookup}</code>")
+        out.append(f"<code>조회 {lookup}</code>")
 
     trigger_lines: list[str] = []
     capture = False
@@ -564,6 +589,8 @@ def format_alert(text: str) -> str:
         "• BTC 현물 ETF",
         "• 미 국채 장기금리 큰 변동:",
         "• 미 재무부 공식 바이백",
+        "• 원천자료 조회",
+        "• 감시 실행 공백:",
     )
     for line in raw_lines:
         stripped = line.strip()
@@ -585,6 +612,13 @@ def format_alert(text: str) -> str:
         out += ["", "<b>무엇이 바뀌었나</b>", *trigger_lines]
 
     out += ["", "<b>지금 숫자</b>"]
+
+    failed_sources = source_error_labels(state)
+    if failed_sources:
+        out.append(
+            "• 자료 확인 제한 · " + ", ".join(failed_sources)
+            + " 조회·검증 이상, 관련 수치는 이번 실행에서 재확인되지 않음"
+        )
 
     if etf:
         flow = float(etf.get("total_usd_m", 0.0) or 0.0)
@@ -641,12 +675,18 @@ def format_alert(text: str) -> str:
             "",
             f"• 환율 · 1달러={fx_match.group(1)}원 · {fx_match.group(2).strip()} · {fx_match.group(3).strip()}",
         ]
+    else:
+        out += ["", "• 환율 · 원화 환산 보류 (한국은행 ECOS 매매기준율 확인 불가)"]
 
     links: list[str] = []
+    fx_display = (
+        "ECOS" if fx_match and "한국은행 ECOS" in fx_match.group(3)
+        else "대체 환율 원문" if fx_match else "ECOS 원문"
+    )
     for label, display in (
         ("BTC 현물 ETF", "Farside"),
         ("미 국채 금리", "미 재무부"),
-        ("원/달러 환율", "ECOS"),
+        ("원/달러 환율", fx_display),
     ):
         link = source_link(text, label, display)
         if link:

@@ -19,7 +19,7 @@ on:
       - "data/crypto_liquidity_watch_state.json"
       - "data/samsung_wallet_stablecoin_watch_state.json"
   schedule:
-    - cron: "*/15 * * * *"
+    - cron: "7,22,37,52 * * * *"
   workflow_dispatch:
 
 permissions:
