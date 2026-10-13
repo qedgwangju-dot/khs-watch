@@ -173,6 +173,18 @@ def audit_runtime(
     now = now_utc or dt.datetime.now(dt.timezone.utc)
     if now.tzinfo is None:
         raise ValueError("Audit clock must be timezone-aware")
+    observed_times: list[dt.datetime] = []
+    for run in runs:
+        try:
+            when = dt.datetime.fromisoformat(str(run.get("created_at") or "").replace("Z", "+00:00"))
+            if when.tzinfo is not None:
+                observed_times.append(when)
+        except ValueError:
+            pass
+    sample_coverage_hours = (
+        max(0.0, (now - min(observed_times)).total_seconds() / 3600)
+        if observed_times else 0.0
+    )
     schedule_gaps = []
     for workflow in workflows:
         # Never diagnose or reactivate a disabled workflow; only the registry
@@ -186,6 +198,8 @@ def audit_runtime(
         schedules = [run for run in by_path.get(path, []) if run.get("event") == "schedule"]
         latest = schedules[0] if schedules else None
         if not latest:
+            if sample_coverage_hours < max_gap:
+                continue  # The available run window is too short to assess a missed cadence.
             schedule_gaps.append({
                 "path": path, "max_gap_hours": max_gap,
                 "reason": "no_scheduled_run_in_observed_window",
