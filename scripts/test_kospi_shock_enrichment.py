@@ -349,3 +349,61 @@ assert "유효 자료 없음" in _oct13_empty_text,_oct13_empty_text
 assert "<b>①" not in _oct13_empty_text and "<b>⑤" not in _oct13_empty_text,_oct13_empty_text
 assert _ks_enrich._enrichment_visible_length(_oct13_empty_text)<600,_oct13_empty_text
 print("oct13_enrichment_empty_compact_regression=true")
+
+
+# 2026-10-13 장중 CI: t8409가 일시 장애 /503.html 본문을 HTTP 404로 응답.
+# 확정적인 경로 부재 404와 구분하고 임시 장애만 재시도해야 한다.
+from kospi_shock_enrichment import ls_post as _enrichment_ls_post
+_orig_enrichment_post=_ks_enrich.requests.post
+_orig_enrichment_sleep=_ks_enrich.time.sleep
+_orig_enrichment_pace=_ks_enrich._pace
+class _GatewayStub:
+    def __init__(self,code,obj):
+        self.status_code=code
+        self._obj=obj
+        self.text=__import__("json").dumps(obj)
+        self.ok=200 <= code < 300
+    def json(self):
+        return self._obj
+_flaky_calls={"n":0}
+def _gateway_flaky(*args,**kwargs):
+    _flaky_calls["n"] += 1
+    if _flaky_calls["n"]==1:
+        return _GatewayStub(404,{
+            "timestamp":"2026-10-13T01:12:18.394+00:00",
+            "status":404,"error":"Not Found","path":"/503.html",
+        })
+    return _GatewayStub(200,{"rsp_cd":"00000","t8409OutBlock1":[{"close":"100"}]})
+try:
+    _ks_enrich.requests.post=_gateway_flaky
+    _ks_enrich.time.sleep=lambda *_args,**_kwargs:None
+    _ks_enrich._pace=lambda *_args,**_kwargs:None
+    _ok=_enrichment_ls_post("dummy","/indtp/chart","t8409",{"probe":1})
+    assert _flaky_calls["n"]==2,_flaky_calls
+    assert _ok["rsp_cd"]=="00000",_ok
+finally:
+    _ks_enrich.requests.post=_orig_enrichment_post
+    _ks_enrich.time.sleep=_orig_enrichment_sleep
+    _ks_enrich._pace=_orig_enrichment_pace
+print("enrichment_ls_503_gateway_retry_regression=true")
+
+# 실제 없는 API 경로의 404는 무한 재시도하지 않고 즉시 오류.
+_genuine_calls={"n":0}
+def _genuine_404(*args,**kwargs):
+    _genuine_calls["n"]+=1
+    return _GatewayStub(404,{"status":404,"error":"Not Found","path":"/indtp/unknown"})
+try:
+    _ks_enrich.requests.post=_genuine_404
+    _ks_enrich.time.sleep=lambda *_args,**_kwargs:None
+    _ks_enrich._pace=lambda *_args,**_kwargs:None
+    try:
+        _enrichment_ls_post("dummy","/indtp/unknown","t8409",{"probe":1})
+        raise AssertionError("genuine 404 should have failed")
+    except RuntimeError as e:
+        assert "HTTP 404" in str(e),str(e)
+    assert _genuine_calls["n"]==1,_genuine_calls
+finally:
+    _ks_enrich.requests.post=_orig_enrichment_post
+    _ks_enrich.time.sleep=_orig_enrichment_sleep
+    _ks_enrich._pace=_orig_enrichment_pace
+print("enrichment_ls_genuine_404_no_retry_regression=true")
