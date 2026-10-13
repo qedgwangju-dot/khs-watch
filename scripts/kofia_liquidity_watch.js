@@ -1,6 +1,5 @@
 'use strict';
 
-const { chromium } = require('playwright-core');
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
@@ -11,7 +10,19 @@ const STATE_FILE = path.join(process.cwd(), 'data', 'kofia_liquidity_state.json'
 const ALERT_FILE = path.join(OUT_DIR, 'kofia_liquidity_alert.html');
 const STATUS_FILE = path.join(OUT_DIR, 'kofia_liquidity_status.md');
 const PENDING_FILE = path.join(OUT_DIR, 'kofia_liquidity_pending_state.json');
-const MESSAGE_VERSION = 'kofia-direction-20261008-v1';
+const EVIDENCE_FILE = path.join(OUT_DIR, 'kofia_liquidity_source_evidence.json');
+const DELIVERY_FILE = path.join(OUT_DIR, 'kofia_liquidity_delivery.json');
+const MESSAGE_VERSION = 'kofia-balances-20261013-v2';
+const ORIGIN = 'https://freesis.kofia.or.kr';
+let sourceEvidence;
+
+function kstNow() {
+  return new Date().toLocaleString('sv-SE', { timeZone: 'Asia/Seoul' }).replace(' ', 'T') + '+09:00';
+}
+
+function saveEvidence() {
+  if (sourceEvidence) fs.writeFileSync(EVIDENCE_FILE, JSON.stringify(sourceEvidence, null, 2) + '\n', 'utf8');
+}
 
 const SID = {
   deposit: 'STATSCU0100000060',
@@ -20,11 +31,14 @@ const SID = {
   mmf: 'STATFND0400000050',
 };
 
-function ensureDirs() {
+function ensureDirs(preserveEvidence = false) {
   fs.mkdirSync(OUT_DIR, { recursive: true });
   fs.mkdirSync(path.dirname(STATE_FILE), { recursive: true });
-  for (const f of [ALERT_FILE, STATUS_FILE, PENDING_FILE]) {
+  for (const f of [ALERT_FILE, STATUS_FILE, PENDING_FILE, DELIVERY_FILE]) {
     try { fs.unlinkSync(f); } catch (_) {}
+  }
+  if (!preserveEvidence) {
+    try { fs.unlinkSync(EVIDENCE_FILE); } catch (_) {}
   }
 }
 
@@ -40,6 +54,7 @@ function toNum(v, label) {
   if (v === null || v === undefined || (typeof v === 'string' && !v.trim())) {
     throw new Error(`${label}: missing official numeric value`);
   }
+  if (!['number', 'string'].includes(typeof v)) throw new Error(`${label}: invalid numeric type`);
   const n = Number(typeof v === 'string' ? v.replace(/,/g, '').trim() : v);
   if (!Number.isFinite(n)) throw new Error(`${label}: non-numeric value ${String(v)}`);
   return n;
@@ -94,7 +109,13 @@ function assertRange(label, rawMillionWon, minTrillion, maxTrillion) {
 function criticalDatesAligned(dates) {
   const required = ['deposit', 'mmf', 'cma', 'credit'];
   const vals = required.map(k => String((dates || {})[k] || ''));
-  return vals.every(v => /^\d{8}$/.test(v)) && new Set(vals).size === 1;
+  return vals.every(validDate) && new Set(vals).size === 1;
+}
+
+function validDate(value) {
+  if (!/^\d{8}$/.test(value)) return false;
+  const day = new Date(`${value.slice(0,4)}-${value.slice(4,6)}-${value.slice(6,8)}T00:00:00Z`);
+  return Number.isFinite(day.getTime()) && day.toISOString().slice(0,10).replaceAll('-', '') === value;
 }
 
 // Production guard self-test: a mixed-date snapshot must never be considered aligned.
@@ -105,44 +126,61 @@ if (
   throw new Error('critical date-alignment guard self-test failed');
 }
 
-(async () => {
+async function main() {
   ensureDirs();
-  const exe = ['/usr/bin/google-chrome','/usr/bin/google-chrome-stable','/usr/bin/chromium','/usr/bin/chromium-browser'].find(p => fs.existsSync(p));
-  if (!exe) throw new Error('No system Chromium/Chrome found');
-
-  const browser = await chromium.launch({
-    executablePath: exe,
-    headless: true,
-    args: ['--no-sandbox','--disable-dev-shm-usage','--disable-blink-features=AutomationControlled'],
-    ignoreDefaultArgs: ['--enable-automation'],
-  });
-  const context = await browser.newContext({ locale: 'ko-KR', timezoneId: 'Asia/Seoul' });
-  await context.addInitScript(() => {
-    Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
-    window.chrome = { runtime: {} };
-  });
-  const page = await context.newPage();
-  await page.goto('https://freesis.kofia.or.kr/stat/main.do', { waitUntil: 'networkidle', timeout: 60000 });
-  await page.waitForTimeout(800);
+  const priorState = readState();
+  sourceEvidence = {
+    schema_version: 1, source: 'KOFIA FreeSIS', source_origin: ORIGIN,
+    unit: '백만원', unit_won: 1000000, started_at_kst: kstNow(), phase: 'collecting',
+    run_id: process.env.GITHUB_RUN_ID || null,
+    code_sha: process.env.KOFIA_CODE_SHA || process.env.GITHUB_SHA || null, requests: [],
+  };
+  saveEvidence();
+  const deadline = Date.now() + 240000;
 
   async function postJson(endpoint, body) {
-    const result = await page.evaluate(async ({ endpoint, body }) => {
-      const r = await fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json; charset=UTF-8' },
-        body: JSON.stringify(body),
-      });
-      const text = await r.text();
-      return { status: r.status, text };
-    }, { endpoint, body });
-    if (result.status !== 200) throw new Error(`${endpoint}: HTTP ${result.status}`);
-    return parseJsonMaybe(result.text);
+    if (!['/meta/getSrvData.do', '/meta/getMetaDataList.do'].includes(endpoint)) throw new Error('Unknown source endpoint');
+    for (let attempt = 1; attempt <= 2; attempt++) {
+      const record = { endpoint, payload: body, attempt, requested_at_kst: kstNow() };
+      sourceEvidence.requests.push(record);
+      try {
+        const remaining = deadline - Date.now();
+        if (remaining <= 0) throw new Error('KOFIA collection deadline exceeded');
+        const response = await fetch(ORIGIN + endpoint, {
+          method: 'POST', redirect: 'error',
+          headers: { 'Content-Type': 'application/json; charset=UTF-8', 'User-Agent': 'khs-watch/3.0' },
+          body: JSON.stringify(body), signal: AbortSignal.timeout(Math.min(20000, remaining)),
+        });
+        const bytes = Buffer.from(await response.arrayBuffer());
+        Object.assign(record, { status: response.status, response_url: response.url,
+          content_type: response.headers.get('content-type'), response_text: bytes.toString('utf8'),
+          response_body_base64: bytes.toString('base64'), response_bytes: bytes.length });
+        record.response_sha256 = crypto.createHash('sha256').update(bytes).digest('hex');
+        saveEvidence();
+        if (response.status !== 200) {
+          const error = new Error(`${endpoint}: HTTP ${response.status}`);
+          error.retryable = response.status >= 500 || response.status === 408;
+          throw error;
+        }
+        return parseJsonMaybe(record.response_text);
+      } catch (error) {
+        record.error = String(error.message || error);
+        saveEvidence();
+        // Same URL and identity only. Denials, redirects and bad JSON are not retried.
+        const transient = error.retryable || ['TimeoutError', 'AbortError'].includes(error.name)
+          || (error instanceof TypeError && error.message === 'fetch failed'
+              && !String(error.cause?.message || '').toLowerCase().includes('redirect'));
+        if (attempt === 2 || !transient || Date.now() >= deadline) throw error;
+        await new Promise(resolve => setTimeout(resolve, 300));
+      }
+    }
   }
 
   async function metadata(sid) {
     const j = await postJson('/meta/getSrvData.do', { dmSearchData: { strSvrId: sid } });
     const rd = (j.dsLatestDate || []).find(x => x.TMPV1 === 'RD');
-    if (!rd || !/^\d{8}$/.test(String(rd.TMPV2 || ''))) throw new Error(`${sid}: latest RD date missing`);
+    if (!rd || !validDate(String(rd.TMPV2 || ''))) throw new Error(`${sid}: latest RD date missing/invalid`);
+    if (rd.TMPV2 > kstNow().slice(0,10).replaceAll('-', '')) throw new Error(`${sid}: future reference date`);
     return { latest: String(rd.TMPV2), raw: j };
   }
 
@@ -178,6 +216,15 @@ if (
   const [depMeta, crMeta, mmfMeta, cmaMeta] = await Promise.all([
     metadata(SID.deposit), metadata(SID.credit), metadata(SID.mmf), metadata(SID.cma),
   ]);
+  const latestDates = { deposit: depMeta.latest, credit: crMeta.latest, mmf: mmfMeta.latest, cma: cmaMeta.latest };
+  if (!criticalDatesAligned(latestDates)) {
+    Object.assign(sourceEvidence, { phase: 'alignment_pending', latest_dates: latestDates, finished_at_kst: kstNow() });
+    saveEvidence();
+    fs.writeFileSync(STATUS_FILE, '# KOFIA Liquidity Watch\n\n- alignment_pending true\n- latest_dates '
+      + JSON.stringify(latestDates) + '\n- alert_ready false\n', 'utf8');
+    console.log('kofia_liquidity_alert_ready=false alignment_pending=true');
+    return;
+  }
 
   const depRows = await timeSeries(SID.deposit, dateMinusDays(depMeta.latest, 35), depMeta.latest);
   const crRows = await timeSeries(SID.credit, dateMinusDays(crMeta.latest, 35), crMeta.latest);
@@ -207,8 +254,6 @@ if (
   for (const d of mmfDates) mmf.push(await mmfAt(d));
   const cma = [];
   for (const d of cmaDates) cma.push(await cmaAt(d));
-
-  await browser.close();
 
   // The start and end of every 1D/5D calculation must also be the SAME
   // trading dates across all four official series. Checking latest dates
@@ -259,7 +304,6 @@ if (
     forced: metrics.forced,
   };
   const fp = fingerprint(fpPayload);
-  const priorState = readState();
   // A delayed API cache cannot roll back a previously delivered date.
   if (priorState && priorState.snapshot_date && depNow.date < priorState.snapshot_date) {
     throw new Error(`KOFIA date rolled back: stored=${priorState.snapshot_date} fetched=${depNow.date}`);
@@ -279,11 +323,9 @@ if (
   const alignmentReady = criticalDatesAligned(dates);
   const snapshotDate = alignmentReady ? dates.deposit : null;
   const sameDatesAsState = priorState && JSON.stringify(priorState.dates || {}) === JSON.stringify(dates);
-  // One-time correction of the already-delivered October 7 message. This is NOT
-  // a fake new KOFIA datapoint: the earlier narrative said "MMF 급감" on +4.93조.
-  // It is keyed by snapshot+fingerprint+message version, so it cannot repeat.
+  // A real interpretation correction keeps the unchanged official values and
+  // is sent once per message version, after confirmed delivery only.
   const narrativeCorrection = Boolean(priorState && !changed &&
-    snapshotDate === '20261007' &&
     priorState.snapshot_date === snapshotDate &&
     priorState.message_version !== MESSAGE_VERSION);
   const eventLabel = narrativeCorrection
@@ -292,12 +334,16 @@ if (
   const signal = strongMove ? '예탁금↑ + MMF↓ 동시 신호 강함' : big1d ? '당일 큰 변동 감지' : '공식값 갱신';
 
   const baselineLine = ''; // No hardcoded historical MMF baselines.
+  const queriedAt = kstNow();
   const message = [
     `📊 <b>[국내 증시 대기자금 추적 | ${esc(eventLabel)}]</b>`,
     `KOFIA FreeSIS 공식 원자료 직접 조회`,
     `• 핵심 4개 지표 기준일 동기화: <b>${snapshotDate ? fmtDate(snapshotDate) : '미완료'}</b>`,
+    `• 원자료 조회: ${queriedAt.replace('T',' ').replace('+09:00',' KST')}`,
+    `• 비교 기준: 1D ${fmtDate(referenceDates[1])} → ${fmtDate(referenceDates[0])} / 5D ${fmtDate(referenceDates[5])} → ${fmtDate(referenceDates[0])}`,
+    `• 1D는 직전 공표일, 5D는 최근 5개 공표구간의 잔액 차이`,
     ...(narrativeCorrection ? [
-      `• <b>정정 사유</b>: 직전 알림에서 당일 MMF +4.93조원 증가를 '급감'으로 설명한 해석 오류 수정. KOFIA 원자료 수치 자체는 바뀌지 않았습니다.`
+      `• <b>정정 사유</b>: 잔액만으로 위험자산 이동 가능성·수급의 질을 평가하던 문구와 비교 기준 설명을 수정. 공식 원값은 바뀌지 않았습니다.`
     ] : []),
     ``,
     `<b>무엇이 달라졌나</b>`,
@@ -315,8 +361,10 @@ if (
     `<b>검증</b>`,
     `• 동일 KOFIA 공식 원천·백만원 단위 원값으로 계산`,
     `• 투자자예탁금·MMF·CMA·신용융자 기준일이 모두 같은 날일 때만 종합 알림 전송`,
-    `• MMF 1D는 공식 전일대비증감과 재계산값 일치 확인`,
-    `• 신규 동기화 기준일 또는 동일 기준일 수정치가 있을 때만 재알림`,
+    `• MMF 1D는 공식 전일대비증감과 재계산값 일치 확인${mmfNow.daily !== metrics.mmf.d1 ? ' (백만원 표시 반올림 차이 1 이내)' : ''}`,
+    `• 잔액 변화로 실제 주식 순매수·신규 자금·상품 간 이동 경로를 확인할 수 없음`,
+    `• MMF형 CMA 등 상품 간 포함 관계가 있어 네 잔액을 합산하지 않음`,
+    `• 신규 동기화 기준일·원값 수정 또는 확인된 해석 정정에만 재알림`,
   ].join('\n');
 
   const status = [
@@ -345,6 +393,11 @@ if (
     `- source https://freesis.kofia.or.kr/stat/main.do`,
   ].join('\n');
   fs.writeFileSync(STATUS_FILE, status + '\n', 'utf8');
+  Object.assign(sourceEvidence, { phase: 'validated', finished_at_kst: queriedAt, latest_dates: latestDates,
+    reference_dates: referenceDates, values: fpPayload, fingerprint: fp,
+    mmf_published_daily_delta: mmfNow.daily, prior_fingerprint: priorState.fingerprint,
+    changed, narrative_correction: narrativeCorrection });
+  saveEvidence();
 
   // Fail closed on mixed reference dates. FORCE_SEND can bypass duplicate suppression,
   // but never this data-quality gate.
@@ -369,15 +422,26 @@ if (
       last_event: eventLabel,
       source: 'KOFIA FreeSIS',
       source_url: 'https://freesis.kofia.or.kr/stat/main.do',
+      queried_at_kst: sourceEvidence.finished_at_kst,
+      code_sha: sourceEvidence.code_sha,
+      period_basis: 'five_published_intervals',
+      mmf_reported_daily_delta: mmfNow.daily,
+      mmf_daily_rounding_difference: metrics.mmf.d1 - mmfNow.daily,
+      prior_fingerprint: priorState.fingerprint,
     };
     fs.writeFileSync(PENDING_FILE, JSON.stringify(nextState, null, 2) + '\n', 'utf8');
     console.log(`kofia_liquidity_alert_ready=true event=${eventLabel} snapshot_date=${snapshotDate} fingerprint=${fp}`);
   } else {
     console.log(`kofia_liquidity_alert_ready=false unchanged=true snapshot_date=${snapshotDate} fingerprint=${fp}`);
   }
-})().catch(err => {
-  ensureDirs();
+}
+
+if (require.main === module) main().catch(err => {
+  ensureDirs(true);
+  if (sourceEvidence) { sourceEvidence.phase = 'failed'; sourceEvidence.error = String(err.message || err); saveEvidence(); }
   fs.writeFileSync(STATUS_FILE, `# KOFIA Liquidity Watch\n\n- status: FAILED\n- error: ${String(err && err.stack || err)}\n`, 'utf8');
   console.error(err);
   process.exit(1);
 });
+
+module.exports = { toNum, validDate, criticalDatesAligned, main };

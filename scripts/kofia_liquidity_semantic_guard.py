@@ -5,6 +5,7 @@ This validates the exact text after the workflow's narrative replacement, and
 the exact pending state that will be persisted after Telegram acknowledges it.
 """
 import json
+import datetime as dt
 import math
 import re
 from pathlib import Path
@@ -26,17 +27,18 @@ def expect(ok, message):
 
 
 def amount(raw):
-    expect(isinstance(raw, (int, float)) and math.isfinite(raw), "invalid numeric value")
+    expect(type(raw) in (int, float) and math.isfinite(raw), "invalid numeric value")
     return f"{raw / 1_000_000:+.2f}"
 
 
 def level(raw):
-    expect(isinstance(raw, (int, float)) and math.isfinite(raw), "invalid balance")
+    expect(type(raw) in (int, float) and math.isfinite(raw), "invalid balance")
     return f"{raw / 1_000_000:.2f}"
 
 
 def date_label(d):
     expect(bool(re.fullmatch(r"\d{8}", str(d))), "invalid date " + str(d))
+    dt.datetime.strptime(d, "%Y%m%d")
     return f"{int(d[4:6])}/{int(d[6:8])}"
 
 
@@ -75,7 +77,7 @@ def validate(text, state):
     for key, (full_name, short_name) in LABELS.items():
         v = values[key]
         for period in ("value", "d1", "d5"):
-            expect(isinstance(v[period], (int, float)) and math.isfinite(v[period]),
+            expect(type(v[period]) in (int, float) and math.isfinite(v[period]),
                    f"{key} {period} invalid")
         pat = (
             r"^• " + re.escape(full_name) +
@@ -94,9 +96,9 @@ def validate(text, state):
     # financial figures. An incorrect amount here must block the whole alert.
     rec = values.get("receivable") or {}
     forced = values.get("forced") or {}
-    expect(isinstance(rec.get("value"), (int, float)) and math.isfinite(rec["value"]) and rec["value"] >= 0,
+    expect(type(rec.get("value")) in (int, float) and math.isfinite(rec["value"]) and rec["value"] >= 0,
            "invalid KOFIA receivable")
-    expect(isinstance(forced.get("value"), (int, float)) and math.isfinite(forced["value"]) and forced["value"] >= 0,
+    expect(type(forced.get("value")) in (int, float) and math.isfinite(forced["value"]) and forced["value"] >= 0,
            "invalid KOFIA forced-sale amount")
     rec_forced = re.findall(
         r"^• 미수금 ([\d,]+\.\d{2})조 \| 실제 반대매매 ([\d,]+)억원$",
@@ -158,17 +160,26 @@ def validate(text, state):
         expect("MMF 증가분이 주식에서" not in assessment,
                "MMF 5D non-increase mislabeled as increase in summary")
     if d5 == "보합":
-        expect("5거래일 흐름과 같은 방향" not in persistence,
+        expect("5개 공표구간 흐름과 같은 방향" not in persistence,
                "MMF daily non-flat move wrongly equated with flat five-day trend")
-    dep = values["deposit"]
-    cr = values["credit"]
-    if (direction(dep["d1"],dep["value"]) == "증가"
-        and direction(values["cma"]["d1"],values["cma"]["value"]) == "증가"
-        and d1 == "감소" and direction(cr["d1"],cr["value"]) == "감소"):
-        expect("당일 수급의 질은 개선" in summary, "strong day improvement not reflected")
-    elif (direction(dep["d5"],dep["value"]) == "감소" and
-          direction(cr["d5"],cr["value"]) == "증가"):
-        expect("수급의 질이 이전보다 취약" in summary, "5D risk mismatch")
+    comparison = f"• 비교 기준: 1D {date_label(ref_dates[1])} → {date_label(ref_dates[0])} / 5D {date_label(ref_dates[5])} → {date_label(ref_dates[0])}"
+    expect(text.splitlines().count(comparison) == 1, "comparison dates absent or inconsistent")
+    expect("5D는 최근 5개 공표구간의 잔액 차이" in text, "balance-change period basis missing")
+    if state.get('queried_at_kst'):
+        expected_query = '• 원자료 조회: ' + state['queried_at_kst'].replace('T', ' ').replace('+09:00', ' KST')
+        expect(text.splitlines().count(expected_query) == 1, 'query time differs from pending')
+    if state.get('mmf_daily_rounding_difference'):
+        expect('백만원 표시 반올림 차이 1 이내' in verification, 'MMF rounding difference is not disclosed')
+    for phrase in ("위험자산 쪽 이동 가능성이 커", "수급의 질은 개선", "수급의 질이 이전보다 취약", "빚을 늘리지 않고"):
+        expect(phrase not in assessment, "unsupported transfer/trade/leverage claim: " + phrase)
+    triggers = [("투자자예탁금", "deposit", 2000000, "±2조"), ("MMF", "mmf", 3000000, "±3조"),
+                ("CMA", "cma", 2000000, "±2조"), ("신용융자", "credit", 500000, "±0.5조")]
+    expected = [f"{label} {amount(values[key]['d1'])}조(경보 기준 {limit} 이상)"
+                for label, key, threshold, limit in triggers if abs(values[key]['d1']) >= threshold]
+    actual = find("• <b>큰 변동 항목</b>:")
+    required = " / ".join(expected) if expected else "1D 큰 변동 기준을 넘은 항목 없음"
+    expect(actual == "• <b>큰 변동 항목</b>: " + required + " (기준: 예탁금 ±2조 / MMF ±3조 / CMA ±2조 / 신용융자 ±0.5조)",
+           "large-change threshold verdict differs from source")
     return True
 
 
