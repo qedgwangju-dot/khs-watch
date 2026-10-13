@@ -85,13 +85,15 @@
   },
   "_delivery": {
     "id": "af61e256ecc57853eb8edd56d0d855de98db6b309bf4f14b7370b8b782603756",
-    "status": "in_flight",
+    "status": "partial",
     "created_at_kst": "2026-10-13T19:35:36+09:00",
     "chunks": [
       "<b>삼성 OCP·AMD CXL·Groq 파운드리 단계 변화</b>\n\n<b>변화</b>\n• <b>삼성전자·AMD:</b> CMM-D 공동 검증 및 삼성 AI 메모리·저장계층 실증 공식 확인\n\n<b>의미</b>\n• CXL로 추론 메모리 용량을 확장하고 SSD·FDP로 KV 캐시를 저장하며, HBM은 고대역폭 작업 메모리로 구분합니다.\n\n<b>현재 숫자</b>\n• 삼성 CMM-D CXL 시연 첫 토큰 응답시간 최대 38% 단축\n• 삼성 CXL 시연 추론 유효 처리량 최대 3.3배\n• 삼성 미국 사내 AI Memory Node 실운영·KV 캐시 활용 5.0~7.0배\n• BM1773 QLC SSD 256TB 전시·PM1763 최고 28.4GB/s\n• FDP·LMCache KV 캐시 저장 최적화 시연\n• LPDDR5X-PIM 추론 처리량 최대 3배\n• AMD 공동 검증·사내 운영은 외부 고객 유상 공급·양산 매출이 아닙니다.\n• Groq 3 LPU 4나노 웨이퍼는 GTC 2026 기존 공개, 별도 2나노 GAA와 구별합니다.\n\n<b>다음 확인</b>\n• CMM-D AMD 실제 발주·고객 인증·양산·매출 / Groq 3 LPU 4나노 실제 출하 / CXL 상호운용성·응답 지연·SSD 쓰기증폭·보험·냉각·운영비\n\n<b>원문</b>\n• <a href=\"https://semiconductor.samsung.com/events/ocp-2026/\">근거 원문</a>"
     ],
-    "next_chunk": 0,
-    "message_ids": [],
+    "next_chunk": 1,
+    "message_ids": [
+      285
+    ],
     "candidate": {
       "as_of": "2026-09-28",
       "cpu_ratio": {
