@@ -188,8 +188,8 @@ def calendar_window_reading(etf: dict, label: str, rate: float | None) -> list[s
     previous_avg = item.get("prev_avg_usd_m_per_session")
     if label == "3m" and current_avg is not None and previous_avg is not None:
         caveat += (
-            f" · 거래일평균 {float(current_avg):+.1f}/{float(previous_avg):+.1f}백만달러"
-            " (최근/직전)"
+            f" · 거래일평균 최근 {fmt_usd_m(float(current_avg), rate)}"
+            f" / 직전 {fmt_usd_m(float(previous_avg), rate)}"
         )
     return [
         (
