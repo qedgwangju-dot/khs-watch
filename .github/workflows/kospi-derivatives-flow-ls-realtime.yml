@@ -305,7 +305,8 @@ jobs:
                   assert mid not in ids, f"repeated Telegram message_id {mid}"
                   ids.add(mid)
                   if rec.get("stage")!="expand":
-                      key=(str(rec.get("event_start_ts")),str(rec.get("stage")))
+                      key=(str(rec.get("event_start_ts")),str(rec.get("stage")),
+                           str(rec.get("market") or "KOSPI"),str(rec.get("actor") or ""))
                       assert key not in stages, f"duplicate episode stage {key}"
                       stages.add(key)
           print(f"kospi_production_delivery_integrity_valid=true acknowledged_messages={len(ids)}")
@@ -451,7 +452,8 @@ jobs:
                   assert mid not in ids, f"repeated Telegram message_id {mid}"
                   ids.add(mid)
                   if rec.get("stage")!="expand":
-                      key=(str(rec.get("event_start_ts")),str(rec.get("stage")))
+                      key=(str(rec.get("event_start_ts")),str(rec.get("stage")),
+                           str(rec.get("market") or "KOSPI"),str(rec.get("actor") or ""))
                       assert key not in stages, f"duplicate episode stage {key}"
                       stages.add(key)
           print(f"kospi_production_delivery_integrity_valid=true acknowledged_messages={len(ids)}")
