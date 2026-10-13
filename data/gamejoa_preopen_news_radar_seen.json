@@ -7384,6 +7384,25 @@
       "telegram_core_fact": "LG전자는 이번 계약에 따라 북미에서 구축되는 여러 AIDC에 총 5GW 고효율 칠러를 순차적으로 공급한다.",
       "title": "계약 한방에 수년치 먹거리 확보…삼성·LG, ‘AIDC 칠러’서 기회"
     },
+    "core:30edcee10d95c61807a71560": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823506",
+      "source": "뉴시스",
+      "source_body_digest": "8ef0c09d7b885bcb69a4fb29be8a8ae77ee610c96f7c33c09a108b49f75e57ad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:77a4ec6cda4d4ceda3e7081061c37742ff4c5dfdbc6937d04b39b6672edf807f",
+      "source_fact_keys": [
+        "source_fact:v1:63e8db6b765838ce18e7355c98399ef79b19189f174a63352cbd9192604435a6"
+      ],
+      "source_published_kst": "2026-10-13T10:58+09:00",
+      "source_title": "한화, 美육군에 K9 자주포 이달 납품 시작…\"미국 독립연도를 제식명 XM1776에\"",
+      "telegram_core_fact": "한화에어로스페이스 관계자는 \"XM1776 시제품의 적기 납품과 미국 앨라배마·아칸소 현지 생산 기반 구축으로 미국 육군이 신뢰할 수 있는 파트너로 도약할 것\"이라고 말했다.",
+      "title": "한화, 美육군에 K9 자주포 이달 납품 시작…\"미국 독립연도를 제식명 XM1776에\""
+    },
     "core:31154424cc3b351b867ab1f5": {
       "first_seen_kst": "2026-10-13T01:09:54+09:00",
       "lanes": {
@@ -8356,6 +8375,29 @@
       "source_title": "창업 아이디어에 AI 활용…‘모두의 창업’ 솔루션, 103개 선정",
       "telegram_core_fact": "‘모두의 창업’ 2차 프로젝트 참가자들이 창업 아이디어를 사업모델로 구체화하는 데 활용할 AI 솔루션 103개가 선정됐다. 1라운드 진출자는 1인당 100만원 범위에서 홈페이지 제작과 홍보 콘텐츠 생성, 계약서 작성 등에 필요한 AI 솔루션을 선택해 이용할 수 있다.",
       "title": "창업 아이디어에 AI 활용…‘모두의 창업’ 솔루션, 103개 선정"
+    },
+    "core:36a20f076b8bccd89351fff6": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.mt.co.kr/tech/2026/10/13/2026101311034144640",
+      "source": "머니투데이",
+      "source_body_digest": "ea3c24dc9d7494d28c3f7a5291fb9806d93c1d536e337dc419e44f0e3d3c0136",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3b48624ddd8aee13e7ceab2febac981b6d9089fac5196f567bd30b84a64c2de9",
+      "source_fact_keys": [
+        "source_fact:v1:3fa27cd6584d0036de8903539881dd04fd4b4c14e54eed84cdb0ace62ee64921",
+        "source_fact:v1:4f84e5b22ec307254d538cf2b52b215f2a59a1dc74b57e9f8d2f1172ee251dc7",
+        "source_fact:v1:51a9d83d2f3ac21e31aada2bcb2795a61ec2f2b7b17ee0460d17b544f9d1f8c8",
+        "source_fact:v1:836166ab6c5c52f02c6fcaab2f89bc4607e370610fca913a6fb23f6a6764b329",
+        "source_fact:v1:9cd957b9772ea512f793f218a4d3c1ebc6be2422f66ad85135cd841e26a519fd"
+      ],
+      "source_published_kst": "2026-10-13T11:40+09:00",
+      "source_title": "엔비디아 \"韓, 피지컬 AI 공급망 핵심 역할 가능…LG와 협력 성과 기대\"",
+      "telegram_core_fact": "피지컬 AI 시장 확대가 로봇용 반도체뿐 아니라 데이터 생성과 시뮬레이션을 위한 컴퓨팅 인프라 수요 증가로 이어질 수 있다는 의미다.",
+      "title": "엔비디아 \"韓, 피지컬 AI 공급망 핵심 역할 가능…LG와 협력 성과 기대\""
     },
     "core:36c76419ab0449adfc693379": {
       "first_seen_kst": "2026-10-07T22:00:35+09:00",
@@ -14691,6 +14733,26 @@
       "source_title": "모빌테크, 국방과학연구소와 군용 무인자율차 가상 시험 플랫폼 구축",
       "telegram_core_fact": "김재승 모빌테크 대표는 “디지털트윈·시뮬레이션 기술을 통해 실제 시험 전 자율주행 기능과 성능을 철저히 검증하는 환경을 구축해 국방 피지컬AI 발전을 뒷받침하겠다”고 말했다.",
       "title": "모빌테크, 국방과학연구소와 군용 무인자율차 가상 시험 플랫폼 구축"
+    },
+    "core:62f3d6a28951ffe431c73ad9": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.etnews.com/20261013000111",
+      "source": "전자신문",
+      "source_body_digest": "f8bef8ffa88704b22d0094c8caeab7ec7022792a09ee56320616f91818ba29c1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5a450227860ed9db53c1bc7e6e12785474770ea136ed0a7f2716eff4741a8c36",
+      "source_fact_keys": [
+        "source_fact:v1:a007a04bf828953669c85acb4f1883a59d83c3121f84a559303599f93f711c24",
+        "source_fact:v1:f6a4e89dd883d4c5b1154b2c6eb4723a1776e15cb13a012454fb9d0b0ab530cd"
+      ],
+      "source_published_kst": "2026-10-13T10:30+09:00",
+      "source_title": "에스에이티정보, AI 기반 문서 개인정보 비식별 솔루션 '다큐가드' 공급 확대",
+      "telegram_core_fact": "문서·데이터 솔루션 전문기업 에스에이티정보(대표 오세용)는 인공지능(AI) 기반 문서 개인정보 검출·비식별 솔루션 '다큐가드(Docu-Guard)'의 금융·공공 분야 공급을 확대한다고 13일 밝혔다. 다큐가드는 문서 분석부터 개인정보 검출, 비식별 처리, 검수와 반출 관리까지 지원하는 솔루션이다.",
+      "title": "에스에이티정보, AI 기반 문서 개인정보 비식별 솔루션 '다큐가드' 공급 확대"
     },
     "core:634c98383db1e25506276f91": {
       "first_seen_kst": "2026-10-12T18:39:51+09:00",
@@ -24408,6 +24470,26 @@
       "telegram_core_fact": "주당 2.48달러에 약 6180만 달러 신주 발행이 추진되면서 기존 주주의 지분 희석 우려가 커졌습니다. 발행가가 직전 주가보다 낮은 점도 부담이며, 이사 지배 법인 등 최대주주 의존도 높아졌습니다.",
       "title": "고고로, 6200만 달러 규모 신주 발행 소식에 지분 희석 우려 부각"
     },
+    "core:a8bf3fec7dd21875d5221dec": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823575",
+      "source": "뉴시스",
+      "source_body_digest": "739fc5d6cfab8210b3863d0466e7ed00d91e4281f50e06c069404a78b26176bf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:da5eea40d71abd405f89d2f27b353830657bb575d63191bab94a3fbccf1e7b99",
+      "source_fact_keys": [
+        "source_fact:v1:98177f35e4a4d70a6a3a5fb98a25859135ffa35fd1c3f9ab4d9cfa9770cd75ab",
+        "source_fact:v1:cf0987b0c492f4232c156498262b326739379a7542ebbc0139f7c19d65fede63"
+      ],
+      "source_published_kst": "2026-10-13T10:43+09:00",
+      "source_title": "제이앤티지, 코스닥 상장 예비심사 승인",
+      "telegram_core_fact": "신재생에너지 첨단소재 전문기업 제이앤티지(JNTG)는 코스닥 상장을 위한 예비심사를 통과했다고 13일 밝혔다.",
+      "title": "제이앤티지, 코스닥 상장 예비심사 승인"
+    },
     "core:a8c386ae871429317997b08d": {
       "first_seen_kst": "2026-10-08T18:02:43+09:00",
       "lanes": {
@@ -28143,6 +28225,25 @@
       "source_title": "韓中, 공급망 핫라인 가동…새만금 투자 협력 확대 논의",
       "telegram_core_fact": "한국과 중국 통상당국이 주요 산업 품목의 안정적인 공급망 관리와 새만금 산업단지 투자 확대를 위한 협력 방안을 논의했다. 이번 회의에서 양측은 새만금과 후이저우 산업단지의 지원제도와 투자 인센티브를 공유하고 상대국 산업단지에 진출하는 기업의 편의를 확대하는 방안을 논의했다.",
       "title": "韓中, 공급망 핫라인 가동…새만금 투자 협력 확대 논의"
+    },
+    "core:c12b7017bc6ab557053b5c10": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823496",
+      "source": "뉴시스",
+      "source_body_digest": "b5b1422a2f91cd46f90474aa1bb77e68441fea96d3ea936f61b39ebbfa2565a1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60d9a05cca09518f5b2df6055c25047c9903c3aa847bd52749f1dfee24f7ed6a",
+      "source_fact_keys": [
+        "source_fact:v1:e5fc57d7a0e075839dc2baf6503cada619045d398f32ba90001d59ad250ceb69"
+      ],
+      "source_published_kst": "2026-10-13T10:33+09:00",
+      "source_title": "휴이노·유한양행 \"울산 동강병원에 메모큐 공급\"",
+      "telegram_core_fact": "휴이노와 유한양행은 의료법인 동강의료재단 동강병원 심장내과에 실시간 환자 모니터링 솔루션 ‘메모큐(MEMO CUE)’를 공급했다고 13일 밝혔다.",
+      "title": "휴이노·유한양행 \"울산 동강병원에 메모큐 공급\""
     },
     "core:c13983167054d2ac2988a4fe": {
       "first_seen_kst": "2026-10-07T18:30:29+09:00",
@@ -38690,6 +38791,23 @@
       ],
       "source_published_kst": "2026-10-06T17:03+09:00",
       "title": "파라다이스, 회사채 수요예측에 3.4배 몰려…2·3년물 온도차(종합) | 연합뉴스"
+    },
+    "event:251a2db36c397ecc5327cee9": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.etnews.com/20261013000108",
+      "source": "전자신문",
+      "source_body_digest": "025b810ae2f2303539064490190e08cb7e8102dcf686c266bbd047695c03530f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-13T10:27+09:00",
+      "source_title": "[미리보는 테크서밋]<1>삼성전자·SK하이닉스 “AI 시대 메모리 미래 청사진 제시”",
+      "telegram_core_fact": "특히 메모리는 전례없던 공급 부족으로 AI 확산의 최대 '병목'으로 꼽히고 있다.",
+      "title": "[미리보는 테크서밋]<1>삼성전자·SK하이닉스 “AI 시대 메모리 미래 청사진 제시”"
     },
     "event:2576310e14ea72fa4ac86531": {
       "first_seen_kst": "2026-10-10T06:41:01+09:00",
@@ -61039,6 +61157,26 @@
       "telegram_core_fact": "OK금융그룹이 예별손해보험 인수 본계약을 체결한 가운데 KDB생명은 우선협상대상자 선정 이후 두 달째 주식매매계약(SPA) 단계로 나아가지 못하고 있다.",
       "title": "지지부진 KDB생명·기사회생 케이조선…매각전 ‘마침표’ 찍을까 [M&A복덕방]"
     },
+    "fact:3e95667ddc01b5dfaeaea5f6": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823575",
+      "source": "뉴시스",
+      "source_body_digest": "739fc5d6cfab8210b3863d0466e7ed00d91e4281f50e06c069404a78b26176bf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:da5eea40d71abd405f89d2f27b353830657bb575d63191bab94a3fbccf1e7b99",
+      "source_fact_keys": [
+        "source_fact:v1:98177f35e4a4d70a6a3a5fb98a25859135ffa35fd1c3f9ab4d9cfa9770cd75ab",
+        "source_fact:v1:cf0987b0c492f4232c156498262b326739379a7542ebbc0139f7c19d65fede63"
+      ],
+      "source_published_kst": "2026-10-13T10:43+09:00",
+      "source_title": "제이앤티지, 코스닥 상장 예비심사 승인",
+      "telegram_core_fact": "신재생에너지 첨단소재 전문기업 제이앤티지(JNTG)는 코스닥 상장을 위한 예비심사를 통과했다고 13일 밝혔다.",
+      "title": "제이앤티지, 코스닥 상장 예비심사 승인"
+    },
     "fact:3ebb4dfee0d8f43974574b06": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
       "lanes": {
@@ -71911,6 +72049,29 @@
       "source_published_kst": "2026-10-06T18:35+09:00",
       "title": "오텍캐리어, 글로벌 캐리어와 협력...\"대용량 냉각수 라인업 확대\""
     },
+    "fact:777b2e6da1d37fd343282fe1": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.mt.co.kr/tech/2026/10/13/2026101311034144640",
+      "source": "머니투데이",
+      "source_body_digest": "ea3c24dc9d7494d28c3f7a5291fb9806d93c1d536e337dc419e44f0e3d3c0136",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3b48624ddd8aee13e7ceab2febac981b6d9089fac5196f567bd30b84a64c2de9",
+      "source_fact_keys": [
+        "source_fact:v1:3fa27cd6584d0036de8903539881dd04fd4b4c14e54eed84cdb0ace62ee64921",
+        "source_fact:v1:4f84e5b22ec307254d538cf2b52b215f2a59a1dc74b57e9f8d2f1172ee251dc7",
+        "source_fact:v1:51a9d83d2f3ac21e31aada2bcb2795a61ec2f2b7b17ee0460d17b544f9d1f8c8",
+        "source_fact:v1:836166ab6c5c52f02c6fcaab2f89bc4607e370610fca913a6fb23f6a6764b329",
+        "source_fact:v1:9cd957b9772ea512f793f218a4d3c1ebc6be2422f66ad85135cd841e26a519fd"
+      ],
+      "source_published_kst": "2026-10-13T11:40+09:00",
+      "source_title": "엔비디아 \"韓, 피지컬 AI 공급망 핵심 역할 가능…LG와 협력 성과 기대\"",
+      "telegram_core_fact": "피지컬 AI 시장 확대가 로봇용 반도체뿐 아니라 데이터 생성과 시뮬레이션을 위한 컴퓨팅 인프라 수요 증가로 이어질 수 있다는 의미다.",
+      "title": "엔비디아 \"韓, 피지컬 AI 공급망 핵심 역할 가능…LG와 협력 성과 기대\""
+    },
     "fact:7783fe8de0ad56edc7448968": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
       "lanes": {
@@ -75755,6 +75916,26 @@
       "source_title": "\"미 검찰, 베네수 마두로 '미국인 고문 혐의' 추가 기소 예정\"",
       "telegram_core_fact": "CNN에 따르면 당시 마두로 정권은 미국인 12명 이상을 억류했고, 미국 정부는 베네수엘라가 금융 제재 완화 등의 양보를 얻어내고자 미국인을 억류하고 고문했다고 비난해 왔다.",
       "title": "\"미 검찰, 베네수 마두로 '미국인 고문 혐의' 추가 기소 예정\""
+    },
+    "fact:8b13ae88c2baa4b5ee31522c": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.etnews.com/20261013000111",
+      "source": "전자신문",
+      "source_body_digest": "f8bef8ffa88704b22d0094c8caeab7ec7022792a09ee56320616f91818ba29c1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5a450227860ed9db53c1bc7e6e12785474770ea136ed0a7f2716eff4741a8c36",
+      "source_fact_keys": [
+        "source_fact:v1:a007a04bf828953669c85acb4f1883a59d83c3121f84a559303599f93f711c24",
+        "source_fact:v1:f6a4e89dd883d4c5b1154b2c6eb4723a1776e15cb13a012454fb9d0b0ab530cd"
+      ],
+      "source_published_kst": "2026-10-13T10:30+09:00",
+      "source_title": "에스에이티정보, AI 기반 문서 개인정보 비식별 솔루션 '다큐가드' 공급 확대",
+      "telegram_core_fact": "문서·데이터 솔루션 전문기업 에스에이티정보(대표 오세용)는 인공지능(AI) 기반 문서 개인정보 검출·비식별 솔루션 '다큐가드(Docu-Guard)'의 금융·공공 분야 공급을 확대한다고 13일 밝혔다. 다큐가드는 문서 분석부터 개인정보 검출, 비식별 처리, 검수와 반출 관리까지 지원하는 솔루션이다.",
+      "title": "에스에이티정보, AI 기반 문서 개인정보 비식별 솔루션 '다큐가드' 공급 확대"
     },
     "fact:8b226aad827046a4a628cb52": {
       "first_seen_kst": "2026-10-08T04:45:20+09:00",
@@ -94160,6 +94341,25 @@
       "source_published_kst": "2026-10-06T11:14+09:00",
       "title": "JW중외제약, 유럽당뇨병학회서 '엠파가드' 임상 3상 발표…3제 요법 유효성 입증"
     },
+    "fact:e323844fb68f09a24399d546": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823496",
+      "source": "뉴시스",
+      "source_body_digest": "b5b1422a2f91cd46f90474aa1bb77e68441fea96d3ea936f61b39ebbfa2565a1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60d9a05cca09518f5b2df6055c25047c9903c3aa847bd52749f1dfee24f7ed6a",
+      "source_fact_keys": [
+        "source_fact:v1:e5fc57d7a0e075839dc2baf6503cada619045d398f32ba90001d59ad250ceb69"
+      ],
+      "source_published_kst": "2026-10-13T10:33+09:00",
+      "source_title": "휴이노·유한양행 \"울산 동강병원에 메모큐 공급\"",
+      "telegram_core_fact": "휴이노와 유한양행은 의료법인 동강의료재단 동강병원 심장내과에 실시간 환자 모니터링 솔루션 ‘메모큐(MEMO CUE)’를 공급했다고 13일 밝혔다.",
+      "title": "휴이노·유한양행 \"울산 동강병원에 메모큐 공급\""
+    },
     "fact:e323f0d015e5b5b224641c73": {
       "first_seen_kst": "2026-10-09T23:03:47+09:00",
       "lanes": {
@@ -95629,6 +95829,25 @@
       "source_title": "현대차, 인도 진출 30년만에 누적판매 1천만대 돌파 눈앞 | 연합뉴스",
       "telegram_core_fact": "현대차는 첸나이 1·2공장(82만4천대)에 이어 푸네 신공장(17만대)을 본격 가동하며 인도 현지에서 총 100만대의 생산능력을 갖추게 됐다.",
       "title": "현대차, 인도 진출 30년만에 누적판매 1천만대 돌파 눈앞 | 연합뉴스"
+    },
+    "fact:e9437a7f4ea4ae5b28a7b01c": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823506",
+      "source": "뉴시스",
+      "source_body_digest": "8ef0c09d7b885bcb69a4fb29be8a8ae77ee610c96f7c33c09a108b49f75e57ad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:77a4ec6cda4d4ceda3e7081061c37742ff4c5dfdbc6937d04b39b6672edf807f",
+      "source_fact_keys": [
+        "source_fact:v1:63e8db6b765838ce18e7355c98399ef79b19189f174a63352cbd9192604435a6"
+      ],
+      "source_published_kst": "2026-10-13T10:58+09:00",
+      "source_title": "한화, 美육군에 K9 자주포 이달 납품 시작…\"미국 독립연도를 제식명 XM1776에\"",
+      "telegram_core_fact": "한화에어로스페이스 관계자는 \"XM1776 시제품의 적기 납품과 미국 앨라배마·아칸소 현지 생산 기반 구축으로 미국 육군이 신뢰할 수 있는 파트너로 도약할 것\"이라고 말했다.",
+      "title": "한화, 美육군에 K9 자주포 이달 납품 시작…\"미국 독립연도를 제식명 XM1776에\""
     },
     "fact:e9689b6fcf6f67c7d13a7d4d": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
@@ -114826,6 +115045,26 @@
       "source": "매일경제",
       "title": "삼성의 다음 승부처는 ‘AI 일상’…노태문 “거스를 수 없는 대세”"
     },
+    "link:32fd6ef7301a27665082df7e": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.etnews.com/20261013000111",
+      "source": "전자신문",
+      "source_body_digest": "f8bef8ffa88704b22d0094c8caeab7ec7022792a09ee56320616f91818ba29c1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5a450227860ed9db53c1bc7e6e12785474770ea136ed0a7f2716eff4741a8c36",
+      "source_fact_keys": [
+        "source_fact:v1:a007a04bf828953669c85acb4f1883a59d83c3121f84a559303599f93f711c24",
+        "source_fact:v1:f6a4e89dd883d4c5b1154b2c6eb4723a1776e15cb13a012454fb9d0b0ab530cd"
+      ],
+      "source_published_kst": "2026-10-13T10:30+09:00",
+      "source_title": "에스에이티정보, AI 기반 문서 개인정보 비식별 솔루션 '다큐가드' 공급 확대",
+      "telegram_core_fact": "문서·데이터 솔루션 전문기업 에스에이티정보(대표 오세용)는 인공지능(AI) 기반 문서 개인정보 검출·비식별 솔루션 '다큐가드(Docu-Guard)'의 금융·공공 분야 공급을 확대한다고 13일 밝혔다. 다큐가드는 문서 분석부터 개인정보 검출, 비식별 처리, 검수와 반출 관리까지 지원하는 솔루션이다.",
+      "title": "에스에이티정보, AI 기반 문서 개인정보 비식별 솔루션 '다큐가드' 공급 확대"
+    },
     "link:33058168599743c1db59d07c": {
       "first_seen_kst": "2026-10-11T09:50:45+09:00",
       "lanes": {
@@ -116374,6 +116613,25 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=02643686645608656",
       "source": "이데일리",
       "title": "트럼프 “이란과 합의하거나 공격…어떤 식으로든 곧 끝날 것”"
+    },
+    "link:38d36bde9f11f4c83ba736a8": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823506",
+      "source": "뉴시스",
+      "source_body_digest": "8ef0c09d7b885bcb69a4fb29be8a8ae77ee610c96f7c33c09a108b49f75e57ad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:77a4ec6cda4d4ceda3e7081061c37742ff4c5dfdbc6937d04b39b6672edf807f",
+      "source_fact_keys": [
+        "source_fact:v1:63e8db6b765838ce18e7355c98399ef79b19189f174a63352cbd9192604435a6"
+      ],
+      "source_published_kst": "2026-10-13T10:58+09:00",
+      "source_title": "한화, 美육군에 K9 자주포 이달 납품 시작…\"미국 독립연도를 제식명 XM1776에\"",
+      "telegram_core_fact": "한화에어로스페이스 관계자는 \"XM1776 시제품의 적기 납품과 미국 앨라배마·아칸소 현지 생산 기반 구축으로 미국 육군이 신뢰할 수 있는 파트너로 도약할 것\"이라고 말했다.",
+      "title": "한화, 美육군에 K9 자주포 이달 납품 시작…\"미국 독립연도를 제식명 XM1776에\""
     },
     "link:390cd33c5301e5f366d4b76d": {
       "first_seen_kst": "2026-10-07T12:49:48+09:00",
@@ -119339,6 +119597,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T15:32+09:00",
       "title": "삼성바이오·SK바이오팜·한미약품, 아태 10대 바이오 거래 선정"
+    },
+    "link:43c007805971d260ba077b3b": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.etnews.com/20261013000108",
+      "source": "전자신문",
+      "source_body_digest": "025b810ae2f2303539064490190e08cb7e8102dcf686c266bbd047695c03530f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-13T10:27+09:00",
+      "source_title": "[미리보는 테크서밋]<1>삼성전자·SK하이닉스 “AI 시대 메모리 미래 청사진 제시”",
+      "telegram_core_fact": "특히 메모리는 전례없던 공급 부족으로 AI 확산의 최대 '병목'으로 꼽히고 있다.",
+      "title": "[미리보는 테크서밋]<1>삼성전자·SK하이닉스 “AI 시대 메모리 미래 청사진 제시”"
     },
     "link:43ca77f308560a6ae13eeb06": {
       "first_seen_kst": "2026-10-08T22:06:55+09:00",
@@ -129494,6 +129769,26 @@
       "source": "매일경제",
       "title": "풀, 前 콘스텔리움 CEO 장마르크 제르맹 사외이사 선임"
     },
+    "link:679c1c705bf05cf9c3100610": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823575",
+      "source": "뉴시스",
+      "source_body_digest": "739fc5d6cfab8210b3863d0466e7ed00d91e4281f50e06c069404a78b26176bf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:da5eea40d71abd405f89d2f27b353830657bb575d63191bab94a3fbccf1e7b99",
+      "source_fact_keys": [
+        "source_fact:v1:98177f35e4a4d70a6a3a5fb98a25859135ffa35fd1c3f9ab4d9cfa9770cd75ab",
+        "source_fact:v1:cf0987b0c492f4232c156498262b326739379a7542ebbc0139f7c19d65fede63"
+      ],
+      "source_published_kst": "2026-10-13T10:43+09:00",
+      "source_title": "제이앤티지, 코스닥 상장 예비심사 승인",
+      "telegram_core_fact": "신재생에너지 첨단소재 전문기업 제이앤티지(JNTG)는 코스닥 상장을 위한 예비심사를 통과했다고 13일 밝혔다.",
+      "title": "제이앤티지, 코스닥 상장 예비심사 승인"
+    },
     "link:67bf26b97f664c380fc1ae28": {
       "first_seen_kst": "2026-10-11T09:50:45+09:00",
       "lanes": {
@@ -129682,6 +129977,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T17:00+09:00",
       "title": "KPCA, 첨단 패키징 실무인력 양성 위한 교육센터 설립한다"
+    },
+    "link:689a493477ee6609605f9909": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.etnews.com/20261013000097",
+      "source": "전자신문",
+      "source_body_digest": "410c516ae58e39b8976228623320a06174e49bc1862f06081b89ffafc91a8f53",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-13T10:18+09:00",
+      "source_title": "쿠쿠, 대우건설에 빌트인 정수기 공급…2년간 납품",
+      "telegram_core_fact": "쿠쿠가 대우건설 빌트인 정수기 공급 계약을 수주했다.",
+      "title": "쿠쿠, 대우건설에 빌트인 정수기 공급…2년간 납품"
     },
     "link:68a7dfb93efb36af9001e111": {
       "first_seen_kst": "2026-10-02T21:24:19+09:00",
@@ -151140,6 +151452,25 @@
       "source": "전자신문",
       "title": "상인회장 자격 논란에도 62억원 지원…전통시장 관리체계 '공백'"
     },
+    "link:b344d3bdad2b9e8c3efb8979": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823496",
+      "source": "뉴시스",
+      "source_body_digest": "b5b1422a2f91cd46f90474aa1bb77e68441fea96d3ea936f61b39ebbfa2565a1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60d9a05cca09518f5b2df6055c25047c9903c3aa847bd52749f1dfee24f7ed6a",
+      "source_fact_keys": [
+        "source_fact:v1:e5fc57d7a0e075839dc2baf6503cada619045d398f32ba90001d59ad250ceb69"
+      ],
+      "source_published_kst": "2026-10-13T10:33+09:00",
+      "source_title": "휴이노·유한양행 \"울산 동강병원에 메모큐 공급\"",
+      "telegram_core_fact": "휴이노와 유한양행은 의료법인 동강의료재단 동강병원 심장내과에 실시간 환자 모니터링 솔루션 ‘메모큐(MEMO CUE)’를 공급했다고 13일 밝혔다.",
+      "title": "휴이노·유한양행 \"울산 동강병원에 메모큐 공급\""
+    },
     "link:b35b6c12dba080838968981b": {
       "first_seen_kst": "2026-10-02T00:53:44+09:00",
       "lanes": {
@@ -164557,6 +164888,29 @@
       "telegram_core_fact": "SK에너지, GS칼텍스, 에쓰오일, HD현대오일뱅크 등 정유 4사가 '전쟁으로 국제유가가 급등한 틈을 타 돈벌이를 한 것 아니냐'는 지적에 고개를 숙였다.",
       "title": "'오를땐 빨리, 내릴땐 늦게' 정유 4사"
     },
+    "link:e32d8ded20bc18716eb6099e": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.mt.co.kr/tech/2026/10/13/2026101311034144640",
+      "source": "머니투데이",
+      "source_body_digest": "ea3c24dc9d7494d28c3f7a5291fb9806d93c1d536e337dc419e44f0e3d3c0136",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3b48624ddd8aee13e7ceab2febac981b6d9089fac5196f567bd30b84a64c2de9",
+      "source_fact_keys": [
+        "source_fact:v1:3fa27cd6584d0036de8903539881dd04fd4b4c14e54eed84cdb0ace62ee64921",
+        "source_fact:v1:4f84e5b22ec307254d538cf2b52b215f2a59a1dc74b57e9f8d2f1172ee251dc7",
+        "source_fact:v1:51a9d83d2f3ac21e31aada2bcb2795a61ec2f2b7b17ee0460d17b544f9d1f8c8",
+        "source_fact:v1:836166ab6c5c52f02c6fcaab2f89bc4607e370610fca913a6fb23f6a6764b329",
+        "source_fact:v1:9cd957b9772ea512f793f218a4d3c1ebc6be2422f66ad85135cd841e26a519fd"
+      ],
+      "source_published_kst": "2026-10-13T11:40+09:00",
+      "source_title": "엔비디아 \"韓, 피지컬 AI 공급망 핵심 역할 가능…LG와 협력 성과 기대\"",
+      "telegram_core_fact": "피지컬 AI 시장 확대가 로봇용 반도체뿐 아니라 데이터 생성과 시뮬레이션을 위한 컴퓨팅 인프라 수요 증가로 이어질 수 있다는 의미다.",
+      "title": "엔비디아 \"韓, 피지컬 AI 공급망 핵심 역할 가능…LG와 협력 성과 기대\""
+    },
     "link:e33534d773d1e214d2b89e40": {
       "first_seen_kst": "2026-09-27T07:38:21+09:00",
       "lanes": {
@@ -174650,6 +175004,25 @@
       "link": "https://www.etnews.com/20260926000023",
       "source": "전자신문",
       "title": "상인회장 자격 논란에도 62억원 지원…전통시장 관리체계 '공백'"
+    },
+    "original:06a8879fc7b71ae9b2af8d2c": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823496",
+      "source": "뉴시스",
+      "source_body_digest": "b5b1422a2f91cd46f90474aa1bb77e68441fea96d3ea936f61b39ebbfa2565a1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60d9a05cca09518f5b2df6055c25047c9903c3aa847bd52749f1dfee24f7ed6a",
+      "source_fact_keys": [
+        "source_fact:v1:e5fc57d7a0e075839dc2baf6503cada619045d398f32ba90001d59ad250ceb69"
+      ],
+      "source_published_kst": "2026-10-13T10:33+09:00",
+      "source_title": "휴이노·유한양행 \"울산 동강병원에 메모큐 공급\"",
+      "telegram_core_fact": "휴이노와 유한양행은 의료법인 동강의료재단 동강병원 심장내과에 실시간 환자 모니터링 솔루션 ‘메모큐(MEMO CUE)’를 공급했다고 13일 밝혔다.",
+      "title": "휴이노·유한양행 \"울산 동강병원에 메모큐 공급\""
     },
     "original:06b3f25da6ef53abd48c0693": {
       "first_seen_kst": "2026-10-03T00:49:56+09:00",
@@ -206195,6 +206568,29 @@
       "source_published_kst": "2026-10-06T18:46+09:00",
       "title": "알테오젠, 알테오젠바이오로직스 흡수합병"
     },
+    "original:786937131cea87ade3ab42fc": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.mt.co.kr/tech/2026/10/13/2026101311034144640",
+      "source": "머니투데이",
+      "source_body_digest": "ea3c24dc9d7494d28c3f7a5291fb9806d93c1d536e337dc419e44f0e3d3c0136",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3b48624ddd8aee13e7ceab2febac981b6d9089fac5196f567bd30b84a64c2de9",
+      "source_fact_keys": [
+        "source_fact:v1:3fa27cd6584d0036de8903539881dd04fd4b4c14e54eed84cdb0ace62ee64921",
+        "source_fact:v1:4f84e5b22ec307254d538cf2b52b215f2a59a1dc74b57e9f8d2f1172ee251dc7",
+        "source_fact:v1:51a9d83d2f3ac21e31aada2bcb2795a61ec2f2b7b17ee0460d17b544f9d1f8c8",
+        "source_fact:v1:836166ab6c5c52f02c6fcaab2f89bc4607e370610fca913a6fb23f6a6764b329",
+        "source_fact:v1:9cd957b9772ea512f793f218a4d3c1ebc6be2422f66ad85135cd841e26a519fd"
+      ],
+      "source_published_kst": "2026-10-13T11:40+09:00",
+      "source_title": "엔비디아 \"韓, 피지컬 AI 공급망 핵심 역할 가능…LG와 협력 성과 기대\"",
+      "telegram_core_fact": "피지컬 AI 시장 확대가 로봇용 반도체뿐 아니라 데이터 생성과 시뮬레이션을 위한 컴퓨팅 인프라 수요 증가로 이어질 수 있다는 의미다.",
+      "title": "엔비디아 \"韓, 피지컬 AI 공급망 핵심 역할 가능…LG와 협력 성과 기대\""
+    },
     "original:786ef310e739a6e202406b4c": {
       "first_seen_kst": "2026-10-06T15:14:29+09:00",
       "lanes": {
@@ -212211,6 +212607,23 @@
       "link": "https://www.mt.co.kr/economy/2026/09/17/2026091716052429827",
       "source": "머니투데이",
       "title": "美 금리 인상에 환율 1380원대…\"추세적 반등은 아냐\""
+    },
+    "original:8e3b5e96d855df26d679413b": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.etnews.com/20261013000097",
+      "source": "전자신문",
+      "source_body_digest": "410c516ae58e39b8976228623320a06174e49bc1862f06081b89ffafc91a8f53",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-13T10:18+09:00",
+      "source_title": "쿠쿠, 대우건설에 빌트인 정수기 공급…2년간 납품",
+      "telegram_core_fact": "쿠쿠가 대우건설 빌트인 정수기 공급 계약을 수주했다.",
+      "title": "쿠쿠, 대우건설에 빌트인 정수기 공급…2년간 납품"
     },
     "original:8e4192a034c2a1596845dcf5": {
       "first_seen_kst": "2026-10-09T17:54:07+09:00",
@@ -225169,6 +225582,23 @@
       "telegram_core_fact": "브리티시 아메리칸 타바코(BTI)가 메릴린치인터내셔널(Merrill Lynch International)과 자사주 매입 계약을 체결하고, 10월 13일부터 12월 23일 영업 종료 시점까지 보통주를 매입해 전량 소각하기로 했다고 10월 7일 발표했다.",
       "title": "브리티시 아메리칸 타바코, 12월 23일까지 메릴린치 통한 자사주 매입"
     },
+    "original:be6453e2cfe7d296610d4cbd": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.etnews.com/20261013000108",
+      "source": "전자신문",
+      "source_body_digest": "025b810ae2f2303539064490190e08cb7e8102dcf686c266bbd047695c03530f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-13T10:27+09:00",
+      "source_title": "[미리보는 테크서밋]<1>삼성전자·SK하이닉스 “AI 시대 메모리 미래 청사진 제시”",
+      "telegram_core_fact": "특히 메모리는 전례없던 공급 부족으로 AI 확산의 최대 '병목'으로 꼽히고 있다.",
+      "title": "[미리보는 테크서밋]<1>삼성전자·SK하이닉스 “AI 시대 메모리 미래 청사진 제시”"
+    },
     "original:be7bb97ba7474501d64adac9": {
       "first_seen_kst": "2026-10-07T08:57:59+09:00",
       "lanes": {
@@ -225741,6 +226171,26 @@
       "source_title": "KT&G, 인도네시아 신공장 가동…5개국 생산체제 구축 | 연합뉴스",
       "telegram_core_fact": "KT&G가 인도네시아 신공장을 가동해 글로벌 5각 생산체제를 구축했다. 설비 9대 설치 후 연산 210억 개비, 기존 공장 포함 현지 생산능력은 350억 개비로 확대될 전망이다.",
       "title": "KT&G, 인도네시아 신공장 가동…5개국 생산체제 구축 | 연합뉴스"
+    },
+    "original:c0a8968d47015ca4cf566297": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.etnews.com/20261013000111",
+      "source": "전자신문",
+      "source_body_digest": "f8bef8ffa88704b22d0094c8caeab7ec7022792a09ee56320616f91818ba29c1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5a450227860ed9db53c1bc7e6e12785474770ea136ed0a7f2716eff4741a8c36",
+      "source_fact_keys": [
+        "source_fact:v1:a007a04bf828953669c85acb4f1883a59d83c3121f84a559303599f93f711c24",
+        "source_fact:v1:f6a4e89dd883d4c5b1154b2c6eb4723a1776e15cb13a012454fb9d0b0ab530cd"
+      ],
+      "source_published_kst": "2026-10-13T10:30+09:00",
+      "source_title": "에스에이티정보, AI 기반 문서 개인정보 비식별 솔루션 '다큐가드' 공급 확대",
+      "telegram_core_fact": "문서·데이터 솔루션 전문기업 에스에이티정보(대표 오세용)는 인공지능(AI) 기반 문서 개인정보 검출·비식별 솔루션 '다큐가드(Docu-Guard)'의 금융·공공 분야 공급을 확대한다고 13일 밝혔다. 다큐가드는 문서 분석부터 개인정보 검출, 비식별 처리, 검수와 반출 관리까지 지원하는 솔루션이다.",
+      "title": "에스에이티정보, AI 기반 문서 개인정보 비식별 솔루션 '다큐가드' 공급 확대"
     },
     "original:c0ab4eb12572c8421b67b3e4": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
@@ -230774,6 +231224,26 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=05113526645585368",
       "source": "이데일리",
       "title": "유가 꺾이고 인상 전망 약해져도…美장기금리 ‘高高’"
+    },
+    "original:d31fd3dc000c7b3c06ef6d8b": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823575",
+      "source": "뉴시스",
+      "source_body_digest": "739fc5d6cfab8210b3863d0466e7ed00d91e4281f50e06c069404a78b26176bf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:da5eea40d71abd405f89d2f27b353830657bb575d63191bab94a3fbccf1e7b99",
+      "source_fact_keys": [
+        "source_fact:v1:98177f35e4a4d70a6a3a5fb98a25859135ffa35fd1c3f9ab4d9cfa9770cd75ab",
+        "source_fact:v1:cf0987b0c492f4232c156498262b326739379a7542ebbc0139f7c19d65fede63"
+      ],
+      "source_published_kst": "2026-10-13T10:43+09:00",
+      "source_title": "제이앤티지, 코스닥 상장 예비심사 승인",
+      "telegram_core_fact": "신재생에너지 첨단소재 전문기업 제이앤티지(JNTG)는 코스닥 상장을 위한 예비심사를 통과했다고 13일 밝혔다.",
+      "title": "제이앤티지, 코스닥 상장 예비심사 승인"
     },
     "original:d32d36c8d144b443e3097cf3": {
       "first_seen_kst": "2026-10-08T15:53:45+09:00",
@@ -242830,6 +243300,25 @@
       "source": "전자신문",
       "title": "수이, 토큰화 자산 표준화 나선다…기관 간 거래·정산 연결"
     },
+    "original:fe6be9d544a55c2fc060549e": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823506",
+      "source": "뉴시스",
+      "source_body_digest": "8ef0c09d7b885bcb69a4fb29be8a8ae77ee610c96f7c33c09a108b49f75e57ad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:77a4ec6cda4d4ceda3e7081061c37742ff4c5dfdbc6937d04b39b6672edf807f",
+      "source_fact_keys": [
+        "source_fact:v1:63e8db6b765838ce18e7355c98399ef79b19189f174a63352cbd9192604435a6"
+      ],
+      "source_published_kst": "2026-10-13T10:58+09:00",
+      "source_title": "한화, 美육군에 K9 자주포 이달 납품 시작…\"미국 독립연도를 제식명 XM1776에\"",
+      "telegram_core_fact": "한화에어로스페이스 관계자는 \"XM1776 시제품의 적기 납품과 미국 앨라배마·아칸소 현지 생산 기반 구축으로 미국 육군이 신뢰할 수 있는 파트너로 도약할 것\"이라고 말했다.",
+      "title": "한화, 美육군에 K9 자주포 이달 납품 시작…\"미국 독립연도를 제식명 XM1776에\""
+    },
     "original:fe87564dfd2ec790816927de": {
       "first_seen_kst": "2026-10-03T13:09:25+09:00",
       "lanes": {
@@ -251504,6 +251993,29 @@
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
     },
+    "source_fact:091f6f305fbf8b51e38ab6c1": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.mt.co.kr/tech/2026/10/13/2026101311034144640",
+      "source": "머니투데이",
+      "source_body_digest": "ea3c24dc9d7494d28c3f7a5291fb9806d93c1d536e337dc419e44f0e3d3c0136",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3b48624ddd8aee13e7ceab2febac981b6d9089fac5196f567bd30b84a64c2de9",
+      "source_fact_keys": [
+        "source_fact:v1:3fa27cd6584d0036de8903539881dd04fd4b4c14e54eed84cdb0ace62ee64921",
+        "source_fact:v1:4f84e5b22ec307254d538cf2b52b215f2a59a1dc74b57e9f8d2f1172ee251dc7",
+        "source_fact:v1:51a9d83d2f3ac21e31aada2bcb2795a61ec2f2b7b17ee0460d17b544f9d1f8c8",
+        "source_fact:v1:836166ab6c5c52f02c6fcaab2f89bc4607e370610fca913a6fb23f6a6764b329",
+        "source_fact:v1:9cd957b9772ea512f793f218a4d3c1ebc6be2422f66ad85135cd841e26a519fd"
+      ],
+      "source_published_kst": "2026-10-13T11:40+09:00",
+      "source_title": "엔비디아 \"韓, 피지컬 AI 공급망 핵심 역할 가능…LG와 협력 성과 기대\"",
+      "telegram_core_fact": "피지컬 AI 시장 확대가 로봇용 반도체뿐 아니라 데이터 생성과 시뮬레이션을 위한 컴퓨팅 인프라 수요 증가로 이어질 수 있다는 의미다.",
+      "title": "엔비디아 \"韓, 피지컬 AI 공급망 핵심 역할 가능…LG와 협력 성과 기대\""
+    },
     "source_fact:0931e9228c7ac37430f85f61": {
       "first_seen_kst": "2026-10-08T13:46:05+09:00",
       "lanes": {
@@ -259969,6 +260481,26 @@
       "source_title": "[집중취재] 10·15 부동산대책 1년…집값 잡았나, 풍선효과 키웠나",
       "telegram_core_fact": "정부가 서울 전역과 경기 일부 지역을 규제지역과 토지거래허가구역으로 지정하며 대출 규제까지 강화한 10·15 부동산대책이 시행 1년을 맞았습니다.",
       "title": "[집중취재] 10·15 부동산대책 1년…집값 잡았나, 풍선효과 키웠나"
+    },
+    "source_fact:11b93001bec70ea79335ab72": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823575",
+      "source": "뉴시스",
+      "source_body_digest": "739fc5d6cfab8210b3863d0466e7ed00d91e4281f50e06c069404a78b26176bf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:da5eea40d71abd405f89d2f27b353830657bb575d63191bab94a3fbccf1e7b99",
+      "source_fact_keys": [
+        "source_fact:v1:98177f35e4a4d70a6a3a5fb98a25859135ffa35fd1c3f9ab4d9cfa9770cd75ab",
+        "source_fact:v1:cf0987b0c492f4232c156498262b326739379a7542ebbc0139f7c19d65fede63"
+      ],
+      "source_published_kst": "2026-10-13T10:43+09:00",
+      "source_title": "제이앤티지, 코스닥 상장 예비심사 승인",
+      "telegram_core_fact": "신재생에너지 첨단소재 전문기업 제이앤티지(JNTG)는 코스닥 상장을 위한 예비심사를 통과했다고 13일 밝혔다.",
+      "title": "제이앤티지, 코스닥 상장 예비심사 승인"
     },
     "source_fact:11c3ee16187c2e1bb182e9b0": {
       "first_seen_kst": "2026-10-12T07:02:25+09:00",
@@ -304277,6 +304809,26 @@
       "telegram_core_fact": "SK하이닉스의 미국 자회사 솔리다임의 나스닥 상장(IPO) 추진 소식에 중복상장 논란이 일고 있다.",
       "title": "중복상장 안막는 선진시장…설명책임·이해상충 관리로 규율"
     },
+    "source_fact:3e62691d2263cd6cad822c48": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823575",
+      "source": "뉴시스",
+      "source_body_digest": "739fc5d6cfab8210b3863d0466e7ed00d91e4281f50e06c069404a78b26176bf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:da5eea40d71abd405f89d2f27b353830657bb575d63191bab94a3fbccf1e7b99",
+      "source_fact_keys": [
+        "source_fact:v1:98177f35e4a4d70a6a3a5fb98a25859135ffa35fd1c3f9ab4d9cfa9770cd75ab",
+        "source_fact:v1:cf0987b0c492f4232c156498262b326739379a7542ebbc0139f7c19d65fede63"
+      ],
+      "source_published_kst": "2026-10-13T10:43+09:00",
+      "source_title": "제이앤티지, 코스닥 상장 예비심사 승인",
+      "telegram_core_fact": "신재생에너지 첨단소재 전문기업 제이앤티지(JNTG)는 코스닥 상장을 위한 예비심사를 통과했다고 13일 밝혔다.",
+      "title": "제이앤티지, 코스닥 상장 예비심사 승인"
+    },
     "source_fact:3e6e3c02f11b564bdfb61c93": {
       "first_seen_kst": "2026-10-12T08:03:02+09:00",
       "lanes": {
@@ -333094,6 +333646,25 @@
       "telegram_core_fact": "결국 이날 반도체 시장에서는 ETF 리밸런싱에 따른 기계적인 수급 조정과 삼성전자 실적, 옵션 만기 및 외국인 매매가 동시에 맞물리면서 종목별 주가 차별화가 나타나는지가 주요 변수로 떠올랐다.",
       "title": "반도체 ETF 리밸런싱에 변동성 커져…삼성전자 2000억 팔고 소부장 더 담는다"
     },
+    "source_fact:5ad7e77b5f0ed66bf78a2ee2": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823496",
+      "source": "뉴시스",
+      "source_body_digest": "b5b1422a2f91cd46f90474aa1bb77e68441fea96d3ea936f61b39ebbfa2565a1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60d9a05cca09518f5b2df6055c25047c9903c3aa847bd52749f1dfee24f7ed6a",
+      "source_fact_keys": [
+        "source_fact:v1:e5fc57d7a0e075839dc2baf6503cada619045d398f32ba90001d59ad250ceb69"
+      ],
+      "source_published_kst": "2026-10-13T10:33+09:00",
+      "source_title": "휴이노·유한양행 \"울산 동강병원에 메모큐 공급\"",
+      "telegram_core_fact": "휴이노와 유한양행은 의료법인 동강의료재단 동강병원 심장내과에 실시간 환자 모니터링 솔루션 ‘메모큐(MEMO CUE)’를 공급했다고 13일 밝혔다.",
+      "title": "휴이노·유한양행 \"울산 동강병원에 메모큐 공급\""
+    },
     "source_fact:5ae1c7a128cc0e6b78dfa626": {
       "first_seen_kst": "2026-10-13T04:37:27+09:00",
       "lanes": {
@@ -337891,6 +338462,29 @@
       "source_title": "의정부도시공사, 공영주차장 등 운영 환경 변경",
       "telegram_core_fact": "전현영 의정부도시공사 사장은 \"앞으로도 시민들이 체감할 수 있는 주차환경 개선과 주차공간 확보를 위해 지속적으로 노력하겠다\"고 말했다.",
       "title": "의정부도시공사, 공영주차장 등 운영 환경 변경"
+    },
+    "source_fact:5f85bc8228d82fdd13ff8a34": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.mt.co.kr/tech/2026/10/13/2026101311034144640",
+      "source": "머니투데이",
+      "source_body_digest": "ea3c24dc9d7494d28c3f7a5291fb9806d93c1d536e337dc419e44f0e3d3c0136",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3b48624ddd8aee13e7ceab2febac981b6d9089fac5196f567bd30b84a64c2de9",
+      "source_fact_keys": [
+        "source_fact:v1:3fa27cd6584d0036de8903539881dd04fd4b4c14e54eed84cdb0ace62ee64921",
+        "source_fact:v1:4f84e5b22ec307254d538cf2b52b215f2a59a1dc74b57e9f8d2f1172ee251dc7",
+        "source_fact:v1:51a9d83d2f3ac21e31aada2bcb2795a61ec2f2b7b17ee0460d17b544f9d1f8c8",
+        "source_fact:v1:836166ab6c5c52f02c6fcaab2f89bc4607e370610fca913a6fb23f6a6764b329",
+        "source_fact:v1:9cd957b9772ea512f793f218a4d3c1ebc6be2422f66ad85135cd841e26a519fd"
+      ],
+      "source_published_kst": "2026-10-13T11:40+09:00",
+      "source_title": "엔비디아 \"韓, 피지컬 AI 공급망 핵심 역할 가능…LG와 협력 성과 기대\"",
+      "telegram_core_fact": "피지컬 AI 시장 확대가 로봇용 반도체뿐 아니라 데이터 생성과 시뮬레이션을 위한 컴퓨팅 인프라 수요 증가로 이어질 수 있다는 의미다.",
+      "title": "엔비디아 \"韓, 피지컬 AI 공급망 핵심 역할 가능…LG와 협력 성과 기대\""
     },
     "source_fact:5f87535008cc468c2348d197": {
       "first_seen_kst": "2026-10-07T07:39:19+09:00",
@@ -343400,6 +343994,26 @@
       "source_published_kst": "2026-10-06T04:53+09:00",
       "title": "트럼프 \"휘발윳값 상승, 호르무즈 때문 아냐\"…우크라전쟁·야당 탓"
     },
+    "source_fact:653faab3f471c64162dd61cd": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.etnews.com/20261013000111",
+      "source": "전자신문",
+      "source_body_digest": "f8bef8ffa88704b22d0094c8caeab7ec7022792a09ee56320616f91818ba29c1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5a450227860ed9db53c1bc7e6e12785474770ea136ed0a7f2716eff4741a8c36",
+      "source_fact_keys": [
+        "source_fact:v1:a007a04bf828953669c85acb4f1883a59d83c3121f84a559303599f93f711c24",
+        "source_fact:v1:f6a4e89dd883d4c5b1154b2c6eb4723a1776e15cb13a012454fb9d0b0ab530cd"
+      ],
+      "source_published_kst": "2026-10-13T10:30+09:00",
+      "source_title": "에스에이티정보, AI 기반 문서 개인정보 비식별 솔루션 '다큐가드' 공급 확대",
+      "telegram_core_fact": "문서·데이터 솔루션 전문기업 에스에이티정보(대표 오세용)는 인공지능(AI) 기반 문서 개인정보 검출·비식별 솔루션 '다큐가드(Docu-Guard)'의 금융·공공 분야 공급을 확대한다고 13일 밝혔다. 다큐가드는 문서 분석부터 개인정보 검출, 비식별 처리, 검수와 반출 관리까지 지원하는 솔루션이다.",
+      "title": "에스에이티정보, AI 기반 문서 개인정보 비식별 솔루션 '다큐가드' 공급 확대"
+    },
     "source_fact:65462c94f86cefa8198a1e86": {
       "first_seen_kst": "2026-10-12T13:36:34+09:00",
       "lanes": {
@@ -345440,6 +346054,25 @@
       ],
       "source_published_kst": "2026-10-07T14:24+09:00",
       "title": "KT&G, 인니 신공장 가동 시작…‘글로벌 5각 생산체제’ 구축"
+    },
+    "source_fact:67981e41c761abfc82a7954d": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823506",
+      "source": "뉴시스",
+      "source_body_digest": "8ef0c09d7b885bcb69a4fb29be8a8ae77ee610c96f7c33c09a108b49f75e57ad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:77a4ec6cda4d4ceda3e7081061c37742ff4c5dfdbc6937d04b39b6672edf807f",
+      "source_fact_keys": [
+        "source_fact:v1:63e8db6b765838ce18e7355c98399ef79b19189f174a63352cbd9192604435a6"
+      ],
+      "source_published_kst": "2026-10-13T10:58+09:00",
+      "source_title": "한화, 美육군에 K9 자주포 이달 납품 시작…\"미국 독립연도를 제식명 XM1776에\"",
+      "telegram_core_fact": "한화에어로스페이스 관계자는 \"XM1776 시제품의 적기 납품과 미국 앨라배마·아칸소 현지 생산 기반 구축으로 미국 육군이 신뢰할 수 있는 파트너로 도약할 것\"이라고 말했다.",
+      "title": "한화, 美육군에 K9 자주포 이달 납품 시작…\"미국 독립연도를 제식명 XM1776에\""
     },
     "source_fact:679d0c44eb85de31738de029": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -349707,6 +350340,29 @@
       "source_title": "IBK증권, 이엔에프테크 기업분석 개시…\"사상 최대실적 전망\" | 연합뉴스",
       "telegram_core_fact": "그는 \"2020년 반도체 호황 시기 기록했던 최대 영업이익률은 14% 수준이었지만, 이번에는 전방산업 호황에 따른 물량 성장과 판가 인상에 자체적인 수익구조 개선이 더해지면서 매년 매출과 영업이익 규모, 영업이익률이 사상 최대치를 경신할 것\"이라고 예상했다.",
       "title": "IBK증권, 이엔에프테크 기업분석 개시…\"사상 최대실적 전망\" | 연합뉴스"
+    },
+    "source_fact:6badf1f771b3eb048060d554": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.mt.co.kr/tech/2026/10/13/2026101311034144640",
+      "source": "머니투데이",
+      "source_body_digest": "ea3c24dc9d7494d28c3f7a5291fb9806d93c1d536e337dc419e44f0e3d3c0136",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3b48624ddd8aee13e7ceab2febac981b6d9089fac5196f567bd30b84a64c2de9",
+      "source_fact_keys": [
+        "source_fact:v1:3fa27cd6584d0036de8903539881dd04fd4b4c14e54eed84cdb0ace62ee64921",
+        "source_fact:v1:4f84e5b22ec307254d538cf2b52b215f2a59a1dc74b57e9f8d2f1172ee251dc7",
+        "source_fact:v1:51a9d83d2f3ac21e31aada2bcb2795a61ec2f2b7b17ee0460d17b544f9d1f8c8",
+        "source_fact:v1:836166ab6c5c52f02c6fcaab2f89bc4607e370610fca913a6fb23f6a6764b329",
+        "source_fact:v1:9cd957b9772ea512f793f218a4d3c1ebc6be2422f66ad85135cd841e26a519fd"
+      ],
+      "source_published_kst": "2026-10-13T11:40+09:00",
+      "source_title": "엔비디아 \"韓, 피지컬 AI 공급망 핵심 역할 가능…LG와 협력 성과 기대\"",
+      "telegram_core_fact": "피지컬 AI 시장 확대가 로봇용 반도체뿐 아니라 데이터 생성과 시뮬레이션을 위한 컴퓨팅 인프라 수요 증가로 이어질 수 있다는 의미다.",
+      "title": "엔비디아 \"韓, 피지컬 AI 공급망 핵심 역할 가능…LG와 협력 성과 기대\""
     },
     "source_fact:6baee2477c81622f95031e09": {
       "first_seen_kst": "2026-10-11T11:48:17+09:00",
@@ -408045,6 +408701,29 @@
       "telegram_core_fact": "젤렌스키 대통령은 “러시아가 에너지 수출로 벌어들인 돈을 무기와 공격용 드론 생산에 쓸 것”이라며 미국의 경유 제재 완화 합의를 비판했다.",
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     },
+    "source_fact:a7870e41cc4d18edf6b15f35": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.mt.co.kr/tech/2026/10/13/2026101311034144640",
+      "source": "머니투데이",
+      "source_body_digest": "ea3c24dc9d7494d28c3f7a5291fb9806d93c1d536e337dc419e44f0e3d3c0136",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3b48624ddd8aee13e7ceab2febac981b6d9089fac5196f567bd30b84a64c2de9",
+      "source_fact_keys": [
+        "source_fact:v1:3fa27cd6584d0036de8903539881dd04fd4b4c14e54eed84cdb0ace62ee64921",
+        "source_fact:v1:4f84e5b22ec307254d538cf2b52b215f2a59a1dc74b57e9f8d2f1172ee251dc7",
+        "source_fact:v1:51a9d83d2f3ac21e31aada2bcb2795a61ec2f2b7b17ee0460d17b544f9d1f8c8",
+        "source_fact:v1:836166ab6c5c52f02c6fcaab2f89bc4607e370610fca913a6fb23f6a6764b329",
+        "source_fact:v1:9cd957b9772ea512f793f218a4d3c1ebc6be2422f66ad85135cd841e26a519fd"
+      ],
+      "source_published_kst": "2026-10-13T11:40+09:00",
+      "source_title": "엔비디아 \"韓, 피지컬 AI 공급망 핵심 역할 가능…LG와 협력 성과 기대\"",
+      "telegram_core_fact": "피지컬 AI 시장 확대가 로봇용 반도체뿐 아니라 데이터 생성과 시뮬레이션을 위한 컴퓨팅 인프라 수요 증가로 이어질 수 있다는 의미다.",
+      "title": "엔비디아 \"韓, 피지컬 AI 공급망 핵심 역할 가능…LG와 협력 성과 기대\""
+    },
     "source_fact:a78aed14c9c2767cb22096e5": {
       "first_seen_kst": "2026-10-12T19:29:26+09:00",
       "lanes": {
@@ -415169,6 +415848,26 @@
       "telegram_core_fact": "일본 시장조사업계는 기존 2위인 H&M의 2025년 11월기(2024년 12월~2025년 11월) 매출이 3조6000억엔(약 30조5600억원)을 기록한 이후 감소세를 보인 점을 근거로 패스트리테일링이 H&M의 매출 규모를 넘어섰을 가능성이 있다고 분석했다.",
       "title": "유니클로, 매출 17% 늘어 역대 최대…H&M 제치고 세계 2위 전망"
     },
+    "source_fact:aea64c67717a2be10ffceab0": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.etnews.com/20261013000111",
+      "source": "전자신문",
+      "source_body_digest": "f8bef8ffa88704b22d0094c8caeab7ec7022792a09ee56320616f91818ba29c1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5a450227860ed9db53c1bc7e6e12785474770ea136ed0a7f2716eff4741a8c36",
+      "source_fact_keys": [
+        "source_fact:v1:a007a04bf828953669c85acb4f1883a59d83c3121f84a559303599f93f711c24",
+        "source_fact:v1:f6a4e89dd883d4c5b1154b2c6eb4723a1776e15cb13a012454fb9d0b0ab530cd"
+      ],
+      "source_published_kst": "2026-10-13T10:30+09:00",
+      "source_title": "에스에이티정보, AI 기반 문서 개인정보 비식별 솔루션 '다큐가드' 공급 확대",
+      "telegram_core_fact": "문서·데이터 솔루션 전문기업 에스에이티정보(대표 오세용)는 인공지능(AI) 기반 문서 개인정보 검출·비식별 솔루션 '다큐가드(Docu-Guard)'의 금융·공공 분야 공급을 확대한다고 13일 밝혔다. 다큐가드는 문서 분석부터 개인정보 검출, 비식별 처리, 검수와 반출 관리까지 지원하는 솔루션이다.",
+      "title": "에스에이티정보, AI 기반 문서 개인정보 비식별 솔루션 '다큐가드' 공급 확대"
+    },
     "source_fact:aeab2e85892d00fba0b98335": {
       "first_seen_kst": "2026-10-12T07:27:08+09:00",
       "lanes": {
@@ -418947,6 +419646,29 @@
       ],
       "source_published_kst": "2026-10-06T16:30+09:00",
       "title": "고려아연, 故 최창걸 명예회장 1주기 추모…“사람·신뢰 철학으로 미래 50년”"
+    },
+    "source_fact:b29f0a10558fd5d7135bb10d": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.mt.co.kr/tech/2026/10/13/2026101311034144640",
+      "source": "머니투데이",
+      "source_body_digest": "ea3c24dc9d7494d28c3f7a5291fb9806d93c1d536e337dc419e44f0e3d3c0136",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3b48624ddd8aee13e7ceab2febac981b6d9089fac5196f567bd30b84a64c2de9",
+      "source_fact_keys": [
+        "source_fact:v1:3fa27cd6584d0036de8903539881dd04fd4b4c14e54eed84cdb0ace62ee64921",
+        "source_fact:v1:4f84e5b22ec307254d538cf2b52b215f2a59a1dc74b57e9f8d2f1172ee251dc7",
+        "source_fact:v1:51a9d83d2f3ac21e31aada2bcb2795a61ec2f2b7b17ee0460d17b544f9d1f8c8",
+        "source_fact:v1:836166ab6c5c52f02c6fcaab2f89bc4607e370610fca913a6fb23f6a6764b329",
+        "source_fact:v1:9cd957b9772ea512f793f218a4d3c1ebc6be2422f66ad85135cd841e26a519fd"
+      ],
+      "source_published_kst": "2026-10-13T11:40+09:00",
+      "source_title": "엔비디아 \"韓, 피지컬 AI 공급망 핵심 역할 가능…LG와 협력 성과 기대\"",
+      "telegram_core_fact": "피지컬 AI 시장 확대가 로봇용 반도체뿐 아니라 데이터 생성과 시뮬레이션을 위한 컴퓨팅 인프라 수요 증가로 이어질 수 있다는 의미다.",
+      "title": "엔비디아 \"韓, 피지컬 AI 공급망 핵심 역할 가능…LG와 협력 성과 기대\""
     },
     "source_fact:b2a6994e691af342c783c880": {
       "first_seen_kst": "2026-10-07T15:30:27+09:00",
@@ -495818,6 +496540,25 @@
       "source": "전자신문",
       "title": "상인회장 자격 논란에도 62억원 지원…전통시장 관리체계 '공백'"
     },
+    "title:06a8879fc7b71ae9b2af8d2c": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823496",
+      "source": "뉴시스",
+      "source_body_digest": "b5b1422a2f91cd46f90474aa1bb77e68441fea96d3ea936f61b39ebbfa2565a1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60d9a05cca09518f5b2df6055c25047c9903c3aa847bd52749f1dfee24f7ed6a",
+      "source_fact_keys": [
+        "source_fact:v1:e5fc57d7a0e075839dc2baf6503cada619045d398f32ba90001d59ad250ceb69"
+      ],
+      "source_published_kst": "2026-10-13T10:33+09:00",
+      "source_title": "휴이노·유한양행 \"울산 동강병원에 메모큐 공급\"",
+      "telegram_core_fact": "휴이노와 유한양행은 의료법인 동강의료재단 동강병원 심장내과에 실시간 환자 모니터링 솔루션 ‘메모큐(MEMO CUE)’를 공급했다고 13일 밝혔다.",
+      "title": "휴이노·유한양행 \"울산 동강병원에 메모큐 공급\""
+    },
     "title:06b3f25da6ef53abd48c0693": {
       "first_seen_kst": "2026-10-03T00:49:56+09:00",
       "lanes": {
@@ -528019,6 +528760,29 @@
       "source_published_kst": "2026-10-06T18:46+09:00",
       "title": "알테오젠, 알테오젠바이오로직스 흡수합병"
     },
+    "title:786937131cea87ade3ab42fc": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.mt.co.kr/tech/2026/10/13/2026101311034144640",
+      "source": "머니투데이",
+      "source_body_digest": "ea3c24dc9d7494d28c3f7a5291fb9806d93c1d536e337dc419e44f0e3d3c0136",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3b48624ddd8aee13e7ceab2febac981b6d9089fac5196f567bd30b84a64c2de9",
+      "source_fact_keys": [
+        "source_fact:v1:3fa27cd6584d0036de8903539881dd04fd4b4c14e54eed84cdb0ace62ee64921",
+        "source_fact:v1:4f84e5b22ec307254d538cf2b52b215f2a59a1dc74b57e9f8d2f1172ee251dc7",
+        "source_fact:v1:51a9d83d2f3ac21e31aada2bcb2795a61ec2f2b7b17ee0460d17b544f9d1f8c8",
+        "source_fact:v1:836166ab6c5c52f02c6fcaab2f89bc4607e370610fca913a6fb23f6a6764b329",
+        "source_fact:v1:9cd957b9772ea512f793f218a4d3c1ebc6be2422f66ad85135cd841e26a519fd"
+      ],
+      "source_published_kst": "2026-10-13T11:40+09:00",
+      "source_title": "엔비디아 \"韓, 피지컬 AI 공급망 핵심 역할 가능…LG와 협력 성과 기대\"",
+      "telegram_core_fact": "피지컬 AI 시장 확대가 로봇용 반도체뿐 아니라 데이터 생성과 시뮬레이션을 위한 컴퓨팅 인프라 수요 증가로 이어질 수 있다는 의미다.",
+      "title": "엔비디아 \"韓, 피지컬 AI 공급망 핵심 역할 가능…LG와 협력 성과 기대\""
+    },
     "title:786ef310e739a6e202406b4c": {
       "first_seen_kst": "2026-10-06T15:14:29+09:00",
       "lanes": {
@@ -534139,6 +534903,23 @@
       "link": "https://www.mt.co.kr/economy/2026/09/17/2026091716052429827",
       "source": "머니투데이",
       "title": "美 금리 인상에 환율 1380원대…\"추세적 반등은 아냐\""
+    },
+    "title:8e3b5e96d855df26d679413b": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.etnews.com/20261013000097",
+      "source": "전자신문",
+      "source_body_digest": "410c516ae58e39b8976228623320a06174e49bc1862f06081b89ffafc91a8f53",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-13T10:18+09:00",
+      "source_title": "쿠쿠, 대우건설에 빌트인 정수기 공급…2년간 납품",
+      "telegram_core_fact": "쿠쿠가 대우건설 빌트인 정수기 공급 계약을 수주했다.",
+      "title": "쿠쿠, 대우건설에 빌트인 정수기 공급…2년간 납품"
     },
     "title:8e4192a034c2a1596845dcf5": {
       "first_seen_kst": "2026-10-09T17:54:07+09:00",
@@ -547601,6 +548382,23 @@
       "telegram_core_fact": "브리티시 아메리칸 타바코(BTI)가 메릴린치인터내셔널(Merrill Lynch International)과 자사주 매입 계약을 체결하고, 10월 13일부터 12월 23일 영업 종료 시점까지 보통주를 매입해 전량 소각하기로 했다고 10월 7일 발표했다.",
       "title": "브리티시 아메리칸 타바코, 12월 23일까지 메릴린치 통한 자사주 매입"
     },
+    "title:be6453e2cfe7d296610d4cbd": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.etnews.com/20261013000108",
+      "source": "전자신문",
+      "source_body_digest": "025b810ae2f2303539064490190e08cb7e8102dcf686c266bbd047695c03530f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-13T10:27+09:00",
+      "source_title": "[미리보는 테크서밋]<1>삼성전자·SK하이닉스 “AI 시대 메모리 미래 청사진 제시”",
+      "telegram_core_fact": "특히 메모리는 전례없던 공급 부족으로 AI 확산의 최대 '병목'으로 꼽히고 있다.",
+      "title": "[미리보는 테크서밋]<1>삼성전자·SK하이닉스 “AI 시대 메모리 미래 청사진 제시”"
+    },
     "title:be7bb97ba7474501d64adac9": {
       "first_seen_kst": "2026-10-07T08:57:59+09:00",
       "lanes": {
@@ -548173,6 +548971,26 @@
       "source_title": "KT&G, 인도네시아 신공장 가동…5개국 생산체제 구축 | 연합뉴스",
       "telegram_core_fact": "KT&G가 인도네시아 신공장을 가동해 글로벌 5각 생산체제를 구축했다. 설비 9대 설치 후 연산 210억 개비, 기존 공장 포함 현지 생산능력은 350억 개비로 확대될 전망이다.",
       "title": "KT&G, 인도네시아 신공장 가동…5개국 생산체제 구축 | 연합뉴스"
+    },
+    "title:c0a8968d47015ca4cf566297": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.etnews.com/20261013000111",
+      "source": "전자신문",
+      "source_body_digest": "f8bef8ffa88704b22d0094c8caeab7ec7022792a09ee56320616f91818ba29c1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5a450227860ed9db53c1bc7e6e12785474770ea136ed0a7f2716eff4741a8c36",
+      "source_fact_keys": [
+        "source_fact:v1:a007a04bf828953669c85acb4f1883a59d83c3121f84a559303599f93f711c24",
+        "source_fact:v1:f6a4e89dd883d4c5b1154b2c6eb4723a1776e15cb13a012454fb9d0b0ab530cd"
+      ],
+      "source_published_kst": "2026-10-13T10:30+09:00",
+      "source_title": "에스에이티정보, AI 기반 문서 개인정보 비식별 솔루션 '다큐가드' 공급 확대",
+      "telegram_core_fact": "문서·데이터 솔루션 전문기업 에스에이티정보(대표 오세용)는 인공지능(AI) 기반 문서 개인정보 검출·비식별 솔루션 '다큐가드(Docu-Guard)'의 금융·공공 분야 공급을 확대한다고 13일 밝혔다. 다큐가드는 문서 분석부터 개인정보 검출, 비식별 처리, 검수와 반출 관리까지 지원하는 솔루션이다.",
+      "title": "에스에이티정보, AI 기반 문서 개인정보 비식별 솔루션 '다큐가드' 공급 확대"
     },
     "title:c0ab4eb12572c8421b67b3e4": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
@@ -553372,6 +554190,26 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=05113526645585368",
       "source": "이데일리",
       "title": "유가 꺾이고 인상 전망 약해져도…美장기금리 ‘高高’"
+    },
+    "title:d31fd3dc000c7b3c06ef6d8b": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823575",
+      "source": "뉴시스",
+      "source_body_digest": "739fc5d6cfab8210b3863d0466e7ed00d91e4281f50e06c069404a78b26176bf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:da5eea40d71abd405f89d2f27b353830657bb575d63191bab94a3fbccf1e7b99",
+      "source_fact_keys": [
+        "source_fact:v1:98177f35e4a4d70a6a3a5fb98a25859135ffa35fd1c3f9ab4d9cfa9770cd75ab",
+        "source_fact:v1:cf0987b0c492f4232c156498262b326739379a7542ebbc0139f7c19d65fede63"
+      ],
+      "source_published_kst": "2026-10-13T10:43+09:00",
+      "source_title": "제이앤티지, 코스닥 상장 예비심사 승인",
+      "telegram_core_fact": "신재생에너지 첨단소재 전문기업 제이앤티지(JNTG)는 코스닥 상장을 위한 예비심사를 통과했다고 13일 밝혔다.",
+      "title": "제이앤티지, 코스닥 상장 예비심사 승인"
     },
     "title:d32d36c8d144b443e3097cf3": {
       "first_seen_kst": "2026-10-08T15:53:45+09:00",
@@ -565691,6 +566529,25 @@
       "source": "전자신문",
       "title": "수이, 토큰화 자산 표준화 나선다…기관 간 거래·정산 연결"
     },
+    "title:fe6be9d544a55c2fc060549e": {
+      "first_seen_kst": "2026-10-13T11:53:28+09:00",
+      "lanes": {
+        "live": "2026-10-13T11:53:28+09:00"
+      },
+      "last_seen_kst": "2026-10-13T11:53:28+09:00",
+      "link": "https://www.newsis.com/view/NISX20261013_0003823506",
+      "source": "뉴시스",
+      "source_body_digest": "8ef0c09d7b885bcb69a4fb29be8a8ae77ee610c96f7c33c09a108b49f75e57ad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:77a4ec6cda4d4ceda3e7081061c37742ff4c5dfdbc6937d04b39b6672edf807f",
+      "source_fact_keys": [
+        "source_fact:v1:63e8db6b765838ce18e7355c98399ef79b19189f174a63352cbd9192604435a6"
+      ],
+      "source_published_kst": "2026-10-13T10:58+09:00",
+      "source_title": "한화, 美육군에 K9 자주포 이달 납품 시작…\"미국 독립연도를 제식명 XM1776에\"",
+      "telegram_core_fact": "한화에어로스페이스 관계자는 \"XM1776 시제품의 적기 납품과 미국 앨라배마·아칸소 현지 생산 기반 구축으로 미국 육군이 신뢰할 수 있는 파트너로 도약할 것\"이라고 말했다.",
+      "title": "한화, 美육군에 K9 자주포 이달 납품 시작…\"미국 독립연도를 제식명 XM1776에\""
+    },
     "title:fe87564dfd2ec790816927de": {
       "first_seen_kst": "2026-10-03T13:09:25+09:00",
       "lanes": {
@@ -566161,5 +567018,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-13T11:35:08+09:00"
+  "updated_at_kst": "2026-10-13T11:53:28+09:00"
 }
