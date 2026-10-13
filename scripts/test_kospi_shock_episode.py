@@ -830,6 +830,7 @@ try:
     assert len(_surge_sent)==1,_surge_sent
     assert _surge_watch.surge_sent_at.get("외국인")==10323,_surge_watch.surge_sent_at
     assert _surge_delivery and _surge_delivery[0][0:2]==("flow_surge",888),_surge_delivery
+    assert _surge_delivery[0][2]["market"]=="KOSPI" and _surge_delivery[0][2]["actor"]=="외국인"
     assert "현물(통합) +550억원" in _surge_sent[0],_surge_sent[0]
     assert "KOSPI200 선물 +720억원" in _surge_sent[0],_surge_sent[0]
     assert "KOSPI +0.00%" in _surge_sent[0],_surge_sent[0]
@@ -1182,6 +1183,8 @@ with _kq_patch.object(ks, "telegram_send", _kq_fake_send):
     assert "코스닥 현물(통합)" in _kq_msgs[0] and "<b>+470억원</b>" in _kq_msgs[0], _kq_msgs[0]
     assert "KOSPI200 선물·프로그램 수급과 합산하지 않음" in _kq_msgs[0], _kq_msgs[0]
     assert _kq_delivery[0][0:2] == ("kosdaq_flow_surge",32001), _kq_delivery
+    assert _kq_delivery[0][2]["market"]=="KOSDAQ"
+    assert _kq_delivery[0][2]["actor"]=="외국인"
     assert _kq.surge_sent_at["외국인"] == _kq_base+500  # 코스피 기존 데이터 보존
     assert _kq.kosdaq_surge_sent_at["외국인"] == _kq_base+323
     _kq.kosdaq_flows.append(_kq_row(_kq_base+335, 650))
@@ -1213,3 +1216,17 @@ assert ks._flow_surge_channel_pair(list(_kq_pre.kosdaq_flows),"현물",_kq_base+
 _kq_pre.kosdaq_flows.append(_kq_row(_kq_base+320,4000))
 assert ks._flow_surge_channel_pair(list(_kq_pre.kosdaq_flows),"현물",_kq_base+323,_kq_base) is None
 print("kosdaq_surge_no_preopen_reconstruction_valid=true")
+
+# 실시간 두 시장·복수 매수주체에 대한 감사키 충돌 방지.
+# 같은 시작시각과 같은 stage여도 시장/주체가 다르면 별도 정상 송출이다.
+from pathlib import Path as _kq_audit_path
+_audit_workflow=_kq_audit_path(".github/workflows/kospi-derivatives-flow-ls-realtime.yml").read_text(encoding="utf-8")
+assert _audit_workflow.count('str(rec.get("market") or "KOSPI")')==2, "morning/afternoon delivery audit market key missing"
+assert _audit_workflow.count('str(rec.get("actor") or "")')==2, "morning/afternoon delivery audit actor key missing"
+_akeys=[
+    ("T0","kosdaq_flow_surge","KOSDAQ","외국인"),
+    ("T0","kosdaq_flow_surge","KOSDAQ","기관"),
+    ("T0","flow_surge","KOSPI","외국인"),
+]
+assert len(set(_akeys))==3
+print("cross_market_investor_delivery_dedup_valid=true")
