@@ -1230,3 +1230,108 @@ _akeys=[
 ]
 assert len(set(_akeys))==3
 print("cross_market_investor_delivery_dedup_valid=true")
+
+
+# 코스닥 급락 감시는 기존 코스피와 같은 Python·Telegram·handoff 경로를
+# 재사용하되, 코스닥 종합지수 301 및 코스닥 현물 t1602만 사용한다.
+import asyncio as _kqd_async
+from unittest.mock import patch as _kqd_patch
+import tempfile as _kqd_tmp
+from pathlib import Path as _kqd_Path
+_kqd_quote_requests=[]
+def _kqd_ls_post(token,path,tr,body,**kwargs):
+    _kqd_quote_requests.append((path,tr,body,kwargs))
+    return {"t1511OutBlock":{"pricejisu":"990.55","jniljisu":"1000.00",
+                               "openjisu":"970.00","highjisu":"1001.00",
+                               "lowjisu":"988.88"}}
+with _kqd_patch.object(ks,"ls_post",_kqd_ls_post):
+    quote=ks.fetch_kosdaq_index_quote("test")
+assert quote["price"]==990.55 and quote["prev_close"]==1000.0, quote
+assert _kqd_quote_requests[0][2]["t1511InBlock"]["upcode"]=="301"
+assert _kqd_quote_requests[0][3]["max_attempts"]==2
+print("kosdaq_t1511_independent_source_valid=true")
+
+_kqd_base=time.time()-620
+_kqd=Watch("unused",[],"",False)
+_kqd.session_open_ts=_kqd_base-200
+_kqd.session_close_ts=_kqd_base+2000
+_kqd.session_continuous_end_ts=_kqd_base+2000
+_kqd.regular_price_ready=True
+_kqd.kosdaq_regular_price_ready=True
+_kqd.kosdaq_opening_gap_sent=True
+_kqd.surge_sent_at["기관"]=_kqd_base+200
+_kqd.idx.append((_kqd_base+265,6500.0))
+_kqd.kosdaq_idx.extend([
+    (_kqd_base-120,1000.0),
+    (_kqd_base-60,1000.2),
+    (_kqd_base,1000.0),
+    (_kqd_base+140,998.8),
+    (_kqd_base+265,996.0),
+])
+def _kqd_flow(ts, foreign=0, institution=0, individual=0):
+    return {"ts":ts,"market":"KOSDAQ","현물":{
+        "sample_ts":ts,
+        "외국인":float(foreign),"기관":float(institution),"개인":float(individual),
+    }}
+_kqd.kosdaq_flows.append(_kqd_flow(_kqd_base-65))
+_kqd.kosdaq_flows.append(_kqd_flow(_kqd_base+260,-450,-220,580))
+_kqd_out,_kqd_delivery=[],[]
+def _kqd_send(msg):
+    _kqd_out.append(msg)
+    return 60000+len(_kqd_out)
+_kqd._record_delivery=lambda stage,mid,ep,ts: _kqd_delivery.append((stage,mid,dict(ep),ts))
+with _kqd_patch.object(ks,"telegram_send",_kqd_send):
+    _kqd_async.run(_kqd.maybe_alert_kosdaq_drop())
+    assert len(_kqd_out)==1, _kqd_out
+    assert "코스닥 급락 포착" in _kqd_out[0] and "코스피200 선물" in _kqd_out[0]
+    assert "코스닥 현물" in _kqd_out[0] and "외국인" in _kqd_out[0]
+    assert _kqd.episode is None and _kqd.surge_sent_at["기관"]==_kqd_base+200
+    assert _kqd_delivery[0][0]=="kosdaq_shock_start", _kqd_delivery
+    _kqd_async.run(_kqd.maybe_alert_kosdaq_drop())
+    assert len(_kqd_out)==1,"same KOSDAQ price tick duplicated alert"
+    # 사건 확대는 처음보다 0.5%p 이상의 추가 하락일 때만 전송.
+    _kqd.kosdaq_idx.append((_kqd_base+300,990.0))
+    _kqd.kosdaq_flows.append(_kqd_flow(_kqd_base+292,-520,-230,670))
+    _kqd_async.run(_kqd.maybe_alert_kosdaq_drop())
+    assert len(_kqd_out)==2 and "코스닥 급락 확대" in _kqd_out[-1], _kqd_out
+    # 저점 300초 뒤 일정 부분 반등하면 종료, 이후 같은 과거 고점 재발송 금지.
+    _kqd.kosdaq_idx.append((_kqd_base+600,996.1))
+    _kqd.kosdaq_flows.append(_kqd_flow(_kqd_base+590,-400,-240,610))
+    _kqd_async.run(_kqd.maybe_alert_kosdaq_drop())
+    assert len(_kqd_out)==3 and "코스닥 급락 종료·반등 확인" in _kqd_out[-1]
+    assert _kqd.kosdaq_episode is None and _kqd.kosdaq_last_episode_end_ts==_kqd_base+600
+    _kqd.kosdaq_idx.append((_kqd_base+620,995.0))
+    _kqd_async.run(_kqd.maybe_alert_kosdaq_drop())
+    assert len(_kqd_out)==3,"old KOSDAQ peak re-alerted after episode end"
+
+with _kqd_tmp.TemporaryDirectory() as directory:
+    handoff=_kqd_Path(directory)/"kospi_shock_handoff.json"
+    _kqd.save_handoff(handoff)
+    restored=Watch("unused",[],"",False)
+    restored.load_handoff(handoff)
+    assert restored.kosdaq_idx and restored.kosdaq_last_episode_end_ts==_kqd_base+600
+    assert restored.kosdaq_opening_gap_sent is True
+    assert restored.surge_sent_at["기관"]==_kqd_base+200
+    assert restored.kosdaq_surge_sent_at==_kqd.kosdaq_surge_sent_at
+print("kosdaq_crash_independent_episode_regression=true handoff=true no_duplicate=true")
+
+# 다른 시장의 외국인 매도나 KOSPI200 선물을 KOSDAQ 매도주체로 혼합하지 않는다.
+_kqd_hold=Watch("unused",[],"",False)
+_kqd_hold.session_open_ts=_kqd_base-200
+_kqd_hold.kosdaq_flows.append(_kqd_flow(_kqd_base-65,0,0,0))
+_kqd_hold.kosdaq_flows.append(_kqd_flow(_kqd_base+200,-200,-150,300))
+gap=_kqd_hold._kosdaq_attribution(_kqd_base,_kqd_base+260)
+assert gap["available"] is False and "30초" in gap["reason"], gap
+_kqd_hold.flows.append({"ts":_kqd_base+255,
+                         "선물":{"sample_ts":_kqd_base+255,"외국인":-99999}})
+assert _kqd_hold._kosdaq_attribution(_kqd_base,_kqd_base+260)==gap
+print("kosdaq_price_only_missing_spot_alignment_valid=true")
+
+# 개장 갭은 코스닥도 가격 사건과 독립. 전일 종가 유지값은 이벤트용 사용 금지.
+assert ks.OPEN_GAP_ALERT_PCT==-1.0
+assert ks.KOSDAQ_PRICE_POLL_INTERVAL_SEC>=3.0
+_kqd_gap=Watch("unused",[],"",False)
+_kqd_gap.session_open_ts=_kqd_base
+_kqd_gap.kosdaq_last_price_snapshot={"price":960.0,"prev_close":1000.0,"open":960.0}
+assert ks.pct(1000.0,960.0)==-4.0
+print("kosdaq_opening_gap_independent_gate_valid=true")
