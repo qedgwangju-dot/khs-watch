@@ -117,6 +117,8 @@ NEWS_QUERIES = [
     '"Dean Ball" OpenAI OSTP Strategic Futures AI Action Plan',
     '(OpenAI OR Anthropic OR Google DeepMind OR xAI OR Meta) (ONCD OR OSTP OR NSA OR NSC OR Pentagon) (hire OR hired OR joins OR joined OR appoint OR appointed) "national security"',
     '(OpenAI OR Anthropic OR Google DeepMind OR xAI OR Meta) former White House cyber AI policy official national security hire',
+    '"OpenAI" "Trail of Bits" (acquisition OR buy OR agreement OR deal OR talks OR completed OR withdrawn)',
+    '("Patch the Planet" OR "Codex Security") "Trail of Bits" (paid OR customers OR subscription OR contract OR license OR expansion)',
 ]
 
 OFFICIAL_SOURCE_HINTS = (
@@ -128,6 +130,7 @@ OFFICIAL_SOURCE_HINTS = (
     "naver", "lg cns", "s2w", "샌즈랩", "palo alto", "unit 42",
     "crowdstrike", "ibm", "nvidia", "microsoft", "openshell",
     "nemoclaw", "sentry", "sap", "canonical", "red hat",
+    "trail of bits", "trailofbits.com",
 )
 
 TRUSTED_SOURCE_HINTS = (
@@ -138,6 +141,7 @@ TRUSTED_SOURCE_HINTS = (
     "techcrunch", "wired", "securityweek", "palo alto", "unit 42",
     "associated press", "ap news", "guardian", "cbs news", "wall street journal", "wsj",
     "crowdstrike", "ibm", "nvidia", "microsoft",
+    "trail of bits", "trailofbits.com",
 )
 
 AI_TOPIC_TERMS = (
@@ -152,6 +156,7 @@ AI_TOPIC_TERMS = (
     "프런티어 책임", "공동 서약", "공동 합의", "감독위원회",
     "anthropic cyber mission", "critical infrastructure defense program",
     "oss scanner", "사이버 방어 사업", "핵심 기반시설 방어",
+    "openai", "trail of bits", "patch the planet", "codex security",
 )
 
 ACTION_TERMS = (
@@ -184,6 +189,8 @@ ACTION_TERMS = (
     "joint commitment", "accord", "signatory", "signatories", "oversight board",
     "board committee", "independent board", "self-police", "self-regulation",
     "codify", "codified", "best practices", "common standards",
+    "acquisition", "acquire", "acquired", "merger", "deal talks",
+    "definitive agreement", "transaction closed", "exclusive negotiations",
     "critical infrastructure defense program", "oss scanner", "cyber mission",
     "defense program", "security scanning",
     "hire", "hired", "joins", "joined", "appoint", "appointed",
@@ -224,6 +231,9 @@ CONCRETE_ACTION_TERMS = (
     "joint commitment", "accord", "signed", "signatory", "oversight board",
     "board committee", "independent board", "common standards", "best practices",
     "codified", "codify", "법제화", "성문화", "감독위원회", "이사회 위원회",
+    "acquisition", "agreed to acquire", "deal closed",
+    "definitive agreement", "exclusive negotiations",
+    "인수 협상", "본계약", "인수 완료",
     "사이버 방어 사업", "오픈소스 보안", "취약점 검사", "핵심 기반시설",
     "hired", "joined", "appointed", "national security policy", "strategic risk",
     "영입", "합류", "임명", "국가안보 정책", "전략적 리스크",
@@ -232,6 +242,15 @@ CONCRETE_ACTION_TERMS = (
 )
 
 CATEGORY_PATTERNS = [
+    ("OpenAI–Trail of Bits 인수·계약 단계", (
+        "trail of bits", "early acquisition talks",
+        "definitive agreement", "acquisition completed",
+        "openai to acquire", "인수 협상", "인수 완료",
+    )),
+    ("OpenAI–Trail of Bits 취약점 수정 사업화", (
+        "patch the planet", "codex security", "paid security engagement",
+        "security customers", "subscription",
+    )),
     ("미국 AI 사고 신고·시정 요구 발표", (
         "white house ai reporting mandate", "anthropic breaches spark",
         "notification and remediation process", "immediately disclose incidents",
@@ -244,6 +263,7 @@ CATEGORY_PATTERNS = [
     )),
     ("프런티어 AI 국가안보·정책 핵심인사 이동", (
         "thomas lind", "dean ball",
+    "trail of bits", "patch the planet", "codex security",
         "office of the national cyber director", " oncd",
         "office of science and technology policy", " ostp",
         "national security policy", "cyber and strategic risk",
@@ -571,8 +591,52 @@ def source_trusted(source: str) -> bool:
     return source_official(source) or any(x in low for x in TRUSTED_SOURCE_HINTS)
 
 
+def is_trail_mna_pair(item: dict) -> bool:
+    low = f" {item.get('title','')} {item.get('description','')} ".lower()
+    return "openai" in low and "trail of bits" in low
+
+
+def trail_of_bits_mna_stage(item: dict) -> str | None:
+    """Stable corporate milestones, not speculative prices or conditional verbs."""
+    if not is_trail_mna_pair(item):
+        return None
+    low = f" {item.get('title','')} {item.get('description','')} ".lower()
+    if not any(word in low for word in (
+        "acquisition", "acquire", "acquired", "buy ", "merger", "deal", "takeover", "인수",
+    )):
+        return None
+    official = source_official(item.get("source", ""))
+    # Keep 'could fall apart' as an initial-stage caveat, not deal cancellation.
+    if any(phrase in low for phrase in (
+        "talks have ended", "talks ended", "deal collapsed", "deal terminated",
+        "abandoned acquisition", "ends acquisition talks", "협상 결렬",
+    )):
+        return "talks_ended" if official else "talks_ended_reported"
+    if any(phrase in low for phrase in (
+        "completed acquisition", "acquisition completed", "acquisition closed",
+        "closed its acquisition", "has acquired trail of bits", "인수 완료",
+    )):
+        return "closed" if official else "closed_reported"
+    if any(phrase in low for phrase in (
+        "signed a definitive agreement", "definitive agreement to acquire",
+        "agreed to acquire trail of bits", "agreement to buy trail of bits",
+        "인수 본계약", "인수 계약 체결",
+    )):
+        return "signed" if official else "signed_reported"
+    if any(phrase in low for phrase in (
+        "exclusive talks", "exclusive negotiations", "advanced acquisition talks",
+        "close to acquiring trail of bits", "협상 진전", "독점 협상",
+    )):
+        return "advanced_talks_reported"
+    return "initial_talks"
+
+
 def detect_category(text: str) -> str:
     low = text.lower()
+    if trail_of_bits_mna_stage({"title":text,"source":"The Information"}):
+        return "OpenAI–Trail of Bits 인수·계약 단계"
+    if "trail of bits" in low and "patch the planet" in low:
+        return "OpenAI–Trail of Bits 취약점 수정 사업화"
     scores = []
     for label, patterns in CATEGORY_PATTERNS:
         score = sum(1 for p in patterns if p in low)
@@ -586,6 +650,8 @@ def detect_category(text: str) -> str:
 
 def detect_entity(text: str) -> str:
     low = text.lower()
+    if "openai" in low and "trail of bits" in low:
+        return "OpenAI–Trail of Bits"
     mapping = (
         ("백악관 Super Intelligence Force", (
             "super intelligence force", "si force", "anthropic breaches spark white house ai reporting mandate",
@@ -656,6 +722,14 @@ def is_reported_si_original(item: dict) -> bool:
 def material(item: dict) -> bool:
     if is_anthropic_mission_launch_baseline(item) or is_reported_si_original(item):
         return False
+    stage = trail_of_bits_mna_stage(item)
+    if stage:
+        # 2026-10-13 The Information initial talks are a historical,
+        # unconfirmed baseline. They are neither a definitive contract nor
+        # a completed acquisition; alerts resume only on a new stage.
+        if stage == "initial_talks":
+            return False
+        return source_trusted(item.get("source", ""))
     combined = f" {item.get('title','')} {item.get('description','')} "
     low = combined.lower()
     if not any(x in low for x in AI_TOPIC_TERMS):
@@ -776,6 +850,7 @@ def source_label(source: str) -> str:
     mapping = (
         ("white house","백악관"), ("house of representatives","미 하원"),
         ("u.s. house","미 하원"), ("associated press","AP"), ("ap news","AP"),
+        ("the information","The Information"), ("trail of bits","Trail of Bits"),
         ("reuters","Reuters"), ("연합뉴스","연합뉴스"), ("yonhap","연합뉴스"),
         ("openai","OpenAI"), ("anthropic","Anthropic"), ("nvidia","NVIDIA"), ("nipa","NIPA"), ("과학기술정보통신부","과기정통부"),
         ("naver","NAVER"), ("s2w","S2W"), ("lg cns","LG CNS"),
@@ -1053,7 +1128,12 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
             f"<b>{idx}. {html.escape(rep['entity'])} · {html.escape(rep['category'])}</b>",
             f"• {html.escape(concise_fact(rep))}",
         ]
-        if rep["category"] == "미국 AI 사고 신고·시정 요구 발표":
+        if rep["category"] == "OpenAI–Trail of Bits 인수·계약 단계":
+            lines.append("• <b>계약 검증</b>: 초기 협상·독점 협상·언론의 계약 보도·발행사 본계약·거래종결·협상 결렬을 단계별로 분리. 공식 발표 없으면 계약 확정으로 표기 금지")
+            lines.append("• <b>매출 경로</b>: 기존 Patch the Planet 공동 프로젝트와 향후 인수 후 유료 보안검사·취약점 검증·수정 서비스 수익을 구분. 인수가격·계약금액은 직접 확인된 경우에만 표시")
+        elif rep["category"] == "OpenAI–Trail of Bits 취약점 수정 사업화":
+            lines.append("• <b>의미</b>: 공동 무료 연구·오픈소스 지원과 실제 유료 사용권·보안 검증·유지보수·고객 계약을 구분")
+        elif rep["category"] == "미국 AI 사고 신고·시정 요구 발표":
             lines.append("• <b>현재 단계</b>: 백악관 Super Intelligence Force 발언·요구 보도. 법률·최종 규정 성문화 여부는 별도 확인")
             lines.append("• <b>다음 확인</b>: 사고 유형·신고 대상·기한·수신 기관·정부 공식 고시·집행 근거·벌칙·실제 시정조치")
         elif rep["category"] == "Anthropic 핵심 기반시설·오픈소스 방어 사업":
