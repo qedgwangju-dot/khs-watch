@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-10-14T18:52:25.358040+00:00",
+  "updated_at": "2026-10-14T22:16:39.643796+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -542,9 +542,14 @@
     "6b43fb0ea8bf4ac14b2d425ab074e9926288bdbf8f80b5281b051633dd84ddb5",
     "113ef55059153c80574ccb96a9cbb8805c33afd274360c7143ed4662d3153348",
     "93c8c12ffc86556c32e220e3099ae47ddc64996a5d3a3a6809c0d9e1582ec76d",
-    "923d1465d9a2626d2f914c9e7599548c81ce5cc19d550d38815bd188a22f248f"
+    "923d1465d9a2626d2f914c9e7599548c81ce5cc19d550d38815bd188a22f248f",
+    "3d0ce3057d21beebbc974093a88fa73abbb8faee7dfa77cfb0e613b60bb3679e",
+    "cda9beb1f38efd781db4bbfa7fb46b3eeecab554d262bc3e7de73490ca743e27"
   ],
-  "last_selected": [],
+  "last_selected": [
+    "3d0ce3057d21beebbc974093a88fa73abbb8faee7dfa77cfb0e613b60bb3679e",
+    "cda9beb1f38efd781db4bbfa7fb46b3eeecab554d262bc3e7de73490ca743e27"
+  ],
   "groups": [
     "alert_quality_correction",
     "catl_intilion_sodium",
@@ -552,13 +557,14 @@
     "dexmate_lg_commercial",
     "dkt_humanoid",
     "ess_battery",
-    "figure_ai",
     "fluence_vattenfall_bess",
     "humanoid_brain_dram",
     "lfp_314_cif_north_america",
     "lg_factory_loop",
     "optimus_hand_magnet",
     "robotis",
-    "robros_industrial_sandbox"
+    "robotis_excess_demand",
+    "robros_industrial_sandbox",
+    "tesla"
   ]
 }
