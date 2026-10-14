@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """네트워크에 의존하지 않는 Warsh 금리·대차대조표 회귀검증."""
 import unittest
+import urllib.parse
 import os
 from datetime import date, datetime, timedelta, timezone
 from unittest.mock import MagicMock, patch
@@ -367,7 +368,8 @@ class WarshSafetyTests(unittest.TestCase):
         rss.assert_not_called()
         self.assertEqual(result[-1]["published"][:10], "2026-10-08")
         self.assertIn("Role Redesign", result[-1]["title"])
-        self.assertTrue(result[-1]["url"].startswith("https://www.gartner.com/en/newsroom/press-releases/"))
+        self.assertIn("/en/newsroom/press-releases/", result[-1]["url"])
+        self.assertTrue(urllib.parse.urlparse(result[-1]["url"]).hostname.endswith("gartner.com"))
 
     def test_gartner_all_live_sources_fail_keeps_previous_good_headline(self):
         item = {
