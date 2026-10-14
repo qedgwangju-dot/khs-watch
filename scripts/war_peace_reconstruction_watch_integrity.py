@@ -31,9 +31,11 @@ def maritime_attack_tally(row):
     """A period's ship-attack count does not identify a new projectile incident."""
     title = _headline(row)
     ships = re.search(r'선박|상선|유조선|\b(?:ships?|vessels?|tankers?)\b', title)
-    attacks = re.search(r'피격|공격(?:당|받)|\b(?:attacked|struck|hit)\b', title)
+    attacks = re.search(r'피격|공격(?:당|받)|\b(?:was|were|been)\s+(?:attacked|struck|hit)\b|'
+                        r'\b(?:ships?|vessels?|tankers?)\s+attacked\b', title)
     count = re.search(r'\d[\d,]*\s*척|\b\d[\d,]*\s+(?:ships?|vessels?|tankers?)\b', title)
-    period = re.search(r'\d+\s*(?:주|일|개월)|\b(?:\d+|one|two|three)\s+(?:days?|weeks?|months?)\b', title)
+    period = re.search(r'\d+\s*(?:주|개월)|\d+\s*일\s*(?:간|동안|사이)|'
+                       r'\b(?:\d+|one|two|three)\s+(?:days?|weeks?|months?)\b', title)
     uncertain = re.search(r'부인|미확인|가능성|우려|예고|\?|\b(?:denies?|denied|not|never|may|might|could)\b', title)
     return bool(ships and attacks and count and period and not uncertain)
 

@@ -55,8 +55,12 @@ class IntegrityTests(unittest.TestCase):
                 self.assertIsNone(integrity._primary_topic(article(title)))
 
     def test_single_new_ship_hit_keeps_existing_incident_classification(self):
-        row = article('호르무즈 유조선 피격…미확인 발사체로 선원 부상')
-        self.assertFalse(integrity.maritime_attack_tally(row))
+        for title in ('호르무즈 유조선 피격…미확인 발사체로 선원 부상',
+                      '호르무즈에서 10월 23일 선박 24척 피격',
+                      '24 ships hit record profits in two weeks',
+                      '24 vessels struck a deal over two weeks'):
+            with self.subTest(title=title):
+                self.assertFalse(integrity.maritime_attack_tally(article(title)))
 
     def test_english_tally_keeps_verified_translation_and_does_not_invent_iran(self):
         row = article('24 ships attacked in Hormuz in two weeks', source='Reuters')
