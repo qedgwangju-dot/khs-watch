@@ -656,5 +656,90 @@ class GlassSubstrateWatchTests(unittest.TestCase):
         self.assertNotIn(seed["key"],state2["pending"])
 
 
+    def test_hbf_ocp_v070_is_public_draft_not_finished_product(self):
+        item={"direct_link":w.HBF_OCP_STORAGE_URL,"published_at_kst":"2026-08-03T09:00:00+09:00",
+              "source":"OCP","title":"HBF specification"}
+        body="High Bandwidth Flash (HBF™) High-Level Base Die Specification V0.7.0"
+        rec=w.parse_hbf_ocp_version(item,body)[0]
+        self.assertEqual(rec["key"],"hbf_ocp_spec|ocp|base_die")
+        self.assertEqual(rec["value"]["version"],"0.7.0")
+        self.assertFalse(rec["value"]["final_spec_officially_confirmed"])
+        self.assertFalse(rec["value"]["commercial_sales_confirmed"])
+    def test_hbf_issuer_only_and_cross_subject_version_guard(self):
+        item={"direct_link":"https://newspim.com/news/view/20261014000748",
+              "published_at_kst":"2026-10-14T15:00:00+09:00"}
+        body="High Bandwidth Flash HBF High-Level Base Die Specification V1.0.0 final"
+        self.assertEqual(w.parse_hbf_ocp_version(item,body),[])
+        self.assertEqual(w.parse_hbf_company_milestones(item,
+            "SK hynix completed HBF customer qualification"),[])
+        another="HBF architecture overview. Random SSD Specification V2.0.0"
+        self.assertEqual(w.parse_hbf_ocp_version(
+            dict(item,direct_link=w.HBF_OCP_STORAGE_URL),another),[])
+    def test_hbf_2027_january_target_does_not_prove_final(self):
+        item={"direct_link":w.HBF_OCP_STORAGE_URL,"published_at_kst":"2027-01-05T10:00:00+09:00"}
+        body=("High Bandwidth Flash HBF High-Level Base Die Specification V0.7.0. "
+              "A final specification is expected in January 2027.")
+        rec=w.parse_hbf_ocp_version(item,body)[0]
+        self.assertFalse(rec["value"]["final_spec_officially_confirmed"])
+        old={"axis":"hbf_ocp_spec","value":{"version":"0.7.0","final_spec_officially_confirmed":False}}
+        self.assertEqual(w.comparison(old,rec),[])
+    def test_hbf_ocp_actual_revision_changes_once(self):
+        item={"direct_link":w.HBF_OCP_STORAGE_URL,"published_at_kst":"2027-01-15T10:00:00+09:00"}
+        a=w.parse_hbf_ocp_version(item,"High Bandwidth Flash (HBF) High-Level Base Die Specification V0.7.0")[0]
+        b=w.parse_hbf_ocp_version(item,"High Bandwidth Flash (HBF) High-Level Base Die Specification V1.0.0")[0]
+        self.assertEqual(b["value"]["publication_stage"],"public_spec")
+        self.assertTrue(any("0.7.0→1.0.0" in z for z in w.comparison(a,b)))
+        self.assertEqual(w.comparison(b,b),[])
+        self.assertEqual(w.comparison(b,a),[])
+    def test_hbf_real_final_requires_explicit_ocp_text(self):
+        item={"direct_link":w.HBF_OCP_STORAGE_URL,"published_at_kst":"2027-01-15T10:00:00+09:00"}
+        rec=w.parse_hbf_ocp_version(item,
+          "High Bandwidth Flash (HBF) final specification. High Bandwidth Flash (HBF) High-Level Base Die Specification V1.0.0")[0]
+        self.assertTrue(rec["value"]["final_spec_officially_confirmed"])
+    def test_hbf_google_tenstorrent_are_partners_not_confirmed_buyers(self):
+        item={"direct_link":"https://news.skhynix.co.kr/hbf-at-fms-2026/",
+              "published_at_kst":"2026-08-04T10:00:00+09:00","source":"SK하이닉스"}
+        body=("SK hynix Sandisk unveiled HBF public specification. "
+              "Google and Tenstorrent joined as HBF consortium members. "
+              "High-performance 375-layer eSSD mass production is targeted for 2027.")
+        self.assertEqual(w.parse_hbf_company_milestones(item,body),[])
+    def test_hbf_actual_customer_qualification_requires_issuer_and_completed(self):
+        body="SK hynix completed HBF customer qualification for AI inference chips."
+        item={"direct_link":"https://news.skhynix.co.kr/hbf-customer-official/",
+              "published_at_kst":"2027-03-01T10:00:00+09:00","title":"고객 검증"}
+        official=w.parse_hbf_company_milestones(item,body)
+        self.assertEqual(official[0]["value"]["stage"],"customer_qualified")
+        self.assertEqual(w.parse_hbf_company_milestones(dict(item,direct_link="https://newspim.com/test"),body),[])
+        expected="SK hynix plans HBF customer qualification in 2027."
+        self.assertEqual(w.parse_hbf_company_milestones(item,expected),[])
+    def test_hbf_only_explicit_mass_production_can_trigger(self):
+        item={"direct_link":"https://news.skhynix.co.kr/hbf-mass-production/",
+              "published_at_kst":"2028-01-01T10:00:00+09:00","title":"HBF 실제 양산"}
+        rows=w.parse_hbf_company_milestones(item,
+            "SK hynix has begun HBF mass production for AI inference.")
+        self.assertEqual(rows[0]["value"]["stage"],"mass_production")
+        old=dict(rows[0]);old["value"]=dict(old["value"],stage="customer_qualified")
+        self.assertTrue(w.comparison(old,rows[0]))
+        self.assertEqual(w.comparison(rows[0],old),[])
+    def test_hbf_baselines_seed_without_retroactive_alert(self):
+        import json
+        source=json.loads((pathlib.Path(__file__).resolve().parents[1]/"data/hbm_memory_baselines.json").read_text(encoding="utf-8"))
+        base=[x for x in source["records"] if x["axis"].startswith("hbf_")]
+        self.assertEqual(len(base),2)
+        state=w.update_state({},[],__import__("datetime").datetime(2026,10,14,17,0),base)
+        self.assertEqual(state["hbf_track_version"],w.HBF_TRACK_VERSION)
+        self.assertFalse(state["pending"])
+        self.assertFalse(state["latest"]["hbf_ocp_spec|ocp|base_die"]["value"]["final_spec_officially_confirmed"])
+    def test_hbf_alert_separates_specs_from_sales_and_warehouses(self):
+        import json
+        data=json.loads((pathlib.Path(__file__).resolve().parents[1]/"data/hbm_memory_baselines.json").read_text(encoding="utf-8"))
+        r=next(x for x in data["records"] if x["axis"]=="hbf_ocp_spec")
+        msg=w.render({"record":r,"old":None,"reasons":["최초 버전"]})
+        self.assertIn("UCIe",msg)
+        self.assertIn("양산 매출",msg)
+        self.assertIn("고객 검증",msg)
+        self.assertIn("원문",msg)
+
+
 if __name__ == "__main__":
     unittest.main()

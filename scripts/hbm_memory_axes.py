@@ -21,6 +21,10 @@ FOUNDRY_RECOVERY_TRACK_VERSION = 1
 FOUNDRY_PRICING_RANGE_TRACK_VERSION = 1
 GLASS_SUBSTRATE_TRACK_VERSION = 5
 FOPLP_TRACK_VERSION = 1
+HBF_TRACK_VERSION = 1
+HBF_OCP_STORAGE_URL = "https://www.opencompute.org/contribution-family/storage/"
+HBF_FIRST_SPEC_URL = "https://www.opencompute.org/contribution-family/storage/"
+HBF_REPORT_URL = "https://newspim.com/news/view/20261014000748"
 HBM_GENERATION_PRICE_TRACK_VERSION = 1
 MARKET_PRICING_TRACK_VERSION = 1
 EXTRA_QUERIES = [
@@ -46,6 +50,9 @@ EXTRA_QUERIES = [
     '(Chemtronics OR 켐트로닉스) (Samsung OR 삼성전자) ("glass interposer" OR 유리 인터포저) (sample OR 샘플 OR evaluation OR 평가 OR qualification OR 검증 OR contract OR 계약 OR mass production OR 양산)',
     '(FOPLP OR "fan-out panel-level packaging" OR 扇出型面板級封裝 OR 패널형 팬아웃 패키징) (TSMC OR CoPoS OR ASE OR Innolux OR PTI OR ChipMOS OR PMIC OR RF OR AI) (customer OR pilot OR qualification OR production OR 量產 OR 양산 OR 수율)',
     '(TSMC OR 台積電) (CoPoS OR "Chip-on-Panel-on-Substrate") (pilot OR 試產 OR 驗證 OR mass production OR 양산 OR 2027 OR 2028)',
+    '(site:news.skhynix.co.kr OR site:news.skhynix.com OR site:sandisk.com) ("HBF" OR "High Bandwidth Flash") (standard OR specification OR final OR prototype OR pilot OR qualification OR contract OR shipment OR customer OR 규격 OR 양산 OR 2027)',
+    '(site:opencompute.org OR site:news.skhynix.co.kr) "HBF" ("V0.7.0" OR "V1.0.0" OR 최종 OR updated)',
+
     '(SemiAnalysis OR TrendForce OR Micron OR Citi OR JPMorgan OR "J.P. Morgan" OR BofA) 2027 (HBM3E OR HBM4 OR HBM4E) (price OR pricing OR ASP OR "$/Gb" OR "per Gb" OR 가격)',
     '"HBM3E" "HBM4" "HBM4E" 2027 (price OR ASP OR "$/Gb")',
 ]
@@ -114,6 +121,8 @@ def host(url):
 
 def evidence(url):
     h = host(url)
+    if h in ('opencompute.org','news.skhynix.co.kr','news.skhynix.com','sandisk.com'):
+        return 'official'
     if h in OFFICIAL:
         return 'official'
     if h in ('trendforce.com', 'dramexchange.com', 'counterpointresearch.com', 'semianalysis.com', 'newsletter.semianalysis.com'):
@@ -197,6 +206,8 @@ def local_period(text, published):
 
 
 def is_axis_text(text):
+    if re.search(r"\bHBF\b|High[ -]Bandwidth Flash|고대역폭\s*(?:플래시|낸드)",text,re.I):
+        return True
     if (re.search(r'\bFOPLP\b|fan[- ]out panel[- ]level|扇出型面板級封裝|패널형 팬아웃', text, re.I)
             and re.search(r'\bTSMC\b|台積電|CoPoS|\bASE\b|日月光|Innolux|群創|\bPTI\b|ChipMOS|PMIC|\bRF\b|AI|HPC|GPU|量產|量产|양산|pilot|試產|검증|customer|qualification|패키징', text, re.I)):
         return True
@@ -1497,6 +1508,112 @@ def parse_foplp_records(item, body):
     return rows
 
 
+
+# HBF is an NAND-backed capacity tier, not HBM production or an enterprise SSD contract.
+HBF_STAGE_ORDER = {
+    'customer_sample':1, 'customer_validation':2, 'customer_qualified':3,
+    'pilot_production':4, 'contract_signed':5, 'mass_production':6,
+    'commercial_shipment':7,
+}
+HBF_VERSION_PATTERN = re.compile(
+    r'(?:High\s+Bandwidth\s+Flash|HBF\s*[™]?).{0,105}?'
+    r'High[- ]Level\s+Base\s+Die\s+Specification\s*[Vv]?\s*(\d+\.\d+(?:\.\d+)?)',
+    re.I,
+)
+
+def parse_hbf_ocp_version(item, body):
+    """Only OCP-owned specification listings can advance the standard-version axis."""
+    if host(item.get('direct_link','')) != 'opencompute.org':
+        return []
+    candidates = []
+    for match in HBF_VERSION_PATTERN.finditer(re.sub(r'\s+', ' ', body or '')):
+        version = match.group(1)
+        parts = tuple(int(x) for x in version.split('.'))
+        if len(parts) not in (2,3):
+            continue
+        candidates.append((parts,version))
+    if not candidates:
+        return []
+    _,version = max(candidates, key=lambda pair:pair[0])
+    # A higher version number is publication progress, not automatically "final".
+    # A missing explicit issuer label cannot prove adoption, contracts or HVM.
+    final = bool(re.search(
+        r'(?:HBF|High\s+Bandwidth\s+Flash)[^.;\n]{0,110}?'
+        r'(?:final(?:ized)?\s+specification|최종\s*규격\s*(?:확정|발표))',
+        body or '',re.I,
+    ))
+    if version.startswith('0.'):
+        final = False
+    val = {
+        'version':version, 'publication_stage':'final_spec' if final else 'public_spec',
+        'final_spec_officially_confirmed':final,
+        'initial_draft_baseline_version':'0.7.0',
+        'memory_tier':'NAND_between_HBM_and_SSD',
+        'spec_capacity_max_gb':512, 'spec_bandwidth_min_tbps':0.4,
+        'spec_bandwidth_max_tbps':3.0, 'specified_stacking':[8,16],
+        'interconnect':'UCIe','measured_silicon_performance':None,
+        'commercial_sales_confirmed':False,
+    }
+    rec = make_record(
+        'hbf_ocp_spec',['ocp','base_die'],val,'version,GB,TB/s,stage','current',
+        item,'OCP HBF 표준 규격 버전·최종본 발표 상태',
+        as_of=(item.get('published_at_kst') or '')[:10],
+        scope='OCP_public_document_not_final_without_explicit_issuer_claim_not_mass_production'
+    )
+    rec['evidence'] = 'official'
+    return [rec]
+
+
+def parse_hbf_company_milestones(item,body):
+    """Issuer statements alone can establish completed HBF customer or production milestones."""
+    h=host(item.get('direct_link',''))
+    issuers={'news.skhynix.co.kr':'skhynix','news.skhynix.com':'skhynix',
+             'sandisk.com':'sandisk'}
+    if h not in issuers:
+        return []
+    issuer=issuers[h]
+    milestones=[]
+    for clause in re.split(r'(?<=[.!?。])\s+|[;\n；]+',body or ''):
+        if not re.search(r'\bHBF\b|High[ -]Bandwidth Flash|고대역폭\s*(?:플래시|낸드)',clause,re.I):
+            continue
+        # Forward-looking statements and denial are not achieved milestones.
+        if re.search(r'\b(?:will|plans?|expects?|target(?:ed|s)?|forecast|proposed|could|may)\b|'
+                     r'예정|목표|계획|전망|예상|추진|검토|아직|미확정|not yet|no contract',clause,re.I):
+            continue
+        present = re.search(r'\b(?:completed|passed|qualified|signed|started|began|has begun|'
+                            r'entered|commenced|shipped)\b|완료|통과|체결|시작|개시|출하',clause,re.I)
+        if not present:
+            continue
+        stage=''
+        if re.search(r'상용\s*출하|commercial\s*shipments?|고객\s*납품\s*시작',clause,re.I):
+            stage='commercial_shipment'
+        elif re.search(r'HBF.{0,100}?(?:mass\s*production|volume\s*production|양산\s*(?:개시|시작))|'
+                       r'(?:mass\s*production|양산\s*개시).{0,90}?HBF',clause,re.I):
+            stage='mass_production'
+        elif re.search(r'(?:HBF|고대역폭\s*(?:플래시|낸드)).{0,110}?(?:supply\s*contract|purchase\s*order|공급계약|정식\s*수주)',clause,re.I):
+            stage='contract_signed'
+        elif re.search(r'pilot\s*(?:production|line|run)|trial\s*production|시험\s*생산|파일럿',clause,re.I):
+            stage='pilot_production'
+        elif re.search(r'customer\s*qualification|고객\s*인증|고객\s*검증\s*완료',clause,re.I):
+            stage='customer_qualified'
+        elif re.search(r'customer\s*(?:validation|evaluation)|고객\s*(?:검증|평가)',clause,re.I):
+            stage='customer_validation'
+        elif re.search(r'(?:HBF|고대역폭\s*(?:플래시|낸드)).{0,110}?(?:customer\s*sample|샘플\s*공급|샘플\s*출하)',clause,re.I):
+            stage='customer_sample'
+        if not stage:
+            continue
+        val={'stage':stage, 'supplier':issuer,'actual_hbf':True,
+             'reported_customer_company':'미확인', 'volume_units':None,
+             'recognized_revenue_krw':None,
+             'not_hbm_or_v10_375layer_essd':True}
+        milestones.append(make_record(
+            'hbf_issuer_milestone',[issuer,'HBF'],val,'stage','current',item,
+            'HBF 고객 샘플·검증·수주·시험생산·양산·출하 실제 단계',
+            scope='official_issuer_completed_HBF_event_not_eSSD_or_generic_NAND_roadmap'
+        ))
+    return milestones
+
+
 def parse_records(item, body):
     records, gaps = [], []
     published = item.get('published_at_kst', '')
@@ -1511,6 +1628,8 @@ def parse_records(item, body):
     records.extend(parse_foundry_hbm_records(item, body))
     records.extend(parse_glass_substrate_records(item, body))
     records.extend(parse_foplp_records(item, body))
+    records.extend(parse_hbf_ocp_version(item, body))
+    records.extend(parse_hbf_company_milestones(item, body))
     paragraphs = [re.sub(r'\s+', ' ', p).strip() for p in re.split(r'\n+|(?<=[.!?])\s+(?=[A-Z가-힣])', body) if p.strip()]
     for original in paragraphs:
         p = resolve_relative_years(original, published)
@@ -1685,6 +1804,24 @@ def comparison(old, new):
         if av is not None and bv is not None and int(av) != int(bv):
             reasons.append(f"가격 곡선 확인 세대 수 {int(av)}→{int(bv)}개")
         return reasons
+    if new['axis'] == 'hbf_ocp_spec':
+        if a.get('version') == b.get('version'):
+            if not a.get('final_spec_officially_confirmed') and b.get('final_spec_officially_confirmed'):
+                return ['OCP HBF 규격 최종본 공식 확인']
+            return []
+        def parts(ver):
+            return tuple(int(x) for x in str(ver or '0.0.0').split('.'))
+        if parts(b.get('version')) <= parts(a.get('version')):
+            return []
+        return [f"OCP HBF 규격 {a.get('version')}→{b.get('version')}"
+                + (' · 최종본 공식 확인' if b.get('final_spec_officially_confirmed') else ' · 개정본 공개')]
+    if new['axis'] == 'hbf_issuer_milestone':
+        old_stage,new_stage=a.get('stage',''),b.get('stage','')
+        if HBF_STAGE_ORDER.get(new_stage,0)>HBF_STAGE_ORDER.get(old_stage,0):
+            return [f"HBF {b.get('supplier')} 단계 {old_stage or '미확인'}→{new_stage}"]
+        return []
+    if new['axis'] == 'hbf_reported_roadmap':
+        return []  # User-supplied dated article is a watch baseline, not an official specification.
     if new['axis'] == 'foplp_mature_node_industry':
         reasons = []
         if (a.get('panel_width_mm'),a.get('panel_height_mm')) != (b.get('panel_width_mm'),b.get('panel_height_mm')):
@@ -2120,6 +2257,13 @@ def update_state(state, records, now, seeds=None):
                     state['latest'][r['key']] = copy.deepcopy(r)
                     state['pending'].pop(r['key'], None)
             state['foplp_track_version'] = FOPLP_TRACK_VERSION
+        if int(state.get('hbf_track_version') or 0) < HBF_TRACK_VERSION:
+            for r in seeds:
+                if r.get('axis') in ('hbf_ocp_spec','hbf_reported_roadmap'):
+                    state['last_notified'][r['key']] = copy.deepcopy(r)
+                    state['latest'][r['key']] = copy.deepcopy(r)
+                    state['pending'].pop(r['key'],None)
+            state['hbf_track_version'] = HBF_TRACK_VERSION
         if int(state.get('hbm_generation_price_track_version') or 0) < HBM_GENERATION_PRICE_TRACK_VERSION:
             for r in seeds:
                 if r.get('axis') == 'hbm_generation_pricing':
@@ -2142,7 +2286,7 @@ def update_state(state, records, now, seeds=None):
         if r['as_of'][:10] > now.date().isoformat():
             continue
         grouped.setdefault(r['key'], []).append(r)
-    sparse_axes = {'foundry_base_die_allocation', 'foundry_pricing', 'foundry_hbm5_2nm', 'foundry_loss_outlook', 'foundry_external_2nm', 'foundry_taylor_schedule', 'glass_panel_standard', 'glass_tsmc_roadmap', 'glass_panel_yield', 'glass_hvm_stage', 'glass_process_cycle_time', 'glass_capex', 'glass_jv_stage', 'foplp_mature_node_industry', 'foplp_company_ai_stage', 'hbm_generation_pricing', 'hbm_market_pricing'}
+    sparse_axes = {'foundry_base_die_allocation', 'foundry_pricing', 'foundry_hbm5_2nm', 'foundry_loss_outlook', 'foundry_external_2nm', 'foundry_taylor_schedule', 'glass_panel_standard', 'glass_tsmc_roadmap', 'glass_panel_yield', 'glass_hvm_stage', 'glass_process_cycle_time', 'glass_capex', 'glass_jv_stage', 'foplp_mature_node_industry', 'foplp_company_ai_stage', 'hbf_ocp_spec','hbf_reported_roadmap','hbf_issuer_milestone','hbm_generation_pricing', 'hbm_market_pricing'}
     for key, rows in grouped.items():
         rows.sort(key=lambda x: (x['as_of'], RANK.get(x['evidence'], 0)))
         prior = state['latest'].get(key) or state['last_notified'].get(key)
@@ -2223,7 +2367,10 @@ def render(change, rate=None):
              'postprocess_order': 'HBM 후공정 장비 수주 변화',
              'postprocess_stage': 'HBM 후공정 고객 검증·양산 단계 변화',
              'hbm_generation_pricing': 'HBM 세대별 2027 가격 리셋',
-             'foplp_mature_node_industry': 'FOPLP 성숙공정 양산 기준선',
+             'hbf_ocp_spec':'SK하이닉스·Sandisk HBF OCP 표준 버전 변화',
+              'hbf_issuer_milestone':'HBF 고객검증·정식발주·양산·출하 단계',
+              'hbf_reported_roadmap':'HBF 2027년 1월 최종본 보도 일정',
+              'foplp_mature_node_industry': 'FOPLP 성숙공정 양산 기준선',
               'foplp_company_ai_stage': 'FOPLP AI 칩 고객검증·양산 단계',
               'glass_panel_standard': '유리기판 510×515mm 규격 수렴·TSMC 채택 상태',
              'glass_tsmc_roadmap': 'TSMC CoPoS·Glass Core 양산 로드맵',
@@ -2264,6 +2411,17 @@ def render(change, rate=None):
             if not points:
                 parts.append("정확한 세대별 숫자 공개 확인 전")
             return " / ".join(parts)
+        if record['axis'] == 'hbf_ocp_spec':
+            stage='최종본 공식 확인' if v.get('final_spec_officially_confirmed') else '공개 규격(최종 여부 별도)'
+            return f"버전 {v.get('version')} · {stage} / 최대 {v.get('spec_capacity_max_gb')}GB / 대역폭 규격 {v.get('spec_bandwidth_min_tbps')}~{v.get('spec_bandwidth_max_tbps')}TB/s / UCIe"
+        if record['axis'] == 'hbf_issuer_milestone':
+            names={'customer_sample':'고객 샘플','customer_validation':'고객 검증',
+                   'customer_qualified':'고객 인증 완료','contract_signed':'공급계약 체결',
+                   'pilot_production':'시험생산','mass_production':'양산 개시',
+                   'commercial_shipment':'상용 출하'}
+            return f"{v.get('supplier')} HBF {names.get(v.get('stage'),v.get('stage'))}; 확정 매출·물량 별도 확인"
+        if record['axis'] == 'hbf_reported_roadmap':
+            return '2027년 1월 최종 규격 목표(뉴스핌 보도, 회사·OCP 공식 재확인 필요)'
         if record['axis'] == 'foplp_mature_node_industry':
             return f"PMIC·RF 양산 패널 최대 {v.get('panel_width_mm')}×{v.get('panel_height_mm')}mm · AI·CoPoS 양산 아님"
         if record['axis'] == 'foplp_company_ai_stage':
@@ -2520,6 +2678,14 @@ def render(change, rate=None):
         lines.append('• 기관별 가격곡선을 서로 합치지 않습니다. 동일 기관·동일 세대·동일 적층 조건만 전후 비교합니다.')
         lines.append('• 8단·12단 등 적층 높이가 다르면 별도 가격으로 저장하며 Blended ASP와 세대별 $/Gb를 합치지 않습니다.')
         lines.append('• 사용자 캡처는 방향 기준선일 뿐, 판독이 모호한 숫자는 저장하지 않습니다. 공개 원문에서 확인되는 숫자만 가격 상태값으로 승격합니다.')
+    if r['axis'] == 'hbf_ocp_spec':
+        lines.append('• 최초 OCP V0.7.0은 2026년 8월 공개된 규격 초안이며, 최종본·실제 칩 성능·양산 매출과는 다릅니다.')
+        lines.append('• 2027년 1월 최종본 목표는 뉴스핌 보도로만 확인돼 공식 OCP 게시·버전 개정을 별도로 검증합니다.')
+        lines.append('• 적층 수율·낸드 읽기 지연·발열·재기록 내구성·UCIe 호환성·소프트웨어 최적화가 핵심 위험입니다.')
+    if r['axis'] == 'hbf_issuer_milestone':
+        lines.append('• HBF는 낸드 기반 용량 계층이고, HBM 대역폭 매출이나 기존 기업용 SSD 양산과 별개입니다.')
+        lines.append('• 규격 공개→샘플→고객 검증→정식 공급계약→시험생산→양산→상용 출하·매출은 각각 별도 단계로 판단합니다.')
+        lines.append('• 구글·Tenstorrent의 표준화 참여는 제품 구매계약이나 양산 주문이 아닙니다.')
     if r['axis'] == 'foplp_mature_node_industry':
         lines.append('• PMIC·RF 기존 성숙공정 양산은 TSMC CoPoS나 AI 대형 칩·유리 코어 기판 양산이 아닙니다.')
     if r['axis'] == 'foplp_company_ai_stage':
@@ -2656,6 +2822,9 @@ def main():
             and any(k in text for k in ('hbm3e','hbm4','hbm4e'))
             and any(k in text for k in ('$/gb','per gb','price','pricing','asp','가격'))
         )
+        structured_hbf = (
+            'hbf' in text or 'high bandwidth flash' in text or '고대역폭 플래시' in text
+        )
         structured_foplp = (
             any(k in text for k in ('foplp','fan-out panel-level','扇出型面板級封裝','패널형 팬아웃'))
             and any(k in text for k in ('tsmc','copos','pmic','rf','ai','hpc','pilot','양산','量產','量产','고객'))
@@ -2675,7 +2844,7 @@ def main():
                 )
             )
         )
-        if structured_revenue or structured_postprocess or structured_market_pricing or structured_generation_pricing or structured_foundry or structured_foundry_recovery or structured_glass or structured_foplp:
+        if structured_revenue or structured_postprocess or structured_market_pricing or structured_generation_pricing or structured_foundry or structured_foundry_recovery or structured_glass or structured_foplp or structured_hbf:
             rejected_generic.append(e.get('id') or fingerprint(e.get('title', '')))
             return '', '', ''
         if not concrete_state_evidence(e):
@@ -2703,7 +2872,9 @@ def main():
         'dealsite', '딜사이트', 'chemtronics', '켐트로닉스', 'kind.krx.co.kr',
         'thelec', 'the elec', 'thelec.kr', '국민일보', 'kmib', 'kmib.co.kr',
         'lg innotek', 'lginnotek', 'samsung electro-mechanics', 'samsungsem', 'skc',
-        'ctee.com.tw', '工商時報', 'tsmc.com', 'aseglobal.com', 'innolux.com', 'pti.com.tw', 'chipmos.com'
+        'ctee.com.tw', '工商時報', 'tsmc.com', 'aseglobal.com', 'innolux.com', 'pti.com.tw', 'chipmos.com',
+        'opencompute.org', 'sandisk.com', 'news.skhynix.co.kr', 'news.skhynix.com',
+        'newspim', '뉴스핌'
     )
     legacy.relevant = lambda text: original_relevant(text) or is_axis_text(text)
     observed, coverage = [], []
@@ -2744,6 +2915,21 @@ def main():
         return [e for e in events if original_relevant(e.get('title', '') + ' ' + e.get('description', ''))]
     legacy.read_events = gather
     legacy.main()
+    # OCP is the standards authority. A failed public listing request is a
+    # coverage gap, not permission to promote an article or stale number.
+    try:
+        raw = legacy.fetch(HBF_OCP_STORAGE_URL,timeout=10).decode('utf-8',errors='replace')
+        body, _ = read_document(raw)
+        item={'title':'OCP HBF 고대역폭 플래시 공식 규격 버전 목록',
+              'source':'Open Compute Project','direct_link':HBF_OCP_STORAGE_URL,
+              'published_at_kst':now.isoformat(timespec='seconds')}
+        found=parse_hbf_ocp_version(item,body)
+        if found:
+            observed.extend(found)
+        else:
+            coverage.append('OCP HBF 공식 규격 목록에서 정확한 버전 확인 불가: 갱신 보류')
+    except Exception as exc:
+        coverage.append('OCP HBF 공식 규격 조회 실패: '+type(exc).__name__+' / 다음 주기 재조회')
     try:
         raw = legacy.fetch('https://www.dramexchange.com/', timeout=14).decode('utf-8', errors='replace')
         quotes = public_spot_quotes(raw, now)
@@ -2796,10 +2982,12 @@ def main():
         foundry_axes = {'foundry_loss_outlook','foundry_external_2nm','foundry_taylor_schedule','foundry_base_die_allocation','foundry_node_expansion','foundry_pricing','foundry_hbm5_2nm'}
         glass_axes = {'glass_panel_standard','glass_tsmc_roadmap','glass_panel_yield','glass_hvm_stage','glass_process_cycle_time','glass_capex','glass_jv_stage','foplp_mature_node_industry','foplp_company_ai_stage'}
         generation_price_axes = {'hbm_generation_pricing'}
-        regular = [k for k in chosen if state['pending'][k]['record']['axis'] not in foundry_axes | glass_axes | generation_price_axes]
+        hbf_axes = {'hbf_ocp_spec','hbf_issuer_milestone','hbf_reported_roadmap'}
+        regular = [k for k in chosen if state['pending'][k]['record']['axis'] not in foundry_axes | glass_axes | generation_price_axes | hbf_axes]
         foundry = [k for k in chosen if state['pending'][k]['record']['axis'] in foundry_axes]
         glass = [k for k in chosen if state['pending'][k]['record']['axis'] in glass_axes]
         generation_price = [k for k in chosen if state['pending'][k]['record']['axis'] in generation_price_axes]
+        hbf = [k for k in chosen if state['pending'][k]['record']['axis'] in hbf_axes]
         sections = []
         if regular:
             blocks = ['<b>HBM·서버 D램 연계 상태 변화</b>']
@@ -2812,6 +3000,10 @@ def main():
         if glass:
             blocks = ['<b>CoPoS·FOPLP·유리기판 고객검증·양산 전환 감시</b>']
             blocks.extend(render(state['pending'][key], rate) for key in glass)
+            sections.append('\n\n'.join(blocks))
+        if hbf:
+            blocks = ['<b>SK하이닉스·Sandisk HBF 최종 규격·실제 양산 전환 감시</b>']
+            blocks.extend(render(state['pending'][key], rate) for key in hbf)
             sections.append('\n\n'.join(blocks))
         if generation_price:
             blocks = ['<b>HBM 전 세대 가격 리셋 감시</b>']

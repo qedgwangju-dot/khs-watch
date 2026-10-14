@@ -896,6 +896,56 @@
       "source": "TrendForce",
       "scope": "mature_node_PMIC_RF_only_not_TSMC_CoPoS_AI_HPC_or_glass_core",
       "excerpt": "TrendForce 2026-06-17: multiple manufacturers mass-produce FOPLP for mature-node PMIC/RF, up to 620×750mm; separate from CoPoS 310×310mm roadmap and glass-core commercialization."
+    },
+    {
+      "key": "hbf_ocp_spec|ocp|base_die",
+      "axis": "hbf_ocp_spec",
+      "value": {
+        "version": "0.7.0",
+        "publication_stage": "public_spec",
+        "final_spec_officially_confirmed": false,
+        "initial_draft_baseline_version": "0.7.0",
+        "memory_tier": "NAND_between_HBM_and_SSD",
+        "spec_capacity_max_gb": 512,
+        "spec_bandwidth_min_tbps": 0.4,
+        "spec_bandwidth_max_tbps": 3,
+        "specified_stacking": [
+          8,
+          16
+        ],
+        "interconnect": "UCIe",
+        "measured_silicon_performance": null,
+        "commercial_sales_confirmed": false
+      },
+      "unit": "version,GB,TB/s,stage",
+      "period": "current",
+      "as_of": "2026-08-03",
+      "evidence": "official",
+      "source_url": "https://www.opencompute.org/contribution-family/storage/",
+      "source_title": "OCP HBF 고대역폭 플래시 베이스다이 규격 V0.7.0 공개",
+      "source": "Open Compute Project",
+      "scope": "public_first_spec_not_final_not_actual_silicon_or_sales",
+      "excerpt": "OCP는 Sandisk·SK하이닉스의 HBF 베이스다이 최초 공개 규격 V0.7.0을 제공. 규정 용량 최대 512GB·대역폭 약 0.4~3.0TB/s·8단/16단 UCIe 인터페이스. 실양산과 매출 확정 아님."
+    },
+    {
+      "key": "hbf_reported_roadmap|news|2027-01",
+      "axis": "hbf_reported_roadmap",
+      "value": {
+        "claimed_final_publication_month": "2027-01",
+        "report_stage": "news_headline_user_supplied_unverified_body",
+        "official_final_spec_announced": false,
+        "confirmed_vendor_customers": [],
+        "commercial_sales_krw": null
+      },
+      "unit": "year-month,source_stage",
+      "period": "roadmap",
+      "as_of": "2026-10-14",
+      "evidence": "reported",
+      "source_url": "https://newspim.com/news/view/20261014000748",
+      "source_title": "뉴스핌: 안현 SK하이닉스 사장 HBF 2027년 1월 최종 규격 발표 언급",
+      "source": "뉴스핌",
+      "scope": "reported_target_not_official_OCP_final_issue; user_supplied_headline; article_body_access_unavailable",
+      "excerpt": "2026년 10월 14일 뉴스핌 사용자 제공 제목상 안현 사장의 2027년 1월 최종 규격 발표 언급. 기사 본문 및 공식 OCP 최신 최종본 일정은 별도 검증 필요."
     }
   ],
   "user_capture": {
