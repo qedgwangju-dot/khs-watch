@@ -714,29 +714,42 @@ def replication_stage(item: dict) -> str | None:
 
 
 def is_known_replication_research_baseline(item: dict) -> bool:
-    """Suppress rediscovery of Anthropic's Oct-12 study and its reprints."""
+    """Group all news about the Oct-12 Anthropic IoT study into ONE baseline.
+
+    A source's reworded headline, publication timestamp, or RSS link must not
+    create a new incident. Distinct later first-party research and confirmed
+    infections remain eligible.
+    """
     if replication_stage(item) != "research":
         return False
     url = (item.get("url") or "").lower()
     if REPLICATION_REFERENCE_URL in url:
         return True
+    # A genuinely different official research publication is not part of this
+    # baseline merely because it also concerns autonomous replication.
+    if item.get("kind") == "official_direct":
+        return False
+
     content = f"{item.get('title','')} {item.get('description','')}".lower()
-    if "anthropic" not in content and "anthropic" not in (item.get("source") or "").lower():
+    source = (item.get("source") or "").lower()
+    if "anthropic" not in content and "anthropic" not in source:
         return False
     if not any(term in content for term in (
         "self-replicat", "self replicat", "ai worm", "ai-worm",
-        "autonomous replication", "자율 복제", "ai 웜",
+        "autonomous replication", "model replication", "iot botnet",
+        "자율 복제", "ai 웜", "자가 복제",
     )):
         return False
-    prior_study_signals = (
-        "8 of 9", "8 out of 9", "8 of the 9", "glm-5.2",
-        "15 tv boxes", "15 android tv", "30b", "26b",
-        "months away", "by the end of 2026", "oct 12",
-        "october 12", "smart ovens", "off-brand android",
-        "300억", "90억", "15대", "올해 말",
-    )
-    return any(term in content for term in prior_study_signals)
 
+    # Only explicit new measurements can start another research milestone;
+    # generic words like "new research" describe the Oct-12 publication too.
+    new_measurement = any(term in content for term in (
+        "independently reproduced", "independent replication",
+        "updated benchmark", "new controlled trial", "follow-up experiment",
+        "9 of 9 hardware", "9 out of 9 hardware",
+        "all 9 hardware types", "추가 독립 검증", "새 실험 결과",
+    ))
+    return not new_measurement
 
 def material(item: dict) -> bool:
     # A reported OpenAI–Trail of Bits acquisition is a policy/business-stage
