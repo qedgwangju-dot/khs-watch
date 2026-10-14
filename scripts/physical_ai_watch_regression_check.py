@@ -36,6 +36,8 @@ for _required in (
     "VNET_EQUITY_RECOVERY =",
     "CATL_INTILION_RECOVERY =",
     "DEXMATE_LG_RECOVERY =",
+    "STOCK_218_CORRECTION =",
+    "def _stock_218_correction_recovery(",
     "def _catl_intilion_recovery(",
     "def _dexmate_lg_recovery(",
     "def _vnet_equity_recovery(",
@@ -3632,6 +3634,54 @@ try:
     assert watcher.query_news(watcher.DEXMATE_LG_RECOVERY)==[]
 finally:
     base.NOW=time_before
+
+
+
+# 59) Real Telegram #218 item 1: Samsung SDI 5% "오르며" stock
+# reaction is NOT a new ESS customer, order, shipment or quarter.
+run584_false_stock=make(
+    "AI 전력發 ESS 기대…삼성SDI 5% 오르며 2차전지株 ‘강세’[줍줍리포트]",
+    "증시에서 삼성SDI 등 관련주가 올랐다는 시장 반응으로 "
+    "실제 공급계약·발주·매출 공시는 전혀 없는 기사.",
+    "서울경제",
+)
+assert watcher._is_stock_reaction_only(run584_false_stock)
+sg,ss,sc,sk=classify(run584_false_stock)
+assert ss<11,(sg,ss,sc)
+
+stock_synonym_down=make("AI 배터리 관련주 4.2% 내리며 약세",
+    "실적과 계약 내용 없는 단순 증시 반응","경제뉴스")
+assert watcher._is_stock_reaction_only(stock_synonym_down)
+
+real_new_event_headline=make(
+    "삼성SDI 5% 오르며 신규 ESS 공급계약 체결",
+    "확정 계약을 특정 고객과 신규 공시했다.",
+    "연합뉴스",
+)
+assert not watcher._is_stock_reaction_only(real_new_event_headline),(
+    "material signed order headlines must not be hidden just because stock rose"
+)
+
+corr=watcher.query_news(watcher.STOCK_218_CORRECTION)
+assert len(corr)==1 and corr[0].get('correction_218_stock'),corr
+cg,cs,cc,ck=classify(corr[0])
+assert cg=='alert_quality_correction' and cs>=11,(cg,cs,cc)
+assert cc=='알림 품질 정정 · Telegram 218번 1번 오탐',cc
+assert '2번 CATL–INTILION' in base.meaning(cc)
+assert '3번 Dexmate–LG CNS' in base.meaning(cc)
+txt=corr[0]['title']+' '+corr[0]['description']
+assert base.category(txt,base.topic_group(txt))==cc
+assert base.clean_title(corr[0]['title'],corr[0]['source']).startswith('정정:')
+assert 'Run #584' in base.verification(corr[0],cg,txt)
+assert watcher.qty._skip_quantity_enrichment(
+    '<b>알림 품질 정정</b>\n정정: Telegram 218번 1번'
+)
+seen_before=base.NOW
+try:
+    base.NOW=dt.datetime(2026,10,19,12,0,tzinfo=dt.timezone.utc)
+    assert watcher.query_news(watcher.STOCK_218_CORRECTION)==[]
+finally:
+    base.NOW=seen_before
 
 
 print("Physical-AI watcher regression guards: PASS")
