@@ -338,7 +338,9 @@
     "stateevt_05055f763ef19bc3ab75": "2026-10-01T23:15:40.460578+00:00",
     "stateevt_f102c55803b39e9f735f": "2026-10-02T06:14:18.498949+00:00",
     "stateevt_a11d2cecef46963c039b": "2026-10-02T06:16:02.365139+00:00",
-    "stateevt_4bd6e3eda851426115a9": "2026-10-03T01:23:43.460079+00:00"
+    "stateevt_4bd6e3eda851426115a9": "2026-10-03T01:23:43.460079+00:00",
+    "stateevt_9539aeeed85f82de3ca5": "2026-10-14T01:13:02.806666+00:00",
+    "stateevt_f2c26bf9f31501b59b15": "2026-10-14T01:13:02.806666+00:00"
   },
   "semantic_seen": {
     "alaska_participation_pressure": "2026-09-09T06:46:11.750941+00:00",
@@ -368,13 +370,15 @@
     "eventstate_encinal_05055f763ef19bc3ab75": "2026-10-01T23:15:40.460578+00:00",
     "eventstate_alaska_lng_f102c55803b39e9f735f": "2026-10-02T06:14:18.498949+00:00",
     "eventstate_nuclear_build_a11d2cecef46963c039b": "2026-10-02T06:16:02.365139+00:00",
-    "eventstate_alaska_lng_4bd6e3eda851426115a9": "2026-10-03T01:23:43.460079+00:00"
+    "eventstate_alaska_lng_4bd6e3eda851426115a9": "2026-10-03T01:23:43.460079+00:00",
+    "eventstate_legacy_funding_media_9539aeeed85f82de3ca5": "2026-10-14T01:13:02.806666+00:00",
+    "eventstate_alaska_lng_f2c26bf9f31501b59b15": "2026-10-14T01:13:02.806666+00:00"
   },
   "official_status": {
     "status": "official_seen",
-    "title": "[상태 변화] 알래스카 LNG — 알래스카 LNG 보도수치 500억달러",
-    "source": "정책브리핑",
-    "updated_at": "2026-10-03T01:24:06.580007+00:00"
+    "title": "[상태 변화] 알래스카 LNG — 현지 주의원 발언 보도: Glenfarne FID 이후 한국 별도 상업성 심사, 아직 투자결정 없음 · 알래스카 LNG 보도수치 540억달러",
+    "source": "대한민국 정책브리핑",
+    "updated_at": "2026-10-14T01:13:06.881483+00:00"
   },
   "event_states": {
     "nuclear_build": {
@@ -629,77 +633,85 @@
     },
     "legacy_funding_media": {
       "facts": [
+        "party:kepco",
+        "party:westinghouse",
         "stage:송금집행"
       ],
       "slots": {
+        "legacy_funding_media|party:kepco": "party:kepco",
+        "legacy_funding_media|party:westinghouse": "party:westinghouse",
         "legacy_funding_media|stage:송금집행": "stage:송금집행"
       },
       "initialized_at": "2026-09-24T05:19:55.815931+00:00",
-      "updated_at": "2026-09-24T05:19:55.815931+00:00",
-      "last_title": "[속보] 산업부, 국회에 \"최종 발표는 트럼프가…美요청시 45일내 송금\" - 연합뉴스 한민족센터",
-      "last_source": "연합뉴스 한민족센터",
+      "updated_at": "2026-10-14T01:13:06.871996+00:00",
+      "last_title": "한전 사장 \"웨스팅하우스 로열티 20억달러는 상한 가이드라인\" - 연합뉴스",
+      "last_source": "연합뉴스",
       "evidence": [
         {
-          "source": "매일경제",
-          "title": "[단독]대미투자 송금 시점 ‘협약 45일 내’ 가닥...이달 22억弗 우선 송금 - 매일경제",
-          "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9iNE8zY1hBTmJfS1pzZDRLN1pDZmFlU3FYbHRwS0RiUng4TWJ5OE9VZWJ6ZGpZVzJxdHRSYmtBSS0xYlBUS3l1OFZ4TFMyU0pELW50dw?oc=5",
-          "published": "2026-09-22T01:57:28+00:00"
+          "source": "연합뉴스",
+          "title": "한전 사장 \"웨스팅하우스 로열티 20억달러는 상한 가이드라인\" - 연합뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5LY0RDQW1HU2M5aU9JSGI2MkkwbWdWVWpMNmxPRFQ2emd6RU1yaXdwUXhYc2FULWkxZFNGaXZyQm42cnhvU0ZXUEIxSGNuMzVfYUcwd2FfNzdqTm5SMmFwcdIBYEFVX3lxTE5LY0RDQW1HU2M5aU9JSGI2MkkwbWdWVWpMNmxPRFQ2emd6RU1yaXdwUXhYc2FULWkxZFNGaXZyQm42cnhvU0ZXUEIxSGNuMzVfYUcwd2FfNzdqTm5SMmFwcQ?oc=5",
+          "published": "2026-10-12T03:40:20+00:00"
         },
         {
-          "source": "연합뉴스 한민족센터",
-          "title": "[속보] 산업부, 국회에 \"최종 발표는 트럼프가…美요청시 45일내 송금\" - 연합뉴스 한민족센터",
-          "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1BQWNiZGdGMHpyV2tEelY3UGVubGhjN1FCSE1mVVFjcHBLajBUZ2hhTmxjX0RrQVlSN280MG8yQ2xFY2lhWnUzQlBSb0QtSWFDazkzTVl2bWtVb3hDVUMxTTJOVFhrTzN1YWRCNk5EZndTODBh?oc=5",
-          "published": "2026-09-22T03:09:15+00:00"
+          "source": "매일경제 마켓",
+          "title": "한전 사장 \"웨스팅하우스 로열티 20억달러는 상한 가이드라인\" - 매일경제 마켓",
+          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9NVkJobTZGMEg0dnotbURuTzRYaUdlY0VkLVd3MktPX09PS1A4blF3bU5VOE5sSFZHM0pqWTBEd2E5LU9TWmNsdnlCQ1B4VWV1b1E?oc=5",
+          "published": "2026-10-12T03:40:20+00:00"
+        },
+        {
+          "source": "이데일리",
+          "title": "김동철 사장 \"웨스팅하우스 로열티 20억달러는 상한선…확정 금액 아냐\" - 이데일리",
+          "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOY0d1OC1iSDJqTmg1djhVUGg0WmdRMk1HX1VLQnV2VnAxZDYtZ3JGWVFFMEhMN295ZERfbzNKRUc2SHZpcjFaS25uNkxOLTY0TnVoX3VCM0xSX3l5ai1TMUNaUnNZMEJDNXVuaEUtVlU5S0x1N19veFRoUy1ia3pFcA?oc=5",
+          "published": "2026-10-12T06:53:03+00:00"
         }
       ]
     },
     "alaska_lng": {
       "facts": [
         "alaska_bilateral_status:review_started",
-        "alaska_reported_amount_usd_b:50",
-        "stage:발표실행",
-        "stage:착공"
+        "alaska_fid_after_commercial_review:reported",
+        "alaska_reported_amount_usd_b:54"
       ],
       "slots": {
         "alaska_lng|alaska_bilateral_status": "alaska_bilateral_status:review_started",
-        "alaska_lng|alaska_reported_amount_usd_b": "alaska_reported_amount_usd_b:50",
-        "alaska_lng|stage:announcement": "stage:발표실행",
-        "alaska_lng|stage:착공": "stage:착공"
+        "alaska_lng|alaska_fid_after_commercial_review:reported": "alaska_fid_after_commercial_review:reported",
+        "alaska_lng|alaska_reported_amount_usd_b": "alaska_reported_amount_usd_b:54"
       },
       "initialized_at": "2026-09-29T23:10:16.076895+00:00",
-      "updated_at": "2026-10-03T01:24:06.557381+00:00",
-      "last_title": "한미 전략투자 1호 '텍사스 가스발전' 추진…알래스카 LNG 검토 착수 - 정책브리핑",
-      "last_source": "정책브리핑",
+      "updated_at": "2026-10-14T01:13:06.869067+00:00",
+      "last_title": "산업통상부 공식 Project North 알래스카 LNG 검토 착수 상업적 합리성 국내법 요건 충족 시 추진 여부 결정",
+      "last_source": "대한민국 정책브리핑",
       "evidence": [
         {
-          "source": "머니투데이",
-          "title": "韓 알래스카 LNG 사업 참여 못박은 트럼프…\"500억불 이상 투자\"(상보) - 머니투데이 - 머니투데이",
-          "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBNWi1XZVhGbm1scm93YkhTVURlZ3FFbFNPbW5nb3Z6QnMzdEdzZWpQVm9sblZraFkyRjlSZTk2VzFmRWdMSHZRNVFIX3lOa0lnNUg1VU02aHp6NnBSWWVJQk5KZzJ0OENYbW85OG1Td09sbjhXeHZkbVp4SdIBe0FVX3lxTFBNWi1XZVhGbm1scm93YkhTVURlZ3FFbFNPbW5nb3Z6QnMzdEdzZWpQVm9sblZraFkyRjlSZTk2VzFmRWdMSHZRNVFIX3lOa0lnNUg1VU02aHp6NnBSWWVJQk5KZzJ0OENYbW85OG1Td09sbjhXeHZkbVp4SQ?oc=5",
-          "published": "2026-09-30T21:29:17+00:00"
+          "source": "Alaska Public Media",
+          "title": "알래스카 LNG Glenfarne FID 이후 한국의 상업성 심사·투자 미결정 (현지 주의원 발언 보도)",
+          "link": "https://alaskapublic.org/news/economy/energy/2026-10-09/trumps-push-for-50b-korean-investment-in-alaska-gasline-faces-familiar-economic-challenges",
+          "published": "2026-10-10T00:57:00+00:00"
         },
         {
-          "source": "뉴스핌",
-          "title": "美 \"알래스카 LNG 투자 결정\" vs 韓 \"검토 단계\"…500억달러 사업 '온도차' - 뉴스핌",
-          "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBZdk1yY1Z6ZkR5QmtvLW02elRaTFBZb1FLVEREY0VSZG85RDBMUzYtcGQ4SDV3MkRDdXJQRWN5MVpKYkU4UGxyZ2VGVUJocGRocEcyUXlIMTl2dnht?oc=5",
-          "published": "2026-10-01T01:19:00+00:00"
+          "source": "YTN",
+          "title": "백악관 \"한국, 알래스카 540억 달러 투자\"...알래스카 달려간 트럼프 - YTN",
+          "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFB0NllMa3lqdHo0dUdLNjZLT2JWVmRUenMwcEIzYURLMVZCb1QwTWRMeTlsYlAtSi14M2M5a3k4VmswT1l0cmhVWmNDTy0za0dDVmtudHZDZ3l6bzFRaUE?oc=5",
+          "published": "2026-10-13T23:03:00+00:00"
         },
         {
-          "source": "한겨레",
-          "title": "한국은 검토 중인데…미 “알래스카 LNG 500억달러 투자” 일방 발표 - 한겨레",
-          "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE40MElvSE4zUlliQXdWTUpGbmJxYzVtT0d1cnlwTGdWLVFVbERvR0RPakJuWXZvRTNVTzBXQThYM2k3TnRicjQzeS1MTkJhS3ZlR01XYjNUTUlOb0o0MUYyQmhWdmd1WDNlUkRIQk83TQ?oc=5",
-          "published": "2026-10-01T04:53:00+00:00"
+          "source": "YTN",
+          "title": "백악관 \"한국, 알래스카에 540억 달러 투자할 것”...트럼프, 알래스카 유세 - YTN",
+          "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE8tbHQybk5lUkY0bEk1b3VZbUFwQVBHQnB5akdSTjAyNnFzRS0zXzliVVVxZmZDbVRMS0w0YjhnVmZ0bGxoRFJLWEhndFR4QTBLZ01JY3ZZWlMzSFc3ZEE?oc=5",
+          "published": "2026-10-13T21:00:00+00:00"
         },
         {
-          "source": "연합뉴스",
-          "title": "트럼프, '알래스카 LNG에 한국 500억불 투자' 일방 발표(종합2보) - 연합뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5WN1BlX0pLbFAzZXVkRGIwQjh1ZnhpWWlWNEZzamFJSHZwTEF0cko4Y2Q3c1N0MW81M0RleEdxcldhbkZBb0VJLTFIZkNXTVQwQWFYX3lNVVlKakXSAWBBVV95cUxPOTZZX3FXaEhsVjFpd0I2WUE1YVAwQTkwNFoxeDc3MWxaRGpjdU5YTi04NzBjNV9fRVpub251dWJKUnd3bkZVY1k2Q2JDeHUxMHZodTFuZVB2dE9maGR3X04?oc=5",
-          "published": "2026-09-30T22:48:41+00:00"
+          "source": "아시아투데이",
+          "title": "백악관 신임 대변인, 첫 브리핑서 “한국 알래스카 LNG 540억달러 연계”…한국은 투자 미결정 - 아시아투데이",
+          "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9SaFVlSHNTTmNTUk9zYUg3NTlVcmo1MmFSR1dfblVBNXd1cEhseWx3Vm9wd3dqaXptSkNKTlhrVkwzZHozbHNKcTlrcTdjZUxPb18wOTVBM2dLYWdOOFdoS1RNM2YwNW9ZM3dvY1F3?oc=5",
+          "published": "2026-10-13T23:22:02+00:00"
         },
         {
-          "source": "한겨레",
-          "title": "알래스카 LNG 개발 미 기업 “한국 500억달러 투자는 우리 노력의 결실” - 한겨레",
-          "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE1XTjN5aXI1SFZZOTVLSFMySGpjMUw3Z3poWDQ0LTNVazB5SEthekxoRjhuZE1GT1RrblR4RDVwbHFEZ0xFelQ0eW55amJoOHZSaDJjRHg5a2lYVGlSb0VwNnQ0b0tkbTdLVWRBc0xkYmt5QQ?oc=5",
-          "published": "2026-10-02T05:40:00+00:00"
+          "source": "포쓰저널",
+          "title": "백악관 “한국, 알래스카 LNG에 540억달러 투자” 또 언급 - 포쓰저널",
+          "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9QXzNaYnlsS2lkZDdaMW02bEhVYkVVMGRyOE5MMlF2QloxZWdvYzZYQXdBaVBMWTkwNnJYV2g2QkVIV0hMWTNQVkJNdmNiajZKV1Z6X2MzOHhDY0MzNEk2bklQX1c?oc=5",
+          "published": "2026-10-14T00:00:24+00:00"
         }
       ]
     },
@@ -750,5 +762,6 @@
   "official_evidence_cleanup_version": 1,
   "westinghouse_framework_equity_version": 1,
   "project_power_funding_roles_version": 1,
-  "encinal_project_cost_role_version": 1
+  "encinal_project_cost_role_version": 1,
+  "alaska_stale_stages_guard_version": 1
 }
