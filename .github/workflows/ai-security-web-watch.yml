@@ -295,6 +295,7 @@ jobs:
           from scripts.ai_security_web_watch import (
               detect_category, incident_fact, is_openai_insider_case,
               material, openai_insider_case_stage, source_official, severity,
+              legal_primary_source,
           )
           base = {
               "kind": "news", "source": "Reuters",
@@ -335,6 +336,11 @@ jobs:
           verdict["title"] = "Alfozan found guilty in OpenAI wiretapping case"
           verdict["description"] = ""
           assert openai_insider_case_stage(verdict) == "court_verdict"
+          assert legal_primary_source("U.S. Attorney's Office")
+          assert legal_primary_source("U.S. Department of Justice")
+          assert not legal_primary_source("Reuters")
+          assert not legal_primary_source("OpenAI")
+          assert not legal_primary_source("Google Security Blog")
 
           acquisition = {
               "title": "OpenAI in early talks to acquire Trail of Bits",
