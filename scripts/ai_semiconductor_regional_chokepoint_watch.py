@@ -547,7 +547,7 @@ def collect(cutoff: dt.datetime) -> tuple[list[dict], list[str]]:
 def _semi_300mm_release_urls(index_html: str) -> list[str]:
     """Discover global 300mm equipment releases from SEMI issuer's own index."""
     links = set()
-    for m in re.finditer(r'''href=["']([^"']+\\.html)["']''', index_html, re.I):
+    for m in re.finditer(r'''href=["']([^"']+\.html)["']''', index_html, re.I):
         href = html.unescape(m.group(1)).strip()
         url = urllib.parse.urljoin(SEMI_300MM_ISSUER_INDEX, href)
         parsed = urllib.parse.urlparse(url)
@@ -557,7 +557,7 @@ def _semi_300mm_release_urls(index_html: str) -> list[str]:
         if all(k in path for k in ("300mm", "fab", "equipment")) and "global" in path and "memory" not in path:
             links.add("https://www.prnewswire.com" + parsed.path)
     def index_num(url):
-        m = re.search(r"-(\\d{9})\\.html$", url)
+        m = re.search(r"-(\d{9})\.html$", url)
         return int(m.group(1)) if m else 0
     return sorted(links, key=index_num, reverse=True)
 
@@ -574,19 +574,40 @@ def _semi_300mm_parse(press_html: str, outlook_html: str = "") -> dict | None:
         return None
     m = re.search(
         r"global 300mm front-end fab equipment spending.{0,120}?"
-        r"(?:US)?\$?\s*(\d+(?:\.\d+)?)\s+billion\s+in\s+2026", p, re.I
+        r"(?:US)?\$?\s*(\d+(?:\.\d+)?)\s+billion\s+in\s+(20\d{2})", p, re.I
     )
-    if not m:
+    target = re.search(
+        r"through\s+(20\d{2}).{0,100}?reaching\s+(?:US)?\$?\s*(\d+(?:\.\d+)?)\s+billion",
+        p, re.I
+    )
+    if not m or not target:
         return None
-    value = float(m.group(1))
-    future = _semi_number(r"through 2029.{0,100}?reaching\s+\$?(\d+(?:\.\d+)?)\s+billion", p)
-    if future is None:
+    first_year, first_value = int(m.group(2)), float(m.group(1))
+    final_year, final_value = int(target.group(1)), float(target.group(2))
+    if first_year > final_year or not 50 <= first_value <= 1000 or not 50 <= final_value <= 1500:
         return None
+    date_match = re.search(
+        r"\b(January|February|March|April|May|June|July|August|September|October|"
+        r"November|December|Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)"
+        r"\.?\s+(\d{1,2}),?\s+(20\d{2})\b", p, re.I
+    )
+    if date_match is None:
+        return None
+    try:
+        release_date = dt.datetime.strptime(
+            date_match.group(1).capitalize()[:3] + " " + date_match.group(2) +
+            " " + date_match.group(3), "%b %d %Y"
+        ).strftime("%Y-%m-%d")
+    except ValueError:
+        return None
+    edition = re.search(r"\b([1-4])Q(\d{2})\s+edition", p, re.I)
     result = {
-        "vintage": "3Q26",
-        "release_date": "2026-10-13",
-        "equipment_2026_usd_b": value,
-        "equipment_2029_usd_b": future,
+        "vintage": (edition.group(1) + "Q" + edition.group(2)) if edition else release_date,
+        "release_date": release_date,
+        "primary_forecast_year": first_year,
+        "terminal_forecast_year": final_year,
+        f"equipment_{first_year}_usd_b": first_value,
+        f"equipment_{final_year}_usd_b": final_value,
         "equipment_2026_yoy_pct": _semi_number(r"up (\d+(?:\.\d+)?)% year.over.year", p),
         "construction_2026_usd_b": _semi_number(
             r"construction spending is projected to rise.{0,80}?to \$?(\d+(?:\.\d+)?) billion in 2026", p),
@@ -613,11 +634,11 @@ def _semi_300mm_parse(press_html: str, outlook_html: str = "") -> dict | None:
                       first_silicon_2027=int(operating.group(2)))
     if o:
         edition = re.search(r"current edition:\s*Q([1-4])\s*(20\d{2})", o, re.I)
-        if edition and (edition.group(1), edition.group(2)) != ("3", "2026"):
+        if edition and result["vintage"] != (edition.group(1) + "Q" + edition.group(2)[-2:]):
             return None  # Older press release cannot overwrite a newer official edition.
         val_o = _semi_number(
-            r"global 300mm front-end fab equipment spending.{0,110}?(?:US)?\$?(\d+(?:\.\d+)?) billion in 2026", o)
-        if val_o is not None and abs(val_o - value) > 0.1:
+            r"global 300mm front-end fab equipment spending.{0,110}?(?:US)?\$?(\d+(?:\.\d+)?) billion in " + str(first_year), o)
+        if val_o is not None and abs(val_o - first_value) > 0.1:
             return None
         result["capacity_growth_2026_pct"] = _semi_number(
             r"total installed 300mm capacity.{0,110}?increase by (\d+(?:\.\d+)?)% in 2026", o)
