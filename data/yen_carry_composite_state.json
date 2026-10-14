@@ -16,21 +16,21 @@
     "unwind::일본 단기금리 상승": false,
     "unwind::최근 공식 공동개입·추가개입 경고": false
   },
-  "fx_age_seconds": 1.8215711116790771,
+  "fx_age_seconds": 1.2030069828033447,
   "fx_signal_eligible": true,
   "initialized": true,
   "policy_path": {
     "cftc_net_short": 25043.0,
     "cftc_net_short_change": 0.0,
     "cftc_net_short_pct_oi": 6.802612063954277,
-    "checked_at_kst": "2026-10-14T15:36:13+09:00",
+    "checked_at_kst": "2026-10-14T21:19:16+09:00",
     "elevated_vol": false,
-    "fx_vol_ratio": 0.8900703659102686,
+    "fx_vol_ratio": 1.1216564865035843,
     "gradual_absorption": true,
     "hawkish_repricing_proxy": false,
     "initialized": true,
     "jgb2_change_bp": 0.0,
-    "low_or_stable_vol": true,
+    "low_or_stable_vol": false,
     "new_cftc": false,
     "new_jgb2": false,
     "new_ust2": false,
@@ -56,51 +56,13 @@
     "yen_shock": false
   },
   "real_rate_overlay": {
-    "available": true,
-    "checked_at_kst": "2026-10-14T15:36:15+09:00",
+    "available": false,
+    "checked_at_kst": "2026-10-14T21:19:16+09:00",
+    "errors": [
+      "RuntimeError: BLS CPI monthly observations missing"
+    ],
     "initialized": true,
-    "inputs": {
-      "boj_effective_date": null,
-      "boj_policy_rate": 1.25,
-      "fed_lower": 3.75,
-      "fed_midpoint": 3.875,
-      "fed_observation_date": "2026-10-13",
-      "fed_upper": 4.0,
-      "jp_cpi_period": "2026-08",
-      "jp_cpi_yoy": 1.9,
-      "us_cpi_period": "2026-08",
-      "us_cpi_yoy": 3.3965478924364856
-    },
-    "metrics": {
-      "changed_sources": [],
-      "jp_real_policy_rate": -0.6499999999999999,
-      "market_rate_direction": "중립",
-      "nominal_policy_gap": 2.625,
-      "official_event_changed": false,
-      "policy_gap_change_pp": 0.0,
-      "real_gap_change_pp": 0.0,
-      "real_rate_direction": "중립",
-      "signal_alignment": "확인 대기",
-      "structural_bias": "미국 실질금리 우위 — 엔화 구조적 약세 압력",
-      "us_jp_2y_spread_change_bp": 0.0,
-      "us_jp_real_gap": 1.1284521075635143,
-      "us_real_policy_rate": 0.4784521075635144
-    },
-    "note": "사후 실질정책금리는 후행 구조지표로만 사용하며, 단독으로 🟠·🔴 엔캐리 청산 경보를 만들지 않음.",
-    "source_fingerprint": {
-      "boj_policy_rate": 1.25,
-      "fed_midpoint": 3.875,
-      "jp_cpi_period": "2026-08",
-      "jp_cpi_yoy": 1.9,
-      "us_cpi_period": "2026-08",
-      "us_cpi_yoy": 3.3965
-    },
-    "thresholds": {
-      "market_direction_bp": 10.0,
-      "policy_gap_alert_pp": 0.25,
-      "real_direction_pp": 0.1,
-      "real_gap_alert_pp": 0.25
-    }
+    "note": "공식 원천 조회 실패 시 실질금리 신호를 점수에 넣지 않음."
   },
   "rebuild_label": "엔화 재약세·캐리 재구축 압력 강화",
   "rebuild_level": 2,
@@ -117,25 +79,25 @@
     "initialized": true,
     "stressed_codes": [],
     "stressed_count": 0,
-    "updated_at_kst": "2026-10-14T15:36:08+09:00"
+    "updated_at_kst": "2026-10-14T21:19:09+09:00"
   },
   "unwind_label": "엔캐리 청산 미확인",
   "unwind_level": 0,
-  "updated_at_kst": "2026-10-14T15:35:43+09:00",
+  "updated_at_kst": "2026-10-14T21:18:44+09:00",
   "values": {
     "cftc_net_short": 25043,
     "cftc_net_short_pct_oi": 6.802612063954277,
-    "fx_12h_5m_sigma_bps": 1.2755656720068675,
-    "fx_vol_ratio": 0.8900703659102686,
+    "fx_12h_5m_sigma_bps": 1.4103393745688195,
+    "fx_vol_ratio": 1.1216564865035843,
     "jgb2": 1.928,
     "mof_latest_2w_outward_trillion_yen": 0.5205,
     "mof_prior_2w_outward_trillion_yen": -0.6133,
     "us_jp_2y_spread": 2.862,
-    "usdjpy": 158.28799438476562,
-    "usdjpy_12h_drawdown_pct": -0.13753569194161372,
-    "usdjpy_15m_pct": 0.018955616859738848,
-    "usdjpy_30m_pct": 0.00252571505692499,
-    "usdjpy_60m_pct": 0.005051557701803463,
+    "usdjpy": 158.46400451660156,
+    "usdjpy_12h_drawdown_pct": -0.02649249137140904,
+    "usdjpy_15m_pct": 0.012625452797274521,
+    "usdjpy_30m_pct": 0.013261143405253608,
+    "usdjpy_60m_pct": -0.005680895255171853,
     "ust2": 4.79
   }
 }
