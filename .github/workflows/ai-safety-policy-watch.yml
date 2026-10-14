@@ -417,6 +417,13 @@ jobs:
               "Trail of Bits",
           )
           assert trail_of_bits_mna_stage(just_research) is None
+          paid_service = item(
+              "OpenAI and Trail of Bits sign paid security services deal for Patch the Planet customers",
+              "OpenAI",
+          )
+          assert trail_of_bits_mna_stage(paid_service) is None
+          assert material(paid_service)
+          assert detect_category(paid_service["title"]) == "OpenAI–Trail of Bits 취약점 수정 사업화"
           print("ai_policy_trail_of_bits_mna_regression=PASS")
           PY
 
