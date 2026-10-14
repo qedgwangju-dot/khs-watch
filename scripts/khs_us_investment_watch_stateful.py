@@ -108,6 +108,17 @@ def _is_alaska_taiwan_offtake_source(row: dict) -> bool:
     return host in {"www.cpc.com.tw", "cpc.com.tw", "www.moea.gov.tw", "moea.gov.tw", "glenfarne.com", "www.glenfarne.com", "glenfarnegroup.com", "www.glenfarnegroup.com", "alaska-lng.com", "www.alaska-lng.com"}
 
 
+def _is_alaska_project_developer_source(row: dict) -> bool:
+    # 사업 개발사·사업법인의 원문만 FID·실제 착공·금융종결 승격 근거로 인정.
+    host = urllib_parse_host(str(row.get("link") or ""))
+    return host in {
+        "glenfarnegroup.com", "www.glenfarnegroup.com",
+        "glenfarne.com", "www.glenfarne.com",
+        "alaska-lng.com", "www.alaska-lng.com",
+        "agdc.us", "www.agdc.us",
+    }
+
+
 def urllib_parse_host(value: str) -> str:
     import urllib.parse
     return (urllib.parse.urlsplit(value).hostname or "").lower()
@@ -966,6 +977,35 @@ def _candidate_facts(row: dict, family: str) -> set[str]:
             ])
             if binding_contract:
                 facts.add("alaska_taiwan_offtake_status:binding_contract_signed")
+        if project_reference and _is_alaska_project_developer_source(row):
+            # 구속력 있는 실행단계는 사업 개발사·사업법인 공식 발표만 허용.
+            pending_words = [
+                "planned", "expected", "expects", "aims", "targets", "targeted",
+                "pre-fid", "approaching", "toward fid", "working towards",
+                "before fid", "could", "may", "subject to", "예정", "목표", "검토", "계획", "가능",
+            ]
+            not_pending = not any(term in low for term in pending_words)
+            if not_pending and any(term in low for term in [
+                "alaska lng final investment decision reached",
+                "alaska lng reached final investment decision",
+                "alaska lng fid completed", "alaska lng fid achieved",
+                "알래스카 lng 최종투자결정 완료",
+            ]):
+                facts.add("alaska_glenfarne_fid_status:completed")
+            if not_pending and any(term in low for term in [
+                "alaska lng financial close completed",
+                "alaska lng financing closed",
+                "알래스카 lng 금융종결 완료",
+            ]):
+                facts.add("alaska_project_financing_status:closed")
+            if not_pending and any(term in low for term in [
+                "alaska lng construction has begun",
+                "alaska lng construction has commenced",
+                "alaska lng construction started",
+                "알래스카 lng 실제 착공",
+                "알래스카 lng 공사 착수 완료",
+            ]):
+                facts.add("alaska_physical_construction_status:started")
         # 일반 기사 속 FID·착공·발표 언급은 실제 알래스카 사업 완료와 다르다.
         # 검증된 프로젝트별 단계만 승격하고 원문에서 포괄 추출된 stages는 배제한다.
         # 금강공업의 API 5L X70 인증 연관성만으로 프로젝트 공급사 상태를 올리지 않는다.
@@ -1032,6 +1072,8 @@ def _fact_slot(family: str, fact: str) -> str:
         "alaska_us_claim_usd_b:", "alaska_us_reiteration:", "alaska_taiwan_project_share_reported:", "alaska_taiwan_offtake_status:",
         "alaska_taiwan_term_reported_years:", "alaska_taiwan_us_investment_claim_usd_b:",
         "alaska_us_permits_reiteration:", "alaska_us_construction_start_claim:",
+        "alaska_glenfarne_fid_status:", "alaska_project_financing_status:",
+        "alaska_physical_construction_status:",
         "ercot_request_gw:", "semiconductor_investment_usd:", "ppa_years:",
         "official_status:",
     )
@@ -1060,6 +1102,11 @@ def _accepted_facts_for_group(family: str, rows: list[dict]) -> tuple[set[str], 
         # 실제 계약 당사자(CPC·Glenfarne)의 공식 보도자료에 한해 계약 체결 1차 근거 인정.
         if family == "alaska_lng" and fact == "alaska_taiwan_offtake_status:binding_contract_signed":
             official = official or any(_is_alaska_taiwan_offtake_source(r) for r in evidence)
+        if family == "alaska_lng" and fact.startswith((
+            "alaska_glenfarne_fid_status:", "alaska_project_financing_status:",
+            "alaska_physical_construction_status:",
+        )):
+            official = official or any(_is_alaska_project_developer_source(r) for r in evidence)
         # 공식자료 1건 또는 서로 다른 출처 2곳 이상이 같은 상태값을 지지해야 승격한다.
         firsthand_report = (
             family == "alaska_lng"
@@ -1201,6 +1248,9 @@ def _human_fact(value: str) -> str:
         "alaska_taiwan_us_investment_claim_usd_b:4.4": "미국 발표: 대만 알래스카 LNG 44억달러 투자 주장·대만 확정 및 납입 미확인",
         "alaska_us_permits_reiteration:2026-10-13": "미국 대통령 연방 인허가 확보 재언급·신규 인허가 취득 아님",
         "alaska_us_construction_start_claim:2026-10-13": "미국 대통령 착공 가능 발언·실제 착공 확인 아님",
+        "alaska_glenfarne_fid_status:completed": "Glenfarne 공식 Alaska LNG 최종투자결정(FID) 완료",
+        "alaska_project_financing_status:closed": "Alaska LNG 개발사 공식 사업 금융종결 완료",
+        "alaska_physical_construction_status:started": "Alaska LNG 개발사 공식 현장 착공 확인",
         "alaska_taiwan_offtake_status:binding_contract_signed": "대만 알래스카 LNG 구속력 있는 장기구매 본계약 체결 확인",
         "funding_wait:45영업일": "선정 통지 후 최소 45영업일",
         "repayment_horizon:20년": "원리금 회수 기준 20년",
@@ -2194,6 +2244,28 @@ def _self_test() -> int:
     claimed, _ = _accepted_facts_for_group("alaska_lng", taiwan_wrong_amount)
     if "alaska_korea_investment_usd_b:4.4" in claimed or "alaska_project_cost_usd_b:4.4" in claimed:
         raise RuntimeError(f"Taiwan 4.4B contaminated Korean capital/project cost: {claimed}")
+    developer_pending = [{
+        "title": "Alaska LNG approaches FID and could start construction soon",
+        "source": "Glenfarne",
+        "link": "https://glenfarnegroup.com/test-pending",
+    }]
+    pending_dev, _ = _accepted_facts_for_group("alaska_lng", developer_pending)
+    if any(x.startswith(("alaska_glenfarne_fid_status:", "alaska_physical_construction_status:")) for x in pending_dev):
+        raise RuntimeError(f"Alaska developer pending FID falsely promoted: {pending_dev}")
+    developer_completed = [{
+        "title": "Alaska LNG reached final investment decision and Alaska LNG financing closed and Alaska LNG construction has commenced",
+        "source": "Glenfarne",
+        "link": "https://glenfarnegroup.com/test-completed",
+    }]
+    executed_dev, _ = _accepted_facts_for_group("alaska_lng", developer_completed)
+    required = {
+        "alaska_glenfarne_fid_status:completed",
+        "alaska_project_financing_status:closed",
+        "alaska_physical_construction_status:started",
+    }
+    if not required.issubset(executed_dev):
+        raise RuntimeError(f"Alaska project true execution events not captured: {executed_dev}")
+
     print("state_event_guard_self_test=passed")
     return 0
 
