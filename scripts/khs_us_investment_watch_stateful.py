@@ -211,7 +211,7 @@ def _family(row: dict) -> str:
     if "엔시날" in low or "encinal" in low or "6.3gw" in low:
         return "encinal"
 
-    if "알래스카" in low or "alaska lng" in low:
+    if any(q in low for q in ["알래스카", "alaska lng", "alaska pipeline", "alaska gasline", "阿拉斯加"]):
         return "alaska_lng"
 
     if "ercot" in low or "batch zero" in low or "large load" in low:
@@ -1029,6 +1029,9 @@ def _accepted_facts_for_group(family: str, rows: list[dict]) -> tuple[set[str], 
     for fact, evidence in support.items():
         sources = {_source_key(r) for r in evidence}
         official = any(_is_official(r) for r in evidence)
+        # 실제 계약 당사자(CPC·Glenfarne)의 공식 보도자료에 한해 계약 체결 1차 근거 인정.
+        if family == "alaska_lng" and fact == "alaska_taiwan_offtake_status:binding_contract_signed":
+            official = official or any(_is_alaska_taiwan_offtake_source(r) for r in evidence)
         # 공식자료 1건 또는 서로 다른 출처 2곳 이상이 같은 상태값을 지지해야 승격한다.
         firsthand_report = (
             family == "alaska_lng"
@@ -2113,6 +2116,18 @@ def _self_test() -> int:
     generic_facts, _ = _accepted_facts_for_group("alaska_lng", generic_30)
     if "alaska_taiwan_project_share_reported:30" in generic_facts:
         raise RuntimeError("Taiwan US-import share contaminated Alaska project share")
+    counterparty = [{
+        "title": "CPC Corp Taiwan Alaska LNG binding gas sales and purchase agreement signed",
+        "source": "CPC Corp",
+        "link": "https://www.cpc.com.tw/official-test",
+    }]
+    counterparty_accepted, _ = _accepted_facts_for_group("alaska_lng", counterparty)
+    if "alaska_taiwan_offtake_status:binding_contract_signed" not in counterparty_accepted:
+        raise RuntimeError("Taiwan counterparty signed SPA not accepted")
+    counterparty[0]["title"] = "CPC Corp Taiwan Alaska LNG nonbinding letter of intent signed"
+    loif, _ = _accepted_facts_for_group("alaska_lng", counterparty)
+    if "alaska_taiwan_offtake_status:binding_contract_signed" in loif:
+        raise RuntimeError("Taiwan nonbinding LOI became signed SPA")
     print("state_event_guard_self_test=passed")
     return 0
 
