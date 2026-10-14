@@ -10,6 +10,7 @@ on:
       - "scripts/ai_sif_regulatory_validation.py"
       - "scripts/ai_si_portal_semantic.py"
       - "scripts/ai_si_portal_policy_enrich.py"
+      - "scripts/test_ai_si_portal_semantic.py"
   schedule:
     - cron: "14,44 * * * *"
   workflow_run:
