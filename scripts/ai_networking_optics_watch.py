@@ -236,6 +236,16 @@ COMPANIES = {
         "aliases": ["Astera Labs", "Astera"],
         "query": '"Astera Labs" (PCIe OR CXL OR Scorpio OR fabric OR interconnect OR retimer OR AI rack OR networking)',
     },
+    "Meta Optical Demand": {
+        "ticker": "META",
+        "aliases": ["Meta Platforms", "Meta Engineering"],
+        "queries": [
+            '("Meta" OR "Facebook") ("800G" OR "1.6T" OR "optical transceiver") ("supplier" OR "contract" OR "purchase order" OR "qualification" OR "shipments")',
+            '("Meta" OR "Facebook") ("NPO" OR "CPO" OR "near-packaged optics" OR "co-packaged optics") (deployment OR customer OR production OR qualification)',
+            '("Meta" OR "Facebook") (Corning OR Lumentum OR Coherent OR Eoptolink OR Zhongji OR Dongshan) (optical OR fiber OR transceiver OR agreement)',
+            'site:engineering.fb.com/2026/ (Meta OR IceCube OR Tahan) (800G OR 1.6T OR optical OR switch)',
+        ],
+    },
     "Corning": {
         "ticker": "GLW",
         "aliases": ["Corning"],
@@ -326,6 +336,7 @@ DISPLAY_NAMES_KO = {
     "Xscape Photonics": "엑스케이프 포토닉스",
     "Astera Labs": "아스테라 랩스",
     "Corning": "코닝",
+    "Meta Optical Demand": "메타 광모듈·공급망",
     "Samsung Electronics": "삼성전자",
     "CPO Equipment Supply Chain": "CPO 장비 공급망",
     "OCS Optical Circuit Switching": "광회로 스위칭(OCS)",
@@ -352,6 +363,7 @@ TRUSTED_SOURCES = {
     "Open Compute Project", "OCP", "iPronics", "Lumotive", "nEye",
     "HUBER+SUHNER", "POLATIS", "Huawei", "华为", "Huawei Cloud", "华为云",
     "Open AI Infra", "Open AI Infra Community",
+    "Engineering at Meta", "Meta Platforms", "Meta Data Centers",
     "Leadray Energy", "賀喜能源", "Bloom Energy", "TechNews", "科技新報",
     "The Japan Times", "財聯社", "财联社", "格隆汇",
     "時報資訊", "時報", "工商時報", "Reccessary", "富聯網",
@@ -469,6 +481,7 @@ SOURCE_PRIORITY = {
     "Opticore": 100, "옵티코어": 100, "OE Solutions": 100, "오이솔루션": 100,
     "KIND": 100, "KRX": 100, "한국거래소": 100, "연합뉴스": 90, "전자신문": 85, "ETNews": 85,
     "Federal Communications Commission": 100, "FCC": 100,
+    "Engineering at Meta": 100, "Meta Platforms": 100, "Meta Data Centers": 100,
     "U.S. Senate": 100, "Congress.gov": 100, "Astera Labs": 100, "Corning": 100,
     "Samsung Electronics": 100, "Samsung Global Newsroom": 100,
     "Reuters": 95, "Bloomberg": 94, "Financial Times": 93,
@@ -634,6 +647,13 @@ def canonical_story_key(company: str, title: str) -> str | None:
         if lite:
             return lite[2]
 
+    if company == META_COMPANY:
+        signal=meta_milestone(title)
+        return signal[2] if signal else None
+    if company == "Corning" and re.search(r"meta",text,re.I):
+        signal=meta_milestone(title)
+        if signal and signal[2]=="meta|corning|jan2026-6b-fiber":
+            return signal[2]
     if company == "Volantis":
         # Preserve the already-seen $88M Series A key, but do not collapse every
         # future financing round into that old event.
@@ -981,6 +1001,106 @@ def source_priority(source: str) -> int:
     return 50
 
 
+
+
+
+META_COMPANY = "Meta Optical Demand"
+META_WATCH_VERSION = 1
+META_KNOWN_KEYS = {
+    "meta|corning|jan2026-6b-fiber",
+    "meta|icecube|oct2026-1024t",
+    "meta|tahan|oct2026-shipping",
+}
+META_PRIMARY_DOMAINS = {
+    "engineering.fb.com", "about.fb.com", "datacenters.atmeta.com",
+    "meta.com", "corning.com", "coherent.com", "lumentum.com",
+    "sec.gov", "opencompute.org", "nvidia.com", "broadcom.com",
+}
+META_VENDORS = r"Corning|Lumentum|Coherent|Eoptolink|Zhongji|Innolight|Dongshan|Cambridge (?:Industries|Photonics|Technology)"
+
+
+def meta_milestone(title: str) -> tuple[str, str, str] | None:
+    text = html.unescape(title or "")
+    if not re.search(r"\bmeta\b|\bfacebook\b", text, re.I):
+        return None
+    if not re.search(r"optical|fiber|fibre|photonics|transceiver|"
+                     r"\b800\s*G\b|\b1[.,]?6\s*T\b|\bNPO\b|\bCPO\b|"
+                     r"\bIceCube\b|\bTahan\b|102[.,]?4\s*T\b",text,re.I):
+        return None
+    if re.search(r"expert discussion|rumou?r|anonymous|unverified|"
+                 r"850\s*W\b|1[,.]?810\s*W\b|"
+                 r"62\s*:\s*32|57\s*:\s*41",text,re.I):
+        return None
+    low=text.lower()
+    if "corning" in low and re.search(r"\$?\s*6\s*(?:billion|bn|b)\b",low,re.I):
+        return ("메타·코닝 광섬유 계약","2026년 1월 최대 60억 달러 계약, 신규 MPO 주문 아님",
+                "meta|corning|jan2026-6b-fiber")
+    if "icecube" in low and re.search(r"102[.,]?4\s*t|128\s*[x×]\s*800\s*g",low,re.I):
+        return ("메타 IceCube 스위치 사양","2026년 10월 102.4Tbps·128×800G, 광모듈 구매량과 별개",
+                "meta|icecube|oct2026-1024t")
+    if "tahan" in low and re.search(r"shipp|ship[s]?|51[.,]?2\s*t",low,re.I):
+        return ("메타 Tahan 스위치","2026년 10월 스위치 출하, 광모듈 PO와 구분",
+                "meta|tahan|oct2026-shipping")
+    # Published targets and conditional FCC hedges are not actual placements.
+    if re.search(r"would |may |might |could |plans? to|expects? to|"
+                 r"expected |reportedly|forecast|2029[- –]2030|"
+                 r"if (?:a |the )?ban",text,re.I) and not re.search(
+                 r"has (?:signed|awarded|deployed|shipped|qualified)|"
+                 r"signed (?:a |the )?(?:contract|agreement)|"
+                 r"began commercial deployment",text,re.I):
+        return None
+    vendor=re.search(META_VENDORS,text,re.I)
+    gen=re.search(r"\b800\s*G\b|\b1[.,]?6\s*T\b",text,re.I)
+    if vendor and re.search(r"signed (?:a |the )?(?:supply )?(?:agreement|contract)|"
+                            r"awards? (?:a |the )?(?:contract|order)|"
+                            r"qualif(?:ied|ies)|certif(?:ied|ies)|"
+                            r"has (?:shipped|delivered)|commercial shipment",text,re.I):
+        name=re.sub(r"[^a-z0-9]+","-",vendor.group(0).lower()).strip("-")
+        stage="qualified" if re.search(r"qualif|certif",text,re.I) else (
+            "shipping" if re.search(r"shipp|deliver",text,re.I) else "contract"
+        )
+        speed=gen.group(0).lower().replace(" ","") if gen else "unspecified"
+        return ("메타 광모듈 공급계약·인증","실제 계약·검증·출하 단계 구분",
+                f"meta|vendor|{name}|{speed}|{stage}")
+    if re.search(r"\bCPO\b|\bNPO\b",text,re.I) and re.search(
+            r"has (?:deployed|installed|qualified)|"
+            r"begins? (?:commercial )?deployment|starts? volume production",
+            text,re.I):
+        tech="npo" if re.search(r"\bNPO\b",text,re.I) else "cpo"
+        return ("메타 NPO·CPO 실제 도입","확정 배치·고객 인증·양산 단계",
+                f"meta|{tech}|deploy")
+    if re.search(r"has (?:stockpiled|secured|increased).{0,45}"
+                 r"(?:optical |transceiver )?(?:modules?|inventory)|"
+                 r"inventory.{0,25}(?:exceeds|reaches)\s*(?:six|6)\s*months",text,re.I):
+        return ("메타 광모듈 재고 확보","실제 재고 확보·비상계획과 구분",
+                "meta|inventory|confirmed")
+    return None
+
+
+def meta_official_source(item: dict) -> bool:
+    name=(item.get("source") or "").lower()
+    host=(urllib.parse.urlparse(item.get("source_url") or "").hostname or "").lower()
+    return bool(
+        re.search(r"\bmeta\b|facebook|corning|coherent|lumentum|"
+                  r"open compute project|nvidia|broadcom",name,re.I)
+        and any(host==d or host.endswith("."+d) for d in META_PRIMARY_DOMAINS)
+    )
+
+
+def meta_verified(item: dict) -> bool:
+    if item.get("company") != META_COMPANY:
+        return True
+    # One anonymous thread or syndicated estimates are insufficient to
+    # establish Meta customer shares, supplier awards or NPO/CPO rollouts.
+    return bool(meta_milestone(item.get("title") or "") and meta_official_source(item))
+
+
+def meta_anonymous_rumor(title: str) -> bool:
+    t=html.unescape(title or "")
+    return bool(re.search(r"\bmeta\b",t,re.I) and re.search(
+        r"expert discussion|850\s*W\b|1[,.]?810\s*W\b|"
+        r"62\s*:\s*32|57\s*:\s*41",t,re.I
+    ))
 
 
 LITE_CAPACITY_COMPANY = "Lumentum Supply & Capacity"
