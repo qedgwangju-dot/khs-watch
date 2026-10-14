@@ -30,6 +30,13 @@ class IntegrityTests(unittest.TestCase):
         self.network = patch('urllib.request.urlopen', side_effect=AssertionError('network/send forbidden'))
         self.network.start()
         self.addCleanup(self.network.stop)
+        # Fixture headlines must not inherit confirmed deliveries from the checkout.
+        self.state_dir = tempfile.TemporaryDirectory()
+        self.addCleanup(self.state_dir.cleanup)
+        self.state_patch = patch.object(watch, 'STATE', Path(self.state_dir.name)/'state.json')
+        self.state_patch.start()
+        self.addCleanup(self.state_patch.stop)
+        watch.STATE.write_text('{"seen": []}', encoding='utf-8')
 
     def alias_fixture(self):
         path = Path(__file__).parent/'test_fixtures/war_source_alias_38526317484.json'
