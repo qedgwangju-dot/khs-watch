@@ -500,7 +500,9 @@ def source_trusted(source: str) -> bool:
 
 
 def source_official(source: str) -> bool:
-    low = source.lower()
+    low = source.strip().lower()
+    if low in {"doj", "fbi", "justice.gov", "fbi.gov"}:
+        return True
     return any(hint in low for hint in OFFICIAL_SOURCE_HINTS)
 
 
@@ -547,7 +549,10 @@ def openai_insider_case_stage(item: dict) -> str | None:
         return "new_charges"
     if any(x in text for x in (
         "confirmed theft", "confirmed exfiltration", "evidence of stolen model weights"
-    )) and not any(x in text for x in ("no evidence", "no indication", "not found", "no sign")):
+    )) and not any(x in text for x in (
+        "no evidence", "no indication", "not found", "no sign",
+        "no confirmed", "not confirmed", "unconfirmed", "no indications",
+    )):
         return "confirmed_new_data_loss"
     return "initial_oct13_charge"
 
@@ -576,6 +581,16 @@ def detect_category(text: str) -> str:
 
 def severity(text: str) -> tuple[int, str]:
     low = f" {text.lower()} "
+    if is_openai_insider_case({"title": text, "description": ""}):
+        proven = any(x in low for x in (
+            "confirmed exfiltration", "confirmed theft of model weights",
+            "confirmed theft of source code",
+        ))
+        negated = any(x in low for x in (
+            "no evidence", "no indication", "no confirmed",
+            "not confirmed", "no sign", "unconfirmed",
+        ))
+        return (3, "긴급") if proven and not negated else (2, "높음")
     critical = (
         "critical cybersecurity capability", "critical cyber capability",
         "actively exploited", "exploited in the wild", "sandbox escape",
