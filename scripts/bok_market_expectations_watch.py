@@ -48,18 +48,18 @@ def _error(label: str, exc: BaseException) -> None:
 
 def extract_swap_report(blob: str) -> dict[str, float] | None:
     """기간·인상 방향·확률 표현이 모두 확인된 단일 전망만 수집한다."""
-    x = re.sub(r"\\s+", " ", BeautifulSoup(blob, "html.parser").get_text(" ", strip=True))
-    market = bool(re.search(r"스왑|swap|利率互换|시장\\s*반영|市场\\s*预期|市场\\s*定价", x, re.I))
-    horizon = bool(re.search(r"6\\s*개?월|six\\s*months|6\\s*months|六个?月|未来\\s*六个?月", x, re.I))
+    x = re.sub(r"\s+", " ", BeautifulSoup(blob, "html.parser").get_text(" ", strip=True))
+    market = bool(re.search(r"스왑|swap|利率互换|시장\s*반영|市场\s*预期|市场\s*定价", x, re.I))
+    horizon = bool(re.search(r"6\s*개?월|six\s*months|6\s*months|六个?月|未来\s*六个?月", x, re.I))
     hike = bool(re.search(r"인상|hike|tighten|加息", x, re.I))
     basis = set(float(m) for m in re.findall(
-        r"(\\d{1,3}(?:\\.\\d+)?)\\s*(?:bp|bps|basis\\s*points|베이시스포인트|基点)", x, re.I
+        r"(\d{1,3}(?:\.\d+)?)\s*(?:bp|bps|basis\s*points|베이시스포인트|基点)", x, re.I
     ))
     probs = set(float(m) for m in re.findall(
-        r"(?:확률|概率|probability|chance)[^.!?。]{0,45}?(\\d{1,3}(?:\\.\\d+)?)\\s*[%％]", x, re.I
+        r"(?:확률|概率|probability|chance)[^.!?。]{0,45}?(\d{1,3}(?:\.\d+)?)\s*[%％]", x, re.I
     ))
     probs.update(float(m) for m in re.findall(
-        r"(\\d{1,3}(?:\\.\\d+)?)\\s*[%％][^.!?。]{0,28}?(?:확률|概率|probability|chance)", x, re.I
+        r"(\d{1,3}(?:\.\d+)?)\s*[%％][^.!?。]{0,28}?(?:확률|概率|probability|chance)", x, re.I
     ))
     if not market or not horizon or not hike or len(basis) != 1 or len(probs) != 1:
         return None
