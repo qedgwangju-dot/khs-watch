@@ -59,6 +59,11 @@ _extend_unique(core.QUERIES, [
     '"Westinghouse" "$2 billion" APR1400 when:14d',
     '"AP1000" Korea supply chain EPC Westinghouse when:14d',
     '"한미 원전 프레임워크" 웨스팅하우스 카메코 지분 5 10 when:14d',
+    '"Trump" "Taiwan" "Alaska" "30%" LNG when:7d',
+    '"대만" "알래스카" "30%" 가스 구매 합의 when:7d',
+    '"CPC" "Alaska LNG" binding offtake SPA agreement when:14d',
+    '"Taiwan" "Alaska LNG" Glenfarne commercial agreement when:14d',
+    '"Glenfarne" "Alaska LNG" FID gas sales agreements when:14d',
 ])
 _extend_unique(core.TRUSTED, [
     "뉴스핌",
@@ -85,6 +90,7 @@ _extend_unique(core.TRUSTED, [
     "Brookfield",
     "한국전력",
     "한국수력원자력",
+    "Taipei Times", "CNA", "Focus Taiwan", "Taiwan News", "Taiwan MOEA",
 ])
 _extend_unique(core.MATERIAL, [
     "두산에너빌리티",
@@ -168,6 +174,7 @@ _extend_unique(core.MATERIAL, [
     "선지급",
     "Team Korea",
     "팀코리아",
+    "Taiwan", "대만", "CPC Corp", "台灣中油", "알래스카 가스관",
 ])
 if hasattr(core, "HARD_PROGRESS_TERMS"):
     _extend_unique(core.HARD_PROGRESS_TERMS, [
