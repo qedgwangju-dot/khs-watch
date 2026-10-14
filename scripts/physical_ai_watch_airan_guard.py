@@ -1448,6 +1448,8 @@ def _is_airan(text: str) -> bool:
 
 
 def topic_group(text: str) -> str | None:
+    if '정정: Telegram 218번 1번' in text:
+        return 'alert_quality_correction'
     if _is_catl_intilion_sodium(text):
         return 'catl_intilion_sodium'
     if _is_dexmate_lg(text):
@@ -1492,6 +1494,10 @@ def _stage(text: str) -> str:
 
 
 def score(item: dict) -> int:
+    if item.get('correction_218_stock'):
+        return 95 if topic_group(
+            f"{item.get('title','')} {item.get('description','')}"
+        ) == 'alert_quality_correction' else 0
     if item.get('robros_false_alert_correction'):
         return 90 if _is_robros_pilot(
             f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
@@ -1597,6 +1603,8 @@ def score(item: dict) -> int:
 
 
 def category(text: str, group: str) -> str:
+    if group == 'alert_quality_correction':
+        return '알림 품질 정정 · Telegram 218번 1번 오탐'
     if group == 'catl_intilion_sodium':
         if CATL_INTILION_REVERSE.search(text):
             return 'CATL–INTILION · 나트륨 ESS 협약 후퇴'
@@ -1710,6 +1718,17 @@ def category(text: str, group: str) -> str:
 
 
 def meaning(cat: str) -> str:
+    if cat == '알림 품질 정정 · Telegram 218번 1번 오탐':
+        return (
+            '앞서 전송된 Telegram message_id=218의 1번 '
+            '삼성SDI 5% 상승 관련 서울경제 기사는 '
+            'ESS 수요 기대와 주가 반응만 다룬 보도로서 신규 '
+            '수주·발주·확정 실적이 아니므로 고신호에서 제외합니다. '
+            '2번 CATL–INTILION 최대 3GWh 개발협약과 '
+            '3번 Dexmate–LG CNS 사용·유통 CEO 발언은 유효합니다. '
+            '기존 감시기가 5% 오르며라는 주가 표현을 감지하지 못한 '
+            '공통 필터 문제를 수정하고 회귀검사를 추가했습니다.'
+        )
     if cat == 'CATL–INTILION · 유럽 5년 최대 3GWh 공동개발 목표':
         return (
             'INTILION CEO 10/09 공개 발언과 pv magazine 10/13 기사 대조: '
@@ -2019,6 +2038,13 @@ def meaning(cat: str) -> str:
 
 
 def risk(cat: str) -> str:
+    if cat == '알림 품질 정정 · Telegram 218번 1번 오탐':
+        return (
+            '이 정정은 새 계약이나 매출이 아닙니다. '
+            '주가 반응 기사에 신규 사업을 혼합하면 투자 판단이 왜곡됩니다. '
+            '향후 원천기사 제목뿐 아니라 본문·원 공시에서 '
+            '실제 신규 계약·매출·납품 여부를 분리해 확인합니다.'
+        )
     if cat.startswith('CATL–INTILION · '):
         return (
             '주요 실패경로는 5년 개발 목표가 특정 프로젝트의 인허가·'
@@ -2157,6 +2183,12 @@ def risk(cat: str) -> str:
 
 
 def verification(item: dict, group: str, text: str) -> str:
+    if group == 'alert_quality_correction':
+        return (
+            'Run #584 실제 Telegram 발송문·서울경제 기사 제목 대조 · '
+            '1번 주가반응 오탐, 2·3번 사업 신호 유지 · '
+            '기존 Python 제목 필터 원인 수정'
+        )
     if group == 'catl_intilion_sodium':
         stage = _catl_intilion_stage(text,item.get('source') or '')
         if stage == 'sodium_3gwh_development_framework':
@@ -2276,6 +2308,8 @@ def verification(item: dict, group: str, text: str) -> str:
 
 
 def clean_title(title: str, source: str) -> str:
+    if title.startswith('정정: Telegram 218번 1번'):
+        return '정정: Telegram 218번 1번 주가 반응 오탐 제외'
     if _is_catl_intilion_sodium(title + ' ' + source):
         if CATL_INTILION_BINDING.search(title) and source in CATL_INTILION_OFFICIAL:
             return 'CATL–INTILION 나트륨 ESS 정식 구매계약 공식 확인'
@@ -2369,6 +2403,8 @@ def clean_title(title: str, source: str) -> str:
 
 
 def tag_for(group: str) -> str:
+    if group == 'alert_quality_correction':
+        return '오탐 정정'
     if group == 'catl_intilion_sodium':
         return 'CATL–INTILION 나트륨 ESS'
     if group == 'dexmate_lg_commercial':
@@ -2400,6 +2436,10 @@ def tag_for(group: str) -> str:
 
 def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    if topic_group(text) == 'alert_quality_correction':
+        return hashlib.sha256(
+            b'khs-physical-ai|telegram218|20261014|item1-stock-reaction-correction-v1'
+        ).hexdigest()
     if topic_group(text) == 'catl_intilion_sodium':
         stage = _catl_intilion_stage(text,item.get('source') or '')
         if stage == 'sodium_3gwh_development_framework':
@@ -2557,6 +2597,9 @@ def key(item: dict) -> str:
 def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -> list[dict]:
     chosen = _orig_select_diverse(items, seen, force, limit)
     candidates = items if force else [x for x in items if x.get('key') not in seen]
+    correction = next((x for x in candidates if x.get('group')=='alert_quality_correction'),None)
+    if correction and not any(x.get('key')==correction.get('key') for x in chosen):
+        chosen = ([correction,*chosen] if len(chosen)<limit else [correction,*chosen[:-1]])
     for target_group in ('catl_intilion_sodium','dexmate_lg_commercial'):
         event = next((x for x in candidates if x.get('group')==target_group),None)
         if event and not any(x.get('key')==event.get('key') for x in chosen):
