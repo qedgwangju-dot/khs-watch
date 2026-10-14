@@ -319,6 +319,7 @@ jobs:
           court["description"] = "OpenAI hearing held after the original complaint"
           court["published_at"] = "2026-10-19T18:00:00+00:00"
           assert openai_insider_case_stage(court) == "oct19_hearing_result"
+          assert material(court), "Alfozan hearing coverage lacks AI keyword but must be monitored"
           scheduled = dict(base)
           scheduled["title"] = "Alfozan scheduled for detention hearing October 19"
           assert openai_insider_case_stage(scheduled) == "initial_oct13_charge"
