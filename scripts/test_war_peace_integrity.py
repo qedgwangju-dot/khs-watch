@@ -149,6 +149,36 @@ class IntegrityTests(unittest.TestCase):
         self.assertIsNone(integrity.non_military_kind(row))
         self.assertEqual(integrity.final_color(row), 'red')
 
+    def test_discussion_analysis_and_attack_pass_the_full_render_and_integrity_path(self):
+        now = dt.datetime.now(watch.KST)
+        rows = [article('네타냐후, 트럼프와 이란 공습 재개 놓고 이견', link='https://www.fnnews.com/news/discussion'),
+                article('사우디 방공망이 왜 후티 미사일 공격을 막지 못했나?', link='https://www.fnnews.com/news/analysis'),
+                article('후티, 사우디 아람코 본사 미사일 공격…화재', link='https://www.fnnews.com/news/attack')]
+        for n, row in enumerate(rows):
+            row['id'] = f'fixture-{n}'
+            row['published'] = format_datetime(now - dt.timedelta(minutes=20))
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            root = Path(folder)
+            stack.enter_context(patch.object(watch, 'OUT', root))
+            for attr, name in {'STATE': 'state.json', 'ALERT': 'alert.txt', 'PENDING': 'pending.json',
+                               'AUDIT': 'evidence.json', 'SUMMARY': 'summary.md'}.items():
+                stack.enter_context(patch.object(watch, attr, root/name))
+            watch.STATE.write_text('{"seen":["already-confirmed"]}', encoding='utf-8')
+            stack.enter_context(patch.object(watch, 'QUERIES', ['fixture']))
+            stack.enter_context(patch.object(watch, 'google_news', return_value=(rows, None)))
+            stack.enter_context(patch.object(watch, 'score_item', return_value=(90, ['확전'])))
+            stack.enter_context(patch.object(watch, 'market_snapshot', return_value=[]))
+            stack.enter_context(patch.object(watch, 'translate_ko', side_effect=lambda value: value))
+            watch.run()
+            integrity.runner.verify_alert()
+            receipt = json.loads(watch.AUDIT.read_text(encoding='utf-8'))
+            self.assertEqual({row['title_original']: row['classification_color'] for row in receipt['articles']},
+                             {row['title_original']: color for row, color in zip(rows, ('yellow', 'yellow', 'red'))})
+            pending = json.loads(watch.PENDING.read_text())['ids']
+            self.assertEqual(len(pending), 3)
+            self.assertEqual(set(pending), {row['id'] for row in receipt['articles'] if row['rendered']})
+            self.assertEqual(json.loads(watch.STATE.read_text())['seen'], ['already-confirmed'])
+
     def test_final_gate_rechecks_discussion_and_analysis_not_saved_red_color(self):
         for title in ('네타냐후, 트럼프와 이란 공습 재개 놓고 이견',
                       '사우디 방공망이 왜 후티 미사일 공격을 막지 못했나?'):
