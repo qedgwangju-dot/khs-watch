@@ -10363,6 +10363,30 @@
       "telegram_core_fact": "현재 경기도 화성에 50MW급 태양광 모듈 생산라인을 구축하고, 초경량·고출력 태양광 모듈과 건물일체형 태양광 모듈을 개발·생산하고 있다. 에이스인벤터는 아이템을 인정받아 한국건설기술연구원 스마트건설지원센터 보육기업으로 선정됐다.",
       "title": "[한국건설기술연구원 스마트건설지원센터 보육기업 CEO] 초경량·고출력 태양광 모듈을 개발하는 기업 ‘에이스인벤터’"
     },
+    "core:32ae538405bb2bf13aeb44ac": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1174709",
+      "source": "매일경제",
+      "source_body_digest": "0c58f58d8f26d4e45ed737c16f84eff722c79f7458526bc44c669447fd4f9cb8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:286649e866e836d30305bedd12e5b31644afe3bcc697fe0895791dd1d297180f",
+      "source_fact_keys": [
+        "source_fact:v1:1b80eea78dbd0ed39980fe3da8b3002cc45ea6e7c3c109855a87a8a04ea3dd60",
+        "source_fact:v1:22ee78813cbe9a5f024c792b6e3fb47ad109c42fa85232f4144d9d395d1f3645",
+        "source_fact:v1:a2e6a90db7a2520657176519add3e7a7e7be0ce5c302a39ed2e6cf7df9525d42",
+        "source_fact:v1:bc35da8172c5bbbdfcf7fc0997688a269b07b97ab78fd315392132cf9408bf7f",
+        "source_fact:v1:d43ea50fdc1e448b98fea098eb25df0aa8a208f304e89e323683f49f3ea807b4"
+      ],
+      "source_published_kst": "2026-10-15T04:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "클리어 채널 아웃도어 홀딩, 무바달라 62억달러 인수 완료·상장폐지",
+      "telegram_core_fact": "클리어 채널 아웃도어 홀딩스(CCO)가 아부다비 국부펀드 계열 무바달라 캐피털(Mubadala Capital)에 약 62억 달러 규모로 인수되는 거래를 완료했으며, 이에 따라 보통주가 뉴욕증권거래소(NYSE)에서 상장폐지된다고 14일 발표했다.",
+      "title": "클리어 채널 아웃도어 홀딩, 무바달라 62억달러 인수 완료·상장폐지"
+    },
     "core:32beb0c56c83e24a15c46a83": {
       "first_seen_kst": "2026-10-13T16:01:00+09:00",
       "lanes": {
@@ -10496,6 +10520,30 @@
       "source_title": "KT클라우드, 청라 50MW AI 데이터센터 설계·구축·운영 파트너로 참여",
       "telegram_core_fact": "KT클라우드는 7일 청라 AI 데이터센터 사업에 설계·구축·운영(DBO) 파트너로 참여한다고 밝혔다. KT클라우드가 인천 청라에 들어설 인공지능(AI) 데이터센터의 설계부터 운영까지 맡는다.",
       "title": "KT클라우드, 청라 50MW AI 데이터센터 설계·구축·운영 파트너로 참여"
+    },
+    "core:337aab79ff84f455215df839": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.hankyung.com/article/202610140628i",
+      "source": "한국경제",
+      "source_body_digest": "bbaee49bfb5d8d8505e2aade245579c35a1305b990d8a90d3ccc10e2d2a08144",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6742f1147ef33e9aabc46bad471cbfc6c13a45e8f7ffa120c64c340e77b822de",
+      "source_fact_keys": [
+        "source_fact:v1:1f9adfa97e7e18929742503cffff925dc63209d50d4e93b84c1507b27ac29f92",
+        "source_fact:v1:2975681a7f8b6ab23299ab157c317b6400a66c96e202194691d1e7db054dcb65",
+        "source_fact:v1:63ff6404c1422861564326184b6cb40b13de8506a2f09e9a6282a20526432845",
+        "source_fact:v1:644bdadb895e583ef5af7be3500a4a95125d831fa7b5d47763e72c1fc04e42e5",
+        "source_fact:v1:dec508fd3d27b35e5c8720947b529ff6de251a451ad4f2a7d22817693daf8def"
+      ],
+      "source_published_kst": "2026-10-14T15:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"시공사 요구대로 공사비 다 올려줘?\"…국토부, 무검증 재건축 조합 특별점검",
+      "telegram_core_fact": "국토부의 전수조사 결과에 따르면 이미 시공사를 선정한 전국 568곳의 재건축·재개발 사업장 중 공사비 검증 대상인데도 검증을 진행하지 않은 사업장이 총 138곳으로 집계됐다.",
+      "title": "\"시공사 요구대로 공사비 다 올려줘?\"…국토부, 무검증 재건축 조합 특별점검"
     },
     "core:3384ec8668402154c3c48869": {
       "first_seen_kst": "2026-10-12T18:21:27+09:00",
@@ -12959,6 +13007,27 @@
       "source_title": "청년미래적금 내일부터 출생연도 관계없이 신청",
       "telegram_core_fact": "우대금리와 정부 기여금, 이자소득 비과세 혜택을 더하면 최고 19.4% 수준의 수익 효과를 기대할 수 있는 '청년미래적금' 가입 신청이 시작된 6월 22일 서울 중구 우리은행 본점에 관련 안내문이 게시돼 있다.",
       "title": "청년미래적금 내일부터 출생연도 관계없이 신청"
+    },
+    "core:3e7e20b2c3f81dc7c67dd80b": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06277926645612920",
+      "source": "이데일리",
+      "source_body_digest": "56bdaf3e3ff31063bff3b3a9b1f61cffde9fc3938b64035695d5d71c635342e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:80c231adf11617e41bbf52a3eeb50240db39c5737c0aedd3442f8725c75a01af",
+      "source_fact_keys": [
+        "source_fact:v1:2db516a51039668755d067fe9254018b6dc2ed13ceb86e2893ed388d9723cdf1",
+        "source_fact:v1:69ac06978a9fa0f20a61fb81bfbe6b5b81c65f8afb53b0571cfc4476b51f64ea"
+      ],
+      "source_published_kst": "2026-10-14T23:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "브링커 인터내셔널, 칠리스 실적 개선 기대...투자의견 상향-제프리스",
+      "telegram_core_fact": "특히 고객 방문 증가와 수익성 개선을 통해 확보한 자금을 재투자하면서 지속적인 매출 성장과 시장점유율 확대를 이끄는 선순환 구조가 형성되고 있다고 설명했다.",
+      "title": "브링커 인터내셔널, 칠리스 실적 개선 기대...투자의견 상향-제프리스"
     },
     "core:3e878455877e2209a44b6ef4": {
       "first_seen_kst": "2026-10-11T17:31:47+09:00",
@@ -26697,6 +26766,29 @@
       "telegram_core_fact": "경기 시흥시가 관내 산업단지 지붕과 공공 유휴부지를 활용해 재생에너지 생산을 확대하고, 발생 수익을 시민에게 되돌려주는 '시흥형 RE100' 모델 구축에 나섰다.",
       "title": "'시흥형 RE100' 모델 구축…산단 지붕에 태양광, 수익은 환원"
     },
+    "core:86ac0186027389cadab8239a": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1174725",
+      "source": "매일경제",
+      "source_body_digest": "194179749fe1918f0fa192262d49ac8b6c8d3b088e6a94994a33021179fd01ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1e18d513e7c947d13684ced1f2ff2b85fdedf8f8c509825c5ebf781da594c863",
+      "source_fact_keys": [
+        "source_fact:v1:074becaa78af8f32519f51450ffb640c16730339087397b2df942d7ab1df6794",
+        "source_fact:v1:936ddf8c99842ffd54da598b437f209345082a4572c60108b3621fa0adfc5685",
+        "source_fact:v1:a5298fff913b0b75c2fe67890765665f17d8966598279b69039df6f2cf86d1d7",
+        "source_fact:v1:c665c137738946867a0e6f08bcf9c42631d20becd7e204e260b91a121b2f964b"
+      ],
+      "source_published_kst": "2026-10-15T05:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "베터 홈 앤 파이낸스 홀딩, 3분기 잠정 매출 4500만달러..가이던스 하회",
+      "telegram_core_fact": "베터 홈 앤 파이낸스 홀딩(BETR)은 2026년 9월 30일 종료된 3분기 잠정 총순매출액(Total Net Revenues)이 4510만 달러로 전년비 8.6% 증가했지만, 앞서 제시한 가이던스 하단(4900만~5200만 달러)에는 못 미쳤다고 14일 발표했다.",
+      "title": "베터 홈 앤 파이낸스 홀딩, 3분기 잠정 매출 4500만달러..가이던스 하회"
+    },
     "core:86ca17d84df5facc8cd56fd1": {
       "first_seen_kst": "2026-10-12T15:20:09+09:00",
       "lanes": {
@@ -27919,6 +28011,24 @@
       "source_title": "\"노벨 평화상 불발 뒤끝?\"…'ICC 해체' 거론한 트럼프 행정부",
       "telegram_core_fact": "제재는 나비 필라이 국제사법재판소(ICJ) 임시 재판관의 노벨평화상 수상 소식 직후 발표됐다.",
       "title": "\"노벨 평화상 불발 뒤끝?\"…'ICC 해체' 거론한 트럼프 행정부"
+    },
+    "core:8c13b5f2a2400962e5779cea": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12176110",
+      "source": "매일경제",
+      "source_body_digest": "86ab425bbe2694cf9ad860ea03721e8957c26536636c9b8bd468f737e9fc366f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-14T19:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "액센츄어, 2026회계 조정 EPS 13.97달러..가이던스 상회",
+      "telegram_core_fact": "액센츄어(ACN)가 2026회계연도(8월 31일 종료) 매출액 742억 달러, Non-GAAP 조정 희석 주당순이익(EPS) 13.97달러를 기록했다고 14일 투자자의 날(Investor Day) 재무 발표 자료를 통해 발표했다.",
+      "title": "액센츄어, 2026회계 조정 EPS 13.97달러..가이던스 상회"
     },
     "core:8c4456d317b7bbbf4fae8677": {
       "first_seen_kst": "2026-10-07T20:43:18+09:00",
@@ -43454,6 +43564,30 @@
       "telegram_core_fact": "반도체 수요가 큰 만큼 전남광주뿐 아니라 다른 지역에서도 공장 증설을 검토해야 한다는 취지다.",
       "title": "최태원 SK그룹 회장 “반도체 생산능력 서둘러 키워야⋯미ㆍ중 증설 경쟁”"
     },
+    "core:ddcbb54f372b4a4e949d234c": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825800",
+      "source": "뉴시스",
+      "source_body_digest": "63aad06f22b0e8bc6d494d7d1edb06ecb60ace64e23285627149a09ebb0048ab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:957be00696f682f17dc7c2d5298b2f96ccf9c8d7fd34497cfe60f484f7c3809a",
+      "source_fact_keys": [
+        "source_fact:v1:4018b2dccc78a03366837f1b2ee16f29909160803e5dbafc7ac333e2061225bc",
+        "source_fact:v1:6fbf5708b3adf10943bb600bd2f1ae53f30fed1bd37dab568ae8a566a26afb8e",
+        "source_fact:v1:705f0205d7d21e41e340115fc33117d103e8d99ccd327a72d32bc0a092a682af",
+        "source_fact:v1:ac67e6992db1d4ffe6a1d5878fe0bc6af30b40b486f54f8eda1bdf33008deef8",
+        "source_fact:v1:cf8d20969dd104497934caad415bdd4f5e5ac044b6379cd1ed457a7b0310d949"
+      ],
+      "source_published_kst": "2026-10-14T17:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "日은행·보험사, 해외 채권 팔고 日국채 산다…\"엔 캐리 청산 조짐?\"",
+      "telegram_core_fact": "13일(현지 시간) 파이낸셜타임스(FT)의 일본증권협회 자료를 자체 분석한 결과, 일본 대형 은행과 보험사들은 지난 8월까지 약 5개월 동안 만기 2년 이상인 일본 국채를 5조4000억엔(약 45조6000억원) 순매수했다.",
+      "title": "日은행·보험사, 해외 채권 팔고 日국채 산다…\"엔 캐리 청산 조짐?\""
+    },
     "core:de043f289dec3d61fc142a10": {
       "first_seen_kst": "2026-10-15T07:08:31+09:00",
       "lanes": {
@@ -52055,26 +52189,26 @@
     "event:2d661690e1508ffd19821c60": {
       "first_seen_kst": "2026-10-14T04:36:31+09:00",
       "lanes": {
-        "live": "2026-10-14T06:36:25+09:00"
+        "live": "2026-10-15T07:56:16+09:00"
       },
-      "last_seen_kst": "2026-10-14T06:36:25+09:00",
-      "link": "https://www.newsis.com/view/NISX20261013_0003823772",
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825800",
       "source": "뉴시스",
-      "source_body_digest": "41c5e51b6d931c2132e8423a4fff51a2e7b52a08126819de8542c24530313b6c",
+      "source_body_digest": "63aad06f22b0e8bc6d494d7d1edb06ecb60ace64e23285627149a09ebb0048ab",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:bb5619e15e9c3b88f64caf8dceca45db9749e0d3030ceb87009302818a76dfde",
+      "source_fact_identity": "source_facts:v1:957be00696f682f17dc7c2d5298b2f96ccf9c8d7fd34497cfe60f484f7c3809a",
       "source_fact_keys": [
-        "source_fact:v1:02c300ac92ed6a2a657caf0d58c6464d86d9ba0f995cf1793c68c5c721ef618f",
-        "source_fact:v1:572e39e1bb9f39b3ecde08da6a6129c0f3409854b92dc7859cb99a44cda9507e",
-        "source_fact:v1:ad68ec6cf2280d5f1cb7eeae1477315b7a4485aa09da12d6f969437273867afa",
-        "source_fact:v1:ad8aecb157fe7d46ffc3ebb503a72cc48869b084e1fed491cc4da06089fb22e1",
-        "source_fact:v1:d1d2356c7c3c5e303ad419c44145d3678bb59280d3f7f7af5c8fc6d534fddb69"
+        "source_fact:v1:4018b2dccc78a03366837f1b2ee16f29909160803e5dbafc7ac333e2061225bc",
+        "source_fact:v1:6fbf5708b3adf10943bb600bd2f1ae53f30fed1bd37dab568ae8a566a26afb8e",
+        "source_fact:v1:705f0205d7d21e41e340115fc33117d103e8d99ccd327a72d32bc0a092a682af",
+        "source_fact:v1:ac67e6992db1d4ffe6a1d5878fe0bc6af30b40b486f54f8eda1bdf33008deef8",
+        "source_fact:v1:cf8d20969dd104497934caad415bdd4f5e5ac044b6379cd1ed457a7b0310d949"
       ],
-      "source_published_kst": "2026-10-14T00:20+09:00",
+      "source_published_kst": "2026-10-14T17:18+09:00",
       "source_supply_terms": {},
-      "source_title": "비트코인 왜 또 빠지나…유가·국채금리·ETF '3중 악재'",
-      "telegram_core_fact": "국제유가와 미국 국채금리가 치솟은 데다 현물 상장지수펀드(ETF)에서 자금까지 빠져나가면서 투자심리를 위축시켰다는 분석이다.",
-      "title": "비트코인 왜 또 빠지나…유가·국채금리·ETF '3중 악재'"
+      "source_title": "日은행·보험사, 해외 채권 팔고 日국채 산다…\"엔 캐리 청산 조짐?\"",
+      "telegram_core_fact": "13일(현지 시간) 파이낸셜타임스(FT)의 일본증권협회 자료를 자체 분석한 결과, 일본 대형 은행과 보험사들은 지난 8월까지 약 5개월 동안 만기 2년 이상인 일본 국채를 5조4000억엔(약 45조6000억원) 순매수했다.",
+      "title": "日은행·보험사, 해외 채권 팔고 日국채 산다…\"엔 캐리 청산 조짐?\""
     },
     "event:2da188b8d971de076b20a5df": {
       "first_seen_kst": "2026-09-18T13:11:00+09:00",
@@ -59742,36 +59876,27 @@
     "event:bfa531f786e27b22818c4fa1": {
       "first_seen_kst": "2026-10-14T16:26:08+09:00",
       "lanes": {
-        "live": "2026-10-14T22:15:19+09:00"
+        "live": "2026-10-15T07:56:16+09:00"
       },
-      "last_seen_kst": "2026-10-14T22:15:19+09:00",
-      "link": "https://biz.heraldcorp.com/article/10902550",
-      "source": "헤럴드경제",
-      "source_body_digest": "570ba4e9a7f3c798e4f2619718875478166f8fd2925c504faa43bc87e4f63a0f",
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.hankyung.com/article/202610141990i",
+      "source": "한국경제",
+      "source_body_digest": "7d4235494254cc65499f7393ea9f891047d32b0343f8d7cb6603dc779fe5651f",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:b04c43b3439a26323a3d3c0f88feb6bb03c90bc284c61b7c7b0cf0244b521e73",
+      "source_fact_identity": "source_facts:v1:111e05df80fe554e98aa914573bdd1158a797d9fe0e8bbdd3267b0f24c705f0f",
       "source_fact_keys": [
-        "source_fact:v1:02d4221e26a1a3112b22fad8b426a8aea6ff810b13b7ef6df81f4d2ac898242e",
-        "source_fact:v1:4c7ef24e40d70cec90e184b3e292bdcb0f18458337e538a2e5d43d1aa603e304",
-        "source_fact:v1:4d681a5d03b23c4eb4304fa1b17d1b7986fe0daa7096527756a60adcef49ffda",
-        "source_fact:v1:68fa98c41c9e86092924b7c130b1bfcccaf59eee982ee0356f691a88ab69092c",
-        "source_fact:v1:7978131564b477379eb377e64d65128e7100acaae551055c0b7222f9d47e1ab1",
-        "source_fact:v1:83b01e1af1fa3a0d848bf6c13eadeea5a9ab159ce9ea2ae34ab7c09431ab27b0",
-        "source_fact:v1:85d172cf7a4a890854c94e8211fbed786a64bb618d1f4c90874bb8aa32bf3d1f",
-        "source_fact:v1:892a01332e8b29f286e543ea38aba2a0dfb2c6784c201cb3efb1848bf53f2410",
-        "source_fact:v1:91787f4ebd14a6785a59e1c3d1be0e6e1f5ef4c115a68356f943ac6bc4405a6c",
-        "source_fact:v1:93739157d7e3daf513d0a6f88cde6d593ca642a7388ae787e2ad498fe390ce49",
-        "source_fact:v1:9bcc2bc71fdb28fce1d068e362a3e28447dda258fa4354338714324cbbefc043",
-        "source_fact:v1:a67b3257623ae5e49f2f5d38d699c4506948473323e482b0f345a46970ec46d9",
-        "source_fact:v1:aea036319e47cf9ff55a174f61b03cf60187922271c13066a8f92c1a4cb7b5dc",
-        "source_fact:v1:d1f3aa60239898cc642ca06e78bd8f81646f67cbd876b2d46414af8d0f958fa5",
-        "source_fact:v1:df2840917173c6530ea3ad8996ba4c9a10b0a3f651266cfb0ef58ff2b4f4134d"
+        "source_fact:v1:02ee1228158743f8f7c02c3bfed7b094a887fd508e270170ed7d24b6cbe459b6",
+        "source_fact:v1:56bbb3f11266c9167203798f42f6b6069c832e6e8b233fa360324858adc60ca8",
+        "source_fact:v1:7ffdcc9d7ac5646d32ac930a718a3b292489672ea60f1a92efe975f009665304",
+        "source_fact:v1:803c55350303e191bc5c1f1ab8fad66218ac5ae196016f1d4f9f886abb931425",
+        "source_fact:v1:9e477a6b2ca18b723a16769281076886fd2d837a2cc2a368b1b91838546bca6a",
+        "source_fact:v1:f93d59ec5bf9c13830d6daf6c35ac6c4fb6ace22ffa669aab70e38f6799de3bb"
       ],
-      "source_published_kst": "2026-10-14T20:40+09:00",
+      "source_published_kst": "2026-10-14T19:29+09:00",
       "source_supply_terms": {},
-      "source_title": "‘진짜 강심장’ 이 와중에 ‘레버리지’ 투자라니 …정작 기관은 ‘곱버스’ 베팅 [투자360]",
-      "telegram_core_fact": "최근 일주일 동안 개인들이 주가 상승에 베팅하는 레버리지 ETF를 5000억원 가까이 사들인 반면, 기관은 주가 하락 시 수익을 내는 인버스 ETF를 집중 매수한 것으로 나타났다.",
-      "title": "‘진짜 강심장’ 이 와중에 ‘레버리지’ 투자라니 …정작 기관은 ‘곱버스’ 베팅 [투자360]"
+      "source_title": "ASML \"30% 증산해도 부족\"…2030년까지 AI칩 장비 주문",
+      "telegram_core_fact": "ASML 매출은 440억 유로 전망입니다.",
+      "title": "ASML \"30% 증산해도 부족\"…2030년까지 AI칩 장비 주문"
     },
     "event:bfa9dd8b1282e20277ebdc0e": {
       "event_alias_evidence_message_id": 2291,
@@ -64722,6 +64847,30 @@
       "source_title": "디티에스 \"코스닥 상장으로 글로벌 열 관리 솔루션 리더 도약\"",
       "telegram_core_fact": "회사는 상장 이후 LNG 설비 증설과 발전 인프라 투자 확대에 맞춰 주력사업 수주를 늘린다는 목표다.",
       "title": "디티에스 \"코스닥 상장으로 글로벌 열 관리 솔루션 리더 도약\""
+    },
+    "fact:03dce11d160f05e7fa9f04f9": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.hankyung.com/article/202610140628i",
+      "source": "한국경제",
+      "source_body_digest": "bbaee49bfb5d8d8505e2aade245579c35a1305b990d8a90d3ccc10e2d2a08144",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6742f1147ef33e9aabc46bad471cbfc6c13a45e8f7ffa120c64c340e77b822de",
+      "source_fact_keys": [
+        "source_fact:v1:1f9adfa97e7e18929742503cffff925dc63209d50d4e93b84c1507b27ac29f92",
+        "source_fact:v1:2975681a7f8b6ab23299ab157c317b6400a66c96e202194691d1e7db054dcb65",
+        "source_fact:v1:63ff6404c1422861564326184b6cb40b13de8506a2f09e9a6282a20526432845",
+        "source_fact:v1:644bdadb895e583ef5af7be3500a4a95125d831fa7b5d47763e72c1fc04e42e5",
+        "source_fact:v1:dec508fd3d27b35e5c8720947b529ff6de251a451ad4f2a7d22817693daf8def"
+      ],
+      "source_published_kst": "2026-10-14T15:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"시공사 요구대로 공사비 다 올려줘?\"…국토부, 무검증 재건축 조합 특별점검",
+      "telegram_core_fact": "국토부의 전수조사 결과에 따르면 이미 시공사를 선정한 전국 568곳의 재건축·재개발 사업장 중 공사비 검증 대상인데도 검증을 진행하지 않은 사업장이 총 138곳으로 집계됐다.",
+      "title": "\"시공사 요구대로 공사비 다 올려줘?\"…국토부, 무검증 재건축 조합 특별점검"
     },
     "fact:042b380e7790769f45e4b055": {
       "first_seen_kst": "2026-10-15T03:55:55+09:00",
@@ -84742,6 +84891,31 @@
       "telegram_core_fact": "서울 주택 시장을 둘러싼 집값 상승 원인을 두고 규제 완화와 규제 강화의 팽팽한 공방이 이어지고 있다.",
       "title": "풀어서 올랐나, 조여서 올랐나…서울 집값 뒤흔든 ‘토허제 딜레마’, 향방은"
     },
+    "fact:584d4958230645c7842fdac8": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.hankyung.com/article/202610141990i",
+      "source": "한국경제",
+      "source_body_digest": "7d4235494254cc65499f7393ea9f891047d32b0343f8d7cb6603dc779fe5651f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:111e05df80fe554e98aa914573bdd1158a797d9fe0e8bbdd3267b0f24c705f0f",
+      "source_fact_keys": [
+        "source_fact:v1:02ee1228158743f8f7c02c3bfed7b094a887fd508e270170ed7d24b6cbe459b6",
+        "source_fact:v1:56bbb3f11266c9167203798f42f6b6069c832e6e8b233fa360324858adc60ca8",
+        "source_fact:v1:7ffdcc9d7ac5646d32ac930a718a3b292489672ea60f1a92efe975f009665304",
+        "source_fact:v1:803c55350303e191bc5c1f1ab8fad66218ac5ae196016f1d4f9f886abb931425",
+        "source_fact:v1:9e477a6b2ca18b723a16769281076886fd2d837a2cc2a368b1b91838546bca6a",
+        "source_fact:v1:f93d59ec5bf9c13830d6daf6c35ac6c4fb6ace22ffa669aab70e38f6799de3bb"
+      ],
+      "source_published_kst": "2026-10-14T19:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "ASML \"30% 증산해도 부족\"…2030년까지 AI칩 장비 주문",
+      "telegram_core_fact": "ASML 매출은 440억 유로 전망입니다.",
+      "title": "ASML \"30% 증산해도 부족\"…2030년까지 AI칩 장비 주문"
+    },
     "fact:5861a7bd00e97a76dbde1dd3": {
       "first_seen_kst": "2026-10-09T17:32:22+09:00",
       "lanes": {
@@ -85033,6 +85207,30 @@
       "source_title": "호르무즈 해협 컨테이너선 2척 피격돼 침몰",
       "telegram_core_fact": "가디언 등에 따르면 영국 해사무역기구(UKMTO)는 호르무즈 해협 인근에서 최근 48시간 동안 유조선과 상선 등을 겨냥한 드론 공격을 포함해 최소 5건의 공격이 있었다고 밝혔다.",
       "title": "호르무즈 해협 컨테이너선 2척 피격돼 침몰"
+    },
+    "fact:594552670084e982d34f06b2": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1174709",
+      "source": "매일경제",
+      "source_body_digest": "0c58f58d8f26d4e45ed737c16f84eff722c79f7458526bc44c669447fd4f9cb8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:286649e866e836d30305bedd12e5b31644afe3bcc697fe0895791dd1d297180f",
+      "source_fact_keys": [
+        "source_fact:v1:1b80eea78dbd0ed39980fe3da8b3002cc45ea6e7c3c109855a87a8a04ea3dd60",
+        "source_fact:v1:22ee78813cbe9a5f024c792b6e3fb47ad109c42fa85232f4144d9d395d1f3645",
+        "source_fact:v1:a2e6a90db7a2520657176519add3e7a7e7be0ce5c302a39ed2e6cf7df9525d42",
+        "source_fact:v1:bc35da8172c5bbbdfcf7fc0997688a269b07b97ab78fd315392132cf9408bf7f",
+        "source_fact:v1:d43ea50fdc1e448b98fea098eb25df0aa8a208f304e89e323683f49f3ea807b4"
+      ],
+      "source_published_kst": "2026-10-15T04:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "클리어 채널 아웃도어 홀딩, 무바달라 62억달러 인수 완료·상장폐지",
+      "telegram_core_fact": "클리어 채널 아웃도어 홀딩스(CCO)가 아부다비 국부펀드 계열 무바달라 캐피털(Mubadala Capital)에 약 62억 달러 규모로 인수되는 거래를 완료했으며, 이에 따라 보통주가 뉴욕증권거래소(NYSE)에서 상장폐지된다고 14일 발표했다.",
+      "title": "클리어 채널 아웃도어 홀딩, 무바달라 62억달러 인수 완료·상장폐지"
     },
     "fact:595323a4577830687afd178e": {
       "first_seen_kst": "2026-10-14T05:39:44+09:00",
@@ -91738,6 +91936,27 @@
       "telegram_core_fact": "국제유가 상승에 따른 휘발유 가격 반등으로 헤드라인 물가 상승률은 전년 동월 대비 3% 중후반까지 확대될 것으로 예상된다.",
       "title": "美물가·연준 발언에 쏠린 눈…환율 하락세 이어질까[주간외환전망]"
     },
+    "fact:761ecd8a7910260aa78a586f": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06277926645612920",
+      "source": "이데일리",
+      "source_body_digest": "56bdaf3e3ff31063bff3b3a9b1f61cffde9fc3938b64035695d5d71c635342e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:80c231adf11617e41bbf52a3eeb50240db39c5737c0aedd3442f8725c75a01af",
+      "source_fact_keys": [
+        "source_fact:v1:2db516a51039668755d067fe9254018b6dc2ed13ceb86e2893ed388d9723cdf1",
+        "source_fact:v1:69ac06978a9fa0f20a61fb81bfbe6b5b81c65f8afb53b0571cfc4476b51f64ea"
+      ],
+      "source_published_kst": "2026-10-14T23:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "브링커 인터내셔널, 칠리스 실적 개선 기대...투자의견 상향-제프리스",
+      "telegram_core_fact": "특히 고객 방문 증가와 수익성 개선을 통해 확보한 자금을 재투자하면서 지속적인 매출 성장과 시장점유율 확대를 이끄는 선순환 구조가 형성되고 있다고 설명했다.",
+      "title": "브링커 인터내셔널, 칠리스 실적 개선 기대...투자의견 상향-제프리스"
+    },
     "fact:764ac8ee4597567da059d69a": {
       "first_seen_kst": "2026-10-14T22:47:26+09:00",
       "lanes": {
@@ -96940,6 +97159,29 @@
       "telegram_core_fact": "한국 경제성장률 전망치를 높인 것은 반도체 호황이 중동전쟁의 부정적 영향을 압도했기 때문이다.",
       "title": "IMF, 올해 한국 성장률 3.3%로 석 달 만에 0.7%포인트 상향"
     },
+    "fact:8ab4ef5b2360ed5d3457af56": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1174725",
+      "source": "매일경제",
+      "source_body_digest": "194179749fe1918f0fa192262d49ac8b6c8d3b088e6a94994a33021179fd01ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1e18d513e7c947d13684ced1f2ff2b85fdedf8f8c509825c5ebf781da594c863",
+      "source_fact_keys": [
+        "source_fact:v1:074becaa78af8f32519f51450ffb640c16730339087397b2df942d7ab1df6794",
+        "source_fact:v1:936ddf8c99842ffd54da598b437f209345082a4572c60108b3621fa0adfc5685",
+        "source_fact:v1:a5298fff913b0b75c2fe67890765665f17d8966598279b69039df6f2cf86d1d7",
+        "source_fact:v1:c665c137738946867a0e6f08bcf9c42631d20becd7e204e260b91a121b2f964b"
+      ],
+      "source_published_kst": "2026-10-15T05:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "베터 홈 앤 파이낸스 홀딩, 3분기 잠정 매출 4500만달러..가이던스 하회",
+      "telegram_core_fact": "베터 홈 앤 파이낸스 홀딩(BETR)은 2026년 9월 30일 종료된 3분기 잠정 총순매출액(Total Net Revenues)이 4510만 달러로 전년비 8.6% 증가했지만, 앞서 제시한 가이던스 하단(4900만~5200만 달러)에는 못 미쳤다고 14일 발표했다.",
+      "title": "베터 홈 앤 파이낸스 홀딩, 3분기 잠정 매출 4500만달러..가이던스 하회"
+    },
     "fact:8b129f8e85b95158cb5ca697": {
       "first_seen_kst": "2026-10-08T12:46:54+09:00",
       "lanes": {
@@ -100377,6 +100619,30 @@
       ],
       "source_published_kst": "2026-10-06T08:15+09:00",
       "title": "[오늘의 투자전략] 코스피, 금리ㆍ삼성전자 실적 주목⋯“반도체 이익 상향 재개 여부 관건”"
+    },
+    "fact:9680861e187c285e1b93587a": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825800",
+      "source": "뉴시스",
+      "source_body_digest": "63aad06f22b0e8bc6d494d7d1edb06ecb60ace64e23285627149a09ebb0048ab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:957be00696f682f17dc7c2d5298b2f96ccf9c8d7fd34497cfe60f484f7c3809a",
+      "source_fact_keys": [
+        "source_fact:v1:4018b2dccc78a03366837f1b2ee16f29909160803e5dbafc7ac333e2061225bc",
+        "source_fact:v1:6fbf5708b3adf10943bb600bd2f1ae53f30fed1bd37dab568ae8a566a26afb8e",
+        "source_fact:v1:705f0205d7d21e41e340115fc33117d103e8d99ccd327a72d32bc0a092a682af",
+        "source_fact:v1:ac67e6992db1d4ffe6a1d5878fe0bc6af30b40b486f54f8eda1bdf33008deef8",
+        "source_fact:v1:cf8d20969dd104497934caad415bdd4f5e5ac044b6379cd1ed457a7b0310d949"
+      ],
+      "source_published_kst": "2026-10-14T17:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "日은행·보험사, 해외 채권 팔고 日국채 산다…\"엔 캐리 청산 조짐?\"",
+      "telegram_core_fact": "13일(현지 시간) 파이낸셜타임스(FT)의 일본증권협회 자료를 자체 분석한 결과, 일본 대형 은행과 보험사들은 지난 8월까지 약 5개월 동안 만기 2년 이상인 일본 국채를 5조4000억엔(약 45조6000억원) 순매수했다.",
+      "title": "日은행·보험사, 해외 채권 팔고 日국채 산다…\"엔 캐리 청산 조짐?\""
     },
     "fact:9688d4276cff39f0c14d7b15": {
       "first_seen_kst": "2026-10-12T20:37:19+09:00",
@@ -143198,6 +143464,24 @@
       "source_published_kst": "2026-10-07T07:38+09:00",
       "title": "NAVER, 3분기 실적은 부진...AI팩토리·두나무 합병 주목-유진"
     },
+    "link:2f367a3456b68e988fe4cef3": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12176110",
+      "source": "매일경제",
+      "source_body_digest": "86ab425bbe2694cf9ad860ea03721e8957c26536636c9b8bd468f737e9fc366f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-14T19:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "액센츄어, 2026회계 조정 EPS 13.97달러..가이던스 상회",
+      "telegram_core_fact": "액센츄어(ACN)가 2026회계연도(8월 31일 종료) 매출액 742억 달러, Non-GAAP 조정 희석 주당순이익(EPS) 13.97달러를 기록했다고 14일 투자자의 날(Investor Day) 재무 발표 자료를 통해 발표했다.",
+      "title": "액센츄어, 2026회계 조정 EPS 13.97달러..가이던스 상회"
+    },
     "link:2f39f1f59cec6cfff7994267": {
       "first_seen_kst": "2026-10-02T15:29:23+09:00",
       "lanes": {
@@ -147332,6 +147616,30 @@
       ],
       "source_published_kst": "2026-10-06T17:52+09:00",
       "title": "코스닥, 석달 만에 900 뚫었다…소부장·바이오·배터리주 강세"
+    },
+    "link:3ae54f069b7b07c3359d300f": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.hankyung.com/article/202610140628i",
+      "source": "한국경제",
+      "source_body_digest": "bbaee49bfb5d8d8505e2aade245579c35a1305b990d8a90d3ccc10e2d2a08144",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6742f1147ef33e9aabc46bad471cbfc6c13a45e8f7ffa120c64c340e77b822de",
+      "source_fact_keys": [
+        "source_fact:v1:1f9adfa97e7e18929742503cffff925dc63209d50d4e93b84c1507b27ac29f92",
+        "source_fact:v1:2975681a7f8b6ab23299ab157c317b6400a66c96e202194691d1e7db054dcb65",
+        "source_fact:v1:63ff6404c1422861564326184b6cb40b13de8506a2f09e9a6282a20526432845",
+        "source_fact:v1:644bdadb895e583ef5af7be3500a4a95125d831fa7b5d47763e72c1fc04e42e5",
+        "source_fact:v1:dec508fd3d27b35e5c8720947b529ff6de251a451ad4f2a7d22817693daf8def"
+      ],
+      "source_published_kst": "2026-10-14T15:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"시공사 요구대로 공사비 다 올려줘?\"…국토부, 무검증 재건축 조합 특별점검",
+      "telegram_core_fact": "국토부의 전수조사 결과에 따르면 이미 시공사를 선정한 전국 568곳의 재건축·재개발 사업장 중 공사비 검증 대상인데도 검증을 진행하지 않은 사업장이 총 138곳으로 집계됐다.",
+      "title": "\"시공사 요구대로 공사비 다 올려줘?\"…국토부, 무검증 재건축 조합 특별점검"
     },
     "link:3aee4342723432ac06e5b43f": {
       "first_seen_kst": "2026-10-01T22:39:53+09:00",
@@ -159873,6 +160181,30 @@
       "source_title": "현대차, 인도 누적 판매 1000만대 눈앞…\"年 생산량 110만대로 확대\"",
       "telegram_core_fact": "현대차와 인도자동차공업협회(SIAM)에 따르면 현대차의 1998년부터 올해 3분기까지 인도 내 누적 판매량은 988만4960대로 집계됐다.",
       "title": "현대차, 인도 누적 판매 1000만대 눈앞…\"年 생산량 110만대로 확대\""
+    },
+    "link:5ff014efd15853eb5888868e": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825800",
+      "source": "뉴시스",
+      "source_body_digest": "63aad06f22b0e8bc6d494d7d1edb06ecb60ace64e23285627149a09ebb0048ab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:957be00696f682f17dc7c2d5298b2f96ccf9c8d7fd34497cfe60f484f7c3809a",
+      "source_fact_keys": [
+        "source_fact:v1:4018b2dccc78a03366837f1b2ee16f29909160803e5dbafc7ac333e2061225bc",
+        "source_fact:v1:6fbf5708b3adf10943bb600bd2f1ae53f30fed1bd37dab568ae8a566a26afb8e",
+        "source_fact:v1:705f0205d7d21e41e340115fc33117d103e8d99ccd327a72d32bc0a092a682af",
+        "source_fact:v1:ac67e6992db1d4ffe6a1d5878fe0bc6af30b40b486f54f8eda1bdf33008deef8",
+        "source_fact:v1:cf8d20969dd104497934caad415bdd4f5e5ac044b6379cd1ed457a7b0310d949"
+      ],
+      "source_published_kst": "2026-10-14T17:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "日은행·보험사, 해외 채권 팔고 日국채 산다…\"엔 캐리 청산 조짐?\"",
+      "telegram_core_fact": "13일(현지 시간) 파이낸셜타임스(FT)의 일본증권협회 자료를 자체 분석한 결과, 일본 대형 은행과 보험사들은 지난 8월까지 약 5개월 동안 만기 2년 이상인 일본 국채를 5조4000억엔(약 45조6000억원) 순매수했다.",
+      "title": "日은행·보험사, 해외 채권 팔고 日국채 산다…\"엔 캐리 청산 조짐?\""
     },
     "link:60298ce57a5003f8e6f9d526": {
       "first_seen_kst": "2026-10-07T07:01:10+09:00",
@@ -190003,6 +190335,27 @@
       "telegram_core_fact": "KT&G가 인도네시아 신공장을 가동해 글로벌 5각 생산체제를 구축했다. 설비 9대 설치 후 연산 210억 개비, 기존 공장 포함 현지 생산능력은 350억 개비로 확대될 전망이다.",
       "title": "KT&G, 인도네시아 신공장 가동…5개국 생산체제 구축 | 연합뉴스"
     },
+    "link:b9953e2ef5b78e02fd00b98c": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06277926645612920",
+      "source": "이데일리",
+      "source_body_digest": "56bdaf3e3ff31063bff3b3a9b1f61cffde9fc3938b64035695d5d71c635342e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:80c231adf11617e41bbf52a3eeb50240db39c5737c0aedd3442f8725c75a01af",
+      "source_fact_keys": [
+        "source_fact:v1:2db516a51039668755d067fe9254018b6dc2ed13ceb86e2893ed388d9723cdf1",
+        "source_fact:v1:69ac06978a9fa0f20a61fb81bfbe6b5b81c65f8afb53b0571cfc4476b51f64ea"
+      ],
+      "source_published_kst": "2026-10-14T23:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "브링커 인터내셔널, 칠리스 실적 개선 기대...투자의견 상향-제프리스",
+      "telegram_core_fact": "특히 고객 방문 증가와 수익성 개선을 통해 확보한 자금을 재투자하면서 지속적인 매출 성장과 시장점유율 확대를 이끄는 선순환 구조가 형성되고 있다고 설명했다.",
+      "title": "브링커 인터내셔널, 칠리스 실적 개선 기대...투자의견 상향-제프리스"
+    },
     "link:b9a98d8f26e3d7167c1dbc8d": {
       "first_seen_kst": "2026-09-25T00:00:00+09:00",
       "lanes": {
@@ -202638,6 +202991,29 @@
       "source_published_kst": "2026-10-05T12:53+09:00",
       "title": "K-항공우주, 글로벌 공급망 올라탄다… KOTRA 상담회 성황"
     },
+    "link:e070e0387241b6d181935d18": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1174725",
+      "source": "매일경제",
+      "source_body_digest": "194179749fe1918f0fa192262d49ac8b6c8d3b088e6a94994a33021179fd01ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1e18d513e7c947d13684ced1f2ff2b85fdedf8f8c509825c5ebf781da594c863",
+      "source_fact_keys": [
+        "source_fact:v1:074becaa78af8f32519f51450ffb640c16730339087397b2df942d7ab1df6794",
+        "source_fact:v1:936ddf8c99842ffd54da598b437f209345082a4572c60108b3621fa0adfc5685",
+        "source_fact:v1:a5298fff913b0b75c2fe67890765665f17d8966598279b69039df6f2cf86d1d7",
+        "source_fact:v1:c665c137738946867a0e6f08bcf9c42631d20becd7e204e260b91a121b2f964b"
+      ],
+      "source_published_kst": "2026-10-15T05:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "베터 홈 앤 파이낸스 홀딩, 3분기 잠정 매출 4500만달러..가이던스 하회",
+      "telegram_core_fact": "베터 홈 앤 파이낸스 홀딩(BETR)은 2026년 9월 30일 종료된 3분기 잠정 총순매출액(Total Net Revenues)이 4510만 달러로 전년비 8.6% 증가했지만, 앞서 제시한 가이던스 하단(4900만~5200만 달러)에는 못 미쳤다고 14일 발표했다.",
+      "title": "베터 홈 앤 파이낸스 홀딩, 3분기 잠정 매출 4500만달러..가이던스 하회"
+    },
     "link:e0820d4dc8d4ed80cefd9b69": {
       "first_seen_kst": "2026-10-08T04:14:15+09:00",
       "lanes": {
@@ -207104,6 +207480,30 @@
       "source_title": "경북도·안동시, 헴프 재배부터 의약품 생산까지 전 주기 산업체계 구축 나서",
       "telegram_core_fact": "사업을 맡은 네오켄바이오는 헴프 규제자유특구 핵심 참여기업으로 의료용 CBD 원료의약품 국산화 사업을 추진하고 있어 향후 의약품 상용화와 산업 생태계 조성에 속도가 붙을 것으로 기대된다.",
       "title": "경북도·안동시, 헴프 재배부터 의약품 생산까지 전 주기 산업체계 구축 나서"
+    },
+    "link:eda931e010b0d97182a0a428": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1174709",
+      "source": "매일경제",
+      "source_body_digest": "0c58f58d8f26d4e45ed737c16f84eff722c79f7458526bc44c669447fd4f9cb8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:286649e866e836d30305bedd12e5b31644afe3bcc697fe0895791dd1d297180f",
+      "source_fact_keys": [
+        "source_fact:v1:1b80eea78dbd0ed39980fe3da8b3002cc45ea6e7c3c109855a87a8a04ea3dd60",
+        "source_fact:v1:22ee78813cbe9a5f024c792b6e3fb47ad109c42fa85232f4144d9d395d1f3645",
+        "source_fact:v1:a2e6a90db7a2520657176519add3e7a7e7be0ce5c302a39ed2e6cf7df9525d42",
+        "source_fact:v1:bc35da8172c5bbbdfcf7fc0997688a269b07b97ab78fd315392132cf9408bf7f",
+        "source_fact:v1:d43ea50fdc1e448b98fea098eb25df0aa8a208f304e89e323683f49f3ea807b4"
+      ],
+      "source_published_kst": "2026-10-15T04:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "클리어 채널 아웃도어 홀딩, 무바달라 62억달러 인수 완료·상장폐지",
+      "telegram_core_fact": "클리어 채널 아웃도어 홀딩스(CCO)가 아부다비 국부펀드 계열 무바달라 캐피털(Mubadala Capital)에 약 62억 달러 규모로 인수되는 거래를 완료했으며, 이에 따라 보통주가 뉴욕증권거래소(NYSE)에서 상장폐지된다고 14일 발표했다.",
+      "title": "클리어 채널 아웃도어 홀딩, 무바달라 62억달러 인수 완료·상장폐지"
     },
     "link:edb01fb20f868433638f1df1": {
       "first_seen_kst": "2026-10-02T08:38:38+09:00",
@@ -211610,6 +212010,31 @@
       "source_title": "장인화, 글로벌 자원 확보전 진두지휘…포스코 리튬 2공장 준공",
       "telegram_core_fact": "포스코홀딩스는 염수리튬 2공장 상공정을 준공하고, 2033년 연산 10만톤 생산체제 구축을 공식화했다. 장인화 포스코그룹 회장이 글로벌 핵심광물 확보전 한복판인 아르헨티나에서 리튬 사업의 확장 신호탄을 쐈다.",
       "title": "장인화, 글로벌 자원 확보전 진두지휘…포스코 리튬 2공장 준공"
+    },
+    "link:fb0aab661168c779147cb0ea": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.hankyung.com/article/202610141990i",
+      "source": "한국경제",
+      "source_body_digest": "7d4235494254cc65499f7393ea9f891047d32b0343f8d7cb6603dc779fe5651f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:111e05df80fe554e98aa914573bdd1158a797d9fe0e8bbdd3267b0f24c705f0f",
+      "source_fact_keys": [
+        "source_fact:v1:02ee1228158743f8f7c02c3bfed7b094a887fd508e270170ed7d24b6cbe459b6",
+        "source_fact:v1:56bbb3f11266c9167203798f42f6b6069c832e6e8b233fa360324858adc60ca8",
+        "source_fact:v1:7ffdcc9d7ac5646d32ac930a718a3b292489672ea60f1a92efe975f009665304",
+        "source_fact:v1:803c55350303e191bc5c1f1ab8fad66218ac5ae196016f1d4f9f886abb931425",
+        "source_fact:v1:9e477a6b2ca18b723a16769281076886fd2d837a2cc2a368b1b91838546bca6a",
+        "source_fact:v1:f93d59ec5bf9c13830d6daf6c35ac6c4fb6ace22ffa669aab70e38f6799de3bb"
+      ],
+      "source_published_kst": "2026-10-14T19:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "ASML \"30% 증산해도 부족\"…2030년까지 AI칩 장비 주문",
+      "telegram_core_fact": "ASML 매출은 440억 유로 전망입니다.",
+      "title": "ASML \"30% 증산해도 부족\"…2030년까지 AI칩 장비 주문"
     },
     "link:fb1737040651410c9daa9069": {
       "first_seen_kst": "2026-10-14T01:23:44+09:00",
@@ -216993,6 +217418,30 @@
       "source_title": "LS증권, 수요예측서 4천640억 몰려…모집예정액 7배 수준 | 연합뉴스",
       "telegram_core_fact": "투자은행(IB) 업계에 따르면 LS증권은 700억원 회사채 발행을 위한 수요예측에서 총 4천640억원의 수요를 확인했다. LS증권[078020](A0)의 무보증사채 수요예측에서 모집예정액의 7배 가까운 자금이 몰렸다.",
       "title": "LS증권, 수요예측서 4천640억 몰려…모집예정액 7배 수준 | 연합뉴스"
+    },
+    "original:0a49e181008190c61201a48b": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825800",
+      "source": "뉴시스",
+      "source_body_digest": "63aad06f22b0e8bc6d494d7d1edb06ecb60ace64e23285627149a09ebb0048ab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:957be00696f682f17dc7c2d5298b2f96ccf9c8d7fd34497cfe60f484f7c3809a",
+      "source_fact_keys": [
+        "source_fact:v1:4018b2dccc78a03366837f1b2ee16f29909160803e5dbafc7ac333e2061225bc",
+        "source_fact:v1:6fbf5708b3adf10943bb600bd2f1ae53f30fed1bd37dab568ae8a566a26afb8e",
+        "source_fact:v1:705f0205d7d21e41e340115fc33117d103e8d99ccd327a72d32bc0a092a682af",
+        "source_fact:v1:ac67e6992db1d4ffe6a1d5878fe0bc6af30b40b486f54f8eda1bdf33008deef8",
+        "source_fact:v1:cf8d20969dd104497934caad415bdd4f5e5ac044b6379cd1ed457a7b0310d949"
+      ],
+      "source_published_kst": "2026-10-14T17:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "日은행·보험사, 해외 채권 팔고 日국채 산다…\"엔 캐리 청산 조짐?\"",
+      "telegram_core_fact": "13일(현지 시간) 파이낸셜타임스(FT)의 일본증권협회 자료를 자체 분석한 결과, 일본 대형 은행과 보험사들은 지난 8월까지 약 5개월 동안 만기 2년 이상인 일본 국채를 5조4000억엔(약 45조6000억원) 순매수했다.",
+      "title": "日은행·보험사, 해외 채권 팔고 日국채 산다…\"엔 캐리 청산 조짐?\""
     },
     "original:0a541b9a10e32caad7b3bd82": {
       "first_seen_kst": "2026-10-04T00:00:47+09:00",
@@ -224508,6 +224957,24 @@
       "source": "뉴시스",
       "title": "광양 성황동 한때 정전…아파트 단지 등 500여 가구 불편"
     },
+    "original:216140c641d7e47c86e8663e": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12176110",
+      "source": "매일경제",
+      "source_body_digest": "86ab425bbe2694cf9ad860ea03721e8957c26536636c9b8bd468f737e9fc366f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-14T19:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "액센츄어, 2026회계 조정 EPS 13.97달러..가이던스 상회",
+      "telegram_core_fact": "액센츄어(ACN)가 2026회계연도(8월 31일 종료) 매출액 742억 달러, Non-GAAP 조정 희석 주당순이익(EPS) 13.97달러를 기록했다고 14일 투자자의 날(Investor Day) 재무 발표 자료를 통해 발표했다.",
+      "title": "액센츄어, 2026회계 조정 EPS 13.97달러..가이던스 상회"
+    },
     "original:2166e3c3cbb8c2888026d66d": {
       "first_seen_kst": "2026-10-06T15:03:09+09:00",
       "lanes": {
@@ -231543,6 +232010,30 @@
       "source_title": "위불, 美 하원 보고서 반박..고객 데이터·자산 미국 보관",
       "telegram_core_fact": "증권가 컨센서스에 따르면 위불의 2026년 연간 매출액은 8억574만 달러로 전년 대비 41.11% 증가할 것으로 전망된다. 위불(BULL)이 미 하원 특별위원회가 8일(현지시간) 공개한 보고서에 대해 불완전한 기록에 근거해 성급한 결론을 내렸고 주요 사실관계도 잘못됐다고 반박하는 입장문을 9일 발표했다.",
       "title": "위불, 美 하원 보고서 반박..고객 데이터·자산 미국 보관"
+    },
+    "original:35e6346306186ec0db4eb60e": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1174709",
+      "source": "매일경제",
+      "source_body_digest": "0c58f58d8f26d4e45ed737c16f84eff722c79f7458526bc44c669447fd4f9cb8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:286649e866e836d30305bedd12e5b31644afe3bcc697fe0895791dd1d297180f",
+      "source_fact_keys": [
+        "source_fact:v1:1b80eea78dbd0ed39980fe3da8b3002cc45ea6e7c3c109855a87a8a04ea3dd60",
+        "source_fact:v1:22ee78813cbe9a5f024c792b6e3fb47ad109c42fa85232f4144d9d395d1f3645",
+        "source_fact:v1:a2e6a90db7a2520657176519add3e7a7e7be0ce5c302a39ed2e6cf7df9525d42",
+        "source_fact:v1:bc35da8172c5bbbdfcf7fc0997688a269b07b97ab78fd315392132cf9408bf7f",
+        "source_fact:v1:d43ea50fdc1e448b98fea098eb25df0aa8a208f304e89e323683f49f3ea807b4"
+      ],
+      "source_published_kst": "2026-10-15T04:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "클리어 채널 아웃도어 홀딩, 무바달라 62억달러 인수 완료·상장폐지",
+      "telegram_core_fact": "클리어 채널 아웃도어 홀딩스(CCO)가 아부다비 국부펀드 계열 무바달라 캐피털(Mubadala Capital)에 약 62억 달러 규모로 인수되는 거래를 완료했으며, 이에 따라 보통주가 뉴욕증권거래소(NYSE)에서 상장폐지된다고 14일 발표했다.",
+      "title": "클리어 채널 아웃도어 홀딩, 무바달라 62억달러 인수 완료·상장폐지"
     },
     "original:35ee30aada1e5b4b4b2782dd": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
@@ -240661,6 +241152,30 @@
       "source": "머니투데이",
       "title": "1380원대 찍더니 다시 아래로…추석 뒤 환율 가를 '달러·엔·네고'"
     },
+    "original:4fe9c932b8b957a3dc680420": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.hankyung.com/article/202610140628i",
+      "source": "한국경제",
+      "source_body_digest": "bbaee49bfb5d8d8505e2aade245579c35a1305b990d8a90d3ccc10e2d2a08144",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6742f1147ef33e9aabc46bad471cbfc6c13a45e8f7ffa120c64c340e77b822de",
+      "source_fact_keys": [
+        "source_fact:v1:1f9adfa97e7e18929742503cffff925dc63209d50d4e93b84c1507b27ac29f92",
+        "source_fact:v1:2975681a7f8b6ab23299ab157c317b6400a66c96e202194691d1e7db054dcb65",
+        "source_fact:v1:63ff6404c1422861564326184b6cb40b13de8506a2f09e9a6282a20526432845",
+        "source_fact:v1:644bdadb895e583ef5af7be3500a4a95125d831fa7b5d47763e72c1fc04e42e5",
+        "source_fact:v1:dec508fd3d27b35e5c8720947b529ff6de251a451ad4f2a7d22817693daf8def"
+      ],
+      "source_published_kst": "2026-10-14T15:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"시공사 요구대로 공사비 다 올려줘?\"…국토부, 무검증 재건축 조합 특별점검",
+      "telegram_core_fact": "국토부의 전수조사 결과에 따르면 이미 시공사를 선정한 전국 568곳의 재건축·재개발 사업장 중 공사비 검증 대상인데도 검증을 진행하지 않은 사업장이 총 138곳으로 집계됐다.",
+      "title": "\"시공사 요구대로 공사비 다 올려줘?\"…국토부, 무검증 재건축 조합 특별점검"
+    },
     "original:4fee0f79080620f52a5e9056": {
       "first_seen_kst": "2026-10-12T05:09:39+09:00",
       "lanes": {
@@ -243379,6 +243894,29 @@
       "source_title": "치폴레, 스타벅스 인수 검토설 부각되며 주목받는 흐름",
       "telegram_core_fact": "스타벅스가 치폴레 인수를 검토하고 있다는 보도가 전해지며 인수 프리미엄에 대한 기대감이 커졌습니다.",
       "title": "치폴레, 스타벅스 인수 검토설 부각되며 주목받는 흐름"
+    },
+    "original:585fea94e90d53a8c821f6a1": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1174725",
+      "source": "매일경제",
+      "source_body_digest": "194179749fe1918f0fa192262d49ac8b6c8d3b088e6a94994a33021179fd01ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1e18d513e7c947d13684ced1f2ff2b85fdedf8f8c509825c5ebf781da594c863",
+      "source_fact_keys": [
+        "source_fact:v1:074becaa78af8f32519f51450ffb640c16730339087397b2df942d7ab1df6794",
+        "source_fact:v1:936ddf8c99842ffd54da598b437f209345082a4572c60108b3621fa0adfc5685",
+        "source_fact:v1:a5298fff913b0b75c2fe67890765665f17d8966598279b69039df6f2cf86d1d7",
+        "source_fact:v1:c665c137738946867a0e6f08bcf9c42631d20becd7e204e260b91a121b2f964b"
+      ],
+      "source_published_kst": "2026-10-15T05:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "베터 홈 앤 파이낸스 홀딩, 3분기 잠정 매출 4500만달러..가이던스 하회",
+      "telegram_core_fact": "베터 홈 앤 파이낸스 홀딩(BETR)은 2026년 9월 30일 종료된 3분기 잠정 총순매출액(Total Net Revenues)이 4510만 달러로 전년비 8.6% 증가했지만, 앞서 제시한 가이던스 하단(4900만~5200만 달러)에는 못 미쳤다고 14일 발표했다.",
+      "title": "베터 홈 앤 파이낸스 홀딩, 3분기 잠정 매출 4500만달러..가이던스 하회"
     },
     "original:5862e34354fe00d8c603cbf6": {
       "first_seen_kst": "2026-10-11T07:32:31+09:00",
@@ -270440,6 +270978,31 @@
       "source_published_kst": "2026-10-07T19:06+09:00",
       "title": "발사대부터 총조립까지…HD현대·KAI·현대로템, 누리호 5차 성공 이끌었다"
     },
+    "original:ab7d33a3b5bae0e27ffbdc6e": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.hankyung.com/article/202610141990i",
+      "source": "한국경제",
+      "source_body_digest": "7d4235494254cc65499f7393ea9f891047d32b0343f8d7cb6603dc779fe5651f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:111e05df80fe554e98aa914573bdd1158a797d9fe0e8bbdd3267b0f24c705f0f",
+      "source_fact_keys": [
+        "source_fact:v1:02ee1228158743f8f7c02c3bfed7b094a887fd508e270170ed7d24b6cbe459b6",
+        "source_fact:v1:56bbb3f11266c9167203798f42f6b6069c832e6e8b233fa360324858adc60ca8",
+        "source_fact:v1:7ffdcc9d7ac5646d32ac930a718a3b292489672ea60f1a92efe975f009665304",
+        "source_fact:v1:803c55350303e191bc5c1f1ab8fad66218ac5ae196016f1d4f9f886abb931425",
+        "source_fact:v1:9e477a6b2ca18b723a16769281076886fd2d837a2cc2a368b1b91838546bca6a",
+        "source_fact:v1:f93d59ec5bf9c13830d6daf6c35ac6c4fb6ace22ffa669aab70e38f6799de3bb"
+      ],
+      "source_published_kst": "2026-10-14T19:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "ASML \"30% 증산해도 부족\"…2030년까지 AI칩 장비 주문",
+      "telegram_core_fact": "ASML 매출은 440억 유로 전망입니다.",
+      "title": "ASML \"30% 증산해도 부족\"…2030년까지 AI칩 장비 주문"
+    },
     "original:ab831dd21d67243ae94058e1": {
       "first_seen_kst": "2026-10-14T17:44:16+09:00",
       "lanes": {
@@ -297365,6 +297928,27 @@
       "source_published_kst": "2026-10-06T13:28+09:00",
       "title": "전세사기 피해 보증금 3분의 1 회복 보장…지원금 산정기준 마련 | 연합뉴스"
     },
+    "original:fef937bfcfdde73098cda60e": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06277926645612920",
+      "source": "이데일리",
+      "source_body_digest": "56bdaf3e3ff31063bff3b3a9b1f61cffde9fc3938b64035695d5d71c635342e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:80c231adf11617e41bbf52a3eeb50240db39c5737c0aedd3442f8725c75a01af",
+      "source_fact_keys": [
+        "source_fact:v1:2db516a51039668755d067fe9254018b6dc2ed13ceb86e2893ed388d9723cdf1",
+        "source_fact:v1:69ac06978a9fa0f20a61fb81bfbe6b5b81c65f8afb53b0571cfc4476b51f64ea"
+      ],
+      "source_published_kst": "2026-10-14T23:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "브링커 인터내셔널, 칠리스 실적 개선 기대...투자의견 상향-제프리스",
+      "telegram_core_fact": "특히 고객 방문 증가와 수익성 개선을 통해 확보한 자금을 재투자하면서 지속적인 매출 성장과 시장점유율 확대를 이끄는 선순환 구조가 형성되고 있다고 설명했다.",
+      "title": "브링커 인터내셔널, 칠리스 실적 개선 기대...투자의견 상향-제프리스"
+    },
     "original:feffc119873ad6ca80708565": {
       "first_seen_kst": "2026-10-13T16:01:00+09:00",
       "lanes": {
@@ -314010,6 +314594,29 @@
       "source_published_kst": "2026-10-06T08:02+09:00",
       "title": "밸류파인더 “메타케어, 저용량 탈모치료제 출시 임박…헬스케어 플랫폼 확장”"
     },
+    "source_fact:0d7015ef072ec9d5731736cb": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1174725",
+      "source": "매일경제",
+      "source_body_digest": "194179749fe1918f0fa192262d49ac8b6c8d3b088e6a94994a33021179fd01ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1e18d513e7c947d13684ced1f2ff2b85fdedf8f8c509825c5ebf781da594c863",
+      "source_fact_keys": [
+        "source_fact:v1:074becaa78af8f32519f51450ffb640c16730339087397b2df942d7ab1df6794",
+        "source_fact:v1:936ddf8c99842ffd54da598b437f209345082a4572c60108b3621fa0adfc5685",
+        "source_fact:v1:a5298fff913b0b75c2fe67890765665f17d8966598279b69039df6f2cf86d1d7",
+        "source_fact:v1:c665c137738946867a0e6f08bcf9c42631d20becd7e204e260b91a121b2f964b"
+      ],
+      "source_published_kst": "2026-10-15T05:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "베터 홈 앤 파이낸스 홀딩, 3분기 잠정 매출 4500만달러..가이던스 하회",
+      "telegram_core_fact": "베터 홈 앤 파이낸스 홀딩(BETR)은 2026년 9월 30일 종료된 3분기 잠정 총순매출액(Total Net Revenues)이 4510만 달러로 전년비 8.6% 증가했지만, 앞서 제시한 가이던스 하단(4900만~5200만 달러)에는 못 미쳤다고 14일 발표했다.",
+      "title": "베터 홈 앤 파이낸스 홀딩, 3분기 잠정 매출 4500만달러..가이던스 하회"
+    },
     "source_fact:0d72da7169d8e38a05dc8e45": {
       "first_seen_kst": "2026-10-09T16:29:31+09:00",
       "lanes": {
@@ -327956,6 +328563,31 @@
       "telegram_core_fact": "BOEM은 \"이사야스 때문에 멕시코만의 유인 석유 생산 플랫폼 371곳의 32.61%에 해당하는 121곳에서 인력들이 대피해 시설 가동이 중단됐다\"고 설명했다.",
       "title": "중동발 공급 불안에 美 생산 중단까지…국제유가 또 급등"
     },
+    "source_fact:1847fa80d95744164c88bd34": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.hankyung.com/article/202610141990i",
+      "source": "한국경제",
+      "source_body_digest": "7d4235494254cc65499f7393ea9f891047d32b0343f8d7cb6603dc779fe5651f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:111e05df80fe554e98aa914573bdd1158a797d9fe0e8bbdd3267b0f24c705f0f",
+      "source_fact_keys": [
+        "source_fact:v1:02ee1228158743f8f7c02c3bfed7b094a887fd508e270170ed7d24b6cbe459b6",
+        "source_fact:v1:56bbb3f11266c9167203798f42f6b6069c832e6e8b233fa360324858adc60ca8",
+        "source_fact:v1:7ffdcc9d7ac5646d32ac930a718a3b292489672ea60f1a92efe975f009665304",
+        "source_fact:v1:803c55350303e191bc5c1f1ab8fad66218ac5ae196016f1d4f9f886abb931425",
+        "source_fact:v1:9e477a6b2ca18b723a16769281076886fd2d837a2cc2a368b1b91838546bca6a",
+        "source_fact:v1:f93d59ec5bf9c13830d6daf6c35ac6c4fb6ace22ffa669aab70e38f6799de3bb"
+      ],
+      "source_published_kst": "2026-10-14T19:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "ASML \"30% 증산해도 부족\"…2030년까지 AI칩 장비 주문",
+      "telegram_core_fact": "ASML 매출은 440억 유로 전망입니다.",
+      "title": "ASML \"30% 증산해도 부족\"…2030년까지 AI칩 장비 주문"
+    },
     "source_fact:1849d47ef017a1732303c7c2": {
       "first_seen_kst": "2026-10-07T04:29:18+09:00",
       "lanes": {
@@ -338223,6 +338855,30 @@
       "source_title": "“역시 주주환원은 뒷전입니까”…코스피 자사주 매입, 삼전닉스 뺐더니 줄었다",
       "telegram_core_fact": "11일 금융감독원 OpenDART 공시자료 집계 결과 올해 1월 1일부터 9월 28일까지 코스피 상장사의 자기주식 직접취득 결정액은 74조629억원으로 집계됐다.",
       "title": "“역시 주주환원은 뒷전입니까”…코스피 자사주 매입, 삼전닉스 뺐더니 줄었다"
+    },
+    "source_fact:200d0c168699d9da0ef73b71": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.hankyung.com/article/202610140628i",
+      "source": "한국경제",
+      "source_body_digest": "bbaee49bfb5d8d8505e2aade245579c35a1305b990d8a90d3ccc10e2d2a08144",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6742f1147ef33e9aabc46bad471cbfc6c13a45e8f7ffa120c64c340e77b822de",
+      "source_fact_keys": [
+        "source_fact:v1:1f9adfa97e7e18929742503cffff925dc63209d50d4e93b84c1507b27ac29f92",
+        "source_fact:v1:2975681a7f8b6ab23299ab157c317b6400a66c96e202194691d1e7db054dcb65",
+        "source_fact:v1:63ff6404c1422861564326184b6cb40b13de8506a2f09e9a6282a20526432845",
+        "source_fact:v1:644bdadb895e583ef5af7be3500a4a95125d831fa7b5d47763e72c1fc04e42e5",
+        "source_fact:v1:dec508fd3d27b35e5c8720947b529ff6de251a451ad4f2a7d22817693daf8def"
+      ],
+      "source_published_kst": "2026-10-14T15:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"시공사 요구대로 공사비 다 올려줘?\"…국토부, 무검증 재건축 조합 특별점검",
+      "telegram_core_fact": "국토부의 전수조사 결과에 따르면 이미 시공사를 선정한 전국 568곳의 재건축·재개발 사업장 중 공사비 검증 대상인데도 검증을 진행하지 않은 사업장이 총 138곳으로 집계됐다.",
+      "title": "\"시공사 요구대로 공사비 다 올려줘?\"…국토부, 무검증 재건축 조합 특별점검"
     },
     "source_fact:200e31e62a26a3a6155b4a4c": {
       "first_seen_kst": "2026-10-08T04:14:15+09:00",
@@ -366044,6 +366700,30 @@
       "telegram_core_fact": "매년 성장을 거듭해온 국내 하이브리드차 판매가 올해 처음 감소세로 돌아섰다. 한국자동차모빌리티산업협회(KAMA)에 따르면 올해 3분기 누적(1∼9월) 국내 하이브리드차(마일드하이브리드 포함) 신규 등록은 42만1천199대로 작년 동기보다 3.9％ 줄었다.",
       "title": "국내 자동차 시장 지각변동…하이브리드차 판매 처음 감소 | 연합뉴스"
     },
+    "source_fact:353af296e9f3569a77ce2708": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825800",
+      "source": "뉴시스",
+      "source_body_digest": "63aad06f22b0e8bc6d494d7d1edb06ecb60ace64e23285627149a09ebb0048ab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:957be00696f682f17dc7c2d5298b2f96ccf9c8d7fd34497cfe60f484f7c3809a",
+      "source_fact_keys": [
+        "source_fact:v1:4018b2dccc78a03366837f1b2ee16f29909160803e5dbafc7ac333e2061225bc",
+        "source_fact:v1:6fbf5708b3adf10943bb600bd2f1ae53f30fed1bd37dab568ae8a566a26afb8e",
+        "source_fact:v1:705f0205d7d21e41e340115fc33117d103e8d99ccd327a72d32bc0a092a682af",
+        "source_fact:v1:ac67e6992db1d4ffe6a1d5878fe0bc6af30b40b486f54f8eda1bdf33008deef8",
+        "source_fact:v1:cf8d20969dd104497934caad415bdd4f5e5ac044b6379cd1ed457a7b0310d949"
+      ],
+      "source_published_kst": "2026-10-14T17:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "日은행·보험사, 해외 채권 팔고 日국채 산다…\"엔 캐리 청산 조짐?\"",
+      "telegram_core_fact": "13일(현지 시간) 파이낸셜타임스(FT)의 일본증권협회 자료를 자체 분석한 결과, 일본 대형 은행과 보험사들은 지난 8월까지 약 5개월 동안 만기 2년 이상인 일본 국채를 5조4000억엔(약 45조6000억원) 순매수했다.",
+      "title": "日은행·보험사, 해외 채권 팔고 日국채 산다…\"엔 캐리 청산 조짐?\""
+    },
     "source_fact:353b688c066a13e4d4d2eada": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
       "lanes": {
@@ -374809,6 +375489,30 @@
       "telegram_core_fact": "반면 롯데손보의 자산은 14조원, 고객수 334만명, CSM(보험계약마진) 2조2000억원의 중형 손보사다. 신한금융은 JKL파트너스가 보유한 롯데손보 지분 77.04%를 6933억원에 인수하고 금융당국 승인 등 필요한 절차를 거쳐 잔여지분 22.96%를 추가 확보할 방침이다.",
       "title": "신한금융, 롯데손보 품고 비은행 힘 키운다"
     },
+    "source_fact:3c63c827d1163e334a1dfdb4": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.hankyung.com/article/202610140628i",
+      "source": "한국경제",
+      "source_body_digest": "bbaee49bfb5d8d8505e2aade245579c35a1305b990d8a90d3ccc10e2d2a08144",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6742f1147ef33e9aabc46bad471cbfc6c13a45e8f7ffa120c64c340e77b822de",
+      "source_fact_keys": [
+        "source_fact:v1:1f9adfa97e7e18929742503cffff925dc63209d50d4e93b84c1507b27ac29f92",
+        "source_fact:v1:2975681a7f8b6ab23299ab157c317b6400a66c96e202194691d1e7db054dcb65",
+        "source_fact:v1:63ff6404c1422861564326184b6cb40b13de8506a2f09e9a6282a20526432845",
+        "source_fact:v1:644bdadb895e583ef5af7be3500a4a95125d831fa7b5d47763e72c1fc04e42e5",
+        "source_fact:v1:dec508fd3d27b35e5c8720947b529ff6de251a451ad4f2a7d22817693daf8def"
+      ],
+      "source_published_kst": "2026-10-14T15:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"시공사 요구대로 공사비 다 올려줘?\"…국토부, 무검증 재건축 조합 특별점검",
+      "telegram_core_fact": "국토부의 전수조사 결과에 따르면 이미 시공사를 선정한 전국 568곳의 재건축·재개발 사업장 중 공사비 검증 대상인데도 검증을 진행하지 않은 사업장이 총 138곳으로 집계됐다.",
+      "title": "\"시공사 요구대로 공사비 다 올려줘?\"…국토부, 무검증 재건축 조합 특별점검"
+    },
     "source_fact:3c64e286c207c16d9ea0cd72": {
       "first_seen_kst": "2026-10-13T07:27:37+09:00",
       "lanes": {
@@ -376048,6 +376752,31 @@
       "source_title": "키움운용, '삼성전자·SK하이닉스 채권혼합 ETF' 10월 주당 146원 지급",
       "telegram_core_fact": "이 상품은 주식 편입 비중이 50%인 채권혼합형 ETF로, 퇴직연금 확정기여형(DC)과 개인형퇴직연금(IRP) 계좌에서 투자금의 최대 100%까지 편입할 수 있다.",
       "title": "키움운용, '삼성전자·SK하이닉스 채권혼합 ETF' 10월 주당 146원 지급"
+    },
+    "source_fact:3d78b8bced618870511bb61b": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.hankyung.com/article/202610141990i",
+      "source": "한국경제",
+      "source_body_digest": "7d4235494254cc65499f7393ea9f891047d32b0343f8d7cb6603dc779fe5651f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:111e05df80fe554e98aa914573bdd1158a797d9fe0e8bbdd3267b0f24c705f0f",
+      "source_fact_keys": [
+        "source_fact:v1:02ee1228158743f8f7c02c3bfed7b094a887fd508e270170ed7d24b6cbe459b6",
+        "source_fact:v1:56bbb3f11266c9167203798f42f6b6069c832e6e8b233fa360324858adc60ca8",
+        "source_fact:v1:7ffdcc9d7ac5646d32ac930a718a3b292489672ea60f1a92efe975f009665304",
+        "source_fact:v1:803c55350303e191bc5c1f1ab8fad66218ac5ae196016f1d4f9f886abb931425",
+        "source_fact:v1:9e477a6b2ca18b723a16769281076886fd2d837a2cc2a368b1b91838546bca6a",
+        "source_fact:v1:f93d59ec5bf9c13830d6daf6c35ac6c4fb6ace22ffa669aab70e38f6799de3bb"
+      ],
+      "source_published_kst": "2026-10-14T19:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "ASML \"30% 증산해도 부족\"…2030년까지 AI칩 장비 주문",
+      "telegram_core_fact": "ASML 매출은 440억 유로 전망입니다.",
+      "title": "ASML \"30% 증산해도 부족\"…2030년까지 AI칩 장비 주문"
     },
     "source_fact:3d858c5e05857a4c6343bc75": {
       "first_seen_kst": "2026-10-11T14:23:21+09:00",
@@ -380060,6 +380789,31 @@
       "telegram_core_fact": "고용노동부가 14일 발표한 '2026년 9월 고용행정 통계로 본 노동시장 동향'에 따르면 지난달 말 기준 고용보험 상시가입자 수는 1593만명으로, 전년 동월보다 28만8000명(1.8%) 증가했다.",
       "title": "제조업 고용보험 가입자 두달째↑…'반도체 호황' 증가폭 확대"
     },
+    "source_fact:408e3d9553ae8d3c94aa4c56": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.hankyung.com/article/202610141990i",
+      "source": "한국경제",
+      "source_body_digest": "7d4235494254cc65499f7393ea9f891047d32b0343f8d7cb6603dc779fe5651f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:111e05df80fe554e98aa914573bdd1158a797d9fe0e8bbdd3267b0f24c705f0f",
+      "source_fact_keys": [
+        "source_fact:v1:02ee1228158743f8f7c02c3bfed7b094a887fd508e270170ed7d24b6cbe459b6",
+        "source_fact:v1:56bbb3f11266c9167203798f42f6b6069c832e6e8b233fa360324858adc60ca8",
+        "source_fact:v1:7ffdcc9d7ac5646d32ac930a718a3b292489672ea60f1a92efe975f009665304",
+        "source_fact:v1:803c55350303e191bc5c1f1ab8fad66218ac5ae196016f1d4f9f886abb931425",
+        "source_fact:v1:9e477a6b2ca18b723a16769281076886fd2d837a2cc2a368b1b91838546bca6a",
+        "source_fact:v1:f93d59ec5bf9c13830d6daf6c35ac6c4fb6ace22ffa669aab70e38f6799de3bb"
+      ],
+      "source_published_kst": "2026-10-14T19:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "ASML \"30% 증산해도 부족\"…2030년까지 AI칩 장비 주문",
+      "telegram_core_fact": "ASML 매출은 440억 유로 전망입니다.",
+      "title": "ASML \"30% 증산해도 부족\"…2030년까지 AI칩 장비 주문"
+    },
     "source_fact:40923c1281cd72b86a882539": {
       "first_seen_kst": "2026-10-12T12:56:34+09:00",
       "lanes": {
@@ -381128,6 +381882,30 @@
       "source_title": "한전 사장 “원전 1기당 웨스팅하우스 로열티 2.7조원, 다 지급 아니다”",
       "telegram_core_fact": "김 사장은 한국이 웨스팅하우스 지분 5~10%를 인수하기로 한 데 대해서는 “지분을 확보하면 웨스팅하우스의 관계가 좋아지고 미국 정부와도 원만해져 앞으로 미국과 제3국 시장에 진출하는 데 도움이 될 것”이라고 내다봤다.",
       "title": "한전 사장 “원전 1기당 웨스팅하우스 로열티 2.7조원, 다 지급 아니다”"
+    },
+    "source_fact:41701e62248aa5e0556db4ba": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1174709",
+      "source": "매일경제",
+      "source_body_digest": "0c58f58d8f26d4e45ed737c16f84eff722c79f7458526bc44c669447fd4f9cb8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:286649e866e836d30305bedd12e5b31644afe3bcc697fe0895791dd1d297180f",
+      "source_fact_keys": [
+        "source_fact:v1:1b80eea78dbd0ed39980fe3da8b3002cc45ea6e7c3c109855a87a8a04ea3dd60",
+        "source_fact:v1:22ee78813cbe9a5f024c792b6e3fb47ad109c42fa85232f4144d9d395d1f3645",
+        "source_fact:v1:a2e6a90db7a2520657176519add3e7a7e7be0ce5c302a39ed2e6cf7df9525d42",
+        "source_fact:v1:bc35da8172c5bbbdfcf7fc0997688a269b07b97ab78fd315392132cf9408bf7f",
+        "source_fact:v1:d43ea50fdc1e448b98fea098eb25df0aa8a208f304e89e323683f49f3ea807b4"
+      ],
+      "source_published_kst": "2026-10-15T04:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "클리어 채널 아웃도어 홀딩, 무바달라 62억달러 인수 완료·상장폐지",
+      "telegram_core_fact": "클리어 채널 아웃도어 홀딩스(CCO)가 아부다비 국부펀드 계열 무바달라 캐피털(Mubadala Capital)에 약 62억 달러 규모로 인수되는 거래를 완료했으며, 이에 따라 보통주가 뉴욕증권거래소(NYSE)에서 상장폐지된다고 14일 발표했다.",
+      "title": "클리어 채널 아웃도어 홀딩, 무바달라 62억달러 인수 완료·상장폐지"
     },
     "source_fact:417203c100012e918160a2b3": {
       "first_seen_kst": "2026-10-07T18:44:00+09:00",
@@ -382932,6 +383710,30 @@
       "source_title": "100일간 50조원 팔았다 … 코스피, 외국인 엑소더스에 속수무책",
       "telegram_core_fact": "외국인은 올해 코스피에서 약 199조원을 순매도했다. 삼성전자와 SK하이닉스 두 회사를 제외해도 순이익이 119.7% 증가했다.",
       "title": "100일간 50조원 팔았다 … 코스피, 외국인 엑소더스에 속수무책"
+    },
+    "source_fact:42b2cd23bd554a47bc659007": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825800",
+      "source": "뉴시스",
+      "source_body_digest": "63aad06f22b0e8bc6d494d7d1edb06ecb60ace64e23285627149a09ebb0048ab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:957be00696f682f17dc7c2d5298b2f96ccf9c8d7fd34497cfe60f484f7c3809a",
+      "source_fact_keys": [
+        "source_fact:v1:4018b2dccc78a03366837f1b2ee16f29909160803e5dbafc7ac333e2061225bc",
+        "source_fact:v1:6fbf5708b3adf10943bb600bd2f1ae53f30fed1bd37dab568ae8a566a26afb8e",
+        "source_fact:v1:705f0205d7d21e41e340115fc33117d103e8d99ccd327a72d32bc0a092a682af",
+        "source_fact:v1:ac67e6992db1d4ffe6a1d5878fe0bc6af30b40b486f54f8eda1bdf33008deef8",
+        "source_fact:v1:cf8d20969dd104497934caad415bdd4f5e5ac044b6379cd1ed457a7b0310d949"
+      ],
+      "source_published_kst": "2026-10-14T17:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "日은행·보험사, 해외 채권 팔고 日국채 산다…\"엔 캐리 청산 조짐?\"",
+      "telegram_core_fact": "13일(현지 시간) 파이낸셜타임스(FT)의 일본증권협회 자료를 자체 분석한 결과, 일본 대형 은행과 보험사들은 지난 8월까지 약 5개월 동안 만기 2년 이상인 일본 국채를 5조4000억엔(약 45조6000억원) 순매수했다.",
+      "title": "日은행·보험사, 해외 채권 팔고 日국채 산다…\"엔 캐리 청산 조짐?\""
     },
     "source_fact:42b4c335b54d8c037577fff1": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
@@ -396512,6 +397314,30 @@
       "source_title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?",
       "telegram_core_fact": "SK하이닉스가 미국 낸드플래시 손자회사 '솔리다임'의 미국 증시 상장(IPO)을 추진할 것으로 알려진 가운데, 양사가 상장을 통해 어떠한 실익을 얻을 수 있을 지 관심이 쏠린다.",
       "title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?"
+    },
+    "source_fact:4cd85177fe8b9d33dcc42783": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.hankyung.com/article/202610140628i",
+      "source": "한국경제",
+      "source_body_digest": "bbaee49bfb5d8d8505e2aade245579c35a1305b990d8a90d3ccc10e2d2a08144",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6742f1147ef33e9aabc46bad471cbfc6c13a45e8f7ffa120c64c340e77b822de",
+      "source_fact_keys": [
+        "source_fact:v1:1f9adfa97e7e18929742503cffff925dc63209d50d4e93b84c1507b27ac29f92",
+        "source_fact:v1:2975681a7f8b6ab23299ab157c317b6400a66c96e202194691d1e7db054dcb65",
+        "source_fact:v1:63ff6404c1422861564326184b6cb40b13de8506a2f09e9a6282a20526432845",
+        "source_fact:v1:644bdadb895e583ef5af7be3500a4a95125d831fa7b5d47763e72c1fc04e42e5",
+        "source_fact:v1:dec508fd3d27b35e5c8720947b529ff6de251a451ad4f2a7d22817693daf8def"
+      ],
+      "source_published_kst": "2026-10-14T15:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"시공사 요구대로 공사비 다 올려줘?\"…국토부, 무검증 재건축 조합 특별점검",
+      "telegram_core_fact": "국토부의 전수조사 결과에 따르면 이미 시공사를 선정한 전국 568곳의 재건축·재개발 사업장 중 공사비 검증 대상인데도 검증을 진행하지 않은 사업장이 총 138곳으로 집계됐다.",
+      "title": "\"시공사 요구대로 공사비 다 올려줘?\"…국토부, 무검증 재건축 조합 특별점검"
     },
     "source_fact:4ce321c11135b52719583d85": {
       "first_seen_kst": "2026-10-15T04:22:43+09:00",
@@ -411789,6 +412615,31 @@
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
     },
+    "source_fact:5896e3de8588634372a5756e": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.hankyung.com/article/202610141990i",
+      "source": "한국경제",
+      "source_body_digest": "7d4235494254cc65499f7393ea9f891047d32b0343f8d7cb6603dc779fe5651f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:111e05df80fe554e98aa914573bdd1158a797d9fe0e8bbdd3267b0f24c705f0f",
+      "source_fact_keys": [
+        "source_fact:v1:02ee1228158743f8f7c02c3bfed7b094a887fd508e270170ed7d24b6cbe459b6",
+        "source_fact:v1:56bbb3f11266c9167203798f42f6b6069c832e6e8b233fa360324858adc60ca8",
+        "source_fact:v1:7ffdcc9d7ac5646d32ac930a718a3b292489672ea60f1a92efe975f009665304",
+        "source_fact:v1:803c55350303e191bc5c1f1ab8fad66218ac5ae196016f1d4f9f886abb931425",
+        "source_fact:v1:9e477a6b2ca18b723a16769281076886fd2d837a2cc2a368b1b91838546bca6a",
+        "source_fact:v1:f93d59ec5bf9c13830d6daf6c35ac6c4fb6ace22ffa669aab70e38f6799de3bb"
+      ],
+      "source_published_kst": "2026-10-14T19:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "ASML \"30% 증산해도 부족\"…2030년까지 AI칩 장비 주문",
+      "telegram_core_fact": "ASML 매출은 440억 유로 전망입니다.",
+      "title": "ASML \"30% 증산해도 부족\"…2030년까지 AI칩 장비 주문"
+    },
     "source_fact:58994af47ec022ab8ec44d23": {
       "first_seen_kst": "2026-10-07T01:33:00+09:00",
       "lanes": {
@@ -412311,6 +413162,30 @@
       "source_title": "코스맥스 `계절성을 깨트리다` 증권사 발표에 강세…3.52%",
       "telegram_core_fact": "당일 하나증권 박종대 애널리스트는 '계절성을 깨트리다' 라고 목표가를 380,000원으로 상향 조정한 바 있다.",
       "title": "코스맥스 `계절성을 깨트리다` 증권사 발표에 강세…3.52%"
+    },
+    "source_fact:58e355b434897b82f9982965": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825800",
+      "source": "뉴시스",
+      "source_body_digest": "63aad06f22b0e8bc6d494d7d1edb06ecb60ace64e23285627149a09ebb0048ab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:957be00696f682f17dc7c2d5298b2f96ccf9c8d7fd34497cfe60f484f7c3809a",
+      "source_fact_keys": [
+        "source_fact:v1:4018b2dccc78a03366837f1b2ee16f29909160803e5dbafc7ac333e2061225bc",
+        "source_fact:v1:6fbf5708b3adf10943bb600bd2f1ae53f30fed1bd37dab568ae8a566a26afb8e",
+        "source_fact:v1:705f0205d7d21e41e340115fc33117d103e8d99ccd327a72d32bc0a092a682af",
+        "source_fact:v1:ac67e6992db1d4ffe6a1d5878fe0bc6af30b40b486f54f8eda1bdf33008deef8",
+        "source_fact:v1:cf8d20969dd104497934caad415bdd4f5e5ac044b6379cd1ed457a7b0310d949"
+      ],
+      "source_published_kst": "2026-10-14T17:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "日은행·보험사, 해외 채권 팔고 日국채 산다…\"엔 캐리 청산 조짐?\"",
+      "telegram_core_fact": "13일(현지 시간) 파이낸셜타임스(FT)의 일본증권협회 자료를 자체 분석한 결과, 일본 대형 은행과 보험사들은 지난 8월까지 약 5개월 동안 만기 2년 이상인 일본 국채를 5조4000억엔(약 45조6000억원) 순매수했다.",
+      "title": "日은행·보험사, 해외 채권 팔고 日국채 산다…\"엔 캐리 청산 조짐?\""
     },
     "source_fact:58ecd417393f53c69ad459b6": {
       "first_seen_kst": "2026-10-12T07:43:12+09:00",
@@ -425923,6 +426798,30 @@
       "source_title": "SK에너지, 석유제품 가격·거래관행 점검…내부통제 강화한다",
       "telegram_core_fact": "SK에너지는 △석유시장 가격체계 투명성 및 거래관행 개선 △공정거래 및 내부통제 체계 강화 △석유 유통고객과의 상생협력 강화 △안정적인 에너지 공급을 위한 역할 지속을 골자로 하는 ‘석유시장 가격구조 개편 및 내부통제 강화’ 조치를 마련했다고 8일 밝혔다.",
       "title": "SK에너지, 석유제품 가격·거래관행 점검…내부통제 강화한다"
+    },
+    "source_fact:63a93ce7197cb76515bf203f": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1174709",
+      "source": "매일경제",
+      "source_body_digest": "0c58f58d8f26d4e45ed737c16f84eff722c79f7458526bc44c669447fd4f9cb8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:286649e866e836d30305bedd12e5b31644afe3bcc697fe0895791dd1d297180f",
+      "source_fact_keys": [
+        "source_fact:v1:1b80eea78dbd0ed39980fe3da8b3002cc45ea6e7c3c109855a87a8a04ea3dd60",
+        "source_fact:v1:22ee78813cbe9a5f024c792b6e3fb47ad109c42fa85232f4144d9d395d1f3645",
+        "source_fact:v1:a2e6a90db7a2520657176519add3e7a7e7be0ce5c302a39ed2e6cf7df9525d42",
+        "source_fact:v1:bc35da8172c5bbbdfcf7fc0997688a269b07b97ab78fd315392132cf9408bf7f",
+        "source_fact:v1:d43ea50fdc1e448b98fea098eb25df0aa8a208f304e89e323683f49f3ea807b4"
+      ],
+      "source_published_kst": "2026-10-15T04:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "클리어 채널 아웃도어 홀딩, 무바달라 62억달러 인수 완료·상장폐지",
+      "telegram_core_fact": "클리어 채널 아웃도어 홀딩스(CCO)가 아부다비 국부펀드 계열 무바달라 캐피털(Mubadala Capital)에 약 62억 달러 규모로 인수되는 거래를 완료했으며, 이에 따라 보통주가 뉴욕증권거래소(NYSE)에서 상장폐지된다고 14일 발표했다.",
+      "title": "클리어 채널 아웃도어 홀딩, 무바달라 62억달러 인수 완료·상장폐지"
     },
     "source_fact:63a94238485048e379c79368": {
       "first_seen_kst": "2026-10-08T18:24:19+09:00",
@@ -439578,6 +440477,29 @@
       "telegram_core_fact": "글로벌 투자은행 UBS는 올해 HBM 시장의 비트 출하량 기준 점유율을 SK하이닉스 48%, 삼성전자 31%로 예상했다.",
       "title": "'메모리 패권' 쥔 삼성, 장기계약 순풍 … 6세대 HBM 1위 보인다"
     },
+    "source_fact:6ec0abae21cd0e5f6bc8c7d2": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1174725",
+      "source": "매일경제",
+      "source_body_digest": "194179749fe1918f0fa192262d49ac8b6c8d3b088e6a94994a33021179fd01ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1e18d513e7c947d13684ced1f2ff2b85fdedf8f8c509825c5ebf781da594c863",
+      "source_fact_keys": [
+        "source_fact:v1:074becaa78af8f32519f51450ffb640c16730339087397b2df942d7ab1df6794",
+        "source_fact:v1:936ddf8c99842ffd54da598b437f209345082a4572c60108b3621fa0adfc5685",
+        "source_fact:v1:a5298fff913b0b75c2fe67890765665f17d8966598279b69039df6f2cf86d1d7",
+        "source_fact:v1:c665c137738946867a0e6f08bcf9c42631d20becd7e204e260b91a121b2f964b"
+      ],
+      "source_published_kst": "2026-10-15T05:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "베터 홈 앤 파이낸스 홀딩, 3분기 잠정 매출 4500만달러..가이던스 하회",
+      "telegram_core_fact": "베터 홈 앤 파이낸스 홀딩(BETR)은 2026년 9월 30일 종료된 3분기 잠정 총순매출액(Total Net Revenues)이 4510만 달러로 전년비 8.6% 증가했지만, 앞서 제시한 가이던스 하단(4900만~5200만 달러)에는 못 미쳤다고 14일 발표했다.",
+      "title": "베터 홈 앤 파이낸스 홀딩, 3분기 잠정 매출 4500만달러..가이던스 하회"
+    },
     "source_fact:6ec20602775073291199002e": {
       "first_seen_kst": "2026-10-06T10:41:31+09:00",
       "lanes": {
@@ -443641,6 +444563,29 @@
       ],
       "source_published_kst": "2026-10-06T06:37+09:00",
       "title": "호르무즈 당장 열려도 끝 아냐…아람코 CEO \"석유 재고 회복에 2년\""
+    },
+    "source_fact:721ffb4fce10e6e25cd3bb73": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1174725",
+      "source": "매일경제",
+      "source_body_digest": "194179749fe1918f0fa192262d49ac8b6c8d3b088e6a94994a33021179fd01ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1e18d513e7c947d13684ced1f2ff2b85fdedf8f8c509825c5ebf781da594c863",
+      "source_fact_keys": [
+        "source_fact:v1:074becaa78af8f32519f51450ffb640c16730339087397b2df942d7ab1df6794",
+        "source_fact:v1:936ddf8c99842ffd54da598b437f209345082a4572c60108b3621fa0adfc5685",
+        "source_fact:v1:a5298fff913b0b75c2fe67890765665f17d8966598279b69039df6f2cf86d1d7",
+        "source_fact:v1:c665c137738946867a0e6f08bcf9c42631d20becd7e204e260b91a121b2f964b"
+      ],
+      "source_published_kst": "2026-10-15T05:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "베터 홈 앤 파이낸스 홀딩, 3분기 잠정 매출 4500만달러..가이던스 하회",
+      "telegram_core_fact": "베터 홈 앤 파이낸스 홀딩(BETR)은 2026년 9월 30일 종료된 3분기 잠정 총순매출액(Total Net Revenues)이 4510만 달러로 전년비 8.6% 증가했지만, 앞서 제시한 가이던스 하단(4900만~5200만 달러)에는 못 미쳤다고 14일 발표했다.",
+      "title": "베터 홈 앤 파이낸스 홀딩, 3분기 잠정 매출 4500만달러..가이던스 하회"
     },
     "source_fact:7224ce34c551ab818d9a5de2": {
       "first_seen_kst": "2026-10-12T15:02:00+09:00",
@@ -469877,6 +470822,30 @@
       "telegram_core_fact": "트럼프 대통령의 발언이 나온 이후 유가 상승폭은 일부 줄었지만, 중동의 원유 공급 불안이 이어지면서 국제유가는 결국 4% 넘게 오른 채 거래를 마쳤다.",
       "title": "트럼프, 이란 공격 유보했지만 … 유가는 4% 급등"
     },
+    "source_fact:87537be87e8c77e569614a78": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1174709",
+      "source": "매일경제",
+      "source_body_digest": "0c58f58d8f26d4e45ed737c16f84eff722c79f7458526bc44c669447fd4f9cb8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:286649e866e836d30305bedd12e5b31644afe3bcc697fe0895791dd1d297180f",
+      "source_fact_keys": [
+        "source_fact:v1:1b80eea78dbd0ed39980fe3da8b3002cc45ea6e7c3c109855a87a8a04ea3dd60",
+        "source_fact:v1:22ee78813cbe9a5f024c792b6e3fb47ad109c42fa85232f4144d9d395d1f3645",
+        "source_fact:v1:a2e6a90db7a2520657176519add3e7a7e7be0ce5c302a39ed2e6cf7df9525d42",
+        "source_fact:v1:bc35da8172c5bbbdfcf7fc0997688a269b07b97ab78fd315392132cf9408bf7f",
+        "source_fact:v1:d43ea50fdc1e448b98fea098eb25df0aa8a208f304e89e323683f49f3ea807b4"
+      ],
+      "source_published_kst": "2026-10-15T04:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "클리어 채널 아웃도어 홀딩, 무바달라 62억달러 인수 완료·상장폐지",
+      "telegram_core_fact": "클리어 채널 아웃도어 홀딩스(CCO)가 아부다비 국부펀드 계열 무바달라 캐피털(Mubadala Capital)에 약 62억 달러 규모로 인수되는 거래를 완료했으며, 이에 따라 보통주가 뉴욕증권거래소(NYSE)에서 상장폐지된다고 14일 발표했다.",
+      "title": "클리어 채널 아웃도어 홀딩, 무바달라 62억달러 인수 완료·상장폐지"
+    },
     "source_fact:8755d0c00b3f3f96d04b45f9": {
       "first_seen_kst": "2026-10-13T07:02:46+09:00",
       "lanes": {
@@ -471933,6 +472902,27 @@
       "source_title": "정유주 동반약세…트럼프 \"러·우, 에너지 휴전\"",
       "telegram_core_fact": "트럼프 대통령은 11일(이하 현지시간) 자신의 소셜미디어 트루스소셜에 \"러시아와 우크라이나 간 전쟁에서 에너지 휴전이 즉시 발효됐다\"며 \"양측 모두 동의했다. 이를 깨뜨리지 말라\"고 밝혔다.",
       "title": "정유주 동반약세…트럼프 \"러·우, 에너지 휴전\""
+    },
+    "source_fact:89112a3eb298ca07e5061440": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06277926645612920",
+      "source": "이데일리",
+      "source_body_digest": "56bdaf3e3ff31063bff3b3a9b1f61cffde9fc3938b64035695d5d71c635342e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:80c231adf11617e41bbf52a3eeb50240db39c5737c0aedd3442f8725c75a01af",
+      "source_fact_keys": [
+        "source_fact:v1:2db516a51039668755d067fe9254018b6dc2ed13ceb86e2893ed388d9723cdf1",
+        "source_fact:v1:69ac06978a9fa0f20a61fb81bfbe6b5b81c65f8afb53b0571cfc4476b51f64ea"
+      ],
+      "source_published_kst": "2026-10-14T23:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "브링커 인터내셔널, 칠리스 실적 개선 기대...투자의견 상향-제프리스",
+      "telegram_core_fact": "특히 고객 방문 증가와 수익성 개선을 통해 확보한 자금을 재투자하면서 지속적인 매출 성장과 시장점유율 확대를 이끄는 선순환 구조가 형성되고 있다고 설명했다.",
+      "title": "브링커 인터내셔널, 칠리스 실적 개선 기대...투자의견 상향-제프리스"
     },
     "source_fact:89149d074a947f91ece8bfca": {
       "first_seen_kst": "2026-10-09T15:48:54+09:00",
@@ -485568,6 +486558,31 @@
       "telegram_core_fact": "IMF는 13일 발표한 '10월 세계경제전망(World Economic Outlook)'에서 올해 한국 경제성장률을 3.3%로 제시했다. 중동전쟁 장기화와 국제유가 상승에도 인공지능(AI) 투자 확대에 따른 반도체 수출 호조가 한국 경제의 성장을 견인할 것으로 전망했다.",
       "title": "IMF, 한국 성장률 3.3%로 상향…AI·반도체 수출 호조 영향"
     },
+    "source_fact:941e45c203d8763e22e09ccd": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.hankyung.com/article/202610141990i",
+      "source": "한국경제",
+      "source_body_digest": "7d4235494254cc65499f7393ea9f891047d32b0343f8d7cb6603dc779fe5651f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:111e05df80fe554e98aa914573bdd1158a797d9fe0e8bbdd3267b0f24c705f0f",
+      "source_fact_keys": [
+        "source_fact:v1:02ee1228158743f8f7c02c3bfed7b094a887fd508e270170ed7d24b6cbe459b6",
+        "source_fact:v1:56bbb3f11266c9167203798f42f6b6069c832e6e8b233fa360324858adc60ca8",
+        "source_fact:v1:7ffdcc9d7ac5646d32ac930a718a3b292489672ea60f1a92efe975f009665304",
+        "source_fact:v1:803c55350303e191bc5c1f1ab8fad66218ac5ae196016f1d4f9f886abb931425",
+        "source_fact:v1:9e477a6b2ca18b723a16769281076886fd2d837a2cc2a368b1b91838546bca6a",
+        "source_fact:v1:f93d59ec5bf9c13830d6daf6c35ac6c4fb6ace22ffa669aab70e38f6799de3bb"
+      ],
+      "source_published_kst": "2026-10-14T19:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "ASML \"30% 증산해도 부족\"…2030년까지 AI칩 장비 주문",
+      "telegram_core_fact": "ASML 매출은 440억 유로 전망입니다.",
+      "title": "ASML \"30% 증산해도 부족\"…2030년까지 AI칩 장비 주문"
+    },
     "source_fact:94252a0fa139126cfb2dca7b": {
       "first_seen_kst": "2026-10-07T08:36:47+09:00",
       "lanes": {
@@ -495430,6 +496445,31 @@
       "source_title": "팬 아메리칸 실버, 지니스 이사 10월 31일 퇴임..이퀴녹스 의장직 전념",
       "telegram_core_fact": "지니스 이사는 2019년 팬 아메리칸이 테이호 리소시스(Tahoe Resources)를 인수한 이후 이사회에 합류해 7년 가까이 활동했다.",
       "title": "팬 아메리칸 실버, 지니스 이사 10월 31일 퇴임..이퀴녹스 의장직 전념"
+    },
+    "source_fact:9c00cba68abb24d05d9c5c30": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.hankyung.com/article/202610141990i",
+      "source": "한국경제",
+      "source_body_digest": "7d4235494254cc65499f7393ea9f891047d32b0343f8d7cb6603dc779fe5651f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:111e05df80fe554e98aa914573bdd1158a797d9fe0e8bbdd3267b0f24c705f0f",
+      "source_fact_keys": [
+        "source_fact:v1:02ee1228158743f8f7c02c3bfed7b094a887fd508e270170ed7d24b6cbe459b6",
+        "source_fact:v1:56bbb3f11266c9167203798f42f6b6069c832e6e8b233fa360324858adc60ca8",
+        "source_fact:v1:7ffdcc9d7ac5646d32ac930a718a3b292489672ea60f1a92efe975f009665304",
+        "source_fact:v1:803c55350303e191bc5c1f1ab8fad66218ac5ae196016f1d4f9f886abb931425",
+        "source_fact:v1:9e477a6b2ca18b723a16769281076886fd2d837a2cc2a368b1b91838546bca6a",
+        "source_fact:v1:f93d59ec5bf9c13830d6daf6c35ac6c4fb6ace22ffa669aab70e38f6799de3bb"
+      ],
+      "source_published_kst": "2026-10-14T19:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "ASML \"30% 증산해도 부족\"…2030년까지 AI칩 장비 주문",
+      "telegram_core_fact": "ASML 매출은 440억 유로 전망입니다.",
+      "title": "ASML \"30% 증산해도 부족\"…2030년까지 AI칩 장비 주문"
     },
     "source_fact:9c03335dfde31a5c2955f6ce": {
       "first_seen_kst": "2026-10-13T08:14:23+09:00",
@@ -552118,6 +553158,30 @@
       "telegram_core_fact": "글로벌 반도체 시장이 인공지능(AI) 수요 확대와 첨단 제조 투자에 힘입어 연간 매출 1조 달러 시대를 향해 성장하는 가운데, 국내 반도체 소재·부품·장비(소부장) 기업들이 북미시장 공략에 나섰다.",
       "title": "한국 반도체 소부장 기업 15곳, 'SEMICON West 2026'서 북미시장 공략"
     },
+    "source_fact:c89eec4565c8d1c663b10411": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1174709",
+      "source": "매일경제",
+      "source_body_digest": "0c58f58d8f26d4e45ed737c16f84eff722c79f7458526bc44c669447fd4f9cb8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:286649e866e836d30305bedd12e5b31644afe3bcc697fe0895791dd1d297180f",
+      "source_fact_keys": [
+        "source_fact:v1:1b80eea78dbd0ed39980fe3da8b3002cc45ea6e7c3c109855a87a8a04ea3dd60",
+        "source_fact:v1:22ee78813cbe9a5f024c792b6e3fb47ad109c42fa85232f4144d9d395d1f3645",
+        "source_fact:v1:a2e6a90db7a2520657176519add3e7a7e7be0ce5c302a39ed2e6cf7df9525d42",
+        "source_fact:v1:bc35da8172c5bbbdfcf7fc0997688a269b07b97ab78fd315392132cf9408bf7f",
+        "source_fact:v1:d43ea50fdc1e448b98fea098eb25df0aa8a208f304e89e323683f49f3ea807b4"
+      ],
+      "source_published_kst": "2026-10-15T04:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "클리어 채널 아웃도어 홀딩, 무바달라 62억달러 인수 완료·상장폐지",
+      "telegram_core_fact": "클리어 채널 아웃도어 홀딩스(CCO)가 아부다비 국부펀드 계열 무바달라 캐피털(Mubadala Capital)에 약 62억 달러 규모로 인수되는 거래를 완료했으며, 이에 따라 보통주가 뉴욕증권거래소(NYSE)에서 상장폐지된다고 14일 발표했다.",
+      "title": "클리어 채널 아웃도어 홀딩, 무바달라 62억달러 인수 완료·상장폐지"
+    },
     "source_fact:c8a30204310ed7ca0f368db3": {
       "first_seen_kst": "2026-10-14T13:56:06+09:00",
       "lanes": {
@@ -557397,6 +558461,30 @@
       "telegram_core_fact": "한화오션은 9일 정인섭 경영지원실장(사장) 명의의 담화문을 내고 \"안전과 생산을 위협하는 것은 타협의 대상이 될 수 없다\"고 밝혔다. 한화오션 노동조합이 크레인 위에서 고공 농성에 돌입한 가운데 한화오션 측이 안전과 생산을 위협하는 불법 고공 농성을 중단하고 올해 임금·단체협약(임단협) 교섭을 이어가자고 촉구했다.",
       "title": "정인섭 한화오션 사장 \"안전·생산 위협 행위 우려…고공 농성 중단해야\""
     },
+    "source_fact:cd26733e08f01c36a168091e": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825800",
+      "source": "뉴시스",
+      "source_body_digest": "63aad06f22b0e8bc6d494d7d1edb06ecb60ace64e23285627149a09ebb0048ab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:957be00696f682f17dc7c2d5298b2f96ccf9c8d7fd34497cfe60f484f7c3809a",
+      "source_fact_keys": [
+        "source_fact:v1:4018b2dccc78a03366837f1b2ee16f29909160803e5dbafc7ac333e2061225bc",
+        "source_fact:v1:6fbf5708b3adf10943bb600bd2f1ae53f30fed1bd37dab568ae8a566a26afb8e",
+        "source_fact:v1:705f0205d7d21e41e340115fc33117d103e8d99ccd327a72d32bc0a092a682af",
+        "source_fact:v1:ac67e6992db1d4ffe6a1d5878fe0bc6af30b40b486f54f8eda1bdf33008deef8",
+        "source_fact:v1:cf8d20969dd104497934caad415bdd4f5e5ac044b6379cd1ed457a7b0310d949"
+      ],
+      "source_published_kst": "2026-10-14T17:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "日은행·보험사, 해외 채권 팔고 日국채 산다…\"엔 캐리 청산 조짐?\"",
+      "telegram_core_fact": "13일(현지 시간) 파이낸셜타임스(FT)의 일본증권협회 자료를 자체 분석한 결과, 일본 대형 은행과 보험사들은 지난 8월까지 약 5개월 동안 만기 2년 이상인 일본 국채를 5조4000억엔(약 45조6000억원) 순매수했다.",
+      "title": "日은행·보험사, 해외 채권 팔고 日국채 산다…\"엔 캐리 청산 조짐?\""
+    },
     "source_fact:cd27be99f79af12e95e0d13a": {
       "first_seen_kst": "2026-10-12T23:14:39+09:00",
       "lanes": {
@@ -560937,6 +562025,29 @@
       "telegram_core_fact": "한국투자신탁운용은 7일 ACE 미국빅테크TOP7Plus 상장지수펀드(ETF)의 순자산액이 1조2000억원을 돌파했다고 밝혔다. ACE 미국빅테크TOP7Plus ETF는 미국 나스닥 시장에 상장된 빅테크 기업에 집중적으로 투자하는 상품으로 2023년 9월 상장했다.",
       "title": "한투운용, 미국 빅테크 집중 ETF 순자산 1조2000억 돌파"
     },
+    "source_fact:d0161b2c8fd4dac746ab0a99": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1174725",
+      "source": "매일경제",
+      "source_body_digest": "194179749fe1918f0fa192262d49ac8b6c8d3b088e6a94994a33021179fd01ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1e18d513e7c947d13684ced1f2ff2b85fdedf8f8c509825c5ebf781da594c863",
+      "source_fact_keys": [
+        "source_fact:v1:074becaa78af8f32519f51450ffb640c16730339087397b2df942d7ab1df6794",
+        "source_fact:v1:936ddf8c99842ffd54da598b437f209345082a4572c60108b3621fa0adfc5685",
+        "source_fact:v1:a5298fff913b0b75c2fe67890765665f17d8966598279b69039df6f2cf86d1d7",
+        "source_fact:v1:c665c137738946867a0e6f08bcf9c42631d20becd7e204e260b91a121b2f964b"
+      ],
+      "source_published_kst": "2026-10-15T05:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "베터 홈 앤 파이낸스 홀딩, 3분기 잠정 매출 4500만달러..가이던스 하회",
+      "telegram_core_fact": "베터 홈 앤 파이낸스 홀딩(BETR)은 2026년 9월 30일 종료된 3분기 잠정 총순매출액(Total Net Revenues)이 4510만 달러로 전년비 8.6% 증가했지만, 앞서 제시한 가이던스 하단(4900만~5200만 달러)에는 못 미쳤다고 14일 발표했다.",
+      "title": "베터 홈 앤 파이낸스 홀딩, 3분기 잠정 매출 4500만달러..가이던스 하회"
+    },
     "source_fact:d0270c0be58858290e45ce8a": {
       "first_seen_kst": "2026-10-12T03:58:42+09:00",
       "lanes": {
@@ -561849,6 +562960,30 @@
       ],
       "source_published_kst": "2026-10-06T17:40+09:00",
       "title": "알테오젠, 알테오젠바이오로직스 합병 결정…개발부터 상업화까지 역량 통합"
+    },
+    "source_fact:d0d7048dd64da8ee9bb6be75": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.hankyung.com/article/202610140628i",
+      "source": "한국경제",
+      "source_body_digest": "bbaee49bfb5d8d8505e2aade245579c35a1305b990d8a90d3ccc10e2d2a08144",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6742f1147ef33e9aabc46bad471cbfc6c13a45e8f7ffa120c64c340e77b822de",
+      "source_fact_keys": [
+        "source_fact:v1:1f9adfa97e7e18929742503cffff925dc63209d50d4e93b84c1507b27ac29f92",
+        "source_fact:v1:2975681a7f8b6ab23299ab157c317b6400a66c96e202194691d1e7db054dcb65",
+        "source_fact:v1:63ff6404c1422861564326184b6cb40b13de8506a2f09e9a6282a20526432845",
+        "source_fact:v1:644bdadb895e583ef5af7be3500a4a95125d831fa7b5d47763e72c1fc04e42e5",
+        "source_fact:v1:dec508fd3d27b35e5c8720947b529ff6de251a451ad4f2a7d22817693daf8def"
+      ],
+      "source_published_kst": "2026-10-14T15:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"시공사 요구대로 공사비 다 올려줘?\"…국토부, 무검증 재건축 조합 특별점검",
+      "telegram_core_fact": "국토부의 전수조사 결과에 따르면 이미 시공사를 선정한 전국 568곳의 재건축·재개발 사업장 중 공사비 검증 대상인데도 검증을 진행하지 않은 사업장이 총 138곳으로 집계됐다.",
+      "title": "\"시공사 요구대로 공사비 다 올려줘?\"…국토부, 무검증 재건축 조합 특별점검"
     },
     "source_fact:d0e7c74a6b22dd99b1568cca": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
@@ -567218,6 +568353,30 @@
       ],
       "source_published_kst": "2026-10-05T19:02+09:00",
       "title": "세제·부동산·대미투자… 李정부 2년차 정책 검증 '경제 국감' [국정감사 핫이슈]"
+    },
+    "source_fact:d550a481a6efcd2447110d7b": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825800",
+      "source": "뉴시스",
+      "source_body_digest": "63aad06f22b0e8bc6d494d7d1edb06ecb60ace64e23285627149a09ebb0048ab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:957be00696f682f17dc7c2d5298b2f96ccf9c8d7fd34497cfe60f484f7c3809a",
+      "source_fact_keys": [
+        "source_fact:v1:4018b2dccc78a03366837f1b2ee16f29909160803e5dbafc7ac333e2061225bc",
+        "source_fact:v1:6fbf5708b3adf10943bb600bd2f1ae53f30fed1bd37dab568ae8a566a26afb8e",
+        "source_fact:v1:705f0205d7d21e41e340115fc33117d103e8d99ccd327a72d32bc0a092a682af",
+        "source_fact:v1:ac67e6992db1d4ffe6a1d5878fe0bc6af30b40b486f54f8eda1bdf33008deef8",
+        "source_fact:v1:cf8d20969dd104497934caad415bdd4f5e5ac044b6379cd1ed457a7b0310d949"
+      ],
+      "source_published_kst": "2026-10-14T17:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "日은행·보험사, 해외 채권 팔고 日국채 산다…\"엔 캐리 청산 조짐?\"",
+      "telegram_core_fact": "13일(현지 시간) 파이낸셜타임스(FT)의 일본증권협회 자료를 자체 분석한 결과, 일본 대형 은행과 보험사들은 지난 8월까지 약 5개월 동안 만기 2년 이상인 일본 국채를 5조4000억엔(약 45조6000억원) 순매수했다.",
+      "title": "日은행·보험사, 해외 채권 팔고 日국채 산다…\"엔 캐리 청산 조짐?\""
     },
     "source_fact:d552a68c680205d2db9d508e": {
       "first_seen_kst": "2026-10-13T14:05:30+09:00",
@@ -604335,6 +605494,27 @@
       "telegram_core_fact": "포스코그룹은 한국형 수소환원제철 기술인 '하이렉스(HyREX)'를 중심으로 정부와 협력해 청정에너지 공급부터 저탄소 철강 활용까지 아우르는 생태계를 구축한다.",
       "title": "포스코그룹, K-GX 참여…철강 탈탄소 전환 선도"
     },
+    "source_fact:f1fbb05f2ddecee1e0e365cc": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06277926645612920",
+      "source": "이데일리",
+      "source_body_digest": "56bdaf3e3ff31063bff3b3a9b1f61cffde9fc3938b64035695d5d71c635342e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:80c231adf11617e41bbf52a3eeb50240db39c5737c0aedd3442f8725c75a01af",
+      "source_fact_keys": [
+        "source_fact:v1:2db516a51039668755d067fe9254018b6dc2ed13ceb86e2893ed388d9723cdf1",
+        "source_fact:v1:69ac06978a9fa0f20a61fb81bfbe6b5b81c65f8afb53b0571cfc4476b51f64ea"
+      ],
+      "source_published_kst": "2026-10-14T23:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "브링커 인터내셔널, 칠리스 실적 개선 기대...투자의견 상향-제프리스",
+      "telegram_core_fact": "특히 고객 방문 증가와 수익성 개선을 통해 확보한 자금을 재투자하면서 지속적인 매출 성장과 시장점유율 확대를 이끄는 선순환 구조가 형성되고 있다고 설명했다.",
+      "title": "브링커 인터내셔널, 칠리스 실적 개선 기대...투자의견 상향-제프리스"
+    },
     "source_fact:f1fc9e5f50b5194bb58e7062": {
       "first_seen_kst": "2026-10-07T16:15:21+09:00",
       "lanes": {
@@ -615461,6 +616641,30 @@
       "telegram_core_fact": "서 연구원은 \"AI 관련 콘퍼런스와 미국 소비자물가지수 발표, 본격적인 실적 시즌 등을 고려하면 추세적인 상승보다는 낙폭 과대에 따른 반등과 종목별 차별화가 진행될 것\"이라며 \"특히 반도체 업종의 변화와 외국인 수급이 중요하다\"고 짚었다.",
       "title": "[오늘의 증시]코스피, 낙폭 과대에 반등 시도 전망…6800선 회복 주목"
     },
+    "source_fact:fb734612c38e707862607024": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1174709",
+      "source": "매일경제",
+      "source_body_digest": "0c58f58d8f26d4e45ed737c16f84eff722c79f7458526bc44c669447fd4f9cb8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:286649e866e836d30305bedd12e5b31644afe3bcc697fe0895791dd1d297180f",
+      "source_fact_keys": [
+        "source_fact:v1:1b80eea78dbd0ed39980fe3da8b3002cc45ea6e7c3c109855a87a8a04ea3dd60",
+        "source_fact:v1:22ee78813cbe9a5f024c792b6e3fb47ad109c42fa85232f4144d9d395d1f3645",
+        "source_fact:v1:a2e6a90db7a2520657176519add3e7a7e7be0ce5c302a39ed2e6cf7df9525d42",
+        "source_fact:v1:bc35da8172c5bbbdfcf7fc0997688a269b07b97ab78fd315392132cf9408bf7f",
+        "source_fact:v1:d43ea50fdc1e448b98fea098eb25df0aa8a208f304e89e323683f49f3ea807b4"
+      ],
+      "source_published_kst": "2026-10-15T04:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "클리어 채널 아웃도어 홀딩, 무바달라 62억달러 인수 완료·상장폐지",
+      "telegram_core_fact": "클리어 채널 아웃도어 홀딩스(CCO)가 아부다비 국부펀드 계열 무바달라 캐피털(Mubadala Capital)에 약 62억 달러 규모로 인수되는 거래를 완료했으며, 이에 따라 보통주가 뉴욕증권거래소(NYSE)에서 상장폐지된다고 14일 발표했다.",
+      "title": "클리어 채널 아웃도어 홀딩, 무바달라 62억달러 인수 완료·상장폐지"
+    },
     "source_fact:fb75b2a55a18218a36513b16": {
       "first_seen_kst": "2026-10-08T18:46:25+09:00",
       "lanes": {
@@ -616188,6 +617392,30 @@
       "source_title": "[올댓차이나] 9월 中 소비자물가 0.9%↑…\"연휴 소비에도 예상 하회\"",
       "telegram_core_fact": "경제통과 재신쾌보, 인베스팅 닷컴, 트레이딩 이코노믹스에 따르면 중국 국가통계국은 14일 체감경기를 반영하는 9월 소비자 물가지수(CPI)가 전년 동월보다 0.9% 상승했다고 발표했다.",
       "title": "[올댓차이나] 9월 中 소비자물가 0.9%↑…\"연휴 소비에도 예상 하회\""
+    },
+    "source_fact:fc274226abf37595a1b403d9": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.hankyung.com/article/202610140628i",
+      "source": "한국경제",
+      "source_body_digest": "bbaee49bfb5d8d8505e2aade245579c35a1305b990d8a90d3ccc10e2d2a08144",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6742f1147ef33e9aabc46bad471cbfc6c13a45e8f7ffa120c64c340e77b822de",
+      "source_fact_keys": [
+        "source_fact:v1:1f9adfa97e7e18929742503cffff925dc63209d50d4e93b84c1507b27ac29f92",
+        "source_fact:v1:2975681a7f8b6ab23299ab157c317b6400a66c96e202194691d1e7db054dcb65",
+        "source_fact:v1:63ff6404c1422861564326184b6cb40b13de8506a2f09e9a6282a20526432845",
+        "source_fact:v1:644bdadb895e583ef5af7be3500a4a95125d831fa7b5d47763e72c1fc04e42e5",
+        "source_fact:v1:dec508fd3d27b35e5c8720947b529ff6de251a451ad4f2a7d22817693daf8def"
+      ],
+      "source_published_kst": "2026-10-14T15:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"시공사 요구대로 공사비 다 올려줘?\"…국토부, 무검증 재건축 조합 특별점검",
+      "telegram_core_fact": "국토부의 전수조사 결과에 따르면 이미 시공사를 선정한 전국 568곳의 재건축·재개발 사업장 중 공사비 검증 대상인데도 검증을 진행하지 않은 사업장이 총 138곳으로 집계됐다.",
+      "title": "\"시공사 요구대로 공사비 다 올려줘?\"…국토부, 무검증 재건축 조합 특별점검"
     },
     "source_fact:fc2c348cf1d2a5b2a9790212": {
       "first_seen_kst": "2026-10-06T06:36:31+09:00",
@@ -624756,6 +625984,30 @@
       "telegram_core_fact": "투자은행(IB) 업계에 따르면 LS증권은 700억원 회사채 발행을 위한 수요예측에서 총 4천640억원의 수요를 확인했다. LS증권[078020](A0)의 무보증사채 수요예측에서 모집예정액의 7배 가까운 자금이 몰렸다.",
       "title": "LS증권, 수요예측서 4천640억 몰려…모집예정액 7배 수준 | 연합뉴스"
     },
+    "title:0a49e181008190c61201a48b": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825800",
+      "source": "뉴시스",
+      "source_body_digest": "63aad06f22b0e8bc6d494d7d1edb06ecb60ace64e23285627149a09ebb0048ab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:957be00696f682f17dc7c2d5298b2f96ccf9c8d7fd34497cfe60f484f7c3809a",
+      "source_fact_keys": [
+        "source_fact:v1:4018b2dccc78a03366837f1b2ee16f29909160803e5dbafc7ac333e2061225bc",
+        "source_fact:v1:6fbf5708b3adf10943bb600bd2f1ae53f30fed1bd37dab568ae8a566a26afb8e",
+        "source_fact:v1:705f0205d7d21e41e340115fc33117d103e8d99ccd327a72d32bc0a092a682af",
+        "source_fact:v1:ac67e6992db1d4ffe6a1d5878fe0bc6af30b40b486f54f8eda1bdf33008deef8",
+        "source_fact:v1:cf8d20969dd104497934caad415bdd4f5e5ac044b6379cd1ed457a7b0310d949"
+      ],
+      "source_published_kst": "2026-10-14T17:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "日은행·보험사, 해외 채권 팔고 日국채 산다…\"엔 캐리 청산 조짐?\"",
+      "telegram_core_fact": "13일(현지 시간) 파이낸셜타임스(FT)의 일본증권협회 자료를 자체 분석한 결과, 일본 대형 은행과 보험사들은 지난 8월까지 약 5개월 동안 만기 2년 이상인 일본 국채를 5조4000억엔(약 45조6000억원) 순매수했다.",
+      "title": "日은행·보험사, 해외 채권 팔고 日국채 산다…\"엔 캐리 청산 조짐?\""
+    },
     "title:0a541b9a10e32caad7b3bd82": {
       "first_seen_kst": "2026-10-04T00:00:47+09:00",
       "lanes": {
@@ -632392,6 +633644,24 @@
       "source": "뉴시스",
       "title": "광양 성황동 한때 정전…아파트 단지 등 500여 가구 불편"
     },
+    "title:216140c641d7e47c86e8663e": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12176110",
+      "source": "매일경제",
+      "source_body_digest": "86ab425bbe2694cf9ad860ea03721e8957c26536636c9b8bd468f737e9fc366f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-14T19:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "액센츄어, 2026회계 조정 EPS 13.97달러..가이던스 상회",
+      "telegram_core_fact": "액센츄어(ACN)가 2026회계연도(8월 31일 종료) 매출액 742억 달러, Non-GAAP 조정 희석 주당순이익(EPS) 13.97달러를 기록했다고 14일 투자자의 날(Investor Day) 재무 발표 자료를 통해 발표했다.",
+      "title": "액센츄어, 2026회계 조정 EPS 13.97달러..가이던스 상회"
+    },
     "title:2166e3c3cbb8c2888026d66d": {
       "first_seen_kst": "2026-10-06T15:03:09+09:00",
       "lanes": {
@@ -639590,6 +640860,30 @@
       "source_title": "위불, 美 하원 보고서 반박..고객 데이터·자산 미국 보관",
       "telegram_core_fact": "증권가 컨센서스에 따르면 위불의 2026년 연간 매출액은 8억574만 달러로 전년 대비 41.11% 증가할 것으로 전망된다. 위불(BULL)이 미 하원 특별위원회가 8일(현지시간) 공개한 보고서에 대해 불완전한 기록에 근거해 성급한 결론을 내렸고 주요 사실관계도 잘못됐다고 반박하는 입장문을 9일 발표했다.",
       "title": "위불, 美 하원 보고서 반박..고객 데이터·자산 미국 보관"
+    },
+    "title:35e6346306186ec0db4eb60e": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1174709",
+      "source": "매일경제",
+      "source_body_digest": "0c58f58d8f26d4e45ed737c16f84eff722c79f7458526bc44c669447fd4f9cb8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:286649e866e836d30305bedd12e5b31644afe3bcc697fe0895791dd1d297180f",
+      "source_fact_keys": [
+        "source_fact:v1:1b80eea78dbd0ed39980fe3da8b3002cc45ea6e7c3c109855a87a8a04ea3dd60",
+        "source_fact:v1:22ee78813cbe9a5f024c792b6e3fb47ad109c42fa85232f4144d9d395d1f3645",
+        "source_fact:v1:a2e6a90db7a2520657176519add3e7a7e7be0ce5c302a39ed2e6cf7df9525d42",
+        "source_fact:v1:bc35da8172c5bbbdfcf7fc0997688a269b07b97ab78fd315392132cf9408bf7f",
+        "source_fact:v1:d43ea50fdc1e448b98fea098eb25df0aa8a208f304e89e323683f49f3ea807b4"
+      ],
+      "source_published_kst": "2026-10-15T04:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "클리어 채널 아웃도어 홀딩, 무바달라 62억달러 인수 완료·상장폐지",
+      "telegram_core_fact": "클리어 채널 아웃도어 홀딩스(CCO)가 아부다비 국부펀드 계열 무바달라 캐피털(Mubadala Capital)에 약 62억 달러 규모로 인수되는 거래를 완료했으며, 이에 따라 보통주가 뉴욕증권거래소(NYSE)에서 상장폐지된다고 14일 발표했다.",
+      "title": "클리어 채널 아웃도어 홀딩, 무바달라 62억달러 인수 완료·상장폐지"
     },
     "title:35ee30aada1e5b4b4b2782dd": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
@@ -648878,6 +650172,30 @@
       "source": "머니투데이",
       "title": "1380원대 찍더니 다시 아래로…추석 뒤 환율 가를 '달러·엔·네고'"
     },
+    "title:4fe9c932b8b957a3dc680420": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.hankyung.com/article/202610140628i",
+      "source": "한국경제",
+      "source_body_digest": "bbaee49bfb5d8d8505e2aade245579c35a1305b990d8a90d3ccc10e2d2a08144",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6742f1147ef33e9aabc46bad471cbfc6c13a45e8f7ffa120c64c340e77b822de",
+      "source_fact_keys": [
+        "source_fact:v1:1f9adfa97e7e18929742503cffff925dc63209d50d4e93b84c1507b27ac29f92",
+        "source_fact:v1:2975681a7f8b6ab23299ab157c317b6400a66c96e202194691d1e7db054dcb65",
+        "source_fact:v1:63ff6404c1422861564326184b6cb40b13de8506a2f09e9a6282a20526432845",
+        "source_fact:v1:644bdadb895e583ef5af7be3500a4a95125d831fa7b5d47763e72c1fc04e42e5",
+        "source_fact:v1:dec508fd3d27b35e5c8720947b529ff6de251a451ad4f2a7d22817693daf8def"
+      ],
+      "source_published_kst": "2026-10-14T15:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"시공사 요구대로 공사비 다 올려줘?\"…국토부, 무검증 재건축 조합 특별점검",
+      "telegram_core_fact": "국토부의 전수조사 결과에 따르면 이미 시공사를 선정한 전국 568곳의 재건축·재개발 사업장 중 공사비 검증 대상인데도 검증을 진행하지 않은 사업장이 총 138곳으로 집계됐다.",
+      "title": "\"시공사 요구대로 공사비 다 올려줘?\"…국토부, 무검증 재건축 조합 특별점검"
+    },
     "title:4fee0f79080620f52a5e9056": {
       "first_seen_kst": "2026-10-12T05:09:39+09:00",
       "lanes": {
@@ -651653,6 +652971,29 @@
       "source_title": "치폴레, 스타벅스 인수 검토설 부각되며 주목받는 흐름",
       "telegram_core_fact": "스타벅스가 치폴레 인수를 검토하고 있다는 보도가 전해지며 인수 프리미엄에 대한 기대감이 커졌습니다.",
       "title": "치폴레, 스타벅스 인수 검토설 부각되며 주목받는 흐름"
+    },
+    "title:585fea94e90d53a8c821f6a1": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1174725",
+      "source": "매일경제",
+      "source_body_digest": "194179749fe1918f0fa192262d49ac8b6c8d3b088e6a94994a33021179fd01ec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1e18d513e7c947d13684ced1f2ff2b85fdedf8f8c509825c5ebf781da594c863",
+      "source_fact_keys": [
+        "source_fact:v1:074becaa78af8f32519f51450ffb640c16730339087397b2df942d7ab1df6794",
+        "source_fact:v1:936ddf8c99842ffd54da598b437f209345082a4572c60108b3621fa0adfc5685",
+        "source_fact:v1:a5298fff913b0b75c2fe67890765665f17d8966598279b69039df6f2cf86d1d7",
+        "source_fact:v1:c665c137738946867a0e6f08bcf9c42631d20becd7e204e260b91a121b2f964b"
+      ],
+      "source_published_kst": "2026-10-15T05:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "베터 홈 앤 파이낸스 홀딩, 3분기 잠정 매출 4500만달러..가이던스 하회",
+      "telegram_core_fact": "베터 홈 앤 파이낸스 홀딩(BETR)은 2026년 9월 30일 종료된 3분기 잠정 총순매출액(Total Net Revenues)이 4510만 달러로 전년비 8.6% 증가했지만, 앞서 제시한 가이던스 하단(4900만~5200만 달러)에는 못 미쳤다고 14일 발표했다.",
+      "title": "베터 홈 앤 파이낸스 홀딩, 3분기 잠정 매출 4500만달러..가이던스 하회"
     },
     "title:5862e34354fe00d8c603cbf6": {
       "first_seen_kst": "2026-10-11T07:32:31+09:00",
@@ -679441,6 +680782,31 @@
       "source_published_kst": "2026-10-07T19:06+09:00",
       "title": "발사대부터 총조립까지…HD현대·KAI·현대로템, 누리호 5차 성공 이끌었다"
     },
+    "title:ab7d33a3b5bae0e27ffbdc6e": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.hankyung.com/article/202610141990i",
+      "source": "한국경제",
+      "source_body_digest": "7d4235494254cc65499f7393ea9f891047d32b0343f8d7cb6603dc779fe5651f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:111e05df80fe554e98aa914573bdd1158a797d9fe0e8bbdd3267b0f24c705f0f",
+      "source_fact_keys": [
+        "source_fact:v1:02ee1228158743f8f7c02c3bfed7b094a887fd508e270170ed7d24b6cbe459b6",
+        "source_fact:v1:56bbb3f11266c9167203798f42f6b6069c832e6e8b233fa360324858adc60ca8",
+        "source_fact:v1:7ffdcc9d7ac5646d32ac930a718a3b292489672ea60f1a92efe975f009665304",
+        "source_fact:v1:803c55350303e191bc5c1f1ab8fad66218ac5ae196016f1d4f9f886abb931425",
+        "source_fact:v1:9e477a6b2ca18b723a16769281076886fd2d837a2cc2a368b1b91838546bca6a",
+        "source_fact:v1:f93d59ec5bf9c13830d6daf6c35ac6c4fb6ace22ffa669aab70e38f6799de3bb"
+      ],
+      "source_published_kst": "2026-10-14T19:29+09:00",
+      "source_supply_terms": {},
+      "source_title": "ASML \"30% 증산해도 부족\"…2030년까지 AI칩 장비 주문",
+      "telegram_core_fact": "ASML 매출은 440억 유로 전망입니다.",
+      "title": "ASML \"30% 증산해도 부족\"…2030년까지 AI칩 장비 주문"
+    },
     "title:ab831dd21d67243ae94058e1": {
       "first_seen_kst": "2026-10-14T17:44:16+09:00",
       "lanes": {
@@ -707049,6 +708415,27 @@
       "source_published_kst": "2026-10-06T13:28+09:00",
       "title": "전세사기 피해 보증금 3분의 1 회복 보장…지원금 산정기준 마련 | 연합뉴스"
     },
+    "title:fef937bfcfdde73098cda60e": {
+      "first_seen_kst": "2026-10-15T07:56:16+09:00",
+      "lanes": {
+        "live": "2026-10-15T07:56:16+09:00"
+      },
+      "last_seen_kst": "2026-10-15T07:56:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06277926645612920",
+      "source": "이데일리",
+      "source_body_digest": "56bdaf3e3ff31063bff3b3a9b1f61cffde9fc3938b64035695d5d71c635342e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:80c231adf11617e41bbf52a3eeb50240db39c5737c0aedd3442f8725c75a01af",
+      "source_fact_keys": [
+        "source_fact:v1:2db516a51039668755d067fe9254018b6dc2ed13ceb86e2893ed388d9723cdf1",
+        "source_fact:v1:69ac06978a9fa0f20a61fb81bfbe6b5b81c65f8afb53b0571cfc4476b51f64ea"
+      ],
+      "source_published_kst": "2026-10-14T23:36+09:00",
+      "source_supply_terms": {},
+      "source_title": "브링커 인터내셔널, 칠리스 실적 개선 기대...투자의견 상향-제프리스",
+      "telegram_core_fact": "특히 고객 방문 증가와 수익성 개선을 통해 확보한 자금을 재투자하면서 지속적인 매출 성장과 시장점유율 확대를 이끄는 선순환 구조가 형성되고 있다고 설명했다.",
+      "title": "브링커 인터내셔널, 칠리스 실적 개선 기대...투자의견 상향-제프리스"
+    },
     "title:feffc119873ad6ca80708565": {
       "first_seen_kst": "2026-10-13T16:01:00+09:00",
       "lanes": {
@@ -707465,5 +708852,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-15T07:35:02+09:00"
+  "updated_at_kst": "2026-10-15T07:56:16+09:00"
 }
