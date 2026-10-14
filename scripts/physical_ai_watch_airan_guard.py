@@ -1048,8 +1048,10 @@ CATL_INTILION_5Y = re.compile(r'(?:five|5)[-\s]*(?:year|yr)|(?:5|다섯)\s*년|5
 CATL_INTILION_OFFICIAL = {'INTILION CEO','INTILION','INTILION GmbH','CATL'}
 CATL_INTILION_TRUSTED = {'pv magazine','pv magazine Global','Energy-Storage.News','ESS News'}
 CATL_INTILION_BINDING = re.compile(
-    r'(?:binding|firm|confirmed)\s+(?:purchase|supply|procurement)\s+(?:agreement|contract|order)|'
-    r'확정\s*(?:구매|발주|납품|공급)\s*계약|납품\s*본계약\s*체결',
+    r'signed\s+(?:a\s+)?(?:binding|firm)\s+(?:purchase|supply|procurement)\s+(?:agreement|contract|order)|'
+    r'(?:binding|firm)\s+(?:purchase|supply|procurement)\s+(?:agreement|contract|order)\s+(?:signed|executed)|'
+    r'(?:구매|공급|발주)\s*(?:본계약|계약)\s*(?:체결|공시|확정)|'
+    r'정식\s*(?:구매|공급)\s*계약\s*체결',
     re.I,
 )
 CATL_INTILION_NOBINDING = re.compile(
