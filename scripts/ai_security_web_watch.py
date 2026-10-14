@@ -418,6 +418,7 @@ def parse_google_news(query: str, now: dt.datetime) -> list[dict]:
         desc = strip_html(node.findtext("description") or "")
         source_node = node.find("source")
         source = strip_html(source_node.text if source_node is not None and source_node.text else "")
+        publisher_url = (source_node.attrib.get("url") or "").strip() if source_node is not None else ""
         published = parse_pubdate(node.findtext("pubDate"))
         if not title or not link:
             continue
@@ -429,6 +430,7 @@ def parse_google_news(query: str, now: dt.datetime) -> list[dict]:
             "title": title,
             "description": desc,
             "source": source or "Google News 수집원",
+            "publisher_url": publisher_url,
             "url": link,
             "published_at": published.isoformat() if published else None,
         })
@@ -661,6 +663,32 @@ def clean_official_headline_prefix(value: str) -> str:
     ).strip()
 
 
+def verified_replication_incident_source(item: dict) -> bool:
+    """For an emergency, match the official agency/domain, not RSS branding."""
+    source = (item.get("source") or "").strip().lower()
+    allowed = []
+    if "cisa" in source:
+        allowed = ("cisa.gov",)
+    elif "anthropic" in source:
+        allowed = ("anthropic.com",)
+    elif "openai" in source:
+        allowed = ("openai.com", "alignment.openai.com")
+    elif "fbi" in source:
+        allowed = ("fbi.gov",)
+    elif "nist" in source:
+        allowed = ("nist.gov",)
+    if not allowed:
+        return False
+    for candidate in (item.get("publisher_url"), item.get("url")):
+        if not candidate:
+            continue
+        hostname = (urllib.parse.urlparse(candidate).hostname or "").lower()
+        for domain in allowed:
+            if hostname == domain or hostname.endswith("." + domain):
+                return True
+    return False
+
+
 def replication_stage(item: dict) -> str | None:
     """Distinguish simulated model capability from a verified field incident.
 
@@ -712,13 +740,13 @@ def replication_stage(item: dict) -> str | None:
         "actively infecting real devices", "실제 감염 확인",
     ))
     if observed and not negated and not controlled_only:
-        return "confirmed_field" if source_official(item.get("source", "")) else "reported_field"
+        return "confirmed_field" if verified_replication_incident_source(item) else "reported_field"
     if any(term in content for term in (
         "fix released for ai worm", "ai worm detection rule released",
         "ai worm containment deployed", "ai worm mitigation update",
         "ai 웜 탐지 규칙 배포", "ai 웜 차단 업데이트",
     )):
-        return "verified_defense" if source_official(item.get("source", "")) else "reported_defense"
+        return "verified_defense" if verified_replication_incident_source(item) else "reported_defense"
     return "research"
 
 
