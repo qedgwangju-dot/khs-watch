@@ -1042,6 +1042,32 @@
       "source_published_kst": "2026-10-07T10:36+09:00",
       "title": "파라택시스 합병 무산…코리아-상폐 대응, 이더리움-독자 경영"
     },
+    "core:073e81caea13b6ce45ae9978": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/14/2026101416271656481",
+      "source": "머니투데이",
+      "source_body_digest": "5cff270b249aa3ee108f344351cf6e93ca58ea3514b4f4c52efaaf279ef8ccd5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd1fa5063268996e26812bbd2dd8b2d244931d6c636eb267b465d5956790d01c",
+      "source_fact_keys": [
+        "source_fact:v1:171eda40721aca795776c19224791aec4b93079ce98077a1d97ccbb5c455cd82",
+        "source_fact:v1:52b020f7d3f3a8783ddc06e3c2a0f1d3bc2c48a96b2ae5a1c440ba6c2aa7d960",
+        "source_fact:v1:5bf97160eec4f01772d577aa52c0df255afbad25630f43b46a264c94b35476d1",
+        "source_fact:v1:a1a879f07043a893750622ced8020e6623c4d04c63cc38e999a699a4b550be23",
+        "source_fact:v1:a56c399668979b9b5d2353f236e16c8e0185f68da4c9bca6dc5f55e2300e1520",
+        "source_fact:v1:c65f88adbf1dc0847f7f829fe4118c07d612ff20e6a00cfe122a6461b8101c44",
+        "source_fact:v1:e133d45cb1b8d694f9c3c623ea5b341e8ec168212b4bdba9881aa71211dba802"
+      ],
+      "source_published_kst": "2026-10-14T17:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피, 美 CPI 발표 앞두고 경계심리↑… 물가둔화 확인할까",
+      "telegram_core_fact": "14일 상승 출발하며 2% 이상 뛰었으나 미국 9월 소비자물가지수(CPI) 발표를 앞두고 관망세가 짙어지며 장중 6000선을 밑돌기도 했다.",
+      "title": "코스피, 美 CPI 발표 앞두고 경계심리↑… 물가둔화 확인할까"
+    },
     "core:0748952f22a7006fe09512f0": {
       "first_seen_kst": "2026-10-07T23:23:06+09:00",
       "lanes": {
@@ -7114,6 +7140,29 @@
       "telegram_core_fact": "삼성전자(005930)가 올해 3분기 107조 4000억 원의 영업이익을 기록, 우리나라 기업 사상 처음으로 분기 영업익 100조 시대를 열었다.",
       "title": "삼성전자 3Q 영업익 107.4조…세계 테크기업 최초 100조 돌파(종합)"
     },
+    "core:264694725a6b9d70be239b88": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.etnews.com/20261014000248",
+      "source": "전자신문",
+      "source_body_digest": "44a54c90ae0b80beeedd3f25de7f1bdb26a9fe40679e84f0e0d8d67dc5de5e47",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:50f30ec0cf9fca19cb637165bc06564eacf6b4ea5020af91c253f8da74bfc48d",
+      "source_fact_keys": [
+        "source_fact:v1:5e2332f378c8c4d6b482d938b5cb8151c29bdce5c4493dc3c0b3ea6120597c44",
+        "source_fact:v1:8b4c6865a9fe86ef861c8e9ebff6a9d78500f140931caec531ca829e81581745",
+        "source_fact:v1:9d5ab9b0c6fb6f263618a25c59ac397b91ee62900188bca97bec1bf827ff308b",
+        "source_fact:v1:d38dbd05ae3c31f9376c823d479ac78acc3280d6faf8a7a0d371219c7f67f69c"
+      ],
+      "source_published_kst": "2026-10-14T13:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "엘앤에프 JHC, 폐배터리 전처리 연 1.5만톤…리튬 95% 회수",
+      "telegram_core_fact": "엘앤에프는 JHC가 생산한 블랙매스를 후처리 전문기업과 연계해 핵심광물을 회수하고 이를 다시 양극재 원료로 활용하는 순환형 밸류체인을 구축하고 있다.",
+      "title": "엘앤에프 JHC, 폐배터리 전처리 연 1.5만톤…리튬 95% 회수"
+    },
     "core:26bd917e4f4aaf333c577d91": {
       "first_seen_kst": "2026-10-10T00:39:56+09:00",
       "lanes": {
@@ -7892,6 +7941,26 @@
       "source_title": "철도연 개발 '자원순환형 복합재' 침목, 기존 목침목 대체한다",
       "telegram_core_fact": "CCS 개발을 담당한 김지환 철도연 책임연구원은 “공항철도 영업운행 노선의 자갈궤도 구간에 CCS가 적용되면서, 목침목 생산 중단에 대응할 수 있는 현실적인 대안을 운영 현장에 제시하게 됐다”며, “공항철도와 함께 현장 데이터를 꾸준히 쌓아 적용 구간 확대를 위한 기술 고도화를 추진하겠다”고 밝혔다.",
       "title": "철도연 개발 '자원순환형 복합재' 침목, 기존 목침목 대체한다"
+    },
+    "core:2a923843a837b3f3eae6adb4": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.news1.kr/economy/trend/6319660",
+      "source": "뉴스1",
+      "source_body_digest": "9d44ef3d3142aeeea1c45b141726cd71d89117752cfd612e785f432c6a0981d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7438b1313eac7e8a39238a467649635ad05f913577fa853b8a1b2f4598194dd",
+      "source_fact_keys": [
+        "source_fact:v1:d29832444ff910d936fc229d0a9704002f8409d75e3d8742c5bc501d07d9ddc3"
+      ],
+      "source_published_kst": "2026-10-14T13:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "부활한 '공정위 저승사자'…첫 타깃은 '먹거리' 대상·오뚜기·CJ",
+      "telegram_core_fact": "공정위는 올해 들어 밀가루, 전분당, 설탕 등 먹거리 분야 담합에 대한 제재 수위를 강화해 왔다.",
+      "title": "부활한 '공정위 저승사자'…첫 타깃은 '먹거리' 대상·오뚜기·CJ"
     },
     "core:2a9d9afc1e638434c51f4c9b": {
       "first_seen_kst": "2026-10-13T13:05:30+09:00",
@@ -20304,6 +20373,29 @@
       "telegram_core_fact": "반도체 산업이 전례 없는 호황을 누리는 반면, 건설 현장에서는 30만명이 넘는 노동자가 원치 않게 일터를 떠난 것으로 나타났다. 고용계약 종료나 구조조정, 해고 등에 따른 비자발적 이직자가 30만명을 넘어선 것은 2023년 9월(31만 432명) 이후 35개월 만이다.",
       "title": "반도체 훈풍 비껴간 건설현장…일용직 30만명 일터 잃어"
     },
+    "core:6fe3d82f81838cb761471418": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825004",
+      "source": "뉴시스",
+      "source_body_digest": "6530b1822be7f2dad96b4282ab330ec670a4dd9c9d36da0ae72d79e5de6137d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:864345dbd6ffd4a73fb1efeff89cb6d4525d2d9bbe4f159b9a1cb150085b83fe",
+      "source_fact_keys": [
+        "source_fact:v1:498c7ba21b95c5136282019de4bbefc0b26945f5b1386a31151a3068f1fa7f06",
+        "source_fact:v1:53f98e459fc2430bea383a3975eb65a9bc2c7d0533e4a9f1b703e3237732b201",
+        "source_fact:v1:e11f002c7d5de9d54fab732fa298dfeea9d741102cb3223ac4184d4fc74aa594",
+        "source_fact:v1:e8c58a5bbd26dc3aee5a970cf567e8db821609b1677e53b088e38b2f2963d65a"
+      ],
+      "source_published_kst": "2026-10-14T09:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB證 \"삼성전자·SK하이닉스, 실적이 'W자 반등' 견인 전망\"",
+      "telegram_core_fact": "김 본부장은 \"최근 내년 양사의 합산 영업이익이 1000조원(삼성전자 600조원, SK하이닉스 400조원)을 상회할 가능성이 높아지면서 실적 컨센서스의 상향 조정이 본격화되고 있다\"고 말했다.",
+      "title": "KB證 \"삼성전자·SK하이닉스, 실적이 'W자 반등' 견인 전망\""
+    },
     "core:6ffbed07f5742a1af25033d7": {
       "first_seen_kst": "2026-10-08T18:46:25+09:00",
       "lanes": {
@@ -22397,6 +22489,32 @@
       "source_title": "[속보] 허리케인 이사이아스(ISAIAS)로 미 남동부서 사망자 4 명",
       "telegram_core_fact": "허리케인 이사이아스(ISAIAS)가 미국 남동부 플로리다 팬핸들 지역을 공격한 뒤 10일 북쪽으로 빠져 나가면서 폭우와 홍수, 토네이도로 최소 4명의 사망자가 발생했다. 이사이아스는 ‘2등급(카테고리 2)’ 허리케인으로 상륙한 뒤 풍속은 약화하면서 앨라배마주를 거쳐 빠르게 북쪽으로 이동했다.",
       "title": "[속보] 허리케인 이사이아스(ISAIAS)로 미 남동부서 사망자 4 명"
+    },
+    "core:7d05d5212e24d8d8a52f9e0a": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/14/2026101413299653584",
+      "source": "머니투데이",
+      "source_body_digest": "28127ecec6c97f001a8496cf20a9782f910fd3d9ae0c39621fffe622bcae616b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:057b9d20fa27c9eb40e004311c027709b3b0a74ac12f173d72ac4fc8b2130274",
+      "source_fact_keys": [
+        "source_fact:v1:2e06febd15eaca153802991a02bffd332f82936ed3776034088de82f0cccf87d",
+        "source_fact:v1:395f492033ea86bd500f4293011763466982552fd715881432c14e3db26b3269",
+        "source_fact:v1:66ff3f0a6b7640d82a520b513ccc02f0dd8159beeda95aa6f6ee2309f6c88c2a",
+        "source_fact:v1:b131efbc947ce56c69804aec240dd80218fe3d7b3058796e76c50c44bbfe90f4",
+        "source_fact:v1:bd70a3e414777469233b770319b05d189430da27528d0cd65a65e66b918b6cf9",
+        "source_fact:v1:f6c01a94b40728db0f34e775dcaa7ae596a8c6663339234002ef82e8dde3998a",
+        "source_fact:v1:faa3a3acfcd81552183833c37560035c08adf9752aee4108b59b0ea05d4606c1"
+      ],
+      "source_published_kst": "2026-10-14T13:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "[더벨]마음AI, '4족보행 순찰로봇' 규제특례 추진",
+      "telegram_core_fact": "피지컬 AI 전문기업 마음AI가 4족보행 로봇의 보행자 도로 순찰을 위한 규제특례를 추진하며 공공안전 분야에서 피지컬 AI 기술의 실증 기반 마련에 나섰다.",
+      "title": "[더벨]마음AI, '4족보행 순찰로봇' 규제특례 추진"
     },
     "core:7d2afb78d3025e2fe907763e": {
       "first_seen_kst": "2026-10-13T20:25:44+09:00",
@@ -35455,6 +35573,37 @@
       "telegram_core_fact": "경총은 11일 발표한 '일본의 정년연장 사례와 시사점' 보고서에서 일본이 법정 정년을 60세로 유지하면서 재고용을 중심으로 65세까지 고용을 보장하는 제도를 도입한 사례를 소개했다.",
       "title": "\"일률적 정년 확대보다 재고용\"…경총, 일본 사례 주목"
     },
+    "core:c704d7c34820e742eda621cd": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825083",
+      "source": "뉴시스",
+      "source_body_digest": "48b6ccaf5c4b5d6cec9a2b11847fc5a9f39fefa512d9044e8bf6cd774b251034",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e18257988ea5a337d03806f9d305402f69fe0a27e4020cbfd333d820c570854d",
+      "source_fact_keys": [
+        "source_fact:v1:1e0241f13e8d223bca6efd5e286e23eff237d6b5f60c1fd354d915f2bccefc8f",
+        "source_fact:v1:216cd2bb8c1afeee6e59c0af23c9b8e6119db846064d5e40e0935993c3e34724",
+        "source_fact:v1:95c76417862cfb71d4bc4423e1bc419225d572c64c0aebc164287e2508e1c9b5",
+        "source_fact:v1:9974e4db8c971515fc4530b18f593176370af281c0903f88a61fedf6a527c521",
+        "source_fact:v1:a73060f91bde450ba30941acb71d3527f8a450e9182fdf639dcbf9a8adae14df",
+        "source_fact:v1:afae431ff933a7ca86fde9e2011a2888b839fe864459fbb468f6f2ed488c1801",
+        "source_fact:v1:b67e59ba5be9dfe3b0b4d13978cb40ef66c520780933e2ebd75428345556d70d",
+        "source_fact:v1:e6f27e25827f12318ef4e21cffc178cce1bddd05bf396d87b99e786578e6196b",
+        "source_fact:v1:eaa009d593adaa93d7c2b001f5f1363c66b3afc7a6ec0333aabd1b83da119509",
+        "source_fact:v1:eb1c359dac4f3cf5802cfb468e849901c7cbd1e6594d08355da16e2fe03cb4df",
+        "source_fact:v1:f6c9bfa4acb04aec349a226a97f5d93e75b8d0e4fdf547beea78b102e4106245",
+        "source_fact:v1:f973417e298ce3c6b3f902c069a872f3e9324d5fdd11770582c4b979cbda0dd8"
+      ],
+      "source_published_kst": "2026-10-14T11:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 치솟는 디젤(경유) 가격을 잡기 위해 러시아에 대한 제재를 해제하고 디젤 수입을 추진하고 있지만, 공급 물량이 제한적이어서 가격 안정 효과는 크지 않을 것이라는 전망이 나온다.",
+      "title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'"
+    },
     "core:c70611371a51e878b7ab8b38": {
       "first_seen_kst": "2026-10-13T13:27:52+09:00",
       "lanes": {
@@ -39420,6 +39569,29 @@
       ],
       "source_published_kst": "2026-10-07T13:28+09:00",
       "title": "디스플레이協, “디스플레이 산업 규제 개선 환영”"
+    },
+    "core:dedd6b6bfd32c3236db78a7d": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.fnnews.com/news/202610141029323408",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "6bedb89224c94e504d33b36b835069f7b2d1410a9778d3ad904ad3694e8dc0eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cb7fc64f636a2dcc25a2b321368243972bab9d89ab52da4220bff7a8a0beb972",
+      "source_fact_keys": [
+        "source_fact:v1:335cff4a94b70eec27e6c1e3276df22e2488a051847c7d8e34696b649424798d",
+        "source_fact:v1:82932ab75fe461ce373589facbcc6dde539392947ff46963e0964664c45d1d63",
+        "source_fact:v1:cd12939967ae37be8caf5d01a4da731f3b486060003f27f28589868de38c3bcc",
+        "source_fact:v1:e29cd06ea2f5209cf539c1757d6da700c7200b2be511fac7048f34a374a11cee"
+      ],
+      "source_published_kst": "2026-10-14T13:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "엑시나, 글로벌 빅테크 출신 CBO 영입… CXL 연산 메모리 ‘MX1’ 상용화 박차",
+      "telegram_core_fact": "[파이낸셜뉴스] AI 인프라의 핵심 화두로 떠오른 데이터 이동 병목과 메모리 용량 한계를 극복하기 위해, 국내 팹리스 엑시나(XCENA)가 CXL 기반 차세대 연산 메모리 솔루션 ‘MX1’의 글로벌 상용화에 속도를 낸다.",
+      "title": "엑시나, 글로벌 빅테크 출신 CBO 영입… CXL 연산 메모리 ‘MX1’ 상용화 박차"
     },
     "core:df1d23625d955f502d9b573d": {
       "first_seen_kst": "2026-10-11T07:07:11+09:00",
@@ -49260,29 +49432,34 @@
     "event:5214d80fea4e0016511b4110": {
       "first_seen_kst": "2026-10-14T05:08:50+09:00",
       "lanes": {
-        "live": "2026-10-14T17:44:16+09:00",
+        "live": "2026-10-14T18:12:32+09:00",
         "preopen": "2026-10-14T06:58:10+09:00"
       },
-      "last_seen_kst": "2026-10-14T17:44:16+09:00",
-      "link": "https://www.newsis.com/view/NISX20261014_0003826052",
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825083",
       "source": "뉴시스",
-      "source_body_digest": "d1221c8e68fe44b6569ae246e9af2842b1316a0b1b44b1afcb10b7bc465a8581",
+      "source_body_digest": "48b6ccaf5c4b5d6cec9a2b11847fc5a9f39fefa512d9044e8bf6cd774b251034",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:49f1738b5a340a344c39230f2a7e7a6e60f1b9a97704b3eeebe8f3e4608bfbfe",
+      "source_fact_identity": "source_facts:v1:e18257988ea5a337d03806f9d305402f69fe0a27e4020cbfd333d820c570854d",
       "source_fact_keys": [
-        "source_fact:v1:0845c4a2045f91499ebfd27ec12cb06ee523f91409dae3ba3b42186b2af21c5a",
-        "source_fact:v1:0e7ad566f03ad87435853ccf8539b59212656f1ab61302077cc28a2d8a128c83",
-        "source_fact:v1:5b5191c153917bd2bf280d49bbb50c8e3fb5a71d069c88d68c8df418532b1658",
-        "source_fact:v1:61bb9631c79b6db4f3ece6e4cb06052d38de6f1864faaa36c29cf7a1bf6672ba",
-        "source_fact:v1:93c6e3a7cf8f272ff747179a49625fe3e967b142e32e1136fbee6cd0b639a777",
-        "source_fact:v1:ab84390064193b98112e654484705f4e70920f8eabe1a8dc1c2909fcf0095234",
-        "source_fact:v1:b6178807f236bd714c2e3814c182beb387691d4cfd86d1ed5ea9b49d21077c1d"
+        "source_fact:v1:1e0241f13e8d223bca6efd5e286e23eff237d6b5f60c1fd354d915f2bccefc8f",
+        "source_fact:v1:216cd2bb8c1afeee6e59c0af23c9b8e6119db846064d5e40e0935993c3e34724",
+        "source_fact:v1:95c76417862cfb71d4bc4423e1bc419225d572c64c0aebc164287e2508e1c9b5",
+        "source_fact:v1:9974e4db8c971515fc4530b18f593176370af281c0903f88a61fedf6a527c521",
+        "source_fact:v1:a73060f91bde450ba30941acb71d3527f8a450e9182fdf639dcbf9a8adae14df",
+        "source_fact:v1:afae431ff933a7ca86fde9e2011a2888b839fe864459fbb468f6f2ed488c1801",
+        "source_fact:v1:b67e59ba5be9dfe3b0b4d13978cb40ef66c520780933e2ebd75428345556d70d",
+        "source_fact:v1:e6f27e25827f12318ef4e21cffc178cce1bddd05bf396d87b99e786578e6196b",
+        "source_fact:v1:eaa009d593adaa93d7c2b001f5f1363c66b3afc7a6ec0333aabd1b83da119509",
+        "source_fact:v1:eb1c359dac4f3cf5802cfb468e849901c7cbd1e6594d08355da16e2fe03cb4df",
+        "source_fact:v1:f6c9bfa4acb04aec349a226a97f5d93e75b8d0e4fdf547beea78b102e4106245",
+        "source_fact:v1:f973417e298ce3c6b3f902c069a872f3e9324d5fdd11770582c4b979cbda0dd8"
       ],
-      "source_published_kst": "2026-10-14T17:35+09:00",
+      "source_published_kst": "2026-10-14T11:56+09:00",
       "source_supply_terms": {},
-      "source_title": "\"후티 반군, 中 부품으로 미사일 개발…사우디·이스라엘 위협\"",
-      "telegram_core_fact": "중국은 후티 반군에 대한 무기 판매를 금지한 유엔 제재를 준수하고 있다고 밝혔다.",
-      "title": "\"후티 반군, 中 부품으로 미사일 개발…사우디·이스라엘 위협\""
+      "source_title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 치솟는 디젤(경유) 가격을 잡기 위해 러시아에 대한 제재를 해제하고 디젤 수입을 추진하고 있지만, 공급 물량이 제한적이어서 가격 안정 효과는 크지 않을 것이라는 전망이 나온다.",
+      "title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'"
     },
     "event:529016cc46695667fd7e3b7b": {
       "first_seen_kst": "2026-10-01T19:41:53+09:00",
@@ -56065,31 +56242,25 @@
     "event:d0f79f7f5bbfd458280cb8e7": {
       "first_seen_kst": "2026-10-14T14:29:29+09:00",
       "lanes": {
-        "live": "2026-10-14T17:21:42+09:00"
+        "live": "2026-10-14T18:12:32+09:00"
       },
-      "last_seen_kst": "2026-10-14T17:21:42+09:00",
-      "link": "https://www.mk.co.kr/news/economy/12175473",
-      "source": "매일경제",
-      "source_body_digest": "56fb10a9aab48ea76a3d883cea835fe1e051fa44cbca7731c5848414a2e419c0",
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825004",
+      "source": "뉴시스",
+      "source_body_digest": "6530b1822be7f2dad96b4282ab330ec670a4dd9c9d36da0ae72d79e5de6137d6",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:388de957d12b0fc5938aaa9a4e6da3a86526bb659f44a17338b6f1ed38026356",
+      "source_fact_identity": "source_facts:v1:864345dbd6ffd4a73fb1efeff89cb6d4525d2d9bbe4f159b9a1cb150085b83fe",
       "source_fact_keys": [
-        "source_fact:v1:0e88a5ea9ff37a1312127209e23267ded886ed0c0514649f6d7fecfddd3e95f6",
-        "source_fact:v1:1b33a26deadab6a40e3dbd5753e4d5ddb3c3bee105f6123c0506e4f11624f610",
-        "source_fact:v1:39ab1702d50b1c7b247c6b0b62acb337611ec7bcdf80aa65540f22edcdf350d7",
-        "source_fact:v1:4b6f79751fe03de70a4a1fd090cfc203a254282fc35dfff5e718442328bb5645",
-        "source_fact:v1:5878ef9fd12199d589a86bb930ab4100c089656b33569fb95ba9e06f24ebf38b",
-        "source_fact:v1:735ac6ee7e26ff9805add94474cc267dd0a16607772c5386f298f22f9842233e",
-        "source_fact:v1:946324ea99023f78469f21778c915bb000ca5d85ce611fa317939dbd7e79d8af",
-        "source_fact:v1:d0920ce8b35741a64dcae895d80075aeec903dc9c0091013a9d0ded86218f323",
-        "source_fact:v1:d5b2befdb3db7482b89b8fc0f83a341efd3ce72f312784c5b5bac268e1760a7a",
-        "source_fact:v1:ff6639d64b18b64e8babd0ca462d84af9a273785725552f70119c629be631542"
+        "source_fact:v1:498c7ba21b95c5136282019de4bbefc0b26945f5b1386a31151a3068f1fa7f06",
+        "source_fact:v1:53f98e459fc2430bea383a3975eb65a9bc2c7d0533e4a9f1b703e3237732b201",
+        "source_fact:v1:e11f002c7d5de9d54fab732fa298dfeea9d741102cb3223ac4184d4fc74aa594",
+        "source_fact:v1:e8c58a5bbd26dc3aee5a970cf567e8db821609b1677e53b088e38b2f2963d65a"
       ],
-      "source_published_kst": "2026-10-14T11:57+09:00",
+      "source_published_kst": "2026-10-14T09:26+09:00",
       "source_supply_terms": {},
-      "source_title": "머스크 “마이크론 빼고 메모리값 터무니없어”…삼전닉스 저격?- 매경ECONOMY",
-      "telegram_core_fact": "HBM 매출 점유율은 SK하이닉스 50%, 마이크론 18%였지만 마이크론은 AI 확산에 따른 메모리 수요 증가에 힘입어 점유율을 확대하는 중이다.",
-      "title": "머스크 “마이크론 빼고 메모리값 터무니없어”…삼전닉스 저격?- 매경ECONOMY"
+      "source_title": "KB證 \"삼성전자·SK하이닉스, 실적이 'W자 반등' 견인 전망\"",
+      "telegram_core_fact": "김 본부장은 \"최근 내년 양사의 합산 영업이익이 1000조원(삼성전자 600조원, SK하이닉스 400조원)을 상회할 가능성이 높아지면서 실적 컨센서스의 상향 조정이 본격화되고 있다\"고 말했다.",
+      "title": "KB證 \"삼성전자·SK하이닉스, 실적이 'W자 반등' 견인 전망\""
     },
     "event:d1383a454361f7ac059c7729": {
       "first_seen_kst": "2026-10-01T20:25:35+09:00",
@@ -57840,6 +58011,32 @@
       "telegram_core_fact": "로이터 통신에 따르면 MS는 내년에 마이아 300을 100만 개 이상 배치할 수 있다고 밝혔다. 마이크로소프트(MS)가 3세대 자체 인공지능(AI) 칩 '마이아 300'을 공개하고 내년부터 대규모로 배치해 엔비디아 의존도를 낮추기로 했다.",
       "title": "MS, 자체 AI칩 '마이아 300' 공개…\"내년 100만개 이상 배치\" | 연합뉴스"
     },
+    "event:f3d963d0aab28df42b0cc14c": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/14/2026101416271656481",
+      "source": "머니투데이",
+      "source_body_digest": "5cff270b249aa3ee108f344351cf6e93ca58ea3514b4f4c52efaaf279ef8ccd5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd1fa5063268996e26812bbd2dd8b2d244931d6c636eb267b465d5956790d01c",
+      "source_fact_keys": [
+        "source_fact:v1:171eda40721aca795776c19224791aec4b93079ce98077a1d97ccbb5c455cd82",
+        "source_fact:v1:52b020f7d3f3a8783ddc06e3c2a0f1d3bc2c48a96b2ae5a1c440ba6c2aa7d960",
+        "source_fact:v1:5bf97160eec4f01772d577aa52c0df255afbad25630f43b46a264c94b35476d1",
+        "source_fact:v1:a1a879f07043a893750622ced8020e6623c4d04c63cc38e999a699a4b550be23",
+        "source_fact:v1:a56c399668979b9b5d2353f236e16c8e0185f68da4c9bca6dc5f55e2300e1520",
+        "source_fact:v1:c65f88adbf1dc0847f7f829fe4118c07d612ff20e6a00cfe122a6461b8101c44",
+        "source_fact:v1:e133d45cb1b8d694f9c3c623ea5b341e8ec168212b4bdba9881aa71211dba802"
+      ],
+      "source_published_kst": "2026-10-14T17:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피, 美 CPI 발표 앞두고 경계심리↑… 물가둔화 확인할까",
+      "telegram_core_fact": "14일 상승 출발하며 2% 이상 뛰었으나 미국 9월 소비자물가지수(CPI) 발표를 앞두고 관망세가 짙어지며 장중 6000선을 밑돌기도 했다.",
+      "title": "코스피, 美 CPI 발표 앞두고 경계심리↑… 물가둔화 확인할까"
+    },
     "event:f3deef153cd0644c9be96040": {
       "first_seen_kst": "2026-10-01T16:19:49+09:00",
       "lanes": {
@@ -59418,6 +59615,32 @@
       ],
       "source_published_kst": "2026-10-06T19:18+09:00",
       "title": "“발전공기업 최초”…남부발전, 한국형 녹색분류체계 기반 녹색여신 약정 체결"
+    },
+    "fact:03b47998011afb2715071868": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/14/2026101416271656481",
+      "source": "머니투데이",
+      "source_body_digest": "5cff270b249aa3ee108f344351cf6e93ca58ea3514b4f4c52efaaf279ef8ccd5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd1fa5063268996e26812bbd2dd8b2d244931d6c636eb267b465d5956790d01c",
+      "source_fact_keys": [
+        "source_fact:v1:171eda40721aca795776c19224791aec4b93079ce98077a1d97ccbb5c455cd82",
+        "source_fact:v1:52b020f7d3f3a8783ddc06e3c2a0f1d3bc2c48a96b2ae5a1c440ba6c2aa7d960",
+        "source_fact:v1:5bf97160eec4f01772d577aa52c0df255afbad25630f43b46a264c94b35476d1",
+        "source_fact:v1:a1a879f07043a893750622ced8020e6623c4d04c63cc38e999a699a4b550be23",
+        "source_fact:v1:a56c399668979b9b5d2353f236e16c8e0185f68da4c9bca6dc5f55e2300e1520",
+        "source_fact:v1:c65f88adbf1dc0847f7f829fe4118c07d612ff20e6a00cfe122a6461b8101c44",
+        "source_fact:v1:e133d45cb1b8d694f9c3c623ea5b341e8ec168212b4bdba9881aa71211dba802"
+      ],
+      "source_published_kst": "2026-10-14T17:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피, 美 CPI 발표 앞두고 경계심리↑… 물가둔화 확인할까",
+      "telegram_core_fact": "14일 상승 출발하며 2% 이상 뛰었으나 미국 9월 소비자물가지수(CPI) 발표를 앞두고 관망세가 짙어지며 장중 6000선을 밑돌기도 했다.",
+      "title": "코스피, 美 CPI 발표 앞두고 경계심리↑… 물가둔화 확인할까"
     },
     "fact:03bf881ac8fd12d58c300423": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
@@ -62319,6 +62542,32 @@
       "source_title": "'미군 총살형 생중계' 방침에 논란 증폭…교황 \"용납 못 해\"",
       "telegram_core_fact": "총살형 생중계 헤그세스 국방장관은 지난 7일 이란 전쟁에 참전하고 복귀한 항공모함 에이브러햄 링컨함에 올라 장병들을 환영하는 자리에서 극우 팟캐스터 잭 포소비크와 인터뷰를 통해 처형 생중계 방침을 돌발적으로 발표했다.",
       "title": "'미군 총살형 생중계' 방침에 논란 증폭…교황 \"용납 못 해\""
+    },
+    "fact:105a0cf795d1e3a73e3c6be4": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/14/2026101413299653584",
+      "source": "머니투데이",
+      "source_body_digest": "28127ecec6c97f001a8496cf20a9782f910fd3d9ae0c39621fffe622bcae616b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:057b9d20fa27c9eb40e004311c027709b3b0a74ac12f173d72ac4fc8b2130274",
+      "source_fact_keys": [
+        "source_fact:v1:2e06febd15eaca153802991a02bffd332f82936ed3776034088de82f0cccf87d",
+        "source_fact:v1:395f492033ea86bd500f4293011763466982552fd715881432c14e3db26b3269",
+        "source_fact:v1:66ff3f0a6b7640d82a520b513ccc02f0dd8159beeda95aa6f6ee2309f6c88c2a",
+        "source_fact:v1:b131efbc947ce56c69804aec240dd80218fe3d7b3058796e76c50c44bbfe90f4",
+        "source_fact:v1:bd70a3e414777469233b770319b05d189430da27528d0cd65a65e66b918b6cf9",
+        "source_fact:v1:f6c01a94b40728db0f34e775dcaa7ae596a8c6663339234002ef82e8dde3998a",
+        "source_fact:v1:faa3a3acfcd81552183833c37560035c08adf9752aee4108b59b0ea05d4606c1"
+      ],
+      "source_published_kst": "2026-10-14T13:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "[더벨]마음AI, '4족보행 순찰로봇' 규제특례 추진",
+      "telegram_core_fact": "피지컬 AI 전문기업 마음AI가 4족보행 로봇의 보행자 도로 순찰을 위한 규제특례를 추진하며 공공안전 분야에서 피지컬 AI 기술의 실증 기반 마련에 나섰다.",
+      "title": "[더벨]마음AI, '4족보행 순찰로봇' 규제특례 추진"
     },
     "fact:106b53819931e1ab57a5caae": {
       "first_seen_kst": "2026-10-11T16:16:50+09:00",
@@ -86885,6 +87134,26 @@
       "telegram_core_fact": "12일 관세청이 발표한 '2026년 10월 1일~10일 수출입 현황(잠정치)'에 따르면 이 기간 수출액은 261억400만달러로 전년비 102.0% 증가했다.",
       "title": "10월 초순 수출 102%↑⋯누적 8400억불 돌파에 '연 1조불 가시권'[종합]"
     },
+    "fact:80441ad05c8339edbe9a08ee": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.news1.kr/economy/trend/6319660",
+      "source": "뉴스1",
+      "source_body_digest": "9d44ef3d3142aeeea1c45b141726cd71d89117752cfd612e785f432c6a0981d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7438b1313eac7e8a39238a467649635ad05f913577fa853b8a1b2f4598194dd",
+      "source_fact_keys": [
+        "source_fact:v1:d29832444ff910d936fc229d0a9704002f8409d75e3d8742c5bc501d07d9ddc3"
+      ],
+      "source_published_kst": "2026-10-14T13:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "부활한 '공정위 저승사자'…첫 타깃은 '먹거리' 대상·오뚜기·CJ",
+      "telegram_core_fact": "공정위는 올해 들어 밀가루, 전분당, 설탕 등 먹거리 분야 담합에 대한 제재 수위를 강화해 왔다.",
+      "title": "부활한 '공정위 저승사자'…첫 타깃은 '먹거리' 대상·오뚜기·CJ"
+    },
     "fact:8055d02b6fad7ed4795d236e": {
       "first_seen_kst": "2026-10-13T21:12:07+09:00",
       "lanes": {
@@ -94710,6 +94979,29 @@
       "source_published_kst": "2026-10-05T16:40+09:00",
       "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
     },
+    "fact:9f2ca5371d675f4c97d9fa1c": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825004",
+      "source": "뉴시스",
+      "source_body_digest": "6530b1822be7f2dad96b4282ab330ec670a4dd9c9d36da0ae72d79e5de6137d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:864345dbd6ffd4a73fb1efeff89cb6d4525d2d9bbe4f159b9a1cb150085b83fe",
+      "source_fact_keys": [
+        "source_fact:v1:498c7ba21b95c5136282019de4bbefc0b26945f5b1386a31151a3068f1fa7f06",
+        "source_fact:v1:53f98e459fc2430bea383a3975eb65a9bc2c7d0533e4a9f1b703e3237732b201",
+        "source_fact:v1:e11f002c7d5de9d54fab732fa298dfeea9d741102cb3223ac4184d4fc74aa594",
+        "source_fact:v1:e8c58a5bbd26dc3aee5a970cf567e8db821609b1677e53b088e38b2f2963d65a"
+      ],
+      "source_published_kst": "2026-10-14T09:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB證 \"삼성전자·SK하이닉스, 실적이 'W자 반등' 견인 전망\"",
+      "telegram_core_fact": "김 본부장은 \"최근 내년 양사의 합산 영업이익이 1000조원(삼성전자 600조원, SK하이닉스 400조원)을 상회할 가능성이 높아지면서 실적 컨센서스의 상향 조정이 본격화되고 있다\"고 말했다.",
+      "title": "KB證 \"삼성전자·SK하이닉스, 실적이 'W자 반등' 견인 전망\""
+    },
     "fact:9f3bee8582e0826d6f04deb5": {
       "first_seen_kst": "2026-10-13T05:50:59+09:00",
       "lanes": {
@@ -95709,6 +96001,37 @@
       ],
       "source_published_kst": "2026-10-06T10:25+09:00",
       "title": "JW중외제약 “당뇨병 신약 ‘엠파가드’, 임상 3상서 우수한 혈당 조절 효과 확인”"
+    },
+    "fact:a3aa391e8e40ef88eb34a462": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825083",
+      "source": "뉴시스",
+      "source_body_digest": "48b6ccaf5c4b5d6cec9a2b11847fc5a9f39fefa512d9044e8bf6cd774b251034",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e18257988ea5a337d03806f9d305402f69fe0a27e4020cbfd333d820c570854d",
+      "source_fact_keys": [
+        "source_fact:v1:1e0241f13e8d223bca6efd5e286e23eff237d6b5f60c1fd354d915f2bccefc8f",
+        "source_fact:v1:216cd2bb8c1afeee6e59c0af23c9b8e6119db846064d5e40e0935993c3e34724",
+        "source_fact:v1:95c76417862cfb71d4bc4423e1bc419225d572c64c0aebc164287e2508e1c9b5",
+        "source_fact:v1:9974e4db8c971515fc4530b18f593176370af281c0903f88a61fedf6a527c521",
+        "source_fact:v1:a73060f91bde450ba30941acb71d3527f8a450e9182fdf639dcbf9a8adae14df",
+        "source_fact:v1:afae431ff933a7ca86fde9e2011a2888b839fe864459fbb468f6f2ed488c1801",
+        "source_fact:v1:b67e59ba5be9dfe3b0b4d13978cb40ef66c520780933e2ebd75428345556d70d",
+        "source_fact:v1:e6f27e25827f12318ef4e21cffc178cce1bddd05bf396d87b99e786578e6196b",
+        "source_fact:v1:eaa009d593adaa93d7c2b001f5f1363c66b3afc7a6ec0333aabd1b83da119509",
+        "source_fact:v1:eb1c359dac4f3cf5802cfb468e849901c7cbd1e6594d08355da16e2fe03cb4df",
+        "source_fact:v1:f6c9bfa4acb04aec349a226a97f5d93e75b8d0e4fdf547beea78b102e4106245",
+        "source_fact:v1:f973417e298ce3c6b3f902c069a872f3e9324d5fdd11770582c4b979cbda0dd8"
+      ],
+      "source_published_kst": "2026-10-14T11:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 치솟는 디젤(경유) 가격을 잡기 위해 러시아에 대한 제재를 해제하고 디젤 수입을 추진하고 있지만, 공급 물량이 제한적이어서 가격 안정 효과는 크지 않을 것이라는 전망이 나온다.",
+      "title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'"
     },
     "fact:a3d16b2c74e483bd3c047960": {
       "first_seen_kst": "2026-10-12T20:14:14+09:00",
@@ -102449,6 +102772,29 @@
       ],
       "source_published_kst": "2026-10-07T08:06+09:00",
       "title": "\"호르무즈 건너면 월 2억원\"…유조선 선장 '목숨값' 폭등"
+    },
+    "fact:bf6d85643339931de0162553": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.fnnews.com/news/202610141029323408",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "6bedb89224c94e504d33b36b835069f7b2d1410a9778d3ad904ad3694e8dc0eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cb7fc64f636a2dcc25a2b321368243972bab9d89ab52da4220bff7a8a0beb972",
+      "source_fact_keys": [
+        "source_fact:v1:335cff4a94b70eec27e6c1e3276df22e2488a051847c7d8e34696b649424798d",
+        "source_fact:v1:82932ab75fe461ce373589facbcc6dde539392947ff46963e0964664c45d1d63",
+        "source_fact:v1:cd12939967ae37be8caf5d01a4da731f3b486060003f27f28589868de38c3bcc",
+        "source_fact:v1:e29cd06ea2f5209cf539c1757d6da700c7200b2be511fac7048f34a374a11cee"
+      ],
+      "source_published_kst": "2026-10-14T13:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "엑시나, 글로벌 빅테크 출신 CBO 영입… CXL 연산 메모리 ‘MX1’ 상용화 박차",
+      "telegram_core_fact": "[파이낸셜뉴스] AI 인프라의 핵심 화두로 떠오른 데이터 이동 병목과 메모리 용량 한계를 극복하기 위해, 국내 팹리스 엑시나(XCENA)가 CXL 기반 차세대 연산 메모리 솔루션 ‘MX1’의 글로벌 상용화에 속도를 낸다.",
+      "title": "엑시나, 글로벌 빅테크 출신 CBO 영입… CXL 연산 메모리 ‘MX1’ 상용화 박차"
     },
     "fact:bf6f45a93d99bd9197e27d6e": {
       "first_seen_kst": "2026-10-05T23:37:00+09:00",
@@ -114668,6 +115014,29 @@
       "source_published_kst": "2026-10-06T14:13+09:00",
       "title": "中 장악 태양광 시장에 美 '탠덤 패널' 승부수 | 연합뉴스"
     },
+    "fact:f2dd41b6a923be2f39cf3eac": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.etnews.com/20261014000248",
+      "source": "전자신문",
+      "source_body_digest": "44a54c90ae0b80beeedd3f25de7f1bdb26a9fe40679e84f0e0d8d67dc5de5e47",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:50f30ec0cf9fca19cb637165bc06564eacf6b4ea5020af91c253f8da74bfc48d",
+      "source_fact_keys": [
+        "source_fact:v1:5e2332f378c8c4d6b482d938b5cb8151c29bdce5c4493dc3c0b3ea6120597c44",
+        "source_fact:v1:8b4c6865a9fe86ef861c8e9ebff6a9d78500f140931caec531ca829e81581745",
+        "source_fact:v1:9d5ab9b0c6fb6f263618a25c59ac397b91ee62900188bca97bec1bf827ff308b",
+        "source_fact:v1:d38dbd05ae3c31f9376c823d479ac78acc3280d6faf8a7a0d371219c7f67f69c"
+      ],
+      "source_published_kst": "2026-10-14T13:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "엘앤에프 JHC, 폐배터리 전처리 연 1.5만톤…리튬 95% 회수",
+      "telegram_core_fact": "엘앤에프는 JHC가 생산한 블랙매스를 후처리 전문기업과 연계해 핵심광물을 회수하고 이를 다시 양극재 원료로 활용하는 순환형 밸류체인을 구축하고 있다.",
+      "title": "엘앤에프 JHC, 폐배터리 전처리 연 1.5만톤…리튬 95% 회수"
+    },
     "fact:f2f5992a2871bc29c1f71bb8": {
       "first_seen_kst": "2026-10-13T19:34:14+09:00",
       "lanes": {
@@ -121425,6 +121794,26 @@
       "source": "연합뉴스",
       "title": "한전·SK하이닉스, 반도체 산단 안정적 전력공급 위해 맞손 | 연합뉴스"
     },
+    "link:0bf14bed396d29ef604180f7": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.news1.kr/economy/trend/6319660",
+      "source": "뉴스1",
+      "source_body_digest": "9d44ef3d3142aeeea1c45b141726cd71d89117752cfd612e785f432c6a0981d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7438b1313eac7e8a39238a467649635ad05f913577fa853b8a1b2f4598194dd",
+      "source_fact_keys": [
+        "source_fact:v1:d29832444ff910d936fc229d0a9704002f8409d75e3d8742c5bc501d07d9ddc3"
+      ],
+      "source_published_kst": "2026-10-14T13:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "부활한 '공정위 저승사자'…첫 타깃은 '먹거리' 대상·오뚜기·CJ",
+      "telegram_core_fact": "공정위는 올해 들어 밀가루, 전분당, 설탕 등 먹거리 분야 담합에 대한 제재 수위를 강화해 왔다.",
+      "title": "부활한 '공정위 저승사자'…첫 타깃은 '먹거리' 대상·오뚜기·CJ"
+    },
     "link:0c2e61cb6a24fbb2801cb72f": {
       "first_seen_kst": "2026-10-08T08:12:34+09:00",
       "lanes": {
@@ -123624,6 +124013,29 @@
       "source_title": "사우디·후티 '전면전' 되돌림 양상…리야드 공항 등 3명 사망",
       "telegram_core_fact": "이번 공격은 사우디가 지원하는 예멘 정부군이 후티가 장악한 홍해 연안의 전략 요충지를 탈환하기 위한 군사작전에 나선 가운데 발생했다.",
       "title": "사우디·후티 '전면전' 되돌림 양상…리야드 공항 등 3명 사망"
+    },
+    "link:13204545960bfdb3df02b54d": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825004",
+      "source": "뉴시스",
+      "source_body_digest": "6530b1822be7f2dad96b4282ab330ec670a4dd9c9d36da0ae72d79e5de6137d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:864345dbd6ffd4a73fb1efeff89cb6d4525d2d9bbe4f159b9a1cb150085b83fe",
+      "source_fact_keys": [
+        "source_fact:v1:498c7ba21b95c5136282019de4bbefc0b26945f5b1386a31151a3068f1fa7f06",
+        "source_fact:v1:53f98e459fc2430bea383a3975eb65a9bc2c7d0533e4a9f1b703e3237732b201",
+        "source_fact:v1:e11f002c7d5de9d54fab732fa298dfeea9d741102cb3223ac4184d4fc74aa594",
+        "source_fact:v1:e8c58a5bbd26dc3aee5a970cf567e8db821609b1677e53b088e38b2f2963d65a"
+      ],
+      "source_published_kst": "2026-10-14T09:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB證 \"삼성전자·SK하이닉스, 실적이 'W자 반등' 견인 전망\"",
+      "telegram_core_fact": "김 본부장은 \"최근 내년 양사의 합산 영업이익이 1000조원(삼성전자 600조원, SK하이닉스 400조원)을 상회할 가능성이 높아지면서 실적 컨센서스의 상향 조정이 본격화되고 있다\"고 말했다.",
+      "title": "KB證 \"삼성전자·SK하이닉스, 실적이 'W자 반등' 견인 전망\""
     },
     "link:1323fe954f2feca5490e15bf": {
       "first_seen_kst": "2026-10-10T07:01:20+09:00",
@@ -168814,6 +169226,29 @@
       "telegram_core_fact": "시교육청은 ▲ 협약형 특성화고 지원 ▲ 학교급식비 인상과 협약 체계 개선 ▲ 교복 구입비 지원금 인상분 분담 ▲ 학교시설 개방 활성화 지원 등을 제시했다.",
       "title": "울산시·시교육청, 교육투자 확대…협약형 특성화고 운영 협력 | 연합뉴스"
     },
+    "link:9f4ea8958493a1a466781f23": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.fnnews.com/news/202610141029323408",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "6bedb89224c94e504d33b36b835069f7b2d1410a9778d3ad904ad3694e8dc0eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cb7fc64f636a2dcc25a2b321368243972bab9d89ab52da4220bff7a8a0beb972",
+      "source_fact_keys": [
+        "source_fact:v1:335cff4a94b70eec27e6c1e3276df22e2488a051847c7d8e34696b649424798d",
+        "source_fact:v1:82932ab75fe461ce373589facbcc6dde539392947ff46963e0964664c45d1d63",
+        "source_fact:v1:cd12939967ae37be8caf5d01a4da731f3b486060003f27f28589868de38c3bcc",
+        "source_fact:v1:e29cd06ea2f5209cf539c1757d6da700c7200b2be511fac7048f34a374a11cee"
+      ],
+      "source_published_kst": "2026-10-14T13:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "엑시나, 글로벌 빅테크 출신 CBO 영입… CXL 연산 메모리 ‘MX1’ 상용화 박차",
+      "telegram_core_fact": "[파이낸셜뉴스] AI 인프라의 핵심 화두로 떠오른 데이터 이동 병목과 메모리 용량 한계를 극복하기 위해, 국내 팹리스 엑시나(XCENA)가 CXL 기반 차세대 연산 메모리 솔루션 ‘MX1’의 글로벌 상용화에 속도를 낸다.",
+      "title": "엑시나, 글로벌 빅테크 출신 CBO 영입… CXL 연산 메모리 ‘MX1’ 상용화 박차"
+    },
     "link:9f5d3b79c9df73c166a937da": {
       "first_seen_kst": "2026-10-13T14:32:55+09:00",
       "lanes": {
@@ -171364,6 +171799,32 @@
       "source": "뉴시스",
       "title": "원·달러 환율 1350원대"
     },
+    "link:a701f3c97ad349a05d1a0a17": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/14/2026101416271656481",
+      "source": "머니투데이",
+      "source_body_digest": "5cff270b249aa3ee108f344351cf6e93ca58ea3514b4f4c52efaaf279ef8ccd5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd1fa5063268996e26812bbd2dd8b2d244931d6c636eb267b465d5956790d01c",
+      "source_fact_keys": [
+        "source_fact:v1:171eda40721aca795776c19224791aec4b93079ce98077a1d97ccbb5c455cd82",
+        "source_fact:v1:52b020f7d3f3a8783ddc06e3c2a0f1d3bc2c48a96b2ae5a1c440ba6c2aa7d960",
+        "source_fact:v1:5bf97160eec4f01772d577aa52c0df255afbad25630f43b46a264c94b35476d1",
+        "source_fact:v1:a1a879f07043a893750622ced8020e6623c4d04c63cc38e999a699a4b550be23",
+        "source_fact:v1:a56c399668979b9b5d2353f236e16c8e0185f68da4c9bca6dc5f55e2300e1520",
+        "source_fact:v1:c65f88adbf1dc0847f7f829fe4118c07d612ff20e6a00cfe122a6461b8101c44",
+        "source_fact:v1:e133d45cb1b8d694f9c3c623ea5b341e8ec168212b4bdba9881aa71211dba802"
+      ],
+      "source_published_kst": "2026-10-14T17:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피, 美 CPI 발표 앞두고 경계심리↑… 물가둔화 확인할까",
+      "telegram_core_fact": "14일 상승 출발하며 2% 이상 뛰었으나 미국 9월 소비자물가지수(CPI) 발표를 앞두고 관망세가 짙어지며 장중 6000선을 밑돌기도 했다.",
+      "title": "코스피, 美 CPI 발표 앞두고 경계심리↑… 물가둔화 확인할까"
+    },
     "link:a715c71928c723d4600f0873": {
       "first_seen_kst": "2026-10-13T09:21:17+09:00",
       "lanes": {
@@ -171463,6 +171924,32 @@
       "source_title": "알보테크, 롯데바이오로직스와 뉴욕 위탁생산 계약..10년 수요 대응",
       "telegram_core_fact": "리사 그레이버 알보테크 대표는 \"글로벌 제조 네트워크를 확장하면 향후 10년간 파이프라인 수요를 충족할 충분한 생산능력을 확보하게 된다\"며 \"롯데바이오로직스와의 협력은 뉴욕에 추가 생산능력을 제공해 포트폴리오 확대와 향후 제품 출시를 준비하는 데 도움이 될 것\"이라고 밝혔다.",
       "title": "알보테크, 롯데바이오로직스와 뉴욕 위탁생산 계약..10년 수요 대응"
+    },
+    "link:a76b05a5657626db8fd52f57": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/14/2026101413299653584",
+      "source": "머니투데이",
+      "source_body_digest": "28127ecec6c97f001a8496cf20a9782f910fd3d9ae0c39621fffe622bcae616b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:057b9d20fa27c9eb40e004311c027709b3b0a74ac12f173d72ac4fc8b2130274",
+      "source_fact_keys": [
+        "source_fact:v1:2e06febd15eaca153802991a02bffd332f82936ed3776034088de82f0cccf87d",
+        "source_fact:v1:395f492033ea86bd500f4293011763466982552fd715881432c14e3db26b3269",
+        "source_fact:v1:66ff3f0a6b7640d82a520b513ccc02f0dd8159beeda95aa6f6ee2309f6c88c2a",
+        "source_fact:v1:b131efbc947ce56c69804aec240dd80218fe3d7b3058796e76c50c44bbfe90f4",
+        "source_fact:v1:bd70a3e414777469233b770319b05d189430da27528d0cd65a65e66b918b6cf9",
+        "source_fact:v1:f6c01a94b40728db0f34e775dcaa7ae596a8c6663339234002ef82e8dde3998a",
+        "source_fact:v1:faa3a3acfcd81552183833c37560035c08adf9752aee4108b59b0ea05d4606c1"
+      ],
+      "source_published_kst": "2026-10-14T13:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "[더벨]마음AI, '4족보행 순찰로봇' 규제특례 추진",
+      "telegram_core_fact": "피지컬 AI 전문기업 마음AI가 4족보행 로봇의 보행자 도로 순찰을 위한 규제특례를 추진하며 공공안전 분야에서 피지컬 AI 기술의 실증 기반 마련에 나섰다.",
+      "title": "[더벨]마음AI, '4족보행 순찰로봇' 규제특례 추진"
     },
     "link:a77153793fb37b08234b9a4f": {
       "first_seen_kst": "2026-10-08T06:57:59+09:00",
@@ -189828,6 +190315,37 @@
       "source_published_kst": "2026-10-06T16:45+09:00",
       "title": "알테오젠, 2000억 투자 유치…연구부터 판매까지 한 회사로"
     },
+    "link:e2549efa87650f39fe2da4a6": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825083",
+      "source": "뉴시스",
+      "source_body_digest": "48b6ccaf5c4b5d6cec9a2b11847fc5a9f39fefa512d9044e8bf6cd774b251034",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e18257988ea5a337d03806f9d305402f69fe0a27e4020cbfd333d820c570854d",
+      "source_fact_keys": [
+        "source_fact:v1:1e0241f13e8d223bca6efd5e286e23eff237d6b5f60c1fd354d915f2bccefc8f",
+        "source_fact:v1:216cd2bb8c1afeee6e59c0af23c9b8e6119db846064d5e40e0935993c3e34724",
+        "source_fact:v1:95c76417862cfb71d4bc4423e1bc419225d572c64c0aebc164287e2508e1c9b5",
+        "source_fact:v1:9974e4db8c971515fc4530b18f593176370af281c0903f88a61fedf6a527c521",
+        "source_fact:v1:a73060f91bde450ba30941acb71d3527f8a450e9182fdf639dcbf9a8adae14df",
+        "source_fact:v1:afae431ff933a7ca86fde9e2011a2888b839fe864459fbb468f6f2ed488c1801",
+        "source_fact:v1:b67e59ba5be9dfe3b0b4d13978cb40ef66c520780933e2ebd75428345556d70d",
+        "source_fact:v1:e6f27e25827f12318ef4e21cffc178cce1bddd05bf396d87b99e786578e6196b",
+        "source_fact:v1:eaa009d593adaa93d7c2b001f5f1363c66b3afc7a6ec0333aabd1b83da119509",
+        "source_fact:v1:eb1c359dac4f3cf5802cfb468e849901c7cbd1e6594d08355da16e2fe03cb4df",
+        "source_fact:v1:f6c9bfa4acb04aec349a226a97f5d93e75b8d0e4fdf547beea78b102e4106245",
+        "source_fact:v1:f973417e298ce3c6b3f902c069a872f3e9324d5fdd11770582c4b979cbda0dd8"
+      ],
+      "source_published_kst": "2026-10-14T11:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 치솟는 디젤(경유) 가격을 잡기 위해 러시아에 대한 제재를 해제하고 디젤 수입을 추진하고 있지만, 공급 물량이 제한적이어서 가격 안정 효과는 크지 않을 것이라는 전망이 나온다.",
+      "title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'"
+    },
     "link:e2554001591da4aa17a25008": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
       "lanes": {
@@ -194606,6 +195124,29 @@
       "source_title": "3분기 주식결제대금 12% 뚝 ETF 순자산도 54조원 빠져",
       "telegram_core_fact": "이날 금융투자협회와 한국거래소 통계에 따르면 3분기 ETF 순유입액은 28조8305억원으로 7월 20조3910억원, 8월 4조4984억원, 9월 3조9411억원 등 석 달 연속으로 순유입이 유지됐다.",
       "title": "3분기 주식결제대금 12% 뚝 ETF 순자산도 54조원 빠져"
+    },
+    "link:f1ce7214ce2f5323f9f102d6": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.etnews.com/20261014000248",
+      "source": "전자신문",
+      "source_body_digest": "44a54c90ae0b80beeedd3f25de7f1bdb26a9fe40679e84f0e0d8d67dc5de5e47",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:50f30ec0cf9fca19cb637165bc06564eacf6b4ea5020af91c253f8da74bfc48d",
+      "source_fact_keys": [
+        "source_fact:v1:5e2332f378c8c4d6b482d938b5cb8151c29bdce5c4493dc3c0b3ea6120597c44",
+        "source_fact:v1:8b4c6865a9fe86ef861c8e9ebff6a9d78500f140931caec531ca829e81581745",
+        "source_fact:v1:9d5ab9b0c6fb6f263618a25c59ac397b91ee62900188bca97bec1bf827ff308b",
+        "source_fact:v1:d38dbd05ae3c31f9376c823d479ac78acc3280d6faf8a7a0d371219c7f67f69c"
+      ],
+      "source_published_kst": "2026-10-14T13:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "엘앤에프 JHC, 폐배터리 전처리 연 1.5만톤…리튬 95% 회수",
+      "telegram_core_fact": "엘앤에프는 JHC가 생산한 블랙매스를 후처리 전문기업과 연계해 핵심광물을 회수하고 이를 다시 양극재 원료로 활용하는 순환형 밸류체인을 구축하고 있다.",
+      "title": "엘앤에프 JHC, 폐배터리 전처리 연 1.5만톤…리튬 95% 회수"
     },
     "link:f1d940123dd757b76c6c7057": {
       "first_seen_kst": "2026-10-09T16:29:31+09:00",
@@ -202269,6 +202810,37 @@
       "source": "뉴시스",
       "title": "우크라, 자체 개발 탄도미사일 첫 실전 투입…러시아 목표물 타격"
     },
+    "original:098185a4d24df756e6b1725f": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825083",
+      "source": "뉴시스",
+      "source_body_digest": "48b6ccaf5c4b5d6cec9a2b11847fc5a9f39fefa512d9044e8bf6cd774b251034",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e18257988ea5a337d03806f9d305402f69fe0a27e4020cbfd333d820c570854d",
+      "source_fact_keys": [
+        "source_fact:v1:1e0241f13e8d223bca6efd5e286e23eff237d6b5f60c1fd354d915f2bccefc8f",
+        "source_fact:v1:216cd2bb8c1afeee6e59c0af23c9b8e6119db846064d5e40e0935993c3e34724",
+        "source_fact:v1:95c76417862cfb71d4bc4423e1bc419225d572c64c0aebc164287e2508e1c9b5",
+        "source_fact:v1:9974e4db8c971515fc4530b18f593176370af281c0903f88a61fedf6a527c521",
+        "source_fact:v1:a73060f91bde450ba30941acb71d3527f8a450e9182fdf639dcbf9a8adae14df",
+        "source_fact:v1:afae431ff933a7ca86fde9e2011a2888b839fe864459fbb468f6f2ed488c1801",
+        "source_fact:v1:b67e59ba5be9dfe3b0b4d13978cb40ef66c520780933e2ebd75428345556d70d",
+        "source_fact:v1:e6f27e25827f12318ef4e21cffc178cce1bddd05bf396d87b99e786578e6196b",
+        "source_fact:v1:eaa009d593adaa93d7c2b001f5f1363c66b3afc7a6ec0333aabd1b83da119509",
+        "source_fact:v1:eb1c359dac4f3cf5802cfb468e849901c7cbd1e6594d08355da16e2fe03cb4df",
+        "source_fact:v1:f6c9bfa4acb04aec349a226a97f5d93e75b8d0e4fdf547beea78b102e4106245",
+        "source_fact:v1:f973417e298ce3c6b3f902c069a872f3e9324d5fdd11770582c4b979cbda0dd8"
+      ],
+      "source_published_kst": "2026-10-14T11:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 치솟는 디젤(경유) 가격을 잡기 위해 러시아에 대한 제재를 해제하고 디젤 수입을 추진하고 있지만, 공급 물량이 제한적이어서 가격 안정 효과는 크지 않을 것이라는 전망이 나온다.",
+      "title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'"
+    },
     "original:09863ac84fdd806bf7492611": {
       "first_seen_kst": "2026-10-14T16:26:08+09:00",
       "lanes": {
@@ -207445,6 +208017,26 @@
       "source_title": "시선AI 子, 성주월항농협APC와 로봇 시스템 상용 공급계약",
       "telegram_core_fact": "시선AI 자회사 유온로보틱스는 경북 성주월항농협 산지유통센터(APC)와 인공지능(AI) 기반 물류 자동화 로봇 시스템 상용 공급계약을 체결했다고 8일 밝혔다.",
       "title": "시선AI 子, 성주월항농협APC와 로봇 시스템 상용 공급계약"
+    },
+    "original:19a74fd10024ff6f62cacffd": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.news1.kr/economy/trend/6319660",
+      "source": "뉴스1",
+      "source_body_digest": "9d44ef3d3142aeeea1c45b141726cd71d89117752cfd612e785f432c6a0981d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7438b1313eac7e8a39238a467649635ad05f913577fa853b8a1b2f4598194dd",
+      "source_fact_keys": [
+        "source_fact:v1:d29832444ff910d936fc229d0a9704002f8409d75e3d8742c5bc501d07d9ddc3"
+      ],
+      "source_published_kst": "2026-10-14T13:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "부활한 '공정위 저승사자'…첫 타깃은 '먹거리' 대상·오뚜기·CJ",
+      "telegram_core_fact": "공정위는 올해 들어 밀가루, 전분당, 설탕 등 먹거리 분야 담합에 대한 제재 수위를 강화해 왔다.",
+      "title": "부활한 '공정위 저승사자'…첫 타깃은 '먹거리' 대상·오뚜기·CJ"
     },
     "original:19ae6e191865e7ce220b1158": {
       "first_seen_kst": "2026-10-06T01:26:06+09:00",
@@ -214302,6 +214894,32 @@
       "source_published_kst": "2026-10-06T09:26+09:00",
       "title": "한투운용, 미국 대표지수 ETF 4종 이벤트⋯대한항공 기프트카드 제공"
     },
+    "original:2eef20b58d2a00f9ed91bcc5": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/14/2026101413299653584",
+      "source": "머니투데이",
+      "source_body_digest": "28127ecec6c97f001a8496cf20a9782f910fd3d9ae0c39621fffe622bcae616b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:057b9d20fa27c9eb40e004311c027709b3b0a74ac12f173d72ac4fc8b2130274",
+      "source_fact_keys": [
+        "source_fact:v1:2e06febd15eaca153802991a02bffd332f82936ed3776034088de82f0cccf87d",
+        "source_fact:v1:395f492033ea86bd500f4293011763466982552fd715881432c14e3db26b3269",
+        "source_fact:v1:66ff3f0a6b7640d82a520b513ccc02f0dd8159beeda95aa6f6ee2309f6c88c2a",
+        "source_fact:v1:b131efbc947ce56c69804aec240dd80218fe3d7b3058796e76c50c44bbfe90f4",
+        "source_fact:v1:bd70a3e414777469233b770319b05d189430da27528d0cd65a65e66b918b6cf9",
+        "source_fact:v1:f6c01a94b40728db0f34e775dcaa7ae596a8c6663339234002ef82e8dde3998a",
+        "source_fact:v1:faa3a3acfcd81552183833c37560035c08adf9752aee4108b59b0ea05d4606c1"
+      ],
+      "source_published_kst": "2026-10-14T13:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "[더벨]마음AI, '4족보행 순찰로봇' 규제특례 추진",
+      "telegram_core_fact": "피지컬 AI 전문기업 마음AI가 4족보행 로봇의 보행자 도로 순찰을 위한 규제특례를 추진하며 공공안전 분야에서 피지컬 AI 기술의 실증 기반 마련에 나섰다.",
+      "title": "[더벨]마음AI, '4족보행 순찰로봇' 규제특례 추진"
+    },
     "original:2f0fc45ccad272d8511c562a": {
       "first_seen_kst": "2026-10-07T16:57:09+09:00",
       "lanes": {
@@ -220207,6 +220825,29 @@
       "link": "https://magazine.hankyung.com/business/article/202610018700b",
       "source": "한국경제",
       "title": "정재준 회장 “치매 전 주기 책임”…아리바이오, 합병 대신 3사 시너지"
+    },
+    "original:4195004c1fd173aa85096717": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.etnews.com/20261014000248",
+      "source": "전자신문",
+      "source_body_digest": "44a54c90ae0b80beeedd3f25de7f1bdb26a9fe40679e84f0e0d8d67dc5de5e47",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:50f30ec0cf9fca19cb637165bc06564eacf6b4ea5020af91c253f8da74bfc48d",
+      "source_fact_keys": [
+        "source_fact:v1:5e2332f378c8c4d6b482d938b5cb8151c29bdce5c4493dc3c0b3ea6120597c44",
+        "source_fact:v1:8b4c6865a9fe86ef861c8e9ebff6a9d78500f140931caec531ca829e81581745",
+        "source_fact:v1:9d5ab9b0c6fb6f263618a25c59ac397b91ee62900188bca97bec1bf827ff308b",
+        "source_fact:v1:d38dbd05ae3c31f9376c823d479ac78acc3280d6faf8a7a0d371219c7f67f69c"
+      ],
+      "source_published_kst": "2026-10-14T13:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "엘앤에프 JHC, 폐배터리 전처리 연 1.5만톤…리튬 95% 회수",
+      "telegram_core_fact": "엘앤에프는 JHC가 생산한 블랙매스를 후처리 전문기업과 연계해 핵심광물을 회수하고 이를 다시 양극재 원료로 활용하는 순환형 밸류체인을 구축하고 있다.",
+      "title": "엘앤에프 JHC, 폐배터리 전처리 연 1.5만톤…리튬 95% 회수"
     },
     "original:419f8756e1158647330f694f": {
       "first_seen_kst": "2026-10-08T06:10:43+09:00",
@@ -232361,6 +233002,32 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T17:51+09:00",
       "title": "알테오젠, 알테오젠바이오로직스 합병 결정 | 연합뉴스"
+    },
+    "original:693091a1ab71f7bc234c8554": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/14/2026101416271656481",
+      "source": "머니투데이",
+      "source_body_digest": "5cff270b249aa3ee108f344351cf6e93ca58ea3514b4f4c52efaaf279ef8ccd5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd1fa5063268996e26812bbd2dd8b2d244931d6c636eb267b465d5956790d01c",
+      "source_fact_keys": [
+        "source_fact:v1:171eda40721aca795776c19224791aec4b93079ce98077a1d97ccbb5c455cd82",
+        "source_fact:v1:52b020f7d3f3a8783ddc06e3c2a0f1d3bc2c48a96b2ae5a1c440ba6c2aa7d960",
+        "source_fact:v1:5bf97160eec4f01772d577aa52c0df255afbad25630f43b46a264c94b35476d1",
+        "source_fact:v1:a1a879f07043a893750622ced8020e6623c4d04c63cc38e999a699a4b550be23",
+        "source_fact:v1:a56c399668979b9b5d2353f236e16c8e0185f68da4c9bca6dc5f55e2300e1520",
+        "source_fact:v1:c65f88adbf1dc0847f7f829fe4118c07d612ff20e6a00cfe122a6461b8101c44",
+        "source_fact:v1:e133d45cb1b8d694f9c3c623ea5b341e8ec168212b4bdba9881aa71211dba802"
+      ],
+      "source_published_kst": "2026-10-14T17:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피, 美 CPI 발표 앞두고 경계심리↑… 물가둔화 확인할까",
+      "telegram_core_fact": "14일 상승 출발하며 2% 이상 뛰었으나 미국 9월 소비자물가지수(CPI) 발표를 앞두고 관망세가 짙어지며 장중 6000선을 밑돌기도 했다.",
+      "title": "코스피, 美 CPI 발표 앞두고 경계심리↑… 물가둔화 확인할까"
     },
     "original:69346efc37b2e28bd2f34f5a": {
       "first_seen_kst": "2026-10-12T11:27:57+09:00",
@@ -262982,6 +263649,29 @@
       "source_published_kst": "2026-10-06T03:54+09:00",
       "title": "[美특징주]웰스파고, 모건스탠리 ‘매수’ 상향에 주가 2%↑"
     },
+    "original:cd1aa9d74784e5f31e857ce5": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825004",
+      "source": "뉴시스",
+      "source_body_digest": "6530b1822be7f2dad96b4282ab330ec670a4dd9c9d36da0ae72d79e5de6137d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:864345dbd6ffd4a73fb1efeff89cb6d4525d2d9bbe4f159b9a1cb150085b83fe",
+      "source_fact_keys": [
+        "source_fact:v1:498c7ba21b95c5136282019de4bbefc0b26945f5b1386a31151a3068f1fa7f06",
+        "source_fact:v1:53f98e459fc2430bea383a3975eb65a9bc2c7d0533e4a9f1b703e3237732b201",
+        "source_fact:v1:e11f002c7d5de9d54fab732fa298dfeea9d741102cb3223ac4184d4fc74aa594",
+        "source_fact:v1:e8c58a5bbd26dc3aee5a970cf567e8db821609b1677e53b088e38b2f2963d65a"
+      ],
+      "source_published_kst": "2026-10-14T09:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB證 \"삼성전자·SK하이닉스, 실적이 'W자 반등' 견인 전망\"",
+      "telegram_core_fact": "김 본부장은 \"최근 내년 양사의 합산 영업이익이 1000조원(삼성전자 600조원, SK하이닉스 400조원)을 상회할 가능성이 높아지면서 실적 컨센서스의 상향 조정이 본격화되고 있다\"고 말했다.",
+      "title": "KB證 \"삼성전자·SK하이닉스, 실적이 'W자 반등' 견인 전망\""
+    },
     "original:cd3058eeff497db6547b8eb8": {
       "first_seen_kst": "2026-10-14T15:54:32+09:00",
       "lanes": {
@@ -278096,6 +278786,29 @@
       "source_published_kst": "2026-10-06T08:03+09:00",
       "title": "뉴욕증시, 국채금리 상승에도 강세⋯나스닥, 사상 최고치 [글로벌마켓 모닝 브리핑]"
     },
+    "original:fde44e7e9582afb9f0e1843a": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.fnnews.com/news/202610141029323408",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "6bedb89224c94e504d33b36b835069f7b2d1410a9778d3ad904ad3694e8dc0eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cb7fc64f636a2dcc25a2b321368243972bab9d89ab52da4220bff7a8a0beb972",
+      "source_fact_keys": [
+        "source_fact:v1:335cff4a94b70eec27e6c1e3276df22e2488a051847c7d8e34696b649424798d",
+        "source_fact:v1:82932ab75fe461ce373589facbcc6dde539392947ff46963e0964664c45d1d63",
+        "source_fact:v1:cd12939967ae37be8caf5d01a4da731f3b486060003f27f28589868de38c3bcc",
+        "source_fact:v1:e29cd06ea2f5209cf539c1757d6da700c7200b2be511fac7048f34a374a11cee"
+      ],
+      "source_published_kst": "2026-10-14T13:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "엑시나, 글로벌 빅테크 출신 CBO 영입… CXL 연산 메모리 ‘MX1’ 상용화 박차",
+      "telegram_core_fact": "[파이낸셜뉴스] AI 인프라의 핵심 화두로 떠오른 데이터 이동 병목과 메모리 용량 한계를 극복하기 위해, 국내 팹리스 엑시나(XCENA)가 CXL 기반 차세대 연산 메모리 솔루션 ‘MX1’의 글로벌 상용화에 속도를 낸다.",
+      "title": "엑시나, 글로벌 빅테크 출신 CBO 영입… CXL 연산 메모리 ‘MX1’ 상용화 박차"
+    },
     "original:fdef1730eccefe4b42935012": {
       "first_seen_kst": "2026-10-12T11:51:53+09:00",
       "lanes": {
@@ -290887,6 +291600,29 @@
       "telegram_core_fact": "우주청은 2030년까지 핵심기술의 우주 실증 이력을 확보하고, 국내 연구개발 성과를 검증플랫폼 위성에 탑재해 누리호로 발사하는 방안을 검토하고 있다.",
       "title": "우주데이터센터 경쟁 치열한데 韓 예산 부족···\"궤도 실증 시급\""
     },
+    "source_fact:0af6633935eec3fdd32f186c": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825004",
+      "source": "뉴시스",
+      "source_body_digest": "6530b1822be7f2dad96b4282ab330ec670a4dd9c9d36da0ae72d79e5de6137d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:864345dbd6ffd4a73fb1efeff89cb6d4525d2d9bbe4f159b9a1cb150085b83fe",
+      "source_fact_keys": [
+        "source_fact:v1:498c7ba21b95c5136282019de4bbefc0b26945f5b1386a31151a3068f1fa7f06",
+        "source_fact:v1:53f98e459fc2430bea383a3975eb65a9bc2c7d0533e4a9f1b703e3237732b201",
+        "source_fact:v1:e11f002c7d5de9d54fab732fa298dfeea9d741102cb3223ac4184d4fc74aa594",
+        "source_fact:v1:e8c58a5bbd26dc3aee5a970cf567e8db821609b1677e53b088e38b2f2963d65a"
+      ],
+      "source_published_kst": "2026-10-14T09:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB證 \"삼성전자·SK하이닉스, 실적이 'W자 반등' 견인 전망\"",
+      "telegram_core_fact": "김 본부장은 \"최근 내년 양사의 합산 영업이익이 1000조원(삼성전자 600조원, SK하이닉스 400조원)을 상회할 가능성이 높아지면서 실적 컨센서스의 상향 조정이 본격화되고 있다\"고 말했다.",
+      "title": "KB證 \"삼성전자·SK하이닉스, 실적이 'W자 반등' 견인 전망\""
+    },
     "source_fact:0af8c5e72d1ea874ec6f662d": {
       "first_seen_kst": "2026-10-12T03:42:08+09:00",
       "lanes": {
@@ -293674,6 +294410,29 @@
       ],
       "source_published_kst": "2026-10-06T07:42+09:00",
       "title": "[오늘의 증시]美금리 상승에도 나스닥 최고치…코스피 상승 출발 전망"
+    },
+    "source_fact:0d3f89fa754b1175e93707ca": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.etnews.com/20261014000248",
+      "source": "전자신문",
+      "source_body_digest": "44a54c90ae0b80beeedd3f25de7f1bdb26a9fe40679e84f0e0d8d67dc5de5e47",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:50f30ec0cf9fca19cb637165bc06564eacf6b4ea5020af91c253f8da74bfc48d",
+      "source_fact_keys": [
+        "source_fact:v1:5e2332f378c8c4d6b482d938b5cb8151c29bdce5c4493dc3c0b3ea6120597c44",
+        "source_fact:v1:8b4c6865a9fe86ef861c8e9ebff6a9d78500f140931caec531ca829e81581745",
+        "source_fact:v1:9d5ab9b0c6fb6f263618a25c59ac397b91ee62900188bca97bec1bf827ff308b",
+        "source_fact:v1:d38dbd05ae3c31f9376c823d479ac78acc3280d6faf8a7a0d371219c7f67f69c"
+      ],
+      "source_published_kst": "2026-10-14T13:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "엘앤에프 JHC, 폐배터리 전처리 연 1.5만톤…리튬 95% 회수",
+      "telegram_core_fact": "엘앤에프는 JHC가 생산한 블랙매스를 후처리 전문기업과 연계해 핵심광물을 회수하고 이를 다시 양극재 원료로 활용하는 순환형 밸류체인을 구축하고 있다.",
+      "title": "엘앤에프 JHC, 폐배터리 전처리 연 1.5만톤…리튬 95% 회수"
     },
     "source_fact:0d42f241e0577245c6843717": {
       "first_seen_kst": "2026-10-12T21:20:33+09:00",
@@ -298218,6 +298977,37 @@
       "source_published_kst": "2026-10-06T17:03+09:00",
       "title": "\"미래 성장동력 확보\"…알테오젠, 2천억 투자유치"
     },
+    "source_fact:10b2b771f8a6772d1c8c1947": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825083",
+      "source": "뉴시스",
+      "source_body_digest": "48b6ccaf5c4b5d6cec9a2b11847fc5a9f39fefa512d9044e8bf6cd774b251034",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e18257988ea5a337d03806f9d305402f69fe0a27e4020cbfd333d820c570854d",
+      "source_fact_keys": [
+        "source_fact:v1:1e0241f13e8d223bca6efd5e286e23eff237d6b5f60c1fd354d915f2bccefc8f",
+        "source_fact:v1:216cd2bb8c1afeee6e59c0af23c9b8e6119db846064d5e40e0935993c3e34724",
+        "source_fact:v1:95c76417862cfb71d4bc4423e1bc419225d572c64c0aebc164287e2508e1c9b5",
+        "source_fact:v1:9974e4db8c971515fc4530b18f593176370af281c0903f88a61fedf6a527c521",
+        "source_fact:v1:a73060f91bde450ba30941acb71d3527f8a450e9182fdf639dcbf9a8adae14df",
+        "source_fact:v1:afae431ff933a7ca86fde9e2011a2888b839fe864459fbb468f6f2ed488c1801",
+        "source_fact:v1:b67e59ba5be9dfe3b0b4d13978cb40ef66c520780933e2ebd75428345556d70d",
+        "source_fact:v1:e6f27e25827f12318ef4e21cffc178cce1bddd05bf396d87b99e786578e6196b",
+        "source_fact:v1:eaa009d593adaa93d7c2b001f5f1363c66b3afc7a6ec0333aabd1b83da119509",
+        "source_fact:v1:eb1c359dac4f3cf5802cfb468e849901c7cbd1e6594d08355da16e2fe03cb4df",
+        "source_fact:v1:f6c9bfa4acb04aec349a226a97f5d93e75b8d0e4fdf547beea78b102e4106245",
+        "source_fact:v1:f973417e298ce3c6b3f902c069a872f3e9324d5fdd11770582c4b979cbda0dd8"
+      ],
+      "source_published_kst": "2026-10-14T11:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 치솟는 디젤(경유) 가격을 잡기 위해 러시아에 대한 제재를 해제하고 디젤 수입을 추진하고 있지만, 공급 물량이 제한적이어서 가격 안정 효과는 크지 않을 것이라는 전망이 나온다.",
+      "title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'"
+    },
     "source_fact:10b6d240f3d5c9d9523f8749": {
       "first_seen_kst": "2026-10-05T23:37:00+09:00",
       "lanes": {
@@ -299686,6 +300476,29 @@
       "source_title": "美 30년물 국채금리 24년만에 최고치 재경신",
       "telegram_core_fact": "미 국채 금리 급등은 즉각 유럽으로 전파돼 영국 30년물 금리가 다시 6%선을 돌파했고, 프랑스 30년물도 하루 만에 최대 14bp(1bp=0.01%p) 올랐다.",
       "title": "美 30년물 국채금리 24년만에 최고치 재경신"
+    },
+    "source_fact:11f42f699b6d3a9972264e9c": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825004",
+      "source": "뉴시스",
+      "source_body_digest": "6530b1822be7f2dad96b4282ab330ec670a4dd9c9d36da0ae72d79e5de6137d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:864345dbd6ffd4a73fb1efeff89cb6d4525d2d9bbe4f159b9a1cb150085b83fe",
+      "source_fact_keys": [
+        "source_fact:v1:498c7ba21b95c5136282019de4bbefc0b26945f5b1386a31151a3068f1fa7f06",
+        "source_fact:v1:53f98e459fc2430bea383a3975eb65a9bc2c7d0533e4a9f1b703e3237732b201",
+        "source_fact:v1:e11f002c7d5de9d54fab732fa298dfeea9d741102cb3223ac4184d4fc74aa594",
+        "source_fact:v1:e8c58a5bbd26dc3aee5a970cf567e8db821609b1677e53b088e38b2f2963d65a"
+      ],
+      "source_published_kst": "2026-10-14T09:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB證 \"삼성전자·SK하이닉스, 실적이 'W자 반등' 견인 전망\"",
+      "telegram_core_fact": "김 본부장은 \"최근 내년 양사의 합산 영업이익이 1000조원(삼성전자 600조원, SK하이닉스 400조원)을 상회할 가능성이 높아지면서 실적 컨센서스의 상향 조정이 본격화되고 있다\"고 말했다.",
+      "title": "KB證 \"삼성전자·SK하이닉스, 실적이 'W자 반등' 견인 전망\""
     },
     "source_fact:120280abeafe8cbbbbc06559": {
       "first_seen_kst": "2026-10-06T10:41:31+09:00",
@@ -316358,6 +317171,32 @@
       "source_title": "삼전닉스 '낸드' 잭팟 터진다… 로봇용 D램도 기대감 솔솔",
       "telegram_core_fact": "시장조사업체 트렌드포스는 올해 4·4분기 모든 낸드 플래시 제품군의 계약 가격이 전 분기 대비 15~20% 상승할 것으로 예상했다.",
       "title": "삼전닉스 '낸드' 잭팟 터진다… 로봇용 D램도 기대감 솔솔"
+    },
+    "source_fact:204507e49d6df25036700f9c": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/14/2026101416271656481",
+      "source": "머니투데이",
+      "source_body_digest": "5cff270b249aa3ee108f344351cf6e93ca58ea3514b4f4c52efaaf279ef8ccd5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd1fa5063268996e26812bbd2dd8b2d244931d6c636eb267b465d5956790d01c",
+      "source_fact_keys": [
+        "source_fact:v1:171eda40721aca795776c19224791aec4b93079ce98077a1d97ccbb5c455cd82",
+        "source_fact:v1:52b020f7d3f3a8783ddc06e3c2a0f1d3bc2c48a96b2ae5a1c440ba6c2aa7d960",
+        "source_fact:v1:5bf97160eec4f01772d577aa52c0df255afbad25630f43b46a264c94b35476d1",
+        "source_fact:v1:a1a879f07043a893750622ced8020e6623c4d04c63cc38e999a699a4b550be23",
+        "source_fact:v1:a56c399668979b9b5d2353f236e16c8e0185f68da4c9bca6dc5f55e2300e1520",
+        "source_fact:v1:c65f88adbf1dc0847f7f829fe4118c07d612ff20e6a00cfe122a6461b8101c44",
+        "source_fact:v1:e133d45cb1b8d694f9c3c623ea5b341e8ec168212b4bdba9881aa71211dba802"
+      ],
+      "source_published_kst": "2026-10-14T17:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피, 美 CPI 발표 앞두고 경계심리↑… 물가둔화 확인할까",
+      "telegram_core_fact": "14일 상승 출발하며 2% 이상 뛰었으나 미국 9월 소비자물가지수(CPI) 발표를 앞두고 관망세가 짙어지며 장중 6000선을 밑돌기도 했다.",
+      "title": "코스피, 美 CPI 발표 앞두고 경계심리↑… 물가둔화 확인할까"
     },
     "source_fact:204598b8a3182a3a26142eb1": {
       "first_seen_kst": "2026-10-09T18:14:26+09:00",
@@ -334254,6 +335093,32 @@
       "source_published_kst": "2026-10-07T14:46+09:00",
       "title": "HD현대중공업, 누리호 성공에 기여…발사대시스템 총괄 지원 | 연합뉴스"
     },
+    "source_fact:2f021b7fdef276636a43be06": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/14/2026101416271656481",
+      "source": "머니투데이",
+      "source_body_digest": "5cff270b249aa3ee108f344351cf6e93ca58ea3514b4f4c52efaaf279ef8ccd5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd1fa5063268996e26812bbd2dd8b2d244931d6c636eb267b465d5956790d01c",
+      "source_fact_keys": [
+        "source_fact:v1:171eda40721aca795776c19224791aec4b93079ce98077a1d97ccbb5c455cd82",
+        "source_fact:v1:52b020f7d3f3a8783ddc06e3c2a0f1d3bc2c48a96b2ae5a1c440ba6c2aa7d960",
+        "source_fact:v1:5bf97160eec4f01772d577aa52c0df255afbad25630f43b46a264c94b35476d1",
+        "source_fact:v1:a1a879f07043a893750622ced8020e6623c4d04c63cc38e999a699a4b550be23",
+        "source_fact:v1:a56c399668979b9b5d2353f236e16c8e0185f68da4c9bca6dc5f55e2300e1520",
+        "source_fact:v1:c65f88adbf1dc0847f7f829fe4118c07d612ff20e6a00cfe122a6461b8101c44",
+        "source_fact:v1:e133d45cb1b8d694f9c3c623ea5b341e8ec168212b4bdba9881aa71211dba802"
+      ],
+      "source_published_kst": "2026-10-14T17:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피, 美 CPI 발표 앞두고 경계심리↑… 물가둔화 확인할까",
+      "telegram_core_fact": "14일 상승 출발하며 2% 이상 뛰었으나 미국 9월 소비자물가지수(CPI) 발표를 앞두고 관망세가 짙어지며 장중 6000선을 밑돌기도 했다.",
+      "title": "코스피, 美 CPI 발표 앞두고 경계심리↑… 물가둔화 확인할까"
+    },
     "source_fact:2f05da7339dfda381233c339": {
       "first_seen_kst": "2026-10-08T12:13:24+09:00",
       "lanes": {
@@ -339947,6 +340812,29 @@
       "telegram_core_fact": "11일(현지시간) 마켓워치에 따르면 시장조사업체 팩트셋은 지난 9일 보고서에서 스탠더드앤드푸어스(S&P)500 기업들의 3분기 순이익이 29.6% 늘어날 것으로 예상했다.",
       "title": "美증시, 3분기 실적이 계속 떠받칠까…\"이번주 판가름\""
     },
+    "source_fact:336d7fd5fec470e51ca3aa6a": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.fnnews.com/news/202610141029323408",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "6bedb89224c94e504d33b36b835069f7b2d1410a9778d3ad904ad3694e8dc0eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cb7fc64f636a2dcc25a2b321368243972bab9d89ab52da4220bff7a8a0beb972",
+      "source_fact_keys": [
+        "source_fact:v1:335cff4a94b70eec27e6c1e3276df22e2488a051847c7d8e34696b649424798d",
+        "source_fact:v1:82932ab75fe461ce373589facbcc6dde539392947ff46963e0964664c45d1d63",
+        "source_fact:v1:cd12939967ae37be8caf5d01a4da731f3b486060003f27f28589868de38c3bcc",
+        "source_fact:v1:e29cd06ea2f5209cf539c1757d6da700c7200b2be511fac7048f34a374a11cee"
+      ],
+      "source_published_kst": "2026-10-14T13:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "엑시나, 글로벌 빅테크 출신 CBO 영입… CXL 연산 메모리 ‘MX1’ 상용화 박차",
+      "telegram_core_fact": "[파이낸셜뉴스] AI 인프라의 핵심 화두로 떠오른 데이터 이동 병목과 메모리 용량 한계를 극복하기 위해, 국내 팹리스 엑시나(XCENA)가 CXL 기반 차세대 연산 메모리 솔루션 ‘MX1’의 글로벌 상용화에 속도를 낸다.",
+      "title": "엑시나, 글로벌 빅테크 출신 CBO 영입… CXL 연산 메모리 ‘MX1’ 상용화 박차"
+    },
     "source_fact:336eb5a47b4e0f5ece4ccbfa": {
       "first_seen_kst": "2026-10-06T10:04:04+09:00",
       "lanes": {
@@ -340686,6 +341574,37 @@
       "source_title": "호르무즈 해협 막히자 해운주 강세…STX그린로지스 6%↑",
       "telegram_core_fact": "이날 해운주의 강세는 중동 지역 지정학적 리스크 심화로 주요 해상 요충지의 통과 차질이 이어지면서 선박들의 우회 운항과 대기 시간 증가로 실질 가용 선복량 감소와 해상 운임 상승세 지속에 따른 실적 기대감이 반영된 것으로 풀이된다.",
       "title": "호르무즈 해협 막히자 해운주 강세…STX그린로지스 6%↑"
+    },
+    "source_fact:344011071dcc730071266078": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825083",
+      "source": "뉴시스",
+      "source_body_digest": "48b6ccaf5c4b5d6cec9a2b11847fc5a9f39fefa512d9044e8bf6cd774b251034",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e18257988ea5a337d03806f9d305402f69fe0a27e4020cbfd333d820c570854d",
+      "source_fact_keys": [
+        "source_fact:v1:1e0241f13e8d223bca6efd5e286e23eff237d6b5f60c1fd354d915f2bccefc8f",
+        "source_fact:v1:216cd2bb8c1afeee6e59c0af23c9b8e6119db846064d5e40e0935993c3e34724",
+        "source_fact:v1:95c76417862cfb71d4bc4423e1bc419225d572c64c0aebc164287e2508e1c9b5",
+        "source_fact:v1:9974e4db8c971515fc4530b18f593176370af281c0903f88a61fedf6a527c521",
+        "source_fact:v1:a73060f91bde450ba30941acb71d3527f8a450e9182fdf639dcbf9a8adae14df",
+        "source_fact:v1:afae431ff933a7ca86fde9e2011a2888b839fe864459fbb468f6f2ed488c1801",
+        "source_fact:v1:b67e59ba5be9dfe3b0b4d13978cb40ef66c520780933e2ebd75428345556d70d",
+        "source_fact:v1:e6f27e25827f12318ef4e21cffc178cce1bddd05bf396d87b99e786578e6196b",
+        "source_fact:v1:eaa009d593adaa93d7c2b001f5f1363c66b3afc7a6ec0333aabd1b83da119509",
+        "source_fact:v1:eb1c359dac4f3cf5802cfb468e849901c7cbd1e6594d08355da16e2fe03cb4df",
+        "source_fact:v1:f6c9bfa4acb04aec349a226a97f5d93e75b8d0e4fdf547beea78b102e4106245",
+        "source_fact:v1:f973417e298ce3c6b3f902c069a872f3e9324d5fdd11770582c4b979cbda0dd8"
+      ],
+      "source_published_kst": "2026-10-14T11:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 치솟는 디젤(경유) 가격을 잡기 위해 러시아에 대한 제재를 해제하고 디젤 수입을 추진하고 있지만, 공급 물량이 제한적이어서 가격 안정 효과는 크지 않을 것이라는 전망이 나온다.",
+      "title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'"
     },
     "source_fact:3445378ad3e18ac30d1546d8": {
       "first_seen_kst": "2026-10-07T17:47:45+09:00",
@@ -354251,6 +355170,37 @@
       "telegram_core_fact": "■반도체 온기, 부품·장비주로 확산 11일 키움증권이 제공하는 '수익률 상위 고객(직전 3개월 수익률 상위 2만5000명) 매매 상세 현황'에 따르면 수익률 상위 투자자들이 지난 6~8일 가장 많이 순매수한 종목은 SK하이닉스로, 순매수액은 572억원이었다.",
       "title": "투자 고수들, '삼전닉스' 매수 줄였다…반도체 장비·배터리로 확산 [1% 고수의 선택]"
     },
+    "source_fact:404c666c5e4e742264260d8a": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825083",
+      "source": "뉴시스",
+      "source_body_digest": "48b6ccaf5c4b5d6cec9a2b11847fc5a9f39fefa512d9044e8bf6cd774b251034",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e18257988ea5a337d03806f9d305402f69fe0a27e4020cbfd333d820c570854d",
+      "source_fact_keys": [
+        "source_fact:v1:1e0241f13e8d223bca6efd5e286e23eff237d6b5f60c1fd354d915f2bccefc8f",
+        "source_fact:v1:216cd2bb8c1afeee6e59c0af23c9b8e6119db846064d5e40e0935993c3e34724",
+        "source_fact:v1:95c76417862cfb71d4bc4423e1bc419225d572c64c0aebc164287e2508e1c9b5",
+        "source_fact:v1:9974e4db8c971515fc4530b18f593176370af281c0903f88a61fedf6a527c521",
+        "source_fact:v1:a73060f91bde450ba30941acb71d3527f8a450e9182fdf639dcbf9a8adae14df",
+        "source_fact:v1:afae431ff933a7ca86fde9e2011a2888b839fe864459fbb468f6f2ed488c1801",
+        "source_fact:v1:b67e59ba5be9dfe3b0b4d13978cb40ef66c520780933e2ebd75428345556d70d",
+        "source_fact:v1:e6f27e25827f12318ef4e21cffc178cce1bddd05bf396d87b99e786578e6196b",
+        "source_fact:v1:eaa009d593adaa93d7c2b001f5f1363c66b3afc7a6ec0333aabd1b83da119509",
+        "source_fact:v1:eb1c359dac4f3cf5802cfb468e849901c7cbd1e6594d08355da16e2fe03cb4df",
+        "source_fact:v1:f6c9bfa4acb04aec349a226a97f5d93e75b8d0e4fdf547beea78b102e4106245",
+        "source_fact:v1:f973417e298ce3c6b3f902c069a872f3e9324d5fdd11770582c4b979cbda0dd8"
+      ],
+      "source_published_kst": "2026-10-14T11:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 치솟는 디젤(경유) 가격을 잡기 위해 러시아에 대한 제재를 해제하고 디젤 수입을 추진하고 있지만, 공급 물량이 제한적이어서 가격 안정 효과는 크지 않을 것이라는 전망이 나온다.",
+      "title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'"
+    },
     "source_fact:404ea7ecc8f2130e61d75cbc": {
       "first_seen_kst": "2026-10-06T12:10:48+09:00",
       "lanes": {
@@ -355231,6 +356181,29 @@
       "source_title": "금리 상승에 떨어진 채권 평가액…보험사 3분기 실적 '먹구름'",
       "telegram_core_fact": "한국은행이 지난 7월과 8월 두 차례 연속 금리를 인상하면서 기준금리는 5월 2.50%에서 7월 2.75%, 8월 3.00%로 상승했다.",
       "title": "금리 상승에 떨어진 채권 평가액…보험사 3분기 실적 '먹구름'"
+    },
+    "source_fact:4134ecce5ebad6d19160db84": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.etnews.com/20261014000248",
+      "source": "전자신문",
+      "source_body_digest": "44a54c90ae0b80beeedd3f25de7f1bdb26a9fe40679e84f0e0d8d67dc5de5e47",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:50f30ec0cf9fca19cb637165bc06564eacf6b4ea5020af91c253f8da74bfc48d",
+      "source_fact_keys": [
+        "source_fact:v1:5e2332f378c8c4d6b482d938b5cb8151c29bdce5c4493dc3c0b3ea6120597c44",
+        "source_fact:v1:8b4c6865a9fe86ef861c8e9ebff6a9d78500f140931caec531ca829e81581745",
+        "source_fact:v1:9d5ab9b0c6fb6f263618a25c59ac397b91ee62900188bca97bec1bf827ff308b",
+        "source_fact:v1:d38dbd05ae3c31f9376c823d479ac78acc3280d6faf8a7a0d371219c7f67f69c"
+      ],
+      "source_published_kst": "2026-10-14T13:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "엘앤에프 JHC, 폐배터리 전처리 연 1.5만톤…리튬 95% 회수",
+      "telegram_core_fact": "엘앤에프는 JHC가 생산한 블랙매스를 후처리 전문기업과 연계해 핵심광물을 회수하고 이를 다시 양극재 원료로 활용하는 순환형 밸류체인을 구축하고 있다.",
+      "title": "엘앤에프 JHC, 폐배터리 전처리 연 1.5만톤…리튬 95% 회수"
     },
     "source_fact:4135bb0f0e0c39bddb58f599": {
       "first_seen_kst": "2026-10-13T20:01:17+09:00",
@@ -365803,6 +366776,37 @@
       "telegram_core_fact": "러시아와 에너지 시설 공격을 서로 중단하는 방안을 논의하러 미국을 찾은 우크라이나 대표단이 협상장에서 러시아산 경유 수출 제재 완화 방침을 전달받고 “함정처럼 느껴졌다”고 반발한 것으로 전해졌다.",
       "title": "에너지 휴전 논의하러 갔는데 美는 러 경유 제재 완화…우크라 \"함정 같았다\""
     },
+    "source_fact:49612acbdf846748f7c260fa": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825083",
+      "source": "뉴시스",
+      "source_body_digest": "48b6ccaf5c4b5d6cec9a2b11847fc5a9f39fefa512d9044e8bf6cd774b251034",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e18257988ea5a337d03806f9d305402f69fe0a27e4020cbfd333d820c570854d",
+      "source_fact_keys": [
+        "source_fact:v1:1e0241f13e8d223bca6efd5e286e23eff237d6b5f60c1fd354d915f2bccefc8f",
+        "source_fact:v1:216cd2bb8c1afeee6e59c0af23c9b8e6119db846064d5e40e0935993c3e34724",
+        "source_fact:v1:95c76417862cfb71d4bc4423e1bc419225d572c64c0aebc164287e2508e1c9b5",
+        "source_fact:v1:9974e4db8c971515fc4530b18f593176370af281c0903f88a61fedf6a527c521",
+        "source_fact:v1:a73060f91bde450ba30941acb71d3527f8a450e9182fdf639dcbf9a8adae14df",
+        "source_fact:v1:afae431ff933a7ca86fde9e2011a2888b839fe864459fbb468f6f2ed488c1801",
+        "source_fact:v1:b67e59ba5be9dfe3b0b4d13978cb40ef66c520780933e2ebd75428345556d70d",
+        "source_fact:v1:e6f27e25827f12318ef4e21cffc178cce1bddd05bf396d87b99e786578e6196b",
+        "source_fact:v1:eaa009d593adaa93d7c2b001f5f1363c66b3afc7a6ec0333aabd1b83da119509",
+        "source_fact:v1:eb1c359dac4f3cf5802cfb468e849901c7cbd1e6594d08355da16e2fe03cb4df",
+        "source_fact:v1:f6c9bfa4acb04aec349a226a97f5d93e75b8d0e4fdf547beea78b102e4106245",
+        "source_fact:v1:f973417e298ce3c6b3f902c069a872f3e9324d5fdd11770582c4b979cbda0dd8"
+      ],
+      "source_published_kst": "2026-10-14T11:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 치솟는 디젤(경유) 가격을 잡기 위해 러시아에 대한 제재를 해제하고 디젤 수입을 추진하고 있지만, 공급 물량이 제한적이어서 가격 안정 효과는 크지 않을 것이라는 전망이 나온다.",
+      "title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'"
+    },
     "source_fact:49656ecc24504531e17dc7e1": {
       "first_seen_kst": "2026-10-06T21:17:11+09:00",
       "lanes": {
@@ -367475,6 +368479,32 @@
       "telegram_core_fact": "반면 과세당국은 해당 소득이 국내 과세 대상인 사용료 소득에 해당한다고 판단해 법인세를 부과했고, 구글코리아는 이에 불복해 소송을 제기했다.",
       "title": "구글코리아, 1540억원대 법인세 소송 최종 승소"
     },
+    "source_fact:4ac3f3dcbf6d1c8401d5cbb1": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/14/2026101413299653584",
+      "source": "머니투데이",
+      "source_body_digest": "28127ecec6c97f001a8496cf20a9782f910fd3d9ae0c39621fffe622bcae616b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:057b9d20fa27c9eb40e004311c027709b3b0a74ac12f173d72ac4fc8b2130274",
+      "source_fact_keys": [
+        "source_fact:v1:2e06febd15eaca153802991a02bffd332f82936ed3776034088de82f0cccf87d",
+        "source_fact:v1:395f492033ea86bd500f4293011763466982552fd715881432c14e3db26b3269",
+        "source_fact:v1:66ff3f0a6b7640d82a520b513ccc02f0dd8159beeda95aa6f6ee2309f6c88c2a",
+        "source_fact:v1:b131efbc947ce56c69804aec240dd80218fe3d7b3058796e76c50c44bbfe90f4",
+        "source_fact:v1:bd70a3e414777469233b770319b05d189430da27528d0cd65a65e66b918b6cf9",
+        "source_fact:v1:f6c01a94b40728db0f34e775dcaa7ae596a8c6663339234002ef82e8dde3998a",
+        "source_fact:v1:faa3a3acfcd81552183833c37560035c08adf9752aee4108b59b0ea05d4606c1"
+      ],
+      "source_published_kst": "2026-10-14T13:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "[더벨]마음AI, '4족보행 순찰로봇' 규제특례 추진",
+      "telegram_core_fact": "피지컬 AI 전문기업 마음AI가 4족보행 로봇의 보행자 도로 순찰을 위한 규제특례를 추진하며 공공안전 분야에서 피지컬 AI 기술의 실증 기반 마련에 나섰다.",
+      "title": "[더벨]마음AI, '4족보행 순찰로봇' 규제특례 추진"
+    },
     "source_fact:4ac5e00781e4bc406253cbba": {
       "first_seen_kst": "2026-10-09T23:03:47+09:00",
       "lanes": {
@@ -368249,6 +369279,29 @@
       "source_title": "기그캐피털8, 퀀티시모와 합병계약..기업가치 6억6600만 달러",
       "telegram_core_fact": "기그캐피털8(GIW)이 위즈키(WISeKey)와 씰SQ(SEALSQ)가 설립한 양자기술 플랫폼 기업 퀀티시모(Quantisimo)와 확정적 합병계약을 체결했으며, 합병 후 퀀티시모의 지분가치는 주당 10달러 기준 약 6억6610만 달러로 평가됐다고 9일(현지시간) 발표했다.",
       "title": "기그캐피털8, 퀀티시모와 합병계약..기업가치 6억6600만 달러"
+    },
+    "source_fact:4b7a31a473758e5cfd9cc4e6": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.fnnews.com/news/202610141029323408",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "6bedb89224c94e504d33b36b835069f7b2d1410a9778d3ad904ad3694e8dc0eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cb7fc64f636a2dcc25a2b321368243972bab9d89ab52da4220bff7a8a0beb972",
+      "source_fact_keys": [
+        "source_fact:v1:335cff4a94b70eec27e6c1e3276df22e2488a051847c7d8e34696b649424798d",
+        "source_fact:v1:82932ab75fe461ce373589facbcc6dde539392947ff46963e0964664c45d1d63",
+        "source_fact:v1:cd12939967ae37be8caf5d01a4da731f3b486060003f27f28589868de38c3bcc",
+        "source_fact:v1:e29cd06ea2f5209cf539c1757d6da700c7200b2be511fac7048f34a374a11cee"
+      ],
+      "source_published_kst": "2026-10-14T13:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "엑시나, 글로벌 빅테크 출신 CBO 영입… CXL 연산 메모리 ‘MX1’ 상용화 박차",
+      "telegram_core_fact": "[파이낸셜뉴스] AI 인프라의 핵심 화두로 떠오른 데이터 이동 병목과 메모리 용량 한계를 극복하기 위해, 국내 팹리스 엑시나(XCENA)가 CXL 기반 차세대 연산 메모리 솔루션 ‘MX1’의 글로벌 상용화에 속도를 낸다.",
+      "title": "엑시나, 글로벌 빅테크 출신 CBO 영입… CXL 연산 메모리 ‘MX1’ 상용화 박차"
     },
     "source_fact:4b7e1f151e9999dba493323e": {
       "first_seen_kst": "2026-10-13T07:52:07+09:00",
@@ -376894,6 +377947,29 @@
       ],
       "source_published_kst": "2026-10-06T08:37+09:00",
       "title": "한미반도체, 삼성전기서 245억 규모 장비 수주…\"삼성그룹 환영\" | 연합뉴스"
+    },
+    "source_fact:53145685c543af855f23ac5b": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.fnnews.com/news/202610141029323408",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "6bedb89224c94e504d33b36b835069f7b2d1410a9778d3ad904ad3694e8dc0eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cb7fc64f636a2dcc25a2b321368243972bab9d89ab52da4220bff7a8a0beb972",
+      "source_fact_keys": [
+        "source_fact:v1:335cff4a94b70eec27e6c1e3276df22e2488a051847c7d8e34696b649424798d",
+        "source_fact:v1:82932ab75fe461ce373589facbcc6dde539392947ff46963e0964664c45d1d63",
+        "source_fact:v1:cd12939967ae37be8caf5d01a4da731f3b486060003f27f28589868de38c3bcc",
+        "source_fact:v1:e29cd06ea2f5209cf539c1757d6da700c7200b2be511fac7048f34a374a11cee"
+      ],
+      "source_published_kst": "2026-10-14T13:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "엑시나, 글로벌 빅테크 출신 CBO 영입… CXL 연산 메모리 ‘MX1’ 상용화 박차",
+      "telegram_core_fact": "[파이낸셜뉴스] AI 인프라의 핵심 화두로 떠오른 데이터 이동 병목과 메모리 용량 한계를 극복하기 위해, 국내 팹리스 엑시나(XCENA)가 CXL 기반 차세대 연산 메모리 솔루션 ‘MX1’의 글로벌 상용화에 속도를 낸다.",
+      "title": "엑시나, 글로벌 빅테크 출신 CBO 영입… CXL 연산 메모리 ‘MX1’ 상용화 박차"
     },
     "source_fact:531e8397e6eb13c93c1aff11": {
       "first_seen_kst": "2026-10-08T07:27:34+09:00",
@@ -386105,6 +387181,29 @@
       "source_title": "빈 라덴 잡은 이 기업…AI 시대 승자 될까 [박신영의 월가 아나토미]",
       "telegram_core_fact": "앞으로 팔란티어를 평가할 핵심 기준은 AI 시대의 성장 가능성 자체보다, 실제 매출과 이익 증가가 높은 밸류에이션을 얼마나 빠르게 뒷받침할 수 있느냐가 될 전망입니다.",
       "title": "빈 라덴 잡은 이 기업…AI 시대 승자 될까 [박신영의 월가 아나토미]"
+    },
+    "source_fact:5a854d5525864b5a0b485534": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.fnnews.com/news/202610141029323408",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "6bedb89224c94e504d33b36b835069f7b2d1410a9778d3ad904ad3694e8dc0eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cb7fc64f636a2dcc25a2b321368243972bab9d89ab52da4220bff7a8a0beb972",
+      "source_fact_keys": [
+        "source_fact:v1:335cff4a94b70eec27e6c1e3276df22e2488a051847c7d8e34696b649424798d",
+        "source_fact:v1:82932ab75fe461ce373589facbcc6dde539392947ff46963e0964664c45d1d63",
+        "source_fact:v1:cd12939967ae37be8caf5d01a4da731f3b486060003f27f28589868de38c3bcc",
+        "source_fact:v1:e29cd06ea2f5209cf539c1757d6da700c7200b2be511fac7048f34a374a11cee"
+      ],
+      "source_published_kst": "2026-10-14T13:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "엑시나, 글로벌 빅테크 출신 CBO 영입… CXL 연산 메모리 ‘MX1’ 상용화 박차",
+      "telegram_core_fact": "[파이낸셜뉴스] AI 인프라의 핵심 화두로 떠오른 데이터 이동 병목과 메모리 용량 한계를 극복하기 위해, 국내 팹리스 엑시나(XCENA)가 CXL 기반 차세대 연산 메모리 솔루션 ‘MX1’의 글로벌 상용화에 속도를 낸다.",
+      "title": "엑시나, 글로벌 빅테크 출신 CBO 영입… CXL 연산 메모리 ‘MX1’ 상용화 박차"
     },
     "source_fact:5a871502aa393fdeaabefae8": {
       "first_seen_kst": "2026-10-13T07:27:37+09:00",
@@ -400151,6 +401250,32 @@
       "source_published_kst": "2026-10-07T08:51+09:00",
       "title": "SK온, 포드 'Q1 인증' 획득…\"헝가리 생산거점 품질 경쟁력 입증\""
     },
+    "source_fact:66fc251009e60bee867c90cf": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/14/2026101413299653584",
+      "source": "머니투데이",
+      "source_body_digest": "28127ecec6c97f001a8496cf20a9782f910fd3d9ae0c39621fffe622bcae616b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:057b9d20fa27c9eb40e004311c027709b3b0a74ac12f173d72ac4fc8b2130274",
+      "source_fact_keys": [
+        "source_fact:v1:2e06febd15eaca153802991a02bffd332f82936ed3776034088de82f0cccf87d",
+        "source_fact:v1:395f492033ea86bd500f4293011763466982552fd715881432c14e3db26b3269",
+        "source_fact:v1:66ff3f0a6b7640d82a520b513ccc02f0dd8159beeda95aa6f6ee2309f6c88c2a",
+        "source_fact:v1:b131efbc947ce56c69804aec240dd80218fe3d7b3058796e76c50c44bbfe90f4",
+        "source_fact:v1:bd70a3e414777469233b770319b05d189430da27528d0cd65a65e66b918b6cf9",
+        "source_fact:v1:f6c01a94b40728db0f34e775dcaa7ae596a8c6663339234002ef82e8dde3998a",
+        "source_fact:v1:faa3a3acfcd81552183833c37560035c08adf9752aee4108b59b0ea05d4606c1"
+      ],
+      "source_published_kst": "2026-10-14T13:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "[더벨]마음AI, '4족보행 순찰로봇' 규제특례 추진",
+      "telegram_core_fact": "피지컬 AI 전문기업 마음AI가 4족보행 로봇의 보행자 도로 순찰을 위한 규제특례를 추진하며 공공안전 분야에서 피지컬 AI 기술의 실증 기반 마련에 나섰다.",
+      "title": "[더벨]마음AI, '4족보행 순찰로봇' 규제특례 추진"
+    },
     "source_fact:67050caf73cea62ff1d70ab1": {
       "first_seen_kst": "2026-10-13T14:32:55+09:00",
       "lanes": {
@@ -404511,6 +405636,37 @@
       "telegram_core_fact": "신한자산운용은 'SOL 글로벌DRAM반도체플러스 ETF'가 올해 하반기 신규 상장한 반도체 ETF 가운데 상장 첫날 개인 순매수 1위를 기록했다고 8일 밝혔다.",
       "title": "상장 첫날 개인 58억 샀다…SOL 글로벌DRAM반도체플러스, 하반기 반도체 ETF 1위"
     },
+    "source_fact:6a49cad1bd5c65ee673c8b8c": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825083",
+      "source": "뉴시스",
+      "source_body_digest": "48b6ccaf5c4b5d6cec9a2b11847fc5a9f39fefa512d9044e8bf6cd774b251034",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e18257988ea5a337d03806f9d305402f69fe0a27e4020cbfd333d820c570854d",
+      "source_fact_keys": [
+        "source_fact:v1:1e0241f13e8d223bca6efd5e286e23eff237d6b5f60c1fd354d915f2bccefc8f",
+        "source_fact:v1:216cd2bb8c1afeee6e59c0af23c9b8e6119db846064d5e40e0935993c3e34724",
+        "source_fact:v1:95c76417862cfb71d4bc4423e1bc419225d572c64c0aebc164287e2508e1c9b5",
+        "source_fact:v1:9974e4db8c971515fc4530b18f593176370af281c0903f88a61fedf6a527c521",
+        "source_fact:v1:a73060f91bde450ba30941acb71d3527f8a450e9182fdf639dcbf9a8adae14df",
+        "source_fact:v1:afae431ff933a7ca86fde9e2011a2888b839fe864459fbb468f6f2ed488c1801",
+        "source_fact:v1:b67e59ba5be9dfe3b0b4d13978cb40ef66c520780933e2ebd75428345556d70d",
+        "source_fact:v1:e6f27e25827f12318ef4e21cffc178cce1bddd05bf396d87b99e786578e6196b",
+        "source_fact:v1:eaa009d593adaa93d7c2b001f5f1363c66b3afc7a6ec0333aabd1b83da119509",
+        "source_fact:v1:eb1c359dac4f3cf5802cfb468e849901c7cbd1e6594d08355da16e2fe03cb4df",
+        "source_fact:v1:f6c9bfa4acb04aec349a226a97f5d93e75b8d0e4fdf547beea78b102e4106245",
+        "source_fact:v1:f973417e298ce3c6b3f902c069a872f3e9324d5fdd11770582c4b979cbda0dd8"
+      ],
+      "source_published_kst": "2026-10-14T11:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 치솟는 디젤(경유) 가격을 잡기 위해 러시아에 대한 제재를 해제하고 디젤 수입을 추진하고 있지만, 공급 물량이 제한적이어서 가격 안정 효과는 크지 않을 것이라는 전망이 나온다.",
+      "title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'"
+    },
     "source_fact:6a6091b3bf4fd8f473aaf76e": {
       "first_seen_kst": "2026-10-07T17:47:45+09:00",
       "lanes": {
@@ -407142,6 +408298,37 @@
       "source_title": "美 주담대 금리 폭등에…트럼프 \"연준, 나라 경제 망치려는 듯\"",
       "telegram_core_fact": "미 모기지은행협회(MBA)에 따르면 지난 2일 기준 30년물 고정 모기지 평균 금리는 전주 대비 19bp 오른 7.49%를 기록했다.",
       "title": "美 주담대 금리 폭등에…트럼프 \"연준, 나라 경제 망치려는 듯\""
+    },
+    "source_fact:6c9529236c2f1e9be668e3d6": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825083",
+      "source": "뉴시스",
+      "source_body_digest": "48b6ccaf5c4b5d6cec9a2b11847fc5a9f39fefa512d9044e8bf6cd774b251034",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e18257988ea5a337d03806f9d305402f69fe0a27e4020cbfd333d820c570854d",
+      "source_fact_keys": [
+        "source_fact:v1:1e0241f13e8d223bca6efd5e286e23eff237d6b5f60c1fd354d915f2bccefc8f",
+        "source_fact:v1:216cd2bb8c1afeee6e59c0af23c9b8e6119db846064d5e40e0935993c3e34724",
+        "source_fact:v1:95c76417862cfb71d4bc4423e1bc419225d572c64c0aebc164287e2508e1c9b5",
+        "source_fact:v1:9974e4db8c971515fc4530b18f593176370af281c0903f88a61fedf6a527c521",
+        "source_fact:v1:a73060f91bde450ba30941acb71d3527f8a450e9182fdf639dcbf9a8adae14df",
+        "source_fact:v1:afae431ff933a7ca86fde9e2011a2888b839fe864459fbb468f6f2ed488c1801",
+        "source_fact:v1:b67e59ba5be9dfe3b0b4d13978cb40ef66c520780933e2ebd75428345556d70d",
+        "source_fact:v1:e6f27e25827f12318ef4e21cffc178cce1bddd05bf396d87b99e786578e6196b",
+        "source_fact:v1:eaa009d593adaa93d7c2b001f5f1363c66b3afc7a6ec0333aabd1b83da119509",
+        "source_fact:v1:eb1c359dac4f3cf5802cfb468e849901c7cbd1e6594d08355da16e2fe03cb4df",
+        "source_fact:v1:f6c9bfa4acb04aec349a226a97f5d93e75b8d0e4fdf547beea78b102e4106245",
+        "source_fact:v1:f973417e298ce3c6b3f902c069a872f3e9324d5fdd11770582c4b979cbda0dd8"
+      ],
+      "source_published_kst": "2026-10-14T11:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 치솟는 디젤(경유) 가격을 잡기 위해 러시아에 대한 제재를 해제하고 디젤 수입을 추진하고 있지만, 공급 물량이 제한적이어서 가격 안정 효과는 크지 않을 것이라는 전망이 나온다.",
+      "title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'"
     },
     "source_fact:6c95f4f6958ace2e873057ab": {
       "first_seen_kst": "2026-10-12T06:27:02+09:00",
@@ -412488,6 +413675,37 @@
       "telegram_core_fact": "챈은 \"데이터센터 구축, 미국 모델 훈련은 중국에서 수입되는 수많은 데이터센터 부품에 의존한다\"며 미국 공급망 전반에 걸쳐서도 중국산 부품과 연결고리가 나타난다고 평가했다.",
       "title": "\"美기업들, AI 패권 경쟁 벌이면서도 中 공급망 의존\""
     },
+    "source_fact:7159ef867e9e659bf0925c91": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825083",
+      "source": "뉴시스",
+      "source_body_digest": "48b6ccaf5c4b5d6cec9a2b11847fc5a9f39fefa512d9044e8bf6cd774b251034",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e18257988ea5a337d03806f9d305402f69fe0a27e4020cbfd333d820c570854d",
+      "source_fact_keys": [
+        "source_fact:v1:1e0241f13e8d223bca6efd5e286e23eff237d6b5f60c1fd354d915f2bccefc8f",
+        "source_fact:v1:216cd2bb8c1afeee6e59c0af23c9b8e6119db846064d5e40e0935993c3e34724",
+        "source_fact:v1:95c76417862cfb71d4bc4423e1bc419225d572c64c0aebc164287e2508e1c9b5",
+        "source_fact:v1:9974e4db8c971515fc4530b18f593176370af281c0903f88a61fedf6a527c521",
+        "source_fact:v1:a73060f91bde450ba30941acb71d3527f8a450e9182fdf639dcbf9a8adae14df",
+        "source_fact:v1:afae431ff933a7ca86fde9e2011a2888b839fe864459fbb468f6f2ed488c1801",
+        "source_fact:v1:b67e59ba5be9dfe3b0b4d13978cb40ef66c520780933e2ebd75428345556d70d",
+        "source_fact:v1:e6f27e25827f12318ef4e21cffc178cce1bddd05bf396d87b99e786578e6196b",
+        "source_fact:v1:eaa009d593adaa93d7c2b001f5f1363c66b3afc7a6ec0333aabd1b83da119509",
+        "source_fact:v1:eb1c359dac4f3cf5802cfb468e849901c7cbd1e6594d08355da16e2fe03cb4df",
+        "source_fact:v1:f6c9bfa4acb04aec349a226a97f5d93e75b8d0e4fdf547beea78b102e4106245",
+        "source_fact:v1:f973417e298ce3c6b3f902c069a872f3e9324d5fdd11770582c4b979cbda0dd8"
+      ],
+      "source_published_kst": "2026-10-14T11:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 치솟는 디젤(경유) 가격을 잡기 위해 러시아에 대한 제재를 해제하고 디젤 수입을 추진하고 있지만, 공급 물량이 제한적이어서 가격 안정 효과는 크지 않을 것이라는 전망이 나온다.",
+      "title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'"
+    },
     "source_fact:715afc5012989c3737fc6b48": {
       "first_seen_kst": "2026-10-10T04:17:09+09:00",
       "lanes": {
@@ -415713,6 +416931,29 @@
       "source_published_kst": "2026-10-05T22:27+09:00",
       "title": "듀오스 테크놀러지스 그룹, GPU 자회사 매각..4290만 달러 수취·부채 해소"
     },
+    "source_fact:742e8a7c61173874b94e62af": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825004",
+      "source": "뉴시스",
+      "source_body_digest": "6530b1822be7f2dad96b4282ab330ec670a4dd9c9d36da0ae72d79e5de6137d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:864345dbd6ffd4a73fb1efeff89cb6d4525d2d9bbe4f159b9a1cb150085b83fe",
+      "source_fact_keys": [
+        "source_fact:v1:498c7ba21b95c5136282019de4bbefc0b26945f5b1386a31151a3068f1fa7f06",
+        "source_fact:v1:53f98e459fc2430bea383a3975eb65a9bc2c7d0533e4a9f1b703e3237732b201",
+        "source_fact:v1:e11f002c7d5de9d54fab732fa298dfeea9d741102cb3223ac4184d4fc74aa594",
+        "source_fact:v1:e8c58a5bbd26dc3aee5a970cf567e8db821609b1677e53b088e38b2f2963d65a"
+      ],
+      "source_published_kst": "2026-10-14T09:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB證 \"삼성전자·SK하이닉스, 실적이 'W자 반등' 견인 전망\"",
+      "telegram_core_fact": "김 본부장은 \"최근 내년 양사의 합산 영업이익이 1000조원(삼성전자 600조원, SK하이닉스 400조원)을 상회할 가능성이 높아지면서 실적 컨센서스의 상향 조정이 본격화되고 있다\"고 말했다.",
+      "title": "KB證 \"삼성전자·SK하이닉스, 실적이 'W자 반등' 견인 전망\""
+    },
     "source_fact:74317a6f652cc0e644b2f4a2": {
       "first_seen_kst": "2026-10-07T18:00:43+09:00",
       "lanes": {
@@ -417277,6 +418518,29 @@
       ],
       "source_published_kst": "2026-10-07T06:22+09:00",
       "title": "“러시아 숨통 틔워줬다”…우크라, 韓 ‘석유 공급’ 공개 저격"
+    },
+    "source_fact:75833c90f2d4a4b80f32b6d9": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.etnews.com/20261014000248",
+      "source": "전자신문",
+      "source_body_digest": "44a54c90ae0b80beeedd3f25de7f1bdb26a9fe40679e84f0e0d8d67dc5de5e47",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:50f30ec0cf9fca19cb637165bc06564eacf6b4ea5020af91c253f8da74bfc48d",
+      "source_fact_keys": [
+        "source_fact:v1:5e2332f378c8c4d6b482d938b5cb8151c29bdce5c4493dc3c0b3ea6120597c44",
+        "source_fact:v1:8b4c6865a9fe86ef861c8e9ebff6a9d78500f140931caec531ca829e81581745",
+        "source_fact:v1:9d5ab9b0c6fb6f263618a25c59ac397b91ee62900188bca97bec1bf827ff308b",
+        "source_fact:v1:d38dbd05ae3c31f9376c823d479ac78acc3280d6faf8a7a0d371219c7f67f69c"
+      ],
+      "source_published_kst": "2026-10-14T13:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "엘앤에프 JHC, 폐배터리 전처리 연 1.5만톤…리튬 95% 회수",
+      "telegram_core_fact": "엘앤에프는 JHC가 생산한 블랙매스를 후처리 전문기업과 연계해 핵심광물을 회수하고 이를 다시 양극재 원료로 활용하는 순환형 밸류체인을 구축하고 있다.",
+      "title": "엘앤에프 JHC, 폐배터리 전처리 연 1.5만톤…리튬 95% 회수"
     },
     "source_fact:7588e40cf646f8cec9dfa7f3": {
       "first_seen_kst": "2026-10-06T22:21:21+09:00",
@@ -422182,6 +423446,32 @@
       "source_title": "[오늘의 투자전략] 코스피 4일간 9% 급락…\"기술적 반등 여건 형성 주목\"",
       "telegram_core_fact": "코스피는 최근 4거래일간 8.9% 밀려나며 장중 직전 저점(6439)을 밑돌았고 중장기 추세 판단의 기준선 역할을 해온 200일 이동평균선(6376) 부근까지 후퇴해 기술적 지지력을 시험받고 있다.",
       "title": "[오늘의 투자전략] 코스피 4일간 9% 급락…\"기술적 반등 여건 형성 주목\""
+    },
+    "source_fact:79ab7b68cd3a78780d941d74": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/14/2026101413299653584",
+      "source": "머니투데이",
+      "source_body_digest": "28127ecec6c97f001a8496cf20a9782f910fd3d9ae0c39621fffe622bcae616b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:057b9d20fa27c9eb40e004311c027709b3b0a74ac12f173d72ac4fc8b2130274",
+      "source_fact_keys": [
+        "source_fact:v1:2e06febd15eaca153802991a02bffd332f82936ed3776034088de82f0cccf87d",
+        "source_fact:v1:395f492033ea86bd500f4293011763466982552fd715881432c14e3db26b3269",
+        "source_fact:v1:66ff3f0a6b7640d82a520b513ccc02f0dd8159beeda95aa6f6ee2309f6c88c2a",
+        "source_fact:v1:b131efbc947ce56c69804aec240dd80218fe3d7b3058796e76c50c44bbfe90f4",
+        "source_fact:v1:bd70a3e414777469233b770319b05d189430da27528d0cd65a65e66b918b6cf9",
+        "source_fact:v1:f6c01a94b40728db0f34e775dcaa7ae596a8c6663339234002ef82e8dde3998a",
+        "source_fact:v1:faa3a3acfcd81552183833c37560035c08adf9752aee4108b59b0ea05d4606c1"
+      ],
+      "source_published_kst": "2026-10-14T13:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "[더벨]마음AI, '4족보행 순찰로봇' 규제특례 추진",
+      "telegram_core_fact": "피지컬 AI 전문기업 마음AI가 4족보행 로봇의 보행자 도로 순찰을 위한 규제특례를 추진하며 공공안전 분야에서 피지컬 AI 기술의 실증 기반 마련에 나섰다.",
+      "title": "[더벨]마음AI, '4족보행 순찰로봇' 규제특례 추진"
     },
     "source_fact:79afa7387dc02acb39e08653": {
       "first_seen_kst": "2026-10-14T03:10:24+09:00",
@@ -431497,6 +432787,32 @@
       "source_title": "표심 급한 트럼프 \"중간선거 전 이란 공격 안할 것\" | 연합뉴스",
       "telegram_core_fact": "트럼프 대통령은 SNS에 올린 글을 통해 \"이란과 생산적 논의를 하고 있다\"며 다만 \"대이란 봉쇄는 지속할 것\"이라고 밝혔습니다.",
       "title": "표심 급한 트럼프 \"중간선거 전 이란 공격 안할 것\" | 연합뉴스"
+    },
+    "source_fact:81c6514048cc9542bdae011d": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/14/2026101413299653584",
+      "source": "머니투데이",
+      "source_body_digest": "28127ecec6c97f001a8496cf20a9782f910fd3d9ae0c39621fffe622bcae616b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:057b9d20fa27c9eb40e004311c027709b3b0a74ac12f173d72ac4fc8b2130274",
+      "source_fact_keys": [
+        "source_fact:v1:2e06febd15eaca153802991a02bffd332f82936ed3776034088de82f0cccf87d",
+        "source_fact:v1:395f492033ea86bd500f4293011763466982552fd715881432c14e3db26b3269",
+        "source_fact:v1:66ff3f0a6b7640d82a520b513ccc02f0dd8159beeda95aa6f6ee2309f6c88c2a",
+        "source_fact:v1:b131efbc947ce56c69804aec240dd80218fe3d7b3058796e76c50c44bbfe90f4",
+        "source_fact:v1:bd70a3e414777469233b770319b05d189430da27528d0cd65a65e66b918b6cf9",
+        "source_fact:v1:f6c01a94b40728db0f34e775dcaa7ae596a8c6663339234002ef82e8dde3998a",
+        "source_fact:v1:faa3a3acfcd81552183833c37560035c08adf9752aee4108b59b0ea05d4606c1"
+      ],
+      "source_published_kst": "2026-10-14T13:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "[더벨]마음AI, '4족보행 순찰로봇' 규제특례 추진",
+      "telegram_core_fact": "피지컬 AI 전문기업 마음AI가 4족보행 로봇의 보행자 도로 순찰을 위한 규제특례를 추진하며 공공안전 분야에서 피지컬 AI 기술의 실증 기반 마련에 나섰다.",
+      "title": "[더벨]마음AI, '4족보행 순찰로봇' 규제특례 추진"
     },
     "source_fact:81c8d3b5318e0d061ad636f1": {
       "first_seen_kst": "2026-10-11T07:07:11+09:00",
@@ -440920,6 +442236,32 @@
       "telegram_core_fact": "예상대로라면 미래에셋증권은 직전 분기(지배주주순이익 1조8,959억원) 대비 적자 전환하게 됩니다. 고연수 하나증권 연구원은 \"(미래에셋증권의) 3분기 연결 지배주주 순손실은 4,088억원으로 컨센서스(시장 예상치)인 986억원을 대폭 하회할 것으로 예상한다\"고 밝혔습니다.",
       "title": "하나증권 “미래에셋, 스페이스X 평가손에 3분기 적자 예상“"
     },
+    "source_fact:89ed9c2d45f4ab25bebed269": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/14/2026101416271656481",
+      "source": "머니투데이",
+      "source_body_digest": "5cff270b249aa3ee108f344351cf6e93ca58ea3514b4f4c52efaaf279ef8ccd5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd1fa5063268996e26812bbd2dd8b2d244931d6c636eb267b465d5956790d01c",
+      "source_fact_keys": [
+        "source_fact:v1:171eda40721aca795776c19224791aec4b93079ce98077a1d97ccbb5c455cd82",
+        "source_fact:v1:52b020f7d3f3a8783ddc06e3c2a0f1d3bc2c48a96b2ae5a1c440ba6c2aa7d960",
+        "source_fact:v1:5bf97160eec4f01772d577aa52c0df255afbad25630f43b46a264c94b35476d1",
+        "source_fact:v1:a1a879f07043a893750622ced8020e6623c4d04c63cc38e999a699a4b550be23",
+        "source_fact:v1:a56c399668979b9b5d2353f236e16c8e0185f68da4c9bca6dc5f55e2300e1520",
+        "source_fact:v1:c65f88adbf1dc0847f7f829fe4118c07d612ff20e6a00cfe122a6461b8101c44",
+        "source_fact:v1:e133d45cb1b8d694f9c3c623ea5b341e8ec168212b4bdba9881aa71211dba802"
+      ],
+      "source_published_kst": "2026-10-14T17:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피, 美 CPI 발표 앞두고 경계심리↑… 물가둔화 확인할까",
+      "telegram_core_fact": "14일 상승 출발하며 2% 이상 뛰었으나 미국 9월 소비자물가지수(CPI) 발표를 앞두고 관망세가 짙어지며 장중 6000선을 밑돌기도 했다.",
+      "title": "코스피, 美 CPI 발표 앞두고 경계심리↑… 물가둔화 확인할까"
+    },
     "source_fact:8a00aca8bdb3c6fcd4b388bd": {
       "first_seen_kst": "2026-10-13T12:19:43+09:00",
       "lanes": {
@@ -442140,6 +443482,32 @@
       ],
       "source_published_kst": "2026-10-06T06:27+09:00",
       "title": "뉴욕 증시, 국채 금리 급등에도 나스닥 사상 최고치"
+    },
+    "source_fact:8b05d67b0e7d4566d103a7d7": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/14/2026101413299653584",
+      "source": "머니투데이",
+      "source_body_digest": "28127ecec6c97f001a8496cf20a9782f910fd3d9ae0c39621fffe622bcae616b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:057b9d20fa27c9eb40e004311c027709b3b0a74ac12f173d72ac4fc8b2130274",
+      "source_fact_keys": [
+        "source_fact:v1:2e06febd15eaca153802991a02bffd332f82936ed3776034088de82f0cccf87d",
+        "source_fact:v1:395f492033ea86bd500f4293011763466982552fd715881432c14e3db26b3269",
+        "source_fact:v1:66ff3f0a6b7640d82a520b513ccc02f0dd8159beeda95aa6f6ee2309f6c88c2a",
+        "source_fact:v1:b131efbc947ce56c69804aec240dd80218fe3d7b3058796e76c50c44bbfe90f4",
+        "source_fact:v1:bd70a3e414777469233b770319b05d189430da27528d0cd65a65e66b918b6cf9",
+        "source_fact:v1:f6c01a94b40728db0f34e775dcaa7ae596a8c6663339234002ef82e8dde3998a",
+        "source_fact:v1:faa3a3acfcd81552183833c37560035c08adf9752aee4108b59b0ea05d4606c1"
+      ],
+      "source_published_kst": "2026-10-14T13:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "[더벨]마음AI, '4족보행 순찰로봇' 규제특례 추진",
+      "telegram_core_fact": "피지컬 AI 전문기업 마음AI가 4족보행 로봇의 보행자 도로 순찰을 위한 규제특례를 추진하며 공공안전 분야에서 피지컬 AI 기술의 실증 기반 마련에 나섰다.",
+      "title": "[더벨]마음AI, '4족보행 순찰로봇' 규제특례 추진"
     },
     "source_fact:8b0d9503a40d63f26e83e468": {
       "first_seen_kst": "2026-10-12T23:37:27+09:00",
@@ -459498,6 +460866,37 @@
       "source_published_kst": "2026-10-06T17:35+09:00",
       "title": "포스코퓨처엠, 삼성SDI에 '6조원' 규모 LFP 공급…\"물량 두 배 이상 확대\""
     },
+    "source_fact:9a6e2db056ea805f6e37eb7a": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825083",
+      "source": "뉴시스",
+      "source_body_digest": "48b6ccaf5c4b5d6cec9a2b11847fc5a9f39fefa512d9044e8bf6cd774b251034",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e18257988ea5a337d03806f9d305402f69fe0a27e4020cbfd333d820c570854d",
+      "source_fact_keys": [
+        "source_fact:v1:1e0241f13e8d223bca6efd5e286e23eff237d6b5f60c1fd354d915f2bccefc8f",
+        "source_fact:v1:216cd2bb8c1afeee6e59c0af23c9b8e6119db846064d5e40e0935993c3e34724",
+        "source_fact:v1:95c76417862cfb71d4bc4423e1bc419225d572c64c0aebc164287e2508e1c9b5",
+        "source_fact:v1:9974e4db8c971515fc4530b18f593176370af281c0903f88a61fedf6a527c521",
+        "source_fact:v1:a73060f91bde450ba30941acb71d3527f8a450e9182fdf639dcbf9a8adae14df",
+        "source_fact:v1:afae431ff933a7ca86fde9e2011a2888b839fe864459fbb468f6f2ed488c1801",
+        "source_fact:v1:b67e59ba5be9dfe3b0b4d13978cb40ef66c520780933e2ebd75428345556d70d",
+        "source_fact:v1:e6f27e25827f12318ef4e21cffc178cce1bddd05bf396d87b99e786578e6196b",
+        "source_fact:v1:eaa009d593adaa93d7c2b001f5f1363c66b3afc7a6ec0333aabd1b83da119509",
+        "source_fact:v1:eb1c359dac4f3cf5802cfb468e849901c7cbd1e6594d08355da16e2fe03cb4df",
+        "source_fact:v1:f6c9bfa4acb04aec349a226a97f5d93e75b8d0e4fdf547beea78b102e4106245",
+        "source_fact:v1:f973417e298ce3c6b3f902c069a872f3e9324d5fdd11770582c4b979cbda0dd8"
+      ],
+      "source_published_kst": "2026-10-14T11:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 치솟는 디젤(경유) 가격을 잡기 위해 러시아에 대한 제재를 해제하고 디젤 수입을 추진하고 있지만, 공급 물량이 제한적이어서 가격 안정 효과는 크지 않을 것이라는 전망이 나온다.",
+      "title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'"
+    },
     "source_fact:9a73b3dcceea506bd476edba": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
       "lanes": {
@@ -461341,6 +462740,32 @@
       "source_title": "NH證 “LS, NAV 대비 66% 할인⋯과도한 저평가 구간”",
       "telegram_core_fact": "NH투자증권 자료에 따르면 LS전선과 국내·해외 종속회사를 합산한 수주잔고는 2022년 1분기 3조원대에서 올해 2분기 9조원대까지 확대됐다.",
       "title": "NH證 “LS, NAV 대비 66% 할인⋯과도한 저평가 구간”"
+    },
+    "source_fact:9c0a20626023185c266311a5": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/14/2026101416271656481",
+      "source": "머니투데이",
+      "source_body_digest": "5cff270b249aa3ee108f344351cf6e93ca58ea3514b4f4c52efaaf279ef8ccd5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd1fa5063268996e26812bbd2dd8b2d244931d6c636eb267b465d5956790d01c",
+      "source_fact_keys": [
+        "source_fact:v1:171eda40721aca795776c19224791aec4b93079ce98077a1d97ccbb5c455cd82",
+        "source_fact:v1:52b020f7d3f3a8783ddc06e3c2a0f1d3bc2c48a96b2ae5a1c440ba6c2aa7d960",
+        "source_fact:v1:5bf97160eec4f01772d577aa52c0df255afbad25630f43b46a264c94b35476d1",
+        "source_fact:v1:a1a879f07043a893750622ced8020e6623c4d04c63cc38e999a699a4b550be23",
+        "source_fact:v1:a56c399668979b9b5d2353f236e16c8e0185f68da4c9bca6dc5f55e2300e1520",
+        "source_fact:v1:c65f88adbf1dc0847f7f829fe4118c07d612ff20e6a00cfe122a6461b8101c44",
+        "source_fact:v1:e133d45cb1b8d694f9c3c623ea5b341e8ec168212b4bdba9881aa71211dba802"
+      ],
+      "source_published_kst": "2026-10-14T17:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피, 美 CPI 발표 앞두고 경계심리↑… 물가둔화 확인할까",
+      "telegram_core_fact": "14일 상승 출발하며 2% 이상 뛰었으나 미국 9월 소비자물가지수(CPI) 발표를 앞두고 관망세가 짙어지며 장중 6000선을 밑돌기도 했다.",
+      "title": "코스피, 美 CPI 발표 앞두고 경계심리↑… 물가둔화 확인할까"
     },
     "source_fact:9c0aaec2de9623eb238cc078": {
       "first_seen_kst": "2026-10-06T18:34:25+09:00",
@@ -466994,6 +468419,32 @@
       "source_title": "케이엔에스, 안성 신공장 증설 결정",
       "telegram_core_fact": "신공장이 완공되면 케이엔에스의 연간 생산능력(CAPA)은 기존 대비 약 100% 확대될 전망이다.",
       "title": "케이엔에스, 안성 신공장 증설 결정"
+    },
+    "source_fact:a0bba6c1babed75cd70bf46a": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/14/2026101413299653584",
+      "source": "머니투데이",
+      "source_body_digest": "28127ecec6c97f001a8496cf20a9782f910fd3d9ae0c39621fffe622bcae616b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:057b9d20fa27c9eb40e004311c027709b3b0a74ac12f173d72ac4fc8b2130274",
+      "source_fact_keys": [
+        "source_fact:v1:2e06febd15eaca153802991a02bffd332f82936ed3776034088de82f0cccf87d",
+        "source_fact:v1:395f492033ea86bd500f4293011763466982552fd715881432c14e3db26b3269",
+        "source_fact:v1:66ff3f0a6b7640d82a520b513ccc02f0dd8159beeda95aa6f6ee2309f6c88c2a",
+        "source_fact:v1:b131efbc947ce56c69804aec240dd80218fe3d7b3058796e76c50c44bbfe90f4",
+        "source_fact:v1:bd70a3e414777469233b770319b05d189430da27528d0cd65a65e66b918b6cf9",
+        "source_fact:v1:f6c01a94b40728db0f34e775dcaa7ae596a8c6663339234002ef82e8dde3998a",
+        "source_fact:v1:faa3a3acfcd81552183833c37560035c08adf9752aee4108b59b0ea05d4606c1"
+      ],
+      "source_published_kst": "2026-10-14T13:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "[더벨]마음AI, '4족보행 순찰로봇' 규제특례 추진",
+      "telegram_core_fact": "피지컬 AI 전문기업 마음AI가 4족보행 로봇의 보행자 도로 순찰을 위한 규제특례를 추진하며 공공안전 분야에서 피지컬 AI 기술의 실증 기반 마련에 나섰다.",
+      "title": "[더벨]마음AI, '4족보행 순찰로봇' 규제특례 추진"
     },
     "source_fact:a0cd22e0559078f04a53ec73": {
       "first_seen_kst": "2026-10-06T23:56:49+09:00",
@@ -474296,6 +475747,32 @@
       "source_published_kst": "2026-10-07T10:14+09:00",
       "title": "한국재료硏 \"초박막 코팅으로 수전해 촉매 성능 향상 성공\""
     },
+    "source_fact:a6ea612e69f92a22dd8f5601": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/14/2026101416271656481",
+      "source": "머니투데이",
+      "source_body_digest": "5cff270b249aa3ee108f344351cf6e93ca58ea3514b4f4c52efaaf279ef8ccd5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd1fa5063268996e26812bbd2dd8b2d244931d6c636eb267b465d5956790d01c",
+      "source_fact_keys": [
+        "source_fact:v1:171eda40721aca795776c19224791aec4b93079ce98077a1d97ccbb5c455cd82",
+        "source_fact:v1:52b020f7d3f3a8783ddc06e3c2a0f1d3bc2c48a96b2ae5a1c440ba6c2aa7d960",
+        "source_fact:v1:5bf97160eec4f01772d577aa52c0df255afbad25630f43b46a264c94b35476d1",
+        "source_fact:v1:a1a879f07043a893750622ced8020e6623c4d04c63cc38e999a699a4b550be23",
+        "source_fact:v1:a56c399668979b9b5d2353f236e16c8e0185f68da4c9bca6dc5f55e2300e1520",
+        "source_fact:v1:c65f88adbf1dc0847f7f829fe4118c07d612ff20e6a00cfe122a6461b8101c44",
+        "source_fact:v1:e133d45cb1b8d694f9c3c623ea5b341e8ec168212b4bdba9881aa71211dba802"
+      ],
+      "source_published_kst": "2026-10-14T17:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피, 美 CPI 발표 앞두고 경계심리↑… 물가둔화 확인할까",
+      "telegram_core_fact": "14일 상승 출발하며 2% 이상 뛰었으나 미국 9월 소비자물가지수(CPI) 발표를 앞두고 관망세가 짙어지며 장중 6000선을 밑돌기도 했다.",
+      "title": "코스피, 美 CPI 발표 앞두고 경계심리↑… 물가둔화 확인할까"
+    },
     "source_fact:a6f128e5341ae6ccd84fa272": {
       "first_seen_kst": "2026-10-13T20:49:52+09:00",
       "lanes": {
@@ -477276,6 +478753,29 @@
       ],
       "source_published_kst": "2026-10-05T23:08+09:00",
       "title": "JP모간 \"美 증시 최악의 상황 지났을 수도\"…단기 전망 낙관"
+    },
+    "source_fact:a9dda9e0224515a8334fae0a": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.etnews.com/20261014000248",
+      "source": "전자신문",
+      "source_body_digest": "44a54c90ae0b80beeedd3f25de7f1bdb26a9fe40679e84f0e0d8d67dc5de5e47",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:50f30ec0cf9fca19cb637165bc06564eacf6b4ea5020af91c253f8da74bfc48d",
+      "source_fact_keys": [
+        "source_fact:v1:5e2332f378c8c4d6b482d938b5cb8151c29bdce5c4493dc3c0b3ea6120597c44",
+        "source_fact:v1:8b4c6865a9fe86ef861c8e9ebff6a9d78500f140931caec531ca829e81581745",
+        "source_fact:v1:9d5ab9b0c6fb6f263618a25c59ac397b91ee62900188bca97bec1bf827ff308b",
+        "source_fact:v1:d38dbd05ae3c31f9376c823d479ac78acc3280d6faf8a7a0d371219c7f67f69c"
+      ],
+      "source_published_kst": "2026-10-14T13:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "엘앤에프 JHC, 폐배터리 전처리 연 1.5만톤…리튬 95% 회수",
+      "telegram_core_fact": "엘앤에프는 JHC가 생산한 블랙매스를 후처리 전문기업과 연계해 핵심광물을 회수하고 이를 다시 양극재 원료로 활용하는 순환형 밸류체인을 구축하고 있다.",
+      "title": "엘앤에프 JHC, 폐배터리 전처리 연 1.5만톤…리튬 95% 회수"
     },
     "source_fact:a9e7cac4d4b5d646a2955702": {
       "first_seen_kst": "2026-10-09T20:02:39+09:00",
@@ -503929,6 +505429,29 @@
       "source_published_kst": "2026-10-07T13:37+09:00",
       "title": "대구·경북 제조업 생산 엇갈려…소비는 동반 감소"
     },
+    "source_fact:c104ebe8f663131a3880a30f": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825004",
+      "source": "뉴시스",
+      "source_body_digest": "6530b1822be7f2dad96b4282ab330ec670a4dd9c9d36da0ae72d79e5de6137d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:864345dbd6ffd4a73fb1efeff89cb6d4525d2d9bbe4f159b9a1cb150085b83fe",
+      "source_fact_keys": [
+        "source_fact:v1:498c7ba21b95c5136282019de4bbefc0b26945f5b1386a31151a3068f1fa7f06",
+        "source_fact:v1:53f98e459fc2430bea383a3975eb65a9bc2c7d0533e4a9f1b703e3237732b201",
+        "source_fact:v1:e11f002c7d5de9d54fab732fa298dfeea9d741102cb3223ac4184d4fc74aa594",
+        "source_fact:v1:e8c58a5bbd26dc3aee5a970cf567e8db821609b1677e53b088e38b2f2963d65a"
+      ],
+      "source_published_kst": "2026-10-14T09:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB證 \"삼성전자·SK하이닉스, 실적이 'W자 반등' 견인 전망\"",
+      "telegram_core_fact": "김 본부장은 \"최근 내년 양사의 합산 영업이익이 1000조원(삼성전자 600조원, SK하이닉스 400조원)을 상회할 가능성이 높아지면서 실적 컨센서스의 상향 조정이 본격화되고 있다\"고 말했다.",
+      "title": "KB證 \"삼성전자·SK하이닉스, 실적이 'W자 반등' 견인 전망\""
+    },
     "source_fact:c1091d6efceeda8706bc445c": {
       "first_seen_kst": "2026-10-06T06:36:31+09:00",
       "lanes": {
@@ -504813,6 +506336,32 @@
       "source_title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의",
       "telegram_core_fact": "반도체 산업 호황으로 촉발된 산업용 질소가스 공급난이 장기화하면서 정부가 가스 제조사와 반도체 대기업을 대상으로 수급 조정에 나선다.",
       "title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의"
+    },
+    "source_fact:c1cf3c8298fe8bf2042a1fff": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/14/2026101413299653584",
+      "source": "머니투데이",
+      "source_body_digest": "28127ecec6c97f001a8496cf20a9782f910fd3d9ae0c39621fffe622bcae616b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:057b9d20fa27c9eb40e004311c027709b3b0a74ac12f173d72ac4fc8b2130274",
+      "source_fact_keys": [
+        "source_fact:v1:2e06febd15eaca153802991a02bffd332f82936ed3776034088de82f0cccf87d",
+        "source_fact:v1:395f492033ea86bd500f4293011763466982552fd715881432c14e3db26b3269",
+        "source_fact:v1:66ff3f0a6b7640d82a520b513ccc02f0dd8159beeda95aa6f6ee2309f6c88c2a",
+        "source_fact:v1:b131efbc947ce56c69804aec240dd80218fe3d7b3058796e76c50c44bbfe90f4",
+        "source_fact:v1:bd70a3e414777469233b770319b05d189430da27528d0cd65a65e66b918b6cf9",
+        "source_fact:v1:f6c01a94b40728db0f34e775dcaa7ae596a8c6663339234002ef82e8dde3998a",
+        "source_fact:v1:faa3a3acfcd81552183833c37560035c08adf9752aee4108b59b0ea05d4606c1"
+      ],
+      "source_published_kst": "2026-10-14T13:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "[더벨]마음AI, '4족보행 순찰로봇' 규제특례 추진",
+      "telegram_core_fact": "피지컬 AI 전문기업 마음AI가 4족보행 로봇의 보행자 도로 순찰을 위한 규제특례를 추진하며 공공안전 분야에서 피지컬 AI 기술의 실증 기반 마련에 나섰다.",
+      "title": "[더벨]마음AI, '4족보행 순찰로봇' 규제특례 추진"
     },
     "source_fact:c1d5b0121033be4479b236bc": {
       "first_seen_kst": "2026-10-09T15:48:54+09:00",
@@ -508002,6 +509551,37 @@
       ],
       "source_published_kst": "2026-10-05T08:08+09:00",
       "title": "한반도 감시부터 우주의약품 실험까지…K-우주영토 넓힌다[누리호 5차 下]"
+    },
+    "source_fact:c42c5b19fba56696d6826adf": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825083",
+      "source": "뉴시스",
+      "source_body_digest": "48b6ccaf5c4b5d6cec9a2b11847fc5a9f39fefa512d9044e8bf6cd774b251034",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e18257988ea5a337d03806f9d305402f69fe0a27e4020cbfd333d820c570854d",
+      "source_fact_keys": [
+        "source_fact:v1:1e0241f13e8d223bca6efd5e286e23eff237d6b5f60c1fd354d915f2bccefc8f",
+        "source_fact:v1:216cd2bb8c1afeee6e59c0af23c9b8e6119db846064d5e40e0935993c3e34724",
+        "source_fact:v1:95c76417862cfb71d4bc4423e1bc419225d572c64c0aebc164287e2508e1c9b5",
+        "source_fact:v1:9974e4db8c971515fc4530b18f593176370af281c0903f88a61fedf6a527c521",
+        "source_fact:v1:a73060f91bde450ba30941acb71d3527f8a450e9182fdf639dcbf9a8adae14df",
+        "source_fact:v1:afae431ff933a7ca86fde9e2011a2888b839fe864459fbb468f6f2ed488c1801",
+        "source_fact:v1:b67e59ba5be9dfe3b0b4d13978cb40ef66c520780933e2ebd75428345556d70d",
+        "source_fact:v1:e6f27e25827f12318ef4e21cffc178cce1bddd05bf396d87b99e786578e6196b",
+        "source_fact:v1:eaa009d593adaa93d7c2b001f5f1363c66b3afc7a6ec0333aabd1b83da119509",
+        "source_fact:v1:eb1c359dac4f3cf5802cfb468e849901c7cbd1e6594d08355da16e2fe03cb4df",
+        "source_fact:v1:f6c9bfa4acb04aec349a226a97f5d93e75b8d0e4fdf547beea78b102e4106245",
+        "source_fact:v1:f973417e298ce3c6b3f902c069a872f3e9324d5fdd11770582c4b979cbda0dd8"
+      ],
+      "source_published_kst": "2026-10-14T11:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 치솟는 디젤(경유) 가격을 잡기 위해 러시아에 대한 제재를 해제하고 디젤 수입을 추진하고 있지만, 공급 물량이 제한적이어서 가격 안정 효과는 크지 않을 것이라는 전망이 나온다.",
+      "title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'"
     },
     "source_fact:c42c7687dd39ffea6e37ee26": {
       "first_seen_kst": "2026-10-08T10:20:20+09:00",
@@ -517532,6 +519112,32 @@
       "source_published_kst": "2026-10-05T19:24+09:00",
       "title": "[TODAY엔비디아]개장전 '상승'…월가, 신고가 경신에도 여전히 \"밸류 매력\""
     },
+    "source_fact:cd0427c097097e51405c95fb": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/14/2026101416271656481",
+      "source": "머니투데이",
+      "source_body_digest": "5cff270b249aa3ee108f344351cf6e93ca58ea3514b4f4c52efaaf279ef8ccd5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd1fa5063268996e26812bbd2dd8b2d244931d6c636eb267b465d5956790d01c",
+      "source_fact_keys": [
+        "source_fact:v1:171eda40721aca795776c19224791aec4b93079ce98077a1d97ccbb5c455cd82",
+        "source_fact:v1:52b020f7d3f3a8783ddc06e3c2a0f1d3bc2c48a96b2ae5a1c440ba6c2aa7d960",
+        "source_fact:v1:5bf97160eec4f01772d577aa52c0df255afbad25630f43b46a264c94b35476d1",
+        "source_fact:v1:a1a879f07043a893750622ced8020e6623c4d04c63cc38e999a699a4b550be23",
+        "source_fact:v1:a56c399668979b9b5d2353f236e16c8e0185f68da4c9bca6dc5f55e2300e1520",
+        "source_fact:v1:c65f88adbf1dc0847f7f829fe4118c07d612ff20e6a00cfe122a6461b8101c44",
+        "source_fact:v1:e133d45cb1b8d694f9c3c623ea5b341e8ec168212b4bdba9881aa71211dba802"
+      ],
+      "source_published_kst": "2026-10-14T17:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피, 美 CPI 발표 앞두고 경계심리↑… 물가둔화 확인할까",
+      "telegram_core_fact": "14일 상승 출발하며 2% 이상 뛰었으나 미국 9월 소비자물가지수(CPI) 발표를 앞두고 관망세가 짙어지며 장중 6000선을 밑돌기도 했다.",
+      "title": "코스피, 美 CPI 발표 앞두고 경계심리↑… 물가둔화 확인할까"
+    },
     "source_fact:cd0536e8ca174fbcfc8c71f9": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
       "lanes": {
@@ -520252,6 +521858,26 @@
       ],
       "source_published_kst": "2026-10-07T08:45+09:00",
       "title": "멜라르 애퀴지션 I, 에벌리 합병 SEC 효력 발생..22일 주총 표결"
+    },
+    "source_fact:cf62ed41bce4b2e86e9d03d4": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.news1.kr/economy/trend/6319660",
+      "source": "뉴스1",
+      "source_body_digest": "9d44ef3d3142aeeea1c45b141726cd71d89117752cfd612e785f432c6a0981d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7438b1313eac7e8a39238a467649635ad05f913577fa853b8a1b2f4598194dd",
+      "source_fact_keys": [
+        "source_fact:v1:d29832444ff910d936fc229d0a9704002f8409d75e3d8742c5bc501d07d9ddc3"
+      ],
+      "source_published_kst": "2026-10-14T13:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "부활한 '공정위 저승사자'…첫 타깃은 '먹거리' 대상·오뚜기·CJ",
+      "telegram_core_fact": "공정위는 올해 들어 밀가루, 전분당, 설탕 등 먹거리 분야 담합에 대한 제재 수위를 강화해 왔다.",
+      "title": "부활한 '공정위 저승사자'…첫 타깃은 '먹거리' 대상·오뚜기·CJ"
     },
     "source_fact:cf630b4030407b1dea692859": {
       "first_seen_kst": "2026-10-07T11:25:20+09:00",
@@ -524197,6 +525823,37 @@
       "telegram_core_fact": "발언, 확대 시행을 위한 협의 구상 단계이지만 민 시장이 통합지원금 활용 가능성까지 열어두면서 논의는 구체화될 전망이다.",
       "title": "민형배 \"내년 농어촌기본소득 전면시행…통합지원금 활용 가능\""
     },
+    "source_fact:d324fc14a2c2ed9b95abb157": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825083",
+      "source": "뉴시스",
+      "source_body_digest": "48b6ccaf5c4b5d6cec9a2b11847fc5a9f39fefa512d9044e8bf6cd774b251034",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e18257988ea5a337d03806f9d305402f69fe0a27e4020cbfd333d820c570854d",
+      "source_fact_keys": [
+        "source_fact:v1:1e0241f13e8d223bca6efd5e286e23eff237d6b5f60c1fd354d915f2bccefc8f",
+        "source_fact:v1:216cd2bb8c1afeee6e59c0af23c9b8e6119db846064d5e40e0935993c3e34724",
+        "source_fact:v1:95c76417862cfb71d4bc4423e1bc419225d572c64c0aebc164287e2508e1c9b5",
+        "source_fact:v1:9974e4db8c971515fc4530b18f593176370af281c0903f88a61fedf6a527c521",
+        "source_fact:v1:a73060f91bde450ba30941acb71d3527f8a450e9182fdf639dcbf9a8adae14df",
+        "source_fact:v1:afae431ff933a7ca86fde9e2011a2888b839fe864459fbb468f6f2ed488c1801",
+        "source_fact:v1:b67e59ba5be9dfe3b0b4d13978cb40ef66c520780933e2ebd75428345556d70d",
+        "source_fact:v1:e6f27e25827f12318ef4e21cffc178cce1bddd05bf396d87b99e786578e6196b",
+        "source_fact:v1:eaa009d593adaa93d7c2b001f5f1363c66b3afc7a6ec0333aabd1b83da119509",
+        "source_fact:v1:eb1c359dac4f3cf5802cfb468e849901c7cbd1e6594d08355da16e2fe03cb4df",
+        "source_fact:v1:f6c9bfa4acb04aec349a226a97f5d93e75b8d0e4fdf547beea78b102e4106245",
+        "source_fact:v1:f973417e298ce3c6b3f902c069a872f3e9324d5fdd11770582c4b979cbda0dd8"
+      ],
+      "source_published_kst": "2026-10-14T11:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 치솟는 디젤(경유) 가격을 잡기 위해 러시아에 대한 제재를 해제하고 디젤 수입을 추진하고 있지만, 공급 물량이 제한적이어서 가격 안정 효과는 크지 않을 것이라는 전망이 나온다.",
+      "title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'"
+    },
     "source_fact:d32c4c11635dd94fbea7074c": {
       "first_seen_kst": "2026-10-06T19:46:03+09:00",
       "lanes": {
@@ -524599,6 +526256,37 @@
       ],
       "source_published_kst": "2026-10-06T23:31+09:00",
       "title": "우크라, '한국의 러 석유공급' 기사 인용해 韓 비판(종합) | 연합뉴스"
+    },
+    "source_fact:d37f2b45c8981418e243c671": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825083",
+      "source": "뉴시스",
+      "source_body_digest": "48b6ccaf5c4b5d6cec9a2b11847fc5a9f39fefa512d9044e8bf6cd774b251034",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e18257988ea5a337d03806f9d305402f69fe0a27e4020cbfd333d820c570854d",
+      "source_fact_keys": [
+        "source_fact:v1:1e0241f13e8d223bca6efd5e286e23eff237d6b5f60c1fd354d915f2bccefc8f",
+        "source_fact:v1:216cd2bb8c1afeee6e59c0af23c9b8e6119db846064d5e40e0935993c3e34724",
+        "source_fact:v1:95c76417862cfb71d4bc4423e1bc419225d572c64c0aebc164287e2508e1c9b5",
+        "source_fact:v1:9974e4db8c971515fc4530b18f593176370af281c0903f88a61fedf6a527c521",
+        "source_fact:v1:a73060f91bde450ba30941acb71d3527f8a450e9182fdf639dcbf9a8adae14df",
+        "source_fact:v1:afae431ff933a7ca86fde9e2011a2888b839fe864459fbb468f6f2ed488c1801",
+        "source_fact:v1:b67e59ba5be9dfe3b0b4d13978cb40ef66c520780933e2ebd75428345556d70d",
+        "source_fact:v1:e6f27e25827f12318ef4e21cffc178cce1bddd05bf396d87b99e786578e6196b",
+        "source_fact:v1:eaa009d593adaa93d7c2b001f5f1363c66b3afc7a6ec0333aabd1b83da119509",
+        "source_fact:v1:eb1c359dac4f3cf5802cfb468e849901c7cbd1e6594d08355da16e2fe03cb4df",
+        "source_fact:v1:f6c9bfa4acb04aec349a226a97f5d93e75b8d0e4fdf547beea78b102e4106245",
+        "source_fact:v1:f973417e298ce3c6b3f902c069a872f3e9324d5fdd11770582c4b979cbda0dd8"
+      ],
+      "source_published_kst": "2026-10-14T11:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 치솟는 디젤(경유) 가격을 잡기 위해 러시아에 대한 제재를 해제하고 디젤 수입을 추진하고 있지만, 공급 물량이 제한적이어서 가격 안정 효과는 크지 않을 것이라는 전망이 나온다.",
+      "title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'"
     },
     "source_fact:d383ce8fad1f426383573eb0": {
       "first_seen_kst": "2026-10-13T01:37:36+09:00",
@@ -556961,6 +558649,32 @@
       "source_published_kst": "2026-10-06T16:06+09:00",
       "title": "건설로봇, 연구실 넘어 현장으로…“상용화 위한 실증 확대·제도 개선 필요”"
     },
+    "source_fact:ee4f5ab273a50a83afa97f09": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/14/2026101416271656481",
+      "source": "머니투데이",
+      "source_body_digest": "5cff270b249aa3ee108f344351cf6e93ca58ea3514b4f4c52efaaf279ef8ccd5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd1fa5063268996e26812bbd2dd8b2d244931d6c636eb267b465d5956790d01c",
+      "source_fact_keys": [
+        "source_fact:v1:171eda40721aca795776c19224791aec4b93079ce98077a1d97ccbb5c455cd82",
+        "source_fact:v1:52b020f7d3f3a8783ddc06e3c2a0f1d3bc2c48a96b2ae5a1c440ba6c2aa7d960",
+        "source_fact:v1:5bf97160eec4f01772d577aa52c0df255afbad25630f43b46a264c94b35476d1",
+        "source_fact:v1:a1a879f07043a893750622ced8020e6623c4d04c63cc38e999a699a4b550be23",
+        "source_fact:v1:a56c399668979b9b5d2353f236e16c8e0185f68da4c9bca6dc5f55e2300e1520",
+        "source_fact:v1:c65f88adbf1dc0847f7f829fe4118c07d612ff20e6a00cfe122a6461b8101c44",
+        "source_fact:v1:e133d45cb1b8d694f9c3c623ea5b341e8ec168212b4bdba9881aa71211dba802"
+      ],
+      "source_published_kst": "2026-10-14T17:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피, 美 CPI 발표 앞두고 경계심리↑… 물가둔화 확인할까",
+      "telegram_core_fact": "14일 상승 출발하며 2% 이상 뛰었으나 미국 9월 소비자물가지수(CPI) 발표를 앞두고 관망세가 짙어지며 장중 6000선을 밑돌기도 했다.",
+      "title": "코스피, 美 CPI 발표 앞두고 경계심리↑… 물가둔화 확인할까"
+    },
     "source_fact:ee52caac17b88af5b01a7dfb": {
       "first_seen_kst": "2026-10-13T16:01:00+09:00",
       "lanes": {
@@ -560149,6 +561863,37 @@
       "source_title": "피에스케이홀딩스, 내년 매출 75% 성장 전망…목표가 26만원-신한",
       "telegram_core_fact": "12일 김형태 신한투자증권 연구원은 피에스케이홀딩스의 내년 매출액을 5001억원으로 전년 대비 75% 증가하고, 영업이익은 2005억원으로 77% 늘어날 것으로 추정했다.",
       "title": "피에스케이홀딩스, 내년 매출 75% 성장 전망…목표가 26만원-신한"
+    },
+    "source_fact:f1299efc938f21295f067149": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825083",
+      "source": "뉴시스",
+      "source_body_digest": "48b6ccaf5c4b5d6cec9a2b11847fc5a9f39fefa512d9044e8bf6cd774b251034",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e18257988ea5a337d03806f9d305402f69fe0a27e4020cbfd333d820c570854d",
+      "source_fact_keys": [
+        "source_fact:v1:1e0241f13e8d223bca6efd5e286e23eff237d6b5f60c1fd354d915f2bccefc8f",
+        "source_fact:v1:216cd2bb8c1afeee6e59c0af23c9b8e6119db846064d5e40e0935993c3e34724",
+        "source_fact:v1:95c76417862cfb71d4bc4423e1bc419225d572c64c0aebc164287e2508e1c9b5",
+        "source_fact:v1:9974e4db8c971515fc4530b18f593176370af281c0903f88a61fedf6a527c521",
+        "source_fact:v1:a73060f91bde450ba30941acb71d3527f8a450e9182fdf639dcbf9a8adae14df",
+        "source_fact:v1:afae431ff933a7ca86fde9e2011a2888b839fe864459fbb468f6f2ed488c1801",
+        "source_fact:v1:b67e59ba5be9dfe3b0b4d13978cb40ef66c520780933e2ebd75428345556d70d",
+        "source_fact:v1:e6f27e25827f12318ef4e21cffc178cce1bddd05bf396d87b99e786578e6196b",
+        "source_fact:v1:eaa009d593adaa93d7c2b001f5f1363c66b3afc7a6ec0333aabd1b83da119509",
+        "source_fact:v1:eb1c359dac4f3cf5802cfb468e849901c7cbd1e6594d08355da16e2fe03cb4df",
+        "source_fact:v1:f6c9bfa4acb04aec349a226a97f5d93e75b8d0e4fdf547beea78b102e4106245",
+        "source_fact:v1:f973417e298ce3c6b3f902c069a872f3e9324d5fdd11770582c4b979cbda0dd8"
+      ],
+      "source_published_kst": "2026-10-14T11:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 치솟는 디젤(경유) 가격을 잡기 위해 러시아에 대한 제재를 해제하고 디젤 수입을 추진하고 있지만, 공급 물량이 제한적이어서 가격 안정 효과는 크지 않을 것이라는 전망이 나온다.",
+      "title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'"
     },
     "source_fact:f12b55ba13d2c6c8acde9740": {
       "first_seen_kst": "2026-10-10T01:47:39+09:00",
@@ -579533,6 +581278,37 @@
       "source": "뉴시스",
       "title": "우크라, 자체 개발 탄도미사일 첫 실전 투입…러시아 목표물 타격"
     },
+    "title:098185a4d24df756e6b1725f": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825083",
+      "source": "뉴시스",
+      "source_body_digest": "48b6ccaf5c4b5d6cec9a2b11847fc5a9f39fefa512d9044e8bf6cd774b251034",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e18257988ea5a337d03806f9d305402f69fe0a27e4020cbfd333d820c570854d",
+      "source_fact_keys": [
+        "source_fact:v1:1e0241f13e8d223bca6efd5e286e23eff237d6b5f60c1fd354d915f2bccefc8f",
+        "source_fact:v1:216cd2bb8c1afeee6e59c0af23c9b8e6119db846064d5e40e0935993c3e34724",
+        "source_fact:v1:95c76417862cfb71d4bc4423e1bc419225d572c64c0aebc164287e2508e1c9b5",
+        "source_fact:v1:9974e4db8c971515fc4530b18f593176370af281c0903f88a61fedf6a527c521",
+        "source_fact:v1:a73060f91bde450ba30941acb71d3527f8a450e9182fdf639dcbf9a8adae14df",
+        "source_fact:v1:afae431ff933a7ca86fde9e2011a2888b839fe864459fbb468f6f2ed488c1801",
+        "source_fact:v1:b67e59ba5be9dfe3b0b4d13978cb40ef66c520780933e2ebd75428345556d70d",
+        "source_fact:v1:e6f27e25827f12318ef4e21cffc178cce1bddd05bf396d87b99e786578e6196b",
+        "source_fact:v1:eaa009d593adaa93d7c2b001f5f1363c66b3afc7a6ec0333aabd1b83da119509",
+        "source_fact:v1:eb1c359dac4f3cf5802cfb468e849901c7cbd1e6594d08355da16e2fe03cb4df",
+        "source_fact:v1:f6c9bfa4acb04aec349a226a97f5d93e75b8d0e4fdf547beea78b102e4106245",
+        "source_fact:v1:f973417e298ce3c6b3f902c069a872f3e9324d5fdd11770582c4b979cbda0dd8"
+      ],
+      "source_published_kst": "2026-10-14T11:56+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 치솟는 디젤(경유) 가격을 잡기 위해 러시아에 대한 제재를 해제하고 디젤 수입을 추진하고 있지만, 공급 물량이 제한적이어서 가격 안정 효과는 크지 않을 것이라는 전망이 나온다.",
+      "title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'"
+    },
     "title:09863ac84fdd806bf7492611": {
       "first_seen_kst": "2026-10-14T16:26:08+09:00",
       "lanes": {
@@ -584805,6 +586581,26 @@
       "source_title": "시선AI 子, 성주월항농협APC와 로봇 시스템 상용 공급계약",
       "telegram_core_fact": "시선AI 자회사 유온로보틱스는 경북 성주월항농협 산지유통센터(APC)와 인공지능(AI) 기반 물류 자동화 로봇 시스템 상용 공급계약을 체결했다고 8일 밝혔다.",
       "title": "시선AI 子, 성주월항농협APC와 로봇 시스템 상용 공급계약"
+    },
+    "title:19a74fd10024ff6f62cacffd": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.news1.kr/economy/trend/6319660",
+      "source": "뉴스1",
+      "source_body_digest": "9d44ef3d3142aeeea1c45b141726cd71d89117752cfd612e785f432c6a0981d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7438b1313eac7e8a39238a467649635ad05f913577fa853b8a1b2f4598194dd",
+      "source_fact_keys": [
+        "source_fact:v1:d29832444ff910d936fc229d0a9704002f8409d75e3d8742c5bc501d07d9ddc3"
+      ],
+      "source_published_kst": "2026-10-14T13:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "부활한 '공정위 저승사자'…첫 타깃은 '먹거리' 대상·오뚜기·CJ",
+      "telegram_core_fact": "공정위는 올해 들어 밀가루, 전분당, 설탕 등 먹거리 분야 담합에 대한 제재 수위를 강화해 왔다.",
+      "title": "부활한 '공정위 저승사자'…첫 타깃은 '먹거리' 대상·오뚜기·CJ"
     },
     "title:19ae6e191865e7ce220b1158": {
       "first_seen_kst": "2026-10-06T01:26:06+09:00",
@@ -591779,6 +593575,32 @@
       "source_published_kst": "2026-10-06T09:26+09:00",
       "title": "한투운용, 미국 대표지수 ETF 4종 이벤트⋯대한항공 기프트카드 제공"
     },
+    "title:2eef20b58d2a00f9ed91bcc5": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/14/2026101413299653584",
+      "source": "머니투데이",
+      "source_body_digest": "28127ecec6c97f001a8496cf20a9782f910fd3d9ae0c39621fffe622bcae616b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:057b9d20fa27c9eb40e004311c027709b3b0a74ac12f173d72ac4fc8b2130274",
+      "source_fact_keys": [
+        "source_fact:v1:2e06febd15eaca153802991a02bffd332f82936ed3776034088de82f0cccf87d",
+        "source_fact:v1:395f492033ea86bd500f4293011763466982552fd715881432c14e3db26b3269",
+        "source_fact:v1:66ff3f0a6b7640d82a520b513ccc02f0dd8159beeda95aa6f6ee2309f6c88c2a",
+        "source_fact:v1:b131efbc947ce56c69804aec240dd80218fe3d7b3058796e76c50c44bbfe90f4",
+        "source_fact:v1:bd70a3e414777469233b770319b05d189430da27528d0cd65a65e66b918b6cf9",
+        "source_fact:v1:f6c01a94b40728db0f34e775dcaa7ae596a8c6663339234002ef82e8dde3998a",
+        "source_fact:v1:faa3a3acfcd81552183833c37560035c08adf9752aee4108b59b0ea05d4606c1"
+      ],
+      "source_published_kst": "2026-10-14T13:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "[더벨]마음AI, '4족보행 순찰로봇' 규제특례 추진",
+      "telegram_core_fact": "피지컬 AI 전문기업 마음AI가 4족보행 로봇의 보행자 도로 순찰을 위한 규제특례를 추진하며 공공안전 분야에서 피지컬 AI 기술의 실증 기반 마련에 나섰다.",
+      "title": "[더벨]마음AI, '4족보행 순찰로봇' 규제특례 추진"
+    },
     "title:2f0fc45ccad272d8511c562a": {
       "first_seen_kst": "2026-10-07T16:57:09+09:00",
       "lanes": {
@@ -597826,6 +599648,29 @@
       "link": "https://magazine.hankyung.com/business/article/202610018700b",
       "source": "한국경제",
       "title": "정재준 회장 “치매 전 주기 책임”…아리바이오, 합병 대신 3사 시너지"
+    },
+    "title:4195004c1fd173aa85096717": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.etnews.com/20261014000248",
+      "source": "전자신문",
+      "source_body_digest": "44a54c90ae0b80beeedd3f25de7f1bdb26a9fe40679e84f0e0d8d67dc5de5e47",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:50f30ec0cf9fca19cb637165bc06564eacf6b4ea5020af91c253f8da74bfc48d",
+      "source_fact_keys": [
+        "source_fact:v1:5e2332f378c8c4d6b482d938b5cb8151c29bdce5c4493dc3c0b3ea6120597c44",
+        "source_fact:v1:8b4c6865a9fe86ef861c8e9ebff6a9d78500f140931caec531ca829e81581745",
+        "source_fact:v1:9d5ab9b0c6fb6f263618a25c59ac397b91ee62900188bca97bec1bf827ff308b",
+        "source_fact:v1:d38dbd05ae3c31f9376c823d479ac78acc3280d6faf8a7a0d371219c7f67f69c"
+      ],
+      "source_published_kst": "2026-10-14T13:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "엘앤에프 JHC, 폐배터리 전처리 연 1.5만톤…리튬 95% 회수",
+      "telegram_core_fact": "엘앤에프는 JHC가 생산한 블랙매스를 후처리 전문기업과 연계해 핵심광물을 회수하고 이를 다시 양극재 원료로 활용하는 순환형 밸류체인을 구축하고 있다.",
+      "title": "엘앤에프 JHC, 폐배터리 전처리 연 1.5만톤…리튬 95% 회수"
     },
     "title:419f8756e1158647330f694f": {
       "first_seen_kst": "2026-10-08T06:10:43+09:00",
@@ -610229,6 +612074,32 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T17:51+09:00",
       "title": "알테오젠, 알테오젠바이오로직스 합병 결정 | 연합뉴스"
+    },
+    "title:693091a1ab71f7bc234c8554": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/14/2026101416271656481",
+      "source": "머니투데이",
+      "source_body_digest": "5cff270b249aa3ee108f344351cf6e93ca58ea3514b4f4c52efaaf279ef8ccd5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd1fa5063268996e26812bbd2dd8b2d244931d6c636eb267b465d5956790d01c",
+      "source_fact_keys": [
+        "source_fact:v1:171eda40721aca795776c19224791aec4b93079ce98077a1d97ccbb5c455cd82",
+        "source_fact:v1:52b020f7d3f3a8783ddc06e3c2a0f1d3bc2c48a96b2ae5a1c440ba6c2aa7d960",
+        "source_fact:v1:5bf97160eec4f01772d577aa52c0df255afbad25630f43b46a264c94b35476d1",
+        "source_fact:v1:a1a879f07043a893750622ced8020e6623c4d04c63cc38e999a699a4b550be23",
+        "source_fact:v1:a56c399668979b9b5d2353f236e16c8e0185f68da4c9bca6dc5f55e2300e1520",
+        "source_fact:v1:c65f88adbf1dc0847f7f829fe4118c07d612ff20e6a00cfe122a6461b8101c44",
+        "source_fact:v1:e133d45cb1b8d694f9c3c623ea5b341e8ec168212b4bdba9881aa71211dba802"
+      ],
+      "source_published_kst": "2026-10-14T17:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "코스피, 美 CPI 발표 앞두고 경계심리↑… 물가둔화 확인할까",
+      "telegram_core_fact": "14일 상승 출발하며 2% 이상 뛰었으나 미국 9월 소비자물가지수(CPI) 발표를 앞두고 관망세가 짙어지며 장중 6000선을 밑돌기도 했다.",
+      "title": "코스피, 美 CPI 발표 앞두고 경계심리↑… 물가둔화 확인할까"
     },
     "title:69346efc37b2e28bd2f34f5a": {
       "first_seen_kst": "2026-10-12T11:27:57+09:00",
@@ -641767,6 +643638,29 @@
       "source_published_kst": "2026-10-06T03:54+09:00",
       "title": "[美특징주]웰스파고, 모건스탠리 ‘매수’ 상향에 주가 2%↑"
     },
+    "title:cd1aa9d74784e5f31e857ce5": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825004",
+      "source": "뉴시스",
+      "source_body_digest": "6530b1822be7f2dad96b4282ab330ec670a4dd9c9d36da0ae72d79e5de6137d6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:864345dbd6ffd4a73fb1efeff89cb6d4525d2d9bbe4f159b9a1cb150085b83fe",
+      "source_fact_keys": [
+        "source_fact:v1:498c7ba21b95c5136282019de4bbefc0b26945f5b1386a31151a3068f1fa7f06",
+        "source_fact:v1:53f98e459fc2430bea383a3975eb65a9bc2c7d0533e4a9f1b703e3237732b201",
+        "source_fact:v1:e11f002c7d5de9d54fab732fa298dfeea9d741102cb3223ac4184d4fc74aa594",
+        "source_fact:v1:e8c58a5bbd26dc3aee5a970cf567e8db821609b1677e53b088e38b2f2963d65a"
+      ],
+      "source_published_kst": "2026-10-14T09:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "KB證 \"삼성전자·SK하이닉스, 실적이 'W자 반등' 견인 전망\"",
+      "telegram_core_fact": "김 본부장은 \"최근 내년 양사의 합산 영업이익이 1000조원(삼성전자 600조원, SK하이닉스 400조원)을 상회할 가능성이 높아지면서 실적 컨센서스의 상향 조정이 본격화되고 있다\"고 말했다.",
+      "title": "KB證 \"삼성전자·SK하이닉스, 실적이 'W자 반등' 견인 전망\""
+    },
     "title:cd3058eeff497db6547b8eb8": {
       "first_seen_kst": "2026-10-14T15:54:32+09:00",
       "lanes": {
@@ -657175,6 +659069,29 @@
       "source_published_kst": "2026-10-06T08:03+09:00",
       "title": "뉴욕증시, 국채금리 상승에도 강세⋯나스닥, 사상 최고치 [글로벌마켓 모닝 브리핑]"
     },
+    "title:fde44e7e9582afb9f0e1843a": {
+      "first_seen_kst": "2026-10-14T18:12:32+09:00",
+      "lanes": {
+        "live": "2026-10-14T18:12:32+09:00"
+      },
+      "last_seen_kst": "2026-10-14T18:12:32+09:00",
+      "link": "https://www.fnnews.com/news/202610141029323408",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "6bedb89224c94e504d33b36b835069f7b2d1410a9778d3ad904ad3694e8dc0eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cb7fc64f636a2dcc25a2b321368243972bab9d89ab52da4220bff7a8a0beb972",
+      "source_fact_keys": [
+        "source_fact:v1:335cff4a94b70eec27e6c1e3276df22e2488a051847c7d8e34696b649424798d",
+        "source_fact:v1:82932ab75fe461ce373589facbcc6dde539392947ff46963e0964664c45d1d63",
+        "source_fact:v1:cd12939967ae37be8caf5d01a4da731f3b486060003f27f28589868de38c3bcc",
+        "source_fact:v1:e29cd06ea2f5209cf539c1757d6da700c7200b2be511fac7048f34a374a11cee"
+      ],
+      "source_published_kst": "2026-10-14T13:47+09:00",
+      "source_supply_terms": {},
+      "source_title": "엑시나, 글로벌 빅테크 출신 CBO 영입… CXL 연산 메모리 ‘MX1’ 상용화 박차",
+      "telegram_core_fact": "[파이낸셜뉴스] AI 인프라의 핵심 화두로 떠오른 데이터 이동 병목과 메모리 용량 한계를 극복하기 위해, 국내 팹리스 엑시나(XCENA)가 CXL 기반 차세대 연산 메모리 솔루션 ‘MX1’의 글로벌 상용화에 속도를 낸다.",
+      "title": "엑시나, 글로벌 빅테크 출신 CBO 영입… CXL 연산 메모리 ‘MX1’ 상용화 박차"
+    },
     "title:fdef1730eccefe4b42935012": {
       "first_seen_kst": "2026-10-12T11:51:53+09:00",
       "lanes": {
@@ -657939,5 +659856,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-14T17:44:16+09:00"
+  "updated_at_kst": "2026-10-14T18:12:32+09:00"
 }
