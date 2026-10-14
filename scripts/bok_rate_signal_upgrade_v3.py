@@ -25,7 +25,28 @@ def policy_flags(blob: str) -> dict[str, bool]:
         "demand_inflation": bool(re.search(r"(?:수요\s*측|소득)[^.]{0,70}물가\s*압력", blob)),
         "middle_east_cost": bool(re.search(r"중동[^.]{0,90}(?:비용\s*압력|물가)[^.]{0,50}(?:재상승|상승|확대|영향)", blob)),
     })
+    # 뉴스에 '추가 인상'이라는 배경 설명이 있다는 이유만으로
+    # 총재가 당일 직접 금리 인상을 요구했다고 판정하지 않는다.
+    if f.get("hike_needed"):
+        f["hike_needed"] = bool(re.search(
+            r"(?:기준금리|금리)[^.!?。]{0,70}(?:추가\s*인상[^.!?。]{0,25}(?:필요|불가피|검토|해야)|인상\s*필요|인상해야|인상\s*가능성\s*(?:높|확대))",
+            blob,
+        ))
     return f
+
+
+def is_new_policy_event(new: dict, previous: dict | None) -> bool:
+    """동일 인물·날짜의 기사 재인용 및 코드 재분류는 추가 발언으로 중복 알림하지 않는다."""
+    if not previous:
+        return True
+    if str(new.get("speaker") or "") != str(previous.get("speaker") or ""):
+        return True
+    if str(new.get("date") or "") != str(previous.get("date") or ""):
+        return True
+    was = previous.get("flags") or {}
+    now_flags = new.get("flags") or {}
+    # 같은 날이라도 '다음 회의 직접 인상'이라는 새로 확인된 의미는 독립 중대 사건이다.
+    return bool(now_flags.get("next_meeting_hawk") and not was.get("next_meeting_hawk"))
 
 
 def event_score(f: dict[str, bool]) -> int:
@@ -268,7 +289,12 @@ def main() -> int:
 
     seen = list(old.get("seen_rhetoric_hashes") or [])
     seen_set = set(seen)
-    new_events = [e for e in events if e["event_hash"] not in seen_set]
+    prior_events = {(e.get("speaker"), e.get("date")): e for e in old.get("recent_rhetoric") or []}
+    new_events = [
+        e for e in events
+        if e["event_hash"] not in seen_set
+        and is_new_policy_event(e, prior_events.get((e.get("speaker"), e.get("date"))))
+    ]
     if boot: new_events = []
     for e in events:
         if e["event_hash"] not in seen_set:
