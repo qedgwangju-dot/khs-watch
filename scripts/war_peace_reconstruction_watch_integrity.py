@@ -49,7 +49,7 @@ def _riyadh_missile_headline(row):
     title = _headline(row)
     return bool(re.search(r'리야드|\briyadh\b', title)
                 and re.search(r'미사일|\bmissiles?\b', title)
-                and re.search(r'후티|사우디|샤우디|\bhouthi|\bsaudi\b', title))
+                and re.search(r'후티|\bhouthi', title))
 
 
 def _display_headline(row):
