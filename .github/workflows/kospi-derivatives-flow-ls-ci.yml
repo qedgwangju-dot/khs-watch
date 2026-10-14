@@ -27,6 +27,9 @@ on:
       - "scripts/kospi_rapid_fallback_watch.py"
       - "scripts/ls_unified_flow_probe.py"
       - "scripts/kospi_unified_industry_collector.py"
+      - "scripts/kosdaq_surge_industries.py"
+      - "scripts/test_kosdaq_surge_industries.py"
+      - "scripts/probe_kosdaq_surge_industries.py"
       - "scripts/krx_session_calendar.py"
   workflow_dispatch:
 
@@ -73,6 +76,7 @@ jobs:
           python scripts/test_kospi_shock_episode.py
           python scripts/test_kospi_shock_enrichment.py
           python scripts/test_kospi_flow_attribution_strict.py
+          python scripts/test_kosdaq_surge_industries.py
 
       - name: Verify KOSPI scheduled CI isolation
         run: |
@@ -848,7 +852,8 @@ jobs:
           DAY=$(TZ=Asia/Seoul date +%u)
           HM=$(TZ=Asia/Seoul date +%H%M)
           if [ "$DAY" -le 5 ] && [ "$HM" -ge 0900 ] && [ "$HM" -le 1520 ]; then
-            TEST_SECONDS=90
+            # Preserve at least five minutes for the new same-window industry audit.
+            TEST_SECONDS=330
           else
             TEST_SECONDS=10
           fi
@@ -914,6 +919,7 @@ jobs:
                     "records=",len(rows),
                     "market_hours=false")
           PY
+          python scripts/probe_kosdaq_surge_industries.py --journal out/kospi_industry_flow_ci.jsonl --out out/kosdaq_surge_industry_probe.json
 
       - name: Upload test artifacts
         if: always()
@@ -922,6 +928,7 @@ jobs:
           name: kospi-derivatives-ci-${{ github.run_id }}
           path: |
             out/kosdaq_surge_history_probe.json
+            out/kosdaq_surge_industry_probe.json
             out/kospi_shock_episode_status.md
             out/kospi_shock_episode_raw.json
             out/ls_unified_flow_probe.json
