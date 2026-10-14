@@ -138,6 +138,15 @@ def _event_facts(family: str) -> set[str]:
 def _validate_alert_contract(text: str) -> None:
     plain = re.sub(r"<[^>]+>", "", text)
     plain = plain.replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&")
+
+    # 미래 점검표의 '완료: 대기'·'계약 체결 여부'는 완료 주장으로 판정하지 않는다.
+    pending_suffix = re.compile(r"[:：]\s*(?:대기|미완료|미체결|미확정|검토|예정|조건부)(?:\s|$|[.·])", re.I)
+    asserted_plain = "\n".join(
+        line for line in plain.splitlines()
+        if not pending_suffix.search(line)
+        and not re.search(r"미체결|미확정|미완료|아직|후속\s*조건|필요|추적|대기|예정", line, re.I)
+    )
+    asserted_plain = re.split(r"(?m)^\s*(?:[①-⑩]\s*)?다음 확인\s*$", asserted_plain, maxsplit=1)[0]
     nuclear_facts = _event_facts("nuclear_build")
     stake_facts = _event_facts("westinghouse_stake")
     alaska_facts = _event_facts("alaska_lng")
@@ -174,12 +183,12 @@ def _validate_alert_contract(text: str) -> None:
     site_claimed_done = bool(
         re.search(
             r"(?:1단계\s*)?AP1000[^\n]{0,80}부지[^\n]{0,40}(?:선정|확정)[^\n]{0,20}(?:완료|확정)",
-            plain,
+            asserted_plain,
             re.I,
         )
         or re.search(
             r"부지\s*(?:선정|확정)\s*:\s*(?:완료|확정)",
-            plain,
+            asserted_plain,
             re.I,
         )
     )
@@ -192,28 +201,18 @@ def _validate_alert_contract(text: str) -> None:
 
     if (
         project_power_context
-        and re.search(r"(?:공식\s*)?프레임워크\s*:\s*완료", plain, re.I)
+        and re.search(r"(?:공식\s*)?프레임워크\s*:\s*완료", asserted_plain, re.I)
         and "nuclear_framework_signature_status:signed" not in nuclear_facts
     ):
         raise RuntimeError("Blocked Project Power framework completion before verified signature")
 
     if (
         project_power_context
-        and re.search(r"(?:최종\s*서명|최종\s*계약|본계약)\s*:\s*(?:완료|체결|확정)", plain, re.I)
+        and re.search(r"(?:최종\s*서명|최종\s*계약|본계약)\s*:\s*(?:완료|체결|확정)", asserted_plain, re.I)
         and "nuclear_definitive_agreement_status:signed" not in nuclear_facts
     ):
         raise RuntimeError("Blocked Project Power definitive-agreement completion before verified state")
 
-    # "예외 적용 완료: 대기"는 완료 주장 아닌 점검항목 명칭이다.
-    # 차단은 실제 완료 주장에만 적용한다.
-    pending_suffix = re.compile(r"[:：]\s*(?:대기|미완료|미체결|미확정|검토|예정|조건부)(?:\s|$|[.·])", re.I)
-    # 미래 확인 과제와 '아직 미체결' 같은 부정 표현을 완료증거로 오인하지 않는다.
-    asserted_plain = "\n".join(
-        line for line in plain.splitlines()
-        if not pending_suffix.search(line)
-        and not re.search(r"미체결|미확정|미완료|아직|후속\s*조건|필요|추적|대기|예정", line, re.I)
-    )
-    asserted_plain = re.split(r"(?m)^\s*(?:[①-⑩]\s*)?다음 확인\s*$", asserted_plain, maxsplit=1)[0]
     if (
         project_power_context
         and re.search(r"(?:예외\s*적용|타협협정[^\n]{0,30}예외)[^\n]{0,20}(?:완료|체결|확정)", asserted_plain, re.I)
@@ -223,7 +222,7 @@ def _validate_alert_contract(text: str) -> None:
 
     if (
         project_power_context
-        and re.search(r"(?:EPC|설계.?조달.?시공)[^\n]{0,30}(?:본계약|계약)?[^\n]{0,20}(?:완료|체결|확정)", plain, re.I)
+        and re.search(r"(?:EPC|설계.?조달.?시공)[^\n]{0,30}(?:본계약|계약)?[^\n]{0,20}(?:완료|체결|확정)", asserted_plain, re.I)
         and "nuclear_phase1_epc_status:signed" not in nuclear_facts
     ):
         raise RuntimeError("Blocked Project Power EPC completion before verified state")
@@ -231,7 +230,7 @@ def _validate_alert_contract(text: str) -> None:
     upfront_executed_claim = bool(
         re.search(
             r"선지급[^\n]{0,100}(?:실제\s*)?(?:지급|송금|집행)[^\n]{0,20}(?:완료|확정|했다|됨)",
-            plain,
+            asserted_plain,
         )
     )
     if (
@@ -243,7 +242,7 @@ def _validate_alert_contract(text: str) -> None:
 
     if (
         ("Westinghouse" in plain or "웨스팅하우스" in plain)
-        and re.search(r"지분(?:투자|인수)?[^\n]{0,40}(?:거래)?종결[^\n]{0,15}(?:완료|확정)", plain, re.I)
+        and re.search(r"지분(?:투자|인수)?[^\n]{0,40}(?:거래)?종결[^\n]{0,15}(?:완료|확정)", asserted_plain, re.I)
         and "equity_closing_status:completed" not in stake_facts
     ):
         raise RuntimeError("Blocked Westinghouse equity closing before verified state")
@@ -354,6 +353,12 @@ def self_test_mode() -> int:
     )
     _validate_alert_contract(good)
     _validate_alert_contract(good + "\n2025 타협협정 예외 적용 완료: 대기\nProject North Glenfarne FID 완료: 대기")
+    _validate_alert_contract(
+        good + "\nProject Power AP1000 2기 EPC 본계약 완료: 대기"
+        + "\nAP1000 개별 부지 선정 완료: 대기"
+        + "\nWestinghouse 지분투자 거래종결 완료: 대기"
+        + "\n다음 확인\nProject Power EPC 계약 체결 여부 추적"
+    )
     _validate_alert_contract(
         good + "\n다음 확인\n2025 타협협정 일회성 예외계약 체결\n"
         "2025 타협협정 예외 적용은 아직 미체결"
