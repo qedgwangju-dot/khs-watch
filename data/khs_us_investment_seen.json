@@ -342,7 +342,8 @@
     "stateevt_9539aeeed85f82de3ca5": "2026-10-14T01:13:57.413978+00:00",
     "stateevt_f2c26bf9f31501b59b15": "2026-10-14T01:13:57.413978+00:00",
     "stateevt_90b6a05593e2e71dc434": "2026-10-14T01:14:49.498979+00:00",
-    "stateevt_95f14d5c2d3931140281": "2026-10-14T01:19:04.298789+00:00"
+    "stateevt_95f14d5c2d3931140281": "2026-10-14T01:19:04.298789+00:00",
+    "stateevt_0e79c14e0010e5a9f4aa": "2026-10-14T02:58:28.478258+00:00"
   },
   "semantic_seen": {
     "alaska_participation_pressure": "2026-09-09T06:46:11.750941+00:00",
@@ -376,7 +377,8 @@
     "eventstate_legacy_funding_media_9539aeeed85f82de3ca5": "2026-10-14T01:13:57.413978+00:00",
     "eventstate_alaska_lng_f2c26bf9f31501b59b15": "2026-10-14T01:13:57.413978+00:00",
     "eventstate_alaska_lng_90b6a05593e2e71dc434": "2026-10-14T01:14:49.498979+00:00",
-    "eventstate_alaska_lng_95f14d5c2d3931140281": "2026-10-14T01:19:04.298789+00:00"
+    "eventstate_alaska_lng_95f14d5c2d3931140281": "2026-10-14T01:19:04.298789+00:00",
+    "eventstate_alaska_lng_0e79c14e0010e5a9f4aa": "2026-10-14T02:58:28.478258+00:00"
   },
   "official_status": {
     "status": "official_seen",
@@ -677,6 +679,8 @@
         "alaska_fid_after_commercial_review:reported",
         "alaska_reported_amount_usd_b:54",
         "alaska_taiwan_project_share_reported:30",
+        "alaska_taiwan_term_reported_years:20",
+        "alaska_taiwan_us_investment_claim_usd_b:4.4",
         "alaska_us_claim_usd_b:54",
         "alaska_us_reiteration:2026-10-13"
       ],
@@ -685,31 +689,33 @@
         "alaska_lng|alaska_fid_after_commercial_review:reported": "alaska_fid_after_commercial_review:reported",
         "alaska_lng|alaska_reported_amount_usd_b": "alaska_reported_amount_usd_b:54",
         "alaska_lng|alaska_taiwan_project_share_reported": "alaska_taiwan_project_share_reported:30",
+        "alaska_lng|alaska_taiwan_term_reported_years": "alaska_taiwan_term_reported_years:20",
+        "alaska_lng|alaska_taiwan_us_investment_claim_usd_b": "alaska_taiwan_us_investment_claim_usd_b:4.4",
         "alaska_lng|alaska_us_claim_usd_b": "alaska_us_claim_usd_b:54",
         "alaska_lng|alaska_us_reiteration": "alaska_us_reiteration:2026-10-13"
       },
       "initialized_at": "2026-09-29T23:10:16.076895+00:00",
-      "updated_at": "2026-10-14T01:19:10.129000+00:00",
+      "updated_at": "2026-10-14T02:58:31.958357+00:00",
       "last_title": "백악관 공식 2026-10-13 한국 에너지투자 패키지 중 알래스카 LNG 540억달러 포함 주장 재확인",
       "last_source": "White House",
       "evidence": [
         {
-          "source": "뉴스핌",
-          "title": "트럼프 \"대만, 알래스카 LNG 생산 가스 30% 구매 합의\" - 뉴스핌",
-          "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFA3RWtuZ2NlWF9PVk1obmVlUTl1UlJPNmk0UWZVdHlpWlptdjZEU2F3Y3A3YzFhRDlIWUVZRklvcFB2NEdjd3NTWWZCMlVFcGxjOUNLRjZFbWxVSXVY?oc=5",
-          "published": "2026-10-14T01:09:00+00:00"
+          "source": "Bloomberg",
+          "title": "Trump says Taiwan will purchase 30% of Alaska LNG pipeline gas over 20 years and Taiwan will invest additional $4.4 billion; Taiwan not yet confirmed",
+          "link": "https://news.bloomberglaw.com/health-law-and-business/trump-says-taiwan-to-buy-gas-from-alaska-lng-pipeline-project",
+          "published": "2026-10-14"
         },
         {
-          "source": "뉴스1",
-          "title": "[속보] 트럼프 \"대만, 알래스카 파이프라인 가스 30% 구매 합의\" - 뉴스1",
-          "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1kUDZRTlpaZVpXbHozdHpuclE3NGM0clVNV2dMZ1A4ZDYzSmdNbmo2TC1JZEJldXV4dDFTRmVCcjNSTGNYTjA0bE05bWdPWFpaUlBrSzh6SUQ?oc=5",
-          "published": "2026-10-14T00:59:04+00:00"
+          "source": "Associated Press",
+          "title": "Trump claims Taiwan has a 20-year Alaska LNG gas purchase agreement at Wasilla rally, actual binding contract not yet verified",
+          "link": "https://apnews.com/article/aa4ec095692c57a851a942c0f21624f7",
+          "published": "2026-10-14"
         },
         {
-          "source": "한국경제",
-          "title": "[속보] 트럼프 \"대만, 알래스카 파이프라인 가스 30% 구매 합의\" - 한국경제",
-          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE90eEllazQ0ckNoWWFvS2ktRjBMMThIZlp2Zm90UTYtZndDVW05aDJwbEZTWjJwQlpfUVpjWnN6cE9TZnJxeWFROEYtY0FKT25feUJaVm0tSlR1Zw?oc=5",
-          "published": "2026-10-14T01:00:22+00:00"
+          "source": "Reuters",
+          "title": "Trump says Taiwan agrees to buy 30% of Alaska LNG pipeline gas; US Commerce Secretary says Taiwan commits $4.4 billion investment, Taiwan ministry not yet confirmed",
+          "link": "https://www.reuters.com/business/energy/trump-says-taiwan-agrees-buy-30-gas-alaska-pipeline-2026-10-14/",
+          "published": "2026-10-14"
         }
       ]
     },
