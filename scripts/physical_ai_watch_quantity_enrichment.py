@@ -18,7 +18,7 @@ import physical_ai_watch_tesla_order_dedupe as current
 base = current.base
 
 QTY_RE = re.compile(
-    r"(?<![\d,])(\d{1,3}(?:,\d{3})+|\d+)\s*(대|개|셀|랙|서버|MW|GW|km|킬로미터)",
+    r"(?<![\d,])(\d{1,3}(?:,\d{3})+|\d+)\s*(대|개|셀|랙|서버|MW(?!h)|GW(?!h)|km|킬로미터)",
     re.I,
 )
 
@@ -315,6 +315,12 @@ def _skip_quantity_enrichment(block: str) -> bool:
     if "CATL–INTILION" in block or "CATL–Intilion" in block:
         return True
     if "Dexmate–LG CNS" in block or "덱스메이트" in block and "LG CNS" in block:
+        return True
+    # Installed capacity is not a count of robots/units. The signed Fluence
+    # EPC contract already carries precise MW/MWh and benchmark cost data.
+    if "Fluence–Vattenfall" in block or "Fluence·Vattenfall ESS" in block:
+        return True
+    if "Fluence" in block and ("Brunsbüttel" in block or "브룬스뷔텔" in block):
         return True
     return False
 
