@@ -34,6 +34,10 @@ for _required in (
     "OPTIMUS_HAND_MAGNET_RECOVERY =",
     "LFP_NA_CIF_PRICE_RECOVERY =",
     "VNET_EQUITY_RECOVERY =",
+    "CATL_INTILION_RECOVERY =",
+    "DEXMATE_LG_RECOVERY =",
+    "def _catl_intilion_recovery(",
+    "def _dexmate_lg_recovery(",
     "def _vnet_equity_recovery(",
     "def _lfp_na_price_recovery(",
     "def _humanoid_dram_recovery(",
@@ -3519,6 +3523,115 @@ try:
     assert watcher._robros_213_214_correction()==[]
 finally:
     base.NOW=old_robros_now
+
+
+
+# 57) CATL–INTILION 3GWh/5y: joint DEVELOPMENT target only;
+# no confirmed procurement, 10+3 GWh sum or current revenue.
+ci=make("CATL INTILION sodium-ion 3 GWh five-year cooperation",
+    "INTILION and CATL jointly develop up to 3 GWh sodium-ion ESS over five years "
+    "in Germany Austria Switzerland, no firm purchase obligation or deliveries.",
+    "INTILION CEO")
+cg,cs,cc,ck=classify(ci)
+assert cg=='catl_intilion_sodium' and cs>=11,(cg,cs,cc)
+assert cc=='CATL–INTILION · 유럽 5년 최대 3GWh 공동개발 목표',cc
+assert '13GWh로 집계하지' in base.meaning(cc) and '300억원' in base.meaning(cc)
+assert '25℃' in base.risk(cc) and '45℃' in base.risk(cc)
+
+ci_report=make("CATL INTILION 3GWh sodium-ion European cooperation",
+    "CATL and INTILION signed a five-year deal targeting up to 3GWh "
+    "sodium-ion energy storage projects, without firm purchase orders.",
+    "pv magazine")
+cg2,cs2,cc2,ck2=classify(ci_report)
+assert cg2==cg and cs2>=11 and cc2==cc and ck2==ck,(cg2,cs2,cc2,ck2)
+
+ci_old=make("CATL INTILION 10GWh TENER agreement",
+    "CATL and INTILION agreed in 2025 on 10GWh lithium-ion storage for five years.",
+    "pv magazine")
+og,os,oc,ok=classify(ci_old)
+assert og!='catl_intilion_sodium' or os<11,(og,os,oc)
+
+ci_contract=make("CATL INTILION binding sodium-ion ESS procurement",
+    "CATL and INTILION signed binding purchase contract for sodium-ion "
+    "0.5GWh systems at a named project with first firm orders.",
+    "CATL")
+pg,ps,pc,pk=classify(ci_contract)
+assert pg==cg and ps>=11 and pc=='CATL–INTILION · 실제 구속력 있는 구매계약',(pg,ps,pc)
+assert pk!=ck
+
+ci_rumor=dict(ci_contract,source='익명 시장게시글')
+rg,rs,rc,rk=classify(ci_rumor)
+assert rg==cg and rs<11,(rg,rs,rc)
+
+ci_rec=watcher.query_news(watcher.CATL_INTILION_RECOVERY)
+assert len(ci_rec)==1 and ci_rec[0]['published'] is None,ci_rec
+ci_rg,ci_rs,ci_rc,ci_rk=classify(ci_rec[0])
+assert ci_rg==cg and ci_rs>=11 and ci_rc==cc and ci_rk==ck,(ci_rg,ci_rs,ci_rc)
+assert base.category(ci_rec[0]['title']+' '+ci_rec[0]['description'],ci_rg)==cc
+assert '3GWh 공동개발 목표' in base.clean_title(ci_rec[0]['title'],ci_rec[0]['source'])
+assert watcher.qty._skip_quantity_enrichment(
+    '<b>CATL–INTILION · 유럽 5년 최대 3GWh 공동개발 목표</b>\n'
+    '3GWh target 10GWh previous plan 1GWh 2027 targets')
+assert '확정 구매·수주·납품 아님' in base.verification(ci_rec[0],ci_rg,
+        ci_rec[0]['title']+' '+ci_rec[0]['description'])
+
+# 58) RoboStrategy's 2-3y/5y outlook remains opinion. Dexmate CEO
+# adds self-reported use/distribution, NOT LG CNS paid sales or 99.99% achieved.
+dex=make("Dexmate CEO Tao Chen LG CNS uses robots distribution support",
+    "At a New York interview Dexmate CEO Tao Chen said LG CNS is using "
+    "Dexmate robots and supporting distribution in Korea. Hundreds worldwide "
+    "are a CEO claim and 99.99% task success is required, not measured.",
+    "이데일리")
+dg,ds,dc,dk=classify(dex)
+assert dg=='dexmate_lg_commercial' and ds>=11,(dg,ds,dc)
+assert dc=='Dexmate–LG CNS · 사용·유통 CEO 현장발언',dc
+assert '독점 유상 유통계약' in base.meaning(dc)
+assert '목표이지' in base.risk(dc)
+
+old_lg=make("LG CNS invests in Dexmate",
+    "LG CNS and Dexmate announced strategic investment and robot proof of concept in March.",
+    "LG CNS")
+lg,ls,lc,lk=classify(old_lg)
+assert lg==dg and ls<11,(lg,ls,lc)
+
+opinion=make("RoboStrategy robot commercialization in 2-3 years",
+    "RoboStrategy COO forecasts specific-task robots in two or three years "
+    "and general-purpose robots around five years. No new customer order.",
+    "이데일리")
+og,os,oc,ok=classify(opinion)
+assert og!='dexmate_lg_commercial',(og,os,oc)
+
+req=make("Dexmate LG CNS needs 99.99% successful tasks",
+    "Dexmate and LG CNS robotics need a 99.99% target, not achieved.",
+    "Dexmate")
+rg,rs,rc,rk=classify(req)
+assert rg==dg and rs<11,(rg,rs,rc)
+
+paid=make("Dexmate LG CNS signed purchase contract for robots",
+    "Dexmate and LG CNS signed purchase contract for robots and paid deployment.",
+    "Dexmate")
+pg,ps,pc,pk=classify(paid)
+assert pg==dg and ps>=11 and pc=='Dexmate–LG CNS · 공식 유료 공급계약',(pg,ps,pc)
+assert pk!=dk
+
+dex_rec=watcher.query_news(watcher.DEXMATE_LG_RECOVERY)
+assert len(dex_rec)==1 and dex_rec[0]['source']=='이데일리' and dex_rec[0]['published'] is None,dex_rec
+rg,rs,rc,rk=classify(dex_rec[0])
+assert rg==dg and rs>=11 and rc==dc and rk==dk,(rg,rs,rc,rk)
+assert base.category(dex_rec[0]['title']+' '+dex_rec[0]['description'],rg)==dc
+assert 'Dexmate CEO:' in base.clean_title(dex_rec[0]['title'],dex_rec[0]['source'])
+assert watcher.qty._skip_quantity_enrichment(
+    '<b>Dexmate–LG CNS · 사용·유통 CEO 현장발언</b>\n'
+    '99.99% target and hundreds of global robots')
+assert '독점 계약' in base.verification(dex_rec[0],rg,dex_rec[0]['title']+' '+dex_rec[0]['description'])
+
+time_before=base.NOW
+try:
+    base.NOW=dt.datetime(2026,10,22,11,0,tzinfo=dt.timezone.utc)
+    assert watcher.query_news(watcher.CATL_INTILION_RECOVERY)==[]
+    assert watcher.query_news(watcher.DEXMATE_LG_RECOVERY)==[]
+finally:
+    base.NOW=time_before
 
 
 print("Physical-AI watcher regression guards: PASS")
