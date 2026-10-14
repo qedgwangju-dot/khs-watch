@@ -1,9 +1,12 @@
 """Scope, dated-clock, missingness and symmetric incident regressions."""
 import copy
 import datetime as dt
+import json
 import unittest
+import threading
 from collections import deque
 from unittest.mock import patch
+from pathlib import Path
 
 import market_flow_channels as channels
 import kospi_shock_episode_watch as watch
@@ -34,6 +37,41 @@ def snapshot(ts, market, selling=False):
 
 
 class SourceContract(unittest.TestCase):
+    def test_retained_real_provider_products_and_dated_clock(self):
+        fixture = json.loads((Path(__file__).parent / "test_fixtures/market_flow_channels_ls_20261014.json").read_text(encoding="utf-8"))
+        for market, record in fixture["futures"].items():
+            self.assertEqual(channels.decoded_hash(record["response"]), record["decoded_response_json_sha256"])
+            result = channels.parse_futures(record["response"], market, record["received_ts"])
+            self.assertEqual(result["asset"], channels.MARKET_SPECS[market]["asset"])
+            self.assertEqual(result["date"], "20261014")
+            self.assertEqual(result["time"], "154330")
+            self.assertFalse(result["unit_verified"])
+        self.assertEqual(fixture["futures"]["KOSDAQ"]["response"]["t8463OutBlock"]["fot_clsf_cd"], "F")
+
+    def test_real_other_market_response_cannot_substitute_for_kosdaq(self):
+        fixture = json.loads((Path(__file__).parent / "test_fixtures/market_flow_channels_ls_20261014.json").read_text(encoding="utf-8"))
+        record = fixture["futures"]["KOSPI"]
+        with self.assertRaises(ValueError):
+            channels.parse_futures(record["response"], "KOSDAQ", record["received_ts"])
+
+    def test_slow_futures_does_not_hold_fresh_spot_or_program_publication(self):
+        released = threading.Event()
+        published = []
+        def future(*args):
+            self.assertTrue(released.wait(2), "spot should publish before futures finishes")
+            return {"sample_ts": NOW, "market": "KOSDAQ"}
+        def publish(point):
+            published.append(point)
+            if point.get("현물") is not None:
+                released.set()
+        with patch.object(watch, "investor_current", return_value={"sample_ts": NOW, "개인": 150}), \
+             patch.object(watch, "futures_current", side_effect=future), \
+             patch.object(watch, "market_program_current", return_value={"전체": 0}):
+            snap = watch.fetch_flow_snapshot("unused", "KOSDAQ", publish)
+        self.assertEqual(len(published), 3)
+        self.assertEqual(snap["errors"], {})
+        self.assertEqual(published[-1]["현물"]["개인"], 150)
+
     def test_exact_product_requests(self):
         for market, asset in (("KOSPI", "K2I"), ("KOSDAQ", "KQI")):
             query = channels.futures_request(market)["t8463InBlock"]

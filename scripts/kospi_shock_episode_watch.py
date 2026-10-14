@@ -15,6 +15,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from collections import defaultdict, deque
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Any
 from zoneinfo import ZoneInfo
@@ -398,33 +399,30 @@ def program_current(token: str, market: str = "KOSPI") -> dict[str, Any]:
     return market_program_current(token, market, ls_post)
 
 
-def fetch_flow_snapshot(token: str, market_name: str = "KOSPI") -> dict[str, Any]:
+def fetch_flow_snapshot(token: str, market_name: str = "KOSPI", on_channel=None) -> dict[str, Any]:
     started_ts = time.time()
     spec = MARKET_SPECS[market_name]
     snap: dict[str, Any] = {"ts": started_ts, "ts_start": started_ts, "errors": {},
                             "market": market_name, "flow_schema": "market-three-channel-v1"}
-    queries = [("현물", spec["spot_market"], spec["upcode"], "U")]
+    queries = {"현물": lambda: investor_current(token, spec["spot_market"], spec["upcode"], "U",
+                                                max_attempts=2, request_timeout=8.0),
+               "지수선물": lambda: futures_current(token, market_name, ls_post),
+               "프로그램": lambda: market_program_current(token, market_name, ls_post)}
     if market_name == "KOSPI":
         # Retain the existing, separately scaled five-minute surge series.
         # Crash attribution uses the explicit K2I product below, not this TR.
-        queries.append(("선물", "4", "900", "K"))
-    for key, market, upcode, exchgubun in queries:
-        try:
-            snap[key] = investor_current(token, market, upcode, exchgubun,
-                                         max_attempts=2, request_timeout=8.0)
-        except Exception as exc:
-            snap[key] = None
-            snap["errors"][key] = f"{type(exc).__name__}: {exc}"
-    try:
-        snap["지수선물"] = futures_current(token, market_name, ls_post)
-    except Exception as exc:
-        snap["지수선물"] = None
-        snap["errors"]["지수선물"] = f"{type(exc).__name__}: {exc}"
-    try:
-        snap["프로그램"] = market_program_current(token, market_name, ls_post)
-    except Exception as exc:
-        snap["프로그램"] = None
-        snap["errors"]["프로그램"] = f"{type(exc).__name__}: {exc}"
+        queries["선물"] = lambda: investor_current(token, "4", "900", "K", max_attempts=2, request_timeout=8.0)
+    with ThreadPoolExecutor(max_workers=len(queries)) as pool:
+        pending = {pool.submit(query): key for key, query in queries.items()}
+        for result in as_completed(pending):
+            key = pending[result]
+            try:
+                snap[key] = result.result()
+            except Exception as exc:
+                snap[key] = None
+                snap["errors"][key] = f"{type(exc).__name__}: {exc}"
+            if on_channel is not None:
+                on_channel({**snap, "ts": time.time(), "errors": dict(snap["errors"])})
     ended_ts = time.time()
     snap["ts_end"] = ended_ts
     snap["ts"] = (started_ts + ended_ts) / 2.0
@@ -646,9 +644,14 @@ def fmt_raw(v: float | None) -> str:
 
 
 def program_quality_label(att: dict[str, Any]) -> str:
-    """직접값과 차익+비차익의 엄밀한 수치 차이를 '일치'로 오표기하지 않는다."""
+    numeric = _program_numeric_quality_label(att)
     if att.get("program_source_time_verified") is False:
-        return "원천 공표시각 미제공·조회시각 기준 — 확신도 상향 보류"
+        return numeric + " · 원천 공표시각 미제공·조회시각 기준 — 확신도 상향 보류"
+    return numeric
+
+
+def _program_numeric_quality_label(att: dict[str, Any]) -> str:
+    """직접값과 차익+비차익의 엄밀한 수치 차이를 '일치'로 오표기하지 않는다."""
     ratio = fnum(att.get("program_crosscheck_ratio_pct"))
     span = fnum(att.get("program_sample_span_sec"))
     if ratio is None or span is None:
@@ -700,10 +703,12 @@ def market_attribution_lines(att: dict[str, Any], market: str, final: bool = Fal
     p = att.get("program") or {}
     pgm_ok = (statuses.get("program") or {}).get("available", att.get("available"))
     if pgm_ok and p.get("전체") is not None:
+        ratio = fnum(att.get("program_crosscheck_ratio_pct"))
+        check_suffix = f" ({ratio:.2f}%)" if ratio is not None else " (비율 검증 보류)"
         lines += [f"• {ko} 프로그램 전체(차익+비차익) <b>{fmt_raw(p.get('전체'))}</b> · "
                   f"차익 <b>{fmt_raw(p.get('차익'))}</b> · 비차익 <b>{fmt_raw(p.get('비차익'))}</b> <i>(LS 원값)</i>",
                   f"• LS 전체 직접값 변화 <b>{fmt_raw(p.get('전체직접'))}</b> · "
-                  f"계산합계와 차이 <b>{fmt_raw(p.get('검산차이'))}</b>"]
+                  f"계산합계와 차이 <b>{fmt_raw(p.get('검산차이'))}</b>{check_suffix}"]
     else:
         reason = str((statuses.get("program") or {}).get("reason") or "기준점 없음")
         lines.append(f"• {ko} 프로그램 전체·차익·비차익: 확인 보류 — {html.escape(reason)}")
@@ -893,7 +898,7 @@ class Watch:
         self.idx: deque[tuple[float, float]] = deque(maxlen=30000)
         self.fut: deque[tuple[float, float]] = deque(maxlen=30000)
         self.puts: dict[str, deque[tuple[float, float]]] = defaultdict(lambda: deque(maxlen=30000))
-        self.flows: deque[dict[str, Any]] = deque(maxlen=2500)
+        self.flows: deque[dict[str, Any]] = deque(maxlen=10000)
         self.front_future = front_future; self.episode: dict[str, Any] | None = None
         # 종료된 사건의 과거 고점으로 새로운 시작 경보를 재발송하지 않는다.
         self.last_episode_end_ts: float | None = None
@@ -918,7 +923,7 @@ class Watch:
         self.surge_pending: dict[str, dict[str, float]] = {}
         self.surge_sent_at: dict[str, float] = {}
         # 같은 프로세스에서 별도로 조회하되 코스피 급락·수급 작업을 막지 않는다.
-        self.kosdaq_flows: deque[dict[str, Any]] = deque(maxlen=1500)
+        self.kosdaq_flows: deque[dict[str, Any]] = deque(maxlen=10000)
         self.kosdaq_flow_task: asyncio.Task | None = None
         self.kosdaq_last_poll = 0.0
         self.kosdaq_last_success_ts: float | None = None
@@ -1130,7 +1135,7 @@ class Watch:
         # Legacy KOSPI handoffs keep their old series; after a new collection,
         # both markets require the exact-product channel. Never mix its scale
         # with the t1602 five-minute surge series.
-        future_key = "지수선물" if market == "KOSDAQ" or any("지수선물" in x for x in rows) else "선물"
+        future_key = "지수선물" if market == "KOSDAQ" or any(x.get("flow_schema") or "지수선물" in x for x in rows) else "선물"
         pairs, statuses = {}, {}
         for name, key in (("spot", "현물"), ("futures", future_key), ("program", "프로그램")):
             first = self._flow_channel_near(start_ts, key, rows=rows, market=market)
@@ -1140,8 +1145,9 @@ class Watch:
                 gaps = (start_ts-first[1], end_ts-last[1])
                 status.update(start_gap=gaps[0], end_gap=gaps[1],
                               start_ts=first[1], end_ts=last[1])
-                same_series = ((first[0].get("source_tr"), first[0].get("unit")) ==
-                               (last[0].get("source_tr"), last[0].get("unit")))
+                legacy_tr = "t1602" if name == "spot" else None
+                same_series = ((first[0].get("source_tr", legacy_tr), first[0].get("unit")) ==
+                               (last[0].get("source_tr", legacy_tr), last[0].get("unit")))
                 if max(gaps) > MAX_FLOW_ALIGNMENT_SEC:
                     status["reason"] = f"기준점 시간 정렬 초과: 시작 {gaps[0]:.1f}초 / 종료 {gaps[1]:.1f}초(허용 30초)"
                 elif not same_series:
@@ -1474,8 +1480,9 @@ class Watch:
         self.last_flow_poll = now
         async def run_one():
             try:
-                snap = await asyncio.to_thread(fetch_flow_snapshot, self.token)
-                self.flows.append(snap)
+                loop = asyncio.get_running_loop()
+                publish = lambda point: loop.call_soon_threadsafe(self.flows.append, point)
+                snap = await asyncio.to_thread(fetch_flow_snapshot, self.token, "KOSPI", publish)
                 self.raw["last_flow_snapshot"] = snap
                 snapshot_ok, issues = flow_snapshot_health(snap)
                 if snapshot_ok:
@@ -1508,8 +1515,9 @@ class Watch:
 
         async def run_one():
             try:
-                snap = await asyncio.to_thread(fetch_flow_snapshot, self.token, "KOSDAQ")
-                self.kosdaq_flows.append(snap)
+                loop = asyncio.get_running_loop()
+                publish = lambda point: loop.call_soon_threadsafe(self.kosdaq_flows.append, point)
+                snap = await asyncio.to_thread(fetch_flow_snapshot, self.token, "KOSDAQ", publish)
                 ok, issues = flow_snapshot_health(snap)
                 self.raw["last_kosdaq_flow_snapshot"] = snap
                 spot = snap.get("현물") or {}
@@ -1907,7 +1915,9 @@ class Watch:
         for actor, cand in current.items():
             sample_ts = float(cand["sample_ts"])
             previous = self.surge_pending.get(actor)
-            if previous is None or sample_ts <= previous["sample_ts"] or (
+            if previous is not None and sample_ts == previous["sample_ts"]:
+                continue
+            if previous is None or sample_ts < previous["sample_ts"] or (
                 now_ts - previous["seen_at"] > 120
             ):
                 self.surge_pending[actor] = {"sample_ts": sample_ts, "seen_at": now_ts}
