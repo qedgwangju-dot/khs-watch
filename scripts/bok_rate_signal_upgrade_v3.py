@@ -14,7 +14,11 @@ import bok_rate_signal_upgrade as base
 def policy_flags(blob: str) -> dict[str, bool]:
     f = base.flags(blob)
     f.update({
-        "hike_timing_speed": bool(re.search(r"추가\s*인상의?\s*시기와\s*속도", blob)),
+        "hike_timing_speed": bool(re.search(r"(?:추가\s*)?(?:기준금리\s*)?인상의?\s*시기와\s*속도", blob)),
+        "k_shaped_low_income": bool(re.search(r"K\s*[-·]?\s*자형|양극화", blob, re.I) and re.search(r"저소득|취약계층", blob) and re.search(r"물가|인플레이션", blob)),
+        "ai_war_inflation": bool(re.search(r"AI|인공지능", blob, re.I) and re.search(r"중동|전쟁", blob) and re.search(r"물가|인플레이션", blob)),
+        "fvi_leverage": bool(re.search(r"금융취약성지수|\bFVI\b", blob, re.I) and re.search(r"레버리지|차입|46(?:\.5)?", blob)),
+        "ai_investment_duration": bool(re.search(r"AI|인공지능", blob, re.I) and re.search(r"(?:3\s*[~∼\-]\s*4\s*년|3\s*~\s*4\s*년|1조\s*달러|투자\s*호황.*지속)", blob)),
         "next_meeting_hawk": bool(re.search(r"(?:10월|다음\s*회의)[^.]{0,55}(?:인상\s*필요|인상\s*가능성\s*(?:높|확대)|인상해야|인상\s*검토|인상\s*불가피)", blob)),
         "next_meeting_caution": bool(re.search(r"(?:10월|다음\s*회의)[^.]{0,70}(?:예단|단정|말하기|결정)[^.]{0,45}(?:어렵|무리|지표|데이터|확인)", blob)),
         "two_hikes_effect": bool(re.search(r"(?:두\s*차례|2차례)[^.]{0,40}금리\s*인상[^.]{0,60}(?:영향|효과)[^.]{0,40}(?:살펴|점검|확인)", blob)),
@@ -41,18 +45,20 @@ def event_score(f: dict[str, bool]) -> int:
 
 def rhetoric(now: dt.datetime) -> list[dict]:
     queries = (
-        '한국은행 김종화 "추가 인상의 시기와 속도"',
-        '한국은행 박종우 "성장보다 물가" 중동',
-        '한국은행 박종우 10월 금리 지표 확인',
-        '한국은행 통화신용정책보고서 추가 인상 시기 속도 중동 물가',
-        '한국은행 금통위원 추가 인상 근원물가 가계부채',
+        '신현송 한국은행 총재 K자형 양극화 AI 중동 물가',
+        '신현송 한국은행 총재 금융취약성지수 46 레버리지',
+        '신현송 AI 투자 호황 중동 전쟁 인플레이션 통화정책',
+        '한국은행 총재 금융통화위원회 추가 인상 근원물가 가계부채',
+        '한국은행 통화신용정책보고서 추가 인상 시기 속도',
+        '한국은행 박종우 금리 물가 금융안정',
+        '한국은행 김종화 추가 인상 시기 속도',
     )
     rows = []
     cutoff = now - dt.timedelta(days=5)
 
     # 뉴스 검색은 서로 독립이므로 병렬 조회한다. 한 검색원의 지연이 전체 실행을
     # 5배로 늘리지 않도록 하되, 실패한 검색은 기존처럼 부분 오류로만 남긴다.
-    with ThreadPoolExecutor(max_workers=min(5, len(queries))) as pool:
+    with ThreadPoolExecutor(max_workers=min(7, len(queries))) as pool:
         future_map = {pool.submit(base.news, q, 30): q for q in queries}
         for fut in as_completed(future_map):
             try:
@@ -176,7 +182,10 @@ def build_message(state: dict, reasons: list[str], new_events: list[dict]) -> st
             tags = []
             if f.get("hike_timing_speed") or f.get("hike_needed"): tags.append("추가 인상 경로 ↑")
             if f.get("middle_east_cost") or f.get("middle_east_inflation"): tags.append("중동발 물가 압력 ↑")
-            if f.get("demand_inflation") or f.get("inflation_upside"): tags.append("수요·근원물가 압력 ↑")
+            if f.get("demand_inflation") or f.get("inflation_upside") or f.get("ai_war_inflation"): tags.append("물가 압력 ↑")
+            if f.get("k_shaped_low_income"): tags.append("K자형 양극화·저소득층 물가부담")
+            if f.get("fvi_leverage"): tags.append("금융취약성지수·레버리지 선제관리")
+            if f.get("ai_investment_duration"): tags.append("AI 투자 지속성·파급효과")
             if f.get("next_meeting_caution") or f.get("oct_hike_caution"): tags.append("다음 회의 즉시 인상 확정 아님")
             if f.get("two_hikes_effect"): tags.append("7·8월 인상 효과 확인 필요")
             if f.get("rate_not_only_tool") or f.get("macroprudential_mix"): tags.append("금융안정은 정책조합 병행")
