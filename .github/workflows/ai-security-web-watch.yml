@@ -288,6 +288,49 @@ jobs:
           print("ai_security_incident_program_regression=PASS")
           PY
 
+      - name: Test OpenAI insider case and stage safeguards
+        shell: bash
+        run: |
+          python - <<'PY'
+          from scripts.ai_security_web_watch import (
+              detect_category, incident_fact, is_openai_insider_case,
+              material, openai_insider_case_stage, source_official,
+          )
+          base = {
+              "kind": "news", "source": "Reuters",
+              "title": "OpenAI engineer Abdulrahman Alfozan arrested over alleged office listening device",
+              "description": "OpenAI says there is no indication of theft of model weights or customer data. If convicted, he faces a prison term.",
+              "url": "https://www.reuters.com/example",
+              "published_at": "2026-10-13T20:00:00+00:00",
+          }
+          assert source_official("U.S. Department of Justice")
+          assert source_official("U.S. Attorney's Office")
+          assert is_openai_insider_case(base) and material(base)
+          assert detect_category(base["title"]) == "AI 연구기관 내부자 도청·접근통제 사건"
+          assert openai_insider_case_stage(base) == "initial_oct13_charge"
+          fact = incident_fact(base)
+          if "혐의" not in fact or "유출 확정 아님" not in fact:
+              raise AssertionError("OpenAI charge incorrectly treated as conviction/theft")
+
+          court = dict(base)
+          court["title"] = "Alfozan appeared at detention hearing on October 19"
+          court["description"] = "OpenAI hearing held after the original complaint"
+          court["published_at"] = "2026-10-19T18:00:00+00:00"
+          assert openai_insider_case_stage(court) == "oct19_hearing_result"
+          scheduled = dict(base)
+          scheduled["title"] = "Alfozan scheduled for detention hearing October 19"
+          assert openai_insider_case_stage(scheduled) == "initial_oct13_charge"
+
+          loss = dict(base)
+          loss["title"] = "OpenAI confirms no evidence of stolen model weights"
+          assert openai_insider_case_stage(loss) == "initial_oct13_charge"
+          verdict = dict(base)
+          verdict["title"] = "Alfozan found guilty in OpenAI wiretapping case"
+          verdict["description"] = ""
+          assert openai_insider_case_stage(verdict) == "court_verdict"
+          print("ai_security_insider_case_regression=PASS")
+          PY
+
       - name: Run live web security watch
         run: |
           rm -f out/ai_security_web_watch_alert_title.txt out/ai_security_web_watch_alert.md out/ai_security_web_watch_telegram_confirmed.json
