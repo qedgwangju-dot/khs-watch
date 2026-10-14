@@ -1,7 +1,7 @@
 {
-  "last_alert_at_kst": "2026-10-14T11:09:53+09:00",
-  "last_event_kind": "saudi_bypass_investment",
-  "last_event_id": "saudi_bypass_investment:3ba5edb3ff00bf86",
+  "last_alert_at_kst": "2026-10-14T23:03:10+09:00",
+  "last_event_kind": "eu_diesel_reserve_policy",
+  "last_event_id": "eu_diesel_reserve_policy:54f8a60d9eb812bf",
   "alerted_events": {
     "regional_export_recovery:66183575fab99015": "2026-10-13T21:23:53+09:00",
     "sts_reroute_expansion:a5a5b34c0694d3fd": "2026-10-13T21:11:24+09:00",
@@ -30,30 +30,31 @@
     "us_gulf_isaias_shutin:6664a5b2f150d51b": "2026-10-13T08:13:43+09:00",
     "us_gulf_isaias_shutin:6594a4d0cfb93144": "2026-10-14T11:01:30+09:00",
     "tankertrackers_7country_crude_mtd:5e4bd4351c97d270": "2026-10-14T11:06:39+09:00",
-    "saudi_bypass_investment:3ba5edb3ff00bf86": "2026-10-14T11:09:53+09:00"
+    "saudi_bypass_investment:3ba5edb3ff00bf86": "2026-10-14T11:09:53+09:00",
+    "eu_diesel_reserve_policy:54f8a60d9eb812bf": "2026-10-14T23:03:10+09:00"
   },
   "last_market": {
     "oil": {
       "symbol": "BZ=F",
       "label": "Brent",
       "unit": "달러/배럴",
-      "price": 106.94,
+      "price": 106.07,
       "previous_close": 105.69,
-      "change": 1.25,
-      "change_pct": 1.182704134733655,
-      "timestamp_utc": "2026-10-14T02:00:21Z",
-      "timestamp_epoch": 1791943221.0
+      "change": 0.37999999999999545,
+      "change_pct": 0.35954205695902686,
+      "timestamp_utc": "2026-10-14T13:53:42Z",
+      "timestamp_epoch": 1791986022.0
     },
     "usdkrw": {
       "symbol": "KRW=X",
       "label": "원·달러",
       "unit": "원/달러",
-      "price": 1336.68,
+      "price": 1341.25,
       "previous_close": 1340.13,
-      "change": -3.4500000000000455,
-      "change_pct": -0.2574377112668208,
-      "timestamp_utc": "2026-10-14T02:10:36Z",
-      "timestamp_epoch": 1791943836.0
+      "change": 1.1199999999998909,
+      "change_pct": 0.08357398162863981,
+      "timestamp_utc": "2026-10-14T14:03:44Z",
+      "timestamp_epoch": 1791986624.0
     }
   }
 }
