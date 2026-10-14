@@ -1152,6 +1152,18 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError,"검증 불가"):
             MODULE.parse_tankertrackers_seven_country_mtd(forged,now)
 
+    def test_immutable_historical_sources_not_polled_after_expiry(self):
+        # Old Reuters/Xinhua stories should not be fetched every hour indefinitely.
+        before=dt.datetime(2026,10,8,13,tzinfo=dt.timezone.utc)
+        inside=dt.datetime(2026,10,9,13,tzinfo=dt.timezone.utc)
+        after=dt.datetime(2026,10,14,2,tzinfo=dt.timezone.utc)
+        self.assertEqual(MODULE._historical_direct_loaders(before),())
+        self.assertEqual(
+            set(name for name,_ in MODULE._historical_direct_loaders(inside)),
+            {"중국 Reuters 거래 관계자 보도","호르무즈 신화통신·타스님 인용 보도"}
+        )
+        self.assertEqual(MODULE._historical_direct_loaders(after),())
+
     def test_direct_historical_sources_expire(self):
         # Historical expiry tests must never read current live MMA reports. New official
         # releases make a fixed simulated October 16 date nondeterministic otherwise.

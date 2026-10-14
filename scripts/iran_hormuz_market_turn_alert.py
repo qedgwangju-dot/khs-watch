@@ -55,6 +55,9 @@ CHINA_REUTERS_20261009_MIRRORS = (
     "https://www.brecorder.com/news/40443419/china-to-resume-october-fuel-exports-after-a-brief-halt-four-trade-sources-say",
 )
 HORMUZ_7DAY_XINHUA_URL = "https://english.news.cn/20261009/b23dc5dd06f242e991ad5dfe3eed727c/c.html"
+CHINA_REUTERS_FIXED_OBSERVED = dt.datetime(2026,10,9,3,27,tzinfo=UTC)
+HORMUZ_XINHUA_FIXED_OBSERVED = dt.datetime(2026,10,9,1,11,tzinfo=UTC)
+HISTORICAL_DIRECT_MAX_HOURS = 36
 MMA_OIL_ISAIAS_OCT7_URL = "https://www.bsee.gov/newsroom/latest-news/statements-and-releases/press-releases/mma-monitors-gulf-response-isaias"
 MMA_OIL_ISAIAS_OCT8_URL = "https://www.bsee.gov/newsroom/latest-news/statements-and-releases/press-releases/mma-monitors-gulf-response-isaias2"
 MMA_OIL_ISAIAS_OCT9_URL = "https://www.bsee.gov/newsroom/latest-news/statements-and-releases/press-releases/mma-monitors-gulf-response-isaias3"
@@ -2047,6 +2050,32 @@ def fetch_mideast_export_snapshot(current: dt.datetime) -> NewsItem:
     raise RuntimeError(" | ".join(errors))
 
 
+def _historical_direct_loaders(current: dt.datetime) -> tuple[tuple[str, object], ...]:
+    """Do not refetch immutable event articles after their evidence window expires.
+
+    They remain discoverable through live news searches when *new* developments occur.
+    Prevents old mirror failures from making every hourly run slower/noisier.
+    """
+    if current.tzinfo is None:
+        raise ValueError("시간대 없는 역사적 이벤트 조회 금지")
+    observed_now = current.astimezone(UTC)
+
+    def active(observed: dt.datetime) -> bool:
+        elapsed = (observed_now - observed).total_seconds()
+        return 0 <= elapsed <= HISTORICAL_DIRECT_MAX_HOURS * 3600
+
+    sources: list[tuple[str, object]] = []
+    if active(CHINA_REUTERS_FIXED_OBSERVED):
+        sources.append(("중국 Reuters 거래 관계자 보도",
+                        lambda: fetch_china_reuters_resumption(current)))
+    if active(HORMUZ_XINHUA_FIXED_OBSERVED):
+        sources.append(("호르무즈 신화통신·타스님 인용 보도",
+                        lambda: parse_hormuz_xinhua_review(
+                            fetch_bytes(HORMUZ_7DAY_XINHUA_URL,timeout=16,attempts=2)
+                            .decode("utf-8","replace"),current)))
+    return tuple(sources)
+
+
 def fetch_news(current: dt.datetime) -> tuple[list[NewsItem], list[str]]:
     max_age_hours = int(os.getenv("IRAN_HORMUZ_MAX_NEWS_AGE_HOURS", "72"))
     items: list[NewsItem] = []
@@ -2081,12 +2110,9 @@ def fetch_news(current: dt.datetime) -> tuple[list[NewsItem], list[str]]:
             fetch_bytes(SAUDI_BYPASS_STRATEGY_URL,timeout=18,attempts=2).decode("utf-8","replace"),current)),
         ("OFAC 러시아 경유 일반허가 제135호", lambda: parse_ofac_russian_diesel_license(
             fetch_bytes(RUSSIA_DIESEL_OFAC_GL135_URL,timeout=18,attempts=2).decode("utf-8","replace"), current)),
-        ("중국 Reuters 거래 관계자 보도", lambda: fetch_china_reuters_resumption(current)),
-        ("호르무즈 신화통신·타스님 인용 보도", lambda: parse_hormuz_xinhua_review(
-            fetch_bytes(HORMUZ_7DAY_XINHUA_URL,timeout=16,attempts=2).decode("utf-8","replace"),current)),
         ("허리케인 공식 MMA 중단율", lambda: fetch_mma_isaias_snapshot(current)),
     )
-    for desc, loader in direct_sources:
+    for desc, loader in (*direct_sources,*_historical_direct_loaders(current)):
         try:
             items.append(loader())
         except Exception as exc:
@@ -3729,8 +3755,8 @@ def fetch_mma_isaias_snapshot(current: dt.datetime) -> NewsItem:
 def parse_china_reuters_resumption(
     raw_html: str, current: dt.datetime, source_url: str = CHINA_REUTERS_20261009_URL
 ) -> NewsItem:
-    observed=dt.datetime(2026,10,9,3,27,tzinfo=UTC)
-    if not(observed<=current and (current-observed).total_seconds()<=36*3600):
+    observed=CHINA_REUTERS_FIXED_OBSERVED
+    if not(observed<=current and (current-observed).total_seconds()<=HISTORICAL_DIRECT_MAX_HOURS*3600):
         raise RuntimeError("중국 Reuters 수출 재개 보도의 유효기간 경과")
     text=normalize_text(_visible_text(raw_html))
     if not all(v in text for v in ("china","october","fuel exports")) or not (
@@ -3759,8 +3785,8 @@ def fetch_china_reuters_resumption(current: dt.datetime) -> NewsItem:
 
 
 def parse_hormuz_xinhua_review(raw_html: str,current: dt.datetime) -> NewsItem:
-    observed=dt.datetime(2026,10,9,1,11,tzinfo=UTC)
-    if not(observed<=current and (current-observed).total_seconds()<=36*3600):
+    observed=HORMUZ_XINHUA_FIXED_OBSERVED
+    if not(observed<=current and (current-observed).total_seconds()<=HISTORICAL_DIRECT_MAX_HOURS*3600):
         raise RuntimeError("7일 이내 호르무즈 협상 보도 신선도 종료")
     text=normalize_text(_visible_text(raw_html))
     if not all(v in text for v in ("araghchi","seven-day plan","reviewing","hormuz")):
