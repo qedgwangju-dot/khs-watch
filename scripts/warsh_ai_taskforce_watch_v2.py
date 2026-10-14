@@ -18,8 +18,10 @@ HIGH_SIGNAL=[
     r"employment", r"labor market", r"workforce.*AI", r"AI.*workforce",
 ]
 OFFICIAL_ARCHIVES=[
-    "https://www.gartner.com/en/newsroom/archive",
+    # GitHub Actions에서는 Gartner의 공개 AWS 배포 경로가 더 안정적으로 응답한다.
+    # 둘 다 Gartner 공식 Newsroom 콘텐츠이며, 실패 시 www 원본 경로를 재시도한다.
     "https://gcom.pdo.aws.gartner.com/en/newsroom/archive",
+    "https://www.gartner.com/en/newsroom/archive",
 ]
 
 
