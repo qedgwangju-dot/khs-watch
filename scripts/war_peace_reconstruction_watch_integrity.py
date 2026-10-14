@@ -27,6 +27,22 @@ def _headline(row):
     return html.unescape(str(row.get('title_original') or row.get('title') or row.get('title_ko') or '')).lower()
 
 
+def maritime_attack_tally(row):
+    """A period's ship-attack count does not identify a new projectile incident."""
+    title = _headline(row)
+    ships = re.search(r'선박|상선|유조선|\b(?:ships?|vessels?|tankers?)\b', title)
+    attacks = re.search(r'피격|공격(?:당|받)|\b(?:attacked|struck|hit)\b', title)
+    count = re.search(r'\d[\d,]*\s*척|\b\d[\d,]*\s+(?:ships?|vessels?|tankers?)\b', title)
+    period = re.search(r'\d+\s*(?:주|일|개월)|\b(?:\d+|one|two|three)\s+(?:days?|weeks?|months?)\b', title)
+    uncertain = re.search(r'부인|미확인|가능성|우려|예고|\?|\b(?:denies?|denied|not|never|may|might|could)\b', title)
+    return bool(ships and attacks and count and period and not uncertain)
+
+
+def _display_headline(row):
+    original = str(row.get('title_original') or row.get('title') or '')
+    return original if re.search(r'[가-힣]', original) else str(row.get('title_ko') or original)
+
+
 def _headline_group(title):
     """Use actors in the current headline, before background actors or caches."""
     us = bool(re.search(r'미국|트럼프|(?:^|\s)美(?:\s|,)|\b(?:trump|united states)\b|'
@@ -56,6 +72,9 @@ def _primary_topic(row):
         r'(?:공격|피격|타격)(?:(?:을|를|하지|받지|당하지)|\s*(?:보도|주장|설)(?:을|를)?)?\s*(?:부인|안\s*했|않|하지\s*않)|'
         r'\b(?:not|never)\s+(?:been\s+)?(?:attacked|struck|hit|bombed)\b|'
         r'\bno\s+(?:attack|strike)\b|\b(?:denies|denied)\b.{0,50}\b(?:attack|attacked|struck|hit)\b', title))
+    if kind is None and maritime_attack_tally(row):
+        area = '호르무즈' if re.search(r'호르무즈|\bhormuz\b', title) else '해상'
+        return area + ' · 선박 피격 집계 보도'
     if (kind is None and re.search(r'아람코|\baramco\b', title)
             and re.search(r'공격(?!적)|피격|\b(?:attack(?:s|ed)?|struck|hit)\b', title)
             and not attack_denied and not re.search(r'요격|intercept', title)):
@@ -159,7 +178,9 @@ def score_item(row, now):
 
 
 def final_color(row):
-    return 'yellow' if non_military_kind(row) else _color(row)
+    if non_military_kind(row):
+        return 'yellow'
+    return 'red' if maritime_attack_tally(row) else _color(row)
 
 
 def topic_label(row):
@@ -175,6 +196,14 @@ def topic_label(row):
 
 
 def verdict(items):
+    if items and all(maritime_attack_tally(row) for row in items):
+        return (
+            '<b>투자 판정</b>\n'
+            '- <b>핵심:</b> 일정 기간의 선박 피격 건수에 관한 집계 보도\n'
+            '- <b>현재 단계:</b> 기사 공표시각과 집계 기간을 구분 — 공표시각에 새 피격이 발생했다는 뜻은 아님\n'
+            '- <b>조건부 영향:</b> 추가 피격·운항 차질이 확인되면 해운·보험 위험프리미엄 상승 가능\n'
+            '- <b>다음:</b> 집계 원자료·기간 → 개별 피격의 발생시각·원인·공격 주체 → 실제 추가 피해'
+        )
     kinds = [non_military_kind(row) for row in items]
     if kinds and all(kinds):
         if set(kinds) & {'military_statement', 'support_statement'} and not set(kinds) & {'attack_pause', 'mixed_restraint'}:
@@ -243,6 +272,12 @@ def build_alert(items, markets, now):
         return ''
     for row in items:
         kind = non_military_kind(row)
+        if maritime_attack_tally(row):
+            # Older maritime templates describe one specific projectile cluster.
+            # The current headline instead reports a population over a period.
+            row['signals_ko'] = []
+            row['tags'] = list(dict.fromkeys(
+                '선박피격집계' if tag == '유조선피격' else tag for tag in row.get('tags', [])))
         if kind:
             row['non_military_kind'] = kind
             row['tags'] = [tag for tag in row.get('tags', []) if tag not in ('확전', '확전위험', '공격확대예고')]
@@ -272,9 +307,7 @@ def build_alert(items, markets, now):
         if kind in ('attack_pause', 'mixed_restraint') or primary:
             # Preserve the original speaker and both clauses instead of the
             # older template's invented promise to increase Ukrainian strikes.
-            original = str(row.get('title_original') or row.get('title') or '')
-            title = original if re.search(r'[가-힣]', original) else str(row.get('title_ko') or original)
-            lines[start + 1] = html.escape(title)
+            lines[start + 1] = html.escape(_display_headline(row))
         for i in range(start + 1, end):
             line_urls = {html.unescape(value) for value in re.findall(r'<a href="([^"]+)"', lines[i])}
             if not line_urls & {row.get('link'), row.get('resolved_url')}:
@@ -366,6 +399,8 @@ def verify_alert(test_mode=False):
                 row.get('non_military_kind') != 'mixed_restraint'
                 or row.get('classification_color') != 'yellow' or not lines[start].startswith('🟡')):
             raise RuntimeError('WAR_INTEGRITY_GATE: unilateral restraint shown as bilateral peace')
+        if primary and (start + 1 >= end or lines[start + 1] != html.escape(_display_headline(row))):
+            raise RuntimeError('WAR_INTEGRITY_GATE: rendered headline differs from source headline')
     if set(matched) != set(ids):
         raise RuntimeError('WAR_INTEGRITY_GATE: duplicated or omitted rendered source')
     for row in receipt['markets']:
