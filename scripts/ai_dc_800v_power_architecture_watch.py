@@ -17,7 +17,7 @@ PENDING = OUT / "ai_dc_800v_power_architecture_pending_state.json"
 ALERT = OUT / "ai_dc_800v_power_architecture_alert.txt"
 STATUS = OUT / "ai_dc_800v_power_architecture_status.md"
 
-FORMAT_VERSION = 6
+FORMAT_VERSION = 7
 # Dedupe validation: unchanged extracted facts must remain Telegram-silent.
 # Timing-benchmark validation reruns must also remain silent when official facts are unchanged.
 HEADERS = {"User-Agent": "khs-watch/1.0 (+https://github.com/qedgwangju-dot/khs-watch)"}
@@ -36,6 +36,9 @@ HITACHI_800V = "https://hitachidigital.com/news/hitachi-accelerate-gigawatt-scal
 SIEMENS_SST = "https://press.siemens.com/global/en/pressrelease/siemens-and-reinhausen-develop-direct-current-power-solutions-ai-data-centers"
 LS_DC = "https://nahpdev.ls-electric.com/company/articles/2759/industry-usa-ls-electric-america-to-highlight-dc-grid-solutions-for-ai-data-centers-at-data-center-world-2026"
 DELTA_DCW = "https://www.delta-singapore.com/en-SG/news/40267"
+DELTA_OCP_2026 = "https://www.delta-americas.com/en-US/news/40271"
+DELTA_OCP_BOOTH = "https://www.delta-americas.com/en-US/landing/2026-OCP-Summit"
+OCP_2026_TRACKS = "https://www.opencompute.org/news/explore-22-tracks-at-the-2026-ocp-global-summit/"
 LG_AIR = "https://www.lg.com/global/newsroom/news/eco-solution/lg-electronics-secures-supply-agreement-to-advance-ai-data-center-cooling-business-in-north-america/"
 AIR_LG = "https://www.aircontrolconcepts.com/news/air-and-lg-supply-agreement-aims-to-advance-ai-data-center-cooling-business-in-north-america"
 LG_CHILLER_CAPACITY = "https://lg.co.kr/media/release/30623"
@@ -61,6 +64,9 @@ SOURCES = {
     "siemens": SIEMENS_SST,
     "ls": LS_DC,
     "delta": DELTA_DCW,
+    "delta_ocp_2026": DELTA_OCP_2026,
+    "delta_ocp_booth": DELTA_OCP_BOOTH,
+    "ocp_2026_tracks": OCP_2026_TRACKS,
     "lg_air": LG_AIR,
     "air_lg": AIR_LG,
     "lg_chiller_capacity": LG_CHILLER_CAPACITY,
@@ -155,6 +161,9 @@ def snapshot(texts: dict[str, str]) -> dict:
     siemens = texts.get("siemens", "")
     ls = texts.get("ls", "")
     delta = texts.get("delta", "")
+    delta_ocp = texts.get("delta_ocp_2026", "")
+    delta_booth = texts.get("delta_ocp_booth", "")
+    ocp_tracks = texts.get("ocp_2026_tracks", "")
     lg_air = texts.get("lg_air", "")
     air_lg = texts.get("air_lg", "")
     lg_capacity = texts.get("lg_chiller_capacity", "")
@@ -193,6 +202,11 @@ def snapshot(texts: dict[str, str]) -> dict:
             "ocp_sst_spec_version": sst_version,
             "ocp_open_standard_google_microsoft_nvidia": contains(texts, "ocp", "Google", "Microsoft", "NVIDIA"),
             "ocp_safety_bodies": all(x in ocp for x in ("UL", "NFPA", "IEEE", "IEC")) if ocp else None,
+            "ocp_2026_power_and_optics_tracks": (
+                "rack & power" in ocp_tracks.lower()
+                and "photonics" in ocp_tracks.lower()
+                and "800v" in ocp_tracks.lower()
+            ) if ocp_tracks else None,
         },
         "vendors": {
             "Schneider Electric": {
@@ -234,6 +248,28 @@ def snapshot(texts: dict[str, str]) -> dict:
             "Delta": {
                 "stage": "800 VDC In-Row 제품 공개" if "800 vdc" in delta.lower() and "in-row" in delta.lower() else "확인 불가",
                 "sst_signal": "solid state transformer" in delta.lower() if delta else None,
+                "ocp_2026_official_power_cooling_display": (
+                    "800 vdc" in delta_ocp.lower()
+                    and "liquid cooling" in delta_ocp.lower()
+                ) if delta_ocp else None,
+                "ocp_2026_sst_medium_voltage_to_800v": (
+                    "solid-state transformers" in delta_booth.lower()
+                    and "medium-voltage ac" in delta_booth.lower()
+                    and "800 vdc" in delta_booth.lower()
+                ) if delta_booth else None,
+                "ocp_2026_nvidia_joint_session": (
+                    "mike tu" in delta_ocp.lower() and "nvidia" in delta_ocp.lower()
+                ) if delta_ocp else None,
+                "ocp_2026_cdu_mw": regex_value(
+                    texts, "delta_ocp_2026",
+                    r"800\s*VDC\s+([0-9]+(?:\.[0-9]+)?)\s*MW\s+Liquid-to-Liquid",
+                    float,
+                ),
+                "deschutes_open_cdu_mass_production_q1_2027_plan": (
+                    "project deschutes" in delta_ocp.lower()
+                    and "mass production" in delta_ocp.lower()
+                    and "q1 2027" in delta_ocp.lower()
+                ) if delta_ocp else None,
             },
         },
     }
@@ -502,6 +538,22 @@ def changes(old: dict, new: dict) -> list[str]:
             if before is not None and after is not None and before != after:
                 out.append(f"{label} {before}→{after}")
 
+    # Official OCP 2026 product disclosure is not an actual customer shipment.
+    old_delta = (pv.get("Delta") or {})
+    new_delta = (nv.get("Delta") or {})
+    for key, label in (
+        ("ocp_2026_official_power_cooling_display", "Delta OCP 2026 800VDC 전력·냉각 제품 공개"),
+        ("ocp_2026_sst_medium_voltage_to_800v", "Delta 중전압 AC→800VDC SST 제품"),
+        ("ocp_2026_cdu_mw", "Delta 800VDC 냉각 분배장치 용량(MW)"),
+        ("deschutes_open_cdu_mass_production_q1_2027_plan", "Delta 개방형 냉각장치 2027년 1분기 양산 계획"),
+        ("ocp_2026_nvidia_joint_session", "Delta-NVIDIA 800VDC 공동 기술세션"),
+    ):
+        before, after = old_delta.get(key), new_delta.get(key)
+        if before is None and after is not None and after is not False:
+            out.append(f"{label} 신규 공식 확인: {after}")
+        elif before is not None and after is not None and before != after:
+            out.append(f"{label} {before}→{after}")
+
     pm, nm = prev.get("market") or {}, new.get("market") or {}
     for key, label in (
         ("official_multi_vendor_800v_count", "공식 800 VDC 직접 참여 공급사 수"),
@@ -529,6 +581,7 @@ def render(facts: dict, chg: list[str], errors: list[str], fxv: dict) -> str:
     v = facts["vendors"]
     m = facts["market"]
     e = facts["execution"]
+    delta26 = facts["vendors"]["Delta"]
 
     lines = [
         "<b>⚡ AI 데이터센터 800 VDC·전력/냉각 인프라 실행 감시</b>",
@@ -552,6 +605,13 @@ def render(facts: dict, chg: list[str], errors: list[str], fxv: dict) -> str:
         f"• 사이드카·SST 기술 단독 해자 │ <b>{html.escape(m['technology_only_moat'])}</b>",
         f"  └ {html.escape(m['moat_check_basis'])}",
         "• JPM의 '도입 지연·2030년대까지 하이브리드 주류' 문구는 공개 원문을 독립 확보하지 못해 공식 기준선으로 사용하지 않음. 대신 Schneider·Vertiv·NVIDIA 공식 일정으로 검증",
+        "",
+        "<b>⚡ OCP 2026 전력·냉각 기술 확인</b>",
+        "• BoA 랙 밀도 145→300~500kW+는 미래 전망이며 현재 전체 랙 평균이나 고객 주문이 아님",
+        f"• OCP 공식 기술축 │ 전력·광학 동시 논의={a.get('ocp_2026_power_and_optics_tracks')}",
+        f"• Delta │ 800VDC 전원·냉각 공개={delta26.get('ocp_2026_official_power_cooling_display')} · 중전압 AC→800VDC SST={delta26.get('ocp_2026_sst_medium_voltage_to_800v')}",
+        f"• Delta 800VDC 냉각 분배장치 │ 최대 {delta26.get('ocp_2026_cdu_mw') if delta26.get('ocp_2026_cdu_mw') is not None else '확인 불가'}MW (제품 전시 사양·실제 납품 아님)",
+        f"• Delta Project Deschutes 냉각 분배장치 │ 2027년 1분기 양산 계획={delta26.get('deschutes_open_cdu_mass_production_q1_2027_plan')} · 고객 납품 미확인",
         "",
         "<b>🧊 전력·냉각 인프라 실행</b>",
         f"• LG전자-AIR │ 북미 AIDC <b>{e.get('lg_air_capacity_gw_min') or 5:g}GW+</b> 칠러 장기공급계약 · 양사 공식 확인={e.get('lg_air_bilateral_official_long_term_contract')}",
@@ -600,6 +660,8 @@ def render(facts: dict, chg: list[str], errors: list[str], fxv: dict) -> str:
         f'• <a href="{SIEMENS_SST}">Siemens SST</a>',
         f'• <a href="{LS_DC}">LS ELECTRIC DC Grid</a>',
         f'• <a href="{DELTA_DCW}">Delta 800 VDC In-Row</a>',
+        f'• <a href="{DELTA_OCP_2026}">Delta OCP 2026 제품·양산계획</a>',
+        f'• <a href="{OCP_2026_TRACKS}">OCP 2026 전력·광학 기술프로그램</a>',
         f'• <a href="{LG_AIR}">LG전자-AIR 5GW+ 칠러 장기공급계약</a>',
         f'• <a href="{AIR_LG}">AIR 공식 LG 장기공급계약</a>',
         f'• <a href="{VERTIV_DSX}">Vertiv Vera Rubin DSX</a>',
@@ -630,7 +692,10 @@ def main() -> int:
     facts = snapshot(texts)
     fxv = fx(old)
     baseline = not old.get("initialized")
-    format_upgrade = int(old.get("format_version", 0) or 0) < FORMAT_VERSION
+    format_upgrade = (
+        int(old.get("format_version", 0) or 0) < FORMAT_VERSION
+        and facts["vendors"]["Delta"].get("ocp_2026_official_power_cooling_display") is True
+    )
     chg = changes(old, facts)
     should_alert = baseline or format_upgrade or bool(chg)
 
@@ -666,6 +731,7 @@ def main() -> int:
         f"- Vertiv 중앙집중형 2028~2029+: **{facts['market'].get('vertiv_centralized_2028_2029_plus')}**\n"
         f"- OCP SST 사양: **v{facts['architecture'].get('ocp_sst_spec_version') or '확인 불가'}**\n"
         f"- 공식 800 VDC 직접 참여 공급사: **{facts['market']['official_multi_vendor_800v_count']}개**\n"
+        f"- Delta OCP 2026: **800VDC 냉각 분배장치 {facts['vendors']['Delta'].get('ocp_2026_cdu_mw') if facts['vendors']['Delta'].get('ocp_2026_cdu_mw') is not None else '미확인'}MW · 2027년 1분기 양산 계획**\n"
         f"- LG전자-AIR 북미 칠러 장기계약: **{facts['execution'].get('lg_air_capacity_gw_min') or 5}GW+ / 공식 계약금액 미공개**\n"
         f"- SGC에너지-Vertiv: **{facts['execution'].get('sgc_vertiv_initial_mw') or 60:.0f}MW→최대 {facts['execution'].get('sgc_vertiv_max_mw') or 300:.0f}MW / 비구속 MOU**\n"
         f"- SGC 군산 1단계 실행: **현대엔지니어링 EPC 약 {facts['execution'].get('sgc_phase1_epc_krw_billion') * 10:,.0f}억원 / 2026년 10월 착공 / Q1 2028 전원 인가 목표**\n" if facts["execution"].get("sgc_phase1_epc_krw_billion") is not None else ""
