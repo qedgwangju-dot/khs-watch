@@ -6,10 +6,10 @@
     "deferred_material_items": 0,
     "direct_official_items": 27,
     "errors": [],
-    "material_items": 21,
+    "material_items": 20,
     "new_material_items": 0,
-    "raw_items": 251,
-    "replication_reference_suppressed": 0,
+    "raw_items": 249,
+    "replication_reference_suppressed": 1,
     "replication_watch_version": 1
   },
   "openai_insider_case_stages": {
@@ -397,6 +397,16 @@
       "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQcXlHQk1XOUZtdWtxUmNXYTNoSXd5LUlfMHpIQ1BXWl8zVmVvMlkweEdlc3NKeUdZUENHeDVpTDRpUnJueFgyRUdSUEZfWXBZaHhpR2YxOUxWNjZyTWNHdk1udGs2Q2tQUjBsUTUxalFkdHBScDEwTnY3dmI3ZDI2dU5pc1pnYkFpamExNGFGTWdjZVJTWmV4QlhmcEp2RkxXYnoyWjFjZFBVV1AxOXVxVXBWT0c2M1hEOGJNVg?oc=5",
       "vendor": "OpenAI"
     },
+    "9219d30ceb03e52d3e9047bf": {
+      "category": "AI 자율복제·사물인터넷 모의평가",
+      "first_seen_at": "2026-10-14T16:12:24.596037+00:00",
+      "published_at": "2026-10-14T15:19:02+00:00",
+      "severity": 1,
+      "source": "The Verge",
+      "title": "Anthropic’s self-replicating AI warning is alarming deja vu - The Verge",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPVmlsZkg4MjVmSXE4WDBLY29yUEZxZmo1SG9hcHlZdmRFLTF3V2lyWUpqbEZhNHF1aXpaWG9BdGdhREx6Tnk5Mjc4dWpkRUIyR0huejRDN29tM2hZQW1iNjJqM1FSdUF3cVJKS2VScUVNbG1mRFBjM3ZUV3RHeXV6TjNFM01EeW1vS2Q3SHc0TXJZcnNPb2JoMmNhNk5nQk9tTXprczFfbmlKeFBx?oc=5",
+      "vendor": "Anthropic"
+    },
     "92c590f4b4f5574f685f5fc0": {
       "category": "AI 연구기관 내부자 도청·접근통제 사건",
       "first_seen_at": "2026-10-14T06:01:57.575608+00:00",
@@ -628,5 +638,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-10-15T00:46:16+09:00"
+  "updated_at_kst": "2026-10-15T01:12:24+09:00"
 }
