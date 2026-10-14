@@ -1,0 +1,294 @@
+{
+  "provenance": {
+    "run_id": "38636753771",
+    "actual_code_sha": "95246611b1dc3270fe648262e457b1d4d4c4b052",
+    "queried_at_kst": "2026-10-15T06:01:13.136244+09:00",
+    "artifact_id": 11929300416,
+    "artifact_zip_sha256": "488b3091d8a8b706ead14927cb80b5a628def66d96901f264f1f811dcbec3746",
+    "input": "rejected operating evidence and body; no new collection or send",
+    "original_HTTP_response_bytes_preserved": false
+  },
+  "articles": [
+    {
+      "id": "52738a8079e5e1d2c32a",
+      "title_original": "후티, 샤우디 리야드 킹칼리드 공항 탄도미사일 공격 - 뉴시스",
+      "title_ko": "후티, 샤우디 리야드 킹칼리드 공항 탄도미사일 공격 - 뉴시스",
+      "description": "후티, 샤우디 리야드 킹칼리드 공항 탄도미사일 공격 뉴시스",
+      "source": "뉴시스",
+      "source_url": "https://mobile.newsis.com",
+      "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBOREJRQjdBVnVKbkJzZlJURUJBWWkwMkRpSmRGZzVOM0d4R1F6MS1zVTlhay02bjVORk9iU2dPMksyM1N5RmNwNllMOURPVVBtdTdxQVJvRWVWV0ZFUGdNVEp5YVdCOXRLdmhwOTdQNjVqSlRpazdmM9IBeEFVX3lxTFBOREJRQjdBVnVKbkJzZlJURUJBWWkwMkRpSmRGZzVOM0d4R1F6MS1zVTlhay02bjVORk9iU2dPMksyM1N5RmNwNllMOURPVVBtdTdxQVJvRWVWV0ZFUGdNVEp5YVdCOXRLdmhwOTdQNjVqSlRpazdmMw?oc=5",
+      "published": "Wed, 14 Oct 2026 19:57:05 GMT",
+      "score": 100,
+      "tags": [
+        "중동비상경보",
+        "확전"
+      ],
+      "body_checked": true,
+      "signals_ko": [
+        "🔴 후티의 리야드 탄도미사일 공격·요격 신호 — 사우디 수도·공항·에너지 시설 추가 표적 여부 확인"
+      ],
+      "forced_tags": [
+        "확전",
+        "중동비상경보"
+      ],
+      "classification_color": "red",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "ed003e00987ba90777d3",
+      "title_original": "후티 반군 \"사우디 리야드 국제공항 탄도미사일로 공격…명중\" - 연합뉴스",
+      "title_ko": "후티 반군 \"사우디 리야드 국제공항 탄도미사일로 공격…명중\" - 연합뉴스",
+      "description": "후티 반군 \"사우디 리야드 국제공항 탄도미사일로 공격…명중\" 연합뉴스",
+      "source": "연합뉴스",
+      "source_url": "https://www.yna.co.kr",
+      "link": "https://www.yna.co.kr/view/AKR20261015004000079",
+      "discovery_url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE51cVdoMDhhdDZEcUNhYUlQNFgtUEQ4ZS1xX1JEbGp4bW9ISUpnSlA2RzRyTlFndXZpTGxTdDN2bGV5My1pYXAxbW1qeDZyTWEyRWtFczNJS0FELUHSAWBBVV95cUxOb2FxcmI0bmdXNTd5TGE5Sy12bHllQmpNSjBvOTJzR2FHN0NvcXNQOTAySklMdkp0SGhwNkhHM09BZThpY3ZKOXVTMDhMblhMb3Y1LTdETTdaZzA0aDd2RlE?oc=5",
+      "resolved_url": "https://www.yna.co.kr/view/AKR20261015004000079",
+      "published": "Thu, 15 Oct 2026 03:21:00 +0900",
+      "rss_published": "Wed, 14 Oct 2026 18:21:00 GMT",
+      "source_metadata": {
+        "title": "후티 반군 \"사우디 리야드 국제공항 탄도미사일로 공격…명중\" | 연합뉴스",
+        "publication_status": "verified",
+        "published_at_kst": "2026-10-15T03:21:00+09:00",
+        "publication_candidates": [
+          {
+            "field": "article:published_time",
+            "at_kst": "2026-10-15T03:21:00+09:00"
+          },
+          {
+            "field": "jsonld:datePublished",
+            "at_kst": "2026-10-15T03:21:00+09:00"
+          }
+        ]
+      },
+      "score": 100,
+      "tags": [
+        "중동비상경보",
+        "확전"
+      ],
+      "body_checked": true,
+      "body_verified": true,
+      "signals_ko": [
+        "🔴 후티의 리야드 탄도미사일 공격·요격 신호 — 사우디 수도·공항·에너지 시설 추가 표적 여부 확인"
+      ],
+      "forced_tags": [
+        "확전",
+        "중동비상경보"
+      ],
+      "classification_color": "red",
+      "publication_basis": "publisher",
+      "rendered": true,
+      "article_text_sha256": "3adbcd4d0c9778aa72e4aee44d27badea44d9e76da22b5abad0b0567e5e14295"
+    },
+    {
+      "id": "bc62102ae1f9bd36e646",
+      "title_original": "호르무즈 해협 컨테이너선 2척 피격돼 침몰 - 뉴시스",
+      "title_ko": "호르무즈 해협 컨테이너선 2척 피격돼 침몰 - 뉴시스",
+      "description": "호르무즈 해협 컨테이너선 2척 피격돼 침몰 뉴시스",
+      "source": "뉴시스",
+      "source_url": "https://mobile.newsis.com",
+      "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9lbURJZERqTExtVDBJT3Z4LUE0SG5NaVRXUHpSSDBLSGdSN1pIOEh5WWQwenVsbzBCQjVfTmdtNUlEVUhxTVBjSVlHN09uSmxtTkdPcHE4N3RWU1VGckp3S3dQRnFHYzNCaHhlMVgwN0RJVm9IWWRsadIBeEFVX3lxTE9lbURJZERqTExtVDBJT3Z4LUE0SG5NaVRXUHpSSDBLSGdSN1pIOEh5WWQwenVsbzBCQjVfTmdtNUlEVUhxTVBjSVlHN09uSmxtTkdPcHE4N3RWU1VGckp3S3dQRnFHYzNCaHhlMVgwN0RJVm9IWWRsaQ?oc=5",
+      "published": "Wed, 14 Oct 2026 18:03:49 GMT",
+      "score": 10,
+      "tags": [
+        "확전"
+      ],
+      "body_checked": true,
+      "classification_color": "red",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "markets": [
+    {
+      "name": "나스닥100 선물",
+      "price": 30135.0,
+      "pct": -2.1320819057207396,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "05:51 KST",
+      "observed_at_kst": "2026-10-15T05:51:09+09:00",
+      "symbol": "NQ=F",
+      "previous_close": 30791.5,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "NQ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 30791.5,
+        "chartPreviousClose": 30791.5,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792011069,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1791950400,
+            "end": 1791950400,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1791950400,
+            "end": 1792036740,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792036740,
+            "end": 1792036740,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/NQ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "WTI",
+      "price": 95.11000061035156,
+      "pct": 1.030380933026942,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "05:50 KST",
+      "observed_at_kst": "2026-10-15T05:50:52+09:00",
+      "symbol": "CL=F",
+      "previous_close": 94.14,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "CL=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 94.14,
+        "chartPreviousClose": 94.14,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792011052,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1791950400,
+            "end": 1791950400,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1791950400,
+            "end": 1792036740,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792036740,
+            "end": 1792036740,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/CL%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "Brent",
+      "price": 105.98999786376953,
+      "pct": 0.2838469711131886,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "05:50 KST",
+      "observed_at_kst": "2026-10-15T05:50:43+09:00",
+      "symbol": "BZ=F",
+      "previous_close": 105.69,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "BZ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 105.69,
+        "chartPreviousClose": 105.69,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792011043,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1791950400,
+            "end": 1791950400,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1791950400,
+            "end": 1792036740,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792036740,
+            "end": 1792036740,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/BZ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "달러지수",
+      "price": 102.54000091552734,
+      "pct": 0.3523203322835622,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "05:51 KST",
+      "observed_at_kst": "2026-10-15T05:51:15+09:00",
+      "symbol": "DX-Y.NYB",
+      "previous_close": 102.18,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "DX-Y.NYB",
+        "instrumentType": "INDEX",
+        "previousClose": 102.18,
+        "chartPreviousClose": 102.18,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792011075,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1791950400,
+            "end": 1791950400,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1791950400,
+            "end": 1792036740,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792036740,
+            "end": 1792036740,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/DX-Y.NYB?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    }
+  ],
+  "bad_rendered_alert": "<b>전쟁·종전·재건 웹감시</b>\n🔴 <b>공격·확전</b>\n조회 2026-10-15 06:01 KST\n기사 시각 기준 · 실제 사건 발생시각과 구분\n\n<b>핵심 변화</b>\n🔴 [신규] <b>1. 중동 비상 · 복합확전 경보</b>\n후티의 리야드 탄도미사일 공격·요격 신호 — 사우디 수도·공항·에너지 시설 추가 표적 여부 확인\nRSS 보도 10-15 04:57 KST · <b>64분 경과</b> · 중동비상경보 · 확전 · <a href=\"https://news.google.com/rss/articles/CBMieEFVX3lxTFBOREJRQjdBVnVKbkJzZlJURUJBWWkwMkRpSmRGZzVOM0d4R1F6MS1zVTlhay02bjVORk9iU2dPMksyM1N5RmNwNllMOURPVVBtdTdxQVJvRWVWV0ZFUGdNVEp5YVdCOXRLdmhwOTdQNjVqSlRpazdmM9IBeEFVX3lxTFBOREJRQjdBVnVKbkJzZlJURUJBWWkwMkRpSmRGZzVOM0d4R1F6MS1zVTlhay02bjVORk9iU2dPMksyM1N5RmNwNllMOURPVVBtdTdxQVJvRWVWV0ZFUGdNVEp5YVdCOXRLdmhwOTdQNjVqSlRpazdmMw?oc=5\">뉴시스 검색 링크</a> · 제목 기준·본문 미확인\n\n🔴 [신규] <b>2. 사우디·후티 · 리야드 미사일 요격</b>\n후티의 리야드 탄도미사일 공격·요격 신호 — 사우디 수도·공항·에너지 시설 추가 표적 여부 확인\n보도 10-15 03:21 KST · <b>160분 경과</b> · 중동비상경보 · 확전 · <a href=\"https://www.yna.co.kr/view/AKR20261015004000079\">연합뉴스 원문</a>\n\n🔴 [신규] <b>3. 이란·호르무즈</b>\n호르무즈 해협 컨테이너선 2척 피격돼 침몰 - 뉴시스\nRSS 보도 10-15 03:03 KST · <b>177분 경과</b> · 확전 · <a href=\"https://news.google.com/rss/articles/CBMieEFVX3lxTE9lbURJZERqTExtVDBJT3Z4LUE0SG5NaVRXUHpSSDBLSGdSN1pIOEh5WWQwenVsbzBCQjVfTmdtNUlEVUhxTVBjSVlHN09uSmxtTkdPcHE4N3RWU1VGckp3S3dQRnFHYzNCaHhlMVgwN0RJVm9IWWRsadIBeEFVX3lxTE9lbURJZERqTExtVDBJT3Z4LUE0SG5NaVRXUHpSSDBLSGdSN1pIOEh5WWQwenVsbzBCQjVfTmdtNUlEVUhxTVBjSVlHN09uSmxtTkdPcHE4N3RWU1VGckp3S3dQRnFHYzNCaHhlMVgwN0RJVm9IWWRsaQ?oc=5\">뉴시스 검색 링크</a> · 제목 기준·본문 미확인\n\n<b>시장 반응</b>\n나스닥100 선물  <b>30,135.00</b>  -2.13% · 제공처 비교종가 대비 · 기준 05:51 KST · Yahoo Finance 1분봉 NQ=F\nWTI  <b>95.11</b>  +1.03% · 제공처 비교종가 대비 · 기준 05:50 KST · Yahoo Finance 1분봉 CL=F\nBrent  <b>105.99</b>  +0.28% · 제공처 비교종가 대비 · 기준 05:50 KST · Yahoo Finance 1분봉 BZ=F\n달러지수  <b>102.54</b>  +0.35% · 제공처 비교종가 대비 · 기준 05:51 KST · Yahoo Finance 1분봉 DX-Y.NYB\n\n<b>투자 판정</b>\n- <b>핵심:</b> 신규 변화의 중심은 실제 공격·해상안보·운영 위험\n- <b>현재 단계:</b> 군사·안보 위험 지속 — 상업거래나 조건 제시를 휴전 진전으로 보지 않음\n- <b>조건부 영향:</b> 추가 공격·운영 차질이 확대되면 유가·해운·보험 위험프리미엄 상승 가능\n- <b>다음:</b> 추가 공격 → 시설·선박 피해 → 운항 제한 → 실제 교전 강도\n"
+}

@@ -44,9 +44,17 @@ def maritime_attack_tally(row):
     return bool(ships and attacks and count and period and not uncertain)
 
 
+def _riyadh_missile_headline(row):
+    """The headline identifies this report; body background is a separate event."""
+    title = _headline(row)
+    return bool(re.search(r'리야드|\briyadh\b', title)
+                and re.search(r'미사일|\bmissiles?\b', title)
+                and re.search(r'후티|사우디|샤우디|\bhouthi|\bsaudi\b', title))
+
+
 def _display_headline(row):
     original = str(row.get('title_original') or row.get('title') or '')
-    return original if re.search(r'[가-힣]', original) else str(row.get('title_ko') or original)
+    return original if _riyadh_missile_headline(row) or re.search(r'[가-힣]', original) else str(row.get('title_ko') or original)
 
 
 def _headline_group(title):
@@ -79,6 +87,10 @@ def _primary_topic(row):
     if kind == 'support_statement':
         label = '정보 지원·종전 의향 발언' if re.search(r'종전|peace|end.{0,8}war', title) else '지원 정책 발언'
         return _headline_group(title) + ' · ' + label
+    if kind is None and _riyadh_missile_headline(row):
+        # Do not turn an attack claim into an interception confirmation, or
+        # distinct publishers' headlines into one shared emergency template.
+        return '사우디·후티 · 리야드 미사일 보도'
     attack_denied = bool(re.search(
         r'(?:공격|피격|타격)(?:(?:을|를|하지|받지|당하지)|\s*(?:보도|주장|설)(?:을|를)?)?\s*(?:부인|안\s*했|않|하지\s*않)|'
         r'\b(?:not|never)\s+(?:been\s+)?(?:attacked|struck|hit|bombed)\b|'

@@ -1,6 +1,7 @@
 """Offline regressions from Telegram #323. No live source or send calls."""
 import datetime as dt
 import copy
+import html
 from email.utils import format_datetime
 import io
 import json
@@ -43,6 +44,83 @@ class IntegrityTests(unittest.TestCase):
         path = Path(__file__).parent/'test_fixtures/war_source_alias_38526317484.json'
         fixture = json.loads(path.read_text(encoding='utf-8'))
         return fixture, dt.datetime.fromisoformat(fixture['provenance']['queried_at_kst'])
+
+
+    def riyadh_fixture(self):
+        path = Path(__file__).parent/'test_fixtures/war_riyadh_headline_38636753771.json'
+        fixture = json.loads(path.read_text(encoding='utf-8'))
+        return fixture, dt.datetime.fromisoformat(fixture['provenance']['queried_at_kst'])
+
+    def test_rejected_riyadh_reports_keep_three_distinct_source_headlines(self):
+        fixture, now = self.riyadh_fixture()
+        rows = fixture['articles']
+        with patch.object(integrity.body_parallel, '_safe_enrich'), patch.object(watch, 'market_source_status', {}, create=True):
+            text = integrity.build_alert(rows, fixture['markets'], now)
+        receipt = evidence.alert_receipt(rows, fixture['markets'], now, text)
+        self.assertEqual([r['id'] for r in receipt['articles'] if r['rendered']],
+                         [r['id'] for r in rows])
+        self.assertFalse(integrity._same_source_article(rows[0], rows[1]))
+        for row in rows:
+            self.assertIn(row['title_original'], html.unescape(text))
+            self.assertEqual(row['classification_color'], 'red')
+            self.assertNotIn('duplicate_of', row)
+        self.assertNotIn('공격·요격 신호', text)
+        self.assertNotIn('동일 제목 중복', quality._alert_quality_issues(text))
+
+    def test_riyadh_attack_claim_does_not_inherit_background_interception(self):
+        fixture, _ = self.riyadh_fixture()
+        row = fixture['articles'][1]
+        row['article_text'] = '배경: 사우디 주도 연합군이 리야드 북쪽에서 탄도미사일을 요격했다고 발표했다.'
+        row['title_ko'] = '사우디 주도 연합군, 후티 미사일 요격 확인'
+        self.assertEqual(integrity.topic_label(row), '사우디·후티 · 리야드 미사일 보도')
+        self.assertEqual(integrity._display_headline(row), row['title_original'])
+        self.assertIn('명중', integrity._display_headline(row))
+        self.assertNotIn('요격', integrity._display_headline(row))
+
+    def test_riyadh_explicit_interception_preserves_actor_and_claim_contrast(self):
+        row = article('사우디 연합군, 리야드 후티 미사일 요격…후티는 공항 명중 주장')
+        text = integrity.build_alert([row], [], NOW)
+        self.assertIn(row['title_original'], text)
+        self.assertIn('후티는 공항 명중 주장', text)
+        self.assertEqual(row['classification_color'], 'red')
+
+    def test_riyadh_warning_and_discussion_remain_yellow(self):
+        for title, kind in (
+                ('후티, 리야드 미사일 공격 예고', 'military_statement'),
+                ('후티, 리야드 미사일 발사 검토', 'military_discussion')):
+            with self.subTest(title=title):
+                row = article(title)
+                text = integrity.build_alert([row], [], NOW)
+                self.assertEqual(integrity.non_military_kind(row), kind)
+                self.assertEqual(row['classification_color'], 'yellow')
+                self.assertIn(title, text)
+                self.assertNotIn('🔴 [신규]', text)
+
+    def test_english_riyadh_claim_retains_original_over_cached_translation(self):
+        row = article('Houthis claim missile hit Riyadh airport')
+        row['title_ko'] = '사우디 연합군, 리야드 미사일 요격 확인'
+        text = integrity.build_alert([row], [], NOW)
+        self.assertIn(row['title_original'], text)
+        self.assertNotIn('요격 확인', text)
+
+    def test_final_gate_rejects_same_hash_riyadh_summary_or_invented_topic(self):
+        fixture, _ = self.riyadh_fixture()
+        for topic, summary, expected in (
+                ('사우디·후티 · 리야드 미사일 요격', fixture['articles'][1]['title_original'], 'topic differs'),
+                ('사우디·후티 · 리야드 미사일 보도', '후티의 리야드 탄도미사일 공격·요격 신호', 'headline differs')):
+            with self.subTest(topic=topic, summary=summary), tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+                row = copy.deepcopy(fixture['articles'][1])
+                text = '🔴 [신규] <b>1. ' + topic + '</b>\n' + summary + '\n<a href="' + row['link'] + '">원문</a>'
+                receipt = evidence.alert_receipt([row], [], NOW, text)
+                root = Path(folder)
+                for attr, name in {'ALERT': 'alert.txt', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                    stack.enter_context(patch.object(watch, attr, root/name))
+                watch.ALERT.write_text(text, encoding='utf-8')
+                watch.PENDING.write_text(json.dumps({'ids': [row['id']]}), encoding='utf-8')
+                watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+                stack.enter_context(patch.object(integrity, '_verify'))
+                with self.assertRaisesRegex(RuntimeError, expected):
+                    integrity.verify_alert()
 
     def macro_fixture(self):
         path = Path(__file__).parent/'test_fixtures/war_macro_effect_38570159999.json'
