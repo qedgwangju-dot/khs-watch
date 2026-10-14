@@ -526,6 +526,18 @@ def render_event(event: dict, now: dt.datetime) -> str:
             timeline.append(
                 f"• 공식 효력: {ko_datetime(eff_start, KST)} ~ {ko_datetime(eff_end, KST)}"
             )
+        if "load mgmt reduction action" in str(event.get("message_type") or "").lower():
+            raw_body = str(event.get("body") or "")
+            lead = re.search(
+                r"Lead Time\\(s\\) dispatched:\\s*(.*?)(?:Product\\(s\\) dispatched|$)",
+                raw_body, re.I | re.S,
+            )
+            times = re.findall(r"(?:Long|Short|Quick)_(120|60|30)", lead.group(1), re.I) if lead else []
+            timeline.append(
+                "• 감축 사전 대응시간: " + (
+                    "·".join(f"{minute}분" for minute in times) if times else "지역별 상세정보 확인"
+                )
+            )
         return "\n".join(
             [
                 "🚨 미국 전력망 비상운영·PJM 중요 변화",
