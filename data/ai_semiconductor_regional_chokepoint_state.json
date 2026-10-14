@@ -69,11 +69,47 @@
       "comparable_75pct_refresh_public": false
     }
   },
-  "updated_at_kst": "2026-10-14T21:10:50+09:00",
+  "updated_at_kst": "2026-10-14T21:13:03+09:00",
   "last_scan_count": 2,
   "semi_300mm_track_version": 1,
-  "semi_300mm": {},
-  "semi_300mm_last_observed": {},
+  "semi_300mm": {
+    "vintage": "3Q26",
+    "release_date": "2026-10-13",
+    "equipment_2026_usd_b": 149.0,
+    "equipment_2029_usd_b": 227.0,
+    "equipment_2026_yoy_pct": 31.0,
+    "construction_2026_usd_b": 47.5,
+    "construction_2027_usd_b": 63.3,
+    "construction_2028_usd_b": 68.4,
+    "americas_2026_usd_b": 18.1,
+    "americas_2029_usd_b": 40.6,
+    "source_url": "https://www.prnewswire.com/news-releases/global-300mm-fab-equipment-spending-to-reach-227-billion-in-2029-as-buildout-accelerates-semi-projects-302906628.html",
+    "source_kind": "SEMI 직접 배포 PR Newswire 원문 · semi.org 직접 접근 제한",
+    "starts_2026": 20,
+    "starts_2027": 18,
+    "first_silicon_2026": 13,
+    "first_silicon_2027": 23,
+    "outlook_direct_checked": false
+  },
+  "semi_300mm_last_observed": {
+    "vintage": "3Q26",
+    "release_date": "2026-10-13",
+    "equipment_2026_usd_b": 149.0,
+    "equipment_2029_usd_b": 227.0,
+    "equipment_2026_yoy_pct": 31.0,
+    "construction_2026_usd_b": 47.5,
+    "construction_2027_usd_b": 63.3,
+    "construction_2028_usd_b": 68.4,
+    "americas_2026_usd_b": 18.1,
+    "americas_2029_usd_b": 40.6,
+    "source_url": "https://www.prnewswire.com/news-releases/global-300mm-fab-equipment-spending-to-reach-227-billion-in-2029-as-buildout-accelerates-semi-projects-302906628.html",
+    "source_kind": "SEMI 직접 배포 PR Newswire 원문 · semi.org 직접 접근 제한",
+    "starts_2026": 20,
+    "starts_2027": 18,
+    "first_silicon_2026": 13,
+    "first_silicon_2027": 23,
+    "outlook_direct_checked": false
+  },
   "last_eligible_count": 0,
   "last_held_count": 0,
   "seen_fingerprints": [
@@ -91,5 +127,20 @@
     "f3274f98949ddbb5ad284b00"
   ],
   "delivered_event_keys": [],
-  "last_held": []
+  "last_held": [],
+  "last_successful_delivery_kst": "2026-10-14T21:13:05+09:00",
+  "telegram_message_ids": [
+    292
+  ],
+  "telegram_message_id": 292,
+  "bot_username": "khs88798879887988798879_bot",
+  "delivery_receipt": {
+    "status": "confirmed",
+    "bot_username": "khs88798879887988798879_bot",
+    "message_ids": [
+      292
+    ],
+    "confirmed_at_kst": "2026-10-14T21:13:05+09:00",
+    "alert_signature": "94c584bc14528f7d013da82b70e1592b04056397490937f2692c5c9e1720c802"
+  }
 }
