@@ -67,6 +67,11 @@ class IntegrityTests(unittest.TestCase):
         self.assertNotIn('공격·요격 신호', text)
         self.assertNotIn('동일 제목 중복', quality._alert_quality_issues(text))
 
+    def test_riyadh_topic_does_not_add_houthi_actor_absent_from_headline(self):
+        row = article('사우디, 리야드서 이란 미사일 요격')
+        self.assertFalse(integrity._riyadh_missile_headline(row))
+        self.assertNotIn('후티', integrity.topic_label(row))
+
     def test_riyadh_attack_claim_does_not_inherit_background_interception(self):
         fixture, _ = self.riyadh_fixture()
         row = fixture['articles'][1]
