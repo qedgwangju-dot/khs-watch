@@ -33,6 +33,10 @@ ATTACHMENT_FIXTURE_20261011 = json.loads(
     (Path(__file__).resolve().parent.parent / "data/gamejoa_attachment_quality_fixtures_20261011.json")
     .read_text(encoding="utf-8")
 )
+ATTACHMENT_FIXTURE_20261014 = json.loads(
+    (Path(__file__).resolve().parent.parent / "data/gamejoa_attachment_quality_fixtures_20261014.json")
+    .read_text(encoding="utf-8")
+)
 KEEP = (
     ("식품기업, 미국 김밥 매출 59% 증가", "식품기업은 미국 김밥의 1∼7월 매출이 전년비 59% 증가했다고 밝혔다."),
     ("전자기업, 신제품 공개…분기 가이던스 상향", "전자기업은 분기 매출 가이던스를 12% 상향했다고 발표했다."),
@@ -3053,6 +3057,211 @@ class MaterialityChecks(unittest.TestCase):
 
 
 class ForegroundAndEventIdentityTests(unittest.TestCase):
+    def test_october_fourteenth_attachment_is_exhaustive_and_market_materiality_bounded(self):
+        fixture = ATTACHMENT_FIXTURE_20261014
+        stories = fixture["stories"]
+        self.assertEqual(len(stories), 26)
+        self.assertEqual(len(stories), fixture["input_count"])
+        self.assertEqual(len({story["id"] for story in stories}), 26)
+        self.assertEqual(len({story["url"] for story in stories}), 26)
+        self.assertEqual(fixture["decision_counts"], {
+            "send_candidate": 5,
+            "watch_confirmation": 16,
+            "exclude_current_evidence": 5,
+        })
+        self.assertEqual(
+            {decision: sum(story["decision"] == decision for story in stories)
+             for decision in fixture["decision_counts"]},
+            fixture["decision_counts"],
+        )
+        self.assertEqual(
+            {"exact_link_body_checked": 1, "user_pasted_summary_only": 16,
+             "google_news_origin_unresolved": 9},
+            {status: sum(story["source_status"] == status for story in stories)
+             for status in {story["source_status"] for story in stories}},
+        )
+        by_id = {story["id"]: story for story in stories}
+        for story in stories:
+            with self.subTest(story=story["id"]):
+                self.assertTrue(story["title"])
+                self.assertTrue(story["summary"])
+                self.assertTrue(story["market_path"])
+                self.assertTrue(story["decision_reason"])
+                self.assertTrue(story["url"].startswith(("https://", "http://")))
+        for group in fixture["duplicate_event_groups"]:
+            with self.subTest(duplicate_group=group):
+                self.assertGreaterEqual(len(group), 2)
+                self.assertEqual(len({by_id[story_id]["event_key"] for story_id in group}), 1)
+        for left_id, right_id in fixture["must_remain_distinct"]:
+            with self.subTest(distinct_pair=(left_id, right_id)):
+                left, right = by_id[left_id], by_id[right_id]
+                self.assertNotEqual(left["event_key"], right["event_key"])
+                self.assertFalse(materiality.same_headline_event(
+                    left["title"], right["title"], left["summary"], right["summary"],
+                ))
+        for group in fixture["duplicate_event_groups"]:
+            with self.subTest(runtime_duplicate_group=group):
+                left, right = (by_id[story_id] for story_id in group[:2])
+                left_alert = {
+                    **alert(left["title"], left["summary"]),
+                    "published": "2026-10-14T08:46:00+09:00",
+                    "link": left["url"],
+                }
+                right_alert = {
+                    **alert(right["title"], right["summary"]),
+                    "published": "2026-10-14T09:16:00+09:00",
+                    "link": right["url"],
+                }
+                self.assertEqual(
+                    radar.alert_dedup_key(left_alert), radar.alert_dedup_key(right_alert),
+                )
+
+    def test_attachment_market_moving_candidates_pass_only_with_complete_source_facts(self):
+        fixture = ATTACHMENT_FIXTURE_20261014
+        by_id = {story["id"]: story for story in fixture["stories"]}
+        candidate_ids = [story["id"] for story in fixture["stories"]
+                         if story["decision"] == "send_candidate"]
+        self.assertEqual(len(candidate_ids), 5)
+        items = []
+        for story_id in candidate_ids:
+            story = by_id[story_id]
+            item = {
+                **alert(story["title"], story["summary"]),
+                "published": "2026-10-14T12:00:00+09:00",
+                "link": story["url"],
+            }
+            item["telegram_core_fact"] = radar.source_headline_event_fact(
+                story["title"], story["summary"],
+            ) or radar.verified_alert_core(item, story["title"])
+            items.append(item)
+        with patch.object(radar.base, "kst_now", return_value=dt.datetime(
+            2026, 10, 14, 12, 0, tzinfo=dt.timezone(dt.timedelta(hours=9)),
+        )):
+            selected = radar.quality_display_alerts(items, 10)
+        selected_ids = {item["source_title"] for item in selected}
+        self.assertEqual(selected_ids, {by_id[story_id]["title"] for story_id in candidate_ids})
+        for item in selected:
+            with self.subTest(title=item["source_title"]):
+                self.assertTrue(item["telegram_core_fact"])
+                self.assertTrue(radar.core_sentence_is_complete(item["telegram_core_fact"]))
+                self.assertEqual(radar.source_core_fact_errors(item), [])
+                self.assertTrue(radar.source_output_aligned(item))
+
+    def test_shin_policy_guidance_dedupes_reprints_but_not_later_statements(self):
+        story = next(
+            item for item in ATTACHMENT_FIXTURE_20261014["stories"]
+            if item["id"] == "shin_hawks_tightening_signal"
+        )
+        first = {
+            **alert(story["title"], story["summary"]),
+            "published": "2026-10-14T09:00:00+09:00",
+        }
+        same_day_reprint = {
+            **alert(story["title"], story["summary"]),
+            "published": "2026-10-14T15:30:00+09:00",
+        }
+        later_statement = {
+            **alert(story["title"], story["summary"]),
+            "published": "2026-10-15T09:00:00+09:00",
+        }
+        self.assertEqual(
+            materiality.source_event_identity(first),
+            materiality.source_event_identity(same_day_reprint),
+        )
+        self.assertNotEqual(
+            materiality.source_event_identity(first),
+            materiality.source_event_identity(later_statement),
+        )
+
+    def test_foreign_ownership_share_change_is_not_mislabeled_as_net_sell_volume(self):
+        title = "5000피 회귀 공포…외국인 ‘셀 코리아’에 반등 안갯속"
+        body = (
+            "외국인의 대규모 매도세로 국내 반도체 대형주인 SK하이닉스의 지분율이 연초 대비 "
+            "5%포인트 이상 감소하며 49.59%를 기록했다. 이러한 이탈 여파로 코스피 전기·전자 업종 "
+            "전체의 외국인 보유율도 연초 40.87%에서 38.09%까지 하락했다. 외국인의 지속적인 이탈이 "
+            "국내 증시의 반등을 불투명하게 만드는 주요 요인으로 작용하고 있다."
+        )
+        observation = materiality.foreign_ownership_share_change_observation(title, body)
+        self.assertEqual(observation["issuer_current_ownership_pct"], "49.59")
+        self.assertEqual(observation["issuer_decline_pp_at_least"], "5")
+        self.assertEqual(observation["sector_ownership_from_pct"], "40.87")
+        self.assertEqual(observation["sector_ownership_to_pct"], "38.09")
+
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit["disposition"], "keep", audit)
+        self.assertEqual(audit["priority"], 3, audit)
+        self.assertIn("flows", audit["axes"])
+        self.assertEqual([row["kind"] for row in audit["evidence"]], ["market_price_or_flow"])
+        self.assertEqual(audit["evidence"][0]["stage"], "reported_foreign_ownership_share_decline")
+        self.assertNotRegex(audit["evidence"][0]["source_excerpt"], r"순매도\s*\d|\d+\s*조원")
+
+        fact = radar.source_headline_event_fact(title, body)
+        self.assertIn("49.59%", fact)
+        self.assertIn("5%포인트 이상", fact)
+        self.assertTrue(radar.core_sentence_is_complete(fact), fact)
+        item = {
+            **alert(title, body),
+            "published": "2026-10-14T07:16:00+09:00",
+            "telegram_core_fact": fact,
+        }
+        self.assertEqual(radar.source_core_fact_errors(item), [])
+        with patch.object(radar.base, "kst_now", return_value=dt.datetime(
+            2026, 10, 14, 12, 0, tzinfo=dt.timezone(dt.timedelta(hours=9)),
+        )):
+            selected = radar.quality_display_alerts([item], 3)
+        self.assertEqual(len(selected), 1)
+        self.assertEqual(selected[0]["telegram_core_fact"], fact)
+        self.assertNotIn("순매도 금액", fact)
+
+    def test_same_moodys_estimate_and_diesel_opposition_reprints_share_event_identity(self):
+        published = "2026-10-14T10:46:00+09:00"
+        household_body = "무디스는 이란 전쟁으로 미국 가구당 평균 2천 달러의 비용이 발생할 것으로 추산했다."
+        household_a = {
+            **alert("무디스, 이란 전쟁으로 미국 가계당 2천 달러 부담 추산", household_body),
+            "published": published,
+        }
+        household_b = {
+            **alert("미국 가구당 2,000달러 비용…무디스의 이란 전쟁 추산", household_body),
+            "published": "2026-10-14T11:16:00+09:00",
+        }
+        observation = materiality.moodys_iran_household_cost_observation(
+            household_a["source_title"], household_a["source_body"],
+        )
+        self.assertEqual(observation["amount_usd"], "2000")
+        household_identity = materiality.source_event_identity(household_a)
+        self.assertTrue(household_identity.startswith("source_event:v2:moodys_iran_household_cost:"))
+        self.assertEqual(household_identity, materiality.source_event_identity(household_b))
+        changed_household = {
+            **household_b,
+            "source_body": "무디스는 이란 전쟁으로 미국 가구당 평균 3천 달러의 비용이 발생할 것으로 추산했다.",
+        }
+        self.assertNotEqual(household_identity, materiality.source_event_identity(changed_household))
+        self.assertEqual(
+            radar.alert_dedup_key(household_a), radar.alert_dedup_key(household_b),
+        )
+
+        diesel_body_a = "미 상원의원들이 트럼프와 푸틴의 디젤 거래에 반대하고 철회를 촉구했다."
+        diesel_body_b = "공화당 의원들은 트럼프와 푸틴이 추진한 디젤 거래의 철회를 요구했다."
+        diesel_a = {
+            **alert("상원의원들, 트럼프에게 푸틴과의 디젤 거래 철회 촉구", diesel_body_a),
+            "published": published,
+        }
+        diesel_b = {
+            **alert("푸틴과의 디젤 거래에 반대하는 공화당 의원 증가", diesel_body_b),
+            "published": "2026-10-14T11:16:00+09:00",
+        }
+        diesel_identity = materiality.source_event_identity(diesel_a)
+        self.assertTrue(diesel_identity.startswith("source_event:v2:trump_putin_diesel_trade_opposition:"))
+        self.assertEqual(diesel_identity, materiality.source_event_identity(diesel_b))
+        self.assertEqual(radar.alert_dedup_key(diesel_a), radar.alert_dedup_key(diesel_b))
+        completed_deal = "트럼프와 푸틴은 디젤 공급 계약을 체결했고 공급이 시작됐다."
+        self.assertEqual(
+            materiality.trump_putin_diesel_trade_opposition_observation(
+                diesel_a["source_title"], completed_deal,
+            ),
+            {},
+        )
+
     def test_exploratory_aqr_meeting_is_not_promoted_to_a_signed_partnership(self):
         title = "한투증권, 글로벌 퀀트 운용사 AQR과 파트너십"
         body = (
