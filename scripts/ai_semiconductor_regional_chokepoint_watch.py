@@ -658,8 +658,6 @@ def _semi_300mm_material_changes(old: dict, new: dict) -> list[str]:
         return ["SEMI 300mm 공식 투자·착공·가동 전망 최초 반영"]
     changes = []
     for key, threshold, label in (
-        ("equipment_2026_usd_b", 5, "2026년 장비투자"),
-        ("equipment_2029_usd_b", 5, "2029년 장비투자"),
         ("construction_2026_usd_b", 5, "2026년 건설비"),
         ("construction_2027_usd_b", 5, "2027년 건설비"),
         ("starts_2026", 3, "2026년 착공"),
@@ -672,6 +670,14 @@ def _semi_300mm_material_changes(old: dict, new: dict) -> list[str]:
             continue
         if abs(float(new[key]) - float(old[key])) >= threshold:
             changes.append(label + ": " + str(old[key]) + " → " + str(new[key]))
+    for key, value in new.items():
+        m = re.fullmatch(r"equipment_(20\d{2})_usd_b", key)
+        if not m or not isinstance(value, (int, float)):
+            continue
+        if old.get(key) is not None and abs(float(value) - float(old[key])) >= 5:
+            changes.append(f"{m.group(1)}년 장비투자 전망: {old[key]}→{value}십억달러")
+        elif old.get(key) is None and new.get("release_date", "") > old.get("release_date", ""):
+            changes.append(f"{m.group(1)}년 신규 장비투자 전망: {value}십억달러")
     return changes
 
 
