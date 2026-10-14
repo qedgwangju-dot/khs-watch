@@ -602,7 +602,9 @@ def trail_of_bits_mna_stage(item: dict) -> str | None:
         return None
     low = f" {item.get('title','')} {item.get('description','')} ".lower()
     if not any(word in low for word in (
-        "acquisition", "acquire", "acquired", "buy ", "merger", "deal", "takeover", "인수",
+        "acquisition", "acquire", "acquired", "merger", "takeover",
+        "buy security startup", "buy trail of bits", "purchase trail of bits",
+        "to buy trail of bits", "인수",
     )):
         return None
     official = source_official(item.get("source", ""))
