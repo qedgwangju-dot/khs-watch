@@ -154,30 +154,58 @@ jobs:
       - name: Record exact Telegram route health
         if: github.event_name == 'push' && steps.telegram_route.outputs.ready == 'true'
         run: |
-          python - <<'PY'
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Never rebase a timestamp-only checkpoint on top of another workflow's
+          # changing state file. Regenerate against the latest main on each retry.
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            python - <<'PY'
           import datetime as dt
           import json
           from pathlib import Path
+
+          path = Path("data/khs_us_investment_route_health.json")
+          now = dt.datetime.now(dt.timezone.utc)
+          try:
+              previous = json.loads(path.read_text(encoding="utf-8"))
+              checked = dt.datetime.fromisoformat(str(previous.get("validated_at") or ""))
+              if checked.tzinfo is None:
+                  checked = checked.replace(tzinfo=dt.timezone.utc)
+              if previous.get("ready") is True and now - checked < dt.timedelta(hours=1):
+                  print("route_health_checkpoint=fresh")
+                  raise SystemExit(0)
+          except (ValueError, TypeError, OSError):
+              pass
 
           payload = {
               "bot": "@khs887900_bot",
               "chat_secret": "KHS887900_CHAT_ID",
               "ready": True,
-              "validated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
+              "validated_at": now.isoformat(),
           }
-          path = Path("data/khs_us_investment_route_health.json")
           path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
           PY
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/khs_us_investment_route_health.json
-          if git diff --cached --quiet; then
-            echo "route health unchanged"
-          else
+            git add data/khs_us_investment_route_health.json
+            if git diff --cached --quiet; then
+              echo "route_health_checkpoint=unchanged"
+              exit 0
+            fi
             git commit -m "Record US investment Telegram route health [skip ci]"
-            git pull --rebase origin main
-            git push
-          fi
+            if git push origin HEAD:main; then
+              echo "route_health_checkpoint=confirmed"
+              exit 0
+            fi
+            echo "route_health_checkpoint=push_conflict_retry attempt=$attempt"
+            sleep $((attempt * 2))
+          done
+
+          # The real Bot API route was already verified in the preceding step.
+          # Never invalidate a valid watch because its optional health checkpoint raced.
+          echo "route_health_checkpoint=deferred_concurrent_state_write"
+          exit 0
 
       - name: Run US investment watch
         if: github.event_name != 'push'
