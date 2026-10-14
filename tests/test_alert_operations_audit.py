@@ -72,7 +72,10 @@ class AlertOperationsAuditTest(unittest.TestCase):
         import datetime as dt
 
         self.assertEqual(audit.conservative_schedule_gap_hours("7,27,47 * * * *"), 3)
+        self.assertEqual(audit.conservative_schedule_gap_hours("41 */2 * * *"), 6)
+        self.assertEqual(audit.conservative_schedule_gap_hours("37 */3 * * *"), 9)
         self.assertEqual(audit.conservative_schedule_gap_hours("23 0 * * *"), 48)
+        self.assertIsNone(audit.conservative_schedule_gap_hours("11 */2 * * 1-5"))
         self.assertIsNone(audit.conservative_schedule_gap_hours("15 9 * * 1-5"))
         self.assertIsNone(audit.conservative_schedule_gap_hours("invalid"))
 
