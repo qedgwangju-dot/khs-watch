@@ -6,9 +6,11 @@
     "02aa83851830f8a61ce0c9a2",
     "03821957e650440141d8",
     "0466308d6da56a74102f8090",
+    "0505e47b4b18bc7c34ad",
     "06f31a2502204ad6f54838c8",
     "08ed332a833d8940dad4857b",
     "09a0982101c4770ca00446f7",
+    "0c3be72a3d2f1a6278f4",
     "0c41cee8d35cd34119e0",
     "0c5067e9917be35a3d14",
     "0db3b9e92b4726967e08d426",
@@ -71,10 +73,12 @@
     "39e0f1943997a43a03210d3a",
     "3aa51230ba3661bfcce28fac",
     "3adc070169995c7a57f8",
+    "3b4240a4fb56ac33e3a8",
     "3b4a27773398ceb373228280",
     "3ca7f613eff3dd48ccb46848",
     "3cbe4fe46df34061f665",
     "3d17c893184bdde88e486d74",
+    "3d3f6094c19f32d60d59",
     "3e29d061c253a2222d2a6a2f",
     "3ef423d1c76402de633c",
     "3fb0ceccf0efd9b3677c5d7d",
@@ -98,6 +102,7 @@
     "4e3eeb637baf44adccccaf94",
     "4e826c96d975425cdfa2ae60",
     "4ee2305d3137fa1382e823b2",
+    "5093cf4ee9e345672973",
     "511324e78147e2c3bc77",
     "5113c871b9ee198b96f4b40a",
     "5193744477c2c710de60",
@@ -239,6 +244,7 @@
     "b83fef96c138e5ac2f60e860",
     "b94fbce19bf6e656210ec958",
     "b98d01b73b93f707ff286d1c",
+    "bac033535d4dfc191b0d",
     "bb15c7fbc7e176f26a5c6c24",
     "bba555f5c862789c317ecea4",
     "bc02e32ba64531c0fd3cc324",
@@ -250,6 +256,7 @@
     "c13565b3c2ae5c4de51e",
     "c15e6d328a97ddf1d0d0",
     "c380564784966d4e9b39",
+    "c3c9a8f47a99eb3f63dc",
     "c4ea89dd824076a69d81a168",
     "c520ccce29b7386f9d288ee6",
     "c62ee8424a4442419f56",
@@ -354,7 +361,7 @@
       "실패모드·일정 변화"
     ]
   },
-  "last_scan_kst": "2026-10-14T05:57:37+09:00",
+  "last_scan_kst": "2026-10-14T09:09:58+09:00",
   "errors": [],
   "seen_event_keys": [
     "memory:unconfirmed",
@@ -362,6 +369,9 @@
     "server:reported:2or4:2029"
   ],
   "observations": [],
-  "fetch_ok": 12,
-  "fetch_errors": []
+  "fetch_ok": 10,
+  "fetch_errors": [
+    "bing_news \"Apple\" \"M8 Ultra\" server: ParseError not well-formed (invalid token): line 1, column 41",
+    "bing_news \"Apple\" HBM server supplier contrac: ParseError not well-formed (invalid token): line 1, column 41"
+  ]
 }
