@@ -41,6 +41,14 @@ def conservative_schedule_gap_hours(cron: str) -> int | None:
         return None
     if hour == "*":
         return 3  # Hourly cadence plus GitHub scheduling delay tolerance.
+    step_match = re.fullmatch(r"\*/(\d{1,2})", hour)
+    if step_match:
+        step = int(step_match.group(1))
+        if 1 <= step <= 12 and 24 % step == 0:
+            # Two-hour and similar fixed schedules were previously invisible
+            # to the missed-run check. Keep 3 full periods for GitHub delays.
+            return step * 3
+        return None
     if re.fullmatch(r"(?:[01]?\d|2[0-3])", hour):
         return 48  # Daily cadence plus generous delay tolerance.
     return None
