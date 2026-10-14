@@ -589,6 +589,29 @@
       "telegram_core_fact": "AI(인공지능) 추론 확대로 기존 메모리의 성능과 용량에 한계가 나타나면서 HBM(고대역폭메모리)을 넘어 3차원(3D) 적층 D램과 HBF(고대역폭플래시) 등 새로운 메모리 계층을 구축하겠다는 전략이다.",
       "title": "안현 SK하이닉스 사장 \"HBM 넘어 새로운 메모리 시대 열겠다\""
     },
+    "core:03d59f6e8b40a7a4ae6fee96": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.joongang.co.kr/article/25469723",
+      "source": "중앙일보",
+      "source_body_digest": "0e77376ed668712e508fead2ac1ad6e321738116b881dbf943480b0ce4e6555b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:320add3e1672411384afa5f29c84c6b68a01cc3d6c556eae37ffa066d2bc9d34",
+      "source_fact_keys": [
+        "source_fact:v1:2b2ab54a342e116e9a54890fa1b8ead1cc6959eeff10ff5948bb2f529d45c250",
+        "source_fact:v1:2f2b9b6e70f7bb2ace5b85ebbdd1a007642a4c803d3749b45f8ffd677a5cc37c",
+        "source_fact:v1:32c8514ba79359e5808d924b815fb64be77afa1d5be3aab5be1af4decce177d1",
+        "source_fact:v1:8682a70e31acfc472983e2c9b54cd19f433470261f42726b45931aadcb4af2c7"
+      ],
+      "source_published_kst": "2026-10-14T17:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "정부, 후티 반군의 사우디 민간시설 공격 규탄…“즉각 중단 촉구” | 중앙일보",
+      "telegram_core_fact": "“이번 공격으로 인한 희생자와 유가족에게 진심 어린 애도를 표하며, 부상자들의 조속한 회복을 기원한다”며 “사우디아라비아 정부와 국민들에게도 깊은 연대를 표명한다”고 했다.",
+      "title": "정부, 후티 반군의 사우디 민간시설 공격 규탄…“즉각 중단 촉구” | 중앙일보"
+    },
     "core:03f4e537d152b642f1825439": {
       "first_seen_kst": "2026-10-08T03:26:42+09:00",
       "lanes": {
@@ -6965,6 +6988,27 @@
       "telegram_core_fact": "KKR은 기술 업종이 올해 코스피 전체 주당순이익(EPS) 증가분의 71%를 차지할 것으로 예상했고, 내년에는 이 비중이 75%로 높아질 것으로 전망했다.",
       "title": "KKR \"韓기업개혁, 투자 매력 커져…AI·반도체가 실적 견인\" | 연합뉴스"
     },
+    "core:23c772b864118af77b7bb362": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.etnews.com/20261014000270",
+      "source": "전자신문",
+      "source_body_digest": "044e897319790171e64348e86e7fe30caba58c70a076b017145f4e09c9305d1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0f32d78c001c383061326120532042d27c2c490c58ed9fb0321211aca81ab78e",
+      "source_fact_keys": [
+        "source_fact:v1:0810aaaace6f8234b7d80829314639ea38d7194cf61db19df7dcd9b390b2a442",
+        "source_fact:v1:df9fbd72b845fa7504307abc16f3befb1956a19db15ca1499b40a92b88d664df"
+      ],
+      "source_published_kst": "2026-10-14T18:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "서울 오피스 투자 '큰손' 된 일반 기업들…자산운용사와 매입 경쟁",
+      "telegram_core_fact": "아성다이소의 지주사 한웰그룹도 2월 서울 역삼동 케이스퀘어강남2를 3550억원에 인수했다.",
+      "title": "서울 오피스 투자 '큰손' 된 일반 기업들…자산운용사와 매입 경쟁"
+    },
     "core:23d21f34842e7e2dd9dd842e": {
       "first_seen_kst": "2026-10-08T01:58:01+09:00",
       "lanes": {
@@ -8058,6 +8102,29 @@
       "source_title": "태평양, 9년 연속 ‘글로벌 200대 로펌’ 선정…세계 193위",
       "telegram_core_fact": "태평양은 지난해 대형·고난도 사건과 크로스보더 거래를 수행하며 전년 대비 약 12% 증가한 4702억원의 매출을 기록했다. 법무법인 태평양은 미국 법률전문매체 아메리칸 로이어가 발표한 ‘2026 글로벌 200대 로펌(The Global 200)’에서 세계 193위에 올랐다고 7일 밝혔다.",
       "title": "태평양, 9년 연속 ‘글로벌 200대 로펌’ 선정…세계 193위"
+    },
+    "core:29902f3dbf11ecf06a911a13": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12176198",
+      "source": "매일경제",
+      "source_body_digest": "cadbeb23223df59fecdb97dc0c3cc1c197633e6305db0de1a798268bff528f42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30cc15c11d6e03a291a8019a6cde693bcd67660444c532212cb8947a13d282b4",
+      "source_fact_keys": [
+        "source_fact:v1:5e03b82f07de119bba8bb681b110c3ffe67138c10fd2d9bcdd8e43c3dfb39e65",
+        "source_fact:v1:6684118f9d3aee097ab3d99a1dadd0a7b0a29e00100a80fa5bf44f195b72db7b",
+        "source_fact:v1:85fd45ce06cdc94bfbdd1731d8ca06951d6b0aeb331c416642990539f8134b62",
+        "source_fact:v1:a87a974aa1cb3362cd06763089475b35ccd1207ede4196343698d86c32a4f912"
+      ],
+      "source_published_kst": "2026-10-14T21:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "에볼루션 메탈스 앤 테크, 2027 매출 가이던스 4억~4억6000만달러 재확인",
+      "telegram_core_fact": "2027년 예상 매출은 전년 대비 1102.5% 증가한 수준이나 회사 가이던스 하단인 4억 달러에는 크게 못 미친다.",
+      "title": "에볼루션 메탈스 앤 테크, 2027 매출 가이던스 4억~4억6000만달러 재확인"
     },
     "core:29d6244ae768584cf39d6c3a": {
       "first_seen_kst": "2026-10-12T11:11:48+09:00",
@@ -16582,6 +16649,24 @@
       "telegram_core_fact": "제노바, 이탈리아, 2026년 10월 9일 /PRNewswire/ -- 의료 영상 분야의 선도기업 에사오테(Esaote S.p.A.)가 중국 포산시 순더구에 본사를 둔 글로벌 기술 기업 마이디어 그룹(Midea Group)이 자사의 지배지분 인수를 완료했다고 발표했다.",
       "title": "마이디어, 에사오테 인수 완료"
     },
+    "core:564fb324c97b573bada94ccf": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003826019",
+      "source": "뉴시스",
+      "source_body_digest": "634b996490e485252a20695cf400ed65e09d23e9808779cd7878646960e3598c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-14T18:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 한국 이어 대만에 알래스카 LNG 투자 압박…대만도 신중(종합)",
+      "telegram_core_fact": "그는 지난달 30일 한국이 540억 달러를 알래스카 LNG 사업에 투자하기로 했다고 일방 발표한 데 이어, 투자하지 않을 시 관세 인상을 암시하는 \"한국에 돈을 더 청구하면 된다\"는 식의 위협을 가하기도 했다.",
+      "title": "트럼프, 한국 이어 대만에 알래스카 LNG 투자 압박…대만도 신중(종합)"
+    },
     "core:568e46fe98f6aba598304261": {
       "first_seen_kst": "2026-10-09T18:57:38+09:00",
       "lanes": {
@@ -18160,6 +18245,30 @@
       "source_title": "오늘 밤 노벨문학상 발표…김혜순·애트우드·찬쉐·머네인 등 거론",
       "telegram_core_fact": "애트우드의 저서 판매량은 예스24에서 지난 8월 전월보다 28.5% 증가했다. 찬쉐와 머네인의 책은 과거 수상자 발표 시기에 판매량이 크게 늘었다.",
       "title": "오늘 밤 노벨문학상 발표…김혜순·애트우드·찬쉐·머네인 등 거론"
+    },
+    "core:605a7c00e49448e74e098978": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.mk.co.kr/news/business/12176047",
+      "source": "매일경제",
+      "source_body_digest": "0ee2850bdfc830724ddedf0193e991630f94e036fc53029429411a5d2de8f23f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:64ecbba095fd2a1339db2577682d99d81452be858c9c04d96d83e9622592496a",
+      "source_fact_keys": [
+        "source_fact:v1:2cbfb3019e9c7ab0420331e9980604103ed29ae300b6b13a407360a95ce60d2e",
+        "source_fact:v1:80112fd37e9751d860ff74c34e39bbe08e5a858c348692985a1229cbc2b314a7",
+        "source_fact:v1:9af53705b438c1c7843aaef2189cdb241b9905020bd9ae0b3d1e63650ed6d56a",
+        "source_fact:v1:a68c5b000f587494fce67812234518908f4249d23ff1ec5c715fba1e7a2e4ea9",
+        "source_fact:v1:d6e0d015442f72a306f755601563316c678244850d8f15a9e7f09d532e1416aa"
+      ],
+      "source_published_kst": "2026-10-14T18:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "엑시나, 인텔·퀄컴 거친 스티브 핑거허트 CBO 영입",
+      "telegram_core_fact": "김진영 엑시나 대표는 “스티브 CBO는 데이터센터 사업을 성장시키고 글로벌 기술 기업들과 협력해 신기술을 사업화한 경험이 풍부하다. 컴퓨팅과 가속 기술, 메모리 분야에서 쌓은 경험이 MX1 상용화와 글로벌 사업 확대에 큰 도움이 될 것”이라고 말했다.",
+      "title": "엑시나, 인텔·퀄컴 거친 스티브 핑거허트 CBO 영입"
     },
     "core:606dc90f3576f0e108b7b16b": {
       "first_seen_kst": "2026-10-08T17:42:30+09:00",
@@ -38972,6 +39081,35 @@
       "telegram_core_fact": "산업통상부는 한국 등 15개국이 7일(현지시간) 프랑스 파리 경제협력개발기구(OECD) 본부에서 ‘구조적 과잉생산 대응을 위한 공동 장관성명’을 발표했다고 8일 밝혔다.",
       "title": "한·미·일 등 15개국, 전기차·태양광 패널 등 과잉생산 공동대응…中 겨냥한 듯"
     },
+    "core:ce3c03be7e4e6a16d0eac0e6": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635808",
+      "source": "이투데이",
+      "source_body_digest": "05f7bc778f1df8a5955fee0192637ede1fc82dcbbae37f73b5ea0b13c048ffb5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01cbd8f1b97a3d6348eb494341e04c68c0cbda13304934a0ee9ecfd9258982f1",
+      "source_fact_keys": [
+        "source_fact:v1:0c36405c3ef5ba49bb39d47dd1816063e3726a3457f7715457359e1d64ad26ca",
+        "source_fact:v1:1f6c78d7a8c1bdbeaa127ea907a999a7ff187d0f138e939fea70ed82d19626f7",
+        "source_fact:v1:5f01c6a84b9caa5cc8d7032449eb45167b7f3cfb5ccf674b60333691ae278293",
+        "source_fact:v1:67a65823b28595d47c8cc822135888a9eb8b4d8edad9ef4b154055b92dd43664",
+        "source_fact:v1:8350751922dbaad5aa1fc74442d2f6049417658dbca817c77043f2d1e5d11c6a",
+        "source_fact:v1:8bc44df3dc6c0f5b9b7516e61a38f4090f758025bbe8c797ce8ce063e05fd297",
+        "source_fact:v1:8ffb31cf088481492302ee6adde3010e90d891f0e4b27af1491989d6eb0225be",
+        "source_fact:v1:916d2178f1f0cf7f2a1f9a45ac2a68c1cfec0b2d5be35d4dfc5ca136574431c6",
+        "source_fact:v1:a2f974ed1f967c657c2021fae4992eff4ee5f2c79b978b31e74715c5695d5486",
+        "source_fact:v1:d423c1359fbc3fad8388058b65faa38c844da1b0118fd122ba9408e52ea0adb0"
+      ],
+      "source_published_kst": "2026-10-14T18:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "34% 급락장서 웃은 외인…개미 '떨어지는 칼날' 받았다",
+      "telegram_core_fact": "코스피가 약 4개월 만에 34% 넘게 폭락한 하락장에서 외국인은 과감한 현금화로 손실을 피한 반면, 개인은 떨어지는 칼날을 받아내며 최악의 매매 성적표를 받게된 것으로 집계됐다.",
+      "title": "34% 급락장서 웃은 외인…개미 '떨어지는 칼날' 받았다"
+    },
     "core:ce6d084d2a5bfe4ac6468599": {
       "first_seen_kst": "2026-10-14T12:34:00+09:00",
       "lanes": {
@@ -47440,6 +47578,31 @@
       "telegram_core_fact": "올해 노벨평화상 수상자인 나비 필레이 전 국제형사재판소(ICC) 판사가 ICC를 제재하기로 한 미국을 규탄했다. 제재에는 미국 기관과 기업이 ICC와 거래하는 것을 금지하는 조치가 포함됐다.",
       "title": "노벨평화상 필라이, ICC 제재 미국 규탄⋯“국제 사법질서 흔들어”"
     },
+    "core:fe80fd405da3bb3703092b33": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.fnnews.com/news/202610142254565439",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "b947c42601fca6ab8d7759833e31cdaf828948f25d419754322f042f3a63db08",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5bfeb0bfe49dc0f1e60330ed5bdcc577682295454dac1f2ff7d77b23d75a1f47",
+      "source_fact_keys": [
+        "source_fact:v1:260a27f75b7b8d4c6679adca0db5f1a824f3e2882e58e00808c7067a0b9ee5e9",
+        "source_fact:v1:3e5ab98cc8b57d0289c71eaff3c298ca06af9765ea448c7bf75de2086b7871bd",
+        "source_fact:v1:a0983bc4799dc201ebc19f91174638c8e51a7b0ea00f5d6f5120cedc20bab356",
+        "source_fact:v1:a9990ab1417037e6f014feab901784ede96bb19aec03e15436d58a9c9a1cee04",
+        "source_fact:v1:c6dae9f485fa096e862af4a7c5186372f7f2ac70ed063b717f7beb75a41e89a8",
+        "source_fact:v1:eacdd14625b9419a96baa8534caf5c30a9c06a902ec1483111f08542fd32fefd"
+      ],
+      "source_published_kst": "2026-10-14T22:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴욕개장] 예상 상회 CPI에 하락 출발…나스닥 0.63%↓",
+      "telegram_core_fact": "스탠더드앤드푸어스(S&P)500지수는 31.30포인트(0.40%) 내린 7774.18에, 기술주 중심의 나스닥종합지수는 172.70포인트(0.63%) 하락한 2만 7031.64에 각각 개장했다. 미국 노동부에 따르면 9월 CPI는 전년 동월 대비 3.7% 상승해 시장 예상치(3.6%)를 소폭 웃돌았다.",
+      "title": "[뉴욕개장] 예상 상회 CPI에 하락 출발…나스닥 0.63%↓"
+    },
     "core:fe84bbcedadee3017f8f36b6": {
       "first_seen_kst": "2026-10-13T09:41:33+09:00",
       "lanes": {
@@ -51949,25 +52112,26 @@
     "event:5214d80fea4e0016511b4110": {
       "first_seen_kst": "2026-10-14T05:08:50+09:00",
       "lanes": {
-        "live": "2026-10-14T21:14:31+09:00",
+        "live": "2026-10-15T02:27:03+09:00",
         "preopen": "2026-10-14T06:58:10+09:00"
       },
-      "last_seen_kst": "2026-10-14T21:14:31+09:00",
-      "link": "https://www.newsis.com/view/NISX20261014_0003825546",
-      "source": "뉴시스",
-      "source_body_digest": "5061efd1dd7bad2a89aa767427eb030d3a197059ffe60e7167fcc87f44e9ba01",
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.joongang.co.kr/article/25469723",
+      "source": "중앙일보",
+      "source_body_digest": "0e77376ed668712e508fead2ac1ad6e321738116b881dbf943480b0ce4e6555b",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:41427eda99537325683707dd5f91a907ab2121daee43dbbe3e42867793d5768e",
+      "source_fact_identity": "source_facts:v1:320add3e1672411384afa5f29c84c6b68a01cc3d6c556eae37ffa066d2bc9d34",
       "source_fact_keys": [
-        "source_fact:v1:1eca31fd7cae808e36a93a9f56e698a96826e262861b781a2308fdfdfa6a8584",
-        "source_fact:v1:7bf289eabf24b27b12a0e05f5d2afdc4d1900cc47c9ef27d5f01cc21eabd446a",
-        "source_fact:v1:d07c2ab1c24dc6f33ae646f6035e202fcf507a5001bc4cfd50589a78c894bd5b"
+        "source_fact:v1:2b2ab54a342e116e9a54890fa1b8ead1cc6959eeff10ff5948bb2f529d45c250",
+        "source_fact:v1:2f2b9b6e70f7bb2ace5b85ebbdd1a007642a4c803d3749b45f8ffd677a5cc37c",
+        "source_fact:v1:32c8514ba79359e5808d924b815fb64be77afa1d5be3aab5be1af4decce177d1",
+        "source_fact:v1:8682a70e31acfc472983e2c9b54cd19f433470261f42726b45931aadcb4af2c7"
       ],
-      "source_published_kst": "2026-10-14T14:20+09:00",
+      "source_published_kst": "2026-10-14T17:15+09:00",
       "source_supply_terms": {},
-      "source_title": "트럼프 유세에서 \"이란 한 방 먹일 것\" 대이란 군사행동 시사",
-      "telegram_core_fact": "트럼프 대통령은 또 이란과의 전쟁으로 인한 유가 상승은 \"이란이 핵무기를 가지는 것을 막기 위해 치러야 할 작은 대가일 뿐\"이라며 기존 주장을 되풀이했다.",
-      "title": "트럼프 유세에서 \"이란 한 방 먹일 것\" 대이란 군사행동 시사"
+      "source_title": "정부, 후티 반군의 사우디 민간시설 공격 규탄…“즉각 중단 촉구” | 중앙일보",
+      "telegram_core_fact": "“이번 공격으로 인한 희생자와 유가족에게 진심 어린 애도를 표하며, 부상자들의 조속한 회복을 기원한다”며 “사우디아라비아 정부와 국민들에게도 깊은 연대를 표명한다”고 했다.",
+      "title": "정부, 후티 반군의 사우디 민간시설 공격 규탄…“즉각 중단 촉구” | 중앙일보"
     },
     "event:529016cc46695667fd7e3b7b": {
       "first_seen_kst": "2026-10-01T19:41:53+09:00",
@@ -78330,6 +78494,31 @@
       "source_published_kst": "2026-10-06T12:00+09:00",
       "title": "대한상의·감사원 사전컨설팅에 멈춘 공공주택 3936세대 ‘물꼬’"
     },
+    "fact:4770556a12258a4b1a084f03": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.fnnews.com/news/202610142254565439",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "b947c42601fca6ab8d7759833e31cdaf828948f25d419754322f042f3a63db08",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5bfeb0bfe49dc0f1e60330ed5bdcc577682295454dac1f2ff7d77b23d75a1f47",
+      "source_fact_keys": [
+        "source_fact:v1:260a27f75b7b8d4c6679adca0db5f1a824f3e2882e58e00808c7067a0b9ee5e9",
+        "source_fact:v1:3e5ab98cc8b57d0289c71eaff3c298ca06af9765ea448c7bf75de2086b7871bd",
+        "source_fact:v1:a0983bc4799dc201ebc19f91174638c8e51a7b0ea00f5d6f5120cedc20bab356",
+        "source_fact:v1:a9990ab1417037e6f014feab901784ede96bb19aec03e15436d58a9c9a1cee04",
+        "source_fact:v1:c6dae9f485fa096e862af4a7c5186372f7f2ac70ed063b717f7beb75a41e89a8",
+        "source_fact:v1:eacdd14625b9419a96baa8534caf5c30a9c06a902ec1483111f08542fd32fefd"
+      ],
+      "source_published_kst": "2026-10-14T22:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴욕개장] 예상 상회 CPI에 하락 출발…나스닥 0.63%↓",
+      "telegram_core_fact": "스탠더드앤드푸어스(S&P)500지수는 31.30포인트(0.40%) 내린 7774.18에, 기술주 중심의 나스닥종합지수는 172.70포인트(0.63%) 하락한 2만 7031.64에 각각 개장했다. 미국 노동부에 따르면 9월 CPI는 전년 동월 대비 3.7% 상승해 시장 예상치(3.6%)를 소폭 웃돌았다.",
+      "title": "[뉴욕개장] 예상 상회 CPI에 하락 출발…나스닥 0.63%↓"
+    },
     "fact:47727468c01d5de8b49ea61c": {
       "first_seen_kst": "2026-10-13T08:14:23+09:00",
       "lanes": {
@@ -83904,6 +84093,29 @@
       "source_published_kst": "2026-10-05T09:39+09:00",
       "title": "“20좌 안 되면 못 파나”…단일종목 레버리지 ‘단주 출구’ 만든다"
     },
+    "fact:6107eb6469d7d51ed46bcb42": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.joongang.co.kr/article/25469723",
+      "source": "중앙일보",
+      "source_body_digest": "0e77376ed668712e508fead2ac1ad6e321738116b881dbf943480b0ce4e6555b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:320add3e1672411384afa5f29c84c6b68a01cc3d6c556eae37ffa066d2bc9d34",
+      "source_fact_keys": [
+        "source_fact:v1:2b2ab54a342e116e9a54890fa1b8ead1cc6959eeff10ff5948bb2f529d45c250",
+        "source_fact:v1:2f2b9b6e70f7bb2ace5b85ebbdd1a007642a4c803d3749b45f8ffd677a5cc37c",
+        "source_fact:v1:32c8514ba79359e5808d924b815fb64be77afa1d5be3aab5be1af4decce177d1",
+        "source_fact:v1:8682a70e31acfc472983e2c9b54cd19f433470261f42726b45931aadcb4af2c7"
+      ],
+      "source_published_kst": "2026-10-14T17:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "정부, 후티 반군의 사우디 민간시설 공격 규탄…“즉각 중단 촉구” | 중앙일보",
+      "telegram_core_fact": "“이번 공격으로 인한 희생자와 유가족에게 진심 어린 애도를 표하며, 부상자들의 조속한 회복을 기원한다”며 “사우디아라비아 정부와 국민들에게도 깊은 연대를 표명한다”고 했다.",
+      "title": "정부, 후티 반군의 사우디 민간시설 공격 규탄…“즉각 중단 촉구” | 중앙일보"
+    },
     "fact:614296c4e8fcdde3da394b7f": {
       "first_seen_kst": "2026-10-13T02:02:36+09:00",
       "lanes": {
@@ -89109,6 +89321,30 @@
       "source_title": "'경유딜' 트럼프 보란 듯…마크롱, 러 그림자 함대 나포 발표 | 연합뉴스",
       "telegram_core_fact": "프랑스의 이번 나포 작전은 도널드 트럼프 미국 대통령이 러시아산 경유를 미국과 세계 시장에 대규모로 공급하기로 푸틴 대통령과 합의했다고 발표해 유럽 내 우려가 커진 상황에서 이뤄졌다.",
       "title": "'경유딜' 트럼프 보란 듯…마크롱, 러 그림자 함대 나포 발표 | 연합뉴스"
+    },
+    "fact:77230f6168d184229a4e94b8": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.mk.co.kr/news/business/12176047",
+      "source": "매일경제",
+      "source_body_digest": "0ee2850bdfc830724ddedf0193e991630f94e036fc53029429411a5d2de8f23f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:64ecbba095fd2a1339db2577682d99d81452be858c9c04d96d83e9622592496a",
+      "source_fact_keys": [
+        "source_fact:v1:2cbfb3019e9c7ab0420331e9980604103ed29ae300b6b13a407360a95ce60d2e",
+        "source_fact:v1:80112fd37e9751d860ff74c34e39bbe08e5a858c348692985a1229cbc2b314a7",
+        "source_fact:v1:9af53705b438c1c7843aaef2189cdb241b9905020bd9ae0b3d1e63650ed6d56a",
+        "source_fact:v1:a68c5b000f587494fce67812234518908f4249d23ff1ec5c715fba1e7a2e4ea9",
+        "source_fact:v1:d6e0d015442f72a306f755601563316c678244850d8f15a9e7f09d532e1416aa"
+      ],
+      "source_published_kst": "2026-10-14T18:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "엑시나, 인텔·퀄컴 거친 스티브 핑거허트 CBO 영입",
+      "telegram_core_fact": "김진영 엑시나 대표는 “스티브 CBO는 데이터센터 사업을 성장시키고 글로벌 기술 기업들과 협력해 신기술을 사업화한 경험이 풍부하다. 컴퓨팅과 가속 기술, 메모리 분야에서 쌓은 경험이 MX1 상용화와 글로벌 사업 확대에 큰 도움이 될 것”이라고 말했다.",
+      "title": "엑시나, 인텔·퀄컴 거친 스티브 핑거허트 CBO 영입"
     },
     "fact:7734798c45d3d502ec13e0ad": {
       "first_seen_kst": "2026-10-11T20:44:48+09:00",
@@ -107431,6 +107667,29 @@
       "telegram_core_fact": "강원 횡성군의 제22회 횡성한우축제가 방문객 40만명과 매출 44억원을 기록하며 역대 최고 흥행 성적을 거뒀다.",
       "title": "횡성한우축제 40만명 찾았다…매출 44억원 역대 최고"
     },
+    "fact:bf939d96e7dbbfa6fa311a6b": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12176198",
+      "source": "매일경제",
+      "source_body_digest": "cadbeb23223df59fecdb97dc0c3cc1c197633e6305db0de1a798268bff528f42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30cc15c11d6e03a291a8019a6cde693bcd67660444c532212cb8947a13d282b4",
+      "source_fact_keys": [
+        "source_fact:v1:5e03b82f07de119bba8bb681b110c3ffe67138c10fd2d9bcdd8e43c3dfb39e65",
+        "source_fact:v1:6684118f9d3aee097ab3d99a1dadd0a7b0a29e00100a80fa5bf44f195b72db7b",
+        "source_fact:v1:85fd45ce06cdc94bfbdd1731d8ca06951d6b0aeb331c416642990539f8134b62",
+        "source_fact:v1:a87a974aa1cb3362cd06763089475b35ccd1207ede4196343698d86c32a4f912"
+      ],
+      "source_published_kst": "2026-10-14T21:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "에볼루션 메탈스 앤 테크, 2027 매출 가이던스 4억~4억6000만달러 재확인",
+      "telegram_core_fact": "2027년 예상 매출은 전년 대비 1102.5% 증가한 수준이나 회사 가이던스 하단인 4억 달러에는 크게 못 미친다.",
+      "title": "에볼루션 메탈스 앤 테크, 2027 매출 가이던스 4억~4억6000만달러 재확인"
+    },
     "fact:bfc4a2dfe3da8afa8ac0ab42": {
       "first_seen_kst": "2026-10-10T06:41:01+09:00",
       "lanes": {
@@ -110635,6 +110894,27 @@
       "source_published_kst": "2026-10-06T14:16+09:00",
       "title": "\"최태원 9440억 SK 지분 매각, 3%룰 회피 목적 아닌지 밝혀야\""
     },
+    "fact:cc74f583541f0b0b8e0394e1": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.etnews.com/20261014000270",
+      "source": "전자신문",
+      "source_body_digest": "044e897319790171e64348e86e7fe30caba58c70a076b017145f4e09c9305d1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0f32d78c001c383061326120532042d27c2c490c58ed9fb0321211aca81ab78e",
+      "source_fact_keys": [
+        "source_fact:v1:0810aaaace6f8234b7d80829314639ea38d7194cf61db19df7dcd9b390b2a442",
+        "source_fact:v1:df9fbd72b845fa7504307abc16f3befb1956a19db15ca1499b40a92b88d664df"
+      ],
+      "source_published_kst": "2026-10-14T18:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "서울 오피스 투자 '큰손' 된 일반 기업들…자산운용사와 매입 경쟁",
+      "telegram_core_fact": "아성다이소의 지주사 한웰그룹도 2월 서울 역삼동 케이스퀘어강남2를 3550억원에 인수했다.",
+      "title": "서울 오피스 투자 '큰손' 된 일반 기업들…자산운용사와 매입 경쟁"
+    },
     "fact:cc77e07a5ff01f7faf7d00f0": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
       "lanes": {
@@ -113501,6 +113781,35 @@
       ],
       "source_published_kst": "2026-10-06T07:10+09:00",
       "title": "5만 가구 ‘한강2’ 연계 5호선 2034년 개통할까 [교통지옥 김포 ③]"
+    },
+    "fact:d7c2d0f084d43c49aadb858b": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635808",
+      "source": "이투데이",
+      "source_body_digest": "05f7bc778f1df8a5955fee0192637ede1fc82dcbbae37f73b5ea0b13c048ffb5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01cbd8f1b97a3d6348eb494341e04c68c0cbda13304934a0ee9ecfd9258982f1",
+      "source_fact_keys": [
+        "source_fact:v1:0c36405c3ef5ba49bb39d47dd1816063e3726a3457f7715457359e1d64ad26ca",
+        "source_fact:v1:1f6c78d7a8c1bdbeaa127ea907a999a7ff187d0f138e939fea70ed82d19626f7",
+        "source_fact:v1:5f01c6a84b9caa5cc8d7032449eb45167b7f3cfb5ccf674b60333691ae278293",
+        "source_fact:v1:67a65823b28595d47c8cc822135888a9eb8b4d8edad9ef4b154055b92dd43664",
+        "source_fact:v1:8350751922dbaad5aa1fc74442d2f6049417658dbca817c77043f2d1e5d11c6a",
+        "source_fact:v1:8bc44df3dc6c0f5b9b7516e61a38f4090f758025bbe8c797ce8ce063e05fd297",
+        "source_fact:v1:8ffb31cf088481492302ee6adde3010e90d891f0e4b27af1491989d6eb0225be",
+        "source_fact:v1:916d2178f1f0cf7f2a1f9a45ac2a68c1cfec0b2d5be35d4dfc5ca136574431c6",
+        "source_fact:v1:a2f974ed1f967c657c2021fae4992eff4ee5f2c79b978b31e74715c5695d5486",
+        "source_fact:v1:d423c1359fbc3fad8388058b65faa38c844da1b0118fd122ba9408e52ea0adb0"
+      ],
+      "source_published_kst": "2026-10-14T18:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "34% 급락장서 웃은 외인…개미 '떨어지는 칼날' 받았다",
+      "telegram_core_fact": "코스피가 약 4개월 만에 34% 넘게 폭락한 하락장에서 외국인은 과감한 현금화로 손실을 피한 반면, 개인은 떨어지는 칼날을 받아내며 최악의 매매 성적표를 받게된 것으로 집계됐다.",
+      "title": "34% 급락장서 웃은 외인…개미 '떨어지는 칼날' 받았다"
     },
     "fact:d7cc1ad5c2354c622d84a9b0": {
       "first_seen_kst": "2026-10-07T01:33:00+09:00",
@@ -140368,6 +140677,24 @@
       "telegram_core_fact": "코스피가 외국인의 2조 원 넘는 순매도에 오후 들어 낙폭을 키우며 6830선으로 밀렸다.",
       "title": "삼전 실적 '경계' 외국인 2조 순매도…코스피 1.5%↓ 6830선[장중시황]"
     },
+    "link:31ede06136d1a22a8fa52482": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003826019",
+      "source": "뉴시스",
+      "source_body_digest": "634b996490e485252a20695cf400ed65e09d23e9808779cd7878646960e3598c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-14T18:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 한국 이어 대만에 알래스카 LNG 투자 압박…대만도 신중(종합)",
+      "telegram_core_fact": "그는 지난달 30일 한국이 540억 달러를 알래스카 LNG 사업에 투자하기로 했다고 일방 발표한 데 이어, 투자하지 않을 시 관세 인상을 암시하는 \"한국에 돈을 더 청구하면 된다\"는 식의 위협을 가하기도 했다.",
+      "title": "트럼프, 한국 이어 대만에 알래스카 LNG 투자 압박…대만도 신중(종합)"
+    },
     "link:3200ca4d7e110137097f9d76": {
       "first_seen_kst": "2026-10-13T22:33:57+09:00",
       "lanes": {
@@ -145475,6 +145802,29 @@
       ],
       "source_published_kst": "2026-10-05T08:15+09:00",
       "title": "함안군, 택시 기본요금 5천500원→6천원 인상 추진 | 연합뉴스"
+    },
+    "link:41a17d53ecbbfb230b0faf9b": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.joongang.co.kr/article/25469723",
+      "source": "중앙일보",
+      "source_body_digest": "0e77376ed668712e508fead2ac1ad6e321738116b881dbf943480b0ce4e6555b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:320add3e1672411384afa5f29c84c6b68a01cc3d6c556eae37ffa066d2bc9d34",
+      "source_fact_keys": [
+        "source_fact:v1:2b2ab54a342e116e9a54890fa1b8ead1cc6959eeff10ff5948bb2f529d45c250",
+        "source_fact:v1:2f2b9b6e70f7bb2ace5b85ebbdd1a007642a4c803d3749b45f8ffd677a5cc37c",
+        "source_fact:v1:32c8514ba79359e5808d924b815fb64be77afa1d5be3aab5be1af4decce177d1",
+        "source_fact:v1:8682a70e31acfc472983e2c9b54cd19f433470261f42726b45931aadcb4af2c7"
+      ],
+      "source_published_kst": "2026-10-14T17:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "정부, 후티 반군의 사우디 민간시설 공격 규탄…“즉각 중단 촉구” | 중앙일보",
+      "telegram_core_fact": "“이번 공격으로 인한 희생자와 유가족에게 진심 어린 애도를 표하며, 부상자들의 조속한 회복을 기원한다”며 “사우디아라비아 정부와 국민들에게도 깊은 연대를 표명한다”고 했다.",
+      "title": "정부, 후티 반군의 사우디 민간시설 공격 규탄…“즉각 중단 촉구” | 중앙일보"
     },
     "link:41bf1733030e70fdaaffb897": {
       "first_seen_kst": "2026-10-02T09:58:25+09:00",
@@ -152982,6 +153332,30 @@
       "telegram_core_fact": "합병계약 체결 이후 서로 다른 업무 방식과 조직문화를 연결하는 인적 통합 작업이다.",
       "title": "통합 앞둔 진에어·에어부산·에어서울, 승격자 270명 공동교육"
     },
+    "link:58993d291c7f7225f68d97a0": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.mk.co.kr/news/business/12176047",
+      "source": "매일경제",
+      "source_body_digest": "0ee2850bdfc830724ddedf0193e991630f94e036fc53029429411a5d2de8f23f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:64ecbba095fd2a1339db2577682d99d81452be858c9c04d96d83e9622592496a",
+      "source_fact_keys": [
+        "source_fact:v1:2cbfb3019e9c7ab0420331e9980604103ed29ae300b6b13a407360a95ce60d2e",
+        "source_fact:v1:80112fd37e9751d860ff74c34e39bbe08e5a858c348692985a1229cbc2b314a7",
+        "source_fact:v1:9af53705b438c1c7843aaef2189cdb241b9905020bd9ae0b3d1e63650ed6d56a",
+        "source_fact:v1:a68c5b000f587494fce67812234518908f4249d23ff1ec5c715fba1e7a2e4ea9",
+        "source_fact:v1:d6e0d015442f72a306f755601563316c678244850d8f15a9e7f09d532e1416aa"
+      ],
+      "source_published_kst": "2026-10-14T18:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "엑시나, 인텔·퀄컴 거친 스티브 핑거허트 CBO 영입",
+      "telegram_core_fact": "김진영 엑시나 대표는 “스티브 CBO는 데이터센터 사업을 성장시키고 글로벌 기술 기업들과 협력해 신기술을 사업화한 경험이 풍부하다. 컴퓨팅과 가속 기술, 메모리 분야에서 쌓은 경험이 MX1 상용화와 글로벌 사업 확대에 큰 도움이 될 것”이라고 말했다.",
+      "title": "엑시나, 인텔·퀄컴 거친 스티브 핑거허트 CBO 영입"
+    },
     "link:589d30c0d137aab28c754e8c": {
       "first_seen_kst": "2026-09-18T23:32:37+09:00",
       "lanes": {
@@ -158849,6 +159223,29 @@
       "source_title": "중국 당정, 신질 생산력 본격 추진…금융·세제 지원 늘린다",
       "telegram_core_fact": "기술 혁신 채권 제품 시스템을 늘리고 고품질 기술 기반 기업의 상장 및 금융 지원을 강화하며 인수합병, 구조조정, 기술 기반 기업에 대한 지분 인센티브 시스템을 최적화하도록 했다.",
       "title": "중국 당정, 신질 생산력 본격 추진…금융·세제 지원 늘린다"
+    },
+    "link:6aaec78c0e44ffd329d6a65b": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12176198",
+      "source": "매일경제",
+      "source_body_digest": "cadbeb23223df59fecdb97dc0c3cc1c197633e6305db0de1a798268bff528f42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30cc15c11d6e03a291a8019a6cde693bcd67660444c532212cb8947a13d282b4",
+      "source_fact_keys": [
+        "source_fact:v1:5e03b82f07de119bba8bb681b110c3ffe67138c10fd2d9bcdd8e43c3dfb39e65",
+        "source_fact:v1:6684118f9d3aee097ab3d99a1dadd0a7b0a29e00100a80fa5bf44f195b72db7b",
+        "source_fact:v1:85fd45ce06cdc94bfbdd1731d8ca06951d6b0aeb331c416642990539f8134b62",
+        "source_fact:v1:a87a974aa1cb3362cd06763089475b35ccd1207ede4196343698d86c32a4f912"
+      ],
+      "source_published_kst": "2026-10-14T21:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "에볼루션 메탈스 앤 테크, 2027 매출 가이던스 4억~4억6000만달러 재확인",
+      "telegram_core_fact": "2027년 예상 매출은 전년 대비 1102.5% 증가한 수준이나 회사 가이던스 하단인 4억 달러에는 크게 못 미친다.",
+      "title": "에볼루션 메탈스 앤 테크, 2027 매출 가이던스 4억~4억6000만달러 재확인"
     },
     "link:6abff28564c33a90007ca70e": {
       "first_seen_kst": "2026-10-05T12:29:58+09:00",
@@ -166436,6 +166833,35 @@
       ],
       "source_published_kst": "2026-10-07T14:22+09:00",
       "title": "AI 전력난에 엔진도 뜬다…HD건설기계, 북미서 3900억원 수주"
+    },
+    "link:80f51dd168c72db2c9c011cb": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635808",
+      "source": "이투데이",
+      "source_body_digest": "05f7bc778f1df8a5955fee0192637ede1fc82dcbbae37f73b5ea0b13c048ffb5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01cbd8f1b97a3d6348eb494341e04c68c0cbda13304934a0ee9ecfd9258982f1",
+      "source_fact_keys": [
+        "source_fact:v1:0c36405c3ef5ba49bb39d47dd1816063e3726a3457f7715457359e1d64ad26ca",
+        "source_fact:v1:1f6c78d7a8c1bdbeaa127ea907a999a7ff187d0f138e939fea70ed82d19626f7",
+        "source_fact:v1:5f01c6a84b9caa5cc8d7032449eb45167b7f3cfb5ccf674b60333691ae278293",
+        "source_fact:v1:67a65823b28595d47c8cc822135888a9eb8b4d8edad9ef4b154055b92dd43664",
+        "source_fact:v1:8350751922dbaad5aa1fc74442d2f6049417658dbca817c77043f2d1e5d11c6a",
+        "source_fact:v1:8bc44df3dc6c0f5b9b7516e61a38f4090f758025bbe8c797ce8ce063e05fd297",
+        "source_fact:v1:8ffb31cf088481492302ee6adde3010e90d891f0e4b27af1491989d6eb0225be",
+        "source_fact:v1:916d2178f1f0cf7f2a1f9a45ac2a68c1cfec0b2d5be35d4dfc5ca136574431c6",
+        "source_fact:v1:a2f974ed1f967c657c2021fae4992eff4ee5f2c79b978b31e74715c5695d5486",
+        "source_fact:v1:d423c1359fbc3fad8388058b65faa38c844da1b0118fd122ba9408e52ea0adb0"
+      ],
+      "source_published_kst": "2026-10-14T18:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "34% 급락장서 웃은 외인…개미 '떨어지는 칼날' 받았다",
+      "telegram_core_fact": "코스피가 약 4개월 만에 34% 넘게 폭락한 하락장에서 외국인은 과감한 현금화로 손실을 피한 반면, 개인은 떨어지는 칼날을 받아내며 최악의 매매 성적표를 받게된 것으로 집계됐다.",
+      "title": "34% 급락장서 웃은 외인…개미 '떨어지는 칼날' 받았다"
     },
     "link:80fbbfa96027bff1e580a21d": {
       "first_seen_kst": "2026-10-07T18:00:43+09:00",
@@ -181270,6 +181696,27 @@
       "telegram_core_fact": "'대구 천억클럽'은 2019년 이후 연 매출 1천억원 이상을 기록한 바 있는 지역 기업들의 모임이다.",
       "title": "대구 매출 1천억 이상 모임 '천억클럽'에 6곳 추가 | 연합뉴스"
     },
+    "link:addc436d675bb0ee98886f7e": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.etnews.com/20261014000270",
+      "source": "전자신문",
+      "source_body_digest": "044e897319790171e64348e86e7fe30caba58c70a076b017145f4e09c9305d1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0f32d78c001c383061326120532042d27c2c490c58ed9fb0321211aca81ab78e",
+      "source_fact_keys": [
+        "source_fact:v1:0810aaaace6f8234b7d80829314639ea38d7194cf61db19df7dcd9b390b2a442",
+        "source_fact:v1:df9fbd72b845fa7504307abc16f3befb1956a19db15ca1499b40a92b88d664df"
+      ],
+      "source_published_kst": "2026-10-14T18:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "서울 오피스 투자 '큰손' 된 일반 기업들…자산운용사와 매입 경쟁",
+      "telegram_core_fact": "아성다이소의 지주사 한웰그룹도 2월 서울 역삼동 케이스퀘어강남2를 3550억원에 인수했다.",
+      "title": "서울 오피스 투자 '큰손' 된 일반 기업들…자산운용사와 매입 경쟁"
+    },
     "link:ae159f45c249902c9c44dc16": {
       "first_seen_kst": "2026-10-04T11:57:24+09:00",
       "lanes": {
@@ -190281,6 +190728,31 @@
       "source_title": "경남 올해 노인일자리 사업 3456억 투입, 8만개 공급",
       "telegram_core_fact": "경남도는 올해 도내 노인일자리 사업에 국비 1629억원, 도비 550억원, 시군비 1277억원 등 총 3456억원을 투입해 8만개를 공급하고, 2030년까지 10만개로 확대한다고 13일 밝혔다.",
       "title": "경남 올해 노인일자리 사업 3456억 투입, 8만개 공급"
+    },
+    "link:c93f573db3b202ef3b1b6c51": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.fnnews.com/news/202610142254565439",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "b947c42601fca6ab8d7759833e31cdaf828948f25d419754322f042f3a63db08",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5bfeb0bfe49dc0f1e60330ed5bdcc577682295454dac1f2ff7d77b23d75a1f47",
+      "source_fact_keys": [
+        "source_fact:v1:260a27f75b7b8d4c6679adca0db5f1a824f3e2882e58e00808c7067a0b9ee5e9",
+        "source_fact:v1:3e5ab98cc8b57d0289c71eaff3c298ca06af9765ea448c7bf75de2086b7871bd",
+        "source_fact:v1:a0983bc4799dc201ebc19f91174638c8e51a7b0ea00f5d6f5120cedc20bab356",
+        "source_fact:v1:a9990ab1417037e6f014feab901784ede96bb19aec03e15436d58a9c9a1cee04",
+        "source_fact:v1:c6dae9f485fa096e862af4a7c5186372f7f2ac70ed063b717f7beb75a41e89a8",
+        "source_fact:v1:eacdd14625b9419a96baa8534caf5c30a9c06a902ec1483111f08542fd32fefd"
+      ],
+      "source_published_kst": "2026-10-14T22:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴욕개장] 예상 상회 CPI에 하락 출발…나스닥 0.63%↓",
+      "telegram_core_fact": "스탠더드앤드푸어스(S&P)500지수는 31.30포인트(0.40%) 내린 7774.18에, 기술주 중심의 나스닥종합지수는 172.70포인트(0.63%) 하락한 2만 7031.64에 각각 개장했다. 미국 노동부에 따르면 9월 CPI는 전년 동월 대비 3.7% 상승해 시장 예상치(3.6%)를 소폭 웃돌았다.",
+      "title": "[뉴욕개장] 예상 상회 CPI에 하락 출발…나스닥 0.63%↓"
     },
     "link:c947e5722a52ff96aeccb1cb": {
       "first_seen_kst": "2026-10-09T23:49:51+09:00",
@@ -217518,6 +217990,35 @@
       "telegram_core_fact": "하지만 인구감소지역의 방문진료 공급 역량은 추정 수요의 10% 남짓에 그쳤다. 조사 결과 인구감소지역의 방문진료 공급 충족률은 10.7%로 일반지역(25.5%)의 절반에도 미치지 못했다.",
       "title": "“아파도 집에 올 의사가 없다”…인구감소지역 방문진료 공급 10%뿐(종합)"
     },
+    "original:1ea14c61b8665749d48c4c66": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635808",
+      "source": "이투데이",
+      "source_body_digest": "05f7bc778f1df8a5955fee0192637ede1fc82dcbbae37f73b5ea0b13c048ffb5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01cbd8f1b97a3d6348eb494341e04c68c0cbda13304934a0ee9ecfd9258982f1",
+      "source_fact_keys": [
+        "source_fact:v1:0c36405c3ef5ba49bb39d47dd1816063e3726a3457f7715457359e1d64ad26ca",
+        "source_fact:v1:1f6c78d7a8c1bdbeaa127ea907a999a7ff187d0f138e939fea70ed82d19626f7",
+        "source_fact:v1:5f01c6a84b9caa5cc8d7032449eb45167b7f3cfb5ccf674b60333691ae278293",
+        "source_fact:v1:67a65823b28595d47c8cc822135888a9eb8b4d8edad9ef4b154055b92dd43664",
+        "source_fact:v1:8350751922dbaad5aa1fc74442d2f6049417658dbca817c77043f2d1e5d11c6a",
+        "source_fact:v1:8bc44df3dc6c0f5b9b7516e61a38f4090f758025bbe8c797ce8ce063e05fd297",
+        "source_fact:v1:8ffb31cf088481492302ee6adde3010e90d891f0e4b27af1491989d6eb0225be",
+        "source_fact:v1:916d2178f1f0cf7f2a1f9a45ac2a68c1cfec0b2d5be35d4dfc5ca136574431c6",
+        "source_fact:v1:a2f974ed1f967c657c2021fae4992eff4ee5f2c79b978b31e74715c5695d5486",
+        "source_fact:v1:d423c1359fbc3fad8388058b65faa38c844da1b0118fd122ba9408e52ea0adb0"
+      ],
+      "source_published_kst": "2026-10-14T18:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "34% 급락장서 웃은 외인…개미 '떨어지는 칼날' 받았다",
+      "telegram_core_fact": "코스피가 약 4개월 만에 34% 넘게 폭락한 하락장에서 외국인은 과감한 현금화로 손실을 피한 반면, 개인은 떨어지는 칼날을 받아내며 최악의 매매 성적표를 받게된 것으로 집계됐다.",
+      "title": "34% 급락장서 웃은 외인…개미 '떨어지는 칼날' 받았다"
+    },
     "original:1ea5bbf3e24f5c91ead77f80": {
       "first_seen_kst": "2026-09-20T08:23:48+09:00",
       "lanes": {
@@ -240618,6 +241119,29 @@
       "source_published_kst": "2026-10-05T12:53+09:00",
       "title": "이강석 대우건설 대표이사 공식 취임…“AI· 데이터센터 등 미래성장 분야 발굴”"
     },
+    "original:649ba08a5f6fc783a014c28c": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.joongang.co.kr/article/25469723",
+      "source": "중앙일보",
+      "source_body_digest": "0e77376ed668712e508fead2ac1ad6e321738116b881dbf943480b0ce4e6555b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:320add3e1672411384afa5f29c84c6b68a01cc3d6c556eae37ffa066d2bc9d34",
+      "source_fact_keys": [
+        "source_fact:v1:2b2ab54a342e116e9a54890fa1b8ead1cc6959eeff10ff5948bb2f529d45c250",
+        "source_fact:v1:2f2b9b6e70f7bb2ace5b85ebbdd1a007642a4c803d3749b45f8ffd677a5cc37c",
+        "source_fact:v1:32c8514ba79359e5808d924b815fb64be77afa1d5be3aab5be1af4decce177d1",
+        "source_fact:v1:8682a70e31acfc472983e2c9b54cd19f433470261f42726b45931aadcb4af2c7"
+      ],
+      "source_published_kst": "2026-10-14T17:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "정부, 후티 반군의 사우디 민간시설 공격 규탄…“즉각 중단 촉구” | 중앙일보",
+      "telegram_core_fact": "“이번 공격으로 인한 희생자와 유가족에게 진심 어린 애도를 표하며, 부상자들의 조속한 회복을 기원한다”며 “사우디아라비아 정부와 국민들에게도 깊은 연대를 표명한다”고 했다.",
+      "title": "정부, 후티 반군의 사우디 민간시설 공격 규탄…“즉각 중단 촉구” | 중앙일보"
+    },
     "original:64a231ab603e051c73d2b574": {
       "first_seen_kst": "2026-10-12T05:09:39+09:00",
       "lanes": {
@@ -260482,6 +261006,30 @@
       "source_published_kst": "2026-10-06T16:06+09:00",
       "title": "건설로봇, 연구실 넘어 현장으로…“상용화 위한 실증 확대·제도 개선 필요”"
     },
+    "original:a387500e5011243ae704d2f9": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.mk.co.kr/news/business/12176047",
+      "source": "매일경제",
+      "source_body_digest": "0ee2850bdfc830724ddedf0193e991630f94e036fc53029429411a5d2de8f23f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:64ecbba095fd2a1339db2577682d99d81452be858c9c04d96d83e9622592496a",
+      "source_fact_keys": [
+        "source_fact:v1:2cbfb3019e9c7ab0420331e9980604103ed29ae300b6b13a407360a95ce60d2e",
+        "source_fact:v1:80112fd37e9751d860ff74c34e39bbe08e5a858c348692985a1229cbc2b314a7",
+        "source_fact:v1:9af53705b438c1c7843aaef2189cdb241b9905020bd9ae0b3d1e63650ed6d56a",
+        "source_fact:v1:a68c5b000f587494fce67812234518908f4249d23ff1ec5c715fba1e7a2e4ea9",
+        "source_fact:v1:d6e0d015442f72a306f755601563316c678244850d8f15a9e7f09d532e1416aa"
+      ],
+      "source_published_kst": "2026-10-14T18:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "엑시나, 인텔·퀄컴 거친 스티브 핑거허트 CBO 영입",
+      "telegram_core_fact": "김진영 엑시나 대표는 “스티브 CBO는 데이터센터 사업을 성장시키고 글로벌 기술 기업들과 협력해 신기술을 사업화한 경험이 풍부하다. 컴퓨팅과 가속 기술, 메모리 분야에서 쌓은 경험이 MX1 상용화와 글로벌 사업 확대에 큰 도움이 될 것”이라고 말했다.",
+      "title": "엑시나, 인텔·퀄컴 거친 스티브 핑거허트 CBO 영입"
+    },
     "original:a39438138e0f3fc18f58d59e": {
       "first_seen_kst": "2026-10-09T23:03:47+09:00",
       "lanes": {
@@ -261431,6 +261979,24 @@
       "source_title": "[속보]다우 0.83%↑…AI주 반등·러 경유 공급 기대",
       "telegram_core_fact": "트럼프 대통령은 블라디미르 푸틴 러시아 대통령과 러시아산 경유를 미국과 세계시장에 공급하기로 합의했다고 밝혔다.",
       "title": "[속보]다우 0.83%↑…AI주 반등·러 경유 공급 기대"
+    },
+    "original:a6152561fac464f451e81111": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003826019",
+      "source": "뉴시스",
+      "source_body_digest": "634b996490e485252a20695cf400ed65e09d23e9808779cd7878646960e3598c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-14T18:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 한국 이어 대만에 알래스카 LNG 투자 압박…대만도 신중(종합)",
+      "telegram_core_fact": "그는 지난달 30일 한국이 540억 달러를 알래스카 LNG 사업에 투자하기로 했다고 일방 발표한 데 이어, 투자하지 않을 시 관세 인상을 암시하는 \"한국에 돈을 더 청구하면 된다\"는 식의 위협을 가하기도 했다.",
+      "title": "트럼프, 한국 이어 대만에 알래스카 LNG 투자 압박…대만도 신중(종합)"
     },
     "original:a617777f1b274cd392d8e5b6": {
       "first_seen_kst": "2026-10-13T05:50:59+09:00",
@@ -266471,6 +267037,31 @@
       ],
       "source_published_kst": "2026-10-06T09:48+09:00",
       "title": "은평구 불광 5구역, 철거 착수…2046가구 '북한산 자이'로 탈바꿈"
+    },
+    "original:b4cbb9c512c2d875f9bf38d0": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.fnnews.com/news/202610142254565439",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "b947c42601fca6ab8d7759833e31cdaf828948f25d419754322f042f3a63db08",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5bfeb0bfe49dc0f1e60330ed5bdcc577682295454dac1f2ff7d77b23d75a1f47",
+      "source_fact_keys": [
+        "source_fact:v1:260a27f75b7b8d4c6679adca0db5f1a824f3e2882e58e00808c7067a0b9ee5e9",
+        "source_fact:v1:3e5ab98cc8b57d0289c71eaff3c298ca06af9765ea448c7bf75de2086b7871bd",
+        "source_fact:v1:a0983bc4799dc201ebc19f91174638c8e51a7b0ea00f5d6f5120cedc20bab356",
+        "source_fact:v1:a9990ab1417037e6f014feab901784ede96bb19aec03e15436d58a9c9a1cee04",
+        "source_fact:v1:c6dae9f485fa096e862af4a7c5186372f7f2ac70ed063b717f7beb75a41e89a8",
+        "source_fact:v1:eacdd14625b9419a96baa8534caf5c30a9c06a902ec1483111f08542fd32fefd"
+      ],
+      "source_published_kst": "2026-10-14T22:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴욕개장] 예상 상회 CPI에 하락 출발…나스닥 0.63%↓",
+      "telegram_core_fact": "스탠더드앤드푸어스(S&P)500지수는 31.30포인트(0.40%) 내린 7774.18에, 기술주 중심의 나스닥종합지수는 172.70포인트(0.63%) 하락한 2만 7031.64에 각각 개장했다. 미국 노동부에 따르면 9월 CPI는 전년 동월 대비 3.7% 상승해 시장 예상치(3.6%)를 소폭 웃돌았다.",
+      "title": "[뉴욕개장] 예상 상회 CPI에 하락 출발…나스닥 0.63%↓"
     },
     "original:b55aab252ea48f211484312a": {
       "first_seen_kst": "2026-10-08T01:26:16+09:00",
@@ -283104,6 +283695,29 @@
       "source": "파이낸셜뉴스",
       "title": "변동성 장세에 단기자금 몰렸다…ACE 머니마켓액티브 순자산 1조 돌파"
     },
+    "original:e9c16cf03d81da89f6d7b1d2": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12176198",
+      "source": "매일경제",
+      "source_body_digest": "cadbeb23223df59fecdb97dc0c3cc1c197633e6305db0de1a798268bff528f42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30cc15c11d6e03a291a8019a6cde693bcd67660444c532212cb8947a13d282b4",
+      "source_fact_keys": [
+        "source_fact:v1:5e03b82f07de119bba8bb681b110c3ffe67138c10fd2d9bcdd8e43c3dfb39e65",
+        "source_fact:v1:6684118f9d3aee097ab3d99a1dadd0a7b0a29e00100a80fa5bf44f195b72db7b",
+        "source_fact:v1:85fd45ce06cdc94bfbdd1731d8ca06951d6b0aeb331c416642990539f8134b62",
+        "source_fact:v1:a87a974aa1cb3362cd06763089475b35ccd1207ede4196343698d86c32a4f912"
+      ],
+      "source_published_kst": "2026-10-14T21:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "에볼루션 메탈스 앤 테크, 2027 매출 가이던스 4억~4억6000만달러 재확인",
+      "telegram_core_fact": "2027년 예상 매출은 전년 대비 1102.5% 증가한 수준이나 회사 가이던스 하단인 4억 달러에는 크게 못 미친다.",
+      "title": "에볼루션 메탈스 앤 테크, 2027 매출 가이던스 4억~4억6000만달러 재확인"
+    },
     "original:e9d369a69f88e2be4c1255d2": {
       "first_seen_kst": "2026-10-01T22:26:11+09:00",
       "lanes": {
@@ -284818,6 +285432,27 @@
       "link": "https://www.yna.co.kr/view/AKR20260928104700003",
       "source": "연합뉴스",
       "title": "SK하이닉스, TSMC 행사서 AI 메모리 공개…2년 연속 파트너상 | 연합뉴스"
+    },
+    "original:f01ff81dfb64a02bb1e11b36": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.etnews.com/20261014000270",
+      "source": "전자신문",
+      "source_body_digest": "044e897319790171e64348e86e7fe30caba58c70a076b017145f4e09c9305d1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0f32d78c001c383061326120532042d27c2c490c58ed9fb0321211aca81ab78e",
+      "source_fact_keys": [
+        "source_fact:v1:0810aaaace6f8234b7d80829314639ea38d7194cf61db19df7dcd9b390b2a442",
+        "source_fact:v1:df9fbd72b845fa7504307abc16f3befb1956a19db15ca1499b40a92b88d664df"
+      ],
+      "source_published_kst": "2026-10-14T18:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "서울 오피스 투자 '큰손' 된 일반 기업들…자산운용사와 매입 경쟁",
+      "telegram_core_fact": "아성다이소의 지주사 한웰그룹도 2월 서울 역삼동 케이스퀘어강남2를 3550억원에 인수했다.",
+      "title": "서울 오피스 투자 '큰손' 된 일반 기업들…자산운용사와 매입 경쟁"
     },
     "original:f0323e0b37b885fa4359456d": {
       "first_seen_kst": "2026-10-05T23:28:38+09:00",
@@ -291936,6 +292571,29 @@
       "telegram_core_fact": "내년까지 국내 공급 기반을 구축하고 2028년부터 전국 단위 보급을 본격화한다는 계획이다.",
       "title": "삼성전자, 아파트 냉난방 전기화 나선다…2028년 히트펌프 전국 보급"
     },
+    "source_fact:01c68925a4ba00f0c3e50262": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12176198",
+      "source": "매일경제",
+      "source_body_digest": "cadbeb23223df59fecdb97dc0c3cc1c197633e6305db0de1a798268bff528f42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30cc15c11d6e03a291a8019a6cde693bcd67660444c532212cb8947a13d282b4",
+      "source_fact_keys": [
+        "source_fact:v1:5e03b82f07de119bba8bb681b110c3ffe67138c10fd2d9bcdd8e43c3dfb39e65",
+        "source_fact:v1:6684118f9d3aee097ab3d99a1dadd0a7b0a29e00100a80fa5bf44f195b72db7b",
+        "source_fact:v1:85fd45ce06cdc94bfbdd1731d8ca06951d6b0aeb331c416642990539f8134b62",
+        "source_fact:v1:a87a974aa1cb3362cd06763089475b35ccd1207ede4196343698d86c32a4f912"
+      ],
+      "source_published_kst": "2026-10-14T21:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "에볼루션 메탈스 앤 테크, 2027 매출 가이던스 4억~4억6000만달러 재확인",
+      "telegram_core_fact": "2027년 예상 매출은 전년 대비 1102.5% 증가한 수준이나 회사 가이던스 하단인 4억 달러에는 크게 못 미친다.",
+      "title": "에볼루션 메탈스 앤 테크, 2027 매출 가이던스 4억~4억6000만달러 재확인"
+    },
     "source_fact:01c89754907a416159a6fb96": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
       "lanes": {
@@ -295220,6 +295878,30 @@
       "source_title": "정보보호 공시 공백 메운다…NH농협銀 내년 첫 공개",
       "telegram_core_fact": "공식적으로 한국인터넷진흥원(KISA)이 운영하는 자율공시에 참여하며 동일한 기준에서 다른 시중은행들과 정보보호 투자액과 인력 등을 비교할 수 있을 전망이다.",
       "title": "정보보호 공시 공백 메운다…NH농협銀 내년 첫 공개"
+    },
+    "source_fact:04c4ff33c095c32ec19dcdd8": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.mk.co.kr/news/business/12176047",
+      "source": "매일경제",
+      "source_body_digest": "0ee2850bdfc830724ddedf0193e991630f94e036fc53029429411a5d2de8f23f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:64ecbba095fd2a1339db2577682d99d81452be858c9c04d96d83e9622592496a",
+      "source_fact_keys": [
+        "source_fact:v1:2cbfb3019e9c7ab0420331e9980604103ed29ae300b6b13a407360a95ce60d2e",
+        "source_fact:v1:80112fd37e9751d860ff74c34e39bbe08e5a858c348692985a1229cbc2b314a7",
+        "source_fact:v1:9af53705b438c1c7843aaef2189cdb241b9905020bd9ae0b3d1e63650ed6d56a",
+        "source_fact:v1:a68c5b000f587494fce67812234518908f4249d23ff1ec5c715fba1e7a2e4ea9",
+        "source_fact:v1:d6e0d015442f72a306f755601563316c678244850d8f15a9e7f09d532e1416aa"
+      ],
+      "source_published_kst": "2026-10-14T18:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "엑시나, 인텔·퀄컴 거친 스티브 핑거허트 CBO 영입",
+      "telegram_core_fact": "김진영 엑시나 대표는 “스티브 CBO는 데이터센터 사업을 성장시키고 글로벌 기술 기업들과 협력해 신기술을 사업화한 경험이 풍부하다. 컴퓨팅과 가속 기술, 메모리 분야에서 쌓은 경험이 MX1 상용화와 글로벌 사업 확대에 큰 도움이 될 것”이라고 말했다.",
+      "title": "엑시나, 인텔·퀄컴 거친 스티브 핑거허트 CBO 영입"
     },
     "source_fact:04c882140a54ef65c836d325": {
       "first_seen_kst": "2026-10-07T15:44:50+09:00",
@@ -312591,6 +313273,30 @@
       "source_title": "한진, 3분기 매출 8898억 '역대 최대'…항만·해외법인 성장 견인",
       "telegram_core_fact": "한진(002320)이 항만하역과 해외법인 성장에 힘입어 역대 최대 분기 매출을 기록했다.",
       "title": "한진, 3분기 매출 8898억 '역대 최대'…항만·해외법인 성장 견인"
+    },
+    "source_fact:12b0f3316b1c3c7e8576bc63": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.mk.co.kr/news/business/12176047",
+      "source": "매일경제",
+      "source_body_digest": "0ee2850bdfc830724ddedf0193e991630f94e036fc53029429411a5d2de8f23f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:64ecbba095fd2a1339db2577682d99d81452be858c9c04d96d83e9622592496a",
+      "source_fact_keys": [
+        "source_fact:v1:2cbfb3019e9c7ab0420331e9980604103ed29ae300b6b13a407360a95ce60d2e",
+        "source_fact:v1:80112fd37e9751d860ff74c34e39bbe08e5a858c348692985a1229cbc2b314a7",
+        "source_fact:v1:9af53705b438c1c7843aaef2189cdb241b9905020bd9ae0b3d1e63650ed6d56a",
+        "source_fact:v1:a68c5b000f587494fce67812234518908f4249d23ff1ec5c715fba1e7a2e4ea9",
+        "source_fact:v1:d6e0d015442f72a306f755601563316c678244850d8f15a9e7f09d532e1416aa"
+      ],
+      "source_published_kst": "2026-10-14T18:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "엑시나, 인텔·퀄컴 거친 스티브 핑거허트 CBO 영입",
+      "telegram_core_fact": "김진영 엑시나 대표는 “스티브 CBO는 데이터센터 사업을 성장시키고 글로벌 기술 기업들과 협력해 신기술을 사업화한 경험이 풍부하다. 컴퓨팅과 가속 기술, 메모리 분야에서 쌓은 경험이 MX1 상용화와 글로벌 사업 확대에 큰 도움이 될 것”이라고 말했다.",
+      "title": "엑시나, 인텔·퀄컴 거친 스티브 핑거허트 CBO 영입"
     },
     "source_fact:12b70517195b31b38ee58bd3": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
@@ -330964,6 +331670,30 @@
       "source_published_kst": "2026-10-06T13:31+09:00",
       "title": "한미반도체, 삼성전기에 244억원 규모 'MSVP' 반도체 장비 공급"
     },
+    "source_fact:214c8910c30f8f8bba4dc047": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.mk.co.kr/news/business/12176047",
+      "source": "매일경제",
+      "source_body_digest": "0ee2850bdfc830724ddedf0193e991630f94e036fc53029429411a5d2de8f23f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:64ecbba095fd2a1339db2577682d99d81452be858c9c04d96d83e9622592496a",
+      "source_fact_keys": [
+        "source_fact:v1:2cbfb3019e9c7ab0420331e9980604103ed29ae300b6b13a407360a95ce60d2e",
+        "source_fact:v1:80112fd37e9751d860ff74c34e39bbe08e5a858c348692985a1229cbc2b314a7",
+        "source_fact:v1:9af53705b438c1c7843aaef2189cdb241b9905020bd9ae0b3d1e63650ed6d56a",
+        "source_fact:v1:a68c5b000f587494fce67812234518908f4249d23ff1ec5c715fba1e7a2e4ea9",
+        "source_fact:v1:d6e0d015442f72a306f755601563316c678244850d8f15a9e7f09d532e1416aa"
+      ],
+      "source_published_kst": "2026-10-14T18:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "엑시나, 인텔·퀄컴 거친 스티브 핑거허트 CBO 영입",
+      "telegram_core_fact": "김진영 엑시나 대표는 “스티브 CBO는 데이터센터 사업을 성장시키고 글로벌 기술 기업들과 협력해 신기술을 사업화한 경험이 풍부하다. 컴퓨팅과 가속 기술, 메모리 분야에서 쌓은 경험이 MX1 상용화와 글로벌 사업 확대에 큰 도움이 될 것”이라고 말했다.",
+      "title": "엑시나, 인텔·퀄컴 거친 스티브 핑거허트 CBO 영입"
+    },
     "source_fact:21511fe320e9e7f0b3b48497": {
       "first_seen_kst": "2026-10-09T22:37:15+09:00",
       "lanes": {
@@ -337189,6 +337919,35 @@
       "source_title": "中 CXMT “차세대 서버용 D램 연내 출시”…K반도체 앞서나",
       "telegram_core_fact": "중국 최대 메모리 반도체 기업인 창신메모리(CXMT)가 차세대 D램 기술 개발에 속도를 내는 가운데, 삼성전자와 SK하이닉스 등이 개발 중인 첨단 반도체를 먼저 양산하겠다고 밝혔다.",
       "title": "中 CXMT “차세대 서버용 D램 연내 출시”…K반도체 앞서나"
+    },
+    "source_fact:25cdfbc7ef104671737184c4": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635808",
+      "source": "이투데이",
+      "source_body_digest": "05f7bc778f1df8a5955fee0192637ede1fc82dcbbae37f73b5ea0b13c048ffb5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01cbd8f1b97a3d6348eb494341e04c68c0cbda13304934a0ee9ecfd9258982f1",
+      "source_fact_keys": [
+        "source_fact:v1:0c36405c3ef5ba49bb39d47dd1816063e3726a3457f7715457359e1d64ad26ca",
+        "source_fact:v1:1f6c78d7a8c1bdbeaa127ea907a999a7ff187d0f138e939fea70ed82d19626f7",
+        "source_fact:v1:5f01c6a84b9caa5cc8d7032449eb45167b7f3cfb5ccf674b60333691ae278293",
+        "source_fact:v1:67a65823b28595d47c8cc822135888a9eb8b4d8edad9ef4b154055b92dd43664",
+        "source_fact:v1:8350751922dbaad5aa1fc74442d2f6049417658dbca817c77043f2d1e5d11c6a",
+        "source_fact:v1:8bc44df3dc6c0f5b9b7516e61a38f4090f758025bbe8c797ce8ce063e05fd297",
+        "source_fact:v1:8ffb31cf088481492302ee6adde3010e90d891f0e4b27af1491989d6eb0225be",
+        "source_fact:v1:916d2178f1f0cf7f2a1f9a45ac2a68c1cfec0b2d5be35d4dfc5ca136574431c6",
+        "source_fact:v1:a2f974ed1f967c657c2021fae4992eff4ee5f2c79b978b31e74715c5695d5486",
+        "source_fact:v1:d423c1359fbc3fad8388058b65faa38c844da1b0118fd122ba9408e52ea0adb0"
+      ],
+      "source_published_kst": "2026-10-14T18:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "34% 급락장서 웃은 외인…개미 '떨어지는 칼날' 받았다",
+      "telegram_core_fact": "코스피가 약 4개월 만에 34% 넘게 폭락한 하락장에서 외국인은 과감한 현금화로 손실을 피한 반면, 개인은 떨어지는 칼날을 받아내며 최악의 매매 성적표를 받게된 것으로 집계됐다.",
+      "title": "34% 급락장서 웃은 외인…개미 '떨어지는 칼날' 받았다"
     },
     "source_fact:25d16dd1dee3ba3c086c735c": {
       "first_seen_kst": "2026-10-08T08:31:37+09:00",
@@ -351985,6 +352744,30 @@
       "source_title": "LG화학 여수 NCC…7개월 만에 재가동",
       "telegram_core_fact": "LG화학이 원료 수급 차질로 멈췄던 전남광주 여수 국가산업단지 나프타분해시설(NCC) 2공장을 지난 12일 재가동한 것으로 나타났다. LG화학 측은 이번 재가동이 석유화학 과잉공급으로 나프타 분해 시설을 줄이려는 정부의 구조조정 방향과 다른 것은 아니라고 설명했다.",
       "title": "LG화학 여수 NCC…7개월 만에 재가동"
+    },
+    "source_fact:318b86693a84d60e57c89ad5": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.mk.co.kr/news/business/12176047",
+      "source": "매일경제",
+      "source_body_digest": "0ee2850bdfc830724ddedf0193e991630f94e036fc53029429411a5d2de8f23f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:64ecbba095fd2a1339db2577682d99d81452be858c9c04d96d83e9622592496a",
+      "source_fact_keys": [
+        "source_fact:v1:2cbfb3019e9c7ab0420331e9980604103ed29ae300b6b13a407360a95ce60d2e",
+        "source_fact:v1:80112fd37e9751d860ff74c34e39bbe08e5a858c348692985a1229cbc2b314a7",
+        "source_fact:v1:9af53705b438c1c7843aaef2189cdb241b9905020bd9ae0b3d1e63650ed6d56a",
+        "source_fact:v1:a68c5b000f587494fce67812234518908f4249d23ff1ec5c715fba1e7a2e4ea9",
+        "source_fact:v1:d6e0d015442f72a306f755601563316c678244850d8f15a9e7f09d532e1416aa"
+      ],
+      "source_published_kst": "2026-10-14T18:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "엑시나, 인텔·퀄컴 거친 스티브 핑거허트 CBO 영입",
+      "telegram_core_fact": "김진영 엑시나 대표는 “스티브 CBO는 데이터센터 사업을 성장시키고 글로벌 기술 기업들과 협력해 신기술을 사업화한 경험이 풍부하다. 컴퓨팅과 가속 기술, 메모리 분야에서 쌓은 경험이 MX1 상용화와 글로벌 사업 확대에 큰 도움이 될 것”이라고 말했다.",
+      "title": "엑시나, 인텔·퀄컴 거친 스티브 핑거허트 CBO 영입"
     },
     "source_fact:318c34ff4d7052e97ee3bbb2": {
       "first_seen_kst": "2026-10-11T11:01:00+09:00",
@@ -370188,6 +370971,35 @@
       "telegram_core_fact": "삼성전자(005930)가 올해 3분기 107조 4000억 원의 영업이익을 기록, 우리나라 기업 사상 처음으로 분기 영업익 100조 시대를 열었다.",
       "title": "삼성전자 3Q 영업익 107.4조…세계 테크기업 최초 100조 돌파(종합)"
     },
+    "source_fact:40c2092b36a15da4de6c24d4": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635808",
+      "source": "이투데이",
+      "source_body_digest": "05f7bc778f1df8a5955fee0192637ede1fc82dcbbae37f73b5ea0b13c048ffb5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01cbd8f1b97a3d6348eb494341e04c68c0cbda13304934a0ee9ecfd9258982f1",
+      "source_fact_keys": [
+        "source_fact:v1:0c36405c3ef5ba49bb39d47dd1816063e3726a3457f7715457359e1d64ad26ca",
+        "source_fact:v1:1f6c78d7a8c1bdbeaa127ea907a999a7ff187d0f138e939fea70ed82d19626f7",
+        "source_fact:v1:5f01c6a84b9caa5cc8d7032449eb45167b7f3cfb5ccf674b60333691ae278293",
+        "source_fact:v1:67a65823b28595d47c8cc822135888a9eb8b4d8edad9ef4b154055b92dd43664",
+        "source_fact:v1:8350751922dbaad5aa1fc74442d2f6049417658dbca817c77043f2d1e5d11c6a",
+        "source_fact:v1:8bc44df3dc6c0f5b9b7516e61a38f4090f758025bbe8c797ce8ce063e05fd297",
+        "source_fact:v1:8ffb31cf088481492302ee6adde3010e90d891f0e4b27af1491989d6eb0225be",
+        "source_fact:v1:916d2178f1f0cf7f2a1f9a45ac2a68c1cfec0b2d5be35d4dfc5ca136574431c6",
+        "source_fact:v1:a2f974ed1f967c657c2021fae4992eff4ee5f2c79b978b31e74715c5695d5486",
+        "source_fact:v1:d423c1359fbc3fad8388058b65faa38c844da1b0118fd122ba9408e52ea0adb0"
+      ],
+      "source_published_kst": "2026-10-14T18:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "34% 급락장서 웃은 외인…개미 '떨어지는 칼날' 받았다",
+      "telegram_core_fact": "코스피가 약 4개월 만에 34% 넘게 폭락한 하락장에서 외국인은 과감한 현금화로 손실을 피한 반면, 개인은 떨어지는 칼날을 받아내며 최악의 매매 성적표를 받게된 것으로 집계됐다.",
+      "title": "34% 급락장서 웃은 외인…개미 '떨어지는 칼날' 받았다"
+    },
     "source_fact:40cffd92027b15de818a8308": {
       "first_seen_kst": "2026-10-10T07:23:23+09:00",
       "lanes": {
@@ -372548,6 +373360,35 @@
       "source_title": "“9월 경상수지, 8월보다 좋을 것…연간 4500억달러 달성 가능”[일문일답]",
       "telegram_core_fact": "9월 무역수지가 예상을 뛰어넘는 큰 폭의 흑자를 기록한 데다, 연말로 갈수록 수출이 집중되는 효과까지 더해지면서 올해 연간 경상수지 흑자 전망치인 4500억달러도 달성 가능할 것이란 전망이다. 한은은 지난 8월 올해 연간 경상수지 흑자 전망치를 기존 2500억달러에서 4500억달러로 대폭 상향한 바 있다.",
       "title": "“9월 경상수지, 8월보다 좋을 것…연간 4500억달러 달성 가능”[일문일답]"
+    },
+    "source_fact:42a3faef193dc01dacd7ae9b": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635808",
+      "source": "이투데이",
+      "source_body_digest": "05f7bc778f1df8a5955fee0192637ede1fc82dcbbae37f73b5ea0b13c048ffb5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01cbd8f1b97a3d6348eb494341e04c68c0cbda13304934a0ee9ecfd9258982f1",
+      "source_fact_keys": [
+        "source_fact:v1:0c36405c3ef5ba49bb39d47dd1816063e3726a3457f7715457359e1d64ad26ca",
+        "source_fact:v1:1f6c78d7a8c1bdbeaa127ea907a999a7ff187d0f138e939fea70ed82d19626f7",
+        "source_fact:v1:5f01c6a84b9caa5cc8d7032449eb45167b7f3cfb5ccf674b60333691ae278293",
+        "source_fact:v1:67a65823b28595d47c8cc822135888a9eb8b4d8edad9ef4b154055b92dd43664",
+        "source_fact:v1:8350751922dbaad5aa1fc74442d2f6049417658dbca817c77043f2d1e5d11c6a",
+        "source_fact:v1:8bc44df3dc6c0f5b9b7516e61a38f4090f758025bbe8c797ce8ce063e05fd297",
+        "source_fact:v1:8ffb31cf088481492302ee6adde3010e90d891f0e4b27af1491989d6eb0225be",
+        "source_fact:v1:916d2178f1f0cf7f2a1f9a45ac2a68c1cfec0b2d5be35d4dfc5ca136574431c6",
+        "source_fact:v1:a2f974ed1f967c657c2021fae4992eff4ee5f2c79b978b31e74715c5695d5486",
+        "source_fact:v1:d423c1359fbc3fad8388058b65faa38c844da1b0118fd122ba9408e52ea0adb0"
+      ],
+      "source_published_kst": "2026-10-14T18:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "34% 급락장서 웃은 외인…개미 '떨어지는 칼날' 받았다",
+      "telegram_core_fact": "코스피가 약 4개월 만에 34% 넘게 폭락한 하락장에서 외국인은 과감한 현금화로 손실을 피한 반면, 개인은 떨어지는 칼날을 받아내며 최악의 매매 성적표를 받게된 것으로 집계됐다.",
+      "title": "34% 급락장서 웃은 외인…개미 '떨어지는 칼날' 받았다"
     },
     "source_fact:42a72e8a4243eb6755fd07f0": {
       "first_seen_kst": "2026-10-11T22:09:39+09:00",
@@ -380452,6 +381293,35 @@
       "telegram_core_fact": "한국거래소는 DS자산운용, 한국투자신탁운용, 키움투자자산운용, 삼성자산운용의 상장지수펀드(ETF) 4종목을 오는 13일 유가증권시장에 상장한다고 8일 밝혔다.",
       "title": "'반도체 밸류체인 투자' 등 ETF 4종 13일 신규 상장 | 연합뉴스"
     },
+    "source_fact:4886c2f1e472c6a9b2ac745e": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635808",
+      "source": "이투데이",
+      "source_body_digest": "05f7bc778f1df8a5955fee0192637ede1fc82dcbbae37f73b5ea0b13c048ffb5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01cbd8f1b97a3d6348eb494341e04c68c0cbda13304934a0ee9ecfd9258982f1",
+      "source_fact_keys": [
+        "source_fact:v1:0c36405c3ef5ba49bb39d47dd1816063e3726a3457f7715457359e1d64ad26ca",
+        "source_fact:v1:1f6c78d7a8c1bdbeaa127ea907a999a7ff187d0f138e939fea70ed82d19626f7",
+        "source_fact:v1:5f01c6a84b9caa5cc8d7032449eb45167b7f3cfb5ccf674b60333691ae278293",
+        "source_fact:v1:67a65823b28595d47c8cc822135888a9eb8b4d8edad9ef4b154055b92dd43664",
+        "source_fact:v1:8350751922dbaad5aa1fc74442d2f6049417658dbca817c77043f2d1e5d11c6a",
+        "source_fact:v1:8bc44df3dc6c0f5b9b7516e61a38f4090f758025bbe8c797ce8ce063e05fd297",
+        "source_fact:v1:8ffb31cf088481492302ee6adde3010e90d891f0e4b27af1491989d6eb0225be",
+        "source_fact:v1:916d2178f1f0cf7f2a1f9a45ac2a68c1cfec0b2d5be35d4dfc5ca136574431c6",
+        "source_fact:v1:a2f974ed1f967c657c2021fae4992eff4ee5f2c79b978b31e74715c5695d5486",
+        "source_fact:v1:d423c1359fbc3fad8388058b65faa38c844da1b0118fd122ba9408e52ea0adb0"
+      ],
+      "source_published_kst": "2026-10-14T18:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "34% 급락장서 웃은 외인…개미 '떨어지는 칼날' 받았다",
+      "telegram_core_fact": "코스피가 약 4개월 만에 34% 넘게 폭락한 하락장에서 외국인은 과감한 현금화로 손실을 피한 반면, 개인은 떨어지는 칼날을 받아내며 최악의 매매 성적표를 받게된 것으로 집계됐다.",
+      "title": "34% 급락장서 웃은 외인…개미 '떨어지는 칼날' 받았다"
+    },
     "source_fact:48885f07b7927a3558dc10ad": {
       "first_seen_kst": "2026-10-13T14:32:55+09:00",
       "lanes": {
@@ -380516,6 +381386,29 @@
       "source_title": "경기도 '바른입찰' 10곳 뽑는다…3곳 중 1곳 처분하던 단속에 '당근'",
       "telegram_core_fact": "경기도는 공공입찰 실태조사에서 적합 판정을 받은 도내 건설업체 가운데 '바른입찰 모범건설업체' 10곳을 12월 말 선정해 실태조사 유예기간 연장 등 인센티브를 준다.",
       "title": "경기도 '바른입찰' 10곳 뽑는다…3곳 중 1곳 처분하던 단속에 '당근'"
+    },
+    "source_fact:488f62ca2fa40e6c76b5e162": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12176198",
+      "source": "매일경제",
+      "source_body_digest": "cadbeb23223df59fecdb97dc0c3cc1c197633e6305db0de1a798268bff528f42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30cc15c11d6e03a291a8019a6cde693bcd67660444c532212cb8947a13d282b4",
+      "source_fact_keys": [
+        "source_fact:v1:5e03b82f07de119bba8bb681b110c3ffe67138c10fd2d9bcdd8e43c3dfb39e65",
+        "source_fact:v1:6684118f9d3aee097ab3d99a1dadd0a7b0a29e00100a80fa5bf44f195b72db7b",
+        "source_fact:v1:85fd45ce06cdc94bfbdd1731d8ca06951d6b0aeb331c416642990539f8134b62",
+        "source_fact:v1:a87a974aa1cb3362cd06763089475b35ccd1207ede4196343698d86c32a4f912"
+      ],
+      "source_published_kst": "2026-10-14T21:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "에볼루션 메탈스 앤 테크, 2027 매출 가이던스 4억~4억6000만달러 재확인",
+      "telegram_core_fact": "2027년 예상 매출은 전년 대비 1102.5% 증가한 수준이나 회사 가이던스 하단인 4억 달러에는 크게 못 미친다.",
+      "title": "에볼루션 메탈스 앤 테크, 2027 매출 가이던스 4억~4억6000만달러 재확인"
     },
     "source_fact:48955aadb52a0e45287124a4": {
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
@@ -398783,6 +399676,31 @@
       "telegram_core_fact": "삼성전자는 DS부문이 수십년간 현장에서 축적해 온 방대한 제조 데이터와 미스트랄AI의 고효율 모델 기술을 결합함으로써 민감한 공정 데이터를 외부로 유출하지 않고도 사내 보안망 안에서 완벽하게 현장 데이터 분석, 수율 향상을 위한 결함 예측, 공정 최적화 등을 수행할 수 있게 됐다.",
       "title": "삼성전자, 반도체 제조 모든 과정 'AX 생태계' 추진"
     },
+    "source_fact:572a10e6357e8ee1efdf937c": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.fnnews.com/news/202610142254565439",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "b947c42601fca6ab8d7759833e31cdaf828948f25d419754322f042f3a63db08",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5bfeb0bfe49dc0f1e60330ed5bdcc577682295454dac1f2ff7d77b23d75a1f47",
+      "source_fact_keys": [
+        "source_fact:v1:260a27f75b7b8d4c6679adca0db5f1a824f3e2882e58e00808c7067a0b9ee5e9",
+        "source_fact:v1:3e5ab98cc8b57d0289c71eaff3c298ca06af9765ea448c7bf75de2086b7871bd",
+        "source_fact:v1:a0983bc4799dc201ebc19f91174638c8e51a7b0ea00f5d6f5120cedc20bab356",
+        "source_fact:v1:a9990ab1417037e6f014feab901784ede96bb19aec03e15436d58a9c9a1cee04",
+        "source_fact:v1:c6dae9f485fa096e862af4a7c5186372f7f2ac70ed063b717f7beb75a41e89a8",
+        "source_fact:v1:eacdd14625b9419a96baa8534caf5c30a9c06a902ec1483111f08542fd32fefd"
+      ],
+      "source_published_kst": "2026-10-14T22:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴욕개장] 예상 상회 CPI에 하락 출발…나스닥 0.63%↓",
+      "telegram_core_fact": "스탠더드앤드푸어스(S&P)500지수는 31.30포인트(0.40%) 내린 7774.18에, 기술주 중심의 나스닥종합지수는 172.70포인트(0.63%) 하락한 2만 7031.64에 각각 개장했다. 미국 노동부에 따르면 9월 CPI는 전년 동월 대비 3.7% 상승해 시장 예상치(3.6%)를 소폭 웃돌았다.",
+      "title": "[뉴욕개장] 예상 상회 CPI에 하락 출발…나스닥 0.63%↓"
+    },
     "source_fact:572b2967ec96f975ff0a3938": {
       "first_seen_kst": "2026-10-14T07:18:46+09:00",
       "lanes": {
@@ -398826,6 +399744,31 @@
       ],
       "source_published_kst": "2026-10-06T17:47+09:00",
       "title": "美 워너 인수 투자자로…신세계, 1.4兆 꽂는다"
+    },
+    "source_fact:5742124baa63503fdd82de64": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.fnnews.com/news/202610142254565439",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "b947c42601fca6ab8d7759833e31cdaf828948f25d419754322f042f3a63db08",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5bfeb0bfe49dc0f1e60330ed5bdcc577682295454dac1f2ff7d77b23d75a1f47",
+      "source_fact_keys": [
+        "source_fact:v1:260a27f75b7b8d4c6679adca0db5f1a824f3e2882e58e00808c7067a0b9ee5e9",
+        "source_fact:v1:3e5ab98cc8b57d0289c71eaff3c298ca06af9765ea448c7bf75de2086b7871bd",
+        "source_fact:v1:a0983bc4799dc201ebc19f91174638c8e51a7b0ea00f5d6f5120cedc20bab356",
+        "source_fact:v1:a9990ab1417037e6f014feab901784ede96bb19aec03e15436d58a9c9a1cee04",
+        "source_fact:v1:c6dae9f485fa096e862af4a7c5186372f7f2ac70ed063b717f7beb75a41e89a8",
+        "source_fact:v1:eacdd14625b9419a96baa8534caf5c30a9c06a902ec1483111f08542fd32fefd"
+      ],
+      "source_published_kst": "2026-10-14T22:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴욕개장] 예상 상회 CPI에 하락 출발…나스닥 0.63%↓",
+      "telegram_core_fact": "스탠더드앤드푸어스(S&P)500지수는 31.30포인트(0.40%) 내린 7774.18에, 기술주 중심의 나스닥종합지수는 172.70포인트(0.63%) 하락한 2만 7031.64에 각각 개장했다. 미국 노동부에 따르면 9월 CPI는 전년 동월 대비 3.7% 상승해 시장 예상치(3.6%)를 소폭 웃돌았다.",
+      "title": "[뉴욕개장] 예상 상회 CPI에 하락 출발…나스닥 0.63%↓"
     },
     "source_fact:574e9f91374ba3521c170010": {
       "first_seen_kst": "2026-10-10T02:10:54+09:00",
@@ -399073,6 +400016,35 @@
       "source_title": "[단독]\"50년 CCL 기술로 미래 소재 개발\"…두산, 반도체 영토 키운다",
       "telegram_core_fact": "특히 두산은 단순한 소재 공급업체에서 벗어나 고객사의 차세대 제품 개발 단계부터 참여하는 기술 파트너로 역할을 확대할 방침이다.",
       "title": "[단독]\"50년 CCL 기술로 미래 소재 개발\"…두산, 반도체 영토 키운다"
+    },
+    "source_fact:57a54af8d4d38ebde679bc00": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635808",
+      "source": "이투데이",
+      "source_body_digest": "05f7bc778f1df8a5955fee0192637ede1fc82dcbbae37f73b5ea0b13c048ffb5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01cbd8f1b97a3d6348eb494341e04c68c0cbda13304934a0ee9ecfd9258982f1",
+      "source_fact_keys": [
+        "source_fact:v1:0c36405c3ef5ba49bb39d47dd1816063e3726a3457f7715457359e1d64ad26ca",
+        "source_fact:v1:1f6c78d7a8c1bdbeaa127ea907a999a7ff187d0f138e939fea70ed82d19626f7",
+        "source_fact:v1:5f01c6a84b9caa5cc8d7032449eb45167b7f3cfb5ccf674b60333691ae278293",
+        "source_fact:v1:67a65823b28595d47c8cc822135888a9eb8b4d8edad9ef4b154055b92dd43664",
+        "source_fact:v1:8350751922dbaad5aa1fc74442d2f6049417658dbca817c77043f2d1e5d11c6a",
+        "source_fact:v1:8bc44df3dc6c0f5b9b7516e61a38f4090f758025bbe8c797ce8ce063e05fd297",
+        "source_fact:v1:8ffb31cf088481492302ee6adde3010e90d891f0e4b27af1491989d6eb0225be",
+        "source_fact:v1:916d2178f1f0cf7f2a1f9a45ac2a68c1cfec0b2d5be35d4dfc5ca136574431c6",
+        "source_fact:v1:a2f974ed1f967c657c2021fae4992eff4ee5f2c79b978b31e74715c5695d5486",
+        "source_fact:v1:d423c1359fbc3fad8388058b65faa38c844da1b0118fd122ba9408e52ea0adb0"
+      ],
+      "source_published_kst": "2026-10-14T18:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "34% 급락장서 웃은 외인…개미 '떨어지는 칼날' 받았다",
+      "telegram_core_fact": "코스피가 약 4개월 만에 34% 넘게 폭락한 하락장에서 외국인은 과감한 현금화로 손실을 피한 반면, 개인은 떨어지는 칼날을 받아내며 최악의 매매 성적표를 받게된 것으로 집계됐다.",
+      "title": "34% 급락장서 웃은 외인…개미 '떨어지는 칼날' 받았다"
     },
     "source_fact:57ad2aaf9a9076dd728a16b9": {
       "first_seen_kst": "2026-10-08T06:57:59+09:00",
@@ -408015,6 +408987,29 @@
       "telegram_core_fact": "HLB가 미국 식품의약국(FDA)의 거듭된 보완 요구를 딛고 간암 1차 치료제 신약 승인을 위한 네 번째 도전에 나섰다.",
       "title": "HLB 간암 신약, FDA 4번째 문 두드린다…제조시설 보완 후 재신청"
     },
+    "source_fact:5df378002b1d736323e6bd95": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12176198",
+      "source": "매일경제",
+      "source_body_digest": "cadbeb23223df59fecdb97dc0c3cc1c197633e6305db0de1a798268bff528f42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30cc15c11d6e03a291a8019a6cde693bcd67660444c532212cb8947a13d282b4",
+      "source_fact_keys": [
+        "source_fact:v1:5e03b82f07de119bba8bb681b110c3ffe67138c10fd2d9bcdd8e43c3dfb39e65",
+        "source_fact:v1:6684118f9d3aee097ab3d99a1dadd0a7b0a29e00100a80fa5bf44f195b72db7b",
+        "source_fact:v1:85fd45ce06cdc94bfbdd1731d8ca06951d6b0aeb331c416642990539f8134b62",
+        "source_fact:v1:a87a974aa1cb3362cd06763089475b35ccd1207ede4196343698d86c32a4f912"
+      ],
+      "source_published_kst": "2026-10-14T21:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "에볼루션 메탈스 앤 테크, 2027 매출 가이던스 4억~4억6000만달러 재확인",
+      "telegram_core_fact": "2027년 예상 매출은 전년 대비 1102.5% 증가한 수준이나 회사 가이던스 하단인 4억 달러에는 크게 못 미친다.",
+      "title": "에볼루션 메탈스 앤 테크, 2027 매출 가이던스 4억~4억6000만달러 재확인"
+    },
     "source_fact:5dfc527cef5237deaf1f5495": {
       "first_seen_kst": "2026-10-07T08:36:47+09:00",
       "lanes": {
@@ -408090,6 +409085,29 @@
       "source_title": "중기부, 전국서 '모두의 창업' 오디션…3라운드 진출 200명 선발 | 연합뉴스",
       "telegram_core_fact": "오디션 현장을 진출자뿐만 아니라 지역 창업 생태계 구성원이 함께 참여할 수 있는 개방형 교류 공간으로 운영한다.",
       "title": "중기부, 전국서 '모두의 창업' 오디션…3라운드 진출 200명 선발 | 연합뉴스"
+    },
+    "source_fact:5e021448d92039e21c602e82": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.joongang.co.kr/article/25469723",
+      "source": "중앙일보",
+      "source_body_digest": "0e77376ed668712e508fead2ac1ad6e321738116b881dbf943480b0ce4e6555b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:320add3e1672411384afa5f29c84c6b68a01cc3d6c556eae37ffa066d2bc9d34",
+      "source_fact_keys": [
+        "source_fact:v1:2b2ab54a342e116e9a54890fa1b8ead1cc6959eeff10ff5948bb2f529d45c250",
+        "source_fact:v1:2f2b9b6e70f7bb2ace5b85ebbdd1a007642a4c803d3749b45f8ffd677a5cc37c",
+        "source_fact:v1:32c8514ba79359e5808d924b815fb64be77afa1d5be3aab5be1af4decce177d1",
+        "source_fact:v1:8682a70e31acfc472983e2c9b54cd19f433470261f42726b45931aadcb4af2c7"
+      ],
+      "source_published_kst": "2026-10-14T17:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "정부, 후티 반군의 사우디 민간시설 공격 규탄…“즉각 중단 촉구” | 중앙일보",
+      "telegram_core_fact": "“이번 공격으로 인한 희생자와 유가족에게 진심 어린 애도를 표하며, 부상자들의 조속한 회복을 기원한다”며 “사우디아라비아 정부와 국민들에게도 깊은 연대를 표명한다”고 했다.",
+      "title": "정부, 후티 반군의 사우디 민간시설 공격 규탄…“즉각 중단 촉구” | 중앙일보"
     },
     "source_fact:5e0468c0db976c1f7195b365": {
       "first_seen_kst": "2026-10-08T08:56:19+09:00",
@@ -413075,6 +414093,31 @@
       ],
       "source_published_kst": "2026-10-05T19:24+09:00",
       "title": "ZTO 익스프레스, 자사주 14만주 매입..268만 달러 규모"
+    },
+    "source_fact:62c73b7345958b5ba438daf0": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.fnnews.com/news/202610142254565439",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "b947c42601fca6ab8d7759833e31cdaf828948f25d419754322f042f3a63db08",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5bfeb0bfe49dc0f1e60330ed5bdcc577682295454dac1f2ff7d77b23d75a1f47",
+      "source_fact_keys": [
+        "source_fact:v1:260a27f75b7b8d4c6679adca0db5f1a824f3e2882e58e00808c7067a0b9ee5e9",
+        "source_fact:v1:3e5ab98cc8b57d0289c71eaff3c298ca06af9765ea448c7bf75de2086b7871bd",
+        "source_fact:v1:a0983bc4799dc201ebc19f91174638c8e51a7b0ea00f5d6f5120cedc20bab356",
+        "source_fact:v1:a9990ab1417037e6f014feab901784ede96bb19aec03e15436d58a9c9a1cee04",
+        "source_fact:v1:c6dae9f485fa096e862af4a7c5186372f7f2ac70ed063b717f7beb75a41e89a8",
+        "source_fact:v1:eacdd14625b9419a96baa8534caf5c30a9c06a902ec1483111f08542fd32fefd"
+      ],
+      "source_published_kst": "2026-10-14T22:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴욕개장] 예상 상회 CPI에 하락 출발…나스닥 0.63%↓",
+      "telegram_core_fact": "스탠더드앤드푸어스(S&P)500지수는 31.30포인트(0.40%) 내린 7774.18에, 기술주 중심의 나스닥종합지수는 172.70포인트(0.63%) 하락한 2만 7031.64에 각각 개장했다. 미국 노동부에 따르면 9월 CPI는 전년 동월 대비 3.7% 상승해 시장 예상치(3.6%)를 소폭 웃돌았다.",
+      "title": "[뉴욕개장] 예상 상회 CPI에 하락 출발…나스닥 0.63%↓"
     },
     "source_fact:62d256428e1511555af96f6a": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
@@ -433781,6 +434824,35 @@
       "telegram_core_fact": "레이언스의 서영권 대표는 \"2026년 AXI 사업은 매출 성장뿐 아니라 수익성 측면에서도 의미 있는 성과를 달성했다\"며 \"AI 반도체와 첨단 전자산업 확대에 따른 검사 수요 증가를 기반으로 글로벌 시장 공략을 더욱 강화할 계획\"이라고 말했다.",
       "title": "레이언스, AI 반도체 검사 수요 확대에 AXI 사업 성장 가속"
     },
+    "source_fact:73d7d3a4193e3eed1c2a0f27": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635808",
+      "source": "이투데이",
+      "source_body_digest": "05f7bc778f1df8a5955fee0192637ede1fc82dcbbae37f73b5ea0b13c048ffb5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01cbd8f1b97a3d6348eb494341e04c68c0cbda13304934a0ee9ecfd9258982f1",
+      "source_fact_keys": [
+        "source_fact:v1:0c36405c3ef5ba49bb39d47dd1816063e3726a3457f7715457359e1d64ad26ca",
+        "source_fact:v1:1f6c78d7a8c1bdbeaa127ea907a999a7ff187d0f138e939fea70ed82d19626f7",
+        "source_fact:v1:5f01c6a84b9caa5cc8d7032449eb45167b7f3cfb5ccf674b60333691ae278293",
+        "source_fact:v1:67a65823b28595d47c8cc822135888a9eb8b4d8edad9ef4b154055b92dd43664",
+        "source_fact:v1:8350751922dbaad5aa1fc74442d2f6049417658dbca817c77043f2d1e5d11c6a",
+        "source_fact:v1:8bc44df3dc6c0f5b9b7516e61a38f4090f758025bbe8c797ce8ce063e05fd297",
+        "source_fact:v1:8ffb31cf088481492302ee6adde3010e90d891f0e4b27af1491989d6eb0225be",
+        "source_fact:v1:916d2178f1f0cf7f2a1f9a45ac2a68c1cfec0b2d5be35d4dfc5ca136574431c6",
+        "source_fact:v1:a2f974ed1f967c657c2021fae4992eff4ee5f2c79b978b31e74715c5695d5486",
+        "source_fact:v1:d423c1359fbc3fad8388058b65faa38c844da1b0118fd122ba9408e52ea0adb0"
+      ],
+      "source_published_kst": "2026-10-14T18:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "34% 급락장서 웃은 외인…개미 '떨어지는 칼날' 받았다",
+      "telegram_core_fact": "코스피가 약 4개월 만에 34% 넘게 폭락한 하락장에서 외국인은 과감한 현금화로 손실을 피한 반면, 개인은 떨어지는 칼날을 받아내며 최악의 매매 성적표를 받게된 것으로 집계됐다.",
+      "title": "34% 급락장서 웃은 외인…개미 '떨어지는 칼날' 받았다"
+    },
     "source_fact:73e10da07010a08d5e1c5393": {
       "first_seen_kst": "2026-10-14T07:18:46+09:00",
       "lanes": {
@@ -439403,6 +440475,29 @@
       "telegram_core_fact": "현대차그룹은 엔비디아와 자율주행 및 피지컬 AI 인프라 강화에 협력하고, 웨이모와는 자율주행 생태계 조성에 나서고 있다.",
       "title": "[정의선 회장 6년] 車 넘어 '피지컬 AI' 승부수…로봇·자율주행 확장"
     },
+    "source_fact:787a3d36ca11934f2cc3b664": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.joongang.co.kr/article/25469723",
+      "source": "중앙일보",
+      "source_body_digest": "0e77376ed668712e508fead2ac1ad6e321738116b881dbf943480b0ce4e6555b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:320add3e1672411384afa5f29c84c6b68a01cc3d6c556eae37ffa066d2bc9d34",
+      "source_fact_keys": [
+        "source_fact:v1:2b2ab54a342e116e9a54890fa1b8ead1cc6959eeff10ff5948bb2f529d45c250",
+        "source_fact:v1:2f2b9b6e70f7bb2ace5b85ebbdd1a007642a4c803d3749b45f8ffd677a5cc37c",
+        "source_fact:v1:32c8514ba79359e5808d924b815fb64be77afa1d5be3aab5be1af4decce177d1",
+        "source_fact:v1:8682a70e31acfc472983e2c9b54cd19f433470261f42726b45931aadcb4af2c7"
+      ],
+      "source_published_kst": "2026-10-14T17:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "정부, 후티 반군의 사우디 민간시설 공격 규탄…“즉각 중단 촉구” | 중앙일보",
+      "telegram_core_fact": "“이번 공격으로 인한 희생자와 유가족에게 진심 어린 애도를 표하며, 부상자들의 조속한 회복을 기원한다”며 “사우디아라비아 정부와 국민들에게도 깊은 연대를 표명한다”고 했다.",
+      "title": "정부, 후티 반군의 사우디 민간시설 공격 규탄…“즉각 중단 촉구” | 중앙일보"
+    },
     "source_fact:78816f8e131aad0e1da93928": {
       "first_seen_kst": "2026-10-07T23:36:14+09:00",
       "lanes": {
@@ -440370,6 +441465,29 @@
       "source_title": "‘시총 미달 63곳’ 상폐 한숨 돌렸지만...코스닥 관리종목 88% 자본잠식 ‘無’",
       "telegram_core_fact": "2026년 상반기 재무자료 확인이 가능한 관리종목 지정 59개사 중 88.1%에 달하는 52개사가 자본잠식이 없는 것으로 나타났다. 이 중 11개사는 매출 증가와 함께 영업이익 및 영업활동현금흐름 흑자를 모두 달성했다.",
       "title": "‘시총 미달 63곳’ 상폐 한숨 돌렸지만...코스닥 관리종목 88% 자본잠식 ‘無’"
+    },
+    "source_fact:790eadc7d4c2fa5744235852": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.joongang.co.kr/article/25469723",
+      "source": "중앙일보",
+      "source_body_digest": "0e77376ed668712e508fead2ac1ad6e321738116b881dbf943480b0ce4e6555b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:320add3e1672411384afa5f29c84c6b68a01cc3d6c556eae37ffa066d2bc9d34",
+      "source_fact_keys": [
+        "source_fact:v1:2b2ab54a342e116e9a54890fa1b8ead1cc6959eeff10ff5948bb2f529d45c250",
+        "source_fact:v1:2f2b9b6e70f7bb2ace5b85ebbdd1a007642a4c803d3749b45f8ffd677a5cc37c",
+        "source_fact:v1:32c8514ba79359e5808d924b815fb64be77afa1d5be3aab5be1af4decce177d1",
+        "source_fact:v1:8682a70e31acfc472983e2c9b54cd19f433470261f42726b45931aadcb4af2c7"
+      ],
+      "source_published_kst": "2026-10-14T17:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "정부, 후티 반군의 사우디 민간시설 공격 규탄…“즉각 중단 촉구” | 중앙일보",
+      "telegram_core_fact": "“이번 공격으로 인한 희생자와 유가족에게 진심 어린 애도를 표하며, 부상자들의 조속한 회복을 기원한다”며 “사우디아라비아 정부와 국민들에게도 깊은 연대를 표명한다”고 했다.",
+      "title": "정부, 후티 반군의 사우디 민간시설 공격 규탄…“즉각 중단 촉구” | 중앙일보"
     },
     "source_fact:7914c9ba8b3d139deae2c5ac": {
       "first_seen_kst": "2026-10-08T08:12:34+09:00",
@@ -472224,6 +473342,31 @@
       ],
       "source_published_kst": "2026-10-07T08:49+09:00",
       "title": "위스키 인터내셔널 홀딩, 자회사 1000만 달러 PIPE 유치..티커 변경"
+    },
+    "source_fact:93d66dcce91e568ca85f8da8": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.fnnews.com/news/202610142254565439",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "b947c42601fca6ab8d7759833e31cdaf828948f25d419754322f042f3a63db08",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5bfeb0bfe49dc0f1e60330ed5bdcc577682295454dac1f2ff7d77b23d75a1f47",
+      "source_fact_keys": [
+        "source_fact:v1:260a27f75b7b8d4c6679adca0db5f1a824f3e2882e58e00808c7067a0b9ee5e9",
+        "source_fact:v1:3e5ab98cc8b57d0289c71eaff3c298ca06af9765ea448c7bf75de2086b7871bd",
+        "source_fact:v1:a0983bc4799dc201ebc19f91174638c8e51a7b0ea00f5d6f5120cedc20bab356",
+        "source_fact:v1:a9990ab1417037e6f014feab901784ede96bb19aec03e15436d58a9c9a1cee04",
+        "source_fact:v1:c6dae9f485fa096e862af4a7c5186372f7f2ac70ed063b717f7beb75a41e89a8",
+        "source_fact:v1:eacdd14625b9419a96baa8534caf5c30a9c06a902ec1483111f08542fd32fefd"
+      ],
+      "source_published_kst": "2026-10-14T22:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴욕개장] 예상 상회 CPI에 하락 출발…나스닥 0.63%↓",
+      "telegram_core_fact": "스탠더드앤드푸어스(S&P)500지수는 31.30포인트(0.40%) 내린 7774.18에, 기술주 중심의 나스닥종합지수는 172.70포인트(0.63%) 하락한 2만 7031.64에 각각 개장했다. 미국 노동부에 따르면 9월 CPI는 전년 동월 대비 3.7% 상승해 시장 예상치(3.6%)를 소폭 웃돌았다.",
+      "title": "[뉴욕개장] 예상 상회 CPI에 하락 출발…나스닥 0.63%↓"
     },
     "source_fact:93d69737c1a845a75f753480": {
       "first_seen_kst": "2026-10-11T17:31:47+09:00",
@@ -505133,6 +506276,29 @@
       "telegram_core_fact": "한글날 연휴 이후 첫 거래일, 코스피가 3% 넘게 급락했습니다. 코스피는 외국인의 매도세와 반도체주 약세에 6,400선을 내줬고, 코스닥도 4% 넘게 급락했습니다.",
       "title": "코스피, 연휴 후 3% 급락…두달만 6,300선 후퇴 | 연합뉴스"
     },
+    "source_fact:ae3700c1c113f5bc26a77967": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.joongang.co.kr/article/25469723",
+      "source": "중앙일보",
+      "source_body_digest": "0e77376ed668712e508fead2ac1ad6e321738116b881dbf943480b0ce4e6555b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:320add3e1672411384afa5f29c84c6b68a01cc3d6c556eae37ffa066d2bc9d34",
+      "source_fact_keys": [
+        "source_fact:v1:2b2ab54a342e116e9a54890fa1b8ead1cc6959eeff10ff5948bb2f529d45c250",
+        "source_fact:v1:2f2b9b6e70f7bb2ace5b85ebbdd1a007642a4c803d3749b45f8ffd677a5cc37c",
+        "source_fact:v1:32c8514ba79359e5808d924b815fb64be77afa1d5be3aab5be1af4decce177d1",
+        "source_fact:v1:8682a70e31acfc472983e2c9b54cd19f433470261f42726b45931aadcb4af2c7"
+      ],
+      "source_published_kst": "2026-10-14T17:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "정부, 후티 반군의 사우디 민간시설 공격 규탄…“즉각 중단 촉구” | 중앙일보",
+      "telegram_core_fact": "“이번 공격으로 인한 희생자와 유가족에게 진심 어린 애도를 표하며, 부상자들의 조속한 회복을 기원한다”며 “사우디아라비아 정부와 국민들에게도 깊은 연대를 표명한다”고 했다.",
+      "title": "정부, 후티 반군의 사우디 민간시설 공격 규탄…“즉각 중단 촉구” | 중앙일보"
+    },
     "source_fact:ae3c2ad2667745b50bad43c3": {
       "first_seen_kst": "2026-10-14T23:50:23+09:00",
       "lanes": {
@@ -507872,6 +509038,35 @@
       "source_title": "“삼성전자 최대 실적 냈는데 왜?”…외국인은 팔고 개미는 미국行",
       "telegram_core_fact": "삼성전자가 3분기 영업이익이 107조원에 달하는 사상 최대 실적을 발표했지만, 외국인 지분율은 글로벌 금융위기 이후 최저 수준인 46%대로 떨어졌다.",
       "title": "“삼성전자 최대 실적 냈는데 왜?”…외국인은 팔고 개미는 미국行"
+    },
+    "source_fact:b087234fc20a5a3b48473523": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635808",
+      "source": "이투데이",
+      "source_body_digest": "05f7bc778f1df8a5955fee0192637ede1fc82dcbbae37f73b5ea0b13c048ffb5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01cbd8f1b97a3d6348eb494341e04c68c0cbda13304934a0ee9ecfd9258982f1",
+      "source_fact_keys": [
+        "source_fact:v1:0c36405c3ef5ba49bb39d47dd1816063e3726a3457f7715457359e1d64ad26ca",
+        "source_fact:v1:1f6c78d7a8c1bdbeaa127ea907a999a7ff187d0f138e939fea70ed82d19626f7",
+        "source_fact:v1:5f01c6a84b9caa5cc8d7032449eb45167b7f3cfb5ccf674b60333691ae278293",
+        "source_fact:v1:67a65823b28595d47c8cc822135888a9eb8b4d8edad9ef4b154055b92dd43664",
+        "source_fact:v1:8350751922dbaad5aa1fc74442d2f6049417658dbca817c77043f2d1e5d11c6a",
+        "source_fact:v1:8bc44df3dc6c0f5b9b7516e61a38f4090f758025bbe8c797ce8ce063e05fd297",
+        "source_fact:v1:8ffb31cf088481492302ee6adde3010e90d891f0e4b27af1491989d6eb0225be",
+        "source_fact:v1:916d2178f1f0cf7f2a1f9a45ac2a68c1cfec0b2d5be35d4dfc5ca136574431c6",
+        "source_fact:v1:a2f974ed1f967c657c2021fae4992eff4ee5f2c79b978b31e74715c5695d5486",
+        "source_fact:v1:d423c1359fbc3fad8388058b65faa38c844da1b0118fd122ba9408e52ea0adb0"
+      ],
+      "source_published_kst": "2026-10-14T18:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "34% 급락장서 웃은 외인…개미 '떨어지는 칼날' 받았다",
+      "telegram_core_fact": "코스피가 약 4개월 만에 34% 넘게 폭락한 하락장에서 외국인은 과감한 현금화로 손실을 피한 반면, 개인은 떨어지는 칼날을 받아내며 최악의 매매 성적표를 받게된 것으로 집계됐다.",
+      "title": "34% 급락장서 웃은 외인…개미 '떨어지는 칼날' 받았다"
     },
     "source_fact:b08e7a2fc9828f597a25822e": {
       "first_seen_kst": "2026-10-12T05:35:02+09:00",
@@ -515611,6 +516806,35 @@
       "source_title": "메모리 호황의 역설…저가폰 2.3억대 줄고 프리미엄폰 뜬다",
       "telegram_core_fact": "전년비 각각 126.6%, 782.5% 증가한 수치로, 메모리 가격 상승이 실적 개선의 핵심 동력으로 꼽혔다.",
       "title": "메모리 호황의 역설…저가폰 2.3억대 줄고 프리미엄폰 뜬다"
+    },
+    "source_fact:b732d5876479bad76e9f3696": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635808",
+      "source": "이투데이",
+      "source_body_digest": "05f7bc778f1df8a5955fee0192637ede1fc82dcbbae37f73b5ea0b13c048ffb5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01cbd8f1b97a3d6348eb494341e04c68c0cbda13304934a0ee9ecfd9258982f1",
+      "source_fact_keys": [
+        "source_fact:v1:0c36405c3ef5ba49bb39d47dd1816063e3726a3457f7715457359e1d64ad26ca",
+        "source_fact:v1:1f6c78d7a8c1bdbeaa127ea907a999a7ff187d0f138e939fea70ed82d19626f7",
+        "source_fact:v1:5f01c6a84b9caa5cc8d7032449eb45167b7f3cfb5ccf674b60333691ae278293",
+        "source_fact:v1:67a65823b28595d47c8cc822135888a9eb8b4d8edad9ef4b154055b92dd43664",
+        "source_fact:v1:8350751922dbaad5aa1fc74442d2f6049417658dbca817c77043f2d1e5d11c6a",
+        "source_fact:v1:8bc44df3dc6c0f5b9b7516e61a38f4090f758025bbe8c797ce8ce063e05fd297",
+        "source_fact:v1:8ffb31cf088481492302ee6adde3010e90d891f0e4b27af1491989d6eb0225be",
+        "source_fact:v1:916d2178f1f0cf7f2a1f9a45ac2a68c1cfec0b2d5be35d4dfc5ca136574431c6",
+        "source_fact:v1:a2f974ed1f967c657c2021fae4992eff4ee5f2c79b978b31e74715c5695d5486",
+        "source_fact:v1:d423c1359fbc3fad8388058b65faa38c844da1b0118fd122ba9408e52ea0adb0"
+      ],
+      "source_published_kst": "2026-10-14T18:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "34% 급락장서 웃은 외인…개미 '떨어지는 칼날' 받았다",
+      "telegram_core_fact": "코스피가 약 4개월 만에 34% 넘게 폭락한 하락장에서 외국인은 과감한 현금화로 손실을 피한 반면, 개인은 떨어지는 칼날을 받아내며 최악의 매매 성적표를 받게된 것으로 집계됐다.",
+      "title": "34% 급락장서 웃은 외인…개미 '떨어지는 칼날' 받았다"
     },
     "source_fact:b737876cd3e371ccec462148": {
       "first_seen_kst": "2026-10-14T17:21:42+09:00",
@@ -530422,6 +531646,35 @@
       "telegram_core_fact": "포스코DX, 포스코기술투자와 함께 출자한 ‘포스코DX 기업형벤처캐피탈(CVC) 신기술투자조합’을 통해 인핸스에 20억원을 투자하고, 업무 실행 특화형 AI 에이전트 구축을 위한 업무협약을 체결했다고 밝혔다. AI 스타트업 인핸스에 20억원을 투자해 산업현장 전반으로 AI 기술 적용을 확대할 계획이다.",
       "title": "포스코DX, 스타트업 ‘인핸스’에 20억 투자…숙련자 노하우까지 AI 이식"
     },
+    "source_fact:c339b2ad15224a87a00a8f3e": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635808",
+      "source": "이투데이",
+      "source_body_digest": "05f7bc778f1df8a5955fee0192637ede1fc82dcbbae37f73b5ea0b13c048ffb5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01cbd8f1b97a3d6348eb494341e04c68c0cbda13304934a0ee9ecfd9258982f1",
+      "source_fact_keys": [
+        "source_fact:v1:0c36405c3ef5ba49bb39d47dd1816063e3726a3457f7715457359e1d64ad26ca",
+        "source_fact:v1:1f6c78d7a8c1bdbeaa127ea907a999a7ff187d0f138e939fea70ed82d19626f7",
+        "source_fact:v1:5f01c6a84b9caa5cc8d7032449eb45167b7f3cfb5ccf674b60333691ae278293",
+        "source_fact:v1:67a65823b28595d47c8cc822135888a9eb8b4d8edad9ef4b154055b92dd43664",
+        "source_fact:v1:8350751922dbaad5aa1fc74442d2f6049417658dbca817c77043f2d1e5d11c6a",
+        "source_fact:v1:8bc44df3dc6c0f5b9b7516e61a38f4090f758025bbe8c797ce8ce063e05fd297",
+        "source_fact:v1:8ffb31cf088481492302ee6adde3010e90d891f0e4b27af1491989d6eb0225be",
+        "source_fact:v1:916d2178f1f0cf7f2a1f9a45ac2a68c1cfec0b2d5be35d4dfc5ca136574431c6",
+        "source_fact:v1:a2f974ed1f967c657c2021fae4992eff4ee5f2c79b978b31e74715c5695d5486",
+        "source_fact:v1:d423c1359fbc3fad8388058b65faa38c844da1b0118fd122ba9408e52ea0adb0"
+      ],
+      "source_published_kst": "2026-10-14T18:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "34% 급락장서 웃은 외인…개미 '떨어지는 칼날' 받았다",
+      "telegram_core_fact": "코스피가 약 4개월 만에 34% 넘게 폭락한 하락장에서 외국인은 과감한 현금화로 손실을 피한 반면, 개인은 떨어지는 칼날을 받아내며 최악의 매매 성적표를 받게된 것으로 집계됐다.",
+      "title": "34% 급락장서 웃은 외인…개미 '떨어지는 칼날' 받았다"
+    },
     "source_fact:c33c1bee78a25397440ae0fa": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
       "lanes": {
@@ -536007,6 +537260,35 @@
       "source_title": "[주간수급리포트] 6620선 주저앉은 코스피…삼전 셀온·외인 팔자에 5% '뚝'",
       "telegram_core_fact": "지난주 코스피 지수는 외국인과 기관의 대규모 동반 매도세와 삼성전자의 셀온(Sell-on, 호재 속 가격하락) 물량 출회에 타격을 입으며 직전 주 대비 5% 이상 하락한 6620선으로 밀려났다.",
       "title": "[주간수급리포트] 6620선 주저앉은 코스피…삼전 셀온·외인 팔자에 5% '뚝'"
+    },
+    "source_fact:c7bbf7f050ba9b584b5b49af": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635808",
+      "source": "이투데이",
+      "source_body_digest": "05f7bc778f1df8a5955fee0192637ede1fc82dcbbae37f73b5ea0b13c048ffb5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01cbd8f1b97a3d6348eb494341e04c68c0cbda13304934a0ee9ecfd9258982f1",
+      "source_fact_keys": [
+        "source_fact:v1:0c36405c3ef5ba49bb39d47dd1816063e3726a3457f7715457359e1d64ad26ca",
+        "source_fact:v1:1f6c78d7a8c1bdbeaa127ea907a999a7ff187d0f138e939fea70ed82d19626f7",
+        "source_fact:v1:5f01c6a84b9caa5cc8d7032449eb45167b7f3cfb5ccf674b60333691ae278293",
+        "source_fact:v1:67a65823b28595d47c8cc822135888a9eb8b4d8edad9ef4b154055b92dd43664",
+        "source_fact:v1:8350751922dbaad5aa1fc74442d2f6049417658dbca817c77043f2d1e5d11c6a",
+        "source_fact:v1:8bc44df3dc6c0f5b9b7516e61a38f4090f758025bbe8c797ce8ce063e05fd297",
+        "source_fact:v1:8ffb31cf088481492302ee6adde3010e90d891f0e4b27af1491989d6eb0225be",
+        "source_fact:v1:916d2178f1f0cf7f2a1f9a45ac2a68c1cfec0b2d5be35d4dfc5ca136574431c6",
+        "source_fact:v1:a2f974ed1f967c657c2021fae4992eff4ee5f2c79b978b31e74715c5695d5486",
+        "source_fact:v1:d423c1359fbc3fad8388058b65faa38c844da1b0118fd122ba9408e52ea0adb0"
+      ],
+      "source_published_kst": "2026-10-14T18:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "34% 급락장서 웃은 외인…개미 '떨어지는 칼날' 받았다",
+      "telegram_core_fact": "코스피가 약 4개월 만에 34% 넘게 폭락한 하락장에서 외국인은 과감한 현금화로 손실을 피한 반면, 개인은 떨어지는 칼날을 받아내며 최악의 매매 성적표를 받게된 것으로 집계됐다.",
+      "title": "34% 급락장서 웃은 외인…개미 '떨어지는 칼날' 받았다"
     },
     "source_fact:c7bcaf925ac9805d2deba213": {
       "first_seen_kst": "2026-10-14T17:44:16+09:00",
@@ -553249,6 +554531,27 @@
       "telegram_core_fact": "전 세계 70개국 3만여 개 도서관 인프라를 보유한 기업과 독점 공급 계약을 체결하며, 향후 3년간 100대 이상의 수출 물량을 조기 확보했다.",
       "title": "앤로보틱스, 비블리오테카와 맞손…AI 도서관 로봇 ‘로미’ 글로벌 독점 공급"
     },
+    "source_fact:d667908c04b0365315c8a2f8": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.etnews.com/20261014000270",
+      "source": "전자신문",
+      "source_body_digest": "044e897319790171e64348e86e7fe30caba58c70a076b017145f4e09c9305d1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0f32d78c001c383061326120532042d27c2c490c58ed9fb0321211aca81ab78e",
+      "source_fact_keys": [
+        "source_fact:v1:0810aaaace6f8234b7d80829314639ea38d7194cf61db19df7dcd9b390b2a442",
+        "source_fact:v1:df9fbd72b845fa7504307abc16f3befb1956a19db15ca1499b40a92b88d664df"
+      ],
+      "source_published_kst": "2026-10-14T18:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "서울 오피스 투자 '큰손' 된 일반 기업들…자산운용사와 매입 경쟁",
+      "telegram_core_fact": "아성다이소의 지주사 한웰그룹도 2월 서울 역삼동 케이스퀘어강남2를 3550억원에 인수했다.",
+      "title": "서울 오피스 투자 '큰손' 된 일반 기업들…자산운용사와 매입 경쟁"
+    },
     "source_fact:d667a73f3307124656c360be": {
       "first_seen_kst": "2026-10-09T21:27:46+09:00",
       "lanes": {
@@ -560642,6 +561945,31 @@
       "telegram_core_fact": "미국 정부의 첨단 인공지능(AI) 칩의 중국 수출금지 여파로 엔비디아의 중국 시장 점유율이 34%로 급락했다.",
       "title": "엔비디아, 화웨이 약진으로 中 점유율 34%로 추락"
     },
+    "source_fact:dc20b1fead8213e74dc68db0": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.fnnews.com/news/202610142254565439",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "b947c42601fca6ab8d7759833e31cdaf828948f25d419754322f042f3a63db08",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5bfeb0bfe49dc0f1e60330ed5bdcc577682295454dac1f2ff7d77b23d75a1f47",
+      "source_fact_keys": [
+        "source_fact:v1:260a27f75b7b8d4c6679adca0db5f1a824f3e2882e58e00808c7067a0b9ee5e9",
+        "source_fact:v1:3e5ab98cc8b57d0289c71eaff3c298ca06af9765ea448c7bf75de2086b7871bd",
+        "source_fact:v1:a0983bc4799dc201ebc19f91174638c8e51a7b0ea00f5d6f5120cedc20bab356",
+        "source_fact:v1:a9990ab1417037e6f014feab901784ede96bb19aec03e15436d58a9c9a1cee04",
+        "source_fact:v1:c6dae9f485fa096e862af4a7c5186372f7f2ac70ed063b717f7beb75a41e89a8",
+        "source_fact:v1:eacdd14625b9419a96baa8534caf5c30a9c06a902ec1483111f08542fd32fefd"
+      ],
+      "source_published_kst": "2026-10-14T22:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴욕개장] 예상 상회 CPI에 하락 출발…나스닥 0.63%↓",
+      "telegram_core_fact": "스탠더드앤드푸어스(S&P)500지수는 31.30포인트(0.40%) 내린 7774.18에, 기술주 중심의 나스닥종합지수는 172.70포인트(0.63%) 하락한 2만 7031.64에 각각 개장했다. 미국 노동부에 따르면 9월 CPI는 전년 동월 대비 3.7% 상승해 시장 예상치(3.6%)를 소폭 웃돌았다.",
+      "title": "[뉴욕개장] 예상 상회 CPI에 하락 출발…나스닥 0.63%↓"
+    },
     "source_fact:dc2d1007251c3c3301f3bd16": {
       "first_seen_kst": "2026-10-13T02:02:36+09:00",
       "lanes": {
@@ -561124,6 +562452,29 @@
       "source_title": "주춤한 은행주⋯증권가 “4분기 마진 개선·주주환원이 기폭제”",
       "telegram_core_fact": "은행 업종은 밸류업 프로그램 이후 총주주환원율이 과거 20%대에서 50%대로 높아졌고, 주가순자산비율(P/B) 역시 0.3~0.4배 수준에서 0.7~0.9배까지 상승했다.",
       "title": "주춤한 은행주⋯증권가 “4분기 마진 개선·주주환원이 기폭제”"
+    },
+    "source_fact:dcad51ad28124df9941f271d": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12176198",
+      "source": "매일경제",
+      "source_body_digest": "cadbeb23223df59fecdb97dc0c3cc1c197633e6305db0de1a798268bff528f42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30cc15c11d6e03a291a8019a6cde693bcd67660444c532212cb8947a13d282b4",
+      "source_fact_keys": [
+        "source_fact:v1:5e03b82f07de119bba8bb681b110c3ffe67138c10fd2d9bcdd8e43c3dfb39e65",
+        "source_fact:v1:6684118f9d3aee097ab3d99a1dadd0a7b0a29e00100a80fa5bf44f195b72db7b",
+        "source_fact:v1:85fd45ce06cdc94bfbdd1731d8ca06951d6b0aeb331c416642990539f8134b62",
+        "source_fact:v1:a87a974aa1cb3362cd06763089475b35ccd1207ede4196343698d86c32a4f912"
+      ],
+      "source_published_kst": "2026-10-14T21:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "에볼루션 메탈스 앤 테크, 2027 매출 가이던스 4억~4억6000만달러 재확인",
+      "telegram_core_fact": "2027년 예상 매출은 전년 대비 1102.5% 증가한 수준이나 회사 가이던스 하단인 4억 달러에는 크게 못 미친다.",
+      "title": "에볼루션 메탈스 앤 테크, 2027 매출 가이던스 4억~4억6000만달러 재확인"
     },
     "source_fact:dcb2b558b79f9d450f5c43d3": {
       "first_seen_kst": "2026-10-09T19:24:17+09:00",
@@ -573254,6 +574605,31 @@
       "telegram_core_fact": "정부가 반도체·재생에너지 등 첨단산업 핵심품목을 경제안보품목으로 추가 지정하고 핵심광물과 소재·부품·장비 등 100개 내외 품목을 집중 관리한다. 내년 정부 예산안에 반영한 2000억원을 바탕으로 공급망 중요도가 높지만 민간 단독 투자가 어려운 해외 생산기지 확보 사업에 대한 투자도 확대한다.",
       "title": "정부, 경제안보품목 확대…핵심광물·소부장 100개 집중 관리"
     },
+    "source_fact:e5c543828d54b2c4b839265c": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.fnnews.com/news/202610142254565439",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "b947c42601fca6ab8d7759833e31cdaf828948f25d419754322f042f3a63db08",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5bfeb0bfe49dc0f1e60330ed5bdcc577682295454dac1f2ff7d77b23d75a1f47",
+      "source_fact_keys": [
+        "source_fact:v1:260a27f75b7b8d4c6679adca0db5f1a824f3e2882e58e00808c7067a0b9ee5e9",
+        "source_fact:v1:3e5ab98cc8b57d0289c71eaff3c298ca06af9765ea448c7bf75de2086b7871bd",
+        "source_fact:v1:a0983bc4799dc201ebc19f91174638c8e51a7b0ea00f5d6f5120cedc20bab356",
+        "source_fact:v1:a9990ab1417037e6f014feab901784ede96bb19aec03e15436d58a9c9a1cee04",
+        "source_fact:v1:c6dae9f485fa096e862af4a7c5186372f7f2ac70ed063b717f7beb75a41e89a8",
+        "source_fact:v1:eacdd14625b9419a96baa8534caf5c30a9c06a902ec1483111f08542fd32fefd"
+      ],
+      "source_published_kst": "2026-10-14T22:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴욕개장] 예상 상회 CPI에 하락 출발…나스닥 0.63%↓",
+      "telegram_core_fact": "스탠더드앤드푸어스(S&P)500지수는 31.30포인트(0.40%) 내린 7774.18에, 기술주 중심의 나스닥종합지수는 172.70포인트(0.63%) 하락한 2만 7031.64에 각각 개장했다. 미국 노동부에 따르면 9월 CPI는 전년 동월 대비 3.7% 상승해 시장 예상치(3.6%)를 소폭 웃돌았다.",
+      "title": "[뉴욕개장] 예상 상회 CPI에 하락 출발…나스닥 0.63%↓"
+    },
     "source_fact:e5c79e6e02494640fabf6940": {
       "first_seen_kst": "2026-10-07T03:04:14+09:00",
       "lanes": {
@@ -578039,6 +579415,30 @@
       ],
       "source_published_kst": "2026-10-07T05:31+09:00",
       "title": "LG전자, AI 냉각사업 공략 가속…북미 대형 계약에 버지니아 공장 신설까지"
+    },
+    "source_fact:e9c83c99add99919331cb8d7": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.mk.co.kr/news/business/12176047",
+      "source": "매일경제",
+      "source_body_digest": "0ee2850bdfc830724ddedf0193e991630f94e036fc53029429411a5d2de8f23f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:64ecbba095fd2a1339db2577682d99d81452be858c9c04d96d83e9622592496a",
+      "source_fact_keys": [
+        "source_fact:v1:2cbfb3019e9c7ab0420331e9980604103ed29ae300b6b13a407360a95ce60d2e",
+        "source_fact:v1:80112fd37e9751d860ff74c34e39bbe08e5a858c348692985a1229cbc2b314a7",
+        "source_fact:v1:9af53705b438c1c7843aaef2189cdb241b9905020bd9ae0b3d1e63650ed6d56a",
+        "source_fact:v1:a68c5b000f587494fce67812234518908f4249d23ff1ec5c715fba1e7a2e4ea9",
+        "source_fact:v1:d6e0d015442f72a306f755601563316c678244850d8f15a9e7f09d532e1416aa"
+      ],
+      "source_published_kst": "2026-10-14T18:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "엑시나, 인텔·퀄컴 거친 스티브 핑거허트 CBO 영입",
+      "telegram_core_fact": "김진영 엑시나 대표는 “스티브 CBO는 데이터센터 사업을 성장시키고 글로벌 기술 기업들과 협력해 신기술을 사업화한 경험이 풍부하다. 컴퓨팅과 가속 기술, 메모리 분야에서 쌓은 경험이 MX1 상용화와 글로벌 사업 확대에 큰 도움이 될 것”이라고 말했다.",
+      "title": "엑시나, 인텔·퀄컴 거친 스티브 핑거허트 CBO 영입"
     },
     "source_fact:e9d34ecc9fb7c0dd671efda4": {
       "first_seen_kst": "2026-10-12T09:05:29+09:00",
@@ -583811,6 +585211,27 @@
       ],
       "source_published_kst": "2026-10-06T06:04+09:00",
       "title": "[속보] 국제유가, 하락⋯WTI 1.84% ↓"
+    },
+    "source_fact:eec9bb04302d3f0684eb39e7": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.etnews.com/20261014000270",
+      "source": "전자신문",
+      "source_body_digest": "044e897319790171e64348e86e7fe30caba58c70a076b017145f4e09c9305d1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0f32d78c001c383061326120532042d27c2c490c58ed9fb0321211aca81ab78e",
+      "source_fact_keys": [
+        "source_fact:v1:0810aaaace6f8234b7d80829314639ea38d7194cf61db19df7dcd9b390b2a442",
+        "source_fact:v1:df9fbd72b845fa7504307abc16f3befb1956a19db15ca1499b40a92b88d664df"
+      ],
+      "source_published_kst": "2026-10-14T18:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "서울 오피스 투자 '큰손' 된 일반 기업들…자산운용사와 매입 경쟁",
+      "telegram_core_fact": "아성다이소의 지주사 한웰그룹도 2월 서울 역삼동 케이스퀘어강남2를 3550억원에 인수했다.",
+      "title": "서울 오피스 투자 '큰손' 된 일반 기업들…자산운용사와 매입 경쟁"
     },
     "source_fact:eecad0d4250e6dcce41acdae": {
       "first_seen_kst": "2026-10-07T17:34:38+09:00",
@@ -613858,6 +615279,35 @@
       "telegram_core_fact": "하지만 인구감소지역의 방문진료 공급 역량은 추정 수요의 10% 남짓에 그쳤다. 조사 결과 인구감소지역의 방문진료 공급 충족률은 10.7%로 일반지역(25.5%)의 절반에도 미치지 못했다.",
       "title": "“아파도 집에 올 의사가 없다”…인구감소지역 방문진료 공급 10%뿐(종합)"
     },
+    "title:1ea14c61b8665749d48c4c66": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635808",
+      "source": "이투데이",
+      "source_body_digest": "05f7bc778f1df8a5955fee0192637ede1fc82dcbbae37f73b5ea0b13c048ffb5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:01cbd8f1b97a3d6348eb494341e04c68c0cbda13304934a0ee9ecfd9258982f1",
+      "source_fact_keys": [
+        "source_fact:v1:0c36405c3ef5ba49bb39d47dd1816063e3726a3457f7715457359e1d64ad26ca",
+        "source_fact:v1:1f6c78d7a8c1bdbeaa127ea907a999a7ff187d0f138e939fea70ed82d19626f7",
+        "source_fact:v1:5f01c6a84b9caa5cc8d7032449eb45167b7f3cfb5ccf674b60333691ae278293",
+        "source_fact:v1:67a65823b28595d47c8cc822135888a9eb8b4d8edad9ef4b154055b92dd43664",
+        "source_fact:v1:8350751922dbaad5aa1fc74442d2f6049417658dbca817c77043f2d1e5d11c6a",
+        "source_fact:v1:8bc44df3dc6c0f5b9b7516e61a38f4090f758025bbe8c797ce8ce063e05fd297",
+        "source_fact:v1:8ffb31cf088481492302ee6adde3010e90d891f0e4b27af1491989d6eb0225be",
+        "source_fact:v1:916d2178f1f0cf7f2a1f9a45ac2a68c1cfec0b2d5be35d4dfc5ca136574431c6",
+        "source_fact:v1:a2f974ed1f967c657c2021fae4992eff4ee5f2c79b978b31e74715c5695d5486",
+        "source_fact:v1:d423c1359fbc3fad8388058b65faa38c844da1b0118fd122ba9408e52ea0adb0"
+      ],
+      "source_published_kst": "2026-10-14T18:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "34% 급락장서 웃은 외인…개미 '떨어지는 칼날' 받았다",
+      "telegram_core_fact": "코스피가 약 4개월 만에 34% 넘게 폭락한 하락장에서 외국인은 과감한 현금화로 손실을 피한 반면, 개인은 떨어지는 칼날을 받아내며 최악의 매매 성적표를 받게된 것으로 집계됐다.",
+      "title": "34% 급락장서 웃은 외인…개미 '떨어지는 칼날' 받았다"
+    },
     "title:1ea5bbf3e24f5c91ead77f80": {
       "first_seen_kst": "2026-09-20T08:23:48+09:00",
       "lanes": {
@@ -630792,6 +632242,24 @@
       "telegram_core_fact": "9일(현지시간) 미국 월스트리트저널(WSJ) 등 외신에 따르면 미시간대가 발표한 10월 소비자심리지수 잠정치는 46.3으로, 전월 확정치(48.1)보다 1.8포인트 하락했다. 미국 소비자심리가 생활비 부담 속에 5개월 만에 가장 낮은 수준으로 떨어졌다.",
       "title": "美 10월 소비자심리 5개월 만에 최저…생활비 불만 커져"
     },
+    "title:4f9139fe8553d48680545a3f": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003826019",
+      "source": "뉴시스",
+      "source_body_digest": "634b996490e485252a20695cf400ed65e09d23e9808779cd7878646960e3598c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-14T18:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 한국 이어 대만에 알래스카 LNG 투자 압박…대만도 신중(종합)",
+      "telegram_core_fact": "그는 지난달 30일 한국이 540억 달러를 알래스카 LNG 사업에 투자하기로 했다고 일방 발표한 데 이어, 투자하지 않을 시 관세 인상을 암시하는 \"한국에 돈을 더 청구하면 된다\"는 식의 위협을 가하기도 했다.",
+      "title": "트럼프, 한국 이어 대만에 알래스카 LNG 투자 압박…대만도 신중(종합)"
+    },
     "title:4f9653bbe889a8462d3bfa97": {
       "first_seen_kst": "2026-10-08T16:54:07+09:00",
       "lanes": {
@@ -637409,6 +638877,29 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T12:53+09:00",
       "title": "이강석 대우건설 대표이사 공식 취임…“AI· 데이터센터 등 미래성장 분야 발굴”"
+    },
+    "title:649ba08a5f6fc783a014c28c": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.joongang.co.kr/article/25469723",
+      "source": "중앙일보",
+      "source_body_digest": "0e77376ed668712e508fead2ac1ad6e321738116b881dbf943480b0ce4e6555b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:320add3e1672411384afa5f29c84c6b68a01cc3d6c556eae37ffa066d2bc9d34",
+      "source_fact_keys": [
+        "source_fact:v1:2b2ab54a342e116e9a54890fa1b8ead1cc6959eeff10ff5948bb2f529d45c250",
+        "source_fact:v1:2f2b9b6e70f7bb2ace5b85ebbdd1a007642a4c803d3749b45f8ffd677a5cc37c",
+        "source_fact:v1:32c8514ba79359e5808d924b815fb64be77afa1d5be3aab5be1af4decce177d1",
+        "source_fact:v1:8682a70e31acfc472983e2c9b54cd19f433470261f42726b45931aadcb4af2c7"
+      ],
+      "source_published_kst": "2026-10-14T17:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "정부, 후티 반군의 사우디 민간시설 공격 규탄…“즉각 중단 촉구” | 중앙일보",
+      "telegram_core_fact": "“이번 공격으로 인한 희생자와 유가족에게 진심 어린 애도를 표하며, 부상자들의 조속한 회복을 기원한다”며 “사우디아라비아 정부와 국민들에게도 깊은 연대를 표명한다”고 했다.",
+      "title": "정부, 후티 반군의 사우디 민간시설 공격 규탄…“즉각 중단 촉구” | 중앙일보"
     },
     "title:64a231ab603e051c73d2b574": {
       "first_seen_kst": "2026-10-12T05:09:39+09:00",
@@ -657801,6 +659292,30 @@
       "source_published_kst": "2026-10-06T16:06+09:00",
       "title": "건설로봇, 연구실 넘어 현장으로…“상용화 위한 실증 확대·제도 개선 필요”"
     },
+    "title:a387500e5011243ae704d2f9": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.mk.co.kr/news/business/12176047",
+      "source": "매일경제",
+      "source_body_digest": "0ee2850bdfc830724ddedf0193e991630f94e036fc53029429411a5d2de8f23f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:64ecbba095fd2a1339db2577682d99d81452be858c9c04d96d83e9622592496a",
+      "source_fact_keys": [
+        "source_fact:v1:2cbfb3019e9c7ab0420331e9980604103ed29ae300b6b13a407360a95ce60d2e",
+        "source_fact:v1:80112fd37e9751d860ff74c34e39bbe08e5a858c348692985a1229cbc2b314a7",
+        "source_fact:v1:9af53705b438c1c7843aaef2189cdb241b9905020bd9ae0b3d1e63650ed6d56a",
+        "source_fact:v1:a68c5b000f587494fce67812234518908f4249d23ff1ec5c715fba1e7a2e4ea9",
+        "source_fact:v1:d6e0d015442f72a306f755601563316c678244850d8f15a9e7f09d532e1416aa"
+      ],
+      "source_published_kst": "2026-10-14T18:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "엑시나, 인텔·퀄컴 거친 스티브 핑거허트 CBO 영입",
+      "telegram_core_fact": "김진영 엑시나 대표는 “스티브 CBO는 데이터센터 사업을 성장시키고 글로벌 기술 기업들과 협력해 신기술을 사업화한 경험이 풍부하다. 컴퓨팅과 가속 기술, 메모리 분야에서 쌓은 경험이 MX1 상용화와 글로벌 사업 확대에 큰 도움이 될 것”이라고 말했다.",
+      "title": "엑시나, 인텔·퀄컴 거친 스티브 핑거허트 CBO 영입"
+    },
     "title:a39438138e0f3fc18f58d59e": {
       "first_seen_kst": "2026-10-09T23:03:47+09:00",
       "lanes": {
@@ -658810,6 +660325,24 @@
       "source_title": "[속보]다우 0.83%↑…AI주 반등·러 경유 공급 기대",
       "telegram_core_fact": "트럼프 대통령은 블라디미르 푸틴 러시아 대통령과 러시아산 경유를 미국과 세계시장에 공급하기로 합의했다고 밝혔다.",
       "title": "[속보]다우 0.83%↑…AI주 반등·러 경유 공급 기대"
+    },
+    "title:a6152561fac464f451e81111": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003826019",
+      "source": "뉴시스",
+      "source_body_digest": "634b996490e485252a20695cf400ed65e09d23e9808779cd7878646960e3598c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-14T18:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프, 한국 이어 대만에 알래스카 LNG 투자 압박…대만도 신중(종합)",
+      "telegram_core_fact": "그는 지난달 30일 한국이 540억 달러를 알래스카 LNG 사업에 투자하기로 했다고 일방 발표한 데 이어, 투자하지 않을 시 관세 인상을 암시하는 \"한국에 돈을 더 청구하면 된다\"는 식의 위협을 가하기도 했다.",
+      "title": "트럼프, 한국 이어 대만에 알래스카 LNG 투자 압박…대만도 신중(종합)"
     },
     "title:a617777f1b274cd392d8e5b6": {
       "first_seen_kst": "2026-10-13T05:50:59+09:00",
@@ -664012,6 +665545,31 @@
       ],
       "source_published_kst": "2026-10-06T09:48+09:00",
       "title": "은평구 불광 5구역, 철거 착수…2046가구 '북한산 자이'로 탈바꿈"
+    },
+    "title:b4cbb9c512c2d875f9bf38d0": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.fnnews.com/news/202610142254565439",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "b947c42601fca6ab8d7759833e31cdaf828948f25d419754322f042f3a63db08",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5bfeb0bfe49dc0f1e60330ed5bdcc577682295454dac1f2ff7d77b23d75a1f47",
+      "source_fact_keys": [
+        "source_fact:v1:260a27f75b7b8d4c6679adca0db5f1a824f3e2882e58e00808c7067a0b9ee5e9",
+        "source_fact:v1:3e5ab98cc8b57d0289c71eaff3c298ca06af9765ea448c7bf75de2086b7871bd",
+        "source_fact:v1:a0983bc4799dc201ebc19f91174638c8e51a7b0ea00f5d6f5120cedc20bab356",
+        "source_fact:v1:a9990ab1417037e6f014feab901784ede96bb19aec03e15436d58a9c9a1cee04",
+        "source_fact:v1:c6dae9f485fa096e862af4a7c5186372f7f2ac70ed063b717f7beb75a41e89a8",
+        "source_fact:v1:eacdd14625b9419a96baa8534caf5c30a9c06a902ec1483111f08542fd32fefd"
+      ],
+      "source_published_kst": "2026-10-14T22:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴욕개장] 예상 상회 CPI에 하락 출발…나스닥 0.63%↓",
+      "telegram_core_fact": "스탠더드앤드푸어스(S&P)500지수는 31.30포인트(0.40%) 내린 7774.18에, 기술주 중심의 나스닥종합지수는 172.70포인트(0.63%) 하락한 2만 7031.64에 각각 개장했다. 미국 노동부에 따르면 9월 CPI는 전년 동월 대비 3.7% 상승해 시장 예상치(3.6%)를 소폭 웃돌았다.",
+      "title": "[뉴욕개장] 예상 상회 CPI에 하락 출발…나스닥 0.63%↓"
     },
     "title:b55aab252ea48f211484312a": {
       "first_seen_kst": "2026-10-08T01:26:16+09:00",
@@ -681017,6 +682575,29 @@
       "source": "파이낸셜뉴스",
       "title": "변동성 장세에 단기자금 몰렸다…ACE 머니마켓액티브 순자산 1조 돌파"
     },
+    "title:e9c16cf03d81da89f6d7b1d2": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12176198",
+      "source": "매일경제",
+      "source_body_digest": "cadbeb23223df59fecdb97dc0c3cc1c197633e6305db0de1a798268bff528f42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:30cc15c11d6e03a291a8019a6cde693bcd67660444c532212cb8947a13d282b4",
+      "source_fact_keys": [
+        "source_fact:v1:5e03b82f07de119bba8bb681b110c3ffe67138c10fd2d9bcdd8e43c3dfb39e65",
+        "source_fact:v1:6684118f9d3aee097ab3d99a1dadd0a7b0a29e00100a80fa5bf44f195b72db7b",
+        "source_fact:v1:85fd45ce06cdc94bfbdd1731d8ca06951d6b0aeb331c416642990539f8134b62",
+        "source_fact:v1:a87a974aa1cb3362cd06763089475b35ccd1207ede4196343698d86c32a4f912"
+      ],
+      "source_published_kst": "2026-10-14T21:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "에볼루션 메탈스 앤 테크, 2027 매출 가이던스 4억~4억6000만달러 재확인",
+      "telegram_core_fact": "2027년 예상 매출은 전년 대비 1102.5% 증가한 수준이나 회사 가이던스 하단인 4억 달러에는 크게 못 미친다.",
+      "title": "에볼루션 메탈스 앤 테크, 2027 매출 가이던스 4억~4억6000만달러 재확인"
+    },
     "title:e9d369a69f88e2be4c1255d2": {
       "first_seen_kst": "2026-10-01T22:26:11+09:00",
       "lanes": {
@@ -682774,6 +684355,27 @@
       "link": "https://www.yna.co.kr/view/AKR20260928104700003",
       "source": "연합뉴스",
       "title": "SK하이닉스, TSMC 행사서 AI 메모리 공개…2년 연속 파트너상 | 연합뉴스"
+    },
+    "title:f01ff81dfb64a02bb1e11b36": {
+      "first_seen_kst": "2026-10-15T02:27:03+09:00",
+      "lanes": {
+        "live": "2026-10-15T02:27:03+09:00"
+      },
+      "last_seen_kst": "2026-10-15T02:27:03+09:00",
+      "link": "https://www.etnews.com/20261014000270",
+      "source": "전자신문",
+      "source_body_digest": "044e897319790171e64348e86e7fe30caba58c70a076b017145f4e09c9305d1c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0f32d78c001c383061326120532042d27c2c490c58ed9fb0321211aca81ab78e",
+      "source_fact_keys": [
+        "source_fact:v1:0810aaaace6f8234b7d80829314639ea38d7194cf61db19df7dcd9b390b2a442",
+        "source_fact:v1:df9fbd72b845fa7504307abc16f3befb1956a19db15ca1499b40a92b88d664df"
+      ],
+      "source_published_kst": "2026-10-14T18:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "서울 오피스 투자 '큰손' 된 일반 기업들…자산운용사와 매입 경쟁",
+      "telegram_core_fact": "아성다이소의 지주사 한웰그룹도 2월 서울 역삼동 케이스퀘어강남2를 3550억원에 인수했다.",
+      "title": "서울 오피스 투자 '큰손' 된 일반 기업들…자산운용사와 매입 경쟁"
     },
     "title:f0323e0b37b885fa4359456d": {
       "first_seen_kst": "2026-10-05T23:28:38+09:00",
@@ -688165,5 +689767,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-15T02:00:57+09:00"
+  "updated_at_kst": "2026-10-15T02:27:03+09:00"
 }
