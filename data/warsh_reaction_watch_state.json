@@ -22,8 +22,10 @@
       "key": "September 16, 2026"
     }
   },
-  "last_errors": [],
-  "updated_at_utc": "2026-10-06T17:17:50.560966+00:00",
+  "last_errors": [
+    "BLS: BLS employment series have no common month"
+  ],
+  "updated_at_utc": "2026-10-14T12:26:35.021786+00:00",
   "fomc_korean_translation_v1": {
     "sent": true,
     "key": "September 16, 2026",
