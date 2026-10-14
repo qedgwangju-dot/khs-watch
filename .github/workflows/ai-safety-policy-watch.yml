@@ -363,6 +363,63 @@ jobs:
               raise RuntimeError("Mutable official page confirmation guard failed")
           PY
 
+      - name: Verify OpenAI and Trail of Bits acquisition stages
+        shell: bash
+        run: |
+          python - <<'PY'
+          from scripts.ai_safety_policy_watch import (
+              detect_category, detect_entity, is_patch_the_planet_original,
+              material, source_official, trail_of_bits_mna_stage,
+          )
+
+          def item(title, source="The Information", url="https://www.theinformation.com/example"):
+              return {
+                  "title": title, "description": "", "source": source, "url": url,
+              }
+
+          initial = item("OpenAI in early talks to buy security startup Trail of Bits; deal could fall apart")
+          assert trail_of_bits_mna_stage(initial) == "initial_talks"
+          assert not material(initial), "Initial report must remain a silent known baseline"
+          assert not source_official(initial["source"]), "News report is not an OpenAI announcement"
+
+          prior_partnership = item(
+              "Introducing Patch the Planet: OpenAI partners with Trail of Bits",
+              "OpenAI", "https://openai.com/index/patch-the-planet/",
+          )
+          assert is_patch_the_planet_original(prior_partnership)
+          assert not material(prior_partnership)
+
+          reported = item("OpenAI and Trail of Bits in exclusive acquisition negotiations")
+          assert trail_of_bits_mna_stage(reported) == "advanced_talks_reported"
+          assert material(reported)
+          assert detect_category(reported["title"]) == "OpenAI–Trail of Bits 인수·계약 단계"
+          assert detect_entity(reported["title"]) == "OpenAI–Trail of Bits"
+
+          official_sign = item(
+              "OpenAI signed a definitive agreement to acquire Trail of Bits",
+              "OpenAI", "https://openai.com/index/trail-of-bits-acquisition/",
+          )
+          assert trail_of_bits_mna_stage(official_sign) == "signed"
+          assert material(official_sign)
+          assert source_official(official_sign["source"])
+
+          reported_sign = dict(official_sign, source="Reuters")
+          assert trail_of_bits_mna_stage(reported_sign) == "signed_reported"
+
+          completed = item("OpenAI completes acquisition of Trail of Bits", "OpenAI")
+          assert trail_of_bits_mna_stage(completed) == "closed"
+
+          ended = item("OpenAI and Trail of Bits acquisition talks have ended", "Reuters")
+          assert trail_of_bits_mna_stage(ended) == "talks_ended_reported"
+
+          just_research = item(
+              "OpenAI and Trail of Bits report open source bugs with Codex",
+              "Trail of Bits",
+          )
+          assert trail_of_bits_mna_stage(just_research) is None
+          print("ai_policy_trail_of_bits_mna_regression=PASS")
+          PY
+
       - name: Run live policy watch
         run: |
           rm -f out/ai_safety_policy_watch_alert_title.txt out/ai_safety_policy_watch_alert.html out/ai_safety_policy_watch_telegram_confirmed.json
