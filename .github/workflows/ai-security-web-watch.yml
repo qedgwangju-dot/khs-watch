@@ -294,7 +294,7 @@ jobs:
           python - <<'PY'
           from scripts.ai_security_web_watch import (
               detect_category, incident_fact, is_openai_insider_case,
-              material, openai_insider_case_stage, source_official,
+              material, openai_insider_case_stage, source_official, severity,
           )
           base = {
               "kind": "news", "source": "Reuters",
@@ -308,6 +308,8 @@ jobs:
           assert is_openai_insider_case(base) and material(base)
           assert detect_category(base["title"]) == "AI 연구기관 내부자 도청·접근통제 사건"
           assert openai_insider_case_stage(base) == "initial_oct13_charge"
+          assert severity(base["title"]+" "+base["description"]) == (2, "높음")
+          assert source_official("DOJ") and source_official("FBI")
           fact = incident_fact(base)
           if "혐의" not in fact or "유출 확정 아님" not in fact:
               raise AssertionError("OpenAI charge incorrectly treated as conviction/theft")
