@@ -109,6 +109,32 @@ def enforce_text(text: str) -> str:
     _USED_FX.clear()
     text = _normalize_existing_separate_krw(text)
 
+    # Compound Korean units: "3억5,000만 달러" means 350 million
+    # dollars, not 50 million. Handle compounds before single-unit matches.
+    compound_pat = re.compile(
+        r"(?<![\d.,])(?:(?P<jo>\d[\d,.]*(?:\.\d+)?)\s*조\s*)?"
+        r"(?:(?P<eok>\d[\d,.]*(?:\.\d+)?)\s*억\s*)?"
+        r"(?:(?P<ten_million>\d[\d,.]*(?:\.\d+)?)\s*천만\s*)?"
+        r"(?:(?P<man>\d[\d,.]*(?:\.\d+)?)\s*만\s*)?"
+        r"(?P<word>싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔|링깃|위안|파운드)"
+        r"(?P<per>/" + PER_UNIT_PATTERN + r")?",
+        re.I,
+    )
+    def repl_compound(m):
+        values = [
+            (m.group("jo"), SCALE["조"]),
+            (m.group("eok"), SCALE["억"]),
+            (m.group("ten_million"), SCALE["천만"]),
+            (m.group("man"), SCALE["만"]),
+        ]
+        present = [(v, scale) for v, scale in values if v is not None]
+        if len(present) < 2 or _already_parenthesized(text[m.end():]):
+            return m.group(0)
+        amount = sum(_number(v) * scale for v, scale in present)
+        currency = CURRENCY_WORDS[m.group("word")]
+        return f"{m.group(0)}({_krw_text(amount, currency, m.group('per') or '')})"
+    text = compound_pat.sub(repl_compound, text)
+
     # Ranges that share a currency unit, e.g. 600억~640억달러.
     range_pat = re.compile(
         r"(?P<a>\d[\d,.]*(?:\.\d+)?)\s*(?P<ua>조|십억|억|백만|천만|만)"
@@ -264,7 +290,9 @@ def enforce_text(text: str) -> str:
 
 def _money_candidates(text: str):
     word = (
-        r"\d[\d,.]*(?:\.\d+)?\s*(?:조|십억|억|백만|천만|만)?"
+        r"\d[\d,.]*(?:\.\d+)?\s*"
+        r"(?:(?:조|십억|억|백만|천만|만)"
+        r"(?:\s*\d[\d,.]*(?:\.\d+)?\s*(?:억|천만|만)){0,2})?"
         r"\s*(?:싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔|링깃|위안|파운드)"
         r"(?:/" + PER_UNIT_PATTERN + r")?"
     )
