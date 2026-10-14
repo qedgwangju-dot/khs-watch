@@ -524,6 +524,15 @@ def is_openai_insider_case(item: dict) -> bool:
     )
 
 
+def legal_primary_source(source: str) -> bool:
+    name = source.strip().lower()
+    return any(mark in name for mark in (
+        "department of justice", "justice.gov", "federal bureau of investigation",
+        "fbi.gov", "u.s. attorney", "us attorney", "usao",
+        "district court", "uscourts.gov",
+    )) or name in {"doj", "fbi"}
+
+
 def openai_insider_case_stage(item: dict) -> str | None:
     """Keep criminal allegations separate from court findings and confirmed loss."""
     if not is_openai_insider_case(item):
@@ -1404,7 +1413,9 @@ def main() -> int:
             # dedup is stronger and should run BEFORE generic title dedup.
             if stage in insider_stages:
                 continue
-            if stage == "court_verdict" and not source_official(item.get("source", "")):
+            if stage == "court_verdict" and not legal_primary_source(item.get("source", "")):
+                # Company blogs, model providers, and broad search-result labels
+                # cannot by themselves authenticate a federal court verdict.
                 continue
             insider_stages[stage] = {
                 "source_url": item.get("url"),
