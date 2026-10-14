@@ -1118,6 +1118,7 @@ def _accepted_facts_for_group(family: str, rows: list[dict]) -> tuple[set[str], 
         if family == "alaska_lng" and fact.startswith((
             "alaska_glenfarne_fid_status:", "alaska_project_financing_status:",
             "alaska_physical_construction_status:",
+            "alaska_phase1_pipeline_fid_status:", "alaska_phase2_export_fid_status:",
         )):
             official = official or any(_is_alaska_project_developer_source(r) for r in evidence)
         # 공식자료 1건 또는 서로 다른 출처 2곳 이상이 같은 상태값을 지지해야 승격한다.
