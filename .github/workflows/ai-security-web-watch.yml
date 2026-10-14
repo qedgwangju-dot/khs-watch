@@ -436,6 +436,22 @@ jobs:
               "published_at": "2026-10-15T00:00:00+00:00",
           }
           n_verified = normalize_item(verified)
+          spoofed = {
+              **verified,
+              "kind": "news",
+              "url": "https://news.google.com/rss/articles/fake",
+              "source": "CISA",
+              "publisher_url": "https://not-cisa.example.invalid",
+          }
+          n_spoofed = normalize_item(spoofed)
+          if replication_stage(n_spoofed) != "reported_field" or n_spoofed["severity"] != 2:
+              raise RuntimeError("Spoofed RSS publisher was treated as official incident")
+          official_feed = {
+              **spoofed,
+              "publisher_url": "https://www.cisa.gov/",
+          }
+          if replication_stage(official_feed) != "confirmed_field":
+              raise RuntimeError("Official CISA publisher attribution was missed")
           assert material(n_verified)
           assert replication_stage(n_verified) == "confirmed_field"
           assert n_verified["severity"] == 3 and n_verified["severity_label"] == "긴급"
