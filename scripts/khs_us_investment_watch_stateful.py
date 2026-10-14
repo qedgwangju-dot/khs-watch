@@ -88,6 +88,26 @@ def _is_official(row: dict) -> bool:
     )
 
 
+def _is_korean_government(row: dict) -> bool:
+    host = urllib_parse_host(str(row.get("link") or ""))
+    source = _norm(str(row.get("source") or ""))
+    return (
+        host in {"www.korea.kr", "korea.kr", "www.motir.go.kr", "motir.go.kr", "www.moef.go.kr", "moef.go.kr"}
+        or source in {"산업통상부", "정책브리핑", "대한민국 정책브리핑", "재정경제부", "기획재정부"}
+    )
+
+
+def _is_us_white_house(row: dict) -> bool:
+    host = urllib_parse_host(str(row.get("link") or ""))
+    source = _norm(str(row.get("source") or ""))
+    return host in {"whitehouse.gov", "www.whitehouse.gov"} or source in {"white house", "the white house", "백악관 공식"}
+
+
+def _is_alaska_taiwan_offtake_source(row: dict) -> bool:
+    host = urllib_parse_host(str(row.get("link") or ""))
+    return host in {"www.cpc.com.tw", "cpc.com.tw", "www.moea.gov.tw", "moea.gov.tw", "glenfarne.com", "www.glenfarne.com"}
+
+
 def urllib_parse_host(value: str) -> str:
     import urllib.parse
     return (urllib.parse.urlsplit(value).hostname or "").lower()
@@ -563,6 +583,9 @@ def _candidate_facts(row: dict, family: str) -> set[str]:
     raw = _RAW_MATERIAL_FACTS(row)
     facts: set[str] = set()
     official_status = _official_status_fact(row)
+    if family == "alaska_lng" and official_status == "official_status:confirmed" and not _is_korean_government(row):
+        # 미국의 공식 투자 주장은 한국 정부의 법적 투자 승인 증거가 아니다.
+        official_status = ""
     if official_status:
         # 정부가 '미확정'이라고 밝힌 기사에서는 제목 속 배경 숫자를 상태값으로 승격하지 않는다.
         facts.add(official_status)
@@ -872,15 +895,51 @@ def _candidate_facts(row: dict, family: str) -> set[str]:
         if any(term in low for term in ["사업비", "총사업비", "project cost", "estimated cost", "project costs"]):
             for value in alaska_usd:
                 facts.add(f"alaska_project_cost_usd_b:{value}")
-        if (
-            any(term in low for term in ["한국", "south korea", "korean"])
-            and any(term in low for term in ["투자", "investment"])
-        ):
+        korea_reference = any(term in low for term in ["한국", "south korea", "korean"])
+        investment_reference = any(term in low for term in ["투자", "investment"])
+        korean_approval_phrase = any(term in low for term in [
+            "한국 정부 알래스카 lng 투자 확정", "알래스카 lng 투자 최종 결정",
+            "한국 정부 알래스카 lng 투자 승인", "한국의 알래스카 lng 투자 확정",
+            "korean government formally approved alaska lng investment",
+            "republic of korea approved alaska lng investment",
+        ])
+        if korea_reference and investment_reference:
             for value in alaska_usd:
-                if _is_official(row) and official_status == "official_status:confirmed":
+                if (
+                    _is_korean_government(row)
+                    and official_status == "official_status:confirmed"
+                    and korean_approval_phrase
+                ):
                     facts.add(f"alaska_korea_investment_usd_b:{value}")
+                elif _is_us_white_house(row):
+                    facts.add(f"alaska_us_claim_usd_b:{value}")
                 else:
                     facts.add(f"alaska_reported_amount_usd_b:{value}")
+
+        if _is_us_white_house(row) and "2026-10-13" in str(row.get("published") or "") and "54" in alaska_usd:
+            # 백악관의 10월13일 동일 투자 주장 재확인: 한국의 투자승인과 독립된 사건.
+            facts.add("alaska_us_reiteration:2026-10-13")
+
+        taiwan_reference = any(x in low for x in ["대만", "taiwan", "cpc corporation"])
+        project_reference = "알래스카" in low or "alaska lng" in low or "alaska pipeline" in low
+        share_thirty = bool(re.search(r"(?<!\d)30\s*%", low) or "30 percent" in low)
+        share_purchase = any(x in low for x in ["구매", "사들이", "purchase", "buy", "offtake", "도입"])
+        other_us_share = any(x in low for x in [
+            "미국산 수입 비중", "미국산 lng 비중", "share of us lng imports",
+            "share of u.s. lng imports", "total lng imports from the us",
+        ])
+        if taiwan_reference and project_reference and share_thirty and share_purchase and not other_us_share:
+            # 원문 뉴스 보도의 30%는 계약 체결 사실이 아니라 미확정 주장으로 저장.
+            facts.add("alaska_taiwan_project_share_reported:30")
+        if taiwan_reference and project_reference and _is_alaska_taiwan_offtake_source(row):
+            binding_contract = any(x in low for x in [
+                "binding gas sales and purchase agreement signed",
+                "definitive lng sales purchase agreement executed",
+                "구속력 있는 장기 lng 구매계약 체결",
+                "장기구매 본계약 서명 완료",
+            ])
+            if binding_contract:
+                facts.add("alaska_taiwan_offtake_status:binding_contract_signed")
         # 일반 기사 속 FID·착공·발표 언급은 실제 알래스카 사업 완료와 다르다.
         # 검증된 프로젝트별 단계만 승격하고 원문에서 포괄 추출된 stages는 배제한다.
         # 금강공업의 API 5L X70 인증 연관성만으로 프로젝트 공급사 상태를 올리지 않는다.
@@ -944,6 +1003,7 @@ def _fact_slot(family: str, fact: str) -> str:
         "encinal_total_gw:", "encinal_total_mw:", "encinal_phase1_gw:", "encinal_phase2_gw:",
         "encinal_project_usd:", "encinal_project_cost_usd_b:", "encinal_status:", "encinal_phase1_year:", "encinal_full_year:",
         "alaska_project_cost_usd_b:", "alaska_korea_investment_usd_b:", "alaska_reported_amount_usd_b:", "alaska_bilateral_status:",
+        "alaska_us_claim_usd_b:", "alaska_us_reiteration:", "alaska_taiwan_project_share_reported:", "alaska_taiwan_offtake_status:",
         "ercot_request_gw:", "semiconductor_investment_usd:", "ppa_years:",
         "official_status:",
     )
@@ -1104,6 +1164,9 @@ def _human_fact(value: str) -> str:
         "encinal_status:confirmed_first": "대미투자 1호 공식 확정",
         "alaska_bilateral_status:review_started": "한미 공식상태 검토 착수",
         "alaska_fid_after_commercial_review:reported": "현지 주의원 발언 보도: Glenfarne FID 이후 한국 별도 상업성 심사, 아직 투자결정 없음",
+        "alaska_us_reiteration:2026-10-13": "백악관 10월13일 알래스카 540억달러 투자 주장 재확인·한국 승인과 별개",
+        "alaska_taiwan_project_share_reported:30": "대만의 알래스카 LNG 30% 구매 주장 보도·구속력 있는 구매계약 미확인",
+        "alaska_taiwan_offtake_status:binding_contract_signed": "대만 알래스카 LNG 구속력 있는 장기구매 본계약 체결 확인",
         "funding_wait:45영업일": "선정 통지 후 최소 45영업일",
         "repayment_horizon:20년": "원리금 회수 기준 20년",
         "ppa_years:20": "전력계약 20년",
@@ -1138,6 +1201,7 @@ def _human_fact(value: str) -> str:
         "alaska_project_cost_usd_b:": "알래스카 LNG 총사업비 ",
         "alaska_korea_investment_usd_b:": "알래스카 LNG 한국 전략투자 ",
         "alaska_reported_amount_usd_b:": "알래스카 LNG 보도수치 ",
+        "alaska_us_claim_usd_b:": "백악관 알래스카 LNG 투자 주장 ",
         "alaska_mtpa:": "알래스카 LNG ",
         "equipment_contract_usd:": "설비 계약 ",
         "equipment_capacity_gw:": "설비 용량 ",
@@ -1423,6 +1487,25 @@ def _migrate_alaska_stale_stages(state: dict) -> None:
     state["alaska_stale_stages_guard_version"] = 1
 
 
+def _migrate_alaska_claim_scope(state: dict) -> None:
+    if int(state.get("alaska_us_claim_scope_version") or 0) >= 1:
+        return
+    bucket = (state.setdefault("event_states", {}).get("alaska_lng") or {})
+    if bucket:
+        old_facts = {str(x) for x in bucket.get("facts") or []}
+        old_claim = "alaska_reported_amount_usd_b:50"
+        if old_claim in old_facts:
+            bucket["historical_reported_usd_b"] = sorted(set(
+                (bucket.get("historical_reported_usd_b") or []) + ["50"]
+            ))
+        bucket["facts"] = sorted(x for x in old_facts if x != old_claim)
+        bucket["slots"] = {
+            str(k): str(v) for k, v in (bucket.get("slots") or {}).items()
+            if str(v) != old_claim
+        }
+    state["alaska_us_claim_scope_version"] = 1
+
+
 def _load() -> dict:
     global _SHARED_STATE, _BOOTSTRAP_GUARD
     state = _ORIG_LOAD()
@@ -1437,6 +1520,7 @@ def _load() -> dict:
     _migrate_project_power_funding_roles(state)
     _migrate_encinal_project_cost_role(state)
     _migrate_alaska_stale_stages(state)
+    _migrate_alaska_claim_scope(state)
     if _BOOTSTRAP_GUARD:
         state["event_state_guard_version"] = GUARD_VERSION
         state["event_state_guard_started_at"] = dt.datetime.now(dt.timezone.utc).isoformat()
@@ -1580,6 +1664,10 @@ def _collapse_rows(rows: list[dict]) -> list[dict]:
             suppressed_unclassified += 1
             continue
         groups.setdefault(family, []).append(row)
+        # 복수 프로젝트를 한 제목에 넣은 백악관 브리핑도 Project North 사건축에 반영.
+        title = _norm(str(row.get("title") or ""))
+        if family != "alaska_lng" and ("알래스카" in title or "alaska lng" in title):
+            groups.setdefault("alaska_lng", []).append(row)
 
     # v4 전환 첫 실행은 공식 확인 상태만 기준선으로 흡수하고 과거 기사를 재발송하지 않는다.
     if _BOOTSTRAP_GUARD:
@@ -1993,6 +2081,38 @@ def _self_test() -> int:
     rows, errors, ok = _fetch_query_batch(["alaska", "project power", "taiwan"], lambda q: [{"title": q}], max_workers=2)
     if errors or len(rows) != 3 or len(ok) != 3:
         raise RuntimeError(f"parallel RSS batch regression: rows={rows}, errors={errors}")
+    us_statement, _ = _accepted_facts_for_group("alaska_lng", _verified_alaska_us_reiteration_rows())
+    if not {"alaska_us_claim_usd_b:54", "alaska_us_reiteration:2026-10-13"}.issubset(us_statement):
+        raise RuntimeError(f"White House reiteration classification regression: {us_statement}")
+    if any(x.startswith("alaska_korea_investment_usd_b:") for x in us_statement):
+        raise RuntimeError(f"White House claim falsely became Korean approval: {us_statement}")
+
+    reported_30 = [{
+        "title": "Trump Taiwan agrees purchase 30% Alaska LNG pipeline gas",
+        "source": "뉴스1",
+        "link": "https://www.news1.kr/test",
+    }]
+    one_source, _ = _accepted_facts_for_group("alaska_lng", reported_30)
+    if "alaska_taiwan_project_share_reported:30" in one_source:
+        raise RuntimeError("single Taiwan 30% headline incorrectly promoted")
+    reported_30.append({
+        "title": "Taiwan to purchase 30 percent of Alaska LNG pipeline gas, Trump claims",
+        "source": "Reuters",
+        "link": "https://www.reuters.com/test",
+    })
+    two_source, _ = _accepted_facts_for_group("alaska_lng", reported_30)
+    if "alaska_taiwan_project_share_reported:30" not in two_source:
+        raise RuntimeError("independently corroborated Taiwan 30% claim lost")
+    if "alaska_taiwan_offtake_status:binding_contract_signed" in two_source:
+        raise RuntimeError("reported Taiwan share became signed offtake")
+    generic_30 = [{
+        "title": "Taiwan raises US LNG share to 30% of total imports and considers Alaska LNG",
+        "source": "Reuters",
+        "link": "https://www.reuters.com/generic",
+    }]
+    generic_facts, _ = _accepted_facts_for_group("alaska_lng", generic_30)
+    if "alaska_taiwan_project_share_reported:30" in generic_facts:
+        raise RuntimeError("Taiwan US-import share contaminated Alaska project share")
     print("state_event_guard_self_test=passed")
     return 0
 
@@ -2094,6 +2214,17 @@ def _fetch_query_batch(queries: list[str], fetcher, max_workers: int = 8) -> tup
     return rows, failures, successful
 
 
+def _verified_alaska_us_reiteration_rows() -> list[dict]:
+    # 2026-10-13 백악관 공식 보도자료를 최초 1회 사건으로 기록.
+    # 한국 정부 승인·송금 완료의 증거로 절대 취급하지 않는다.
+    return [{
+        "title": "백악관 공식 2026-10-13 한국 에너지투자 패키지 중 알래스카 LNG 540억달러 포함 주장 재확인",
+        "source": "White House",
+        "link": "https://www.whitehouse.gov/releases/2026/10/president-trump-visits-alaska-delivering-results-for-the-last-frontier/",
+        "published": "2026-10-13",
+    }]
+
+
 def _rss(query: str) -> list[dict]:
     global _RSS_CALLS, _RSS_BUFFER, _RSS_BATCH_DONE, _RSS_FATAL
     _RSS_CALLS += 1
@@ -2130,6 +2261,7 @@ def _rss(query: str) -> list[dict]:
     _RSS_BUFFER.extend(_official_project_baseline_rows())
     _RSS_BUFFER.extend(_verified_funding_baseline_rows())
     _RSS_BUFFER.extend(_verified_alaska_fid_report_rows())
+    _RSS_BUFFER.extend(_verified_alaska_us_reiteration_rows())
     flushed = _collapse_rows(_RSS_BUFFER)
     _RSS_BUFFER = []
     return flushed
