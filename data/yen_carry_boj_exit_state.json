@@ -1,24 +1,24 @@
 {
   "account": {
-    "change_1m_trillion_yen": -15.919701814000064,
-    "change_3m_trillion_yen": -14.334361512999976,
+    "change_1m_trillion_yen": -15.993785726000056,
+    "change_3m_trillion_yen": -13.876155796000035,
     "latest": {
-      "date": "2026-09-30",
-      "jgs_trillion_yen": 504.007989212,
-      "total_assets_trillion_yen": 625.02533175,
-      "url": "https://www.boj.or.jp/en/statistics/boj/other/acmai/release/2026/ac260930.htm"
+      "date": "2026-10-10",
+      "jgs_trillion_yen": 503.634998862,
+      "total_assets_trillion_yen": 624.63270719,
+      "url": "https://www.boj.or.jp/en/statistics/boj/other/acmai/release/2026/ac261010.htm"
     },
     "one_month": {
-      "date": "2026-08-31",
-      "jgs_trillion_yen": 519.927691026,
-      "total_assets_trillion_yen": 644.66201961,
-      "url": "https://www.boj.or.jp/en/statistics/boj/other/acmai/release/2026/ac260831.htm"
+      "date": "2026-09-10",
+      "jgs_trillion_yen": 519.628784588,
+      "total_assets_trillion_yen": 644.271593576,
+      "url": "https://www.boj.or.jp/en/statistics/boj/other/acmai/release/2026/ac260910.htm"
     },
     "three_month": {
-      "date": "2026-06-30",
-      "jgs_trillion_yen": 518.342350725,
-      "total_assets_trillion_yen": 639.550912431,
-      "url": "https://www.boj.or.jp/en/statistics/boj/other/acmai/release/2026/ac260630.htm"
+      "date": "2026-07-10",
+      "jgs_trillion_yen": 517.511154658,
+      "total_assets_trillion_yen": 638.675186572,
+      "url": "https://www.boj.or.jp/en/statistics/boj/other/acmai/release/2026/ac260710.htm"
     }
   },
   "classification": {
@@ -106,8 +106,8 @@
   "errors": [],
   "initialized": true,
   "market_stress": {
-    "jgb10": 3.027,
-    "jgb10_days_ge_3": 7,
+    "jgb10": 3.019,
+    "jgb10_days_ge_3": 8,
     "joint_market_stress": false,
     "weak_auction_10y": false,
     "weak_auction_30y": false
@@ -177,5 +177,5 @@
     "plan_revision": false,
     "weak_private_absorption": false
   },
-  "updated_at_kst": "2026-10-14T07:37:03+09:00"
+  "updated_at_kst": "2026-10-14T10:22:36+09:00"
 }
