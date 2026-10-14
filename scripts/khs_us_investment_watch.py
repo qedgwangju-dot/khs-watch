@@ -64,6 +64,10 @@ _extend_unique(core.QUERIES, [
     '"CPC" "Alaska LNG" binding offtake SPA agreement when:14d',
     '"Taiwan" "Alaska LNG" Glenfarne commercial agreement when:14d',
     '"Glenfarne" "Alaska LNG" FID gas sales agreements when:14d',
+    '"Taiwan" "Alaska LNG" "20 years" "$4.4 billion" when:14d',
+    '"Taiwan" "Alaska LNG" "binding" "CPC" agreement when:30d',
+    '"Alaska LNG" Glenfarne FID financial close construction started when:14d',
+    '"Alaska LNG" federal permits completed start tonight when:14d',
 ])
 _extend_unique(core.TRUSTED, [
     "뉴스핌",
