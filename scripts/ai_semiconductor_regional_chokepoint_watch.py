@@ -48,6 +48,8 @@ SEMI_300MM_VERSION = 1
 SEMI_300MM_PRESS = ("https://www.semi.org/en/semi-press-release/"
     "global-300mm-fab-equipment-spending-to-reach-227-billion-in-2029-as-buildout-accelerates-semi-projects")
 SEMI_300MM_OUTLOOK = "https://www.semi.org/en/products-services/market-data/300mm-fab-outlook"
+SEMI_300MM_DISTRIBUTION = ("https://www.prnewswire.com/news-releases/"
+    "global-300mm-fab-equipment-spending-to-reach-227-billion-in-2029-as-buildout-accelerates-semi-projects-302906628.html")
 SEMI_300MM_APRIL = ("https://www.semi.org/en/semi-press-release/"
     "semi-projects-double-digit-growth-in-global-300mm-fab-equipment-spending-for-2026-and-2027")
 
@@ -634,16 +636,43 @@ def _semi_300mm_material_changes(old: dict, new: dict) -> list[str]:
 
 def _semi_300mm_fetch() -> tuple[dict | None, list[str]]:
     fetched, errors = {}, []
-    for name, url in (("보도자료", SEMI_300MM_PRESS), ("상세전망", SEMI_300MM_OUTLOOK)):
+    try:
+        fetched["보도자료"] = _fetch(SEMI_300MM_PRESS).decode("utf-8", errors="replace")
+        fetched["원천"] = SEMI_300MM_PRESS
+    except Exception as exc:
+        errors.append("SEMI semi.org 원문 접근 제한: " + type(exc).__name__
+                      + " " + str(getattr(exc, "code", "")))
+        # SEMI itself published this exact release through PR Newswire.
+        # A news article that merely mentions SEMI is not an accepted substitute.
         try:
-            fetched[name] = _fetch(url).decode("utf-8", errors="replace")
-        except Exception as exc:
-            errors.append("SEMI " + name + " 열람 실패: " + type(exc).__name__)
+            raw = _fetch(SEMI_300MM_DISTRIBUTION).decode("utf-8", errors="replace")
+            plain = _clean(raw).lower()
+            if ("news provided by semi" in plain or "source semi" in plain) and (
+                "global 300mm front-end fab equipment spending" in plain
+            ):
+                fetched["보도자료"] = raw
+                fetched["원천"] = SEMI_300MM_DISTRIBUTION
+            else:
+                errors.append("SEMI 배포본의 발행주체 확인 실패: 알림 보류")
+        except Exception as fallback_exc:
+            errors.append("SEMI PR Newswire 배포본 열람 실패: " +
+                          type(fallback_exc).__name__ + " " +
+                          str(getattr(fallback_exc, "code", "")))
+    try:
+        fetched["상세전망"] = _fetch(SEMI_300MM_OUTLOOK).decode("utf-8", errors="replace")
+    except Exception as exc:
+        errors.append("SEMI 분기 전망 상세 원문 접근 제한: " + type(exc).__name__
+                      + " " + str(getattr(exc, "code", "")))
     if "보도자료" not in fetched:
         return None, errors
     record = _semi_300mm_parse(fetched["보도자료"], fetched.get("상세전망", ""))
     if record is None:
-        errors.append("SEMI 최신 공식 판본 또는 숫자 일치 미확인: 알림 보류")
+        errors.append("SEMI 공식 배포 판본·수치 일치 미확인: 신규 알림 보류")
+        return None, errors
+    record["source_url"] = fetched["원천"]
+    if fetched["원천"] != SEMI_300MM_PRESS:
+        record["source_kind"] = "SEMI 직접 배포 PR Newswire 원문 · semi.org 직접 접근 제한"
+    record["outlook_direct_checked"] = "상세전망" in fetched
     return record, errors
 
 
@@ -787,7 +816,7 @@ def write_outputs(items: list[dict], errors: list[str], semi_record: dict | None
         lines += [
             "",
             "• <b>SEMI 공식 300mm 전공정 장비투자·공장 시간표</b>",
-            "  성격: SEMI 산업 전망치 · 제조사 확정 발주금액 아님",
+            "  성격: " + html.escape(s["source_kind"]) + " · 전망치, 확정 발주 아님",
             "  2026년 장비투자: " + amount("equipment_2026_usd_b")
             + " · 전년 대비 +" + str(s.get("equipment_2026_yoy_pct") or "확인 불가") + "%",
             "  2029년 장비투자: " + amount("equipment_2029_usd_b"),
@@ -819,7 +848,7 @@ def write_outputs(items: list[dict], errors: list[str], semi_record: dict | None
             "  매출 경로: 실제 장비 발주→납품·검수→장비사 매출→공장 가동→웨이퍼 투입→메모리 공급",
             "  실패·지연 경로: 전력·초순수·허가·장비 납기·공정 수율·고객 승인",
             "  먼저 볼 지표: 업체별 장비 수주잔고·웨이퍼 투입량·DRAM/NAND 계약가",
-            '  <a href="' + html.escape(SEMI_300MM_PRESS, quote=True) + '">SEMI 2026-10-13 공식자료</a>',
+            '  <a href="' + html.escape(s["source_url"], quote=True) + '">SEMI 2026-10-13 실제 확인한 발표 경로</a>',
             '  <a href="' + html.escape(SEMI_300MM_OUTLOOK, quote=True) + '">SEMI 300mm 분기별 전망</a>',
             '  <a href="' + html.escape(SEMI_300MM_APRIL, quote=True) + '">SEMI 2026-04-01 기존 전망</a>',
         ]
