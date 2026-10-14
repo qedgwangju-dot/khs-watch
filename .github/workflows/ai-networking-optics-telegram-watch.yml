@@ -647,6 +647,9 @@ jobs:
               ("optical components 6억~8억 달러", "6억~8억 달러("),
               ("investment 1 trillion USD", "1 trillion USD(약 1,338조3,000억원)"),
               ("contract 60억 USD", "60억 USD(약 8조298억원)"),
+              ("Lumentum 일본 공장 추가 3억5,000만 달러", "3억5,000만 달러(약 4,684억원)"),
+              ("Lumentum 일본 공장 추가 3억 5천만 달러", "3억 5천만 달러(약 4,684억원)"),
+              ("미래 반도체 1조2,000억 달러", "1조2,000억 달러("),
           ]
           with patch.object(g, "_rate", return_value=(1338.30, "2026-10-14 공식 기준환율 · 테스트")):
               for raw, expected in examples:
