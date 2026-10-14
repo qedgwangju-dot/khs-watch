@@ -9867,6 +9867,31 @@
       "telegram_core_fact": "FT 보도 직후 7% 이상 올랐던 치폴레 주가는, 이날 스타벅스가 인수설을 부인한 이후 급락해 보도 이전 수준으로 되돌아갔다.",
       "title": "스타벅스 \"치폴레 인수 안 한다\"…4일만에 공식 부인 | 연합뉴스"
     },
+    "core:371a2fd1799765a76fb0c1cd": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202609292005b",
+      "source": "한국경제",
+      "source_body_digest": "2b2b9abd168292b2cd7aaff2cd7da67b185cf933cd1438c78583e0585833025c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8fa79091c247bc50069c2c5dda6dee264d4550d073870a562524a56e8b8aef85",
+      "source_fact_keys": [
+        "source_fact:v1:6d3750addc1ab8de701fd6437877f594e2c703b502e230bd87f41333313550bc",
+        "source_fact:v1:abdb9d703be4173e76744e4c960ec594e7d29897679b77d7d25e3c77c78a4318",
+        "source_fact:v1:bf8cef3067f26f24427f315dfdc74fa64b32ae6ad807c2399220d1f0dd29f61f",
+        "source_fact:v1:c22928a4aaa29b7b7481e30f820c4e2e0dd491df590e25d9083ae4e3a0514d1e",
+        "source_fact:v1:e5036b1e7278ee190fc884c2e81597ab41853f1f5ea6d1ccd780255ce91dc27c",
+        "source_fact:v1:fcca8b702049e7606f75b5f106b30182f7d811816fcb22ef7818703aeab3d347"
+      ],
+      "source_published_kst": "2026-10-14T06:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "“그 공장, 예정대로 못 짓는다”…수조 원 투자 검증하는 AI [베인의 위닝 전략]",
+      "telegram_core_fact": "AI와 데이터센터 확산으로 전력 피크 수요가 26%가량 늘어날 것으로 전망되면서 발전·송배전 인프라 투자 규모가 급증하고 있지만 비용 초과와 공기 지연은 반복되고 이사회 승인 자료에서 원가와 공정 리스크가 충분히 보이지 않는 경우가 많기 때문이다.",
+      "title": "“그 공장, 예정대로 못 짓는다”…수조 원 투자 검증하는 AI [베인의 위닝 전략]"
+    },
     "core:371e7e7f7f1e4bc53e71846a": {
       "first_seen_kst": "2026-10-08T03:51:03+09:00",
       "lanes": {
@@ -16973,6 +16998,29 @@
       "telegram_core_fact": "상반기 매출은 줄었지만 매출총이익률이 35.4%로 1.7%p 개선되며 영업이익이 2587만 위안으로 69.1% 증가했습니다.",
       "title": "루카스GC, 영업이익 급증과 마진 개선에 투자자 관심 집중"
     },
+    "core:6264783a3153cdc9fa8cfcaf": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174913",
+      "source": "매일경제",
+      "source_body_digest": "9a50a789f89a9f7083343261eca36f7ee42fb530651237f43f3dc5e4b36c1dfb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1c4568120bf592d9e643a8341c47ef2718570506935e1790f7608365bf154ff2",
+      "source_fact_keys": [
+        "source_fact:v1:5d35ba74316df85d9cf593ec92896a9d0321b79d16538800a903f1f7cc9a028b",
+        "source_fact:v1:69ff2dea882206f2670d2a74dd8cbb50ae33fcb7e12e3f1a10f36b56b71ff41c",
+        "source_fact:v1:7513df19d0104fc5e384f7a89785f2d7cefa32778c96f5bdda31b8c4affbbcc2",
+        "source_fact:v1:d244fdbde29ce50bc92d18753aeffc1fd576cd04294dfd1713da36aa1ba3ba65"
+      ],
+      "source_published_kst": "2026-10-13T20:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "포르투나 마이닝, 세네갈 12.8m 구간 금 7.8g/t 확인",
+      "telegram_core_fact": "증권가 컨센서스에 따르면 포르투나 마이닝의 2026년 예상 매출액은 13억570만 달러로 전년 대비 37.87% 증가할 전망이다.",
+      "title": "포르투나 마이닝, 세네갈 12.8m 구간 금 7.8g/t 확인"
+    },
     "core:6267b0c9d8602af9d8e3dbb0": {
       "first_seen_kst": "2026-10-12T07:27:08+09:00",
       "lanes": {
@@ -23564,6 +23612,24 @@
       "telegram_core_fact": "관련 업계에 따르면 삼성SDS는 우정항공의 지분 100%를 인수하는 주식양수도계약을 이날 체결했다. 삼성SDS가 항공운송 물류 전문기업인 우정항공을 인수했다.",
       "title": "삼성SDS, 항공물류업체 '우정항공' 인수 | 연합뉴스"
     },
+    "core:8a113fdc28af4cc1b22ea5b2": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12175085",
+      "source": "매일경제",
+      "source_body_digest": "caff36fd9958c996070dde9f3c0cfdf279b0b11cef33a7591906c3566e0ce243",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-14T06:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "비트푸푸, 9월 비트코인 167개 생산..에티오피아 인수 차질",
+      "telegram_core_fact": "비트푸푸(FUFU)는 9월 비트코인 생산량이 167개로 전월 174개보다 4.0% 감소했으며, 에티오피아 비트코인 채굴시설 인수 건이 현지 전력 공급업체와의 분쟁으로 선행조건을 충족하지 못할 중대한 위험에 직면했다고 10월 13일 발표했다. 9월 생산량과 해시레이트가 줄었고 에티오피아 인수도 무산 위험이 커졌어요.",
+      "title": "비트푸푸, 9월 비트코인 167개 생산..에티오피아 인수 차질"
+    },
     "core:8a2c1d576a0a327ba6026e5f": {
       "first_seen_kst": "2026-10-13T23:47:09+09:00",
       "lanes": {
@@ -25787,6 +25853,24 @@
       "source_title": "“메모리값 급등” 소비자도 멈칫",
       "telegram_core_fact": "인공지능(이하 AI) 데이터센터 확대로 메모리 가격이 급등하면서 스마트폰과 PC 시장에도 타격이 확산하고 있다.",
       "title": "“메모리값 급등” 소비자도 멈칫"
+    },
+    "core:987ebf697c77c153ed277591": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261013148500530",
+      "source": "연합뉴스",
+      "source_body_digest": "12e01a1cd2c112da07c073f15e2a808391f7677bb6f8f017ed0888b176efacde",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-14T06:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "유해 우려 화학물질 699종인데…위해성 평가 인력은 단 4명 | 연합뉴스",
+      "telegram_core_fact": "김태선 의원은 \"위해성 평가 지연은 국민 건강과 생명에 직결되는 문제인 만큼 차질 없이 진행되게 인력과 예산을 확충해야 한다\"면서 \"외국에서 이미 규제한 물질은 평가를 생략하고 위해성 물질로 분류할 수 있게 제도가 마련됐음에도 활용되지 않고 있는데, 적극적으로 활용해야 한다\"고 강조했다.",
+      "title": "유해 우려 화학물질 699종인데…위해성 평가 인력은 단 4명 | 연합뉴스"
     },
     "core:9895a610614592d99f16cda0": {
       "first_seen_kst": "2026-10-13T21:12:07+09:00",
@@ -34992,6 +35076,28 @@
       "telegram_core_fact": "산업통상부는 한국 등 15개국이 7일(현지시간) 프랑스 파리 경제협력개발기구(OECD) 본부에서 ‘구조적 과잉생산 대응을 위한 공동 장관성명’을 발표했다고 8일 밝혔다.",
       "title": "한·미·일 등 15개국, 전기차·태양광 패널 등 과잉생산 공동대응…中 겨냥한 듯"
     },
+    "core:ce6d084d2a5bfe4ac6468599": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12174357",
+      "source": "매일경제",
+      "source_body_digest": "6db8771359e4ce0a71f9864af9499859fde7ab419b9084c46eaca2f9c99718b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c75462ca697a4a730a3f75093599dec7e0e2271a95d0d93086d30684c81f951f",
+      "source_fact_keys": [
+        "source_fact:v1:417e53ce37c91a5598dfa1f8cefc37bdc20174629d73032ecf4395596d24f056",
+        "source_fact:v1:92a2247f14e35ebfc7a832529c73c7b8fbe56a96310bf9e9847ac8e3d14d8c13",
+        "source_fact:v1:a38b5a8fdb98dd735a8ba73d12c4701d26d2c9ec2be22bf2ff7e4c2c1e5ea0c0"
+      ],
+      "source_published_kst": "2026-10-13T13:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "오세훈 “크리스마스 전 3만호 착공”…서울시·조합·시공사 ‘맞손’",
+      "telegram_core_fact": "서울시는 13일 서울시청에서 연내 착공을 앞둔 11개 정비사업조합, 5개 시공사, 8개 자치구와 함께 ‘주택공급 목표 달성 공동협력 협약’을 체결했다.",
+      "title": "오세훈 “크리스마스 전 3만호 착공”…서울시·조합·시공사 ‘맞손’"
+    },
     "core:ce6f4920d4ce5c2f0dc4ffee": {
       "first_seen_kst": "2026-10-08T13:07:52+09:00",
       "lanes": {
@@ -39431,6 +39537,24 @@
       "telegram_core_fact": "이창용 전 한국은행 총재가 최근 반도체 호황에 따른 경제성장률 급등과 관련해 산업 양극화와 미·중 갈등 완화에 따른 판도 변화 가능성을 지적하며 \"국가 차원에서 낙관론 이면의 리스크에 철저히 대비해야 한다\"고 경고했다.",
       "title": "이창용 전 총재 \"반도체발 착시 경계⋯양극화·수퍼사이클 중단 대비해야\""
     },
+    "core:ea653380bf091865d1fb1954": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261013134700030",
+      "source": "연합뉴스",
+      "source_body_digest": "eecf73e7d4634921bf6922940cfd7aa417cf6eec98ab0868b8216bff64a5e538",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-14T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "이양수 \"aT 칭다오 물류센터, 거약 예산 투입에도 활용률 저하\" | 연합뉴스",
+      "telegram_core_fact": "칭다오 물류센터의 매출은 2021년 100억7천400만원에서 지난해 182억5천300만원으로 81.2% 증가했고, 같은 기간 영업이익은 2억5천400만원에서 2억9천300만원으로 15.4% 늘었다.",
+      "title": "이양수 \"aT 칭다오 물류센터, 거약 예산 투입에도 활용률 저하\" | 연합뉴스"
+    },
     "core:ea7ab07b777ca221ab9eb51b": {
       "first_seen_kst": "2026-10-11T15:10:51+09:00",
       "lanes": {
@@ -39916,6 +40040,29 @@
       "source_title": "삼전닉스 단일레버리지 14∼20% 급락…'하닉' 상장 후 최저가 | 연합뉴스",
       "telegram_core_fact": "코스피가 장중 6,000선 아래로 떨어진 13일 삼성전자[005930]와 SK하이닉스[000660]를 단일종목으로 하는 레버리지 상장지수펀드(ETF)는 최대 20% 이상 급락 마감했다.",
       "title": "삼전닉스 단일레버리지 14∼20% 급락…'하닉' 상장 후 최저가 | 연합뉴스"
+    },
+    "core:ed914947a802be0044842233": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12175088",
+      "source": "매일경제",
+      "source_body_digest": "d36291f20ad7dd70e4d42315096f50868e59b7d3b9e48eb698dbda1fa536b7bc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f8972b50e634406c4b78d130eba1db280e35409606f4803da6a2b9145011db1",
+      "source_fact_keys": [
+        "source_fact:v1:47fdc5e4d025275dd612b32f0e287187d239d8e5fa7e1b4471fdbd2ec8214536",
+        "source_fact:v1:49776a9c09afffea3cdb58a22814d25be76c1547ad4393da9fa4e453d7f96236",
+        "source_fact:v1:5efd4f902eac32f7d5356efc030e45a7d2aabe9cfe88094a4ab414bfbd306e57",
+        "source_fact:v1:9383b2e9fecd873418ec1286f03a2d1e53c0d031ec4cb32242185bc3193fcf73"
+      ],
+      "source_published_kst": "2026-10-14T06:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "처칠 캐피털 XI, 애질리티 합병 S-4 효력 발생..11월 2일 주총",
+      "telegram_core_fact": "합병이 마무리되면 합병 법인은 '애질리티(Agility)'라는 사명으로 운영되며, 보통주는 나스닥에 티커 AGLT로 상장될 예정이다.",
+      "title": "처칠 캐피털 XI, 애질리티 합병 S-4 효력 발생..11월 2일 주총"
     },
     "core:edb5064cd2b1fc33c7fab2e6": {
       "first_seen_kst": "2026-10-09T17:54:07+09:00",
@@ -55129,6 +55276,29 @@
       "source": "매일경제",
       "title": "“긴축의 시대 투자로 정면돌파” … 서울머니쇼+에 초대합니다"
     },
+    "event:ebe9881b785257654fbd83c2": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12175088",
+      "source": "매일경제",
+      "source_body_digest": "d36291f20ad7dd70e4d42315096f50868e59b7d3b9e48eb698dbda1fa536b7bc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f8972b50e634406c4b78d130eba1db280e35409606f4803da6a2b9145011db1",
+      "source_fact_keys": [
+        "source_fact:v1:47fdc5e4d025275dd612b32f0e287187d239d8e5fa7e1b4471fdbd2ec8214536",
+        "source_fact:v1:49776a9c09afffea3cdb58a22814d25be76c1547ad4393da9fa4e453d7f96236",
+        "source_fact:v1:5efd4f902eac32f7d5356efc030e45a7d2aabe9cfe88094a4ab414bfbd306e57",
+        "source_fact:v1:9383b2e9fecd873418ec1286f03a2d1e53c0d031ec4cb32242185bc3193fcf73"
+      ],
+      "source_published_kst": "2026-10-14T06:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "처칠 캐피털 XI, 애질리티 합병 S-4 효력 발생..11월 2일 주총",
+      "telegram_core_fact": "합병이 마무리되면 합병 법인은 '애질리티(Agility)'라는 사명으로 운영되며, 보통주는 나스닥에 티커 AGLT로 상장될 예정이다.",
+      "title": "처칠 캐피털 XI, 애질리티 합병 S-4 효력 발생..11월 2일 주총"
+    },
     "event:ec4352be2450f6bcfa68ccae": {
       "first_seen_kst": "2026-10-06T18:46:35+09:00",
       "lanes": {
@@ -67239,6 +67409,31 @@
       ],
       "source_published_kst": "2026-10-06T17:18+09:00",
       "title": "국고채 금리, 대외금리 연동하며 혼조세…3년물 3.933%(종합) | 연합뉴스"
+    },
+    "fact:324477edd2f07a8b48d96f9b": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202609292005b",
+      "source": "한국경제",
+      "source_body_digest": "2b2b9abd168292b2cd7aaff2cd7da67b185cf933cd1438c78583e0585833025c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8fa79091c247bc50069c2c5dda6dee264d4550d073870a562524a56e8b8aef85",
+      "source_fact_keys": [
+        "source_fact:v1:6d3750addc1ab8de701fd6437877f594e2c703b502e230bd87f41333313550bc",
+        "source_fact:v1:abdb9d703be4173e76744e4c960ec594e7d29897679b77d7d25e3c77c78a4318",
+        "source_fact:v1:bf8cef3067f26f24427f315dfdc74fa64b32ae6ad807c2399220d1f0dd29f61f",
+        "source_fact:v1:c22928a4aaa29b7b7481e30f820c4e2e0dd491df590e25d9083ae4e3a0514d1e",
+        "source_fact:v1:e5036b1e7278ee190fc884c2e81597ab41853f1f5ea6d1ccd780255ce91dc27c",
+        "source_fact:v1:fcca8b702049e7606f75b5f106b30182f7d811816fcb22ef7818703aeab3d347"
+      ],
+      "source_published_kst": "2026-10-14T06:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "“그 공장, 예정대로 못 짓는다”…수조 원 투자 검증하는 AI [베인의 위닝 전략]",
+      "telegram_core_fact": "AI와 데이터센터 확산으로 전력 피크 수요가 26%가량 늘어날 것으로 전망되면서 발전·송배전 인프라 투자 규모가 급증하고 있지만 비용 초과와 공기 지연은 반복되고 이사회 승인 자료에서 원가와 공정 리스크가 충분히 보이지 않는 경우가 많기 때문이다.",
+      "title": "“그 공장, 예정대로 못 짓는다”…수조 원 투자 검증하는 AI [베인의 위닝 전략]"
     },
     "fact:32490cd4d4fbcdc10fc24797": {
       "first_seen_kst": "2026-10-06T18:58:43+09:00",
@@ -90250,6 +90445,28 @@
       "telegram_core_fact": "(자료제공=하이엠솔루텍)LG전자 냉난방공조(HVAC) 유지보수 전문 자회사 하이엠솔루텍이 AI 데이터센터 시장 확대에 맞춰 통합 유지보수 서비스를 강화한다. 하이엠솔루텍은 AI 데이터센터를 대상으로 HVAC 통합 유지보수 체계를 강화한다고 11일 밝혔다.",
       "title": "하이엠솔루텍, AI 데이터센터 맞춤 HVAC 서비스 강화"
     },
+    "fact:997607e5b8ada6021a3a2a44": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12174357",
+      "source": "매일경제",
+      "source_body_digest": "6db8771359e4ce0a71f9864af9499859fde7ab419b9084c46eaca2f9c99718b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c75462ca697a4a730a3f75093599dec7e0e2271a95d0d93086d30684c81f951f",
+      "source_fact_keys": [
+        "source_fact:v1:417e53ce37c91a5598dfa1f8cefc37bdc20174629d73032ecf4395596d24f056",
+        "source_fact:v1:92a2247f14e35ebfc7a832529c73c7b8fbe56a96310bf9e9847ac8e3d14d8c13",
+        "source_fact:v1:a38b5a8fdb98dd735a8ba73d12c4701d26d2c9ec2be22bf2ff7e4c2c1e5ea0c0"
+      ],
+      "source_published_kst": "2026-10-13T13:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "오세훈 “크리스마스 전 3만호 착공”…서울시·조합·시공사 ‘맞손’",
+      "telegram_core_fact": "서울시는 13일 서울시청에서 연내 착공을 앞둔 11개 정비사업조합, 5개 시공사, 8개 자치구와 함께 ‘주택공급 목표 달성 공동협력 협약’을 체결했다.",
+      "title": "오세훈 “크리스마스 전 3만호 착공”…서울시·조합·시공사 ‘맞손’"
+    },
     "fact:99aa60be5e60d0e7e513dd16": {
       "first_seen_kst": "2026-10-08T01:09:29+09:00",
       "lanes": {
@@ -103173,6 +103390,29 @@
       "source_published_kst": "2026-10-06T07:05+09:00",
       "title": "한강신도시 때도 그러더니⋯반복되는 ‘교통난’ [교통지옥 김포②]"
     },
+    "fact:d245df2954df2d2f1bfe27e9": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174913",
+      "source": "매일경제",
+      "source_body_digest": "9a50a789f89a9f7083343261eca36f7ee42fb530651237f43f3dc5e4b36c1dfb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1c4568120bf592d9e643a8341c47ef2718570506935e1790f7608365bf154ff2",
+      "source_fact_keys": [
+        "source_fact:v1:5d35ba74316df85d9cf593ec92896a9d0321b79d16538800a903f1f7cc9a028b",
+        "source_fact:v1:69ff2dea882206f2670d2a74dd8cbb50ae33fcb7e12e3f1a10f36b56b71ff41c",
+        "source_fact:v1:7513df19d0104fc5e384f7a89785f2d7cefa32778c96f5bdda31b8c4affbbcc2",
+        "source_fact:v1:d244fdbde29ce50bc92d18753aeffc1fd576cd04294dfd1713da36aa1ba3ba65"
+      ],
+      "source_published_kst": "2026-10-13T20:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "포르투나 마이닝, 세네갈 12.8m 구간 금 7.8g/t 확인",
+      "telegram_core_fact": "증권가 컨센서스에 따르면 포르투나 마이닝의 2026년 예상 매출액은 13억570만 달러로 전년 대비 37.87% 증가할 전망이다.",
+      "title": "포르투나 마이닝, 세네갈 12.8m 구간 금 7.8g/t 확인"
+    },
     "fact:d260664485635dfcf3ee8486": {
       "first_seen_kst": "2026-10-06T19:46:03+09:00",
       "lanes": {
@@ -104954,6 +105194,29 @@
       "source_title": "스몰인사이트 \"삼기에너지솔루션즈, 북미 사업 성장축 부상\"",
       "telegram_core_fact": "보고서에 따르면 삼기에너지솔루션즈의 올해 상반기 연결 매출액은 1133억원, 영업이익은 49억원을 기록했다.",
       "title": "스몰인사이트 \"삼기에너지솔루션즈, 북미 사업 성장축 부상\""
+    },
+    "fact:da3f614c146c70e98ab926d1": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12175088",
+      "source": "매일경제",
+      "source_body_digest": "d36291f20ad7dd70e4d42315096f50868e59b7d3b9e48eb698dbda1fa536b7bc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f8972b50e634406c4b78d130eba1db280e35409606f4803da6a2b9145011db1",
+      "source_fact_keys": [
+        "source_fact:v1:47fdc5e4d025275dd612b32f0e287187d239d8e5fa7e1b4471fdbd2ec8214536",
+        "source_fact:v1:49776a9c09afffea3cdb58a22814d25be76c1547ad4393da9fa4e453d7f96236",
+        "source_fact:v1:5efd4f902eac32f7d5356efc030e45a7d2aabe9cfe88094a4ab414bfbd306e57",
+        "source_fact:v1:9383b2e9fecd873418ec1286f03a2d1e53c0d031ec4cb32242185bc3193fcf73"
+      ],
+      "source_published_kst": "2026-10-14T06:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "처칠 캐피털 XI, 애질리티 합병 S-4 효력 발생..11월 2일 주총",
+      "telegram_core_fact": "합병이 마무리되면 합병 법인은 '애질리티(Agility)'라는 사명으로 운영되며, 보통주는 나스닥에 티커 AGLT로 상장될 예정이다.",
+      "title": "처칠 캐피털 XI, 애질리티 합병 S-4 효력 발생..11월 2일 주총"
     },
     "fact:da4465b9d4c6ae76dd8a9def": {
       "first_seen_kst": "2026-10-08T14:55:40+09:00",
@@ -114986,6 +115249,24 @@
       "telegram_core_fact": "비바코(VIVK)가 텍사스 미들랜드에 본사를 둔 퍼미안 분지 수처리 업체 다이렉트 미드스트림(Direct Midstream) 지분 100%를 총매입가 4000만 달러에 인수하는 구속력 없는 의향서(LOI)를 체결했다고 10월 9일 발표했다.",
       "title": "비바코, 다이렉트 미드스트림 4000만 달러 인수 의향서 체결"
     },
+    "link:0547f03489fb1bb51e3fdc18": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261013148500530",
+      "source": "연합뉴스",
+      "source_body_digest": "12e01a1cd2c112da07c073f15e2a808391f7677bb6f8f017ed0888b176efacde",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-14T06:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "유해 우려 화학물질 699종인데…위해성 평가 인력은 단 4명 | 연합뉴스",
+      "telegram_core_fact": "김태선 의원은 \"위해성 평가 지연은 국민 건강과 생명에 직결되는 문제인 만큼 차질 없이 진행되게 인력과 예산을 확충해야 한다\"면서 \"외국에서 이미 규제한 물질은 평가를 생략하고 위해성 물질로 분류할 수 있게 제도가 마련됐음에도 활용되지 않고 있는데, 적극적으로 활용해야 한다\"고 강조했다.",
+      "title": "유해 우려 화학물질 699종인데…위해성 평가 인력은 단 4명 | 연합뉴스"
+    },
     "link:057e0fe8caf1aae6aae5a4c5": {
       "first_seen_kst": "2026-10-03T13:09:25+09:00",
       "lanes": {
@@ -124678,6 +124959,29 @@
       "source_title": "반등 활로 못 찾는 코스피…역대급 삼전 실적에도 오히려 낙폭 확대 | 연합뉴스",
       "telegram_core_fact": "하지만 이는 실제 매출 감소가 아닌 회계상 매출 집계 방식의 차이에서 발생한 것으로 파악됐고, 이튿날인 9일 나스닥 지수가 0.64% 반등한 점을 고려하면 코스피의 부진을 오픈AI발 거품론으로만 설명하기는 어려운 듯 보인다.",
       "title": "반등 활로 못 찾는 코스피…역대급 삼전 실적에도 오히려 낙폭 확대 | 연합뉴스"
+    },
+    "link:2570e9adc497f55eedd1b756": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174913",
+      "source": "매일경제",
+      "source_body_digest": "9a50a789f89a9f7083343261eca36f7ee42fb530651237f43f3dc5e4b36c1dfb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1c4568120bf592d9e643a8341c47ef2718570506935e1790f7608365bf154ff2",
+      "source_fact_keys": [
+        "source_fact:v1:5d35ba74316df85d9cf593ec92896a9d0321b79d16538800a903f1f7cc9a028b",
+        "source_fact:v1:69ff2dea882206f2670d2a74dd8cbb50ae33fcb7e12e3f1a10f36b56b71ff41c",
+        "source_fact:v1:7513df19d0104fc5e384f7a89785f2d7cefa32778c96f5bdda31b8c4affbbcc2",
+        "source_fact:v1:d244fdbde29ce50bc92d18753aeffc1fd576cd04294dfd1713da36aa1ba3ba65"
+      ],
+      "source_published_kst": "2026-10-13T20:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "포르투나 마이닝, 세네갈 12.8m 구간 금 7.8g/t 확인",
+      "telegram_core_fact": "증권가 컨센서스에 따르면 포르투나 마이닝의 2026년 예상 매출액은 13억570만 달러로 전년 대비 37.87% 증가할 전망이다.",
+      "title": "포르투나 마이닝, 세네갈 12.8m 구간 금 7.8g/t 확인"
     },
     "link:258c9cd1f00f6270bca731ea": {
       "first_seen_kst": "2026-10-06T21:17:11+09:00",
@@ -134638,6 +134942,31 @@
       "source_published_kst": "2026-10-06T11:09+09:00",
       "title": "재정부담에 재협상까지…고금리에 상업용 부동산 비상"
     },
+    "link:4391ebce832fb74f3f44227f": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202609292005b",
+      "source": "한국경제",
+      "source_body_digest": "2b2b9abd168292b2cd7aaff2cd7da67b185cf933cd1438c78583e0585833025c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8fa79091c247bc50069c2c5dda6dee264d4550d073870a562524a56e8b8aef85",
+      "source_fact_keys": [
+        "source_fact:v1:6d3750addc1ab8de701fd6437877f594e2c703b502e230bd87f41333313550bc",
+        "source_fact:v1:abdb9d703be4173e76744e4c960ec594e7d29897679b77d7d25e3c77c78a4318",
+        "source_fact:v1:bf8cef3067f26f24427f315dfdc74fa64b32ae6ad807c2399220d1f0dd29f61f",
+        "source_fact:v1:c22928a4aaa29b7b7481e30f820c4e2e0dd491df590e25d9083ae4e3a0514d1e",
+        "source_fact:v1:e5036b1e7278ee190fc884c2e81597ab41853f1f5ea6d1ccd780255ce91dc27c",
+        "source_fact:v1:fcca8b702049e7606f75b5f106b30182f7d811816fcb22ef7818703aeab3d347"
+      ],
+      "source_published_kst": "2026-10-14T06:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "“그 공장, 예정대로 못 짓는다”…수조 원 투자 검증하는 AI [베인의 위닝 전략]",
+      "telegram_core_fact": "AI와 데이터센터 확산으로 전력 피크 수요가 26%가량 늘어날 것으로 전망되면서 발전·송배전 인프라 투자 규모가 급증하고 있지만 비용 초과와 공기 지연은 반복되고 이사회 승인 자료에서 원가와 공정 리스크가 충분히 보이지 않는 경우가 많기 때문이다.",
+      "title": "“그 공장, 예정대로 못 짓는다”…수조 원 투자 검증하는 AI [베인의 위닝 전략]"
+    },
     "link:43a218d4a667191e06b36fd3": {
       "first_seen_kst": "2026-10-07T13:13:19+09:00",
       "lanes": {
@@ -136421,6 +136750,24 @@
       "link": "https://zdnet.co.kr/view/?no=20260916091146",
       "source": "지디넷코리아",
       "title": "허태수 GS 회장 \"스타트업 기술로 AI 데이터센터 병목 해소\""
+    },
+    "link:49adede4c3fd8329609e102e": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12175085",
+      "source": "매일경제",
+      "source_body_digest": "caff36fd9958c996070dde9f3c0cfdf279b0b11cef33a7591906c3566e0ce243",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-14T06:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "비트푸푸, 9월 비트코인 167개 생산..에티오피아 인수 차질",
+      "telegram_core_fact": "비트푸푸(FUFU)는 9월 비트코인 생산량이 167개로 전월 174개보다 4.0% 감소했으며, 에티오피아 비트코인 채굴시설 인수 건이 현지 전력 공급업체와의 분쟁으로 선행조건을 충족하지 못할 중대한 위험에 직면했다고 10월 13일 발표했다. 9월 생산량과 해시레이트가 줄었고 에티오피아 인수도 무산 위험이 커졌어요.",
+      "title": "비트푸푸, 9월 비트코인 167개 생산..에티오피아 인수 차질"
     },
     "link:49bb62f1a47974b084c90ecf": {
       "first_seen_kst": "2026-10-07T00:54:50+09:00",
@@ -174709,6 +175056,28 @@
       "source": "파이낸셜뉴스",
       "title": "SK하이닉스, 美 AI 서밋서 HBF·PIM 등 차세대 AI 메모리 설루션 공개"
     },
+    "link:c4a1ab3014a3d1b983bda180": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12174357",
+      "source": "매일경제",
+      "source_body_digest": "6db8771359e4ce0a71f9864af9499859fde7ab419b9084c46eaca2f9c99718b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c75462ca697a4a730a3f75093599dec7e0e2271a95d0d93086d30684c81f951f",
+      "source_fact_keys": [
+        "source_fact:v1:417e53ce37c91a5598dfa1f8cefc37bdc20174629d73032ecf4395596d24f056",
+        "source_fact:v1:92a2247f14e35ebfc7a832529c73c7b8fbe56a96310bf9e9847ac8e3d14d8c13",
+        "source_fact:v1:a38b5a8fdb98dd735a8ba73d12c4701d26d2c9ec2be22bf2ff7e4c2c1e5ea0c0"
+      ],
+      "source_published_kst": "2026-10-13T13:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "오세훈 “크리스마스 전 3만호 착공”…서울시·조합·시공사 ‘맞손’",
+      "telegram_core_fact": "서울시는 13일 서울시청에서 연내 착공을 앞둔 11개 정비사업조합, 5개 시공사, 8개 자치구와 함께 ‘주택공급 목표 달성 공동협력 협약’을 체결했다.",
+      "title": "오세훈 “크리스마스 전 3만호 착공”…서울시·조합·시공사 ‘맞손’"
+    },
     "link:c4b6d7b4595c8796146bf549": {
       "first_seen_kst": "2026-10-13T18:11:03+09:00",
       "lanes": {
@@ -178046,6 +178415,29 @@
       "link": "https://www.etoday.co.kr/news/view/2631627",
       "source": "이투데이",
       "title": "[환율마감] 원·달러 사흘만 상승, 트럼프 대미투자 일방발표"
+    },
+    "link:ceb77651633c42d0da4137c9": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12175088",
+      "source": "매일경제",
+      "source_body_digest": "d36291f20ad7dd70e4d42315096f50868e59b7d3b9e48eb698dbda1fa536b7bc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f8972b50e634406c4b78d130eba1db280e35409606f4803da6a2b9145011db1",
+      "source_fact_keys": [
+        "source_fact:v1:47fdc5e4d025275dd612b32f0e287187d239d8e5fa7e1b4471fdbd2ec8214536",
+        "source_fact:v1:49776a9c09afffea3cdb58a22814d25be76c1547ad4393da9fa4e453d7f96236",
+        "source_fact:v1:5efd4f902eac32f7d5356efc030e45a7d2aabe9cfe88094a4ab414bfbd306e57",
+        "source_fact:v1:9383b2e9fecd873418ec1286f03a2d1e53c0d031ec4cb32242185bc3193fcf73"
+      ],
+      "source_published_kst": "2026-10-14T06:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "처칠 캐피털 XI, 애질리티 합병 S-4 효력 발생..11월 2일 주총",
+      "telegram_core_fact": "합병이 마무리되면 합병 법인은 '애질리티(Agility)'라는 사명으로 운영되며, 보통주는 나스닥에 티커 AGLT로 상장될 예정이다.",
+      "title": "처칠 캐피털 XI, 애질리티 합병 S-4 효력 발생..11월 2일 주총"
     },
     "link:cec32cd083b029f6d059b71e": {
       "first_seen_kst": "2026-10-13T05:27:22+09:00",
@@ -182302,6 +182694,24 @@
       "source_title": "최태원 SK 회장, 9일 광주 반도체 사업부지 첫 점검",
       "telegram_core_fact": "최태원 SK그룹 회장이 오는 9일 전남광주를 찾아 반도체 생산시설(팹) 건설 예정 부지를 점검한다. 삼성전자와 SK하이닉스는 광주 군 공항 일대에 총 800조 원을 투자해 반도체 팹을 각각 2기씩 건설할 계획이다.",
       "title": "최태원 SK 회장, 9일 광주 반도체 사업부지 첫 점검"
+    },
+    "link:dcd207466f3925491da689f3": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261013134700030",
+      "source": "연합뉴스",
+      "source_body_digest": "eecf73e7d4634921bf6922940cfd7aa417cf6eec98ab0868b8216bff64a5e538",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-14T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "이양수 \"aT 칭다오 물류센터, 거약 예산 투입에도 활용률 저하\" | 연합뉴스",
+      "telegram_core_fact": "칭다오 물류센터의 매출은 2021년 100억7천400만원에서 지난해 182억5천300만원으로 81.2% 증가했고, 같은 기간 영업이익은 2억5천400만원에서 2억9천300만원으로 15.4% 늘었다.",
+      "title": "이양수 \"aT 칭다오 물류센터, 거약 예산 투입에도 활용률 저하\" | 연합뉴스"
     },
     "link:dd1324b8adb0708fed6f8d80": {
       "first_seen_kst": "2026-09-29T16:50:36+09:00",
@@ -201553,6 +201963,24 @@
       "source_published_kst": "2026-10-05T17:20+09:00",
       "title": "리사 수 AMD 회장 7개월 만에 방한…'AI 동맹' 넓히나(종합) | 연합뉴스"
     },
+    "original:1c7f62d3a8e797dda48dd1f9": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12175085",
+      "source": "매일경제",
+      "source_body_digest": "caff36fd9958c996070dde9f3c0cfdf279b0b11cef33a7591906c3566e0ce243",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-14T06:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "비트푸푸, 9월 비트코인 167개 생산..에티오피아 인수 차질",
+      "telegram_core_fact": "비트푸푸(FUFU)는 9월 비트코인 생산량이 167개로 전월 174개보다 4.0% 감소했으며, 에티오피아 비트코인 채굴시설 인수 건이 현지 전력 공급업체와의 분쟁으로 선행조건을 충족하지 못할 중대한 위험에 직면했다고 10월 13일 발표했다. 9월 생산량과 해시레이트가 줄었고 에티오피아 인수도 무산 위험이 커졌어요.",
+      "title": "비트푸푸, 9월 비트코인 167개 생산..에티오피아 인수 차질"
+    },
     "original:1c948615fe0db2f8f0bc33a4": {
       "first_seen_kst": "2026-10-06T23:05:07+09:00",
       "lanes": {
@@ -214752,6 +215180,29 @@
       "source": "이데일리",
       "title": "뉴노멀 됐나…美10년물 다시 5.1%, 얼마나 더 오를까"
     },
+    "original:4585e4f7da869d6741fd7074": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12175088",
+      "source": "매일경제",
+      "source_body_digest": "d36291f20ad7dd70e4d42315096f50868e59b7d3b9e48eb698dbda1fa536b7bc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f8972b50e634406c4b78d130eba1db280e35409606f4803da6a2b9145011db1",
+      "source_fact_keys": [
+        "source_fact:v1:47fdc5e4d025275dd612b32f0e287187d239d8e5fa7e1b4471fdbd2ec8214536",
+        "source_fact:v1:49776a9c09afffea3cdb58a22814d25be76c1547ad4393da9fa4e453d7f96236",
+        "source_fact:v1:5efd4f902eac32f7d5356efc030e45a7d2aabe9cfe88094a4ab414bfbd306e57",
+        "source_fact:v1:9383b2e9fecd873418ec1286f03a2d1e53c0d031ec4cb32242185bc3193fcf73"
+      ],
+      "source_published_kst": "2026-10-14T06:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "처칠 캐피털 XI, 애질리티 합병 S-4 효력 발생..11월 2일 주총",
+      "telegram_core_fact": "합병이 마무리되면 합병 법인은 '애질리티(Agility)'라는 사명으로 운영되며, 보통주는 나스닥에 티커 AGLT로 상장될 예정이다.",
+      "title": "처칠 캐피털 XI, 애질리티 합병 S-4 효력 발생..11월 2일 주총"
+    },
     "original:458988313c4c655ecd8c1895": {
       "first_seen_kst": "2026-10-12T11:51:53+09:00",
       "lanes": {
@@ -219174,6 +219625,29 @@
       "source_title": "HD한국조선해양 올 1~3분기 영업익, 작년 전체 실적 넘는다 \"고속 성장에도 불확실성 대비\"",
       "telegram_core_fact": "HD한국조선해양이 올해 3분기 1조6000억원에 육박하는 영업이익을 달성할 전망이다.",
       "title": "HD한국조선해양 올 1~3분기 영업익, 작년 전체 실적 넘는다 \"고속 성장에도 불확실성 대비\""
+    },
+    "original:54809d2351139a81ee68c102": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174913",
+      "source": "매일경제",
+      "source_body_digest": "9a50a789f89a9f7083343261eca36f7ee42fb530651237f43f3dc5e4b36c1dfb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1c4568120bf592d9e643a8341c47ef2718570506935e1790f7608365bf154ff2",
+      "source_fact_keys": [
+        "source_fact:v1:5d35ba74316df85d9cf593ec92896a9d0321b79d16538800a903f1f7cc9a028b",
+        "source_fact:v1:69ff2dea882206f2670d2a74dd8cbb50ae33fcb7e12e3f1a10f36b56b71ff41c",
+        "source_fact:v1:7513df19d0104fc5e384f7a89785f2d7cefa32778c96f5bdda31b8c4affbbcc2",
+        "source_fact:v1:d244fdbde29ce50bc92d18753aeffc1fd576cd04294dfd1713da36aa1ba3ba65"
+      ],
+      "source_published_kst": "2026-10-13T20:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "포르투나 마이닝, 세네갈 12.8m 구간 금 7.8g/t 확인",
+      "telegram_core_fact": "증권가 컨센서스에 따르면 포르투나 마이닝의 2026년 예상 매출액은 13억570만 달러로 전년 대비 37.87% 증가할 전망이다.",
+      "title": "포르투나 마이닝, 세네갈 12.8m 구간 금 7.8g/t 확인"
     },
     "original:5483a50ee87a43e6db5da291": {
       "first_seen_kst": "2026-09-30T02:23:41+09:00",
@@ -245509,6 +245983,24 @@
       "source": "한국경제",
       "title": "주택 공급난에…구청장이 재건축·재개발 챙긴다"
     },
+    "original:abac350f57b1b12e19175f7e": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261013148500530",
+      "source": "연합뉴스",
+      "source_body_digest": "12e01a1cd2c112da07c073f15e2a808391f7677bb6f8f017ed0888b176efacde",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-14T06:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "유해 우려 화학물질 699종인데…위해성 평가 인력은 단 4명 | 연합뉴스",
+      "telegram_core_fact": "김태선 의원은 \"위해성 평가 지연은 국민 건강과 생명에 직결되는 문제인 만큼 차질 없이 진행되게 인력과 예산을 확충해야 한다\"면서 \"외국에서 이미 규제한 물질은 평가를 생략하고 위해성 물질로 분류할 수 있게 제도가 마련됐음에도 활용되지 않고 있는데, 적극적으로 활용해야 한다\"고 강조했다.",
+      "title": "유해 우려 화학물질 699종인데…위해성 평가 인력은 단 4명 | 연합뉴스"
+    },
     "original:abb1c701a8d5590a1a02db01": {
       "first_seen_kst": "2026-10-07T05:33:37+09:00",
       "lanes": {
@@ -256042,6 +256534,28 @@
       "telegram_core_fact": "우주항공청은 이날 오후 5시 52분 초소형 군집위성 5호기와 교신에 성공하면서 이날 발사한 초소형 군집위성 5기(2∼6호) 모두와 최초 교신이 완료됐다고 밝혔다.",
       "title": "누리호 초소형 군집위성 5기 모두 교신 성공…운영 착수(종합) | 연합뉴스"
     },
+    "original:d1053be3510995380c08b3d7": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12174357",
+      "source": "매일경제",
+      "source_body_digest": "6db8771359e4ce0a71f9864af9499859fde7ab419b9084c46eaca2f9c99718b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c75462ca697a4a730a3f75093599dec7e0e2271a95d0d93086d30684c81f951f",
+      "source_fact_keys": [
+        "source_fact:v1:417e53ce37c91a5598dfa1f8cefc37bdc20174629d73032ecf4395596d24f056",
+        "source_fact:v1:92a2247f14e35ebfc7a832529c73c7b8fbe56a96310bf9e9847ac8e3d14d8c13",
+        "source_fact:v1:a38b5a8fdb98dd735a8ba73d12c4701d26d2c9ec2be22bf2ff7e4c2c1e5ea0c0"
+      ],
+      "source_published_kst": "2026-10-13T13:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "오세훈 “크리스마스 전 3만호 착공”…서울시·조합·시공사 ‘맞손’",
+      "telegram_core_fact": "서울시는 13일 서울시청에서 연내 착공을 앞둔 11개 정비사업조합, 5개 시공사, 8개 자치구와 함께 ‘주택공급 목표 달성 공동협력 협약’을 체결했다.",
+      "title": "오세훈 “크리스마스 전 3만호 착공”…서울시·조합·시공사 ‘맞손’"
+    },
     "original:d125af42ca046788ab33a9e1": {
       "first_seen_kst": "2026-10-05T06:25:21+09:00",
       "lanes": {
@@ -258721,6 +259235,31 @@
       "source_title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박",
       "telegram_core_fact": "하지만 전쟁 이후 2년 만기 주택담보대출 평균 금리가 1%포인트 가까이 상승하면서 최근 6%에 근접했다.",
       "title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박"
+    },
+    "original:d91e9c6d6b150b3be856ffaa": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202609292005b",
+      "source": "한국경제",
+      "source_body_digest": "2b2b9abd168292b2cd7aaff2cd7da67b185cf933cd1438c78583e0585833025c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8fa79091c247bc50069c2c5dda6dee264d4550d073870a562524a56e8b8aef85",
+      "source_fact_keys": [
+        "source_fact:v1:6d3750addc1ab8de701fd6437877f594e2c703b502e230bd87f41333313550bc",
+        "source_fact:v1:abdb9d703be4173e76744e4c960ec594e7d29897679b77d7d25e3c77c78a4318",
+        "source_fact:v1:bf8cef3067f26f24427f315dfdc74fa64b32ae6ad807c2399220d1f0dd29f61f",
+        "source_fact:v1:c22928a4aaa29b7b7481e30f820c4e2e0dd491df590e25d9083ae4e3a0514d1e",
+        "source_fact:v1:e5036b1e7278ee190fc884c2e81597ab41853f1f5ea6d1ccd780255ce91dc27c",
+        "source_fact:v1:fcca8b702049e7606f75b5f106b30182f7d811816fcb22ef7818703aeab3d347"
+      ],
+      "source_published_kst": "2026-10-14T06:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "“그 공장, 예정대로 못 짓는다”…수조 원 투자 검증하는 AI [베인의 위닝 전략]",
+      "telegram_core_fact": "AI와 데이터센터 확산으로 전력 피크 수요가 26%가량 늘어날 것으로 전망되면서 발전·송배전 인프라 투자 규모가 급증하고 있지만 비용 초과와 공기 지연은 반복되고 이사회 승인 자료에서 원가와 공정 리스크가 충분히 보이지 않는 경우가 많기 때문이다.",
+      "title": "“그 공장, 예정대로 못 짓는다”…수조 원 투자 검증하는 AI [베인의 위닝 전략]"
     },
     "original:d93b60bb1832b9d4703a19b2": {
       "first_seen_kst": "2026-10-06T19:46:03+09:00",
@@ -261659,6 +262198,24 @@
       "link": "https://www.yna.co.kr/view/AKR20260930156351008",
       "source": "연합뉴스",
       "title": "상품공급 부족했나…'조각투자' 신종증권시장 개장 연기(종합) | 연합뉴스"
+    },
+    "original:e30bdb826a1d57d753e4a993": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261013134700030",
+      "source": "연합뉴스",
+      "source_body_digest": "eecf73e7d4634921bf6922940cfd7aa417cf6eec98ab0868b8216bff64a5e538",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-14T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "이양수 \"aT 칭다오 물류센터, 거약 예산 투입에도 활용률 저하\" | 연합뉴스",
+      "telegram_core_fact": "칭다오 물류센터의 매출은 2021년 100억7천400만원에서 지난해 182억5천300만원으로 81.2% 증가했고, 같은 기간 영업이익은 2억5천400만원에서 2억9천300만원으로 15.4% 늘었다.",
+      "title": "이양수 \"aT 칭다오 물류센터, 거약 예산 투입에도 활용률 저하\" | 연합뉴스"
     },
     "original:e32270cb96f0350c6ea7ae9b": {
       "first_seen_kst": "2026-10-08T03:51:03+09:00",
@@ -271048,6 +271605,31 @@
       "source_published_kst": "2026-10-07T10:11+09:00",
       "title": "KT&G, 인니 신공장 돌린다…연 350억개비 ‘해외 최대 생산기지’로"
     },
+    "source_fact:00cd07cc28bcb9f026c2d8a6": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202609292005b",
+      "source": "한국경제",
+      "source_body_digest": "2b2b9abd168292b2cd7aaff2cd7da67b185cf933cd1438c78583e0585833025c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8fa79091c247bc50069c2c5dda6dee264d4550d073870a562524a56e8b8aef85",
+      "source_fact_keys": [
+        "source_fact:v1:6d3750addc1ab8de701fd6437877f594e2c703b502e230bd87f41333313550bc",
+        "source_fact:v1:abdb9d703be4173e76744e4c960ec594e7d29897679b77d7d25e3c77c78a4318",
+        "source_fact:v1:bf8cef3067f26f24427f315dfdc74fa64b32ae6ad807c2399220d1f0dd29f61f",
+        "source_fact:v1:c22928a4aaa29b7b7481e30f820c4e2e0dd491df590e25d9083ae4e3a0514d1e",
+        "source_fact:v1:e5036b1e7278ee190fc884c2e81597ab41853f1f5ea6d1ccd780255ce91dc27c",
+        "source_fact:v1:fcca8b702049e7606f75b5f106b30182f7d811816fcb22ef7818703aeab3d347"
+      ],
+      "source_published_kst": "2026-10-14T06:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "“그 공장, 예정대로 못 짓는다”…수조 원 투자 검증하는 AI [베인의 위닝 전략]",
+      "telegram_core_fact": "AI와 데이터센터 확산으로 전력 피크 수요가 26%가량 늘어날 것으로 전망되면서 발전·송배전 인프라 투자 규모가 급증하고 있지만 비용 초과와 공기 지연은 반복되고 이사회 승인 자료에서 원가와 공정 리스크가 충분히 보이지 않는 경우가 많기 때문이다.",
+      "title": "“그 공장, 예정대로 못 짓는다”…수조 원 투자 검증하는 AI [베인의 위닝 전략]"
+    },
     "source_fact:00d2c8731895b2158704ad7f": {
       "first_seen_kst": "2026-10-11T14:23:21+09:00",
       "lanes": {
@@ -273432,6 +274014,29 @@
       "source_title": "티제이이노베이션, 소프트뱅크에 고출력 광 DAS 공급",
       "telegram_core_fact": "무선통신 인프라 장비 전문기업 티제이이노베이션(TJ Innovation)은 일본 이동통신사업자 소프트뱅크(SoftBank)에 고출력 광 DAS(분산안테나시스템)를 공급한다고 12일 밝혔다.",
       "title": "티제이이노베이션, 소프트뱅크에 고출력 광 DAS 공급"
+    },
+    "source_fact:02fc39282a402c100b0e76d8": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12175088",
+      "source": "매일경제",
+      "source_body_digest": "d36291f20ad7dd70e4d42315096f50868e59b7d3b9e48eb698dbda1fa536b7bc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f8972b50e634406c4b78d130eba1db280e35409606f4803da6a2b9145011db1",
+      "source_fact_keys": [
+        "source_fact:v1:47fdc5e4d025275dd612b32f0e287187d239d8e5fa7e1b4471fdbd2ec8214536",
+        "source_fact:v1:49776a9c09afffea3cdb58a22814d25be76c1547ad4393da9fa4e453d7f96236",
+        "source_fact:v1:5efd4f902eac32f7d5356efc030e45a7d2aabe9cfe88094a4ab414bfbd306e57",
+        "source_fact:v1:9383b2e9fecd873418ec1286f03a2d1e53c0d031ec4cb32242185bc3193fcf73"
+      ],
+      "source_published_kst": "2026-10-14T06:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "처칠 캐피털 XI, 애질리티 합병 S-4 효력 발생..11월 2일 주총",
+      "telegram_core_fact": "합병이 마무리되면 합병 법인은 '애질리티(Agility)'라는 사명으로 운영되며, 보통주는 나스닥에 티커 AGLT로 상장될 예정이다.",
+      "title": "처칠 캐피털 XI, 애질리티 합병 S-4 효력 발생..11월 2일 주총"
     },
     "source_fact:030c0a2a90fa6a0f366c103c": {
       "first_seen_kst": "2026-10-07T06:41:04+09:00",
@@ -277308,6 +277913,31 @@
       "telegram_core_fact": "정부가 서울 전역과 경기 일부 지역을 규제지역과 토지거래허가구역으로 지정하며 대출 규제까지 강화한 10·15 부동산대책이 시행 1년을 맞았습니다.",
       "title": "[집중취재] 10·15 부동산대책 1년…집값 잡았나, 풍선효과 키웠나"
     },
+    "source_fact:06af4a05f911da1f166600ed": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202609292005b",
+      "source": "한국경제",
+      "source_body_digest": "2b2b9abd168292b2cd7aaff2cd7da67b185cf933cd1438c78583e0585833025c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8fa79091c247bc50069c2c5dda6dee264d4550d073870a562524a56e8b8aef85",
+      "source_fact_keys": [
+        "source_fact:v1:6d3750addc1ab8de701fd6437877f594e2c703b502e230bd87f41333313550bc",
+        "source_fact:v1:abdb9d703be4173e76744e4c960ec594e7d29897679b77d7d25e3c77c78a4318",
+        "source_fact:v1:bf8cef3067f26f24427f315dfdc74fa64b32ae6ad807c2399220d1f0dd29f61f",
+        "source_fact:v1:c22928a4aaa29b7b7481e30f820c4e2e0dd491df590e25d9083ae4e3a0514d1e",
+        "source_fact:v1:e5036b1e7278ee190fc884c2e81597ab41853f1f5ea6d1ccd780255ce91dc27c",
+        "source_fact:v1:fcca8b702049e7606f75b5f106b30182f7d811816fcb22ef7818703aeab3d347"
+      ],
+      "source_published_kst": "2026-10-14T06:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "“그 공장, 예정대로 못 짓는다”…수조 원 투자 검증하는 AI [베인의 위닝 전략]",
+      "telegram_core_fact": "AI와 데이터센터 확산으로 전력 피크 수요가 26%가량 늘어날 것으로 전망되면서 발전·송배전 인프라 투자 규모가 급증하고 있지만 비용 초과와 공기 지연은 반복되고 이사회 승인 자료에서 원가와 공정 리스크가 충분히 보이지 않는 경우가 많기 때문이다.",
+      "title": "“그 공장, 예정대로 못 짓는다”…수조 원 투자 검증하는 AI [베인의 위닝 전략]"
+    },
     "source_fact:06b53f4fb8ed3df436e61d7a": {
       "first_seen_kst": "2026-10-13T05:50:59+09:00",
       "lanes": {
@@ -279540,6 +280170,28 @@
       ],
       "source_published_kst": "2026-10-06T08:41+09:00",
       "title": "AI 데이터센터 늘자 전력 수요도 급증…ETF 투자처도 '전력 인프라'로"
+    },
+    "source_fact:0899b8fc74c2cd1281f415d2": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12174357",
+      "source": "매일경제",
+      "source_body_digest": "6db8771359e4ce0a71f9864af9499859fde7ab419b9084c46eaca2f9c99718b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c75462ca697a4a730a3f75093599dec7e0e2271a95d0d93086d30684c81f951f",
+      "source_fact_keys": [
+        "source_fact:v1:417e53ce37c91a5598dfa1f8cefc37bdc20174629d73032ecf4395596d24f056",
+        "source_fact:v1:92a2247f14e35ebfc7a832529c73c7b8fbe56a96310bf9e9847ac8e3d14d8c13",
+        "source_fact:v1:a38b5a8fdb98dd735a8ba73d12c4701d26d2c9ec2be22bf2ff7e4c2c1e5ea0c0"
+      ],
+      "source_published_kst": "2026-10-13T13:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "오세훈 “크리스마스 전 3만호 착공”…서울시·조합·시공사 ‘맞손’",
+      "telegram_core_fact": "서울시는 13일 서울시청에서 연내 착공을 앞둔 11개 정비사업조합, 5개 시공사, 8개 자치구와 함께 ‘주택공급 목표 달성 공동협력 협약’을 체결했다.",
+      "title": "오세훈 “크리스마스 전 3만호 착공”…서울시·조합·시공사 ‘맞손’"
     },
     "source_fact:0899c14d99a32c7ec3a59161": {
       "first_seen_kst": "2026-10-10T13:42:50+09:00",
@@ -286843,6 +287495,29 @@
       "telegram_core_fact": "아자이 방가 세계은행(WB) 총재는 중동전쟁 이후 이란이 호르무즈 해협을 봉쇄해 전 세계 석유 공급량의 20%가량이 차단됐을 때 세계 경제 성장세가 우려했던 것보다는 안정적으로 유지됐지만 최근 다시 압박이 가중되고 있다고 진단했다.",
       "title": "IMF·WB 연차총회 태국서 개막…중동전쟁·공공부채·AI 논의 | 연합뉴스"
     },
+    "source_fact:0f655c76e1f816176f2a20e6": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12175088",
+      "source": "매일경제",
+      "source_body_digest": "d36291f20ad7dd70e4d42315096f50868e59b7d3b9e48eb698dbda1fa536b7bc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f8972b50e634406c4b78d130eba1db280e35409606f4803da6a2b9145011db1",
+      "source_fact_keys": [
+        "source_fact:v1:47fdc5e4d025275dd612b32f0e287187d239d8e5fa7e1b4471fdbd2ec8214536",
+        "source_fact:v1:49776a9c09afffea3cdb58a22814d25be76c1547ad4393da9fa4e453d7f96236",
+        "source_fact:v1:5efd4f902eac32f7d5356efc030e45a7d2aabe9cfe88094a4ab414bfbd306e57",
+        "source_fact:v1:9383b2e9fecd873418ec1286f03a2d1e53c0d031ec4cb32242185bc3193fcf73"
+      ],
+      "source_published_kst": "2026-10-14T06:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "처칠 캐피털 XI, 애질리티 합병 S-4 효력 발생..11월 2일 주총",
+      "telegram_core_fact": "합병이 마무리되면 합병 법인은 '애질리티(Agility)'라는 사명으로 운영되며, 보통주는 나스닥에 티커 AGLT로 상장될 예정이다.",
+      "title": "처칠 캐피털 XI, 애질리티 합병 S-4 효력 발생..11월 2일 주총"
+    },
     "source_fact:0f665fe5bb673cb3d7304f77": {
       "first_seen_kst": "2026-10-13T14:05:30+09:00",
       "lanes": {
@@ -290415,6 +291090,29 @@
       ],
       "source_published_kst": "2026-10-06T10:00+09:00",
       "title": "LG전자, 르노 '유럽 첫 상용 SDV'에 통합 콕핏 솔루션 공급"
+    },
+    "source_fact:121e7fa12b1e9bab3847210f": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174913",
+      "source": "매일경제",
+      "source_body_digest": "9a50a789f89a9f7083343261eca36f7ee42fb530651237f43f3dc5e4b36c1dfb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1c4568120bf592d9e643a8341c47ef2718570506935e1790f7608365bf154ff2",
+      "source_fact_keys": [
+        "source_fact:v1:5d35ba74316df85d9cf593ec92896a9d0321b79d16538800a903f1f7cc9a028b",
+        "source_fact:v1:69ff2dea882206f2670d2a74dd8cbb50ae33fcb7e12e3f1a10f36b56b71ff41c",
+        "source_fact:v1:7513df19d0104fc5e384f7a89785f2d7cefa32778c96f5bdda31b8c4affbbcc2",
+        "source_fact:v1:d244fdbde29ce50bc92d18753aeffc1fd576cd04294dfd1713da36aa1ba3ba65"
+      ],
+      "source_published_kst": "2026-10-13T20:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "포르투나 마이닝, 세네갈 12.8m 구간 금 7.8g/t 확인",
+      "telegram_core_fact": "증권가 컨센서스에 따르면 포르투나 마이닝의 2026년 예상 매출액은 13억570만 달러로 전년 대비 37.87% 증가할 전망이다.",
+      "title": "포르투나 마이닝, 세네갈 12.8m 구간 금 7.8g/t 확인"
     },
     "source_fact:12224c8311314c5ab9bb900e": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
@@ -332638,6 +333336,31 @@
       "telegram_core_fact": "한국투자금융지주가 미국 대체투자 전문 운용사인 찰스뱅크캐피털파트너스와 크레딧 투자를 전문으로 하는 합작법인(JV) 설립을 추진한다. 투자은행(IB) 업계에 따르면 한투는 미국 사모펀드 운용사인 찰스뱅크와 JV 설립을 위한 협상을 진행하고 있다.",
       "title": "[단독]한투, 美에 대체투자 운용사 세운다"
     },
+    "source_fact:36f9fd0c2d1addeebd3eb0d9": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202609292005b",
+      "source": "한국경제",
+      "source_body_digest": "2b2b9abd168292b2cd7aaff2cd7da67b185cf933cd1438c78583e0585833025c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8fa79091c247bc50069c2c5dda6dee264d4550d073870a562524a56e8b8aef85",
+      "source_fact_keys": [
+        "source_fact:v1:6d3750addc1ab8de701fd6437877f594e2c703b502e230bd87f41333313550bc",
+        "source_fact:v1:abdb9d703be4173e76744e4c960ec594e7d29897679b77d7d25e3c77c78a4318",
+        "source_fact:v1:bf8cef3067f26f24427f315dfdc74fa64b32ae6ad807c2399220d1f0dd29f61f",
+        "source_fact:v1:c22928a4aaa29b7b7481e30f820c4e2e0dd491df590e25d9083ae4e3a0514d1e",
+        "source_fact:v1:e5036b1e7278ee190fc884c2e81597ab41853f1f5ea6d1ccd780255ce91dc27c",
+        "source_fact:v1:fcca8b702049e7606f75b5f106b30182f7d811816fcb22ef7818703aeab3d347"
+      ],
+      "source_published_kst": "2026-10-14T06:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "“그 공장, 예정대로 못 짓는다”…수조 원 투자 검증하는 AI [베인의 위닝 전략]",
+      "telegram_core_fact": "AI와 데이터센터 확산으로 전력 피크 수요가 26%가량 늘어날 것으로 전망되면서 발전·송배전 인프라 투자 규모가 급증하고 있지만 비용 초과와 공기 지연은 반복되고 이사회 승인 자료에서 원가와 공정 리스크가 충분히 보이지 않는 경우가 많기 때문이다.",
+      "title": "“그 공장, 예정대로 못 짓는다”…수조 원 투자 검증하는 AI [베인의 위닝 전략]"
+    },
     "source_fact:36fdadc902a78bcd9de738d1": {
       "first_seen_kst": "2026-10-11T21:07:10+09:00",
       "lanes": {
@@ -353228,6 +353951,31 @@
       "source_published_kst": "2026-10-07T08:45+09:00",
       "title": "멜라르 애퀴지션 I, 에벌리 합병 SEC 효력 발생..22일 주총 표결"
     },
+    "source_fact:48ee622bd53917ab530ab044": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202609292005b",
+      "source": "한국경제",
+      "source_body_digest": "2b2b9abd168292b2cd7aaff2cd7da67b185cf933cd1438c78583e0585833025c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8fa79091c247bc50069c2c5dda6dee264d4550d073870a562524a56e8b8aef85",
+      "source_fact_keys": [
+        "source_fact:v1:6d3750addc1ab8de701fd6437877f594e2c703b502e230bd87f41333313550bc",
+        "source_fact:v1:abdb9d703be4173e76744e4c960ec594e7d29897679b77d7d25e3c77c78a4318",
+        "source_fact:v1:bf8cef3067f26f24427f315dfdc74fa64b32ae6ad807c2399220d1f0dd29f61f",
+        "source_fact:v1:c22928a4aaa29b7b7481e30f820c4e2e0dd491df590e25d9083ae4e3a0514d1e",
+        "source_fact:v1:e5036b1e7278ee190fc884c2e81597ab41853f1f5ea6d1ccd780255ce91dc27c",
+        "source_fact:v1:fcca8b702049e7606f75b5f106b30182f7d811816fcb22ef7818703aeab3d347"
+      ],
+      "source_published_kst": "2026-10-14T06:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "“그 공장, 예정대로 못 짓는다”…수조 원 투자 검증하는 AI [베인의 위닝 전략]",
+      "telegram_core_fact": "AI와 데이터센터 확산으로 전력 피크 수요가 26%가량 늘어날 것으로 전망되면서 발전·송배전 인프라 투자 규모가 급증하고 있지만 비용 초과와 공기 지연은 반복되고 이사회 승인 자료에서 원가와 공정 리스크가 충분히 보이지 않는 경우가 많기 때문이다.",
+      "title": "“그 공장, 예정대로 못 짓는다”…수조 원 투자 검증하는 AI [베인의 위닝 전략]"
+    },
     "source_fact:48f6c93ce8a5ec881808ef7a": {
       "first_seen_kst": "2026-10-12T06:27:02+09:00",
       "lanes": {
@@ -364098,6 +364846,28 @@
       "source_title": "이소영 “온누리 품목 제한 검토”…납품대금연동제 손질[종합]",
       "telegram_core_fact": "이 장관은 “발동 요건에 대한 제도 보완과 제재, 계약에서의 자동 적용 제도까지 포함해 납품대금연동제를 전체적으로 다시 검토하겠다”라고 밝혔다.",
       "title": "이소영 “온누리 품목 제한 검토”…납품대금연동제 손질[종합]"
+    },
+    "source_fact:52cbfa48d77ebbc00343db6e": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12174357",
+      "source": "매일경제",
+      "source_body_digest": "6db8771359e4ce0a71f9864af9499859fde7ab419b9084c46eaca2f9c99718b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c75462ca697a4a730a3f75093599dec7e0e2271a95d0d93086d30684c81f951f",
+      "source_fact_keys": [
+        "source_fact:v1:417e53ce37c91a5598dfa1f8cefc37bdc20174629d73032ecf4395596d24f056",
+        "source_fact:v1:92a2247f14e35ebfc7a832529c73c7b8fbe56a96310bf9e9847ac8e3d14d8c13",
+        "source_fact:v1:a38b5a8fdb98dd735a8ba73d12c4701d26d2c9ec2be22bf2ff7e4c2c1e5ea0c0"
+      ],
+      "source_published_kst": "2026-10-13T13:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "오세훈 “크리스마스 전 3만호 착공”…서울시·조합·시공사 ‘맞손’",
+      "telegram_core_fact": "서울시는 13일 서울시청에서 연내 착공을 앞둔 11개 정비사업조합, 5개 시공사, 8개 자치구와 함께 ‘주택공급 목표 달성 공동협력 협약’을 체결했다.",
+      "title": "오세훈 “크리스마스 전 3만호 착공”…서울시·조합·시공사 ‘맞손’"
     },
     "source_fact:52d14942967133eb601faa64": {
       "first_seen_kst": "2026-10-09T21:27:46+09:00",
@@ -396722,6 +397492,31 @@
       "telegram_core_fact": "포스코홀딩스는 염수리튬 2공장 상공정을 준공하고, 2033년 연산 10만톤 생산체제 구축을 공식화했다. 장인화 포스코그룹 회장이 글로벌 핵심광물 확보전 한복판인 아르헨티나에서 리튬 사업의 확장 신호탄을 쐈다.",
       "title": "장인화, 글로벌 자원 확보전 진두지휘…포스코 리튬 2공장 준공"
     },
+    "source_fact:6f9577184534fc2139afdacb": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202609292005b",
+      "source": "한국경제",
+      "source_body_digest": "2b2b9abd168292b2cd7aaff2cd7da67b185cf933cd1438c78583e0585833025c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8fa79091c247bc50069c2c5dda6dee264d4550d073870a562524a56e8b8aef85",
+      "source_fact_keys": [
+        "source_fact:v1:6d3750addc1ab8de701fd6437877f594e2c703b502e230bd87f41333313550bc",
+        "source_fact:v1:abdb9d703be4173e76744e4c960ec594e7d29897679b77d7d25e3c77c78a4318",
+        "source_fact:v1:bf8cef3067f26f24427f315dfdc74fa64b32ae6ad807c2399220d1f0dd29f61f",
+        "source_fact:v1:c22928a4aaa29b7b7481e30f820c4e2e0dd491df590e25d9083ae4e3a0514d1e",
+        "source_fact:v1:e5036b1e7278ee190fc884c2e81597ab41853f1f5ea6d1ccd780255ce91dc27c",
+        "source_fact:v1:fcca8b702049e7606f75b5f106b30182f7d811816fcb22ef7818703aeab3d347"
+      ],
+      "source_published_kst": "2026-10-14T06:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "“그 공장, 예정대로 못 짓는다”…수조 원 투자 검증하는 AI [베인의 위닝 전략]",
+      "telegram_core_fact": "AI와 데이터센터 확산으로 전력 피크 수요가 26%가량 늘어날 것으로 전망되면서 발전·송배전 인프라 투자 규모가 급증하고 있지만 비용 초과와 공기 지연은 반복되고 이사회 승인 자료에서 원가와 공정 리스크가 충분히 보이지 않는 경우가 많기 때문이다.",
+      "title": "“그 공장, 예정대로 못 짓는다”…수조 원 투자 검증하는 AI [베인의 위닝 전략]"
+    },
     "source_fact:6f9b2e0700757de0673b9e8c": {
       "first_seen_kst": "2026-10-12T16:29:45+09:00",
       "lanes": {
@@ -406409,6 +407204,29 @@
       "telegram_core_fact": "우주 인공지능(AI) 데이터센터의 조기 실증 필요성에 여야가 한목소리를 냈다. 이처럼 글로벌 기업들이 우주 AI 데이터센터의 기술 실증과 상용화에 속도를 내는 사이 국내에서는 실제 우주 환경에서 기술을 검증하기 위한 준비가 부족하다고 지적했다.",
       "title": "미·중 우주 AI데이터센터 경쟁 가속…우주청 \"2028년 조기 실증 노력\""
     },
+    "source_fact:78492f51857ac153cc334979": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174913",
+      "source": "매일경제",
+      "source_body_digest": "9a50a789f89a9f7083343261eca36f7ee42fb530651237f43f3dc5e4b36c1dfb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1c4568120bf592d9e643a8341c47ef2718570506935e1790f7608365bf154ff2",
+      "source_fact_keys": [
+        "source_fact:v1:5d35ba74316df85d9cf593ec92896a9d0321b79d16538800a903f1f7cc9a028b",
+        "source_fact:v1:69ff2dea882206f2670d2a74dd8cbb50ae33fcb7e12e3f1a10f36b56b71ff41c",
+        "source_fact:v1:7513df19d0104fc5e384f7a89785f2d7cefa32778c96f5bdda31b8c4affbbcc2",
+        "source_fact:v1:d244fdbde29ce50bc92d18753aeffc1fd576cd04294dfd1713da36aa1ba3ba65"
+      ],
+      "source_published_kst": "2026-10-13T20:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "포르투나 마이닝, 세네갈 12.8m 구간 금 7.8g/t 확인",
+      "telegram_core_fact": "증권가 컨센서스에 따르면 포르투나 마이닝의 2026년 예상 매출액은 13억570만 달러로 전년 대비 37.87% 증가할 전망이다.",
+      "title": "포르투나 마이닝, 세네갈 12.8m 구간 금 7.8g/t 확인"
+    },
     "source_fact:785a50ecae6c5cc16808d671": {
       "first_seen_kst": "2026-10-07T08:15:28+09:00",
       "lanes": {
@@ -414026,6 +414844,31 @@
       "telegram_core_fact": "10년 만기 미국채 금리는 7월 말 이후 60bp 급등했고, 같은 기간 미국 원유 가격은 20% 상승했다.",
       "title": "美 10년물 국채 5.35%로 또 24년 만에 최고…인플레·재정우려에 국채 투매"
     },
+    "source_fact:7f083c4db63b34876d81de1f": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202609292005b",
+      "source": "한국경제",
+      "source_body_digest": "2b2b9abd168292b2cd7aaff2cd7da67b185cf933cd1438c78583e0585833025c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8fa79091c247bc50069c2c5dda6dee264d4550d073870a562524a56e8b8aef85",
+      "source_fact_keys": [
+        "source_fact:v1:6d3750addc1ab8de701fd6437877f594e2c703b502e230bd87f41333313550bc",
+        "source_fact:v1:abdb9d703be4173e76744e4c960ec594e7d29897679b77d7d25e3c77c78a4318",
+        "source_fact:v1:bf8cef3067f26f24427f315dfdc74fa64b32ae6ad807c2399220d1f0dd29f61f",
+        "source_fact:v1:c22928a4aaa29b7b7481e30f820c4e2e0dd491df590e25d9083ae4e3a0514d1e",
+        "source_fact:v1:e5036b1e7278ee190fc884c2e81597ab41853f1f5ea6d1ccd780255ce91dc27c",
+        "source_fact:v1:fcca8b702049e7606f75b5f106b30182f7d811816fcb22ef7818703aeab3d347"
+      ],
+      "source_published_kst": "2026-10-14T06:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "“그 공장, 예정대로 못 짓는다”…수조 원 투자 검증하는 AI [베인의 위닝 전략]",
+      "telegram_core_fact": "AI와 데이터센터 확산으로 전력 피크 수요가 26%가량 늘어날 것으로 전망되면서 발전·송배전 인프라 투자 규모가 급증하고 있지만 비용 초과와 공기 지연은 반복되고 이사회 승인 자료에서 원가와 공정 리스크가 충분히 보이지 않는 경우가 많기 때문이다.",
+      "title": "“그 공장, 예정대로 못 짓는다”…수조 원 투자 검증하는 AI [베인의 위닝 전략]"
+    },
     "source_fact:7f15cd11b026b000c43a5c5a": {
       "first_seen_kst": "2026-10-07T11:43:24+09:00",
       "lanes": {
@@ -417129,6 +417972,29 @@
       "telegram_core_fact": "도널드 트럼프 미국 행정부가 9일(현지시간) 국제형사재판소(ICC)에 대한 대규모 제재를 발표했다.",
       "title": "미국, ICC에 대규모 제재…“위협 멈추지 않으면 끝장”"
     },
+    "source_fact:81d8f0eeefbcab136abcc572": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12175088",
+      "source": "매일경제",
+      "source_body_digest": "d36291f20ad7dd70e4d42315096f50868e59b7d3b9e48eb698dbda1fa536b7bc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f8972b50e634406c4b78d130eba1db280e35409606f4803da6a2b9145011db1",
+      "source_fact_keys": [
+        "source_fact:v1:47fdc5e4d025275dd612b32f0e287187d239d8e5fa7e1b4471fdbd2ec8214536",
+        "source_fact:v1:49776a9c09afffea3cdb58a22814d25be76c1547ad4393da9fa4e453d7f96236",
+        "source_fact:v1:5efd4f902eac32f7d5356efc030e45a7d2aabe9cfe88094a4ab414bfbd306e57",
+        "source_fact:v1:9383b2e9fecd873418ec1286f03a2d1e53c0d031ec4cb32242185bc3193fcf73"
+      ],
+      "source_published_kst": "2026-10-14T06:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "처칠 캐피털 XI, 애질리티 합병 S-4 효력 발생..11월 2일 주총",
+      "telegram_core_fact": "합병이 마무리되면 합병 법인은 '애질리티(Agility)'라는 사명으로 운영되며, 보통주는 나스닥에 티커 AGLT로 상장될 예정이다.",
+      "title": "처칠 캐피털 XI, 애질리티 합병 S-4 효력 발생..11월 2일 주총"
+    },
     "source_fact:81d97724b2a92d65ae253923": {
       "first_seen_kst": "2026-10-10T08:26:55+09:00",
       "lanes": {
@@ -419965,6 +420831,29 @@
       ],
       "source_published_kst": "2026-10-06T17:24+09:00",
       "title": "英매체 \"한국산 연료, 서방 제재 선박 통해 러시아 대거 반출\""
+    },
+    "source_fact:84fe39f641c2253dc224a802": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174913",
+      "source": "매일경제",
+      "source_body_digest": "9a50a789f89a9f7083343261eca36f7ee42fb530651237f43f3dc5e4b36c1dfb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1c4568120bf592d9e643a8341c47ef2718570506935e1790f7608365bf154ff2",
+      "source_fact_keys": [
+        "source_fact:v1:5d35ba74316df85d9cf593ec92896a9d0321b79d16538800a903f1f7cc9a028b",
+        "source_fact:v1:69ff2dea882206f2670d2a74dd8cbb50ae33fcb7e12e3f1a10f36b56b71ff41c",
+        "source_fact:v1:7513df19d0104fc5e384f7a89785f2d7cefa32778c96f5bdda31b8c4affbbcc2",
+        "source_fact:v1:d244fdbde29ce50bc92d18753aeffc1fd576cd04294dfd1713da36aa1ba3ba65"
+      ],
+      "source_published_kst": "2026-10-13T20:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "포르투나 마이닝, 세네갈 12.8m 구간 금 7.8g/t 확인",
+      "telegram_core_fact": "증권가 컨센서스에 따르면 포르투나 마이닝의 2026년 예상 매출액은 13억570만 달러로 전년 대비 37.87% 증가할 전망이다.",
+      "title": "포르투나 마이닝, 세네갈 12.8m 구간 금 7.8g/t 확인"
     },
     "source_fact:8502bceabdef7acf0363d881": {
       "first_seen_kst": "2026-10-11T15:10:51+09:00",
@@ -439736,6 +440625,29 @@
       ],
       "source_published_kst": "2026-10-06T14:55+09:00",
       "title": "대전시 아이들 밥상 챙긴다…학교급식 식품비 15% 인상"
+    },
+    "source_fact:96bb62b2a6eefe0fc940eddd": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174913",
+      "source": "매일경제",
+      "source_body_digest": "9a50a789f89a9f7083343261eca36f7ee42fb530651237f43f3dc5e4b36c1dfb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1c4568120bf592d9e643a8341c47ef2718570506935e1790f7608365bf154ff2",
+      "source_fact_keys": [
+        "source_fact:v1:5d35ba74316df85d9cf593ec92896a9d0321b79d16538800a903f1f7cc9a028b",
+        "source_fact:v1:69ff2dea882206f2670d2a74dd8cbb50ae33fcb7e12e3f1a10f36b56b71ff41c",
+        "source_fact:v1:7513df19d0104fc5e384f7a89785f2d7cefa32778c96f5bdda31b8c4affbbcc2",
+        "source_fact:v1:d244fdbde29ce50bc92d18753aeffc1fd576cd04294dfd1713da36aa1ba3ba65"
+      ],
+      "source_published_kst": "2026-10-13T20:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "포르투나 마이닝, 세네갈 12.8m 구간 금 7.8g/t 확인",
+      "telegram_core_fact": "증권가 컨센서스에 따르면 포르투나 마이닝의 2026년 예상 매출액은 13억570만 달러로 전년 대비 37.87% 증가할 전망이다.",
+      "title": "포르투나 마이닝, 세네갈 12.8m 구간 금 7.8g/t 확인"
     },
     "source_fact:96bcda0b0de8fddcaa241657": {
       "first_seen_kst": "2026-10-05T22:49:24+09:00",
@@ -478446,6 +479358,29 @@
       "source_published_kst": "2026-10-06T19:12+09:00",
       "title": "'삼전닉스 레버리지' 투자한 개미, 석달 만에 2조3000억 날렸다"
     },
+    "source_fact:b92ac225aa351c769cb65057": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12175088",
+      "source": "매일경제",
+      "source_body_digest": "d36291f20ad7dd70e4d42315096f50868e59b7d3b9e48eb698dbda1fa536b7bc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f8972b50e634406c4b78d130eba1db280e35409606f4803da6a2b9145011db1",
+      "source_fact_keys": [
+        "source_fact:v1:47fdc5e4d025275dd612b32f0e287187d239d8e5fa7e1b4471fdbd2ec8214536",
+        "source_fact:v1:49776a9c09afffea3cdb58a22814d25be76c1547ad4393da9fa4e453d7f96236",
+        "source_fact:v1:5efd4f902eac32f7d5356efc030e45a7d2aabe9cfe88094a4ab414bfbd306e57",
+        "source_fact:v1:9383b2e9fecd873418ec1286f03a2d1e53c0d031ec4cb32242185bc3193fcf73"
+      ],
+      "source_published_kst": "2026-10-14T06:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "처칠 캐피털 XI, 애질리티 합병 S-4 효력 발생..11월 2일 주총",
+      "telegram_core_fact": "합병이 마무리되면 합병 법인은 '애질리티(Agility)'라는 사명으로 운영되며, 보통주는 나스닥에 티커 AGLT로 상장될 예정이다.",
+      "title": "처칠 캐피털 XI, 애질리티 합병 S-4 효력 발생..11월 2일 주총"
+    },
     "source_fact:b92e84192a840adc7f44892a": {
       "first_seen_kst": "2026-10-13T22:04:42+09:00",
       "lanes": {
@@ -502453,6 +503388,28 @@
       "source_title": "엔비디아 뛰어넘고 내년 전망도 밝은데…'분기 영업익 100조' 삼성전자, 주가는 왜?",
       "telegram_core_fact": "최근 분기 약 85조원의 영업이익을 기록한 엔비디아보다도 많은 규모다.",
       "title": "엔비디아 뛰어넘고 내년 전망도 밝은데…'분기 영업익 100조' 삼성전자, 주가는 왜?"
+    },
+    "source_fact:cf497feb496b46d2f7709ffa": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12174357",
+      "source": "매일경제",
+      "source_body_digest": "6db8771359e4ce0a71f9864af9499859fde7ab419b9084c46eaca2f9c99718b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c75462ca697a4a730a3f75093599dec7e0e2271a95d0d93086d30684c81f951f",
+      "source_fact_keys": [
+        "source_fact:v1:417e53ce37c91a5598dfa1f8cefc37bdc20174629d73032ecf4395596d24f056",
+        "source_fact:v1:92a2247f14e35ebfc7a832529c73c7b8fbe56a96310bf9e9847ac8e3d14d8c13",
+        "source_fact:v1:a38b5a8fdb98dd735a8ba73d12c4701d26d2c9ec2be22bf2ff7e4c2c1e5ea0c0"
+      ],
+      "source_published_kst": "2026-10-13T13:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "오세훈 “크리스마스 전 3만호 착공”…서울시·조합·시공사 ‘맞손’",
+      "telegram_core_fact": "서울시는 13일 서울시청에서 연내 착공을 앞둔 11개 정비사업조합, 5개 시공사, 8개 자치구와 함께 ‘주택공급 목표 달성 공동협력 협약’을 체결했다.",
+      "title": "오세훈 “크리스마스 전 3만호 착공”…서울시·조합·시공사 ‘맞손’"
     },
     "source_fact:cf4ca972d321d7e2975408f6": {
       "first_seen_kst": "2026-10-12T08:26:25+09:00",
@@ -565410,6 +566367,24 @@
       "source_published_kst": "2026-10-05T17:20+09:00",
       "title": "리사 수 AMD 회장 7개월 만에 방한…'AI 동맹' 넓히나(종합) | 연합뉴스"
     },
+    "title:1c7f62d3a8e797dda48dd1f9": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12175085",
+      "source": "매일경제",
+      "source_body_digest": "caff36fd9958c996070dde9f3c0cfdf279b0b11cef33a7591906c3566e0ce243",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-14T06:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "비트푸푸, 9월 비트코인 167개 생산..에티오피아 인수 차질",
+      "telegram_core_fact": "비트푸푸(FUFU)는 9월 비트코인 생산량이 167개로 전월 174개보다 4.0% 감소했으며, 에티오피아 비트코인 채굴시설 인수 건이 현지 전력 공급업체와의 분쟁으로 선행조건을 충족하지 못할 중대한 위험에 직면했다고 10월 13일 발표했다. 9월 생산량과 해시레이트가 줄었고 에티오피아 인수도 무산 위험이 커졌어요.",
+      "title": "비트푸푸, 9월 비트코인 167개 생산..에티오피아 인수 차질"
+    },
     "title:1c948615fe0db2f8f0bc33a4": {
       "first_seen_kst": "2026-10-06T23:05:07+09:00",
       "lanes": {
@@ -578870,6 +579845,29 @@
       "source": "이데일리",
       "title": "뉴노멀 됐나…美10년물 다시 5.1%, 얼마나 더 오를까"
     },
+    "title:4585e4f7da869d6741fd7074": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12175088",
+      "source": "매일경제",
+      "source_body_digest": "d36291f20ad7dd70e4d42315096f50868e59b7d3b9e48eb698dbda1fa536b7bc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3f8972b50e634406c4b78d130eba1db280e35409606f4803da6a2b9145011db1",
+      "source_fact_keys": [
+        "source_fact:v1:47fdc5e4d025275dd612b32f0e287187d239d8e5fa7e1b4471fdbd2ec8214536",
+        "source_fact:v1:49776a9c09afffea3cdb58a22814d25be76c1547ad4393da9fa4e453d7f96236",
+        "source_fact:v1:5efd4f902eac32f7d5356efc030e45a7d2aabe9cfe88094a4ab414bfbd306e57",
+        "source_fact:v1:9383b2e9fecd873418ec1286f03a2d1e53c0d031ec4cb32242185bc3193fcf73"
+      ],
+      "source_published_kst": "2026-10-14T06:05+09:00",
+      "source_supply_terms": {},
+      "source_title": "처칠 캐피털 XI, 애질리티 합병 S-4 효력 발생..11월 2일 주총",
+      "telegram_core_fact": "합병이 마무리되면 합병 법인은 '애질리티(Agility)'라는 사명으로 운영되며, 보통주는 나스닥에 티커 AGLT로 상장될 예정이다.",
+      "title": "처칠 캐피털 XI, 애질리티 합병 S-4 효력 발생..11월 2일 주총"
+    },
     "title:458988313c4c655ecd8c1895": {
       "first_seen_kst": "2026-10-12T11:51:53+09:00",
       "lanes": {
@@ -583331,6 +584329,29 @@
       "source_title": "HD한국조선해양 올 1~3분기 영업익, 작년 전체 실적 넘는다 \"고속 성장에도 불확실성 대비\"",
       "telegram_core_fact": "HD한국조선해양이 올해 3분기 1조6000억원에 육박하는 영업이익을 달성할 전망이다.",
       "title": "HD한국조선해양 올 1~3분기 영업익, 작년 전체 실적 넘는다 \"고속 성장에도 불확실성 대비\""
+    },
+    "title:54809d2351139a81ee68c102": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12174913",
+      "source": "매일경제",
+      "source_body_digest": "9a50a789f89a9f7083343261eca36f7ee42fb530651237f43f3dc5e4b36c1dfb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1c4568120bf592d9e643a8341c47ef2718570506935e1790f7608365bf154ff2",
+      "source_fact_keys": [
+        "source_fact:v1:5d35ba74316df85d9cf593ec92896a9d0321b79d16538800a903f1f7cc9a028b",
+        "source_fact:v1:69ff2dea882206f2670d2a74dd8cbb50ae33fcb7e12e3f1a10f36b56b71ff41c",
+        "source_fact:v1:7513df19d0104fc5e384f7a89785f2d7cefa32778c96f5bdda31b8c4affbbcc2",
+        "source_fact:v1:d244fdbde29ce50bc92d18753aeffc1fd576cd04294dfd1713da36aa1ba3ba65"
+      ],
+      "source_published_kst": "2026-10-13T20:51+09:00",
+      "source_supply_terms": {},
+      "source_title": "포르투나 마이닝, 세네갈 12.8m 구간 금 7.8g/t 확인",
+      "telegram_core_fact": "증권가 컨센서스에 따르면 포르투나 마이닝의 2026년 예상 매출액은 13억570만 달러로 전년 대비 37.87% 증가할 전망이다.",
+      "title": "포르투나 마이닝, 세네갈 12.8m 구간 금 7.8g/t 확인"
     },
     "title:5483a50ee87a43e6db5da291": {
       "first_seen_kst": "2026-09-30T02:23:41+09:00",
@@ -610406,6 +611427,24 @@
       "source": "한국경제",
       "title": "주택 공급난에…구청장이 재건축·재개발 챙긴다"
     },
+    "title:abac350f57b1b12e19175f7e": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261013148500530",
+      "source": "연합뉴스",
+      "source_body_digest": "12e01a1cd2c112da07c073f15e2a808391f7677bb6f8f017ed0888b176efacde",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-14T06:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "유해 우려 화학물질 699종인데…위해성 평가 인력은 단 4명 | 연합뉴스",
+      "telegram_core_fact": "김태선 의원은 \"위해성 평가 지연은 국민 건강과 생명에 직결되는 문제인 만큼 차질 없이 진행되게 인력과 예산을 확충해야 한다\"면서 \"외국에서 이미 규제한 물질은 평가를 생략하고 위해성 물질로 분류할 수 있게 제도가 마련됐음에도 활용되지 않고 있는데, 적극적으로 활용해야 한다\"고 강조했다.",
+      "title": "유해 우려 화학물질 699종인데…위해성 평가 인력은 단 4명 | 연합뉴스"
+    },
     "title:abb1c701a8d5590a1a02db01": {
       "first_seen_kst": "2026-10-07T05:33:37+09:00",
       "lanes": {
@@ -621282,6 +622321,28 @@
       "telegram_core_fact": "우주항공청은 이날 오후 5시 52분 초소형 군집위성 5호기와 교신에 성공하면서 이날 발사한 초소형 군집위성 5기(2∼6호) 모두와 최초 교신이 완료됐다고 밝혔다.",
       "title": "누리호 초소형 군집위성 5기 모두 교신 성공…운영 착수(종합) | 연합뉴스"
     },
+    "title:d1053be3510995380c08b3d7": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.mk.co.kr/news/realestate/12174357",
+      "source": "매일경제",
+      "source_body_digest": "6db8771359e4ce0a71f9864af9499859fde7ab419b9084c46eaca2f9c99718b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c75462ca697a4a730a3f75093599dec7e0e2271a95d0d93086d30684c81f951f",
+      "source_fact_keys": [
+        "source_fact:v1:417e53ce37c91a5598dfa1f8cefc37bdc20174629d73032ecf4395596d24f056",
+        "source_fact:v1:92a2247f14e35ebfc7a832529c73c7b8fbe56a96310bf9e9847ac8e3d14d8c13",
+        "source_fact:v1:a38b5a8fdb98dd735a8ba73d12c4701d26d2c9ec2be22bf2ff7e4c2c1e5ea0c0"
+      ],
+      "source_published_kst": "2026-10-13T13:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "오세훈 “크리스마스 전 3만호 착공”…서울시·조합·시공사 ‘맞손’",
+      "telegram_core_fact": "서울시는 13일 서울시청에서 연내 착공을 앞둔 11개 정비사업조합, 5개 시공사, 8개 자치구와 함께 ‘주택공급 목표 달성 공동협력 협약’을 체결했다.",
+      "title": "오세훈 “크리스마스 전 3만호 착공”…서울시·조합·시공사 ‘맞손’"
+    },
     "title:d125af42ca046788ab33a9e1": {
       "first_seen_kst": "2026-10-05T06:25:21+09:00",
       "lanes": {
@@ -623980,6 +625041,31 @@
       "source_title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박",
       "telegram_core_fact": "하지만 전쟁 이후 2년 만기 주택담보대출 평균 금리가 1%포인트 가까이 상승하면서 최근 6%에 근접했다.",
       "title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박"
+    },
+    "title:d91e9c6d6b150b3be856ffaa": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202609292005b",
+      "source": "한국경제",
+      "source_body_digest": "2b2b9abd168292b2cd7aaff2cd7da67b185cf933cd1438c78583e0585833025c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8fa79091c247bc50069c2c5dda6dee264d4550d073870a562524a56e8b8aef85",
+      "source_fact_keys": [
+        "source_fact:v1:6d3750addc1ab8de701fd6437877f594e2c703b502e230bd87f41333313550bc",
+        "source_fact:v1:abdb9d703be4173e76744e4c960ec594e7d29897679b77d7d25e3c77c78a4318",
+        "source_fact:v1:bf8cef3067f26f24427f315dfdc74fa64b32ae6ad807c2399220d1f0dd29f61f",
+        "source_fact:v1:c22928a4aaa29b7b7481e30f820c4e2e0dd491df590e25d9083ae4e3a0514d1e",
+        "source_fact:v1:e5036b1e7278ee190fc884c2e81597ab41853f1f5ea6d1ccd780255ce91dc27c",
+        "source_fact:v1:fcca8b702049e7606f75b5f106b30182f7d811816fcb22ef7818703aeab3d347"
+      ],
+      "source_published_kst": "2026-10-14T06:02+09:00",
+      "source_supply_terms": {},
+      "source_title": "“그 공장, 예정대로 못 짓는다”…수조 원 투자 검증하는 AI [베인의 위닝 전략]",
+      "telegram_core_fact": "AI와 데이터센터 확산으로 전력 피크 수요가 26%가량 늘어날 것으로 전망되면서 발전·송배전 인프라 투자 규모가 급증하고 있지만 비용 초과와 공기 지연은 반복되고 이사회 승인 자료에서 원가와 공정 리스크가 충분히 보이지 않는 경우가 많기 때문이다.",
+      "title": "“그 공장, 예정대로 못 짓는다”…수조 원 투자 검증하는 AI [베인의 위닝 전략]"
     },
     "title:d93b60bb1832b9d4703a19b2": {
       "first_seen_kst": "2026-10-06T19:46:03+09:00",
@@ -626954,6 +628040,24 @@
       "link": "https://www.yna.co.kr/view/AKR20260930156351008",
       "source": "연합뉴스",
       "title": "상품공급 부족했나…'조각투자' 신종증권시장 개장 연기(종합) | 연합뉴스"
+    },
+    "title:e30bdb826a1d57d753e4a993": {
+      "first_seen_kst": "2026-10-14T12:34:00+09:00",
+      "lanes": {
+        "live": "2026-10-14T12:34:00+09:00"
+      },
+      "last_seen_kst": "2026-10-14T12:34:00+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261013134700030",
+      "source": "연합뉴스",
+      "source_body_digest": "eecf73e7d4634921bf6922940cfd7aa417cf6eec98ab0868b8216bff64a5e538",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-14T06:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "이양수 \"aT 칭다오 물류센터, 거약 예산 투입에도 활용률 저하\" | 연합뉴스",
+      "telegram_core_fact": "칭다오 물류센터의 매출은 2021년 100억7천400만원에서 지난해 182억5천300만원으로 81.2% 증가했고, 같은 기간 영업이익은 2억5천400만원에서 2억9천300만원으로 15.4% 늘었다.",
+      "title": "이양수 \"aT 칭다오 물류센터, 거약 예산 투입에도 활용률 저하\" | 연합뉴스"
     },
     "title:e32270cb96f0350c6ea7ae9b": {
       "first_seen_kst": "2026-10-08T03:51:03+09:00",
@@ -635942,5 +637046,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-14T07:46:13+09:00"
+  "updated_at_kst": "2026-10-14T12:34:00+09:00"
 }
