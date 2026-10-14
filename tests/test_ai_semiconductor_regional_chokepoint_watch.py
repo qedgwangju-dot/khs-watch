@@ -284,5 +284,38 @@ class RegionalChokepointWatchTests(unittest.TestCase):
 
 
 
+    def test_semi_300mm_official_syndication_fallback_requires_semi_as_sender(self):
+        import urllib.error
+        press, _ = self._semi_official_fixture()
+        def fake_fetch(url):
+            if url in (w.SEMI_300MM_PRESS, w.SEMI_300MM_OUTLOOK):
+                raise urllib.error.HTTPError(url, 403, "Blocked", {}, None)
+            if url == w.SEMI_300MM_DISTRIBUTION:
+                return ("News provided by SEMI " + press + " SOURCE SEMI").encode("utf-8")
+            raise AssertionError("unexpected URL: " + url)
+        with patch.object(w, "_fetch", side_effect=fake_fetch):
+            data, errors = w._semi_300mm_fetch()
+        self.assertIsNotNone(data)
+        self.assertEqual(data["source_url"], w.SEMI_300MM_DISTRIBUTION)
+        self.assertIn("PR Newswire", data["source_kind"])
+        self.assertFalse(data["outlook_direct_checked"])
+        self.assertTrue(any("403" in e for e in errors))
+
+    def test_semi_300mm_republisher_cannot_impersonate_official_distribution(self):
+        import urllib.error
+        press, _ = self._semi_official_fixture()
+        def fake_fetch(url):
+            if url in (w.SEMI_300MM_PRESS, w.SEMI_300MM_OUTLOOK):
+                raise urllib.error.HTTPError(url, 403, "Blocked", {}, None)
+            if url == w.SEMI_300MM_DISTRIBUTION:
+                return ("Third party analyst newsletter " + press).encode("utf-8")
+            raise AssertionError("unexpected URL")
+        with patch.object(w, "_fetch", side_effect=fake_fetch):
+            data, errors = w._semi_300mm_fetch()
+        self.assertIsNone(data)
+        self.assertTrue(any("발행주체" in e for e in errors))
+
+
+
 if __name__ == "__main__":
     unittest.main()
