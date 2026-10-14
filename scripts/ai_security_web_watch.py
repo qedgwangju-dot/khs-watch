@@ -639,8 +639,17 @@ def clean_official_headline_prefix(value: str) -> str:
 
 
 def material(item: dict) -> bool:
-    # Corporate acquisition stage is NOT an AI cyber breach or a deployment.
+    # A reported OpenAI–Trail of Bits acquisition is a policy/business-stage
+    # event, not a breach, patch or closed contract; the policy Watch owns it.
     merger_text = f"{item.get('title','')} {item.get('description','')}".lower()
+    if "openai" in merger_text and "trail of bits" in merger_text and any(
+        word in merger_text for word in (
+            "acquisition", "acquire", "acquired", "merger", "takeover",
+            "talks to buy", "deal could", "인수 협상", "인수 계약",
+        )
+    ):
+        return False
+    # Corporate acquisition stage is NOT an AI cyber breach or a deployment.
     if "ionq" in merger_text and "elisity" in merger_text and any(
         word in merger_text for word in ("acquisition", "acquire", "all-stock transaction", "인수")
     ):
