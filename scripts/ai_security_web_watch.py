@@ -48,6 +48,12 @@ MAX_AGE_HOURS = 96
 SEEN_RETENTION_DAYS = 35
 MAX_ALERT_ITEMS = 6
 
+# Verified first-party research, published 2026-10-12. This is a reference
+# baseline, NOT an observed autonomous worm spreading on the public internet.
+REPLICATION_REFERENCE_URL = "https://www.anthropic.com/research/self-replicating-ai"
+REPLICATION_REFERENCE_DATE = "2026-10-12"
+REPLICATION_WATCH_VERSION = 1
+
 NEWS_QUERIES = [
     '"AI agent" security vulnerability exploit "data leak" "prompt injection"',
     '"Meta Muse" security vulnerability exploit privacy patch',
@@ -103,6 +109,8 @@ NEWS_QUERIES = [
     '(OpenAI OR Anthropic OR "AI lab") ("recording device" OR wiretap OR eavesdropping OR espionage OR "insider threat") (FBI OR DOJ OR arrest OR employee OR court)',
     '"Abdulrahman Alfozan" (detention OR court OR hearing OR indictment OR evidence OR plea OR verdict OR sentencing)',
     'site:justice.gov ("OpenAI" OR "AI researcher") (wiretap OR recording device OR insider arrest)',
+    '(Anthropic OR "AI model") ("self-replicating" OR "self replication" OR "autonomous replication") (IoT OR hardware OR evaluation OR worm)',
+    '("AI worm" OR "self-propagating AI" OR "autonomous AI replication") (confirmed OR "in the wild" OR botnet OR security advisory)',
 ]
 
 AI_TERMS = (
@@ -117,6 +125,8 @@ AI_TERMS = (
     "mythos", "claude mythos", "claude fable", "cyber verification program",
     "project glasswing",
     "insider threat", "wiretapping", "listening device",
+    "self-replicating ai", "ai worm", "ai-worm", "autonomous replication",
+    "iot botnet", "self-propagating ai",
 )
 
 SECURITY_TERMS = (
@@ -159,6 +169,9 @@ SECURITY_TERMS = (
     "fail-closed", "fail closed", "automatic stop", "auto-stop", "auto stop",
     "regression test", "postmortem", "post-mortem", "root cause",
     "senior leadership veto", "training veto",
+    "self-replicating", "self replicating", "autonomous replication",
+    "ai worm", "ai-worm", "self-propagating", "iot botnet",
+    "자율 복제", "AI 웜", "에이아이 웜",
     "insider threat", "eavesdropping", "wiretap", "wiretapping",
     "listening device", "recording device", "surreptitious audio",
     "employee arrested", "insider spying", "illegal recording",
@@ -194,6 +207,7 @@ HARD_SECURITY_TERMS = (
 
 TRUSTED_SOURCE_HINTS = (
     "reuters", "the information", "axios", "associated press", "ap news",
+    "aitimes", "ai타임스", "ai times", "ai타임즈",
     "yonhap", "연합뉴스", "chosunbiz", "조선비즈",
     "the verge", "wired", "ars technica", "techcrunch", "fortune",
     "the guardian", "guardian", "cnbc", "bbc", "financial times",
@@ -647,6 +661,83 @@ def clean_official_headline_prefix(value: str) -> str:
     ).strip()
 
 
+def replication_stage(item: dict) -> str | None:
+    """Distinguish simulated model capability from a verified field incident.
+
+    Headline words such as "infect", "worm", or "in the wild" in negated
+    research descriptions cannot establish an actual victim or deployment.
+    """
+    content = f" {item.get('title','')} {item.get('description','')} ".lower()
+    url = (item.get("url") or "").lower()
+    if REPLICATION_REFERENCE_URL in url:
+        return "research"
+    replication = any(term in content for term in (
+        "self-replicat", "self replicat", "self-propagat",
+        "ai worm", "ai-worm", "autonomous replication",
+        "autonomous replicat", "model self replication", "model replication",
+        "iot botnet", "자율 복제", "ai 웜", "자가 복제", "자기 복제",
+    ))
+    ai_context = any(term in content for term in (
+        "anthropic", "ai model", "artificial intelligence",
+        "llm", "language model", "model weights", "ai agent",
+        "agentic ai", "ai worm", "ai-worm", "autonomous ai",
+        "소형 ai", "인공지능", "ai 웜", "ai 모델",
+    ))
+    if not (replication and ai_context):
+        return None
+
+    negated = any(term in content for term in (
+        "no evidence of", "no confirmed", "not confirmed", "not yet",
+        "has not been", "hasn't been", "not observed", "not detected",
+        "no worm in the wild", "not found in the wild",
+        "no in-the-wild", "without real-world infection",
+        "no autonomous worm exists", "no fully autonomous",
+        "실제 감염은 확인되지", "실제 감염 사례는 없",
+        "실제 인터넷에서 확인되지", "실전 확산은 확인되지",
+    ))
+    observed = any(term in content for term in (
+        "confirmed active self-replication", "confirmed in-the-wild ai worm",
+        "ai worm detected in the wild", "actively spreading ai worm",
+        "ai worm actively infecting", "verified real-world ai worm",
+        "confirmed ai worm outbreak", "confirmed ai worm infections",
+        "실제 ai 웜 감염 확인", "ai 웜 확산 확인",
+    ))
+    if observed and not negated:
+        return "confirmed_field" if source_official(item.get("source", "")) else "reported_field"
+    if any(term in content for term in (
+        "fix released for ai worm", "ai worm detection rule released",
+        "ai worm containment deployed", "ai worm mitigation update",
+        "ai 웜 탐지 규칙 배포", "ai 웜 차단 업데이트",
+    )):
+        return "verified_defense" if source_official(item.get("source", "")) else "reported_defense"
+    return "research"
+
+
+def is_known_replication_research_baseline(item: dict) -> bool:
+    """Suppress rediscovery of Anthropic's Oct-12 study and its reprints."""
+    if replication_stage(item) != "research":
+        return False
+    url = (item.get("url") or "").lower()
+    if REPLICATION_REFERENCE_URL in url:
+        return True
+    content = f"{item.get('title','')} {item.get('description','')}".lower()
+    if "anthropic" not in content and "anthropic" not in (item.get("source") or "").lower():
+        return False
+    if not any(term in content for term in (
+        "self-replicat", "self replicat", "ai worm", "ai-worm",
+        "autonomous replication", "자율 복제", "ai 웜",
+    )):
+        return False
+    prior_study_signals = (
+        "8 of 9", "8 out of 9", "8 of the 9", "glm-5.2",
+        "15 tv boxes", "15 android tv", "30b", "26b",
+        "months away", "by the end of 2026", "oct 12",
+        "october 12", "smart ovens", "off-brand android",
+        "300억", "90억", "15대", "올해 말",
+    )
+    return any(term in content for term in prior_study_signals)
+
+
 def material(item: dict) -> bool:
     # A reported OpenAI–Trail of Bits acquisition is a policy/business-stage
     # event, not a breach, patch or closed contract; the policy Watch owns it.
@@ -665,6 +756,12 @@ def material(item: dict) -> bool:
         return False
     if is_policy_program_announcement(item):
         return False
+    stage = replication_stage(item)
+    if stage:
+        return (
+            item.get("kind") in ("official", "official_direct")
+            or source_trusted(item.get("source", ""))
+        )
     if is_openai_insider_case(item) and source_trusted(item.get("source","")):
         # A later courtroom story may name only Alfozan and omit 'OpenAI',
         # 'AI', 'wiretap', and other generic security keywords.
@@ -779,6 +876,20 @@ def normalize_item(item: dict) -> dict:
     out["fingerprint"] = fingerprint(item)
     out["vendor"] = detect_vendor(combined)
     out["category"] = detect_category(combined)
+    stage = replication_stage(item)
+    if stage == "research":
+        out["category"] = "AI 자율복제·사물인터넷 모의평가"
+        sev_num, sev_label = 1, "주의"
+    elif stage == "reported_field":
+        out["category"] = "AI 자율복제·실전 감염 보도·추가검증"
+        sev_num, sev_label = 2, "높음"
+    elif stage == "confirmed_field":
+        out["category"] = "AI 자율복제·실제 감염 확인"
+        sev_num, sev_label = 3, "긴급"
+    elif stage in ("verified_defense", "reported_defense"):
+        out["category"] = "AI 웜 탐지·격리·방어 조치"
+        sev_num, sev_label = 2, "높음"
+    out["replication_stage"] = stage
     out["severity"] = sev_num
     out["severity_label"] = sev_label
     out["official"] = source_official(item.get("source", "")) or item.get("kind") in ("official", "official_direct")
@@ -1015,6 +1126,17 @@ def source_label(source: str) -> str:
 
 def incident_fact(item: dict) -> str | None:
     text = f" {item.get('title','')} {item.get('description','')} ".lower()
+    replication = replication_stage(item)
+    if replication == "research":
+        if is_known_replication_research_baseline(item):
+            return "Anthropic 10월 12일 연구·모의평가: 90억 매개변수 모델 9종 중 8종 환경 구축. 실제 인터넷 감염 확인 아님"
+        return "AI 자율 복제 능력 연구·격리 실험·예측. 실제 인터넷 감염 또는 자율 확산 확정 아님"
+    if replication == "reported_field":
+        return "AI 자율복제형 악성코드 실전 확산 보도. 공식 사고원천·감염범위 독립 확인 필요"
+    if replication == "confirmed_field":
+        return "공식기관이 자율복제형 AI 악성코드 실전 확산 확인. 감염대상·피해규모·격리조치 확인 필요"
+    if replication in ("verified_defense", "reported_defense"):
+        return "AI 웜 탐지·격리·완화조치 발표. 실제 사고 여부·제품 적용 범위는 별도 확인"
     stage = openai_insider_case_stage(item)
     if stage == "oct19_hearing_result":
         return "OpenAI 사내 도청 장치 사건의 구금심리·법정 진술 결과. 혐의와 법원 판단은 별도 확인"
@@ -1100,6 +1222,14 @@ def event_heading(cluster: list[dict]) -> str:
 
 def event_impact(cluster: list[dict]) -> str:
     cats = " ".join(item.get("category", "") for item in cluster)
+    if "AI 자율복제·사물인터넷 모의평가" in cats:
+        return "공식 모의평가의 하드웨어 유형 성공률·전체 복제 수율·속도와 실제 감염 관측을 분리합니다. 예측은 실전 침해로 판정하지 않습니다."
+    if "AI 자율복제·실전 감염 보도·추가검증" in cats:
+        return "실제 AI 웜 감염 보도입니다. 공식 사고확인·피해 기기 수·전파 속도·격리 시점을 확인하기 전까지 확정 감염으로 표시하지 않습니다."
+    if "AI 자율복제·실제 감염 확인" in cats:
+        return "공식기관이 확인한 감염 범위·취약 경로·차단까지의 시간·추가 전파 여부를 우선 점검합니다."
+    if "AI 웜 탐지·격리·방어 조치" in cats:
+        return "공식 배포된 탐지·격리·방어 조치의 적용 기종·효과·유료 수익화를 분리합니다."
     if "AI 연구기관 내부자 도청·접근통제 사건" in cats:
         return "체포·기소·법원 심리·판결을 구분하고, 실제 녹음·정보 반출 여부와 물리적 출입통제·내부자 위험 대응을 추적합니다. 국적만으로 정부 배후나 유출 사실을 단정하지 않습니다."
     if "AI 모델사고 신고·시정 후속조치" in cats:
@@ -1207,7 +1337,7 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str, str]:
 
     lines += [
         "",
-        "<b>다음 확인</b>: Mythos/CVP 접근등급·차단수준 · 금융·핵심인프라 실제 사고·보안예산 변화 · AI 취약점 발굴량/긴급·높음 비중 · 공동서약 외부감사 보안실패·준수위반 · 독립 이사회/감독기구의 실제 중단명령 · 공식 출시일/변경일 · 안전게이트 통과 여부 · 제한배포 범위 · 실제 사고/모의평가 구분 · 탐지→강제종료 시간 · 중단/재개 · 패치/완화책",
+        "<b>다음 확인</b>: AI 자율복제 모의평가와 실제 감염 구분 · AI 웜 실전 감염 확인·기기 수·전파시간 · IoT 제조사 업데이트·격리·네트워크 관제 · Mythos/CVP 접근등급·차단수준 · 금융·핵심인프라 실제 사고·보안예산 변화 · AI 취약점 발굴량/긴급·높음 비중 · 공동서약 외부감사 보안실패·준수위반 · 독립 이사회/감독기구의 실제 중단명령 · 공식 출시일/변경일 · 안전게이트 통과 여부 · 제한배포 범위 · 실제 사고/모의평가 구분 · 탐지→강제종료 시간 · 중단/재개 · 패치/완화책",
     ]
     return title, "\n".join(lines)
 
@@ -1379,9 +1509,22 @@ def main() -> int:
     direct_items: list[dict] = []
     try:
         direct_items = parse_direct_official_pages()
-        raw_items.extend(direct_items)
     except Exception as exc:
         errors.append(f"공식 연구페이지 직접 감시 실패: {type(exc).__name__}: {exc}")
+    # Pin the already-published paper as a baseline even when the
+    # provider's scrolling index temporarily omits its link. This is
+    # discovery context, not an assertion that a new alert has occurred.
+    if not any(item.get("url", "").rstrip("/") == REPLICATION_REFERENCE_URL for item in direct_items):
+        direct_items.append({
+            "kind": "official_direct",
+            "query": "published reference baseline",
+            "title": "Anthropic Research: self replicating ai",
+            "description": "Anthropic laboratory evaluation of self-replication; no wild infections demonstrated",
+            "source": "Anthropic Research",
+            "url": REPLICATION_REFERENCE_URL,
+            "published_at": "2026-10-12T00:00:00+00:00",
+        })
+    raw_items.extend(direct_items)
 
     dedup: dict[str, dict] = {}
     for raw in raw_items:
@@ -1396,6 +1539,7 @@ def main() -> int:
     )
 
     seen = prune_seen(dict(state.get("seen") or {}), now)
+    replication_baseline_suppressed = 0
     insider_stages = dict(state.get("openai_insider_case_stages") or {})
     insider_stages.setdefault("initial_oct13_charge", {
         "source_url": "https://www.justice.gov/usao-ndca/pr/saudi-national-arrested-installing-surreptitious-audio-recording-device-openai-san",
@@ -1405,6 +1549,9 @@ def main() -> int:
     for item in current:
         fp = item["fingerprint"]
         if fp in seen:
+            continue
+        if is_known_replication_research_baseline(item):
+            replication_baseline_suppressed += 1
             continue
         stage = openai_insider_case_stage(item)
         if stage:
@@ -1490,6 +1637,8 @@ def main() -> int:
             "direct_official_items": len(direct_items),
             "material_items": len(current),
             "new_material_items": len(new_items),
+            "replication_reference_suppressed": replication_baseline_suppressed,
+            "replication_watch_version": REPLICATION_WATCH_VERSION,
             "errors": errors,
         },
     }
@@ -1524,6 +1673,7 @@ def main() -> int:
         f"- 중요 필터 통과: {len(current)}건",
         f"- 신규 중요 기사: {len(new_items)}건",
         f"- 신규 중요 사건: {len(alert_events)}건",
+        f"- AI 자율복제 기존 연구 중복 차단: {replication_baseline_suppressed}건",
         f"- IonQ·Elisity 공식 단계: {len(quantum_updates)}건",
         f"- IonQ·Elisity 신규 단계: {len(new_quantum)}건",
         f"- 수집 오류: {len(errors)}건",
