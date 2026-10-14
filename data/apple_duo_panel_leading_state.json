@@ -35,6 +35,7 @@
     "2e43965754617cac81a437e9",
     "2eb2cd770c0d7746aba447f3",
     "3039c2c44b42afe66159ac91",
+    "365dc831b1be39cab8ecdaba",
     "36a8e04a41f197f83a61c1c6",
     "3787d4fdec04932146bc313c",
     "384b06145470fb836ac8c989",
@@ -120,6 +121,7 @@
     "8c7cf2bb292ba85e185cf372",
     "8d12c0cfbd39f7a88c54d96d",
     "8d566b0c99d4bb6b5aace01f",
+    "8f0e8af3daeb78c10c66efd6",
     "8fc2ed5551a0bafcf8d98493",
     "90003ec3bf4808ba0e04b96f",
     "9036ce03e508e1fc7a60d69a",
@@ -241,16 +243,6 @@
     "Panel-only changes are leading indicators, not finished-device confirmation"
   ],
   "last_alert": null,
-  "last_scan_kst": "2026-10-14T21:11:45+09:00",
-  "errors": [
-    "ko:애플 폴더블 패널 점유율 삼성디스플레이 카운터포인트… -> HTTPError: HTTP Error 503: Service Unavailable",
-    "ko:아이폰 듀오 OLED 패널 조달 점유율 출하량… -> HTTPError: HTTP Error 503: Service Unavailable",
-    "ko:아이폰 듀오 삼성디스플레이 패널 발주 상향 하향… -> HTTPError: HTTP Error 503: Service Unavailable",
-    "ko:애플 폴더블 패널 하반기 출하 전년 대비 상반기 대비… -> HTTPError: HTTP Error 503: Service Unavailable",
-    "ko:애플 폴더블 패널 800만 1000만 장 삼성디스플레이… -> HTTPError: HTTP Error 503: Service Unavailable",
-    "en:Apple foldable panel procurement share Samsun… -> HTTPError: HTTP Error 503: Service Unavailable",
-    "en:iPhone Duo OLED panel orders shipment forecas… -> HTTPError: HTTP Error 503: Service Unavailable",
-    "en:Apple foldable panel H2 shipments YoY HoH Cou… -> HTTPError: HTTP Error 503: Service Unavailable",
-    "en:Apple foldable panel 8 million 10 million Sam… -> HTTPError: HTTP Error 503: Service Unavailable"
-  ]
+  "last_scan_kst": "2026-10-15T02:23:15+09:00",
+  "errors": []
 }

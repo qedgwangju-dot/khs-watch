@@ -51,6 +51,7 @@
     "3c6aa50541708216b6c72f32",
     "3cf7f3dc8a0784278383d952",
     "3e044ae528c786f22766e4d5",
+    "3f67b7f4388e2db6719c7f21",
     "40fb3531856d8176e0367575",
     "435e21a61c7ede66e736f583",
     "44b246aa199fd927e4d3381d",
@@ -102,6 +103,7 @@
     "923f40c3cf7c259c09086149",
     "929ecb41d804374a406b0133",
     "92a339f149e4eee7b2fa4b55",
+    "940576f62c721a401dc53bb2",
     "9529316e47a9bb38e823c945",
     "95c54a09b756b3137db6de02",
     "9954f89bf34b5c1b9394cdb9",
@@ -222,19 +224,8 @@
       "완제품 병목 변화"
     ]
   },
-  "last_scan_kst": "2026-10-14T21:10:28+09:00",
-  "errors": [
-    "ko:\"아이폰 듀오\" 생산량 증산 출하량 폭스콘… -> HTTPError: HTTP Error 503: Service Unavailable",
-    "ko:\"아이폰 듀오\" 힌지 수율 골든 샘플 폭스콘… -> HTTPError: HTTP Error 503: Service Unavailable",
-    "ko:\"아이폰 듀오\" 삼성디스플레이 패널 주문 발주 출하… -> HTTPError: HTTP Error 503: Service Unavailable",
-    "ko:\"아이폰 듀오\" 메모리 FPCB 카메라 부품 주문 상향… -> HTTPError: HTTP Error 503: Service Unavailable",
-    "ko:\"애플 폴더블\" 생산 목표 증산 출하량 힌지 수율… -> HTTPError: HTTP Error 503: Service Unavailable",
-    "en:\"iPhone Duo\" production shipment build tar… -> HTTPError: HTTP Error 503: Service Unavailable",
-    "en:\"iPhone Duo\" hinge yield Foxconn productio… -> HTTPError: HTTP Error 503: Service Unavailable",
-    "en:\"iPhone Duo\" Samsung Display panel order s… -> HTTPError: HTTP Error 503: Service Unavailable",
-    "en:\"iPhone Duo\" component orders memory FPCB … -> HTTPError: HTTP Error 503: Service Unavailable",
-    "en:\"Apple foldable\" production target shipmen… -> HTTPError: HTTP Error 503: Service Unavailable"
-  ],
+  "last_scan_kst": "2026-10-15T02:23:12+09:00",
+  "errors": [],
   "seen_fact_keys": [
     "assembly_yield_60",
     "sep17_assembly_bottleneck"
