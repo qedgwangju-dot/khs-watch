@@ -129,8 +129,15 @@ def _native_history_context(block: dict[str, Any], records: list[dict[str, Any]]
                 continue
             stamp = str(row.get("datetime") or "").strip()
             date, clock = str(row.get("date") or "").strip(), str(row.get("time") or "").strip()
-            if not stamp:
-                stamp = date + clock.zfill(6) if date and clock else ""
+            # Actual LS responses return datetime as a repeated YYYYMMDD,
+            # despite its 14-character guide declaration. Use the explicit
+            # response date+time; accept the alias only when its date agrees.
+            if date and clock:
+                explicit = date + clock.zfill(6)
+                if stamp and stamp not in {date, explicit}:
+                    malformed = True
+                    continue
+                stamp = explicit
             if not re.fullmatch(r"\d{14}", stamp):
                 malformed = True
                 continue
@@ -200,7 +207,7 @@ def industry_buy_context(start_ts: float, end_ts: float, investor: str,
     the selected boundary can contribute to that boundary.
     """
     block: dict[str, Any] = {
-        "version": "kosdaq-surge-industries-v2", "market": "KOSDAQ",
+        "version": "kosdaq-surge-industries-v3", "market": "KOSDAQ",
         "investor": investor, "requested_window": [start_ts, end_ts],
         "available": False, "rows": [], "top": [], "source": SOURCE,
         "source_guide": GUIDE_URL, "source_unit": "UNVERIFIED",

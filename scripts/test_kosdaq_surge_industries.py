@@ -324,6 +324,17 @@ class WatchIntegrationTests(IndustryFixture, unittest.TestCase):
 
 
 class NativeHistoryTests(IndustryFixture, unittest.TestCase):
+    def test_actual_ls_date_alias_uses_explicit_response_date_time(self):
+        row = native()
+        for point in row["response"]["t1621OutBlock1"]:
+            point["datetime"] = point["date"]
+        self.assertTrue(self.load([row])["available"])
+
+    def test_conflicting_date_alias_is_not_treated_as_date_time(self):
+        row = native()
+        row["response"]["t1621OutBlock1"][-1]["datetime"] = "20261013"
+        self.assertFalse(self.load([row])["available"])
+
     def test_dated_history_retrieved_after_boundary_is_accepted(self):
         result = self.load([coverage([("319", "화학")]), native()])
         self.assertEqual(result["source_tr"], "t1621")
