@@ -19,6 +19,30 @@ class WarshWorkflowCadenceTests(unittest.TestCase):
             self.assertIsNone(lag)
             self.assertIn("정규", reason)
 
+    def test_backup_schedule_is_gated_but_primary_and_fomc_schedules_run(self):
+        run, lag, reason = cadence.due_decision(
+            "schedule", self.now - dt.timedelta(minutes=20), self.now, 55,
+            schedule_expr=cadence.BACKUP_SCHEDULE,
+        )
+        self.assertFalse(run)
+        self.assertAlmostEqual(lag, 20.0)
+
+        run, lag, reason = cadence.due_decision(
+            "schedule", self.now - dt.timedelta(minutes=80), self.now, 55,
+            schedule_expr=cadence.BACKUP_SCHEDULE,
+        )
+        self.assertTrue(run)
+        self.assertAlmostEqual(lag, 80.0)
+
+        for expr in ("26 * * * *", "50 17 * * 3", "5,20,35,50 18 * * 3"):
+            run, lag, reason = cadence.due_decision(
+                "schedule", self.now - dt.timedelta(minutes=5), self.now, 55,
+                schedule_expr=expr,
+            )
+            self.assertTrue(run)
+            self.assertIsNone(lag)
+            self.assertIn("정규", reason)
+
     def test_workflow_run_skips_when_recent_monitor_succeeded(self):
         run, lag, reason = cadence.due_decision(
             "workflow_run", self.now - dt.timedelta(minutes=20), self.now, 55

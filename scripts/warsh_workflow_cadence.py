@@ -19,6 +19,7 @@ import urllib.request
 
 WORKFLOW_FILE = "warsh-reaction-telegram-watch.yml"
 DEFAULT_FALLBACK_GAP_MINUTES = 55.0
+BACKUP_SCHEDULE = "41 * * * *"
 
 
 def parse_utc(value):
@@ -27,11 +28,12 @@ def parse_utc(value):
     return dt.datetime.fromisoformat(str(value).replace("Z", "+00:00")).astimezone(dt.timezone.utc)
 
 
-def due_decision(event_name, last_monitor_success_at, now=None, threshold_minutes=DEFAULT_FALLBACK_GAP_MINUTES):
+def due_decision(event_name, last_monitor_success_at, now=None, threshold_minutes=DEFAULT_FALLBACK_GAP_MINUTES, schedule_expr=None):
     now = now or dt.datetime.now(dt.timezone.utc)
     if now.tzinfo is None:
         raise ValueError("now must be timezone-aware")
-    if event_name != "workflow_run":
+    is_backup_schedule = event_name == "schedule" and schedule_expr == BACKUP_SCHEDULE
+    if event_name != "workflow_run" and not is_backup_schedule:
         return True, None, "정규 트리거 보존"
     if last_monitor_success_at is None:
         return True, None, "직전 monitor 성공 실행을 찾지 못해 보조 실행"
@@ -110,6 +112,7 @@ def write_output(name, value):
 
 def main():
     event = (os.getenv("GITHUB_EVENT_NAME") or "").strip()
+    schedule_expr = (os.getenv("GITHUB_EVENT_SCHEDULE") or "").strip()
     threshold = float(os.getenv("WARSH_FALLBACK_GAP_MINUTES") or DEFAULT_FALLBACK_GAP_MINUTES)
     current_run = int(os.getenv("GITHUB_RUN_ID") or "0")
     repo = (os.getenv("GITHUB_REPOSITORY") or "").strip()
@@ -117,7 +120,7 @@ def main():
 
     previous = None
     error = None
-    if event == "workflow_run":
+    if event == "workflow_run" or (event == "schedule" and schedule_expr == BACKUP_SCHEDULE):
         if not repo or not token or not current_run:
             error = "GitHub Actions 조회 환경변수 누락"
         else:
@@ -133,6 +136,7 @@ def main():
             event,
             previous.get("completed_at") if previous else None,
             threshold_minutes=threshold,
+            schedule_expr=schedule_expr,
         )
 
     write_output("run", "true" if should_run else "false")
@@ -142,6 +146,7 @@ def main():
 
     print(json.dumps({
         "trigger": event,
+        "schedule": schedule_expr or None,
         "execute": should_run,
         "threshold_minutes": threshold,
         "last_monitor_success_run_id": previous.get("run_id") if previous else None,

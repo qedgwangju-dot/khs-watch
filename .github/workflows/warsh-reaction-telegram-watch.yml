@@ -3,6 +3,8 @@ name: Warsh Reaction Function Telegram Watch
 on:
   schedule:
     - cron: '26 * * * *'
+    # 독립 보조 예약. 직전 monitor 성공이 55분 이내면 cadence가 monitor를 생략한다.
+    - cron: '41 * * * *'
     # Generic Wednesday FOMC event window. The watcher cross-checks the official
     # FOMC calendar before capturing/sending, so non-meeting Wednesdays stay silent.
     # Covers both U.S. daylight-saving and standard-time 2:00 p.m. ET decisions.
@@ -112,6 +114,7 @@ jobs:
         id: decide
         env:
           GH_TOKEN: ${{ github.token }}
+          GITHUB_EVENT_SCHEDULE: ${{ github.event.schedule }}
           WARSH_FALLBACK_GAP_MINUTES: '55'
         run: python3 scripts/warsh_workflow_cadence.py
 
