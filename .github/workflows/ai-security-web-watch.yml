@@ -26,9 +26,11 @@ on:
 permissions:
   contents: write
 
+# Never terminate an already-running Telegram send/checkpoint sequence.
+# New runs queue behind it and re-check the committed duplicate state.
 concurrency:
   group: ai-security-web-watch
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   watch:
