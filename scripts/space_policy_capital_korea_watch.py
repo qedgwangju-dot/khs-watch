@@ -40,6 +40,7 @@ NEWSIS_AI="https://www.newsis.com/view/NISX20261013_0003824495"
 EDAILY_AI="https://www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=03608006645612592"
 KARI_POLICY="https://www.kari.re.kr/download/viewer/1783325572235/index.html"
 KASA_INDEX="https://www.kasa.go.kr/prog/plcyBrf/brief/kor/sub01_01_04/list.do"
+KASA_2027_BUDGET="https://m.korea.kr/briefing/pressReleaseView.do?newsId=156776389"
 STUDY="https://www.sciencedirect.com/science/article/pii/S0048733325001660"
 SPREAD=1340.50 # Historical KRW per USD on 2026-10-14; baseline only, NEVER label live.
 
@@ -87,6 +88,7 @@ def official_baseline(request=fetch):
         ("Space Capital 3분기",CAPITAL_Q3,("$92.5 billion","$100 billion")),
         ("한국 우주 AI 실증 보도",NEWSIS_AI,("2028","21억원","2030")),
         ("한국 우주 AI 예산 교차보도",EDAILY_AI,("21억원","우주")),
+        ("우주항공청 2027 예산안 공식 배포",KASA_2027_BUDGET,("21억원","285억원","565억원","205억원","465억원")),
     ):
         try:
             source=request(url)
@@ -219,7 +221,9 @@ def baseline():
       "• 지상 방열·전력제어 검증용. 궤도 실증위성 예산은 아직 반영되지 않음.",
       "• 2030년 기존 목표 → 2028년 조기 실증 노력(국정감사 발언). 확정 일정 아님.",
       "• HBM·저전력 NPU 위성 탑재도 검토 단계, 확정 납품처 없음.",
+      "• 관련 2027년 예산안: 환경·해양위성 285억원, 다목적실용위성 8호 565억원, 저궤도 통신 205억원, 한국형 항법시스템 465억원. 우주 AI 21억원과 별도.",
       "• 병목: 발열·방사선·전력·인증·실증위성 조달.",
+      "• 원문: "+KASA_2027_BUDGET,
       "• 원문: "+NEWSIS_AI,
       "• 원문: "+EDAILY_AI,
       "",
@@ -247,6 +251,8 @@ def test():
     assert "456회·착륙 912회" in baseline()
     assert "123조9,963억원" in baseline()
     assert "계산 기준은 별도 확인" in baseline()
+    assert "환경·해양위성 285억원" in baseline()
+    assert "한국형 항법시스템 465억원" in baseline()
     assert STATE!=PENDING and PENDING!=ALERT
     assert not any(re.search(r"확정 일정입니다",line) for line in baseline().splitlines())
     fake="<html><a href='/reports/space-iq-q4-2026'>Q4</a></html>"
