@@ -32,7 +32,7 @@ def collect_native_probe(journal: Path) -> None:
                             ensure_ascii=False) + "\n")
         for item in sectors:
             call_started = time.monotonic()
-            query = {"t1621InBlock": {"upcode": item["code"], "nmin": 1, "cnt": 10,
+            query = {"t1621InBlock": {"upcode": item["code"], "nmin": 1, "cnt": 30,
                                       "bgubun": "0", "exchgubun": "U"}}
             record = {"record_type": "industry_history_snapshot", "source_tr": "t1621", "market": "KOSDAQ",
                       "upcode": item["code"], "industry": item["name"], "request": query}
