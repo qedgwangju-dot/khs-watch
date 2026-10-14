@@ -44,6 +44,14 @@ STATUS_PATH = OUT_DIR / "ai_semiconductor_regional_chokepoint_status.md"
 KST = ZoneInfo("Asia/Seoul")
 BASELINE_VERSION = 1
 
+SEMI_300MM_VERSION = 1
+SEMI_300MM_PRESS = ("https://www.semi.org/en/semi-press-release/"
+    "global-300mm-fab-equipment-spending-to-reach-227-billion-in-2029-as-buildout-accelerates-semi-projects")
+SEMI_300MM_OUTLOOK = "https://www.semi.org/en/products-services/market-data/300mm-fab-outlook"
+SEMI_300MM_APRIL = ("https://www.semi.org/en/semi-press-release/"
+    "semi-projects-double-digit-growth-in-global-300mm-fab-equipment-spending-for-2026-and-2027")
+
+
 BASELINE = {
     "historical_concentration": {
         "east_asia_china_semiconductor_manufacturing_capacity_pct": 75.0,
@@ -531,13 +539,122 @@ def collect(cutoff: dt.datetime) -> tuple[list[dict], list[str]]:
     return items, errors
 
 
+
+def _semi_number(pattern: str, text: str) -> float | None:
+    m = re.search(pattern, text, re.I | re.S)
+    return float(m.group(1)) if m else None
+
+
+def _semi_300mm_parse(press_html: str, outlook_html: str = "") -> dict | None:
+    """Only call on SEMI originals; return nothing for invalid or mixed editions."""
+    p, o = _clean(press_html), _clean(outlook_html)
+    if "global 300mm front-end fab equipment spending" not in p.lower():
+        return None
+    m = re.search(
+        r"global 300mm front-end fab equipment spending.{0,120}?"
+        r"(?:US)?\$?\s*(\d+(?:\.\d+)?)\s+billion\s+in\s+2026", p, re.I
+    )
+    if not m:
+        return None
+    value = float(m.group(1))
+    future = _semi_number(r"through 2029.{0,100}?reaching\s+\$?(\d+(?:\.\d+)?)\s+billion", p)
+    if future is None:
+        return None
+    result = {
+        "vintage": "3Q26",
+        "release_date": "2026-10-13",
+        "equipment_2026_usd_b": value,
+        "equipment_2029_usd_b": future,
+        "equipment_2026_yoy_pct": _semi_number(r"up (\d+(?:\.\d+)?)% year.over.year", p),
+        "construction_2026_usd_b": _semi_number(
+            r"construction spending is projected to rise.{0,80}?to \$?(\d+(?:\.\d+)?) billion in 2026", p),
+        "construction_2027_usd_b": _semi_number(
+            r"another 33% to \$?(\d+(?:\.\d+)?) billion in 2027", p),
+        "construction_2028_usd_b": _semi_number(
+            r"before reaching \$?(\d+(?:\.\d+)?) billion in 2028", p),
+        "americas_2026_usd_b": _semi_number(
+            r"americas.{0,250}?from \$?(\d+(?:\.\d+)?) billion in 2026", p),
+        "americas_2029_usd_b": _semi_number(
+            r"americas.{0,250}?from \$?\d+(?:\.\d+)? billion in 2026 to \$?(\d+(?:\.\d+)?) billion in 2029", p),
+        "source_url": SEMI_300MM_PRESS,
+        "source_kind": "SEMI 공식 전망 · 실제 장비수주와 구분",
+    }
+    starts = re.search(
+        r"(\d+) new 300mm fabs or lines to begin construction worldwide in 2026 and (\d+) in 2027", p, re.I)
+    operating = re.search(
+        r"(\d+) new 300mm fabs or lines worldwide to begin operations or ship first silicon in 2026,"
+        r"\s*increasing to (\d+) in 2027", p, re.I)
+    if starts:
+        result.update(starts_2026=int(starts.group(1)), starts_2027=int(starts.group(2)))
+    if operating:
+        result.update(first_silicon_2026=int(operating.group(1)),
+                      first_silicon_2027=int(operating.group(2)))
+    if o:
+        edition = re.search(r"current edition:\s*Q([1-4])\s*(20\d{2})", o, re.I)
+        if edition and (edition.group(1), edition.group(2)) != ("3", "2026"):
+            return None  # Older press release cannot overwrite a newer official edition.
+        val_o = _semi_number(
+            r"global 300mm front-end fab equipment spending.{0,110}?(?:US)?\$?(\d+(?:\.\d+)?) billion in 2026", o)
+        if val_o is not None and abs(val_o - value) > 0.1:
+            return None
+        result["capacity_growth_2026_pct"] = _semi_number(
+            r"total installed 300mm capacity.{0,110}?increase by (\d+(?:\.\d+)?)% in 2026", o)
+        result["capacity_growth_2027_29_pct"] = _semi_number(
+            r"total installed 300mm capacity.{0,220}?approximately (\d+(?:\.\d+)?)% annually", o)
+        result["equipment_2030_decline_pct"] = _semi_number(
+            r"extended forecast through 2031.{0,110}?(\d+(?:\.\d+)?)% decline in 2030", o)
+        result["memory_equipment_2026_growth_pct"] = _semi_number(
+            r"memory equipment spending.{0,110}?grow by (\d+(?:\.\d+)?)% in 2026", o)
+    return result
+
+
+def _semi_300mm_material_changes(old: dict, new: dict) -> list[str]:
+    if not new:
+        return []
+    if not old:
+        return ["SEMI 300mm 공식 투자·착공·가동 전망 최초 반영"]
+    changes = []
+    for key, threshold, label in (
+        ("equipment_2026_usd_b", 5, "2026년 장비투자"),
+        ("equipment_2029_usd_b", 5, "2029년 장비투자"),
+        ("construction_2026_usd_b", 5, "2026년 건설비"),
+        ("construction_2027_usd_b", 5, "2027년 건설비"),
+        ("starts_2026", 3, "2026년 착공"),
+        ("starts_2027", 3, "2027년 착공"),
+        ("first_silicon_2026", 3, "2026년 첫 가동"),
+        ("first_silicon_2027", 3, "2027년 첫 가동"),
+        ("capacity_growth_2026_pct", 1.5, "2026년 설치 생산능력 증가율"),
+    ):
+        if old.get(key) is None or new.get(key) is None:
+            continue
+        if abs(float(new[key]) - float(old[key])) >= threshold:
+            changes.append(label + ": " + str(old[key]) + " → " + str(new[key]))
+    return changes
+
+
+def _semi_300mm_fetch() -> tuple[dict | None, list[str]]:
+    fetched, errors = {}, []
+    for name, url in (("보도자료", SEMI_300MM_PRESS), ("상세전망", SEMI_300MM_OUTLOOK)):
+        try:
+            fetched[name] = _fetch(url).decode("utf-8", errors="replace")
+        except Exception as exc:
+            errors.append("SEMI " + name + " 열람 실패: " + type(exc).__name__)
+    if "보도자료" not in fetched:
+        return None, errors
+    record = _semi_300mm_parse(fetched["보도자료"], fetched.get("상세전망", ""))
+    if record is None:
+        errors.append("SEMI 최신 공식 판본 또는 숫자 일치 미확인: 알림 보류")
+    return record, errors
+
+
+
 def _load_state() -> dict:
     if not STATE_PATH.exists():
         return {}
     return json.loads(STATE_PATH.read_text(encoding="utf-8"))
 
 
-def write_outputs(items: list[dict], errors: list[str]) -> None:
+def write_outputs(items: list[dict], errors: list[str], semi_record: dict | None = None) -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     state = _load_state()
     now = dt.datetime.now(KST)
@@ -581,6 +698,16 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         elif not passed and is_after_baseline and unseen_group:
             held.append(newest)
 
+
+    # SEMI has a distinct numeric key: reworded news or generic event-key dedupe
+    # must not suppress a material forecast revision, and a failed send must not
+    # advance the delivered baseline.
+    semi_previous = dict(state.get("semi_300mm") or {})
+    semi_changes = _semi_300mm_material_changes(semi_previous, semi_record or {})
+    if semi_previous.get("release_date", "") > (semi_record or {}).get("release_date", ""):
+        semi_record, semi_changes = None, []
+    semi_due = bool(semi_record and semi_changes)
+
     # Mark all currently observed stories as seen; do not mark an event delivered
     # unless Telegram actually has something to send.
     for item in items:
@@ -597,6 +724,9 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         "baseline": BASELINE,
         "updated_at_kst": now.isoformat(timespec="seconds"),
         "last_scan_count": len(items),
+        "semi_300mm_track_version": SEMI_300MM_VERSION,
+        "semi_300mm": semi_record if semi_due else semi_previous,
+        "semi_300mm_last_observed": semi_record or state.get("semi_300mm_last_observed") or {},
         "last_eligible_count": len(eligible),
         "last_held_count": len(held),
         "seen_fingerprints": list(sorted(seen_fps))[-1200:],
@@ -623,6 +753,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         f"- 조회시각(KST): {now.isoformat(timespec='seconds')}",
         f"- 구조 후보: {len(items)}건",
         f"- 알림 대상 신규: {len(eligible)}건",
+        f"- SEMI 300mm 공식자료 수치확인: {'확인' if semi_record else '미확인'}",
+        f"- SEMI 신규 경보: {int(semi_due)}건",
         f"- 추가 검증 대기: {len(held)}건",
         f"- 원천 오류: {len(errors)}건",
         "- 75% 기준: 2021년 SIA·BCG 역사 기준으로만 보존, 2026 실시간 수치로 사용하지 않음",
@@ -637,15 +769,61 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
     STATUS_PATH.write_text("\n".join(status) + "\n", encoding="utf-8")
 
     ALERT_PATH.unlink(missing_ok=True)
-    if not eligible:
+    if not eligible and not semi_due:
         return
 
     lines = [
-        "<b>[AI 반도체 지역 병목 변화]</b>",
-        f"조회 {now.strftime('%Y-%m-%d %H:%M')} KST · 신규 구조 변화 {len(eligible)}건",
+        "<b>[AI 반도체 생산·300mm 설비투자 변화]</b>",
+        f"조회 {now.strftime('%Y-%m-%d %H:%M')} KST · 지역 {len(eligible)}건 · SEMI {int(semi_due)}건",
         "",
         "한눈에: <b>지역별 독점·과점 구조가 실제 생산능력·규제·가동중단·대체공급에서 바뀔 때만 알림</b>",
     ]
+
+    if semi_due:
+        s = semi_record
+        def amount(key):
+            v = s.get(key)
+            return "$" + f"{float(v):g} billion" if v is not None else "확인 불가"
+        lines += [
+            "",
+            "• <b>SEMI 공식 300mm 전공정 장비투자·공장 시간표</b>",
+            "  성격: SEMI 산업 전망치 · 제조사 확정 발주금액 아님",
+            "  2026년 장비투자: " + amount("equipment_2026_usd_b")
+            + " · 전년 대비 +" + str(s.get("equipment_2026_yoy_pct") or "확인 불가") + "%",
+            "  2029년 장비투자: " + amount("equipment_2029_usd_b"),
+            "  4월 전망 대비 2026년: $133 billion → " + amount("equipment_2026_usd_b"),
+            "  4월 전망 대비 2029년: $172 billion → " + amount("equipment_2029_usd_b"),
+            "  공장 건설비 2026/2027/2028: " + amount("construction_2026_usd_b")
+            + " / " + amount("construction_2027_usd_b") + " / " + amount("construction_2028_usd_b"),
+        ]
+        for reason in semi_changes:
+            lines.append("  신규 변화: " + html.escape(reason))
+        if all(s.get(k) is not None for k in (
+            "starts_2026", "starts_2027", "first_silicon_2026", "first_silicon_2027"
+        )):
+            lines.append(
+                f"  2026년 착공 {s['starts_2026']}곳·가동/첫 웨이퍼 {s['first_silicon_2026']}곳"
+                f" → 2027년 착공 {s['starts_2027']}곳·가동/첫 웨이퍼 {s['first_silicon_2027']}곳"
+            )
+        if s.get("capacity_growth_2026_pct") is not None:
+            lines.append(
+                f"  설치 생산능력: 2026년 +{float(s['capacity_growth_2026_pct']):g}%"
+                + (f" · 2027~2029년 매년 약 +{float(s['capacity_growth_2027_29_pct']):g}%"
+                   if s.get("capacity_growth_2027_29_pct") is not None else "")
+            )
+        if s.get("equipment_2030_decline_pct") is not None:
+            lines.append("  역풍: 2030년 장비투자 감소 전망 -" +
+                         f"{float(s['equipment_2030_decline_pct']):g}%")
+        lines += [
+            "  구분: 건설비와 전공정 장비투자비는 서로 다른 분류, 착공과 가동도 다른 시설 집단",
+            "  매출 경로: 실제 장비 발주→납품·검수→장비사 매출→공장 가동→웨이퍼 투입→메모리 공급",
+            "  실패·지연 경로: 전력·초순수·허가·장비 납기·공정 수율·고객 승인",
+            "  먼저 볼 지표: 업체별 장비 수주잔고·웨이퍼 투입량·DRAM/NAND 계약가",
+            '  <a href="' + html.escape(SEMI_300MM_PRESS, quote=True) + '">SEMI 2026-10-13 공식자료</a>',
+            '  <a href="' + html.escape(SEMI_300MM_OUTLOOK, quote=True) + '">SEMI 300mm 분기별 전망</a>',
+            '  <a href="' + html.escape(SEMI_300MM_APRIL, quote=True) + '">SEMI 2026-04-01 기존 전망</a>',
+        ]
+
     for idx, item in enumerate(eligible, 1):
         entities = ", ".join(item["entities"]) if item["entities"] else "지역 전체"
         lines += [
@@ -681,7 +859,8 @@ def main() -> None:
     now = dt.datetime.now(KST)
     cutoff = now - dt.timedelta(days=10)
     items, errors = collect(cutoff)
-    write_outputs(items, errors)
+    semi_record, semi_errors = _semi_300mm_fetch()
+    write_outputs(items, errors + semi_errors, semi_record)
     print(f"regional_chokepoint_candidates={len(items)} errors={len(errors)}")
     print(f"alert_exists={ALERT_PATH.exists()}")
 
