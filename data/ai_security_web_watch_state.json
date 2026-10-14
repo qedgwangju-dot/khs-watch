@@ -7,7 +7,7 @@
     "errors": [],
     "material_items": 15,
     "new_material_items": 0,
-    "raw_items": 171
+    "raw_items": 172
   },
   "openai_insider_case_stages": {
     "initial_oct13_charge": {
@@ -294,6 +294,16 @@
       "url": "https://www.anthropic.com/research/investigating-unintended-model-actions",
       "vendor": "Anthropic"
     },
+    "831d58519ee3ec10bbbbfc22": {
+      "category": "AI 연구기관 내부자 도청·접근통제 사건",
+      "first_seen_at": "2026-10-14T02:08:33.453748+00:00",
+      "published_at": "2026-10-13T22:27:43+00:00",
+      "severity": 2,
+      "source": "Reuters",
+      "title": "Saudi OpenAI engineer arrested by FBI for planting covert recording device, US DOJ says - Reuters",
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNcjkxNVh4Vlg5aXhHdHJySlBhbC1iZVRDTTF1a2hiUk52eUlqUW1aWWtoeUg2TjQ0OWU1aURzNW5aWmZ1TEFBcGl4NTBIQVZSVnNPaFpFUnZqb2RjRzNQS0xLQjRkMmtJZWhuU1RLRXplcktzVnBHMVVhNThISzMxMVFYbXZoeWE2WFc3b2VzMlQ0Sl92Y0kwLXJ0MUxBOTdUNzFxdjR0VTI?oc=5",
+      "vendor": "OpenAI"
+    },
     "8f93e17c409b9cb7748da9eb": {
       "category": "취약점·패치",
       "first_seen_at": "2026-09-26T13:15:55.250969+00:00",
@@ -455,5 +465,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-10-14T10:58:42+09:00"
+  "updated_at_kst": "2026-10-14T11:08:33+09:00"
 }
