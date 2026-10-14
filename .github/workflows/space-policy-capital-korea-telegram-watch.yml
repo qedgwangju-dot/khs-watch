@@ -1,0 +1,108 @@
+name: Space Capital FAA and Korean Orbital AI Telegram Watch
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/space-policy-capital-korea-telegram-watch.yml"
+      - "scripts/space_policy_capital_korea_watch.py"
+  schedule:
+    # Twice hourly, separate from launch / telecom / defense watchers.
+    - cron: "9,39 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: space-policy-capital-korea-telegram-watch
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs887988798879887988798879_bot"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Syntax and fail-closed regression tests
+        run: |
+          python -m py_compile scripts/space_policy_capital_korea_watch.py
+          python scripts/space_policy_capital_korea_watch.py --self-test
+          python scripts/space_launch_telegram_send.py --inline-self-test
+          python scripts/merge_space_launch_state.py --self-test
+
+      - name: Verify FAA, Space Capital, Korea orbital AI sources
+        run: python scripts/space_policy_capital_korea_watch.py
+
+      - name: Verify one concise Korean Telegram message with intact clickable sources
+        if: hashFiles('out/space_policy_capital_korea_telegram.txt') != ''
+        run: |
+          python - <<'PY'
+          import pathlib
+          import sys
+          sys.path.insert(0, 'scripts')
+          from space_launch_telegram_send import inline_messages
+          source = pathlib.Path('out/space_policy_capital_korea_telegram.txt').read_text(encoding='utf-8')
+          result = inline_messages(source)
+          assert len(result) == 1, f'Unacceptable Telegram fragmentation: {len(result)} messages'
+          text, entities = result[0]
+          assert len(entities) >= 2 and len(entities) <= 10
+          assert '• 원문:' not in text
+          assert '456회' in text and '21억원' in text or '신규 공식문서' in text or '신규 공식자료' in text
+          assert all(x['type'] == 'text_link' and x['url'].startswith('https://') for x in entities)
+          print(f'korean_compact_alert_validated=true message_count=1 links={len(entities)} length={len(text)}')
+          PY
+
+      - name: Report source and delivery status
+        if: always()
+        run: |
+          if [ -f out/space_policy_capital_korea_status.md ]; then
+            cat out/space_policy_capital_korea_status.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "원천 조회 실패 또는 보고서 미생성" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Send only to dedicated Telegram bot
+        if: hashFiles('out/space_policy_capital_korea_telegram.txt') != ''
+        env:
+          SPACE_LAUNCH_TELEGRAM_BOT_TOKEN: ${{ secrets.SPACE_LAUNCH_TELEGRAM_BOT_TOKEN }}
+          SPACE_LAUNCH_TELEGRAM_CHAT_ID: ${{ secrets.SPACE_LAUNCH_TELEGRAM_CHAT_ID }}
+        run: |
+          python scripts/space_launch_telegram_send.py --inline out/space_policy_capital_korea_telegram.txt
+
+      - name: Save new state only after successful delivery
+        if: success() && hashFiles('out/space_policy_capital_korea_pending.json') != ''
+        run: |
+          cp out/space_policy_capital_korea_pending.json /tmp/space_policy_capital_korea_pending.json
+          git config user.name "space-policy-capital-korea-watch[bot]"
+          git config user.email "space-policy-capital-korea-watch[bot]@users.noreply.github.com"
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git reset --hard origin/main
+            python scripts/merge_space_launch_state.py \
+              data/space_policy_capital_korea_watch_state.json \
+              /tmp/space_policy_capital_korea_pending.json \
+              data/space_policy_capital_korea_watch_state.json
+            git add data/space_policy_capital_korea_watch_state.json
+            if git diff --cached --quiet; then
+              echo "Official event state unchanged"
+              exit 0
+            fi
+            git commit -m "chore: update space policy and orbital AI event state"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep $((attempt * 2))
+          done
+          exit 1
