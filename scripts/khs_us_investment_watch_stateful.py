@@ -985,7 +985,19 @@ def _candidate_facts(row: dict, family: str) -> set[str]:
                 "before fid", "could", "may", "subject to", "예정", "목표", "검토", "계획", "가능",
             ]
             not_pending = not any(term in low for term in pending_words)
-            if not_pending and any(term in low for term in [
+            # Phase One은 알래스카 내수 공급 가스관, Phase Two는 수출용 LNG 액화기지.
+            # 두 단계의 금융종결·FID·상업운전은 별도이며 합쳐서 '전체 확정' 처리하지 않는다.
+            phase_one = any(term in low for term in ["phase one", "phase 1", "1단계"]) and "pipeline" in low
+            phase_two = any(term in low for term in ["phase two", "phase 2", "2단계"]) and any(term in low for term in ["lng", "export", "수출", "액화"])
+            fid_completed = any(term in low for term in [
+                "reached final investment decision", "final investment decision reached",
+                "fid completed", "fid achieved", "최종투자결정 완료",
+            ])
+            if not_pending and phase_one and fid_completed:
+                facts.add("alaska_phase1_pipeline_fid_status:completed")
+            if not_pending and phase_two and fid_completed:
+                facts.add("alaska_phase2_export_fid_status:completed")
+            if not_pending and not phase_one and not phase_two and any(term in low for term in [
                 "alaska lng final investment decision reached",
                 "alaska lng reached final investment decision",
                 "alaska lng fid completed", "alaska lng fid achieved",
@@ -1074,6 +1086,7 @@ def _fact_slot(family: str, fact: str) -> str:
         "alaska_us_permits_reiteration:", "alaska_us_construction_start_claim:",
         "alaska_glenfarne_fid_status:", "alaska_project_financing_status:",
         "alaska_physical_construction_status:",
+        "alaska_phase1_pipeline_fid_status:", "alaska_phase2_export_fid_status:",
         "ercot_request_gw:", "semiconductor_investment_usd:", "ppa_years:",
         "official_status:",
     )
@@ -1248,7 +1261,9 @@ def _human_fact(value: str) -> str:
         "alaska_taiwan_us_investment_claim_usd_b:4.4": "미국 발표: 대만 알래스카 LNG 44억달러 투자 주장·대만 확정 및 납입 미확인",
         "alaska_us_permits_reiteration:2026-10-13": "미국 대통령 연방 인허가 확보 재언급·신규 인허가 취득 아님",
         "alaska_us_construction_start_claim:2026-10-13": "미국 대통령 착공 가능 발언·실제 착공 확인 아님",
-        "alaska_glenfarne_fid_status:completed": "Glenfarne 공식 Alaska LNG 최종투자결정(FID) 완료",
+        "alaska_glenfarne_fid_status:completed": "Glenfarne 공식 Alaska LNG 전체 사업 FID 완료",
+        "alaska_phase1_pipeline_fid_status:completed": "Alaska LNG 1단계 내수용 가스관 FID 완료",
+        "alaska_phase2_export_fid_status:completed": "Alaska LNG 2단계 LNG 수출기지 FID 완료",
         "alaska_project_financing_status:closed": "Alaska LNG 개발사 공식 사업 금융종결 완료",
         "alaska_physical_construction_status:started": "Alaska LNG 개발사 공식 현장 착공 확인",
         "alaska_taiwan_offtake_status:binding_contract_signed": "대만 알래스카 LNG 구속력 있는 장기구매 본계약 체결 확인",
@@ -2265,6 +2280,21 @@ def _self_test() -> int:
     }
     if not required.issubset(executed_dev):
         raise RuntimeError(f"Alaska project true execution events not captured: {executed_dev}")
+
+    stage_rows = [{
+        "title": "Alaska LNG phase one pipeline reached final investment decision",
+        "source": "Glenfarne",
+        "link": "https://glenfarnegroup.com/phase-one-test",
+    }]
+    phase_one_facts, _ = _accepted_facts_for_group("alaska_lng", stage_rows)
+    if "alaska_phase1_pipeline_fid_status:completed" not in phase_one_facts:
+        raise RuntimeError(f"Alaska Phase One pipeline FID not recorded: {phase_one_facts}")
+    if "alaska_glenfarne_fid_status:completed" in phase_one_facts or "alaska_phase2_export_fid_status:completed" in phase_one_facts:
+        raise RuntimeError(f"Alaska Phase One pipeline FID incorrectly became export FID: {phase_one_facts}")
+    stage_rows[0]["title"] = "Alaska LNG phase two LNG export terminal reached final investment decision"
+    phase_two_facts, _ = _accepted_facts_for_group("alaska_lng", stage_rows)
+    if "alaska_phase2_export_fid_status:completed" not in phase_two_facts:
+        raise RuntimeError(f"Alaska Phase Two export FID not recorded: {phase_two_facts}")
 
     print("state_event_guard_self_test=passed")
     return 0
