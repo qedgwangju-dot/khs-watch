@@ -16,6 +16,7 @@ on:
   workflow_run:
     workflows:
       - "AI Security Web Watch"
+      - "Wonyotti 90D Thesis Telegram Watch"
     types: [completed]
     branches: [main]
   workflow_dispatch:
