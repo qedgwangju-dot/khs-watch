@@ -355,6 +355,14 @@ def pjm_title(event: dict) -> str:
     low = t.lower()
     if "eea 1" in low or "eea1" in low:
         return "PJM, EEA1·최대발전 비상경보 발령"
+    if "emergency load mgmt reduction action" in low:
+        return "PJM, 비상 수요감축 실행 지시"
+    if "deploy all resources action" in low:
+        return "PJM, 가용 발전·수요자원 전면 동원 지시"
+    if "voltage reduction" in low:
+        if "warning" in low or "alert" in low:
+            return "PJM, 전압 저감 사전경보"
+        return "PJM, 전압 저감 조치"
     if "emergency use of back-up generator action" in low:
         return "PJM, 대형부하 비상 백업발전 실제 동원 단계 발령"
     if "emergency use of back-up generator warning" in low:
@@ -382,6 +390,26 @@ def pjm_title(event: dict) -> str:
 def pjm_stage_explanation(event: dict) -> str:
     low = event.get("message_type", "").lower()
     body_low = event.get("body", "").lower()
+    if "pre-emergency load mgmt reduction action" in low:
+        return (
+            "PJM이 등록된 수요반응 자원에 전력 사용 감축을 지시한 단계입니다. "
+            "해당 상품 요건에 따라 이행이 의무이며, PJM 해제 지시까지 감축을 유지해야 합니다. "
+            "감축 개시시각은 지역별 상세 내역과 DR Hub 등록정보에 따릅니다. "
+            "이 공지만으로 실제 감축 MW·MWh는 알 수 없으며, 일반 고객 순환정전이나 "
+            "대형부하 비상 백업발전 가동을 의미하지 않습니다."
+        )
+    if "emergency load mgmt reduction action" in low:
+        return (
+            "PJM이 비상단계에서 등록된 수요반응 자원에 전력 사용 감축을 지시했습니다. "
+            "상품 조건에 따른 이행이 의무이며 실제 감축 MW·MWh는 별도 확인해야 합니다. "
+            "일반 고객 순환정전이나 대형부하 백업발전 동원과는 다른 조치입니다."
+        )
+    if "deploy all resources action" in low:
+        return "PJM이 가용 발전·수요반응 자원의 투입을 지시한 단계입니다. 실제 동원량과 적용 자원은 추가 확인이 필요합니다."
+    if "voltage reduction" in low:
+        if "warning" in low or "alert" in low:
+            return "전력계통 전압 저감 가능성을 경고한 단계이며 실제 저감 실행 지시는 아닙니다."
+        return "계통 전압을 낮춰 전력 수요를 경감하도록 지시한 단계입니다. 적용 지역과 해제시각은 별도 확인해야 합니다."
     if "eea 1" in low or "eea1" in low:
         explanation = (
             "EEA1은 공급여력이 부족해질 가능성에 대비하는 조기경보이며, "
@@ -437,15 +465,23 @@ def pjm_message_stage_label(event: dict) -> str:
     low = message_type.lower()
     if "eea 1" in low or "eea1" in low:
         return "최대발전·부하관리 비상경보 / NERC EEA1"
+    if "pre-emergency load mgmt reduction action" in low:
+        return "비상 전 수요감축 실행 지시(이행 의무)"
+    if "emergency load mgmt reduction action" in low:
+        return "비상 수요감축 실행 지시(이행 의무)"
+    if "deploy all resources action" in low:
+        return "가용 발전·수요자원 전면 동원 지시"
+    if "voltage reduction" in low:
+        return "전압 저감 사전경보" if ("warning" in low or "alert" in low) else "전압 저감 조치"
     if "special notice" in low:
-        return "특별공지(Special Notice)"
+        return "특별공지"
     if "emergency use of back-up generator action" in low:
         return "대형부하 비상 백업발전 실제 동원 지시"
     if "emergency use of back-up generator warning" in low:
         return "대형부하 비상 백업발전 동원 경고"
     if "manual load dump" in low:
         return "강제 부하차단 / NERC EEA3"
-    return message_type or "확인 필요"
+    return "비상운영 단계(세부 유형 확인 필요)"
 
 
 def doe_content(event: dict) -> tuple[str, str]:
