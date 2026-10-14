@@ -414,7 +414,7 @@ def _next_checks(flags: dict[str, bool]) -> list[str]:
         checks += [
             "한국 정부 상업성 심사·투자 승인·실제 송금 및 백악관 주장과의 차이",
             "대만 CPC·Glenfarne 30%·20년 구매 본계약과 44억달러 출자 승인·납입",
-            "Glenfarne FID·금융종결·착공과 기존 미국 연방 허가의 적용범위",
+            "Glenfarne 1단계 내수 가스관·2단계 LNG 수출기지 각각의 FID·금융종결·실제 착공",
             "POSCO International LNG 구매 본계약·강재 공급 실수주·납기",
             "금강공업 API Active·공급계약·대구경 생산/협력 여부",
         ]
