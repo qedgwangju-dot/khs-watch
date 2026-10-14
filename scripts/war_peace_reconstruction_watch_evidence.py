@@ -163,7 +163,7 @@ def alert_receipt(items, markets, now, text, market_status=None):
     keys = ('id', 'title_original', 'title_ko', 'description', 'source', 'source_url', 'link', 'discovery_url',
             'resolved_url', 'published', 'rss_published', 'source_metadata', 'score', 'tags',
             'body_checked', 'body_verified', 'signals_ko', 'forced_tags', 'classification_color',
-            'non_military_kind', 'render_withheld')
+            'non_military_kind', 'render_withheld', 'duplicate_of', 'duplicate_basis')
     articles = []
     for row in items:
         item = {key: row.get(key) for key in keys if key in row}
@@ -171,7 +171,7 @@ def alert_receipt(items, markets, now, text, market_status=None):
         publication_status = (row.get('source_metadata') or {}).get('publication_status')
         item['publication_basis'] = ('publisher' if publication_status == 'verified' else
                                      'publisher_conflict' if publication_status == 'conflict' else 'discovery_feed')
-        item['rendered'] = bool({row.get('link'), row.get('resolved_url')} & urls)
+        item['rendered'] = not row.get('render_withheld') and bool({row.get('link'), row.get('resolved_url')} & urls)
         item['article_text_sha256'] = hashlib.sha256(str(row.get('article_text') or '').encode()).hexdigest()
         articles.append(item)
     return {'schema_version': 1, 'queried_at_kst': now.isoformat(),

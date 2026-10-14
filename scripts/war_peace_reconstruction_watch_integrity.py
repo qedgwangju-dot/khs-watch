@@ -6,6 +6,7 @@ import hashlib
 import json
 import math
 import re
+import urllib.parse
 from concurrent.futures import ThreadPoolExecutor
 import datetime as dt
 
@@ -293,17 +294,95 @@ def _publication_label(row, now):
     return f'{prefix} {stamp:%m-%d %H:%M} KST · <b>{age}분 경과</b>'
 
 
+def _source_aliases(state):
+    aliases = state.get('source_aliases', {})
+    if not isinstance(aliases, dict) or any(
+            not isinstance(alias, str) or not alias or not isinstance(target, str)
+            or not target or alias == target for alias, target in aliases.items()):
+        raise RuntimeError('War watch has invalid source alias history; state preserved')
+    return aliases
+
+
+def _publisher_host(row):
+    for key in ('source_url', 'resolved_url', 'link'):
+        host = (urllib.parse.urlparse(row.get(key) or '').hostname or '').lower().removeprefix('www.')
+        if host and host not in ('news.google.com', 'bing.com'):
+            return host
+    return ''
+
+
+def _same_source_article(left, right):
+    """Collapse only one publisher's matching ordered headline and publication."""
+    source = str(left.get('source') or '').strip().casefold()
+    if not source or source != str(right.get('source') or '').strip().casefold():
+        return False
+    hosts = (_publisher_host(left), _publisher_host(right))
+    if all(hosts) and hosts[0] != hosts[1]:
+        return False
+    if any((row.get('source_metadata') or {}).get('publication_status') == 'conflict'
+           for row in (left, right)):
+        return False
+    stamps = [watch.parse_pub(row.get('published')) for row in (left, right)]
+    return bool(stamps[0] is not None and stamps[0] == stamps[1]
+                and watch.evidence.title_matches(left, right.get('title_original') or right.get('title')))
+
+
+def _origin_rank(row):
+    metadata = row.get('source_metadata') or {}
+    url = row.get('resolved_url') or row.get('link')
+    publisher = watch.evidence.publisher_matches(row, url)
+    exact_body = bool(row.get('body_verified') and publisher
+                      and watch.evidence.title_matches(row, metadata.get('title')))
+    return exact_body, metadata.get('publication_status') == 'verified', publisher
+
+
+def _dedupe_source_articles(items):
+    groups = []
+    for row in items:
+        group = next((group for group in groups if _same_source_article(group[0], row)), None)
+        if group is None:
+            groups.append([row])
+        else:
+            group.append(row)
+    visible = []
+    for group in groups:
+        winner = max(group, key=_origin_rank)
+        visible.append(winner)
+        for row in group:
+            if row is not winner:
+                row['render_withheld'] = 'duplicate_source_article'
+                row['duplicate_of'] = winner['id']
+                row['duplicate_basis'] = 'same_publisher_ordered_headline_publication'
+    return visible
+
+
 def build_alert(items, markets, now):
+    state = watch.load_state()
+    aliases, seen = _source_aliases(state), set(state.get('seen', []))
+    for row in items:
+        # These annotations belong to this render, not an earlier replay.
+        if row.get('render_withheld') in ('duplicate_source_article', 'source_alias_already_seen'):
+            row.pop('render_withheld')
+            row.pop('duplicate_of', None)
+            row.pop('duplicate_basis', None)
+        target = aliases.get(row.get('id'))
+        if target in seen:
+            row['render_withheld'] = 'source_alias_already_seen'
+            row['duplicate_of'] = target
+    targets = [row for row in items[:8] if row.get('render_withheld') != 'source_alias_already_seen']
     with ThreadPoolExecutor(max_workers=max(1, min(8, len(items)))) as executor:
-        list(executor.map(body_parallel._safe_enrich, items[:8]))
+        list(executor.map(body_parallel._safe_enrich, targets))
     visible = []
     for row in items:
+        if row.get('render_withheld') == 'source_alias_already_seen':
+            continue
         metadata = row.get('source_metadata') or {}
         dates = [dt.datetime.fromisoformat(value['at_kst']) for value in metadata.get('publication_candidates', [])]
         if dates and (min(dates) < now - dt.timedelta(hours=3) or max(dates) > now + dt.timedelta(minutes=5)):
             row['render_withheld'] = 'origin_publication_stale_or_future'
             continue
         visible.append(row)
+    visible = _dedupe_source_articles(visible)
     if not visible:
         return ''
     for row in items:
@@ -392,6 +471,38 @@ def build_alert(items, markets, now):
     return '\n'.join(lines).strip() + '\n'
 
 
+def finalize():
+    """Remember proved aliases only after their rendered target is delivered."""
+    if not watch.PENDING.exists():
+        return
+    pending = json.loads(watch.PENDING.read_text(encoding='utf-8'))
+    state = watch.load_state()
+    aliases = dict(_source_aliases(state))
+    ids = pending.get('ids', [])
+    if watch.AUDIT.exists():
+        receipt = json.loads(watch.AUDIT.read_text(encoding='utf-8'))
+        rendered = {row['id']: row for row in receipt['articles'] if row.get('rendered')}
+        if len(ids) != len(set(ids)) or set(ids) != set(rendered):
+            raise RuntimeError('WAR_INTEGRITY_GATE: alias finalization pending differs from rendered IDs')
+        for row in receipt['articles']:
+            if row.get('render_withheld') != 'duplicate_source_article':
+                continue
+            target = rendered.get(row.get('duplicate_of'))
+            if target is None:
+                continue
+            if (row.get('rendered') or row['id'] == target['id']
+                    or not _same_source_article(row, target)):
+                raise RuntimeError('WAR_INTEGRITY_GATE: source alias lacks matching publisher evidence')
+            aliases[row['id']] = target['id']
+    seen = list(dict.fromkeys(list(state.get('seen', [])) + list(ids)))[-1200:]
+    state.update(seen=seen, updated_at=dt.datetime.now(watch.KST).isoformat(timespec='seconds'))
+    if aliases or 'source_aliases' in state:
+        # Targets use the existing seen retention window. Unrendered aliases
+        # never enter seen and never suppress an undelivered target.
+        state['source_aliases'] = {alias: target for alias, target in aliases.items() if target in seen}
+    watch.STATE.write_text(json.dumps(state, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
+
 def verify_alert(test_mode=False):
     _verify(test_mode=test_mode)
     if not watch.ALERT.exists() or not watch.AUDIT.exists():
@@ -450,6 +561,7 @@ def verify_alert(test_mode=False):
 
 
 watch.score_item, watch.topic_label, watch.build_alert = score_item, topic_label, build_alert
+watch.finalize = finalize
 previous.final_color = final_color
 previous.prev._final_item_color = final_color
 previous.prev._emergency_color = final_color
