@@ -539,6 +539,34 @@
       "telegram_core_fact": "이들 종목은 올해 주당순이익(EPS)이 2011년 이후 최고치를 기록할 것으로 전망되지만 주가는 과거 최고가보다 최대 20%가량 낮은 수준에 머물러 있다는 분석이다.",
       "title": "“실적은 역대 최대인데 주가는 아직”…눈여겨볼 6개 종목"
     },
+    "core:03bac1360283e02a41692fec": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/14/2026101412241926278",
+      "source": "머니투데이",
+      "source_body_digest": "abe6516f596ddbe8bc613db4d1a7a0bc5d3bdd26d4deb882e6fe602b2acaa555",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:257a57dd5410df9c1a2fbe3d6e7e3e9c3a248412ab6a2690d4195576f765e992",
+      "source_fact_keys": [
+        "source_fact:v1:357c065b0b17e5819995be13f2a79a669c54dddcc92ce0d218b9002a99795c74",
+        "source_fact:v1:36b2c0ea032ec3bab2daa2e56cba3e06faa5e6516360d71c78bfcb0f05a33b27",
+        "source_fact:v1:9a050af74653ec2569f28f6f43b14379be227d24f6a79336dc96fe9d1a4289c4",
+        "source_fact:v1:b1715b0074e3dd689f14656c2e2a3fbfe781111b7a0f49296d4b31ffe3651e1f",
+        "source_fact:v1:b28a7b34ce3c6e1436ea3ac8dd7a5b4eb71b817c08886af0b828cf62aeb22f31",
+        "source_fact:v1:bf87a23c7311a9610836af19765a8c57ddb906d3cdc430ea5c6c9a5b5499c4d6",
+        "source_fact:v1:c57091a8549d45dda306b647a6b354c2a4d6555ccfef5d522255730f6f789b57",
+        "source_fact:v1:eb157b710bc11102e9f5ae51dbf54a5a7a1589d05631297214c47d83d4f7936d",
+        "source_fact:v1:f3e2ae4f160d9af0a3491aa73fe89116863864f42dde76421e3cbcb74c4e0797"
+      ],
+      "source_published_kst": "2026-10-14T13:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "안현 SK하이닉스 사장 \"HBM 넘어 새로운 메모리 시대 열겠다\"",
+      "telegram_core_fact": "AI(인공지능) 추론 확대로 기존 메모리의 성능과 용량에 한계가 나타나면서 HBM(고대역폭메모리)을 넘어 3차원(3D) 적층 D램과 HBF(고대역폭플래시) 등 새로운 메모리 계층을 구축하겠다는 전략이다.",
+      "title": "안현 SK하이닉스 사장 \"HBM 넘어 새로운 메모리 시대 열겠다\""
+    },
     "core:03f4e537d152b642f1825439": {
       "first_seen_kst": "2026-10-08T03:26:42+09:00",
       "lanes": {
@@ -5942,6 +5970,28 @@
       ],
       "source_published_kst": "2026-10-07T13:33+09:00",
       "title": "KT클라우드, 50㎿급 '청라 AIDC' 구축 참여…수도권 AI 인프라 수요 대응"
+    },
+    "core:20be642cc7de8f8b838ecfdd": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.joongang.co.kr/article/25469647",
+      "source": "중앙일보",
+      "source_body_digest": "3fe4625cc53f0edc7eefd659639c669b3ec508ab8ca0ef561d4d23af57b018fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7a4a07f46de5fcf50c2cdbfdba191a5c4141dcf6b0782537405edadc8d81f41f",
+      "source_fact_keys": [
+        "source_fact:v1:1e9931d83a81ceb428bdf180e3dc5f0cf9ef2d6565fc6ea2bdbed5eb4f950f86",
+        "source_fact:v1:260f4a69a4e05b234a12152037fdf2fd7de21c5a0b5620859cd650f42400e378",
+        "source_fact:v1:65ba99a7fdcd7858c5840deffe2033e0811f016ffa231d3e4ade625a617fc41f"
+      ],
+      "source_published_kst": "2026-10-14T14:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "거세진 이란 호르무즈 공격, 英기지 위협까지…후티는 사우디 아람코 타격 | 중앙일보",
+      "telegram_core_fact": "선박들이 공격을 피해 항로를 바꾸면서 초대형 유조선의 하루 평균 운임 수입도 지난 9일 80만5000달러(약 11억원)로 사상 최고치를 기록했다고 선박 중개업체 클락슨스가 밝혔다.",
+      "title": "거세진 이란 호르무즈 공격, 英기지 위협까지…후티는 사우디 아람코 타격 | 중앙일보"
     },
     "core:20dcc41f6dac3f907fd0e3f4": {
       "first_seen_kst": "2026-10-12T23:57:10+09:00",
@@ -11611,6 +11661,40 @@
       "telegram_core_fact": "티큐브잇은 현 단계에서 확정적인 원가나 생산량을 제시하기보다 배양 기간 단축과 수작업 감소를 통해 환자별 제조 부담을 낮추는 데 집중하고 있다.",
       "title": "김선택 티큐브잇 대표 “T세포 배양 플랫폼 앞세워 日 협업 본격화” [바이오재팬 2026]"
     },
+    "core:3d236b475f1f9808e4033ce5": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635756",
+      "source": "이투데이",
+      "source_body_digest": "7366b1bd88f7f5ee1e6065e2e5709ce0e39f66fc3b6e12de5771e57a8f8a7d7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5497ffe14d18cfdbc1dba3941e21a3a01564c67dd836e81904c1684753978695",
+      "source_fact_keys": [
+        "source_fact:v1:08a15b72de24f9b34c63421732a5a46f6a27cd07e015ebc6bb64407a19fc05fe",
+        "source_fact:v1:22fe610c40c32f95bc6e8b775ecaf63518f13fbdd55ad601b4791a4f75cdec4b",
+        "source_fact:v1:3f054aa860173807702af9e906f74c299ebc4d6f1aeab33c5854d77b18785779",
+        "source_fact:v1:5ce1a3ee66449d5379c7b2465b35d5194a80a988b14c735b4c8d7848262eea63",
+        "source_fact:v1:5f11d80daf24762b0642a761f240b49e5fd719b0de745264253c1aa1eaec6e8d",
+        "source_fact:v1:741553be83b8a2d4beab724564073136c7b3e82853598491484d41331aa8eecc",
+        "source_fact:v1:89abdeb042933a5e19e401b6ac8351eececda5f94f1d8653f23d2fa9e27444f8",
+        "source_fact:v1:9cad2b165f22e85680eaf409e5404b447eb2f964321248c17297a7de6c54af0a",
+        "source_fact:v1:a3f9cd6c141a535a38fbe43cb71da98821c8e2b4cc07dbd977870c5d7c21ce83",
+        "source_fact:v1:b36205efcd65e0d899d021db7fdd09720ea7978fa191415d6f32b7daf576d593",
+        "source_fact:v1:c563bf21e43b48541583c6715bf003927211bd6a13d20c4df8acc8438471bc0c",
+        "source_fact:v1:cf83fd01de0198f6331efb2afedfc4e7ba439a20de20008ad7e1fdd225ce2384",
+        "source_fact:v1:eb299d4671aa412c7b9ed95aa3bdd178984245fa8cf8e4f14efdc24fff161ea6",
+        "source_fact:v1:ecd20462e96e56414f1f390060f9016eb1073328162a3e4ff52c9ef55a142d0d",
+        "source_fact:v1:f0f1ee975958d768e78f4242df2b189da6a1931ce275639b5f439f08d1a86d73"
+      ],
+      "source_published_kst": "2026-10-14T15:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도",
+      "telegram_core_fact": "채권시장에 따르면 전날 국고채 3년물 금리는 3.857%로 8월31일(3.838%) 이후 한 달 보름 만에 최저치를 기록했다.",
+      "title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도"
+    },
     "core:3d33d727dc3f4be770b9d0fe": {
       "first_seen_kst": "2026-10-08T04:45:20+09:00",
       "lanes": {
@@ -17190,6 +17274,24 @@
       "telegram_core_fact": "중수청은 인력 구성과 배당 사건 검토 등을 거쳐 1호 수사 대상을 선정할 것으로 관측된다.",
       "title": "'사건 배당' 일 시작한 중수청…수장·지휘부 공석 숙제"
     },
+    "core:5e8f06e4aaeeb01df2e387f2": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635751",
+      "source": "이투데이",
+      "source_body_digest": "8191b66c5ea0e354f3e5a90fc357a2f5dc00a939f99c47e5788d74524beded24",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-14T15:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "“CPI에 MSCI까지” 비트코인, 이번 주 잇단 변수에 촉각",
+      "telegram_core_fact": "최근 6차례 미국 CPI 발표 전후 48시간 동안 비트코인의 평균 가격 변동폭은 3.9%로 집계됐다. 비트코인은 이달 5일 8만6974달러까지 올랐다가 지난주 한때 8만400달러선까지 밀렸다.",
+      "title": "“CPI에 MSCI까지” 비트코인, 이번 주 잇단 변수에 촉각"
+    },
     "core:5ea72a51b9374c4dab50fe59": {
       "first_seen_kst": "2026-10-11T10:13:01+09:00",
       "lanes": {
@@ -18884,6 +18986,28 @@
       "source_title": "[바이오스냅] 동아쏘시오그룹, 협력사 대상 ESG 공급망 교육 | 연합뉴스",
       "telegram_core_fact": "동아쏘시오그룹은 ESG(환경·사회적 책무·기업지배구조 개선) 규제 강화 등에 대응해 협력사 대상 교육을 실시했다.",
       "title": "[바이오스냅] 동아쏘시오그룹, 협력사 대상 ESG 공급망 교육 | 연합뉴스"
+    },
+    "core:67665cfe45de074b7ded5f38": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825546",
+      "source": "뉴시스",
+      "source_body_digest": "5061efd1dd7bad2a89aa767427eb030d3a197059ffe60e7167fcc87f44e9ba01",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:41427eda99537325683707dd5f91a907ab2121daee43dbbe3e42867793d5768e",
+      "source_fact_keys": [
+        "source_fact:v1:1eca31fd7cae808e36a93a9f56e698a96826e262861b781a2308fdfdfa6a8584",
+        "source_fact:v1:7bf289eabf24b27b12a0e05f5d2afdc4d1900cc47c9ef27d5f01cc21eabd446a",
+        "source_fact:v1:d07c2ab1c24dc6f33ae646f6035e202fcf507a5001bc4cfd50589a78c894bd5b"
+      ],
+      "source_published_kst": "2026-10-14T14:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 유세에서 \"이란 한 방 먹일 것\" 대이란 군사행동 시사",
+      "telegram_core_fact": "트럼프 대통령은 또 이란과의 전쟁으로 인한 유가 상승은 \"이란이 핵무기를 가지는 것을 막기 위해 치러야 할 작은 대가일 뿐\"이라며 기존 주장을 되풀이했다.",
+      "title": "트럼프 유세에서 \"이란 한 방 먹일 것\" 대이란 군사행동 시사"
     },
     "core:676ea9f9df4e306b009edc47": {
       "first_seen_kst": "2026-10-13T00:43:08+09:00",
@@ -24618,6 +24742,28 @@
       "telegram_core_fact": "미 재무부는 곧바로 러시아 경유에 대한 제재 해제를 발표했는데, 중간선거를 앞두고 미국 내 경유가격 급등에 대한 불만이 커지자 트럼프 대통령이 푸틴 대통령에게 손을 내민 모양새다.",
       "title": "\"트럼프, 젤렌스키가 요청 6차례 무시하자 푸틴과 경유 거래\""
     },
+    "core:86954d7ad6c5918b10207251": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825758",
+      "source": "뉴시스",
+      "source_body_digest": "ba84c68e3c2e173a8335fd57b1558d76e10499aada24b4d431836b4a49a7a77f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bfbd39bd404734de8faa260bcf427d659bdb1de6f789db0a2ce498a371dfdec6",
+      "source_fact_keys": [
+        "source_fact:v1:5c1e9cef1ee4adbe90c0b14a3e425bfb12a7cb1d4de18fb58125ade29448ddaa",
+        "source_fact:v1:84fbadb78bd5b654549283a70dcf5fade254aac5cd3b505d652a91f5511c0f9b",
+        "source_fact:v1:8a3be64aff4883e143fa7112224b0eedff67ef9634a5c8cd97207948bb943c4d"
+      ],
+      "source_published_kst": "2026-10-14T15:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "'시흥형 RE100' 모델 구축…산단 지붕에 태양광, 수익은 환원",
+      "telegram_core_fact": "경기 시흥시가 관내 산업단지 지붕과 공공 유휴부지를 활용해 재생에너지 생산을 확대하고, 발생 수익을 시민에게 되돌려주는 '시흥형 RE100' 모델 구축에 나섰다.",
+      "title": "'시흥형 RE100' 모델 구축…산단 지붕에 태양광, 수익은 환원"
+    },
     "core:86ca17d84df5facc8cd56fd1": {
       "first_seen_kst": "2026-10-12T15:20:09+09:00",
       "lanes": {
@@ -25448,6 +25594,26 @@
       "source_title": "[美특징주]스페이스X, 엔비디아 GPU 400억달러 구매 추진…아폴로와 자금조달 협상",
       "telegram_core_fact": "우주항공업체 스페이스X(SPCX)가 엔비디아(NVDA)의 그래픽처리장치(GPU)를 400억달러 규모로 구매하기 위해 대규모 자금조달을 추진한다.",
       "title": "[美특징주]스페이스X, 엔비디아 GPU 400억달러 구매 추진…아폴로와 자금조달 협상"
+    },
+    "core:8a731e7b196e44086a70e570": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/14/2026101410183465138",
+      "source": "머니투데이",
+      "source_body_digest": "bd1df0a5812dddea0af9be05be89141f7a12cc6b5ea3d39a3de0fa4f21bbbae3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fa676f6475200c1eb60cb7ae1ad53d4024dbae6543349bf0f63d37dff334a30e",
+      "source_fact_keys": [
+        "source_fact:v1:81377abb0f2cc056a6998074d939988e59512dd8135789571c489234ac53724a"
+      ],
+      "source_published_kst": "2026-10-14T11:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"대만, 알래스카 LNG 사업 5조 투자…가스 30% 구매하기로\"",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 대만이 알래스카 액화천연가스(LNG) 파이프라인 사업에서 나오는 가스의 30%를 구매하기로 합의했다고 13일(현지시간) 말했다. 트럼프 대통령은 \"대만이 향후 20년간 가스 파이프라인을 통해 공급되는 가스의 30%를 구매하기로 합의했다\"며 \"이는 성공을 보장하는 것\"이라고 말했다.",
+      "title": "트럼프 \"대만, 알래스카 LNG 사업 5조 투자…가스 30% 구매하기로\""
     },
     "core:8a7a9cde9e54370fbb945c7b": {
       "first_seen_kst": "2026-10-10T10:34:18+09:00",
@@ -50239,34 +50405,25 @@
     "event:5214d80fea4e0016511b4110": {
       "first_seen_kst": "2026-10-14T05:08:50+09:00",
       "lanes": {
-        "live": "2026-10-14T18:12:32+09:00",
+        "live": "2026-10-14T21:14:31+09:00",
         "preopen": "2026-10-14T06:58:10+09:00"
       },
-      "last_seen_kst": "2026-10-14T18:12:32+09:00",
-      "link": "https://www.newsis.com/view/NISX20261014_0003825083",
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825546",
       "source": "뉴시스",
-      "source_body_digest": "48b6ccaf5c4b5d6cec9a2b11847fc5a9f39fefa512d9044e8bf6cd774b251034",
+      "source_body_digest": "5061efd1dd7bad2a89aa767427eb030d3a197059ffe60e7167fcc87f44e9ba01",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:e18257988ea5a337d03806f9d305402f69fe0a27e4020cbfd333d820c570854d",
+      "source_fact_identity": "source_facts:v1:41427eda99537325683707dd5f91a907ab2121daee43dbbe3e42867793d5768e",
       "source_fact_keys": [
-        "source_fact:v1:1e0241f13e8d223bca6efd5e286e23eff237d6b5f60c1fd354d915f2bccefc8f",
-        "source_fact:v1:216cd2bb8c1afeee6e59c0af23c9b8e6119db846064d5e40e0935993c3e34724",
-        "source_fact:v1:95c76417862cfb71d4bc4423e1bc419225d572c64c0aebc164287e2508e1c9b5",
-        "source_fact:v1:9974e4db8c971515fc4530b18f593176370af281c0903f88a61fedf6a527c521",
-        "source_fact:v1:a73060f91bde450ba30941acb71d3527f8a450e9182fdf639dcbf9a8adae14df",
-        "source_fact:v1:afae431ff933a7ca86fde9e2011a2888b839fe864459fbb468f6f2ed488c1801",
-        "source_fact:v1:b67e59ba5be9dfe3b0b4d13978cb40ef66c520780933e2ebd75428345556d70d",
-        "source_fact:v1:e6f27e25827f12318ef4e21cffc178cce1bddd05bf396d87b99e786578e6196b",
-        "source_fact:v1:eaa009d593adaa93d7c2b001f5f1363c66b3afc7a6ec0333aabd1b83da119509",
-        "source_fact:v1:eb1c359dac4f3cf5802cfb468e849901c7cbd1e6594d08355da16e2fe03cb4df",
-        "source_fact:v1:f6c9bfa4acb04aec349a226a97f5d93e75b8d0e4fdf547beea78b102e4106245",
-        "source_fact:v1:f973417e298ce3c6b3f902c069a872f3e9324d5fdd11770582c4b979cbda0dd8"
+        "source_fact:v1:1eca31fd7cae808e36a93a9f56e698a96826e262861b781a2308fdfdfa6a8584",
+        "source_fact:v1:7bf289eabf24b27b12a0e05f5d2afdc4d1900cc47c9ef27d5f01cc21eabd446a",
+        "source_fact:v1:d07c2ab1c24dc6f33ae646f6035e202fcf507a5001bc4cfd50589a78c894bd5b"
       ],
-      "source_published_kst": "2026-10-14T11:56+09:00",
+      "source_published_kst": "2026-10-14T14:20+09:00",
       "source_supply_terms": {},
-      "source_title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'",
-      "telegram_core_fact": "도널드 트럼프 미국 대통령이 치솟는 디젤(경유) 가격을 잡기 위해 러시아에 대한 제재를 해제하고 디젤 수입을 추진하고 있지만, 공급 물량이 제한적이어서 가격 안정 효과는 크지 않을 것이라는 전망이 나온다.",
-      "title": "트럼프, 경윳값 잡으려 대러 제재까지 풀었지만…효과는 '미미'"
+      "source_title": "트럼프 유세에서 \"이란 한 방 먹일 것\" 대이란 군사행동 시사",
+      "telegram_core_fact": "트럼프 대통령은 또 이란과의 전쟁으로 인한 유가 상승은 \"이란이 핵무기를 가지는 것을 막기 위해 치러야 할 작은 대가일 뿐\"이라며 기존 주장을 되풀이했다.",
+      "title": "트럼프 유세에서 \"이란 한 방 먹일 것\" 대이란 군사행동 시사"
     },
     "event:529016cc46695667fd7e3b7b": {
       "first_seen_kst": "2026-10-01T19:41:53+09:00",
@@ -51566,29 +51723,30 @@
     "event:6b041b08a3237829a975e2f8": {
       "first_seen_kst": "2026-10-14T16:26:08+09:00",
       "lanes": {
-        "live": "2026-10-14T18:43:50+09:00"
+        "live": "2026-10-14T21:14:31+09:00"
       },
-      "last_seen_kst": "2026-10-14T18:43:50+09:00",
-      "link": "https://www.fnnews.com/news/202610141301305722",
-      "source": "파이낸셜뉴스",
-      "source_body_digest": "c2fba6b2f2ec6abe2114c5567bc9f74297bb894cf7054d0abe1b6a9220a9eca5",
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/14/2026101412241926278",
+      "source": "머니투데이",
+      "source_body_digest": "abe6516f596ddbe8bc613db4d1a7a0bc5d3bdd26d4deb882e6fe602b2acaa555",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:ec7114c443ae2b449216e20e7ffde13a1eea083b792c8b863b188b1afe7e3a48",
+      "source_fact_identity": "source_facts:v1:257a57dd5410df9c1a2fbe3d6e7e3e9c3a248412ab6a2690d4195576f765e992",
       "source_fact_keys": [
-        "source_fact:v1:776fc91d456d4d7b9b0a0ce94d824093259674f6ea177eef91c7ed830a112cbb",
-        "source_fact:v1:7c0acb96bf30b9eb70a420c970e333bfb2e9a79381f75be18b60c3d717cc20d6",
-        "source_fact:v1:7ff4f378b20cd395ccfca424333dfcaedb30f63506d4efa7ce8b0d5f0da423a7",
-        "source_fact:v1:c220eb7da8b00afc905858218cc030deb3f0d58bedd36e137bf09633a4281bce",
-        "source_fact:v1:ca199359b022065d6e96c66c5ae72636e1055a709f8704b46568a59e4bfebd8f",
-        "source_fact:v1:cd46e32b9f6642882369ba72b45b1d5ca860090fc7049dc7ec1f78b809396823",
-        "source_fact:v1:e1966b1b94a419a137ef669452d4a21bcf1a391b2cbe688300b3d1c23d13a31c",
-        "source_fact:v1:f7d8af7529d8f52dade9b1545041ffec250191bd91afd6286262fb7f4ad3d05f"
+        "source_fact:v1:357c065b0b17e5819995be13f2a79a669c54dddcc92ce0d218b9002a99795c74",
+        "source_fact:v1:36b2c0ea032ec3bab2daa2e56cba3e06faa5e6516360d71c78bfcb0f05a33b27",
+        "source_fact:v1:9a050af74653ec2569f28f6f43b14379be227d24f6a79336dc96fe9d1a4289c4",
+        "source_fact:v1:b1715b0074e3dd689f14656c2e2a3fbfe781111b7a0f49296d4b31ffe3651e1f",
+        "source_fact:v1:b28a7b34ce3c6e1436ea3ac8dd7a5b4eb71b817c08886af0b828cf62aeb22f31",
+        "source_fact:v1:bf87a23c7311a9610836af19765a8c57ddb906d3cdc430ea5c6c9a5b5499c4d6",
+        "source_fact:v1:c57091a8549d45dda306b647a6b354c2a4d6555ccfef5d522255730f6f789b57",
+        "source_fact:v1:eb157b710bc11102e9f5ae51dbf54a5a7a1589d05631297214c47d83d4f7936d",
+        "source_fact:v1:f3e2ae4f160d9af0a3491aa73fe89116863864f42dde76421e3cbcb74c4e0797"
       ],
-      "source_published_kst": "2026-10-14T13:01+09:00",
+      "source_published_kst": "2026-10-14T13:06+09:00",
       "source_supply_terms": {},
-      "source_title": "안현 SK하이닉스 사장 \"HBM 용량 10배 HBF 개발…내년 1월 규격 마련\"",
-      "telegram_core_fact": "HBF 외에 3차원 적층 D램(3D Stacked DRAM), 차세대 솔리드스테이트드라이브(SSD) 등을 개발해 AI 추론 수요 증가에 따른 메모리 계층 간 데이터 이동 병목을 극복할 방침이다.",
-      "title": "안현 SK하이닉스 사장 \"HBM 용량 10배 HBF 개발…내년 1월 규격 마련\""
+      "source_title": "안현 SK하이닉스 사장 \"HBM 넘어 새로운 메모리 시대 열겠다\"",
+      "telegram_core_fact": "AI(인공지능) 추론 확대로 기존 메모리의 성능과 용량에 한계가 나타나면서 HBM(고대역폭메모리)을 넘어 3차원(3D) 적층 D램과 HBF(고대역폭플래시) 등 새로운 메모리 계층을 구축하겠다는 전략이다.",
+      "title": "안현 SK하이닉스 사장 \"HBM 넘어 새로운 메모리 시대 열겠다\""
     },
     "event:6b2973f885435c4bad7b09dc": {
       "first_seen_kst": "2026-09-28T10:39:56+09:00",
@@ -58155,32 +58313,36 @@
     "event:e4cb2c7469b50f100847f81c": {
       "first_seen_kst": "2026-10-14T17:44:16+09:00",
       "lanes": {
-        "live": "2026-10-14T17:44:16+09:00"
+        "live": "2026-10-14T21:14:31+09:00"
       },
-      "last_seen_kst": "2026-10-14T17:44:16+09:00",
-      "link": "https://www.hankyung.com/article/2026101390236",
-      "source": "한국경제",
-      "source_body_digest": "c35d77d86a3c04bef3a7ea5d222b687ac60e63bc601c1b0da46c3563ca839a17",
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635756",
+      "source": "이투데이",
+      "source_body_digest": "7366b1bd88f7f5ee1e6065e2e5709ce0e39f66fc3b6e12de5771e57a8f8a7d7e",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:83b41a42622ff3b8ff8e3f35968ef7a6eab97d17381c4c273262101ce651633d",
+      "source_fact_identity": "source_facts:v1:5497ffe14d18cfdbc1dba3941e21a3a01564c67dd836e81904c1684753978695",
       "source_fact_keys": [
-        "source_fact:v1:5e2f0167f147de7a599b81d9bf0e0f75194ed2ea266aecc1d76bf51cbd34d1dd",
-        "source_fact:v1:7699a6ee3803be21f412c9c7cc0d3b19d2bcc1dcb66a040758d373f050843ec9",
-        "source_fact:v1:792380616e1bcca0f437ede1b38a0e897ffa4e7f1307eb98f1b36c0adc582174",
-        "source_fact:v1:811b8b9a3c5b4960bd622f63bf456754da65b25dcf4cc865884261f908fad5a4",
-        "source_fact:v1:aa7f0d2f5842ba5a6ba0b8d703e6f21070aca5635e909b416a153a1e951c4b6c",
-        "source_fact:v1:b2c9892a4617e9dc81e13b5e048a7041a9477f6d10b72ea90264f34628c0306a",
-        "source_fact:v1:bc9b12b03e15ad5c2501579c6c8d669e4b378659693cd52e11b896664ff7e297",
-        "source_fact:v1:d81c97b7788410ce25ff0211cc83ee1f84f04363d0f4cad5a94c7993288abc69",
-        "source_fact:v1:dee6f05058249978ee9ec7d4b59a046540556bb75e98de5f549e3e2934461352",
-        "source_fact:v1:f9dcd12e1b09562d9fdd6914ed9bb3d12c1134e0fec1a94746d710f69e7664c9",
-        "source_fact:v1:ff35cefcb44b5a9d9fbea873c3e945a652db10938ec9751b2175abc2ccf79780"
+        "source_fact:v1:08a15b72de24f9b34c63421732a5a46f6a27cd07e015ebc6bb64407a19fc05fe",
+        "source_fact:v1:22fe610c40c32f95bc6e8b775ecaf63518f13fbdd55ad601b4791a4f75cdec4b",
+        "source_fact:v1:3f054aa860173807702af9e906f74c299ebc4d6f1aeab33c5854d77b18785779",
+        "source_fact:v1:5ce1a3ee66449d5379c7b2465b35d5194a80a988b14c735b4c8d7848262eea63",
+        "source_fact:v1:5f11d80daf24762b0642a761f240b49e5fd719b0de745264253c1aa1eaec6e8d",
+        "source_fact:v1:741553be83b8a2d4beab724564073136c7b3e82853598491484d41331aa8eecc",
+        "source_fact:v1:89abdeb042933a5e19e401b6ac8351eececda5f94f1d8653f23d2fa9e27444f8",
+        "source_fact:v1:9cad2b165f22e85680eaf409e5404b447eb2f964321248c17297a7de6c54af0a",
+        "source_fact:v1:a3f9cd6c141a535a38fbe43cb71da98821c8e2b4cc07dbd977870c5d7c21ce83",
+        "source_fact:v1:b36205efcd65e0d899d021db7fdd09720ea7978fa191415d6f32b7daf576d593",
+        "source_fact:v1:c563bf21e43b48541583c6715bf003927211bd6a13d20c4df8acc8438471bc0c",
+        "source_fact:v1:cf83fd01de0198f6331efb2afedfc4e7ba439a20de20008ad7e1fdd225ce2384",
+        "source_fact:v1:eb299d4671aa412c7b9ed95aa3bdd178984245fa8cf8e4f14efdc24fff161ea6",
+        "source_fact:v1:ecd20462e96e56414f1f390060f9016eb1073328162a3e4ff52c9ef55a142d0d",
+        "source_fact:v1:f0f1ee975958d768e78f4242df2b189da6a1931ce275639b5f439f08d1a86d73"
       ],
-      "source_published_kst": "2026-10-14T13:30+09:00",
+      "source_published_kst": "2026-10-14T15:06+09:00",
       "source_supply_terms": {},
-      "source_title": "자고 나면 집값 오르는데 \"급락 가능성\"…근거 살펴보니 [시장톡]",
-      "telegram_core_fact": "이 사장은 '생애최초 주택구입자에 대한 대출 규제를 강화해야 한다'는 기존 발언에 대해 질문을 받자 \"앞으로 집값이 급락할 가능성이 있기 때문에 그 점을 고려해서 드린 말씀\"이라며 \"급락할 가능성이 좀 많다. 지금 저희가 공급을 열심히 하고 있다\"고 답했습니다.",
-      "title": "자고 나면 집값 오르는데 \"급락 가능성\"…근거 살펴보니 [시장톡]"
+      "source_title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도",
+      "telegram_core_fact": "채권시장에 따르면 전날 국고채 3년물 금리는 3.857%로 8월31일(3.838%) 이후 한 달 보름 만에 최저치를 기록했다.",
+      "title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도"
     },
     "event:e4dc914215d482917b3e906f": {
       "first_seen_kst": "2026-10-12T12:32:44+09:00",
@@ -64268,6 +64430,28 @@
       "source_published_kst": "2026-10-06T00:04+09:00",
       "title": "엔진·배터리·공조… AI 데이터센터, 제조업 신시장을 열다"
     },
+    "fact:14293c98931f14fbbf093337": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.joongang.co.kr/article/25469647",
+      "source": "중앙일보",
+      "source_body_digest": "3fe4625cc53f0edc7eefd659639c669b3ec508ab8ca0ef561d4d23af57b018fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7a4a07f46de5fcf50c2cdbfdba191a5c4141dcf6b0782537405edadc8d81f41f",
+      "source_fact_keys": [
+        "source_fact:v1:1e9931d83a81ceb428bdf180e3dc5f0cf9ef2d6565fc6ea2bdbed5eb4f950f86",
+        "source_fact:v1:260f4a69a4e05b234a12152037fdf2fd7de21c5a0b5620859cd650f42400e378",
+        "source_fact:v1:65ba99a7fdcd7858c5840deffe2033e0811f016ffa231d3e4ade625a617fc41f"
+      ],
+      "source_published_kst": "2026-10-14T14:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "거세진 이란 호르무즈 공격, 英기지 위협까지…후티는 사우디 아람코 타격 | 중앙일보",
+      "telegram_core_fact": "선박들이 공격을 피해 항로를 바꾸면서 초대형 유조선의 하루 평균 운임 수입도 지난 9일 80만5000달러(약 11억원)로 사상 최고치를 기록했다고 선박 중개업체 클락슨스가 밝혔다.",
+      "title": "거세진 이란 호르무즈 공격, 英기지 위협까지…후티는 사우디 아람코 타격 | 중앙일보"
+    },
     "fact:142f752d32ab3628b6aa66b0": {
       "first_seen_kst": "2026-10-13T06:17:31+09:00",
       "lanes": {
@@ -66025,6 +66209,28 @@
       "source_title": "앤로보틱스, 비블리오테카와 AI 도서관 로봇 ‘로미’ 글로벌 계약",
       "telegram_core_fact": "양사는 이번 계약을 계기로 전 세계 시장을 겨냥해 로미의 공급을 확대하고 신규 사업 발굴을 공동으로 추진할 방침이다.",
       "title": "앤로보틱스, 비블리오테카와 AI 도서관 로봇 ‘로미’ 글로벌 계약"
+    },
+    "fact:1af5562579b45b2e600f2bbb": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825758",
+      "source": "뉴시스",
+      "source_body_digest": "ba84c68e3c2e173a8335fd57b1558d76e10499aada24b4d431836b4a49a7a77f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bfbd39bd404734de8faa260bcf427d659bdb1de6f789db0a2ce498a371dfdec6",
+      "source_fact_keys": [
+        "source_fact:v1:5c1e9cef1ee4adbe90c0b14a3e425bfb12a7cb1d4de18fb58125ade29448ddaa",
+        "source_fact:v1:84fbadb78bd5b654549283a70dcf5fade254aac5cd3b505d652a91f5511c0f9b",
+        "source_fact:v1:8a3be64aff4883e143fa7112224b0eedff67ef9634a5c8cd97207948bb943c4d"
+      ],
+      "source_published_kst": "2026-10-14T15:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "'시흥형 RE100' 모델 구축…산단 지붕에 태양광, 수익은 환원",
+      "telegram_core_fact": "경기 시흥시가 관내 산업단지 지붕과 공공 유휴부지를 활용해 재생에너지 생산을 확대하고, 발생 수익을 시민에게 되돌려주는 '시흥형 RE100' 모델 구축에 나섰다.",
+      "title": "'시흥형 RE100' 모델 구축…산단 지붕에 태양광, 수익은 환원"
     },
     "fact:1af5b05f7c2090ee8b208d16": {
       "first_seen_kst": "2026-10-07T07:39:19+09:00",
@@ -78720,6 +78926,34 @@
       ],
       "source_published_kst": "2026-10-06T17:21+09:00",
       "title": "서방 제재로 런던길 막힌 러시아산 금…홍콩 수입, 7개월 만에 연간 기록 넘었다"
+    },
+    "fact:5443b909f6ac80138f7587aa": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/14/2026101412241926278",
+      "source": "머니투데이",
+      "source_body_digest": "abe6516f596ddbe8bc613db4d1a7a0bc5d3bdd26d4deb882e6fe602b2acaa555",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:257a57dd5410df9c1a2fbe3d6e7e3e9c3a248412ab6a2690d4195576f765e992",
+      "source_fact_keys": [
+        "source_fact:v1:357c065b0b17e5819995be13f2a79a669c54dddcc92ce0d218b9002a99795c74",
+        "source_fact:v1:36b2c0ea032ec3bab2daa2e56cba3e06faa5e6516360d71c78bfcb0f05a33b27",
+        "source_fact:v1:9a050af74653ec2569f28f6f43b14379be227d24f6a79336dc96fe9d1a4289c4",
+        "source_fact:v1:b1715b0074e3dd689f14656c2e2a3fbfe781111b7a0f49296d4b31ffe3651e1f",
+        "source_fact:v1:b28a7b34ce3c6e1436ea3ac8dd7a5b4eb71b817c08886af0b828cf62aeb22f31",
+        "source_fact:v1:bf87a23c7311a9610836af19765a8c57ddb906d3cdc430ea5c6c9a5b5499c4d6",
+        "source_fact:v1:c57091a8549d45dda306b647a6b354c2a4d6555ccfef5d522255730f6f789b57",
+        "source_fact:v1:eb157b710bc11102e9f5ae51dbf54a5a7a1589d05631297214c47d83d4f7936d",
+        "source_fact:v1:f3e2ae4f160d9af0a3491aa73fe89116863864f42dde76421e3cbcb74c4e0797"
+      ],
+      "source_published_kst": "2026-10-14T13:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "안현 SK하이닉스 사장 \"HBM 넘어 새로운 메모리 시대 열겠다\"",
+      "telegram_core_fact": "AI(인공지능) 추론 확대로 기존 메모리의 성능과 용량에 한계가 나타나면서 HBM(고대역폭메모리)을 넘어 3차원(3D) 적층 D램과 HBF(고대역폭플래시) 등 새로운 메모리 계층을 구축하겠다는 전략이다.",
+      "title": "안현 SK하이닉스 사장 \"HBM 넘어 새로운 메모리 시대 열겠다\""
     },
     "fact:5449f40572b8a635725ffbbc": {
       "first_seen_kst": "2026-10-08T07:27:34+09:00",
@@ -102968,6 +103202,28 @@
       "telegram_core_fact": "생체인증 신원확인 솔루션 업체 오스아이디(AUID)가 최대 135만 달러 선순위 담보부 전환사채와 보통주 매수 워런트를 투자자에게 매각하는 사모 방식 자금 조달 계약을 체결하고, 2026년 4월 발행한 기존 선순위 담보부 채권의 만기를 2027년 2월 28일로 연장하기로 했다고 10월 5일 발표했다.",
       "title": "오스아이디, 최대 135만 달러 전환사채 조달..기존 채권 만기 연장"
     },
+    "fact:b8a4283974c0aecea7bbee3e": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825546",
+      "source": "뉴시스",
+      "source_body_digest": "5061efd1dd7bad2a89aa767427eb030d3a197059ffe60e7167fcc87f44e9ba01",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:41427eda99537325683707dd5f91a907ab2121daee43dbbe3e42867793d5768e",
+      "source_fact_keys": [
+        "source_fact:v1:1eca31fd7cae808e36a93a9f56e698a96826e262861b781a2308fdfdfa6a8584",
+        "source_fact:v1:7bf289eabf24b27b12a0e05f5d2afdc4d1900cc47c9ef27d5f01cc21eabd446a",
+        "source_fact:v1:d07c2ab1c24dc6f33ae646f6035e202fcf507a5001bc4cfd50589a78c894bd5b"
+      ],
+      "source_published_kst": "2026-10-14T14:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 유세에서 \"이란 한 방 먹일 것\" 대이란 군사행동 시사",
+      "telegram_core_fact": "트럼프 대통령은 또 이란과의 전쟁으로 인한 유가 상승은 \"이란이 핵무기를 가지는 것을 막기 위해 치러야 할 작은 대가일 뿐\"이라며 기존 주장을 되풀이했다.",
+      "title": "트럼프 유세에서 \"이란 한 방 먹일 것\" 대이란 군사행동 시사"
+    },
     "fact:b8ae441923694b5ddbe262ca": {
       "first_seen_kst": "2026-10-08T20:16:13+09:00",
       "lanes": {
@@ -108556,6 +108812,26 @@
       "telegram_core_fact": "유럽연합(EU)이 유가 급등으로 막대한 이익을 거둔 석유·가스 기업에 이른바 ‘횡재세’를 부과하는 방안을 검토하고 있다.",
       "title": "EU, 유가 급등에 석유·가스 ‘횡재세’ 부활 검토"
     },
+    "fact:d0cb13e11b3a498ce5125464": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/14/2026101410183465138",
+      "source": "머니투데이",
+      "source_body_digest": "bd1df0a5812dddea0af9be05be89141f7a12cc6b5ea3d39a3de0fa4f21bbbae3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fa676f6475200c1eb60cb7ae1ad53d4024dbae6543349bf0f63d37dff334a30e",
+      "source_fact_keys": [
+        "source_fact:v1:81377abb0f2cc056a6998074d939988e59512dd8135789571c489234ac53724a"
+      ],
+      "source_published_kst": "2026-10-14T11:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"대만, 알래스카 LNG 사업 5조 투자…가스 30% 구매하기로\"",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 대만이 알래스카 액화천연가스(LNG) 파이프라인 사업에서 나오는 가스의 30%를 구매하기로 합의했다고 13일(현지시간) 말했다. 트럼프 대통령은 \"대만이 향후 20년간 가스 파이프라인을 통해 공급되는 가스의 30%를 구매하기로 합의했다\"며 \"이는 성공을 보장하는 것\"이라고 말했다.",
+      "title": "트럼프 \"대만, 알래스카 LNG 사업 5조 투자…가스 30% 구매하기로\""
+    },
     "fact:d0e9d8ad018ec470be6dc05a": {
       "first_seen_kst": "2026-10-07T19:13:29+09:00",
       "lanes": {
@@ -109840,6 +110116,40 @@
       ],
       "source_published_kst": "2026-10-06T09:47+09:00",
       "title": "중간선거 앞두고 전전긍긍…트럼프 \"농업용 면세유 車사용 한시 유예\""
+    },
+    "fact:d597e1d5da751057be01e4d1": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635756",
+      "source": "이투데이",
+      "source_body_digest": "7366b1bd88f7f5ee1e6065e2e5709ce0e39f66fc3b6e12de5771e57a8f8a7d7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5497ffe14d18cfdbc1dba3941e21a3a01564c67dd836e81904c1684753978695",
+      "source_fact_keys": [
+        "source_fact:v1:08a15b72de24f9b34c63421732a5a46f6a27cd07e015ebc6bb64407a19fc05fe",
+        "source_fact:v1:22fe610c40c32f95bc6e8b775ecaf63518f13fbdd55ad601b4791a4f75cdec4b",
+        "source_fact:v1:3f054aa860173807702af9e906f74c299ebc4d6f1aeab33c5854d77b18785779",
+        "source_fact:v1:5ce1a3ee66449d5379c7b2465b35d5194a80a988b14c735b4c8d7848262eea63",
+        "source_fact:v1:5f11d80daf24762b0642a761f240b49e5fd719b0de745264253c1aa1eaec6e8d",
+        "source_fact:v1:741553be83b8a2d4beab724564073136c7b3e82853598491484d41331aa8eecc",
+        "source_fact:v1:89abdeb042933a5e19e401b6ac8351eececda5f94f1d8653f23d2fa9e27444f8",
+        "source_fact:v1:9cad2b165f22e85680eaf409e5404b447eb2f964321248c17297a7de6c54af0a",
+        "source_fact:v1:a3f9cd6c141a535a38fbe43cb71da98821c8e2b4cc07dbd977870c5d7c21ce83",
+        "source_fact:v1:b36205efcd65e0d899d021db7fdd09720ea7978fa191415d6f32b7daf576d593",
+        "source_fact:v1:c563bf21e43b48541583c6715bf003927211bd6a13d20c4df8acc8438471bc0c",
+        "source_fact:v1:cf83fd01de0198f6331efb2afedfc4e7ba439a20de20008ad7e1fdd225ce2384",
+        "source_fact:v1:eb299d4671aa412c7b9ed95aa3bdd178984245fa8cf8e4f14efdc24fff161ea6",
+        "source_fact:v1:ecd20462e96e56414f1f390060f9016eb1073328162a3e4ff52c9ef55a142d0d",
+        "source_fact:v1:f0f1ee975958d768e78f4242df2b189da6a1931ce275639b5f439f08d1a86d73"
+      ],
+      "source_published_kst": "2026-10-14T15:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도",
+      "telegram_core_fact": "채권시장에 따르면 전날 국고채 3년물 금리는 3.857%로 8월31일(3.838%) 이후 한 달 보름 만에 최저치를 기록했다.",
+      "title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도"
     },
     "fact:d59ed28c04221129eb7313bf": {
       "first_seen_kst": "2026-10-08T21:47:01+09:00",
@@ -123490,6 +123800,26 @@
       "source_title": "원안위, SMR 규제 인력·예산 도마…최원호 \"최소 1개 국 필요\"(종합)",
       "telegram_core_fact": "SMR에 대해서는 \"심사 전담조직을 구성하고 전용 심사지침을 개정해 표준설계인가의 안전성을 심사하고 있다\"며 \"올해 2월 수립한 SMR 규제체계 구축 로드맵을 충실히 이행하겠다\"고 강조했다.",
       "title": "원안위, SMR 규제 인력·예산 도마…최원호 \"최소 1개 국 필요\"(종합)"
+    },
+    "link:0bd4e21112ed75817a60da38": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/14/2026101410183465138",
+      "source": "머니투데이",
+      "source_body_digest": "bd1df0a5812dddea0af9be05be89141f7a12cc6b5ea3d39a3de0fa4f21bbbae3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fa676f6475200c1eb60cb7ae1ad53d4024dbae6543349bf0f63d37dff334a30e",
+      "source_fact_keys": [
+        "source_fact:v1:81377abb0f2cc056a6998074d939988e59512dd8135789571c489234ac53724a"
+      ],
+      "source_published_kst": "2026-10-14T11:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"대만, 알래스카 LNG 사업 5조 투자…가스 30% 구매하기로\"",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 대만이 알래스카 액화천연가스(LNG) 파이프라인 사업에서 나오는 가스의 30%를 구매하기로 합의했다고 13일(현지시간) 말했다. 트럼프 대통령은 \"대만이 향후 20년간 가스 파이프라인을 통해 공급되는 가스의 30%를 구매하기로 합의했다\"며 \"이는 성공을 보장하는 것\"이라고 말했다.",
+      "title": "트럼프 \"대만, 알래스카 LNG 사업 5조 투자…가스 30% 구매하기로\""
     },
     "link:0bdf3483d48523c0f2d89b55": {
       "first_seen_kst": "2026-10-13T22:33:57+09:00",
@@ -142251,6 +142581,28 @@
       "telegram_core_fact": "메리츠증권은 12일 보고서를 통해 SK하이닉스 목표주가를 기존 310만원에서 320만원으로 상향 조정했다.",
       "title": "하이닉스 목표가 320만원 등장…“3분기 영업익 80조 간다” [오늘 나온 보고서]"
     },
+    "link:4469e02f9cc3c515eef795f8": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.joongang.co.kr/article/25469647",
+      "source": "중앙일보",
+      "source_body_digest": "3fe4625cc53f0edc7eefd659639c669b3ec508ab8ca0ef561d4d23af57b018fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7a4a07f46de5fcf50c2cdbfdba191a5c4141dcf6b0782537405edadc8d81f41f",
+      "source_fact_keys": [
+        "source_fact:v1:1e9931d83a81ceb428bdf180e3dc5f0cf9ef2d6565fc6ea2bdbed5eb4f950f86",
+        "source_fact:v1:260f4a69a4e05b234a12152037fdf2fd7de21c5a0b5620859cd650f42400e378",
+        "source_fact:v1:65ba99a7fdcd7858c5840deffe2033e0811f016ffa231d3e4ade625a617fc41f"
+      ],
+      "source_published_kst": "2026-10-14T14:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "거세진 이란 호르무즈 공격, 英기지 위협까지…후티는 사우디 아람코 타격 | 중앙일보",
+      "telegram_core_fact": "선박들이 공격을 피해 항로를 바꾸면서 초대형 유조선의 하루 평균 운임 수입도 지난 9일 80만5000달러(약 11억원)로 사상 최고치를 기록했다고 선박 중개업체 클락슨스가 밝혔다.",
+      "title": "거세진 이란 호르무즈 공격, 英기지 위협까지…후티는 사우디 아람코 타격 | 중앙일보"
+    },
     "link:447a50c8851097926e853e44": {
       "first_seen_kst": "2026-10-02T00:28:46+09:00",
       "lanes": {
@@ -149522,6 +149874,28 @@
       ],
       "source_published_kst": "2026-10-06T10:20+09:00",
       "title": "\"韓 가상자산 경제 600조원대…동아시아 최대\" | 연합뉴스"
+    },
+    "link:5b1b998fc5622ada4939fbc5": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825546",
+      "source": "뉴시스",
+      "source_body_digest": "5061efd1dd7bad2a89aa767427eb030d3a197059ffe60e7167fcc87f44e9ba01",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:41427eda99537325683707dd5f91a907ab2121daee43dbbe3e42867793d5768e",
+      "source_fact_keys": [
+        "source_fact:v1:1eca31fd7cae808e36a93a9f56e698a96826e262861b781a2308fdfdfa6a8584",
+        "source_fact:v1:7bf289eabf24b27b12a0e05f5d2afdc4d1900cc47c9ef27d5f01cc21eabd446a",
+        "source_fact:v1:d07c2ab1c24dc6f33ae646f6035e202fcf507a5001bc4cfd50589a78c894bd5b"
+      ],
+      "source_published_kst": "2026-10-14T14:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 유세에서 \"이란 한 방 먹일 것\" 대이란 군사행동 시사",
+      "telegram_core_fact": "트럼프 대통령은 또 이란과의 전쟁으로 인한 유가 상승은 \"이란이 핵무기를 가지는 것을 막기 위해 치러야 할 작은 대가일 뿐\"이라며 기존 주장을 되풀이했다.",
+      "title": "트럼프 유세에서 \"이란 한 방 먹일 것\" 대이란 군사행동 시사"
     },
     "link:5b295a308a9c6b8f8edd399f": {
       "first_seen_kst": "2026-10-07T23:36:14+09:00",
@@ -158325,6 +158699,40 @@
       ],
       "source_published_kst": "2026-10-06T14:59+09:00",
       "title": "세종시, 액티스코리아와 'AI 데이터센터' 건립…\"1.8조 투입\""
+    },
+    "link:768c30914c02eccf2dc13f01": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635756",
+      "source": "이투데이",
+      "source_body_digest": "7366b1bd88f7f5ee1e6065e2e5709ce0e39f66fc3b6e12de5771e57a8f8a7d7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5497ffe14d18cfdbc1dba3941e21a3a01564c67dd836e81904c1684753978695",
+      "source_fact_keys": [
+        "source_fact:v1:08a15b72de24f9b34c63421732a5a46f6a27cd07e015ebc6bb64407a19fc05fe",
+        "source_fact:v1:22fe610c40c32f95bc6e8b775ecaf63518f13fbdd55ad601b4791a4f75cdec4b",
+        "source_fact:v1:3f054aa860173807702af9e906f74c299ebc4d6f1aeab33c5854d77b18785779",
+        "source_fact:v1:5ce1a3ee66449d5379c7b2465b35d5194a80a988b14c735b4c8d7848262eea63",
+        "source_fact:v1:5f11d80daf24762b0642a761f240b49e5fd719b0de745264253c1aa1eaec6e8d",
+        "source_fact:v1:741553be83b8a2d4beab724564073136c7b3e82853598491484d41331aa8eecc",
+        "source_fact:v1:89abdeb042933a5e19e401b6ac8351eececda5f94f1d8653f23d2fa9e27444f8",
+        "source_fact:v1:9cad2b165f22e85680eaf409e5404b447eb2f964321248c17297a7de6c54af0a",
+        "source_fact:v1:a3f9cd6c141a535a38fbe43cb71da98821c8e2b4cc07dbd977870c5d7c21ce83",
+        "source_fact:v1:b36205efcd65e0d899d021db7fdd09720ea7978fa191415d6f32b7daf576d593",
+        "source_fact:v1:c563bf21e43b48541583c6715bf003927211bd6a13d20c4df8acc8438471bc0c",
+        "source_fact:v1:cf83fd01de0198f6331efb2afedfc4e7ba439a20de20008ad7e1fdd225ce2384",
+        "source_fact:v1:eb299d4671aa412c7b9ed95aa3bdd178984245fa8cf8e4f14efdc24fff161ea6",
+        "source_fact:v1:ecd20462e96e56414f1f390060f9016eb1073328162a3e4ff52c9ef55a142d0d",
+        "source_fact:v1:f0f1ee975958d768e78f4242df2b189da6a1931ce275639b5f439f08d1a86d73"
+      ],
+      "source_published_kst": "2026-10-14T15:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도",
+      "telegram_core_fact": "채권시장에 따르면 전날 국고채 3년물 금리는 3.857%로 8월31일(3.838%) 이후 한 달 보름 만에 최저치를 기록했다.",
+      "title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도"
     },
     "link:76b213adbe2fca481cac4b89": {
       "first_seen_kst": "2026-10-03T12:26:15+09:00",
@@ -195314,6 +195722,34 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아와 우크라이나가 정유시설을 서로 공격하지 않기로 합의했다고 11일(현지시간) 발표했다.",
       "title": "트럼프, 우·러 에너지 휴전 깜짝 발표…젤렌스키 \"처음 듣는 이야기\""
     },
+    "link:ea7514786335b97a11d5a21e": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/14/2026101412241926278",
+      "source": "머니투데이",
+      "source_body_digest": "abe6516f596ddbe8bc613db4d1a7a0bc5d3bdd26d4deb882e6fe602b2acaa555",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:257a57dd5410df9c1a2fbe3d6e7e3e9c3a248412ab6a2690d4195576f765e992",
+      "source_fact_keys": [
+        "source_fact:v1:357c065b0b17e5819995be13f2a79a669c54dddcc92ce0d218b9002a99795c74",
+        "source_fact:v1:36b2c0ea032ec3bab2daa2e56cba3e06faa5e6516360d71c78bfcb0f05a33b27",
+        "source_fact:v1:9a050af74653ec2569f28f6f43b14379be227d24f6a79336dc96fe9d1a4289c4",
+        "source_fact:v1:b1715b0074e3dd689f14656c2e2a3fbfe781111b7a0f49296d4b31ffe3651e1f",
+        "source_fact:v1:b28a7b34ce3c6e1436ea3ac8dd7a5b4eb71b817c08886af0b828cf62aeb22f31",
+        "source_fact:v1:bf87a23c7311a9610836af19765a8c57ddb906d3cdc430ea5c6c9a5b5499c4d6",
+        "source_fact:v1:c57091a8549d45dda306b647a6b354c2a4d6555ccfef5d522255730f6f789b57",
+        "source_fact:v1:eb157b710bc11102e9f5ae51dbf54a5a7a1589d05631297214c47d83d4f7936d",
+        "source_fact:v1:f3e2ae4f160d9af0a3491aa73fe89116863864f42dde76421e3cbcb74c4e0797"
+      ],
+      "source_published_kst": "2026-10-14T13:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "안현 SK하이닉스 사장 \"HBM 넘어 새로운 메모리 시대 열겠다\"",
+      "telegram_core_fact": "AI(인공지능) 추론 확대로 기존 메모리의 성능과 용량에 한계가 나타나면서 HBM(고대역폭메모리)을 넘어 3차원(3D) 적층 D램과 HBF(고대역폭플래시) 등 새로운 메모리 계층을 구축하겠다는 전략이다.",
+      "title": "안현 SK하이닉스 사장 \"HBM 넘어 새로운 메모리 시대 열겠다\""
+    },
     "link:ea763a5eefb633c2c551649c": {
       "first_seen_kst": "2026-10-09T20:48:52+09:00",
       "lanes": {
@@ -199623,6 +200059,28 @@
       "source_published_kst": "2026-10-07T01:30+09:00",
       "title": "\"고3 아들에 주식 500만원 줬다\"…매일 주식창 보는 수험생, 괜찮을까?"
     },
+    "link:f8b051bead5a6489ec6be677": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825758",
+      "source": "뉴시스",
+      "source_body_digest": "ba84c68e3c2e173a8335fd57b1558d76e10499aada24b4d431836b4a49a7a77f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bfbd39bd404734de8faa260bcf427d659bdb1de6f789db0a2ce498a371dfdec6",
+      "source_fact_keys": [
+        "source_fact:v1:5c1e9cef1ee4adbe90c0b14a3e425bfb12a7cb1d4de18fb58125ade29448ddaa",
+        "source_fact:v1:84fbadb78bd5b654549283a70dcf5fade254aac5cd3b505d652a91f5511c0f9b",
+        "source_fact:v1:8a3be64aff4883e143fa7112224b0eedff67ef9634a5c8cd97207948bb943c4d"
+      ],
+      "source_published_kst": "2026-10-14T15:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "'시흥형 RE100' 모델 구축…산단 지붕에 태양광, 수익은 환원",
+      "telegram_core_fact": "경기 시흥시가 관내 산업단지 지붕과 공공 유휴부지를 활용해 재생에너지 생산을 확대하고, 발생 수익을 시민에게 되돌려주는 '시흥형 RE100' 모델 구축에 나섰다.",
+      "title": "'시흥형 RE100' 모델 구축…산단 지붕에 태양광, 수익은 환원"
+    },
     "link:f8b2cee42e2405970ef708ca": {
       "first_seen_kst": "2026-10-13T08:14:23+09:00",
       "lanes": {
@@ -200918,6 +201376,24 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003813159",
       "source": "뉴시스",
       "title": "유로존 9월 인플레 3.8%로 ↑…8월의 3.2%에서"
+    },
+    "link:fcba805e588e7e9bf16d8a38": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635751",
+      "source": "이투데이",
+      "source_body_digest": "8191b66c5ea0e354f3e5a90fc357a2f5dc00a939f99c47e5788d74524beded24",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-14T15:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "“CPI에 MSCI까지” 비트코인, 이번 주 잇단 변수에 촉각",
+      "telegram_core_fact": "최근 6차례 미국 CPI 발표 전후 48시간 동안 비트코인의 평균 가격 변동폭은 3.9%로 집계됐다. 비트코인은 이달 5일 8만6974달러까지 올랐다가 지난주 한때 8만400달러선까지 밀렸다.",
+      "title": "“CPI에 MSCI까지” 비트코인, 이번 주 잇단 변수에 촉각"
     },
     "link:fccd7afece5b3b02a4f0fbb5": {
       "first_seen_kst": "2026-10-10T01:06:33+09:00",
@@ -225708,6 +226184,28 @@
       "source_published_kst": "2026-10-07T15:16+09:00",
       "title": "외국인 투자 늘었지만…제조업 '새 투자' 줄고 M&A에 몰렸다"
     },
+    "original:480f053071b05dff71745d1a": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825758",
+      "source": "뉴시스",
+      "source_body_digest": "ba84c68e3c2e173a8335fd57b1558d76e10499aada24b4d431836b4a49a7a77f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bfbd39bd404734de8faa260bcf427d659bdb1de6f789db0a2ce498a371dfdec6",
+      "source_fact_keys": [
+        "source_fact:v1:5c1e9cef1ee4adbe90c0b14a3e425bfb12a7cb1d4de18fb58125ade29448ddaa",
+        "source_fact:v1:84fbadb78bd5b654549283a70dcf5fade254aac5cd3b505d652a91f5511c0f9b",
+        "source_fact:v1:8a3be64aff4883e143fa7112224b0eedff67ef9634a5c8cd97207948bb943c4d"
+      ],
+      "source_published_kst": "2026-10-14T15:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "'시흥형 RE100' 모델 구축…산단 지붕에 태양광, 수익은 환원",
+      "telegram_core_fact": "경기 시흥시가 관내 산업단지 지붕과 공공 유휴부지를 활용해 재생에너지 생산을 확대하고, 발생 수익을 시민에게 되돌려주는 '시흥형 RE100' 모델 구축에 나섰다.",
+      "title": "'시흥형 RE100' 모델 구축…산단 지붕에 태양광, 수익은 환원"
+    },
     "original:4819a254b45112490b62c1f6": {
       "first_seen_kst": "2026-10-08T17:42:30+09:00",
       "lanes": {
@@ -233471,6 +233969,28 @@
       "source_published_kst": "2026-10-06T08:41+09:00",
       "title": "현대건설, 압구정 2·3·5구역에 ‘스파 록시땅’ 도입"
     },
+    "original:616bb03f1e924ed096a6f867": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.joongang.co.kr/article/25469647",
+      "source": "중앙일보",
+      "source_body_digest": "3fe4625cc53f0edc7eefd659639c669b3ec508ab8ca0ef561d4d23af57b018fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7a4a07f46de5fcf50c2cdbfdba191a5c4141dcf6b0782537405edadc8d81f41f",
+      "source_fact_keys": [
+        "source_fact:v1:1e9931d83a81ceb428bdf180e3dc5f0cf9ef2d6565fc6ea2bdbed5eb4f950f86",
+        "source_fact:v1:260f4a69a4e05b234a12152037fdf2fd7de21c5a0b5620859cd650f42400e378",
+        "source_fact:v1:65ba99a7fdcd7858c5840deffe2033e0811f016ffa231d3e4ade625a617fc41f"
+      ],
+      "source_published_kst": "2026-10-14T14:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "거세진 이란 호르무즈 공격, 英기지 위협까지…후티는 사우디 아람코 타격 | 중앙일보",
+      "telegram_core_fact": "선박들이 공격을 피해 항로를 바꾸면서 초대형 유조선의 하루 평균 운임 수입도 지난 9일 80만5000달러(약 11억원)로 사상 최고치를 기록했다고 선박 중개업체 클락슨스가 밝혔다.",
+      "title": "거세진 이란 호르무즈 공격, 英기지 위협까지…후티는 사우디 아람코 타격 | 중앙일보"
+    },
     "original:6171c05626b144af1ea8c58d": {
       "first_seen_kst": "2026-10-02T07:25:31+09:00",
       "lanes": {
@@ -237664,6 +238184,26 @@
       ],
       "source_published_kst": "2026-10-06T12:05+09:00",
       "title": "[2026 국감]호남반도체 결정 주체, 자료 불일치…김정관 “확인하겠다”"
+    },
+    "original:6fcdcbfa0faf965e79c9053b": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/14/2026101410183465138",
+      "source": "머니투데이",
+      "source_body_digest": "bd1df0a5812dddea0af9be05be89141f7a12cc6b5ea3d39a3de0fa4f21bbbae3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fa676f6475200c1eb60cb7ae1ad53d4024dbae6543349bf0f63d37dff334a30e",
+      "source_fact_keys": [
+        "source_fact:v1:81377abb0f2cc056a6998074d939988e59512dd8135789571c489234ac53724a"
+      ],
+      "source_published_kst": "2026-10-14T11:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"대만, 알래스카 LNG 사업 5조 투자…가스 30% 구매하기로\"",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 대만이 알래스카 액화천연가스(LNG) 파이프라인 사업에서 나오는 가스의 30%를 구매하기로 합의했다고 13일(현지시간) 말했다. 트럼프 대통령은 \"대만이 향후 20년간 가스 파이프라인을 통해 공급되는 가스의 30%를 구매하기로 합의했다\"며 \"이는 성공을 보장하는 것\"이라고 말했다.",
+      "title": "트럼프 \"대만, 알래스카 LNG 사업 5조 투자…가스 30% 구매하기로\""
     },
     "original:700c4a6e4aaf90d9b9366864": {
       "first_seen_kst": "2026-10-12T09:05:29+09:00",
@@ -258364,6 +258904,34 @@
       "telegram_core_fact": "미국 공휴일인 콜럼버스의 날로 대체로 거래가 한산했던 가운데, 국제유가 상승과 메모리 반도체주의 매도세로 S&P 500지수와 나스닥 종합지수가 약세를 보였다.",
       "title": "유가 상승·반도체 약세 속 뉴욕증시 혼조…다우 홀로 상승 | 연합뉴스"
     },
+    "original:b066c02205242c0e4cafd7a3": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/14/2026101412241926278",
+      "source": "머니투데이",
+      "source_body_digest": "abe6516f596ddbe8bc613db4d1a7a0bc5d3bdd26d4deb882e6fe602b2acaa555",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:257a57dd5410df9c1a2fbe3d6e7e3e9c3a248412ab6a2690d4195576f765e992",
+      "source_fact_keys": [
+        "source_fact:v1:357c065b0b17e5819995be13f2a79a669c54dddcc92ce0d218b9002a99795c74",
+        "source_fact:v1:36b2c0ea032ec3bab2daa2e56cba3e06faa5e6516360d71c78bfcb0f05a33b27",
+        "source_fact:v1:9a050af74653ec2569f28f6f43b14379be227d24f6a79336dc96fe9d1a4289c4",
+        "source_fact:v1:b1715b0074e3dd689f14656c2e2a3fbfe781111b7a0f49296d4b31ffe3651e1f",
+        "source_fact:v1:b28a7b34ce3c6e1436ea3ac8dd7a5b4eb71b817c08886af0b828cf62aeb22f31",
+        "source_fact:v1:bf87a23c7311a9610836af19765a8c57ddb906d3cdc430ea5c6c9a5b5499c4d6",
+        "source_fact:v1:c57091a8549d45dda306b647a6b354c2a4d6555ccfef5d522255730f6f789b57",
+        "source_fact:v1:eb157b710bc11102e9f5ae51dbf54a5a7a1589d05631297214c47d83d4f7936d",
+        "source_fact:v1:f3e2ae4f160d9af0a3491aa73fe89116863864f42dde76421e3cbcb74c4e0797"
+      ],
+      "source_published_kst": "2026-10-14T13:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "안현 SK하이닉스 사장 \"HBM 넘어 새로운 메모리 시대 열겠다\"",
+      "telegram_core_fact": "AI(인공지능) 추론 확대로 기존 메모리의 성능과 용량에 한계가 나타나면서 HBM(고대역폭메모리)을 넘어 3차원(3D) 적층 D램과 HBF(고대역폭플래시) 등 새로운 메모리 계층을 구축하겠다는 전략이다.",
+      "title": "안현 SK하이닉스 사장 \"HBM 넘어 새로운 메모리 시대 열겠다\""
+    },
     "original:b07821602aa1e2546aaa2c75": {
       "first_seen_kst": "2026-10-05T14:04:17+09:00",
       "lanes": {
@@ -262557,6 +263125,24 @@
       "telegram_core_fact": "미 재무부는 같은 날 러시아산 경유 거래를 내년 4월 7일까지 허용하는 한시적 제재 완화 조치를 내놨다.",
       "title": "미, 러시아산 경유 제재 해제…푸틴과 통화 뒤 발표"
     },
+    "original:bfc9d7476a7b1673a47eb09c": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635751",
+      "source": "이투데이",
+      "source_body_digest": "8191b66c5ea0e354f3e5a90fc357a2f5dc00a939f99c47e5788d74524beded24",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-14T15:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "“CPI에 MSCI까지” 비트코인, 이번 주 잇단 변수에 촉각",
+      "telegram_core_fact": "최근 6차례 미국 CPI 발표 전후 48시간 동안 비트코인의 평균 가격 변동폭은 3.9%로 집계됐다. 비트코인은 이달 5일 8만6974달러까지 올랐다가 지난주 한때 8만400달러선까지 밀렸다.",
+      "title": "“CPI에 MSCI까지” 비트코인, 이번 주 잇단 변수에 촉각"
+    },
     "original:bfe1a1f8941689f1ee841899": {
       "first_seen_kst": "2026-10-12T20:37:19+09:00",
       "lanes": {
@@ -264696,6 +265282,28 @@
       ],
       "source_published_kst": "2026-10-06T17:18+09:00",
       "title": "모비릭스, 60억 규모 자사주 취득 신탁계약"
+    },
+    "original:c6fea6758697ff90de38052f": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825546",
+      "source": "뉴시스",
+      "source_body_digest": "5061efd1dd7bad2a89aa767427eb030d3a197059ffe60e7167fcc87f44e9ba01",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:41427eda99537325683707dd5f91a907ab2121daee43dbbe3e42867793d5768e",
+      "source_fact_keys": [
+        "source_fact:v1:1eca31fd7cae808e36a93a9f56e698a96826e262861b781a2308fdfdfa6a8584",
+        "source_fact:v1:7bf289eabf24b27b12a0e05f5d2afdc4d1900cc47c9ef27d5f01cc21eabd446a",
+        "source_fact:v1:d07c2ab1c24dc6f33ae646f6035e202fcf507a5001bc4cfd50589a78c894bd5b"
+      ],
+      "source_published_kst": "2026-10-14T14:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 유세에서 \"이란 한 방 먹일 것\" 대이란 군사행동 시사",
+      "telegram_core_fact": "트럼프 대통령은 또 이란과의 전쟁으로 인한 유가 상승은 \"이란이 핵무기를 가지는 것을 막기 위해 치러야 할 작은 대가일 뿐\"이라며 기존 주장을 되풀이했다.",
+      "title": "트럼프 유세에서 \"이란 한 방 먹일 것\" 대이란 군사행동 시사"
     },
     "original:c704f7081432ecc9b008801d": {
       "first_seen_kst": "2026-10-10T09:51:21+09:00",
@@ -278481,6 +279089,40 @@
       "source_published_kst": "2026-10-05T06:01+09:00",
       "title": "내일 행안부 국감…중수청 개문발차·미래기금 교부세 '쟁점'"
     },
+    "original:f28fbf5c16c6eaa91948e955": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635756",
+      "source": "이투데이",
+      "source_body_digest": "7366b1bd88f7f5ee1e6065e2e5709ce0e39f66fc3b6e12de5771e57a8f8a7d7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5497ffe14d18cfdbc1dba3941e21a3a01564c67dd836e81904c1684753978695",
+      "source_fact_keys": [
+        "source_fact:v1:08a15b72de24f9b34c63421732a5a46f6a27cd07e015ebc6bb64407a19fc05fe",
+        "source_fact:v1:22fe610c40c32f95bc6e8b775ecaf63518f13fbdd55ad601b4791a4f75cdec4b",
+        "source_fact:v1:3f054aa860173807702af9e906f74c299ebc4d6f1aeab33c5854d77b18785779",
+        "source_fact:v1:5ce1a3ee66449d5379c7b2465b35d5194a80a988b14c735b4c8d7848262eea63",
+        "source_fact:v1:5f11d80daf24762b0642a761f240b49e5fd719b0de745264253c1aa1eaec6e8d",
+        "source_fact:v1:741553be83b8a2d4beab724564073136c7b3e82853598491484d41331aa8eecc",
+        "source_fact:v1:89abdeb042933a5e19e401b6ac8351eececda5f94f1d8653f23d2fa9e27444f8",
+        "source_fact:v1:9cad2b165f22e85680eaf409e5404b447eb2f964321248c17297a7de6c54af0a",
+        "source_fact:v1:a3f9cd6c141a535a38fbe43cb71da98821c8e2b4cc07dbd977870c5d7c21ce83",
+        "source_fact:v1:b36205efcd65e0d899d021db7fdd09720ea7978fa191415d6f32b7daf576d593",
+        "source_fact:v1:c563bf21e43b48541583c6715bf003927211bd6a13d20c4df8acc8438471bc0c",
+        "source_fact:v1:cf83fd01de0198f6331efb2afedfc4e7ba439a20de20008ad7e1fdd225ce2384",
+        "source_fact:v1:eb299d4671aa412c7b9ed95aa3bdd178984245fa8cf8e4f14efdc24fff161ea6",
+        "source_fact:v1:ecd20462e96e56414f1f390060f9016eb1073328162a3e4ff52c9ef55a142d0d",
+        "source_fact:v1:f0f1ee975958d768e78f4242df2b189da6a1931ce275639b5f439f08d1a86d73"
+      ],
+      "source_published_kst": "2026-10-14T15:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도",
+      "telegram_core_fact": "채권시장에 따르면 전날 국고채 3년물 금리는 3.857%로 8월31일(3.838%) 이후 한 달 보름 만에 최저치를 기록했다.",
+      "title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도"
+    },
     "original:f2a192955e8e22ff4790c831": {
       "first_seen_kst": "2026-10-08T06:42:50+09:00",
       "lanes": {
@@ -286983,6 +287625,40 @@
       "telegram_core_fact": "오유경 식약처장은 “우수한 기술이 현장에 신속히 도입되기 위해서는 개발 초기 단계부터 규제적 관점에서의 검토와 제도적 기반 마련이 병행되어야 한다”라며 “식약처는 규제외교 전문성을 바탕으로 산업부와 함께 우리 기업의 혁신제품이 시장에 신속히 진출할 수 있도록 적극 지원하겠다”라고 전했다.",
       "title": "식약처, 산업통상부와 바이오 업계 AI전환·해외진출 지원"
     },
+    "source_fact:03e7023bd76784efd1a4c7ac": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635756",
+      "source": "이투데이",
+      "source_body_digest": "7366b1bd88f7f5ee1e6065e2e5709ce0e39f66fc3b6e12de5771e57a8f8a7d7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5497ffe14d18cfdbc1dba3941e21a3a01564c67dd836e81904c1684753978695",
+      "source_fact_keys": [
+        "source_fact:v1:08a15b72de24f9b34c63421732a5a46f6a27cd07e015ebc6bb64407a19fc05fe",
+        "source_fact:v1:22fe610c40c32f95bc6e8b775ecaf63518f13fbdd55ad601b4791a4f75cdec4b",
+        "source_fact:v1:3f054aa860173807702af9e906f74c299ebc4d6f1aeab33c5854d77b18785779",
+        "source_fact:v1:5ce1a3ee66449d5379c7b2465b35d5194a80a988b14c735b4c8d7848262eea63",
+        "source_fact:v1:5f11d80daf24762b0642a761f240b49e5fd719b0de745264253c1aa1eaec6e8d",
+        "source_fact:v1:741553be83b8a2d4beab724564073136c7b3e82853598491484d41331aa8eecc",
+        "source_fact:v1:89abdeb042933a5e19e401b6ac8351eececda5f94f1d8653f23d2fa9e27444f8",
+        "source_fact:v1:9cad2b165f22e85680eaf409e5404b447eb2f964321248c17297a7de6c54af0a",
+        "source_fact:v1:a3f9cd6c141a535a38fbe43cb71da98821c8e2b4cc07dbd977870c5d7c21ce83",
+        "source_fact:v1:b36205efcd65e0d899d021db7fdd09720ea7978fa191415d6f32b7daf576d593",
+        "source_fact:v1:c563bf21e43b48541583c6715bf003927211bd6a13d20c4df8acc8438471bc0c",
+        "source_fact:v1:cf83fd01de0198f6331efb2afedfc4e7ba439a20de20008ad7e1fdd225ce2384",
+        "source_fact:v1:eb299d4671aa412c7b9ed95aa3bdd178984245fa8cf8e4f14efdc24fff161ea6",
+        "source_fact:v1:ecd20462e96e56414f1f390060f9016eb1073328162a3e4ff52c9ef55a142d0d",
+        "source_fact:v1:f0f1ee975958d768e78f4242df2b189da6a1931ce275639b5f439f08d1a86d73"
+      ],
+      "source_published_kst": "2026-10-14T15:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도",
+      "telegram_core_fact": "채권시장에 따르면 전날 국고채 3년물 금리는 3.857%로 8월31일(3.838%) 이후 한 달 보름 만에 최저치를 기록했다.",
+      "title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도"
+    },
     "source_fact:03e7057a3c7b102056080004": {
       "first_seen_kst": "2026-10-12T10:17:45+09:00",
       "lanes": {
@@ -287070,6 +287746,34 @@
       "source_title": "호르무즈 해협 막히자 해운주 강세…STX그린로지스 6%↑",
       "telegram_core_fact": "이날 해운주의 강세는 중동 지역 지정학적 리스크 심화로 주요 해상 요충지의 통과 차질이 이어지면서 선박들의 우회 운항과 대기 시간 증가로 실질 가용 선복량 감소와 해상 운임 상승세 지속에 따른 실적 기대감이 반영된 것으로 풀이된다.",
       "title": "호르무즈 해협 막히자 해운주 강세…STX그린로지스 6%↑"
+    },
+    "source_fact:0408f937f19fef6939a2175d": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/14/2026101412241926278",
+      "source": "머니투데이",
+      "source_body_digest": "abe6516f596ddbe8bc613db4d1a7a0bc5d3bdd26d4deb882e6fe602b2acaa555",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:257a57dd5410df9c1a2fbe3d6e7e3e9c3a248412ab6a2690d4195576f765e992",
+      "source_fact_keys": [
+        "source_fact:v1:357c065b0b17e5819995be13f2a79a669c54dddcc92ce0d218b9002a99795c74",
+        "source_fact:v1:36b2c0ea032ec3bab2daa2e56cba3e06faa5e6516360d71c78bfcb0f05a33b27",
+        "source_fact:v1:9a050af74653ec2569f28f6f43b14379be227d24f6a79336dc96fe9d1a4289c4",
+        "source_fact:v1:b1715b0074e3dd689f14656c2e2a3fbfe781111b7a0f49296d4b31ffe3651e1f",
+        "source_fact:v1:b28a7b34ce3c6e1436ea3ac8dd7a5b4eb71b817c08886af0b828cf62aeb22f31",
+        "source_fact:v1:bf87a23c7311a9610836af19765a8c57ddb906d3cdc430ea5c6c9a5b5499c4d6",
+        "source_fact:v1:c57091a8549d45dda306b647a6b354c2a4d6555ccfef5d522255730f6f789b57",
+        "source_fact:v1:eb157b710bc11102e9f5ae51dbf54a5a7a1589d05631297214c47d83d4f7936d",
+        "source_fact:v1:f3e2ae4f160d9af0a3491aa73fe89116863864f42dde76421e3cbcb74c4e0797"
+      ],
+      "source_published_kst": "2026-10-14T13:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "안현 SK하이닉스 사장 \"HBM 넘어 새로운 메모리 시대 열겠다\"",
+      "telegram_core_fact": "AI(인공지능) 추론 확대로 기존 메모리의 성능과 용량에 한계가 나타나면서 HBM(고대역폭메모리)을 넘어 3차원(3D) 적층 D램과 HBF(고대역폭플래시) 등 새로운 메모리 계층을 구축하겠다는 전략이다.",
+      "title": "안현 SK하이닉스 사장 \"HBM 넘어 새로운 메모리 시대 열겠다\""
     },
     "source_fact:0409b0faf1edbd2761b85a5b": {
       "first_seen_kst": "2026-10-07T22:53:53+09:00",
@@ -297356,6 +298060,28 @@
       "source_title": "[한국건설기술연구원 스마트건설지원센터 보육기업 CEO] 초경량·고출력 태양광 모듈을 개발하는 기업 ‘에이스인벤터’",
       "telegram_core_fact": "현재 경기도 화성에 50MW급 태양광 모듈 생산라인을 구축하고, 초경량·고출력 태양광 모듈과 건물일체형 태양광 모듈을 개발·생산하고 있다. 에이스인벤터는 아이템을 인정받아 한국건설기술연구원 스마트건설지원센터 보육기업으로 선정됐다.",
       "title": "[한국건설기술연구원 스마트건설지원센터 보육기업 CEO] 초경량·고출력 태양광 모듈을 개발하는 기업 ‘에이스인벤터’"
+    },
+    "source_fact:0cfd927dd3533d9a9db344e5": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825758",
+      "source": "뉴시스",
+      "source_body_digest": "ba84c68e3c2e173a8335fd57b1558d76e10499aada24b4d431836b4a49a7a77f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bfbd39bd404734de8faa260bcf427d659bdb1de6f789db0a2ce498a371dfdec6",
+      "source_fact_keys": [
+        "source_fact:v1:5c1e9cef1ee4adbe90c0b14a3e425bfb12a7cb1d4de18fb58125ade29448ddaa",
+        "source_fact:v1:84fbadb78bd5b654549283a70dcf5fade254aac5cd3b505d652a91f5511c0f9b",
+        "source_fact:v1:8a3be64aff4883e143fa7112224b0eedff67ef9634a5c8cd97207948bb943c4d"
+      ],
+      "source_published_kst": "2026-10-14T15:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "'시흥형 RE100' 모델 구축…산단 지붕에 태양광, 수익은 환원",
+      "telegram_core_fact": "경기 시흥시가 관내 산업단지 지붕과 공공 유휴부지를 활용해 재생에너지 생산을 확대하고, 발생 수익을 시민에게 되돌려주는 '시흥형 RE100' 모델 구축에 나섰다.",
+      "title": "'시흥형 RE100' 모델 구축…산단 지붕에 태양광, 수익은 환원"
     },
     "source_fact:0cff82837c544778695162b2": {
       "first_seen_kst": "2026-10-08T20:58:15+09:00",
@@ -313794,6 +314520,40 @@
       "telegram_core_fact": "11일 국회 기후에너지환경노동위원회 소속 어기구 더불어민주당 의원(충남 당진시)이 한국전력공사로부터 제출받은 자료에 따르면, 2017년부터 2026년 8월까지 정전복구 작업 중 산업재해를 입은 한전 직원은 21명으로, 이 가운데 1명이 사망했다.",
       "title": "[단독] “사망사고 나자 민간에 떠넘기나”…한전, 정전복구 외주화 추진"
     },
+    "source_fact:1aabc14467d1457f4fdb5f6f": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635756",
+      "source": "이투데이",
+      "source_body_digest": "7366b1bd88f7f5ee1e6065e2e5709ce0e39f66fc3b6e12de5771e57a8f8a7d7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5497ffe14d18cfdbc1dba3941e21a3a01564c67dd836e81904c1684753978695",
+      "source_fact_keys": [
+        "source_fact:v1:08a15b72de24f9b34c63421732a5a46f6a27cd07e015ebc6bb64407a19fc05fe",
+        "source_fact:v1:22fe610c40c32f95bc6e8b775ecaf63518f13fbdd55ad601b4791a4f75cdec4b",
+        "source_fact:v1:3f054aa860173807702af9e906f74c299ebc4d6f1aeab33c5854d77b18785779",
+        "source_fact:v1:5ce1a3ee66449d5379c7b2465b35d5194a80a988b14c735b4c8d7848262eea63",
+        "source_fact:v1:5f11d80daf24762b0642a761f240b49e5fd719b0de745264253c1aa1eaec6e8d",
+        "source_fact:v1:741553be83b8a2d4beab724564073136c7b3e82853598491484d41331aa8eecc",
+        "source_fact:v1:89abdeb042933a5e19e401b6ac8351eececda5f94f1d8653f23d2fa9e27444f8",
+        "source_fact:v1:9cad2b165f22e85680eaf409e5404b447eb2f964321248c17297a7de6c54af0a",
+        "source_fact:v1:a3f9cd6c141a535a38fbe43cb71da98821c8e2b4cc07dbd977870c5d7c21ce83",
+        "source_fact:v1:b36205efcd65e0d899d021db7fdd09720ea7978fa191415d6f32b7daf576d593",
+        "source_fact:v1:c563bf21e43b48541583c6715bf003927211bd6a13d20c4df8acc8438471bc0c",
+        "source_fact:v1:cf83fd01de0198f6331efb2afedfc4e7ba439a20de20008ad7e1fdd225ce2384",
+        "source_fact:v1:eb299d4671aa412c7b9ed95aa3bdd178984245fa8cf8e4f14efdc24fff161ea6",
+        "source_fact:v1:ecd20462e96e56414f1f390060f9016eb1073328162a3e4ff52c9ef55a142d0d",
+        "source_fact:v1:f0f1ee975958d768e78f4242df2b189da6a1931ce275639b5f439f08d1a86d73"
+      ],
+      "source_published_kst": "2026-10-14T15:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도",
+      "telegram_core_fact": "채권시장에 따르면 전날 국고채 3년물 금리는 3.857%로 8월31일(3.838%) 이후 한 달 보름 만에 최저치를 기록했다.",
+      "title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도"
+    },
     "source_fact:1aaeb6eea83ca1ff227d0e79": {
       "first_seen_kst": "2026-10-06T22:51:44+09:00",
       "lanes": {
@@ -321365,6 +322125,40 @@
       ],
       "source_published_kst": "2026-10-06T08:48+09:00",
       "title": "키움운용, '미국AI테크하이베타 ETF' 마이크론·스페이스X 신규 편입"
+    },
+    "source_fact:20ab535cdcf4e257635b09af": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635756",
+      "source": "이투데이",
+      "source_body_digest": "7366b1bd88f7f5ee1e6065e2e5709ce0e39f66fc3b6e12de5771e57a8f8a7d7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5497ffe14d18cfdbc1dba3941e21a3a01564c67dd836e81904c1684753978695",
+      "source_fact_keys": [
+        "source_fact:v1:08a15b72de24f9b34c63421732a5a46f6a27cd07e015ebc6bb64407a19fc05fe",
+        "source_fact:v1:22fe610c40c32f95bc6e8b775ecaf63518f13fbdd55ad601b4791a4f75cdec4b",
+        "source_fact:v1:3f054aa860173807702af9e906f74c299ebc4d6f1aeab33c5854d77b18785779",
+        "source_fact:v1:5ce1a3ee66449d5379c7b2465b35d5194a80a988b14c735b4c8d7848262eea63",
+        "source_fact:v1:5f11d80daf24762b0642a761f240b49e5fd719b0de745264253c1aa1eaec6e8d",
+        "source_fact:v1:741553be83b8a2d4beab724564073136c7b3e82853598491484d41331aa8eecc",
+        "source_fact:v1:89abdeb042933a5e19e401b6ac8351eececda5f94f1d8653f23d2fa9e27444f8",
+        "source_fact:v1:9cad2b165f22e85680eaf409e5404b447eb2f964321248c17297a7de6c54af0a",
+        "source_fact:v1:a3f9cd6c141a535a38fbe43cb71da98821c8e2b4cc07dbd977870c5d7c21ce83",
+        "source_fact:v1:b36205efcd65e0d899d021db7fdd09720ea7978fa191415d6f32b7daf576d593",
+        "source_fact:v1:c563bf21e43b48541583c6715bf003927211bd6a13d20c4df8acc8438471bc0c",
+        "source_fact:v1:cf83fd01de0198f6331efb2afedfc4e7ba439a20de20008ad7e1fdd225ce2384",
+        "source_fact:v1:eb299d4671aa412c7b9ed95aa3bdd178984245fa8cf8e4f14efdc24fff161ea6",
+        "source_fact:v1:ecd20462e96e56414f1f390060f9016eb1073328162a3e4ff52c9ef55a142d0d",
+        "source_fact:v1:f0f1ee975958d768e78f4242df2b189da6a1931ce275639b5f439f08d1a86d73"
+      ],
+      "source_published_kst": "2026-10-14T15:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도",
+      "telegram_core_fact": "채권시장에 따르면 전날 국고채 3년물 금리는 3.857%로 8월31일(3.838%) 이후 한 달 보름 만에 최저치를 기록했다.",
+      "title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도"
     },
     "source_fact:20ad85415e6f00fdffb6ae7c": {
       "first_seen_kst": "2026-10-07T23:10:06+09:00",
@@ -331633,6 +332427,40 @@
       "telegram_core_fact": "러시아와 에너지 시설 공격을 서로 중단하는 방안을 논의하러 미국을 찾은 우크라이나 대표단이 협상장에서 러시아산 경유 수출 제재 완화 방침을 전달받고 “함정처럼 느껴졌다”고 반발한 것으로 전해졌다.",
       "title": "에너지 휴전 논의하러 갔는데 美는 러 경유 제재 완화…우크라 \"함정 같았다\""
     },
+    "source_fact:28bd63ddb306842cdfb5b06d": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635756",
+      "source": "이투데이",
+      "source_body_digest": "7366b1bd88f7f5ee1e6065e2e5709ce0e39f66fc3b6e12de5771e57a8f8a7d7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5497ffe14d18cfdbc1dba3941e21a3a01564c67dd836e81904c1684753978695",
+      "source_fact_keys": [
+        "source_fact:v1:08a15b72de24f9b34c63421732a5a46f6a27cd07e015ebc6bb64407a19fc05fe",
+        "source_fact:v1:22fe610c40c32f95bc6e8b775ecaf63518f13fbdd55ad601b4791a4f75cdec4b",
+        "source_fact:v1:3f054aa860173807702af9e906f74c299ebc4d6f1aeab33c5854d77b18785779",
+        "source_fact:v1:5ce1a3ee66449d5379c7b2465b35d5194a80a988b14c735b4c8d7848262eea63",
+        "source_fact:v1:5f11d80daf24762b0642a761f240b49e5fd719b0de745264253c1aa1eaec6e8d",
+        "source_fact:v1:741553be83b8a2d4beab724564073136c7b3e82853598491484d41331aa8eecc",
+        "source_fact:v1:89abdeb042933a5e19e401b6ac8351eececda5f94f1d8653f23d2fa9e27444f8",
+        "source_fact:v1:9cad2b165f22e85680eaf409e5404b447eb2f964321248c17297a7de6c54af0a",
+        "source_fact:v1:a3f9cd6c141a535a38fbe43cb71da98821c8e2b4cc07dbd977870c5d7c21ce83",
+        "source_fact:v1:b36205efcd65e0d899d021db7fdd09720ea7978fa191415d6f32b7daf576d593",
+        "source_fact:v1:c563bf21e43b48541583c6715bf003927211bd6a13d20c4df8acc8438471bc0c",
+        "source_fact:v1:cf83fd01de0198f6331efb2afedfc4e7ba439a20de20008ad7e1fdd225ce2384",
+        "source_fact:v1:eb299d4671aa412c7b9ed95aa3bdd178984245fa8cf8e4f14efdc24fff161ea6",
+        "source_fact:v1:ecd20462e96e56414f1f390060f9016eb1073328162a3e4ff52c9ef55a142d0d",
+        "source_fact:v1:f0f1ee975958d768e78f4242df2b189da6a1931ce275639b5f439f08d1a86d73"
+      ],
+      "source_published_kst": "2026-10-14T15:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도",
+      "telegram_core_fact": "채권시장에 따르면 전날 국고채 3년물 금리는 3.857%로 8월31일(3.838%) 이후 한 달 보름 만에 최저치를 기록했다.",
+      "title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도"
+    },
     "source_fact:28c1ed2613152c1dbb4ef7e1": {
       "first_seen_kst": "2026-10-09T21:27:46+09:00",
       "lanes": {
@@ -337141,6 +337969,40 @@
       ],
       "source_published_kst": "2026-10-06T15:59+09:00",
       "title": "자사주 매입 막바지·솔리다임 상장설 악재? 삼전닉스 1~3%대↓(종합) | 연합뉴스"
+    },
+    "source_fact:2d4a2081b50675e2ba6310b3": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635756",
+      "source": "이투데이",
+      "source_body_digest": "7366b1bd88f7f5ee1e6065e2e5709ce0e39f66fc3b6e12de5771e57a8f8a7d7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5497ffe14d18cfdbc1dba3941e21a3a01564c67dd836e81904c1684753978695",
+      "source_fact_keys": [
+        "source_fact:v1:08a15b72de24f9b34c63421732a5a46f6a27cd07e015ebc6bb64407a19fc05fe",
+        "source_fact:v1:22fe610c40c32f95bc6e8b775ecaf63518f13fbdd55ad601b4791a4f75cdec4b",
+        "source_fact:v1:3f054aa860173807702af9e906f74c299ebc4d6f1aeab33c5854d77b18785779",
+        "source_fact:v1:5ce1a3ee66449d5379c7b2465b35d5194a80a988b14c735b4c8d7848262eea63",
+        "source_fact:v1:5f11d80daf24762b0642a761f240b49e5fd719b0de745264253c1aa1eaec6e8d",
+        "source_fact:v1:741553be83b8a2d4beab724564073136c7b3e82853598491484d41331aa8eecc",
+        "source_fact:v1:89abdeb042933a5e19e401b6ac8351eececda5f94f1d8653f23d2fa9e27444f8",
+        "source_fact:v1:9cad2b165f22e85680eaf409e5404b447eb2f964321248c17297a7de6c54af0a",
+        "source_fact:v1:a3f9cd6c141a535a38fbe43cb71da98821c8e2b4cc07dbd977870c5d7c21ce83",
+        "source_fact:v1:b36205efcd65e0d899d021db7fdd09720ea7978fa191415d6f32b7daf576d593",
+        "source_fact:v1:c563bf21e43b48541583c6715bf003927211bd6a13d20c4df8acc8438471bc0c",
+        "source_fact:v1:cf83fd01de0198f6331efb2afedfc4e7ba439a20de20008ad7e1fdd225ce2384",
+        "source_fact:v1:eb299d4671aa412c7b9ed95aa3bdd178984245fa8cf8e4f14efdc24fff161ea6",
+        "source_fact:v1:ecd20462e96e56414f1f390060f9016eb1073328162a3e4ff52c9ef55a142d0d",
+        "source_fact:v1:f0f1ee975958d768e78f4242df2b189da6a1931ce275639b5f439f08d1a86d73"
+      ],
+      "source_published_kst": "2026-10-14T15:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도",
+      "telegram_core_fact": "채권시장에 따르면 전날 국고채 3년물 금리는 3.857%로 8월31일(3.838%) 이후 한 달 보름 만에 최저치를 기록했다.",
+      "title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도"
     },
     "source_fact:2d4ebf4b285840fe1d2afce1": {
       "first_seen_kst": "2026-10-13T22:04:42+09:00",
@@ -348694,6 +349556,28 @@
       "telegram_core_fact": "LG전자는 이번 계약에 따라 북미에서 구축되는 여러 AIDC에 총 5GW 고효율 칠러를 순차적으로 공급한다.",
       "title": "계약 한방에 수년치 먹거리 확보…삼성·LG, ‘AIDC 칠러’서 기회"
     },
+    "source_fact:36f5d0aae51d66013ea9cc1b": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.joongang.co.kr/article/25469647",
+      "source": "중앙일보",
+      "source_body_digest": "3fe4625cc53f0edc7eefd659639c669b3ec508ab8ca0ef561d4d23af57b018fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7a4a07f46de5fcf50c2cdbfdba191a5c4141dcf6b0782537405edadc8d81f41f",
+      "source_fact_keys": [
+        "source_fact:v1:1e9931d83a81ceb428bdf180e3dc5f0cf9ef2d6565fc6ea2bdbed5eb4f950f86",
+        "source_fact:v1:260f4a69a4e05b234a12152037fdf2fd7de21c5a0b5620859cd650f42400e378",
+        "source_fact:v1:65ba99a7fdcd7858c5840deffe2033e0811f016ffa231d3e4ade625a617fc41f"
+      ],
+      "source_published_kst": "2026-10-14T14:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "거세진 이란 호르무즈 공격, 英기지 위협까지…후티는 사우디 아람코 타격 | 중앙일보",
+      "telegram_core_fact": "선박들이 공격을 피해 항로를 바꾸면서 초대형 유조선의 하루 평균 운임 수입도 지난 9일 80만5000달러(약 11억원)로 사상 최고치를 기록했다고 선박 중개업체 클락슨스가 밝혔다.",
+      "title": "거세진 이란 호르무즈 공격, 英기지 위협까지…후티는 사우디 아람코 타격 | 중앙일보"
+    },
     "source_fact:36f5f4b788b1e0f88f40b14e": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
@@ -349102,6 +349986,40 @@
       ],
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
+    },
+    "source_fact:372a8f3bb90f0a3d8e9dcafb": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635756",
+      "source": "이투데이",
+      "source_body_digest": "7366b1bd88f7f5ee1e6065e2e5709ce0e39f66fc3b6e12de5771e57a8f8a7d7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5497ffe14d18cfdbc1dba3941e21a3a01564c67dd836e81904c1684753978695",
+      "source_fact_keys": [
+        "source_fact:v1:08a15b72de24f9b34c63421732a5a46f6a27cd07e015ebc6bb64407a19fc05fe",
+        "source_fact:v1:22fe610c40c32f95bc6e8b775ecaf63518f13fbdd55ad601b4791a4f75cdec4b",
+        "source_fact:v1:3f054aa860173807702af9e906f74c299ebc4d6f1aeab33c5854d77b18785779",
+        "source_fact:v1:5ce1a3ee66449d5379c7b2465b35d5194a80a988b14c735b4c8d7848262eea63",
+        "source_fact:v1:5f11d80daf24762b0642a761f240b49e5fd719b0de745264253c1aa1eaec6e8d",
+        "source_fact:v1:741553be83b8a2d4beab724564073136c7b3e82853598491484d41331aa8eecc",
+        "source_fact:v1:89abdeb042933a5e19e401b6ac8351eececda5f94f1d8653f23d2fa9e27444f8",
+        "source_fact:v1:9cad2b165f22e85680eaf409e5404b447eb2f964321248c17297a7de6c54af0a",
+        "source_fact:v1:a3f9cd6c141a535a38fbe43cb71da98821c8e2b4cc07dbd977870c5d7c21ce83",
+        "source_fact:v1:b36205efcd65e0d899d021db7fdd09720ea7978fa191415d6f32b7daf576d593",
+        "source_fact:v1:c563bf21e43b48541583c6715bf003927211bd6a13d20c4df8acc8438471bc0c",
+        "source_fact:v1:cf83fd01de0198f6331efb2afedfc4e7ba439a20de20008ad7e1fdd225ce2384",
+        "source_fact:v1:eb299d4671aa412c7b9ed95aa3bdd178984245fa8cf8e4f14efdc24fff161ea6",
+        "source_fact:v1:ecd20462e96e56414f1f390060f9016eb1073328162a3e4ff52c9ef55a142d0d",
+        "source_fact:v1:f0f1ee975958d768e78f4242df2b189da6a1931ce275639b5f439f08d1a86d73"
+      ],
+      "source_published_kst": "2026-10-14T15:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도",
+      "telegram_core_fact": "채권시장에 따르면 전날 국고채 3년물 금리는 3.857%로 8월31일(3.838%) 이후 한 달 보름 만에 최저치를 기록했다.",
+      "title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도"
     },
     "source_fact:372dd6f067fc96c787dd5674": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
@@ -360542,6 +361460,40 @@
       "telegram_core_fact": "정부가 반도체·재생에너지 등 첨단산업 핵심품목을 경제안보품목으로 추가 지정하고 핵심광물과 소재·부품·장비 등 100개 내외 품목을 집중 관리한다. 내년 정부 예산안에 반영한 2000억원을 바탕으로 공급망 중요도가 높지만 민간 단독 투자가 어려운 해외 생산기지 확보 사업에 대한 투자도 확대한다.",
       "title": "정부, 경제안보품목 확대…핵심광물·소부장 100개 집중 관리"
     },
+    "source_fact:41421bb95a849898518f3814": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635756",
+      "source": "이투데이",
+      "source_body_digest": "7366b1bd88f7f5ee1e6065e2e5709ce0e39f66fc3b6e12de5771e57a8f8a7d7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5497ffe14d18cfdbc1dba3941e21a3a01564c67dd836e81904c1684753978695",
+      "source_fact_keys": [
+        "source_fact:v1:08a15b72de24f9b34c63421732a5a46f6a27cd07e015ebc6bb64407a19fc05fe",
+        "source_fact:v1:22fe610c40c32f95bc6e8b775ecaf63518f13fbdd55ad601b4791a4f75cdec4b",
+        "source_fact:v1:3f054aa860173807702af9e906f74c299ebc4d6f1aeab33c5854d77b18785779",
+        "source_fact:v1:5ce1a3ee66449d5379c7b2465b35d5194a80a988b14c735b4c8d7848262eea63",
+        "source_fact:v1:5f11d80daf24762b0642a761f240b49e5fd719b0de745264253c1aa1eaec6e8d",
+        "source_fact:v1:741553be83b8a2d4beab724564073136c7b3e82853598491484d41331aa8eecc",
+        "source_fact:v1:89abdeb042933a5e19e401b6ac8351eececda5f94f1d8653f23d2fa9e27444f8",
+        "source_fact:v1:9cad2b165f22e85680eaf409e5404b447eb2f964321248c17297a7de6c54af0a",
+        "source_fact:v1:a3f9cd6c141a535a38fbe43cb71da98821c8e2b4cc07dbd977870c5d7c21ce83",
+        "source_fact:v1:b36205efcd65e0d899d021db7fdd09720ea7978fa191415d6f32b7daf576d593",
+        "source_fact:v1:c563bf21e43b48541583c6715bf003927211bd6a13d20c4df8acc8438471bc0c",
+        "source_fact:v1:cf83fd01de0198f6331efb2afedfc4e7ba439a20de20008ad7e1fdd225ce2384",
+        "source_fact:v1:eb299d4671aa412c7b9ed95aa3bdd178984245fa8cf8e4f14efdc24fff161ea6",
+        "source_fact:v1:ecd20462e96e56414f1f390060f9016eb1073328162a3e4ff52c9ef55a142d0d",
+        "source_fact:v1:f0f1ee975958d768e78f4242df2b189da6a1931ce275639b5f439f08d1a86d73"
+      ],
+      "source_published_kst": "2026-10-14T15:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도",
+      "telegram_core_fact": "채권시장에 따르면 전날 국고채 3년물 금리는 3.857%로 8월31일(3.838%) 이후 한 달 보름 만에 최저치를 기록했다.",
+      "title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도"
+    },
     "source_fact:414322f18941cacc7b56be55": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
       "lanes": {
@@ -364756,6 +365708,40 @@
       "source_title": "청주시, SK하이닉스와 894억원 규모 공업용수 공급 협약 | 연합뉴스",
       "telegram_core_fact": "청주시는 SK하이닉스와 894억원 'SK하이닉스 공업용수 공급사업(4단계)' 원인자부담금 협약을 체결했다고 14일 밝혔다. 이번 협약은 SK하이닉스가 추진하는 대규모 반도체 생산시설인 P&T7(투자규모 20조원)과 M17(〃 80조원)에 공업용수를 안정적으로 공급하고자 마련됐다.",
       "title": "청주시, SK하이닉스와 894억원 규모 공업용수 공급 협약 | 연합뉴스"
+    },
+    "source_fact:44a3341105d1f77e48c714f0": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635756",
+      "source": "이투데이",
+      "source_body_digest": "7366b1bd88f7f5ee1e6065e2e5709ce0e39f66fc3b6e12de5771e57a8f8a7d7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5497ffe14d18cfdbc1dba3941e21a3a01564c67dd836e81904c1684753978695",
+      "source_fact_keys": [
+        "source_fact:v1:08a15b72de24f9b34c63421732a5a46f6a27cd07e015ebc6bb64407a19fc05fe",
+        "source_fact:v1:22fe610c40c32f95bc6e8b775ecaf63518f13fbdd55ad601b4791a4f75cdec4b",
+        "source_fact:v1:3f054aa860173807702af9e906f74c299ebc4d6f1aeab33c5854d77b18785779",
+        "source_fact:v1:5ce1a3ee66449d5379c7b2465b35d5194a80a988b14c735b4c8d7848262eea63",
+        "source_fact:v1:5f11d80daf24762b0642a761f240b49e5fd719b0de745264253c1aa1eaec6e8d",
+        "source_fact:v1:741553be83b8a2d4beab724564073136c7b3e82853598491484d41331aa8eecc",
+        "source_fact:v1:89abdeb042933a5e19e401b6ac8351eececda5f94f1d8653f23d2fa9e27444f8",
+        "source_fact:v1:9cad2b165f22e85680eaf409e5404b447eb2f964321248c17297a7de6c54af0a",
+        "source_fact:v1:a3f9cd6c141a535a38fbe43cb71da98821c8e2b4cc07dbd977870c5d7c21ce83",
+        "source_fact:v1:b36205efcd65e0d899d021db7fdd09720ea7978fa191415d6f32b7daf576d593",
+        "source_fact:v1:c563bf21e43b48541583c6715bf003927211bd6a13d20c4df8acc8438471bc0c",
+        "source_fact:v1:cf83fd01de0198f6331efb2afedfc4e7ba439a20de20008ad7e1fdd225ce2384",
+        "source_fact:v1:eb299d4671aa412c7b9ed95aa3bdd178984245fa8cf8e4f14efdc24fff161ea6",
+        "source_fact:v1:ecd20462e96e56414f1f390060f9016eb1073328162a3e4ff52c9ef55a142d0d",
+        "source_fact:v1:f0f1ee975958d768e78f4242df2b189da6a1931ce275639b5f439f08d1a86d73"
+      ],
+      "source_published_kst": "2026-10-14T15:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도",
+      "telegram_core_fact": "채권시장에 따르면 전날 국고채 3년물 금리는 3.857%로 8월31일(3.838%) 이후 한 달 보름 만에 최저치를 기록했다.",
+      "title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도"
     },
     "source_fact:44a6ca305280ca3a3b03c717": {
       "first_seen_kst": "2026-10-12T03:58:42+09:00",
@@ -371503,6 +372489,40 @@
       "source_title": "[단독] AI 서버 배터리 ‘불티’…삼성SDI, 말레이서 원통형 LFP 내년 6월 양산",
       "telegram_core_fact": "업계에 따르면 삼성SDI는 최근 이러한 내용의 신규 투자를 결정하고 말레이시아 제2공장에 AI 서버용 배터리백업유닛(BBU)에 들어갈 LFP 양극 극판 생산설비 구축에 나섰다.",
       "title": "[단독] AI 서버 배터리 ‘불티’…삼성SDI, 말레이서 원통형 LFP 내년 6월 양산"
+    },
+    "source_fact:49853a5ec53c65ee041f877b": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635756",
+      "source": "이투데이",
+      "source_body_digest": "7366b1bd88f7f5ee1e6065e2e5709ce0e39f66fc3b6e12de5771e57a8f8a7d7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5497ffe14d18cfdbc1dba3941e21a3a01564c67dd836e81904c1684753978695",
+      "source_fact_keys": [
+        "source_fact:v1:08a15b72de24f9b34c63421732a5a46f6a27cd07e015ebc6bb64407a19fc05fe",
+        "source_fact:v1:22fe610c40c32f95bc6e8b775ecaf63518f13fbdd55ad601b4791a4f75cdec4b",
+        "source_fact:v1:3f054aa860173807702af9e906f74c299ebc4d6f1aeab33c5854d77b18785779",
+        "source_fact:v1:5ce1a3ee66449d5379c7b2465b35d5194a80a988b14c735b4c8d7848262eea63",
+        "source_fact:v1:5f11d80daf24762b0642a761f240b49e5fd719b0de745264253c1aa1eaec6e8d",
+        "source_fact:v1:741553be83b8a2d4beab724564073136c7b3e82853598491484d41331aa8eecc",
+        "source_fact:v1:89abdeb042933a5e19e401b6ac8351eececda5f94f1d8653f23d2fa9e27444f8",
+        "source_fact:v1:9cad2b165f22e85680eaf409e5404b447eb2f964321248c17297a7de6c54af0a",
+        "source_fact:v1:a3f9cd6c141a535a38fbe43cb71da98821c8e2b4cc07dbd977870c5d7c21ce83",
+        "source_fact:v1:b36205efcd65e0d899d021db7fdd09720ea7978fa191415d6f32b7daf576d593",
+        "source_fact:v1:c563bf21e43b48541583c6715bf003927211bd6a13d20c4df8acc8438471bc0c",
+        "source_fact:v1:cf83fd01de0198f6331efb2afedfc4e7ba439a20de20008ad7e1fdd225ce2384",
+        "source_fact:v1:eb299d4671aa412c7b9ed95aa3bdd178984245fa8cf8e4f14efdc24fff161ea6",
+        "source_fact:v1:ecd20462e96e56414f1f390060f9016eb1073328162a3e4ff52c9ef55a142d0d",
+        "source_fact:v1:f0f1ee975958d768e78f4242df2b189da6a1931ce275639b5f439f08d1a86d73"
+      ],
+      "source_published_kst": "2026-10-14T15:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도",
+      "telegram_core_fact": "채권시장에 따르면 전날 국고채 3년물 금리는 3.857%로 8월31일(3.838%) 이후 한 달 보름 만에 최저치를 기록했다.",
+      "title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도"
     },
     "source_fact:4999b87a35d8bae549844c9c": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
@@ -379974,6 +380994,40 @@
       "telegram_core_fact": "한화오션은 9일 정인섭 경영지원실장(사장) 명의의 담화문을 내고 \"안전과 생산을 위협하는 것은 타협의 대상이 될 수 없다\"고 밝혔다. 한화오션 노동조합이 크레인 위에서 고공 농성에 돌입한 가운데 한화오션 측이 안전과 생산을 위협하는 불법 고공 농성을 중단하고 올해 임금·단체협약(임단협) 교섭을 이어가자고 촉구했다.",
       "title": "정인섭 한화오션 사장 \"안전·생산 위협 행위 우려…고공 농성 중단해야\""
     },
+    "source_fact:51017e8cc48c9a2ada192a84": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635756",
+      "source": "이투데이",
+      "source_body_digest": "7366b1bd88f7f5ee1e6065e2e5709ce0e39f66fc3b6e12de5771e57a8f8a7d7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5497ffe14d18cfdbc1dba3941e21a3a01564c67dd836e81904c1684753978695",
+      "source_fact_keys": [
+        "source_fact:v1:08a15b72de24f9b34c63421732a5a46f6a27cd07e015ebc6bb64407a19fc05fe",
+        "source_fact:v1:22fe610c40c32f95bc6e8b775ecaf63518f13fbdd55ad601b4791a4f75cdec4b",
+        "source_fact:v1:3f054aa860173807702af9e906f74c299ebc4d6f1aeab33c5854d77b18785779",
+        "source_fact:v1:5ce1a3ee66449d5379c7b2465b35d5194a80a988b14c735b4c8d7848262eea63",
+        "source_fact:v1:5f11d80daf24762b0642a761f240b49e5fd719b0de745264253c1aa1eaec6e8d",
+        "source_fact:v1:741553be83b8a2d4beab724564073136c7b3e82853598491484d41331aa8eecc",
+        "source_fact:v1:89abdeb042933a5e19e401b6ac8351eececda5f94f1d8653f23d2fa9e27444f8",
+        "source_fact:v1:9cad2b165f22e85680eaf409e5404b447eb2f964321248c17297a7de6c54af0a",
+        "source_fact:v1:a3f9cd6c141a535a38fbe43cb71da98821c8e2b4cc07dbd977870c5d7c21ce83",
+        "source_fact:v1:b36205efcd65e0d899d021db7fdd09720ea7978fa191415d6f32b7daf576d593",
+        "source_fact:v1:c563bf21e43b48541583c6715bf003927211bd6a13d20c4df8acc8438471bc0c",
+        "source_fact:v1:cf83fd01de0198f6331efb2afedfc4e7ba439a20de20008ad7e1fdd225ce2384",
+        "source_fact:v1:eb299d4671aa412c7b9ed95aa3bdd178984245fa8cf8e4f14efdc24fff161ea6",
+        "source_fact:v1:ecd20462e96e56414f1f390060f9016eb1073328162a3e4ff52c9ef55a142d0d",
+        "source_fact:v1:f0f1ee975958d768e78f4242df2b189da6a1931ce275639b5f439f08d1a86d73"
+      ],
+      "source_published_kst": "2026-10-14T15:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도",
+      "telegram_core_fact": "채권시장에 따르면 전날 국고채 3년물 금리는 3.857%로 8월31일(3.838%) 이후 한 달 보름 만에 최저치를 기록했다.",
+      "title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도"
+    },
     "source_fact:5108246f1fda14dc280231e8": {
       "first_seen_kst": "2026-10-05T23:05:12+09:00",
       "lanes": {
@@ -383512,6 +384566,34 @@
       "source_title": "유진로봇, AMR 넘어 휴머노이드 사업으로 본격 확장",
       "telegram_core_fact": "유진로봇 박성주 대표이사는 “유진로봇의 휴머노이드 사업은 기존 AMR 중심의 로보타이제이션 사업을 ‘작업 수행’ 영역까지 한 단계 확장하는 전략”이라며 “이번 국책과제를 중요한 실증 기반으로 삼아 현장에서 기술과 사업성을 검증하고 추후 휴머노이드와 피지컬 AI를 기업의 새로운 성장동력으로 육성해 나가겠다”고 밝혔다.",
       "title": "유진로봇, AMR 넘어 휴머노이드 사업으로 본격 확장"
+    },
+    "source_fact:540adceb9363b4915dc016c4": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/14/2026101412241926278",
+      "source": "머니투데이",
+      "source_body_digest": "abe6516f596ddbe8bc613db4d1a7a0bc5d3bdd26d4deb882e6fe602b2acaa555",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:257a57dd5410df9c1a2fbe3d6e7e3e9c3a248412ab6a2690d4195576f765e992",
+      "source_fact_keys": [
+        "source_fact:v1:357c065b0b17e5819995be13f2a79a669c54dddcc92ce0d218b9002a99795c74",
+        "source_fact:v1:36b2c0ea032ec3bab2daa2e56cba3e06faa5e6516360d71c78bfcb0f05a33b27",
+        "source_fact:v1:9a050af74653ec2569f28f6f43b14379be227d24f6a79336dc96fe9d1a4289c4",
+        "source_fact:v1:b1715b0074e3dd689f14656c2e2a3fbfe781111b7a0f49296d4b31ffe3651e1f",
+        "source_fact:v1:b28a7b34ce3c6e1436ea3ac8dd7a5b4eb71b817c08886af0b828cf62aeb22f31",
+        "source_fact:v1:bf87a23c7311a9610836af19765a8c57ddb906d3cdc430ea5c6c9a5b5499c4d6",
+        "source_fact:v1:c57091a8549d45dda306b647a6b354c2a4d6555ccfef5d522255730f6f789b57",
+        "source_fact:v1:eb157b710bc11102e9f5ae51dbf54a5a7a1589d05631297214c47d83d4f7936d",
+        "source_fact:v1:f3e2ae4f160d9af0a3491aa73fe89116863864f42dde76421e3cbcb74c4e0797"
+      ],
+      "source_published_kst": "2026-10-14T13:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "안현 SK하이닉스 사장 \"HBM 넘어 새로운 메모리 시대 열겠다\"",
+      "telegram_core_fact": "AI(인공지능) 추론 확대로 기존 메모리의 성능과 용량에 한계가 나타나면서 HBM(고대역폭메모리)을 넘어 3차원(3D) 적층 D램과 HBF(고대역폭플래시) 등 새로운 메모리 계층을 구축하겠다는 전략이다.",
+      "title": "안현 SK하이닉스 사장 \"HBM 넘어 새로운 메모리 시대 열겠다\""
     },
     "source_fact:540bab7d913499e105636aed": {
       "first_seen_kst": "2026-10-12T12:32:44+09:00",
@@ -416712,6 +417794,28 @@
       "source_published_kst": "2026-10-06T14:13+09:00",
       "title": "이형일 \"텍사스 발전소에 24억弗 송금…상업적 합리성 충족\"(종합)"
     },
+    "source_fact:6f831f6e1108c956180b7edd": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825758",
+      "source": "뉴시스",
+      "source_body_digest": "ba84c68e3c2e173a8335fd57b1558d76e10499aada24b4d431836b4a49a7a77f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bfbd39bd404734de8faa260bcf427d659bdb1de6f789db0a2ce498a371dfdec6",
+      "source_fact_keys": [
+        "source_fact:v1:5c1e9cef1ee4adbe90c0b14a3e425bfb12a7cb1d4de18fb58125ade29448ddaa",
+        "source_fact:v1:84fbadb78bd5b654549283a70dcf5fade254aac5cd3b505d652a91f5511c0f9b",
+        "source_fact:v1:8a3be64aff4883e143fa7112224b0eedff67ef9634a5c8cd97207948bb943c4d"
+      ],
+      "source_published_kst": "2026-10-14T15:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "'시흥형 RE100' 모델 구축…산단 지붕에 태양광, 수익은 환원",
+      "telegram_core_fact": "경기 시흥시가 관내 산업단지 지붕과 공공 유휴부지를 활용해 재생에너지 생산을 확대하고, 발생 수익을 시민에게 되돌려주는 '시흥형 RE100' 모델 구축에 나섰다.",
+      "title": "'시흥형 RE100' 모델 구축…산단 지붕에 태양광, 수익은 환원"
+    },
     "source_fact:6f8b5f2b7af2b9b1a894b720": {
       "first_seen_kst": "2026-10-07T22:53:53+09:00",
       "lanes": {
@@ -429627,6 +430731,34 @@
       "source_title": "러시아 \"경유 수출 제한 즉시 해제\"…이달 30만t 공급 방침",
       "telegram_core_fact": "[파이낸셜뉴스] 러시아가 이르면 이달부터 미국을 포함한 세계 시장에 경유를 추가 공급하기 위해 수출 제한 조치를 풀기로 했다.",
       "title": "러시아 \"경유 수출 제한 즉시 해제\"…이달 30만t 공급 방침"
+    },
+    "source_fact:7a65ec2a6e934374fa49a4bb": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/14/2026101412241926278",
+      "source": "머니투데이",
+      "source_body_digest": "abe6516f596ddbe8bc613db4d1a7a0bc5d3bdd26d4deb882e6fe602b2acaa555",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:257a57dd5410df9c1a2fbe3d6e7e3e9c3a248412ab6a2690d4195576f765e992",
+      "source_fact_keys": [
+        "source_fact:v1:357c065b0b17e5819995be13f2a79a669c54dddcc92ce0d218b9002a99795c74",
+        "source_fact:v1:36b2c0ea032ec3bab2daa2e56cba3e06faa5e6516360d71c78bfcb0f05a33b27",
+        "source_fact:v1:9a050af74653ec2569f28f6f43b14379be227d24f6a79336dc96fe9d1a4289c4",
+        "source_fact:v1:b1715b0074e3dd689f14656c2e2a3fbfe781111b7a0f49296d4b31ffe3651e1f",
+        "source_fact:v1:b28a7b34ce3c6e1436ea3ac8dd7a5b4eb71b817c08886af0b828cf62aeb22f31",
+        "source_fact:v1:bf87a23c7311a9610836af19765a8c57ddb906d3cdc430ea5c6c9a5b5499c4d6",
+        "source_fact:v1:c57091a8549d45dda306b647a6b354c2a4d6555ccfef5d522255730f6f789b57",
+        "source_fact:v1:eb157b710bc11102e9f5ae51dbf54a5a7a1589d05631297214c47d83d4f7936d",
+        "source_fact:v1:f3e2ae4f160d9af0a3491aa73fe89116863864f42dde76421e3cbcb74c4e0797"
+      ],
+      "source_published_kst": "2026-10-14T13:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "안현 SK하이닉스 사장 \"HBM 넘어 새로운 메모리 시대 열겠다\"",
+      "telegram_core_fact": "AI(인공지능) 추론 확대로 기존 메모리의 성능과 용량에 한계가 나타나면서 HBM(고대역폭메모리)을 넘어 3차원(3D) 적층 D램과 HBF(고대역폭플래시) 등 새로운 메모리 계층을 구축하겠다는 전략이다.",
+      "title": "안현 SK하이닉스 사장 \"HBM 넘어 새로운 메모리 시대 열겠다\""
     },
     "source_fact:7a66017901fb5297c36455ae": {
       "first_seen_kst": "2026-10-08T05:17:22+09:00",
@@ -460097,6 +461229,28 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 치솟는 경유 가격을 잡기 위해 러시아산 경유의 미국 수입 등을 허용하는 한시적인 대러 제재 완화 조치를 발표했다.",
       "title": "중간선거 앞 기름값 급등에…트럼프, 대러 제재 풀고 경유 수입"
     },
+    "source_fact:95049d759548c1c8b42d4042": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825546",
+      "source": "뉴시스",
+      "source_body_digest": "5061efd1dd7bad2a89aa767427eb030d3a197059ffe60e7167fcc87f44e9ba01",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:41427eda99537325683707dd5f91a907ab2121daee43dbbe3e42867793d5768e",
+      "source_fact_keys": [
+        "source_fact:v1:1eca31fd7cae808e36a93a9f56e698a96826e262861b781a2308fdfdfa6a8584",
+        "source_fact:v1:7bf289eabf24b27b12a0e05f5d2afdc4d1900cc47c9ef27d5f01cc21eabd446a",
+        "source_fact:v1:d07c2ab1c24dc6f33ae646f6035e202fcf507a5001bc4cfd50589a78c894bd5b"
+      ],
+      "source_published_kst": "2026-10-14T14:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 유세에서 \"이란 한 방 먹일 것\" 대이란 군사행동 시사",
+      "telegram_core_fact": "트럼프 대통령은 또 이란과의 전쟁으로 인한 유가 상승은 \"이란이 핵무기를 가지는 것을 막기 위해 치러야 할 작은 대가일 뿐\"이라며 기존 주장을 되풀이했다.",
+      "title": "트럼프 유세에서 \"이란 한 방 먹일 것\" 대이란 군사행동 시사"
+    },
     "source_fact:950547a8d4b60ced17e426b7": {
       "first_seen_kst": "2026-10-12T12:32:44+09:00",
       "lanes": {
@@ -466144,6 +467298,34 @@
       "telegram_core_fact": "이달 1일부터 10일까지 수출액(통관 기준 잠정치)은 261억달러로, 전년비 102.0% 증가했다.",
       "title": "이달 수출액 261억달러 ‘역대 최대’ 기록…전체 중 절반은 반도체"
     },
+    "source_fact:99eb5b98baa7f3d0f8150806": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/14/2026101412241926278",
+      "source": "머니투데이",
+      "source_body_digest": "abe6516f596ddbe8bc613db4d1a7a0bc5d3bdd26d4deb882e6fe602b2acaa555",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:257a57dd5410df9c1a2fbe3d6e7e3e9c3a248412ab6a2690d4195576f765e992",
+      "source_fact_keys": [
+        "source_fact:v1:357c065b0b17e5819995be13f2a79a669c54dddcc92ce0d218b9002a99795c74",
+        "source_fact:v1:36b2c0ea032ec3bab2daa2e56cba3e06faa5e6516360d71c78bfcb0f05a33b27",
+        "source_fact:v1:9a050af74653ec2569f28f6f43b14379be227d24f6a79336dc96fe9d1a4289c4",
+        "source_fact:v1:b1715b0074e3dd689f14656c2e2a3fbfe781111b7a0f49296d4b31ffe3651e1f",
+        "source_fact:v1:b28a7b34ce3c6e1436ea3ac8dd7a5b4eb71b817c08886af0b828cf62aeb22f31",
+        "source_fact:v1:bf87a23c7311a9610836af19765a8c57ddb906d3cdc430ea5c6c9a5b5499c4d6",
+        "source_fact:v1:c57091a8549d45dda306b647a6b354c2a4d6555ccfef5d522255730f6f789b57",
+        "source_fact:v1:eb157b710bc11102e9f5ae51dbf54a5a7a1589d05631297214c47d83d4f7936d",
+        "source_fact:v1:f3e2ae4f160d9af0a3491aa73fe89116863864f42dde76421e3cbcb74c4e0797"
+      ],
+      "source_published_kst": "2026-10-14T13:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "안현 SK하이닉스 사장 \"HBM 넘어 새로운 메모리 시대 열겠다\"",
+      "telegram_core_fact": "AI(인공지능) 추론 확대로 기존 메모리의 성능과 용량에 한계가 나타나면서 HBM(고대역폭메모리)을 넘어 3차원(3D) 적층 D램과 HBF(고대역폭플래시) 등 새로운 메모리 계층을 구축하겠다는 전략이다.",
+      "title": "안현 SK하이닉스 사장 \"HBM 넘어 새로운 메모리 시대 열겠다\""
+    },
     "source_fact:99fbfa4b639463c8e1f280d4": {
       "first_seen_kst": "2026-10-13T08:59:28+09:00",
       "lanes": {
@@ -467406,6 +468588,34 @@
       "source_title": "AI 모델 다음은 ‘구현 전쟁’… 빅테크가 LG CNS 찾는 이유 [POWER COMPANY]",
       "telegram_core_fact": "올 상반기 LG CNS의 AI·클라우드 매출은 1조6714억원으로 전체의 약 59%를 차지했다. LG전자와는 휴머노이드 로봇 학습 PoC와 GPU 기반 AI인프라 공급을 포함한 약 1900억원 계약도 맺었다.",
       "title": "AI 모델 다음은 ‘구현 전쟁’… 빅테크가 LG CNS 찾는 이유 [POWER COMPANY]"
+    },
+    "source_fact:9b05b25755da75267048e0f4": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/14/2026101412241926278",
+      "source": "머니투데이",
+      "source_body_digest": "abe6516f596ddbe8bc613db4d1a7a0bc5d3bdd26d4deb882e6fe602b2acaa555",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:257a57dd5410df9c1a2fbe3d6e7e3e9c3a248412ab6a2690d4195576f765e992",
+      "source_fact_keys": [
+        "source_fact:v1:357c065b0b17e5819995be13f2a79a669c54dddcc92ce0d218b9002a99795c74",
+        "source_fact:v1:36b2c0ea032ec3bab2daa2e56cba3e06faa5e6516360d71c78bfcb0f05a33b27",
+        "source_fact:v1:9a050af74653ec2569f28f6f43b14379be227d24f6a79336dc96fe9d1a4289c4",
+        "source_fact:v1:b1715b0074e3dd689f14656c2e2a3fbfe781111b7a0f49296d4b31ffe3651e1f",
+        "source_fact:v1:b28a7b34ce3c6e1436ea3ac8dd7a5b4eb71b817c08886af0b828cf62aeb22f31",
+        "source_fact:v1:bf87a23c7311a9610836af19765a8c57ddb906d3cdc430ea5c6c9a5b5499c4d6",
+        "source_fact:v1:c57091a8549d45dda306b647a6b354c2a4d6555ccfef5d522255730f6f789b57",
+        "source_fact:v1:eb157b710bc11102e9f5ae51dbf54a5a7a1589d05631297214c47d83d4f7936d",
+        "source_fact:v1:f3e2ae4f160d9af0a3491aa73fe89116863864f42dde76421e3cbcb74c4e0797"
+      ],
+      "source_published_kst": "2026-10-14T13:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "안현 SK하이닉스 사장 \"HBM 넘어 새로운 메모리 시대 열겠다\"",
+      "telegram_core_fact": "AI(인공지능) 추론 확대로 기존 메모리의 성능과 용량에 한계가 나타나면서 HBM(고대역폭메모리)을 넘어 3차원(3D) 적층 D램과 HBF(고대역폭플래시) 등 새로운 메모리 계층을 구축하겠다는 전략이다.",
+      "title": "안현 SK하이닉스 사장 \"HBM 넘어 새로운 메모리 시대 열겠다\""
     },
     "source_fact:9b05db9a1e060a3a5ad89a8d": {
       "first_seen_kst": "2026-10-08T15:16:19+09:00",
@@ -469336,6 +470546,40 @@
       ],
       "source_published_kst": "2026-10-07T08:10+09:00",
       "title": "\"관세 깎아줄게, 돈 더 내놔\" 트럼프, 韓 관세 또 압박"
+    },
+    "source_fact:9c86e7ae13b01bac0d3acba1": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635756",
+      "source": "이투데이",
+      "source_body_digest": "7366b1bd88f7f5ee1e6065e2e5709ce0e39f66fc3b6e12de5771e57a8f8a7d7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5497ffe14d18cfdbc1dba3941e21a3a01564c67dd836e81904c1684753978695",
+      "source_fact_keys": [
+        "source_fact:v1:08a15b72de24f9b34c63421732a5a46f6a27cd07e015ebc6bb64407a19fc05fe",
+        "source_fact:v1:22fe610c40c32f95bc6e8b775ecaf63518f13fbdd55ad601b4791a4f75cdec4b",
+        "source_fact:v1:3f054aa860173807702af9e906f74c299ebc4d6f1aeab33c5854d77b18785779",
+        "source_fact:v1:5ce1a3ee66449d5379c7b2465b35d5194a80a988b14c735b4c8d7848262eea63",
+        "source_fact:v1:5f11d80daf24762b0642a761f240b49e5fd719b0de745264253c1aa1eaec6e8d",
+        "source_fact:v1:741553be83b8a2d4beab724564073136c7b3e82853598491484d41331aa8eecc",
+        "source_fact:v1:89abdeb042933a5e19e401b6ac8351eececda5f94f1d8653f23d2fa9e27444f8",
+        "source_fact:v1:9cad2b165f22e85680eaf409e5404b447eb2f964321248c17297a7de6c54af0a",
+        "source_fact:v1:a3f9cd6c141a535a38fbe43cb71da98821c8e2b4cc07dbd977870c5d7c21ce83",
+        "source_fact:v1:b36205efcd65e0d899d021db7fdd09720ea7978fa191415d6f32b7daf576d593",
+        "source_fact:v1:c563bf21e43b48541583c6715bf003927211bd6a13d20c4df8acc8438471bc0c",
+        "source_fact:v1:cf83fd01de0198f6331efb2afedfc4e7ba439a20de20008ad7e1fdd225ce2384",
+        "source_fact:v1:eb299d4671aa412c7b9ed95aa3bdd178984245fa8cf8e4f14efdc24fff161ea6",
+        "source_fact:v1:ecd20462e96e56414f1f390060f9016eb1073328162a3e4ff52c9ef55a142d0d",
+        "source_fact:v1:f0f1ee975958d768e78f4242df2b189da6a1931ce275639b5f439f08d1a86d73"
+      ],
+      "source_published_kst": "2026-10-14T15:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도",
+      "telegram_core_fact": "채권시장에 따르면 전날 국고채 3년물 금리는 3.857%로 8월31일(3.838%) 이후 한 달 보름 만에 최저치를 기록했다.",
+      "title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도"
     },
     "source_fact:9c9608c30f0d0d4e2063fa36": {
       "first_seen_kst": "2026-10-08T08:31:37+09:00",
@@ -471281,6 +472525,28 @@
       ],
       "source_published_kst": "2026-10-06T16:09+09:00",
       "title": "롯데백화점 외국인 매출 1조 돌파…신세계·현대도 '목전'(종합)"
+    },
+    "source_fact:9e3625204a9a2cf7b8a611b1": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.joongang.co.kr/article/25469647",
+      "source": "중앙일보",
+      "source_body_digest": "3fe4625cc53f0edc7eefd659639c669b3ec508ab8ca0ef561d4d23af57b018fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7a4a07f46de5fcf50c2cdbfdba191a5c4141dcf6b0782537405edadc8d81f41f",
+      "source_fact_keys": [
+        "source_fact:v1:1e9931d83a81ceb428bdf180e3dc5f0cf9ef2d6565fc6ea2bdbed5eb4f950f86",
+        "source_fact:v1:260f4a69a4e05b234a12152037fdf2fd7de21c5a0b5620859cd650f42400e378",
+        "source_fact:v1:65ba99a7fdcd7858c5840deffe2033e0811f016ffa231d3e4ade625a617fc41f"
+      ],
+      "source_published_kst": "2026-10-14T14:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "거세진 이란 호르무즈 공격, 英기지 위협까지…후티는 사우디 아람코 타격 | 중앙일보",
+      "telegram_core_fact": "선박들이 공격을 피해 항로를 바꾸면서 초대형 유조선의 하루 평균 운임 수입도 지난 9일 80만5000달러(약 11억원)로 사상 최고치를 기록했다고 선박 중개업체 클락슨스가 밝혔다.",
+      "title": "거세진 이란 호르무즈 공격, 英기지 위협까지…후티는 사우디 아람코 타격 | 중앙일보"
     },
     "source_fact:9e36a970dd79699bb5790a41": {
       "first_seen_kst": "2026-10-07T12:49:48+09:00",
@@ -495610,6 +496876,28 @@
       "telegram_core_fact": "HBM 매출 점유율은 SK하이닉스 50%, 마이크론 18%였지만 마이크론은 AI 확산에 따른 메모리 수요 증가에 힘입어 점유율을 확대하는 중이다.",
       "title": "머스크 “마이크론 빼고 메모리값 터무니없어”…삼전닉스 저격?- 매경ECONOMY"
     },
+    "source_fact:b2827e1a6827df98562280a6": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825546",
+      "source": "뉴시스",
+      "source_body_digest": "5061efd1dd7bad2a89aa767427eb030d3a197059ffe60e7167fcc87f44e9ba01",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:41427eda99537325683707dd5f91a907ab2121daee43dbbe3e42867793d5768e",
+      "source_fact_keys": [
+        "source_fact:v1:1eca31fd7cae808e36a93a9f56e698a96826e262861b781a2308fdfdfa6a8584",
+        "source_fact:v1:7bf289eabf24b27b12a0e05f5d2afdc4d1900cc47c9ef27d5f01cc21eabd446a",
+        "source_fact:v1:d07c2ab1c24dc6f33ae646f6035e202fcf507a5001bc4cfd50589a78c894bd5b"
+      ],
+      "source_published_kst": "2026-10-14T14:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 유세에서 \"이란 한 방 먹일 것\" 대이란 군사행동 시사",
+      "telegram_core_fact": "트럼프 대통령은 또 이란과의 전쟁으로 인한 유가 상승은 \"이란이 핵무기를 가지는 것을 막기 위해 치러야 할 작은 대가일 뿐\"이라며 기존 주장을 되풀이했다.",
+      "title": "트럼프 유세에서 \"이란 한 방 먹일 것\" 대이란 군사행동 시사"
+    },
     "source_fact:b286a72c374fffbf3c7f6762": {
       "first_seen_kst": "2026-10-10T08:26:55+09:00",
       "lanes": {
@@ -499143,6 +500431,34 @@
       "source_title": "유니클로, 매출 17% 늘어 역대 최대…H&M 제치고 세계 2위 전망",
       "telegram_core_fact": "일본 시장조사업계는 기존 2위인 H&M의 2025년 11월기(2024년 12월~2025년 11월) 매출이 3조6000억엔(약 30조5600억원)을 기록한 이후 감소세를 보인 점을 근거로 패스트리테일링이 H&M의 매출 규모를 넘어섰을 가능성이 있다고 분석했다.",
       "title": "유니클로, 매출 17% 늘어 역대 최대…H&M 제치고 세계 2위 전망"
+    },
+    "source_fact:b597b247901d164107641ba7": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/14/2026101412241926278",
+      "source": "머니투데이",
+      "source_body_digest": "abe6516f596ddbe8bc613db4d1a7a0bc5d3bdd26d4deb882e6fe602b2acaa555",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:257a57dd5410df9c1a2fbe3d6e7e3e9c3a248412ab6a2690d4195576f765e992",
+      "source_fact_keys": [
+        "source_fact:v1:357c065b0b17e5819995be13f2a79a669c54dddcc92ce0d218b9002a99795c74",
+        "source_fact:v1:36b2c0ea032ec3bab2daa2e56cba3e06faa5e6516360d71c78bfcb0f05a33b27",
+        "source_fact:v1:9a050af74653ec2569f28f6f43b14379be227d24f6a79336dc96fe9d1a4289c4",
+        "source_fact:v1:b1715b0074e3dd689f14656c2e2a3fbfe781111b7a0f49296d4b31ffe3651e1f",
+        "source_fact:v1:b28a7b34ce3c6e1436ea3ac8dd7a5b4eb71b817c08886af0b828cf62aeb22f31",
+        "source_fact:v1:bf87a23c7311a9610836af19765a8c57ddb906d3cdc430ea5c6c9a5b5499c4d6",
+        "source_fact:v1:c57091a8549d45dda306b647a6b354c2a4d6555ccfef5d522255730f6f789b57",
+        "source_fact:v1:eb157b710bc11102e9f5ae51dbf54a5a7a1589d05631297214c47d83d4f7936d",
+        "source_fact:v1:f3e2ae4f160d9af0a3491aa73fe89116863864f42dde76421e3cbcb74c4e0797"
+      ],
+      "source_published_kst": "2026-10-14T13:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "안현 SK하이닉스 사장 \"HBM 넘어 새로운 메모리 시대 열겠다\"",
+      "telegram_core_fact": "AI(인공지능) 추론 확대로 기존 메모리의 성능과 용량에 한계가 나타나면서 HBM(고대역폭메모리)을 넘어 3차원(3D) 적층 D램과 HBF(고대역폭플래시) 등 새로운 메모리 계층을 구축하겠다는 전략이다.",
+      "title": "안현 SK하이닉스 사장 \"HBM 넘어 새로운 메모리 시대 열겠다\""
     },
     "source_fact:b5baa2c17b404998fb63be77": {
       "first_seen_kst": "2026-10-12T11:51:53+09:00",
@@ -509703,6 +511019,40 @@
       "telegram_core_fact": "인공지능(AI) 투자 확대에 따른 메모리 호황이 실적을 밀어 올렸지만 주가까지 상승할지는 별개다.",
       "title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나"
     },
+    "source_fact:bee2bf6c1b4fc568dec8f759": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635756",
+      "source": "이투데이",
+      "source_body_digest": "7366b1bd88f7f5ee1e6065e2e5709ce0e39f66fc3b6e12de5771e57a8f8a7d7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5497ffe14d18cfdbc1dba3941e21a3a01564c67dd836e81904c1684753978695",
+      "source_fact_keys": [
+        "source_fact:v1:08a15b72de24f9b34c63421732a5a46f6a27cd07e015ebc6bb64407a19fc05fe",
+        "source_fact:v1:22fe610c40c32f95bc6e8b775ecaf63518f13fbdd55ad601b4791a4f75cdec4b",
+        "source_fact:v1:3f054aa860173807702af9e906f74c299ebc4d6f1aeab33c5854d77b18785779",
+        "source_fact:v1:5ce1a3ee66449d5379c7b2465b35d5194a80a988b14c735b4c8d7848262eea63",
+        "source_fact:v1:5f11d80daf24762b0642a761f240b49e5fd719b0de745264253c1aa1eaec6e8d",
+        "source_fact:v1:741553be83b8a2d4beab724564073136c7b3e82853598491484d41331aa8eecc",
+        "source_fact:v1:89abdeb042933a5e19e401b6ac8351eececda5f94f1d8653f23d2fa9e27444f8",
+        "source_fact:v1:9cad2b165f22e85680eaf409e5404b447eb2f964321248c17297a7de6c54af0a",
+        "source_fact:v1:a3f9cd6c141a535a38fbe43cb71da98821c8e2b4cc07dbd977870c5d7c21ce83",
+        "source_fact:v1:b36205efcd65e0d899d021db7fdd09720ea7978fa191415d6f32b7daf576d593",
+        "source_fact:v1:c563bf21e43b48541583c6715bf003927211bd6a13d20c4df8acc8438471bc0c",
+        "source_fact:v1:cf83fd01de0198f6331efb2afedfc4e7ba439a20de20008ad7e1fdd225ce2384",
+        "source_fact:v1:eb299d4671aa412c7b9ed95aa3bdd178984245fa8cf8e4f14efdc24fff161ea6",
+        "source_fact:v1:ecd20462e96e56414f1f390060f9016eb1073328162a3e4ff52c9ef55a142d0d",
+        "source_fact:v1:f0f1ee975958d768e78f4242df2b189da6a1931ce275639b5f439f08d1a86d73"
+      ],
+      "source_published_kst": "2026-10-14T15:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도",
+      "telegram_core_fact": "채권시장에 따르면 전날 국고채 3년물 금리는 3.857%로 8월31일(3.838%) 이후 한 달 보름 만에 최저치를 기록했다.",
+      "title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도"
+    },
     "source_fact:bee9c8ea4bfd25db7b1891f3": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
@@ -509843,6 +511193,28 @@
       "source_title": "트럼프, 우·러 에너지 휴전 깜짝 발표…젤렌스키 \"처음 듣는 이야기\"",
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아와 우크라이나가 정유시설을 서로 공격하지 않기로 합의했다고 11일(현지시간) 발표했다.",
       "title": "트럼프, 우·러 에너지 휴전 깜짝 발표…젤렌스키 \"처음 듣는 이야기\""
+    },
+    "source_fact:befe8aa56cb3a120d9117286": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.joongang.co.kr/article/25469647",
+      "source": "중앙일보",
+      "source_body_digest": "3fe4625cc53f0edc7eefd659639c669b3ec508ab8ca0ef561d4d23af57b018fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7a4a07f46de5fcf50c2cdbfdba191a5c4141dcf6b0782537405edadc8d81f41f",
+      "source_fact_keys": [
+        "source_fact:v1:1e9931d83a81ceb428bdf180e3dc5f0cf9ef2d6565fc6ea2bdbed5eb4f950f86",
+        "source_fact:v1:260f4a69a4e05b234a12152037fdf2fd7de21c5a0b5620859cd650f42400e378",
+        "source_fact:v1:65ba99a7fdcd7858c5840deffe2033e0811f016ffa231d3e4ade625a617fc41f"
+      ],
+      "source_published_kst": "2026-10-14T14:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "거세진 이란 호르무즈 공격, 英기지 위협까지…후티는 사우디 아람코 타격 | 중앙일보",
+      "telegram_core_fact": "선박들이 공격을 피해 항로를 바꾸면서 초대형 유조선의 하루 평균 운임 수입도 지난 9일 80만5000달러(약 11억원)로 사상 최고치를 기록했다고 선박 중개업체 클락슨스가 밝혔다.",
+      "title": "거세진 이란 호르무즈 공격, 英기지 위협까지…후티는 사우디 아람코 타격 | 중앙일보"
     },
     "source_fact:bf0725e0c1978d8ca265abe4": {
       "first_seen_kst": "2026-10-08T18:24:19+09:00",
@@ -511604,6 +512976,26 @@
       "source_published_kst": "2026-10-07T09:51+09:00",
       "title": "삼미금속, 한화파워에 ‘가스터빈 블레이드’ 납품 개시…후속 수주 논의"
     },
+    "source_fact:c07a4cb0ca6a2c8b4df058d5": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/14/2026101410183465138",
+      "source": "머니투데이",
+      "source_body_digest": "bd1df0a5812dddea0af9be05be89141f7a12cc6b5ea3d39a3de0fa4f21bbbae3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fa676f6475200c1eb60cb7ae1ad53d4024dbae6543349bf0f63d37dff334a30e",
+      "source_fact_keys": [
+        "source_fact:v1:81377abb0f2cc056a6998074d939988e59512dd8135789571c489234ac53724a"
+      ],
+      "source_published_kst": "2026-10-14T11:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"대만, 알래스카 LNG 사업 5조 투자…가스 30% 구매하기로\"",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 대만이 알래스카 액화천연가스(LNG) 파이프라인 사업에서 나오는 가스의 30%를 구매하기로 합의했다고 13일(현지시간) 말했다. 트럼프 대통령은 \"대만이 향후 20년간 가스 파이프라인을 통해 공급되는 가스의 30%를 구매하기로 합의했다\"며 \"이는 성공을 보장하는 것\"이라고 말했다.",
+      "title": "트럼프 \"대만, 알래스카 LNG 사업 5조 투자…가스 30% 구매하기로\""
+    },
     "source_fact:c07cfd8b8249596c7c02885f": {
       "first_seen_kst": "2026-10-13T04:02:08+09:00",
       "lanes": {
@@ -512485,6 +513877,40 @@
       "source_title": "국내·외 상관없다…최태원 회장, AI 메모리 호황에 반도체 증설 '속도전'",
       "telegram_core_fact": "최태원 SK그룹 회장이 인공지능(AI)발 메모리 호황이 이어지자, 반도체 캐파(생산능력) 확장을 위한 '속도전'에 나섰다.",
       "title": "국내·외 상관없다…최태원 회장, AI 메모리 호황에 반도체 증설 '속도전'"
+    },
+    "source_fact:c14737849710d3ade9af2821": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635756",
+      "source": "이투데이",
+      "source_body_digest": "7366b1bd88f7f5ee1e6065e2e5709ce0e39f66fc3b6e12de5771e57a8f8a7d7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5497ffe14d18cfdbc1dba3941e21a3a01564c67dd836e81904c1684753978695",
+      "source_fact_keys": [
+        "source_fact:v1:08a15b72de24f9b34c63421732a5a46f6a27cd07e015ebc6bb64407a19fc05fe",
+        "source_fact:v1:22fe610c40c32f95bc6e8b775ecaf63518f13fbdd55ad601b4791a4f75cdec4b",
+        "source_fact:v1:3f054aa860173807702af9e906f74c299ebc4d6f1aeab33c5854d77b18785779",
+        "source_fact:v1:5ce1a3ee66449d5379c7b2465b35d5194a80a988b14c735b4c8d7848262eea63",
+        "source_fact:v1:5f11d80daf24762b0642a761f240b49e5fd719b0de745264253c1aa1eaec6e8d",
+        "source_fact:v1:741553be83b8a2d4beab724564073136c7b3e82853598491484d41331aa8eecc",
+        "source_fact:v1:89abdeb042933a5e19e401b6ac8351eececda5f94f1d8653f23d2fa9e27444f8",
+        "source_fact:v1:9cad2b165f22e85680eaf409e5404b447eb2f964321248c17297a7de6c54af0a",
+        "source_fact:v1:a3f9cd6c141a535a38fbe43cb71da98821c8e2b4cc07dbd977870c5d7c21ce83",
+        "source_fact:v1:b36205efcd65e0d899d021db7fdd09720ea7978fa191415d6f32b7daf576d593",
+        "source_fact:v1:c563bf21e43b48541583c6715bf003927211bd6a13d20c4df8acc8438471bc0c",
+        "source_fact:v1:cf83fd01de0198f6331efb2afedfc4e7ba439a20de20008ad7e1fdd225ce2384",
+        "source_fact:v1:eb299d4671aa412c7b9ed95aa3bdd178984245fa8cf8e4f14efdc24fff161ea6",
+        "source_fact:v1:ecd20462e96e56414f1f390060f9016eb1073328162a3e4ff52c9ef55a142d0d",
+        "source_fact:v1:f0f1ee975958d768e78f4242df2b189da6a1931ce275639b5f439f08d1a86d73"
+      ],
+      "source_published_kst": "2026-10-14T15:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도",
+      "telegram_core_fact": "채권시장에 따르면 전날 국고채 3년물 금리는 3.857%로 8월31일(3.838%) 이후 한 달 보름 만에 최저치를 기록했다.",
+      "title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도"
     },
     "source_fact:c151c928d04e6fb87d3125c1": {
       "first_seen_kst": "2026-10-08T21:21:36+09:00",
@@ -523044,6 +524470,34 @@
       ],
       "source_published_kst": "2026-10-06T11:35+09:00",
       "title": "日 ‘신중’ 알래스카 LNG 프로젝트…밴스 부통령 “韓과 조율…결국 이뤄질 일” [대미투자]"
+    },
+    "source_fact:c9e6304b2865e10be2834e92": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/14/2026101412241926278",
+      "source": "머니투데이",
+      "source_body_digest": "abe6516f596ddbe8bc613db4d1a7a0bc5d3bdd26d4deb882e6fe602b2acaa555",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:257a57dd5410df9c1a2fbe3d6e7e3e9c3a248412ab6a2690d4195576f765e992",
+      "source_fact_keys": [
+        "source_fact:v1:357c065b0b17e5819995be13f2a79a669c54dddcc92ce0d218b9002a99795c74",
+        "source_fact:v1:36b2c0ea032ec3bab2daa2e56cba3e06faa5e6516360d71c78bfcb0f05a33b27",
+        "source_fact:v1:9a050af74653ec2569f28f6f43b14379be227d24f6a79336dc96fe9d1a4289c4",
+        "source_fact:v1:b1715b0074e3dd689f14656c2e2a3fbfe781111b7a0f49296d4b31ffe3651e1f",
+        "source_fact:v1:b28a7b34ce3c6e1436ea3ac8dd7a5b4eb71b817c08886af0b828cf62aeb22f31",
+        "source_fact:v1:bf87a23c7311a9610836af19765a8c57ddb906d3cdc430ea5c6c9a5b5499c4d6",
+        "source_fact:v1:c57091a8549d45dda306b647a6b354c2a4d6555ccfef5d522255730f6f789b57",
+        "source_fact:v1:eb157b710bc11102e9f5ae51dbf54a5a7a1589d05631297214c47d83d4f7936d",
+        "source_fact:v1:f3e2ae4f160d9af0a3491aa73fe89116863864f42dde76421e3cbcb74c4e0797"
+      ],
+      "source_published_kst": "2026-10-14T13:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "안현 SK하이닉스 사장 \"HBM 넘어 새로운 메모리 시대 열겠다\"",
+      "telegram_core_fact": "AI(인공지능) 추론 확대로 기존 메모리의 성능과 용량에 한계가 나타나면서 HBM(고대역폭메모리)을 넘어 3차원(3D) 적층 D램과 HBF(고대역폭플래시) 등 새로운 메모리 계층을 구축하겠다는 전략이다.",
+      "title": "안현 SK하이닉스 사장 \"HBM 넘어 새로운 메모리 시대 열겠다\""
     },
     "source_fact:c9e74fd0419c89aabb14a981": {
       "first_seen_kst": "2026-10-08T10:20:20+09:00",
@@ -543675,6 +545129,40 @@
       "telegram_core_fact": "SK에너지는 △석유시장 가격체계 투명성 및 거래관행 개선 △공정거래 및 내부통제 체계 강화 △석유 유통고객과의 상생협력 강화 △안정적인 에너지 공급을 위한 역할 지속을 골자로 하는 ‘석유시장 가격구조 개편 및 내부통제 강화’ 조치를 마련했다고 8일 밝혔다.",
       "title": "SK에너지, 석유제품 가격·거래관행 점검…내부통제 강화한다"
     },
+    "source_fact:db97d9012a9496178e385b1e": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635756",
+      "source": "이투데이",
+      "source_body_digest": "7366b1bd88f7f5ee1e6065e2e5709ce0e39f66fc3b6e12de5771e57a8f8a7d7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5497ffe14d18cfdbc1dba3941e21a3a01564c67dd836e81904c1684753978695",
+      "source_fact_keys": [
+        "source_fact:v1:08a15b72de24f9b34c63421732a5a46f6a27cd07e015ebc6bb64407a19fc05fe",
+        "source_fact:v1:22fe610c40c32f95bc6e8b775ecaf63518f13fbdd55ad601b4791a4f75cdec4b",
+        "source_fact:v1:3f054aa860173807702af9e906f74c299ebc4d6f1aeab33c5854d77b18785779",
+        "source_fact:v1:5ce1a3ee66449d5379c7b2465b35d5194a80a988b14c735b4c8d7848262eea63",
+        "source_fact:v1:5f11d80daf24762b0642a761f240b49e5fd719b0de745264253c1aa1eaec6e8d",
+        "source_fact:v1:741553be83b8a2d4beab724564073136c7b3e82853598491484d41331aa8eecc",
+        "source_fact:v1:89abdeb042933a5e19e401b6ac8351eececda5f94f1d8653f23d2fa9e27444f8",
+        "source_fact:v1:9cad2b165f22e85680eaf409e5404b447eb2f964321248c17297a7de6c54af0a",
+        "source_fact:v1:a3f9cd6c141a535a38fbe43cb71da98821c8e2b4cc07dbd977870c5d7c21ce83",
+        "source_fact:v1:b36205efcd65e0d899d021db7fdd09720ea7978fa191415d6f32b7daf576d593",
+        "source_fact:v1:c563bf21e43b48541583c6715bf003927211bd6a13d20c4df8acc8438471bc0c",
+        "source_fact:v1:cf83fd01de0198f6331efb2afedfc4e7ba439a20de20008ad7e1fdd225ce2384",
+        "source_fact:v1:eb299d4671aa412c7b9ed95aa3bdd178984245fa8cf8e4f14efdc24fff161ea6",
+        "source_fact:v1:ecd20462e96e56414f1f390060f9016eb1073328162a3e4ff52c9ef55a142d0d",
+        "source_fact:v1:f0f1ee975958d768e78f4242df2b189da6a1931ce275639b5f439f08d1a86d73"
+      ],
+      "source_published_kst": "2026-10-14T15:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도",
+      "telegram_core_fact": "채권시장에 따르면 전날 국고채 3년물 금리는 3.857%로 8월31일(3.838%) 이후 한 달 보름 만에 최저치를 기록했다.",
+      "title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도"
+    },
     "source_fact:dba88110cf977d3064feec2b": {
       "first_seen_kst": "2026-10-06T18:34:25+09:00",
       "lanes": {
@@ -545572,6 +547060,34 @@
       "source_title": "롯데손보, 7년 만에 신한 품으로…JKL, 투입액 밑도는 가격에 매각",
       "telegram_core_fact": "금융권에 따르면 신한금융지주는 이날 JKL파트너스가 보유한 롯데손보 지분 77.04%를 6933억 원에 인수하는 주식매매계약(SPA)을 체결했다. 이번에 신한금융이 인수하는 JKL파트너스의 롯데손보 지분 77.04%에 대한 매각가는 6933억 원이다.",
       "title": "롯데손보, 7년 만에 신한 품으로…JKL, 투입액 밑도는 가격에 매각"
+    },
+    "source_fact:dd5fd47b70483d49dbf86026": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/14/2026101412241926278",
+      "source": "머니투데이",
+      "source_body_digest": "abe6516f596ddbe8bc613db4d1a7a0bc5d3bdd26d4deb882e6fe602b2acaa555",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:257a57dd5410df9c1a2fbe3d6e7e3e9c3a248412ab6a2690d4195576f765e992",
+      "source_fact_keys": [
+        "source_fact:v1:357c065b0b17e5819995be13f2a79a669c54dddcc92ce0d218b9002a99795c74",
+        "source_fact:v1:36b2c0ea032ec3bab2daa2e56cba3e06faa5e6516360d71c78bfcb0f05a33b27",
+        "source_fact:v1:9a050af74653ec2569f28f6f43b14379be227d24f6a79336dc96fe9d1a4289c4",
+        "source_fact:v1:b1715b0074e3dd689f14656c2e2a3fbfe781111b7a0f49296d4b31ffe3651e1f",
+        "source_fact:v1:b28a7b34ce3c6e1436ea3ac8dd7a5b4eb71b817c08886af0b828cf62aeb22f31",
+        "source_fact:v1:bf87a23c7311a9610836af19765a8c57ddb906d3cdc430ea5c6c9a5b5499c4d6",
+        "source_fact:v1:c57091a8549d45dda306b647a6b354c2a4d6555ccfef5d522255730f6f789b57",
+        "source_fact:v1:eb157b710bc11102e9f5ae51dbf54a5a7a1589d05631297214c47d83d4f7936d",
+        "source_fact:v1:f3e2ae4f160d9af0a3491aa73fe89116863864f42dde76421e3cbcb74c4e0797"
+      ],
+      "source_published_kst": "2026-10-14T13:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "안현 SK하이닉스 사장 \"HBM 넘어 새로운 메모리 시대 열겠다\"",
+      "telegram_core_fact": "AI(인공지능) 추론 확대로 기존 메모리의 성능과 용량에 한계가 나타나면서 HBM(고대역폭메모리)을 넘어 3차원(3D) 적층 D램과 HBF(고대역폭플래시) 등 새로운 메모리 계층을 구축하겠다는 전략이다.",
+      "title": "안현 SK하이닉스 사장 \"HBM 넘어 새로운 메모리 시대 열겠다\""
     },
     "source_fact:dd60c063e9bffd2225caa174": {
       "first_seen_kst": "2026-10-12T18:02:18+09:00",
@@ -558361,6 +559877,28 @@
       "source_published_kst": "2026-10-07T05:31+09:00",
       "title": "LG전자, AI 냉각사업 공략 가속…북미 대형 계약에 버지니아 공장 신설까지"
     },
+    "source_fact:e796751c7fc508f44b3f72db": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825758",
+      "source": "뉴시스",
+      "source_body_digest": "ba84c68e3c2e173a8335fd57b1558d76e10499aada24b4d431836b4a49a7a77f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bfbd39bd404734de8faa260bcf427d659bdb1de6f789db0a2ce498a371dfdec6",
+      "source_fact_keys": [
+        "source_fact:v1:5c1e9cef1ee4adbe90c0b14a3e425bfb12a7cb1d4de18fb58125ade29448ddaa",
+        "source_fact:v1:84fbadb78bd5b654549283a70dcf5fade254aac5cd3b505d652a91f5511c0f9b",
+        "source_fact:v1:8a3be64aff4883e143fa7112224b0eedff67ef9634a5c8cd97207948bb943c4d"
+      ],
+      "source_published_kst": "2026-10-14T15:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "'시흥형 RE100' 모델 구축…산단 지붕에 태양광, 수익은 환원",
+      "telegram_core_fact": "경기 시흥시가 관내 산업단지 지붕과 공공 유휴부지를 활용해 재생에너지 생산을 확대하고, 발생 수익을 시민에게 되돌려주는 '시흥형 RE100' 모델 구축에 나섰다.",
+      "title": "'시흥형 RE100' 모델 구축…산단 지붕에 태양광, 수익은 환원"
+    },
     "source_fact:e79aac4b9a0d27d18bb88c64": {
       "first_seen_kst": "2026-10-13T10:49:34+09:00",
       "lanes": {
@@ -560734,6 +562272,28 @@
       "source_title": "씨어스, 1100억 CB 발행… 美 AI 진단 시장 진출 본격화",
       "telegram_core_fact": "씨어스는 앞서 현지 파트너와 3년간 약 220억원 모비케어 공급계약을 체결했다.",
       "title": "씨어스, 1100억 CB 발행… 美 AI 진단 시장 진출 본격화"
+    },
+    "source_fact:e99e8bf232478f2cebcbbbbc": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825546",
+      "source": "뉴시스",
+      "source_body_digest": "5061efd1dd7bad2a89aa767427eb030d3a197059ffe60e7167fcc87f44e9ba01",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:41427eda99537325683707dd5f91a907ab2121daee43dbbe3e42867793d5768e",
+      "source_fact_keys": [
+        "source_fact:v1:1eca31fd7cae808e36a93a9f56e698a96826e262861b781a2308fdfdfa6a8584",
+        "source_fact:v1:7bf289eabf24b27b12a0e05f5d2afdc4d1900cc47c9ef27d5f01cc21eabd446a",
+        "source_fact:v1:d07c2ab1c24dc6f33ae646f6035e202fcf507a5001bc4cfd50589a78c894bd5b"
+      ],
+      "source_published_kst": "2026-10-14T14:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 유세에서 \"이란 한 방 먹일 것\" 대이란 군사행동 시사",
+      "telegram_core_fact": "트럼프 대통령은 또 이란과의 전쟁으로 인한 유가 상승은 \"이란이 핵무기를 가지는 것을 막기 위해 치러야 할 작은 대가일 뿐\"이라며 기존 주장을 되풀이했다.",
+      "title": "트럼프 유세에서 \"이란 한 방 먹일 것\" 대이란 군사행동 시사"
     },
     "source_fact:e9a42c86ef0534bbc998c79e": {
       "first_seen_kst": "2026-10-08T05:31:58+09:00",
@@ -563328,6 +564888,40 @@
       ],
       "source_published_kst": "2026-10-07T05:31+09:00",
       "title": "LG전자, AI 냉각사업 공략 가속…북미 대형 계약에 버지니아 공장 신설까지"
+    },
+    "source_fact:ec16e54d1f0d85344a7186c0": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635756",
+      "source": "이투데이",
+      "source_body_digest": "7366b1bd88f7f5ee1e6065e2e5709ce0e39f66fc3b6e12de5771e57a8f8a7d7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5497ffe14d18cfdbc1dba3941e21a3a01564c67dd836e81904c1684753978695",
+      "source_fact_keys": [
+        "source_fact:v1:08a15b72de24f9b34c63421732a5a46f6a27cd07e015ebc6bb64407a19fc05fe",
+        "source_fact:v1:22fe610c40c32f95bc6e8b775ecaf63518f13fbdd55ad601b4791a4f75cdec4b",
+        "source_fact:v1:3f054aa860173807702af9e906f74c299ebc4d6f1aeab33c5854d77b18785779",
+        "source_fact:v1:5ce1a3ee66449d5379c7b2465b35d5194a80a988b14c735b4c8d7848262eea63",
+        "source_fact:v1:5f11d80daf24762b0642a761f240b49e5fd719b0de745264253c1aa1eaec6e8d",
+        "source_fact:v1:741553be83b8a2d4beab724564073136c7b3e82853598491484d41331aa8eecc",
+        "source_fact:v1:89abdeb042933a5e19e401b6ac8351eececda5f94f1d8653f23d2fa9e27444f8",
+        "source_fact:v1:9cad2b165f22e85680eaf409e5404b447eb2f964321248c17297a7de6c54af0a",
+        "source_fact:v1:a3f9cd6c141a535a38fbe43cb71da98821c8e2b4cc07dbd977870c5d7c21ce83",
+        "source_fact:v1:b36205efcd65e0d899d021db7fdd09720ea7978fa191415d6f32b7daf576d593",
+        "source_fact:v1:c563bf21e43b48541583c6715bf003927211bd6a13d20c4df8acc8438471bc0c",
+        "source_fact:v1:cf83fd01de0198f6331efb2afedfc4e7ba439a20de20008ad7e1fdd225ce2384",
+        "source_fact:v1:eb299d4671aa412c7b9ed95aa3bdd178984245fa8cf8e4f14efdc24fff161ea6",
+        "source_fact:v1:ecd20462e96e56414f1f390060f9016eb1073328162a3e4ff52c9ef55a142d0d",
+        "source_fact:v1:f0f1ee975958d768e78f4242df2b189da6a1931ce275639b5f439f08d1a86d73"
+      ],
+      "source_published_kst": "2026-10-14T15:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도",
+      "telegram_core_fact": "채권시장에 따르면 전날 국고채 3년물 금리는 3.857%로 8월31일(3.838%) 이후 한 달 보름 만에 최저치를 기록했다.",
+      "title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도"
     },
     "source_fact:ec18b2603af55ec3dcfd0ef8": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
@@ -578541,6 +580135,34 @@
       ],
       "source_published_kst": "2026-10-06T11:36+09:00",
       "title": "신보·부산은행, K-콘텐츠 기업에 100억원 협약보증 공급"
+    },
+    "source_fact:f99bcd3ddad748301a501cad": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/14/2026101412241926278",
+      "source": "머니투데이",
+      "source_body_digest": "abe6516f596ddbe8bc613db4d1a7a0bc5d3bdd26d4deb882e6fe602b2acaa555",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:257a57dd5410df9c1a2fbe3d6e7e3e9c3a248412ab6a2690d4195576f765e992",
+      "source_fact_keys": [
+        "source_fact:v1:357c065b0b17e5819995be13f2a79a669c54dddcc92ce0d218b9002a99795c74",
+        "source_fact:v1:36b2c0ea032ec3bab2daa2e56cba3e06faa5e6516360d71c78bfcb0f05a33b27",
+        "source_fact:v1:9a050af74653ec2569f28f6f43b14379be227d24f6a79336dc96fe9d1a4289c4",
+        "source_fact:v1:b1715b0074e3dd689f14656c2e2a3fbfe781111b7a0f49296d4b31ffe3651e1f",
+        "source_fact:v1:b28a7b34ce3c6e1436ea3ac8dd7a5b4eb71b817c08886af0b828cf62aeb22f31",
+        "source_fact:v1:bf87a23c7311a9610836af19765a8c57ddb906d3cdc430ea5c6c9a5b5499c4d6",
+        "source_fact:v1:c57091a8549d45dda306b647a6b354c2a4d6555ccfef5d522255730f6f789b57",
+        "source_fact:v1:eb157b710bc11102e9f5ae51dbf54a5a7a1589d05631297214c47d83d4f7936d",
+        "source_fact:v1:f3e2ae4f160d9af0a3491aa73fe89116863864f42dde76421e3cbcb74c4e0797"
+      ],
+      "source_published_kst": "2026-10-14T13:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "안현 SK하이닉스 사장 \"HBM 넘어 새로운 메모리 시대 열겠다\"",
+      "telegram_core_fact": "AI(인공지능) 추론 확대로 기존 메모리의 성능과 용량에 한계가 나타나면서 HBM(고대역폭메모리)을 넘어 3차원(3D) 적층 D램과 HBF(고대역폭플래시) 등 새로운 메모리 계층을 구축하겠다는 전략이다.",
+      "title": "안현 SK하이닉스 사장 \"HBM 넘어 새로운 메모리 시대 열겠다\""
     },
     "source_fact:f9ae60f8c8499b5a71053824": {
       "first_seen_kst": "2026-10-12T06:27:02+09:00",
@@ -609788,6 +611410,28 @@
       "source_published_kst": "2026-10-07T15:16+09:00",
       "title": "외국인 투자 늘었지만…제조업 '새 투자' 줄고 M&A에 몰렸다"
     },
+    "title:480f053071b05dff71745d1a": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825758",
+      "source": "뉴시스",
+      "source_body_digest": "ba84c68e3c2e173a8335fd57b1558d76e10499aada24b4d431836b4a49a7a77f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bfbd39bd404734de8faa260bcf427d659bdb1de6f789db0a2ce498a371dfdec6",
+      "source_fact_keys": [
+        "source_fact:v1:5c1e9cef1ee4adbe90c0b14a3e425bfb12a7cb1d4de18fb58125ade29448ddaa",
+        "source_fact:v1:84fbadb78bd5b654549283a70dcf5fade254aac5cd3b505d652a91f5511c0f9b",
+        "source_fact:v1:8a3be64aff4883e143fa7112224b0eedff67ef9634a5c8cd97207948bb943c4d"
+      ],
+      "source_published_kst": "2026-10-14T15:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "'시흥형 RE100' 모델 구축…산단 지붕에 태양광, 수익은 환원",
+      "telegram_core_fact": "경기 시흥시가 관내 산업단지 지붕과 공공 유휴부지를 활용해 재생에너지 생산을 확대하고, 발생 수익을 시민에게 되돌려주는 '시흥형 RE100' 모델 구축에 나섰다.",
+      "title": "'시흥형 RE100' 모델 구축…산단 지붕에 태양광, 수익은 환원"
+    },
     "title:4819a254b45112490b62c1f6": {
       "first_seen_kst": "2026-10-08T17:42:30+09:00",
       "lanes": {
@@ -617723,6 +619367,28 @@
       "source_published_kst": "2026-10-06T08:41+09:00",
       "title": "현대건설, 압구정 2·3·5구역에 ‘스파 록시땅’ 도입"
     },
+    "title:616bb03f1e924ed096a6f867": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.joongang.co.kr/article/25469647",
+      "source": "중앙일보",
+      "source_body_digest": "3fe4625cc53f0edc7eefd659639c669b3ec508ab8ca0ef561d4d23af57b018fa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7a4a07f46de5fcf50c2cdbfdba191a5c4141dcf6b0782537405edadc8d81f41f",
+      "source_fact_keys": [
+        "source_fact:v1:1e9931d83a81ceb428bdf180e3dc5f0cf9ef2d6565fc6ea2bdbed5eb4f950f86",
+        "source_fact:v1:260f4a69a4e05b234a12152037fdf2fd7de21c5a0b5620859cd650f42400e378",
+        "source_fact:v1:65ba99a7fdcd7858c5840deffe2033e0811f016ffa231d3e4ade625a617fc41f"
+      ],
+      "source_published_kst": "2026-10-14T14:31+09:00",
+      "source_supply_terms": {},
+      "source_title": "거세진 이란 호르무즈 공격, 英기지 위협까지…후티는 사우디 아람코 타격 | 중앙일보",
+      "telegram_core_fact": "선박들이 공격을 피해 항로를 바꾸면서 초대형 유조선의 하루 평균 운임 수입도 지난 9일 80만5000달러(약 11억원)로 사상 최고치를 기록했다고 선박 중개업체 클락슨스가 밝혔다.",
+      "title": "거세진 이란 호르무즈 공격, 英기지 위협까지…후티는 사우디 아람코 타격 | 중앙일보"
+    },
     "title:6171c05626b144af1ea8c58d": {
       "first_seen_kst": "2026-10-02T07:25:31+09:00",
       "lanes": {
@@ -621990,6 +623656,26 @@
       ],
       "source_published_kst": "2026-10-06T12:05+09:00",
       "title": "[2026 국감]호남반도체 결정 주체, 자료 불일치…김정관 “확인하겠다”"
+    },
+    "title:6fcdcbfa0faf965e79c9053b": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/14/2026101410183465138",
+      "source": "머니투데이",
+      "source_body_digest": "bd1df0a5812dddea0af9be05be89141f7a12cc6b5ea3d39a3de0fa4f21bbbae3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fa676f6475200c1eb60cb7ae1ad53d4024dbae6543349bf0f63d37dff334a30e",
+      "source_fact_keys": [
+        "source_fact:v1:81377abb0f2cc056a6998074d939988e59512dd8135789571c489234ac53724a"
+      ],
+      "source_published_kst": "2026-10-14T11:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 \"대만, 알래스카 LNG 사업 5조 투자…가스 30% 구매하기로\"",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 대만이 알래스카 액화천연가스(LNG) 파이프라인 사업에서 나오는 가스의 30%를 구매하기로 합의했다고 13일(현지시간) 말했다. 트럼프 대통령은 \"대만이 향후 20년간 가스 파이프라인을 통해 공급되는 가스의 30%를 구매하기로 합의했다\"며 \"이는 성공을 보장하는 것\"이라고 말했다.",
+      "title": "트럼프 \"대만, 알래스카 LNG 사업 5조 투자…가스 30% 구매하기로\""
     },
     "title:700c4a6e4aaf90d9b9366864": {
       "first_seen_kst": "2026-10-12T09:05:29+09:00",
@@ -643299,6 +644985,34 @@
       "telegram_core_fact": "미국 공휴일인 콜럼버스의 날로 대체로 거래가 한산했던 가운데, 국제유가 상승과 메모리 반도체주의 매도세로 S&P 500지수와 나스닥 종합지수가 약세를 보였다.",
       "title": "유가 상승·반도체 약세 속 뉴욕증시 혼조…다우 홀로 상승 | 연합뉴스"
     },
+    "title:b066c02205242c0e4cafd7a3": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/14/2026101412241926278",
+      "source": "머니투데이",
+      "source_body_digest": "abe6516f596ddbe8bc613db4d1a7a0bc5d3bdd26d4deb882e6fe602b2acaa555",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:257a57dd5410df9c1a2fbe3d6e7e3e9c3a248412ab6a2690d4195576f765e992",
+      "source_fact_keys": [
+        "source_fact:v1:357c065b0b17e5819995be13f2a79a669c54dddcc92ce0d218b9002a99795c74",
+        "source_fact:v1:36b2c0ea032ec3bab2daa2e56cba3e06faa5e6516360d71c78bfcb0f05a33b27",
+        "source_fact:v1:9a050af74653ec2569f28f6f43b14379be227d24f6a79336dc96fe9d1a4289c4",
+        "source_fact:v1:b1715b0074e3dd689f14656c2e2a3fbfe781111b7a0f49296d4b31ffe3651e1f",
+        "source_fact:v1:b28a7b34ce3c6e1436ea3ac8dd7a5b4eb71b817c08886af0b828cf62aeb22f31",
+        "source_fact:v1:bf87a23c7311a9610836af19765a8c57ddb906d3cdc430ea5c6c9a5b5499c4d6",
+        "source_fact:v1:c57091a8549d45dda306b647a6b354c2a4d6555ccfef5d522255730f6f789b57",
+        "source_fact:v1:eb157b710bc11102e9f5ae51dbf54a5a7a1589d05631297214c47d83d4f7936d",
+        "source_fact:v1:f3e2ae4f160d9af0a3491aa73fe89116863864f42dde76421e3cbcb74c4e0797"
+      ],
+      "source_published_kst": "2026-10-14T13:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "안현 SK하이닉스 사장 \"HBM 넘어 새로운 메모리 시대 열겠다\"",
+      "telegram_core_fact": "AI(인공지능) 추론 확대로 기존 메모리의 성능과 용량에 한계가 나타나면서 HBM(고대역폭메모리)을 넘어 3차원(3D) 적층 D램과 HBF(고대역폭플래시) 등 새로운 메모리 계층을 구축하겠다는 전략이다.",
+      "title": "안현 SK하이닉스 사장 \"HBM 넘어 새로운 메모리 시대 열겠다\""
+    },
     "title:b07821602aa1e2546aaa2c75": {
       "first_seen_kst": "2026-10-05T14:04:17+09:00",
       "lanes": {
@@ -647615,6 +649329,24 @@
       "telegram_core_fact": "미 재무부는 같은 날 러시아산 경유 거래를 내년 4월 7일까지 허용하는 한시적 제재 완화 조치를 내놨다.",
       "title": "미, 러시아산 경유 제재 해제…푸틴과 통화 뒤 발표"
     },
+    "title:bfc9d7476a7b1673a47eb09c": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635751",
+      "source": "이투데이",
+      "source_body_digest": "8191b66c5ea0e354f3e5a90fc357a2f5dc00a939f99c47e5788d74524beded24",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-14T15:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "“CPI에 MSCI까지” 비트코인, 이번 주 잇단 변수에 촉각",
+      "telegram_core_fact": "최근 6차례 미국 CPI 발표 전후 48시간 동안 비트코인의 평균 가격 변동폭은 3.9%로 집계됐다. 비트코인은 이달 5일 8만6974달러까지 올랐다가 지난주 한때 8만400달러선까지 밀렸다.",
+      "title": "“CPI에 MSCI까지” 비트코인, 이번 주 잇단 변수에 촉각"
+    },
     "title:bfe1a1f8941689f1ee841899": {
       "first_seen_kst": "2026-10-12T20:37:19+09:00",
       "lanes": {
@@ -649817,6 +651549,28 @@
       ],
       "source_published_kst": "2026-10-06T17:18+09:00",
       "title": "모비릭스, 60억 규모 자사주 취득 신탁계약"
+    },
+    "title:c6fea6758697ff90de38052f": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825546",
+      "source": "뉴시스",
+      "source_body_digest": "5061efd1dd7bad2a89aa767427eb030d3a197059ffe60e7167fcc87f44e9ba01",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:41427eda99537325683707dd5f91a907ab2121daee43dbbe3e42867793d5768e",
+      "source_fact_keys": [
+        "source_fact:v1:1eca31fd7cae808e36a93a9f56e698a96826e262861b781a2308fdfdfa6a8584",
+        "source_fact:v1:7bf289eabf24b27b12a0e05f5d2afdc4d1900cc47c9ef27d5f01cc21eabd446a",
+        "source_fact:v1:d07c2ab1c24dc6f33ae646f6035e202fcf507a5001bc4cfd50589a78c894bd5b"
+      ],
+      "source_published_kst": "2026-10-14T14:20+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프 유세에서 \"이란 한 방 먹일 것\" 대이란 군사행동 시사",
+      "telegram_core_fact": "트럼프 대통령은 또 이란과의 전쟁으로 인한 유가 상승은 \"이란이 핵무기를 가지는 것을 막기 위해 치러야 할 작은 대가일 뿐\"이라며 기존 주장을 되풀이했다.",
+      "title": "트럼프 유세에서 \"이란 한 방 먹일 것\" 대이란 군사행동 시사"
     },
     "title:c704f7081432ecc9b008801d": {
       "first_seen_kst": "2026-10-10T09:51:21+09:00",
@@ -663902,6 +665656,40 @@
       "source_published_kst": "2026-10-05T06:01+09:00",
       "title": "내일 행안부 국감…중수청 개문발차·미래기금 교부세 '쟁점'"
     },
+    "title:f28fbf5c16c6eaa91948e955": {
+      "first_seen_kst": "2026-10-14T21:14:31+09:00",
+      "lanes": {
+        "live": "2026-10-14T21:14:31+09:00"
+      },
+      "last_seen_kst": "2026-10-14T21:14:31+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2635756",
+      "source": "이투데이",
+      "source_body_digest": "7366b1bd88f7f5ee1e6065e2e5709ce0e39f66fc3b6e12de5771e57a8f8a7d7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5497ffe14d18cfdbc1dba3941e21a3a01564c67dd836e81904c1684753978695",
+      "source_fact_keys": [
+        "source_fact:v1:08a15b72de24f9b34c63421732a5a46f6a27cd07e015ebc6bb64407a19fc05fe",
+        "source_fact:v1:22fe610c40c32f95bc6e8b775ecaf63518f13fbdd55ad601b4791a4f75cdec4b",
+        "source_fact:v1:3f054aa860173807702af9e906f74c299ebc4d6f1aeab33c5854d77b18785779",
+        "source_fact:v1:5ce1a3ee66449d5379c7b2465b35d5194a80a988b14c735b4c8d7848262eea63",
+        "source_fact:v1:5f11d80daf24762b0642a761f240b49e5fd719b0de745264253c1aa1eaec6e8d",
+        "source_fact:v1:741553be83b8a2d4beab724564073136c7b3e82853598491484d41331aa8eecc",
+        "source_fact:v1:89abdeb042933a5e19e401b6ac8351eececda5f94f1d8653f23d2fa9e27444f8",
+        "source_fact:v1:9cad2b165f22e85680eaf409e5404b447eb2f964321248c17297a7de6c54af0a",
+        "source_fact:v1:a3f9cd6c141a535a38fbe43cb71da98821c8e2b4cc07dbd977870c5d7c21ce83",
+        "source_fact:v1:b36205efcd65e0d899d021db7fdd09720ea7978fa191415d6f32b7daf576d593",
+        "source_fact:v1:c563bf21e43b48541583c6715bf003927211bd6a13d20c4df8acc8438471bc0c",
+        "source_fact:v1:cf83fd01de0198f6331efb2afedfc4e7ba439a20de20008ad7e1fdd225ce2384",
+        "source_fact:v1:eb299d4671aa412c7b9ed95aa3bdd178984245fa8cf8e4f14efdc24fff161ea6",
+        "source_fact:v1:ecd20462e96e56414f1f390060f9016eb1073328162a3e4ff52c9ef55a142d0d",
+        "source_fact:v1:f0f1ee975958d768e78f4242df2b189da6a1931ce275639b5f439f08d1a86d73"
+      ],
+      "source_published_kst": "2026-10-14T15:06+09:00",
+      "source_supply_terms": {},
+      "source_title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도",
+      "telegram_core_fact": "채권시장에 따르면 전날 국고채 3년물 금리는 3.857%로 8월31일(3.838%) 이후 한 달 보름 만에 최저치를 기록했다.",
+      "title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도"
+    },
     "title:f2a192955e8e22ff4790c831": {
       "first_seen_kst": "2026-10-08T06:42:50+09:00",
       "lanes": {
@@ -668342,5 +670130,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-14T20:43:11+09:00"
+  "updated_at_kst": "2026-10-14T21:14:31+09:00"
 }
