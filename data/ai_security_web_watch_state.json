@@ -5,9 +5,9 @@
   "last_collection": {
     "direct_official_items": 27,
     "errors": [],
-    "material_items": 18,
+    "material_items": 17,
     "new_material_items": 0,
-    "raw_items": 183
+    "raw_items": 181
   },
   "openai_insider_case_stages": {
     "initial_oct13_charge": {
@@ -42,6 +42,16 @@
       "source": "The Sunday Guardian",
       "title": "Abdulrahman Alfozan: Saudi Engineer Charged With Bugging OpenAI’s Executive Conference Room In ‘Sophisticated’ Spy Operation Targeting AI Secrets - The Sunday Guardian",
       "url": "https://news.google.com/rss/articles/CBMilAJBVV95cUxPXzNWOTRzMHQydVFHMmZ3YkhhSUFlZG5paDVjbGh3bEYyc2RZaHpjY0cyUHFRQzhpRElScXZhV0dRb25IQVNWc3RlQ0gzWV9LOXZ0UWxpQi1Vby1ONTFHaktHLVhHU0tJNk0zSXNZdk9RMXdBSVFma3pOUE81eV9GSTloNTBtY1JmM0dLdHNveGwxODJmLW84UVZwMi1ObVJoMm1rNWlkTGJOendkN1RMRWxSdmdhVVdSTzVfUUQ2UFVibVpjTWZOMkdQMkZVbzhGdGFwWUUtckVQWWUtTTBScXJkdTRxYjZfd0dLOEVSMHlEdkJOMnJaYmhUT1ZyZm94Vjc5aUx1NVgzWWdGaVRBZ3BBWjjSAZoCQVVfeXFMTklfZ0l0cTE5LWoxYW0ycFhDakhXSG1sREF4OHF3SHJuMzViVlQ2R1hhNkx4a3pCLW01MDF2OHB5aEg1RFFrUlh1ODNtSllQMzY0dnpzYUY3Qmc4RFYzN2MyNm53Z1Fac2xGak0tQmNKQ2Y4VUd6TGpXQ3U3c2dhM2VZN19IT0ZIbTJCNl8wNEZsNU9zRVBQWlJ4X0N0MzM2YXNXdFFRRF9Bc19QVXFoa2xUNWVGcGR3M0JCY2NHb3hoXy13SGNhRC1nbTdxbHRVaUpNNFc1UmczQ0FwckpsVzJiTkhxWUNWYkZCcXFRRzBURVpaVDhqYXZVWmhkQ0hOd3hqSjEyMVotZXdiNFdLaUpMYk5CazFzVDFn?oc=5",
+      "vendor": "OpenAI"
+    },
+    "1643fa8b40b2c82edce3c7c6": {
+      "category": "AI 연구기관 내부자 도청·접근통제 사건",
+      "first_seen_at": "2026-10-14T06:20:51.902160+00:00",
+      "published_at": "2026-10-13T20:55:12+00:00",
+      "severity": 2,
+      "source": "CNBC",
+      "title": "FBI arrests Saudi OpenAI employee who allegedly planted recording device in conference room - CNBC",
+      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNckJQNWJCVWJZSzdEUVRzWHZyZ2I0amJxTVVqX1ltcmZtSGxKWkRUVUdEWnp4Wm9HSUctWlFGNk9mOTQwVXBVd3A4SzQ0YXB3WHFfaE9YaE1mX3ZUZ1BpWWU2dDhIRXd1NENRaTAxdHdaRTFYNm5tVEZxWFQ4anpvdXo2ano?oc=5",
       "vendor": "OpenAI"
     },
     "1bcdcfdffba70ad28384d9ca": {
@@ -515,5 +525,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-10-14T15:01:57+09:00"
+  "updated_at_kst": "2026-10-14T15:20:51+09:00"
 }
