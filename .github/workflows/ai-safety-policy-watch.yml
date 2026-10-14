@@ -8,6 +8,8 @@ on:
       - ".github/workflows/ai-safety-policy-watch.yml"
       - "scripts/ai_safety_policy_watch.py"
       - "scripts/ai_sif_regulatory_validation.py"
+      - "scripts/ai_si_portal_semantic.py"
+      - "scripts/ai_si_portal_policy_enrich.py"
   schedule:
     - cron: "14,44 * * * *"
   workflow_run:
@@ -901,6 +903,15 @@ jobs:
               )
           print(f"ai_policy_sif_merged_new_events={collection['new_events']}")
           PY
+
+      - name: Verify and enrich SI.gov official portal
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/ai_si_portal_semantic.py scripts/ai_si_portal_policy_enrich.py
+          python scripts/test_ai_si_portal_semantic.py
+          python scripts/ai_si_portal_policy_enrich.py
+          grep 'SI.gov' out/ai_safety_policy_watch_status.md >> "$GITHUB_STEP_SUMMARY" || true
 
       - name: Build one-shot Telegram test
         if: (github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true') || (github.event_name == 'push' && env.POLICY_SEND_CONNECTION_TEST_ON_PUSH == 'true')
