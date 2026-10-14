@@ -6,10 +6,10 @@
     "deferred_material_items": 0,
     "direct_official_items": 27,
     "errors": [],
-    "material_items": 20,
+    "material_items": 21,
     "new_material_items": 0,
-    "raw_items": 252,
-    "replication_reference_suppressed": 0,
+    "raw_items": 250,
+    "replication_reference_suppressed": 1,
     "replication_watch_version": 1
   },
   "openai_insider_case_stages": {
@@ -567,6 +567,16 @@
       "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOajFqRHlNMUttN0pzY014QnFwZTlIeDhnaUpuZU9XMjFicHNVUXpOTUFZWUM2Uk94NFdsbVVuNjNWMzNNM29mN3JITnNZY1cydThONGJnZk55dnh0VUNtSHlDSFhGVlpGSFZUVV9iSmpxVUVGejVwUWhVOGstc2FDSWtSSzM2RkJxWkFxS3pqemVKMlFRZDR0SGNERTM1TW1DSmZZcWFXZzNELUZoeDNsc3ZnVUjSAbQBQVVfeXFMTmoxakR5TTFLbTdKc2NNeEJxcGU5SHg4Z2lKbmVPVzIxYnBzVVF6Tk1BWVlDNlJPeDRXbG1VbjYzVjMzTTNvZjdySE5zWWNXMnU4TjRiZ2ZOeXZ4dFVDbUh5Q0hYRlZaRkhWVFVfYkpqcVVFRno1cFFoVThrLXNhQ0lrUkszNkZCcVpBcUt6anplSjJRUWQ0dEhjREUzNU1tQ0pmWXFhV2czRC1GaHgzbHN2Z1VI?oc=5",
       "vendor": "OpenAI"
     },
+    "e8f9fec166c7df21157fead0": {
+      "category": "AI 자율복제·사물인터넷 모의평가",
+      "first_seen_at": "2026-10-14T15:21:21.863443+00:00",
+      "published_at": "2026-10-14T15:19:02+00:00",
+      "severity": 1,
+      "source": "The Verge",
+      "title": "Anthropic’s self-replicating AI warning is an alarming deja vu - The Verge",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPVmlsZkg4MjVmSXE4WDBLY29yUEZxZmo1SG9hcHlZdmRFLTF3V2lyWUpqbEZhNHF1aXpaWG9BdGdhREx6Tnk5Mjc4dWpkRUIyR0huejRDN29tM2hZQW1iNjJqM1FSdUF3cVJKS2VScUVNbG1mRFBjM3ZUV3RHeXV6TjNFM01EeW1vS2Q3SHc0TXJZcnNPb2JoMmNhNk5nQk9tTXprczFfbmlKeFBx?oc=5",
+      "vendor": "Anthropic"
+    },
     "ee3190de4fac008615a3adb2": {
       "category": "AI 연구기관 내부자 도청·접근통제 사건",
       "first_seen_at": "2026-10-14T10:28:58.272230+00:00",
@@ -618,5 +628,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-10-15T00:20:00+09:00"
+  "updated_at_kst": "2026-10-15T00:21:21+09:00"
 }
