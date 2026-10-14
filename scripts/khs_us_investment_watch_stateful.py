@@ -931,6 +931,32 @@ def _candidate_facts(row: dict, family: str) -> set[str]:
         if taiwan_reference and project_reference and share_thirty and share_purchase and not other_us_share:
             # 원문 뉴스 보도의 30%는 계약 체결 사실이 아니라 미확정 주장으로 저장.
             facts.add("alaska_taiwan_project_share_reported:30")
+        if taiwan_reference and project_reference and share_thirty and share_purchase and not other_us_share:
+            # 30% 물량·20년 기간·44억달러는 미국 측 발언의 세 가지 속성일 뿐
+            # 대만의 확정 구매계약·투자금 실제 납입이 아니다.
+            if any(term in low for term in [
+                "20년", "20 years", "20-year", "twenty years", "next 20 years",
+            ]):
+                facts.add("alaska_taiwan_term_reported_years:20")
+            taiwan_investment_nearby = any(term in low for term in [
+                "대만 투자", "대만 추가", "taiwan invest", "taiwan pledg",
+                "taiwan would invest", "taiwan will invest", "taiwan to invest",
+                "taiwan committed", "taiwan committing", "대만이",
+            ])
+            if taiwan_investment_nearby and (
+                re.search(r"(?<!\d)44\s*억\s*(?:달러|불)", low)
+                or re.search(r"\$\s*4\.4\s*billion", low)
+                or re.search(r"\b4\.4\s*billion", low)
+            ):
+                facts.add("alaska_taiwan_us_investment_claim_usd_b:4.4")
+
+        # 실제 사업 착공과 대통령의 '오늘 밤부터 시작 가능' 발언을 구분한다.
+        if project_reference and "2026-10-13" in str(row.get("published") or ""):
+            if any(term in low for term in ["모든 연방 허가", "연방 허가 모두", "all federal permits", "all permits secured", "all the permits"]):
+                facts.add("alaska_us_permits_reiteration:2026-10-13")
+            if any(term in low for term in ["오늘 밤부터 착공 가능", "오늘 밤 시작할 수", "could start tonight", "start tonight"]):
+                facts.add("alaska_us_construction_start_claim:2026-10-13")
+
         if taiwan_reference and project_reference and _is_alaska_taiwan_offtake_source(row):
             binding_contract = any(x in low for x in [
                 "binding gas sales and purchase agreement signed",
@@ -1004,6 +1030,8 @@ def _fact_slot(family: str, fact: str) -> str:
         "encinal_project_usd:", "encinal_project_cost_usd_b:", "encinal_status:", "encinal_phase1_year:", "encinal_full_year:",
         "alaska_project_cost_usd_b:", "alaska_korea_investment_usd_b:", "alaska_reported_amount_usd_b:", "alaska_bilateral_status:",
         "alaska_us_claim_usd_b:", "alaska_us_reiteration:", "alaska_taiwan_project_share_reported:", "alaska_taiwan_offtake_status:",
+        "alaska_taiwan_term_reported_years:", "alaska_taiwan_us_investment_claim_usd_b:",
+        "alaska_us_permits_reiteration:", "alaska_us_construction_start_claim:",
         "ercot_request_gw:", "semiconductor_investment_usd:", "ppa_years:",
         "official_status:",
     )
@@ -1169,6 +1197,10 @@ def _human_fact(value: str) -> str:
         "alaska_fid_after_commercial_review:reported": "현지 주의원 발언 보도: Glenfarne FID 이후 한국 별도 상업성 심사, 아직 투자결정 없음",
         "alaska_us_reiteration:2026-10-13": "백악관 10월13일 알래스카 540억달러 투자 주장 재확인·한국 승인과 별개",
         "alaska_taiwan_project_share_reported:30": "대만의 알래스카 LNG 30% 구매 주장 보도·구속력 있는 구매계약 미확인",
+        "alaska_taiwan_term_reported_years:20": "미국 발표: 대만 알래스카 LNG 30% 구매 기간 20년·대만 확정 본계약 미확인",
+        "alaska_taiwan_us_investment_claim_usd_b:4.4": "미국 발표: 대만 알래스카 LNG 44억달러 투자 주장·대만 확정 및 납입 미확인",
+        "alaska_us_permits_reiteration:2026-10-13": "미국 대통령 연방 인허가 확보 재언급·신규 인허가 취득 아님",
+        "alaska_us_construction_start_claim:2026-10-13": "미국 대통령 착공 가능 발언·실제 착공 확인 아님",
         "alaska_taiwan_offtake_status:binding_contract_signed": "대만 알래스카 LNG 구속력 있는 장기구매 본계약 체결 확인",
         "funding_wait:45영업일": "선정 통지 후 최소 45영업일",
         "repayment_horizon:20년": "원리금 회수 기준 20년",
@@ -1205,6 +1237,7 @@ def _human_fact(value: str) -> str:
         "alaska_korea_investment_usd_b:": "알래스카 LNG 한국 전략투자 ",
         "alaska_reported_amount_usd_b:": "알래스카 LNG 보도수치 ",
         "alaska_us_claim_usd_b:": "백악관 알래스카 LNG 투자 주장 ",
+        "alaska_taiwan_us_investment_claim_usd_b:": "미국 발표 대만 투자 주장 ",
         "alaska_mtpa:": "알래스카 LNG ",
         "equipment_contract_usd:": "설비 계약 ",
         "equipment_capacity_gw:": "설비 용량 ",
@@ -2128,6 +2161,39 @@ def _self_test() -> int:
     loif, _ = _accepted_facts_for_group("alaska_lng", counterparty)
     if "alaska_taiwan_offtake_status:binding_contract_signed" in loif:
         raise RuntimeError("Taiwan nonbinding LOI became signed SPA")
+
+    alaska_speech_rows = _verified_alaska_taiwan_rally_rows()
+    speech_facts, _ = _accepted_facts_for_group("alaska_lng", alaska_speech_rows)
+    must_be_claims = {
+        "alaska_taiwan_project_share_reported:30",
+        "alaska_taiwan_term_reported_years:20",
+        "alaska_taiwan_us_investment_claim_usd_b:4.4",
+    }
+    if not must_be_claims.issubset(speech_facts):
+        raise RuntimeError(f"Alaska Taiwan US announcement parsing failed: {speech_facts}")
+    if any(x in speech_facts for x in [
+        "alaska_taiwan_offtake_status:binding_contract_signed",
+        "alaska_korea_investment_usd_b:54", "stage:착공", "stage:최종투자결정",
+    ]):
+        raise RuntimeError(f"US rally promise incorrectly became binding progress: {speech_facts}")
+
+    planned_start = [{
+        "title": "Trump Alaska LNG all federal permits secured, could start tonight",
+        "source": "Bloomberg",
+        "published": "2026-10-13",
+        "link": "https://www.bloomberg.com/example",
+    }]
+    speech_start, _ = _accepted_facts_for_group("alaska_lng", planned_start)
+    if "stage:착공" in speech_start or "alaska_taiwan_offtake_status:binding_contract_signed" in speech_start:
+        raise RuntimeError(f"Alaska permissions/speech falsely became actual construction: {speech_start}")
+
+    taiwan_wrong_amount = [
+        {"title": "Taiwan Alaska LNG to invest $4.4 billion on pipeline", "source": "Bloomberg", "link": "https://www.bloomberg.com/test"},
+        {"title": "Taiwan investing $4.4 billion into Alaska LNG", "source": "Associated Press", "link": "https://apnews.com/test"},
+    ]
+    claimed, _ = _accepted_facts_for_group("alaska_lng", taiwan_wrong_amount)
+    if "alaska_korea_investment_usd_b:4.4" in claimed or "alaska_project_cost_usd_b:4.4" in claimed:
+        raise RuntimeError(f"Taiwan 4.4B contaminated Korean capital/project cost: {claimed}")
     print("state_event_guard_self_test=passed")
     return 0
 
@@ -2240,6 +2306,25 @@ def _verified_alaska_us_reiteration_rows() -> list[dict]:
     }]
 
 
+def _verified_alaska_taiwan_rally_rows() -> list[dict]:
+    # 날짜가 확인된 독립 언론 원문을 미국 정부 발언의 기록으로만 보존한다.
+    # 대만의 구매계약/출자 확정, 실제 송금, FID/착공 증거로 사용하지 않는다.
+    return [
+        {
+            "title": "Trump says Taiwan will purchase 30% of Alaska LNG pipeline gas over 20 years and Taiwan will invest additional $4.4 billion; Taiwan not yet confirmed",
+            "source": "Bloomberg",
+            "link": "https://news.bloomberglaw.com/health-law-and-business/trump-says-taiwan-to-buy-gas-from-alaska-lng-pipeline-project",
+            "published": "2026-10-14",
+        },
+        {
+            "title": "Trump Taiwan to buy 30 percent of Alaska LNG gas for 20 years and invest $4.4 billion (US statement, Taiwan unconfirmed)",
+            "source": "Associated Press",
+            "link": "https://apnews.com/article/aa4ec095692c57a851a942c0f21624f7",
+            "published": "2026-10-14",
+        },
+    ]
+
+
 def _rss(query: str) -> list[dict]:
     global _RSS_CALLS, _RSS_BUFFER, _RSS_BATCH_DONE, _RSS_FATAL
     _RSS_CALLS += 1
@@ -2277,6 +2362,7 @@ def _rss(query: str) -> list[dict]:
     _RSS_BUFFER.extend(_verified_funding_baseline_rows())
     _RSS_BUFFER.extend(_verified_alaska_fid_report_rows())
     _RSS_BUFFER.extend(_verified_alaska_us_reiteration_rows())
+    _RSS_BUFFER.extend(_verified_alaska_taiwan_rally_rows())
     flushed = _collapse_rows(_RSS_BUFFER)
     _RSS_BUFFER = []
     return flushed
