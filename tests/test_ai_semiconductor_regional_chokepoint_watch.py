@@ -317,5 +317,88 @@ class RegionalChokepointWatchTests(unittest.TestCase):
 
 
 
+    def test_semi_latest_issuer_release_discovery_deduplicates_and_orders(self):
+        older = w.SEMI_300MM_DISTRIBUTION
+        newer = ("https://www.prnewswire.com/news-releases/"
+                 "global-300mm-fab-equipment-spending-growth-estimates-303100001.html")
+        index = (
+            '<a href="' + older + '">2026</a>'
+            '<a href="' + newer + '">2027</a>'
+            '<a href="' + newer + '">Duplicate</a>'
+            '<a href="https://malicious.example/news-releases/global-300mm-fab-equipment-spending-303999999.html">bad</a>'
+            '<a href="https://www.prnewswire.com/news-releases/semi-projects-300mm-memory-equipment-303999999.html">memory</a>'
+        )
+        self.assertEqual(w._semi_300mm_release_urls(index), [newer, older])
+
+    def test_semi_new_quarter_parses_new_forecast_years(self):
+        press = (
+            "News provided by SEMI Oct 20, 2027 "
+            "Global 300mm front-end fab equipment spending is projected to reach "
+            "$180 billion in 2027, up 12% year-over-year, SEMI reported today "
+            "in its latest 300mm Fab Outlook. Spending continues through 2030, "
+            "reaching $255 billion. The 3Q27 edition of the SEMI 300mm Fab Outlook."
+        )
+        parsed = w._semi_300mm_parse(press)
+        self.assertIsNotNone(parsed)
+        self.assertEqual(parsed["release_date"], "2027-10-20")
+        self.assertEqual(parsed["vintage"], "3Q27")
+        self.assertEqual(parsed["equipment_2027_usd_b"], 180)
+        self.assertEqual(parsed["equipment_2030_usd_b"], 255)
+        old_press, old_outlook = self._semi_official_fixture()
+        old = w._semi_300mm_parse(old_press, old_outlook)
+        changes = w._semi_300mm_material_changes(old, parsed)
+        self.assertTrue(any("2027년 신규 장비투자" in c for c in changes))
+        self.assertTrue(any("2030년 신규 장비투자" in c for c in changes))
+
+    def test_semi_future_release_is_selected_from_verified_issuer_index(self):
+        future = ("https://www.prnewswire.com/news-releases/"
+                  "global-300mm-fab-equipment-spending-growth-estimates-303100001.html")
+        future_press = (
+            "News provided by SEMI Oct 20, 2027 "
+            "Global 300mm front-end fab equipment spending is projected to reach "
+            "$180 billion in 2027, up 12% year-over-year, SEMI reported today. "
+            "Growth is projected through 2030, reaching $255 billion. "
+            "The 3Q27 edition of the SEMI 300mm Fab Outlook."
+        )
+        index = '<a href="' + future + '">SEMI future global 300mm fab equipment outlook</a>'
+        def fetch(url):
+            if url == w.SEMI_300MM_ISSUER_INDEX:
+                return index.encode()
+            if url == future:
+                return future_press.encode()
+            if url == w.SEMI_300MM_OUTLOOK:
+                raise RuntimeError("current issue not accessible")
+            raise AssertionError("should not fall back to old fixed report: " + url)
+        with patch.object(w, "_fetch", side_effect=fetch):
+            data, errors = w._semi_300mm_fetch()
+        self.assertIsNotNone(data)
+        self.assertEqual(data["release_date"], "2027-10-20")
+        self.assertEqual(data["source_url"], future)
+        self.assertEqual(data["equipment_2030_usd_b"], 255)
+        self.assertTrue(any("상세전망" in e for e in errors))
+
+    def test_semi_unverified_newer_issuer_candidate_cannot_advance_state(self):
+        future = ("https://www.prnewswire.com/news-releases/"
+                  "global-300mm-fab-equipment-spending-growth-estimates-303100001.html")
+        index = '<a href="' + future + '">Headline</a>'
+        def fetch(url):
+            if url == w.SEMI_300MM_ISSUER_INDEX:
+                return index.encode()
+            if url == future:
+                return b"News provided by THIRD PARTY. Global 300mm front-end fab equipment spending $220 billion"
+            if url == w.SEMI_300MM_OUTLOOK:
+                raise RuntimeError("unreachable")
+            if url == w.SEMI_300MM_PRESS:
+                raise RuntimeError("unreachable")
+            if url == w.SEMI_300MM_DISTRIBUTION:
+                raise RuntimeError("unreachable")
+            raise AssertionError("unknown URL")
+        with patch.object(w, "_fetch", side_effect=fetch):
+            data, errors = w._semi_300mm_fetch()
+        self.assertIsNone(data)
+        self.assertTrue(any("검증 실패" in e for e in errors))
+
+
+
 if __name__ == "__main__":
     unittest.main()
