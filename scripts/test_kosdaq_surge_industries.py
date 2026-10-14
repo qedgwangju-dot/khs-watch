@@ -6,6 +6,8 @@ import json
 import os
 import sys
 import types
+import re
+import textwrap
 import tempfile
 import unittest
 from pathlib import Path
@@ -439,6 +441,35 @@ class CollectorHistoryTests(unittest.TestCase):
         rows = self.exercise(fail=True)
         self.assertTrue(any(x.get("investor") == "개인" for x in rows))
         self.assertTrue(any(x.get("status") == "request_failed" and x["error_type"] == "RuntimeError" for x in rows))
+
+
+class ProductionAuditTests(unittest.TestCase):
+    def test_actual_morning_and_afternoon_checks_distinguish_expansion_points(self):
+        workflow = (Path(__file__).parent.parent / ".github/workflows/kospi-derivatives-flow-ls-realtime.yml").read_text(encoding="utf-8")
+        scripts = [textwrap.dedent(x) for x in re.findall(r"          python - <<'PY'\n(.*?)          PY", workflow, re.S)
+                   if "duplicate episode stage" in x]
+        self.assertEqual(len(scripts), 2)
+        row = {"stage": "kosdaq_shock_expand", "market": "KOSDAQ", "actor": "",
+               "event_start_ts": START - 60, "event_low_ts": END, "message_id": 101}
+        good = [row, {**row, "event_low_ts": END + 250, "message_id": 102}]
+        bad_point = [row, {**row, "message_id": 102}]
+        bad_receipt = [row, {**row, "event_low_ts": END + 250}]
+        original = Path.cwd()
+        with tempfile.TemporaryDirectory() as directory:
+            try:
+                os.chdir(directory)
+                Path("out").mkdir()
+                Path("out/kospi_shock_episode_raw.json").write_text(json.dumps({"last_price_snapshot": {"KOSPI": {"price": 1}}}), encoding="utf-8")
+                Path("out/kospi_shock_handoff.json").write_text(json.dumps({"date": dt.datetime.now(KST).strftime("%Y-%m-%d")}), encoding="utf-8")
+                for script in scripts:
+                    for rows, rejected in [(good, False), (bad_point, True), (bad_receipt, True)]:
+                        Path("out/kospi_shock_delivery_log.jsonl").write_text("".join(json.dumps(x) + "\n" for x in rows), encoding="utf-8")
+                        if rejected:
+                            with self.assertRaises(AssertionError): exec(script, {})
+                        else:
+                            exec(script, {})
+            finally:
+                os.chdir(original)
 
 
 if __name__ == "__main__":
