@@ -1,7 +1,7 @@
 {
-  "last_alert_at_kst": "2026-10-14T11:06:39+09:00",
-  "last_event_kind": "tankertrackers_7country_crude_mtd",
-  "last_event_id": "tankertrackers_7country_crude_mtd:5e4bd4351c97d270",
+  "last_alert_at_kst": "2026-10-14T11:09:53+09:00",
+  "last_event_kind": "saudi_bypass_investment",
+  "last_event_id": "saudi_bypass_investment:3ba5edb3ff00bf86",
   "alerted_events": {
     "regional_export_recovery:66183575fab99015": "2026-10-13T21:23:53+09:00",
     "sts_reroute_expansion:a5a5b34c0694d3fd": "2026-10-13T21:11:24+09:00",
@@ -29,30 +29,31 @@
     "saudi_bypass_investment:16cbf971c8ea915e": "2026-10-12T18:24:37+09:00",
     "us_gulf_isaias_shutin:6664a5b2f150d51b": "2026-10-13T08:13:43+09:00",
     "us_gulf_isaias_shutin:6594a4d0cfb93144": "2026-10-14T11:01:30+09:00",
-    "tankertrackers_7country_crude_mtd:5e4bd4351c97d270": "2026-10-14T11:06:39+09:00"
+    "tankertrackers_7country_crude_mtd:5e4bd4351c97d270": "2026-10-14T11:06:39+09:00",
+    "saudi_bypass_investment:3ba5edb3ff00bf86": "2026-10-14T11:09:53+09:00"
   },
   "last_market": {
     "oil": {
       "symbol": "BZ=F",
       "label": "Brent",
       "unit": "달러/배럴",
-      "price": 106.87,
+      "price": 106.94,
       "previous_close": 105.69,
-      "change": 1.1800000000000068,
-      "change_pct": 1.1164727031885768,
-      "timestamp_utc": "2026-10-14T01:57:05Z",
-      "timestamp_epoch": 1791943025.0
+      "change": 1.25,
+      "change_pct": 1.182704134733655,
+      "timestamp_utc": "2026-10-14T02:00:21Z",
+      "timestamp_epoch": 1791943221.0
     },
     "usdkrw": {
       "symbol": "KRW=X",
       "label": "원·달러",
       "unit": "원/달러",
-      "price": 1335.89,
+      "price": 1336.68,
       "previous_close": 1340.13,
-      "change": -4.240000000000009,
-      "change_pct": -0.31638721616559656,
-      "timestamp_utc": "2026-10-14T02:07:19Z",
-      "timestamp_epoch": 1791943639.0
+      "change": -3.4500000000000455,
+      "change_pct": -0.2574377112668208,
+      "timestamp_utc": "2026-10-14T02:10:36Z",
+      "timestamp_epoch": 1791943836.0
     }
   }
 }
