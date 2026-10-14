@@ -753,6 +753,26 @@ def self_test() -> None:
     assert "최대발전·부하관리 비상경보 / NERC EEA1" in t557
     assert "eDART" in t557 and "<a href=" in t557
 
+    # October PJM demand-response notice: verify Korean stage and real obligations.
+    example = parse_pjm_posting_html(
+        "<html><body>Msg ID: 105562 Message Type: Pre-Emergency Load Mgmt Reduction Action "
+        "Priority: Action Effective Start Time: 10.13.2026 16:00 "
+        "Effective End Time: 10.13.2026 21:00 Regions AECO, AEP, BGE "
+        "A Pre-Emergency Load Mgmt Reduction Action has been issued. "
+        "Reductions are mandatory based on product requirements. "
+        "Lead Time(s) dispatched: Quick_30 . "
+        "Product(s) dispatched: Capacity Performance DR </body></html>",
+        PJM_POSTING.format(msg_id="105562"),
+    )
+    assert example and pjm_title(example) == "PJM, 비상 전 수요감축 실행 지시"
+    sample = render_event(example, dt.datetime(2026, 10, 14, 6, 0, tzinfo=KST))
+    assert "비상 전 수요감축 실행 지시(이행 의무)" in sample
+    assert "• 감축 사전 대응시간: 30분" in sample
+    assert "2026년 10월 14일 05:00 KST" in sample
+    assert "2026년 10월 14일 10:00 KST" in sample
+    assert "일반 고객 순환정전" in sample
+    assert "Pre-Emergency Load Mgmt Reduction Action" not in sample
+
     # Regression gate: source anchors must reach Telegram with HTML parsing.
     wf_path = Path(__file__).resolve().parents[1] / ".github" / "workflows" / "data-center-growth-telegram-watch.yml"
     if wf_path.exists():
