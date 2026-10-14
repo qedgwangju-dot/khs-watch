@@ -307,6 +307,13 @@ def _skip_quantity_enrichment(block: str) -> bool:
         return True
     if "Funda AI" in block and "GPU" in block and "로봇" in block:
         return True
+    # The 3GWh CATL–INTILION figure is an uncommitted EU development
+    # target. Dexmate's hundreds of units are a CEO self-report without
+    # confirmed customer orders or per-robot prices.
+    if "CATL–INTILION" in block or "CATL–Intilion" in block:
+        return True
+    if "Dexmate–LG CNS" in block or "덱스메이트" in block and "LG CNS" in block:
+        return True
     return False
 
 
