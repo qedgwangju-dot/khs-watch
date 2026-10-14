@@ -606,7 +606,10 @@ STOCK_ONLY_REACTION = re.compile(
     # was scored as a supply-chain alert with no new order or shipment.
     r'^\s*\d+(?:,\d{3})*(?:만\d{1,4})?원.{0,100}'
     r'\d+(?:\.\d+)?\s*%\s*(?:조정|하락|상승|급등|반등|급락|등락)|'
-    r'^\s*\d+(?:\.\d+)?\s*%\s*(?:조정|하락|상승|급등|반등|급락|등락)',
+    r'^\s*\d+(?:\.\d+)?\s*%\s*(?:조정|하락|상승|급등|반등|급락|등락)|'
+    # Run #584 item 1: "삼성SDI 5% 오르며 2차전지株 강세" had a
+    # price-action verb instead of "주가"/"상승". It is not new business.
+    r'\d+(?:\.\d+)?\s*%\s*(?:오르|올랐|내리|내렸|뛰|반등|상승|강세|급등|하락|급락)',
     re.I,
 )
 EDITORIAL_ONLY_HEADLINE = re.compile(
@@ -631,7 +634,11 @@ def _is_stock_reaction_only(item: dict) -> bool:
         return False
     if EDITORIAL_ONLY_HEADLINE.search(headline) and not EDITORIAL_MATERIAL_EVENT.search(headline):
         return True  # Commentary is not a dated commercial/operational milestone.
-    return bool(STOCK_ONLY_REACTION.search(headline))
+    if STOCK_ONLY_REACTION.search(headline):
+        # Retain a headline with a genuinely new explicit commercial event;
+        # stock-price movement alone is never enough to send the alert.
+        return not EDITORIAL_MATERIAL_EVENT.search(headline)
+    return False
 
 
 ESS_GENERIC_DEMAND_HEADLINE = re.compile(
