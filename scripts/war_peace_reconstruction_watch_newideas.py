@@ -62,7 +62,8 @@ def _text(row):
 
 
 def _newidea_signals(row):
-    text = _text(row)
+    # A generated summary is not source evidence for another event or actor.
+    text = _text(dict(row, signals_ko=[]))
     signals, marks = [], []
 
     zelensky = any(k in text for k in ('zelensky','zelenskiy','젤렌스키','kyiv','키이우','키예프'))
@@ -205,7 +206,7 @@ def _newidea_signals(row):
     elif zelensky and trump and trump_meeting and new_york_unga:
         signals.append('Trump–Zelenskiy 뉴욕 회동 합의·예정 — 정확한 시각 확정 여부를 후속 확인')
         marks.append('트럼프젤렌스키뉴욕회동합의')
-    elif any(k in text for k in (
+    elif zelensky and trump and trump_meeting and any(k in text for k in (
         'meet trump','meeting with trump','meet with president trump','later in september','late september',
         '트럼프와 회동','트럼프 회동','9월 후반','9월 말',
     )):
