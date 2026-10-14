@@ -47,17 +47,26 @@ def _error(label: str, exc: BaseException) -> None:
 
 
 def extract_swap_report(blob: str) -> dict[str, float] | None:
-    """같은 문맥의 '향후 6개월·50bp·70%'와 시장 가격 표현을 모두 요구."""
-    x = re.sub(r"\s+", " ", BeautifulSoup(blob, "html.parser").get_text(" ", strip=True))
-    is_market = bool(re.search(r"스왑|swap|利率互换|시장\s*반영|市场\s*预期|市场\s*定价", x, re.I))
-    is_horizon = bool(re.search(r"6\s*개?월|six\s*months|六个?月|未来\s*六个?月", x, re.I))
-    is_hike = bool(re.search(r"인상|hike|tighten|加息", x, re.I))
-    basis = re.search(r"50\s*(?:bp|bps|basis\s*points|베이시스포인트|基点)", x, re.I)
-    probability = re.search(r"(?:약|约|around|about|roughly)?\s*70\s*[%％]", x, re.I)
-    if all((is_market, is_horizon, is_hike, basis, probability)):
-        return {"horizon_months": 6, "cumulative_hike_bp": 50.0, "reported_probability_pct": 70.0}
-    return None
-
+    """기간·인상 방향·확률 표현이 모두 확인된 단일 전망만 수집한다."""
+    x = re.sub(r"\\s+", " ", BeautifulSoup(blob, "html.parser").get_text(" ", strip=True))
+    market = bool(re.search(r"스왑|swap|利率互换|시장\\s*반영|市场\\s*预期|市场\\s*定价", x, re.I))
+    horizon = bool(re.search(r"6\\s*개?월|six\\s*months|6\\s*months|六个?月|未来\\s*六个?月", x, re.I))
+    hike = bool(re.search(r"인상|hike|tighten|加息", x, re.I))
+    basis = set(float(m) for m in re.findall(
+        r"(\\d{1,3}(?:\\.\\d+)?)\\s*(?:bp|bps|basis\\s*points|베이시스포인트|基点)", x, re.I
+    ))
+    probs = set(float(m) for m in re.findall(
+        r"(?:확률|概率|probability|chance)[^.!?。]{0,45}?(\\d{1,3}(?:\\.\\d+)?)\\s*[%％]", x, re.I
+    ))
+    probs.update(float(m) for m in re.findall(
+        r"(\\d{1,3}(?:\\.\\d+)?)\\s*[%％][^.!?。]{0,28}?(?:확률|概率|probability|chance)", x, re.I
+    ))
+    if not market or not horizon or not hike or len(basis) != 1 or len(probs) != 1:
+        return None
+    bp, pct = next(iter(basis)), next(iter(probs))
+    if not 0 < bp <= 200 or not 0 <= pct <= 100:
+        return None
+    return {"horizon_months": 6, "cumulative_hike_bp": bp, "reported_probability_pct": pct}
 
 def parse_ecos_rows(doc: dict, code: str) -> list[dict[str, Any]]:
     obj = doc.get("StatisticSearch")
@@ -212,42 +221,55 @@ def market_mentions(now: dt.datetime) -> list[dict[str, Any]]:
 
 
 def market_event(mentions: list[dict[str, Any]]) -> dict[str, Any] | None:
-    matched = [m for m in mentions if m["cumulative_hike_bp"] == 50.0 and m["reported_probability_pct"] == 70.0]
-    if not matched:
+    if not mentions:
         return None
-    newest = max(m["published_date"] for m in matched)
-    today = [m for m in matched if m["published_date"] == newest]
-    # 같은 원문을 복수 언론이 재게시해도 단일 보도 이벤트로만 취급한다.
-    chosen = sorted(today, key=lambda m: (m["origin"] == "중국 금융언론 재게시", bool(m["url"])), reverse=True)[0]
+    # 복수 재인용을 개별 독립 시장호가로 계산하지 않는다.
+    newest = max(m["published_date"] for m in mentions)
+    today = [m for m in mentions if m["published_date"] == newest]
+    if not today:
+        return None
+    # 동시 보도가 여러 수치로 충돌하면 수치를 임의로 선택하지 않는다.
+    readings = {(m["cumulative_hike_bp"], m["reported_probability_pct"]) for m in today}
+    if len(readings) != 1:
+        return None
+    bp, pct = next(iter(readings))
+    chosen = sorted(today, key=lambda m: (bool(m["url"]), m["publisher"]), reverse=True)[0]
     return {
-        "event_key": f"media_swap:6m:50bp:70pct:{newest}",
+        "event_key": f"media_swap:6m:{bp:g}bp:{pct:g}pct:{newest}",
         "date": newest,
-        "hike_bp": 50,
-        "probability_pct": 70,
+        "hike_bp": bp,
+        "probability_pct": pct,
         "source_name": chosen["publisher"],
         "source_url": chosen["url"],
         "source_count": len(today),
-        "evidence": "복수 재인용 가능 · 원시 스왑 호가 미확인",
+        "evidence": "언론 보도·재인용 가능 · 원시 스왑 호가 미확인",
     }
-
 
 def yield_event(new: dict[str, Any], old: dict[str, Any] | None) -> list[dict[str, Any]]:
     if not old or not old.get("as_of") or new["as_of"] <= old["as_of"]:
         return []
     events = []
     for tenor, row in new["tenors"].items():
+        prev = (old.get("tenors") or {}).get(tenor) or {}
         for period, threshold in (("1d", ONE_DAY_BP), ("5obs", FIVE_DAY_BP)):
             change = row[f"change_{period}_bp"]
-            if abs(change) < threshold:
+            try:
+                old_change = float(prev[f"change_{period}_bp"])
+            except (KeyError, TypeError, ValueError):
+                # 이전 공식값이 없을 때 신규 급등 경보를 생성하지 않는다.
                 continue
+            # 매일 계속 임계치 위에 머무는 경우 반복 전송하지 않는다.
             sign = "rise" if change > 0 else "fall"
+            old_sign = "rise" if old_change > 0 else "fall"
+            crossed = abs(old_change) < threshold or sign != old_sign
+            if abs(change) < threshold or not crossed:
+                continue
             events.append({
                 "key": f"yield:{tenor}:{period}:{sign}:{new['as_of']}",
                 "tenor": tenor, "period": period, "change_bp": change,
                 "rate_pct": row["rate_pct"], "as_of": new["as_of"],
             })
     return events
-
 
 def _append_alert(payload: str) -> None:
     previous = base.ALERT.read_text(encoding="utf-8").rstrip() if base.ALERT.exists() else ""
@@ -278,14 +300,27 @@ def main() -> int:
         mentions = []
         _error("금리스왑 시장보도 전체", exc)
 
-    new_market = bool(mention and mention["event_key"] not in set(old.get("seen_event_keys") or []))
+    old_report = old.get("last_market_report") or {}
+    market_level_changed = (
+        not old_report or mention is not None
+        and (float(mention["hike_bp"]) != float(old_report.get("hike_bp", -1))
+             or float(mention["probability_pct"]) != float(old_report.get("probability_pct", -1)))
+    )
+    # 배포 직후 과거 언론 전망을 신규 신호로 재발송하지 않고 기준선으로만 저장한다.
+    new_market = bool(
+        old and mention and market_level_changed
+        and mention["event_key"] not in set(old.get("seen_event_keys") or [])
+    )
     new_yield = yield_event(yields, old_bonds) if yields else []
     seen = set(old.get("seen_event_keys") or [])
     new_yield = [x for x in new_yield if x["key"] not in seen]
 
     events = []
     if new_market:
-        events.append(f"• <b>6개월 50bp 인상 가능성 약 70%</b> — {mention['source_name']}의 {mention['date']} 보도")
+        events.append(
+            f"• <b>향후 6개월 누적 {mention['hike_bp']:g}bp 인상 가능성 약 "
+            f"{mention['probability_pct']:g}%</b> — {html.escape(mention['source_name'])}의 {mention['date']} 보도"
+        )
         events.append("  └ 이는 <b>언론이 전한 시장 가격 해석</b>이며 실제 기준금리 인상 확률의 공식 확정치가 아닙니다.")
         events.append("  └ 금리스왑 원시 호가·산출 방식 미확인. 실시간 수치로 갱신하거나 자동 계산하지 않음")
     for item in new_yield:
