@@ -310,6 +310,8 @@ def _skip_quantity_enrichment(block: str) -> bool:
     # The 3GWh CATL–INTILION figure is an uncommitted EU development
     # target. Dexmate's hundreds of units are a CEO self-report without
     # confirmed customer orders or per-robot prices.
+    if "알림 품질 정정" in block or "정정: Telegram 218번 1번" in block:
+        return True
     if "CATL–INTILION" in block or "CATL–Intilion" in block:
         return True
     if "Dexmate–LG CNS" in block or "덱스메이트" in block and "LG CNS" in block:
