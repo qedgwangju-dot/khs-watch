@@ -72,13 +72,15 @@
   "seen_ir_ids": [],
   "fx": {
     "usdkrw": 1341.45,
-    "basis": "2026-10-13 일일 기준 · ECB/Frankfurter · 조회 2026-10-14 13:40 KST · 보조 API 2026-10-14 · 차이 0.04% · 일중 기준시각 차이 가능",
+    "basis": "2026-10-13 일일 기준 · ECB/Frankfurter · 조회 2026-10-14 16:55 KST · 보조 API 2026-10-14 · 차이 0.04% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter"
   },
   "last_changes": [],
   "last_new_news": [],
   "last_new_sec": [],
   "last_new_ir": [],
-  "errors": [],
-  "updated_at_utc": "2026-10-14T04:40:05+00:00"
+  "errors": [
+    "Google News HTTPError → Bing RSS 대체"
+  ],
+  "updated_at_utc": "2026-10-14T07:56:07+00:00"
 }
