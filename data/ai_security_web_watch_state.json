@@ -6,9 +6,9 @@
     "deferred_material_items": 0,
     "direct_official_items": 27,
     "errors": [],
-    "material_items": 22,
+    "material_items": 23,
     "new_material_items": 0,
-    "raw_items": 247,
+    "raw_items": 252,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -35,6 +35,16 @@
       "source": "Ars Technica",
       "title": "OpenAI halts frontier-model training amid string of agent misalignment incidents - Ars Technica",
       "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQN2MtdjhSdi1aSkFVNjN6aExQcmZGT1BaNDh2VGFpSlZnbmh2Y2pDaE9lT0NiaVBJdWJycF9PS2MwUXB2UDRWZ2lheGpQa1JydjdEal9nUmE5cEc1QWdvM2F1SFBJSldZY2k0S1BvRzB0bE1yVnJpWmFoTnh3MVJsTVo0T1I5ZVhUNUM1LUFQNGpJRTAwVjFDTmZMWHBSSTNhY2hvMEFiMmZyN0s2YWs3S3g2d0Fvbzg?oc=5",
+      "vendor": "OpenAI"
+    },
+    "032796d8c1e41720a8979aae": {
+      "category": "AI 연구기관 내부자 도청·접근통제 사건",
+      "first_seen_at": "2026-10-14T17:36:20.869464+00:00",
+      "published_at": "2026-10-14T00:00:00+00:00",
+      "severity": 2,
+      "source": "Bloomberg.com",
+      "title": "Watch OpenAI Employee Arrested Over Hidden Recording Device - Bloomberg.com",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPalA3b3Q0ZDAyYVd1X0g0SFhHcGtfTW9EZ1RkNkc2NWw0MF9sTURaQ0U0X09Jamd4d1lGaHhwUm1LMzhXd0I2OUgzNkJDMDc5MS1aYWE3TjhVdnVrVmZmczV4YXJsVDJJOU51bEI3QVRnLTdiYlUzN012ZXJfYWFkS1VFaG1uNkt6dU5BZ3h1Y2hwTFFNTk9RM0w5czJtMFpFQW95YnhKZERGNHRE?oc=5",
       "vendor": "OpenAI"
     },
     "0faded2d94d25679a9438177": {
@@ -286,6 +296,16 @@
       "title": "Anthropic Threat Intelligence: threat intelligence report september 2026",
       "url": "https://www.anthropic.com/threat-intelligence-report-september-2026",
       "vendor": "Anthropic"
+    },
+    "636cc0f0bf58e929b31622aa": {
+      "category": "AI 연구기관 내부자 도청·접근통제 사건",
+      "first_seen_at": "2026-10-14T17:36:20.869464+00:00",
+      "published_at": "2026-10-14T17:12:00+00:00",
+      "severity": 2,
+      "source": "Fortune",
+      "title": "FBI says an OpenAI engineer used his wife's AI chatbot to figure out how to plant a secret recording device at the office - Fortune",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPc29qbG10Z0twWkNSV2U5Q01rWW0yZzBaSGdhQ2RLV3VfVzVMNnBYU1k4dW12TnpSeGFUbmZuSlhsU0RPTElIaHEwbUEwSjZ0TjQwWE1udW5aY1Q1VkR0NTlESzl0SXZwTFkzZ1JGUXROc19MUmJELU5uNlNnWVBmZU5MZEFkYjlTTDRkcG5lMmhrVHV6TVlIMlJR?oc=5",
+      "vendor": "OpenAI"
     },
     "654ec051245881d84785930e": {
       "category": "AI 자율복제·사물인터넷 모의평가",
@@ -648,5 +668,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-10-15T02:14:28+09:00"
+  "updated_at_kst": "2026-10-15T02:36:20+09:00"
 }
