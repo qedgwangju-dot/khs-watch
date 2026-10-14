@@ -1,7 +1,7 @@
 {
-  "last_alert_at_kst": "2026-10-14T23:03:10+09:00",
-  "last_event_kind": "eu_diesel_reserve_policy",
-  "last_event_id": "eu_diesel_reserve_policy:54f8a60d9eb812bf",
+  "last_alert_at_kst": "2026-10-15T03:54:32+09:00",
+  "last_event_kind": "us_gulf_isaias_shutin",
+  "last_event_id": "us_gulf_isaias_shutin:59e04145a9693f41",
   "alerted_events": {
     "regional_export_recovery:66183575fab99015": "2026-10-13T21:23:53+09:00",
     "sts_reroute_expansion:a5a5b34c0694d3fd": "2026-10-13T21:11:24+09:00",
@@ -31,30 +31,31 @@
     "us_gulf_isaias_shutin:6594a4d0cfb93144": "2026-10-14T11:01:30+09:00",
     "tankertrackers_7country_crude_mtd:5e4bd4351c97d270": "2026-10-14T11:06:39+09:00",
     "saudi_bypass_investment:3ba5edb3ff00bf86": "2026-10-14T11:09:53+09:00",
-    "eu_diesel_reserve_policy:54f8a60d9eb812bf": "2026-10-14T23:03:10+09:00"
+    "eu_diesel_reserve_policy:54f8a60d9eb812bf": "2026-10-14T23:03:10+09:00",
+    "us_gulf_isaias_shutin:59e04145a9693f41": "2026-10-15T03:54:32+09:00"
   },
   "last_market": {
     "oil": {
       "symbol": "BZ=F",
       "label": "Brent",
       "unit": "달러/배럴",
-      "price": 106.07,
+      "price": 106.01,
       "previous_close": 105.69,
-      "change": 0.37999999999999545,
-      "change_pct": 0.35954205695902686,
-      "timestamp_utc": "2026-10-14T13:53:42Z",
-      "timestamp_epoch": 1791986022.0
+      "change": 0.3200000000000074,
+      "change_pct": 0.30277225849182265,
+      "timestamp_utc": "2026-10-14T18:45:05Z",
+      "timestamp_epoch": 1792003505.0
     },
     "usdkrw": {
       "symbol": "KRW=X",
       "label": "원·달러",
       "unit": "원/달러",
-      "price": 1341.25,
+      "price": 1341.47,
       "previous_close": 1340.13,
-      "change": 1.1199999999998909,
-      "change_pct": 0.08357398162863981,
-      "timestamp_utc": "2026-10-14T14:03:44Z",
-      "timestamp_epoch": 1791986624.0
+      "change": 1.3399999999999181,
+      "change_pct": 0.09999029944855484,
+      "timestamp_utc": "2026-10-14T18:55:10Z",
+      "timestamp_epoch": 1792004110.0
     }
   }
 }
