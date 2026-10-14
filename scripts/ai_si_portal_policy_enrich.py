@@ -5,6 +5,7 @@ import json
 import pathlib
 import re
 import urllib.request
+from urllib.parse import urlsplit
 
 from ai_si_portal_semantic import SOURCE_URL, extract_portal_links, advance_portal_state
 
@@ -21,6 +22,9 @@ def update_portal():
     try:
         req = urllib.request.Request(SOURCE_URL, headers={"User-Agent": "Mozilla/5.0"})
         with urllib.request.urlopen(req, timeout=20) as response:
+            final_host = (urlsplit(response.geturl()).hostname or "").lower()
+            if final_host not in {"si.gov", "www.si.gov"}:
+                raise ValueError("SI.gov redirect destination is not official")
             document = response.read(1000000).decode("utf-8", "ignore")
         links = extract_portal_links(document)
         latest, confirmed = advance_portal_state(previous, links, now)
@@ -34,7 +38,15 @@ def update_portal():
         return
 
     state["si_portal"] = latest
-    results = [x for x in confirmed if not re.search(r"/202[0-5]/", x["url"])]
+    def is_historical(url):
+        m = re.search(r"/(20[0-9]{2})/(0[1-9]|1[0-2])/", url)
+        if not m:
+            return False
+        year, month = int(m.group(1)), int(m.group(2))
+        previous_month = (now.date().replace(day=1) - dt.timedelta(days=1)).replace(day=1)
+        return dt.date(year, month, 1) < previous_month
+
+    results = [x for x in confirmed if not is_historical(x["url"])]
     collection = state.setdefault("last_collection", {})
     collection["si_portal_health"] = "정상"
     collection.pop("si_portal_error",None)
