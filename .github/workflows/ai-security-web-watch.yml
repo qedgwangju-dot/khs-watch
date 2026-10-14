@@ -334,6 +334,15 @@ jobs:
           verdict["title"] = "Alfozan found guilty in OpenAI wiretapping case"
           verdict["description"] = ""
           assert openai_insider_case_stage(verdict) == "court_verdict"
+
+          acquisition = {
+              "title": "OpenAI in early talks to acquire Trail of Bits",
+              "description": "Security startup finds software vulnerabilities",
+              "source": "The Information",
+              "url": "https://www.theinformation.com/example",
+          }
+          if material(acquisition):
+              raise AssertionError("Security M&A was mislabeled as a security incident")
           print("ai_security_insider_case_regression=PASS")
           PY
 
