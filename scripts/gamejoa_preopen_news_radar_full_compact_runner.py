@@ -3004,6 +3004,35 @@ def source_headline_event_fact(title: str, body: str) -> str:
     source = market_materiality.source_reported_body(body)
     rows = market_materiality.source_sentences(source)
     flat_source = re.sub(r"\s+", " ", source)
+    foreign_ownership = market_materiality.foreign_ownership_share_change_observation(title, source)
+    if foreign_ownership:
+        fact = (
+            f"SK하이닉스 외인지분율은 {foreign_ownership['issuer_current_ownership_pct']}%로 "
+            f"연초보다 {foreign_ownership['issuer_decline_pp_at_least']}%포인트 이상 낮아졌다."
+        )
+        if core_sentence_is_complete(fact):
+            return fact
+    boj_fx = market_materiality.boj_rate_yen_fx_observation(title, source)
+    if boj_fx:
+        fact = f"우에다는 10월 인상에 미온적이고, 엔·달러 환율은 {boj_fx['current_jpy_per_usd']}엔선으로 올랐다."
+        if core_sentence_is_complete(fact):
+            return fact
+    shin_guidance = market_materiality.shin_hawks_tightening_observation(title, source)
+    if shin_guidance:
+        fact = "신현송은 물가 안정 전까지 긴축 기조를 유지하겠다고 밝혔다."
+        if core_sentence_is_complete(fact):
+            return fact
+    semis_rebound = market_materiality.kospi_semis_foreign_buying_rebound_observation(title, source)
+    if semis_rebound:
+        change = semis_rebound.get("kospi_change_pct")
+        return_pct = semis_rebound.get("semiconductor_return_pct")
+        if change and return_pct:
+            fact = (
+                f"삼성전자·SK하이닉스가 {return_pct}%대 반등했고, 외국인은 순매수로 돌아섰으며 "
+                f"코스피는 장 초반 {change}% 올랐다."
+            )
+            if core_sentence_is_complete(fact):
+                return fact
     for headline_core in (
         smartphone_memory_mix_core(title, source),
         openai_revenue_gap_market_core(title, source),
@@ -10469,6 +10498,21 @@ def source_output_aligned(alert: dict) -> bool:
                 str(alert.get("source_title") or ""),
                 article_summary_body(str(alert.get("source_body") or alert.get("source_abstract") or "")),
             )
+        event_specific_observation = {}
+        if alert.get("body_verified"):
+            event_title = str(alert.get("source_title") or "")
+            event_body = article_summary_body(str(alert.get("source_body") or alert.get("source_abstract") or ""))
+            event_specific_observation = next((observation for observation in (
+                market_materiality.foreign_ownership_share_change_observation(event_title, event_body),
+                market_materiality.boj_rate_yen_fx_observation(event_title, event_body),
+                market_materiality.shin_hawks_tightening_observation(event_title, event_body),
+                market_materiality.kospi_semis_foreign_buying_rebound_observation(event_title, event_body),
+            ) if observation), {})
+        if not event_specific_core and event_specific_observation:
+            event_specific_core = source_headline_event_fact(
+                str(alert.get("source_title") or ""),
+                article_summary_body(str(alert.get("source_body") or alert.get("source_abstract") or "")),
+            )
         event_specific_market_alignment = bool(
             event_specific_core
             and re.sub(r"\s+", "", event_specific_core) == re.sub(r"\s+", "", summary)
@@ -13023,6 +13067,13 @@ def source_core_fact_errors(alert: dict) -> list[str]:
         event_specific_core = pepsico_quarterly_guidance_core(title, source)
     if not event_specific_core:
         event_specific_core = sampyo_cement_silo_expansion_core(title, source)
+    if not event_specific_core and any((
+        market_materiality.foreign_ownership_share_change_observation(title, source),
+        market_materiality.boj_rate_yen_fx_observation(title, source),
+        market_materiality.shin_hawks_tightening_observation(title, source),
+        market_materiality.kospi_semis_foreign_buying_rebound_observation(title, source),
+    )):
+        event_specific_core = source_headline_event_fact(title, source)
     if event_specific_core and re.sub(r"\s+", "", event_specific_core) != re.sub(r"\s+", "", core):
         errors.append("event_specific_market_fact_missing_or_mismatched")
     event_specific_market_alignment = bool(

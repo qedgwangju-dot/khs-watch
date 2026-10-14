@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 135
+VERSION = 136
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -1574,6 +1574,175 @@ def iran_military_readiness_observation(title: str, body: str) -> dict:
         'stage': 'reported_military_preparation_not_authorized_operation',
         'source_excerpt': ' '.join((order, attribution, no_date, no_decision)),
     }
+
+
+def foreign_ownership_share_change_observation(title: str, body: str) -> dict:
+    """Capture measured foreign ownership changes without inferring net selling."""
+    if not re.search(r'외국인|외인', title) or not re.search(r'셀\s*코리아|보유율|지분율', title + ' ' + body):
+        return {}
+    rows = source_sentences(source_reported_body(body))
+    issuer = next((row for row in rows if re.search(r'SK\s*하이닉스', row, re.I)
+                   and re.search(r'(?:보유율|지분율)', row)
+                   and re.search(r'\d+(?:\.\d+)?\s*%\s*포인트.{0,24}(?:낮|하락|감소)', row)), '')
+    sector = next((row for row in rows if re.search(r'코스피', row)
+                   and re.search(r'전기\s*[·ㆍ./-]?\s*전자', row)
+                   and re.search(r'\d+(?:\.\d+)?\s*%\s*에서\s*\d+(?:\.\d+)?\s*%', row)
+                   and re.search(r'낮|하락|감소', row)), '')
+    if not issuer:
+        return {}
+    issuer_only = re.split(r'코스피|KOSPI|전기\s*[·ㆍ./-]?\s*전자', issuer, maxsplit=1, flags=re.I)[0]
+    issuer_percentages = re.findall(r'(\d+(?:\.\d+)?)\s*%(?!\s*(?:포인트|p\b))', issuer_only, re.I)
+    decline = re.search(r'(\d+(?:\.\d+)?)\s*%(?:\s*포인트|\s*p\b).{0,24}(?:낮|하락|감소)', issuer, re.I)
+    sector_values = re.search(r'(\d+(?:\.\d+)?)\s*%\s*에서\s*(\d+(?:\.\d+)?)\s*%', sector) if sector else None
+    if not (issuer_percentages and decline):
+        return {}
+    if sector_values and Decimal(sector_values.group(1)) <= Decimal(sector_values.group(2)):
+        return {}
+    return {
+        'issuer': 'SK하이닉스',
+        'issuer_current_ownership_pct': issuer_percentages[-1],
+        'issuer_decline_pp_at_least': decline.group(1),
+        'sector': 'KOSPI_electrical_electronic',
+        'sector_ownership_from_pct': sector_values.group(1) if sector_values else '',
+        'sector_ownership_to_pct': sector_values.group(2) if sector_values else '',
+        'stage': 'reported_foreign_ownership_share_decline',
+        'source_excerpt': ' '.join(row for row in (issuer, sector) if row),
+    }
+
+
+def boj_rate_yen_fx_observation(title: str, body: str) -> dict:
+    """Require both a reported BOJ stance and a measured yen/dollar move."""
+    source = f'{title} {source_reported_body(body)}'
+    if not re.search(r'일본은행|\bBOJ\b|우에다', source, re.I):
+        return {}
+    if not re.search(r'금리|인상', title):
+        return {}
+    rows = source_sentences(source_reported_body(body))
+    stance = next((row for row in rows if re.search(r'우에다|일본은행', row)
+                   and re.search(r'10월.{0,24}인상|인상.{0,24}10월', row)
+                   and re.search(r'미온|신중|검토', row)), '')
+    fx = next((row for row in rows if re.search(r'엔.{0,12}달러|yen.{0,12}dollar|달러당.{0,8}엔', row, re.I)
+               and len(re.findall(r'(\d+(?:\.\d+)?)\s*엔', row)) >= 2), '')
+    if not (stance and fx):
+        return {}
+    rates = re.findall(r'(\d+(?:\.\d+)?)\s*엔', fx)
+    previous, current = Decimal(rates[0]), Decimal(rates[-1])
+    if current <= previous:
+        return {}
+    return {
+        'bank': 'BOJ', 'stance': 'cautious_october_hike',
+        'previous_jpy_per_usd': str(previous), 'current_jpy_per_usd': str(current),
+        'stage': 'reported_policy_stance_with_weaker_yen',
+        'source_excerpt': f'{stance} {fx}',
+    }
+
+
+def shin_hawks_tightening_observation(title: str, body: str) -> dict:
+    """Track an attributed central-bank tightening signal, not a generic profile."""
+    source = source_reported_body(body)
+    if not re.search(r'신현송|Shin\s+Hyun[- ]?song', title, re.I):
+        return {}
+    statement = next((row for row in source_sentences(source)
+                      if re.search(r'신현송|Shin\s+Hyun[- ]?song', row, re.I)
+                      and re.search(r'물가', row)
+                      and re.search(r'긴축', row)
+                      and re.search(r'유지|지속|계속', row)), '')
+    if not statement:
+        return {}
+    return {
+        'speaker': '신현송', 'stance': 'tightening_until_inflation_controlled',
+        'stage': 'attributed_hawkish_policy_guidance', 'source_excerpt': statement,
+    }
+
+
+def kospi_semis_foreign_buying_rebound_observation(title: str, body: str) -> dict:
+    """Capture a dated semiconductor rebound plus an explicit foreign-flow turn."""
+    source = source_reported_body(body)
+    if not (re.search(r'삼성전자', title) and re.search(r'SK\s*하이닉스|SK하닉', title, re.I)):
+        return {}
+    if not re.search(r'반등|상승', title) or not re.search(r'외국인.{0,20}순매수|순매수.{0,20}외국인', title + ' ' + source):
+        return {}
+    rows = source_sentences(source)
+    flow = next((row for row in rows if re.search(r'외국인.{0,20}순매수|순매수.{0,20}외국인', row)
+                 and re.search(r'전환|돌아|기록|매수', row)), '')
+    price = next((row for row in rows if re.search(r'코스피', row)
+                  and re.search(r'\d[\d,.]*\s*%\s*상승|\d[\d,.]*\s*포인트\s*오른', row)), '')
+    semis = next((row for row in rows if re.search(r'삼성전자', row)
+                  and re.search(r'SK\s*하이닉스|SK하닉', row, re.I)
+                  and re.search(r'반등|상승', row)), '')
+    if not (flow and price and semis):
+        return {}
+    index_level = re.search(r'코스피.{0,30}?(\d[\d,.]{3,})\s*(?:로\s*)?(?:출발|마감|기록)', price)
+    index_change = re.search(r'(\d+(?:\.\d+)?)\s*%\s*상승', price)
+    semis_return = re.search(r'(\d+(?:\.\d+)?)\s*%\s*대', title)
+    return {
+        'companies': 'Samsung_Semiconductor_and_SK_Hynix',
+        'semiconductor_return_pct': semis_return.group(1) if semis_return else '',
+        'kospi_level': index_level.group(1).replace(',', '') if index_level else '',
+        'kospi_change_pct': index_change.group(1) if index_change else '',
+        'stage': 'foreign_net_buying_turnaround_with_semiconductor_rebound',
+        'source_excerpt': f'{semis} {flow} {price}',
+    }
+
+
+def moodys_iran_household_cost_observation(title: str, body: str) -> dict:
+    """Keep a Moody's Iran-war household-cost estimate distinct from actual bills."""
+    source = f'{title} {source_reported_body(body)}'
+    if not re.search(r"무디스|Moody'?s", source, re.I):
+        return {}
+    if not re.search(r'이란|Iran', source, re.I) or not re.search(r'전쟁|war', source, re.I):
+        return {}
+    if not re.search(r'미국|미국인|U\.?S\.?|American', source, re.I):
+        return {}
+    if not re.search(r'가구|가계|household', source, re.I) or not re.search(r'비용|부담|cost', source, re.I):
+        return {}
+    body_rows = source_sentences(source_reported_body(body))
+    estimate = next((row for row in body_rows if re.search(r'무디스|Moody', row, re.I)
+                     and re.search(r'이란|Iran', row, re.I)
+                     and re.search(r'가구|가계|household', row, re.I)
+                     and re.search(r'비용|부담|cost', row, re.I)), '')
+    if not estimate:
+        estimate = next((row for row in source_sentences(title)
+                         if re.search(r'무디스|Moody', row, re.I)
+                         and re.search(r'이란|Iran', row, re.I)
+                         and re.search(r'가구|가계|household', row, re.I)
+                         and re.search(r'비용|부담|cost', row, re.I)), '')
+    if not estimate:
+        return {}
+    amount = re.search(
+        r'(?:(?P<thousands>\d+(?:\.\d+)?)\s*천\s*(?:달러|미국\s*달러|USD)|'
+        r'(?:US\s*)?\$\s*(?P<dollars_symbol>\d[\d,]*(?:\.\d+)?)|'
+        r'(?P<dollars_word>\d[\d,]*(?:\.\d+)?)\s*(?:달러|미국\s*달러|USD))',
+        estimate, re.I,
+    )
+    if not amount:
+        return {}
+    amount_usd = (
+        str(int(Decimal(amount.group('thousands')) * 1000)) if amount.group('thousands')
+        else str(int(Decimal((amount.group('dollars_symbol') or amount.group('dollars_word')).replace(',', ''))))
+    )
+    return {
+        'issuer': 'Moody\'s', 'population': 'US_households', 'amount_usd': amount_usd,
+        'stage': 'attributed_household_cost_estimate', 'source_excerpt': estimate,
+    }
+
+
+def trump_putin_diesel_trade_opposition_observation(title: str, body: str) -> dict:
+    """Cluster coverage of opposition to one reported Trump-Putin diesel deal."""
+    if not body:
+        return {}
+    source = f'{title} {source_reported_body(body)}'
+    if not re.search(r'푸틴|Putin', source, re.I):
+        return {}
+    if not re.search(r'디젤|경유|diesel', source, re.I):
+        return {}
+    if not re.search(r'의원|상원의원|공화당|senator|Republican|GOP', source, re.I):
+        return {}
+    if not re.search(r'반대|철회|촉구|요구|oppose|urge|withdraw', source, re.I):
+        return {}
+    if re.search(r'계약을\s*(?:체결|서명)|공급을\s*시작|거래가\s*완료|signed\s+(?:the\s+)?deal|deliveries\s+began', source, re.I):
+        return {}
+    return {'stage': 'reported_political_opposition_to_diesel_deal', 'source_excerpt': source}
 
 
 def procurement_lead_time_observation(title: str, body: str) -> dict:
@@ -3204,6 +3373,34 @@ def source_event_identity(alert: dict) -> str:
     honam_statement = sk_honam_project_statement_identity(alert)
     if honam_statement:
         return honam_statement
+    title = str(alert.get('source_title') or alert.get('original_news') or alert.get('news') or '')
+    body = str(alert.get('source_body') or '') if alert.get('body_verified') else ''
+    published = str(alert.get('published') or '')
+    for event, observation in (
+        ('foreign_ownership_share_change', foreign_ownership_share_change_observation(title, body)),
+        ('boj_rate_yen_fx', boj_rate_yen_fx_observation(title, body)),
+        ('kospi_semis_foreign_buying_rebound', kospi_semis_foreign_buying_rebound_observation(title, body)),
+        ('moodys_iran_household_cost', moodys_iran_household_cost_observation(title, body)),
+    ):
+        if observation:
+            terms = {key: value for key, value in observation.items() if key != 'source_excerpt'}
+            digest = hashlib.sha256(json.dumps(terms, ensure_ascii=False, sort_keys=True).encode('utf-8')).hexdigest()
+            return f'source_event:v2:{event}:{digest}'
+    shin_guidance = shin_hawks_tightening_observation(title, body)
+    published_day = re.match(r'(20\d{2}-\d{2}-\d{2})', published)
+    if shin_guidance and published_day:
+        terms = {
+            **{key: value for key, value in shin_guidance.items() if key != 'source_excerpt'},
+            'published_day': published_day.group(1),
+        }
+        digest = hashlib.sha256(json.dumps(terms, ensure_ascii=False, sort_keys=True).encode('utf-8')).hexdigest()
+        return f'source_event:v2:shin_hawks_tightening:{digest}'
+    diesel_opposition = trump_putin_diesel_trade_opposition_observation(title, body)
+    published_day = re.match(r'(20\d{2}-\d{2}-\d{2})', published)
+    if diesel_opposition and published_day:
+        terms = {'stage': diesel_opposition['stage'], 'published_day': published_day.group(1)}
+        digest = hashlib.sha256(json.dumps(terms, ensure_ascii=False, sort_keys=True).encode('utf-8')).hexdigest()
+        return f"source_event:v2:trump_putin_diesel_trade_opposition:{digest}"
     ai_chip_deployment = quantified_ai_chip_deployment_observation(title, body)
     if ai_chip_deployment:
         terms = {key: value for key, value in ai_chip_deployment.items() if key != 'source_excerpt'}
@@ -5949,6 +6146,31 @@ def assess(title: str, body: str, *, source_url: str = "", published: str = "") 
     routine = bool(ROUTINE_HEADLINE.search(title) and not HARD_HEADLINE.search(title))
     soft = bool(SOFT_HEADLINE.search(title) and not HARD_HEADLINE.search(title) and not ai_chip_deployment)
     matches = []
+    foreign_ownership = foreign_ownership_share_change_observation(title, body)
+    if foreign_ownership:
+        matches.append((3, 100, 0, ["flows"], {
+            "kind": "market_price_or_flow",
+            "stage": foreign_ownership["stage"],
+            "source_excerpt": foreign_ownership["source_excerpt"],
+        }))
+    boj_fx = boj_rate_yen_fx_observation(title, body)
+    if boj_fx:
+        matches.append((3, 100, 0, ["discount_rate", "flows"], {
+            "kind": "rates_fx_or_macro", "stage": boj_fx["stage"],
+            "source_excerpt": boj_fx["source_excerpt"],
+        }))
+    shin_guidance = shin_hawks_tightening_observation(title, body)
+    if shin_guidance:
+        matches.append((3, 100, 0, ["discount_rate"], {
+            "kind": "rates_fx_or_macro", "stage": shin_guidance["stage"],
+            "source_excerpt": shin_guidance["source_excerpt"],
+        }))
+    semis_rebound = kospi_semis_foreign_buying_rebound_observation(title, body)
+    if semis_rebound:
+        matches.append((3, 100, 0, ["flows"], {
+            "kind": "market_price_or_flow", "stage": semis_rebound["stage"],
+            "source_excerpt": semis_rebound["source_excerpt"],
+        }))
     if ai_chip_deployment:
         matches.append((3, 100, 0, ["earnings", "timeline"], {
             "kind": "physical_supply_or_capacity",
@@ -6401,6 +6623,11 @@ def assess(title: str, body: str, *, source_url: str = "", published: str = "") 
                 focus += 20
             matches.append((priority, focus, -index, evidence_axes,
                             {"kind": kind, "stage": "early_signal" if early else "reported_change", "source_excerpt": sentence}))
+    if foreign_ownership:
+        matches = [match for match in matches if not (
+            match[4].get("kind") == "capital_or_shareholder_action"
+            and not re.search(r"자사주|자기주식|배당|증자|감자|buyback|dividend|offering", match[4].get("source_excerpt", ""), re.I)
+        )]
     if google_ppa:
         matches = [(3, 100, 0, ["earnings", "timeline"], {
             "kind": "physical_supply_or_capacity",
