@@ -1048,12 +1048,22 @@ def meta_milestone(title: str) -> tuple[str, str, str] | None:
                  r"has (?:signed|awarded|deployed|shipped|qualified)|"
                  r"signed (?:a |the )?(?:contract|agreement)|"
                  r"began commercial deployment",text,re.I):
+        # Alert on an actual FIRST-PARTY date change as a roadmap, not
+        # a deployment. Anonymous FCC-ban scenarios remain excluded.
+        roadmap = re.search(r"\b(202[7-9]|203\d)(?:[-–](202[7-9]|203\d))?\b", text)
+        technology = re.search(r"\bNPO\b|\bCPO\b", text, re.I)
+        contingency = re.search(r"\bif\b|contingency|scenario|rumou?r|reportedly|speculat", text, re.I)
+        if roadmap and technology and not contingency:
+            years = roadmap.group(1) + ("-" + roadmap.group(2) if roadmap.group(2) else "")
+            return ("메타 NPO·CPO 공식 도입 일정", "공식 로드맵 변경·아직 실제 양산/배치 아님",
+                    f"meta|roadmap|{technology.group(0).lower()}|{years}")
         return None
     vendor=re.search(META_VENDORS,text,re.I)
     gen=re.search(r"\b800\s*G\b|\b1[.,]?6\s*T\b",text,re.I)
     if vendor and re.search(r"sign(?:s|ed) (?:a |the )?(?:supply )?(?:agreement|contract)|"
                             r"awards? (?:a |the )?(?:contract|order)|"
-                            r"qualif(?:ied|ies)|certif(?:ied|ies)|"
+                            r"select(?:s|ed)|design win|"
+                            r"qualif(?:ied|ies|ication)|certif(?:ied|ies|ication)|"
                             r"has (?:shipped|delivered)|commercial shipment",text,re.I):
         name=re.sub(r"[^a-z0-9]+","-",vendor.group(0).lower()).strip("-")
         stage="qualified" if re.search(r"qualif|certif",text,re.I) else (
@@ -1982,6 +1992,7 @@ def meaning_for(category: str) -> str:
         "메타 Tahan 스위치": "이미 출하 중인 이더넷 스케일업 스위치와 1.6T 광모듈 공급사의 확정 구매계약은 다른 단계입니다.",
         "메타 광모듈 공급계약·인증": "메타 또는 실명 공급사의 공식 계약·인증·실제 출하 증거를 800G·1.6T별로 분리 검증합니다.",
         "메타 NPO·CPO 실제 도입": "메타의 실제 도입·양산 시점이 광엔진·레이저·FAU 정렬·DSP 투자 수요를 좌우합니다.",
+        "메타 NPO·CPO 공식 도입 일정": "메타가 직접 발표한 목표 연도 변경입니다. 실제 NPO·CPO 설치·검증·양산 여부는 별도 감시합니다.",
         "메타 광모듈 재고 확보": "메타의 공식 재고 확충 확인 시 실제 주문 앞당김과 공급사 향후 출하 변동을 추적합니다.",
         "루멘텀 AI 광부품 생산능력 예약": "CEO가 AI 광부품 생산능력의 예약 시계를 2029년 초로 확장한 직접 인터뷰입니다. 생산능력·예약 물량·고객 선급금·출하·매출을 구분하며 2029년 매출 확정으로 계산하지 않습니다.",
         "루멘텀 2030년 고객 생산능력 선점": "고객이 2030년 물량을 예약하기 시작했다는 선행 신호입니다. 주문의 구속력·선수금·취소 조건을 확인하기 전에는 완판·확정 매출로 계산하지 않습니다.",
@@ -2095,6 +2106,7 @@ def risk_for(category: str) -> str:
         "메타 Tahan 스위치": "스위치 출하 이후에도 광모듈과 구리 전송의 혼합 구성으로 교체 시점이 지연될 수 있습니다.",
         "메타 광모듈 공급계약·인증": "수율·고온 동작 검사·제품 신뢰성·가격·미국 규제 범위가 고객 채택과 매출 시기를 바꿉니다.",
         "메타 NPO·CPO 실제 도입": "FAU 정렬 오차·광결합 손실·열·보험·인증 기간 때문에 6~24개월 전환이 늦어질 수 있습니다.",
+        "메타 NPO·CPO 공식 도입 일정": "전력·광원·FAU 수율·재고 및 FCC 최종규칙 미확정 시 공식 계획도 지연될 수 있습니다.",
         "메타 광모듈 재고 확보": "재고 선확보가 제품 전환·주문 앞당김이라면 향후 주문 소진과 평균판매단가 하락을 유발할 수 있습니다.",
         "루멘텀 AI 광부품 생산능력 예약": "예약된 생산능력과 취소 불가 발주·가격확정·매출인식은 다릅니다. 고객 선주문·다중 공급망 전환·광 패키징 수율·인증기간이 실현 물량을 낮출 수 있습니다.",
         "루멘텀 2030년 고객 생산능력 선점": "구속력 없는 물량 예약, 고객 이중공급 전략, 가격 재협상, 신공장 수율 위험 때문에 실제 매출은 예약 규모와 다를 수 있습니다.",
@@ -2403,6 +2415,9 @@ def _self_test_korean_optics_alerts() -> None:
     assert meta_milestone(old)[2] == "meta|corning|jan2026-6b-fiber"
     assert meta_milestone(contract)[0] == "메타 광모듈 공급계약·인증"
     assert meta_milestone(deployed)[0] == "메타 NPO·CPO 실제 도입"
+    assert meta_milestone("Meta plans NPO deployment in 2028")[0] == "메타 NPO·CPO 공식 도입 일정"
+    assert meta_milestone("Meta would advance CPO to 2027 if FCC ban takes effect") is None
+    assert meta_milestone("Meta selects Lumentum as a second optical supplier")[0] == "메타 광모듈 공급계약·인증"
     assert meta_milestone("Corning fiber supply agreement without Meta") is None
     assert meta_official_source({"source":"Engineering at Meta","source_url":"https://engineering.fb.com/2026/10/12/report"})
     assert not meta_official_source({"source":"Meta Platforms","source_url":"https://analyst-rumor.example.org"})
