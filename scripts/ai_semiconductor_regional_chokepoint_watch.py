@@ -704,7 +704,7 @@ def _semi_300mm_fetch() -> tuple[dict | None, list[str]]:
         plain = _clean(candidate).lower()
         verified_issuer = "news provided by semi" in plain or "source semi" in plain
         if not verified_issuer or "global 300mm front-end fab equipment spending" not in plain:
-            errors.append("SEMI 후보 발행자 또는 전공정 장비투자 분야 검증 실패")
+            errors.append("SEMI 후보 발행주체 또는 전공정 장비투자 분야 검증 실패")
             continue
         selected = _semi_300mm_parse(candidate)
         if selected is None:
@@ -722,7 +722,7 @@ def _semi_300mm_fetch() -> tuple[dict | None, list[str]]:
                 if "prnewswire.com" in url:
                     plain = _clean(raw).lower()
                     if not ("news provided by semi" in plain or "source semi" in plain):
-                        errors.append("SEMI 배포본 원발행자 검증 실패")
+                        errors.append("SEMI 배포본 발행주체 검증 실패")
                         continue
                 selected = _semi_300mm_parse(raw)
                 if selected is not None:
