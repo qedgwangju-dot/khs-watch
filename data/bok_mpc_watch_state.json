@@ -52,7 +52,7 @@
   },
   "rate_signal_upgrade": {
     "version": 4,
-    "updated_at_kst": "2026-10-14T20:58:12+09:00",
+    "updated_at_kst": "2026-10-14T21:05:09+09:00",
     "risk_score": 6,
     "grade_emoji": "🟠",
     "grade_label": "인상 압력 높음",
@@ -84,8 +84,8 @@
       "housing": null,
       "oil": {
         "date": "2026-10-14",
-        "brent_usd": 106.38,
-        "change_5d_pct": 6.17,
+        "brent_usd": 106.28,
+        "change_5d_pct": 6.07,
         "source": "Yahoo Finance BZ=F",
         "source_tier": "시장자료",
         "stale": false
@@ -97,36 +97,37 @@
         "speaker": "신현송",
         "date": "2026-10-14",
         "flags": {
-          "macroprudential_mix": false,
-          "middle_east_inflation": true,
-          "oct_hike_caution": false,
-          "neutral_upper": false,
-          "hike_timing_speed": false,
-          "demand_inflation": false,
-          "k_shaped_low_income": true,
           "ai_investment_duration": true,
-          "next_meeting_caution": false,
-          "ai_war_inflation": true,
-          "middle_east_cost": true,
-          "hike_needed": true,
-          "inflation_upside": true,
           "two_hikes_effect": false,
+          "oct_hike_caution": false,
+          "next_meeting_caution": false,
+          "rate_not_only_tool": false,
+          "middle_east_cost": true,
           "next_meeting_hawk": false,
+          "demand_inflation": false,
+          "neutral_upper": false,
+          "middle_east_inflation": true,
+          "hike_timing_speed": false,
+          "ai_war_inflation": true,
+          "macroprudential_mix": false,
+          "hike_needed": false,
+          "k_shaped_low_income": true,
           "fvi_leverage": false,
-          "rate_not_only_tool": false
+          "inflation_upside": true
         },
         "title": "신현송 한은 총재 “AI 투자·중동 악재로 물가 자극…통화정책으로 양극화 대응” - 전자신문",
         "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE4tdUhZZEtNeWdGakdpTlRnUHJieERua1VFZVdSOUFSZWFfVTA5QWc2NXo1VmIxbGNhekp3SFZPWUJkeVp3QmVXN0kwazZFQQ?oc=5",
         "source_name": "전자신문",
         "published_at_kst": "2026-10-14T14:31+09:00",
-        "event_hash": "ad545aa8be16789c3671c193ac08c6fa147a71715fb91d72f7beca8a715b37db",
+        "event_hash": "ad81263a3c3bb5781f6ba3237105edbd837203acb68c22e800c1e543fd3799fe",
         "score": 2
       }
     ],
     "seen_rhetoric_hashes": [
       "5be88233156f29ad1bc2ecc1a91836e3822516286e2c5ed7f0d36c0f802c6568",
       "cfc9ecc85da2f4cf06e52a4322dc9c7e5764e4f4b5d5a6c343b20b7ddf0d2528",
-      "ad545aa8be16789c3671c193ac08c6fa147a71715fb91d72f7beca8a715b37db"
+      "ad545aa8be16789c3671c193ac08c6fa147a71715fb91d72f7beca8a715b37db",
+      "ad81263a3c3bb5781f6ba3237105edbd837203acb68c22e800c1e543fd3799fe"
     ],
     "notification_policy": {
       "score_only_change_suppressed": true,
