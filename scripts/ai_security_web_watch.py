@@ -100,6 +100,9 @@ NEWS_QUERIES = [
     '"Jamie Dimon" (Mythos OR Anthropic) cyber risk bank financial "10-fold"',
     '(JPMorgan OR Citi OR Goldman OR bank OR "critical infrastructure") (Mythos OR Anthropic) AI cyber risk',
     'Anthropic Mythos vulnerabilities critical high severity 129000 33000 5500',
+    '(OpenAI OR Anthropic OR "AI lab") ("recording device" OR wiretap OR eavesdropping OR espionage OR "insider threat") (FBI OR DOJ OR arrest OR employee OR court)',
+    '"Abdulrahman Alfozan" (detention OR court OR hearing OR indictment OR evidence OR plea OR verdict OR sentencing)',
+    'site:justice.gov ("OpenAI" OR "AI researcher") (wiretap OR recording device OR insider arrest)',
 ]
 
 AI_TERMS = (
@@ -113,6 +116,7 @@ AI_TERMS = (
     "joint commitment on frontier responsibilities", "white house accord on super intelligence",
     "mythos", "claude mythos", "claude fable", "cyber verification program",
     "project glasswing",
+    "insider threat", "wiretapping", "listening device",
 )
 
 SECURITY_TERMS = (
@@ -155,6 +159,9 @@ SECURITY_TERMS = (
     "fail-closed", "fail closed", "automatic stop", "auto-stop", "auto stop",
     "regression test", "postmortem", "post-mortem", "root cause",
     "senior leadership veto", "training veto",
+    "insider threat", "eavesdropping", "wiretap", "wiretapping",
+    "listening device", "recording device", "surreptitious audio",
+    "employee arrested", "insider spying", "illegal recording",
     "mythos", "cyber verification program", "project glasswing",
     "reduced blocking classifiers", "specialized access", "red team tier",
     "defense tier", "financial sector", "critical infrastructure",
@@ -199,6 +206,8 @@ TRUSTED_SOURCE_HINTS = (
     "palo alto", "unit 42", "wiz", "trail of bits", "cloudflare",
     "snyk", "mandiant", "nvidia", "openshell",
     "associated press", "ap news", "guardian", "cbs news", "white house", "whitehouse.gov",
+    "department of justice", "federal bureau of investigation",
+    "u.s. attorney", "us attorney", "fbi.gov",
 )
 
 OFFICIAL_SOURCE_HINTS = (
@@ -206,6 +215,8 @@ OFFICIAL_SOURCE_HINTS = (
     "microsoft", "amazon web services", "aws", "apple", "github",
     "project zero", "google security", "microsoft security", "nvidia", "openshell",
     "white house", "whitehouse.gov",
+    "department of justice", "federal bureau of investigation",
+    "justice.gov", "fbi.gov", "u.s. attorney", "us attorney",
 )
 
 DIRECT_OFFICIAL_PAGES = [
@@ -229,6 +240,11 @@ VENDOR_PATTERNS = [
 ]
 
 CATEGORY_PATTERNS = [
+    ("AI 연구기관 내부자 도청·접근통제 사건", (
+        "alfozan", "wiretapping", "wiretap", "eavesdropping",
+        "listening device", "recording device", "surreptitious audio",
+        "insider spying", "employee arrested", "office surveillance",
+    )),
     ("AI 모델사고 신고·시정 후속조치", (
         "affected parties notified", "reported to authorities",
         "incident remediated", "remediation completed",
@@ -496,8 +512,50 @@ def detect_vendor(text: str) -> str:
     return "AI 생태계"
 
 
+def is_openai_insider_case(item: dict) -> bool:
+    text = f" {item.get('title','')} {item.get('description','')} ".lower()
+    return "alfozan" in text or (
+        "openai" in text and any(term in text for term in (
+            "listening device", "recording device", "wiretap",
+            "eavesdropping", "insider spying",
+        ))
+    )
+
+
+def openai_insider_case_stage(item: dict) -> str | None:
+    """Keep criminal allegations separate from court findings and confirmed loss."""
+    if not is_openai_insider_case(item):
+        return None
+    text = f" {item.get('title','')} {item.get('description','')} ".lower()
+    try:
+        pub = dt.datetime.fromisoformat(
+            str(item.get("published_at")).replace("Z", "+00:00")
+        ).astimezone(UTC)
+    except (ValueError, TypeError):
+        pub = None
+    if any(x in text for x in ("convicted", "found guilty", "sentenced")) and not any(
+        x in text for x in ("if convicted", "if found guilty", "could be sentenced")
+    ):
+        return "court_verdict"
+    if any(x in text for x in (
+        "pleaded not guilty", "pleaded guilty", "entered a plea",
+        "appeared at detention hearing", "detention hearing held",
+    )):
+        if pub and pub >= dt.datetime(2026, 10, 19, tzinfo=UTC):
+            return "oct19_hearing_result"
+    if any(x in text for x in ("new charges", "additional charge", "superseding indictment")):
+        return "new_charges"
+    if any(x in text for x in (
+        "confirmed theft", "confirmed exfiltration", "evidence of stolen model weights"
+    )) and not any(x in text for x in ("no evidence", "no indication", "not found", "no sign")):
+        return "confirmed_new_data_loss"
+    return "initial_oct13_charge"
+
+
 def detect_category(text: str) -> str:
     low = f" {text.lower()} "
+    if is_openai_insider_case({"title": text, "description": ""}):
+        return "AI 연구기관 내부자 도청·접근통제 사건"
     if "investigating unintended model actions" in low:
         return "모델 비의도적 외부접근·사고 공개"
     scores = []
@@ -525,6 +583,8 @@ def severity(text: str) -> tuple[int, str]:
         "data exfiltration", "credential theft", "take control",
     )
     high = (
+        "wiretapping", "eavesdropping", "listening device",
+        "covert recording device", "insider spying",
         "cybersecurity capability threshold", "preparedness framework",
         "critical threshold", "high threshold", "zero-day", "zero day", "exploit", "data leak", "data exposure",
         "unauthorized access", "prompt injection", "agent hijack",
@@ -918,6 +978,17 @@ def source_label(source: str) -> str:
 
 def incident_fact(item: dict) -> str | None:
     text = f" {item.get('title','')} {item.get('description','')} ".lower()
+    stage = openai_insider_case_stage(item)
+    if stage == "oct19_hearing_result":
+        return "OpenAI 사내 도청 장치 사건의 구금심리·법정 진술 결과. 혐의와 법원 판단은 별도 확인"
+    if stage == "new_charges":
+        return "OpenAI 사내 도청 장치 사건 추가 기소 발표. 기존 체포와 구분"
+    if stage == "court_verdict":
+        return "OpenAI 사내 도청 장치 사건 판결 발표. 공식 법원·법무부 근거 확인 필요"
+    if stage == "confirmed_new_data_loss":
+        return "OpenAI 민감정보 접근·유출 관련 새로운 증거 보도. 공식 조사 결과 확인 필요"
+    if stage == "initial_oct13_charge":
+        return "OpenAI 직원 도청 장치 설치 혐의 10월 9일 체포·10월 13일 법무부 발표. 민감정보 유출 확정 아님"
     if any(x in text for x in ("release cancelled", "release canceled", "launch cancelled", "launch canceled")):
         return "신규 모델 출시 취소·철회"
     if any(x in text for x in ("release delayed", "launch delayed", "release postponed", "launch postponed")):
@@ -992,6 +1063,8 @@ def event_heading(cluster: list[dict]) -> str:
 
 def event_impact(cluster: list[dict]) -> str:
     cats = " ".join(item.get("category", "") for item in cluster)
+    if "AI 연구기관 내부자 도청·접근통제 사건" in cats:
+        return "체포·기소·법원 심리·판결을 구분하고, 실제 녹음·정보 반출 여부와 물리적 출입통제·내부자 위험 대응을 추적합니다. 국적만으로 정부 배후나 유출 사실을 단정하지 않습니다."
     if "AI 모델사고 신고·시정 후속조치" in cats:
         return "공식 사고 신고, 피해자 통지, 접근 차단, 피해 복구, 독립 검수 및 회귀검사를 서로 구분합니다. 조치 착수·시정 완료·재발 방지는 원문에 명시된 단계에서만 확인으로 표시합니다."
     if "금융·핵심인프라 AI 사이버 위험 경보" in cats:
@@ -1286,6 +1359,11 @@ def main() -> int:
     )
 
     seen = prune_seen(dict(state.get("seen") or {}), now)
+    insider_stages = dict(state.get("openai_insider_case_stages") or {})
+    insider_stages.setdefault("initial_oct13_charge", {
+        "source_url": "https://www.justice.gov/usao-ndca/pr/saudi-national-arrested-installing-surreptitious-audio-recording-device-openai-san",
+        "status": "2026-10-13 initial criminal complaint; allegations, not verdict",
+    })
     new_items: list[dict] = []
     for item in current:
         fp = item["fingerprint"]
@@ -1293,6 +1371,18 @@ def main() -> int:
             continue
         if previously_similar(item, seen, now):
             continue
+        stage = openai_insider_case_stage(item)
+        if stage:
+            if stage in insider_stages:
+                continue
+            if stage == "court_verdict" and not source_official(item.get("source", "")):
+                continue
+            insider_stages[stage] = {
+                "source_url": item.get("url"),
+                "source": item.get("source"),
+                "first_seen_at": now.isoformat(),
+                "status": "reported change, verify against primary court/DOJ source",
+            }
         new_items.append(item)
 
     # Silent baseline on the first successful collection to prevent retroactive spam.
@@ -1350,6 +1440,7 @@ def main() -> int:
         "updated_at_kst": now.astimezone(KST).isoformat(timespec="seconds"),
         "seen": seen,
         "quantum_mna_seen": quantum_seen,
+        "openai_insider_case_stages": insider_stages,
         "last_collection": {
             "raw_items": len(raw_items),
             "direct_official_items": len(direct_items),
