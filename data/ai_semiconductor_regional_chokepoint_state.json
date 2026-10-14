@@ -69,10 +69,13 @@
       "comparable_75pct_refresh_public": false
     }
   },
-  "updated_at_kst": "2026-10-14T20:44:57+09:00",
+  "updated_at_kst": "2026-10-14T21:08:02+09:00",
   "last_scan_count": 2,
+  "semi_300mm_track_version": 1,
+  "semi_300mm": {},
+  "semi_300mm_last_observed": {},
   "last_eligible_count": 0,
-  "last_held_count": 1,
+  "last_held_count": 0,
   "seen_fingerprints": [
     "2b04eb17a0ebb0a08a2d3235",
     "2ff967f0a83d4f9d09737f69",
@@ -88,12 +91,5 @@
     "f3274f98949ddbb5ad284b00"
   ],
   "delivered_event_keys": [],
-  "last_held": [
-    {
-      "event_key": "korea|capacity|SK hynix|hbm4",
-      "source": "富途牛牛",
-      "reason": "출처 신뢰도 부족",
-      "published_kst": "2026-10-14T18:10:00+09:00"
-    }
-  ]
+  "last_held": []
 }
