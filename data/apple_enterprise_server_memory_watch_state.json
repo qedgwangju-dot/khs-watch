@@ -142,7 +142,9 @@
     "5d21c980749828b4eccd",
     "5d3d8847b65d2ccd05de6e53",
     "5d746ce57244dad5cd759a46",
+    "5e234919fcf67dba1325",
     "5ffb8f46d62eed5f8da31e4c",
+    "6150705de13498546110",
     "619d7d278d7c6a296207",
     "619e0f32d2de6c27f6b9be5f",
     "61b2c4b85d86e0dfe88a3053",
@@ -263,6 +265,7 @@
     "b244f204db532493bbe8",
     "b2dfec269fc1b02f155ef74c",
     "b345e3b3ed13b1dd026c",
+    "b3613bd823bac5127fb2",
     "b3bb24e1377327efac8ef67c",
     "b57b20a95bc4cfb1a838",
     "b5d3895654bf5319103d",
@@ -360,6 +363,7 @@
     "f8f9990f23f13b16071d",
     "f927019eab761079a46ff8a9",
     "f963efc3b59306faf2cce6ef",
+    "fa8d1a9e4e401d87fc73",
     "fc4ec7c811ea11e654b9",
     "fca7094742b5720faa7c",
     "fcb7928c20171e06f9564722",
@@ -393,7 +397,7 @@
       "실패모드·일정 변화"
     ]
   },
-  "last_scan_kst": "2026-10-15T04:08:22+09:00",
+  "last_scan_kst": "2026-10-15T07:17:57+09:00",
   "errors": [],
   "seen_event_keys": [
     "memory:unconfirmed",
@@ -401,6 +405,8 @@
     "server:reported:2or4:2029"
   ],
   "observations": [],
-  "fetch_ok": 12,
-  "fetch_errors": []
+  "fetch_ok": 11,
+  "fetch_errors": [
+    "bing_news \"Apple\" HBM server supplier contrac: ParseError not well-formed (invalid token): line 1, column 41"
+  ]
 }
