@@ -1254,6 +1254,136 @@ def _stock_218_correction_recovery() -> list[dict]:
     }]
 
 
+
+# Brunsbuettel Vattenfall/Fluence project, announced by Fluence via
+# GlobeNewswire on 2026-10-14. Sep 10 investment decision was already
+# announced by Vattenfall; the NEW event is Fluence's signed turnkey award.
+# Cell supplier, amount and service tenure are not public.
+FLUENCE_VATTENFALL_RECOVERY = 'DIRECT_FLUENCE_VATTENFALL_BRUNSBUETTEL_SIGNED_20261014'
+FLUENCE_VATTENFALL_PRESS = 'https://via.ritzau.dk/pressemeddelelse/15224763/fluence?publisherId=90446'
+FLUENCE_VATTENFALL_ORIGIN = {'Fluence (GlobeNewswire)', 'Fluence', 'Fluence Energy', 'Vattenfall'}
+FLUENCE_VATTENFALL_PARTIES = re.compile(r'Fluence|플루언스',re.I)
+FLUENCE_VATTENFALL_CUSTOMER = re.compile(r'Vattenfall|바텐팔',re.I)
+FLUENCE_VATTENFALL_SITE = re.compile(r'Brunsb(?:ü|u)ttel|브룬스뷔텔|브룬스뷔텔',re.I)
+FLUENCE_VATTENFALL_SIGNED = re.compile(
+    r'signed\s+(?:an?\s+)?agreement|agreement\s+(?:has\s+been\s+)?signed|'
+    r'contract\s+(?:was\s+)?signed|signed\s+contract|'
+    r'공급계약\s*체결|계약을\s*체결|공급\s*계약\s*(?:확정|체결)',
+    re.I,
+)
+FLUENCE_VATTENFALL_FID = re.compile(r'final\s+investment\s+decision|투자\s*최종\s*결정',re.I)
+FLUENCE_VATTENFALL_START = re.compile(
+    r'(?:construction|building\s+works).{0,60}(?:has\s+)?(?:begun|started|commenced)|'
+    r'실제\s*착공|착공\s*(?:확정|완료|개시)|공사\s*(?:시작|개시)\s*완료',
+    re.I,
+)
+FLUENCE_VATTENFALL_START_NOT = re.compile(
+    r'(?:will|planned|scheduled|expected|due|to)\s+(?:begin|start|commence)|'
+    r'착공\s*(?:계획|예정|목표)|2027년\s*(?:착공|공사)\s*(?:예정|목표)',
+    re.I,
+)
+FLUENCE_VATTENFALL_ENERGIZED = re.compile(
+    r'grid\s+(?:connection|energization)\s+(?:completed|commissioned)|'
+    r'commercial\s+operations?\s+(?:commenced|began|started)|'
+    r'전원\s*인가\s*(?:완료|확인)|상업\s*운전\s*(?:개시|시작)|준공\s*(?:완료|확정)',
+    re.I,
+)
+FLUENCE_VATTENFALL_ENERGIZED_NOT = re.compile(
+    r'(?:will|planned|scheduled|expected|due|target|aim).{0,60}'
+    r'(?:operational|online|commissioning|grid\s+connection)|'
+    r'(?:예정|목표|계획).{0,50}(?:준공|상업\s*운전|전원\s*인가)',
+    re.I,
+)
+FLUENCE_VATTENFALL_REVERSE = re.compile(
+    r'cancel(?:led|ation)?|terminat(?:ed|ion)|contract\s+withdrawn|'
+    r'계약\s*(?:취소|해지|철회)|사업\s*(?:중단|철회)|공급사\s*변경',
+    re.I,
+)
+
+
+def _is_fluence_vattenfall(text: str) -> bool:
+    return bool(
+        FLUENCE_VATTENFALL_PARTIES.search(text)
+        and FLUENCE_VATTENFALL_CUSTOMER.search(text)
+        and FLUENCE_VATTENFALL_SITE.search(text)
+    )
+
+
+def _fluence_vattenfall_stage(text: str, source: str = '') -> str:
+    if not _is_fluence_vattenfall(text):
+        return ''
+    if source not in FLUENCE_VATTENFALL_ORIGIN:
+        return 'report_only'
+    if FLUENCE_VATTENFALL_REVERSE.search(text):
+        return 'official_reversal'
+    if (FLUENCE_VATTENFALL_ENERGIZED.search(text)
+            and not FLUENCE_VATTENFALL_ENERGIZED_NOT.search(text)):
+        return 'official_energized'
+    if (FLUENCE_VATTENFALL_START.search(text)
+            and not FLUENCE_VATTENFALL_START_NOT.search(text)):
+        return 'official_construction_started'
+    if FLUENCE_VATTENFALL_SIGNED.search(text):
+        return 'official_signed_turnkey_award'
+    return 'existing_fid_or_timeline'
+
+
+def _fluence_vattenfall_recovery() -> list[dict]:
+    # One-time press release recovery. The original release specifies 09:00
+    # CEST, which equals 07:00 UTC / 16:00 KST on Oct 14.
+    if base.NOW.astimezone(base.KST).date() > dt.date(2026,10,20):
+        return []
+    return [{
+        'title':'Fluence·Vattenfall, 독일 브룬스뷔텔 254MW/1GWh ESS 턴키·장기 유지보수 계약 체결',
+        'link':FLUENCE_VATTENFALL_PRESS,
+        'description':(
+            'Fluence가 GlobeNewswire에서 2026-10-14 직접 발표했다. '
+            'Vattenfall과 독일 Brunsbüttel 배터리 에너지저장장치 사업에 '
+            '배터리 시스템·전력변환장치·에너지관리시스템을 포함한 Gridstack Pro 5000 '
+            '공급 및 설계·조달·시공·시운전, 장기 유지보수 계약을 체결했다. '
+            '254MW, 1,000MWh 초과, 지속시간 약 4시간. '
+            '2027년 착공 예정, 2028년 말 50Hertz 380kV 송전계통 연결·상업운전 목표. '
+            'Vattenfall의 2026-09-10 투자 최종결정은 기존 기준선이며 '
+            '새 사건은 2026-10-14 Fluence 공급사 선정과 구속력 있는 서명 계약이다. '
+            '계약금액, 저장 셀 제조사·화학 조성, 장기 유지보수 기간 및 '
+            '서비스 이용료는 이번 공개발표에 기재되지 않았다. '
+            'Samsung SDI가 이 프로젝트의 셀 공급사라는 근거는 없다. '
+            '독일 4시간 ESS 2026년 턴키 산업 비교치는 280~450유로/kWh이며 '
+            '1,000MWh 용량을 단순 적용하면 2억8,000만~4억5,000만유로다. '
+            '기업은행 2026-10-14 15:05:50 매매기준율 1유로=1,500.24원으로 '
+            '약 4,201억~6,751억원의 전체 프로젝트 투자비 참고범위다. '
+            '이 금액은 Fluence 수주액이나 Vattenfall 확정 투자비가 아니다. '
+            '공사·계통접속·화재안전·보험·전원인가·유지보수 이행을 별도 추적한다.'
+        ),
+        'source':'Fluence (GlobeNewswire)',
+        'published':'2026-10-14T07:00:00+00:00',
+        'direct_recovery':True,
+        'flu_vattenfall_award':True,
+    }]
+
+
+SDI_OCT08_PREVIEW_SOURCE = re.compile(r'DS투자증권|DS\s*Investment|최태용',re.I)
+SDI_OCT08_PREVIEW_COMPANY = re.compile(r'삼성SDI|Samsung\s*SDI',re.I)
+SDI_OCT08_PREVIEW_PREDICTION = re.compile(
+    r'3Q26|3분기|4분기|2028|2,575|2575|AMPC|시너지셀즈',
+    re.I,
+)
+SDI_OCT08_PREVIEW_QUALIFIER = re.compile(r'전망|추정|예상|검토|수주\s*기대|목표',re.I)
+
+
+def _is_sdi_oct08_preview(text: str) -> bool:
+    # Analyst assumptions are useful for monitoring but neither actual
+    # filings nor signed new orders. Company earnings releases still go
+    # through the original ESS stage classifier.
+    if re.search(r'삼성SDI.{0,50}(?:2026년\s*3분기\s*공식\s*실적|확정실적\s*발표)', text,re.I):
+        return False
+    return bool(
+        SDI_OCT08_PREVIEW_COMPANY.search(text)
+        and SDI_OCT08_PREVIEW_SOURCE.search(text)
+        and SDI_OCT08_PREVIEW_PREDICTION.search(text)
+        and SDI_OCT08_PREVIEW_QUALIFIER.search(text)
+    )
+
+
 _orig_query_news = base.query_news
 
 
@@ -1282,6 +1412,8 @@ def query_news(q: str) -> list[dict]:
         return _dexmate_lg_recovery()
     if q == STOCK_218_CORRECTION:
         return _stock_218_correction_recovery()
+    if q == FLUENCE_VATTENFALL_RECOVERY:
+        return _fluence_vattenfall_recovery()
     return _orig_query_news(q)
 
 
@@ -1290,6 +1422,9 @@ for q in (
     CATL_INTILION_RECOVERY,
     DEXMATE_LG_RECOVERY,
     STOCK_218_CORRECTION,
+    FLUENCE_VATTENFALL_RECOVERY,
+    '(Fluence OR 플루언스) (Vattenfall OR 바텐팔) (Brunsbüttel OR Brunsbuttel OR 브룬스뷔텔) (공급계약 OR signed OR turnkey OR contract OR commissioning OR 착공)',
+    '(Fluence OR 플루언스) (Vattenfall OR 바텐팔) (254MW OR 1000MWh OR 1GWh) (long term service OR grid connection OR EPC OR completion OR 전원 인가)',
     '(CATL OR 宁德时代) (INTILION OR 인틸리온) (sodium-ion OR 나트륨이온) (3GWh OR 3 GWh OR 계약 OR 프로젝트 OR 납품 OR 지연)',
     '(Dexmate OR 덱스메이트) (LG CNS OR LG씨엔에스) (실제 사용 OR 유통 OR 도입 OR 납품 OR 유상계약 OR 작업 성공률)',
 ):
@@ -1448,6 +1583,10 @@ def _is_airan(text: str) -> bool:
 
 
 def topic_group(text: str) -> str | None:
+    if _is_fluence_vattenfall(text):
+        return 'fluence_vattenfall_bess'
+    if _is_sdi_oct08_preview(text):
+        return 'sdi_oct08_broker_preview'
     if '정정: Telegram 218번 1번' in text:
         return 'alert_quality_correction'
     if _is_catl_intilion_sodium(text):
@@ -1494,6 +1633,16 @@ def _stage(text: str) -> str:
 
 
 def score(item: dict) -> int:
+    item_text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    if _is_fluence_vattenfall(item_text):
+        return {
+            'official_signed_turnkey_award': 76,
+            'official_construction_started': 80,
+            'official_energized': 88,
+            'official_reversal': 90,
+        }.get(_fluence_vattenfall_stage(item_text,item.get('source') or ''),0)
+    if _is_sdi_oct08_preview(item_text):
+        return 0
     if item.get('correction_218_stock'):
         return 95 if topic_group(
             f"{item.get('title','')} {item.get('description','')}"
@@ -1603,6 +1752,20 @@ def score(item: dict) -> int:
 
 
 def category(text: str, group: str) -> str:
+    if group == 'fluence_vattenfall_bess':
+        if FLUENCE_VATTENFALL_REVERSE.search(text):
+            return 'Fluence–Vattenfall · 독일 1GWh ESS 계약 후퇴'
+        if (FLUENCE_VATTENFALL_ENERGIZED.search(text)
+                and not FLUENCE_VATTENFALL_ENERGIZED_NOT.search(text)):
+            return 'Fluence–Vattenfall · 독일 1GWh ESS 전원 인가·상업운전'
+        if (FLUENCE_VATTENFALL_START.search(text)
+                and not FLUENCE_VATTENFALL_START_NOT.search(text)):
+            return 'Fluence–Vattenfall · 독일 1GWh ESS 실제 착공'
+        if FLUENCE_VATTENFALL_SIGNED.search(text):
+            return 'Fluence–Vattenfall · 독일 1GWh ESS 정식 턴키 공급계약'
+        return 'Fluence–Vattenfall · 9월 투자결정 기존 기준선'
+    if group == 'sdi_oct08_broker_preview':
+        return '삼성SDI · 증권사 3분기 추정·4분기 수주 기대'
     if group == 'alert_quality_correction':
         return '알림 품질 정정 · Telegram 218번 1번 오탐'
     if group == 'catl_intilion_sodium':
@@ -1718,6 +1881,37 @@ def category(text: str, group: str) -> str:
 
 
 def meaning(cat: str) -> str:
+    if cat.startswith('Fluence–Vattenfall · '):
+        if '정식 턴키 공급계약' in cat:
+            return (
+                '10/14 Fluence 공식 발표로 Vattenfall 독일 Brunsbüttel '
+                '254MW·1,000MWh 초과(약 4시간) ESS 공급계약을 확인했습니다. '
+                '9/10 투자 최종결정과 달리 이번에는 공급사 계약 체결 단계입니다. '
+                'Gridstack Pro 5000 배터리·전력변환장치·에너지관리시스템과 '
+                '설계·조달·시공·시운전·장기 유지보수를 포함합니다. '
+                '2027년 착공 예정, 2028년 말 50Hertz 380kV 계통 연결 목표입니다. '
+                '계약액·셀 공급사·서비스 계약기간은 비공개입니다. '
+                '독일 4시간 ESS 업계 턴키 참고단가 280~450유로/kWh를 '
+                '1GWh에 적용한 전체 사업비 참고범위는 '
+                '2억8,000만~4억5,000만유로(10/14 기업은행 환율 '
+                '1유로 1,500.24원 적용 약 4,201억~6,751억원)이며 '
+                'Fluence 계약 매출은 아닙니다.'
+            )
+        if '실제 착공' in cat:
+            return '2027년 예정 단계에서 현장 공사 개시가 직접 확인된 후속 단계입니다. 부지·계통공사·보험·자금집행·첫 장비반입을 추적합니다.'
+        if '전원 인가' in cat:
+            return '공사 계획을 넘어 독일 50Hertz 380kV 송전망 전원 인가와 현장 가동이 확인된 후속 단계입니다. 성능시험·인수·반복 유지보수 매출을 추적합니다.'
+        if '계약 후퇴' in cat:
+            return '기존 공급계약이 취소·변경된 실제 계약 단계 후퇴입니다. 철회비용·설비·공사 진척과 재계약 조건을 확인합니다.'
+        return '9월 투자 최종결정만 반복되면 새 공급계약 알림으로 인정하지 않습니다.'
+    if cat == '삼성SDI · 증권사 3분기 추정·4분기 수주 기대':
+        return (
+            '10/08 DS투자증권의 매출 약 4조120억원·영업이익 2,575억원은 '
+            '3분기 추정치, 정산이익 약 1,500억원은 예상 일회성입니다. '
+            '4.5조원 삼성디스플레이 매각은 8월 기존 발표이고 '
+            '2028년 2개 라인·10GWh 증설은 아직 검토 단계입니다. '
+            '회사 분기실적·신규 공급계약·장비발주 확인 시만 추가 알림합니다.'
+        )
     if cat == '알림 품질 정정 · Telegram 218번 1번 오탐':
         return (
             '앞서 전송된 Telegram message_id=218의 1번 '
@@ -2038,6 +2232,19 @@ def meaning(cat: str) -> str:
 
 
 def risk(cat: str) -> str:
+    if cat.startswith('Fluence–Vattenfall · '):
+        return (
+            '최대 역풍은 50Hertz 380kV 송전망 접속·변전설비 완공 또는 '
+            '화재·열폭주·배기·방폭·냉각·보험·독일 안전 인허가 지연으로 '
+            '2028년 말 전원 인가가 연기되는 경우입니다. '
+            '향후 6~24개월 확인할 지표는 EPC 진척률·설비 반입·'
+            '셀 품질·현장 화재안전검사·고온 동작·인수 시험·'
+            '예상 설치비 대비 원화 투자원가와 준공 일정입니다. '
+            '계약금액·셀 공급사 비공개이므로 삼성SDI 매출로 '
+            '연결하거나 모든 예상 총사업비를 Fluence 매출로 표시하지 않습니다.'
+        )
+    if cat == '삼성SDI · 증권사 3분기 추정·4분기 수주 기대':
+        return '애널리스트 추정이 회사 확정 분기실적·신규 계약이 아닙니다. 영업이익의 일회성 GM 정산이익 약 1,500억원과 AMPC, 관세환급을 구분합니다.'
     if cat == '알림 품질 정정 · Telegram 218번 1번 오탐':
         return (
             '이 정정은 새 계약이나 매출이 아닙니다. '
@@ -2183,6 +2390,17 @@ def risk(cat: str) -> str:
 
 
 def verification(item: dict, group: str, text: str) -> str:
+    if group == 'fluence_vattenfall_bess':
+        stage = _fluence_vattenfall_stage(text,item.get('source') or '')
+        if stage=='official_signed_turnkey_award':
+            return (
+                'Fluence 10/14 GlobeNewswire 직접 서명계약 보도자료 · '
+                'Vattenfall 9/10 공식 최종투자결정 · pv magazine 10/14 교차검증 · '
+                '계약액·셀 업체·서비스 연수 비공개'
+            )
+        return 'Vattenfall·Fluence 1차자료 직접 확인 단계 · 기존 공급계약과 별도'
+    if group == 'sdi_oct08_broker_preview':
+        return 'DS투자증권 10/08 전망 · 삼성SDI 공식 실적·장비발주·신규 수주 아님'
     if group == 'alert_quality_correction':
         return (
             'Run #584 실제 Telegram 발송문·서울경제 기사 제목 대조 · '
@@ -2308,6 +2526,8 @@ def verification(item: dict, group: str, text: str) -> str:
 
 
 def clean_title(title: str, source: str) -> str:
+    if _is_fluence_vattenfall(title+' '+source):
+        return 'Fluence, Vattenfall 독일 1GWh ESS 턴키·장기 유지보수 계약 확정'
     if title.startswith('정정: Telegram 218번 1번'):
         return '정정: Telegram 218번 1번 주가 반응 오탐 제외'
     if _is_catl_intilion_sodium(title + ' ' + source):
@@ -2403,6 +2623,8 @@ def clean_title(title: str, source: str) -> str:
 
 
 def tag_for(group: str) -> str:
+    if group == 'fluence_vattenfall_bess':
+        return 'Fluence·Vattenfall ESS'
     if group == 'alert_quality_correction':
         return '오탐 정정'
     if group == 'catl_intilion_sodium':
@@ -2436,6 +2658,11 @@ def tag_for(group: str) -> str:
 
 def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    if topic_group(text) == 'fluence_vattenfall_bess':
+        stage = _fluence_vattenfall_stage(text,item.get('source') or '')
+        return hashlib.sha256(f'fluence-vattenfall|brunsbuettel-254mw-1gwh|{stage}|2026'.encode()).hexdigest()
+    if topic_group(text) == 'sdi_oct08_broker_preview':
+        return hashlib.sha256(b'sdi|dsresearch|20261008|q3-preview-q4-order-expectation-baseline').hexdigest()
     if topic_group(text) == 'alert_quality_correction':
         return hashlib.sha256(
             b'khs-physical-ai|telegram218|20261014|item1-stock-reaction-correction-v1'
@@ -2597,6 +2824,9 @@ def key(item: dict) -> str:
 def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -> list[dict]:
     chosen = _orig_select_diverse(items, seen, force, limit)
     candidates = items if force else [x for x in items if x.get('key') not in seen]
+    fluence_contract = next((x for x in candidates if x.get('group') == 'fluence_vattenfall_bess'),None)
+    if fluence_contract and not any(x.get('key')==fluence_contract.get('key') for x in chosen):
+        chosen = ([fluence_contract,*chosen] if len(chosen)<limit else [fluence_contract,*chosen[:-1]])
     correction = next((x for x in candidates if x.get('group')=='alert_quality_correction'),None)
     if correction and not any(x.get('key')==correction.get('key') for x in chosen):
         chosen = ([correction,*chosen] if len(chosen)<limit else [correction,*chosen[:-1]])
