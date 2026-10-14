@@ -3586,7 +3586,7 @@ dg,ds,dc,dk=classify(dex)
 assert dg=='dexmate_lg_commercial' and ds>=11,(dg,ds,dc)
 assert dc=='Dexmate–LG CNS · 사용·유통 CEO 현장발언',dc
 assert '독점 유상 유통계약' in base.meaning(dc)
-assert '목표이지' in base.risk(dc)
+assert '요구수준이지' in base.risk(dc)
 
 old_lg=make("LG CNS invests in Dexmate",
     "LG CNS and Dexmate announced strategic investment and robot proof of concept in March.",
