@@ -87,6 +87,12 @@ class SourceContract(unittest.TestCase):
         body["t8463OutBlock1"].append({**body["t8463OutBlock1"][0], "time": "142930", "datetime": "20261014142930"})
         self.assertEqual(channels.parse_futures(body, "KOSDAQ", NOW)["time"], "143000")
 
+    def test_latest_missing_amount_cannot_use_older_complete_row(self):
+        body = response(formsamt=None)
+        body["t8463OutBlock1"].append({**response()["t8463OutBlock1"][0], "time": "142930", "datetime": "20261014142930"})
+        with self.assertRaises(ValueError):
+            channels.parse_futures(body, "KOSDAQ", NOW)
+
     def test_correct_program_market_components_and_receipt_interval(self):
         for market, expected in (("KOSPI", ("11", "12", "13")), ("KOSDAQ", ("21", "22", "23"))):
             calls = []

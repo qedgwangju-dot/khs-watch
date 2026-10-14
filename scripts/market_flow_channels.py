@@ -56,7 +56,7 @@ def decoded_hash(body: dict) -> str:
 def futures_request(market: str) -> dict:
     spec = MARKET_SPECS[market]
     return {"t8463InBlock": {"tm_rng": "D", "fot_clsf_cd": "F",
-                            "bsc_asts_id": spec["asset"], "cnt": 100, "bgubun": "0"}}
+                            "bsc_asts_id": spec["asset"], "cnt": 10, "bgubun": "0"}}
 
 
 def parse_futures(body: dict, market: str, received_ts: float) -> dict:
@@ -92,12 +92,12 @@ def parse_futures(body: dict, market: str, received_ts: float) -> dict:
             continue
         values = {actor: number(row.get(field)) for actor, field in
                   (("개인", "indmsamt"), ("외국인", "formsamt"), ("기관", "sysmsamt"))}
-        if any(v is None for v in values.values()):
-            continue
         valid.append((ts, row, values))
     if not valid:
         raise ValueError("t8463 no complete current-day investor row")
     ts, row, values = max(valid, key=lambda item: item[0])
+    if any(v is None for v in values.values()):
+        raise ValueError("t8463 latest row missing investor amount")
     return {"market": market, "asset": spec["asset"], "source_tr": "t8463",
             "source_scope_verified": True, "sample_ts": ts, "received_ts": received_ts,
             "timestamp_basis": "provider_date_time", "time": row["time"], "date": row["date"],
@@ -108,7 +108,7 @@ def parse_futures(body: dict, market: str, received_ts: float) -> dict:
 
 def futures_current(token: str, market: str, post) -> dict:
     body = post(token, "/futureoption/investor", "t8463", futures_request(market),
-                max_attempts=2, request_timeout=8.0)
+                max_attempts=1, request_timeout=25.0)
     return parse_futures(body, market, time.time())
 
 

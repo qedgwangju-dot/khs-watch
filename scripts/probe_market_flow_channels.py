@@ -54,6 +54,29 @@ def main(path: Path) -> int:
             failed.extend(market + ":" + key for key in issues)
             evidence["markets"][market] = {"snapshot": snapshot, "checks": checks,
                                             "health": watch.flow_snapshot_health(snapshot)}
+        if failed:
+            # Source diagnosis only. U includes another session; its amounts
+            # cannot substitute for the event's D request in either monitor.
+            evidence["diagnostics"] = {}
+            for market in MARKET_SPECS:
+                asset = MARKET_SPECS[market]["asset"]
+                try:
+                    result = retained_post(token, "/futureoption/investor", "t8463",
+                        {"t8463InBlock": {"tm_rng": "U", "fot_clsf_cd": "F",
+                         "bsc_asts_id": asset, "cnt": 10, "bgubun": "0"}},
+                        max_attempts=1, request_timeout=25.0)
+                    evidence["diagnostics"][market + "_combined_session"] = result
+                except Exception as exc:
+                    evidence["diagnostics"][market + "_combined_session"] = {"error_type": type(exc).__name__}
+            for tr, api_path, query in (
+                ("t8424", "/indtp/market-data", {"t8424InBlock": {"gubun1": ""}}),
+                ("t1615", "/stock/investor", {"t1615InBlock": {"gubun1": "2", "gubun2": "2", "exchgubun": "U"}}),
+            ):
+                try:
+                    evidence["diagnostics"][tr] = retained_post(token, api_path, tr, query,
+                                                                max_attempts=1, request_timeout=15.0)
+                except Exception as exc:
+                    evidence["diagnostics"][tr] = {"error_type": type(exc).__name__}
         evidence.update(status="contract_checked" if not failed else "source_contract_held", failed_checks=failed)
     except Exception as exc:
         # Token transport exceptions can contain URLs with query credentials.
