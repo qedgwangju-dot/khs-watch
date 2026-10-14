@@ -53,7 +53,7 @@ def extract_swap_report(blob: str) -> dict[str, float] | None:
     horizon = bool(re.search(r"6\s*개?월|six\s*months|6\s*months|六个?月|未来\s*六个?月", x, re.I))
     hike = bool(re.search(r"인상|hike|tighten|加息", x, re.I))
     basis = set(float(m) for m in re.findall(
-        r"(\d{1,3}(?:\.\d+)?)\s*(?:bp|bps|basis\s*points|베이시스포인트|基点)", x, re.I
+        r"(\d{1,3}(?:\.\d+)?)\s*(?:bp|bps|basis\s*points|베이시스포인트|个?基点)", x, re.I
     ))
     probs = set(float(m) for m in re.findall(
         r"(?:확률|概率|probability|chance)[^.!?。]{0,45}?(\d{1,3}(?:\.\d+)?)\s*[%％]", x, re.I
