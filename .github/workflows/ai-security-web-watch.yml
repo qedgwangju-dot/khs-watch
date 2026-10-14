@@ -457,6 +457,15 @@ jobs:
           assert replication_stage(n_negated) == "research"
           assert n_negated["severity"] == 1
 
+          controlled = dict(
+              verified,
+              title="Controlled evaluation confirms active self-replication in an AI worm simulation",
+              description="Laboratory sandbox, no real-world infection observed",
+          )
+          n_controlled = normalize_item(controlled)
+          if replication_stage(n_controlled) != "research" or n_controlled["severity"] != 1:
+              raise RuntimeError("Controlled AI worm test was mistaken for an active field infection")
+
           unrelated = dict(
               verified,
               title="Traditional software worm affected IoT routers",
