@@ -322,8 +322,12 @@ jobs:
           assert openai_insider_case_stage(scheduled) == "initial_oct13_charge"
 
           loss = dict(base)
-          loss["title"] = "OpenAI confirms no evidence of stolen model weights"
+          loss["title"] = "OpenAI Alfozan case: no evidence of stolen model weights"
           assert openai_insider_case_stage(loss) == "initial_oct13_charge"
+          unrelated = dict(base)
+          unrelated["title"] = "OpenAI confirms no evidence of stolen model weights"
+          unrelated["description"] = "General unrelated security update"
+          assert openai_insider_case_stage(unrelated) is None
           verdict = dict(base)
           verdict["title"] = "Alfozan found guilty in OpenAI wiretapping case"
           verdict["description"] = ""
