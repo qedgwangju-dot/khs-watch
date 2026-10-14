@@ -692,17 +692,26 @@ def replication_stage(item: dict) -> str | None:
         "no worm in the wild", "not found in the wild",
         "no in-the-wild", "without real-world infection",
         "no autonomous worm exists", "no fully autonomous",
+        "no real-world infection", "no actual infection",
         "실제 감염은 확인되지", "실제 감염 사례는 없",
         "실제 인터넷에서 확인되지", "실전 확산은 확인되지",
     ))
     observed = any(term in content for term in (
-        "confirmed active self-replication", "confirmed in-the-wild ai worm",
+        "confirmed in-the-wild ai worm",
         "ai worm detected in the wild", "actively spreading ai worm",
         "ai worm actively infecting", "verified real-world ai worm",
         "confirmed ai worm outbreak", "confirmed ai worm infections",
         "실제 ai 웜 감염 확인", "ai 웜 확산 확인",
     ))
-    if observed and not negated:
+    controlled_only = any(term in content for term in (
+        "controlled evaluation", "simplified eval", "controlled environment",
+        "laboratory test", "lab experiment", "in the sandbox",
+        "simulation", "simulated replication", "격리 시험", "실험실 시험",
+    )) and not any(term in content for term in (
+        "detected in the wild", "confirmed outbreak",
+        "actively infecting real devices", "실제 감염 확인",
+    ))
+    if observed and not negated and not controlled_only:
         return "confirmed_field" if source_official(item.get("source", "")) else "reported_field"
     if any(term in content for term in (
         "fix released for ai worm", "ai worm detection rule released",
