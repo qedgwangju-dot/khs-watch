@@ -656,6 +656,10 @@ def material(item: dict) -> bool:
         return False
     if is_policy_program_announcement(item):
         return False
+    if is_openai_insider_case(item) and source_trusted(item.get("source","")):
+        # A later courtroom story may name only Alfozan and omit 'OpenAI',
+        # 'AI', 'wiretap', and other generic security keywords.
+        return True
     combined = f" {item.get('title','')} {item.get('description','')} "
     low = combined.lower()
 
