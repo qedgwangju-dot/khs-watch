@@ -645,16 +645,16 @@ jobs:
               ("Lumentum Japan plan $350M", "$350M(약 4,684억원)"),
               ("purchase commitment USD 6bn", "USD 6bn(약 8조298억원)"),
               ("optical components 6억~8억 달러", "6억~8억 달러("),
-              ("investment 1 trillion USD", "1 trillion USD"),  # not falsely changed to won
+              ("investment 1 trillion USD", "1 trillion USD(약 1,338조3,000억원)"),
+              ("contract 60억 USD", "60억 USD(약 8조298억원)"),
           ]
           with patch.object(g, "_rate", return_value=(1338.30, "2026-10-14 공식 기준환율 · 테스트")):
               for raw, expected in examples:
                   converted = g.enforce_text(raw)
                   assert expected in converted, (raw, converted)
-                  assert "환율 기준: USD/KRW 1,338.3000원" in converted if expected != "1 trillion USD" else True
+                  assert "환율 기준: USD/KRW 1,338.3000원" in converted
                   g.validate_text(converted)
-                  if expected != "1 trillion USD":
-                      assert g.enforce_text(converted) == converted, "원화 중복 환산 금지"
+                  assert g.enforce_text(converted) == converted, "원화 중복 환산 금지"
 
           with patch.object(g, "_rate", return_value=(None, "환율 조회 실패")):
               try:
