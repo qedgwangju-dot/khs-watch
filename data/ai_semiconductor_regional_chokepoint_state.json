@@ -69,7 +69,7 @@
       "comparable_75pct_refresh_public": false
     }
   },
-  "updated_at_kst": "2026-10-14T21:21:54+09:00",
+  "updated_at_kst": "2026-10-14T21:28:06+09:00",
   "last_scan_count": 2,
   "semi_300mm_track_version": 2,
   "semi_300mm": {
@@ -94,6 +94,8 @@
   "semi_300mm_last_observed": {
     "vintage": "3Q26",
     "release_date": "2026-10-13",
+    "primary_forecast_year": 2026,
+    "terminal_forecast_year": 2029,
     "equipment_2026_usd_b": 149.0,
     "equipment_2029_usd_b": 227.0,
     "equipment_2026_yoy_pct": 31.0,
@@ -102,13 +104,14 @@
     "construction_2028_usd_b": 68.4,
     "americas_2026_usd_b": 18.1,
     "americas_2029_usd_b": 40.6,
-    "source_url": "https://www.prnewswire.com/news-releases/global-300mm-fab-equipment-spending-to-reach-227-billion-in-2029-as-buildout-accelerates-semi-projects-302906628.html",
-    "source_kind": "SEMI 직접 배포 PR Newswire 원문 · semi.org 직접 접근 제한",
+    "source_url": "https://www.prnewswire.com/in/news-releases/global-300mm-fab-equipment-spending-to-reach-227-billion-in-2029-as-buildout-accelerates-semi-projects-302906649.html",
+    "source_kind": "SEMI 발행 PR Newswire 원문·실제 주문 확정액 아님",
     "starts_2026": 20,
     "starts_2027": 18,
     "first_silicon_2026": 13,
     "first_silicon_2027": 23,
-    "outlook_direct_checked": false
+    "outlook_direct_checked": false,
+    "issuer_index_checked": true
   },
   "last_eligible_count": 0,
   "last_held_count": 0,
