@@ -341,7 +341,8 @@
     "stateevt_4bd6e3eda851426115a9": "2026-10-03T01:23:43.460079+00:00",
     "stateevt_9539aeeed85f82de3ca5": "2026-10-14T01:13:57.413978+00:00",
     "stateevt_f2c26bf9f31501b59b15": "2026-10-14T01:13:57.413978+00:00",
-    "stateevt_90b6a05593e2e71dc434": "2026-10-14T01:14:49.498979+00:00"
+    "stateevt_90b6a05593e2e71dc434": "2026-10-14T01:14:49.498979+00:00",
+    "stateevt_95f14d5c2d3931140281": "2026-10-14T01:18:11.707617+00:00"
   },
   "semantic_seen": {
     "alaska_participation_pressure": "2026-09-09T06:46:11.750941+00:00",
@@ -374,7 +375,8 @@
     "eventstate_alaska_lng_4bd6e3eda851426115a9": "2026-10-03T01:23:43.460079+00:00",
     "eventstate_legacy_funding_media_9539aeeed85f82de3ca5": "2026-10-14T01:13:57.413978+00:00",
     "eventstate_alaska_lng_f2c26bf9f31501b59b15": "2026-10-14T01:13:57.413978+00:00",
-    "eventstate_alaska_lng_90b6a05593e2e71dc434": "2026-10-14T01:14:49.498979+00:00"
+    "eventstate_alaska_lng_90b6a05593e2e71dc434": "2026-10-14T01:14:49.498979+00:00",
+    "eventstate_alaska_lng_95f14d5c2d3931140281": "2026-10-14T01:18:11.707617+00:00"
   },
   "official_status": {
     "status": "official_seen",
@@ -674,6 +676,7 @@
         "alaska_bilateral_status:review_started",
         "alaska_fid_after_commercial_review:reported",
         "alaska_reported_amount_usd_b:54",
+        "alaska_taiwan_project_share_reported:30",
         "alaska_us_claim_usd_b:54",
         "alaska_us_reiteration:2026-10-13"
       ],
@@ -681,19 +684,32 @@
         "alaska_lng|alaska_bilateral_status": "alaska_bilateral_status:review_started",
         "alaska_lng|alaska_fid_after_commercial_review:reported": "alaska_fid_after_commercial_review:reported",
         "alaska_lng|alaska_reported_amount_usd_b": "alaska_reported_amount_usd_b:54",
+        "alaska_lng|alaska_taiwan_project_share_reported": "alaska_taiwan_project_share_reported:30",
         "alaska_lng|alaska_us_claim_usd_b": "alaska_us_claim_usd_b:54",
         "alaska_lng|alaska_us_reiteration": "alaska_us_reiteration:2026-10-13"
       },
       "initialized_at": "2026-09-29T23:10:16.076895+00:00",
-      "updated_at": "2026-10-14T01:14:54.332571+00:00",
+      "updated_at": "2026-10-14T01:18:15.031595+00:00",
       "last_title": "백악관 공식 2026-10-13 한국 에너지투자 패키지 중 알래스카 LNG 540억달러 포함 주장 재확인",
       "last_source": "White House",
       "evidence": [
         {
-          "source": "White House",
-          "title": "백악관 공식 2026-10-13 한국 에너지투자 패키지 중 알래스카 LNG 540억달러 포함 주장 재확인",
-          "link": "https://www.whitehouse.gov/releases/2026/10/president-trump-visits-alaska-delivering-results-for-the-last-frontier/",
-          "published": "2026-10-13"
+          "source": "뉴스핌",
+          "title": "트럼프 \"대만, 알래스카 LNG 생산 가스 30% 구매 합의\" - 뉴스핌",
+          "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFA3RWtuZ2NlWF9PVk1obmVlUTl1UlJPNmk0UWZVdHlpWlptdjZEU2F3Y3A3YzFhRDlIWUVZRklvcFB2NEdjd3NTWWZCMlVFcGxjOUNLRjZFbWxVSXVY?oc=5",
+          "published": "2026-10-14T01:09:00+00:00"
+        },
+        {
+          "source": "뉴스1",
+          "title": "[속보] 트럼프 \"대만, 알래스카 파이프라인 가스 30% 구매 합의\" - 뉴스1",
+          "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1kUDZRTlpaZVpXbHozdHpuclE3NGM0clVNV2dMZ1A4ZDYzSmdNbmo2TC1JZEJldXV4dDFTRmVCcjNSTGNYTjA0bE05bWdPWFpaUlBrSzh6SUQ?oc=5",
+          "published": "2026-10-14T00:59:04+00:00"
+        },
+        {
+          "source": "한국경제",
+          "title": "[속보] 트럼프 \"대만, 알래스카 파이프라인 가스 30% 구매 합의\" - 한국경제",
+          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE90eEllazQ0ckNoWWFvS2ktRjBMMThIZlp2Zm90UTYtZndDVW05aDJwbEZTWjJwQlpfUVpjWnN6cE9TZnJxeWFROEYtY0FKT25feUJaVm0tSlR1Zw?oc=5",
+          "published": "2026-10-14T01:00:22+00:00"
         }
       ]
     },
