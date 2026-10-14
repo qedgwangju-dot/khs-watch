@@ -5,9 +5,9 @@
   "last_collection": {
     "direct_official_items": 27,
     "errors": [],
-    "material_items": 16,
+    "material_items": 17,
     "new_material_items": 0,
-    "raw_items": 176
+    "raw_items": 177
   },
   "openai_insider_case_stages": {
     "initial_oct13_charge": {
@@ -414,6 +414,16 @@
       "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPS0k5TC1vcnZBVEctaGxwT1VMVmtpQ2tWZzljUjBjOTlSazd1UUZtOFQ5Z0xLcVhtMXdBazNTWlhRZ3JySHBJS1ozdUhQQkpRdUhWVS1wcG5hWlFIVTZCa3dBXzFuU1BBZXh0WnF2Vm9tUFBRUmZ4R3VkcmZ0WGdNeUhXRS1icXNWV1hmQktNLUN6aTJQenZvTHBNUzh6akREMHBsS0pPVDhOQ1RSTUE?oc=5",
       "vendor": "OpenAI"
     },
+    "d82d23b7a2ab5fed3ecd83b7": {
+      "category": "AI 연구기관 내부자 도청·접근통제 사건",
+      "first_seen_at": "2026-10-14T05:07:54.119706+00:00",
+      "published_at": "2026-10-14T04:54:52+00:00",
+      "severity": 2,
+      "source": "Sri Lanka Guardian",
+      "title": "OpenAI says AI helped identify employee accused of planting hidden recording device - Sri Lanka Guardian",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxObmE4TkxLNG9VQWstNmhaRVBVbkJvdFdOaE5ReDM0U3pSV0EtY1F0NjBwWWZLS0c2TXZ6anJ5ZWJJdEQxVFlpMUZ0MGR3ZXl1WENSQ1pIM1VETnZIOTJXUXhyNXkxRVZjczlvcW5CN0ZPZnA2S0dEM2pMQk9CT0JTa1NXN1lhRTJ1UkZmOXQ2ZlpwVmljTTgyaDJ6SlFyeU1wdl9kWUExY0NEQXM?oc=5",
+      "vendor": "OpenAI"
+    },
     "d9f615ff8e89c5043ee223d6": {
       "category": "AI 연구기관 내부자 도청·접근통제 사건",
       "first_seen_at": "2026-10-14T01:55:26.271540+00:00",
@@ -495,5 +505,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-10-14T13:40:33+09:00"
+  "updated_at_kst": "2026-10-14T14:07:54+09:00"
 }
