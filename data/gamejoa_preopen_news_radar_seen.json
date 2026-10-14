@@ -4375,6 +4375,28 @@
       "telegram_core_fact": "인공지능(AI) 기반 투자정보 플랫폼 에픽AI에 따르면 GS건설의 올해 영업이익 컨센서스(증권사 전망치 평균)는 5321억원으로 집계됐다.",
       "title": "GS건설, 연간 1만7000세대 분양 예상...일주일 새 영업익 전망 29% 올라가"
     },
+    "core:1931e2bc7c022eb19f55a4f7": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261014042351003",
+      "source": "연합뉴스",
+      "source_body_digest": "5e51024c01de7a30083bfd115e873bcab1a9e26f0f4b12c640109953d7c8d08f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:03ed29d4aa4346aea6088717c3a3103ec5df971602a9e107718aa706d1d72400",
+      "source_fact_keys": [
+        "source_fact:v1:036ddb25ac76e29a0abb0987f00c6e55acaa8f294a474b8f81d258356541de4f",
+        "source_fact:v1:2eb52d7cdcdcb3b8e268777dbf7871e91227efdd3fdaca36cce32c1b3bb2d319",
+        "source_fact:v1:4b133837fe644d99b74f8440c007537384f46863f0a1f4e44c3269af3bf1ddf5"
+      ],
+      "source_published_kst": "2026-10-14T11:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성 반도체 부스 찾은 하정우 부위원장 \"AI반도체 로드맵 확인\"(종합) | 연합뉴스",
+      "telegram_core_fact": "삼성전자는 올해 신설한 반도체 클러스터존에서 주요 생산·개발 거점과 용인 국가산업단지 조성 계획도 소개한다.",
+      "title": "삼성 반도체 부스 찾은 하정우 부위원장 \"AI반도체 로드맵 확인\"(종합) | 연합뉴스"
+    },
     "core:1952ddad26226d2d1151e25a": {
       "first_seen_kst": "2026-10-09T21:27:46+09:00",
       "lanes": {
@@ -16201,6 +16223,35 @@
       "telegram_core_fact": "신현송 한국은행 총재는 12일 “금리 향방에서 가장 중요한 기준은 인플레이션(물가 상승) 추이”라고 밝혔다.",
       "title": "“기준금리 10월 또 올리나” 질문에…한은 총재가 국감장에서 밝힌 답변은"
     },
+    "core:5b55b317d3b97261afc2d007": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://biz.heraldcorp.com/article/10902424",
+      "source": "헤럴드경제",
+      "source_body_digest": "885b82d518eca93dcf154076080259b59f62b57219fc8aa4ad65790719cd7017",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:667d0d630ff653890a0bf8e5282b4eea88c6afe5f5b61a5da9e1c4ae68b8ed8f",
+      "source_fact_keys": [
+        "source_fact:v1:14ee3696be31f55565433b67bc43f8e86ca6acc88e885a1b07f7b54e2de97f23",
+        "source_fact:v1:36b097eb633ec0d59e1a5f8c12ee50c593060c04d97c191d3557fc887971de27",
+        "source_fact:v1:54f35a829b6a05cf526d86a5a30b4c4e2f2175f2018f7748641c0d79b1a1b003",
+        "source_fact:v1:6000259f2cff5e09c65fee41af844f64d2eaabf63b46fbef380b572d5949947a",
+        "source_fact:v1:735ec38df080804733cbcba76593f0e048f88fd574097d13048ec31323479c16",
+        "source_fact:v1:a135f3158d7fdc4d9048445d4f715994a970ade1c34b86677f0ac53dfc2db3d0",
+        "source_fact:v1:aecae64da089d75b90095a0df030218050bab9906cc073df1a16778c56456287",
+        "source_fact:v1:ba9d34ab2b036ea4eacc72d6fc7978b0eca4fb9207f75860539596be30ce0069",
+        "source_fact:v1:cd2bdd0addde3940c29a726b17c13deb02dafd17d71a5c6cb9fa1f20efd311e9",
+        "source_fact:v1:d9a55bc2ff804a1d1d75cb59716302505a480506ca17a33380e75a5614c10d06"
+      ],
+      "source_published_kst": "2026-10-14T14:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "안현 SK하이닉스 사장 “HBM만으론 메모리 급증 수요 감당 못해…대안으로 HBF·3D 적층 D램 개발 중”",
+      "telegram_core_fact": "안현 SK하이닉스 개발총괄(CDO) 사장이 인공지능(AI) 추론 시장 도래에 따라 고대역폭메모리(HBM)만으론 급증하는 메모리 수요를 감당하기 어렵다고 분석했다.",
+      "title": "안현 SK하이닉스 사장 “HBM만으론 메모리 급증 수요 감당 못해…대안으로 HBF·3D 적층 D램 개발 중”"
+    },
     "core:5b70ade016ae80f9cd61b4af": {
       "first_seen_kst": "2026-10-08T11:28:27+09:00",
       "lanes": {
@@ -16241,6 +16292,29 @@
       "source_title": "투자유치에 판로개척까지…찾아가는 신용한 지사",
       "telegram_core_fact": "신 지사는 이날 중국의 대표적인 이차전지 양극재 기업인 닝보 롱바이와 4300억원 투자유치 업무협약을 체결했다. 닝보 롱바이는 충주 외국인투자지역에 오는 2030년까지 연면적 2만6000㎡ 공장을 증설하고 100명을 신규 고용할 계획이다.",
       "title": "투자유치에 판로개척까지…찾아가는 신용한 지사"
+    },
+    "core:5b9fa0fc7dd6fe501f5c243a": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.fnnews.com/news/202610141554294553",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1f1613e474ae34cc3f7a8489cd2d285b8fd4fe3595ae6a9f19e146a4a59064fd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:39635d19aa049e9b37a386de0ae666087bd1e5a06dadb1bf9a3c4451648a4c6f",
+      "source_fact_keys": [
+        "source_fact:v1:368643d3fa56b67dc8815d5be71dec000233df5e192e37876b949ec09a16249a",
+        "source_fact:v1:4343abe0a21cfdb2f66817a663decbcccc3599e367ba6902a59b1d9694c0c819",
+        "source_fact:v1:bce0660b3a66b3fcabf7f8e864f725c95843198f01249f2cf9bed8516b429850",
+        "source_fact:v1:d2b575467bf2e215bd78e3b747dfb04f3abef35c792daf851df56c9cff736684"
+      ],
+      "source_published_kst": "2026-10-14T15:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 YMTC, 낸드 출하량 세계 3위로…삼성·SK하이닉스 추격",
+      "telegram_core_fact": "YMTC의 글로벌 낸드 매출 점유율은 지난해 1분기 9%에서 올해 1분기 14%로 5%포인트 상승했다.",
+      "title": "中 YMTC, 낸드 출하량 세계 3위로…삼성·SK하이닉스 추격"
     },
     "core:5bc383e9b4809220d9dd81d3": {
       "first_seen_kst": "2026-10-12T21:44:29+09:00",
@@ -23253,6 +23327,27 @@
       "source_title": "NAVER, 하반기 실적 기대치 낮춰야…결국 수익 증명이 관건-메리츠",
       "telegram_core_fact": "이효진 메리츠증권 연구원은 8일 보고서에서 NAVER의 3분기 연결 매출액을 전년비 11.0% 증가한 3조4844억원, 영업이익을 14.9% 감소한 4858억원으로 추정했다.",
       "title": "NAVER, 하반기 실적 기대치 낮춰야…결국 수익 증명이 관건-메리츠"
+    },
+    "core:839ad7dd8f8cb6c04a9caba3": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.hankyung.com/article/2026101418197",
+      "source": "한국경제",
+      "source_body_digest": "6b08e5522534619b7993db1b7207e8e17820d486ebe52979f623a3909aa18996",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6473ca0d01c5d4a83bdef6136646bc38a5991f61b1c61f8d1e5a2b7cdf3e449e",
+      "source_fact_keys": [
+        "source_fact:v1:6ff4d90f77ddeed10668984e45654a810f233cc4af9700d0a75ad56607057779",
+        "source_fact:v1:90f846aeb1461eb5d840404e561d3c93bb743f36768de883d865765225fac9e6"
+      ],
+      "source_published_kst": "2026-10-14T16:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "ASML \"2028년까지 공급 부족…추가 증설 검토\"",
+      "telegram_core_fact": "크리스토프 푸케 최고경영자(CEO)는 \"현재 계획된 공급량으로는 2027년과 2028년 모두 고객 수요를 완전히 충족하지 못할 것으로 예상한다\"며 \"2028년 생산능력을 기존에 밝힌 30% 증설 이상으로 늘리는 방안을 검토하고 있다\"고 말했다.",
+      "title": "ASML \"2028년까지 공급 부족…추가 증설 검토\""
     },
     "core:83b3e9e7499d0d2037a77ce3": {
       "first_seen_kst": "2026-10-12T14:44:13+09:00",
@@ -35639,6 +35734,30 @@
       "telegram_core_fact": "서울시는 13일 서울시청에서 연내 착공 예정인 11개 정비사업조합과 5개 시공사, 8개 자치구와 함께 '주택공급 목표 달성 공동협력 협약'을 체결했다.",
       "title": "서울시, 정비사업조합과 협약…\"크리스마스 전 3만호 착공\"(종합) | 연합뉴스"
     },
+    "core:ca9ff62c3b8d6e143c4b525a": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.hankyung.com/article/2026101405281",
+      "source": "한국경제",
+      "source_body_digest": "7303fb02d335cd0d9a9f66e02097ac4527195b68b3dade28c3c557d22f7b5541",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22ae117d61be38ca726d4a9938494b431a6b3fcb2a9fea7ad7db8e0477707d85",
+      "source_fact_keys": [
+        "source_fact:v1:23c8f08daca70d5219650579836b48356513ea9a0ffe7715cf084d4bf724392a",
+        "source_fact:v1:486aae9a2763248b44541ff18a6409a1901635507aa60379c50b09af7074a6ed",
+        "source_fact:v1:adaeed5dbbf239b425a0dc1e8acbc4e9d95a090098f0ad89026fda68c56a7683",
+        "source_fact:v1:dc188cf901c7b008f4ca08b9f2270352859f82d9a1e75076ec78fd7df80c9ce8",
+        "source_fact:v1:e8fa7df893b7460f02211218e21a62d771df943fc295c7045a65d558b2afc66d"
+      ],
+      "source_published_kst": "2026-10-14T16:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "'횡보장 방어' 커버드콜 ETF 순자산 30조 눈앞",
+      "telegram_core_fact": "이 기준 코스콤 ETF체크에 따르면 ‘RISE 200고배당커버드콜ATM’의 지난 3개월 수익률은 11.06%로 나타났다. 한국거래소에 따르면 작년 말 15조원 수준이던 국내 커버드콜 ETF 순자산 규모는 최근 30조원에 육박했다.",
+      "title": "'횡보장 방어' 커버드콜 ETF 순자산 30조 눈앞"
+    },
     "core:caa23dafbc3060795cf0f828": {
       "first_seen_kst": "2026-10-14T05:08:50+09:00",
       "lanes": {
@@ -39466,6 +39585,33 @@
       "telegram_core_fact": "코스피200 야간선물은 1.7% 상승했다. 코스피가 '검은화요일'의 충격을 딛고 14일 반등을 시도할 전망이다.",
       "title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까"
     },
+    "core:e20b5a59203609ebd841c0c0": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825490",
+      "source": "뉴시스",
+      "source_body_digest": "a12e9bf6665176e11f28a4ff5e34bc3e406a76a53406a4764d0d20e0a02d7c36",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48ea9a997f735d0f67c5dfee81de3325cde728dc32d06c6c7de01e56ffbdce3d",
+      "source_fact_keys": [
+        "source_fact:v1:05dc72fc097bb9904dc3297f3ba983185255cdb069fc99f206edcdbe648e7f17",
+        "source_fact:v1:05e3613dc624c69cba9c5c94c40b1e6fc008b00457a117a8c5e82825339faa93",
+        "source_fact:v1:52703339b31a46b3e76925835f8c97a372bc4ff226a8a2587062ce60ff3ab092",
+        "source_fact:v1:6aeb20c0f968c573a33ac9a5fbc669411f5ded39ee72e5eb1f2f98764aaabedf",
+        "source_fact:v1:a0dd576fd4622c2526314d53fe8390c103e4e0f55dcf9873e00b2894673f124a",
+        "source_fact:v1:d5bee775cecc53596e6596c1fff2e800eb814607a9679a25ccbab81caf3d289e",
+        "source_fact:v1:dfc2432de1aef7027d257233ddc98814666cf34467749b88fc598f5609a0af7a",
+        "source_fact:v1:e352852e3002afedef0a4c264821b96d68279fe5593a42da3631b2bbb806705f"
+      ],
+      "source_published_kst": "2026-10-14T13:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "제조업 고용보험 가입자 두달째↑…'반도체 호황' 증가폭 확대",
+      "telegram_core_fact": "고용노동부가 14일 발표한 '2026년 9월 고용행정 통계로 본 노동시장 동향'에 따르면 지난달 말 기준 고용보험 상시가입자 수는 1593만명으로, 전년 동월보다 28만8000명(1.8%) 증가했다.",
+      "title": "제조업 고용보험 가입자 두달째↑…'반도체 호황' 증가폭 확대"
+    },
     "core:e212313b3cd5aa61987bd639": {
       "first_seen_kst": "2026-10-13T14:54:18+09:00",
       "lanes": {
@@ -40453,6 +40599,32 @@
       "source_title": "\"우주 카르텔 아냐?\"…항우연·천문연 전·현직 직원 일감 몰아주기 논란",
       "telegram_core_fact": "우주항공 분야 공공 연구기관에서 직원이 창업하거나 인수한 기업에 수백억원 계약이 집중되고, 감사에서 부적절한 계약 관행이 적발된 이후에도 관련 기업과의 계약이 이어졌다는 지적이 국회에서 제기됐다.",
       "title": "\"우주 카르텔 아냐?\"…항우연·천문연 전·현직 직원 일감 몰아주기 논란"
+    },
+    "core:e919df60a8ca514665709e80": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825111",
+      "source": "뉴시스",
+      "source_body_digest": "c5edf9b3baf9842b9599707b71f460527274541de3f73ff6b8b5cdc5373d4abe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:876db90a0b8889431462d2a1a4f92c4829d55e2f29041b35a4824eb4126657ab",
+      "source_fact_keys": [
+        "source_fact:v1:147b9ff9c271c827a474ea76aa9a8a33edf3a53d891d1d667fc3ed9c06b78ce8",
+        "source_fact:v1:42479ad56e2e6f5ddfc30c23a64770bde0fbe52e7d47f6b93a1110213a00b899",
+        "source_fact:v1:5c8bd3b67f4671f5f8d99ba6585c8222337ac4151aabcaf4157017fe8a2a7e35",
+        "source_fact:v1:7847848384aea7bac4063f92964086c6540c03cfeea3c0fdcb376f0b4b981e44",
+        "source_fact:v1:93a3a6fa1dc40a3968c81d40c1b6ee9a937d765f9930e4e959f0da5e359d3438",
+        "source_fact:v1:d6aad9312de30588449984b47002122dc7410ff38a81f909b9940f54baa894d9",
+        "source_fact:v1:f99c61bc8bf161e964ea11d95d5be5e080d67dd4f0c88035f8ec2f24a94f2ed9"
+      ],
+      "source_published_kst": "2026-10-14T11:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 월가 은행 4곳, 3분기 호실적에도…금리 인상에 희비",
+      "telegram_core_fact": "씨티그룹의 경우 관련 분야에서 예상보다 높은 4% 매출 성장을 기록했지만, 곤잘로 루케티 CFO가 \"금리 환경을 고려할 때 다소 어려운 상황\"이라고 인정했다.",
+      "title": "美 월가 은행 4곳, 3분기 호실적에도…금리 인상에 희비"
     },
     "core:e989cd1abac56d7bb06d79bb": {
       "first_seen_kst": "2026-10-11T07:59:15+09:00",
@@ -46660,32 +46832,25 @@
     "event:26fd6e26134f34d456387ce6": {
       "first_seen_kst": "2026-10-14T00:12:03+09:00",
       "lanes": {
-        "live": "2026-10-14T04:09:16+09:00"
+        "live": "2026-10-14T16:26:08+09:00"
       },
-      "last_seen_kst": "2026-10-14T04:09:16+09:00",
-      "link": "https://www.newsis.com/view/NISX20261013_0003823898",
-      "source": "뉴시스",
-      "source_body_digest": "bab75acd208c5a5b17c83846bc0efedc56da9d74c99714b346fb9a4a5466f619",
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.fnnews.com/news/202610141554294553",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1f1613e474ae34cc3f7a8489cd2d285b8fd4fe3595ae6a9f19e146a4a59064fd",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:e1621132eeb9149f5098ff9c8b85fb943ab6dbc9e997ce22bc6830295af81eff",
+      "source_fact_identity": "source_facts:v1:39635d19aa049e9b37a386de0ae666087bd1e5a06dadb1bf9a3c4451648a4c6f",
       "source_fact_keys": [
-        "source_fact:v1:15bdd5eb266559febd17e5c92883d57074cf25403ddddef4688f0d83cbfd90d2",
-        "source_fact:v1:1ade06571d6268a6825421a5790e61961936899c6812c55e37953bfef9afa4ea",
-        "source_fact:v1:3b2e9f8b788b4161481b9285cbd45862d58f151d1a926ca61c5926459ec6d522",
-        "source_fact:v1:4f7d70275b520f69ec3b324737f4105e5db86759e74659ebdc79679336e77b61",
-        "source_fact:v1:638e1cd267b957aaf9c51f89645d89814b4760dd28477db88b5a80810fa9e730",
-        "source_fact:v1:6bc0b037dd36d57b9acc5e21fc0e96960e8fc08dd9ed034b7fa4b05fcc2813da",
-        "source_fact:v1:83453a0b838cf7d9a58d7cf453e08857aaec8bd3c66bd35bf4ae3e7056d4968d",
-        "source_fact:v1:b938918c5d8af6b2c31606bb144b89d085a258218daf013c8620db3de886a227",
-        "source_fact:v1:d6b098d14d137d53b39cf91b17aa44efc48c482c6f06dbb1d5560979b7cc3f65",
-        "source_fact:v1:e731986926ae31c49d466e0de0e6d92c08cd9fd081e76bad351d578ec951c205",
-        "source_fact:v1:f97cf7edf298d48262f96a9fc3f3f3884079e856430626746a3a99be92a615a3"
+        "source_fact:v1:368643d3fa56b67dc8815d5be71dec000233df5e192e37876b949ec09a16249a",
+        "source_fact:v1:4343abe0a21cfdb2f66817a663decbcccc3599e367ba6902a59b1d9694c0c819",
+        "source_fact:v1:bce0660b3a66b3fcabf7f8e864f725c95843198f01249f2cf9bed8516b429850",
+        "source_fact:v1:d2b575467bf2e215bd78e3b747dfb04f3abef35c792daf851df56c9cff736684"
       ],
-      "source_published_kst": "2026-10-14T00:30+09:00",
+      "source_published_kst": "2026-10-14T15:54+09:00",
       "source_supply_terms": {},
-      "source_title": "D램 가격 둔화에 중국 추격까지…K-반도체 다가오는 경고음",
-      "telegram_core_fact": "AI 데이터센터 투자 확대로 반도체 수요가 이어지는 가운데 D램 가격 상승세와 중국 메모리 업체의 공급 확대가 향후 시장의 주요 변수로 작용할 것이라는 전망이 나왔다.",
-      "title": "D램 가격 둔화에 중국 추격까지…K-반도체 다가오는 경고음"
+      "source_title": "中 YMTC, 낸드 출하량 세계 3위로…삼성·SK하이닉스 추격",
+      "telegram_core_fact": "YMTC의 글로벌 낸드 매출 점유율은 지난해 1분기 9%에서 올해 1분기 14%로 5%포인트 상승했다.",
+      "title": "中 YMTC, 낸드 출하량 세계 3위로…삼성·SK하이닉스 추격"
     },
     "event:272c85b946acad3a711b5dcf": {
       "first_seen_kst": "2026-09-22T09:50:21+09:00",
@@ -49860,6 +50025,35 @@
       "link": "https://www.mt.co.kr/industry/2026/09/18/2026091808482884383",
       "source": "머니투데이",
       "title": "SK그룹 부회장 3인, SK하이닉스 합류…AI·반도체 힘 싣는다"
+    },
+    "event:6b041b08a3237829a975e2f8": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://biz.heraldcorp.com/article/10902424",
+      "source": "헤럴드경제",
+      "source_body_digest": "885b82d518eca93dcf154076080259b59f62b57219fc8aa4ad65790719cd7017",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:667d0d630ff653890a0bf8e5282b4eea88c6afe5f5b61a5da9e1c4ae68b8ed8f",
+      "source_fact_keys": [
+        "source_fact:v1:14ee3696be31f55565433b67bc43f8e86ca6acc88e885a1b07f7b54e2de97f23",
+        "source_fact:v1:36b097eb633ec0d59e1a5f8c12ee50c593060c04d97c191d3557fc887971de27",
+        "source_fact:v1:54f35a829b6a05cf526d86a5a30b4c4e2f2175f2018f7748641c0d79b1a1b003",
+        "source_fact:v1:6000259f2cff5e09c65fee41af844f64d2eaabf63b46fbef380b572d5949947a",
+        "source_fact:v1:735ec38df080804733cbcba76593f0e048f88fd574097d13048ec31323479c16",
+        "source_fact:v1:a135f3158d7fdc4d9048445d4f715994a970ade1c34b86677f0ac53dfc2db3d0",
+        "source_fact:v1:aecae64da089d75b90095a0df030218050bab9906cc073df1a16778c56456287",
+        "source_fact:v1:ba9d34ab2b036ea4eacc72d6fc7978b0eca4fb9207f75860539596be30ce0069",
+        "source_fact:v1:cd2bdd0addde3940c29a726b17c13deb02dafd17d71a5c6cb9fa1f20efd311e9",
+        "source_fact:v1:d9a55bc2ff804a1d1d75cb59716302505a480506ca17a33380e75a5614c10d06"
+      ],
+      "source_published_kst": "2026-10-14T14:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "안현 SK하이닉스 사장 “HBM만으론 메모리 급증 수요 감당 못해…대안으로 HBF·3D 적층 D램 개발 중”",
+      "telegram_core_fact": "안현 SK하이닉스 개발총괄(CDO) 사장이 인공지능(AI) 추론 시장 도래에 따라 고대역폭메모리(HBM)만으론 급증하는 메모리 수요를 감당하기 어렵다고 분석했다.",
+      "title": "안현 SK하이닉스 사장 “HBM만으론 메모리 급증 수요 감당 못해…대안으로 HBF·3D 적층 D램 개발 중”"
     },
     "event:6b2973f885435c4bad7b09dc": {
       "first_seen_kst": "2026-09-28T10:39:56+09:00",
@@ -54128,6 +54322,27 @@
       "source": "뉴시스",
       "title": "젤렌스키 \"中, 러시아판 스타링크 개발 지원\"…트럼프에 제재 요청"
     },
+    "event:bfa531f786e27b22818c4fa1": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.hankyung.com/article/2026101418197",
+      "source": "한국경제",
+      "source_body_digest": "6b08e5522534619b7993db1b7207e8e17820d486ebe52979f623a3909aa18996",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6473ca0d01c5d4a83bdef6136646bc38a5991f61b1c61f8d1e5a2b7cdf3e449e",
+      "source_fact_keys": [
+        "source_fact:v1:6ff4d90f77ddeed10668984e45654a810f233cc4af9700d0a75ad56607057779",
+        "source_fact:v1:90f846aeb1461eb5d840404e561d3c93bb743f36768de883d865765225fac9e6"
+      ],
+      "source_published_kst": "2026-10-14T16:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "ASML \"2028년까지 공급 부족…추가 증설 검토\"",
+      "telegram_core_fact": "크리스토프 푸케 최고경영자(CEO)는 \"현재 계획된 공급량으로는 2027년과 2028년 모두 고객 수요를 완전히 충족하지 못할 것으로 예상한다\"며 \"2028년 생산능력을 기존에 밝힌 30% 증설 이상으로 늘리는 방안을 검토하고 있다\"고 말했다.",
+      "title": "ASML \"2028년까지 공급 부족…추가 증설 검토\""
+    },
     "event:bfa9dd8b1282e20277ebdc0e": {
       "event_alias_evidence_message_id": 2291,
       "event_alias_evidence_run_id": 37399956879,
@@ -54616,6 +54831,30 @@
       ],
       "source_published_kst": "2026-10-06T07:04+09:00",
       "title": "\"AI가 돈 될까 고민은 시대착오…반도체 상승장 2028년까지 간다\""
+    },
+    "event:c738c48ec1ed42e1dff107fa": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.hankyung.com/article/2026101405281",
+      "source": "한국경제",
+      "source_body_digest": "7303fb02d335cd0d9a9f66e02097ac4527195b68b3dade28c3c557d22f7b5541",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22ae117d61be38ca726d4a9938494b431a6b3fcb2a9fea7ad7db8e0477707d85",
+      "source_fact_keys": [
+        "source_fact:v1:23c8f08daca70d5219650579836b48356513ea9a0ffe7715cf084d4bf724392a",
+        "source_fact:v1:486aae9a2763248b44541ff18a6409a1901635507aa60379c50b09af7074a6ed",
+        "source_fact:v1:adaeed5dbbf239b425a0dc1e8acbc4e9d95a090098f0ad89026fda68c56a7683",
+        "source_fact:v1:dc188cf901c7b008f4ca08b9f2270352859f82d9a1e75076ec78fd7df80c9ce8",
+        "source_fact:v1:e8fa7df893b7460f02211218e21a62d771df943fc295c7045a65d558b2afc66d"
+      ],
+      "source_published_kst": "2026-10-14T16:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "'횡보장 방어' 커버드콜 ETF 순자산 30조 눈앞",
+      "telegram_core_fact": "이 기준 코스콤 ETF체크에 따르면 ‘RISE 200고배당커버드콜ATM’의 지난 3개월 수익률은 11.06%로 나타났다. 한국거래소에 따르면 작년 말 15조원 수준이던 국내 커버드콜 ETF 순자산 규모는 최근 30조원에 육박했다.",
+      "title": "'횡보장 방어' 커버드콜 ETF 순자산 30조 눈앞"
     },
     "event:c7665659dc86a28aa339445b": {
       "first_seen_kst": "2026-09-30T15:58:34+09:00",
@@ -55284,29 +55523,24 @@
     "event:d0f79f7f5bbfd458280cb8e7": {
       "first_seen_kst": "2026-10-14T14:29:29+09:00",
       "lanes": {
-        "live": "2026-10-14T14:53:15+09:00"
+        "live": "2026-10-14T16:26:08+09:00"
       },
-      "last_seen_kst": "2026-10-14T14:53:15+09:00",
-      "link": "https://biz.heraldcorp.com/article/10902059",
-      "source": "헤럴드경제",
-      "source_body_digest": "db63c57e39a1429b70f075ebb367286ee7908a590c8d2d00e83d51e18e889bb0",
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261014042351003",
+      "source": "연합뉴스",
+      "source_body_digest": "5e51024c01de7a30083bfd115e873bcab1a9e26f0f4b12c640109953d7c8d08f",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:819e465f09d50d9ac98a310119bd1b47c6af4677fc8aeed281eed5e8466f990e",
+      "source_fact_identity": "source_facts:v1:03ed29d4aa4346aea6088717c3a3103ec5df971602a9e107718aa706d1d72400",
       "source_fact_keys": [
-        "source_fact:v1:03d9c260e31fe3c14c406efa21521465d51533d262c6c203ba01fc01b933ec41",
-        "source_fact:v1:04e1d193d977dc07dfa030bffbc8fcc2c08c8da10aa044ffcd88785b12a582a7",
-        "source_fact:v1:160e2abf349a1405a5f4530897c020fb5de6ae4f584a9fb10fe31702d86edcc1",
-        "source_fact:v1:4442ddeaabb09857e268b663cc1709d4aa1b9306b4dd55de48273d60c35a7c2c",
-        "source_fact:v1:4c8a584956b4ab66325051b0b2488ccdae21453358f9ebf77912c2c9ea41d515",
-        "source_fact:v1:6349ca4f821634c113d389c4eedba1924fddf76ad04ea6d3156cde5380d84c28",
-        "source_fact:v1:654e7fd3224aa0ca9ed696d9584c8d4cd0890cf25df4e7ce29e549cd623658a2",
-        "source_fact:v1:a89af3e2e415bb3366302789fe9c526422d0491f6317688189386994a2f15d22"
+        "source_fact:v1:036ddb25ac76e29a0abb0987f00c6e55acaa8f294a474b8f81d258356541de4f",
+        "source_fact:v1:2eb52d7cdcdcb3b8e268777dbf7871e91227efdd3fdaca36cce32c1b3bb2d319",
+        "source_fact:v1:4b133837fe644d99b74f8440c007537384f46863f0a1f4e44c3269af3bf1ddf5"
       ],
-      "source_published_kst": "2026-10-14T10:43+09:00",
+      "source_published_kst": "2026-10-14T11:44+09:00",
       "source_supply_terms": {},
-      "source_title": "‘zHBM vs. HBF’…삼성·SK, SEDEX서 차세대 AI 메모리 기술 경쟁",
-      "telegram_core_fact": "글로벌 메모리 반도체 투톱인 삼성전자와 SK하이닉스가 생산하는 HBM은 AI 데이터센터 투자 확대로 인해 수요가 폭발적으로 늘어나고 있다.",
-      "title": "‘zHBM vs. HBF’…삼성·SK, SEDEX서 차세대 AI 메모리 기술 경쟁"
+      "source_title": "삼성 반도체 부스 찾은 하정우 부위원장 \"AI반도체 로드맵 확인\"(종합) | 연합뉴스",
+      "telegram_core_fact": "삼성전자는 올해 신설한 반도체 클러스터존에서 주요 생산·개발 거점과 용인 국가산업단지 조성 계획도 소개한다.",
+      "title": "삼성 반도체 부스 찾은 하정우 부위원장 \"AI반도체 로드맵 확인\"(종합) | 연합뉴스"
     },
     "event:d1383a454361f7ac059c7729": {
       "first_seen_kst": "2026-10-01T20:25:35+09:00",
@@ -60944,6 +61178,32 @@
       ],
       "source_published_kst": "2026-10-06T18:21+09:00",
       "title": "\"'한국형 테마섹' 키우는데 본점은 전북?\"…KIC '서울 명문화' 목소리"
+    },
+    "fact:0dec71409c91e74a64c058a1": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825111",
+      "source": "뉴시스",
+      "source_body_digest": "c5edf9b3baf9842b9599707b71f460527274541de3f73ff6b8b5cdc5373d4abe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:876db90a0b8889431462d2a1a4f92c4829d55e2f29041b35a4824eb4126657ab",
+      "source_fact_keys": [
+        "source_fact:v1:147b9ff9c271c827a474ea76aa9a8a33edf3a53d891d1d667fc3ed9c06b78ce8",
+        "source_fact:v1:42479ad56e2e6f5ddfc30c23a64770bde0fbe52e7d47f6b93a1110213a00b899",
+        "source_fact:v1:5c8bd3b67f4671f5f8d99ba6585c8222337ac4151aabcaf4157017fe8a2a7e35",
+        "source_fact:v1:7847848384aea7bac4063f92964086c6540c03cfeea3c0fdcb376f0b4b981e44",
+        "source_fact:v1:93a3a6fa1dc40a3968c81d40c1b6ee9a937d765f9930e4e959f0da5e359d3438",
+        "source_fact:v1:d6aad9312de30588449984b47002122dc7410ff38a81f909b9940f54baa894d9",
+        "source_fact:v1:f99c61bc8bf161e964ea11d95d5be5e080d67dd4f0c88035f8ec2f24a94f2ed9"
+      ],
+      "source_published_kst": "2026-10-14T11:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 월가 은행 4곳, 3분기 호실적에도…금리 인상에 희비",
+      "telegram_core_fact": "씨티그룹의 경우 관련 분야에서 예상보다 높은 4% 매출 성장을 기록했지만, 곤잘로 루케티 CFO가 \"금리 환경을 고려할 때 다소 어려운 상황\"이라고 인정했다.",
+      "title": "美 월가 은행 4곳, 3분기 호실적에도…금리 인상에 희비"
     },
     "fact:0e16766991f641d4bac55cc7": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
@@ -68200,6 +68460,30 @@
       "source_title": "[데스크시각] 심텍의 ‘성장 변곡점’",
       "telegram_core_fact": "실적 반등, 한 단계 높은 성장을 기대하고 있다. 이런 배경에서 여의도 증권가에서는 내년 소캠2 매출이 2배 이상 증가할 것이란 전망을 내놓기도 했다.",
       "title": "[데스크시각] 심텍의 ‘성장 변곡점’"
+    },
+    "fact:2f3f49332bd46c199c6e8db1": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.hankyung.com/article/2026101405281",
+      "source": "한국경제",
+      "source_body_digest": "7303fb02d335cd0d9a9f66e02097ac4527195b68b3dade28c3c557d22f7b5541",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22ae117d61be38ca726d4a9938494b431a6b3fcb2a9fea7ad7db8e0477707d85",
+      "source_fact_keys": [
+        "source_fact:v1:23c8f08daca70d5219650579836b48356513ea9a0ffe7715cf084d4bf724392a",
+        "source_fact:v1:486aae9a2763248b44541ff18a6409a1901635507aa60379c50b09af7074a6ed",
+        "source_fact:v1:adaeed5dbbf239b425a0dc1e8acbc4e9d95a090098f0ad89026fda68c56a7683",
+        "source_fact:v1:dc188cf901c7b008f4ca08b9f2270352859f82d9a1e75076ec78fd7df80c9ce8",
+        "source_fact:v1:e8fa7df893b7460f02211218e21a62d771df943fc295c7045a65d558b2afc66d"
+      ],
+      "source_published_kst": "2026-10-14T16:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "'횡보장 방어' 커버드콜 ETF 순자산 30조 눈앞",
+      "telegram_core_fact": "이 기준 코스콤 ETF체크에 따르면 ‘RISE 200고배당커버드콜ATM’의 지난 3개월 수익률은 11.06%로 나타났다. 한국거래소에 따르면 작년 말 15조원 수준이던 국내 커버드콜 ETF 순자산 규모는 최근 30조원에 육박했다.",
+      "title": "'횡보장 방어' 커버드콜 ETF 순자산 30조 눈앞"
     },
     "fact:2f837f3cc18991e45e06d6bc": {
       "first_seen_kst": "2026-10-12T17:38:53+09:00",
@@ -89788,6 +90072,27 @@
       "source_published_kst": "2026-10-05T18:03+09:00",
       "title": "'빚의 제국 빛을 잃다' 보도 인상적 … 고금리 위험요인 더 짚어달라"
     },
+    "fact:90a426e6794fd913ba056769": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.hankyung.com/article/2026101418197",
+      "source": "한국경제",
+      "source_body_digest": "6b08e5522534619b7993db1b7207e8e17820d486ebe52979f623a3909aa18996",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6473ca0d01c5d4a83bdef6136646bc38a5991f61b1c61f8d1e5a2b7cdf3e449e",
+      "source_fact_keys": [
+        "source_fact:v1:6ff4d90f77ddeed10668984e45654a810f233cc4af9700d0a75ad56607057779",
+        "source_fact:v1:90f846aeb1461eb5d840404e561d3c93bb743f36768de883d865765225fac9e6"
+      ],
+      "source_published_kst": "2026-10-14T16:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "ASML \"2028년까지 공급 부족…추가 증설 검토\"",
+      "telegram_core_fact": "크리스토프 푸케 최고경영자(CEO)는 \"현재 계획된 공급량으로는 2027년과 2028년 모두 고객 수요를 완전히 충족하지 못할 것으로 예상한다\"며 \"2028년 생산능력을 기존에 밝힌 30% 증설 이상으로 늘리는 방안을 검토하고 있다\"고 말했다.",
+      "title": "ASML \"2028년까지 공급 부족…추가 증설 검토\""
+    },
     "fact:90b454e9ea2484bde461de2a": {
       "first_seen_kst": "2026-10-07T18:30:29+09:00",
       "lanes": {
@@ -94085,6 +94390,29 @@
       "source_title": "삼성운용, 메타·팔란티어 담은 AI 에이전트 ETF 신규 상장 | 연합뉴스",
       "telegram_core_fact": "삼성자산운용은 인공지능(AI) 에이전트 관련 미국 기업에 투자하는 'KODEX 미국AI에이전트액티브' 상장지수펀드(ETF)를 신규 상장한다고 13일 밝혔다.",
       "title": "삼성운용, 메타·팔란티어 담은 AI 에이전트 ETF 신규 상장 | 연합뉴스"
+    },
+    "fact:a2558982da5f25c2fa81ed7e": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.fnnews.com/news/202610141554294553",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1f1613e474ae34cc3f7a8489cd2d285b8fd4fe3595ae6a9f19e146a4a59064fd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:39635d19aa049e9b37a386de0ae666087bd1e5a06dadb1bf9a3c4451648a4c6f",
+      "source_fact_keys": [
+        "source_fact:v1:368643d3fa56b67dc8815d5be71dec000233df5e192e37876b949ec09a16249a",
+        "source_fact:v1:4343abe0a21cfdb2f66817a663decbcccc3599e367ba6902a59b1d9694c0c819",
+        "source_fact:v1:bce0660b3a66b3fcabf7f8e864f725c95843198f01249f2cf9bed8516b429850",
+        "source_fact:v1:d2b575467bf2e215bd78e3b747dfb04f3abef35c792daf851df56c9cff736684"
+      ],
+      "source_published_kst": "2026-10-14T15:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 YMTC, 낸드 출하량 세계 3위로…삼성·SK하이닉스 추격",
+      "telegram_core_fact": "YMTC의 글로벌 낸드 매출 점유율은 지난해 1분기 9%에서 올해 1분기 14%로 5%포인트 상승했다.",
+      "title": "中 YMTC, 낸드 출하량 세계 3위로…삼성·SK하이닉스 추격"
     },
     "fact:a2625bfb89872e45383398f3": {
       "first_seen_kst": "2026-10-08T15:16:19+09:00",
@@ -98918,6 +99246,33 @@
       "source_title": "현대ENG, 인천 데이터센터 공사 수주",
       "telegram_core_fact": "현대엔지니어링은 인천 서해구 원창동 데이터센터 신축 사업(투시도)을 수주했다고 7일 밝혔다.",
       "title": "현대ENG, 인천 데이터센터 공사 수주"
+    },
+    "fact:b431eed3ea1a9eac81169b00": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825490",
+      "source": "뉴시스",
+      "source_body_digest": "a12e9bf6665176e11f28a4ff5e34bc3e406a76a53406a4764d0d20e0a02d7c36",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48ea9a997f735d0f67c5dfee81de3325cde728dc32d06c6c7de01e56ffbdce3d",
+      "source_fact_keys": [
+        "source_fact:v1:05dc72fc097bb9904dc3297f3ba983185255cdb069fc99f206edcdbe648e7f17",
+        "source_fact:v1:05e3613dc624c69cba9c5c94c40b1e6fc008b00457a117a8c5e82825339faa93",
+        "source_fact:v1:52703339b31a46b3e76925835f8c97a372bc4ff226a8a2587062ce60ff3ab092",
+        "source_fact:v1:6aeb20c0f968c573a33ac9a5fbc669411f5ded39ee72e5eb1f2f98764aaabedf",
+        "source_fact:v1:a0dd576fd4622c2526314d53fe8390c103e4e0f55dcf9873e00b2894673f124a",
+        "source_fact:v1:d5bee775cecc53596e6596c1fff2e800eb814607a9679a25ccbab81caf3d289e",
+        "source_fact:v1:dfc2432de1aef7027d257233ddc98814666cf34467749b88fc598f5609a0af7a",
+        "source_fact:v1:e352852e3002afedef0a4c264821b96d68279fe5593a42da3631b2bbb806705f"
+      ],
+      "source_published_kst": "2026-10-14T13:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "제조업 고용보험 가입자 두달째↑…'반도체 호황' 증가폭 확대",
+      "telegram_core_fact": "고용노동부가 14일 발표한 '2026년 9월 고용행정 통계로 본 노동시장 동향'에 따르면 지난달 말 기준 고용보험 상시가입자 수는 1593만명으로, 전년 동월보다 28만8000명(1.8%) 증가했다.",
+      "title": "제조업 고용보험 가입자 두달째↑…'반도체 호황' 증가폭 확대"
     },
     "fact:b47cfc1d118d4e3698c2633f": {
       "first_seen_kst": "2026-10-06T21:54:00+09:00",
@@ -111841,6 +112196,35 @@
       "source_published_kst": "2026-10-07T11:07+09:00",
       "title": "[2보] LG전자 3분기 영업익 7천818억…작년비 13.5% 증가 | 연합뉴스"
     },
+    "fact:ed159a7eedf7fb074e81f613": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://biz.heraldcorp.com/article/10902424",
+      "source": "헤럴드경제",
+      "source_body_digest": "885b82d518eca93dcf154076080259b59f62b57219fc8aa4ad65790719cd7017",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:667d0d630ff653890a0bf8e5282b4eea88c6afe5f5b61a5da9e1c4ae68b8ed8f",
+      "source_fact_keys": [
+        "source_fact:v1:14ee3696be31f55565433b67bc43f8e86ca6acc88e885a1b07f7b54e2de97f23",
+        "source_fact:v1:36b097eb633ec0d59e1a5f8c12ee50c593060c04d97c191d3557fc887971de27",
+        "source_fact:v1:54f35a829b6a05cf526d86a5a30b4c4e2f2175f2018f7748641c0d79b1a1b003",
+        "source_fact:v1:6000259f2cff5e09c65fee41af844f64d2eaabf63b46fbef380b572d5949947a",
+        "source_fact:v1:735ec38df080804733cbcba76593f0e048f88fd574097d13048ec31323479c16",
+        "source_fact:v1:a135f3158d7fdc4d9048445d4f715994a970ade1c34b86677f0ac53dfc2db3d0",
+        "source_fact:v1:aecae64da089d75b90095a0df030218050bab9906cc073df1a16778c56456287",
+        "source_fact:v1:ba9d34ab2b036ea4eacc72d6fc7978b0eca4fb9207f75860539596be30ce0069",
+        "source_fact:v1:cd2bdd0addde3940c29a726b17c13deb02dafd17d71a5c6cb9fa1f20efd311e9",
+        "source_fact:v1:d9a55bc2ff804a1d1d75cb59716302505a480506ca17a33380e75a5614c10d06"
+      ],
+      "source_published_kst": "2026-10-14T14:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "안현 SK하이닉스 사장 “HBM만으론 메모리 급증 수요 감당 못해…대안으로 HBF·3D 적층 D램 개발 중”",
+      "telegram_core_fact": "안현 SK하이닉스 개발총괄(CDO) 사장이 인공지능(AI) 추론 시장 도래에 따라 고대역폭메모리(HBM)만으론 급증하는 메모리 수요를 감당하기 어렵다고 분석했다.",
+      "title": "안현 SK하이닉스 사장 “HBM만으론 메모리 급증 수요 감당 못해…대안으로 HBF·3D 적층 D램 개발 중”"
+    },
     "fact:ed24e1bdcb733e378fab93af": {
       "first_seen_kst": "2026-10-08T03:51:03+09:00",
       "lanes": {
@@ -113104,6 +113488,28 @@
       "source_title": "美 스타벅스, 치폴레 인수 저울질…역대급 M&A 되나",
       "telegram_core_fact": "스타벅스의 치폴레 인수가 성사된다면 2014년 버거킹이 팀홀튼을 114억 달러(약 15조 3102억원)에 인수한 거래를 넘어선다.",
       "title": "美 스타벅스, 치폴레 인수 저울질…역대급 M&A 되나"
+    },
+    "fact:f24142b75d858fbafe7fbd7f": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261014042351003",
+      "source": "연합뉴스",
+      "source_body_digest": "5e51024c01de7a30083bfd115e873bcab1a9e26f0f4b12c640109953d7c8d08f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:03ed29d4aa4346aea6088717c3a3103ec5df971602a9e107718aa706d1d72400",
+      "source_fact_keys": [
+        "source_fact:v1:036ddb25ac76e29a0abb0987f00c6e55acaa8f294a474b8f81d258356541de4f",
+        "source_fact:v1:2eb52d7cdcdcb3b8e268777dbf7871e91227efdd3fdaca36cce32c1b3bb2d319",
+        "source_fact:v1:4b133837fe644d99b74f8440c007537384f46863f0a1f4e44c3269af3bf1ddf5"
+      ],
+      "source_published_kst": "2026-10-14T11:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성 반도체 부스 찾은 하정우 부위원장 \"AI반도체 로드맵 확인\"(종합) | 연합뉴스",
+      "telegram_core_fact": "삼성전자는 올해 신설한 반도체 클러스터존에서 주요 생산·개발 거점과 용인 국가산업단지 조성 계획도 소개한다.",
+      "title": "삼성 반도체 부스 찾은 하정우 부위원장 \"AI반도체 로드맵 확인\"(종합) | 연합뉴스"
     },
     "fact:f27b516a5a7527c495412f26": {
       "first_seen_kst": "2026-10-10T19:20:50+09:00",
@@ -125961,6 +126367,32 @@
       "telegram_core_fact": "스페이스X가 엔비디아의 첨단 칩 구매 자금을 마련하기 위해 대출과 회사채 발행 등으로 400억달러(약 53조5천억원)를 조달하려 한다고 파이낸셜타임스(FT)가 소식통들을 인용해 6일(현지시간) 보도했다.",
       "title": "\"스페이스X, 엔비디아 칩 구매용 54조원 조달 추진\" | 연합뉴스"
     },
+    "link:1fee2538c75efdd8c7eb09a9": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825111",
+      "source": "뉴시스",
+      "source_body_digest": "c5edf9b3baf9842b9599707b71f460527274541de3f73ff6b8b5cdc5373d4abe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:876db90a0b8889431462d2a1a4f92c4829d55e2f29041b35a4824eb4126657ab",
+      "source_fact_keys": [
+        "source_fact:v1:147b9ff9c271c827a474ea76aa9a8a33edf3a53d891d1d667fc3ed9c06b78ce8",
+        "source_fact:v1:42479ad56e2e6f5ddfc30c23a64770bde0fbe52e7d47f6b93a1110213a00b899",
+        "source_fact:v1:5c8bd3b67f4671f5f8d99ba6585c8222337ac4151aabcaf4157017fe8a2a7e35",
+        "source_fact:v1:7847848384aea7bac4063f92964086c6540c03cfeea3c0fdcb376f0b4b981e44",
+        "source_fact:v1:93a3a6fa1dc40a3968c81d40c1b6ee9a937d765f9930e4e959f0da5e359d3438",
+        "source_fact:v1:d6aad9312de30588449984b47002122dc7410ff38a81f909b9940f54baa894d9",
+        "source_fact:v1:f99c61bc8bf161e964ea11d95d5be5e080d67dd4f0c88035f8ec2f24a94f2ed9"
+      ],
+      "source_published_kst": "2026-10-14T11:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 월가 은행 4곳, 3분기 호실적에도…금리 인상에 희비",
+      "telegram_core_fact": "씨티그룹의 경우 관련 분야에서 예상보다 높은 4% 매출 성장을 기록했지만, 곤잘로 루케티 CFO가 \"금리 환경을 고려할 때 다소 어려운 상황\"이라고 인정했다.",
+      "title": "美 월가 은행 4곳, 3분기 호실적에도…금리 인상에 희비"
+    },
     "link:2008395f4f561a00001383d9": {
       "first_seen_kst": "2026-10-13T00:43:08+09:00",
       "lanes": {
@@ -131695,6 +132127,27 @@
       "telegram_core_fact": "시지바이오는 칼슘 하이드록시아파타이트(CaHA) 기반 필러 ‘페이스템’(FACETEM)이 대만 식품의약품청(TFDA)으로부터 의료기기 품목허가를 획득했다고 13일 밝혔다. 현지 파트너와 제품 공급 및 의료진 교육을 추진하고, 향후 3년간 대만에서 누적 공급매출 50억원 이상을 달성하는 것이 목표다.",
       "title": "시지바이오 필러 '페이스템', 대만 품목허가 획득"
     },
+    "link:30a43a529ef4fe60acd411b0": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.hankyung.com/article/2026101418197",
+      "source": "한국경제",
+      "source_body_digest": "6b08e5522534619b7993db1b7207e8e17820d486ebe52979f623a3909aa18996",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6473ca0d01c5d4a83bdef6136646bc38a5991f61b1c61f8d1e5a2b7cdf3e449e",
+      "source_fact_keys": [
+        "source_fact:v1:6ff4d90f77ddeed10668984e45654a810f233cc4af9700d0a75ad56607057779",
+        "source_fact:v1:90f846aeb1461eb5d840404e561d3c93bb743f36768de883d865765225fac9e6"
+      ],
+      "source_published_kst": "2026-10-14T16:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "ASML \"2028년까지 공급 부족…추가 증설 검토\"",
+      "telegram_core_fact": "크리스토프 푸케 최고경영자(CEO)는 \"현재 계획된 공급량으로는 2027년과 2028년 모두 고객 수요를 완전히 충족하지 못할 것으로 예상한다\"며 \"2028년 생산능력을 기존에 밝힌 30% 증설 이상으로 늘리는 방안을 검토하고 있다\"고 말했다.",
+      "title": "ASML \"2028년까지 공급 부족…추가 증설 검토\""
+    },
     "link:30adf57294e4d8b77e0babba": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
       "lanes": {
@@ -133439,6 +133892,30 @@
       ],
       "source_published_kst": "2026-10-07T08:04+09:00",
       "title": "SK온, 포드 최고 품질 인증… 헝가리 공장, 2년 만에 Q1 획득"
+    },
+    "link:35546be6ca8a92fc411f1986": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.hankyung.com/article/2026101405281",
+      "source": "한국경제",
+      "source_body_digest": "7303fb02d335cd0d9a9f66e02097ac4527195b68b3dade28c3c557d22f7b5541",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22ae117d61be38ca726d4a9938494b431a6b3fcb2a9fea7ad7db8e0477707d85",
+      "source_fact_keys": [
+        "source_fact:v1:23c8f08daca70d5219650579836b48356513ea9a0ffe7715cf084d4bf724392a",
+        "source_fact:v1:486aae9a2763248b44541ff18a6409a1901635507aa60379c50b09af7074a6ed",
+        "source_fact:v1:adaeed5dbbf239b425a0dc1e8acbc4e9d95a090098f0ad89026fda68c56a7683",
+        "source_fact:v1:dc188cf901c7b008f4ca08b9f2270352859f82d9a1e75076ec78fd7df80c9ce8",
+        "source_fact:v1:e8fa7df893b7460f02211218e21a62d771df943fc295c7045a65d558b2afc66d"
+      ],
+      "source_published_kst": "2026-10-14T16:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "'횡보장 방어' 커버드콜 ETF 순자산 30조 눈앞",
+      "telegram_core_fact": "이 기준 코스콤 ETF체크에 따르면 ‘RISE 200고배당커버드콜ATM’의 지난 3개월 수익률은 11.06%로 나타났다. 한국거래소에 따르면 작년 말 15조원 수준이던 국내 커버드콜 ETF 순자산 규모는 최근 30조원에 육박했다.",
+      "title": "'횡보장 방어' 커버드콜 ETF 순자산 30조 눈앞"
     },
     "link:3592f106fffe2ca7f93cdd09": {
       "first_seen_kst": "2026-09-27T07:38:21+09:00",
@@ -138575,6 +139052,35 @@
       "source_title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다[간추린 주말 뉴스]",
       "telegram_core_fact": "삼성전자와 SK하이닉스가 올해 반도체 호황으로 역대급 수익을 내고 있는 가운데, 이르면 내년 3월 양사 직원들은 일제히 수억원대의 성과급을 지급 받을 전망이다. 국가데이터처의 '2025년 가계금융복지조사'에 따르면 지난해 3월 말 기준 가구당 평균 순자산은 4억7144만원으로 전년대비 5.0% 증가했다.",
       "title": "내년 3월 반도체 벨트에 1인당 7억대 성과급 풀린다[간추린 주말 뉴스]"
+    },
+    "link:4648bf2a7f5c958780b6d2f7": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://biz.heraldcorp.com/article/10902424",
+      "source": "헤럴드경제",
+      "source_body_digest": "885b82d518eca93dcf154076080259b59f62b57219fc8aa4ad65790719cd7017",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:667d0d630ff653890a0bf8e5282b4eea88c6afe5f5b61a5da9e1c4ae68b8ed8f",
+      "source_fact_keys": [
+        "source_fact:v1:14ee3696be31f55565433b67bc43f8e86ca6acc88e885a1b07f7b54e2de97f23",
+        "source_fact:v1:36b097eb633ec0d59e1a5f8c12ee50c593060c04d97c191d3557fc887971de27",
+        "source_fact:v1:54f35a829b6a05cf526d86a5a30b4c4e2f2175f2018f7748641c0d79b1a1b003",
+        "source_fact:v1:6000259f2cff5e09c65fee41af844f64d2eaabf63b46fbef380b572d5949947a",
+        "source_fact:v1:735ec38df080804733cbcba76593f0e048f88fd574097d13048ec31323479c16",
+        "source_fact:v1:a135f3158d7fdc4d9048445d4f715994a970ade1c34b86677f0ac53dfc2db3d0",
+        "source_fact:v1:aecae64da089d75b90095a0df030218050bab9906cc073df1a16778c56456287",
+        "source_fact:v1:ba9d34ab2b036ea4eacc72d6fc7978b0eca4fb9207f75860539596be30ce0069",
+        "source_fact:v1:cd2bdd0addde3940c29a726b17c13deb02dafd17d71a5c6cb9fa1f20efd311e9",
+        "source_fact:v1:d9a55bc2ff804a1d1d75cb59716302505a480506ca17a33380e75a5614c10d06"
+      ],
+      "source_published_kst": "2026-10-14T14:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "안현 SK하이닉스 사장 “HBM만으론 메모리 급증 수요 감당 못해…대안으로 HBF·3D 적층 D램 개발 중”",
+      "telegram_core_fact": "안현 SK하이닉스 개발총괄(CDO) 사장이 인공지능(AI) 추론 시장 도래에 따라 고대역폭메모리(HBM)만으론 급증하는 메모리 수요를 감당하기 어렵다고 분석했다.",
+      "title": "안현 SK하이닉스 사장 “HBM만으론 메모리 급증 수요 감당 못해…대안으로 HBF·3D 적층 D램 개발 중”"
     },
     "link:465d328d23235e7ffa81ba7a": {
       "first_seen_kst": "2026-10-13T16:01:00+09:00",
@@ -149531,6 +150037,28 @@
       "telegram_core_fact": "공정거래위원회의 기업결합 심사를 비롯해 금융당국의 대주주 변경 승인 등 정부 인허가 절차가 길어지고 있는 데다, 국회 내 디지털자산기본법 제정 논의 지연 등이 복합적으로 작용한 결과로 풀이된다.",
       "title": "네이버파이낸셜·두나무 결합, 내년 3월로 재연기…“기업결합·규제절차 영향”(종합)"
     },
+    "link:68fafca0c48c2067839ae723": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261014042351003",
+      "source": "연합뉴스",
+      "source_body_digest": "5e51024c01de7a30083bfd115e873bcab1a9e26f0f4b12c640109953d7c8d08f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:03ed29d4aa4346aea6088717c3a3103ec5df971602a9e107718aa706d1d72400",
+      "source_fact_keys": [
+        "source_fact:v1:036ddb25ac76e29a0abb0987f00c6e55acaa8f294a474b8f81d258356541de4f",
+        "source_fact:v1:2eb52d7cdcdcb3b8e268777dbf7871e91227efdd3fdaca36cce32c1b3bb2d319",
+        "source_fact:v1:4b133837fe644d99b74f8440c007537384f46863f0a1f4e44c3269af3bf1ddf5"
+      ],
+      "source_published_kst": "2026-10-14T11:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성 반도체 부스 찾은 하정우 부위원장 \"AI반도체 로드맵 확인\"(종합) | 연합뉴스",
+      "telegram_core_fact": "삼성전자는 올해 신설한 반도체 클러스터존에서 주요 생산·개발 거점과 용인 국가산업단지 조성 계획도 소개한다.",
+      "title": "삼성 반도체 부스 찾은 하정우 부위원장 \"AI반도체 로드맵 확인\"(종합) | 연합뉴스"
+    },
     "link:690c5837db00cc48e411bad6": {
       "first_seen_kst": "2026-10-08T19:11:41+09:00",
       "lanes": {
@@ -155117,6 +155645,29 @@
       "source_title": "TSMC 9월 매출 전년대비 54.6% 증가…전월보다는 감소",
       "telegram_core_fact": "TSMC는 지난달 매출이 5,118억5,700만 대만달러로, 지난해 같은 달보다 54.6% 증가했다고 오늘(8일) 밝혔습니다.",
       "title": "TSMC 9월 매출 전년대비 54.6% 증가…전월보다는 감소"
+    },
+    "link:7a4911134a306fecd2e6dbcf": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.fnnews.com/news/202610141554294553",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1f1613e474ae34cc3f7a8489cd2d285b8fd4fe3595ae6a9f19e146a4a59064fd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:39635d19aa049e9b37a386de0ae666087bd1e5a06dadb1bf9a3c4451648a4c6f",
+      "source_fact_keys": [
+        "source_fact:v1:368643d3fa56b67dc8815d5be71dec000233df5e192e37876b949ec09a16249a",
+        "source_fact:v1:4343abe0a21cfdb2f66817a663decbcccc3599e367ba6902a59b1d9694c0c819",
+        "source_fact:v1:bce0660b3a66b3fcabf7f8e864f725c95843198f01249f2cf9bed8516b429850",
+        "source_fact:v1:d2b575467bf2e215bd78e3b747dfb04f3abef35c792daf851df56c9cff736684"
+      ],
+      "source_published_kst": "2026-10-14T15:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 YMTC, 낸드 출하량 세계 3위로…삼성·SK하이닉스 추격",
+      "telegram_core_fact": "YMTC의 글로벌 낸드 매출 점유율은 지난해 1분기 9%에서 올해 1분기 14%로 5%포인트 상승했다.",
+      "title": "中 YMTC, 낸드 출하량 세계 3위로…삼성·SK하이닉스 추격"
     },
     "link:7a6c2ac14e6f95f6d5665248": {
       "first_seen_kst": "2026-10-14T07:18:46+09:00",
@@ -164290,6 +164841,33 @@
       "source_title": "40년 ‘반도체 검증’ 큐알티, AI·우주 타고 ‘퀀텀점프’ [그 회사 어때?]",
       "telegram_core_fact": "위성에 탑재되는 반도체가 지상에서 사용되는 제품보다 훨씬 엄격한 검증을 거쳐야 하는 이유다.",
       "title": "40년 ‘반도체 검증’ 큐알티, AI·우주 타고 ‘퀀텀점프’ [그 회사 어때?]"
+    },
+    "link:978ede105c275c56ad1d020c": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825490",
+      "source": "뉴시스",
+      "source_body_digest": "a12e9bf6665176e11f28a4ff5e34bc3e406a76a53406a4764d0d20e0a02d7c36",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48ea9a997f735d0f67c5dfee81de3325cde728dc32d06c6c7de01e56ffbdce3d",
+      "source_fact_keys": [
+        "source_fact:v1:05dc72fc097bb9904dc3297f3ba983185255cdb069fc99f206edcdbe648e7f17",
+        "source_fact:v1:05e3613dc624c69cba9c5c94c40b1e6fc008b00457a117a8c5e82825339faa93",
+        "source_fact:v1:52703339b31a46b3e76925835f8c97a372bc4ff226a8a2587062ce60ff3ab092",
+        "source_fact:v1:6aeb20c0f968c573a33ac9a5fbc669411f5ded39ee72e5eb1f2f98764aaabedf",
+        "source_fact:v1:a0dd576fd4622c2526314d53fe8390c103e4e0f55dcf9873e00b2894673f124a",
+        "source_fact:v1:d5bee775cecc53596e6596c1fff2e800eb814607a9679a25ccbab81caf3d289e",
+        "source_fact:v1:dfc2432de1aef7027d257233ddc98814666cf34467749b88fc598f5609a0af7a",
+        "source_fact:v1:e352852e3002afedef0a4c264821b96d68279fe5593a42da3631b2bbb806705f"
+      ],
+      "source_published_kst": "2026-10-14T13:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "제조업 고용보험 가입자 두달째↑…'반도체 호황' 증가폭 확대",
+      "telegram_core_fact": "고용노동부가 14일 발표한 '2026년 9월 고용행정 통계로 본 노동시장 동향'에 따르면 지난달 말 기준 고용보험 상시가입자 수는 1593만명으로, 전년 동월보다 28만8000명(1.8%) 증가했다.",
+      "title": "제조업 고용보험 가입자 두달째↑…'반도체 호황' 증가폭 확대"
     },
     "link:97a58e89cf041c269070e5fb": {
       "first_seen_kst": "2026-10-11T11:01:00+09:00",
@@ -199449,6 +200027,35 @@
       "telegram_core_fact": "한국맥도날드는 이번 확장 이전을 통해 '매출 2조원 달성, 500개 매장 운영'을 목표로 한 '2030 비전'에 박차를 가할 계획이다.",
       "title": "한국맥도날드, 태평로로 본사 확장 이전…\"매출 2조원 달성 목표\""
     },
+    "original:07a0010b62fc9d5a9c3646bc": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://biz.heraldcorp.com/article/10902424",
+      "source": "헤럴드경제",
+      "source_body_digest": "885b82d518eca93dcf154076080259b59f62b57219fc8aa4ad65790719cd7017",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:667d0d630ff653890a0bf8e5282b4eea88c6afe5f5b61a5da9e1c4ae68b8ed8f",
+      "source_fact_keys": [
+        "source_fact:v1:14ee3696be31f55565433b67bc43f8e86ca6acc88e885a1b07f7b54e2de97f23",
+        "source_fact:v1:36b097eb633ec0d59e1a5f8c12ee50c593060c04d97c191d3557fc887971de27",
+        "source_fact:v1:54f35a829b6a05cf526d86a5a30b4c4e2f2175f2018f7748641c0d79b1a1b003",
+        "source_fact:v1:6000259f2cff5e09c65fee41af844f64d2eaabf63b46fbef380b572d5949947a",
+        "source_fact:v1:735ec38df080804733cbcba76593f0e048f88fd574097d13048ec31323479c16",
+        "source_fact:v1:a135f3158d7fdc4d9048445d4f715994a970ade1c34b86677f0ac53dfc2db3d0",
+        "source_fact:v1:aecae64da089d75b90095a0df030218050bab9906cc073df1a16778c56456287",
+        "source_fact:v1:ba9d34ab2b036ea4eacc72d6fc7978b0eca4fb9207f75860539596be30ce0069",
+        "source_fact:v1:cd2bdd0addde3940c29a726b17c13deb02dafd17d71a5c6cb9fa1f20efd311e9",
+        "source_fact:v1:d9a55bc2ff804a1d1d75cb59716302505a480506ca17a33380e75a5614c10d06"
+      ],
+      "source_published_kst": "2026-10-14T14:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "안현 SK하이닉스 사장 “HBM만으론 메모리 급증 수요 감당 못해…대안으로 HBF·3D 적층 D램 개발 중”",
+      "telegram_core_fact": "안현 SK하이닉스 개발총괄(CDO) 사장이 인공지능(AI) 추론 시장 도래에 따라 고대역폭메모리(HBM)만으론 급증하는 메모리 수요를 감당하기 어렵다고 분석했다.",
+      "title": "안현 SK하이닉스 사장 “HBM만으론 메모리 급증 수요 감당 못해…대안으로 HBF·3D 적층 D램 개발 중”"
+    },
     "original:07a711ea3f5c4cbed88b3101": {
       "first_seen_kst": "2026-10-14T07:18:46+09:00",
       "lanes": {
@@ -199963,6 +200570,33 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003811653",
       "source": "뉴시스",
       "title": "우크라, 자체 개발 탄도미사일 첫 실전 투입…러시아 목표물 타격"
+    },
+    "original:09863ac84fdd806bf7492611": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825490",
+      "source": "뉴시스",
+      "source_body_digest": "a12e9bf6665176e11f28a4ff5e34bc3e406a76a53406a4764d0d20e0a02d7c36",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48ea9a997f735d0f67c5dfee81de3325cde728dc32d06c6c7de01e56ffbdce3d",
+      "source_fact_keys": [
+        "source_fact:v1:05dc72fc097bb9904dc3297f3ba983185255cdb069fc99f206edcdbe648e7f17",
+        "source_fact:v1:05e3613dc624c69cba9c5c94c40b1e6fc008b00457a117a8c5e82825339faa93",
+        "source_fact:v1:52703339b31a46b3e76925835f8c97a372bc4ff226a8a2587062ce60ff3ab092",
+        "source_fact:v1:6aeb20c0f968c573a33ac9a5fbc669411f5ded39ee72e5eb1f2f98764aaabedf",
+        "source_fact:v1:a0dd576fd4622c2526314d53fe8390c103e4e0f55dcf9873e00b2894673f124a",
+        "source_fact:v1:d5bee775cecc53596e6596c1fff2e800eb814607a9679a25ccbab81caf3d289e",
+        "source_fact:v1:dfc2432de1aef7027d257233ddc98814666cf34467749b88fc598f5609a0af7a",
+        "source_fact:v1:e352852e3002afedef0a4c264821b96d68279fe5593a42da3631b2bbb806705f"
+      ],
+      "source_published_kst": "2026-10-14T13:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "제조업 고용보험 가입자 두달째↑…'반도체 호황' 증가폭 확대",
+      "telegram_core_fact": "고용노동부가 14일 발표한 '2026년 9월 고용행정 통계로 본 노동시장 동향'에 따르면 지난달 말 기준 고용보험 상시가입자 수는 1593만명으로, 전년 동월보다 28만8000명(1.8%) 증가했다.",
+      "title": "제조업 고용보험 가입자 두달째↑…'반도체 호황' 증가폭 확대"
     },
     "original:098ad83d23bba8a3860bc563": {
       "first_seen_kst": "2026-10-07T03:43:49+09:00",
@@ -203221,6 +203855,32 @@
       "source_title": "LG전자, 목동 최고급 주거단지에 AI 홈 심는다…B2B 사업 확장",
       "telegram_core_fact": "LG전자가 목동 신축 주거단지에 인공지능(AI) 홈 솔루션과 프리미엄 빌트인 가전을 공급한다.",
       "title": "LG전자, 목동 최고급 주거단지에 AI 홈 심는다…B2B 사업 확장"
+    },
+    "original:1442032b81db855b8b164094": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825111",
+      "source": "뉴시스",
+      "source_body_digest": "c5edf9b3baf9842b9599707b71f460527274541de3f73ff6b8b5cdc5373d4abe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:876db90a0b8889431462d2a1a4f92c4829d55e2f29041b35a4824eb4126657ab",
+      "source_fact_keys": [
+        "source_fact:v1:147b9ff9c271c827a474ea76aa9a8a33edf3a53d891d1d667fc3ed9c06b78ce8",
+        "source_fact:v1:42479ad56e2e6f5ddfc30c23a64770bde0fbe52e7d47f6b93a1110213a00b899",
+        "source_fact:v1:5c8bd3b67f4671f5f8d99ba6585c8222337ac4151aabcaf4157017fe8a2a7e35",
+        "source_fact:v1:7847848384aea7bac4063f92964086c6540c03cfeea3c0fdcb376f0b4b981e44",
+        "source_fact:v1:93a3a6fa1dc40a3968c81d40c1b6ee9a937d765f9930e4e959f0da5e359d3438",
+        "source_fact:v1:d6aad9312de30588449984b47002122dc7410ff38a81f909b9940f54baa894d9",
+        "source_fact:v1:f99c61bc8bf161e964ea11d95d5be5e080d67dd4f0c88035f8ec2f24a94f2ed9"
+      ],
+      "source_published_kst": "2026-10-14T11:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 월가 은행 4곳, 3분기 호실적에도…금리 인상에 희비",
+      "telegram_core_fact": "씨티그룹의 경우 관련 분야에서 예상보다 높은 4% 매출 성장을 기록했지만, 곤잘로 루케티 CFO가 \"금리 환경을 고려할 때 다소 어려운 상황\"이라고 인정했다.",
+      "title": "美 월가 은행 4곳, 3분기 호실적에도…금리 인상에 희비"
     },
     "original:145255910c167871bb77d46d": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
@@ -222893,6 +223553,28 @@
       ],
       "source_published_kst": "2026-10-05T16:20+09:00",
       "title": "日라피더스, 도시바 등 17개사와 반도체 설계 동맹"
+    },
+    "original:516b0359c2a892aae8dc567a": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261014042351003",
+      "source": "연합뉴스",
+      "source_body_digest": "5e51024c01de7a30083bfd115e873bcab1a9e26f0f4b12c640109953d7c8d08f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:03ed29d4aa4346aea6088717c3a3103ec5df971602a9e107718aa706d1d72400",
+      "source_fact_keys": [
+        "source_fact:v1:036ddb25ac76e29a0abb0987f00c6e55acaa8f294a474b8f81d258356541de4f",
+        "source_fact:v1:2eb52d7cdcdcb3b8e268777dbf7871e91227efdd3fdaca36cce32c1b3bb2d319",
+        "source_fact:v1:4b133837fe644d99b74f8440c007537384f46863f0a1f4e44c3269af3bf1ddf5"
+      ],
+      "source_published_kst": "2026-10-14T11:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성 반도체 부스 찾은 하정우 부위원장 \"AI반도체 로드맵 확인\"(종합) | 연합뉴스",
+      "telegram_core_fact": "삼성전자는 올해 신설한 반도체 클러스터존에서 주요 생산·개발 거점과 용인 국가산업단지 조성 계획도 소개한다.",
+      "title": "삼성 반도체 부스 찾은 하정우 부위원장 \"AI반도체 로드맵 확인\"(종합) | 연합뉴스"
     },
     "original:518ae4f57e903470882c24d8": {
       "first_seen_kst": "2026-10-07T11:25:20+09:00",
@@ -259694,6 +260376,30 @@
       "telegram_core_fact": "올해는 모태펀드가 출자하는 자펀드에 지역투자 20% 의무를 부여하고, 지방 소재 중소·벤처기업에 30% 이상 투자 의무를 설정한 운용사에는 가점을 부여한다.",
       "title": "모태 자펀드 수도권 집중…2020년 이후 신규투자 4분의 3 쏠려 | 연합뉴스"
     },
+    "original:cc2813fc7a5bf35ba0c667c2": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.hankyung.com/article/2026101405281",
+      "source": "한국경제",
+      "source_body_digest": "7303fb02d335cd0d9a9f66e02097ac4527195b68b3dade28c3c557d22f7b5541",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22ae117d61be38ca726d4a9938494b431a6b3fcb2a9fea7ad7db8e0477707d85",
+      "source_fact_keys": [
+        "source_fact:v1:23c8f08daca70d5219650579836b48356513ea9a0ffe7715cf084d4bf724392a",
+        "source_fact:v1:486aae9a2763248b44541ff18a6409a1901635507aa60379c50b09af7074a6ed",
+        "source_fact:v1:adaeed5dbbf239b425a0dc1e8acbc4e9d95a090098f0ad89026fda68c56a7683",
+        "source_fact:v1:dc188cf901c7b008f4ca08b9f2270352859f82d9a1e75076ec78fd7df80c9ce8",
+        "source_fact:v1:e8fa7df893b7460f02211218e21a62d771df943fc295c7045a65d558b2afc66d"
+      ],
+      "source_published_kst": "2026-10-14T16:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "'횡보장 방어' 커버드콜 ETF 순자산 30조 눈앞",
+      "telegram_core_fact": "이 기준 코스콤 ETF체크에 따르면 ‘RISE 200고배당커버드콜ATM’의 지난 3개월 수익률은 11.06%로 나타났다. 한국거래소에 따르면 작년 말 15조원 수준이던 국내 커버드콜 ETF 순자산 규모는 최근 30조원에 육박했다.",
+      "title": "'횡보장 방어' 커버드콜 ETF 순자산 30조 눈앞"
+    },
     "original:cc3a89a0ef7a00edccfc4b57": {
       "first_seen_kst": "2026-10-08T02:57:10+09:00",
       "lanes": {
@@ -261533,6 +262239,27 @@
       "source_title": "“158억 무차입 공매도라더니”…HSBC, 대법원서 무죄 확정",
       "telegram_core_fact": "대법원은 HSBC 홍콩법인의 무차입 공매도 사건에서 검찰 상고를 기각하고 무죄를 확정했다.",
       "title": "“158억 무차입 공매도라더니”…HSBC, 대법원서 무죄 확정"
+    },
+    "original:d1bf87c1b3a7aeff121b7e08": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.hankyung.com/article/2026101418197",
+      "source": "한국경제",
+      "source_body_digest": "6b08e5522534619b7993db1b7207e8e17820d486ebe52979f623a3909aa18996",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6473ca0d01c5d4a83bdef6136646bc38a5991f61b1c61f8d1e5a2b7cdf3e449e",
+      "source_fact_keys": [
+        "source_fact:v1:6ff4d90f77ddeed10668984e45654a810f233cc4af9700d0a75ad56607057779",
+        "source_fact:v1:90f846aeb1461eb5d840404e561d3c93bb743f36768de883d865765225fac9e6"
+      ],
+      "source_published_kst": "2026-10-14T16:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "ASML \"2028년까지 공급 부족…추가 증설 검토\"",
+      "telegram_core_fact": "크리스토프 푸케 최고경영자(CEO)는 \"현재 계획된 공급량으로는 2027년과 2028년 모두 고객 수요를 완전히 충족하지 못할 것으로 예상한다\"며 \"2028년 생산능력을 기존에 밝힌 30% 증설 이상으로 늘리는 방안을 검토하고 있다\"고 말했다.",
+      "title": "ASML \"2028년까지 공급 부족…추가 증설 검토\""
     },
     "original:d1cdab6fb2012a3e0b787158": {
       "first_seen_kst": "2026-10-05T13:15:14+09:00",
@@ -272421,6 +273148,29 @@
       ],
       "source_published_kst": "2026-10-07T10:15+09:00",
       "title": "인구 절벽 시대에도 ‘나 홀로 우상향’ 천안… 삼성 투자 타고 ‘더샵 천안라크원’ 분양"
+    },
+    "original:f51e9c419de47e93b758e6d6": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.fnnews.com/news/202610141554294553",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1f1613e474ae34cc3f7a8489cd2d285b8fd4fe3595ae6a9f19e146a4a59064fd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:39635d19aa049e9b37a386de0ae666087bd1e5a06dadb1bf9a3c4451648a4c6f",
+      "source_fact_keys": [
+        "source_fact:v1:368643d3fa56b67dc8815d5be71dec000233df5e192e37876b949ec09a16249a",
+        "source_fact:v1:4343abe0a21cfdb2f66817a663decbcccc3599e367ba6902a59b1d9694c0c819",
+        "source_fact:v1:bce0660b3a66b3fcabf7f8e864f725c95843198f01249f2cf9bed8516b429850",
+        "source_fact:v1:d2b575467bf2e215bd78e3b747dfb04f3abef35c792daf851df56c9cff736684"
+      ],
+      "source_published_kst": "2026-10-14T15:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 YMTC, 낸드 출하량 세계 3위로…삼성·SK하이닉스 추격",
+      "telegram_core_fact": "YMTC의 글로벌 낸드 매출 점유율은 지난해 1분기 9%에서 올해 1분기 14%로 5%포인트 상승했다.",
+      "title": "中 YMTC, 낸드 출하량 세계 3위로…삼성·SK하이닉스 추격"
     },
     "original:f51f088cf5974c74b7500965": {
       "first_seen_kst": "2026-10-13T05:27:22+09:00",
@@ -283393,6 +284143,33 @@
       "telegram_core_fact": "연성회로기판(FPCB) 전문기업 이브이첨단소재가 피부에 접촉하지 않고 혈류를 측정하는 자기혈류파 기술 상용화에 나선다.",
       "title": "이브이첨단소재, 비접촉 심혈관 진단센서 국책과제 주관…상용화 추진"
     },
+    "source_fact:06db9eef1c00762bf27d2ea1": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825490",
+      "source": "뉴시스",
+      "source_body_digest": "a12e9bf6665176e11f28a4ff5e34bc3e406a76a53406a4764d0d20e0a02d7c36",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48ea9a997f735d0f67c5dfee81de3325cde728dc32d06c6c7de01e56ffbdce3d",
+      "source_fact_keys": [
+        "source_fact:v1:05dc72fc097bb9904dc3297f3ba983185255cdb069fc99f206edcdbe648e7f17",
+        "source_fact:v1:05e3613dc624c69cba9c5c94c40b1e6fc008b00457a117a8c5e82825339faa93",
+        "source_fact:v1:52703339b31a46b3e76925835f8c97a372bc4ff226a8a2587062ce60ff3ab092",
+        "source_fact:v1:6aeb20c0f968c573a33ac9a5fbc669411f5ded39ee72e5eb1f2f98764aaabedf",
+        "source_fact:v1:a0dd576fd4622c2526314d53fe8390c103e4e0f55dcf9873e00b2894673f124a",
+        "source_fact:v1:d5bee775cecc53596e6596c1fff2e800eb814607a9679a25ccbab81caf3d289e",
+        "source_fact:v1:dfc2432de1aef7027d257233ddc98814666cf34467749b88fc598f5609a0af7a",
+        "source_fact:v1:e352852e3002afedef0a4c264821b96d68279fe5593a42da3631b2bbb806705f"
+      ],
+      "source_published_kst": "2026-10-14T13:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "제조업 고용보험 가입자 두달째↑…'반도체 호황' 증가폭 확대",
+      "telegram_core_fact": "고용노동부가 14일 발표한 '2026년 9월 고용행정 통계로 본 노동시장 동향'에 따르면 지난달 말 기준 고용보험 상시가입자 수는 1593만명으로, 전년 동월보다 28만8000명(1.8%) 증가했다.",
+      "title": "제조업 고용보험 가입자 두달째↑…'반도체 호황' 증가폭 확대"
+    },
     "source_fact:06dfdacfd570ff98321ab291": {
       "first_seen_kst": "2026-10-10T10:14:41+09:00",
       "lanes": {
@@ -289216,6 +289993,27 @@
       "telegram_core_fact": "SK하이닉스가 미국 낸드플래시 손자회사 '솔리다임'의 미국 증시 상장(IPO)을 추진할 것으로 알려진 가운데, 양사가 상장을 통해 어떠한 실익을 얻을 수 있을 지 관심이 쏠린다.",
       "title": "'200조 기업가치' 기대감…SK하이닉스, 솔리다임 상장으로 얻을 실익은?"
     },
+    "source_fact:0c1f04a1f4ffab0fbf6c0def": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.hankyung.com/article/2026101418197",
+      "source": "한국경제",
+      "source_body_digest": "6b08e5522534619b7993db1b7207e8e17820d486ebe52979f623a3909aa18996",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6473ca0d01c5d4a83bdef6136646bc38a5991f61b1c61f8d1e5a2b7cdf3e449e",
+      "source_fact_keys": [
+        "source_fact:v1:6ff4d90f77ddeed10668984e45654a810f233cc4af9700d0a75ad56607057779",
+        "source_fact:v1:90f846aeb1461eb5d840404e561d3c93bb743f36768de883d865765225fac9e6"
+      ],
+      "source_published_kst": "2026-10-14T16:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "ASML \"2028년까지 공급 부족…추가 증설 검토\"",
+      "telegram_core_fact": "크리스토프 푸케 최고경영자(CEO)는 \"현재 계획된 공급량으로는 2027년과 2028년 모두 고객 수요를 완전히 충족하지 못할 것으로 예상한다\"며 \"2028년 생산능력을 기존에 밝힌 30% 증설 이상으로 늘리는 방안을 검토하고 있다\"고 말했다.",
+      "title": "ASML \"2028년까지 공급 부족…추가 증설 검토\""
+    },
     "source_fact:0c1ff22c01865b5c1f37f208": {
       "first_seen_kst": "2026-10-08T14:21:54+09:00",
       "lanes": {
@@ -289856,6 +290654,32 @@
       "source_title": "마스오토, 美 교통부와 자율주행 협력 모색",
       "telegram_core_fact": "자율주행 트럭 기업 마스오토가 미국 교통부와 자율주행 트럭 상용화 확대 방안을 논의한다. 노제경 마스오토 부대표는 21일 ‘자율주행에 대비한 운송 노선 구축’ 세션과 22일 ‘실증에서 상용화로: 자율주행 글로벌 투어’ 세션에 한국 측 연사로 참여한다.",
       "title": "마스오토, 美 교통부와 자율주행 협력 모색"
+    },
+    "source_fact:0cd50ecdeb030e6a9172db5a": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825111",
+      "source": "뉴시스",
+      "source_body_digest": "c5edf9b3baf9842b9599707b71f460527274541de3f73ff6b8b5cdc5373d4abe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:876db90a0b8889431462d2a1a4f92c4829d55e2f29041b35a4824eb4126657ab",
+      "source_fact_keys": [
+        "source_fact:v1:147b9ff9c271c827a474ea76aa9a8a33edf3a53d891d1d667fc3ed9c06b78ce8",
+        "source_fact:v1:42479ad56e2e6f5ddfc30c23a64770bde0fbe52e7d47f6b93a1110213a00b899",
+        "source_fact:v1:5c8bd3b67f4671f5f8d99ba6585c8222337ac4151aabcaf4157017fe8a2a7e35",
+        "source_fact:v1:7847848384aea7bac4063f92964086c6540c03cfeea3c0fdcb376f0b4b981e44",
+        "source_fact:v1:93a3a6fa1dc40a3968c81d40c1b6ee9a937d765f9930e4e959f0da5e359d3438",
+        "source_fact:v1:d6aad9312de30588449984b47002122dc7410ff38a81f909b9940f54baa894d9",
+        "source_fact:v1:f99c61bc8bf161e964ea11d95d5be5e080d67dd4f0c88035f8ec2f24a94f2ed9"
+      ],
+      "source_published_kst": "2026-10-14T11:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 월가 은행 4곳, 3분기 호실적에도…금리 인상에 희비",
+      "telegram_core_fact": "씨티그룹의 경우 관련 분야에서 예상보다 높은 4% 매출 성장을 기록했지만, 곤잘로 루케티 CFO가 \"금리 환경을 고려할 때 다소 어려운 상황\"이라고 인정했다.",
+      "title": "美 월가 은행 4곳, 3분기 호실적에도…금리 인상에 희비"
     },
     "source_fact:0cd7bdb9ce049b45345f9df3": {
       "first_seen_kst": "2026-10-12T08:03:02+09:00",
@@ -298119,6 +298943,29 @@
       "source_published_kst": "2026-10-06T21:25+09:00",
       "title": "[美특징주]콘스텔레이션 에너지, 구글과 20년 원전 전력 공급 계약에 개장 전↑"
     },
+    "source_fact:139606446cf8518126daad11": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.fnnews.com/news/202610141554294553",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1f1613e474ae34cc3f7a8489cd2d285b8fd4fe3595ae6a9f19e146a4a59064fd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:39635d19aa049e9b37a386de0ae666087bd1e5a06dadb1bf9a3c4451648a4c6f",
+      "source_fact_keys": [
+        "source_fact:v1:368643d3fa56b67dc8815d5be71dec000233df5e192e37876b949ec09a16249a",
+        "source_fact:v1:4343abe0a21cfdb2f66817a663decbcccc3599e367ba6902a59b1d9694c0c819",
+        "source_fact:v1:bce0660b3a66b3fcabf7f8e864f725c95843198f01249f2cf9bed8516b429850",
+        "source_fact:v1:d2b575467bf2e215bd78e3b747dfb04f3abef35c792daf851df56c9cff736684"
+      ],
+      "source_published_kst": "2026-10-14T15:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 YMTC, 낸드 출하량 세계 3위로…삼성·SK하이닉스 추격",
+      "telegram_core_fact": "YMTC의 글로벌 낸드 매출 점유율은 지난해 1분기 9%에서 올해 1분기 14%로 5%포인트 상승했다.",
+      "title": "中 YMTC, 낸드 출하량 세계 3위로…삼성·SK하이닉스 추격"
+    },
     "source_fact:1396f0c020bd16e118a1a42b": {
       "first_seen_kst": "2026-10-14T00:59:56+09:00",
       "lanes": {
@@ -303046,6 +303893,35 @@
       "source_published_kst": "2026-10-06T09:42+09:00",
       "title": "레디로버스트머신 '리마스터 하이브리드 굴착기' 베트남 상륙…현지기업 RCE와 맞손"
     },
+    "source_fact:1821a909742c01b379690133": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://biz.heraldcorp.com/article/10902424",
+      "source": "헤럴드경제",
+      "source_body_digest": "885b82d518eca93dcf154076080259b59f62b57219fc8aa4ad65790719cd7017",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:667d0d630ff653890a0bf8e5282b4eea88c6afe5f5b61a5da9e1c4ae68b8ed8f",
+      "source_fact_keys": [
+        "source_fact:v1:14ee3696be31f55565433b67bc43f8e86ca6acc88e885a1b07f7b54e2de97f23",
+        "source_fact:v1:36b097eb633ec0d59e1a5f8c12ee50c593060c04d97c191d3557fc887971de27",
+        "source_fact:v1:54f35a829b6a05cf526d86a5a30b4c4e2f2175f2018f7748641c0d79b1a1b003",
+        "source_fact:v1:6000259f2cff5e09c65fee41af844f64d2eaabf63b46fbef380b572d5949947a",
+        "source_fact:v1:735ec38df080804733cbcba76593f0e048f88fd574097d13048ec31323479c16",
+        "source_fact:v1:a135f3158d7fdc4d9048445d4f715994a970ade1c34b86677f0ac53dfc2db3d0",
+        "source_fact:v1:aecae64da089d75b90095a0df030218050bab9906cc073df1a16778c56456287",
+        "source_fact:v1:ba9d34ab2b036ea4eacc72d6fc7978b0eca4fb9207f75860539596be30ce0069",
+        "source_fact:v1:cd2bdd0addde3940c29a726b17c13deb02dafd17d71a5c6cb9fa1f20efd311e9",
+        "source_fact:v1:d9a55bc2ff804a1d1d75cb59716302505a480506ca17a33380e75a5614c10d06"
+      ],
+      "source_published_kst": "2026-10-14T14:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "안현 SK하이닉스 사장 “HBM만으론 메모리 급증 수요 감당 못해…대안으로 HBF·3D 적층 D램 개발 중”",
+      "telegram_core_fact": "안현 SK하이닉스 개발총괄(CDO) 사장이 인공지능(AI) 추론 시장 도래에 따라 고대역폭메모리(HBM)만으론 급증하는 메모리 수요를 감당하기 어렵다고 분석했다.",
+      "title": "안현 SK하이닉스 사장 “HBM만으론 메모리 급증 수요 감당 못해…대안으로 HBF·3D 적층 D램 개발 중”"
+    },
     "source_fact:1824881d724c18d13aeb4ebd": {
       "first_seen_kst": "2026-10-08T06:27:52+09:00",
       "lanes": {
@@ -306718,6 +307594,32 @@
       "source_title": "엔비디아 \"피지컬 AI 공급망, 한국 제조업에 기회\"",
       "telegram_core_fact": "엔비디아가 한국의 제조업과 인공지능(AI) 기술력을 높이 평가하며 피지컬 AI 산업의 성장으로 글로벌 공급망에서 한국 기업의 역할이 확대될 수 있다고 전망했다.",
       "title": "엔비디아 \"피지컬 AI 공급망, 한국 제조업에 기회\""
+    },
+    "source_fact:1b5fa6ba370acfb73b408c3d": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825111",
+      "source": "뉴시스",
+      "source_body_digest": "c5edf9b3baf9842b9599707b71f460527274541de3f73ff6b8b5cdc5373d4abe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:876db90a0b8889431462d2a1a4f92c4829d55e2f29041b35a4824eb4126657ab",
+      "source_fact_keys": [
+        "source_fact:v1:147b9ff9c271c827a474ea76aa9a8a33edf3a53d891d1d667fc3ed9c06b78ce8",
+        "source_fact:v1:42479ad56e2e6f5ddfc30c23a64770bde0fbe52e7d47f6b93a1110213a00b899",
+        "source_fact:v1:5c8bd3b67f4671f5f8d99ba6585c8222337ac4151aabcaf4157017fe8a2a7e35",
+        "source_fact:v1:7847848384aea7bac4063f92964086c6540c03cfeea3c0fdcb376f0b4b981e44",
+        "source_fact:v1:93a3a6fa1dc40a3968c81d40c1b6ee9a937d765f9930e4e959f0da5e359d3438",
+        "source_fact:v1:d6aad9312de30588449984b47002122dc7410ff38a81f909b9940f54baa894d9",
+        "source_fact:v1:f99c61bc8bf161e964ea11d95d5be5e080d67dd4f0c88035f8ec2f24a94f2ed9"
+      ],
+      "source_published_kst": "2026-10-14T11:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 월가 은행 4곳, 3분기 호실적에도…금리 인상에 희비",
+      "telegram_core_fact": "씨티그룹의 경우 관련 분야에서 예상보다 높은 4% 매출 성장을 기록했지만, 곤잘로 루케티 CFO가 \"금리 환경을 고려할 때 다소 어려운 상황\"이라고 인정했다.",
+      "title": "美 월가 은행 4곳, 3분기 호실적에도…금리 인상에 희비"
     },
     "source_fact:1b62e47c68a1c69637782766": {
       "first_seen_kst": "2026-10-11T19:59:25+09:00",
@@ -313170,6 +314072,35 @@
       "telegram_core_fact": "미 재무부는 곧바로 러시아 경유에 대한 제재 해제를 발표했는데, 중간선거를 앞두고 미국 내 경유가격 급등에 대한 불만이 커지자 트럼프 대통령이 푸틴 대통령에게 손을 내민 모양새다.",
       "title": "\"트럼프, 젤렌스키가 요청 6차례 무시하자 푸틴과 경유 거래\""
     },
+    "source_fact:2095b63512fad1d683c91dd1": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://biz.heraldcorp.com/article/10902424",
+      "source": "헤럴드경제",
+      "source_body_digest": "885b82d518eca93dcf154076080259b59f62b57219fc8aa4ad65790719cd7017",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:667d0d630ff653890a0bf8e5282b4eea88c6afe5f5b61a5da9e1c4ae68b8ed8f",
+      "source_fact_keys": [
+        "source_fact:v1:14ee3696be31f55565433b67bc43f8e86ca6acc88e885a1b07f7b54e2de97f23",
+        "source_fact:v1:36b097eb633ec0d59e1a5f8c12ee50c593060c04d97c191d3557fc887971de27",
+        "source_fact:v1:54f35a829b6a05cf526d86a5a30b4c4e2f2175f2018f7748641c0d79b1a1b003",
+        "source_fact:v1:6000259f2cff5e09c65fee41af844f64d2eaabf63b46fbef380b572d5949947a",
+        "source_fact:v1:735ec38df080804733cbcba76593f0e048f88fd574097d13048ec31323479c16",
+        "source_fact:v1:a135f3158d7fdc4d9048445d4f715994a970ade1c34b86677f0ac53dfc2db3d0",
+        "source_fact:v1:aecae64da089d75b90095a0df030218050bab9906cc073df1a16778c56456287",
+        "source_fact:v1:ba9d34ab2b036ea4eacc72d6fc7978b0eca4fb9207f75860539596be30ce0069",
+        "source_fact:v1:cd2bdd0addde3940c29a726b17c13deb02dafd17d71a5c6cb9fa1f20efd311e9",
+        "source_fact:v1:d9a55bc2ff804a1d1d75cb59716302505a480506ca17a33380e75a5614c10d06"
+      ],
+      "source_published_kst": "2026-10-14T14:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "안현 SK하이닉스 사장 “HBM만으론 메모리 급증 수요 감당 못해…대안으로 HBF·3D 적층 D램 개발 중”",
+      "telegram_core_fact": "안현 SK하이닉스 개발총괄(CDO) 사장이 인공지능(AI) 추론 시장 도래에 따라 고대역폭메모리(HBM)만으론 급증하는 메모리 수요를 감당하기 어렵다고 분석했다.",
+      "title": "안현 SK하이닉스 사장 “HBM만으론 메모리 급증 수요 감당 못해…대안으로 HBF·3D 적층 D램 개발 중”"
+    },
     "source_fact:20984cf2a5e6366e92726fc3": {
       "first_seen_kst": "2026-10-06T18:46:35+09:00",
       "lanes": {
@@ -315040,6 +315971,32 @@
       ],
       "source_published_kst": "2026-10-05T21:08+09:00",
       "title": "포럼 마켓츠, AI 합작사 설립..2027년 매출 최대 1억7500만달러"
+    },
+    "source_fact:22105472913138a5f7cdf8df": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825111",
+      "source": "뉴시스",
+      "source_body_digest": "c5edf9b3baf9842b9599707b71f460527274541de3f73ff6b8b5cdc5373d4abe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:876db90a0b8889431462d2a1a4f92c4829d55e2f29041b35a4824eb4126657ab",
+      "source_fact_keys": [
+        "source_fact:v1:147b9ff9c271c827a474ea76aa9a8a33edf3a53d891d1d667fc3ed9c06b78ce8",
+        "source_fact:v1:42479ad56e2e6f5ddfc30c23a64770bde0fbe52e7d47f6b93a1110213a00b899",
+        "source_fact:v1:5c8bd3b67f4671f5f8d99ba6585c8222337ac4151aabcaf4157017fe8a2a7e35",
+        "source_fact:v1:7847848384aea7bac4063f92964086c6540c03cfeea3c0fdcb376f0b4b981e44",
+        "source_fact:v1:93a3a6fa1dc40a3968c81d40c1b6ee9a937d765f9930e4e959f0da5e359d3438",
+        "source_fact:v1:d6aad9312de30588449984b47002122dc7410ff38a81f909b9940f54baa894d9",
+        "source_fact:v1:f99c61bc8bf161e964ea11d95d5be5e080d67dd4f0c88035f8ec2f24a94f2ed9"
+      ],
+      "source_published_kst": "2026-10-14T11:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 월가 은행 4곳, 3분기 호실적에도…금리 인상에 희비",
+      "telegram_core_fact": "씨티그룹의 경우 관련 분야에서 예상보다 높은 4% 매출 성장을 기록했지만, 곤잘로 루케티 CFO가 \"금리 환경을 고려할 때 다소 어려운 상황\"이라고 인정했다.",
+      "title": "美 월가 은행 4곳, 3분기 호실적에도…금리 인상에 희비"
     },
     "source_fact:22151cc678ba325aef027e49": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
@@ -322399,6 +323356,33 @@
       "source_title": "“美, 우크라에 ’러 정유소 때리면 정보공유 중단’ 경고“",
       "telegram_core_fact": "미국이 우크라이나가 러시아 정유시설 공격을 멈추지 않으면 정보 공유를 중단하겠다고 경고한 것으로 전해졌습니다. 우크라이나 측은 미국이 러시아에는 공습 중단을 요구하지 않으면서 자신들에게만 요구하는 것은 불공평하다고 불만을 표시한 것으로 전해졌습니다.",
       "title": "“美, 우크라에 ’러 정유소 때리면 정보공유 중단’ 경고“"
+    },
+    "source_fact:2810688ed4ee4afe040350f2": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825490",
+      "source": "뉴시스",
+      "source_body_digest": "a12e9bf6665176e11f28a4ff5e34bc3e406a76a53406a4764d0d20e0a02d7c36",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48ea9a997f735d0f67c5dfee81de3325cde728dc32d06c6c7de01e56ffbdce3d",
+      "source_fact_keys": [
+        "source_fact:v1:05dc72fc097bb9904dc3297f3ba983185255cdb069fc99f206edcdbe648e7f17",
+        "source_fact:v1:05e3613dc624c69cba9c5c94c40b1e6fc008b00457a117a8c5e82825339faa93",
+        "source_fact:v1:52703339b31a46b3e76925835f8c97a372bc4ff226a8a2587062ce60ff3ab092",
+        "source_fact:v1:6aeb20c0f968c573a33ac9a5fbc669411f5ded39ee72e5eb1f2f98764aaabedf",
+        "source_fact:v1:a0dd576fd4622c2526314d53fe8390c103e4e0f55dcf9873e00b2894673f124a",
+        "source_fact:v1:d5bee775cecc53596e6596c1fff2e800eb814607a9679a25ccbab81caf3d289e",
+        "source_fact:v1:dfc2432de1aef7027d257233ddc98814666cf34467749b88fc598f5609a0af7a",
+        "source_fact:v1:e352852e3002afedef0a4c264821b96d68279fe5593a42da3631b2bbb806705f"
+      ],
+      "source_published_kst": "2026-10-14T13:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "제조업 고용보험 가입자 두달째↑…'반도체 호황' 증가폭 확대",
+      "telegram_core_fact": "고용노동부가 14일 발표한 '2026년 9월 고용행정 통계로 본 노동시장 동향'에 따르면 지난달 말 기준 고용보험 상시가입자 수는 1593만명으로, 전년 동월보다 28만8000명(1.8%) 증가했다.",
+      "title": "제조업 고용보험 가입자 두달째↑…'반도체 호황' 증가폭 확대"
     },
     "source_fact:28139ec4c23923a488692c69": {
       "first_seen_kst": "2026-10-08T19:11:41+09:00",
@@ -331527,6 +332511,30 @@
       "telegram_core_fact": "공정거래위원회의 기업결합 심사를 비롯해 금융당국의 대주주 변경 승인 등 정부 인허가 절차가 길어지고 있는 데다, 국회 내 디지털자산기본법 제정 논의 지연 등이 복합적으로 작용한 결과로 풀이된다.",
       "title": "네이버파이낸셜·두나무 결합, 내년 3월로 재연기…“기업결합·규제절차 영향”(종합)"
     },
+    "source_fact:301c7dcb4c9a6d246329301f": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.hankyung.com/article/2026101405281",
+      "source": "한국경제",
+      "source_body_digest": "7303fb02d335cd0d9a9f66e02097ac4527195b68b3dade28c3c557d22f7b5541",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22ae117d61be38ca726d4a9938494b431a6b3fcb2a9fea7ad7db8e0477707d85",
+      "source_fact_keys": [
+        "source_fact:v1:23c8f08daca70d5219650579836b48356513ea9a0ffe7715cf084d4bf724392a",
+        "source_fact:v1:486aae9a2763248b44541ff18a6409a1901635507aa60379c50b09af7074a6ed",
+        "source_fact:v1:adaeed5dbbf239b425a0dc1e8acbc4e9d95a090098f0ad89026fda68c56a7683",
+        "source_fact:v1:dc188cf901c7b008f4ca08b9f2270352859f82d9a1e75076ec78fd7df80c9ce8",
+        "source_fact:v1:e8fa7df893b7460f02211218e21a62d771df943fc295c7045a65d558b2afc66d"
+      ],
+      "source_published_kst": "2026-10-14T16:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "'횡보장 방어' 커버드콜 ETF 순자산 30조 눈앞",
+      "telegram_core_fact": "이 기준 코스콤 ETF체크에 따르면 ‘RISE 200고배당커버드콜ATM’의 지난 3개월 수익률은 11.06%로 나타났다. 한국거래소에 따르면 작년 말 15조원 수준이던 국내 커버드콜 ETF 순자산 규모는 최근 30조원에 육박했다.",
+      "title": "'횡보장 방어' 커버드콜 ETF 순자산 30조 눈앞"
+    },
     "source_fact:3035f6e59ede3d1a65fb21a5": {
       "first_seen_kst": "2026-10-07T01:33:00+09:00",
       "lanes": {
@@ -333837,6 +334845,32 @@
       "source_title": "후티, 사우디 리야드 공항 대공습…12명 사망·309명 부상(종합)",
       "telegram_core_fact": "후티는 올해 7월 사우디 및 사우디 지원을 받는 예멘 정부군을 상대로 2022년 휴전 이후 4년 만에 공세를 재개한 뒤 홍해 일부 지역을 장악하고 사우디 공격 범위를 확대하고 있다.",
       "title": "후티, 사우디 리야드 공항 대공습…12명 사망·309명 부상(종합)"
+    },
+    "source_fact:31da61075a5bd7cd84ac61c6": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825111",
+      "source": "뉴시스",
+      "source_body_digest": "c5edf9b3baf9842b9599707b71f460527274541de3f73ff6b8b5cdc5373d4abe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:876db90a0b8889431462d2a1a4f92c4829d55e2f29041b35a4824eb4126657ab",
+      "source_fact_keys": [
+        "source_fact:v1:147b9ff9c271c827a474ea76aa9a8a33edf3a53d891d1d667fc3ed9c06b78ce8",
+        "source_fact:v1:42479ad56e2e6f5ddfc30c23a64770bde0fbe52e7d47f6b93a1110213a00b899",
+        "source_fact:v1:5c8bd3b67f4671f5f8d99ba6585c8222337ac4151aabcaf4157017fe8a2a7e35",
+        "source_fact:v1:7847848384aea7bac4063f92964086c6540c03cfeea3c0fdcb376f0b4b981e44",
+        "source_fact:v1:93a3a6fa1dc40a3968c81d40c1b6ee9a937d765f9930e4e959f0da5e359d3438",
+        "source_fact:v1:d6aad9312de30588449984b47002122dc7410ff38a81f909b9940f54baa894d9",
+        "source_fact:v1:f99c61bc8bf161e964ea11d95d5be5e080d67dd4f0c88035f8ec2f24a94f2ed9"
+      ],
+      "source_published_kst": "2026-10-14T11:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 월가 은행 4곳, 3분기 호실적에도…금리 인상에 희비",
+      "telegram_core_fact": "씨티그룹의 경우 관련 분야에서 예상보다 높은 4% 매출 성장을 기록했지만, 곤잘로 루케티 CFO가 \"금리 환경을 고려할 때 다소 어려운 상황\"이라고 인정했다.",
+      "title": "美 월가 은행 4곳, 3분기 호실적에도…금리 인상에 희비"
     },
     "source_fact:31df19090c85207c673d451c": {
       "first_seen_kst": "2026-10-06T00:18:21+09:00",
@@ -336410,6 +337444,29 @@
       "source_title": "사우디·후티 '전면전' 되돌림 양상…리야드 공항 등 3명 사망",
       "telegram_core_fact": "이번 공격은 사우디가 지원하는 예멘 정부군이 후티가 장악한 홍해 연안의 전략 요충지를 탈환하기 위한 군사작전에 나선 가운데 발생했다.",
       "title": "사우디·후티 '전면전' 되돌림 양상…리야드 공항 등 3명 사망"
+    },
+    "source_fact:3429fa5a6fdaf54a602218be": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.fnnews.com/news/202610141554294553",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1f1613e474ae34cc3f7a8489cd2d285b8fd4fe3595ae6a9f19e146a4a59064fd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:39635d19aa049e9b37a386de0ae666087bd1e5a06dadb1bf9a3c4451648a4c6f",
+      "source_fact_keys": [
+        "source_fact:v1:368643d3fa56b67dc8815d5be71dec000233df5e192e37876b949ec09a16249a",
+        "source_fact:v1:4343abe0a21cfdb2f66817a663decbcccc3599e367ba6902a59b1d9694c0c819",
+        "source_fact:v1:bce0660b3a66b3fcabf7f8e864f725c95843198f01249f2cf9bed8516b429850",
+        "source_fact:v1:d2b575467bf2e215bd78e3b747dfb04f3abef35c792daf851df56c9cff736684"
+      ],
+      "source_published_kst": "2026-10-14T15:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 YMTC, 낸드 출하량 세계 3위로…삼성·SK하이닉스 추격",
+      "telegram_core_fact": "YMTC의 글로벌 낸드 매출 점유율은 지난해 1분기 9%에서 올해 1분기 14%로 5%포인트 상승했다.",
+      "title": "中 YMTC, 낸드 출하량 세계 3위로…삼성·SK하이닉스 추격"
     },
     "source_fact:3430e514debc78c3a8f03f2f": {
       "first_seen_kst": "2026-10-09T20:24:58+09:00",
@@ -346727,6 +347784,35 @@
       "telegram_core_fact": "스마트폰 제조원가 상승이 소비 위축을 불러왔고, 올해 3분기 세계 스마트폰 출하량은 전년 대비 20% 급감했다. 12일(현지시간) 시장조사업체 카운터포인트리서치와 로이터통신 등에 따르면 올해 3분기 세계 스마트폰 출하량은 전년비 약 20% 급감해 3분기 기준으로는 2012년 이후 14년 만에 가장 적은 수준을 기록했다.",
       "title": "AI 호황의 역설⋯세계 스마트폰 출하량 20% 급감한 이유"
     },
+    "source_fact:3dab8d3eb7c7c9e680e39b42": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://biz.heraldcorp.com/article/10902424",
+      "source": "헤럴드경제",
+      "source_body_digest": "885b82d518eca93dcf154076080259b59f62b57219fc8aa4ad65790719cd7017",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:667d0d630ff653890a0bf8e5282b4eea88c6afe5f5b61a5da9e1c4ae68b8ed8f",
+      "source_fact_keys": [
+        "source_fact:v1:14ee3696be31f55565433b67bc43f8e86ca6acc88e885a1b07f7b54e2de97f23",
+        "source_fact:v1:36b097eb633ec0d59e1a5f8c12ee50c593060c04d97c191d3557fc887971de27",
+        "source_fact:v1:54f35a829b6a05cf526d86a5a30b4c4e2f2175f2018f7748641c0d79b1a1b003",
+        "source_fact:v1:6000259f2cff5e09c65fee41af844f64d2eaabf63b46fbef380b572d5949947a",
+        "source_fact:v1:735ec38df080804733cbcba76593f0e048f88fd574097d13048ec31323479c16",
+        "source_fact:v1:a135f3158d7fdc4d9048445d4f715994a970ade1c34b86677f0ac53dfc2db3d0",
+        "source_fact:v1:aecae64da089d75b90095a0df030218050bab9906cc073df1a16778c56456287",
+        "source_fact:v1:ba9d34ab2b036ea4eacc72d6fc7978b0eca4fb9207f75860539596be30ce0069",
+        "source_fact:v1:cd2bdd0addde3940c29a726b17c13deb02dafd17d71a5c6cb9fa1f20efd311e9",
+        "source_fact:v1:d9a55bc2ff804a1d1d75cb59716302505a480506ca17a33380e75a5614c10d06"
+      ],
+      "source_published_kst": "2026-10-14T14:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "안현 SK하이닉스 사장 “HBM만으론 메모리 급증 수요 감당 못해…대안으로 HBF·3D 적층 D램 개발 중”",
+      "telegram_core_fact": "안현 SK하이닉스 개발총괄(CDO) 사장이 인공지능(AI) 추론 시장 도래에 따라 고대역폭메모리(HBM)만으론 급증하는 메모리 수요를 감당하기 어렵다고 분석했다.",
+      "title": "안현 SK하이닉스 사장 “HBM만으론 메모리 급증 수요 감당 못해…대안으로 HBF·3D 적층 D램 개발 중”"
+    },
     "source_fact:3db43f3b4de08ac5a8103ef1": {
       "first_seen_kst": "2026-10-07T18:44:00+09:00",
       "lanes": {
@@ -350058,6 +351144,33 @@
       ],
       "source_published_kst": "2026-10-06T01:21+09:00",
       "title": "페라리, 자사주 2600만 유로 매입..3차 한도 41% 소진"
+    },
+    "source_fact:408d2700c57a9af713ec5f9d": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825490",
+      "source": "뉴시스",
+      "source_body_digest": "a12e9bf6665176e11f28a4ff5e34bc3e406a76a53406a4764d0d20e0a02d7c36",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48ea9a997f735d0f67c5dfee81de3325cde728dc32d06c6c7de01e56ffbdce3d",
+      "source_fact_keys": [
+        "source_fact:v1:05dc72fc097bb9904dc3297f3ba983185255cdb069fc99f206edcdbe648e7f17",
+        "source_fact:v1:05e3613dc624c69cba9c5c94c40b1e6fc008b00457a117a8c5e82825339faa93",
+        "source_fact:v1:52703339b31a46b3e76925835f8c97a372bc4ff226a8a2587062ce60ff3ab092",
+        "source_fact:v1:6aeb20c0f968c573a33ac9a5fbc669411f5ded39ee72e5eb1f2f98764aaabedf",
+        "source_fact:v1:a0dd576fd4622c2526314d53fe8390c103e4e0f55dcf9873e00b2894673f124a",
+        "source_fact:v1:d5bee775cecc53596e6596c1fff2e800eb814607a9679a25ccbab81caf3d289e",
+        "source_fact:v1:dfc2432de1aef7027d257233ddc98814666cf34467749b88fc598f5609a0af7a",
+        "source_fact:v1:e352852e3002afedef0a4c264821b96d68279fe5593a42da3631b2bbb806705f"
+      ],
+      "source_published_kst": "2026-10-14T13:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "제조업 고용보험 가입자 두달째↑…'반도체 호황' 증가폭 확대",
+      "telegram_core_fact": "고용노동부가 14일 발표한 '2026년 9월 고용행정 통계로 본 노동시장 동향'에 따르면 지난달 말 기준 고용보험 상시가입자 수는 1593만명으로, 전년 동월보다 28만8000명(1.8%) 증가했다.",
+      "title": "제조업 고용보험 가입자 두달째↑…'반도체 호황' 증가폭 확대"
     },
     "source_fact:40923c1281cd72b86a882539": {
       "first_seen_kst": "2026-10-12T12:56:34+09:00",
@@ -370251,6 +371364,28 @@
       "source_published_kst": "2026-10-06T17:33+09:00",
       "title": "날아오른 스페이스X…머스크 다시 '조만장자'"
     },
+    "source_fact:51cee8ce1c902a6314dc4795": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261014042351003",
+      "source": "연합뉴스",
+      "source_body_digest": "5e51024c01de7a30083bfd115e873bcab1a9e26f0f4b12c640109953d7c8d08f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:03ed29d4aa4346aea6088717c3a3103ec5df971602a9e107718aa706d1d72400",
+      "source_fact_keys": [
+        "source_fact:v1:036ddb25ac76e29a0abb0987f00c6e55acaa8f294a474b8f81d258356541de4f",
+        "source_fact:v1:2eb52d7cdcdcb3b8e268777dbf7871e91227efdd3fdaca36cce32c1b3bb2d319",
+        "source_fact:v1:4b133837fe644d99b74f8440c007537384f46863f0a1f4e44c3269af3bf1ddf5"
+      ],
+      "source_published_kst": "2026-10-14T11:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성 반도체 부스 찾은 하정우 부위원장 \"AI반도체 로드맵 확인\"(종합) | 연합뉴스",
+      "telegram_core_fact": "삼성전자는 올해 신설한 반도체 클러스터존에서 주요 생산·개발 거점과 용인 국가산업단지 조성 계획도 소개한다.",
+      "title": "삼성 반도체 부스 찾은 하정우 부위원장 \"AI반도체 로드맵 확인\"(종합) | 연합뉴스"
+    },
     "source_fact:51cf477b35c5555eba42e5dc": {
       "first_seen_kst": "2026-10-06T01:51:09+09:00",
       "lanes": {
@@ -372466,6 +373601,35 @@
       ],
       "source_published_kst": "2026-10-06T11:09+09:00",
       "title": "폭염·AI에 日 전력난 비상… 노후 화력발전 수명연장 검토 | 연합뉴스"
+    },
+    "source_fact:53b84f63918dc8fdfe5393b5": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://biz.heraldcorp.com/article/10902424",
+      "source": "헤럴드경제",
+      "source_body_digest": "885b82d518eca93dcf154076080259b59f62b57219fc8aa4ad65790719cd7017",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:667d0d630ff653890a0bf8e5282b4eea88c6afe5f5b61a5da9e1c4ae68b8ed8f",
+      "source_fact_keys": [
+        "source_fact:v1:14ee3696be31f55565433b67bc43f8e86ca6acc88e885a1b07f7b54e2de97f23",
+        "source_fact:v1:36b097eb633ec0d59e1a5f8c12ee50c593060c04d97c191d3557fc887971de27",
+        "source_fact:v1:54f35a829b6a05cf526d86a5a30b4c4e2f2175f2018f7748641c0d79b1a1b003",
+        "source_fact:v1:6000259f2cff5e09c65fee41af844f64d2eaabf63b46fbef380b572d5949947a",
+        "source_fact:v1:735ec38df080804733cbcba76593f0e048f88fd574097d13048ec31323479c16",
+        "source_fact:v1:a135f3158d7fdc4d9048445d4f715994a970ade1c34b86677f0ac53dfc2db3d0",
+        "source_fact:v1:aecae64da089d75b90095a0df030218050bab9906cc073df1a16778c56456287",
+        "source_fact:v1:ba9d34ab2b036ea4eacc72d6fc7978b0eca4fb9207f75860539596be30ce0069",
+        "source_fact:v1:cd2bdd0addde3940c29a726b17c13deb02dafd17d71a5c6cb9fa1f20efd311e9",
+        "source_fact:v1:d9a55bc2ff804a1d1d75cb59716302505a480506ca17a33380e75a5614c10d06"
+      ],
+      "source_published_kst": "2026-10-14T14:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "안현 SK하이닉스 사장 “HBM만으론 메모리 급증 수요 감당 못해…대안으로 HBF·3D 적층 D램 개발 중”",
+      "telegram_core_fact": "안현 SK하이닉스 개발총괄(CDO) 사장이 인공지능(AI) 추론 시장 도래에 따라 고대역폭메모리(HBM)만으론 급증하는 메모리 수요를 감당하기 어렵다고 분석했다.",
+      "title": "안현 SK하이닉스 사장 “HBM만으론 메모리 급증 수요 감당 못해…대안으로 HBF·3D 적층 D램 개발 중”"
     },
     "source_fact:53bcb5ff1788692399f56fd7": {
       "first_seen_kst": "2026-10-07T05:33:37+09:00",
@@ -395368,6 +396532,33 @@
       "telegram_core_fact": "스포츠레이더 그룹(SRAD)이 자회사 시너지 스포츠(Synergy Sports)의 코칭·스카우팅 사업부인 아트리움 스포츠(Atrium Sports)를 팀웍스 이노베이션스(Teamworks Innovations)에 현금 1억7000만 달러를 받고 매각하는 확정 계약을 체결했다고 7일 발표했다.",
       "title": "스포츠레이더 그룹, 코칭사업 1억7000만 달러 매각…핵심 집중"
     },
+    "source_fact:67916cd7744e9ad654ca26cb": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825490",
+      "source": "뉴시스",
+      "source_body_digest": "a12e9bf6665176e11f28a4ff5e34bc3e406a76a53406a4764d0d20e0a02d7c36",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48ea9a997f735d0f67c5dfee81de3325cde728dc32d06c6c7de01e56ffbdce3d",
+      "source_fact_keys": [
+        "source_fact:v1:05dc72fc097bb9904dc3297f3ba983185255cdb069fc99f206edcdbe648e7f17",
+        "source_fact:v1:05e3613dc624c69cba9c5c94c40b1e6fc008b00457a117a8c5e82825339faa93",
+        "source_fact:v1:52703339b31a46b3e76925835f8c97a372bc4ff226a8a2587062ce60ff3ab092",
+        "source_fact:v1:6aeb20c0f968c573a33ac9a5fbc669411f5ded39ee72e5eb1f2f98764aaabedf",
+        "source_fact:v1:a0dd576fd4622c2526314d53fe8390c103e4e0f55dcf9873e00b2894673f124a",
+        "source_fact:v1:d5bee775cecc53596e6596c1fff2e800eb814607a9679a25ccbab81caf3d289e",
+        "source_fact:v1:dfc2432de1aef7027d257233ddc98814666cf34467749b88fc598f5609a0af7a",
+        "source_fact:v1:e352852e3002afedef0a4c264821b96d68279fe5593a42da3631b2bbb806705f"
+      ],
+      "source_published_kst": "2026-10-14T13:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "제조업 고용보험 가입자 두달째↑…'반도체 호황' 증가폭 확대",
+      "telegram_core_fact": "고용노동부가 14일 발표한 '2026년 9월 고용행정 통계로 본 노동시장 동향'에 따르면 지난달 말 기준 고용보험 상시가입자 수는 1593만명으로, 전년 동월보다 28만8000명(1.8%) 증가했다.",
+      "title": "제조업 고용보험 가입자 두달째↑…'반도체 호황' 증가폭 확대"
+    },
     "source_fact:6791c10f29f617e2beabfb1d": {
       "first_seen_kst": "2026-10-11T19:59:25+09:00",
       "lanes": {
@@ -401735,6 +402926,29 @@
       "source_published_kst": "2026-10-07T10:34+09:00",
       "title": "우크라 \"한국이 러시아에 석유 공급\" 저격"
     },
+    "source_fact:6cc936fa57f500160dc28f63": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.fnnews.com/news/202610141554294553",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1f1613e474ae34cc3f7a8489cd2d285b8fd4fe3595ae6a9f19e146a4a59064fd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:39635d19aa049e9b37a386de0ae666087bd1e5a06dadb1bf9a3c4451648a4c6f",
+      "source_fact_keys": [
+        "source_fact:v1:368643d3fa56b67dc8815d5be71dec000233df5e192e37876b949ec09a16249a",
+        "source_fact:v1:4343abe0a21cfdb2f66817a663decbcccc3599e367ba6902a59b1d9694c0c819",
+        "source_fact:v1:bce0660b3a66b3fcabf7f8e864f725c95843198f01249f2cf9bed8516b429850",
+        "source_fact:v1:d2b575467bf2e215bd78e3b747dfb04f3abef35c792daf851df56c9cff736684"
+      ],
+      "source_published_kst": "2026-10-14T15:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 YMTC, 낸드 출하량 세계 3위로…삼성·SK하이닉스 추격",
+      "telegram_core_fact": "YMTC의 글로벌 낸드 매출 점유율은 지난해 1분기 9%에서 올해 1분기 14%로 5%포인트 상승했다.",
+      "title": "中 YMTC, 낸드 출하량 세계 3위로…삼성·SK하이닉스 추격"
+    },
     "source_fact:6ccc47683a579c24f57a7eff": {
       "first_seen_kst": "2026-10-11T09:08:30+09:00",
       "lanes": {
@@ -405990,6 +407204,33 @@
       "source_title": "디티에스, 코스닥 상장 추진…\"글로벌 열관리 솔루션 기업으로 도약\"",
       "telegram_core_fact": "공랭식 열관리 전문기업 디티에스가 코스닥 상장을 통해 주력 에너지 플랜트 사업의 수주 기반을 강화하고 인공지능(AI) 데이터센터 냉각과 폐열발전 분야로 사업 영역을 확대한다.",
       "title": "디티에스, 코스닥 상장 추진…\"글로벌 열관리 솔루션 기업으로 도약\""
+    },
+    "source_fact:709820349ba5c900acd665da": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825490",
+      "source": "뉴시스",
+      "source_body_digest": "a12e9bf6665176e11f28a4ff5e34bc3e406a76a53406a4764d0d20e0a02d7c36",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48ea9a997f735d0f67c5dfee81de3325cde728dc32d06c6c7de01e56ffbdce3d",
+      "source_fact_keys": [
+        "source_fact:v1:05dc72fc097bb9904dc3297f3ba983185255cdb069fc99f206edcdbe648e7f17",
+        "source_fact:v1:05e3613dc624c69cba9c5c94c40b1e6fc008b00457a117a8c5e82825339faa93",
+        "source_fact:v1:52703339b31a46b3e76925835f8c97a372bc4ff226a8a2587062ce60ff3ab092",
+        "source_fact:v1:6aeb20c0f968c573a33ac9a5fbc669411f5ded39ee72e5eb1f2f98764aaabedf",
+        "source_fact:v1:a0dd576fd4622c2526314d53fe8390c103e4e0f55dcf9873e00b2894673f124a",
+        "source_fact:v1:d5bee775cecc53596e6596c1fff2e800eb814607a9679a25ccbab81caf3d289e",
+        "source_fact:v1:dfc2432de1aef7027d257233ddc98814666cf34467749b88fc598f5609a0af7a",
+        "source_fact:v1:e352852e3002afedef0a4c264821b96d68279fe5593a42da3631b2bbb806705f"
+      ],
+      "source_published_kst": "2026-10-14T13:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "제조업 고용보험 가입자 두달째↑…'반도체 호황' 증가폭 확대",
+      "telegram_core_fact": "고용노동부가 14일 발표한 '2026년 9월 고용행정 통계로 본 노동시장 동향'에 따르면 지난달 말 기준 고용보험 상시가입자 수는 1593만명으로, 전년 동월보다 28만8000명(1.8%) 증가했다.",
+      "title": "제조업 고용보험 가입자 두달째↑…'반도체 호황' 증가폭 확대"
     },
     "source_fact:709d228817c24be188f11c9e": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
@@ -424632,26 +425873,24 @@
     "source_fact:811332f9b0547409f353e933": {
       "first_seen_kst": "2026-10-14T14:29:29+09:00",
       "lanes": {
-        "live": "2026-10-14T14:29:29+09:00"
+        "live": "2026-10-14T16:26:08+09:00"
       },
-      "last_seen_kst": "2026-10-14T14:29:29+09:00",
-      "link": "https://zdnet.co.kr/view/?no=20261014084125",
-      "source": "지디넷코리아",
-      "source_body_digest": "9baf33db1ccad0861f750d3a600db05326c56a8e0468f02f857355ebf7e6a689",
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261014042351003",
+      "source": "연합뉴스",
+      "source_body_digest": "5e51024c01de7a30083bfd115e873bcab1a9e26f0f4b12c640109953d7c8d08f",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:d4736742f1c1f3a967b1bbde2ff6ea02686f4cf27566e9f3e01482acd525bde6",
+      "source_fact_identity": "source_facts:v1:03ed29d4aa4346aea6088717c3a3103ec5df971602a9e107718aa706d1d72400",
       "source_fact_keys": [
-        "source_fact:v1:115ab17a0b5412427811fa91c30dfe9669544f3e399cf8d8dc9093212ab2425c",
-        "source_fact:v1:3d7b62279bae57a1672555fdc5d051ec534b5c6dbe64b02e652d20671d8e6759",
-        "source_fact:v1:4b133837fe644d99b74f8440c007537384f46863f0a1f4e44c3269af3bf1ddf5",
-        "source_fact:v1:683abd6df68b8c62be1481fa1a5854ec727340f166c5b8660dad1658b4d9a7c7",
-        "source_fact:v1:73afaea697a8642c9ae4721e22b4f323bfec6c20d4b706fe94374cc4e057c937"
+        "source_fact:v1:036ddb25ac76e29a0abb0987f00c6e55acaa8f294a474b8f81d258356541de4f",
+        "source_fact:v1:2eb52d7cdcdcb3b8e268777dbf7871e91227efdd3fdaca36cce32c1b3bb2d319",
+        "source_fact:v1:4b133837fe644d99b74f8440c007537384f46863f0a1f4e44c3269af3bf1ddf5"
       ],
-      "source_published_kst": "2026-10-14T10:00+09:00",
+      "source_published_kst": "2026-10-14T11:44+09:00",
       "source_supply_terms": {},
-      "source_title": "삼성전자, AI 반도체 '풀 라인업' 공개…360조 용인 산단 청사진도 제시",
-      "telegram_core_fact": "삼성전자는 용인 국가산단에 약 360조원을 투자할 계획으로, 2027년 부지 조성과 착공을 시작해 2029년 10월 첫 생산라인 가동을 목표로 하고 있다. 전 세계적으로 급증하는 AI 인프라 수요에 대응하기 위한 전략으로, 생산능력 확보를 위한 용인 반도체 클러스터 구축 계획도 함께 공개할 예정이다.",
-      "title": "삼성전자, AI 반도체 '풀 라인업' 공개…360조 용인 산단 청사진도 제시"
+      "source_title": "삼성 반도체 부스 찾은 하정우 부위원장 \"AI반도체 로드맵 확인\"(종합) | 연합뉴스",
+      "telegram_core_fact": "삼성전자는 올해 신설한 반도체 클러스터존에서 주요 생산·개발 거점과 용인 국가산업단지 조성 계획도 소개한다.",
+      "title": "삼성 반도체 부스 찾은 하정우 부위원장 \"AI반도체 로드맵 확인\"(종합) | 연합뉴스"
     },
     "source_fact:811dc817396c1837460cb9ad": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
@@ -442204,6 +443443,33 @@
       "telegram_core_fact": "실제로 국민연금의 국내주식 평가액은 4월 말 419조5000억원에서 6월 말 543조2000억원으로 약 123조7000억원 증가했다. 국민연금 국내 주식 평가액은 7월 말 418조6000억원으로 한 달 전보다 약 124조6천억원 감소했다.",
       "title": "‘고점’서 족쇄 채운 국민연금, 급락장 속수무책…“국민 노후자금 날려” 비판"
     },
+    "source_fact:90c1dfeda70ed8317edc7954": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825490",
+      "source": "뉴시스",
+      "source_body_digest": "a12e9bf6665176e11f28a4ff5e34bc3e406a76a53406a4764d0d20e0a02d7c36",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48ea9a997f735d0f67c5dfee81de3325cde728dc32d06c6c7de01e56ffbdce3d",
+      "source_fact_keys": [
+        "source_fact:v1:05dc72fc097bb9904dc3297f3ba983185255cdb069fc99f206edcdbe648e7f17",
+        "source_fact:v1:05e3613dc624c69cba9c5c94c40b1e6fc008b00457a117a8c5e82825339faa93",
+        "source_fact:v1:52703339b31a46b3e76925835f8c97a372bc4ff226a8a2587062ce60ff3ab092",
+        "source_fact:v1:6aeb20c0f968c573a33ac9a5fbc669411f5ded39ee72e5eb1f2f98764aaabedf",
+        "source_fact:v1:a0dd576fd4622c2526314d53fe8390c103e4e0f55dcf9873e00b2894673f124a",
+        "source_fact:v1:d5bee775cecc53596e6596c1fff2e800eb814607a9679a25ccbab81caf3d289e",
+        "source_fact:v1:dfc2432de1aef7027d257233ddc98814666cf34467749b88fc598f5609a0af7a",
+        "source_fact:v1:e352852e3002afedef0a4c264821b96d68279fe5593a42da3631b2bbb806705f"
+      ],
+      "source_published_kst": "2026-10-14T13:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "제조업 고용보험 가입자 두달째↑…'반도체 호황' 증가폭 확대",
+      "telegram_core_fact": "고용노동부가 14일 발표한 '2026년 9월 고용행정 통계로 본 노동시장 동향'에 따르면 지난달 말 기준 고용보험 상시가입자 수는 1593만명으로, 전년 동월보다 28만8000명(1.8%) 증가했다.",
+      "title": "제조업 고용보험 가입자 두달째↑…'반도체 호황' 증가폭 확대"
+    },
     "source_fact:90c25aa66223873a2fd6148c": {
       "first_seen_kst": "2026-10-07T08:15:28+09:00",
       "lanes": {
@@ -447087,6 +448353,32 @@
       "telegram_core_fact": "전날 트럼프 대통령은 자신이 세운 SNS 트루스소셜에 “방금 블라디미르 푸틴 러시아 대통령과 매우 성공적인 논의를 마쳤다”며 “러시아는 미국과 세계 시장에 경유 30만t(톤) 이상을 즉시 공급하고 11월 중 50만t, 이후 100만t을 추가 공급하기로 했다”고 적었다.",
       "title": "트럼프 “우크라이나, 새 대통령 필요”⋯젤렌스키와 충돌"
     },
+    "source_fact:95a991d065488a5ca9aa899d": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825111",
+      "source": "뉴시스",
+      "source_body_digest": "c5edf9b3baf9842b9599707b71f460527274541de3f73ff6b8b5cdc5373d4abe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:876db90a0b8889431462d2a1a4f92c4829d55e2f29041b35a4824eb4126657ab",
+      "source_fact_keys": [
+        "source_fact:v1:147b9ff9c271c827a474ea76aa9a8a33edf3a53d891d1d667fc3ed9c06b78ce8",
+        "source_fact:v1:42479ad56e2e6f5ddfc30c23a64770bde0fbe52e7d47f6b93a1110213a00b899",
+        "source_fact:v1:5c8bd3b67f4671f5f8d99ba6585c8222337ac4151aabcaf4157017fe8a2a7e35",
+        "source_fact:v1:7847848384aea7bac4063f92964086c6540c03cfeea3c0fdcb376f0b4b981e44",
+        "source_fact:v1:93a3a6fa1dc40a3968c81d40c1b6ee9a937d765f9930e4e959f0da5e359d3438",
+        "source_fact:v1:d6aad9312de30588449984b47002122dc7410ff38a81f909b9940f54baa894d9",
+        "source_fact:v1:f99c61bc8bf161e964ea11d95d5be5e080d67dd4f0c88035f8ec2f24a94f2ed9"
+      ],
+      "source_published_kst": "2026-10-14T11:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 월가 은행 4곳, 3분기 호실적에도…금리 인상에 희비",
+      "telegram_core_fact": "씨티그룹의 경우 관련 분야에서 예상보다 높은 4% 매출 성장을 기록했지만, 곤잘로 루케티 CFO가 \"금리 환경을 고려할 때 다소 어려운 상황\"이라고 인정했다.",
+      "title": "美 월가 은행 4곳, 3분기 호실적에도…금리 인상에 희비"
+    },
     "source_fact:95ad1a9adbcc78e3894fd392": {
       "first_seen_kst": "2026-10-10T20:30:39+09:00",
       "lanes": {
@@ -448279,6 +449571,28 @@
       "source_title": "1억 넣으면 월 200만원 나온다는데…배당 부자들만 몰래 쓰는 '세금 0원' 기술",
       "telegram_core_fact": "배당금을 먼저 확정하고 배당 기준일을 정하는 '선배당 후투자' 방식이 확산하면서 결산 배당일이 2~4월 봄철로 분산되고 있다.",
       "title": "1억 넣으면 월 200만원 나온다는데…배당 부자들만 몰래 쓰는 '세금 0원' 기술"
+    },
+    "source_fact:969a53e52c4822cb00aa6d70": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261014042351003",
+      "source": "연합뉴스",
+      "source_body_digest": "5e51024c01de7a30083bfd115e873bcab1a9e26f0f4b12c640109953d7c8d08f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:03ed29d4aa4346aea6088717c3a3103ec5df971602a9e107718aa706d1d72400",
+      "source_fact_keys": [
+        "source_fact:v1:036ddb25ac76e29a0abb0987f00c6e55acaa8f294a474b8f81d258356541de4f",
+        "source_fact:v1:2eb52d7cdcdcb3b8e268777dbf7871e91227efdd3fdaca36cce32c1b3bb2d319",
+        "source_fact:v1:4b133837fe644d99b74f8440c007537384f46863f0a1f4e44c3269af3bf1ddf5"
+      ],
+      "source_published_kst": "2026-10-14T11:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성 반도체 부스 찾은 하정우 부위원장 \"AI반도체 로드맵 확인\"(종합) | 연합뉴스",
+      "telegram_core_fact": "삼성전자는 올해 신설한 반도체 클러스터존에서 주요 생산·개발 거점과 용인 국가산업단지 조성 계획도 소개한다.",
+      "title": "삼성 반도체 부스 찾은 하정우 부위원장 \"AI반도체 로드맵 확인\"(종합) | 연합뉴스"
     },
     "source_fact:96a294e9aed8d69fa6668b75": {
       "first_seen_kst": "2026-10-12T14:17:50+09:00",
@@ -450016,6 +451330,30 @@
       "source_title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박",
       "telegram_core_fact": "하지만 전쟁 이후 2년 만기 주택담보대출 평균 금리가 1%포인트 가까이 상승하면서 최근 6%에 근접했다.",
       "title": "금리 인상 우려에 英 주택시장 냉각…주담대 금리 6% 육박"
+    },
+    "source_fact:97fd00b1c91ef184c787aecc": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.hankyung.com/article/2026101405281",
+      "source": "한국경제",
+      "source_body_digest": "7303fb02d335cd0d9a9f66e02097ac4527195b68b3dade28c3c557d22f7b5541",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22ae117d61be38ca726d4a9938494b431a6b3fcb2a9fea7ad7db8e0477707d85",
+      "source_fact_keys": [
+        "source_fact:v1:23c8f08daca70d5219650579836b48356513ea9a0ffe7715cf084d4bf724392a",
+        "source_fact:v1:486aae9a2763248b44541ff18a6409a1901635507aa60379c50b09af7074a6ed",
+        "source_fact:v1:adaeed5dbbf239b425a0dc1e8acbc4e9d95a090098f0ad89026fda68c56a7683",
+        "source_fact:v1:dc188cf901c7b008f4ca08b9f2270352859f82d9a1e75076ec78fd7df80c9ce8",
+        "source_fact:v1:e8fa7df893b7460f02211218e21a62d771df943fc295c7045a65d558b2afc66d"
+      ],
+      "source_published_kst": "2026-10-14T16:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "'횡보장 방어' 커버드콜 ETF 순자산 30조 눈앞",
+      "telegram_core_fact": "이 기준 코스콤 ETF체크에 따르면 ‘RISE 200고배당커버드콜ATM’의 지난 3개월 수익률은 11.06%로 나타났다. 한국거래소에 따르면 작년 말 15조원 수준이던 국내 커버드콜 ETF 순자산 규모는 최근 30조원에 육박했다.",
+      "title": "'횡보장 방어' 커버드콜 ETF 순자산 30조 눈앞"
     },
     "source_fact:97ffa7c0c767f37cf0f46f2f": {
       "first_seen_kst": "2026-10-09T17:13:50+09:00",
@@ -453552,6 +454890,30 @@
       ],
       "source_published_kst": "2026-10-06T15:22+09:00",
       "title": "“中 AI 굴기 또 온다”…문샷, 기업가치 68조원 찍고 홍콩 상장 추진"
+    },
+    "source_fact:9b349bdd94395e50e9a80f24": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.hankyung.com/article/2026101405281",
+      "source": "한국경제",
+      "source_body_digest": "7303fb02d335cd0d9a9f66e02097ac4527195b68b3dade28c3c557d22f7b5541",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22ae117d61be38ca726d4a9938494b431a6b3fcb2a9fea7ad7db8e0477707d85",
+      "source_fact_keys": [
+        "source_fact:v1:23c8f08daca70d5219650579836b48356513ea9a0ffe7715cf084d4bf724392a",
+        "source_fact:v1:486aae9a2763248b44541ff18a6409a1901635507aa60379c50b09af7074a6ed",
+        "source_fact:v1:adaeed5dbbf239b425a0dc1e8acbc4e9d95a090098f0ad89026fda68c56a7683",
+        "source_fact:v1:dc188cf901c7b008f4ca08b9f2270352859f82d9a1e75076ec78fd7df80c9ce8",
+        "source_fact:v1:e8fa7df893b7460f02211218e21a62d771df943fc295c7045a65d558b2afc66d"
+      ],
+      "source_published_kst": "2026-10-14T16:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "'횡보장 방어' 커버드콜 ETF 순자산 30조 눈앞",
+      "telegram_core_fact": "이 기준 코스콤 ETF체크에 따르면 ‘RISE 200고배당커버드콜ATM’의 지난 3개월 수익률은 11.06%로 나타났다. 한국거래소에 따르면 작년 말 15조원 수준이던 국내 커버드콜 ETF 순자산 규모는 최근 30조원에 육박했다.",
+      "title": "'횡보장 방어' 커버드콜 ETF 순자산 30조 눈앞"
     },
     "source_fact:9b3591966a83fbd2c46cb626": {
       "first_seen_kst": "2026-10-07T18:44:00+09:00",
@@ -476854,6 +478216,33 @@
       "telegram_core_fact": "회사는 이번 발표에 자회사 설립에 따른 기대 효과와 국방 프로그램의 보안·규제 요건 충족 능력, 파트너십·계약 추진 등에 관한 미래예측 진술이 포함돼 있으며 실제 결과는 예상과 크게 다를 수 있다고 밝혔다.",
       "title": "드래곤플라이, 美 국방 자회사 설립..모들리 前 해군차관 의장 선임"
     },
+    "source_fact:af2b18c7278178a504a3d53c": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825490",
+      "source": "뉴시스",
+      "source_body_digest": "a12e9bf6665176e11f28a4ff5e34bc3e406a76a53406a4764d0d20e0a02d7c36",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48ea9a997f735d0f67c5dfee81de3325cde728dc32d06c6c7de01e56ffbdce3d",
+      "source_fact_keys": [
+        "source_fact:v1:05dc72fc097bb9904dc3297f3ba983185255cdb069fc99f206edcdbe648e7f17",
+        "source_fact:v1:05e3613dc624c69cba9c5c94c40b1e6fc008b00457a117a8c5e82825339faa93",
+        "source_fact:v1:52703339b31a46b3e76925835f8c97a372bc4ff226a8a2587062ce60ff3ab092",
+        "source_fact:v1:6aeb20c0f968c573a33ac9a5fbc669411f5ded39ee72e5eb1f2f98764aaabedf",
+        "source_fact:v1:a0dd576fd4622c2526314d53fe8390c103e4e0f55dcf9873e00b2894673f124a",
+        "source_fact:v1:d5bee775cecc53596e6596c1fff2e800eb814607a9679a25ccbab81caf3d289e",
+        "source_fact:v1:dfc2432de1aef7027d257233ddc98814666cf34467749b88fc598f5609a0af7a",
+        "source_fact:v1:e352852e3002afedef0a4c264821b96d68279fe5593a42da3631b2bbb806705f"
+      ],
+      "source_published_kst": "2026-10-14T13:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "제조업 고용보험 가입자 두달째↑…'반도체 호황' 증가폭 확대",
+      "telegram_core_fact": "고용노동부가 14일 발표한 '2026년 9월 고용행정 통계로 본 노동시장 동향'에 따르면 지난달 말 기준 고용보험 상시가입자 수는 1593만명으로, 전년 동월보다 28만8000명(1.8%) 증가했다.",
+      "title": "제조업 고용보험 가입자 두달째↑…'반도체 호황' 증가폭 확대"
+    },
     "source_fact:af43f8476d921fd978c13379": {
       "first_seen_kst": "2026-10-14T04:09:16+09:00",
       "lanes": {
@@ -480690,6 +482079,30 @@
       "source_title": "엔비디아 \"韓, 피지컬 AI 공급망 핵심 역할 가능…LG와 협력 성과 기대\"",
       "telegram_core_fact": "피지컬 AI 시장 확대가 로봇용 반도체뿐 아니라 데이터 생성과 시뮬레이션을 위한 컴퓨팅 인프라 수요 증가로 이어질 수 있다는 의미다.",
       "title": "엔비디아 \"韓, 피지컬 AI 공급망 핵심 역할 가능…LG와 협력 성과 기대\""
+    },
+    "source_fact:b2a3a956f4233b36c9025faa": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.hankyung.com/article/2026101405281",
+      "source": "한국경제",
+      "source_body_digest": "7303fb02d335cd0d9a9f66e02097ac4527195b68b3dade28c3c557d22f7b5541",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22ae117d61be38ca726d4a9938494b431a6b3fcb2a9fea7ad7db8e0477707d85",
+      "source_fact_keys": [
+        "source_fact:v1:23c8f08daca70d5219650579836b48356513ea9a0ffe7715cf084d4bf724392a",
+        "source_fact:v1:486aae9a2763248b44541ff18a6409a1901635507aa60379c50b09af7074a6ed",
+        "source_fact:v1:adaeed5dbbf239b425a0dc1e8acbc4e9d95a090098f0ad89026fda68c56a7683",
+        "source_fact:v1:dc188cf901c7b008f4ca08b9f2270352859f82d9a1e75076ec78fd7df80c9ce8",
+        "source_fact:v1:e8fa7df893b7460f02211218e21a62d771df943fc295c7045a65d558b2afc66d"
+      ],
+      "source_published_kst": "2026-10-14T16:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "'횡보장 방어' 커버드콜 ETF 순자산 30조 눈앞",
+      "telegram_core_fact": "이 기준 코스콤 ETF체크에 따르면 ‘RISE 200고배당커버드콜ATM’의 지난 3개월 수익률은 11.06%로 나타났다. 한국거래소에 따르면 작년 말 15조원 수준이던 국내 커버드콜 ETF 순자산 규모는 최근 30조원에 육박했다.",
+      "title": "'횡보장 방어' 커버드콜 ETF 순자산 30조 눈앞"
     },
     "source_fact:b2a6994e691af342c783c880": {
       "first_seen_kst": "2026-10-07T15:30:27+09:00",
@@ -491986,6 +493399,35 @@
       "telegram_core_fact": "당시 양기욱 산업부 산업자원안보실장은 \"국제유가 상황을 살피면서 서민 물가 부담과 지난 최고가격 지정 동향, 환율 하락 추세 등을 종합적으로 고려해 민생 안정에 무게를 두고 이번 최고가격 동결을 결정했다\"고 설명했다.",
       "title": "4개월째 묶인 기름값 상한…16일 11차 최고가격 동결 '촉각'"
     },
+    "source_fact:bcffefdea42507159d274398": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://biz.heraldcorp.com/article/10902424",
+      "source": "헤럴드경제",
+      "source_body_digest": "885b82d518eca93dcf154076080259b59f62b57219fc8aa4ad65790719cd7017",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:667d0d630ff653890a0bf8e5282b4eea88c6afe5f5b61a5da9e1c4ae68b8ed8f",
+      "source_fact_keys": [
+        "source_fact:v1:14ee3696be31f55565433b67bc43f8e86ca6acc88e885a1b07f7b54e2de97f23",
+        "source_fact:v1:36b097eb633ec0d59e1a5f8c12ee50c593060c04d97c191d3557fc887971de27",
+        "source_fact:v1:54f35a829b6a05cf526d86a5a30b4c4e2f2175f2018f7748641c0d79b1a1b003",
+        "source_fact:v1:6000259f2cff5e09c65fee41af844f64d2eaabf63b46fbef380b572d5949947a",
+        "source_fact:v1:735ec38df080804733cbcba76593f0e048f88fd574097d13048ec31323479c16",
+        "source_fact:v1:a135f3158d7fdc4d9048445d4f715994a970ade1c34b86677f0ac53dfc2db3d0",
+        "source_fact:v1:aecae64da089d75b90095a0df030218050bab9906cc073df1a16778c56456287",
+        "source_fact:v1:ba9d34ab2b036ea4eacc72d6fc7978b0eca4fb9207f75860539596be30ce0069",
+        "source_fact:v1:cd2bdd0addde3940c29a726b17c13deb02dafd17d71a5c6cb9fa1f20efd311e9",
+        "source_fact:v1:d9a55bc2ff804a1d1d75cb59716302505a480506ca17a33380e75a5614c10d06"
+      ],
+      "source_published_kst": "2026-10-14T14:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "안현 SK하이닉스 사장 “HBM만으론 메모리 급증 수요 감당 못해…대안으로 HBF·3D 적층 D램 개발 중”",
+      "telegram_core_fact": "안현 SK하이닉스 개발총괄(CDO) 사장이 인공지능(AI) 추론 시장 도래에 따라 고대역폭메모리(HBM)만으론 급증하는 메모리 수요를 감당하기 어렵다고 분석했다.",
+      "title": "안현 SK하이닉스 사장 “HBM만으론 메모리 급증 수요 감당 못해…대안으로 HBF·3D 적층 D램 개발 중”"
+    },
     "source_fact:bd0b5913e40763aa302d54ad": {
       "first_seen_kst": "2026-10-10T20:50:05+09:00",
       "lanes": {
@@ -492004,6 +493446,35 @@
       "source_title": "\"AI한테 욕하는 것도 학대?\"…앤트로픽 새 정책에 의견 분분",
       "telegram_core_fact": "인공지능(AI) 기업 앤트로픽이 AI 챗봇을 상대로 지속적인 폭언이나 학대 행위를 하는 사용자를 제재할 수 있도록 이용 정책을 개정했다.",
       "title": "\"AI한테 욕하는 것도 학대?\"…앤트로픽 새 정책에 의견 분분"
+    },
+    "source_fact:bd180563f9653e3ef6d03fbb": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://biz.heraldcorp.com/article/10902424",
+      "source": "헤럴드경제",
+      "source_body_digest": "885b82d518eca93dcf154076080259b59f62b57219fc8aa4ad65790719cd7017",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:667d0d630ff653890a0bf8e5282b4eea88c6afe5f5b61a5da9e1c4ae68b8ed8f",
+      "source_fact_keys": [
+        "source_fact:v1:14ee3696be31f55565433b67bc43f8e86ca6acc88e885a1b07f7b54e2de97f23",
+        "source_fact:v1:36b097eb633ec0d59e1a5f8c12ee50c593060c04d97c191d3557fc887971de27",
+        "source_fact:v1:54f35a829b6a05cf526d86a5a30b4c4e2f2175f2018f7748641c0d79b1a1b003",
+        "source_fact:v1:6000259f2cff5e09c65fee41af844f64d2eaabf63b46fbef380b572d5949947a",
+        "source_fact:v1:735ec38df080804733cbcba76593f0e048f88fd574097d13048ec31323479c16",
+        "source_fact:v1:a135f3158d7fdc4d9048445d4f715994a970ade1c34b86677f0ac53dfc2db3d0",
+        "source_fact:v1:aecae64da089d75b90095a0df030218050bab9906cc073df1a16778c56456287",
+        "source_fact:v1:ba9d34ab2b036ea4eacc72d6fc7978b0eca4fb9207f75860539596be30ce0069",
+        "source_fact:v1:cd2bdd0addde3940c29a726b17c13deb02dafd17d71a5c6cb9fa1f20efd311e9",
+        "source_fact:v1:d9a55bc2ff804a1d1d75cb59716302505a480506ca17a33380e75a5614c10d06"
+      ],
+      "source_published_kst": "2026-10-14T14:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "안현 SK하이닉스 사장 “HBM만으론 메모리 급증 수요 감당 못해…대안으로 HBF·3D 적층 D램 개발 중”",
+      "telegram_core_fact": "안현 SK하이닉스 개발총괄(CDO) 사장이 인공지능(AI) 추론 시장 도래에 따라 고대역폭메모리(HBM)만으론 급증하는 메모리 수요를 감당하기 어렵다고 분석했다.",
+      "title": "안현 SK하이닉스 사장 “HBM만으론 메모리 급증 수요 감당 못해…대안으로 HBF·3D 적층 D램 개발 중”"
     },
     "source_fact:bd27afea322203ab8b5396bd": {
       "first_seen_kst": "2026-10-08T13:46:05+09:00",
@@ -506239,6 +507710,29 @@
       "telegram_core_fact": "미국과 이란의 전쟁, 국제 유가 상승, 고금리 상황 등을 고려할 때 개별 종목 투자보다는 ETF(상장지수펀드) 투자가 유리하다는 분석이 나왔다.",
       "title": "\"지금은 종목 투자 안 통합니다\"…최고민수 조언은?[부꾸미]"
     },
+    "source_fact:c9370f6e20fccdec1d323a31": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.fnnews.com/news/202610141554294553",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1f1613e474ae34cc3f7a8489cd2d285b8fd4fe3595ae6a9f19e146a4a59064fd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:39635d19aa049e9b37a386de0ae666087bd1e5a06dadb1bf9a3c4451648a4c6f",
+      "source_fact_keys": [
+        "source_fact:v1:368643d3fa56b67dc8815d5be71dec000233df5e192e37876b949ec09a16249a",
+        "source_fact:v1:4343abe0a21cfdb2f66817a663decbcccc3599e367ba6902a59b1d9694c0c819",
+        "source_fact:v1:bce0660b3a66b3fcabf7f8e864f725c95843198f01249f2cf9bed8516b429850",
+        "source_fact:v1:d2b575467bf2e215bd78e3b747dfb04f3abef35c792daf851df56c9cff736684"
+      ],
+      "source_published_kst": "2026-10-14T15:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 YMTC, 낸드 출하량 세계 3위로…삼성·SK하이닉스 추격",
+      "telegram_core_fact": "YMTC의 글로벌 낸드 매출 점유율은 지난해 1분기 9%에서 올해 1분기 14%로 5%포인트 상승했다.",
+      "title": "中 YMTC, 낸드 출하량 세계 3위로…삼성·SK하이닉스 추격"
+    },
     "source_fact:c9389263e6bbc6ab23d5b12b": {
       "first_seen_kst": "2026-10-14T04:36:31+09:00",
       "lanes": {
@@ -508082,6 +509576,27 @@
       "telegram_core_fact": "한국거래소에 따르면 외국인 투자자는 올해 들어 지난 12일까지 코스피에서 약 199조1000억원을 순매도(매도가 매수보다 많은 것)했다.",
       "title": "中 반도체 공습·외국인 매도… 주저앉은 코스피"
     },
+    "source_fact:cb229f934eddcfa744e7cdfa": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.hankyung.com/article/2026101418197",
+      "source": "한국경제",
+      "source_body_digest": "6b08e5522534619b7993db1b7207e8e17820d486ebe52979f623a3909aa18996",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6473ca0d01c5d4a83bdef6136646bc38a5991f61b1c61f8d1e5a2b7cdf3e449e",
+      "source_fact_keys": [
+        "source_fact:v1:6ff4d90f77ddeed10668984e45654a810f233cc4af9700d0a75ad56607057779",
+        "source_fact:v1:90f846aeb1461eb5d840404e561d3c93bb743f36768de883d865765225fac9e6"
+      ],
+      "source_published_kst": "2026-10-14T16:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "ASML \"2028년까지 공급 부족…추가 증설 검토\"",
+      "telegram_core_fact": "크리스토프 푸케 최고경영자(CEO)는 \"현재 계획된 공급량으로는 2027년과 2028년 모두 고객 수요를 완전히 충족하지 못할 것으로 예상한다\"며 \"2028년 생산능력을 기존에 밝힌 30% 증설 이상으로 늘리는 방안을 검토하고 있다\"고 말했다.",
+      "title": "ASML \"2028년까지 공급 부족…추가 증설 검토\""
+    },
     "source_fact:cb29e05ce997fca2192a785a": {
       "first_seen_kst": "2026-10-12T13:56:47+09:00",
       "lanes": {
@@ -509352,6 +510867,35 @@
       "source_title": "에이트코 홀딩스, 나스닥 최소입찰가 요건 회복..상장 리스크 해소",
       "telegram_core_fact": "에이트코 홀딩스(ORBS)가 나스닥 상장 규정상 최소 입찰가 요건(주당 1달러)을 다시 충족해 관련 사안이 종결됐다는 나스닥 상장심사팀의 통보를 받았다고 10월 13일 발표했다. 나스닥 최소 입찰가 요건을 회복해 상장폐지 우려가 해소된 점은 투자심리에 긍정적이에요.",
       "title": "에이트코 홀딩스, 나스닥 최소입찰가 요건 회복..상장 리스크 해소"
+    },
+    "source_fact:cc8c33337f119af39b445de2": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://biz.heraldcorp.com/article/10902424",
+      "source": "헤럴드경제",
+      "source_body_digest": "885b82d518eca93dcf154076080259b59f62b57219fc8aa4ad65790719cd7017",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:667d0d630ff653890a0bf8e5282b4eea88c6afe5f5b61a5da9e1c4ae68b8ed8f",
+      "source_fact_keys": [
+        "source_fact:v1:14ee3696be31f55565433b67bc43f8e86ca6acc88e885a1b07f7b54e2de97f23",
+        "source_fact:v1:36b097eb633ec0d59e1a5f8c12ee50c593060c04d97c191d3557fc887971de27",
+        "source_fact:v1:54f35a829b6a05cf526d86a5a30b4c4e2f2175f2018f7748641c0d79b1a1b003",
+        "source_fact:v1:6000259f2cff5e09c65fee41af844f64d2eaabf63b46fbef380b572d5949947a",
+        "source_fact:v1:735ec38df080804733cbcba76593f0e048f88fd574097d13048ec31323479c16",
+        "source_fact:v1:a135f3158d7fdc4d9048445d4f715994a970ade1c34b86677f0ac53dfc2db3d0",
+        "source_fact:v1:aecae64da089d75b90095a0df030218050bab9906cc073df1a16778c56456287",
+        "source_fact:v1:ba9d34ab2b036ea4eacc72d6fc7978b0eca4fb9207f75860539596be30ce0069",
+        "source_fact:v1:cd2bdd0addde3940c29a726b17c13deb02dafd17d71a5c6cb9fa1f20efd311e9",
+        "source_fact:v1:d9a55bc2ff804a1d1d75cb59716302505a480506ca17a33380e75a5614c10d06"
+      ],
+      "source_published_kst": "2026-10-14T14:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "안현 SK하이닉스 사장 “HBM만으론 메모리 급증 수요 감당 못해…대안으로 HBF·3D 적층 D램 개발 중”",
+      "telegram_core_fact": "안현 SK하이닉스 개발총괄(CDO) 사장이 인공지능(AI) 추론 시장 도래에 따라 고대역폭메모리(HBM)만으론 급증하는 메모리 수요를 감당하기 어렵다고 분석했다.",
+      "title": "안현 SK하이닉스 사장 “HBM만으론 메모리 급증 수요 감당 못해…대안으로 HBF·3D 적층 D램 개발 중”"
     },
     "source_fact:cc9016dbf4ed5a43f7bdd000": {
       "first_seen_kst": "2026-10-09T17:32:22+09:00",
@@ -523149,6 +524693,35 @@
       "telegram_core_fact": "12일 한국거래소 신규상장 기업현황을 분석한 결과 올해 1~9월 유가증권시장(코스피)과 코스닥시장 신규 상장사는 33곳으로 전년 동기 55곳보다 40% 감소했다.",
       "title": "신규 상장 40% 줄었는데 예심 승인 반등…연말 IPO '속도전' 관측"
     },
+    "source_fact:d85d53466ec9dc68911d9576": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://biz.heraldcorp.com/article/10902424",
+      "source": "헤럴드경제",
+      "source_body_digest": "885b82d518eca93dcf154076080259b59f62b57219fc8aa4ad65790719cd7017",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:667d0d630ff653890a0bf8e5282b4eea88c6afe5f5b61a5da9e1c4ae68b8ed8f",
+      "source_fact_keys": [
+        "source_fact:v1:14ee3696be31f55565433b67bc43f8e86ca6acc88e885a1b07f7b54e2de97f23",
+        "source_fact:v1:36b097eb633ec0d59e1a5f8c12ee50c593060c04d97c191d3557fc887971de27",
+        "source_fact:v1:54f35a829b6a05cf526d86a5a30b4c4e2f2175f2018f7748641c0d79b1a1b003",
+        "source_fact:v1:6000259f2cff5e09c65fee41af844f64d2eaabf63b46fbef380b572d5949947a",
+        "source_fact:v1:735ec38df080804733cbcba76593f0e048f88fd574097d13048ec31323479c16",
+        "source_fact:v1:a135f3158d7fdc4d9048445d4f715994a970ade1c34b86677f0ac53dfc2db3d0",
+        "source_fact:v1:aecae64da089d75b90095a0df030218050bab9906cc073df1a16778c56456287",
+        "source_fact:v1:ba9d34ab2b036ea4eacc72d6fc7978b0eca4fb9207f75860539596be30ce0069",
+        "source_fact:v1:cd2bdd0addde3940c29a726b17c13deb02dafd17d71a5c6cb9fa1f20efd311e9",
+        "source_fact:v1:d9a55bc2ff804a1d1d75cb59716302505a480506ca17a33380e75a5614c10d06"
+      ],
+      "source_published_kst": "2026-10-14T14:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "안현 SK하이닉스 사장 “HBM만으론 메모리 급증 수요 감당 못해…대안으로 HBF·3D 적층 D램 개발 중”",
+      "telegram_core_fact": "안현 SK하이닉스 개발총괄(CDO) 사장이 인공지능(AI) 추론 시장 도래에 따라 고대역폭메모리(HBM)만으론 급증하는 메모리 수요를 감당하기 어렵다고 분석했다.",
+      "title": "안현 SK하이닉스 사장 “HBM만으론 메모리 급증 수요 감당 못해…대안으로 HBF·3D 적층 D램 개발 중”"
+    },
     "source_fact:d860877052a790f40819a334": {
       "first_seen_kst": "2026-10-12T10:17:45+09:00",
       "lanes": {
@@ -532066,6 +533639,35 @@
       "source_published_kst": "2026-10-06T06:27+09:00",
       "title": "뉴욕 증시, 국채 금리 급등에도 나스닥 사상 최고치"
     },
+    "source_fact:e0188f8b0b303222b567317e": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://biz.heraldcorp.com/article/10902424",
+      "source": "헤럴드경제",
+      "source_body_digest": "885b82d518eca93dcf154076080259b59f62b57219fc8aa4ad65790719cd7017",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:667d0d630ff653890a0bf8e5282b4eea88c6afe5f5b61a5da9e1c4ae68b8ed8f",
+      "source_fact_keys": [
+        "source_fact:v1:14ee3696be31f55565433b67bc43f8e86ca6acc88e885a1b07f7b54e2de97f23",
+        "source_fact:v1:36b097eb633ec0d59e1a5f8c12ee50c593060c04d97c191d3557fc887971de27",
+        "source_fact:v1:54f35a829b6a05cf526d86a5a30b4c4e2f2175f2018f7748641c0d79b1a1b003",
+        "source_fact:v1:6000259f2cff5e09c65fee41af844f64d2eaabf63b46fbef380b572d5949947a",
+        "source_fact:v1:735ec38df080804733cbcba76593f0e048f88fd574097d13048ec31323479c16",
+        "source_fact:v1:a135f3158d7fdc4d9048445d4f715994a970ade1c34b86677f0ac53dfc2db3d0",
+        "source_fact:v1:aecae64da089d75b90095a0df030218050bab9906cc073df1a16778c56456287",
+        "source_fact:v1:ba9d34ab2b036ea4eacc72d6fc7978b0eca4fb9207f75860539596be30ce0069",
+        "source_fact:v1:cd2bdd0addde3940c29a726b17c13deb02dafd17d71a5c6cb9fa1f20efd311e9",
+        "source_fact:v1:d9a55bc2ff804a1d1d75cb59716302505a480506ca17a33380e75a5614c10d06"
+      ],
+      "source_published_kst": "2026-10-14T14:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "안현 SK하이닉스 사장 “HBM만으론 메모리 급증 수요 감당 못해…대안으로 HBF·3D 적층 D램 개발 중”",
+      "telegram_core_fact": "안현 SK하이닉스 개발총괄(CDO) 사장이 인공지능(AI) 추론 시장 도래에 따라 고대역폭메모리(HBM)만으론 급증하는 메모리 수요를 감당하기 어렵다고 분석했다.",
+      "title": "안현 SK하이닉스 사장 “HBM만으론 메모리 급증 수요 감당 못해…대안으로 HBF·3D 적층 D램 개발 중”"
+    },
     "source_fact:e01a9217ff931c2633561a33": {
       "first_seen_kst": "2026-10-14T05:39:44+09:00",
       "lanes": {
@@ -533487,6 +535089,30 @@
       ],
       "source_published_kst": "2026-10-06T14:48+09:00",
       "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
+    },
+    "source_fact:e130727b85bf79849db30872": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.hankyung.com/article/2026101405281",
+      "source": "한국경제",
+      "source_body_digest": "7303fb02d335cd0d9a9f66e02097ac4527195b68b3dade28c3c557d22f7b5541",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22ae117d61be38ca726d4a9938494b431a6b3fcb2a9fea7ad7db8e0477707d85",
+      "source_fact_keys": [
+        "source_fact:v1:23c8f08daca70d5219650579836b48356513ea9a0ffe7715cf084d4bf724392a",
+        "source_fact:v1:486aae9a2763248b44541ff18a6409a1901635507aa60379c50b09af7074a6ed",
+        "source_fact:v1:adaeed5dbbf239b425a0dc1e8acbc4e9d95a090098f0ad89026fda68c56a7683",
+        "source_fact:v1:dc188cf901c7b008f4ca08b9f2270352859f82d9a1e75076ec78fd7df80c9ce8",
+        "source_fact:v1:e8fa7df893b7460f02211218e21a62d771df943fc295c7045a65d558b2afc66d"
+      ],
+      "source_published_kst": "2026-10-14T16:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "'횡보장 방어' 커버드콜 ETF 순자산 30조 눈앞",
+      "telegram_core_fact": "이 기준 코스콤 ETF체크에 따르면 ‘RISE 200고배당커버드콜ATM’의 지난 3개월 수익률은 11.06%로 나타났다. 한국거래소에 따르면 작년 말 15조원 수준이던 국내 커버드콜 ETF 순자산 규모는 최근 30조원에 육박했다.",
+      "title": "'횡보장 방어' 커버드콜 ETF 순자산 30조 눈앞"
     },
     "source_fact:e1311378e8ae795378dd6f45": {
       "first_seen_kst": "2026-10-09T20:24:58+09:00",
@@ -536947,6 +538573,33 @@
       "source_title": "SK이터닉스, 연료전지로 AI 데이터센터 전력 댄다…마스턴과 사업 추진",
       "telegram_core_fact": "SK이터닉스가 연료전지를 활용해 AI 데이터센터에 필요한 전력을 현장에서 직접 공급하는 사업에 나선다. 김해중 SK이터닉스 대표는 “양사가 가진 역량을 바탕으로 시장에 새로운 데이터센터 전력공급 사업모델을 제시할 수 있도록 협력하겠다”고 말했다.",
       "title": "SK이터닉스, 연료전지로 AI 데이터센터 전력 댄다…마스턴과 사업 추진"
+    },
+    "source_fact:e3ee2b206368ee359d1b1bd5": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825490",
+      "source": "뉴시스",
+      "source_body_digest": "a12e9bf6665176e11f28a4ff5e34bc3e406a76a53406a4764d0d20e0a02d7c36",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48ea9a997f735d0f67c5dfee81de3325cde728dc32d06c6c7de01e56ffbdce3d",
+      "source_fact_keys": [
+        "source_fact:v1:05dc72fc097bb9904dc3297f3ba983185255cdb069fc99f206edcdbe648e7f17",
+        "source_fact:v1:05e3613dc624c69cba9c5c94c40b1e6fc008b00457a117a8c5e82825339faa93",
+        "source_fact:v1:52703339b31a46b3e76925835f8c97a372bc4ff226a8a2587062ce60ff3ab092",
+        "source_fact:v1:6aeb20c0f968c573a33ac9a5fbc669411f5ded39ee72e5eb1f2f98764aaabedf",
+        "source_fact:v1:a0dd576fd4622c2526314d53fe8390c103e4e0f55dcf9873e00b2894673f124a",
+        "source_fact:v1:d5bee775cecc53596e6596c1fff2e800eb814607a9679a25ccbab81caf3d289e",
+        "source_fact:v1:dfc2432de1aef7027d257233ddc98814666cf34467749b88fc598f5609a0af7a",
+        "source_fact:v1:e352852e3002afedef0a4c264821b96d68279fe5593a42da3631b2bbb806705f"
+      ],
+      "source_published_kst": "2026-10-14T13:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "제조업 고용보험 가입자 두달째↑…'반도체 호황' 증가폭 확대",
+      "telegram_core_fact": "고용노동부가 14일 발표한 '2026년 9월 고용행정 통계로 본 노동시장 동향'에 따르면 지난달 말 기준 고용보험 상시가입자 수는 1593만명으로, 전년 동월보다 28만8000명(1.8%) 증가했다.",
+      "title": "제조업 고용보험 가입자 두달째↑…'반도체 호황' 증가폭 확대"
     },
     "source_fact:e3efd604799c56f697698d1a": {
       "first_seen_kst": "2026-10-14T02:42:17+09:00",
@@ -541883,6 +543536,32 @@
       "telegram_core_fact": "가온전선이 미국 원전용 케이블 시장에 진출한다. 가온전선은 미국 생산법인 LSCUS가 노스캐롤라이나주 타보로 공장에 원전용 케이블 생산설비를 구축할 계획이라고 12일 밝혔다.",
       "title": "가온전선, 美 원전용 케이블 시장 진출…현지 시장 선점"
     },
+    "source_fact:e85d34b3fe63f6402046a170": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825111",
+      "source": "뉴시스",
+      "source_body_digest": "c5edf9b3baf9842b9599707b71f460527274541de3f73ff6b8b5cdc5373d4abe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:876db90a0b8889431462d2a1a4f92c4829d55e2f29041b35a4824eb4126657ab",
+      "source_fact_keys": [
+        "source_fact:v1:147b9ff9c271c827a474ea76aa9a8a33edf3a53d891d1d667fc3ed9c06b78ce8",
+        "source_fact:v1:42479ad56e2e6f5ddfc30c23a64770bde0fbe52e7d47f6b93a1110213a00b899",
+        "source_fact:v1:5c8bd3b67f4671f5f8d99ba6585c8222337ac4151aabcaf4157017fe8a2a7e35",
+        "source_fact:v1:7847848384aea7bac4063f92964086c6540c03cfeea3c0fdcb376f0b4b981e44",
+        "source_fact:v1:93a3a6fa1dc40a3968c81d40c1b6ee9a937d765f9930e4e959f0da5e359d3438",
+        "source_fact:v1:d6aad9312de30588449984b47002122dc7410ff38a81f909b9940f54baa894d9",
+        "source_fact:v1:f99c61bc8bf161e964ea11d95d5be5e080d67dd4f0c88035f8ec2f24a94f2ed9"
+      ],
+      "source_published_kst": "2026-10-14T11:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 월가 은행 4곳, 3분기 호실적에도…금리 인상에 희비",
+      "telegram_core_fact": "씨티그룹의 경우 관련 분야에서 예상보다 높은 4% 매출 성장을 기록했지만, 곤잘로 루케티 CFO가 \"금리 환경을 고려할 때 다소 어려운 상황\"이라고 인정했다.",
+      "title": "美 월가 은행 4곳, 3분기 호실적에도…금리 인상에 희비"
+    },
     "source_fact:e85e22e3d32e69484892ac1f": {
       "first_seen_kst": "2026-10-13T03:37:13+09:00",
       "lanes": {
@@ -544857,6 +546536,35 @@
       "source_title": "금리 vs 실적…코스피, 7000선 재도전 나설까[주간증시전망]",
       "telegram_core_fact": "삼성전자가 107조원대 3분기 영업이익으로 어닝 서프라이즈를 기록했지만 채권 금리와 국제 유가 부담을 이겨내지 못하며 7000선 안착에 실패했다.",
       "title": "금리 vs 실적…코스피, 7000선 재도전 나설까[주간증시전망]"
+    },
+    "source_fact:eabc2c1be9248466dcde42bd": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://biz.heraldcorp.com/article/10902424",
+      "source": "헤럴드경제",
+      "source_body_digest": "885b82d518eca93dcf154076080259b59f62b57219fc8aa4ad65790719cd7017",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:667d0d630ff653890a0bf8e5282b4eea88c6afe5f5b61a5da9e1c4ae68b8ed8f",
+      "source_fact_keys": [
+        "source_fact:v1:14ee3696be31f55565433b67bc43f8e86ca6acc88e885a1b07f7b54e2de97f23",
+        "source_fact:v1:36b097eb633ec0d59e1a5f8c12ee50c593060c04d97c191d3557fc887971de27",
+        "source_fact:v1:54f35a829b6a05cf526d86a5a30b4c4e2f2175f2018f7748641c0d79b1a1b003",
+        "source_fact:v1:6000259f2cff5e09c65fee41af844f64d2eaabf63b46fbef380b572d5949947a",
+        "source_fact:v1:735ec38df080804733cbcba76593f0e048f88fd574097d13048ec31323479c16",
+        "source_fact:v1:a135f3158d7fdc4d9048445d4f715994a970ade1c34b86677f0ac53dfc2db3d0",
+        "source_fact:v1:aecae64da089d75b90095a0df030218050bab9906cc073df1a16778c56456287",
+        "source_fact:v1:ba9d34ab2b036ea4eacc72d6fc7978b0eca4fb9207f75860539596be30ce0069",
+        "source_fact:v1:cd2bdd0addde3940c29a726b17c13deb02dafd17d71a5c6cb9fa1f20efd311e9",
+        "source_fact:v1:d9a55bc2ff804a1d1d75cb59716302505a480506ca17a33380e75a5614c10d06"
+      ],
+      "source_published_kst": "2026-10-14T14:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "안현 SK하이닉스 사장 “HBM만으론 메모리 급증 수요 감당 못해…대안으로 HBF·3D 적층 D램 개발 중”",
+      "telegram_core_fact": "안현 SK하이닉스 개발총괄(CDO) 사장이 인공지능(AI) 추론 시장 도래에 따라 고대역폭메모리(HBM)만으론 급증하는 메모리 수요를 감당하기 어렵다고 분석했다.",
+      "title": "안현 SK하이닉스 사장 “HBM만으론 메모리 급증 수요 감당 못해…대안으로 HBF·3D 적층 D램 개발 중”"
     },
     "source_fact:eac13be3cd6898a4cc67116d": {
       "first_seen_kst": "2026-10-07T08:57:59+09:00",
@@ -565066,6 +566774,32 @@
       "telegram_core_fact": "업계에 따르면 삼성SDI는 최근 이러한 내용의 신규 투자를 결정하고 말레이시아 제2공장에 AI 서버용 배터리백업유닛(BBU)에 들어갈 LFP 양극 극판 생산설비 구축에 나섰다.",
       "title": "[단독] AI 서버 배터리 ‘불티’…삼성SDI, 말레이서 원통형 LFP 내년 6월 양산"
     },
+    "source_fact:fda2c2b5afaed303abf860ed": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825111",
+      "source": "뉴시스",
+      "source_body_digest": "c5edf9b3baf9842b9599707b71f460527274541de3f73ff6b8b5cdc5373d4abe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:876db90a0b8889431462d2a1a4f92c4829d55e2f29041b35a4824eb4126657ab",
+      "source_fact_keys": [
+        "source_fact:v1:147b9ff9c271c827a474ea76aa9a8a33edf3a53d891d1d667fc3ed9c06b78ce8",
+        "source_fact:v1:42479ad56e2e6f5ddfc30c23a64770bde0fbe52e7d47f6b93a1110213a00b899",
+        "source_fact:v1:5c8bd3b67f4671f5f8d99ba6585c8222337ac4151aabcaf4157017fe8a2a7e35",
+        "source_fact:v1:7847848384aea7bac4063f92964086c6540c03cfeea3c0fdcb376f0b4b981e44",
+        "source_fact:v1:93a3a6fa1dc40a3968c81d40c1b6ee9a937d765f9930e4e959f0da5e359d3438",
+        "source_fact:v1:d6aad9312de30588449984b47002122dc7410ff38a81f909b9940f54baa894d9",
+        "source_fact:v1:f99c61bc8bf161e964ea11d95d5be5e080d67dd4f0c88035f8ec2f24a94f2ed9"
+      ],
+      "source_published_kst": "2026-10-14T11:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 월가 은행 4곳, 3분기 호실적에도…금리 인상에 희비",
+      "telegram_core_fact": "씨티그룹의 경우 관련 분야에서 예상보다 높은 4% 매출 성장을 기록했지만, 곤잘로 루케티 CFO가 \"금리 환경을 고려할 때 다소 어려운 상황\"이라고 인정했다.",
+      "title": "美 월가 은행 4곳, 3분기 호실적에도…금리 인상에 희비"
+    },
     "source_fact:fda31e739c56fdada3b3a4e3": {
       "first_seen_kst": "2026-10-11T11:01:00+09:00",
       "lanes": {
@@ -570193,6 +571927,35 @@
       "telegram_core_fact": "한국맥도날드는 이번 확장 이전을 통해 '매출 2조원 달성, 500개 매장 운영'을 목표로 한 '2030 비전'에 박차를 가할 계획이다.",
       "title": "한국맥도날드, 태평로로 본사 확장 이전…\"매출 2조원 달성 목표\""
     },
+    "title:07a0010b62fc9d5a9c3646bc": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://biz.heraldcorp.com/article/10902424",
+      "source": "헤럴드경제",
+      "source_body_digest": "885b82d518eca93dcf154076080259b59f62b57219fc8aa4ad65790719cd7017",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:667d0d630ff653890a0bf8e5282b4eea88c6afe5f5b61a5da9e1c4ae68b8ed8f",
+      "source_fact_keys": [
+        "source_fact:v1:14ee3696be31f55565433b67bc43f8e86ca6acc88e885a1b07f7b54e2de97f23",
+        "source_fact:v1:36b097eb633ec0d59e1a5f8c12ee50c593060c04d97c191d3557fc887971de27",
+        "source_fact:v1:54f35a829b6a05cf526d86a5a30b4c4e2f2175f2018f7748641c0d79b1a1b003",
+        "source_fact:v1:6000259f2cff5e09c65fee41af844f64d2eaabf63b46fbef380b572d5949947a",
+        "source_fact:v1:735ec38df080804733cbcba76593f0e048f88fd574097d13048ec31323479c16",
+        "source_fact:v1:a135f3158d7fdc4d9048445d4f715994a970ade1c34b86677f0ac53dfc2db3d0",
+        "source_fact:v1:aecae64da089d75b90095a0df030218050bab9906cc073df1a16778c56456287",
+        "source_fact:v1:ba9d34ab2b036ea4eacc72d6fc7978b0eca4fb9207f75860539596be30ce0069",
+        "source_fact:v1:cd2bdd0addde3940c29a726b17c13deb02dafd17d71a5c6cb9fa1f20efd311e9",
+        "source_fact:v1:d9a55bc2ff804a1d1d75cb59716302505a480506ca17a33380e75a5614c10d06"
+      ],
+      "source_published_kst": "2026-10-14T14:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "안현 SK하이닉스 사장 “HBM만으론 메모리 급증 수요 감당 못해…대안으로 HBF·3D 적층 D램 개발 중”",
+      "telegram_core_fact": "안현 SK하이닉스 개발총괄(CDO) 사장이 인공지능(AI) 추론 시장 도래에 따라 고대역폭메모리(HBM)만으론 급증하는 메모리 수요를 감당하기 어렵다고 분석했다.",
+      "title": "안현 SK하이닉스 사장 “HBM만으론 메모리 급증 수요 감당 못해…대안으로 HBF·3D 적층 D램 개발 중”"
+    },
     "title:07a711ea3f5c4cbed88b3101": {
       "first_seen_kst": "2026-10-14T07:18:46+09:00",
       "lanes": {
@@ -570733,6 +572496,33 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003811653",
       "source": "뉴시스",
       "title": "우크라, 자체 개발 탄도미사일 첫 실전 투입…러시아 목표물 타격"
+    },
+    "title:09863ac84fdd806bf7492611": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825490",
+      "source": "뉴시스",
+      "source_body_digest": "a12e9bf6665176e11f28a4ff5e34bc3e406a76a53406a4764d0d20e0a02d7c36",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:48ea9a997f735d0f67c5dfee81de3325cde728dc32d06c6c7de01e56ffbdce3d",
+      "source_fact_keys": [
+        "source_fact:v1:05dc72fc097bb9904dc3297f3ba983185255cdb069fc99f206edcdbe648e7f17",
+        "source_fact:v1:05e3613dc624c69cba9c5c94c40b1e6fc008b00457a117a8c5e82825339faa93",
+        "source_fact:v1:52703339b31a46b3e76925835f8c97a372bc4ff226a8a2587062ce60ff3ab092",
+        "source_fact:v1:6aeb20c0f968c573a33ac9a5fbc669411f5ded39ee72e5eb1f2f98764aaabedf",
+        "source_fact:v1:a0dd576fd4622c2526314d53fe8390c103e4e0f55dcf9873e00b2894673f124a",
+        "source_fact:v1:d5bee775cecc53596e6596c1fff2e800eb814607a9679a25ccbab81caf3d289e",
+        "source_fact:v1:dfc2432de1aef7027d257233ddc98814666cf34467749b88fc598f5609a0af7a",
+        "source_fact:v1:e352852e3002afedef0a4c264821b96d68279fe5593a42da3631b2bbb806705f"
+      ],
+      "source_published_kst": "2026-10-14T13:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "제조업 고용보험 가입자 두달째↑…'반도체 호황' 증가폭 확대",
+      "telegram_core_fact": "고용노동부가 14일 발표한 '2026년 9월 고용행정 통계로 본 노동시장 동향'에 따르면 지난달 말 기준 고용보험 상시가입자 수는 1593만명으로, 전년 동월보다 28만8000명(1.8%) 증가했다.",
+      "title": "제조업 고용보험 가입자 두달째↑…'반도체 호황' 증가폭 확대"
     },
     "title:098ad83d23bba8a3860bc563": {
       "first_seen_kst": "2026-10-07T03:43:49+09:00",
@@ -574037,6 +575827,32 @@
       "source_title": "LG전자, 목동 최고급 주거단지에 AI 홈 심는다…B2B 사업 확장",
       "telegram_core_fact": "LG전자가 목동 신축 주거단지에 인공지능(AI) 홈 솔루션과 프리미엄 빌트인 가전을 공급한다.",
       "title": "LG전자, 목동 최고급 주거단지에 AI 홈 심는다…B2B 사업 확장"
+    },
+    "title:1442032b81db855b8b164094": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.newsis.com/view/NISX20261014_0003825111",
+      "source": "뉴시스",
+      "source_body_digest": "c5edf9b3baf9842b9599707b71f460527274541de3f73ff6b8b5cdc5373d4abe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:876db90a0b8889431462d2a1a4f92c4829d55e2f29041b35a4824eb4126657ab",
+      "source_fact_keys": [
+        "source_fact:v1:147b9ff9c271c827a474ea76aa9a8a33edf3a53d891d1d667fc3ed9c06b78ce8",
+        "source_fact:v1:42479ad56e2e6f5ddfc30c23a64770bde0fbe52e7d47f6b93a1110213a00b899",
+        "source_fact:v1:5c8bd3b67f4671f5f8d99ba6585c8222337ac4151aabcaf4157017fe8a2a7e35",
+        "source_fact:v1:7847848384aea7bac4063f92964086c6540c03cfeea3c0fdcb376f0b4b981e44",
+        "source_fact:v1:93a3a6fa1dc40a3968c81d40c1b6ee9a937d765f9930e4e959f0da5e359d3438",
+        "source_fact:v1:d6aad9312de30588449984b47002122dc7410ff38a81f909b9940f54baa894d9",
+        "source_fact:v1:f99c61bc8bf161e964ea11d95d5be5e080d67dd4f0c88035f8ec2f24a94f2ed9"
+      ],
+      "source_published_kst": "2026-10-14T11:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "美 월가 은행 4곳, 3분기 호실적에도…금리 인상에 희비",
+      "telegram_core_fact": "씨티그룹의 경우 관련 분야에서 예상보다 높은 4% 매출 성장을 기록했지만, 곤잘로 루케티 CFO가 \"금리 환경을 고려할 때 다소 어려운 상황\"이라고 인정했다.",
+      "title": "美 월가 은행 4곳, 3분기 호실적에도…금리 인상에 희비"
     },
     "title:145255910c167871bb77d46d": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
@@ -594060,6 +595876,28 @@
       ],
       "source_published_kst": "2026-10-05T16:20+09:00",
       "title": "日라피더스, 도시바 등 17개사와 반도체 설계 동맹"
+    },
+    "title:516b0359c2a892aae8dc567a": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261014042351003",
+      "source": "연합뉴스",
+      "source_body_digest": "5e51024c01de7a30083bfd115e873bcab1a9e26f0f4b12c640109953d7c8d08f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:03ed29d4aa4346aea6088717c3a3103ec5df971602a9e107718aa706d1d72400",
+      "source_fact_keys": [
+        "source_fact:v1:036ddb25ac76e29a0abb0987f00c6e55acaa8f294a474b8f81d258356541de4f",
+        "source_fact:v1:2eb52d7cdcdcb3b8e268777dbf7871e91227efdd3fdaca36cce32c1b3bb2d319",
+        "source_fact:v1:4b133837fe644d99b74f8440c007537384f46863f0a1f4e44c3269af3bf1ddf5"
+      ],
+      "source_published_kst": "2026-10-14T11:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "삼성 반도체 부스 찾은 하정우 부위원장 \"AI반도체 로드맵 확인\"(종합) | 연합뉴스",
+      "telegram_core_fact": "삼성전자는 올해 신설한 반도체 클러스터존에서 주요 생산·개발 거점과 용인 국가산업단지 조성 계획도 소개한다.",
+      "title": "삼성 반도체 부스 찾은 하정우 부위원장 \"AI반도체 로드맵 확인\"(종합) | 연합뉴스"
     },
     "title:518ae4f57e903470882c24d8": {
       "first_seen_kst": "2026-10-07T11:25:20+09:00",
@@ -631963,6 +633801,30 @@
       "telegram_core_fact": "올해는 모태펀드가 출자하는 자펀드에 지역투자 20% 의무를 부여하고, 지방 소재 중소·벤처기업에 30% 이상 투자 의무를 설정한 운용사에는 가점을 부여한다.",
       "title": "모태 자펀드 수도권 집중…2020년 이후 신규투자 4분의 3 쏠려 | 연합뉴스"
     },
+    "title:cc2813fc7a5bf35ba0c667c2": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.hankyung.com/article/2026101405281",
+      "source": "한국경제",
+      "source_body_digest": "7303fb02d335cd0d9a9f66e02097ac4527195b68b3dade28c3c557d22f7b5541",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:22ae117d61be38ca726d4a9938494b431a6b3fcb2a9fea7ad7db8e0477707d85",
+      "source_fact_keys": [
+        "source_fact:v1:23c8f08daca70d5219650579836b48356513ea9a0ffe7715cf084d4bf724392a",
+        "source_fact:v1:486aae9a2763248b44541ff18a6409a1901635507aa60379c50b09af7074a6ed",
+        "source_fact:v1:adaeed5dbbf239b425a0dc1e8acbc4e9d95a090098f0ad89026fda68c56a7683",
+        "source_fact:v1:dc188cf901c7b008f4ca08b9f2270352859f82d9a1e75076ec78fd7df80c9ce8",
+        "source_fact:v1:e8fa7df893b7460f02211218e21a62d771df943fc295c7045a65d558b2afc66d"
+      ],
+      "source_published_kst": "2026-10-14T16:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "'횡보장 방어' 커버드콜 ETF 순자산 30조 눈앞",
+      "telegram_core_fact": "이 기준 코스콤 ETF체크에 따르면 ‘RISE 200고배당커버드콜ATM’의 지난 3개월 수익률은 11.06%로 나타났다. 한국거래소에 따르면 작년 말 15조원 수준이던 국내 커버드콜 ETF 순자산 규모는 최근 30조원에 육박했다.",
+      "title": "'횡보장 방어' 커버드콜 ETF 순자산 30조 눈앞"
+    },
     "title:cc3a89a0ef7a00edccfc4b57": {
       "first_seen_kst": "2026-10-08T02:57:10+09:00",
       "lanes": {
@@ -633802,6 +635664,27 @@
       "source_title": "“158억 무차입 공매도라더니”…HSBC, 대법원서 무죄 확정",
       "telegram_core_fact": "대법원은 HSBC 홍콩법인의 무차입 공매도 사건에서 검찰 상고를 기각하고 무죄를 확정했다.",
       "title": "“158억 무차입 공매도라더니”…HSBC, 대법원서 무죄 확정"
+    },
+    "title:d1bf87c1b3a7aeff121b7e08": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.hankyung.com/article/2026101418197",
+      "source": "한국경제",
+      "source_body_digest": "6b08e5522534619b7993db1b7207e8e17820d486ebe52979f623a3909aa18996",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6473ca0d01c5d4a83bdef6136646bc38a5991f61b1c61f8d1e5a2b7cdf3e449e",
+      "source_fact_keys": [
+        "source_fact:v1:6ff4d90f77ddeed10668984e45654a810f233cc4af9700d0a75ad56607057779",
+        "source_fact:v1:90f846aeb1461eb5d840404e561d3c93bb743f36768de883d865765225fac9e6"
+      ],
+      "source_published_kst": "2026-10-14T16:03+09:00",
+      "source_supply_terms": {},
+      "source_title": "ASML \"2028년까지 공급 부족…추가 증설 검토\"",
+      "telegram_core_fact": "크리스토프 푸케 최고경영자(CEO)는 \"현재 계획된 공급량으로는 2027년과 2028년 모두 고객 수요를 완전히 충족하지 못할 것으로 예상한다\"며 \"2028년 생산능력을 기존에 밝힌 30% 증설 이상으로 늘리는 방안을 검토하고 있다\"고 말했다.",
+      "title": "ASML \"2028년까지 공급 부족…추가 증설 검토\""
     },
     "title:d1cdab6fb2012a3e0b787158": {
       "first_seen_kst": "2026-10-05T13:15:14+09:00",
@@ -644888,6 +646771,29 @@
       "source_published_kst": "2026-10-07T10:15+09:00",
       "title": "인구 절벽 시대에도 ‘나 홀로 우상향’ 천안… 삼성 투자 타고 ‘더샵 천안라크원’ 분양"
     },
+    "title:f51e9c419de47e93b758e6d6": {
+      "first_seen_kst": "2026-10-14T16:26:08+09:00",
+      "lanes": {
+        "live": "2026-10-14T16:26:08+09:00"
+      },
+      "last_seen_kst": "2026-10-14T16:26:08+09:00",
+      "link": "https://www.fnnews.com/news/202610141554294553",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "1f1613e474ae34cc3f7a8489cd2d285b8fd4fe3595ae6a9f19e146a4a59064fd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:39635d19aa049e9b37a386de0ae666087bd1e5a06dadb1bf9a3c4451648a4c6f",
+      "source_fact_keys": [
+        "source_fact:v1:368643d3fa56b67dc8815d5be71dec000233df5e192e37876b949ec09a16249a",
+        "source_fact:v1:4343abe0a21cfdb2f66817a663decbcccc3599e367ba6902a59b1d9694c0c819",
+        "source_fact:v1:bce0660b3a66b3fcabf7f8e864f725c95843198f01249f2cf9bed8516b429850",
+        "source_fact:v1:d2b575467bf2e215bd78e3b747dfb04f3abef35c792daf851df56c9cff736684"
+      ],
+      "source_published_kst": "2026-10-14T15:54+09:00",
+      "source_supply_terms": {},
+      "source_title": "中 YMTC, 낸드 출하량 세계 3위로…삼성·SK하이닉스 추격",
+      "telegram_core_fact": "YMTC의 글로벌 낸드 매출 점유율은 지난해 1분기 9%에서 올해 1분기 14%로 5%포인트 상승했다.",
+      "title": "中 YMTC, 낸드 출하량 세계 3위로…삼성·SK하이닉스 추격"
+    },
     "title:f51f088cf5974c74b7500965": {
       "first_seen_kst": "2026-10-13T05:27:22+09:00",
       "lanes": {
@@ -648474,5 +650380,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-14T15:54:32+09:00"
+  "updated_at_kst": "2026-10-14T16:26:08+09:00"
 }
