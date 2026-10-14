@@ -860,6 +860,7 @@ def main() -> None:
     cutoff = now - dt.timedelta(days=10)
     items, errors = collect(cutoff)
     semi_record, semi_errors = _semi_300mm_fetch()
+    print(f"semi_300mm_primary_valid={bool(semi_record)} source_errors={semi_errors[:3]}")
     write_outputs(items, errors + semi_errors, semi_record)
     print(f"regional_chokepoint_candidates={len(items)} errors={len(errors)}")
     print(f"alert_exists={ALERT_PATH.exists()}")
