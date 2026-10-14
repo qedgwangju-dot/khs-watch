@@ -1143,7 +1143,7 @@ DEXMATE_LG = re.compile(r'\bLG\s*CNS\b|LG씨엔에스|\bLG\b|엘지', re.I)
 DEXMATE_CEO = re.compile(r'Tao\s*Chen|타오\s*첸|최고경영자|CEO', re.I)
 DEXMATE_USE = re.compile(r'유통\s*(?:지원|돕|도와)|use\s+our\s+robots|'
                          r'using\s+(?:our\s+)?robots|'
-                         r'사용(?:하고\s*있|하고\s*있으며|중)|한국\s*유통', re.I)
+                         r'사용하고|사용\s*중|using|한국\s*유통', re.I)
 DEXMATE_ACHIEVED_KPI = re.compile(
     r'(?:99[.]99\s*%).{0,45}(?:달성|실측|측정|achieved|measured)|'
     r'(?:달성|실측|측정|achieved|measured).{0,45}(?:99[.]99\s*%)', re.I
@@ -1402,6 +1402,10 @@ def _is_airan(text: str) -> bool:
 
 
 def topic_group(text: str) -> str | None:
+    if _is_catl_intilion_sodium(text):
+        return 'catl_intilion_sodium'
+    if _is_dexmate_lg(text):
+        return 'dexmate_lg_commercial'
     if _is_robros_pilot(text):
         return ROBROS_PILOT_GROUP
     if _is_robot_posttrain_compute(text):
@@ -1452,6 +1456,21 @@ def score(item: dict) -> int:
         return 0
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
     group = topic_group(text)
+    if group == 'catl_intilion_sodium':
+        return {
+            'sodium_3gwh_development_framework': 54,
+            'official_binding_order': 70,
+            'official_site_commissioned': 78,
+            'official_reversal': 75,
+            'background': 0,
+        }.get(_catl_intilion_stage(text,item.get('source') or ''),0)
+    if group == 'dexmate_lg_commercial':
+        return {
+            'ceo_reported_use_distribution': 48,
+            'official_paid_contract': 75,
+            'official_measured_reliability': 76,
+            'known_investment_and_poc_baseline': 0,
+        }.get(_dexmate_lg_stage(text,item.get('source') or ''),0)
     if group == ROBROS_PILOT_GROUP:
         return {
             'approved_pilot_report': 55,
@@ -1532,6 +1551,20 @@ def score(item: dict) -> int:
 
 
 def category(text: str, group: str) -> str:
+    if group == 'catl_intilion_sodium':
+        if CATL_INTILION_REVERSE.search(text):
+            return 'CATL–INTILION · 나트륨 ESS 협약 후퇴'
+        if CATL_INTILION_DEPLOY.search(text):
+            return 'CATL–INTILION · 첫 현장 실제 가동'
+        if CATL_INTILION_BINDING.search(text) and not CATL_INTILION_NOBINDING.search(text):
+            return 'CATL–INTILION · 실제 구속력 있는 구매계약'
+        return 'CATL–INTILION · 유럽 5년 최대 3GWh 공동개발 목표'
+    if group == 'dexmate_lg_commercial':
+        if DEXMATE_PAID.search(text) and not re.search(r'유료\s*계약.{0,20}(?:없음|미공개|아님)|not\s+signed',text,re.I):
+            return 'Dexmate–LG CNS · 공식 유료 공급계약'
+        if DEXMATE_ACHIEVED_KPI.search(text) and not DEXMATE_KPI_REQUIRED.search(text):
+            return 'Dexmate–LG CNS · 실제 작업성공률 실측'
+        return 'Dexmate–LG CNS · 사용·유통 CEO 현장발언'
     if group == ROBROS_PILOT_GROUP:
         if '정정: Telegram 213·214' in text:
             return '로브로스 실증특례 · Telegram 오탐 정정'
@@ -1631,6 +1664,62 @@ def category(text: str, group: str) -> str:
 
 
 def meaning(cat: str) -> str:
+    if cat == 'CATL–INTILION · 유럽 5년 최대 3GWh 공동개발 목표':
+        return (
+            'INTILION CEO 10/09 공개 발언과 pv magazine 10/13 기사 대조: '
+            'CATL와 독일·오스트리아·스위스에서 향후 5년간 '
+            '최대 3GWh 나트륨이온 ESS를 공동 개발한다는 협약입니다. '
+            '3GWh=3,000MWh=300만kWh이나 확정 구매량·납품량·매출은 아닙니다. '
+            '기존 2025년 최대 10GWh 계약 범위와 포함관계가 불명확해 합계 '
+            '13GWh로 집계하지 않습니다. 실제 단가 미공개로 사업비 미산정. '
+            '가정상 kWh당 1만원 가격 차이는 전체 목표 용량에 300억원 민감도입니다. '
+            '셀·전력변환장치·현장 시공과 차후 시스템 관제·장기 유지보수 계약을 '
+            '나누되 이번 협약의 서비스 매출·기간은 아직 미정입니다. '
+            '프로젝트 실명·부지·구매계약→설치·시험·전원인가→실제 출하로 '
+            '매출 경로를 추적합니다.'
+        )
+    if cat == 'CATL–INTILION · 실제 구속력 있는 구매계약':
+        return (
+            '공동개발 목표에서 지정 프로젝트의 실제 구매·공급 의무로 '
+            '전환한 회사 공식 단계입니다. 계약규격·용량 GWh·가격·'
+            '기한·철회조건·선급금·검수·설치·매출인식을 확인하고 '
+            '2025년 10GWh 및 2026년 3GWh 목표와 중복 합산하지 않습니다.'
+        )
+    if cat == 'CATL–INTILION · 첫 현장 실제 가동':
+        return (
+            '공동개발 협약과 달리 유럽 현장에서 실제 전원 인가·준공을 '
+            '확인한 단계입니다. 설치 MW/MWh·프로젝트·인수시험·'
+            '가동률·운영·유지보수 매출 계약을 분리합니다.'
+        )
+    if cat == 'CATL–INTILION · 나트륨 ESS 협약 후퇴':
+        return '공식 협약 취소·목표 축소·프로젝트 철회가 확인된 역방향 사건입니다. 선지출·대체수요·납품시점을 점검합니다.'
+    if cat == 'Dexmate–LG CNS · 사용·유통 CEO 현장발언':
+        return (
+            '2026년 10월 13일 뉴욕 Dexmate CEO 타오 첸의 이데일리 현장 인터뷰: '
+            'LG가 자사 로봇을 사용하고 한국에서 유통도 돕는다고 직접 발언했습니다. '
+            'LG CNS의 3월 전략투자·물류 및 제조 현장 개념검증은 '
+            '기존 공식 확인 사실이며, 새 발언은 실사용·유통 단계의 '
+            '구체화입니다. 독점 유상 유통계약·판매 대수·LG CNS 로봇 매출은 '
+            '확정되지 않았습니다. CEO가 밝힌 세계 수백 대 공급은 '
+            '자기보고로, 실제 고객별 판매·사용·실증을 구분합니다. '
+            '99.99%는 산업현장에서 필요한 성공률 목표이지 '
+            '달성·측정된 결과가 아닙니다. '
+            'RoboStrategy 투자자가 말한 특화 작업 2~3년·범용 약 5년은 '
+            '회사 상용화 확정 일정이 아니라 전망입니다.'
+        )
+    if cat == 'Dexmate–LG CNS · 공식 유료 공급계약':
+        return (
+            '로봇의 현장 사용·전략투자에서 고객 실명 유상 구매·배치 '
+            '계약으로 전환한 단계입니다. LG CNS 직접 매출인지 '
+            'Dexmate의 로봇 출하 매출인지, 대수·평균판매단가·검수·'
+            '고객 설치·장기 유지보수 계약을 별도 확인합니다.'
+        )
+    if cat == 'Dexmate–LG CNS · 실제 작업성공률 실측':
+        return (
+            '산업현장 특정 작업에서 로봇 작업 성공률·사람 개입률·'
+            '연속 실패·사이클타임을 실제 측정한 공식 자료의 단계입니다. '
+            '필요한 99.99% 신뢰성 목표와 실측 달성은 다른 것입니다.'
+        )
     if cat == '로브로스 실증특례 · Telegram 오탐 정정':
         return (
             '10/13 Telegram 213번 1번 로보티즈 주가 4.86% 조정과 '
@@ -1884,6 +1973,32 @@ def meaning(cat: str) -> str:
 
 
 def risk(cat: str) -> str:
+    if cat.startswith('CATL–INTILION · '):
+        return (
+            '주요 실패경로는 5년 개발 목표가 특정 프로젝트의 인허가·'
+            '자금조달·전력접속·안전 검증을 통과하지 못해 확정 발주가 '
+            '지연되는 것입니다. 초기 위험구간 6~24개월 동안 첫 구체 '
+            '프로젝트 실명, 선급금, 보증보험·화재보험, '
+            '열폭주 전파·가스 배기·방폭·냉각·소방 인증과 '
+            '실제 전원 인가 시점을 확인합니다. '
+            'CATL 공식 제품은 25℃ 1만5천회·45℃ 1만회 초과인데 '
+            'INTILION CEO의 고온 1만5천회 이상 설명과 '
+            '동일 시험조건인지 미확인입니다. '
+            '조건이 다른 사이클수명을 확정 수명·보증기간으로 환산하지 않습니다.'
+        )
+    if cat.startswith('Dexmate–LG CNS · '):
+        return (
+            '가장 현실적인 실패경로는 현장 도입 시연에서 '
+            '99.99% 수준의 작업 반복 신뢰성·보험·안전·'
+            '정비비가 확보되지 않아 유료 확대가 지연되는 경우입니다. '
+            '성공률 99.99%는 평균 1만회당 오류 약 1회에 해당하는 '
+            '요구수준이지 Dexmate의 실측 결과가 아닙니다. '
+            '향후 6~12개월 동안 고객별 유상 설치 수량, '
+            '사람 개입률, 작업성공률, 가동률, 보증충당금·'
+            '원격지원 비용, 반복 발주 여부를 확인합니다. '
+            'RoboStrategy 자산의 Standard Bots 비중 31.3%와 '
+            'Dexmate 비중 9.1%는 투자자 전망의 이해관계 위험입니다.'
+        )
     if cat == '로브로스 실증특례 · Telegram 오탐 정정':
         return (
             '20대 계획은 확정 납품이 아닙니다. '
@@ -1996,6 +2111,23 @@ def risk(cat: str) -> str:
 
 
 def verification(item: dict, group: str, text: str) -> str:
+    if group == 'catl_intilion_sodium':
+        stage = _catl_intilion_stage(text,item.get('source') or '')
+        if stage == 'sodium_3gwh_development_framework':
+            return (
+                'INTILION CEO 10/09 직접 LinkedIn 게시글·pv magazine 10/13 '
+                '교차확인 · 3GWh 공동개발 목표, 확정 구매·수주·납품 아님'
+            )
+        return 'CATL·INTILION 1차자료 단계 · 구체 계약·실제 설치·매출 별도 확인'
+    if group == 'dexmate_lg_commercial':
+        stage = _dexmate_lg_stage(text,item.get('source') or '')
+        if stage == 'ceo_reported_use_distribution':
+            return (
+                'Dexmate CEO 타오 첸 10/13 현장 인터뷰 발언 · '
+                'LG CNS 3월 공식 전략투자·개념검증 교차확인 · '
+                '유상판매 대수·독점 계약·99.99% 달성 미확인'
+            )
+        return 'LG CNS·Dexmate 직접 공시 기준 · 유상매출·정량 현장 KPI 별도 검증'
     if group == ROBROS_PILOT_GROUP:
         if item.get('robros_false_alert_correction'):
             return (
@@ -2098,6 +2230,14 @@ def verification(item: dict, group: str, text: str) -> str:
 
 
 def clean_title(title: str, source: str) -> str:
+    if _is_catl_intilion_sodium(title + ' ' + source):
+        if CATL_INTILION_BINDING.search(title) and source in CATL_INTILION_OFFICIAL:
+            return 'CATL–INTILION 나트륨 ESS 정식 구매계약 공식 확인'
+        return 'CATL–INTILION, 유럽 나트륨 ESS 5년 최대 3GWh 공동개발 목표'
+    if _is_dexmate_lg(title + ' ' + source):
+        if source in DEXMATE_PRIMARY and DEXMATE_PAID.search(title):
+            return 'Dexmate–LG CNS 로봇 실제 유상 고객계약 확인'
+        return 'Dexmate CEO: LG가 로봇 사용·한국 유통 지원…유상계약 별도'
     if title.startswith('정정: Telegram 213·214'):
         return '정정: 10/13 오탐 3건 제외·로브로스 승인 유지'
     if _is_robros_pilot(title + ' ' + source):
@@ -2183,6 +2323,10 @@ def clean_title(title: str, source: str) -> str:
 
 
 def tag_for(group: str) -> str:
+    if group == 'catl_intilion_sodium':
+        return 'CATL–INTILION 나트륨 ESS'
+    if group == 'dexmate_lg_commercial':
+        return 'Dexmate–LG CNS 로봇 사업'
     if group == ROBROS_PILOT_GROUP:
         return '로브로스 제조실증 규제특례'
     if group == 'robot_posttrain_compute':
@@ -2210,6 +2354,20 @@ def tag_for(group: str) -> str:
 
 def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    if topic_group(text) == 'catl_intilion_sodium':
+        stage = _catl_intilion_stage(text,item.get('source') or '')
+        if stage == 'sodium_3gwh_development_framework':
+            return hashlib.sha256(b'catl-intilion|sodium|dach|20261009|3gwh-target|five-years').hexdigest()
+        site = '-'.join(sorted(set(re.findall(
+            r'(?:Jesow|Kappel|Mainz|Wiesbaden|(?:site|project)\s+[A-Z][a-z]+)',
+            text,re.I
+        )))) or 'undisclosed-site'
+        return hashlib.sha256(f'catl-intilion|{stage}|{site}|2026'.encode()).hexdigest()
+    if topic_group(text) == 'dexmate_lg_commercial':
+        stage = _dexmate_lg_stage(text,item.get('source') or '')
+        if stage == 'ceo_reported_use_distribution':
+            return hashlib.sha256(b'dexmate-lgcns|tao-chen|20261013|lg-use-and-distribution').hexdigest()
+        return hashlib.sha256(f'dexmate-lgcns|{stage}|2026'.encode()).hexdigest()
     if topic_group(text) == ROBROS_PILOT_GROUP:
         if item.get('robros_false_alert_correction'):
             return hashlib.sha256(
@@ -2353,6 +2511,10 @@ def key(item: dict) -> str:
 def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -> list[dict]:
     chosen = _orig_select_diverse(items, seen, force, limit)
     candidates = items if force else [x for x in items if x.get('key') not in seen]
+    for target_group in ('catl_intilion_sodium','dexmate_lg_commercial'):
+        event = next((x for x in candidates if x.get('group')==target_group),None)
+        if event and not any(x.get('key')==event.get('key') for x in chosen):
+            chosen = ([event,*chosen] if len(chosen)<limit else [event,*chosen[:-1]])
     industrial_pilot=next((x for x in candidates if x.get('group')==ROBROS_PILOT_GROUP),None)
     if industrial_pilot and not any(x.get('key')==industrial_pilot.get('key') for x in chosen):
         chosen=([industrial_pilot,*chosen] if len(chosen)<limit else [industrial_pilot,*chosen[:-1]])
