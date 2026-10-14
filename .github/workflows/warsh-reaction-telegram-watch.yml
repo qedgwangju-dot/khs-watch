@@ -10,6 +10,14 @@ on:
     - cron: '5,20,35,50 18 * * 3'
     - cron: '5,20,35,50 19 * * 3'
     - cron: '15,45 20 * * 3'
+  # GitHub cron은 고부하 때 지연되거나 일부 실행이 누락될 수 있다.
+  # 자주 실행되는 독립 워크플로 완료를 보조 시계로 사용하되 cadence job이
+  # 직전 Warsh monitor 성공 시각을 확인해 55분 이내면 중복 실행을 생략한다.
+  workflow_run:
+    workflows:
+      - "AI Security Web Watch"
+    types: [completed]
+    branches: [main]
   workflow_dispatch:
     inputs:
       force_notify:
@@ -47,6 +55,8 @@ on:
       - 'scripts/warsh_cme_fedwatch_api.py'
       - 'scripts/warsh_policy_source_guard.py'
       - 'scripts/warsh_policy_state_sync.py'
+      - 'scripts/warsh_workflow_cadence.py'
+      - 'tests/test_warsh_workflow_cadence.py'
       - 'scripts/test_warsh_policy_safety.py'
       - 'scripts/warsh_balance_sheet_watch.py'
       - 'scripts/warsh_balance_sheet_watch_v2.py'
@@ -68,6 +78,7 @@ on:
 
 permissions:
   contents: write
+  actions: read
 
 concurrency:
   group: warsh-reaction-telegram-watch
@@ -76,7 +87,36 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  cadence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      run: ${{ steps.decide.outputs.run }}
+      lag_minutes: ${{ steps.decide.outputs.lag_minutes }}
+      reason: ${{ steps.decide.outputs.reason }}
+      last_success_run_id: ${{ steps.decide.outputs.last_success_run_id }}
+    steps:
+      - name: Checkout cadence guard
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+
+      - name: Regression-test cadence guard
+        run: |
+          python3 -m py_compile scripts/warsh_workflow_cadence.py
+          PYTHONPATH=scripts python3 -m unittest discover -s tests -p 'test_warsh_workflow_cadence.py' -v
+
+      - name: Decide fallback execution
+        id: decide
+        env:
+          GH_TOKEN: ${{ github.token }}
+          WARSH_FALLBACK_GAP_MINUTES: '55'
+        run: python3 scripts/warsh_workflow_cadence.py
+
   monitor:
+    needs: cadence
+    if: ${{ needs.cadence.outputs.run == 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
