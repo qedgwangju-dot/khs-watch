@@ -5,9 +5,9 @@
   "last_collection": {
     "direct_official_items": 27,
     "errors": [],
-    "material_items": 12,
+    "material_items": 13,
     "new_material_items": 0,
-    "raw_items": 168
+    "raw_items": 169
   },
   "openai_insider_case_stages": {
     "initial_oct13_charge": {
@@ -214,6 +214,16 @@
       "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOajFqRHlNMUttN0pzY014QnFwZTlIeDhnaUpuZU9XMjFicHNVUXpOTUFZWUM2Uk94NFdsbVVuNjNWMzNNM29mN3JITnNZY1cydThONGJnZk55dnh0VUNtSHlDSFhGVlpGSFZUVV9iSmpxVUVGejVwUWhVOGstc2FDSWtSSzM2RkJxWkFxS3pqemVKMlFRZDR0SGNERTM1TW1DSmZZcWFXZzNELUZoeDNsc3ZnVUjSAbQBQVVfeXFMTmoxakR5TTFLbTdKc2NNeEJxcGU5SHg4Z2lKbmVPVzIxYnBzVVF6Tk1BWVlDNlJPeDRXbG1VbjYzVjMzTTNvZjdySE5zWWNXMnU4TjRiZ2ZOeXZ4dFVDbUh5Q0hYRlZaRkhWVFVfYkpqcVVFRno1cFFoVThrLXNhQ0lrUkszNkZCcVpBcUt6anplSjJRUWQ0dEhjREUzNU1tQ0pmWXFhV2czRC1GaHgzbHN2Z1VI?oc=5",
       "vendor": "OpenAI"
     },
+    "77a79bf6a5991eac43f47ed6": {
+      "category": "AI 연구기관 내부자 도청·접근통제 사건",
+      "first_seen_at": "2026-10-14T01:51:11.957656+00:00",
+      "published_at": "2026-10-14T01:41:00+00:00",
+      "severity": 2,
+      "source": "Chosunbiz",
+      "title": "FBI arrests OpenAI engineer for planting recording devices, finds no data leak - CHOSUNBIZ - Chosunbiz",
+      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNM213Yi1BUGd0ZTVpdlBET1dqQ0NFdXM0OS11MklNSzNVdmlSUlFCeFR3QUFPSTlseldzSWhOZWRXX3ZkMzZMNjlOY0JWUXEwWFJSOF9KRUg2YklZUzBjQVdqUUtnQ014Z1NGQTFkdUxoX0NRVFBPWVFLTHl4ZkoyS3ZOYnQxeFV40gGcAUFVX3lxTE9qMGtBVGcwWDB1RUIta0ZyQ1Uwa1lFRWJBSXZXU3JxU2x3dkJoUUVReGUxMjAxdGJpTVZYMkdBaVRLNlNyalFacF9rTEFzV3BhZkpQODFORGZkVkllQzA2U3otVTlLa2xWYVRRLWJNbkdWNXZRdWp4eHhFZmZnYW5lVTVFbzlSNVljSmF2VG1jY3doV1d4ZHhuMUlJYQ?oc=5",
+      "vendor": "OpenAI"
+    },
     "79ec23f71c9b0e66facf254c": {
       "category": "모델 비의도적 외부접근·사고 공개",
       "first_seen_at": "2026-10-10T04:23:10.169394+00:00",
@@ -405,5 +415,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-10-14T10:50:01+09:00"
+  "updated_at_kst": "2026-10-14T10:51:11+09:00"
 }
