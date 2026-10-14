@@ -267,6 +267,94 @@ def _extract_numbers(text):
     return out[:8]
 
 
+
+# The 2026-06-30 Samsung LNG/PPA request, the 2026-07-02 government
+# renewable/ESS/LNG mix clarification and the 2029 target are BASELINES.
+# News about these plans is evidence, not a new contract, permit or plant.
+POWER_FAMILIES = {
+    "lng_chp": r"(?:LNG|액화천연가스|열병합)",
+    "ess": r"(?:ESS|에너지저장장치)",
+    "ppa": r"(?:PPA|전력구매계약)",
+    "grid": r"(?:송전망|송전선|변전소|전원\s*인가|전력망|계통\s*접속)",
+    "renewable": r"(?:재생에너지|태양광|풍력)",
+    "mix": r"(?:전력\s*공급|발전력|전력\s*인프라)",
+}
+POWER_PHASES = (
+    ("cancelled", 4, r"(?:허가\s*반려|허가\s*취소|접속\s*불허|공사\s*중단|사업\s*철회|사업\s*취소|사업\s*무산)"),
+    ("commercial", 5, r"(?:상업\s*운전\s*(?:개시|시작)|전원\s*인가\s*완료|공급\s*개시|가동\s*시작|준공\s*완료)"),
+    ("construction", 4, r"(?:착공(?:식|했다|돌입|완료)?|공사\s*(?:착수|시작)|첫\s*삽)"),
+    ("authorized", 3, r"(?:발전사업\s*(?:허가|승인)|환경영향평가\s*(?:승인|통과)|계통\s*접속\s*(?:승인|확정)|인허가\s*(?:완료|최종\s*승인))"),
+    ("contracted", 2, r"(?:사업자\s*(?:최종\s*)?선정|우선협상대상자\s*선정|낙찰\s*(?:확정|결정|완료)?|(?:EPC|발전|전력|ESS|에너지저장장치|PPA|전력구매)\s*(?:공급\s*)?계약\s*체결|전력구매계약\s*체결|공급협약\s*체결)"),
+    ("procured", 2, r"(?:입찰\s*공고|발주\s*공고|조달\s*공고|설비\s*발주)"),
+    ("schedule_revision", 2, r"(?:공급\s*일정\s*(?:변경|연기)\s*확정|완공\s*일정\s*(?:변경|연기)\s*확정|공급\s*시점\s*(?:변경|단축)\s*확정|공기\s*단축\s*확정)"),
+)
+POWER_UNCERTAIN = re.compile(
+    r"(?:예정|계획|검토|추진\s*요청|요청|건의|제안|방침|가능성|촉구|할\s*수|목표|전망)",
+    re.I,
+)
+POWER_PLACE_WORDS = ("호남 반도체", "호남권 반도체", "서남권 반도체", "광주 군공항", "광주공항")
+
+
+def _power_source(item):
+    raw = _norm(item.get("source"))
+    raw = re.sub(r"^Google 뉴스 경유\s*·\s*", "", raw, flags=re.I)
+    return re.sub(r"\((?:네이버|다음)\)$", "", raw).strip().lower()
+
+
+def _power_event(item):
+    """Return a material project power milestone, or a baseline-only marker.
+
+    Evidence is extracted from the headline. Background paragraphs, e.g. an
+    older ESS auction, are not proof of a new semiconductor power contract.
+    """
+    title = _norm(item.get("title") or item.get("headline"))
+    lead = (title + " " + _norm(item.get("description"))[:280]).lower()
+    heading = title.lower()
+    if not title or "반도체" not in lead:
+        return None
+    if not any(marker in lead for marker in POWER_PLACE_WORDS):
+        return None
+    if _executive_visit_signal(item):
+        return None
+    if "용인" in heading and not any(marker in heading for marker in POWER_PLACE_WORDS):
+        return None
+    if not any(re.search(rx, lead, re.I) for rx in POWER_FAMILIES.values()):
+        return None
+
+    # Product/facility named in the title takes precedence over the
+    # background list of possible generation sources.
+    kind = next(
+        (name for name, rx in POWER_FAMILIES.items() if re.search(rx, heading, re.I)),
+        None,
+    ) or next(
+        (name for name, rx in POWER_FAMILIES.items() if re.search(rx, lead, re.I)),
+        "mix",
+    )
+    for phase, level, rx in POWER_PHASES:
+        match = re.search(rx, heading, re.I)
+        if not match:
+            continue
+        # "발전사업 허가 예정" and "ESS 사업자 선정 검토" are NOT
+        # licensed or awarded projects, even if an earlier plant was built.
+        nearby = heading[max(0, match.start()-10):min(len(heading), match.end()+18)]
+        if POWER_UNCERTAIN.search(nearby):
+            continue
+        return {
+            "family": "honam_power_" + kind + "_" + phase,
+            "phase": phase,
+            "level": level,
+            "kind": kind,
+        }
+    return {"family": "honam_power_" + kind + "_baseline", "phase": "baseline", "level": 1, "kind": kind}
+
+
+def _power_verification(items):
+    if any(i.get("_kind") == "official" or i.get("source_status") == "공식자료" for i in items):
+        return 3
+    sources = {_power_source(i) for i in items if _power_source(i)}
+    return 2 if len(sources) >= 2 else 1
+
+
 def _event_key(item):
     text = _item_text(item).lower()
     stages = sorted(item.get("stages") or ([item.get("stage")] if item.get("stage") else []))
@@ -280,6 +368,8 @@ def _event_key(item):
 
 
 def _is_material_event(item):
+    if _power_event(item):
+        return True
     if _executive_visit_signal(item):
         return True
     text = _item_text(item)
@@ -347,6 +437,9 @@ def _is_proposal_only(item):
 
 
 def _action_level(item):
+    power = _power_event(item)
+    if power:
+        return power['level']
     executive_signal = _executive_visit_signal(item)
     if executive_signal:
         return executive_signal
@@ -364,6 +457,9 @@ def _action_level(item):
 
 
 def _event_family(item):
+    power = _power_event(item)
+    if power:
+        return power['family']
     # 보도 매체·기사 URL이 아니라 인물·현장방문일을 사건 식별자로 사용한다.
     family = _norm(item.get("event_family"))
     if family.startswith("honam_") and "_site_visit_" in family and _executive_visit_signal(item):
@@ -512,6 +608,16 @@ def _merge_group(items):
             "기존 임원진의 부지 검토 이후 경영진 방문으로 사업 검토가 진행 중. "
             "군공항 부지·전력·용수·인허가 실제 협의 결과는 후속 확인"
         )
+
+    power_family = str(first.get("event_family") or "")
+    if power_family.startswith("honam_power_"):
+        first["stages"] = ["5_기반시설_생활SOC"]
+        first["stage_labels"] = ["⑤ 전력·용수·교통·생활 인프라"]
+        first["reason"] = (
+            "발전설비·ESS·전력구매계약의 실제 사업 단계만 알림. "
+            "기존 재생에너지·LNG 병행 구상과 2029년 팹 완공 목표는 확정 공급이나 전원 인가가 아님"
+        )
+        first["impact"] = "발전·전력공급 실행 단계 확인(전원 인가 여부는 별도)"
     summary = _summarize_event(ordered)
     if summary:
         first["title"] = summary
@@ -547,6 +653,28 @@ def main():
         if _is_material_event(obj) and not _is_known_baseline_only(obj) and not _is_proposal_only(obj):
             candidates.append(obj)
 
+
+    # Keep first credible report for later independent corroboration.
+    # The upstream watcher marks article URLs as seen, so a single press item
+    # would otherwise disappear before a second publisher reports the event.
+    from zoneinfo import ZoneInfo
+    now_utc = dt.datetime.now(dt.timezone.utc)
+    power_cache = {}
+    for family, record in (state.get("power_pending_evidence") or {}).items():
+        if not family.startswith("honam_power_"):
+            continue
+        try:
+            created = dt.datetime.fromisoformat(record.get("updated_at_utc") or "")
+            if created.tzinfo is None:
+                created = created.replace(tzinfo=dt.timezone.utc)
+            if now_utc - created > dt.timedelta(days=10):
+                continue
+        except (ValueError, TypeError):
+            continue
+        if not isinstance(record.get("items"), list):
+            continue
+        power_cache[family] = record
+
     groups = {}
     all_event_keys = []
     unresolved_visits = 0
@@ -558,19 +686,60 @@ def main():
         if family.endswith("_site_visit_unknown"):
             unresolved_visits += 1
             continue
+        power = _power_event(item)
+        if power:
+            if power["phase"] == "baseline":
+                continue
+            item["_power_kind"] = power["kind"]
+            item["_power_phase"] = power["phase"]
         key = hashlib.sha256(("family|" + family).encode("utf-8")).hexdigest()[:28] if family else _event_key(item)
         item["event_key"] = key
         item["event_family"] = family
         all_event_keys.append(key)
         groups.setdefault(key, []).append(item)
 
+
+    for family, record in power_cache.items():
+        key = hashlib.sha256(("family|" + family).encode("utf-8")).hexdigest()[:28]
+        if key in seen_event_keys:
+            power_cache.pop(family, None)
+            continue
+        for item in record["items"]:
+            if not isinstance(item, dict):
+                continue
+            obj = dict(item)
+            if _power_event(obj) and _power_event(obj)["family"] == family:
+                obj["event_family"] = family
+                obj["event_key"] = key
+                groups.setdefault(key, []).append(obj)
+
     new_groups = {}
     current_levels = dict(seen_event_levels)
     current_action_levels = dict(seen_action_levels)
     for key, items in groups.items():
-        level = _verification_level(items)
-        action_level = max((_action_level(item) for item in items), default=0)
         family = next((str(item.get("event_family") or "") for item in items if item.get("event_family")), "")
+        if family.startswith("honam_power_"):
+            # Never call one newspaper a confirmed LNG plant or signed PPA.
+            evidence = {}
+            for it in items:
+                src = _power_source(it)
+                if not src:
+                    continue
+                evidence[(src, str(it.get("url") or ""))] = it
+            items = list(evidence.values())
+            groups[key] = items
+            level = _power_verification(items)
+            if level < 2:
+                power_cache[family] = {
+                    "updated_at_utc": now_utc.isoformat(timespec="seconds"),
+                    "items": [dict(it) for it in items[:8]],
+                }
+                continue
+            power_cache.pop(family, None)
+            all_event_keys.append(key)
+        else:
+            level = _verification_level(items)
+        action_level = max((_action_level(item) for item in items), default=0)
         baseline_action = int(KNOWN_FAMILY_ACTION_LEVELS.get(family, 0))
         previous_level = int(seen_event_levels.get(key, 0))
         previous_action = max(int(seen_action_levels.get(key, 0)), baseline_action)
@@ -608,6 +777,7 @@ def main():
     pending["seen_event_keys"] = list(dict.fromkeys(all_event_keys + list(seen_event_keys)))[:3000]
     pending["event_status_levels"] = current_levels
     pending["event_action_levels"] = current_action_levels
+    pending["power_pending_evidence"] = power_cache
     pending["unresolved_visit_count_last_check"] = unresolved_visits
     pending["alert_basis"] = "topic_event_official_state_change"
     pending["article_role"] = "evidence_and_crosscheck_only"
@@ -615,6 +785,8 @@ def main():
     PENDING_PATH.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     if unresolved_visits:
         print(f"event_filter: quarantined_undated_visit={unresolved_visits} reason=missing_event_date")
+    if power_cache:
+        print(f"event_filter: pending_power_evidence={len(power_cache)} waiting_for_independent_source")
 
     if not final_news and not final_official:
         ALERT_PATH.unlink(missing_ok=True)

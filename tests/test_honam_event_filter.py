@@ -18,6 +18,7 @@ from scripts.honam_event_filter import (
     _is_known_baseline_only,
     _is_proposal_only,
     _merge_group,
+    _power_event,
     main as event_filter_main,
 )
 from scripts.honam_semiconductor_watch import canonical_headline_key, canonical_url_key, verified_intake_events
@@ -534,6 +535,117 @@ class HonamEventFilterRegressionTest(unittest.TestCase):
         item["title"] = "최태원 SK 회장, 지난 9일 광주 군공항 부지 방문 완료"
         self.assertEqual(_event_family(item), "honam_sk_chair_site_visit_20261009")
         self.assertEqual(_action_level(item), 3)
+
+
+
+    def _power_item(self, title, description="", source="연합뉴스", official=False):
+        return {
+            "title": title,
+            "description": description,
+            "source": source,
+            "url": "https://example.com/" + hashlib.sha256((title + source).encode()).hexdigest()[:16],
+            "source_status": "공식자료" if official else "보도 단계",
+            "stages": ["5_기반시설_생활SOC", "6_산단투자_기업일정"],
+            "stage_labels": ["⑤ 전력·용수·교통·생활 인프라", "⑥ 산단·기업투자·팹 일정"],
+            "published": "Wed, 14 Oct 2026 04:00:00 GMT",
+        }
+
+    def test_power_government_mix_and_samsung_lng_request_are_existing_baselines(self):
+        cases = (
+            "정부, 호남 반도체 2029년 첫 팹 완공 목표…재생에너지·ESS·LNG 열병합 활용 방침",
+            "삼성전자, 호남 반도체 LNG 열병합발전 추진 정부에 요청",
+            "호남 반도체 ESS 보급 계획…원전·태양광·LNG 병행 예정",
+            "호남 반도체 PPA 적극 추진 건의…전력구매계약 검토",
+        )
+        for title in cases:
+            with self.subTest(title=title):
+                item = self._power_item(title)
+                meta = _power_event(item)
+                self.assertIsNotNone(meta)
+                self.assertEqual(meta["phase"], "baseline")
+                self.assertEqual(_event_family(item), meta["family"])
+
+    def test_power_yongin_plant_is_not_confirmed_honam_supply(self):
+        item = self._power_item(
+            "용인 LNG 열병합발전소 1050MW 착공 확정",
+            "용인의 사례는 호남 반도체 클러스터에도 비슷한 과제를 제기한다."
+        )
+        self.assertIsNone(_power_event(item))
+
+    def test_power_project_lng_approval_is_real_phase(self):
+        item = self._power_item("호남 반도체 LNG 열병합발전 사업자 최종 선정")
+        self.assertEqual(_power_event(item)["family"], "honam_power_lng_chp_contracted")
+        self.assertEqual(_action_level(item), 2)
+        plan = self._power_item("호남 반도체 LNG 열병합발전 사업자 선정 예정")
+        self.assertEqual(_power_event(plan)["phase"], "baseline")
+
+    def test_power_actual_ess_and_grid_are_distinct_milestones(self):
+        self.assertEqual(
+            _power_event(self._power_item("호남 반도체 ESS 발전사업 허가 승인"))["phase"],
+            "authorized",
+        )
+        self.assertEqual(
+            _power_event(self._power_item("호남 반도체 전력망 공사 착수"))["phase"],
+            "construction",
+        )
+        self.assertEqual(
+            _power_event(self._power_item("호남 반도체 전원 인가 완료"))["phase"],
+            "commercial",
+        )
+        self.assertEqual(
+            _power_event(self._power_item("호남 반도체 LNG 발전사업 허가 반려"))["phase"],
+            "cancelled",
+        )
+
+    def test_power_one_press_report_waits_for_independent_corroboration(self):
+        item = self._power_item("호남 반도체 LNG 열병합발전 사업자 최종 선정", source="뉴스1")
+        with tempfile.TemporaryDirectory() as td:
+            root = pathlib.Path(td)
+            alert, state, pending = (root / n for n in ("alert.json", "state.json", "pending.json"))
+            alert.write_text(json.dumps({"new_items": [item], "official_changes": []}, ensure_ascii=False), encoding="utf-8")
+            state.write_text(json.dumps({
+                "seen_event_keys": [], "event_status_levels": {}, "event_action_levels": {},
+            }), encoding="utf-8")
+            with patch("scripts.honam_event_filter.ALERT_PATH", alert), \
+                 patch("scripts.honam_event_filter.STATE_PATH", state), \
+                 patch("scripts.honam_event_filter.PENDING_PATH", pending):
+                event_filter_main()
+            self.assertFalse(alert.exists())
+            result = json.loads(pending.read_text(encoding="utf-8"))
+            family = "honam_power_lng_chp_contracted"
+            self.assertIn(family, result["power_pending_evidence"])
+            key = hashlib.sha256(("family|" + family).encode()).hexdigest()[:28]
+            self.assertNotIn(key, result["seen_event_keys"])
+            self.assertNotIn(key, result["event_action_levels"])
+
+            second = self._power_item(item["title"], source="연합뉴스")
+            alert.write_text(json.dumps({"new_items": [second], "official_changes": []}, ensure_ascii=False), encoding="utf-8")
+            state.write_text(json.dumps(result, ensure_ascii=False), encoding="utf-8")
+            with patch("scripts.honam_event_filter.ALERT_PATH", alert), \
+                 patch("scripts.honam_event_filter.STATE_PATH", state), \
+                 patch("scripts.honam_event_filter.PENDING_PATH", pending):
+                event_filter_main()
+            reported = json.loads(alert.read_text(encoding="utf-8"))
+            self.assertEqual(reported["new_count"], 1)
+            self.assertEqual(reported["new_items"][0]["stages"], ["5_기반시설_생활SOC"])
+            self.assertEqual(reported["new_items"][0]["verification_level"], 2)
+            self.assertEqual(len(reported["new_items"][0]["evidence_sources"]), 2)
+            result = json.loads(pending.read_text(encoding="utf-8"))
+            self.assertIn(key, result["seen_event_keys"])
+            self.assertNotIn(family, result["power_pending_evidence"])
+
+    def test_power_single_primary_document_can_confirm_contract(self):
+        item = self._power_item("호남 반도체 전력구매계약 체결", source="삼성전자", official=True)
+        with tempfile.TemporaryDirectory() as td:
+            root = pathlib.Path(td)
+            alert, state, pending = (root / n for n in ("alert.json", "state.json", "pending.json"))
+            alert.write_text(json.dumps({"new_items": [item], "official_changes": []}, ensure_ascii=False), encoding="utf-8")
+            state.write_text(json.dumps({"seen_event_keys": [], "event_status_levels": {}, "event_action_levels": {}}, ensure_ascii=False), encoding="utf-8")
+            with patch("scripts.honam_event_filter.ALERT_PATH", alert), \
+                 patch("scripts.honam_event_filter.STATE_PATH", state), \
+                 patch("scripts.honam_event_filter.PENDING_PATH", pending):
+                event_filter_main()
+            self.assertEqual(json.loads(alert.read_text(encoding="utf-8"))["new_count"], 1)
 
 
 
