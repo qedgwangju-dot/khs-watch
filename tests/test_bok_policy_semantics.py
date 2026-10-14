@@ -29,6 +29,22 @@ class PolicySemanticsTests(unittest.TestCase):
         self.assertFalse(flags["next_meeting_hawk"])
         self.assertLessEqual(event_score(flags), 1)
 
+    def test_background_hike_mention_is_not_a_direct_request(self):
+        flags = policy_flags("신현송 총재는 물가를 낮추겠다고 밝혔다. 이전의 추가 인상 기대가 언급됐다.")
+        self.assertFalse(flags["hike_needed"])
+
+    def test_reclassification_same_day_does_not_send_duplicate(self):
+        from bok_rate_signal_upgrade_v3 import is_new_policy_event
+        before = {"speaker": "신현송", "date": "2026-10-14", "flags": {"k_shaped_low_income": True}}
+        after = {"speaker": "신현송", "date": "2026-10-14", "flags": {"k_shaped_low_income": True, "ai_war_inflation": True}}
+        self.assertFalse(is_new_policy_event(after, before))
+        self.assertTrue(is_new_policy_event(
+            {"speaker": "신현송", "date": "2026-10-14", "flags": {"next_meeting_hawk": True}}, before
+        ))
+        self.assertTrue(is_new_policy_event(
+            {"speaker": "신현송", "date": "2026-10-15", "flags": {"ai_war_inflation": True}}, before
+        ))
+
 
 if __name__ == "__main__":
     unittest.main()
