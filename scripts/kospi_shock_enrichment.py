@@ -1273,7 +1273,8 @@ def build_kosdaq_enrichment(
         raise ValueError("코스닥 사건 구간 시각 역전")
     att=attribution if isinstance(attribution,dict) else {}
     errors=[]
-    spot=dict(att.get("spot") or {}) if att.get("available") else {}
+    spot_available = bool((att.get("channel_status") or {}).get("spot", {}).get("available", att.get("available")))
+    spot=dict(att.get("spot") or {}) if spot_available else {}
     neg=[(k,fnum(spot.get(k))) for k in ("외국인","기관","개인")]
     neg=[(k,v) for k,v in neg if v is not None and v<0]
     neg.sort(key=lambda x:x[1])
@@ -1369,8 +1370,9 @@ def build_kosdaq_enrichment(
         "event":{
             "market":"KOSDAQ","start_ts":start_ts,"low_ts":low_ts,
             "start_kst":fmt_clock(start_ts),"low_kst":fmt_clock(low_ts),
-            "spot_leader":att.get("leader"),
-            "attribution_available":bool(att.get("available")),
+            "spot_leader":att.get("leader") or (min(neg,key=lambda x:x[1])[0] if neg else None),
+            "attribution_available":spot_available,
+            "market_attribution":att,
         },
         "market_spot_deltas":spot,
         "direct_industry_by_actor":direct,

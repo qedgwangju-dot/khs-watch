@@ -7,6 +7,9 @@ on:
       - "scripts/test_kosdaq_surge_industries.py"
       - "scripts/probe_kosdaq_surge_industries.py"
       - "scripts/kospi_shock_episode_watch.py"
+      - "scripts/market_flow_channels.py"
+      - "scripts/test_market_flow_channels.py"
+      - "scripts/probe_market_flow_channels.py"
       - "scripts/kospi_unified_industry_collector.py"
       - ".github/workflows/kosdaq-surge-industries-ci.yml"
   push:
@@ -16,6 +19,9 @@ on:
       - "scripts/test_kosdaq_surge_industries.py"
       - "scripts/probe_kosdaq_surge_industries.py"
       - "scripts/kospi_shock_episode_watch.py"
+      - "scripts/market_flow_channels.py"
+      - "scripts/test_market_flow_channels.py"
+      - "scripts/probe_market_flow_channels.py"
       - "scripts/kospi_unified_industry_collector.py"
       - ".github/workflows/kosdaq-surge-industries-ci.yml"
 
@@ -37,6 +43,7 @@ jobs:
         run: |
           python -m py_compile scripts/kosdaq_surge_industries.py scripts/probe_kosdaq_surge_industries.py scripts/kospi_unified_industry_collector.py scripts/kospi_shock_episode_watch.py
           python scripts/test_kosdaq_surge_industries.py
+          python scripts/test_market_flow_channels.py
           python scripts/test_kospi_shock_episode.py
           python scripts/test_kospi_shock_enrichment.py
           python scripts/test_kospi_flow_attribution_strict.py
@@ -64,4 +71,27 @@ jobs:
           path: |
             out/kosdaq_native_industry_probe.jsonl
             out/kosdaq_native_industry_probe.json
+          retention-days: 7
+
+  market_flow_source:
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      LS_OPENAPI_APP_KEY: ${{ secrets.LS_OPENAPI_APP_KEY }}
+      LS_OPENAPI_APP_SECRET: ${{ secrets.LS_OPENAPI_APP_SECRET }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check --quiet requests exchange_calendars
+      - name: Read both market channels without events or delivery
+        run: python scripts/probe_market_flow_channels.py
+      - name: Preserve exact product and market response evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: market-flow-channels-${{ github.run_id }}
+          path: out/market_flow_channel_probe.json
           retention-days: 7
