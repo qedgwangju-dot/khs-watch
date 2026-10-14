@@ -394,6 +394,39 @@ jobs:
           assert is_known_replication_research_baseline(normalized_old)
           assert normalized_old["severity"] == 1
 
+          # Regression for the real 2026-10-14 failure: four reprints of one
+          # 2026-10-12 research paper must not become four fresh alerts.
+          reprints = [
+              ("Dark Reading", "Anthropic Finds Ingredients for Future AI Worms"),
+              ("BleepingComputer", "Anthropic warns self-replicating AI could spread to your smart devices"),
+              ("Reuters", "Anthropic warns AI models may soon self-replicate and could wreak havoc on the web"),
+              ("The Guardian", "AI in your oven? Anthropic warns models months away from self-replication on smart devices"),
+          ]
+          for i, (source, headline) in enumerate(reprints):
+              candidate = {
+                  "kind": "news",
+                  "title": headline,
+                  "description": "Laboratory study and forecasts; no observed wild infections.",
+                  "source": source,
+                  "url": "https://example.com/anthropic-reprint-" + str(i),
+                  "published_at": "2026-10-14T00:00:00+00:00",
+              }
+              normalized = normalize_item(candidate)
+              if not material(normalized) or replication_stage(normalized) != "research":
+                  raise RuntimeError(f"Known study coverage not recognized: {source}")
+              if not is_known_replication_research_baseline(normalized):
+                  raise RuntimeError(f"Known paper coverage would repeat as new alert: {source}")
+          print("ai_security_replication_four_outlet_reprints=PASS")
+
+          next_research = {
+              **paper,
+              "url": "https://www.anthropic.com/research/follow-up-iot-self-replication",
+              "title": "Anthropic Research: follow-up self-replicating IoT controlled trial",
+              "description": "Independent new controlled research on model replication",
+          }
+          if not material(next_research) or is_known_replication_research_baseline(next_research):
+              raise RuntimeError("Different future first-party study must remain discoverable")
+
           verified = {
               "kind": "official",
               "title": "CISA confirms AI worm detected in the wild",
