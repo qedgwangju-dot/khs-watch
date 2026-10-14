@@ -101,6 +101,8 @@ def gartner_title_ko(title: str) -> str:
         (r'30%.*laid off.*ai.*rehir|rehir.*30%.*2029', 'Gartner, AI 대체로 감원한 직원의 최대 30%가 2029년까지 재채용될 수 있다고 전망'),
         (r'skills strategy.*falling behind ai evolution', 'Gartner, AI 진화 속도를 따라가지 못하는 인력 기술 전략을 경고'),
         (r'workforce costs?', 'Gartner, AI 도입에 따른 숨은 인력 비용 증가 가능성을 경고'),
+        (r'role redesign|job redesign|job chaos', 'Gartner, AI 확산에 맞춘 직무 재설계 지연과 고용 구조 혼선을 경고'),
+        (r'38%.*chro.*cio|chro.*cio.*future of work', 'Gartner, 인사·정보기술 책임자의 AI 일자리 영향 인식 격차를 경고'),
         (r'job impacts?', 'Gartner, AI가 일자리 구조에 미치는 영향 전망을 업데이트'),
         (r'labor market|employment', 'Gartner, AI와 고용·노동시장 구조 전망을 업데이트'),
         (r'workforce.*ai|ai.*workforce', 'Gartner, AI 도입에 따른 인력 구조 변화 전망을 업데이트'),
