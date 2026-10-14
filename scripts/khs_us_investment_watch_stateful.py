@@ -941,7 +941,7 @@ def _candidate_facts(row: dict, family: str) -> set[str]:
             taiwan_investment_nearby = any(term in low for term in [
                 "대만 투자", "대만 추가", "taiwan invest", "taiwan pledg",
                 "taiwan would invest", "taiwan will invest", "taiwan to invest",
-                "taiwan committed", "taiwan committing", "대만이",
+                "taiwan committed", "taiwan committing", "taiwan commits", "taiwan commit", "대만이",
             ])
             if share_thirty and taiwan_investment_nearby and (
                 re.search(r"(?<!\d)44\s*억\s*(?:달러|불)", low)
