@@ -307,6 +307,9 @@ jobs:
                   if rec.get("stage")!="expand":
                       key=(str(rec.get("event_start_ts")),str(rec.get("stage")),
                            str(rec.get("market") or "KOSPI"),str(rec.get("actor") or ""))
+                      if rec.get("stage")=="kosdaq_shock_expand":
+                          assert rec.get("event_low_ts") is not None, "KOSDAQ expansion low timestamp missing"
+                          key+=(str(rec["event_low_ts"]),)
                       assert key not in stages, f"duplicate episode stage {key}"
                       stages.add(key)
           print(f"kospi_production_delivery_integrity_valid=true acknowledged_messages={len(ids)}")
@@ -455,6 +458,9 @@ jobs:
                   if rec.get("stage")!="expand":
                       key=(str(rec.get("event_start_ts")),str(rec.get("stage")),
                            str(rec.get("market") or "KOSPI"),str(rec.get("actor") or ""))
+                      if rec.get("stage")=="kosdaq_shock_expand":
+                          assert rec.get("event_low_ts") is not None, "KOSDAQ expansion low timestamp missing"
+                          key+=(str(rec["event_low_ts"]),)
                       assert key not in stages, f"duplicate episode stage {key}"
                       stages.add(key)
           print(f"kospi_production_delivery_integrity_valid=true acknowledged_messages={len(ids)}")
