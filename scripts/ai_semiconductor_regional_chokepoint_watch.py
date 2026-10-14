@@ -682,45 +682,78 @@ def _semi_300mm_material_changes(old: dict, new: dict) -> list[str]:
 
 
 def _semi_300mm_fetch() -> tuple[dict | None, list[str]]:
-    fetched, errors = {}, []
+    """Discover new issuer releases; never promote non-SEMI or mixed-vintage data."""
+    errors = []
+    release_urls = []
     try:
-        fetched["보도자료"] = _fetch(SEMI_300MM_PRESS).decode("utf-8", errors="replace")
-        fetched["원천"] = SEMI_300MM_PRESS
+        index_html = _fetch(SEMI_300MM_ISSUER_INDEX).decode("utf-8", errors="replace")
+        release_urls = _semi_300mm_release_urls(index_html)
     except Exception as exc:
-        errors.append("SEMI semi.org 원문 접근 제한: " + type(exc).__name__
-                      + " " + str(getattr(exc, "code", "")))
-        # SEMI itself published this exact release through PR Newswire.
-        # A news article that merely mentions SEMI is not an accepted substitute.
+        errors.append("SEMI PR Newswire 신규 발표 목록 접근 실패: " + type(exc).__name__)
+    if SEMI_300MM_DISTRIBUTION not in release_urls:
+        release_urls.append(SEMI_300MM_DISTRIBUTION)
+    selected = None
+    selected_url = ""
+    selected_html = ""
+    for url in release_urls[:5]:
         try:
-            raw = _fetch(SEMI_300MM_DISTRIBUTION).decode("utf-8", errors="replace")
-            plain = _clean(raw).lower()
-            if ("news provided by semi" in plain or "source semi" in plain) and (
-                "global 300mm front-end fab equipment spending" in plain
-            ):
-                fetched["보도자료"] = raw
-                fetched["원천"] = SEMI_300MM_DISTRIBUTION
-            else:
-                errors.append("SEMI 배포본의 발행주체 확인 실패: 알림 보류")
-        except Exception as fallback_exc:
-            errors.append("SEMI PR Newswire 배포본 열람 실패: " +
-                          type(fallback_exc).__name__ + " " +
-                          str(getattr(fallback_exc, "code", "")))
+            candidate = _fetch(url).decode("utf-8", errors="replace")
+        except Exception as exc:
+            errors.append("SEMI 후보 배포 원문 접근 실패: " + type(exc).__name__)
+            continue
+        plain = _clean(candidate).lower()
+        verified_issuer = "news provided by semi" in plain or "source semi" in plain
+        if not verified_issuer or "global 300mm front-end fab equipment spending" not in plain:
+            errors.append("SEMI 후보 발행자 또는 전공정 장비투자 분야 검증 실패")
+            continue
+        selected = _semi_300mm_parse(candidate)
+        if selected is None:
+            errors.append("SEMI 새로운 발행물 숫자 구조가 바뀜: 검토 전 알림 보류")
+            return None, errors
+        selected_url, selected_html = url, candidate
+        break
+
+    if selected is None:
+        # If the issuer feed is inaccessible, retain the already verified 3Q26
+        # release as a fallback. Never claim it is a newer observation.
+        for url in (SEMI_300MM_PRESS, SEMI_300MM_DISTRIBUTION):
+            try:
+                raw = _fetch(url).decode("utf-8", errors="replace")
+                if "prnewswire.com" in url:
+                    plain = _clean(raw).lower()
+                    if not ("news provided by semi" in plain or "source semi" in plain):
+                        errors.append("SEMI 배포본 원발행자 검증 실패")
+                        continue
+                selected = _semi_300mm_parse(raw)
+                if selected is not None:
+                    selected_url, selected_html = url, raw
+                    break
+            except Exception as exc:
+                errors.append("SEMI 직접·배포 원문 접근 제한: "
+                              + type(exc).__name__ + " " + str(getattr(exc, "code", "")))
+    if selected is None:
+        errors.append("SEMI 공식 최신 전망 미확인: 상태 업데이트와 알림 중단")
+        return None, errors
+
     try:
-        fetched["상세전망"] = _fetch(SEMI_300MM_OUTLOOK).decode("utf-8", errors="replace")
+        outlook_html = _fetch(SEMI_300MM_OUTLOOK).decode("utf-8", errors="replace")
+        combined = _semi_300mm_parse(selected_html, outlook_html)
+        if combined is not None:
+            selected = combined
+            selected["outlook_direct_checked"] = True
+        else:
+            errors.append("SEMI 발표와 상세전망 판본·숫자 차이: 상세 수치 제외")
     except Exception as exc:
-        errors.append("SEMI 분기 전망 상세 원문 접근 제한: " + type(exc).__name__
+        errors.append("SEMI 상세전망 직접열람 제한: " + type(exc).__name__
                       + " " + str(getattr(exc, "code", "")))
-    if "보도자료" not in fetched:
-        return None, errors
-    record = _semi_300mm_parse(fetched["보도자료"], fetched.get("상세전망", ""))
-    if record is None:
-        errors.append("SEMI 공식 배포 판본·수치 일치 미확인: 신규 알림 보류")
-        return None, errors
-    record["source_url"] = fetched["원천"]
-    if fetched["원천"] != SEMI_300MM_PRESS:
-        record["source_kind"] = "SEMI 직접 배포 PR Newswire 원문 · semi.org 직접 접근 제한"
-    record["outlook_direct_checked"] = "상세전망" in fetched
-    return record, errors
+    selected["source_url"] = selected_url
+    selected["source_kind"] = (
+        "SEMI 발행 PR Newswire 원문·실제 주문 확정액 아님"
+        if "prnewswire.com" in selected_url else "SEMI semi.org 원문"
+    )
+    selected.setdefault("outlook_direct_checked", False)
+    selected["issuer_index_checked"] = bool(release_urls)
+    return selected, errors
 
 
 
