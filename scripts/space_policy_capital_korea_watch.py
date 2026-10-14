@@ -199,8 +199,6 @@ def fresh_official_events(seen,request=fetch):
     return events,problems
 
 def baseline():
-    rate=SPREAD
-    invested=92.5*rate/1000 # hundred trillion? 92.5 billion USD -> trillion KRW = 92.5 *rate /1000
     return "\n".join((
       "🛰️ 우주투자·발사허가·국내 우주AI 감시",
       "2026년 10월 14일 신규 감시 기준선 (1회만 송출)",
@@ -212,8 +210,8 @@ def baseline():
       "• 원문: "+FAA_NOTICE,
       "",
       "[투자자금] 올해 1,000억 달러 돌파는 전망",
-      "• Space Capital: 3분기 누적 925억 달러(10/14 환율 기준 약 124조원).",
-      "• 연간 1,000억 달러(약 134조원)는 예상치. 투자조달액≠실제 설비투자·매출.",
+      "• Space Capital: 3분기 누적 925억 달러(10/14 환율 기준 약 123조9,963억원).",
+      "• 연간 1,000억 달러(약 134조500억원)는 예상치. 투자조달액≠실제 설비투자·매출.",
       "• 확인: 4분기 유입액·발사체/위성 투자 비중·현금 회수.",
       "• 원문: "+CAPITAL_Q3,
       "",
@@ -247,7 +245,7 @@ def read_state():
 def test():
     assert "승인 아님" in baseline() and "21억원" in baseline()
     assert "456회·착륙 912회" in baseline()
-    assert "124조원" in baseline()
+    assert "123조9,963억원" in baseline()
     assert "계산 기준은 별도 확인" in baseline()
     assert STATE!=PENDING and PENDING!=ALERT
     assert not any(re.search(r"확정 일정입니다",line) for line in baseline().splitlines())
@@ -267,6 +265,11 @@ def main():
     events,errors=fresh_official_events(state["seen"])
     existing=set(state["seen"])
     updates=[(key,text) for key,text in events if key not in existing]
+    # Initial verified documents are historical context and must be registered
+    # so the next 30-minute run cannot rediscover them as fresh approvals.
+    if first:
+        for key,_ in updates:state["seen"][key]=NOW.isoformat()
+        updates=[]
     # Three independent latest notices in one run are one digest, not a flood.
     updates=updates[:3]
     if first:notice=baseline()
