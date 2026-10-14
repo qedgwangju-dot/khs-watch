@@ -1,5 +1,5 @@
 {
-  "last_checked_kst": "2026-10-14T22:07:12+09:00",
+  "last_checked_kst": "2026-10-15T03:03:29+09:00",
   "active": {
     "fr10:above:4.5": true,
     "fr10:above:4.75": true,
@@ -130,7 +130,7 @@
       },
       {
         "date": "2026-10-14",
-        "value": 4.87
+        "value": 4.88
       }
     ],
     "de_mkt": [
@@ -156,7 +156,7 @@
       },
       {
         "date": "2026-10-14",
-        "value": 3.5
+        "value": 3.44
       }
     ],
     "it10": [
@@ -182,7 +182,7 @@
       },
       {
         "date": "2026-10-14",
-        "value": 4.6
+        "value": 4.56
       }
     ],
     "uk_mkt": [
@@ -208,7 +208,7 @@
       },
       {
         "date": "2026-10-14",
-        "value": 5.47
+        "value": 5.42
       }
     ]
   },
@@ -233,10 +233,10 @@
     "fr10": 4.805,
     "de10": 3.45,
     "uk10": 5.3868,
-    "fr_mkt": 4.87,
-    "de_mkt": 3.5,
-    "it10": 4.6,
-    "uk_mkt": 5.47
+    "fr_mkt": 4.88,
+    "de_mkt": 3.44,
+    "it10": 4.56,
+    "uk_mkt": 5.42
   },
   "last_change_basis": {
     "fr10": "공식자료 이전 관측일 2026-10-13 대비",
@@ -264,8 +264,8 @@
     "sent_keys": [
       "official_rating_source_unavailable:2026-10"
     ],
-    "checked_at_kst": "2026-10-14T22:07:15+09:00",
-    "source_fail_streak": 8,
+    "checked_at_kst": "2026-10-15T03:03:32+09:00",
+    "source_fail_streak": 9,
     "source_access": "access_restricted"
   }
 }
