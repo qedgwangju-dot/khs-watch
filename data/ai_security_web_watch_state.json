@@ -5,9 +5,11 @@
   "last_collection": {
     "direct_official_items": 27,
     "errors": [],
-    "material_items": 15,
-    "new_material_items": 0,
-    "raw_items": 176
+    "material_items": 20,
+    "new_material_items": 3,
+    "raw_items": 252,
+    "replication_reference_suppressed": 2,
+    "replication_watch_version": 1
   },
   "openai_insider_case_stages": {
     "initial_oct13_charge": {
@@ -34,6 +36,16 @@
       "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQN2MtdjhSdi1aSkFVNjN6aExQcmZGT1BaNDh2VGFpSlZnbmh2Y2pDaE9lT0NiaVBJdWJycF9PS2MwUXB2UDRWZ2lheGpQa1JydjdEal9nUmE5cEc1QWdvM2F1SFBJSldZY2k0S1BvRzB0bE1yVnJpWmFoTnh3MVJsTVo0T1I5ZVhUNUM1LUFQNGpJRTAwVjFDTmZMWHBSSTNhY2hvMEFiMmZyN0s2YWs3S3g2d0Fvbzg?oc=5",
       "vendor": "OpenAI"
     },
+    "0faded2d94d25679a9438177": {
+      "category": "AI 자율복제·사물인터넷 모의평가",
+      "first_seen_at": "2026-10-14T14:12:36.651000+00:00",
+      "published_at": "2026-10-13T21:23:58+00:00",
+      "severity": 1,
+      "source": "Dark Reading",
+      "title": "Anthropic Finds Ingredients for Future AI Worms - Dark Reading",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQRG9fTjV5OXR5VEFUcmhNU3ZxMlp2ZmVReGJMVFc5MU1JTmNEaFZ0UEl5YnlaWnJFUlBqR1ZjcWlyQzRQNXNZREtULVVaelFjMGYwSkozNzVUY0tCaURVRnc4aGNBX2NidWxTRi1vUld2djZFSTlyOVBiMnByTFBFaA?oc=5",
+      "vendor": "Anthropic"
+    },
     "13e17eea8a858d5f8ed96a50": {
       "category": "AI 연구기관 내부자 도청·접근통제 사건",
       "first_seen_at": "2026-10-14T01:57:29.449417+00:00",
@@ -54,6 +66,16 @@
       "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNckJQNWJCVWJZSzdEUVRzWHZyZ2I0amJxTVVqX1ltcmZtSGxKWkRUVUdEWnp4Wm9HSUctWlFGNk9mOTQwVXBVd3A4SzQ0YXB3WHFfaE9YaE1mX3ZUZ1BpWWU2dDhIRXd1NENRaTAxdHdaRTFYNm5tVEZxWFQ4anpvdXo2ano?oc=5",
       "vendor": "OpenAI"
     },
+    "1b969810fcde7595b38cf390": {
+      "category": "AI 자율복제·사물인터넷 모의평가",
+      "first_seen_at": "2026-10-14T14:12:36.651000+00:00",
+      "published_at": "2026-10-13T20:55:00+00:00",
+      "severity": 1,
+      "source": "The Guardian",
+      "title": "AI in your oven? Anthropic warns models ‘months away’ from self-replication on smart devices - The Guardian",
+      "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPRUxXc0hJVk5xRzdVTE5hQ2h2LWdnS21nUEZRVVFwX0dVZHJ5QUU1NUxmZUgydXVrRS1jSVNDRmtSVU1YYTh2RURQT0NQcEozdXdIb0FFM1RLakVTRXJFYTl4RU9kQXRPTUM5Vm1uVktaQ1NXaXp2Z3UySW5ZVktRTU5ZNGVocUszOTZV?oc=5",
+      "vendor": "Anthropic"
+    },
     "1bcdcfdffba70ad28384d9ca": {
       "category": "취약점·패치",
       "first_seen_at": "2026-09-29T16:47:57.351958+00:00",
@@ -62,6 +84,26 @@
       "source": "Anthropic Research",
       "title": "Anthropic Research: glm 5 3 and the spread of advanced cyber capabilities",
       "url": "https://www.anthropic.com/research/glm-5-3-and-the-spread-of-advanced-cyber-capabilities",
+      "vendor": "Anthropic"
+    },
+    "2d7cc4a2547a23aef929ff76": {
+      "category": "AI 자율복제·사물인터넷 모의평가",
+      "first_seen_at": "2026-10-14T14:12:36.651000+00:00",
+      "published_at": "2026-10-13T21:16:34+00:00",
+      "severity": 1,
+      "source": "BleepingComputer",
+      "title": "Anthropic warns self-replicating AI could spread to your smart devices - BleepingComputer",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNRE1aazlfenZZR0syQ09DNTZJNW5ZbmJzUks1Z1F2OFBkWHBnWTQ1bmE0cEFJc09sYmVaZ3hqeUh0REhYVHFaUHpQRXplNFlwanMxeGNJMlhXUkNpeDhaUW9selVsZDRvdGZRWHdlME1Fd29faFdWbUEzR2dDZ1RwVVF5cERuWnYtU2RpSXFlcFU2R2x5WGl0ZkZMM244bkRPSEYwMlhlendrd19WQmIxMFdlNjNiMFJaVlHSAb8BQVVfeXFMTmZ0c1ZjQVItSTBCSjJNMjJzWWotU1JlU19jaXAxaUR6QVpuUkNkZWVpeXlNdHRZaG9HMUNCMzduVXo0T3FCbHhoVEdmYVpPQ0wzbk1kMEVQOE5tR3JSUnBuRWw5LU83VHhhTEl1ZThVRVItaFlCVTVBVm5BM0xOUU1IU3hJdy1lZEFQNGZVVUdJOTQxNVNUdE9HWnlaeVUzLVhvc0dPdmJQNVVqVVVnTmc4M2VGRG1JTm1qamttZE0?oc=5",
+      "vendor": "Anthropic"
+    },
+    "31e9f4513af85a90c824b15c": {
+      "category": "AI 자율복제·사물인터넷 모의평가",
+      "first_seen_at": "2026-10-14T14:12:36.651000+00:00",
+      "published_at": "2026-10-13T05:14:00+00:00",
+      "severity": 1,
+      "source": "Reuters",
+      "title": "Anthropic warns AI models may soon self-replicate and could wreak havoc on the web - Reuters",
+      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNVFZnZHFlY0QxWV9XbURPeDVpQnlMcWFqaTlDMHRjcWhhLXRhR1hfbTdNeVl3c3dyR3V6V211Wmp5aXNZT1VpN1kwdUs3ZFdBTXB5Z2tEN1JfV2FnUk5FRHpVa2lfRWxENndHaDdNWmRZVUJfQkFody00VG1BNk8wb29Sel9Wd011ampEWXlOQk9xM2x0bkVwTXBib0hEMndtOWNuZXdDWFlEcTRuZzVLRDYxUDFfek9XRTNna3dhZw?oc=5",
       "vendor": "Anthropic"
     },
     "324206cc2a9a3e3a15d8f923": {
@@ -242,6 +284,16 @@
       "source": "Anthropic Threat Intelligence",
       "title": "Anthropic Threat Intelligence: threat intelligence report september 2026",
       "url": "https://www.anthropic.com/threat-intelligence-report-september-2026",
+      "vendor": "Anthropic"
+    },
+    "654ec051245881d84785930e": {
+      "category": "AI 자율복제·사물인터넷 모의평가",
+      "first_seen_at": "2026-10-14T14:12:36.651000+00:00",
+      "published_at": null,
+      "severity": 1,
+      "source": "Anthropic Research",
+      "title": "Anthropic Research: self replicating ai",
+      "url": "https://www.anthropic.com/research/self-replicating-ai",
       "vendor": "Anthropic"
     },
     "6667fcaf29c68af8a3ddc4e6": {
@@ -565,5 +617,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-10-14T23:01:22+09:00"
+  "updated_at_kst": "2026-10-14T23:12:36+09:00"
 }
