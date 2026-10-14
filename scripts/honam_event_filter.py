@@ -657,7 +657,6 @@ def main():
     # Keep first credible report for later independent corroboration.
     # The upstream watcher marks article URLs as seen, so a single press item
     # would otherwise disappear before a second publisher reports the event.
-    from zoneinfo import ZoneInfo
     now_utc = dt.datetime.now(dt.timezone.utc)
     power_cache = {}
     for family, record in (state.get("power_pending_evidence") or {}).items():
@@ -695,11 +694,12 @@ def main():
         key = hashlib.sha256(("family|" + family).encode("utf-8")).hexdigest()[:28] if family else _event_key(item)
         item["event_key"] = key
         item["event_family"] = family
-        all_event_keys.append(key)
+        if not power:
+            all_event_keys.append(key)
         groups.setdefault(key, []).append(item)
 
 
-    for family, record in power_cache.items():
+    for family, record in list(power_cache.items()):
         key = hashlib.sha256(("family|" + family).encode("utf-8")).hexdigest()[:28]
         if key in seen_event_keys:
             power_cache.pop(family, None)
