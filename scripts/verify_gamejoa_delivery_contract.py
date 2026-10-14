@@ -1324,13 +1324,6 @@ def assert_current_high_impact_article_coverage(production, compact, now, errors
             ("반도체", "금융", "지주", "11일"),
         ),
         (
-            "연합뉴스",
-            "고려아연, 트럼프 핵심광물 프로젝트 모범사례로 지목",
-            "고려아연은 미국 통합제련소에서 비철금속과 반도체급 황산을 생산할 계획이며 트럼프 행정부 핵심광물 프로젝트의 모범사례로 거론됐다.",
-            "korea_zinc_critical_minerals",
-            ("고려아연", "핵심광물", "제련소"),
-        ),
-        (
             "한국경제",
             "네이버, 앤트로픽에 첫 투자…AI 자립 전략 변경",
             "네이버는 앤트로픽에 처음 투자하고 클로드 기반 AI 협력을 확대하는 방안을 추진한다.",
@@ -1535,6 +1528,42 @@ def assert_current_high_impact_article_coverage(production, compact, now, errors
             errors.append(f"source link missing: {title}")
         for field_error in compact_prose_errors(rendered):
             errors.append(f"{title}: {field_error}")
+
+    zinc_praise_title = "고려아연, 트럼프 핵심광물 프로젝트 모범사례로 지목"
+    zinc_praise_body = (
+        "고려아연은 미국 통합제련소에서 비철금속과 반도체급 황산을 생산할 계획이며 "
+        "트럼프 행정부 핵심광물 프로젝트의 모범사례로 거론됐다."
+    )
+    zinc_praise = production.contract.strict.classify({
+        "source": "연합뉴스 고충격 검색",
+        "layer": "trusted",
+        "publisher": "연합뉴스",
+        "title": zinc_praise_title,
+        "source_title": zinc_praise_title,
+        "source_body": zinc_praise_body,
+        "source_abstract": zinc_praise_body,
+        "summary": zinc_praise_body,
+        "link": "https://www.yna.co.kr/view/AKR20261001163500008",
+        "published": now,
+        "body_verified": True,
+    }, now)
+    if not zinc_praise:
+        errors.append("official-praise exclusion fixture was not classified")
+    else:
+        previous_run_mode = os.environ.get("RADAR_RUN_MODE")
+        os.environ["RADAR_RUN_MODE"] = "live"
+        try:
+            zinc_selected = compact.quality_display_alerts([zinc_praise], 1)
+        finally:
+            if previous_run_mode is None:
+                os.environ.pop("RADAR_RUN_MODE", None)
+            else:
+                os.environ["RADAR_RUN_MODE"] = previous_run_mode
+        zinc_reason = zinc_praise.get("_exclusion_reason")
+        if zinc_selected:
+            errors.append("official praise without a policy instrument or company execution passed final selection")
+        if zinc_reason != "low_impact_live_publication:official_praise_without_policy_instrument_or_company_execution":
+            errors.append(f"official-praise exclusion reason changed unexpectedly: {zinc_reason}")
 
     poisoned_cores = {
         "kstartup_global_vc_access": "삼성전자가 브로드컴과 AI 반도체 협력을 확대합니다.",
