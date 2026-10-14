@@ -353,17 +353,32 @@ class WarshSafetyTests(unittest.TestCase):
 
 
 
-    def test_gartner_rss_503_keeps_previous_good_headline(self):
-        from urllib.error import HTTPError
+    def test_gartner_official_archive_is_used_before_rss(self):
+        archive = """
+        <html><body>
+        <a href="/en/newsroom/press-releases/2026-10-08-gartner-survey-shows-chief-procurement-officers-stalling-on-needed-ai-role-redesign">
+          Gartner Survey Shows Chief Procurement Officers Stalling on Needed AI Role Redesign
+        </a>
+        </body></html>
+        """
+        with patch.object(gartner.base, "fetch", return_value=archive), \
+             patch.object(gartner, "rss_gartner_items") as rss:
+            result = gartner.structural_gartner_items()
+        rss.assert_not_called()
+        self.assertEqual(result[-1]["published"][:10], "2026-10-08")
+        self.assertIn("Role Redesign", result[-1]["title"])
+        self.assertTrue(result[-1]["url"].startswith("https://www.gartner.com/en/newsroom/press-releases/"))
+
+    def test_gartner_all_live_sources_fail_keeps_previous_good_headline(self):
         item = {
             "title": "Gartner Finds AI Workforces Changing - Gartner",
             "published": "2026-10-07T10:20:03+00:00",
             "url": "https://www.gartner.com/en/newsroom/",
         }
         state = {"gartner_latest": item}
-        with patch.object(gartner.base, "fetch", side_effect=HTTPError(
-            "https://news.google.com/rss",503,"temporary",{},None
-        )), patch.object(gartner.base, "load_state", return_value=state):
+        with patch.object(gartner, "official_gartner_items", side_effect=TimeoutError("blocked")), \
+             patch.object(gartner, "rss_gartner_items", side_effect=TimeoutError("blocked")), \
+             patch.object(gartner.base, "load_state", return_value=state):
             result = gartner.structural_gartner_items()
         self.assertEqual(result, [item])
 
