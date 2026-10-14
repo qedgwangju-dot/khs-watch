@@ -44,10 +44,11 @@ STATUS_PATH = OUT_DIR / "ai_semiconductor_regional_chokepoint_status.md"
 KST = ZoneInfo("Asia/Seoul")
 BASELINE_VERSION = 1
 
-SEMI_300MM_VERSION = 1
+SEMI_300MM_VERSION = 2
 SEMI_300MM_PRESS = ("https://www.semi.org/en/semi-press-release/"
     "global-300mm-fab-equipment-spending-to-reach-227-billion-in-2029-as-buildout-accelerates-semi-projects")
 SEMI_300MM_OUTLOOK = "https://www.semi.org/en/products-services/market-data/300mm-fab-outlook"
+SEMI_300MM_ISSUER_INDEX = "https://www.prnewswire.com/news/semi/"
 SEMI_300MM_DISTRIBUTION = ("https://www.prnewswire.com/news-releases/"
     "global-300mm-fab-equipment-spending-to-reach-227-billion-in-2029-as-buildout-accelerates-semi-projects-302906628.html")
 SEMI_300MM_APRIL = ("https://www.semi.org/en/semi-press-release/"
@@ -540,6 +541,25 @@ def collect(cutoff: dt.datetime) -> tuple[list[dict], list[str]]:
     items.sort(key=lambda x: x.get("published_kst") or "", reverse=True)
     return items, errors
 
+
+
+
+def _semi_300mm_release_urls(index_html: str) -> list[str]:
+    """Discover global 300mm equipment releases from SEMI issuer's own index."""
+    links = set()
+    for m in re.finditer(r'''href=["']([^"']+\\.html)["']''', index_html, re.I):
+        href = html.unescape(m.group(1)).strip()
+        url = urllib.parse.urljoin(SEMI_300MM_ISSUER_INDEX, href)
+        parsed = urllib.parse.urlparse(url)
+        path = parsed.path.lower()
+        if parsed.netloc not in ("www.prnewswire.com", "prnewswire.com"):
+            continue
+        if all(k in path for k in ("300mm", "fab", "equipment")) and "global" in path and "memory" not in path:
+            links.add("https://www.prnewswire.com" + parsed.path)
+    def index_num(url):
+        m = re.search(r"-(\\d{9})\\.html$", url)
+        return int(m.group(1)) if m else 0
+    return sorted(links, key=index_num, reverse=True)
 
 
 def _semi_number(pattern: str, text: str) -> float | None:
