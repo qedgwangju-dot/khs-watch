@@ -15,6 +15,7 @@ import ebest
 
 from kospi_shock_enrichment import _display_name, _is_real_industry
 from krx_session_calendar import session_state
+from kosdaq_surge_industries import _industry
 
 KST = ZoneInfo("Asia/Seoul")
 INVESTORS = {"0008": "개인", "0017": "외국인", "0018": "기관"}
@@ -93,6 +94,7 @@ async def main(out_path: Path, until: dt.time, test_seconds: int | None = None) 
     out_path.parent.mkdir(parents=True, exist_ok=True)
     written = 0
     registrations: list[tuple[str, str]] = []
+    history_task: asyncio.Task | None = None
     industry_names: dict[str, str] = {}
     last_signature: dict[tuple[str, str], tuple[str, float, float | None, float]] = {}
     signature_lock = threading.Lock()
@@ -159,7 +161,8 @@ async def main(out_path: Path, until: dt.time, test_seconds: int | None = None) 
                 "subscription_key": str(key),
                 "source_unit": "UNVERIFIED",
             }
-            fp.write(json.dumps(row, ensure_ascii=False) + "\n")
+            with signature_lock:
+                fp.write(json.dumps(row, ensure_ascii=False) + "\n")
             written += 1
 
         api.on_realtime.connect(on_realtime)
@@ -191,6 +194,35 @@ async def main(out_path: Path, until: dt.time, test_seconds: int | None = None) 
             "registered": [key[1:] for _, key in registrations if key[1:].startswith("3")],
             "failed": kosdaq_failed,
         }, ensure_ascii=False) + "\n")
+
+        async def collect_kosdaq_history():
+            # t1621 is limited to 1 request/second. Spread one pass across the
+            # industries, repeat no sooner than 60s, and leave UBM/KOSPI intact.
+            sectors = [x for x in industries if _industry(x["code"], x["name"])]
+            while True:
+                cycle_started = time.monotonic()
+                for item in sectors:
+                    call_started = time.monotonic()
+                    request = {"t1621InBlock": {"upcode": item["code"], "nmin": 1,
+                                               "cnt": 10, "bgubun": "0", "exchgubun": "U"}}
+                    record = {"record_type": "industry_history_snapshot", "source_tr": "t1621",
+                              "market": "KOSDAQ", "upcode": item["code"], "industry": item["name"],
+                              "request": request, "source_unit": "UNVERIFIED"}
+                    try:
+                        response = await asyncio.wait_for(api.request("t1621", request), timeout=8)
+                        record["response"] = getattr(response, "body", {})
+                        record["status"] = "success" if response else "request_failed"
+                    except asyncio.CancelledError:
+                        raise
+                    except Exception as exc:
+                        record.update(status="request_failed", error_type=type(exc).__name__)
+                    record["received_ts"] = time.time()
+                    with signature_lock:
+                        fp.write(json.dumps(record, ensure_ascii=False) + "\n")
+                    await asyncio.sleep(max(0, 1.1 - (time.monotonic() - call_started)))
+                await asyncio.sleep(max(0, 60 - (time.monotonic() - cycle_started)))
+
+        history_task = asyncio.create_task(collect_kosdaq_history())
         print(
             f"ubm_market_coverage kospi={sum(not x[1][1:].startswith('3') for x in registrations)} "
             f"kosdaq={sum(x[1][1:].startswith('3') for x in registrations)}",
@@ -227,6 +259,8 @@ async def main(out_path: Path, until: dt.time, test_seconds: int | None = None) 
                     )
             await asyncio.sleep(1)
 
+        history_task.cancel()
+        await asyncio.gather(history_task, return_exceptions=True)
         fp.flush()
         fp.close()
         now_done = dt.datetime.now(KST)
@@ -245,6 +279,9 @@ async def main(out_path: Path, until: dt.time, test_seconds: int | None = None) 
             raise RuntimeError("UBM collector received no investor-industry payload during continuous market hours")
         return 0
     finally:
+        if history_task is not None:
+            history_task.cancel()
+            await asyncio.gather(history_task, return_exceptions=True)
         for tr, key in registrations:
             try:
                 await api.remove_realtime(tr, key)

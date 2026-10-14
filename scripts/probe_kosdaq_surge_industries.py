@@ -16,6 +16,34 @@ from pathlib import Path
 from kosdaq_surge_industries import KST, industry_buy_context, industry_context_lines
 from kospi_shock_episode_watch import get_token, ls_post, market_clock_epoch, _flow_surge_channel_pair
 from krx_session_calendar import session_state
+from kospi_shock_enrichment import industry_master, _display_name
+from kosdaq_surge_industries import _industry
+
+
+def collect_native_probe(journal: Path) -> None:
+    token = get_token()
+    sectors = [{"code": str(x.get("upcode") or ""), "name": _display_name(x.get("hname"))}
+               for x in industry_master(token, market="KOSDAQ")
+               if _industry(str(x.get("upcode") or ""), _display_name(x.get("hname")))]
+    journal.parent.mkdir(parents=True, exist_ok=True)
+    with journal.open("w", encoding="utf-8") as fp:
+        fp.write(json.dumps({"record_type": "subscription_coverage", "ts": time.time(),
+                             "market": "KOSDAQ", "source_tr": "UBM", "expected": sectors},
+                            ensure_ascii=False) + "\n")
+        for item in sectors:
+            call_started = time.monotonic()
+            query = {"t1621InBlock": {"upcode": item["code"], "nmin": 1, "cnt": 10,
+                                      "bgubun": "0", "exchgubun": "U"}}
+            record = {"record_type": "industry_history_snapshot", "source_tr": "t1621", "market": "KOSDAQ",
+                      "upcode": item["code"], "industry": item["name"], "request": query}
+            try:
+                record.update(response=ls_post(token, "/stock/investor", "t1621", query,
+                                               max_attempts=2, request_timeout=8.0), status="success")
+            except Exception as exc:
+                record.update(status="request_failed", error_type=type(exc).__name__)
+            record["received_ts"] = time.time()
+            fp.write(json.dumps(record, ensure_ascii=False) + "\n")
+            time.sleep(max(0, 1.1 - (time.monotonic() - call_started)))
 
 
 def run_probe(journal: Path) -> dict:
@@ -72,7 +100,11 @@ def run_probe(journal: Path) -> dict:
                 assert item["code"].startswith("3")
                 assert item["delta_raw"] == item["end_value_raw"] - item["start_value_raw"]
                 for point in ("start", "end"):
-                    assert item[point]["received_ts"] <= pair[point + "_ts"]
+                    if block.get("source_tr") == "UBM":
+                        assert item[point]["received_ts"] <= pair[point + "_ts"]
+                    else:
+                        assert item[point]["timestamp_basis"] == "t1621 dated minute history"
+                        assert item[point]["received_ts"] <= retrieved
                     assert 0 <= item[point + "_gap_sec"] <= 30
             text = industry_context_lines(block, actor, pair["start_ts"], pair["end_ts"])
             evidence["contexts"].append({"market_window": [pair["start_ts"], pair["end_ts"]],
@@ -85,8 +117,11 @@ def run_probe(journal: Path) -> dict:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--journal", type=Path, required=True)
+    parser.add_argument("--native", action="store_true", help="Read-only dated t1621 source audit")
     parser.add_argument("--out", type=Path, default=Path("out/kosdaq_surge_industry_probe.json"))
     args = parser.parse_args()
+    if args.native:
+        collect_native_probe(args.journal)
     result = run_probe(args.journal)
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -94,3 +129,6 @@ if __name__ == "__main__":
           "contexts=" + str(len(result["contexts"])),
           "available=" + str(sum(bool(x["industry_context"]["available"]) for x in result["contexts"])),
           "telegram_sent=false unit_verified=false", flush=True)
+    if args.native and result["status"] != "outside_continuous_market":
+        assert any(x["industry_context"]["source_tr"] == "t1621" and x["industry_context"]["rows"]
+                   for x in result["contexts"]), "No verified dated industry pairs; preserve source artifacts"

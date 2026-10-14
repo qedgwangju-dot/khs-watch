@@ -4,6 +4,8 @@ import datetime as dt
 import hashlib
 import json
 import os
+import sys
+import types
 import tempfile
 import unittest
 from pathlib import Path
@@ -36,6 +38,20 @@ def pair(code, name, before, after, actor="개인", start=START, end=END):
 def coverage(items, ts=OPEN - 100):
     return {"record_type": "subscription_coverage", "source_tr": "UBM", "market": "KOSDAQ",
             "ts": ts, "expected": [{"code": c, "name": n} for c, n in items]}
+
+
+def native(code="319", name="화학", before=0, after=5, received=END + 30):
+    rows = []
+    for point, value in [(START, before), (END, after)]:
+        stamp = dt.datetime.fromtimestamp(point, KST).strftime("%Y%m%d%H%M%S")
+        rows.append({"datetime": stamp, "date": stamp[:8], "time": stamp[8:],
+                     "indmsamt": value, "formsamt": -value, "sysmsamt": 0})
+    return {"record_type": "industry_history_snapshot", "source_tr": "t1621", "market": "KOSDAQ",
+            "upcode": code, "industry": name, "received_ts": received, "status": "success",
+            "request": {"t1621InBlock": {"upcode": code, "nmin": 1, "cnt": 10,
+                                         "bgubun": "0", "exchgubun": "U"}},
+            "response": {"t1621OutBlock": {"indcode": "0008", "forcode": "0017", "syscode": "0018",
+                                            "ex_upcode": "U" + code}, "t1621OutBlock1": rows}}
 
 
 class IndustryFixture:
@@ -305,6 +321,113 @@ class WatchIntegrationTests(IndustryFixture, unittest.TestCase):
         self.assertFalse(self.receipts)
         self.assertFalse(w.kosdaq_surge_sent_at)
         self.assertNotIn("last_kosdaq_surge_alert", w.raw)
+
+
+class NativeHistoryTests(IndustryFixture, unittest.TestCase):
+    def test_dated_history_retrieved_after_boundary_is_accepted(self):
+        result = self.load([coverage([("319", "화학")]), native()])
+        self.assertEqual(result["source_tr"], "t1621")
+        self.assertTrue(result["available"])
+        self.assertTrue(result["coverage_complete"])
+        self.assertEqual(result["top"][0]["delta_raw"], 5)
+        self.assertGreater(result["top"][0]["end"]["received_ts"], END)
+
+    def test_native_and_ubm_units_are_not_mixed(self):
+        result = self.load(pair("320", "제약", 0, 99999) + [native()])
+        self.assertEqual([x["code"] for x in result["rows"]], ["319"])
+        self.assertFalse(result["unit_verified"])
+        self.assertNotIn("억원", "\n".join(industry_context_lines(result, "개인", START, END)))
+
+    def test_size_company_and_manufacturing_aggregates_are_excluded(self):
+        rows = [native()] + [native(c, n, after=99999) for c, n in
+                              [("306", "제조"), ("340", "KOSDAQ MID 300"), ("341", "KOSDAQ SMALL"),
+                               ("342", "우량기업"), ("343", "벤처기업"), ("344", "중견기업"),
+                               ("345", "기술성장기업"), ("346", "KOSDAQ 글로벌")]]
+        self.assertEqual([x["code"] for x in self.load(rows)["top"]], ["319"])
+
+    def test_failed_latest_response_does_not_use_old_history_or_ubm(self):
+        failed = native(received=END + 40)
+        failed.update(status="request_failed", response={})
+        result = self.load([native(), failed] + pair("319", "화학", 0, 99999))
+        self.assertFalse(result["available"])
+        self.assertEqual(result["excluded"]["invalid_history_response"], 1)
+
+    def test_exchange_and_investor_echo_must_match(self):
+        for key, value in [("ex_upcode", "K319"), ("indcode", "0017")]:
+            with self.subTest(field=key):
+                row = native(); row["response"]["t1621OutBlock"][key] = value
+                self.assertFalse(self.load([row])["available"])
+
+    def test_native_timestamp_does_not_infer_request_day(self):
+        row = native()
+        for point in row["response"]["t1621OutBlock1"]:
+            point.pop("datetime"); point.pop("date")
+        self.assertFalse(self.load([row])["available"])
+
+    def test_contradictory_date_time_is_held(self):
+        row = native()
+        row["response"]["t1621OutBlock1"][-1]["time"] = "102000"
+        self.assertFalse(self.load([row])["available"])
+
+    def test_missing_latest_amount_does_not_replace_with_prior_value(self):
+        row = native()
+        row["response"]["t1621OutBlock1"][-1]["indmsamt"] = None
+        point = END - 20
+        stamp = dt.datetime.fromtimestamp(point, KST).strftime("%Y%m%d%H%M%S")
+        row["response"]["t1621OutBlock1"].append({"datetime": stamp, "indmsamt": 5})
+        self.assertFalse(self.load([row])["available"])
+
+    def test_dated_history_covers_same_actor_with_half_minute_alignment(self):
+        row = native()
+        for item in row["response"]["t1621OutBlock1"]:
+            ts = dt.datetime.strptime(item["datetime"], "%Y%m%d%H%M%S").replace(tzinfo=KST).timestamp() - 30
+            item["datetime"] = dt.datetime.fromtimestamp(ts, KST).strftime("%Y%m%d%H%M%S")
+            item["date"], item["time"] = item["datetime"][:8], item["datetime"][8:]
+        result = self.load([row], actor="외국인")
+        self.assertEqual(result["rows"][0]["delta_raw"], -5)
+        self.assertFalse(result["available"])
+        self.assertEqual(result["rows"][0]["end_gap_sec"], 30)
+
+
+class CollectorHistoryTests(unittest.TestCase):
+    def exercise(self, fail=False):
+        class Signal:
+            def connect(self, fn): self.fn = fn
+
+        class API:
+            def __init__(self): self.on_realtime = Signal(); self.last_message = "fixture"
+            async def login(self, *args): return True
+            async def request(self, tr, query):
+                if tr == "t8424":
+                    return types.SimpleNamespace(body={"t8424OutBlock": [{"upcode": "319", "hname": "화학"}]})
+                if fail: raise RuntimeError("fixture")
+                return types.SimpleNamespace(body=native()["response"])
+            async def add_realtime(self, tr, key):
+                self.on_realtime.fn(self, tr, key, {"upcode": "319", "tjjcode": "0008", "msval": 1,
+                                                  "msvol": 1, "tjjtime": dt.datetime.now(KST).strftime("%H%M%S"),
+                                                  "ex_upcode": "U319"})
+                return True
+            async def remove_realtime(self, *args): pass
+            async def close(self): pass
+
+        with patch.dict(sys.modules, {"ebest": types.SimpleNamespace(OpenApi=API)}):
+            import kospi_unified_industry_collector as collector
+        with tempfile.TemporaryDirectory() as directory, \
+                patch.object(collector, "ebest", types.SimpleNamespace(OpenApi=API)), \
+                patch.dict(os.environ, {"LS_OPENAPI_APP_KEY": "fixture", "LS_OPENAPI_APP_SECRET": "fixture"}):
+            p = Path(directory) / "journal.jsonl"
+            asyncio.run(collector.main(p, dt.time(15, 32), test_seconds=1))
+            return [json.loads(x) for x in p.read_text(encoding="utf-8").splitlines()]
+
+    def test_sampler_preserves_ubm_and_writes_dated_history(self):
+        rows = self.exercise()
+        self.assertTrue(any(x.get("investor") == "개인" for x in rows))
+        self.assertTrue(any(x.get("record_type") == "industry_history_snapshot" and x["status"] == "success" for x in rows))
+
+    def test_sampler_failure_is_recorded_without_stopping_ubm(self):
+        rows = self.exercise(fail=True)
+        self.assertTrue(any(x.get("investor") == "개인" for x in rows))
+        self.assertTrue(any(x.get("status") == "request_failed" and x["error_type"] == "RuntimeError" for x in rows))
 
 
 if __name__ == "__main__":
