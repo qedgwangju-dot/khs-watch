@@ -1051,7 +1051,7 @@ def meta_milestone(title: str) -> tuple[str, str, str] | None:
         return None
     vendor=re.search(META_VENDORS,text,re.I)
     gen=re.search(r"\b800\s*G\b|\b1[.,]?6\s*T\b",text,re.I)
-    if vendor and re.search(r"signed (?:a |the )?(?:supply )?(?:agreement|contract)|"
+    if vendor and re.search(r"sign(?:s|ed) (?:a |the )?(?:supply )?(?:agreement|contract)|"
                             r"awards? (?:a |the )?(?:contract|order)|"
                             r"qualif(?:ied|ies)|certif(?:ied|ies)|"
                             r"has (?:shipped|delivered)|commercial shipment",text,re.I):
