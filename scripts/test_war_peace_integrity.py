@@ -1,5 +1,6 @@
 """Offline regressions from Telegram #323. No live source or send calls."""
 import datetime as dt
+import copy
 from email.utils import format_datetime
 import io
 import json
@@ -12,6 +13,7 @@ from unittest.mock import Mock, patch
 import war_peace_reconstruction_watch_integrity as integrity
 import war_peace_reconstruction_watch_evidence as evidence
 import war_peace_reconstruction_watch_precise as market
+import war_peace_reconstruction_watch_diplomacy_flash as quality
 
 watch = integrity.watch
 NOW = dt.datetime(2026, 10, 13, 1, 57, tzinfo=watch.KST)
@@ -28,6 +30,171 @@ class IntegrityTests(unittest.TestCase):
         self.network = patch('urllib.request.urlopen', side_effect=AssertionError('network/send forbidden'))
         self.network.start()
         self.addCleanup(self.network.stop)
+
+    def alias_fixture(self):
+        path = Path(__file__).parent/'test_fixtures/war_source_alias_38526317484.json'
+        fixture = json.loads(path.read_text(encoding='utf-8'))
+        return fixture, dt.datetime.fromisoformat(fixture['provenance']['queried_at_kst'])
+
+    def test_rejected_production_alias_pair_keeps_exact_origin_once(self):
+        fixture, now = self.alias_fixture()
+        feed, origin = fixture['articles'][:2]
+        with patch.object(integrity.body_parallel, '_safe_enrich'):
+            text = integrity.build_alert(fixture['articles'], fixture['markets'], now)
+        receipt = evidence.alert_receipt(fixture['articles'], fixture['markets'], now, text)
+        rendered = [row['id'] for row in receipt['articles'] if row['rendered']]
+        self.assertEqual(rendered, [origin['id'], *[row['id'] for row in fixture['articles'][2:]]])
+        self.assertNotIn(feed['link'], text)
+        self.assertIn(origin['link'], text)
+        self.assertEqual(feed['duplicate_of'], origin['id'])
+        self.assertEqual(feed['render_withheld'], 'duplicate_source_article')
+        self.assertFalse(feed['body_verified'])
+        self.assertTrue(origin['body_verified'])
+        self.assertNotIn('동일 제목 중복', quality._alert_quality_issues(text))
+
+    def test_alias_preference_is_independent_of_input_order(self):
+        fixture, now = self.alias_fixture()
+        for reverse in (False, True):
+            pair = copy.deepcopy(fixture['articles'][:2])
+            if reverse:
+                pair.reverse()
+            with self.subTest(reverse=reverse), patch.object(integrity.body_parallel, '_safe_enrich'):
+                text = integrity.build_alert(pair, [], now)
+            receipt = evidence.alert_receipt(pair, [], now, text)
+            self.assertEqual([row['id'] for row in receipt['articles'] if row['rendered']],
+                             [fixture['articles'][1]['id']])
+
+    def test_alias_shared_resolved_url_does_not_mark_hidden_feed_rendered(self):
+        fixture, now = self.alias_fixture()
+        feed, origin = fixture['articles'][:2]
+        feed['resolved_url'] = origin['link']
+        with patch.object(integrity.body_parallel, '_safe_enrich'):
+            text = integrity.build_alert([feed, origin], [], now)
+        receipt = evidence.alert_receipt([feed, origin], [], now, text)
+        self.assertFalse(receipt['articles'][0]['rendered'])
+        self.assertTrue(receipt['articles'][1]['rendered'])
+
+    def test_same_publisher_words_negation_order_and_count_are_required(self):
+        for title in ('우크라이나 러시아 공격', '러시아 우크라이나 공격 안 한다',
+                      '러시아 우크라이나 선박 24척 공격'):
+            left = article(title)
+            right = article({'우크라이나 러시아 공격': '러시아 우크라이나 공격',
+                             '러시아 우크라이나 공격 안 한다': '러시아 우크라이나 공격 한다',
+                             '러시아 우크라이나 선박 24척 공격': '러시아 우크라이나 선박 42척 공격'}[title])
+            with self.subTest(title=title):
+                self.assertFalse(integrity._same_source_article(left, right))
+
+    def test_alias_different_publisher_host_or_publication_remains_unresolved(self):
+        fixture, _ = self.alias_fixture()
+        feed, origin = fixture['articles'][:2]
+        variants = [dict(origin, source='다른 매체'),
+                    dict(origin, link='https://other.example/article', resolved_url='https://other.example/article'),
+                    dict(origin, published=format_datetime(dt.datetime(2026, 10, 14, 15, 48, tzinfo=watch.KST))),
+                    dict(origin, published=''),
+                    dict(origin, source_metadata={'publication_status': 'conflict'})]
+        for row in variants:
+            with self.subTest(row=row):
+                self.assertFalse(integrity._same_source_article(feed, row))
+
+    def test_alias_same_title_different_time_still_hits_existing_quality_gate(self):
+        fixture, now = self.alias_fixture()
+        feed, origin = fixture['articles'][:2]
+        origin['published'] = format_datetime(now-dt.timedelta(minutes=10))
+        with patch.object(integrity.body_parallel, '_safe_enrich'):
+            text = integrity.build_alert([feed, origin], [], now)
+        self.assertIn('동일 제목 중복', quality._alert_quality_issues(text))
+
+    def test_alias_pipeline_saves_only_rendered_seen_and_then_suppresses_feed(self):
+        fixture, _ = self.alias_fixture()
+        pair = fixture['articles'][:2]
+        now = dt.datetime.now(watch.KST)
+        published = now-dt.timedelta(minutes=20)
+        for row in pair:
+            row['published'] = format_datetime(published)
+        origin = pair[1]
+        origin['source_metadata']['published_at_kst'] = published.isoformat()
+        origin['source_metadata']['publication_candidates'] = [
+            {'field': 'article:published_time', 'at_kst': published.isoformat()}]
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            root = Path(folder)
+            for attr, name in {'OUT': '.', 'STATE': 'state.json', 'ALERT': 'alert.txt',
+                               'PENDING': 'pending.json', 'AUDIT': 'evidence.json',
+                               'SUMMARY': 'summary.md'}.items():
+                stack.enter_context(patch.object(watch, attr, root/name))
+            initial = {'seen': ['already-confirmed'], 'updated_at': 'old'}
+            watch.STATE.write_text(json.dumps(initial), encoding='utf-8')
+            stack.enter_context(patch.object(watch, 'QUERIES', ['fixture']))
+            stack.enter_context(patch.object(watch, 'google_news', return_value=(pair, None)))
+            stack.enter_context(patch.object(watch, 'score_item', return_value=(90, ['확전'])))
+            stack.enter_context(patch.object(watch, 'market_snapshot', return_value=[]))
+            stack.enter_context(patch.object(watch, 'translate_ko', side_effect=lambda value: value))
+            stack.enter_context(patch.object(integrity.body_parallel, '_safe_enrich'))
+            watch.run()
+            integrity.runner.verify_alert()
+            pending = json.loads(watch.PENDING.read_text(encoding='utf-8'))
+            self.assertEqual(pending['ids'], [origin['id']])
+            self.assertEqual(json.loads(watch.STATE.read_text()), initial)
+            # Offline simulation of the existing post-delivery finalize stage.
+            watch.finalize()
+            confirmed = json.loads(watch.STATE.read_text(encoding='utf-8'))
+            self.assertEqual(confirmed['seen'], ['already-confirmed', origin['id']])
+            self.assertEqual(confirmed['source_aliases'], {pair[0]['id']: origin['id']})
+            watch.google_news.return_value = ([pair[0]], None)
+            watch.run()
+            self.assertFalse(watch.ALERT.exists())
+            self.assertFalse(watch.PENDING.exists())
+            receipt = json.loads(watch.AUDIT.read_text(encoding='utf-8'))
+            self.assertFalse(receipt['articles'][0]['rendered'])
+            self.assertEqual(receipt['articles'][0]['render_withheld'], 'source_alias_already_seen')
+            self.assertEqual(json.loads(watch.STATE.read_text()), confirmed)
+
+    def test_alias_finalization_does_not_learn_an_unrendered_target(self):
+        fixture, _ = self.alias_fixture()
+        feed, origin, shown = fixture['articles'][:3]
+        feed.update(render_withheld='duplicate_source_article', duplicate_of=origin['id'], rendered=False)
+        origin['rendered'] = False
+        shown['rendered'] = True
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            root = Path(folder)
+            for attr, name in {'STATE': 'state.json', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                stack.enter_context(patch.object(watch, attr, root/name))
+            watch.STATE.write_text('{"seen":["old"]}', encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids': [shown['id']]}), encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps({'articles': [feed, origin, shown]}), encoding='utf-8')
+            watch.finalize()
+            state = json.loads(watch.STATE.read_text())
+            self.assertEqual(state['seen'], ['old', shown['id']])
+            self.assertNotIn('source_aliases', state)
+
+    def test_alias_finalization_rejects_mismatch_without_state_write(self):
+        fixture, _ = self.alias_fixture()
+        feed, origin = fixture['articles'][:2]
+        feed.update(render_withheld='duplicate_source_article', duplicate_of=origin['id'], rendered=False)
+        origin['published'] = 'Wed, 14 Oct 2026 14:00:00 +0900'
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            root = Path(folder)
+            for attr, name in {'STATE': 'state.json', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                stack.enter_context(patch.object(watch, attr, root/name))
+            before = '{"seen":["old"]}'
+            watch.STATE.write_text(before, encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids': [origin['id']]}), encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps({'articles': [feed, origin]}), encoding='utf-8')
+            with self.assertRaisesRegex(RuntimeError, 'source alias lacks matching'):
+                watch.finalize()
+            self.assertEqual(watch.STATE.read_text(), before)
+
+    def test_alias_history_without_confirmed_seen_target_does_not_suppress(self):
+        fixture, now = self.alias_fixture()
+        feed, origin = fixture['articles'][:2]
+        state = {'seen': [], 'source_aliases': {feed['id']: origin['id']}}
+        with patch.object(watch, 'load_state', return_value=state), patch.object(integrity.body_parallel, '_safe_enrich'):
+            text = integrity.build_alert([feed], [], now)
+        self.assertIn(feed['link'], text)
+
+    def test_bad_alias_history_is_not_silently_reset(self):
+        for aliases in ([], {'feed': ''}, {'feed': 'feed'}):
+            with self.subTest(aliases=aliases), self.assertRaisesRegex(RuntimeError, 'invalid source alias history'):
+                integrity._source_aliases({'source_aliases': aliases})
 
     def test_maritime_tally_preserves_period_count_and_ship_population(self):
         row = article('호르무즈 피격 선박 2주에 24척, 개전 이후 최대 규모')
