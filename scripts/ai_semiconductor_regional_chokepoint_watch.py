@@ -897,14 +897,27 @@ def write_outputs(items: list[dict], errors: list[str], semi_record: dict | None
             "",
             "• <b>SEMI 공식 300mm 전공정 장비투자·공장 시간표</b>",
             "  성격: " + html.escape(s["source_kind"]) + " · 전망치, 확정 발주 아님",
-            "  2026년 장비투자: " + amount("equipment_2026_usd_b")
-            + " · 전년 대비 +" + str(s.get("equipment_2026_yoy_pct") or "확인 불가") + "%",
-            "  2029년 장비투자: " + amount("equipment_2029_usd_b"),
-            "  4월 전망 대비 2026년: $133 billion → " + amount("equipment_2026_usd_b"),
-            "  4월 전망 대비 2029년: $172 billion → " + amount("equipment_2029_usd_b"),
-            "  공장 건설비 2026/2027/2028: " + amount("construction_2026_usd_b")
-            + " / " + amount("construction_2027_usd_b") + " / " + amount("construction_2028_usd_b"),
+            "  공식 전망 판본: " + html.escape(str(s.get("vintage") or "확인 불가"))
+            + " · 발표일 " + html.escape(str(s.get("release_date") or "확인 불가")),
         ]
+        annual = sorted(
+            ((int(m.group(1)), float(v))
+             for k, v in s.items()
+             if (m := re.fullmatch(r"equipment_(20\d{2})_usd_b", k)) and v is not None)
+        )
+        if annual:
+            lines.append("  연도별 전공정 장비투자: " + " / ".join(
+                f"{year}년 $" + f"{value:g} billion" for year, value in annual
+            ))
+        if s.get("release_date") == "2026-10-13":
+            lines.append("  기존 2026년 4월 전망: 2026년 $133 billion→$149 billion, "
+                         "2029년 $172 billion→$227 billion")
+        if s.get("construction_2026_usd_b") is not None:
+            lines.append(
+                "  공장 건설비(장비투자와 구분): 2026년 " + amount("construction_2026_usd_b")
+                + " / 2027년 " + amount("construction_2027_usd_b")
+                + " / 2028년 " + amount("construction_2028_usd_b")
+            )
         for reason in semi_changes:
             lines.append("  신규 변화: " + html.escape(reason))
         if all(s.get(k) is not None for k in (
@@ -928,7 +941,7 @@ def write_outputs(items: list[dict], errors: list[str], semi_record: dict | None
             "  매출 경로: 실제 장비 발주→납품·검수→장비사 매출→공장 가동→웨이퍼 투입→메모리 공급",
             "  실패·지연 경로: 전력·초순수·허가·장비 납기·공정 수율·고객 승인",
             "  먼저 볼 지표: 업체별 장비 수주잔고·웨이퍼 투입량·DRAM/NAND 계약가",
-            '  <a href="' + html.escape(s["source_url"], quote=True) + '">SEMI 2026-10-13 실제 확인한 발표 경로</a>',
+            '  <a href="' + html.escape(s["source_url"], quote=True) + '">SEMI 최신 확인 배포 원문</a>',
             '  <a href="' + html.escape(SEMI_300MM_OUTLOOK, quote=True) + '">SEMI 300mm 분기별 전망</a>',
             '  <a href="' + html.escape(SEMI_300MM_APRIL, quote=True) + '">SEMI 2026-04-01 기존 전망</a>',
         ]
