@@ -222,8 +222,19 @@
       "완제품 병목 변화"
     ]
   },
-  "last_scan_kst": "2026-10-14T15:16:29+09:00",
-  "errors": [],
+  "last_scan_kst": "2026-10-14T21:10:28+09:00",
+  "errors": [
+    "ko:\"아이폰 듀오\" 생산량 증산 출하량 폭스콘… -> HTTPError: HTTP Error 503: Service Unavailable",
+    "ko:\"아이폰 듀오\" 힌지 수율 골든 샘플 폭스콘… -> HTTPError: HTTP Error 503: Service Unavailable",
+    "ko:\"아이폰 듀오\" 삼성디스플레이 패널 주문 발주 출하… -> HTTPError: HTTP Error 503: Service Unavailable",
+    "ko:\"아이폰 듀오\" 메모리 FPCB 카메라 부품 주문 상향… -> HTTPError: HTTP Error 503: Service Unavailable",
+    "ko:\"애플 폴더블\" 생산 목표 증산 출하량 힌지 수율… -> HTTPError: HTTP Error 503: Service Unavailable",
+    "en:\"iPhone Duo\" production shipment build tar… -> HTTPError: HTTP Error 503: Service Unavailable",
+    "en:\"iPhone Duo\" hinge yield Foxconn productio… -> HTTPError: HTTP Error 503: Service Unavailable",
+    "en:\"iPhone Duo\" Samsung Display panel order s… -> HTTPError: HTTP Error 503: Service Unavailable",
+    "en:\"iPhone Duo\" component orders memory FPCB … -> HTTPError: HTTP Error 503: Service Unavailable",
+    "en:\"Apple foldable\" production target shipmen… -> HTTPError: HTTP Error 503: Service Unavailable"
+  ],
   "seen_fact_keys": [
     "assembly_yield_60",
     "sep17_assembly_bottleneck"
