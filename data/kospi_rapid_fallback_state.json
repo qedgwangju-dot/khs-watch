@@ -1,7 +1,12 @@
 {
   "date": "2026-10-14",
-  "samples": [],
-  "session_high": null,
+  "samples": [
+    {
+      "ts": 1791937147.1346135,
+      "price": 6149.5
+    }
+  ],
+  "session_high": 6167.65,
   "sent_session_high": false,
   "sent_fast": false,
   "sent_open_gap": false,
