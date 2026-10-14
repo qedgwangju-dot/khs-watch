@@ -630,11 +630,39 @@ jobs:
           import currency_krw_guard as g
           from unittest.mock import patch
 
-          with patch.object(g, "_rate", return_value=(1343.19, "test")):
+          with patch.object(g, "_rate", return_value=(1343.19, "테스트 기준")):
               out = g.enforce_text("Series A 8,800만달러")
           assert "8,800만달러(" in out
           assert "약 1,182억원" in out
           g.validate_text(out)
+
+          # English and Korean currency formats must all carry a KRW value
+          # immediately after the original amount, not in a separate paragraph.
+          examples = [
+              ("메타·코닝 계약 최대 60억 달러", "60억 달러(약 8조298억원)"),
+              ("Meta/Corning agreement up to $6 billion", "$6 billion(약 8조298억원)"),
+              ("미국 광통신 증설 투자 3.5억 달러", "3.5억 달러(약 4,684억원)"),
+              ("Lumentum Japan plan $350M", "$350M(약 4,684억원)"),
+              ("purchase commitment USD 6bn", "USD 6bn(약 8조298억원)"),
+              ("optical components 6억~8억 달러", "6억~8억 달러("),
+              ("investment 1 trillion USD", "1 trillion USD"),  # not falsely changed to won
+          ]
+          with patch.object(g, "_rate", return_value=(1338.30, "2026-10-14 공식 기준환율 · 테스트")):
+              for raw, expected in examples:
+                  converted = g.enforce_text(raw)
+                  assert expected in converted, (raw, converted)
+                  assert "환율 기준: USD/KRW 1,338.3000원" in converted if expected != "1 trillion USD" else True
+                  g.validate_text(converted)
+                  if expected != "1 trillion USD":
+                      assert g.enforce_text(converted) == converted, "원화 중복 환산 금지"
+
+          with patch.object(g, "_rate", return_value=(None, "환율 조회 실패")):
+              try:
+                  g.enforce_text("수주 60억 달러")
+              except RuntimeError:
+                  pass
+              else:
+                  raise AssertionError("환율 미확인 상태에서 원화 없는 전송을 허용함")
           print("immediate_krw_parentheses_rule=passed")
           PY
 
