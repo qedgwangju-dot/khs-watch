@@ -374,6 +374,8 @@ def pjm_title(event: dict) -> str:
         if stage in {"order_requested", "request_mentioned"}:
             return "PJM, DOE 202(c) 긴급명령 요청·사전 준비 공지"
         return "PJM, DOE 202(c) 관련 특별공지"
+    if "pre-emergency load mgmt reduction action" in low:
+        return "PJM, 비상 전 수요감축 실행 지시"
     return f"PJM, {t}"
 
 
