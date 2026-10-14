@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import datetime as dt
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import hashlib
 import html
 import importlib.util
@@ -31,6 +32,8 @@ _SHARED_STATE: dict | None = None
 _BOOTSTRAP_GUARD = False
 _RSS_CALLS = 0
 _RSS_BUFFER: list[dict] = []
+_RSS_BATCH_DONE = False
+_RSS_FATAL = ""
 
 
 def _norm(value: str) -> str:
@@ -1987,6 +1990,9 @@ def _self_test() -> int:
         raise RuntimeError(f"verified Alaska report not recorded: {reported}")
     if any(x in reported for x in ["stage:최종투자결정", "stage:착공"]):
         raise RuntimeError(f"Alaska future event was promoted to completion: {reported}")
+    rows, errors, ok = _fetch_query_batch(["alaska", "project power", "taiwan"], lambda q: [{"title": q}], max_workers=2)
+    if errors or len(rows) != 3 or len(ok) != 3:
+        raise RuntimeError(f"parallel RSS batch regression: rows={rows}, errors={errors}")
     print("state_event_guard_self_test=passed")
     return 0
 
@@ -2062,15 +2068,61 @@ def _official_project_baseline_rows() -> list[dict]:
     ]
 
 
+def _fetch_query_batch(queries: list[str], fetcher, max_workers: int = 8) -> tuple[list[dict], list[str], set[str]]:
+    """Bound Google News RSS wall time by concurrent independent queries."""
+    rows: list[dict] = []
+    failures: list[str] = []
+    successful: set[str] = set()
+    if not queries:
+        return rows, failures, successful
+
+    def fetch_one(query: str):
+        return fetcher(query)
+
+    with ThreadPoolExecutor(max_workers=min(max_workers, len(queries))) as pool:
+        jobs = {pool.submit(fetch_one, query): query for query in queries}
+        for future in as_completed(jobs):
+            query = jobs[future]
+            try:
+                result = future.result()
+                successful.add(query)
+                rows.extend(result)
+            except Exception as exc:
+                failures.append(query)
+                print(f"state_guard_rss_error={type(exc).__name__} query={query[:85]}")
+
+    return rows, failures, successful
+
+
 def _rss(query: str) -> list[dict]:
-    global _RSS_CALLS, _RSS_BUFFER
+    global _RSS_CALLS, _RSS_BUFFER, _RSS_BATCH_DONE, _RSS_FATAL
     _RSS_CALLS += 1
-    try:
-        rows = _ORIG_RSS(query)
-    except Exception as exc:
-        print(f"state_guard_rss_error={type(exc).__name__}")
-        rows = []
-    _RSS_BUFFER.extend(rows)
+    if not _RSS_BATCH_DONE:
+        _RSS_BATCH_DONE = True
+        queries = list(dict.fromkeys(core.QUERIES))
+        fresh_rows, failures, successes = _fetch_query_batch(queries, _ORIG_RSS)
+        _RSS_BUFFER.extend(fresh_rows)
+        alaska_queries = [
+            q for q in queries
+            if any(token in q.lower() for token in ("알래스카", "alaska", "glenfarne", "taiwan", "대만"))
+        ]
+        alaska_successes = sum(q in successes for q in alaska_queries)
+        print(
+            f"source_query_total={len(queries)} source_query_succeeded={len(successes)} "
+            f"source_query_failed={len(failures)} alaska_coverage={alaska_successes}/{len(alaska_queries)} "
+            f"trusted_rows={len(fresh_rows)}"
+        )
+        # Hard-fail without committing a new 'no alerts' state when source coverage collapses.
+        if (
+            not fresh_rows
+            or (alaska_queries and not alaska_successes)
+            or len(failures) > max(5, len(queries) // 4)
+        ):
+            _RSS_FATAL = (
+                f"unreliable RSS coverage: {len(successes)}/{len(queries)} sources, "
+                f"Alaska {alaska_successes}/{len(alaska_queries)}, "
+                f"{len(fresh_rows)} trusted rows"
+            )
 
     if _RSS_CALLS < len(core.QUERIES):
         return []
@@ -2137,7 +2189,10 @@ core._run_event_key = _run_event_key
 
 
 def main() -> int:
-    return watch.main()
+    result = watch.main()
+    if _RSS_FATAL:
+        raise RuntimeError(_RSS_FATAL)
+    return result
 
 
 if __name__ == "__main__":
