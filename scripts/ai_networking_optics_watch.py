@@ -66,6 +66,8 @@ COMPANIES = {
             '("Lumentum" OR "Michael Hurlston") ("70%" OR "30%" OR "unmet demand" OR "demand shortfall" OR "supply shortage") (laser OR photonic OR optics OR AI)',
             '"Lumentum" (Japan OR Tokyo OR Sagamihara OR Takao) ("12-fold" OR "12 times" OR "$350 million" OR "350 million" OR "factory" OR capacity expansion)',
             '"Lumentum" (hyperscaler OR customers) ("share capex" OR "share capital expenditures" OR "fund capacity" OR "co-invest" OR "prepayment" OR "long-term agreement")',
+            '"Lumentum" ("2030" OR "booked through" OR "order reservations") (laser OR photonics OR optics OR capacity)',
+            '"Lumentum" (Japan OR Tokyo OR "Michael Hurlston") (acquisition OR M&A OR "definitive agreement" OR "customer deposits" OR "factory commissioning")',
         ],
     },
     "Coherent": {
@@ -982,13 +984,16 @@ def source_priority(source: str) -> int:
 
 
 LITE_CAPACITY_COMPANY = "Lumentum Supply & Capacity"
-LITE_SUPPLY_VERSION = 1
+LITE_SUPPLY_VERSION = 2
 # Context, not new triggers: NVIDIA's March-2026 investment and April
 # Bloomberg horizon (on track to sell out 2028 capacity) are historical.
 LITE_PRIOR_KEYS = {
     "lumentum|booking-horizon|2028",
     "lumentum|booking-horizon|2027",
     "lumentum|nvidia|equity-2b-march-2026",
+    # First interview's 2029 booking statement was already transmitted and
+    # stored, so a query expansion cannot re-announce it as new capacity.
+    "lumentum|booking-horizon|2029",
 }
 LITE_VERIFIED_ORIGIN_DOMAINS = {
     "bloomberg.com", "bloomberglaw.com", "lumentum.com",
@@ -2188,6 +2193,9 @@ def _self_test_korean_optics_alerts() -> None:
     merger = "Lumentum optical laser CEO considers M&A next year"
     assert lite_supply_event(booked2029)[2] == "lumentum|booking-horizon|2029"
     assert lite_supply_event(booked2030)[2] == "lumentum|booking-horizon|2030"
+    assert lite_supply_event(
+        "Lumentum AI optical components sold out through early 2029"
+    )[2] == "lumentum|booking-horizon|2029"
     assert lite_supply_event(old2028)[2] == "lumentum|booking-horizon|2028"
     assert lite_supply_event(shortfall70)[2] == "lumentum|demand-gap|2027|70"
     assert lite_supply_event(shortfall30)[2] == "lumentum|demand-gap|2028|30"
