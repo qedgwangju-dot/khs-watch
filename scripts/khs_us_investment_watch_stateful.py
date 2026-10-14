@@ -931,7 +931,7 @@ def _candidate_facts(row: dict, family: str) -> set[str]:
         if taiwan_reference and project_reference and share_thirty and share_purchase and not other_us_share:
             # 원문 뉴스 보도의 30%는 계약 체결 사실이 아니라 미확정 주장으로 저장.
             facts.add("alaska_taiwan_project_share_reported:30")
-        if taiwan_reference and project_reference and share_thirty and share_purchase and not other_us_share:
+        if taiwan_reference and project_reference and share_purchase and not other_us_share:
             # 30% 물량·20년 기간·44억달러는 미국 측 발언의 세 가지 속성일 뿐
             # 대만의 확정 구매계약·투자금 실제 납입이 아니다.
             if any(term in low for term in [
@@ -943,7 +943,7 @@ def _candidate_facts(row: dict, family: str) -> set[str]:
                 "taiwan would invest", "taiwan will invest", "taiwan to invest",
                 "taiwan committed", "taiwan committing", "대만이",
             ])
-            if taiwan_investment_nearby and (
+            if share_thirty and taiwan_investment_nearby and (
                 re.search(r"(?<!\d)44\s*억\s*(?:달러|불)", low)
                 or re.search(r"\$\s*4\.4\s*billion", low)
                 or re.search(r"\b4\.4\s*billion", low)
@@ -2307,8 +2307,8 @@ def _verified_alaska_us_reiteration_rows() -> list[dict]:
 
 
 def _verified_alaska_taiwan_rally_rows() -> list[dict]:
-    # 날짜가 확인된 독립 언론 원문을 미국 정부 발언의 기록으로만 보존한다.
-    # 대만의 구매계약/출자 확정, 실제 송금, FID/착공 증거로 사용하지 않는다.
+    # 독립 취재 매체가 확인한 '미국 정부의 발언'만 보존한다.
+    # 각 매체 원문에 직접 없는 수치나 계약 확정 여부를 덧붙이지 않는다.
     return [
         {
             "title": "Trump says Taiwan will purchase 30% of Alaska LNG pipeline gas over 20 years and Taiwan will invest additional $4.4 billion; Taiwan not yet confirmed",
@@ -2317,13 +2317,18 @@ def _verified_alaska_taiwan_rally_rows() -> list[dict]:
             "published": "2026-10-14",
         },
         {
-            "title": "Trump Taiwan to buy 30 percent of Alaska LNG gas for 20 years and invest $4.4 billion (US statement, Taiwan unconfirmed)",
+            "title": "Trump says Taiwan agrees to buy 30% of Alaska LNG pipeline gas; US Commerce Secretary says Taiwan commits $4.4 billion investment, Taiwan ministry not yet confirmed",
+            "source": "Reuters",
+            "link": "https://www.reuters.com/business/energy/trump-says-taiwan-agrees-buy-30-gas-alaska-pipeline-2026-10-14/",
+            "published": "2026-10-14",
+        },
+        {
+            "title": "Trump claims Taiwan has a 20-year Alaska LNG gas purchase agreement at Wasilla rally, actual binding contract not yet verified",
             "source": "Associated Press",
             "link": "https://apnews.com/article/aa4ec095692c57a851a942c0f21624f7",
             "published": "2026-10-14",
         },
     ]
-
 
 def _rss(query: str) -> list[dict]:
     global _RSS_CALLS, _RSS_BUFFER, _RSS_BATCH_DONE, _RSS_FATAL
