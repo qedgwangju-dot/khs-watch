@@ -192,6 +192,29 @@ def enforce_text(text: str) -> str:
         return f"{m.group(0)}({_krw_text(value, currency, per)})"
     text = iso_pat.sub(repl_iso, text)
 
+    # Postfixed ISO units, e.g. "6 billion USD", "60억 USD", "1.5 trillion EUR".
+    # Exact-value patterns only; do not touch an optical speed such as 1.6T.
+    suffix_iso_pat = re.compile(
+        r"(?<![A-Za-z0-9_$])(?P<num>\d[\d,.]*(?:\.\d+)?)\s*"
+        r"(?P<unit>trillion|billion|million|bn|mn|조|십억|억|백만|천만|만|T|B|M)?\s+"
+        r"(?P<code>USD|EUR|JPY|MYR|CNY|HKD|GBP|SGD|TWD|AUD|CAD|CHF)\b"
+        r"(?P<per>/" + PER_UNIT_PATTERN + r")?",
+        re.I,
+    )
+    def repl_suffix_iso(m):
+        if _already_parenthesized(text[m.end():]):
+            return m.group(0)
+        unit = (m.group("unit") or "").lower()
+        scale = {
+            "trillion": 1_000_000_000_000, "t": 1_000_000_000_000,
+            "billion": 1_000_000_000, "bn": 1_000_000_000, "b": 1_000_000_000,
+            "million": 1_000_000, "mn": 1_000_000, "m": 1_000_000,
+        }.get(unit, SCALE.get(m.group("unit") or "", 1))
+        value = _number(m.group("num")) * scale
+        per = m.group("per") or ""
+        return f"{m.group(0)}({_krw_text(value, m.group('code').upper(), per)})"
+    text = suffix_iso_pat.sub(repl_suffix_iso, text)
+
     # Plain symbol amounts such as $73.39/kg, €12, HK$500.
     symbol_plain = re.compile(
         r"(?P<prefix>US\$|HK\$|NT\$|S\$|A\$|C\$|\$|€|£)\s*"
@@ -255,7 +278,13 @@ def _money_candidates(text: str):
         r"\d[\d,.]*(?:\.\d+)?(?:\s*(?:trillion|billion|million|bn|mn|T|B|M))?"
         r"(?:/" + PER_UNIT_PATTERN + r")?"
     )
-    for m in re.finditer(word + "|" + symbol + "|" + iso, text, re.I):
+    suffix_iso = (
+        r"(?<![A-Za-z0-9_$])\d[\d,.]*(?:\.\d+)?\s*"
+        r"(?:trillion|billion|million|bn|mn|조|십억|억|백만|천만|만|T|B|M)?\s+"
+        r"(?:USD|EUR|JPY|MYR|CNY|HKD|GBP|SGD|TWD|AUD|CAD|CHF)\b"
+        r"(?:/" + PER_UNIT_PATTERN + r")?"
+    )
+    for m in re.finditer(word + "|" + symbol + "|" + iso + "|" + suffix_iso, text, re.I):
         yield m
 
 
