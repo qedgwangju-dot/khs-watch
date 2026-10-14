@@ -37,6 +37,8 @@ for _required in (
     "CATL_INTILION_RECOVERY =",
     "DEXMATE_LG_RECOVERY =",
     "STOCK_218_CORRECTION =",
+    "FLUENCE_VATTENFALL_RECOVERY =",
+    "def _fluence_vattenfall_recovery(",
     "def _stock_218_correction_recovery(",
     "def _catl_intilion_recovery(",
     "def _dexmate_lg_recovery(",
@@ -3683,5 +3685,134 @@ try:
 finally:
     base.NOW=seen_before
 
+
+
+# 60) Vattenfall Brunsbuettel: September final investment decision and
+# October Fluence signed 1 GWh EPC award are distinct milestones. This test
+# models future milestones but does not assert they have happened.
+fluence_fid = make(
+    "Vattenfall Fluence Brunsbüttel September FID",
+    "Vattenfall takes final investment decision for 254MW and 1,000MWh "
+    "Brunsbüttel battery in September 2026, construction planned for 2027.",
+    "Vattenfall",
+)
+ffg,ffs,ffc,ffk=classify(fluence_fid)
+assert ffg=='fluence_vattenfall_bess' and ffs<11,(ffg,ffs,ffc)
+
+fluence_signed = make(
+    "Vattenfall Fluence Brunsbüttel 1 GWh signed turnkey contract",
+    "Fluence and Vattenfall signed an agreement for the 254MW/1,000MWh "
+    "Brunsbüttel Gridstack Pro 5000 battery facility. Includes EPC, "
+    "commissioning and long-term service. Construction planned 2027, "
+    "commercial operation expected end 2028, 380kV grid.",
+    "Fluence (GlobeNewswire)",
+)
+fsg,fss,fsc,fsk=classify(fluence_signed)
+assert fsg=='fluence_vattenfall_bess' and fss>=11,(fsg,fss,fsc)
+assert fsc=='Fluence–Vattenfall · 독일 1GWh ESS 정식 턴키 공급계약',fsc
+assert fsk!=ffk,'2026-09 FID cannot dedup into 2026-10 signed vendor award'
+fc=base.meaning(fsc)
+for needle in ('254MW','1,000MWh','380kV','2027년','2028년','장기 유지보수','4,201억','6,751억원','계약액'):
+    assert needle in fc,(needle,fc)
+assert '삼성SDI 매출로' in base.risk(fsc),base.risk(fsc)
+
+fluence_signed_other_official = make(
+    "Fluence Vattenfall Brunsbüttel contract 254MW 1GWh",
+    "Fluence and Vattenfall signed an agreement for Brunsbüttel 254MW "
+    "1GWh battery EPC and long term services.",
+    "Vattenfall",
+)
+c2g,c2s,c2c,c2k=classify(fluence_signed_other_official)
+assert c2g==fsg and c2s>=11 and c2k==fsk,(c2g,c2s,c2c,c2k)
+
+fluence_media_only=make(
+    "Fluence Vattenfall Brunsbüttel 1GWh 계약설",
+    "Vattenfall Fluence Brunsbüttel project 254MW contract signed "
+    "according to unnamed industry sources.",
+    "테마주 블로그",
+)
+fmg,fms,fmc,fmk=classify(fluence_media_only)
+assert fmg==fsg and fms<11,(fmg,fms,fmc)
+
+fluence_future_construction=make(
+    "Fluence Vattenfall Brunsbüttel construction started",
+    "Fluence and Vattenfall confirm Brunsbüttel battery construction "
+    "has started on the 254 MW project.",
+    "Fluence",
+)
+fcg,fcs,fcc,fck=classify(fluence_future_construction)
+assert fcg==fsg and fcs>=11 and fck!=fsk,(fcg,fcs,fcc)
+assert '실제 착공' in fcc,fcc
+
+fluence_future_energized=make(
+    "Fluence Vattenfall Brunsbüttel grid connection completed",
+    "Fluence and Vattenfall Brunsbüttel 254MW BESS "
+    "grid connection completed and commercial operation started.",
+    "Fluence",
+)
+feg,fes,fec,fek=classify(fluence_future_energized)
+assert feg==fsg and fes>=11 and fek!=fsk and fek!=fck,(feg,fes,fec)
+assert '전원 인가' in fec,fec
+
+fluence_future_cancel=make(
+    "Fluence Vattenfall Brunsbüttel cancelled contract",
+    "Fluence and Vattenfall Brunsbüttel 254MW BESS "
+    "have cancelled their supply contract.",
+    "Fluence",
+)
+frg,frs,frc,frk=classify(fluence_future_cancel)
+assert frg==fsg and frs>=11 and frk not in {fsk,fck,fek},(frg,frs,frc)
+
+fluence_backfill=watcher.query_news(watcher.FLUENCE_VATTENFALL_RECOVERY)
+if base.NOW.astimezone(base.KST).date()<=dt.date(2026,10,20):
+    assert len(fluence_backfill)==1,fluence_backfill
+    fb=fluence_backfill[0]
+    assert fb['source']=='Fluence (GlobeNewswire)',fb
+    assert fb['published']=='2026-10-14T07:00:00+00:00',fb
+    fg,fs,fc,fk=classify(fb)
+    assert fg==fsg and fs>=11 and fk==fsk,(fg,fs,fc,fk)
+    rendered=fb['title']+' '+fb['description']
+    assert base.category(rendered,base.topic_group(rendered))==fsc,rendered
+    assert 'Fluence' in base.clean_title(fb['title'],fb['source'])
+    verify=base.verification(fb,fg,rendered)
+    assert 'GlobeNewswire' in verify and '9/10' in verify,verify
+    assert watcher.qty._skip_quantity_enrichment(
+        '<b>1. Fluence·Vattenfall ESS</b>\n'
+        '<b>분류</b> Fluence–Vattenfall · 독일 1GWh ESS 정식 턴키 공급계약\n'
+        '254MW, 1,000MWh, 2028년'
+    )
+old_bess_now=base.NOW
+try:
+    base.NOW=dt.datetime(2026,10,21,12,0,tzinfo=dt.timezone.utc)
+    assert watcher.query_news(watcher.FLUENCE_VATTENFALL_RECOVERY)==[]
+finally:
+    base.NOW=old_bess_now
+
+# 61) Samsung SDI October 8 DS preview is not confirmed Q3 profit,
+# new customer contract, completed proceeds allocation or 10GWh tooling.
+sdi_ds_preview=make(
+    "삼성SDI 3Q26 Preview 본업 흑자 DS투자증권 최태용",
+    "삼성SDI 3분기 영업이익 2575억원 전망 중 정산이익 1500억원 예상, "
+    "4분기 추가 수주 기대 및 시너지셀즈 2028년 10GWh 생산라인 검토.",
+    "뉴스핌",
+)
+sg,ss,sc,sk=classify(sdi_ds_preview)
+assert sg=='sdi_oct08_broker_preview' and ss<11,(sg,ss,sc)
+assert '증권사' in base.category(sdi_ds_preview['title']+' '+sdi_ds_preview['description'],sg),sc
+assert '추정치' in base.meaning(sc),base.meaning(sc)
+sdi_official_earnings=make(
+    "삼성SDI 3분기 공식 실적 발표",
+    "삼성SDI는 3분기 실적 발표에서 ESS와 UPS용 배터리 "
+    "영업이익률과 AMPC를 구분하여 실제 실적을 공개했다.",
+    "삼성SDI",
+)
+og,os,oc,ok=classify(sdi_official_earnings)
+assert og!='sdi_oct08_broker_preview',og
+
+# 62) Basic unit parsing: MW is not MWh; there are no invented
+# robot units in a grid-scale battery contract.
+assert watcher.qty.QTY_RE.findall('254MW 1000MWh 1GWh 1GW')==[
+    ('254','MW'),('1','GW')
+],watcher.qty.QTY_RE.findall('254MW 1000MWh 1GWh 1GW')
 
 print("Physical-AI watcher regression guards: PASS")
