@@ -1072,11 +1072,29 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
             "tankertrackers_7country_crude_mtd",[row],None,now)
         self.assertIn("88.9%",body)
         self.assertIn("17.273백만 배럴/일",body)
-        self.assertIn("하루 262.1만 배럴 증가",body)
+        self.assertIn("하루 +262.1만 배럴 변화",body)
         self.assertIn("월중 잠정",body)
         self.assertIn("Kpler의 이란 제외",body)
         self.assertNotIn("전쟁 전 평균의 100%",body)
         self.assertLessEqual(len(body.splitlines()),29)
+
+    def test_tanker_november_updates_month_and_compares_october(self):
+        # November must not be mislabeled October or compare against September.
+        now=dt.datetime(2026,11,4,12,tzinfo=dt.timezone.utc)
+        html=self._tanker_7country_html(
+            post_id="8001",pub="2026-11-04T11:06:41+00:00"
+        ).replace("October: 17.273","October: 17.273<br>November: 18.000")
+        row=MODULE.parse_tankertrackers_seven_country_mtd(html,now)
+        data=MODULE._extract_tankertrackers_7country_metrics([row])
+        self.assertIsNotNone(data)
+        self.assertEqual(data["month"],11)
+        self.assertEqual(data["prev_mbd"],17.273)
+        body=MODULE.build_physical_flow_alert_body(
+            "tankertrackers_7country_crude_mtd",[row],None,now)
+        self.assertIn("11월 잠정",body)
+        self.assertIn("10월 비교",body)
+        self.assertIn("하루 +72.7만 배럴 변화",body)
+        self.assertNotIn("9월 비교",body)
 
     def test_tanker_monthly_rejects_mismatched_countries_or_weekly(self):
         now=dt.datetime(2026,10,14,2,0,tzinfo=dt.timezone.utc)

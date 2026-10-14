@@ -1486,6 +1486,7 @@ def _extract_tankertrackers_7country_metrics(
             r"jan=([0-9]{1,2}\.[0-9]{3}); "
             r"feb=([0-9]{1,2}\.[0-9]{3}); "
             r"sep=([0-9]{1,2}\.[0-9]{3}); "
+            r"(?:prev=([0-9]{1,2}\.[0-9]{3}); )?"
             r"latest=([0-9]{1,2}\.[0-9]{3}); "
             r"scope=iran,iraq,kuwait,qatar,saudi arabia,uae,oman"
         )
@@ -1493,9 +1494,16 @@ def _extract_tankertrackers_7country_metrics(
         if not match:
             continue
         month = int(match.group(1))
-        jan, feb, sep, latest = (float(match.group(i)) for i in (2, 3, 4, 5))
+        jan, feb, sep, latest = (
+            float(match.group(2)), float(match.group(3)),
+            float(match.group(4)), float(match.group(6))
+        )
+        prev = float(match.group(5)) if match.group(5) else (sep if month == 10 else None)
+        if prev is None:
+            continue
         if not (5.0 <= jan <= 35.0 and 5.0 <= feb <= 35.0
-                and 0.0 < sep <= 35.0 and 0.0 < latest <= 35.0):
+                and 0.0 < sep <= 35.0 and 0.0 < prev <= 35.0
+                and 0.0 < latest <= 35.0):
             continue
         pub = dt.datetime.fromtimestamp(row.published_epoch, tz=UTC)
         # Do not label a partial October reading as a completed full-month rate.
@@ -1503,7 +1511,7 @@ def _extract_tankertrackers_7country_metrics(
             continue
         return {
             "month": month, "jan_mbd": jan, "feb_mbd": feb,
-            "sep_mbd": sep, "latest_mbd": latest,
+            "sep_mbd": sep, "prev_mbd": prev, "latest_mbd": latest,
             "published_utc": pub.isoformat(timespec="seconds"),
             "origin_link": row.link,
         }
@@ -1580,7 +1588,8 @@ def parse_tankertrackers_seven_country_mtd(
         title = (
             f"TankerTrackers 2026 seven-country crude MTD month={month}; "
             f"jan={readings[0]:.3f}; feb={readings[1]:.3f}; "
-            f"sep={readings[8]:.3f}; latest={readings[-1]:.3f}; "
+            f"sep={readings[8]:.3f}; prev={readings[-2]:.3f}; "
+            f"latest={readings[-1]:.3f}; "
             "scope=iran,iraq,kuwait,qatar,saudi arabia,uae,oman"
         )
         candidates.append(NewsItem(
@@ -1607,19 +1616,20 @@ def _build_tankertrackers_seven_country_alert_body(
         raise RuntimeError("TankerTrackers 원문 확인 실패 · Telegram 전송 차단")
     v = float(m["latest_mbd"])
     feb = float(m["feb_mbd"])
-    sep = float(m["sep_mbd"])
+    prev = float(m["prev_mbd"])
+    month = int(m["month"])
     jan_feb_avg = (float(m["jan_mbd"]) + feb) / 2.0
     ratio_feb = v / feb * 100.0
     ratio_avg = v / jan_feb_avg * 100.0
-    delta = v - sep
+    delta = v - prev
     lines = [
         current.astimezone(KST).strftime("%Y년 %m월 %d일 %H:%M KST"),
         "",
         "[현재 숫자]",
-        f"10월 잠정      {v:.3f}백만 배럴/일 · 중동 7개국·이란 포함",
+        f"{month}월 잠정      {v:.3f}백만 배럴/일 · 중동 7개국·이란 포함",
         f"2월 비교      {feb:.3f}백만 배럴/일 대비 {ratio_feb:.1f}%",
         f"전쟁 전 평균  1~2월 평균 대비 {ratio_avg:.1f}%",
-        f"9월 비교      {sep:.3f} → {v:.3f}백만 배럴/일 · 하루 {delta*100:,.1f}만 배럴 증가",
+        f"{month-1}월 비교      {prev:.3f} → {v:.3f}백만 배럴/일 · 하루 {delta*100:+,.1f}만 배럴 변화",
         "집계 범위     이란·이라크·쿠웨이트·카타르·사우디·UAE·오만",
     ]
     if oil is not None and fx is not None:
