@@ -14,6 +14,7 @@ import war_peace_reconstruction_watch_integrity as integrity
 import war_peace_reconstruction_watch_evidence as evidence
 import war_peace_reconstruction_watch_precise as market
 import war_peace_reconstruction_watch_diplomacy_flash as quality
+import war_peace_reconstruction_watch_newideas as newideas
 
 watch = integrity.watch
 NOW = dt.datetime(2026, 10, 13, 1, 57, tzinfo=watch.KST)
@@ -42,6 +43,66 @@ class IntegrityTests(unittest.TestCase):
         path = Path(__file__).parent/'test_fixtures/war_source_alias_38526317484.json'
         fixture = json.loads(path.read_text(encoding='utf-8'))
         return fixture, dt.datetime.fromisoformat(fixture['provenance']['queried_at_kst'])
+
+    def macro_fixture(self):
+        path = Path(__file__).parent/'test_fixtures/war_macro_effect_38570159999.json'
+        fixture = json.loads(path.read_text(encoding='utf-8'))
+        return fixture, dt.datetime.fromisoformat(fixture['provenance']['queried_at_kst'])
+
+    def test_preserved_cpi_report_keeps_prices_instead_of_cached_peace_meeting(self):
+        fixture, now = self.macro_fixture()
+        row = fixture['article']
+        score, tags = integrity.score_item(row, now)
+        row['score'], row['tags'] = score, tags
+        with patch.object(integrity.body_parallel, '_safe_enrich'):
+            text = integrity.build_alert([row], [], now)
+        self.assertGreater(score, 0)
+        self.assertEqual(integrity.non_military_kind(row), 'market_effect')
+        self.assertEqual(row['classification_color'], 'yellow')
+        self.assertIn('미국·물가 · 전쟁 파급 보도', text)
+        self.assertIn(row['title_original'], text)
+        self.assertIn('9월 CPI 3.7% 상승', text)
+        self.assertEqual(row['signals_ko'], [])
+        self.assertEqual(row['forced_tags'], [])
+        self.assertEqual(row['tags'], ['전쟁의 물가 파급 보도'])
+        for stale in ('젤렌스키', 'Trump 회동', '휴전·평화', '종전·협상'):
+            self.assertNotIn(stale, text)
+        receipt = evidence.alert_receipt([row], [], now, text)
+        self.assertEqual([x['id'] for x in receipt['articles'] if x['rendered']], [row['id']])
+
+    def test_late_september_requires_source_actors_and_meeting_predicate(self):
+        fixture, _ = self.macro_fixture()
+        signals, marks = newideas._newidea_signals(fixture['article'])
+        self.assertNotIn('트럼프후속회동', marks)
+        self.assertFalse(any('젤렌스키' in x for x in signals))
+        actual_meeting = article('젤렌스키, 9월 말 트럼프와 회동 예정')
+        _, marks = newideas._newidea_signals(actual_meeting)
+        self.assertIn('트럼프후속회동', marks)
+
+    def test_same_hash_cpi_body_with_cached_meeting_is_rejected(self):
+        fixture, now = self.macro_fixture()
+        row, text = fixture['article'], fixture['bad_rendered_block']
+        receipt = evidence.alert_receipt([row], [], now, text)
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            root = Path(folder)
+            for attr, name in {'ALERT': 'alert.txt', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                stack.enter_context(patch.object(watch, attr, root/name))
+            watch.ALERT.write_text(text, encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids': [row['id']]}), encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+            stack.enter_context(patch.object(integrity, '_verify'))
+            with self.assertRaisesRegex(RuntimeError, 'WAR_INTEGRITY_GATE: rendered topic differs'):
+                integrity.verify_alert()
+
+    def test_explicit_new_attack_clause_is_not_replaced_by_macro_stage(self):
+        row = article('이란, 공습 재개…전쟁 여파에 미국 CPI 물가 상승')
+        self.assertIsNone(integrity.non_military_kind(row))
+        self.assertEqual(integrity.final_color(row), 'red')
+
+    def test_explicit_bilateral_peace_implementation_is_not_replaced_by_macro_stage(self):
+        row = article('러시아·우크라이나, 휴전 합의·양측 공격 중단 이행 확인…전쟁 물가 부담 완화 기대')
+        self.assertIsNone(integrity.non_military_kind(row))
+        self.assertEqual(integrity.final_color(row), 'green')
 
     def test_rejected_production_alias_pair_keeps_exact_origin_once(self):
         fixture, now = self.alias_fixture()

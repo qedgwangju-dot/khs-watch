@@ -12,6 +12,7 @@ import datetime as dt
 
 import war_peace_reconstruction_watch_oct04_guard as previous
 import war_peace_reconstruction_watch_bodycolor_parallel as body_parallel
+import war_peace_reconstruction_watch_clean as source_score
 
 watch, runner = previous.watch, previous.runner
 _score, _color = watch.score_item, previous.final_color
@@ -22,7 +23,8 @@ _verify = runner.verify_alert
 KIND_LABELS = {'sanctions': '제재·압박', 'reaction': '외교반응·개입검토',
                'attack_pause': '공격 중단·부인 발언', 'mixed_restraint': '자제 발언·상대 공격 주장',
                'military_statement': '군사 대응·보복 발언', 'support_statement': '지원 정책 발언',
-               'military_discussion': '공습 재개 논의·이견', 'military_analysis': '군사·안보 해설'}
+               'military_discussion': '공습 재개 논의·이견', 'military_analysis': '군사·안보 해설',
+               'market_effect': '전쟁의 물가 파급 보도'}
 
 
 def _headline(row):
@@ -69,6 +71,9 @@ def _headline_group(title):
 def _primary_topic(row):
     title = _headline(row)
     kind = non_military_kind(row)
+    if kind == 'market_effect':
+        us_prices = re.search(r'(?:미국|美|united states|u\.s\.).{0,12}(?:물가|cpi|inflation)', title)
+        return ('미국·물가' if us_prices else '물가·경제지표') + ' · 전쟁 파급 보도'
     if kind in ('military_statement', 'military_discussion', 'military_analysis'):
         return _headline_group(title) + ' · ' + KIND_LABELS[kind]
     if kind == 'support_statement':
@@ -189,12 +194,31 @@ def non_military_kind(row):
                  r'\b(?:intelligence|information).{0,15}(?:support|sharing).{0,20}(?:maintain|continu)|'
                  r'\b(?:maintains?|continues?).{0,20}(?:intelligence|information).{0,15}(?:support|sharing)', title):
         return 'support_statement'
+    # An inflation report about war costs is not a new diplomatic event.
+    prices = re.search(r'소비자물가|물가|\bcpi\b|\binflation\b|consumer prices', title)
+    new_peace = re.search(r'(?:휴전|종전|평화협정).{0,12}(?:합의|체결|이행|발효)|'
+                          r'\b(?:ceasefire|peace deal).{0,20}(?:agreed|signed|implemented)', title)
+    if prices and re.search(r'전쟁|\bwar\b', title) and not new_peace:
+        return 'market_effect'
     return None
 
 
+def _clear_market_event_cache(row):
+    row['non_military_kind'] = 'market_effect'
+    row['signals_ko'] = []
+    row['forced_tags'] = []
+    row['tags'] = [KIND_LABELS['market_effect']]
+    row.pop('newidea_marks', None)
+    row.pop('deep_signal', None)
+
+
 def score_item(row, now):
-    score, tags = _score(row, now)
     kind = non_military_kind(row)
+    if kind == 'market_effect':
+        _clear_market_event_cache(row)
+        score, _ = source_score._original_score(row, now)
+        return score, list(row['tags'])
+    score, tags = _score(row, now)
     if kind and score > 0:
         row['non_military_kind'] = kind
         row['signals_ko'] = []
@@ -234,6 +258,14 @@ def verdict(items):
         )
     kinds = [non_military_kind(row) for row in items]
     if kinds and all(kinds):
+        if set(kinds) == {'market_effect'}:
+            return (
+                '<b>투자 판정</b>\n'
+                '- <b>핵심:</b> 전쟁과 물가 지표의 연결을 다룬 보도\n'
+                '- <b>현재 단계:</b> 물가·시장 파급 보도 — 새로운 교전·휴전 이행 여부는 별도 확인 필요\n'
+                '- <b>시장:</b> 기사에 인용된 지표와 에너지 가격의 기간·출처를 각각 확인\n'
+                '- <b>다음:</b> 공식 지표·공표일 → 에너지 가격·기간 → 전쟁 영향의 독립 확인'
+            )
         if set(kinds) & {'military_discussion', 'military_analysis'}:
             core = ' / '.join(dict.fromkeys(KIND_LABELS[kind] for kind in kinds))
             return (
@@ -387,6 +419,8 @@ def build_alert(items, markets, now):
         return ''
     for row in items:
         kind = non_military_kind(row)
+        if kind == 'market_effect':
+            _clear_market_event_cache(row)
         if maritime_attack_tally(row):
             # Older maritime templates describe one specific projectile cluster.
             # The current headline instead reports a population over a period.
@@ -447,6 +481,11 @@ def build_alert(items, markets, now):
     rendered_rows = [row for row in visible if {row.get('link'), row.get('resolved_url')} & rendered_urls]
     yellow_others = any(not non_military_kind(row) and final_color(row) == 'yellow' for row in rendered_rows)
     yellow_label = '군사위협·협상 제약' if yellow_others else '발언·제재·외교반응·협상 제약'
+    yellow_kinds = {non_military_kind(row) for row in rendered_rows if final_color(row) == 'yellow'}
+    if yellow_kinds == {'market_effect'}:
+        yellow_label = '물가·시장 파급 보도'
+    elif 'market_effect' in yellow_kinds:
+        yellow_label += '·시장 파급'
     for marker, label in [('🔴', '공격·확전'), ('🟢', '재건·휴전'), ('🟡', yellow_label)]:
         if re.search(r'(?m)^' + marker + r'\s*\[(?:신규|속보|후속)\]', rendered):
             badges.append(f'{marker} <b>{label}</b>')
@@ -533,7 +572,7 @@ def verify_alert(test_mode=False):
         primary = _primary_topic(row)
         if primary and html.escape(primary) not in lines[start]:
             raise RuntimeError('WAR_INTEGRITY_GATE: rendered topic differs from headline event')
-        if non_military_kind(row) in ('military_statement', 'support_statement', 'military_discussion', 'military_analysis') and (
+        if non_military_kind(row) in ('military_statement', 'support_statement', 'military_discussion', 'military_analysis', 'market_effect') and (
                 row.get('classification_color') != 'yellow' or not lines[start].startswith('🟡')):
             raise RuntimeError('WAR_INTEGRITY_GATE: statement presented as a new attack or implemented peace')
         marker = {'red': '🔴', 'green': '🟢', 'yellow': '🟡'}.get(row.get('classification_color'), '')
