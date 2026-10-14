@@ -56,7 +56,7 @@ def run_probe(journal: Path) -> dict:
     if not (sess["is_session"] and sess.get("open") and sess.get("continuous_end")
             and sess["open"] <= now < sess["continuous_end"]):
         return evidence
-    query = {"t1602InBlock": {"market": "2", "upcode": "301", "gubun1": "2",
+    query = {"t1602InBlock": {"market": "3", "upcode": "301", "gubun1": "2",
                              "gubun2": "0", "cts_time": "", "cts_idx": 0,
                              "cnt": 100, "gubun3": "", "exchgubun": "U"}}
     body = ls_post(get_token(), "/stock/investor", "t1602", query,

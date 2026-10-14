@@ -30,6 +30,9 @@ on:
       - "scripts/kosdaq_surge_industries.py"
       - "scripts/test_kosdaq_surge_industries.py"
       - "scripts/probe_kosdaq_surge_industries.py"
+      - "scripts/market_flow_channels.py"
+      - "scripts/test_market_flow_channels.py"
+      - "scripts/probe_market_flow_channels.py"
       - "scripts/krx_session_calendar.py"
   workflow_dispatch:
 
@@ -77,6 +80,7 @@ jobs:
           python scripts/test_kospi_shock_enrichment.py
           python scripts/test_kospi_flow_attribution_strict.py
           python scripts/test_kosdaq_surge_industries.py
+          python scripts/test_market_flow_channels.py
 
       - name: Verify KOSPI scheduled CI isolation
         run: |
@@ -220,14 +224,14 @@ jobs:
           now=dt.datetime.now(ZoneInfo("Asia/Seoul"))
           sess=session_state(now)
           status={"retrieved_at_kst":now.isoformat(),
-                  "source":"LS t1602 market=2 upcode=301 exchgubun=U",
+                  "source":"LS t1602 market=3 upcode=301 exchgubun=U",
                   "threshold_5m_eok":KOSDAQ_SURGE_SINGLE_SPOT_EOK,
                   "status":"outside_market"}
           live=bool(sess["is_session"] and sess.get("open") and sess.get("continuous_end")
                     and sess["open"]+dt.timedelta(minutes=6)<=now<sess["continuous_end"])
           if live:
               data=ls_post(get_token(),"/stock/investor","t1602",{
-                  "t1602InBlock":{"market":"2","upcode":"301","gubun1":"2",
+                  "t1602InBlock":{"market":"3","upcode":"301","gubun1":"2",
                   "gubun2":"0","cts_time":"","cts_idx":0,
                   "cnt":100,"gubun3":"","exchgubun":"U"}},
                   max_attempts=2,request_timeout=8.0)
