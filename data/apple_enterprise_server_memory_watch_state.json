@@ -300,6 +300,7 @@
     "dd44dd878e72ce73db25f59b",
     "ddc444e3c9641c448147",
     "df5ab7b5133ac7c1cd85f4bc",
+    "dfc9d4251f18a2d12f26",
     "dfdb9807d398f9d49ae2",
     "e06b19db71a550842ac4",
     "e1e8a834a1aed28d103c38fd",
@@ -361,7 +362,7 @@
       "실패모드·일정 변화"
     ]
   },
-  "last_scan_kst": "2026-10-14T09:09:58+09:00",
+  "last_scan_kst": "2026-10-14T13:50:38+09:00",
   "errors": [],
   "seen_event_keys": [
     "memory:unconfirmed",
@@ -369,9 +370,6 @@
     "server:reported:2or4:2029"
   ],
   "observations": [],
-  "fetch_ok": 10,
-  "fetch_errors": [
-    "bing_news \"Apple\" \"M8 Ultra\" server: ParseError not well-formed (invalid token): line 1, column 41",
-    "bing_news \"Apple\" HBM server supplier contrac: ParseError not well-formed (invalid token): line 1, column 41"
-  ]
+  "fetch_ok": 12,
+  "fetch_errors": []
 }
