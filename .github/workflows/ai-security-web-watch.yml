@@ -353,6 +353,93 @@ jobs:
           print("ai_security_insider_case_regression=PASS")
           PY
 
+      - name: Verify AI self-replication research and incident stages
+        shell: bash
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          from scripts.ai_security_web_watch import (
+              REPLICATION_REFERENCE_URL, UTC, build_alert, incident_fact,
+              is_known_replication_research_baseline, material,
+              normalize_item, replication_stage,
+          )
+
+          paper = {
+              "kind": "official_direct",
+              "title": "Anthropic Research: self replicating ai",
+              "description": "Controlled laboratory evaluation, no wild infections demonstrated",
+              "source": "Anthropic Research",
+              "url": REPLICATION_REFERENCE_URL,
+              "published_at": "2026-10-12T00:00:00+00:00",
+          }
+          entry = normalize_item(paper)
+          assert material(entry), "Official research must be indexed"
+          assert replication_stage(entry) == "research"
+          assert is_known_replication_research_baseline(entry), "Existing paper must remain a baseline"
+          assert entry["category"] == "AI 자율복제·사물인터넷 모의평가"
+          assert entry["severity"] == 1 and entry["severity_label"] == "주의"
+          assert "실제 인터넷 감염 확인 아님" in incident_fact(entry)
+
+          old_article = {
+              "kind": "news",
+              "title": "Anthropic warns self-replicating AI may soon infect IoT devices",
+              "description": "9B model ran on 8 of 9 hardware types. No worm in the wild.",
+              "source": "Reuters",
+              "url": "https://www.reuters.com/example-lab-report",
+              "published_at": "2026-10-13T00:00:00+00:00",
+          }
+          normalized_old = normalize_item(old_article)
+          assert material(normalized_old)
+          assert replication_stage(normalized_old) == "research"
+          assert is_known_replication_research_baseline(normalized_old)
+          assert normalized_old["severity"] == 1
+
+          verified = {
+              "kind": "official",
+              "title": "CISA confirms AI worm detected in the wild",
+              "description": "Confirmed active self-replication of an AI model across IoT devices",
+              "source": "CISA",
+              "url": "https://www.cisa.gov/example-new-advisory",
+              "published_at": "2026-10-15T00:00:00+00:00",
+          }
+          n_verified = normalize_item(verified)
+          assert material(n_verified)
+          assert replication_stage(n_verified) == "confirmed_field"
+          assert n_verified["severity"] == 3 and n_verified["severity_label"] == "긴급"
+          assert n_verified["category"] == "AI 자율복제·실제 감염 확인"
+          assert not is_known_replication_research_baseline(n_verified)
+
+          reported = dict(verified, kind="news", source="Reuters")
+          n_reported = normalize_item(reported)
+          assert replication_stage(n_reported) == "reported_field"
+          assert n_reported["severity"] == 2
+          assert "추가검증" in n_reported["category"]
+
+          negated = dict(
+              verified,
+              title="CISA research: no AI worm detected in the wild",
+              description="AI model self-replication not observed in real deployments",
+          )
+          n_negated = normalize_item(negated)
+          assert replication_stage(n_negated) == "research"
+          assert n_negated["severity"] == 1
+
+          unrelated = dict(
+              verified,
+              title="Traditional software worm affected IoT routers",
+              description="Ordinary botnet malware, no AI model involved",
+          )
+          assert replication_stage(unrelated) is None
+          assert not material(unrelated)
+
+          title, body = build_alert([[entry]], dt.datetime(2026, 10, 14, 0, 0, tzinfo=UTC))
+          assert "모의평가" in title + body
+          assert "실제 인터넷 감염 확인 아님" in body
+          print("ai_security_replication_lab_vs_field=PASS")
+          print("ai_security_replication_known_study_baseline=PASS")
+          print("ai_security_replication_alert_language=PASS")
+          PY
+
       - name: Run live web security watch
         run: |
           rm -f out/ai_security_web_watch_alert_title.txt out/ai_security_web_watch_alert.md out/ai_security_web_watch_telegram_confirmed.json
