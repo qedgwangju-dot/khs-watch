@@ -648,6 +648,23 @@ class HonamEventFilterRegressionTest(unittest.TestCase):
             self.assertEqual(json.loads(alert.read_text(encoding="utf-8"))["new_count"], 1)
 
 
+    def test_existing_2029_first_fab_completion_target_is_not_a_new_event(self):
+        items = [
+            {"title": "호남 반도체 2029년 첫 팹 완공 목표…속도전", "description": "정부는 인프라와 부지 조성을 추진할 방침"},
+            {"title": "호남 반도체 팹 2029년 준공 전망", "description": "건설 가능한 부지부터 단계적으로 준비할 계획"},
+        ]
+        for item in items:
+            with self.subTest(title=item["title"]):
+                self.assertTrue(_is_known_baseline_only(item))
+
+    def test_2029_reference_does_not_hide_actual_new_construction(self):
+        item = {
+            "title": "호남 반도체 팹 착공식 개최…2029년 첫 팹 완공 목표",
+            "description": "당국이 2029년 목표를 재확인한 가운데 실제 공사 첫 삽을 떴다.",
+        }
+        self.assertFalse(_is_known_baseline_only(item))
+
+
 
 if __name__ == "__main__":
     unittest.main()

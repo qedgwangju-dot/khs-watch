@@ -422,6 +422,17 @@ def _is_known_baseline_only(item):
     ):
         return True
 
+
+    # Published baseline: first 1-2 fabs by 2029 is a target, not a
+    # confirmed completion or a newly signed investment contract.
+    # Actual construction, contract, permit or schedule change still passes.
+    if re.search(
+        r"2029\s*년(?:\s*말)?[^\n]{0,50}(?:첫\s*팹|팹\s*[12]\s*기?|반도체\s*팹)[^\n]{0,50}(?:완공|준공)"
+        r"|(?:첫\s*팹|반도체\s*팹)[^\n]{0,50}(?:완공|준공)[^\n]{0,50}2029\s*년",
+        low, re.I,
+    ) and any(word in low for word in ("목표", "예정", "계획", "추진", "전망")):
+        return True
+
     # 2030년 6월 첫 양산 목표의 단순 재인용도 차단한다.
     if re.search(r"2030(?:년)?(?:\s*6월)?[^\n]{0,50}양산|양산[^\n]{0,50}2030(?:년)?(?:\s*6월)?", text, re.I):
         return True
