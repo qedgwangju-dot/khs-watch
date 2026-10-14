@@ -340,7 +340,8 @@
     "stateevt_a11d2cecef46963c039b": "2026-10-02T06:16:02.365139+00:00",
     "stateevt_4bd6e3eda851426115a9": "2026-10-03T01:23:43.460079+00:00",
     "stateevt_9539aeeed85f82de3ca5": "2026-10-14T01:13:57.413978+00:00",
-    "stateevt_f2c26bf9f31501b59b15": "2026-10-14T01:13:57.413978+00:00"
+    "stateevt_f2c26bf9f31501b59b15": "2026-10-14T01:13:57.413978+00:00",
+    "stateevt_90b6a05593e2e71dc434": "2026-10-14T01:14:49.498979+00:00"
   },
   "semantic_seen": {
     "alaska_participation_pressure": "2026-09-09T06:46:11.750941+00:00",
@@ -372,7 +373,8 @@
     "eventstate_nuclear_build_a11d2cecef46963c039b": "2026-10-02T06:16:02.365139+00:00",
     "eventstate_alaska_lng_4bd6e3eda851426115a9": "2026-10-03T01:23:43.460079+00:00",
     "eventstate_legacy_funding_media_9539aeeed85f82de3ca5": "2026-10-14T01:13:57.413978+00:00",
-    "eventstate_alaska_lng_f2c26bf9f31501b59b15": "2026-10-14T01:13:57.413978+00:00"
+    "eventstate_alaska_lng_f2c26bf9f31501b59b15": "2026-10-14T01:13:57.413978+00:00",
+    "eventstate_alaska_lng_90b6a05593e2e71dc434": "2026-10-14T01:14:49.498979+00:00"
   },
   "official_status": {
     "status": "official_seen",
@@ -671,47 +673,27 @@
       "facts": [
         "alaska_bilateral_status:review_started",
         "alaska_fid_after_commercial_review:reported",
-        "alaska_reported_amount_usd_b:54"
+        "alaska_reported_amount_usd_b:54",
+        "alaska_us_claim_usd_b:54",
+        "alaska_us_reiteration:2026-10-13"
       ],
       "slots": {
         "alaska_lng|alaska_bilateral_status": "alaska_bilateral_status:review_started",
         "alaska_lng|alaska_fid_after_commercial_review:reported": "alaska_fid_after_commercial_review:reported",
-        "alaska_lng|alaska_reported_amount_usd_b": "alaska_reported_amount_usd_b:54"
+        "alaska_lng|alaska_reported_amount_usd_b": "alaska_reported_amount_usd_b:54",
+        "alaska_lng|alaska_us_claim_usd_b": "alaska_us_claim_usd_b:54",
+        "alaska_lng|alaska_us_reiteration": "alaska_us_reiteration:2026-10-13"
       },
       "initialized_at": "2026-09-29T23:10:16.076895+00:00",
-      "updated_at": "2026-10-14T01:14:00.582066+00:00",
-      "last_title": "산업통상부 공식 Project North 알래스카 LNG 검토 착수 상업적 합리성 국내법 요건 충족 시 추진 여부 결정",
-      "last_source": "대한민국 정책브리핑",
+      "updated_at": "2026-10-14T01:14:54.332571+00:00",
+      "last_title": "백악관 공식 2026-10-13 한국 에너지투자 패키지 중 알래스카 LNG 540억달러 포함 주장 재확인",
+      "last_source": "White House",
       "evidence": [
         {
-          "source": "Alaska Public Media",
-          "title": "알래스카 LNG Glenfarne FID 이후 한국의 상업성 심사·투자 미결정 (현지 주의원 발언 보도)",
-          "link": "https://alaskapublic.org/news/economy/energy/2026-10-09/trumps-push-for-50b-korean-investment-in-alaska-gasline-faces-familiar-economic-challenges",
-          "published": "2026-10-10T00:57:00+00:00"
-        },
-        {
-          "source": "YTN",
-          "title": "백악관 \"한국, 알래스카 540억 달러 투자\"...알래스카 달려간 트럼프 - YTN",
-          "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFB0NllMa3lqdHo0dUdLNjZLT2JWVmRUenMwcEIzYURLMVZCb1QwTWRMeTlsYlAtSi14M2M5a3k4VmswT1l0cmhVWmNDTy0za0dDVmtudHZDZ3l6bzFRaUE?oc=5",
-          "published": "2026-10-13T23:03:00+00:00"
-        },
-        {
-          "source": "YTN",
-          "title": "백악관 \"한국, 알래스카에 540억 달러 투자할 것”...트럼프, 알래스카 유세 - YTN",
-          "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE8tbHQybk5lUkY0bEk1b3VZbUFwQVBHQnB5akdSTjAyNnFzRS0zXzliVVVxZmZDbVRMS0w0YjhnVmZ0bGxoRFJLWEhndFR4QTBLZ01JY3ZZWlMzSFc3ZEE?oc=5",
-          "published": "2026-10-13T21:00:00+00:00"
-        },
-        {
-          "source": "아시아투데이",
-          "title": "백악관 신임 대변인, 첫 브리핑서 “한국 알래스카 LNG 540억달러 연계”…한국은 투자 미결정 - 아시아투데이",
-          "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9SaFVlSHNTTmNTUk9zYUg3NTlVcmo1MmFSR1dfblVBNXd1cEhseWx3Vm9wd3dqaXptSkNKTlhrVkwzZHozbHNKcTlrcTdjZUxPb18wOTVBM2dLYWdOOFdoS1RNM2YwNW9ZM3dvY1F3?oc=5",
-          "published": "2026-10-13T23:22:02+00:00"
-        },
-        {
-          "source": "포쓰저널",
-          "title": "백악관 “한국, 알래스카 LNG에 540억달러 투자” 또 언급 - 포쓰저널",
-          "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9QXzNaYnlsS2lkZDdaMW02bEhVYkVVMGRyOE5MMlF2QloxZWdvYzZYQXdBaVBMWTkwNnJYV2g2QkVIV0hMWTNQVkJNdmNiajZKV1Z6X2MzOHhDY0MzNEk2bklQX1c?oc=5",
-          "published": "2026-10-14T00:00:24+00:00"
+          "source": "White House",
+          "title": "백악관 공식 2026-10-13 한국 에너지투자 패키지 중 알래스카 LNG 540억달러 포함 주장 재확인",
+          "link": "https://www.whitehouse.gov/releases/2026/10/president-trump-visits-alaska-delivering-results-for-the-last-frontier/",
+          "published": "2026-10-13"
         }
       ]
     },
@@ -763,5 +745,6 @@
   "westinghouse_framework_equity_version": 1,
   "project_power_funding_roles_version": 1,
   "encinal_project_cost_role_version": 1,
-  "alaska_stale_stages_guard_version": 1
+  "alaska_stale_stages_guard_version": 1,
+  "alaska_us_claim_scope_version": 1
 }
