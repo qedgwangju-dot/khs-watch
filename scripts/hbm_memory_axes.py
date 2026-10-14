@@ -206,7 +206,10 @@ def local_period(text, published):
 
 
 def is_axis_text(text):
-    if re.search(r"\bHBF\b|High[ -]Bandwidth Flash|고대역폭\s*(?:플래시|낸드)",text,re.I):
+    if (re.search(r"\bHBF\b|High[ -]Bandwidth Flash|고대역폭\s*(?:플래시|낸드)",text,re.I)
+            and re.search(r"규격|표준|최종|연기|미뤄|1월|January|specification|standard|revision|"
+                          r"pilot|sample|production|qualification|customer|contract|shipment|"
+                          r"시제품|샘플|검증|계약|양산|출하|OCP|UCIe|v\d+\.\d+",text,re.I)):
         return True
     if (re.search(r'\bFOPLP\b|fan[- ]out panel[- ]level|扇出型面板級封裝|패널형 팬아웃', text, re.I)
             and re.search(r'\bTSMC\b|台積電|CoPoS|\bASE\b|日月光|Innolux|群創|\bPTI\b|ChipMOS|PMIC|\bRF\b|AI|HPC|GPU|量產|量产|양산|pilot|試產|검증|customer|qualification|패키징', text, re.I)):
@@ -1549,9 +1552,13 @@ def parse_hbf_ocp_version(item, body):
         'final_spec_officially_confirmed':final,
         'initial_draft_baseline_version':'0.7.0',
         'memory_tier':'NAND_between_HBM_and_SSD',
-        'spec_capacity_max_gb':512, 'spec_bandwidth_min_tbps':0.4,
-        'spec_bandwidth_max_tbps':3.0, 'specified_stacking':[8,16],
-        'interconnect':'UCIe','measured_silicon_performance':None,
+        'spec_capacity_max_gb':512 if version == '0.7.0' else None,
+        'spec_bandwidth_min_tbps':0.4 if version == '0.7.0' else None,
+        'spec_bandwidth_max_tbps':3.0 if version == '0.7.0' else None,
+        'specified_stacking':[8,16] if version == '0.7.0' else None,
+        'interconnect':'UCIe' if version == '0.7.0' else None,
+        'spec_metrics_verified_for_version':'0.7.0',
+        'measured_silicon_performance':None,
         'commercial_sales_confirmed':False,
     }
     rec = make_record(
@@ -2413,7 +2420,9 @@ def render(change, rate=None):
             return " / ".join(parts)
         if record['axis'] == 'hbf_ocp_spec':
             stage='최종본 공식 확인' if v.get('final_spec_officially_confirmed') else '공개 규격(최종 여부 별도)'
-            return f"버전 {v.get('version')} · {stage} / 최대 {v.get('spec_capacity_max_gb')}GB / 대역폭 규격 {v.get('spec_bandwidth_min_tbps')}~{v.get('spec_bandwidth_max_tbps')}TB/s / UCIe"
+            if v.get('version') == v.get('spec_metrics_verified_for_version','0.7.0'):
+                return f"버전 {v.get('version')} · {stage} / 최대 {v.get('spec_capacity_max_gb')}GB / 대역폭 규격 {v.get('spec_bandwidth_min_tbps')}~{v.get('spec_bandwidth_max_tbps')}TB/s / UCIe"
+            return f"버전 {v.get('version')} · {stage} / 새 규격 용량·대역폭은 별도 공식 원문 확인 필요(기존 V0.7.0 수치 재사용 금지)"
         if record['axis'] == 'hbf_issuer_milestone':
             names={'customer_sample':'고객 샘플','customer_validation':'고객 검증',
                    'customer_qualified':'고객 인증 완료','contract_signed':'공급계약 체결',
@@ -2680,6 +2689,7 @@ def render(change, rate=None):
         lines.append('• 사용자 캡처는 방향 기준선일 뿐, 판독이 모호한 숫자는 저장하지 않습니다. 공개 원문에서 확인되는 숫자만 가격 상태값으로 승격합니다.')
     if r['axis'] == 'hbf_ocp_spec':
         lines.append('• 최초 OCP V0.7.0은 2026년 8월 공개된 규격 초안이며, 최종본·실제 칩 성능·양산 매출과는 다릅니다.')
+        lines.append('• 규격 공개→고객 샘플→고객 검증→실제 공급계약→시험생산→양산→매출 발생을 별도로 확인합니다.')
         lines.append('• 2027년 1월 최종본 목표는 뉴스핌 보도로만 확인돼 공식 OCP 게시·버전 개정을 별도로 검증합니다.')
         lines.append('• 적층 수율·낸드 읽기 지연·발열·재기록 내구성·UCIe 호환성·소프트웨어 최적화가 핵심 위험입니다.')
     if r['axis'] == 'hbf_issuer_milestone':
@@ -2773,6 +2783,8 @@ def render(change, rate=None):
         if r['value'].get('weight_rounded_from_public_text'):
             lines.append('• 중량은 공개 보도 반올림값이면 중량당 단가를 정밀 계산하지 않습니다. 관세청 직접 원값 확인 시 갱신합니다.')
     label = {'official': '회사 공식자료', 'research': '조사기관 자료', 'reported': '보도 단계', 'user_capture': '사용자 캡처 기준선'}[r['evidence']]
+    if r.get('axis') == 'hbf_ocp_spec' and r['evidence'] == 'official':
+        label = 'OCP 공식 표준 규격'
     source_title = r.get('source_title','')
     if not re.search(r'[가-힣]', source_title):
         source_title = names.get(r['axis'], 'HBM 상태 변화') + ' 관련 보도'

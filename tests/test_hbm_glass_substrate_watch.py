@@ -741,5 +741,21 @@ class GlassSubstrateWatchTests(unittest.TestCase):
         self.assertIn("원문",msg)
 
 
+    def test_hbf_new_official_revision_does_not_carry_old_numeric_specification(self):
+        item={"direct_link":w.HBF_OCP_STORAGE_URL,"published_at_kst":"2027-02-01T09:00:00+09:00"}
+        rec=w.parse_hbf_ocp_version(
+            item,"High Bandwidth Flash (HBF) High-Level Base Die Specification V1.0.0")[0]
+        self.assertIsNone(rec["value"]["spec_bandwidth_max_tbps"])
+        self.assertIsNone(rec["value"]["spec_capacity_max_gb"])
+        out=w.render({"record":rec,"old":None,"reasons":["새 규격"]})
+        self.assertIn("기존 V0.7.0 수치 재사용 금지",out)
+        self.assertNotIn("최대 512GB",out)
+
+    def test_generic_hbf_commentary_without_milestone_does_not_crowd_existing_feeds(self):
+        self.assertFalse(w.is_axis_text("HBF may become important for AI demand in the future"))
+        self.assertTrue(w.is_axis_text("SK hynix HBF final specification January 2027"))
+        self.assertTrue(w.is_axis_text("HBF 2027년 1월 최종 규격 일정 발표"))
+
+
 if __name__ == "__main__":
     unittest.main()
