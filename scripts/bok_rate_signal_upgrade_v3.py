@@ -330,7 +330,19 @@ def main() -> int:
     alert_reasons = []
     migration = int(old.get("version") or 0) < 4
 
+    def semantic_snapshot(items):
+        return [
+            (
+                str(e.get("speaker") or ""), str(e.get("date") or ""),
+                tuple(sorted(k for k, v in (e.get("flags") or {}).items() if v)),
+            )
+            for e in items
+        ]
+
     if not boot:
+        # 기사 재인용이나 코드 재분류는 알리지 않되, 잘못된 이전 분류 메타데이터는 조용히 교정한다.
+        if semantic_snapshot(old.get("recent_rhetoric") or []) != semantic_snapshot(events[:5]):
+            state_reasons.append("정책발언 의미분류 메타데이터 교정")
         if old.get("grade_emoji") != grade_emoji or old.get("risk_score") != risk_score:
             state_reasons.append(
                 f"위험등급/점수 재계산: {old.get('grade_emoji','?')} {old.get('risk_score','?')} → "
