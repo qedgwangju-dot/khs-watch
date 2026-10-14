@@ -20,7 +20,8 @@ _future_refinery = previous._future_refinery_policy
 _verify = runner.verify_alert
 KIND_LABELS = {'sanctions': '제재·압박', 'reaction': '외교반응·개입검토',
                'attack_pause': '공격 중단·부인 발언', 'mixed_restraint': '자제 발언·상대 공격 주장',
-               'military_statement': '군사 대응·보복 발언', 'support_statement': '지원 정책 발언'}
+               'military_statement': '군사 대응·보복 발언', 'support_statement': '지원 정책 발언',
+               'military_discussion': '공습 재개 논의·이견', 'military_analysis': '군사·안보 해설'}
 
 
 def _headline(row):
@@ -56,16 +57,18 @@ def _headline_group(title):
     if re.search(r'우크라|러시아|\b(?:ukrain|russia)', title):
         return '우크라이나·러시아'
     if re.search(r'이란|\biran\b', title):
-        if re.search(r'이스라엘|\bisrael\b', title):
-            return '이스라엘·이란'
+        if re.search(r'이스라엘|네타냐후|\b(?:israel|netanyahu)\b', title):
+            return '미국·이스라엘·이란' if us else '이스라엘·이란'
         return '미국·이란' if us else '이란'
+    if re.search(r'이스라엘|네타냐후|\b(?:israel|netanyahu)\b', title):
+        return '미국·이스라엘' if us else '이스라엘'
     return '전쟁·외교'
 
 
 def _primary_topic(row):
     title = _headline(row)
     kind = non_military_kind(row)
-    if kind == 'military_statement':
+    if kind in ('military_statement', 'military_discussion', 'military_analysis'):
         return _headline_group(title) + ' · ' + KIND_LABELS[kind]
     if kind == 'support_statement':
         label = '정보 지원·종전 의향 발언' if re.search(r'종전|peace|end.{0,8}war', title) else '지원 정책 발언'
@@ -132,20 +135,42 @@ def future_refinery_policy(row):
     return not refinery_attack_denial(row) and _future_refinery(row)
 
 
+def _military_discussion_spans(title):
+    # "공습 재개 놓고 이견" is a nominal subject of discussion, whereas a
+    # separate "공습 재개…추가 공격 논의" clause still reports resumed attacks.
+    return list(re.finditer(
+        r'(?:공습|공격|군사\s*대응|미사일\s*발사)(?:\s*(?:재개|개시|실시|확대))?\s*(?:를|을)?\s*'
+        r'(?:논의|검토|협의|놓고\s*(?:이견|논의|갈등|고심))|'
+        r'\b(?:discuss(?:es|ed|ing)?|consider(?:s|ed|ing)?|at\s+odds\s+over|disagrees?\s+(?:on|over))\s+'
+        r'(?:(?:the\s+)?resumption\s+of|resuming|restarting)\s+(?:attacks?|strikes?|airstrikes?)\b', title))
+
+
+def _military_analysis_headline(title):
+    military = re.search(r'미사일|공습|공격|방패|방공|요격|\b(?:missile|attack|airstrike|shield|defen[cs]e)', title)
+    question = re.search(r'왜|어째서|\b(?:why|how)\b', title) and re.search(r'\?|까요|는가|했나', title)
+    return bool(military and question)
+
+
 def non_military_kind(row):
     title = html.unescape(str(row.get('title_original') or row.get('title') or row.get('title_ko') or '')).lower()
     if mixed_restraint_attack(row):
         return 'mixed_restraint'
     # Require an explicit new-action predicate before background weapon nouns
     # can turn a sanctions listing or a condemnation into a military event.
-    actual = bool(re.search(
+    discussion = _military_discussion_spans(title)
+    actions = list(re.finditer(
         r'공습\s*(?:개시|재개|감행)|공격\s*(?:개시|재개|감행)|미사일\s*발사|'
         r'보복\s*(?:공습|공격)\s*(?:개시|실시)|'
         r'\band\s+(?:attacks?|strikes?|bombs?)\b|'
         r'\b(?:launches?|launched|conducts?|conducted|resumes?|resumed)\s+(?:new\s+)?(?:attacks?|strikes?|airstrikes?)',
         title))
-    if actual:
+    if any(not any(span.start() <= action.start() and action.end() <= span.end()
+                   for span in discussion) for action in actions):
         return None
+    if discussion:
+        return 'military_discussion'
+    if _military_analysis_headline(title):
+        return 'military_analysis'
     if refinery_attack_denial(row):
         return 'attack_pause'
     if re.search(r'제재|\bsanctions?\b|restrictive measures', title):
@@ -208,6 +233,15 @@ def verdict(items):
         )
     kinds = [non_military_kind(row) for row in items]
     if kinds and all(kinds):
+        if set(kinds) & {'military_discussion', 'military_analysis'}:
+            core = ' / '.join(dict.fromkeys(KIND_LABELS[kind] for kind in kinds))
+            return (
+                '<b>투자 판정</b>\n'
+                f'- <b>핵심:</b> {core}\n'
+                '- <b>현재 단계:</b> 발언·논의·해설 단계 — 새로운 군사작전 개시는 별도 확인 필요\n'
+                '- <b>시장:</b> 논의·해설만으로 추가 공격·운영 차질이나 가격 방향을 확정할 수 없음\n'
+                '- <b>다음:</b> 원문·공식 결정 → 실제 작전·운영 변화 → 독립 확인'
+            )
         if set(kinds) & {'military_statement', 'support_statement'} and not set(kinds) & {'attack_pause', 'mixed_restraint'}:
             return (
                 '<b>투자 판정</b>\n'
@@ -388,7 +422,7 @@ def verify_alert(test_mode=False):
         primary = _primary_topic(row)
         if primary and html.escape(primary) not in lines[start]:
             raise RuntimeError('WAR_INTEGRITY_GATE: rendered topic differs from headline event')
-        if non_military_kind(row) in ('military_statement', 'support_statement') and (
+        if non_military_kind(row) in ('military_statement', 'support_statement', 'military_discussion', 'military_analysis') and (
                 row.get('classification_color') != 'yellow' or not lines[start].startswith('🟡')):
             raise RuntimeError('WAR_INTEGRITY_GATE: statement presented as a new attack or implemented peace')
         marker = {'red': '🔴', 'green': '🟢', 'yellow': '🟡'}.get(row.get('classification_color'), '')
