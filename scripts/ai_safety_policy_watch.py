@@ -627,7 +627,9 @@ def trail_of_bits_mna_stage(item: dict) -> str | None:
     )):
         return "signed" if official else "signed_reported"
     if any(phrase in low for phrase in (
-        "exclusive talks", "exclusive negotiations", "advanced acquisition talks",
+        "exclusive talks", "exclusive negotiations",
+        "exclusive acquisition negotiations", "exclusive acquisition talks",
+        "advanced acquisition negotiations", "advanced acquisition talks",
         "close to acquiring trail of bits", "협상 진전", "독점 협상",
     )):
         return "advanced_talks_reported"
