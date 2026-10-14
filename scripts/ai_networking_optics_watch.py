@@ -1789,6 +1789,9 @@ def stage_for(title: str) -> str:
 
 
 def category_for(title: str, company: str) -> str:
+    if company == META_COMPANY:
+        event = meta_milestone(title)
+        return event[0] if event else "메타 광통신 검증대기"
     if company in {"Lumentum", LITE_CAPACITY_COMPANY}:
         milestone = lite_supply_event(title)
         if milestone:
@@ -1974,6 +1977,12 @@ def category_for(title: str, company: str) -> str:
 
 def meaning_for(category: str) -> str:
     mapping = {
+        "메타·코닝 광섬유 계약": "2026년 1월 광섬유·케이블·연결부품 최대 60억 달러 계약으로, 신규 MPO 장비 2천~3천 대 주문과 다릅니다.",
+        "메타 IceCube 스위치 사양": "128×800G 포트는 이더넷 스위치 용량이며 실제 광트랜시버 구매량과 CPO 채택률은 확인되지 않았습니다.",
+        "메타 Tahan 스위치": "이미 출하 중인 이더넷 스케일업 스위치와 1.6T 광모듈 공급사의 확정 구매계약은 다른 단계입니다.",
+        "메타 광모듈 공급계약·인증": "메타 또는 실명 공급사의 공식 계약·인증·실제 출하 증거를 800G·1.6T별로 분리 검증합니다.",
+        "메타 NPO·CPO 실제 도입": "메타의 실제 도입·양산 시점이 광엔진·레이저·FAU 정렬·DSP 투자 수요를 좌우합니다.",
+        "메타 광모듈 재고 확보": "메타의 공식 재고 확충 확인 시 실제 주문 앞당김과 공급사 향후 출하 변동을 추적합니다.",
         "루멘텀 AI 광부품 생산능력 예약": "CEO가 AI 광부품 생산능력의 예약 시계를 2029년 초로 확장한 직접 인터뷰입니다. 생산능력·예약 물량·고객 선급금·출하·매출을 구분하며 2029년 매출 확정으로 계산하지 않습니다.",
         "루멘텀 2030년 고객 생산능력 선점": "고객이 2030년 물량을 예약하기 시작했다는 선행 신호입니다. 주문의 구속력·선수금·취소 조건을 확인하기 전에는 완판·확정 매출로 계산하지 않습니다.",
         "루멘텀 과거 2028년 예약 전망": "과거 2028년 생산능력 예약 전망은 2029년 신규 발언과 별도 기존 기준선입니다.",
@@ -2081,6 +2090,12 @@ def meaning_for(category: str) -> str:
 
 def risk_for(category: str) -> str:
     mapping = {
+        "메타·코닝 광섬유 계약": "최대 약정 금액과 실제 집행·매출 인식은 다르며 케이블 공장 증설·검수 지연 가능성이 있습니다.",
+        "메타 IceCube 스위치 사양": "포트 수는 실제 광모듈 설치 대수가 아니며 정격 전력·냉각·시험 시간·가동률이 병목입니다.",
+        "메타 Tahan 스위치": "스위치 출하 이후에도 광모듈과 구리 전송의 혼합 구성으로 교체 시점이 지연될 수 있습니다.",
+        "메타 광모듈 공급계약·인증": "수율·고온 동작 검사·제품 신뢰성·가격·미국 규제 범위가 고객 채택과 매출 시기를 바꿉니다.",
+        "메타 NPO·CPO 실제 도입": "FAU 정렬 오차·광결합 손실·열·보험·인증 기간 때문에 6~24개월 전환이 늦어질 수 있습니다.",
+        "메타 광모듈 재고 확보": "재고 선확보가 제품 전환·주문 앞당김이라면 향후 주문 소진과 평균판매단가 하락을 유발할 수 있습니다.",
         "루멘텀 AI 광부품 생산능력 예약": "예약된 생산능력과 취소 불가 발주·가격확정·매출인식은 다릅니다. 고객 선주문·다중 공급망 전환·광 패키징 수율·인증기간이 실현 물량을 낮출 수 있습니다.",
         "루멘텀 2030년 고객 생산능력 선점": "구속력 없는 물량 예약, 고객 이중공급 전략, 가격 재협상, 신공장 수율 위험 때문에 실제 매출은 예약 규모와 다를 수 있습니다.",
         "루멘텀 과거 2028년 예약 전망": "과거 전망을 최신 신규계약으로 다시 발송하면 장기 수주잔고를 중복 계산하게 됩니다.",
@@ -2377,6 +2392,21 @@ def _self_test_korean_optics_alerts() -> None:
     assert not official_power_source({
         "source": "Bloom Energy", "source_url": "https://example.org/blog"
     })
+    # Anonymous ratios and an FCC contingency are NOT Meta-certified orders.
+    rumor = "Meta Expert Discussion optical 850W 1810W EML 62:32 57:41"
+    conditional = "Meta would accelerate CPO if FCC bans Chinese optical modules"
+    old = "Meta and Corning announce up to $6 billion fiber optic cable agreement"
+    contract = "Meta signs supply agreement with Lumentum for 1.6T optical transceivers"
+    deployed = "Meta has deployed CPO optical modules in production"
+    assert meta_milestone(rumor) is None
+    assert meta_milestone(conditional) is None
+    assert meta_milestone(old)[2] == "meta|corning|jan2026-6b-fiber"
+    assert meta_milestone(contract)[0] == "메타 광모듈 공급계약·인증"
+    assert meta_milestone(deployed)[0] == "메타 NPO·CPO 실제 도입"
+    assert meta_milestone("Corning fiber supply agreement without Meta") is None
+    assert meta_official_source({"source":"Engineering at Meta","source_url":"https://engineering.fb.com/2026/10/12/report"})
+    assert not meta_official_source({"source":"Meta Platforms","source_url":"https://analyst-rumor.example.org"})
+    assert not meta_verified({"company":META_COMPANY,"source":"Unknown","title":contract})
     assert not retain_historical_optics_record({
         "company": POWER_COMPANY,
         "title": "Chunghwa Telecom's Simplified Modular Data Center delivers turnkey deployment",
