@@ -1393,10 +1393,11 @@ def main() -> int:
         fp = item["fingerprint"]
         if fp in seen:
             continue
-        if previously_similar(item, seen, now):
-            continue
         stage = openai_insider_case_stage(item)
         if stage:
+            # An actual new indictment/hearing/verdict supersedes headline
+            # similarity with the original arrest article. Lifecycle stage
+            # dedup is stronger and should run BEFORE generic title dedup.
             if stage in insider_stages:
                 continue
             if stage == "court_verdict" and not source_official(item.get("source", "")):
@@ -1407,6 +1408,10 @@ def main() -> int:
                 "first_seen_at": now.isoformat(),
                 "status": "reported change, verify against primary court/DOJ source",
             }
+            new_items.append(item)
+            continue
+        if previously_similar(item, seen, now):
+            continue
         new_items.append(item)
 
     # Silent baseline on the first successful collection to prevent retroactive spam.
