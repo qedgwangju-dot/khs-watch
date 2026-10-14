@@ -230,7 +230,7 @@ jobs:
       - name: Run morning KOSPI watcher
         run: |
           rm -f out/kospi_shock_episode_status.md out/kospi_shock_episode_raw.json out/kospi_shock_delivery_log.jsonl out/kospi_shock_enrichment_latest.json out/kosdaq_shock_enrichment_latest.json out/kospi_shock_handoff.json out/kospi_industry_flow.jsonl out/krx_market_closed.flag
-          python -m py_compile scripts/kospi_shock_episode_watch.py scripts/kospi_shock_enrichment.py scripts/kospi_unified_industry_collector.py scripts/krx_session_calendar.py
+          python -m py_compile scripts/kospi_shock_episode_watch.py scripts/kospi_shock_enrichment.py scripts/kosdaq_surge_industries.py scripts/kospi_unified_industry_collector.py scripts/krx_session_calendar.py
 
           collector_supervisor() {
             while [ "$(TZ=Asia/Seoul date +%H%M)" -lt 1215 ]; do
@@ -382,7 +382,7 @@ jobs:
       - name: Run afternoon KOSPI watcher with handoff
         run: |
           rm -f out/kospi_shock_episode_status.md out/kospi_shock_episode_raw.json out/kospi_shock_enrichment_latest.json out/kosdaq_shock_enrichment_latest.json
-          python -m py_compile scripts/kospi_shock_episode_watch.py scripts/kospi_shock_enrichment.py scripts/kospi_unified_industry_collector.py scripts/krx_session_calendar.py
+          python -m py_compile scripts/kospi_shock_episode_watch.py scripts/kospi_shock_enrichment.py scripts/kosdaq_surge_industries.py scripts/kospi_unified_industry_collector.py scripts/krx_session_calendar.py
 
           collector_supervisor() {
             while [ "$(TZ=Asia/Seoul date +%H%M)" -lt 1532 ]; do

@@ -1,0 +1,42 @@
+name: KOSDAQ Surge Industry Context CI
+
+on:
+  pull_request:
+    paths:
+      - "scripts/kosdaq_surge_industries.py"
+      - "scripts/test_kosdaq_surge_industries.py"
+      - "scripts/probe_kosdaq_surge_industries.py"
+      - "scripts/kospi_shock_episode_watch.py"
+      - "scripts/kospi_unified_industry_collector.py"
+      - ".github/workflows/kosdaq-surge-industries-ci.yml"
+  push:
+    branches: [main]
+    paths:
+      - "scripts/kosdaq_surge_industries.py"
+      - "scripts/test_kosdaq_surge_industries.py"
+      - "scripts/probe_kosdaq_surge_industries.py"
+      - "scripts/kospi_shock_episode_watch.py"
+      - "scripts/kospi_unified_industry_collector.py"
+      - ".github/workflows/kosdaq-surge-industries-ci.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check --quiet requests exchange_calendars pyyaml
+      - name: Validate industry context and existing flow guards offline
+        run: |
+          python -m py_compile scripts/kosdaq_surge_industries.py scripts/probe_kosdaq_surge_industries.py scripts/kospi_unified_industry_collector.py scripts/kospi_shock_episode_watch.py
+          python scripts/test_kosdaq_surge_industries.py
+          python scripts/test_kospi_shock_episode.py
+          python scripts/test_kospi_shock_enrichment.py
+          python scripts/test_kospi_flow_attribution_strict.py

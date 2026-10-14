@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import asyncio
 import datetime as dt
+import hashlib
 import html
 import json
 import os
@@ -20,6 +21,7 @@ from zoneinfo import ZoneInfo
 import requests
 
 from kospi_shock_enrichment import build_enrichment, build_kosdaq_enrichment
+from kosdaq_surge_industries import industry_buy_context, industry_context_lines
 from krx_session_calendar import session_state
 
 KST = ZoneInfo("Asia/Seoul")
@@ -1705,17 +1707,21 @@ class Watch:
 
     @staticmethod
     def build_kosdaq_flow_surge_alert(actor: str, delta: float, pair: dict[str, Any],
-                                     now_ts: float) -> str:
-        return "\n".join([
+                                     now_ts: float, industries: dict[str, Any] | None = None) -> str:
+        lines = [
             "⚡ <b>코스닥 단기 순매수 급증</b>",
             f"<code>{dt.datetime.fromtimestamp(now_ts,KST):%Y-%m-%d %H:%M:%S} KST</code>",
             f"• <b>{html.escape(actor)}</b> 코스닥 현물(통합) <b>{fmt_eok(delta)}</b> · 최근 5분",
             f"• 실제 수급 표본: {fmt_clock(pair['start_ts'])}~{fmt_clock(pair['end_ts'])}",
+        ]
+        lines.extend(industry_context_lines(industries, actor, pair["start_ts"], pair["end_ts"]))
+        lines.extend([
             "• 확인 수준: 현물 단독 신호 (KOSPI200 선물·프로그램 수급과 합산하지 않음)",
             f"• 감지 기준: 5분 순매수 증가 {KOSDAQ_SURGE_SINGLE_SPOT_EOK:,.0f}억원 이상 · 두 차례 연속 확인",
             "• 누적 순매수 변화량이며 외부 신규자금 유입·주가 상승 확정값이 아닙니다.",
             "• " + " · ".join([link(KOSDAQ_URL,"KOSDAQ"),link(LS_URL,"LS OpenAPI")]),
         ])
+        return "\n".join(lines)
 
     async def maybe_alert_kosdaq_surge(self, now_ts: float | None = None) -> None:
         if getattr(self, "test", False) or not getattr(self, "kosdaq_flows", None):
@@ -1761,8 +1767,24 @@ class Watch:
                 continue
             if now_ts - self.kosdaq_surge_sent_at.get(actor, 0.0) < SURGE_COOLDOWN_SEC:
                 continue
+            try:
+                industries = await asyncio.to_thread(
+                    industry_buy_context, pair["start_ts"], pair["end_ts"], actor,
+                    session_open_ts=start,
+                )
+            except Exception as exc:
+                # Enrichment cannot discard a separately confirmed market alert.
+                industries = {
+                    "market": "KOSDAQ", "investor": actor,
+                    "requested_window": [pair["start_ts"], pair["end_ts"]],
+                    "available": False, "rows": [], "top": [],
+                    "covered_industries": 0, "expected_industries": None,
+                    "coverage_complete": False, "reason": "업종 수급 자료 처리 실패",
+                    "error_type": type(exc).__name__,
+                }
+            text = self.build_kosdaq_flow_surge_alert(actor, delta, pair, now_ts, industries)
             msg_id = await asyncio.to_thread(
-                telegram_send, self.build_kosdaq_flow_surge_alert(actor, delta, pair, now_ts)
+                telegram_send, text
             )
             self.msg_ids.append(msg_id)
             self.kosdaq_surge_sent_at[actor] = now_ts
@@ -1773,6 +1795,7 @@ class Watch:
                 "spot_window": [pair["start_ts"], pair["end_ts"]],
                 "spot_cumulative_start": fnum(pair["start"].get(actor)),
                 "spot_cumulative_end": end_value,
+                "industry_context": industries,
             }
             self._record_delivery(
                 "kosdaq_flow_surge", msg_id,
@@ -1780,12 +1803,14 @@ class Watch:
                  "market": "KOSDAQ", "actor": actor},
                 pair["end_ts"],
                 evidence={
-                    "source": "LS t1602 market=3 upcode=301 exchgubun=U gubun1=2",
+                    "source": "LS t1602 market=2 upcode=301 exchgubun=U gubun1=2",
                     "spot_window": [pair["start_ts"], pair["end_ts"]],
                     "spot_start_cumulative": fnum(pair["start"].get(actor)),
                     "spot_end_cumulative": end_value,
                     "spot_delta": delta,
                     "display_unit": "억원",
+                    "industry_context": industries,
+                    "message_sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
                 },
             )
 

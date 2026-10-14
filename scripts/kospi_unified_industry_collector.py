@@ -155,6 +155,9 @@ async def main(out_path: Path, until: dt.time, test_seconds: int | None = None) 
                 "msval": msval,
                 "msvol": msvol,
                 "ex_upcode": str(data.get("ex_upcode") or ""),
+                "source_tr": "UBM",
+                "subscription_key": str(key),
+                "source_unit": "UNVERIFIED",
             }
             fp.write(json.dumps(row, ensure_ascii=False) + "\n")
             written += 1
@@ -179,6 +182,15 @@ async def main(out_path: Path, until: dt.time, test_seconds: int | None = None) 
             print(f"kosdaq_ubm_degraded=true failed={kosdaq_failed}", flush=True)
         if failed:
             raise RuntimeError(f"UBM registration failures: {failed}")
+        # A separate metadata record makes missing/unregistered KOSDAQ sectors
+        # visible to the buy-alert reader. Existing crash parsers ignore it.
+        fp.write(json.dumps({
+            "record_type": "subscription_coverage", "ts": time.time(),
+            "market": "KOSDAQ", "source_tr": "UBM",
+            "expected": [x for x in industries if str(x["code"]).startswith("3")],
+            "registered": [key[1:] for _, key in registrations if key[1:].startswith("3")],
+            "failed": kosdaq_failed,
+        }, ensure_ascii=False) + "\n")
         print(
             f"ubm_market_coverage kospi={sum(not x[1][1:].startswith('3') for x in registrations)} "
             f"kosdaq={sum(x[1][1:].startswith('3') for x in registrations)}",
