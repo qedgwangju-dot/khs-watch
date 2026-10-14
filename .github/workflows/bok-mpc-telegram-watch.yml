@@ -12,8 +12,10 @@ on:
       - "scripts/bok_rate_signal_upgrade.py"
       - "scripts/bok_rate_signal_upgrade_v2.py"
       - "scripts/bok_rate_signal_upgrade_v3.py"
+      - "tests/test_bok_policy_semantics.py"
   schedule:
     - cron: "7 * * * *"
+    - cron: "37 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -58,6 +60,7 @@ jobs:
         run: |
           rm -f out/bok_mpc_alert.html out/bok_mpc_errors.log
           python -m py_compile scripts/bok_mpc_watch_v2.py scripts/bok_mpc_watch_resilient.py scripts/bok_mpc_watch_correct.py scripts/bok_mpc_watch_final.py scripts/bok_rate_signal_upgrade.py scripts/bok_rate_signal_upgrade_v2.py scripts/bok_rate_signal_upgrade_v3.py
+          PYTHONPATH=scripts python -m unittest discover -s tests -p 'test_bok_policy_semantics.py' -v
           python scripts/bok_mpc_watch_final.py
           python scripts/bok_rate_signal_upgrade_v3.py
           cat out/bok_mpc_status.md >> "$GITHUB_STEP_SUMMARY"
