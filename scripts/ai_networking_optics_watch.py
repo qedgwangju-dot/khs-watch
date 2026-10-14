@@ -31,6 +31,33 @@ STATUS_PATH = ROOT / "out" / "ai_networking_optics_watch_status.md"
 
 KST = ZoneInfo("Asia/Seoul")
 NOW = dt.datetime.now(dt.timezone.utc)
+CREDO_COMPANY = "Credo"
+CREDO_MONITOR_VERSION = 1
+# Pre-existing public releases are a silent baseline, never new deliveries.
+CREDO_PRIOR_EVENT_KEYS = {
+    "credo|srmo|workstream-launch-2026-10",
+    "credo|alc|2027-shipping-announcement",
+    "credo|npo|fy28-plan",
+    "credo|optics|fy27-600m-guidance",
+    "credo|amd|weaver-demo-2026-10",
+}
+CREDO_VERIFIED_BASELINE = {
+    "fy2027_optical_revenue_guidance_usd_m_min_exclusive": 600,
+    "fy2027_q1_total_revenue_usd_m": 479,
+    "fy2027_q1_gaap_gross_margin_pct": 64.5,
+    "fy2027_q1_gaap_net_income_usd_m": 129.4,
+    "fy2028_npo_revenue_expected_not_confirmed": True,
+    "npo_6_4t_2028_volume_production_confirmed": False,
+    "srmo_ocp_spec_approval_target_year": 2027,
+    "alc_1_6t_shipping_target_year": 2027,
+    "credo_customer_unnamed_not_verified": True,
+    "baseline_evidence": [
+        "2026-09-01 Credo FY2027 Q1 official results",
+        "2026-10-09 Credo OCP products",
+        "2026-10-12 Credo SRMO workstream and ALC announcements",
+        "2026-10-13 Credo technology roadmap",
+    ],
+}
 
 COMPANIES = {
     "NVIDIA": {
@@ -74,6 +101,14 @@ COMPANIES = {
         "ticker": "COHR",
         "aliases": ["Coherent"],
         "query": 'Coherent (PhotonLink OR "integrated optics" OR "complete optical solution" OR "end-to-end" OR "vertical integration" OR CPO OR NPO OR "chip-to-chip" OR "silicon photonics" OR SiPh OR InP OR ELS OR ELSFP OR "external laser source" OR "external light source" OR "CW laser" OR 400mW OR "specialty fiber" OR "polarization-maintaining fiber" OR "mode-matching fiber" OR "multicore fiber" OR "customer engagement" OR "long-term agreement" OR "content opportunity" OR 800G OR 1.6T OR 3.2T)',
+    },
+    "Credo": {
+        "ticker": "CRDO",
+        "aliases": ["Credo", "Credo Technology", "ZeroFlap", "DustPhotonics"],
+        "queries": [
+            '"Credo" ("ZeroFlap" OR "SRMO" OR "NPO" OR "near-package optics" OR "6.4T" OR "DustPhotonics") ("customer" OR "order" OR "guidance" OR "revenue" OR "approval" OR "production" OR "shipment" OR "qualification" OR "standard" OR "2027" OR "2028")',
+            '"Credo Technology" ("optical" OR "ALC" OR "NPO" OR "OmniConnect" OR "micro-emitter" OR "SENKO" OR "PILOT") ("scale-up" OR "design win" OR "OCP" OR "supply" OR "customer" OR "shipment" OR "revenue" OR "launch")',
+        ],
     },
     "US Optical Policy": {
         "ticker": "FCC/의회",
@@ -317,6 +352,7 @@ DISPLAY_NAMES_KO = {
     "Lumentum Supply & Capacity": "루멘텀 AI 광부품 공급·증설",
     "Coherent": "코히런트",
     "US Optical Policy": "미국 광트랜시버 정책",
+    "Credo": "크레도",
     "AXT": "AXT",
     "InP Supply Chain": "InP 기판 공급망",
     "GaAs Optical Supply Chain": "GaAs 광통신 기판 공급망",
@@ -347,7 +383,8 @@ TRUSTED_SOURCES = {
     "Reuters", "Bloomberg", "Financial Times", "The Wall Street Journal", "CNBC",
     "DigiTimes", "DIGITIMES", "Investing.com", "Barron's", "MarketWatch",
     "NVIDIA Blog", "NVIDIA Newsroom", "Broadcom", "Arista Networks", "Marvell",
-    "Lumentum", "Coherent", "AXT", "WIN Semiconductors", "VPEC", "Applied Optoelectronics",
+    "Lumentum", "Coherent", "Credo", "Credo Technology Group Holding Ltd",
+    "Business Wire", "AXT", "WIN Semiconductors", "VPEC", "Applied Optoelectronics",
     "Fabrinet", "TSMC", "TrendForce",
     "Opticore", "옵티코어", "OE Solutions", "오이솔루션",
     "Sungho Electronics", "성호전자", "ADST", "에이디에스테크",
@@ -469,7 +506,8 @@ NOISE_PATTERNS = [
 ]
 
 SOURCE_PRIORITY = {
-    "Coherent": 100, "NVIDIA Blog": 100, "NVIDIA Newsroom": 100,
+    "Coherent": 100, "Credo": 100, "Credo Technology": 100,
+    "Business Wire": 88, "NVIDIA Blog": 100, "NVIDIA Newsroom": 100,
     "Broadcom": 100, "Arista Networks": 100, "Marvell": 100,
     "Lumentum": 100, "AXT": 100, "Applied Optoelectronics": 100,
     "Fabrinet": 100, "TSMC": 100,
@@ -626,6 +664,105 @@ KNOWN_PHOTONIC_BASELINE_KEYS = {
 }
 
 
+
+def credo_milestone(title: str) -> tuple[str, str, str] | None:
+    """Distinguish Credo sales, guidance, standards, demos and actual shipments.
+    Return only a traceable commercial/technical stage, not stock commentary.
+    """
+    text = html.unescape(title or "")
+    low = text.lower()
+    if not re.search(r"\bcredo\b|zeroflap|dustphotonics|omniconnect", text, re.I):
+        return None
+    if re.search(r"stock price|price target|analyst|ratings?|shares (?:jump|fall|rise)|"
+                 r"share price|stock surge|upgrade[s]? (?:shares|stock)|downgrade[s]? (?:shares|stock)",
+                 text, re.I):
+        return None
+    if not re.search(r"optics?|npo|cpo|srmo|zero.?flap|alc|light cable|"
+                     r"photonic|interconnect|weaver|omniconnect", text, re.I):
+        return None
+
+    real_ship = bool(re.search(
+        r"begins? (?:volume |mass )?(?:production|shipment|shipping)|"
+        r"started? (?:volume |mass )?(?:production|shipment|shipping)|"
+        r"has (?:begun|started) (?:mass |volume )?(?:production|shipments?)|"
+        r"enters? (?:volume |mass )?production|"
+        r"first (?:commercial )?customer delivery|"
+        r"now shipping|volume shipments? (?:begin|start)",
+        text, re.I,
+    )) and not bool(re.search(
+        r"plans? to|expects? to|targets? to|aims? to|will begin|"
+        r"to begin|to start|expected in|scheduled for|2027 launch planned|2028 launch planned",
+        text, re.I,
+    ))
+    orders = bool(re.search(
+        r"signed (?:a )?(?:binding )?(?:supply |purchase )?(?:contract|agreement)|"
+        r"confirmed (?:customer )?(?:purchase|order)|purchase orders?|"
+        r"customer (?:orders?|qualification|certification)|"
+        r"production design win|selected by (?:a )?(?:major )?customer",
+        text, re.I,
+    ))
+    if re.search(r"\bSRMO\b|short[- ]reach micro[- ]emitter", text, re.I):
+        if re.search(r"(?:OCP|open compute).{0,90}(?:approved|ratified|adopted)"
+                     r"|(?:approved|ratified|adopted).{0,90}(?:OCP|specification)", text, re.I) \
+                and not re.search(r"target|aim|expected|planned|2027 approval goal", text, re.I):
+            return ("크레도 SRMO 표준 최종 승인", "공식 규격 승인·상호운용성 검증", "credo|srmo|approved")
+        if re.search(r"launch|forms?|establish|workstream|standardization", text, re.I):
+            return ("크레도 SRMO 표준화 협력", "OCP 실무협의체·2027 승인 목표(계약 아님)",
+                    "credo|srmo|workstream-launch-2026-10")
+        return None
+
+    if re.search(r"\bNPO\b|near[- ]packag(?:e|ed) optics?|6\.4\s*T", text, re.I):
+        if real_ship:
+            return ("크레도 6.4T NPO 실제 양산·출하", "제품 실제 양산·상업 출하 확인",
+                    "credo|npo|shipment|" + ("6.4t" if re.search(r"6\.4\s*t", low) else "general"))
+        if orders:
+            return ("크레도 NPO 고객 인증·수주", "고객 주문·양산설계 승인 별도 검증",
+                    "credo|npo|customer|" + ("6.4t" if re.search(r"6\.4\s*t", low) else "general"))
+        if re.search(r"FY28|fiscal (?:year )?2028|2028|roadmap|target|planned|"
+                     r"expected|concept|showcase|demonstrat", text, re.I):
+            return ("크레도 6.4T NPO 상용화 전망", "2028 회계연도 전망·실제 양산 미확정",
+                    "credo|npo|fy28-plan")
+        return None
+
+    if re.search(r"optical (?:business )?revenue|optics? (?:revenue|guidance)", text, re.I) \
+            and re.search(r"\$?\s*600\s*(?:m|million)\b|6억\s*달러", text, re.I) \
+            and re.search(r"FY27|fiscal (?:year )?2027|2027", text, re.I):
+        if re.search(r"raises?|upgrades?|lowers?|cuts?|revises?|increases?|decreases?", text, re.I):
+            return ("크레도 광학사업 가이던스 변경", "목표 변경·실제 매출은 실적공시 확인",
+                    "credo|optics|fy27-guidance-revised|" +
+                    ("up" if re.search(r"raises?|increases?", text, re.I) else "down"))
+        return ("크레도 2027 광학매출 목표", "6억 달러 초과 목표·실현 미확정",
+                "credo|optics|fy27-600m-guidance")
+
+    if re.search(r"\bALC\b|active light cable|zero.?flap active light", text, re.I):
+        if real_ship:
+            return ("크레도 1.6T 광케이블 실제 출하", "고객별 양산 출하 확인",
+                    "credo|alc|commercial-shipment")
+        if orders:
+            return ("크레도 광케이블 고객 주문·인증", "계약·고객평가·실제 매출 분리",
+                    "credo|alc|customer-qualification")
+        if re.search(r"2027|2026|launch|unveil|introduc|showcase", text, re.I):
+            return ("크레도 1.6T 광케이블 출시계획", "2027 출하 목표·현시점 양산 미확정",
+                    "credo|alc|2027-shipping-announcement")
+        return None
+
+    if re.search(r"OmniConnect|Weaver", text, re.I):
+        if real_ship or orders:
+            return ("크레도 메모리 연결 상용화", "AMD 시연에서 고객 주문·양산으로 전환",
+                    "credo|amd|weaver-commercial")
+        if re.search(r"AMD|Versal|demonstrat|showcase", text, re.I):
+            return ("크레도-AMD 메모리 연결 시연", "프로토타입·실제 매출 없음",
+                    "credo|amd|weaver-demo-2026-10")
+
+    if re.search(r"zero.?flap|optical transceiver|optical DSP", text, re.I):
+        if real_ship:
+            return ("크레도 광트랜시버 양산·출하", "제품별 양산·고객 검수·매출 확인",
+                    "credo|zeroflap|shipment")
+        if orders:
+            return ("크레도 광트랜시버 고객 채택", "고객 계약·샘플·시제품 구분",
+                    "credo|zeroflap|orders")
+    return None
+
 def preserve_delivery_metadata(previous: dict, pending: dict) -> dict:
     # Silent checks must not erase proof of the most recent confirmed Telegram send.
     for key in ("last_successful_delivery_kst", "telegram_message_ids", "bot_username"):
@@ -635,6 +772,9 @@ def preserve_delivery_metadata(previous: dict, pending: dict) -> dict:
 
 
 def canonical_story_key(company: str, title: str) -> str | None:
+    if company == CREDO_COMPANY:
+        signal = credo_milestone(title)
+        return signal[2] if signal else None
     text = html.unescape(title or "").lower()
     money = _money_tokens(text)
 
@@ -1799,6 +1939,9 @@ def stage_for(title: str) -> str:
 
 
 def category_for(title: str, company: str) -> str:
+    if company == CREDO_COMPANY:
+        event = credo_milestone(title)
+        return event[0] if event else "크레도 광학 신호 검증대기"
     if company == META_COMPANY:
         event = meta_milestone(title)
         return event[0] if event else "메타 광통신 검증대기"
@@ -1987,6 +2130,34 @@ def category_for(title: str, company: str) -> str:
 
 def meaning_for(category: str) -> str:
     mapping = {
+        "크레도 SRMO 표준 최종 승인": "광 연결 규격 상호운용성이 확보되면 고객 검증이 빨라질 수 있지만 실제 장비·광모듈 수주는 별도 확인해야 합니다.",
+        "크레도 SRMO 표준화 협력": "2027년 OCP 규격 승인 목표는 개발 단계이고 실제 고객 양산 수주는 아닙니다.",
+        "크레도 6.4T NPO 실제 양산·출하": "6.4T NPO 첫 양산과 반복 출하를 확인해야 2028 회계연도 기술 기대가 실제 광부품 매출로 전환됩니다.",
+        "크레도 NPO 고객 인증·수주": "고객명·기판 광엔진 정렬 수율·인수검사·실제 PO를 구분합니다.",
+        "크레도 6.4T NPO 상용화 전망": "2028 회계연도는 전망이며 현재 6.4T NPO 양산을 뜻하지 않습니다.",
+        "크레도 광학사업 가이던스 변경": "전체 광학사업 목표를 DSP·실리콘 포토닉스·완제품으로 나눠 실제 매출과 비교합니다.",
+        "크레도 2027 광학매출 목표": "6억 달러 초과는 광학 제품군 전체 연간 목표이지 NPO 단독 매출이나 2026년 실현 매출이 아닙니다.",
+        "크레도 1.6T 광케이블 실제 출하": "기존 AEC 구리선 대비 제품 혼합·고객별 단가·반복 수주를 추적합니다.",
+        "크레도 광케이블 고객 주문·인증": "시제품 실증과 양산발주·검수를 구분합니다.",
+        "크레도 1.6T 광케이블 출시계획": "2027년 공급 목표는 실제 매출 인식과 다릅니다.",
+        "크레도 메모리 연결 상용화": "OmniConnect 실제 고객 발주와 AMD Versal 평가보드 시연을 구분합니다.",
+        "크레도-AMD 메모리 연결 시연": "현재 확인 단계는 시연·공동 검증이며 고객 구매계약 또는 양산을 뜻하지 않습니다.",
+        "크레도 광트랜시버 양산·출하": "DSP·광집적회로·광트랜시버별 실제 수량과 매출총이익률을 추적합니다.",
+        "크레도 광트랜시버 고객 채택": "검증 통과와 반복 발주를 확인해야 실제 수익전환입니다.",
+        "크레도 SRMO 표준 최종 승인": "표준 승인만으로 고객주문이 확정되지는 않으며 광출력·고온수명·광결합 오차와 보험·현장 교체성 검증이 남습니다.",
+        "크레도 SRMO 표준화 협력": "규격 초안·검증·OCP 승인 목표인 2027년이 밀리면 고객 채택과 공급망 수율 램프가 늦어집니다.",
+        "크레도 6.4T NPO 실제 양산·출하": "광엔진 결합 정밀도, 레이저 발열, 수율, 고온동작 검사시간, 고객 인증·반품률이 최우선 위험입니다.",
+        "크레도 NPO 고객 인증·수주": "NPO 광결합 수율 저하와 현장 교체·열관리 제약이 양산 마진·고객 승인일을 압박할 수 있습니다.",
+        "크레도 6.4T NPO 상용화 전망": "구리 AEC 연장기술과 CPO 경쟁, 광엔진 수율, 표준 지연으로 2028 회계연도 양산이 미뤄질 수 있습니다.",
+        "크레도 광학사업 가이던스 변경": "기존 AEC 매출의 잠식·광모듈 외주 조립비·수율로 전체 영업이익률이 기대보다 낮을 수 있습니다.",
+        "크레도 2027 광학매출 목표": "2027 회계연도 6억달러 이상 목표가 광학 제품별 고객주문·양산수율·현금회수로 이어지는지 확인해야 합니다.",
+        "크레도 1.6T 광케이블 실제 출하": "광출력·연결 안정성·고객별 반품·교환 접수가 수익성과 재주문에 영향을 미칩니다.",
+        "크레도 광케이블 고객 주문·인증": "성능은 충족해도 고객 도입 전력·검증기간·광섬유 단가로 채택이 지연될 수 있습니다.",
+        "크레도 1.6T 광케이블 출시계획": "기존 AEC 대비 상대 전력·현장 신뢰성 이점이 낮으면 2027 출하 목표를 실현하기 어렵습니다.",
+        "크레도 메모리 연결 상용화": "메모리 채널·핀·고온신뢰성·고객 소프트웨어 호환성 병목이 실제 계약을 늦출 수 있습니다.",
+        "크레도-AMD 메모리 연결 시연": "시연과 고객 구매는 별개이며 원가·지연시간·메모리 통합의 신뢰성 검증이 남습니다.",
+        "크레도 광트랜시버 양산·출하": "CPO/NPO 고온신뢰성·광결합 손실·검사시간·제품 불량이 반복매출과 영업이익률을 훼손할 수 있습니다.",
+        "크레도 광트랜시버 고객 채택": "고객 평가 통과가 실제 대량 출하를 보장하지 않습니다.",
         "메타·코닝 광섬유 계약": "2026년 1월 광섬유·케이블·연결부품 최대 60억 달러 계약으로, 신규 MPO 장비 2천~3천 대 주문과 다릅니다.",
         "메타 IceCube 스위치 사양": "128×800G 포트는 이더넷 스위치 용량이며 실제 광트랜시버 구매량과 CPO 채택률은 확인되지 않았습니다.",
         "메타 Tahan 스위치": "이미 출하 중인 이더넷 스케일업 스위치와 1.6T 광모듈 공급사의 확정 구매계약은 다른 단계입니다.",
@@ -2214,6 +2385,15 @@ def risk_for(category: str) -> str:
 
 
 def _self_test_korean_optics_alerts() -> None:
+    # Known OCP press releases and forward guidance are not actual NPO shipments.
+    assert credo_milestone("Credo launches SRMO OCP workstream for 2027 approval")[2] == "credo|srmo|workstream-launch-2026-10"
+    assert credo_milestone("Credo unveils 1.6T ZeroFlap Active Light Cable for shipping in 2027")[2] == "credo|alc|2027-shipping-announcement"
+    assert credo_milestone("Credo expects 6.4T NPO mass production in fiscal 2028")[2] == "credo|npo|fy28-plan"
+    assert credo_milestone("Credo now shipping 6.4T NPO to major AI customer")[2] == "credo|npo|shipment|6.4t"
+    assert credo_milestone("Credo 2027 optical revenue guidance over $600 million")[2] == "credo|optics|fy27-600m-guidance"
+    assert credo_milestone("Credo stock surges as analyst boosts price target") is None
+    assert canonical_story_key("Credo", "Credo launches SRMO OCP workstream for 2027 approval") in CREDO_PRIOR_EVENT_KEYS
+    assert canonical_story_key("Credo", "Credo now shipping 6.4T NPO to major AI customer") not in CREDO_PRIOR_EVENT_KEYS
     opticore_order = "옵티코어 AI 데이터센터용 400G 800G 광트랜시버 공급계약 체결"
     assert signal_score(opticore_order, "전자신문") >= 7
     assert category_for(opticore_order, "Opticore") == "국내 AI 광트랜시버 수주"
@@ -2487,6 +2667,7 @@ def main() -> None:
     power_source_healthy = False
     power_source_errors: list[str] = []
     meta_source_healthy = False
+    credo_source_healthy = False
 
     cutoff = NOW - dt.timedelta(days=7)
     for company, meta in COMPANIES.items():
@@ -2541,6 +2722,8 @@ def main() -> None:
         consecutive_service_failures = 0
         if company == META_COMPANY:
             meta_source_healthy = True
+        if company == CREDO_COMPANY:
+            credo_source_healthy = True
         for item in feed_items:
             published = dt.datetime.fromisoformat(item["published"]) if item.get("published") else None
             if published and published < cutoff:
@@ -2563,6 +2746,9 @@ def main() -> None:
                     continue
             power_event = power_milestone(title) if company == POWER_COMPANY else None
             if company == POWER_COMPANY and power_event is None:
+                continue
+            credo_event = credo_milestone(title) if company == CREDO_COMPANY else None
+            if company == CREDO_COMPANY and credo_event is None:
                 continue
             lite_event = lite_supply_event(title) if company == LITE_CAPACITY_COMPANY else None
             if company == LITE_CAPACITY_COMPANY and lite_event is None:
@@ -2609,6 +2795,8 @@ def main() -> None:
             score = signal_score(title, source)
             if meta_event:
                 score = max(score, 10)
+            if credo_event:
+                score = max(score, 10)
             if lite_event:
                 # Supply booked until 2029 has no conventional product-speed or
                 # "order" token. Never exclude a first-hand CEO quote on that basis.
@@ -2623,7 +2811,7 @@ def main() -> None:
             has_high = any(re.search(p, title, re.I) for p in HIGH_SIGNAL_PATTERNS)
             has_action = any(re.search(p, title, re.I) for p in ACTION_PATTERNS)
             very_strong = bool(re.search(r"\b3\.2\s*[Tt]\b", title, re.I))
-            if not power_event and not lite_event and not meta_event and (
+            if not power_event and not lite_event and not meta_event and not credo_event and (
                 score < 7 or not has_high or (not has_action and not very_strong)
             ):
                 continue
@@ -2633,8 +2821,8 @@ def main() -> None:
                 "ticker": meta["ticker"],
                 "score": score,
                 "key": key,
-                "stage": meta_event[1] if meta_event else lite_event[1] if lite_event else power_event[1] if power_event else structural_stage(company, structural_category, title) if structural_category else stage_for(title),
-                "category": meta_event[0] if meta_event else lite_event[0] if lite_event else power_event[0] if power_event else category_for(title, company),
+                "stage": credo_event[1] if credo_event else meta_event[1] if meta_event else lite_event[1] if lite_event else power_event[1] if power_event else structural_stage(company, structural_category, title) if structural_category else stage_for(title),
+                "category": credo_event[0] if credo_event else meta_event[0] if meta_event else lite_event[0] if lite_event else power_event[0] if power_event else category_for(title, company),
             })
             all_relevant.append(item)
 
@@ -2664,6 +2852,8 @@ def main() -> None:
     # Source-quality gate: unknown/low-quality sources cannot trigger by themselves.
     # They are admitted only when a higher-quality source independently reports the same event.
     def source_is_corroborated(item: dict) -> bool:
+        if item.get("company") == CREDO_COMPANY and source_priority(item.get("source") or "") < 80:
+            return False
         if item.get("company") == META_COMPANY and meta_official_source(item):
             return True
         if source_priority(item.get("source") or "") >= 65:
@@ -2744,6 +2934,7 @@ def main() -> None:
         | set(POWER_BASELINE_KEYS)
         | set(LITE_PRIOR_KEYS)
         | set(META_KNOWN_KEYS)
+        | set(CREDO_PRIOR_EVENT_KEYS)
     )
     seen_story_records = [
         record for record in (state.get("seen_story_records") or [])
@@ -2824,6 +3015,9 @@ def main() -> None:
         "aaoi_taiwan_power_watch_version": POWER_MONITOR_VERSION,
         "lumentum_supply_watch_version": LITE_SUPPLY_VERSION,
         "meta_optical_watch_version": META_WATCH_VERSION if meta_source_healthy else int(state.get("meta_optical_watch_version") or 0),
+        "credo_optics_watch_version": CREDO_MONITOR_VERSION if credo_source_healthy else int(state.get("credo_optics_watch_version") or 0),
+        "credo_optics_source_ok": credo_source_healthy,
+        "credo_verified_baseline": CREDO_VERIFIED_BASELINE,
         "meta_optical_source_ok": meta_source_healthy,
         "meta_optical_last_healthy_kst": dt.datetime.now(KST).isoformat(timespec="seconds") if meta_source_healthy else state.get("meta_optical_last_healthy_kst"),
         "aaoi_taiwan_power_source_ok": power_source_healthy,
@@ -2894,6 +3088,13 @@ def main() -> None:
                     "CPO 광패키징 기판·인터포저",
                 }
             ]
+        credo_version = int(state.get("credo_optics_watch_version") or 0)
+        if credo_version < CREDO_MONITOR_VERSION or not credo_source_healthy:
+            # Baseline already-published FY27 optics guidance, SRMO launch,
+            # 2027 ALC shipping plans and FY28 NPO roadmap silently.
+            # Future binding customer wins, orders, production and shipment
+            # milestones remain eligible with distinct semantic keys.
+            new_items = [item for item in new_items if item.get("company") != CREDO_COMPANY]
         meta_version = int(state.get("meta_optical_watch_version") or 0)
         if meta_version < META_WATCH_VERSION or not meta_source_healthy:
             # Initial upgrade establishes an old-story baseline without
@@ -2948,6 +3149,8 @@ def main() -> None:
             alert_header = "🚨 <b>국내 AI 광통신 수주·검증 변화 감지</b>"
         elif photonic_compute_only:
             alert_header = "🚨 <b>AI 광컴퓨팅·광메모리 구조 변화 감지</b>"
+        elif all(item.get("company") == CREDO_COMPANY for item in alert_items):
+            alert_header = "🚨 <b>크레도 광학·NPO 실제 상용화 단계 변화</b>"
         elif all(item.get("company") == META_COMPANY for item in alert_items):
             alert_header = "🚨 <b>메타 광통신 공급사·NPO/CPO 실제 변화</b>"
         elif all(item.get("company") == POWER_COMPANY for item in alert_items):
@@ -2986,13 +3189,14 @@ def main() -> None:
             lines.extend([
                 f"<b>{idx}) {html.escape(DISPLAY_NAMES_KO.get(item['company'], item['company']))} ({html.escape(item['ticker'])}) — {html.escape(category)}</b>",
                 f"• 단계: {html.escape(item['stage'])}",
+                "• 확인 수준: 회사 공식·신뢰자료의 단계별 확인(광학 목표/시제품/고객 계약/실제 출하 구분)" if item['company'] == CREDO_COMPANY else (
                 "• 확인 수준: 메타·공급사·공식 규격 1차 자료(익명 점유율 제외)" if item['company'] == META_COMPANY else (
                 f"• 확인 수준: {html.escape(evidence_label(item))}" if item['company'] in NEW_STRUCTURE_AXES else (
                     "• 확인 수준: Bloomberg 직접 인터뷰 등 신뢰 보도·회사 공시와 구분"
                 ) if item['company'] == LITE_CAPACITY_COMPANY else (
                     "• 확인 수준: 공급사 공식발표" if official_power_source(item) else
                     "• 확인 수준: 독립 신뢰매체 교차확인·실제 계약조건 재검증 필요"
-                ) if item['company'] == POWER_COMPANY else ""),
+                ) if item['company'] == POWER_COMPANY else "")),
                 f"• 원문 제목: {html.escape(public_title)}",
                 f"• 출처·시각: {html.escape(item.get('source') or '미표기')} / {html.escape(pub or '시각 미표기')}",
             ])
@@ -3054,6 +3258,9 @@ def main() -> None:
         f"- 루멘텀 생산능력·자금분담 감시 버전: {LITE_SUPPLY_VERSION}",
         f"- 메타 광모듈·공급사 공식자료 감시: {'정상' if meta_source_healthy else '보류·해당 감시축 기준선 미갱신'}",
         f"- 메타 감시 버전: {pending.get('meta_optical_watch_version')}",
+        f"- 크레도 광학·NPO 감시: {'정상' if credo_source_healthy else '보류·원천조회 실패 / 기준선 승격 금지'}",
+        f"- 크레도 감시 버전: {pending.get('credo_optics_watch_version')}",
+        "- 크레도 2027 광학 매출 목표 6억 달러 초과와 2028 NPO 상용화는 확정 매출이 아님",
         f"- AAOI 대만 전력 감시: {'정상' if power_source_healthy else '보류·해당 감시축 기준선 미갱신'}",
         f"- 이전 오탐 정정: {'전송 대기' if correction_due else '기존 송출 확인·중복 발송 금지'}",
         f"- AAOI 대만 전력 최근 정상조회: {pending.get('aaoi_taiwan_power_last_healthy_kst') or '확인되지 않음'}",
