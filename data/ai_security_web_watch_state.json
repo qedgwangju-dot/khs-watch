@@ -7,7 +7,7 @@
     "errors": [],
     "material_items": 15,
     "new_material_items": 0,
-    "raw_items": 190
+    "raw_items": 192
   },
   "openai_insider_case_stages": {
     "initial_oct13_charge": {
@@ -102,6 +102,16 @@
       "source": "Bloomberg.com",
       "title": "OpenAI Says Staffer Arrested for Hidden Recording Device in Office - Bloomberg.com",
       "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQUllwdms5WktzckdPcUU1M1ZhSDJFYV9HTHJpMGs3ck5tNGJ6WXNEeFBiRXZWZ2swMUJfT0tNTjI0UVM2dzh5Y1htQU92TUJuZFJseVRlLV9FYTZGSUZoQ3VxNHBBZTk0QlE3djBtQnV3V0hCX2h2MWxvRWF6VjQ2U3JKcURIdms3TDlPa0QyOHhWSzNMMHVvT1RMUF9JMHk3RkJGdnNaWEpiQWpVdlRNeVNYTDdVNnMt?oc=5",
+      "vendor": "OpenAI"
+    },
+    "38ca5185e927e1d02f7a5d06": {
+      "category": "AI 연구기관 내부자 도청·접근통제 사건",
+      "first_seen_at": "2026-10-14T07:38:52.480708+00:00",
+      "published_at": "2026-10-13T21:42:49+00:00",
+      "severity": 2,
+      "source": "BBC",
+      "title": "Saudi employee charged with planting recording device at OpenAI office - BBC",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFB6MjNkNW5WYWhlZE43SWlVQ1VwOERnZm9Va0szcWtwSDZGZ3RmSEZvUGdJSzg5dmpwSll1cUxOSi1zdkZDRm5Nb0ZoMzdKbFpZcnp6UGhyejhnaGM?oc=5",
       "vendor": "OpenAI"
     },
     "3dce20e7d23c67e88f130d06": {
@@ -525,5 +535,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-10-14T16:03:24+09:00"
+  "updated_at_kst": "2026-10-14T16:38:52+09:00"
 }
