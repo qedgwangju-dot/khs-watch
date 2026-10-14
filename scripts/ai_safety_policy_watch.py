@@ -719,7 +719,19 @@ def is_reported_si_original(item: dict) -> bool:
     )
 
 
+def is_patch_the_planet_original(item: dict) -> bool:
+    url = (item.get("url") or "").lower()
+    title = (item.get("title") or "").lower()
+    return (
+        "openai.com/index/patch-the-planet/" in url
+        or "trailofbits.com/2026/06/22/introducing-patch-the-planet" in url
+        or "introducing patch the planet" in title
+    )
+
+
 def material(item: dict) -> bool:
+    if is_patch_the_planet_original(item):
+        return False
     if is_anthropic_mission_launch_baseline(item) or is_reported_si_original(item):
         return False
     stage = trail_of_bits_mna_stage(item)
@@ -1229,9 +1241,32 @@ def main() -> int:
     current = list(normalized.values())
 
     seen = prune_seen(dict(state.get("seen") or {}), now)
+    trail_mna_seen = dict(state.get("trail_of_bits_mna_seen") or {})
+    trail_mna_seen.setdefault("initial_talks", {
+        "source_url": "https://www.theinformation.com/articles/openai-early-talks-buy-security-startup-trail-bits",
+        "status": "The Information 2026-10-13 reported early talks; unconfirmed",
+    })
+    trail_mna_seen.setdefault("existing_partnership", {
+        "source_url": "https://openai.com/index/patch-the-planet/",
+        "status": "2026-06-22 confirmed Patch the Planet collaboration; no acquisition",
+    })
     new_items = []
     for item in current:
-        if item["fingerprint"] in seen or previously_similar(item, seen):
+        if item["fingerprint"] in seen:
+            continue
+        stage = trail_of_bits_mna_stage(item)
+        if stage:
+            if stage in trail_mna_seen:
+                continue
+            trail_mna_seen[stage] = {
+                "source_url": item.get("url"),
+                "source": item.get("source"),
+                "status": "official" if source_official(item.get("source","")) else "reported_not_confirmed",
+                "first_seen_at": now.isoformat(),
+            }
+            new_items.append(item)
+            continue
+        if previously_similar(item, seen):
             continue
         new_items.append(item)
 
@@ -1330,6 +1365,7 @@ def main() -> int:
         "initialized": True,
         "updated_at_kst": now.astimezone(KST).isoformat(timespec="seconds"),
         "seen": seen,
+        "trail_of_bits_mna_seen": trail_mna_seen,
         "official_pages": official_pages,
         "official_snapshot_schema_version": OFFICIAL_SNAPSHOT_SCHEMA_VERSION,
         "openshell_telemetry": openshell_telemetry,
