@@ -428,7 +428,7 @@ def _is_known_baseline_only(item):
     # Actual construction, contract, permit or schedule change still passes.
     if re.search(
         r"2029\s*년(?:\s*말)?[^\n]{0,50}(?:첫\s*팹|팹\s*[12]\s*기?|반도체\s*팹)[^\n]{0,50}(?:완공|준공)"
-        r"|(?:첫\s*팹|반도체\s*팹)[^\n]{0,50}(?:완공|준공)[^\n]{0,50}2029\s*년",
+        r"|(?:첫\s*팹|반도체\s*팹|팹\s*[12]?\s*기?)[^\n]{0,50}2029\s*년[^\n]{0,50}(?:완공|준공)",
         low, re.I,
     ) and any(word in low for word in ("목표", "예정", "계획", "추진", "전망")):
         return True
