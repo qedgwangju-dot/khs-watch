@@ -101,6 +101,103 @@ class IntegrityTests(unittest.TestCase):
         self.assertNotIn('이란·호르무즈', text)
         self.assertIn('보복 시사', text)
 
+    def test_attack_resumption_disagreement_is_not_resumed_airstrikes(self):
+        title = '네타냐후 "이란 바로 공격", 트럼프 "선거 전엔 안 돼"…이란 공습 재개 놓고 이견 - JTBC'
+        row = article(title, source='JTBC', link='https://news.google.com/rss/articles/disagreement')
+        row['description'] = '미국과 이스라엘이 공습 재개를 논의한다. 배경에는 과거 공습과 호르무즈 피격 보도가 있다.'
+        row['signals_ko'] = ['이란호르무즈공격']
+        self.assertEqual(integrity.non_military_kind(row), 'military_discussion')
+        self.assertEqual(integrity.topic_label(row), '미국·이스라엘·이란 · 공습 재개 논의·이견')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+        text = integrity.build_alert([row], [], NOW)
+        self.assertIn('🟡 [', text)
+        self.assertNotIn('🔴', text)
+        self.assertNotIn('이란·호르무즈', text)
+        self.assertIn('선거 전엔 안 돼', text)
+        self.assertIn('실제 작전·운영 변화', text)
+
+    def test_resumption_discussion_ignores_past_attack_body(self):
+        row = article('네타냐후, 트럼프와 이란 공습 재개 논의…양국 선거 앞두고 고심', source='뉴시스')
+        row['article_text'] = '배경에는 과거 미사일 공격과 공습 재개 및 후티 보복 공격이 언급된다.'
+        self.assertEqual(integrity.non_military_kind(row), 'military_discussion')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+
+    def test_actual_resumed_attack_in_separate_clause_is_preserved(self):
+        row = article('이란 공습 재개…미국과 추가 공격 논의')
+        self.assertIsNone(integrity.non_military_kind(row))
+        self.assertEqual(integrity.final_color(row), 'red')
+
+    def test_english_discussion_keeps_three_headline_actors(self):
+        row = article('Trump and Netanyahu discuss resuming airstrikes on Iran', source='Reuters')
+        row['description'] = 'The background mentions earlier airstrikes and missile attacks.'
+        self.assertEqual(integrity.non_military_kind(row), 'military_discussion')
+        self.assertEqual(integrity.topic_label(row), '미국·이스라엘·이란 · 공습 재개 논의·이견')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+
+    def test_missile_defense_question_is_an_analysis_not_a_new_attack(self):
+        row = article('사우디아라비아가 수십억 달러를 들여 구축한 "방패"가 왜 여전히 후티 반군의 미사일 공격을 막지 못하는 걸까요? - Vietnam.vn', source='Vietnam.vn')
+        row['body_verified'] = False
+        self.assertEqual(integrity.non_military_kind(row), 'military_analysis')
+        self.assertEqual(integrity.topic_label(row), '사우디·후티 · 군사·안보 해설')
+        text = integrity.build_alert([row], [], NOW)
+        self.assertIn('🟡 [', text)
+        self.assertNotIn('🔴', text)
+        self.assertIn('새로운 군사작전 개시는 별도 확인 필요', text)
+
+    def test_explicit_new_attack_wins_over_following_analysis_question(self):
+        row = article('후티, 공습 개시…사우디 방공망은 왜 뚫렸나?')
+        self.assertIsNone(integrity.non_military_kind(row))
+        self.assertEqual(integrity.final_color(row), 'red')
+
+    def test_discussion_analysis_and_attack_pass_the_full_render_and_integrity_path(self):
+        now = dt.datetime.now(watch.KST)
+        rows = [article('네타냐후, 트럼프와 이란 공습 재개 놓고 이견', link='https://www.fnnews.com/news/discussion'),
+                article('사우디 방공망이 왜 후티 미사일 공격을 막지 못했나?', link='https://www.fnnews.com/news/analysis'),
+                article('후티, 사우디 아람코 본사 미사일 공격…화재', link='https://www.fnnews.com/news/attack')]
+        for n, row in enumerate(rows):
+            row['id'] = f'fixture-{n}'
+            row['published'] = format_datetime(now - dt.timedelta(minutes=20))
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            root = Path(folder)
+            stack.enter_context(patch.object(watch, 'OUT', root))
+            for attr, name in {'STATE': 'state.json', 'ALERT': 'alert.txt', 'PENDING': 'pending.json',
+                               'AUDIT': 'evidence.json', 'SUMMARY': 'summary.md'}.items():
+                stack.enter_context(patch.object(watch, attr, root/name))
+            watch.STATE.write_text('{"seen":["already-confirmed"]}', encoding='utf-8')
+            stack.enter_context(patch.object(watch, 'QUERIES', ['fixture']))
+            stack.enter_context(patch.object(watch, 'google_news', return_value=(rows, None)))
+            stack.enter_context(patch.object(watch, 'score_item', return_value=(90, ['확전'])))
+            stack.enter_context(patch.object(watch, 'market_snapshot', return_value=[]))
+            stack.enter_context(patch.object(watch, 'translate_ko', side_effect=lambda value: value))
+            watch.run()
+            integrity.runner.verify_alert()
+            receipt = json.loads(watch.AUDIT.read_text(encoding='utf-8'))
+            self.assertEqual({row['title_original']: row['classification_color'] for row in receipt['articles']},
+                             {row['title_original']: color for row, color in zip(rows, ('yellow', 'yellow', 'red'))})
+            pending = json.loads(watch.PENDING.read_text())['ids']
+            self.assertEqual(len(pending), 3)
+            self.assertEqual(set(pending), {row['id'] for row in receipt['articles'] if row['rendered']})
+            self.assertEqual(json.loads(watch.STATE.read_text())['seen'], ['already-confirmed'])
+
+    def test_final_gate_rechecks_discussion_and_analysis_not_saved_red_color(self):
+        for title in ('네타냐후, 트럼프와 이란 공습 재개 놓고 이견',
+                      '사우디 방공망이 왜 후티 미사일 공격을 막지 못했나?'):
+            with self.subTest(title=title), tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+                row = article(title)
+                row['classification_color'] = 'red'
+                topic = integrity.topic_label(row)
+                text = '🔴 [신규] <b>1. ' + topic + '</b>\n' + title + '\n<a href="' + row['link'] + '">원문</a>'
+                receipt = evidence.alert_receipt([row], [], NOW, text)
+                root = Path(folder)
+                for attr, name in {'ALERT': 'alert.txt', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                    stack.enter_context(patch.object(watch, attr, root/name))
+                watch.ALERT.write_text(text, encoding='utf-8')
+                watch.PENDING.write_text(json.dumps({'ids': [row['id']]}), encoding='utf-8')
+                watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+                stack.enter_context(patch.object(integrity, '_verify'))
+                with self.assertRaisesRegex(RuntimeError, 'statement presented'):
+                    integrity.verify_alert()
+
     def test_aramco_headquarters_headline_overrides_unrelated_interception_cache(self):
         row = article('후티 반군, 사우디 아람코 본사 공격 정황…국제유가 긴장')
         row['description'] = '본사 공격 보도에 관한 기사이며 피해 범위는 확인되지 않았다. 배경에 리야드 미사일 요격 소식이 언급된다.'
