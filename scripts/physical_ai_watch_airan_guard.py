@@ -1220,6 +1220,40 @@ def _dexmate_lg_recovery() -> list[dict]:
     }]
 
 
+
+# One-time correction of a real sent false positive in Telegram #218 item 1.
+# Do not retract the two valid CATL–INTILION and Dexmate–LG CNS items.
+STOCK_218_CORRECTION = 'DIRECT_CORRECTION_STOCK_REACTION_TELEGRAM218_20261014'
+
+
+def _stock_218_correction_recovery() -> list[dict]:
+    if base.NOW.astimezone(base.KST).date() > dt.date(2026,10,18):
+        return []
+    return [{
+        'title':'정정: Telegram 218번 1번 주가 반응 기사는 신규 고신호 아님',
+        'link':'https://github.com/qedgwangju-dot/khs-watch/actions/runs/38507177438',
+        'description':(
+            '정정: Telegram 218번 1번 서울경제의 '
+            'AI 전력發 ESS 기대·삼성SDI 5% 오르며 2차전지株 강세 기사는 '
+            '주가 반응 및 일반 ESS 수요 기대에 관한 보도입니다. '
+            '새로운 삼성SDI 고객 실명 공급계약·발주·실제 출하·'
+            '분기 실적 공시가 없어 투자 알림 고신호에서 제외합니다. '
+            '같은 message_id=218의 2번 CATL–INTILION 5년 최대 3GWh '
+            '나트륨 ESS 공동개발 목표와 3번 Dexmate–LG CNS '
+            '최고경영자 실사용·유통 발언은 유효합니다. '
+            '증상 원인은 제목에 주가·상승 대신 5% 오르며·'
+            '2차전지株 강세라는 표현이 있어 기존 주가 필터가 '
+            '반응 기사를 놓친 것입니다. 정확한 금액·대수·'
+            '고객사·새 사업 상태가 없는 유사 주가 보도는 '
+            '앞으로 신규 사건으로 분류하지 않습니다.'
+        ),
+        'source':'실제 GitHub Actions 전송기록',
+        'published':None,
+        'direct_recovery':True,
+        'correction_218_stock':True,
+    }]
+
+
 _orig_query_news = base.query_news
 
 
@@ -1246,6 +1280,8 @@ def query_news(q: str) -> list[dict]:
         return _catl_intilion_recovery()
     if q == DEXMATE_LG_RECOVERY:
         return _dexmate_lg_recovery()
+    if q == STOCK_218_CORRECTION:
+        return _stock_218_correction_recovery()
     return _orig_query_news(q)
 
 
@@ -1253,6 +1289,7 @@ base.query_news = query_news
 for q in (
     CATL_INTILION_RECOVERY,
     DEXMATE_LG_RECOVERY,
+    STOCK_218_CORRECTION,
     '(CATL OR 宁德时代) (INTILION OR 인틸리온) (sodium-ion OR 나트륨이온) (3GWh OR 3 GWh OR 계약 OR 프로젝트 OR 납품 OR 지연)',
     '(Dexmate OR 덱스메이트) (LG CNS OR LG씨엔에스) (실제 사용 OR 유통 OR 도입 OR 납품 OR 유상계약 OR 작업 성공률)',
 ):
