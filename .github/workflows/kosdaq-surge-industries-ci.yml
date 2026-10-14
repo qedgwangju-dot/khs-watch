@@ -40,3 +40,28 @@ jobs:
           python scripts/test_kospi_shock_episode.py
           python scripts/test_kospi_shock_enrichment.py
           python scripts/test_kospi_flow_attribution_strict.py
+
+  native_source:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      LS_OPENAPI_APP_KEY: ${{ secrets.LS_OPENAPI_APP_KEY }}
+      LS_OPENAPI_APP_SECRET: ${{ secrets.LS_OPENAPI_APP_SECRET }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check --quiet requests exchange_calendars
+      - name: Audit dated industry source without messages or production state
+        run: python scripts/probe_kosdaq_surge_industries.py --native --journal out/kosdaq_native_industry_probe.jsonl --out out/kosdaq_native_industry_probe.json
+      - name: Preserve source audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kosdaq-native-source-${{ github.run_id }}
+          path: |
+            out/kosdaq_native_industry_probe.jsonl
+            out/kosdaq_native_industry_probe.json
+          retention-days: 7

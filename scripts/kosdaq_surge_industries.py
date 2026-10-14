@@ -1,10 +1,11 @@
 """Read-only industry context for an existing KOSDAQ five-minute buy alert.
 
-UBM msval is a cumulative net-buy amount. LS's public UBM field guide does not
-specify its currency multiplier, so it is used for ranking only, never KRW
-conversion. Both payload receipt time and the preserved LS clock must be at or
-before each market boundary and within 30 seconds of it. No interpolation,
-future observations, investor mixing, or standalone industry alerts are used.
+Dated t1621 minute history provides cumulative industry net-buy amounts. Its
+currency multiplier is unverified, so it is used for ranking only. Legacy UBM
+observations are accepted only when both receipt and source clocks precede the
+boundary within 30s. Dated history may be queried after a boundary; its actual
+observation date/time must precede it within 30s. No interpolation, future
+observations, investor mixing, or standalone industry alerts are used.
 """
 from __future__ import annotations
 
@@ -15,6 +16,7 @@ import json
 import math
 import os
 import re
+import time
 from collections import defaultdict
 from pathlib import Path
 from typing import Any
@@ -40,7 +42,10 @@ def _number(value: Any) -> float | None:
 
 
 def _industry(code: str, name: str) -> bool:
-    return bool(re.fullmatch(r"3\d{2}", code) and code != "301" and 0 < len(name) <= 60
+    # 2026-10-14 t8424: 306 is the manufacturing aggregate; 340..346
+    # are size/company/index classifications, not separate industry sectors.
+    aggregates = {"301", "306", "340", "341", "342", "343", "344", "345", "346"}
+    return bool(re.fullmatch(r"3\d{2}", code) and code not in aggregates and 0 < len(name) <= 60
                 and name != code and "코스닥" not in name and "KOSDAQ" not in name.upper()
                 and _is_real_industry(name, code))
 
@@ -62,6 +67,128 @@ def _time(ts: float) -> str:
     return dt.datetime.fromtimestamp(ts, KST).strftime("%H:%M:%S")
 
 
+def _native_history_context(block: dict[str, Any], records: list[dict[str, Any]],
+                            expected: set[str] | None, start: float, end: float,
+                            session_open: float) -> dict[str, Any]:
+    """Use explicit dated t1621 history, retrieved after a source boundary.
+
+    UBM and t1621 amounts are never mixed: their monetary multipliers have not
+    been verified. A latest failed/invalid history response does not fall back
+    to an older response for that industry.
+    """
+    block.update(source="LS t1621 통합 업종별분별투자자매매동향", source_tr="t1621",
+                 source_guide="https://openapi.ls-sec.co.kr/apiservice?api_id=c148a42f-51a7-4446-b6df-10d6056dd75b",
+                 unit_reason="공식 t1621 순매수거래대금 필드의 금액 단위 미확인",
+                 timestamp_basis="native dated minute history", rows=[], top=[])
+    day = dt.datetime.fromtimestamp(start, KST).date()
+    latest: dict[str, dict[str, Any]] = {}
+    for record in records:
+        code = str(record.get("upcode") or "")
+        received = _number(record.get("received_ts"))
+        if (record.get("market") != "KOSDAQ" or not _industry(code, _display_name(record.get("industry"))) or received is None
+                or received > time.time() or dt.datetime.fromtimestamp(received, KST).date() != day):
+            continue
+        if code not in latest or received >= float(latest[code]["received_ts"]):
+            latest[code] = record
+    block["observed_industries"] = len(latest)
+    block["expected_industries"] = len(expected) if expected is not None else None
+    field, actor_code = {"개인": ("indmsamt", "indcode"), "외국인": ("formsamt", "forcode"),
+                         "기관": ("sysmsamt", "syscode")}[block["investor"]]
+    block["source_amount_field"] = field
+    block["ranking_basis"] = "positive end_" + field + " - start_" + field
+    exclusions: dict[str, int] = defaultdict(int)
+    for code, snapshot in latest.items():
+        if expected is not None and code not in expected:
+            exclusions["outside_master"] += 1
+            continue
+        body = snapshot.get("response") or {}
+        if not isinstance(body, dict):
+            exclusions["invalid_history_response"] += 1
+            continue
+        header = body.get("t1621OutBlock") or {}
+        request = snapshot.get("request") or {}
+        query = request.get("t1621InBlock") or {} if isinstance(request, dict) else {}
+        if not isinstance(query, dict):
+            query = {}
+        if (snapshot.get("status") != "success" or not isinstance(header, dict)
+                or str(header.get(actor_code) or "").zfill(4) != INVESTORS[block["investor"]]
+                or header.get("ex_upcode") != "U" + code
+                or query.get("upcode") != code or query.get("exchgubun") != "U"
+                or query.get("bgubun") != "0"):
+            exclusions["invalid_history_response"] += 1
+            continue
+        rows = body.get("t1621OutBlock1") or []
+        if isinstance(rows, dict):
+            rows = [rows]
+        points: dict[float, dict[str, Any]] = {}
+        conflicts: set[float] = set()
+        malformed = False
+        for row in rows if isinstance(rows, list) else []:
+            if not isinstance(row, dict):
+                malformed = True
+                continue
+            stamp = str(row.get("datetime") or "").strip()
+            date, clock = str(row.get("date") or "").strip(), str(row.get("time") or "").strip()
+            if not stamp:
+                stamp = date + clock.zfill(6) if date and clock else ""
+            if not re.fullmatch(r"\d{14}", stamp):
+                malformed = True
+                continue
+            if date and date != stamp[:8] or clock and clock.zfill(6) != stamp[8:]:
+                malformed = True
+                continue
+            try:
+                ts = dt.datetime.strptime(stamp, "%Y%m%d%H%M%S").replace(tzinfo=KST).timestamp()
+            except ValueError:
+                malformed = True
+                continue
+            if not (session_open <= ts <= end) or dt.datetime.fromtimestamp(ts, KST).date() != day:
+                continue
+            value = _number(row.get(field))
+            if ts in points and points[ts]["msval"] != value:
+                conflicts.add(ts)
+            points[ts] = {"source_ts": ts, "received_ts": snapshot["received_ts"],
+                          "source_time": stamp, "msval": value, "ex_upcode": header["ex_upcode"],
+                          "investor_code": str(header[actor_code]).zfill(4),
+                          "timestamp_basis": "t1621 dated minute history"}
+        if malformed:
+            exclusions["invalid_dated_history"] += 1
+            continue
+        selected = []
+        for boundary in (start, end):
+            eligible = [ts for ts in points if ts <= boundary]
+            if not eligible:
+                break
+            ts = max(eligible)
+            point = points[ts]
+            if boundary - ts > MAX_GAP_SEC or ts in conflicts or point["msval"] is None:
+                break
+            selected.append(point)
+        if len(selected) != 2 or selected[0]["source_ts"] >= selected[1]["source_ts"]:
+            exclusions["unaligned_history"] += 1
+            continue
+        a, b = selected
+        delta = b["msval"] - a["msval"]
+        if not math.isfinite(delta):
+            exclusions["nonfinite_delta"] += 1
+            continue
+        block["rows"].append({"code": code, "name": _display_name(snapshot["industry"]),
+                              "investor": block["investor"], "delta_raw": delta,
+                              "start_value_raw": a["msval"], "end_value_raw": b["msval"],
+                              "start": a, "end": b, "start_gap_sec": start - a["source_ts"],
+                              "end_gap_sec": end - b["source_ts"],
+                              "history_received_ts": snapshot["received_ts"]})
+    block["rows"].sort(key=lambda x: (-x["delta_raw"], x["code"]))
+    block["covered_industries"] = len(block["rows"])
+    block["coverage_complete"] = bool(expected and {x["code"] for x in block["rows"]} == expected)
+    block["excluded"] = dict(exclusions)
+    block["top"] = [x for x in block["rows"] if x["delta_raw"] > 0][:3]
+    block["available"] = bool(block["top"])
+    block["reason"] = None if block["top"] else (
+        "확인된 업종에 순매수 증가 없음" if block["rows"] else "같은 구간의 분별 업종 원자료 확인 부족")
+    return block
+
+
 def industry_buy_context(start_ts: float, end_ts: float, investor: str,
                          *, path: Path | None = None,
                          session_open_ts: float | None = None) -> dict[str, Any]:
@@ -73,7 +200,7 @@ def industry_buy_context(start_ts: float, end_ts: float, investor: str,
     the selected boundary can contribute to that boundary.
     """
     block: dict[str, Any] = {
-        "version": "kosdaq-surge-industries-v1", "market": "KOSDAQ",
+        "version": "kosdaq-surge-industries-v2", "market": "KOSDAQ",
         "investor": investor, "requested_window": [start_ts, end_ts],
         "available": False, "rows": [], "top": [], "source": SOURCE,
         "source_guide": GUIDE_URL, "source_unit": "UNVERIFIED",
@@ -109,8 +236,10 @@ def industry_buy_context(start_ts: float, end_ts: float, investor: str,
     block["journal_sha256"] = hashlib.sha256(payload).hexdigest()
     block["journal_bytes"] = len(payload)
     grouped: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    histories: list[dict[str, Any]] = []
     tainted: dict[str, list[float]] = defaultdict(list)
     expected: set[str] | None = None
+    history_expected: set[str] | None = None
     invalid: dict[str, int] = defaultdict(int)
 
     def taint(code: str, row: dict[str, Any]) -> None:
@@ -130,12 +259,20 @@ def industry_buy_context(start_ts: float, end_ts: float, investor: str,
         if not isinstance(row, dict):
             invalid["invalid_record"] += 1
             continue
+        if row.get("record_type") == "industry_history_snapshot" and row.get("source_tr") == "t1621":
+            histories.append(row)
+            continue
         if row.get("record_type") == "subscription_coverage":
             stamp = _number(row.get("ts"))
+            items = row.get("expected")
+            if (row.get("market") == "KOSDAQ" and row.get("source_tr") == "UBM"
+                    and stamp is not None and session_open_ts - 3600 <= stamp <= time.time()
+                    and dt.datetime.fromtimestamp(stamp, KST).date() == start_day and isinstance(items, list)):
+                history_expected = {str(x.get("code")) for x in items if isinstance(x, dict)
+                                    and _industry(str(x.get("code")), _display_name(x.get("name")))}
             if (row.get("market") == "KOSDAQ" and row.get("source_tr") == "UBM"
                     and stamp is not None and session_open_ts - 3600 <= stamp <= end
                     and dt.datetime.fromtimestamp(stamp, KST).date() == start_day):
-                items = row.get("expected")
                 if isinstance(items, list):
                     expected = {str(x.get("code")) for x in items if isinstance(x, dict)
                                 and _industry(str(x.get("code")), _display_name(x.get("name")))}
@@ -181,6 +318,9 @@ def industry_buy_context(start_ts: float, end_ts: float, investor: str,
             "source_time": row["source_time"], "ex_upcode": row["ex_upcode"],
             "investor_code": row["investor_code"],
         })
+    if histories:
+        return _native_history_context(block, histories, history_expected, start, end, session_open_ts)
+    block["source_tr"] = "UBM"
     block["observed_industries"] = len(grouped)
     block["expected_industries"] = len(expected) if expected is not None else None
     for code, rows in grouped.items():
