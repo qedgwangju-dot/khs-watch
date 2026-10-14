@@ -613,8 +613,11 @@ def trail_of_bits_mna_stage(item: dict) -> str | None:
     )):
         return "talks_ended" if official else "talks_ended_reported"
     if any(phrase in low for phrase in (
-        "completed acquisition", "acquisition completed", "acquisition closed",
-        "closed its acquisition", "has acquired trail of bits", "인수 완료",
+        "completed acquisition", "completes acquisition",
+        "completes its acquisition", "has completed acquisition",
+        "acquisition completed", "acquisition closed", "closed acquisition",
+        "closed its acquisition", "has acquired trail of bits",
+        "acquires trail of bits", "인수 완료",
     )):
         return "closed" if official else "closed_reported"
     if any(phrase in low for phrase in (
