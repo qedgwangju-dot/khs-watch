@@ -5,9 +5,9 @@
   "last_collection": {
     "direct_official_items": 27,
     "errors": [],
-    "material_items": 3,
+    "material_items": 12,
     "new_material_items": 0,
-    "raw_items": 166
+    "raw_items": 168
   },
   "openai_insider_case_stages": {
     "initial_oct13_charge": {
@@ -64,6 +64,16 @@
       "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNd0dTclpUU0M5bk5NTkk3MlVJeF9vZXZiQVRTLW03V3pxRjZ1WHlxaDBRVUUxbUN5eVRhQlpoTnZQZUdodndHVU9ldHQyazVwamc3OUZqaUktVmxvZmd3d3Y3RHg4Y0lzakJ1bWZtSG5fbFlMbmE4WnBVei1WdS1mem1CYWJ1MFJ1ZEJZRkJwUHJQdEU?oc=5",
       "vendor": "OpenAI"
     },
+    "38097417a4dff6449176ead1": {
+      "category": "AI 연구기관 내부자 도청·접근통제 사건",
+      "first_seen_at": "2026-10-14T01:48:43.668156+00:00",
+      "published_at": "2026-10-13T20:13:49+00:00",
+      "severity": 2,
+      "source": "Bloomberg.com",
+      "title": "OpenAI Says Staffer Arrested for Hidden Recording Device in Office - Bloomberg.com",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQUllwdms5WktzckdPcUU1M1ZhSDJFYV9HTHJpMGs3ck5tNGJ6WXNEeFBiRXZWZ2swMUJfT0tNTjI0UVM2dzh5Y1htQU92TUJuZFJseVRlLV9FYTZGSUZoQ3VxNHBBZTk0QlE3djBtQnV3V0hCX2h2MWxvRWF6VjQ2U3JKcURIdms3TDlPa0QyOHhWSzNMMHVvT1RMUF9JMHk3RkJGdnNaWEpiQWpVdlRNeVNYTDdVNnMt?oc=5",
+      "vendor": "OpenAI"
+    },
     "3dce20e7d23c67e88f130d06": {
       "category": "취약점·패치",
       "first_seen_at": "2026-10-02T10:34:13.041872+00:00",
@@ -72,6 +82,16 @@
       "source": "Chosunbiz",
       "title": "OpenAI alerts 100 institutions after AI agent attempts unauthorized access - CHOSUNBIZ - Chosunbiz",
       "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNTWEwSWVHcDItcF9jbC1wWUNXNGxmZFlUUEh3RmNYT1Rsdk01SlI0d21Rb1o5WDJocm5XYmZfaW9zb0xlR1ppbUhSX1d4N2E3ZjBobC1vZTkwNjRpdExoRE5DbDI1aHRxcDg4dU1wY0JQa2pmekFsUmJpeHFPWUNpcHF0NW1MU0lTVWsxTV9B0gGOAUFVX3lxTE1NYTBJZUdwMi1wX2NsLXBZQ1c0bGZkWVRQSHdGY1hPVGx2TTVKUjR3bVFvWjlYMmhybldiZl9pb3NvTGVHWmltSFJfV3g3YTdmMGhsLW9lOTA2NGl0TGhETkNsMjVodHFwODh1TXBjQlBramZ6QWxSYml4cU9ZQ2lwcXQ1bUxTSVNVazFNX0E?oc=5",
+      "vendor": "OpenAI"
+    },
+    "413f92919de457999b58be26": {
+      "category": "AI 연구기관 내부자 도청·접근통제 사건",
+      "first_seen_at": "2026-10-14T01:48:43.668156+00:00",
+      "published_at": "2026-10-13T20:55:12+00:00",
+      "severity": 2,
+      "source": "CNBC",
+      "title": "FBI arrests Saudi OpenAI employee who allegedly planted recording device in conference room - CNBC",
+      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNckJQNWJCVWJZSzdEUVRzWHZyZ2I0amJxTVVqX1ltcmZtSGxKWkRUVUdEWnp4Wm9HSUctWlFGNk9mOTQwVXBVd3A4SzQ0YXB3WHFfaE9YaE1mX3ZUZ1BpWWU2dDhIRXd1NENRaTAxdHdaRTFYNm5tVEZxWFQ4anpvdXo2anrSAYoBQVVfeXFMTzdwQXJjWlRmTlVDNXhWSzhsOTBHbjJpVENKRXVsUzhOR28zMjhIbGJxRFNtMTVxQVpqZlFscXhFMmx5eFhJcHRiLXJuSkhiQkZRV0tqSENqdE5TMXpxNy02c1pZb1UxNldGUkIzc3lLNTJaN1Q1QzNfVF9MX1N6bzc3dkRkNGQ0WU53?oc=5",
       "vendor": "OpenAI"
     },
     "42b9f5d042ce9a7a68c83ed1": {
@@ -104,6 +124,16 @@
       "url": "https://www.anthropic.com/threat-intelligence-report-september-2026",
       "vendor": "AI 생태계"
     },
+    "4867aef5c65db439693c2c57": {
+      "category": "AI 연구기관 내부자 도청·접근통제 사건",
+      "first_seen_at": "2026-10-14T01:48:43.668156+00:00",
+      "published_at": "2026-10-13T20:08:26+00:00",
+      "severity": 2,
+      "source": "Department of Justice (.gov)",
+      "title": "Office of Public Affairs | Saudi National Arrested for Installing Surreptitious Audio Recording Device at OpenAI - Department of Justice (.gov)",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxONExsQ3JIYllVOU9YWjREWWNUd0pNajJYOUZrUWNxVzlxN1dzd0xseXJ5UzR0Wnk0NDFoc1hmRkZjY19qaWxKTlF2VnNjdDBoSHJTYjZWSmFmNmFFOVBwLW12QjhoT1JMZ1NfT3lDbUhQZlN6WmN4UmQ0ODhVaUt6b041Y3kxVjY2VXpaQ0VyaHpMS2l3QmtadXBHRHVmRjlwdHJKMTBrdVdteEpIQVE?oc=5",
+      "vendor": "OpenAI"
+    },
     "4bcef357fe35e54a5c41b0a4": {
       "category": "Safety Case·학습 승인 게이트",
       "first_seen_at": "2026-09-30T05:28:41.121738+00:00",
@@ -112,6 +142,16 @@
       "source": "openai.com",
       "title": "Towards safety cases for frontier AI training - openai.com",
       "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFA5cm5nT3BoSU9lR283QzQzbGlfQ1FSUGhobEFLc2E4YkxaMEZLb1N6LWlWeG5VYUE5azlyWFZuM1lGdUVaNnRKNjBJUlNYdGIwUGNCMmg5U29IRkZoSjRiUVdVSUo3MThsUUhXM2llaGd5UkMyYlhqNHBydw?oc=5",
+      "vendor": "OpenAI"
+    },
+    "4c9b44ac9771f14e8aff5cd1": {
+      "category": "AI 연구기관 내부자 도청·접근통제 사건",
+      "first_seen_at": "2026-10-14T01:48:43.668156+00:00",
+      "published_at": "2026-10-13T20:59:11+00:00",
+      "severity": 2,
+      "source": "TechCrunch",
+      "title": "FBI arrests OpenAI employee accused of planting hidden recording device in conference room - TechCrunch",
+      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPaUFvbzdDZncxY1I4SXdvTEFiYWt4RC1vdjhKcXkxY3NmZ3dtS1hLZ2lVUUJTNzNoa2ZBeGduYWw2dkNfSHNUTk9LSDVRRG9VQ0dyVHpTM3Q0elh1RG5nczdrSUJMWG5MYVdXNFRLaEtXdHNEbV9nMzhrNF9rcW5fRkt2aHljRmo5SEFobDZlSW5lcDNjaU5CVHdHWjJOampfTWdDYTVaZGZXakFJbjc3R1VzdVVIUC03MjRESkdCWmhwYTg?oc=5",
       "vendor": "OpenAI"
     },
     "4f4d84e4e22995c47e2160a8": {
@@ -153,6 +193,16 @@
       "title": "Anthropic Threat Intelligence: threat intelligence report september 2026",
       "url": "https://www.anthropic.com/threat-intelligence-report-september-2026",
       "vendor": "Anthropic"
+    },
+    "6667fcaf29c68af8a3ddc4e6": {
+      "category": "AI 연구기관 내부자 도청·접근통제 사건",
+      "first_seen_at": "2026-10-14T01:48:43.668156+00:00",
+      "published_at": "2026-10-13T22:08:00+00:00",
+      "severity": 2,
+      "source": "The Guardian",
+      "title": "OpenAI employee arrested after recording device found in office - The Guardian",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPQldkOWVYWjktZ0ZrX3lYdmRTRDhpWV9HUEV0NklDRElhWXJyZkRHNEVHQlJnNUJLR2pwb0U2NWpUUWhyYmhscjB6d2Q0WWRyOWRrRWVMY1ZXMWVydXV4YmZTS1A2c0wwTjF4bHlyUXpUTnhMMUxNcVA3eENpZTdtRVp1aEVwOEFENTVFU0ZXcmdPZ0FaNmJTWUZyb2x6RDRY?oc=5",
+      "vendor": "OpenAI"
     },
     "68089fd74ef4533d1ef89795": {
       "category": "Safety Case·학습 승인 게이트",
@@ -244,6 +294,26 @@
       "url": "https://www.anthropic.com/news/anthropic-cyber-mission",
       "vendor": "Anthropic"
     },
+    "a83e1baad455d70adaab0ab9": {
+      "category": "AI 연구기관 내부자 도청·접근통제 사건",
+      "first_seen_at": "2026-10-14T01:48:43.668156+00:00",
+      "published_at": "2026-10-13T21:36:00+00:00",
+      "severity": 2,
+      "source": "CBS News",
+      "title": "FBI arrests OpenAI employee for allegedly planting recording device in company offices - CBS News",
+      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9NWXBrQnpZaXhCSmh3d09BazRrcy1kMzcyTHFWTWFPMVRtazBuUk9CR2VRTVdZc2piQ04wYkVVN3E2eFQ0MzVPMC1lNkttYnJCLUZ6Wl9FdUZLZVcyMmJueTdJdmdvNlhraTRTRENuQ29rRFVSVjVhLQ?oc=5",
+      "vendor": "OpenAI"
+    },
+    "b45c3c14adbaaa061683b1af": {
+      "category": "AI 연구기관 내부자 도청·접근통제 사건",
+      "first_seen_at": "2026-10-14T01:48:43.668156+00:00",
+      "published_at": "2026-10-14T00:09:00+00:00",
+      "severity": 2,
+      "source": "Fortune",
+      "title": "FBI arrests OpenAI employee accused of planting secret recording device in conference room - Fortune",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNQXRQaDdsVlBIdDY2ZVBJZFhYbUVGYUVTaEFsMVREQ1U5NnNaWnBrSTB0ZGloTVM0NUgwMDNaTk9JVHdMMlFEU2lNamVDR0V6dTdNWDQ0M3R3RWppQzFSVjlxcEtqTEJtTi1GZ0g5bjZuam5XU1BWQmdBMlFMY0NGTFd4eFN4T18tWWp3dEhNY1dHMXIxbjEtWEl4bDB0UllDeVhCOXd5eG5GRXFiTk1CRGNycEotNmc?oc=5",
+      "vendor": "OpenAI"
+    },
     "b83efe92a515d27f2260c40a": {
       "category": "취약점·패치",
       "first_seen_at": "2026-09-26T13:24:59.324346+00:00",
@@ -273,6 +343,16 @@
       "title": "Meta patches Muse exploit that let attackers control the AI agent - The Verge",
       "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQYVB0TUhEWXF3eXlPVmlDb1F4WGpidkNZanF3RllsQWh3SHN5dWhvSFlzSFY0VUJYeUh3ejZiRmtVRTBXclMyVFU4VHhKZ196bmNNWF9WeExJelVmalluN0JZWnZhZHVRaUhZalp0Rm1YckpZeHJFbTFqUzdyUW5mTVRraDc?oc=5",
       "vendor": "Meta"
+    },
+    "d4863ba12a27c745b2a7a741": {
+      "category": "AI 연구기관 내부자 도청·접근통제 사건",
+      "first_seen_at": "2026-10-14T01:48:43.668156+00:00",
+      "published_at": "2026-10-13T20:41:18+00:00",
+      "severity": 2,
+      "source": "Department of Justice (.gov)",
+      "title": "Saudi National Arrested For Installing Surreptitious Audio Recording Device At OpenAI In San Francisco - Department of Justice (.gov)",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNaF9oU3RYQTZYazB3MkJkWXczTXotc1BuNzF3QS02LXZ0TmtBdjB4WXhqMVZCUTdVbTlYZ2psbWZOWTV0VHZvclF6SWtWbk9uSFhQR21rZExSRlNkcW4wakZTbkxoRHFsaUtia3hjZXpaRUduckNnTUJLSXh4Wnp4NlB5cnYzUmh4Qm5uZXZMOTVPcmNmRVU4NXU5dUlpVm51YXZ3TDdoYnlGYkJ6cnBsaW9ad25zNE9xYmVJ?oc=5",
+      "vendor": "OpenAI"
     },
     "d6eede707b458f6eda9066c7": {
       "category": "취약점·패치",
@@ -313,7 +393,17 @@
       "title": "Anthropic News: improving alignment security efforts",
       "url": "https://www.anthropic.com/news/improving-alignment-security-efforts",
       "vendor": "Anthropic"
+    },
+    "f5a2db300fbf2ede746cc839": {
+      "category": "AI 연구기관 내부자 도청·접근통제 사건",
+      "first_seen_at": "2026-10-14T01:48:43.668156+00:00",
+      "published_at": "2026-10-13T21:19:02+00:00",
+      "severity": 2,
+      "source": "BBC",
+      "title": "Saudi man charged with planting 'sophisticated' recording device in OpenAI office - BBC",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFAzR2tkbXBlSC15bmdLOC15RXdoYWN4RmExYXo2VklpTGlBLTdWV0plN2ZYZ1JpZV9CMG9RLU01T19WWTQwQ051ZDBCTGlFWC0yVkNzMDR2SlNRSmZiY1E?oc=5",
+      "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-10-14T10:47:33+09:00"
+  "updated_at_kst": "2026-10-14T10:48:43+09:00"
 }
