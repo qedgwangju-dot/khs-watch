@@ -1035,6 +1035,182 @@ def _robros_213_214_correction() -> list[dict]:
     }]
 
 
+
+# 2026-10 CATL x INTILION sodium-ion ESS EU framework.
+# This is a 3GWh DEVELOPMENT TARGET over five years, not a binding
+# procurement contract, installed capacity, sales backlog, or new 10+3 GWh.
+CATL_INTILION_RECOVERY = "DIRECT_CATL_INTILION_SODIUM_DACH_3GWH_20261009"
+CATL_INTILION_ID = re.compile(r'\bINTILION\b|인틸리온', re.I)
+CATL_INTILION_CATL = re.compile(r'\bCATL\b|닝더스다이|宁德时代', re.I)
+CATL_INTILION_SODIUM = re.compile(r'sodium[-\s]*ion|나트륨\s*이온|钠离子', re.I)
+CATL_INTILION_3GWH = re.compile(r'(?<!\d)3\s*GWh|3\s*기가와트시', re.I)
+CATL_INTILION_5Y = re.compile(r'(?:five|5)[-\s]*(?:year|yr)|(?:5|다섯)\s*년|5년간', re.I)
+CATL_INTILION_OFFICIAL = {'INTILION CEO','INTILION','INTILION GmbH','CATL'}
+CATL_INTILION_TRUSTED = {'pv magazine','pv magazine Global','Energy-Storage.News','ESS News'}
+CATL_INTILION_BINDING = re.compile(
+    r'(?:binding|firm|confirmed)\s+(?:purchase|supply|procurement)\s+(?:agreement|contract|order)|'
+    r'확정\s*(?:구매|발주|납품|공급)\s*계약|납품\s*본계약\s*체결',
+    re.I,
+)
+CATL_INTILION_NOBINDING = re.compile(
+    r'not\s+(?:a\s+)?(?:binding|firm)|not\s+confirmed|'
+    r'no\s+(?:firm\s+)?(?:procurement|purchase)\s+commitment|'
+    r'확정\s*(?:구매|발주|납품)\s*(?:아님|전|없음)|'
+    r'구매\s*의무\s*미확정|확정\s*발주\s*없음',
+    re.I,
+)
+CATL_INTILION_DEPLOY = re.compile(
+    r'(?:named|specific)\s+project.{0,120}(?:commissioned|operational)|'
+    r'실제\s*(?:프로젝트|현장)\s*(?:가동|준공|전원\s*인가)|'
+    r'첫\s*나트륨이온\s*(?:ESS\s*)?(?:설치|가동)\s*완료',
+    re.I,
+)
+CATL_INTILION_REVERSE = re.compile(
+    r'협약\s*(?:철회|해지|취소)|agreement\s+(?:terminated|cancelled)|'
+    r'개발\s*목표\s*(?:축소|중단)',
+    re.I,
+)
+
+
+def _is_catl_intilion_sodium(text: str) -> bool:
+    return bool(CATL_INTILION_ID.search(text) and CATL_INTILION_CATL.search(text)
+                and CATL_INTILION_SODIUM.search(text))
+
+
+def _catl_intilion_stage(text: str, source: str = '') -> str:
+    if not _is_catl_intilion_sodium(text):
+        return ''
+    if source in CATL_INTILION_OFFICIAL:
+        if CATL_INTILION_REVERSE.search(text):
+            return 'official_reversal'
+        if CATL_INTILION_DEPLOY.search(text):
+            return 'official_site_commissioned'
+        if CATL_INTILION_BINDING.search(text) and not CATL_INTILION_NOBINDING.search(text):
+            return 'official_binding_order'
+    if (CATL_INTILION_3GWH.search(text) and CATL_INTILION_5Y.search(text)
+            and (source in CATL_INTILION_OFFICIAL or source in CATL_INTILION_TRUSTED)):
+        return 'sodium_3gwh_development_framework'
+    return 'background'
+
+
+def _catl_intilion_recovery() -> list[dict]:
+    # First-hand evidence is CEO Hubertus Jakobi's LinkedIn update on 10/09;
+    # pv magazine independently described it on 10/13. Neither reported
+    # firm purchase orders, project sites, a delivery timetable or price.
+    if base.NOW.astimezone(base.KST).date() > dt.date(2026,10,21):
+        return []
+    return [{
+        'title': 'CATL–INTILION 나트륨이온 ESS 5년 최대 3GWh 공동개발 협약',
+        'link': 'https://www.pv-magazine.com/2026/10/13/catl-intilion-target-up-to-3-gwh-of-sodium-ion-storage-in-europe/',
+        'description': (
+            'INTILION CEO Hubertus Jakobi 10/09 직접 게시글 및 pv magazine 10/13 '
+            '독립 보도 교차확인. 독일·오스트리아·스위스(DACH)에서 '
+            'CATL 나트륨이온 ESS를 향후 5년간 최대 3GWh 공동개발한다는 '
+            '협약을 서명했다. 3GWh는 프로젝트 개발 목표이지 '
+            '확정 구매계약·납품 GWh·기인식 매출이나 설치 완료 용량이 아니다. '
+            '구체 프로젝트, 고객별 설비 용량, 조달 의무, 계약금액, '
+            '착공·전원 인가·초도 납품 시기는 아직 공개되지 않았다. '
+            '2025년 CATL–INTILION 기존 5년 최대 10GWh 협력과 '
+            '이번 3GWh의 포함관계가 미공개이므로 13GWh로 합산하지 않는다. '
+            '3GWh=3,000MWh=3,000,000kWh이며 실제 단가가 없으므로 '
+            '총사업비와 확정 매출은 추정하지 않는다. '
+            '가상의 시스템 판매단가가 kWh당 1만원 달라질 때 목표용량 전체 '
+            '금액 민감도는 300억원이나 계약액이 아니다. '
+            'INTILION은 HOPPECKE 그룹 소속 통합기업으로 프로젝트 설계, '
+            '배터리 시스템 통합, 소프트웨어·시운전·유지보수 사업을 수행한다. '
+            '장기 유지보수 계약은 이번 협약의 확정 조건이 아니다. '
+            'INTILION CEO는 왕복효율 96.5% 초과·15,000회 이상 사이클 등을 '
+            '소개했으나 CATL 공식 TENER Sodium 기준 25도 15,000회, '
+            '45도 10,000회 초과, 영하20도 92% 초과 용량유지율로 시험조건을 '
+            '구분한다. CATL의 유럽 국제 출하는 2027년 6월부터 계획이며 '
+            '본 협약의 확정 납품시점이 아니다. 셀/랙/컨테이너 열폭주 전파, '
+            '배기·방폭·냉각·화재 인증, 보험, 전력계통 연계와 전원 인가 '
+            '시점이 실제 사업화 병목이다.'
+        ),
+        'source':'INTILION CEO',
+        'published': None,
+        'direct_recovery':True,
+        'catl_intilion_framework':True,
+    }]
+
+
+# Dexmate CEO interview: distinguish a use/distribution statement and
+# vendor-reported hundred-unit global deployments from a signed LG CNS
+# sales contract or measured 99.99%-task success.
+DEXMATE_LG_RECOVERY = 'DIRECT_DEXMATE_LGCNS_USE_DISTRIBUTION_CEO_20261014'
+DEXMATE_ID = re.compile(r'\bDexmate\b|덱스메이트', re.I)
+DEXMATE_LG = re.compile(r'\bLG\s*CNS\b|LG씨엔에스|\bLG\b|엘지', re.I)
+DEXMATE_CEO = re.compile(r'Tao\s*Chen|타오\s*첸|최고경영자|CEO', re.I)
+DEXMATE_USE = re.compile(r'유통\s*(?:지원|돕|도와)|use\s+our\s+robots|'
+                         r'using\s+(?:our\s+)?robots|'
+                         r'사용(?:하고\s*있|하고\s*있으며|중)|한국\s*유통', re.I)
+DEXMATE_ACHIEVED_KPI = re.compile(
+    r'(?:99[.]99\s*%).{0,45}(?:달성|실측|측정|achieved|measured)|'
+    r'(?:달성|실측|측정|achieved|measured).{0,45}(?:99[.]99\s*%)', re.I
+)
+DEXMATE_KPI_REQUIRED = re.compile(r'필요|목표|요구|necessary|required|target', re.I)
+DEXMATE_PAID = re.compile(r'정식\s*유상\s*계약|고객\s*구매\s*계약\s*체결|'
+                          r'paid\s+(?:deployment|contract)|'
+                          r'signed\s+(?:sales|purchase)\s+contract', re.I)
+DEXMATE_PRIMARY = {'LG CNS','LG씨엔에스','Dexmate','DEXMATE'}
+DEXMATE_TRUSTED = {'이데일리','EDAILY'}
+
+
+def _is_dexmate_lg(text: str) -> bool:
+    return bool(DEXMATE_ID.search(text) and DEXMATE_LG.search(text))
+
+
+def _dexmate_lg_stage(text: str, source: str = '') -> str:
+    if not _is_dexmate_lg(text):
+        return ''
+    if source in DEXMATE_PRIMARY:
+        if DEXMATE_PAID.search(text):
+            return 'official_paid_contract'
+        if (DEXMATE_ACHIEVED_KPI.search(text) and not DEXMATE_KPI_REQUIRED.search(text)):
+            return 'official_measured_reliability'
+    if (source in DEXMATE_TRUSTED and DEXMATE_CEO.search(text)
+            and DEXMATE_USE.search(text)
+            and re.search(r'유통|distribution|distribut',text,re.I)):
+        return 'ceo_reported_use_distribution'
+    return 'known_investment_and_poc_baseline'
+
+
+def _dexmate_lg_recovery() -> list[dict]:
+    if base.NOW.astimezone(base.KST).date() > dt.date(2026,10,21):
+        return []
+    return [{
+        'title':'Dexmate CEO: LG CNS 로봇 사용·한국 유통 지원…투자 후 현장 적용 발언',
+        'link':'https://www3.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=02482966645612920',
+        'description':(
+            '2026-10-14 이데일리 뉴욕 현장 인터뷰에서 미국 Dexmate '
+            '최고경영자 타오 첸(Tao Chen)은 LG가 자사 로봇을 실제 사용하고 '
+            '한국 내 유통도 돕고 있다고 직접 발언했다. '
+            'LG CNS는 2026년 3월 LG테크놀로지벤처스를 통해 '
+            'Dexmate에 전략투자했으며 제조·물류 현장 개념검증 '
+            '진행은 당시 LG CNS 공식 보도자료로 확인된다. '
+            'CEO 발언은 기존 투자 및 검증에서 사용·유통 관계가 '
+            '구체화한 보도 신호이나 LG CNS의 독점판매계약·'
+            '실제 유료 판매건수·매출 공시가 아니다. '
+            'CEO는 세계 여러 고객에 로봇 수백 대를 공급했다고 주장했으나 '
+            '고객 실명·유상 판매 비중·구체 출하 대수는 별도 검증되지 않았다. '
+            '그는 연구실 60~70% 성공률과 달리 산업현장은 '
+            '99.99% 정도가 필요하다고 설명했다. 99.99%는 '
+            '회사 달성 성능이나 10,000번 실험에서의 성적이 아닌 '
+            '상용화 목표 수준이다. RoboStrategy CEO의 '
+            '특정작업 로봇 2~3년·범용 로봇 약 5년 전망은 '
+            '이 회사의 납품 시간표가 아니다. '
+            'RoboStrategy 9월 말 포트폴리오에서 Standard Bots 31.3%, '
+            'Dexmate 9.1%로 이해관계가 있는 투자자 전망임을 유의한다. '
+            '이후 실제 유상 고객계약·설치·작업성공률·사람 개입률·가동률·'
+            '고장률·정비비·보증충당금 및 구체 원화 매출을 별도 추적한다.'
+        ),
+        'source':'이데일리',
+        'published': None,
+        'direct_recovery': True,
+        'dexmate_ceo_interview': True,
+    }]
+
+
 _orig_query_news = base.query_news
 
 
@@ -1057,10 +1233,22 @@ def query_news(q: str) -> list[dict]:
         return _vnet_equity_recovery()
     if q == ROBROS_PILOT_20261013:
         return _robros_pilot_recovery() + _robros_213_214_correction()
+    if q == CATL_INTILION_RECOVERY:
+        return _catl_intilion_recovery()
+    if q == DEXMATE_LG_RECOVERY:
+        return _dexmate_lg_recovery()
     return _orig_query_news(q)
 
 
 base.query_news = query_news
+for q in (
+    CATL_INTILION_RECOVERY,
+    DEXMATE_LG_RECOVERY,
+    '(CATL OR 宁德时代) (INTILION OR 인틸리온) (sodium-ion OR 나트륨이온) (3GWh OR 3 GWh OR 계약 OR 프로젝트 OR 납품 OR 지연)',
+    '(Dexmate OR 덱스메이트) (LG CNS OR LG씨엔에스) (실제 사용 OR 유통 OR 도입 OR 납품 OR 유상계약 OR 작업 성공률)',
+):
+    if q not in base.QUERIES:
+        base.QUERIES.append(q)
 if ROBROS_PILOT_20261013 not in base.QUERIES:
     base.QUERIES.append(ROBROS_PILOT_20261013)
 for q in (
