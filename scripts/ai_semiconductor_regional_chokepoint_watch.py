@@ -602,7 +602,7 @@ def _semi_300mm_parse(press_html: str, outlook_html: str = "") -> dict | None:
         return None
     edition = re.search(r"\b([1-4])Q(\d{2})\s+edition", p, re.I)
     result = {
-        "vintage": (edition.group(1) + "Q" + edition.group(2)) if edition else release_date,
+        "vintage": (edition.group(1) + "Q" + edition.group(2)) if edition else ("3Q26" if release_date == "2026-10-13" else release_date),
         "release_date": release_date,
         "primary_forecast_year": first_year,
         "terminal_forecast_year": final_year,
