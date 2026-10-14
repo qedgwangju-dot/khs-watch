@@ -54,6 +54,7 @@ SCALE = {
 }
 PER_UNIT_PATTERN = r"(?:MWh|GWh|kWh|GPU|CPU|module|wafer|month|year|TiB|TB|GB|Gb|kW|MW|GW|Wh|kg|chip|서버|랙|주|개|대|g|t|W)"
 _RATE_CACHE: dict[str, tuple[float | None, str]] = {}
+_USED_FX: dict[str, tuple[float, str]] = {}
 
 
 def _rate(currency: str) -> tuple[float | None, str]:
@@ -72,6 +73,7 @@ def _krw_text(value: float, currency: str, per_unit: str = "") -> str:
     rate, basis = _rate(currency)
     if rate is None:
         raise RuntimeError(f"{currency} 원화 환율 확인 실패—외화 금액 알림 발송 보류")
+    _USED_FX[currency] = (rate, basis)
     won = value * rate
     if per_unit:
         return f"약 {won:,.0f}원{per_unit}"
@@ -97,13 +99,14 @@ def _normalize_existing_separate_krw(text: str) -> str:
     # 아래 enforce 단계에서 실행 시점의 검증된 API 환율로 다시 계산한다.
     # 사용자가 요구한 표기는 항상 "외화금액(약 원화금액)"으로 통일한다.
     pat = re.compile(
-        r"(?P<fx>\d[\d,.]*(?:\.\d+)?\s*(?:조|십억|억|백만|천만|만)(?:싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔|링깃|위안|파운드))"
+        r"(?P<fx>\d[\d,.]*(?:\.\d+)?\s*(?:조|십억|억|백만|천만|만)\s*(?:싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔|링깃|위안|파운드))"
         r"\s*(?:·|=|≈|≒)\s*(?:약\s*)?[\d,]+(?:조[\d,]*억|조|억)?원"
     )
     return pat.sub(lambda m: m.group("fx"), text)
 
 
 def enforce_text(text: str) -> str:
+    _USED_FX.clear()
     text = _normalize_existing_separate_krw(text)
 
     # Ranges that share a currency unit, e.g. 600억~640억달러.
@@ -111,7 +114,7 @@ def enforce_text(text: str) -> str:
         r"(?P<a>\d[\d,.]*(?:\.\d+)?)\s*(?P<ua>조|십억|억|백만|천만|만)"
         r"\s*(?P<sep>[~～–—-])\s*"
         r"(?P<b>\d[\d,.]*(?:\.\d+)?)\s*(?P<ub>조|십억|억|백만|천만|만)?"
-        r"(?P<word>싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔|링깃|위안|파운드)"
+        r"\s*(?P<word>싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔|링깃|위안|파운드)"
     )
     def repl_range(m):
         tail = text[m.end():]
@@ -128,7 +131,7 @@ def enforce_text(text: str) -> str:
     # Korean large-unit currency amounts.
     large_pat = re.compile(
         r"(?P<num>\d[\d,.]*(?:\.\d+)?)\s*(?P<unit>조|십억|억|백만|천만|만)"
-        r"(?P<word>싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔|링깃|위안|파운드)(?P<per>/" + PER_UNIT_PATTERN + r")?",
+        r"\s*(?P<word>싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔|링깃|위안|파운드)(?P<per>/" + PER_UNIT_PATTERN + r")?",
         re.I,
     )
     def repl_large(m):
@@ -145,7 +148,7 @@ def enforce_text(text: str) -> str:
     symbol_pat = re.compile(
         r"(?P<prefix>US\$|HK\$|NT\$|S\$|A\$|C\$|\$|€|£)\s*"
         r"(?P<num>\d[\d,.]*(?:\.\d+)?)\s*"
-        r"(?P<unit>billion|million|B|M)\b(?P<per>/" + PER_UNIT_PATTERN + r")?",
+        r"(?P<unit>trillion|billion|million|bn|mn|T|B|M)\b(?P<per>/" + PER_UNIT_PATTERN + r")?",
         re.I,
     )
     def repl_symbol(m):
@@ -153,7 +156,9 @@ def enforce_text(text: str) -> str:
         if _already_parenthesized(tail):
             return m.group(0)
         unit = m.group("unit").lower()
-        value = _number(m.group("num")) * (1_000_000_000 if unit in ("billion", "b") else 1_000_000)
+        factor = (1_000_000_000_000 if unit in ("trillion", "t") else
+                  1_000_000_000 if unit in ("billion", "bn", "b") else 1_000_000)
+        value = _number(m.group("num")) * factor
         per = m.group("per") or ""
         prefix = m.group("prefix")
         currency = SYMBOL_CURRENCIES.get(prefix.upper() if prefix.upper() in SYMBOL_CURRENCIES else prefix, SYMBOL_CURRENCIES.get(prefix))
@@ -166,7 +171,7 @@ def enforce_text(text: str) -> str:
     iso_pat = re.compile(
         r"(?P<code>USD|EUR|JPY|MYR|CNY|HKD|GBP|SGD|TWD|AUD|CAD|CHF)\s*"
         r"(?P<num>\d[\d,.]*(?:\.\d+)?)\s*"
-        r"(?P<unit>billion|million|B|M)?\b(?P<per>/" + PER_UNIT_PATTERN + r")?",
+        r"(?P<unit>trillion|billion|million|bn|mn|T|B|M)?\b(?P<per>/" + PER_UNIT_PATTERN + r")?",
         re.I,
     )
     def repl_iso(m):
@@ -177,9 +182,11 @@ def enforce_text(text: str) -> str:
         currency = ISO_CURRENCIES[code]
         unit = (m.group("unit") or "").lower()
         value = _number(m.group("num"))
-        if unit in ("billion", "b"):
+        if unit in ("trillion", "t"):
+            value *= 1_000_000_000_000
+        elif unit in ("billion", "bn", "b"):
             value *= 1_000_000_000
-        elif unit in ("million", "m"):
+        elif unit in ("million", "mn", "m"):
             value *= 1_000_000
         per = m.group("per") or ""
         return f"{m.group(0)}({_krw_text(value, currency, per)})"
@@ -196,7 +203,7 @@ def enforce_text(text: str) -> str:
         tail = text[m.end():]
         if _already_parenthesized(tail):
             return m.group(0)
-        if re.match(r"\s*(?:billion|million|B|M)\b", tail, re.I):
+        if re.match(r"\s*(?:trillion|billion|million|bn|mn|T|B|M)\b", tail, re.I):
             return m.group(0)
         prefix = m.group("prefix")
         currency = SYMBOL_CURRENCIES.get(prefix.upper() if prefix.upper() in SYMBOL_CURRENCIES else prefix, SYMBOL_CURRENCIES.get(prefix))
@@ -222,6 +229,12 @@ def enforce_text(text: str) -> str:
         per = m.group("per") or ""
         return f"{m.group(0)}({_krw_text(_number(m.group('num')), currency, per)})"
     text = word_plain.sub(repl_word_plain, text)
+    if _USED_FX:
+        refs = [
+            f"{currency}/KRW {rate:,.4f}원 · {basis}"
+            for currency, (rate, basis) in sorted(_USED_FX.items())
+        ]
+        text += "\n환율 기준: " + " / ".join(refs) + "\n"
     validate_text(text)
     return text
 
@@ -229,17 +242,17 @@ def enforce_text(text: str) -> str:
 def _money_candidates(text: str):
     word = (
         r"\d[\d,.]*(?:\.\d+)?\s*(?:조|십억|억|백만|천만|만)?"
-        r"(?:싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔|링깃|위안|파운드)"
+        r"\s*(?:싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔|링깃|위안|파운드)"
         r"(?:/" + PER_UNIT_PATTERN + r")?"
     )
     symbol = (
         r"(?:US\$|HK\$|NT\$|S\$|A\$|C\$|\$|€|£)\s*"
-        r"\d[\d,.]*(?:\.\d+)?(?:\s*(?:billion|million|B|M))?"
+        r"\d[\d,.]*(?:\.\d+)?(?:\s*(?:trillion|billion|million|bn|mn|T|B|M))?"
         r"(?:/" + PER_UNIT_PATTERN + r")?"
     )
     iso = (
         r"(?:USD|EUR|JPY|MYR|CNY|HKD|GBP|SGD|TWD|AUD|CAD|CHF)\s*"
-        r"\d[\d,.]*(?:\.\d+)?(?:\s*(?:billion|million|B|M))?"
+        r"\d[\d,.]*(?:\.\d+)?(?:\s*(?:trillion|billion|million|bn|mn|T|B|M))?"
         r"(?:/" + PER_UNIT_PATTERN + r")?"
     )
     for m in re.finditer(word + "|" + symbol + "|" + iso, text, re.I):
