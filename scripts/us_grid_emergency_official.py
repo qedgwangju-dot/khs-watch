@@ -355,7 +355,7 @@ def pjm_title(event: dict) -> str:
     low = t.lower()
     if "eea 1" in low or "eea1" in low:
         return "PJM, EEA1·최대발전 비상경보 발령"
-    if "emergency load mgmt reduction action" in low:
+    if "emergency load mgmt reduction action" in low and "pre-emergency" not in low:
         return "PJM, 비상 수요감축 실행 지시"
     if "deploy all resources action" in low:
         return "PJM, 가용 발전·수요자원 전면 동원 지시"
