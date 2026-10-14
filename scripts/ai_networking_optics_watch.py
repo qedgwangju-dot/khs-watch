@@ -700,6 +700,10 @@ def credo_milestone(title: str) -> tuple[str, str, str] | None:
         r"customer (?:orders?|qualification|certification)|"
         r"production design win|selected by (?:a )?(?:major )?customer",
         text, re.I,
+    )) and not bool(re.search(
+        r"plans? to|expects? to|targets? to|aims? to|will qualify|"
+        r"scheduled to|expected to|proposed customer qualification",
+        text, re.I,
     ))
     if re.search(r"\bSRMO\b|short[- ]reach micro[- ]emitter", text, re.I):
         if re.search(r"(?:OCP|open compute).{0,90}(?:approved|ratified|adopted)"
@@ -725,14 +729,31 @@ def credo_milestone(title: str) -> tuple[str, str, str] | None:
         return None
 
     if re.search(r"optical (?:business )?revenue|optics? (?:revenue|guidance)", text, re.I) \
-            and re.search(r"\$?\s*600\s*(?:m|million)\b|6억\s*달러", text, re.I) \
             and re.search(r"FY27|fiscal (?:year )?2027|2027", text, re.I):
-        if re.search(r"raises?|upgrades?|lowers?|cuts?|revises?|increases?|decreases?", text, re.I):
+        amount = re.search(
+            r"(?:\$|USD\s*)(\d+(?:\.\d+)?)\s*(million|billion|m|bn)\b|"
+            r"(\d+(?:\.\d+)?)\s*억\s*달러",
+            text, re.I,
+        )
+        target_m = None
+        if amount:
+            if amount.group(3):
+                target_m = round(float(amount.group(3)) * 100)
+            else:
+                multiplier = 1000 if amount.group(2).lower() in {"billion", "bn"} else 1
+                target_m = round(float(amount.group(1)) * multiplier)
+        is_revision = bool(re.search(
+            r"raises?|upgrades?|lowers?|cuts?|revises?|increases?|decreases?",
+            text, re.I,
+        ))
+        if is_revision and target_m is not None:
+            direction = "up" if re.search(r"raises?|upgrades?|increases?", text, re.I) else "down"
             return ("크레도 광학사업 가이던스 변경", "목표 변경·실제 매출은 실적공시 확인",
-                    "credo|optics|fy27-guidance-revised|" +
-                    ("up" if re.search(r"raises?|increases?", text, re.I) else "down"))
-        return ("크레도 2027 광학매출 목표", "6억 달러 초과 목표·실현 미확정",
-                "credo|optics|fy27-600m-guidance")
+                    f"credo|optics|fy27-guidance-revised|{direction}|{target_m}m")
+        if target_m == 600:
+            return ("크레도 2027 광학매출 목표", "6억 달러 초과 목표·실현 미확정",
+                    "credo|optics|fy27-600m-guidance")
+        return None
 
     if re.search(r"\bALC\b|active light cable|zero.?flap active light", text, re.I):
         if real_ship:
@@ -2392,6 +2413,19 @@ def _self_test_korean_optics_alerts() -> None:
     assert credo_milestone("Credo now shipping 6.4T NPO to major AI customer")[2] == "credo|npo|shipment|6.4t"
     assert credo_milestone("Credo 2027 optical revenue guidance over $600 million")[2] == "credo|optics|fy27-600m-guidance"
     assert credo_milestone("Credo stock surges as analyst boosts price target") is None
+    assert credo_milestone("Credo raises FY2027 optical revenue guidance to $700 million")[2] == "credo|optics|fy27-guidance-revised|up|700m"
+    assert credo_milestone("Credo raises FY2027 optical revenue guidance to $800 million")[2] == "credo|optics|fy27-guidance-revised|up|800m"
+    assert credo_milestone("Credo plans to qualify customer for 6.4T NPO in FY28")[2] == "credo|npo|fy28-plan"
+    for headline in (
+        "Credo expects 6.4T NPO mass production in fiscal 2028",
+        "Credo now shipping 6.4T NPO to major AI customer",
+        "Credo 2027 optical revenue guidance over $600 million",
+        "Credo launches SRMO OCP workstream for 2027 approval",
+    ):
+        milestone = credo_milestone(headline)
+        assert milestone is not None, headline
+        assert meaning_for(milestone[0]) and risk_for(milestone[0]), headline
+        assert meaning_for(milestone[0]) != risk_for(milestone[0]), headline
     assert canonical_story_key("Credo", "Credo launches SRMO OCP workstream for 2027 approval") in CREDO_PRIOR_EVENT_KEYS
     assert canonical_story_key("Credo", "Credo now shipping 6.4T NPO to major AI customer") not in CREDO_PRIOR_EVENT_KEYS
     opticore_order = "옵티코어 AI 데이터센터용 400G 800G 광트랜시버 공급계약 체결"
