@@ -1039,13 +1039,37 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         self.assertIsNone(MODULE.confirm_event([row]))
 
     def test_direct_historical_sources_expire(self):
+        # Historical expiry tests must never read current live MMA reports. New official
+        # releases make a fixed simulated October 16 date nondeterministic otherwise.
+        import unittest.mock
         now=dt.datetime(2026,10,16,13,tzinfo=dt.timezone.utc)
         with self.assertRaisesRegex(RuntimeError,"유효기간"):
             MODULE.parse_china_reuters_resumption("",now)
         with self.assertRaisesRegex(RuntimeError,"신선도"):
             MODULE.parse_hormuz_xinhua_review("",now)
-        with self.assertRaisesRegex(RuntimeError,"신선도"):
-            MODULE.fetch_mma_isaias_snapshot(now)
+
+        pages={}
+        for url,date,percent in (
+            (MODULE.MMA_OIL_ISAIAS_OCT7_URL,"October 7, 2026",25.08),
+            (MODULE.MMA_OIL_ISAIAS_OCT8_URL,"October 8, 2026",62.90),
+            (MODULE.MMA_OIL_ISAIAS_OCT9_URL,"October 9, 2026",71.50),
+        ):
+            pages[url]=(
+                f"Marine Minerals Administration Isaias {date} "
+                "evacuated from a total of 129 production platforms. "
+                f"approximately {percent:.2f}% of the current oil production "
+                "and 58.90% of the current natural gas production. "
+                "Oil, BOPD** Shut-in 1,450,000"
+            )
+        def offline_mma_fetch(url,timeout=16,attempts=1):
+            if url==MODULE.MMA_ISAIAS_NEWS_INDEX_URL:
+                return b"<html><body>No newer report</body></html>"
+            if url in pages:
+                return pages[url].encode("utf-8")
+            raise RuntimeError("Unmocked test network access")
+        with unittest.mock.patch.object(MODULE,"fetch_bytes",side_effect=offline_mma_fetch):
+            with self.assertRaisesRegex(RuntimeError,"신선도"):
+                MODULE.fetch_mma_isaias_snapshot(now)
 
     def test_hormuz_direct_source_requires_original_text(self):
         now=dt.datetime(2026,10,9,13,tzinfo=dt.timezone.utc)
