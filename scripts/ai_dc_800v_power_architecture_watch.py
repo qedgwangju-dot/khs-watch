@@ -682,7 +682,33 @@ def render(facts: dict, chg: list[str], errors: list[str], fxv: dict) -> str:
     return "\n".join(lines).strip() + "\n"
 
 
+def _self_test_change_deduplication() -> None:
+    """Regression guard: same official evidence must not repeat a Telegram alert."""
+    base = {
+        "architecture": {"ocp_sst_spec_version": "0.3"},
+        "vendors": {
+            "Delta": {
+                "stage": "800 VDC In-Row 제품 공개",
+                "ocp_2026_official_power_cooling_display": True,
+                "ocp_2026_cdu_mw": 3.6,
+                "deschutes_open_cdu_mass_production_q1_2027_plan": True,
+            },
+        },
+        "execution": {},
+        "market": {},
+    }
+    old = {"initialized": True, "format_version": FORMAT_VERSION, "facts": base}
+    assert changes(old, base) == [], "An identical OCP snapshot must be silent."
+    assert not (int(old["format_version"]) < FORMAT_VERSION)
+    updated = json.loads(json.dumps(base))
+    updated["vendors"]["Delta"]["ocp_2026_cdu_mw"] = 5.0
+    assert any("3.6→5.0" in item for item in changes(old, updated)), (
+        "A real verified capacity change must be reported exactly once."
+    )
+
+
 def main() -> int:
+    _self_test_change_deduplication()
     OUT.mkdir(exist_ok=True)
     for p in (PENDING, ALERT, STATUS):
         p.unlink(missing_ok=True)
