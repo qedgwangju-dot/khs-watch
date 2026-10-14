@@ -5,9 +5,15 @@
   "last_collection": {
     "direct_official_items": 27,
     "errors": [],
-    "material_items": 2,
+    "material_items": 3,
     "new_material_items": 0,
-    "raw_items": 46
+    "raw_items": 166
+  },
+  "openai_insider_case_stages": {
+    "initial_oct13_charge": {
+      "source_url": "https://www.justice.gov/usao-ndca/pr/saudi-national-arrested-installing-surreptitious-audio-recording-device-openai-san",
+      "status": "2026-10-13 initial criminal complaint; allegations, not verdict"
+    }
   },
   "quantum_mna_seen": {
     "ionq-elisity-2026-10-12-signed": {
@@ -178,6 +184,16 @@
       "url": "https://www.anthropic.com/news/cyber-verification-program",
       "vendor": "Anthropic"
     },
+    "7ab6b56d77275fa4de64d1c8": {
+      "category": "AI 연구기관 내부자 도청·접근통제 사건",
+      "first_seen_at": "2026-10-14T01:43:04.543652+00:00",
+      "published_at": "2026-10-13T23:29:36+00:00",
+      "severity": 2,
+      "source": "Reuters",
+      "title": "FBI arrests Saudi OpenAI engineer over covert recording device, DOJ says - Reuters",
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNcjkxNVh4Vlg5aXhHdHJySlBhbC1iZVRDTTF1a2hiUk52eUlqUW1aWWtoeUg2TjQ0OWU1aURzNW5aWmZ1TEFBcGl4NTBIQVZSVnNPaFpFUnZqb2RjRzNQS0xLQjRkMmtJZWhuU1RLRXplcktzVnBHMVVhNThISzMxMVFYbXZoeWE2WFc3b2VzMlQ0Sl92Y0kwLXJ0MUxBOTdUNzFxdjR0VTI?oc=5",
+      "vendor": "OpenAI"
+    },
     "7e91336b9e3264ee5af31584": {
       "category": "취약점·패치",
       "first_seen_at": "2026-09-29T01:48:27.859797+00:00",
@@ -299,5 +315,5 @@
       "vendor": "Anthropic"
     }
   },
-  "updated_at_kst": "2026-10-14T10:33:15+09:00"
+  "updated_at_kst": "2026-10-14T10:43:04+09:00"
 }
