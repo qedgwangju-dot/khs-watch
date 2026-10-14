@@ -1042,7 +1042,7 @@ def meta_milestone(title: str) -> tuple[str, str, str] | None:
         return ("메타 Tahan 스위치","2026년 10월 스위치 출하, 광모듈 PO와 구분",
                 "meta|tahan|oct2026-shipping")
     # Published targets and conditional FCC hedges are not actual placements.
-    if re.search(r"would |may |might |could |plans? to|expects? to|"
+    if re.search(r"would |may |might |could |plans? (?:to|NPO|CPO|deploy|deployment)|expects? to|"
                  r"expected |reportedly|forecast|2029[- –]2030|"
                  r"if (?:a |the )?ban",text,re.I) and not re.search(
                  r"has (?:signed|awarded|deployed|shipped|qualified)|"
