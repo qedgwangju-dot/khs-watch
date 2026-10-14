@@ -29,6 +29,65 @@ class IntegrityTests(unittest.TestCase):
         self.network.start()
         self.addCleanup(self.network.stop)
 
+    def test_maritime_tally_preserves_period_count_and_ship_population(self):
+        row = article('호르무즈 피격 선박 2주에 24척, 개전 이후 최대 규모')
+        row['description'] = 'FT는 UKMTO와 유럽 안보 당국자 자료를 종합해 지난 11일까지 2주 동안 선박 24척이 공격당했다고 보도했다.'
+        row['signals_ko'] = ['UKMTO 기준 호르무즈·오만 인근 유조선의 미확인 발사체 피격이 반복']
+        row['tags'] = ['유조선피격', '해상안보', '확전']
+        text = integrity.build_alert([row], [], NOW)
+        self.assertEqual(integrity.topic_label(row), '호르무즈 · 선박 피격 집계 보도')
+        self.assertEqual(integrity.final_color(row), 'red')
+        self.assertIn(row['title_original'], text)
+        self.assertIn('선박피격집계', row['tags'])
+        self.assertNotIn('유조선피격', row['tags'])
+        self.assertNotIn('미확인 발사체', text)
+        self.assertNotIn('오만 인근', text)
+        self.assertNotIn('유조선 피격', text)
+        self.assertIn('기사 공표시각과 집계 기간을 구분', text)
+
+    def test_maritime_tally_does_not_promote_denial_forecast_or_question(self):
+        for title in ('호르무즈 선박 2주에 24척 피격설 부인',
+                      '호르무즈 선박 2주에 24척 피격 가능성 우려',
+                      '호르무즈 피격 선박 2주에 24척?',
+                      '24 ships were not attacked in Hormuz in two weeks'):
+            with self.subTest(title=title):
+                self.assertFalse(integrity.maritime_attack_tally(article(title)))
+                self.assertIsNone(integrity._primary_topic(article(title)))
+
+    def test_single_new_ship_hit_keeps_existing_incident_classification(self):
+        for title in ('호르무즈 유조선 피격…미확인 발사체로 선원 부상',
+                      '호르무즈에서 10월 23일 선박 24척 피격',
+                      '24 ships hit record profits in two weeks',
+                      '24 vessels struck a deal over two weeks'):
+            with self.subTest(title=title):
+                self.assertFalse(integrity.maritime_attack_tally(article(title)))
+
+    def test_english_tally_keeps_verified_translation_and_does_not_invent_iran(self):
+        row = article('24 ships attacked in Hormuz in two weeks', source='Reuters')
+        row['title_ko'] = '호르무즈에서 2주 동안 선박 24척 피격'
+        self.assertEqual(integrity.topic_label(row), '호르무즈 · 선박 피격 집계 보도')
+        text = integrity.build_alert([row], [], NOW)
+        self.assertIn(row['title_ko'], text)
+        self.assertNotIn('이란·호르무즈', text)
+
+    def test_final_gate_rejects_changed_summary_even_when_topic_and_receipt_match(self):
+        row = article('호르무즈 피격 선박 2주에 24척, 개전 이후 최대 규모')
+        row['classification_color'] = 'red'
+        for summary in ('호르무즈 피격 선박 2주에 42척, 개전 이후 최대 규모',
+                        'UKMTO 기준 호르무즈·오만 인근 유조선의 미확인 발사체 피격이 반복'):
+            with self.subTest(summary=summary), tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+                root = Path(folder)
+                text = '🔴 [신규] <b>1. 호르무즈 · 선박 피격 집계 보도</b>\n' + summary + '\n<a href="' + row['link'] + '">원문</a>'
+                receipt = evidence.alert_receipt([row], [], NOW, text)
+                for attr, name in {'ALERT': 'alert.txt', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                    stack.enter_context(patch.object(watch, attr, root/name))
+                watch.ALERT.write_text(text, encoding='utf-8')
+                watch.PENDING.write_text(json.dumps({'ids': [row['id']]}), encoding='utf-8')
+                watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+                stack.enter_context(patch.object(integrity, '_verify'))
+                with self.assertRaisesRegex(RuntimeError, 'rendered headline differs'):
+                    integrity.verify_alert()
+
     def test_retaliation_statement_ignores_background_attack_and_iran_actor(self):
         row = article('美 트럼프, 중간선거 다음 후티 반군에 보복 시사 "잊지 않을 것"')
         row['description'] = '발언은 선거 이후의 대응 가능성을 설명한다. 배경에는 과거 미국 폭격과 후티의 사우디 공격, 이란 관련 주장이 있다.'
