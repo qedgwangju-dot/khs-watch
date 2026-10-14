@@ -1147,6 +1147,12 @@ def cluster_alert_events(items: list[dict]) -> list[list[dict]]:
     return clusters[:MAX_ALERT_ITEMS]
 
 
+def deferred_alert_fingerprints(new_items: list[dict], selected_events: list[list[dict]]) -> set[str]:
+    """Leave events over the per-run cap unseen so a later run can report them."""
+    selected = {item["fingerprint"] for event in selected_events for item in event}
+    return {item["fingerprint"] for item in new_items if item["fingerprint"] not in selected}
+
+
 def source_label(source: str) -> str:
     low = source.lower()
     mapping = (
@@ -1635,6 +1641,9 @@ def main() -> int:
     elif direct_baseline:
         new_items = [i for i in new_items if i.get("kind") != "official_direct"]
 
+    alert_events = cluster_alert_events(new_items)
+    deferred_fps = deferred_alert_fingerprints(new_items, alert_events)
+
     # Acquisition lifecycle is a separate, issuer-only signal.  The signing
     # announcement supplied by the user is a known baseline, never a repeat.
     quantum_seen = dict(state.get("quantum_mna_seen") or {})
@@ -1663,6 +1672,8 @@ def main() -> int:
     first_seen = now.isoformat()
     for item in current:
         fp = item["fingerprint"]
+        if fp in deferred_fps:
+            continue
         seen.setdefault(fp, {
             "title": item["title"],
             "source": item["source"],
@@ -1687,14 +1698,13 @@ def main() -> int:
             "direct_official_items": len(direct_items),
             "material_items": len(current),
             "new_material_items": len(new_items),
+            "deferred_material_items": len(deferred_fps),
             "replication_reference_suppressed": replication_baseline_suppressed,
             "replication_watch_version": REPLICATION_WATCH_VERSION,
             "errors": errors,
         },
     }
     save_json(PENDING_PATH, pending)
-
-    alert_events = cluster_alert_events(new_items)
 
     if alert_events:
         title, body = build_alert(alert_events, now)
@@ -1723,6 +1733,7 @@ def main() -> int:
         f"- 중요 필터 통과: {len(current)}건",
         f"- 신규 중요 기사: {len(new_items)}건",
         f"- 신규 중요 사건: {len(alert_events)}건",
+        f"- 전송 상한 초과 다음 회차 대기: {len(deferred_fps)}건",
         f"- AI 자율복제 기존 연구 중복 차단: {replication_baseline_suppressed}건",
         f"- IonQ·Elisity 공식 단계: {len(quantum_updates)}건",
         f"- IonQ·Elisity 신규 단계: {len(new_quantum)}건",
@@ -1734,7 +1745,7 @@ def main() -> int:
 
     print(
         f"ai_security_baseline={str(baseline).lower()} "
-        f"material={len(current)} new_articles={len(new_items)} new_events={len(alert_events)} errors={len(errors)}"
+        f"material={len(current)} new_articles={len(new_items)} new_events={len(alert_events)} deferred={len(deferred_fps)} errors={len(errors)}"
     )
     return 0
 

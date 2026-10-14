@@ -500,6 +500,42 @@ jobs:
           print("ai_security_replication_alert_language=PASS")
           PY
 
+      - name: Verify alert overflow deferral
+        shell: bash
+        run: |
+          python - <<'PY'
+          from scripts.ai_security_web_watch import (
+              MAX_ALERT_ITEMS, cluster_alert_events, deferred_alert_fingerprints,
+          )
+          items = [
+              {
+                  "fingerprint": f"alert-overflow-{i}",
+                  "vendor": f"DistinctVendor{i}",
+                  "category": "취약점·패치",
+                  "title": f"Independent security incident {i}",
+                  "description": "Separate company and independent security issue",
+                  "severity": 2,
+                  "official": True,
+                  "published_at": "2026-10-14T00:00:00+00:00",
+              }
+              for i in range(MAX_ALERT_ITEMS + 2)
+          ]
+          selected = cluster_alert_events(items)
+          deferred = deferred_alert_fingerprints(items, selected)
+          assert len(selected) == MAX_ALERT_ITEMS
+          assert deferred == {
+              f"alert-overflow-{i}" for i in range(MAX_ALERT_ITEMS, MAX_ALERT_ITEMS + 2)
+          }
+          sent_fps = {i["fingerprint"] for group in selected for i in group}
+          assert not (deferred & sent_fps)
+          second_round = [i for i in items if i["fingerprint"] in deferred]
+          assert len(cluster_alert_events(second_round)) == 2
+          assert deferred_alert_fingerprints(
+              items[:MAX_ALERT_ITEMS], cluster_alert_events(items[:MAX_ALERT_ITEMS])
+          ) == set()
+          print("ai_security_alert_overflow_deferral=PASS")
+          PY
+
       - name: Run live web security watch
         run: |
           rm -f out/ai_security_web_watch_alert_title.txt out/ai_security_web_watch_alert.md out/ai_security_web_watch_telegram_confirmed.json
