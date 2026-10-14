@@ -984,7 +984,7 @@ def source_priority(source: str) -> int:
 
 
 LITE_CAPACITY_COMPANY = "Lumentum Supply & Capacity"
-LITE_SUPPLY_VERSION = 2
+LITE_SUPPLY_VERSION = 3
 # Context, not new triggers: NVIDIA's March-2026 investment and April
 # Bloomberg horizon (on track to sell out 2028 capacity) are historical.
 LITE_PRIOR_KEYS = {
@@ -1027,6 +1027,13 @@ def lite_supply_event(title: str) -> tuple[str, str, str] | None:
     if not optical:
         return None
 
+    # Customers starting to reserve 2030 supply are not proof 2030 output
+    # is sold out, shipped or recognized as revenue.
+    reservation_2030 = re.search(
+        r"(?:customers?|hyperscalers?).{0,90}(?:lock(?:ing|ed)?\s+in|reser(?:ve|ving|ved)|book(?:ing|ed)?).{0,70}(?:orders?|capacity|slots?).{0,35}\b2030\b|"
+        r"(?:orders?|capacity|slots?).{0,50}\b2030\b.{0,60}(?:reser(?:ve|ving|ved)|lock(?:ing|ed)?\s+in)",
+        text, re.I,
+    )
     # Booking horizon is a capacity / demand statement; it is not recognized
     # product sales or guaranteed contracted revenue.
     horizon = re.search(r"(?<!\d)(202[7-9]|203\d)(?!\d)", text)
@@ -1047,6 +1054,13 @@ def lite_supply_event(title: str) -> tuple[str, str, str] | None:
             "루멘텀 AI 광부품 생산능력 예약",
             "CEO 인터뷰·생산능력 판매예약 주장(매출 인식 전)",
             f"lumentum|booking-horizon|{year}",
+        )
+
+    if reservation_2030:
+        return (
+            "루멘텀 2030년 고객 생산능력 선점",
+            "고객의 미래 물량 예약 시작(2030년 전량 완판·확정매출 아님)",
+            "lumentum|customer-reservation|2030",
         )
 
     unmet = bool(re.search(
@@ -1841,6 +1855,7 @@ def category_for(title: str, company: str) -> str:
 def meaning_for(category: str) -> str:
     mapping = {
         "루멘텀 AI 광부품 생산능력 예약": "CEO가 AI 광부품 생산능력의 예약 시계를 2029년 초로 확장한 직접 인터뷰입니다. 생산능력·예약 물량·고객 선급금·출하·매출을 구분하며 2029년 매출 확정으로 계산하지 않습니다.",
+        "루멘텀 2030년 고객 생산능력 선점": "고객이 2030년 물량을 예약하기 시작했다는 선행 신호입니다. 주문의 구속력·선수금·취소 조건을 확인하기 전에는 완판·확정 매출로 계산하지 않습니다.",
         "루멘텀 과거 2028년 예약 전망": "과거 2028년 생산능력 예약 전망은 2029년 신규 발언과 별도 기존 기준선입니다.",
         "루멘텀 제품별 수요 미충족률": "일부 제품군의 미충족 수요 비율입니다. 제품별 2027년 70%·2028년 30% 발언은 전체 광부품 부족률이나 회사 매출 감소율이 아닙니다.",
         "루멘텀 일본 공장 생산능력": "일본 공장 생산능력 12배 증설 관련 보도는 가동률·장비 설치·웨이퍼 투입·수율·검사·양품 출하의 실적 연결을 별도 확인해야 합니다.",
@@ -1947,6 +1962,7 @@ def meaning_for(category: str) -> str:
 def risk_for(category: str) -> str:
     mapping = {
         "루멘텀 AI 광부품 생산능력 예약": "예약된 생산능력과 취소 불가 발주·가격확정·매출인식은 다릅니다. 고객 선주문·다중 공급망 전환·광 패키징 수율·인증기간이 실현 물량을 낮출 수 있습니다.",
+        "루멘텀 2030년 고객 생산능력 선점": "구속력 없는 물량 예약, 고객 이중공급 전략, 가격 재협상, 신공장 수율 위험 때문에 실제 매출은 예약 규모와 다를 수 있습니다.",
         "루멘텀 과거 2028년 예약 전망": "과거 전망을 최신 신규계약으로 다시 발송하면 장기 수주잔고를 중복 계산하게 됩니다.",
         "루멘텀 제품별 수요 미충족률": "70%·30%가 서로 다른 제품군인데 전사 부족률로 확대하면 생산량·평균판매단가와 매출 예상치가 과장됩니다.",
         "루멘텀 일본 공장 생산능력": "장비 12배 증설 주장과 12배 양품 출하·매출 증가는 다릅니다. InP 결정 성장·수율·포토다이오드 검사·열·신뢰성·고객 인증이 병목입니다.",
@@ -2141,6 +2157,9 @@ def _self_test_korean_optics_alerts() -> None:
     assert lite_supply_event(lite_japan)[2] == "lumentum|japan-capex|350m|planned"
     assert lite_supply_event(lite_sharing)[2] == "lumentum|customer-capex-sharing|agreement-or-talks"
     assert lite_supply_event(lite_old)[2] == "lumentum|booking-horizon|2028"
+    lite_2030 = "Lumentum hyperscaler customers start locking in orders for 2030 AI optical lasers"
+    assert lite_supply_event(lite_2030)[2] == "lumentum|customer-reservation|2030"
+    assert lite_supply_event(lite_2030)[2] != "lumentum|booking-horizon|2030"
     assert lite_supply_event("Lumen Technologies LUMN fiber capacity 2029") is None
     assert lite_supply_event("Lumentum shares rise after 2029 optics forecast") is None
 
