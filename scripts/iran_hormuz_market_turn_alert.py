@@ -87,6 +87,12 @@ KPLER_PREWAR_EXPORT_URL = (
     "https://www.kpler.com/blog/"
     "explainer-how-mideast-gulf-crude-exports-returned-to-pre-war-levels"
 )
+TANKERTRACKERS_PUBLIC_TELEGRAM_URL = "https://t.me/s/tankertrackers"
+TANKERTRACKERS_EXPECTED_SCOPE = (
+    "iran", "iraq", "kuwait", "qatar", "saudi arabia", "uae", "oman",
+)
+# Provider comparison: Iran included, seven countries, crude only, monthly 2026.
+# Do not reuse Kpler's ex-Iran/condensate scope or 7-day route observations.
 EU_DIESEL_RESERVE_URL = (
     "https://www.euronews.com/2026/10/01/"
     "releasing-strategic-reserves-is-a-possibility-eu-energy-chief-tells-euronews-as-diesel-squ"
@@ -301,6 +307,7 @@ EVENT_LABELS = {
     "oil_flow_recovery": "중동 원유 수출·호르무즈 물류 회복",
     "sts_reroute_expansion": "걸프오브오만 STS 우회 물류 급증·병목",
     "ex_iran_crude_prewar_recovery": "이란 제외 걸프 원유 수출 전쟁 전 100% 회복",
+    "tankertrackers_7country_crude_mtd": "TankerTrackers 중동 7개국 월중 원유 수출 회복",
     "saudi_asia_osp_change": "사우디 아시아 원유 공식판매가격(OSP) 변화",
     "eia_refining_crack_watch": "미국 공식 현물 정제마진·가격 병목 변화",
     "east_west_pipeline_recovery": "사우디 East-West Pipeline 실물 회복",
@@ -373,6 +380,7 @@ def _source_name_ko(source: str) -> str:
     low = normalize_text(source)
     mappings = (
         ("jpmorgan via bloomberg", "JP모건·블룸버그"),
+        ("tankertrackers", "TankerTrackers"),
         ("bnn bloomberg", "BNN 블룸버그"),
         ("bloomberg", "블룸버그"),
         ("reuters", "로이터"),
@@ -499,6 +507,9 @@ def _news_title_ko(row: NewsItem) -> str:
 
     if kind == "sts_reroute_expansion":
         return "오만만 선박 간 이송 급증·VLCC 병목 심화"
+
+    if kind == "tankertrackers_7country_crude_mtd":
+        return "TankerTrackers, 이란 포함 중동 7개국 원유 수출 월중 집계"
 
     if kind == "ex_iran_crude_prewar_recovery":
         return "Kpler, 이란 제외 걸프 원유 수출 16.5 Mbd로 전쟁 전 수준 회복"
@@ -1440,6 +1451,201 @@ def _extract_saudi_osp_metrics(news_rows: list[NewsItem]) -> dict[str, float | s
     }
 
 
+_TANKER_2026_MONTHS = (
+    ("january", "jan", "1월"), ("february", "feb", "2월"),
+    ("march", "mar", "3월"), ("april", "apr", "4월"),
+    ("may", "5월"), ("june", "jun", "6월"),
+    ("july", "jul", "7월"), ("august", "aug", "8월"),
+    ("september", "sep", "sept", "9월"),
+    ("october", "oct", "10월"),
+    ("november", "nov", "11월"),
+    ("december", "dec", "12월"),
+)
+
+
+def _is_tankertrackers_direct_message(row: NewsItem) -> bool:
+    if row.source != "TankerTrackers" or row.event_kind != "tankertrackers_7country_crude_mtd":
+        return False
+    p = urllib.parse.urlparse(row.link)
+    return bool(
+        p.scheme == "https" and p.hostname == "t.me"
+        and p.username is None and p.password is None and p.port in (None, 443)
+        and re.fullmatch(r"/tankertrackers/[1-9][0-9]*", p.path)
+        and not p.query and not p.fragment
+    )
+
+
+def _extract_tankertrackers_7country_metrics(
+    rows: list[NewsItem],
+) -> dict[str, float | int | str] | None:
+    for row in sorted(rows, key=lambda r: r.published_epoch, reverse=True):
+        if not _is_tankertrackers_direct_message(row):
+            continue
+        pattern = (
+            r"TankerTrackers 2026 seven-country crude MTD month=(10|11|12); "
+            r"jan=([0-9]{1,2}\.[0-9]{3}); "
+            r"feb=([0-9]{1,2}\.[0-9]{3}); "
+            r"sep=([0-9]{1,2}\.[0-9]{3}); "
+            r"latest=([0-9]{1,2}\.[0-9]{3}); "
+            r"scope=iran,iraq,kuwait,qatar,saudi arabia,uae,oman"
+        )
+        match = re.fullmatch(pattern, row.title)
+        if not match:
+            continue
+        month = int(match.group(1))
+        jan, feb, sep, latest = (float(match.group(i)) for i in (2, 3, 4, 5))
+        if not (5.0 <= jan <= 35.0 and 5.0 <= feb <= 35.0
+                and 0.0 < sep <= 35.0 and 0.0 < latest <= 35.0):
+            continue
+        pub = dt.datetime.fromtimestamp(row.published_epoch, tz=UTC)
+        # Do not label a partial October reading as a completed full-month rate.
+        if pub.year != 2026 or month != pub.month:
+            continue
+        return {
+            "month": month, "jan_mbd": jan, "feb_mbd": feb,
+            "sep_mbd": sep, "latest_mbd": latest,
+            "published_utc": pub.isoformat(timespec="seconds"),
+            "origin_link": row.link,
+        }
+    return None
+
+
+def parse_tankertrackers_seven_country_mtd(
+    raw_html: str, current: dt.datetime,
+) -> NewsItem:
+    """Parse author-owned public Telegram posts only, without OCR or news extrapolation.
+
+    Fail closed for photo-only, wrong-country, stale, unverified or 7-day-only posts.
+    Source observation cut-off is not independently known; use month-to-date label.
+    """
+    if not current.tzinfo:
+        raise ValueError("시간대 없는 조회는 허용하지 않습니다")
+    matches = list(re.finditer(
+        r'<div\b[^>]*\bdata-post=["\x27]tankertrackers/([1-9][0-9]*)["\x27][^>]*>',
+        raw_html, flags=re.I,
+    ))
+    candidates: list[NewsItem] = []
+    for i, item in enumerate(matches):
+        block = raw_html[item.start():matches[i+1].start() if i+1 < len(matches) else len(raw_html)]
+        time_match = re.search(r'<time\b[^>]*\bdatetime=["\x27]([^"\x27]+)["\x27]', block, re.I)
+        if not time_match:
+            continue
+        try:
+            published = dt.datetime.fromisoformat(time_match.group(1).replace("Z","+00:00")).astimezone(UTC)
+        except (ValueError, TypeError):
+            continue
+        age_hours = (current.astimezone(UTC) - published).total_seconds() / 3600.0
+        if age_hours < -0.17 or age_hours > 72.0 or published.year != 2026:
+            continue
+        month = published.month
+        if month < 10:
+            continue
+
+        # Require text content from this single author post, never neighboring posts.
+        text_match = re.search(
+            r'<div\b[^>]*class=["\x27][^"\x27]*tgme_widget_message_text\b[^"\x27]*["\x27][^>]*>(.*?)</div\s*>',
+            block, flags=re.I | re.S,
+        )
+        if not text_match:
+            continue
+        text = _visible_text(text_match.group(1))
+        low = normalize_text(text)
+        if not ("2026" in low and "crude" in low and "export" in low and "middle east" in low):
+            continue
+        # Exact fixed 7-country scope. The author's 10-country weekly series is *not* comparable.
+        if not all(re.search(r"\b" + re.escape(c) + r"\b",low) for c in TANKERTRACKERS_EXPECTED_SCOPE):
+            continue
+        if re.search(r"\b(israel|syria|yemen|bahrain|egypt|sudan)\b",low):
+            continue
+        if any(term in low for term in ("7 complete days", "week-on-week", "7-day average", "last 7 days")):
+            continue
+        readings: list[float] = []
+        valid = True
+        for names in _TANKER_2026_MONTHS[:month]:
+            alternatives = "|".join(re.escape(name) for name in names)
+            m = re.search(
+                rf"(?<![\w])(?:{alternatives})\s*[:：=\-]?\s*([0-9]{{1,2}}\.[0-9]{{3}})(?![0-9])",
+                low,
+            )
+            if not m:
+                valid = False
+                break
+            n = float(m.group(1))
+            if not (0.0 < n < 35.0 and math.isfinite(n)):
+                valid = False
+                break
+            readings.append(n)
+        if not valid:
+            continue
+        title = (
+            f"TankerTrackers 2026 seven-country crude MTD month={month}; "
+            f"jan={readings[0]:.3f}; feb={readings[1]:.3f}; "
+            f"sep={readings[8]:.3f}; latest={readings[-1]:.3f}; "
+            "scope=iran,iraq,kuwait,qatar,saudi arabia,uae,oman"
+        )
+        candidates.append(NewsItem(
+            title=title, source="TankerTrackers",
+            link=f"https://t.me/tankertrackers/{item.group(1)}",
+            published_utc=published.isoformat().replace("+00:00","Z"),
+            published_epoch=published.timestamp(),
+            event_kind="tankertrackers_7country_crude_mtd",
+        ))
+    if not candidates:
+        raise RuntimeError("TankerTrackers 공식 게시물 내 2026년 7개국 월간 원유 수출 숫자·시점 검증 불가(이미지만 게시했거나 접근 제한)")
+    best = max(candidates, key=lambda r: r.published_epoch)
+    if _extract_tankertrackers_7country_metrics([best]) is None:
+        raise RuntimeError("TankerTrackers 원천·국가범위·월중 수치 내부 검증 불일치")
+    return best
+
+
+def _build_tankertrackers_seven_country_alert_body(
+    rows: list[NewsItem],
+    oil: Quote | None, current: dt.datetime, fx: Quote | None,
+) -> str:
+    m = _extract_tankertrackers_7country_metrics(rows)
+    if m is None:
+        raise RuntimeError("TankerTrackers 원문 확인 실패 · Telegram 전송 차단")
+    v = float(m["latest_mbd"])
+    feb = float(m["feb_mbd"])
+    sep = float(m["sep_mbd"])
+    jan_feb_avg = (float(m["jan_mbd"]) + feb) / 2.0
+    ratio_feb = v / feb * 100.0
+    ratio_avg = v / jan_feb_avg * 100.0
+    delta = v - sep
+    lines = [
+        current.astimezone(KST).strftime("%Y년 %m월 %d일 %H:%M KST"),
+        "",
+        "[현재 숫자]",
+        f"10월 잠정      {v:.3f}백만 배럴/일 · 중동 7개국·이란 포함",
+        f"2월 비교      {feb:.3f}백만 배럴/일 대비 {ratio_feb:.1f}%",
+        f"전쟁 전 평균  1~2월 평균 대비 {ratio_avg:.1f}%",
+        f"9월 비교      {sep:.3f} → {v:.3f}백만 배럴/일 · 하루 {delta*100:,.1f}만 배럴 증가",
+        "집계 범위     이란·이라크·쿠웨이트·카타르·사우디·UAE·오만",
+    ]
+    if oil is not None and fx is not None:
+        lines.append(f"시장 참고     Brent {oil.price:.2f}달러/배럴 · 원·달러 {fx.price:,.2f}원")
+    lines.extend([
+        "",
+        "[핵심]",
+        "10월은 월말 확정치가 아닌 게시 시점의 월중 잠정 수치입니다.",
+        "→ 원유 수출량 회복과 호르무즈 항로 정상화·경유/항공유 공급 회복은 별개입니다.",
+        "",
+        "[다음 확인]",
+        "실물          중동 7개국 동일 범위·최종 10월 월평균·수정치",
+        "항로          호르무즈 실제 통과량 · 오만만 이송 · 홍해 우회 · 보험·VLCC",
+        "정제품        중동 정제품 수출·중국/러시아 경유 물량 · 정제마진",
+        "",
+        "[근거]",
+        f"TankerTrackers 공식 계정 · 게시 시각 {m['published_utc']} · 집계 마감일 별도 확인",
+        f"원문: {m['origin_link']}",
+        "",
+        "[주의]",
+        "이번 회복률은 2월 단일월/1~2월 평균의 두 비교입니다. Kpler의 이란 제외·콘덴세이트 자료와 섞지 않습니다.",
+        "글/표에서 직접 확인된 숫자만 사용하며, 이미지 전용 게시물은 검증 없이 OCR·추정해 발송하지 않습니다.",
+    ])
+    return "\n".join(lines).strip() + "\n"
+
+
 def parse_kpler_prewar_export_snapshot(raw_html: str, current: dt.datetime) -> NewsItem:
     text = _visible_text(raw_html)
 
@@ -1842,6 +2048,12 @@ def fetch_news(current: dt.datetime) -> tuple[list[NewsItem], list[str]]:
             errors.append(str(exc))
 
     try:
+        tanker_html = fetch_bytes(TANKERTRACKERS_PUBLIC_TELEGRAM_URL,timeout=12,attempts=1).decode("utf-8",errors="replace")
+        items.append(parse_tankertrackers_seven_country_mtd(tanker_html,current))
+    except Exception as exc:
+        errors.append(f"TankerTrackers 월중 7개국 공식계정: {type(exc).__name__}: {exc}")
+
+    try:
         eia_html = fetch_bytes(EIA_REFINING_WEEKLY_URL, timeout=22, attempts=2).decode("utf-8", errors="replace")
         items.append(parse_eia_weekly_refining_snapshot(eia_html, current))
     except Exception as exc:
@@ -1978,6 +2190,11 @@ def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tupl
             "kpler" in normalize_text(row.source)
             for row in selected
         )
+        tanker_primary = kind == "tankertrackers_7country_crude_mtd" and (
+            _extract_tankertrackers_7country_metrics(selected) is not None
+        )
+        if kind == "tankertrackers_7country_crude_mtd" and not tanker_primary:
+            continue
         broker_snapshot = kind == "crude_product_divergence" and any(
             "jpmorgan via bloomberg" in normalize_text(row.source)
             for row in selected
@@ -2027,7 +2244,7 @@ def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tupl
             for row in selected
         )
 
-        if len(selected) >= minimum_sources or has_primary_data or regional_primary or broker_snapshot or eu_primary_interview or pipeline_cross_checked or pipeline_bloomberg_material or osp_cross_checked or eia_primary or china_report or hormuz_primary or mma_primary or russian_ofac_primary or saudi_minister_direct or saudi_minister_report or saudi_official_advanced:
+        if len(selected) >= minimum_sources or has_primary_data or regional_primary or tanker_primary or broker_snapshot or eu_primary_interview or pipeline_cross_checked or pipeline_bloomberg_material or osp_cross_checked or eia_primary or china_report or hormuz_primary or mma_primary or russian_ofac_primary or saudi_minister_direct or saudi_minister_report or saudi_official_advanced:
             candidates.append((max(row.published_epoch for row in selected), kind, selected))
 
     candidates.sort(key=lambda value: value[0], reverse=True)
@@ -2171,6 +2388,20 @@ def event_id(kind: str, rows: list[NewsItem]) -> str:
             basis = f"{kind}|{stage}|total_{next(iter(totals)):.1f}"
         else:
             basis = f"{kind}|{stage}|Saudi_2026"
+        return f"{kind}:{hashlib.sha256(basis.encode('utf-8')).hexdigest()[:16]}"
+
+    if kind == "tankertrackers_7country_crude_mtd":
+        metrics = _extract_tankertrackers_7country_metrics(rows)
+        if metrics is None:
+            raise ValueError("TankerTrackers 7개국 월중 수출 원문 직접 검증 불가")
+        latest = float(metrics["latest_mbd"])
+        feb = float(metrics["feb_mbd"])
+        bucket = math.floor(latest / 0.5)
+        pct_bucket = math.floor((latest / feb * 100.0) / 5.0)
+        basis = (
+            f"{kind}|2026-{int(metrics['month']):02d}|scope_iran_iraq_kuwait_qatar_saudi_uae_oman|"
+            f"volume_{bucket}|vs_feb_{pct_bucket}"
+        )
         return f"{kind}:{hashlib.sha256(basis.encode('utf-8')).hexdigest()[:16]}"
 
     if kind == "eia_refining_crack_watch":
@@ -4134,6 +4365,8 @@ def build_physical_flow_alert_body(
     fx: Quote | None = None,
 ) -> str:
     metrics = _extract_kpler_sts_metrics(news_rows)
+    if kind == "tankertrackers_7country_crude_mtd":
+        return _build_tankertrackers_seven_country_alert_body(news_rows, oil, current, fx)
     if kind == "eia_refining_crack_watch":
         return _build_eia_refining_alert_body(news_rows, oil, current, fx)
     if kind == "russia_diesel_supply_transition":
@@ -4460,7 +4693,7 @@ def run_monitor(current: dt.datetime) -> int:
     # Audit event selection and public-source failures without Telegram secrets or token logs.
     print(f"monitor_news_count={len(news_items)} candidate_kinds={[kind for kind, _ in confirmed_candidates]}")
     for issue in news_errors:
-        if any(v in issue for v in ("중국 Reuters", "호르무즈 신화통신", "허리케인 공식 MMA", "사우디 Aramco 공식 RSS")):
+        if any(v in issue for v in ("중국 Reuters", "호르무즈 신화통신", "허리케인 공식 MMA", "사우디 Aramco 공식 RSS", "TankerTrackers 월중 7개국")):
             print(f"public_source_diagnostic={issue[:300]}")
     if not confirmed_candidates:
         lines = [
@@ -4505,6 +4738,7 @@ def run_monitor(current: dt.datetime) -> int:
         "oil_flow_recovery",
         "sts_reroute_expansion",
         "ex_iran_crude_prewar_recovery",
+        "tankertrackers_7country_crude_mtd",
         "saudi_asia_osp_change",
         "east_west_pipeline_recovery",
         "saudi_bypass_investment",
@@ -4531,7 +4765,9 @@ def run_monitor(current: dt.datetime) -> int:
         if fx is not None and not quote_is_fresh(fx, current, max_age_minutes):
             fx = None
         body = build_physical_flow_alert_body(kind, news_rows, oil, current, fx)
-        if kind == "eia_refining_crack_watch":
+        if kind == "tankertrackers_7country_crude_mtd":
+            title = "중동 7개국 원유수출 월중 회복·정제품 병목"
+        elif kind == "eia_refining_crack_watch":
             title = "미국 정제마진·정유사 이익 병목 변화"
         elif kind == "crude_product_divergence":
             title = "중동 원유 회복·정제품 병목 변화"

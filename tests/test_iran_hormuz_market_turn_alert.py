@@ -1038,6 +1038,102 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         self.assertIsNone(MODULE._extract_mma_isaias_data([row]))
         self.assertIsNone(MODULE.confirm_event([row]))
 
+    @staticmethod
+    def _tanker_7country_html(post_id="7890", pub="2026-10-13T22:06:41+00:00", extra=""):
+        return f"""
+        <div class="tgme_widget_message js-widget_message" data-post="tankertrackers/{post_id}">
+        <div class="tgme_widget_message_text js-message_text">
+        2026 Middle East Crude Oil Exports
+        Countries: Iran, Iraq, Kuwait, Qatar, Saudi Arabia, UAE, Oman {extra}
+        January: 18.335<br>February: 19.434<br>March: 8.712<br>
+        April: 8.501<br>May: 6.488<br>June: 11.087<br>
+        July: 12.939<br>August: 13.896<br>September: 14.652<br>
+        October: 17.273
+        </div>
+        <time datetime="{pub}">14 Oct</time>
+        </div>
+        """
+
+    def test_tanker_monthly_original_scope_and_month_to_date(self):
+        now=dt.datetime(2026,10,14,2,0,tzinfo=dt.timezone.utc)
+        row=MODULE.parse_tankertrackers_seven_country_mtd(self._tanker_7country_html(), now)
+        self.assertEqual(row.source,"TankerTrackers")
+        self.assertEqual(row.event_kind,"tankertrackers_7country_crude_mtd")
+        self.assertEqual(row.link,"https://t.me/tankertrackers/7890")
+        self.assertTrue(MODULE._is_tankertrackers_direct_message(row))
+        self.assertIn("feb=19.434",row.title)
+        self.assertIn("latest=17.273",row.title)
+        m=MODULE._extract_tankertrackers_7country_metrics([row])
+        self.assertIsNotNone(m)
+        self.assertEqual(m["month"],10)
+        self.assertAlmostEqual(m["latest_mbd"]/m["feb_mbd"]*100,88.88,places=2)
+        self.assertIsNotNone(MODULE.confirm_event([row]))
+        body=MODULE.build_physical_flow_alert_body(
+            "tankertrackers_7country_crude_mtd",[row],None,now)
+        self.assertIn("88.9%",body)
+        self.assertIn("17.273백만 배럴/일",body)
+        self.assertIn("하루 262.1만 배럴 증가",body)
+        self.assertIn("월중 잠정",body)
+        self.assertIn("Kpler의 이란 제외",body)
+        self.assertNotIn("전쟁 전 평균의 100%",body)
+        self.assertLessEqual(len(body.splitlines()),29)
+
+    def test_tanker_monthly_rejects_mismatched_countries_or_weekly(self):
+        now=dt.datetime(2026,10,14,2,0,tzinfo=dt.timezone.utc)
+        for bad in ("Israel","Yemen","Bahrain","Syria","Egypt"):
+            with self.subTest(extra_country=bad):
+                with self.assertRaisesRegex(RuntimeError,"검증 불가"):
+                    MODULE.parse_tankertrackers_seven_country_mtd(
+                        self._tanker_7country_html(extra=bad),now)
+        with self.assertRaisesRegex(RuntimeError,"검증 불가"):
+            MODULE.parse_tankertrackers_seven_country_mtd(
+                self._tanker_7country_html(extra="7 complete days"),now)
+
+    def test_tanker_monthly_rejects_spoof_and_image_only_and_staleness(self):
+        now=dt.datetime(2026,10,14,2,0,tzinfo=dt.timezone.utc)
+        item=MODULE.parse_tankertrackers_seven_country_mtd(self._tanker_7country_html(),now)
+        for invalid_url in (
+            "http://t.me/tankertrackers/7890",
+            "https://t.me.attacker.example/tankertrackers/7890",
+            "https://t.me/anotherchannel/7890",
+            "https://t.me/tankertrackers/7890?redirect=1",
+        ):
+            forged=MODULE.NewsItem(
+                item.title,"TankerTrackers",invalid_url,
+                item.published_utc,item.published_epoch,item.event_kind)
+            self.assertIsNone(MODULE.confirm_event([forged]))
+            self.assertIsNone(MODULE._extract_tankertrackers_7country_metrics([forged]))
+        with self.assertRaisesRegex(RuntimeError,"검증 불가"):
+            MODULE.parse_tankertrackers_seven_country_mtd(
+                self._tanker_7country_html().replace("October: 17.273","<img src='chart.png'>"),now)
+        with self.assertRaisesRegex(RuntimeError,"검증 불가"):
+            MODULE.parse_tankertrackers_seven_country_mtd(
+                self._tanker_7country_html(),now+dt.timedelta(days=4))
+
+    def test_tanker_monthly_stable_dedup_vs_material_change(self):
+        now=dt.datetime(2026,10,14,2,0,tzinfo=dt.timezone.utc)
+        a=MODULE.parse_tankertrackers_seven_country_mtd(self._tanker_7country_html(),now)
+        copy=MODULE.parse_tankertrackers_seven_country_mtd(
+            self._tanker_7country_html(post_id="7891"),now)
+        self.assertEqual(MODULE.event_id(a.event_kind,[a]),MODULE.event_id(copy.event_kind,[copy]))
+        updated=MODULE.parse_tankertrackers_seven_country_mtd(
+            self._tanker_7country_html(post_id="7892").replace("17.273","18.273"),now)
+        self.assertNotEqual(MODULE.event_id(a.event_kind,[a]),MODULE.event_id(updated.event_kind,[updated]))
+        state={"alerted_events":{MODULE.event_id(a.event_kind,[a]):now.astimezone(MODULE.KST).isoformat()}}
+        selected,_=MODULE.select_unalerted_event(state,[(a.event_kind,[copy])],now)
+        self.assertIsNone(selected)
+
+    def test_tanker_monthly_no_source_feed_without_real_tables(self):
+        now=dt.datetime(2026,10,14,2,0,tzinfo=dt.timezone.utc)
+        forged="""
+        <div class="tgme_widget_message" data-post="tankertrackers/33">
+        <div class="tgme_widget_message_text">2026 Middle East Crude Oil Exports
+        Iran Iraq Kuwait Qatar Saudi Arabia UAE Oman October 17.273 February 19.434
+        </div><time datetime="2026-10-13T22:06:41+00:00"></time></div>
+        """
+        with self.assertRaisesRegex(RuntimeError,"검증 불가"):
+            MODULE.parse_tankertrackers_seven_country_mtd(forged,now)
+
     def test_direct_historical_sources_expire(self):
         # Historical expiry tests must never read current live MMA reports. New official
         # releases make a fixed simulated October 16 date nondeterministic otherwise.
