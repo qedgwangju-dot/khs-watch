@@ -529,7 +529,7 @@ def render_event(event: dict, now: dt.datetime) -> str:
         if "load mgmt reduction action" in str(event.get("message_type") or "").lower():
             raw_body = str(event.get("body") or "")
             lead = re.search(
-                r"Lead Time\\(s\\) dispatched:\\s*(.*?)(?:Product\\(s\\) dispatched|$)",
+                r"Lead\s+Time\(s\)\s+dispatched:\s*(.*?)(?:Product\(s\)\s+dispatched|$)",
                 raw_body, re.I | re.S,
             )
             times = re.findall(r"(?:Long|Short|Quick)_(120|60|30)", lead.group(1), re.I) if lead else []
