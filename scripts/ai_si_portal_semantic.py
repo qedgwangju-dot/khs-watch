@@ -12,7 +12,7 @@ from html.parser import HTMLParser
 from urllib.parse import urljoin, urlsplit, urlunsplit
 
 SOURCE_URL = "https://www.si.gov/"
-VERSION = 2
+VERSION = 1
 CONFIRM_OBSERVATIONS = 2
 CONFIRM_MINUTES = 10
 ALLOWED_HOSTS = {"si.gov", "www.si.gov", "www.whitehouse.gov", "whitehouse.gov", "www.federalregister.gov", "federalregister.gov"}
