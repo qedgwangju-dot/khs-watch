@@ -105,7 +105,7 @@ def _is_us_white_house(row: dict) -> bool:
 
 def _is_alaska_taiwan_offtake_source(row: dict) -> bool:
     host = urllib_parse_host(str(row.get("link") or ""))
-    return host in {"www.cpc.com.tw", "cpc.com.tw", "www.moea.gov.tw", "moea.gov.tw", "glenfarne.com", "www.glenfarne.com"}
+    return host in {"www.cpc.com.tw", "cpc.com.tw", "www.moea.gov.tw", "moea.gov.tw", "glenfarne.com", "www.glenfarne.com", "glenfarnegroup.com", "www.glenfarnegroup.com", "alaska-lng.com", "www.alaska-lng.com"}
 
 
 def urllib_parse_host(value: str) -> str:
