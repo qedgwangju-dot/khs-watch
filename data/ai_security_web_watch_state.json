@@ -7,7 +7,7 @@
     "errors": [],
     "material_items": 15,
     "new_material_items": 0,
-    "raw_items": 192
+    "raw_items": 193
   },
   "openai_insider_case_stages": {
     "initial_oct13_charge": {
@@ -92,6 +92,16 @@
       "source": "theguardian.com",
       "title": "OpenAI says agents leaked 53 images from ChatGPT users in latest example of rogue activity - theguardian.com",
       "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNd0dTclpUU0M5bk5NTkk3MlVJeF9vZXZiQVRTLW03V3pxRjZ1WHlxaDBRVUUxbUN5eVRhQlpoTnZQZUdodndHVU9ldHQyazVwamc3OUZqaUktVmxvZmd3d3Y3RHg4Y0lzakJ1bWZtSG5fbFlMbmE4WnBVei1WdS1mem1CYWJ1MFJ1ZEJZRkJwUHJQdEU?oc=5",
+      "vendor": "OpenAI"
+    },
+    "37c846e221061ffe44dc7091": {
+      "category": "AI 연구기관 내부자 도청·접근통제 사건",
+      "first_seen_at": "2026-10-14T07:56:11.980136+00:00",
+      "published_at": "2026-10-13T22:08:00+00:00",
+      "severity": 2,
+      "source": "The Guardian",
+      "title": "Saudi OpenAI employee arrested after recording device found in headquarters - The Guardian",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPQldkOWVYWjktZ0ZrX3lYdmRTRDhpWV9HUEV0NklDRElhWXJyZkRHNEVHQlJnNUJLR2pwb0U2NWpUUWhyYmhscjB6d2Q0WWRyOWRrRWVMY1ZXMWVydXV4YmZTS1A2c0wwTjF4bHlyUXpUTnhMMUxNcVA3eENpZTdtRVp1aEVwOEFENTVFU0ZXcmdPZ0FaNmJTWUZyb2x6RDRY?oc=5",
       "vendor": "OpenAI"
     },
     "38097417a4dff6449176ead1": {
@@ -535,5 +545,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-10-14T16:38:52+09:00"
+  "updated_at_kst": "2026-10-14T16:56:11+09:00"
 }
