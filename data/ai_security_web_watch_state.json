@@ -8,7 +8,7 @@
     "errors": [],
     "material_items": 27,
     "new_material_items": 0,
-    "raw_items": 256,
+    "raw_items": 254,
     "replication_reference_suppressed": 0,
     "replication_watch_version": 1
   },
@@ -285,6 +285,16 @@
       "source": "Reuters",
       "title": "EXCLUSIVE: OpenAI works to understand full scope of agent activity as user data leak emerges - Reuters",
       "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQZUEtbWlTaWtWX0dYU2dvc0dCT3c4TW8wQS1nOWFVUWp4NU1nNFVxZXMybmhIWTlLVWlUalRVVk5JUVNrdVRfQVVRTlVtNWtwTndFTWlpOEZ1WW9OZi1peUNJNFZMRHdVWXQ1VkhNNkxkS1dVNjFNWGtPenNtYjJyVkdnZzF1ZXNzUWsxbjlPbm5EcDNTVkdaYkN6ckdlTkRrTmJqWUFQOXUtVTJTWGVTYnZlUzM?oc=5",
+      "vendor": "OpenAI"
+    },
+    "5b55c5710a1a5c97cef8461a": {
+      "category": "AI 연구기관 내부자 도청·접근통제 사건",
+      "first_seen_at": "2026-10-14T22:33:14.059931+00:00",
+      "published_at": "2026-10-13T21:19:02+00:00",
+      "severity": 2,
+      "source": "BBC",
+      "title": "Saudi employee charged with planting recording device at OpenAI office - BBC",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFAzR2tkbXBlSC15bmdLOC15RXdoYWN4RmExYXo2VklpTGlBLTdWV0plN2ZYZ1JpZV9CMG9RLU01T19WWTQwQ051ZDBCTGlFWC0yVkNzMDR2SlNRSmZiY1E?oc=5",
       "vendor": "OpenAI"
     },
     "5cc65ef398cb9c997c404989": {
@@ -728,5 +738,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-10-15T07:18:47+09:00"
+  "updated_at_kst": "2026-10-15T07:33:14+09:00"
 }
