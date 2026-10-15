@@ -2281,6 +2281,26 @@
       "telegram_core_fact": "소어 인더스트리즈(THO)가 이사회에서 주당 0.54달러의 정기 분기 현금배당을 승인했으며, 이는 직전 분기 배당금 0.52달러보다 3.8% 인상된 수준이라고 13일 발표했다.",
       "title": "소어 인더스트리즈, 분기 배당 0.54달러로 3.8% 인상"
     },
+    "core:0c99a823ccc82066c2c1dba2": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261015083800017",
+      "source": "연합뉴스",
+      "source_body_digest": "6943d8d798e869b68a66e6acbf0fe8660a924b1525c8cb96c459f455d330e350",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bffd1697b4df2c2470920eaf2a9381fc8777ee4b82b9e411af76a5daa5e2d85f",
+      "source_fact_keys": [
+        "source_fact:v1:c4a09e23107ff2922c89c21a50e409f0e2d5db7afe3a5f9941139ee46f062ed9"
+      ],
+      "source_published_kst": "2026-10-15T12:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "KIST, 건물 외벽따라 자유롭게 형태 바꾸는 3차원 태양광 개발 | 연합뉴스",
+      "telegram_core_fact": "건물 외벽 모양에 따라 자유롭게 형태를 바꾸는 3차원 태양광 시스템이 개발됐다. 한국과학기술연구원(KIST)은 차세대태양전지연구센터 이필립 센터장 연구팀이 구조 움직임과 전기 연결을 함께 설계해 자유롭게 형태를 바꾸면서도 안정적으로 전기를 생산하는 3차원 태양광 메타구조체를 개발했다고 15일 밝혔다.",
+      "title": "KIST, 건물 외벽따라 자유롭게 형태 바꾸는 3차원 태양광 개발 | 연합뉴스"
+    },
     "core:0c9ad622b89545a65fce5a2b": {
       "first_seen_kst": "2026-10-08T07:50:51+09:00",
       "lanes": {
@@ -9181,6 +9201,27 @@
       "source_title": "삼성전자, HBM5·CXL 앞세워 AI 메모리 혁신⋯AMD와 기술 협력 확대",
       "telegram_core_fact": "삼성전자가 차세대 고대역폭메모리(HBM)와 컴퓨트익스프레스링크(CXL) 기술을 앞세워 AI 인프라 시장 공략을 강화한다.",
       "title": "삼성전자, HBM5·CXL 앞세워 AI 메모리 혁신⋯AMD와 기술 협력 확대"
+    },
+    "core:2aa994b32d2eaff4a810b7f6": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003827261",
+      "source": "뉴시스",
+      "source_body_digest": "4aa8d2bd0dd13e580a66a11bd68a1bca1a19d905673a26934124656f13fc2331",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b713d535b8edb5b597b6f29e99647f6a398a7f9570c61ab5d0e404fe0987a524",
+      "source_fact_keys": [
+        "source_fact:v1:891f6d41ec101ce41fdd92d076fdb6afb99696a1ad407dc9ac6119aa233b69d2",
+        "source_fact:v1:c2b5b2051de3da59c84fd7d33acddb658befb43e8a7de38273a6bf675b0fb69e"
+      ],
+      "source_published_kst": "2026-10-15T12:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "오세훈 \"뉴타운 해제 영향, 앞으로 몇 년 더 갈 것\"",
+      "telegram_core_fact": "오세훈 서울시장은 박원순 전 시장 때 뉴타운을 해제한 데 따른 아파트 공급 부족이 앞으로 몇 년간 더 영향을 줄 것이라고 내다봤다.",
+      "title": "오세훈 \"뉴타운 해제 영향, 앞으로 몇 년 더 갈 것\""
     },
     "core:2aac7c00f0aad986c3a8a502": {
       "first_seen_kst": "2026-10-09T18:14:26+09:00",
@@ -22998,6 +23039,30 @@
       "telegram_core_fact": "삼성전자는 용인 국가산단에 약 360조원을 투자할 계획으로, 2027년 부지 조성과 착공을 시작해 2029년 10월 첫 생산라인 가동을 목표로 하고 있다. 전 세계적으로 급증하는 AI 인프라 수요에 대응하기 위한 전략으로, 생산능력 확보를 위한 용인 반도체 클러스터 구축 계획도 함께 공개할 예정이다.",
       "title": "삼성전자, AI 반도체 '풀 라인업' 공개…360조 용인 산단 청사진도 제시"
     },
+    "core:6ac9ecab4b1e7ea668ebfd34": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003826681",
+      "source": "뉴시스",
+      "source_body_digest": "061610782023d8bf77d953b0a9c3cba5fe7e628c9d2518107f21f55edd4f10b7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:456861202790e5ab2b7e47fcbcc04217200bced386710d3261b6b3d46f0d8853",
+      "source_fact_keys": [
+        "source_fact:v1:42d06192a47b0bc0c7ff37f5aff1f7fdf012e87e2ee6dc4a40b4d8c1663be326",
+        "source_fact:v1:61b3a785af6e78c891f69a891be35c972d7027eb31a9ecd574face845bed5ce2",
+        "source_fact:v1:96c87cc1be39e412ee0c27df90deaad3053120349dd7c3d8da65f2c0b439b8bc",
+        "source_fact:v1:ddf9cdf546ee9004ec7a84aabdad833fddc5948cddc653f5be2a736643c067bb",
+        "source_fact:v1:e12be6c2963a9ab5d7ed712c348096e4f83f3f435661a632440f6ff677fb90e5"
+      ],
+      "source_published_kst": "2026-10-15T13:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "전자바우처 허위청구 2번 적발시 '퇴출'…과징금 '5배'",
+      "telegram_core_fact": "정부가 사회서비스 전자바우처 부정수급을 막고자 허위 청구로 2번 적발된 기관은 즉시 퇴출하고 과징금을 부정수급액의 최대 5배까지 부과하는 등 제재를 강화한다.",
+      "title": "전자바우처 허위청구 2번 적발시 '퇴출'…과징금 '5배'"
+    },
     "core:6ae512cdeb9cf23fa1290e3a": {
       "first_seen_kst": "2026-10-09T18:34:32+09:00",
       "lanes": {
@@ -29614,6 +29679,29 @@
       "telegram_core_fact": "포스코홀딩스는 염수리튬 2공장 상공정을 준공하고, 2033년 연산 10만톤 생산체제 구축을 공식화했다. 장인화 포스코그룹 회장이 글로벌 핵심광물 확보전 한복판인 아르헨티나에서 리튬 사업의 확장 신호탄을 쐈다.",
       "title": "장인화, 글로벌 자원 확보전 진두지휘…포스코 리튬 2공장 준공"
     },
+    "core:89566182c091a062cfccc411": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175341",
+      "source": "매일경제",
+      "source_body_digest": "d90043784fbbb593d15038fde09650bec756740efa8e0c255da9a82abebecbd2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2b65b4e5c4aceb2ac0eaf4df8c50a3ef76cf4e90868a2942ef93fec61049ecfe",
+      "source_fact_keys": [
+        "source_fact:v1:23afccbf0b0e1d0f5aa99f3d71477d21a742bbb497b66c88aec730fd6be7a7e7",
+        "source_fact:v1:3c10d896d522a698231a23db7e3c460c72420b0441b50231a50b22755586cb5f",
+        "source_fact:v1:9ee8991dc7b673d4012652b45d481e916cab96039c7158674b7ce9c922802775",
+        "source_fact:v1:cf98b11457382b7ef98682976ae26192f41d9d7d736b72cc7b2dcc52f294f11b"
+      ],
+      "source_published_kst": "2026-10-15T19:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "PNC 파이낸셜 서비스, 3분기 희석 EPS 4.97달러..전년비 14% 증가",
+      "telegram_core_fact": "PNC 파이낸셜 서비스(PNC)는 3분기 순이익이 20억9700만 달러로 전년비 15.1% 증가했고, 일반회계기준(GAAP) 희석 주당순이익(EPS)은 4.97달러로 전년 동기(4.35달러)보다 14.3% 늘었다고 10월 15일 발표했다.",
+      "title": "PNC 파이낸셜 서비스, 3분기 희석 EPS 4.97달러..전년비 14% 증가"
+    },
     "core:896971023a5b3f674239e2f5": {
       "first_seen_kst": "2026-10-08T12:46:54+09:00",
       "lanes": {
@@ -34353,6 +34441,29 @@
       "telegram_core_fact": "PC 제조기업 '주연테크'가 해군본부와 약 44억원 사무자동화장비 공급 계약을 최근 체결하며 공공부문 사업 확대에 나섰다.",
       "title": "공공시장 입지 확대 나서는 주연테크, 해군 PC 공급사업 수주"
     },
+    "core:a1e07d1acf4aacd9d40f78a2": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.news1.kr/world/general-world/6320873",
+      "source": "뉴스1",
+      "source_body_digest": "891fa1202209a435264101d2d2d922d0a2299b1cf2a5ab53d8ba3b0af3da94fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:08add69b74de63c84a5f504d589c5d2803ab432911e2a10a28000b76a4fcb1d9",
+      "source_fact_keys": [
+        "source_fact:v1:43bcbfc5cf8951cf0ce9d4fd045ec9aa4338d85662f2f74274d4a7067e88a198",
+        "source_fact:v1:5f3ddbd701fc8fc36bbd04701d6c67d358200c7f07c9c583f7e5ca3dfe385a0c",
+        "source_fact:v1:8fb503de64271945bf2c807dfe3791829a7b2e3d7c691a4087c73ea750b8cbd5",
+        "source_fact:v1:e438f3ed231c74a953443170f0515a41823461b666443a66454280923340df40"
+      ],
+      "source_published_kst": "2026-10-15T11:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "노벨평화상 필라이 \"트럼프의 ICC 제재는 불법…국제법 공부나 하라\"",
+      "telegram_core_fact": "노르웨이 노벨위원회는 지난 9일 필라이를 올해 노벨평화상 수상자로 선정했는데, 필라이는 그 몇시간 후 미국의 ICC 제재가 발표된 것은 우연이 아니라며 이는 \"트럼프 대통령이 상을 받지 못한 데 대한 반응\"이라고 말했다.",
+      "title": "노벨평화상 필라이 \"트럼프의 ICC 제재는 불법…국제법 공부나 하라\""
+    },
     "core:a1e565fb7aec7d53e8a6f34b": {
       "first_seen_kst": "2026-10-08T01:43:44+09:00",
       "lanes": {
@@ -34423,6 +34534,33 @@
       "source_title": "제이피모간체이스, 3분기 희석 EPS 5.57달러..전년비 10% 증가",
       "telegram_core_fact": "제이피모간체이스(JPM)가 3분기 순이익 153억500만 달러, 희석 주당순이익(EPS) 5.57달러를 기록했다고 13일 발표했다.",
       "title": "제이피모간체이스, 3분기 희석 EPS 5.57달러..전년비 10% 증가"
+    },
+    "core:a2358d4dc038196f0179b774": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003826925",
+      "source": "뉴시스",
+      "source_body_digest": "fdf7001f958cd3449831051fe5bcc992906a84aa4ae19e1d25f23e5de83a9d63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c61faf2a70da85fd97d3767a59628e79aad762eae3f899db7146a1eb4410c5b0",
+      "source_fact_keys": [
+        "source_fact:v1:7dfa4dbce1e8194097d046a17d81c5708476aaf9e2dcb42fa083256924ab266b",
+        "source_fact:v1:885595c258c1fff7ebf9c3bf6d58e0f6f58bdcffa9652cc909c1a78eb0880ad5",
+        "source_fact:v1:b41ece660a5c143b2321f429558fc012e424da88fefc3f8b7cd054b8e7c80e75",
+        "source_fact:v1:b60e85ac7f331a03cd63c02d4fe8aaee4f4441be8a57978e892a6c701f675a95",
+        "source_fact:v1:c29b922ddc156d394f886cc7c1a50ff093ec8b7b3a01c65614e0100ebb4e312b",
+        "source_fact:v1:c88a152d0537d2ca5130bd392fce40f38781942b811e7de1886b44a8aac9b36c",
+        "source_fact:v1:cd6f843d6e4dd676b0aa48e2407173a05ab62954e68fe659541becda9a888c3b",
+        "source_fact:v1:d273af45b4f0f2ff03725c4751a53e71ebfad18d2622c949e54c7810d9ad42ab"
+      ],
+      "source_published_kst": "2026-10-15T12:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "EU 정상, 15~16일 브뤼셀 집결…에너지·中무역·우크라 지원 난제 '산적'",
+      "telegram_core_fact": "EU는 지난 8~9일 중국과 고위급 통상회담(2차 EU-중국 무역·투자 협의)에서 중국산 저가 하이브리드 자동차의 유럽 수출 제한 등에 대한 예비적 양보를 얻어냈다.",
+      "title": "EU 정상, 15~16일 브뤼셀 집결…에너지·中무역·우크라 지원 난제 '산적'"
     },
     "core:a2360953d8c5b25ea143cd2f": {
       "first_seen_kst": "2026-10-11T14:23:21+09:00",
@@ -43591,6 +43729,27 @@
       "source_title": "한·미·일 등 15개국, 전기차·태양광 패널 등 과잉생산 공동대응…中 겨냥한 듯",
       "telegram_core_fact": "산업통상부는 한국 등 15개국이 7일(현지시간) 프랑스 파리 경제협력개발기구(OECD) 본부에서 ‘구조적 과잉생산 대응을 위한 공동 장관성명’을 발표했다고 8일 밝혔다.",
       "title": "한·미·일 등 15개국, 전기차·태양광 패널 등 과잉생산 공동대응…中 겨냥한 듯"
+    },
+    "core:ce36fd6c1ec42e849edf86c4": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.etnews.com/20261015000453",
+      "source": "전자신문",
+      "source_body_digest": "30844bf383cc3a7db97f7417cfbe33315371f001abe13f0e271c5950e1f51060",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ca49e8341e4226aec53c7be36bf589875986acd92f5e0e5f856a947ba713b0b",
+      "source_fact_keys": [
+        "source_fact:v1:c2ba6a557e47e32f9e536838c7d475a5650a415c549caec40a89fa4beed41d9a",
+        "source_fact:v1:ec45ef99f60158b19a5205fda5f66cae8f734ebdf36ff30d3f3d6bd552e62142"
+      ],
+      "source_published_kst": "2026-10-15T19:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "IPO 앞둔 앤트로픽, 3분기 매출 45% 증가…2분기 연속 흑자",
+      "telegram_core_fact": "기업공개(IPO)를 준비 중인 앤트로픽이 가파른 매출 성장에 이어 2개 분기 연속 흑자를 기록하며 수익성 개선 성과도 거뒀다.",
+      "title": "IPO 앞둔 앤트로픽, 3분기 매출 45% 증가…2분기 연속 흑자"
     },
     "core:ce3c03be7e4e6a16d0eac0e6": {
       "first_seen_kst": "2026-10-15T02:27:03+09:00",
@@ -53750,6 +53909,33 @@
       "telegram_core_fact": "한울반도체가 일본 소재 글로벌 적층세라믹콘덴서(MLCC) 제조사로부터 외관검사설비의 AI 성능 개선 사업을 수주했다.",
       "title": "한울반도체, 日 MLCC 제조사 AI 외관검사 성능개선 수주…해외 고객 확대"
     },
+    "event:07b0ab4fb3efeaae68df1b0d": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003826925",
+      "source": "뉴시스",
+      "source_body_digest": "fdf7001f958cd3449831051fe5bcc992906a84aa4ae19e1d25f23e5de83a9d63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c61faf2a70da85fd97d3767a59628e79aad762eae3f899db7146a1eb4410c5b0",
+      "source_fact_keys": [
+        "source_fact:v1:7dfa4dbce1e8194097d046a17d81c5708476aaf9e2dcb42fa083256924ab266b",
+        "source_fact:v1:885595c258c1fff7ebf9c3bf6d58e0f6f58bdcffa9652cc909c1a78eb0880ad5",
+        "source_fact:v1:b41ece660a5c143b2321f429558fc012e424da88fefc3f8b7cd054b8e7c80e75",
+        "source_fact:v1:b60e85ac7f331a03cd63c02d4fe8aaee4f4441be8a57978e892a6c701f675a95",
+        "source_fact:v1:c29b922ddc156d394f886cc7c1a50ff093ec8b7b3a01c65614e0100ebb4e312b",
+        "source_fact:v1:c88a152d0537d2ca5130bd392fce40f38781942b811e7de1886b44a8aac9b36c",
+        "source_fact:v1:cd6f843d6e4dd676b0aa48e2407173a05ab62954e68fe659541becda9a888c3b",
+        "source_fact:v1:d273af45b4f0f2ff03725c4751a53e71ebfad18d2622c949e54c7810d9ad42ab"
+      ],
+      "source_published_kst": "2026-10-15T12:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "EU 정상, 15~16일 브뤼셀 집결…에너지·中무역·우크라 지원 난제 '산적'",
+      "telegram_core_fact": "EU는 지난 8~9일 중국과 고위급 통상회담(2차 EU-중국 무역·투자 협의)에서 중국산 저가 하이브리드 자동차의 유럽 수출 제한 등에 대한 예비적 양보를 얻어냈다.",
+      "title": "EU 정상, 15~16일 브뤼셀 집결…에너지·中무역·우크라 지원 난제 '산적'"
+    },
     "event:07fd16f375c8f11b6ec651a1": {
       "first_seen_kst": "2026-09-25T10:44:06+09:00",
       "lanes": {
@@ -62405,25 +62591,23 @@
     "event:a2d723707eb224f7ced67c4c": {
       "first_seen_kst": "2026-10-15T06:45:50+09:00",
       "lanes": {
-        "live": "2026-10-15T18:18:04+09:00"
+        "live": "2026-10-15T19:53:29+09:00"
       },
-      "last_seen_kst": "2026-10-15T18:18:04+09:00",
-      "link": "https://www.hankyung.com/article/2026101548031",
-      "source": "한국경제",
-      "source_body_digest": "1f2a2681ca3e5d353cd47087076755626628ba39c35395dfaa6a68141920679d",
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.etnews.com/20261015000453",
+      "source": "전자신문",
+      "source_body_digest": "30844bf383cc3a7db97f7417cfbe33315371f001abe13f0e271c5950e1f51060",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:d904cdafe1317edbf0c649cd9379bdad0d06b08b1b7e2d9de2ae6b836734373a",
+      "source_fact_identity": "source_facts:v1:8ca49e8341e4226aec53c7be36bf589875986acd92f5e0e5f856a947ba713b0b",
       "source_fact_keys": [
-        "source_fact:v1:113e07812245544e15d5747c13fc303513e55902031aabdc47189cf489b58eff",
-        "source_fact:v1:71167761c8e35c6e710680f0d91f957bc778d4ae284043b507b1d92f18950709",
-        "source_fact:v1:8f1106224625770d6bdc6a1111135264802cd800f5bc258dd06e28d12a537235",
-        "source_fact:v1:a015f1ce5ffad2967c663578c98e02837006c7029b34518f442158ba79ef86d1"
+        "source_fact:v1:c2ba6a557e47e32f9e536838c7d475a5650a415c549caec40a89fa4beed41d9a",
+        "source_fact:v1:ec45ef99f60158b19a5205fda5f66cae8f734ebdf36ff30d3f3d6bd552e62142"
       ],
-      "source_published_kst": "2026-10-15T17:59+09:00",
+      "source_published_kst": "2026-10-15T19:11+09:00",
       "source_supply_terms": {},
-      "source_title": "\"조달비용 높은데, AI 투자 가능할까\"…개미 덮친 '빅테크 빚투'",
-      "telegram_core_fact": "골드만삭스는 “AI 투자를 계속하려면 앞으로도 엄청난 돈을 빌려야 하는데, 조달 비용이 비싸지는 환경에서 기존 계획대로 자금을 구할 수 있느냐는 의구심이 높아졌다”고 했다.",
-      "title": "\"조달비용 높은데, AI 투자 가능할까\"…개미 덮친 '빅테크 빚투'"
+      "source_title": "IPO 앞둔 앤트로픽, 3분기 매출 45% 증가…2분기 연속 흑자",
+      "telegram_core_fact": "기업공개(IPO)를 준비 중인 앤트로픽이 가파른 매출 성장에 이어 2개 분기 연속 흑자를 기록하며 수익성 개선 성과도 거뒀다.",
+      "title": "IPO 앞둔 앤트로픽, 3분기 매출 45% 증가…2분기 연속 흑자"
     },
     "event:a33a27d61f89568eee174047": {
       "first_seen_kst": "2026-09-28T18:17:53+09:00",
@@ -73624,6 +73808,29 @@
       "telegram_core_fact": "호르무즈 해협을 지나는 선박이 미상의 발사체에 맞았다고 영국 해사무역기구(UKMTO)가 9일(현지시간) 밝혔다.",
       "title": "호르무즈 해협서 선박 피격…혁명수비대 \"항로 위반시 처벌\" | 연합뉴스"
     },
+    "fact:150f0410b2301e85464a1359": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175341",
+      "source": "매일경제",
+      "source_body_digest": "d90043784fbbb593d15038fde09650bec756740efa8e0c255da9a82abebecbd2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2b65b4e5c4aceb2ac0eaf4df8c50a3ef76cf4e90868a2942ef93fec61049ecfe",
+      "source_fact_keys": [
+        "source_fact:v1:23afccbf0b0e1d0f5aa99f3d71477d21a742bbb497b66c88aec730fd6be7a7e7",
+        "source_fact:v1:3c10d896d522a698231a23db7e3c460c72420b0441b50231a50b22755586cb5f",
+        "source_fact:v1:9ee8991dc7b673d4012652b45d481e916cab96039c7158674b7ce9c922802775",
+        "source_fact:v1:cf98b11457382b7ef98682976ae26192f41d9d7d736b72cc7b2dcc52f294f11b"
+      ],
+      "source_published_kst": "2026-10-15T19:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "PNC 파이낸셜 서비스, 3분기 희석 EPS 4.97달러..전년비 14% 증가",
+      "telegram_core_fact": "PNC 파이낸셜 서비스(PNC)는 3분기 순이익이 20억9700만 달러로 전년비 15.1% 증가했고, 일반회계기준(GAAP) 희석 주당순이익(EPS)은 4.97달러로 전년 동기(4.35달러)보다 14.3% 늘었다고 10월 15일 발표했다.",
+      "title": "PNC 파이낸셜 서비스, 3분기 희석 EPS 4.97달러..전년비 14% 증가"
+    },
     "fact:1523ee51b566eb19abd8e33e": {
       "first_seen_kst": "2026-10-07T20:43:18+09:00",
       "lanes": {
@@ -82299,6 +82506,33 @@
       "telegram_core_fact": "그러면서 \"영업이익 컨센서스(증권사 전망치 평균)를 봐도 반도체 소부장(소재·부품·장비) 등 IT 하드웨어 업종이 내년뿐 아니라 2028년에도 상당히 좋다\"며 \"의료장비 및 서비스 업종도 이익 성장이 좋은데, 여기에 반도체 장비가 많이 들어가 있다\"고 덧붙였다.",
       "title": "윤지호 \"2028년 실적까지 봐야…삼전닉스 전망치 상향 확인\" [한경 넥스트 머니포럼]"
     },
+    "fact:383bca2b921a0a68e80ddcae": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003826925",
+      "source": "뉴시스",
+      "source_body_digest": "fdf7001f958cd3449831051fe5bcc992906a84aa4ae19e1d25f23e5de83a9d63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c61faf2a70da85fd97d3767a59628e79aad762eae3f899db7146a1eb4410c5b0",
+      "source_fact_keys": [
+        "source_fact:v1:7dfa4dbce1e8194097d046a17d81c5708476aaf9e2dcb42fa083256924ab266b",
+        "source_fact:v1:885595c258c1fff7ebf9c3bf6d58e0f6f58bdcffa9652cc909c1a78eb0880ad5",
+        "source_fact:v1:b41ece660a5c143b2321f429558fc012e424da88fefc3f8b7cd054b8e7c80e75",
+        "source_fact:v1:b60e85ac7f331a03cd63c02d4fe8aaee4f4441be8a57978e892a6c701f675a95",
+        "source_fact:v1:c29b922ddc156d394f886cc7c1a50ff093ec8b7b3a01c65614e0100ebb4e312b",
+        "source_fact:v1:c88a152d0537d2ca5130bd392fce40f38781942b811e7de1886b44a8aac9b36c",
+        "source_fact:v1:cd6f843d6e4dd676b0aa48e2407173a05ab62954e68fe659541becda9a888c3b",
+        "source_fact:v1:d273af45b4f0f2ff03725c4751a53e71ebfad18d2622c949e54c7810d9ad42ab"
+      ],
+      "source_published_kst": "2026-10-15T12:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "EU 정상, 15~16일 브뤼셀 집결…에너지·中무역·우크라 지원 난제 '산적'",
+      "telegram_core_fact": "EU는 지난 8~9일 중국과 고위급 통상회담(2차 EU-중국 무역·투자 협의)에서 중국산 저가 하이브리드 자동차의 유럽 수출 제한 등에 대한 예비적 양보를 얻어냈다.",
+      "title": "EU 정상, 15~16일 브뤼셀 집결…에너지·中무역·우크라 지원 난제 '산적'"
+    },
     "fact:386bef97bfe52d949f8c2aef": {
       "first_seen_kst": "2026-10-08T02:41:45+09:00",
       "lanes": {
@@ -83844,6 +84078,27 @@
       ],
       "source_published_kst": "2026-10-06T15:43+09:00",
       "title": "李대통령, 알시시 이집트 대통령과 정상회담…인프라·공급망 협력 확대"
+    },
+    "fact:3ec35ebfc910eabf43cbee62": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003827261",
+      "source": "뉴시스",
+      "source_body_digest": "4aa8d2bd0dd13e580a66a11bd68a1bca1a19d905673a26934124656f13fc2331",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b713d535b8edb5b597b6f29e99647f6a398a7f9570c61ab5d0e404fe0987a524",
+      "source_fact_keys": [
+        "source_fact:v1:891f6d41ec101ce41fdd92d076fdb6afb99696a1ad407dc9ac6119aa233b69d2",
+        "source_fact:v1:c2b5b2051de3da59c84fd7d33acddb658befb43e8a7de38273a6bf675b0fb69e"
+      ],
+      "source_published_kst": "2026-10-15T12:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "오세훈 \"뉴타운 해제 영향, 앞으로 몇 년 더 갈 것\"",
+      "telegram_core_fact": "오세훈 서울시장은 박원순 전 시장 때 뉴타운을 해제한 데 따른 아파트 공급 부족이 앞으로 몇 년간 더 영향을 줄 것이라고 내다봤다.",
+      "title": "오세훈 \"뉴타운 해제 영향, 앞으로 몇 년 더 갈 것\""
     },
     "fact:3ed148967668dc614b21ba4b": {
       "first_seen_kst": "2026-10-11T10:42:03+09:00",
@@ -98042,6 +98297,26 @@
       "source_published_kst": "2026-10-06T11:44+09:00",
       "title": "정부 \"11월 원유 90% 이상 확보…나프타도 90% 이상\" | 연합뉴스"
     },
+    "fact:77b5e69e2c5c68044000a1c6": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261015083800017",
+      "source": "연합뉴스",
+      "source_body_digest": "6943d8d798e869b68a66e6acbf0fe8660a924b1525c8cb96c459f455d330e350",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bffd1697b4df2c2470920eaf2a9381fc8777ee4b82b9e411af76a5daa5e2d85f",
+      "source_fact_keys": [
+        "source_fact:v1:c4a09e23107ff2922c89c21a50e409f0e2d5db7afe3a5f9941139ee46f062ed9"
+      ],
+      "source_published_kst": "2026-10-15T12:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "KIST, 건물 외벽따라 자유롭게 형태 바꾸는 3차원 태양광 개발 | 연합뉴스",
+      "telegram_core_fact": "건물 외벽 모양에 따라 자유롭게 형태를 바꾸는 3차원 태양광 시스템이 개발됐다. 한국과학기술연구원(KIST)은 차세대태양전지연구센터 이필립 센터장 연구팀이 구조 움직임과 전기 연결을 함께 설계해 자유롭게 형태를 바꾸면서도 안정적으로 전기를 생산하는 3차원 태양광 메타구조체를 개발했다고 15일 밝혔다.",
+      "title": "KIST, 건물 외벽따라 자유롭게 형태 바꾸는 3차원 태양광 개발 | 연합뉴스"
+    },
     "fact:77bc4700a45c5d14b5933afa": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -108375,6 +108650,27 @@
       "source_title": "스탠다드 리튬, 랠프 알렉산더 사외이사 선임..스톡옵션 30만주 부여",
       "telegram_core_fact": "스탠다드 리튬(SLI)이 에너지·전력·인프라 분야에서 40년 넘게 경력을 쌓은 랠프 알렉산더를 이사회 독립 이사로 즉시 선임하고, 선임과 관련해 스톡옵션 30만 주를 부여한다고 10월 13일 발표했다. 이번 공시는 이사회 구성 변경과 스톡옵션 부여에 관한 내용으로, 매출액·이익 등 실적 수치나 가이던스는 포함되지 않았다.",
       "title": "스탠다드 리튬, 랠프 알렉산더 사외이사 선임..스톡옵션 30만주 부여"
+    },
+    "fact:9d49ecac676bc14cf00be120": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.etnews.com/20261015000453",
+      "source": "전자신문",
+      "source_body_digest": "30844bf383cc3a7db97f7417cfbe33315371f001abe13f0e271c5950e1f51060",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ca49e8341e4226aec53c7be36bf589875986acd92f5e0e5f856a947ba713b0b",
+      "source_fact_keys": [
+        "source_fact:v1:c2ba6a557e47e32f9e536838c7d475a5650a415c549caec40a89fa4beed41d9a",
+        "source_fact:v1:ec45ef99f60158b19a5205fda5f66cae8f734ebdf36ff30d3f3d6bd552e62142"
+      ],
+      "source_published_kst": "2026-10-15T19:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "IPO 앞둔 앤트로픽, 3분기 매출 45% 증가…2분기 연속 흑자",
+      "telegram_core_fact": "기업공개(IPO)를 준비 중인 앤트로픽이 가파른 매출 성장에 이어 2개 분기 연속 흑자를 기록하며 수익성 개선 성과도 거뒀다.",
+      "title": "IPO 앞둔 앤트로픽, 3분기 매출 45% 증가…2분기 연속 흑자"
     },
     "fact:9d5f1f4efec8ef50aeccf9e9": {
       "first_seen_kst": "2026-10-09T20:48:52+09:00",
@@ -118858,6 +119154,29 @@
       "source_published_kst": "2026-10-06T08:17+09:00",
       "title": "나스닥 사상 최고…비트코인 8만5000달러대[코인 모닝콜]"
     },
+    "fact:c329978b527f0d1062537c92": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.news1.kr/world/general-world/6320873",
+      "source": "뉴스1",
+      "source_body_digest": "891fa1202209a435264101d2d2d922d0a2299b1cf2a5ab53d8ba3b0af3da94fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:08add69b74de63c84a5f504d589c5d2803ab432911e2a10a28000b76a4fcb1d9",
+      "source_fact_keys": [
+        "source_fact:v1:43bcbfc5cf8951cf0ce9d4fd045ec9aa4338d85662f2f74274d4a7067e88a198",
+        "source_fact:v1:5f3ddbd701fc8fc36bbd04701d6c67d358200c7f07c9c583f7e5ca3dfe385a0c",
+        "source_fact:v1:8fb503de64271945bf2c807dfe3791829a7b2e3d7c691a4087c73ea750b8cbd5",
+        "source_fact:v1:e438f3ed231c74a953443170f0515a41823461b666443a66454280923340df40"
+      ],
+      "source_published_kst": "2026-10-15T11:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "노벨평화상 필라이 \"트럼프의 ICC 제재는 불법…국제법 공부나 하라\"",
+      "telegram_core_fact": "노르웨이 노벨위원회는 지난 9일 필라이를 올해 노벨평화상 수상자로 선정했는데, 필라이는 그 몇시간 후 미국의 ICC 제재가 발표된 것은 우연이 아니라며 이는 \"트럼프 대통령이 상을 받지 못한 데 대한 반응\"이라고 말했다.",
+      "title": "노벨평화상 필라이 \"트럼프의 ICC 제재는 불법…국제법 공부나 하라\""
+    },
     "fact:c37964fe9a97932a95fa60ba": {
       "first_seen_kst": "2026-10-07T16:57:09+09:00",
       "lanes": {
@@ -120113,6 +120432,30 @@
       "source_title": "공정위 담합 심의에…SK에너지, 공정거래 내부 통제 강화 나선다",
       "telegram_core_fact": "공정거래위원회가 SK에너지와 HD현대오일뱅크의 가격 담합 혐의에 관련해 제재 심의에 나선 가운데, SK에너지가 공정 거래 관련 내부 통제 체계를 한층 강화한다.",
       "title": "공정위 담합 심의에…SK에너지, 공정거래 내부 통제 강화 나선다"
+    },
+    "fact:c8272dbf326e22042e3acdd2": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003826681",
+      "source": "뉴시스",
+      "source_body_digest": "061610782023d8bf77d953b0a9c3cba5fe7e628c9d2518107f21f55edd4f10b7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:456861202790e5ab2b7e47fcbcc04217200bced386710d3261b6b3d46f0d8853",
+      "source_fact_keys": [
+        "source_fact:v1:42d06192a47b0bc0c7ff37f5aff1f7fdf012e87e2ee6dc4a40b4d8c1663be326",
+        "source_fact:v1:61b3a785af6e78c891f69a891be35c972d7027eb31a9ecd574face845bed5ce2",
+        "source_fact:v1:96c87cc1be39e412ee0c27df90deaad3053120349dd7c3d8da65f2c0b439b8bc",
+        "source_fact:v1:ddf9cdf546ee9004ec7a84aabdad833fddc5948cddc653f5be2a736643c067bb",
+        "source_fact:v1:e12be6c2963a9ab5d7ed712c348096e4f83f3f435661a632440f6ff677fb90e5"
+      ],
+      "source_published_kst": "2026-10-15T13:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "전자바우처 허위청구 2번 적발시 '퇴출'…과징금 '5배'",
+      "telegram_core_fact": "정부가 사회서비스 전자바우처 부정수급을 막고자 허위 청구로 2번 적발된 기관은 즉시 퇴출하고 과징금을 부정수급액의 최대 5배까지 부과하는 등 제재를 강화한다.",
+      "title": "전자바우처 허위청구 2번 적발시 '퇴출'…과징금 '5배'"
     },
     "fact:c830770ed4b7f6b699d0bcfd": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -138623,6 +138966,29 @@
       "source_published_kst": "2026-10-06T10:12+09:00",
       "title": "버거킹, 아침 메뉴 매장 70곳 추가…전국 190곳으로 확대 | 연합뉴스"
     },
+    "link:0a4984a23c96ac0ab22642b2": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175341",
+      "source": "매일경제",
+      "source_body_digest": "d90043784fbbb593d15038fde09650bec756740efa8e0c255da9a82abebecbd2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2b65b4e5c4aceb2ac0eaf4df8c50a3ef76cf4e90868a2942ef93fec61049ecfe",
+      "source_fact_keys": [
+        "source_fact:v1:23afccbf0b0e1d0f5aa99f3d71477d21a742bbb497b66c88aec730fd6be7a7e7",
+        "source_fact:v1:3c10d896d522a698231a23db7e3c460c72420b0441b50231a50b22755586cb5f",
+        "source_fact:v1:9ee8991dc7b673d4012652b45d481e916cab96039c7158674b7ce9c922802775",
+        "source_fact:v1:cf98b11457382b7ef98682976ae26192f41d9d7d736b72cc7b2dcc52f294f11b"
+      ],
+      "source_published_kst": "2026-10-15T19:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "PNC 파이낸셜 서비스, 3분기 희석 EPS 4.97달러..전년비 14% 증가",
+      "telegram_core_fact": "PNC 파이낸셜 서비스(PNC)는 3분기 순이익이 20억9700만 달러로 전년비 15.1% 증가했고, 일반회계기준(GAAP) 희석 주당순이익(EPS)은 4.97달러로 전년 동기(4.35달러)보다 14.3% 늘었다고 10월 15일 발표했다.",
+      "title": "PNC 파이낸셜 서비스, 3분기 희석 EPS 4.97달러..전년비 14% 증가"
+    },
     "link:0a5e81eadc658535f867252a": {
       "first_seen_kst": "2026-10-05T12:09:30+09:00",
       "lanes": {
@@ -143140,6 +143506,26 @@
       "telegram_core_fact": "신한금융지주는 전날 사모펀드 운용사 JKL파트너스가 특수목적법인(SPC) 빅튜라를 통해 보유한 중인 롯데손보 지분 77.04%(2억3908만2287주)를 6933억원에 인수하는 주식매매계약을 체결했다. 기본자본 킥스 비율도 -5.4%로, 기본자본이 1364억원 적자인 상태다.",
       "title": "신한지주, 인수 부담에 4% 급락…롯데손보는 4%↑"
     },
+    "link:172a76ba4e46d92c31d48678": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261015083800017",
+      "source": "연합뉴스",
+      "source_body_digest": "6943d8d798e869b68a66e6acbf0fe8660a924b1525c8cb96c459f455d330e350",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bffd1697b4df2c2470920eaf2a9381fc8777ee4b82b9e411af76a5daa5e2d85f",
+      "source_fact_keys": [
+        "source_fact:v1:c4a09e23107ff2922c89c21a50e409f0e2d5db7afe3a5f9941139ee46f062ed9"
+      ],
+      "source_published_kst": "2026-10-15T12:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "KIST, 건물 외벽따라 자유롭게 형태 바꾸는 3차원 태양광 개발 | 연합뉴스",
+      "telegram_core_fact": "건물 외벽 모양에 따라 자유롭게 형태를 바꾸는 3차원 태양광 시스템이 개발됐다. 한국과학기술연구원(KIST)은 차세대태양전지연구센터 이필립 센터장 연구팀이 구조 움직임과 전기 연결을 함께 설계해 자유롭게 형태를 바꾸면서도 안정적으로 전기를 생산하는 3차원 태양광 메타구조체를 개발했다고 15일 밝혔다.",
+      "title": "KIST, 건물 외벽따라 자유롭게 형태 바꾸는 3차원 태양광 개발 | 연합뉴스"
+    },
     "link:172b8a3b8c769e31f737579a": {
       "first_seen_kst": "2026-10-11T18:34:27+09:00",
       "lanes": {
@@ -143620,6 +144006,30 @@
       "source_title": "LG전자, GS건설·美 GRC와 AI 데이터센터 액침냉각 공동개발",
       "telegram_core_fact": "LG전자는 지난 13일 서울 종로구 GS건설 본사에서 GS건설, GRC와 '데이터센터 액침냉각 기술 및 설비기술 개발·협력을 위한 업무협약(MOU)'을 체결했다고 14일 밝혔다. LG전자가 GS건설, 미국 액침냉각 전문기업 GRC와 인공지능(AI) 데이터센터용 액침냉각 기술과 표준설계를 공동 개발한다.",
       "title": "LG전자, GS건설·美 GRC와 AI 데이터센터 액침냉각 공동개발"
+    },
+    "link:1856a837ecc80e947a29e498": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003826681",
+      "source": "뉴시스",
+      "source_body_digest": "061610782023d8bf77d953b0a9c3cba5fe7e628c9d2518107f21f55edd4f10b7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:456861202790e5ab2b7e47fcbcc04217200bced386710d3261b6b3d46f0d8853",
+      "source_fact_keys": [
+        "source_fact:v1:42d06192a47b0bc0c7ff37f5aff1f7fdf012e87e2ee6dc4a40b4d8c1663be326",
+        "source_fact:v1:61b3a785af6e78c891f69a891be35c972d7027eb31a9ecd574face845bed5ce2",
+        "source_fact:v1:96c87cc1be39e412ee0c27df90deaad3053120349dd7c3d8da65f2c0b439b8bc",
+        "source_fact:v1:ddf9cdf546ee9004ec7a84aabdad833fddc5948cddc653f5be2a736643c067bb",
+        "source_fact:v1:e12be6c2963a9ab5d7ed712c348096e4f83f3f435661a632440f6ff677fb90e5"
+      ],
+      "source_published_kst": "2026-10-15T13:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "전자바우처 허위청구 2번 적발시 '퇴출'…과징금 '5배'",
+      "telegram_core_fact": "정부가 사회서비스 전자바우처 부정수급을 막고자 허위 청구로 2번 적발된 기관은 즉시 퇴출하고 과징금을 부정수급액의 최대 5배까지 부과하는 등 제재를 강화한다.",
+      "title": "전자바우처 허위청구 2번 적발시 '퇴출'…과징금 '5배'"
     },
     "link:18688dadcf6ce63145ed182f": {
       "first_seen_kst": "2026-10-08T12:46:54+09:00",
@@ -161788,6 +162198,27 @@
       "telegram_core_fact": "중국 상하이 당국이 2028년까지 공장에 휴머노이드 로봇 8000대를 투입하겠다는 목표를 제시했다. 이번 행동계획에 따르면 상하이는 2028년까지 시내 주요 제조기업 전체에 스마트공장을 구축하고, 스마트공장에서 AI 활용을 전면적으로 확대할 계획이다.",
       "title": "상하이, 2028년까지 휴머노이드 로봇 8000대 공장 투입"
     },
+    "link:4b7ef3478b14b936dece3e60": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.etnews.com/20261015000453",
+      "source": "전자신문",
+      "source_body_digest": "30844bf383cc3a7db97f7417cfbe33315371f001abe13f0e271c5950e1f51060",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ca49e8341e4226aec53c7be36bf589875986acd92f5e0e5f856a947ba713b0b",
+      "source_fact_keys": [
+        "source_fact:v1:c2ba6a557e47e32f9e536838c7d475a5650a415c549caec40a89fa4beed41d9a",
+        "source_fact:v1:ec45ef99f60158b19a5205fda5f66cae8f734ebdf36ff30d3f3d6bd552e62142"
+      ],
+      "source_published_kst": "2026-10-15T19:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "IPO 앞둔 앤트로픽, 3분기 매출 45% 증가…2분기 연속 흑자",
+      "telegram_core_fact": "기업공개(IPO)를 준비 중인 앤트로픽이 가파른 매출 성장에 이어 2개 분기 연속 흑자를 기록하며 수익성 개선 성과도 거뒀다.",
+      "title": "IPO 앞둔 앤트로픽, 3분기 매출 45% 증가…2분기 연속 흑자"
+    },
     "link:4b7f1784ea5e224b1bed9a7e": {
       "first_seen_kst": "2026-10-15T00:34:31+09:00",
       "lanes": {
@@ -173067,6 +173498,33 @@
       "link": "https://www.newsis.com/view/NISX20260930_0003809695",
       "source": "뉴시스",
       "title": "中상무부, 美 무역장벽 조사 연말까지 연장"
+    },
+    "link:6bdfeb7e9969adcdef66945e": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003826925",
+      "source": "뉴시스",
+      "source_body_digest": "fdf7001f958cd3449831051fe5bcc992906a84aa4ae19e1d25f23e5de83a9d63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c61faf2a70da85fd97d3767a59628e79aad762eae3f899db7146a1eb4410c5b0",
+      "source_fact_keys": [
+        "source_fact:v1:7dfa4dbce1e8194097d046a17d81c5708476aaf9e2dcb42fa083256924ab266b",
+        "source_fact:v1:885595c258c1fff7ebf9c3bf6d58e0f6f58bdcffa9652cc909c1a78eb0880ad5",
+        "source_fact:v1:b41ece660a5c143b2321f429558fc012e424da88fefc3f8b7cd054b8e7c80e75",
+        "source_fact:v1:b60e85ac7f331a03cd63c02d4fe8aaee4f4441be8a57978e892a6c701f675a95",
+        "source_fact:v1:c29b922ddc156d394f886cc7c1a50ff093ec8b7b3a01c65614e0100ebb4e312b",
+        "source_fact:v1:c88a152d0537d2ca5130bd392fce40f38781942b811e7de1886b44a8aac9b36c",
+        "source_fact:v1:cd6f843d6e4dd676b0aa48e2407173a05ab62954e68fe659541becda9a888c3b",
+        "source_fact:v1:d273af45b4f0f2ff03725c4751a53e71ebfad18d2622c949e54c7810d9ad42ab"
+      ],
+      "source_published_kst": "2026-10-15T12:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "EU 정상, 15~16일 브뤼셀 집결…에너지·中무역·우크라 지원 난제 '산적'",
+      "telegram_core_fact": "EU는 지난 8~9일 중국과 고위급 통상회담(2차 EU-중국 무역·투자 협의)에서 중국산 저가 하이브리드 자동차의 유럽 수출 제한 등에 대한 예비적 양보를 얻어냈다.",
+      "title": "EU 정상, 15~16일 브뤼셀 집결…에너지·中무역·우크라 지원 난제 '산적'"
     },
     "link:6beae447433fbe61b56c2b56": {
       "first_seen_kst": "2026-10-07T22:37:58+09:00",
@@ -221872,6 +222330,27 @@
       "telegram_core_fact": "가을철 고온에도 안정적으로 속이 차는 배추 ‘청명가을’이 올해 대한민국 최고 품종으로 선정됐다. 스페인 주요 재배시장의 20%를 점유하고 있으며, 지난해 수출액은 112만달러로 단일 품종 기준 유럽 수출에서 역대 최고 실적을 기록했다.",
       "title": "고온에도 속 꽉 찬 배추 ‘청명가을’…대한민국 최고 품종 선정"
     },
+    "link:f68a887ec16f615241830385": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003827261",
+      "source": "뉴시스",
+      "source_body_digest": "4aa8d2bd0dd13e580a66a11bd68a1bca1a19d905673a26934124656f13fc2331",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b713d535b8edb5b597b6f29e99647f6a398a7f9570c61ab5d0e404fe0987a524",
+      "source_fact_keys": [
+        "source_fact:v1:891f6d41ec101ce41fdd92d076fdb6afb99696a1ad407dc9ac6119aa233b69d2",
+        "source_fact:v1:c2b5b2051de3da59c84fd7d33acddb658befb43e8a7de38273a6bf675b0fb69e"
+      ],
+      "source_published_kst": "2026-10-15T12:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "오세훈 \"뉴타운 해제 영향, 앞으로 몇 년 더 갈 것\"",
+      "telegram_core_fact": "오세훈 서울시장은 박원순 전 시장 때 뉴타운을 해제한 데 따른 아파트 공급 부족이 앞으로 몇 년간 더 영향을 줄 것이라고 내다봤다.",
+      "title": "오세훈 \"뉴타운 해제 영향, 앞으로 몇 년 더 갈 것\""
+    },
     "link:f69bb46f4146937bee9dc823": {
       "first_seen_kst": "2026-10-01T16:14:13+09:00",
       "lanes": {
@@ -223827,6 +224306,29 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-07T15:46+09:00",
       "title": "대성산업 \"자회사 대성쎌틱에너시스 주식 380억원에 추가취득\" | 연합뉴스"
+    },
+    "link:fbeca3ffb8ef4a9aa5f6e1fc": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.news1.kr/world/general-world/6320873",
+      "source": "뉴스1",
+      "source_body_digest": "891fa1202209a435264101d2d2d922d0a2299b1cf2a5ab53d8ba3b0af3da94fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:08add69b74de63c84a5f504d589c5d2803ab432911e2a10a28000b76a4fcb1d9",
+      "source_fact_keys": [
+        "source_fact:v1:43bcbfc5cf8951cf0ce9d4fd045ec9aa4338d85662f2f74274d4a7067e88a198",
+        "source_fact:v1:5f3ddbd701fc8fc36bbd04701d6c67d358200c7f07c9c583f7e5ca3dfe385a0c",
+        "source_fact:v1:8fb503de64271945bf2c807dfe3791829a7b2e3d7c691a4087c73ea750b8cbd5",
+        "source_fact:v1:e438f3ed231c74a953443170f0515a41823461b666443a66454280923340df40"
+      ],
+      "source_published_kst": "2026-10-15T11:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "노벨평화상 필라이 \"트럼프의 ICC 제재는 불법…국제법 공부나 하라\"",
+      "telegram_core_fact": "노르웨이 노벨위원회는 지난 9일 필라이를 올해 노벨평화상 수상자로 선정했는데, 필라이는 그 몇시간 후 미국의 ICC 제재가 발표된 것은 우연이 아니라며 이는 \"트럼프 대통령이 상을 받지 못한 데 대한 반응\"이라고 말했다.",
+      "title": "노벨평화상 필라이 \"트럼프의 ICC 제재는 불법…국제법 공부나 하라\""
     },
     "link:fc179294df60e688392134d8": {
       "first_seen_kst": "2026-10-03T13:31:23+09:00",
@@ -255414,6 +255916,29 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T10:23+09:00",
       "title": "“고성~거제 24.6km 연결”…쌍용건설, 8000억 규모 남부내륙철도 9공구 수주"
+    },
+    "original:54eff39ce09732f2d7684b1e": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.news1.kr/world/general-world/6320873",
+      "source": "뉴스1",
+      "source_body_digest": "891fa1202209a435264101d2d2d922d0a2299b1cf2a5ab53d8ba3b0af3da94fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:08add69b74de63c84a5f504d589c5d2803ab432911e2a10a28000b76a4fcb1d9",
+      "source_fact_keys": [
+        "source_fact:v1:43bcbfc5cf8951cf0ce9d4fd045ec9aa4338d85662f2f74274d4a7067e88a198",
+        "source_fact:v1:5f3ddbd701fc8fc36bbd04701d6c67d358200c7f07c9c583f7e5ca3dfe385a0c",
+        "source_fact:v1:8fb503de64271945bf2c807dfe3791829a7b2e3d7c691a4087c73ea750b8cbd5",
+        "source_fact:v1:e438f3ed231c74a953443170f0515a41823461b666443a66454280923340df40"
+      ],
+      "source_published_kst": "2026-10-15T11:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "노벨평화상 필라이 \"트럼프의 ICC 제재는 불법…국제법 공부나 하라\"",
+      "telegram_core_fact": "노르웨이 노벨위원회는 지난 9일 필라이를 올해 노벨평화상 수상자로 선정했는데, 필라이는 그 몇시간 후 미국의 ICC 제재가 발표된 것은 우연이 아니라며 이는 \"트럼프 대통령이 상을 받지 못한 데 대한 반응\"이라고 말했다.",
+      "title": "노벨평화상 필라이 \"트럼프의 ICC 제재는 불법…국제법 공부나 하라\""
     },
     "original:5512217a02aa7b0a7cf68e48": {
       "first_seen_kst": "2026-10-12T13:18:48+09:00",
@@ -288009,6 +288534,30 @@
       "telegram_core_fact": "경남도는 올해 도내 노인일자리 사업에 국비 1629억원, 도비 550억원, 시군비 1277억원 등 총 3456억원을 투입해 8만개를 공급하고, 2030년까지 10만개로 확대한다고 13일 밝혔다.",
       "title": "경남 올해 노인일자리 사업 3456억 투입, 8만개 공급"
     },
+    "original:b2e461312470df5d80924b4d": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003826681",
+      "source": "뉴시스",
+      "source_body_digest": "061610782023d8bf77d953b0a9c3cba5fe7e628c9d2518107f21f55edd4f10b7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:456861202790e5ab2b7e47fcbcc04217200bced386710d3261b6b3d46f0d8853",
+      "source_fact_keys": [
+        "source_fact:v1:42d06192a47b0bc0c7ff37f5aff1f7fdf012e87e2ee6dc4a40b4d8c1663be326",
+        "source_fact:v1:61b3a785af6e78c891f69a891be35c972d7027eb31a9ecd574face845bed5ce2",
+        "source_fact:v1:96c87cc1be39e412ee0c27df90deaad3053120349dd7c3d8da65f2c0b439b8bc",
+        "source_fact:v1:ddf9cdf546ee9004ec7a84aabdad833fddc5948cddc653f5be2a736643c067bb",
+        "source_fact:v1:e12be6c2963a9ab5d7ed712c348096e4f83f3f435661a632440f6ff677fb90e5"
+      ],
+      "source_published_kst": "2026-10-15T13:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "전자바우처 허위청구 2번 적발시 '퇴출'…과징금 '5배'",
+      "telegram_core_fact": "정부가 사회서비스 전자바우처 부정수급을 막고자 허위 청구로 2번 적발된 기관은 즉시 퇴출하고 과징금을 부정수급액의 최대 5배까지 부과하는 등 제재를 강화한다.",
+      "title": "전자바우처 허위청구 2번 적발시 '퇴출'…과징금 '5배'"
+    },
     "original:b2e5870b41d58b0c856c7512": {
       "first_seen_kst": "2026-10-12T15:20:09+09:00",
       "lanes": {
@@ -292750,6 +293299,33 @@
       "source_title": "[美특징주]아마존, AI 스타트업 디카트 인수 협상…개장전 ↑",
       "telegram_core_fact": "아마존닷컴(AMZN)이 인공지능(AI) 스타트업 디카트 AI(Decart AI)를 약 70억달러에 인수하는 방안을 논의하고 있다.",
       "title": "[美특징주]아마존, AI 스타트업 디카트 인수 협상…개장전 ↑"
+    },
+    "original:c2e14d1470271cc0e541e9d4": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003826925",
+      "source": "뉴시스",
+      "source_body_digest": "fdf7001f958cd3449831051fe5bcc992906a84aa4ae19e1d25f23e5de83a9d63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c61faf2a70da85fd97d3767a59628e79aad762eae3f899db7146a1eb4410c5b0",
+      "source_fact_keys": [
+        "source_fact:v1:7dfa4dbce1e8194097d046a17d81c5708476aaf9e2dcb42fa083256924ab266b",
+        "source_fact:v1:885595c258c1fff7ebf9c3bf6d58e0f6f58bdcffa9652cc909c1a78eb0880ad5",
+        "source_fact:v1:b41ece660a5c143b2321f429558fc012e424da88fefc3f8b7cd054b8e7c80e75",
+        "source_fact:v1:b60e85ac7f331a03cd63c02d4fe8aaee4f4441be8a57978e892a6c701f675a95",
+        "source_fact:v1:c29b922ddc156d394f886cc7c1a50ff093ec8b7b3a01c65614e0100ebb4e312b",
+        "source_fact:v1:c88a152d0537d2ca5130bd392fce40f38781942b811e7de1886b44a8aac9b36c",
+        "source_fact:v1:cd6f843d6e4dd676b0aa48e2407173a05ab62954e68fe659541becda9a888c3b",
+        "source_fact:v1:d273af45b4f0f2ff03725c4751a53e71ebfad18d2622c949e54c7810d9ad42ab"
+      ],
+      "source_published_kst": "2026-10-15T12:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "EU 정상, 15~16일 브뤼셀 집결…에너지·中무역·우크라 지원 난제 '산적'",
+      "telegram_core_fact": "EU는 지난 8~9일 중국과 고위급 통상회담(2차 EU-중국 무역·투자 협의)에서 중국산 저가 하이브리드 자동차의 유럽 수출 제한 등에 대한 예비적 양보를 얻어냈다.",
+      "title": "EU 정상, 15~16일 브뤼셀 집결…에너지·中무역·우크라 지원 난제 '산적'"
     },
     "original:c3009bef8a71353395c67400": {
       "first_seen_kst": "2026-10-08T02:57:10+09:00",
@@ -301887,6 +302463,27 @@
       "telegram_core_fact": "씨앤엠은 한국거래소로부터 코스닥시장 상장예비심사 승인을 받았다고 12일 밝혔다.",
       "title": "씨앤엠, 코스닥 상장예비심사 승인…청구 4주 만"
     },
+    "original:dce7c6c9ca23250d53a1da3f": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003827261",
+      "source": "뉴시스",
+      "source_body_digest": "4aa8d2bd0dd13e580a66a11bd68a1bca1a19d905673a26934124656f13fc2331",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b713d535b8edb5b597b6f29e99647f6a398a7f9570c61ab5d0e404fe0987a524",
+      "source_fact_keys": [
+        "source_fact:v1:891f6d41ec101ce41fdd92d076fdb6afb99696a1ad407dc9ac6119aa233b69d2",
+        "source_fact:v1:c2b5b2051de3da59c84fd7d33acddb658befb43e8a7de38273a6bf675b0fb69e"
+      ],
+      "source_published_kst": "2026-10-15T12:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "오세훈 \"뉴타운 해제 영향, 앞으로 몇 년 더 갈 것\"",
+      "telegram_core_fact": "오세훈 서울시장은 박원순 전 시장 때 뉴타운을 해제한 데 따른 아파트 공급 부족이 앞으로 몇 년간 더 영향을 줄 것이라고 내다봤다.",
+      "title": "오세훈 \"뉴타운 해제 영향, 앞으로 몇 년 더 갈 것\""
+    },
     "original:dce82987ae01ad50aff72eab": {
       "first_seen_kst": "2026-10-13T16:01:00+09:00",
       "lanes": {
@@ -305099,6 +305696,29 @@
       "link": "https://www.mk.co.kr/news/stock/12160364",
       "source": "매일경제",
       "title": "금리 불확실성 안정되나…삼전닉스 추격 매수 [주식 초고수는 지금]"
+    },
+    "original:e6bad66428b500e411856391": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175341",
+      "source": "매일경제",
+      "source_body_digest": "d90043784fbbb593d15038fde09650bec756740efa8e0c255da9a82abebecbd2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2b65b4e5c4aceb2ac0eaf4df8c50a3ef76cf4e90868a2942ef93fec61049ecfe",
+      "source_fact_keys": [
+        "source_fact:v1:23afccbf0b0e1d0f5aa99f3d71477d21a742bbb497b66c88aec730fd6be7a7e7",
+        "source_fact:v1:3c10d896d522a698231a23db7e3c460c72420b0441b50231a50b22755586cb5f",
+        "source_fact:v1:9ee8991dc7b673d4012652b45d481e916cab96039c7158674b7ce9c922802775",
+        "source_fact:v1:cf98b11457382b7ef98682976ae26192f41d9d7d736b72cc7b2dcc52f294f11b"
+      ],
+      "source_published_kst": "2026-10-15T19:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "PNC 파이낸셜 서비스, 3분기 희석 EPS 4.97달러..전년비 14% 증가",
+      "telegram_core_fact": "PNC 파이낸셜 서비스(PNC)는 3분기 순이익이 20억9700만 달러로 전년비 15.1% 증가했고, 일반회계기준(GAAP) 희석 주당순이익(EPS)은 4.97달러로 전년 동기(4.35달러)보다 14.3% 늘었다고 10월 15일 발표했다.",
+      "title": "PNC 파이낸셜 서비스, 3분기 희석 EPS 4.97달러..전년비 14% 증가"
     },
     "original:e6bd6b1de6425f065b043569": {
       "first_seen_kst": "2026-10-02T11:29:29+09:00",
@@ -311897,6 +312517,27 @@
       "source_published_kst": "2026-10-05T19:27+09:00",
       "title": "\"농식품부 고위공직자 모친 소유 농지 3필지 휴경\"(종합) | 연합뉴스"
     },
+    "original:fafd1c7c854929d4286e7bfb": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.etnews.com/20261015000453",
+      "source": "전자신문",
+      "source_body_digest": "30844bf383cc3a7db97f7417cfbe33315371f001abe13f0e271c5950e1f51060",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ca49e8341e4226aec53c7be36bf589875986acd92f5e0e5f856a947ba713b0b",
+      "source_fact_keys": [
+        "source_fact:v1:c2ba6a557e47e32f9e536838c7d475a5650a415c549caec40a89fa4beed41d9a",
+        "source_fact:v1:ec45ef99f60158b19a5205fda5f66cae8f734ebdf36ff30d3f3d6bd552e62142"
+      ],
+      "source_published_kst": "2026-10-15T19:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "IPO 앞둔 앤트로픽, 3분기 매출 45% 증가…2분기 연속 흑자",
+      "telegram_core_fact": "기업공개(IPO)를 준비 중인 앤트로픽이 가파른 매출 성장에 이어 2개 분기 연속 흑자를 기록하며 수익성 개선 성과도 거뒀다.",
+      "title": "IPO 앞둔 앤트로픽, 3분기 매출 45% 증가…2분기 연속 흑자"
+    },
     "original:fb0cd1999c8b065432d05605": {
       "first_seen_kst": "2026-10-06T11:41:27+09:00",
       "lanes": {
@@ -312274,6 +312915,26 @@
       "link": "https://www.etoday.co.kr/news/view/2632003",
       "source": "이투데이",
       "title": "코인 과세 형평성·스테이블코인 규율 도마⋯제도 정비 과제 부상"
+    },
+    "original:fc44e0a7e639ca60081c5f59": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261015083800017",
+      "source": "연합뉴스",
+      "source_body_digest": "6943d8d798e869b68a66e6acbf0fe8660a924b1525c8cb96c459f455d330e350",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bffd1697b4df2c2470920eaf2a9381fc8777ee4b82b9e411af76a5daa5e2d85f",
+      "source_fact_keys": [
+        "source_fact:v1:c4a09e23107ff2922c89c21a50e409f0e2d5db7afe3a5f9941139ee46f062ed9"
+      ],
+      "source_published_kst": "2026-10-15T12:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "KIST, 건물 외벽따라 자유롭게 형태 바꾸는 3차원 태양광 개발 | 연합뉴스",
+      "telegram_core_fact": "건물 외벽 모양에 따라 자유롭게 형태를 바꾸는 3차원 태양광 시스템이 개발됐다. 한국과학기술연구원(KIST)은 차세대태양전지연구센터 이필립 센터장 연구팀이 구조 움직임과 전기 연결을 함께 설계해 자유롭게 형태를 바꾸면서도 안정적으로 전기를 생산하는 3차원 태양광 메타구조체를 개발했다고 15일 밝혔다.",
+      "title": "KIST, 건물 외벽따라 자유롭게 형태 바꾸는 3차원 태양광 개발 | 연합뉴스"
     },
     "original:fc5b458f04803122e055bea1": {
       "first_seen_kst": "2026-10-05T13:15:14+09:00",
@@ -324401,6 +325062,29 @@
       "telegram_core_fact": "김동철 한국전력공사 사장이 미국 웨스팅하우스에 한국형 원전 APR1400 노형을 수출할 때마다 원전 1기당 기술사용료(로열티)로 1억7500만 달러를 줘야 한다는 한전·한국수력원자력의 계약에 대해 \"그보다 훨씬 적었다고 보면 되겠다\"고 말했다.",
       "title": "김동철 한전 사장 \"웨스팅하우스 로열티, 1기당 1.75억불보다 훨씬 적어\""
     },
+    "source_fact:083500a53fe1d05263e9255e": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.news1.kr/world/general-world/6320873",
+      "source": "뉴스1",
+      "source_body_digest": "891fa1202209a435264101d2d2d922d0a2299b1cf2a5ab53d8ba3b0af3da94fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:08add69b74de63c84a5f504d589c5d2803ab432911e2a10a28000b76a4fcb1d9",
+      "source_fact_keys": [
+        "source_fact:v1:43bcbfc5cf8951cf0ce9d4fd045ec9aa4338d85662f2f74274d4a7067e88a198",
+        "source_fact:v1:5f3ddbd701fc8fc36bbd04701d6c67d358200c7f07c9c583f7e5ca3dfe385a0c",
+        "source_fact:v1:8fb503de64271945bf2c807dfe3791829a7b2e3d7c691a4087c73ea750b8cbd5",
+        "source_fact:v1:e438f3ed231c74a953443170f0515a41823461b666443a66454280923340df40"
+      ],
+      "source_published_kst": "2026-10-15T11:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "노벨평화상 필라이 \"트럼프의 ICC 제재는 불법…국제법 공부나 하라\"",
+      "telegram_core_fact": "노르웨이 노벨위원회는 지난 9일 필라이를 올해 노벨평화상 수상자로 선정했는데, 필라이는 그 몇시간 후 미국의 ICC 제재가 발표된 것은 우연이 아니라며 이는 \"트럼프 대통령이 상을 받지 못한 데 대한 반응\"이라고 말했다.",
+      "title": "노벨평화상 필라이 \"트럼프의 ICC 제재는 불법…국제법 공부나 하라\""
+    },
     "source_fact:0837927fb8ad4fc2b3905f57": {
       "first_seen_kst": "2026-10-13T14:32:55+09:00",
       "lanes": {
@@ -326277,6 +326961,30 @@
       "source_title": "마이크론은 10% 뛰는데 삼전·하닉은 뒷걸음…메모리 호황 속 ‘엇갈린 성적표’",
       "telegram_core_fact": "한동희 SK증권 연구원은 “원·달러 환율 가정을 7% 낮췄음에도 2027년 이익 전망을 상향한 것은 AI 메모리 수요 강세와 공급 부족, 장기공급계약이 견인하는 가격 강세 때문”이라며 “시장에서 우려하는 메모리 업황 둔화와 감익 시나리오는 실현되지 않을 것”이라고 말했다.",
       "title": "마이크론은 10% 뛰는데 삼전·하닉은 뒷걸음…메모리 호황 속 ‘엇갈린 성적표’"
+    },
+    "source_fact:09a5d907bb56711346ca2009": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003826681",
+      "source": "뉴시스",
+      "source_body_digest": "061610782023d8bf77d953b0a9c3cba5fe7e628c9d2518107f21f55edd4f10b7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:456861202790e5ab2b7e47fcbcc04217200bced386710d3261b6b3d46f0d8853",
+      "source_fact_keys": [
+        "source_fact:v1:42d06192a47b0bc0c7ff37f5aff1f7fdf012e87e2ee6dc4a40b4d8c1663be326",
+        "source_fact:v1:61b3a785af6e78c891f69a891be35c972d7027eb31a9ecd574face845bed5ce2",
+        "source_fact:v1:96c87cc1be39e412ee0c27df90deaad3053120349dd7c3d8da65f2c0b439b8bc",
+        "source_fact:v1:ddf9cdf546ee9004ec7a84aabdad833fddc5948cddc653f5be2a736643c067bb",
+        "source_fact:v1:e12be6c2963a9ab5d7ed712c348096e4f83f3f435661a632440f6ff677fb90e5"
+      ],
+      "source_published_kst": "2026-10-15T13:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "전자바우처 허위청구 2번 적발시 '퇴출'…과징금 '5배'",
+      "telegram_core_fact": "정부가 사회서비스 전자바우처 부정수급을 막고자 허위 청구로 2번 적발된 기관은 즉시 퇴출하고 과징금을 부정수급액의 최대 5배까지 부과하는 등 제재를 강화한다.",
+      "title": "전자바우처 허위청구 2번 적발시 '퇴출'…과징금 '5배'"
     },
     "source_fact:09a668049112d5ecf2153ee5": {
       "first_seen_kst": "2026-10-08T22:06:55+09:00",
@@ -386193,6 +386901,30 @@
       "telegram_core_fact": "국제유가 상승에 따른 휘발유 가격 반등으로 헤드라인 물가 상승률은 전년 동월 대비 3% 중후반까지 확대될 것으로 예상된다.",
       "title": "美물가·연준 발언에 쏠린 눈…환율 하락세 이어질까[주간외환전망]"
     },
+    "source_fact:357dbb6070d959a1527e0490": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003826681",
+      "source": "뉴시스",
+      "source_body_digest": "061610782023d8bf77d953b0a9c3cba5fe7e628c9d2518107f21f55edd4f10b7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:456861202790e5ab2b7e47fcbcc04217200bced386710d3261b6b3d46f0d8853",
+      "source_fact_keys": [
+        "source_fact:v1:42d06192a47b0bc0c7ff37f5aff1f7fdf012e87e2ee6dc4a40b4d8c1663be326",
+        "source_fact:v1:61b3a785af6e78c891f69a891be35c972d7027eb31a9ecd574face845bed5ce2",
+        "source_fact:v1:96c87cc1be39e412ee0c27df90deaad3053120349dd7c3d8da65f2c0b439b8bc",
+        "source_fact:v1:ddf9cdf546ee9004ec7a84aabdad833fddc5948cddc653f5be2a736643c067bb",
+        "source_fact:v1:e12be6c2963a9ab5d7ed712c348096e4f83f3f435661a632440f6ff677fb90e5"
+      ],
+      "source_published_kst": "2026-10-15T13:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "전자바우처 허위청구 2번 적발시 '퇴출'…과징금 '5배'",
+      "telegram_core_fact": "정부가 사회서비스 전자바우처 부정수급을 막고자 허위 청구로 2번 적발된 기관은 즉시 퇴출하고 과징금을 부정수급액의 최대 5배까지 부과하는 등 제재를 강화한다.",
+      "title": "전자바우처 허위청구 2번 적발시 '퇴출'…과징금 '5배'"
+    },
     "source_fact:358b4aefa3785a1743399d1f": {
       "first_seen_kst": "2026-10-13T07:52:07+09:00",
       "lanes": {
@@ -399354,6 +400086,33 @@
       "telegram_core_fact": "개인은 이날 KODEX SK하이닉스단일종목레버리지를 422억원, KODEX 삼성전자단일종목레버리지를 248억원 각각 순매수했다. 이중 거래량이 많은 KODEX SK하이닉스단일종목레버리지와 TIGER SK하이닉스단일종목레버리지는 각각 21.70%, 22.13% 내리며 5천285원과 4천470원에 마감했다.",
       "title": "'삼전·닉스' 급락에 단일종목 레버리지 신저가 또 경신 | 연합뉴스"
     },
+    "source_fact:3f93f781a72aef623a69254d": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003826925",
+      "source": "뉴시스",
+      "source_body_digest": "fdf7001f958cd3449831051fe5bcc992906a84aa4ae19e1d25f23e5de83a9d63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c61faf2a70da85fd97d3767a59628e79aad762eae3f899db7146a1eb4410c5b0",
+      "source_fact_keys": [
+        "source_fact:v1:7dfa4dbce1e8194097d046a17d81c5708476aaf9e2dcb42fa083256924ab266b",
+        "source_fact:v1:885595c258c1fff7ebf9c3bf6d58e0f6f58bdcffa9652cc909c1a78eb0880ad5",
+        "source_fact:v1:b41ece660a5c143b2321f429558fc012e424da88fefc3f8b7cd054b8e7c80e75",
+        "source_fact:v1:b60e85ac7f331a03cd63c02d4fe8aaee4f4441be8a57978e892a6c701f675a95",
+        "source_fact:v1:c29b922ddc156d394f886cc7c1a50ff093ec8b7b3a01c65614e0100ebb4e312b",
+        "source_fact:v1:c88a152d0537d2ca5130bd392fce40f38781942b811e7de1886b44a8aac9b36c",
+        "source_fact:v1:cd6f843d6e4dd676b0aa48e2407173a05ab62954e68fe659541becda9a888c3b",
+        "source_fact:v1:d273af45b4f0f2ff03725c4751a53e71ebfad18d2622c949e54c7810d9ad42ab"
+      ],
+      "source_published_kst": "2026-10-15T12:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "EU 정상, 15~16일 브뤼셀 집결…에너지·中무역·우크라 지원 난제 '산적'",
+      "telegram_core_fact": "EU는 지난 8~9일 중국과 고위급 통상회담(2차 EU-중국 무역·투자 협의)에서 중국산 저가 하이브리드 자동차의 유럽 수출 제한 등에 대한 예비적 양보를 얻어냈다.",
+      "title": "EU 정상, 15~16일 브뤼셀 집결…에너지·中무역·우크라 지원 난제 '산적'"
+    },
     "source_fact:3fa64f6672874cb61a55c97d": {
       "first_seen_kst": "2026-10-08T21:47:01+09:00",
       "lanes": {
@@ -408889,6 +409648,30 @@
       ],
       "source_published_kst": "2026-10-05T23:11+09:00",
       "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
+    },
+    "source_fact:467d5dac6f56b59ea3d76311": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003826681",
+      "source": "뉴시스",
+      "source_body_digest": "061610782023d8bf77d953b0a9c3cba5fe7e628c9d2518107f21f55edd4f10b7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:456861202790e5ab2b7e47fcbcc04217200bced386710d3261b6b3d46f0d8853",
+      "source_fact_keys": [
+        "source_fact:v1:42d06192a47b0bc0c7ff37f5aff1f7fdf012e87e2ee6dc4a40b4d8c1663be326",
+        "source_fact:v1:61b3a785af6e78c891f69a891be35c972d7027eb31a9ecd574face845bed5ce2",
+        "source_fact:v1:96c87cc1be39e412ee0c27df90deaad3053120349dd7c3d8da65f2c0b439b8bc",
+        "source_fact:v1:ddf9cdf546ee9004ec7a84aabdad833fddc5948cddc653f5be2a736643c067bb",
+        "source_fact:v1:e12be6c2963a9ab5d7ed712c348096e4f83f3f435661a632440f6ff677fb90e5"
+      ],
+      "source_published_kst": "2026-10-15T13:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "전자바우처 허위청구 2번 적발시 '퇴출'…과징금 '5배'",
+      "telegram_core_fact": "정부가 사회서비스 전자바우처 부정수급을 막고자 허위 청구로 2번 적발된 기관은 즉시 퇴출하고 과징금을 부정수급액의 최대 5배까지 부과하는 등 제재를 강화한다.",
+      "title": "전자바우처 허위청구 2번 적발시 '퇴출'…과징금 '5배'"
     },
     "source_fact:467d9d8883e268d7330bbc74": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
@@ -428356,6 +429139,27 @@
       "telegram_core_fact": "대신증권은 효성중공업의 3분기 매출을 1조9090억원, 영업이익을 3032억원으로 예상했다.",
       "title": "대신증권 \"효성중공업, 3분기 일시적 부진…업황 호조는 지속\""
     },
+    "source_fact:545651de3a87d0616ffdc5be": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.etnews.com/20261015000453",
+      "source": "전자신문",
+      "source_body_digest": "30844bf383cc3a7db97f7417cfbe33315371f001abe13f0e271c5950e1f51060",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ca49e8341e4226aec53c7be36bf589875986acd92f5e0e5f856a947ba713b0b",
+      "source_fact_keys": [
+        "source_fact:v1:c2ba6a557e47e32f9e536838c7d475a5650a415c549caec40a89fa4beed41d9a",
+        "source_fact:v1:ec45ef99f60158b19a5205fda5f66cae8f734ebdf36ff30d3f3d6bd552e62142"
+      ],
+      "source_published_kst": "2026-10-15T19:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "IPO 앞둔 앤트로픽, 3분기 매출 45% 증가…2분기 연속 흑자",
+      "telegram_core_fact": "기업공개(IPO)를 준비 중인 앤트로픽이 가파른 매출 성장에 이어 2개 분기 연속 흑자를 기록하며 수익성 개선 성과도 거뒀다.",
+      "title": "IPO 앞둔 앤트로픽, 3분기 매출 45% 증가…2분기 연속 흑자"
+    },
     "source_fact:54622ec9c67cb8be25080ad9": {
       "first_seen_kst": "2026-10-08T03:51:03+09:00",
       "lanes": {
@@ -437680,6 +438484,29 @@
       "source_title": "휴이노·유한양행 \"울산 동강병원에 메모큐 공급\"",
       "telegram_core_fact": "휴이노와 유한양행은 의료법인 동강의료재단 동강병원 심장내과에 실시간 환자 모니터링 솔루션 ‘메모큐(MEMO CUE)’를 공급했다고 13일 밝혔다.",
       "title": "휴이노·유한양행 \"울산 동강병원에 메모큐 공급\""
+    },
+    "source_fact:5adf24d8c5d5240df6acb6f5": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.news1.kr/world/general-world/6320873",
+      "source": "뉴스1",
+      "source_body_digest": "891fa1202209a435264101d2d2d922d0a2299b1cf2a5ab53d8ba3b0af3da94fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:08add69b74de63c84a5f504d589c5d2803ab432911e2a10a28000b76a4fcb1d9",
+      "source_fact_keys": [
+        "source_fact:v1:43bcbfc5cf8951cf0ce9d4fd045ec9aa4338d85662f2f74274d4a7067e88a198",
+        "source_fact:v1:5f3ddbd701fc8fc36bbd04701d6c67d358200c7f07c9c583f7e5ca3dfe385a0c",
+        "source_fact:v1:8fb503de64271945bf2c807dfe3791829a7b2e3d7c691a4087c73ea750b8cbd5",
+        "source_fact:v1:e438f3ed231c74a953443170f0515a41823461b666443a66454280923340df40"
+      ],
+      "source_published_kst": "2026-10-15T11:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "노벨평화상 필라이 \"트럼프의 ICC 제재는 불법…국제법 공부나 하라\"",
+      "telegram_core_fact": "노르웨이 노벨위원회는 지난 9일 필라이를 올해 노벨평화상 수상자로 선정했는데, 필라이는 그 몇시간 후 미국의 ICC 제재가 발표된 것은 우연이 아니라며 이는 \"트럼프 대통령이 상을 받지 못한 데 대한 반응\"이라고 말했다.",
+      "title": "노벨평화상 필라이 \"트럼프의 ICC 제재는 불법…국제법 공부나 하라\""
     },
     "source_fact:5ae1c7a128cc0e6b78dfa626": {
       "first_seen_kst": "2026-10-13T04:37:27+09:00",
@@ -456399,6 +457226,30 @@
       "source_published_kst": "2026-10-07T11:31+09:00",
       "title": "역외IB, 국내 인가 없인 한국물 영업 제한…당국 의견수렴 | 연합뉴스"
     },
+    "source_fact:692d6a487dea7228f244d331": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003826681",
+      "source": "뉴시스",
+      "source_body_digest": "061610782023d8bf77d953b0a9c3cba5fe7e628c9d2518107f21f55edd4f10b7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:456861202790e5ab2b7e47fcbcc04217200bced386710d3261b6b3d46f0d8853",
+      "source_fact_keys": [
+        "source_fact:v1:42d06192a47b0bc0c7ff37f5aff1f7fdf012e87e2ee6dc4a40b4d8c1663be326",
+        "source_fact:v1:61b3a785af6e78c891f69a891be35c972d7027eb31a9ecd574face845bed5ce2",
+        "source_fact:v1:96c87cc1be39e412ee0c27df90deaad3053120349dd7c3d8da65f2c0b439b8bc",
+        "source_fact:v1:ddf9cdf546ee9004ec7a84aabdad833fddc5948cddc653f5be2a736643c067bb",
+        "source_fact:v1:e12be6c2963a9ab5d7ed712c348096e4f83f3f435661a632440f6ff677fb90e5"
+      ],
+      "source_published_kst": "2026-10-15T13:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "전자바우처 허위청구 2번 적발시 '퇴출'…과징금 '5배'",
+      "telegram_core_fact": "정부가 사회서비스 전자바우처 부정수급을 막고자 허위 청구로 2번 적발된 기관은 즉시 퇴출하고 과징금을 부정수급액의 최대 5배까지 부과하는 등 제재를 강화한다.",
+      "title": "전자바우처 허위청구 2번 적발시 '퇴출'…과징금 '5배'"
+    },
     "source_fact:692f726401ba92f955980a8d": {
       "first_seen_kst": "2026-10-12T06:42:49+09:00",
       "lanes": {
@@ -459903,6 +460754,33 @@
       "source_title": "트럼프의 '노벨평화상 뒤끝'…美, ICC 제재로 불만 표출",
       "telegram_core_fact": "올해 노벨평화상이 국제법 수호에 평생을 바친 인물에게 돌아간 가운데 ‘힘에 의한 평화’를 앞세운 도널드 트럼프 미 행정부는 국제형사재판소(ICC)에 대한 고강도 제재를 발표했다.",
       "title": "트럼프의 '노벨평화상 뒤끝'…美, ICC 제재로 불만 표출"
+    },
+    "source_fact:6bb10f1afd9dc57d1702998d": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003826925",
+      "source": "뉴시스",
+      "source_body_digest": "fdf7001f958cd3449831051fe5bcc992906a84aa4ae19e1d25f23e5de83a9d63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c61faf2a70da85fd97d3767a59628e79aad762eae3f899db7146a1eb4410c5b0",
+      "source_fact_keys": [
+        "source_fact:v1:7dfa4dbce1e8194097d046a17d81c5708476aaf9e2dcb42fa083256924ab266b",
+        "source_fact:v1:885595c258c1fff7ebf9c3bf6d58e0f6f58bdcffa9652cc909c1a78eb0880ad5",
+        "source_fact:v1:b41ece660a5c143b2321f429558fc012e424da88fefc3f8b7cd054b8e7c80e75",
+        "source_fact:v1:b60e85ac7f331a03cd63c02d4fe8aaee4f4441be8a57978e892a6c701f675a95",
+        "source_fact:v1:c29b922ddc156d394f886cc7c1a50ff093ec8b7b3a01c65614e0100ebb4e312b",
+        "source_fact:v1:c88a152d0537d2ca5130bd392fce40f38781942b811e7de1886b44a8aac9b36c",
+        "source_fact:v1:cd6f843d6e4dd676b0aa48e2407173a05ab62954e68fe659541becda9a888c3b",
+        "source_fact:v1:d273af45b4f0f2ff03725c4751a53e71ebfad18d2622c949e54c7810d9ad42ab"
+      ],
+      "source_published_kst": "2026-10-15T12:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "EU 정상, 15~16일 브뤼셀 집결…에너지·中무역·우크라 지원 난제 '산적'",
+      "telegram_core_fact": "EU는 지난 8~9일 중국과 고위급 통상회담(2차 EU-중국 무역·투자 협의)에서 중국산 저가 하이브리드 자동차의 유럽 수출 제한 등에 대한 예비적 양보를 얻어냈다.",
+      "title": "EU 정상, 15~16일 브뤼셀 집결…에너지·中무역·우크라 지원 난제 '산적'"
     },
     "source_fact:6bb2678f9a8a054b86213f1d": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
@@ -471651,6 +472529,33 @@
       ],
       "source_published_kst": "2026-10-06T07:35+09:00",
       "title": "다올투자證 \"아모레퍼시픽, 마케팅비 선집행에 3분기 주춤…미주·국내 성장 지속\""
+    },
+    "source_fact:74c050b177b25192e55dedf5": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003826925",
+      "source": "뉴시스",
+      "source_body_digest": "fdf7001f958cd3449831051fe5bcc992906a84aa4ae19e1d25f23e5de83a9d63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c61faf2a70da85fd97d3767a59628e79aad762eae3f899db7146a1eb4410c5b0",
+      "source_fact_keys": [
+        "source_fact:v1:7dfa4dbce1e8194097d046a17d81c5708476aaf9e2dcb42fa083256924ab266b",
+        "source_fact:v1:885595c258c1fff7ebf9c3bf6d58e0f6f58bdcffa9652cc909c1a78eb0880ad5",
+        "source_fact:v1:b41ece660a5c143b2321f429558fc012e424da88fefc3f8b7cd054b8e7c80e75",
+        "source_fact:v1:b60e85ac7f331a03cd63c02d4fe8aaee4f4441be8a57978e892a6c701f675a95",
+        "source_fact:v1:c29b922ddc156d394f886cc7c1a50ff093ec8b7b3a01c65614e0100ebb4e312b",
+        "source_fact:v1:c88a152d0537d2ca5130bd392fce40f38781942b811e7de1886b44a8aac9b36c",
+        "source_fact:v1:cd6f843d6e4dd676b0aa48e2407173a05ab62954e68fe659541becda9a888c3b",
+        "source_fact:v1:d273af45b4f0f2ff03725c4751a53e71ebfad18d2622c949e54c7810d9ad42ab"
+      ],
+      "source_published_kst": "2026-10-15T12:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "EU 정상, 15~16일 브뤼셀 집결…에너지·中무역·우크라 지원 난제 '산적'",
+      "telegram_core_fact": "EU는 지난 8~9일 중국과 고위급 통상회담(2차 EU-중국 무역·투자 협의)에서 중국산 저가 하이브리드 자동차의 유럽 수출 제한 등에 대한 예비적 양보를 얻어냈다.",
+      "title": "EU 정상, 15~16일 브뤼셀 집결…에너지·中무역·우크라 지원 난제 '산적'"
     },
     "source_fact:74d0aa9e1c4e08febc140b49": {
       "first_seen_kst": "2026-10-11T12:11:12+09:00",
@@ -508781,6 +509686,33 @@
       "source_published_kst": "2026-10-06T17:46+09:00",
       "title": "메모리 반도체 호황 속 삼성전자 완제품은 '고전'…DX부문 3분기 실적 어떻게"
     },
+    "source_fact:91258a63a540c67b6f2f4812": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003826925",
+      "source": "뉴시스",
+      "source_body_digest": "fdf7001f958cd3449831051fe5bcc992906a84aa4ae19e1d25f23e5de83a9d63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c61faf2a70da85fd97d3767a59628e79aad762eae3f899db7146a1eb4410c5b0",
+      "source_fact_keys": [
+        "source_fact:v1:7dfa4dbce1e8194097d046a17d81c5708476aaf9e2dcb42fa083256924ab266b",
+        "source_fact:v1:885595c258c1fff7ebf9c3bf6d58e0f6f58bdcffa9652cc909c1a78eb0880ad5",
+        "source_fact:v1:b41ece660a5c143b2321f429558fc012e424da88fefc3f8b7cd054b8e7c80e75",
+        "source_fact:v1:b60e85ac7f331a03cd63c02d4fe8aaee4f4441be8a57978e892a6c701f675a95",
+        "source_fact:v1:c29b922ddc156d394f886cc7c1a50ff093ec8b7b3a01c65614e0100ebb4e312b",
+        "source_fact:v1:c88a152d0537d2ca5130bd392fce40f38781942b811e7de1886b44a8aac9b36c",
+        "source_fact:v1:cd6f843d6e4dd676b0aa48e2407173a05ab62954e68fe659541becda9a888c3b",
+        "source_fact:v1:d273af45b4f0f2ff03725c4751a53e71ebfad18d2622c949e54c7810d9ad42ab"
+      ],
+      "source_published_kst": "2026-10-15T12:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "EU 정상, 15~16일 브뤼셀 집결…에너지·中무역·우크라 지원 난제 '산적'",
+      "telegram_core_fact": "EU는 지난 8~9일 중국과 고위급 통상회담(2차 EU-중국 무역·투자 협의)에서 중국산 저가 하이브리드 자동차의 유럽 수출 제한 등에 대한 예비적 양보를 얻어냈다.",
+      "title": "EU 정상, 15~16일 브뤼셀 집결…에너지·中무역·우크라 지원 난제 '산적'"
+    },
     "source_fact:91295dde00520f94f59b64bc": {
       "first_seen_kst": "2026-10-13T01:09:54+09:00",
       "lanes": {
@@ -524633,6 +525565,33 @@
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "\"일주일새 12% 올랐다\"…전고체 ETF 뛰는데 뭉칫돈 향한 곳은"
     },
+    "source_fact:9d160ccd7516afcf9a08d9b3": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003826925",
+      "source": "뉴시스",
+      "source_body_digest": "fdf7001f958cd3449831051fe5bcc992906a84aa4ae19e1d25f23e5de83a9d63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c61faf2a70da85fd97d3767a59628e79aad762eae3f899db7146a1eb4410c5b0",
+      "source_fact_keys": [
+        "source_fact:v1:7dfa4dbce1e8194097d046a17d81c5708476aaf9e2dcb42fa083256924ab266b",
+        "source_fact:v1:885595c258c1fff7ebf9c3bf6d58e0f6f58bdcffa9652cc909c1a78eb0880ad5",
+        "source_fact:v1:b41ece660a5c143b2321f429558fc012e424da88fefc3f8b7cd054b8e7c80e75",
+        "source_fact:v1:b60e85ac7f331a03cd63c02d4fe8aaee4f4441be8a57978e892a6c701f675a95",
+        "source_fact:v1:c29b922ddc156d394f886cc7c1a50ff093ec8b7b3a01c65614e0100ebb4e312b",
+        "source_fact:v1:c88a152d0537d2ca5130bd392fce40f38781942b811e7de1886b44a8aac9b36c",
+        "source_fact:v1:cd6f843d6e4dd676b0aa48e2407173a05ab62954e68fe659541becda9a888c3b",
+        "source_fact:v1:d273af45b4f0f2ff03725c4751a53e71ebfad18d2622c949e54c7810d9ad42ab"
+      ],
+      "source_published_kst": "2026-10-15T12:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "EU 정상, 15~16일 브뤼셀 집결…에너지·中무역·우크라 지원 난제 '산적'",
+      "telegram_core_fact": "EU는 지난 8~9일 중국과 고위급 통상회담(2차 EU-중국 무역·투자 협의)에서 중국산 저가 하이브리드 자동차의 유럽 수출 제한 등에 대한 예비적 양보를 얻어냈다.",
+      "title": "EU 정상, 15~16일 브뤼셀 집결…에너지·中무역·우크라 지원 난제 '산적'"
+    },
     "source_fact:9d1a1edfdb46bee2cff53743": {
       "first_seen_kst": "2026-10-07T22:13:12+09:00",
       "lanes": {
@@ -532085,6 +533044,30 @@
       "source_published_kst": "2026-10-06T08:10+09:00",
       "title": "현대차證 \"동국제강, 견조한 실적…목표가 1만3800원↑\""
     },
+    "source_fact:a2a0bb3cf957d1f180da3607": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003826681",
+      "source": "뉴시스",
+      "source_body_digest": "061610782023d8bf77d953b0a9c3cba5fe7e628c9d2518107f21f55edd4f10b7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:456861202790e5ab2b7e47fcbcc04217200bced386710d3261b6b3d46f0d8853",
+      "source_fact_keys": [
+        "source_fact:v1:42d06192a47b0bc0c7ff37f5aff1f7fdf012e87e2ee6dc4a40b4d8c1663be326",
+        "source_fact:v1:61b3a785af6e78c891f69a891be35c972d7027eb31a9ecd574face845bed5ce2",
+        "source_fact:v1:96c87cc1be39e412ee0c27df90deaad3053120349dd7c3d8da65f2c0b439b8bc",
+        "source_fact:v1:ddf9cdf546ee9004ec7a84aabdad833fddc5948cddc653f5be2a736643c067bb",
+        "source_fact:v1:e12be6c2963a9ab5d7ed712c348096e4f83f3f435661a632440f6ff677fb90e5"
+      ],
+      "source_published_kst": "2026-10-15T13:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "전자바우처 허위청구 2번 적발시 '퇴출'…과징금 '5배'",
+      "telegram_core_fact": "정부가 사회서비스 전자바우처 부정수급을 막고자 허위 청구로 2번 적발된 기관은 즉시 퇴출하고 과징금을 부정수급액의 최대 5배까지 부과하는 등 제재를 강화한다.",
+      "title": "전자바우처 허위청구 2번 적발시 '퇴출'…과징금 '5배'"
+    },
     "source_fact:a2a3cc61d50d5c715188074f": {
       "first_seen_kst": "2026-10-10T07:01:20+09:00",
       "lanes": {
@@ -539032,6 +540015,29 @@
       "telegram_core_fact": "미국이 우크라이나에 러시아 정유시설 공격을 중단하지 않으면 미국산 무기의 공급 통로를 차단하겠다고 위협했다고 영국 파이낸셜타임스(FT)가 11일(현지시간) 보도했다.",
       "title": "\"美, 러 정유시설 공격 멈추라며 우크라에 무기공급 차단 위협\" | 연합뉴스"
     },
+    "source_fact:a79413cce432efcd1148adb5": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175341",
+      "source": "매일경제",
+      "source_body_digest": "d90043784fbbb593d15038fde09650bec756740efa8e0c255da9a82abebecbd2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2b65b4e5c4aceb2ac0eaf4df8c50a3ef76cf4e90868a2942ef93fec61049ecfe",
+      "source_fact_keys": [
+        "source_fact:v1:23afccbf0b0e1d0f5aa99f3d71477d21a742bbb497b66c88aec730fd6be7a7e7",
+        "source_fact:v1:3c10d896d522a698231a23db7e3c460c72420b0441b50231a50b22755586cb5f",
+        "source_fact:v1:9ee8991dc7b673d4012652b45d481e916cab96039c7158674b7ce9c922802775",
+        "source_fact:v1:cf98b11457382b7ef98682976ae26192f41d9d7d736b72cc7b2dcc52f294f11b"
+      ],
+      "source_published_kst": "2026-10-15T19:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "PNC 파이낸셜 서비스, 3분기 희석 EPS 4.97달러..전년비 14% 증가",
+      "telegram_core_fact": "PNC 파이낸셜 서비스(PNC)는 3분기 순이익이 20억9700만 달러로 전년비 15.1% 증가했고, 일반회계기준(GAAP) 희석 주당순이익(EPS)은 4.97달러로 전년 동기(4.35달러)보다 14.3% 늘었다고 10월 15일 발표했다.",
+      "title": "PNC 파이낸셜 서비스, 3분기 희석 EPS 4.97달러..전년비 14% 증가"
+    },
     "source_fact:a7a791cbe85c0b8cfceed9d2": {
       "first_seen_kst": "2026-10-09T21:27:46+09:00",
       "lanes": {
@@ -543349,6 +544355,27 @@
       "source_title": "삼전닉스 성과급이 불붙였나…마이크론 대만노조 파업 찬성 99%",
       "telegram_core_fact": "대만은 마이크론의 주요 D램 및 고대역폭메모리(HBM) 생산거점인 만큼 실제 파업이 발생할 경우 생산 운영에 영향을 미칠 가능성이 있어 향후 협상 결과에 업계의 관심이 쏠린다.",
       "title": "삼전닉스 성과급이 불붙였나…마이크론 대만노조 파업 찬성 99%"
+    },
+    "source_fact:ab1594df363b55d5f37ff4b8": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.etnews.com/20261015000453",
+      "source": "전자신문",
+      "source_body_digest": "30844bf383cc3a7db97f7417cfbe33315371f001abe13f0e271c5950e1f51060",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ca49e8341e4226aec53c7be36bf589875986acd92f5e0e5f856a947ba713b0b",
+      "source_fact_keys": [
+        "source_fact:v1:c2ba6a557e47e32f9e536838c7d475a5650a415c549caec40a89fa4beed41d9a",
+        "source_fact:v1:ec45ef99f60158b19a5205fda5f66cae8f734ebdf36ff30d3f3d6bd552e62142"
+      ],
+      "source_published_kst": "2026-10-15T19:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "IPO 앞둔 앤트로픽, 3분기 매출 45% 증가…2분기 연속 흑자",
+      "telegram_core_fact": "기업공개(IPO)를 준비 중인 앤트로픽이 가파른 매출 성장에 이어 2개 분기 연속 흑자를 기록하며 수익성 개선 성과도 거뒀다.",
+      "title": "IPO 앞둔 앤트로픽, 3분기 매출 45% 증가…2분기 연속 흑자"
     },
     "source_fact:ab26e427af24fa14ba9967e9": {
       "first_seen_kst": "2026-10-06T22:21:21+09:00",
@@ -552411,6 +553438,33 @@
       "telegram_core_fact": "3분기 핵심 사업 매출이 약 810만 달러로 전년 대비 26% 증가하며 두 자릿수 성장세를 되찾았습니다.",
       "title": "맥스사이트, 3분기 핵심매출 26% 증가에 연간 가이던스 상향 소식에 주목"
     },
+    "source_fact:b1806a86ad2699742dbe5496": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003826925",
+      "source": "뉴시스",
+      "source_body_digest": "fdf7001f958cd3449831051fe5bcc992906a84aa4ae19e1d25f23e5de83a9d63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c61faf2a70da85fd97d3767a59628e79aad762eae3f899db7146a1eb4410c5b0",
+      "source_fact_keys": [
+        "source_fact:v1:7dfa4dbce1e8194097d046a17d81c5708476aaf9e2dcb42fa083256924ab266b",
+        "source_fact:v1:885595c258c1fff7ebf9c3bf6d58e0f6f58bdcffa9652cc909c1a78eb0880ad5",
+        "source_fact:v1:b41ece660a5c143b2321f429558fc012e424da88fefc3f8b7cd054b8e7c80e75",
+        "source_fact:v1:b60e85ac7f331a03cd63c02d4fe8aaee4f4441be8a57978e892a6c701f675a95",
+        "source_fact:v1:c29b922ddc156d394f886cc7c1a50ff093ec8b7b3a01c65614e0100ebb4e312b",
+        "source_fact:v1:c88a152d0537d2ca5130bd392fce40f38781942b811e7de1886b44a8aac9b36c",
+        "source_fact:v1:cd6f843d6e4dd676b0aa48e2407173a05ab62954e68fe659541becda9a888c3b",
+        "source_fact:v1:d273af45b4f0f2ff03725c4751a53e71ebfad18d2622c949e54c7810d9ad42ab"
+      ],
+      "source_published_kst": "2026-10-15T12:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "EU 정상, 15~16일 브뤼셀 집결…에너지·中무역·우크라 지원 난제 '산적'",
+      "telegram_core_fact": "EU는 지난 8~9일 중국과 고위급 통상회담(2차 EU-중국 무역·투자 협의)에서 중국산 저가 하이브리드 자동차의 유럽 수출 제한 등에 대한 예비적 양보를 얻어냈다.",
+      "title": "EU 정상, 15~16일 브뤼셀 집결…에너지·中무역·우크라 지원 난제 '산적'"
+    },
     "source_fact:b183126d45776d1cbc425bd2": {
       "first_seen_kst": "2026-10-08T01:09:29+09:00",
       "lanes": {
@@ -560505,6 +561559,29 @@
       "telegram_core_fact": "금융당국이 주택공급 확대를 위해 주거용 부동산 프로젝트파이낸싱(PF) 자기자본비율 규제 시행을 2년 유예하기로 했다. 하지만 정작 자금 조달의 최전선에 있는 저축은행 등 제2금융권은 토지담보대출(토담대) 연체율이 32%를 넘어서는 등 부실 위험이 여전해 규제 유예 효과가 반감될 수 있단 우려가 나온다.",
       "title": "주거 PF 규제 2년 늦췄지만…연체율 늪에 발 묶인 2금융"
     },
+    "source_fact:b7e5792c103a64465537552d": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.news1.kr/world/general-world/6320873",
+      "source": "뉴스1",
+      "source_body_digest": "891fa1202209a435264101d2d2d922d0a2299b1cf2a5ab53d8ba3b0af3da94fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:08add69b74de63c84a5f504d589c5d2803ab432911e2a10a28000b76a4fcb1d9",
+      "source_fact_keys": [
+        "source_fact:v1:43bcbfc5cf8951cf0ce9d4fd045ec9aa4338d85662f2f74274d4a7067e88a198",
+        "source_fact:v1:5f3ddbd701fc8fc36bbd04701d6c67d358200c7f07c9c583f7e5ca3dfe385a0c",
+        "source_fact:v1:8fb503de64271945bf2c807dfe3791829a7b2e3d7c691a4087c73ea750b8cbd5",
+        "source_fact:v1:e438f3ed231c74a953443170f0515a41823461b666443a66454280923340df40"
+      ],
+      "source_published_kst": "2026-10-15T11:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "노벨평화상 필라이 \"트럼프의 ICC 제재는 불법…국제법 공부나 하라\"",
+      "telegram_core_fact": "노르웨이 노벨위원회는 지난 9일 필라이를 올해 노벨평화상 수상자로 선정했는데, 필라이는 그 몇시간 후 미국의 ICC 제재가 발표된 것은 우연이 아니라며 이는 \"트럼프 대통령이 상을 받지 못한 데 대한 반응\"이라고 말했다.",
+      "title": "노벨평화상 필라이 \"트럼프의 ICC 제재는 불법…국제법 공부나 하라\""
+    },
     "source_fact:b7e7535421b2823b1b8b5505": {
       "first_seen_kst": "2026-10-14T07:18:46+09:00",
       "lanes": {
@@ -565377,6 +566454,33 @@
       "source_title": "美, 우크라 전방위 압박…\"무기도 안 준다\" 위협",
       "telegram_core_fact": "도널드 트럼프 미국 행정부가 우크라이나에 러시아 에너지 시설 공격을 중단하도록 압박하기 위해 무기 공급 중단을 위협했다고 파이낸셜타임스(FT)가 11일(현지 시간) 보도했다. 미국의 메시지에는 정보 공유 중단, '우크라이나 우선요구목록(PURL)'을 중단할 수 있다는 위협이 포함된 것으로 전해졌다.",
       "title": "美, 우크라 전방위 압박…\"무기도 안 준다\" 위협"
+    },
+    "source_fact:bbba0878e550dc3f594724a4": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003826925",
+      "source": "뉴시스",
+      "source_body_digest": "fdf7001f958cd3449831051fe5bcc992906a84aa4ae19e1d25f23e5de83a9d63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c61faf2a70da85fd97d3767a59628e79aad762eae3f899db7146a1eb4410c5b0",
+      "source_fact_keys": [
+        "source_fact:v1:7dfa4dbce1e8194097d046a17d81c5708476aaf9e2dcb42fa083256924ab266b",
+        "source_fact:v1:885595c258c1fff7ebf9c3bf6d58e0f6f58bdcffa9652cc909c1a78eb0880ad5",
+        "source_fact:v1:b41ece660a5c143b2321f429558fc012e424da88fefc3f8b7cd054b8e7c80e75",
+        "source_fact:v1:b60e85ac7f331a03cd63c02d4fe8aaee4f4441be8a57978e892a6c701f675a95",
+        "source_fact:v1:c29b922ddc156d394f886cc7c1a50ff093ec8b7b3a01c65614e0100ebb4e312b",
+        "source_fact:v1:c88a152d0537d2ca5130bd392fce40f38781942b811e7de1886b44a8aac9b36c",
+        "source_fact:v1:cd6f843d6e4dd676b0aa48e2407173a05ab62954e68fe659541becda9a888c3b",
+        "source_fact:v1:d273af45b4f0f2ff03725c4751a53e71ebfad18d2622c949e54c7810d9ad42ab"
+      ],
+      "source_published_kst": "2026-10-15T12:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "EU 정상, 15~16일 브뤼셀 집결…에너지·中무역·우크라 지원 난제 '산적'",
+      "telegram_core_fact": "EU는 지난 8~9일 중국과 고위급 통상회담(2차 EU-중국 무역·투자 협의)에서 중국산 저가 하이브리드 자동차의 유럽 수출 제한 등에 대한 예비적 양보를 얻어냈다.",
+      "title": "EU 정상, 15~16일 브뤼셀 집결…에너지·中무역·우크라 지원 난제 '산적'"
     },
     "source_fact:bbbe760e3ead6ee13a01b5ad": {
       "first_seen_kst": "2026-10-08T00:24:24+09:00",
@@ -572894,6 +573998,29 @@
       "source_title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대",
       "telegram_core_fact": "올 3분기 누적 바이오의약품 수출 규모가 수출이 가장 많았던 지난해 3분기까지 수출액보다 15.8% 증가한 66억 달러(약 8조 8261억원)로 잠정집계됐다.",
       "title": "바이오의약품, 3분기 누적수출 66억달러…역대 최대"
+    },
+    "source_fact:c15b2294a2d884741cedbf15": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175341",
+      "source": "매일경제",
+      "source_body_digest": "d90043784fbbb593d15038fde09650bec756740efa8e0c255da9a82abebecbd2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2b65b4e5c4aceb2ac0eaf4df8c50a3ef76cf4e90868a2942ef93fec61049ecfe",
+      "source_fact_keys": [
+        "source_fact:v1:23afccbf0b0e1d0f5aa99f3d71477d21a742bbb497b66c88aec730fd6be7a7e7",
+        "source_fact:v1:3c10d896d522a698231a23db7e3c460c72420b0441b50231a50b22755586cb5f",
+        "source_fact:v1:9ee8991dc7b673d4012652b45d481e916cab96039c7158674b7ce9c922802775",
+        "source_fact:v1:cf98b11457382b7ef98682976ae26192f41d9d7d736b72cc7b2dcc52f294f11b"
+      ],
+      "source_published_kst": "2026-10-15T19:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "PNC 파이낸셜 서비스, 3분기 희석 EPS 4.97달러..전년비 14% 증가",
+      "telegram_core_fact": "PNC 파이낸셜 서비스(PNC)는 3분기 순이익이 20억9700만 달러로 전년비 15.1% 증가했고, 일반회계기준(GAAP) 희석 주당순이익(EPS)은 4.97달러로 전년 동기(4.35달러)보다 14.3% 늘었다고 10월 15일 발표했다.",
+      "title": "PNC 파이낸셜 서비스, 3분기 희석 EPS 4.97달러..전년비 14% 증가"
     },
     "source_fact:c15f4ef57dc4801f4c6ead15": {
       "first_seen_kst": "2026-10-13T09:41:33+09:00",
@@ -581088,6 +582215,26 @@
       ],
       "source_published_kst": "2026-10-07T11:52+09:00",
       "title": "美안두릴, 66억불 첨단 잠수함 조선소 계획…트럼프 \"2차대전 이후 최대\""
+    },
+    "source_fact:c735c55dd08a50f59d5c2464": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261015083800017",
+      "source": "연합뉴스",
+      "source_body_digest": "6943d8d798e869b68a66e6acbf0fe8660a924b1525c8cb96c459f455d330e350",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bffd1697b4df2c2470920eaf2a9381fc8777ee4b82b9e411af76a5daa5e2d85f",
+      "source_fact_keys": [
+        "source_fact:v1:c4a09e23107ff2922c89c21a50e409f0e2d5db7afe3a5f9941139ee46f062ed9"
+      ],
+      "source_published_kst": "2026-10-15T12:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "KIST, 건물 외벽따라 자유롭게 형태 바꾸는 3차원 태양광 개발 | 연합뉴스",
+      "telegram_core_fact": "건물 외벽 모양에 따라 자유롭게 형태를 바꾸는 3차원 태양광 시스템이 개발됐다. 한국과학기술연구원(KIST)은 차세대태양전지연구센터 이필립 센터장 연구팀이 구조 움직임과 전기 연결을 함께 설계해 자유롭게 형태를 바꾸면서도 안정적으로 전기를 생산하는 3차원 태양광 메타구조체를 개발했다고 15일 밝혔다.",
+      "title": "KIST, 건물 외벽따라 자유롭게 형태 바꾸는 3차원 태양광 개발 | 연합뉴스"
     },
     "source_fact:c73cc0e5139bd90ce998d9d1": {
       "first_seen_kst": "2026-10-12T06:27:02+09:00",
@@ -592707,6 +593854,29 @@
       "telegram_core_fact": "김대현 국립원예특작과학원장은 \"준고랭지 여름철 배추 재배 적지를 확대하고 신품종·신기술을 확산해 여름철 배추의 안정적인 생산·공급 기반을 더 강화해 나가겠다\"고 말했다. 농촌진흥청은 여름철 배추 수급 불안에 대응하기 위해 '준고랭지 여름철 배추 안정 생산 체계 구축 사업'을 한다고 8일 밝혔다.",
       "title": "'이상기후 대응' 농진청, 여름철 배추 재배 적지 확대 등 지원 | 연합뉴스"
     },
+    "source_fact:d00f9ea4075aebc956e84e25": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.news1.kr/world/general-world/6320873",
+      "source": "뉴스1",
+      "source_body_digest": "891fa1202209a435264101d2d2d922d0a2299b1cf2a5ab53d8ba3b0af3da94fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:08add69b74de63c84a5f504d589c5d2803ab432911e2a10a28000b76a4fcb1d9",
+      "source_fact_keys": [
+        "source_fact:v1:43bcbfc5cf8951cf0ce9d4fd045ec9aa4338d85662f2f74274d4a7067e88a198",
+        "source_fact:v1:5f3ddbd701fc8fc36bbd04701d6c67d358200c7f07c9c583f7e5ca3dfe385a0c",
+        "source_fact:v1:8fb503de64271945bf2c807dfe3791829a7b2e3d7c691a4087c73ea750b8cbd5",
+        "source_fact:v1:e438f3ed231c74a953443170f0515a41823461b666443a66454280923340df40"
+      ],
+      "source_published_kst": "2026-10-15T11:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "노벨평화상 필라이 \"트럼프의 ICC 제재는 불법…국제법 공부나 하라\"",
+      "telegram_core_fact": "노르웨이 노벨위원회는 지난 9일 필라이를 올해 노벨평화상 수상자로 선정했는데, 필라이는 그 몇시간 후 미국의 ICC 제재가 발표된 것은 우연이 아니라며 이는 \"트럼프 대통령이 상을 받지 못한 데 대한 반응\"이라고 말했다.",
+      "title": "노벨평화상 필라이 \"트럼프의 ICC 제재는 불법…국제법 공부나 하라\""
+    },
     "source_fact:d0106e55665f4f5497616ea6": {
       "first_seen_kst": "2026-10-08T03:13:06+09:00",
       "lanes": {
@@ -593693,6 +594863,27 @@
       "source_title": "머스크 \"마이크론 빼고 메모리 가격 지나쳐\"…삼전닉스 겨냥? [IT썰]",
       "telegram_core_fact": "JP모건은 메모리 공급 부족률이 2026년 약 20%, 2027년 19%, 2028년에도 15%에 달할 것으로 전망했다.",
       "title": "머스크 \"마이크론 빼고 메모리 가격 지나쳐\"…삼전닉스 겨냥? [IT썰]"
+    },
+    "source_fact:d0cd55454d7a0880e38a1dcd": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003827261",
+      "source": "뉴시스",
+      "source_body_digest": "4aa8d2bd0dd13e580a66a11bd68a1bca1a19d905673a26934124656f13fc2331",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b713d535b8edb5b597b6f29e99647f6a398a7f9570c61ab5d0e404fe0987a524",
+      "source_fact_keys": [
+        "source_fact:v1:891f6d41ec101ce41fdd92d076fdb6afb99696a1ad407dc9ac6119aa233b69d2",
+        "source_fact:v1:c2b5b2051de3da59c84fd7d33acddb658befb43e8a7de38273a6bf675b0fb69e"
+      ],
+      "source_published_kst": "2026-10-15T12:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "오세훈 \"뉴타운 해제 영향, 앞으로 몇 년 더 갈 것\"",
+      "telegram_core_fact": "오세훈 서울시장은 박원순 전 시장 때 뉴타운을 해제한 데 따른 아파트 공급 부족이 앞으로 몇 년간 더 영향을 줄 것이라고 내다봤다.",
+      "title": "오세훈 \"뉴타운 해제 영향, 앞으로 몇 년 더 갈 것\""
     },
     "source_fact:d0d5b004758895172349426b": {
       "first_seen_kst": "2026-10-06T21:28:22+09:00",
@@ -601640,6 +602831,29 @@
       "source_title": "국내 기름값 21주째 하락…휘발유·경유 1천800원대 지속",
       "telegram_core_fact": "한국석유공사 유가정보시스템 오피넷에 따르면 10월 첫째 주(10월 4일∼8일) 전국 주유소 휘발유 평균 판매가는 지난주보다 L당 0.4원 내린 1천857.6원이었다.",
       "title": "국내 기름값 21주째 하락…휘발유·경유 1천800원대 지속"
+    },
+    "source_fact:d6b0d08c3af1e87708b7c337": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175341",
+      "source": "매일경제",
+      "source_body_digest": "d90043784fbbb593d15038fde09650bec756740efa8e0c255da9a82abebecbd2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2b65b4e5c4aceb2ac0eaf4df8c50a3ef76cf4e90868a2942ef93fec61049ecfe",
+      "source_fact_keys": [
+        "source_fact:v1:23afccbf0b0e1d0f5aa99f3d71477d21a742bbb497b66c88aec730fd6be7a7e7",
+        "source_fact:v1:3c10d896d522a698231a23db7e3c460c72420b0441b50231a50b22755586cb5f",
+        "source_fact:v1:9ee8991dc7b673d4012652b45d481e916cab96039c7158674b7ce9c922802775",
+        "source_fact:v1:cf98b11457382b7ef98682976ae26192f41d9d7d736b72cc7b2dcc52f294f11b"
+      ],
+      "source_published_kst": "2026-10-15T19:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "PNC 파이낸셜 서비스, 3분기 희석 EPS 4.97달러..전년비 14% 증가",
+      "telegram_core_fact": "PNC 파이낸셜 서비스(PNC)는 3분기 순이익이 20억9700만 달러로 전년비 15.1% 증가했고, 일반회계기준(GAAP) 희석 주당순이익(EPS)은 4.97달러로 전년 동기(4.35달러)보다 14.3% 늘었다고 10월 15일 발표했다.",
+      "title": "PNC 파이낸셜 서비스, 3분기 희석 EPS 4.97달러..전년비 14% 증가"
     },
     "source_fact:d6b203a17cec07b5f62a6a77": {
       "first_seen_kst": "2026-10-08T22:06:55+09:00",
@@ -623122,6 +624336,27 @@
       "telegram_core_fact": "금융업계와 보안업계에 따르면 최근 신한·KB국민·하나·BNK부산은행 등 주요 은행에서 해킹 공격으로 인한 이용자 정보 유출 피해가 잇따라 확인됐다.",
       "title": "금융권 훑고 다닌 'AI 해킹'…\"더 큰 피해 올 수도\"[K금융의 보안 민낯④]"
     },
+    "source_fact:e667314947b76954d820c0da": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003827261",
+      "source": "뉴시스",
+      "source_body_digest": "4aa8d2bd0dd13e580a66a11bd68a1bca1a19d905673a26934124656f13fc2331",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b713d535b8edb5b597b6f29e99647f6a398a7f9570c61ab5d0e404fe0987a524",
+      "source_fact_keys": [
+        "source_fact:v1:891f6d41ec101ce41fdd92d076fdb6afb99696a1ad407dc9ac6119aa233b69d2",
+        "source_fact:v1:c2b5b2051de3da59c84fd7d33acddb658befb43e8a7de38273a6bf675b0fb69e"
+      ],
+      "source_published_kst": "2026-10-15T12:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "오세훈 \"뉴타운 해제 영향, 앞으로 몇 년 더 갈 것\"",
+      "telegram_core_fact": "오세훈 서울시장은 박원순 전 시장 때 뉴타운을 해제한 데 따른 아파트 공급 부족이 앞으로 몇 년간 더 영향을 줄 것이라고 내다봤다.",
+      "title": "오세훈 \"뉴타운 해제 영향, 앞으로 몇 년 더 갈 것\""
+    },
     "source_fact:e66a8464c3f069ebfcbe9c2d": {
       "first_seen_kst": "2026-10-15T06:12:33+09:00",
       "lanes": {
@@ -629740,6 +630975,29 @@
       "telegram_core_fact": "미국 국채 10년물 금리가 연 5%를 넘어서면서 주식투자자가 긴장하고 있지만, 증권가에선 오히려 장기 금리의 하락이 더 큰 악재가 될 수 있다는 분석이 잇달아 나왔다.",
       "title": "\"증시 덮칠 '진짜 공포' 따로 있다\"…증권가 '무서운 경고' [분석+]"
     },
+    "source_fact:eb366000359bbeb9986a8db2": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175341",
+      "source": "매일경제",
+      "source_body_digest": "d90043784fbbb593d15038fde09650bec756740efa8e0c255da9a82abebecbd2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2b65b4e5c4aceb2ac0eaf4df8c50a3ef76cf4e90868a2942ef93fec61049ecfe",
+      "source_fact_keys": [
+        "source_fact:v1:23afccbf0b0e1d0f5aa99f3d71477d21a742bbb497b66c88aec730fd6be7a7e7",
+        "source_fact:v1:3c10d896d522a698231a23db7e3c460c72420b0441b50231a50b22755586cb5f",
+        "source_fact:v1:9ee8991dc7b673d4012652b45d481e916cab96039c7158674b7ce9c922802775",
+        "source_fact:v1:cf98b11457382b7ef98682976ae26192f41d9d7d736b72cc7b2dcc52f294f11b"
+      ],
+      "source_published_kst": "2026-10-15T19:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "PNC 파이낸셜 서비스, 3분기 희석 EPS 4.97달러..전년비 14% 증가",
+      "telegram_core_fact": "PNC 파이낸셜 서비스(PNC)는 3분기 순이익이 20억9700만 달러로 전년비 15.1% 증가했고, 일반회계기준(GAAP) 희석 주당순이익(EPS)은 4.97달러로 전년 동기(4.35달러)보다 14.3% 늘었다고 10월 15일 발표했다.",
+      "title": "PNC 파이낸셜 서비스, 3분기 희석 EPS 4.97달러..전년비 14% 증가"
+    },
     "source_fact:eb39b85a95a1790446d405eb": {
       "first_seen_kst": "2026-10-08T00:39:44+09:00",
       "lanes": {
@@ -633440,6 +634698,33 @@
       "source_title": "日오므론, 美PC 업체 온로직 인수…피지컬 AI 구축 목표",
       "telegram_core_fact": "일본의 제어기기 업체 오므론이 미국 컴퓨터 제조업체 온로직을 내년 1월 6억7500만 달러(약 9050억 원) 규모에 인수한다고 13일 발표했다.",
       "title": "日오므론, 美PC 업체 온로직 인수…피지컬 AI 구축 목표"
+    },
+    "source_fact:ee23f840db24efda3cb9710e": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003826925",
+      "source": "뉴시스",
+      "source_body_digest": "fdf7001f958cd3449831051fe5bcc992906a84aa4ae19e1d25f23e5de83a9d63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c61faf2a70da85fd97d3767a59628e79aad762eae3f899db7146a1eb4410c5b0",
+      "source_fact_keys": [
+        "source_fact:v1:7dfa4dbce1e8194097d046a17d81c5708476aaf9e2dcb42fa083256924ab266b",
+        "source_fact:v1:885595c258c1fff7ebf9c3bf6d58e0f6f58bdcffa9652cc909c1a78eb0880ad5",
+        "source_fact:v1:b41ece660a5c143b2321f429558fc012e424da88fefc3f8b7cd054b8e7c80e75",
+        "source_fact:v1:b60e85ac7f331a03cd63c02d4fe8aaee4f4441be8a57978e892a6c701f675a95",
+        "source_fact:v1:c29b922ddc156d394f886cc7c1a50ff093ec8b7b3a01c65614e0100ebb4e312b",
+        "source_fact:v1:c88a152d0537d2ca5130bd392fce40f38781942b811e7de1886b44a8aac9b36c",
+        "source_fact:v1:cd6f843d6e4dd676b0aa48e2407173a05ab62954e68fe659541becda9a888c3b",
+        "source_fact:v1:d273af45b4f0f2ff03725c4751a53e71ebfad18d2622c949e54c7810d9ad42ab"
+      ],
+      "source_published_kst": "2026-10-15T12:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "EU 정상, 15~16일 브뤼셀 집결…에너지·中무역·우크라 지원 난제 '산적'",
+      "telegram_core_fact": "EU는 지난 8~9일 중국과 고위급 통상회담(2차 EU-중국 무역·투자 협의)에서 중국산 저가 하이브리드 자동차의 유럽 수출 제한 등에 대한 예비적 양보를 얻어냈다.",
+      "title": "EU 정상, 15~16일 브뤼셀 집결…에너지·中무역·우크라 지원 난제 '산적'"
     },
     "source_fact:ee29265e2392f4d45fc38ff5": {
       "first_seen_kst": "2026-10-08T07:27:34+09:00",
@@ -686538,6 +687823,29 @@
       "source_published_kst": "2026-10-06T10:23+09:00",
       "title": "“고성~거제 24.6km 연결”…쌍용건설, 8000억 규모 남부내륙철도 9공구 수주"
     },
+    "title:54eff39ce09732f2d7684b1e": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.news1.kr/world/general-world/6320873",
+      "source": "뉴스1",
+      "source_body_digest": "891fa1202209a435264101d2d2d922d0a2299b1cf2a5ab53d8ba3b0af3da94fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:08add69b74de63c84a5f504d589c5d2803ab432911e2a10a28000b76a4fcb1d9",
+      "source_fact_keys": [
+        "source_fact:v1:43bcbfc5cf8951cf0ce9d4fd045ec9aa4338d85662f2f74274d4a7067e88a198",
+        "source_fact:v1:5f3ddbd701fc8fc36bbd04701d6c67d358200c7f07c9c583f7e5ca3dfe385a0c",
+        "source_fact:v1:8fb503de64271945bf2c807dfe3791829a7b2e3d7c691a4087c73ea750b8cbd5",
+        "source_fact:v1:e438f3ed231c74a953443170f0515a41823461b666443a66454280923340df40"
+      ],
+      "source_published_kst": "2026-10-15T11:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "노벨평화상 필라이 \"트럼프의 ICC 제재는 불법…국제법 공부나 하라\"",
+      "telegram_core_fact": "노르웨이 노벨위원회는 지난 9일 필라이를 올해 노벨평화상 수상자로 선정했는데, 필라이는 그 몇시간 후 미국의 ICC 제재가 발표된 것은 우연이 아니라며 이는 \"트럼프 대통령이 상을 받지 못한 데 대한 반응\"이라고 말했다.",
+      "title": "노벨평화상 필라이 \"트럼프의 ICC 제재는 불법…국제법 공부나 하라\""
+    },
     "title:5512217a02aa7b0a7cf68e48": {
       "first_seen_kst": "2026-10-12T13:18:48+09:00",
       "lanes": {
@@ -720014,6 +721322,30 @@
       "telegram_core_fact": "경남도는 올해 도내 노인일자리 사업에 국비 1629억원, 도비 550억원, 시군비 1277억원 등 총 3456억원을 투입해 8만개를 공급하고, 2030년까지 10만개로 확대한다고 13일 밝혔다.",
       "title": "경남 올해 노인일자리 사업 3456억 투입, 8만개 공급"
     },
+    "title:b2e461312470df5d80924b4d": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003826681",
+      "source": "뉴시스",
+      "source_body_digest": "061610782023d8bf77d953b0a9c3cba5fe7e628c9d2518107f21f55edd4f10b7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:456861202790e5ab2b7e47fcbcc04217200bced386710d3261b6b3d46f0d8853",
+      "source_fact_keys": [
+        "source_fact:v1:42d06192a47b0bc0c7ff37f5aff1f7fdf012e87e2ee6dc4a40b4d8c1663be326",
+        "source_fact:v1:61b3a785af6e78c891f69a891be35c972d7027eb31a9ecd574face845bed5ce2",
+        "source_fact:v1:96c87cc1be39e412ee0c27df90deaad3053120349dd7c3d8da65f2c0b439b8bc",
+        "source_fact:v1:ddf9cdf546ee9004ec7a84aabdad833fddc5948cddc653f5be2a736643c067bb",
+        "source_fact:v1:e12be6c2963a9ab5d7ed712c348096e4f83f3f435661a632440f6ff677fb90e5"
+      ],
+      "source_published_kst": "2026-10-15T13:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "전자바우처 허위청구 2번 적발시 '퇴출'…과징금 '5배'",
+      "telegram_core_fact": "정부가 사회서비스 전자바우처 부정수급을 막고자 허위 청구로 2번 적발된 기관은 즉시 퇴출하고 과징금을 부정수급액의 최대 5배까지 부과하는 등 제재를 강화한다.",
+      "title": "전자바우처 허위청구 2번 적발시 '퇴출'…과징금 '5배'"
+    },
     "title:b2e5870b41d58b0c856c7512": {
       "first_seen_kst": "2026-10-12T15:20:09+09:00",
       "lanes": {
@@ -724900,6 +726232,33 @@
       "source_title": "[美특징주]아마존, AI 스타트업 디카트 인수 협상…개장전 ↑",
       "telegram_core_fact": "아마존닷컴(AMZN)이 인공지능(AI) 스타트업 디카트 AI(Decart AI)를 약 70억달러에 인수하는 방안을 논의하고 있다.",
       "title": "[美특징주]아마존, AI 스타트업 디카트 인수 협상…개장전 ↑"
+    },
+    "title:c2e14d1470271cc0e541e9d4": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003826925",
+      "source": "뉴시스",
+      "source_body_digest": "fdf7001f958cd3449831051fe5bcc992906a84aa4ae19e1d25f23e5de83a9d63",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c61faf2a70da85fd97d3767a59628e79aad762eae3f899db7146a1eb4410c5b0",
+      "source_fact_keys": [
+        "source_fact:v1:7dfa4dbce1e8194097d046a17d81c5708476aaf9e2dcb42fa083256924ab266b",
+        "source_fact:v1:885595c258c1fff7ebf9c3bf6d58e0f6f58bdcffa9652cc909c1a78eb0880ad5",
+        "source_fact:v1:b41ece660a5c143b2321f429558fc012e424da88fefc3f8b7cd054b8e7c80e75",
+        "source_fact:v1:b60e85ac7f331a03cd63c02d4fe8aaee4f4441be8a57978e892a6c701f675a95",
+        "source_fact:v1:c29b922ddc156d394f886cc7c1a50ff093ec8b7b3a01c65614e0100ebb4e312b",
+        "source_fact:v1:c88a152d0537d2ca5130bd392fce40f38781942b811e7de1886b44a8aac9b36c",
+        "source_fact:v1:cd6f843d6e4dd676b0aa48e2407173a05ab62954e68fe659541becda9a888c3b",
+        "source_fact:v1:d273af45b4f0f2ff03725c4751a53e71ebfad18d2622c949e54c7810d9ad42ab"
+      ],
+      "source_published_kst": "2026-10-15T12:28+09:00",
+      "source_supply_terms": {},
+      "source_title": "EU 정상, 15~16일 브뤼셀 집결…에너지·中무역·우크라 지원 난제 '산적'",
+      "telegram_core_fact": "EU는 지난 8~9일 중국과 고위급 통상회담(2차 EU-중국 무역·투자 협의)에서 중국산 저가 하이브리드 자동차의 유럽 수출 제한 등에 대한 예비적 양보를 얻어냈다.",
+      "title": "EU 정상, 15~16일 브뤼셀 집결…에너지·中무역·우크라 지원 난제 '산적'"
     },
     "title:c3009bef8a71353395c67400": {
       "first_seen_kst": "2026-10-08T02:57:10+09:00",
@@ -734213,6 +735572,27 @@
       "telegram_core_fact": "씨앤엠은 한국거래소로부터 코스닥시장 상장예비심사 승인을 받았다고 12일 밝혔다.",
       "title": "씨앤엠, 코스닥 상장예비심사 승인…청구 4주 만"
     },
+    "title:dce7c6c9ca23250d53a1da3f": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003827261",
+      "source": "뉴시스",
+      "source_body_digest": "4aa8d2bd0dd13e580a66a11bd68a1bca1a19d905673a26934124656f13fc2331",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b713d535b8edb5b597b6f29e99647f6a398a7f9570c61ab5d0e404fe0987a524",
+      "source_fact_keys": [
+        "source_fact:v1:891f6d41ec101ce41fdd92d076fdb6afb99696a1ad407dc9ac6119aa233b69d2",
+        "source_fact:v1:c2b5b2051de3da59c84fd7d33acddb658befb43e8a7de38273a6bf675b0fb69e"
+      ],
+      "source_published_kst": "2026-10-15T12:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "오세훈 \"뉴타운 해제 영향, 앞으로 몇 년 더 갈 것\"",
+      "telegram_core_fact": "오세훈 서울시장은 박원순 전 시장 때 뉴타운을 해제한 데 따른 아파트 공급 부족이 앞으로 몇 년간 더 영향을 줄 것이라고 내다봤다.",
+      "title": "오세훈 \"뉴타운 해제 영향, 앞으로 몇 년 더 갈 것\""
+    },
     "title:dce82987ae01ad50aff72eab": {
       "first_seen_kst": "2026-10-13T16:01:00+09:00",
       "lanes": {
@@ -737477,6 +738857,29 @@
       "link": "https://www.mk.co.kr/news/stock/12160364",
       "source": "매일경제",
       "title": "금리 불확실성 안정되나…삼전닉스 추격 매수 [주식 초고수는 지금]"
+    },
+    "title:e6bad66428b500e411856391": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175341",
+      "source": "매일경제",
+      "source_body_digest": "d90043784fbbb593d15038fde09650bec756740efa8e0c255da9a82abebecbd2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2b65b4e5c4aceb2ac0eaf4df8c50a3ef76cf4e90868a2942ef93fec61049ecfe",
+      "source_fact_keys": [
+        "source_fact:v1:23afccbf0b0e1d0f5aa99f3d71477d21a742bbb497b66c88aec730fd6be7a7e7",
+        "source_fact:v1:3c10d896d522a698231a23db7e3c460c72420b0441b50231a50b22755586cb5f",
+        "source_fact:v1:9ee8991dc7b673d4012652b45d481e916cab96039c7158674b7ce9c922802775",
+        "source_fact:v1:cf98b11457382b7ef98682976ae26192f41d9d7d736b72cc7b2dcc52f294f11b"
+      ],
+      "source_published_kst": "2026-10-15T19:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "PNC 파이낸셜 서비스, 3분기 희석 EPS 4.97달러..전년비 14% 증가",
+      "telegram_core_fact": "PNC 파이낸셜 서비스(PNC)는 3분기 순이익이 20억9700만 달러로 전년비 15.1% 증가했고, 일반회계기준(GAAP) 희석 주당순이익(EPS)은 4.97달러로 전년 동기(4.35달러)보다 14.3% 늘었다고 10월 15일 발표했다.",
+      "title": "PNC 파이낸셜 서비스, 3분기 희석 EPS 4.97달러..전년비 14% 증가"
     },
     "title:e6bd6b1de6425f065b043569": {
       "first_seen_kst": "2026-10-02T11:29:29+09:00",
@@ -744477,6 +745880,27 @@
       "source_published_kst": "2026-10-05T19:27+09:00",
       "title": "\"농식품부 고위공직자 모친 소유 농지 3필지 휴경\"(종합) | 연합뉴스"
     },
+    "title:fafd1c7c854929d4286e7bfb": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.etnews.com/20261015000453",
+      "source": "전자신문",
+      "source_body_digest": "30844bf383cc3a7db97f7417cfbe33315371f001abe13f0e271c5950e1f51060",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8ca49e8341e4226aec53c7be36bf589875986acd92f5e0e5f856a947ba713b0b",
+      "source_fact_keys": [
+        "source_fact:v1:c2ba6a557e47e32f9e536838c7d475a5650a415c549caec40a89fa4beed41d9a",
+        "source_fact:v1:ec45ef99f60158b19a5205fda5f66cae8f734ebdf36ff30d3f3d6bd552e62142"
+      ],
+      "source_published_kst": "2026-10-15T19:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "IPO 앞둔 앤트로픽, 3분기 매출 45% 증가…2분기 연속 흑자",
+      "telegram_core_fact": "기업공개(IPO)를 준비 중인 앤트로픽이 가파른 매출 성장에 이어 2개 분기 연속 흑자를 기록하며 수익성 개선 성과도 거뒀다.",
+      "title": "IPO 앞둔 앤트로픽, 3분기 매출 45% 증가…2분기 연속 흑자"
+    },
     "title:fb0cd1999c8b065432d05605": {
       "first_seen_kst": "2026-10-06T11:41:27+09:00",
       "lanes": {
@@ -744865,6 +746289,26 @@
       "link": "https://www.etoday.co.kr/news/view/2632003",
       "source": "이투데이",
       "title": "코인 과세 형평성·스테이블코인 규율 도마⋯제도 정비 과제 부상"
+    },
+    "title:fc44e0a7e639ca60081c5f59": {
+      "first_seen_kst": "2026-10-15T19:53:29+09:00",
+      "lanes": {
+        "live": "2026-10-15T19:53:29+09:00"
+      },
+      "last_seen_kst": "2026-10-15T19:53:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261015083800017",
+      "source": "연합뉴스",
+      "source_body_digest": "6943d8d798e869b68a66e6acbf0fe8660a924b1525c8cb96c459f455d330e350",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bffd1697b4df2c2470920eaf2a9381fc8777ee4b82b9e411af76a5daa5e2d85f",
+      "source_fact_keys": [
+        "source_fact:v1:c4a09e23107ff2922c89c21a50e409f0e2d5db7afe3a5f9941139ee46f062ed9"
+      ],
+      "source_published_kst": "2026-10-15T12:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "KIST, 건물 외벽따라 자유롭게 형태 바꾸는 3차원 태양광 개발 | 연합뉴스",
+      "telegram_core_fact": "건물 외벽 모양에 따라 자유롭게 형태를 바꾸는 3차원 태양광 시스템이 개발됐다. 한국과학기술연구원(KIST)은 차세대태양전지연구센터 이필립 센터장 연구팀이 구조 움직임과 전기 연결을 함께 설계해 자유롭게 형태를 바꾸면서도 안정적으로 전기를 생산하는 3차원 태양광 메타구조체를 개발했다고 15일 밝혔다.",
+      "title": "KIST, 건물 외벽따라 자유롭게 형태 바꾸는 3차원 태양광 개발 | 연합뉴스"
     },
     "title:fc5b458f04803122e055bea1": {
       "first_seen_kst": "2026-10-05T13:15:14+09:00",
@@ -746396,5 +747840,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-15T19:21:06+09:00"
+  "updated_at_kst": "2026-10-15T19:53:29+09:00"
 }
