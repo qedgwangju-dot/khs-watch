@@ -1,0 +1,37 @@
+name: US positioning presentation CI
+
+on:
+  pull_request:
+    paths:
+      - "scripts/us_positioning_watch.py"
+      - "scripts/us_positioning_presentation.py"
+      - "tests/test_us_positioning_presentation.py"
+      - "tests/fixtures/us_positioning_20261014_saved.json"
+      - ".github/workflows/us-positioning-telegram-watch.yml"
+      - ".github/workflows/us-positioning-presentation-ci.yml"
+  push:
+    branches: [main]
+    paths:
+      - "scripts/us_positioning_watch.py"
+      - "scripts/us_positioning_presentation.py"
+      - "tests/test_us_positioning_presentation.py"
+      - "tests/fixtures/us_positioning_20261014_saved.json"
+      - ".github/workflows/us-positioning-telegram-watch.yml"
+      - ".github/workflows/us-positioning-presentation-ci.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  offline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check presentation and real collector gates without network or Telegram
+        run: |
+          python -m py_compile scripts/us_positioning_watch.py scripts/us_positioning_presentation.py
+          python -m unittest discover -s tests -p test_us_positioning_presentation.py -v
