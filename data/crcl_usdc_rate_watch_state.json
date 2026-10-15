@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-15T22:26:39+09:00",
+  "updated_at_kst": "2026-10-16T03:18:20+09:00",
   "circle": {
     "date": "2026-10-12",
     "circulation_usd_b": 72.7,
@@ -50,26 +50,26 @@
     "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
   },
   "crcl": {
-    "date": "2026-10-14",
-    "close": 79.55,
-    "prev_date": "2026-10-13",
-    "prev_close": 84.27,
-    "daily_pct": -5.6,
+    "date": "2026-10-15",
+    "close": 85.42,
+    "prev_date": "2026-10-14",
+    "prev_close": 79.55,
+    "daily_pct": 7.38,
     "source": "ChartExchange historical",
     "source_url": "https://chartexchange.com/symbol/nyse-crcl/historical/",
     "crosscheck_source": "Yahoo Finance chart",
-    "crosscheck_date": "2026-10-14",
-    "crosscheck_close": 79.55000305175781,
-    "crosscheck_daily_pct": -5.6,
+    "crosscheck_date": "2026-10-15",
+    "crosscheck_close": 85.41999816894531,
+    "crosscheck_daily_pct": 7.38,
     "crosscheck_gap_pct": 0.0,
     "crosscheck_status": "confirmed"
   },
   "tbx": {
-    "date": "2026-10-14",
-    "close": 29.719999313354492,
-    "prev_date": "2026-10-13",
-    "prev_close": 29.780000686645508,
-    "daily_pct": -0.2
+    "date": "2026-10-15",
+    "close": 29.540000915527344,
+    "prev_date": "2026-10-14",
+    "prev_close": 29.719999313354492,
+    "daily_pct": -0.61
   },
   "fx": {
     "rate": 1340.5,
