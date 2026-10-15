@@ -276,13 +276,13 @@ class AmountRenderingTests(unittest.TestCase):
         values,context=self.sources();out=self.render(values,context);summary=self.summary(out)
         self.assertEqual(out.count("<b>한눈에 보기</b>"),1)
         for phrase in ("반도체(SOX): 11,684.38pt | 1D -4.30% | 3D -7.06% | 5D -10.58%",
-                       "당일 +20.06% / 5일 -5.37% / 1개월 +9.49% / 3개월 -13.45%",
+                       "당일 증가 +20.06% / 5일 감소 -5.37% / 1개월 증가 +9.49% / 3개월 감소 -13.45%",
                        "통합 기관: 순롱 74,856계약 | 주간 순포지션 변화 +4,055계약 · 순롱 확대",
                        "통합 헤지펀드성: 순숏 26,738계약 | 주간 순포지션 변화 +7,044계약 · 순숏 축소",
                        "NQ E-mini: 순숏 19,212계약 · 1주 전 대비 순숏 5,511계약 축소",
                        "3년 순숏 27 / 총숏 20백분위 · 10년 순숏 45 / 총숏 38백분위",
                        "Cboe 옵션: 주식 P/C 0.61(콜이 풋의 1.63배) / 지수 1.01(거의 1:1) / 전체 0.88",
-                       "가격보다 8일 이전 자료로 선행 신호로 단정하지 않음"):
+                       "가격보다 8일 이전 · 가격 전환 확인 아님"):
             self.assertIn(phrase,summary)
         self.assertLessEqual(len(out.strip()),view.BRIEF_MAX_CHARS)
 
@@ -306,6 +306,33 @@ class AmountRenderingTests(unittest.TestCase):
         summary=self.summary(self.render(values,context))
         self.assertIn("직전 관측(2026-09-22) 대비",summary)
         self.assertNotIn("1주 전 대비",summary)
+
+    def test_turnover_direction_words_recompute_from_new_operands_in_both_directions_and_zero(self):
+        for mode,word in ((1,'증가'),(-1,'감소'),(0,'동일')):
+            values,context=self.sources();a=context['amounts'];original=a['turnover_comparisons']['daily_operands']
+            dates=[r[0] for r in original]
+            latest3=set(dates[-65:]);latest1=set(dates[-22:]);latest5=set(dates[-5:])
+            operands=[]
+            for d,venues in original:
+                total=420
+                if mode==1:
+                    total=840 if d in latest3 else 420
+                    if d in latest1:total=1680
+                    if d in latest5:total=3360
+                    if d==dates[-1]:total=6720
+                elif mode==-1:
+                    total=420 if d in latest3 else 840
+                    if d in latest1:total=210
+                    if d in latest5:total=105
+                    if d==dates[-1]:total=42
+                v=str(total//len(venues));self.assertEqual(total%len(venues),0)
+                operands.append([d,[[venue[0],v,'0','0',v] for venue in venues]])
+            a['turnover']=amounts.turnover_from_operands([r for r in operands if r[0] in latest3],'2026-10-14')
+            a['turnover_comparisons']=amounts.turnover_comparisons_from_operands(operands,'2026-10-14')
+            out=self.summary(self.render(values,context))
+            for label in ('당일','5일','1개월','3개월'):
+                self.assertIn(label+' '+word,out)
+            self.assertNotIn('20.06%',out)
 
     def test_actual_new_brief_has_point_levels_actual_turnover_krw_and_precise_missingness(self):
         values,context=self.sources();out=self.render(values,context)

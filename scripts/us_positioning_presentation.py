@@ -13,7 +13,7 @@ from us_positioning_context import checked_path, checked_composition, checked_op
 from us_positioning_amounts import checked_turnover, checked_turnover_comparisons, checked_reference, money_pair, average_money_pair, notional
 from us_positioning_fx import checked_fx
 
-PRESENTATION_VERSION = "us-positioning-period-direction-20261015-v1"
+PRESENTATION_VERSION = "us-positioning-auto-direction-20261016-v1"
 BRIEF_MAX_CHARS = 3600
 
 
@@ -381,8 +381,8 @@ def render_detail_alert(cftc, cboe, sox, updates, results, errors=(), event_labe
     broad = [checked_returns(context.get("indices", {}).get(k, {}).get("returns"), end, k) for k in ("NDX", "SPX")] if end else []
     if broad and all(broad) and all(x["windows"]["5d"]["status"] == "verified" for x in broad):
         five = [x["windows"]["5d"]["return_pct"] for x in broad]
-        icon = "🔴" if all(v < 0 for v in five) else "🟢" if all(v > 0 for v in five) else "🟡"
-        title = "미국 주요지수 최근 5거래일 " + ("하락" if all(v < 0 for v in five) else "상승" if all(v > 0 for v in five) else "방향 혼재")
+        icon = "🔴" if all(v < 0 for v in five) else "🟢" if all(v > 0 for v in five) else "⚪" if all(v == 0 for v in five) else "🟡"
+        title = "미국 주요지수 최근 5거래일 " + ("하락" if all(v < 0 for v in five) else "상승" if all(v > 0 for v in five) else "보합" if all(v == 0 for v in five) else "방향 혼재")
         reason = "나스닥100·S&P500의 기간 수익률 비교입니다. 현재 추세는 아래 20·60거래일 기준으로 따로 표시합니다."
     else:
         reason += " 미국 주요지수 종합은 자료 확인 대기입니다."
@@ -539,6 +539,72 @@ def render_detail_document(*args, **kwargs):
             '<main style="white-space:pre-wrap">' + analysis + '</main></body></html>\n')
 
 
+def _direction_word(value, positive="상승", negative="하락", zero="보합"):
+    value = number(value)
+    return "확인 대기" if value is None else positive if value > 0 else negative if value < 0 else zero
+
+
+def _price_group_direction(values):
+    """Describe this exact three-index population; a missing member holds the group."""
+    missing = [label for label, value in values if number(value) is None]
+    if missing:
+        return "확인 대기(" + "·".join(missing) + ")"
+    words = [_direction_word(value) for _, value in values]
+    if len(set(words)) == 1:
+        return "모두 " + words[0]
+    return "혼재(" + "·".join(label + " " + word for (label, _), word in zip(values, words)) + ")"
+
+
+def _checked_integrated_change(metrics, prefix):
+    names = ("long", "short", "net", "long_wow", "short_wow", "net_wow")
+    values = [number(metrics.get(prefix + "_" + key)) for key in names]
+    if any(v is None or int(v) != v for v in values):
+        return "확인 대기"
+    long, short, net, dl, ds, dn = values
+    if min(long, short, long-dl, short-ds) < 0 or long-short != net or dl-ds != dn:
+        return "확인 대기"
+    return position_change(net, dn)
+
+
+def direction_lines(cftc, sox, context):
+    """Recalculate narrative from this run's dated, revalidated operands, with no cache."""
+    end = date_value((sox or {}).get("period"))
+    sm = (sox or {}).get("metrics", {})
+    confirmed = (sm.get("final_close_confirmed") is True and end is not None
+                 and (sm.get("expected_completed_session") is None or date_value(sm["expected_completed_session"]) == end))
+    path = checked_path(sm.get("price_path", {}), end, "SOX") if confirmed else None
+    indices = context.get("indices", {})
+    broad = {k: checked_returns(indices.get(k, {}).get("returns"), end, k) if end else None for k in ("NDX", "SPX")}
+    bits = []
+    for key, label in (("5d", "5일"), ("1m", "1개월"), ("3m", "3개월")):
+        # Match the already-confirmed collector series used by displayed 5D and
+        # the short-period verdict. MA history uses a distinct primary series.
+        sox_value = (number(sm.get("d5_pct")) if confirmed else None) if key == "5d" else (
+            verified_price_return(sm.get("month_windows", {}).get(key), end, sm.get("value")) if confirmed else None)
+        values = [("SOX", sox_value)]
+        for symbol, name in (("NDX", "나스닥100"), ("SPX", "S&P500")):
+            window = broad[symbol]["windows"][key] if broad[symbol] else {}
+            values.append((name, window.get("return_pct") if window.get("status") == "verified" else None))
+        bits.append(label + " " + _price_group_direction(values))
+    lines = [f"→ <b>가격 방향</b> (SOX·나스닥100·S&P500, {date_label(sox)}): " + " / ".join(bits)]
+    if path:
+        v = path["values"]
+        locations = [f"{n}일선 " + ("위" if v["close"] > v[f"ma{n}"] else "아래" if v["close"] < v[f"ma{n}"] else "같음") for n in (20, 60)]
+        slopes = [f"{n}일 " + _direction_word(v[f"ma{n}_change5_pct"]) for n in (20, 60)]
+        lines.append("→ <b>SOX 현재 상태</b>: 종가 " + "·".join(locations) + " / 평균선 " + "·".join(slopes))
+    else:
+        lines.append("→ <b>SOX 현재 상태</b>: 확인 대기 · 종가·평균선 이력 검산 미완료")
+    report = date_value((cftc or {}).get("period"))
+    metrics = (cftc or {}).get("metrics", {})
+    previous = date_value(metrics.get("previous_period"))
+    valid_period = report is not None and previous is not None and previous < report
+    labels = [name + " " + (_checked_integrated_change(metrics, prefix) if valid_period else "확인 대기") for prefix, name in (("asset", "기관"), ("lev", "헤지펀드성"))]
+    lag = (end-report).days if end and report else None
+    age = "기준일 차이 미확인" if lag is None else f"가격보다 {lag}일 이전" if lag > 0 else f"가격보다 {-lag}일 이후" if lag < 0 else "가격과 같은 기준일의 주간 자료"
+    lines.append(f"→ <b>선물 방향({date_label(cftc)}·통합)</b>: " + "·".join(labels) + f" / {age} · 가격 전환 확인 아님")
+    return lines
+
+
 def _at_a_glance(cftc, cboe, sox, context):
     """Keep the prior overview's periods, position changes and interpretation."""
     end = date_value((sox or {}).get("period"))
@@ -579,18 +645,12 @@ def _at_a_glance(cftc, cboe, sox, context):
     amounts=context.get('amounts',{})
     turnover=checked_turnover(amounts.get('turnover'),end) if end else None
     comparisons=checked_turnover_comparisons(amounts.get('turnover_comparisons'),end,turnover) if turnover else None
-    bits=[f"당일 {float(turnover['change_pct']):+.2f}%"] if turnover else ['당일 확인 대기']
+    bits=[f"당일 {_direction_word(float(turnover['change_pct']),'증가','감소','동일')} {float(turnover['change_pct']):+.2f}%"] if turnover else ['당일 확인 대기']
     for key,label in (('5d','5일'),('1m','1개월'),('3m','3개월')):
         w=comparisons['windows'][key] if comparisons else {}
-        bits.append(f"{label} {float(w['average_change_pct']):+.2f}%" if w.get('status')=='verified' else f'{label} 확인 대기')
+        bits.append(f"{label} {_direction_word(float(w['average_change_pct']),'증가','감소','동일')} {float(w['average_change_pct']):+.2f}%" if w.get('status')=='verified' else f'{label} 확인 대기')
     lines.append('• 거래대금 방향: '+' / '.join(bits)+' (기간은 일평균 비교)')
-    short=price_direction(sox)[1].removeprefix('반도체 ')
-    synthesis=f'→ <b>종합</b>: SOX 마감 기준 {short}.'
-    if report:
-        synthesis+=f" CFTC {report.isoformat()} 주간 헤지펀드성 {position_change(cm.get('lev_net'),cm.get('lev_net_wow'))}."
-    if report and end and report < end:
-        synthesis+=f' 가격보다 {(end-report).days}일 이전 자료로 선행 신호로 단정하지 않음.'
-    lines.append(synthesis)
+    lines.extend(direction_lines(cftc, sox, context))
     return lines
 
 
@@ -603,8 +663,8 @@ def render_alert(cftc, cboe, sox, updates, results, errors=(), event_label="신�
     broad = [checked_returns(indices.get(k, {}).get("returns"), end, k) for k in ("NDX", "SPX")] if end else []
     if broad and all(broad) and all(x["windows"]["5d"]["status"] == "verified" for x in broad):
         five = [x["windows"]["5d"]["return_pct"] for x in broad]
-        icon = "🔴" if all(v < 0 for v in five) else "🟢" if all(v > 0 for v in five) else "🟡"
-        title = "나스닥100·S&P500 최근 5거래일 " + ("하락" if all(v < 0 for v in five) else "상승" if all(v > 0 for v in five) else "방향 혼재")
+        icon = "🔴" if all(v < 0 for v in five) else "🟢" if all(v > 0 for v in five) else "⚪" if all(v == 0 for v in five) else "🟡"
+        title = "나스닥100·S&P500 최근 5거래일 " + ("하락" if all(v < 0 for v in five) else "상승" if all(v > 0 for v in five) else "보합" if all(v == 0 for v in five) else "방향 혼재")
     else:
         icon, title, _ = horizon_overview(sox)
         title += " · 주요지수 종합 확인 대기"

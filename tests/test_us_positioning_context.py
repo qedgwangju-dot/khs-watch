@@ -311,6 +311,125 @@ class BriefTests(unittest.TestCase):
             self.render(values, context, event_label="x" * view.BRIEF_MAX_CHARS)
 
 
+class AutoDirectionTests(unittest.TestCase):
+    def sources(self, slope=None, end="2026-10-14"):
+        values, context = BriefTests().sources()
+        if slope is not None:
+            days=sessions("2026-04-01",end)
+            rows=[(d, 1000+slope*i) for i,d in enumerate(days)]
+            path=price_path(end,rows,rows,"SOX")
+            sm=values["Nasdaq SOX|sox"]["metrics"]
+            sm.update(value=rows[-1][1],previous_close=rows[-2][1],price_path=path,expected_completed_session=end,
+                      month_windows=horizons.price_month_windows(end,rows[-1][1],rows,rows),
+                      **{f"d{n}_pct":path["values"][f"d{n}_pct"] for n in (1,3,5)})
+            values["Nasdaq SOX|sox"]["period"]=end
+            for symbol in ("NDX","SPX"):
+                context["indices"][symbol]=price_path(end,rows,rows,symbol)
+                context["indices"][symbol]["returns"]=price_returns(end,rows,rows,symbol)
+        return values,context
+
+    def render_directions(self, values, context):
+        return "\n".join(view.direction_lines(values["CFTC|cot"],values["Nasdaq SOX|sox"],context))
+
+    def test_actual_input_reads_each_period_and_price_ma_disagreement(self):
+        values,context=self.sources();out=self.render_directions(values,context)
+        for phrase in ("5일 모두 하락", "1개월 모두 상승", "3개월 혼재(SOX 하락·나스닥100 상승·S&P500 상승)",
+                       "종가 20일선 아래·60일선 아래 / 평균선 20일 상승·60일 상승",
+                       "선물 방향(2026-10-06·통합)","기관 순롱 확대·헤지펀드성 순숏 축소", "가격보다 8일 이전"):
+            self.assertIn(phrase,out)
+
+    def test_new_verified_operands_reverse_all_price_and_ma_directions(self):
+        for slope,word,location in ((1,"상승","위"),(-1,"하락","아래"),(0,"보합","같음")):
+            values,context=self.sources(slope)
+            out=self.render_directions(values,context)
+            for period in ("5일","1개월","3개월"):
+                self.assertIn(period+" 모두 "+word,out)
+            self.assertIn(f"종가 20일선 {location}·60일선 {location}",out)
+            self.assertIn(f"평균선 20일 {word}·60일 {word}",out)
+            self.assertNotIn("혼재",out)
+
+    def test_new_source_dates_and_weekly_turnaround_are_not_fixed(self):
+        values,context=self.sources(1,"2026-10-15")
+        cot=values["CFTC|cot"];cot["period"]="October 13, 2026"
+        cm=cot["metrics"];cm["previous_period"]="October 6, 2026"
+        cm.update(asset_long=80,asset_short=20,asset_net=60,asset_long_wow=-10,asset_short_wow=5,asset_net_wow=-15,
+                  lev_long=20,lev_short=80,lev_net=-60,lev_long_wow=-10,lev_short_wow=5,lev_net_wow=-15)
+        out=self.render_directions(values,context)
+        self.assertIn("선물 방향(2026-10-13·통합)",out)
+        self.assertIn("기관 순롱 축소·헤지펀드성 순숏 확대",out)
+        self.assertIn("가격보다 2일 이전",out)
+        self.assertNotIn("8일 이전",out)
+        for report,phrase in (("2026-10-15","가격과 같은 기준일의 주간 자료"),("2026-10-16","가격보다 1일 이후")):
+            cot["period"]=report
+            self.assertIn(phrase,self.render_directions(values,context))
+
+    def test_same_sox_collector_series_drives_display_and_direction_without_ma_history(self):
+        values,context=self.sources(1)
+        sm=values["Nasdaq SOX|sox"]["metrics"]
+        sm["d5_pct"]=-0.04997501249375147
+        out=self.render_directions(values,context)
+        self.assertIn("5일 혼재(SOX 하락·나스닥100 상승·S&P500 상승)",out)
+        sm["price_path"]={"status":"unavailable"}
+        self.assertIn("5일 혼재(SOX 하락·나스닥100 상승·S&P500 상승)",self.render_directions(values,context))
+        self.assertIn("SOX 현재 상태</b>: 확인 대기",self.render_directions(values,context))
+
+    def test_entire_flat_body_and_detail_agree_with_the_new_readout(self):
+        values,context=self.sources(0)
+        body=BriefTests().render(values,context)
+        detail=view.render_detail_alert(values["CFTC|cot"],values["Cboe|options"],values["Nasdaq SOX|sox"],[],list(values.values()),context=context)
+        self.assertIn("5일 모두 보합",body)
+        self.assertIn("나스닥100·S&P500 최근 5거래일 보합",body)
+        self.assertIn("미국 주요지수 최근 5거래일 보합",detail)
+        self.assertNotIn("5거래일 방향 혼재",body+detail)
+
+    def test_missing_or_tampered_price_does_not_promote_partial_population(self):
+        values,context=self.sources()
+        context["indices"]["NDX"]["returns"]["windows"]["5d"]["return_pct"]+=1
+        out=self.render_directions(values,context)
+        self.assertIn("5일 확인 대기(나스닥100)",out)
+        self.assertNotIn("5일 모두 하락",out)
+        sm=values["Nasdaq SOX|sox"]["metrics"]
+        sm["price_path"]["values"]["ma20"]+=1
+        sm["month_windows"]["1m"]["return_pct"]+=1
+        out=self.render_directions(values,context)
+        self.assertIn("SOX 현재 상태</b>: 확인 대기",out)
+        self.assertIn("1개월 확인 대기(SOX·나스닥100)",out)
+
+    def test_unconfirmed_or_wrong_date_sox_does_not_reuse_saved_direction(self):
+        values,context=self.sources()
+        values["Nasdaq SOX|sox"]["metrics"]["final_close_confirmed"]=False
+        out=self.render_directions(values,context)
+        self.assertIn("5일 확인 대기(SOX)",out)
+        self.assertIn("1개월 확인 대기(SOX)",out)
+        self.assertIn("SOX 현재 상태</b>: 확인 대기",out)
+        values["Nasdaq SOX|sox"]["metrics"]["final_close_confirmed"]=True
+        values["Nasdaq SOX|sox"]["metrics"]["expected_completed_session"]="2026-10-15"
+        self.assertIn("5일 확인 대기(SOX)",self.render_directions(values,context))
+
+    def test_inconsistent_integrated_position_arithmetic_stays_pending(self):
+        values,context=self.sources();cm=values["CFTC|cot"]["metrics"]
+        cm["asset_net"]+=1;cm["lev_net_wow"]+=1
+        out=self.render_directions(values,context)
+        self.assertIn("기관 확인 대기·헤지펀드성 확인 대기",out)
+        cm["asset_net"]-=1;cm["lev_net_wow"]-=1;cm["previous_period"]="2026-10-07"
+        self.assertIn("기관 확인 대기·헤지펀드성 확인 대기",self.render_directions(values,context))
+
+    def test_negative_to_positive_and_zero_positions_use_actual_changes(self):
+        for net,change,word in ((10,20,"순숏 → 순롱 전환"),(-10,-20,"순롱 → 순숏 전환"),(0,0,"주간 변화 없음")):
+            cm=dict(lev_long=max(net,0)+100,lev_short=max(-net,0)+100,lev_net=net,
+                    lev_long_wow=change,lev_short_wow=0,lev_net_wow=change)
+            self.assertEqual(view._checked_integrated_change(cm,"lev"),word)
+
+    def test_readout_does_not_mutate_input_or_carry_a_previous_narrative(self):
+        values,context=self.sources();prior=copy.deepcopy((values,context))
+        self.render_directions(values,context)
+        self.assertEqual((values,context),prior)
+        empty="\n".join(view.direction_lines({}, {}, {}))
+        self.assertIn("확인 대기",empty)
+        self.assertNotIn("모두 하락",empty)
+        self.assertNotIn("순숏 축소",empty)
+
+
 class ContextDedupeTests(unittest.TestCase):
     def saved(self):
         return json.loads(gzip.decompress((ROOT/"tests/fixtures/us_positioning_context_dedupe_20261015.json.gz").read_bytes()))
