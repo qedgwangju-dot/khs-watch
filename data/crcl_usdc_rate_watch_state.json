@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-15T08:14:43+09:00",
+  "updated_at_kst": "2026-10-15T10:30:41+09:00",
   "circle": {
     "date": "2026-10-12",
     "circulation_usd_b": 72.7,
@@ -10,12 +10,12 @@
     }
   },
   "usdxx": {
-    "date": "2026-10-13",
+    "date": "2026-10-14",
     "sec_yield_7d": 3.83,
     "yield_7d": 3.83,
-    "yield_1d": 3.85,
+    "yield_1d": null,
     "yield_crosscheck_gap_bp": 0.0,
-    "visible_nav_date": "2026-10-13",
+    "visible_nav_date": "2026-10-14",
     "fund_size_usd_m": 61267.4,
     "fund_size_date": "2026-10-13",
     "source_url": "https://www.blackrock.com/cash/en-us/products/329365/circle-reserve-fund",
@@ -23,10 +23,10 @@
     "ticker": "USDXX",
     "cusip": "09261A870",
     "_previous_distinct": {
-      "date": "2026-10-09",
+      "date": "2026-10-13",
       "sec_yield_7d": 3.83,
-      "fund_size_usd_m": 62017.4,
-      "fund_size_date": "2026-10-09"
+      "fund_size_usd_m": 61267.4,
+      "fund_size_date": "2026-10-13"
     }
   },
   "sofr": {
@@ -58,11 +58,11 @@
     "source": "ChartExchange historical",
     "source_url": "https://chartexchange.com/symbol/nyse-crcl/historical/",
     "crosscheck_source": "Yahoo Finance chart",
-    "crosscheck_date": "2026-10-14",
-    "crosscheck_close": 79.55000305175781,
-    "crosscheck_daily_pct": -5.6,
-    "crosscheck_gap_pct": 0.038,
-    "crosscheck_status": "confirmed"
+    "crosscheck_date": "2026-10-13",
+    "crosscheck_close": 84.2699966430664,
+    "crosscheck_daily_pct": 0.48,
+    "crosscheck_gap_pct": 5.893,
+    "crosscheck_status": "yahoo_lagging"
   },
   "tbx": {
     "date": "2026-10-14",
@@ -78,7 +78,7 @@
     "source": "한국은행 ECOS 원/미국달러(매매기준율)",
     "source_url": "https://ecos.bok.or.kr/",
     "official": true,
-    "crosscheck": "Yahoo Finance 1,341.63원, 차이 0.08%"
+    "crosscheck": "Yahoo Finance 교차검증 접근 불가"
   },
   "crcl_last_alerted_close_date": "2026-10-14",
   "correction_pending": false,
