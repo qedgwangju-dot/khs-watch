@@ -40,6 +40,7 @@
     "1e151a76072baaa14fbffd67",
     "1e7c62ba687ed7b376880812",
     "1ecf7350ed6e0ccdad59",
+    "216e347b6627bb75f07f",
     "2235f379798633e1af71",
     "22eb49c6230d679eecd3",
     "2321935ef5e4ff3765fb",
@@ -282,6 +283,7 @@
     "bba555f5c862789c317ecea4",
     "bc02e32ba64531c0fd3cc324",
     "be2cf6801aac4533d469",
+    "be5f64f97677f2114a31",
     "bf3d659ac816110886c821e5",
     "bfe33eefe4e7a2126da63267",
     "c080dd7189ea7b437686",
@@ -400,7 +402,7 @@
       "실패모드·일정 변화"
     ]
   },
-  "last_scan_kst": "2026-10-15T09:41:54+09:00",
+  "last_scan_kst": "2026-10-15T14:14:25+09:00",
   "errors": [],
   "seen_event_keys": [
     "memory:unconfirmed",
@@ -408,6 +410,10 @@
     "server:reported:2or4:2029"
   ],
   "observations": [],
-  "fetch_ok": 12,
-  "fetch_errors": []
+  "fetch_ok": 9,
+  "fetch_errors": [
+    "bing_news 애플 M8 서버 엔비디아: ParseError not well-formed (invalid token): line 1, column 41",
+    "bing_news \"Apple\" \"M8 Ultra\" server: ParseError not well-formed (invalid token): line 1, column 41",
+    "bing_news \"Apple\" HBM server supplier contrac: ParseError not well-formed (invalid token): line 1, column 41"
+  ]
 }
