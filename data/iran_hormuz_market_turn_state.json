@@ -1,7 +1,7 @@
 {
-  "last_alert_at_kst": "2026-10-15T21:08:14+09:00",
-  "last_event_kind": "crude_product_divergence",
-  "last_event_id": "crude_product_divergence:ef9795c46e12d762",
+  "last_alert_at_kst": "2026-10-16T05:32:44+09:00",
+  "last_event_kind": "eia_refining_crack_watch",
+  "last_event_id": "eia_refining_crack_watch:8930fae216868471",
   "alerted_events": {
     "regional_export_recovery:66183575fab99015": "2026-10-13T21:23:53+09:00",
     "sts_reroute_expansion:a5a5b34c0694d3fd": "2026-10-13T21:11:24+09:00",
@@ -32,30 +32,31 @@
     "tankertrackers_7country_crude_mtd:5e4bd4351c97d270": "2026-10-14T11:06:39+09:00",
     "saudi_bypass_investment:3ba5edb3ff00bf86": "2026-10-14T11:09:53+09:00",
     "eu_diesel_reserve_policy:54f8a60d9eb812bf": "2026-10-14T23:03:10+09:00",
-    "us_gulf_isaias_shutin:59e04145a9693f41": "2026-10-15T03:54:32+09:00"
+    "us_gulf_isaias_shutin:59e04145a9693f41": "2026-10-15T03:54:32+09:00",
+    "eia_refining_crack_watch:8930fae216868471": "2026-10-16T05:32:44+09:00"
   },
   "last_market": {
     "oil": {
       "symbol": "BZ=F",
       "label": "Brent",
       "unit": "달러/배럴",
-      "price": 104.8,
+      "price": 105.79,
       "previous_close": 106.06,
-      "change": -1.2600000000000051,
-      "change_pct": -1.1880067886102252,
-      "timestamp_utc": "2026-10-15T11:58:12Z",
-      "timestamp_epoch": 1792065492.0
+      "change": -0.269999999999996,
+      "change_pct": -0.254572883273615,
+      "timestamp_utc": "2026-10-15T20:23:21Z",
+      "timestamp_epoch": 1792095801.0
     },
     "usdkrw": {
       "symbol": "KRW=X",
       "label": "원·달러",
       "unit": "원/달러",
-      "price": 1345.54,
+      "price": 1341.41,
       "previous_close": 1340.86,
-      "change": 4.680000000000064,
-      "change_pct": 0.3490297271900171,
-      "timestamp_utc": "2026-10-15T12:08:38Z",
-      "timestamp_epoch": 1792066118.0
+      "change": 0.5500000000001819,
+      "change_pct": 0.041018450844993656,
+      "timestamp_utc": "2026-10-15T20:33:23Z",
+      "timestamp_epoch": 1792096403.0
     }
   }
 }
