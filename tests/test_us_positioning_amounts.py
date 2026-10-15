@@ -155,6 +155,42 @@ class AmountRenderingTests(unittest.TestCase):
         fn=view.render_detail_document if detail else view.render_alert
         return fn(values["CFTC|cot"],values["Cboe|options"],values["Nasdaq SOX|sox"],list(values.values()),list(values.values()),context=context)
 
+    def summary(self,out):
+        return out.split("<b>한눈에 보기</b>",1)[1].split("<b>① 가격",1)[0]
+
+    def test_restored_summary_precedes_details_and_matches_dates_amounts_and_positions(self):
+        values,context=self.sources();out=self.render(values,context);summary=self.summary(out)
+        self.assertEqual(out.count("<b>한눈에 보기</b>"),1)
+        for phrase in ("가격(2026-10-14·전일)","SOX -4.30% / 나스닥100 -2.02% / S&P500 -1.11%",
+                       "1.0597조달러 (1,420.56조원) · 전일 +20.06%","통합 선물(2026-10-06)",
+                       "기관 순롱 74,856계약 / 헤지펀드성 순숏 26,738계약",
+                       "NQ E-mini: 순숏 19,212계약 · 1주 전 대비 순숏 5,511계약 축소",
+                       "옵션(2026-10-14): 주식 P/C 0.61 / 지수 1.01 / 전체 0.88",
+                       "선물은 가격보다 8일 이전 자료","매수·매도 방향 미확인"):
+            self.assertIn(phrase,summary)
+        self.assertLessEqual(len(out.strip()),view.BRIEF_MAX_CHARS)
+
+    def test_summary_withholds_conflicting_sources_and_does_not_invent_krw(self):
+        values,context=self.sources()
+        context["indices"]["NDX"]["returns"]["windows"]["1d"]["return_pct"]+=1
+        context["amounts"]["fx"]={}
+        values["CFTC|cot"]["history_3y"]["week_window"]["actors"]["leveraged_funds"]["net_change"]+=1
+        summary=self.summary(self.render(values,context))
+        self.assertIn("나스닥100 확인 대기",summary)
+        self.assertIn("원화 환산 보류",summary)
+        self.assertIn("NQ E-mini: 현재·주간 변화 확인 대기",summary)
+        self.assertNotIn("1,420.56조원",summary)
+        self.assertNotIn("5,511계약 축소",summary)
+        context["amounts"]["turnover"]["daily_usd"]="1"
+        self.assertIn("실제 거래대금: 확인 대기",self.summary(self.render(values,context)))
+
+    def test_summary_does_not_relabel_an_older_observation_as_one_week(self):
+        values,context=self.sources()
+        values["CFTC|cot"]["history_3y"]["week_window"]["base_date"]="2026-09-22"
+        summary=self.summary(self.render(values,context))
+        self.assertIn("직전 관측(2026-09-22) 대비",summary)
+        self.assertNotIn("1주 전 대비",summary)
+
     def test_actual_new_brief_has_point_levels_actual_turnover_krw_and_precise_missingness(self):
         values,context=self.sources();out=self.render(values,context)
         for phrase in ("11,684.38pt","-524.41pt","29,950.82pt","7,718.94pt","1.0597조달러 (1,420.56조원)",
@@ -177,8 +213,30 @@ class AmountRenderingTests(unittest.TestCase):
         self.assertIn("계약 수 변화의 동일가격 환산",out)
         self.assertIn("거래대금·증거금 아님",out)
         self.assertLessEqual(len(out.strip()),view.BRIEF_MAX_CHARS)
+        sources=list(values.values())
+        with_link=view.render_alert(values["CFTC|cot"],values["Cboe|options"],values["Nasdaq SOX|sox"],sources,sources,
+                                   context=context,detail_url="https://github.com/qedgwangju-dot/khs-watch/actions/runs/38736114255")
+        self.assertIn("한눈에 보기",with_link)
+        self.assertLessEqual(len(with_link.strip()),view.BRIEF_MAX_CHARS)
         detail=self.render(values,context,True)
         self.assertIn("만기별 실제 선물 정산가 평가액",detail)
+
+    def test_previous_amounts_layout_upgrades_summary_once_and_preserves_same_value_dedupe(self):
+        values,context=self.sources()
+        run=lambda prior=None:original.OperatingIntegrationTests.run_operating_tail(self,values,prior,context)
+        prior=run()["pending"]
+        prior["presentation_version"]="us-positioning-amounts-krw-20261015-v1"
+        preserved=copy.deepcopy(prior)
+        upgraded=run(prior)
+        self.assertTrue(upgraded["gate"])
+        self.assertEqual(upgraded["updates"],0)
+        self.assertIn("한눈에 보기",upgraded["alert"])
+        self.assertEqual(upgraded["pending"]["values"],preserved["values"])
+        self.assertEqual(upgraded["pending"]["seen"],preserved["seen"])
+        self.assertEqual(prior,preserved)
+        following=run(upgraded["pending"])
+        self.assertIsNone(following["alert"])
+        self.assertIsNone(following["pending"])
 
     def test_unavailable_fx_never_invents_a_krw_value_and_tampered_turnover_is_withheld(self):
         values,context=self.sources();context["amounts"]["fx"]={}

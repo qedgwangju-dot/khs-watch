@@ -13,7 +13,7 @@ from us_positioning_context import checked_path, checked_composition, checked_op
 from us_positioning_amounts import checked_turnover, checked_reference, money_pair, notional
 from us_positioning_fx import checked_fx
 
-PRESENTATION_VERSION = "us-positioning-amounts-krw-20261015-v1"
+PRESENTATION_VERSION = "us-positioning-at-a-glance-20261015-v1"
 BRIEF_MAX_CHARS = 2400
 
 
@@ -525,6 +525,43 @@ def render_detail_document(*args, **kwargs):
             '<main style="white-space:pre-wrap">' + analysis + '</main></body></html>\n')
 
 
+def _at_a_glance(cftc, cboe, sox, context):
+    """Summarize the same verified observations used by the sections below."""
+    end = date_value((sox or {}).get("period"))
+    sm = (sox or {}).get("metrics", {})
+    daily = [percent(sm.get("d1_pct"), 2, True) if sm.get("final_close_confirmed") is True else "확인 대기"]
+    for symbol in ("NDX", "SPX"):
+        value = checked_returns(context.get("indices", {}).get(symbol, {}).get("returns"), end, symbol) if end else None
+        window = value["windows"].get("1d", {}) if value else {}
+        daily.append(percent(window.get("return_pct"), 2, True) if window.get("status") == "verified" else "확인 대기")
+    lines = [f"• 가격({date_label(sox)}·전일): " + " / ".join(f"{name} {value}" for name, value in zip(("SOX", "나스닥100", "S&P500"), daily))]
+
+    amounts = context.get("amounts", {})
+    turnover = checked_turnover(amounts.get("turnover"), end) if end else None
+    lines.append(f"• 실제 거래대금: {money_pair(turnover['daily_usd'], amounts.get('fx', {}), end)} · 전일 {float(turnover['change_pct']):+.2f}%"
+                 if turnover else "• 실제 거래대금: 확인 대기")
+
+    report = date_value((cftc or {}).get("period"))
+    cm = (cftc or {}).get("metrics", {})
+    lines.append(f"• 통합 선물({date_label(cftc)}): 기관 {position_level(cm.get('asset_net'))} / 헤지펀드성 {position_level(cm.get('lev_net'))}")
+    window = (cftc or {}).get("history_3y", {}).get("week_window")
+    parts = checked_composition(window, "leveraged_funds", report) if report else None
+    if parts:
+        base = date_value(window.get("base_date"))
+        comparison = "1주 전 대비" if base and (report - base).days == 7 else f"직전 관측({window['base_date']}) 대비"
+        lines.append(f"• NQ E-mini: {position_level(parts['end_net'])} · {comparison} {position_movement(parts['end_net'], parts['net_change'])}")
+    else:
+        lines.append("• NQ E-mini: 현재·주간 변화 확인 대기")
+
+    om = (cboe or {}).get("metrics", {})
+    lines.append(f"• 옵션({date_label(cboe)}): " + " / ".join(f"{label} {om[key+'_pc_ratio']:.2f}" if number(om.get(key+'_pc_ratio')) is not None else f"{label} 미확인" for key, label in (("equity", "주식 P/C"), ("index", "지수"), ("total", "전체"))))
+    if report and end and report < end:
+        lines.append(f"※ 선물은 가격보다 {(end-report).days}일 이전 자료 · 옵션의 매수·매도 방향 미확인.")
+    else:
+        lines.append("※ 선물은 주간 보유량이며 당일 매매 흐름이 아님 · 옵션의 매수·매도 방향 미확인.")
+    return lines
+
+
 def render_alert(cftc, cboe, sox, updates, results, errors=(), event_label="신규 변화", context=None, detail_url=None):
     """A bounded, single-message brief; detail generation never sends a message."""
     context = context or {}
@@ -539,9 +576,10 @@ def render_alert(cftc, cboe, sox, updates, results, errors=(), event_label="신�
     else:
         icon, title, _ = horizon_overview(sox)
         title += " · 주요지수 종합 확인 대기"
-    body = [f"🇺🇸 <b>미국 포지셔닝 | {escape(event_label)}</b>", f"{icon} <b>{title}</b>",
-            "", f"<b>① 가격 | {date_label(sox)} 마감</b>",
-            "수익률 순서: 5거래일 / 1개월 전 대비 / 3개월 전 대비"]
+    body = [f"🇺🇸 <b>미국 포지셔닝 | {escape(event_label)}</b>", "", "<b>한눈에 보기</b>", f"{icon} <b>{title}</b>"]
+    body += _at_a_glance(cftc, cboe, sox, context)
+    body += ["", f"<b>① 가격 | {date_label(sox)} 마감</b>",
+             "수익률 순서: 5거래일 / 1개월 전 대비 / 3개월 전 대비"]
     sox_returns = [sm.get("d5_pct") if sm.get("final_close_confirmed") is True else None]
     sox_returns += [verified_price_return(sm.get("month_windows", {}).get(k), end, sm.get("value")) if end and sm.get("final_close_confirmed") is True else None for k in ("1m", "3m")]
     body.append(price_level_line("SOX",sm.get("value") if sm.get("final_close_confirmed") is True else None,sm.get("previous_close"),sm.get("d1_pct")))
