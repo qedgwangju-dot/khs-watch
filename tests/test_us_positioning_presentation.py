@@ -205,7 +205,7 @@ class OperatingIntegrationTests(unittest.TestCase):
     The actual production freshness/math gates, dedupe and render call execute.
     """
 
-    def run_operating_tail(self, values, prior_state=None):
+    def run_operating_tail(self, values, prior_state=None, context=None):
         source = (ROOT / "scripts/us_positioning_watch.py").read_text(encoding="utf-8")
         tree = ast.parse(source)
         start = next(i for i, node in enumerate(tree.body) if isinstance(node, ast.Assign)
@@ -232,10 +232,11 @@ class OperatingIntegrationTests(unittest.TestCase):
                 "fp": lambda v: hashlib.sha256(json.dumps(v, sort_keys=True, ensure_ascii=False).encode()).hexdigest(),
                 "timezone": timezone, "timedelta": timedelta, "NQ_CFTC_CODE": "209742",
             }
-            with patch.dict(os.environ, {"FORCE_SEND": "false", "GITHUB_RUN_ID": "", "GITHUB_REPOSITORY": ""}), patch("us_positioning_context.collect_context", return_value={}), redirect_stdout(io.StringIO()):
+            with patch.dict(os.environ, {"FORCE_SEND": "false", "GITHUB_RUN_ID": "", "GITHUB_REPOSITORY": ""}), patch("us_positioning_context.collect_context", return_value=copy.deepcopy(context or {})), redirect_stdout(io.StringIO()):
                 exec(compile(tail, str(ROOT / "scripts/us_positioning_watch.py"), "exec"), env)
             return {
                 "gate": env["quality_gate_ok"], "updates": len(env["updates"]), "sources": env["results"],
+                "status": env["STATUS"].read_text(encoding="utf-8"),
                 "alert": env["ALERT"].read_text(encoding="utf-8") if env["ALERT"].exists() else None,
                 "detail": env["DETAIL"].read_text(encoding="utf-8") if env["DETAIL"].exists() else None,
                 "pending": json.loads(env["PENDING"].read_text(encoding="utf-8")) if env["PENDING"].exists() else None,

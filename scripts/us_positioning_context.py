@@ -5,6 +5,7 @@ and partial historical windows remain unavailable; no forward fill is used.
 """
 from datetime import date, datetime, timedelta, timezone
 from concurrent.futures import ThreadPoolExecutor
+from copy import deepcopy
 from math import isfinite
 from statistics import median
 from pathlib import Path
@@ -460,6 +461,30 @@ def breadth_comparison(series, end_date):
         return {**result,"status":"verified","windows":windows}
     except Exception as exc:
         return {**result,"reason":str(exc)}
+
+
+def context_change_key(context, end_date):
+    """Ignore only unused adjusted ETF rows after rechecking the dated comparison.
+
+    Full inputs remain in the state/evidence. Used endpoints, all raw-close
+    paths, dates, validation states and every other context field stay exact.
+    No rounding, numerical tolerance or old-value substitution is applied.
+    """
+    value = deepcopy(context)
+    if not isinstance(value, dict):
+        return value
+    breadth = value.get("breadth") or {}
+    try:
+        computed = breadth_comparison(breadth.get("series", {}), end_date)
+        if computed.get("status") != "verified" or computed != breadth.get("comparison"):
+            return value
+        dates = {w[k] for w in computed["windows"].values() for k in ("base_date", "end_date")}
+        for symbol in ("RSP", "SPY"):
+            series = breadth["series"][symbol]
+            series["adjusted_operands"] = [row for row in series["adjusted_operands"] if row[0] in dates]
+    except (KeyError, TypeError, ValueError, AttributeError):
+        return deepcopy(context)
+    return value
 
 
 def price_returns(end_date, primary_rows, secondary_rows, symbol):
