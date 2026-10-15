@@ -122,6 +122,41 @@ class AlertOperationsAuditTest(unittest.TestCase):
         )
         self.assertFalse(short["schedule_silence_candidates"])
 
+    def test_three_scheduled_failures_not_hidden_by_successful_manual_run(self):
+        base = [
+            {"id": 5, "path": ".github/workflows/bio-qlex-intismeran-watch.yml",
+             "event": "workflow_dispatch", "conclusion": "success",
+             "created_at": "2026-10-15T12:05:00Z"},
+            {"id": 4, "path": ".github/workflows/bio-qlex-intismeran-watch.yml",
+             "event": "schedule", "conclusion": "failure",
+             "created_at": "2026-10-15T12:00:00Z", "html_url": "https://github.com/test/runs/4"},
+            {"id": 3, "path": ".github/workflows/bio-qlex-intismeran-watch.yml",
+             "event": "schedule", "conclusion": "failure",
+             "created_at": "2026-10-15T11:00:00Z"},
+            {"id": 2, "path": ".github/workflows/bio-qlex-intismeran-watch.yml",
+             "event": "schedule", "conclusion": "failure",
+             "created_at": "2026-10-15T10:00:00Z"},
+            {"id": 1, "path": ".github/workflows/bio-qlex-intismeran-watch.yml",
+             "event": "schedule", "conclusion": "success",
+             "created_at": "2026-10-15T09:00:00Z"},
+        ]
+        result = audit.audit_runtime(base, [])
+        streaks = result["persistent_scheduled_failures"]
+        self.assertEqual(len(streaks), 1)
+        self.assertEqual(streaks[0]["consecutive_schedule_failures_observed"], 3)
+        summary = audit.make_markdown({
+            "workflow_files": 1, "scheduled_files": 1,
+            "inline_send_files": 0, "risk_counts": {}
+        }, result)
+        self.assertIn("연속 예약 실패 3회 이상: 1개", summary)
+        self.assertIn("예약 연속 실패 3회", summary)
+        recovered = [{
+            "id": 6, "path": ".github/workflows/bio-qlex-intismeran-watch.yml",
+            "event": "schedule", "conclusion": "success",
+            "created_at": "2026-10-15T13:00:00Z",
+        }] + base
+        self.assertFalse(audit.audit_runtime(recovered, [])["persistent_scheduled_failures"])
+
     def test_corrupt_run_input_fails_not_false_all_clear(self):
         with tempfile.TemporaryDirectory() as directory:
             path = pathlib.Path(directory) / "runs.jsonl"
