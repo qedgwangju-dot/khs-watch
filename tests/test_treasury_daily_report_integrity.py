@@ -190,13 +190,45 @@ class TreasuryReportIntegrity(unittest.TestCase):
              patch.object(report.readable, "get_growth_cost_snapshot", return_value={"ok": False}), \
              patch.object(report, "get_refinancing_snapshot", return_value={"record_date":"2026-09-30","next12_t":10.64,"next12_share":33.4,"bills_t":7.12,"bill_share":22.4,"plus75_b":53.4}):
             rendered = report._compact_report(raw)
-        self.assertIn("전체 방향: 국채금리 하락·선행 신용경계", rendered)
+        self.assertIn("전체 방향: 장기 국채금리 하락 · 회사채 신용 경계", rendered)
         self.assertIn("국채·ETF 2026-10-08 / 회사채 OAS 2026-10-07", rendered)
         self.assertIn("이번 거래일 10년물 -6bp 하락", rendered)
         self.assertIn("당일 30년물 -7bp 하락", rendered)
         self.assertIn("같은 거래일 동시 위험회피로 단정하지 않음", rendered)
         self.assertIn("Bills에 +75bp 적용 시", rendered)
         self.assertIn("ETF 보유채권 포트폴리오 특성치", rendered)
+        self.assertIn("금리 방향: 장기 ↓ 하락 · 2년 ↓ 하락", rendered)
+        self.assertEqual(rendered.count("+$512.2M"), 1)
+        self.assertEqual(rendered.count(explanation), 1)
+
+    def test_direction_panel_keeps_rate_falls_distinct_from_etf_outflows(self):
+        # The user's October 15 alert: lower long yields but ETF redemptions.
+        flows = {t: ("↓ 추정 순유출 -$1.0M", "확인 대기") for t in ("SHY", "IEF", "TLT", "LQD", "HYG")}
+        flows["SHY"] = ("↑ 추정 순유입 +$1.0M", "확인 대기")
+        lines = report._direction_panel(flows, "4.82% | ↑ +3bp", "5.19% | ↓ -2bp", "5.52% | ↓ -4bp", "기준일 시차 있는 신용위험 경계", "281.7bp | 기준 2026-10-13 | 직전 저장값 대비 ↑ +5.1bp")
+        self.assertEqual(lines[0], "금리 방향: 장기 ↓ 하락 · 2년 ↑ 상승")
+        self.assertIn("단기(SHY) 유입 · 중기(IEF) 유출 · 장기(TLT) 유출", lines[1])
+        self.assertIn("투자등급(LQD) 유출 · 고수익(HYG) 유출", lines[2])
+        self.assertIn("HYG 신용스프레드(OAS) ↑ +5.1bp", lines[3])
+        self.assertNotIn("가격 상승", "\n".join(lines))
+
+    def test_direction_panel_missing_and_mixed_rates_are_not_flattened(self):
+        flows = {t: ("확인 대기", "확인 대기") for t in ("SHY", "IEF", "TLT", "LQD", "HYG")}
+        missing = report._direction_panel(flows, "확인 대기", "5.19% | ↓ -2bp", "확인 대기", "확인 대기", "확인 대기")
+        self.assertIn("장기 확인 대기", missing[0])
+        self.assertIn("중기(IEF) 확인 대기", missing[1])
+        self.assertIn("변화 비교 확인 대기", missing[3])
+        mixed = report._direction_panel(flows, "4.82% | → 0bp", "5.19% | ↑ +2bp", "5.52% | ↓ -4bp", "혼조", "280.0bp | 직전 저장값 대비 → 0.0bp")
+        self.assertIn("혼조 (10년 ↑ 상승 · 30년 ↓ 하락)", mixed[0])
+        self.assertIn("2년 → 보합", mixed[0])
+        self.assertIn("(OAS) → 0.0bp", mixed[3])
+
+    def test_mobile_html_emphasizes_overview_and_escapes_source_text(self):
+        formatted = report._format_html("[한눈에 보기]\n금리 방향: 장기 ↓ 하락\n10년: 5.19% | ↓ -2bp\nRepo: 안정\n환율: A&B <기준>")
+        self.assertIn("<b>금리 방향: 장기 ↓ 하락</b>", formatted)
+        self.assertNotIn("<b>10년:", formatted)
+        self.assertNotIn("<b>Repo:", formatted)
+        self.assertIn("A&amp;B &lt;기준&gt;", formatted)
 
 
     def test_jpm_30y_level_does_not_claim_a_new_breakout(self):
