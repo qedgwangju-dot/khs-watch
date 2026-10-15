@@ -789,19 +789,19 @@ def main() -> None:
                     if distinct_mid else ""
                 )
                 triggers.append(
-                    "BTC 현물 ETF 최종 확정: "
+                    "BTC 현물 ETF 보고 완료: "
                     f"최초 잠정 {signed_millions(first_amount)}"
                     f"{f' ({first_cov})' if first_cov else ''} → "
                     f"{middle}"
-                    f"최종 {signed_millions(etf.get('total_usd_m', 0.0))}"
+                    f"보고 합계 {signed_millions(etf.get('total_usd_m', 0.0))}"
                     f"{f' ({final_cov})' if final_cov else ''}"
                 )
             else:
                 triggers.append(
-                    "BTC 현물 ETF 최종 확정(값 동일): "
+                    "BTC 현물 ETF 보고 완료(값 동일): "
                     f"직전 잠정 {signed_millions(float(last_partial.get('total_usd_m', 0.0) or 0.0))}"
                     f"{f' ({last_cov})' if last_cov else ''} → "
-                    f"최종 {signed_millions(etf.get('total_usd_m', 0.0))}"
+                    f"보고 합계 {signed_millions(etf.get('total_usd_m', 0.0))}"
                     f"{f' ({final_cov})' if final_cov else ''}"
                 )
         elif same_day_value_changed:

@@ -100,16 +100,18 @@ def format_trigger(line: str, is_partial: bool = False) -> list[str]:
         if m:
             return [f"• <b>당일 합계 수정</b> · {m.group(1)}", f"  {m.group(2)}"]
 
-    if text.startswith("BTC 현물 ETF 최종 확정:"):
+    if text.startswith(("BTC 현물 ETF 보고 완료:", "BTC 현물 ETF 최종 확정:")):
         body = text.split(":", 1)[1].strip()
+        body = re.sub(r"(?<!\S)최종 (?=[+-]?\d)", "보고 합계 ", body)
         return [
-            "• <b>일간 최종 확정</b> · 잠정치는 중간 스냅샷이라 여러 번 바뀔 수 있음",
+            "• <b>일간 보고 완료</b> · 전체 ETF 보고 반영 · 이후 수정 가능",
             f"  {body}",
         ]
 
-    if text.startswith("BTC 현물 ETF 최종 확정(값 동일):"):
+    if text.startswith(("BTC 현물 ETF 보고 완료(값 동일):", "BTC 현물 ETF 최종 확정(값 동일):")):
         body = text.split(":", 1)[1].strip()
-        return ["• <b>일간 최종 확정</b> · 값 동일", f"  {body}"]
+        body = re.sub(r"(?<!\S)최종 (?=[+-]?\d)", "보고 합계 ", body)
+        return ["• <b>일간 보고 완료</b> · 값 동일 · 이후 수정 가능", f"  {body}"]
 
     if text.startswith("BTC 현물 ETF 1개월·3개월 누적 지표 검증 완료"):
         return ["• <b>1·3개월 지표 첫 검증</b> · 달력기간별 누적을 신규 제공"]

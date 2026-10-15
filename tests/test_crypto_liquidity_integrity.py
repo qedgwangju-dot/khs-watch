@@ -2,6 +2,7 @@ import unittest
 from unittest.mock import patch
 import datetime as dt
 import contextlib
+import copy
 import io
 import json
 import pathlib
@@ -415,6 +416,126 @@ class CryptoLiquidityDataIntegrityTest(unittest.TestCase):
         after = watch.carry_partial_history(old, current, "2026-10-08T10:16:00+09:00")
         self.assertEqual(len(after["provisional_history"]), 1)
         self.assertEqual(after["provisional_history"][0]["coverage"], "11/12")
+
+
+class CryptoReportCompletionWordingTest(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        path = pathlib.Path(__file__).parent / "fixtures" / "crypto_report_completion_20261015.json"
+        cls.fixture = json.loads(path.read_text(encoding="utf-8"))
+
+    def run_preserved_snapshots(self, old, current):
+        """Replay collection outputs locally; no source request or delivery is allowed."""
+        observed = self.fixture["operating_state"]
+        query_time = dt.datetime.fromisoformat(observed["updated_at_kst"])
+
+        class FrozenDateTime(dt.datetime):
+            @classmethod
+            def now(cls, tz=None):
+                return query_time.astimezone(tz) if tz else query_time.replace(tzinfo=None)
+
+        with tempfile.TemporaryDirectory() as folder:
+            root = pathlib.Path(folder)
+            state_path, pending_path = root / "state.json", root / "pending.json"
+            alert_path, status_path = root / "alert.txt", root / "status.md"
+            state_path.write_text(json.dumps(old), encoding="utf-8")
+            before = state_path.read_bytes()
+            with (
+                patch.object(watch, "OUT_DIR", root),
+                patch.object(watch, "STATE_PATH", state_path),
+                patch.object(watch, "PENDING_STATE", pending_path),
+                patch.object(watch, "ALERT_PATH", alert_path),
+                patch.object(watch, "STATUS_PATH", status_path),
+                patch.object(watch.dt, "datetime", FrozenDateTime),
+                patch.object(watch, "buyback_schedule", return_value=copy.deepcopy(observed["buyback"])),
+                patch.object(watch, "treasury_rates", return_value=copy.deepcopy(observed["rates"])),
+                patch.object(watch, "btc_etf_flow", return_value=copy.deepcopy(current)),
+                patch("urllib.request.urlopen", side_effect=AssertionError("offline replay forbids HTTP")),
+            ):
+                watch.main()
+            self.assertEqual(state_path.read_bytes(), before)
+            pending = json.loads(pending_path.read_text(encoding="utf-8"))
+            self.assertEqual(pending["errors"], [])
+            raw = alert_path.read_text(encoding="utf-8") if alert_path.exists() else ""
+            final = ""
+            if raw:
+                fx = (
+                    "\n원화 환산 기준: 1달러=1,340.50원 | 기준일 2026-10-14 | "
+                    "한국은행 ECOS 원/미국달러(매매기준율)\n"
+                )
+                with patch.object(fmt, "PENDING_STATE_PATH", pending_path):
+                    final = fmt.format_alert(raw + fx)
+            return raw, final, pending
+
+    def test_operating_completion_preserves_values_without_claiming_finality(self):
+        raw, final, pending = self.run_preserved_snapshots(
+            self.fixture["prior_state"], self.fixture["operating_state"]["btc_etf"]
+        )
+        self.assertIn("BTC 현물 ETF 보고 완료:", raw)
+        self.assertIn("<b>일간 보고 완료</b>", final)
+        self.assertIn("이후 수정 가능", final)
+        self.assertNotIn("최종 확정", raw + final)
+        self.assertNotIn("→ 최종 ", raw + final)
+        self.assertIn("최초 잠정 -150.5백만달러", final)
+        self.assertIn("보고 합계 -261.4백만달러", final)
+        self.assertIn("(9/12)", final)
+        self.assertIn("(12/12)", final)
+        self.assertEqual(pending["btc_etf"], self.fixture["operating_state"]["btc_etf"])
+        self.assertIn("최근 3개월 · 잠정", final)
+        self.assertIn("2026-07-27, 2026-08-07", final)
+
+    def test_same_amount_completion_still_reports_coverage_and_revision_limit(self):
+        # Synthetic boundary: the last unreported fund contributes zero.
+        old = copy.deepcopy(self.fixture["prior_state"])
+        current = self.fixture["operating_state"]["btc_etf"]
+        old["btc_etf"]["total_usd_m"] = current["total_usd_m"]
+        old["btc_etf"]["provisional_history"] = []
+        raw, final, pending = self.run_preserved_snapshots(old, current)
+        self.assertIn("보고 완료(값 동일):", raw)
+        self.assertIn("일간 보고 완료", final)
+        self.assertIn("값 동일 · 이후 수정 가능", final)
+        self.assertNotIn("최종 확정", final)
+        self.assertEqual(pending["btc_etf"]["total_usd_m"], -261.4)
+
+    def test_unchanged_complete_snapshot_does_not_trigger_another_alert(self):
+        old = self.fixture["operating_state"]
+        raw, final, pending = self.run_preserved_snapshots(old, old["btc_etf"])
+        self.assertEqual((raw, final), ("", ""))
+        self.assertEqual(pending["btc_etf"], old["btc_etf"])
+
+    def test_complete_day_can_still_emit_a_same_day_source_revision(self):
+        # Synthetic post-completion correction, with rolling values kept consistent.
+        old = self.fixture["operating_state"]
+        current = copy.deepcopy(old["btc_etf"])
+        for key in ("total_usd_m", "latest_recomputed_total_usd_m", "day_change_usd_m", "last5_usd_m", "five_day_change_usd_m"):
+            current[key] = round(current[key] - 0.1, 1)
+        current["last5_values_usd_m"][-1] = current["total_usd_m"]
+        current["day_change_pct"] = round(current["day_change_usd_m"] / abs(current["prev_total_usd_m"]) * 100, 1)
+        current["five_day_change_pct"] = round(current["five_day_change_usd_m"] / abs(current["prev5_usd_m"]) * 100, 1)
+        for window in current["windows"].values():
+            window["value_usd_m"] = round(window["value_usd_m"] - 0.1, 1)
+            window["change_usd_m"] = round(window["change_usd_m"] - 0.1, 1)
+            window["avg_usd_m_per_session"] = round(window["value_usd_m"] / window["trading_days"], 1)
+        raw, final, pending = self.run_preserved_snapshots(old, current)
+        self.assertIn("당일 합계 수정(현재 집계)", raw)
+        self.assertIn("당일 합계 수정", final)
+        self.assertIn("-261.5백만달러", final)
+        self.assertNotIn("일간 보고 완료", final)
+        self.assertEqual(pending["btc_etf"]["total_usd_m"], -261.5)
+
+    def test_legacy_completion_triggers_render_as_revisable_reports(self):
+        for suffix in ("", "(값 동일)"):
+            with self.subTest(suffix=suffix):
+                raw = (
+                    f"• BTC 현물 ETF 최종 확정{suffix}: "
+                    "직전 잠정 -150.5백만달러 (9/12) → 최종 -261.4백만달러 (12/12)"
+                )
+                final = "\n".join(fmt.format_trigger(raw))
+                self.assertIn("일간 보고 완료", final)
+                self.assertIn("이후 수정 가능", final)
+                self.assertIn("보고 합계 -261.4백만달러 (12/12)", final)
+                self.assertNotIn("최종 확정", final)
+                self.assertNotIn("→ 최종 ", final)
 
 
 if __name__ == "__main__":
