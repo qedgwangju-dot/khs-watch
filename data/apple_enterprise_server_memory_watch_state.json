@@ -8,6 +8,7 @@
     "0466308d6da56a74102f8090",
     "0505e47b4b18bc7c34ad",
     "05ef391a07c6b48133a5",
+    "05f317ed3d7bdda8f591",
     "06f31a2502204ad6f54838c8",
     "08ed332a833d8940dad4857b",
     "09a0982101c4770ca00446f7",
@@ -26,6 +27,7 @@
     "123d28cb0e151b9f9391",
     "12c060d04ea92478fea1",
     "13228b37b9e6115c714d",
+    "154414754ed40a89949d",
     "15f7f5cec986268904c47c17",
     "1783e528f1dfdb1b36f16172",
     "1934c021c7e57d154ad56e98",
@@ -67,6 +69,7 @@
     "2cb37c328e56f0216352d998",
     "2cd3eb62556698d2409d",
     "2db52592def1946d085125f0",
+    "2dc4d97cca26003a7cc2",
     "2e3b3bdc5e8abd3b67204592",
     "2e86edb5c16fb3f28825",
     "30b0632f5ebd497c1dabf92e",
@@ -80,6 +83,7 @@
     "3631811ea2afc8a7cd608d5d",
     "3678447c71ff82d02e4bbee3",
     "36ed01e94245b1b473efac7d",
+    "381e8ac8218f96639c32",
     "3889486e1efe127f1e69",
     "38fb426717fcdffe7418c252",
     "3925888925400564f311",
@@ -120,6 +124,7 @@
     "4e3eeb637baf44adccccaf94",
     "4e826c96d975425cdfa2ae60",
     "4ee2305d3137fa1382e823b2",
+    "5013d97c65b30f615572",
     "5093cf4ee9e345672973",
     "50b591486e5090a21a47",
     "511324e78147e2c3bc77",
@@ -138,6 +143,7 @@
     "57de8bd5beb06d18e0df",
     "587d1db9eb5f5ffeb8fad7a4",
     "588174fe738e78f00e7a",
+    "5883a12ac68f18dcaa1a",
     "59d298fb4ff5bae22e131824",
     "5a591745b306e1080d48fe3a",
     "5c9be7487f5dcdd55451",
@@ -146,6 +152,7 @@
     "5d746ce57244dad5cd759a46",
     "5e234919fcf67dba1325",
     "5ffb8f46d62eed5f8da31e4c",
+    "60e4230a1caa97e374df",
     "6150705de13498546110",
     "619d7d278d7c6a296207",
     "619e0f32d2de6c27f6b9be5f",
@@ -178,6 +185,7 @@
     "705b2af401c3632686d354be",
     "70aafe2d9c830478d4dbe5d4",
     "718f55bb2f040359207e",
+    "71dcf008fc99934f1d38",
     "72b5fa70146f2a6cbae437a0",
     "730bd89fffdc69b324ea3324",
     "747619bfd5f95e15ae003481",
@@ -204,6 +212,7 @@
     "82fddd6889afd1e714ddecf3",
     "8407fb9c7230fdc074db3a11",
     "840fe9f08a15e3da5bb0",
+    "8462ecd734edbfbc0adc",
     "849197a12e76c47538d9261a",
     "8527fea14ab939739ce3e58e",
     "860b7125b1a0d831eab8",
@@ -244,6 +253,7 @@
     "9b0eddb5264597bbddaa4196",
     "9c5039a2da6e8f9f6c05",
     "9ca2edc4f6d5403d1e763c7b",
+    "9efdff9103a77ce1fed4",
     "9f641aa574b3940d9862",
     "9f92fb140a082bc6d252",
     "a09b46ba31c6bef64b706dda",
@@ -269,6 +279,7 @@
     "b244f204db532493bbe8",
     "b2dfec269fc1b02f155ef74c",
     "b345e3b3ed13b1dd026c",
+    "b3505ee5ffde46301cfb",
     "b3613bd823bac5127fb2",
     "b3bb24e1377327efac8ef67c",
     "b57b20a95bc4cfb1a838",
@@ -402,7 +413,7 @@
       "실패모드·일정 변화"
     ]
   },
-  "last_scan_kst": "2026-10-15T18:58:36+09:00",
+  "last_scan_kst": "2026-10-15T23:45:11+09:00",
   "errors": [],
   "seen_event_keys": [
     "memory:unconfirmed",
@@ -410,6 +421,9 @@
     "server:reported:2or4:2029"
   ],
   "observations": [],
-  "fetch_ok": 12,
-  "fetch_errors": []
+  "fetch_ok": 10,
+  "fetch_errors": [
+    "bing_news 애플 M8 서버 엔비디아: ParseError not well-formed (invalid token): line 1, column 41",
+    "bing_news \"Apple\" \"M8 Ultra\" server: ParseError not well-formed (invalid token): line 1, column 41"
+  ]
 }
