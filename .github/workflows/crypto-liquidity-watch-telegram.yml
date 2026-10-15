@@ -239,10 +239,12 @@ jobs:
               "직전 잠정 -159.7백만달러 (10/12) → 최종 -89.8백만달러 (12/12)"
           )
           final_text = "\n".join(final_trigger)
-          assert "일간 최종 확정" in final_text
+          assert "일간 보고 완료" in final_text
+          assert "이후 수정 가능" in final_text
+          assert "최종 확정" not in final_text
           assert "최초 잠정 -85.2백만달러 (7/12)" in final_text
           assert "직전 잠정 -159.7백만달러 (10/12)" in final_text
-          assert "최종 -89.8백만달러 (12/12)" in final_text
+          assert "보고 합계 -89.8백만달러 (12/12)" in final_text
           print("provisional_history_finalization_valid=true")
           PY
 
