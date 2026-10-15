@@ -1537,6 +1537,25 @@ ROBOT_OCT15_EVENTS = {
             '목표 달성을 다시 확인해야 한다.'
         ),
     },
+    'alert224225_quantity_correction': {
+        'title': '정정: Telegram 224·225 수량 표기 오탐 철회',
+        'source': '기존 GitHub Actions 실행기록',
+        'link': 'https://github.com/qedgwangju-dot/khs-watch/actions/runs/38664269308',
+        'description': (
+            '2026-10-15 Run #598 Telegram message_id=224·225 발송문에서 '
+            '신젠전동·RB-Y1·Atlas 제작 목표에 확인 물량 12개를 붙인 것은 '
+            '원문의 6~12개월 위험 기간에서 12개를 잘못 추출한 오류입니다. '
+            'Agility 9개·2027년 목표 25개는 실제 시설 운영 수와 미래 목표시설 수이며 '
+            '양산 완제품 출하량이나 확정 부품 주문 개수가 아닙니다. '
+            '유니켐–Loomia의 2028년 로봇 1,000대·자동차 3,000대 역시 '
+            '양산 주문 목표이지 확보한 발주가 아닙니다. '
+            '발송된 모든 범용 확인 물량 블록의 확인 물량 판정을 철회합니다. '
+            '기존 SEC S-4 효력, RB-Y1 신청, IPO A사 양산주문 회사 진술, '
+            '유니켐 본계약과 Atlas 시제품 목표는 그대로 유지합니다. '
+            '범용 수량×단가 추측 출력을 제거하고 제품 실명·공식 단가와 '
+            '실제 납품량이 확인된 경우에만 개별 환산을 허용합니다.'
+        ),
+    },
     'alert223_quality_correction': {
         'title': '정정: Telegram 223 신규 ESS 고신호 4건 중 목표가·기대 기사 오탐 제거',
         'source': '기존 GitHub Actions 실행기록',
@@ -1561,6 +1580,7 @@ ROBOT_OCT15_GROUPS = {
     'unichem_loomia_signed': 'unichem_loomia_acquisition',
     'atlas_protoops_goal': 'atlas_protoops_build',
     'alert223_quality_correction': 'alert_quality_223',
+    'alert224225_quantity_correction': 'alert_quality_qty_224225',
 }
 ROBOT_OCT15_TITLES = {
     'agility_spac_2026': 'Agility Robotics · S-4 효력 발생·주총 승인 대기',
@@ -1569,6 +1589,7 @@ ROBOT_OCT15_TITLES = {
     'unichem_loomia_acquisition': '유니켐–Loomia · 지분 100% 인수 본계약·선행조건',
     'atlas_protoops_build': 'Boston Dynamics · Atlas 제작시간 단축 목표',
     'alert_quality_223': '알림 품질 정정 · Telegram 223 ESS 오탐 4건',
+    'alert_quality_qty_224225': '알림 품질 정정 · Telegram 224·225 수량 표기 오탐',
 }
 ROBOT_OCT15_GROUP_REGEX = (
     ('agility_spac_2026', re.compile(r'Agility\s*Robotics|애질리티\s*로보틱스',re.I),
@@ -1592,6 +1613,8 @@ ROBOT_OCT15_PRIMARY = {
 
 
 def _oct15_group(text: str) -> str:
+    if '정정: Telegram 224·225' in text:
+        return 'alert_quality_qty_224225'
     if '정정: Telegram 223' in text:
         return 'alert_quality_223'
     for group, actor, subject in ROBOT_OCT15_GROUP_REGEX:
@@ -1602,7 +1625,7 @@ def _oct15_group(text: str) -> str:
 
 def _oct15_stage(group: str, text: str, source: str = '') -> str:
     official = source in ROBOT_OCT15_PRIMARY.get(group, set())
-    if group == 'alert_quality_223':
+    if group in {'alert_quality_223', 'alert_quality_qty_224225'}:
         return 'correction'
     if group == 'agility_spac_2026':
         if official and re.search(r'합병\s*(?:종결|완료)|business\s*combination\s*(?:closed|completed)|\bAGLT\b.{0,45}(?:trading\s*started|거래\s*개시)', text,re.I):
@@ -1738,6 +1761,13 @@ _OCT15_MEANINGS = {
         '정밀 가공→조립→검사·재작업 단축 연구개발 목표이며 '
         '실제 정규생산 속도·출하·수율 개선 달성이 아닙니다.'
     ),
+    ROBOT_OCT15_TITLES['alert_quality_qty_224225']: (
+        'Telegram 224·225의 범용 확인 물량 12개·9개 시설·25개 목표 시설·1,000/3,000대 '
+        '수량 표시는 실제 양산·확정 공급 수량의 근거가 아니라 전부 철회합니다. '
+        '12개는 6~12개월을 잘못 해석한 것입니다. 기존 보도에 나온 계약·신청·'
+        '인수 추진·제조시간 목표 판정은 유지하고, 실판매 단가·계약 물량을 '
+        '확인할 때만 단위별 원화 매출을 계산합니다.'
+    ),
     ROBOT_OCT15_TITLES['alert_quality_223']: (
         '10/15 실제 Telegram message_id=223의 4건은 삼성SDI·LG에너지솔루션 '
         '목표주가 및 일본 ESS 사업 일반 논평·재보도를 신규 확정 사업으로 분류한 오탐입니다. '
@@ -1803,6 +1833,11 @@ _OCT15_RISKS = {
         '고장·안전인증이 6~12개월 위험입니다. '
         '양산품 적용 전에 대량생산 설비와 고객 인수 시험을 확인합니다.'
     ),
+    ROBOT_OCT15_TITLES['alert_quality_qty_224225']: (
+        '기간·시설·목표대수·시제품을 실제 출하량으로 잘못 표기하면 고객 수주가 과장됩니다. '
+        '단위 경계검사와 제품 실명·단가 없는 범용 확인 물량 블록 제외를 적용하고, '
+        '향후 실제 출하·수율·가격을 기업 공시와 대조합니다.'
+    ),
     ROBOT_OCT15_TITLES['alert_quality_223']: (
         '주가·목표가 및 공급망 해설을 확정 수주와 혼동하면 알림 과밀과 '
         '수혜 과장이 발생합니다. 신규 계약·실적 원문이 없으면 '
@@ -1832,6 +1867,9 @@ def _oct15_verification(group: str, text: str, source: str) -> str:
     if group == 'atlas_protoops_build':
         return ('Boston Dynamics 회사 제작 영상·Humanoids Daily 10/14 보도 대조 · '
                 '제작시간은 목표, 완제품 양산 KPI 미확인')
+    if group == 'alert_quality_qty_224225':
+        return ('Run #598 원본 Telegram 224·225 실발송문 직접 확인 · '
+                '12개월→12개·목표시설/목표물량 오인 정정')
     if group == 'alert_quality_223':
         return ('기존 Run #595 실수신 발송문·Python 선택 상태 대조 · '
                 '2026-10-15 4건 모두 고신호 오탐으로 재분류')
@@ -3142,6 +3180,7 @@ def tag_for(group: str) -> str:
             'unichem_loomia_acquisition': '유니켐 로봇 전자피부',
             'atlas_protoops_build': 'Atlas 제조공정',
             'alert_quality_223': '알림 정정',
+            'alert_quality_qty_224225': '수량 오탐 정정',
         }[group]
     if group == 'fluence_vattenfall_bess':
         return 'Fluence·Vattenfall ESS'
@@ -3359,6 +3398,7 @@ def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -
         'unichem_loomia_acquisition',
         'agility_spac_2026',
         'alert_quality_223',
+        'alert_quality_qty_224225',
     ):
         _candidate = next((x for x in candidates if x.get('group') == _group), None)
         if _candidate and not any(x.get('key') == _candidate.get('key') for x in chosen):
