@@ -1612,8 +1612,17 @@ def _oct15_stage(group: str, text: str, source: str = '') -> str:
         if official and re.search(r'(?:S[-\s]?4).{0,65}(?:효력|effective)|declared\s*effective.{0,90}(?:S[-\s]?4|registration)|SEC.{0,45}효력',text,re.I):
             return 's4_effective'
     if group == 'rainbow_fcc_compliance':
+        # Reject negative review-process sentences even when they mention the
+        # word "granted" ("not granted"). Approval needs a positive issuer act.
+        if re.search(
+            r'not\s+(?:yet\s+)?(?:granted|approved|issued)|'
+            r'미\s*(?:승인|발급)|승인\s*(?:전|미확정|심사\s*중)|'
+            r'신청\s*(?:중|단계)|(?:발급|부여)\s*되지\s*않',
+            text,re.I
+        ):
+            return 'background'
         if official and re.search(
-            r'(?:DoW|전쟁부).{0,85}(?:조건부\s*승인.{0,25}(?:발급|부여|획득)|'
+            r'(?:DoW|전쟁부).{0,85}(?:조건부\s*승인.{0,25}(?:발급|부여|획득)|
             r'(?:granted|issued|approved).{0,30}conditional\s*approval|'
             r'conditional\s*approval.{0,30}(?:granted|issued|approved))|'
             r'조건부\s*승인.{0,30}(?:획득|발급|부여)',
