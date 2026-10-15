@@ -1,6 +1,6 @@
 {
   "seen": {
-    "Nasdaq SOX|sox": "3c1ff1826a37952c9db76d4e9ae8858bd389b21483cf0744984803156a149ce5",
+    "Nasdaq SOX|sox": "e446dddc12d2dfc9837c52972b062b79a55c6118169381238d52feb100aa6289",
     "Cboe|options": "4ddff0d7b6207ed2b683ea627b23e1aa9df2dfcf7a24fdd613a0e6c18bbd1a9d",
     "CFTC|cot": "d77b13b2f03d88b50e2d4d0bdd6e751cb9f97f7c6584a27913310107f1469edf"
   },
@@ -20,14 +20,14 @@
         "official_overview_url": "https://indexes.nasdaq.com/Index/History/SOX",
         "crosscheck_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ESOX?range=10d&interval=1d",
         "crosscheck_same_date": true,
-        "crosscheck_close_diff": -0.0028125000008003553,
+        "crosscheck_close_diff": 0.00011718749919964466,
         "final_close_confirmed": true,
         "expected_completed_session": "2026-10-14",
-        "d3_pct": -7.063374552339652,
-        "d5_pct": -10.57516970810639
+        "d3_pct": -7.063397854834463,
+        "d5_pct": -10.57519213007011
       },
       "url": "https://indexes.nasdaq.com/Index/History/SOX",
-      "fingerprint": "3c1ff1826a37952c9db76d4e9ae8858bd389b21483cf0744984803156a149ce5"
+      "fingerprint": "e446dddc12d2dfc9837c52972b062b79a55c6118169381238d52feb100aa6289"
     },
     "Cboe|options": {
       "source": "Cboe",
@@ -159,5 +159,5 @@
       "source_mode": "CFTC TFF live HTML"
     }
   },
-  "updated_at_kst": "2026-10-15T10:27:14.976389+09:00"
+  "updated_at_kst": "2026-10-15T16:26:43.053243+09:00"
 }
