@@ -10,11 +10,11 @@ from math import isfinite
 
 from us_positioning_horizons import verified_price_return, verified_position_change
 from us_positioning_context import checked_path, checked_composition, checked_options, breadth_comparison, checked_returns
-from us_positioning_amounts import checked_turnover, checked_reference, money_pair, notional
+from us_positioning_amounts import checked_turnover, checked_turnover_comparisons, checked_reference, money_pair, average_money_pair, notional
 from us_positioning_fx import checked_fx
 
-PRESENTATION_VERSION = "us-positioning-at-a-glance-20261015-v1"
-BRIEF_MAX_CHARS = 2400
+PRESENTATION_VERSION = "us-positioning-period-direction-20261015-v1"
+BRIEF_MAX_CHARS = 3600
 
 
 def number(value):
@@ -277,18 +277,32 @@ def turnover_lines(amounts, end, detail=False):
     money = lambda amount,signed=False: money_pair(amount,fx,end,signed)
     lines.append(f"• {value['end_date']} 당일 <b>{money(value['daily_usd'])}</b>")
     lines.append(f"• 전일 대비 {money(value['change_usd'],True)} ({float(value['change_pct']):+.2f}%)")
-    averages=[]
+    comparison = checked_turnover_comparisons(amounts.get('turnover_comparisons'), end, value)
+    lines.append('<b>기간 방향 · 일평균, 직전 같은 기간 → 최근 기간</b>')
     for key,label in (("5d","5거래일"),("1m","1개월"),("3m","3개월")):
         w=value["windows"][key]
-        averages.append(f"{label} {money(w['average_daily_usd'])}")
+        pair=comparison['windows'][key] if comparison else {}
+        if pair.get('status')=='verified':
+            change=float(pair['average_change_pct'])
+            direction='↑ 증가' if change>0 else '↓ 감소' if change<0 else '→ 변화 없음'
+            prior=pair['previous'];current=pair['current']
+            fmt=lambda v:average_money_pair(v,fx,end)
+            lines.append(f"• {label} <b>{direction} {change:+.2f}%</b>: {fmt(prior['average_daily_usd'])} → {fmt(current['average_daily_usd'])}")
+            if not detail:
+                short=lambda d:d[5:] if d[:4]==end.isoformat()[:4] else d
+                lines.append(f"  직전 {short(prior['start_date'])}~{short(prior['end_date'])}({prior['sessions']}거래일) → 최근 {short(current['start_date'])}~{short(current['end_date'])}({current['sessions']}거래일)")
+            if detail:
+                lines.append(f"  직전 {prior['start_date']}~{prior['end_date']}({prior['sessions']}거래일) / 최근 {current['start_date']}~{current['end_date']}({current['sessions']}거래일)")
+                lines.append(f"  합계: {money(prior['total_usd'])} → {money(current['total_usd'])} / 일평균 차이 {money(pair['average_change_usd'],True)}")
+        else:
+            lines.append(f"• {label} 일평균 {money(w['average_daily_usd'])} · 직전 기간 비교 확인 대기")
         if detail:
             lines.append(f"• {label} ({w['start_date']}~{w['end_date']}, {w['sessions']}거래일): 합계 {money(w['total_usd'])} / 일평균 {money(w['average_daily_usd'])}")
-    if not detail:
-        lines.append("• 일평균: " + " / ".join(averages))
+    lines.append('※ 1·3개월은 달력 구간의 실제 거래일 일평균 비교. 거래일 수·구간·합계는 상세 기록.')
     rate=checked_fx(fx,end)
     lines.append((f"※ 원화 환산: 1달러={float(rate['krw_per_usd']):,.2f}원 · 한국은행 ECOS {rate['date']}. 과거 금액도 이 환율로 환산."
                   if rate else "※ 해당일 ECOS 매매기준율 미확인 · 원화 환산 보류"))
-    lines.append("※ Cboe 전체 거래소·TRF의 체결가×주식 수 합계. ETF 등 포함. 지수별 거래대금·순유입액 아님.")
+    lines.append("※ Cboe 전체 거래소·TRF의 체결가×주식 수. ETF 포함. 거래활동 증감이며 지수별 거래대금·순유입액 아님.")
     if detail:
         lines += [f"• 직전 거래일 {value['previous_date']}: {money(value['previous_daily_usd'])}",
                   f'<a href="{value["source_url"]}">Cboe 거래대금 정의·공식 CSV</a> · <a href="https://ecos.bok.or.kr/">한국은행 ECOS</a>']
@@ -526,24 +540,17 @@ def render_detail_document(*args, **kwargs):
 
 
 def _at_a_glance(cftc, cboe, sox, context):
-    """Summarize the same verified observations used by the sections below."""
+    """Keep the prior overview's periods, position changes and interpretation."""
     end = date_value((sox or {}).get("period"))
     sm = (sox or {}).get("metrics", {})
-    daily = [percent(sm.get("d1_pct"), 2, True) if sm.get("final_close_confirmed") is True else "확인 대기"]
-    for symbol in ("NDX", "SPX"):
-        value = checked_returns(context.get("indices", {}).get(symbol, {}).get("returns"), end, symbol) if end else None
-        window = value["windows"].get("1d", {}) if value else {}
-        daily.append(percent(window.get("return_pct"), 2, True) if window.get("status") == "verified" else "확인 대기")
-    lines = [f"• 가격({date_label(sox)}·전일): " + " / ".join(f"{name} {value}" for name, value in zip(("SOX", "나스닥100", "S&P500"), daily))]
-
-    amounts = context.get("amounts", {})
-    turnover = checked_turnover(amounts.get("turnover"), end) if end else None
-    lines.append(f"• 실제 거래대금: {money_pair(turnover['daily_usd'], amounts.get('fx', {}), end)} · 전일 {float(turnover['change_pct']):+.2f}%"
-                 if turnover else "• 실제 거래대금: 확인 대기")
-
+    confirmed = sm.get('final_close_confirmed') is True
+    price = f"{sm['value']:,.2f}pt" if confirmed and number(sm.get('value')) is not None else '확인 대기'
+    lines = [f"• 반도체(SOX): {price} | "+' | '.join(f"{d}D {percent(sm.get(f'd{d}_pct'),2,True) if confirmed else '확인 대기'}" for d in (1,3,5))]
     report = date_value((cftc or {}).get("period"))
     cm = (cftc or {}).get("metrics", {})
-    lines.append(f"• 통합 선물({date_label(cftc)}): 기관 {position_level(cm.get('asset_net'))} / 헤지펀드성 {position_level(cm.get('lev_net'))}")
+    for prefix,label in (('asset','기관'),('lev','헤지펀드성')):
+        net,change=cm.get(prefix+'_net'),cm.get(prefix+'_net_wow')
+        lines.append(f"• 통합 {label}: {position_level(net)} | 주간 순포지션 변화 {integer(change,True)}계약 · {position_change(net,change)}")
     window = (cftc or {}).get("history_3y", {}).get("week_window")
     parts = checked_composition(window, "leveraged_funds", report) if report else None
     if parts:
@@ -552,13 +559,38 @@ def _at_a_glance(cftc, cboe, sox, context):
         lines.append(f"• NQ E-mini: {position_level(parts['end_net'])} · {comparison} {position_movement(parts['end_net'], parts['net_change'])}")
     else:
         lines.append("• NQ E-mini: 현재·주간 변화 확인 대기")
-
+    hist=(cftc or {}).get('history_3y',{})
+    positions=[]
+    for years,complete in ((3,number(hist.get('net_short_percentile_3y')) is not None),(10,hist.get('ten_year_complete'))):
+        a,b=hist.get(f'net_short_percentile_{years}y'),hist.get(f'gross_short_percentile_{years}y')
+        positions.append(f"{years}년 순숏 {percentile(a)} / 총숏 {percentile(b)}백분위" if complete and number(a) is not None and number(b) is not None else f'{years}년 백분위 확인 대기')
+    lines.append('  '+' · '.join(positions))
     om = (cboe or {}).get("metrics", {})
-    lines.append(f"• 옵션({date_label(cboe)}): " + " / ".join(f"{label} {om[key+'_pc_ratio']:.2f}" if number(om.get(key+'_pc_ratio')) is not None else f"{label} 미확인" for key, label in (("equity", "주식 P/C"), ("index", "지수"), ("total", "전체"))))
+    option_bits=[]
+    for key,label in (('equity','주식 P/C'),('index','지수'),('total','전체')):
+        ratio=number(om.get(key+'_pc_ratio'))
+        text=f'{label} {ratio:.2f}' if ratio is not None else f'{label} 확인 대기'
+        if key!='total':
+            calls,puts=number(om.get(key+'_calls')),number(om.get(key+'_puts'))
+            if calls is not None and puts is not None and min(calls,puts)>0:
+                text+='(거의 1:1)' if .9<=puts/calls<=1.1 else f"({'콜' if calls>puts else '풋'}이 {'풋' if calls>puts else '콜'}의 {max(calls,puts)/min(calls,puts):.2f}배)"
+        option_bits.append(text)
+    lines.append('• Cboe 옵션: '+' / '.join(option_bits))
+    amounts=context.get('amounts',{})
+    turnover=checked_turnover(amounts.get('turnover'),end) if end else None
+    comparisons=checked_turnover_comparisons(amounts.get('turnover_comparisons'),end,turnover) if turnover else None
+    bits=[f"당일 {float(turnover['change_pct']):+.2f}%"] if turnover else ['당일 확인 대기']
+    for key,label in (('5d','5일'),('1m','1개월'),('3m','3개월')):
+        w=comparisons['windows'][key] if comparisons else {}
+        bits.append(f"{label} {float(w['average_change_pct']):+.2f}%" if w.get('status')=='verified' else f'{label} 확인 대기')
+    lines.append('• 거래대금 방향: '+' / '.join(bits)+' (기간은 일평균 비교)')
+    short=price_direction(sox)[1].removeprefix('반도체 ')
+    synthesis=f'→ <b>종합</b>: SOX 마감 기준 {short}.'
+    if report:
+        synthesis+=f" CFTC {report.isoformat()} 주간 헤지펀드성 {position_change(cm.get('lev_net'),cm.get('lev_net_wow'))}."
     if report and end and report < end:
-        lines.append(f"※ 선물은 가격보다 {(end-report).days}일 이전 자료 · 옵션의 매수·매도 방향 미확인.")
-    else:
-        lines.append("※ 선물은 주간 보유량이며 당일 매매 흐름이 아님 · 옵션의 매수·매도 방향 미확인.")
+        synthesis+=f' 가격보다 {(end-report).days}일 이전 자료로 선행 신호로 단정하지 않음.'
+    lines.append(synthesis)
     return lines
 
 
@@ -576,27 +608,37 @@ def render_alert(cftc, cboe, sox, updates, results, errors=(), event_label="신�
     else:
         icon, title, _ = horizon_overview(sox)
         title += " · 주요지수 종합 확인 대기"
-    body = [f"🇺🇸 <b>미국 포지셔닝 | {escape(event_label)}</b>", "", "<b>한눈에 보기</b>", f"{icon} <b>{title}</b>"]
+    body = [f"🇺🇸 <b>미국 포지셔닝 | {escape(event_label)}</b>", "", "<b>한눈에 보기</b>"]
     body += _at_a_glance(cftc, cboe, sox, context)
-    body += ["", f"<b>① 가격 | {date_label(sox)} 마감</b>",
-             "수익률 순서: 5거래일 / 1개월 전 대비 / 3개월 전 대비"]
+    body += ["", f"<b>① 기간 수익률과 현재 추세 | {date_label(sox)} 마감</b>",f"{icon} <b>{title}</b>"]
     sox_returns = [sm.get("d5_pct") if sm.get("final_close_confirmed") is True else None]
     sox_returns += [verified_price_return(sm.get("month_windows", {}).get(k), end, sm.get("value")) if end and sm.get("final_close_confirmed") is True else None for k in ("1m", "3m")]
     body.append(price_level_line("SOX",sm.get("value") if sm.get("final_close_confirmed") is True else None,sm.get("previous_close"),sm.get("d1_pct")))
-    body.append("• SOX: " + " / ".join(percent(v,2,True) if number(v) is not None else "확인 대기" for v in sox_returns))
+    if number(sm.get('previous_close')) is not None and sm.get('final_close_confirmed') is True:
+        body.append(f"• 전일 종가 {sm['previous_close']:,.2f}pt | "+' | '.join(f"{d}거래일 {percent(sm.get(f'd{d}_pct'),2,True)}" for d in (1,3,5)))
+    body.append(f"• 단기 판정: {price_direction(sox)[1].removeprefix('반도체 ')}")
+    for key,label,change in zip(('1m','3m'),('1개월','3개월'),sox_returns[1:]):
+        w=sm.get('month_windows',{}).get(key,{})
+        if number(change) is None:
+            body.append(f'• {label} 전 대비: 확인 대기')
+        else:
+            direction='상승' if change>0 else '하락' if change<0 else '보합'
+            body.append(f"• {label} 전 대비: <b>{percent(change,2,True)} · {direction}</b> ({w['base_date']} → {w['end_date']})")
+    body.extend(path_lines(sm.get('price_path'),end,'SOX',returns=False))
     for symbol, label in (("NDX", "나스닥100"), ("SPX", "S&P500")):
         checked = checked_returns(indices.get(symbol, {}).get("returns"), end, symbol) if end else None
         daily=checked["windows"].get("1d",{}) if checked else {}
+        body.append('')
         body.append(price_level_line(label,checked.get("close") if checked else None,
                                      daily.get("base_primary") if daily.get("status")=="verified" else None,daily.get("return_pct")))
-        bits = []
-        for key in ("5d", "1m", "3m"):
-            window = checked["windows"][key] if checked else {}
-            bits.append(percent(window["return_pct"],2,True) if window.get("status") == "verified" else "확인 대기")
-        body.append(f"• {label}: " + " / ".join(bits))
-    for symbol, label, path in (("SOX", "SOX", sm.get("price_path")), ("NDX", "나스닥100", indices.get("NDX")), ("SPX", "S&P500", indices.get("SPX"))):
-        body.append(_brief_path(path, end, symbol, label))
-    body.append("※ 기간 수익률과 현재 추세는 별개. 추세는 종가·20·60일선 순서와 평균선 방향 기준.")
+        bits=[]
+        for key,name in (('1d','1일'),('3d','3일'),('5d','5일'),('1m','1개월'),('3m','3개월')):
+            w=checked['windows'][key] if checked else {}
+            bits.append(f"{name} {percent(w['return_pct'],2,True)}" if w.get('status')=='verified' else f'{name} 확인 대기')
+        body.append('• '+' / '.join(bits[:3]))
+        body.append('• '+' / '.join(bits[3:]))
+        body.append(_brief_path(indices.get(symbol),end,symbol,label))
+    body.append("※ 월간은 달력 1·3개월 전 종가 비교. 기간 수익률과 현재 추세는 별개. 추세는 종가·20·60일선 순서와 평균선 방향 기준.")
     body += [""] + turnover_lines(context.get("amounts",{}),end)
 
     report = date_value((cftc or {}).get("period"))
@@ -619,8 +661,7 @@ def render_alert(cftc, cboe, sox, updates, results, errors=(), event_label="신�
             comparison = "1주 전 대비" if base and (report - base).days == 7 else f"직전 관측 대비({window['base_date']})"
         else:
             comparison = f"{label} 비교"
-        body.append(f"• {comparison}: <b>{position_movement(parts['end_net'],parts['net_change'])}</b>")
-        body.append("  " + holding_change("롱",parts["long_change"]) + " / " + holding_change("숏",parts["short_change"]))
+        body.append(f"• {comparison}: <b>{position_movement(parts['end_net'],parts['net_change'])}</b> · " + holding_change("롱",parts["long_change"]) + " / " + holding_change("숏",parts["short_change"]))
         estimated=reference_amount_line(parts['net_change'],amounts,report)
         if estimated:
             body.append("  계약 수 변화의 동일가격 환산: " + estimated)

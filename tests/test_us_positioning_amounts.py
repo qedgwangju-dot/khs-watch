@@ -28,7 +28,8 @@ def observed():
     f=fixture()
     turnover=amounts.parse_turnover_csv([f["turnover_csv"].encode()],"2026-10-14")
     ref=f["NDX_20261006"]
-    return dict(turnover=turnover,fx=parse_ecos_usdkrw(f["fx_responses"]["2026-10-14"],"2026-10-14"),
+    periods=gzip.decompress((ROOT/'tests/fixtures/us_positioning_amounts_periods_20261015.csv.gz').read_bytes())
+    return dict(turnover=turnover,turnover_comparisons=amounts.parse_turnover_comparisons_csv([periods],'2026-10-14'),fx=parse_ecos_usdkrw(f["fx_responses"]["2026-10-14"],"2026-10-14"),
                 nq_fx=parse_ecos_usdkrw(f["fx_responses"]["2026-10-06"],"2026-10-06"),
                 nq_reference=amounts.reference_price([("2026-10-06",ref["primary"])],[("2026-10-06",ref["secondary"])],"2026-10-06"))
 
@@ -146,6 +147,119 @@ class MonetaryTests(unittest.TestCase):
                 self.assertNotIn(key,(Path(tmp)/"us_positioning_source_evidence.json").read_text())
                 self.assertTrue(reader.records[0]["request_credentials_redacted"])
 
+class PeriodTurnoverTests(unittest.TestCase):
+    def raw(self):
+        return gzip.decompress((ROOT/'tests/fixtures/us_positioning_amounts_periods_20261015.csv.gz').read_bytes())
+
+    def test_independent_adjacent_period_sums_averages_counts_and_directions(self):
+        value=observed();current=value['turnover'];comp=value['turnover_comparisons']
+        self.assertEqual(comp['status'],'verified')
+        self.assertIs(amounts.checked_turnover_comparisons(comp,'2026-10-14',current),comp)
+        rows=list(csv.DictReader(io.StringIO(self.raw().decode())))
+        expected={'5d':('2026-10-08','2026-10-01',5,5,'-5.37'),
+                  '1m':('2026-09-15','2026-08-17',22,20,'9.49'),
+                  '3m':('2026-07-15','2026-04-15',65,62,'-13.45')}
+        for key,(start,prior_start,count,prior_count,pct) in expected.items():
+            w=comp['windows'][key];a,b=w['current'],w['previous']
+            self.assertEqual((a['start_date'],b['start_date'],a['sessions'],b['sessions']),(start,prior_start,count,prior_count))
+            self.assertFalse(set(a['session_dates'])&set(b['session_dates']))
+            actual=[]
+            for part in (a,b):
+                total=sum((Decimal(r['Total Notional']) for r in rows if r['Day'] in part['session_dates']),Decimal(0))
+                self.assertEqual(Decimal(part['total_usd']),total)
+                self.assertEqual(Decimal(part['average_daily_usd']),total/part['sessions'])
+                actual.append(total/part['sessions'])
+            self.assertEqual(Decimal(w['average_change_usd']),actual[0]-actual[1])
+            self.assertLess(abs(Decimal(w['average_change_pct'])-(actual[0]/actual[1]-1)*100),Decimal('1e-20'))
+            self.assertEqual(f"{Decimal(w['average_change_pct']):.2f}",pct)
+
+    def test_official_txse_live_date_changes_expected_roster_without_zero_fill(self):
+        comp=observed()['turnover_comparisons'];days=dict(comp['daily_operands'])
+        self.assertEqual(len(days['2026-07-09']),20)
+        self.assertEqual(len(days['2026-07-10']),21)
+        self.assertNotIn('F',{r[0] for r in days['2026-07-09']})
+        self.assertIn('F',{r[0] for r in days['2026-07-10']})
+        self.assertEqual(comp['venue_roster']['txse_live_date'],'2026-07-10')
+        self.assertEqual(sum(len(r) for r in days.values()),2608)
+
+    def test_prior_quarter_missing_venue_or_day_keeps_shorter_comparisons_and_current_values(self):
+        rows=list(csv.DictReader(io.StringIO(self.raw().decode())))
+        older=[r for r in rows if r['Day']=='2026-04-15']
+        for missing in ([older[0]],older):
+            changed=[r for r in rows if r not in missing];raw=rewrite(changed)
+            current=amounts.parse_turnover_csv([raw],'2026-10-14')
+            comp=amounts.parse_turnover_comparisons_csv([raw],'2026-10-14')
+            self.assertEqual(current,observed()['turnover'])
+            self.assertEqual(comp['status'],'partial')
+            self.assertEqual(comp['windows']['5d']['status'],'verified')
+            self.assertEqual(comp['windows']['1m']['status'],'verified')
+            self.assertEqual(comp['windows']['3m']['status'],'unavailable')
+            self.assertIs(amounts.checked_turnover_comparisons(comp,'2026-10-14',current),comp)
+
+    def test_tampered_comparison_dates_sums_average_pct_roster_and_current_values_are_withheld(self):
+        good=observed();current=good['turnover']
+        cases=[(('windows','1m','previous','start_date'),'2026-08-18'),
+               (('windows','1m','previous','sessions'),22),
+               (('windows','3m','previous','total_usd'),'1'),
+               (('windows','5d','current','average_daily_usd'),'1'),
+               (('windows','5d','average_change_pct'),'1'),
+               (('venue_roster','txse_live_date'),'2026-07-06')]
+        for path,bad in cases:
+            changed=copy.deepcopy(good['turnover_comparisons']);dest=changed
+            for key in path[:-1]:dest=dest[key]
+            dest[path[-1]]=bad
+            self.assertIsNone(amounts.checked_turnover_comparisons(changed,'2026-10-14',current))
+        self.assertIsNone(amounts.checked_turnover_comparisons(good['turnover_comparisons'],'2026-10-13',current))
+
+    def test_direction_uses_daily_average_when_total_moves_the_other_way(self):
+        comp=copy.deepcopy(observed()['turnover_comparisons']);w=comp['windows']['1m']
+        current=set(w['current']['session_dates']);previous=set(w['previous']['session_dates'])
+        for date,rows in comp['daily_operands']:
+            if date in current|previous:
+                for i,row in enumerate(rows):
+                    v='95' if date in current else '100'
+                    row[1:]=[v,'0','0',v] if i==0 else ['0','0','0','0']
+        computed=amounts.turnover_comparisons_from_operands(comp['daily_operands'],'2026-10-14')['windows']['1m']
+        self.assertGreater(Decimal(computed['current']['total_usd']),Decimal(computed['previous']['total_usd']))
+        self.assertEqual(Decimal(computed['average_change_pct']),Decimal('-5'))
+
+    def test_duplicate_responses_and_invalid_tape_totals_are_not_verified(self):
+        raw=self.raw()
+        self.assertEqual(amounts.parse_turnover_comparisons_csv([raw,raw],'2026-10-14')['status'],'unavailable')
+        rows=list(csv.DictReader(io.StringIO(raw.decode())));next(r for r in rows if r['Day']=='2026-10-14')['Total Notional']='NaN'
+        self.assertEqual(amounts.parse_turnover_comparisons_csv([rewrite(rows)],'2026-10-14')['status'],'unavailable')
+
+    def test_old_invalid_numbers_or_tape_totals_do_not_hide_verified_shorter_periods(self):
+        for column,bad in (('Total Notional','NaN'),('Total Notional','1'),('Total Shares','NaN')):
+            rows=list(csv.DictReader(io.StringIO(self.raw().decode())))
+            next(r for r in rows if r['Day']=='2026-04-15')[column]=bad
+            comp=amounts.parse_turnover_comparisons_csv([rewrite(rows)],'2026-10-14')
+            self.assertEqual(comp['status'],'partial')
+            self.assertEqual(comp['windows']['5d']['status'],'verified')
+            self.assertEqual(comp['windows']['1m']['status'],'verified')
+            self.assertEqual(comp['windows']['3m']['missing_dates'],['2026-04-15'])
+
+    def test_historical_revisions_change_context_and_averages_without_changing_daily_amount(self):
+        values,ctx=context_tests.BriefTests().sources();ctx['amounts']=observed()
+        before=context_change_key(ctx,'2026-10-14');changed=copy.deepcopy(ctx)
+        operands=changed['amounts']['turnover_comparisons']['daily_operands']
+        row=operands[0][1][0];row[1]=str(Decimal(row[1])+100);row[4]=str(Decimal(row[4])+100)
+        changed['amounts']['turnover_comparisons']=amounts.turnover_comparisons_from_operands(operands,'2026-10-14')
+        self.assertNotEqual(context_change_key(changed,'2026-10-14'),before)
+        self.assertEqual(changed['amounts']['turnover'],ctx['amounts']['turnover'])
+        self.assertNotEqual(changed['amounts']['turnover_comparisons']['windows']['3m'],ctx['amounts']['turnover_comparisons']['windows']['3m'])
+
+    def test_period_amounts_and_directions_are_visible_with_fx_limits_and_one_message(self):
+        values,ctx=AmountRenderingTests().sources();out=AmountRenderingTests().render(values,ctx)
+        for phrase in ('5거래일 <b>↓ 감소 -5.37%','9,654.22억달러 (1,294.15조원) → 9,135.89억달러 (1,224.67조원)',
+                       '1개월 <b>↑ 증가 +9.49%','9,011.53억달러 (1,208.00조원) → 9,866.79억달러 (1,322.64조원)',
+                       '3개월 <b>↓ 감소 -13.45%','11,191.75억달러 (1,500.25조원) → 9,685.95억달러 (1,298.40조원)',
+                       '일평균, 직전 같은 기간 → 최근 기간','순유입액 아님'):
+            self.assertIn(phrase,out)
+        ctx['amounts']['fx']={};out=AmountRenderingTests().render(values,ctx)
+        self.assertIn('9,654.22억달러 (원화 환산 보류) → 9,135.89억달러 (원화 환산 보류)',out)
+        self.assertLessEqual(len(out.strip()),view.BRIEF_MAX_CHARS)
+
 class AmountRenderingTests(unittest.TestCase):
     def sources(self):
         values,context=context_tests.BriefTests().sources();context["amounts"]=observed()
@@ -156,17 +270,19 @@ class AmountRenderingTests(unittest.TestCase):
         return fn(values["CFTC|cot"],values["Cboe|options"],values["Nasdaq SOX|sox"],list(values.values()),list(values.values()),context=context)
 
     def summary(self,out):
-        return out.split("<b>한눈에 보기</b>",1)[1].split("<b>① 가격",1)[0]
+        return out.split("<b>한눈에 보기</b>",1)[1].split("<b>① ",1)[0]
 
     def test_restored_summary_precedes_details_and_matches_dates_amounts_and_positions(self):
         values,context=self.sources();out=self.render(values,context);summary=self.summary(out)
         self.assertEqual(out.count("<b>한눈에 보기</b>"),1)
-        for phrase in ("가격(2026-10-14·전일)","SOX -4.30% / 나스닥100 -2.02% / S&P500 -1.11%",
-                       "1.0597조달러 (1,420.56조원) · 전일 +20.06%","통합 선물(2026-10-06)",
-                       "기관 순롱 74,856계약 / 헤지펀드성 순숏 26,738계약",
+        for phrase in ("반도체(SOX): 11,684.38pt | 1D -4.30% | 3D -7.06% | 5D -10.58%",
+                       "당일 +20.06% / 5일 -5.37% / 1개월 +9.49% / 3개월 -13.45%",
+                       "통합 기관: 순롱 74,856계약 | 주간 순포지션 변화 +4,055계약 · 순롱 확대",
+                       "통합 헤지펀드성: 순숏 26,738계약 | 주간 순포지션 변화 +7,044계약 · 순숏 축소",
                        "NQ E-mini: 순숏 19,212계약 · 1주 전 대비 순숏 5,511계약 축소",
-                       "옵션(2026-10-14): 주식 P/C 0.61 / 지수 1.01 / 전체 0.88",
-                       "선물은 가격보다 8일 이전 자료","매수·매도 방향 미확인"):
+                       "3년 순숏 27 / 총숏 20백분위 · 10년 순숏 45 / 총숏 38백분위",
+                       "Cboe 옵션: 주식 P/C 0.61(콜이 풋의 1.63배) / 지수 1.01(거의 1:1) / 전체 0.88",
+                       "가격보다 8일 이전 자료로 선행 신호로 단정하지 않음"):
             self.assertIn(phrase,summary)
         self.assertLessEqual(len(out.strip()),view.BRIEF_MAX_CHARS)
 
@@ -175,14 +291,14 @@ class AmountRenderingTests(unittest.TestCase):
         context["indices"]["NDX"]["returns"]["windows"]["1d"]["return_pct"]+=1
         context["amounts"]["fx"]={}
         values["CFTC|cot"]["history_3y"]["week_window"]["actors"]["leveraged_funds"]["net_change"]+=1
-        summary=self.summary(self.render(values,context))
-        self.assertIn("나스닥100 확인 대기",summary)
-        self.assertIn("원화 환산 보류",summary)
+        out=self.render(values,context);summary=self.summary(out)
+        self.assertIn("나스닥100 종가: 확인 대기",out)
+        self.assertIn("원화 환산 보류",out)
         self.assertIn("NQ E-mini: 현재·주간 변화 확인 대기",summary)
         self.assertNotIn("1,420.56조원",summary)
         self.assertNotIn("5,511계약 축소",summary)
         context["amounts"]["turnover"]["daily_usd"]="1"
-        self.assertIn("실제 거래대금: 확인 대기",self.summary(self.render(values,context)))
+        self.assertIn("거래대금 방향: 당일 확인 대기",self.summary(self.render(values,context)))
 
     def test_summary_does_not_relabel_an_older_observation_as_one_week(self):
         values,context=self.sources()

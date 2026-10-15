@@ -17,9 +17,11 @@ from us_positioning_fx import collect_fx, checked_fx
 MARKET_URL = "https://cdn.cboe.com/resources/us/equities/market-statistics/historical-market-volume/market_history_{year}.csv"
 MARKET_DEFINITION = "https://www.cboe.com/markets/us/equities/market-statistics/historical-market-volume/"
 NQ_CONTRACT = "https://www.cmegroup.com/markets/equities/nasdaq/e-mini-nasdaq-100.contractSpecs.html"
-# Reviewed against the official 2026-07 through 2026-10 consolidated files.
+# Reviewed against the official 2026-04 through 2026-10 consolidated files.
 # A venue roster change must be reviewed instead of producing a partial total.
 VENUES = frozenset("A B C DB DN DQ F G H J K L M N P Q U V X Y Z".split())
+TXSE_LIVE_DATE = "2026-07-10"
+TXSE_ROSTER_SOURCE = "https://www.txse.com/alerts/6a5e8e60-8753-4eac-906d-ecbbf8682df9"
 FIELDS = ["Day", "Market Participant", *[f"Tape {t} Shares" for t in "ABC"],
           "Total Shares", *[f"Tape {t} Notional" for t in "ABC"], "Total Notional",
           *[f"Tape {t} Trade Count" for t in "ABC"], "Total Trade Count"]
@@ -44,6 +46,13 @@ def _amount(value):
     return result
 
 
+def expected_venues(observed):
+    # Code F is TXSE; test-symbol activity before the live date is not inserted.
+    if day(observed).isoformat() < "2026-04-15":
+        raise ValueError("미검토 과거 거래소 목록")
+    return VENUES if day(observed).isoformat() >= TXSE_LIVE_DATE else VENUES-{'F'}
+
+
 def turnover_from_operands(operands, end_date):
     end = day(end_date)
     out = dict(status="unavailable", end_date=end.isoformat(), currency="USD",
@@ -59,7 +68,8 @@ def turnover_from_operands(operands, end_date):
         totals = {}
         for observed, venues in operands:
             codes = [v[0] for v in venues]
-            if len(codes) != len(VENUES) or set(codes) != VENUES:
+            expected = expected_venues(observed)
+            if len(codes) != len(expected) or set(codes) != expected:
                 raise ValueError("거래소·TRF 목록 누락·중복·변경: " + observed)
             values = []
             for venue in venues:
@@ -130,6 +140,115 @@ def checked_turnover(value, end_date):
         return None
 
 
+def turnover_comparisons_from_operands(operands, end_date):
+    """Recheck each adjacent comparison; missing older days do not erase shorter periods."""
+    end = day(end_date)
+    out = dict(status="unavailable", end_date=end.isoformat(), currency="USD",
+               scope="US consolidated equities; all exchanges and TRFs; Tapes A/B/C",
+               basis="adjacent nonoverlapping periods; comparison of average daily actual turnover",
+               source_url=MARKET_DEFINITION)
+    try:
+        required = sessions(months_before(end, 6)+timedelta(days=1), end)
+        observed_dates = [row[0] for row in operands]
+        if observed_dates != sorted(set(observed_dates)) or not set(observed_dates).issubset(required) or required[-1] != end.isoformat():
+            raise ValueError("직전 기간 거래일 누락·중복")
+        totals = {}
+        for observed, venues in operands:
+            codes = [v[0] for v in venues]
+            expected = expected_venues(observed)
+            if len(codes) != len(expected) or set(codes) != expected:
+                continue
+            try:
+                values = []
+                for venue in venues:
+                    if len(venue) != 5:
+                        raise ValueError("거래대금 열 미확인")
+                    a, b, c, total = [_amount(v) for v in venue[1:]]
+                    if abs(a+b+c-total) > Decimal("0.000010"):
+                        raise ValueError("거래대금 Tape 합계 불일치")
+                    values.append(total)
+            except (TypeError,ValueError):
+                continue
+            totals[observed] = sum(values, Decimal(0))
+            if totals[observed] <= 0:
+                del totals[observed]
+        windows = {}
+        for key, months in (("5d", None), ("1m", 1), ("3m", 3)):
+            if months is None:
+                current, previous = required[-5:], required[-10:-5]
+            else:
+                boundary = months_before(end, months)
+                current = sessions(boundary+timedelta(days=1), end)
+                previous = sessions(months_before(end, months*2)+timedelta(days=1), boundary)
+            missing = sorted(set(current+previous)-totals.keys())
+            if missing:
+                windows[key] = dict(status='unavailable', reason='기간 거래일·거래소 완결 미확인', missing_dates=missing)
+                continue
+            def period(dates):
+                total = sum((totals[d] for d in dates), Decimal(0))
+                return dict(start_date=dates[0], end_date=dates[-1], sessions=len(dates),
+                            session_dates=dates, total_usd=str(total), average_daily_usd=str(total/len(dates)))
+            now, prior = period(current), period(previous)
+            a, b = decimal(now['average_daily_usd']), decimal(prior['average_daily_usd'])
+            windows[key] = dict(status='verified',current=now, previous=prior, average_change_usd=str(a-b),
+                                average_change_pct=str((a/b-1)*100))
+        complete = sum(w['status']=='verified' for w in windows.values())
+        out.update(status='verified' if complete==3 else 'partial' if complete else 'unavailable',
+                   windows=windows, daily_operands=operands,
+                   venue_roster=dict(before_txse_live=sorted(VENUES-{'F'}),from_txse_live=sorted(VENUES),
+                                     txse_live_date=TXSE_LIVE_DATE,source_url=TXSE_ROSTER_SOURCE))
+    except (KeyError, TypeError, ValueError, IndexError):
+        out["reason"] = "직전 기간의 거래일·거래소·Tape 합계 검산 미완료"
+    return out
+
+
+def parse_turnover_comparisons_csv(raw_pages, end_date):
+    end = day(end_date)
+    start = months_before(end, 6)+timedelta(days=1)
+    grouped = {};invalid_dates=set()
+    try:
+        for raw in raw_pages:
+            reader = csv.DictReader(io.StringIO(raw.decode("utf-8-sig")))
+            if reader.fieldnames != FIELDS:
+                raise ValueError("거래대금 CSV 열 변경")
+            for row in reader:
+                observed = day(row["Day"])
+                if not start <= observed <= end:
+                    continue
+                code = re.search(r"\(([A-Z]{1,2})\)$", row['Market Participant'])
+                if not code or None in row:
+                    raise ValueError("거래소 식별자·열 누락")
+                try:
+                    for kind in ('Shares', 'Notional', 'Trade Count'):
+                        numbers = [_amount(row[f'Tape {t} {kind}']) for t in 'ABC']
+                        total = _amount(row[f'Total {kind}'])
+                        if abs(sum(numbers, Decimal(0))-total) > (Decimal(0) if kind=='Trade Count' else Decimal('0.000010')):
+                            raise ValueError("CSV Tape 합계 불일치")
+                        if kind=='Trade Count' and any(n != n.to_integral_value() for n in numbers+[total]):
+                            raise ValueError("체결 건수 비정상")
+                except ValueError:
+                    invalid_dates.add(observed.isoformat())
+                    continue
+                grouped.setdefault(observed.isoformat(), []).append([code[1], *[row[f'Tape {t} Notional'] for t in 'ABC'], row['Total Notional']])
+        return turnover_comparisons_from_operands([[d, sorted(v)] for d,v in sorted(grouped.items()) if d not in invalid_dates], end)
+    except (UnicodeError, KeyError, TypeError, ValueError, csv.Error):
+        return turnover_comparisons_from_operands([], end)
+
+
+def checked_turnover_comparisons(value, end_date, turnover):
+    if not isinstance(value, dict) or value.get('status') not in ('verified','partial') or checked_turnover(turnover, end_date) is None:
+        return None
+    try:
+        computed = turnover_comparisons_from_operands(value['daily_operands'], end_date)
+        if computed != value or computed['status'] not in ('verified','partial'):
+            return None
+        if any(value['windows'][key]['current'] != turnover['windows'][key] for key in ('5d','1m','3m') if value['windows'][key]['status']=='verified'):
+            return None
+        return value
+    except (KeyError, TypeError, ValueError):
+        return None
+
+
 def reference_price(primary, secondary, report_date):
     target = day(report_date)
     value = dict(status="unavailable", date=target.isoformat(), symbol="NDX",
@@ -194,6 +313,18 @@ def money_pair(value, fx, target, signed=False):
     return original+" ("+_money(decimal(value)*decimal(rate["krw_per_usd"]),"KRW",signed)+")"
 
 
+def average_money_pair(value, fx, target):
+    """Use constant units on both sides of a daily-average comparison."""
+    value = decimal(value)
+    dollars = (value/Decimal('1e8')).quantize(Decimal('.01'),rounding=ROUND_HALF_UP)
+    original = f"{dollars:,.2f}억달러"
+    rate = checked_fx(fx, target)
+    if rate is None:
+        return original+' (원화 환산 보류)'
+    won = (value*decimal(rate['krw_per_usd'])/Decimal('1e12')).quantize(Decimal('.01'),rounding=ROUND_HALF_UP)
+    return original+f' ({won:,.2f}조원)'
+
+
 def report_day(cftc):
     for fmt in ("%Y-%m-%d", "%m/%d/%Y", "%B %d, %Y"):
         try:
@@ -207,15 +338,17 @@ def collect_amounts(reader, end_date, cftc, reference):
     end, report = day(end_date), report_day(cftc)
     def market():
         try:
-            years = range((months_before(end,3)+timedelta(days=1)).year,end.year+1)
-            return parse_turnover_csv([reader.get(MARKET_URL.format(year=y)) for y in years],end)
+            years = range((months_before(end,6)+timedelta(days=1)).year,end.year+1)
+            raw = [reader.get(MARKET_URL.format(year=y)) for y in years]
+            return parse_turnover_csv(raw,end), parse_turnover_comparisons_csv(raw,end)
         except Exception:
             value=turnover_from_operands([],end)
             value["reason"]="Cboe 실제 거래대금 원자료 확인 대기"
-            return value
+            return value, turnover_comparisons_from_operands([],end)
     with ThreadPoolExecutor(max_workers=3) as pool:
         turnover=pool.submit(market)
         fx=pool.submit(collect_fx,reader,end)
         report_fx=pool.submit(collect_fx,reader,report) if report and report!=end else fx
-        return dict(turnover=turnover.result(),fx=fx.result(),nq_reference=reference or {},
+        current, comparisons = turnover.result()
+        return dict(turnover=current,turnover_comparisons=comparisons,fx=fx.result(),nq_reference=reference or {},
                     nq_fx=report_fx.result() if report else {})
