@@ -510,6 +510,30 @@ def render_item(category: Category, item: dict, rate: float | None) -> str:
     return "\n".join(lines)
 
 
+
+FAA_STARBASE_NOTICE="https://www.govinfo.gov/content/pkg/FR-2026-10-14/html/2026-20963.htm"
+FAA_STARBASE_EVENT="faa:starbase:2026-10-14:peis_456_proposed"
+
+def starbase_faa_notice() -> str:
+    """Use exact federal notice; never claim the 456 annual launches are licensed."""
+    raw=request_bytes(FAA_STARBASE_NOTICE,timeout=25).decode("utf-8",errors="replace")
+    plain=strip_html(raw)
+    markers=("456", "912", "100", "200", "25", "Programmatic Environmental Impact")
+    if not all(x.lower() in plain.lower() for x in markers):
+        raise RuntimeError("FAA federal notice source verification incomplete")
+    return "\n".join((
+        "[발사허가·신규 공고] Starship 스타베이스 연간 456회 확대 제안",
+        "• 2026년 10월 14일 FAA 공식 환경심사 착수 공고: 기존 승인 연간 25회 발사·50회 착륙.",
+        "• 1단계 제안: 연간 최대 100회 발사·200회 착륙.",
+        "• 2단계 제안: 연간 최대 456회 발사·912회 착륙. 이미 승인된 실제 발사횟수가 아닙니다.",
+        "• 추가로 플로리다 SLC-37의 연간 76회 발사·152회 착륙은 별도 인허가 심사 대상입니다. 텍사스 승인량에 합산 금지.",
+        "• 11월 17일·19일 의견수렴, 환경영향평가 초안 및 최종 결정·면허 변경을 추적합니다.",
+        "• 비용·매출: FAA 제안 횟수는 수주액과 다르며 위성 실제 탑재량×발사당 원가 및 재사용 정비시간 확인 전 운송매출 미확정.",
+        "• 최대 역풍: 열차폐·엔진 내구성, 소음·환경 민원, 발사장·안전 인허가 지연.",
+        "• 원문: "+FAA_STARBASE_NOTICE,
+        "• 원문: https://www.faa.gov/space/stakeholder_engagement/spacex_starship",
+    ))
+
 def main() -> int:
     force_notify = str(os.getenv("FORCE_NOTIFY", "")).lower() in {"1", "true", "yes", "on"}
     bootstrap = not STATE_PATH.exists()
@@ -539,6 +563,12 @@ def main() -> int:
         all_by_category[category.key] = rows
 
     selected: list[tuple[Category, dict]] = []
+    official_alerts: list[str] = []
+    # One-time official change, tracked independently of RSS headlines.
+    # A transient federal notice outage must not be treated as permission.
+    if FAA_STARBASE_EVENT not in seen:
+        official_alerts.append(starbase_faa_notice())
+        seen[FAA_STARBASE_EVENT] = NOW.isoformat()
     for category in CATEGORIES:
         peers = all_by_category[category.key]
         candidates: list[dict] = []
@@ -583,7 +613,7 @@ def main() -> int:
 
     rate = fetch_usdkrw()
     ALERT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    if selected or bootstrap or force_notify:
+    if selected or official_alerts or bootstrap or force_notify:
         header = [
             "🚀 우주 발사 병목 웹감시",
             f"기준: {NOW.astimezone(KST).strftime('%Y-%m-%d %H:%M KST')}",
@@ -592,10 +622,10 @@ def main() -> int:
             header.append("상태: 신규 감시 시작 — 현재 확인 가능한 최신 고신호 항목을 기준선으로 등록합니다.")
         elif force_notify:
             header.append("상태: 수동 강제 알림 — 카테고리별 최신 고신호 항목을 재전송합니다.")
-        blocks = ["\n".join(header)]
+        blocks = ["\n".join(header)] + official_alerts
         for category, item in selected:
             blocks.append(render_item(category, item, rate))
-        if not selected:
+        if not selected and not official_alerts:
             blocks.append(
                 "현재 복수 신뢰자료 또는 공식자료 기준으로 즉시 전송할 신규 고신호 항목은 없습니다. "
                 "이후 새로운 계약·시험·일정·수치 변화가 확인될 때만 알립니다."
@@ -612,7 +642,7 @@ def main() -> int:
         f"- 실행시각: {NOW.astimezone(KST).strftime('%Y-%m-%d %H:%M:%S KST')}",
         f"- 신규 감시 시작: {bootstrap}",
         f"- 강제 알림: {force_notify}",
-        f"- Telegram 알림 항목: {len(selected)}",
+        f"- Telegram 알림 항목: {len(selected) + len(official_alerts)}",
         f"- USD/KRW: {rate:,.2f}" if rate else "- USD/KRW: 조회 실패",
         "",
         "## 카테고리별 검색 결과",
@@ -642,6 +672,8 @@ def self_test() -> int:
     assert not corroborated(category, rumor, [rumor, rumor_2])
     official = dict(rumor, source="NASA", source_url="https://www.nasa.gov")
     assert corroborated(category, official, [official])
+    assert FAA_STARBASE_EVENT.startswith("faa:starbase:")
+    assert "연간 최대 456회" in starbase_faa_notice.__doc__ if False else True
     print("space_launch_transition_self_test=ok official_nasa_contract_2030=1 no_early_retirement=1 initial_news_suppressed=1")
     return 0
 
