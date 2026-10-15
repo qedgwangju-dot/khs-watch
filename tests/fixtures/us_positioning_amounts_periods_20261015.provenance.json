@@ -1,0 +1,18 @@
+{
+  "source_url": "https://cdn.cboe.com/resources/us/equities/market-statistics/historical-market-volume/market_history_2026.csv",
+  "normal_http_observed_at_kst": "2026-10-15T23:38:33+09:00",
+  "source_raw_sha256": "9c2c79300d8954a96e4cc2e874772a060ef83a8675126c2c2d076b91ff925cfb",
+  "selection": "2026-04-15 <= Day <= 2026-10-14; original columns and raw field values retained",
+  "selected_rows": 2608,
+  "sessions": 127,
+  "uncompressed_sha256": "81112ac38678ef7b784650071dae0300e571f4be9b0ce49c87a207e14004f510",
+  "gzip_sha256": "6f6f9c34ca83856350fde0f02c71f0a21f0e47dd20574f5726ef703bbc7f3dee",
+  "venue_roster": {
+    "2026-04-15_to_2026-07-09": 20,
+    "2026-07-10_to_2026-10-14": 21,
+    "added_venue": "Texas Stock Exchange (F)",
+    "live_trading_source": "https://www.txse.com/alerts/6a5e8e60-8753-4eac-906d-ecbbf8682df9",
+    "participant_code_source": "https://www.txse.com/alerts/txse-production-launch-and-market-activation"
+  },
+  "fixture_is_subset_for_offline_replay_not_an_original_http_response": true
+}

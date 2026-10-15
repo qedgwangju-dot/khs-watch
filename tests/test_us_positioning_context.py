@@ -236,7 +236,7 @@ class BriefTests(unittest.TestCase):
         message = self.render(values, context, detail_url="https://github.com/qedgwangju-dot/khs-watch/actions/runs/123")
         detail = view.render_detail_alert(values["CFTC|cot"],values["Cboe|options"],values["Nasdaq SOX|sox"],list(values.values()),list(values.values()),context=context)
         self.assertLessEqual(len(message.strip()), view.BRIEF_MAX_CHARS)
-        self.assertLess(len(message.strip()), len(detail.strip()) * .4)
+        self.assertLess(len(message.strip()), len(detail.strip()) * .6)
         self.assertIn("상세 수치·계산·출처</a>", message)
         for phrase in ("10년 백분위", "원수치", "112,821", "2,931,155"):
             self.assertNotIn(phrase, message)
@@ -249,8 +249,10 @@ class BriefTests(unittest.TestCase):
     def test_brief_retains_period_returns_current_trend_and_source_conflict(self):
         message = self.render()
         for phrase in ("나스닥100·S&P500 최근 5거래일 하락", "2026-10-14 마감",
-                       "SOX: -10.58% / +4.97% / -7.72%", "나스닥100: -3.88% / +2.83% / +1.23%",
-                       "S&P500: -1.06% / +1.30% / +2.32%", "SOX 추세 <b>혼재", "20일선 아래·60일선 아래",
+                       "1개월 전 대비: <b>+4.97% · 상승", "3개월 전 대비: <b>-7.72% · 하락",
+                       "1일 -2.02% / 3일 -3.02% / 5일 -3.88%", "1개월 +2.83% / 3개월 +1.23%",
+                       "1일 -1.11% / 3일 -1.19% / 5일 -1.06%", "1개월 +1.30% / 3개월 +2.32%",
+                       "SOX 현재 추세(규칙): <b>혼재", "20일선 아래·60일선 아래",
                        "-11.60%", "나스닥100 추세 확인 대기", "제공처 종가 불일치: 2026-10-06",
                        "기간 수익률과 현재 추세는 별개"):
             self.assertIn(phrase, message)
@@ -291,7 +293,7 @@ class BriefTests(unittest.TestCase):
         values["CFTC|cot"]["history_3y"]["week_window"]["actors"]["leveraged_funds"]["net_change"] += 1
         message = self.render(values, context)
         self.assertIn("주요지수 종합 확인 대기", message)
-        self.assertIn("나스닥100: 확인 대기 / 확인 대기 / 확인 대기", message)
+        self.assertIn("1일 확인 대기 / 3일 확인 대기 / 5일 확인 대기", message)
         self.assertIn("주식 P/C 과거 1개월: 확인 대기", message)
         self.assertIn("RSP−SPY 상대수익률: 확인 대기", message)
         self.assertIn("1주 롱·숏 변화: 확인 대기", message)
