@@ -1622,7 +1622,7 @@ def _oct15_stage(group: str, text: str, source: str = '') -> str:
         ):
             return 'background'
         if official and re.search(
-            r'(?:DoW|전쟁부).{0,85}(?:조건부\s*승인.{0,25}(?:발급|부여|획득)|
+            r'(?:DoW|전쟁부).{0,85}(?:조건부\s*승인.{0,25}(?:발급|부여|획득)|'
             r'(?:granted|issued|approved).{0,30}conditional\s*approval|'
             r'conditional\s*approval.{0,30}(?:granted|issued|approved))|'
             r'조건부\s*승인.{0,30}(?:획득|발급|부여)',
