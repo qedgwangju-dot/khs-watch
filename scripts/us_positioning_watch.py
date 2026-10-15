@@ -11,6 +11,7 @@ from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
 
 from us_positioning_presentation import render_alert
+from us_positioning_horizons import months_before, price_month_windows, position_month_windows
 
 ROOT = Path.cwd()
 OUT = ROOT / "out"
@@ -47,7 +48,7 @@ CBOE_DAILY_TEMPLATE = "https://www.cboe.com/markets/us/options/market-statistics
 SOX = "https://indexes.nasdaq.com/Index/History/SOX"
 SOX_OVERVIEW = "https://beta.indexes.nasdaq.com/Index/Overview/SOX"
 SOX_OVERVIEW_FALLBACK = "https://indexes.nasdaq.com/Index/Overview/SOX"
-SOX_YAHOO = "https://query1.finance.yahoo.com/v8/finance/chart/%5ESOX?range=10d&interval=1d"
+SOX_YAHOO = "https://query1.finance.yahoo.com/v8/finance/chart/%5ESOX?range=6mo&interval=1d"
 SOX_NASDAQ_HIST_API = "https://api.nasdaq.com/api/quote/SOX/historical"
 NY = ZoneInfo("America/New_York")
 SOX_AUX = "https://indexes.nasdaq.com/Index/Weighting/SOX"
@@ -282,8 +283,10 @@ def _socrata_nq_history_frame():
         "Open_Interest_All": pd.to_numeric(df["open_interest_all"], errors="coerce"),
         "Lev_Money_Positions_Long_All": pd.to_numeric(df["lev_money_positions_long"], errors="coerce"),
         "Lev_Money_Positions_Short_All": pd.to_numeric(df["lev_money_positions_short"], errors="coerce"),
+        "Asset_Mgr_Positions_Long_All": pd.to_numeric(df.get("asset_mgr_positions_long"), errors="coerce"),
+        "Asset_Mgr_Positions_Short_All": pd.to_numeric(df.get("asset_mgr_positions_short"), errors="coerce"),
     })
-    return out.dropna().sort_values("_date").drop_duplicates("_date", keep="last")
+    return out.dropna(subset=["_date", "Open_Interest_All", "Lev_Money_Positions_Long_All", "Lev_Money_Positions_Short_All"]).sort_values("_date").drop_duplicates("_date", keep="last")
 
 
 def cftc_nq_history_3y(current_nq=None, current_period=None):
@@ -514,6 +517,24 @@ def cftc_nq_history_3y(current_nq=None, current_period=None):
         "loaded_years": loaded_years,
         "ten_year_complete": ten_year_complete,
     }
+
+    # Calendar-month changes use the current report's date, never a newer row.
+    # These are NQ E-mini observations; do not mix with NASDAQ-100 Consolidated.
+    for column in ("Asset_Mgr_Positions_Long_All", "Asset_Mgr_Positions_Short_All"):
+        if column in df.columns:
+            df[column] = pd.to_numeric(df[column], errors="coerce")
+    month_rows = []
+    for _, row in df.iterrows():
+        month_rows.append({
+            "date": row["_date"].strftime("%Y-%m-%d"),
+            "oi": float(row["Open_Interest_All"]),
+            "lev_long": float(row["Lev_Money_Positions_Long_All"]),
+            "lev_short": float(row["Lev_Money_Positions_Short_All"]),
+            "asset_long": float(row["Asset_Mgr_Positions_Long_All"]) if pd.notna(row.get("Asset_Mgr_Positions_Long_All")) else None,
+            "asset_short": float(row["Asset_Mgr_Positions_Short_All"]) if pd.notna(row.get("Asset_Mgr_Positions_Short_All")) else None,
+        })
+    report_end = pd.to_datetime(current_period).date() if current_period else latest.date()
+    result["month_windows"] = position_month_windows(month_rows, report_end, current_nq)
 
     if s10 is not None:
         result.update({
@@ -1106,16 +1127,18 @@ def parse_cboe():
 
 def _nasdaq_sox_historical(expected_date):
     """Official Nasdaq historical API, restricted to completed sessions."""
-    start = expected_date - timedelta(days=14)
+    start = months_before(expected_date, 3) - timedelta(days=10)
     params = urllib.parse.urlencode({
         "assetclass": "index",
         "fromdate": start.isoformat(),
         "todate": expected_date.isoformat(),
-        "limit": "20",
+        "limit": "200",
     })
     url = SOX_NASDAQ_HIST_API + "?" + params
     payload = get(url, timeout=40).json()
     data = (payload or {}).get("data") or {}
+    if str(data.get("symbol") or "").lstrip("^") != "SOX":
+        raise RuntimeError("Nasdaq historical response symbol is not SOX")
     table = data.get("tradesTable") or data.get("trades_table") or {}
     rows = table.get("rows") if isinstance(table, dict) else None
     if not isinstance(rows, list):
@@ -1159,6 +1182,8 @@ def parse_sox():
         result = (((payload or {}).get("chart") or {}).get("result") or [None])[0]
         if not result:
             raise RuntimeError("Yahoo SOX chart result missing")
+        if (result.get("meta") or {}).get("symbol") != "^SOX":
+            raise RuntimeError("Yahoo historical response symbol is not ^SOX")
         timestamps = result.get("timestamp") or []
         quote = (((result.get("indicators") or {}).get("quote") or [{}])[0])
         closes = quote.get("close") or []
@@ -1181,8 +1206,11 @@ def parse_sox():
     nasdaq_errors = []
     nasdaq_latest = None
     official_url = None
+    nrows = []
+    historical_url = None
     try:
-        nrows, official_url = _nasdaq_sox_historical(expected)
+        nrows, historical_url = _nasdaq_sox_historical(expected)
+        official_url = historical_url
         same = [x for x in nrows if x[0] == yahoo_date]
         if not same:
             raise RuntimeError(f"Nasdaq historical API missing {yahoo_date}")
@@ -1250,6 +1278,9 @@ def parse_sox():
         metrics["d3_pct"] = (vals[-1] / vals[-4] - 1.0) * 100.0
     if len(vals) >= 6:
         metrics["d5_pct"] = (vals[-1] / vals[-6] - 1.0) * 100.0
+
+    metrics["month_windows"] = price_month_windows(yahoo_date, latest, rows, nrows)
+    metrics["month_window_history_url"] = historical_url
 
     period = yahoo_date.strftime("%m/%d/%Y")
     core = {"source": "Nasdaq SOX", "kind": "sox", "period": period, "metrics": metrics}

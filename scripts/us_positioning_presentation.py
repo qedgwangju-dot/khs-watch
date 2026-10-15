@@ -8,6 +8,8 @@ from datetime import datetime
 from html import escape
 from math import isfinite
 
+from us_positioning_horizons import verified_price_return, verified_position_change
+
 
 def number(value):
     if isinstance(value, (int, float)) and not isinstance(value, bool) and isfinite(value):
@@ -69,6 +71,33 @@ def price_direction(sox):
     if all(value == 0 for value in values):
         return "⚪", "반도체 보합", "SOX 1·3·5거래일 수익률이 모두 0입니다."
     return "🟡", "반도체 기간별 방향 혼재", "SOX 1·3·5거래일 방향이 일치하지 않습니다."
+
+
+def horizon_overview(sox):
+    short_icon, short_title, _ = price_direction(sox)
+    metrics = (sox or {}).get("metrics", {})
+    windows = metrics.get("month_windows", {})
+    end = date_value((sox or {}).get("period"))
+    if end is None or metrics.get("final_close_confirmed") is not True or number(metrics.get("d1_pct")) is None or number(metrics.get("value")) is None:
+        return "⚪", "반도체 가격 방향 확인 대기", "확인된 최신 종가·기준일이 부족해 기간 종합을 보류합니다."
+    one, three = [verified_price_return(windows.get(key), end, metrics.get("value")) for key in ("1m", "3m")]
+    if one is None or three is None:
+        return "⚪", "반도체 중기 방향 확인 대기", f"단기는 {short_title.removeprefix('반도체 ')}. 1·3개월 중 미확인 값이 있어 기간 종합은 보류합니다."
+    if short_icon == "🔴" and one < 0 and three < 0:
+        return "🔴", "반도체 단기·1개월·3개월 모두 하락", "여러 기간의 가격 수익률이 같은 하락 방향입니다."
+    if short_icon == "🟢" and one > 0 and three > 0:
+        return "🟢", "반도체 단기·1개월·3개월 모두 상승", "여러 기간의 가격 수익률이 같은 상승 방향입니다."
+    if short_icon == "🔴" and one > 0 and three < 0:
+        return "🟡", "반도체 혼재 · 1개월 상승, 단기·3개월 하락", "최근 며칠의 약세와 최근 몇 달의 흐름을 구분합니다."
+    if short_icon == "🔴" and one < 0 and three > 0:
+        return "🟡", "반도체 혼재 · 3개월 상승, 단기·1개월 하락", "3개월 수익률은 양수지만 최근 1개월과 단기는 하락입니다."
+    if short_icon == "🔴" and one > 0 and three > 0:
+        return "🟡", "반도체 1·3개월 상승 속 단기 하락", "최근 하락만으로 1·3개월 방향까지 하락으로 표시하지 않습니다."
+    if short_icon in ("🟢", "🟡") and one < 0 and three < 0 and number(metrics.get("d1_pct")) is not None and metrics["d1_pct"] > 0:
+        return "🟡", "반도체 1·3개월 하락 속 단기 반등", "당일 상승만으로 1·3개월의 하락 방향이 바뀌었다고 보지 않습니다."
+    if short_title == "반도체 보합" and one == three == 0:
+        return "⚪", "반도체 단기·1개월·3개월 보합", "세 비교 기간에서 방향성 변화가 없습니다."
+    return "🟡", "반도체 기간별 방향 혼재", "단기·1개월·3개월 수익률의 방향이 일치하지 않습니다."
 
 
 def position_level(net):
@@ -144,31 +173,59 @@ def _lag_line(cftc, sox):
 
 def render_alert(cftc, cboe, sox, updates, results, errors=(), event_label="신규 변화"):
     """Render the operating message from inputs already passed by source gates."""
-    icon, title, reason = price_direction(sox)
+    icon, title, reason = horizon_overview(sox)
     body = [
         f"🇺🇸 <b>[미국 포지셔닝 | {escape(event_label)}]</b>",
         "",
-        f"{icon} <b>현재 가격: {title}</b>",
+        f"{icon} <b>기간 종합: {title}</b>",
         reason,
     ]
     cm = (cftc or {}).get("metrics", {})
     if cm and number(cm.get("lev_net")) is not None and cm["lev_net"] < 0 and number(cm.get("lev_net_wow")) is not None and cm["lev_net_wow"] > 0:
         body.append("선물의 순숏은 줄었지만 여전히 순숏입니다. 이 주간 변화만으로 가격 반등을 판단하지 않습니다.")
-    body += ["", f"<b>① 가격 방향 | {date_label(sox)} 마감</b>"]
+    body += ["", f"<b>① 기간별 가격 방향 | {date_label(sox)} 마감</b>"]
     sm = (sox or {}).get("metrics", {})
     if number(sm.get("value")) is not None:
         body.append(f"• SOX {sm['value']:,.2f} | 전일 {sm.get('previous_close', 0):,.2f}" if number(sm.get("previous_close")) is not None else f"• SOX {sm['value']:,.2f} | 전일 종가 미확인")
     else:
         body.append("• SOX 종가 미확인")
     body.append("• " + " | ".join(f"{days}거래일 {percent(sm.get(f'd{days}_pct'), 2, signed=True)}" for days in (1, 3, 5)))
+    body.append(f"• 단기 판정: {price_direction(sox)[1].removeprefix('반도체 ')}")
+    verified_months = 0
+    for key, label in (("1m", "1개월"), ("3m", "3개월")):
+        window = sm.get("month_windows", {}).get(key, {})
+        change = verified_price_return(window, date_value((sox or {}).get("period")), sm.get("value")) if date_value((sox or {}).get("period")) else None
+        if change is None:
+            body.append(f"• {label}: <b>확인 대기</b> · 같은 날짜의 Nasdaq·Yahoo 기준 종가 미확인 또는 불일치")
+        else:
+            verified_months += 1
+            direction = "상승" if change > 0 else "하락" if change < 0 else "보합"
+            body.append(f"• {label}: <b>{percent(change, 2, signed=True)} · {direction}</b> ({window['base_date']} → {window['end_date']})")
+    body.append("• 월간은 달력 1·3개월 전 기준일 이하 최근 관측 종가와 비교")
+    body.append("• 1·3개월의 현재·기준 종가를 Nasdaq·Yahoo로 대조" if verified_months == 2 else "• 두 제공처에서 확인된 월간만 표시. 미확인·불일치 기간의 계산과 종합 판정은 보류")
 
     body += ["", f"<b>② 선물 보유 방향 | {date_label(cftc)} 주간</b>", "나스닥100 통합 · 선물만"]
     body.append(position_line("기관", cm.get("asset_net"), cm.get("asset_net_wow")))
     body.append(position_line("헤지펀드성", cm.get("lev_net"), cm.get("lev_net_wow")))
     body.append(_lag_line(cftc, sox))
     body.append("• 순롱=롱이 더 많음 / 순숏=숏이 더 많음 · 투자자 전체 자산이나 현물 매수·매도액은 아님")
+    position_windows = (cftc or {}).get("history_3y", {}).get("month_windows", {})
+    body.append("<b>NQ E-mini · 1개월/3개월 순포지션 변화</b>")
+    for key, label in (("1m", "1개월"), ("3m", "3개월")):
+        window = position_windows.get(key, {})
+        bits = []
+        for actor, actor_label in (("asset_manager", "기관"), ("leveraged_funds", "헤지펀드성")):
+            change = verified_position_change(window, actor, date_value((cftc or {}).get("period"))) if date_value((cftc or {}).get("period")) else None
+            if change is None:
+                bits.append(f"{actor_label} 확인 대기")
+            else:
+                net = window["actors"][actor]["end_net"]
+                bits.append(f"{actor_label} {integer(change, signed=True)}계약({position_change(net, change)})")
+        interval = f" ({window['base_date']} → {window['end_date']})" if window.get("base_date") else ""
+        body.append(f"• {label}{interval}: " + " / ".join(bits))
+    body.append("• 월간 선물 비교는 각 달력 기준일 이하 최근 주간 관측 사용. 위 통합 수치와 집계 범위가 다름")
 
-    body += ["", f"<b>③ 옵션 거래량 | {date_label(cboe)} 마감</b>"]
+    body += ["", f"<b>③ 옵션 거래량 | {date_label(cboe)} 일별 참고</b>"]
     om = (cboe or {}).get("metrics", {})
     for key, label in (("equity", "주식"), ("index", "지수"), ("total", "전체")):
         calls, puts, ratio = [om.get(key + suffix) for suffix in ("_calls", "_puts", "_pc_ratio")]
