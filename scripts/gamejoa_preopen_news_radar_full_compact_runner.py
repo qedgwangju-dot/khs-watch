@@ -6197,7 +6197,18 @@ def policy_probability_article_fact(title: str, body: str) -> str:
     return f"CME 페드워치의 {month}월 금리{action} 확률이 {before}%에서 {after}%로 {direction}."
 
 
-def detailed_article_core(title: str, body: str) -> str:
+def lg_cloid_humanoid_launch_core(title: str, body: str, published: str = "") -> str:
+    launch = market_materiality.lg_cloid_humanoid_launch_observation(title, body, published)
+    if not launch:
+        return ""
+    fact = (
+        f"LG전자는 두 발로 걷는 휴머노이드 '클로이드'를 {launch['target_year']}년 초 출시할 예정이며, "
+        "LG이노텍 센서·LG에너지솔루션 배터리 등 계열사 기술을 결집할 계획입니다."
+    )
+    return fact if core_sentence_is_complete(fact) else ""
+
+
+def detailed_article_core(title: str, body: str, published: str = "") -> str:
     raw_body = str(body or "")
     if core_has_ui_garbage(raw_body):
         # Some publishers concatenate the abstract, title chrome, and the
@@ -6215,6 +6226,9 @@ def detailed_article_core(title: str, body: str) -> str:
             if body_tail.strip():
                 raw_body = body_tail
     body = article_summary_body(raw_body)
+    humanoid_launch_core = lg_cloid_humanoid_launch_core(title, body, published)
+    if humanoid_launch_core:
+        return humanoid_launch_core
     fx_headline_fact = won_dollar_fx_article_core(title, body)
     if fx_headline_fact:
         return fx_headline_fact
@@ -6754,7 +6768,9 @@ def apply_generic_korean_business_profile(alert: dict, row: dict, now) -> dict:
     decision_focus = ", ".join(impact_notes) or "후속 공시와 시장 반응이 실제 가격 변수를 바꾸는지"
     exposure = "·".join(companies[:5]) if companies else "원문에 직접 언급된 기업"
     age = base.age_hours(row, now)
-    article_core = detailed_article_core(title, body)
+    article_core = detailed_article_core(
+        title, body, str(row.get("published") or ""),
+    )
     article_investment = article_investment_point(title, body, impacts)
 
     out.update(
@@ -6802,7 +6818,9 @@ def base_korean_business_alert(row: dict, now, *, score: int, impacts: list[str]
     age = base.age_hours(row, now)
     title = str(row.get("source_title") or row.get("title") or "")
     body = str(row.get("source_body") or row.get("source_abstract") or row.get("summary") or "")
-    article_core = detailed_article_core(title, body)
+    article_core = detailed_article_core(
+        title, body, str(row.get("published") or ""),
+    )
     article_investment = article_investment_point(title, body, impacts)
     return {
         "score": score + (6 if age is not None and age <= 12 else 0),
@@ -12086,6 +12104,41 @@ def low_impact_live_publication_reason(alert: dict, now) -> str:
     ))
     if official_event_aspiration and not new_policy_instrument:
         return 'official_policy_aspiration_at_event_without_new_instrument_or_budget'
+    explicit_policy_action_in_headline = bool(re.search(
+        r'(?:행정명령|제재|관세|수입\s*금지|수출\s*통제|규정|법안|금리)[^.!?\n]{0,55}'
+        r'(?:서명|발표|부과|시행|발효|의결|공포|확정|인상|인하|금지|제한)|'
+        r'(?:signed|issued|imposed|implemented|enacted|approved|raised|cut)[^.!?\n]{0,55}'
+        r'(?:executive order|sanction|tariff|rate|ban|restriction|rule)',
+        title,
+        re.I,
+    ))
+    observed_market_change = bool(re.search(
+        r'(?:CPI|소비자물가|고용|실업률|기준금리|국채금리|환율|원/달러|유가|주가|지수|순매수|순매도|거래대금)'
+        r'[^.!?\n]{0,55}\d[\d,.]*\s*(?:%|bp|원|달러|조|억|만|pt|포인트)|'
+        r'\d[\d,.]*\s*(?:%|bp)[^.!?\n]{0,45}(?:상승|하락|급등|급락|상회|하회|순매수|순매도|increase|decrease|rose|fell)',
+        combined,
+        re.I,
+    ))
+    flow_sentences = [title, *re.split(r'(?<=[.!?])\s+|[\r\n]+', body)]
+    conditional_flow = any(
+        re.search(r'(?:경우|라면|않으면|.{0,12}않았다면|if\s+)', sentence, re.I)
+        and re.search(r'(?:연기금|국민연금|기관투자자|fund|pension)', sentence, re.I)
+        and re.search(r'(?:매도|매수|순매도|순매수|sell|buy)', sentence, re.I)
+        and re.search(r'\d[\d,.]*\s*(?:조|억|만)?\s*원?', sentence, re.I)
+        for sentence in flow_sentences
+    )
+    if conditional_flow:
+        return 'hypothetical_investor_flow_without_observed_trade'
+    personal_strategy = bool(re.search(
+        r'자산\s*배분|포트폴리오|ETF.{0,18}비중|비중.{0,18}ETF|주식.{0,18}비중|'
+        r'투자\s*비중|무엇을\s*사야|얼마나\s*담아|추천\s*포트폴리오|'
+        r'(?:ETF|주식|지수).{0,18}\d+(?:\.\d+)?\s*%[^.!?\n]{0,12}(?:담아|가져가|비중|조언)|'
+        r'asset allocation|portfolio allocation',
+        title,
+        re.I,
+    ))
+    if personal_strategy and not company_execution and not observed_market_change and not new_policy_instrument:
+        return 'personal_investment_strategy_without_observed_market_event'
     official_praise_only = bool(
         re.search(r'대통령|장관|정부|부처|위원장|청장|minister|president|government', combined, re.I)
         and re.search(r'모범(?:적)?|칭찬|훌륭|좋은\s*(?:대표적\s*)?사례|상생\s*최고|great\s+example|best\s+model', combined, re.I)
@@ -12140,6 +12193,14 @@ def low_impact_live_publication_reason(alert: dict, now) -> str:
     ))
     if stock_rally_commentary and not source_has_quantified_operations:
         return 'stock_rally_commentary_without_quantified_operating_change'
+    opinion_only = bool(re.search(
+        r'비판|비난|논평|기고|칼럼|사설|주장|질타|평가|criticiz|op-ed|editorial|commentary',
+        title,
+        re.I,
+    ))
+    if (opinion_only and not explicit_policy_action_in_headline and not new_policy_instrument
+            and not company_execution and not observed_market_change):
+        return 'opinion_without_new_policy_or_market_action'
     return ''
 
 
@@ -12446,6 +12507,11 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
         routine_reason = low_impact_live_publication_reason(alert, now)
         if routine_reason:
             alert['_exclusion_reason'] = 'low_impact_live_publication:' + routine_reason
+            continue
+        if (os.getenv("RADAR_RUN_MODE", "").strip().lower() == "live"
+                and alert["market_materiality"].get("news_value_rank", 0) < 3
+                and alert["market_materiality"].get("transmission_scope_rank", 0) < 3):
+            alert["_exclusion_reason"] = "live_quality_floor_below_rank_3_without_market_wide_scope"
             continue
         if is_dedicated_fcc_optical_transceiver_policy(alert):
             alert["_exclusion_reason"] = "dedicated_khs_policy_owner:fcc_optical_transceiver"
@@ -13040,7 +13106,10 @@ def source_core_fact_errors(alert: dict) -> list[str]:
         and re.search(r"순매수\s*인증\s*이벤트|경품\s*이벤트", core)
     ):
         errors.append("promotional_tail_not_headline_market_fact")
-    event_specific_core = smartphone_memory_mix_core(title, source)
+    published = str(alert.get("published") or "")
+    event_specific_core = lg_cloid_humanoid_launch_core(title, source, published)
+    if not event_specific_core:
+        event_specific_core = smartphone_memory_mix_core(title, source)
     if not event_specific_core:
         event_specific_core = iea_existing_stock_release_core(title, source)
     if not event_specific_core:
@@ -13088,7 +13157,9 @@ def source_core_fact_errors(alert: dict) -> list[str]:
         errors.append("covered_call_market_size_or_population_mismatch")
     if any(market_materiality.HISTORICAL_ACTION.search(row) for row in market_materiality.source_sentences(core)):
         errors.append('historical_action_replaces_current_headline_event')
-    expected_observation = source_headline_event_fact(title, source)
+    expected_observation = lg_cloid_humanoid_launch_core(title, source, published)
+    if not expected_observation:
+        expected_observation = source_headline_event_fact(title, source)
     observation_core = re.sub(r"\((?:약[^)]*|원화\s*환산\s*확인\s*불가)\)", "", core)
     petroleum_cartel_alignment = korean_petroleum_cartel_core_matches(alert, observation_core)
     if expected_observation and market_materiality.canonical_source_fact(expected_observation) != market_materiality.canonical_source_fact(observation_core):
@@ -13165,10 +13236,10 @@ def source_core_fact_errors(alert: dict) -> list[str]:
     if market_materiality.COMPANY_PROFILE.search(core):
         errors.append("company_profile_not_news_core")
     if alert.get("korean_business_news"):
-        source_audit = market_materiality.assess(title, source)
+        source_audit = market_materiality.assess(title, source, published=published)
         if source_audit["disposition"] != "keep" or not source_audit["evidence"]:
             errors.append("article_without_headline_market_change_evidence")
-        core_audit = market_materiality.assess(title, core)
+        core_audit = market_materiality.assess(title, core, published=published)
         # The economic transmission may be in the full report rather than its
         # short deployment sentence. Require that exact source-bound summary.
         source_bound_deployment = bool(

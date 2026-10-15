@@ -92,6 +92,8 @@ ATTACHMENT_QUALITY_20261010 = json.loads(
     (ROOT / 'data/gamejoa_attachment_quality_fixtures_20261010.json').read_text(encoding='utf-8'))
 ATTACHMENT_QUALITY_20261011 = json.loads(
     (ROOT / 'data/gamejoa_attachment_quality_fixtures_20261011.json').read_text(encoding='utf-8'))
+ATTACHMENT_QUALITY_20261015 = json.loads(
+    (ROOT / 'data/gamejoa_attachment_quality_fixtures_20261015.json').read_text(encoding='utf-8'))
 ATTACHMENT_TRIAGE_20261013 = [
     line.split('\t')
     for line in (ROOT / 'data/gamejoa_market_attachment_triage_20261013.tsv').read_text(encoding='utf-8').splitlines()[1:]
@@ -6331,6 +6333,190 @@ class IncrementalNewsTests(unittest.TestCase):
 
 
 class ConcreteLiveSelectionRegressions(unittest.TestCase):
+    def test_oct15_attachment_is_exhaustive_and_keeps_source_uncertainty_explicit(self):
+        fixture = ATTACHMENT_QUALITY_20261015
+        rows = fixture["items"]
+        self.assertEqual(len(rows), 18)
+        self.assertEqual(len({row["id"] for row in rows}), 18)
+        self.assertEqual(len({row["url"] for row in rows}), 18)
+        self.assertEqual(len({row["event_group"] for row in rows}), fixture["expected_unique_event_groups"])
+        self.assertTrue(all(row["url"].startswith(("https://", "http://")) for row in rows))
+        by_id = {row["id"]: row for row in rows}
+        for group, ids in fixture["duplicate_groups"].items():
+            self.assertEqual({by_id[item_id]["event_group"] for item_id in ids}, {group})
+        self.assertEqual(
+            {row["id"] for row in fixture["independent_source_checks"]},
+            {"lg_cloid_humanoid_launch", "semiconductor_premarket_selloff"},
+        )
+        self.assertTrue(all("not_independently_checked" in row["status"] or "full_body_read" in row["status"]
+                            for row in fixture["independent_source_checks"]))
+        self.assertEqual(by_id["trump_investment_claim_yonhap_tv"]["decision"], "hold_exact_body")
+        self.assertEqual(by_id["korea_selloff_seoul"]["publisher"], "서울신문")
+
+    def test_verified_lg_cloid_humanoid_launch_is_eligible_and_cross_publisher_deduped(self):
+        body = (
+            "LG전자는 두 발로 걷는 휴머노이드 로봇 '클로이드'를 내년 초에 출시할 예정이다. "
+            "이번 제품 개발에는 LG전자의 액추에이터, LG이노텍의 센서, LG에너지솔루션의 배터리 등 "
+            "주요 계열사의 기술과 역량이 결집된다. LG그룹은 계열사 역량을 활용해 로봇 사업에 속도를 낼 계획이다."
+        )
+        first = alert(
+            "단독 LG전자, 두 발로 걷는 휴머노이드 '클로이드' 내년 초 출시",
+            body,
+            "https://www.news1.kr/industry/general-industry/6320026",
+        )
+        first["published"] = "2026-10-15T07:16:00+09:00"
+        first["telegram_core_fact"] = radar.detailed_article_core(
+            first["source_title"], body, first["published"],
+        )
+        audit = materiality.assess(first["source_title"], body, published=first["published"])
+        self.assertEqual(audit["disposition"], "keep", audit)
+        self.assertGreaterEqual(audit["priority"], 2, audit)
+        self.assertEqual(audit["news_value_rank"], 3, audit)
+        self.assertEqual(
+            audit["equity_publication"],
+            {"eligible": True, "reason": "verified_listed_humanoid_launch_with_group_component_chain"},
+        )
+        self.assertIn("2027년 초 출시할 예정", first["telegram_core_fact"])
+        self.assertEqual(radar.source_core_fact_errors(first), [])
+
+        reprint = alert(
+            "LG전자 휴머노이드 로봇 클로이드, 2027년 초 공개 예정",
+            body.replace("내년 초에 출시할 예정이다", "2027년 초 공개를 목표로 한다"),
+            "https://example.com/lg-cloid-reprint",
+        )
+        reprint["published"] = "2026-10-15T08:00:00+09:00"
+        self.assertEqual(
+            materiality.source_event_identity(first),
+            materiality.source_event_identity(reprint),
+        )
+
+        with patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}), patch.object(radar.base, "kst_now", return_value=NOW):
+            selected = radar.quality_display_alerts([first], 1)
+        self.assertEqual(len(selected), 1)
+        self.assertEqual(selected[0]["link"], first["link"])
+        self.assertIn("클로이드", selected[0]["telegram_core_fact"])
+
+    def test_kb_samsung_cxmt_gap_reprints_share_one_underlying_event_identity(self):
+        body = (
+            "KB증권은 삼성전자와 중국 창신메모리(CXMT)의 기술 격차가 최대 7년에 달한다고 분석했다. "
+            "중국 업체의 추격에 대한 시장 우려는 과도하며, 삼성전자는 선단 공정과 HBM 기술을 고도화하고 있다고 평가했다."
+        )
+        variants = (
+            alert("삼성전자, CXMT와 기술격차 최대 7년…시장 우려 과도", body,
+                  "https://www.hankyung.com/article/2026101528166"),
+            alert("KB證 '삼전, 창신메모리 기술격차 최대 7년…시장 우려 과도'", body,
+                  "https://www.newsis.com/view/NISX20261015_0003826572"),
+            alert("CXMT 추격은 착시…삼성전자 기술 진입장벽 높다-KB", body,
+                  "https://www.mt.co.kr/stock/2026/10/15/2026101508284577628"),
+        )
+        identities = {materiality.source_event_identity(item) for item in variants}
+        self.assertEqual(len(identities), 1, identities)
+        self.assertTrue(next(iter(identities)).startswith("source_event:v2:samsung_cxmt_analyst_gap:"))
+
+    def test_oct15_semiconductor_selloff_and_sidecar_reprints_share_one_session_identity(self):
+        cases = (
+            {**alert(
+                "오늘 더 빠진다 프리마켓서 삼전닉스 6·7%대 하락",
+                "15일 오전 8시27분 삼성전자는 6.68%, SK하이닉스는 7.54% 하락했다. "
+                "미국 9월 CPI는 전년 대비 3.7% 올라 예상치 3.6%를 웃돌았다.",
+                "https://www.mt.co.kr/stock/2026/10/15/2026101508353838323",
+            ), "published": "2026-10-15T08:30:00+09:00"},
+            {**alert(
+                "속보 삼전 -6%·하이닉스 -8%…코스피 매도 사이드카",
+                "삼성전자와 SK하이닉스 주가 급락으로 코스피에 매도 사이드카가 발동됐다. "
+                "삼성전자 -6%, SK하이닉스 -8%를 기록했다.",
+                "https://www.seoul.co.kr/news/economy/securities/2026/10/15/20261015500023",
+            ), "published": "2026-10-15T14:00:00+09:00"},
+            {**alert(
+                "검은 목요일 코스피·코스닥 매도 사이드카 발동",
+                "코스피와 코스닥에 매도 사이드카가 발동했다. 삼성전자와 SK하이닉스도 급락했다.",
+                "https://www.newsis.com/view/NISX20261015_0003826841",
+            ), "published": "2026-10-15T14:05:00+09:00"},
+        )
+        identities = {materiality.source_event_identity(item) for item in cases}
+        self.assertEqual(len(identities), 1, identities)
+        self.assertEqual(next(iter(identities)), "source_event:v2:korea_equity_selloff_episode:2026-10-15")
+
+    def test_live_quality_gate_rejects_hypothetical_flow_advice_and_opinion_but_keeps_measured_shock(self):
+        now = dt.datetime(2026, 10, 15, 10, 0, tzinfo=dt.timezone(dt.timedelta(hours=9)))
+        cases = (
+            (
+                "리밸런싱 연기 안 했다면 국민연금 하루 8000억원 매도했을 것",
+                "국민연금은 리밸런싱이 연기되지 않았다면 하루 8000억원을 순매도했을 것으로 추산됐다.",
+                "hypothetical_investor_flow_without_observed_trade",
+            ),
+            (
+                "전문가 추천 포트폴리오…주식 50%, ETF 30% 담아라",
+                "전문가가 권한 자산 배분 전략이다. 금리와 경기 흐름을 고려해 투자 비중을 조절하라고 조언했다.",
+                "personal_investment_strategy_without_observed_market_event",
+            ),
+            (
+                "노벨상 수상자, 트럼프 ICC 제재 비판",
+                "수상자는 국제형사재판소(ICC)에 대한 미국의 제재를 비판했다. "
+                "앞서 트럼프 행정부는 ICC 제재를 발표했으며 조치는 6개월 뒤 발효된다.",
+                "opinion_without_new_policy_or_market_action",
+            ),
+        )
+        with patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}), patch.object(radar.base, "kst_now", return_value=now):
+            for index, (title, body, expected_reason) in enumerate(cases):
+                with self.subTest(title=title):
+                    candidate = alert(title, body, f"https://example.com/live-noise-{index}")
+                    self.assertEqual(radar.low_impact_live_publication_reason(candidate, now), expected_reason)
+            new_policy = alert(
+                "FCC, 중국산 광송수신기 수입금지안 의견수렴",
+                "FCC가 데이터센터용 중국산 광송수신기의 수입금지안을 발표하고 의견수렴을 시작했다.",
+                "https://example.com/live-policy-action",
+            )
+            self.assertEqual(radar.low_impact_live_publication_reason(new_policy, now), "")
+
+            shock = alert(
+                "프리마켓 삼전 6.68%·SK하이닉스 7.54% 하락…미 CPI 예상 상회",
+                "15일 오전 8시27분 삼성전자는 6.68%, SK하이닉스는 7.54% 하락했다. "
+                "미국 9월 CPI는 전년 대비 3.7% 올라 예상치 3.6%를 웃돌았고, AMD와 인텔도 하락했다.",
+                "https://www.mt.co.kr/stock/2026/10/15/2026101508353838323",
+            )
+            self.assertEqual(radar.low_impact_live_publication_reason(shock, now), "")
+            assessment = radar.source_market_materiality(shock)
+            self.assertEqual(assessment["disposition"], "keep", assessment)
+            self.assertGreaterEqual(assessment["news_value_rank"], 3, assessment)
+
+    def test_mask_pack_cumulative_sales_pr_is_not_a_live_market_catalyst(self):
+        title = "넘버즈인, 숫자 마스크팩 1억 장 판매…국내외 유통 채널 확대"
+        body = (
+            "스킨케어 브랜드 넘버즈인은 자사 숫자 마스크팩의 국내외 누적 판매량이 1억 장을 돌파했다고 밝혔다. "
+            "판매량은 2022년부터 2026년 10월까지 전 제품 실적을 합산했으며 회사 자체 집계 기준이다. "
+            "현재 올리브영, 아마존, 큐텐에서 판매 중이다. 신규 계약이나 기간 매출 공시는 없었다."
+        )
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit["disposition"], "exclude", audit)
+        self.assertEqual(audit["reason"], "cumulative_retail_unit_milestone_without_period_financials", audit)
+
+    def test_live_rank_two_candidate_does_not_fill_an_empty_slot(self):
+        candidate = alert("시장 전망 기사", "시장에 대한 단순 논평입니다.")
+        now = NOW
+        audit = {"disposition": "keep", "priority": 2, "news_value_rank": 2,
+                 "transmission_scope_rank": 2, "focus": 1, "axes": [], "reason": "test"}
+        with (
+            patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}),
+            patch.object(radar.telegram, "display_alerts", side_effect=lambda items, _limit: items),
+            patch.object(radar.base, "kst_now", return_value=now),
+            patch.object(radar, "source_market_materiality", return_value=audit),
+        ):
+            self.assertEqual(radar.quality_display_alerts([candidate], 7), [])
+        self.assertEqual(candidate["_exclusion_reason"], "live_quality_floor_below_rank_3_without_market_wide_scope")
+
+    def test_macro_release_surprise_ranks_above_routine_yield_change(self):
+        surprise = materiality.assess(
+            "미 9월 CPI 3.7%…예상치 웃돌아",
+            "미국 9월 소비자물가 상승률은 3.7%로 시장 예상치 3.6%를 웃돌았다.",
+        )
+        routine = materiality.assess(
+            "국고채 금리 하락",
+            "국고채 3년물 금리는 5bp 하락한 연 3.960%를 기록했다.",
+        )
+        self.assertGreaterEqual(surprise["news_value_rank"], 4, surprise)
+        self.assertLess(routine["news_value_rank"], 4, routine)
+
     def test_oct14_low_signal_theme_rally_and_incubatee_profile_do_not_fill_live_slots(self):
         now = dt.datetime(2026, 10, 14, 1, 23, tzinfo=dt.timezone(dt.timedelta(hours=9)))
         cases = (
