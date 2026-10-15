@@ -95,10 +95,17 @@ jobs:
           PY
 
       - name: Run alert-quality regression guards
-        run: python scripts/physical_ai_watch_regression_check.py
+        run: |
+          python scripts/physical_ai_watch_regression_check.py
+          python -m unittest discover -s tests -p 'test_hbm_currency_krw_guard.py'
 
       - name: Scan physical AI / battery / grid / ROBOTIS-NVIDIA / Figure AI / Tesla Optimus China / AI-RAN sources
         run: python scripts/physical_ai_watch_airan_guard.py
+
+      - name: Enforce immediate KRW conversion for all Telegram foreign amounts
+        if: success() && hashFiles('out/robotis_physical_ai_watch_telegram.txt') != ''
+        run: |
+          python scripts/currency_krw_guard.py out/robotis_physical_ai_watch_telegram.txt
 
       - name: Send Telegram only on meaningful change
         if: success()
