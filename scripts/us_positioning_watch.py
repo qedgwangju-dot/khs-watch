@@ -1493,7 +1493,7 @@ market_context = {}
 if quality_gate_ok:
     from us_positioning_context import collect_context
     try:
-        market_context = collect_context(sox_for_gate, cboe_for_gate, OUT)
+        market_context = collect_context(sox_for_gate, cboe_for_gate, OUT, cftc=cftc_for_gate)
     except Exception as exc:
         market_context = {"collection_error": str(exc)}
     context_core = {"source": "미국 주요지수·시장 확산·옵션 과거 비교", "kind": "context",

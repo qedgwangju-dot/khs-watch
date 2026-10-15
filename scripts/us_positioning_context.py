@@ -339,12 +339,14 @@ class SourceReader:
         self.lock = threading.Lock()
         self.deadline = time.monotonic()+150
 
-    def get(self, url):
+    def get(self, url, *, evidence_url=None):
         import requests
         if time.monotonic() >= self.deadline:
             raise TimeoutError("맥락 원자료 수집 제한시간")
         started = datetime.now(timezone.utc).isoformat()
-        rec = dict(url=url,started_at_utc=started)
+        rec = dict(url=evidence_url or url,started_at_utc=started)
+        if evidence_url is not None:
+            rec["request_credentials_redacted"] = True
         try:
             response = requests.get(url, headers={"User-Agent": "Mozilla/5.0",
                 "Accept": "application/json,text/html,*/*"}, timeout=(5,12))
@@ -354,12 +356,13 @@ class SourceReader:
             with self.lock:
                 with gzip.open(self.directory/filename, "wb") as f:
                     f.write(raw)
-            rec.update(status=response.status_code, final_url=response.url,
+            rec.update(status=response.status_code, final_url=evidence_url or response.url,
                        bytes=len(raw), sha256=digest, gzip_file="us_positioning_sources/"+filename)
             response.raise_for_status()
             return raw
         except Exception as exc:
-            rec["error"] = type(exc).__name__+": "+str(exc)
+            rec["error"] = (type(exc).__name__+": protected source request failed"
+                            if evidence_url is not None else type(exc).__name__+": "+str(exc))
             raise
         finally:
             rec["finished_at_utc"] = datetime.now(timezone.utc).isoformat()
@@ -374,12 +377,15 @@ class SourceReader:
             json.dumps(ledger, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
 
 
-def collect_context(sox, cboe, output):
+def collect_context(sox, cboe, output, cftc=None):
     """Supplementary lanes fail individually; never turn missingness into a signal."""
     expected = day(datetime.strptime(sox["period"], "%m/%d/%Y").date())
     reader = SourceReader(output)
     current_options = cboe["metrics"]
     indices, proxies = {}, {}
+    references = {}
+    from us_positioning_amounts import reference_price, collect_amounts, report_day
+    report = report_day(cftc)
 
     def asset(symbol, yahoo_symbol, assetclass):
         yurl = "https://query1.finance.yahoo.com/v8/finance/chart/"+quote(yahoo_symbol,safe="")+"?range=6mo&interval=1d"
@@ -395,6 +401,8 @@ def collect_context(sox, cboe, output):
                                    todate=expected.isoformat(),limit=200))
             purl = "https://api.nasdaq.com/api/quote/"+symbol+"/historical?"+params
             prows = parse_nasdaq(json.loads(reader.get(purl)),symbol,expected)
+        if symbol == "NDX" and report is not None:
+            references["nq"] = reference_price(prows, yrows, report)
         path = price_path(expected, prows, yrows, symbol)
         path.update(primary_url=purl, secondary_url=yurl)
         path["returns"] = price_returns(expected,prows,yrows,symbol)
@@ -413,6 +421,7 @@ def collect_context(sox, cboe, output):
         with ThreadPoolExecutor(max_workers=4) as pool:
             for symbol,result in pool.map(fetch_asset,[("NDX","^NDX","index"),("SPX","^GSPC","index"),("RSP","RSP","etf"),("SPY","SPY","etf")]):
                 (proxies if symbol in ("RSP","SPY") else indices)[symbol] = result
+        amounts = collect_amounts(reader, expected, cftc, references.get("nq"))
         dates = sessions(months_before(expected,3),expected-timedelta(days=1))
         def option_row(d):
             try:
@@ -423,7 +432,7 @@ def collect_context(sox, cboe, output):
             option_rows = [r for r in pool.map(option_row,dates) if r is not None]
         options = option_distributions(option_rows,expected,current_options)
         context = dict(indices=indices, breadth=dict(series=proxies,
-            comparison=breadth_comparison(proxies,expected)), options=options)
+            comparison=breadth_comparison(proxies,expected)), options=options, amounts=amounts)
         return context
     finally:
         reader.save()
