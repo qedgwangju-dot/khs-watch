@@ -11,7 +11,7 @@ from math import isfinite
 from us_positioning_horizons import verified_price_return, verified_position_change
 from us_positioning_context import checked_path, checked_composition, checked_options, breadth_comparison, checked_returns
 
-PRESENTATION_VERSION = "us-positioning-brief-20261015-v1"
+PRESENTATION_VERSION = "us-positioning-brief-20261015-v2"
 BRIEF_MAX_CHARS = 2400
 
 
@@ -134,10 +134,41 @@ def position_change(net, change):
     return "순숏 축소" if change > 0 else "순숏 확대"
 
 
+def position_movement(net, change):
+    """Express the change in the net holding's size, including zero crossings."""
+    net, change = number(net), number(change)
+    if net is None or change is None or int(net) != net or int(change) != change:
+        return "순포지션 변화 확인 대기"
+    previous = net - change
+    if change == 0:
+        return "롱·숏 균형 유지" if net == 0 else f"{'순롱' if net > 0 else '순숏'} 규모 변화 없음"
+    if previous * net < 0:
+        return f"{position_level(previous)} → {position_level(net)} 전환"
+    if net == 0:
+        return f"{position_level(previous)} 해소 · 롱·숏 균형"
+    if previous == 0:
+        return f"{position_level(net)} 형성"
+    side = "순롱" if net > 0 else "순숏"
+    direction = "확대" if abs(net) > abs(previous) else "축소"
+    return f"{side} {integer(abs(change))}계약 {direction}"
+
+
+def holding_change(label, change):
+    change = number(change)
+    if change is None or int(change) != change:
+        return f"{label} 보유 변화 미확인"
+    if change == 0:
+        return f"{label} 보유 변화 없음"
+    return f"{label} {integer(abs(change))} {'증가' if change > 0 else '감소'}"
+
+
 def position_line(label, net, change):
+    value = number(change)
+    weekly = (f"주간 순포지션 변화 {integer(value, signed=True)}계약 ({position_movement(net, value)})"
+              if value is not None and int(value) == value else "주간 순포지션 변화 확인 대기")
     return (
         f"• {escape(label)}: <b>{position_level(net)}</b>"
-        f" | 주간 {integer(change, signed=True)} → {position_change(net, change)}"
+        f" | {weekly}"
     )
 
 
@@ -228,7 +259,7 @@ def composition_line(window, actor, label, end):
     if parts is None:
         return f"  {label}: 롱·숏 변화 구성 확인 대기"
     return (f"  {label}: 롱 {integer(parts['long_change'],True)} / 숏 {integer(parts['short_change'],True)}"
-            f" / 순 {integer(parts['net_change'],True)}계약 · {composition_description(parts)}")
+            f" / 순포지션 변화 {integer(parts['net_change'],True)}계약 · {position_movement(parts['end_net'],parts['net_change'])} · {composition_description(parts)}")
 
 
 def breadth_lines(value, end):
@@ -337,13 +368,13 @@ def render_detail_alert(cftc, cboe, sox, updates, results, errors=(), event_labe
                     bits.append(f"{actor_label} 변화 구성 확인 대기")
                 else:
                     net = parts["end_net"]
-                    bits.append(f"{actor_label} 롱 {integer(parts['long_change'], signed=True)} / 숏 {integer(parts['short_change'], signed=True)} / 순 {integer(change, signed=True)}계약({position_change(net, change)})")
+                    bits.append(f"{actor_label} 롱 {integer(parts['long_change'], signed=True)} / 숏 {integer(parts['short_change'], signed=True)} / 순포지션 변화 {integer(change, signed=True)}계약({position_movement(net, change)})")
         interval = f" ({window['base_date']} → {window['end_date']})" if window.get("base_date") else ""
         body.append(f"• {label}{interval}: " + " / ".join(bits))
         parts = checked_composition(window, "leveraged_funds", date_value((cftc or {}).get("period")))
         if parts is not None:
             body.append("  헤지펀드성 구성: " + composition_description(parts))
-    body.append("• 순변화=롱 변화−숏 변화. 달력 기준일 이하 최근 주간 관측 사용. 통합 수치와 범위가 다름")
+    body.append("• 순포지션 변화=롱 보유 변화−숏 보유 변화. 달력 기준일 이하 최근 주간 관측 사용. 통합 수치와 범위가 다름")
 
     body.append("• 집계된 보유 수량의 변화이며 개별 거래자의 신규 주문·청산·헤지 목적은 미확인")
 
@@ -467,8 +498,13 @@ def render_alert(cftc, cboe, sox, updates, results, errors=(), event_label="신�
             body.append(f"• {label} 롱·숏 변화: 확인 대기")
             continue
         if label == "1주":
-            body.append(f"• 현재 {position_level(parts['end_net'])} · {position_change(parts['end_net'],parts['net_change'])}")
-        body.append(f"• {label}: 롱 {integer(parts['long_change'],True)}·숏 {integer(parts['short_change'],True)} → 순 {integer(parts['net_change'],True)}")
+            body.append(f"• 현재 <b>{position_level(parts['end_net'])}</b>")
+            base = date_value(window.get("base_date"))
+            comparison = "1주 전 대비" if base and (report - base).days == 7 else f"직전 관측 대비({window['base_date']})"
+        else:
+            comparison = f"{label} 비교"
+        body.append(f"• {comparison}: <b>{position_movement(parts['end_net'],parts['net_change'])}</b>")
+        body.append("  " + holding_change("롱",parts["long_change"]) + " / " + holding_change("숏",parts["short_change"]))
     if report and end:
         lag = (end - report).days
         body.append(f"※ 가격보다 {lag}일 이전 자료. 보유량 변화이며 주문·청산 목적 미확인." if lag > 0 else "※ 주간 보유량 변화이며 현재 매매·주문·청산 목적 미확인.")

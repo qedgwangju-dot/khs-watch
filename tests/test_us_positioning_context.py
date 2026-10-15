@@ -200,7 +200,7 @@ class BreadthAndPresentationTests(unittest.TestCase):
         values["CFTC|cot"]["history_3y"]["week_window"]=f["week"]
         values["Nasdaq SOX|sox"]["metrics"]["price_path"]=f["sox_path"]
         out=view.render_detail_alert(values["CFTC|cot"],values["Cboe|options"],values["Nasdaq SOX|sox"],list(values.values()),list(values.values()),context=f["context"])
-        for phrase in ["미국 주요지수 최근 5거래일 하락","1개월 전 대비","SOX 현재 추세(규칙): <b>혼재","20일선 아래·60일선 아래","-11.60%","+3,199 / 숏 -2,312 / 순 +5,511","신규 주문·청산·헤지 목적은 미확인","0.565","77.3%","매수·매도는 구분되지 않아"]:
+        for phrase in ["미국 주요지수 최근 5거래일 하락","1개월 전 대비","SOX 현재 추세(규칙): <b>혼재","20일선 아래·60일선 아래","-11.60%","+3,199 / 숏 -2,312 / 순포지션 변화 +5,511","신규 주문·청산·헤지 목적은 미확인","0.565","77.3%","매수·매도는 구분되지 않아"]:
             self.assertIn(phrase,out)
         self.assertNotIn("콜 매수 우위",out)
         self.assertTrue(all(len(line)<=3800 for line in out.splitlines()))
@@ -258,13 +258,14 @@ class BriefTests(unittest.TestCase):
 
     def test_brief_keeps_holdings_level_and_all_three_long_short_components(self):
         message = self.render()
-        for phrase in ("현재 순숏 19,212계약 · 순숏 축소", "통합과 별도 집계", "순숏 26,738계약",
-                       "1주: 롱 +3,199·숏 -2,312 → 순 +5,511",
-                       "1개월: 롱 -4,012·숏 +1,108 → 순 -5,120",
-                       "3개월: 롱 +14,553·숏 -34,852 → 순 +49,405",
+        for phrase in ("현재 <b>순숏 19,212계약</b>", "통합과 별도 집계", "순숏 26,738계약",
+                       "1주 전 대비: <b>순숏 5,511계약 축소</b>", "롱 3,199 증가 / 숏 2,312 감소",
+                       "1개월 비교: <b>순숏 5,120계약 확대</b>", "롱 4,012 감소 / 숏 1,108 증가",
+                       "3개월 비교: <b>순숏 49,405계약 축소</b>", "롱 14,553 증가 / 숏 34,852 감소",
                        "가격보다 8일 이전", "주문·청산 목적 미확인"):
             self.assertIn(phrase, message)
         self.assertNotIn("숏 청산 확인", message)
+        self.assertNotRegex(message, r"순 [+-]\d")
 
     def test_brief_retains_relative_breadth_and_options_distribution_limits(self):
         message = self.render()
@@ -274,6 +275,13 @@ class BriefTests(unittest.TestCase):
                        "중앙값 0.590 / 현재값 이하 61.5%", "현재일 제외·동률 포함", "매수·매도 방향과 가격 반등을 확인한 값은 아님"):
             self.assertIn(phrase, message)
         self.assertNotIn("콜 매수 우위", message)
+
+    def test_missing_weekly_observation_is_not_labelled_as_exactly_one_week(self):
+        values,context=self.sources()
+        values["CFTC|cot"]["history_3y"]["week_window"]["base_date"]="2026-09-22"
+        message=self.render(values,context)
+        self.assertIn("직전 관측 대비(2026-09-22)",message)
+        self.assertNotIn("1주 전 대비",message)
 
     def test_missing_or_tampered_lanes_stay_unverified_without_borrowing_another_scope(self):
         values, context = self.sources()

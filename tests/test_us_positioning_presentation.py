@@ -106,7 +106,7 @@ class PositionTests(unittest.TestCase):
     def test_eight_day_lag_is_prominent_and_unchanged_short_stays_short(self):
         message = render()
         self.assertIn("순숏 26,738계약", message)
-        self.assertIn("주간 +7,044 → 순숏 축소", message)
+        self.assertIn("주간 순포지션 변화 +7,044계약 (순숏 7,044계약 축소)", message)
         self.assertIn("여전히 순숏", message)
         self.assertIn("<b>8일 이전</b>", message)
         self.assertIn("2026-10-06 주간", message)
@@ -123,6 +123,43 @@ class PositionTests(unittest.TestCase):
         values = snapshot()
         values["CFTC|cot"]["period"] = "unavailable"
         self.assertIn("기준일 차이 미확인", render(values))
+
+
+class PositionClarityTests(unittest.TestCase):
+    def test_actual_three_periods_describe_short_size_and_never_imply_a_long_holding(self):
+        for change, expected in ((5511,"순숏 5,511계약 축소"),(-5120,"순숏 5,120계약 확대"),(49405,"순숏 49,405계약 축소")):
+            with self.subTest(change=change):
+                self.assertEqual(presentation.position_movement(-19212,change),expected)
+
+    def test_long_holdings_expand_and_shrink_with_the_correct_quantity(self):
+        for net, change, expected in ((74856,4055,"순롱 4,055계약 확대"),(100,-50,"순롱 50계약 축소"),(-100,-50,"순숏 50계약 확대"),(-100,50,"순숏 50계약 축소")):
+            with self.subTest(net=net,change=change):
+                self.assertEqual(presentation.position_movement(net,change),expected)
+
+    def test_crossings_show_both_observed_levels_instead_of_only_a_size_change(self):
+        for net, change, expected in ((10,30,"순숏 20계약 → 순롱 10계약 전환"),(-10,-30,"순롱 20계약 → 순숏 10계약 전환")):
+            with self.subTest(net=net):
+                self.assertEqual(presentation.position_movement(net,change),expected)
+
+    def test_zero_levels_balanced_holdings_and_formation_remain_distinct(self):
+        cases=[(0,20,"순숏 20계약 해소 · 롱·숏 균형"),(0,-20,"순롱 20계약 해소 · 롱·숏 균형"),
+               (20,20,"순롱 20계약 형성"),(-20,-20,"순숏 20계약 형성"),
+               (0,0,"롱·숏 균형 유지"),(20,0,"순롱 규모 변화 없음"),(-20,0,"순숏 규모 변화 없음")]
+        for net,change,expected in cases:
+            with self.subTest(net=net,change=change):
+                self.assertEqual(presentation.position_movement(net,change),expected)
+
+    def test_missing_nonfinite_or_fractional_contracts_are_not_rounded_into_a_claim(self):
+        for net, change in ((None,20),(-20,None),(float("nan"),20),(20,float("inf")),(10.5,2),(10,2.5),(True,2)):
+            with self.subTest(net=net,change=change):
+                self.assertEqual(presentation.position_movement(net,change),"순포지션 변화 확인 대기")
+        self.assertNotIn("미확인계약",presentation.position_line("기관",None,None))
+
+    def test_gross_components_use_increase_decrease_words_and_do_not_claim_orders(self):
+        self.assertEqual(presentation.holding_change("롱",3199),"롱 3,199 증가")
+        self.assertEqual(presentation.holding_change("숏",-2312),"숏 2,312 감소")
+        self.assertEqual(presentation.holding_change("롱",0),"롱 보유 변화 없음")
+        self.assertEqual(presentation.holding_change("숏",None),"숏 보유 변화 미확인")
 
 
 class OptionsTests(unittest.TestCase):

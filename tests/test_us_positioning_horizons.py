@@ -159,8 +159,8 @@ class MultiHorizonPresentationTests(unittest.TestCase):
         self.assertIn("-7.72% · 하락", message)
         self.assertIn("2026-09-14 → 2026-10-14", message)
         self.assertIn("2026-07-14 → 2026-10-14", message)
-        self.assertIn("헤지펀드성 롱 -4,012 / 숏 +1,108 / 순 -5,120계약(순숏 확대)", message)
-        self.assertIn("헤지펀드성 롱 +14,553 / 숏 -34,852 / 순 +49,405계약(순숏 축소)", message)
+        self.assertIn("헤지펀드성 롱 -4,012 / 숏 +1,108 / 순포지션 변화 -5,120계약(순숏 5,120계약 확대)", message)
+        self.assertIn("헤지펀드성 롱 +14,553 / 숏 -34,852 / 순포지션 변화 +49,405계약(순숏 49,405계약 축소)", message)
         self.assertTrue(all(len(line) <= 3800 for line in message.splitlines()))
 
     def test_missing_months_prohibit_a_whole_period_verdict(self):
@@ -194,6 +194,7 @@ class MultiHorizonPresentationTests(unittest.TestCase):
         result = core_tests.OperatingIntegrationTests.run_operating_tail(self, values)
         self.assertTrue(result["gate"])
         self.assertIn("1개월 전 대비", result["alert"])
-        self.assertIn("롱 -4,012·숏 +1,108 → 순 -5,120", result["alert"])
-        self.assertIn("롱 -4,012 / 숏 +1,108 / 순 -5,120", result["detail"])
+        self.assertIn("1개월 비교: <b>순숏 5,120계약 확대</b>", result["alert"])
+        self.assertIn("롱 4,012 감소 / 숏 1,108 증가", result["alert"])
+        self.assertIn("롱 -4,012 / 숏 +1,108 / 순포지션 변화 -5,120", result["detail"])
         self.assertEqual({k:result["pending"]["values"][k] for k in values}, values)
