@@ -277,6 +277,7 @@ jobs:
           path: |
             out/us_positioning_status.md
             out/us_positioning_alert.html
+            out/us_positioning_detail.html
             out/us_positioning_pending_state.json
             out/us_positioning_telegram_confirmed.json
             out/us_positioning_source_evidence.json

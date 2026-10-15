@@ -11,6 +11,9 @@ from math import isfinite
 from us_positioning_horizons import verified_price_return, verified_position_change
 from us_positioning_context import checked_path, checked_composition, checked_options, breadth_comparison, checked_returns
 
+PRESENTATION_VERSION = "us-positioning-brief-20261015-v1"
+BRIEF_MAX_CHARS = 2400
+
 
 def number(value):
     if isinstance(value, (int, float)) and not isinstance(value, bool) and isfinite(value):
@@ -258,8 +261,8 @@ def option_history_lines(values, current, end):
     return lines
 
 
-def render_alert(cftc, cboe, sox, updates, results, errors=(), event_label="신규 변화", context=None):
-    """Render the operating message from inputs already passed by source gates."""
+def render_detail_alert(cftc, cboe, sox, updates, results, errors=(), event_label="신규 변화", context=None):
+    """Preserve all verified values and caveats in the downloadable detail file."""
     icon, title, reason = horizon_overview(sox)
     context = context or {}
     end = date_value((sox or {}).get("period"))
@@ -396,3 +399,106 @@ def render_alert(cftc, cboe, sox, updates, results, errors=(), event_label="신�
         body += ["", "<b>확인 대기</b>"]
         body.extend("• " + escape(error.split(":", 1)[0]) + " 최신값 자동 재확인 중" for error in errors)
     return "\n".join(body) + "\n"
+
+
+def _brief_path(path, end, symbol, label):
+    actual = checked_path(path or {}, end, symbol) if end else None
+    if actual is None:
+        reason = (path or {}).get("reason", "이력·제공처 검산 미완료")
+        if len(reason) > 60:
+            reason = "이력·제공처 검산 미완료"
+        return f"• {label} 추세 확인 대기 · {escape(reason)}"
+    v = actual["values"]
+    location = lambda n: "위" if v["close"] > v[f"ma{n}"] else "아래" if v["close"] < v[f"ma{n}"] else "같음"
+    return (f"• {label} 추세 <b>{v['trend']}</b>: 20일선 {location(20)}·60일선 {location(60)}"
+            f" | 63거래일 종가고점 대비 {percent(v['drawdown63_pct'],2,True)}")
+
+
+def render_detail_document(*args, **kwargs):
+    analysis = render_detail_alert(*args, **kwargs)
+    return ('<!doctype html>\n<html lang="ko"><head><meta charset="utf-8">'
+            '<meta name="viewport" content="width=device-width, initial-scale=1">'
+            '<title>미국 포지셔닝 상세 수치와 출처</title></head>'
+            '<body style="font-family:system-ui,sans-serif;line-height:1.65;'
+            'max-width:900px;margin:24px auto;padding:0 20px">'
+            '<main style="white-space:pre-wrap">' + analysis + '</main></body></html>\n')
+
+
+def render_alert(cftc, cboe, sox, updates, results, errors=(), event_label="신규 변화", context=None, detail_url=None):
+    """A bounded, single-message brief; detail generation never sends a message."""
+    context = context or {}
+    end = date_value((sox or {}).get("period"))
+    sm = (sox or {}).get("metrics", {})
+    indices = context.get("indices", {})
+    broad = [checked_returns(indices.get(k, {}).get("returns"), end, k) for k in ("NDX", "SPX")] if end else []
+    if broad and all(broad) and all(x["windows"]["5d"]["status"] == "verified" for x in broad):
+        five = [x["windows"]["5d"]["return_pct"] for x in broad]
+        icon = "🔴" if all(v < 0 for v in five) else "🟢" if all(v > 0 for v in five) else "🟡"
+        title = "나스닥100·S&P500 최근 5거래일 " + ("하락" if all(v < 0 for v in five) else "상승" if all(v > 0 for v in five) else "방향 혼재")
+    else:
+        icon, title, _ = horizon_overview(sox)
+        title += " · 주요지수 종합 확인 대기"
+    body = [f"🇺🇸 <b>미국 포지셔닝 | {escape(event_label)}</b>", f"{icon} <b>{title}</b>",
+            "", f"<b>① 가격 | {date_label(sox)} 마감</b>",
+            "수익률 순서: 5거래일 / 1개월 전 대비 / 3개월 전 대비"]
+    sox_returns = [sm.get("d5_pct") if sm.get("final_close_confirmed") is True else None]
+    sox_returns += [verified_price_return(sm.get("month_windows", {}).get(k), end, sm.get("value")) if end and sm.get("final_close_confirmed") is True else None for k in ("1m", "3m")]
+    body.append("• SOX: " + " / ".join(percent(v,2,True) if number(v) is not None else "확인 대기" for v in sox_returns))
+    for symbol, label in (("NDX", "나스닥100"), ("SPX", "S&P500")):
+        checked = checked_returns(indices.get(symbol, {}).get("returns"), end, symbol) if end else None
+        bits = []
+        for key in ("5d", "1m", "3m"):
+            window = checked["windows"][key] if checked else {}
+            bits.append(percent(window["return_pct"],2,True) if window.get("status") == "verified" else "확인 대기")
+        body.append(f"• {label}: " + " / ".join(bits))
+    for symbol, label, path in (("SOX", "SOX", sm.get("price_path")), ("NDX", "나스닥100", indices.get("NDX")), ("SPX", "S&P500", indices.get("SPX"))):
+        body.append(_brief_path(path, end, symbol, label))
+    body.append("※ 기간 수익률과 현재 추세는 별개. 추세는 종가·20·60일선 순서와 평균선 방향 기준.")
+
+    report = date_value((cftc or {}).get("period"))
+    cm = (cftc or {}).get("metrics", {})
+    history = (cftc or {}).get("history_3y", {})
+    body += ["", f"<b>② 선물 | {date_label(cftc)} 주간 · 계약</b>",
+             f"• 나스닥100 통합: 기관 {position_level(cm.get('asset_net'))} / 헤지펀드성 {position_level(cm.get('lev_net'))}",
+             "<b>NQ E-mini 헤지펀드성 · 통합과 별도 집계</b>"]
+    for label, window in (("1주", history.get("week_window")), ("1개월", history.get("month_windows", {}).get("1m")), ("3개월", history.get("month_windows", {}).get("3m"))):
+        parts = checked_composition(window, "leveraged_funds", report) if report else None
+        if parts is None:
+            body.append(f"• {label} 롱·숏 변화: 확인 대기")
+            continue
+        if label == "1주":
+            body.append(f"• 현재 {position_level(parts['end_net'])} · {position_change(parts['end_net'],parts['net_change'])}")
+        body.append(f"• {label}: 롱 {integer(parts['long_change'],True)}·숏 {integer(parts['short_change'],True)} → 순 {integer(parts['net_change'],True)}")
+    if report and end:
+        lag = (end - report).days
+        body.append(f"※ 가격보다 {lag}일 이전 자료. 보유량 변화이며 주문·청산 목적 미확인." if lag > 0 else "※ 주간 보유량 변화이며 현재 매매·주문·청산 목적 미확인.")
+    else:
+        body.append("※ 가격과 선물 기준일 차이 미확인. 주문·청산 목적 미확인.")
+
+    body += ["", "<b>③ 시장 확산·옵션 참고</b>"]
+    breadth = context.get("breadth", {})
+    comparison = breadth_comparison(breadth.get("series", {}), end) if end else {}
+    if comparison.get("status") == "verified" and comparison == breadth.get("comparison"):
+        bits = [f"{label} {comparison['windows'][key]['difference_pp']:+.2f}%p" for key,label in (("5d","5일"),("1m","1개월"),("3m","3개월"))]
+        body.append("• 동일가중 RSP − 시총가중 SPY: " + " / ".join(bits))
+        body.append("  Yahoo 조정종가의 ETF 상대수익률. 상승 종목 비율·시장 전체 방향은 미확인.")
+    else:
+        body.append("• RSP−SPY 상대수익률: 확인 대기")
+    om = (cboe or {}).get("metrics", {})
+    body.append(f"• 옵션 P/C({date_label(cboe)}): " + " / ".join(f"{label} {om[key+'_pc_ratio']:.2f}" if number(om.get(key+'_pc_ratio')) is not None else f"{label} 미확인" for key,label in (("equity","주식"),("index","지수"),("total","전체"))))
+    options_end = date_value((cboe or {}).get("period"))
+    for key, label in (("1m", "1개월"), ("3m", "3개월")):
+        stats = checked_options(context.get("options", {}).get(key), om, options_end) if options_end else None
+        if stats is None:
+            body.append(f"• 주식 P/C 과거 {label}: 확인 대기")
+        else:
+            v = stats["values"]["equity"]
+            body.append(f"• 주식 P/C 과거 {label}: 중앙값 {v['median_pc']:.3f} / 현재값 이하 {v['current_le_percent']:.1f}% (현재일 제외·동률 포함)")
+    body.append("※ P/C=풋÷콜 거래량. 매수·매도 방향과 가격 반등을 확인한 값은 아님.")
+    if errors:
+        body.append("⚠ 일부 자료 확인 대기 · 세부 사유는 상세 기록")
+    body += ["", f'<a href="{escape(detail_url,quote=True)}">상세 수치·계산·출처</a>' if detail_url else "상세 원값·계산·출처는 별도 상세 기록에 보존"]
+    message = "\n".join(body) + "\n"
+    if len(message.strip()) > BRIEF_MAX_CHARS:
+        raise ValueError("US positioning brief exceeds the single-message length budget")
+    return message

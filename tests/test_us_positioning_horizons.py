@@ -194,5 +194,6 @@ class MultiHorizonPresentationTests(unittest.TestCase):
         result = core_tests.OperatingIntegrationTests.run_operating_tail(self, values)
         self.assertTrue(result["gate"])
         self.assertIn("1개월 전 대비", result["alert"])
-        self.assertIn("롱 -4,012 / 숏 +1,108 / 순 -5,120", result["alert"])
+        self.assertIn("롱 -4,012·숏 +1,108 → 순 -5,120", result["alert"])
+        self.assertIn("롱 -4,012 / 숏 +1,108 / 순 -5,120", result["detail"])
         self.assertEqual({k:result["pending"]["values"][k] for k in values}, values)
