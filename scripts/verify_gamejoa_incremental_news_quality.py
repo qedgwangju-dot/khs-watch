@@ -6333,7 +6333,7 @@ class IncrementalNewsTests(unittest.TestCase):
 
 
 class ConcreteLiveSelectionRegressions(unittest.TestCase):
-    def test_oct15_attachment_is_exhaustive_and_keeps_source_uncertainty_explicit(self):
+    def test_oct15_attachment_has_per_link_audit_and_explicit_source_limits(self):
         fixture = ATTACHMENT_QUALITY_20261015
         rows = fixture["items"]
         self.assertEqual(len(rows), 18)
@@ -6341,16 +6341,79 @@ class ConcreteLiveSelectionRegressions(unittest.TestCase):
         self.assertEqual(len({row["url"] for row in rows}), 18)
         self.assertEqual(len({row["event_group"] for row in rows}), fixture["expected_unique_event_groups"])
         self.assertTrue(all(row["url"].startswith(("https://", "http://")) for row in rows))
+        allowed_statuses = {
+            "exact_page_title_subheading_only",
+            "exact_source_full_body_direct_http",
+            "same_publisher_canonical_full_body",
+            "exact_article_full_text_search_index",
+            "direct_page_title_description_video_body_not_extracted",
+            "same_publisher_amp_full_body",
+            "same_publisher_syndication_full_body",
+            "google_news_shell_underlying_origin_unresolved",
+            "publisher_canonical_full_text_search_index",
+            "exact_article_body_unavailable_duplicate_event",
+        }
+        for row in rows:
+            audit = row.get("source_audit") or {}
+            self.assertEqual(audit.get("checked_on"), fixture["attachment_date"], row["id"])
+            self.assertIn(audit.get("status"), allowed_statuses, row["id"])
+            self.assertTrue(audit.get("method"), row["id"])
+            self.assertTrue(audit.get("evidence_urls"), row["id"])
+            self.assertTrue(audit.get("verified_facts"), row["id"])
+            self.assertTrue(audit.get("limitations"), row["id"])
+            self.assertTrue(
+                all(url.startswith(("https://", "http://")) for url in audit["evidence_urls"]),
+                row["id"],
+            )
+        self.assertEqual(
+            fixture["audit_summary"]["attachment_items"],
+            len(rows),
+        )
+        self.assertEqual(
+            fixture["audit_summary"]["full_article_body_or_same_publisher_copy_confirmed"],
+            sum(
+                row["source_audit"]["status"] in {
+                    "exact_source_full_body_direct_http",
+                    "same_publisher_canonical_full_body",
+                    "exact_article_full_text_search_index",
+                    "same_publisher_amp_full_body",
+                    "same_publisher_syndication_full_body",
+                    "publisher_canonical_full_text_search_index",
+                }
+                for row in rows
+            ),
+        )
+        self.assertEqual(
+            fixture["audit_summary"]["page_header_or_description_only"],
+            sum(row["source_audit"]["status"] in {
+                "exact_page_title_subheading_only",
+                "direct_page_title_description_video_body_not_extracted",
+            } for row in rows),
+        )
+        self.assertEqual(
+            fixture["audit_summary"]["full_body_or_underlying_origin_unavailable"],
+            sum(row["source_audit"]["status"] in {
+                "google_news_shell_underlying_origin_unresolved",
+                "exact_article_body_unavailable_duplicate_event",
+            } for row in rows),
+        )
         by_id = {row["id"]: row for row in rows}
         for group, ids in fixture["duplicate_groups"].items():
             self.assertEqual({by_id[item_id]["event_group"] for item_id in ids}, {group})
         self.assertEqual(
-            {row["id"] for row in fixture["independent_source_checks"]},
-            {"lg_cloid_humanoid_launch", "semiconductor_premarket_selloff"},
+            by_id["trump_investment_claim_yonhap_tv"]["decision"],
+            "hold_video_body_transcript_unverified",
         )
-        self.assertTrue(all("not_independently_checked" in row["status"] or "full_body_read" in row["status"]
-                            for row in fixture["independent_source_checks"]))
-        self.assertEqual(by_id["trump_investment_claim_yonhap_tv"]["decision"], "hold_exact_body")
+        self.assertEqual(
+            by_id["trump_korea_67tn_investment_claim"]["decision"],
+            "publish_with_claim_attribution_and_official_caveat",
+        )
+        self.assertEqual(
+            by_id["aftermarket_small_move"]["decision"],
+            "attach_as_market_reaction_not_standalone_duplicate",
+        )
+        self.assertEqual(by_id["korea_selloff_newsis_photo"]["source_audit"]["status"],
+                         "exact_article_body_unavailable_duplicate_event")
         self.assertEqual(by_id["korea_selloff_seoul"]["publisher"], "서울신문")
 
     def test_verified_lg_cloid_humanoid_launch_is_eligible_and_cross_publisher_deduped(self):
