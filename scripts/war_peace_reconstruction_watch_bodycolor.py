@@ -77,6 +77,47 @@ class _ParagraphParser(HTMLParser):
             self.buf.append(html.unescape(data))
 
 
+class _ArticleBodyParser(HTMLParser):
+    """Keep a declared article body separate from page-wide recommendations."""
+    VOID = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr'}
+    SKIP = {'script', 'style', 'noscript', 'svg', 'nav', 'aside', 'footer'}
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.stack = []
+        self.bodies = []
+
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        classes = set(attrs.get('class', '').split())
+        capture = self.stack[-1][1] if self.stack else None
+        skip = self.stack[-1][2] if self.stack else False
+        skip = skip or tag in self.SKIP or bool(classes & {'related_news', 'related-articles', 'article_related'})
+        declared = bool(classes & {'article_body', 'article-body'}) or 'articleBody' in attrs.get('itemprop', '').split()
+        if capture is None and declared and not skip:
+            capture = len(self.bodies)
+            self.bodies.append([])
+        if tag not in self.VOID:
+            self.stack.append((tag, capture, skip))
+
+    def handle_startendtag(self, tag, attrs):
+        if tag not in self.VOID:
+            self.handle_starttag(tag, attrs)
+            self.handle_endtag(tag)
+
+    def handle_endtag(self, tag):
+        for index in range(len(self.stack)-1, -1, -1):
+            if self.stack[index][0] == tag:
+                del self.stack[index:]
+                break
+
+    def handle_data(self, data):
+        if self.stack:
+            _, capture, skip = self.stack[-1]
+            if capture is not None and not skip:
+                self.bodies[capture].append(data)
+
+
 def _request_text(url, timeout=10, max_bytes=1_500_000):
     if not url or not url.startswith(("http://", "https://")):
         return "", ""
@@ -195,6 +236,12 @@ def _extract_body(page):
     body = _jsonld_article_body(page)
     if body:
         return body[:12000]
+    parser = _ArticleBodyParser()
+    parser.feed(page)
+    if parser.bodies:
+        body = re.sub(r'\s+', ' ', ' '.join(parser.bodies[0])).strip()
+        # An empty/short declared body is not evidence that the footer is news.
+        return body[:12000] if len(body) >= 250 else ''
     body = _paragraph_text(page)
     if body:
         return body[:12000]

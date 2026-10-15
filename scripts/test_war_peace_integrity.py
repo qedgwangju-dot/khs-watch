@@ -16,6 +16,7 @@ import war_peace_reconstruction_watch_evidence as evidence
 import war_peace_reconstruction_watch_precise as market
 import war_peace_reconstruction_watch_diplomacy_flash as quality
 import war_peace_reconstruction_watch_newideas as newideas
+import war_peace_reconstruction_watch_bodycolor as source_body
 
 watch = integrity.watch
 NOW = dt.datetime(2026, 10, 13, 1, 57, tzinfo=watch.KST)
@@ -49,6 +50,40 @@ class IntegrityTests(unittest.TestCase):
         path = Path(__file__).parent/'test_fixtures/war_refinery_statement_38706618570.json'
         fixture = json.loads(path.read_text(encoding='utf-8'))
         return fixture, dt.datetime.fromisoformat(fixture['provenance']['queried_at_kst'])
+
+    def test_declared_article_body_precedes_unrelated_global_paragraphs(self):
+        # 38709332236's later exact-source HTML has nested div#font nodes;
+        # the unrelated navigation/footer are p elements. Text is synthetic.
+        body = '원문 기사 본문에서 군 당국의 추가 작전 검토와 결정 전 단계를 설명한다. ' * 12
+        unrelated = '<p>' + '다른 기사 목록과 저작권 안내문은 현재 기사 본문이 아니다. ' * 12 + '</p>'
+        page = unrelated + '<div id="font" class="article_body"><div id="font" class="news_bm">' + body + '</div></div>' + unrelated
+        actual = source_body._extract_body(page)
+        self.assertEqual(actual, body.strip())
+        self.assertNotIn('저작권', actual)
+
+    def test_empty_declared_article_body_does_not_fall_back_to_footer(self):
+        page = '<div class="article_body"></div><p>' + '저작권과 관련 기사 목록 안내문. ' * 30 + '</p>'
+        self.assertEqual(source_body._extract_body(page), '')
+
+    def test_declared_body_ignores_script_and_related_widgets(self):
+        body = '주 기사 본문의 내용이며 별도 문장의 순서와 부정을 그대로 보존한다. ' * 12
+        page = ('<div class="article_body"><div>' + body + '</div><script>오류 신호</script>'
+                '<aside><p>관련기사 공격 재개</p></aside><div class="related_news">다른 사건</div></div>')
+        self.assertEqual(source_body._extract_body(page), body.strip())
+
+    def test_declared_body_handles_void_tags_without_capturing_footer(self):
+        first, second = '첫 기사 문장과 검토 단계. ' * 15, '다음 기사 문장과 조건부 방침. ' * 15
+        page = '<div itemprop="articleBody">' + first + '<br><img src="x">' + second + '</div><p>본문 밖</p>'
+        self.assertEqual(source_body._extract_body(page), ' '.join((first + ' ' + second).split()))
+
+    def test_short_declared_body_remains_unverified(self):
+        self.assertEqual(source_body._extract_body('<div class="article-body">짧은 소개문</div><p>'+'다른 기사 내용. '*80+'</p>'), '')
+
+    def test_existing_jsonld_article_body_keeps_precedence(self):
+        body = '구조화된 주 기사 본문이며 실제 기사 내용과 기준을 보존한다. ' * 12
+        page = '<script type="application/ld+json">' + json.dumps({'articleBody':body},ensure_ascii=False) + '</script>'
+        page += '<div class="article_body">별도 짧은 소개</div>'
+        self.assertEqual(source_body._extract_body(page), body.strip())
 
     def test_actual_quoted_refinery_resumption_is_a_statement(self):
         fixture, _ = self.refinery_statement_fixture()
