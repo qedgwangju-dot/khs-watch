@@ -195,16 +195,16 @@ class BreadthAndPresentationTests(unittest.TestCase):
         value["RSP"]["adjusted_operands"]=[]
         self.assertEqual(breadth_comparison(value,"2026-10-14")["status"],"unavailable")
 
-    def test_expanded_message_keeps_price_trend_return_population_and_intent_separate(self):
+    def test_detail_keeps_price_trend_return_population_and_intent_separate(self):
         f=fixture();values=horizons.enriched_snapshot()
         values["CFTC|cot"]["history_3y"]["week_window"]=f["week"]
         values["Nasdaq SOX|sox"]["metrics"]["price_path"]=f["sox_path"]
-        out=view.render_alert(values["CFTC|cot"],values["Cboe|options"],values["Nasdaq SOX|sox"],list(values.values()),list(values.values()),context=f["context"])
+        out=view.render_detail_alert(values["CFTC|cot"],values["Cboe|options"],values["Nasdaq SOX|sox"],list(values.values()),list(values.values()),context=f["context"])
         for phrase in ["미국 주요지수 최근 5거래일 하락","1개월 전 대비","SOX 현재 추세(규칙): <b>혼재","20일선 아래·60일선 아래","-11.60%","+3,199 / 숏 -2,312 / 순 +5,511","신규 주문·청산·헤지 목적은 미확인","0.565","77.3%","매수·매도는 구분되지 않아"]:
             self.assertIn(phrase,out)
         self.assertNotIn("콜 매수 우위",out)
         self.assertTrue(all(len(line)<=3800 for line in out.splitlines()))
-        # The unchanged production sender splits on complete lines, preserving tags.
+        # The full detail retains the former two-chunk analysis, outside sending.
         chunks=[];current_lines=[]
         for line in out.strip().splitlines():
             if current_lines and len("\n".join(current_lines+[line]))>3800:
@@ -215,6 +215,93 @@ class BreadthAndPresentationTests(unittest.TestCase):
         for chunk in chunks:
             for tag in ("b","a"):
                 self.assertEqual(chunk.count("<"+tag+">") if tag=="b" else chunk.count("<a "),chunk.count("</"+tag+">"))
+
+
+class BriefTests(unittest.TestCase):
+    def sources(self):
+        f = fixture()
+        values = horizons.enriched_snapshot()
+        values["CFTC|cot"]["history_3y"]["week_window"] = f["week"]
+        values["Nasdaq SOX|sox"]["metrics"]["price_path"] = f["sox_path"]
+        return values, f["context"]
+
+    def render(self, values=None, context=None, **kwargs):
+        if values is None:
+            values, context = self.sources()
+        return view.render_alert(values["CFTC|cot"], values["Cboe|options"], values["Nasdaq SOX|sox"],
+                                 list(values.values()), list(values.values()), context=context, **kwargs)
+
+    def test_actual_expanded_input_becomes_one_short_message_without_detail_appendices(self):
+        values, context = self.sources()
+        message = self.render(values, context, detail_url="https://github.com/qedgwangju-dot/khs-watch/actions/runs/123")
+        detail = view.render_detail_alert(values["CFTC|cot"],values["Cboe|options"],values["Nasdaq SOX|sox"],list(values.values()),list(values.values()),context=context)
+        self.assertLess(len(message.strip()), 1800)
+        self.assertLess(len(message.strip()), len(detail.strip()) * .4)
+        self.assertIn("상세 수치·계산·출처</a>", message)
+        for phrase in ("10년 백분위", "원수치", "112,821", "2,931,155"):
+            self.assertNotIn(phrase, message)
+            self.assertIn(phrase, detail)
+        for line in message.splitlines():
+            balance = original.TagBalance()
+            balance.feed(line)
+            self.assertFalse(balance.stack, line)
+
+    def test_brief_retains_period_returns_current_trend_and_source_conflict(self):
+        message = self.render()
+        for phrase in ("나스닥100·S&P500 최근 5거래일 하락", "2026-10-14 마감",
+                       "SOX: -10.58% / +4.97% / -7.72%", "나스닥100: -3.88% / +2.83% / +1.23%",
+                       "S&P500: -1.06% / +1.30% / +2.32%", "SOX 추세 <b>혼재", "20일선 아래·60일선 아래",
+                       "-11.60%", "나스닥100 추세 확인 대기", "제공처 종가 불일치: 2026-10-06",
+                       "기간 수익률과 현재 추세는 별개"):
+            self.assertIn(phrase, message)
+        self.assertNotIn("미국 증시 상승 추세", message)
+
+    def test_brief_keeps_holdings_level_and_all_three_long_short_components(self):
+        message = self.render()
+        for phrase in ("현재 순숏 19,212계약 · 순숏 축소", "통합과 별도 집계", "순숏 26,738계약",
+                       "1주: 롱 +3,199·숏 -2,312 → 순 +5,511",
+                       "1개월: 롱 -4,012·숏 +1,108 → 순 -5,120",
+                       "3개월: 롱 +14,553·숏 -34,852 → 순 +49,405",
+                       "가격보다 8일 이전", "주문·청산 목적 미확인"):
+            self.assertIn(phrase, message)
+        self.assertNotIn("숏 청산 확인", message)
+
+    def test_brief_retains_relative_breadth_and_options_distribution_limits(self):
+        message = self.render()
+        for phrase in ("5일 +1.69%p / 1개월 -2.38%p / 3개월 -2.88%p",
+                       "Yahoo 조정종가의 ETF 상대수익률", "상승 종목 비율·시장 전체 방향은 미확인",
+                       "주식 0.61 / 지수 1.01 / 전체 0.88", "중앙값 0.565 / 현재값 이하 77.3%",
+                       "중앙값 0.590 / 현재값 이하 61.5%", "현재일 제외·동률 포함", "매수·매도 방향과 가격 반등을 확인한 값은 아님"):
+            self.assertIn(phrase, message)
+        self.assertNotIn("콜 매수 우위", message)
+
+    def test_missing_or_tampered_lanes_stay_unverified_without_borrowing_another_scope(self):
+        values, context = self.sources()
+        context["indices"]["NDX"]["returns"]["windows"]["5d"]["return_pct"] += 1
+        context["options"]["1m"]["values"]["equity"]["median_pc"] = 0
+        context["breadth"]["comparison"]["windows"]["5d"]["difference_pp"] += 1
+        values["CFTC|cot"]["history_3y"]["week_window"]["actors"]["leveraged_funds"]["net_change"] += 1
+        message = self.render(values, context)
+        self.assertIn("주요지수 종합 확인 대기", message)
+        self.assertIn("나스닥100: 확인 대기 / 확인 대기 / 확인 대기", message)
+        self.assertIn("주식 P/C 과거 1개월: 확인 대기", message)
+        self.assertIn("RSP−SPY 상대수익률: 확인 대기", message)
+        self.assertIn("1주 롱·숏 변화: 확인 대기", message)
+        self.assertNotIn("순숏 19,212", message)
+
+    def test_brief_is_pure_escapes_labels_and_rejects_over_budget_without_truncating(self):
+        values, context = self.sources()
+        original_values, original_context = copy.deepcopy(values), copy.deepcopy(context)
+        message = self.render(values, context, event_label="<script>")
+        self.assertIn("&lt;script&gt;", message)
+        self.assertNotIn("<script>", message)
+        self.assertEqual(values, original_values)
+        self.assertEqual(context, original_context)
+        with self.assertRaises(ValueError):
+            self.render(values, context, event_label="x" * view.BRIEF_MAX_CHARS)
+
+
+class SourceParserBoundaryTests(unittest.TestCase):
 
     def test_yahoo_and_nasdaq_wrong_symbol_or_misaligned_arrays_fail(self):
         with self.assertRaises(ValueError):parse_yahoo({"chart":{"result":[{"meta":{"symbol":"SPY"}}]}},"RSP","2026-10-14")

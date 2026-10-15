@@ -26,7 +26,7 @@ def snapshot():
 def render(values=None, **kwargs):
     values = values if values is not None else snapshot()
     ordered = [values[key] for key in ("CFTC|cot", "Cboe|options", "Nasdaq SOX|sox") if key in values]
-    return presentation.render_alert(
+    return presentation.render_detail_alert(
         values.get("CFTC|cot"), values.get("Cboe|options"), values.get("Nasdaq SOX|sox"),
         ordered, ordered, **kwargs,
     )
@@ -225,16 +225,19 @@ class OperatingIntegrationTests(unittest.TestCase):
                 "parse_cboe": lambda: copy.deepcopy(values["Cboe|options"]),
                 "parse_sox": lambda: copy.deepcopy(values["Nasdaq SOX|sox"]),
                 "render_alert": presentation.render_alert,
-                "STATUS": root / "status.md", "ALERT": root / "alert.html", "PENDING": root / "pending.json",
+                "render_detail_document": presentation.render_detail_document,
+                "PRESENTATION_VERSION": presentation.PRESENTATION_VERSION,
+                "STATUS": root / "status.md", "ALERT": root / "alert.html", "DETAIL": root / "detail.html", "PENDING": root / "pending.json",
                 "os": os, "json": json, "datetime": FrozenDatetime, "OUT": root,
                 "fp": lambda v: hashlib.sha256(json.dumps(v, sort_keys=True, ensure_ascii=False).encode()).hexdigest(),
                 "timezone": timezone, "timedelta": timedelta, "NQ_CFTC_CODE": "209742",
             }
-            with patch.dict(os.environ, {"FORCE_SEND": "false"}), patch("us_positioning_context.collect_context", return_value={}), redirect_stdout(io.StringIO()):
+            with patch.dict(os.environ, {"FORCE_SEND": "false", "GITHUB_RUN_ID": "", "GITHUB_REPOSITORY": ""}), patch("us_positioning_context.collect_context", return_value={}), redirect_stdout(io.StringIO()):
                 exec(compile(tail, str(ROOT / "scripts/us_positioning_watch.py"), "exec"), env)
             return {
                 "gate": env["quality_gate_ok"], "updates": len(env["updates"]), "sources": env["results"],
                 "alert": env["ALERT"].read_text(encoding="utf-8") if env["ALERT"].exists() else None,
+                "detail": env["DETAIL"].read_text(encoding="utf-8") if env["DETAIL"].exists() else None,
                 "pending": json.loads(env["PENDING"].read_text(encoding="utf-8")) if env["PENDING"].exists() else None,
             }
 
@@ -245,6 +248,8 @@ class OperatingIntegrationTests(unittest.TestCase):
         self.assertEqual(result["alert"], presentation.render_alert(snapshot()["CFTC|cot"], snapshot()["Cboe|options"], snapshot()["Nasdaq SOX|sox"], result["sources"], result["sources"]))
         self.assertEqual({k:result["pending"]["values"][k] for k in snapshot()}, snapshot())
         self.assertIn("미국 주요지수·시장 확산·옵션 과거 비교|context", result["pending"]["values"])
+        self.assertEqual(result["pending"]["presentation_version"], presentation.PRESENTATION_VERSION)
+        self.assertEqual(result["detail"], presentation.render_detail_document(snapshot()["CFTC|cot"], snapshot()["Cboe|options"], snapshot()["Nasdaq SOX|sox"], result["sources"], result["sources"]))
 
     def test_unchanged_snapshot_creates_no_message_or_pending_state(self):
         values = snapshot()
@@ -253,6 +258,7 @@ class OperatingIntegrationTests(unittest.TestCase):
         self.assertTrue(second["gate"])
         self.assertEqual(second["updates"], 0)
         self.assertIsNone(second["alert"])
+        self.assertIsNone(second["detail"])
         self.assertIsNone(second["pending"])
 
     def test_bad_math_never_reaches_the_new_message(self):
@@ -262,6 +268,33 @@ class OperatingIntegrationTests(unittest.TestCase):
         self.assertFalse(result["gate"])
         self.assertIsNone(result["alert"])
         self.assertNotIn("CFTC|cot", result["pending"].get("seen", {}))
+        self.assertNotIn("presentation_version", result["pending"])
+
+    def test_new_presentation_sends_once_without_source_changes_and_preserves_saved_values(self):
+        values = snapshot()
+        prior = self.run_operating_tail(values)["pending"]
+        prior.pop("presentation_version")
+        unchanged = copy.deepcopy(prior)
+        first = self.run_operating_tail(values, prior)
+        self.assertEqual(first["updates"], 0)
+        self.assertIn("요약형 전환", first["alert"])
+        self.assertEqual(first["pending"]["seen"], prior["seen"])
+        self.assertEqual(first["pending"]["values"], prior["values"])
+        self.assertEqual(prior, unchanged)
+        second = self.run_operating_tail(values, first["pending"])
+        self.assertIsNone(second["alert"])
+        self.assertIsNone(second["pending"])
+
+    def test_presentation_version_does_not_bypass_the_source_gate(self):
+        values = snapshot()
+        prior = self.run_operating_tail(values)["pending"]
+        prior["presentation_version"] = "old-layout"
+        values["CFTC|cot"]["metrics"]["lev_net"] += 1
+        first = self.run_operating_tail(values, prior)
+        self.assertFalse(first["gate"])
+        self.assertIsNone(first["alert"])
+        self.assertIsNone(first["detail"])
+        self.assertIsNone(first["pending"])
 
     def test_stale_source_keeps_original_collection_gate_closed(self):
         values = snapshot()

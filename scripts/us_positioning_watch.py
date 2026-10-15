@@ -11,7 +11,7 @@ import pandas as pd
 from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
 
-from us_positioning_presentation import render_alert
+from us_positioning_presentation import PRESENTATION_VERSION, render_alert, render_detail_document
 from us_positioning_horizons import months_before, price_month_windows, position_month_windows
 
 ROOT = Path.cwd()
@@ -21,11 +21,12 @@ OUT.mkdir(exist_ok=True)
 DATA.mkdir(exist_ok=True)
 
 ALERT = OUT / "us_positioning_alert.html"
+DETAIL = OUT / "us_positioning_detail.html"
 STATUS = OUT / "us_positioning_status.md"
 PENDING = OUT / "us_positioning_pending_state.json"
 STATE = DATA / "us_positioning_state.json"
 
-for p in (ALERT, STATUS, PENDING):
+for p in (ALERT, DETAIL, STATUS, PENDING):
     try:
         p.unlink()
     except FileNotFoundError:
@@ -1507,6 +1508,8 @@ for x in results:
     if state.get("seen", {}).get(key) != x["fingerprint"]:
         updates.append(x)
 
+presentation_changed = state.get("presentation_version") != PRESENTATION_VERSION
+
 cftc = next((x for x in results if x["kind"] == "cot"), None)
 cboe = next((x for x in results if x["kind"] == "options"), None)
 sox = next((x for x in results if x["kind"] == "sox"), None)
@@ -1518,6 +1521,8 @@ STATUS.write_text(
             "",
             f"- parsed sources: {len(results)}",
             f"- updates: {len(updates)}",
+            f"- presentation_version: {PRESENTATION_VERSION}",
+            f"- presentation_changed: {presentation_changed}",
             f"- quality_gate_ok: {quality_gate_ok}",
             f"- freshness_gate_ok: {not freshness_problems}",
             *[
@@ -1532,7 +1537,7 @@ STATUS.write_text(
 )
 
 force = (os.getenv("FORCE_SEND") or "").lower() in ("1", "true", "yes")
-if quality_gate_ok and (updates or force):
+if quality_gate_ok and (updates or force or presentation_changed):
     prior_sox = (state.get("values", {}) or {}).get("Nasdaq SOX|sox")
     prior_cftc = (state.get("values", {}) or {}).get("CFTC|cot")
     prior_cboe = (state.get("values", {}) or {}).get("Cboe|options")
@@ -1550,9 +1555,20 @@ if quality_gate_ok and (updates or force):
         same_period_changed(prior_cftc, cftc),
     ])
     event_label = "정정·보강" if correction else "신규 변화"
+    if presentation_changed and not updates:
+        event_label = "요약형 전환"
+
+    # The full analysis is an artifact, outside the Telegram sending path.
+    DETAIL.write_text(
+        render_detail_document(cftc, cboe, sox, updates, results, errors, event_label, context=market_context),
+        encoding="utf-8",
+    )
+    run_id = os.getenv("GITHUB_RUN_ID", "")
+    repository = os.getenv("GITHUB_REPOSITORY", "")
+    detail_url = f"https://github.com/{repository}/actions/runs/{run_id}" if run_id.isdigit() and repository.count("/") == 1 else None
 
     ALERT.write_text(
-        render_alert(cftc, cboe, sox, updates, results, errors, event_label, context=market_context),
+        render_alert(cftc, cboe, sox, updates, results, errors, event_label, context=market_context, detail_url=detail_url),
         encoding="utf-8",
     )
 
@@ -1564,6 +1580,7 @@ if quality_gate_ok and (updates or force):
         ns["seen"][key] = x["fingerprint"]
         ns["values"][key] = x
     ns["updated_at_kst"] = datetime.now(timezone(timedelta(hours=9))).isoformat()
+    ns["presentation_version"] = PRESENTATION_VERSION
     PENDING.write_text(
         json.dumps(ns, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
