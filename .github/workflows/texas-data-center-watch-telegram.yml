@@ -19,7 +19,7 @@ permissions:
 
 concurrency:
   group: texas-data-center-watch-telegram
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   monitor:
@@ -94,7 +94,8 @@ jobs:
           fi
 
       - name: Send concise Texas data-center change to Telegram
-        if: hashFiles('out/texas_data_center_watch_telegram.md') != ''
+        # Push-triggered checks may not send old news or alter delivered state.
+        if: github.event_name != 'push' && hashFiles('out/texas_data_center_watch_telegram.md') != ''
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.YEN_CARRY_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.YEN_CARRY_TELEGRAM_CHAT_ID }}
@@ -178,15 +179,15 @@ jobs:
           PY
 
       - name: Persist initial baseline
-        if: success() && hashFiles('out/texas_data_center_watch_alert.md') == '' && (hashFiles('data/texas_data_center_watch_state.json') == '' || hashFiles('out/texas_data_center_watch_rebaseline.txt') != '')
+        if: success() && github.event_name != 'push' && hashFiles('out/texas_data_center_watch_alert.md') == '' && (hashFiles('data/texas_data_center_watch_state.json') == '' || hashFiles('out/texas_data_center_watch_rebaseline.txt') != '')
         run: cp out/texas_data_center_watch_pending_state.json data/texas_data_center_watch_state.json
 
       - name: Persist state after normal no-change check
-        if: success() && hashFiles('out/texas_data_center_watch_alert.md') == '' && hashFiles('data/texas_data_center_watch_state.json') != '' && hashFiles('out/texas_data_center_watch_rebaseline.txt') == ''
+        if: success() && github.event_name != 'push' && hashFiles('out/texas_data_center_watch_alert.md') == '' && hashFiles('data/texas_data_center_watch_state.json') != '' && hashFiles('out/texas_data_center_watch_rebaseline.txt') == ''
         run: cp out/texas_data_center_watch_pending_state.json data/texas_data_center_watch_state.json
 
       - name: Persist state only after confirmed Telegram delivery
-        if: success() && hashFiles('out/texas_data_center_watch_alert.md') != '' && hashFiles('out/texas_data_center_watch_telegram_confirmed.json') != ''
+        if: success() && github.event_name != 'push' && hashFiles('out/texas_data_center_watch_alert.md') != '' && hashFiles('out/texas_data_center_watch_telegram_confirmed.json') != ''
         run: |
           cp out/texas_data_center_watch_pending_state.json data/texas_data_center_watch_state.json
           python - <<'PY'
@@ -202,17 +203,38 @@ jobs:
           PY
 
       - name: Commit Texas data-center state
-        if: success() && hashFiles('data/texas_data_center_watch_state.json') != ''
+        if: success() && github.event_name != 'push' && hashFiles('data/texas_data_center_watch_state.json') != ''
+        shell: bash
         run: |
+          set -euo pipefail
+          # A different watcher's main-branch update must never cause a
+          # rebase conflict of this watcher's delivery-confirmed state.
+          cp data/texas_data_center_watch_state.json /tmp/texas_watch_final_state.json
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/texas_data_center_watch_state.json
-          if git diff --cached --quiet; then
-            echo "Texas data-center state unchanged"
-          else
+          pushed=0
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git reset --hard origin/main
+            cp /tmp/texas_watch_final_state.json data/texas_data_center_watch_state.json
+            git add data/texas_data_center_watch_state.json
+            if git diff --cached --quiet; then
+              echo "Texas data-center watch state already current"
+              pushed=1
+              break
+            fi
             git commit -m "Record Texas data center watch state"
-            git pull --rebase origin main
-            git push
+            if git push origin HEAD:main; then
+              echo "Texas data-center watch state persisted"
+              pushed=1
+              break
+            fi
+            echo "Texas state push race; replay on latest main (attempt $attempt/5)"
+            sleep $((attempt * 2))
+          done
+          if [ "$pushed" -ne 1 ]; then
+            echo "Texas data-center state not persisted after 5 attempts" >&2
+            exit 1
           fi
 
       - name: Upload verification artifacts
