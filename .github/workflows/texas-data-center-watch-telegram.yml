@@ -42,7 +42,9 @@ jobs:
         run: python -m pip install --disable-pip-version-check beautifulsoup4 requests certifi
 
       - name: Run offline translation regression tests
-        run: python -m unittest discover -s tests -p 'test_texas_translation_regressions.py'
+        run: |
+          python -m unittest discover -s tests -p 'test_texas_translation_regressions.py'
+          python -m unittest discover -s tests -p 'test_hbm_currency_krw_guard.py'
 
       - name: Validate Telegram route without sending
         env:
@@ -78,6 +80,13 @@ jobs:
       - name: Build concise exact Korean alert
         if: hashFiles('out/texas_data_center_watch_alert.json') != ''
         run: python scripts/texas_data_center_alert_formatter.py
+
+      - name: Enforce immediate KRW conversion before Telegram delivery
+        if: github.event_name != 'push' && hashFiles('out/texas_data_center_watch_telegram.md') != ''
+        run: |
+          # Do not send any foreign-money alert without an independently fetched
+          # exchange rate and an adjacent (원화 환산) amount.
+          python scripts/currency_krw_guard.py out/texas_data_center_watch_telegram.md
 
       - name: Publish watcher summary
         if: always()
