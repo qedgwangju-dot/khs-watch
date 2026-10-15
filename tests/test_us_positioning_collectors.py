@@ -32,6 +32,16 @@ def fixture():
 
 def functions(names, env):
     tree = ast.parse((ROOT / "scripts/us_positioning_watch.py").read_text(encoding="utf-8"))
+    # Execute the collector's declared standard-library imports. Injecting urllib
+    # in a test hid a missing production import and bypassed the history route.
+    actual_imports = {}
+    for node in tree.body:
+        if isinstance(node, ast.Import) and all(alias.name.split('.')[0] in sys.stdlib_module_names for alias in node.names):
+            exec(compile(ast.Module(body=[node], type_ignores=[]), "actual-imports", "exec"), actual_imports)
+        elif isinstance(node, ast.ImportFrom) and node.module and node.module.split('.')[0] in sys.stdlib_module_names:
+            exec(compile(ast.Module(body=[node], type_ignores=[]), "actual-imports", "exec"), actual_imports)
+    for name, value in actual_imports.items():
+        env.setdefault(name, value)
     for node in tree.body:
         if isinstance(node, ast.FunctionDef) and node.name in names:
             exec(compile(ast.Module(body=[node], type_ignores=[]), "actual-collector", "exec"), env)
@@ -69,7 +79,7 @@ class CollectorParserTests(unittest.TestCase):
             raise AssertionError("Unexpected source call: " + url)
 
         env = functions({"parse_num", "fp", "_nasdaq_sox_historical", "parse_sox"}, {
-            "get": get, "re": re, "json": json, "hashlib": hashlib, "urllib": urllib,
+            "get": get, "re": re, "json": json, "hashlib": hashlib,
             "datetime": datetime, "timezone": timezone, "timedelta": timedelta,
             "BeautifulSoup": BeautifulSoup, "NY": ZoneInfo("America/New_York"),
             "months_before": months_before, "price_month_windows": price_month_windows,
