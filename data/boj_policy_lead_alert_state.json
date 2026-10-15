@@ -1,18 +1,20 @@
 {
-  "last_signal_key": "d7b0924a6e5907014f2f2b15",
-  "last_alert_at_kst": "2026-10-07T09:33:28+09:00",
-  "last_published_at_kst": "2026-10-07T08:18:26+09:00",
-  "last_source": "Reuters",
-  "last_title": "BOJ's dovish dissenter signals support for future rate hikes - Reuters",
+  "last_signal_key": "c1ebb8c92e039e1d9ec28f9b",
+  "last_alert_at_kst": "2026-10-15T10:54:13+09:00",
+  "last_published_at_kst": "2026-10-15T10:30:00+09:00",
+  "last_source": "Bank of Japan",
+  "last_title": "Speech by Board Member KOEDA in Kumamoto (Economic Activity, Prices, and Monetary Policy in Japan)",
   "signature": {
     "level": 1,
-    "event_type": "market_path",
+    "event_type": "official_speech",
     "policy_rate": null,
     "hike_bp": null,
-    "vote_for": null,
-    "vote_against": null,
+    "vote_for": 2,
+    "vote_against": 1,
     "dissent_direction": null,
-    "dissenters": [],
+    "dissenters": [
+      "고에다"
+    ],
     "assessment_vote_for": null,
     "assessment_vote_against": null,
     "assessment_view": null,
@@ -24,11 +26,11 @@
     "outlook_dissenters": [],
     "outlook_dissent_view": null,
     "official_statement_detail_verified": false,
-    "further_hikes": true,
+    "further_hikes": false,
     "conditional_pace": false,
     "accommodative": false,
     "neutral_rate": false,
     "inflation_upside": false,
-    "risk_channels": false
+    "risk_channels": true
   }
 }
