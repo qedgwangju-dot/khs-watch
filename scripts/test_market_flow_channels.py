@@ -4,6 +4,8 @@ import datetime as dt
 import json
 import unittest
 import threading
+import hashlib
+import tempfile
 from collections import deque
 from unittest.mock import patch
 from pathlib import Path
@@ -17,9 +19,11 @@ NOW = dt.datetime(2026, 10, 14, 14, 30, 25, tzinfo=channels.KST).timestamp()
 def response(market="KOSDAQ", **row_changes):
     row = {"date": "20261014", "time": "143000", "datetime": "20261014143000",
            "indmsamt": "30", "formsamt": "-20", "sysmsamt": "-10",
-           "indmsvol": 9000, "formsvol": -8000, "sysmsvol": -1000}
+           "indmsvol": 9000, "formsvol": -8000, "sysmsvol": -1000,
+           "etcmsamt": "0", "etcmsvol": 0, "natmsamt": "0", "natmsvol": 0}
     row.update(row_changes)
     return {"t8463OutBlock": {"tm_rng": "D", "fot_clsf_cd": "F",
+                             **{prefix + "code": code for prefix, code in channels.FUTURES_INVESTORS.values()},
                              "bsc_asts_id": channels.MARKET_SPECS[market]["asset"]},
             "t8463OutBlock1": [row]}
 
@@ -29,6 +33,12 @@ def snapshot(ts, market, selling=False):
     spot = {"sample_ts": ts, "market": market, "source_tr": "t1602", **actors}
     fut = {**spot, "asset": channels.MARKET_SPECS[market]["asset"], "source_tr": "t8463",
            "source_scope_verified": True, "unit": "LS_raw_amount", "unit_verified": False}
+    fut["summary"] = {prefix + "code": code for prefix, code in channels.FUTURES_INVESTORS.values()}
+    fut["source_row"] = {
+        prefix + field: actors.get(actor, 0)
+        for actor, (prefix, _) in channels.FUTURES_INVESTORS.items()
+        for field in ("msamt", "msvol")
+    }
     total = -60 if selling else 0
     pgm = {"sample_ts": ts, "market": market, "source_tr": "t1640", "unit": "LS_raw_amount",
            "전체": total, "차익": total / 3, "비차익": total * 2 / 3, "표본시차초": 3,
@@ -37,6 +47,71 @@ def snapshot(ts, market, selling=False):
 
 
 class SourceContract(unittest.TestCase):
+    def test_actual_oct15_readback_keeps_negative_foreign_and_individual_deltas(self):
+        record = json.loads((Path(__file__).parent / "test_fixtures/kosdaq_futures_readback_20261015.json").read_text(encoding="utf-8"))
+        self.assertFalse(record["original_operating_response"])
+        received = dt.datetime(2026, 10, 15, 11, 0, tzinfo=channels.KST).timestamp()
+        blocks = {}
+        for row in record["rows"]:
+            body = {"t8463OutBlock": record["summary"], "t8463OutBlock1": [row]}
+            block = channels.parse_futures(body, "KOSDAQ", received)
+            self.assertTrue(block["investor_quality"]["verified"])
+            blocks[row["time"]] = block
+        self.assertEqual(watch._actor_delta(blocks["104200"], blocks["104930"]),
+                         {"외국인": -77, "기관": 77, "개인": -2})
+
+    def test_partial_zero_amount_row_cannot_create_false_buying_or_fall_back(self):
+        # Synthetic corruption of the later readback, not a captured operating response.
+        record = json.loads((Path(__file__).parent / "test_fixtures/kosdaq_futures_readback_20261015.json").read_text(encoding="utf-8"))
+        rows = {row["time"]: row for row in record["rows"]}
+        bad = {**rows["104930"], "formsamt": "0", "indmsamt": "0"}
+        self.assertEqual(int(bad["formsamt"])-int(rows["104200"]["formsamt"]), 1856)
+        self.assertEqual(int(bad["indmsamt"])-int(rows["104200"]["indmsamt"]), 427)
+        received = dt.datetime(2026, 10, 15, 11, 0, tzinfo=channels.KST).timestamp()
+        body = {"t8463OutBlock": record["summary"], "t8463OutBlock1": [rows["104200"], bad]}
+        with self.assertRaises(channels.FuturesInvestorQualityError) as caught:
+            channels.parse_futures(body, "KOSDAQ", received)
+        quality = caught.exception.evidence["investor_quality"]
+        self.assertEqual(quality["amount_sum"], 2362)
+        self.assertFalse(quality["verified"])
+        self.assertEqual(caught.exception.evidence["source_row"], bad)
+
+    def test_true_zero_row_and_balanced_positive_three_actors_remain_valid(self):
+        for values in ({k: 0 for k in ("ind", "for", "sys", "etc", "nat")},
+                       {"ind": 10, "for": 20, "sys": 30, "etc": -60, "nat": 0}):
+            changes = {prefix + field: value for prefix, value in values.items()
+                       for field in ("msamt", "msvol")}
+            self.assertTrue(channels.parse_futures(response(**changes), "KOSDAQ", NOW)["investor_quality"]["verified"])
+
+    def test_quantity_balance_missing_actor_and_wrong_code_cannot_pass(self):
+        for changes in ({"formsvol": -7999}, {"etcmsamt": None}, {"natmsvol": None},
+                        {"formsvol": -8000.5}, {"etcmsamt": 6}):
+            with self.subTest(changes=changes), self.assertRaises(channels.FuturesInvestorQualityError):
+                channels.parse_futures(response(**changes), "KOSDAQ", NOW)
+        body = response()
+        body["t8463OutBlock"]["forcode"] = "0008"
+        with self.assertRaises(channels.FuturesInvestorQualityError):
+            channels.parse_futures(body, "KOSDAQ", NOW)
+
+    def test_amount_rounding_is_bounded_and_not_used_for_quantity(self):
+        self.assertTrue(channels.parse_futures(response(etcmsamt=5), "KOSDAQ", NOW)["investor_quality"]["verified"])
+        with self.assertRaises(channels.FuturesInvestorQualityError):
+            channels.parse_futures(response(etcmsamt=6), "KOSDAQ", NOW)
+
+    def test_rejected_latest_row_is_retained_without_a_flow_value(self):
+        bad = response(formsamt=0)
+        try:
+            channels.parse_futures(bad, "KOSDAQ", NOW)
+        except channels.FuturesInvestorQualityError as exc:
+            error = exc
+        with patch.object(watch, "investor_current", return_value={"sample_ts": NOW}), \
+             patch.object(watch, "futures_current", side_effect=error), \
+             patch.object(watch, "market_program_current", return_value={"전체": 0}):
+            snap = watch.fetch_flow_snapshot("unused", "KOSDAQ")
+        self.assertIsNone(snap["지수선물"])
+        self.assertFalse(snap["rejected_source_evidence"]["지수선물"]["investor_quality"]["verified"])
+        self.assertIn("FuturesInvestorQualityError", snap["errors"]["지수선물"])
+
     def test_retained_real_provider_products_and_dated_clock(self):
         fixture = json.loads((Path(__file__).parent / "test_fixtures/market_flow_channels_ls_20261014.json").read_text(encoding="utf-8"))
         for market, record in fixture["futures"].items():
@@ -156,6 +231,36 @@ class SourceContract(unittest.TestCase):
 
 
 class IncidentSymmetry(unittest.TestCase):
+    def test_invalid_legacy_source_row_cannot_bypass_gate_with_a_true_flag(self):
+        self.w.kosdaq_flows[-1]["지수선물"]["source_row"]["formsamt"] = 0
+        self.w.kosdaq_flows[-1]["지수선물"]["investor_quality"] = {"verified": True}
+        att = self.get("KOSDAQ")
+        self.assertFalse(att["available"])
+        self.assertIsNone(att["futures"])
+        self.assertIsNotNone(att["spot"])
+        text = "\n".join(watch.market_attribution_lines(att, "KOSDAQ"))
+        self.assertIn("KOSDAQ150 선물: 확인 보류", text)
+        self.assertNotIn("선물 최다매도:", text)
+        self.assertIn("현물·선물 동시매도: 판정 보류", text)
+
+    def test_no_seller_label_is_limited_to_the_three_observed_actors(self):
+        att = self.get("KOSDAQ")
+        att["futures"] = {"외국인": 20, "기관": 30, "개인": 10}
+        text = "\n".join(watch.market_attribution_lines(att, "KOSDAQ"))
+        self.assertIn("선물 최다매도: <b>외국인·기관·개인 중 없음</b>", text)
+
+    def test_balanced_raw_row_cannot_back_a_different_cached_amount(self):
+        self.w.kosdaq_flows[-1]["지수선물"]["외국인"] = 0
+        self.assertIsNone(self.get("KOSDAQ")["futures"])
+
+    def test_reconciliation_hold_explains_rejected_row_in_the_event_window(self):
+        rejected = {"sample_ts": 1995, "investor_quality": {"issues": ["전체 투자자 금액 합계 +2362"]}}
+        self.w.kosdaq_flows[-1]["지수선물"] = None
+        self.w.kosdaq_flows[-1]["rejected_source_evidence"] = {"지수선물": rejected}
+        text = "\n".join(watch.market_attribution_lines(self.get("KOSDAQ"), "KOSDAQ"))
+        self.assertIn("원자료 투자자 검산 미통과", text)
+        self.assertIn("+2362", text)
+
     def setUp(self):
         self.w = watch.Watch("unused", [], "", False)
         self.w.session_open_ts = 900
@@ -173,6 +278,30 @@ class IncidentSymmetry(unittest.TestCase):
         self.assertTrue(first["available"])
         self.assertEqual(first["confidence"], "중간")
         self.assertFalse(first["program_quality"])
+
+    def test_event_source_evidence_survives_mutation_and_records_exact_body_hash(self):
+        ep = {"market": "KOSDAQ", "start_ts": 1000, "low_ts": 2000,
+              "start_price": 769.33, "low_price": 764.89}
+        text = self.w.build_kosdaq_drop_alert("end", ep, 2100, 767.01)
+        expected = hashlib.sha256(text.encode("utf-8")).hexdigest()
+        self.w.kosdaq_flows[-1]["지수선물"]["source_row"]["formsamt"] = 999
+        with tempfile.TemporaryDirectory() as temporary, patch.object(watch, "DELIVERY_LOG", Path(temporary)/"delivery.jsonl"):
+            self.w._record_delivery("kosdaq_shock_end", 1, ep, 2100)
+            record = json.loads(watch.DELIVERY_LOG.read_text(encoding="utf-8"))
+        self.assertEqual(record["evidence"]["request_body_sha256"], expected)
+        retained = record["evidence"]["market_attribution"]["source_evidence"]["futures"]["end"]
+        self.assertEqual(retained["source_row"]["formsamt"], -100)
+        self.assertFalse(record["evidence"]["original_http_bytes_preserved"])
+
+    def test_render_evidence_is_not_attached_to_another_market_or_event(self):
+        ep = {"market": "KOSDAQ", "start_ts": 1000, "low_ts": 2000,
+              "start_price": 769.33, "low_price": 764.89}
+        self.w.build_kosdaq_drop_alert("end", ep, 2100, 767.01)
+        with tempfile.TemporaryDirectory() as temporary, patch.object(watch, "DELIVERY_LOG", Path(temporary)/"delivery.jsonl"):
+            self.w._record_delivery("end", 1, {**ep, "market": "KOSPI"}, 2100)
+            self.w._record_delivery("kosdaq_shock_end", 2, {**ep, "start_ts": 1001}, 2100)
+            records = [json.loads(line) for line in watch.DELIVERY_LOG.read_text(encoding="utf-8").splitlines()]
+        self.assertTrue(all("evidence" not in record for record in records))
 
     def test_program_without_source_clock_never_high_confidence(self):
         for market in channels.MARKET_SPECS:

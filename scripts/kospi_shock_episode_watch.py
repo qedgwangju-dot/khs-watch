@@ -27,6 +27,7 @@ from kosdaq_surge_industries import industry_buy_context, industry_context_lines
 from krx_session_calendar import session_state
 from market_flow_channels import (
     MARKET_SPECS, pace, block_scope_matches, futures_current,
+    FuturesInvestorQualityError,
     program_current as market_program_current,
 )
 
@@ -421,6 +422,8 @@ def fetch_flow_snapshot(token: str, market_name: str = "KOSPI", on_channel=None)
             except Exception as exc:
                 snap[key] = None
                 snap["errors"][key] = f"{type(exc).__name__}: {exc}"
+                if isinstance(exc, FuturesInvestorQualityError):
+                    snap.setdefault("rejected_source_evidence", {})[key] = exc.evidence
             if on_channel is not None:
                 on_channel({**snap, "ts": time.time(), "errors": dict(snap["errors"])})
     ended_ts = time.time()
@@ -690,6 +693,8 @@ def market_attribution_lines(att: dict[str, Any], market: str, final: bool = Fal
             lines.append(f"• {label}: {shown}{suffix}")
             sellers = [(a, v) for a, v in values.items() if v is not None and v < 0]
             leader, value = min(sellers, key=lambda item: item[1]) if sellers else ("없음", None)
+            if name == "futures" and market == "KOSDAQ" and not sellers:
+                leader = "외국인·기관·개인 중 없음"
             lines.append(f"• {'현물' if name == 'spot' else '선물'} 최다매도: <b>{leader}</b>"
                          + (" " + formatter(value) if value is not None else ""))
         else:
@@ -1156,6 +1161,13 @@ class Watch:
                     status["reason"] = "시작/종료 원자료 표본 동일 — 구간 변화 확인 불가"
                 else:
                     status.update(available=True, reason=None)
+            if name == "futures" and market == "KOSDAQ" and not status["available"]:
+                for snap in reversed(rows):
+                    rejected = (snap.get("rejected_source_evidence") or {}).get(future_key)
+                    if isinstance(rejected, dict) and start_ts <= float(rejected.get("sample_ts") or 0) <= end_ts:
+                        status["reason"] = "LS 선물 원자료 투자자 검산 미통과 — " + "; ".join(
+                            (rejected.get("investor_quality") or {}).get("issues") or ["미확인 행"])
+                        break
             statuses[name] = status
             pairs[name] = (first, last) if status["available"] else (None, None)
         spot_a, spot_b = pairs["spot"]
@@ -1168,6 +1180,19 @@ class Watch:
                 "futures_label": MARKET_SPECS[market]["futures_label"],
                 "futures_unit": (fut_b[0].get("unit") if fut_b else None),
                 "start_ts": start_ts, "end_ts": end_ts}
+        if market == "KOSDAQ":
+            # Delivery evidence must survive the one-hour handoff lookback.
+            # These are decoded provider fields, not preserved HTTP bytes.
+            meta["source_evidence"] = {
+                name: {"start": pair[0][0] if pair[0] else None,
+                       "end": pair[1][0] if pair[1] else None}
+                for name, pair in pairs.items()
+            }
+            for snap in reversed(rows):
+                rejected = (snap.get("rejected_source_evidence") or {}).get(future_key)
+                if isinstance(rejected, dict) and start_ts <= float(rejected.get("sample_ts") or 0) <= end_ts:
+                    meta["source_evidence"]["rejected_futures"] = rejected
+                    break
         if not spot_a or not spot_b or not fut_a or not fut_b:
             failed = [("현물" if n == "spot" else "선물") + ": " + str(statuses[n]["reason"])
                       for n in ("spot", "futures") if not statuses[n]["available"]]
@@ -1648,7 +1673,13 @@ class Watch:
             "• 코스피200 선물·코스피 프로그램 수급은 코스닥 매도주체로 사용하지 않습니다.",
             "• "+ " · ".join([link(KOSDAQ_URL,"KOSDAQ"),link(KOSDAQ_NEWS_URL,"관련 뉴스")]),
         ])
-        return "\n".join(lines)
+        text = "\n".join(lines)
+        self._kosdaq_render_evidence = json.loads(json.dumps({
+            "stage": "kosdaq_shock_" + stage, "event_start_ts": start_ts,
+            "event_low_ts": low_ts, "request_body_sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
+            "market_attribution": att, "original_http_bytes_preserved": False,
+        }))
+        return text
 
     async def maybe_alert_kosdaq_drop(self) -> None:
         if getattr(self,"test",False) or not getattr(self,"kosdaq_idx",None):
@@ -2105,6 +2136,12 @@ class Watch:
             "observed_ts": observed_ts,
             "observed_kst": fmt_clock(observed_ts),
         }
+        rendered = getattr(self, "_kosdaq_render_evidence", None)
+        if (evidence is None and record["market"] == "KOSDAQ" and isinstance(rendered, dict)
+                and rendered.get("stage") == stage
+                and rendered.get("event_start_ts") == ep.get("start_ts")
+                and rendered.get("event_low_ts") == ep.get("low_ts")):
+            evidence = rendered
         if evidence is not None:
             record["evidence"] = evidence
         with DELIVERY_LOG.open("a", encoding="utf-8") as fp:
