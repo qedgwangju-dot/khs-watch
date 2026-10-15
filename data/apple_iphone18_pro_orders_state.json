@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "updated_at_kst": "2026-10-15T23:24:23+09:00",
+  "updated_at_kst": "2026-10-16T03:38:22+09:00",
   "initial_alert_sent": true,
   "baseline_at_kst": "2026-10-09T15:05:00+09:00",
   "seen": [
@@ -97,6 +97,7 @@
     "a79d527314a30d710ae06d39",
     "aa682ef5a58e36220e221ead",
     "abf3e97006e70afcee38f6da",
+    "ac91cc5812cc105e9d8684f8",
     "ae9cc8d2fd26d249434a0fd3",
     "b025ea94b499d3e209fbba7d",
     "b0a6dff5bf10efe8799a1af3",
@@ -194,7 +195,7 @@
       "china_week38_sales_yoy_pct_official_counterpoint": 12.0
     }
   },
-  "last_scan_items": 100,
+  "last_scan_items": 102,
   "feed_errors": [],
   "successful_sources": 10,
   "new_signal_count": 0,
