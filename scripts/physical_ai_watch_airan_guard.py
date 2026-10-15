@@ -1662,7 +1662,7 @@ def _oct15_recovery(group_key: str) -> list[dict]:
 # = achieved mass-production cycle.
 def _oct15_render_category(group: str, text: str) -> str:
     if group == 'agility_spac_2026':
-        if re.search(r'합병\s*종결\s*완료|merger\s*completed|business\s*combination\s*closed',text,re.I):
+        if re.search(r'합병\s*종결\s*완료|merger\s*completed|business\s*combination\s*(?:closed|completed)',text,re.I):
             return 'Agility Robotics · 실제 합병 거래종결 공식확인'
         if re.search(r'주주(?:총회)?\s*승인\s*통과|주총.{0,20}승인\s*통과|shareholders?\s*approved',text,re.I):
             return 'Agility Robotics · 주주총회 승인·거래종결 대기'
