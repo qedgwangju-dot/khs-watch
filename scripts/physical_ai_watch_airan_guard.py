@@ -1612,12 +1612,22 @@ def _oct15_stage(group: str, text: str, source: str = '') -> str:
         if official and re.search(r'(?:S[-\s]?4).{0,65}(?:효력|effective)|declared\s*effective.{0,90}(?:S[-\s]?4|registration)|SEC.{0,45}효력',text,re.I):
             return 's4_effective'
     if group == 'rainbow_fcc_compliance':
-        if official and re.search(r'DoW.{0,85}(?:conditional\s*approval|조건부\s*승인)|조건부\s*승인.{0,40}(?:획득|발급|승인)',text,re.I):
+        if official and re.search(
+            r'(?:DoW|전쟁부).{0,85}(?:조건부\s*승인.{0,25}(?:발급|부여|획득)|'
+            r'(?:granted|issued|approved).{0,30}conditional\s*approval|'
+            r'conditional\s*approval.{0,30}(?:granted|issued|approved))|'
+            r'조건부\s*승인.{0,30}(?:획득|발급|부여)',
+            text,re.I
+        ):
             return 'official_approval_granted'
         if source in {'전자신문','ETNews'} and re.search(r'(?:신청서|서류).{0,30}(?:제출|접수)|(?:조건부\s*승인).{0,35}신청',text,re.I):
             return 'application_reported'
     if group == 'xinjian_prs_ipo':
-        if official and re.search(r'实际.{0,10}(?:出货|交付)|첫\s*출하|양산\s*출하\s*개시',text,re.I):
+        if official and re.search(
+            r'实际.{0,10}(?:出货|交付)|첫\s*출하|'
+            r'첫\s*양산\s*출하.{0,15}(?:확인|시작|개시|완료)|'
+            r'양산\s*출하\s*(?:개시|시작|완료)',text,re.I
+        ):
             return 'official_shipment'
         if source in {'21财经','21世纪经济报道','동방재부'} and re.search(r'10.{0,3}12|2026-10-12|问询|질의서|IPO',text,re.I) and re.search(r'A사|A公司|A\s*company|양산\s*발주|量产\s*订单|mass\s*production\s*order',text,re.I):
             return 'ipo_order_reported'
@@ -1652,8 +1662,10 @@ def _oct15_recovery(group_key: str) -> list[dict]:
 # = achieved mass-production cycle.
 def _oct15_render_category(group: str, text: str) -> str:
     if group == 'agility_spac_2026':
-        if re.search(r'주총.{0,20}승인\s*통과|합병\s*종결\s*완료|merger\s*completed',text,re.I):
-            return 'Agility Robotics · 합병 절차 후속 공식 완료'
+        if re.search(r'합병\s*종결\s*완료|merger\s*completed|business\s*combination\s*closed',text,re.I):
+            return 'Agility Robotics · 실제 합병 거래종결 공식확인'
+        if re.search(r'주주(?:총회)?\s*승인\s*통과|주총.{0,20}승인\s*통과|shareholders?\s*approved',text,re.I):
+            return 'Agility Robotics · 주주총회 승인·거래종결 대기'
     if group == 'rainbow_fcc_compliance':
         if re.search(r'조건부\s*승인.{0,20}(?:부여|발급|획득)',text,re.I):
             return '레인보우로보틱스 · DoW 조건부 승인 공식확인'
@@ -1723,9 +1735,13 @@ _OCT15_MEANINGS = {
         '계약금액·고객 발주·양산·실적 공식 확인이 없으므로 4건을 고신호 판정에서 제외합니다. '
         '이 정정은 새로운 수주·매출이 아닙니다.'
     ),
-    'Agility Robotics · 합병 절차 후속 공식 완료': (
-        'S-4 효력 발생 이후 실제 주총 승인 또는 거래종결이 직접 확인된 별도 단계입니다. '
-        '발표문·SEC 후속 8-K·상장 거래 개시를 각각 분리하고 환매·PIPE·주식희석을 재산출합니다.'
+    'Agility Robotics · 주주총회 승인·거래종결 대기': (
+        '11월 2일 주주 승인 통과가 회사 공식발표로 확인된 단계이며 거래종결·'
+        'AGLT 실제 Nasdaq 거래개시는 아직 별도 절차입니다. 환매·PIPE·주식희석을 검산합니다.'
+    ),
+    'Agility Robotics · 실제 합병 거래종결 공식확인': (
+        'S-4 효력 및 주주 승인 이후 실제 합병 종결이 공식 확인된 단계입니다. '
+        'SEC 8-K·AGLT 거래개시·현금 납입·환매 후 조달액을 따로 확인합니다.'
     ),
     '레인보우로보틱스 · DoW 조건부 승인 공식확인': (
         '조건부 승인 실제 발급이 확인돼 신청 단계를 넘어선 사건입니다. '
