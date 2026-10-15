@@ -1,3 +1,4 @@
+import hashlib
 import ast
 import copy
 import io
@@ -225,13 +226,14 @@ class OperatingIntegrationTests(unittest.TestCase):
                 "parse_sox": lambda: copy.deepcopy(values["Nasdaq SOX|sox"]),
                 "render_alert": presentation.render_alert,
                 "STATUS": root / "status.md", "ALERT": root / "alert.html", "PENDING": root / "pending.json",
-                "os": os, "json": json, "datetime": FrozenDatetime,
+                "os": os, "json": json, "datetime": FrozenDatetime, "OUT": root,
+                "fp": lambda v: hashlib.sha256(json.dumps(v, sort_keys=True, ensure_ascii=False).encode()).hexdigest(),
                 "timezone": timezone, "timedelta": timedelta, "NQ_CFTC_CODE": "209742",
             }
-            with patch.dict(os.environ, {"FORCE_SEND": "false"}), redirect_stdout(io.StringIO()):
+            with patch.dict(os.environ, {"FORCE_SEND": "false"}), patch("us_positioning_context.collect_context", return_value={}), redirect_stdout(io.StringIO()):
                 exec(compile(tail, str(ROOT / "scripts/us_positioning_watch.py"), "exec"), env)
             return {
-                "gate": env["quality_gate_ok"], "updates": len(env["updates"]),
+                "gate": env["quality_gate_ok"], "updates": len(env["updates"]), "sources": env["results"],
                 "alert": env["ALERT"].read_text(encoding="utf-8") if env["ALERT"].exists() else None,
                 "pending": json.loads(env["PENDING"].read_text(encoding="utf-8")) if env["PENDING"].exists() else None,
             }
@@ -239,9 +241,10 @@ class OperatingIntegrationTests(unittest.TestCase):
     def test_actual_saved_input_passes_original_math_gates_and_renders_new_layout(self):
         result = self.run_operating_tail(snapshot())
         self.assertTrue(result["gate"])
-        self.assertEqual(result["updates"], 3)
-        self.assertEqual(result["alert"], render())
-        self.assertEqual(result["pending"]["values"], snapshot())
+        self.assertEqual(result["updates"], 4)
+        self.assertEqual(result["alert"], presentation.render_alert(snapshot()["CFTC|cot"], snapshot()["Cboe|options"], snapshot()["Nasdaq SOX|sox"], result["sources"], result["sources"]))
+        self.assertEqual({k:result["pending"]["values"][k] for k in snapshot()}, snapshot())
+        self.assertIn("미국 주요지수·시장 확산·옵션 과거 비교|context", result["pending"]["values"])
 
     def test_unchanged_snapshot_creates_no_message_or_pending_state(self):
         values = snapshot()

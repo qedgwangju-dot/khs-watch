@@ -536,6 +536,8 @@ def cftc_nq_history_3y(current_nq=None, current_period=None):
         })
     report_end = pd.to_datetime(current_period).date() if current_period else latest.date()
     result["month_windows"] = position_month_windows(month_rows, report_end, current_nq)
+    from us_positioning_context import position_week_window
+    result["week_window"] = position_week_window(month_rows, report_end, current_nq) if current_nq else {"status": "unavailable", "reason": "Current NQ snapshot unavailable"}
 
     if s10 is not None:
         result.update({
@@ -1111,6 +1113,10 @@ def fetch_cboe_daily_snapshot(period):
         },
     }
     core = {"source": "Cboe", "kind": "options", "period": period, "metrics": metrics}
+    from us_positioning_context import parse_cboe_day
+    dated_snapshot = parse_cboe_day(h, d)
+    if any(metrics.get(k) != v for k, v in dated_snapshot["metrics"].items()):
+        raise RuntimeError("Cboe visible date / daily rows cross-check mismatch")
     return {**core, "url": url, "fingerprint": fp(core)}
 
 
@@ -1282,6 +1288,11 @@ def parse_sox():
 
     metrics["month_windows"] = price_month_windows(yahoo_date, latest, rows, nrows)
     metrics["month_window_history_url"] = historical_url
+    from us_positioning_context import price_path
+    path_primary = list(nrows)
+    if not any(day == yahoo_date for day, _ in path_primary):
+        path_primary.append((yahoo_date, latest))
+    metrics["price_path"] = price_path(yahoo_date, path_primary, rows, "SOX")
 
     period = yahoo_date.strftime("%m/%d/%Y")
     core = {"source": "Nasdaq SOX", "kind": "sox", "period": period, "metrics": metrics}
@@ -1475,6 +1486,21 @@ quality_gate_ok = (
     and not freshness_problems
 )
 
+# Fresh supplementary context is independently dated. Its absence stays explicit;
+# it cannot validate or replace any of the original critical source lanes.
+market_context = {}
+if quality_gate_ok:
+    from us_positioning_context import collect_context
+    try:
+        market_context = collect_context(sox_for_gate, cboe_for_gate, OUT)
+    except Exception as exc:
+        market_context = {"collection_error": str(exc)}
+    context_core = {"source": "미국 주요지수·시장 확산·옵션 과거 비교", "kind": "context",
+                    "period": datetime.strptime(sox_for_gate["period"], "%m/%d/%Y").date().isoformat(),
+                    "metrics": market_context}
+    results.append({**context_core, "url": "https://www.cboe.com/markets/us/options/market-statistics/daily",
+                    "fingerprint": fp(context_core)})
+
 updates = []
 for x in results:
     key = f"{x['source']}|{x['kind']}"
@@ -1526,7 +1552,7 @@ if quality_gate_ok and (updates or force):
     event_label = "정정·보강" if correction else "신규 변화"
 
     ALERT.write_text(
-        render_alert(cftc, cboe, sox, updates, results, errors, event_label),
+        render_alert(cftc, cboe, sox, updates, results, errors, event_label, context=market_context),
         encoding="utf-8",
     )
 
