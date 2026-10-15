@@ -564,6 +564,50 @@ def starbase_faa_notice() -> str:
         "• 원문: https://www.faa.gov/space/stakeholder_engagement/spacex_starship",
     ))
 
+
+KASA_AI_EVENT="kasa:space_ai:2026-10-13:2028_early_demo_goal"
+SPACE_FUND_EVENT="private_space:2026q3:spacecapital_seraphim_distinct"
+KASA_ORIGINAL="https://www.kasa.go.kr/prog/plcyBrf/brief/kor/sub01_01_04/view.do?plcyBrfNo=392"
+KASA_HEARING_REPORT="https://files.newsis.com/view/NISX20261013_0003824495"
+SPACE_CAPITAL_REPORT="https://www.spacecapital.com/reports/space-iq-q3-2026"
+SERAPHIM_TRACKER="https://seraphim.vc/seraphim-spacetech-investment-tracker/"
+
+def check_primary(url: str, *markers: str) -> str:
+    content=strip_html(request_bytes(url,timeout=23).decode("utf-8",errors="replace"))
+    if not all(m.casefold() in content.casefold() for m in markers):
+        raise RuntimeError("공식·원문 자료의 필수 키워드 직접 재검증 실패")
+    return content
+
+def korea_space_ai_notice() -> str:
+    check_primary(KASA_ORIGINAL, "우주 데이터센터", "2030")
+    check_primary(KASA_HEARING_REPORT, "2028년", "21억원")
+    return "\n".join((
+        "[국내 우주 AI·실증] 우주항공청 2028년 조기 추진은 노력 단계",
+        "• 우주항공청 2026년 4월 공식자료: K-문샷 우주 데이터센터의 우주 실증 목표는 2030년.",
+        "• 2026년 10월 13일 국정감사 보도: 2028년으로 앞당기기 위해 노력한다는 발언. 2028년 발사계약 확정이 아닙니다.",
+        "• 보도된 2027년 관련 예산안 21억원은 지상 검증 중심이며, 우주 실증위성 제작 예산은 반영되지 않았다고 보도됐습니다. 확정 집행액·양산 매출로 분류하지 않습니다.",
+        "• 병목: 우주 방사선 내성, 발열·열방출, 전력제어, 고대역폭메모리·저전력 신경망처리장치 검증.",
+        "• 매출 연결: 시험용 반도체·전력기기 기술 선정→실증위성 발주→신뢰성 검증→양산/서비스. 확정 공급업체는 없음.",
+        "• 먼저 볼 지표: 확정 예산서·우주실증 위성사업 공고·실증 시점·국내 반도체 선정.",
+        "• 원문: "+KASA_ORIGINAL,
+        "• 원문: "+KASA_HEARING_REPORT,
+    ))
+
+def space_funding_notice() -> str:
+    check_primary(SPACE_CAPITAL_REPORT, "92.5", "100")
+    check_primary(SERAPHIM_TRACKER, "20.8", "216")
+    return "\n".join((
+        "[우주투자·자금] 전체 자금 유입과 스타트업 조달액 분리",
+        "• Space Capital 2026년 3분기 보고서: 2026년 1~3분기 누적 글로벌 우주산업 투자액 925억 달러. 연간 1,000억 달러 초과는 전망이며 확정치가 아닙니다.",
+        "• Seraphim 별도 통계: 2026년 3분기 우주기술 스타트업 투자금 208억 달러, 투자 216건. 이 금액을 위 누적 투자액에 더하지 않습니다.",
+        "• 투자액은 SpaceX가 수주한 금액이나 신규 상장주식 순매수액이 아닙니다. 조사기관·집계범위가 다릅니다.",
+        "• 최대 수혜 후보: 발사체·지상국·위성 제작 업체, 고객 검증된 공급망. 단, 투자 유입=매출 인식은 아닙니다.",
+        "• 최대 역풍: 발사슬롯·엔진 수율·인증·설비투자 회수 지연, 신규 증자로 인한 희석.",
+        "• 먼저 볼 지표: 분기 자금조달·확정 고객 계약·실제 발사량·자유현금흐름.",
+        "• 원문: "+SPACE_CAPITAL_REPORT,
+        "• 원문: "+SERAPHIM_TRACKER,
+    ))
+
 def main() -> int:
     force_notify = str(os.getenv("FORCE_NOTIFY", "")).lower() in {"1", "true", "yes", "on"}
     bootstrap = not STATE_PATH.exists()
@@ -599,6 +643,12 @@ def main() -> int:
     if FAA_STARBASE_EVENT not in seen:
         official_alerts.append(starbase_faa_notice())
         seen[FAA_STARBASE_EVENT] = NOW.isoformat()
+    if KASA_AI_EVENT not in seen:
+        official_alerts.append(korea_space_ai_notice())
+        seen[KASA_AI_EVENT] = NOW.isoformat()
+    if SPACE_FUND_EVENT not in seen:
+        official_alerts.append(space_funding_notice())
+        seen[SPACE_FUND_EVENT] = NOW.isoformat()
     for category in CATEGORIES:
         peers = all_by_category[category.key]
         candidates: list[dict] = []
@@ -706,6 +756,8 @@ def self_test() -> int:
     official = dict(rumor, source="NASA", source_url="https://www.nasa.gov")
     assert corroborated(category, official, [official])
     assert FAA_STARBASE_EVENT.startswith("faa:starbase:")
+    assert KASA_AI_EVENT.startswith("kasa:space_ai")
+    assert SPACE_FUND_EVENT.startswith("private_space:")
     assert "연간 최대 456회" in starbase_faa_notice.__doc__ if False else True
     print("space_launch_transition_self_test=ok official_nasa_contract_2030=1 no_early_retirement=1 initial_news_suppressed=1")
     return 0
