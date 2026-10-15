@@ -18,7 +18,7 @@ import physical_ai_watch_tesla_order_dedupe as current
 base = current.base
 
 QTY_RE = re.compile(
-    r"(?<![\d,])(\d{1,3}(?:,\d{3})+|\d+)\s*(대|개|셀|랙|서버|MW(?!h)|GW(?!h)|km|킬로미터)",
+    r"(?<![\d,])(\d{1,3}(?:,\d{3})+|\d+)\s*(대|개|셀|랙|서버|MW(?!h)|GW(?!h)|km|킬로미터)(?![가-힣A-Za-z])",
     re.I,
 )
 
@@ -235,22 +235,12 @@ def _xl330_block(block: str, rate: float, prices: dict[str, float], fresh: dict[
 
 
 def _unknown_block(block: str) -> str | None:
-    # Do not attach unrelated power/capacity units (e.g. 5 MW) to a robot event.
-    # Robot alerts may legitimately contain robot/unit counts, but MW/GW are only
-    # meaningful when the underlying event is actually infrastructure/ESS.
-    if ROBOT_CONTEXT_RE.search(block):
-        robot_units = [(n, u) for n, u in QTY_RE.findall(block) if u.lower() in {'대', '개'}]
-        if not robot_units:
-            return None
-    summary = _qty_summary(block)
-    if not summary:
-        return None
-    return "\n".join([
-        "💰 <b>대당·물량 환산</b>",
-        f"• <b>확인 물량</b>  {summary}",
-        "• <b>단가</b>  현재 공개·신뢰 자료에서 직접 적용할 단위단가를 확인하지 못해 총액을 임의 추정하지 않습니다.",
-        "• <b>후속</b>  공식 단가·계약금액·동일 규격 조달가가 확인되면 단위당 원화와 물량×단가 총액을 함께 계산합니다.",
-    ])
+    # A generic text count is NOT a verified shipment: dates such as 12개월,
+    # site counts, targets, and facility plans cannot be labeled "확인 물량".
+    # Keep factual unit amounts only in the evidence-graded main alert text.
+    # Product-specific blocks with a verified product identity and public
+    # price (_microduck/_reachy/_xl330) are handled separately.
+    return None
 
 
 def _insert_after_core(block: str, value_block: str) -> str:
