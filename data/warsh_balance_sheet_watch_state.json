@@ -2,20 +2,20 @@
   "schema_version": 4,
   "measurement_basis": "수요일 잔액",
   "h41": {
-    "date": "2026-10-07",
+    "date": "2026-10-14",
     "measurement_basis": "수요일 잔액",
-    "total_assets": 6747560.0,
-    "total_assets_weekly": 4529.0,
-    "treasury": 4566384.0,
-    "treasury_weekly": 2223.0,
-    "bills": 562157.0,
-    "bills_weekly": 1946.0,
-    "mbs": 1898089.0,
-    "mbs_weekly": 0.0,
-    "reserves": 3022066.0,
-    "reserves_weekly": 140380.0,
-    "securities": 6466820.0,
-    "securities_weekly": 2223.0,
+    "total_assets": 6755639.0,
+    "total_assets_weekly": 8079.0,
+    "treasury": 4570552.0,
+    "treasury_weekly": 4168.0,
+    "bills": 566048.0,
+    "bills_weekly": 3891.0,
+    "mbs": 1898160.0,
+    "mbs_weekly": 71.0,
+    "reserves": 3030854.0,
+    "reserves_weekly": 8788.0,
+    "securities": 6471059.0,
+    "securities_weekly": 4239.0,
     "url": "https://www.federalreserve.gov/releases/h41/Current/"
   },
   "history": [
@@ -86,10 +86,34 @@
       "securities": 6466820.0,
       "securities_weekly": 2223.0,
       "url": "https://www.federalreserve.gov/releases/h41/Current/"
+    },
+    {
+      "date": "2026-10-14",
+      "measurement_basis": "수요일 잔액",
+      "total_assets": 6755639.0,
+      "total_assets_weekly": 8079.0,
+      "treasury": 4570552.0,
+      "treasury_weekly": 4168.0,
+      "bills": 566048.0,
+      "bills_weekly": 3891.0,
+      "mbs": 1898160.0,
+      "mbs_weekly": 71.0,
+      "reserves": 3030854.0,
+      "reserves_weekly": 8788.0,
+      "securities": 6471059.0,
+      "securities_weekly": 4239.0,
+      "url": "https://www.federalreserve.gov/releases/h41/Current/"
     }
   ],
-  "regime": "충분한 준비금 유지·자산 구성 전환에 가까움",
-  "four_week_change_bn": null,
+  "regime": "총량보다 자산 구성 전환 우세",
+  "four_week_change_bn": {
+    "total_assets": 9.091,
+    "reserves": 109.318,
+    "treasury": 16.102,
+    "bills": 15.566,
+    "mbs": -15.363,
+    "securities": 0.739
+  },
   "implementation": {
     "date": "2026-09-16",
     "url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a1.htm",
@@ -102,5 +126,5 @@
     "fingerprint": "b4a1c99a8613f55bf3d8769c3fb1fa83273a20c784dd0eb4d9b97b7e52f64c04",
     "excerpt": "﻿ Federal Reserve Board - Balance Sheet Policy Skip to main content An official website of the United States Government Here's how you know Official websites use .gov A .gov website belongs to an official government organization in the United States. Chapters --> Overview Communications Balance Sheet Policy Data Sources Productivity and Jobs Inflation Frameworks Balance Sheet Policy This task force will examine the costs, benefits, and institutional implications of the Federal Reserve's current balance sheet regime."
   },
-  "updated_at_utc": "2026-10-09T22:56:41.024633+00:00"
+  "updated_at_utc": "2026-10-15T21:29:43.818850+00:00"
 }
