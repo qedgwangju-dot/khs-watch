@@ -1,0 +1,327 @@
+{
+  "schema_version": 2,
+  "attachment_sha256": "5453577F704FFA9F06AFC3E9AF4708C6B2D372928BD4761BA8CDC62E71B70981",
+  "attachment_date": "2026-10-15",
+  "source_scope": "All 18 user-provided links were inventoried and individually audited. Each item records its verification method, evidence, confirmed facts, and limits. The 14 readable article texts include direct/canonical/AMP publisher pages, full-text indexed pages, and one same-publisher syndicated copy; the method is explicit per item and does not imply every original URL body was directly opened.",
+  "audit_summary": {
+    "checked_on": "2026-10-15",
+    "attachment_items": 18,
+    "full_article_body_or_same_publisher_copy_confirmed": 14,
+    "page_header_or_description_only": 2,
+    "full_body_or_underlying_origin_unavailable": 2
+  },
+  "items": [
+    {
+      "id": "lg_cloid_humanoid_launch",
+      "publisher": "뉴스1",
+      "title": "[단독] LG전자, 두 발로 걷는 휴머노이드 '클로이드' 내년 초 출시",
+      "url": "https://www.news1.kr/industry/general-industry/6320026",
+      "event_group": "lg_cloid_launch",
+      "decision": "publish_with_title_and_subhead_scope",
+      "reason": "기사 제목과 부제에서 출시 시기와 이족보행형 전환이 확인됩니다. 본문 미확인 상태에서 계열사별 부품 공급 관계는 덧붙이지 않습니다.",
+      "source_audit": {
+        "checked_on": "2026-10-15",
+        "status": "exact_page_title_subheading_only",
+        "method": "direct_source_page",
+        "evidence_urls": ["https://www.news1.kr/industry/general-industry/6320026"],
+        "verified_facts": ["2027년 초 출시 계획", "바퀴형에서 이족보행형으로 개발", "130·170·190cm 모델", "하드웨어 우선 공급 및 고객 맞춤형 소프트웨어 확대 계획"],
+        "limitations": ["뉴스1 본문 전체는 추출되지 않았습니다.", "LG 계열사별 액추에이터·센서·배터리 공급 역할은 이 페이지에서 확인하지 못했습니다."]
+      }
+    },
+    {
+      "id": "sk_hbf_memory_tier",
+      "publisher": "국민일보",
+      "title": "SK하닉 안현 'AI 인프라 폭증… HBM 만으론 부족'",
+      "url": "https://www.kmib.co.kr/article/view.asp?arcid=9000022693&cp=nv",
+      "event_group": "sk_hbf_roadmap",
+      "decision": "publish_with_attributed_roadmap",
+      "reason": "SK하이닉스가 HBF를 HBM과 DRAM 사이의 메모리 계층으로 제시하고, 용량·대역폭 비교와 장기 AI 인프라 전망을 밝혔습니다. 전망치는 회사 측 설명으로 귀속합니다.",
+      "source_audit": {
+        "checked_on": "2026-10-15",
+        "status": "exact_source_full_body_direct_http",
+        "method": "direct_http_article_body",
+        "evidence_urls": ["https://www.kmib.co.kr/article/view.asp?arcid=9000022693&cp=nv"],
+        "verified_facts": ["SK하이닉스 안현 사장이 HBF를 HBM과 DRAM 사이 계층으로 설명", "HBF 목표 용량은 HBM의 약 10배, 대역폭은 동세대 HBM의 약 절반", "AI 인프라 성능이 2030년까지 현재의 약 20배가 될 수 있다는 전망"],
+        "limitations": ["용량·성능 비교와 2030년 전망은 경영진 설명 또는 전망이며 독립 측정 결과가 아닙니다.", "상용화 시점과 고객 계약은 본문에서 확정되지 않았습니다."]
+      }
+    },
+    {
+      "id": "samsung_4f2_dram_development",
+      "publisher": "더벨",
+      "title": "SEDEX 2026 송재혁 삼성전자 사장 '4F² D램 개발하고 있다'",
+      "url": "https://www.thebell.co.kr/free/content/ArticleView.asp?key=202610141537051120106787",
+      "event_group": "samsung_4f2_development",
+      "decision": "watch_for_execution",
+      "reason": "삼성전자 CTO가 4F² D램 개발 중이라고 확인한 기술개발 뉴스입니다. 공정 진척·수율·양산 일정·고객은 공개되지 않아 후속 확인 대상으로 둡니다.",
+      "source_audit": {
+        "checked_on": "2026-10-15",
+        "status": "same_publisher_canonical_full_body",
+        "method": "same_publisher_article_key_canonical_route",
+        "evidence_urls": ["https://www.thebell.co.kr/free/content/ArticleView.asp?key=202610141537051120106787", "https://www.thebell.co.kr/front/newsview.asp?code=0201&key=202610141537051120106787"],
+        "verified_facts": ["삼성전자 CTO 송재혁 사장이 4F² D램을 개발 중이라고 확인", "기사에는 구체적인 공정 진척과 일정이 공개되지 않음"],
+        "limitations": ["원 URL 대신 동일 매체의 같은 기사 키를 사용하는 정식 경로에서 본문을 확인했습니다.", "고객·양산 시기·수율·투자 규모는 확인되지 않았습니다."]
+      }
+    },
+    {
+      "id": "china_ai_chip_share_claim",
+      "publisher": "서울신문",
+      "title": "中 AI칩, 엔비디아 점유율도 흔들었다",
+      "url": "https://www.seoul.co.kr/news/economy/industry/2026/10/15/20261015030003?wlog_tag3=naver",
+      "event_group": "china_ai_chip_competition",
+      "decision": "publish_with_attributed_market_share_data",
+      "reason": "IDC 집계로 제시된 2026년 상반기 중국 AI 가속기 출하 점유율과 출하량 변화를 포함해 경쟁 구도 변화가 수치화됐습니다. 추정치임을 명시합니다.",
+      "source_audit": {
+        "checked_on": "2026-10-15",
+        "status": "exact_article_full_text_search_index",
+        "method": "exact_article_search_index_full_text",
+        "evidence_urls": ["https://www.seoul.co.kr/news/economy/industry/2026/10/15/20261015030003"],
+        "verified_facts": ["IDC 기준 2026년 상반기 중국 AI 가속기 출하에서 엔비디아 점유율 34%", "엔비디아 출하량은 전년 대비 44% 감소한 67만8천 개로 보도", "화웨이는 57만2천 개, 28% 점유율로 보도"],
+        "limitations": ["기사 본문 전체가 검색 색인 본문으로 확인됐으며 원 사이트의 직접 페이지 응답은 확인하지 못했습니다.", "점유율과 출하량은 IDC 집계로 보도된 추정치이며 매출 점유율과는 다릅니다."]
+      }
+    },
+    {
+      "id": "korea_ces_trade_show",
+      "publisher": "조선일보",
+      "title": "K제품 팔 큰 장 세워라… 한국판 CES 만든다",
+      "url": "https://www.chosun.com/economy/economy_general/2026/10/15/EKKICDOLWVAKNNEF7KXDG5WAXA/?utm_source=naver&utm_medium=referral&utm_campaign=naver-news",
+      "event_group": "korea_ces_trade_show",
+      "decision": "watch_for_orders",
+      "reason": "2029년 전시 통합 추진과 산업 통계는 장기 산업정책 신호입니다. 현재 수주·계약·기업별 매출로 이어졌다는 근거는 없어 단기 주가 촉매로 과장하지 않습니다.",
+      "source_audit": {
+        "checked_on": "2026-10-15",
+        "status": "exact_article_full_text_search_index",
+        "method": "exact_article_search_index_full_text",
+        "evidence_urls": ["https://www.chosun.com/economy/economy_general/2026/10/15/EKKICDOLWVAKNNEF7KXDG5WAXA/"],
+        "verified_facts": ["반도체·전자·로봇·AI 전시회를 2029년 한국판 CES로 통합 추진", "2024년 전시산업 매출 4조400억원으로 보도", "전시회의 약 70%가 전시장 1만㎡ 미만으로 보도"],
+        "limitations": ["기사 본문은 검색 색인 본문으로 확인했습니다.", "전시회 통합은 추진 계획이며 개별 기업 수주나 매출을 뜻하지 않습니다."]
+      }
+    },
+    {
+      "id": "trump_investment_claim_yonhap_tv",
+      "publisher": "연합뉴스TV",
+      "title": "한국도, 日·대만도 알래스카 투자…트럼프의 못박기",
+      "url": "http://www.yonhapnewstv.co.kr/news/MYH20261015074128rOC",
+      "event_group": "korea_alaska_lng_investment_claim_2026-10-14",
+      "decision": "hold_video_body_transcript_unverified",
+      "reason": "원 페이지 제목과 설명은 확인했지만 영상 전체 발언은 확인하지 못했습니다. 한국의 투자액·확약 여부는 별도 공식 확인 전까지 확정 표현을 금합니다.",
+      "source_audit": {
+        "checked_on": "2026-10-15",
+        "status": "direct_page_title_description_video_body_not_extracted",
+        "method": "direct_source_page_metadata_only",
+        "evidence_urls": ["http://www.yonhapnewstv.co.kr/news/MYH20261015074128rOC", "https://www.korea.kr/news/policyNewsView.do?newsId=156783994"],
+        "verified_facts": ["연합뉴스TV 페이지 제목과 설명은 트럼프의 한국 알래스카 LNG 투자 주장과 한국 정부의 신중한 입장을 다룸", "10월 1일 외교부 공식 설명은 사업성 및 국내 절차를 전제로 검토에 착수한 단계이며 투자액·규모는 미확정이라고 밝힘"],
+        "limitations": ["연합뉴스TV 영상 전체의 전사·본문은 확보하지 못했습니다.", "10월 1일 정부 공식 자료는 해당 날짜의 한국 측 검토 상태를 확인하는 자료이지 연합뉴스TV 기사 본문이나 10월 15일 이후의 최신 상태를 대신하지 않습니다."]
+      }
+    },
+    {
+      "id": "apple_five_trillion_close",
+      "publisher": "연합뉴스",
+      "title": "애플 시총 5조달러 첫 돌파 마감…엔비디아 이어 역대 두번째",
+      "url": "https://www.yna.co.kr/view/AKR20261015014600072?input=1195m",
+      "event_group": "apple_5tn_market_cap_close",
+      "decision": "publish_with_close_and_intraday_distinction",
+      "reason": "애플이 종가 기준 시가총액 5조달러를 넘긴 사실과 당일 나스닥 약세를 함께 담습니다. 장중 터치와 종가 돌파를 구분합니다.",
+      "source_audit": {
+        "checked_on": "2026-10-15",
+        "status": "same_publisher_amp_full_body",
+        "method": "same_publisher_amp_article_body",
+        "evidence_urls": ["https://www.yna.co.kr/view/AKR20261015014600072?input=1195m", "https://www.yna.co.kr/amp/view/AKR20261015014600072"],
+        "verified_facts": ["애플은 10월 14일 종가 기준 시가총액 5조5억달러", "당일 주가 상승률 0.50%", "종가 기준 5조달러 초과는 엔비디아에 이어 미국 상장사 두 번째", "나스닥은 같은 날 1.88% 하락"],
+        "limitations": ["본문은 동일 연합뉴스 기사 AMP 경로에서 확인했습니다.", "시가총액 숫자는 해당 거래일 종가 기준이며 현재 시가총액을 뜻하지 않습니다."]
+      }
+    },
+    {
+      "id": "globalfoundries_japan_21bn_fab",
+      "publisher": "뉴스1",
+      "title": "글로벌파운드리스, 뉴욕에 반도체공장…日대미투자금 210억弗 투입",
+      "url": "https://www.news1.kr/world/usa-canada/6320495",
+      "event_group": "gf_new_york_fab_japan_funding",
+      "decision": "publish_with_funding_attribution_and_stage",
+      "reason": "뉴욕 몰타의 로직 반도체 팹 2곳에 일본 대미 투자 체계 자금 최대 210억달러가 투입되는 계획입니다. 이를 글로벌파운드리스의 단독 자금 부담이나 확정 지분 투자로 표현하지 않습니다.",
+      "source_audit": {
+        "checked_on": "2026-10-15",
+        "status": "same_publisher_syndication_full_body",
+        "method": "original_page_header_plus_same_article_syndication_body",
+        "evidence_urls": ["https://www.news1.kr/world/usa-canada/6320495", "https://www.fnnews.com/news/202610150808525798"],
+        "verified_facts": ["뉴스1 기사 제목·부제 및 파이낸셜뉴스에 실린 동일 뉴스1 기사의 본문 확인", "뉴욕주 몰타에 로직 반도체 팹 2곳 건설 계획", "일본 대미 투자·융자 체계에서 최대 210억달러 조달 계획", "1공장은 약 100억달러를 들여 2029년 가동 목표, 2공장에 약 100억달러 추가 계획", "각 공장은 연 90만 장 규모 300mm 웨이퍼 생산 목표", "미 상무부의 약 4% 지분 취득은 팹 투자 합의와 별도"],
+        "limitations": ["뉴스1 원 페이지는 제목·부제만 노출되어 동일 뉴스1 작성자의 파이낸셜뉴스 게재 본문으로 세부를 확인했습니다.", "기사상 투자·융자 구조는 미일 양국 정부 SPV가 맡으며 글로벌파운드리스 단독 직접투자와 구분해야 합니다."]
+      }
+    },
+    {
+      "id": "trump_korea_67tn_investment_claim",
+      "publisher": "한국경제",
+      "title": "'거듭 쐐기' 트럼프 韓 67조 투자 부각",
+      "url": "https://magazine.hankyung.com/business/article/202610153111b",
+      "event_group": "korea_alaska_lng_investment_claim_2026-10-14",
+      "decision": "publish_with_claim_attribution_and_official_caveat",
+      "reason": "기사에 나온 500억달러(약 67조원)는 트럼프의 주장으로 귀속합니다. 10월 1일 한국 정부 공식 설명상 사업성·국내 절차를 전제로 한 검토 단계였으며, 그 자료에서 투자액은 확정되지 않았습니다.",
+      "source_audit": {
+        "checked_on": "2026-10-15",
+        "status": "exact_article_full_text_search_index",
+        "method": "exact_article_search_index_full_text_plus_official_status_check",
+        "evidence_urls": ["https://magazine.hankyung.com/business/article/202610153111b", "https://www.korea.kr/news/policyNewsView.do?newsId=156783994"],
+        "verified_facts": ["한국경제 기사 본문은 트럼프가 한국의 알래스카 LNG 투자액을 500억달러라고 재차 주장한 것으로 보도", "한국 정부 공식 브리핑은 사업성 검토와 국내 절차를 전제로 한 검토 단계이며 투자액·규모가 결정되지 않았다고 설명", "일본의 뉴욕 반도체 공장 금융지원은 한국의 알래스카 LNG 검토와 별개 사안"],
+        "limitations": ["기사 본문은 검색 색인 본문으로 확인했습니다.", "트럼프의 발언은 한국의 승인·약정·집행을 증명하지 않습니다.", "공식 정부 설명은 10월 1일 기준이며 이후 변경 여부는 별도 확인이 필요합니다."]
+      }
+    },
+    {
+      "id": "samsung_cxmt_gap_hankyung",
+      "publisher": "한국경제",
+      "title": "삼성전자, CXMT와 기술격차 최대 7년…시장 우려 과도",
+      "url": "https://www.hankyung.com/article/2026101528166",
+      "event_group": "samsung_cxmt_technology_gap_claim",
+      "decision": "watch_once_no_reprint",
+      "reason": "KB증권 애널리스트의 공정 기술격차 평가입니다. 실제 수율·원가·고객 인증·출하 점유율을 독립 측정한 자료로 승격하지 않고, 동일 리포트 재인용은 한 건으로만 묶습니다.",
+      "source_audit": {
+        "checked_on": "2026-10-15",
+        "status": "exact_source_full_body_direct_http",
+        "method": "direct_source_article_body",
+        "evidence_urls": ["https://www.hankyung.com/article/2026101528166"],
+        "verified_facts": ["기사는 KB증권 분석을 인용해 삼성전자와 CXMT 간 기술 격차를 최대 5~7년으로 평가", "시장 우려가 과도하다는 분석도 같은 증권사 견해로 보도"],
+        "limitations": ["5~7년은 애널리스트 평가이며 독립적인 공정·수율 실측치가 아닙니다.", "뉴스1 등 다른 매체의 동일 KB증권 보고서 재인용은 새 사건이 아닙니다."]
+      }
+    },
+    {
+      "id": "aftermarket_small_move",
+      "publisher": "이투데이",
+      "title": "전날 애프터마켓 대양금속 상한가…삼전·SK하닉 소폭 상승",
+      "url": "https://www.etoday.co.kr/news/view/2635938",
+      "event_group": "korea_alaska_lng_investment_claim_2026-10-14",
+      "decision": "attach_as_market_reaction_not_standalone_duplicate",
+      "reason": "대양금속 시간외 급등은 투자 주장에 대한 단일 종목 반응으로 별도 반복 송출하지 않고 해당 이슈의 시장 반응 업데이트로만 취급합니다. 삼성전자·SK하이닉스의 등락은 정규장과 시간외 기준을 구분합니다.",
+      "source_audit": {
+        "checked_on": "2026-10-15",
+        "status": "exact_article_full_text_search_index",
+        "method": "publisher_canonical_article_full_text_search_index",
+        "evidence_urls": ["https://www.etoday.co.kr/news/view/2635938"],
+        "verified_facts": ["대양금속 시간외 주가가 29.92% 오른 것으로 보도", "삼성전자 시간외 +1.08%, SK하이닉스 시간외 +0.42%로 보도", "SK하이닉스 정규장 등락률과 시간외 등락률은 다르게 제시됨", "기사는 알래스카 LNG 투자 주장 이후 시장 반응으로 연결"],
+        "limitations": ["본문은 이투데이 정식 기사 경로의 검색 색인 본문으로 확인했습니다.", "시간외 단일 종목 반응을 시장 전체 수급이나 기업 실적 변화로 일반화하지 않습니다."]
+      }
+    },
+    {
+      "id": "semiconductor_premarket_selloff",
+      "publisher": "머니투데이",
+      "title": "오늘 더 빠진다 프리마켓서 삼전닉스 6·7%대 하락",
+      "url": "https://www.mt.co.kr/stock/2026/10/15/2026101508353838323",
+      "event_group": "korea_semiconductor_selloff_2026-10-15",
+      "decision": "publish_as_timestamped_early_stage_then_update",
+      "reason": "NXT 장전 삼성전자·SK하이닉스 급락과 미국 CPI·AI 투자수익성 우려를 다룬 초기 시점 보도입니다. 장 개시 뒤 사이드카 기사로 업데이트하고 같은 이벤트를 새 뉴스처럼 반복하지 않습니다.",
+      "source_audit": {
+        "checked_on": "2026-10-15",
+        "status": "exact_source_full_body_direct_http",
+        "method": "direct_source_article_body",
+        "evidence_urls": ["https://www.mt.co.kr/stock/2026/10/15/2026101508353838323"],
+        "verified_facts": ["10월 15일 오전 8시27분 NXT 장전 삼성전자 -6.68%, SK하이닉스 -7.54%로 보도", "미국 CPI 전년 대비 3.7%로 시장 예상 3.6% 상회", "근원 CPI 전년 대비 2.6%, 전월 대비 0.3%로 보도", "AI 투자수익성 우려와 미국 기술·반도체주 약세가 배경으로 제시됨"],
+        "limitations": ["장전 가격은 정규장 종가·확정 수급이 아닙니다.", "뒤이은 코스피·코스닥 매도 사이드카 보도와 동일 급락 이벤트이며 시간대별 업데이트로 취급합니다."]
+      }
+    },
+    {
+      "id": "tesla_china_clickbait",
+      "publisher": "Yahoo Finance",
+      "title": "테슬라의 일론 머스크가 약속을 어겼을 수도 있지만, 그것이 중국에서 통하고 있다",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOeHEzQ0N2eklYTnJwY1JvNXpQWXptVTJDV0FpTWF5UExlLS10TmUzSDA4dlhIZlpCN2FEZ1VyUjBQVUg5Q3JnV1JSd2dHYnNHazVVdGRIUzJqVjh4VUpkLXB5QW10ajd1SmJDa2JFaXQwb19ZQWpZU09GUGlTaU9oeHl6VXBHbGpicG5UdFdrSjRMSU1vaUI4?oc=5",
+      "event_group": "unresolved_tesla_china_story",
+      "decision": "hold_origin_and_market_link",
+      "reason": "Google News 리디렉션만 열리고 원 발행사·기사 본문이 드러나지 않았습니다. 제목 번역만으로 테슬라 이벤트나 주가 경로를 추정하지 않습니다.",
+      "source_audit": {
+        "checked_on": "2026-10-15",
+        "status": "google_news_shell_underlying_origin_unresolved",
+        "method": "google_news_rss_redirect_shell_only",
+        "evidence_urls": ["https://news.google.com/rss/articles/CBMilwFBVV95cUxOeHEzQ0N2eklYTnJwY1JvNXpQWXptVTJDV0FpTWF5UExlLS10TmUzSDA4dlhIZlpCN2FEZ1VyUjBQVUg5Q3JnV1JSd2dHYnNHazVVdGRIUzJqVjh4VUpkLXB5QW10ajd1SmJDa2JFaXQwb19ZQWpZU09GUGlTaU9oeHl6VXBHbGpicG5UdFdrSjRMSU1vaUI4?oc=5"],
+        "verified_facts": ["첨부에는 Yahoo Finance 출처와 해당 한국어 번역 제목이 기재됨"],
+        "limitations": ["Google News 페이지는 스크립트 셸만 반환해 원 발행사와 원문 URL을 확인하지 못했습니다.", "같은 제목으로 원 기사를 독립 확인하지 못해 본문·시각·시장 영향은 검증되지 않았습니다."]
+      }
+    },
+    {
+      "id": "samsung_cxmt_gap_newsis",
+      "publisher": "뉴시스",
+      "title": "KB證 '삼전, 창신메모리 기술격차 최대 7년…시장 우려 과도'",
+      "url": "https://www.newsis.com/view/NISX20261015_0003826572",
+      "event_group": "samsung_cxmt_technology_gap_claim",
+      "decision": "watch_once_no_reprint",
+      "reason": "한국경제 기사와 동일한 KB증권 분석을 재인용한 보도입니다. 새 공정 데이터나 별도 사건이 아니므로 독립 뉴스로 중복 송출하지 않습니다.",
+      "source_audit": {
+        "checked_on": "2026-10-15",
+        "status": "exact_source_full_body_direct_http",
+        "method": "direct_source_article_body",
+        "evidence_urls": ["https://www.newsis.com/view/NISX20261015_0003826572"],
+        "verified_facts": ["본문이 KB증권의 삼성전자-CXMT 기술격차 평가를 인용", "한국경제·머니투데이 기사와 같은 분석 보고서와 핵심 수치를 재인용"],
+        "limitations": ["매체가 다르지만 원 분석과 사건은 동일합니다.", "애널리스트 의견을 독립 실측 결과로 표현하지 않습니다."]
+      }
+    },
+    {
+      "id": "melcon_listing_day",
+      "publisher": "이데일리",
+      "title": "반도체 초정밀 환경제어 멜콘, 코스닥 입성 오늘상장",
+      "url": "https://www.edaily.co.kr/News/Read?newsId=02614166645613248&mediaCodeNo=257&utm_source=naver&utm_medium=referral&utm_campaign=news_syndication&utm_content=original_article",
+      "event_group": "melcon_listing_2026-10-15",
+      "decision": "watch_for_listing_price_discovery",
+      "reason": "공모가·공모 규모·상장 후 예상 시총과 청약 경쟁률이 확인되는 소형 신규상장입니다. 해당 수치를 기사에 넣되 시장 전체를 움직이는 재료로 과장하지 않고 실제 거래 반응을 후속 확인합니다.",
+      "source_audit": {
+        "checked_on": "2026-10-15",
+        "status": "publisher_canonical_full_text_search_index",
+        "method": "same_publisher_canonical_article_full_text_search_index",
+        "evidence_urls": ["https://www.edaily.co.kr/News/Read?newsId=02614166645613248&mediaCodeNo=257"],
+        "verified_facts": ["공모가 1만2300원", "공모 금액 약 308억원", "상장 후 예상 시가총액 약 1550억원", "일반 공모 청약 경쟁률 1741.48대 1", "반도체 장비용 초정밀 환경제어 기술과 TEL·ASML 공정 장비 관련 공급 이력을 기사에서 소개"],
+        "limitations": ["기사 본문은 동일 이데일리 정식 경로의 검색 색인 본문으로 확인했습니다.", "상장 당일 주가 성과는 이 기사의 사전·당일 소개만으로 확인되지 않습니다.", "약 1550억원 규모는 대형 지수 영향과 구분해야 합니다."]
+      }
+    },
+    {
+      "id": "korea_selloff_seoul",
+      "publisher": "서울신문",
+      "title": "속보 삼전 -6%·하이닉스 -8%…코스피 매도 사이드카",
+      "url": "https://www.seoul.co.kr/news/economy/securities/2026/10/15/20261015500023?wlog_tag3=naver",
+      "event_group": "korea_semiconductor_selloff_2026-10-15",
+      "decision": "publish_preferred_market_stage_update",
+      "reason": "장전 급락 이후 코스피·코스닥 매도 사이드카까지 확인된 시장 전반의 후속 단계입니다. 시간과 시점별 가격을 붙여 초기 장전 알림을 대체합니다.",
+      "source_audit": {
+        "checked_on": "2026-10-15",
+        "status": "publisher_canonical_full_text_search_index",
+        "method": "same_publisher_canonical_article_full_text_search_index",
+        "evidence_urls": ["https://www.seoul.co.kr/news/economy/securities/2026/10/15/20261015500023"],
+        "verified_facts": ["서울신문 오전 기사에서 코스피 시초가 5673.01, 전일 대비 -5.59%로 보도", "삼성전자 시초가 -6.68%, SK하이닉스 시초가 -8.10%로 보도", "코스피 매도 사이드카 9시07분, 코스닥 매도 사이드카 9시12분 발동으로 보도", "미국 CPI와 AI 수익성 우려 및 반도체주 약세를 배경으로 제시"],
+        "limitations": ["기사 본문은 동일 서울신문 정식 경로의 검색 색인 본문으로 확인했습니다.", "가격은 장 초반 스냅샷이며 종가·당일 전체 외국인 수급을 뜻하지 않습니다."]
+      }
+    },
+    {
+      "id": "samsung_cxmt_gap_mt",
+      "publisher": "머니투데이",
+      "title": "CXMT 추격은 착시…삼성전자 기술 진입장벽 높다-KB",
+      "url": "https://www.mt.co.kr/stock/2026/10/15/2026101508284577628",
+      "event_group": "samsung_cxmt_technology_gap_claim",
+      "decision": "watch_once_no_reprint",
+      "reason": "한국경제·뉴시스와 동일 KB증권 분석을 다룬 세 번째 기사입니다. 같은 논지의 재인용은 한 건으로 합치고 별도 기사로 반복 송출하지 않습니다.",
+      "source_audit": {
+        "checked_on": "2026-10-15",
+        "status": "exact_source_full_body_direct_http",
+        "method": "direct_source_article_body",
+        "evidence_urls": ["https://www.mt.co.kr/stock/2026/10/15/2026101508284577628"],
+        "verified_facts": ["본문은 KB증권의 삼성전자-CXMT 기술격차와 시장 우려에 대한 동일 분석을 인용", "한국경제·뉴시스 보도와 같은 증권사 보고서에 기반"],
+        "limitations": ["독립된 기업 발표나 새 시장 데이터가 아닙니다.", "같은 리포트의 세 매체 재인용은 하나의 이벤트로 묶어야 합니다."]
+      }
+    },
+    {
+      "id": "korea_selloff_newsis_photo",
+      "publisher": "뉴시스",
+      "title": "검은 목요일 코스피·코스닥 매도 사이드카 발동",
+      "url": "https://www.newsis.com/view/NISX20261015_0003826841",
+      "event_group": "korea_semiconductor_selloff_2026-10-15",
+      "decision": "duplicate_alternate_source_body_unavailable",
+      "reason": "제목은 동일 급락·사이드카 사건을 가리키지만 이 링크의 본문은 확인되지 않았습니다. 서울신문의 확인된 시점별 기사로 대체하고 이 링크에서 새 사실을 가져오지 않습니다.",
+      "source_audit": {
+        "checked_on": "2026-10-15",
+        "status": "exact_article_body_unavailable_duplicate_event",
+        "method": "exact_url_not_retrievable_headline_only_from_attachment",
+        "evidence_urls": ["https://www.newsis.com/view/NISX20261015_0003826841", "https://www.seoul.co.kr/news/economy/securities/2026/10/15/20261015500023"],
+        "verified_facts": ["첨부된 뉴시스 제목은 코스피·코스닥 매도 사이드카 발동을 다룸", "서울신문의 확인된 기사로 같은 날짜의 양 시장 사이드카 발동을 확인"],
+        "limitations": ["뉴시스 지정 URL의 본문은 직접 확인하지 못했습니다.", "첨부 제목 이외의 뉴시스 세부 사실은 검증되지 않았습니다.", "기존 매도 사이드카 사건의 중복 출처로만 기록합니다."]
+      }
+    }
+  ],
+  "expected_unique_event_groups": 12,
+  "duplicate_groups": {
+    "korea_alaska_lng_investment_claim_2026-10-14": ["trump_investment_claim_yonhap_tv", "trump_korea_67tn_investment_claim", "aftermarket_small_move"],
+    "samsung_cxmt_technology_gap_claim": ["samsung_cxmt_gap_hankyung", "samsung_cxmt_gap_newsis", "samsung_cxmt_gap_mt"],
+    "korea_semiconductor_selloff_2026-10-15": ["semiconductor_premarket_selloff", "korea_selloff_seoul", "korea_selloff_newsis_photo"]
+  }
+}

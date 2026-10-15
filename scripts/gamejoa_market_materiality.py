@@ -20,7 +20,7 @@ ENERGY_SUBJECT = (
     r"\boil\b|brent|wti|\bgas\b|hormuz|iran|ukraine|russia|copper|lithium"
 )
 EARLY_SIGNAL = re.compile(
-    r"검토|추진|협상|논의|가능성|예정|계획|컨센서스|전망치|추정치|consensus|전망(?!치|을|보다)|예상(?!치|을|보다)|관측|소식통|제안|의견수렴|입법예고|"
+    r"검토|추진|협상|논의|가능성|예정|계획|컨센서스|전망치|추정치|가시권|consensus|전망(?!치|을|보다)|예상(?!치|을|보다)|관측|소식통|제안|의견수렴|입법예고|"
     r"건의|요청|요구|제시|모색|촉구|해야|권고|제언|우려|필요|목표|노린다|정조준|기대감|보인다|나서야|시급|밑돌\s*듯|합의\s*(?:안\s*(?:됐|되)|하지\s*않)|미합의|consider|propos|draft|talks|negotiat|forecast|sources say|reportedly|\b(?:may|could|should|target|aim|expected)\b", re.I,
 )
 HEADLINE_EARLY = re.compile(
@@ -83,8 +83,14 @@ PUBLIC_MARKET_BUSINESS_LINK = re.compile(
     r"영업이익|순이익|가이던스|연결\s*실적|공급\s*계약|납품\s*계약|수주|발주|"
     r"listed company|public company|listed club|nasdaq|nyse|operating profit|guidance|supply contract", re.I,
 )
-CUMULATIVE_PRODUCT_PR = re.compile(r"누적\s*(?:매출|판매)|cumulative (?:sales|revenue)", re.I)
-RETAIL_PRODUCT_CONTEXT = re.compile(r"세탁|화장품|스킨케어|신발|커피|패션|생활용품|laundry|cosmetics|skincare|footwear|coffee", re.I)
+CUMULATIVE_PRODUCT_PR = re.compile(
+    r"누적\s*(?:매출|판매)|(?:\d[\d,.]*\s*(?:만|억)?\s*(?:장|개|대))\s*(?:누적\s*)?판매|"
+    r"cumulative (?:sales|revenue)", re.I,
+)
+RETAIL_PRODUCT_CONTEXT = re.compile(
+    r"세탁|화장품|스킨케어|마스크\s*팩|마스크팩|신발|커피|패션|생활용품|"
+    r"laundry|cosmetics|skincare|face\s*masks?|footwear|coffee", re.I,
+)
 ENTERPRISE_CHANGE = re.compile(
     r"영업이익|순이익|가이던스|실적|분기|연결|마진|현금흐름|수주|공급계약|납품계약|공장|양산|인수|합병|규제|관세|주주환원|"
     r"상장|기업공개|자사주|배당|지분|주식\s*(?:매수|매각)|자금조달|유상증자|\bipo\b|"
@@ -3356,6 +3362,52 @@ def sk_honam_project_statement_identity(alert: dict) -> str:
     return f"source_event:v2:sk_honam_project_statement:{day.group(1)}"
 
 
+def samsung_cxmt_analyst_gap_observation(title: str, body: str) -> dict:
+    """Identify reprints of one attributed Samsung-CXMT technology-gap view."""
+    text = f"{title} {source_reported_body(body)[:5000]}"
+    if not (
+        re.search(r"삼성전자|삼성\s*[^가-힣]?", text)
+        and re.search(r"CXMT|창신메모리", text, re.I)
+        and re.search(r"KB\s*(?:증권|證)|KB\s*Securities", text, re.I)
+    ):
+        return {}
+    gap = re.search(
+        r"(?:기술\s*)?격차[^.!?\n]{0,24}?(?:최대\s*)?(?P<years>\d+)\s*년|"
+        r"(?:최대\s*)?(?P<years2>\d+)\s*년[^.!?\n]{0,24}?(?:기술\s*)?격차",
+        text,
+    )
+    if not gap:
+        return {}
+    years = gap.group("years") or gap.group("years2")
+    return {"provider": "KB Securities", "issuers": "Samsung-CXMT", "gap_years": years}
+
+
+def korea_semiconductor_selloff_episode_identity(alert: dict) -> str:
+    """Group same-session semiconductor shock and market sell-sidecar reprints."""
+    if not alert.get("body_verified"):
+        return ""
+    title = str(alert.get("source_title") or alert.get("original_news") or alert.get("news") or "")
+    body = source_reported_body(str(alert.get("source_body") or ""))
+    text = f"{title} {body}"
+    published = str(alert.get("published") or "")
+    day = re.match(r"(20\d{2}-\d{2}-\d{2})", published)
+    if not day:
+        return ""
+    sidecar = bool(
+        re.search(r"매도\s*사이드카|sell.?sidecar", text, re.I)
+        and re.search(r"코스피|코스닥|KOSPI|KOSDAQ", text, re.I)
+    )
+    semiconductor_pair_shock = bool(
+        re.search(r"삼성전자|삼전", text)
+        and re.search(r"SK\s*하이닉스|하이닉스|삼전닉스", text, re.I)
+        and re.search(r"(?:급락|급락세|큰\s*폭\s*하락|동반\s*하락|하락(?:했다|했|세)?|fell|plunged|dropped)", text, re.I)
+        and len(re.findall(r"\d+(?:\.\d+)?\s*%", text)) >= 2
+    )
+    if not (sidecar or semiconductor_pair_shock):
+        return ""
+    return f"source_event:v2:korea_equity_selloff_episode:{day.group(1)}"
+
+
 def source_event_identity(alert: dict) -> str:
     """Identify a sourced action and its terms, not a company-wide theme.
 
@@ -3376,6 +3428,19 @@ def source_event_identity(alert: dict) -> str:
     title = str(alert.get('source_title') or alert.get('original_news') or alert.get('news') or '')
     body = str(alert.get('source_body') or '') if alert.get('body_verified') else ''
     published = str(alert.get('published') or '')
+    humanoid_launch = lg_cloid_humanoid_launch_observation(title, body, published)
+    if humanoid_launch:
+        return (
+            "source_event:v2:humanoid_product_launch:lg:cloid:"
+            f"{humanoid_launch['target_year']}-early"
+        )
+    cxmt_gap = samsung_cxmt_analyst_gap_observation(title, body)
+    if cxmt_gap:
+        digest = hashlib.sha256(json.dumps(cxmt_gap, ensure_ascii=False, sort_keys=True).encode('utf-8')).hexdigest()
+        return f"source_event:v2:samsung_cxmt_analyst_gap:{digest}"
+    selloff_episode = korea_semiconductor_selloff_episode_identity(alert)
+    if selloff_episode:
+        return selloff_episode
     for event, observation in (
         ('foreign_ownership_share_change', foreign_ownership_share_change_observation(title, body)),
         ('boj_rate_yen_fx', boj_rate_yen_fx_observation(title, body)),
@@ -4182,18 +4247,41 @@ def foreground_evidence_is_material(title: str, sentence: str, kind: str) -> boo
 
 
 def news_value_rank(evidence: list[dict]) -> int:
-    """Economic mechanism outranks textual focus and announcement certainty."""
+    """Rank realized market evidence above quantified forecasts and opinions."""
     kinds = {item["kind"] for item in evidence}
+    realized = [
+        item for item in evidence
+        if item.get("stage") not in {"early_signal", "forecast", "estimate", "conditional"}
+        and (item.get("stage") or not EARLY_SIGNAL.search(str(item.get("source_excerpt") or "")))
+    ]
+    realized_kinds = {item["kind"] for item in realized}
     quantified_flow = any(
         item["kind"] in {"market_price_or_flow", "insider_disclosed_trade"}
+        and item in realized
         and QUANTITY.search(item["source_excerpt"])
         for item in evidence
     )
     if quantified_flow:
         return 4
-    if kinds & {"ai_infrastructure_credit_stress", "sovereign_credit_spread_stress", "iran_military_readiness"}:
+    quantified_macro_surprise = any(
+        item["kind"] == "rates_fx_or_macro"
+        and item in realized
+        and QUANTITY.search(item["source_excerpt"])
+        and re.search(
+            r"(?:예상|컨센서스|전망치|시장\s*예측|estimate|consensus|forecast)"
+            r"[^!?\n]{0,55}(?:상회|웃돌|하회|밑돌|넘어|밑으로|beat|miss|above|below)|"
+            r"(?:상회|웃돌|하회|밑돌|beat|miss|above|below)[^!?\n]{0,55}"
+            r"(?:예상|컨센서스|전망치|시장\s*예측|estimate|consensus|forecast)",
+            item["source_excerpt"],
+            re.I,
+        )
+        for item in evidence
+    )
+    if quantified_macro_surprise:
         return 4
-    if kinds & {"business_investment_observation", "trading_rule", "energy_import_mix", "network_segmentation_policy", "housing_supply_policy", "commercial_order", "order_backlog_level", "customer_supply_start", "procurement_execution_stage", "selling_price_or_cost",
+    if realized_kinds & {"ai_infrastructure_credit_stress", "sovereign_credit_spread_stress", "iran_military_readiness"}:
+        return 4
+    if realized_kinds & {"business_investment_observation", "trading_rule", "energy_import_mix", "network_segmentation_policy", "housing_supply_policy", "commercial_order", "order_backlog_level", "customer_supply_start", "procurement_execution_stage", "selling_price_or_cost",
                 "earnings_or_guidance", "industry_market_share", "export_results", "national_export_release", "licensing_cashflow", "corporate_transaction", "corporate_ownership_execution", "export_control_scope",
                 "policy_scope_or_stage", "environmental_approval", "industrial_architecture_adoption", "physical_supply_or_capacity",
                 "launch_turnaround_bottleneck", "sector_demand_outlook"}:
@@ -4202,6 +4290,8 @@ def news_value_rank(evidence: list[dict]) -> int:
                 "cryogenic_propellant_storage", "biology_research_discovery", "research_validation_result", "model_operating_specification",
                 "customer_discussions", "industrial_partnership_execution", "corporate_action_clarification", "capital_or_shareholder_action", "capital_listing_stage",
                 "authorized_capital_proposal", "policy_agreement_clarification", "economic_restriction_response", "customer_financing_commitment", "public_program_cost_study", "project_cost_evaluation", "conditional_project_charge", "energy_stockpile_action", "energy_geopolitics_or_supply_risk"}:
+        return 3
+    if "humanoid_product_launch" in kinds:
         return 3
     return 2
 
@@ -4533,10 +4623,12 @@ def equity_publication_assessment(
 ) -> dict:
     """Separate a true economic fact from a foreground stock-market catalyst."""
     kinds = {item['kind'] for item in evidence}
+    body = source_article_body(source_reported_body(body))
+    if "humanoid_product_launch" in kinds and lg_cloid_humanoid_launch_observation(title, body, published):
+        return {"eligible": True, "reason": "verified_listed_humanoid_launch_with_group_component_chain"}
     if not kinds:
         return {'eligible': False, 'reason': 'no_verified_economic_change'}
     execution = any(NEW_EXECUTION.search(item['source_excerpt']) for item in evidence)
-    body = source_article_body(source_reported_body(body))
     source_rows = source_sentences(body)
     lead = " ".join(source_rows[:5])
     headline_and_lead = f"{title} {lead}"
@@ -5562,6 +5654,43 @@ def robot_dram_demand_outlook_observation(title: str, body: str, published: str 
     }
 
 
+def lg_cloid_humanoid_launch_observation(title: str, body: str, published: str = "") -> dict:
+    """Keep a dated LG humanoid launch with its disclosed listed-group supply chain."""
+    source = source_article_body(source_reported_body(body))
+    combined = f"{title} {source}"
+    if not (
+        re.search(r"LG\s*전자", title)
+        and re.search(r"휴머노이드|인간형\s*로봇", title, re.I)
+        and re.search(r"클로이드|CLOiD", combined, re.I)
+        and re.search(r"출시|선보|공개", title)
+        and re.search(r"내년\s*초|20\d{2}년\s*초", combined)
+        and re.search(r"LG\s*이노텍.{0,35}센서|센서.{0,35}LG\s*이노텍", source)
+        and re.search(r"LG\s*에너지\s*솔루션.{0,35}배터리|배터리.{0,35}LG\s*에너지\s*솔루션", source)
+    ):
+        return {}
+    year = re.search(r"(?<!\d)(20\d{2})년\s*초", combined)
+    published_year = re.match(r"(20\d{2})", str(published or ""))
+    if year:
+        target_year = year.group(1)
+    elif published_year:
+        target_year = str(int(published_year.group(1)) + 1)
+    else:
+        return {}
+    excerpt = " ".join(
+        sentence for sentence in source_sentences(source)
+        if re.search(r"클로이드|CLOiD|LG\s*이노텍|LG\s*에너지\s*솔루션", sentence, re.I)
+    )
+    if not excerpt:
+        return {}
+    return {
+        "issuer": "LG Electronics",
+        "product": "CLOiD",
+        "target_year": target_year,
+        "stage": "early_signal",
+        "source_excerpt": excerpt,
+    }
+
+
 def assess(title: str, body: str, *, source_url: str = "", published: str = "") -> dict:
     title = re.sub(r"\s+", " ", str(title or "")).strip()
     body = source_article_body(source_reported_body(str(body or ""))).strip()
@@ -6134,6 +6263,24 @@ def assess(title: str, body: str, *, source_url: str = "", published: str = "") 
     ) and not PUBLIC_MARKET_BUSINESS_LINK.search(headline_lead):
         result.update(disposition="exclude", priority=0, reason="local_ceremony_without_market_business_change")
         return result
+    cumulative_retail_units = bool(
+        CUMULATIVE_PRODUCT_PR.search(title)
+        and RETAIL_PRODUCT_CONTEXT.search(f"{title} {headline_lead}")
+        and re.search(r"\d[\d,.]*\s*(?:만|억)?\s*(?:장|개|대)", f"{title} {headline_lead}")
+        and re.search(r"누적|202\d년부터|since launch|cumulative", f"{title} {headline_lead}", re.I)
+    )
+    period_sales_metric = bool(re.search(
+        r"(?:20\d{2}년\s*(?:[1-4]분기|연간|상반기|하반기)|(?:올해|지난해|전년(?:동기)?|분기|연간))"
+        r"[^.!?\n]{0,35}(?:매출|영업이익|순이익|판매량|출하량)[^.!?\n]{0,35}"
+        r"\d[\d,.]*\s*(?:조|억|만|천)?\s*(?:원|달러|장|개|대|%)|"
+        r"(?:매출|영업이익|순이익|판매량|출하량)[^.!?\n]{0,35}\d[\d,.]*\s*"
+        r"(?:조|억|만|천)?\s*(?:원|달러|장|개|대|%)[^.!?\n]{0,35}"
+        r"(?:20\d{2}년\s*(?:[1-4]분기|연간|상반기|하반기)|(?:올해|지난해|전년(?:동기)?|분기|연간))",
+        headline_lead,
+    ))
+    if cumulative_retail_units and not period_sales_metric:
+        result.update(disposition="exclude", priority=0, reason="cumulative_retail_unit_milestone_without_period_financials")
+        return result
     if CUMULATIVE_PRODUCT_PR.search(title) and RETAIL_PRODUCT_CONTEXT.search(headline_lead) and not PUBLIC_MARKET_BUSINESS_LINK.search(headline_lead):
         result.update(disposition="exclude", priority=0, reason="cumulative_consumer_product_publicity")
         return result
@@ -6176,6 +6323,13 @@ def assess(title: str, body: str, *, source_url: str = "", published: str = "") 
             "kind": "physical_supply_or_capacity",
             "stage": ai_chip_deployment["stage"],
             "source_excerpt": ai_chip_deployment["source_excerpt"],
+        }))
+    humanoid_launch = lg_cloid_humanoid_launch_observation(title, body, published)
+    if humanoid_launch:
+        matches.append((2, 95, 0, ["earnings", "timeline"], {
+            "kind": "humanoid_product_launch",
+            "stage": humanoid_launch["stage"],
+            "source_excerpt": humanoid_launch["source_excerpt"],
         }))
     openai_repricing = openai_revenue_market_repricing_observation(title, body)
     if openai_repricing:
