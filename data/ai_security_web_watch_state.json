@@ -8,8 +8,8 @@
     "errors": [],
     "material_items": 27,
     "new_material_items": 0,
-    "raw_items": 259,
-    "replication_reference_suppressed": 0,
+    "raw_items": 263,
+    "replication_reference_suppressed": 1,
     "replication_watch_version": 1
   },
   "openai_insider_case_stages": {
@@ -95,6 +95,16 @@
       "source": "Anthropic Research",
       "title": "Anthropic Research: glm 5 3 and the spread of advanced cyber capabilities",
       "url": "https://www.anthropic.com/research/glm-5-3-and-the-spread-of-advanced-cyber-capabilities",
+      "vendor": "Anthropic"
+    },
+    "282734f67d13b56d03fe3422": {
+      "category": "AI 자율복제·사물인터넷 모의평가",
+      "first_seen_at": "2026-10-15T16:26:04.989884+00:00",
+      "published_at": "2026-10-13T21:16:34+00:00",
+      "severity": 1,
+      "source": "BleepingComputer",
+      "title": "Anthropic warns self-replicating AI could spread to your smart devices - BleepingComputer",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNRE1aazlfenZZR0syQ09DNTZJNW5ZbmJzUks1Z1F2OFBkWHBnWTQ1bmE0cEFJc09sYmVaZ3hqeUh0REhYVHFaUHpQRXplNFlwanMxeGNJMlhXUkNpeDhaUW9selVsZDRvdGZRWHdlME1Fd29faFdWbUEzR2dDZ1RwVVF5cERuWnYtU2RpSXFlcFU2R2x5WGl0ZkZMM244bkRPSEYwMlhlendrd19WQmIxMFdlNjNiMFJaVlE?oc=5",
       "vendor": "Anthropic"
     },
     "2d7cc4a2547a23aef929ff76": {
@@ -738,5 +748,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-10-16T01:03:20+09:00"
+  "updated_at_kst": "2026-10-16T01:26:04+09:00"
 }
