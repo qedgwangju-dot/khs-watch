@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-15T19:03:42+09:00",
+  "updated_at_kst": "2026-10-15T23:53:54+09:00",
   "correction_pending": false,
   "buyback": {
     "sha256": "3e691d164254d161d0d814e87c0eb3b88203e8985bb2f046aff70278f43ae5d4",
@@ -32,9 +32,9 @@
     "prev_total_usd_m": 175.7,
     "day_change_usd_m": -437.1,
     "day_change_pct": -248.8,
-    "source_latest_date": "2026-10-14",
-    "source_latest_status": "complete",
-    "pending_date": null,
+    "source_latest_date": "2026-10-15",
+    "source_latest_status": "pending",
+    "pending_date": "2026-10-15",
     "latest_recomputed_total_usd_m": -261.4,
     "latest_total_gap_usd_m": 0.0,
     "latest_total_validated": true,
@@ -130,7 +130,7 @@
       }
     },
     "history_source": "https://farside.co.uk/bitcoin-etf-flow-all-data/",
-    "history_row_count": 1416,
+    "history_row_count": 1418,
     "history_error": "",
     "provisional_history": [
       {
