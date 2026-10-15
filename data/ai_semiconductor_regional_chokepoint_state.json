@@ -69,7 +69,7 @@
       "comparable_75pct_refresh_public": false
     }
   },
-  "updated_at_kst": "2026-10-15T16:22:32+09:00",
+  "updated_at_kst": "2026-10-15T21:51:33+09:00",
   "last_scan_count": 3,
   "semi_300mm_track_version": 2,
   "semi_300mm": {
@@ -114,8 +114,9 @@
     "issuer_index_checked": true
   },
   "last_eligible_count": 0,
-  "last_held_count": 0,
+  "last_held_count": 1,
   "seen_fingerprints": [
+    "1a3e5915b65cf2f57776be9e",
     "2b04eb17a0ebb0a08a2d3235",
     "2ff967f0a83d4f9d09737f69",
     "54bea3d4ab4510e9d52b3b53",
@@ -131,7 +132,14 @@
     "f3274f98949ddbb5ad284b00"
   ],
   "delivered_event_keys": [],
-  "last_held": [],
+  "last_held": [
+    {
+      "event_key": "taiwan|capacity|TSMC|2nm",
+      "source": "TradingKey",
+      "reason": "출처 신뢰도 부족",
+      "published_kst": "2026-10-15T18:21:51+09:00"
+    }
+  ],
   "last_successful_delivery_kst": "2026-10-14T21:13:05+09:00",
   "telegram_message_ids": [
     292
