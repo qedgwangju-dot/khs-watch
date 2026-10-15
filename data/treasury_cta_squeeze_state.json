@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-10-15T10:38:15+09:00",
+  "last_checked_kst": "2026-10-16T00:44:16+09:00",
   "media_id": null,
   "cftc_date": "October 6, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-10-15T10:38:15+09:00",
+    "checked_kst": "2026-10-16T00:44:16+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "October 6, 2026",
@@ -85,16 +85,16 @@
         "display_symbol": "TY/ZN",
         "ticker": "ZN=F",
         "month": "",
-        "last": 105.34375,
-        "settlement": 105.34375,
-        "change": 0.609375,
-        "pct_change": 0.5818290317768149,
+        "last": 105.53125,
+        "settlement": 105.53125,
+        "change": 0.65625,
+        "pct_change": 0.62574493444576,
         "open_interest": 5742990,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (October 6, 2026)",
         "oi_comparable": true,
         "oi_scope": "CFTC_TFF_WHOLE_MARKET_WEEKLY",
         "volume": 0,
-        "market_time": 1792027682,
+        "market_time": 1792036800,
         "source": "https://finance.yahoo.com/quote/ZN%3DF/",
         "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)"
       },
@@ -103,16 +103,16 @@
         "display_symbol": "US/ZB",
         "ticker": "ZB=F",
         "month": "",
-        "last": 104.9375,
-        "settlement": 104.9375,
-        "change": 1.1875,
-        "pct_change": 1.1445783132530085,
+        "last": 105.5625,
+        "settlement": 105.5625,
+        "change": 1.375,
+        "pct_change": 1.319736052789433,
         "open_interest": 1898067,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (October 6, 2026)",
         "oi_comparable": true,
         "oi_scope": "CFTC_TFF_WHOLE_MARKET_WEEKLY",
         "volume": 0,
-        "market_time": 1792027692,
+        "market_time": 1792036800,
         "source": "https://finance.yahoo.com/quote/ZB%3DF/",
         "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)"
       },
@@ -121,16 +121,16 @@
         "display_symbol": "WN/UB",
         "ticker": "UB=F",
         "month": "",
-        "last": 106.375,
-        "settlement": 106.375,
-        "change": 1.46875,
-        "pct_change": 1.4000595770032875,
+        "last": 107.3125,
+        "settlement": 107.3125,
+        "change": 1.75,
+        "pct_change": 1.65778567199526,
         "open_interest": 2404377,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (October 6, 2026)",
         "oi_comparable": true,
         "oi_scope": "CFTC_TFF_WHOLE_MARKET_WEEKLY",
         "volume": 0,
-        "market_time": 1792027691,
+        "market_time": 1792036800,
         "source": "https://finance.yahoo.com/quote/UB%3DF/",
         "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)"
       }
@@ -150,19 +150,19 @@
     },
     "repo": {
       "SOFR": {
-        "date": "2026-10-13",
-        "rate": 3.89,
-        "volume_bn": 3000
+        "date": "2026-10-14",
+        "rate": 3.88,
+        "volume_bn": 2974
       },
       "BGCR": {
-        "date": "2026-10-13",
-        "rate": 3.88,
-        "volume_bn": 1226
+        "date": "2026-10-14",
+        "rate": 3.86,
+        "volume_bn": 1228
       },
       "TGCR": {
-        "date": "2026-10-13",
-        "rate": 3.88,
-        "volume_bn": 1195
+        "date": "2026-10-14",
+        "rate": 3.86,
+        "volume_bn": 1189
       }
     },
     "format_revision": 14,
@@ -181,19 +181,19 @@
         "scope": "CFTC TFF NASDAQ MINI 전체시장 주간"
       },
       "nq_price": {
-        "price": 30791.5,
-        "previous_close": 30898.25,
-        "pct_change": -0.34548882218248606,
-        "change_points": -106.75,
-        "open_interest": 279515,
-        "oi_change": -2400,
+        "price": 30182.75,
+        "previous_close": 30791.5,
+        "pct_change": -1.9770066414432554,
+        "change_points": -608.75,
+        "open_interest": 282481,
+        "oi_change": 2966,
         "oi_scope": "CME EMINI NASD FUT total product daily",
         "source": "CME Daily Bulletin PG11 official settlement/OI",
         "official": true,
         "basis": "previous trade date settlement + total product daily OI",
-        "trade_date": "2026-10-13",
+        "trade_date": "2026-10-14",
         "month": "DEC26",
-        "url": "https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf?download=1&_=2026101421"
+        "url": "https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf?download=1&_=2026101511"
       },
       "history_3y": {
         "basis": "CFTC TFF NASDAQ MINI futures-only",
@@ -232,6 +232,115 @@
           2026
         ],
         "ten_year_complete": true,
+        "month_windows": {
+          "1m": {
+            "calendar_months": 1,
+            "cutoff_date": "2026-09-06",
+            "end_date": "2026-10-06",
+            "market": "NASDAQ MINI",
+            "cftc_code": "209742",
+            "basis": "CFTC TFF futures-only; latest weekly observation on or before calendar cutoff",
+            "status": "verified",
+            "actors": {
+              "asset_manager": {
+                "status": "verified",
+                "base_long": 108397.0,
+                "base_short": 36520.0,
+                "end_long": 111727.0,
+                "end_short": 37929.0,
+                "base_net": 71877.0,
+                "end_net": 73798.0,
+                "net_change": 1921.0,
+                "long_change": 3330.0,
+                "short_change": 1409.0
+              },
+              "leveraged_funds": {
+                "status": "verified",
+                "base_long": 55361.0,
+                "base_short": 69453.0,
+                "end_long": 51349.0,
+                "end_short": 70561.0,
+                "base_net": -14092.0,
+                "end_net": -19212.0,
+                "net_change": -5120.0,
+                "long_change": -4012.0,
+                "short_change": 1108.0
+              }
+            },
+            "base_date": "2026-09-01",
+            "cutoff_gap_days": 5
+          },
+          "3m": {
+            "calendar_months": 3,
+            "cutoff_date": "2026-07-06",
+            "end_date": "2026-10-06",
+            "market": "NASDAQ MINI",
+            "cftc_code": "209742",
+            "basis": "CFTC TFF futures-only; latest weekly observation on or before calendar cutoff",
+            "status": "verified",
+            "actors": {
+              "asset_manager": {
+                "status": "verified",
+                "base_long": 102755.0,
+                "base_short": 35445.0,
+                "end_long": 111727.0,
+                "end_short": 37929.0,
+                "base_net": 67310.0,
+                "end_net": 73798.0,
+                "net_change": 6488.0,
+                "long_change": 8972.0,
+                "short_change": 2484.0
+              },
+              "leveraged_funds": {
+                "status": "verified",
+                "base_long": 36796.0,
+                "base_short": 105413.0,
+                "end_long": 51349.0,
+                "end_short": 70561.0,
+                "base_net": -68617.0,
+                "end_net": -19212.0,
+                "net_change": 49405.0,
+                "long_change": 14553.0,
+                "short_change": -34852.0
+              }
+            },
+            "base_date": "2026-06-30",
+            "cutoff_gap_days": 6
+          }
+        },
+        "week_window": {
+          "status": "verified",
+          "end_date": "2026-10-06",
+          "cftc_code": "209742",
+          "market": "NASDAQ MINI",
+          "actors": {
+            "leveraged_funds": {
+              "status": "verified",
+              "base_long": 48150.0,
+              "base_short": 72873.0,
+              "end_long": 51349.0,
+              "end_short": 70561.0,
+              "base_net": -24723.0,
+              "end_net": -19212.0,
+              "long_change": 3199.0,
+              "short_change": -2312.0,
+              "net_change": 5511.0
+            },
+            "asset_manager": {
+              "status": "verified",
+              "base_long": 108558.0,
+              "base_short": 38814.0,
+              "end_long": 111727.0,
+              "end_short": 37929.0,
+              "base_net": 69744.0,
+              "end_net": 73798.0,
+              "long_change": 3169.0,
+              "short_change": -885.0,
+              "net_change": 4054.0
+            }
+          },
+          "base_date": "2026-09-29"
+        },
         "sample_n_10y": 522,
         "start_date_10y": "2016-10-11",
         "end_date_10y": "2026-10-06",
@@ -294,10 +403,10 @@
       "nq_crosscheck_reason": null,
       "nq_price_up": false,
       "nq_price_official": true,
-      "nq_price_fresh": false,
+      "nq_price_fresh": true,
       "nq_price_expected_session": "2026-10-14",
       "nq_weekly_oi_down": false,
-      "nq_daily_oi_change": -2400,
+      "nq_daily_oi_change": 2966,
       "nq_daily_oi_down": false,
       "nq_oi_down": false,
       "nq_short_cover": true,
