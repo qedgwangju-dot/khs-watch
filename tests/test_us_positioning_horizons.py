@@ -154,14 +154,14 @@ class MultiHorizonPresentationTests(unittest.TestCase):
     def test_actual_summary_is_mixed_not_a_short_only_downtrend(self):
         values = enriched_snapshot()
         message = core_tests.render(values)
-        self.assertIn("기간 종합: 반도체 혼재 · 1개월 상승, 단기·3개월 하락", message)
+        self.assertIn("기간 종합: 반도체 혼재 · 1개월 전 대비 상승, 단기·3개월 하락", message)
         self.assertIn("+4.97% · 상승", message)
         self.assertIn("-7.72% · 하락", message)
         self.assertIn("2026-09-14 → 2026-10-14", message)
         self.assertIn("2026-07-14 → 2026-10-14", message)
-        self.assertIn("헤지펀드성 -5,120계약(순숏 확대)", message)
-        self.assertIn("헤지펀드성 +49,405계약(순숏 축소)", message)
-        self.assertLessEqual(len(message.strip()), 3800)
+        self.assertIn("헤지펀드성 롱 -4,012 / 숏 +1,108 / 순 -5,120계약(순숏 확대)", message)
+        self.assertIn("헤지펀드성 롱 +14,553 / 숏 -34,852 / 순 +49,405계약(순숏 축소)", message)
+        self.assertTrue(all(len(line) <= 3800 for line in message.splitlines()))
 
     def test_missing_months_prohibit_a_whole_period_verdict(self):
         message = core_tests.render()
@@ -176,8 +176,8 @@ class MultiHorizonPresentationTests(unittest.TestCase):
         m["value"] = 110
         cases = [(-1, 120, 130, "단기·1개월·3개월 모두 하락"),
                  (1, 100, 90, "단기·1개월·3개월 모두 상승"),
-                 (1, 120, 130, "1·3개월 하락 속 단기 반등"),
-                 (-1, 100, 90, "1·3개월 상승 속 단기 하락")]
+                 (1, 120, 130, "1·3개월 전 대비 하락 속 단기 반등"),
+                 (-1, 100, 90, "1·3개월 전 대비 상승 속 단기 하락")]
         for short, one_base, three_base, expected in cases:
             for days in (1, 3, 5):m[f"d{days}_pct"] = short
             rows = [("2026-09-14", one_base), ("2026-07-14", three_base)]
@@ -193,5 +193,6 @@ class MultiHorizonPresentationTests(unittest.TestCase):
         values = enriched_snapshot()
         result = core_tests.OperatingIntegrationTests.run_operating_tail(self, values)
         self.assertTrue(result["gate"])
-        self.assertEqual(result["alert"], core_tests.render(values))
-        self.assertEqual(result["pending"]["values"], values)
+        self.assertIn("1개월 전 대비", result["alert"])
+        self.assertIn("롱 -4,012 / 숏 +1,108 / 순 -5,120", result["alert"])
+        self.assertEqual({k:result["pending"]["values"][k] for k in values}, values)

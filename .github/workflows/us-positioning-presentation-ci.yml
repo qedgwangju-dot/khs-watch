@@ -6,11 +6,14 @@ on:
       - "scripts/us_positioning_watch.py"
       - "scripts/us_positioning_presentation.py"
       - "scripts/us_positioning_horizons.py"
+      - "scripts/us_positioning_context.py"
       - "tests/test_us_positioning_presentation.py"
       - "tests/test_us_positioning_horizons.py"
       - "tests/test_us_positioning_collectors.py"
+      - "tests/test_us_positioning_context.py"
       - "tests/fixtures/us_positioning_20261014_saved.json"
       - "tests/fixtures/us_positioning_month_horizons_20261015.json"
+      - "tests/fixtures/us_positioning_context*"
       - ".github/workflows/us-positioning-telegram-watch.yml"
       - ".github/workflows/us-positioning-presentation-ci.yml"
   push:
@@ -19,11 +22,14 @@ on:
       - "scripts/us_positioning_watch.py"
       - "scripts/us_positioning_presentation.py"
       - "scripts/us_positioning_horizons.py"
+      - "scripts/us_positioning_context.py"
       - "tests/test_us_positioning_presentation.py"
       - "tests/test_us_positioning_horizons.py"
       - "tests/test_us_positioning_collectors.py"
+      - "tests/test_us_positioning_context.py"
       - "tests/fixtures/us_positioning_20261014_saved.json"
       - "tests/fixtures/us_positioning_month_horizons_20261015.json"
+      - "tests/fixtures/us_positioning_context*"
       - ".github/workflows/us-positioning-telegram-watch.yml"
       - ".github/workflows/us-positioning-presentation-ci.yml"
 
@@ -40,8 +46,8 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install offline parser test dependencies
-        run: python -m pip install --disable-pip-version-check --quiet pandas beautifulsoup4
+        run: python -m pip install --disable-pip-version-check --quiet pandas beautifulsoup4 "exchange_calendars>=4.5,<5"
       - name: Check presentation and real collector gates without network or Telegram
         run: |
-          python -m py_compile scripts/us_positioning_watch.py scripts/us_positioning_presentation.py scripts/us_positioning_horizons.py
+          python -m py_compile scripts/us_positioning_watch.py scripts/us_positioning_presentation.py scripts/us_positioning_horizons.py scripts/us_positioning_context.py
           python -m unittest discover -s tests -p 'test_us_positioning*.py' -v

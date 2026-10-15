@@ -8,6 +8,7 @@ on:
       - "scripts/us_positioning_watch.py"
       - "scripts/us_positioning_presentation.py"
       - "scripts/us_positioning_horizons.py"
+      - "scripts/us_positioning_context.py"
   schedule:
     # Completed-session checks only. KST 08:12 / 10:12 are after the U.S. close;
     # the former 22:12 KST pre-open slot was removed because it could mix live
@@ -55,7 +56,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: python -m pip install --disable-pip-version-check --quiet requests beautifulsoup4 pandas lxml playwright
+        run: python -m pip install --disable-pip-version-check --quiet requests beautifulsoup4 pandas lxml playwright "exchange_calendars>=4.5,<5"
 
       - name: Verify exact Telegram route
         run: |
@@ -75,7 +76,7 @@ jobs:
 
       - name: Query positioning sources
         run: |
-          python -m py_compile scripts/us_positioning_watch.py scripts/us_positioning_presentation.py scripts/us_positioning_horizons.py
+          python -m py_compile scripts/us_positioning_watch.py scripts/us_positioning_presentation.py scripts/us_positioning_horizons.py scripts/us_positioning_context.py
           for attempt in 1 2 3; do
             rm -f out/us_positioning_alert.html out/us_positioning_status.md out/us_positioning_pending_state.json out/us_positioning_telegram_confirmed.json
             if python scripts/us_positioning_watch.py; then
@@ -278,5 +279,7 @@ jobs:
             out/us_positioning_alert.html
             out/us_positioning_pending_state.json
             out/us_positioning_telegram_confirmed.json
+            out/us_positioning_source_evidence.json
+            out/us_positioning_sources/
           if-no-files-found: ignore
           retention-days: 14
