@@ -3815,4 +3815,128 @@ assert watcher.qty.QTY_RE.findall('254MW 1000MWh 1GWh 1GW')==[
     ('254','MW'),('1','GW')
 ],watcher.qty.QTY_RE.findall('254MW 1000MWh 1GWh 1GW')
 
+
+# 52) October 12-15 robot events: primary issuer status vs press,
+# honest anonymous customers, prototype aims vs proven production.
+oct15_expected = {
+    'agility_s4_effective': ('agility_spac_2026', 'S-4 효력'),
+    'rainbow_fcc_filed': ('rainbow_fcc_compliance', '조건부승인 신청'),
+    'xinjian_ipo_response': ('xinjian_prs_ipo', '익명 A사'),
+    'unichem_loomia_signed': ('unichem_loomia_acquisition', '인수 본계약'),
+    'atlas_protoops_goal': ('atlas_protoops_build', '제작시간 단축 목표'),
+    'alert223_quality_correction': ('alert_quality_223', 'ESS 오탐'),
+}
+oct15_keys = []
+for event_key, (expected_group, expected_phrase) in oct15_expected.items():
+    rows = watcher.query_news(watcher.ROBOT_OCT15_PREFIX + event_key)
+    if base.NOW.astimezone(base.KST).date() <= dt.date(2026, 10, 20):
+        assert len(rows) == 1, (event_key,rows)
+        item = rows[0]
+        group, points, cat, dedupe_key = classify(item)
+        assert group == expected_group and points >= 11, (event_key,group,points,cat)
+        assert expected_phrase in cat, (event_key,cat)
+        assert item['published'] is None, (event_key,'publication time invented')
+        assert base.risk(cat) and base.meaning(cat), (event_key,cat)
+        assert base.verification(item,group,item['title']+' '+item['description'])
+        assert base.category(item['title']+' '+item['description'],group) == cat
+        oct15_keys.append(dedupe_key)
+assert len(set(oct15_keys)) == len(oct15_keys), "Oct15 different events collapsed"
+
+# Reject reprinted bank target prices and already-discussed Japan ESS market
+# positioning: four exact headline families from the real Telegram #223.
+for title, source in (
+    ("[리포트 브리핑] 삼성SDI, '미국 ESS 시장 점유율 확대 기대' 목표가 900,000원 - 다올투자증권", "뉴스핌"),
+    ("LG에너지솔루션, ESS 성장 기대…목표가 51만원으로 상향", "파이낸셜뉴스"),
+    ("“中 사이버 보안 인증 탈락 틈새” 삼성SDI·대만 연합, 日 ESS 시장 '대공세'", "글로벌이코노믹"),
+    ("삼성SDI, 중국산 배제된 일본 ESS 시장 판도 변화 선봉…'가격·보안' 투트랙 공략", "더구루"),
+):
+    test_news = make(title,"업계 시장 전망 및 기존 기사 해설, 신규 본계약 확인 없음",source)
+    assert watcher._is_oct15_market_noise(test_news), (title,source)
+    assert base.score(test_news) == 0, (title,base.score(test_news))
+
+# An actual explicit newly signed order headline must not be removed just
+# because a broker simultaneously lifts its target price.
+confirmed_ess_order = make(
+    "삼성SDI, 일본 고객 신규 ESS 공급계약 체결…목표가 상향",
+    "삼성SDI 신규 일본 ESS 공급계약을 체결했다고 밝혔다.",
+    "연합뉴스",
+)
+assert not watcher._is_oct15_market_noise(confirmed_ess_order)
+
+# The 2027 Q1 CLOiD plan and general CES event aren't new statuses in
+# the six targeted commercial/approval lanes.
+for story in (
+    "LG전자 2027년 초 CLOiD 이족보행 휴머노이드 공개 예정",
+    "CES 2027 AI 휴머노이드 전시 키워드",
+    "Boston Dynamics Atlas 외부 고객 신규 정식 공급계약",
+):
+    assert watcher._oct15_group(story) == '', story
+
+# Future approval, closing, or actual measured throughput must be separate
+# semantic keys from the first-stage milestones.
+future_oct15 = [
+    (
+        "Agility Robotics Churchill Capital Corp XI shareholders approved the merger proposal",
+        "Agility Robotics","agility_spac_2026",
+        "주주총회 승인·거래종결 대기",
+    ),
+    (
+        "Agility Robotics Churchill XI business combination completed AGLT trading started",
+        "Agility Robotics","agility_spac_2026",
+        "실제 합병 거래종결 공식확인",
+    ),
+    (
+        "레인보우로보틱스 RB-Y1 FCC DoW 조건부 승인 발급",
+        "DoW","rainbow_fcc_compliance",
+        "조건부 승인 공식확인",
+    ),
+    (
+        "신젠전동 新剑传动 A사 첫 양산 출하 확인",
+        "新剑传动","xinjian_prs_ipo",
+        "첫 양산 출하 공식확인",
+    ),
+    (
+        "유니켐 Loomia 거래 종결 완료",
+        "유니켐","unichem_loomia_acquisition",
+        "인수 종결 공식확인",
+    ),
+    (
+        "Boston Dynamics Atlas 실제 1시간 실측 달성",
+        "Boston Dynamics","atlas_protoops_build",
+        "실제 달성",
+    ),
+]
+for title,source,expected_group,expected_suffix in future_oct15:
+    it = make(title,title,source)
+    g,score,cat,semantic = classify(it)
+    assert g == expected_group and score >= 11, (title,g,score,cat)
+    assert expected_suffix in cat, (title,cat)
+    assert semantic not in oct15_keys, (title,'new stage silenced as duplicate')
+
+# DoW's general conditional-approval process is not company approval.
+dow_process_only = make(
+    "레인보우로보틱스 RB-Y1 FCC DoW conditional approval process",
+    "DoW opened general conditional approval process, not granted RB-Y1",
+    "DoW",
+)
+dg,ds,dc,dk = classify(dow_process_only)
+assert dg == 'rainbow_fcc_compliance' and ds < 11,(dg,ds,dc)
+# A material announcement of other Atlas robot business must NOT get
+# swallowed by the specialized prototype-assembly stage.
+atlas_real_customer_order = make(
+    "Boston Dynamics Atlas receives first binding customer robot order",
+    "Boston Dynamics Atlas production robots are ordered by external buyer.",
+    "Boston Dynamics",
+)
+assert watcher._oct15_group(atlas_real_customer_order['title']) == ''
+
+future_now = base.NOW
+try:
+    base.NOW = dt.datetime(2026,10,22,12,0,tzinfo=dt.timezone.utc)
+    for event_key in oct15_expected:
+        assert watcher.query_news(watcher.ROBOT_OCT15_PREFIX + event_key) == []
+finally:
+    base.NOW = future_now
+
+
 print("Physical-AI watcher regression guards: PASS")
