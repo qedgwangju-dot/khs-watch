@@ -26,6 +26,21 @@ MARKET_SPECS = {
 _PACE_LOCKS = {tr: threading.Lock() for tr in ("t1602", "t1640", "t8463")}
 _NEXT_CALL = {tr: 0.0 for tr in _PACE_LOCKS}
 
+# 기관계의 세부 업종은 중복 합산하지 않는다. LS가 따로 반환하는
+# 개인/외국인/기관계/기타/국가만 같은 행 안에서 검산한다.
+FUTURES_INVESTORS = {
+    "개인": ("ind", "0008"), "외국인": ("for", "0009"),
+    "기관": ("sys", "0018"), "기타": ("etc", "0007"),
+    "국가": ("nat", "0011"),
+}
+
+
+class FuturesInvestorQualityError(ValueError):
+    def __init__(self, evidence: dict):
+        self.evidence = evidence
+        super().__init__("t8463 investor reconciliation failed: "
+                         + "; ".join(evidence["investor_quality"]["issues"]))
+
 
 def pace(tr: str) -> None:
     lock = _PACE_LOCKS.get(tr)
@@ -57,6 +72,33 @@ def futures_request(market: str) -> dict:
     spec = MARKET_SPECS[market]
     return {"t8463InBlock": {"tm_rng": "D", "fot_clsf_cd": "F",
                             "bsc_asts_id": spec["asset"], "cnt": 10, "bgubun": "0"}}
+
+
+def futures_investor_quality(summary: dict, row: dict) -> dict:
+    """A dated row can still be partially updated. Zero is not sufficient proof."""
+    summary = summary if isinstance(summary, dict) else {}
+    row = row if isinstance(row, dict) else {}
+    issues, amounts, volumes = [], {}, {}
+    for actor, (prefix, code) in FUTURES_INVESTORS.items():
+        if str(summary.get(prefix + "code") or "").strip() != code:
+            issues.append(actor + " 투자자코드 미확인/불일치")
+        amounts[actor] = number(row.get(prefix + "msamt"))
+        volumes[actor] = number(row.get(prefix + "msvol"))
+        if amounts[actor] is None or volumes[actor] is None:
+            issues.append(actor + " 순매수 금액/수량 누락")
+        elif not volumes[actor].is_integer():
+            issues.append(actor + " 순매수 수량이 정수가 아님")
+    amount_sum = sum(amounts.values()) if all(x is not None for x in amounts.values()) else None
+    volume_sum = sum(volumes.values()) if all(x is not None for x in volumes.values()) else None
+    # 계약 수량에는 반올림을 허용하지 않는다. 정수로 공표된 금액은
+    # 다섯 집단 각각 원값 1 이내의 표시 차이만 허용하며 통화 단위를 추정하지 않는다.
+    if volume_sum is not None and volume_sum != 0:
+        issues.append(f"전체 투자자 순매수 수량 합계 {volume_sum:+g} (필요 0)")
+    if amount_sum is not None and abs(amount_sum) > len(FUTURES_INVESTORS):
+        issues.append(f"전체 투자자 순매수 금액 합계 {amount_sum:+g} (허용 원값 ±5)")
+    return {"verified": not issues, "issues": issues, "amounts": amounts, "volumes": volumes,
+            "amount_sum": amount_sum, "volume_sum": volume_sum,
+            "amount_rounding_tolerance_raw": len(FUTURES_INVESTORS)}
 
 
 def parse_futures(body: dict, market: str, received_ts: float) -> dict:
@@ -98,12 +140,18 @@ def parse_futures(body: dict, market: str, received_ts: float) -> dict:
     ts, row, values = max(valid, key=lambda item: item[0])
     if any(v is None for v in values.values()):
         raise ValueError("t8463 latest row missing investor amount")
-    return {"market": market, "asset": spec["asset"], "source_tr": "t8463",
+    result = {"market": market, "asset": spec["asset"], "source_tr": "t8463",
             "source_scope_verified": True, "sample_ts": ts, "received_ts": received_ts,
             "timestamp_basis": "provider_date_time", "time": row["time"], "date": row["date"],
             "unit": "LS_raw_amount", "unit_verified": False,
             "request": futures_request(market), "summary": summary, "source_row": row,
             "decoded_response_json_sha256": decoded_hash(body), **values}
+    if market == "KOSDAQ":
+        result["investor_quality"] = futures_investor_quality(summary, row)
+        if not result["investor_quality"]["verified"]:
+            # Reject the latest row; never substitute an older complete row.
+            raise FuturesInvestorQualityError(result)
+    return result
 
 
 def futures_current(token: str, market: str, post) -> dict:
@@ -147,9 +195,13 @@ def block_scope_matches(block: dict, market: str, channel: str) -> bool:
     if block.get("market") is not None and block["market"] != market:
         return False
     if channel == "지수선물":
+        quality = futures_investor_quality(block.get("summary"), block.get("source_row")) if market == "KOSDAQ" else None
         return (block.get("source_tr") == "t8463"
                 and block.get("asset") == MARKET_SPECS[market]["asset"]
-                and block.get("source_scope_verified") is True)
+                and block.get("source_scope_verified") is True
+                and (market != "KOSDAQ" or (
+                    quality["verified"] and all(number(block.get(actor)) == quality["amounts"][actor]
+                                                for actor in ("외국인", "기관", "개인")))))
     if channel == "프로그램" and market == "KOSDAQ":
         return block.get("source_tr") == "t1640" and block.get("market") == market
     return True
