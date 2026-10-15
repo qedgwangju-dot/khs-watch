@@ -1,6 +1,6 @@
 {
   "seen": {
-    "ICI|mmf": "42db2318a82a5adba91032d1a71047cf42a0e3ffd45aeeed3c7854bdb9bf4ba3",
+    "ICI|mmf": "7d62c9b24f7147fa249adbf6f39bc9457f72a7e794e5d287dc78cf0b278636bb",
     "FINRA|margin": "8655636a0708abc68f71ddd7a8febfc428dbeaf45d54c8d809c6c5280ea4c65e",
     "ICI|combined": "d6110dceb2cbd321bb4dac9a83b7eeb239cee9d42340f398d4cac8578b35c39d",
     "JPMorganChase Institute|household_withdrawals": "6c6c7de140d30ef3253091d748c839718c430cd42b2e1b65880108e2720f7e29",
@@ -11,12 +11,12 @@
     "ICI|mmf": {
       "source": "ICI",
       "kind": "mmf",
-      "period": "October 07, 2026",
-      "published": "October 8, 2026",
+      "period": "October 14, 2026",
+      "published": "October 15, 2026",
       "url": "https://www.ici.org/research/stats/mmf",
       "metrics": {
-        "assets_trillion": 7.96355,
-        "weekly_change_bn": 72.27
+        "assets_trillion": 7.92308,
+        "weekly_change_bn": -40.46
       },
       "quality_checks": [
         "same_week",
@@ -24,7 +24,7 @@
         "table_change",
         "prose_level"
       ],
-      "fingerprint": "42db2318a82a5adba91032d1a71047cf42a0e3ffd45aeeed3c7854bdb9bf4ba3"
+      "fingerprint": "7d62c9b24f7147fa249adbf6f39bc9457f72a7e794e5d287dc78cf0b278636bb"
     },
     "FINRA|margin": {
       "source": "FINRA",
@@ -118,18 +118,18 @@
       "fingerprint": "322bb6e2516a3f327007042522d224c50a05c059d5697b540dd5b8be9b515502"
     }
   },
-  "updated_at_kst": "2026-10-15T02:09:52.151439+09:00",
+  "updated_at_kst": "2026-10-16T06:22:26.079139+09:00",
   "derived": {
     "sp500_drawdown_band": "normal",
-    "sp500_last_date": "2026-10-14",
-    "sp500_last_value": 7721.16015625,
+    "sp500_last_date": "2026-10-15",
+    "sp500_last_value": 7744.06005859375,
     "sp500_peak_date": "2026-10-06",
     "sp500_peak_value": 7818.93017578125,
-    "sp500_drawdown_pct": -1.25,
+    "sp500_drawdown_pct": -0.96,
     "hartnett_tracking_version": "2026-10-09-v1",
-    "hartnett_treasury_date": "2026-10-14",
-    "hartnett_10y_pct": 5.19,
-    "hartnett_10y_5d_bp": -8.0,
+    "hartnett_treasury_date": "2026-10-15",
+    "hartnett_10y_pct": 5.1,
+    "hartnett_10y_5d_bp": -18.0,
     "hartnett_bond_level": "below_5_30",
     "hartnett_bond_momentum": "neutral",
     "hartnett_fed_target_upper_pct": 4.0,
