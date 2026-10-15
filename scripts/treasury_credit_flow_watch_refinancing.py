@@ -317,6 +317,79 @@ def _flow_direction(flow):
     return "확인 대기"
 
 
+def _period_flow_direction(flow):
+    """Read the signed USD flow, including the wordless recent-five display."""
+    if any(mark in flow for mark in ("확인 대기", "확인 불가", "미확인", "조회 실패")):
+        return "확인 대기"
+    amount = re.search(r"([+\-±]?)\$([+\-±]?)([0-9][0-9,]*(?:\.[0-9]+)?)", flow)
+    if not amount:
+        return "확인 대기"
+    before, after, value = amount.groups()
+    if before and after and before != after:
+        return "확인 대기"
+    sign = before or after
+    value = float(value.replace(",", ""))
+    if value == 0:
+        return "변화 없음" if "→" in flow or sign == "±" else "확인 대기"
+    if sign == "±":
+        return "확인 대기"
+    direction = "유출" if sign == "-" else "유입" if sign == "+" else _flow_direction(flow)
+    if direction == "확인 대기":
+        return direction
+    word_direction = _flow_direction(flow)
+    if word_direction in ("유입", "유출") and word_direction != direction:
+        return "확인 대기"
+    if ("↑" in flow and direction != "유입") or ("↓" in flow and direction != "유출"):
+        return "확인 대기"
+    return direction
+
+
+def _flow_preference(flows, fund_dates, tickers, period, kind):
+    dates = [fund_dates.get(ticker) for ticker in tickers]
+    if not all(dates) or len(set(dates)) != 1:
+        return "판단 보류 (ETF 기준일 미확인·불일치)"
+    directions = tuple(_period_flow_direction(flows[ticker][period]) for ticker in tickers)
+    if "확인 대기" in directions:
+        return "판단 보류 (자금 자료 미확인)"
+    if kind == "국채":
+        if directions == ("유입", "유출", "유출"):
+            return "짧은 만기 선호 신호"
+        if directions == ("유출", "유입", "유입"):
+            return "긴 만기 선호 신호"
+        if len(set(directions)) == 1:
+            return "전 만기 " + directions[0]
+        return "만기별 혼조"
+    if directions == ("유입", "유출"):
+        return "투자등급 선호 신호"
+    if directions == ("유출", "유입"):
+        return "고수익 선호 신호"
+    if len(set(directions)) == 1:
+        return "투자등급·고수익 모두 " + directions[0]
+    return f"투자등급 {directions[0]} · 고수익 {directions[1]}"
+
+
+def _flow_interpretation_panel(flows, fund_dates):
+    lines = []
+    for kind, tickers in (("국채", ("SHY", "IEF", "TLT")), ("회사채", ("LQD", "HYG"))):
+        day = _flow_preference(flows, fund_dates, tickers, 0, kind)
+        recent = _flow_preference(flows, fund_dates, tickers, 1, kind)
+        lines.append(f"{kind} 해석(ETF 추정): 당일 {day} / 최근 5회 {recent}")
+    opposite = {("유출", "유입"): [], ("유입", "유출"): []}
+    for ticker in ("SHY", "IEF", "TLT", "LQD", "HYG"):
+        if not fund_dates.get(ticker):
+            continue
+        pair = tuple(_period_flow_direction(flow) for flow in flows[ticker])
+        if pair in opposite:
+            opposite[pair].append(ticker)
+    contrasts = [
+        f"{'·'.join(tickers)}는 당일 {day} / 최근 5회 {recent}"
+        for (day, recent), tickers in opposite.items() if tickers
+    ]
+    if contrasts:
+        lines.append("기간 차이: " + " | ".join(contrasts))
+    return lines
+
+
 def _rate_direction(move):
     if move is None:
         return "확인 대기"
@@ -487,6 +560,7 @@ def _validate_compact_report(text, overall_head, y10, hyg_oas):
 
 def _compact_report(raw_text):
     flows = {t: _flow(t, raw_text) for t in ("SHY", "IEF", "TLT", "LQD", "HYG")}
+    fund_dates = {t: _fund_date(t, raw_text) for t in flows}
     lqd_oas, hyg_oas = _oas("LQD", raw_text), _oas("HYG", raw_text)
     overall_head, overall_reason = readable._direction_pair("전체 자금 방향", raw_text)
     overall_head = _display_overall_head(overall_head)
@@ -555,6 +629,7 @@ def _compact_report(raw_text):
         "[한눈에 보기]",
         f"전체 방향: {overall_head}",
         *_direction_panel(flows, r2, r10, r30, credit_head, hyg_oas),
+        *_flow_interpretation_panel(flows, fund_dates),
         credit_date_note,
         "",
         "[금리 상세]",
@@ -605,6 +680,7 @@ def _format_html(chunk):
     out = []
     bold_prefixes = (
         "전체 방향:", "금리 방향:", "국채 자금:", "회사채 자금:", "신용 위험:",
+        "국채 해석(ETF 추정):", "회사채 해석(ETF 추정):",
     )
     for line in chunk.splitlines():
         escaped = html.escape(line, quote=False)

@@ -198,6 +198,8 @@ class TreasuryReportIntegrity(unittest.TestCase):
         self.assertIn("Bills에 +75bp 적용 시", rendered)
         self.assertIn("ETF 보유채권 포트폴리오 특성치", rendered)
         self.assertIn("금리 방향: 장기 ↓ 하락 · 2년 ↓ 하락", rendered)
+        self.assertIn("국채 해석(ETF 추정): 당일 전 만기 유입 / 최근 5회 만기별 혼조", rendered)
+        self.assertIn("회사채 해석(ETF 추정): 당일 투자등급 선호 신호 / 최근 5회 투자등급·고수익 모두 유입", rendered)
         self.assertEqual(rendered.count("+$512.2M"), 1)
         self.assertEqual(rendered.count(explanation), 1)
 
@@ -229,6 +231,80 @@ class TreasuryReportIntegrity(unittest.TestCase):
         self.assertNotIn("<b>10년:", formatted)
         self.assertNotIn("<b>Repo:", formatted)
         self.assertIn("A&amp;B &lt;기준&gt;", formatted)
+
+    def test_user_daily_and_recent_flows_have_separate_interpretations(self):
+        flows = {
+            "SHY": ("↑ 추정 순유입 +$16.2M", "↑ +$211.1M"),
+            "IEF": ("↓ 추정 순유출 -$269.1M", "↓ -$107.9M"),
+            "TLT": ("↓ 추정 순유출 -$181.4M", "↑ +$340.3M"),
+            "LQD": ("↓ 추정 순유출 -$205.3M", "↑ +$276.5M"),
+            "HYG": ("↓ 추정 순유출 -$153.3M", "↓ -$392.0M"),
+        }
+        panel = report._flow_interpretation_panel(flows, {t: "2026-10-14" for t in flows})
+        self.assertIn("당일 짧은 만기 선호 신호 / 최근 5회 만기별 혼조", panel[0])
+        self.assertIn("당일 투자등급·고수익 모두 유출 / 최근 5회 투자등급 선호 신호", panel[1])
+        self.assertEqual(panel[2], "기간 차이: TLT·LQD는 당일 유출 / 최근 5회 유입")
+
+    def test_maturity_preference_reverses_with_new_signed_values(self):
+        flows = {t: ("↓ 추정 순유출 -$1.0M", "↓ -$2.0M") for t in ("SHY", "IEF", "TLT")}
+        for t in ("IEF", "TLT"):
+            flows[t] = ("↑ 추정 순유입 +$3.0M", "↑ +$4.0M")
+        dates = {t: "2026-10-14" for t in flows}
+        for period in (0, 1):
+            self.assertEqual(report._flow_preference(flows, dates, tuple(flows), period, "국채"), "긴 만기 선호 신호")
+
+    def test_all_maturities_together_do_not_imply_a_relative_preference(self):
+        dates = {t: "2026-10-14" for t in ("SHY", "IEF", "TLT")}
+        for flow, expected in (("↑ +$1.0M", "전 만기 유입"), ("↓ -$1.0M", "전 만기 유출"), ("→ ±$0", "전 만기 변화 없음")):
+            with self.subTest(flow=flow):
+                flows = {t: (flow, flow) for t in dates}
+                self.assertEqual(report._flow_preference(flows, dates, tuple(dates), 0, "국채"), expected)
+
+    def test_zero_long_flows_do_not_become_a_short_maturity_preference(self):
+        flows = {"SHY": ("↑ +$1.0M", "↑ +$1.0M"), "IEF": ("→ ±$0", "→ ±$0"), "TLT": ("→ ±$0", "→ ±$0")}
+        self.assertEqual(report._flow_preference(flows, {t: "2026-10-14" for t in flows}, tuple(flows), 0, "국채"), "만기별 혼조")
+
+    def test_credit_grade_preference_is_independent_for_each_period(self):
+        flows = {"LQD": ("↓ -$3.0M", "↑ +$1.0M"), "HYG": ("↑ +$2.0M", "↓ -$2.0M")}
+        dates = {t: "2026-10-14" for t in flows}
+        self.assertEqual(report._flow_preference(flows, dates, tuple(flows), 0, "회사채"), "고수익 선호 신호")
+        self.assertEqual(report._flow_preference(flows, dates, tuple(flows), 1, "회사채"), "투자등급 선호 신호")
+
+    def test_recent_missing_data_does_not_inherit_the_daily_preference(self):
+        flows = {"SHY": ("↑ +$1.0M", "↑ +$2.0M"), "IEF": ("↓ -$1.0M", "확인 대기"), "TLT": ("↓ -$1.0M", "↓ -$2.0M")}
+        dates = {t: "2026-10-14" for t in flows}
+        self.assertEqual(report._flow_preference(flows, dates, tuple(flows), 0, "국채"), "짧은 만기 선호 신호")
+        self.assertIn("자금 자료 미확인", report._flow_preference(flows, dates, tuple(flows), 1, "국채"))
+
+    def test_mismatched_or_missing_fund_dates_hold_preference(self):
+        flows = {"SHY": ("↑ +$1.0M", "↑ +$1.0M"), "IEF": ("↓ -$1.0M", "↓ -$1.0M"), "TLT": ("↓ -$1.0M", "↓ -$1.0M")}
+        for date in (None, "2026-10-13"):
+            with self.subTest(date=date):
+                dates = {"SHY": "2026-10-14", "IEF": "2026-10-14", "TLT": date}
+                self.assertIn("기준일 미확인·불일치", report._flow_preference(flows, dates, tuple(flows), 0, "국채"))
+
+    def test_signed_recent_flow_parser_preserves_legacy_minus_and_rejects_conflicts(self):
+        self.assertEqual(report._period_flow_direction("↓ $-7.7M"), "유출")
+        self.assertEqual(report._period_flow_direction("↑ +$1.21B"), "유입")
+        for flow in ("↑ -$1.0M", "↓ 추정 순유출 +$1.0M", "추정 순유입 확인 대기", "→ ±$1.0M"):
+            with self.subTest(flow=flow):
+                self.assertEqual(report._period_flow_direction(flow), "확인 대기")
+
+    def test_period_comparison_only_lists_actual_opposite_signs(self):
+        flows = {t: ("↑ +$1.0M", "↑ +$2.0M") for t in ("SHY", "IEF", "TLT", "LQD", "HYG")}
+        dates = {t: "2026-10-14" for t in flows}
+        self.assertEqual(len(report._flow_interpretation_panel(flows, dates)), 2)
+        flows["SHY"] = ("↑ +$1.0M", "↓ -$2.0M")
+        flows["TLT"] = ("↓ -$1.0M", "↑ +$2.0M")
+        panel = report._flow_interpretation_panel(flows, dates)
+        self.assertIn("TLT는 당일 유출 / 최근 5회 유입", panel[2])
+        self.assertIn("SHY는 당일 유입 / 최근 5회 유출", panel[2])
+
+    def test_html_emphasizes_dynamic_interpretation_but_not_period_detail(self):
+        text = "국채 해석(ETF 추정): 당일 짧은 만기 선호 신호 / 최근 5회 혼조\n기간 차이: TLT는 당일 유출 / 최근 5회 유입"
+        rendered = report._format_html(text)
+        self.assertIn("<b>국채 해석(ETF 추정):", rendered)
+        self.assertNotIn("<b>기간 차이:", rendered)
 
 
     def test_jpm_30y_level_does_not_claim_a_new_breakout(self):
