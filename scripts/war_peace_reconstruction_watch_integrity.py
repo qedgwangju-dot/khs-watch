@@ -65,7 +65,7 @@ def _headline_group(title):
         if us:
             return '미국·후티'
         return '사우디·후티' if re.search(r'사우디|\bsaudi\b', title) else '후티'
-    if re.search(r'우크라|러시아|\b(?:ukrain|russia)', title):
+    if re.search(r'우크라|러시아|젤렌스키|\b(?:ukrain|russia|zelenskyy?|zelenskiy)', title):
         return '우크라이나·러시아'
     if re.search(r'이란|\biran\b', title):
         if re.search(r'이스라엘|네타냐후|\b(?:israel|netanyahu)\b', title):
@@ -163,6 +163,27 @@ def _military_discussion_spans(title):
         r'(?:(?:the\s+)?resumption\s+of|resuming|restarting)\s+(?:attacks?|strikes?|airstrikes?)\b', title))
 
 
+def _refinery_restart_statement_spans(title):
+    """Scope a leader's quoted restart policy without hiding other action clauses."""
+    statements = []
+    for quote in re.finditer(r'"([^"\n]+)"|“([^”\n]+)”', title):
+        prefix = re.split(r'…|\.{3}|[;；]', title[:quote.start()])[-1]
+        if not re.search(r'젤렌스키|우크라이나', prefix):
+            continue
+        words = quote.group(1) or quote.group(2)
+        if not re.search(r'(?:러시아|러)\s*(?:정유\s*시설|정유소|정유\s*공장)', words):
+            continue
+        # A nominal quote plus a prospective cue is a policy statement. A
+        # completed/ongoing verb (재개했다/재개하고 있다) must keep its action.
+        group = 1 if quote.group(1) else 2
+        restart = re.compile(r'(?:공격|공습|타격)(?:을|를)?\s*재개(?P<future>하겠다|할\s*(?:것|계획))?\s*$').search(
+            title, quote.start(group), quote.end(group))
+        tail = title[quote.end():quote.end() + 65]
+        if restart and (restart.group('future') or re.search(r'시사|방침|예고|계획|선언', tail)):
+            statements.append(restart)
+    return statements
+
+
 def _military_analysis_headline(title):
     military = re.search(r'미사일|공습|공격|방패|방공|요격|\b(?:missile|attack|airstrike|shield|defen[cs]e)', title)
     question = re.search(r'왜|어째서|\b(?:why|how)\b', title) and re.search(r'\?|까요|는가|했나', title)
@@ -176,6 +197,7 @@ def non_military_kind(row):
     # Require an explicit new-action predicate before background weapon nouns
     # can turn a sanctions listing or a condemnation into a military event.
     discussion = _military_discussion_spans(title)
+    statements = _refinery_restart_statement_spans(title)
     actions = list(re.finditer(
         r'공습\s*(?:개시|재개|감행)|공격\s*(?:개시|재개|감행)|미사일\s*발사|'
         r'보복\s*(?:공습|공격)\s*(?:개시|실시)|'
@@ -183,8 +205,10 @@ def non_military_kind(row):
         r'\b(?:launches?|launched|conducts?|conducted|resumes?|resumed)\s+(?:new\s+)?(?:attacks?|strikes?|airstrikes?)',
         title))
     if any(not any(span.start() <= action.start() and action.end() <= span.end()
-                   for span in discussion) for action in actions):
+                   for span in discussion + statements) for action in actions):
         return None
+    if statements:
+        return 'military_statement'
     if discussion:
         return 'military_discussion'
     if _military_analysis_headline(title):
