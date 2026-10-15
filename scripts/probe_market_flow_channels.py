@@ -54,6 +54,22 @@ def main(path: Path) -> int:
             failed.extend(market + ":" + key for key in issues)
             evidence["markets"][market] = {"snapshot": snapshot, "checks": checks,
                                             "health": watch.flow_snapshot_health(snapshot)}
+        # A bounded readback exposes earlier dated rows for incident audits.
+        # These later reads are not the HTTP responses used for a live message.
+        try:
+            query = {"t8463InBlock": {"tm_rng": "D", "fot_clsf_cd": "F",
+                     "bsc_asts_id": "KQI", "cnt": 300, "bgubun": "0"}}
+            history = retained_post(token, "/futureoption/investor", "t8463", query,
+                                    max_attempts=1, request_timeout=45.0)
+            evidence["kosdaq_futures_history_readback"] = {
+                "status": "received", "request": query, "response": history,
+                "original_operating_response": False,
+            }
+        except Exception as exc:
+            evidence["kosdaq_futures_history_readback"] = {
+                "status": "request_failed", "error_type": type(exc).__name__,
+                "original_operating_response": False,
+            }
         if failed:
             # Source diagnosis only. U includes another session; its amounts
             # cannot substitute for the event's D request in either monitor.
