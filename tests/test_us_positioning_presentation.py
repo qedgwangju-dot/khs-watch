@@ -143,7 +143,7 @@ class OptionsTests(unittest.TestCase):
                     m[prefix + "_puts"] = round(ratio * 100)
                     m[prefix + "_pc_ratio"] = ratio
                 message = render(values)
-                self.assertIn("반도체 하락 우세", message)
+                self.assertIn("단기 판정: 하락 우세", message)
                 self.assertNotIn("시장 전체 상방", message)
                 self.assertNotIn("지수 하락 방어", message)
 
@@ -194,7 +194,7 @@ class RenderingTests(unittest.TestCase):
             parser = TagBalance()
             parser.feed(line)
             self.assertFalse(parser.stack, line)
-        self.assertLess(message.index("현재 가격"), message.index("원수치"))
+        self.assertLess(message.index("기간 종합"), message.index("원수치"))
 
 
 class OperatingIntegrationTests(unittest.TestCase):
