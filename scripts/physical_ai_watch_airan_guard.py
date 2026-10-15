@@ -1384,6 +1384,219 @@ def _is_sdi_oct08_preview(text: str) -> bool:
     )
 
 
+
+# 2026-10-12..15 evidence-gated robotic commercialization/research events.
+# These are added to the ACTIVE workflow, not a new workflow or state store.
+# Link origin and evidence level remain explicit, and each historic recovery
+# expires; any later official closing, approval or shipment has a new event key.
+ROBOT_OCT15_RECOVER_PREFIX = 'DIRECT_ROBOT_OCT15_'
+ROBOT_OCT15_EVENTS = {
+    'agility_s4_effective': {
+        'title': 'Agility Robotics–Churchill XI: SEC S-4 효력발생, 11월 2일 주총 대기',
+        'source': 'Agility Robotics',
+        'link': 'https://www.agilityrobotics.com/content/agility-robotics-and-churchill-capital-corp-xi-s-4-registration-statement-declared-effective-by-sec-in-connection-with-proposed-business-combination',
+        'description': (
+            '2026-10-13 Agility Robotics 공식 발표와 미국 SEC 첨부 보도자료 확인: '
+            'Churchill Capital Corp XI(CCXI)와 Agility의 합병 관련 Form S-4 효력이 발생했다. '
+            '11월 2일 주주총회 승인과 거래종결 등 조건이 남아, Nasdaq AGLT 상장은 아직 완료되지 않았다. '
+            '2026년 10월 15일 달러 매매기준율 1달러 1,341.50원 기준 예상 총조달 6억2,000만달러 초과 '
+            '(약 8,317억원 초과), CCXI 신탁현금 약 4억2,400만달러(약 5,688억원, '
+            '환매가 없을 때)와 Foxconn 주도 PIPE 약 2억달러(약 2,683억원)를 구분한다. '
+            '양자 단순 합계는 6억2,400만달러로 재인용된 최소 총조달액과 다르다. '
+            'Digit 5 조건부 약정 주문 3억달러 초과(약 4,025억원 초과)는 인식매출이 아니다. '
+            '기존 Digit 실세계 운영 6만5,000시간 이상, 확정 배치 시설 9곳, 2027년 25곳 목표, '
+            '고객후보 30곳 초과에서 약 100곳 목표, RoboFab 명목 연산 1만대와 실제 출하를 구분한다. '
+            '기업가치와 조달액은 신규 매출이 아니라 자본시장 거래이고 '
+            '기존 주주 180일 보호예수·주주 환매·주총 부결·제품 인증 지연이 위험이다.'
+        ),
+    },
+    'rainbow_fcc_filed': {
+        'title': '레인보우로보틱스 RB-Y1 미국 로봇 조건부 승인 신청 보도',
+        'source': '전자신문',
+        'link': 'https://m.etnews.com/20261012000251',
+        'description': (
+            '2026-10-12 전자신문 보도: 레인보우로보틱스가 9월 말 이동형 양팔로봇 RB-Y1의 '
+            '미국 판매 규제에 대비해 조건부 승인 신청서 제출을 완료했다고 보도했다. '
+            '제출은 승인 발급이 아니며 레인보우로보틱스 미국 확정 공급계약·첫 출하도 아니다. '
+            '티로보틱스는 신청 준비 단계로 별도 기업이고 이미 제출했다고 표기하지 않는다. '
+            '2026-07-28 FCC DA 26-786의 외국산 첨단 이동로봇 Covered List와 '
+            '2026-09-18 DA 26-996의 전쟁부(DoW) 조건부 승인 경로를 확인했다. '
+            '미국산 완제품 기준은 미국 제조 및 미국산 부품 원가비중 2028년까지 65% 초과, '
+            '2029년부터 75% 초과이며 조건부 승인이라는 별도 예외가 존재한다. '
+            '일례로 부품원가 100억원의 미국산 비중 기준은 65억원 초과에서 '
+            '75억원 초과로 10억원포인트 늘어난다(예시, 회사 원가 아님). '
+            '기존 인증모델과 신규모델, 부품 자체와 완성 이동로봇 규제를 구분한다. '
+            'DoW 실제 승인 공고·승인대상 모델·미국 OEM 계약·미국 생산설비 투자를 후속 확인한다.'
+        ),
+    },
+    'xinjian_ipo_response': {
+        'title': '신젠전동 IPO 심사답변: 익명 A사 휴머노이드 볼스크류 양산발주 공개',
+        'source': '21财经',
+        'link': 'https://data.eastmoney.com/notices/detail/A26193/AN202610121830360984.html',
+        'description': (
+            '2026-10-12 신젠전동(新剑传动)이 중국 창업판 상장심사 질의서 답변을 공개했다. '
+            '21财经·동방재부 공시 원문 재게시·동화순이 이를 보도했다. '
+            '업체는 고객 A사로부터 휴머노이드용 스크루 부품의 양산 주문을 받았다고 밝혔다. '
+            '고객 A사 실명은 공시상 비공개이므로 Tesla로 바꾸지 않는다. '
+            'Tesla Optimus V3 설계안이 거의 동결됐다거나 중하중 직선 액추에이터에 '
+            '행성 롤러스크루가 사실상 대체 불가라는 것은 신젠전동 경영진의 '
+            'IPO 문서상 산업 판단이지 Tesla의 설계확정·양산 승인 발표가 아니다. '
+            '동사의 휴머노이드 관련 스크루·액추에이터 사업 매출은 '
+            '2024년 696.88만위안(약 13억9,676만원), '
+            '2025년 3,110.59만위안(약 62억3,456만원), '
+            '2026년 상반기 1,621.05만위안(약 32억4,907만원)으로 기간이 다르다. '
+            '2026년 상반기 평균판매단가 하락, 로봇 사업 매출 비중 10% 미만, '
+            '기존 자동차 사업 수익성 악화가 역풍이다. '
+            '위안당 200.43원은 2026년 10월 15일 한국무역협회 공시 매매기준율로 단순 환산했다. '
+            '고객 실명 검증·물량·스크루 규격·수율·첫 출하·실제 인식매출을 확인한다.'
+        ),
+    },
+    'unichem_loomia_signed': {
+        'title': '유니켐–Loomia 지분 100% 인수 본계약 보도, 2027년 1월 종결 조건',
+        'source': '더벨',
+        'link': 'https://www.thebell.co.kr/front/newsview.asp?code=0203&key=202610121331150840102821',
+        'description': (
+            '2026-10-12 유니켐은 미국 유연전자 회사 Loomia Technologies의 지분 100% '
+            '인수 본계약 체결을 발표했다는 더벨 및 뉴스핌 보도. '
+            '최대 인수가액 630만달러(2026-10-15 1달러=1,341.50원 적용 약 84억5,145만원). '
+            '잔여 주주 서명·한국은행 외국환거래 신고수리 등 선행조건이 남아 거래는 종결되지 않았다. '
+            '목표 종결일은 2027-01-04. '
+            'Loomia의 유연 압력감지·접촉·발열 전자피부를 로봇 손·그리퍼와 '
+            '자동차 내장재에 적용하려는 준비 단계다. HAND ERC 참여는 메타·아마존에 대한 '
+            '확정 판매계약이 아니다. 2028년까지 로봇 1,000대·자동차 3,000대 양산 수주는 '
+            '회사 목표이며 현재 확보한 주문이 아니다. 목표 연계 성과보상용 '
+            '최대 100만달러(약 13억4,150만원) 전환사채 조건은 인수가액과 구분한다. '
+            '거래종결·사업부 연결 시점·고객 소재검증·수율·로봇 OEM 유상 수주와 '
+            '기존 자동차 사업 반복매출을 분리해 관찰한다.'
+        ),
+    },
+    'atlas_protoops_goal': {
+        'title': 'Boston Dynamics Atlas 시제품 제작 하루→1시간 목표 발표',
+        'source': 'Humanoids Daily',
+        'link': 'https://youtu.be/dP_i7hRvGpE',
+        'description': (
+            'Boston Dynamics의 Atlas 정밀가공·설계·조립·시험을 다룬 회사 영상과 '
+            '2026-10-14 Humanoids Daily 보도: 시제품 운영팀 관계자는 '
+            '현행 Atlas 시제품 1대 제작에 약 하루가 걸리며 '
+            '2027년 약 1시간으로 줄이는 것이 목표라고 설명했다. '
+            '일반적인 하루를 24시간 가동시간으로 보고 24배 양산이라고 계산하지 않는다. '
+            '연간 완제품 생산대수·직행수율·검사 시간·상용 납품 속도는 미공개다. '
+            '현대차 HMGMA RMAC는 별도 실제 현장 훈련·검증 시설이며 '
+            '이번 ProtoOps 공정영상이 대량양산 수율이나 유상 출하 증거는 아니다. '
+            '병목은 핵심 가공품 반복정밀도·관절 조립·최종 검사·고장수리·발열·인증이다. '
+            '2027년 실제 조립 소요시간·고온 작동검사·수율·고객 공장 배치에서 '
+            '목표 달성을 다시 확인해야 한다.'
+        ),
+    },
+    'alert223_quality_correction': {
+        'title': '정정: Telegram 223 신규 ESS 고신호 4건 중 목표가·기대 기사 오탐 제거',
+        'source': '기존 GitHub Actions 실행기록',
+        'link': 'https://github.com/qedgwangju-dot/khs-watch/actions/runs/38662197011',
+        'description': (
+            '2026-10-15 Run #595에서 전송된 Telegram message_id=223은 '
+            '뉴스핌 삼성SDI 목표가 90만원 브리핑, 파이낸셜뉴스 LG에너지솔루션 '
+            '목표가 51만원 기대 기사와 삼성SDI의 일본 ESS 사업 일반 분석·재보도까지 '
+            '별도 고신호 4건으로 선정했다. 이 4건은 원문만으로 신규 발주·'
+            '확정 공급계약·실제 생산량·공식 실적의 신규 증거로 인정할 수 없어 '
+            '고신호 판정을 철회한다. 이 정정은 신규 수주 알림이 아니다. '
+            '목표가·애널리스트 전망·테마 반복 제거와 '
+            '실제 계약·실제 출하를 구분하는 선별 및 회귀검사를 추가했다.'
+        ),
+    },
+}
+ROBOT_OCT15_PREFIX = 'DIRECT_OCT15_ROBOT_UPDATES_'
+ROBOT_OCT15_GROUPS = {
+    'agility_s4_effective': 'agility_spac_2026',
+    'rainbow_fcc_filed': 'rainbow_fcc_compliance',
+    'xinjian_ipo_response': 'xinjian_prs_ipo',
+    'unichem_loomia_signed': 'unichem_loomia_acquisition',
+    'atlas_protoops_goal': 'atlas_protoops_build',
+    'alert223_quality_correction': 'alert_quality_223',
+}
+ROBOT_OCT15_TITLES = {
+    'agility_spac_2026': 'Agility Robotics · S-4 효력 발생·주총 승인 대기',
+    'rainbow_fcc_compliance': '레인보우로보틱스 · RB-Y1 미국 조건부승인 신청 보도',
+    'xinjian_prs_ipo': '신젠전동 · 익명 A사 양산 발주·IPO 질의서 답변',
+    'unichem_loomia_acquisition': '유니켐–Loomia · 지분 100% 인수 본계약·선행조건',
+    'atlas_protoops_build': 'Boston Dynamics · Atlas 제작시간 단축 목표',
+    'alert_quality_223': '알림 품질 정정 · Telegram 223 ESS 오탐 4건',
+}
+ROBOT_OCT15_GROUP_REGEX = (
+    ('agility_spac_2026', re.compile(r'Agility\s*Robotics|애질리티\s*로보틱스',re.I),
+     re.compile(r'Churchill(?:\s*Capital)?(?:\s*Corp)?\s*XI|\bCCXI\b|\bAGLT\b|Form\s*S-4|주총\s*합병',re.I)),
+    ('rainbow_fcc_compliance', re.compile(r'레인보우로보틱스|Rainbow\s*Robotics|RB[-\s]?Y1',re.I),
+     re.compile(r'FCC|Covered\s*List|조건부\s*승인|미국.{0,24}규제',re.I)),
+    ('xinjian_prs_ipo', re.compile(r'新剑传动|신젠전동|Xinjian\s*(?:Drive|Transmission)',re.I),
+     re.compile(r'IPO|上市|问询|질의서|롤러\s*스크루|丝杠|Optimus|테슬라|Tesla',re.I)),
+    ('unichem_loomia_acquisition', re.compile(r'유니켐|Unichem',re.I),
+     re.compile(r'Loomia|루미아',re.I)),
+    ('atlas_protoops_build', re.compile(r'Boston\s*Dynamics|보스턴다이내믹스',re.I),
+     re.compile(r'Atlas|아틀라스',re.I)),
+)
+ROBOT_OCT15_PRIMARY = {
+    'agility_spac_2026': {'Agility Robotics', 'SEC', 'Churchill Capital Corp XI'},
+    'rainbow_fcc_compliance': {'레인보우로보틱스', 'DoW', 'FCC'},
+    'xinjian_prs_ipo': {'新剑传动', '深圳证券交易所', 'SZSE'},
+    'unichem_loomia_acquisition': {'유니켐', 'Loomia Technologies', 'DART'},
+    'atlas_protoops_build': {'Boston Dynamics'},
+}
+
+
+def _oct15_group(text: str) -> str:
+    if '정정: Telegram 223' in text:
+        return 'alert_quality_223'
+    for group, actor, subject in ROBOT_OCT15_GROUP_REGEX:
+        if actor.search(text) and subject.search(text):
+            return group
+    return ''
+
+
+def _oct15_stage(group: str, text: str, source: str = '') -> str:
+    official = source in ROBOT_OCT15_PRIMARY.get(group, set())
+    if group == 'alert_quality_223':
+        return 'correction'
+    if group == 'agility_spac_2026':
+        if official and re.search(r'합병\s*(?:종결|완료)|business\s*combination\s*(?:closed|completed)|\bAGLT\b.{0,45}(?:trading\s*started|거래\s*개시)', text,re.I):
+            return 'official_closed'
+        if official and re.search(r'주주(?:총회)?\s*승인\s*통과|shareholders?\s*(?:approved|voted\s+to\s+approve)', text,re.I):
+            return 'shareholders_approved'
+        if official and re.search(r'(?:S[-\s]?4).{0,65}(?:효력|effective)|declared\s*effective.{0,90}(?:S[-\s]?4|registration)|SEC.{0,45}효력',text,re.I):
+            return 's4_effective'
+    if group == 'rainbow_fcc_compliance':
+        if official and re.search(r'DoW.{0,85}(?:conditional\s*approval|조건부\s*승인)|조건부\s*승인.{0,40}(?:획득|발급|승인)',text,re.I):
+            return 'official_approval_granted'
+        if source in {'전자신문','ETNews'} and re.search(r'(?:신청서|서류).{0,30}(?:제출|접수)|(?:조건부\s*승인).{0,35}신청',text,re.I):
+            return 'application_reported'
+    if group == 'xinjian_prs_ipo':
+        if official and re.search(r'实际.{0,10}(?:出货|交付)|첫\s*출하|양산\s*출하\s*개시',text,re.I):
+            return 'official_shipment'
+        if source in {'21财经','21世纪经济报道','동방재부'} and re.search(r'10.{0,3}12|2026-10-12|问询|질의서|IPO',text,re.I) and re.search(r'A사|A公司|A\s*company|양산\s*발주|量产\s*订单|mass\s*production\s*order',text,re.I):
+            return 'ipo_order_reported'
+    if group == 'unichem_loomia_acquisition':
+        if official and re.search(r'인수\s*종결\s*완료|거래\s*종결\s*완료|acquisition\s*closed|closing\s*completed',text,re.I):
+            return 'official_closing'
+        if source in {'더벨','뉴스핌','이데일리'} and re.search(r'본계약\s*체결|binding\s*agreement\s*signed|definitive\s*agreement',text,re.I):
+            return 'signed_conditional_report'
+    if group == 'atlas_protoops_build':
+        if official and re.search(r'실제.{0,28}1\s*시간.{0,35}(?:달성|검증)|one[-\s]*hour.{0,35}(?:achieved|verified|measured)',text,re.I):
+            return 'official_one_hour_achieved'
+        if source in {'Humanoids Daily','Boston Dynamics'} and re.search(r'약\s*하루|one\s*day|a\s*day',text,re.I) and re.search(r'1\s*시간|one\s*hour|an\s*hour',text,re.I) and re.search(r'목표|aim|target|goal|2027|next\s*year',text,re.I):
+            return 'build_time_goal'
+    return 'background'
+
+
+def _oct15_recovery(group_key: str) -> list[dict]:
+    if base.NOW.astimezone(base.KST).date() > dt.date(2026,10,20):
+        return []
+    if group_key not in ROBOT_OCT15_EVENTS:
+        return []
+    ev = ROBOT_OCT15_EVENTS[group_key]
+    return [{
+        'title':ev['title'],'description':ev['description'],
+        'link':ev['link'],'source':ev['source'],'published':None,
+        'direct_recovery':True,'oct15_high_signal_key':group_key,
+    }]
+
 _orig_query_news = base.query_news
 
 
@@ -1414,6 +1627,8 @@ def query_news(q: str) -> list[dict]:
         return _stock_218_correction_recovery()
     if q == FLUENCE_VATTENFALL_RECOVERY:
         return _fluence_vattenfall_recovery()
+    if q.startswith(ROBOT_OCT15_PREFIX):
+        return _oct15_recovery(q[len(ROBOT_OCT15_PREFIX):])
     return _orig_query_news(q)
 
 
@@ -1535,6 +1750,26 @@ for q in (
 ):
     if q not in base.QUERIES:
         base.QUERIES.append(q)
+
+for _key in ROBOT_OCT15_EVENTS:
+    _sentinel = ROBOT_OCT15_PREFIX + _key
+    if _sentinel not in base.QUERIES:
+        base.QUERIES.append(_sentinel)
+for _q in (
+    '(Agility Robotics OR Churchill XI OR CCXI) (S-4 OR AGLT OR 합병) '
+    '(SEC effective OR shareholder vote OR 거래 종결 OR 상장 시작)',
+    '(RB-Y1 OR 레인보우로보틱스) (FCC OR 미국 규제 OR 조건부 승인) '
+    '(신청 OR 승인 OR 장비 인증 OR 첫 출하 OR 수주)',
+    '(新剑传动 OR 신젠전동 OR Xinjian) (Optimus OR Tesla OR 特斯拉) '
+    '(IPO OR 上市审核 OR 丝杠 OR 롤러스크루 OR 量产订单)',
+    '(유니켐 OR Unichem) (Loomia OR 루미아) '
+    '(본계약 OR 거래 종결 OR 고객승인 OR 전자피부 OR 양산 수주)',
+    '(Boston Dynamics OR 보스턴다이내믹스) (Atlas OR 아틀라스) '
+    '(ProtoOps OR assembly time OR 제작시간 OR 시간 단축 OR 1시간) '
+    '(actual OR 달성 OR 목표 OR 조립 OR 수율)',
+):
+    if _q not in base.QUERIES:
+        base.QUERIES.append(_q)
 
 _orig_topic_group = base.topic_group
 _orig_score = base.score
