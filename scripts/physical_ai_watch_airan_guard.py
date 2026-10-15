@@ -623,6 +623,55 @@ EDITORIAL_MATERIAL_EVENT = re.compile(
 )
 
 
+
+# Editorial source quality != a commercial event. The same ESS sector theme
+# must not be elevated by a target price, bullish headline, or rewritten
+# "Japan ESS market" positioning piece. This pre-score filter is shared by
+# all topic groups; a genuine dated, explicit binding award is exempt.
+OCT15_PRICE_TARGET_HEADLINE = re.compile(
+    r'목표\s*(?:주가|가|가격)|적정\s*주가|price\s*target|'
+    r'target\s*price|리포트\s*브리핑|투자\s*의견\s*상향',
+    re.I,
+)
+OCT15_JAPAN_ESS_MARKET = re.compile(
+    r'일본|日\s*ESS|日\s*배터리|Japanese?\s*(?:ESS|BESS|battery)',
+    re.I,
+)
+OCT15_EDITORIAL_NARRATIVE = re.compile(
+    r'대공세|선봉|투트랙|공략|판도\s*변화|수혜\s*기대|'
+    r'기대감|주도권\s*(?:쟁탈|탈환)|경쟁력\s*부각',
+    re.I,
+)
+OCT15_REAL_EVENT_HEADLINE = re.compile(
+    r'(?:신규|정식|구속력\s*있는).{0,45}'
+    r'(?:공급\s*계약|구매\s*계약|발주|수주|설비\s*투자\s*결정)|'
+    r'(?:공급|구매)\s*계약.{0,15}(?:체결|서명|확정)|'
+    r'(?:초도|첫|실제)\s*(?:출하|납품|양산|가동)\s*(?:개시|완료|시작)|'
+    r'공식\s*실적\s*발표|잠정\s*실적\s*공시',
+    re.I,
+)
+
+
+def _is_oct15_market_noise(item: dict) -> bool:
+    if item.get('direct_recovery') or item.get('oct15_high_signal_key'):
+        return False
+    headline = item.get('title') or ''
+    source = item.get('source') or ''
+    if source in base.OFFICIAL_OR_PRIMARY:
+        return False
+    # Only a genuine explicit new commercial event can override editorial
+    # price commentary, never the vague "expects big orders" in its body.
+    if OCT15_REAL_EVENT_HEADLINE.search(headline):
+        return False
+    if OCT15_PRICE_TARGET_HEADLINE.search(headline):
+        return True
+    if (OCT15_JAPAN_ESS_MARKET.search(headline)
+            and OCT15_EDITORIAL_NARRATIVE.search(headline)
+            and re.search(r'ESS|BESS|에너지\s*저장|배터리|battery', headline, re.I)):
+        return True
+    return False
+
+
 def _is_stock_reaction_only(item: dict) -> bool:
     if item.get('correction_for_false_stock_alerts') and item.get('source') == 'VNET':
         return False  # Explicit one-time correction from issuer, not a market story.
@@ -2076,7 +2125,8 @@ def score(item: dict) -> int:
         ) else 0
     if (_is_stock_reaction_only(item)
             or _is_ess_expectation_only(item)
-            or _is_generic_ess_demand_story(item)):
+            or _is_generic_ess_demand_story(item)
+            or _is_oct15_market_noise(item)):
         return 0
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
     group = topic_group(text)
