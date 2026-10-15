@@ -2783,6 +2783,8 @@ def render(change, rate=None):
         if r['value'].get('weight_rounded_from_public_text'):
             lines.append('• 중량은 공개 보도 반올림값이면 중량당 단가를 정밀 계산하지 않습니다. 관세청 직접 원값 확인 시 갱신합니다.')
     label = {'official': '회사 공식자료', 'research': '조사기관 자료', 'reported': '보도 단계', 'user_capture': '사용자 캡처 기준선'}[r['evidence']]
+    if r.get('axis') == 'malaysia_hsk10_export' and r['evidence'] == 'official':
+        label = '한국 관세청 공식 무역통계'
     if r.get('axis') == 'hbf_ocp_spec' and r['evidence'] == 'official':
         label = 'OCP 공식 표준 규격'
     source_title = r.get('source_title','')
@@ -2956,7 +2958,8 @@ def main():
     if not paired:
         coverage.append('RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류')
     candidate = legacy.load_state()
-    if candidate.get('malaysia_public_available') and candidate.get('malaysia_hsk10_amount_usd') is not None:
+    if (candidate.get('official_observed_this_run') and candidate.get('malaysia_public_available')
+            and candidate.get('malaysia_hsk10_amount_usd') is not None):
         month = str(candidate.get('official_month') or '')
         period = month[:4] + '-' + month[4:6] if len(month) == 6 else month
         item = {

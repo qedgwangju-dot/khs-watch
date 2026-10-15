@@ -24,6 +24,9 @@ class _Resp:
 class HBMExportSourceGuardTests(unittest.TestCase):
     def setUp(self):
         self.now = datetime(2026, 10, 7, 19, 0, tzinfo=ZoneInfo("Asia/Seoul"))
+        key = patch.object(w, "DATA_GO_KEY", "offline-fixture-key")
+        key.start()
+        self.addCleanup(key.stop)
 
 
     def _monthly_pack(self):
@@ -80,12 +83,12 @@ class HBMExportSourceGuardTests(unittest.TestCase):
         out = w.build_monthly(self.now, 1338.0, "테스트 환율", self._monthly_pack())
         first = out.split(d.MESSAGE_BREAK)[0]
         self.assertIn("삼성전자 vs SK하이닉스 HBM 수출 방향", first)
-        self.assertIn("삼성전자 방향(충남)", first)
-        self.assertIn("SK하이닉스 방향(충북·청주)", first)
+        self.assertIn("삼성전자 관련 지역(충남)", first)
+        self.assertIn("SK하이닉스 관련 지역(충북)", first)
         self.assertIn("▲ 강한 증가", first)
         self.assertIn("▼ 단기 둔화", first)
-        self.assertLess(first.index("삼성전자 방향(충남)"), first.index("[삼성전자 방향 — 충남]"))
-        self.assertLess(first.index("SK하이닉스 방향(충북·청주)"), first.index("[SK하이닉스 방향 — 충북·청주]"))
+        self.assertLess(first.index("삼성전자 관련 지역(충남)"), first.index("[삼성전자 방향 — 충남]"))
+        self.assertLess(first.index("SK하이닉스 관련 지역(충북)"), first.index("[SK하이닉스 관련 지역 — 충북]"))
 
     def test_monthly_alert_never_claims_company_direct_exports(self):
         out = w.build_monthly(self.now, 1338.0, "테스트 환율", self._monthly_pack())
@@ -192,7 +195,8 @@ class HBMExportSourceGuardTests(unittest.TestCase):
         xml = """<response><header><resultCode>00</resultCode><resultMsg>OK</resultMsg></header>
         <body><items><item><priodTitle>2026.09</priodTitle><hsSgn>8542323000</hsSgn>
         <expUsdAmt>2234567</expUsdAmt></item></items></body></response>"""
-        with patch.object(w, "_request_with_retry", return_value=_Resp(xml)):
+        with patch.object(w, "_request_with_retry", return_value=_Resp(xml)), \
+             patch.object(w, "_resolve_sido_unit", return_value=({"unit": "thousand_usd", "status": "test_explicit_unit_contract"}, "")):
             row, err = w.fetch_data_go_sido_month("202609", "44")
         self.assertEqual(err, "")
         self.assertEqual(row["hs"], "8542323000")

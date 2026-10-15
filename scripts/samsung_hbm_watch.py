@@ -10,10 +10,15 @@ import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 import requests
+import math
+import subprocess
+import base64
 import time
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from zoneinfo import ZoneInfo
+from hbm_trade_integrity import TradeEvidence, choose_exact_row
+from hbm_trade_unit_reference import fetch_reference, reconcile_unit
 
 try:
     from googlenewsdecoder import gnewsdecoder
@@ -36,7 +41,7 @@ OFFICIAL_PUBLISHED_POLL_HOURS = 24
 OFFICIAL_ERROR_RENOTIFY_HOURS = 6
 OFFICIAL_PUBLICATION_EXPECTED_DAY = 15
 OFFICIAL_SOURCE_HEALTH_VERSION = 3
-EXPORT_ALERT_FORMAT_VERSION = 2
+EXPORT_ALERT_FORMAT_VERSION = 3
 COMPARE_VERSION = 5
 EVENT_STATE_VERSION = 2
 SHARE_TRACK_VERSION = 1
@@ -65,6 +70,54 @@ REGIONS = {
     "hynix_chungbuk": {"name": "충북", "kind": "sido", "sido": "43", "sgg": ""},
     "hynix_icheon": {"name": "이천", "kind": "sgg", "sido": "41", "sgg": "41500"},
 }
+
+# Resolve the regional API unit from fresh same-month source evidence every
+# official poll. No historic scaling assumption is a verified unit contract.
+_TRADE_EVIDENCE = None
+_SIDO_UNIT_RESULT = None
+
+
+def _start_trade_evidence():
+    global _TRADE_EVIDENCE, _SIDO_UNIT_RESULT
+    _SIDO_UNIT_RESULT = None
+    try:
+        code_sha = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True, timeout=5).strip()
+    except Exception:
+        code_sha = "unverified"
+    _TRADE_EVIDENCE = TradeEvidence(OUT / "hbm_export_source_evidence.json", code_sha=code_sha,
+                                  credential_env_names=("KCS_DATA_GO_SERVICE_KEY", "TELEGRAM_BOT_TOKEN", "GITHUB_TOKEN", "TELEGRAM_CHAT_ID"))
+    _TRADE_EVIDENCE.write()
+
+
+def _select_trade_response(response, rows, month, *, hs=HBM_HSK10, region=None, country=None,
+                           value_fields=("expDlr",), unit="usd", unit_proof=None, weight_fields=("expWgt", "expTtwg")):
+    selected, error = choose_exact_row(rows, month, hs, region=region, country=country,
+                                      value_fields=value_fields, unit=unit, unit_proof=unit_proof,
+                                      weight_fields=weight_fields)
+    attempt = getattr(response, "_hbm_trade_attempt_id", None)
+    if selected is not None:
+        selected["evidence_attempt_id"] = attempt
+    if _TRADE_EVIDENCE is not None and attempt:
+        _TRADE_EVIDENCE.mark_selection(attempt, selected, error)
+    if selected is not None and selected["amount_usd"] is None:
+        return None, "응답 단위 검증 오류: 공식 단위 표기와 기존 변환계수 충돌"
+    if error:
+        label = "데이터 없음" if error.startswith("missing:") else "응답 검증 오류"
+        return None, label + ": " + error
+    return selected, ""
+
+
+def _xml_rows(root):
+    rows = []
+    for item in _xml_items(root):
+        row = {}
+        for child in item:
+            name = str(child.tag).split("}")[-1]
+            if name in row or len(child):
+                raise ValueError("duplicate or nested trade XML field")
+            row[name] = child.text
+        rows.append(row)
+    return rows
 
 SAMSUNG_HBM4_OFFICIAL = "https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing"
 SAMSUNG_HBM4E_OFFICIAL = "https://news.samsung.com/global/samsung-electronics-begins-shipment-of-industry-first-hbm4e-samples"
@@ -463,7 +516,8 @@ def _number(value) -> float | None:
     if not s or s in ("-", "null", "None"):
         return None
     try:
-        return float(s)
+        result = float(s)
+        return result if math.isfinite(result) else None
     except Exception:
         return None
 
@@ -476,13 +530,6 @@ def _walk_dicts(obj):
     elif isinstance(obj, list):
         for v in obj:
             yield from _walk_dicts(v)
-
-
-def _normalize_export_usd(value: float | None) -> float | None:
-    if value is None:
-        return None
-    return value * 1000.0 if 0 <= value < 100_000_000 else value
-
 
 
 def _safe_error(prefix: str, exc: Exception) -> str:
@@ -502,6 +549,9 @@ def _is_transient_source_error(message: str) -> bool:
             "connection",
             "parse",
             "json",
+            "검증",
+            "불일치",
+            "단위",
         )
     )
 
@@ -516,6 +566,8 @@ def _request_with_retry(method: str, url: str, *, params=None, data=None, header
     last_exc = None
     client = session or requests
     for attempt in range(1, attempts + 1):
+        started = datetime.now(timezone.utc).isoformat()
+        recorded = False
         try:
             response = client.request(
                 method,
@@ -525,6 +577,13 @@ def _request_with_retry(method: str, url: str, *, params=None, data=None, header
                 headers=headers,
                 timeout=(5, 15),
             )
+            if _TRADE_EVIDENCE is not None:
+                response._hbm_trade_attempt_id = _TRADE_EVIDENCE.record_attempt(
+                    method, url, params=params, data=data, status=response.status_code,
+                    raw_bytes=response.content, started_at=started,
+                    completed_at=datetime.now(timezone.utc).isoformat(),
+                    response_headers={"Content-Type": getattr(response, "headers", {}).get("Content-Type", "")})
+                recorded = True
             if response.status_code in (429, 500, 502, 503, 504):
                 if attempt < attempts:
                     time.sleep(1.5 * attempt)
@@ -533,6 +592,9 @@ def _request_with_retry(method: str, url: str, *, params=None, data=None, header
             return response
         except (requests.Timeout, requests.ConnectionError, requests.HTTPError) as exc:
             last_exc = exc
+            if _TRADE_EVIDENCE is not None and not recorded:
+                _TRADE_EVIDENCE.record_attempt(method, url, params=params, data=data,
+                    error_type=type(exc).__name__, started_at=started, completed_at=datetime.now(timezone.utc).isoformat())
             if attempt < attempts:
                 time.sleep(1.5 * attempt)
         except Exception:
@@ -568,36 +630,26 @@ def fetch_data_go_item_month(month: str) -> tuple[dict | None, str]:
     }
     try:
         r = _request_with_retry("GET", DATA_GO_ITEM_URL, params=params)
+        r.raise_for_status()
         root = ET.fromstring(r.content)
+        rows = _xml_rows(root)
     except Exception as exc:
         return None, _safe_error("공공데이터포털 전국 API 실패", exc)
-    code = root.findtext(".//resultCode")
-    msg = root.findtext(".//resultMsg") or ""
+    code = _xml_text(root, "resultCode")
+    msg = _xml_text(root, "resultMsg") or ""
     if code != "00":
-        return None, f"공공데이터포털 전국 API 오류 {code}: {msg}"
+        return None, "공공데이터포털 전국 API 오류: resultCode가 정상 00이 아님"
 
-    for item in root.findall(".//item"):
-        year = re.sub(r"[^0-9]", "", _xml_text(item, "year") or "")
-        hs = str(_xml_text(item, "hsCode", "hsCd") or "").replace(".", "")
-        if year.startswith(month) and hs == HBM_HSK10:
-            amt = _number(_xml_text(item, "expDlr"))
-            wgt = _number(_xml_text(item, "expWgt"))
-            if amt is None:
-                continue
-            return {
-                "month": month,
-                "amount_usd": amt,
-                "weight_kg": wgt,
-                "hs": HBM_HSK10,
-                "source": "공공데이터포털 관세청 품목별 수출입실적 API",
-                "api": True,
-            }, ""
-    return None, f"공공데이터포털 전국 API {month} HSK {HBM_HSK10} 데이터 없음"
+    selected, err = _select_trade_response(r, rows, month,
+        unit_proof={"source": DATA_GO_ITEM_URL, "field": "expDlr", "unit": "USD"})
+    if selected:
+        selected.update(source="공공데이터포털 관세청 품목별 수출입실적 API", api=True)
+    return selected, f"공공데이터포털 전국 API {month} {err}" if err else ""
 
 
-def fetch_data_go_sido_month(month: str, sido_cd: str) -> tuple[dict | None, str]:
+def _fetch_data_go_sido_raw(month: str, sido_cd: str):
     if not DATA_GO_KEY:
-        return None, "공공데이터포털 API 키 미설정"
+        return None, [], "공공데이터포털 API 키 미설정"
     params = {
         "serviceKey": DATA_GO_KEY,
         "strtYymm": month,
@@ -607,38 +659,71 @@ def fetch_data_go_sido_month(month: str, sido_cd: str) -> tuple[dict | None, str
     }
     try:
         r = _request_with_retry("GET", DATA_GO_SIDO_ITEM_URL, params=params)
+        r.raise_for_status()
         root = ET.fromstring(r.content)
+        rows = _xml_rows(root)
     except Exception as exc:
-        return None, _safe_error("공공데이터포털 시도 API 실패", exc)
-    code = root.findtext(".//resultCode")
-    msg = root.findtext(".//resultMsg") or ""
+        return None, [], _safe_error("공공데이터포털 시도 API 실패", exc)
+    code = _xml_text(root, "resultCode")
+    msg = _xml_text(root, "resultMsg") or ""
     if code != "00":
-        return None, f"공공데이터포털 시도 API 오류 {code}: {msg}"
+        return None, [], "공공데이터포털 시도 API 오류: resultCode가 정상 00이 아님"
+    return r, rows, ""
 
-    for item in root.findall(".//item"):
-        hs = str(_xml_text(item, "hsSgn", "hsCd", "hsCode") or "").replace(".", "")
-        period = re.sub(r"[^0-9]", "", _xml_text(item, "priodTitle", "year") or "")
-        if hs and hs != HBM_HSK10:
-            continue
-        if period and not period.startswith(month):
-            continue
-        raw_thousand_usd = _number(_xml_text(item, "expUsdAmt", "expDlr"))
-        if raw_thousand_usd is None:
-            continue
-        # The regional API field expUsdAmt is expressed in thousand USD
-        # even though the portal label is easy to read as plain dollars.
-        amt = raw_thousand_usd * 1000.0
-        return {
-            "month": month,
-            "amount_usd": amt,
-            "weight_kg": None,
-            "hs": HBM_HSK10,
-            "source": "공공데이터포털 관세청 시도별 품목별 수출입실적 API",
-            "api": True,
-            "scope": "regional_hsk10_exact",
-            "raw_amount_unit": "thousand_usd",
-        }, ""
-    return None, f"공공데이터포털 시도 API {sido_cd} {month} HSK {HBM_HSK10} 데이터 없음"
+
+def _resolve_sido_unit():
+    """Reconcile the two provinces against the same publicly selectable month."""
+    global _SIDO_UNIT_RESULT
+    if _SIDO_UNIT_RESULT is not None:
+        return _SIDO_UNIT_RESULT
+    reference_ids = []
+
+    def request_reference(*args, **kwargs):
+        response = _request_with_retry(*args, **kwargs)
+        reference_ids.append(getattr(response, "_hbm_trade_attempt_id", None))
+        return response
+
+    reference, error = fetch_reference(request_reference)
+    api_rows, api_ids = {}, {}
+    if reference:
+        for code in ("44", "43"):
+            response, rows, error = _fetch_data_go_sido_raw(reference["month"], code)
+            if error:
+                break
+            row, error = choose_exact_row(rows, reference["month"], HBM_HSK10,
+                region=code, value_fields=("expUsdAmt",), unit="unverified", weight_fields=())
+            attempt_id = getattr(response, "_hbm_trade_attempt_id", None)
+            if _TRADE_EVIDENCE is not None and attempt_id:
+                _TRADE_EVIDENCE.mark_selection(attempt_id, row, error)
+            if error or row is None:
+                break
+            api_rows[code], api_ids[code] = row, attempt_id
+        if not error:
+            proof, error = reconcile_unit(api_rows, reference)
+            if proof:
+                proof.update(reference_attempt_ids=reference_ids, api_attempt_ids=api_ids)
+                _SIDO_UNIT_RESULT = (proof, "")
+                return _SIDO_UNIT_RESULT
+    _SIDO_UNIT_RESULT = (None, "지역 금액 단위 검증 보류: " + (error or "같은 월 원자료 대조 불가"))
+    return _SIDO_UNIT_RESULT
+
+
+def fetch_data_go_sido_month(month: str, sido_cd: str) -> tuple[dict | None, str]:
+    if not DATA_GO_KEY:
+        return None, "공공데이터포털 API 키 미설정"
+    proof, error = _resolve_sido_unit()
+    if proof is None:
+        return None, error
+    r, rows, error = _fetch_data_go_sido_raw(month, sido_cd)
+    if error:
+        return None, error
+
+    selected, err = _select_trade_response(r, rows, month, region=sido_cd,
+        value_fields=("expUsdAmt",), unit=proof["unit"], unit_proof=proof, weight_fields=())
+    if selected:
+        selected.update(source="공공데이터포털 관세청 시도별 품목별 수출입실적 API", api=True,
+                        scope="regional_hsk10_exact")
+    return selected, f"공공데이터포털 시도 API {sido_cd} {month} {err}" if err else ""
 
 
 def fetch_data_go_country_item_month(month: str, cnty_cd: str = MALAYSIA_COUNTRY_CODE) -> tuple[dict | None, str]:
@@ -654,7 +739,9 @@ def fetch_data_go_country_item_month(month: str, cnty_cd: str = MALAYSIA_COUNTRY
     }
     try:
         r = _request_with_retry("GET", DATA_GO_COUNTRY_ITEM_URL, params=params)
+        r.raise_for_status()
         root = ET.fromstring(r.content)
+        rows = _xml_rows(root)
     except Exception as exc:
         return None, _safe_error(f"공공데이터포털 국가별 품목 API {cnty_cd} 실패", exc)
     code = _xml_text(root, "resultCode")
@@ -664,36 +751,15 @@ def fetch_data_go_country_item_month(month: str, cnty_cd: str = MALAYSIA_COUNTRY
     # normal resultCode while still returning valid item rows. Prefer actual
     # rows over a missing header, but never accept a non-00 explicit error.
     if code not in (None, "", "00"):
-        return None, f"공공데이터포털 국가별 품목 API {cnty_cd} 오류 {code}: {msg}"
+        return None, f"공공데이터포털 국가별 품목 API {cnty_cd} 오류: resultCode가 정상 00이 아님"
     if not items and code != "00":
-        preview = clean(r.text)[:180] if getattr(r, "text", "") else "empty"
-        return None, f"공공데이터포털 국가별 품목 API {cnty_cd} 응답형식 확인 필요: {preview}"
+        return None, f"공공데이터포털 국가별 품목 API {cnty_cd} 응답형식 확인 필요: 정상 결과 코드·item 부재"
 
-    for item in items:
-        period = re.sub(r"[^0-9]", "", _xml_text(item, "year") or "")
-        hs = str(_xml_text(item, "hsCd", "hsCode") or "").replace(".", "")
-        country = str(_xml_text(item, "statCd") or "").strip().upper()
-        if period and not period.startswith(month):
-            continue
-        if hs and hs != HBM_HSK10:
-            continue
-        if country and country != cnty_cd.upper():
-            continue
-        amt = _number(_xml_text(item, "expDlr"))
-        wgt = _number(_xml_text(item, "expWgt"))
-        if amt is None:
-            continue
-        return {
-            "month": month,
-            "country_code": cnty_cd.upper(),
-            "country_name": _xml_text(item, "statCdCntnKor1") or "말레이시아",
-            "amount_usd": amt,
-            "weight_kg": wgt,
-            "hs": HBM_HSK10,
-            "source": "공공데이터포털 관세청 품목별 국가별 수출입실적 API",
-            "api": True,
-        }, ""
-    return None, f"공공데이터포털 국가별 품목 API {cnty_cd} {month} HSK {HBM_HSK10} 데이터 없음"
+    selected, err = _select_trade_response(r, rows, month, country=cnty_cd,
+        unit_proof={"source": "https://www.data.go.kr/data/15100475/openapi.do", "field": "expDlr", "unit": "USD"})
+    if selected:
+        selected.update(source="공공데이터포털 관세청 품목별 국가별 수출입실적 API", api=True)
+    return selected, f"공공데이터포털 국가별 품목 API {cnty_cd} {month} {err}" if err else ""
 
 
 def fetch_kcs_item_month(month: str, session) -> tuple[dict | None, str]:
@@ -728,30 +794,13 @@ def fetch_kcs_item_month(month: str, session) -> tuple[dict | None, str]:
     except Exception as exc:
         return None, _safe_error(f"전국 {month} KCS 조회 실패", exc)
 
-    items = data.get("items") or []
-    target = None
-    for row in items:
-        if str(row.get("priodTitle") or "") == "총계":
-            continue
-        hs = str(row.get("hsSgn") or "").replace(".", "")
-        period = re.sub(r"[^0-9]", "", str(row.get("priodTitle") or ""))
-        if hs == HBM_HSK10 and month in period:
-            target = row
-            break
-    if target is None:
-        return None, f"전국 {month} HSK {HBM_HSK10} 미검출: count={data.get('count')} items={len(items)}"
-
-    amt = _normalize_export_usd(_number(target.get("expUsdAmt")))
-    weight = _number(target.get("expTtwg"))
-    if amt is None:
-        return None, f"전국 {month} 수출금액 숫자 변환 실패"
-    return {
-        "month": month,
-        "amount_usd": amt,
-        "weight_kg": weight,
-        "hs": HBM_HSK10,
-        "source": "관세청 수출입무역통계",
-    }, ""
+    selected, err = _select_trade_response(r, data.get("items") or [], month,
+        value_fields=("expUsdAmt",), unit="thousand_usd",
+        unit_proof={"source": "https://tradedata.go.kr/cts/js/ets/hmpg/trade/ETS0100019Q.js",
+                    "tradeKind": "ETS_MNK_1020000A", "ttwgTpcd": "1", "unit": "KG, thousand USD"})
+    if selected:
+        selected.update(source="관세청 수출입무역통계", api=False)
+    return selected, f"전국 {month} KCS {err}" if err else ""
 
 
 def fetch_kcs_region_month(month: str, region: dict, session=None) -> tuple[dict | None, str]:
@@ -803,35 +852,20 @@ def fetch_kcs_region_month(month: str, region: dict, session=None) -> tuple[dict
         if not items:
             continue
 
-        target = None
-        for row in items:
-            if str(row.get("priodTitle") or "") == "총계":
-                continue
-            row_hs = str(row.get("hsSgn") or "").replace(".", "")
-            period = re.sub(r"[^0-9]", "", str(row.get("priodTitle") or ""))
-            if row_hs == hs and month in period:
-                target = row
-                break
-        if target is None:
-            target = next((row for row in items if str(row.get("priodTitle") or "") != "총계"), None)
-        if target is None:
-            continue
-
-        raw_thousand_usd = _number(target.get("expUsdAmt"))
-        amt = raw_thousand_usd * 1000.0 if raw_thousand_usd is not None else None
-        weight = _number(target.get("expTtwg"))
-        if amt is None:
-            continue
-        return {
-            "month": month,
-            "region": region["name"],
-            "amount_usd": amt,
-            "weight_kg": weight,
-            "hs": hs,
-            "raw_amount": _number(target.get("expUsdAmt")),
-            "source": "관세청 수출입무역통계",
-            "scope_note": "지역 공개자료는 HS6 854232 메모리 전체로, HBM 전용 HSK10이 아님",
-        }, ""
+        selected, err = _select_trade_response(r, items, month, hs=hs, region=region,
+            value_fields=("expUsdAmt",), unit="thousand_usd",
+            unit_proof={"source": "https://tradedata.go.kr/cts/js/ets/hmpg/trade/ETS0100027Q.js",
+                        "unit": "thousand USD", "scope": "HS6 memory diagnostics only"})
+        if not selected:
+            return None, f"{region['name']} {month} KCS {err}"
+        if region.get("sgg"):
+            raw_row = selected["selected_row"]
+            if ((str(raw_row.get("sggCd") or "") != region["sgg"])
+                    or (raw_row.get("sggNm") and raw_row["sggNm"] != region["name"])):
+                return None, f"{region['name']} {month} KCS 응답 검증 오류: 시군구 불일치"
+        selected.update(source="관세청 수출입무역통계", scope="regional_hs6_fallback",
+                        scope_note="지역 공개자료는 HS6 854232 메모리 전체로, HBM 전용 HSK10이 아님")
+        return selected, ""
 
     return None, f"{region['name']} {month} HS6 {hs} 미검출: {last_preview}"
 
@@ -843,7 +877,7 @@ def fetch_official_hbm_pack(now: datetime) -> tuple[dict | None, list[str]]:
     Exact nationwide MCP/HBM-containing series:
       HSK10 8542323000 from Korea Customs Service.
     Public regional direction:
-      HS6 854232 for Chungnam and Chungbuk.
+      exact province HSK10 8542323000 for Chungnam and Chungbuk.
     Icheon is best-effort only because K-stat stopped public city/county HSK10
     disclosure from 2026-09-01; city/county HS6 weight is also non-public.
     """
@@ -918,7 +952,7 @@ def fetch_official_hbm_pack(now: datetime) -> tuple[dict | None, list[str]]:
             return None, errors
 
     if not selected:
-        return None, errors
+        return None, errors or [f"공표 대기: {current} 및 이전 두 달의 필수 HSK10 원자료 없음"]
 
     needed = [selected, _month_shift(selected, -1), _month_shift(selected, -3), _month_shift(selected, -12)]
     for month in needed:
@@ -1008,6 +1042,7 @@ def fetch_official_hbm_pack(now: datetime) -> tuple[dict | None, list[str]]:
         "availability_notes": availability_notes,
         "optional_errors": optional_errors,
         "errors": errors,
+        "raw_rows": data,
     }, errors
 
 
@@ -1032,7 +1067,7 @@ def _fmt_usd(value: float | None) -> str:
 
 def _regional_direction(mom: float | None, qoq3: float | None) -> str:
     """Readable direction label without turning a regional proxy into company sales."""
-    if mom is None:
+    if mom is None or qoq3 is None:
         return "판정 보류"
     if mom >= 20 and (qoq3 is None or qoq3 >= 0):
         return "▲ 강한 증가"
@@ -1046,6 +1081,10 @@ def _regional_direction(mom: float | None, qoq3: float | None) -> str:
         if qoq3 is not None and qoq3 >= 5:
             return "▼ 단기 둔화"
         return "▼ 감소"
+    if mom > 0:
+        return "▲ 소폭 증가"
+    if mom < 0:
+        return "▼ 소폭 감소"
     return "→ 보합"
 
 
@@ -1053,6 +1092,235 @@ def _unit_value(amount: float | None, weight: float | None) -> float | None:
     if amount is None or weight in (None, 0):
         return None
     return amount / weight
+
+
+def official_snapshot(official: dict) -> dict:
+    """Only dated source values enter the notification comparison, never query time."""
+    return {
+        "month": official["month"], "hs": official["hs"],
+        "region_hs": official["region_hs"],
+        "series": json.loads(json.dumps(official["series"], allow_nan=False)),
+    }
+
+
+def official_monthly_decision(state: dict, official: dict | None) -> dict:
+    if not official:
+        return {"due": False, "revision": False, "availability": False, "format_upgrade": False, "snapshot": None}
+    snapshot = official_snapshot(official)
+    same_month = state.get("last_official_alert_month") == official["month"]
+    previous = state.get("last_official_notified_values") or state.get("last_official_alert_snapshot")
+    fields = ("national_amount", "national_weight", "samsung_region_amount", "hynix_chungbuk_amount", "malaysia_amount", "malaysia_weight")
+    revision = availability = False
+    if same_month and previous is not None:
+        for month, values in snapshot["series"].items():
+            old_values = previous.get("series", {}).get(month, {})
+            for field in fields:
+                value, old_value = values.get(field), old_values.get(field)
+                if value is not None:
+                    revision |= old_value is not None and value != old_value
+                    availability |= old_value is None
+    format_upgrade = bool(same_month and int(state.get("export_alert_format_version") or 0) < EXPORT_ALERT_FORMAT_VERSION)
+    return {
+        "due": not same_month or revision or availability or format_upgrade or int(state.get("compare_version") or 0) < COMPARE_VERSION,
+        "revision": revision, "availability": availability, "format_upgrade": format_upgrade, "snapshot": snapshot,
+    }
+
+
+def _merge_notified_values(previous, snapshot):
+    """Keep sent operands across later temporary gaps, without filling a report."""
+    merged = json.loads(json.dumps(previous or snapshot))
+    merged.update(month=snapshot["month"], hs=snapshot["hs"], region_hs=snapshot["region_hs"])
+    for month, values in snapshot["series"].items():
+        target = merged.setdefault("series", {}).setdefault(month, {})
+        target.update({key: value for key, value in values.items() if value is not None})
+    return merged
+
+
+def _write_trade_validation(now, official, errors, monthly_due, rate, fx_basis):
+    ledger = _TRADE_EVIDENCE.as_dict() if _TRADE_EVIDENCE is not None else {}
+    evidence_path = OUT / "hbm_export_source_evidence.json"
+    proof = {
+        "schema_version": 1, "code_sha": ledger.get("code_sha"), "run_id": ledger.get("run_id"),
+        "checked_at_kst": now.isoformat(timespec="seconds"), "monthly_due": bool(monthly_due),
+        "phase": "held" if errors else "not_polled", "errors": errors,
+        "snapshot": official_snapshot(official) if official else None,
+        "source_evidence_sha256": hashlib.sha256(evidence_path.read_bytes()).hexdigest() if evidence_path.exists() else None,
+        "bindings": {}, "fx": {"rate": rate, "basis": fx_basis},
+        "regional_unit_proof": _SIDO_UNIT_RESULT[0] if _SIDO_UNIT_RESULT else None,
+    }
+    if official:
+        proof["bindings"] = {
+            month: {name: row.get("evidence_attempt_id") for name, row in rows.items()}
+            for month, rows in official.get("raw_rows", {}).items()
+        }
+        proof["coverage_errors"] = errors
+        proof["optional_source_errors"] = official.get("optional_errors") or []
+        core_months = [official["month"], _month_shift(official["month"], -1), _month_shift(official["month"], -3)]
+        core_roles = ("national_hsk10", "samsung_chungnam", "hynix_chungbuk")
+        bound = all(proof["bindings"].get(month, {}).get(role) for month in core_months for role in core_roles)
+        proof["phase"] = "verified_core" if bound and proof["regional_unit_proof"] else "held_unbound_source"
+    path = OUT / "hbm_export_validation.json"
+    path.write_text(json.dumps(proof, ensure_ascii=False, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+    return {"validation_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+            "source_evidence_sha256": proof["source_evidence_sha256"], "code_sha": proof["code_sha"], "run_id": proof["run_id"]}
+
+
+def _preserved_response(attempt):
+    response = attempt.get("response") or {}
+    if not response.get("raw_preserved"):
+        raise ValueError("HBM monthly original source bytes missing")
+    raw = base64.b64decode(response["raw_base64"], validate=True)
+    if (response["http_status"] != 200 or len(raw) != response["raw_bytes_length"]
+            or hashlib.sha256(raw).hexdigest() != response["raw_sha256"]):
+        raise ValueError("HBM monthly response bytes/hash invalid")
+    return raw
+
+
+def _validate_sido_unit(proof, attempts):
+    """Replay the public unit reference and Customs operands without HTTP."""
+    if not isinstance(proof, dict):
+        raise ValueError("HBM regional unit evidence missing")
+    ids = iter(proof.get("reference_attempt_ids") or [])
+
+    def request_saved(method, url, **kwargs):
+        from types import SimpleNamespace
+        attempt = attempts.get(next(ids, None))
+        if not attempt:
+            raise ValueError("HBM unit reference response missing")
+        request = attempt["request"]
+        if (request["method"] != method or request["url"] != url
+                or request["params"] != (kwargs.get("params") or {})
+                or request["data"] != (kwargs.get("data") or {})):
+            raise ValueError("HBM unit reference request mismatch")
+        return SimpleNamespace(status_code=200, content=_preserved_response(attempt))
+
+    reference, error = fetch_reference(request_saved)
+    if error or reference is None or next(ids, None) is not None:
+        raise ValueError("HBM public unit reference invalid")
+    rows = {}
+    for code in ("44", "43"):
+        attempt = attempts.get((proof.get("api_attempt_ids") or {}).get(code))
+        if not attempt:
+            raise ValueError("HBM same-month unit operand missing")
+        request = attempt["request"]
+        params = request["params"]
+        if (request["method"] != "GET" or request["url"] != DATA_GO_SIDO_ITEM_URL
+                or params.get("sidoCd") != code or params.get("hsSgn") != HBM_HSK10
+                or params.get("strtYymm") != reference["month"] or params.get("endYymm") != reference["month"]):
+            raise ValueError("HBM same-month unit request mismatch")
+        row, error = choose_exact_row(_xml_rows(ET.fromstring(_preserved_response(attempt))),
+            reference["month"], HBM_HSK10, region=code,
+            value_fields=("expUsdAmt",), unit="unverified", weight_fields=())
+        if error or row is None:
+            raise ValueError("HBM same-month unit source identity invalid")
+        rows[code] = row
+    recalculated, error = reconcile_unit(rows, reference)
+    if error or recalculated is None or any(proof.get(key) != value for key, value in recalculated.items()):
+        raise ValueError("HBM regional unit reconciliation mismatch")
+    return recalculated
+
+
+def validate_monthly_payload(text, candidate, out_dir=None):
+    """Re-read preserved response operands before the existing delivery journal."""
+    anchor = "삼성전자 vs SK하이닉스 HBM 수출 방향"
+    if not candidate.get("monthly_due"):
+        if anchor in text:
+            raise ValueError("HBM unexpected monthly payload without a monthly candidate")
+        return
+    if anchor not in text:
+        raise ValueError("HBM monthly candidate body missing")
+    out = pathlib.Path(out_dir) if out_dir is not None else OUT
+    validation_path = out / "hbm_export_validation.json"
+    source_path = out / "hbm_export_source_evidence.json"
+    proof = json.loads(validation_path.read_bytes())
+    ledger = json.loads(source_path.read_bytes())
+    binding = candidate.get("official_export_evidence") or {}
+    if (proof.get("phase") != "verified_core" or not proof.get("monthly_due")
+            or hashlib.sha256(validation_path.read_bytes()).hexdigest() != binding.get("validation_sha256")
+            or hashlib.sha256(source_path.read_bytes()).hexdigest() != proof.get("source_evidence_sha256")
+            or proof.get("source_evidence_sha256") != binding.get("source_evidence_sha256")
+            or proof.get("code_sha") != ledger.get("code_sha") or proof.get("run_id") != ledger.get("run_id")
+            or binding.get("code_sha") != proof.get("code_sha") or binding.get("run_id") != proof.get("run_id")
+            or not re.fullmatch(r"[0-9a-f]{40}", str(proof.get("code_sha") or ""))):
+        raise ValueError("HBM monthly source evidence binding invalid")
+    snapshot = proof["snapshot"]
+    if snapshot != candidate.get("last_official_alert_snapshot"):
+        raise ValueError("HBM monthly source snapshot mismatch")
+    attempts = {a["attempt_id"]: a for a in ledger["attempts"]}
+    regional_unit = _validate_sido_unit(proof.get("regional_unit_proof"), attempts)
+    fields = {"national_hsk10": ("national_amount", "national_weight"),
+              "samsung_chungnam": ("samsung_region_amount", "samsung_region_weight"),
+              "hynix_chungbuk": ("hynix_chungbuk_amount", "hynix_chungbuk_weight"),
+              "malaysia_hsk10": ("malaysia_amount", "malaysia_weight"),
+              "hynix_icheon": ("icheon_amount", "icheon_weight")}
+    for month, values in snapshot["series"].items():
+        for role, (amount_key, weight_key) in fields.items():
+            if values.get(amount_key) is None:
+                continue
+            attempt_id = proof["bindings"].get(month, {}).get(role)
+            attempt = attempts.get(attempt_id)
+            if not attempt:
+                raise ValueError("HBM monthly original source bytes missing")
+            raw = _preserved_response(attempt)
+            selected = attempt["selection"]["normalized"]
+            rows = (json.loads(raw).get("items") or []) if raw.lstrip().startswith(b"{") else _xml_rows(ET.fromstring(raw))
+            region = "44" if role == "samsung_chungnam" else "43" if role == "hynix_chungbuk" else "41" if role == "hynix_icheon" else None
+            request = attempt["request"]
+            endpoint = request["url"]
+            expected = ((KCS_REGION_URL, "expUsdAmt", "thousand_usd") if role == "hynix_icheon" else
+                        (DATA_GO_SIDO_ITEM_URL, "expUsdAmt", regional_unit["unit"]) if region else
+                        (DATA_GO_COUNTRY_ITEM_URL, "expDlr", "usd") if role == "malaysia_hsk10" else
+                        (KCS_ITEM_URL, "expUsdAmt", "thousand_usd") if endpoint == KCS_ITEM_URL else
+                        (DATA_GO_ITEM_URL, "expDlr", "usd"))
+            if (endpoint, selected["raw_amount_field"], selected["raw_amount_unit"]) != expected:
+                raise ValueError("HBM source unit/endpoint contract mismatch")
+            if endpoint not in (KCS_ITEM_URL, KCS_REGION_URL):
+                params = request["params"]
+                if (params.get("strtYymm") != month or params.get("endYymm") != month
+                        or params.get("hsSgn") != HBM_HSK10
+                        or (region and params.get("sidoCd") != region)
+                        or (role == "malaysia_hsk10" and params.get("cntyCd") != "MY")):
+                    raise ValueError("HBM exact source request scope mismatch")
+            hs = REGION_HS6 if role == "hynix_icheon" else HBM_HSK10
+            again, error = choose_exact_row(rows, month, hs, region=region,
+                country="MY" if role == "malaysia_hsk10" else None,
+                value_fields=(selected["raw_amount_field"],), unit=selected["raw_amount_unit"],
+                weight_fields=() if role in ("samsung_chungnam", "hynix_chungbuk") else ("expWgt", "expTtwg"))
+            if (error or again is None or again["amount_usd"] != values[amount_key]
+                    or again["weight_kg"] != values.get(weight_key)):
+                raise ValueError("HBM monthly exact response operands mismatch")
+            if role == "hynix_icheon":
+                params = request["data"]
+                if (str(again["selected_row"].get("sggCd") or "") != "41500"
+                        or params.get("sggCd") != "41500" or params.get("sidoCd") != "41"
+                        or params.get("hsSgn") != REGION_HS6
+                        or params.get("priodFr") != month or params.get("priodTo") != month):
+                    raise ValueError("HBM Icheon city identity unverified")
+    rendered = build_monthly(datetime.fromisoformat(proof["checked_at_kst"]), proof["fx"]["rate"], proof["fx"]["basis"],
+        dict(snapshot, source_url=KCS_SOURCE_PAGE, malaysia_public_available=snapshot["series"][snapshot["month"]].get("malaysia_amount") is not None,
+             icheon_hs=REGION_HS6, icheon_public_available=snapshot["series"][snapshot["month"]].get("icheon_amount") is not None))
+    # Currency enforcement can append conversions. Source percentage/date/direction
+    # lines remain exact and are independently regenerated above.
+    from collections import Counter
+    required = Counter(line for line in rendered.splitlines() if line.startswith(("• 변화:", "• 비교월:", "• 판정:", "• HSK10", "• 한국→말레이시아 HSK10", "• 중량당 단가:", "🔵 <b>삼성전자 관련", "🟠 <b>SK하이닉스 관련")))
+    for line, count in required.items():
+        if text.count(line) < count:
+            raise ValueError("HBM monthly rendered period/direction mismatch")
+    headings = ["[삼성전자 방향 — 충남]", "[SK하이닉스 관련 지역 — 충북]", "[1. 전국 HBM 포함 MCP]", "[2. 말레이시아 HSK10 — 첨단패키징 보조축]"]
+    keys = ["samsung_region_amount", "hynix_chungbuk_amount", "national_amount", "malaysia_amount"]
+    for heading, key in zip(headings, keys):
+        amount = snapshot["series"][snapshot["month"]].get(key)
+        if amount is None:
+            continue
+        if text.count(heading) != 1:
+            raise ValueError("HBM monthly section missing or duplicated")
+        section = text.split(heading, 1)[1].split("\n\n", 1)[0]
+        if _fmt_usd(amount) not in section:
+            raise ValueError("HBM monthly rendered section amount mismatch")
+    if snapshot["series"][snapshot["month"]].get("icheon_amount") is not None:
+        line = next(line for line in rendered.splitlines() if line.startswith("• 이천 보조치("))
+        if line not in text:
+            raise ValueError("HBM monthly Icheon auxiliary amount mismatch")
 
 
 def classify_event(e: dict) -> tuple[str, str]:
@@ -2628,7 +2896,7 @@ def event_summary(e: dict) -> list[str]:
 def _official_poll_due(state: dict, now: datetime) -> tuple[bool, int]:
     target_month = _previous_month(now)
     health = state.get("official_source_health") or {}
-    if health.get("status") == "error":
+    if health.get("status") in ("error", "partial"):
         interval = OFFICIAL_ERROR_POLL_HOURS
     else:
         interval = (
@@ -2761,8 +3029,10 @@ def build_monthly(now: datetime, rate: float | None, fx_basis: str, official: di
         "• 아래 금액은 <b>회사 직접 수출액이 아니라 관세청 지역 HSK10 대용지표</b>입니다.",
         "",
         "<b>[한눈에]</b>",
-        f"🔵 <b>삼성전자 방향(충남)</b>: <b>{sam_direction}</b> · 전월 {_fmt_pct(sam_mom)} · 3개월 {_fmt_pct(sam_q)}",
-        f"🟠 <b>SK하이닉스 방향(충북·청주)</b>: <b>{hynix_direction}</b> · 전월 {_fmt_pct(cb_mom)} · 3개월 {_fmt_pct(cb_q)}",
+        f"🔵 <b>삼성전자 관련 지역(충남)</b>: <b>{sam_direction}</b> · 전월 {_fmt_pct(sam_mom)} · 3개월 전 대비 {_fmt_pct(sam_q)}",
+        f"🟠 <b>SK하이닉스 관련 지역(충북)</b>: <b>{hynix_direction}</b> · 전월 {_fmt_pct(cb_mom)} · 3개월 전 대비 {_fmt_pct(cb_q)}",
+        f"• 비교월: 전월 {prev_m[:4]}-{prev_m[4:]} → {month[:4]}-{month[4:]} / 3개월 전 {prev_q[:4]}-{prev_q[4:]} → {month[:4]}-{month[4:]}",
+        "• 3개월 전 대비는 두 단일 월의 비교이며 3개월 누계가 아닙니다. 전월 ±20% 이상이고 3개월 전 대비도 같은 방향이면 강한 증감, 전월 ±5% 미만은 소폭 증감입니다.",
     ]
     if official.get("icheon_public_available") and cur.get("icheon_amount") is not None:
         lines.append("⚪ <b>SK하이닉스 이천</b>: 공개 보조치 확인 · 충북 HSK10과 코드 단위가 다르면 <b>합산하지 않습니다.</b>")
@@ -2772,21 +3042,21 @@ def build_monthly(now: datetime, rate: float | None, fx_basis: str, official: di
     lines += [
         "",
         "🔵 <b>[삼성전자 방향 — 충남]</b>",
-        f"• HSK10 <b>{official['region_hs']}</b>: <b>{_fmt_usd(cur['samsung_region_amount'])} · {sam_krw}</b>",
-        f"• 변화: 전월 <b>{_fmt_pct(sam_mom)}</b> · 3개월 <b>{_fmt_pct(sam_q)}</b> · 전년동월 <b>{_fmt_pct(sam_y)}</b>",
+        f"• HSK10 <b>{official['region_hs']}</b>: <b>{_fmt_usd(cur['samsung_region_amount'])}({sam_krw})</b>",
+        f"• 변화: 전월 <b>{_fmt_pct(sam_mom)}</b> · 3개월 전 대비 <b>{_fmt_pct(sam_q)}</b> · 전년동월 <b>{_fmt_pct(sam_y)}</b>",
         f"• 판정: <b>{sam_direction}</b>",
-        "• 의미: 삼성전자 생산지역 방향을 보는 정밀 대용지표입니다. <b>삼성전자 직접 수출액·HBM 매출·점유율로 치환하지 않습니다.</b>",
+        "• 범위: 충남 전체의 해당 품목 수출이며 특정 회사로 분리되지 않습니다. <b>삼성전자 직접 수출액·HBM 매출·점유율로 치환하지 않습니다.</b>",
         "",
-        "🟠 <b>[SK하이닉스 방향 — 충북·청주]</b>",
-        f"• HSK10 <b>{official['region_hs']}</b>: <b>{_fmt_usd(cur['hynix_chungbuk_amount'])} · {cb_krw}</b>",
-        f"• 변화: 전월 <b>{_fmt_pct(cb_mom)}</b> · 3개월 <b>{_fmt_pct(cb_q)}</b> · 전년동월 <b>{_fmt_pct(cb_y)}</b>",
+        "🟠 <b>[SK하이닉스 관련 지역 — 충북]</b>",
+        f"• HSK10 <b>{official['region_hs']}</b>: <b>{_fmt_usd(cur['hynix_chungbuk_amount'])}({cb_krw})</b>",
+        f"• 변화: 전월 <b>{_fmt_pct(cb_mom)}</b> · 3개월 전 대비 <b>{_fmt_pct(cb_q)}</b> · 전년동월 <b>{_fmt_pct(cb_y)}</b>",
         f"• 판정: <b>{hynix_direction}</b>",
-        "• 의미: SK하이닉스 청주 생산지역 방향을 보는 정밀 대용지표입니다. <b>SK하이닉스 전체 직접 수출액으로 치환하지 않습니다.</b>",
+        "• 범위: 충북 전체의 해당 품목 수출이며 청주시·특정 회사로 분리되지 않습니다. <b>SK하이닉스 전체 직접 수출액으로 치환하지 않습니다.</b>",
     ]
 
     if official.get("icheon_public_available") and cur.get("icheon_amount") is not None:
         lines += [
-            f"• 이천 보조치(HS {official.get('icheon_hs', REGION_HS6)}): <b>{_fmt_usd(cur['icheon_amount'])}</b>",
+            f"• 이천 보조치(HS {official.get('icheon_hs', REGION_HS6)}): <b>{_fmt_usd(cur['icheon_amount'])}({krw_large(cur['icheon_amount'], rate)})</b>",
             "• 이천 보조치는 충북 HSK10과 코드 단위가 다르면 <b>병기만 하고 합산하지 않습니다.</b>",
         ]
     else:
@@ -2799,7 +3069,7 @@ def build_monthly(now: datetime, rate: float | None, fx_basis: str, official: di
         "",
         "<b>[핵심 판정]</b>",
         f"• 공개 지역 대용지표 기준: <b>삼성전자 방향은 {sam_direction.replace('▲ ', '').replace('▼ ', '').replace('→ ', '')}</b>, "
-        f"<b>SK하이닉스 청주 방향은 {hynix_direction.replace('▲ ', '').replace('▼ ', '').replace('→ ', '')}</b>입니다.",
+        f"<b>SK하이닉스 관련 충북 지역은 {hynix_direction.replace('▲ ', '').replace('▼ ', '').replace('→ ', '')}</b>입니다.",
         "• 다만 <b>이천 HSK10이 공개되지 않고 지역통계는 회사 직접 수출액이 아니므로</b> "
         "‘삼성전자 수출이 SK하이닉스보다 몇 배’ 또는 회사 점유율로 해석하지 않습니다.",
         "",
@@ -2808,29 +3078,29 @@ def build_monthly(now: datetime, rate: float | None, fx_basis: str, official: di
         "📊 <b>HBM 수출 원자료 세부</b>",
         "━━━━━━━━━━━━━━━━",
         "<b>[1. 전국 HBM 포함 MCP]</b>",
-        f"• HSK10 <b>{official['hs']}</b>: <b>{_fmt_usd(cur['national_amount'])} · {nat_krw}</b>",
-        f"• 변화: 전월 <b>{_fmt_pct(nat_mom)}</b> · 3개월 <b>{_fmt_pct(nat_q)}</b> · 전년동월 <b>{_fmt_pct(nat_y)}</b>",
+        f"• HSK10 <b>{official['hs']}</b>: <b>{_fmt_usd(cur['national_amount'])}({nat_krw})</b>",
+        f"• 변화: 전월 <b>{_fmt_pct(nat_mom)}</b> · 3개월 전 대비 <b>{_fmt_pct(nat_q)}</b> · 전년동월 <b>{_fmt_pct(nat_y)}</b>",
     ]
     if nat_uv is not None:
         nat_uv_krw = f"약 {nat_uv * rate:,.0f}원/kg" if rate else "원화 환산 확인 불가"
         lines.append(
-            f"• 중량당 단가: <b>&#36;{nat_uv:,.0f}/kg · {nat_uv_krw}</b> · 전월 <b>{_fmt_pct(_pct(nat_uv, nat_prev_uv))}</b>"
+            f"• 중량당 단가: <b>&#36;{nat_uv:,.0f}/kg({nat_uv_krw})</b> · 전월 <b>{_fmt_pct(_pct(nat_uv, nat_prev_uv))}</b>"
         )
     else:
         lines.append("• 중량당 단가: <b>관세청 중량값 확인 불가</b> — 추정하지 않음")
     lines += [
-        "• 주의: 전국 HSK10 8542323000은 <b>HBM을 포함하는 MCP 통계</b>이며 HBM 전용 수출액은 아닙니다.",
+        "• 주의: 전국 HSK10 8542323000은 <b>HBM을 포함하는 MCP 통계</b>이며 HBM 전용 수출액은 아닙니다. 중량당 금액도 품목 구성에 영향을 받으므로 HBM 제품 판매단가(ASP)로 해석하지 않습니다.",
         "",
         "<b>[2. 말레이시아 HSK10 — 첨단패키징 보조축]</b>",
     ]
     if official.get("malaysia_public_available") and cur.get("malaysia_amount") is not None:
         lines += [
-            f"• 한국→말레이시아 HSK10 <b>{official['hs']}</b>: <b>{_fmt_usd(cur.get('malaysia_amount'))} · {my_krw}</b>",
-            f"• 변화: 전월 <b>{_fmt_pct(my_mom)}</b> · 3개월 <b>{_fmt_pct(my_q)}</b> · 전년동월 <b>{_fmt_pct(my_y)}</b>",
+            f"• 한국→말레이시아 HSK10 <b>{official['hs']}</b>: <b>{_fmt_usd(cur.get('malaysia_amount'))}({my_krw})</b>",
+            f"• 변화: 전월 <b>{_fmt_pct(my_mom)}</b> · 3개월 전 대비 <b>{_fmt_pct(my_q)}</b> · 전년동월 <b>{_fmt_pct(my_y)}</b>",
         ]
         if my_uv is not None:
             my_uv_krw = f"약 {my_uv * rate:,.0f}원/kg" if rate else "원화 환산 확인 불가"
-            lines.append(f"• 중량당 단가: <b>&#36;{my_uv:,.0f}/kg · {my_uv_krw}</b> · 전월 <b>{_fmt_pct(_pct(my_uv, my_prev_uv))}</b>")
+            lines.append(f"• 중량당 단가: <b>&#36;{my_uv:,.0f}/kg({my_uv_krw})</b> · 전월 <b>{_fmt_pct(_pct(my_uv, my_prev_uv))}</b>")
         else:
             lines.append("• 중량당 단가: <b>확인 불가</b> — 추정하지 않음")
         lines += [
@@ -2847,12 +3117,12 @@ def build_monthly(now: datetime, rate: float | None, fx_basis: str, official: di
         "",
         "<b>[3. 회사별 정밀 비교 기준선]</b>",
         "• 과거 Bernstein 기준선(2026년 7월): 충남은 4월 대비 <b>+122%</b>, 충북+이천은 약 <b>-27%</b>.",
-        "• 이 수치는 <b>과거 동일 리서치 기준선</b>으로만 보존하며 8월·9월 현재값으로 재사용하지 않습니다.",
+        "• 이 수치는 <b>과거 동일 리서치 기준선</b>으로만 보존하며 위 최신월 현재값으로 재사용하지 않습니다.",
         "",
         "<b>[다음 알림]</b>",
         "• 새 월 전국·충남·충북 HSK10이 공식 원자료로 모두 확인될 때",
-        "• 삼성전자 방향(충남) 또는 SK하이닉스 방향(충북·청주)이 반전할 때",
-        "• 이천 공개 가능 자료·Bernstein 등 회사별 정밀 대용지표가 새로 확인될 때",
+        "• 충남·충북의 같은 품목 수출 방향이 반전하거나 같은 기준월 원값이 개정될 때",
+        "• 이천 공개 가능 자료·회사별 직접자료·새 리서치가 확인될 때",
         "• 한국→말레이시아 HSK10 방향이 크게 바뀌거나 Intel Malaysia 첨단패키징 상태가 바뀔 때",
         "• 삼성·SK하이닉스 HBM 실제 매출·점유율·NVIDIA 공급물량이 새로 확인될 때",
         "",
@@ -2863,7 +3133,7 @@ def build_monthly(now: datetime, rate: float | None, fx_basis: str, official: di
         + f"K-stat {href('https://stat.kita.net/')} · "
         + f"Counterpoint {href(COUNTERPOINT_HBM_SHARE)} · "
         + f"Bernstein {href(BERNSTEIN_EXPORT)} · "
-        + f"말레이시아 관세청 API {href(official.get('malaysia_source_url') or 'https://www.data.go.kr/data/15100475/openapi.do')}",
+        + f"한국 관세청 국가별 품목 API {href(official.get('malaysia_source_url') or 'https://www.data.go.kr/data/15100475/openapi.do')}",
     ]
     return "\n".join(lines) + "\n"
 
@@ -2913,7 +3183,17 @@ def build_event_alert(events: list[dict], now: datetime) -> str:
 
 
 def main() -> None:
+    global _TRADE_EVIDENCE, _SIDO_UNIT_RESULT
+    try:
+        _main()
+    finally:
+        _TRADE_EVIDENCE = None
+        _SIDO_UNIT_RESULT = None
+
+
+def _main() -> None:
     now = datetime.now(ZoneInfo("Asia/Seoul"))
+    _start_trade_evidence()
     state = load_state()
     seen = set(state.get("seen_ids") or [])
     month_key = now.strftime("%Y-%m")
@@ -3315,6 +3595,10 @@ def main() -> None:
     official_target_month = _previous_month(now)
     if now.day >= MONTHLY_DAY and official_poll_attempted:
         official, official_errors = fetch_official_hbm_pack(now)
+        newest_confirmed = max(str(state.get(key) or "") for key in ("last_official_alert_month", "last_successful_official_month"))
+        if official and official["month"] < newest_confirmed:
+            official_errors = list(official_errors) + ["최신월 후퇴 검증 보류: 이미 확인한 월보다 이전 월만 조회됨"]
+            official = None
     else:
         official, official_errors = None, []
     official_month = official.get("month") if official else ""
@@ -3338,7 +3622,14 @@ def main() -> None:
     source_health_alert = ""
     source_health_state = previous_source_health
     if official_poll_attempted:
-        if official is None and official_errors:
+        publication_pending = bool(official is None and official_errors and all(str(e).startswith("공표 대기:") for e in official_errors))
+        if publication_pending:
+            source_health_state = {
+                "version": OFFICIAL_SOURCE_HEALTH_VERSION, "status": "waiting_publication",
+                "target_month": official_target_month, "last_checked_at_kst": now.isoformat(timespec="seconds"),
+                "notes": official_errors,
+            }
+        elif official is None and official_errors:
             sig = _official_health_signature(official_target_month, official_errors)
             source_health_state = {
                 "version": OFFICIAL_SOURCE_HEALTH_VERSION,
@@ -3362,12 +3653,12 @@ def main() -> None:
             waiting_publication = official_month != official_target_month
             source_health_state = {
                 "version": OFFICIAL_SOURCE_HEALTH_VERSION,
-                "status": "waiting_publication" if waiting_publication else "ok",
+                "status": "waiting_publication" if waiting_publication else "partial" if official_errors else "ok",
                 "target_month": official_target_month,
                 "last_checked_at_kst": now.isoformat(timespec="seconds"),
                 "selected_official_month": official_month,
             }
-            if was_error:
+            if was_error and not official_errors:
                 source_health_alert = build_official_source_health_alert(
                     now, official_target_month, [], recovered=True
                 )
@@ -3389,20 +3680,10 @@ def main() -> None:
                     f"• 확인: {now.strftime('%Y-%m-%d %H:%M KST')}",
                 ]) + "\n"
 
-    format_upgrade_due = bool(
-        official
-        and state.get("last_official_alert_month") == official_month
-        and int(state.get("export_alert_format_version") or 0) < EXPORT_ALERT_FORMAT_VERSION
-    )
-    monthly_due = bool(
-        official
-        and (
-            state.get("last_official_alert_month") != official_month
-            or int(state.get("compare_version") or 0) < COMPARE_VERSION
-            or malaysia_revision_due
-            or format_upgrade_due
-        )
-    )
+    monthly_decision = official_monthly_decision(state, official)
+    format_upgrade_due = monthly_decision["format_upgrade"]
+    official_revision_due = monthly_decision["revision"]
+    monthly_due = monthly_decision["due"] or malaysia_revision_due
 
     regional_unit_correction_due = bool(
         official
@@ -3414,16 +3695,20 @@ def main() -> None:
         monthly_text = build_monthly(now, rate, fx_basis, official)
         if format_upgrade_due:
             monthly_text = "\n".join([
-                "🛠 <b>표시 방식 개선 재표시 — 신규 수치 아님</b>",
-                f"• 같은 <b>{official_month[:4]}년 {int(official_month[4:])}월</b> 공식 원자료를 삼성전자·SK하이닉스가 첫 화면에서 바로 구분되도록 다시 표시합니다.",
-                "• 금액·증감률의 기준월은 그대로이며, 이번 재표시는 가독성·오해방지 형식 개선입니다.",
+                "🛠 <b>수출 원자료 재검증·표시 기준 정정</b>",
+                f"• <b>{official_month[:4]}년 {int(official_month[4:])}월</b>과 비교월의 원자료를 이번 실행에서 다시 조회했습니다.",
+                "• 전월 소폭 증감·3개월 전 단월 비교·시도 범위를 명확히 표시합니다. 이전 본문을 재사용한 신규 관측이 아닙니다.",
                 "",
             ]) + monthly_text
+        if official_revision_due:
+            monthly_text = "📌 <b>같은 기준월의 공식 수출 원자료·비교월 개정</b>\n• 직전 실제 발송의 날짜별 원값과 달라 다시 계산했습니다.\n\n" + monthly_text
+        elif monthly_decision["availability"]:
+            monthly_text = "📌 <b>같은 기준월의 미확인 원자료 추가 확인</b>\n• 직전 알림에서 확인되지 않았던 원값을 이번 실행에서 확인했습니다.\n\n" + monthly_text
         if regional_unit_correction_due:
             monthly_text = "\n".join([
                 "⚠️ <b>정정 — 삼성·SK하이닉스 지역 수출금액 단위</b>",
-                "• 관세청 시도별 API의 <b>expUsdAmt는 천 달러 단위</b>입니다.",
-                "• 이전 파서가 이를 달러로 읽을 수 있던 경로를 제거하고 <b>×1,000</b>으로 원 단위를 복원했습니다.",
+                "• 관세청 시도별 API 금액은 K-stat의 같은 월·품목·두 시도 원값과 대조해 확인한 단위로 환산했습니다.",
+                "• 응답 금액의 크기만으로 환산계수를 고르는 경로를 제거했습니다.",
                 "• 아래 수치는 원자료를 다시 조회해 계산한 교정값이며, 과거 잘못 표시된 지역 금액은 최신 기준선으로 사용하지 않습니다.",
                 "",
             ]) + monthly_text
@@ -3433,12 +3718,15 @@ def main() -> None:
         state["last_monthly_digest"] = month_key
         state["last_official_alert_month"] = official_month
         state["compare_version"] = COMPARE_VERSION
+        previous_values = state.get("last_official_notified_values") or state.get("last_official_alert_snapshot")
+        state["last_official_alert_snapshot"] = monthly_decision["snapshot"]
+        state["last_official_notified_values"] = _merge_notified_values(previous_values, monthly_decision["snapshot"])
         if regional_unit_correction_due:
             corrections = list(state.get("state_corrections") or [])
             corrections.append({
                 "type": "regional_export_amount_unit",
-                "from": "expUsdAmt treated as USD",
-                "to": "expUsdAmt thousand USD × 1000",
+                "from": "legacy regional amount unit assumption",
+                "to": "same-month two-province source unit reconciliation",
                 "corrected_at_kst": now.isoformat(timespec="seconds"),
                 "official_month": official_month,
             })
@@ -3538,12 +3826,14 @@ def main() -> None:
         "last_fresh_new_count": len(fresh_new),
         "last_send_event_count": len(send_events),
         "monthly_due": monthly_due,
+        "official_revision_due": official_revision_due,
+        "official_observed_this_run": bool(official),
         "export_alert_format_version": (
             EXPORT_ALERT_FORMAT_VERSION
             if monthly_due and official
             else int(state.get("export_alert_format_version") or 0)
         ),
-        "official_month": official_month if official_poll_attempted else state.get("official_month", ""),
+        "official_month": official_month if official else state.get("official_month", ""),
         "official_data_ok": bool(official) if official_poll_attempted else state.get("official_data_ok", False),
         "official_source_health": source_health_state,
         "official_source_health_version": OFFICIAL_SOURCE_HEALTH_VERSION,
@@ -3560,9 +3850,9 @@ def main() -> None:
             else state.get("official_api_used", False)
         ),
         "malaysia_official_month": official_month if official else state.get("malaysia_official_month", ""),
-        "malaysia_hsk10_amount_usd": current_malaysia_amount,
-        "malaysia_hsk10_weight_kg": current_malaysia_weight,
-        "malaysia_public_available": bool(official and official.get("malaysia_public_available")),
+        "malaysia_hsk10_amount_usd": current_malaysia_amount if official_poll_attempted else state.get("malaysia_hsk10_amount_usd"),
+        "malaysia_hsk10_weight_kg": current_malaysia_weight if official_poll_attempted else state.get("malaysia_hsk10_weight_kg"),
+        "malaysia_public_available": bool(official and official.get("malaysia_public_available")) if official_poll_attempted else state.get("malaysia_public_available", False),
         "malaysia_revision_due": malaysia_revision_due,
         "official_errors": [re.sub(r"serviceKey=[^&\s]+", "serviceKey=<redacted>", str(x)) for x in official_errors[-8:]],
         "official_availability_notes": (
@@ -3579,6 +3869,9 @@ def main() -> None:
     if official:
         state["last_successful_official_month"] = official_month
         state["last_successful_official_at_kst"] = now.isoformat(timespec="seconds")
+    evidence_ref = _write_trade_validation(now, official, official_errors, monthly_due, rate, fx_basis)
+    if monthly_due:
+        state["official_export_evidence"] = evidence_ref
     save_state(state)
 
     STATUS.write_text(
@@ -3614,12 +3907,15 @@ def main() -> None:
         f"- official_target_month: {official_target_month}\n"
         f"- official_source_health: {source_health_state.get('status', 'unknown')}\n"
         f"- official_month: {official_month or state.get('official_month') or 'none'}\n"
-        f"- official_data_ok: {str(bool(official)).lower()}\n"
+        f"- official_observation_this_run: {'fresh_verified' if official else 'held' if official_poll_attempted else 'not_polled'}\n"
+        f"- last_successful_official_month: {state.get('last_successful_official_month') or 'none'}\n"
+        f"- last_successful_official_at_kst: {state.get('last_successful_official_at_kst') or 'none'}\n"
+        f"- official_data_ok: {str(bool(state.get('official_data_ok'))).lower()}\n"
         f"- official_api_key_configured: {str(bool(DATA_GO_KEY)).lower()}\n"
-        f"- official_api_used: {str(bool(official and official.get('official_api_used'))).lower()}\n"
-        f"- malaysia_public_available: {str(bool(official and official.get('malaysia_public_available'))).lower()}\n"
-        f"- malaysia_hsk10_amount_usd: {current_malaysia_amount if current_malaysia_amount is not None else 'none'}\n"
-        f"- malaysia_hsk10_weight_kg: {current_malaysia_weight if current_malaysia_weight is not None else 'none'}\n"
+        f"- official_api_used_this_run: {str(bool(official and official.get('official_api_used'))).lower()}\n"
+        f"- malaysia_public_available_last_observation: {str(bool(state.get('malaysia_public_available'))).lower()}\n"
+        f"- malaysia_hsk10_amount_usd_last_observation: {state.get('malaysia_hsk10_amount_usd')}\n"
+        f"- malaysia_hsk10_weight_kg_last_observation: {state.get('malaysia_hsk10_weight_kg')}\n"
         f"- malaysia_revision_due: {str(malaysia_revision_due).lower()}\n"
         f"- official_errors: {len(official_errors)}\n"
         f"- official_availability_notes: {len(official.get('availability_notes') or []) if official else 0}\n"

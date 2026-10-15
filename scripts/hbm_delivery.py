@@ -456,6 +456,9 @@ def finish(name):
     # Working-tree mutations from the old collector are not a committed delivery.
     write(ROOT / path, before)
     text = (ROOT / alert).read_text(encoding='utf-8') if (ROOT / alert).exists() else ''
+    if name == 'samsung':
+        from samsung_hbm_watch import validate_monthly_payload
+        validate_monthly_payload(text, candidate, OUT)
     if name == 'rubin':
         validate_rubin_hybrid_notification(text)
         validate_rubin_nvhbm_foundry_notification(text)

@@ -1,0 +1,31 @@
+name: HBM export integrity checks
+
+on:
+  pull_request:
+    paths:
+      - ".gitattributes"
+      - ".github/workflows/rubin-hbm-telegram.yml"
+      - ".github/workflows/hbm-export-integrity-check.yml"
+      - "scripts/samsung_hbm_watch.py"
+      - "scripts/hbm_trade_integrity.py"
+      - "scripts/hbm_trade_unit_reference.py"
+      - "scripts/hbm_memory_axes.py"
+      - "scripts/hbm_delivery.py"
+      - "tests/test_hbm*.py"
+      - "tests/fixtures/hbm_*"
+
+permissions:
+  contents: read
+
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check requests googlenewsdecoder==0.1.7 beautifulsoup4 selectolax
+      - name: Validate HBM regressions without delivery credentials
+        run: python -B -m unittest discover -s tests -p 'test_hbm*.py' -v
