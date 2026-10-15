@@ -144,30 +144,36 @@ jobs:
       - name: Save dedup state after successful route/send
         if: success()
         run: |
+          set -euo pipefail
           mkdir -p data
-          cp out/robotis_physical_ai_watch_pending_state.json data/robotis_physical_ai_watch_state.json
+          # Preserve only the finalized state. Rebase of a state-file commit
+          # conflicts when other scheduled watchers have advanced main.
+          cp out/robotis_physical_ai_watch_pending_state.json /tmp/robotis_watch_final_state.json
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/robotis_physical_ai_watch_state.json
-          if git diff --cached --quiet; then
-            echo "State unchanged."
-          else
-            git commit -m "Update ROBOTIS physical AI watch state [skip ci]"
-            # Retry state push after concurrent repository updates from other watchers.
-            pushed=0
-            for attempt in 1 2 3 4 5; do
-              if git pull --rebase origin main && git push origin HEAD:main; then
-                pushed=1
-                break
-              fi
-              git rebase --abort 2>/dev/null || true
-              echo "State push race detected; retrying attempt $((attempt + 1))/5..."
-              sleep $((attempt * 2))
-            done
-            if [ "$pushed" -ne 1 ]; then
-              echo "State push failed after 5 attempts."
-              exit 1
+          pushed=0
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git reset --hard origin/main
+            cp /tmp/robotis_watch_final_state.json data/robotis_physical_ai_watch_state.json
+            git add data/robotis_physical_ai_watch_state.json
+            if git diff --cached --quiet; then
+              echo "ROBOTIS state already current."
+              pushed=1
+              break
             fi
+            git commit -m "Update ROBOTIS physical AI watch state [skip ci]"
+            if git push origin HEAD:main; then
+              echo "ROBOTIS state persisted to main."
+              pushed=1
+              break
+            fi
+            echo "ROBOTIS state push race; latest-main replay attempt $attempt/5."
+            sleep $((attempt * 2))
+          done
+          if [ "$pushed" -ne 1 ]; then
+            echo "ROBOTIS finalized state not persisted after 5 attempts." >&2
+            exit 1
           fi
 
       - name: Upload watcher status
