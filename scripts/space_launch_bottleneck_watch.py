@@ -643,12 +643,21 @@ def main() -> int:
     if FAA_STARBASE_EVENT not in seen:
         official_alerts.append(starbase_faa_notice())
         seen[FAA_STARBASE_EVENT] = NOW.isoformat()
-    if KASA_AI_EVENT not in seen:
-        official_alerts.append(korea_space_ai_notice())
-        seen[KASA_AI_EVENT] = NOW.isoformat()
-    if SPACE_FUND_EVENT not in seen:
-        official_alerts.append(space_funding_notice())
-        seen[SPACE_FUND_EVENT] = NOW.isoformat()
+    # Independent axes must not stop the established launch watch if one
+    # government or market-data site is temporarily unavailable.
+    for key, builder in (
+        (KASA_AI_EVENT, korea_space_ai_notice),
+        (SPACE_FUND_EVENT, space_funding_notice),
+    ):
+        if key in seen:
+            continue
+        try:
+            report = builder()
+        except Exception as exc:
+            fetch_errors.append(f"{key}: 공식 원문 접근·검증 실패 ({type(exc).__name__})")
+        else:
+            official_alerts.append(report)
+            seen[key] = NOW.isoformat()
     for category in CATEGORIES:
         peers = all_by_category[category.key]
         candidates: list[dict] = []
