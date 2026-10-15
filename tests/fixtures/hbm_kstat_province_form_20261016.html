@@ -1,0 +1,193 @@
+<!-- Derived public-form excerpt; not the original response bytes. -->
+<form action="#" method="post" name="form1">
+<input name="event_udap" type="hidden" value=""/>
+<input name="searchType" type="hidden" value="SHEET"/>
+<input name="sheet_col_length" type="hidden" value=""/>
+<input name="pageNum" type="hidden" value="1"/>
+<!-- 팝업용 파라미터 -->
+<input name="p_prod_cd" type="hidden" value=""/>
+<input name="p_prod_nm" type="hidden" value=""/>
+<!-- 권한 -->
+<input name="auth_info" type="hidden" value=""/>
+<!-- //팝업용 파라미터 -->
+<!-- 차트 관련 -->
+<input name="viewType" type="hidden" value="SHEET"/>
+<input name="chartType" type="hidden" value="bar"/>
+<input name="chartDelay" type="hidden" value=""/>
+<input name="p_field" type="hidden" value=""/>
+<input name="p_measure" type="hidden" value=""/>
+<!-- //차트 관련 -->
+<input name="s_url" type="hidden" value="/stat/kts/prod/ProdWholeList"/>
+<fieldset class="search two">
+<div>
+<div class="select_cover">
+<span>지역구분</span>
+<select name="p_cond_in_gb" onchange="changeFieldByHs();" title="지역구분 선택">
+<option value="2">광역자치별</option>
+<option value="3">기초자치별</option>
+</select>
+</div>
+<div class="select_cover mr"><span>품목</span><select id="s_item_type" name="s_item_type" onchange="resetItemValue();" style="width:58px;" title="품목 선택"><option selected="" value="HS">HSK</option><option value="MTI">MTI</option><option value="SITC">SITC</option></select></div><label class="select_cover"><input id="s_item_value" name="s_item_value" onblur="javascript:changeCodeName(this);" style="width:100px;" title="품목코드 입력" type="text" value=""/> <a href="javascript:searchItemPop();" title="새창 - 팝업열림"><img alt="선택" src="/images/btn_select.gif"/></a><span class="convo" id="item_name_dp" style="max-width:280px;"></span><input id="CTR_GB" name="CTR_GB" type="hidden" value="KTS"/><input id="HS_YN" name="HS_YN" type="hidden" value="Y"/><input id="MTI_YN" name="MTI_YN" type="hidden" value="Y"/><input id="SITC_YN" name="SITC_YN" type="hidden" value="Y"/><input id="s_item_name" name="s_item_name" type="hidden" value=""/><input id="H_QTY_UNIT" name="H_QTY_UNIT" type="hidden" value=""/><input id="stat_yn" name="stat_yn" type="hidden" value="Y"/></label>
+</div>
+<div>
+<div class="select_cover mr">
+<span>년월</span>
+<select name="s_year" onchange="change_sel('s_month');" title="년도 선택">
+<option value="2026">2026</option>
+<option value="2025">2025</option>
+<option value="2024">2024</option>
+<option value="2023">2023</option>
+<option value="2022">2022</option>
+<option value="2021">2021</option>
+<option value="2020">2020</option>
+<option value="2019">2019</option>
+<option value="2018">2018</option>
+<option value="2017">2017</option>
+<option value="2016">2016</option>
+<option value="2015">2015</option>
+<option value="2014">2014</option>
+<option value="2013">2013</option>
+<option value="2012">2012</option>
+<option value="2011">2011</option>
+<option value="2010">2010</option>
+<option value="2009">2009</option>
+<option value="2008">2008</option>
+<option value="2007">2007</option>
+<option value="2006">2006</option>
+<option value="2005">2005</option>
+<option value="2004">2004</option>
+<option value="2003">2003</option>
+<option value="2002">2002</option>
+<option value="2001">2001</option>
+<option value="2000">2000</option>
+</select>
+</div>
+<div class="select_cover none">
+<select name="s_month" style="width:40px;" title="월 선택">
+<option value="01">1</option>
+<option value="02">2</option>
+<option value="03">3</option>
+<option value="04">4</option>
+<option value="05">5</option>
+<option value="06">6</option>
+<option value="07">7</option>
+<option selected="selected" value="08">8</option>
+</select>
+</div>
+<div class="select_cover">
+<span>화면선택</span>
+<select name="s_field" onchange="changeSort();" title="화면 선택"> <!-- AMT:금액, WGT:중량 -->
+<option value="AMT">금액</option>
+<option value="WGT">중량</option>
+<option value="QTY">수량</option>
+</select>
+</div>
+<div class="select_cover">
+<span>당월/누계</span>
+<select name="s_monthsum_gb" title="당월/누계 선택">
+<option value="1">당월</option>
+<option value="2">누계</option>
+</select>
+</div>
+<div class="select_cover">
+<span>단위</span>
+<select name="s_measure" style="width:80px;" title="금액단위 선택">
+<option value="1">US$, %</option>
+<option value="1000">천불, %</option>
+<option value="1000000">백만불, %</option>
+<option value="100000000">억불, %</option>
+</select>
+</div>
+<div class="select_cover">
+<span>정렬기준</span>
+<select name="s_sort" title="정렬 선택">
+<option value=""></option>
+</select>
+</div>
+<label class="select_cover none" for="s_sort_val_asc">
+<input id="s_sort_val_asc" name="s_sort_val" title="오름차순 정렬" type="radio" value="ASC"/>
+<span>오름차순</span>
+</label>
+<label class="select_cover none" for="s_sort_val_desc">
+<input checked="checked" id="s_sort_val_desc" name="s_sort_val" title="내림차순 정렬" type="radio" value="DESC"/>
+<span>내림차순</span>
+</label>
+</div>
+<div class="select_btn">
+<a href="javascript:doSearchReset()"><img alt="조회" src="/images/btn/btn_search.gif"/></a>
+</div>
+</fieldset>
+<div class="board_sort">
+<dl>
+<dt>전체</dt>
+<dd><span id="total_count"></span>건</dd>
+</dl>
+<dl>
+<dt>단위</dt>
+<dd id="unit_desc"></dd>
+</dl>
+<dl>
+<dt>(제공기관: 관세청)</dt>
+</dl>
+<dl>
+<dt class="red_desc">지역명을 클릭하시면 상세정보가 제공됩니다.</dt>
+</dl>
+<div>
+<select id="listCount" name="listCount" onchange="resetPageNum();" style="width:98px;" title="표시 행수 선택">
+<option value="20">20개씩 보기</option>
+<option value="50">50개씩 보기</option>
+<option value="100">100개씩 보기</option>
+</select>
+<a href="javascript:doExcelDown()" title="엑셀다운"><img alt="다운로드" src="/images/btn_download.gif"/></a>
+<a href="javascript:doPrint()" title="인쇄"><img alt="프린트" src="/images/btn_print.gif"/></a>
+<a class="on" href="javascript:changeView('SHEET')" id="sheetBtn" title="리스트"><img alt="리스트" src="/images/btn_list.gif"/></a>
+<a href="javascript:changeView('CHART')" id="chartBtn" onblur="NextFocus()" onkeydown="onKeyCheck()" title="차트"><img alt="차트" src="/images/btn_clear.gif"/></a>
+</div>
+</div>
+<div id="sheetArea" style="min-height:487px;">
+<script type="text/javascript">
+			createIBSheet("mySheet1", "100%", "100%");
+		</script>
+</div>
+<div class="chart_area" id="chartArea" style="display:none;">
+<div class="chart_type">
+<a class="on" href="javascript:chartSearch('bar')" id="barChart"><img alt="차트" src="/images/icon_chart03.gif"/></a>
+<a href="javascript:chartSearch('line')" id="lineChart"><img alt="차트" src="/images/icon_chart02.gif"/></a>
+<a href="javascript:chartSearch('pie')" id="pieChart"><img alt="차트" src="/images/icon_chart01.gif"/></a>
+</div>
+<div class="graph_area" id="chartHolder" style="width:1190px; height:461px;"></div>
+<div id="pieLegendArea" style="height:30px; text-align:center; display:none;">
+<input checked="checked" name="pie_legend" onclick="chartSearch('pie');" title="수출" type="radio" value="Exp"/>
+<span>수출</span>
+<input name="pie_legend" onclick="chartSearch('pie');" title="수입" type="radio" value="Imp"/>
+<span>수입</span>
+</div>
+</div>
+<!-- paging  -->
+<div class="paging" id="pagingArea">
+<div class="boardnavi" id="pageArea">
+</div>
+</div>
+<!-- //paging -->
+</form>
+<script>
+initdata.Cols = [
+	 {Header:"순번|순번",				Type:"Int",			Width:40,	SaveName:"RN",				Align:"Center", Sort:false}
+	,{Header:"총계구분|총계구분",		Type:"Text",		Width:0,	SaveName:"ORDER_NM",		Align:"Left", Sort:false, Hidden:true}
+	,{Header:"코드|코드",				Type:"Text",		Width:0,	SaveName:"ROW_CODE",		Align:"Left", Sort:false, Hidden:true}
+	,{Header:"지역명|지역명",			Type:"Text",		Width:280,	SaveName:"KOR_NAME",		Align:"Left", Sort:true, FontColor:popColor}
+	,{Header:"전년도|수출액",			Type:"Int",			Width:100,	SaveName:"LAST_EXP_AMT",	Align:"Right", Sort:false}
+	,{Header:"전년도|수출증감률",		Type:"Float",		Width:80,	SaveName:"LAST_EXP_RATE",	Align:"Right", Sort:false, Format:"#,##0.0"}
+	,{Header:"전년도|수입액",			Type:"Int",			Width:100,	SaveName:"LAST_IMP_AMT",	Align:"Right", Sort:false}
+	,{Header:"전년도|수입증감률",		Type:"Float",		Width:80,	SaveName:"LAST_IMP_RATE",	Align:"Right", Sort:false, Format:"#,##0.0"}
+	,{Header:"전년도|수지",			Type:"Int",			Width:100,	SaveName:"PROFIT",			Align:"Right", Sort:false}
+	,{Header:"당해년도|수출액",		Type:"Int",			Width:100,	SaveName:"THIS_EXP_AMT",	Align:"Right", Sort:true}
+	,{Header:"당해년도|수출증감률",	Type:"Float",		Width:80,	SaveName:"THIS_EXP_RATE",	Align:"Right", Sort:true, Format:"#,##0.0"}
+	,{Header:"당해년도|수입액",		Type:"Int",			Width:100,	SaveName:"THIS_IMP_AMT",	Align:"Right", Sort:true}
+	,{Header:"당해년도|수입증감률",	Type:"Float",		Width:80,	SaveName:"THIS_IMP_RATE",	Align:"Right", Sort:true, Format:"#,##0.0"}
+	,{Header:"당해년도|수지",			Type:"Int",			Width:100,	SaveName:"THIS_PROFIT",		Align:"Right", Sort:true}
+	];
+setSelect(f.s_year, '2026');
+setSelect(f.s_month, '08');
+mySheet1.DoSearch("/stat/kts/prod/ProdWholeListWorker.screen", FormQueryStringEnc(f));
+</script>

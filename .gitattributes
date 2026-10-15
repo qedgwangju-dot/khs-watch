@@ -1,0 +1,3 @@
+# Preserve source fixture byte hashes across Windows/Linux checkouts.
+tests/fixtures/hbm_kstat_province_202608.xml -text -diff
+tests/fixtures/hbm_kstat_province_form_20261016.html -text whitespace=cr-at-eol

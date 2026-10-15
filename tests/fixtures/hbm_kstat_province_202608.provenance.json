@@ -1,0 +1,49 @@
+{
+  "form": {
+    "url": "https://stat.kita.net/stat/kts/prod/ProdWholeList.screen",
+    "original_sha256": "f92d89bb499c48cc0c515f3497f53a471acdfc01d1937745286e292be68ea00f",
+    "fixture_sha256": "c64c0e234f9a8de40294e18d705dd578a80f3437686bac51a8ac619f295f15b4",
+    "fixture_kind": "derived_form_schema_excerpt"
+  },
+  "sheet": {
+    "url": "https://stat.kita.net/stat/kts/prod/ProdWholeListWorker.screen",
+    "sha256": "2f0e7f0e0f2a22ad5b01213ca5d5c5b35ce1992bf4ed9a2aa1950c1cf576e354",
+    "query_utc": "2026-10-15T16:07:09.540851+00:00",
+    "request": {
+      "event_udap": "Search",
+      "searchType": "SHEET",
+      "sheet_col_length": "",
+      "pageNum": "1",
+      "p_prod_cd": "",
+      "p_prod_nm": "",
+      "auth_info": "",
+      "viewType": "SHEET",
+      "chartType": "bar",
+      "chartDelay": "",
+      "p_field": "금액",
+      "p_measure": "1",
+      "s_url": "/stat/kts/prod/ProdWholeList",
+      "p_cond_in_gb": "2",
+      "s_item_type": "HS",
+      "s_item_value": "8542323000",
+      "CTR_GB": "KTS",
+      "HS_YN": "Y",
+      "MTI_YN": "Y",
+      "SITC_YN": "Y",
+      "s_item_name": "",
+      "H_QTY_UNIT": "",
+      "stat_yn": "Y",
+      "s_year": "2026",
+      "s_month": "08",
+      "s_field": "AMT",
+      "s_monthsum_gb": "1",
+      "s_measure": "1",
+      "s_sort": "THIS_EXP_AMT",
+      "s_sort_val": "DESC",
+      "listCount": "20",
+      "pie_legend": "Exp"
+    },
+    "fixture_kind": "exact_normal_public_response_bytes"
+  },
+  "limit": "202608 is a unit-reference month, not a substitute for 202609. XML has no response month or HSK echo."
+}
