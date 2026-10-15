@@ -45,6 +45,110 @@ class IntegrityTests(unittest.TestCase):
         fixture = json.loads(path.read_text(encoding='utf-8'))
         return fixture, dt.datetime.fromisoformat(fixture['provenance']['queried_at_kst'])
 
+    def refinery_statement_fixture(self):
+        path = Path(__file__).parent/'test_fixtures/war_refinery_statement_38706618570.json'
+        fixture = json.loads(path.read_text(encoding='utf-8'))
+        return fixture, dt.datetime.fromisoformat(fixture['provenance']['queried_at_kst'])
+
+    def test_actual_quoted_refinery_resumption_is_a_statement(self):
+        fixture, _ = self.refinery_statement_fixture()
+        row = fixture['articles'][1]
+        self.assertEqual(integrity.non_military_kind(row), 'military_statement')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+        self.assertEqual(integrity.topic_label(row), '우크라이나·러시아 · 군사 대응·보복 발언')
+
+    def test_refinery_statement_preserves_original_over_attack_cache(self):
+        fixture, now = self.refinery_statement_fixture()
+        row = fixture['articles'][1]
+        row['title_ko'] = '우크라이나가 러시아 정유시설 공격을 재개했다'
+        row['signals_ko'] = ['우크라정유시설공격재개확인']
+        row['tags'] = ['확전', '공격확대예고']
+        with patch.object(integrity.body_parallel, '_safe_enrich'):
+            text = integrity.build_alert([row], [], now)
+        self.assertIn(html.escape(row['title_original']), text)
+        self.assertEqual(row['classification_color'], 'yellow')
+        self.assertEqual(row['signals_ko'], [])
+        self.assertNotIn('🔴 [신규]', text)
+        self.assertNotIn('공격을 재개했다', text)
+
+    def test_preserved_four_article_replay_has_statement_stage_and_same_ids(self):
+        fixture, now = self.refinery_statement_fixture()
+        rows = fixture['articles']
+        state_before = watch.STATE.read_bytes()
+        with patch.object(integrity.body_parallel, '_safe_enrich'), patch.object(watch, 'market_source_status', {}, create=True):
+            text = integrity.build_alert(rows, fixture['markets'], now)
+        receipt = evidence.alert_receipt(rows, fixture['markets'], now, text)
+        self.assertEqual([r['id'] for r in receipt['articles'] if r['rendered']], [r['id'] for r in rows])
+        self.assertEqual([r['classification_color'] for r in rows], ['yellow'] * 4)
+        self.assertIn('발언·검토 단계', text)
+        self.assertNotIn('신규 변화의 중심은 실제 공격', text)
+        self.assertNotIn('🔴 [신규]', text)
+        for row in rows:
+            self.assertIn(html.escape(row['title_original']), text)
+            self.assertFalse(row['body_verified'])
+        self.assertEqual(watch.STATE.read_bytes(), state_before)
+
+    def test_final_gate_rejects_actual_same_hash_red_refinery_statement(self):
+        fixture, now = self.refinery_statement_fixture()
+        text = fixture['bad_alert']
+        receipt = evidence.alert_receipt(fixture['articles'], fixture['markets'], now, text)
+        self.assertEqual(receipt['alert_sha256'], fixture['provenance']['alert_sha256'])
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            root = Path(folder)
+            for attr, name in {'ALERT': 'alert.txt', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                stack.enter_context(patch.object(watch, attr, root/name))
+            watch.ALERT.write_text(text, encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids': [row['id'] for row in fixture['articles']]}), encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+            stack.enter_context(patch.object(integrity, '_verify'))
+            with self.assertRaisesRegex(RuntimeError, 'rendered topic differs'):
+                integrity.verify_alert()
+
+    def test_refinery_statement_gate_rechecks_color_with_correct_topic(self):
+        fixture, now = self.refinery_statement_fixture()
+        row = fixture['articles'][1]
+        text = ('🔴 [신규] <b>1. ' + integrity.topic_label(row) + '</b>\n'
+                + html.escape(row['title_original']) + '\n<a href="' + row['link'] + '">원문</a>')
+        receipt = evidence.alert_receipt([row], [], now, text)
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            root = Path(folder)
+            for attr, name in {'ALERT': 'alert.txt', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                stack.enter_context(patch.object(watch, attr, root/name))
+            watch.ALERT.write_text(text, encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids': [row['id']]}), encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+            stack.enter_context(patch.object(integrity, '_verify'))
+            with self.assertRaisesRegex(RuntimeError, 'statement presented'):
+                integrity.verify_alert()
+
+    def test_quoted_future_refinery_forms_remain_statements(self):
+        for title in ('젤렌스키 “러 정유시설 공격 재개”…정면돌파 시사',
+                      '우크라이나 "러시아 정유소 공격 재개할 계획"',
+                      '젤렌스키 "러 정유시설 공격 재개하겠다"'):
+            with self.subTest(title=title):
+                self.assertEqual(integrity.non_military_kind(article(title)), 'military_statement')
+                self.assertEqual(integrity.final_color(article(title)), 'yellow')
+
+    def test_quoted_completed_refinery_actions_remain_attacks(self):
+        for title in ('젤렌스키 "러 정유시설 공격 재개했다"…정면돌파 시사',
+                      '젤렌스키 "러 정유시설 공격 재개하고 있다"…추가 대응 시사',
+                      '우크라이나, 러 정유시설 공격 재개…젤렌스키 추가 압박 시사'):
+            with self.subTest(title=title):
+                self.assertIsNone(integrity.non_military_kind(article(title)))
+                self.assertEqual(integrity.final_color(article(title)), 'red')
+
+    def test_independent_action_outside_refinery_policy_quote_wins(self):
+        for title in ('젤렌스키 "러 정유시설 공격 재개"…방침 시사, 러시아 미사일 발사',
+                      '러시아 공습 개시…젤렌스키 "러 정유시설 공격 재개" 방침 시사'):
+            with self.subTest(title=title):
+                self.assertIsNone(integrity.non_military_kind(article(title)))
+                self.assertEqual(integrity.final_color(article(title)), 'red')
+
+    def test_other_actual_action_inside_same_policy_quote_is_not_hidden(self):
+        row = article('젤렌스키 "러시아 미사일 발사, 러 정유시설 공격 재개" 방침 시사')
+        self.assertIsNone(integrity.non_military_kind(row))
+        self.assertEqual(integrity.final_color(row), 'red')
+
 
     def riyadh_fixture(self):
         path = Path(__file__).parent/'test_fixtures/war_riyadh_headline_38636753771.json'
