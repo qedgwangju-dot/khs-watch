@@ -169,6 +169,36 @@ CATEGORIES = (
         indicator="FAA 허가 상업발사 횟수, 주요 발사체 연간 운항횟수, 발사장 슬롯 대기기간, 위성사업자 일정 변경",
     ),
     Category(
+        key="korea_orbital_ai",
+        tag="[국내 우주 AI]",
+        name="우주항공청 궤도 AI 데이터센터 실증·예산",
+        queries=(
+            'site:kasa.go.kr "우주 데이터센터" (실증 OR 예산 OR 과제 OR 전력) when:30d',
+            '"우주항공청" "우주 AI 데이터센터" (2028 OR 2030 OR 실증 OR 예산) when:14d',
+            '"우주 데이터센터" (고대역폭메모리 OR 신경망처리장치 OR 위성) when:14d',
+        ),
+        relevance=re.compile(r"(우주항공청|KASA|우주\s*데이터센터|우주\s*AI).*(2028|2030|실증|예산|기술|위성|반도체)|"
+                             r"(2028|2030|실증|예산).*(우주항공청|우주\s*데이터센터)", re.I),
+        meaning="우주항공청 2030년 기술실증 기준계획과 2028년 조기실증 추진발언을 구분하고 실제 국비·시제품·지상검증·우주실증 발주로 연결되는지 확인합니다.",
+        failure="방사선 내성·발열 방출·전력제어·고대역폭메모리 신뢰성 검증 또는 국비 배정 지연 시 발사·실증 일정이 뒤로 밀립니다.",
+        indicator="2027년 예산안 내역·시제품 선정·우주검증 탑재 계약·2028 실증 일정 공식 확정 여부",
+    ),
+    Category(
+        key="space_investment",
+        tag="[우주투자·자금]",
+        name="글로벌 우주투자·발사체 공급 부족",
+        queries=(
+            '"Space Capital" ("92.5 billion" OR "$100 billion") "space" when:30d',
+            'site:seraphim.vc "SpaceTech Investment Tracker" "Q3 2026" when:30d',
+            '"space investment" "launch shortage" (2026 OR SpaceX) when:14d',
+        ),
+        relevance=re.compile(r"(Space\s*Capital|Seraphim|space\s*invest(?:ment|ing)|SpaceX).*(92\.5|100\s*billion|20\.8|launch\s*shortage|Q3\s*2026)|"
+                             r"(launch\s*shortage|space\s*funding).*(SpaceX|2026|billion)", re.I),
+        meaning="우주산업 전체 투자액은 Space Capital 기준이고 스타트업 조달액은 Seraphim 기준입니다. 규모와 집계범위가 달라 섞거나 합산하지 않습니다.",
+        failure="민간자금 급증이 발사체 실제 양산·인증·수주·반복매출로 연결되지 않으면 투자 회수기간만 길어집니다.",
+        indicator="분기 자금조달·투자건수·실제 발사서비스 수주·상장기업 영업현금흐름",
+    ),
+    Category(
         key="falcon_transition",
         tag="[발사체 전환]",
         name="Falcon 9·Dragon 운항과 Starship 대체 수송",
@@ -591,7 +621,7 @@ def main() -> int:
 
         # Adding a surveillance axis must not rebroadcast old news as a
         # new contract, retirement decision, or operational emergency.
-        first_axis_scan = category.key == "falcon_transition" and category.key not in initialized
+        first_axis_scan = category.key in {"falcon_transition", "korea_orbital_ai", "space_investment"} and category.key not in initialized
         if first_axis_scan:
             newly_initialized.append(category.key)
         elif force_notify or bootstrap:
@@ -665,6 +695,9 @@ def self_test() -> int:
     assert event_signature(category, {"title": "NASA Crew-15 Dragon Falcon 9", "description": "", "source": "NASA"}) == "nasa_dragon"
     assert event_signature(category, {"title": "Falcon 9 Starship phaseout", "description": "", "source": "Reuters"}) == "falcon_transition"
     assert "falcon_transition" in [x.key for x in CATEGORIES]
+    assert "korea_orbital_ai" in [x.key for x in CATEGORIES]
+    assert "space_investment" in [x.key for x in CATEGORIES]
+    assert "2028년" in next(x for x in CATEGORIES if x.key == "korea_orbital_ai").meaning
     rumor = {"title": "SpaceX will retire Dragon and Falcon 9 immediately",
              "description": "", "source": "Reuters", "source_url": "https://reuters.com"}
     rumor_2 = {"title": "SpaceX to discontinue Dragon Falcon 9 at once",
