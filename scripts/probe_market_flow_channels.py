@@ -50,6 +50,9 @@ def main(path: Path) -> int:
                                           for k in ("전체", "차익", "비차익")),
                 "program_query_clock": (snapshot.get("프로그램") or {}).get("source_time_verified") is False,
             }
+            if market == "KOSDAQ":
+                checks["futures_investor_reconciliation"] = (
+                    (snapshot.get("지수선물") or {}).get("investor_quality") or {}).get("verified") is True
             issues = [key for key, ok in checks.items() if not ok]
             failed.extend(market + ":" + key for key in issues)
             evidence["markets"][market] = {"snapshot": snapshot, "checks": checks,
@@ -70,7 +73,7 @@ def main(path: Path) -> int:
                 "status": "request_failed", "error_type": type(exc).__name__,
                 "original_operating_response": False,
             }
-        if failed:
+        if any(":futures_" in issue for issue in failed):
             # Source diagnosis only. U includes another session; its amounts
             # cannot substitute for the event's D request in either monitor.
             evidence["diagnostics"] = {}
