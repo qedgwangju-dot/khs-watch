@@ -24,56 +24,60 @@
     {
       "ts": "2026-10-15T19:19:55+09:00",
       "value": 1344.8
+    },
+    {
+      "ts": "2026-10-15T21:43:14+09:00",
+      "value": 1345.9
     }
   ],
   "sent_level": 0,
   "sent_weakening": false,
   "last_signal": null,
   "latest": {
-    "checked_at": "2026-10-15T19:19:55+09:00",
+    "checked_at": "2026-10-15T21:43:14+09:00",
     "market_phase": "장마감 후",
     "fx": {
-      "value": 1344.8,
+      "value": 1345.9,
       "prev_close": 1338.3,
       "naver_prev_close": 1343.0,
       "date": "2026-10-15",
       "source": "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5",
-      "comparison_basis": "서울외환시장 15:30 USD/KRW 종가",
+      "comparison_basis": "서울외환시장 15:30 USD/KRW 종가 · 시장 스트레스 감시 검증값 재사용",
       "prev_close_source": "https://ksureapi.einfomax.co.kr/v2/datafeed/ksure/fxview?id=20261014153554044",
       "basis_error": null,
-      "basis_reused": false
+      "basis_reused": true
     },
     "session_low": 1342.4,
-    "rebound_krw": 2.3999999999998636,
-    "rebound_pct": 0.17878426698449967,
-    "daily_krw": 6.5,
-    "daily_pct": 0.4856908017634387,
+    "rebound_krw": 3.5,
+    "rebound_pct": 0.2607270560190722,
+    "daily_krw": 7.600000000000136,
+    "daily_pct": 0.5678846297541673,
     "kospi_pct": -7.57,
     "ship": {
-      "avg": -5.952500000000001,
+      "avg": -6.505,
       "positive": 0,
-      "relative": 1.6174999999999997,
+      "relative": 1.0650000000000004,
       "valid": 4,
       "confirmed": false
     },
     "defense": {
-      "avg": -4.8175,
+      "avg": -5.5425,
       "positive": 0,
-      "relative": 2.7525000000000004,
+      "relative": 2.0275,
       "valid": 4,
       "confirmed": false
     },
     "auto": {
-      "avg": -6.05,
+      "avg": -6.8425,
       "positive": 0,
-      "relative": 1.5200000000000005,
+      "relative": 0.7275,
       "valid": 4,
       "confirmed": false
     },
     "counter": {
-      "avg": -0.5575,
+      "avg": -0.5725,
       "positive": 1,
-      "relative": 7.0125,
+      "relative": 6.9975000000000005,
       "valid": 4,
       "confirmed": false
     }
