@@ -1,6 +1,6 @@
 {
   "seen": {
-    "Nasdaq SOX|sox": "e446dddc12d2dfc9837c52972b062b79a55c6118169381238d52feb100aa6289",
+    "Nasdaq SOX|sox": "4e1375ddf3fb68f4597993c016b0ce81b4cca302f11597654be02db05f29626b",
     "Cboe|options": "4ddff0d7b6207ed2b683ea627b23e1aa9df2dfcf7a24fdd613a0e6c18bbd1a9d",
     "CFTC|cot": "d77b13b2f03d88b50e2d4d0bdd6e751cb9f97f7c6584a27913310107f1469edf"
   },
@@ -18,16 +18,45 @@
         "pct": -4.295348166236213,
         "d1_pct": -4.295348166236213,
         "official_overview_url": "https://indexes.nasdaq.com/Index/History/SOX",
-        "crosscheck_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ESOX?range=10d&interval=1d",
+        "crosscheck_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ESOX?range=6mo&interval=1d",
         "crosscheck_same_date": true,
         "crosscheck_close_diff": 0.00011718749919964466,
         "final_close_confirmed": true,
         "expected_completed_session": "2026-10-14",
         "d3_pct": -7.063397854834463,
-        "d5_pct": -10.57519213007011
+        "d5_pct": -10.57519213007011,
+        "month_windows": {
+          "1m": {
+            "calendar_months": 1,
+            "cutoff_date": "2026-09-14",
+            "end_date": "2026-10-14",
+            "end_close": 11684.38,
+            "basis": "calendar months; latest observed close on or before cutoff",
+            "status": "unavailable",
+            "base_date": "2026-09-14",
+            "yahoo_base_close": 11131.2802734375,
+            "nasdaq_base_close": null,
+            "cutoff_gap_days": 0,
+            "reason": "Same-date Nasdaq baseline close unavailable"
+          },
+          "3m": {
+            "calendar_months": 3,
+            "cutoff_date": "2026-07-14",
+            "end_date": "2026-10-14",
+            "end_close": 11684.38,
+            "basis": "calendar months; latest observed close on or before cutoff",
+            "status": "unavailable",
+            "base_date": "2026-07-14",
+            "yahoo_base_close": 12661.9296875,
+            "nasdaq_base_close": null,
+            "cutoff_gap_days": 0,
+            "reason": "Same-date Nasdaq baseline close unavailable"
+          }
+        },
+        "month_window_history_url": null
       },
       "url": "https://indexes.nasdaq.com/Index/History/SOX",
-      "fingerprint": "e446dddc12d2dfc9837c52972b062b79a55c6118169381238d52feb100aa6289"
+      "fingerprint": "4e1375ddf3fb68f4597993c016b0ce81b4cca302f11597654be02db05f29626b"
     },
     "Cboe|options": {
       "source": "Cboe",
@@ -133,6 +162,82 @@
           2026
         ],
         "ten_year_complete": true,
+        "month_windows": {
+          "1m": {
+            "calendar_months": 1,
+            "cutoff_date": "2026-09-06",
+            "end_date": "2026-10-06",
+            "market": "NASDAQ MINI",
+            "cftc_code": "209742",
+            "basis": "CFTC TFF futures-only; latest weekly observation on or before calendar cutoff",
+            "status": "verified",
+            "actors": {
+              "asset_manager": {
+                "status": "verified",
+                "base_long": 108397.0,
+                "base_short": 36520.0,
+                "end_long": 111727.0,
+                "end_short": 37929.0,
+                "base_net": 71877.0,
+                "end_net": 73798.0,
+                "net_change": 1921.0,
+                "long_change": 3330.0,
+                "short_change": 1409.0
+              },
+              "leveraged_funds": {
+                "status": "verified",
+                "base_long": 55361.0,
+                "base_short": 69453.0,
+                "end_long": 51349.0,
+                "end_short": 70561.0,
+                "base_net": -14092.0,
+                "end_net": -19212.0,
+                "net_change": -5120.0,
+                "long_change": -4012.0,
+                "short_change": 1108.0
+              }
+            },
+            "base_date": "2026-09-01",
+            "cutoff_gap_days": 5
+          },
+          "3m": {
+            "calendar_months": 3,
+            "cutoff_date": "2026-07-06",
+            "end_date": "2026-10-06",
+            "market": "NASDAQ MINI",
+            "cftc_code": "209742",
+            "basis": "CFTC TFF futures-only; latest weekly observation on or before calendar cutoff",
+            "status": "verified",
+            "actors": {
+              "asset_manager": {
+                "status": "verified",
+                "base_long": 102755.0,
+                "base_short": 35445.0,
+                "end_long": 111727.0,
+                "end_short": 37929.0,
+                "base_net": 67310.0,
+                "end_net": 73798.0,
+                "net_change": 6488.0,
+                "long_change": 8972.0,
+                "short_change": 2484.0
+              },
+              "leveraged_funds": {
+                "status": "verified",
+                "base_long": 36796.0,
+                "base_short": 105413.0,
+                "end_long": 51349.0,
+                "end_short": 70561.0,
+                "base_net": -68617.0,
+                "end_net": -19212.0,
+                "net_change": 49405.0,
+                "long_change": 14553.0,
+                "short_change": -34852.0
+              }
+            },
+            "base_date": "2026-06-30",
+            "cutoff_gap_days": 6
+          }
+        },
         "sample_n_10y": 522,
         "start_date_10y": "2016-10-11",
         "end_date_10y": "2026-10-06",
@@ -159,5 +264,5 @@
       "source_mode": "CFTC TFF live HTML"
     }
   },
-  "updated_at_kst": "2026-10-15T16:26:43.053243+09:00"
+  "updated_at_kst": "2026-10-15T16:55:30.979295+09:00"
 }
