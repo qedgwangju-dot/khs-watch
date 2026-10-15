@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-08-24T21:32:19+09:00",
-  "last_checked_kst": "2026-10-15T22:37:29+09:00",
+  "last_checked_kst": "2026-10-15T23:22:17+09:00",
   "seen": {
     "74fd33cf93fb250c6b18ecd7": {
       "title": "리벨리온, 공공 CCTV 관제에 서버형 NPU 대규모 인프라 공급… 국산 AI 인프라 상용화로 기술 자립 가속",
@@ -3350,6 +3350,12 @@
       "material_stage": 1,
       "first_seen_kst": "2026-10-15T09:05:00+09:00",
       "suppressed_duplicate": "same_url"
+    },
+    "965af9d0020f07106871adb5": {
+      "title": "리벨리온, 스퀴즈비츠 인수…\"AI 최적화 기능 내재화\" - 유니콘팩토리",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5fdlYtc3NnR1R1VzdhWC1JOU5RSHV1YmNvcHJtZGRPZnpvWjNSbzgtOGZERXp2eVVjNkRJU0czbE5YM21ocG1RcW02bkhlS3JhQzlna2xnNlRFSDRKX2VLZjE2azNZU3VEbmV0MA?oc=5",
+      "first_seen_kst": "2026-10-15T23:22:17+09:00",
+      "suppressed_stale": true
     }
   }
 }
