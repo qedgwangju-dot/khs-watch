@@ -235,7 +235,7 @@ class BriefTests(unittest.TestCase):
         values, context = self.sources()
         message = self.render(values, context, detail_url="https://github.com/qedgwangju-dot/khs-watch/actions/runs/123")
         detail = view.render_detail_alert(values["CFTC|cot"],values["Cboe|options"],values["Nasdaq SOX|sox"],list(values.values()),list(values.values()),context=context)
-        self.assertLess(len(message.strip()), 1800)
+        self.assertLessEqual(len(message.strip()), view.BRIEF_MAX_CHARS)
         self.assertLess(len(message.strip()), len(detail.strip()) * .4)
         self.assertIn("상세 수치·계산·출처</a>", message)
         for phrase in ("10년 백분위", "원수치", "112,821", "2,931,155"):
