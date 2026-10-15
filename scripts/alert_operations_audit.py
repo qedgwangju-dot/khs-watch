@@ -169,6 +169,31 @@ def audit_runtime(
                 "latest_schedule_url": latest_schedule.get("html_url", "") if latest_schedule else "",
             })
     failures.sort(key=lambda x: (-x["failures"], -x["cancelled"], x["path"]))
+
+    # A successful manual/push run must not conceal successive failed scheduled
+    # checks. Count scheduled failures separately, newest-first; include only
+    # runs observable in the captured API window, never claim lifetime totals.
+    persistent_schedule_failures = []
+    for path, group in by_path.items():
+        scheduled = [run for run in group if run.get("event") == "schedule"]
+        if not scheduled:
+            continue
+        streak = 0
+        for run in scheduled:
+            if run.get("conclusion") == "failure":
+                streak += 1
+            else:
+                break
+        if streak >= 3:
+            persistent_schedule_failures.append({
+                "path": path,
+                "consecutive_schedule_failures_observed": streak,
+                "latest_failure_at": scheduled[0].get("created_at", ""),
+                "latest_failure_url": scheduled[0].get("html_url", ""),
+            })
+    persistent_schedule_failures.sort(
+        key=lambda item: (-item["consecutive_schedule_failures_observed"], item["path"])
+    )
     disabled = [
         {"path": w.get("path", ""), "state": w.get("state", ""), "name": w.get("name", "")}
         for w in workflows if str(w.get("state") or "") not in ("active", "")
@@ -235,6 +260,7 @@ def audit_runtime(
         "registry_only_workflows": registry_only,
         "conclusions": dict(sorted(totals.items())),
         "failure_clusters": failures,
+        "persistent_scheduled_failures": persistent_schedule_failures,
         "schedule_silence_candidates": schedule_gaps,
         "inactive_workflows": disabled,
         "registry_size": len(workflows),
@@ -268,7 +294,14 @@ def make_markdown(static: dict[str, Any], runtime: dict[str, Any] | None) -> str
             f"- 등록 워크플로 {runtime['registry_size']}개 · 비활성 {len(runtime['inactive_workflows'])}개 (임의 재활성화 금지)",
             f"- 현재 파일 목록과 불일치하는 등록 항목: {len(runtime['registry_only_workflows'])}개 (확인 전 삭제 금지)",
             f"- 활성 작업 예약 실행 공백 후보: {len(runtime.get('schedule_silence_candidates', []))}개 (등록일·조회 기간 확인 전 장애 단정 금지)",
+            f"- 연속 예약 실패 3회 이상: {len(runtime.get('persistent_scheduled_failures', []))}개 (다른 트리거 성공으로 가리지 않음)",
         ])
+        for row in runtime.get("persistent_scheduled_failures", [])[:12]:
+            lines.append(
+                f"  - {row['path']}: 예약 연속 실패 {row['consecutive_schedule_failures_observed']}회"
+                f" · 최신 실패 {row['latest_failure_at']}"
+                f" · {row['latest_failure_url']}"
+            )
         for gap in runtime.get("schedule_silence_candidates", [])[:12]:
             lines.append(
                 f"  - {gap['path']}: {gap['reason']}"
