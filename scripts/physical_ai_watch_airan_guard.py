@@ -1576,11 +1576,11 @@ ROBOT_OCT15_GROUP_REGEX = (
     ('rainbow_fcc_compliance', re.compile(r'레인보우로보틱스|Rainbow\s*Robotics|RB[-\s]?Y1',re.I),
      re.compile(r'FCC|Covered\s*List|조건부\s*승인|미국.{0,24}규제',re.I)),
     ('xinjian_prs_ipo', re.compile(r'新剑传动|신젠전동|Xinjian\s*(?:Drive|Transmission)',re.I),
-     re.compile(r'IPO|上市|问询|질의서|롤러\s*스크루|丝杠|Optimus|테슬라|Tesla',re.I)),
+     re.compile(r'IPO|上市|问询|질의서|A사|A公司|A\s*company|첫\s*출하|양산\s*출하',re.I)),
     ('unichem_loomia_acquisition', re.compile(r'유니켐|Unichem',re.I),
-     re.compile(r'Loomia|루미아',re.I)),
+     re.compile(r'(?:Loomia|루미아).{0,100}(?:인수|지분|본계약|거래\s*종결)|(?:인수|지분|본계약|거래\s*종결|acquisit).{0,100}(?:Loomia|루미아)',re.I)),
     ('atlas_protoops_build', re.compile(r'Boston\s*Dynamics|보스턴다이내믹스',re.I),
-     re.compile(r'Atlas|아틀라스',re.I)),
+     re.compile(r'(?:Atlas|아틀라스).{0,150}(?:ProtoOps|시제품|제작\s*시간|제작시간|1\s*시간|one\s*hour|one\s*day|prototype\s*(?:shop|operation))|(?:ProtoOps|시제품|제작\s*시간|1\s*시간|one\s*hour|one\s*day).{0,150}(?:Atlas|아틀라스)',re.I)),
 )
 ROBOT_OCT15_PRIMARY = {
     'agility_spac_2026': {'Agility Robotics', 'SEC', 'Churchill Capital Corp XI'},
