@@ -3825,6 +3825,7 @@ oct15_expected = {
     'unichem_loomia_signed': ('unichem_loomia_acquisition', '인수 본계약'),
     'atlas_protoops_goal': ('atlas_protoops_build', '제작시간 단축 목표'),
     'alert223_quality_correction': ('alert_quality_223', 'ESS 오탐'),
+    'alert224225_quantity_correction': ('alert_quality_qty_224225', '수량 표기 오탐'),
 }
 oct15_keys = []
 for event_key, (expected_group, expected_phrase) in oct15_expected.items():
@@ -3937,6 +3938,45 @@ try:
         assert watcher.query_news(watcher.ROBOT_OCT15_PREFIX + event_key) == []
 finally:
     base.NOW = future_now
+
+
+
+# 53) No generic quantity badges. In particular, 6~12개월 is
+# a time horizon, not 12 products; sites and targets aren't shipments.
+for fake_qty_sentence in (
+    "공급망 지연은 6~12개월 위험구간",
+    "내년 1시간 목표, 6~12개월 내 수율 검증",
+    "9개 시설 가동 → 2027년 25개 시설 목표",
+    "2028년 로봇 1,000대 주문 확보 목표",
+):
+    assert watcher.qty._unknown_block(fake_qty_sentence) is None, (
+        "generic quantity block reintroduced", fake_qty_sentence
+    )
+assert watcher.qty.QTY_RE.findall("6~12개월") == [], (
+    "12 months parsed as 12 individual parts",
+    watcher.qty.QTY_RE.findall("6~12개월"),
+)
+assert watcher.qty.QTY_RE.findall("15개소") == [], "15 sites suffix is not 15 products"
+assert watcher.qty.QTY_RE.findall("9개 시설") == [('9','개')], (
+    "raw unit lexer still detects true explicit counts, but must not call"
+    " them confirmed shipments"
+)
+assert watcher.qty.QTY_RE.findall("254MW 1000MWh 1GWh 1GW") == [
+    ('254','MW'),('1','GW')
+], "power MW is not energy MWh"
+
+oct15_qty_correction = watcher.query_news(
+    watcher.ROBOT_OCT15_PREFIX + 'alert224225_quantity_correction'
+)
+if base.NOW.astimezone(base.KST).date() <= dt.date(2026,10,20):
+    assert len(oct15_qty_correction) == 1, oct15_qty_correction
+    qi=oct15_qty_correction[0]
+    qg,qs,qc,qk=classify(qi)
+    assert qg=='alert_quality_qty_224225' and qs>=11, (qg,qs,qc)
+    assert '224·225' in qc and '수량' in qc, qc
+    assert '12개월' in qi['description'] and '12개' in qi['description']
+    assert '목표' in base.meaning(qc)
+    assert qk not in oct15_keys[:-1], 'quantity correction must be separate event'
 
 
 print("Physical-AI watcher regression guards: PASS")
