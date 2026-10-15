@@ -291,8 +291,74 @@ def _fund_date(ticker, text):
 
 
 def _rate_move_bp(rate_text):
-    m = re.search(r"([+-]\d+(?:\.\d+)?)bp", rate_text or "")
+    m = re.search(r"([+-]?\d+(?:\.\d+)?)bp", rate_text or "")
     return float(m.group(1)) if m else None
+
+
+def _display_overall_head(head):
+    labels = {
+        "국채금리 하락·선행 신용경계": "장기 국채금리 하락 · 회사채 신용 경계",
+        "국채금리 하락·신용경계": "장기 국채금리 하락 · 회사채 신용 경계",
+        "장기금리 상승·선행 신용경계": "장기 국채금리 상승 · 회사채 신용 경계",
+        "금리·신용 위험경계 강화": "장기 국채금리 상승 · 회사채 신용 경계",
+        "금리 방향 혼조·선행 신용경계": "국채금리 혼조 · 회사채 신용 경계",
+        "금리 방향 혼조·신용경계": "국채금리 혼조 · 회사채 신용 경계",
+    }
+    return labels.get(head, head)
+
+
+def _flow_direction(flow):
+    if _inflow(flow):
+        return "유입"
+    if _outflow(flow):
+        return "유출"
+    if "→" in flow and ("변화" in flow or "±$0" in flow):
+        return "변화 없음"
+    return "확인 대기"
+
+
+def _rate_direction(move):
+    if move is None:
+        return "확인 대기"
+    if move > 0:
+        return "↑ 상승"
+    if move < 0:
+        return "↓ 하락"
+    return "→ 보합"
+
+
+def _direction_panel(flows, r2, r10, r30, credit_head, hyg_oas):
+    d2, d10, d30 = [_rate_move_bp(r) for r in (r2, r10, r30)]
+    if d10 is None or d30 is None:
+        long_direction = "확인 대기"
+    elif d10 < 0 and d30 < 0:
+        long_direction = "↓ 하락"
+    elif d10 > 0 and d30 > 0:
+        long_direction = "↑ 상승"
+    elif d10 == d30 == 0:
+        long_direction = "→ 보합"
+    else:
+        long_direction = f"혼조 (10년 {_rate_direction(d10)} · 30년 {_rate_direction(d30)})"
+    hdelta = _oas_delta(hyg_oas)
+    if hdelta is None:
+        spread_move = "변화 비교 확인 대기"
+    elif abs(hdelta) < 0.05:
+        spread_move = "→ 0.0bp"
+    else:
+        spread_move = f"{'↑' if hdelta > 0 else '↓'} {hdelta:+.1f}bp"
+    credit_label = credit_head.removeprefix("기준일 시차 있는 ").removeprefix("신용위험 ")
+    return [
+        f"금리 방향: 장기 {long_direction} · 2년 {_rate_direction(d2)}",
+        "국채 자금: " + " · ".join(
+            f"{label}({ticker}) {_flow_direction(flows[ticker][0])}"
+            for ticker, label in (("SHY", "단기"), ("IEF", "중기"), ("TLT", "장기"))
+        ) + " (ETF 추정)",
+        "회사채 자금: " + " · ".join(
+            f"{label}({ticker}) {_flow_direction(flows[ticker][0])}"
+            for ticker, label in (("LQD", "투자등급"), ("HYG", "고수익"))
+        ) + " (ETF 추정)",
+        f"신용 위험: {credit_label} · HYG 신용스프레드(OAS) {spread_move} (직전 저장값 대비)",
+    ]
 
 
 def _credit_alert_line(hyg_flow, hyg_oas, hyg_fund_date=None):
@@ -423,9 +489,8 @@ def _compact_report(raw_text):
     flows = {t: _flow(t, raw_text) for t in ("SHY", "IEF", "TLT", "LQD", "HYG")}
     lqd_oas, hyg_oas = _oas("LQD", raw_text), _oas("HYG", raw_text)
     overall_head, overall_reason = readable._direction_pair("전체 자금 방향", raw_text)
-    treasury_head, treasury_reason = readable._direction_pair("ETF 자금 방향", raw_text)
-    credit_flow_head, credit_flow_reason = readable._direction_pair("신용자금 방향", raw_text)
-    credit_head, credit_reason = credit_flow_head, credit_flow_reason
+    overall_head = _display_overall_head(overall_head)
+    credit_head, _ = readable._direction_pair("신용자금 방향", raw_text)
     hyg_fund_date = _fund_date("HYG", raw_text)
     credit_alert_line = _credit_alert_line(flows["HYG"][0], hyg_oas, hyg_fund_date)
 
@@ -470,13 +535,12 @@ def _compact_report(raw_text):
         refi_line = "차환: MSPD 최신값 조회 실패 → 판정 보류"
         refi_date = "확인 대기"
 
-    conclusion = f"{overall_head} — {overall_reason}"
     next_alert_line = _next_alert(y10, y30, flows["HYG"][0], hyg_oas)
     latest_oas_date = _oas_asof(hyg_oas)
     if treasury_date != "확인 대기" and latest_oas_date and latest_oas_date != treasury_date:
         credit_date_note = (
             f"자료시점 구분: 국채·ETF {treasury_date} / 회사채 OAS {latest_oas_date}. "
-            "발행좌수 기반 추정 자금흐름과 신용스프레드는 다른 거래일 자료이며 당일 동시 발생으로 판정하지 않음"
+            "거래일이 달라 당일 동시 악화로 단정하지 않음"
         )
     else:
         credit_date_note = (
@@ -487,24 +551,33 @@ def _compact_report(raw_text):
     lines = [
         "[미 국채·회사채 방향성 일일 보고]",
         f"조회: {date_line}",
-        f"환율: {fx_line}",
         "",
         "[한눈에 보기]",
         f"전체 방향: {overall_head}",
-        f"→ {overall_reason}",
-        "",
-        f"국채 자금: SHY {flows['SHY'][0]} | IEF {flows['IEF'][0]} | TLT {flows['TLT'][0]}",
-        f"회사채 자금: LQD {flows['LQD'][0]} | HYG {flows['HYG'][0]}",
-        f"신용 위험: {credit_head} | LQD OAS {lqd_oas} | HYG OAS {hyg_oas}",
-        f"→ {credit_reason}",
-        *([credit_alert_line] if credit_alert_line else []),
+        *_direction_panel(flows, r2, r10, r30, credit_head, hyg_oas),
         credit_date_note,
         "",
-        f"금리: 2년 {r2} | 10년 {r10} | 30년 {r30}",
+        "[금리 상세]",
+        f"2년: {r2}",
+        f"10년: {r10}",
+        f"30년: {r30}",
         f"커브: {regime} = {easy}",
         f"금리차: 2-10년 {s210} | 10-30년 {s1030}",
         f"오늘의 주도축: {driver}",
         "",
+        "[자금 상세 — 일간 / 최근 5회]",
+        f"SHY (단기 국채): {flows['SHY'][0]} / {flows['SHY'][1]}",
+        f"IEF (중기 국채): {flows['IEF'][0]} / {flows['IEF'][1]}",
+        f"TLT (장기 국채): {flows['TLT'][0]} / {flows['TLT'][1]}",
+        f"LQD (투자등급 회사채): {flows['LQD'][0]} / {flows['LQD'][1]}",
+        f"HYG (고수익 회사채): {flows['HYG'][0]} / {flows['HYG'][1]}",
+        "",
+        "[신용 상세]",
+        f"LQD OAS: {lqd_oas}",
+        f"HYG OAS: {hyg_oas}",
+        *([credit_alert_line] if credit_alert_line else []),
+        "",
+        "[추가 경계 요인]",
         f"시장 기술압력: {tech_head}",
         f"→ {tech_reason}",
         f"{jpm_30y_line}",
@@ -512,17 +585,12 @@ def _compact_report(raw_text):
         f"{gr_line}",
         f"{refi_line}",
         "",
-        "[자금 상세 — 일간 / 최근 5회]",
-        f"SHY: {flows['SHY'][0]} / {flows['SHY'][1]}",
-        f"IEF: {flows['IEF'][0]} / {flows['IEF'][1]}",
-        f"TLT: {flows['TLT'][0]} / {flows['TLT'][1]}",
-        f"LQD: {flows['LQD'][0]} / {flows['LQD'][1]} | OAS {lqd_oas}",
-        f"HYG: {flows['HYG'][0]} / {flows['HYG'][1]} | OAS {hyg_oas}",
-        "",
-        "[오늘의 결론]",
-        conclusion,
+        "[판정 근거·다음 확인]",
+        overall_reason,
         next_alert_line,
         "",
+        "[자료 기준]",
+        f"환율: {fx_line}",
         f"기준: ETF·미 재무부 {treasury_date} | MSPD {refi_date}",
         "자금흐름: iShares 공식 발행좌수 변화 × 해당일 NAV로 계산한 추정치이며 iShares가 공표한 공식 일간 순유입액은 아님.",
         "OAS: iShares LQD·HYG ETF 보유채권 포트폴리오 특성치이며 회사채 시장 전체 스프레드는 아님.",
@@ -536,13 +604,11 @@ def _compact_report(raw_text):
 def _format_html(chunk):
     out = []
     bold_prefixes = (
-        "전체 방향:", "국채 자금:", "회사채 자금:", "신용 위험:",
-        "금리:", "커브:", "오늘의 주도축:", "시장 기술압력:",
-        "JPM 30년 기술선:", "Repo:", "G-R 보조 프록시(", "차환:", "현재 신용경보:", "다음 경보:",
+        "전체 방향:", "금리 방향:", "국채 자금:", "회사채 자금:", "신용 위험:",
     )
     for line in chunk.splitlines():
         escaped = html.escape(line, quote=False)
-        bold = line in ("[한눈에 보기]", "[자금 상세 — 일간 / 최근 5회]", "[오늘의 결론]") or line.startswith(bold_prefixes)
+        bold = (line.startswith("[") and line.endswith("]")) or line.startswith(bold_prefixes)
         out.append(f"<b>{escaped}</b>" if bold else escaped)
     return "\n".join(out)
 
