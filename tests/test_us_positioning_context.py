@@ -14,7 +14,7 @@ sys.path.insert(0,str(ROOT/"scripts"))
 from us_positioning_context import (
     sessions,price_path,checked_path,price_returns,checked_returns,
     position_week_window,checked_composition,parse_cboe_day,option_distributions,
-    checked_options,breadth_comparison,parse_yahoo,parse_nasdaq,
+    checked_options,breadth_comparison,context_change_key,parse_yahoo,parse_nasdaq,
 )
 import us_positioning_presentation as view
 import test_us_positioning_horizons as horizons
@@ -299,6 +299,90 @@ class BriefTests(unittest.TestCase):
         self.assertEqual(context, original_context)
         with self.assertRaises(ValueError):
             self.render(values, context, event_label="x" * view.BRIEF_MAX_CHARS)
+
+
+class ContextDedupeTests(unittest.TestCase):
+    def saved(self):
+        return json.loads(gzip.decompress((ROOT/"tests/fixtures/us_positioning_context_dedupe_20261015.json.gz").read_bytes()))
+
+    def run_tail(self, context, prior=None):
+        return original.OperatingIntegrationTests.run_operating_tail(self, original.snapshot(), prior, context)
+
+    def test_actual_two_runs_reproduce_raw_change_but_no_changed_observation(self):
+        saved = self.saved()
+        before, after = saved["before"], saved["after"]
+        self.assertNotEqual(before["fingerprint"], after["fingerprint"])
+        self.assertNotEqual(before["metrics"], after["metrics"])
+        self.assertEqual(before["metrics"]["breadth"]["comparison"], after["metrics"]["breadth"]["comparison"])
+        self.assertEqual(context_change_key(before["metrics"], before["period"]),
+                         context_change_key(after["metrics"], after["period"]))
+        first = self.run_tail(before["metrics"])
+        second = self.run_tail(after["metrics"], first["pending"])
+        self.assertTrue(second["gate"])
+        self.assertEqual(second["updates"], 0)
+        self.assertIsNone(second["alert"])
+        self.assertIsNone(second["detail"])
+        self.assertIsNone(second["pending"])
+        self.assertIn("context_history_only_change: True", second["status"])
+        self.assertEqual(second["sources"][-1]["metrics"], after["metrics"])
+
+    def test_a_used_adjusted_endpoint_change_remains_an_update_without_rounding(self):
+        before = self.saved()["before"]
+        after = copy.deepcopy(before["metrics"])
+        end = before["period"]
+        row = next(r for r in after["breadth"]["series"]["RSP"]["adjusted_operands"] if r[0] == end)
+        row[1] += 0.00001
+        after["breadth"]["comparison"] = breadth_comparison(after["breadth"]["series"], end)
+        self.assertNotEqual(context_change_key(before["metrics"], end), context_change_key(after, end))
+        first = self.run_tail(before["metrics"])
+        second = self.run_tail(after, first["pending"])
+        self.assertEqual(second["updates"], 1)
+        self.assertIsNotNone(second["alert"])
+        self.assertEqual(second["pending"]["values"]["미국 주요지수·시장 확산·옵션 과거 비교|context"]["metrics"], after)
+
+    def test_unverified_comparison_or_changed_raw_close_history_is_not_ignored(self):
+        before = self.saved()["before"]
+        for mutation in ("bad-comparison", "raw-close", "missing-endpoint"):
+            after = copy.deepcopy(before["metrics"])
+            if mutation == "bad-comparison":
+                after["breadth"]["comparison"]["windows"]["5d"]["difference_pp"] += 1
+            elif mutation == "raw-close":
+                after["breadth"]["series"]["RSP"]["operands"][3][1] += .001
+            else:
+                end = before["period"]
+                after["breadth"]["series"]["RSP"]["adjusted_operands"] = [r for r in after["breadth"]["series"]["RSP"]["adjusted_operands"] if r[0] != end]
+            with self.subTest(mutation=mutation):
+                self.assertNotEqual(context_change_key(before["metrics"], before["period"]), context_change_key(after, before["period"]))
+
+    def test_unacknowledged_context_cannot_be_suppressed_as_a_sent_observation(self):
+        saved = self.saved()
+        first = self.run_tail(saved["before"]["metrics"])
+        prior = first["pending"]
+        prior["seen"].pop("미국 주요지수·시장 확산·옵션 과거 비교|context")
+        second = self.run_tail(saved["after"]["metrics"], prior)
+        self.assertEqual(second["updates"], 1)
+        self.assertIsNotNone(second["alert"])
+
+    def test_date_status_and_other_context_fields_remain_exact(self):
+        saved = self.saved()["before"]
+        for path in (("indices", "NDX", "reason"), ("options", "1m", "status")):
+            after = copy.deepcopy(saved["metrics"])
+            parent = after
+            for key in path[:-1]:
+                parent = parent[key]
+            parent[path[-1]] = "changed"
+            self.assertNotEqual(context_change_key(saved["metrics"], saved["period"]), context_change_key(after, saved["period"]))
+        self.assertNotEqual(context_change_key(saved["metrics"], saved["period"]), context_change_key(saved["metrics"], "2026-10-15"))
+
+    def test_comparison_key_never_mutates_or_discards_the_preserved_original(self):
+        saved = self.saved()["before"]
+        original_metrics = copy.deepcopy(saved["metrics"])
+        key = context_change_key(saved["metrics"], saved["period"])
+        self.assertEqual(saved["metrics"], original_metrics)
+        used = {w[k] for w in key["breadth"]["comparison"]["windows"].values() for k in ("base_date", "end_date")}
+        for symbol in ("RSP", "SPY"):
+            self.assertEqual({r[0] for r in key["breadth"]["series"][symbol]["adjusted_operands"]}, used)
+            self.assertGreater(len(original_metrics["breadth"]["series"][symbol]["adjusted_operands"]), len(used))
 
 
 class SourceParserBoundaryTests(unittest.TestCase):

@@ -1503,9 +1503,18 @@ if quality_gate_ok:
                     "fingerprint": fp(context_core)})
 
 updates = []
+context_history_only_change = False
 for x in results:
     key = f"{x['source']}|{x['kind']}"
     if state.get("seen", {}).get(key) != x["fingerprint"]:
+        prior = state.get("values", {}).get(key)
+        if (x.get("kind") == "context" and prior
+                and state.get("seen", {}).get(key) == prior.get("fingerprint")
+                and prior.get("period") == x.get("period")):
+            from us_positioning_context import context_change_key
+            if context_change_key(prior.get("metrics"), x["period"]) == context_change_key(x.get("metrics"), x["period"]):
+                context_history_only_change = True
+                continue
         updates.append(x)
 
 presentation_changed = state.get("presentation_version") != PRESENTATION_VERSION
@@ -1521,6 +1530,7 @@ STATUS.write_text(
             "",
             f"- parsed sources: {len(results)}",
             f"- updates: {len(updates)}",
+            f"- context_history_only_change: {context_history_only_change}",
             f"- presentation_version: {PRESENTATION_VERSION}",
             f"- presentation_changed: {presentation_changed}",
             f"- quality_gate_ok: {quality_gate_ok}",
