@@ -402,7 +402,7 @@
       "실패모드·일정 변화"
     ]
   },
-  "last_scan_kst": "2026-10-15T14:14:25+09:00",
+  "last_scan_kst": "2026-10-15T18:58:36+09:00",
   "errors": [],
   "seen_event_keys": [
     "memory:unconfirmed",
@@ -410,10 +410,6 @@
     "server:reported:2or4:2029"
   ],
   "observations": [],
-  "fetch_ok": 9,
-  "fetch_errors": [
-    "bing_news 애플 M8 서버 엔비디아: ParseError not well-formed (invalid token): line 1, column 41",
-    "bing_news \"Apple\" \"M8 Ultra\" server: ParseError not well-formed (invalid token): line 1, column 41",
-    "bing_news \"Apple\" HBM server supplier contrac: ParseError not well-formed (invalid token): line 1, column 41"
-  ]
+  "fetch_ok": 12,
+  "fetch_errors": []
 }
