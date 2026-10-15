@@ -52,7 +52,7 @@
   },
   "rate_signal_upgrade": {
     "version": 4,
-    "updated_at_kst": "2026-10-15T14:06:57+09:00",
+    "updated_at_kst": "2026-10-16T03:14:52+09:00",
     "risk_score": 3,
     "grade_emoji": "🟡",
     "grade_label": "추가인상 가능성 유지",
@@ -84,8 +84,8 @@
       "housing": null,
       "oil": {
         "date": "2026-10-15",
-        "brent_usd": 104.48,
-        "change_5d_pct": 0.19,
+        "brent_usd": 105.88,
+        "change_5d_pct": 1.53,
         "source": "Yahoo Finance BZ=F",
         "source_tier": "시장자료",
         "stale": false
@@ -95,30 +95,59 @@
     "recent_rhetoric": [
       {
         "speaker": "신현송",
+        "date": "2026-10-15",
+        "flags": {
+          "hike_needed": false,
+          "neutral_upper": false,
+          "inflation_upside": false,
+          "middle_east_inflation": true,
+          "oct_hike_caution": false,
+          "rate_not_only_tool": false,
+          "macroprudential_mix": false,
+          "hike_timing_speed": false,
+          "k_shaped_low_income": false,
+          "ai_war_inflation": true,
+          "fvi_leverage": false,
+          "ai_investment_duration": false,
+          "next_meeting_hawk": false,
+          "next_meeting_caution": false,
+          "two_hikes_effect": false,
+          "demand_inflation": false,
+          "middle_east_cost": false
+        },
+        "title": "신현송 한은 총재 \"AI 호황이 중동전쟁 압도\"…물가 2% 원칙 지킨다 - diarypoint.com",
+        "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBlcEt1a3ZQMWQ1UWRtVk8tbjhrdXM1clFvVGc5SjhsLXFGd3NMTzBnWU8yU2lESkxTZFBESUwwQTFlbmIwYkU2WlFDN3FuSGl1NldPakh3WjN2azhtSnB0YlpJSElMd0pYcHdj?oc=5",
+        "source_name": "diarypoint.com",
+        "published_at_kst": "2026-10-15T14:59+09:00",
+        "event_hash": "57aded834a024a00c16d363981585008c32cc28e1a8c36533c7aad84c363dce2",
+        "score": 1
+      },
+      {
+        "speaker": "신현송",
         "date": "2026-10-14",
         "flags": {
-          "macroprudential_mix": false,
           "fvi_leverage": false,
-          "neutral_upper": false,
-          "ai_war_inflation": true,
-          "next_meeting_hawk": false,
           "demand_inflation": false,
           "middle_east_inflation": true,
-          "middle_east_cost": true,
-          "ai_investment_duration": true,
-          "two_hikes_effect": false,
+          "hike_needed": false,
+          "ai_war_inflation": true,
           "k_shaped_low_income": true,
-          "oct_hike_caution": false,
           "inflation_upside": true,
-          "next_meeting_caution": false,
           "hike_timing_speed": false,
+          "next_meeting_caution": false,
+          "next_meeting_hawk": false,
+          "two_hikes_effect": false,
+          "macroprudential_mix": false,
           "rate_not_only_tool": false,
-          "hike_needed": false
+          "ai_investment_duration": true,
+          "oct_hike_caution": false,
+          "neutral_upper": false,
+          "middle_east_cost": true
         },
-        "title": "신현송 “韓경제 K자형 양극화 뚜렷…저소득층 위해 물가 낮춰야” - 이데일리",
-        "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNTEhQTmV2MXVIZkItRkZaTUxpbW5leVNaYTQ5bDFUOTNISENILUE0aGNFN0QtVmxFRERjSDhrZW1lSXRqbmFybWxndjVvanFYMDMzSUlkelZyS1N1dHRuMlNmeVFlOHVlMFgtS3hDaXp0VWJoX3h3QkhtUm9HTjZaVw?oc=5",
-        "source_name": "이데일리",
-        "published_at_kst": "2026-10-14T12:27+09:00",
+        "title": "신현송 \"AI 호황, 중동 전쟁 모두 물가 압박\"…금리 인상 기조 유지 시사 - 조선일보",
+        "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNN0tCOTgwNGVrU3QyTm9HZWdzOG5DdFdYZy0yaXJUaXMxQUZ3UUtVWndEQ29VekxDRGR6TkcteG9fWV8xRmI5VlM0TWZpWXA2bENwOFhvdWFBdjdzRUMtTWdEc29mUC1ZR1FYNXFmZmdIUFdEUzhBX3NvN2NQNWV3N3NOWXg3dkVJMmhncnJ3?oc=5",
+        "source_name": "조선일보",
+        "published_at_kst": "2026-10-14T15:40+09:00",
         "event_hash": "ad81263a3c3bb5781f6ba3237105edbd837203acb68c22e800c1e543fd3799fe",
         "score": 2
       }
@@ -127,7 +156,8 @@
       "5be88233156f29ad1bc2ecc1a91836e3822516286e2c5ed7f0d36c0f802c6568",
       "cfc9ecc85da2f4cf06e52a4322dc9c7e5764e4f4b5d5a6c343b20b7ddf0d2528",
       "ad545aa8be16789c3671c193ac08c6fa147a71715fb91d72f7beca8a715b37db",
-      "ad81263a3c3bb5781f6ba3237105edbd837203acb68c22e800c1e543fd3799fe"
+      "ad81263a3c3bb5781f6ba3237105edbd837203acb68c22e800c1e543fd3799fe",
+      "57aded834a024a00c16d363981585008c32cc28e1a8c36533c7aad84c363dce2"
     ],
     "notification_policy": {
       "score_only_change_suppressed": true,
