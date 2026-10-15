@@ -1597,6 +1597,173 @@ def _oct15_recovery(group_key: str) -> list[dict]:
         'direct_recovery':True,'oct15_high_signal_key':group_key,
     }]
 
+
+# Labels do not claim SEC approval = successful listing, application =
+# government approval, vendor claim = Tesla confirmation, or prototype goal
+# = achieved mass-production cycle.
+def _oct15_render_category(group: str, text: str) -> str:
+    if group == 'agility_spac_2026':
+        if re.search(r'주총.{0,20}승인\s*통과|합병\s*종결\s*완료|merger\s*completed',text,re.I):
+            return 'Agility Robotics · 합병 절차 후속 공식 완료'
+    if group == 'rainbow_fcc_compliance':
+        if re.search(r'조건부\s*승인.{0,20}(?:부여|발급|획득)',text,re.I):
+            return '레인보우로보틱스 · DoW 조건부 승인 공식확인'
+    if group == 'xinjian_prs_ipo':
+        if re.search(r'신젠전동.{0,45}첫\s*양산\s*출하\s*확인',text,re.I):
+            return '신젠전동 · 첫 양산 출하 공식확인'
+    if group == 'unichem_loomia_acquisition':
+        if re.search(r'유니켐.{0,65}(?:거래\s*종결\s*완료|인수\s*종결\s*완료)',text,re.I):
+            return '유니켐–Loomia · 인수 종결 공식확인'
+    if group == 'atlas_protoops_build':
+        if re.search(r'Atlas.{0,75}1\s*시간.{0,30}실측\s*달성',text,re.I):
+            return 'Boston Dynamics · Atlas 1시간 제조 목표 실제 달성'
+    return ROBOT_OCT15_TITLES[group]
+
+
+_OCT15_MEANINGS = {
+    ROBOT_OCT15_TITLES['agility_spac_2026']: (
+        '10/13 SEC S-4 효력발생은 실제 합병·AGLT 상장 완료가 아닙니다. '
+        '11/2 Churchill XI 주총 승인·상장요건·거래종결이 남았습니다. '
+        '환매가 없을 때 신탁 4억2,400만달러(약 5,688억원)와 '
+        'Foxconn 주도 PIPE 약 2억달러(약 2,683억원), 총 6억2,000만달러 초과 '
+        '(약 8,317억원 초과)는 예정 조달액이며 매출이 아닙니다. '
+        'Digit 5 조건부 약정주문 3억달러 초과(약 4,025억원)도 인식매출과 구분합니다. '
+        '기존 Digit 상용 고객·9개 시설, 6만5천시간 실운용, '
+        '2027년 25개 시설 목표·연간 1만대 RoboFab 생산능력 계획은 '
+        '출하 실적과 분리해 확인합니다. 기준환율은 10/15 달러 1,341.50원입니다.'
+    ),
+    ROBOT_OCT15_TITLES['rainbow_fcc_compliance']: (
+        '전자신문 10/12: 레인보우로보틱스가 RB-Y1 미국 판매 관련 '
+        '조건부 승인 신청서를 9월 말 제출했다는 보도입니다. '
+        'DoW 승인·미국 공급계약·실제 출하는 아직 확인되지 않았습니다. '
+        'FCC 7/28 Covered List는 신규 외국산 이동로봇 장비승인에 적용되며 '
+        '미국내 제조+미국산 부품원가 65% 초과(2028년까지), '
+        '75% 초과(2029년부터)라는 국내산 판정과 별도 조건부 승인 경로가 있습니다. '
+        '티로보틱스는 제출 준비 보도 단계여서 신청 완료로 혼동하지 않습니다.'
+    ),
+    ROBOT_OCT15_TITLES['xinjian_prs_ipo']: (
+        '10/12 신젠전동(新剑传动) 중국 IPO 심사 질의서 답변: 익명 A사 '
+        '휴머노이드 스크루 양산발주를 회사가 주장했습니다. '
+        'A사가 Tesla라는 실명은 공개되지 않았고, '
+        'Optimus V3 설계 정형·행성 롤러스크루 불가역성은 신젠전동의 산업 판단으로 '
+        'Tesla 공식 확정이 아닙니다. 관련 사업 매출은 '
+        '2024년 696.88만위안(약 14억원), 2025년 3,110.59만위안(약 62억원), '
+        '2026년 상반기 1,621.05만위안(약 32억원)이며 '
+        '상반기 평균판매단가 하락·로봇 사업 비중 10% 미만도 함께 점검합니다. '
+        '10/15 환율 1위안 200.43원 단순환산이며 고객·출하량·이익은 별도입니다.'
+    ),
+    ROBOT_OCT15_TITLES['unichem_loomia_acquisition']: (
+        '유니켐은 Loomia 지분 100% 인수 본계약을 체결했다는 10/12 회사발 보도. '
+        '최대 630만달러(약 84억5천만원), 2027-01-04 종결 예정이나 '
+        '주주 서명·외국환 신고 등의 선행조건이 남아 있습니다. '
+        '2028년 로봇 1,000대·자동차 3,000대 양산 주문은 회사 목표이며 '
+        '현재 확정 고객발주가 아닙니다. 최대 100만달러(약 13억4천만원) '
+        '성과연동 전환사채는 인수대금과 혼합하지 않습니다. '
+        '자동차 내장재 실제 매출과 휴머노이드 전자피부 고객 검증·초도 납품을 분리합니다.'
+    ),
+    ROBOT_OCT15_TITLES['atlas_protoops_build']: (
+        'Boston Dynamics의 ProtoOps 제조과정 영상 관련 10/14 보도에서 '
+        '현재 Atlas 시제품 제작은 약 하루이며 2027년 약 1시간을 목표로 합니다. '
+        '제작일 하루가 24시간 순가동이라는 근거가 없으므로 24배 양산으로 환산하지 않습니다. '
+        '정밀 가공→조립→검사·재작업 단축 연구개발 목표이며 '
+        '실제 정규생산 속도·출하·수율 개선 달성이 아닙니다.'
+    ),
+    ROBOT_OCT15_TITLES['alert_quality_223']: (
+        '10/15 실제 Telegram message_id=223의 4건은 삼성SDI·LG에너지솔루션 '
+        '목표주가 및 일본 ESS 사업 일반 논평·재보도를 신규 확정 사업으로 분류한 오탐입니다. '
+        '계약금액·고객 발주·양산·실적 공식 확인이 없으므로 4건을 고신호 판정에서 제외합니다. '
+        '이 정정은 새로운 수주·매출이 아닙니다.'
+    ),
+    'Agility Robotics · 합병 절차 후속 공식 완료': (
+        'S-4 효력 발생 이후 실제 주총 승인 또는 거래종결이 직접 확인된 별도 단계입니다. '
+        '발표문·SEC 후속 8-K·상장 거래 개시를 각각 분리하고 환매·PIPE·주식희석을 재산출합니다.'
+    ),
+    '레인보우로보틱스 · DoW 조건부 승인 공식확인': (
+        '조건부 승인 실제 발급이 확인돼 신청 단계를 넘어선 사건입니다. '
+        '적용 RB-Y1 모델·승인기간·현지생산 요건·출하·미국 고객 주문을 각각 확인합니다.'
+    ),
+    '신젠전동 · 첫 양산 출하 공식확인': (
+        '익명 A사 양산 주문이 실제 납품으로 연결됐다는 별도 공식 확인입니다. '
+        '고객 실명·부품 단가·납품량·수율과 인식매출을 검증합니다.'
+    ),
+    '유니켐–Loomia · 인수 종결 공식확인': (
+        '조건부 본계약 이후 실제 소유권·자금 이전이 완료된 단계입니다. '
+        '연결 매출·차입금·주식희석과 고객별 전자피부 양산발주를 분리합니다.'
+    ),
+    'Boston Dynamics · Atlas 1시간 제조 목표 실제 달성': (
+        'Atlas 시제품 단축 목표의 실제 측정 달성 단계입니다. '
+        '정규 생산과 검수 포함 전체 사이클·연간 출하능력은 별도 점검합니다.'
+    ),
+}
+_OCT15_RISKS = {
+    ROBOT_OCT15_TITLES['agility_spac_2026']: (
+        '11/2 주주총회 부결·주주 환매·거래종결 지연이 초기 6개월의 위험입니다. '
+        '조건부 Digit 5 3억달러 초과 수주잔고는 사양·안전인증·고객 검수를 '
+        '통과해야 출하·사용권·장기 유지보수 반복수익으로 전환됩니다. '
+        '65,000시간 기존 기종 운용성과가 Digit 5 수율을 보장하지 않습니다.'
+    ),
+    ROBOT_OCT15_TITLES['rainbow_fcc_compliance']: (
+        '신청은 승인 발급이 아니며 미국산 부품비율 계산·사이버보안 검토·'
+        '설계변경·보험·공급망 인증이 6~12개월 미국 공급 지연 요인입니다. '
+        '부품원가가 가정상 100억원이면 국내산 65억원 초과→75억원 초과로 '
+        '2030년이 아니라 2029년 기준 10억원포인트가 더 필요합니다 '
+        '(예시이며 RB-Y1 실제 원가는 공개되지 않음). '
+        '기존 FCC 인증모델과 신규모델, 고정 산업용 로봇과 이동형 로봇을 구분해야 합니다.'
+    ),
+    ROBOT_OCT15_TITLES['xinjian_prs_ipo']: (
+        '고객 익명 A사를 Tesla로 치환하는 것이 최대 오판입니다. '
+        '회사의 중하중 행성 롤러스크루 주장은 업계 기술채택 독점 증명이 아닙니다. '
+        '가공정밀도·볼스크루/롤러스크루 수명·백래시·고온 동작검사·수율 '
+        '및 고객사 V3 설계 재변경을 6~12개월 확인해야 합니다. '
+        '상반기 평균판매단가 하락과 기존 자동차 사업의 낮은 수익성이 역풍입니다.'
+    ),
+    ROBOT_OCT15_TITLES['unichem_loomia_acquisition']: (
+        '거래종결 예정과 실제 인수완료는 다릅니다. 서명·외환신고·자금 조달 '
+        '및 로봇 피부 고객 인증·접착·세척 내구성·전기 신뢰성·온도 반복성이 '
+        '2027~2028년 상용화 병목입니다. 메타·아마존과 연구컨소시엄에 '
+        '참여한다고 양사와 납품계약이 체결된 것은 아닙니다.'
+    ),
+    ROBOT_OCT15_TITLES['atlas_protoops_build']: (
+        '시제품 하루는 실제 24시간 근무가 아닙니다. 제작시간 단축 목표를 '
+        '연산 대수로 단순 환산할 수 없고, 검사시간·재작업률·조립수율·'
+        '고장·안전인증이 6~12개월 위험입니다. '
+        '양산품 적용 전에 대량생산 설비와 고객 인수 시험을 확인합니다.'
+    ),
+    ROBOT_OCT15_TITLES['alert_quality_223']: (
+        '주가·목표가 및 공급망 해설을 확정 수주와 혼동하면 알림 과밀과 '
+        '수혜 과장이 발생합니다. 신규 계약·실적 원문이 없으면 '
+        '향후 선별점수 0점으로 제외하고, 후속 계약이 실제 확인되면 다시 알립니다.'
+    ),
+}
+for _later in set(_OCT15_MEANINGS)-set(_OCT15_RISKS):
+    _OCT15_RISKS[_later] = (
+        '이전 단계 달성과 신규 계약·출하·매출을 혼동하지 않습니다. '
+        '향후 6~12개월 동안 공시·고객 검수·실제 수율·반복 발주를 확인합니다.'
+    )
+
+
+def _oct15_verification(group: str, text: str, source: str) -> str:
+    if group == 'agility_spac_2026':
+        return ('Agility Robotics 10/13 공식 보도자료와 SEC 8-K 첨부 원문 확인 · '
+                'S-4 효력발생과 실제 Nasdaq 거래개시 구분')
+    if group == 'rainbow_fcc_compliance':
+        return ('전자신문 10/12 업체 취재에 따른 신청 제출 보도 · '
+                'FCC DA 26-786·DA 26-996 규정 교차확인 · DoW 승인 미확인')
+    if group == 'xinjian_prs_ipo':
+        return ('신젠전동 10/12 IPO 심사 질의서 응답 동방재부 원문 재게시·'
+                '21财经 보도 · A사 고객 실명 및 Tesla 공식 설계확정 미확인')
+    if group == 'unichem_loomia_acquisition':
+        return ('더벨·뉴스핌 회사발 본계약 보도 교차확인 · '
+                '최종 거래종결과 실제 로봇 고객 매출은 미확인')
+    if group == 'atlas_protoops_build':
+        return ('Boston Dynamics 회사 제작 영상·Humanoids Daily 10/14 보도 대조 · '
+                '제작시간은 목표, 완제품 양산 KPI 미확인')
+    if group == 'alert_quality_223':
+        return ('기존 Run #595 실수신 발송문·Python 선택 상태 대조 · '
+                '2026-10-15 4건 모두 고신호 오탐으로 재분류')
+    return '공식 추가확인 필요'
+
+
 _orig_query_news = base.query_news
 
 
@@ -1818,6 +1985,9 @@ def _is_airan(text: str) -> bool:
 
 
 def topic_group(text: str) -> str | None:
+    _g = _oct15_group(text)
+    if _g:
+        return _g
     if _is_fluence_vattenfall(text):
         return 'fluence_vattenfall_bess'
     if _is_sdi_oct08_preview(text):
@@ -1869,6 +2039,24 @@ def _stage(text: str) -> str:
 
 def score(item: dict) -> int:
     item_text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    group_oct15 = _oct15_group(item_text)
+    if group_oct15:
+        _stage_oct15 = _oct15_stage(group_oct15, item_text, item.get('source') or '')
+        return {
+            's4_effective': 76,
+            'shareholders_approved': 83,
+            'official_closed': 91,
+            'application_reported': 48,
+            'official_approval_granted': 88,
+            'ipo_order_reported': 57,
+            'official_shipment': 81,
+            'signed_conditional_report': 64,
+            'official_closing': 87,
+            'build_time_goal': 41,
+            'official_one_hour_achieved': 84,
+            'correction': 95,
+            'background': 0,
+        }.get(_stage_oct15, 0)
     if _is_fluence_vattenfall(item_text):
         return {
             'official_signed_turnkey_award': 76,
@@ -1987,6 +2175,10 @@ def score(item: dict) -> int:
 
 
 def category(text: str, group: str) -> str:
+    if group in ROBOT_OCT15_TITLES.values():
+        return group
+    if group in ROBOT_OCT15_TITLES:
+        return _oct15_render_category(group, text)
     if group == 'fluence_vattenfall_bess':
         if FLUENCE_VATTENFALL_REVERSE.search(text):
             return 'Fluence–Vattenfall · 독일 1GWh ESS 계약 후퇴'
@@ -2116,6 +2308,8 @@ def category(text: str, group: str) -> str:
 
 
 def meaning(cat: str) -> str:
+    if cat in _OCT15_MEANINGS:
+        return _OCT15_MEANINGS[cat]
     if cat.startswith('Fluence–Vattenfall · '):
         if '정식 턴키 공급계약' in cat:
             return (
@@ -2467,6 +2661,8 @@ def meaning(cat: str) -> str:
 
 
 def risk(cat: str) -> str:
+    if cat in _OCT15_RISKS:
+        return _OCT15_RISKS[cat]
     if cat.startswith('Fluence–Vattenfall · '):
         return (
             '최대 역풍은 50Hertz 380kV 송전망 접속·변전설비 완공 또는 '
@@ -2625,6 +2821,8 @@ def risk(cat: str) -> str:
 
 
 def verification(item: dict, group: str, text: str) -> str:
+    if group in ROBOT_OCT15_TITLES:
+        return _oct15_verification(group, text, item.get('source') or '')
     if group == 'fluence_vattenfall_bess':
         stage = _fluence_vattenfall_stage(text,item.get('source') or '')
         if stage=='official_signed_turnkey_award':
@@ -2761,6 +2959,9 @@ def verification(item: dict, group: str, text: str) -> str:
 
 
 def clean_title(title: str, source: str) -> str:
+    _oct15 = _oct15_group(title+' '+source)
+    if _oct15 in ROBOT_OCT15_TITLES:
+        return title
     if _is_fluence_vattenfall(title+' '+source):
         return 'Fluence, Vattenfall 독일 1GWh ESS 턴키·장기 유지보수 계약 확정'
     if title.startswith('정정: Telegram 218번 1번'):
@@ -2858,6 +3059,15 @@ def clean_title(title: str, source: str) -> str:
 
 
 def tag_for(group: str) -> str:
+    if group in ROBOT_OCT15_TITLES:
+        return {
+            'agility_spac_2026': 'Agility IPO',
+            'rainbow_fcc_compliance': 'RB-Y1 미국 규제',
+            'xinjian_prs_ipo': '신젠전동 롤러스크루',
+            'unichem_loomia_acquisition': '유니켐 로봇 전자피부',
+            'atlas_protoops_build': 'Atlas 제조공정',
+            'alert_quality_223': '알림 정정',
+        }[group]
     if group == 'fluence_vattenfall_bess':
         return 'Fluence·Vattenfall ESS'
     if group == 'alert_quality_correction':
@@ -2893,6 +3103,12 @@ def tag_for(group: str) -> str:
 
 def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
+    _g = _oct15_group(text)
+    if _g in ROBOT_OCT15_TITLES:
+        _stage_name = _oct15_stage(_g, text, item.get('source') or '')
+        # Content-based stage ID suppresses news rewrites and differentiates
+        # grant/closing from application or signed agreement stages.
+        return hashlib.sha256(f'robot-oct15|{_g}|{_stage_name}|2026'.encode()).hexdigest()
     if topic_group(text) == 'fluence_vattenfall_bess':
         stage = _fluence_vattenfall_stage(text,item.get('source') or '')
         return hashlib.sha256(f'fluence-vattenfall|brunsbuettel-254mw-1gwh|{stage}|2026'.encode()).hexdigest()
@@ -3059,6 +3275,20 @@ def key(item: dict) -> str:
 def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -> list[dict]:
     chosen = _orig_select_diverse(items, seen, force, limit)
     candidates = items if force else [x for x in items if x.get('key') not in seen]
+    # Promote verifiable milestones over low-quality general market articles;
+    # do not resend any event key already in the persisted dedup state.
+    for _group in (
+        'atlas_protoops_build',
+        'xinjian_prs_ipo',
+        'rainbow_fcc_compliance',
+        'unichem_loomia_acquisition',
+        'agility_spac_2026',
+        'alert_quality_223',
+    ):
+        _candidate = next((x for x in candidates if x.get('group') == _group), None)
+        if _candidate and not any(x.get('key') == _candidate.get('key') for x in chosen):
+            chosen = [_candidate] + chosen
+            chosen = chosen[:limit]
     fluence_contract = next((x for x in candidates if x.get('group') == 'fluence_vattenfall_bess'),None)
     if fluence_contract and not any(x.get('key')==fluence_contract.get('key') for x in chosen):
         chosen = ([fluence_contract,*chosen] if len(chosen)<limit else [fluence_contract,*chosen[:-1]])
