@@ -1,5 +1,5 @@
 {
-  "last_checked_kst": "2026-10-16T06:42:45+09:00",
+  "last_checked_kst": "2026-10-16T08:55:34+09:00",
   "active": {
     "fr10:above:4.5": true,
     "fr10:above:4.75": false,
@@ -290,10 +290,11 @@
       "verified_on": "2026-10-14"
     },
     "sent_keys": [
-      "official_rating_source_unavailable:2026-10"
+      "official_rating_source_unavailable:2026-10",
+      "milestone:2026-10-23:D-7"
     ],
-    "checked_at_kst": "2026-10-16T06:42:52+09:00",
-    "source_fail_streak": 16,
+    "checked_at_kst": "2026-10-16T08:55:48+09:00",
+    "source_fail_streak": 17,
     "source_access": "access_restricted"
   }
 }
