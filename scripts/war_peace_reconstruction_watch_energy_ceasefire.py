@@ -3,6 +3,7 @@ import argparse
 import datetime as dt
 import hashlib
 import json
+import re
 from email.utils import format_datetime
 
 import war_peace_reconstruction_watch_hormuz_oman as prev
@@ -48,7 +49,8 @@ ENERGY_TERMS = (
     'energy target','energy targets','energy facility','energy facilities','energy infrastructure',
     'oil refinery','oil refineries','refinery','refineries','diesel facility','diesel facilities',
     'fuel facility','fuel facilities','power grid','power infrastructure','energy grid',
-    '에너지 시설','에너지시설','에너지 인프라','정유시설','정유 시설','정유공장','정유 공장',
+    '에너지 시설','에너지시설','에너지 인프라','에너지 휴전','에너지 부분휴전', 'energy ceasefire', 'energy truce',
+    '정유시설','정유 시설','정유공장','정유 공장',
     '경유 시설','연료 시설','전력망','전력 시설','전력 인프라',
 )
 MUTUAL_HALT_TERMS = (
@@ -141,6 +143,45 @@ def google_news(query):
 watch.google_news = google_news
 
 
+def _explicit_party_confirmation(row, party):
+    """Do not convert 'Trump says Ukraine/Russia agreed' into either party's confirmation.
+
+    Only an explicitly attributed independent confirmation headline from a
+    trusted news agency or an official government source can advance a stage.
+    A mere expression of readiness or a conditional offer is not confirmation.
+    """
+    headline = str(row.get('title_original') or row.get('title') or '').lower()
+    src = ' '.join(str(row.get(k) or '') for k in ('source', 'link', 'resolved_url')).lower()
+    trusted = any(x in src for x in (
+        'reuters', 'associated press', 'ap news', 'apnews.com',
+        'president.gov.ua', 'kremlin.ru',
+    ))
+    if not trusted:
+        return False
+    if any(x in headline for x in (
+        'not confirmed', 'has not confirmed', 'no confirmation',
+        'unconfirmed', '조건부', '확인되지', '확인 전', '미확인',
+    )):
+        return False
+    subject = (
+        r'(?:ukraine|ukrainian government|zelenskyy|zelenskiy|kyiv)'
+        if party == 'ukraine' else
+        r'(?:russia|russian government|kremlin|putin|moscow)'
+    )
+    # Subject must itself confirm/ratify; Trump quoting an alleged deal is
+    # not evidence that the opposite government agreed.
+    return bool(re.search(
+        r'\b' + subject + r'\b.{0,80}\b(?:confirms?|ratif(?:y|ied))\b',
+        headline, flags=re.I,
+    )) or (
+        party == 'ukraine' and
+        bool(re.search(r'우크라이나.{0,30}(?:공식 확인|합의 확인|비준)', headline))
+    ) or (
+        party == 'russia' and
+        bool(re.search(r'(?:러시아|크렘린).{0,30}(?:공식 확인|합의 확인|비준)', headline))
+    )
+
+
 def _marks(row):
     text = _text(row)
     if not (_has(text, UKRAINE_TERMS) and _has(text, RUSSIA_TERMS) and _has(text, ENERGY_TERMS)):
@@ -155,9 +196,9 @@ def _marks(row):
     source_text = ' '.join([row.get('source',''), row.get('link','')]).lower()
     if mutual and (_has(text, TRUMP_TERMS) or 'truthsocial.com' in source_text or 'donald j. trump' in source_text):
         marks.append('트럼프상호에너지중단발표')
-    if _has(text, UKRAINE_CONFIRM_TERMS):
+    if _explicit_party_confirmation(row, 'ukraine'):
         marks.append('우크라이나에너지중단확인')
-    if _has(text, RUSSIA_CONFIRM_TERMS):
+    if _explicit_party_confirmation(row, 'russia'):
         marks.append('러시아에너지중단확인')
     if mutual and '트럼프상호에너지중단발표' not in marks:
         marks.append('상호에너지공격중단보도')

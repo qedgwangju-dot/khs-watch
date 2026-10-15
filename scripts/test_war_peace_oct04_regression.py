@@ -1247,4 +1247,43 @@ check("oct12-energy-announcement-yellow-render", "🟡 [" in energy_rendered and
 mixed_energy = mod.watch.build_alert([bridge_attack, energy_announcement], [], dt.datetime.now(mod.watch.KST))
 check("oct12-energy-mixed-red-preserved", "🔴 <b>공격·확전</b>" in mixed_energy and "🟢 <b>재건·휴전</b>" not in mixed_energy)
 
+
+# 10/12 실운영 추가 오류: 미국 대통령의 동일 에너지 휴전 발표를
+# 국내 기사와 해외 재게시본이 3건의 신규 종전·협상으로 중복 송출하지 않는다.
+energy_reprint_a = row(
+    "트럼프, 러시아-우크라이나 에너지 휴전 발표; 유럽 반응",
+    source="Vietnam.vn",
+    description="트럼프가 러시아와 우크라이나가 에너지 휴전에 합의했다고 주장했으나 이행 미확인.",
+    minutes_ago=13,
+)
+energy_reprint_b = row(
+    "트럼프 대통령은 러시아와 우크라이나가 에너지 휴전 협정에 도달했다고 주장하는 반면, 키이우는 전투가 계속되고 있다고 밝혔습니다.",
+    source="Vietnam.vn",
+    description="러시아 독립 확인 전, 우크라이나는 조건부 동참.",
+    minutes_ago=17,
+)
+for label, item in (("vietnam-a", energy_reprint_a), ("vietnam-b", energy_reprint_b)):
+    check("oct12-energy-reprint-detected-"+label, mod._energy_announcement_unverified(item))
+    _, classified_tags = mod.score_item(item, dt.datetime.now(mod.watch.KST))
+    check("oct12-energy-reprint-yellow-"+label, mod.final_color(item) == "yellow")
+    check("oct12-energy-reprint-no-peace-"+label, "종전·협상" not in classified_tags)
+print("DEBUG_ENERGY_CLUSTER_IDS", [
+    (mod.item_id(q), mod.energy_pause._marks(q), q.get("title_ko", "")[:75])
+    for q in (energy_announcement, energy_reprint_a, energy_reprint_b)
+], flush=True)
+check(
+    "oct12-energy-reprints-same-event",
+    mod.item_id(energy_announcement) == mod.item_id(energy_reprint_a) == mod.item_id(energy_reprint_b)
+)
+energy_russia_response = row(
+    "Russia confirmed its acceptance of Trump Ukraine energy ceasefire in official statement",
+    source="Reuters",
+    description="Russia confirmed it agreed not to attack Ukrainian energy infrastructure; independent verification still required.",
+    minutes_ago=5,
+)
+check(
+    "oct12-energy-future-official-response-separate",
+    mod.item_id(energy_russia_response) != mod.item_id(energy_announcement)
+)
+
 print("WAR_PEACE_OCT04_REGRESSION_OK")
