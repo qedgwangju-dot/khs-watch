@@ -171,6 +171,7 @@
     "d380d8602de5636ea27e203c",
     "d432d26d4de92da71db32a05",
     "d4ce6e38370b907fb4290ae3",
+    "d5882f2e605f2b9fad28d19f",
     "d5d636ea4c3f9e95824009d0",
     "d5d63b2968ea1a97acbabd2f",
     "d6eb54265994b61cd99afad5",
@@ -235,8 +236,10 @@
       "완제품 병목 변화"
     ]
   },
-  "last_scan_kst": "2026-10-17T03:01:21+09:00",
-  "errors": [],
+  "last_scan_kst": "2026-10-17T06:01:49+09:00",
+  "errors": [
+    "ko:\"아이폰 듀오\" 메모리 FPCB 카메라 부품 주문 상향… -> HTTPError: HTTP Error 503: Service Unavailable"
+  ],
   "seen_fact_keys": [
     "assembly_yield_60",
     "sep17_assembly_bottleneck"
