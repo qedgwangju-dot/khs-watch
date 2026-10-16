@@ -508,6 +508,25 @@ class BioAlertRegressionTests(unittest.TestCase):
         score_11 = halo.PTAB_OCT15_PORTFOLIO_SCORECARD["score"]
         self.assertNotEqual(halo.portfolio_scorecard_key(score_9), halo.portfolio_scorecard_key(score_11))
 
+    def test_halozyme_oct15_timeline_has_one_final_decision_per_date(self):
+        for case in ("PGR2025-00024", "PGR2025-00030"):
+            with tempfile.TemporaryDirectory() as temp:
+                state_path = pathlib.Path(temp, "state.json")
+                state_path.write_text(json.dumps({"case_event_timelines": {
+                    case: [
+                        {"date": "2026-10-15", "label": "Paper 100 최종서면결정 — 심판 대상 청구항 26개 특허성 부정"},
+                        {"date": "2026-10-15", "kind": "final_unpatentable", "label": "최종서면결정"},
+                    ]
+                }}), encoding="utf-8")
+                with patch.object(halo.base, "STATE", state_path):
+                    item = {"published": "Thu, 15 Oct 2026 12:00:00 GMT"}
+                    timeline = halo.timeline_html(case, "final_unpatentable", item)
+                    self.assertEqual(timeline.count("<b>2026년 10월 15일</b>"), 1)
+                    state = json.loads(state_path.read_text(encoding="utf-8"))
+                    normalized = halo._merged_case_timelines(state)[case]
+                    final_rows = [row for row in normalized if row["date"] == "2026-10-15"]
+                    self.assertEqual(len(final_rows), 1)
+
     def test_halozyme_oct15_not_lost_if_news_rss_fails_and_never_double_sends(self):
         # Independent trusted decision items must still be sent, but RSS outage is marked degraded.
         with tempfile.TemporaryDirectory() as temp:
