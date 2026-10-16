@@ -143,7 +143,9 @@ def fetch_usdkrw() -> dict[str, Any]:
         fx["ecos_official"] = fetch_ecos_usdkrw()
         fx.pop("ecos_error", None)
     except Exception as exc:
-        fx["ecos_error"] = f"{type(exc).__name__}: {exc}"
+        # requests 예외 문자열에는 인증키가 포함된 ECOS URL이 노출될 수 있다.
+        # 오류 종류만 보존하고 요청 URL·인증정보는 상태/로그에 기록하지 않는다.
+        fx["ecos_error"] = f"{type(exc).__name__}: ECOS 공식 일일값 조회 실패(인증정보 비노출)"
     _last_fx.clear()
     _last_fx.update(fx)
     return fx
