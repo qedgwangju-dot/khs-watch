@@ -81,6 +81,9 @@ jobs:
 
 
       - name: Verify GAMEJOA delivery contract
+        # Fixture suites test broad policy behavior; live ranking is asserted explicitly by their live-mode cases.
+        env:
+          RADAR_RUN_MODE: "preopen"
         run: |
           python scripts/verify_gamejoa_delivery_contract.py
           python scripts/verify_gamejoa_native_schedule.py
