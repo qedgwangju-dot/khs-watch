@@ -715,11 +715,23 @@
       "source": "TrendForce Research",
       "published_kst": "2026-10-16T09:00:00+09:00",
       "first_seen_kst": "2026-10-16T14:07:45+09:00"
+    },
+    "0461fef552bf5f82ee1d3e8c": {
+      "title": "Yang Yige: Micron Overtakes SK Hynix on the \"Legacy DRAM Price Surge,\" but the Real Test Lies in HBM4E - BigGo Finance",
+      "source": "BigGo Finance",
+      "published_kst": "2026-10-16T10:09:00+09:00",
+      "first_seen_kst": "2026-10-16T18:48:38+09:00"
+    },
+    "40cd0de670aaddf902b050d6": {
+      "title": "HBM Market Bulletin - Oct. 16, 2026 Oct 16, 2026 | PDF HBM shortages push AI chipmakers to cut stack heights, making 8hi mainstream from 2H27 while 12hi share declines.",
+      "source": "TrendForce Research",
+      "published_kst": "2026-10-16T09:00:00+09:00",
+      "first_seen_kst": "2026-10-16T18:48:38+09:00"
     }
   },
-  "updated_at_kst": "2026-10-16T14:07:45+09:00",
-  "last_scan_count": 11,
-  "last_new_count": 1,
+  "updated_at_kst": "2026-10-16T18:48:38+09:00",
+  "last_scan_count": 12,
+  "last_new_count": 2,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
   "hbm_market_pricing": {
@@ -779,20 +791,20 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-10-16T14:08:00+09:00",
+  "last_successful_delivery_kst": "2026-10-16T18:48:49+09:00",
   "telegram_message_ids": [
-    297
+    300
   ],
-  "telegram_message_id": 297,
+  "telegram_message_id": 300,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      297
+      300
     ],
-    "confirmed_at_kst": "2026-10-16T14:08:00+09:00",
-    "alert_signature": "ec92207d56a3cae8566b57a140a6504d4ee831ae77ebac961efb6cc0e8cdd5ca"
+    "confirmed_at_kst": "2026-10-16T18:48:49+09:00",
+    "alert_signature": "c06e890c5b523c21f238c7479ae6621978b0b282b89fe838a8558c12b3c9c063"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
