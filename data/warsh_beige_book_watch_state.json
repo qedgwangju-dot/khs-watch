@@ -1,0 +1,26 @@
+{
+  "release_date": "2026-10-14",
+  "last_sent_key": "2026-10-14|c17d6b0523b10259",
+  "message_id": 88,
+  "sent_keys": [
+    "2026-10-14|c17d6b0523b10259"
+  ],
+  "pending_key": null,
+  "delivery_status": "confirmed",
+  "source_url": "https://www.federalreserve.gov/monetarypolicy/beigebook202610-summary.htm",
+  "values": {
+    "strong_price_districts": 3,
+    "moderate_price_districts": 8,
+    "modest_price_districts": 1,
+    "price_acceleration_districts": 4,
+    "ai_hiring_districts": 5,
+    "energy_freight": true,
+    "insurer_tariff": true,
+    "consumer_resistance": true,
+    "contract_lag": true,
+    "consumer_little_change": true
+  },
+  "last_sent_at_utc": "2026-10-16T06:08:49Z",
+  "updated_at_utc": "2026-10-16T06:10:41Z",
+  "recovery_note": "Actions 38859461182 confirmed Telegram message_id 88; state commit previously blocked by missing optional IMF file. Recovery reconciled from confirmed job log."
+}
