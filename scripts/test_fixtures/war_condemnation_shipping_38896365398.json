@@ -1,0 +1,240 @@
+{
+  "provenance": {
+    "run_id": "38896365398",
+    "code_sha": "12cb0b7afb2dccdfa03bc1974c04b13fd66dfaca",
+    "queried_at_kst": "2026-10-16T20:50:59.370876+09:00",
+    "alert_sha256": "280455e5bd07c9e08ac473a54045bdf037e539f2ed047091136caafff088a1b6",
+    "evidence_sha256": "721d923db000594a897eeb56032c286d38da4f7b3836721d67d7fbf08927a18b",
+    "source_body_limit": "Discovery feed input only; publisher/channel bodies and operating HTTP response bytes were not preserved."
+  },
+  "articles": [
+    {
+      "id": "a8954912b7ed721dac8c",
+      "title_original": "트럼프 대통령은 우크라이나의 러시아 정유 시설 공격 재개를 \"수치스러운 일\"이라고 비난했다. - Vietnam.vn",
+      "title_ko": "트럼프 대통령은 우크라이나의 러시아 정유 시설 공격 재개를 \"수치스러운 일\"이라고 비난했다. - Vietnam.vn",
+      "description": "트럼프 대통령은 우크라이나의 러시아 정유 시설 공격 재개를 \"수치스러운 일\"이라고 비난했다. Vietnam.vn",
+      "source": "Vietnam.vn",
+      "source_url": "https://www.vietnam.vn",
+      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOb2tydTJ1STZWOTE0U0Q5RXFSak1mM1Y3XzZ4aWoyQV9FUExySVg1OWFsVzVtYUUxMWRNN1JYNGlNWEJjRHBQTjhGbERiclh4Z2w1NjFpcXIwX1ljUzdTVmlwcmhiYlFBMzgxNTF3V001VThHYmtFS3g5UTMzdW1qcVUweDNTNzNNbWFYWnJmckt2WEFlX3YyV2xqUDlmX05YSm5DNVVIQjB1UWl0Rk1HdTBuNEZKemtDMVRkTHJBdEQ?oc=5",
+      "published": "Fri, 16 Oct 2026 10:33:06 GMT",
+      "score": 74,
+      "tags": [
+        "정유시설 공격 보도"
+      ],
+      "body_checked": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "classification_color": "red",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "9ca1c89347d02558d108",
+      "title_original": "IRANIAN FUEL SHIPMENTS BREACH U.S. NAVAL BLOCKADE \nIran has reportedly exported 4.1 million barrels of LPG aboard at least eight tankers since July, despite the U.S. naval blockade.\nA separate shipment of Iranian jet fuel reached Myanmar, while some LPG cargoes were likely headed to China.\nMeanwh...",
+      "title_ko": "이란 연료 운송, 미국 해군 봉쇄 위반 이란은 미국 해군 봉쇄에도 불구하고 7월 이후 최소 8척의 유조선에 410만 배럴의 LPG를 수출한 것으로 알려졌습니다. 이란산 제트 연료의 별도 선적은 미얀마에 도착했고, 일부 LPG 화물은 중국으로 향했을 가능성이 높습니다. 그런데...",
+      "description": "IRANIAN FUEL SHIPMENTS BREACH U.S. NAVAL BLOCKADE \nIran has reportedly exported 4.1 million barrels of LPG aboard at least eight tankers since July, despite the U.S. naval blockade.\nA separate shipment of Iranian jet fuel reached Myanmar, while some LPG cargoes were likely headed to China.\nMeanwhile, Iranian crude exports fell to zero in September, according to Kpler.\n( @WalterBloomberg )",
+      "source": "Walter Bloomberg",
+      "link": "https://t.me/WalterBloomberg/37017",
+      "published": "Fri, 16 Oct 2026 10:45:27 +0000",
+      "score": 11,
+      "tags": [
+        "확전"
+      ],
+      "body_checked": true,
+      "classification_color": "",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e00b2a42fc30a17cdeb8f0adfd85a1a4285e7dd437e802b5c514ab7d4d02e40a"
+    }
+  ],
+  "markets": [
+    {
+      "name": "나스닥100 선물",
+      "price": 30066.75,
+      "pct": -0.2554426705370094,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "20:40 KST",
+      "observed_at_kst": "2026-10-16T20:40:58+09:00",
+      "symbol": "NQ=F",
+      "previous_close": 30143.75,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "NQ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 30143.75,
+        "chartPreviousClose": 30143.75,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792150858,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792123200,
+            "end": 1792123200,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792123200,
+            "end": 1792209540,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792209540,
+            "end": 1792209540,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/NQ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "WTI",
+      "price": 96.2300033569336,
+      "pct": -0.2797892674263225,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "20:41 KST",
+      "observed_at_kst": "2026-10-16T20:41:00+09:00",
+      "symbol": "CL=F",
+      "previous_close": 96.5,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "CL=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 96.5,
+        "chartPreviousClose": 96.5,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792150860,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792123200,
+            "end": 1792123200,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792123200,
+            "end": 1792209540,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792209540,
+            "end": 1792209540,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/CL%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "Brent",
+      "price": 106.41000366210938,
+      "pct": 0.4626167504808931,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "20:40 KST",
+      "observed_at_kst": "2026-10-16T20:40:50+09:00",
+      "symbol": "BZ=F",
+      "previous_close": 105.92,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "BZ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 105.92,
+        "chartPreviousClose": 105.92,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792150850,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "end": 1792123200,
+            "start": 1792123200,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "end": 1792209540,
+            "start": 1792123200,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "end": 1792209540,
+            "start": 1792209540,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/BZ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "달러지수",
+      "price": 101.66999816894531,
+      "pct": -0.37724935677301286,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "20:41 KST",
+      "observed_at_kst": "2026-10-16T20:41:03+09:00",
+      "symbol": "DX-Y.NYB",
+      "previous_close": 102.055,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "DX-Y.NYB",
+        "instrumentType": "INDEX",
+        "previousClose": 102.055,
+        "chartPreviousClose": 102.055,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792150863,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "end": 1792123200,
+            "start": 1792123200,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "end": 1792209540,
+            "start": 1792123200,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "end": 1792209540,
+            "start": 1792209540,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/DX-Y.NYB?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    }
+  ],
+  "actual_alert": "<b>전쟁·종전·재건 웹감시</b>\n🔴 <b>공격·확전</b>\n조회 2026-10-16 20:50 KST\n기사 시각 기준 · 실제 사건 발생시각과 구분\n\n<b>핵심 변화</b>\n🔴 [신규] <b>1. 우크라이나·러시아 · 정유시설 공격 보도</b>\n트럼프 대통령은 우크라이나의 러시아 정유 시설 공격 재개를 &quot;수치스러운 일&quot;이라고 비난했다. - Vietnam.vn\nRSS 보도 10-16 19:33 KST · <b>77분 경과</b> · 정유시설 공격 보도 · <a href=\"https://news.google.com/rss/articles/CBMiwAFBVV95cUxOb2tydTJ1STZWOTE0U0Q5RXFSak1mM1Y3XzZ4aWoyQV9FUExySVg1OWFsVzVtYUUxMWRNN1JYNGlNWEJjRHBQTjhGbERiclh4Z2w1NjFpcXIwX1ljUzdTVmlwcmhiYlFBMzgxNTF3V001VThHYmtFS3g5UTMzdW1qcVUweDNTNzNNbWFYWnJmckt2WEFlX3YyV2xqUDlmX05YSm5DNVVIQjB1UWl0Rk1HdTBuNEZKemtDMVRkTHJBdEQ?oc=5\">Vietnam.vn 검색 링크</a> · 제목 기준·본문 미확인\n\n[신규] <b>2. 이란·호르무즈</b>\n이란 연료 운송, 미국 해군 봉쇄 위반 이란은 미국 해군 봉쇄에도 불구하고 7월 이후 최소 8척의 유조선에 410만 배럴의 LPG를 수출한 것으로 알려졌습니다. 이란산 제트 연료의 별도 선적은 미얀마에 도착했고, 일부 LPG 화물은 중국으로 향했을 가능성이 높습니다. 그런데...\nRSS 보도 10-16 19:45 KST · <b>65분 경과</b> · 확전 · <a href=\"https://t.me/WalterBloomberg/37017\">Walter Bloomberg 원문</a>\n\n<b>시장 반응</b>\n나스닥100 선물  <b>30,066.75</b>  -0.26% · 제공처 비교종가 대비 · 기준 20:40 KST · Yahoo Finance 1분봉 NQ=F\nWTI  <b>96.23</b>  -0.28% · 제공처 비교종가 대비 · 기준 20:41 KST · Yahoo Finance 1분봉 CL=F\nBrent  <b>106.41</b>  +0.46% · 제공처 비교종가 대비 · 기준 20:40 KST · Yahoo Finance 1분봉 BZ=F\n달러지수  <b>101.67</b>  -0.38% · 제공처 비교종가 대비 · 기준 20:41 KST · Yahoo Finance 1분봉 DX-Y.NYB\n\n<b>투자 판정</b>\n- <b>핵심:</b> 신규 변화의 중심은 실제 공격·해상안보·운영 위험\n- <b>현재 단계:</b> 군사·안보 위험 지속 — 상업거래나 조건 제시를 휴전 진전으로 보지 않음\n- <b>조건부 영향:</b> 추가 공격·운영 차질이 확대되면 유가·해운·보험 위험프리미엄 상승 가능\n- <b>다음:</b> 추가 공격 → 시설·선박 피해 → 운항 제한 → 실제 교전 강도\n"
+}
