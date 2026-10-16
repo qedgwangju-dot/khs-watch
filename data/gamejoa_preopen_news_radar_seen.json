@@ -13778,6 +13778,30 @@
       "telegram_core_fact": "김명주 연구원은 보고서에서 이마트의 3분기 연결 기준 영업이익이 1천449억원이 될 것으로 예상했다.",
       "title": "한투증권 \"이마트, 3분기 연결 영업익 컨센서스 17% 하회 전망\""
     },
+    "core:38fc8c7c86d4f6a9f5c75b6a": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176118",
+      "source": "매일경제",
+      "source_body_digest": "d15c5ed8d947fd67f704198b410e49d7896ac2914894aba24842f7eb8d682059",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3ce36569e57c2ecc1d3cad2a2ea4d6a74a282750275b0d928815f774c7d10995",
+      "source_fact_keys": [
+        "source_fact:v1:13766c2d82748a9e034dcdb88d20daa50e520d2cfdf947b4c16841f68686090c",
+        "source_fact:v1:442a8d14d82c48c78d8ff8bfcb6719b56252b5dd737f1b24a5b1a1f43c4d2cf7",
+        "source_fact:v1:6489c33133ea8b14bd05e273fd0014de0f2c9e5aeb35993356febc86f5c2953a",
+        "source_fact:v1:79d5210dfd169c1fd07c3ea429013a736a53d701143ddb633b44c7d59b03e367",
+        "source_fact:v1:e29bc2dbbc0ed35a939a733fc55e4f32c68a3c6adfd1fc68c1d389905d3b6bac"
+      ],
+      "source_published_kst": "2026-10-17T05:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "나녹스, 3분기 예비매출 440만 달러..계속기업 의구심",
+      "telegram_core_fact": "나녹스(NNOX)는 9월 30일 종료된 2026년 3분기 예비 매출액이 430만~440만 달러로 전년 동기 340만 달러 대비 약 26~29% 증가한 것으로 추정되지만, 현금성 자산 급감으로 계속기업 존속 능력에 중대한 의구심이 제기된다고 10월 16일 발표했다.",
+      "title": "나녹스, 3분기 예비매출 440만 달러..계속기업 의구심"
+    },
     "core:3904bbcd9116a47e229d0520": {
       "first_seen_kst": "2026-10-15T04:22:43+09:00",
       "lanes": {
@@ -15652,6 +15676,31 @@
       "source_title": "비아트리스, 파시라 16억5000만 달러 인수…주당 36.50달러",
       "telegram_core_fact": "비아트리스(VTRS)가 비마취성 진통 치료제 기업 파시라 바이오사이언스(PCRX)의 발행주식 전량을 주당 36.50달러 현금, 총 지분가치 16억5000만 달러에 인수하는 최종 계약을 체결했다고 10월 8일 발표했다.",
       "title": "비아트리스, 파시라 16억5000만 달러 인수…주당 36.50달러"
+    },
+    "core:4064a608988dddc3e0aeb55b": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.inews24.com/view/zp/2015903",
+      "source": "아이뉴스24",
+      "source_body_digest": "bc5dcd5f25f657dfc5703667d3ec7be164c4810041a535d4fdd6ffac999099d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:779c64d0cc3016aaed330a3cef8b647a06ee7eaae4343af9fca7cfa29fdf7a67",
+      "source_fact_keys": [
+        "source_fact:v1:05aa0b3695ecdf2280f424f7b6197d99a3cd025c5a9d1e9b21fed6d5b48046c9",
+        "source_fact:v1:249d413c334eacf305795fa8b0080ccb4ec68b70347489d6a2248d33fe0376fb",
+        "source_fact:v1:27cd33a96fab4880770569d83162c45def4d5c9a66ae719549f15b1e373230a0",
+        "source_fact:v1:3778df3ce25143a9d6d52d8ccb722d64d7bd8291dd98c3ff4d399187c786a6b6",
+        "source_fact:v1:557f895e3fd9d8644752eaac30d63688c033bee5aa16e78e4d6ca55b412f4dcb",
+        "source_fact:v1:67a9f96f69a74266085b06038e83a31dba4fa3fb71ecfcf903d5e131dba979a3"
+      ],
+      "source_published_kst": "2026-10-16T16:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "DB손보, DB증권 지분 30% 눈앞⋯금융계열 지배축 강화",
+      "telegram_core_fact": "DB손해보험이 DB증권 단독 지분율 30% 돌파를 눈앞에 두고 있다. 이달까지 DB손해보험이 단독 취득한 지분을 합하면 총 지분율은 37.87% 수준이다.",
+      "title": "DB손보, DB증권 지분 30% 눈앞⋯금융계열 지배축 강화"
     },
     "core:40b91f4d8bcaa635b5b36fd6": {
       "first_seen_kst": "2026-10-13T14:05:30+09:00",
@@ -32628,6 +32677,31 @@
       "telegram_core_fact": "[파이낸셜뉴스] 삼성자산운용의 'KODEX 미국나스닥100' 상장지수펀드(ETF)가 개인투자자들의 자금 유입에 힘입어 순자산 10조원을 넘어섰다. 올해 개인 투자자의 'KODEX 미국나스닥100' 순매수 금액은 3조2988억원으로, 국내 나스닥100 추종 상품 중 1위를 기록했다.",
       "title": "개인 자금 3.3조 몰렸다…'KODEX 미국나스닥100' 순자산 10조 돌파"
     },
+    "core:8adbda548b8926aba14b4614": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261015160300002",
+      "source": "연합뉴스",
+      "source_body_digest": "78afe3bcfbd02f78b021bd19d0ae8b200e0643acaea94c005510e5f88136d20d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2e1f2a34c67e9b6c45e7a8f96ad5974fd0eb5a5e066aabfa397772c59ea5629f",
+      "source_fact_keys": [
+        "source_fact:v1:012bd7155e208d4b2a2355f7575d07d5cd8a0f2d7fffbb847b974878805b6bbb",
+        "source_fact:v1:049ef63bfdff4bae8f63cc8f95be6c124283ee5165bbc0684f3026a34426be02",
+        "source_fact:v1:04e195397c09a2e34f0bc80cec46d39faf54104d61812d250c2cde53ccebcb61",
+        "source_fact:v1:0f19437797fd4fc932043e8fec2fef5bce5ed50f869aa7fda761556707a83573",
+        "source_fact:v1:6475d9d81f80d67004e81596a2d077a0f0c0b19d70499b86b3e1bfcab1afe7a5",
+        "source_fact:v1:ff979d3dedd0b6157bdb735fdf97026e23a49bbd1082c7ae399d020fdebc6c02"
+      ],
+      "source_published_kst": "2026-10-16T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "환율 내렸지만 유가 올라서…9월 수입물가 넉 달만에 상승 | 연합뉴스",
+      "telegram_core_fact": "환율 효과를 제외한 9월 계약통화기준 수입물가는 전월대비 4.9% 상승, 전년 동월 대비 20.6% 상승이었다.",
+      "title": "환율 내렸지만 유가 올라서…9월 수입물가 넉 달만에 상승 | 연합뉴스"
+    },
     "core:8ae3826c1b8f6517e8cb9d1a": {
       "first_seen_kst": "2026-10-16T17:33:02+09:00",
       "lanes": {
@@ -38311,6 +38385,28 @@
       "source_title": "3.2%→3.6%…은행 예금 금리 어디까지 오를까 [머니뭐니]",
       "telegram_core_fact": "우리은행은 지난달 10일 이 상품의 금리를 연 3.40%로 0.20%포인트 올린 데 이어 같은 달 18일 3.50%로 추가 인상했다.",
       "title": "3.2%→3.6%…은행 예금 금리 어디까지 오를까 [머니뭐니]"
+    },
+    "core:a3a19a302156ff361917208b": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.fnnews.com/news/202610161012176513",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "00d6c6e11f5f903958df0247fda4c3bee2edbef062150f12910e09338cc95984",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2d72fe3dbf4934e4144b5fcf519712d3eeba54706b8e07ec53a3bf95a97038aa",
+      "source_fact_keys": [
+        "source_fact:v1:1b79a32d6596e3845e2a34003efad60e79fca80211195f5489554038cfbf5be5",
+        "source_fact:v1:749f3a555fa78838dd5084a28c95c815101bc7cc1c33c1413f3c9696d9e934a1",
+        "source_fact:v1:9dde2022fd3ceae7d169d64e1f55527e743d17bfb6e9d46b29ac88e6c15c8f31"
+      ],
+      "source_published_kst": "2026-10-16T10:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "농협금융 '2.5조' 흑자 vs 농협경제 '적자'…농협 지주 격차 고착화하나",
+      "telegram_core_fact": "16일 국회 농림축산식품해양수산위원회 소속 송옥주 의원(더불어민주당)이 농협에서 제출받은 자료에 따르면 농협금융지주의 연결 기준 당기순이익은 2020년부터 2025년까지 매년 2조 원 이상을 기록했다.",
+      "title": "농협금융 '2.5조' 흑자 vs 농협경제 '적자'…농협 지주 격차 고착화하나"
     },
     "core:a3b3179988599a7ab0075526": {
       "first_seen_kst": "2026-10-08T09:33:54+09:00",
@@ -46249,6 +46345,26 @@
       "telegram_core_fact": "이번 사례는 지난해 1월 발효된 것으로 중국의 AI, 반도체 및 양자 컴퓨팅 사업에 대한 미국의 해외 투자 규제 조치가 처음 집행된 것이라고 SCMP는 전했다.",
       "title": "美 재무부, 상하이 로봇 AI 업체 투자 美 기업에 약 2억 6000만원 벌금"
     },
+    "core:c750120f3d2a6f39b7ee3548": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261017004900072",
+      "source": "연합뉴스",
+      "source_body_digest": "bf4e612a8d8e7ea7964d8100ff6b405d972ced3fd6ab5a084ccd0f4073ade310",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f88a6bceeaf7d3de204049aa335f6e665edd8c5d9223cd5e7e2eaff648adda86",
+      "source_fact_keys": [
+        "source_fact:v1:efd64082cd829e08d897ee3dd689c7d6b3cf2d21f0629ae3d1e0334d52dffc15"
+      ],
+      "source_published_kst": "2026-10-17T05:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "중동도 우크라도 불안…브렌트유 109달러대, 5개월만에 최고 | 연합뉴스",
+      "telegram_core_fact": "런던 ICE 선물거래소에서 12월 인도분 브렌트유는 전장보다 3.72% 오른 배럴당 109.86달러에 거래를 마쳤다.",
+      "title": "중동도 우크라도 불안…브렌트유 109달러대, 5개월만에 최고 | 연합뉴스"
+    },
     "core:c7a8a32dc5a243bd6aced717": {
       "first_seen_kst": "2026-10-11T18:15:28+09:00",
       "lanes": {
@@ -48546,6 +48662,27 @@
       "source_title": "美국방부, 이란 대규모 공습 준비 지시⋯중간선거 전 공격 가능성",
       "telegram_core_fact": "로이터 통신은 이란이 호르무즈 해협을 항해하는 유조선에 대한 공격을 늘려 주간 공격 건수가 2월 미·이란 군사 충돌 이후 가장 많아졌다고 보도했다.",
       "title": "美국방부, 이란 대규모 공습 준비 지시⋯중간선거 전 공격 가능성"
+    },
+    "core:d2a85698592c2998c1fd54ec": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01380886645613904",
+      "source": "이데일리",
+      "source_body_digest": "9de8fe0b36f9850b99ad736409576cb6c80fe0d6692eae18aa76c43fe60246ac",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2566bdfaddb2669f3839623148f94d2293490005a791a4a75db73906212dbde4",
+      "source_fact_keys": [
+        "source_fact:v1:4117e991f6f4cc698527a5d5aa7390d11ddccc3231c25a463df385fee6dcf90c",
+        "source_fact:v1:df8527515e0c44a6afd6d3ed56faa212bc74dcd5c1f1e242d86e86e649cc857b"
+      ],
+      "source_published_kst": "2026-10-17T05:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "호르무즈 이어 사우디 원유 수출로까지 위협…브렌트유 110달러 터치",
+      "telegram_core_fact": "글로벌 기준유인 브렌트유 선물은 3.94달러(3.72%) 상승한 109.86달러에 마감했다.",
+      "title": "호르무즈 이어 사우디 원유 수출로까지 위협…브렌트유 110달러 터치"
     },
     "core:d2b3a993cd68435d88484511": {
       "first_seen_kst": "2026-10-08T00:39:44+09:00",
@@ -59521,25 +59658,22 @@
     "event:173faf5d618f27b01977621f": {
       "first_seen_kst": "2026-10-17T05:02:37+09:00",
       "lanes": {
-        "live": "2026-10-17T05:02:37+09:00"
+        "live": "2026-10-17T05:25:35+09:00"
       },
-      "last_seen_kst": "2026-10-17T05:02:37+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261017003500079",
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261017004900072",
       "source": "연합뉴스",
-      "source_body_digest": "0a1e28f340ab0d9dd1e8656bd86779e1ab05cc5de7785cd550eefcdb2686f7d9",
+      "source_body_digest": "bf4e612a8d8e7ea7964d8100ff6b405d972ced3fd6ab5a084ccd0f4073ade310",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:7b3c21d2b721955956422dc343446b9b15fa6acd7cc30e498d2413e98b62ed1c",
+      "source_fact_identity": "source_facts:v1:f88a6bceeaf7d3de204049aa335f6e665edd8c5d9223cd5e7e2eaff648adda86",
       "source_fact_keys": [
-        "source_fact:v1:66d71f20152c3e6e96aa4595eacabad37df7b135a243612d9d8cfd1d198c8889",
-        "source_fact:v1:d35ceff23aff45363d341ffc81948b328455ecc495bb312c92175f21d638bf07",
-        "source_fact:v1:dec1a3feafc564671ad0d3338c892886d5eb8a63f84e11ecdf96329988c710ff",
-        "source_fact:v1:f773c4cc0003ecb591f723f8590e284da2e9831a148670be835482722a41c03d"
+        "source_fact:v1:efd64082cd829e08d897ee3dd689c7d6b3cf2d21f0629ae3d1e0334d52dffc15"
       ],
-      "source_published_kst": "2026-10-17T03:03+09:00",
+      "source_published_kst": "2026-10-17T05:04+09:00",
       "source_supply_terms": {},
-      "source_title": "후티 반군, 예멘 3대 도시 타이즈 포위 압박…주민들 공포 | 연합뉴스",
-      "telegram_core_fact": "지난 2월 미국과 이스라엘의 이란 공습으로 촉발된 중동 전쟁의 여파로 예멘 내전이 격화하는 가운데, 홍해 연안을 장악한 후티가 격전을 벌이며 타이즈까지 압박하면서 주민들의 공포와 인도주의적 위기도 걷잡을 수 없이 커지고 있다.",
-      "title": "후티 반군, 예멘 3대 도시 타이즈 포위 압박…주민들 공포 | 연합뉴스"
+      "source_title": "중동도 우크라도 불안…브렌트유 109달러대, 5개월만에 최고 | 연합뉴스",
+      "telegram_core_fact": "런던 ICE 선물거래소에서 12월 인도분 브렌트유는 전장보다 3.72% 오른 배럴당 109.86달러에 거래를 마쳤다.",
+      "title": "중동도 우크라도 불안…브렌트유 109달러대, 5개월만에 최고 | 연합뉴스"
     },
     "event:17defdecf40efbd28e528c5a": {
       "first_seen_kst": "2026-09-20T19:20:28+09:00",
@@ -78698,6 +78832,30 @@
       "telegram_core_fact": "미국 뉴욕증시가 9일(현지 시간) 국제유가 하락과 기술주 반등에 힘입어 일제히 상승 출발했다.",
       "title": "뉴욕증시, 유가 하락·기술주 반등에 상승 출발…나스닥 0.34%↑"
     },
+    "fact:104c86e22dd8f0a719f674f6": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.hankyung.com/article/202610165474i",
+      "source": "한국경제",
+      "source_body_digest": "fc77a72d7a7c717280fd31209fd1ff6ded863bd319bbf11836bdd74215bbf790",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ab6e8b441c0fb0782b034e1dc7ce59067716c7c69fd17e8e71945a7ce4d0a447",
+      "source_fact_keys": [
+        "source_fact:v1:0047b1ca0afc97cc15e1d4fb684cbacc1723ac2103cc5a3bcd1ca55637f37aa4",
+        "source_fact:v1:75b09eb91a3230bc6044a0333ed67feaecd3b7a4ab643fc1d52549ea6c914cf9",
+        "source_fact:v1:9258ace485d5e70e91b30956eb294945c0a06187ae81ec7f14a08bc0d8d03472",
+        "source_fact:v1:e5c2aebc892df43c58edba464ce98a09e60d745e10bdb65f35013fb090ec1a9e",
+        "source_fact:v1:f275505f41e4aa24fcd65292add3ebb65c11d5244af18d710a73ad9813a31d07"
+      ],
+      "source_published_kst": "2026-10-16T08:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "이노보테라퓨틱스, 코스닥 상장예심 통과…IPO 본격화",
+      "telegram_core_fact": "이노보테라퓨틱스는 한국거래소로부터 코스닥시장 상장예비심사 승인을 받았다고 16일 밝혔다.",
+      "title": "이노보테라퓨틱스, 코스닥 상장예심 통과…IPO 본격화"
+    },
     "fact:1054f302ffe4a0987de129c8": {
       "first_seen_kst": "2026-10-11T14:49:05+09:00",
       "lanes": {
@@ -95394,6 +95552,31 @@
       "telegram_core_fact": "반면에 순자산총액 하위 50개 ETF의 합산 순자산은 1700억원으로 지난해 말보다 오히려 줄었다. 신규 상장된 우주 ETF 가운데 순자산 규모가 가장 컸던 'TIGER 미국우주테크'의 6월 하루 평균 거래대금은 2000억원에 육박할 정도였다.",
       "title": "테마 떴다하면 찍어내는 ETF … 하위 50개 순자산 고작 1700억"
     },
+    "fact:4fdc5ecdd0766c4a1466b801": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261015160300002",
+      "source": "연합뉴스",
+      "source_body_digest": "78afe3bcfbd02f78b021bd19d0ae8b200e0643acaea94c005510e5f88136d20d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2e1f2a34c67e9b6c45e7a8f96ad5974fd0eb5a5e066aabfa397772c59ea5629f",
+      "source_fact_keys": [
+        "source_fact:v1:012bd7155e208d4b2a2355f7575d07d5cd8a0f2d7fffbb847b974878805b6bbb",
+        "source_fact:v1:049ef63bfdff4bae8f63cc8f95be6c124283ee5165bbc0684f3026a34426be02",
+        "source_fact:v1:04e195397c09a2e34f0bc80cec46d39faf54104d61812d250c2cde53ccebcb61",
+        "source_fact:v1:0f19437797fd4fc932043e8fec2fef5bce5ed50f869aa7fda761556707a83573",
+        "source_fact:v1:6475d9d81f80d67004e81596a2d077a0f0c0b19d70499b86b3e1bfcab1afe7a5",
+        "source_fact:v1:ff979d3dedd0b6157bdb735fdf97026e23a49bbd1082c7ae399d020fdebc6c02"
+      ],
+      "source_published_kst": "2026-10-16T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "환율 내렸지만 유가 올라서…9월 수입물가 넉 달만에 상승 | 연합뉴스",
+      "telegram_core_fact": "환율 효과를 제외한 9월 계약통화기준 수입물가는 전월대비 4.9% 상승, 전년 동월 대비 20.6% 상승이었다.",
+      "title": "환율 내렸지만 유가 올라서…9월 수입물가 넉 달만에 상승 | 연합뉴스"
+    },
     "fact:4fe3a71f7dd34b1d7c976e2c": {
       "first_seen_kst": "2026-10-07T17:10:43+09:00",
       "lanes": {
@@ -97029,6 +97212,27 @@
       "source_title": "레이언스, 올 상반기만 '반도체 AXI 디텍터'로 131억 매출 기록",
       "telegram_core_fact": "디지털 엑스레이(X-ray) 이미징 솔루션 기업 레이언스가 올해 상반기 반도체 AXI(자동 엑스레이 검사)용 CMOS(상보형 금속산화반도체) 디텍터로 131억원의 매출을 기록했다고 13일 밝혔다.",
       "title": "레이언스, 올 상반기만 '반도체 AXI 디텍터'로 131억 매출 기록"
+    },
+    "fact:566ac3b64f28b1e488a4f5a4": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01380886645613904",
+      "source": "이데일리",
+      "source_body_digest": "9de8fe0b36f9850b99ad736409576cb6c80fe0d6692eae18aa76c43fe60246ac",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2566bdfaddb2669f3839623148f94d2293490005a791a4a75db73906212dbde4",
+      "source_fact_keys": [
+        "source_fact:v1:4117e991f6f4cc698527a5d5aa7390d11ddccc3231c25a463df385fee6dcf90c",
+        "source_fact:v1:df8527515e0c44a6afd6d3ed56faa212bc74dcd5c1f1e242d86e86e649cc857b"
+      ],
+      "source_published_kst": "2026-10-17T05:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "호르무즈 이어 사우디 원유 수출로까지 위협…브렌트유 110달러 터치",
+      "telegram_core_fact": "글로벌 기준유인 브렌트유 선물은 3.94달러(3.72%) 상승한 109.86달러에 마감했다.",
+      "title": "호르무즈 이어 사우디 원유 수출로까지 위협…브렌트유 110달러 터치"
     },
     "fact:568cdc9a64080125401e4d75": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
@@ -101787,6 +101991,28 @@
       "source_published_kst": "2026-10-06T08:02+09:00",
       "title": "밸류파인더 “메타케어, 저용량 탈모치료제 출시 임박…헬스케어 플랫폼 확장”"
     },
+    "fact:6956dd26f0af89ee6623cb97": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.fnnews.com/news/202610161012176513",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "00d6c6e11f5f903958df0247fda4c3bee2edbef062150f12910e09338cc95984",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2d72fe3dbf4934e4144b5fcf519712d3eeba54706b8e07ec53a3bf95a97038aa",
+      "source_fact_keys": [
+        "source_fact:v1:1b79a32d6596e3845e2a34003efad60e79fca80211195f5489554038cfbf5be5",
+        "source_fact:v1:749f3a555fa78838dd5084a28c95c815101bc7cc1c33c1413f3c9696d9e934a1",
+        "source_fact:v1:9dde2022fd3ceae7d169d64e1f55527e743d17bfb6e9d46b29ac88e6c15c8f31"
+      ],
+      "source_published_kst": "2026-10-16T10:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "농협금융 '2.5조' 흑자 vs 농협경제 '적자'…농협 지주 격차 고착화하나",
+      "telegram_core_fact": "16일 국회 농림축산식품해양수산위원회 소속 송옥주 의원(더불어민주당)이 농협에서 제출받은 자료에 따르면 농협금융지주의 연결 기준 당기순이익은 2020년부터 2025년까지 매년 2조 원 이상을 기록했다.",
+      "title": "농협금융 '2.5조' 흑자 vs 농협경제 '적자'…농협 지주 격차 고착화하나"
+    },
     "fact:697856fd43326f4bd2852afa": {
       "first_seen_kst": "2026-10-14T16:58:19+09:00",
       "lanes": {
@@ -102878,6 +103104,30 @@
       "source_title": "\"美, 러 정유소 공격 멈추라며 우크라에 정보공유 중단 경고\" | 연합뉴스",
       "telegram_core_fact": "미국이 우크라이나에 러시아 정유시설 공격을 멈추지 않으면 핵심정보 공유를 중단하겠다고 경고했다고 파이낸셜타임스(FT)가 10일(현지시간) 보도했다. 이어 러시아 정유시설 공격이 '세계적 문제'를 일으킨다는 자신의 경고에도 우크라이나가 계속 공격했다면서 \"당장 그만두는 게 좋을 것\"이라고 압박했다.",
       "title": "\"美, 러 정유소 공격 멈추라며 우크라에 정보공유 중단 경고\" | 연합뉴스"
+    },
+    "fact:6cfd6c02cfc31241cd48b3c1": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176118",
+      "source": "매일경제",
+      "source_body_digest": "d15c5ed8d947fd67f704198b410e49d7896ac2914894aba24842f7eb8d682059",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3ce36569e57c2ecc1d3cad2a2ea4d6a74a282750275b0d928815f774c7d10995",
+      "source_fact_keys": [
+        "source_fact:v1:13766c2d82748a9e034dcdb88d20daa50e520d2cfdf947b4c16841f68686090c",
+        "source_fact:v1:442a8d14d82c48c78d8ff8bfcb6719b56252b5dd737f1b24a5b1a1f43c4d2cf7",
+        "source_fact:v1:6489c33133ea8b14bd05e273fd0014de0f2c9e5aeb35993356febc86f5c2953a",
+        "source_fact:v1:79d5210dfd169c1fd07c3ea429013a736a53d701143ddb633b44c7d59b03e367",
+        "source_fact:v1:e29bc2dbbc0ed35a939a733fc55e4f32c68a3c6adfd1fc68c1d389905d3b6bac"
+      ],
+      "source_published_kst": "2026-10-17T05:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "나녹스, 3분기 예비매출 440만 달러..계속기업 의구심",
+      "telegram_core_fact": "나녹스(NNOX)는 9월 30일 종료된 2026년 3분기 예비 매출액이 430만~440만 달러로 전년 동기 340만 달러 대비 약 26~29% 증가한 것으로 추정되지만, 현금성 자산 급감으로 계속기업 존속 능력에 중대한 의구심이 제기된다고 10월 16일 발표했다.",
+      "title": "나녹스, 3분기 예비매출 440만 달러..계속기업 의구심"
     },
     "fact:6cfd76b05b8f4b068c337917": {
       "first_seen_kst": "2026-10-09T19:24:17+09:00",
@@ -119146,6 +119396,31 @@
       "telegram_core_fact": "같은 기간 투자 도착액은 전년 대비 30.6% 증가한 148억7000만달러로 3분기 누적 기준 역대 1위 실적을 달성했다. 특히 실제 자금이 유입된 투자 도착액은 30% 넘게 증가하며 3분기 누적 기준 역대 최대치를 경신했다.",
       "title": "3분기 누적 韓도착 외국인직접투자 149억불 '역대 최대'⋯중동 악재 속 30.6%↑"
     },
+    "fact:a5d4682c0633998d0d5541fa": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.inews24.com/view/zp/2015903",
+      "source": "아이뉴스24",
+      "source_body_digest": "bc5dcd5f25f657dfc5703667d3ec7be164c4810041a535d4fdd6ffac999099d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:779c64d0cc3016aaed330a3cef8b647a06ee7eaae4343af9fca7cfa29fdf7a67",
+      "source_fact_keys": [
+        "source_fact:v1:05aa0b3695ecdf2280f424f7b6197d99a3cd025c5a9d1e9b21fed6d5b48046c9",
+        "source_fact:v1:249d413c334eacf305795fa8b0080ccb4ec68b70347489d6a2248d33fe0376fb",
+        "source_fact:v1:27cd33a96fab4880770569d83162c45def4d5c9a66ae719549f15b1e373230a0",
+        "source_fact:v1:3778df3ce25143a9d6d52d8ccb722d64d7bd8291dd98c3ff4d399187c786a6b6",
+        "source_fact:v1:557f895e3fd9d8644752eaac30d63688c033bee5aa16e78e4d6ca55b412f4dcb",
+        "source_fact:v1:67a9f96f69a74266085b06038e83a31dba4fa3fb71ecfcf903d5e131dba979a3"
+      ],
+      "source_published_kst": "2026-10-16T16:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "DB손보, DB증권 지분 30% 눈앞⋯금융계열 지배축 강화",
+      "telegram_core_fact": "DB손해보험이 DB증권 단독 지분율 30% 돌파를 눈앞에 두고 있다. 이달까지 DB손해보험이 단독 취득한 지분을 합하면 총 지분율은 37.87% 수준이다.",
+      "title": "DB손보, DB증권 지분 30% 눈앞⋯금융계열 지배축 강화"
+    },
     "fact:a5ddf61e1e605a6f76651431": {
       "first_seen_kst": "2026-10-14T23:50:23+09:00",
       "lanes": {
@@ -132688,6 +132963,26 @@
       ],
       "source_published_kst": "2026-10-07T16:11+09:00",
       "title": "\"대만 반도체업체 난야, D램 가격 최대 20% 인상 전망\""
+    },
+    "fact:d2d5a372f250feef95b6bdc2": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261017004900072",
+      "source": "연합뉴스",
+      "source_body_digest": "bf4e612a8d8e7ea7964d8100ff6b405d972ced3fd6ab5a084ccd0f4073ade310",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f88a6bceeaf7d3de204049aa335f6e665edd8c5d9223cd5e7e2eaff648adda86",
+      "source_fact_keys": [
+        "source_fact:v1:efd64082cd829e08d897ee3dd689c7d6b3cf2d21f0629ae3d1e0334d52dffc15"
+      ],
+      "source_published_kst": "2026-10-17T05:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "중동도 우크라도 불안…브렌트유 109달러대, 5개월만에 최고 | 연합뉴스",
+      "telegram_core_fact": "런던 ICE 선물거래소에서 12월 인도분 브렌트유는 전장보다 3.72% 오른 배럴당 109.86달러에 거래를 마쳤다.",
+      "title": "중동도 우크라도 불안…브렌트유 109달러대, 5개월만에 최고 | 연합뉴스"
     },
     "fact:d308cc64f188d33d7a9f011b": {
       "first_seen_kst": "2026-10-10T07:44:19+09:00",
@@ -167446,6 +167741,30 @@
       "source": "뉴시스",
       "title": "美국무, 이란 대표단에 뉴욕 조기 출국 지시…협상 진전 없어"
     },
+    "link:3ac297c741dea47e419c394e": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176118",
+      "source": "매일경제",
+      "source_body_digest": "d15c5ed8d947fd67f704198b410e49d7896ac2914894aba24842f7eb8d682059",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3ce36569e57c2ecc1d3cad2a2ea4d6a74a282750275b0d928815f774c7d10995",
+      "source_fact_keys": [
+        "source_fact:v1:13766c2d82748a9e034dcdb88d20daa50e520d2cfdf947b4c16841f68686090c",
+        "source_fact:v1:442a8d14d82c48c78d8ff8bfcb6719b56252b5dd737f1b24a5b1a1f43c4d2cf7",
+        "source_fact:v1:6489c33133ea8b14bd05e273fd0014de0f2c9e5aeb35993356febc86f5c2953a",
+        "source_fact:v1:79d5210dfd169c1fd07c3ea429013a736a53d701143ddb633b44c7d59b03e367",
+        "source_fact:v1:e29bc2dbbc0ed35a939a733fc55e4f32c68a3c6adfd1fc68c1d389905d3b6bac"
+      ],
+      "source_published_kst": "2026-10-17T05:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "나녹스, 3분기 예비매출 440만 달러..계속기업 의구심",
+      "telegram_core_fact": "나녹스(NNOX)는 9월 30일 종료된 2026년 3분기 예비 매출액이 430만~440만 달러로 전년 동기 340만 달러 대비 약 26~29% 증가한 것으로 추정되지만, 현금성 자산 급감으로 계속기업 존속 능력에 중대한 의구심이 제기된다고 10월 16일 발표했다.",
+      "title": "나녹스, 3분기 예비매출 440만 달러..계속기업 의구심"
+    },
     "link:3ac2cbb7c003ee0f920bffa0": {
       "first_seen_kst": "2026-10-01T17:50:48+09:00",
       "lanes": {
@@ -169017,6 +169336,27 @@
       "telegram_core_fact": "한진정보통신은 기존 'H 솔루션'과 'HAI 솔루션', 인더스트리 솔루션 등 자체 제품군을 확대하면서 실제 고객 프로젝트에서 검증된 기능과 기술을 솔루션화하는 접근 방식을 취하고 있다.",
       "title": "[AI 리더스] 한진정보통신 \"대외 AX 시장으로 도약…기업 비즈니스 혁신 이끌 것\""
     },
+    "link:3e8cb799dbe3296e19786ed8": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01380886645613904",
+      "source": "이데일리",
+      "source_body_digest": "9de8fe0b36f9850b99ad736409576cb6c80fe0d6692eae18aa76c43fe60246ac",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2566bdfaddb2669f3839623148f94d2293490005a791a4a75db73906212dbde4",
+      "source_fact_keys": [
+        "source_fact:v1:4117e991f6f4cc698527a5d5aa7390d11ddccc3231c25a463df385fee6dcf90c",
+        "source_fact:v1:df8527515e0c44a6afd6d3ed56faa212bc74dcd5c1f1e242d86e86e649cc857b"
+      ],
+      "source_published_kst": "2026-10-17T05:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "호르무즈 이어 사우디 원유 수출로까지 위협…브렌트유 110달러 터치",
+      "telegram_core_fact": "글로벌 기준유인 브렌트유 선물은 3.94달러(3.72%) 상승한 109.86달러에 마감했다.",
+      "title": "호르무즈 이어 사우디 원유 수출로까지 위협…브렌트유 110달러 터치"
+    },
     "link:3e9ff6b040017f60776024b8": {
       "first_seen_kst": "2026-10-02T17:34:05+09:00",
       "lanes": {
@@ -169154,6 +169494,28 @@
       "source_title": "유가 급등에 델타항공 이익 전망 24% 하향…3Q 실적도 부진",
       "telegram_core_fact": "미국 주요 항공사 중 가장 먼저 3분기 실적을 발표한 델타항공의 부진은 고유가가 미국 기업들의 수익성을 본격적으로 압박하고 있음을 보여줬다.",
       "title": "유가 급등에 델타항공 이익 전망 24% 하향…3Q 실적도 부진"
+    },
+    "link:3eba2fca3166aeb87851da1c": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.fnnews.com/news/202610161012176513",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "00d6c6e11f5f903958df0247fda4c3bee2edbef062150f12910e09338cc95984",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2d72fe3dbf4934e4144b5fcf519712d3eeba54706b8e07ec53a3bf95a97038aa",
+      "source_fact_keys": [
+        "source_fact:v1:1b79a32d6596e3845e2a34003efad60e79fca80211195f5489554038cfbf5be5",
+        "source_fact:v1:749f3a555fa78838dd5084a28c95c815101bc7cc1c33c1413f3c9696d9e934a1",
+        "source_fact:v1:9dde2022fd3ceae7d169d64e1f55527e743d17bfb6e9d46b29ac88e6c15c8f31"
+      ],
+      "source_published_kst": "2026-10-16T10:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "농협금융 '2.5조' 흑자 vs 농협경제 '적자'…농협 지주 격차 고착화하나",
+      "telegram_core_fact": "16일 국회 농림축산식품해양수산위원회 소속 송옥주 의원(더불어민주당)이 농협에서 제출받은 자료에 따르면 농협금융지주의 연결 기준 당기순이익은 2020년부터 2025년까지 매년 2조 원 이상을 기록했다.",
+      "title": "농협금융 '2.5조' 흑자 vs 농협경제 '적자'…농협 지주 격차 고착화하나"
     },
     "link:3ebc69473e39a6e28053ca81": {
       "first_seen_kst": "2026-10-08T02:57:10+09:00",
@@ -199276,6 +199638,31 @@
       "source": "뉴시스",
       "title": "\"부산대 작년 지역 생산유발 1.5조원, 일자리 창출 1.2만명\""
     },
+    "link:902b2e64e58b7b1632d078bc": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261015160300002",
+      "source": "연합뉴스",
+      "source_body_digest": "78afe3bcfbd02f78b021bd19d0ae8b200e0643acaea94c005510e5f88136d20d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2e1f2a34c67e9b6c45e7a8f96ad5974fd0eb5a5e066aabfa397772c59ea5629f",
+      "source_fact_keys": [
+        "source_fact:v1:012bd7155e208d4b2a2355f7575d07d5cd8a0f2d7fffbb847b974878805b6bbb",
+        "source_fact:v1:049ef63bfdff4bae8f63cc8f95be6c124283ee5165bbc0684f3026a34426be02",
+        "source_fact:v1:04e195397c09a2e34f0bc80cec46d39faf54104d61812d250c2cde53ccebcb61",
+        "source_fact:v1:0f19437797fd4fc932043e8fec2fef5bce5ed50f869aa7fda761556707a83573",
+        "source_fact:v1:6475d9d81f80d67004e81596a2d077a0f0c0b19d70499b86b3e1bfcab1afe7a5",
+        "source_fact:v1:ff979d3dedd0b6157bdb735fdf97026e23a49bbd1082c7ae399d020fdebc6c02"
+      ],
+      "source_published_kst": "2026-10-16T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "환율 내렸지만 유가 올라서…9월 수입물가 넉 달만에 상승 | 연합뉴스",
+      "telegram_core_fact": "환율 효과를 제외한 9월 계약통화기준 수입물가는 전월대비 4.9% 상승, 전년 동월 대비 20.6% 상승이었다.",
+      "title": "환율 내렸지만 유가 올라서…9월 수입물가 넉 달만에 상승 | 연합뉴스"
+    },
     "link:90462e2ef34978e95b8aae05": {
       "first_seen_kst": "2026-10-07T12:28:05+09:00",
       "lanes": {
@@ -207661,6 +208048,31 @@
       "telegram_core_fact": "이재명 대통령이 7일 한국형 발사체 누리호 5차 발사가 성공한 데 대해 \"정부가 우주 발사를 적극적으로 지원한 성과\"라고 평가하며 \"향후 발사 주기를 더욱 앞당겨 위성체 기술 발전에 박차를 가할 것\"이라고 밝혔다.",
       "title": "이 대통령, 누리호 5차 발사 성공 축하…\"우주 주권 한층 가까워져\""
     },
+    "link:a55d1df7368e44a4142eeaf1": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.inews24.com/view/zp/2015903",
+      "source": "아이뉴스24",
+      "source_body_digest": "bc5dcd5f25f657dfc5703667d3ec7be164c4810041a535d4fdd6ffac999099d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:779c64d0cc3016aaed330a3cef8b647a06ee7eaae4343af9fca7cfa29fdf7a67",
+      "source_fact_keys": [
+        "source_fact:v1:05aa0b3695ecdf2280f424f7b6197d99a3cd025c5a9d1e9b21fed6d5b48046c9",
+        "source_fact:v1:249d413c334eacf305795fa8b0080ccb4ec68b70347489d6a2248d33fe0376fb",
+        "source_fact:v1:27cd33a96fab4880770569d83162c45def4d5c9a66ae719549f15b1e373230a0",
+        "source_fact:v1:3778df3ce25143a9d6d52d8ccb722d64d7bd8291dd98c3ff4d399187c786a6b6",
+        "source_fact:v1:557f895e3fd9d8644752eaac30d63688c033bee5aa16e78e4d6ca55b412f4dcb",
+        "source_fact:v1:67a9f96f69a74266085b06038e83a31dba4fa3fb71ecfcf903d5e131dba979a3"
+      ],
+      "source_published_kst": "2026-10-16T16:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "DB손보, DB증권 지분 30% 눈앞⋯금융계열 지배축 강화",
+      "telegram_core_fact": "DB손해보험이 DB증권 단독 지분율 30% 돌파를 눈앞에 두고 있다. 이달까지 DB손해보험이 단독 취득한 지분을 합하면 총 지분율은 37.87% 수준이다.",
+      "title": "DB손보, DB증권 지분 30% 눈앞⋯금융계열 지배축 강화"
+    },
     "link:a5738c7753c81c4cbf0e545e": {
       "first_seen_kst": "2026-10-08T00:24:24+09:00",
       "lanes": {
@@ -209891,6 +210303,30 @@
       "link": "https://www.mk.co.kr/news/stock/12156936",
       "source": "매일경제",
       "title": "바이오스템 테크놀로지스, 최대 4천만 달러 지분투자 약정 확보"
+    },
+    "link:aaf3eb1d6ab17fea3c99b9c6": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.hankyung.com/article/202610165474i",
+      "source": "한국경제",
+      "source_body_digest": "fc77a72d7a7c717280fd31209fd1ff6ded863bd319bbf11836bdd74215bbf790",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ab6e8b441c0fb0782b034e1dc7ce59067716c7c69fd17e8e71945a7ce4d0a447",
+      "source_fact_keys": [
+        "source_fact:v1:0047b1ca0afc97cc15e1d4fb684cbacc1723ac2103cc5a3bcd1ca55637f37aa4",
+        "source_fact:v1:75b09eb91a3230bc6044a0333ed67feaecd3b7a4ab643fc1d52549ea6c914cf9",
+        "source_fact:v1:9258ace485d5e70e91b30956eb294945c0a06187ae81ec7f14a08bc0d8d03472",
+        "source_fact:v1:e5c2aebc892df43c58edba464ce98a09e60d745e10bdb65f35013fb090ec1a9e",
+        "source_fact:v1:f275505f41e4aa24fcd65292add3ebb65c11d5244af18d710a73ad9813a31d07"
+      ],
+      "source_published_kst": "2026-10-16T08:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "이노보테라퓨틱스, 코스닥 상장예심 통과…IPO 본격화",
+      "telegram_core_fact": "이노보테라퓨틱스는 한국거래소로부터 코스닥시장 상장예비심사 승인을 받았다고 16일 밝혔다.",
+      "title": "이노보테라퓨틱스, 코스닥 상장예심 통과…IPO 본격화"
     },
     "link:aaf5d18e55831aef8273e596": {
       "first_seen_kst": "2026-10-02T11:29:29+09:00",
@@ -234302,6 +234738,26 @@
       "telegram_core_fact": "엘앤씨바이오는 미국 인체조직 및 바이오 제품 전문기업, 조직은행과 리투오 시리즈의 미국 독점 공급계약을 체결했다고 12일 밝혔다.",
       "title": "엘앤씨바이오, ‘리투오’ 美 진출 본격화…820억원 공급계약"
     },
+    "link:ed0489bafa2021161888a660": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261017004900072",
+      "source": "연합뉴스",
+      "source_body_digest": "bf4e612a8d8e7ea7964d8100ff6b405d972ced3fd6ab5a084ccd0f4073ade310",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f88a6bceeaf7d3de204049aa335f6e665edd8c5d9223cd5e7e2eaff648adda86",
+      "source_fact_keys": [
+        "source_fact:v1:efd64082cd829e08d897ee3dd689c7d6b3cf2d21f0629ae3d1e0334d52dffc15"
+      ],
+      "source_published_kst": "2026-10-17T05:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "중동도 우크라도 불안…브렌트유 109달러대, 5개월만에 최고 | 연합뉴스",
+      "telegram_core_fact": "런던 ICE 선물거래소에서 12월 인도분 브렌트유는 전장보다 3.72% 오른 배럴당 109.86달러에 거래를 마쳤다.",
+      "title": "중동도 우크라도 불안…브렌트유 109달러대, 5개월만에 최고 | 연합뉴스"
+    },
     "link:ed1acf2a5ec80110fb292f9c": {
       "first_seen_kst": "2026-10-15T17:19:13+09:00",
       "lanes": {
@@ -251667,6 +252123,30 @@
       "telegram_core_fact": "알파벳과 아마존의 자체 AI 반도체에 들어가는 메모리 수요와 엔비디아의 차세대 플랫폼 출시가 HBM 수요 강세를 이어갈 것으로 전망했다.",
       "title": "“엔비디아 살 걸”…반도체 호황이라더니 삼전닉스 주주 속 탄다"
     },
+    "original:1cb47a90c0b0c6303560cee9": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.hankyung.com/article/202610165474i",
+      "source": "한국경제",
+      "source_body_digest": "fc77a72d7a7c717280fd31209fd1ff6ded863bd319bbf11836bdd74215bbf790",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ab6e8b441c0fb0782b034e1dc7ce59067716c7c69fd17e8e71945a7ce4d0a447",
+      "source_fact_keys": [
+        "source_fact:v1:0047b1ca0afc97cc15e1d4fb684cbacc1723ac2103cc5a3bcd1ca55637f37aa4",
+        "source_fact:v1:75b09eb91a3230bc6044a0333ed67feaecd3b7a4ab643fc1d52549ea6c914cf9",
+        "source_fact:v1:9258ace485d5e70e91b30956eb294945c0a06187ae81ec7f14a08bc0d8d03472",
+        "source_fact:v1:e5c2aebc892df43c58edba464ce98a09e60d745e10bdb65f35013fb090ec1a9e",
+        "source_fact:v1:f275505f41e4aa24fcd65292add3ebb65c11d5244af18d710a73ad9813a31d07"
+      ],
+      "source_published_kst": "2026-10-16T08:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "이노보테라퓨틱스, 코스닥 상장예심 통과…IPO 본격화",
+      "telegram_core_fact": "이노보테라퓨틱스는 한국거래소로부터 코스닥시장 상장예비심사 승인을 받았다고 16일 밝혔다.",
+      "title": "이노보테라퓨틱스, 코스닥 상장예심 통과…IPO 본격화"
+    },
     "original:1cb853a8c6ced7cb9768cd8c": {
       "first_seen_kst": "2026-10-07T01:18:00+09:00",
       "lanes": {
@@ -251835,6 +252315,28 @@
       "source_title": "\"2028년까지 주문 못 따라간다\"…ASML, AI 반도체 장비 공급난",
       "telegram_core_fact": "ASML 4분기 매출은 8000억원 전망입니다.",
       "title": "\"2028년까지 주문 못 따라간다\"…ASML, AI 반도체 장비 공급난"
+    },
+    "original:1cefa5fe85864f55b272165e": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.fnnews.com/news/202610161012176513",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "00d6c6e11f5f903958df0247fda4c3bee2edbef062150f12910e09338cc95984",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2d72fe3dbf4934e4144b5fcf519712d3eeba54706b8e07ec53a3bf95a97038aa",
+      "source_fact_keys": [
+        "source_fact:v1:1b79a32d6596e3845e2a34003efad60e79fca80211195f5489554038cfbf5be5",
+        "source_fact:v1:749f3a555fa78838dd5084a28c95c815101bc7cc1c33c1413f3c9696d9e934a1",
+        "source_fact:v1:9dde2022fd3ceae7d169d64e1f55527e743d17bfb6e9d46b29ac88e6c15c8f31"
+      ],
+      "source_published_kst": "2026-10-16T10:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "농협금융 '2.5조' 흑자 vs 농협경제 '적자'…농협 지주 격차 고착화하나",
+      "telegram_core_fact": "16일 국회 농림축산식품해양수산위원회 소속 송옥주 의원(더불어민주당)이 농협에서 제출받은 자료에 따르면 농협금융지주의 연결 기준 당기순이익은 2020년부터 2025년까지 매년 2조 원 이상을 기록했다.",
+      "title": "농협금융 '2.5조' 흑자 vs 농협경제 '적자'…농협 지주 격차 고착화하나"
     },
     "original:1cf0588aec08949bfcc1c093": {
       "first_seen_kst": "2026-10-13T13:05:30+09:00",
@@ -261374,6 +261876,27 @@
       "telegram_core_fact": "일본 시장조사업계는 기존 2위인 H&M의 2025년 11월기(2024년 12월~2025년 11월) 매출이 3조6000억엔(약 30조5600억원)을 기록한 이후 감소세를 보인 점을 근거로 패스트리테일링이 H&M의 매출 규모를 넘어섰을 가능성이 있다고 분석했다.",
       "title": "유니클로, 매출 17% 늘어 역대 최대…H&M 제치고 세계 2위 전망"
     },
+    "original:36b5a6c8557699844084cfff": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01380886645613904",
+      "source": "이데일리",
+      "source_body_digest": "9de8fe0b36f9850b99ad736409576cb6c80fe0d6692eae18aa76c43fe60246ac",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2566bdfaddb2669f3839623148f94d2293490005a791a4a75db73906212dbde4",
+      "source_fact_keys": [
+        "source_fact:v1:4117e991f6f4cc698527a5d5aa7390d11ddccc3231c25a463df385fee6dcf90c",
+        "source_fact:v1:df8527515e0c44a6afd6d3ed56faa212bc74dcd5c1f1e242d86e86e649cc857b"
+      ],
+      "source_published_kst": "2026-10-17T05:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "호르무즈 이어 사우디 원유 수출로까지 위협…브렌트유 110달러 터치",
+      "telegram_core_fact": "글로벌 기준유인 브렌트유 선물은 3.94달러(3.72%) 상승한 109.86달러에 마감했다.",
+      "title": "호르무즈 이어 사우디 원유 수출로까지 위협…브렌트유 110달러 터치"
+    },
     "original:36c77139ae2e8e75f1460614": {
       "first_seen_kst": "2026-10-08T20:16:13+09:00",
       "lanes": {
@@ -265127,6 +265650,31 @@
       "source_title": "코스피, 외인·기관 2.7조 매도에 1.9%대 약세…삼전닉스도 ↓",
       "telegram_core_fact": "반면 외국인과 기관은 각각 1조2913억원, 1조4611억원을 순매도하고 있다.",
       "title": "코스피, 외인·기관 2.7조 매도에 1.9%대 약세…삼전닉스도 ↓"
+    },
+    "original:408c23ff7d7959df7b58d59f": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.inews24.com/view/zp/2015903",
+      "source": "아이뉴스24",
+      "source_body_digest": "bc5dcd5f25f657dfc5703667d3ec7be164c4810041a535d4fdd6ffac999099d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:779c64d0cc3016aaed330a3cef8b647a06ee7eaae4343af9fca7cfa29fdf7a67",
+      "source_fact_keys": [
+        "source_fact:v1:05aa0b3695ecdf2280f424f7b6197d99a3cd025c5a9d1e9b21fed6d5b48046c9",
+        "source_fact:v1:249d413c334eacf305795fa8b0080ccb4ec68b70347489d6a2248d33fe0376fb",
+        "source_fact:v1:27cd33a96fab4880770569d83162c45def4d5c9a66ae719549f15b1e373230a0",
+        "source_fact:v1:3778df3ce25143a9d6d52d8ccb722d64d7bd8291dd98c3ff4d399187c786a6b6",
+        "source_fact:v1:557f895e3fd9d8644752eaac30d63688c033bee5aa16e78e4d6ca55b412f4dcb",
+        "source_fact:v1:67a9f96f69a74266085b06038e83a31dba4fa3fb71ecfcf903d5e131dba979a3"
+      ],
+      "source_published_kst": "2026-10-16T16:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "DB손보, DB증권 지분 30% 눈앞⋯금융계열 지배축 강화",
+      "telegram_core_fact": "DB손해보험이 DB증권 단독 지분율 30% 돌파를 눈앞에 두고 있다. 이달까지 DB손해보험이 단독 취득한 지분을 합하면 총 지분율은 37.87% 수준이다.",
+      "title": "DB손보, DB증권 지분 30% 눈앞⋯금융계열 지배축 강화"
     },
     "original:40927faff01584a21d307350": {
       "first_seen_kst": "2026-10-07T00:38:27+09:00",
@@ -279901,6 +280449,30 @@
       "source_published_kst": "2026-10-05T06:25+09:00",
       "title": "이번주 크레딧 2조원 발행…파라다이스 수요예측도 | 연합뉴스"
     },
+    "original:6882dcdbc12d2e831548216c": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176118",
+      "source": "매일경제",
+      "source_body_digest": "d15c5ed8d947fd67f704198b410e49d7896ac2914894aba24842f7eb8d682059",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3ce36569e57c2ecc1d3cad2a2ea4d6a74a282750275b0d928815f774c7d10995",
+      "source_fact_keys": [
+        "source_fact:v1:13766c2d82748a9e034dcdb88d20daa50e520d2cfdf947b4c16841f68686090c",
+        "source_fact:v1:442a8d14d82c48c78d8ff8bfcb6719b56252b5dd737f1b24a5b1a1f43c4d2cf7",
+        "source_fact:v1:6489c33133ea8b14bd05e273fd0014de0f2c9e5aeb35993356febc86f5c2953a",
+        "source_fact:v1:79d5210dfd169c1fd07c3ea429013a736a53d701143ddb633b44c7d59b03e367",
+        "source_fact:v1:e29bc2dbbc0ed35a939a733fc55e4f32c68a3c6adfd1fc68c1d389905d3b6bac"
+      ],
+      "source_published_kst": "2026-10-17T05:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "나녹스, 3분기 예비매출 440만 달러..계속기업 의구심",
+      "telegram_core_fact": "나녹스(NNOX)는 9월 30일 종료된 2026년 3분기 예비 매출액이 430만~440만 달러로 전년 동기 340만 달러 대비 약 26~29% 증가한 것으로 추정되지만, 현금성 자산 급감으로 계속기업 존속 능력에 중대한 의구심이 제기된다고 10월 16일 발표했다.",
+      "title": "나녹스, 3분기 예비매출 440만 달러..계속기업 의구심"
+    },
     "original:68a3efdcbb69570fcea2117c": {
       "first_seen_kst": "2026-10-07T10:04:59+09:00",
       "lanes": {
@@ -293293,6 +293865,31 @@
       "telegram_core_fact": "LG전자는 이번 전시를 통해 생활가전에서 축적한 기술을 AI 데이터센터와 로봇, 자동차 등 산업 분야로 확대하는 모습을 보여준다는 계획이다.",
       "title": "LG전자, AI 데이터센터 냉각부터 로봇까지…미래 먹거리 총출동"
     },
+    "original:8d15dc88cf72e23ab78b2edb": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261015160300002",
+      "source": "연합뉴스",
+      "source_body_digest": "78afe3bcfbd02f78b021bd19d0ae8b200e0643acaea94c005510e5f88136d20d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2e1f2a34c67e9b6c45e7a8f96ad5974fd0eb5a5e066aabfa397772c59ea5629f",
+      "source_fact_keys": [
+        "source_fact:v1:012bd7155e208d4b2a2355f7575d07d5cd8a0f2d7fffbb847b974878805b6bbb",
+        "source_fact:v1:049ef63bfdff4bae8f63cc8f95be6c124283ee5165bbc0684f3026a34426be02",
+        "source_fact:v1:04e195397c09a2e34f0bc80cec46d39faf54104d61812d250c2cde53ccebcb61",
+        "source_fact:v1:0f19437797fd4fc932043e8fec2fef5bce5ed50f869aa7fda761556707a83573",
+        "source_fact:v1:6475d9d81f80d67004e81596a2d077a0f0c0b19d70499b86b3e1bfcab1afe7a5",
+        "source_fact:v1:ff979d3dedd0b6157bdb735fdf97026e23a49bbd1082c7ae399d020fdebc6c02"
+      ],
+      "source_published_kst": "2026-10-16T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "환율 내렸지만 유가 올라서…9월 수입물가 넉 달만에 상승 | 연합뉴스",
+      "telegram_core_fact": "환율 효과를 제외한 9월 계약통화기준 수입물가는 전월대비 4.9% 상승, 전년 동월 대비 20.6% 상승이었다.",
+      "title": "환율 내렸지만 유가 올라서…9월 수입물가 넉 달만에 상승 | 연합뉴스"
+    },
     "original:8d25d18a98fe3eda7c1a4197": {
       "first_seen_kst": "2026-10-02T17:34:05+09:00",
       "lanes": {
@@ -302032,6 +302629,26 @@
       "source_title": "美, 노벨평화상 발표 직후 ICC 제재…\"美방어 의존 동맹 협조를\" | 연합뉴스",
       "telegram_core_fact": "미국의 ICC 제재는 나비 필라이(85) 국제사법재판소(ICJ) 임시 재판관의 노벨평화상 수상 소식이 전해지고 얼마 되지 않아 발표됐다. 필라이는 ICC 재판관을 지냈고 트럼프 대통령은 노벨평화상 수상에 대한 선망을 공공연히 드러내 온 터라 의도적 제재 발표 아니냐는 관측도 나온다.",
       "title": "美, 노벨평화상 발표 직후 ICC 제재…\"美방어 의존 동맹 협조를\" | 연합뉴스"
+    },
+    "original:a58dda92e88edeb6e43334e6": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261017004900072",
+      "source": "연합뉴스",
+      "source_body_digest": "bf4e612a8d8e7ea7964d8100ff6b405d972ced3fd6ab5a084ccd0f4073ade310",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f88a6bceeaf7d3de204049aa335f6e665edd8c5d9223cd5e7e2eaff648adda86",
+      "source_fact_keys": [
+        "source_fact:v1:efd64082cd829e08d897ee3dd689c7d6b3cf2d21f0629ae3d1e0334d52dffc15"
+      ],
+      "source_published_kst": "2026-10-17T05:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "중동도 우크라도 불안…브렌트유 109달러대, 5개월만에 최고 | 연합뉴스",
+      "telegram_core_fact": "런던 ICE 선물거래소에서 12월 인도분 브렌트유는 전장보다 3.72% 오른 배럴당 109.86달러에 거래를 마쳤다.",
+      "title": "중동도 우크라도 불안…브렌트유 109달러대, 5개월만에 최고 | 연합뉴스"
     },
     "original:a5b5f039df50add6441dc0cf": {
       "first_seen_kst": "2026-10-08T00:54:18+09:00",
@@ -341504,6 +342121,30 @@
       "source_published_kst": "2026-10-06T08:57+09:00",
       "title": "스틸리언 '웹수트', AI 에이전트 기반 웹·API 공격 차단 검증"
     },
+    "source_fact:052371faa0118aa790e5f912": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176118",
+      "source": "매일경제",
+      "source_body_digest": "d15c5ed8d947fd67f704198b410e49d7896ac2914894aba24842f7eb8d682059",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3ce36569e57c2ecc1d3cad2a2ea4d6a74a282750275b0d928815f774c7d10995",
+      "source_fact_keys": [
+        "source_fact:v1:13766c2d82748a9e034dcdb88d20daa50e520d2cfdf947b4c16841f68686090c",
+        "source_fact:v1:442a8d14d82c48c78d8ff8bfcb6719b56252b5dd737f1b24a5b1a1f43c4d2cf7",
+        "source_fact:v1:6489c33133ea8b14bd05e273fd0014de0f2c9e5aeb35993356febc86f5c2953a",
+        "source_fact:v1:79d5210dfd169c1fd07c3ea429013a736a53d701143ddb633b44c7d59b03e367",
+        "source_fact:v1:e29bc2dbbc0ed35a939a733fc55e4f32c68a3c6adfd1fc68c1d389905d3b6bac"
+      ],
+      "source_published_kst": "2026-10-17T05:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "나녹스, 3분기 예비매출 440만 달러..계속기업 의구심",
+      "telegram_core_fact": "나녹스(NNOX)는 9월 30일 종료된 2026년 3분기 예비 매출액이 430만~440만 달러로 전년 동기 340만 달러 대비 약 26~29% 증가한 것으로 추정되지만, 현금성 자산 급감으로 계속기업 존속 능력에 중대한 의구심이 제기된다고 10월 16일 발표했다.",
+      "title": "나녹스, 3분기 예비매출 440만 달러..계속기업 의구심"
+    },
     "source_fact:05270980478bb9045cd59873": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
       "lanes": {
@@ -350759,6 +351400,30 @@
       ],
       "source_published_kst": "2026-10-07T10:11+09:00",
       "title": "KT&G, 인니 신공장 돌린다…연 350억개비 ‘해외 최대 생산기지’로"
+    },
+    "source_fact:0bb90dcc20186155ded35cae": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.hankyung.com/article/202610165474i",
+      "source": "한국경제",
+      "source_body_digest": "fc77a72d7a7c717280fd31209fd1ff6ded863bd319bbf11836bdd74215bbf790",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ab6e8b441c0fb0782b034e1dc7ce59067716c7c69fd17e8e71945a7ce4d0a447",
+      "source_fact_keys": [
+        "source_fact:v1:0047b1ca0afc97cc15e1d4fb684cbacc1723ac2103cc5a3bcd1ca55637f37aa4",
+        "source_fact:v1:75b09eb91a3230bc6044a0333ed67feaecd3b7a4ab643fc1d52549ea6c914cf9",
+        "source_fact:v1:9258ace485d5e70e91b30956eb294945c0a06187ae81ec7f14a08bc0d8d03472",
+        "source_fact:v1:e5c2aebc892df43c58edba464ce98a09e60d745e10bdb65f35013fb090ec1a9e",
+        "source_fact:v1:f275505f41e4aa24fcd65292add3ebb65c11d5244af18d710a73ad9813a31d07"
+      ],
+      "source_published_kst": "2026-10-16T08:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "이노보테라퓨틱스, 코스닥 상장예심 통과…IPO 본격화",
+      "telegram_core_fact": "이노보테라퓨틱스는 한국거래소로부터 코스닥시장 상장예비심사 승인을 받았다고 16일 밝혔다.",
+      "title": "이노보테라퓨틱스, 코스닥 상장예심 통과…IPO 본격화"
     },
     "source_fact:0bbf19630c73307f51012833": {
       "first_seen_kst": "2026-10-15T07:08:31+09:00",
@@ -373836,6 +374501,27 @@
       "source_published_kst": "2026-10-06T14:04+09:00",
       "title": "세아베스틸, 로봇 감속기 소재 시장 진출…휴머노이드까지 확대"
     },
+    "source_fact:1b9308b9bd310e27b349176d": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01380886645613904",
+      "source": "이데일리",
+      "source_body_digest": "9de8fe0b36f9850b99ad736409576cb6c80fe0d6692eae18aa76c43fe60246ac",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2566bdfaddb2669f3839623148f94d2293490005a791a4a75db73906212dbde4",
+      "source_fact_keys": [
+        "source_fact:v1:4117e991f6f4cc698527a5d5aa7390d11ddccc3231c25a463df385fee6dcf90c",
+        "source_fact:v1:df8527515e0c44a6afd6d3ed56faa212bc74dcd5c1f1e242d86e86e649cc857b"
+      ],
+      "source_published_kst": "2026-10-17T05:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "호르무즈 이어 사우디 원유 수출로까지 위협…브렌트유 110달러 터치",
+      "telegram_core_fact": "글로벌 기준유인 브렌트유 선물은 3.94달러(3.72%) 상승한 109.86달러에 마감했다.",
+      "title": "호르무즈 이어 사우디 원유 수출로까지 위협…브렌트유 110달러 터치"
+    },
     "source_fact:1b98834630909278220da2aa": {
       "first_seen_kst": "2026-10-08T13:46:05+09:00",
       "lanes": {
@@ -380447,6 +381133,30 @@
       "telegram_core_fact": "LG전자에 따르면 미국 빌더 사업 매출은 2024년 전년 대비 약 64%, 2025년에는 40% 이상 증가했다. [뉴욕=이데일리 성주원 특파원] LG전자가 미국 주택건설업체를 대상으로 한 빌더(Builder) 사업에서 올해도 두 자릿수를 크게 웃도는 성장세를 이어가고 있다.",
       "title": "LG전자 美빌더 사업 고성장…\"올해도 두 자릿수 훌쩍 넘는다\""
     },
+    "source_fact:2005b4b5c2e2df9658f1fedf": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.hankyung.com/article/202610165474i",
+      "source": "한국경제",
+      "source_body_digest": "fc77a72d7a7c717280fd31209fd1ff6ded863bd319bbf11836bdd74215bbf790",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ab6e8b441c0fb0782b034e1dc7ce59067716c7c69fd17e8e71945a7ce4d0a447",
+      "source_fact_keys": [
+        "source_fact:v1:0047b1ca0afc97cc15e1d4fb684cbacc1723ac2103cc5a3bcd1ca55637f37aa4",
+        "source_fact:v1:75b09eb91a3230bc6044a0333ed67feaecd3b7a4ab643fc1d52549ea6c914cf9",
+        "source_fact:v1:9258ace485d5e70e91b30956eb294945c0a06187ae81ec7f14a08bc0d8d03472",
+        "source_fact:v1:e5c2aebc892df43c58edba464ce98a09e60d745e10bdb65f35013fb090ec1a9e",
+        "source_fact:v1:f275505f41e4aa24fcd65292add3ebb65c11d5244af18d710a73ad9813a31d07"
+      ],
+      "source_published_kst": "2026-10-16T08:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "이노보테라퓨틱스, 코스닥 상장예심 통과…IPO 본격화",
+      "telegram_core_fact": "이노보테라퓨틱스는 한국거래소로부터 코스닥시장 상장예비심사 승인을 받았다고 16일 밝혔다.",
+      "title": "이노보테라퓨틱스, 코스닥 상장예심 통과…IPO 본격화"
+    },
     "source_fact:2006d0451848c6d324c1228b": {
       "first_seen_kst": "2026-10-15T02:55:21+09:00",
       "lanes": {
@@ -381184,6 +381894,30 @@
       ],
       "source_published_kst": "2026-10-07T06:01+09:00",
       "title": "글로벌 공급기지 된 K-제약사들…잇단 수출계약"
+    },
+    "source_fact:206bf4396726c9bac63622aa": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.hankyung.com/article/202610165474i",
+      "source": "한국경제",
+      "source_body_digest": "fc77a72d7a7c717280fd31209fd1ff6ded863bd319bbf11836bdd74215bbf790",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ab6e8b441c0fb0782b034e1dc7ce59067716c7c69fd17e8e71945a7ce4d0a447",
+      "source_fact_keys": [
+        "source_fact:v1:0047b1ca0afc97cc15e1d4fb684cbacc1723ac2103cc5a3bcd1ca55637f37aa4",
+        "source_fact:v1:75b09eb91a3230bc6044a0333ed67feaecd3b7a4ab643fc1d52549ea6c914cf9",
+        "source_fact:v1:9258ace485d5e70e91b30956eb294945c0a06187ae81ec7f14a08bc0d8d03472",
+        "source_fact:v1:e5c2aebc892df43c58edba464ce98a09e60d745e10bdb65f35013fb090ec1a9e",
+        "source_fact:v1:f275505f41e4aa24fcd65292add3ebb65c11d5244af18d710a73ad9813a31d07"
+      ],
+      "source_published_kst": "2026-10-16T08:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "이노보테라퓨틱스, 코스닥 상장예심 통과…IPO 본격화",
+      "telegram_core_fact": "이노보테라퓨틱스는 한국거래소로부터 코스닥시장 상장예비심사 승인을 받았다고 16일 밝혔다.",
+      "title": "이노보테라퓨틱스, 코스닥 상장예심 통과…IPO 본격화"
     },
     "source_fact:206bfeb4f3c9822fc92fe86b": {
       "first_seen_kst": "2026-10-09T21:27:46+09:00",
@@ -400480,6 +401214,31 @@
       "telegram_core_fact": "미 국채 금리 급등은 즉각 유럽으로 전파돼 영국 30년물 금리가 다시 6%선을 돌파했고, 프랑스 30년물도 하루 만에 최대 14bp(1bp=0.01%p) 올랐다.",
       "title": "美 30년물 국채금리 24년만에 최고치 재경신"
     },
+    "source_fact:2d182f780cfdf0c50c4eb49f": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261015160300002",
+      "source": "연합뉴스",
+      "source_body_digest": "78afe3bcfbd02f78b021bd19d0ae8b200e0643acaea94c005510e5f88136d20d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2e1f2a34c67e9b6c45e7a8f96ad5974fd0eb5a5e066aabfa397772c59ea5629f",
+      "source_fact_keys": [
+        "source_fact:v1:012bd7155e208d4b2a2355f7575d07d5cd8a0f2d7fffbb847b974878805b6bbb",
+        "source_fact:v1:049ef63bfdff4bae8f63cc8f95be6c124283ee5165bbc0684f3026a34426be02",
+        "source_fact:v1:04e195397c09a2e34f0bc80cec46d39faf54104d61812d250c2cde53ccebcb61",
+        "source_fact:v1:0f19437797fd4fc932043e8fec2fef5bce5ed50f869aa7fda761556707a83573",
+        "source_fact:v1:6475d9d81f80d67004e81596a2d077a0f0c0b19d70499b86b3e1bfcab1afe7a5",
+        "source_fact:v1:ff979d3dedd0b6157bdb735fdf97026e23a49bbd1082c7ae399d020fdebc6c02"
+      ],
+      "source_published_kst": "2026-10-16T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "환율 내렸지만 유가 올라서…9월 수입물가 넉 달만에 상승 | 연합뉴스",
+      "telegram_core_fact": "환율 효과를 제외한 9월 계약통화기준 수입물가는 전월대비 4.9% 상승, 전년 동월 대비 20.6% 상승이었다.",
+      "title": "환율 내렸지만 유가 올라서…9월 수입물가 넉 달만에 상승 | 연합뉴스"
+    },
     "source_fact:2d2314b96ae7ca826a7b4bc1": {
       "first_seen_kst": "2026-10-13T23:22:47+09:00",
       "lanes": {
@@ -404355,6 +405114,30 @@
       "source_title": "野 \"레버리지 ETF, 청와대가 주범\"…與 \"설계 아쉽지만 도입 불가피\"",
       "telegram_core_fact": "박태준 국민의힘 의원은 8일 서울 여의도 국회 본관에서 진행된 국회 정무위원회 국감에서 \"저는 ETF 논란의 주범을 이재명 대통령과 청와대가 공범이라고 결론 내렸다\"며 \"금융투자협회 산하 연구원에서 2024년 ETF 출시를 반대했는데 이 대통령 취임 직후 찬성으로 바뀌었다. 이것이 이번 사태의 발단\"이라고 말했다.",
       "title": "野 \"레버리지 ETF, 청와대가 주범\"…與 \"설계 아쉽지만 도입 불가피\""
+    },
+    "source_fact:303aa9495e2af542594601e3": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176118",
+      "source": "매일경제",
+      "source_body_digest": "d15c5ed8d947fd67f704198b410e49d7896ac2914894aba24842f7eb8d682059",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3ce36569e57c2ecc1d3cad2a2ea4d6a74a282750275b0d928815f774c7d10995",
+      "source_fact_keys": [
+        "source_fact:v1:13766c2d82748a9e034dcdb88d20daa50e520d2cfdf947b4c16841f68686090c",
+        "source_fact:v1:442a8d14d82c48c78d8ff8bfcb6719b56252b5dd737f1b24a5b1a1f43c4d2cf7",
+        "source_fact:v1:6489c33133ea8b14bd05e273fd0014de0f2c9e5aeb35993356febc86f5c2953a",
+        "source_fact:v1:79d5210dfd169c1fd07c3ea429013a736a53d701143ddb633b44c7d59b03e367",
+        "source_fact:v1:e29bc2dbbc0ed35a939a733fc55e4f32c68a3c6adfd1fc68c1d389905d3b6bac"
+      ],
+      "source_published_kst": "2026-10-17T05:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "나녹스, 3분기 예비매출 440만 달러..계속기업 의구심",
+      "telegram_core_fact": "나녹스(NNOX)는 9월 30일 종료된 2026년 3분기 예비 매출액이 430만~440만 달러로 전년 동기 340만 달러 대비 약 26~29% 증가한 것으로 추정되지만, 현금성 자산 급감으로 계속기업 존속 능력에 중대한 의구심이 제기된다고 10월 16일 발표했다.",
+      "title": "나녹스, 3분기 예비매출 440만 달러..계속기업 의구심"
     },
     "source_fact:303b98ecd3e7d347953ae323": {
       "first_seen_kst": "2026-10-14T05:39:44+09:00",
@@ -433226,6 +434009,26 @@
       "telegram_core_fact": "일본 정부는 이 밖에도 ▲원유 등의 해상 운송과 관련해 보험 계약을 체결하기 쉽도록 하는 법안 ▲원유 송유관 건설을 지원하는 방안 등을 추진하고 있다. 중동 정세가 악화되면서 에너지의 안정적인 확보가 과제로 떠오르자 일본 정부는 원유 등의 조달처 다양화를 지원하기 위한 법안을 마련했다.",
       "title": "日, 에너지 조달처 다양화 촉진 법안 결정…송유관 건설 등 지원"
     },
+    "source_fact:44346767a8d51da7fc3ec226": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261017004900072",
+      "source": "연합뉴스",
+      "source_body_digest": "bf4e612a8d8e7ea7964d8100ff6b405d972ced3fd6ab5a084ccd0f4073ade310",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f88a6bceeaf7d3de204049aa335f6e665edd8c5d9223cd5e7e2eaff648adda86",
+      "source_fact_keys": [
+        "source_fact:v1:efd64082cd829e08d897ee3dd689c7d6b3cf2d21f0629ae3d1e0334d52dffc15"
+      ],
+      "source_published_kst": "2026-10-17T05:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "중동도 우크라도 불안…브렌트유 109달러대, 5개월만에 최고 | 연합뉴스",
+      "telegram_core_fact": "런던 ICE 선물거래소에서 12월 인도분 브렌트유는 전장보다 3.72% 오른 배럴당 109.86달러에 거래를 마쳤다.",
+      "title": "중동도 우크라도 불안…브렌트유 109달러대, 5개월만에 최고 | 연합뉴스"
+    },
     "source_fact:44354484e1971b69302578a3": {
       "first_seen_kst": "2026-10-07T17:23:27+09:00",
       "lanes": {
@@ -438678,6 +439481,31 @@
       "source_title": "DS운용, 'AI 반도체 밸류체인 투자' 액티브 ETF 13일 상장 | 연합뉴스",
       "telegram_core_fact": "DS자산운용은 12일 인공지능(AI) 반도체 산업 관련 기업에 투자하는 'DS AI반도체액티브 상장지수펀드(ETF)'(종목코드 0243M0)를 오는 13일 유가증권시장에 상장한다고 밝혔다.",
       "title": "DS운용, 'AI 반도체 밸류체인 투자' 액티브 ETF 13일 상장 | 연합뉴스"
+    },
+    "source_fact:47bbd07b7a37d8f52c342c6d": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.inews24.com/view/zp/2015903",
+      "source": "아이뉴스24",
+      "source_body_digest": "bc5dcd5f25f657dfc5703667d3ec7be164c4810041a535d4fdd6ffac999099d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:779c64d0cc3016aaed330a3cef8b647a06ee7eaae4343af9fca7cfa29fdf7a67",
+      "source_fact_keys": [
+        "source_fact:v1:05aa0b3695ecdf2280f424f7b6197d99a3cd025c5a9d1e9b21fed6d5b48046c9",
+        "source_fact:v1:249d413c334eacf305795fa8b0080ccb4ec68b70347489d6a2248d33fe0376fb",
+        "source_fact:v1:27cd33a96fab4880770569d83162c45def4d5c9a66ae719549f15b1e373230a0",
+        "source_fact:v1:3778df3ce25143a9d6d52d8ccb722d64d7bd8291dd98c3ff4d399187c786a6b6",
+        "source_fact:v1:557f895e3fd9d8644752eaac30d63688c033bee5aa16e78e4d6ca55b412f4dcb",
+        "source_fact:v1:67a9f96f69a74266085b06038e83a31dba4fa3fb71ecfcf903d5e131dba979a3"
+      ],
+      "source_published_kst": "2026-10-16T16:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "DB손보, DB증권 지분 30% 눈앞⋯금융계열 지배축 강화",
+      "telegram_core_fact": "DB손해보험이 DB증권 단독 지분율 30% 돌파를 눈앞에 두고 있다. 이달까지 DB손해보험이 단독 취득한 지분을 합하면 총 지분율은 37.87% 수준이다.",
+      "title": "DB손보, DB증권 지분 30% 눈앞⋯금융계열 지배축 강화"
     },
     "source_fact:47c2ca77f42a0a1a7dd08c94": {
       "first_seen_kst": "2026-10-08T06:10:43+09:00",
@@ -445835,6 +446663,31 @@
       "source_title": "시지바이오 필러 '페이스템', 대만 품목허가 획득",
       "telegram_core_fact": "시지바이오는 칼슘 하이드록시아파타이트(CaHA) 기반 필러 ‘페이스템’(FACETEM)이 대만 식품의약품청(TFDA)으로부터 의료기기 품목허가를 획득했다고 13일 밝혔다. 현지 파트너와 제품 공급 및 의료진 교육을 추진하고, 향후 3년간 대만에서 누적 공급매출 50억원 이상을 달성하는 것이 목표다.",
       "title": "시지바이오 필러 '페이스템', 대만 품목허가 획득"
+    },
+    "source_fact:4c73ef52ffd379e2db053b56": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.inews24.com/view/zp/2015903",
+      "source": "아이뉴스24",
+      "source_body_digest": "bc5dcd5f25f657dfc5703667d3ec7be164c4810041a535d4fdd6ffac999099d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:779c64d0cc3016aaed330a3cef8b647a06ee7eaae4343af9fca7cfa29fdf7a67",
+      "source_fact_keys": [
+        "source_fact:v1:05aa0b3695ecdf2280f424f7b6197d99a3cd025c5a9d1e9b21fed6d5b48046c9",
+        "source_fact:v1:249d413c334eacf305795fa8b0080ccb4ec68b70347489d6a2248d33fe0376fb",
+        "source_fact:v1:27cd33a96fab4880770569d83162c45def4d5c9a66ae719549f15b1e373230a0",
+        "source_fact:v1:3778df3ce25143a9d6d52d8ccb722d64d7bd8291dd98c3ff4d399187c786a6b6",
+        "source_fact:v1:557f895e3fd9d8644752eaac30d63688c033bee5aa16e78e4d6ca55b412f4dcb",
+        "source_fact:v1:67a9f96f69a74266085b06038e83a31dba4fa3fb71ecfcf903d5e131dba979a3"
+      ],
+      "source_published_kst": "2026-10-16T16:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "DB손보, DB증권 지분 30% 눈앞⋯금융계열 지배축 강화",
+      "telegram_core_fact": "DB손해보험이 DB증권 단독 지분율 30% 돌파를 눈앞에 두고 있다. 이달까지 DB손해보험이 단독 취득한 지분을 합하면 총 지분율은 37.87% 수준이다.",
+      "title": "DB손보, DB증권 지분 30% 눈앞⋯금융계열 지배축 강화"
     },
     "source_fact:4c7fce218a40abd9ea2efb1a": {
       "first_seen_kst": "2026-10-07T17:23:27+09:00",
@@ -461288,6 +462141,30 @@
       ],
       "source_published_kst": "2026-10-06T11:20+09:00",
       "title": "엠플러스, 유럽 배터리 기업 각형 노칭·스태킹 장비 수주"
+    },
+    "source_fact:56e9967a7ca29cbe2af6f7d5": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176118",
+      "source": "매일경제",
+      "source_body_digest": "d15c5ed8d947fd67f704198b410e49d7896ac2914894aba24842f7eb8d682059",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3ce36569e57c2ecc1d3cad2a2ea4d6a74a282750275b0d928815f774c7d10995",
+      "source_fact_keys": [
+        "source_fact:v1:13766c2d82748a9e034dcdb88d20daa50e520d2cfdf947b4c16841f68686090c",
+        "source_fact:v1:442a8d14d82c48c78d8ff8bfcb6719b56252b5dd737f1b24a5b1a1f43c4d2cf7",
+        "source_fact:v1:6489c33133ea8b14bd05e273fd0014de0f2c9e5aeb35993356febc86f5c2953a",
+        "source_fact:v1:79d5210dfd169c1fd07c3ea429013a736a53d701143ddb633b44c7d59b03e367",
+        "source_fact:v1:e29bc2dbbc0ed35a939a733fc55e4f32c68a3c6adfd1fc68c1d389905d3b6bac"
+      ],
+      "source_published_kst": "2026-10-17T05:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "나녹스, 3분기 예비매출 440만 달러..계속기업 의구심",
+      "telegram_core_fact": "나녹스(NNOX)는 9월 30일 종료된 2026년 3분기 예비 매출액이 430만~440만 달러로 전년 동기 340만 달러 대비 약 26~29% 증가한 것으로 추정되지만, 현금성 자산 급감으로 계속기업 존속 능력에 중대한 의구심이 제기된다고 10월 16일 발표했다.",
+      "title": "나녹스, 3분기 예비매출 440만 달러..계속기업 의구심"
     },
     "source_fact:56f17f4c6b5fa573f83fdb14": {
       "first_seen_kst": "2026-10-08T21:47:01+09:00",
@@ -486615,6 +487492,30 @@
       "source_published_kst": "2026-10-07T14:38+09:00",
       "title": "삼보산업, 중동 전쟁에 알루미늄 판가 상승…장기화 땐 수익성 개선 긍정"
     },
+    "source_fact:68ac7050ba85a2e1f33ee78f": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176118",
+      "source": "매일경제",
+      "source_body_digest": "d15c5ed8d947fd67f704198b410e49d7896ac2914894aba24842f7eb8d682059",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3ce36569e57c2ecc1d3cad2a2ea4d6a74a282750275b0d928815f774c7d10995",
+      "source_fact_keys": [
+        "source_fact:v1:13766c2d82748a9e034dcdb88d20daa50e520d2cfdf947b4c16841f68686090c",
+        "source_fact:v1:442a8d14d82c48c78d8ff8bfcb6719b56252b5dd737f1b24a5b1a1f43c4d2cf7",
+        "source_fact:v1:6489c33133ea8b14bd05e273fd0014de0f2c9e5aeb35993356febc86f5c2953a",
+        "source_fact:v1:79d5210dfd169c1fd07c3ea429013a736a53d701143ddb633b44c7d59b03e367",
+        "source_fact:v1:e29bc2dbbc0ed35a939a733fc55e4f32c68a3c6adfd1fc68c1d389905d3b6bac"
+      ],
+      "source_published_kst": "2026-10-17T05:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "나녹스, 3분기 예비매출 440만 달러..계속기업 의구심",
+      "telegram_core_fact": "나녹스(NNOX)는 9월 30일 종료된 2026년 3분기 예비 매출액이 430만~440만 달러로 전년 동기 340만 달러 대비 약 26~29% 증가한 것으로 추정되지만, 현금성 자산 급감으로 계속기업 존속 능력에 중대한 의구심이 제기된다고 10월 16일 발표했다.",
+      "title": "나녹스, 3분기 예비매출 440만 달러..계속기업 의구심"
+    },
     "source_fact:68aca48c44b367eba582549d": {
       "first_seen_kst": "2026-10-08T21:47:01+09:00",
       "lanes": {
@@ -491934,6 +492835,28 @@
       "telegram_core_fact": "인베스팅닷컴은 오픈AI의 9월 말 연간 환산 매출이 약 500억달러(67조1000억원)였지만 연말에는 700억달러(93조9400억원)에 도달하거나 이를 넘어설 것으로 예상된다는 보도가 투자심리를 지지했다고 전했다.",
       "title": "뉴욕증시, 오픈AI 매출 우려 완화에 상승 마감…나스닥 0.64%↑"
     },
+    "source_fact:6c240472d2ebafc2a94369cb": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.fnnews.com/news/202610161012176513",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "00d6c6e11f5f903958df0247fda4c3bee2edbef062150f12910e09338cc95984",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2d72fe3dbf4934e4144b5fcf519712d3eeba54706b8e07ec53a3bf95a97038aa",
+      "source_fact_keys": [
+        "source_fact:v1:1b79a32d6596e3845e2a34003efad60e79fca80211195f5489554038cfbf5be5",
+        "source_fact:v1:749f3a555fa78838dd5084a28c95c815101bc7cc1c33c1413f3c9696d9e934a1",
+        "source_fact:v1:9dde2022fd3ceae7d169d64e1f55527e743d17bfb6e9d46b29ac88e6c15c8f31"
+      ],
+      "source_published_kst": "2026-10-16T10:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "농협금융 '2.5조' 흑자 vs 농협경제 '적자'…농협 지주 격차 고착화하나",
+      "telegram_core_fact": "16일 국회 농림축산식품해양수산위원회 소속 송옥주 의원(더불어민주당)이 농협에서 제출받은 자료에 따르면 농협금융지주의 연결 기준 당기순이익은 2020년부터 2025년까지 매년 2조 원 이상을 기록했다.",
+      "title": "농협금융 '2.5조' 흑자 vs 농협경제 '적자'…농협 지주 격차 고착화하나"
+    },
     "source_fact:6c2897364c9ec5f4934da1b2": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
       "lanes": {
@@ -493439,6 +494362,30 @@
       "source_title": "“어, 강남 아니었네?”…대출 옥죄자 매입자금 의존 더 커진 지역은",
       "telegram_core_fact": "국토교통부의 주택취득자금 조달·입주계획서 현황 자료에 따르면 올해 들어 8월까지 노원구 주택 구매자의 전체 매입자금 가운데 금융기관 대출액이 차지하는 비율은 38.2%로 집계됐다.",
       "title": "“어, 강남 아니었네?”…대출 옥죄자 매입자금 의존 더 커진 지역은"
+    },
+    "source_fact:6d2d3e578f4dff5c88f9ddf0": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.hankyung.com/article/202610165474i",
+      "source": "한국경제",
+      "source_body_digest": "fc77a72d7a7c717280fd31209fd1ff6ded863bd319bbf11836bdd74215bbf790",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ab6e8b441c0fb0782b034e1dc7ce59067716c7c69fd17e8e71945a7ce4d0a447",
+      "source_fact_keys": [
+        "source_fact:v1:0047b1ca0afc97cc15e1d4fb684cbacc1723ac2103cc5a3bcd1ca55637f37aa4",
+        "source_fact:v1:75b09eb91a3230bc6044a0333ed67feaecd3b7a4ab643fc1d52549ea6c914cf9",
+        "source_fact:v1:9258ace485d5e70e91b30956eb294945c0a06187ae81ec7f14a08bc0d8d03472",
+        "source_fact:v1:e5c2aebc892df43c58edba464ce98a09e60d745e10bdb65f35013fb090ec1a9e",
+        "source_fact:v1:f275505f41e4aa24fcd65292add3ebb65c11d5244af18d710a73ad9813a31d07"
+      ],
+      "source_published_kst": "2026-10-16T08:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "이노보테라퓨틱스, 코스닥 상장예심 통과…IPO 본격화",
+      "telegram_core_fact": "이노보테라퓨틱스는 한국거래소로부터 코스닥시장 상장예비심사 승인을 받았다고 16일 밝혔다.",
+      "title": "이노보테라퓨틱스, 코스닥 상장예심 통과…IPO 본격화"
     },
     "source_fact:6d353356b7b8731574ed4fdb": {
       "first_seen_kst": "2026-10-15T08:51:43+09:00",
@@ -503285,6 +504232,28 @@
       "telegram_core_fact": "고정형 주담대 금리는 4.88%로 전월보다 0.12%p 상승했다.",
       "title": "싸서 택한 주담대 변동금리, 상승폭 고정형 추월⋯커지는 차주 부담"
     },
+    "source_fact:745cdeef9909bff489816591": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.fnnews.com/news/202610161012176513",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "00d6c6e11f5f903958df0247fda4c3bee2edbef062150f12910e09338cc95984",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2d72fe3dbf4934e4144b5fcf519712d3eeba54706b8e07ec53a3bf95a97038aa",
+      "source_fact_keys": [
+        "source_fact:v1:1b79a32d6596e3845e2a34003efad60e79fca80211195f5489554038cfbf5be5",
+        "source_fact:v1:749f3a555fa78838dd5084a28c95c815101bc7cc1c33c1413f3c9696d9e934a1",
+        "source_fact:v1:9dde2022fd3ceae7d169d64e1f55527e743d17bfb6e9d46b29ac88e6c15c8f31"
+      ],
+      "source_published_kst": "2026-10-16T10:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "농협금융 '2.5조' 흑자 vs 농협경제 '적자'…농협 지주 격차 고착화하나",
+      "telegram_core_fact": "16일 국회 농림축산식품해양수산위원회 소속 송옥주 의원(더불어민주당)이 농협에서 제출받은 자료에 따르면 농협금융지주의 연결 기준 당기순이익은 2020년부터 2025년까지 매년 2조 원 이상을 기록했다.",
+      "title": "농협금융 '2.5조' 흑자 vs 농협경제 '적자'…농협 지주 격차 고착화하나"
+    },
     "source_fact:745d91868b582e231c6904d0": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
       "lanes": {
@@ -503305,6 +504274,55 @@
       ],
       "source_published_kst": "2026-10-06T10:23+09:00",
       "title": "1∼8월 글로벌 전기차 5.9% 증가…현대차그룹은 두 자릿수 성장"
+    },
+    "source_fact:7461d8faddc44edd96c1a44f": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.hankyung.com/article/202610165474i",
+      "source": "한국경제",
+      "source_body_digest": "fc77a72d7a7c717280fd31209fd1ff6ded863bd319bbf11836bdd74215bbf790",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ab6e8b441c0fb0782b034e1dc7ce59067716c7c69fd17e8e71945a7ce4d0a447",
+      "source_fact_keys": [
+        "source_fact:v1:0047b1ca0afc97cc15e1d4fb684cbacc1723ac2103cc5a3bcd1ca55637f37aa4",
+        "source_fact:v1:75b09eb91a3230bc6044a0333ed67feaecd3b7a4ab643fc1d52549ea6c914cf9",
+        "source_fact:v1:9258ace485d5e70e91b30956eb294945c0a06187ae81ec7f14a08bc0d8d03472",
+        "source_fact:v1:e5c2aebc892df43c58edba464ce98a09e60d745e10bdb65f35013fb090ec1a9e",
+        "source_fact:v1:f275505f41e4aa24fcd65292add3ebb65c11d5244af18d710a73ad9813a31d07"
+      ],
+      "source_published_kst": "2026-10-16T08:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "이노보테라퓨틱스, 코스닥 상장예심 통과…IPO 본격화",
+      "telegram_core_fact": "이노보테라퓨틱스는 한국거래소로부터 코스닥시장 상장예비심사 승인을 받았다고 16일 밝혔다.",
+      "title": "이노보테라퓨틱스, 코스닥 상장예심 통과…IPO 본격화"
+    },
+    "source_fact:7461ed85c963575ad1c68eb4": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261015160300002",
+      "source": "연합뉴스",
+      "source_body_digest": "78afe3bcfbd02f78b021bd19d0ae8b200e0643acaea94c005510e5f88136d20d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2e1f2a34c67e9b6c45e7a8f96ad5974fd0eb5a5e066aabfa397772c59ea5629f",
+      "source_fact_keys": [
+        "source_fact:v1:012bd7155e208d4b2a2355f7575d07d5cd8a0f2d7fffbb847b974878805b6bbb",
+        "source_fact:v1:049ef63bfdff4bae8f63cc8f95be6c124283ee5165bbc0684f3026a34426be02",
+        "source_fact:v1:04e195397c09a2e34f0bc80cec46d39faf54104d61812d250c2cde53ccebcb61",
+        "source_fact:v1:0f19437797fd4fc932043e8fec2fef5bce5ed50f869aa7fda761556707a83573",
+        "source_fact:v1:6475d9d81f80d67004e81596a2d077a0f0c0b19d70499b86b3e1bfcab1afe7a5",
+        "source_fact:v1:ff979d3dedd0b6157bdb735fdf97026e23a49bbd1082c7ae399d020fdebc6c02"
+      ],
+      "source_published_kst": "2026-10-16T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "환율 내렸지만 유가 올라서…9월 수입물가 넉 달만에 상승 | 연합뉴스",
+      "telegram_core_fact": "환율 효과를 제외한 9월 계약통화기준 수입물가는 전월대비 4.9% 상승, 전년 동월 대비 20.6% 상승이었다.",
+      "title": "환율 내렸지만 유가 올라서…9월 수입물가 넉 달만에 상승 | 연합뉴스"
     },
     "source_fact:746303ef21cdb0cc502e7bd9": {
       "first_seen_kst": "2026-10-15T14:35:05+09:00",
@@ -505456,6 +506474,31 @@
       ],
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "AI株 숨고르기 반사익…美바이오 ETF 순풍"
+    },
+    "source_fact:75d0b4846f03a71dc2cb1eed": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261015160300002",
+      "source": "연합뉴스",
+      "source_body_digest": "78afe3bcfbd02f78b021bd19d0ae8b200e0643acaea94c005510e5f88136d20d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2e1f2a34c67e9b6c45e7a8f96ad5974fd0eb5a5e066aabfa397772c59ea5629f",
+      "source_fact_keys": [
+        "source_fact:v1:012bd7155e208d4b2a2355f7575d07d5cd8a0f2d7fffbb847b974878805b6bbb",
+        "source_fact:v1:049ef63bfdff4bae8f63cc8f95be6c124283ee5165bbc0684f3026a34426be02",
+        "source_fact:v1:04e195397c09a2e34f0bc80cec46d39faf54104d61812d250c2cde53ccebcb61",
+        "source_fact:v1:0f19437797fd4fc932043e8fec2fef5bce5ed50f869aa7fda761556707a83573",
+        "source_fact:v1:6475d9d81f80d67004e81596a2d077a0f0c0b19d70499b86b3e1bfcab1afe7a5",
+        "source_fact:v1:ff979d3dedd0b6157bdb735fdf97026e23a49bbd1082c7ae399d020fdebc6c02"
+      ],
+      "source_published_kst": "2026-10-16T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "환율 내렸지만 유가 올라서…9월 수입물가 넉 달만에 상승 | 연합뉴스",
+      "telegram_core_fact": "환율 효과를 제외한 9월 계약통화기준 수입물가는 전월대비 4.9% 상승, 전년 동월 대비 20.6% 상승이었다.",
+      "title": "환율 내렸지만 유가 올라서…9월 수입물가 넉 달만에 상승 | 연합뉴스"
     },
     "source_fact:75d33887f04ddc4d6a19ee06": {
       "first_seen_kst": "2026-10-14T07:46:13+09:00",
@@ -518447,6 +519490,31 @@
       ],
       "source_published_kst": "2026-10-05T20:21+09:00",
       "title": "퀀티넘과 서호주대학교, 호주의 양자 역량 강화를 위한 파트너십 체결"
+    },
+    "source_fact:7ed3d318a7f8375095373b49": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.inews24.com/view/zp/2015903",
+      "source": "아이뉴스24",
+      "source_body_digest": "bc5dcd5f25f657dfc5703667d3ec7be164c4810041a535d4fdd6ffac999099d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:779c64d0cc3016aaed330a3cef8b647a06ee7eaae4343af9fca7cfa29fdf7a67",
+      "source_fact_keys": [
+        "source_fact:v1:05aa0b3695ecdf2280f424f7b6197d99a3cd025c5a9d1e9b21fed6d5b48046c9",
+        "source_fact:v1:249d413c334eacf305795fa8b0080ccb4ec68b70347489d6a2248d33fe0376fb",
+        "source_fact:v1:27cd33a96fab4880770569d83162c45def4d5c9a66ae719549f15b1e373230a0",
+        "source_fact:v1:3778df3ce25143a9d6d52d8ccb722d64d7bd8291dd98c3ff4d399187c786a6b6",
+        "source_fact:v1:557f895e3fd9d8644752eaac30d63688c033bee5aa16e78e4d6ca55b412f4dcb",
+        "source_fact:v1:67a9f96f69a74266085b06038e83a31dba4fa3fb71ecfcf903d5e131dba979a3"
+      ],
+      "source_published_kst": "2026-10-16T16:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "DB손보, DB증권 지분 30% 눈앞⋯금융계열 지배축 강화",
+      "telegram_core_fact": "DB손해보험이 DB증권 단독 지분율 30% 돌파를 눈앞에 두고 있다. 이달까지 DB손해보험이 단독 취득한 지분을 합하면 총 지분율은 37.87% 수준이다.",
+      "title": "DB손보, DB증권 지분 30% 눈앞⋯금융계열 지배축 강화"
     },
     "source_fact:7ee08a1ac11a9bbe056283b1": {
       "first_seen_kst": "2026-10-12T15:43:01+09:00",
@@ -545267,6 +546335,31 @@
       "source_title": "전고체 배터리 경쟁 본격화…LG엔솔·삼성SDI 전략 차이는?",
       "telegram_core_fact": "삼성SDI가 내년 양산을 목표로 소재 공급망 구축까지 속도를 내는 반면 LG에너지솔루션(LG엔솔)은 상용화 시점보다는 기술 차별화와 원가 경쟁력 확보에 무게를 두고 있다. 이와 비교해 삼성SDI는 이보다 빠른 내년께 황화물계 전고체 배터리 상용화를 목표로 공급망 구축에 나서고 있다.",
       "title": "전고체 배터리 경쟁 본격화…LG엔솔·삼성SDI 전략 차이는?"
+    },
+    "source_fact:924b03c75df439d77ec6da31": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.inews24.com/view/zp/2015903",
+      "source": "아이뉴스24",
+      "source_body_digest": "bc5dcd5f25f657dfc5703667d3ec7be164c4810041a535d4fdd6ffac999099d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:779c64d0cc3016aaed330a3cef8b647a06ee7eaae4343af9fca7cfa29fdf7a67",
+      "source_fact_keys": [
+        "source_fact:v1:05aa0b3695ecdf2280f424f7b6197d99a3cd025c5a9d1e9b21fed6d5b48046c9",
+        "source_fact:v1:249d413c334eacf305795fa8b0080ccb4ec68b70347489d6a2248d33fe0376fb",
+        "source_fact:v1:27cd33a96fab4880770569d83162c45def4d5c9a66ae719549f15b1e373230a0",
+        "source_fact:v1:3778df3ce25143a9d6d52d8ccb722d64d7bd8291dd98c3ff4d399187c786a6b6",
+        "source_fact:v1:557f895e3fd9d8644752eaac30d63688c033bee5aa16e78e4d6ca55b412f4dcb",
+        "source_fact:v1:67a9f96f69a74266085b06038e83a31dba4fa3fb71ecfcf903d5e131dba979a3"
+      ],
+      "source_published_kst": "2026-10-16T16:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "DB손보, DB증권 지분 30% 눈앞⋯금융계열 지배축 강화",
+      "telegram_core_fact": "DB손해보험이 DB증권 단독 지분율 30% 돌파를 눈앞에 두고 있다. 이달까지 DB손해보험이 단독 취득한 지분을 합하면 총 지분율은 37.87% 수준이다.",
+      "title": "DB손보, DB증권 지분 30% 눈앞⋯금융계열 지배축 강화"
     },
     "source_fact:925a3fcd8e42c22d60a7a83b": {
       "first_seen_kst": "2026-10-08T10:43:48+09:00",
@@ -587013,6 +588106,31 @@
       "telegram_core_fact": "후티 반군의 공격으로 사우디 수도 리야드의 국제공항에서 사망자가 속출하는 가운데 양측의 군사적 충돌이 격화하고 있다. 사우디아라비아가 자국 공항과 석유·가스 시설을 잇달아 공격한 예멘 후티 반군에 강력한 대응을 예고했다.",
       "title": "사우디, 후티 반군에 \"엄중 대응\" 경고…공항 공격에 사망자 속출"
     },
+    "source_fact:af6e9b366a33370cc374711f": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261015160300002",
+      "source": "연합뉴스",
+      "source_body_digest": "78afe3bcfbd02f78b021bd19d0ae8b200e0643acaea94c005510e5f88136d20d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2e1f2a34c67e9b6c45e7a8f96ad5974fd0eb5a5e066aabfa397772c59ea5629f",
+      "source_fact_keys": [
+        "source_fact:v1:012bd7155e208d4b2a2355f7575d07d5cd8a0f2d7fffbb847b974878805b6bbb",
+        "source_fact:v1:049ef63bfdff4bae8f63cc8f95be6c124283ee5165bbc0684f3026a34426be02",
+        "source_fact:v1:04e195397c09a2e34f0bc80cec46d39faf54104d61812d250c2cde53ccebcb61",
+        "source_fact:v1:0f19437797fd4fc932043e8fec2fef5bce5ed50f869aa7fda761556707a83573",
+        "source_fact:v1:6475d9d81f80d67004e81596a2d077a0f0c0b19d70499b86b3e1bfcab1afe7a5",
+        "source_fact:v1:ff979d3dedd0b6157bdb735fdf97026e23a49bbd1082c7ae399d020fdebc6c02"
+      ],
+      "source_published_kst": "2026-10-16T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "환율 내렸지만 유가 올라서…9월 수입물가 넉 달만에 상승 | 연합뉴스",
+      "telegram_core_fact": "환율 효과를 제외한 9월 계약통화기준 수입물가는 전월대비 4.9% 상승, 전년 동월 대비 20.6% 상승이었다.",
+      "title": "환율 내렸지만 유가 올라서…9월 수입물가 넉 달만에 상승 | 연합뉴스"
+    },
     "source_fact:af71bf6081a40466773aa87f": {
       "first_seen_kst": "2026-10-06T16:52:01+09:00",
       "lanes": {
@@ -589257,6 +590375,31 @@
       "telegram_core_fact": "[파이낸셜뉴스]애플 최고경영자(CEO)가 글로벌 메모리 반도체 공급난을 '위기'로 규정하고 중국산 반도체 도입을 포함한 모든 선택지를 검토할 필요가 있다는 입장을 밝혔다.",
       "title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플"
     },
+    "source_fact:b0e4adff0ad575ff0a63f09e": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.inews24.com/view/zp/2015903",
+      "source": "아이뉴스24",
+      "source_body_digest": "bc5dcd5f25f657dfc5703667d3ec7be164c4810041a535d4fdd6ffac999099d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:779c64d0cc3016aaed330a3cef8b647a06ee7eaae4343af9fca7cfa29fdf7a67",
+      "source_fact_keys": [
+        "source_fact:v1:05aa0b3695ecdf2280f424f7b6197d99a3cd025c5a9d1e9b21fed6d5b48046c9",
+        "source_fact:v1:249d413c334eacf305795fa8b0080ccb4ec68b70347489d6a2248d33fe0376fb",
+        "source_fact:v1:27cd33a96fab4880770569d83162c45def4d5c9a66ae719549f15b1e373230a0",
+        "source_fact:v1:3778df3ce25143a9d6d52d8ccb722d64d7bd8291dd98c3ff4d399187c786a6b6",
+        "source_fact:v1:557f895e3fd9d8644752eaac30d63688c033bee5aa16e78e4d6ca55b412f4dcb",
+        "source_fact:v1:67a9f96f69a74266085b06038e83a31dba4fa3fb71ecfcf903d5e131dba979a3"
+      ],
+      "source_published_kst": "2026-10-16T16:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "DB손보, DB증권 지분 30% 눈앞⋯금융계열 지배축 강화",
+      "telegram_core_fact": "DB손해보험이 DB증권 단독 지분율 30% 돌파를 눈앞에 두고 있다. 이달까지 DB손해보험이 단독 취득한 지분을 합하면 총 지분율은 37.87% 수준이다.",
+      "title": "DB손보, DB증권 지분 30% 눈앞⋯금융계열 지배축 강화"
+    },
     "source_fact:b0e6d68b1acbae5d6afa256f": {
       "first_seen_kst": "2026-10-15T02:00:57+09:00",
       "lanes": {
@@ -589683,6 +590826,31 @@
       "source_title": "美 9월 CPI 전년비 3.7% 상승…에너지 가격 급등이 물가 끌어올려(종합)",
       "telegram_core_fact": "미국 노동부 노동통계국(BLS)은 14일(현지시간) 9월 소비자물가지수(CPI)가 전년 동월 대비 3.7% 상승했다고 밝혔다.",
       "title": "美 9월 CPI 전년비 3.7% 상승…에너지 가격 급등이 물가 끌어올려(종합)"
+    },
+    "source_fact:b13398945c63b3a64d308270": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.inews24.com/view/zp/2015903",
+      "source": "아이뉴스24",
+      "source_body_digest": "bc5dcd5f25f657dfc5703667d3ec7be164c4810041a535d4fdd6ffac999099d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:779c64d0cc3016aaed330a3cef8b647a06ee7eaae4343af9fca7cfa29fdf7a67",
+      "source_fact_keys": [
+        "source_fact:v1:05aa0b3695ecdf2280f424f7b6197d99a3cd025c5a9d1e9b21fed6d5b48046c9",
+        "source_fact:v1:249d413c334eacf305795fa8b0080ccb4ec68b70347489d6a2248d33fe0376fb",
+        "source_fact:v1:27cd33a96fab4880770569d83162c45def4d5c9a66ae719549f15b1e373230a0",
+        "source_fact:v1:3778df3ce25143a9d6d52d8ccb722d64d7bd8291dd98c3ff4d399187c786a6b6",
+        "source_fact:v1:557f895e3fd9d8644752eaac30d63688c033bee5aa16e78e4d6ca55b412f4dcb",
+        "source_fact:v1:67a9f96f69a74266085b06038e83a31dba4fa3fb71ecfcf903d5e131dba979a3"
+      ],
+      "source_published_kst": "2026-10-16T16:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "DB손보, DB증권 지분 30% 눈앞⋯금융계열 지배축 강화",
+      "telegram_core_fact": "DB손해보험이 DB증권 단독 지분율 30% 돌파를 눈앞에 두고 있다. 이달까지 DB손해보험이 단독 취득한 지분을 합하면 총 지분율은 37.87% 수준이다.",
+      "title": "DB손보, DB증권 지분 30% 눈앞⋯금융계열 지배축 강화"
     },
     "source_fact:b133ccb058cc59b7fb23a3da": {
       "first_seen_kst": "2026-10-06T19:33:48+09:00",
@@ -595587,6 +596755,27 @@
       "source_title": "HD현대마린솔루션, 美 엔진 기업 '골텐스' 3315억원에 인수",
       "telegram_core_fact": "인수 금액은 약 2억4700만달러(약 3315억 원)다. HD현대마린솔루션이 글로벌 '선박·육상발전용 엔진' 서비스 전문기업 '골텐스(Goltens)'의 지분 100%를 인수하는 주식매매계약을 체결했다고 8일 공시했다.",
       "title": "HD현대마린솔루션, 美 엔진 기업 '골텐스' 3315억원에 인수"
+    },
+    "source_fact:b524a03c3d04884d2d735517": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01380886645613904",
+      "source": "이데일리",
+      "source_body_digest": "9de8fe0b36f9850b99ad736409576cb6c80fe0d6692eae18aa76c43fe60246ac",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2566bdfaddb2669f3839623148f94d2293490005a791a4a75db73906212dbde4",
+      "source_fact_keys": [
+        "source_fact:v1:4117e991f6f4cc698527a5d5aa7390d11ddccc3231c25a463df385fee6dcf90c",
+        "source_fact:v1:df8527515e0c44a6afd6d3ed56faa212bc74dcd5c1f1e242d86e86e649cc857b"
+      ],
+      "source_published_kst": "2026-10-17T05:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "호르무즈 이어 사우디 원유 수출로까지 위협…브렌트유 110달러 터치",
+      "telegram_core_fact": "글로벌 기준유인 브렌트유 선물은 3.94달러(3.72%) 상승한 109.86달러에 마감했다.",
+      "title": "호르무즈 이어 사우디 원유 수출로까지 위협…브렌트유 110달러 터치"
     },
     "source_fact:b52a57179e85e3e6eeba2c46": {
       "first_seen_kst": "2026-10-10T11:34:45+09:00",
@@ -602675,6 +603864,30 @@
       "source_title": "정부 “착공·분양·입주 상황판 가동”…주택 공급 모든 정보 한 번에",
       "telegram_core_fact": "김용수 국무2차장은 16일 정부서울청사에서 열린 ‘제1차 주택공급 정책 브리프’ 브리핑에서“(상황판을 통해) 인허가·착공·분양·입주 등 주택공급 관련 상세한 정보와 향후 공급 계획, 공급 실적, 정책 소식 등을 지속 공개해 국민의 궁금증을 해소하고 예측 가능성을 높여 나가겠다”며 이같이 설명했다.",
       "title": "정부 “착공·분양·입주 상황판 가동”…주택 공급 모든 정보 한 번에"
+    },
+    "source_fact:bac2fd088fd3407f989f35be": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176118",
+      "source": "매일경제",
+      "source_body_digest": "d15c5ed8d947fd67f704198b410e49d7896ac2914894aba24842f7eb8d682059",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3ce36569e57c2ecc1d3cad2a2ea4d6a74a282750275b0d928815f774c7d10995",
+      "source_fact_keys": [
+        "source_fact:v1:13766c2d82748a9e034dcdb88d20daa50e520d2cfdf947b4c16841f68686090c",
+        "source_fact:v1:442a8d14d82c48c78d8ff8bfcb6719b56252b5dd737f1b24a5b1a1f43c4d2cf7",
+        "source_fact:v1:6489c33133ea8b14bd05e273fd0014de0f2c9e5aeb35993356febc86f5c2953a",
+        "source_fact:v1:79d5210dfd169c1fd07c3ea429013a736a53d701143ddb633b44c7d59b03e367",
+        "source_fact:v1:e29bc2dbbc0ed35a939a733fc55e4f32c68a3c6adfd1fc68c1d389905d3b6bac"
+      ],
+      "source_published_kst": "2026-10-17T05:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "나녹스, 3분기 예비매출 440만 달러..계속기업 의구심",
+      "telegram_core_fact": "나녹스(NNOX)는 9월 30일 종료된 2026년 3분기 예비 매출액이 430만~440만 달러로 전년 동기 340만 달러 대비 약 26~29% 증가한 것으로 추정되지만, 현금성 자산 급감으로 계속기업 존속 능력에 중대한 의구심이 제기된다고 10월 16일 발표했다.",
+      "title": "나녹스, 3분기 예비매출 440만 달러..계속기업 의구심"
     },
     "source_fact:bacc37c262b5a67aa9cd2c41": {
       "first_seen_kst": "2026-10-15T11:36:50+09:00",
@@ -632635,6 +633848,31 @@
       "telegram_core_fact": "지난 9월 FOMC에서 현재의 기준금리 수준으로 2% 물가 상승률을 달성하지 못하였기 때문에 추가 상승을 통한 제약적 금리로 물가를 잡겠다고 했습니다.",
       "title": "‘고금리’를 극복하는 이익의 힘…현재가 90년대 버블과 다른 이유 [타짜봉선생의 미국주식수업]"
     },
+    "source_fact:cf8b30e2caf803768295131d": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261015160300002",
+      "source": "연합뉴스",
+      "source_body_digest": "78afe3bcfbd02f78b021bd19d0ae8b200e0643acaea94c005510e5f88136d20d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2e1f2a34c67e9b6c45e7a8f96ad5974fd0eb5a5e066aabfa397772c59ea5629f",
+      "source_fact_keys": [
+        "source_fact:v1:012bd7155e208d4b2a2355f7575d07d5cd8a0f2d7fffbb847b974878805b6bbb",
+        "source_fact:v1:049ef63bfdff4bae8f63cc8f95be6c124283ee5165bbc0684f3026a34426be02",
+        "source_fact:v1:04e195397c09a2e34f0bc80cec46d39faf54104d61812d250c2cde53ccebcb61",
+        "source_fact:v1:0f19437797fd4fc932043e8fec2fef5bce5ed50f869aa7fda761556707a83573",
+        "source_fact:v1:6475d9d81f80d67004e81596a2d077a0f0c0b19d70499b86b3e1bfcab1afe7a5",
+        "source_fact:v1:ff979d3dedd0b6157bdb735fdf97026e23a49bbd1082c7ae399d020fdebc6c02"
+      ],
+      "source_published_kst": "2026-10-16T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "환율 내렸지만 유가 올라서…9월 수입물가 넉 달만에 상승 | 연합뉴스",
+      "telegram_core_fact": "환율 효과를 제외한 9월 계약통화기준 수입물가는 전월대비 4.9% 상승, 전년 동월 대비 20.6% 상승이었다.",
+      "title": "환율 내렸지만 유가 올라서…9월 수입물가 넉 달만에 상승 | 연합뉴스"
+    },
     "source_fact:cf8ce16046f3c0f96677bedb": {
       "first_seen_kst": "2026-10-13T08:14:23+09:00",
       "lanes": {
@@ -643286,6 +644524,31 @@
       "source_title": "민트, 아일랜드와 로봇 OEM 계약..최대 300만 유로",
       "telegram_core_fact": "액소넥스는 로봇 키트와 플랫폼 라이선스, 표준 소프트웨어, 플랫폼 기술을 센트리덱스에 공급한다.",
       "title": "민트, 아일랜드와 로봇 OEM 계약..최대 300만 유로"
+    },
+    "source_fact:d6e2bb98ffb3ec4a9553d172": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261015160300002",
+      "source": "연합뉴스",
+      "source_body_digest": "78afe3bcfbd02f78b021bd19d0ae8b200e0643acaea94c005510e5f88136d20d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2e1f2a34c67e9b6c45e7a8f96ad5974fd0eb5a5e066aabfa397772c59ea5629f",
+      "source_fact_keys": [
+        "source_fact:v1:012bd7155e208d4b2a2355f7575d07d5cd8a0f2d7fffbb847b974878805b6bbb",
+        "source_fact:v1:049ef63bfdff4bae8f63cc8f95be6c124283ee5165bbc0684f3026a34426be02",
+        "source_fact:v1:04e195397c09a2e34f0bc80cec46d39faf54104d61812d250c2cde53ccebcb61",
+        "source_fact:v1:0f19437797fd4fc932043e8fec2fef5bce5ed50f869aa7fda761556707a83573",
+        "source_fact:v1:6475d9d81f80d67004e81596a2d077a0f0c0b19d70499b86b3e1bfcab1afe7a5",
+        "source_fact:v1:ff979d3dedd0b6157bdb735fdf97026e23a49bbd1082c7ae399d020fdebc6c02"
+      ],
+      "source_published_kst": "2026-10-16T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "환율 내렸지만 유가 올라서…9월 수입물가 넉 달만에 상승 | 연합뉴스",
+      "telegram_core_fact": "환율 효과를 제외한 9월 계약통화기준 수입물가는 전월대비 4.9% 상승, 전년 동월 대비 20.6% 상승이었다.",
+      "title": "환율 내렸지만 유가 올라서…9월 수입물가 넉 달만에 상승 | 연합뉴스"
     },
     "source_fact:d6f3da41bff4fde89498ca3c": {
       "first_seen_kst": "2026-10-14T14:29:29+09:00",
@@ -685388,6 +686651,28 @@
       "telegram_core_fact": "인공지능(AI) 반도체 투자 열풍에 따라 세계 최대 반도체 노광장비 업체인 네덜란드 ASML이 생산능력을 추가로 늘리는 방안을 검토하고 있다.",
       "title": "\"장비 없어서 못 팔아요\"…'슈퍼을', 반도체 열풍에 노났다"
     },
+    "source_fact:f443ba5c31cd24be65998323": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.fnnews.com/news/202610161012176513",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "00d6c6e11f5f903958df0247fda4c3bee2edbef062150f12910e09338cc95984",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2d72fe3dbf4934e4144b5fcf519712d3eeba54706b8e07ec53a3bf95a97038aa",
+      "source_fact_keys": [
+        "source_fact:v1:1b79a32d6596e3845e2a34003efad60e79fca80211195f5489554038cfbf5be5",
+        "source_fact:v1:749f3a555fa78838dd5084a28c95c815101bc7cc1c33c1413f3c9696d9e934a1",
+        "source_fact:v1:9dde2022fd3ceae7d169d64e1f55527e743d17bfb6e9d46b29ac88e6c15c8f31"
+      ],
+      "source_published_kst": "2026-10-16T10:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "농협금융 '2.5조' 흑자 vs 농협경제 '적자'…농협 지주 격차 고착화하나",
+      "telegram_core_fact": "16일 국회 농림축산식품해양수산위원회 소속 송옥주 의원(더불어민주당)이 농협에서 제출받은 자료에 따르면 농협금융지주의 연결 기준 당기순이익은 2020년부터 2025년까지 매년 2조 원 이상을 기록했다.",
+      "title": "농협금융 '2.5조' 흑자 vs 농협경제 '적자'…농협 지주 격차 고착화하나"
+    },
     "source_fact:f445d0fb7c1c31231a5e24aa": {
       "first_seen_kst": "2026-10-08T16:14:26+09:00",
       "lanes": {
@@ -711700,6 +712985,30 @@
       "telegram_core_fact": "알파벳과 아마존의 자체 AI 반도체에 들어가는 메모리 수요와 엔비디아의 차세대 플랫폼 출시가 HBM 수요 강세를 이어갈 것으로 전망했다.",
       "title": "“엔비디아 살 걸”…반도체 호황이라더니 삼전닉스 주주 속 탄다"
     },
+    "title:1cb47a90c0b0c6303560cee9": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.hankyung.com/article/202610165474i",
+      "source": "한국경제",
+      "source_body_digest": "fc77a72d7a7c717280fd31209fd1ff6ded863bd319bbf11836bdd74215bbf790",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ab6e8b441c0fb0782b034e1dc7ce59067716c7c69fd17e8e71945a7ce4d0a447",
+      "source_fact_keys": [
+        "source_fact:v1:0047b1ca0afc97cc15e1d4fb684cbacc1723ac2103cc5a3bcd1ca55637f37aa4",
+        "source_fact:v1:75b09eb91a3230bc6044a0333ed67feaecd3b7a4ab643fc1d52549ea6c914cf9",
+        "source_fact:v1:9258ace485d5e70e91b30956eb294945c0a06187ae81ec7f14a08bc0d8d03472",
+        "source_fact:v1:e5c2aebc892df43c58edba464ce98a09e60d745e10bdb65f35013fb090ec1a9e",
+        "source_fact:v1:f275505f41e4aa24fcd65292add3ebb65c11d5244af18d710a73ad9813a31d07"
+      ],
+      "source_published_kst": "2026-10-16T08:34+09:00",
+      "source_supply_terms": {},
+      "source_title": "이노보테라퓨틱스, 코스닥 상장예심 통과…IPO 본격화",
+      "telegram_core_fact": "이노보테라퓨틱스는 한국거래소로부터 코스닥시장 상장예비심사 승인을 받았다고 16일 밝혔다.",
+      "title": "이노보테라퓨틱스, 코스닥 상장예심 통과…IPO 본격화"
+    },
     "title:1cb853a8c6ced7cb9768cd8c": {
       "first_seen_kst": "2026-10-07T01:18:00+09:00",
       "lanes": {
@@ -711868,6 +713177,28 @@
       "source_title": "\"2028년까지 주문 못 따라간다\"…ASML, AI 반도체 장비 공급난",
       "telegram_core_fact": "ASML 4분기 매출은 8000억원 전망입니다.",
       "title": "\"2028년까지 주문 못 따라간다\"…ASML, AI 반도체 장비 공급난"
+    },
+    "title:1cefa5fe85864f55b272165e": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.fnnews.com/news/202610161012176513",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "00d6c6e11f5f903958df0247fda4c3bee2edbef062150f12910e09338cc95984",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2d72fe3dbf4934e4144b5fcf519712d3eeba54706b8e07ec53a3bf95a97038aa",
+      "source_fact_keys": [
+        "source_fact:v1:1b79a32d6596e3845e2a34003efad60e79fca80211195f5489554038cfbf5be5",
+        "source_fact:v1:749f3a555fa78838dd5084a28c95c815101bc7cc1c33c1413f3c9696d9e934a1",
+        "source_fact:v1:9dde2022fd3ceae7d169d64e1f55527e743d17bfb6e9d46b29ac88e6c15c8f31"
+      ],
+      "source_published_kst": "2026-10-16T10:12+09:00",
+      "source_supply_terms": {},
+      "source_title": "농협금융 '2.5조' 흑자 vs 농협경제 '적자'…농협 지주 격차 고착화하나",
+      "telegram_core_fact": "16일 국회 농림축산식품해양수산위원회 소속 송옥주 의원(더불어민주당)이 농협에서 제출받은 자료에 따르면 농협금융지주의 연결 기준 당기순이익은 2020년부터 2025년까지 매년 2조 원 이상을 기록했다.",
+      "title": "농협금융 '2.5조' 흑자 vs 농협경제 '적자'…농협 지주 격차 고착화하나"
     },
     "title:1cf0588aec08949bfcc1c093": {
       "first_seen_kst": "2026-10-13T13:05:30+09:00",
@@ -721648,6 +722979,27 @@
       "telegram_core_fact": "이 사장은 \"올해 수도권 8만6000가구, 전국 9만6000가구의 주택을 착공하겠다\"며 \"조성한 택지의 민간 매각을 중단하고 직접 시행으로 전환하면서 내부 조직 개편과 인력 재배치를 통해 공급 물량과 속도를 높여가고 있다\"고 말했다.",
       "title": "이성훈 LH 사장 “수도권 8만6000가구 착공”⋯분사·인력난 해소 과제 [국감] [종합]"
     },
+    "title:36b5a6c8557699844084cfff": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01380886645613904",
+      "source": "이데일리",
+      "source_body_digest": "9de8fe0b36f9850b99ad736409576cb6c80fe0d6692eae18aa76c43fe60246ac",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2566bdfaddb2669f3839623148f94d2293490005a791a4a75db73906212dbde4",
+      "source_fact_keys": [
+        "source_fact:v1:4117e991f6f4cc698527a5d5aa7390d11ddccc3231c25a463df385fee6dcf90c",
+        "source_fact:v1:df8527515e0c44a6afd6d3ed56faa212bc74dcd5c1f1e242d86e86e649cc857b"
+      ],
+      "source_published_kst": "2026-10-17T05:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "호르무즈 이어 사우디 원유 수출로까지 위협…브렌트유 110달러 터치",
+      "telegram_core_fact": "글로벌 기준유인 브렌트유 선물은 3.94달러(3.72%) 상승한 109.86달러에 마감했다.",
+      "title": "호르무즈 이어 사우디 원유 수출로까지 위협…브렌트유 110달러 터치"
+    },
     "title:36c77139ae2e8e75f1460614": {
       "first_seen_kst": "2026-10-08T20:16:13+09:00",
       "lanes": {
@@ -725442,6 +726794,31 @@
       "source_title": "코스피, 외인·기관 2.7조 매도에 1.9%대 약세…삼전닉스도 ↓",
       "telegram_core_fact": "반면 외국인과 기관은 각각 1조2913억원, 1조4611억원을 순매도하고 있다.",
       "title": "코스피, 외인·기관 2.7조 매도에 1.9%대 약세…삼전닉스도 ↓"
+    },
+    "title:408c23ff7d7959df7b58d59f": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.inews24.com/view/zp/2015903",
+      "source": "아이뉴스24",
+      "source_body_digest": "bc5dcd5f25f657dfc5703667d3ec7be164c4810041a535d4fdd6ffac999099d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:779c64d0cc3016aaed330a3cef8b647a06ee7eaae4343af9fca7cfa29fdf7a67",
+      "source_fact_keys": [
+        "source_fact:v1:05aa0b3695ecdf2280f424f7b6197d99a3cd025c5a9d1e9b21fed6d5b48046c9",
+        "source_fact:v1:249d413c334eacf305795fa8b0080ccb4ec68b70347489d6a2248d33fe0376fb",
+        "source_fact:v1:27cd33a96fab4880770569d83162c45def4d5c9a66ae719549f15b1e373230a0",
+        "source_fact:v1:3778df3ce25143a9d6d52d8ccb722d64d7bd8291dd98c3ff4d399187c786a6b6",
+        "source_fact:v1:557f895e3fd9d8644752eaac30d63688c033bee5aa16e78e4d6ca55b412f4dcb",
+        "source_fact:v1:67a9f96f69a74266085b06038e83a31dba4fa3fb71ecfcf903d5e131dba979a3"
+      ],
+      "source_published_kst": "2026-10-16T16:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "DB손보, DB증권 지분 30% 눈앞⋯금융계열 지배축 강화",
+      "telegram_core_fact": "DB손해보험이 DB증권 단독 지분율 30% 돌파를 눈앞에 두고 있다. 이달까지 DB손해보험이 단독 취득한 지분을 합하면 총 지분율은 37.87% 수준이다.",
+      "title": "DB손보, DB증권 지분 30% 눈앞⋯금융계열 지배축 강화"
     },
     "title:40927faff01584a21d307350": {
       "first_seen_kst": "2026-10-07T00:38:27+09:00",
@@ -740569,6 +741946,30 @@
       "source_published_kst": "2026-10-05T06:25+09:00",
       "title": "이번주 크레딧 2조원 발행…파라다이스 수요예측도 | 연합뉴스"
     },
+    "title:6882dcdbc12d2e831548216c": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176118",
+      "source": "매일경제",
+      "source_body_digest": "d15c5ed8d947fd67f704198b410e49d7896ac2914894aba24842f7eb8d682059",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3ce36569e57c2ecc1d3cad2a2ea4d6a74a282750275b0d928815f774c7d10995",
+      "source_fact_keys": [
+        "source_fact:v1:13766c2d82748a9e034dcdb88d20daa50e520d2cfdf947b4c16841f68686090c",
+        "source_fact:v1:442a8d14d82c48c78d8ff8bfcb6719b56252b5dd737f1b24a5b1a1f43c4d2cf7",
+        "source_fact:v1:6489c33133ea8b14bd05e273fd0014de0f2c9e5aeb35993356febc86f5c2953a",
+        "source_fact:v1:79d5210dfd169c1fd07c3ea429013a736a53d701143ddb633b44c7d59b03e367",
+        "source_fact:v1:e29bc2dbbc0ed35a939a733fc55e4f32c68a3c6adfd1fc68c1d389905d3b6bac"
+      ],
+      "source_published_kst": "2026-10-17T05:11+09:00",
+      "source_supply_terms": {},
+      "source_title": "나녹스, 3분기 예비매출 440만 달러..계속기업 의구심",
+      "telegram_core_fact": "나녹스(NNOX)는 9월 30일 종료된 2026년 3분기 예비 매출액이 430만~440만 달러로 전년 동기 340만 달러 대비 약 26~29% 증가한 것으로 추정되지만, 현금성 자산 급감으로 계속기업 존속 능력에 중대한 의구심이 제기된다고 10월 16일 발표했다.",
+      "title": "나녹스, 3분기 예비매출 440만 달러..계속기업 의구심"
+    },
     "title:68a3efdcbb69570fcea2117c": {
       "first_seen_kst": "2026-10-07T10:04:59+09:00",
       "lanes": {
@@ -754188,6 +755589,31 @@
       "telegram_core_fact": "LG전자는 이번 전시를 통해 생활가전에서 축적한 기술을 AI 데이터센터와 로봇, 자동차 등 산업 분야로 확대하는 모습을 보여준다는 계획이다.",
       "title": "LG전자, AI 데이터센터 냉각부터 로봇까지…미래 먹거리 총출동"
     },
+    "title:8d15dc88cf72e23ab78b2edb": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261015160300002",
+      "source": "연합뉴스",
+      "source_body_digest": "78afe3bcfbd02f78b021bd19d0ae8b200e0643acaea94c005510e5f88136d20d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2e1f2a34c67e9b6c45e7a8f96ad5974fd0eb5a5e066aabfa397772c59ea5629f",
+      "source_fact_keys": [
+        "source_fact:v1:012bd7155e208d4b2a2355f7575d07d5cd8a0f2d7fffbb847b974878805b6bbb",
+        "source_fact:v1:049ef63bfdff4bae8f63cc8f95be6c124283ee5165bbc0684f3026a34426be02",
+        "source_fact:v1:04e195397c09a2e34f0bc80cec46d39faf54104d61812d250c2cde53ccebcb61",
+        "source_fact:v1:0f19437797fd4fc932043e8fec2fef5bce5ed50f869aa7fda761556707a83573",
+        "source_fact:v1:6475d9d81f80d67004e81596a2d077a0f0c0b19d70499b86b3e1bfcab1afe7a5",
+        "source_fact:v1:ff979d3dedd0b6157bdb735fdf97026e23a49bbd1082c7ae399d020fdebc6c02"
+      ],
+      "source_published_kst": "2026-10-16T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "환율 내렸지만 유가 올라서…9월 수입물가 넉 달만에 상승 | 연합뉴스",
+      "telegram_core_fact": "환율 효과를 제외한 9월 계약통화기준 수입물가는 전월대비 4.9% 상승, 전년 동월 대비 20.6% 상승이었다.",
+      "title": "환율 내렸지만 유가 올라서…9월 수입물가 넉 달만에 상승 | 연합뉴스"
+    },
     "title:8d25d18a98fe3eda7c1a4197": {
       "first_seen_kst": "2026-10-02T17:34:05+09:00",
       "lanes": {
@@ -763234,6 +764660,26 @@
       "source_title": "美, 노벨평화상 발표 직후 ICC 제재…\"美방어 의존 동맹 협조를\" | 연합뉴스",
       "telegram_core_fact": "미국의 ICC 제재는 나비 필라이(85) 국제사법재판소(ICJ) 임시 재판관의 노벨평화상 수상 소식이 전해지고 얼마 되지 않아 발표됐다. 필라이는 ICC 재판관을 지냈고 트럼프 대통령은 노벨평화상 수상에 대한 선망을 공공연히 드러내 온 터라 의도적 제재 발표 아니냐는 관측도 나온다.",
       "title": "美, 노벨평화상 발표 직후 ICC 제재…\"美방어 의존 동맹 협조를\" | 연합뉴스"
+    },
+    "title:a58dda92e88edeb6e43334e6": {
+      "first_seen_kst": "2026-10-17T05:25:35+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:25:35+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:25:35+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261017004900072",
+      "source": "연합뉴스",
+      "source_body_digest": "bf4e612a8d8e7ea7964d8100ff6b405d972ced3fd6ab5a084ccd0f4073ade310",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f88a6bceeaf7d3de204049aa335f6e665edd8c5d9223cd5e7e2eaff648adda86",
+      "source_fact_keys": [
+        "source_fact:v1:efd64082cd829e08d897ee3dd689c7d6b3cf2d21f0629ae3d1e0334d52dffc15"
+      ],
+      "source_published_kst": "2026-10-17T05:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "중동도 우크라도 불안…브렌트유 109달러대, 5개월만에 최고 | 연합뉴스",
+      "telegram_core_fact": "런던 ICE 선물거래소에서 12월 인도분 브렌트유는 전장보다 3.72% 오른 배럴당 109.86달러에 거래를 마쳤다.",
+      "title": "중동도 우크라도 불안…브렌트유 109달러대, 5개월만에 최고 | 연합뉴스"
     },
     "title:a5b5f039df50add6441dc0cf": {
       "first_seen_kst": "2026-10-08T00:54:18+09:00",
@@ -796796,5 +798242,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-17T05:02:37+09:00"
+  "updated_at_kst": "2026-10-17T05:25:35+09:00"
 }
