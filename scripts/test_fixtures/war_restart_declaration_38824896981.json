@@ -1,0 +1,239 @@
+{
+  "provenance": {
+    "run_id": "38824896981",
+    "code_sha": "66ad2bcec8ba12f247217e06bcb17205e8cf06bb",
+    "queried_at_kst": "2026-10-16T08:40:44.778898+09:00",
+    "alert_sha256": "648b56cef5afe8e8e5a6e1c2a2513469ed37f833525f3d9895180115f5e33bbb",
+    "input_kind": "stored actual article evidence and rejected-by-human delivered body",
+    "operating_article_text_preserved": false,
+    "later_HTTP_is_not_operating_HTTP": true
+  },
+  "articles": [
+    {
+      "id": "858c3f0afdec06610c21",
+      "title_original": "젤렌스키 \"美 요구 거부\"… 러시아 정유시설 공격 재개 선언",
+      "title_ko": "젤렌스키 \"美 요구 거부\"… 러시아 정유시설 공격 재개 선언",
+      "description": "[파이낸셜뉴스] 볼로디미르 젤렌스키 우크라이나 대통령이 도널드 트럼프 미국 행정부의 러시아 정유시설 공격 중단 요구를 더 이상 따르지 않겠다고 공식 선언했다. 젤렌스키 대통령은 15일(현지시간) 파이낸셜타임스(FT)와의 인터뷰에서 \"제한은 끝났다\"며 러시아 에너지 시설에 대한 타격 중단을 철회하겠다고 밝혔다. 인터뷰 직후 러시아 랴잔 주의 정유공장에서 드론 공격으로 인한 화재가 발생했으며, 우크라이나 당국자는 자국의 소관임을 확인했다. 젤렌스키 대통령은 이번 인터뷰에서 트럼프 대통령을 향한 서운함과 분노를 숨기지 않았다. 그는 블라디미르 푸틴 러시아 대통령을 \"절대적인 악\"으로 규정하며 \"어떻게 트럼프 대통령이 그와 친하게 지낼 수 있는지 이해할 수 없다. 이는 명백한 실수\"라고 비판했다.",
+      "source": "파이낸셜뉴스",
+      "link": "https://www.fnnews.com/news/202610160618206488",
+      "discovery_url": "https://www.fnnews.com/news/202610160618206488",
+      "resolved_url": "https://www.fnnews.com/news/202610160618206488",
+      "published": "Fri, 16 Oct 2026 06:24:30 +0900",
+      "rss_published": "Fri,16 Oct 2026 06:24:30 +0900",
+      "source_metadata": {
+        "title": "젤렌스키 \"美 요구 거부\"… 러시아 정유시설 공격 재개 선언",
+        "publication_status": "verified",
+        "published_at_kst": "2026-10-16T06:24:30+09:00",
+        "publication_candidates": [
+          {
+            "field": "article:published_time",
+            "at_kst": "2026-10-16T06:24:30+09:00"
+          },
+          {
+            "field": "dd:published_time",
+            "at_kst": "2026-10-16T06:24:30+09:00"
+          },
+          {
+            "field": "jsonld:datePublished",
+            "at_kst": "2026-10-16T06:24:30+09:00"
+          },
+          {
+            "field": "visible:입력",
+            "at_kst": "2026-10-16T06:24:00+09:00"
+          }
+        ]
+      },
+      "score": 100,
+      "tags": [
+        "겨울긴장완화",
+        "반대신호",
+        "에너지위험",
+        "종전·협상",
+        "협상내용",
+        "확전",
+        "휴전·평화"
+      ],
+      "body_checked": true,
+      "body_verified": true,
+      "signals_ko": [
+        "랴잔 정유공장 공격·피격 신호 — 화재·가동중단·처리량 감소 여부 후속 확인",
+        "우크라이나 에너지 인프라 공격 신호 — 발전·가스·연료 공급 차질과 복구기간 확인",
+        "현장 화재·폭발·연기 신호 확인 — 단순 요격이 아닌 시설 피해 가능성 상승",
+        "에너지 인프라 상호 공격 자제·중단이 단계적 완화 카드로 부상",
+        "후속 협상 실무 의제에 에너지 인프라 포함"
+      ],
+      "forced_tags": [
+        "종전·협상",
+        "협상내용",
+        "휴전·평화",
+        "겨울긴장완화",
+        "확전",
+        "에너지위험",
+        "반대신호"
+      ],
+      "classification_color": "yellow",
+      "publication_basis": "publisher",
+      "rendered": true,
+      "article_text_sha256": "8df865bc0f6e6b4413902fc1b1ed48b1231c1a5a3b9321ca493de2cbec8a6678"
+    },
+    {
+      "id": "953b3248ab597044b98c",
+      "title_original": "후티 반군, 예멘 대통령궁 공격…사우디 “후티, 리야드 공항 20번 겨냥” - KBS 뉴스",
+      "title_ko": "후티 반군, 예멘 대통령궁 공격…사우디 “후티, 리야드 공항 20번 겨냥” - KBS 뉴스",
+      "description": "후티 반군, 예멘 대통령궁 공격…사우디 “후티, 리야드 공항 20번 겨냥” KBS 뉴스",
+      "source": "KBS 뉴스",
+      "source_url": "https://news.kbs.co.kr",
+      "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBER0RfOGdyd0Z3MUFYUmZDbkxwaVlFcDZPcjZBU3hkNVJCSk1BcjEyNzZwOVJNTHFRcm1ZWU5PdzRQdmtWNTZ6WVFyczVBMjluTnJqQXdrVkNvRzg?oc=5",
+      "published": "Thu, 15 Oct 2026 22:07:00 GMT",
+      "score": 86,
+      "tags": [],
+      "body_checked": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "classification_color": "",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "a1aebe91ab1124500f16",
+      "title_original": "젤렌스키, 트럼프 휴전 구상에 반기…러 정유시설 폭격 재개 - 데일리안",
+      "title_ko": "젤렌스키, 트럼프 휴전 구상에 반기…러 정유시설 폭격 재개 - 데일리안",
+      "description": "젤렌스키, 트럼프 휴전 구상에 반기…러 정유시설 폭격 재개 데일리안",
+      "source": "데일리안",
+      "source_url": "https://www.dailian.co.kr",
+      "link": "https://news.google.com/rss/articles/CBMimAJBVV95cUxPTWJBeXJQVzl5eFM4MFFlRTBNQjZkUm1sejh4MzQtV2FQSDhWZzRrOUR3dHl4WjNseXpEZVRfVFhsUW9IeWF1V0FzdVB4Uy1iakF2Z21HbHRGaG9RaUdlTmdWWi1vMy1YeU9fNzB4MlI3N2RsWmlVdm5fS1FXeEpCYUhLWkFHQ2ZrbnpvR2RHU2gtNVA3N1NmWERoNllobmMwdlBQMHJ0UkNCYzVoU0s4Ml9ZWldQSFRwaGw4eERDLUhUcU1lSFdxaEd4MERUWk44RU0xYmxWZDBTMTJOaUJDU1BLMGNJLWVVRUVEWlEzMURJR1NwVVQwUDFjeW1FQnJrWWllQzA5Vnp0SUU0VWREUVBRakoxMEdm?oc=5",
+      "published": "Thu, 15 Oct 2026 22:28:00 GMT",
+      "score": 9,
+      "tags": [
+        "종전·협상"
+      ],
+      "body_checked": true,
+      "classification_color": "red",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "markets": [
+    {
+      "name": "나스닥100 선물",
+      "price": 30015.75,
+      "pct": -0.424631971801781,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "08:30 KST",
+      "observed_at_kst": "2026-10-16T08:30:41+09:00",
+      "symbol": "NQ=F",
+      "previous_close": 30143.75,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "NQ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 30143.75,
+        "chartPreviousClose": 30143.75,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792107041,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792036800,
+            "end": 1792036800,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792036800,
+            "end": 1792123140,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792123140,
+            "end": 1792123140,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/NQ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "WTI",
+      "price": 96.0999984741211,
+      "pct": -0.41450935324238714,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "08:30 KST",
+      "observed_at_kst": "2026-10-16T08:30:41+09:00",
+      "symbol": "CL=F",
+      "previous_close": 96.5,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "CL=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 96.5,
+        "chartPreviousClose": 96.5,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792107041,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "end": 1792036800,
+            "start": 1792036800,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "end": 1792123140,
+            "start": 1792036800,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "end": 1792123140,
+            "start": 1792123140,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/CL%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    }
+  ],
+  "market_source_status": {
+    "NQ=F": {
+      "name": "나스닥100 선물",
+      "status": "available",
+      "reason": null
+    },
+    "CL=F": {
+      "name": "WTI",
+      "status": "available",
+      "reason": null
+    },
+    "BZ=F": {
+      "name": "Brent",
+      "status": "withheld",
+      "reason": "가격 시각 오래됨·미래 시각",
+      "observed_at_kst": "2026-10-16T08:06:00+09:00"
+    },
+    "DX-Y.NYB": {
+      "name": "달러지수",
+      "status": "withheld",
+      "reason": "가격 시각 오래됨·미래 시각",
+      "observed_at_kst": "2026-10-16T07:04:58+09:00"
+    }
+  },
+  "bad_alert": "<b>전쟁·종전·재건 웹감시</b>\n🔴 <b>공격·확전</b>  |  🟡 <b>군사위협·협상 제약</b>\n조회 2026-10-16 08:40 KST\n기사 시각 기준 · 실제 사건 발생시각과 구분\n\n<b>핵심 변화</b>\n🟡 [신규] <b>1. 우크라이나·러시아 · 에너지 휴전 발표·양측 검증 대기</b>\n랴잔 정유공장 공격·피격 신호 — 화재·가동중단·처리량 감소 여부 후속 확인\n- 우크라이나 에너지 인프라 공격 신호 — 발전·가스·연료 공급 차질과 복구기간 확인\n- 현장 화재·폭발·연기 신호 확인 — 단순 요격이 아닌 시설 피해 가능성 상승\n- 에너지 인프라 상호 공격 자제·중단이 단계적 완화 카드로 부상\n보도 10-16 06:24 KST · <b>136분 경과</b> · 겨울긴장완화 · 반대신호 · 에너지위험 · 종전·협상 · 확전 · 휴전·평화 · <a href=\"https://www.fnnews.com/news/202610160618206488\">파이낸셜뉴스 원문</a>\n\n[신규] <b>2. 사우디·후티</b>\n후티 반군, 예멘 대통령궁 공격…사우디 “후티, 리야드 공항 20번 겨냥” - KBS 뉴스\nRSS 보도 10-16 07:07 KST · <b>93분 경과</b> · 전쟁 · <a href=\"https://news.google.com/rss/articles/CBMiW0FVX3lxTFBER0RfOGdyd0Z3MUFYUmZDbkxwaVlFcDZPcjZBU3hkNVJCSk1BcjEyNzZwOVJNTHFRcm1ZWU5PdzRQdmtWNTZ6WVFyczVBMjluTnJqQXdrVkNvRzg?oc=5\">KBS 뉴스 검색 링크</a> · 제목 기준·본문 미확인\n\n🔴 [신규] <b>3. 우크라이나·러시아</b>\n젤렌스키, 트럼프 휴전 구상에 반기…러 정유시설 폭격 재개 - 데일리안\nRSS 보도 10-16 07:28 KST · <b>72분 경과</b> · 종전·협상 · <a href=\"https://news.google.com/rss/articles/CBMimAJBVV95cUxPTWJBeXJQVzl5eFM4MFFlRTBNQjZkUm1sejh4MzQtV2FQSDhWZzRrOUR3dHl4WjNseXpEZVRfVFhsUW9IeWF1V0FzdVB4Uy1iakF2Z21HbHRGaG9RaUdlTmdWWi1vMy1YeU9fNzB4MlI3N2RsWmlVdm5fS1FXeEpCYUhLWkFHQ2ZrbnpvR2RHU2gtNVA3N1NmWERoNllobmMwdlBQMHJ0UkNCYzVoU0s4Ml9ZWldQSFRwaGw4eERDLUhUcU1lSFdxaEd4MERUWk44RU0xYmxWZDBTMTJOaUJDU1BLMGNJLWVVRUVEWlEzMURJR1NwVVQwUDFjeW1FQnJrWWllQzA5Vnp0SUU0VWREUVBRakoxMEdm?oc=5\">데일리안 검색 링크</a> · 제목 기준·본문 미확인\n\n<b>시장 반응</b>\n나스닥100 선물  <b>30,015.75</b>  -0.42% · 제공처 비교종가 대비 · 기준 08:30 KST · Yahoo Finance 1분봉 NQ=F\nWTI  <b>96.10</b>  -0.41% · 제공처 비교종가 대비 · 기준 08:30 KST · Yahoo Finance 1분봉 CL=F\n\n시장자료 확인 보류 · Brent (가격 시각 오래됨·미래 시각) / 달러지수 (가격 시각 오래됨·미래 시각)\n\n<b>투자 판정</b>\n- <b>핵심:</b> 신규 변화의 중심은 실제 공격·해상안보·운영 위험\n- <b>현재 단계:</b> 군사·안보 위험 지속 — 상업거래나 조건 제시를 휴전 진전으로 보지 않음\n- <b>조건부 영향:</b> 추가 공격·운영 차질이 확대되면 유가·해운·보험 위험프리미엄 상승 가능\n- <b>다음:</b> 추가 공격 → 시설·선박 피해 → 운항 제한 → 실제 교전 강도\n"
+}
