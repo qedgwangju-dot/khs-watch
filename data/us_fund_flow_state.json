@@ -1,7 +1,7 @@
 {
   "seen": {
     "ICI|mmf": "7d62c9b24f7147fa249adbf6f39bc9457f72a7e794e5d287dc78cf0b278636bb",
-    "FINRA|margin": "8655636a0708abc68f71ddd7a8febfc428dbeaf45d54c8d809c6c5280ea4c65e",
+    "FINRA|margin": "b821af0c360e808de172b9db2034d0a5abdff56be88dcbb9b2694aeb20f952c4",
     "ICI|combined": "d6110dceb2cbd321bb4dac9a83b7eeb239cee9d42340f398d4cac8578b35c39d",
     "JPMorganChase Institute|household_withdrawals": "6c6c7de140d30ef3253091d748c839718c430cd42b2e1b65880108e2720f7e29",
     "Federal Reserve Z.1|household_balance_sheet": "7360f0d54948ccab33bac2e7f7154281e984872c447a15f209941748eb0d4c64",
@@ -29,16 +29,16 @@
     "FINRA|margin": {
       "source": "FINRA",
       "kind": "margin",
-      "period": "Aug-26",
+      "period": "Sep-26",
       "published": null,
       "url": "https://www.finra.org/rules-guidance/key-topics/margin-accounts/margin-statistics",
       "metrics": {
-        "margin_debt_bn": 1453.832,
-        "cash_free_bn": 207.641,
-        "margin_free_bn": 217.499,
-        "margin_debt_mom_bn": 36.607
+        "margin_debt_bn": 1480.054,
+        "cash_free_bn": 215.328,
+        "margin_free_bn": 218.581,
+        "margin_debt_mom_bn": 26.222
       },
-      "fingerprint": "8655636a0708abc68f71ddd7a8febfc428dbeaf45d54c8d809c6c5280ea4c65e"
+      "fingerprint": "b821af0c360e808de172b9db2034d0a5abdff56be88dcbb9b2694aeb20f952c4"
     },
     "ICI|combined": {
       "source": "ICI",
@@ -118,14 +118,14 @@
       "fingerprint": "322bb6e2516a3f327007042522d224c50a05c059d5697b540dd5b8be9b515502"
     }
   },
-  "updated_at_kst": "2026-10-16T06:22:26.079139+09:00",
+  "updated_at_kst": "2026-10-17T01:38:06.918620+09:00",
   "derived": {
     "sp500_drawdown_band": "normal",
-    "sp500_last_date": "2026-10-15",
-    "sp500_last_value": 7744.06005859375,
+    "sp500_last_date": "2026-10-16",
+    "sp500_last_value": 7693.25,
     "sp500_peak_date": "2026-10-06",
     "sp500_peak_value": 7818.93017578125,
-    "sp500_drawdown_pct": -0.96,
+    "sp500_drawdown_pct": -1.61,
     "hartnett_tracking_version": "2026-10-09-v1",
     "hartnett_treasury_date": "2026-10-15",
     "hartnett_10y_pct": 5.1,
