@@ -1,5 +1,5 @@
 {
-  "last_checked_kst": "2026-10-16T08:55:34+09:00",
+  "last_checked_kst": "2026-10-16T13:20:39+09:00",
   "active": {
     "fr10:above:4.5": true,
     "fr10:above:4.75": false,
@@ -236,7 +236,7 @@
       },
       {
         "date": "2026-10-15",
-        "value": 5.36
+        "value": 5.38
       }
     ]
   },
@@ -264,7 +264,7 @@
     "fr_mkt": 4.79,
     "de_mkt": 3.41,
     "it10": 4.49,
-    "uk_mkt": 5.36
+    "uk_mkt": 5.38
   },
   "last_change_basis": {
     "fr10": "공식자료 이전 관측일 2026-10-14 대비",
@@ -293,8 +293,8 @@
       "official_rating_source_unavailable:2026-10",
       "milestone:2026-10-23:D-7"
     ],
-    "checked_at_kst": "2026-10-16T08:55:48+09:00",
-    "source_fail_streak": 17,
+    "checked_at_kst": "2026-10-16T13:20:51+09:00",
+    "source_fail_streak": 18,
     "source_access": "access_restricted"
   }
 }
