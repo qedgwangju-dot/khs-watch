@@ -257,6 +257,24 @@
       "telegram_core_fact": "주요 생산국의 이상기후나 전쟁·분쟁, 수출제한 조치가 발생하면 수입 의존도가 높은 우리나라의 원료 확보에도 부담이 커질 수밖에 없다.",
       "title": "옥수수 90% 이상 수입…공급망 불안, 고기·가공식품값으로 번진다"
     },
+    "core:012a605a88ea73d43dcade66": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://biz.heraldcorp.com/article/10905273",
+      "source": "헤럴드경제",
+      "source_body_digest": "50357aa1b76a9ec1363089a9edd23f89b571d4d4e321f95523b2eeb7537cde8c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-16T16:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "전월세난 잡아라…정부 “내년까지 수도권 공적주택 10만호 입주 추진” [부동산360]",
+      "telegram_core_fact": "그간 추진해 온 공급 기반 마련 성과를 바탕으로 실제 입주 물량 확대로 이어지도록 주요 정책 과제들을 속도감 있게 이행하겠다는 계획이다.",
+      "title": "전월세난 잡아라…정부 “내년까지 수도권 공적주택 10만호 입주 추진” [부동산360]"
+    },
     "core:012d232e4e1870f670d5700a": {
       "first_seen_kst": "2026-10-16T19:48:28+09:00",
       "lanes": {
@@ -22631,6 +22649,30 @@
       "telegram_core_fact": "대한항공이 고유가 지속에도 해외발 여객 수요와 인공지능(AI)·반도체 화물 호조에 힘입어 분기 기준 사상 최대 매출을 기록했다.",
       "title": "\"반도체 싣고 고유가 넘었다\"…대한항공, 3Q 매출 5조448억 '분기 신기록'"
     },
+    "core:63a44f81777682e335df5432": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12177348",
+      "source": "매일경제",
+      "source_body_digest": "38e4d85d20efe37e6ba48a4fde6d2576073c92323798ee13f359abf17c6368ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:53ae1cfdb6fe9b45b25962d4c7fed161dbdda1e1cccf0f72d977e846ede66820",
+      "source_fact_keys": [
+        "source_fact:v1:0307a7c2a53fb9100327985f45f63e12c697fc19de31a13149d91240f245548a",
+        "source_fact:v1:66497361e2f039dd1c83bb7a45e28702e129e9d36190398eb1375072b8e20b6e",
+        "source_fact:v1:6c711738a001d40279572aa7c351be1e34f4b53b4e7e9779e94919635471f57e",
+        "source_fact:v1:6f37c68d8dd4d8dcdf94f4ac6958ca0f6d88dff2486d5e3d3d490e2a079c5cea",
+        "source_fact:v1:d711eefb0716f793534387b3c050585179ef79121fc735b59c22772c9b5b528a"
+      ],
+      "source_published_kst": "2026-10-16T05:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "알코아, 3분기 매출 37억 달러·24%↑..순이익 2배 이상",
+      "telegram_core_fact": "알코아(AA)가 3분기(9월 30일 종료) 매출액 37억400만 달러로 전년비 23.7% 증가했고, 일반회계기준(GAAP) 희석 주당순이익 1.81달러로 전년 동기(0.88달러) 대비 105.7% 늘었다고 15일 발표했다.",
+      "title": "알코아, 3분기 매출 37억 달러·24%↑..순이익 2배 이상"
+    },
     "core:63a7f64cad1ad652832a53d1": {
       "first_seen_kst": "2026-10-08T02:57:10+09:00",
       "lanes": {
@@ -33043,6 +33085,31 @@
       "telegram_core_fact": "안타깝게도 가상자산이전업자를 통한다고 하더라도 기업의 외국환거래법에 따른 신고가 면제되는 것은 아니다.",
       "title": "[논현논단_테크의 바른 법] ‘가상자산 통한 무역결제’는 산 넘어 산"
     },
+    "core:8fc79d41fd1d45d35f875c83": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175843",
+      "source": "매일경제",
+      "source_body_digest": "acb0d81056beecc27407eaef83fd3d894dc94a9dd78df02d29e4b4cf9f130058",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:32fa2988aa91fe6106a5bed0f51047a7607470da0f2311035602d5afbbca263d",
+      "source_fact_keys": [
+        "source_fact:v1:2014670591c7ce8bf3b8c457a58dc7abaa5e97d433fd3f1082375d1181ecc9e0",
+        "source_fact:v1:ba97a4923d9f39af8896514b9998c3a3fb77baf174feeea4b3b8a84dbf827944",
+        "source_fact:v1:c6ae3504bb4230386b1fe018ecc5cd9ce7e7cad8970e26d2f1ad69138ab9e9dd",
+        "source_fact:v1:e51464355bea374ed05885edcc5335a5c5915899937a4f0be7d27fa6d3098bfd",
+        "source_fact:v1:e5d367477dd9179454687a0f8700cac75327dee52cbcf265d06c14bb31fddc71",
+        "source_fact:v1:f4dc3781118b9c0c01c29cf901cdd265622a28e1a0ace8ee25244fce70c7c6b5"
+      ],
+      "source_published_kst": "2026-10-16T09:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "피에스케이홀딩스 '하늘을 향해 불쑥 솟아오른 2027년' 증권사 발표에 강세…5.18%",
+      "telegram_core_fact": "당일 현대차증권 윤동욱 애널리스트는 '하늘을 향해 불쑥 솟아오른 2027년' 이라고 목표가를 270,000원으로 상향 조정한 바 있다.",
+      "title": "피에스케이홀딩스 '하늘을 향해 불쑥 솟아오른 2027년' 증권사 발표에 강세…5.18%"
+    },
     "core:8fdde3efad02a60d2f3f1f0a": {
       "first_seen_kst": "2026-10-13T00:22:20+09:00",
       "lanes": {
@@ -38240,6 +38307,34 @@
       "telegram_core_fact": "주당 2.48달러에 약 6180만 달러 신주 발행이 추진되면서 기존 주주의 지분 희석 우려가 커졌습니다. 발행가가 직전 주가보다 낮은 점도 부담이며, 이사 지배 법인 등 최대주주 의존도 높아졌습니다.",
       "title": "고고로, 6200만 달러 규모 신주 발행 소식에 지분 희석 우려 부각"
     },
+    "core:a85b7b34225a43a3c48a3241": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04414886645613576",
+      "source": "이데일리",
+      "source_body_digest": "1801a9025df6898c26aab0d4f344aa1185c8374f253ef36e690dd005198c3c68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d9983495394faef896506a99a16c3fde9707fe374faebde963a610e4c9f0d740",
+      "source_fact_keys": [
+        "source_fact:v1:0e5e5261d998b303f0ebeca94e7df9070750c07b005b133315d1b6c68ab753a9",
+        "source_fact:v1:197bd1e3bd078fdbfd7f60636f7ab853ed08403283a5ffcb9377573e3122d1fe",
+        "source_fact:v1:34c21866915141b8529b2f40671c981a33d7871874269e1898e0903cad713133",
+        "source_fact:v1:5633f4fab0ebcd58dc50c7768cf52bac62b0988e0ad229d6aaeb00c47b48ae10",
+        "source_fact:v1:98522214b0de0e188356157c30461274b5e74431fbb45582ada5766851615983",
+        "source_fact:v1:a5b9393dc31122f3d700f583a65233a853f3baf0cb245f73d74134e50f566101",
+        "source_fact:v1:e6783e16500cdb1b96029276d4ff0ac00aa8423ca3b86c6c5ad2d263050b3fbc",
+        "source_fact:v1:eeea9b097d292690b88825d85f3f407ae82e687628178897c0fef0e1d2f79076",
+        "source_fact:v1:fdab64eeda20a97390987f720d3cebf51ee982c51fac659bd96b3ac2abeec927"
+      ],
+      "source_published_kst": "2026-10-16T16:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "중국 첨단기술 이유 있었네…작년 R&D에만 800조원 가까이 썼다",
+      "telegram_core_fact": "[베이징=이데일리 이명철 특파원] 중국이 지난해 연구개발(R&D)에 800조원 가까운 비용을 지출한 것으로 집계됐다.",
+      "title": "중국 첨단기술 이유 있었네…작년 R&D에만 800조원 가까이 썼다"
+    },
     "core:a8bf3fec7dd21875d5221dec": {
       "first_seen_kst": "2026-10-13T11:53:28+09:00",
       "lanes": {
@@ -42812,6 +42907,32 @@
       "source_title": "반도체 수출 호황에…달러 넘치는 외환시장",
       "telegram_core_fact": "문 연구원도 “반도체 기업들의 실적 호조에 따른 달러 공급이 내년에도 지속될 것으로 예상된다”며 “현재 1350원으로 제시한 내년 연평균 환율 전망치도 11월 연간 전망에서 하향 조정할 가능성이 높다”고 내다봤다.",
       "title": "반도체 수출 호황에…달러 넘치는 외환시장"
+    },
+    "core:bd2d1cfd680b419cd85ad5ec": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016118500009",
+      "source": "연합뉴스",
+      "source_body_digest": "0e7f83e219783c40821a6f92ddf04bf2b8b56c4c6ba1e128b0b47518b0435885",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:805fa159fcd864b6395ffcf8d652636fb5137941c060711a44948a04d55fedf0",
+      "source_fact_keys": [
+        "source_fact:v1:362ae20961e0b97bd99121bf8eb246fdf5cdc1008b6b23c47a03766a7794d895",
+        "source_fact:v1:6734921c3e13aacfa385a54690359da88ee2477ee4b23132338aead50363b51a",
+        "source_fact:v1:6763df43edee389b12ee3b40e53d4c0110a5cc39e61807cffa74c1bce5ff620f",
+        "source_fact:v1:7b0cb0dbd743880c10489d74432e7bc08fe28fe6e6e41a9fa9057580e5751926",
+        "source_fact:v1:7d1ef542a6a46de6a6312788700f9fa473e26d85463c25241e18b57ad117c9a3",
+        "source_fact:v1:c1796b6c498664e96ede0d017806847664623078fee8054d9b4c58639b3d334a",
+        "source_fact:v1:eb789f38cf682c6923b5341f9c34c12ef6289e4e889b1c2abd6fa49233a41f39"
+      ],
+      "source_published_kst": "2026-10-16T15:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "IEA \"회원국, 경유 2천만배럴 조속히 방출 합의\" | 연합뉴스",
+      "telegram_core_fact": "다음 달 중간선거를 앞두고 물가 안정이 급한 도널드 트럼프 미국 대통령은 최근 제재를 한시 면제해가며 러시아산 경유를 미국과 세계 시장에 공급하기로 블라디미르 푸틴 러시아 대통령과 합의했다고 밝혔다.",
+      "title": "IEA \"회원국, 경유 2천만배럴 조속히 방출 합의\" | 연합뉴스"
     },
     "core:bd377e6e0ef2e22ce93df8c1": {
       "first_seen_kst": "2026-10-09T22:13:37+09:00",
@@ -56262,6 +56383,31 @@
       "telegram_core_fact": "세계 최첨단 반도체 90% 이상을 만드는 대만의 TSMC는 15일 3분기(7월~9월) 실적 발표에서 순익이 7631억 신 대만 달러(약 240억 달러, 32.3조 원)에 이른다고 말했다.",
       "title": "대만 TSMC, 3분기 순익 32조원…전년 대비 69% ↑"
     },
+    "core:fe1deca03da9ff8bd8538225": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://biz.heraldcorp.com/article/10905356",
+      "source": "헤럴드경제",
+      "source_body_digest": "a6f26020ff80e8f35cae71baa5caa44a9e4cbd1b5637b212ae3bfedee638c22e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d6ed73d58130ee2333f2d9e9665b5db0ebe5c7e1f49a37ee95fe468d784f1a5d",
+      "source_fact_keys": [
+        "source_fact:v1:974555cfe8a1a18a512ff29c53c639a9d678106957043ced062020f2a1cf9cd0",
+        "source_fact:v1:9a3977f3761b7dcde7096ae14218564d312c3d580fc57fac2ab42e4022c9aa5f",
+        "source_fact:v1:9de4f3c8cd1eecdc5cf25778f911a9485a17ad92405ced4781f5328683d1de53",
+        "source_fact:v1:b1e9a75e8792b25ecdcbfe6fcff9abb2414f8f610d52a6c7f7ad29312c45126c",
+        "source_fact:v1:b6567cb315a772cb46a3bdf07f1ae03b1259d2d4ea084543350e564a6801a255",
+        "source_fact:v1:ca728c29ef0d1fbeec380fa7c5c18c5df4f0de5d954b55548dcf2ad25fd24392"
+      ],
+      "source_published_kst": "2026-10-16T16:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "정부 “착공·분양·입주 상황판 가동”…주택 공급 모든 정보 한 번에",
+      "telegram_core_fact": "김용수 국무2차장은 16일 정부서울청사에서 열린 ‘제1차 주택공급 정책 브리프’ 브리핑에서“(상황판을 통해) 인허가·착공·분양·입주 등 주택공급 관련 상세한 정보와 향후 공급 계획, 공급 실적, 정책 소식 등을 지속 공개해 국민의 궁금증을 해소하고 예측 가능성을 높여 나가겠다”며 이같이 설명했다.",
+      "title": "정부 “착공·분양·입주 상황판 가동”…주택 공급 모든 정보 한 번에"
+    },
     "core:fe2b567195265fe54eabcf6b": {
       "first_seen_kst": "2026-10-11T18:34:27+09:00",
       "lanes": {
@@ -66395,6 +66541,31 @@
       "telegram_core_fact": "외국인은 올해 코스피에서 약 203조원어치를 순매도했다.",
       "title": "외국인 언제 돌아오나…코스피 반등 가를 네 가지 변수- 매경ECONOMY"
     },
+    "event:a59b6f27e4b3629e0203029e": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175843",
+      "source": "매일경제",
+      "source_body_digest": "acb0d81056beecc27407eaef83fd3d894dc94a9dd78df02d29e4b4cf9f130058",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:32fa2988aa91fe6106a5bed0f51047a7607470da0f2311035602d5afbbca263d",
+      "source_fact_keys": [
+        "source_fact:v1:2014670591c7ce8bf3b8c457a58dc7abaa5e97d433fd3f1082375d1181ecc9e0",
+        "source_fact:v1:ba97a4923d9f39af8896514b9998c3a3fb77baf174feeea4b3b8a84dbf827944",
+        "source_fact:v1:c6ae3504bb4230386b1fe018ecc5cd9ce7e7cad8970e26d2f1ad69138ab9e9dd",
+        "source_fact:v1:e51464355bea374ed05885edcc5335a5c5915899937a4f0be7d27fa6d3098bfd",
+        "source_fact:v1:e5d367477dd9179454687a0f8700cac75327dee52cbcf265d06c14bb31fddc71",
+        "source_fact:v1:f4dc3781118b9c0c01c29cf901cdd265622a28e1a0ace8ee25244fce70c7c6b5"
+      ],
+      "source_published_kst": "2026-10-16T09:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "피에스케이홀딩스 '하늘을 향해 불쑥 솟아오른 2027년' 증권사 발표에 강세…5.18%",
+      "telegram_core_fact": "당일 현대차증권 윤동욱 애널리스트는 '하늘을 향해 불쑥 솟아오른 2027년' 이라고 목표가를 270,000원으로 상향 조정한 바 있다.",
+      "title": "피에스케이홀딩스 '하늘을 향해 불쑥 솟아오른 2027년' 증권사 발표에 강세…5.18%"
+    },
     "event:a5aa0a1891120ec81e235503": {
       "first_seen_kst": "2026-10-07T08:15:28+09:00",
       "lanes": {
@@ -74208,6 +74379,31 @@
       "source_title": "\"오픈AI 매출 기대이하\" 전망에…반도체 주 충격파",
       "telegram_core_fact": "8일(현지시간) 파이낸셜타임스를 비롯한 주요 외신들에 따르면 개발사인 오픈AI는 투자자들에게 연간 환산 매출이 500억 달러 수준으로 예상된다고 말했다.",
       "title": "\"오픈AI 매출 기대이하\" 전망에…반도체 주 충격파"
+    },
+    "fact:07386dd4e8aa20b8b5c10dc1": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://biz.heraldcorp.com/article/10905356",
+      "source": "헤럴드경제",
+      "source_body_digest": "a6f26020ff80e8f35cae71baa5caa44a9e4cbd1b5637b212ae3bfedee638c22e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d6ed73d58130ee2333f2d9e9665b5db0ebe5c7e1f49a37ee95fe468d784f1a5d",
+      "source_fact_keys": [
+        "source_fact:v1:974555cfe8a1a18a512ff29c53c639a9d678106957043ced062020f2a1cf9cd0",
+        "source_fact:v1:9a3977f3761b7dcde7096ae14218564d312c3d580fc57fac2ab42e4022c9aa5f",
+        "source_fact:v1:9de4f3c8cd1eecdc5cf25778f911a9485a17ad92405ced4781f5328683d1de53",
+        "source_fact:v1:b1e9a75e8792b25ecdcbfe6fcff9abb2414f8f610d52a6c7f7ad29312c45126c",
+        "source_fact:v1:b6567cb315a772cb46a3bdf07f1ae03b1259d2d4ea084543350e564a6801a255",
+        "source_fact:v1:ca728c29ef0d1fbeec380fa7c5c18c5df4f0de5d954b55548dcf2ad25fd24392"
+      ],
+      "source_published_kst": "2026-10-16T16:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "정부 “착공·분양·입주 상황판 가동”…주택 공급 모든 정보 한 번에",
+      "telegram_core_fact": "김용수 국무2차장은 16일 정부서울청사에서 열린 ‘제1차 주택공급 정책 브리프’ 브리핑에서“(상황판을 통해) 인허가·착공·분양·입주 등 주택공급 관련 상세한 정보와 향후 공급 계획, 공급 실적, 정책 소식 등을 지속 공개해 국민의 궁금증을 해소하고 예측 가능성을 높여 나가겠다”며 이같이 설명했다.",
+      "title": "정부 “착공·분양·입주 상황판 가동”…주택 공급 모든 정보 한 번에"
     },
     "fact:0772f8145b56ea4787910a2c": {
       "first_seen_kst": "2026-10-15T14:35:05+09:00",
@@ -101506,6 +101702,34 @@
       "telegram_core_fact": "SK이터닉스가 연료전지를 활용해 AI 데이터센터에 필요한 전력을 현장에서 직접 공급하는 사업에 나선다. 김해중 SK이터닉스 대표는 “양사가 가진 역량을 바탕으로 시장에 새로운 데이터센터 전력공급 사업모델을 제시할 수 있도록 협력하겠다”고 말했다.",
       "title": "SK이터닉스, 연료전지로 AI 데이터센터 전력 댄다…마스턴과 사업 추진"
     },
+    "fact:6f69ef1fc02443271e50a1d5": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04414886645613576",
+      "source": "이데일리",
+      "source_body_digest": "1801a9025df6898c26aab0d4f344aa1185c8374f253ef36e690dd005198c3c68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d9983495394faef896506a99a16c3fde9707fe374faebde963a610e4c9f0d740",
+      "source_fact_keys": [
+        "source_fact:v1:0e5e5261d998b303f0ebeca94e7df9070750c07b005b133315d1b6c68ab753a9",
+        "source_fact:v1:197bd1e3bd078fdbfd7f60636f7ab853ed08403283a5ffcb9377573e3122d1fe",
+        "source_fact:v1:34c21866915141b8529b2f40671c981a33d7871874269e1898e0903cad713133",
+        "source_fact:v1:5633f4fab0ebcd58dc50c7768cf52bac62b0988e0ad229d6aaeb00c47b48ae10",
+        "source_fact:v1:98522214b0de0e188356157c30461274b5e74431fbb45582ada5766851615983",
+        "source_fact:v1:a5b9393dc31122f3d700f583a65233a853f3baf0cb245f73d74134e50f566101",
+        "source_fact:v1:e6783e16500cdb1b96029276d4ff0ac00aa8423ca3b86c6c5ad2d263050b3fbc",
+        "source_fact:v1:eeea9b097d292690b88825d85f3f407ae82e687628178897c0fef0e1d2f79076",
+        "source_fact:v1:fdab64eeda20a97390987f720d3cebf51ee982c51fac659bd96b3ac2abeec927"
+      ],
+      "source_published_kst": "2026-10-16T16:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "중국 첨단기술 이유 있었네…작년 R&D에만 800조원 가까이 썼다",
+      "telegram_core_fact": "[베이징=이데일리 이명철 특파원] 중국이 지난해 연구개발(R&D)에 800조원 가까운 비용을 지출한 것으로 집계됐다.",
+      "title": "중국 첨단기술 이유 있었네…작년 R&D에만 800조원 가까이 썼다"
+    },
     "fact:6f848352c66b0cf747626760": {
       "first_seen_kst": "2026-10-13T10:27:50+09:00",
       "lanes": {
@@ -122668,6 +122892,30 @@
       "telegram_core_fact": "삼성전자와 SK하이닉스가 7세대 고대역폭메모리(HBM)인 'HBM4E'를 나란히 공개하며 차세대 인공지능(AI) 반도체 기술 경쟁에 나섰다.",
       "title": "HBM4E 넘어 차세대 메모리까지…삼성·SK하이닉스, AI 반도체 기술 경쟁 격화"
     },
+    "fact:b8ba9c49d1700946f125b520": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12177348",
+      "source": "매일경제",
+      "source_body_digest": "38e4d85d20efe37e6ba48a4fde6d2576073c92323798ee13f359abf17c6368ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:53ae1cfdb6fe9b45b25962d4c7fed161dbdda1e1cccf0f72d977e846ede66820",
+      "source_fact_keys": [
+        "source_fact:v1:0307a7c2a53fb9100327985f45f63e12c697fc19de31a13149d91240f245548a",
+        "source_fact:v1:66497361e2f039dd1c83bb7a45e28702e129e9d36190398eb1375072b8e20b6e",
+        "source_fact:v1:6c711738a001d40279572aa7c351be1e34f4b53b4e7e9779e94919635471f57e",
+        "source_fact:v1:6f37c68d8dd4d8dcdf94f4ac6958ca0f6d88dff2486d5e3d3d490e2a079c5cea",
+        "source_fact:v1:d711eefb0716f793534387b3c050585179ef79121fc735b59c22772c9b5b528a"
+      ],
+      "source_published_kst": "2026-10-16T05:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "알코아, 3분기 매출 37억 달러·24%↑..순이익 2배 이상",
+      "telegram_core_fact": "알코아(AA)가 3분기(9월 30일 종료) 매출액 37억400만 달러로 전년비 23.7% 증가했고, 일반회계기준(GAAP) 희석 주당순이익 1.81달러로 전년 동기(0.88달러) 대비 105.7% 늘었다고 15일 발표했다.",
+      "title": "알코아, 3분기 매출 37억 달러·24%↑..순이익 2배 이상"
+    },
     "fact:b8cd0de68fce0afa11a7cd75": {
       "first_seen_kst": "2026-10-11T20:19:08+09:00",
       "lanes": {
@@ -139908,6 +140156,31 @@
       "source_published_kst": "2026-10-06T13:10+09:00",
       "title": "서남권 반도체 팹은 제2 반도체 생산거점…풍부한 에너지 활용해야"
     },
+    "fact:f7ccb916905e56995282719e": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175843",
+      "source": "매일경제",
+      "source_body_digest": "acb0d81056beecc27407eaef83fd3d894dc94a9dd78df02d29e4b4cf9f130058",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:32fa2988aa91fe6106a5bed0f51047a7607470da0f2311035602d5afbbca263d",
+      "source_fact_keys": [
+        "source_fact:v1:2014670591c7ce8bf3b8c457a58dc7abaa5e97d433fd3f1082375d1181ecc9e0",
+        "source_fact:v1:ba97a4923d9f39af8896514b9998c3a3fb77baf174feeea4b3b8a84dbf827944",
+        "source_fact:v1:c6ae3504bb4230386b1fe018ecc5cd9ce7e7cad8970e26d2f1ad69138ab9e9dd",
+        "source_fact:v1:e51464355bea374ed05885edcc5335a5c5915899937a4f0be7d27fa6d3098bfd",
+        "source_fact:v1:e5d367477dd9179454687a0f8700cac75327dee52cbcf265d06c14bb31fddc71",
+        "source_fact:v1:f4dc3781118b9c0c01c29cf901cdd265622a28e1a0ace8ee25244fce70c7c6b5"
+      ],
+      "source_published_kst": "2026-10-16T09:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "피에스케이홀딩스 '하늘을 향해 불쑥 솟아오른 2027년' 증권사 발표에 강세…5.18%",
+      "telegram_core_fact": "당일 현대차증권 윤동욱 애널리스트는 '하늘을 향해 불쑥 솟아오른 2027년' 이라고 목표가를 270,000원으로 상향 조정한 바 있다.",
+      "title": "피에스케이홀딩스 '하늘을 향해 불쑥 솟아오른 2027년' 증권사 발표에 강세…5.18%"
+    },
     "fact:f7d0bbe4c6e57e07043a113e": {
       "first_seen_kst": "2026-10-07T03:30:59+09:00",
       "lanes": {
@@ -141866,6 +142139,32 @@
       "source_title": "DL이앤씨, 성수2구역 ‘아크로 성수’ 설계안 공개...글로벌 거장 협업",
       "telegram_core_fact": "성수2구역은 서울 성동구 성수동2가 506번지 일대 재개발 사업으로, 우선협상대상자인 DL이앤씨는 지난 1일 조합에 수의계약을 위한 입찰제안서를 제출하고 지하 6층~지상 최고 62층, 9개동·2350가구 개발계획을 제안했다.",
       "title": "DL이앤씨, 성수2구역 ‘아크로 성수’ 설계안 공개...글로벌 거장 협업"
+    },
+    "fact:ff214714bf4ba37694c0bd01": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016118500009",
+      "source": "연합뉴스",
+      "source_body_digest": "0e7f83e219783c40821a6f92ddf04bf2b8b56c4c6ba1e128b0b47518b0435885",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:805fa159fcd864b6395ffcf8d652636fb5137941c060711a44948a04d55fedf0",
+      "source_fact_keys": [
+        "source_fact:v1:362ae20961e0b97bd99121bf8eb246fdf5cdc1008b6b23c47a03766a7794d895",
+        "source_fact:v1:6734921c3e13aacfa385a54690359da88ee2477ee4b23132338aead50363b51a",
+        "source_fact:v1:6763df43edee389b12ee3b40e53d4c0110a5cc39e61807cffa74c1bce5ff620f",
+        "source_fact:v1:7b0cb0dbd743880c10489d74432e7bc08fe28fe6e6e41a9fa9057580e5751926",
+        "source_fact:v1:7d1ef542a6a46de6a6312788700f9fa473e26d85463c25241e18b57ad117c9a3",
+        "source_fact:v1:c1796b6c498664e96ede0d017806847664623078fee8054d9b4c58639b3d334a",
+        "source_fact:v1:eb789f38cf682c6923b5341f9c34c12ef6289e4e889b1c2abd6fa49233a41f39"
+      ],
+      "source_published_kst": "2026-10-16T15:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "IEA \"회원국, 경유 2천만배럴 조속히 방출 합의\" | 연합뉴스",
+      "telegram_core_fact": "다음 달 중간선거를 앞두고 물가 안정이 급한 도널드 트럼프 미국 대통령은 최근 제재를 한시 면제해가며 러시아산 경유를 미국과 세계 시장에 공급하기로 블라디미르 푸틴 러시아 대통령과 합의했다고 밝혔다.",
+      "title": "IEA \"회원국, 경유 2천만배럴 조속히 방출 합의\" | 연합뉴스"
     },
     "fact:ff3002774cd96f7421b009fe": {
       "first_seen_kst": "2026-10-14T15:35:09+09:00",
@@ -164642,6 +164941,32 @@
       "telegram_core_fact": "리바이스트라우스 앤 코(LEVI)는 8월 30일 종료된 2026 회계연도 3분기 매출액이 16억970만 달러로 전년비 4.3% 증가했고, 계속사업 희석 주당순이익(GAAP)은 0.43달러로 전년 동기(0.31달러) 대비 38.7% 늘었다고 7일(현지시간) 발표했다.",
       "title": "리바이스트라우스 앤 코, 3분기 매출 16억 달러 4%↑·EPS 전망 상향"
     },
+    "link:3c01f10df35d53b8133fd0b8": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016118500009",
+      "source": "연합뉴스",
+      "source_body_digest": "0e7f83e219783c40821a6f92ddf04bf2b8b56c4c6ba1e128b0b47518b0435885",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:805fa159fcd864b6395ffcf8d652636fb5137941c060711a44948a04d55fedf0",
+      "source_fact_keys": [
+        "source_fact:v1:362ae20961e0b97bd99121bf8eb246fdf5cdc1008b6b23c47a03766a7794d895",
+        "source_fact:v1:6734921c3e13aacfa385a54690359da88ee2477ee4b23132338aead50363b51a",
+        "source_fact:v1:6763df43edee389b12ee3b40e53d4c0110a5cc39e61807cffa74c1bce5ff620f",
+        "source_fact:v1:7b0cb0dbd743880c10489d74432e7bc08fe28fe6e6e41a9fa9057580e5751926",
+        "source_fact:v1:7d1ef542a6a46de6a6312788700f9fa473e26d85463c25241e18b57ad117c9a3",
+        "source_fact:v1:c1796b6c498664e96ede0d017806847664623078fee8054d9b4c58639b3d334a",
+        "source_fact:v1:eb789f38cf682c6923b5341f9c34c12ef6289e4e889b1c2abd6fa49233a41f39"
+      ],
+      "source_published_kst": "2026-10-16T15:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "IEA \"회원국, 경유 2천만배럴 조속히 방출 합의\" | 연합뉴스",
+      "telegram_core_fact": "다음 달 중간선거를 앞두고 물가 안정이 급한 도널드 트럼프 미국 대통령은 최근 제재를 한시 면제해가며 러시아산 경유를 미국과 세계 시장에 공급하기로 블라디미르 푸틴 러시아 대통령과 합의했다고 밝혔다.",
+      "title": "IEA \"회원국, 경유 2천만배럴 조속히 방출 합의\" | 연합뉴스"
+    },
     "link:3c03bab8b2d63c5d9755a4a0": {
       "first_seen_kst": "2026-10-02T11:10:58+09:00",
       "lanes": {
@@ -176332,6 +176657,34 @@
       "source_published_kst": "2026-10-06T07:12+09:00",
       "title": "美 국채금리 급등에도 상승 마감…나스닥 사상 최고치 [뉴욕증시 브리핑]"
     },
+    "link:5ba0650bbef215cebff6e068": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04414886645613576",
+      "source": "이데일리",
+      "source_body_digest": "1801a9025df6898c26aab0d4f344aa1185c8374f253ef36e690dd005198c3c68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d9983495394faef896506a99a16c3fde9707fe374faebde963a610e4c9f0d740",
+      "source_fact_keys": [
+        "source_fact:v1:0e5e5261d998b303f0ebeca94e7df9070750c07b005b133315d1b6c68ab753a9",
+        "source_fact:v1:197bd1e3bd078fdbfd7f60636f7ab853ed08403283a5ffcb9377573e3122d1fe",
+        "source_fact:v1:34c21866915141b8529b2f40671c981a33d7871874269e1898e0903cad713133",
+        "source_fact:v1:5633f4fab0ebcd58dc50c7768cf52bac62b0988e0ad229d6aaeb00c47b48ae10",
+        "source_fact:v1:98522214b0de0e188356157c30461274b5e74431fbb45582ada5766851615983",
+        "source_fact:v1:a5b9393dc31122f3d700f583a65233a853f3baf0cb245f73d74134e50f566101",
+        "source_fact:v1:e6783e16500cdb1b96029276d4ff0ac00aa8423ca3b86c6c5ad2d263050b3fbc",
+        "source_fact:v1:eeea9b097d292690b88825d85f3f407ae82e687628178897c0fef0e1d2f79076",
+        "source_fact:v1:fdab64eeda20a97390987f720d3cebf51ee982c51fac659bd96b3ac2abeec927"
+      ],
+      "source_published_kst": "2026-10-16T16:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "중국 첨단기술 이유 있었네…작년 R&D에만 800조원 가까이 썼다",
+      "telegram_core_fact": "[베이징=이데일리 이명철 특파원] 중국이 지난해 연구개발(R&D)에 800조원 가까운 비용을 지출한 것으로 집계됐다.",
+      "title": "중국 첨단기술 이유 있었네…작년 R&D에만 800조원 가까이 썼다"
+    },
     "link:5ba4de8436b2ae2a9004b549": {
       "first_seen_kst": "2026-10-06T15:44:02+09:00",
       "lanes": {
@@ -183687,6 +184040,31 @@
       "source_published_kst": "2026-10-06T17:28+09:00",
       "title": "금리 뛰자 매수자들 계약가 다시 깎는다…美상업용 부동산 재협상 확산"
     },
+    "link:6fdbc87eb01d777a062ff2af": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://biz.heraldcorp.com/article/10905356",
+      "source": "헤럴드경제",
+      "source_body_digest": "a6f26020ff80e8f35cae71baa5caa44a9e4cbd1b5637b212ae3bfedee638c22e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d6ed73d58130ee2333f2d9e9665b5db0ebe5c7e1f49a37ee95fe468d784f1a5d",
+      "source_fact_keys": [
+        "source_fact:v1:974555cfe8a1a18a512ff29c53c639a9d678106957043ced062020f2a1cf9cd0",
+        "source_fact:v1:9a3977f3761b7dcde7096ae14218564d312c3d580fc57fac2ab42e4022c9aa5f",
+        "source_fact:v1:9de4f3c8cd1eecdc5cf25778f911a9485a17ad92405ced4781f5328683d1de53",
+        "source_fact:v1:b1e9a75e8792b25ecdcbfe6fcff9abb2414f8f610d52a6c7f7ad29312c45126c",
+        "source_fact:v1:b6567cb315a772cb46a3bdf07f1ae03b1259d2d4ea084543350e564a6801a255",
+        "source_fact:v1:ca728c29ef0d1fbeec380fa7c5c18c5df4f0de5d954b55548dcf2ad25fd24392"
+      ],
+      "source_published_kst": "2026-10-16T16:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "정부 “착공·분양·입주 상황판 가동”…주택 공급 모든 정보 한 번에",
+      "telegram_core_fact": "김용수 국무2차장은 16일 정부서울청사에서 열린 ‘제1차 주택공급 정책 브리프’ 브리핑에서“(상황판을 통해) 인허가·착공·분양·입주 등 주택공급 관련 상세한 정보와 향후 공급 계획, 공급 실적, 정책 소식 등을 지속 공개해 국민의 궁금증을 해소하고 예측 가능성을 높여 나가겠다”며 이같이 설명했다.",
+      "title": "정부 “착공·분양·입주 상황판 가동”…주택 공급 모든 정보 한 번에"
+    },
     "link:6feaa47a845f093907b91fe3": {
       "first_seen_kst": "2026-10-01T16:31:12+09:00",
       "lanes": {
@@ -185235,6 +185613,31 @@
       "source_title": "K배터리 국내 LFP 양극재 확보 박차..글로벌 시장 경쟁력 높인다",
       "telegram_core_fact": "실제로 엘앤에프는 LG에너지솔루션에 앞서 삼성SDI, SK온과 LFP 양극재 공급 계약을 맺었다.",
       "title": "K배터리 국내 LFP 양극재 확보 박차..글로벌 시장 경쟁력 높인다"
+    },
+    "link:742912c57808dfaef6729eef": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175843",
+      "source": "매일경제",
+      "source_body_digest": "acb0d81056beecc27407eaef83fd3d894dc94a9dd78df02d29e4b4cf9f130058",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:32fa2988aa91fe6106a5bed0f51047a7607470da0f2311035602d5afbbca263d",
+      "source_fact_keys": [
+        "source_fact:v1:2014670591c7ce8bf3b8c457a58dc7abaa5e97d433fd3f1082375d1181ecc9e0",
+        "source_fact:v1:ba97a4923d9f39af8896514b9998c3a3fb77baf174feeea4b3b8a84dbf827944",
+        "source_fact:v1:c6ae3504bb4230386b1fe018ecc5cd9ce7e7cad8970e26d2f1ad69138ab9e9dd",
+        "source_fact:v1:e51464355bea374ed05885edcc5335a5c5915899937a4f0be7d27fa6d3098bfd",
+        "source_fact:v1:e5d367477dd9179454687a0f8700cac75327dee52cbcf265d06c14bb31fddc71",
+        "source_fact:v1:f4dc3781118b9c0c01c29cf901cdd265622a28e1a0ace8ee25244fce70c7c6b5"
+      ],
+      "source_published_kst": "2026-10-16T09:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "피에스케이홀딩스 '하늘을 향해 불쑥 솟아오른 2027년' 증권사 발표에 강세…5.18%",
+      "telegram_core_fact": "당일 현대차증권 윤동욱 애널리스트는 '하늘을 향해 불쑥 솟아오른 2027년' 이라고 목표가를 270,000원으로 상향 조정한 바 있다.",
+      "title": "피에스케이홀딩스 '하늘을 향해 불쑥 솟아오른 2027년' 증권사 발표에 강세…5.18%"
     },
     "link:742be9c5d1aab3f186382ca5": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
@@ -191133,6 +191536,24 @@
       "source_title": "인티그라 라이프사이언스, 4억5000만 달러 선순위 담보채 금리 9.5% 확정",
       "telegram_core_fact": "인티그라 라이프사이언스 홀딩스(IART)는 만기 2033년, 연 9.500% 금리의 선순위 담보부 채권(senior secured notes) 4억5000만 달러 발행 가격을 확정했다고 10월 9일 발표했다.",
       "title": "인티그라 라이프사이언스, 4억5000만 달러 선순위 담보채 금리 9.5% 확정"
+    },
+    "link:843d499cb9a74f002cdf3c59": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://biz.heraldcorp.com/article/10905273",
+      "source": "헤럴드경제",
+      "source_body_digest": "50357aa1b76a9ec1363089a9edd23f89b571d4d4e321f95523b2eeb7537cde8c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-16T16:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "전월세난 잡아라…정부 “내년까지 수도권 공적주택 10만호 입주 추진” [부동산360]",
+      "telegram_core_fact": "그간 추진해 온 공급 기반 마련 성과를 바탕으로 실제 입주 물량 확대로 이어지도록 주요 정책 과제들을 속도감 있게 이행하겠다는 계획이다.",
+      "title": "전월세난 잡아라…정부 “내년까지 수도권 공적주택 10만호 입주 추진” [부동산360]"
     },
     "link:84568eab3fc3cf25d09a4944": {
       "first_seen_kst": "2026-10-04T10:19:34+09:00",
@@ -210785,6 +211206,30 @@
       "telegram_core_fact": "이번에 매각하는 현대무벡스 지분은 5.8%로, 주당 매각 가격은 1만7810원이다.",
       "title": "현대엘리, 무벡스 지분 5.8% 매각·자사주 1700억 소각…주주환원 속도"
     },
+    "link:b926987519705b469bacc877": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12177348",
+      "source": "매일경제",
+      "source_body_digest": "38e4d85d20efe37e6ba48a4fde6d2576073c92323798ee13f359abf17c6368ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:53ae1cfdb6fe9b45b25962d4c7fed161dbdda1e1cccf0f72d977e846ede66820",
+      "source_fact_keys": [
+        "source_fact:v1:0307a7c2a53fb9100327985f45f63e12c697fc19de31a13149d91240f245548a",
+        "source_fact:v1:66497361e2f039dd1c83bb7a45e28702e129e9d36190398eb1375072b8e20b6e",
+        "source_fact:v1:6c711738a001d40279572aa7c351be1e34f4b53b4e7e9779e94919635471f57e",
+        "source_fact:v1:6f37c68d8dd4d8dcdf94f4ac6958ca0f6d88dff2486d5e3d3d490e2a079c5cea",
+        "source_fact:v1:d711eefb0716f793534387b3c050585179ef79121fc735b59c22772c9b5b528a"
+      ],
+      "source_published_kst": "2026-10-16T05:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "알코아, 3분기 매출 37억 달러·24%↑..순이익 2배 이상",
+      "telegram_core_fact": "알코아(AA)가 3분기(9월 30일 종료) 매출액 37억400만 달러로 전년비 23.7% 증가했고, 일반회계기준(GAAP) 희석 주당순이익 1.81달러로 전년 동기(0.88달러) 대비 105.7% 늘었다고 15일 발표했다.",
+      "title": "알코아, 3분기 매출 37억 달러·24%↑..순이익 2배 이상"
+    },
     "link:b92a7103c9dc36e235d25a6f": {
       "first_seen_kst": "2026-10-10T01:24:21+09:00",
       "lanes": {
@@ -229905,6 +230350,24 @@
       "source_published_kst": "2026-10-06T08:19+09:00",
       "title": "“IPO 미룬 오픈AI, 300억달러 투자 유치 논의 중”"
     },
+    "link:edb5b52fbd2942db6d278b4e": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636713",
+      "source": "이투데이",
+      "source_body_digest": "d9c867058e6d4685836c1379ae61f7f57682bd592a22d30d8e34c3f5938c4ff6",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-16T14:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "인텔리빅스, 13년 연속 영업흑자 앞세워 코스닥 상장…\"국방·피지컬 AI 확대\"",
+      "telegram_core_fact": "상장 직후 유통 가능 물량은 전체 상장예정주식의 23.95%인 271만5067주다.",
+      "title": "인텔리빅스, 13년 연속 영업흑자 앞세워 코스닥 상장…\"국방·피지컬 AI 확대\""
+    },
     "link:edb6e72f00d741379d798ffd": {
       "first_seen_kst": "2026-10-02T10:55:46+09:00",
       "lanes": {
@@ -241911,6 +242374,32 @@
       "telegram_core_fact": "지멘스는 산업용 AI 에이전트를 넘어 로봇과 공장을 자율적으로 운영하는 피지컬 AI 분야로도 사업을 확대하고 있다.",
       "title": "지멘스, 韓 반도체·조선·배터리 AI 공략…“내년 제조 AI 도입 본격화”"
     },
+    "original:0e98bc41385fb9e610ef3ff3": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016118500009",
+      "source": "연합뉴스",
+      "source_body_digest": "0e7f83e219783c40821a6f92ddf04bf2b8b56c4c6ba1e128b0b47518b0435885",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:805fa159fcd864b6395ffcf8d652636fb5137941c060711a44948a04d55fedf0",
+      "source_fact_keys": [
+        "source_fact:v1:362ae20961e0b97bd99121bf8eb246fdf5cdc1008b6b23c47a03766a7794d895",
+        "source_fact:v1:6734921c3e13aacfa385a54690359da88ee2477ee4b23132338aead50363b51a",
+        "source_fact:v1:6763df43edee389b12ee3b40e53d4c0110a5cc39e61807cffa74c1bce5ff620f",
+        "source_fact:v1:7b0cb0dbd743880c10489d74432e7bc08fe28fe6e6e41a9fa9057580e5751926",
+        "source_fact:v1:7d1ef542a6a46de6a6312788700f9fa473e26d85463c25241e18b57ad117c9a3",
+        "source_fact:v1:c1796b6c498664e96ede0d017806847664623078fee8054d9b4c58639b3d334a",
+        "source_fact:v1:eb789f38cf682c6923b5341f9c34c12ef6289e4e889b1c2abd6fa49233a41f39"
+      ],
+      "source_published_kst": "2026-10-16T15:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "IEA \"회원국, 경유 2천만배럴 조속히 방출 합의\" | 연합뉴스",
+      "telegram_core_fact": "다음 달 중간선거를 앞두고 물가 안정이 급한 도널드 트럼프 미국 대통령은 최근 제재를 한시 면제해가며 러시아산 경유를 미국과 세계 시장에 공급하기로 블라디미르 푸틴 러시아 대통령과 합의했다고 밝혔다.",
+      "title": "IEA \"회원국, 경유 2천만배럴 조속히 방출 합의\" | 연합뉴스"
+    },
     "original:0ea2cc80f4641de16de3998a": {
       "first_seen_kst": "2026-10-06T18:16:47+09:00",
       "lanes": {
@@ -244162,6 +244651,30 @@
       "source_title": "삼전 ‘107조 서프라이즈’도 못 막았다…금리 급등·외인 매도에 코스피↓[투자360]",
       "telegram_core_fact": "특히 미 국채 10년물 금리가 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했고, 30년물 금리도 5.73%대까지 오르며 증시에 부담을 줬다.",
       "title": "삼전 ‘107조 서프라이즈’도 못 막았다…금리 급등·외인 매도에 코스피↓[투자360]"
+    },
+    "original:15019a085d8feff7bf244d3d": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12177348",
+      "source": "매일경제",
+      "source_body_digest": "38e4d85d20efe37e6ba48a4fde6d2576073c92323798ee13f359abf17c6368ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:53ae1cfdb6fe9b45b25962d4c7fed161dbdda1e1cccf0f72d977e846ede66820",
+      "source_fact_keys": [
+        "source_fact:v1:0307a7c2a53fb9100327985f45f63e12c697fc19de31a13149d91240f245548a",
+        "source_fact:v1:66497361e2f039dd1c83bb7a45e28702e129e9d36190398eb1375072b8e20b6e",
+        "source_fact:v1:6c711738a001d40279572aa7c351be1e34f4b53b4e7e9779e94919635471f57e",
+        "source_fact:v1:6f37c68d8dd4d8dcdf94f4ac6958ca0f6d88dff2486d5e3d3d490e2a079c5cea",
+        "source_fact:v1:d711eefb0716f793534387b3c050585179ef79121fc735b59c22772c9b5b528a"
+      ],
+      "source_published_kst": "2026-10-16T05:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "알코아, 3분기 매출 37억 달러·24%↑..순이익 2배 이상",
+      "telegram_core_fact": "알코아(AA)가 3분기(9월 30일 종료) 매출액 37억400만 달러로 전년비 23.7% 증가했고, 일반회계기준(GAAP) 희석 주당순이익 1.81달러로 전년 동기(0.88달러) 대비 105.7% 늘었다고 15일 발표했다.",
+      "title": "알코아, 3분기 매출 37억 달러·24%↑..순이익 2배 이상"
     },
     "original:15047c11eddaff34cdc91d07": {
       "first_seen_kst": "2026-10-15T02:00:57+09:00",
@@ -281104,6 +281617,24 @@
       "telegram_core_fact": "중국의 지난 9월 승용차 수출이 1년 전보다 64% 급증한 반면 내수 판매는 27% 감소했다.",
       "title": "中 승용차 수출 64% 급증…내수 27% 감소 속 해외 의존 심화"
     },
+    "original:7a91d8389c8a0c92f0ce11aa": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://biz.heraldcorp.com/article/10905273",
+      "source": "헤럴드경제",
+      "source_body_digest": "50357aa1b76a9ec1363089a9edd23f89b571d4d4e321f95523b2eeb7537cde8c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-16T16:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "전월세난 잡아라…정부 “내년까지 수도권 공적주택 10만호 입주 추진” [부동산360]",
+      "telegram_core_fact": "그간 추진해 온 공급 기반 마련 성과를 바탕으로 실제 입주 물량 확대로 이어지도록 주요 정책 과제들을 속도감 있게 이행하겠다는 계획이다.",
+      "title": "전월세난 잡아라…정부 “내년까지 수도권 공적주택 10만호 입주 추진” [부동산360]"
+    },
     "original:7ab19b5b17eab0378d21bb47": {
       "first_seen_kst": "2026-10-15T12:36:21+09:00",
       "lanes": {
@@ -283250,6 +283781,31 @@
       "source_title": "FSN 자회사 NMG, 글로벌 PC·콘솔 마케팅 솔루션 기업 ‘게임사이트’와 공식 파트너십 체결",
       "telegram_core_fact": "코스닥 상장사 FSN의 자회사인 디지털 마케팅 기업 넥스트미디어그룹(이하 NMG)이 PC·콘솔 게임 마케팅 어트리뷰션 기업 게임사이트(Gamesight)와 지난 6일 파트너십을 체결했다고 밝혔다.",
       "title": "FSN 자회사 NMG, 글로벌 PC·콘솔 마케팅 솔루션 기업 ‘게임사이트’와 공식 파트너십 체결"
+    },
+    "original:80be827b34c52994bb9c230f": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175843",
+      "source": "매일경제",
+      "source_body_digest": "acb0d81056beecc27407eaef83fd3d894dc94a9dd78df02d29e4b4cf9f130058",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:32fa2988aa91fe6106a5bed0f51047a7607470da0f2311035602d5afbbca263d",
+      "source_fact_keys": [
+        "source_fact:v1:2014670591c7ce8bf3b8c457a58dc7abaa5e97d433fd3f1082375d1181ecc9e0",
+        "source_fact:v1:ba97a4923d9f39af8896514b9998c3a3fb77baf174feeea4b3b8a84dbf827944",
+        "source_fact:v1:c6ae3504bb4230386b1fe018ecc5cd9ce7e7cad8970e26d2f1ad69138ab9e9dd",
+        "source_fact:v1:e51464355bea374ed05885edcc5335a5c5915899937a4f0be7d27fa6d3098bfd",
+        "source_fact:v1:e5d367477dd9179454687a0f8700cac75327dee52cbcf265d06c14bb31fddc71",
+        "source_fact:v1:f4dc3781118b9c0c01c29cf901cdd265622a28e1a0ace8ee25244fce70c7c6b5"
+      ],
+      "source_published_kst": "2026-10-16T09:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "피에스케이홀딩스 '하늘을 향해 불쑥 솟아오른 2027년' 증권사 발표에 강세…5.18%",
+      "telegram_core_fact": "당일 현대차증권 윤동욱 애널리스트는 '하늘을 향해 불쑥 솟아오른 2027년' 이라고 목표가를 270,000원으로 상향 조정한 바 있다.",
+      "title": "피에스케이홀딩스 '하늘을 향해 불쑥 솟아오른 2027년' 증권사 발표에 강세…5.18%"
     },
     "original:80c2ba0b9411d6aeb54a435c": {
       "first_seen_kst": "2026-10-06T20:54:05+09:00",
@@ -295181,6 +295737,34 @@
       "source_title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\"",
       "telegram_core_fact": "인공지능(AI) 수요 증가에 따른 메모리 반도체 공급 부족과 서버·스토리지 가격 상승이 2028년까지 이어질 것이라는 전망이 나왔다.",
       "title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\""
+    },
+    "original:a241a4769073f8b67c283925": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04414886645613576",
+      "source": "이데일리",
+      "source_body_digest": "1801a9025df6898c26aab0d4f344aa1185c8374f253ef36e690dd005198c3c68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d9983495394faef896506a99a16c3fde9707fe374faebde963a610e4c9f0d740",
+      "source_fact_keys": [
+        "source_fact:v1:0e5e5261d998b303f0ebeca94e7df9070750c07b005b133315d1b6c68ab753a9",
+        "source_fact:v1:197bd1e3bd078fdbfd7f60636f7ab853ed08403283a5ffcb9377573e3122d1fe",
+        "source_fact:v1:34c21866915141b8529b2f40671c981a33d7871874269e1898e0903cad713133",
+        "source_fact:v1:5633f4fab0ebcd58dc50c7768cf52bac62b0988e0ad229d6aaeb00c47b48ae10",
+        "source_fact:v1:98522214b0de0e188356157c30461274b5e74431fbb45582ada5766851615983",
+        "source_fact:v1:a5b9393dc31122f3d700f583a65233a853f3baf0cb245f73d74134e50f566101",
+        "source_fact:v1:e6783e16500cdb1b96029276d4ff0ac00aa8423ca3b86c6c5ad2d263050b3fbc",
+        "source_fact:v1:eeea9b097d292690b88825d85f3f407ae82e687628178897c0fef0e1d2f79076",
+        "source_fact:v1:fdab64eeda20a97390987f720d3cebf51ee982c51fac659bd96b3ac2abeec927"
+      ],
+      "source_published_kst": "2026-10-16T16:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "중국 첨단기술 이유 있었네…작년 R&D에만 800조원 가까이 썼다",
+      "telegram_core_fact": "[베이징=이데일리 이명철 특파원] 중국이 지난해 연구개발(R&D)에 800조원 가까운 비용을 지출한 것으로 집계됐다.",
+      "title": "중국 첨단기술 이유 있었네…작년 R&D에만 800조원 가까이 썼다"
     },
     "original:a245f3c2aa6d4fef831b42e0": {
       "first_seen_kst": "2026-10-04T01:08:35+09:00",
@@ -316060,6 +316644,24 @@
       "source": "이투데이",
       "title": "GC녹십자, 국내외 학회 참가해 독자 mRNA-LNP 플랫폼 연구 성과 공개"
     },
+    "original:dc8c9a6738de1d097bac50eb": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636713",
+      "source": "이투데이",
+      "source_body_digest": "d9c867058e6d4685836c1379ae61f7f57682bd592a22d30d8e34c3f5938c4ff6",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-16T14:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "인텔리빅스, 13년 연속 영업흑자 앞세워 코스닥 상장…\"국방·피지컬 AI 확대\"",
+      "telegram_core_fact": "상장 직후 유통 가능 물량은 전체 상장예정주식의 23.95%인 271만5067주다.",
+      "title": "인텔리빅스, 13년 연속 영업흑자 앞세워 코스닥 상장…\"국방·피지컬 AI 확대\""
+    },
     "original:dc9ca108a803737917bf919e": {
       "first_seen_kst": "2026-10-08T22:06:55+09:00",
       "lanes": {
@@ -325980,6 +326582,31 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-03T16:27+09:00",
       "title": "현대캐피탈도 해킹 확인…주택대출 모집인 정보 일부 유출 | 연합뉴스"
+    },
+    "original:f8efd7cdef7358b9f364a70c": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://biz.heraldcorp.com/article/10905356",
+      "source": "헤럴드경제",
+      "source_body_digest": "a6f26020ff80e8f35cae71baa5caa44a9e4cbd1b5637b212ae3bfedee638c22e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d6ed73d58130ee2333f2d9e9665b5db0ebe5c7e1f49a37ee95fe468d784f1a5d",
+      "source_fact_keys": [
+        "source_fact:v1:974555cfe8a1a18a512ff29c53c639a9d678106957043ced062020f2a1cf9cd0",
+        "source_fact:v1:9a3977f3761b7dcde7096ae14218564d312c3d580fc57fac2ab42e4022c9aa5f",
+        "source_fact:v1:9de4f3c8cd1eecdc5cf25778f911a9485a17ad92405ced4781f5328683d1de53",
+        "source_fact:v1:b1e9a75e8792b25ecdcbfe6fcff9abb2414f8f610d52a6c7f7ad29312c45126c",
+        "source_fact:v1:b6567cb315a772cb46a3bdf07f1ae03b1259d2d4ea084543350e564a6801a255",
+        "source_fact:v1:ca728c29ef0d1fbeec380fa7c5c18c5df4f0de5d954b55548dcf2ad25fd24392"
+      ],
+      "source_published_kst": "2026-10-16T16:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "정부 “착공·분양·입주 상황판 가동”…주택 공급 모든 정보 한 번에",
+      "telegram_core_fact": "김용수 국무2차장은 16일 정부서울청사에서 열린 ‘제1차 주택공급 정책 브리프’ 브리핑에서“(상황판을 통해) 인허가·착공·분양·입주 등 주택공급 관련 상세한 정보와 향후 공급 계획, 공급 실적, 정책 소식 등을 지속 공개해 국민의 궁금증을 해소하고 예측 가능성을 높여 나가겠다”며 이같이 설명했다.",
+      "title": "정부 “착공·분양·입주 상황판 가동”…주택 공급 모든 정보 한 번에"
     },
     "original:f8f03f32e1cff6358b210f6c": {
       "first_seen_kst": "2026-10-10T07:01:20+09:00",
@@ -362689,6 +363316,34 @@
       "source_published_kst": "2026-10-06T19:08+09:00",
       "title": "국제약품 승계 속도…남영우 회장 지분 전량 3세 증여"
     },
+    "source_fact:18d0f709352b153d7b54af01": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04414886645613576",
+      "source": "이데일리",
+      "source_body_digest": "1801a9025df6898c26aab0d4f344aa1185c8374f253ef36e690dd005198c3c68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d9983495394faef896506a99a16c3fde9707fe374faebde963a610e4c9f0d740",
+      "source_fact_keys": [
+        "source_fact:v1:0e5e5261d998b303f0ebeca94e7df9070750c07b005b133315d1b6c68ab753a9",
+        "source_fact:v1:197bd1e3bd078fdbfd7f60636f7ab853ed08403283a5ffcb9377573e3122d1fe",
+        "source_fact:v1:34c21866915141b8529b2f40671c981a33d7871874269e1898e0903cad713133",
+        "source_fact:v1:5633f4fab0ebcd58dc50c7768cf52bac62b0988e0ad229d6aaeb00c47b48ae10",
+        "source_fact:v1:98522214b0de0e188356157c30461274b5e74431fbb45582ada5766851615983",
+        "source_fact:v1:a5b9393dc31122f3d700f583a65233a853f3baf0cb245f73d74134e50f566101",
+        "source_fact:v1:e6783e16500cdb1b96029276d4ff0ac00aa8423ca3b86c6c5ad2d263050b3fbc",
+        "source_fact:v1:eeea9b097d292690b88825d85f3f407ae82e687628178897c0fef0e1d2f79076",
+        "source_fact:v1:fdab64eeda20a97390987f720d3cebf51ee982c51fac659bd96b3ac2abeec927"
+      ],
+      "source_published_kst": "2026-10-16T16:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "중국 첨단기술 이유 있었네…작년 R&D에만 800조원 가까이 썼다",
+      "telegram_core_fact": "[베이징=이데일리 이명철 특파원] 중국이 지난해 연구개발(R&D)에 800조원 가까운 비용을 지출한 것으로 집계됐다.",
+      "title": "중국 첨단기술 이유 있었네…작년 R&D에만 800조원 가까이 썼다"
+    },
     "source_fact:18d197d3e9732d7e765f28d2": {
       "first_seen_kst": "2026-10-16T18:07:43+09:00",
       "lanes": {
@@ -364831,6 +365486,31 @@
       "source_title": "문혁수 LG이노텍 사장 “FC-BGA, 빅테크와 장기공급계약 계속…내년부터 좋아질 것”",
       "telegram_core_fact": "글로벌 주요 고객사와 장기공급계약(LTA) 협상도 지속하고 있는 가운데, 차세대 반도체 기판으로 주목받는 유리기판은 2028년께 공급이 가능할 것으로 내다봤다.",
       "title": "문혁수 LG이노텍 사장 “FC-BGA, 빅테크와 장기공급계약 계속…내년부터 좋아질 것”"
+    },
+    "source_fact:1a47dd4493ae9f1f098d8ffd": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175843",
+      "source": "매일경제",
+      "source_body_digest": "acb0d81056beecc27407eaef83fd3d894dc94a9dd78df02d29e4b4cf9f130058",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:32fa2988aa91fe6106a5bed0f51047a7607470da0f2311035602d5afbbca263d",
+      "source_fact_keys": [
+        "source_fact:v1:2014670591c7ce8bf3b8c457a58dc7abaa5e97d433fd3f1082375d1181ecc9e0",
+        "source_fact:v1:ba97a4923d9f39af8896514b9998c3a3fb77baf174feeea4b3b8a84dbf827944",
+        "source_fact:v1:c6ae3504bb4230386b1fe018ecc5cd9ce7e7cad8970e26d2f1ad69138ab9e9dd",
+        "source_fact:v1:e51464355bea374ed05885edcc5335a5c5915899937a4f0be7d27fa6d3098bfd",
+        "source_fact:v1:e5d367477dd9179454687a0f8700cac75327dee52cbcf265d06c14bb31fddc71",
+        "source_fact:v1:f4dc3781118b9c0c01c29cf901cdd265622a28e1a0ace8ee25244fce70c7c6b5"
+      ],
+      "source_published_kst": "2026-10-16T09:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "피에스케이홀딩스 '하늘을 향해 불쑥 솟아오른 2027년' 증권사 발표에 강세…5.18%",
+      "telegram_core_fact": "당일 현대차증권 윤동욱 애널리스트는 '하늘을 향해 불쑥 솟아오른 2027년' 이라고 목표가를 270,000원으로 상향 조정한 바 있다.",
+      "title": "피에스케이홀딩스 '하늘을 향해 불쑥 솟아오른 2027년' 증권사 발표에 강세…5.18%"
     },
     "source_fact:1a4e85a49c452b28ef14a226": {
       "first_seen_kst": "2026-10-13T07:52:07+09:00",
@@ -370739,6 +371419,32 @@
       "source_title": "전고체 배터리 경쟁 본격화…LG엔솔·삼성SDI 전략 차이는?",
       "telegram_core_fact": "삼성SDI가 내년 양산을 목표로 소재 공급망 구축까지 속도를 내는 반면 LG에너지솔루션(LG엔솔)은 상용화 시점보다는 기술 차별화와 원가 경쟁력 확보에 무게를 두고 있다. 이와 비교해 삼성SDI는 이보다 빠른 내년께 황화물계 전고체 배터리 상용화를 목표로 공급망 구축에 나서고 있다.",
       "title": "전고체 배터리 경쟁 본격화…LG엔솔·삼성SDI 전략 차이는?"
+    },
+    "source_fact:1e2a0ab7b27767b7d60fa37f": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016118500009",
+      "source": "연합뉴스",
+      "source_body_digest": "0e7f83e219783c40821a6f92ddf04bf2b8b56c4c6ba1e128b0b47518b0435885",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:805fa159fcd864b6395ffcf8d652636fb5137941c060711a44948a04d55fedf0",
+      "source_fact_keys": [
+        "source_fact:v1:362ae20961e0b97bd99121bf8eb246fdf5cdc1008b6b23c47a03766a7794d895",
+        "source_fact:v1:6734921c3e13aacfa385a54690359da88ee2477ee4b23132338aead50363b51a",
+        "source_fact:v1:6763df43edee389b12ee3b40e53d4c0110a5cc39e61807cffa74c1bce5ff620f",
+        "source_fact:v1:7b0cb0dbd743880c10489d74432e7bc08fe28fe6e6e41a9fa9057580e5751926",
+        "source_fact:v1:7d1ef542a6a46de6a6312788700f9fa473e26d85463c25241e18b57ad117c9a3",
+        "source_fact:v1:c1796b6c498664e96ede0d017806847664623078fee8054d9b4c58639b3d334a",
+        "source_fact:v1:eb789f38cf682c6923b5341f9c34c12ef6289e4e889b1c2abd6fa49233a41f39"
+      ],
+      "source_published_kst": "2026-10-16T15:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "IEA \"회원국, 경유 2천만배럴 조속히 방출 합의\" | 연합뉴스",
+      "telegram_core_fact": "다음 달 중간선거를 앞두고 물가 안정이 급한 도널드 트럼프 미국 대통령은 최근 제재를 한시 면제해가며 러시아산 경유를 미국과 세계 시장에 공급하기로 블라디미르 푸틴 러시아 대통령과 합의했다고 밝혔다.",
+      "title": "IEA \"회원국, 경유 2천만배럴 조속히 방출 합의\" | 연합뉴스"
     },
     "source_fact:1e2e4a88f86d5c19fd024ef5": {
       "first_seen_kst": "2026-10-10T10:34:18+09:00",
@@ -378771,6 +379477,31 @@
       "source_title": "엔화, 美 장기금리 저하에 1달러=158엔대 전반 상승 출발",
       "telegram_core_fact": "엔화 환율은 15일 뉴욕 증시 약세 여파로 미국 장기금리 하락에 미일 금리차가 축소하면서 엔 매수, 달러 매도 선행으로 1달러=158엔대 전반으로 올라 시작했다.",
       "title": "엔화, 美 장기금리 저하에 1달러=158엔대 전반 상승 출발"
+    },
+    "source_fact:2394d8a268220e061b180a91": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://biz.heraldcorp.com/article/10905356",
+      "source": "헤럴드경제",
+      "source_body_digest": "a6f26020ff80e8f35cae71baa5caa44a9e4cbd1b5637b212ae3bfedee638c22e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d6ed73d58130ee2333f2d9e9665b5db0ebe5c7e1f49a37ee95fe468d784f1a5d",
+      "source_fact_keys": [
+        "source_fact:v1:974555cfe8a1a18a512ff29c53c639a9d678106957043ced062020f2a1cf9cd0",
+        "source_fact:v1:9a3977f3761b7dcde7096ae14218564d312c3d580fc57fac2ab42e4022c9aa5f",
+        "source_fact:v1:9de4f3c8cd1eecdc5cf25778f911a9485a17ad92405ced4781f5328683d1de53",
+        "source_fact:v1:b1e9a75e8792b25ecdcbfe6fcff9abb2414f8f610d52a6c7f7ad29312c45126c",
+        "source_fact:v1:b6567cb315a772cb46a3bdf07f1ae03b1259d2d4ea084543350e564a6801a255",
+        "source_fact:v1:ca728c29ef0d1fbeec380fa7c5c18c5df4f0de5d954b55548dcf2ad25fd24392"
+      ],
+      "source_published_kst": "2026-10-16T16:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "정부 “착공·분양·입주 상황판 가동”…주택 공급 모든 정보 한 번에",
+      "telegram_core_fact": "김용수 국무2차장은 16일 정부서울청사에서 열린 ‘제1차 주택공급 정책 브리프’ 브리핑에서“(상황판을 통해) 인허가·착공·분양·입주 등 주택공급 관련 상세한 정보와 향후 공급 계획, 공급 실적, 정책 소식 등을 지속 공개해 국민의 궁금증을 해소하고 예측 가능성을 높여 나가겠다”며 이같이 설명했다.",
+      "title": "정부 “착공·분양·입주 상황판 가동”…주택 공급 모든 정보 한 번에"
     },
     "source_fact:2395ff48737187a5ad8772c1": {
       "first_seen_kst": "2026-10-06T21:40:57+09:00",
@@ -389071,6 +389802,31 @@
       "source_title": "EU, 유가 급등에 석유·가스 ‘횡재세’ 부활 검토",
       "telegram_core_fact": "유럽연합(EU)이 유가 급등으로 막대한 이익을 거둔 석유·가스 기업에 이른바 ‘횡재세’를 부과하는 방안을 검토하고 있다.",
       "title": "EU, 유가 급등에 석유·가스 ‘횡재세’ 부활 검토"
+    },
+    "source_fact:2a90cddf9198580895c5e578": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://biz.heraldcorp.com/article/10905356",
+      "source": "헤럴드경제",
+      "source_body_digest": "a6f26020ff80e8f35cae71baa5caa44a9e4cbd1b5637b212ae3bfedee638c22e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d6ed73d58130ee2333f2d9e9665b5db0ebe5c7e1f49a37ee95fe468d784f1a5d",
+      "source_fact_keys": [
+        "source_fact:v1:974555cfe8a1a18a512ff29c53c639a9d678106957043ced062020f2a1cf9cd0",
+        "source_fact:v1:9a3977f3761b7dcde7096ae14218564d312c3d580fc57fac2ab42e4022c9aa5f",
+        "source_fact:v1:9de4f3c8cd1eecdc5cf25778f911a9485a17ad92405ced4781f5328683d1de53",
+        "source_fact:v1:b1e9a75e8792b25ecdcbfe6fcff9abb2414f8f610d52a6c7f7ad29312c45126c",
+        "source_fact:v1:b6567cb315a772cb46a3bdf07f1ae03b1259d2d4ea084543350e564a6801a255",
+        "source_fact:v1:ca728c29ef0d1fbeec380fa7c5c18c5df4f0de5d954b55548dcf2ad25fd24392"
+      ],
+      "source_published_kst": "2026-10-16T16:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "정부 “착공·분양·입주 상황판 가동”…주택 공급 모든 정보 한 번에",
+      "telegram_core_fact": "김용수 국무2차장은 16일 정부서울청사에서 열린 ‘제1차 주택공급 정책 브리프’ 브리핑에서“(상황판을 통해) 인허가·착공·분양·입주 등 주택공급 관련 상세한 정보와 향후 공급 계획, 공급 실적, 정책 소식 등을 지속 공개해 국민의 궁금증을 해소하고 예측 가능성을 높여 나가겠다”며 이같이 설명했다.",
+      "title": "정부 “착공·분양·입주 상황판 가동”…주택 공급 모든 정보 한 번에"
     },
     "source_fact:2a911bf172ae7b0c8c5cf990": {
       "first_seen_kst": "2026-10-05T22:57:49+09:00",
@@ -412376,6 +413132,34 @@
       "telegram_core_fact": "G7은 향후 4개월 동안 비축유 1억배럴을 방출하기로 합의했다.",
       "title": "트럼프 압박 통했나…IEA, '경유 중심' 전략비축유 방출 가속 합의"
     },
+    "source_fact:3b48d96f342437bf723ed417": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04414886645613576",
+      "source": "이데일리",
+      "source_body_digest": "1801a9025df6898c26aab0d4f344aa1185c8374f253ef36e690dd005198c3c68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d9983495394faef896506a99a16c3fde9707fe374faebde963a610e4c9f0d740",
+      "source_fact_keys": [
+        "source_fact:v1:0e5e5261d998b303f0ebeca94e7df9070750c07b005b133315d1b6c68ab753a9",
+        "source_fact:v1:197bd1e3bd078fdbfd7f60636f7ab853ed08403283a5ffcb9377573e3122d1fe",
+        "source_fact:v1:34c21866915141b8529b2f40671c981a33d7871874269e1898e0903cad713133",
+        "source_fact:v1:5633f4fab0ebcd58dc50c7768cf52bac62b0988e0ad229d6aaeb00c47b48ae10",
+        "source_fact:v1:98522214b0de0e188356157c30461274b5e74431fbb45582ada5766851615983",
+        "source_fact:v1:a5b9393dc31122f3d700f583a65233a853f3baf0cb245f73d74134e50f566101",
+        "source_fact:v1:e6783e16500cdb1b96029276d4ff0ac00aa8423ca3b86c6c5ad2d263050b3fbc",
+        "source_fact:v1:eeea9b097d292690b88825d85f3f407ae82e687628178897c0fef0e1d2f79076",
+        "source_fact:v1:fdab64eeda20a97390987f720d3cebf51ee982c51fac659bd96b3ac2abeec927"
+      ],
+      "source_published_kst": "2026-10-16T16:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "중국 첨단기술 이유 있었네…작년 R&D에만 800조원 가까이 썼다",
+      "telegram_core_fact": "[베이징=이데일리 이명철 특파원] 중국이 지난해 연구개발(R&D)에 800조원 가까운 비용을 지출한 것으로 집계됐다.",
+      "title": "중국 첨단기술 이유 있었네…작년 R&D에만 800조원 가까이 썼다"
+    },
     "source_fact:3b49732aed617c0136bb27f1": {
       "first_seen_kst": "2026-10-08T03:13:06+09:00",
       "lanes": {
@@ -416253,6 +417037,34 @@
       "telegram_core_fact": "SK하이닉스의 미국 자회사 솔리다임의 나스닥 상장(IPO) 추진 소식에 중복상장 논란이 일고 있다.",
       "title": "중복상장 안막는 선진시장…설명책임·이해상충 관리로 규율"
     },
+    "source_fact:3e5b0ef8495056efcebefce3": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04414886645613576",
+      "source": "이데일리",
+      "source_body_digest": "1801a9025df6898c26aab0d4f344aa1185c8374f253ef36e690dd005198c3c68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d9983495394faef896506a99a16c3fde9707fe374faebde963a610e4c9f0d740",
+      "source_fact_keys": [
+        "source_fact:v1:0e5e5261d998b303f0ebeca94e7df9070750c07b005b133315d1b6c68ab753a9",
+        "source_fact:v1:197bd1e3bd078fdbfd7f60636f7ab853ed08403283a5ffcb9377573e3122d1fe",
+        "source_fact:v1:34c21866915141b8529b2f40671c981a33d7871874269e1898e0903cad713133",
+        "source_fact:v1:5633f4fab0ebcd58dc50c7768cf52bac62b0988e0ad229d6aaeb00c47b48ae10",
+        "source_fact:v1:98522214b0de0e188356157c30461274b5e74431fbb45582ada5766851615983",
+        "source_fact:v1:a5b9393dc31122f3d700f583a65233a853f3baf0cb245f73d74134e50f566101",
+        "source_fact:v1:e6783e16500cdb1b96029276d4ff0ac00aa8423ca3b86c6c5ad2d263050b3fbc",
+        "source_fact:v1:eeea9b097d292690b88825d85f3f407ae82e687628178897c0fef0e1d2f79076",
+        "source_fact:v1:fdab64eeda20a97390987f720d3cebf51ee982c51fac659bd96b3ac2abeec927"
+      ],
+      "source_published_kst": "2026-10-16T16:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "중국 첨단기술 이유 있었네…작년 R&D에만 800조원 가까이 썼다",
+      "telegram_core_fact": "[베이징=이데일리 이명철 특파원] 중국이 지난해 연구개발(R&D)에 800조원 가까운 비용을 지출한 것으로 집계됐다.",
+      "title": "중국 첨단기술 이유 있었네…작년 R&D에만 800조원 가까이 썼다"
+    },
     "source_fact:3e62691d2263cd6cad822c48": {
       "first_seen_kst": "2026-10-13T11:53:28+09:00",
       "lanes": {
@@ -417291,6 +418103,32 @@
       "source_title": "[마켓무버]뉴욕증시, 중국발 메모리 경쟁 우려에 일제 하락…은행 실적도 엇갈려",
       "telegram_core_fact": "뉴욕증시 3대 지수가 중국발 메모리 경쟁 우려와 대형은행 실적에 대한 엇갈린 평가 속에 일제히 하락 마감했다.13일(현지시간) 뉴욕증시에서 다우존스30산업평균지수는 51,670.10(-0.35%), S&P500지수는 7,805.45(-0.02%), 나스닥종합지수는 27,204.38(-0.15%)에 거래를 마쳤다.",
       "title": "[마켓무버]뉴욕증시, 중국발 메모리 경쟁 우려에 일제 하락…은행 실적도 엇갈려"
+    },
+    "source_fact:3f0fc9fa372d78c8b570f6d8": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016118500009",
+      "source": "연합뉴스",
+      "source_body_digest": "0e7f83e219783c40821a6f92ddf04bf2b8b56c4c6ba1e128b0b47518b0435885",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:805fa159fcd864b6395ffcf8d652636fb5137941c060711a44948a04d55fedf0",
+      "source_fact_keys": [
+        "source_fact:v1:362ae20961e0b97bd99121bf8eb246fdf5cdc1008b6b23c47a03766a7794d895",
+        "source_fact:v1:6734921c3e13aacfa385a54690359da88ee2477ee4b23132338aead50363b51a",
+        "source_fact:v1:6763df43edee389b12ee3b40e53d4c0110a5cc39e61807cffa74c1bce5ff620f",
+        "source_fact:v1:7b0cb0dbd743880c10489d74432e7bc08fe28fe6e6e41a9fa9057580e5751926",
+        "source_fact:v1:7d1ef542a6a46de6a6312788700f9fa473e26d85463c25241e18b57ad117c9a3",
+        "source_fact:v1:c1796b6c498664e96ede0d017806847664623078fee8054d9b4c58639b3d334a",
+        "source_fact:v1:eb789f38cf682c6923b5341f9c34c12ef6289e4e889b1c2abd6fa49233a41f39"
+      ],
+      "source_published_kst": "2026-10-16T15:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "IEA \"회원국, 경유 2천만배럴 조속히 방출 합의\" | 연합뉴스",
+      "telegram_core_fact": "다음 달 중간선거를 앞두고 물가 안정이 급한 도널드 트럼프 미국 대통령은 최근 제재를 한시 면제해가며 러시아산 경유를 미국과 세계 시장에 공급하기로 블라디미르 푸틴 러시아 대통령과 합의했다고 밝혔다.",
+      "title": "IEA \"회원국, 경유 2천만배럴 조속히 방출 합의\" | 연합뉴스"
     },
     "source_fact:3f14dee6527c221906d763b6": {
       "first_seen_kst": "2026-10-06T04:08:54+09:00",
@@ -424953,6 +425791,30 @@
       "telegram_core_fact": "인천지방해양수산청에 따르면 인천해수청은 최근 인천 남항 삼표시멘트 부두 시설을 증설하기 위해 삼표시멘트 측이 낸 비관리청 항만개발사업 시행을 허가했다.",
       "title": "인천 남항 시멘트부두 사일로 증설 추진…인천해수청, 사업 허가"
     },
+    "source_fact:444e874ccc96d6d755946312": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12177348",
+      "source": "매일경제",
+      "source_body_digest": "38e4d85d20efe37e6ba48a4fde6d2576073c92323798ee13f359abf17c6368ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:53ae1cfdb6fe9b45b25962d4c7fed161dbdda1e1cccf0f72d977e846ede66820",
+      "source_fact_keys": [
+        "source_fact:v1:0307a7c2a53fb9100327985f45f63e12c697fc19de31a13149d91240f245548a",
+        "source_fact:v1:66497361e2f039dd1c83bb7a45e28702e129e9d36190398eb1375072b8e20b6e",
+        "source_fact:v1:6c711738a001d40279572aa7c351be1e34f4b53b4e7e9779e94919635471f57e",
+        "source_fact:v1:6f37c68d8dd4d8dcdf94f4ac6958ca0f6d88dff2486d5e3d3d490e2a079c5cea",
+        "source_fact:v1:d711eefb0716f793534387b3c050585179ef79121fc735b59c22772c9b5b528a"
+      ],
+      "source_published_kst": "2026-10-16T05:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "알코아, 3분기 매출 37억 달러·24%↑..순이익 2배 이상",
+      "telegram_core_fact": "알코아(AA)가 3분기(9월 30일 종료) 매출액 37억400만 달러로 전년비 23.7% 증가했고, 일반회계기준(GAAP) 희석 주당순이익 1.81달러로 전년 동기(0.88달러) 대비 105.7% 늘었다고 15일 발표했다.",
+      "title": "알코아, 3분기 매출 37억 달러·24%↑..순이익 2배 이상"
+    },
     "source_fact:444ee29fb24b34995e8cb2ce": {
       "first_seen_kst": "2026-10-15T07:08:31+09:00",
       "lanes": {
@@ -431796,6 +432658,34 @@
       "telegram_core_fact": "2023~2025년 분기별 중국산 장비 기업 매출과 외국산 장비 수입이 높은 동행성을 보였다는 점을 감안하면 3분기 중국 장비 기업 실적에 대한 눈높이를 상향할 필요가 있다고 판단한다.",
       "title": "중국 반도체 장비, 3분기 수입 증가가 말해주는 것 [돈 되는 해외 주식]"
     },
+    "source_fact:48c338118d3a84baa13f0ce0": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04414886645613576",
+      "source": "이데일리",
+      "source_body_digest": "1801a9025df6898c26aab0d4f344aa1185c8374f253ef36e690dd005198c3c68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d9983495394faef896506a99a16c3fde9707fe374faebde963a610e4c9f0d740",
+      "source_fact_keys": [
+        "source_fact:v1:0e5e5261d998b303f0ebeca94e7df9070750c07b005b133315d1b6c68ab753a9",
+        "source_fact:v1:197bd1e3bd078fdbfd7f60636f7ab853ed08403283a5ffcb9377573e3122d1fe",
+        "source_fact:v1:34c21866915141b8529b2f40671c981a33d7871874269e1898e0903cad713133",
+        "source_fact:v1:5633f4fab0ebcd58dc50c7768cf52bac62b0988e0ad229d6aaeb00c47b48ae10",
+        "source_fact:v1:98522214b0de0e188356157c30461274b5e74431fbb45582ada5766851615983",
+        "source_fact:v1:a5b9393dc31122f3d700f583a65233a853f3baf0cb245f73d74134e50f566101",
+        "source_fact:v1:e6783e16500cdb1b96029276d4ff0ac00aa8423ca3b86c6c5ad2d263050b3fbc",
+        "source_fact:v1:eeea9b097d292690b88825d85f3f407ae82e687628178897c0fef0e1d2f79076",
+        "source_fact:v1:fdab64eeda20a97390987f720d3cebf51ee982c51fac659bd96b3ac2abeec927"
+      ],
+      "source_published_kst": "2026-10-16T16:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "중국 첨단기술 이유 있었네…작년 R&D에만 800조원 가까이 썼다",
+      "telegram_core_fact": "[베이징=이데일리 이명철 특파원] 중국이 지난해 연구개발(R&D)에 800조원 가까운 비용을 지출한 것으로 집계됐다.",
+      "title": "중국 첨단기술 이유 있었네…작년 R&D에만 800조원 가까이 썼다"
+    },
     "source_fact:48c515430587e6ee3b98b9e8": {
       "first_seen_kst": "2026-10-12T17:17:29+09:00",
       "lanes": {
@@ -437336,6 +438226,31 @@
       "source_title": "국제유가, 미국 원유 재고 급감 속 혼조⋯WTI 3.03%↑ [상보]",
       "telegram_core_fact": "15일(현지시간) 뉴욕상업거래소에서 11월물 미국 서부 텍사스산 원유(WTI)는 전 거래일 대비 2.88달러(3.03%) 상승한 배럴당 97.97달러에 마감했다.",
       "title": "국제유가, 미국 원유 재고 급감 속 혼조⋯WTI 3.03%↑ [상보]"
+    },
+    "source_fact:4c8504f217f2c83246b47ea0": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175843",
+      "source": "매일경제",
+      "source_body_digest": "acb0d81056beecc27407eaef83fd3d894dc94a9dd78df02d29e4b4cf9f130058",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:32fa2988aa91fe6106a5bed0f51047a7607470da0f2311035602d5afbbca263d",
+      "source_fact_keys": [
+        "source_fact:v1:2014670591c7ce8bf3b8c457a58dc7abaa5e97d433fd3f1082375d1181ecc9e0",
+        "source_fact:v1:ba97a4923d9f39af8896514b9998c3a3fb77baf174feeea4b3b8a84dbf827944",
+        "source_fact:v1:c6ae3504bb4230386b1fe018ecc5cd9ce7e7cad8970e26d2f1ad69138ab9e9dd",
+        "source_fact:v1:e51464355bea374ed05885edcc5335a5c5915899937a4f0be7d27fa6d3098bfd",
+        "source_fact:v1:e5d367477dd9179454687a0f8700cac75327dee52cbcf265d06c14bb31fddc71",
+        "source_fact:v1:f4dc3781118b9c0c01c29cf901cdd265622a28e1a0ace8ee25244fce70c7c6b5"
+      ],
+      "source_published_kst": "2026-10-16T09:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "피에스케이홀딩스 '하늘을 향해 불쑥 솟아오른 2027년' 증권사 발표에 강세…5.18%",
+      "telegram_core_fact": "당일 현대차증권 윤동욱 애널리스트는 '하늘을 향해 불쑥 솟아오른 2027년' 이라고 목표가를 270,000원으로 상향 조정한 바 있다.",
+      "title": "피에스케이홀딩스 '하늘을 향해 불쑥 솟아오른 2027년' 증권사 발표에 강세…5.18%"
     },
     "source_fact:4c928bc7ab9a9b7922a02bdc": {
       "first_seen_kst": "2026-10-07T02:24:39+09:00",
@@ -445694,6 +446609,34 @@
       "source_title": "美 반도체 지수 0.9% 하락…마이크론 2% 반등, SK하이닉스 0.98%↓",
       "telegram_core_fact": "SK하이닉스 주식예탁증서(ADR)는 0.98% 하락한 146.11달러를 기록했다. 세계 최대 파운드리 기업 TSMC는 이날 발표한 3분기 실적에서 순이익이 전년 대비 68.7% 증가해 6개 분기 연속 사상 최대를 기록했다.",
       "title": "美 반도체 지수 0.9% 하락…마이크론 2% 반등, SK하이닉스 0.98%↓"
+    },
+    "source_fact:523abc0934280718667cada0": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04414886645613576",
+      "source": "이데일리",
+      "source_body_digest": "1801a9025df6898c26aab0d4f344aa1185c8374f253ef36e690dd005198c3c68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d9983495394faef896506a99a16c3fde9707fe374faebde963a610e4c9f0d740",
+      "source_fact_keys": [
+        "source_fact:v1:0e5e5261d998b303f0ebeca94e7df9070750c07b005b133315d1b6c68ab753a9",
+        "source_fact:v1:197bd1e3bd078fdbfd7f60636f7ab853ed08403283a5ffcb9377573e3122d1fe",
+        "source_fact:v1:34c21866915141b8529b2f40671c981a33d7871874269e1898e0903cad713133",
+        "source_fact:v1:5633f4fab0ebcd58dc50c7768cf52bac62b0988e0ad229d6aaeb00c47b48ae10",
+        "source_fact:v1:98522214b0de0e188356157c30461274b5e74431fbb45582ada5766851615983",
+        "source_fact:v1:a5b9393dc31122f3d700f583a65233a853f3baf0cb245f73d74134e50f566101",
+        "source_fact:v1:e6783e16500cdb1b96029276d4ff0ac00aa8423ca3b86c6c5ad2d263050b3fbc",
+        "source_fact:v1:eeea9b097d292690b88825d85f3f407ae82e687628178897c0fef0e1d2f79076",
+        "source_fact:v1:fdab64eeda20a97390987f720d3cebf51ee982c51fac659bd96b3ac2abeec927"
+      ],
+      "source_published_kst": "2026-10-16T16:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "중국 첨단기술 이유 있었네…작년 R&D에만 800조원 가까이 썼다",
+      "telegram_core_fact": "[베이징=이데일리 이명철 특파원] 중국이 지난해 연구개발(R&D)에 800조원 가까운 비용을 지출한 것으로 집계됐다.",
+      "title": "중국 첨단기술 이유 있었네…작년 R&D에만 800조원 가까이 썼다"
     },
     "source_fact:52411b2c60a1331f8181e628": {
       "first_seen_kst": "2026-10-08T07:50:51+09:00",
@@ -460849,6 +461792,31 @@
       "source_title": "李 \"녹색기업 세액공제 외 보조금 지급 검토\" 지시",
       "telegram_core_fact": "이재명 대통령이 내년에 도입하는 국내생산세액공제 제도의 혜택을 당장 보지 못할 녹색기업들을 위해 직접 보조금을 지급하는 방안을 검토하라고 지시했다.",
       "title": "李 \"녹색기업 세액공제 외 보조금 지급 검토\" 지시"
+    },
+    "source_fact:5c77f30b9c8ebd021ff0720b": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175843",
+      "source": "매일경제",
+      "source_body_digest": "acb0d81056beecc27407eaef83fd3d894dc94a9dd78df02d29e4b4cf9f130058",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:32fa2988aa91fe6106a5bed0f51047a7607470da0f2311035602d5afbbca263d",
+      "source_fact_keys": [
+        "source_fact:v1:2014670591c7ce8bf3b8c457a58dc7abaa5e97d433fd3f1082375d1181ecc9e0",
+        "source_fact:v1:ba97a4923d9f39af8896514b9998c3a3fb77baf174feeea4b3b8a84dbf827944",
+        "source_fact:v1:c6ae3504bb4230386b1fe018ecc5cd9ce7e7cad8970e26d2f1ad69138ab9e9dd",
+        "source_fact:v1:e51464355bea374ed05885edcc5335a5c5915899937a4f0be7d27fa6d3098bfd",
+        "source_fact:v1:e5d367477dd9179454687a0f8700cac75327dee52cbcf265d06c14bb31fddc71",
+        "source_fact:v1:f4dc3781118b9c0c01c29cf901cdd265622a28e1a0ace8ee25244fce70c7c6b5"
+      ],
+      "source_published_kst": "2026-10-16T09:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "피에스케이홀딩스 '하늘을 향해 불쑥 솟아오른 2027년' 증권사 발표에 강세…5.18%",
+      "telegram_core_fact": "당일 현대차증권 윤동욱 애널리스트는 '하늘을 향해 불쑥 솟아오른 2027년' 이라고 목표가를 270,000원으로 상향 조정한 바 있다.",
+      "title": "피에스케이홀딩스 '하늘을 향해 불쑥 솟아오른 2027년' 증권사 발표에 강세…5.18%"
     },
     "source_fact:5c78d749673e986788578db2": {
       "first_seen_kst": "2026-10-08T16:14:26+09:00",
@@ -480448,6 +481416,32 @@
       ],
       "source_published_kst": "2026-10-07T11:36+09:00",
       "title": "우상호 지사 \"취임 100일, 강원 변화 시작…기업 투자 가시화\" | 연합뉴스"
+    },
+    "source_fact:6ac2ddf80764bee620adb602": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016118500009",
+      "source": "연합뉴스",
+      "source_body_digest": "0e7f83e219783c40821a6f92ddf04bf2b8b56c4c6ba1e128b0b47518b0435885",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:805fa159fcd864b6395ffcf8d652636fb5137941c060711a44948a04d55fedf0",
+      "source_fact_keys": [
+        "source_fact:v1:362ae20961e0b97bd99121bf8eb246fdf5cdc1008b6b23c47a03766a7794d895",
+        "source_fact:v1:6734921c3e13aacfa385a54690359da88ee2477ee4b23132338aead50363b51a",
+        "source_fact:v1:6763df43edee389b12ee3b40e53d4c0110a5cc39e61807cffa74c1bce5ff620f",
+        "source_fact:v1:7b0cb0dbd743880c10489d74432e7bc08fe28fe6e6e41a9fa9057580e5751926",
+        "source_fact:v1:7d1ef542a6a46de6a6312788700f9fa473e26d85463c25241e18b57ad117c9a3",
+        "source_fact:v1:c1796b6c498664e96ede0d017806847664623078fee8054d9b4c58639b3d334a",
+        "source_fact:v1:eb789f38cf682c6923b5341f9c34c12ef6289e4e889b1c2abd6fa49233a41f39"
+      ],
+      "source_published_kst": "2026-10-16T15:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "IEA \"회원국, 경유 2천만배럴 조속히 방출 합의\" | 연합뉴스",
+      "telegram_core_fact": "다음 달 중간선거를 앞두고 물가 안정이 급한 도널드 트럼프 미국 대통령은 최근 제재를 한시 면제해가며 러시아산 경유를 미국과 세계 시장에 공급하기로 블라디미르 푸틴 러시아 대통령과 합의했다고 밝혔다.",
+      "title": "IEA \"회원국, 경유 2천만배럴 조속히 방출 합의\" | 연합뉴스"
     },
     "source_fact:6ac37949ab4f177d48e12c36": {
       "first_seen_kst": "2026-10-12T18:21:27+09:00",
@@ -504672,6 +505666,32 @@
       "telegram_core_fact": "EU 이사회는 12일(현지시간) 성명을 통해 이런 조치를 발표하고, 이들이 북한의 핵무기·탄도미사일 프로그램과 관련한 활동을 지원·촉진하거나 유엔 제재를 위반하거나 회피한 책임이 있는 개인과 단체라고 밝혔다.",
       "title": "EU, 北미사일 기술자 등 개인 3명·단체 4곳 대북 제재 추가 | 연합뉴스"
     },
+    "source_fact:7c06753dee219e7a7c785771": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016118500009",
+      "source": "연합뉴스",
+      "source_body_digest": "0e7f83e219783c40821a6f92ddf04bf2b8b56c4c6ba1e128b0b47518b0435885",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:805fa159fcd864b6395ffcf8d652636fb5137941c060711a44948a04d55fedf0",
+      "source_fact_keys": [
+        "source_fact:v1:362ae20961e0b97bd99121bf8eb246fdf5cdc1008b6b23c47a03766a7794d895",
+        "source_fact:v1:6734921c3e13aacfa385a54690359da88ee2477ee4b23132338aead50363b51a",
+        "source_fact:v1:6763df43edee389b12ee3b40e53d4c0110a5cc39e61807cffa74c1bce5ff620f",
+        "source_fact:v1:7b0cb0dbd743880c10489d74432e7bc08fe28fe6e6e41a9fa9057580e5751926",
+        "source_fact:v1:7d1ef542a6a46de6a6312788700f9fa473e26d85463c25241e18b57ad117c9a3",
+        "source_fact:v1:c1796b6c498664e96ede0d017806847664623078fee8054d9b4c58639b3d334a",
+        "source_fact:v1:eb789f38cf682c6923b5341f9c34c12ef6289e4e889b1c2abd6fa49233a41f39"
+      ],
+      "source_published_kst": "2026-10-16T15:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "IEA \"회원국, 경유 2천만배럴 조속히 방출 합의\" | 연합뉴스",
+      "telegram_core_fact": "다음 달 중간선거를 앞두고 물가 안정이 급한 도널드 트럼프 미국 대통령은 최근 제재를 한시 면제해가며 러시아산 경유를 미국과 세계 시장에 공급하기로 블라디미르 푸틴 러시아 대통령과 합의했다고 밝혔다.",
+      "title": "IEA \"회원국, 경유 2천만배럴 조속히 방출 합의\" | 연합뉴스"
+    },
     "source_fact:7c0842a017165ac72faa3b01": {
       "first_seen_kst": "2026-10-08T00:24:24+09:00",
       "lanes": {
@@ -510739,6 +511759,30 @@
       "source_title": "앤로보틱스, 비블리오테카와 AI 도서관 로봇 ‘로미’ 글로벌 계약",
       "telegram_core_fact": "양사는 이번 계약을 계기로 전 세계 시장을 겨냥해 로미의 공급을 확대하고 신규 사업 발굴을 공동으로 추진할 방침이다.",
       "title": "앤로보틱스, 비블리오테카와 AI 도서관 로봇 ‘로미’ 글로벌 계약"
+    },
+    "source_fact:8099ddf386aaf16a41877dcf": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12177348",
+      "source": "매일경제",
+      "source_body_digest": "38e4d85d20efe37e6ba48a4fde6d2576073c92323798ee13f359abf17c6368ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:53ae1cfdb6fe9b45b25962d4c7fed161dbdda1e1cccf0f72d977e846ede66820",
+      "source_fact_keys": [
+        "source_fact:v1:0307a7c2a53fb9100327985f45f63e12c697fc19de31a13149d91240f245548a",
+        "source_fact:v1:66497361e2f039dd1c83bb7a45e28702e129e9d36190398eb1375072b8e20b6e",
+        "source_fact:v1:6c711738a001d40279572aa7c351be1e34f4b53b4e7e9779e94919635471f57e",
+        "source_fact:v1:6f37c68d8dd4d8dcdf94f4ac6958ca0f6d88dff2486d5e3d3d490e2a079c5cea",
+        "source_fact:v1:d711eefb0716f793534387b3c050585179ef79121fc735b59c22772c9b5b528a"
+      ],
+      "source_published_kst": "2026-10-16T05:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "알코아, 3분기 매출 37억 달러·24%↑..순이익 2배 이상",
+      "telegram_core_fact": "알코아(AA)가 3분기(9월 30일 종료) 매출액 37억400만 달러로 전년비 23.7% 증가했고, 일반회계기준(GAAP) 희석 주당순이익 1.81달러로 전년 동기(0.88달러) 대비 105.7% 늘었다고 15일 발표했다.",
+      "title": "알코아, 3분기 매출 37억 달러·24%↑..순이익 2배 이상"
     },
     "source_fact:809f305cba58715ea604f6da": {
       "first_seen_kst": "2026-10-12T19:52:19+09:00",
@@ -532267,6 +533311,31 @@
       "telegram_core_fact": "가트너는 이 보고서를 통해 D램과 낸드플래시 등 메모리 공급 부족이 2028년까지 이어질 가능성이 높다고 전망했다.",
       "title": "가트너 \"메모리 공급난, 2028년까지 이어질 것\""
     },
+    "source_fact:90810150878006af699e85b3": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175843",
+      "source": "매일경제",
+      "source_body_digest": "acb0d81056beecc27407eaef83fd3d894dc94a9dd78df02d29e4b4cf9f130058",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:32fa2988aa91fe6106a5bed0f51047a7607470da0f2311035602d5afbbca263d",
+      "source_fact_keys": [
+        "source_fact:v1:2014670591c7ce8bf3b8c457a58dc7abaa5e97d433fd3f1082375d1181ecc9e0",
+        "source_fact:v1:ba97a4923d9f39af8896514b9998c3a3fb77baf174feeea4b3b8a84dbf827944",
+        "source_fact:v1:c6ae3504bb4230386b1fe018ecc5cd9ce7e7cad8970e26d2f1ad69138ab9e9dd",
+        "source_fact:v1:e51464355bea374ed05885edcc5335a5c5915899937a4f0be7d27fa6d3098bfd",
+        "source_fact:v1:e5d367477dd9179454687a0f8700cac75327dee52cbcf265d06c14bb31fddc71",
+        "source_fact:v1:f4dc3781118b9c0c01c29cf901cdd265622a28e1a0ace8ee25244fce70c7c6b5"
+      ],
+      "source_published_kst": "2026-10-16T09:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "피에스케이홀딩스 '하늘을 향해 불쑥 솟아오른 2027년' 증권사 발표에 강세…5.18%",
+      "telegram_core_fact": "당일 현대차증권 윤동욱 애널리스트는 '하늘을 향해 불쑥 솟아오른 2027년' 이라고 목표가를 270,000원으로 상향 조정한 바 있다.",
+      "title": "피에스케이홀딩스 '하늘을 향해 불쑥 솟아오른 2027년' 증권사 발표에 강세…5.18%"
+    },
     "source_fact:90821c79d38ae90bcb837d5a": {
       "first_seen_kst": "2026-10-08T02:26:35+09:00",
       "lanes": {
@@ -532788,6 +533857,30 @@
       "source_title": "SK하이닉스 안현 사장 '전체 메모리 계층 최적화로 AI 생태계 지속 성장 견인'",
       "telegram_core_fact": "안 사장은 'AI 시대, 메모리 기술의 진화 방향'을 주제로 진행한 기조연설에서 AI 추론 수요 확대에 따라 기존 메모리 계층의 성능과 용량 측면에서 새로운 병목이 발생하고 있다고 설명함.",
       "title": "SK하이닉스 안현 사장 '전체 메모리 계층 최적화로 AI 생태계 지속 성장 견인'"
+    },
+    "source_fact:90d74670dc91a0e22bede338": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12177348",
+      "source": "매일경제",
+      "source_body_digest": "38e4d85d20efe37e6ba48a4fde6d2576073c92323798ee13f359abf17c6368ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:53ae1cfdb6fe9b45b25962d4c7fed161dbdda1e1cccf0f72d977e846ede66820",
+      "source_fact_keys": [
+        "source_fact:v1:0307a7c2a53fb9100327985f45f63e12c697fc19de31a13149d91240f245548a",
+        "source_fact:v1:66497361e2f039dd1c83bb7a45e28702e129e9d36190398eb1375072b8e20b6e",
+        "source_fact:v1:6c711738a001d40279572aa7c351be1e34f4b53b4e7e9779e94919635471f57e",
+        "source_fact:v1:6f37c68d8dd4d8dcdf94f4ac6958ca0f6d88dff2486d5e3d3d490e2a079c5cea",
+        "source_fact:v1:d711eefb0716f793534387b3c050585179ef79121fc735b59c22772c9b5b528a"
+      ],
+      "source_published_kst": "2026-10-16T05:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "알코아, 3분기 매출 37억 달러·24%↑..순이익 2배 이상",
+      "telegram_core_fact": "알코아(AA)가 3분기(9월 30일 종료) 매출액 37억400만 달러로 전년비 23.7% 증가했고, 일반회계기준(GAAP) 희석 주당순이익 1.81달러로 전년 동기(0.88달러) 대비 105.7% 늘었다고 15일 발표했다.",
+      "title": "알코아, 3분기 매출 37억 달러·24%↑..순이익 2배 이상"
     },
     "source_fact:90d7bd64a0371b2b3fc5d487": {
       "first_seen_kst": "2026-10-15T10:36:40+09:00",
@@ -534409,6 +535502,34 @@
       "source_title": "[중화학ON]LG엔솔 3분기 영업익 7560억 '깜짝실적'…삼성SDI 흑자·SK온 적자 전망",
       "telegram_core_fact": "LG에너지솔루션이 8일 공시한 3분기 잠정실적에 따르면 매출은 9조6434억원, 영업이익은 7560억원이다.",
       "title": "[중화학ON]LG엔솔 3분기 영업익 7560억 '깜짝실적'…삼성SDI 흑자·SK온 적자 전망"
+    },
+    "source_fact:91fa5ed56e5a8d3fdc4b2c81": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04414886645613576",
+      "source": "이데일리",
+      "source_body_digest": "1801a9025df6898c26aab0d4f344aa1185c8374f253ef36e690dd005198c3c68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d9983495394faef896506a99a16c3fde9707fe374faebde963a610e4c9f0d740",
+      "source_fact_keys": [
+        "source_fact:v1:0e5e5261d998b303f0ebeca94e7df9070750c07b005b133315d1b6c68ab753a9",
+        "source_fact:v1:197bd1e3bd078fdbfd7f60636f7ab853ed08403283a5ffcb9377573e3122d1fe",
+        "source_fact:v1:34c21866915141b8529b2f40671c981a33d7871874269e1898e0903cad713133",
+        "source_fact:v1:5633f4fab0ebcd58dc50c7768cf52bac62b0988e0ad229d6aaeb00c47b48ae10",
+        "source_fact:v1:98522214b0de0e188356157c30461274b5e74431fbb45582ada5766851615983",
+        "source_fact:v1:a5b9393dc31122f3d700f583a65233a853f3baf0cb245f73d74134e50f566101",
+        "source_fact:v1:e6783e16500cdb1b96029276d4ff0ac00aa8423ca3b86c6c5ad2d263050b3fbc",
+        "source_fact:v1:eeea9b097d292690b88825d85f3f407ae82e687628178897c0fef0e1d2f79076",
+        "source_fact:v1:fdab64eeda20a97390987f720d3cebf51ee982c51fac659bd96b3ac2abeec927"
+      ],
+      "source_published_kst": "2026-10-16T16:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "중국 첨단기술 이유 있었네…작년 R&D에만 800조원 가까이 썼다",
+      "telegram_core_fact": "[베이징=이데일리 이명철 특파원] 중국이 지난해 연구개발(R&D)에 800조원 가까운 비용을 지출한 것으로 집계됐다.",
+      "title": "중국 첨단기술 이유 있었네…작년 R&D에만 800조원 가까이 썼다"
     },
     "source_fact:9205f137fa7319ef527b6522": {
       "first_seen_kst": "2026-10-08T13:46:05+09:00",
@@ -536382,6 +537503,34 @@
       ],
       "source_published_kst": "2026-10-07T06:25+09:00",
       "title": "국제유가, 후티 반격ㆍ중동 수출 증가 놓고 강보합⋯WTI 0.01%↑ [상보]"
+    },
+    "source_fact:93b649dbeed99ef2e1aaf3ef": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04414886645613576",
+      "source": "이데일리",
+      "source_body_digest": "1801a9025df6898c26aab0d4f344aa1185c8374f253ef36e690dd005198c3c68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d9983495394faef896506a99a16c3fde9707fe374faebde963a610e4c9f0d740",
+      "source_fact_keys": [
+        "source_fact:v1:0e5e5261d998b303f0ebeca94e7df9070750c07b005b133315d1b6c68ab753a9",
+        "source_fact:v1:197bd1e3bd078fdbfd7f60636f7ab853ed08403283a5ffcb9377573e3122d1fe",
+        "source_fact:v1:34c21866915141b8529b2f40671c981a33d7871874269e1898e0903cad713133",
+        "source_fact:v1:5633f4fab0ebcd58dc50c7768cf52bac62b0988e0ad229d6aaeb00c47b48ae10",
+        "source_fact:v1:98522214b0de0e188356157c30461274b5e74431fbb45582ada5766851615983",
+        "source_fact:v1:a5b9393dc31122f3d700f583a65233a853f3baf0cb245f73d74134e50f566101",
+        "source_fact:v1:e6783e16500cdb1b96029276d4ff0ac00aa8423ca3b86c6c5ad2d263050b3fbc",
+        "source_fact:v1:eeea9b097d292690b88825d85f3f407ae82e687628178897c0fef0e1d2f79076",
+        "source_fact:v1:fdab64eeda20a97390987f720d3cebf51ee982c51fac659bd96b3ac2abeec927"
+      ],
+      "source_published_kst": "2026-10-16T16:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "중국 첨단기술 이유 있었네…작년 R&D에만 800조원 가까이 썼다",
+      "telegram_core_fact": "[베이징=이데일리 이명철 특파원] 중국이 지난해 연구개발(R&D)에 800조원 가까운 비용을 지출한 것으로 집계됐다.",
+      "title": "중국 첨단기술 이유 있었네…작년 R&D에만 800조원 가까이 썼다"
     },
     "source_fact:93b8b8b96b9ace2237c16347": {
       "first_seen_kst": "2026-10-08T16:34:42+09:00",
@@ -549220,6 +550369,34 @@
       ],
       "source_published_kst": "2026-10-05T12:02+09:00",
       "title": "LTE 대역서 5G 기지국 쓴다…용도전환 제도 기반 마련"
+    },
+    "source_fact:9cb649ebce5165c75b08e7bd": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04414886645613576",
+      "source": "이데일리",
+      "source_body_digest": "1801a9025df6898c26aab0d4f344aa1185c8374f253ef36e690dd005198c3c68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d9983495394faef896506a99a16c3fde9707fe374faebde963a610e4c9f0d740",
+      "source_fact_keys": [
+        "source_fact:v1:0e5e5261d998b303f0ebeca94e7df9070750c07b005b133315d1b6c68ab753a9",
+        "source_fact:v1:197bd1e3bd078fdbfd7f60636f7ab853ed08403283a5ffcb9377573e3122d1fe",
+        "source_fact:v1:34c21866915141b8529b2f40671c981a33d7871874269e1898e0903cad713133",
+        "source_fact:v1:5633f4fab0ebcd58dc50c7768cf52bac62b0988e0ad229d6aaeb00c47b48ae10",
+        "source_fact:v1:98522214b0de0e188356157c30461274b5e74431fbb45582ada5766851615983",
+        "source_fact:v1:a5b9393dc31122f3d700f583a65233a853f3baf0cb245f73d74134e50f566101",
+        "source_fact:v1:e6783e16500cdb1b96029276d4ff0ac00aa8423ca3b86c6c5ad2d263050b3fbc",
+        "source_fact:v1:eeea9b097d292690b88825d85f3f407ae82e687628178897c0fef0e1d2f79076",
+        "source_fact:v1:fdab64eeda20a97390987f720d3cebf51ee982c51fac659bd96b3ac2abeec927"
+      ],
+      "source_published_kst": "2026-10-16T16:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "중국 첨단기술 이유 있었네…작년 R&D에만 800조원 가까이 썼다",
+      "telegram_core_fact": "[베이징=이데일리 이명철 특파원] 중국이 지난해 연구개발(R&D)에 800조원 가까운 비용을 지출한 것으로 집계됐다.",
+      "title": "중국 첨단기술 이유 있었네…작년 R&D에만 800조원 가까이 썼다"
     },
     "source_fact:9cc14a2f80e73fc72c7ae172": {
       "first_seen_kst": "2026-10-13T02:27:34+09:00",
@@ -568679,6 +569856,32 @@
       "source_published_kst": "2026-10-06T06:38+09:00",
       "title": "美 재무부 \"'이란 거래' 외국 금융기관, 사전 통보 없이 제재 부과\""
     },
+    "source_fact:aaaff30c8f00855030ec1676": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016118500009",
+      "source": "연합뉴스",
+      "source_body_digest": "0e7f83e219783c40821a6f92ddf04bf2b8b56c4c6ba1e128b0b47518b0435885",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:805fa159fcd864b6395ffcf8d652636fb5137941c060711a44948a04d55fedf0",
+      "source_fact_keys": [
+        "source_fact:v1:362ae20961e0b97bd99121bf8eb246fdf5cdc1008b6b23c47a03766a7794d895",
+        "source_fact:v1:6734921c3e13aacfa385a54690359da88ee2477ee4b23132338aead50363b51a",
+        "source_fact:v1:6763df43edee389b12ee3b40e53d4c0110a5cc39e61807cffa74c1bce5ff620f",
+        "source_fact:v1:7b0cb0dbd743880c10489d74432e7bc08fe28fe6e6e41a9fa9057580e5751926",
+        "source_fact:v1:7d1ef542a6a46de6a6312788700f9fa473e26d85463c25241e18b57ad117c9a3",
+        "source_fact:v1:c1796b6c498664e96ede0d017806847664623078fee8054d9b4c58639b3d334a",
+        "source_fact:v1:eb789f38cf682c6923b5341f9c34c12ef6289e4e889b1c2abd6fa49233a41f39"
+      ],
+      "source_published_kst": "2026-10-16T15:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "IEA \"회원국, 경유 2천만배럴 조속히 방출 합의\" | 연합뉴스",
+      "telegram_core_fact": "다음 달 중간선거를 앞두고 물가 안정이 급한 도널드 트럼프 미국 대통령은 최근 제재를 한시 면제해가며 러시아산 경유를 미국과 세계 시장에 공급하기로 블라디미르 푸틴 러시아 대통령과 합의했다고 밝혔다.",
+      "title": "IEA \"회원국, 경유 2천만배럴 조속히 방출 합의\" | 연합뉴스"
+    },
     "source_fact:aab12bdc0edf8f6950ae0f29": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
       "lanes": {
@@ -571235,6 +572438,34 @@
       "source_title": "“코스피 9000 찍자 예금 깨고 ‘반도체 ETF’에 다 걸었는데” 김 차장, 폭락 장서 생존했을까 [이연부]",
       "telegram_core_fact": "투자 상품으로는 주변의 추천을 받아 국내 반도체 관련 상장지수펀드(ETF)를 집중적으로 매수했다. 코스피 지수가 9000을 넘어 1만을 넘어선다는 국내외 경제 전문가의 전망과 달리 한때 6000초반까지 떨어졌다.",
       "title": "“코스피 9000 찍자 예금 깨고 ‘반도체 ETF’에 다 걸었는데” 김 차장, 폭락 장서 생존했을까 [이연부]"
+    },
+    "source_fact:ac5030282fb58e9a480d3e07": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04414886645613576",
+      "source": "이데일리",
+      "source_body_digest": "1801a9025df6898c26aab0d4f344aa1185c8374f253ef36e690dd005198c3c68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d9983495394faef896506a99a16c3fde9707fe374faebde963a610e4c9f0d740",
+      "source_fact_keys": [
+        "source_fact:v1:0e5e5261d998b303f0ebeca94e7df9070750c07b005b133315d1b6c68ab753a9",
+        "source_fact:v1:197bd1e3bd078fdbfd7f60636f7ab853ed08403283a5ffcb9377573e3122d1fe",
+        "source_fact:v1:34c21866915141b8529b2f40671c981a33d7871874269e1898e0903cad713133",
+        "source_fact:v1:5633f4fab0ebcd58dc50c7768cf52bac62b0988e0ad229d6aaeb00c47b48ae10",
+        "source_fact:v1:98522214b0de0e188356157c30461274b5e74431fbb45582ada5766851615983",
+        "source_fact:v1:a5b9393dc31122f3d700f583a65233a853f3baf0cb245f73d74134e50f566101",
+        "source_fact:v1:e6783e16500cdb1b96029276d4ff0ac00aa8423ca3b86c6c5ad2d263050b3fbc",
+        "source_fact:v1:eeea9b097d292690b88825d85f3f407ae82e687628178897c0fef0e1d2f79076",
+        "source_fact:v1:fdab64eeda20a97390987f720d3cebf51ee982c51fac659bd96b3ac2abeec927"
+      ],
+      "source_published_kst": "2026-10-16T16:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "중국 첨단기술 이유 있었네…작년 R&D에만 800조원 가까이 썼다",
+      "telegram_core_fact": "[베이징=이데일리 이명철 특파원] 중국이 지난해 연구개발(R&D)에 800조원 가까운 비용을 지출한 것으로 집계됐다.",
+      "title": "중국 첨단기술 이유 있었네…작년 R&D에만 800조원 가까이 썼다"
     },
     "source_fact:ac53e44f7cdbba8da9e6cdca": {
       "first_seen_kst": "2026-10-08T08:31:37+09:00",
@@ -574355,6 +575586,32 @@
       "source_title": "SK하이닉스 안현 사장 \"전체 메모리 계층 최적화로 AI 생태계 지속 성장 견인\"",
       "telegram_core_fact": "SK하이닉스는 HBM에서 축적한 기술 경쟁력을 기반으로 새로운 메모리 계층으로 기술 영역을 확대하고, 파트너들과의 협력을 통해 AI 생태계의 지속적인 성장을 뒷받침해 나갈 계획이다.",
       "title": "SK하이닉스 안현 사장 \"전체 메모리 계층 최적화로 AI 생태계 지속 성장 견인\""
+    },
+    "source_fact:ae68bd21a4d7f3511e985c8f": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016118500009",
+      "source": "연합뉴스",
+      "source_body_digest": "0e7f83e219783c40821a6f92ddf04bf2b8b56c4c6ba1e128b0b47518b0435885",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:805fa159fcd864b6395ffcf8d652636fb5137941c060711a44948a04d55fedf0",
+      "source_fact_keys": [
+        "source_fact:v1:362ae20961e0b97bd99121bf8eb246fdf5cdc1008b6b23c47a03766a7794d895",
+        "source_fact:v1:6734921c3e13aacfa385a54690359da88ee2477ee4b23132338aead50363b51a",
+        "source_fact:v1:6763df43edee389b12ee3b40e53d4c0110a5cc39e61807cffa74c1bce5ff620f",
+        "source_fact:v1:7b0cb0dbd743880c10489d74432e7bc08fe28fe6e6e41a9fa9057580e5751926",
+        "source_fact:v1:7d1ef542a6a46de6a6312788700f9fa473e26d85463c25241e18b57ad117c9a3",
+        "source_fact:v1:c1796b6c498664e96ede0d017806847664623078fee8054d9b4c58639b3d334a",
+        "source_fact:v1:eb789f38cf682c6923b5341f9c34c12ef6289e4e889b1c2abd6fa49233a41f39"
+      ],
+      "source_published_kst": "2026-10-16T15:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "IEA \"회원국, 경유 2천만배럴 조속히 방출 합의\" | 연합뉴스",
+      "telegram_core_fact": "다음 달 중간선거를 앞두고 물가 안정이 급한 도널드 트럼프 미국 대통령은 최근 제재를 한시 면제해가며 러시아산 경유를 미국과 세계 시장에 공급하기로 블라디미르 푸틴 러시아 대통령과 합의했다고 밝혔다.",
+      "title": "IEA \"회원국, 경유 2천만배럴 조속히 방출 합의\" | 연합뉴스"
     },
     "source_fact:ae6915c8599a849f618077c6": {
       "first_seen_kst": "2026-10-10T06:02:39+09:00",
@@ -591117,6 +592374,31 @@
       "telegram_core_fact": "증권가에서는 컨센서스 대비 실적이 하회한 배경에 대해 연결 자회사 LG이노텍의 수익성 부진을 꼽고 있다.",
       "title": "LG전자, 자회사 부진에 3Q 성적표 '예상치 하회'…가전·TV 등 주력사업은 '선방'"
     },
+    "source_fact:babf1c2ba2835d113cba2419": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://biz.heraldcorp.com/article/10905356",
+      "source": "헤럴드경제",
+      "source_body_digest": "a6f26020ff80e8f35cae71baa5caa44a9e4cbd1b5637b212ae3bfedee638c22e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d6ed73d58130ee2333f2d9e9665b5db0ebe5c7e1f49a37ee95fe468d784f1a5d",
+      "source_fact_keys": [
+        "source_fact:v1:974555cfe8a1a18a512ff29c53c639a9d678106957043ced062020f2a1cf9cd0",
+        "source_fact:v1:9a3977f3761b7dcde7096ae14218564d312c3d580fc57fac2ab42e4022c9aa5f",
+        "source_fact:v1:9de4f3c8cd1eecdc5cf25778f911a9485a17ad92405ced4781f5328683d1de53",
+        "source_fact:v1:b1e9a75e8792b25ecdcbfe6fcff9abb2414f8f610d52a6c7f7ad29312c45126c",
+        "source_fact:v1:b6567cb315a772cb46a3bdf07f1ae03b1259d2d4ea084543350e564a6801a255",
+        "source_fact:v1:ca728c29ef0d1fbeec380fa7c5c18c5df4f0de5d954b55548dcf2ad25fd24392"
+      ],
+      "source_published_kst": "2026-10-16T16:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "정부 “착공·분양·입주 상황판 가동”…주택 공급 모든 정보 한 번에",
+      "telegram_core_fact": "김용수 국무2차장은 16일 정부서울청사에서 열린 ‘제1차 주택공급 정책 브리프’ 브리핑에서“(상황판을 통해) 인허가·착공·분양·입주 등 주택공급 관련 상세한 정보와 향후 공급 계획, 공급 실적, 정책 소식 등을 지속 공개해 국민의 궁금증을 해소하고 예측 가능성을 높여 나가겠다”며 이같이 설명했다.",
+      "title": "정부 “착공·분양·입주 상황판 가동”…주택 공급 모든 정보 한 번에"
+    },
     "source_fact:bacc37c262b5a67aa9cd2c41": {
       "first_seen_kst": "2026-10-15T11:36:50+09:00",
       "lanes": {
@@ -606297,6 +607579,31 @@
       "telegram_core_fact": "삼성전자가 올해 3분기 영업이익 100조원을 처음 넘어서며 역대 최대 분기 실적을 기록했다.",
       "title": "분기 영업익 첫 100조 돌파한 삼성전자…차세대 HBM·공급 확대에 속도"
     },
+    "source_fact:c55605934a154bc7e682d06f": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175843",
+      "source": "매일경제",
+      "source_body_digest": "acb0d81056beecc27407eaef83fd3d894dc94a9dd78df02d29e4b4cf9f130058",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:32fa2988aa91fe6106a5bed0f51047a7607470da0f2311035602d5afbbca263d",
+      "source_fact_keys": [
+        "source_fact:v1:2014670591c7ce8bf3b8c457a58dc7abaa5e97d433fd3f1082375d1181ecc9e0",
+        "source_fact:v1:ba97a4923d9f39af8896514b9998c3a3fb77baf174feeea4b3b8a84dbf827944",
+        "source_fact:v1:c6ae3504bb4230386b1fe018ecc5cd9ce7e7cad8970e26d2f1ad69138ab9e9dd",
+        "source_fact:v1:e51464355bea374ed05885edcc5335a5c5915899937a4f0be7d27fa6d3098bfd",
+        "source_fact:v1:e5d367477dd9179454687a0f8700cac75327dee52cbcf265d06c14bb31fddc71",
+        "source_fact:v1:f4dc3781118b9c0c01c29cf901cdd265622a28e1a0ace8ee25244fce70c7c6b5"
+      ],
+      "source_published_kst": "2026-10-16T09:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "피에스케이홀딩스 '하늘을 향해 불쑥 솟아오른 2027년' 증권사 발표에 강세…5.18%",
+      "telegram_core_fact": "당일 현대차증권 윤동욱 애널리스트는 '하늘을 향해 불쑥 솟아오른 2027년' 이라고 목표가를 270,000원으로 상향 조정한 바 있다.",
+      "title": "피에스케이홀딩스 '하늘을 향해 불쑥 솟아오른 2027년' 증권사 발표에 강세…5.18%"
+    },
     "source_fact:c557a12f314bf9a4ed3a87a4": {
       "first_seen_kst": "2026-10-15T09:43:41+09:00",
       "lanes": {
@@ -614963,6 +616270,31 @@
       "source_title": "[정기선 HD현대 회장 1년①] 조선·전력 슈퍼사이클 올라탔다…자산 100조 시대 눈앞",
       "telegram_core_fact": "HD현대중공업 역시 2분기 영업이익이 1조원을 넘어서는 등 조선 부문의 실적 개선이 그룹 성장을 뒷받침했다. 전력 인프라 시장의 호황을 맞은 HD현대일렉트릭은 상반기 영업이익 5453억원을 기록했다.",
       "title": "[정기선 HD현대 회장 1년①] 조선·전력 슈퍼사이클 올라탔다…자산 100조 시대 눈앞"
+    },
+    "source_fact:cb97433554226acdc9042261": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://biz.heraldcorp.com/article/10905356",
+      "source": "헤럴드경제",
+      "source_body_digest": "a6f26020ff80e8f35cae71baa5caa44a9e4cbd1b5637b212ae3bfedee638c22e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d6ed73d58130ee2333f2d9e9665b5db0ebe5c7e1f49a37ee95fe468d784f1a5d",
+      "source_fact_keys": [
+        "source_fact:v1:974555cfe8a1a18a512ff29c53c639a9d678106957043ced062020f2a1cf9cd0",
+        "source_fact:v1:9a3977f3761b7dcde7096ae14218564d312c3d580fc57fac2ab42e4022c9aa5f",
+        "source_fact:v1:9de4f3c8cd1eecdc5cf25778f911a9485a17ad92405ced4781f5328683d1de53",
+        "source_fact:v1:b1e9a75e8792b25ecdcbfe6fcff9abb2414f8f610d52a6c7f7ad29312c45126c",
+        "source_fact:v1:b6567cb315a772cb46a3bdf07f1ae03b1259d2d4ea084543350e564a6801a255",
+        "source_fact:v1:ca728c29ef0d1fbeec380fa7c5c18c5df4f0de5d954b55548dcf2ad25fd24392"
+      ],
+      "source_published_kst": "2026-10-16T16:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "정부 “착공·분양·입주 상황판 가동”…주택 공급 모든 정보 한 번에",
+      "telegram_core_fact": "김용수 국무2차장은 16일 정부서울청사에서 열린 ‘제1차 주택공급 정책 브리프’ 브리핑에서“(상황판을 통해) 인허가·착공·분양·입주 등 주택공급 관련 상세한 정보와 향후 공급 계획, 공급 실적, 정책 소식 등을 지속 공개해 국민의 궁금증을 해소하고 예측 가능성을 높여 나가겠다”며 이같이 설명했다.",
+      "title": "정부 “착공·분양·입주 상황판 가동”…주택 공급 모든 정보 한 번에"
     },
     "source_fact:cb9b64afd7d67dd7f06c9cff": {
       "first_seen_kst": "2026-10-09T18:34:32+09:00",
@@ -627444,6 +628776,31 @@
       "telegram_core_fact": "펩트론은 지난달 3일 충북 청주시 오송 바이오파크에 들어설 제2공장 건설을 위해 GC녹십자EM과 시공계약을 체결한다고 밝힌 바 있다.",
       "title": "릴리 본계약 불발에 펩트론 下…한미는 첫 비만약 허가에도 10% 급락[바이오 맥짚기]"
     },
+    "source_fact:d4e904a1036555b1a1945efa": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://biz.heraldcorp.com/article/10905356",
+      "source": "헤럴드경제",
+      "source_body_digest": "a6f26020ff80e8f35cae71baa5caa44a9e4cbd1b5637b212ae3bfedee638c22e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d6ed73d58130ee2333f2d9e9665b5db0ebe5c7e1f49a37ee95fe468d784f1a5d",
+      "source_fact_keys": [
+        "source_fact:v1:974555cfe8a1a18a512ff29c53c639a9d678106957043ced062020f2a1cf9cd0",
+        "source_fact:v1:9a3977f3761b7dcde7096ae14218564d312c3d580fc57fac2ab42e4022c9aa5f",
+        "source_fact:v1:9de4f3c8cd1eecdc5cf25778f911a9485a17ad92405ced4781f5328683d1de53",
+        "source_fact:v1:b1e9a75e8792b25ecdcbfe6fcff9abb2414f8f610d52a6c7f7ad29312c45126c",
+        "source_fact:v1:b6567cb315a772cb46a3bdf07f1ae03b1259d2d4ea084543350e564a6801a255",
+        "source_fact:v1:ca728c29ef0d1fbeec380fa7c5c18c5df4f0de5d954b55548dcf2ad25fd24392"
+      ],
+      "source_published_kst": "2026-10-16T16:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "정부 “착공·분양·입주 상황판 가동”…주택 공급 모든 정보 한 번에",
+      "telegram_core_fact": "김용수 국무2차장은 16일 정부서울청사에서 열린 ‘제1차 주택공급 정책 브리프’ 브리핑에서“(상황판을 통해) 인허가·착공·분양·입주 등 주택공급 관련 상세한 정보와 향후 공급 계획, 공급 실적, 정책 소식 등을 지속 공개해 국민의 궁금증을 해소하고 예측 가능성을 높여 나가겠다”며 이같이 설명했다.",
+      "title": "정부 “착공·분양·입주 상황판 가동”…주택 공급 모든 정보 한 번에"
+    },
     "source_fact:d4e9ba1dfa516a5c22811c85": {
       "first_seen_kst": "2026-10-11T17:50:48+09:00",
       "lanes": {
@@ -631662,6 +633019,32 @@
       "source_title": "日 토픽스 지수 56년만에 대수술…종목 40% 줄이는 이유",
       "telegram_core_fact": "일본거래소그룹(JPX)은 일본 대표 주가지수 토픽스(TOPIX) 편입 종목 수를 약 40% 줄이는 대규모 개편안을 발표했다. 니혼게이자이(닛케이)신문에 따르면 도쿄증권거래소를 운영하는 JPX는 10월 말부터 토픽스의 편입 종목 수를 현재 1636개사에서 986개사로 줄이는 대규모 개편 계획을 밝혔다.",
       "title": "日 토픽스 지수 56년만에 대수술…종목 40% 줄이는 이유"
+    },
+    "source_fact:d75b36dbd00a760f00f0858b": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016118500009",
+      "source": "연합뉴스",
+      "source_body_digest": "0e7f83e219783c40821a6f92ddf04bf2b8b56c4c6ba1e128b0b47518b0435885",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:805fa159fcd864b6395ffcf8d652636fb5137941c060711a44948a04d55fedf0",
+      "source_fact_keys": [
+        "source_fact:v1:362ae20961e0b97bd99121bf8eb246fdf5cdc1008b6b23c47a03766a7794d895",
+        "source_fact:v1:6734921c3e13aacfa385a54690359da88ee2477ee4b23132338aead50363b51a",
+        "source_fact:v1:6763df43edee389b12ee3b40e53d4c0110a5cc39e61807cffa74c1bce5ff620f",
+        "source_fact:v1:7b0cb0dbd743880c10489d74432e7bc08fe28fe6e6e41a9fa9057580e5751926",
+        "source_fact:v1:7d1ef542a6a46de6a6312788700f9fa473e26d85463c25241e18b57ad117c9a3",
+        "source_fact:v1:c1796b6c498664e96ede0d017806847664623078fee8054d9b4c58639b3d334a",
+        "source_fact:v1:eb789f38cf682c6923b5341f9c34c12ef6289e4e889b1c2abd6fa49233a41f39"
+      ],
+      "source_published_kst": "2026-10-16T15:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "IEA \"회원국, 경유 2천만배럴 조속히 방출 합의\" | 연합뉴스",
+      "telegram_core_fact": "다음 달 중간선거를 앞두고 물가 안정이 급한 도널드 트럼프 미국 대통령은 최근 제재를 한시 면제해가며 러시아산 경유를 미국과 세계 시장에 공급하기로 블라디미르 푸틴 러시아 대통령과 합의했다고 밝혔다.",
+      "title": "IEA \"회원국, 경유 2천만배럴 조속히 방출 합의\" | 연합뉴스"
     },
     "source_fact:d768a65172ddb830f2f44a46": {
       "first_seen_kst": "2026-10-13T13:05:30+09:00",
@@ -647910,6 +649293,30 @@
       "source_title": "EU, 러시아 군수기업·경영진 '역대급 제재'…북·러 밀착도 정조준",
       "telegram_core_fact": "이번 제재 대상에는 EU 입국 제한과 역내 자산 동결, 자금 및 경제적 자원 제공 금지 등의 조치가 적용된다.",
       "title": "EU, 러시아 군수기업·경영진 '역대급 제재'…북·러 밀착도 정조준"
+    },
+    "source_fact:e2d440e2d0818cb9103bd6da": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12177348",
+      "source": "매일경제",
+      "source_body_digest": "38e4d85d20efe37e6ba48a4fde6d2576073c92323798ee13f359abf17c6368ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:53ae1cfdb6fe9b45b25962d4c7fed161dbdda1e1cccf0f72d977e846ede66820",
+      "source_fact_keys": [
+        "source_fact:v1:0307a7c2a53fb9100327985f45f63e12c697fc19de31a13149d91240f245548a",
+        "source_fact:v1:66497361e2f039dd1c83bb7a45e28702e129e9d36190398eb1375072b8e20b6e",
+        "source_fact:v1:6c711738a001d40279572aa7c351be1e34f4b53b4e7e9779e94919635471f57e",
+        "source_fact:v1:6f37c68d8dd4d8dcdf94f4ac6958ca0f6d88dff2486d5e3d3d490e2a079c5cea",
+        "source_fact:v1:d711eefb0716f793534387b3c050585179ef79121fc735b59c22772c9b5b528a"
+      ],
+      "source_published_kst": "2026-10-16T05:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "알코아, 3분기 매출 37억 달러·24%↑..순이익 2배 이상",
+      "telegram_core_fact": "알코아(AA)가 3분기(9월 30일 종료) 매출액 37억400만 달러로 전년비 23.7% 증가했고, 일반회계기준(GAAP) 희석 주당순이익 1.81달러로 전년 동기(0.88달러) 대비 105.7% 늘었다고 15일 발표했다.",
+      "title": "알코아, 3분기 매출 37억 달러·24%↑..순이익 2배 이상"
     },
     "source_fact:e2d83e27127e6e414e014330": {
       "first_seen_kst": "2026-10-13T13:27:52+09:00",
@@ -678155,6 +679562,31 @@
       "telegram_core_fact": "포스코그룹은 한국형 수소환원제철 기술인 '하이렉스(HyREX)'를 중심으로 정부와 협력해 청정에너지 공급부터 저탄소 철강 활용까지 아우르는 생태계를 구축한다.",
       "title": "포스코그룹, K-GX 참여…철강 탈탄소 전환 선도"
     },
+    "source_fact:f931798b8611f80591d45305": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://biz.heraldcorp.com/article/10905356",
+      "source": "헤럴드경제",
+      "source_body_digest": "a6f26020ff80e8f35cae71baa5caa44a9e4cbd1b5637b212ae3bfedee638c22e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d6ed73d58130ee2333f2d9e9665b5db0ebe5c7e1f49a37ee95fe468d784f1a5d",
+      "source_fact_keys": [
+        "source_fact:v1:974555cfe8a1a18a512ff29c53c639a9d678106957043ced062020f2a1cf9cd0",
+        "source_fact:v1:9a3977f3761b7dcde7096ae14218564d312c3d580fc57fac2ab42e4022c9aa5f",
+        "source_fact:v1:9de4f3c8cd1eecdc5cf25778f911a9485a17ad92405ced4781f5328683d1de53",
+        "source_fact:v1:b1e9a75e8792b25ecdcbfe6fcff9abb2414f8f610d52a6c7f7ad29312c45126c",
+        "source_fact:v1:b6567cb315a772cb46a3bdf07f1ae03b1259d2d4ea084543350e564a6801a255",
+        "source_fact:v1:ca728c29ef0d1fbeec380fa7c5c18c5df4f0de5d954b55548dcf2ad25fd24392"
+      ],
+      "source_published_kst": "2026-10-16T16:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "정부 “착공·분양·입주 상황판 가동”…주택 공급 모든 정보 한 번에",
+      "telegram_core_fact": "김용수 국무2차장은 16일 정부서울청사에서 열린 ‘제1차 주택공급 정책 브리프’ 브리핑에서“(상황판을 통해) 인허가·착공·분양·입주 등 주택공급 관련 상세한 정보와 향후 공급 계획, 공급 실적, 정책 소식 등을 지속 공개해 국민의 궁금증을 해소하고 예측 가능성을 높여 나가겠다”며 이같이 설명했다.",
+      "title": "정부 “착공·분양·입주 상황판 가동”…주택 공급 모든 정보 한 번에"
+    },
     "source_fact:f9352d175a711042c022fdfe": {
       "first_seen_kst": "2026-10-11T07:59:15+09:00",
       "lanes": {
@@ -684234,6 +685666,31 @@
       "telegram_core_fact": "워딩턴 스틸(WS)은 2027 회계연도 1분기(2026년 6~8월) 계속사업 기준 매출액이 27억2660만 달러로 전년비 212% 증가했으며, 계속사업 기준 GAAP 희석 주당순손실은 0.14달러로 전년 동기 0.73달러 순이익에서 적자 전환했다고 10월 7일 발표했다.",
       "title": "워딩턴 스틸, 1분기 매출 27억 달러 212%↑..적자전환"
     },
+    "source_fact:fd813154b1c184a1328fe2fa": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175843",
+      "source": "매일경제",
+      "source_body_digest": "acb0d81056beecc27407eaef83fd3d894dc94a9dd78df02d29e4b4cf9f130058",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:32fa2988aa91fe6106a5bed0f51047a7607470da0f2311035602d5afbbca263d",
+      "source_fact_keys": [
+        "source_fact:v1:2014670591c7ce8bf3b8c457a58dc7abaa5e97d433fd3f1082375d1181ecc9e0",
+        "source_fact:v1:ba97a4923d9f39af8896514b9998c3a3fb77baf174feeea4b3b8a84dbf827944",
+        "source_fact:v1:c6ae3504bb4230386b1fe018ecc5cd9ce7e7cad8970e26d2f1ad69138ab9e9dd",
+        "source_fact:v1:e51464355bea374ed05885edcc5335a5c5915899937a4f0be7d27fa6d3098bfd",
+        "source_fact:v1:e5d367477dd9179454687a0f8700cac75327dee52cbcf265d06c14bb31fddc71",
+        "source_fact:v1:f4dc3781118b9c0c01c29cf901cdd265622a28e1a0ace8ee25244fce70c7c6b5"
+      ],
+      "source_published_kst": "2026-10-16T09:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "피에스케이홀딩스 '하늘을 향해 불쑥 솟아오른 2027년' 증권사 발표에 강세…5.18%",
+      "telegram_core_fact": "당일 현대차증권 윤동욱 애널리스트는 '하늘을 향해 불쑥 솟아오른 2027년' 이라고 목표가를 270,000원으로 상향 조정한 바 있다.",
+      "title": "피에스케이홀딩스 '하늘을 향해 불쑥 솟아오른 2027년' 증권사 발표에 강세…5.18%"
+    },
     "source_fact:fd9171dbcf2ba8dfe1979c7e": {
       "first_seen_kst": "2026-10-14T17:21:42+09:00",
       "lanes": {
@@ -685784,6 +687241,30 @@
       "source_title": "기판 20%·동박판 30% 껑충 … 日·대만 소부장 영향력 커져",
       "telegram_core_fact": "일본 주요 전자재료 업체인 레조낙은 지난 3월부터 기판에 필수적인 동박적층판(CCL)과 프리프레그 전 제품의 가격을 30% 이상 인상했다. 세계 최대 반도체 조립·검사 전문 기업인 대만 ASE는 첨단 패키징 공급 견적 가격을 20% 이상 높인 것으로 알려졌다.",
       "title": "기판 20%·동박판 30% 껑충 … 日·대만 소부장 영향력 커져"
+    },
+    "source_fact:feb74c64b9d2a3ba5ab3f04a": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12177348",
+      "source": "매일경제",
+      "source_body_digest": "38e4d85d20efe37e6ba48a4fde6d2576073c92323798ee13f359abf17c6368ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:53ae1cfdb6fe9b45b25962d4c7fed161dbdda1e1cccf0f72d977e846ede66820",
+      "source_fact_keys": [
+        "source_fact:v1:0307a7c2a53fb9100327985f45f63e12c697fc19de31a13149d91240f245548a",
+        "source_fact:v1:66497361e2f039dd1c83bb7a45e28702e129e9d36190398eb1375072b8e20b6e",
+        "source_fact:v1:6c711738a001d40279572aa7c351be1e34f4b53b4e7e9779e94919635471f57e",
+        "source_fact:v1:6f37c68d8dd4d8dcdf94f4ac6958ca0f6d88dff2486d5e3d3d490e2a079c5cea",
+        "source_fact:v1:d711eefb0716f793534387b3c050585179ef79121fc735b59c22772c9b5b528a"
+      ],
+      "source_published_kst": "2026-10-16T05:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "알코아, 3분기 매출 37억 달러·24%↑..순이익 2배 이상",
+      "telegram_core_fact": "알코아(AA)가 3분기(9월 30일 종료) 매출액 37억400만 달러로 전년비 23.7% 증가했고, 일반회계기준(GAAP) 희석 주당순이익 1.81달러로 전년 동기(0.88달러) 대비 105.7% 늘었다고 15일 발표했다.",
+      "title": "알코아, 3분기 매출 37억 달러·24%↑..순이익 2배 이상"
     },
     "source_fact:febdbd3f0536e780cf957361": {
       "first_seen_kst": "2026-10-07T09:44:16+09:00",
@@ -692887,6 +694368,32 @@
       "telegram_core_fact": "지멘스는 산업용 AI 에이전트를 넘어 로봇과 공장을 자율적으로 운영하는 피지컬 AI 분야로도 사업을 확대하고 있다.",
       "title": "지멘스, 韓 반도체·조선·배터리 AI 공략…“내년 제조 AI 도입 본격화”"
     },
+    "title:0e98bc41385fb9e610ef3ff3": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016118500009",
+      "source": "연합뉴스",
+      "source_body_digest": "0e7f83e219783c40821a6f92ddf04bf2b8b56c4c6ba1e128b0b47518b0435885",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:805fa159fcd864b6395ffcf8d652636fb5137941c060711a44948a04d55fedf0",
+      "source_fact_keys": [
+        "source_fact:v1:362ae20961e0b97bd99121bf8eb246fdf5cdc1008b6b23c47a03766a7794d895",
+        "source_fact:v1:6734921c3e13aacfa385a54690359da88ee2477ee4b23132338aead50363b51a",
+        "source_fact:v1:6763df43edee389b12ee3b40e53d4c0110a5cc39e61807cffa74c1bce5ff620f",
+        "source_fact:v1:7b0cb0dbd743880c10489d74432e7bc08fe28fe6e6e41a9fa9057580e5751926",
+        "source_fact:v1:7d1ef542a6a46de6a6312788700f9fa473e26d85463c25241e18b57ad117c9a3",
+        "source_fact:v1:c1796b6c498664e96ede0d017806847664623078fee8054d9b4c58639b3d334a",
+        "source_fact:v1:eb789f38cf682c6923b5341f9c34c12ef6289e4e889b1c2abd6fa49233a41f39"
+      ],
+      "source_published_kst": "2026-10-16T15:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "IEA \"회원국, 경유 2천만배럴 조속히 방출 합의\" | 연합뉴스",
+      "telegram_core_fact": "다음 달 중간선거를 앞두고 물가 안정이 급한 도널드 트럼프 미국 대통령은 최근 제재를 한시 면제해가며 러시아산 경유를 미국과 세계 시장에 공급하기로 블라디미르 푸틴 러시아 대통령과 합의했다고 밝혔다.",
+      "title": "IEA \"회원국, 경유 2천만배럴 조속히 방출 합의\" | 연합뉴스"
+    },
     "title:0ea2cc80f4641de16de3998a": {
       "first_seen_kst": "2026-10-06T18:16:47+09:00",
       "lanes": {
@@ -695167,6 +696674,30 @@
       "source_title": "삼전 ‘107조 서프라이즈’도 못 막았다…금리 급등·외인 매도에 코스피↓[투자360]",
       "telegram_core_fact": "특히 미 국채 10년물 금리가 장중 5.36%를 넘어서며 2002년 이후 최고치를 기록했고, 30년물 금리도 5.73%대까지 오르며 증시에 부담을 줬다.",
       "title": "삼전 ‘107조 서프라이즈’도 못 막았다…금리 급등·외인 매도에 코스피↓[투자360]"
+    },
+    "title:15019a085d8feff7bf244d3d": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12177348",
+      "source": "매일경제",
+      "source_body_digest": "38e4d85d20efe37e6ba48a4fde6d2576073c92323798ee13f359abf17c6368ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:53ae1cfdb6fe9b45b25962d4c7fed161dbdda1e1cccf0f72d977e846ede66820",
+      "source_fact_keys": [
+        "source_fact:v1:0307a7c2a53fb9100327985f45f63e12c697fc19de31a13149d91240f245548a",
+        "source_fact:v1:66497361e2f039dd1c83bb7a45e28702e129e9d36190398eb1375072b8e20b6e",
+        "source_fact:v1:6c711738a001d40279572aa7c351be1e34f4b53b4e7e9779e94919635471f57e",
+        "source_fact:v1:6f37c68d8dd4d8dcdf94f4ac6958ca0f6d88dff2486d5e3d3d490e2a079c5cea",
+        "source_fact:v1:d711eefb0716f793534387b3c050585179ef79121fc735b59c22772c9b5b528a"
+      ],
+      "source_published_kst": "2026-10-16T05:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "알코아, 3분기 매출 37억 달러·24%↑..순이익 2배 이상",
+      "telegram_core_fact": "알코아(AA)가 3분기(9월 30일 종료) 매출액 37억400만 달러로 전년비 23.7% 증가했고, 일반회계기준(GAAP) 희석 주당순이익 1.81달러로 전년 동기(0.88달러) 대비 105.7% 늘었다고 15일 발표했다.",
+      "title": "알코아, 3분기 매출 37억 달러·24%↑..순이익 2배 이상"
     },
     "title:15047c11eddaff34cdc91d07": {
       "first_seen_kst": "2026-10-15T02:00:57+09:00",
@@ -732936,6 +734467,24 @@
       "telegram_core_fact": "중국의 지난 9월 승용차 수출이 1년 전보다 64% 급증한 반면 내수 판매는 27% 감소했다.",
       "title": "中 승용차 수출 64% 급증…내수 27% 감소 속 해외 의존 심화"
     },
+    "title:7a91d8389c8a0c92f0ce11aa": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://biz.heraldcorp.com/article/10905273",
+      "source": "헤럴드경제",
+      "source_body_digest": "50357aa1b76a9ec1363089a9edd23f89b571d4d4e321f95523b2eeb7537cde8c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-16T16:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "전월세난 잡아라…정부 “내년까지 수도권 공적주택 10만호 입주 추진” [부동산360]",
+      "telegram_core_fact": "그간 추진해 온 공급 기반 마련 성과를 바탕으로 실제 입주 물량 확대로 이어지도록 주요 정책 과제들을 속도감 있게 이행하겠다는 계획이다.",
+      "title": "전월세난 잡아라…정부 “내년까지 수도권 공적주택 10만호 입주 추진” [부동산360]"
+    },
     "title:7ab19b5b17eab0378d21bb47": {
       "first_seen_kst": "2026-10-15T12:36:21+09:00",
       "lanes": {
@@ -735100,6 +736649,31 @@
       "source_title": "FSN 자회사 NMG, 글로벌 PC·콘솔 마케팅 솔루션 기업 ‘게임사이트’와 공식 파트너십 체결",
       "telegram_core_fact": "코스닥 상장사 FSN의 자회사인 디지털 마케팅 기업 넥스트미디어그룹(이하 NMG)이 PC·콘솔 게임 마케팅 어트리뷰션 기업 게임사이트(Gamesight)와 지난 6일 파트너십을 체결했다고 밝혔다.",
       "title": "FSN 자회사 NMG, 글로벌 PC·콘솔 마케팅 솔루션 기업 ‘게임사이트’와 공식 파트너십 체결"
+    },
+    "title:80be827b34c52994bb9c230f": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175843",
+      "source": "매일경제",
+      "source_body_digest": "acb0d81056beecc27407eaef83fd3d894dc94a9dd78df02d29e4b4cf9f130058",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:32fa2988aa91fe6106a5bed0f51047a7607470da0f2311035602d5afbbca263d",
+      "source_fact_keys": [
+        "source_fact:v1:2014670591c7ce8bf3b8c457a58dc7abaa5e97d433fd3f1082375d1181ecc9e0",
+        "source_fact:v1:ba97a4923d9f39af8896514b9998c3a3fb77baf174feeea4b3b8a84dbf827944",
+        "source_fact:v1:c6ae3504bb4230386b1fe018ecc5cd9ce7e7cad8970e26d2f1ad69138ab9e9dd",
+        "source_fact:v1:e51464355bea374ed05885edcc5335a5c5915899937a4f0be7d27fa6d3098bfd",
+        "source_fact:v1:e5d367477dd9179454687a0f8700cac75327dee52cbcf265d06c14bb31fddc71",
+        "source_fact:v1:f4dc3781118b9c0c01c29cf901cdd265622a28e1a0ace8ee25244fce70c7c6b5"
+      ],
+      "source_published_kst": "2026-10-16T09:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "피에스케이홀딩스 '하늘을 향해 불쑥 솟아오른 2027년' 증권사 발표에 강세…5.18%",
+      "telegram_core_fact": "당일 현대차증권 윤동욱 애널리스트는 '하늘을 향해 불쑥 솟아오른 2027년' 이라고 목표가를 270,000원으로 상향 조정한 바 있다.",
+      "title": "피에스케이홀딩스 '하늘을 향해 불쑥 솟아오른 2027년' 증권사 발표에 강세…5.18%"
     },
     "title:80c2ba0b9411d6aeb54a435c": {
       "first_seen_kst": "2026-10-06T20:54:05+09:00",
@@ -747346,6 +748920,34 @@
       "source_title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\"",
       "telegram_core_fact": "인공지능(AI) 수요 증가에 따른 메모리 반도체 공급 부족과 서버·스토리지 가격 상승이 2028년까지 이어질 것이라는 전망이 나왔다.",
       "title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\""
+    },
+    "title:a241a4769073f8b67c283925": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04414886645613576",
+      "source": "이데일리",
+      "source_body_digest": "1801a9025df6898c26aab0d4f344aa1185c8374f253ef36e690dd005198c3c68",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d9983495394faef896506a99a16c3fde9707fe374faebde963a610e4c9f0d740",
+      "source_fact_keys": [
+        "source_fact:v1:0e5e5261d998b303f0ebeca94e7df9070750c07b005b133315d1b6c68ab753a9",
+        "source_fact:v1:197bd1e3bd078fdbfd7f60636f7ab853ed08403283a5ffcb9377573e3122d1fe",
+        "source_fact:v1:34c21866915141b8529b2f40671c981a33d7871874269e1898e0903cad713133",
+        "source_fact:v1:5633f4fab0ebcd58dc50c7768cf52bac62b0988e0ad229d6aaeb00c47b48ae10",
+        "source_fact:v1:98522214b0de0e188356157c30461274b5e74431fbb45582ada5766851615983",
+        "source_fact:v1:a5b9393dc31122f3d700f583a65233a853f3baf0cb245f73d74134e50f566101",
+        "source_fact:v1:e6783e16500cdb1b96029276d4ff0ac00aa8423ca3b86c6c5ad2d263050b3fbc",
+        "source_fact:v1:eeea9b097d292690b88825d85f3f407ae82e687628178897c0fef0e1d2f79076",
+        "source_fact:v1:fdab64eeda20a97390987f720d3cebf51ee982c51fac659bd96b3ac2abeec927"
+      ],
+      "source_published_kst": "2026-10-16T16:27+09:00",
+      "source_supply_terms": {},
+      "source_title": "중국 첨단기술 이유 있었네…작년 R&D에만 800조원 가까이 썼다",
+      "telegram_core_fact": "[베이징=이데일리 이명철 특파원] 중국이 지난해 연구개발(R&D)에 800조원 가까운 비용을 지출한 것으로 집계됐다.",
+      "title": "중국 첨단기술 이유 있었네…작년 R&D에만 800조원 가까이 썼다"
     },
     "title:a245f3c2aa6d4fef831b42e0": {
       "first_seen_kst": "2026-10-04T01:08:35+09:00",
@@ -768805,6 +770407,24 @@
       "source": "이투데이",
       "title": "GC녹십자, 국내외 학회 참가해 독자 mRNA-LNP 플랫폼 연구 성과 공개"
     },
+    "title:dc8c9a6738de1d097bac50eb": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636713",
+      "source": "이투데이",
+      "source_body_digest": "d9c867058e6d4685836c1379ae61f7f57682bd592a22d30d8e34c3f5938c4ff6",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-16T14:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "인텔리빅스, 13년 연속 영업흑자 앞세워 코스닥 상장…\"국방·피지컬 AI 확대\"",
+      "telegram_core_fact": "상장 직후 유통 가능 물량은 전체 상장예정주식의 23.95%인 271만5067주다.",
+      "title": "인텔리빅스, 13년 연속 영업흑자 앞세워 코스닥 상장…\"국방·피지컬 AI 확대\""
+    },
     "title:dc9ca108a803737917bf919e": {
       "first_seen_kst": "2026-10-08T22:06:55+09:00",
       "lanes": {
@@ -778980,6 +780600,31 @@
       "source_published_kst": "2026-10-03T16:27+09:00",
       "title": "현대캐피탈도 해킹 확인…주택대출 모집인 정보 일부 유출 | 연합뉴스"
     },
+    "title:f8efd7cdef7358b9f364a70c": {
+      "first_seen_kst": "2026-10-17T00:21:55+09:00",
+      "lanes": {
+        "live": "2026-10-17T00:21:55+09:00"
+      },
+      "last_seen_kst": "2026-10-17T00:21:55+09:00",
+      "link": "https://biz.heraldcorp.com/article/10905356",
+      "source": "헤럴드경제",
+      "source_body_digest": "a6f26020ff80e8f35cae71baa5caa44a9e4cbd1b5637b212ae3bfedee638c22e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d6ed73d58130ee2333f2d9e9665b5db0ebe5c7e1f49a37ee95fe468d784f1a5d",
+      "source_fact_keys": [
+        "source_fact:v1:974555cfe8a1a18a512ff29c53c639a9d678106957043ced062020f2a1cf9cd0",
+        "source_fact:v1:9a3977f3761b7dcde7096ae14218564d312c3d580fc57fac2ab42e4022c9aa5f",
+        "source_fact:v1:9de4f3c8cd1eecdc5cf25778f911a9485a17ad92405ced4781f5328683d1de53",
+        "source_fact:v1:b1e9a75e8792b25ecdcbfe6fcff9abb2414f8f610d52a6c7f7ad29312c45126c",
+        "source_fact:v1:b6567cb315a772cb46a3bdf07f1ae03b1259d2d4ea084543350e564a6801a255",
+        "source_fact:v1:ca728c29ef0d1fbeec380fa7c5c18c5df4f0de5d954b55548dcf2ad25fd24392"
+      ],
+      "source_published_kst": "2026-10-16T16:32+09:00",
+      "source_supply_terms": {},
+      "source_title": "정부 “착공·분양·입주 상황판 가동”…주택 공급 모든 정보 한 번에",
+      "telegram_core_fact": "김용수 국무2차장은 16일 정부서울청사에서 열린 ‘제1차 주택공급 정책 브리프’ 브리핑에서“(상황판을 통해) 인허가·착공·분양·입주 등 주택공급 관련 상세한 정보와 향후 공급 계획, 공급 실적, 정책 소식 등을 지속 공개해 국민의 궁금증을 해소하고 예측 가능성을 높여 나가겠다”며 이같이 설명했다.",
+      "title": "정부 “착공·분양·입주 상황판 가동”…주택 공급 모든 정보 한 번에"
+    },
     "title:f8f03f32e1cff6358b210f6c": {
       "first_seen_kst": "2026-10-10T07:01:20+09:00",
       "lanes": {
@@ -781586,5 +783231,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-16T23:57:27+09:00"
+  "updated_at_kst": "2026-10-17T00:21:55+09:00"
 }
