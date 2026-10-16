@@ -36,7 +36,6 @@ jobs:
     env:
       SEND_TELEGRAM: 'false'
       TELEGRAM_DRY_RUN: 'true'
-      RADAR_RUN_MODE: 'live'
     steps:
       - uses: actions/checkout@v4
         with:
@@ -48,7 +47,10 @@ jobs:
         run: |
           python scripts/verify_gamejoa_market_materiality.py
           python scripts/verify_gamejoa_incremental_news_quality.py
-          python scripts/verify_gamejoa_delivery_contract.py
+      - name: Verify production delivery contract in live mode
+        env:
+          RADAR_RUN_MODE: 'live'
+        run: python scripts/verify_gamejoa_delivery_contract.py
       - name: Save regression evidence
         if: always()
         uses: actions/upload-artifact@v4
