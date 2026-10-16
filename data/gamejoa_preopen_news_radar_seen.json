@@ -2448,6 +2448,46 @@
       "telegram_core_fact": "앞으로 팔란티어를 평가할 핵심 기준은 AI 시대의 성장 가능성 자체보다, 실제 매출과 이익 증가가 높은 밸류에이션을 얼마나 빠르게 뒷받침할 수 있느냐가 될 전망입니다.",
       "title": "빈 라덴 잡은 이 기업…AI 시대 승자 될까 [박신영의 월가 아나토미]"
     },
+    "core:0bf4232175b93ca8cfd9a30d": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etnews.com/20261016000211",
+      "source": "전자신문",
+      "source_body_digest": "cf1c8858297793352b8ddf09e72c9aa912ec81486a9cf3a96a4e2e98a69f089b",
+      "source_event_identity": "source_event:v2:named_supply_order:028dd338706ff72085c0b0977afa36d98d715119af78f5e1e5bbba027fbc1968",
+      "source_fact_identity": "source_facts:v1:5060dec0469c3d0963ac9bd5e8bced31e78483b67b26e01e2f1aad3daa1d408d",
+      "source_fact_keys": [
+        "source_fact:v1:20af6df71e956348a28ecd8ca4711831fb5a4665cbb793249adf1f9c7de687fe",
+        "source_fact:v1:835f23e2fcc8a7c76d20c052221fa1abcad347f5fd30fa6ff5433657b9a0ed0a",
+        "source_fact:v1:be5f3caf5dfa4e258a64d37e9d60a8926fe2d868885fdd1b901b09a5901e08f9",
+        "source_fact:v1:dea194bbcabd0c405616fe7288b2b4272460dd4123f06612f44dfa89b519b5c1"
+      ],
+      "source_published_kst": "2026-10-16T14:16+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "12900000000"
+          ]
+        ],
+        "customer": "제조기업",
+        "delivery_period": "",
+        "disclosure_date": "2026-10-16",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "쎄노텍",
+        "product": "이차전지용첨가제",
+        "quantities": [],
+        "stage": "signed"
+      },
+      "source_title": "쎄노텍, 129억원 규모 이차전지 양극재 첨가제 공급계약 체결",
+      "telegram_core_fact": "첨단 세라믹 소재 전문기업 쎄노텍이 이차전지 양극재 제조기업과 약 129억원 이차전지용 첨가제 공급계약을 체결했다고 16일 밝혔다.",
+      "title": "쎄노텍, 129억원 규모 이차전지 양극재 첨가제 공급계약 체결"
+    },
     "core:0c038e787d8b4397032cc37e": {
       "first_seen_kst": "2026-10-16T19:25:42+09:00",
       "lanes": {
@@ -4191,6 +4231,28 @@
       "telegram_core_fact": "\"상표 심사가 6개월 이상 지연될 경우 매출 감소에 따른 경제적 피해가 연간 약 3조원으로 추정된다\"고 질타했다. 우리나라 상표출원 건수는 2023년 31만3천533건 이후 매년 늘어나고 있으나 심사관 수는 2023년 160명에서 2024년 177명으로 17명 늘어난 이후 올해까지 변동이 없는 상황이다.",
       "title": "\"상표출원 심사 1년↑…소상공인·중소기업 피해 연간 3조 추정\""
     },
+    "core:126d63f63f7854f705cf0aa6": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636673",
+      "source": "이투데이",
+      "source_body_digest": "bf19edeb62a652623227e28971f01f5094b16ea0000cda3438cebed2c15e4b72",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7516a37e74cc07df29ff3003d052e8a85a3d7865994f976375ef2d901fb1c31a",
+      "source_fact_keys": [
+        "source_fact:v1:beae874e345bd2f74cf0d3b9eccc70d31c858064a107017e9513fd16fab993d7",
+        "source_fact:v1:e6371e2ef901c69a63a74e3b0d082103a9e355964c327ce522de861c4f104a12",
+        "source_fact:v1:ed60613fe5e5f2460c2b996f46b7abdd63fb5e0a6fe117820605c098d69fb540"
+      ],
+      "source_published_kst": "2026-10-16T13:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "형지엘리트, 2027시즌 상품부터 RFID 도입…스마트 물류 전환 추진",
+      "telegram_core_fact": "형지엘리트가 2027시즌 상품부터 무선주파수식별(RFID) 기술을 도입해 물류 관리 체계의 디지털 전환에 나선다. 형지엘리트는 전일 형지글로벌패션복합센터에서 글로벌 스마트태그 기업 비온택과 RFID 시스템 도입을 위한 업무협약(MOU)을 체결했다고 16일 밝혔다.",
+      "title": "형지엘리트, 2027시즌 상품부터 RFID 도입…스마트 물류 전환 추진"
+    },
     "core:1283f6d879d79d675238fa37": {
       "first_seen_kst": "2026-10-15T00:34:31+09:00",
       "lanes": {
@@ -5921,6 +5983,24 @@
       "source_title": "\"진짜 호황은 지금부터\"…AI 에이전트가 키울 반도체 열풍",
       "telegram_core_fact": "마지막으로 반도체 수요 전망에 대해 강 센터장은 \"에이전트가 기록을 저장하기 위해 범용 D램과 낸드 플래시, 특히 SSD를 엄청나게 쓰게 된다\"며 \"피지컬 AI와 에이전트의 가상 머신 구동 등을 고려할 때 반도체 수요는 아직 진짜 시작도 안 했다\"고 내다봤다.",
       "title": "\"진짜 호황은 지금부터\"…AI 에이전트가 키울 반도체 열풍"
+    },
+    "core:1add6b60aa083f21369ec382": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636665",
+      "source": "이투데이",
+      "source_body_digest": "db2eac6a1671db1a5dba2824834ad510a40a7045793c8b4226f762065f9ed30d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-16T13:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "CJ프레시웨이, 농협과 어린이집·유치원에 프리미엄 한우 공급 확대",
+      "telegram_core_fact": "CJ프레시웨이가 농협경제지주와 손잡고 어린이집과 유치원 등에 공급하는 프리미엄 축산물 상품을 확대한다. CJ프레시웨이에 따르면 올해 1~9월 아이누리 유통 경로의 프리미엄 축산물 판매량은 전년비 29.1% 증가했다.",
+      "title": "CJ프레시웨이, 농협과 어린이집·유치원에 프리미엄 한우 공급 확대"
     },
     "core:1b0fbd71bc24e2c0fbba5e02": {
       "first_seen_kst": "2026-10-15T06:12:33+09:00",
@@ -21975,6 +22055,27 @@
       "telegram_core_fact": "영진약품은 프랑스 제약사 아테나와 라세카도트릴 산제의 국내 도입을 위한 라이선스 계약 및 제품 공급계약을 체결했다.",
       "title": "영진약품, 프랑스 아테나와 라세카도트릴 산제 국내 도입 계약 체결"
     },
+    "core:62f2208f74145e188b4f3ec3": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829124",
+      "source": "뉴시스",
+      "source_body_digest": "e8b56cdbb5a662aee9e568c98f24bc1d75467b6c757dd60193812b2b93eb6eed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:074e45836c408ca1d0c46355794cfb4d8e84821c000d4f7f9696c8518fa0bd26",
+      "source_fact_keys": [
+        "source_fact:v1:2110a964f961b1b185826c3bba768ec22143860cd436d04ba5a709cc42a46f9f",
+        "source_fact:v1:ff1703ff9574bbb5ba4c7d1d4da209398ed7752860fa6036a598c61b56001cb2"
+      ],
+      "source_published_kst": "2026-10-16T14:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "출렁이는 증시에도 KT&G 역대 최고가 기록…\"글로벌 사업 성장세\"",
+      "telegram_core_fact": "KT&G는 튀르키예, 러시아, 카자흐스탄, 인도네시아 등 해외 생산거점을 확대하며 국내를 포함한 글로벌 5각 생산체제를 구축했다.",
+      "title": "출렁이는 증시에도 KT&G 역대 최고가 기록…\"글로벌 사업 성장세\""
+    },
     "core:62f32d9011bccc0cf2fce5af": {
       "first_seen_kst": "2026-10-13T07:27:37+09:00",
       "lanes": {
@@ -25798,6 +25899,32 @@
       "telegram_core_fact": "행안부는 선정된 마을이 실제 태양광 발전사업에 신속하게 나설 수 있도록 발전사업 허가 등 인허가 절차와 최대 85%의 금융지원, 사업부지 확보 등 사업 추진 과정에서 발생하는 문제 해소를 위해 관계기관·지방정부와 협력해 지원한다.",
       "title": "2차 햇빛소득마을 436개 선정…인허가·금융·부지확보 지원 | 연합뉴스"
     },
+    "core:7353c1eedc2bfac2c3a115ca": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etnews.com/20261016000210",
+      "source": "전자신문",
+      "source_body_digest": "ca9ad93647f3b20308ba8a31de8463d0c71daabe50c5b0c6e7510b3202609e21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4853659d1565149dba8b4c14a3edaf24582d40cd4032262b0fb17ab63def50a",
+      "source_fact_keys": [
+        "source_fact:v1:0743e6f4834900b44c8afb5a6b130770467b9d8c9bb00a1f46d1385545dd38c9",
+        "source_fact:v1:15aa2ccf64b2afcb535d63d7f1da03dd4c8e0fcb13c5648ea6c2bc8f7a72457f",
+        "source_fact:v1:2b6f0b995e484f91433e7e4b70f5ce7c08ebb5b745866b50ea2befad3f2623de",
+        "source_fact:v1:3c25c4248ad4ea7456d479ecf170269c441910afeb37b02d2451ddb4f16a326b",
+        "source_fact:v1:3d159b1e6c00160c38bba020b7f1b9d307405416ad89bbe12f4cce552afc9785",
+        "source_fact:v1:d7aa58c8bd0e6867efd8040da950d6e26f0d88fcf48413bb166d579c4d7b389d",
+        "source_fact:v1:f856f9db1138ea94bd9855d7825f612e7a886e9601b977222e669b84aa7aedab"
+      ],
+      "source_published_kst": "2026-10-16T14:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "브릴스, 美 로봇 규제 대응 현지생산 박차…AMR부터 시작",
+      "telegram_core_fact": "현지 파트너를 통해 미국산 부품 조달 비중을 높여 미국의 외국산 첨단 로봇 규제 강화와 공급망, 보안 리스크에 대응한다.",
+      "title": "브릴스, 美 로봇 규제 대응 현지생산 박차…AMR부터 시작"
+    },
     "core:7397f0d9df3ff0b019cff9fd": {
       "first_seen_kst": "2026-10-16T18:28:57+09:00",
       "lanes": {
@@ -26665,6 +26792,39 @@
       "source_title": "호남 반도체 전력망 1.4조 청구서…삼전닉스가 80% 떠안는다",
       "telegram_core_fact": "호남 반도체 클러스터 1단계 전력 공급망 구축에 1조4000억원이 투입되는 가운데 한국전력이 부담하는 몫은 20% 미만에 그칠 것으로 나타났다.",
       "title": "호남 반도체 전력망 1.4조 청구서…삼전닉스가 80% 떠안는다"
+    },
+    "core:77bd6b682ac827eeeb53775c": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.mk.co.kr/news/business/12178100",
+      "source": "매일경제",
+      "source_body_digest": "602d81de5f44011de3ea090f98f1f62bef519bdceda4122dcd89a2dc6ad3f6b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd079209cbc9c9639826ae88dae4e76fc707d5372545732c5715d9a42a379c4b",
+      "source_fact_keys": [
+        "source_fact:v1:3249b26e7fe22e1891ab41534b745dba429832eb6b87699ebdfd5d1aff9e01b9",
+        "source_fact:v1:39671f7ccab055deb866575d840881239aabc7e50d61fce3c6f80c1ddaa0c276",
+        "source_fact:v1:40e59fd388ca6f3dd7bebe728f734812763dc447a40266a90f59e71f20e71812",
+        "source_fact:v1:77fb364f3a809bf8aaa9a36ed1c5f7505316e9f7a90ea2daecd828b5456a5dff",
+        "source_fact:v1:7ef887e750ea8456edc1ba7b479192279ccdc93a608c4d68de5599e37c8e9a78",
+        "source_fact:v1:81392949f96ccb5e4f67c0ff19fc78e5d9225f928e3969830443ad61bee9a3d3",
+        "source_fact:v1:82763701d335926c658168cf148944d9786a3c3bb18e9fa2f83dad0bf64c2588",
+        "source_fact:v1:9af3bc85d994178ed3602ca93a476e334e1b13e2c753b0b9a3dd223a195fe44f",
+        "source_fact:v1:9f6de459082a47a3f0d87ec0754bf9ceae310b4afb32922d36f931ce2407a138",
+        "source_fact:v1:afcff4f71e82670cd879a6e59dd1368bf6dd78cabc82756e62a3947a83e46231",
+        "source_fact:v1:b1a0e68442933e89831c66925cfaa349868a166c47a48dbf8825b0b33bd0b948",
+        "source_fact:v1:bc17166108008ce51c3b7e9929e2b57972256fe9cfc14fa5837234d32e39a2db",
+        "source_fact:v1:bf4a5832d773889e3938d2c7aefca569e490c54e3ff73866185dbcee4f496f50",
+        "source_fact:v1:c39580912843467497e12e8e6aeb40ddd98e4dd2704e2f0da85020595f25669e"
+      ],
+      "source_published_kst": "2026-10-16T17:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토",
+      "telegram_core_fact": "전자제품과 인공지능(AI)을 작동시키는 핵심 부품인 메모리 공급 부족 사태가 심해지고 있음을 의식한 것이다.",
+      "title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토"
     },
     "core:77cc97562c8eb4b87f55a927": {
       "first_seen_kst": "2026-10-07T15:30:27+09:00",
@@ -49912,6 +50072,29 @@
       "telegram_core_fact": "반도체 공정 기업 멜콘이 코스닥 입성 첫날 공모가 대비 80% 급등하고 있다. 한국거래소에 따르면 이날 오전 9시48분 기준 코스닥 시장에서 멜콘은 공모가 대비 86.99% 급등한 2만3000원에 거래되고 있다.",
       "title": "반도체 공정기업 멜콘, 코스닥 입성 첫날 80%대 급등"
     },
+    "core:e244580cb59f3904450368e9": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etnews.com/20261016000212",
+      "source": "전자신문",
+      "source_body_digest": "e86077afed54cd5aa02ab4e645aa10bda66032356dcafbe3dee4f230b14e1564",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f6f189edb77db972396488414781df888d5f64c0df9a74143134f3553dba0f3",
+      "source_fact_keys": [
+        "source_fact:v1:108d49e21c1b995a4cbc13095dcd5d32f7151b765770a96a7282ac0869ac9518",
+        "source_fact:v1:2861006f14556fea7c888b64b5d2d09dd344a9247b417943404d463040d5189f",
+        "source_fact:v1:999fe2ff34e78e857cf56014218e4377bed42fa8b03135bd07fa4640575255fa",
+        "source_fact:v1:e79a2fc3ea9dbf2524b8bec26ebc80815ad22dc6af1c0e6a235333fe60f350ec"
+      ],
+      "source_published_kst": "2026-10-16T14:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "네이버페이, 제주 소상공인에 75억원 특별보증…디지털 전환도 지원",
+      "telegram_core_fact": "이번 협약을 통해 4개 기관은 도내 소기업, 소상공인에게 총 75억원 '제주 소상공인 희망온 특별보증'을 공급한다.",
+      "title": "네이버페이, 제주 소상공인에 75억원 특별보증…디지털 전환도 지원"
+    },
     "core:e24ea02a0f7c2748f43c64cd": {
       "first_seen_kst": "2026-10-10T15:50:47+09:00",
       "lanes": {
@@ -58088,6 +58271,46 @@
       "link": "https://www.yna.co.kr/view/AKR20261001016452003",
       "source": "연합뉴스",
       "title": "500억불 투자 VS 미정…알래스카 LNG 대미투자 새 '뇌관'(종합2보) | 연합뉴스"
+    },
+    "event:2654ff114e3db51b8093d0e5": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etnews.com/20261016000211",
+      "source": "전자신문",
+      "source_body_digest": "cf1c8858297793352b8ddf09e72c9aa912ec81486a9cf3a96a4e2e98a69f089b",
+      "source_event_identity": "source_event:v2:named_supply_order:028dd338706ff72085c0b0977afa36d98d715119af78f5e1e5bbba027fbc1968",
+      "source_fact_identity": "source_facts:v1:5060dec0469c3d0963ac9bd5e8bced31e78483b67b26e01e2f1aad3daa1d408d",
+      "source_fact_keys": [
+        "source_fact:v1:20af6df71e956348a28ecd8ca4711831fb5a4665cbb793249adf1f9c7de687fe",
+        "source_fact:v1:835f23e2fcc8a7c76d20c052221fa1abcad347f5fd30fa6ff5433657b9a0ed0a",
+        "source_fact:v1:be5f3caf5dfa4e258a64d37e9d60a8926fe2d868885fdd1b901b09a5901e08f9",
+        "source_fact:v1:dea194bbcabd0c405616fe7288b2b4272460dd4123f06612f44dfa89b519b5c1"
+      ],
+      "source_published_kst": "2026-10-16T14:16+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "12900000000"
+          ]
+        ],
+        "customer": "제조기업",
+        "delivery_period": "",
+        "disclosure_date": "2026-10-16",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "쎄노텍",
+        "product": "이차전지용첨가제",
+        "quantities": [],
+        "stage": "signed"
+      },
+      "source_title": "쎄노텍, 129억원 규모 이차전지 양극재 첨가제 공급계약 체결",
+      "telegram_core_fact": "첨단 세라믹 소재 전문기업 쎄노텍이 이차전지 양극재 제조기업과 약 129억원 이차전지용 첨가제 공급계약을 체결했다고 16일 밝혔다.",
+      "title": "쎄노텍, 129억원 규모 이차전지 양극재 첨가제 공급계약 체결"
     },
     "event:267a0084e5f18d2027b422b3": {
       "first_seen_kst": "2026-10-13T22:33:57+09:00",
@@ -69844,29 +70067,35 @@
     "event:ec5bd5b4b19c9166fc9e9747": {
       "first_seen_kst": "2026-10-16T17:33:02+09:00",
       "lanes": {
-        "live": "2026-10-16T17:33:02+09:00"
+        "live": "2026-10-16T21:12:58+09:00"
       },
-      "last_seen_kst": "2026-10-16T17:33:02+09:00",
-      "link": "https://www.news1.kr/it-science/mobile/6321591",
-      "source": "뉴스1",
-      "source_body_digest": "d4d9a2f2c5cf92d667d74dca284129e1c5c6b0c84350e7b24b4110b045a8d3b5",
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.mk.co.kr/news/business/12178100",
+      "source": "매일경제",
+      "source_body_digest": "602d81de5f44011de3ea090f98f1f62bef519bdceda4122dcd89a2dc6ad3f6b3",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:4a25416708c82e0b1a785a1b56e66b3e42ffacee03f1ca4dc07081a3bf9f29ea",
+      "source_fact_identity": "source_facts:v1:fd079209cbc9c9639826ae88dae4e76fc707d5372545732c5715d9a42a379c4b",
       "source_fact_keys": [
-        "source_fact:v1:005ee4ba9379c40411d743aefd68648279505e6cfaabfaecc9f67d5f220b314b",
-        "source_fact:v1:1600abd92c92e1bc65773003a75067d1fdc050778204a759f63e8ef824cbdcac",
-        "source_fact:v1:91a2d05cb223ae6e3878245f932f9281f2d6577e015cc9c2d104d94768b70cbf",
-        "source_fact:v1:997ed4e0e9f28b6440043882b51bab27c5fd4ccd1fec0067d85ed125b30eff9f",
-        "source_fact:v1:a58fbb9d3979d15c22c1fc763611d1d66dd749aff17cd80c06d8e430ec88bd56",
-        "source_fact:v1:c8e277dbf6e27a66506e8a975847f4d88b251d1492d17f2b9cdd288d14a1dc22",
-        "source_fact:v1:cbcfe9c3f113fc0905f3b51855185f28c4d78d2e7a27b17e8da9796e8d60bfba",
-        "source_fact:v1:d0a1ec00891aa750ba8eb1953c01f6f2ab74d2c2a410cba73fd48eb315d03359"
+        "source_fact:v1:3249b26e7fe22e1891ab41534b745dba429832eb6b87699ebdfd5d1aff9e01b9",
+        "source_fact:v1:39671f7ccab055deb866575d840881239aabc7e50d61fce3c6f80c1ddaa0c276",
+        "source_fact:v1:40e59fd388ca6f3dd7bebe728f734812763dc447a40266a90f59e71f20e71812",
+        "source_fact:v1:77fb364f3a809bf8aaa9a36ed1c5f7505316e9f7a90ea2daecd828b5456a5dff",
+        "source_fact:v1:7ef887e750ea8456edc1ba7b479192279ccdc93a608c4d68de5599e37c8e9a78",
+        "source_fact:v1:81392949f96ccb5e4f67c0ff19fc78e5d9225f928e3969830443ad61bee9a3d3",
+        "source_fact:v1:82763701d335926c658168cf148944d9786a3c3bb18e9fa2f83dad0bf64c2588",
+        "source_fact:v1:9af3bc85d994178ed3602ca93a476e334e1b13e2c753b0b9a3dd223a195fe44f",
+        "source_fact:v1:9f6de459082a47a3f0d87ec0754bf9ceae310b4afb32922d36f931ce2407a138",
+        "source_fact:v1:afcff4f71e82670cd879a6e59dd1368bf6dd78cabc82756e62a3947a83e46231",
+        "source_fact:v1:b1a0e68442933e89831c66925cfaa349868a166c47a48dbf8825b0b33bd0b948",
+        "source_fact:v1:bc17166108008ce51c3b7e9929e2b57972256fe9cfc14fa5837234d32e39a2db",
+        "source_fact:v1:bf4a5832d773889e3938d2c7aefca569e490c54e3ff73866185dbcee4f496f50",
+        "source_fact:v1:c39580912843467497e12e8e6aeb40ddd98e4dd2704e2f0da85020595f25669e"
       ],
-      "source_published_kst": "2026-10-16T05:55+09:00",
+      "source_published_kst": "2026-10-16T17:55+09:00",
       "source_supply_terms": {},
-      "source_title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\"",
-      "telegram_core_fact": "인공지능(AI) 수요 증가에 따른 메모리 반도체 공급 부족과 서버·스토리지 가격 상승이 2028년까지 이어질 것이라는 전망이 나왔다.",
-      "title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\""
+      "source_title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토",
+      "telegram_core_fact": "전자제품과 인공지능(AI)을 작동시키는 핵심 부품인 메모리 공급 부족 사태가 심해지고 있음을 의식한 것이다.",
+      "title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토"
     },
     "event:ecc106662168368bdcad2f92": {
       "first_seen_kst": "2026-10-10T03:00:37+09:00",
@@ -81704,6 +81933,28 @@
       "telegram_core_fact": "한국거래소에 따르면 신한자산운용의 'SOL AI반도체소부장', 'SOL 반도체전공정', 'SOL 반도체후공정' ETF 3종의 최근 1개월 개인 순매수액이 전날 기준 총 2231억원으로 집계됐다.",
       "title": "반도체 소부장 ETF에 한 달 새 2200억…개인 매수세 이어져"
     },
+    "fact:27088c360222a33dedb33983": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636673",
+      "source": "이투데이",
+      "source_body_digest": "bf19edeb62a652623227e28971f01f5094b16ea0000cda3438cebed2c15e4b72",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7516a37e74cc07df29ff3003d052e8a85a3d7865994f976375ef2d901fb1c31a",
+      "source_fact_keys": [
+        "source_fact:v1:beae874e345bd2f74cf0d3b9eccc70d31c858064a107017e9513fd16fab993d7",
+        "source_fact:v1:e6371e2ef901c69a63a74e3b0d082103a9e355964c327ce522de861c4f104a12",
+        "source_fact:v1:ed60613fe5e5f2460c2b996f46b7abdd63fb5e0a6fe117820605c098d69fb540"
+      ],
+      "source_published_kst": "2026-10-16T13:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "형지엘리트, 2027시즌 상품부터 RFID 도입…스마트 물류 전환 추진",
+      "telegram_core_fact": "형지엘리트가 2027시즌 상품부터 무선주파수식별(RFID) 기술을 도입해 물류 관리 체계의 디지털 전환에 나선다. 형지엘리트는 전일 형지글로벌패션복합센터에서 글로벌 스마트태그 기업 비온택과 RFID 시스템 도입을 위한 업무협약(MOU)을 체결했다고 16일 밝혔다.",
+      "title": "형지엘리트, 2027시즌 상품부터 RFID 도입…스마트 물류 전환 추진"
+    },
     "fact:270ffcdde64642a7e76c992d": {
       "first_seen_kst": "2026-10-07T09:22:01+09:00",
       "lanes": {
@@ -86819,6 +87070,27 @@
       "source_published_kst": "2026-10-06T10:59+09:00",
       "title": "한독 파트너사 레졸루트, 선천성 고인슐린증 치료제 FDA 허가 전 미팅 권고"
     },
+    "fact:3b96c148f0d5db63156e5931": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829124",
+      "source": "뉴시스",
+      "source_body_digest": "e8b56cdbb5a662aee9e568c98f24bc1d75467b6c757dd60193812b2b93eb6eed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:074e45836c408ca1d0c46355794cfb4d8e84821c000d4f7f9696c8518fa0bd26",
+      "source_fact_keys": [
+        "source_fact:v1:2110a964f961b1b185826c3bba768ec22143860cd436d04ba5a709cc42a46f9f",
+        "source_fact:v1:ff1703ff9574bbb5ba4c7d1d4da209398ed7752860fa6036a598c61b56001cb2"
+      ],
+      "source_published_kst": "2026-10-16T14:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "출렁이는 증시에도 KT&G 역대 최고가 기록…\"글로벌 사업 성장세\"",
+      "telegram_core_fact": "KT&G는 튀르키예, 러시아, 카자흐스탄, 인도네시아 등 해외 생산거점을 확대하며 국내를 포함한 글로벌 5각 생산체제를 구축했다.",
+      "title": "출렁이는 증시에도 KT&G 역대 최고가 기록…\"글로벌 사업 성장세\""
+    },
     "fact:3bc50455b1dfa79fc9fd07b1": {
       "first_seen_kst": "2026-10-12T05:09:39+09:00",
       "lanes": {
@@ -87669,6 +87941,39 @@
       "source_title": "중동 전쟁에도 44조 기름값 담합 의혹…SK에너지·HD현대오일뱅크 ‘공정위 심판대’",
       "telegram_core_fact": "공정위 심사관은 SK에너지·현대오일뱅크가 약 4년간 유류 가격정보를 교환하고 올해 3월 두 차례 가격을 담합했다는 혐의로 심의에 넘겼다. 관련 매출은 약 44.1조원이며 최종 위법 여부와 제재는 미확정이다.",
       "title": "중동 전쟁에도 44조 기름값 담합 의혹…SK에너지·HD현대오일뱅크 ‘공정위 심판대’"
+    },
+    "fact:3f1c5004639b54d272c58a05": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.mk.co.kr/news/business/12178100",
+      "source": "매일경제",
+      "source_body_digest": "602d81de5f44011de3ea090f98f1f62bef519bdceda4122dcd89a2dc6ad3f6b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd079209cbc9c9639826ae88dae4e76fc707d5372545732c5715d9a42a379c4b",
+      "source_fact_keys": [
+        "source_fact:v1:3249b26e7fe22e1891ab41534b745dba429832eb6b87699ebdfd5d1aff9e01b9",
+        "source_fact:v1:39671f7ccab055deb866575d840881239aabc7e50d61fce3c6f80c1ddaa0c276",
+        "source_fact:v1:40e59fd388ca6f3dd7bebe728f734812763dc447a40266a90f59e71f20e71812",
+        "source_fact:v1:77fb364f3a809bf8aaa9a36ed1c5f7505316e9f7a90ea2daecd828b5456a5dff",
+        "source_fact:v1:7ef887e750ea8456edc1ba7b479192279ccdc93a608c4d68de5599e37c8e9a78",
+        "source_fact:v1:81392949f96ccb5e4f67c0ff19fc78e5d9225f928e3969830443ad61bee9a3d3",
+        "source_fact:v1:82763701d335926c658168cf148944d9786a3c3bb18e9fa2f83dad0bf64c2588",
+        "source_fact:v1:9af3bc85d994178ed3602ca93a476e334e1b13e2c753b0b9a3dd223a195fe44f",
+        "source_fact:v1:9f6de459082a47a3f0d87ec0754bf9ceae310b4afb32922d36f931ce2407a138",
+        "source_fact:v1:afcff4f71e82670cd879a6e59dd1368bf6dd78cabc82756e62a3947a83e46231",
+        "source_fact:v1:b1a0e68442933e89831c66925cfaa349868a166c47a48dbf8825b0b33bd0b948",
+        "source_fact:v1:bc17166108008ce51c3b7e9929e2b57972256fe9cfc14fa5837234d32e39a2db",
+        "source_fact:v1:bf4a5832d773889e3938d2c7aefca569e490c54e3ff73866185dbcee4f496f50",
+        "source_fact:v1:c39580912843467497e12e8e6aeb40ddd98e4dd2704e2f0da85020595f25669e"
+      ],
+      "source_published_kst": "2026-10-16T17:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토",
+      "telegram_core_fact": "전자제품과 인공지능(AI)을 작동시키는 핵심 부품인 메모리 공급 부족 사태가 심해지고 있음을 의식한 것이다.",
+      "title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토"
     },
     "fact:3f4f18917d32193b3dfbb95b": {
       "first_seen_kst": "2026-10-13T07:52:07+09:00",
@@ -101895,6 +102200,46 @@
       "source_title": "“겨울이 온다”…중동發 에너지 쇼크에 전 세계 금융수장들 '비상'",
       "telegram_core_fact": "주요 7개국(G7)은 도널드 트럼프 미국 대통령의 압박에 따라 비상 비축유에서 경유와 원유 1억배럴을 방출하기로 합의했다. 중동 전쟁 장기화에 따른 에너지 공급 충격과 고금리, 부채 급증이 세계 경제를 위협하고 있다.",
       "title": "“겨울이 온다”…중동發 에너지 쇼크에 전 세계 금융수장들 '비상'"
+    },
+    "fact:776e32afdbf2750927170c1e": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etnews.com/20261016000211",
+      "source": "전자신문",
+      "source_body_digest": "cf1c8858297793352b8ddf09e72c9aa912ec81486a9cf3a96a4e2e98a69f089b",
+      "source_event_identity": "source_event:v2:named_supply_order:028dd338706ff72085c0b0977afa36d98d715119af78f5e1e5bbba027fbc1968",
+      "source_fact_identity": "source_facts:v1:5060dec0469c3d0963ac9bd5e8bced31e78483b67b26e01e2f1aad3daa1d408d",
+      "source_fact_keys": [
+        "source_fact:v1:20af6df71e956348a28ecd8ca4711831fb5a4665cbb793249adf1f9c7de687fe",
+        "source_fact:v1:835f23e2fcc8a7c76d20c052221fa1abcad347f5fd30fa6ff5433657b9a0ed0a",
+        "source_fact:v1:be5f3caf5dfa4e258a64d37e9d60a8926fe2d868885fdd1b901b09a5901e08f9",
+        "source_fact:v1:dea194bbcabd0c405616fe7288b2b4272460dd4123f06612f44dfa89b519b5c1"
+      ],
+      "source_published_kst": "2026-10-16T14:16+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "12900000000"
+          ]
+        ],
+        "customer": "제조기업",
+        "delivery_period": "",
+        "disclosure_date": "2026-10-16",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "쎄노텍",
+        "product": "이차전지용첨가제",
+        "quantities": [],
+        "stage": "signed"
+      },
+      "source_title": "쎄노텍, 129억원 규모 이차전지 양극재 첨가제 공급계약 체결",
+      "telegram_core_fact": "첨단 세라믹 소재 전문기업 쎄노텍이 이차전지 양극재 제조기업과 약 129억원 이차전지용 첨가제 공급계약을 체결했다고 16일 밝혔다.",
+      "title": "쎄노텍, 129억원 규모 이차전지 양극재 첨가제 공급계약 체결"
     },
     "fact:77752d3f35cb27235dd83f59": {
       "first_seen_kst": "2026-10-12T10:37:32+09:00",
@@ -122327,6 +122672,29 @@
       "telegram_core_fact": "어라이브 AI(ARAI)가 최근 거래가격 0.2075달러보다 약 213% 높은 유닛당 0.65달러에 미국 소재 특화 민간 투자회사로부터 25만 달러 직접투자를 유치했다고 9일(현지시간) 발표했다. 증권가 컨센서스에 따르면 어라이브 AI의 2026년 예상 매출액은 10만 달러로 전년 대비 11.7% 감소할 것으로 전망된다.",
       "title": "어라이브 AI, 유닛당 0.65달러 직접투자 유치..213% 프리미엄"
     },
+    "fact:bfc52e40259e4d84e5bf65f3": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etnews.com/20261016000212",
+      "source": "전자신문",
+      "source_body_digest": "e86077afed54cd5aa02ab4e645aa10bda66032356dcafbe3dee4f230b14e1564",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f6f189edb77db972396488414781df888d5f64c0df9a74143134f3553dba0f3",
+      "source_fact_keys": [
+        "source_fact:v1:108d49e21c1b995a4cbc13095dcd5d32f7151b765770a96a7282ac0869ac9518",
+        "source_fact:v1:2861006f14556fea7c888b64b5d2d09dd344a9247b417943404d463040d5189f",
+        "source_fact:v1:999fe2ff34e78e857cf56014218e4377bed42fa8b03135bd07fa4640575255fa",
+        "source_fact:v1:e79a2fc3ea9dbf2524b8bec26ebc80815ad22dc6af1c0e6a235333fe60f350ec"
+      ],
+      "source_published_kst": "2026-10-16T14:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "네이버페이, 제주 소상공인에 75억원 특별보증…디지털 전환도 지원",
+      "telegram_core_fact": "이번 협약을 통해 4개 기관은 도내 소기업, 소상공인에게 총 75억원 '제주 소상공인 희망온 특별보증'을 공급한다.",
+      "title": "네이버페이, 제주 소상공인에 75억원 특별보증…디지털 전환도 지원"
+    },
     "fact:bfce66b20e32f331277c6a18": {
       "first_seen_kst": "2026-10-14T13:56:06+09:00",
       "lanes": {
@@ -139276,6 +139644,32 @@
       ],
       "source_published_kst": "2026-10-07T15:50+09:00",
       "title": "동서발전, 산불 복합재난 대응체계 면밀 점검한다 | 연합뉴스"
+    },
+    "fact:fd9a38441678f8b6c077efd3": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etnews.com/20261016000210",
+      "source": "전자신문",
+      "source_body_digest": "ca9ad93647f3b20308ba8a31de8463d0c71daabe50c5b0c6e7510b3202609e21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4853659d1565149dba8b4c14a3edaf24582d40cd4032262b0fb17ab63def50a",
+      "source_fact_keys": [
+        "source_fact:v1:0743e6f4834900b44c8afb5a6b130770467b9d8c9bb00a1f46d1385545dd38c9",
+        "source_fact:v1:15aa2ccf64b2afcb535d63d7f1da03dd4c8e0fcb13c5648ea6c2bc8f7a72457f",
+        "source_fact:v1:2b6f0b995e484f91433e7e4b70f5ce7c08ebb5b745866b50ea2befad3f2623de",
+        "source_fact:v1:3c25c4248ad4ea7456d479ecf170269c441910afeb37b02d2451ddb4f16a326b",
+        "source_fact:v1:3d159b1e6c00160c38bba020b7f1b9d307405416ad89bbe12f4cce552afc9785",
+        "source_fact:v1:d7aa58c8bd0e6867efd8040da950d6e26f0d88fcf48413bb166d579c4d7b389d",
+        "source_fact:v1:f856f9db1138ea94bd9855d7825f612e7a886e9601b977222e669b84aa7aedab"
+      ],
+      "source_published_kst": "2026-10-16T14:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "브릴스, 美 로봇 규제 대응 현지생산 박차…AMR부터 시작",
+      "telegram_core_fact": "현지 파트너를 통해 미국산 부품 조달 비중을 높여 미국의 외국산 첨단 로봇 규제 강화와 공급망, 보안 리스크에 대응한다.",
+      "title": "브릴스, 美 로봇 규제 대응 현지생산 박차…AMR부터 시작"
     },
     "fact:fda22346e5f7dce1fc7baa99": {
       "first_seen_kst": "2026-10-07T17:23:27+09:00",
@@ -164717,6 +165111,32 @@
       "telegram_core_fact": "스마트비즈엑스포는 삼성전자의 스마트공장 구축 지원사업을 받은 중소기업의 제품 및 기술을 전시하는 행사로, 2018년부터 현재까지 약 1793억원을 투입해 중소기업 2700여 곳의 제조 혁신을 지원했다.",
       "title": "'스마트공장' 지원하는 삼성…이소영 \"진정성 느껴져\""
     },
+    "link:42de5404c0451e542a853522": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etnews.com/20261016000210",
+      "source": "전자신문",
+      "source_body_digest": "ca9ad93647f3b20308ba8a31de8463d0c71daabe50c5b0c6e7510b3202609e21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4853659d1565149dba8b4c14a3edaf24582d40cd4032262b0fb17ab63def50a",
+      "source_fact_keys": [
+        "source_fact:v1:0743e6f4834900b44c8afb5a6b130770467b9d8c9bb00a1f46d1385545dd38c9",
+        "source_fact:v1:15aa2ccf64b2afcb535d63d7f1da03dd4c8e0fcb13c5648ea6c2bc8f7a72457f",
+        "source_fact:v1:2b6f0b995e484f91433e7e4b70f5ce7c08ebb5b745866b50ea2befad3f2623de",
+        "source_fact:v1:3c25c4248ad4ea7456d479ecf170269c441910afeb37b02d2451ddb4f16a326b",
+        "source_fact:v1:3d159b1e6c00160c38bba020b7f1b9d307405416ad89bbe12f4cce552afc9785",
+        "source_fact:v1:d7aa58c8bd0e6867efd8040da950d6e26f0d88fcf48413bb166d579c4d7b389d",
+        "source_fact:v1:f856f9db1138ea94bd9855d7825f612e7a886e9601b977222e669b84aa7aedab"
+      ],
+      "source_published_kst": "2026-10-16T14:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "브릴스, 美 로봇 규제 대응 현지생산 박차…AMR부터 시작",
+      "telegram_core_fact": "현지 파트너를 통해 미국산 부품 조달 비중을 높여 미국의 외국산 첨단 로봇 규제 강화와 공급망, 보안 리스크에 대응한다.",
+      "title": "브릴스, 美 로봇 규제 대응 현지생산 박차…AMR부터 시작"
+    },
     "link:42e346ac2030aff8dc3c6adb": {
       "first_seen_kst": "2026-10-05T23:14:24+09:00",
       "lanes": {
@@ -169241,6 +169661,46 @@
       "source_title": "“코스피 오르기만 기다렸는데”…개미가 산 83조, 반등 발목 잡나",
       "telegram_core_fact": "이날 기준 올해 외국인의 코스피 누적 순매도는 약 227조원에 이른다. 하나증권 집계에 따르면 코스피 7000~9000 구간에서 개인의 누적 순매수는 약 83조6000억원이다.",
       "title": "“코스피 오르기만 기다렸는데”…개미가 산 83조, 반등 발목 잡나"
+    },
+    "link:4fdda8a721f1553535b0e925": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etnews.com/20261016000211",
+      "source": "전자신문",
+      "source_body_digest": "cf1c8858297793352b8ddf09e72c9aa912ec81486a9cf3a96a4e2e98a69f089b",
+      "source_event_identity": "source_event:v2:named_supply_order:028dd338706ff72085c0b0977afa36d98d715119af78f5e1e5bbba027fbc1968",
+      "source_fact_identity": "source_facts:v1:5060dec0469c3d0963ac9bd5e8bced31e78483b67b26e01e2f1aad3daa1d408d",
+      "source_fact_keys": [
+        "source_fact:v1:20af6df71e956348a28ecd8ca4711831fb5a4665cbb793249adf1f9c7de687fe",
+        "source_fact:v1:835f23e2fcc8a7c76d20c052221fa1abcad347f5fd30fa6ff5433657b9a0ed0a",
+        "source_fact:v1:be5f3caf5dfa4e258a64d37e9d60a8926fe2d868885fdd1b901b09a5901e08f9",
+        "source_fact:v1:dea194bbcabd0c405616fe7288b2b4272460dd4123f06612f44dfa89b519b5c1"
+      ],
+      "source_published_kst": "2026-10-16T14:16+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "12900000000"
+          ]
+        ],
+        "customer": "제조기업",
+        "delivery_period": "",
+        "disclosure_date": "2026-10-16",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "쎄노텍",
+        "product": "이차전지용첨가제",
+        "quantities": [],
+        "stage": "signed"
+      },
+      "source_title": "쎄노텍, 129억원 규모 이차전지 양극재 첨가제 공급계약 체결",
+      "telegram_core_fact": "첨단 세라믹 소재 전문기업 쎄노텍이 이차전지 양극재 제조기업과 약 129억원 이차전지용 첨가제 공급계약을 체결했다고 16일 밝혔다.",
+      "title": "쎄노텍, 129억원 규모 이차전지 양극재 첨가제 공급계약 체결"
     },
     "link:4fe3d69c070e508e393549b7": {
       "first_seen_kst": "2026-10-16T15:15:48+09:00",
@@ -191899,6 +192359,39 @@
       "telegram_core_fact": "휴비츠는 주주가치 제고를 위해 28억원 자사주 소각을 결정했다고 7일 공시했다. 소각 주식수는 32만6136주로 소각 예정일은 오는 27일이다.",
       "title": "휴비츠, 28억 규모 자사주 소각 결정"
     },
+    "link:8f28f4d6bceea0783ac76ede": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.mk.co.kr/news/business/12178100",
+      "source": "매일경제",
+      "source_body_digest": "602d81de5f44011de3ea090f98f1f62bef519bdceda4122dcd89a2dc6ad3f6b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd079209cbc9c9639826ae88dae4e76fc707d5372545732c5715d9a42a379c4b",
+      "source_fact_keys": [
+        "source_fact:v1:3249b26e7fe22e1891ab41534b745dba429832eb6b87699ebdfd5d1aff9e01b9",
+        "source_fact:v1:39671f7ccab055deb866575d840881239aabc7e50d61fce3c6f80c1ddaa0c276",
+        "source_fact:v1:40e59fd388ca6f3dd7bebe728f734812763dc447a40266a90f59e71f20e71812",
+        "source_fact:v1:77fb364f3a809bf8aaa9a36ed1c5f7505316e9f7a90ea2daecd828b5456a5dff",
+        "source_fact:v1:7ef887e750ea8456edc1ba7b479192279ccdc93a608c4d68de5599e37c8e9a78",
+        "source_fact:v1:81392949f96ccb5e4f67c0ff19fc78e5d9225f928e3969830443ad61bee9a3d3",
+        "source_fact:v1:82763701d335926c658168cf148944d9786a3c3bb18e9fa2f83dad0bf64c2588",
+        "source_fact:v1:9af3bc85d994178ed3602ca93a476e334e1b13e2c753b0b9a3dd223a195fe44f",
+        "source_fact:v1:9f6de459082a47a3f0d87ec0754bf9ceae310b4afb32922d36f931ce2407a138",
+        "source_fact:v1:afcff4f71e82670cd879a6e59dd1368bf6dd78cabc82756e62a3947a83e46231",
+        "source_fact:v1:b1a0e68442933e89831c66925cfaa349868a166c47a48dbf8825b0b33bd0b948",
+        "source_fact:v1:bc17166108008ce51c3b7e9929e2b57972256fe9cfc14fa5837234d32e39a2db",
+        "source_fact:v1:bf4a5832d773889e3938d2c7aefca569e490c54e3ff73866185dbcee4f496f50",
+        "source_fact:v1:c39580912843467497e12e8e6aeb40ddd98e4dd2704e2f0da85020595f25669e"
+      ],
+      "source_published_kst": "2026-10-16T17:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토",
+      "telegram_core_fact": "전자제품과 인공지능(AI)을 작동시키는 핵심 부품인 메모리 공급 부족 사태가 심해지고 있음을 의식한 것이다.",
+      "title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토"
+    },
     "link:8f2b7d721104ef9227f9bad3": {
       "first_seen_kst": "2026-10-02T21:04:53+09:00",
       "lanes": {
@@ -198577,6 +199070,28 @@
       "telegram_core_fact": "삼성전자가 올해 3분기 영업이익 100조원을 처음 넘어서며 역대 최대 분기 실적을 기록했다.",
       "title": "분기 영업익 첫 100조 돌파한 삼성전자…차세대 HBM·공급 확대에 속도"
     },
+    "link:9fdf7be3fa95b17884493410": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636673",
+      "source": "이투데이",
+      "source_body_digest": "bf19edeb62a652623227e28971f01f5094b16ea0000cda3438cebed2c15e4b72",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7516a37e74cc07df29ff3003d052e8a85a3d7865994f976375ef2d901fb1c31a",
+      "source_fact_keys": [
+        "source_fact:v1:beae874e345bd2f74cf0d3b9eccc70d31c858064a107017e9513fd16fab993d7",
+        "source_fact:v1:e6371e2ef901c69a63a74e3b0d082103a9e355964c327ce522de861c4f104a12",
+        "source_fact:v1:ed60613fe5e5f2460c2b996f46b7abdd63fb5e0a6fe117820605c098d69fb540"
+      ],
+      "source_published_kst": "2026-10-16T13:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "형지엘리트, 2027시즌 상품부터 RFID 도입…스마트 물류 전환 추진",
+      "telegram_core_fact": "형지엘리트가 2027시즌 상품부터 무선주파수식별(RFID) 기술을 도입해 물류 관리 체계의 디지털 전환에 나선다. 형지엘리트는 전일 형지글로벌패션복합센터에서 글로벌 스마트태그 기업 비온택과 RFID 시스템 도입을 위한 업무협약(MOU)을 체결했다고 16일 밝혔다.",
+      "title": "형지엘리트, 2027시즌 상품부터 RFID 도입…스마트 물류 전환 추진"
+    },
     "link:9ff6c72c8703b0f9b6c3c4b2": {
       "first_seen_kst": "2026-10-08T17:21:28+09:00",
       "lanes": {
@@ -198650,6 +199165,29 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T12:22+09:00",
       "title": "기업 에너지효율 투자 부담↓…정책융자 금리 2%로 인하"
+    },
+    "link:a05645bb6d8d2ccfa02b03bf": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etnews.com/20261016000212",
+      "source": "전자신문",
+      "source_body_digest": "e86077afed54cd5aa02ab4e645aa10bda66032356dcafbe3dee4f230b14e1564",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f6f189edb77db972396488414781df888d5f64c0df9a74143134f3553dba0f3",
+      "source_fact_keys": [
+        "source_fact:v1:108d49e21c1b995a4cbc13095dcd5d32f7151b765770a96a7282ac0869ac9518",
+        "source_fact:v1:2861006f14556fea7c888b64b5d2d09dd344a9247b417943404d463040d5189f",
+        "source_fact:v1:999fe2ff34e78e857cf56014218e4377bed42fa8b03135bd07fa4640575255fa",
+        "source_fact:v1:e79a2fc3ea9dbf2524b8bec26ebc80815ad22dc6af1c0e6a235333fe60f350ec"
+      ],
+      "source_published_kst": "2026-10-16T14:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "네이버페이, 제주 소상공인에 75억원 특별보증…디지털 전환도 지원",
+      "telegram_core_fact": "이번 협약을 통해 4개 기관은 도내 소기업, 소상공인에게 총 75억원 '제주 소상공인 희망온 특별보증'을 공급한다.",
+      "title": "네이버페이, 제주 소상공인에 75억원 특별보증…디지털 전환도 지원"
     },
     "link:a05b6bbe596d2c44fa6a42c8": {
       "first_seen_kst": "2026-10-07T10:04:59+09:00",
@@ -207283,6 +207821,27 @@
       "telegram_core_fact": "CXMT가 4F²에 기반한 제품을 먼저 출시할 경우, 차세대 메모리 경쟁에서 선도적 지위를 점하고 첨단 반도체 공급망에서 중국의 입지도 강화될 수 있다고 기대했다.",
       "title": "中 CXMT, 차세대 D램 기술 진전…\"삼전닉스에 도전\"(종합) | 연합뉴스"
     },
+    "link:b7c555ea0fc43fc93f3c7906": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829124",
+      "source": "뉴시스",
+      "source_body_digest": "e8b56cdbb5a662aee9e568c98f24bc1d75467b6c757dd60193812b2b93eb6eed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:074e45836c408ca1d0c46355794cfb4d8e84821c000d4f7f9696c8518fa0bd26",
+      "source_fact_keys": [
+        "source_fact:v1:2110a964f961b1b185826c3bba768ec22143860cd436d04ba5a709cc42a46f9f",
+        "source_fact:v1:ff1703ff9574bbb5ba4c7d1d4da209398ed7752860fa6036a598c61b56001cb2"
+      ],
+      "source_published_kst": "2026-10-16T14:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "출렁이는 증시에도 KT&G 역대 최고가 기록…\"글로벌 사업 성장세\"",
+      "telegram_core_fact": "KT&G는 튀르키예, 러시아, 카자흐스탄, 인도네시아 등 해외 생산거점을 확대하며 국내를 포함한 글로벌 5각 생산체제를 구축했다.",
+      "title": "출렁이는 증시에도 KT&G 역대 최고가 기록…\"글로벌 사업 성장세\""
+    },
     "link:b7cc2a2c7bd9f4e8a191a804": {
       "first_seen_kst": "2026-10-14T04:09:16+09:00",
       "lanes": {
@@ -214403,6 +214962,24 @@
       "link": "https://www.yna.co.kr/view/AKR20261001094900002",
       "source": "연합뉴스",
       "title": "토큰증권화 범위에 주식·채권 포함…장외거래소 투자한도 1억원 | 연합뉴스"
+    },
+    "link:cacd1ac07da99e129d701743": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636665",
+      "source": "이투데이",
+      "source_body_digest": "db2eac6a1671db1a5dba2824834ad510a40a7045793c8b4226f762065f9ed30d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-16T13:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "CJ프레시웨이, 농협과 어린이집·유치원에 프리미엄 한우 공급 확대",
+      "telegram_core_fact": "CJ프레시웨이가 농협경제지주와 손잡고 어린이집과 유치원 등에 공급하는 프리미엄 축산물 상품을 확대한다. CJ프레시웨이에 따르면 올해 1~9월 아이누리 유통 경로의 프리미엄 축산물 판매량은 전년비 29.1% 증가했다.",
+      "title": "CJ프레시웨이, 농협과 어린이집·유치원에 프리미엄 한우 공급 확대"
     },
     "link:cad5103b748ad111326856c7": {
       "first_seen_kst": "2026-10-13T22:33:57+09:00",
@@ -234043,6 +234620,27 @@
       "source": "머니투데이",
       "title": "iM금융지주, 경상이익 주주환원에도 PBR 0.49배 불과-BNK투자증권"
     },
+    "original:0205698370b869f41464d571": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829124",
+      "source": "뉴시스",
+      "source_body_digest": "e8b56cdbb5a662aee9e568c98f24bc1d75467b6c757dd60193812b2b93eb6eed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:074e45836c408ca1d0c46355794cfb4d8e84821c000d4f7f9696c8518fa0bd26",
+      "source_fact_keys": [
+        "source_fact:v1:2110a964f961b1b185826c3bba768ec22143860cd436d04ba5a709cc42a46f9f",
+        "source_fact:v1:ff1703ff9574bbb5ba4c7d1d4da209398ed7752860fa6036a598c61b56001cb2"
+      ],
+      "source_published_kst": "2026-10-16T14:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "출렁이는 증시에도 KT&G 역대 최고가 기록…\"글로벌 사업 성장세\"",
+      "telegram_core_fact": "KT&G는 튀르키예, 러시아, 카자흐스탄, 인도네시아 등 해외 생산거점을 확대하며 국내를 포함한 글로벌 5각 생산체제를 구축했다.",
+      "title": "출렁이는 증시에도 KT&G 역대 최고가 기록…\"글로벌 사업 성장세\""
+    },
     "original:020d37043be8e7e9402cb7d0": {
       "first_seen_kst": "2026-10-05T11:14:01+09:00",
       "lanes": {
@@ -234892,6 +235490,29 @@
       "source_title": "\"위성 개발부터 환경시험까지\"…KAI, 국내 민간 유일 통합체계 완성",
       "telegram_core_fact": "한국항공우주산업(KAI)이 위성 개발부터 환경시험까지 전 과정을 자체 수행할 수 있는 통합체계를 완성하며 우주사업 경쟁력 강화에 나섰다.",
       "title": "\"위성 개발부터 환경시험까지\"…KAI, 국내 민간 유일 통합체계 완성"
+    },
+    "original:048c427840d0c67955a72849": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etnews.com/20261016000212",
+      "source": "전자신문",
+      "source_body_digest": "e86077afed54cd5aa02ab4e645aa10bda66032356dcafbe3dee4f230b14e1564",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f6f189edb77db972396488414781df888d5f64c0df9a74143134f3553dba0f3",
+      "source_fact_keys": [
+        "source_fact:v1:108d49e21c1b995a4cbc13095dcd5d32f7151b765770a96a7282ac0869ac9518",
+        "source_fact:v1:2861006f14556fea7c888b64b5d2d09dd344a9247b417943404d463040d5189f",
+        "source_fact:v1:999fe2ff34e78e857cf56014218e4377bed42fa8b03135bd07fa4640575255fa",
+        "source_fact:v1:e79a2fc3ea9dbf2524b8bec26ebc80815ad22dc6af1c0e6a235333fe60f350ec"
+      ],
+      "source_published_kst": "2026-10-16T14:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "네이버페이, 제주 소상공인에 75억원 특별보증…디지털 전환도 지원",
+      "telegram_core_fact": "이번 협약을 통해 4개 기관은 도내 소기업, 소상공인에게 총 75억원 '제주 소상공인 희망온 특별보증'을 공급한다.",
+      "title": "네이버페이, 제주 소상공인에 75억원 특별보증…디지털 전환도 지원"
     },
     "original:04962303c0965798f5397130": {
       "first_seen_kst": "2026-10-11T22:09:39+09:00",
@@ -240743,6 +241364,46 @@
       "source_title": "리졸브 AI, 상반기 매출 1억3100만 달러·전년비 20배 급증",
       "telegram_core_fact": "증권가 컨센서스에 따르면 리졸브 AI의 2026년 연간 매출액은 3억5995만 달러로 전년 대비 669.12% 증가할 전망이다.",
       "title": "리졸브 AI, 상반기 매출 1억3100만 달러·전년비 20배 급증"
+    },
+    "original:15351cfa9466d71238d24421": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etnews.com/20261016000211",
+      "source": "전자신문",
+      "source_body_digest": "cf1c8858297793352b8ddf09e72c9aa912ec81486a9cf3a96a4e2e98a69f089b",
+      "source_event_identity": "source_event:v2:named_supply_order:028dd338706ff72085c0b0977afa36d98d715119af78f5e1e5bbba027fbc1968",
+      "source_fact_identity": "source_facts:v1:5060dec0469c3d0963ac9bd5e8bced31e78483b67b26e01e2f1aad3daa1d408d",
+      "source_fact_keys": [
+        "source_fact:v1:20af6df71e956348a28ecd8ca4711831fb5a4665cbb793249adf1f9c7de687fe",
+        "source_fact:v1:835f23e2fcc8a7c76d20c052221fa1abcad347f5fd30fa6ff5433657b9a0ed0a",
+        "source_fact:v1:be5f3caf5dfa4e258a64d37e9d60a8926fe2d868885fdd1b901b09a5901e08f9",
+        "source_fact:v1:dea194bbcabd0c405616fe7288b2b4272460dd4123f06612f44dfa89b519b5c1"
+      ],
+      "source_published_kst": "2026-10-16T14:16+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "12900000000"
+          ]
+        ],
+        "customer": "제조기업",
+        "delivery_period": "",
+        "disclosure_date": "2026-10-16",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "쎄노텍",
+        "product": "이차전지용첨가제",
+        "quantities": [],
+        "stage": "signed"
+      },
+      "source_title": "쎄노텍, 129억원 규모 이차전지 양극재 첨가제 공급계약 체결",
+      "telegram_core_fact": "첨단 세라믹 소재 전문기업 쎄노텍이 이차전지 양극재 제조기업과 약 129억원 이차전지용 첨가제 공급계약을 체결했다고 16일 밝혔다.",
+      "title": "쎄노텍, 129억원 규모 이차전지 양극재 첨가제 공급계약 체결"
     },
     "original:1544fa5c6cf00107f9f86ce9": {
       "first_seen_kst": "2026-10-06T16:30:27+09:00",
@@ -253453,6 +254114,28 @@
       "source_published_kst": "2026-10-04T06:03+09:00",
       "title": "[AI해킹] ① OTT·미용·결제 이어 은행까지…내 개인정보 어디까지 샜나 | 연합뉴스"
     },
+    "original:38d9eb3dd43e4191c685735a": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636673",
+      "source": "이투데이",
+      "source_body_digest": "bf19edeb62a652623227e28971f01f5094b16ea0000cda3438cebed2c15e4b72",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7516a37e74cc07df29ff3003d052e8a85a3d7865994f976375ef2d901fb1c31a",
+      "source_fact_keys": [
+        "source_fact:v1:beae874e345bd2f74cf0d3b9eccc70d31c858064a107017e9513fd16fab993d7",
+        "source_fact:v1:e6371e2ef901c69a63a74e3b0d082103a9e355964c327ce522de861c4f104a12",
+        "source_fact:v1:ed60613fe5e5f2460c2b996f46b7abdd63fb5e0a6fe117820605c098d69fb540"
+      ],
+      "source_published_kst": "2026-10-16T13:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "형지엘리트, 2027시즌 상품부터 RFID 도입…스마트 물류 전환 추진",
+      "telegram_core_fact": "형지엘리트가 2027시즌 상품부터 무선주파수식별(RFID) 기술을 도입해 물류 관리 체계의 디지털 전환에 나선다. 형지엘리트는 전일 형지글로벌패션복합센터에서 글로벌 스마트태그 기업 비온택과 RFID 시스템 도입을 위한 업무협약(MOU)을 체결했다고 16일 밝혔다.",
+      "title": "형지엘리트, 2027시즌 상품부터 RFID 도입…스마트 물류 전환 추진"
+    },
     "original:38eedd0d68d9f117724c966e": {
       "first_seen_kst": "2026-10-12T10:37:32+09:00",
       "lanes": {
@@ -258725,6 +259408,32 @@
       "telegram_core_fact": "고의적인 체납에는 부동산과 차량 압류, 자동차 번호판 영치, 관허사업 제한 등 강력한 제재를 적용한다.",
       "title": "평창군, 연말까지 체납액 집중 징수…고액·상습 체납 제재"
     },
+    "original:45a50ed4b12954aac383fb49": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etnews.com/20261016000210",
+      "source": "전자신문",
+      "source_body_digest": "ca9ad93647f3b20308ba8a31de8463d0c71daabe50c5b0c6e7510b3202609e21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4853659d1565149dba8b4c14a3edaf24582d40cd4032262b0fb17ab63def50a",
+      "source_fact_keys": [
+        "source_fact:v1:0743e6f4834900b44c8afb5a6b130770467b9d8c9bb00a1f46d1385545dd38c9",
+        "source_fact:v1:15aa2ccf64b2afcb535d63d7f1da03dd4c8e0fcb13c5648ea6c2bc8f7a72457f",
+        "source_fact:v1:2b6f0b995e484f91433e7e4b70f5ce7c08ebb5b745866b50ea2befad3f2623de",
+        "source_fact:v1:3c25c4248ad4ea7456d479ecf170269c441910afeb37b02d2451ddb4f16a326b",
+        "source_fact:v1:3d159b1e6c00160c38bba020b7f1b9d307405416ad89bbe12f4cce552afc9785",
+        "source_fact:v1:d7aa58c8bd0e6867efd8040da950d6e26f0d88fcf48413bb166d579c4d7b389d",
+        "source_fact:v1:f856f9db1138ea94bd9855d7825f612e7a886e9601b977222e669b84aa7aedab"
+      ],
+      "source_published_kst": "2026-10-16T14:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "브릴스, 美 로봇 규제 대응 현지생산 박차…AMR부터 시작",
+      "telegram_core_fact": "현지 파트너를 통해 미국산 부품 조달 비중을 높여 미국의 외국산 첨단 로봇 규제 강화와 공급망, 보안 리스크에 대응한다.",
+      "title": "브릴스, 美 로봇 규제 대응 현지생산 박차…AMR부터 시작"
+    },
     "original:45c1841e49eeac21db1f7db5": {
       "first_seen_kst": "2026-10-12T03:14:53+09:00",
       "lanes": {
@@ -263078,6 +263787,24 @@
       ],
       "source_published_kst": "2026-10-06T19:04+09:00",
       "title": "이형일 “美 원전 선급금, 국내 절차·상업성 충족돼야 송금”"
+    },
+    "original:52622eb635173a5728965e4f": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636665",
+      "source": "이투데이",
+      "source_body_digest": "db2eac6a1671db1a5dba2824834ad510a40a7045793c8b4226f762065f9ed30d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-16T13:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "CJ프레시웨이, 농협과 어린이집·유치원에 프리미엄 한우 공급 확대",
+      "telegram_core_fact": "CJ프레시웨이가 농협경제지주와 손잡고 어린이집과 유치원 등에 공급하는 프리미엄 축산물 상품을 확대한다. CJ프레시웨이에 따르면 올해 1~9월 아이누리 유통 경로의 프리미엄 축산물 판매량은 전년비 29.1% 증가했다.",
+      "title": "CJ프레시웨이, 농협과 어린이집·유치원에 프리미엄 한우 공급 확대"
     },
     "original:52699d1c0455c969f36dadf4": {
       "first_seen_kst": "2026-10-14T07:18:46+09:00",
@@ -273722,6 +274449,39 @@
       "source_title": "‘반도체 쇼크’ 코스피 5.5% 급락…6000선 겨우 턱걸이",
       "telegram_core_fact": "코스피·코스닥은 각각 5.46%·1.43% 하락해 양 시장에 매도 사이드카가 발동됐다.",
       "title": "‘반도체 쇼크’ 코스피 5.5% 급락…6000선 겨우 턱걸이"
+    },
+    "original:714bf2f9c26f43a5aff8b790": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.mk.co.kr/news/business/12178100",
+      "source": "매일경제",
+      "source_body_digest": "602d81de5f44011de3ea090f98f1f62bef519bdceda4122dcd89a2dc6ad3f6b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd079209cbc9c9639826ae88dae4e76fc707d5372545732c5715d9a42a379c4b",
+      "source_fact_keys": [
+        "source_fact:v1:3249b26e7fe22e1891ab41534b745dba429832eb6b87699ebdfd5d1aff9e01b9",
+        "source_fact:v1:39671f7ccab055deb866575d840881239aabc7e50d61fce3c6f80c1ddaa0c276",
+        "source_fact:v1:40e59fd388ca6f3dd7bebe728f734812763dc447a40266a90f59e71f20e71812",
+        "source_fact:v1:77fb364f3a809bf8aaa9a36ed1c5f7505316e9f7a90ea2daecd828b5456a5dff",
+        "source_fact:v1:7ef887e750ea8456edc1ba7b479192279ccdc93a608c4d68de5599e37c8e9a78",
+        "source_fact:v1:81392949f96ccb5e4f67c0ff19fc78e5d9225f928e3969830443ad61bee9a3d3",
+        "source_fact:v1:82763701d335926c658168cf148944d9786a3c3bb18e9fa2f83dad0bf64c2588",
+        "source_fact:v1:9af3bc85d994178ed3602ca93a476e334e1b13e2c753b0b9a3dd223a195fe44f",
+        "source_fact:v1:9f6de459082a47a3f0d87ec0754bf9ceae310b4afb32922d36f931ce2407a138",
+        "source_fact:v1:afcff4f71e82670cd879a6e59dd1368bf6dd78cabc82756e62a3947a83e46231",
+        "source_fact:v1:b1a0e68442933e89831c66925cfaa349868a166c47a48dbf8825b0b33bd0b948",
+        "source_fact:v1:bc17166108008ce51c3b7e9929e2b57972256fe9cfc14fa5837234d32e39a2db",
+        "source_fact:v1:bf4a5832d773889e3938d2c7aefca569e490c54e3ff73866185dbcee4f496f50",
+        "source_fact:v1:c39580912843467497e12e8e6aeb40ddd98e4dd2704e2f0da85020595f25669e"
+      ],
+      "source_published_kst": "2026-10-16T17:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토",
+      "telegram_core_fact": "전자제품과 인공지능(AI)을 작동시키는 핵심 부품인 메모리 공급 부족 사태가 심해지고 있음을 의식한 것이다.",
+      "title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토"
     },
     "original:716bff2b1ec54334c22bd00f": {
       "first_seen_kst": "2026-10-14T05:08:50+09:00",
@@ -329167,6 +329927,39 @@
       "telegram_core_fact": "이 연구원은 코스피가 반등 흐름을 만들기 위해 확인돼야 할 신호에 대해 \"미 금리 안정과 삼성전자·SK하이닉스 실적 신뢰 회복, 외국인 순매도 둔화, 정책성 수급 보강 순\"이라고 설명했다.",
       "title": "코스피 7일 하락장 속 외국인 18조 팔았다...투심 돌릴 4대 카드는 [오천피 쇼크]"
     },
+    "source_fact:042915664cafd95f8d807055": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.mk.co.kr/news/business/12178100",
+      "source": "매일경제",
+      "source_body_digest": "602d81de5f44011de3ea090f98f1f62bef519bdceda4122dcd89a2dc6ad3f6b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd079209cbc9c9639826ae88dae4e76fc707d5372545732c5715d9a42a379c4b",
+      "source_fact_keys": [
+        "source_fact:v1:3249b26e7fe22e1891ab41534b745dba429832eb6b87699ebdfd5d1aff9e01b9",
+        "source_fact:v1:39671f7ccab055deb866575d840881239aabc7e50d61fce3c6f80c1ddaa0c276",
+        "source_fact:v1:40e59fd388ca6f3dd7bebe728f734812763dc447a40266a90f59e71f20e71812",
+        "source_fact:v1:77fb364f3a809bf8aaa9a36ed1c5f7505316e9f7a90ea2daecd828b5456a5dff",
+        "source_fact:v1:7ef887e750ea8456edc1ba7b479192279ccdc93a608c4d68de5599e37c8e9a78",
+        "source_fact:v1:81392949f96ccb5e4f67c0ff19fc78e5d9225f928e3969830443ad61bee9a3d3",
+        "source_fact:v1:82763701d335926c658168cf148944d9786a3c3bb18e9fa2f83dad0bf64c2588",
+        "source_fact:v1:9af3bc85d994178ed3602ca93a476e334e1b13e2c753b0b9a3dd223a195fe44f",
+        "source_fact:v1:9f6de459082a47a3f0d87ec0754bf9ceae310b4afb32922d36f931ce2407a138",
+        "source_fact:v1:afcff4f71e82670cd879a6e59dd1368bf6dd78cabc82756e62a3947a83e46231",
+        "source_fact:v1:b1a0e68442933e89831c66925cfaa349868a166c47a48dbf8825b0b33bd0b948",
+        "source_fact:v1:bc17166108008ce51c3b7e9929e2b57972256fe9cfc14fa5837234d32e39a2db",
+        "source_fact:v1:bf4a5832d773889e3938d2c7aefca569e490c54e3ff73866185dbcee4f496f50",
+        "source_fact:v1:c39580912843467497e12e8e6aeb40ddd98e4dd2704e2f0da85020595f25669e"
+      ],
+      "source_published_kst": "2026-10-16T17:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토",
+      "telegram_core_fact": "전자제품과 인공지능(AI)을 작동시키는 핵심 부품인 메모리 공급 부족 사태가 심해지고 있음을 의식한 것이다.",
+      "title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토"
+    },
     "source_fact:042dc8cd5b4d374d715769ad": {
       "first_seen_kst": "2026-10-09T18:34:32+09:00",
       "lanes": {
@@ -344362,6 +345155,46 @@
       "telegram_core_fact": "정부가 올해 쌀 초과생산량을 6만6000t으로 전망하고, 빌려준 정부양곡을 올해 생산한 쌀로 돌려받아 시장에서 최대한 격리하기로 했다. 정부는 올해 처음 도입한 수급조절용벼로 적정 생산 기반을 마련한 데 이어 정부양곡 대여곡 반납을 통해 수확기 초과물량을 최대한 격리할 방침이다.",
       "title": "올해 쌀 6.6만t 초과 생산 전망…대여곡 반납으로 최대 격리"
     },
+    "source_fact:0f4d8aa99ec49e3d02efd35a": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etnews.com/20261016000211",
+      "source": "전자신문",
+      "source_body_digest": "cf1c8858297793352b8ddf09e72c9aa912ec81486a9cf3a96a4e2e98a69f089b",
+      "source_event_identity": "source_event:v2:named_supply_order:028dd338706ff72085c0b0977afa36d98d715119af78f5e1e5bbba027fbc1968",
+      "source_fact_identity": "source_facts:v1:5060dec0469c3d0963ac9bd5e8bced31e78483b67b26e01e2f1aad3daa1d408d",
+      "source_fact_keys": [
+        "source_fact:v1:20af6df71e956348a28ecd8ca4711831fb5a4665cbb793249adf1f9c7de687fe",
+        "source_fact:v1:835f23e2fcc8a7c76d20c052221fa1abcad347f5fd30fa6ff5433657b9a0ed0a",
+        "source_fact:v1:be5f3caf5dfa4e258a64d37e9d60a8926fe2d868885fdd1b901b09a5901e08f9",
+        "source_fact:v1:dea194bbcabd0c405616fe7288b2b4272460dd4123f06612f44dfa89b519b5c1"
+      ],
+      "source_published_kst": "2026-10-16T14:16+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "12900000000"
+          ]
+        ],
+        "customer": "제조기업",
+        "delivery_period": "",
+        "disclosure_date": "2026-10-16",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "쎄노텍",
+        "product": "이차전지용첨가제",
+        "quantities": [],
+        "stage": "signed"
+      },
+      "source_title": "쎄노텍, 129억원 규모 이차전지 양극재 첨가제 공급계약 체결",
+      "telegram_core_fact": "첨단 세라믹 소재 전문기업 쎄노텍이 이차전지 양극재 제조기업과 약 129억원 이차전지용 첨가제 공급계약을 체결했다고 16일 밝혔다.",
+      "title": "쎄노텍, 129억원 규모 이차전지 양극재 첨가제 공급계약 체결"
+    },
     "source_fact:0f4e89e0582de6f1356b823a": {
       "first_seen_kst": "2026-10-07T18:00:43+09:00",
       "lanes": {
@@ -345087,6 +345920,39 @@
       "source_title": "LX판토스 ‘로봇 물류센터’ 실증 공간 구축",
       "telegram_core_fact": "모바일 로봇과 로봇팔, AI, 디지털 트윈 등 첨단기술을 활용해 사람이 로봇, 일하는 물류센터를 구축하고, 장기적으로는 완전 무인화와 AI 기반 운영 최적화까지 확대한다는 구상이다.",
       "title": "LX판토스 ‘로봇 물류센터’ 실증 공간 구축"
+    },
+    "source_fact:0fa609d21bb4a43d6144bbcc": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.mk.co.kr/news/business/12178100",
+      "source": "매일경제",
+      "source_body_digest": "602d81de5f44011de3ea090f98f1f62bef519bdceda4122dcd89a2dc6ad3f6b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd079209cbc9c9639826ae88dae4e76fc707d5372545732c5715d9a42a379c4b",
+      "source_fact_keys": [
+        "source_fact:v1:3249b26e7fe22e1891ab41534b745dba429832eb6b87699ebdfd5d1aff9e01b9",
+        "source_fact:v1:39671f7ccab055deb866575d840881239aabc7e50d61fce3c6f80c1ddaa0c276",
+        "source_fact:v1:40e59fd388ca6f3dd7bebe728f734812763dc447a40266a90f59e71f20e71812",
+        "source_fact:v1:77fb364f3a809bf8aaa9a36ed1c5f7505316e9f7a90ea2daecd828b5456a5dff",
+        "source_fact:v1:7ef887e750ea8456edc1ba7b479192279ccdc93a608c4d68de5599e37c8e9a78",
+        "source_fact:v1:81392949f96ccb5e4f67c0ff19fc78e5d9225f928e3969830443ad61bee9a3d3",
+        "source_fact:v1:82763701d335926c658168cf148944d9786a3c3bb18e9fa2f83dad0bf64c2588",
+        "source_fact:v1:9af3bc85d994178ed3602ca93a476e334e1b13e2c753b0b9a3dd223a195fe44f",
+        "source_fact:v1:9f6de459082a47a3f0d87ec0754bf9ceae310b4afb32922d36f931ce2407a138",
+        "source_fact:v1:afcff4f71e82670cd879a6e59dd1368bf6dd78cabc82756e62a3947a83e46231",
+        "source_fact:v1:b1a0e68442933e89831c66925cfaa349868a166c47a48dbf8825b0b33bd0b948",
+        "source_fact:v1:bc17166108008ce51c3b7e9929e2b57972256fe9cfc14fa5837234d32e39a2db",
+        "source_fact:v1:bf4a5832d773889e3938d2c7aefca569e490c54e3ff73866185dbcee4f496f50",
+        "source_fact:v1:c39580912843467497e12e8e6aeb40ddd98e4dd2704e2f0da85020595f25669e"
+      ],
+      "source_published_kst": "2026-10-16T17:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토",
+      "telegram_core_fact": "전자제품과 인공지능(AI)을 작동시키는 핵심 부품인 메모리 공급 부족 사태가 심해지고 있음을 의식한 것이다.",
+      "title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토"
     },
     "source_fact:0fa8fca59fed3160f985a33b": {
       "first_seen_kst": "2026-10-09T15:48:54+09:00",
@@ -356504,6 +357370,46 @@
       "source_title": "‘푸틴과 경유거래’에 분노한 젤렌스키, ‘트럼프 직격’에 유럽 난감…“자제해달라”",
       "telegram_core_fact": "트럼프 정부 출범 이후 미국은 우크라이나에 재정 지원을 더 이상 하지 않고, 우크라이나와 유럽 동맹국들이 비용을 부담하는 무기만 공급하고 있지만, 미국의 정보와 무기는 우크라이나의 전쟁 수행 역량의 핵심 역할을 하고 있기에 자칫 우크라이나와 미국의 안보 협력 관계가 중단된다면 유럽으로서는 대체할 수 있는 수단이 없다.",
       "title": "‘푸틴과 경유거래’에 분노한 젤렌스키, ‘트럼프 직격’에 유럽 난감…“자제해달라”"
+    },
+    "source_fact:17e2101d7f8d5337349fecbe": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etnews.com/20261016000211",
+      "source": "전자신문",
+      "source_body_digest": "cf1c8858297793352b8ddf09e72c9aa912ec81486a9cf3a96a4e2e98a69f089b",
+      "source_event_identity": "source_event:v2:named_supply_order:028dd338706ff72085c0b0977afa36d98d715119af78f5e1e5bbba027fbc1968",
+      "source_fact_identity": "source_facts:v1:5060dec0469c3d0963ac9bd5e8bced31e78483b67b26e01e2f1aad3daa1d408d",
+      "source_fact_keys": [
+        "source_fact:v1:20af6df71e956348a28ecd8ca4711831fb5a4665cbb793249adf1f9c7de687fe",
+        "source_fact:v1:835f23e2fcc8a7c76d20c052221fa1abcad347f5fd30fa6ff5433657b9a0ed0a",
+        "source_fact:v1:be5f3caf5dfa4e258a64d37e9d60a8926fe2d868885fdd1b901b09a5901e08f9",
+        "source_fact:v1:dea194bbcabd0c405616fe7288b2b4272460dd4123f06612f44dfa89b519b5c1"
+      ],
+      "source_published_kst": "2026-10-16T14:16+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "12900000000"
+          ]
+        ],
+        "customer": "제조기업",
+        "delivery_period": "",
+        "disclosure_date": "2026-10-16",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "쎄노텍",
+        "product": "이차전지용첨가제",
+        "quantities": [],
+        "stage": "signed"
+      },
+      "source_title": "쎄노텍, 129억원 규모 이차전지 양극재 첨가제 공급계약 체결",
+      "telegram_core_fact": "첨단 세라믹 소재 전문기업 쎄노텍이 이차전지 양극재 제조기업과 약 129억원 이차전지용 첨가제 공급계약을 체결했다고 16일 밝혔다.",
+      "title": "쎄노텍, 129억원 규모 이차전지 양극재 첨가제 공급계약 체결"
     },
     "source_fact:17e44ea88de18c82f38d420d": {
       "first_seen_kst": "2026-10-08T01:09:29+09:00",
@@ -367982,6 +368888,39 @@
       "telegram_core_fact": "7일(현지 시간) 파이낸셜타임스(FT)에 따르면 골드만삭스는 S&P500 구성 기업들의 9월 분기 이익(earnings)이 전년비 27% 증가할 것이라고 분석했다.",
       "title": "실적 발표 앞둔 美 S&P500기업들…\"3분기 이익, 27% 증가할 듯\""
     },
+    "source_fact:1ff9b5bf48cec29336025296": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.mk.co.kr/news/business/12178100",
+      "source": "매일경제",
+      "source_body_digest": "602d81de5f44011de3ea090f98f1f62bef519bdceda4122dcd89a2dc6ad3f6b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd079209cbc9c9639826ae88dae4e76fc707d5372545732c5715d9a42a379c4b",
+      "source_fact_keys": [
+        "source_fact:v1:3249b26e7fe22e1891ab41534b745dba429832eb6b87699ebdfd5d1aff9e01b9",
+        "source_fact:v1:39671f7ccab055deb866575d840881239aabc7e50d61fce3c6f80c1ddaa0c276",
+        "source_fact:v1:40e59fd388ca6f3dd7bebe728f734812763dc447a40266a90f59e71f20e71812",
+        "source_fact:v1:77fb364f3a809bf8aaa9a36ed1c5f7505316e9f7a90ea2daecd828b5456a5dff",
+        "source_fact:v1:7ef887e750ea8456edc1ba7b479192279ccdc93a608c4d68de5599e37c8e9a78",
+        "source_fact:v1:81392949f96ccb5e4f67c0ff19fc78e5d9225f928e3969830443ad61bee9a3d3",
+        "source_fact:v1:82763701d335926c658168cf148944d9786a3c3bb18e9fa2f83dad0bf64c2588",
+        "source_fact:v1:9af3bc85d994178ed3602ca93a476e334e1b13e2c753b0b9a3dd223a195fe44f",
+        "source_fact:v1:9f6de459082a47a3f0d87ec0754bf9ceae310b4afb32922d36f931ce2407a138",
+        "source_fact:v1:afcff4f71e82670cd879a6e59dd1368bf6dd78cabc82756e62a3947a83e46231",
+        "source_fact:v1:b1a0e68442933e89831c66925cfaa349868a166c47a48dbf8825b0b33bd0b948",
+        "source_fact:v1:bc17166108008ce51c3b7e9929e2b57972256fe9cfc14fa5837234d32e39a2db",
+        "source_fact:v1:bf4a5832d773889e3938d2c7aefca569e490c54e3ff73866185dbcee4f496f50",
+        "source_fact:v1:c39580912843467497e12e8e6aeb40ddd98e4dd2704e2f0da85020595f25669e"
+      ],
+      "source_published_kst": "2026-10-16T17:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토",
+      "telegram_core_fact": "전자제품과 인공지능(AI)을 작동시키는 핵심 부품인 메모리 공급 부족 사태가 심해지고 있음을 의식한 것이다.",
+      "title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토"
+    },
     "source_fact:1ffa094a2334ade5bf0691fc": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
@@ -372010,6 +372949,39 @@
       "source_published_kst": "2026-10-06T12:07+09:00",
       "title": "'악수하고 춤까지' 中 휴머노이드 국감장 떴다...\"韓 투자 턱없이 부족\""
     },
+    "source_fact:229c43fd68a22fbd395485e0": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.mk.co.kr/news/business/12178100",
+      "source": "매일경제",
+      "source_body_digest": "602d81de5f44011de3ea090f98f1f62bef519bdceda4122dcd89a2dc6ad3f6b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd079209cbc9c9639826ae88dae4e76fc707d5372545732c5715d9a42a379c4b",
+      "source_fact_keys": [
+        "source_fact:v1:3249b26e7fe22e1891ab41534b745dba429832eb6b87699ebdfd5d1aff9e01b9",
+        "source_fact:v1:39671f7ccab055deb866575d840881239aabc7e50d61fce3c6f80c1ddaa0c276",
+        "source_fact:v1:40e59fd388ca6f3dd7bebe728f734812763dc447a40266a90f59e71f20e71812",
+        "source_fact:v1:77fb364f3a809bf8aaa9a36ed1c5f7505316e9f7a90ea2daecd828b5456a5dff",
+        "source_fact:v1:7ef887e750ea8456edc1ba7b479192279ccdc93a608c4d68de5599e37c8e9a78",
+        "source_fact:v1:81392949f96ccb5e4f67c0ff19fc78e5d9225f928e3969830443ad61bee9a3d3",
+        "source_fact:v1:82763701d335926c658168cf148944d9786a3c3bb18e9fa2f83dad0bf64c2588",
+        "source_fact:v1:9af3bc85d994178ed3602ca93a476e334e1b13e2c753b0b9a3dd223a195fe44f",
+        "source_fact:v1:9f6de459082a47a3f0d87ec0754bf9ceae310b4afb32922d36f931ce2407a138",
+        "source_fact:v1:afcff4f71e82670cd879a6e59dd1368bf6dd78cabc82756e62a3947a83e46231",
+        "source_fact:v1:b1a0e68442933e89831c66925cfaa349868a166c47a48dbf8825b0b33bd0b948",
+        "source_fact:v1:bc17166108008ce51c3b7e9929e2b57972256fe9cfc14fa5837234d32e39a2db",
+        "source_fact:v1:bf4a5832d773889e3938d2c7aefca569e490c54e3ff73866185dbcee4f496f50",
+        "source_fact:v1:c39580912843467497e12e8e6aeb40ddd98e4dd2704e2f0da85020595f25669e"
+      ],
+      "source_published_kst": "2026-10-16T17:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토",
+      "telegram_core_fact": "전자제품과 인공지능(AI)을 작동시키는 핵심 부품인 메모리 공급 부족 사태가 심해지고 있음을 의식한 것이다.",
+      "title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토"
+    },
     "source_fact:229efb27765e99d5bca0e981": {
       "first_seen_kst": "2026-10-07T21:31:57+09:00",
       "lanes": {
@@ -374049,6 +375021,39 @@
       ],
       "source_published_kst": "2026-10-07T05:30+09:00",
       "title": "“주가 일희일비할 것 없어, 반도체 공급난 지속은 명확한 사실”"
+    },
+    "source_fact:23e10be982b7b056a72167dc": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.mk.co.kr/news/business/12178100",
+      "source": "매일경제",
+      "source_body_digest": "602d81de5f44011de3ea090f98f1f62bef519bdceda4122dcd89a2dc6ad3f6b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd079209cbc9c9639826ae88dae4e76fc707d5372545732c5715d9a42a379c4b",
+      "source_fact_keys": [
+        "source_fact:v1:3249b26e7fe22e1891ab41534b745dba429832eb6b87699ebdfd5d1aff9e01b9",
+        "source_fact:v1:39671f7ccab055deb866575d840881239aabc7e50d61fce3c6f80c1ddaa0c276",
+        "source_fact:v1:40e59fd388ca6f3dd7bebe728f734812763dc447a40266a90f59e71f20e71812",
+        "source_fact:v1:77fb364f3a809bf8aaa9a36ed1c5f7505316e9f7a90ea2daecd828b5456a5dff",
+        "source_fact:v1:7ef887e750ea8456edc1ba7b479192279ccdc93a608c4d68de5599e37c8e9a78",
+        "source_fact:v1:81392949f96ccb5e4f67c0ff19fc78e5d9225f928e3969830443ad61bee9a3d3",
+        "source_fact:v1:82763701d335926c658168cf148944d9786a3c3bb18e9fa2f83dad0bf64c2588",
+        "source_fact:v1:9af3bc85d994178ed3602ca93a476e334e1b13e2c753b0b9a3dd223a195fe44f",
+        "source_fact:v1:9f6de459082a47a3f0d87ec0754bf9ceae310b4afb32922d36f931ce2407a138",
+        "source_fact:v1:afcff4f71e82670cd879a6e59dd1368bf6dd78cabc82756e62a3947a83e46231",
+        "source_fact:v1:b1a0e68442933e89831c66925cfaa349868a166c47a48dbf8825b0b33bd0b948",
+        "source_fact:v1:bc17166108008ce51c3b7e9929e2b57972256fe9cfc14fa5837234d32e39a2db",
+        "source_fact:v1:bf4a5832d773889e3938d2c7aefca569e490c54e3ff73866185dbcee4f496f50",
+        "source_fact:v1:c39580912843467497e12e8e6aeb40ddd98e4dd2704e2f0da85020595f25669e"
+      ],
+      "source_published_kst": "2026-10-16T17:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토",
+      "telegram_core_fact": "전자제품과 인공지능(AI)을 작동시키는 핵심 부품인 메모리 공급 부족 사태가 심해지고 있음을 의식한 것이다.",
+      "title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토"
     },
     "source_fact:23e2849a1389d11b1ac8da5d": {
       "first_seen_kst": "2026-10-12T16:50:12+09:00",
@@ -390970,6 +391975,28 @@
       "telegram_core_fact": "휴전 합의 발표에 앞서 트럼프 대통령은 러시아가 미국과 세계 시장에 경유 480만톤을 공급키로 했다고 밝혔다. 도널드 트럼프 대통령의 '러시아-우크라이나 에너지 휴전' 발표에도 러시아·우크라이나간 충돌이 계속되고 있다.",
       "title": "트럼프, 선거용 \"에너지 휴전\" 일방발표…꿈쩍않는 러·우 공방 지속"
     },
+    "source_fact:303d15b6c5ef848bc962a27f": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636673",
+      "source": "이투데이",
+      "source_body_digest": "bf19edeb62a652623227e28971f01f5094b16ea0000cda3438cebed2c15e4b72",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7516a37e74cc07df29ff3003d052e8a85a3d7865994f976375ef2d901fb1c31a",
+      "source_fact_keys": [
+        "source_fact:v1:beae874e345bd2f74cf0d3b9eccc70d31c858064a107017e9513fd16fab993d7",
+        "source_fact:v1:e6371e2ef901c69a63a74e3b0d082103a9e355964c327ce522de861c4f104a12",
+        "source_fact:v1:ed60613fe5e5f2460c2b996f46b7abdd63fb5e0a6fe117820605c098d69fb540"
+      ],
+      "source_published_kst": "2026-10-16T13:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "형지엘리트, 2027시즌 상품부터 RFID 도입…스마트 물류 전환 추진",
+      "telegram_core_fact": "형지엘리트가 2027시즌 상품부터 무선주파수식별(RFID) 기술을 도입해 물류 관리 체계의 디지털 전환에 나선다. 형지엘리트는 전일 형지글로벌패션복합센터에서 글로벌 스마트태그 기업 비온택과 RFID 시스템 도입을 위한 업무협약(MOU)을 체결했다고 16일 밝혔다.",
+      "title": "형지엘리트, 2027시즌 상품부터 RFID 도입…스마트 물류 전환 추진"
+    },
     "source_fact:30426b45c03e68eba1bbf8b4": {
       "first_seen_kst": "2026-10-13T21:12:07+09:00",
       "lanes": {
@@ -401727,6 +402754,39 @@
       "source_title": "해수부 수산물 자급률 목표 하향…\"수입 의존 심화 우려\"",
       "telegram_core_fact": "국회 농림축산식품해양수산위원회 소속 문금주 더불어민주당 의원은 12일 해수부 국정감사에서 자급률 목표 하향 조정을 비판하며 국내 수산물 생산 확대를 위한 정책 전환을 촉구했다.",
       "title": "해수부 수산물 자급률 목표 하향…\"수입 의존 심화 우려\""
+    },
+    "source_fact:37bf4e9d5f18ba39a7f0368c": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.mk.co.kr/news/business/12178100",
+      "source": "매일경제",
+      "source_body_digest": "602d81de5f44011de3ea090f98f1f62bef519bdceda4122dcd89a2dc6ad3f6b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd079209cbc9c9639826ae88dae4e76fc707d5372545732c5715d9a42a379c4b",
+      "source_fact_keys": [
+        "source_fact:v1:3249b26e7fe22e1891ab41534b745dba429832eb6b87699ebdfd5d1aff9e01b9",
+        "source_fact:v1:39671f7ccab055deb866575d840881239aabc7e50d61fce3c6f80c1ddaa0c276",
+        "source_fact:v1:40e59fd388ca6f3dd7bebe728f734812763dc447a40266a90f59e71f20e71812",
+        "source_fact:v1:77fb364f3a809bf8aaa9a36ed1c5f7505316e9f7a90ea2daecd828b5456a5dff",
+        "source_fact:v1:7ef887e750ea8456edc1ba7b479192279ccdc93a608c4d68de5599e37c8e9a78",
+        "source_fact:v1:81392949f96ccb5e4f67c0ff19fc78e5d9225f928e3969830443ad61bee9a3d3",
+        "source_fact:v1:82763701d335926c658168cf148944d9786a3c3bb18e9fa2f83dad0bf64c2588",
+        "source_fact:v1:9af3bc85d994178ed3602ca93a476e334e1b13e2c753b0b9a3dd223a195fe44f",
+        "source_fact:v1:9f6de459082a47a3f0d87ec0754bf9ceae310b4afb32922d36f931ce2407a138",
+        "source_fact:v1:afcff4f71e82670cd879a6e59dd1368bf6dd78cabc82756e62a3947a83e46231",
+        "source_fact:v1:b1a0e68442933e89831c66925cfaa349868a166c47a48dbf8825b0b33bd0b948",
+        "source_fact:v1:bc17166108008ce51c3b7e9929e2b57972256fe9cfc14fa5837234d32e39a2db",
+        "source_fact:v1:bf4a5832d773889e3938d2c7aefca569e490c54e3ff73866185dbcee4f496f50",
+        "source_fact:v1:c39580912843467497e12e8e6aeb40ddd98e4dd2704e2f0da85020595f25669e"
+      ],
+      "source_published_kst": "2026-10-16T17:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토",
+      "telegram_core_fact": "전자제품과 인공지능(AI)을 작동시키는 핵심 부품인 메모리 공급 부족 사태가 심해지고 있음을 의식한 것이다.",
+      "title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토"
     },
     "source_fact:37c15589f409358d901a9100": {
       "first_seen_kst": "2026-10-07T08:36:47+09:00",
@@ -429974,6 +431034,27 @@
       "telegram_core_fact": "유진투자증권은 13일 미국이 디젤 가격 안정을 위해 러시아산 경유에 대한 제재를 한시적으로 완화했지만 글로벌 공급 부족을 해소하기는 어려울 것으로 전망했다.",
       "title": "유진투자증권 “러시아 제재 완화에도 디젤 공급난 지속…정제마진 강세 전망”"
     },
+    "source_fact:4b851b56bdd992f19a3e5190": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829124",
+      "source": "뉴시스",
+      "source_body_digest": "e8b56cdbb5a662aee9e568c98f24bc1d75467b6c757dd60193812b2b93eb6eed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:074e45836c408ca1d0c46355794cfb4d8e84821c000d4f7f9696c8518fa0bd26",
+      "source_fact_keys": [
+        "source_fact:v1:2110a964f961b1b185826c3bba768ec22143860cd436d04ba5a709cc42a46f9f",
+        "source_fact:v1:ff1703ff9574bbb5ba4c7d1d4da209398ed7752860fa6036a598c61b56001cb2"
+      ],
+      "source_published_kst": "2026-10-16T14:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "출렁이는 증시에도 KT&G 역대 최고가 기록…\"글로벌 사업 성장세\"",
+      "telegram_core_fact": "KT&G는 튀르키예, 러시아, 카자흐스탄, 인도네시아 등 해외 생산거점을 확대하며 국내를 포함한 글로벌 5각 생산체제를 구축했다.",
+      "title": "출렁이는 증시에도 KT&G 역대 최고가 기록…\"글로벌 사업 성장세\""
+    },
     "source_fact:4b90272883b9c881130d8286": {
       "first_seen_kst": "2026-10-13T10:05:20+09:00",
       "lanes": {
@@ -434432,6 +435513,39 @@
       ],
       "source_published_kst": "2026-10-06T17:18+09:00",
       "title": "모비릭스, 60억 규모 자사주 취득 신탁계약"
+    },
+    "source_fact:4eb990976e56090597b7c0be": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.mk.co.kr/news/business/12178100",
+      "source": "매일경제",
+      "source_body_digest": "602d81de5f44011de3ea090f98f1f62bef519bdceda4122dcd89a2dc6ad3f6b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd079209cbc9c9639826ae88dae4e76fc707d5372545732c5715d9a42a379c4b",
+      "source_fact_keys": [
+        "source_fact:v1:3249b26e7fe22e1891ab41534b745dba429832eb6b87699ebdfd5d1aff9e01b9",
+        "source_fact:v1:39671f7ccab055deb866575d840881239aabc7e50d61fce3c6f80c1ddaa0c276",
+        "source_fact:v1:40e59fd388ca6f3dd7bebe728f734812763dc447a40266a90f59e71f20e71812",
+        "source_fact:v1:77fb364f3a809bf8aaa9a36ed1c5f7505316e9f7a90ea2daecd828b5456a5dff",
+        "source_fact:v1:7ef887e750ea8456edc1ba7b479192279ccdc93a608c4d68de5599e37c8e9a78",
+        "source_fact:v1:81392949f96ccb5e4f67c0ff19fc78e5d9225f928e3969830443ad61bee9a3d3",
+        "source_fact:v1:82763701d335926c658168cf148944d9786a3c3bb18e9fa2f83dad0bf64c2588",
+        "source_fact:v1:9af3bc85d994178ed3602ca93a476e334e1b13e2c753b0b9a3dd223a195fe44f",
+        "source_fact:v1:9f6de459082a47a3f0d87ec0754bf9ceae310b4afb32922d36f931ce2407a138",
+        "source_fact:v1:afcff4f71e82670cd879a6e59dd1368bf6dd78cabc82756e62a3947a83e46231",
+        "source_fact:v1:b1a0e68442933e89831c66925cfaa349868a166c47a48dbf8825b0b33bd0b948",
+        "source_fact:v1:bc17166108008ce51c3b7e9929e2b57972256fe9cfc14fa5837234d32e39a2db",
+        "source_fact:v1:bf4a5832d773889e3938d2c7aefca569e490c54e3ff73866185dbcee4f496f50",
+        "source_fact:v1:c39580912843467497e12e8e6aeb40ddd98e4dd2704e2f0da85020595f25669e"
+      ],
+      "source_published_kst": "2026-10-16T17:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토",
+      "telegram_core_fact": "전자제품과 인공지능(AI)을 작동시키는 핵심 부품인 메모리 공급 부족 사태가 심해지고 있음을 의식한 것이다.",
+      "title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토"
     },
     "source_fact:4eba64e71f23237f0afad548": {
       "first_seen_kst": "2026-10-14T20:10:22+09:00",
@@ -439222,6 +440336,32 @@
       "telegram_core_fact": "반도체 산업 호황으로 촉발된 산업용 질소가스 공급난이 장기화하면서 정부가 가스 제조사와 반도체 대기업을 대상으로 수급 조정에 나선다.",
       "title": "질소가스 공급난에 정부 중재 나서…제조 4사·반도체 대기업과 수급 조정 논의"
     },
+    "source_fact:522d315a78bbb13a737a1453": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etnews.com/20261016000210",
+      "source": "전자신문",
+      "source_body_digest": "ca9ad93647f3b20308ba8a31de8463d0c71daabe50c5b0c6e7510b3202609e21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4853659d1565149dba8b4c14a3edaf24582d40cd4032262b0fb17ab63def50a",
+      "source_fact_keys": [
+        "source_fact:v1:0743e6f4834900b44c8afb5a6b130770467b9d8c9bb00a1f46d1385545dd38c9",
+        "source_fact:v1:15aa2ccf64b2afcb535d63d7f1da03dd4c8e0fcb13c5648ea6c2bc8f7a72457f",
+        "source_fact:v1:2b6f0b995e484f91433e7e4b70f5ce7c08ebb5b745866b50ea2befad3f2623de",
+        "source_fact:v1:3c25c4248ad4ea7456d479ecf170269c441910afeb37b02d2451ddb4f16a326b",
+        "source_fact:v1:3d159b1e6c00160c38bba020b7f1b9d307405416ad89bbe12f4cce552afc9785",
+        "source_fact:v1:d7aa58c8bd0e6867efd8040da950d6e26f0d88fcf48413bb166d579c4d7b389d",
+        "source_fact:v1:f856f9db1138ea94bd9855d7825f612e7a886e9601b977222e669b84aa7aedab"
+      ],
+      "source_published_kst": "2026-10-16T14:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "브릴스, 美 로봇 규제 대응 현지생산 박차…AMR부터 시작",
+      "telegram_core_fact": "현지 파트너를 통해 미국산 부품 조달 비중을 높여 미국의 외국산 첨단 로봇 규제 강화와 공급망, 보안 리스크에 대응한다.",
+      "title": "브릴스, 美 로봇 규제 대응 현지생산 박차…AMR부터 시작"
+    },
     "source_fact:522e16de59e3d40b95931561": {
       "first_seen_kst": "2026-10-07T18:12:46+09:00",
       "lanes": {
@@ -440671,6 +441811,39 @@
       ],
       "source_published_kst": "2026-10-06T16:23+09:00",
       "title": "LIG아큐버, 자회사 통해 전장 사업 외연 넓히나"
+    },
+    "source_fact:5347e5a6dd0ad8ca34e26938": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.mk.co.kr/news/business/12178100",
+      "source": "매일경제",
+      "source_body_digest": "602d81de5f44011de3ea090f98f1f62bef519bdceda4122dcd89a2dc6ad3f6b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd079209cbc9c9639826ae88dae4e76fc707d5372545732c5715d9a42a379c4b",
+      "source_fact_keys": [
+        "source_fact:v1:3249b26e7fe22e1891ab41534b745dba429832eb6b87699ebdfd5d1aff9e01b9",
+        "source_fact:v1:39671f7ccab055deb866575d840881239aabc7e50d61fce3c6f80c1ddaa0c276",
+        "source_fact:v1:40e59fd388ca6f3dd7bebe728f734812763dc447a40266a90f59e71f20e71812",
+        "source_fact:v1:77fb364f3a809bf8aaa9a36ed1c5f7505316e9f7a90ea2daecd828b5456a5dff",
+        "source_fact:v1:7ef887e750ea8456edc1ba7b479192279ccdc93a608c4d68de5599e37c8e9a78",
+        "source_fact:v1:81392949f96ccb5e4f67c0ff19fc78e5d9225f928e3969830443ad61bee9a3d3",
+        "source_fact:v1:82763701d335926c658168cf148944d9786a3c3bb18e9fa2f83dad0bf64c2588",
+        "source_fact:v1:9af3bc85d994178ed3602ca93a476e334e1b13e2c753b0b9a3dd223a195fe44f",
+        "source_fact:v1:9f6de459082a47a3f0d87ec0754bf9ceae310b4afb32922d36f931ce2407a138",
+        "source_fact:v1:afcff4f71e82670cd879a6e59dd1368bf6dd78cabc82756e62a3947a83e46231",
+        "source_fact:v1:b1a0e68442933e89831c66925cfaa349868a166c47a48dbf8825b0b33bd0b948",
+        "source_fact:v1:bc17166108008ce51c3b7e9929e2b57972256fe9cfc14fa5837234d32e39a2db",
+        "source_fact:v1:bf4a5832d773889e3938d2c7aefca569e490c54e3ff73866185dbcee4f496f50",
+        "source_fact:v1:c39580912843467497e12e8e6aeb40ddd98e4dd2704e2f0da85020595f25669e"
+      ],
+      "source_published_kst": "2026-10-16T17:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토",
+      "telegram_core_fact": "전자제품과 인공지능(AI)을 작동시키는 핵심 부품인 메모리 공급 부족 사태가 심해지고 있음을 의식한 것이다.",
+      "title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토"
     },
     "source_fact:534bf935891a6a1cd9c066f6": {
       "first_seen_kst": "2026-10-16T15:46:25+09:00",
@@ -447089,6 +448262,29 @@
       "telegram_core_fact": "블룸버그통신에 따르면 월러 이사는 “경제지표가 예상대로 나온다면 인플레이션을 2% 목표치로 더 신속하게 되돌리기 위해 추가 금리 인상이 필요할 것으로 예상한다”고 말했다.",
       "title": "연준 무살렘·월러 \"추가 금리 인상 필요\"…시점엔 유연성"
     },
+    "source_fact:57e7c6ffadf3c18888cdc78a": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etnews.com/20261016000212",
+      "source": "전자신문",
+      "source_body_digest": "e86077afed54cd5aa02ab4e645aa10bda66032356dcafbe3dee4f230b14e1564",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f6f189edb77db972396488414781df888d5f64c0df9a74143134f3553dba0f3",
+      "source_fact_keys": [
+        "source_fact:v1:108d49e21c1b995a4cbc13095dcd5d32f7151b765770a96a7282ac0869ac9518",
+        "source_fact:v1:2861006f14556fea7c888b64b5d2d09dd344a9247b417943404d463040d5189f",
+        "source_fact:v1:999fe2ff34e78e857cf56014218e4377bed42fa8b03135bd07fa4640575255fa",
+        "source_fact:v1:e79a2fc3ea9dbf2524b8bec26ebc80815ad22dc6af1c0e6a235333fe60f350ec"
+      ],
+      "source_published_kst": "2026-10-16T14:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "네이버페이, 제주 소상공인에 75억원 특별보증…디지털 전환도 지원",
+      "telegram_core_fact": "이번 협약을 통해 4개 기관은 도내 소기업, 소상공인에게 총 75억원 '제주 소상공인 희망온 특별보증'을 공급한다.",
+      "title": "네이버페이, 제주 소상공인에 75억원 특별보증…디지털 전환도 지원"
+    },
     "source_fact:57eb903a9fc63deb7eff1beb": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
@@ -450701,6 +451897,39 @@
       "source_title": "美, 2연속 금리 인상? 연준 인사들은 신중론",
       "telegram_core_fact": "지난 2일까지 한 주간 미국의 30년 만기 고정 주택담보대출 평균 금리는 연 7.49%까지 뛰어 약 3년 만에 최고치를 기록했다.",
       "title": "美, 2연속 금리 인상? 연준 인사들은 신중론"
+    },
+    "source_fact:5a24668511ba2b37f0106f04": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.mk.co.kr/news/business/12178100",
+      "source": "매일경제",
+      "source_body_digest": "602d81de5f44011de3ea090f98f1f62bef519bdceda4122dcd89a2dc6ad3f6b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd079209cbc9c9639826ae88dae4e76fc707d5372545732c5715d9a42a379c4b",
+      "source_fact_keys": [
+        "source_fact:v1:3249b26e7fe22e1891ab41534b745dba429832eb6b87699ebdfd5d1aff9e01b9",
+        "source_fact:v1:39671f7ccab055deb866575d840881239aabc7e50d61fce3c6f80c1ddaa0c276",
+        "source_fact:v1:40e59fd388ca6f3dd7bebe728f734812763dc447a40266a90f59e71f20e71812",
+        "source_fact:v1:77fb364f3a809bf8aaa9a36ed1c5f7505316e9f7a90ea2daecd828b5456a5dff",
+        "source_fact:v1:7ef887e750ea8456edc1ba7b479192279ccdc93a608c4d68de5599e37c8e9a78",
+        "source_fact:v1:81392949f96ccb5e4f67c0ff19fc78e5d9225f928e3969830443ad61bee9a3d3",
+        "source_fact:v1:82763701d335926c658168cf148944d9786a3c3bb18e9fa2f83dad0bf64c2588",
+        "source_fact:v1:9af3bc85d994178ed3602ca93a476e334e1b13e2c753b0b9a3dd223a195fe44f",
+        "source_fact:v1:9f6de459082a47a3f0d87ec0754bf9ceae310b4afb32922d36f931ce2407a138",
+        "source_fact:v1:afcff4f71e82670cd879a6e59dd1368bf6dd78cabc82756e62a3947a83e46231",
+        "source_fact:v1:b1a0e68442933e89831c66925cfaa349868a166c47a48dbf8825b0b33bd0b948",
+        "source_fact:v1:bc17166108008ce51c3b7e9929e2b57972256fe9cfc14fa5837234d32e39a2db",
+        "source_fact:v1:bf4a5832d773889e3938d2c7aefca569e490c54e3ff73866185dbcee4f496f50",
+        "source_fact:v1:c39580912843467497e12e8e6aeb40ddd98e4dd2704e2f0da85020595f25669e"
+      ],
+      "source_published_kst": "2026-10-16T17:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토",
+      "telegram_core_fact": "전자제품과 인공지능(AI)을 작동시키는 핵심 부품인 메모리 공급 부족 사태가 심해지고 있음을 의식한 것이다.",
+      "title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토"
     },
     "source_fact:5a288b271a23216ac479ee36": {
       "first_seen_kst": "2026-10-14T14:29:29+09:00",
@@ -474733,6 +475962,46 @@
       "telegram_core_fact": "그는 \"2020년 반도체 호황 시기 기록했던 최대 영업이익률은 14% 수준이었지만, 이번에는 전방산업 호황에 따른 물량 성장과 판가 인상에 자체적인 수익구조 개선이 더해지면서 매년 매출과 영업이익 규모, 영업이익률이 사상 최대치를 경신할 것\"이라고 예상했다.",
       "title": "IBK증권, 이엔에프테크 기업분석 개시…\"사상 최대실적 전망\" | 연합뉴스"
     },
+    "source_fact:6ba136908ca4e819329b3149": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etnews.com/20261016000211",
+      "source": "전자신문",
+      "source_body_digest": "cf1c8858297793352b8ddf09e72c9aa912ec81486a9cf3a96a4e2e98a69f089b",
+      "source_event_identity": "source_event:v2:named_supply_order:028dd338706ff72085c0b0977afa36d98d715119af78f5e1e5bbba027fbc1968",
+      "source_fact_identity": "source_facts:v1:5060dec0469c3d0963ac9bd5e8bced31e78483b67b26e01e2f1aad3daa1d408d",
+      "source_fact_keys": [
+        "source_fact:v1:20af6df71e956348a28ecd8ca4711831fb5a4665cbb793249adf1f9c7de687fe",
+        "source_fact:v1:835f23e2fcc8a7c76d20c052221fa1abcad347f5fd30fa6ff5433657b9a0ed0a",
+        "source_fact:v1:be5f3caf5dfa4e258a64d37e9d60a8926fe2d868885fdd1b901b09a5901e08f9",
+        "source_fact:v1:dea194bbcabd0c405616fe7288b2b4272460dd4123f06612f44dfa89b519b5c1"
+      ],
+      "source_published_kst": "2026-10-16T14:16+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "12900000000"
+          ]
+        ],
+        "customer": "제조기업",
+        "delivery_period": "",
+        "disclosure_date": "2026-10-16",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "쎄노텍",
+        "product": "이차전지용첨가제",
+        "quantities": [],
+        "stage": "signed"
+      },
+      "source_title": "쎄노텍, 129억원 규모 이차전지 양극재 첨가제 공급계약 체결",
+      "telegram_core_fact": "첨단 세라믹 소재 전문기업 쎄노텍이 이차전지 양극재 제조기업과 약 129억원 이차전지용 첨가제 공급계약을 체결했다고 16일 밝혔다.",
+      "title": "쎄노텍, 129억원 규모 이차전지 양극재 첨가제 공급계약 체결"
+    },
     "source_fact:6ba89042806b003ccb5bd889": {
       "first_seen_kst": "2026-10-14T17:44:16+09:00",
       "lanes": {
@@ -493623,6 +494892,27 @@
       "telegram_core_fact": "미국의 2·4분기 명목 성장률은 6.3%로 10년물 국채금리(5% 초반)를 웃돌았고, 3·4분기 S&P500 기업의 주당순이익(EPS) 증가율은 30%를 웃돌 것으로 예상된다. [파이낸셜뉴스]미국 증시가 사상 최고치를 새로 쓰는 사이 코스피는 뒷걸음질치면서 투자자금의 미국행이 두드러지고 있다.",
       "title": "\"왜 국장만 내려요?\"…'코스피 소외'에 ETF·직투 자금 '미국행'"
     },
+    "source_fact:7920236414d7c7b0f6cb5c0d": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829124",
+      "source": "뉴시스",
+      "source_body_digest": "e8b56cdbb5a662aee9e568c98f24bc1d75467b6c757dd60193812b2b93eb6eed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:074e45836c408ca1d0c46355794cfb4d8e84821c000d4f7f9696c8518fa0bd26",
+      "source_fact_keys": [
+        "source_fact:v1:2110a964f961b1b185826c3bba768ec22143860cd436d04ba5a709cc42a46f9f",
+        "source_fact:v1:ff1703ff9574bbb5ba4c7d1d4da209398ed7752860fa6036a598c61b56001cb2"
+      ],
+      "source_published_kst": "2026-10-16T14:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "출렁이는 증시에도 KT&G 역대 최고가 기록…\"글로벌 사업 성장세\"",
+      "telegram_core_fact": "KT&G는 튀르키예, 러시아, 카자흐스탄, 인도네시아 등 해외 생산거점을 확대하며 국내를 포함한 글로벌 5각 생산체제를 구축했다.",
+      "title": "출렁이는 증시에도 KT&G 역대 최고가 기록…\"글로벌 사업 성장세\""
+    },
     "source_fact:7923e75fd6e5f2992b0436cb": {
       "first_seen_kst": "2026-10-07T15:44:50+09:00",
       "lanes": {
@@ -505486,6 +506776,39 @@
       "telegram_core_fact": "LG에너지솔루션은 8일 북미 리튬 생산기업 엘레브라 리튬과 리튬 정광 장기 공급계약을 체결했다고 밝혔다.",
       "title": "LG엔솔, 전기차 70만대분 캐나다 리튬 확보"
     },
+    "source_fact:820f873776565df5e11c0c66": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.mk.co.kr/news/business/12178100",
+      "source": "매일경제",
+      "source_body_digest": "602d81de5f44011de3ea090f98f1f62bef519bdceda4122dcd89a2dc6ad3f6b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd079209cbc9c9639826ae88dae4e76fc707d5372545732c5715d9a42a379c4b",
+      "source_fact_keys": [
+        "source_fact:v1:3249b26e7fe22e1891ab41534b745dba429832eb6b87699ebdfd5d1aff9e01b9",
+        "source_fact:v1:39671f7ccab055deb866575d840881239aabc7e50d61fce3c6f80c1ddaa0c276",
+        "source_fact:v1:40e59fd388ca6f3dd7bebe728f734812763dc447a40266a90f59e71f20e71812",
+        "source_fact:v1:77fb364f3a809bf8aaa9a36ed1c5f7505316e9f7a90ea2daecd828b5456a5dff",
+        "source_fact:v1:7ef887e750ea8456edc1ba7b479192279ccdc93a608c4d68de5599e37c8e9a78",
+        "source_fact:v1:81392949f96ccb5e4f67c0ff19fc78e5d9225f928e3969830443ad61bee9a3d3",
+        "source_fact:v1:82763701d335926c658168cf148944d9786a3c3bb18e9fa2f83dad0bf64c2588",
+        "source_fact:v1:9af3bc85d994178ed3602ca93a476e334e1b13e2c753b0b9a3dd223a195fe44f",
+        "source_fact:v1:9f6de459082a47a3f0d87ec0754bf9ceae310b4afb32922d36f931ce2407a138",
+        "source_fact:v1:afcff4f71e82670cd879a6e59dd1368bf6dd78cabc82756e62a3947a83e46231",
+        "source_fact:v1:b1a0e68442933e89831c66925cfaa349868a166c47a48dbf8825b0b33bd0b948",
+        "source_fact:v1:bc17166108008ce51c3b7e9929e2b57972256fe9cfc14fa5837234d32e39a2db",
+        "source_fact:v1:bf4a5832d773889e3938d2c7aefca569e490c54e3ff73866185dbcee4f496f50",
+        "source_fact:v1:c39580912843467497e12e8e6aeb40ddd98e4dd2704e2f0da85020595f25669e"
+      ],
+      "source_published_kst": "2026-10-16T17:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토",
+      "telegram_core_fact": "전자제품과 인공지능(AI)을 작동시키는 핵심 부품인 메모리 공급 부족 사태가 심해지고 있음을 의식한 것이다.",
+      "title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토"
+    },
     "source_fact:82127428859e548a9d10daa0": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -506089,6 +507412,32 @@
       ],
       "source_published_kst": "2026-10-06T14:16+09:00",
       "title": "프랑스 중앙은행 총재 “금리에 목 졸릴수도”⋯재정개혁 촉구"
+    },
+    "source_fact:825f4476825cc81c88c7de75": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etnews.com/20261016000210",
+      "source": "전자신문",
+      "source_body_digest": "ca9ad93647f3b20308ba8a31de8463d0c71daabe50c5b0c6e7510b3202609e21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4853659d1565149dba8b4c14a3edaf24582d40cd4032262b0fb17ab63def50a",
+      "source_fact_keys": [
+        "source_fact:v1:0743e6f4834900b44c8afb5a6b130770467b9d8c9bb00a1f46d1385545dd38c9",
+        "source_fact:v1:15aa2ccf64b2afcb535d63d7f1da03dd4c8e0fcb13c5648ea6c2bc8f7a72457f",
+        "source_fact:v1:2b6f0b995e484f91433e7e4b70f5ce7c08ebb5b745866b50ea2befad3f2623de",
+        "source_fact:v1:3c25c4248ad4ea7456d479ecf170269c441910afeb37b02d2451ddb4f16a326b",
+        "source_fact:v1:3d159b1e6c00160c38bba020b7f1b9d307405416ad89bbe12f4cce552afc9785",
+        "source_fact:v1:d7aa58c8bd0e6867efd8040da950d6e26f0d88fcf48413bb166d579c4d7b389d",
+        "source_fact:v1:f856f9db1138ea94bd9855d7825f612e7a886e9601b977222e669b84aa7aedab"
+      ],
+      "source_published_kst": "2026-10-16T14:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "브릴스, 美 로봇 규제 대응 현지생산 박차…AMR부터 시작",
+      "telegram_core_fact": "현지 파트너를 통해 미국산 부품 조달 비중을 높여 미국의 외국산 첨단 로봇 규제 강화와 공급망, 보안 리스크에 대응한다.",
+      "title": "브릴스, 美 로봇 규제 대응 현지생산 박차…AMR부터 시작"
     },
     "source_fact:8277cc297aee56df2f2dde74": {
       "first_seen_kst": "2026-10-09T16:07:27+09:00",
@@ -508102,6 +509451,28 @@
       ],
       "source_published_kst": "2026-10-06T06:10+09:00",
       "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
+    },
+    "source_fact:843caa64a3e3313f61c0706a": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636673",
+      "source": "이투데이",
+      "source_body_digest": "bf19edeb62a652623227e28971f01f5094b16ea0000cda3438cebed2c15e4b72",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7516a37e74cc07df29ff3003d052e8a85a3d7865994f976375ef2d901fb1c31a",
+      "source_fact_keys": [
+        "source_fact:v1:beae874e345bd2f74cf0d3b9eccc70d31c858064a107017e9513fd16fab993d7",
+        "source_fact:v1:e6371e2ef901c69a63a74e3b0d082103a9e355964c327ce522de861c4f104a12",
+        "source_fact:v1:ed60613fe5e5f2460c2b996f46b7abdd63fb5e0a6fe117820605c098d69fb540"
+      ],
+      "source_published_kst": "2026-10-16T13:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "형지엘리트, 2027시즌 상품부터 RFID 도입…스마트 물류 전환 추진",
+      "telegram_core_fact": "형지엘리트가 2027시즌 상품부터 무선주파수식별(RFID) 기술을 도입해 물류 관리 체계의 디지털 전환에 나선다. 형지엘리트는 전일 형지글로벌패션복합센터에서 글로벌 스마트태그 기업 비온택과 RFID 시스템 도입을 위한 업무협약(MOU)을 체결했다고 16일 밝혔다.",
+      "title": "형지엘리트, 2027시즌 상품부터 RFID 도입…스마트 물류 전환 추진"
     },
     "source_fact:8443ad004536332bcb21a4fd": {
       "first_seen_kst": "2026-10-12T07:27:08+09:00",
@@ -548419,6 +549790,32 @@
       "telegram_core_fact": "설용진 iM증권 연구원은 14일 보고서에서 “신한지주는 전날 롯데손해보험 지분 77.04%를 6933억원에 인수하는 주식매매계약(SPA)을 체결했다”며 “지분율을 감안한 전체 기업가치는 9000억원에 달한다”고 밝혔다.",
       "title": "신한지주, 롯데손해보험 인수 \"아직은 물음표\"…추가 증자 가능성-iM"
     },
+    "source_fact:a18c4577ca1c00bbc3736509": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etnews.com/20261016000210",
+      "source": "전자신문",
+      "source_body_digest": "ca9ad93647f3b20308ba8a31de8463d0c71daabe50c5b0c6e7510b3202609e21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4853659d1565149dba8b4c14a3edaf24582d40cd4032262b0fb17ab63def50a",
+      "source_fact_keys": [
+        "source_fact:v1:0743e6f4834900b44c8afb5a6b130770467b9d8c9bb00a1f46d1385545dd38c9",
+        "source_fact:v1:15aa2ccf64b2afcb535d63d7f1da03dd4c8e0fcb13c5648ea6c2bc8f7a72457f",
+        "source_fact:v1:2b6f0b995e484f91433e7e4b70f5ce7c08ebb5b745866b50ea2befad3f2623de",
+        "source_fact:v1:3c25c4248ad4ea7456d479ecf170269c441910afeb37b02d2451ddb4f16a326b",
+        "source_fact:v1:3d159b1e6c00160c38bba020b7f1b9d307405416ad89bbe12f4cce552afc9785",
+        "source_fact:v1:d7aa58c8bd0e6867efd8040da950d6e26f0d88fcf48413bb166d579c4d7b389d",
+        "source_fact:v1:f856f9db1138ea94bd9855d7825f612e7a886e9601b977222e669b84aa7aedab"
+      ],
+      "source_published_kst": "2026-10-16T14:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "브릴스, 美 로봇 규제 대응 현지생산 박차…AMR부터 시작",
+      "telegram_core_fact": "현지 파트너를 통해 미국산 부품 조달 비중을 높여 미국의 외국산 첨단 로봇 규제 강화와 공급망, 보안 리스크에 대응한다.",
+      "title": "브릴스, 美 로봇 규제 대응 현지생산 박차…AMR부터 시작"
+    },
     "source_fact:a18d9d5cedd8b51026a87f5d": {
       "first_seen_kst": "2026-10-12T05:35:02+09:00",
       "lanes": {
@@ -564186,6 +565583,39 @@
       "telegram_core_fact": "김 장관은 이날 광주 군공항 부지를 찾아 서남권 반도체 클러스터 조성 여건을 확인하고, 부지·전력·용수 등 핵심 기반 시설 공급 계획을 점검했다.",
       "title": "최태원 이어 산업장관 광주行… 서남권 반도체 현장 ‘탄력’"
     },
+    "source_fact:acc328cb57b5a198ad97cdb2": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.mk.co.kr/news/business/12178100",
+      "source": "매일경제",
+      "source_body_digest": "602d81de5f44011de3ea090f98f1f62bef519bdceda4122dcd89a2dc6ad3f6b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd079209cbc9c9639826ae88dae4e76fc707d5372545732c5715d9a42a379c4b",
+      "source_fact_keys": [
+        "source_fact:v1:3249b26e7fe22e1891ab41534b745dba429832eb6b87699ebdfd5d1aff9e01b9",
+        "source_fact:v1:39671f7ccab055deb866575d840881239aabc7e50d61fce3c6f80c1ddaa0c276",
+        "source_fact:v1:40e59fd388ca6f3dd7bebe728f734812763dc447a40266a90f59e71f20e71812",
+        "source_fact:v1:77fb364f3a809bf8aaa9a36ed1c5f7505316e9f7a90ea2daecd828b5456a5dff",
+        "source_fact:v1:7ef887e750ea8456edc1ba7b479192279ccdc93a608c4d68de5599e37c8e9a78",
+        "source_fact:v1:81392949f96ccb5e4f67c0ff19fc78e5d9225f928e3969830443ad61bee9a3d3",
+        "source_fact:v1:82763701d335926c658168cf148944d9786a3c3bb18e9fa2f83dad0bf64c2588",
+        "source_fact:v1:9af3bc85d994178ed3602ca93a476e334e1b13e2c753b0b9a3dd223a195fe44f",
+        "source_fact:v1:9f6de459082a47a3f0d87ec0754bf9ceae310b4afb32922d36f931ce2407a138",
+        "source_fact:v1:afcff4f71e82670cd879a6e59dd1368bf6dd78cabc82756e62a3947a83e46231",
+        "source_fact:v1:b1a0e68442933e89831c66925cfaa349868a166c47a48dbf8825b0b33bd0b948",
+        "source_fact:v1:bc17166108008ce51c3b7e9929e2b57972256fe9cfc14fa5837234d32e39a2db",
+        "source_fact:v1:bf4a5832d773889e3938d2c7aefca569e490c54e3ff73866185dbcee4f496f50",
+        "source_fact:v1:c39580912843467497e12e8e6aeb40ddd98e4dd2704e2f0da85020595f25669e"
+      ],
+      "source_published_kst": "2026-10-16T17:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토",
+      "telegram_core_fact": "전자제품과 인공지능(AI)을 작동시키는 핵심 부품인 메모리 공급 부족 사태가 심해지고 있음을 의식한 것이다.",
+      "title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토"
+    },
     "source_fact:accb80bc23cf7027348d968e": {
       "first_seen_kst": "2026-10-08T19:27:03+09:00",
       "lanes": {
@@ -573212,6 +574642,39 @@
       "telegram_core_fact": "호남 반도체 클러스터에 전력을 공급하기 위한 송전설비 구축 비용의 약 80%를 삼성전자와 SK하이닉스 등 수요 기업이 부담하는 것으로 나타났다. 김 사장은 이 가운데 80%를 실수요자인 삼성전자와 SK하이닉스가 부담하는 것이 맞느냐는 국민의힘 조지연 의원의 질의에도 “그렇다”고 답했다.",
       "title": "김동철 한전 사장 \"반도체 클러스터 전력망 비용 80% 기업이 부담\""
     },
+    "source_fact:b344034997ec8106f6593188": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.mk.co.kr/news/business/12178100",
+      "source": "매일경제",
+      "source_body_digest": "602d81de5f44011de3ea090f98f1f62bef519bdceda4122dcd89a2dc6ad3f6b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd079209cbc9c9639826ae88dae4e76fc707d5372545732c5715d9a42a379c4b",
+      "source_fact_keys": [
+        "source_fact:v1:3249b26e7fe22e1891ab41534b745dba429832eb6b87699ebdfd5d1aff9e01b9",
+        "source_fact:v1:39671f7ccab055deb866575d840881239aabc7e50d61fce3c6f80c1ddaa0c276",
+        "source_fact:v1:40e59fd388ca6f3dd7bebe728f734812763dc447a40266a90f59e71f20e71812",
+        "source_fact:v1:77fb364f3a809bf8aaa9a36ed1c5f7505316e9f7a90ea2daecd828b5456a5dff",
+        "source_fact:v1:7ef887e750ea8456edc1ba7b479192279ccdc93a608c4d68de5599e37c8e9a78",
+        "source_fact:v1:81392949f96ccb5e4f67c0ff19fc78e5d9225f928e3969830443ad61bee9a3d3",
+        "source_fact:v1:82763701d335926c658168cf148944d9786a3c3bb18e9fa2f83dad0bf64c2588",
+        "source_fact:v1:9af3bc85d994178ed3602ca93a476e334e1b13e2c753b0b9a3dd223a195fe44f",
+        "source_fact:v1:9f6de459082a47a3f0d87ec0754bf9ceae310b4afb32922d36f931ce2407a138",
+        "source_fact:v1:afcff4f71e82670cd879a6e59dd1368bf6dd78cabc82756e62a3947a83e46231",
+        "source_fact:v1:b1a0e68442933e89831c66925cfaa349868a166c47a48dbf8825b0b33bd0b948",
+        "source_fact:v1:bc17166108008ce51c3b7e9929e2b57972256fe9cfc14fa5837234d32e39a2db",
+        "source_fact:v1:bf4a5832d773889e3938d2c7aefca569e490c54e3ff73866185dbcee4f496f50",
+        "source_fact:v1:c39580912843467497e12e8e6aeb40ddd98e4dd2704e2f0da85020595f25669e"
+      ],
+      "source_published_kst": "2026-10-16T17:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토",
+      "telegram_core_fact": "전자제품과 인공지능(AI)을 작동시키는 핵심 부품인 메모리 공급 부족 사태가 심해지고 있음을 의식한 것이다.",
+      "title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토"
+    },
     "source_fact:b34490ad8a72bb9c6bb42042": {
       "first_seen_kst": "2026-10-10T06:23:09+09:00",
       "lanes": {
@@ -581097,6 +582560,28 @@
       ],
       "source_published_kst": "2026-10-06T20:29+09:00",
       "title": "[올댓차이나] 홍콩 증시, 뉴욕 증시 강세에 이틀째 상승 마감… H주 0.96%↑"
+    },
+    "source_fact:b913f4cb9163f2a7345b43c2": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636673",
+      "source": "이투데이",
+      "source_body_digest": "bf19edeb62a652623227e28971f01f5094b16ea0000cda3438cebed2c15e4b72",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7516a37e74cc07df29ff3003d052e8a85a3d7865994f976375ef2d901fb1c31a",
+      "source_fact_keys": [
+        "source_fact:v1:beae874e345bd2f74cf0d3b9eccc70d31c858064a107017e9513fd16fab993d7",
+        "source_fact:v1:e6371e2ef901c69a63a74e3b0d082103a9e355964c327ce522de861c4f104a12",
+        "source_fact:v1:ed60613fe5e5f2460c2b996f46b7abdd63fb5e0a6fe117820605c098d69fb540"
+      ],
+      "source_published_kst": "2026-10-16T13:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "형지엘리트, 2027시즌 상품부터 RFID 도입…스마트 물류 전환 추진",
+      "telegram_core_fact": "형지엘리트가 2027시즌 상품부터 무선주파수식별(RFID) 기술을 도입해 물류 관리 체계의 디지털 전환에 나선다. 형지엘리트는 전일 형지글로벌패션복합센터에서 글로벌 스마트태그 기업 비온택과 RFID 시스템 도입을 위한 업무협약(MOU)을 체결했다고 16일 밝혔다.",
+      "title": "형지엘리트, 2027시즌 상품부터 RFID 도입…스마트 물류 전환 추진"
     },
     "source_fact:b917265e5bdd01b4c5e0b4e0": {
       "first_seen_kst": "2026-10-06T01:41:59+09:00",
@@ -603717,6 +605202,29 @@
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
     },
+    "source_fact:c94a19940186d5ad1be54a17": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etnews.com/20261016000212",
+      "source": "전자신문",
+      "source_body_digest": "e86077afed54cd5aa02ab4e645aa10bda66032356dcafbe3dee4f230b14e1564",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f6f189edb77db972396488414781df888d5f64c0df9a74143134f3553dba0f3",
+      "source_fact_keys": [
+        "source_fact:v1:108d49e21c1b995a4cbc13095dcd5d32f7151b765770a96a7282ac0869ac9518",
+        "source_fact:v1:2861006f14556fea7c888b64b5d2d09dd344a9247b417943404d463040d5189f",
+        "source_fact:v1:999fe2ff34e78e857cf56014218e4377bed42fa8b03135bd07fa4640575255fa",
+        "source_fact:v1:e79a2fc3ea9dbf2524b8bec26ebc80815ad22dc6af1c0e6a235333fe60f350ec"
+      ],
+      "source_published_kst": "2026-10-16T14:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "네이버페이, 제주 소상공인에 75억원 특별보증…디지털 전환도 지원",
+      "telegram_core_fact": "이번 협약을 통해 4개 기관은 도내 소기업, 소상공인에게 총 75억원 '제주 소상공인 희망온 특별보증'을 공급한다.",
+      "title": "네이버페이, 제주 소상공인에 75억원 특별보증…디지털 전환도 지원"
+    },
     "source_fact:c94bf725c89c3e0ca81ca4f8": {
       "first_seen_kst": "2026-10-09T16:07:27+09:00",
       "lanes": {
@@ -616425,6 +617933,32 @@
       "telegram_core_fact": "사상 최고치 부근까지 오른 주가와 5%를 웃도는 장기금리가 공존하려면 기업들이 높아진 기대를 실적으로 증명해야 한다. 특히 AI에 쏟아부은 막대한 자금이 실제 매출과 이익으로 연결되고 있는지가 이번 실적시즌의 핵심 시험대가 될 전망이다.",
       "title": "사상 최고치 달리던 美증시 제동…AI 랠리 시험대[월스트리트in]"
     },
+    "source_fact:d3200605ae9911776c194af4": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etnews.com/20261016000210",
+      "source": "전자신문",
+      "source_body_digest": "ca9ad93647f3b20308ba8a31de8463d0c71daabe50c5b0c6e7510b3202609e21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4853659d1565149dba8b4c14a3edaf24582d40cd4032262b0fb17ab63def50a",
+      "source_fact_keys": [
+        "source_fact:v1:0743e6f4834900b44c8afb5a6b130770467b9d8c9bb00a1f46d1385545dd38c9",
+        "source_fact:v1:15aa2ccf64b2afcb535d63d7f1da03dd4c8e0fcb13c5648ea6c2bc8f7a72457f",
+        "source_fact:v1:2b6f0b995e484f91433e7e4b70f5ce7c08ebb5b745866b50ea2befad3f2623de",
+        "source_fact:v1:3c25c4248ad4ea7456d479ecf170269c441910afeb37b02d2451ddb4f16a326b",
+        "source_fact:v1:3d159b1e6c00160c38bba020b7f1b9d307405416ad89bbe12f4cce552afc9785",
+        "source_fact:v1:d7aa58c8bd0e6867efd8040da950d6e26f0d88fcf48413bb166d579c4d7b389d",
+        "source_fact:v1:f856f9db1138ea94bd9855d7825f612e7a886e9601b977222e669b84aa7aedab"
+      ],
+      "source_published_kst": "2026-10-16T14:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "브릴스, 美 로봇 규제 대응 현지생산 박차…AMR부터 시작",
+      "telegram_core_fact": "현지 파트너를 통해 미국산 부품 조달 비중을 높여 미국의 외국산 첨단 로봇 규제 강화와 공급망, 보안 리스크에 대응한다.",
+      "title": "브릴스, 美 로봇 규제 대응 현지생산 박차…AMR부터 시작"
+    },
     "source_fact:d3205d4a62cd8476995ee40c": {
       "first_seen_kst": "2026-10-13T01:09:54+09:00",
       "lanes": {
@@ -621481,6 +623015,46 @@
       "source_published_kst": "2026-10-06T17:35+09:00",
       "title": "엔비디아, 이틀째 사상 최고…시총 6조달러 고지 '눈앞'"
     },
+    "source_fact:d67b209d8d644529430edbd5": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etnews.com/20261016000211",
+      "source": "전자신문",
+      "source_body_digest": "cf1c8858297793352b8ddf09e72c9aa912ec81486a9cf3a96a4e2e98a69f089b",
+      "source_event_identity": "source_event:v2:named_supply_order:028dd338706ff72085c0b0977afa36d98d715119af78f5e1e5bbba027fbc1968",
+      "source_fact_identity": "source_facts:v1:5060dec0469c3d0963ac9bd5e8bced31e78483b67b26e01e2f1aad3daa1d408d",
+      "source_fact_keys": [
+        "source_fact:v1:20af6df71e956348a28ecd8ca4711831fb5a4665cbb793249adf1f9c7de687fe",
+        "source_fact:v1:835f23e2fcc8a7c76d20c052221fa1abcad347f5fd30fa6ff5433657b9a0ed0a",
+        "source_fact:v1:be5f3caf5dfa4e258a64d37e9d60a8926fe2d868885fdd1b901b09a5901e08f9",
+        "source_fact:v1:dea194bbcabd0c405616fe7288b2b4272460dd4123f06612f44dfa89b519b5c1"
+      ],
+      "source_published_kst": "2026-10-16T14:16+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "12900000000"
+          ]
+        ],
+        "customer": "제조기업",
+        "delivery_period": "",
+        "disclosure_date": "2026-10-16",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "쎄노텍",
+        "product": "이차전지용첨가제",
+        "quantities": [],
+        "stage": "signed"
+      },
+      "source_title": "쎄노텍, 129억원 규모 이차전지 양극재 첨가제 공급계약 체결",
+      "telegram_core_fact": "첨단 세라믹 소재 전문기업 쎄노텍이 이차전지 양극재 제조기업과 약 129억원 이차전지용 첨가제 공급계약을 체결했다고 16일 밝혔다.",
+      "title": "쎄노텍, 129억원 규모 이차전지 양극재 첨가제 공급계약 체결"
+    },
     "source_fact:d686fd21779e1591a9a15d23": {
       "first_seen_kst": "2026-10-12T11:27:57+09:00",
       "lanes": {
@@ -624995,6 +626569,32 @@
       "source_title": "이형일 \"수출 견조하지만 대외 리스크 여전\"…3조 해외건설펀드 신설",
       "telegram_core_fact": "\"우리 기업의 해외수주 지원을 위해 3조원 해외건설 신(新)전략펀드를 신설하고, 해외 진출 사업의 연관 지역경제가 활성화될 수 있도록 패키지형 수주(개발·건설·유지보수)를 확대하겠다\"고 밝혔다.",
       "title": "이형일 \"수출 견조하지만 대외 리스크 여전\"…3조 해외건설펀드 신설"
+    },
+    "source_fact:d8dc49273d127e3f22ca39aa": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etnews.com/20261016000210",
+      "source": "전자신문",
+      "source_body_digest": "ca9ad93647f3b20308ba8a31de8463d0c71daabe50c5b0c6e7510b3202609e21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4853659d1565149dba8b4c14a3edaf24582d40cd4032262b0fb17ab63def50a",
+      "source_fact_keys": [
+        "source_fact:v1:0743e6f4834900b44c8afb5a6b130770467b9d8c9bb00a1f46d1385545dd38c9",
+        "source_fact:v1:15aa2ccf64b2afcb535d63d7f1da03dd4c8e0fcb13c5648ea6c2bc8f7a72457f",
+        "source_fact:v1:2b6f0b995e484f91433e7e4b70f5ce7c08ebb5b745866b50ea2befad3f2623de",
+        "source_fact:v1:3c25c4248ad4ea7456d479ecf170269c441910afeb37b02d2451ddb4f16a326b",
+        "source_fact:v1:3d159b1e6c00160c38bba020b7f1b9d307405416ad89bbe12f4cce552afc9785",
+        "source_fact:v1:d7aa58c8bd0e6867efd8040da950d6e26f0d88fcf48413bb166d579c4d7b389d",
+        "source_fact:v1:f856f9db1138ea94bd9855d7825f612e7a886e9601b977222e669b84aa7aedab"
+      ],
+      "source_published_kst": "2026-10-16T14:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "브릴스, 美 로봇 규제 대응 현지생산 박차…AMR부터 시작",
+      "telegram_core_fact": "현지 파트너를 통해 미국산 부품 조달 비중을 높여 미국의 외국산 첨단 로봇 규제 강화와 공급망, 보안 리스크에 대응한다.",
+      "title": "브릴스, 美 로봇 규제 대응 현지생산 박차…AMR부터 시작"
     },
     "source_fact:d8de286210012751b3d0f9bb": {
       "first_seen_kst": "2026-10-07T17:47:45+09:00",
@@ -628815,6 +630415,29 @@
       "telegram_core_fact": "채권시장에 따르면 전날 국고채 3년물 금리는 3.857%로 8월31일(3.838%) 이후 한 달 보름 만에 최저치를 기록했다.",
       "title": "급변한 채권시장, 연말 강세 이어갈까…“금리 하단 근접” 경계도"
     },
+    "source_fact:db97ed2bed2cde6e2fcf9a6f": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etnews.com/20261016000212",
+      "source": "전자신문",
+      "source_body_digest": "e86077afed54cd5aa02ab4e645aa10bda66032356dcafbe3dee4f230b14e1564",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f6f189edb77db972396488414781df888d5f64c0df9a74143134f3553dba0f3",
+      "source_fact_keys": [
+        "source_fact:v1:108d49e21c1b995a4cbc13095dcd5d32f7151b765770a96a7282ac0869ac9518",
+        "source_fact:v1:2861006f14556fea7c888b64b5d2d09dd344a9247b417943404d463040d5189f",
+        "source_fact:v1:999fe2ff34e78e857cf56014218e4377bed42fa8b03135bd07fa4640575255fa",
+        "source_fact:v1:e79a2fc3ea9dbf2524b8bec26ebc80815ad22dc6af1c0e6a235333fe60f350ec"
+      ],
+      "source_published_kst": "2026-10-16T14:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "네이버페이, 제주 소상공인에 75억원 특별보증…디지털 전환도 지원",
+      "telegram_core_fact": "이번 협약을 통해 4개 기관은 도내 소기업, 소상공인에게 총 75억원 '제주 소상공인 희망온 특별보증'을 공급한다.",
+      "title": "네이버페이, 제주 소상공인에 75억원 특별보증…디지털 전환도 지원"
+    },
     "source_fact:dba7beb1cc49e847ad424eee": {
       "first_seen_kst": "2026-10-15T18:47:56+09:00",
       "lanes": {
@@ -631985,6 +633608,32 @@
       "telegram_core_fact": "유가증권시장 매도 사이드카는 코스피200선물 지수가 5% 이상 하락해 1분간 지속되는 경우 발동된다.",
       "title": "'검은 목요일' 코스피·코스닥 매도 사이드카 잇단 발동"
     },
+    "source_fact:ddf96e5bcfd7b963aa0176df": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etnews.com/20261016000210",
+      "source": "전자신문",
+      "source_body_digest": "ca9ad93647f3b20308ba8a31de8463d0c71daabe50c5b0c6e7510b3202609e21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4853659d1565149dba8b4c14a3edaf24582d40cd4032262b0fb17ab63def50a",
+      "source_fact_keys": [
+        "source_fact:v1:0743e6f4834900b44c8afb5a6b130770467b9d8c9bb00a1f46d1385545dd38c9",
+        "source_fact:v1:15aa2ccf64b2afcb535d63d7f1da03dd4c8e0fcb13c5648ea6c2bc8f7a72457f",
+        "source_fact:v1:2b6f0b995e484f91433e7e4b70f5ce7c08ebb5b745866b50ea2befad3f2623de",
+        "source_fact:v1:3c25c4248ad4ea7456d479ecf170269c441910afeb37b02d2451ddb4f16a326b",
+        "source_fact:v1:3d159b1e6c00160c38bba020b7f1b9d307405416ad89bbe12f4cce552afc9785",
+        "source_fact:v1:d7aa58c8bd0e6867efd8040da950d6e26f0d88fcf48413bb166d579c4d7b389d",
+        "source_fact:v1:f856f9db1138ea94bd9855d7825f612e7a886e9601b977222e669b84aa7aedab"
+      ],
+      "source_published_kst": "2026-10-16T14:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "브릴스, 美 로봇 규제 대응 현지생산 박차…AMR부터 시작",
+      "telegram_core_fact": "현지 파트너를 통해 미국산 부품 조달 비중을 높여 미국의 외국산 첨단 로봇 규제 강화와 공급망, 보안 리스크에 대응한다.",
+      "title": "브릴스, 美 로봇 규제 대응 현지생산 박차…AMR부터 시작"
+    },
     "source_fact:ddf9a515224f1e7b02023f6b": {
       "first_seen_kst": "2026-10-14T12:59:52+09:00",
       "lanes": {
@@ -635124,6 +636773,39 @@
       "source_title": "경유값 급등에 표심 흔들…러시아産 들여오는 트럼프",
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 국제 제재로 거래가 금지된 러시아산 경유(디젤)를 미국과 세계 시장에 대규모로 공급하겠다고 발표했다.",
       "title": "경유값 급등에 표심 흔들…러시아産 들여오는 트럼프"
+    },
+    "source_fact:e05346e245ce30a4d3951f12": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.mk.co.kr/news/business/12178100",
+      "source": "매일경제",
+      "source_body_digest": "602d81de5f44011de3ea090f98f1f62bef519bdceda4122dcd89a2dc6ad3f6b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd079209cbc9c9639826ae88dae4e76fc707d5372545732c5715d9a42a379c4b",
+      "source_fact_keys": [
+        "source_fact:v1:3249b26e7fe22e1891ab41534b745dba429832eb6b87699ebdfd5d1aff9e01b9",
+        "source_fact:v1:39671f7ccab055deb866575d840881239aabc7e50d61fce3c6f80c1ddaa0c276",
+        "source_fact:v1:40e59fd388ca6f3dd7bebe728f734812763dc447a40266a90f59e71f20e71812",
+        "source_fact:v1:77fb364f3a809bf8aaa9a36ed1c5f7505316e9f7a90ea2daecd828b5456a5dff",
+        "source_fact:v1:7ef887e750ea8456edc1ba7b479192279ccdc93a608c4d68de5599e37c8e9a78",
+        "source_fact:v1:81392949f96ccb5e4f67c0ff19fc78e5d9225f928e3969830443ad61bee9a3d3",
+        "source_fact:v1:82763701d335926c658168cf148944d9786a3c3bb18e9fa2f83dad0bf64c2588",
+        "source_fact:v1:9af3bc85d994178ed3602ca93a476e334e1b13e2c753b0b9a3dd223a195fe44f",
+        "source_fact:v1:9f6de459082a47a3f0d87ec0754bf9ceae310b4afb32922d36f931ce2407a138",
+        "source_fact:v1:afcff4f71e82670cd879a6e59dd1368bf6dd78cabc82756e62a3947a83e46231",
+        "source_fact:v1:b1a0e68442933e89831c66925cfaa349868a166c47a48dbf8825b0b33bd0b948",
+        "source_fact:v1:bc17166108008ce51c3b7e9929e2b57972256fe9cfc14fa5837234d32e39a2db",
+        "source_fact:v1:bf4a5832d773889e3938d2c7aefca569e490c54e3ff73866185dbcee4f496f50",
+        "source_fact:v1:c39580912843467497e12e8e6aeb40ddd98e4dd2704e2f0da85020595f25669e"
+      ],
+      "source_published_kst": "2026-10-16T17:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토",
+      "telegram_core_fact": "전자제품과 인공지능(AI)을 작동시키는 핵심 부품인 메모리 공급 부족 사태가 심해지고 있음을 의식한 것이다.",
+      "title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토"
     },
     "source_fact:e05a87a6073a42bd1fe8951b": {
       "first_seen_kst": "2026-10-14T01:52:11+09:00",
@@ -648473,6 +650155,32 @@
       "source_title": "\"반도체는 팀 스포츠\"…리사 수 \"삼성·SK와 HBM4 협력…전 세계 수백억달러 투자\"",
       "telegram_core_fact": "수 회장은 차세대 인공지능(AI) 가속기 제품군에 6세대 고대역폭메모리(HBM4)를 탑재하고 있음을 공식화하며, 한국 핵심 파트너사들과 5년 이상 장기 공급망을 구축할 계획이라고 밝혔다.",
       "title": "\"반도체는 팀 스포츠\"…리사 수 \"삼성·SK와 HBM4 협력…전 세계 수백억달러 투자\""
+    },
+    "source_fact:e9762e096be98bdb827f22db": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etnews.com/20261016000210",
+      "source": "전자신문",
+      "source_body_digest": "ca9ad93647f3b20308ba8a31de8463d0c71daabe50c5b0c6e7510b3202609e21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4853659d1565149dba8b4c14a3edaf24582d40cd4032262b0fb17ab63def50a",
+      "source_fact_keys": [
+        "source_fact:v1:0743e6f4834900b44c8afb5a6b130770467b9d8c9bb00a1f46d1385545dd38c9",
+        "source_fact:v1:15aa2ccf64b2afcb535d63d7f1da03dd4c8e0fcb13c5648ea6c2bc8f7a72457f",
+        "source_fact:v1:2b6f0b995e484f91433e7e4b70f5ce7c08ebb5b745866b50ea2befad3f2623de",
+        "source_fact:v1:3c25c4248ad4ea7456d479ecf170269c441910afeb37b02d2451ddb4f16a326b",
+        "source_fact:v1:3d159b1e6c00160c38bba020b7f1b9d307405416ad89bbe12f4cce552afc9785",
+        "source_fact:v1:d7aa58c8bd0e6867efd8040da950d6e26f0d88fcf48413bb166d579c4d7b389d",
+        "source_fact:v1:f856f9db1138ea94bd9855d7825f612e7a886e9601b977222e669b84aa7aedab"
+      ],
+      "source_published_kst": "2026-10-16T14:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "브릴스, 美 로봇 규제 대응 현지생산 박차…AMR부터 시작",
+      "telegram_core_fact": "현지 파트너를 통해 미국산 부품 조달 비중을 높여 미국의 외국산 첨단 로봇 규제 강화와 공급망, 보안 리스크에 대응한다.",
+      "title": "브릴스, 美 로봇 규제 대응 현지생산 박차…AMR부터 시작"
     },
     "source_fact:e9778bf7223cc5e37fdaa67e": {
       "first_seen_kst": "2026-10-07T23:10:06+09:00",
@@ -670588,6 +672296,39 @@
       "telegram_core_fact": "이나라 상상인증권 연구원은 \"2분기에는 영업이익이 시장 기대를 크게 하회하며 주가 조정이 나타났으나, 해당 실적을 통해 BTS 공연 수익성이 확인된 만큼 동일 요인에 따른 추가적인 실적 충격은 제한적일 것으로 예상한다\"고 전망하며 목표주가 32만원을 유지했다.",
       "title": "반토막 하이브, 주가와 딴판인 실적…'BTS 공백' 5세대가 메웠다"
     },
+    "source_fact:fa87a4af88e2a002f13203c4": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.mk.co.kr/news/business/12178100",
+      "source": "매일경제",
+      "source_body_digest": "602d81de5f44011de3ea090f98f1f62bef519bdceda4122dcd89a2dc6ad3f6b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd079209cbc9c9639826ae88dae4e76fc707d5372545732c5715d9a42a379c4b",
+      "source_fact_keys": [
+        "source_fact:v1:3249b26e7fe22e1891ab41534b745dba429832eb6b87699ebdfd5d1aff9e01b9",
+        "source_fact:v1:39671f7ccab055deb866575d840881239aabc7e50d61fce3c6f80c1ddaa0c276",
+        "source_fact:v1:40e59fd388ca6f3dd7bebe728f734812763dc447a40266a90f59e71f20e71812",
+        "source_fact:v1:77fb364f3a809bf8aaa9a36ed1c5f7505316e9f7a90ea2daecd828b5456a5dff",
+        "source_fact:v1:7ef887e750ea8456edc1ba7b479192279ccdc93a608c4d68de5599e37c8e9a78",
+        "source_fact:v1:81392949f96ccb5e4f67c0ff19fc78e5d9225f928e3969830443ad61bee9a3d3",
+        "source_fact:v1:82763701d335926c658168cf148944d9786a3c3bb18e9fa2f83dad0bf64c2588",
+        "source_fact:v1:9af3bc85d994178ed3602ca93a476e334e1b13e2c753b0b9a3dd223a195fe44f",
+        "source_fact:v1:9f6de459082a47a3f0d87ec0754bf9ceae310b4afb32922d36f931ce2407a138",
+        "source_fact:v1:afcff4f71e82670cd879a6e59dd1368bf6dd78cabc82756e62a3947a83e46231",
+        "source_fact:v1:b1a0e68442933e89831c66925cfaa349868a166c47a48dbf8825b0b33bd0b948",
+        "source_fact:v1:bc17166108008ce51c3b7e9929e2b57972256fe9cfc14fa5837234d32e39a2db",
+        "source_fact:v1:bf4a5832d773889e3938d2c7aefca569e490c54e3ff73866185dbcee4f496f50",
+        "source_fact:v1:c39580912843467497e12e8e6aeb40ddd98e4dd2704e2f0da85020595f25669e"
+      ],
+      "source_published_kst": "2026-10-16T17:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토",
+      "telegram_core_fact": "전자제품과 인공지능(AI)을 작동시키는 핵심 부품인 메모리 공급 부족 사태가 심해지고 있음을 의식한 것이다.",
+      "title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토"
+    },
     "source_fact:fa89b7155ea38aa6cb0aca54": {
       "first_seen_kst": "2026-10-11T22:09:39+09:00",
       "lanes": {
@@ -671503,6 +673244,29 @@
       "source_title": "나신평 \"HD현대마린 '골텐스' 인수, 단기 수익성 희석 가능성\"",
       "telegram_core_fact": "HD현대마린솔루션은 지난 8일 글로벌 선박·육상 발전용 엔진 서비스 전문 기업 골텐스 지분 100%를 인수하는 주식 매매 계약을 체결했다고 밝혔다.",
       "title": "나신평 \"HD현대마린 '골텐스' 인수, 단기 수익성 희석 가능성\""
+    },
+    "source_fact:fb22886613940491817011cf": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etnews.com/20261016000212",
+      "source": "전자신문",
+      "source_body_digest": "e86077afed54cd5aa02ab4e645aa10bda66032356dcafbe3dee4f230b14e1564",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f6f189edb77db972396488414781df888d5f64c0df9a74143134f3553dba0f3",
+      "source_fact_keys": [
+        "source_fact:v1:108d49e21c1b995a4cbc13095dcd5d32f7151b765770a96a7282ac0869ac9518",
+        "source_fact:v1:2861006f14556fea7c888b64b5d2d09dd344a9247b417943404d463040d5189f",
+        "source_fact:v1:999fe2ff34e78e857cf56014218e4377bed42fa8b03135bd07fa4640575255fa",
+        "source_fact:v1:e79a2fc3ea9dbf2524b8bec26ebc80815ad22dc6af1c0e6a235333fe60f350ec"
+      ],
+      "source_published_kst": "2026-10-16T14:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "네이버페이, 제주 소상공인에 75억원 특별보증…디지털 전환도 지원",
+      "telegram_core_fact": "이번 협약을 통해 4개 기관은 도내 소기업, 소상공인에게 총 75억원 '제주 소상공인 희망온 특별보증'을 공급한다.",
+      "title": "네이버페이, 제주 소상공인에 75억원 특별보증…디지털 전환도 지원"
     },
     "source_fact:fb230c5fbff9c60a765e0f21": {
       "first_seen_kst": "2026-10-11T11:26:05+09:00",
@@ -678978,6 +680742,27 @@
       "source": "머니투데이",
       "title": "iM금융지주, 경상이익 주주환원에도 PBR 0.49배 불과-BNK투자증권"
     },
+    "title:0205698370b869f41464d571": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829124",
+      "source": "뉴시스",
+      "source_body_digest": "e8b56cdbb5a662aee9e568c98f24bc1d75467b6c757dd60193812b2b93eb6eed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:074e45836c408ca1d0c46355794cfb4d8e84821c000d4f7f9696c8518fa0bd26",
+      "source_fact_keys": [
+        "source_fact:v1:2110a964f961b1b185826c3bba768ec22143860cd436d04ba5a709cc42a46f9f",
+        "source_fact:v1:ff1703ff9574bbb5ba4c7d1d4da209398ed7752860fa6036a598c61b56001cb2"
+      ],
+      "source_published_kst": "2026-10-16T14:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "출렁이는 증시에도 KT&G 역대 최고가 기록…\"글로벌 사업 성장세\"",
+      "telegram_core_fact": "KT&G는 튀르키예, 러시아, 카자흐스탄, 인도네시아 등 해외 생산거점을 확대하며 국내를 포함한 글로벌 5각 생산체제를 구축했다.",
+      "title": "출렁이는 증시에도 KT&G 역대 최고가 기록…\"글로벌 사업 성장세\""
+    },
     "title:020d37043be8e7e9402cb7d0": {
       "first_seen_kst": "2026-10-05T11:14:01+09:00",
       "lanes": {
@@ -679827,6 +681612,29 @@
       "source_title": "\"위성 개발부터 환경시험까지\"…KAI, 국내 민간 유일 통합체계 완성",
       "telegram_core_fact": "한국항공우주산업(KAI)이 위성 개발부터 환경시험까지 전 과정을 자체 수행할 수 있는 통합체계를 완성하며 우주사업 경쟁력 강화에 나섰다.",
       "title": "\"위성 개발부터 환경시험까지\"…KAI, 국내 민간 유일 통합체계 완성"
+    },
+    "title:048c427840d0c67955a72849": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etnews.com/20261016000212",
+      "source": "전자신문",
+      "source_body_digest": "e86077afed54cd5aa02ab4e645aa10bda66032356dcafbe3dee4f230b14e1564",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f6f189edb77db972396488414781df888d5f64c0df9a74143134f3553dba0f3",
+      "source_fact_keys": [
+        "source_fact:v1:108d49e21c1b995a4cbc13095dcd5d32f7151b765770a96a7282ac0869ac9518",
+        "source_fact:v1:2861006f14556fea7c888b64b5d2d09dd344a9247b417943404d463040d5189f",
+        "source_fact:v1:999fe2ff34e78e857cf56014218e4377bed42fa8b03135bd07fa4640575255fa",
+        "source_fact:v1:e79a2fc3ea9dbf2524b8bec26ebc80815ad22dc6af1c0e6a235333fe60f350ec"
+      ],
+      "source_published_kst": "2026-10-16T14:17+09:00",
+      "source_supply_terms": {},
+      "source_title": "네이버페이, 제주 소상공인에 75억원 특별보증…디지털 전환도 지원",
+      "telegram_core_fact": "이번 협약을 통해 4개 기관은 도내 소기업, 소상공인에게 총 75억원 '제주 소상공인 희망온 특별보증'을 공급한다.",
+      "title": "네이버페이, 제주 소상공인에 75억원 특별보증…디지털 전환도 지원"
     },
     "title:04962303c0965798f5397130": {
       "first_seen_kst": "2026-10-11T22:09:39+09:00",
@@ -685779,6 +687587,46 @@
       "source_title": "리졸브 AI, 상반기 매출 1억3100만 달러·전년비 20배 급증",
       "telegram_core_fact": "증권가 컨센서스에 따르면 리졸브 AI의 2026년 연간 매출액은 3억5995만 달러로 전년 대비 669.12% 증가할 전망이다.",
       "title": "리졸브 AI, 상반기 매출 1억3100만 달러·전년비 20배 급증"
+    },
+    "title:15351cfa9466d71238d24421": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etnews.com/20261016000211",
+      "source": "전자신문",
+      "source_body_digest": "cf1c8858297793352b8ddf09e72c9aa912ec81486a9cf3a96a4e2e98a69f089b",
+      "source_event_identity": "source_event:v2:named_supply_order:028dd338706ff72085c0b0977afa36d98d715119af78f5e1e5bbba027fbc1968",
+      "source_fact_identity": "source_facts:v1:5060dec0469c3d0963ac9bd5e8bced31e78483b67b26e01e2f1aad3daa1d408d",
+      "source_fact_keys": [
+        "source_fact:v1:20af6df71e956348a28ecd8ca4711831fb5a4665cbb793249adf1f9c7de687fe",
+        "source_fact:v1:835f23e2fcc8a7c76d20c052221fa1abcad347f5fd30fa6ff5433657b9a0ed0a",
+        "source_fact:v1:be5f3caf5dfa4e258a64d37e9d60a8926fe2d868885fdd1b901b09a5901e08f9",
+        "source_fact:v1:dea194bbcabd0c405616fe7288b2b4272460dd4123f06612f44dfa89b519b5c1"
+      ],
+      "source_published_kst": "2026-10-16T14:16+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "12900000000"
+          ]
+        ],
+        "customer": "제조기업",
+        "delivery_period": "",
+        "disclosure_date": "2026-10-16",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "쎄노텍",
+        "product": "이차전지용첨가제",
+        "quantities": [],
+        "stage": "signed"
+      },
+      "source_title": "쎄노텍, 129억원 규모 이차전지 양극재 첨가제 공급계약 체결",
+      "telegram_core_fact": "첨단 세라믹 소재 전문기업 쎄노텍이 이차전지 양극재 제조기업과 약 129억원 이차전지용 첨가제 공급계약을 체결했다고 16일 밝혔다.",
+      "title": "쎄노텍, 129억원 규모 이차전지 양극재 첨가제 공급계약 체결"
     },
     "title:1544fa5c6cf00107f9f86ce9": {
       "first_seen_kst": "2026-10-06T16:30:27+09:00",
@@ -698799,6 +700647,28 @@
       "source_published_kst": "2026-10-04T06:03+09:00",
       "title": "[AI해킹] ① OTT·미용·결제 이어 은행까지…내 개인정보 어디까지 샜나 | 연합뉴스"
     },
+    "title:38d9eb3dd43e4191c685735a": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636673",
+      "source": "이투데이",
+      "source_body_digest": "bf19edeb62a652623227e28971f01f5094b16ea0000cda3438cebed2c15e4b72",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7516a37e74cc07df29ff3003d052e8a85a3d7865994f976375ef2d901fb1c31a",
+      "source_fact_keys": [
+        "source_fact:v1:beae874e345bd2f74cf0d3b9eccc70d31c858064a107017e9513fd16fab993d7",
+        "source_fact:v1:e6371e2ef901c69a63a74e3b0d082103a9e355964c327ce522de861c4f104a12",
+        "source_fact:v1:ed60613fe5e5f2460c2b996f46b7abdd63fb5e0a6fe117820605c098d69fb540"
+      ],
+      "source_published_kst": "2026-10-16T13:48+09:00",
+      "source_supply_terms": {},
+      "source_title": "형지엘리트, 2027시즌 상품부터 RFID 도입…스마트 물류 전환 추진",
+      "telegram_core_fact": "형지엘리트가 2027시즌 상품부터 무선주파수식별(RFID) 기술을 도입해 물류 관리 체계의 디지털 전환에 나선다. 형지엘리트는 전일 형지글로벌패션복합센터에서 글로벌 스마트태그 기업 비온택과 RFID 시스템 도입을 위한 업무협약(MOU)을 체결했다고 16일 밝혔다.",
+      "title": "형지엘리트, 2027시즌 상품부터 RFID 도입…스마트 물류 전환 추진"
+    },
     "title:38eedd0d68d9f117724c966e": {
       "first_seen_kst": "2026-10-12T10:37:32+09:00",
       "lanes": {
@@ -704150,6 +706020,32 @@
       "telegram_core_fact": "고의적인 체납에는 부동산과 차량 압류, 자동차 번호판 영치, 관허사업 제한 등 강력한 제재를 적용한다.",
       "title": "평창군, 연말까지 체납액 집중 징수…고액·상습 체납 제재"
     },
+    "title:45a50ed4b12954aac383fb49": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etnews.com/20261016000210",
+      "source": "전자신문",
+      "source_body_digest": "ca9ad93647f3b20308ba8a31de8463d0c71daabe50c5b0c6e7510b3202609e21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4853659d1565149dba8b4c14a3edaf24582d40cd4032262b0fb17ab63def50a",
+      "source_fact_keys": [
+        "source_fact:v1:0743e6f4834900b44c8afb5a6b130770467b9d8c9bb00a1f46d1385545dd38c9",
+        "source_fact:v1:15aa2ccf64b2afcb535d63d7f1da03dd4c8e0fcb13c5648ea6c2bc8f7a72457f",
+        "source_fact:v1:2b6f0b995e484f91433e7e4b70f5ce7c08ebb5b745866b50ea2befad3f2623de",
+        "source_fact:v1:3c25c4248ad4ea7456d479ecf170269c441910afeb37b02d2451ddb4f16a326b",
+        "source_fact:v1:3d159b1e6c00160c38bba020b7f1b9d307405416ad89bbe12f4cce552afc9785",
+        "source_fact:v1:d7aa58c8bd0e6867efd8040da950d6e26f0d88fcf48413bb166d579c4d7b389d",
+        "source_fact:v1:f856f9db1138ea94bd9855d7825f612e7a886e9601b977222e669b84aa7aedab"
+      ],
+      "source_published_kst": "2026-10-16T14:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "브릴스, 美 로봇 규제 대응 현지생산 박차…AMR부터 시작",
+      "telegram_core_fact": "현지 파트너를 통해 미국산 부품 조달 비중을 높여 미국의 외국산 첨단 로봇 규제 강화와 공급망, 보안 리스크에 대응한다.",
+      "title": "브릴스, 美 로봇 규제 대응 현지생산 박차…AMR부터 시작"
+    },
     "title:45c1841e49eeac21db1f7db5": {
       "first_seen_kst": "2026-10-12T03:14:53+09:00",
       "lanes": {
@@ -708582,6 +710478,24 @@
       ],
       "source_published_kst": "2026-10-06T19:04+09:00",
       "title": "이형일 “美 원전 선급금, 국내 절차·상업성 충족돼야 송금”"
+    },
+    "title:52622eb635173a5728965e4f": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636665",
+      "source": "이투데이",
+      "source_body_digest": "db2eac6a1671db1a5dba2824834ad510a40a7045793c8b4226f762065f9ed30d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-16T13:35+09:00",
+      "source_supply_terms": {},
+      "source_title": "CJ프레시웨이, 농협과 어린이집·유치원에 프리미엄 한우 공급 확대",
+      "telegram_core_fact": "CJ프레시웨이가 농협경제지주와 손잡고 어린이집과 유치원 등에 공급하는 프리미엄 축산물 상품을 확대한다. CJ프레시웨이에 따르면 올해 1~9월 아이누리 유통 경로의 프리미엄 축산물 판매량은 전년비 29.1% 증가했다.",
+      "title": "CJ프레시웨이, 농협과 어린이집·유치원에 프리미엄 한우 공급 확대"
     },
     "title:52699d1c0455c969f36dadf4": {
       "first_seen_kst": "2026-10-14T07:18:46+09:00",
@@ -719481,6 +721395,39 @@
       "source_title": "‘반도체 쇼크’ 코스피 5.5% 급락…6000선 겨우 턱걸이",
       "telegram_core_fact": "코스피·코스닥은 각각 5.46%·1.43% 하락해 양 시장에 매도 사이드카가 발동됐다.",
       "title": "‘반도체 쇼크’ 코스피 5.5% 급락…6000선 겨우 턱걸이"
+    },
+    "title:714bf2f9c26f43a5aff8b790": {
+      "first_seen_kst": "2026-10-16T21:12:58+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:12:58+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:12:58+09:00",
+      "link": "https://www.mk.co.kr/news/business/12178100",
+      "source": "매일경제",
+      "source_body_digest": "602d81de5f44011de3ea090f98f1f62bef519bdceda4122dcd89a2dc6ad3f6b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd079209cbc9c9639826ae88dae4e76fc707d5372545732c5715d9a42a379c4b",
+      "source_fact_keys": [
+        "source_fact:v1:3249b26e7fe22e1891ab41534b745dba429832eb6b87699ebdfd5d1aff9e01b9",
+        "source_fact:v1:39671f7ccab055deb866575d840881239aabc7e50d61fce3c6f80c1ddaa0c276",
+        "source_fact:v1:40e59fd388ca6f3dd7bebe728f734812763dc447a40266a90f59e71f20e71812",
+        "source_fact:v1:77fb364f3a809bf8aaa9a36ed1c5f7505316e9f7a90ea2daecd828b5456a5dff",
+        "source_fact:v1:7ef887e750ea8456edc1ba7b479192279ccdc93a608c4d68de5599e37c8e9a78",
+        "source_fact:v1:81392949f96ccb5e4f67c0ff19fc78e5d9225f928e3969830443ad61bee9a3d3",
+        "source_fact:v1:82763701d335926c658168cf148944d9786a3c3bb18e9fa2f83dad0bf64c2588",
+        "source_fact:v1:9af3bc85d994178ed3602ca93a476e334e1b13e2c753b0b9a3dd223a195fe44f",
+        "source_fact:v1:9f6de459082a47a3f0d87ec0754bf9ceae310b4afb32922d36f931ce2407a138",
+        "source_fact:v1:afcff4f71e82670cd879a6e59dd1368bf6dd78cabc82756e62a3947a83e46231",
+        "source_fact:v1:b1a0e68442933e89831c66925cfaa349868a166c47a48dbf8825b0b33bd0b948",
+        "source_fact:v1:bc17166108008ce51c3b7e9929e2b57972256fe9cfc14fa5837234d32e39a2db",
+        "source_fact:v1:bf4a5832d773889e3938d2c7aefca569e490c54e3ff73866185dbcee4f496f50",
+        "source_fact:v1:c39580912843467497e12e8e6aeb40ddd98e4dd2704e2f0da85020595f25669e"
+      ],
+      "source_published_kst": "2026-10-16T17:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토",
+      "telegram_core_fact": "전자제품과 인공지능(AI)을 작동시키는 핵심 부품인 메모리 공급 부족 사태가 심해지고 있음을 의식한 것이다.",
+      "title": "[뉴스&분석] 애플 \"메모리 품귀위기\"… 중국산 검토"
     },
     "title:716bff2b1ec54334c22bd00f": {
       "first_seen_kst": "2026-10-14T05:08:50+09:00",
@@ -771095,5 +773042,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-16T20:49:03+09:00"
+  "updated_at_kst": "2026-10-16T21:12:58+09:00"
 }
