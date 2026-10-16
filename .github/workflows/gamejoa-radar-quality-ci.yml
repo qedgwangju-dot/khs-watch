@@ -47,6 +47,7 @@ jobs:
         run: |
           python scripts/verify_gamejoa_market_materiality.py
           python scripts/verify_gamejoa_incremental_news_quality.py
+          python scripts/verify_gamejoa_stock_market_scope.py
       - name: Verify production delivery contract in live mode
         env:
           RADAR_RUN_MODE: 'live'
