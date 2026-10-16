@@ -93,7 +93,7 @@ def _date(v: str | None) -> dt.datetime | None:
     except Exception:
         return None
 
-def _month_and_day(phrase: str, pub: dt.datetime) -> tuple[str, str] | None:
+def _month_and_day(phrase: str, pub: dt.datetime) -> tuple[str, str, str | None] | None:
     s = phrase.lower()
     month_map = {
         "october":10, "oct":10, "november":11, "nov":11,
@@ -104,6 +104,13 @@ def _month_and_day(phrase: str, pub: dt.datetime) -> tuple[str, str] | None:
     }
     found: list[tuple[int,int|None]]=[]
     month_name=r"october|oct|november|nov|december|dec|january|jan|february|feb|march|mar|april|apr|may|june|jun|july|jul|august|aug|september|sep"
+    # Range like November 16–23: track its *latest* delivery day.
+    for m in re.finditer(
+        r"\b("+month_name+r")\s+(\d{1,2})\s*(?:-|–|—|to|through|~)\s*(\d{1,2})\b",s
+    ):
+        start_day,end_day=int(m.group(2)),int(m.group(3))
+        if start_day<=end_day:
+            found.append((month_map[m.group(1)],end_day))
     for m in re.finditer(r"\b("+month_name+r")\s+(\d{1,2})\b",s):
         found.append((month_map[m.group(1)],int(m.group(2))))
     for m in re.finditer(r"\b("+month_name+r")\b",s):
@@ -132,7 +139,8 @@ def _month_and_day(phrase: str, pub: dt.datetime) -> tuple[str, str] | None:
     precision=f"{year}년 {month}월 {day}일" if day else f"{year}년 {month}월(정확한 일자 확인 불가)"
     if day is None and ("late " in s or "말" in s):
         precision=f"{year}년 {month}월 말(정확한 일자 확인 불가)"
-    return f"{year:04d}-{month:02d}", precision
+    exact=f"{year:04d}-{month:02d}-{day:02d}" if day is not None else None
+    return f"{year:04d}-{month:02d}", precision, exact
 
 def _shipping_event(blob: str, published: dt.datetime) -> dict | None:
     low=blob.lower()
@@ -163,7 +171,7 @@ def _shipping_event(blob: str, published: dt.datetime) -> dict | None:
     colours={x for x in ("star white","night sky","스타 화이트","나이트 스카이") if x in low}
     storage=next(iter(capacities)).replace(" ","").upper() if len(capacities)==1 else "구성 미확인"
     colour=next(iter(colours)) if len(colours)==1 else "색상 미확인"
-    return {"market":market,"month":info[0],"label":info[1],
+    return {"market":market,"month":info[0],"label":info[1],"exact_date":info[2],
             "capacity":storage,"colour":colour}
 
 def _initial_alert() -> str:
@@ -300,6 +308,8 @@ def _load() -> dict:
     val.setdefault("seen_ids",[])
     val.setdefault("seen_fact_keys",[])
     val.setdefault("market_latest",{"미국":"2027-01"})
+    val.setdefault("market_day_latest",{})
+    val.setdefault("market_sku_day_latest",{})
     return val
 
 def _new_delivery_signals(rows: list[dict], state: dict) -> tuple[list[dict],set[str]]:
@@ -307,6 +317,8 @@ def _new_delivery_signals(rows: list[dict], state: dict) -> tuple[list[dict],set
     known=set(state.get("seen_fact_keys") or [])
     latest=dict(state.get("market_latest") or {})
     sku_latest=dict(state.get("market_sku_latest") or {})
+    sku_dates=dict(state.get("market_sku_day_latest") or {})
+    market_dates=dict(state.get("market_day_latest") or {})
     new=[]
     for row in rows:
         fp=_fingerprint(row)
@@ -323,25 +335,50 @@ def _new_delivery_signals(rows: list[dict], state: dict) -> tuple[list[dict],set
         if market=="지역 미확인":
             continue
         scope=f"{market}|{info['capacity']}|{info['colour']}"
-        fingerprint=f"{scope}:{info['month']}"
+        fingerprint=f"{scope}:{info['exact_date'] or info['month']}"
         if fingerprint in known:
             continue
-        prior=sku_latest.get(scope) if info["capacity"]!="구성 미확인" else latest.get(market)
-        if prior is None and info["capacity"]!="구성 미확인":
+        sku_specific=info["capacity"]!="구성 미확인"
+        prior=sku_latest.get(scope) if sku_specific else latest.get(market)
+        if prior is None and sku_specific:
             prior=latest.get(market)
-        if prior is not None and info["month"]<=prior:
+        previous_date=sku_dates.get(scope) if sku_specific else market_dates.get(market)
+        current_date=info["exact_date"]
+        # Prior later-month report is not invalidated by an earlier ETA from
+        # another colour or capacity variant. This is a *later* ETA watch.
+        advanced_month=prior is None or info["month"]>prior
+        advanced_day=False
+        if prior==info["month"] and current_date and previous_date:
+            try:
+                diff=(dt.date.fromisoformat(current_date)-dt.date.fromisoformat(previous_date)).days
+                advanced_day=diff>=7
+            except ValueError:
+                advanced_day=False
+        if not advanced_month and not advanced_day:
             continue
         if _rank(row.get("source") or "")<2:
             continue
-        info.update({"item":row,"previous_month":prior,"fact_key":fingerprint})
+        info.update({"item":row,"previous_month":prior,"previous_date":previous_date,
+                     "fact_key":fingerprint,"change_type":"추가 배송 지연"})
         new.append(info)
         known.add(fingerprint)
         if latest.get(market) is None or info["month"]>latest[market]:
             latest[market]=info["month"]
-        if info["capacity"]!="구성 미확인":
+        if sku_specific:
             sku_latest[scope]=info["month"]
+            if current_date:
+                sku_dates[scope]=current_date
+            else:
+                sku_dates.pop(scope,None)
+        else:
+            if current_date:
+                market_dates[market]=current_date
+            else:
+                market_dates.pop(market,None)
     state["market_latest"]=latest
     state["market_sku_latest"]=sku_latest
+    state["market_day_latest"]=market_dates
+    state["market_sku_day_latest"]=sku_dates
     state["seen_fact_keys"]=sorted(known)[-400:]
     return new,seen
 
@@ -376,6 +413,8 @@ def main() -> None:
         state["initial_alert_sent"]=True
         state["market_latest"]={"미국":"2027-01"}
         state["market_sku_latest"]={}
+        state["market_day_latest"]={}
+        state["market_sku_day_latest"]={}
         state["baseline"]=BASELINE
         state["seen_ids"]=sorted(set(state.get("seen_ids") or []) | {_fingerprint(x) for x in rows})[-800:]
         state["seen_fact_keys"]=sorted(set(state.get("seen_fact_keys") or []) | {"미국:2026-11","미국:2026-12","미국:2027-01","initial_launch_allocation"})[-400:]

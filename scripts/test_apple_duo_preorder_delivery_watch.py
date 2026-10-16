@@ -53,6 +53,45 @@ class DuoPreorderTests(unittest.TestCase):
         changes,_=m._new_delivery_signals([row],st)
         self.assertFalse(changes)
 
+    def test_same_month_seven_day_delay_is_alertable(self):
+        row={"title":"iPhone Duo U.S. Star White 256GB delivery February 18, 2027",
+             "description":"Shipping delivery February 18 for U.S. iPhone Duo 256GB",
+             "source":"The Verge","link":"https://example.com",
+             "published_at_kst":self.pub().isoformat()}
+        st={"market_latest":{"미국":"2027-02"},
+            "market_sku_latest":{"미국|256GB|star white":"2027-02"},
+            "market_sku_day_latest":{"미국|256GB|star white":"2027-02-09"},
+            "seen_ids":[],"seen_fact_keys":[]}
+        changes,_=m._new_delivery_signals([row],st)
+        self.assertEqual(len(changes),1)
+        self.assertEqual(changes[0]["exact_date"],"2027-02-18")
+
+    def test_same_month_four_day_shift_is_not_material(self):
+        row={"title":"iPhone Duo U.S. Star White 256GB delivery February 12, 2027",
+             "description":"Shipping delivery February 12 for U.S. iPhone Duo 256GB",
+             "source":"The Verge","link":"https://example.com",
+             "published_at_kst":self.pub().isoformat()}
+        st={"market_latest":{"미국":"2027-02"},
+            "market_sku_latest":{"미국|256GB|star white":"2027-02"},
+            "market_sku_day_latest":{"미국|256GB|star white":"2027-02-09"},
+            "seen_ids":[],"seen_fact_keys":[]}
+        changes,_=m._new_delivery_signals([row],st)
+        self.assertFalse(changes)
+
+    def test_november_range_latest_day_is_23(self):
+        info=m._shipping_event("iPhone Duo U.S. shipping November 16–23, 2026.",self.pub())
+        self.assertEqual(info["exact_date"],"2026-11-23")
+
+    def test_unknown_day_does_not_invent_seven_day_extension(self):
+        row={"title":"iPhone Duo U.S. delivery still late January 2027",
+             "description":"Shipping currently scheduled for late January 2027 in the U.S.",
+             "source":"The Verge","link":"https://example.com",
+             "published_at_kst":self.pub().isoformat()}
+        st={"market_latest":{"미국":"2027-01"},
+            "market_day_latest":{},"seen_ids":[],"seen_fact_keys":[]}
+        changes,_=m._new_delivery_signals([row],st)
+        self.assertFalse(changes)
+
     def test_new_february_material_extension(self):
         row={"title":"iPhone Duo U.S. shipping delivery now February 2027","description":"iPhone Duo orders now shipping in February 2027 in the U.S.","source":"The Verge","link":"https://example.com","published_at_kst":self.pub().isoformat()}
         st={"market_latest":{"미국":"2027-01"},"seen_ids":[],"seen_fact_keys":[]}
