@@ -77,7 +77,7 @@ class TestIMF(unittest.TestCase):
 
     def test_unverified_coverage_blocks_alert(self):
         with patch.object(imf,'get',side_effect=TimeoutError('network')):
-            with self.assertRaisesRegex(RuntimeError,'확인 실패'):
+            with self.assertRaisesRegex(RuntimeError,'검증 실패'):
                 imf.dated_coverage()
 
     def test_dedup_does_not_send_twice(self):
