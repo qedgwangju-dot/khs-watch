@@ -15,6 +15,7 @@ import re
 import sys
 import urllib.parse
 from pathlib import Path
+from unittest.mock import patch
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -1188,6 +1189,14 @@ def assert_compact_live_output_contract(compact, now, errors: list[str]) -> None
 
 
 def assert_current_high_impact_article_coverage(production, compact, now, errors: list[str]) -> None:
+    live_floor_exclusions = {
+        "global_semiconductor_leader_signal",
+        "kstartup_global_vc_access",
+        "bigtech_ai_capex_layoffs",
+        "skhynix_earnings_consensus",
+        "fomc_rate_outlook",
+        "korea_public_fund_asset_flow",
+    }
     publisher_domains = {
         "파이낸셜뉴스": "fnnews.com",
         "한국경제": "hankyung.com",
@@ -1500,8 +1509,15 @@ def assert_current_high_impact_article_coverage(production, compact, now, errors
                 f"high-impact decision guard failed: {title} / "
                 f"{decision_probe.get('guardrail_note')}"
             )
-        selected = compact.quality_display_alerts([alert], 1)
-        if len(selected) != 1:
+        with patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}):
+            selected = compact.quality_display_alerts([alert], 1)
+        if expected_kind in live_floor_exclusions:
+            if selected or alert.get("_exclusion_reason") != "live_quality_floor_below_rank_3_without_market_wide_scope":
+                errors.append(
+                    f"low-signal article did not fail closed in live selection: {title} / "
+                    f"{alert.get('_exclusion_reason') or alert.get('guardrail_note')}"
+                )
+        elif len(selected) != 1:
             errors.append(
                 f"high-impact article failed final selection: {title} / "
                 f"{alert.get('_exclusion_reason') or alert.get('guardrail_note')}"

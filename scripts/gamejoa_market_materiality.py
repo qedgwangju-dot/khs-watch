@@ -3887,7 +3887,7 @@ RULES = (
      r"추산|심의|추정|예산안|cost estimate|cost study|budget proposal"),
     ("market_price_or_flow", (),
      r"주가|증시|코스피|코스닥|나스닥|S&P\s*500|러셀\s*2000|etf|etn|순매수|순매도|거래대금|유입|유출|수익률|주식|shares|stocks|equities|inflows|outflows",
-     r"급등|급락|급감|상승|하락|올랐|내렸|오른|내린|줄었|줄어|몰렸|향했|순매수|순매도|유입|유출|이동|상장|편입|편출|증가|감소|surge|slump|rise|fall|inflows|outflows|list|rebalance"),
+     r"급등|급락|급감|상승|하락|올랐|내렸|오른|내린|줄었|줄어|몰렸|향했|순매수|순매도|유입|유출|빠져나(?:오|왔|와|가|갔)|이탈|이동|상장|편입|편출|증가|감소|surge|slump|rise|fall|inflows|outflows|list|rebalance"),
     ("hardware_procurement_commitment", ("earnings", "timeline"),
      r"GPU|NPU|AI\s*(?:칩|가속기)|graphics processing unit|AI accelerator",
      r"(?:확보|구매|도입).{0,12}(?:하기로|결정|계약|확정)|(?:purchase|procure).{0,20}(?:agreed|contract|committed)"),
@@ -4246,6 +4246,26 @@ def foreground_evidence_is_material(title: str, sentence: str, kind: str) -> boo
     return not (options_headline and options_sentence and concessive_context)
 
 
+def is_committed_corporate_transaction(item: dict) -> bool:
+    if item.get("kind") != "corporate_transaction":
+        return False
+    excerpt = str(item.get("source_excerpt") or "")
+    committed = re.search(
+        r"(?:인수|합병)\s*(?:하기로\s*(?:했|합의했|결정했)|"
+        r"계약(?:을)?\s*체결(?:했다|했다고|하였)|완료(?:했다|했다고|하였))|"
+        r"(?:agreed to acquire|signed (?:a )?(?:definitive )?agreement|completed the acquisition)",
+        excerpt,
+        re.I,
+    )
+    tentative = re.search(
+        r"검토|추진|논의|협의|협상|가능성|관측|계획|예정|전망|consider|discuss|"
+        r"negotiate|potential|reportedly plans|may acquire",
+        excerpt,
+        re.I,
+    )
+    return bool(committed and not tentative)
+
+
 def news_value_rank(evidence: list[dict]) -> int:
     """Rank realized market evidence above quantified forecasts and opinions."""
     kinds = {item["kind"] for item in evidence}
@@ -4255,6 +4275,8 @@ def news_value_rank(evidence: list[dict]) -> int:
         and (item.get("stage") or not EARLY_SIGNAL.search(str(item.get("source_excerpt") or "")))
     ]
     realized_kinds = {item["kind"] for item in realized}
+    if any(is_committed_corporate_transaction(item) for item in evidence):
+        return 4
     quantified_flow = any(
         item["kind"] in {"market_price_or_flow", "insider_disclosed_trade"}
         and item in realized
@@ -4289,7 +4311,7 @@ def news_value_rank(evidence: list[dict]) -> int:
     if kinds & {"technical_standard", "technology_or_clinical_stage", "space_execution_stage", "space_thermal_validation",
                 "cryogenic_propellant_storage", "biology_research_discovery", "research_validation_result", "model_operating_specification",
                 "customer_discussions", "industrial_partnership_execution", "corporate_action_clarification", "capital_or_shareholder_action", "capital_listing_stage",
-                "authorized_capital_proposal", "policy_agreement_clarification", "economic_restriction_response", "customer_financing_commitment", "public_program_cost_study", "project_cost_evaluation", "conditional_project_charge", "energy_stockpile_action", "energy_geopolitics_or_supply_risk"}:
+                "authorized_capital_proposal", "convertible_ownership_rights", "policy_agreement_clarification", "economic_restriction_response", "customer_financing_commitment", "public_program_cost_study", "project_cost_evaluation", "conditional_project_charge", "energy_stockpile_action", "energy_geopolitics_or_supply_risk"}:
         return 3
     if "humanoid_product_launch" in kinds:
         return 3
@@ -6758,7 +6780,7 @@ def assess(title: str, body: str, *, source_url: str = "", published: str = "") 
                 priority = 3
             evidence_axes = list(axes)
             if kind in {"capital_or_shareholder_action", "market_price_or_flow"} and re.search(
-                r"자사주|자기주식|배당|순매수|순매도|유입|유출|거래대금|편입|편출|매수|매도|buyback|dividend|inflows|outflows|rebalance", sentence, re.I,
+                r"자사주|자기주식|배당|순매수|순매도|유입|유출|빠져나(?:오|왔|와|가|갔)|이탈|거래대금|편입|편출|매수|매도|buyback|dividend|inflows|outflows|rebalance", sentence, re.I,
             ):
                 evidence_axes.append("flows")
             if kind == "market_price_or_flow" and "flows" not in evidence_axes:

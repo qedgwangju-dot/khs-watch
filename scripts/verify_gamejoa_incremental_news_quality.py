@@ -6568,6 +6568,48 @@ class ConcreteLiveSelectionRegressions(unittest.TestCase):
             self.assertEqual(radar.quality_display_alerts([candidate], 7), [])
         self.assertEqual(candidate["_exclusion_reason"], "live_quality_floor_below_rank_3_without_market_wide_scope")
 
+    def test_live_rank_rescues_confirmed_market_transactions_and_quantified_flows(self):
+        cases = (
+            (
+                "confirmed_mna",
+                "TPG, 롯데렌탈 1조3000억원 인수 계약",
+                "TPG는 롯데렌탈을 1조3000억원에 인수하기로 했고 인수 자금을 자기자본으로 조달한다.",
+                4,
+            ),
+            (
+                "aggregate_etf_outflow",
+                "변동성에 질렸나, 국내 ETF서 7000억원 자금 유출",
+                "국내 ETF에서 4일 만에 7000억원이 빠져나왔으며 단일종목 레버리지 규제 이후 자금 흐름이 바뀌었다.",
+                4,
+            ),
+            (
+                "convertible_ownership_change",
+                "SK하이닉스, 키옥시아 최대주주 변경…CB 전환·경쟁당국 승인 변수",
+                "SK하이닉스는 키옥시아 관련 CB를 주식으로 전환하고 경쟁당국 승인을 거쳐야 의결권을 확보할 수 있다.",
+                3,
+            ),
+        )
+        now = dt.datetime(2026, 10, 9, 17, 0, tzinfo=dt.timezone(dt.timedelta(hours=9)))
+        with (
+            patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}),
+            patch.object(radar.base, "kst_now", return_value=now),
+            patch.object(radar.telegram, "display_alerts", side_effect=lambda items, _limit: items),
+        ):
+            for name, title, body, expected_rank in cases:
+                with self.subTest(name=name):
+                    candidate = alert(title, body)
+                    candidate["published"] = now.isoformat()
+                    audit = materiality.assess(title, body, published=now.isoformat())
+                    self.assertEqual(audit["disposition"], "keep", audit)
+                    self.assertEqual(audit["news_value_rank"], expected_rank, audit)
+                    self.assertEqual(len(radar.quality_display_alerts([candidate], 1)), 1)
+
+        exploratory = materiality.assess(
+            "TPG, 롯데렌탈 인수 검토",
+            "TPG가 롯데렌탈 인수 가능성을 검토하고 있으며 구체적 합의나 계약은 없다.",
+        )
+        self.assertNotEqual(exploratory.get("news_value_rank"), 4, exploratory)
+
     def test_macro_release_surprise_ranks_above_routine_yield_change(self):
         surprise = materiality.assess(
             "미 9월 CPI 3.7%…예상치 웃돌아",
