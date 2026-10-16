@@ -98,4 +98,29 @@ class TestIMF(unittest.TestCase):
             self.assertEqual(memory['last_sent_key'],imf.EVENT_ID)
 
 
+    def test_citi_followup_is_one_time_and_distinct_from_imf(self):
+        memory={
+            'last_sent_key':imf.EVENT_ID,'message_id':89,
+            'citi_reported':False,'delivery_status':'confirmed'
+        }
+        def save(x): memory.clear(); memory.update(x)
+        with patch.object(imf,'read_state',side_effect=lambda: memory.copy()),\
+             patch.object(imf,'save',side_effect=save),\
+             patch.object(imf,'citi_reported',return_value=imf.CITI_REUTERS_MIRRORS[0]),\
+             patch.object(imf,'send',return_value=90) as sender:
+            imf.main()
+            imf.main()
+            self.assertEqual(sender.call_count,1)
+            self.assertEqual(memory['message_id'],89)
+            self.assertEqual(memory['citi_message_id'],90)
+            self.assertTrue(memory['citi_reported'])
+            self.assertEqual(memory['citi_delivery_status'],'confirmed')
+
+    def test_citi_update_does_not_claim_fomc_action(self):
+        msg=imf.citi_followup_message(imf.CITI_REUTERS_MIRRORS[0])
+        self.assertIn('2026년 10월 14일',msg)
+        self.assertIn('단일 Reuters 보도',msg)
+        self.assertIn('연준 결정이나 확인된 CME 시장확률이 아닙니다',msg)
+
+
 if __name__=='__main__':unittest.main()
