@@ -69,8 +69,8 @@
       "comparable_75pct_refresh_public": false
     }
   },
-  "updated_at_kst": "2026-10-16T23:13:47+09:00",
-  "last_scan_count": 5,
+  "updated_at_kst": "2026-10-17T03:03:47+09:00",
+  "last_scan_count": 4,
   "semi_300mm_track_version": 2,
   "semi_300mm": {
     "vintage": "3Q26",
@@ -114,7 +114,7 @@
     "issuer_index_checked": true
   },
   "last_eligible_count": 0,
-  "last_held_count": 2,
+  "last_held_count": 0,
   "seen_fingerprints": [
     "1a3e5915b65cf2f57776be9e",
     "2b04eb17a0ebb0a08a2d3235",
@@ -136,20 +136,7 @@
     "f3274f98949ddbb5ad284b00"
   ],
   "delivered_event_keys": [],
-  "last_held": [
-    {
-      "event_key": "taiwan|diversification|TSMC|arizona",
-      "source": "azcentral.com and The Arizona Republic",
-      "reason": "출처 신뢰도 부족",
-      "published_kst": "2026-10-16T20:04:00+09:00"
-    },
-    {
-      "event_key": "taiwan|capacity|TSMC|core",
-      "source": "Stocktwits",
-      "reason": "출처 신뢰도 부족",
-      "published_kst": "2026-10-16T00:21:14+09:00"
-    }
-  ],
+  "last_held": [],
   "last_successful_delivery_kst": "2026-10-14T21:13:05+09:00",
   "telegram_message_ids": [
     292
