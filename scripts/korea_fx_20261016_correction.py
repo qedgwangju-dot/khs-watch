@@ -104,7 +104,6 @@ def main() -> int:
         "official_close_date": "2026-10-16",
         "official_source_previous": RATE_YESTERDAY_SOURCE,
         "official_source_current": RATE_TODAY_SOURCE,
-        "delivery_state": "pending_workflow_telegram_confirmation",
     }
     PENDING.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     if STATUS.exists():
