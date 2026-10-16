@@ -1,0 +1,375 @@
+{
+  "provenance": {
+    "run_id": "38861224312",
+    "code_sha": "7e6675c75ec6613cf3823ee1c59d3341f7a638bd",
+    "queried_at_kst": "2026-10-16T15:27:49.878479+09:00",
+    "alert_sha256": "7ed0aacee3f58167e69dfef27ab8d8f4cc9f54a7f09701442ec6f54adda2bf7f",
+    "rejected_evidence_sha256": "32d41d76df39ca403b6cd3bb7605fc43f444de11c39cf473a1e2a8af3960ad8f",
+    "source_body_limit": "RSS title only; original publisher bodies and operating HTTP response bytes were not preserved."
+  },
+  "articles": [
+    {
+      "id": "4770947bb4edcc7ac180",
+      "title_original": "미국은 이란의 에너지 시설에 대한 새로운 공격을 계획하고 있다. - Vietnam.vn",
+      "title_ko": "미국은 이란의 에너지 시설에 대한 새로운 공격을 계획하고 있다. - Vietnam.vn",
+      "description": "미국은 이란의 에너지 시설에 대한 새로운 공격을 계획하고 있다. Vietnam.vn",
+      "source": "Vietnam.vn",
+      "source_url": "https://www.vietnam.vn",
+      "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxONlZpUkItZUxqS3RXYkJTWC02ZURPSUNRcXZOdW1WRzNvVGVpOGZJTnVXOHVDelNwcU9GNDQzWkZKQ1NDeUxxdTBPTGRBYVZ2VlFPeTZhWldRbkw5SjZYQnRkNlZwWWppVWhMWXRNNmpFRmw0aXhxZ1lCd2x5NWJodHdjX3U2SUhxNHFGeUgtZVJsS3ZLWnVNMHU0ODNDa2c?oc=5",
+      "published": "Fri, 16 Oct 2026 04:34:49 GMT",
+      "score": 47,
+      "tags": [
+        "종전·협상",
+        "협상내용",
+        "휴전·평화"
+      ],
+      "body_checked": true,
+      "signals_ko": [
+        "후속 협상 실무 의제에 에너지 인프라 포함"
+      ],
+      "forced_tags": [
+        "종전·협상",
+        "협상내용",
+        "휴전·평화"
+      ],
+      "classification_color": "",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "55fb001dc57366c65128",
+      "title_original": "미국은 이란의 핵 및 에너지 시설을 공격하는 방안을 검토하고 있다. - Vietnam.vn",
+      "title_ko": "미국은 이란의 핵 및 에너지 시설을 공격하는 방안을 검토하고 있다. - Vietnam.vn",
+      "description": "미국은 이란의 핵 및 에너지 시설을 공격하는 방안을 검토하고 있다. Vietnam.vn",
+      "source": "Vietnam.vn",
+      "source_url": "https://www.vietnam.vn",
+      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNdmw4d1c0UVIwTndPLV9MNXNEM25hbHRrSEF1Z0F3N3lvU0x6MW9JeTkzY2w1ZnBOY3EzUENsd3RmM295VUV3OEdUUW44cEdzZmpuY2tkN3hKbkM0WkFvaHdGN01IajY4MVV4ZlNSVkRYRExMWkNTV3NtNDNweW0yc08wLTBGb2FOaDhNRXhseGVKdkVBS3BjdWln?oc=5",
+      "published": "Fri, 16 Oct 2026 04:07:13 GMT",
+      "score": 45,
+      "tags": [
+        "종전·협상",
+        "협상내용",
+        "군사 대응·보복 발언"
+      ],
+      "body_checked": true,
+      "signals_ko": [],
+      "forced_tags": [
+        "종전·협상",
+        "협상내용",
+        "휴전·평화"
+      ],
+      "classification_color": "yellow",
+      "non_military_kind": "military_statement",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "1d013a9c82b1b4564992",
+      "title_original": "우크라이나가 러시아 에너지 시설에 대한 공격 재개를 발표했고, 모스크바는 키이우가 미국의 공격 노력을 방해하고 있다고 비난했다. - Vietnam.vn",
+      "title_ko": "우크라이나가 러시아 에너지 시설에 대한 공격 재개를 발표했고, 모스크바는 키이우가 미국의 공격 노력을 방해하고 있다고 비난했다. - Vietnam.vn",
+      "description": "우크라이나가 러시아 에너지 시설에 대한 공격 재개를 발표했고, 모스크바는 키이우가 미국의 공격 노력을 방해하고 있다고 비난했다. Vietnam.vn",
+      "source": "Vietnam.vn",
+      "source_url": "https://www.vietnam.vn",
+      "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNc1UxMGhRWEhZdmgyNkVXX0k5c1dRbU5PeGIyalYyZjhzRTJWeVpIY3lQcTRNQzVJQU8taEhHOTdIT1JPNncyQWFGODRXNk5HNXFXa05ha05ZN0h6RGppWVJ5eEVxVVBkc0hUdVdiUG9Ccmt6czVaby1mVVlFd2dmOHhwU2o3ZVFGN1NDOGZkRGY2OTB3N2dYUlAxM3JnRVNEaWprRUtPRTZkbU9oVURFdG8tQjdiSElJdDBwS0RSY1hfcFZIZTZYUw?oc=5",
+      "published": "Fri, 16 Oct 2026 03:48:45 GMT",
+      "score": 45,
+      "tags": [
+        "종전·협상",
+        "협상내용",
+        "휴전·평화"
+      ],
+      "body_checked": true,
+      "signals_ko": [
+        "후속 협상 실무 의제에 에너지 인프라 포함"
+      ],
+      "forced_tags": [
+        "종전·협상",
+        "협상내용",
+        "휴전·평화"
+      ],
+      "classification_color": "red",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "73f6545de7fb61ab9f43",
+      "title_original": "트럼프 ‘에너지 휴전’ 무너졌다…젤렌스키, 러 정유시설 공습 재개 - 중앙일보",
+      "title_ko": "트럼프 ‘에너지 휴전’ 무너졌다…젤렌스키, 러 정유시설 공습 재개 - 중앙일보",
+      "description": "트럼프 ‘에너지 휴전’ 무너졌다…젤렌스키, 러 정유시설 공습 재개 중앙일보",
+      "source": "중앙일보",
+      "source_url": "https://www.joongang.co.kr",
+      "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE01NDFLUVJWVUlJVWJ5TVR0S2hlYUlJMnZaX21UR09aQlFOUFh4VThVWTNZM1FGNEJUa2NKSWRvcDBMeVA0SENYUlk5ZVlXUnZRWkFHR1Nn?oc=5",
+      "published": "Fri, 16 Oct 2026 05:09:10 GMT",
+      "score": 12,
+      "tags": [
+        "종전·협상",
+        "자제 발언·상대 공격 주장"
+      ],
+      "body_checked": true,
+      "signals_ko": [],
+      "classification_color": "yellow",
+      "non_military_kind": "mixed_restraint",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "deferred_articles": [
+    {
+      "id": "7431b8818248f29c6fb4",
+      "title_original": "트럼프, 젤렌스키의 러 정유시설 공습 재개에 \"수치스러운 일\" - 뉴스핌",
+      "title_ko": "트럼프, 젤렌스키의 러 정유시설 공습 재개에 \"수치스러운 일\" - 뉴스핌",
+      "description": "트럼프, 젤렌스키의 러 정유시설 공습 재개에 \"수치스러운 일\" 뉴스핌",
+      "source": "뉴스핌",
+      "source_url": "https://www.newspim.com",
+      "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE4zbW8yN0dJUWRfbDNQOHd4NGkxbUtSN1pvcE93LVg4VWxOTDg4YjgtLVVrN2Z4NE9KT29tdElScWZuYzdQWlFXS2c2MklZbnJVS3o2T0lYSzllVnJx?oc=5",
+      "published": "Fri, 16 Oct 2026 05:58:00 GMT",
+      "score": 10,
+      "tags": [
+        "정유시설 공격 보도"
+      ],
+      "body_checked": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": false,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "b72bf57efeed826ad36f",
+      "title_original": "트럼프, 이란전 교착 속 선택의 기로…봉쇄·공습·지상전 득실은 - 뉴시스",
+      "title_ko": "트럼프, 이란전 교착 속 선택의 기로…봉쇄·공습·지상전 득실은 - 뉴시스",
+      "description": "트럼프, 이란전 교착 속 선택의 기로…봉쇄·공습·지상전 득실은 뉴시스",
+      "source": "뉴시스",
+      "source_url": "https://www.newsis.com",
+      "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5LNm9nM3JLczJTVnJCZV96QWV6dWdtLVJMcUowOEwwMlhxY3FIOE40Zk0zaldmemt2LU9MamxfZUZNS2tVOFRhdDRoZHEyQk9hcGstM0J3ODBINmVpRFA3UdIBeEFVX3lxTE5PTUI0RzgwLTROUlpVeENiWnNUanp4UUtTQjcyUXh6WkdCTERsLUNUeXlvQ3QwYzVHRnoxU0dVa2xnYUpoQTNqcTQ2em5BNTh1UU9nVkE2bTZiTlR0azlSMnBGZVZVZjdUOTZRU2RvZ2FfN29XdEI3eg?oc=5",
+      "published": "Fri, 16 Oct 2026 05:35:26 GMT",
+      "score": 10,
+      "tags": [
+        "확전"
+      ],
+      "body_checked": true,
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": false,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "f824b320d6ee38303df4",
+      "title_original": "트럼프 ′에너지 휴전′ 붕괴…젤렌스키, 러 정유시설 공습 재개 - 울산종합일보",
+      "title_ko": "트럼프 ′에너지 휴전′ 붕괴…젤렌스키, 러 정유시설 공습 재개 - 울산종합일보",
+      "description": "트럼프 ′에너지 휴전′ 붕괴…젤렌스키, 러 정유시설 공습 재개 울산종합일보",
+      "source": "울산종합일보",
+      "source_url": "https://www.ujnews.co.kr",
+      "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE0zYm1OWjJkN0pqRmVKdFlDSUQ3ZzQ3VXJLSnM1TDRUdS1kQW1GQ3FtRFczT1VMR3hwMkxwbFJDR1gtZktCOS1mdXp4X2cyUjVldmdHX3hjYjRxaGlHSkdqZzhQWjhpNXVGSlJ6Uk1VSGJjb00?oc=5",
+      "published": "Fri, 16 Oct 2026 03:27:54 GMT",
+      "score": 10,
+      "tags": [
+        "종전·협상",
+        "자제 발언·상대 공격 주장"
+      ],
+      "body_checked": true,
+      "signals_ko": [],
+      "non_military_kind": "mixed_restraint",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": false,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "markets": [
+    {
+      "name": "나스닥100 선물",
+      "price": 30143.0,
+      "pct": -0.002488077959772461,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "15:17 KST",
+      "observed_at_kst": "2026-10-16T15:17:47+09:00",
+      "symbol": "NQ=F",
+      "previous_close": 30143.75,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "NQ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 30143.75,
+        "chartPreviousClose": 30143.75,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792131467,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792123200,
+            "end": 1792123200,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792123200,
+            "end": 1792209540,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792209540,
+            "end": 1792209540,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/NQ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "WTI",
+      "price": 96.0199966430664,
+      "pct": -0.4974128051125293,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "15:17 KST",
+      "observed_at_kst": "2026-10-16T15:17:52+09:00",
+      "symbol": "CL=F",
+      "previous_close": 96.5,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "CL=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 96.5,
+        "chartPreviousClose": 96.5,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792131472,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "end": 1792123200,
+            "start": 1792123200,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "end": 1792209540,
+            "start": 1792123200,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "end": 1792209540,
+            "start": 1792209540,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/CL%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "Brent",
+      "price": 105.47000122070312,
+      "pct": -0.42484779012167406,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "15:17 KST",
+      "observed_at_kst": "2026-10-16T15:17:47+09:00",
+      "symbol": "BZ=F",
+      "previous_close": 105.92,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "BZ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 105.92,
+        "chartPreviousClose": 105.92,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792131467,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "end": 1792123200,
+            "start": 1792123200,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "end": 1792209540,
+            "start": 1792123200,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "end": 1792209540,
+            "start": 1792209540,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/BZ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "달러지수",
+      "price": 101.90599822998047,
+      "pct": -0.14600144041893026,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "15:17 KST",
+      "observed_at_kst": "2026-10-16T15:17:53+09:00",
+      "symbol": "DX-Y.NYB",
+      "previous_close": 102.055,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "DX-Y.NYB",
+        "instrumentType": "INDEX",
+        "previousClose": 102.055,
+        "chartPreviousClose": 102.055,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792131473,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792123200,
+            "end": 1792123200,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792123200,
+            "end": 1792209540,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792209540,
+            "end": 1792209540,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/DX-Y.NYB?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    }
+  ],
+  "bad_alert": "<b>전쟁·종전·재건 웹감시</b>\n🔴 <b>공격·확전</b>  |  🟡 <b>발언·제재·외교반응·협상 제약</b>\n조회 2026-10-16 15:27 KST\n기사 시각 기준 · 실제 사건 발생시각과 구분\n\n<b>핵심 변화</b>\n[신규] <b>1. 이란·호르무즈</b>\n후속 협상 실무 의제에 에너지 인프라 포함\nRSS 보도 10-16 13:34 KST · <b>113분 경과</b> · 종전·협상 · 휴전·평화 · <a href=\"https://news.google.com/rss/articles/CBMinwFBVV95cUxONlZpUkItZUxqS3RXYkJTWC02ZURPSUNRcXZOdW1WRzNvVGVpOGZJTnVXOHVDelNwcU9GNDQzWkZKQ1NDeUxxdTBPTGRBYVZ2VlFPeTZhWldRbkw5SjZYQnRkNlZwWWppVWhMWXRNNmpFRmw0aXhxZ1lCd2x5NWJodHdjX3U2SUhxNHFGeUgtZVJsS3ZLWnVNMHU0ODNDa2c?oc=5\">Vietnam.vn 검색 링크</a> · 제목 기준·본문 미확인\n\n🟡 [신규] <b>2. 미국·이란 · 군사 대응·보복 발언</b>\n미국은 이란의 핵 및 에너지 시설을 공격하는 방안을 검토하고 있다. - Vietnam.vn\nRSS 보도 10-16 13:07 KST · <b>140분 경과</b> · 종전·협상 · 군사 대응·보복 발언 · <a href=\"https://news.google.com/rss/articles/CBMimgFBVV95cUxNdmw4d1c0UVIwTndPLV9MNXNEM25hbHRrSEF1Z0F3N3lvU0x6MW9JeTkzY2w1ZnBOY3EzUENsd3RmM295VUV3OEdUUW44cEdzZmpuY2tkN3hKbkM0WkFvaHdGN01IajY4MVV4ZlNSVkRYRExMWkNTV3NtNDNweW0yc08wLTBGb2FOaDhNRXhseGVKdkVBS3BjdWln?oc=5\">Vietnam.vn 검색 링크</a> · 제목 기준·본문 미확인\n\n🔴 [신규] <b>3. 우크라이나·러시아</b>\n후속 협상 실무 의제에 에너지 인프라 포함\nRSS 보도 10-16 12:48 KST · <b>159분 경과</b> · 종전·협상 · 휴전·평화 · <a href=\"https://news.google.com/rss/articles/CBMiyAFBVV95cUxNc1UxMGhRWEhZdmgyNkVXX0k5c1dRbU5PeGIyalYyZjhzRTJWeVpIY3lQcTRNQzVJQU8taEhHOTdIT1JPNncyQWFGODRXNk5HNXFXa05ha05ZN0h6RGppWVJ5eEVxVVBkc0hUdVdiUG9Ccmt6czVaby1mVVlFd2dmOHhwU2o3ZVFGN1NDOGZkRGY2OTB3N2dYUlAxM3JnRVNEaWprRUtPRTZkbU9oVURFdG8tQjdiSElJdDBwS0RSY1hfcFZIZTZYUw?oc=5\">Vietnam.vn 검색 링크</a> · 제목 기준·본문 미확인\n\n🟡 [신규] <b>4. 우크라이나·러시아</b>\n트럼프 ‘에너지 휴전’ 무너졌다…젤렌스키, 러 정유시설 공습 재개 - 중앙일보\nRSS 보도 10-16 14:09 KST · <b>78분 경과</b> · 종전·협상 · 자제 발언·상대 공격 주장 · <a href=\"https://news.google.com/rss/articles/CBMiVkFVX3lxTE01NDFLUVJWVUlJVWJ5TVR0S2hlYUlJMnZaX21UR09aQlFOUFh4VThVWTNZM1FGNEJUa2NKSWRvcDBMeVA0SENYUlk5ZVlXUnZRWkFHR1Nn?oc=5\">중앙일보 검색 링크</a> · 제목 기준·본문 미확인\n\n<b>시장 반응</b>\n나스닥100 선물  <b>30,143.00</b>  -0.00% · 제공처 비교종가 대비 · 기준 15:17 KST · Yahoo Finance 1분봉 NQ=F\nWTI  <b>96.02</b>  -0.50% · 제공처 비교종가 대비 · 기준 15:17 KST · Yahoo Finance 1분봉 CL=F\nBrent  <b>105.47</b>  -0.42% · 제공처 비교종가 대비 · 기준 15:17 KST · Yahoo Finance 1분봉 BZ=F\n달러지수  <b>101.91</b>  -0.15% · 제공처 비교종가 대비 · 기준 15:17 KST · Yahoo Finance 1분봉 DX-Y.NYB\n\n<b>투자 판정</b>\n- <b>핵심:</b> 신규 변화의 중심은 실제 공격·해상안보·운영 위험\n- <b>현재 단계:</b> 군사·안보 위험 지속 — 상업거래나 조건 제시를 휴전 진전으로 보지 않음\n- <b>조건부 영향:</b> 추가 공격·운영 차질이 확대되면 유가·해운·보험 위험프리미엄 상승 가능\n- <b>다음:</b> 추가 공격 → 시설·선박 피해 → 운항 제한 → 실제 교전 강도\n"
+}

@@ -66,6 +66,102 @@ class IntegrityTests(unittest.TestCase):
         fixture = json.loads(path.read_text(encoding='utf-8'))
         return fixture, dt.datetime.fromisoformat(fixture['provenance']['queried_at_kst'])
 
+    def energy_facility_fixture(self):
+        path = Path(__file__).parent/'test_fixtures/war_energy_facility_38861224312.json'
+        fixture = json.loads(path.read_text(encoding='utf-8'))
+        return fixture, dt.datetime.fromisoformat(fixture['provenance']['queried_at_kst'])
+
+    def test_actual_energy_facility_plan_is_a_statement(self):
+        fixture, _ = self.energy_facility_fixture()
+        row = fixture['articles'][0]
+        self.assertEqual(integrity.non_military_kind(row), 'military_statement')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+        self.assertEqual(integrity.topic_label(row), '미국·이란 · 군사 대응·보복 발언')
+
+    def test_actual_energy_facility_nominal_restart_announcement_is_a_statement(self):
+        fixture, _ = self.energy_facility_fixture()
+        row = fixture['articles'][2]
+        self.assertEqual(integrity.non_military_kind(row), 'military_statement')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+        self.assertEqual(integrity.topic_label(row), '우크라이나·러시아 · 군사 대응·보복 발언')
+
+    def test_actual_fallen_ceasefire_is_not_restraint(self):
+        fixture, _ = self.energy_facility_fixture()
+        row = fixture['articles'][3]
+        self.assertFalse(integrity.mixed_restraint_attack(row))
+        self.assertIsNone(integrity.non_military_kind(row))
+        self.assertEqual(integrity.final_color(row), 'red')
+
+    def test_energy_facility_plans_and_announcement_scope_keep_other_attacks(self):
+        for title in ('미국은 이란 에너지 시설에 대한 새로운 공격을 계획하고 있다',
+                      '우크라이나, 러시아 에너지 시설 공격 재개를 발표',
+                      '미국, 이란 핵 및 에너지 시설 공격을 검토하고 있다'):
+            with self.subTest(title=title):
+                self.assertEqual(integrity.non_military_kind(article(title)), 'military_statement')
+        for title in ('우크라이나, 러시아 에너지 시설 공격 재개를 발표…이스라엘 공습 개시',
+                      '우크라이나, 러시아 에너지 시설 공격 재개했다…성명을 발표',
+                      '미국, 이란 에너지 시설 공격을 계획…러시아 미사일 발사'):
+            with self.subTest(title=title):
+                self.assertIsNone(integrity.non_military_kind(article(title)))
+                self.assertEqual(integrity.final_color(article(title)), 'red')
+
+    def test_fallen_truce_still_preserves_explicit_separate_restraint(self):
+        for title in ('휴전 무너졌다…우크라이나 공격 자제했지만 러시아 공격 계속',
+                      '휴전 무너졌지만 우크라이나 공격 중단…러시아 공격 재개'):
+            with self.subTest(title=title):
+                self.assertTrue(integrity.mixed_restraint_attack(article(title)))
+
+    def test_energy_facility_explicit_future_and_negation_not_promoted_to_attack(self):
+        for title in ('미국, 이란 에너지 시설 공격 재개하겠다',
+                      '미국, 이란 에너지 시설 공격 재개하지 않겠다',
+                      '미국, 이란 핵 시설을 공격하지 않겠다고 밝혔다'):
+            with self.subTest(title=title):
+                row = article(title)
+                self.assertEqual(integrity.non_military_kind(row), 'military_statement')
+                self.assertEqual(integrity.final_color(row), 'yellow')
+
+    def test_actual_energy_facility_render_preserves_distinct_headlines_and_gate(self):
+        fixture, now = self.energy_facility_fixture()
+        rows = fixture['articles']
+        before = watch.STATE.read_bytes()
+        with patch.object(integrity.body_parallel, '_safe_enrich'):
+            text = integrity.build_alert(rows, fixture['markets'], now)
+        self.assertEqual([r['classification_color'] for r in rows], ['yellow', 'yellow', 'yellow', 'red'])
+        self.assertTrue(all(html.escape(r['title_original']) in text for r in rows))
+        self.assertNotIn('후속 협상 실무 의제에 에너지 인프라 포함', text)
+        self.assertTrue(all(not r.get('signals_ko') and not r.get('forced_tags') for r in rows))
+        self.assertNotIn('동일 제목 중복', quality._alert_quality_issues(text))
+        receipt = evidence.alert_receipt(rows, fixture['markets'], now, text)
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            root = Path(folder)
+            for attr, name in {'ALERT': 'alert.txt', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                stack.enter_context(patch.object(watch, attr, root/name))
+            watch.ALERT.write_text(text, encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids': [r['id'] for r in rows]}), encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+            integrity.verify_alert()
+        self.assertTrue(all(r.get('body_verified') is False for r in receipt['articles']))
+        self.assertEqual(watch.STATE.read_bytes(), before)
+
+    def test_final_gate_rechecks_energy_plan_color_with_matching_body_hash(self):
+        fixture, now = self.energy_facility_fixture()
+        rows = fixture['articles']
+        with patch.object(integrity.body_parallel, '_safe_enrich'):
+            text = integrity.build_alert(rows, fixture['markets'], now)
+        rows[0]['classification_color'] = 'red'
+        text = text.replace('🟡 [신규] <b>1.', '🔴 [신규] <b>1.')
+        receipt = evidence.alert_receipt(rows, fixture['markets'], now, text)
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            root = Path(folder)
+            for attr, name in {'ALERT': 'alert.txt', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                stack.enter_context(patch.object(watch, attr, root/name))
+            watch.ALERT.write_text(text, encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids': [r['id'] for r in rows]}), encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+            stack.enter_context(patch.object(integrity, '_verify'))
+            with self.assertRaisesRegex(RuntimeError, 'statement presented as a new attack'):
+                integrity.verify_alert()
+
     def test_actual_ceasefire_collapse_restart_is_not_restraint(self):
         fixture, _ = self.report_stage_fixture()
         row = fixture['articles'][0]
