@@ -28,7 +28,7 @@
     "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557766",
     "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557959"
   ],
-  "last_check_kst": "2026-10-16T11:11:14+09:00",
+  "last_check_kst": "2026-10-16T11:14:39+09:00",
   "tracked_cases": {
     "PGR2025-00003": "11,952,600",
     "PGR2025-00004": "12,018,298",
@@ -88,11 +88,7 @@
   ],
   "legal_v4_initialized": true,
   "search_mode": "개별 사건번호 + 미국/한국 뉴스 + Bing 웹",
-  "last_sent_message_ids": [
-    184,
-    185,
-    186
-  ],
+  "last_sent_message_ids": [],
   "final_decision_classification_version": 2,
   "seen_portfolio_updates": [
     "38543e8786807a5007ba4efd",
@@ -252,11 +248,6 @@
       {
         "date": "2026-10-15",
         "kind": "",
-        "label": "Paper 100 최종서면결정 — 심판 대상 청구항 26개 특허성 부정"
-      },
-      {
-        "date": "2026-10-15",
-        "kind": "final_unpatentable",
         "label": "최종서면결정"
       }
     ],
@@ -279,11 +270,6 @@
       {
         "date": "2026-10-15",
         "kind": "",
-        "label": "Paper 100 최종서면결정 — 심판 대상 청구항 27개 특허성 부정"
-      },
-      {
-        "date": "2026-10-15",
-        "kind": "final_unpatentable",
         "label": "최종서면결정"
       }
     ]
@@ -291,7 +277,7 @@
   "search_query_count": 39,
   "search_task_count": 78,
   "search_workers": 8,
-  "search_elapsed_seconds": 2.234,
+  "search_elapsed_seconds": 2.258,
   "search_completed_tasks": 78,
   "search_failed_tasks": 0,
   "search_completed_by_engine": {
