@@ -5259,6 +5259,27 @@
       "telegram_core_fact": "‘곱버스’ 상품은 20% 넘게 급등했다. 코스콤에 따르면 개인은 이날 ‘KODEX SK하이닉스단일종목레버리지’와 ‘KODEX 삼성전자단일종목레버리지’를 각각 422억원, 248억원 순매수했다.",
       "title": "삼전닉스 단일종목 레버리지 결국 신저가…‘곱버스’는 20% 급등 [투자360]"
     },
+    "core:175272bb26bc18574ca3d61c": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03801526645613576&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "95040b21d3434271e8885e6f45259af285caaedeb2111f7d162db5a470e81e9a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47815a55c4cf6d44e11dd44b1f581e43ab588019fcb87729fda09d360436f68a",
+      "source_fact_keys": [
+        "source_fact:v1:908a7904d56cdb99d704b82ddc033bd3e84a41720c1a7f73082cb7d906cb5177",
+        "source_fact:v1:a814fff3a495826f562f158ff2e6f607065d70843f6274d8bd42c537af745a8e"
+      ],
+      "source_published_kst": "2026-10-16T14:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "세계 전기차 판매 6개월 만에 감소…북미 44%·중국 18% 급감",
+      "telegram_core_fact": "16일 로이터통신과 영국 시장조사업체 벤치마크미네랄인텔리전스(BMI)에 따르면 지난 9월 전 세계 전기차 판매량은 215만대로 전년비 2% 감소했다.",
+      "title": "세계 전기차 판매 6개월 만에 감소…북미 44%·중국 18% 급감"
+    },
     "core:175b1a91af2715c4ab150e8b": {
       "first_seen_kst": "2026-10-15T17:19:13+09:00",
       "lanes": {
@@ -7776,6 +7797,34 @@
       "source_title": "네이버클라우드, 베트남 최대 IT 기업과 AI 팩토리 사업 추진...아태 AI 시장 공략",
       "telegram_core_fact": "네이버클라우드가 베트남 대표 IT 기업 FPT와 AI 팩토리 사업을 공동 추진하고 한국과 일본, 베트남 등 아시아태평양(APAC) 시장에서의 GPUaaS 사업 확대를 위해 힘을 합친다.",
       "title": "네이버클라우드, 베트남 최대 IT 기업과 AI 팩토리 사업 추진...아태 AI 시장 공략"
+    },
+    "core:22a160c8460cda4c36d84c1e": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/16/2026101611567016122",
+      "source": "머니투데이",
+      "source_body_digest": "15584468a4412c988075047afd74dc1956f1cc68af69105eddc15b29576c8a4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e188148e51c6b319adf2212665ab2fc863400bb1dfc491104ab15ba0fc72fa0a",
+      "source_fact_keys": [
+        "source_fact:v1:0ec9f26b38b7a82c656ab37c3752f9d41f941184b307b4ee15405dcf4f7c1a6f",
+        "source_fact:v1:4c3d098bd1e2b38ddeb79b9abcd7c33b80b09fe46190aca8acca7fa8dccdf54e",
+        "source_fact:v1:629e73fd4a8dbd4574b4c7a9102db38a56d4a8e984c2128a1e65e8fc2ce2deac",
+        "source_fact:v1:6fc50261e5a06996a96d2b744652bacd566857bf436c804c6c4581136b12a8dd",
+        "source_fact:v1:9880e610b4418acab3b86534d2bf62057b9ea0bd8dc988684e957c63b638f123",
+        "source_fact:v1:a13c9b72c6cf9be4e51e239d69f5542d4d927eca68062dc318ece7a54617e72d",
+        "source_fact:v1:c69d2ec831211ac395b074de6ef82c5a8d502c279b7e107c0ea619b0523175d3",
+        "source_fact:v1:f5c0aaab368951ab9f199ed94090adf20545ce6fffc506d5ecb221ce1ede7b49",
+        "source_fact:v1:f5cf175fa59e4fe647636b134ed685bce25d3b9cce734d31dcbfe93428b7065b"
+      ],
+      "source_published_kst": "2026-10-16T12:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘 이 종목] AI 수요 확인 SK하이닉스 · 실적 기대 삼성바이오로직스 '주목'",
+      "telegram_core_fact": "길 대표가 제시한 삼성바이오로직스의 3분기 실적 전망은 매출 1조3,728억원, 영업이익 6,178억원이다.",
+      "title": "[오늘 이 종목] AI 수요 확인 SK하이닉스 · 실적 기대 삼성바이오로직스 '주목'"
     },
     "core:22aa8d0282cb759bd832c03f": {
       "first_seen_kst": "2026-10-11T11:48:17+09:00",
@@ -16295,6 +16344,24 @@
       "telegram_core_fact": "영국 해사무역기구(UKMTO)는 호르무즈 해협에서 선박 피격 사건 보고를 접수했다고 11일(현지시간) 밝혔다.",
       "title": "호르무즈서 유조선 발사체에 피격…선원들은 무사 | 연합뉴스"
     },
+    "core:46ab6799f7d0b75b77a24d7c": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12177223",
+      "source": "매일경제",
+      "source_body_digest": "192df94a161656e484b4ec89941ee35bf258d0f9f564c7cbce5bacefbe14051d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-15T21:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "아틀라스클리어 홀딩스, 도슨제임스 모회사 인수…최대 2450만 달러",
+      "telegram_core_fact": "아틀라스클리어 홀딩스(ATCH)가 투자은행 도슨제임스 시큐리티즈의 모회사 아크 파이낸셜 서비시스 인수 계약을 체결하고 총 대가 최대 2450만 달러 가운데 지분 24.9%를 우선 매입했다고 10월 15일 발표했다.",
+      "title": "아틀라스클리어 홀딩스, 도슨제임스 모회사 인수…최대 2450만 달러"
+    },
     "core:46b50cfeb7add7bd825a6217": {
       "first_seen_kst": "2026-10-07T20:05:17+09:00",
       "lanes": {
@@ -22724,6 +22791,27 @@
       "source_title": "[오늘의 투자전략] 코스피 4일간 9% 급락…\"기술적 반등 여건 형성 주목\"",
       "telegram_core_fact": "코스피는 최근 4거래일간 8.9% 밀려나며 장중 직전 저점(6439)을 밑돌았고 중장기 추세 판단의 기준선 역할을 해온 200일 이동평균선(6376) 부근까지 후퇴해 기술적 지지력을 시험받고 있다.",
       "title": "[오늘의 투자전략] 코스피 4일간 9% 급락…\"기술적 반등 여건 형성 주목\""
+    },
+    "core:6637a82c25a67d7d626c6514": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.hankyung.com/article/202610166177L",
+      "source": "한국경제",
+      "source_body_digest": "a7f6bfc14a95af8fb90de322e13f1d486541971aac25d4d8588654895fa4980d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:537b4217d2088f8600abc5d70f58d9dd1b5344fb18c2c2444eeb716dc1fd220c",
+      "source_fact_keys": [
+        "source_fact:v1:26803fa5b5220f6d0eac168e8701919423ea9ab811f322ef2197b9515ffd2aec",
+        "source_fact:v1:6f1766f043bec96b5d1d5aefb94f939ca659bc84e5f04cc3a3dd07380257b534"
+      ],
+      "source_published_kst": "2026-10-16T11:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "대우건설 수주공시 - 상도15구역 주택정비형 재개발사업 1.44조 (매출액대비 17.84 %)",
+      "telegram_core_fact": "대우건설(047040)은 상도15구역 주택정비형 재개발사업에 관한 단일판매ㆍ공급계약체결 을 16일에 공시했다.",
+      "title": "대우건설 수주공시 - 상도15구역 주택정비형 재개발사업 1.44조 (매출액대비 17.84 %)"
     },
     "core:663b1574e666136c883897ee": {
       "first_seen_kst": "2026-10-15T15:55:49+09:00",
@@ -33822,6 +33910,24 @@
       "telegram_core_fact": "정부가 K-방산의 새로운 수출 활로로 ‘해외 시험·평가 거점 패키지’ 구축을 본격 추진한다. 특정 국가 한 곳에 대형 시험장을 일괄 구축하는 방식에서 벗어나 K-방산 수출이나 공동 개발, 현지 생산 프로젝트가 진행 중인 지역을 거점으로 삼는 ‘분산형 복수 거점’ 전략에 무게가 실린다.",
       "title": "[단독] '개발·테스트·수출' 한번에⋯K-방산, 민관 합동 '해외 시험평가장' 구축한다"
     },
+    "core:973ac6a011fb404417c26a67": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12177246",
+      "source": "매일경제",
+      "source_body_digest": "0466323dad7dcda8d0644d41d4f351088317a3ddbf86e94b1e8a6862413d8800",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-15T22:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI옥토, 상반기 순이익 19만달러..전년비 165% 증가",
+      "telegram_core_fact": "AI옥토(AIOK)는 6월 30일 종료된 상반기(6개월) 순이익이 18만7798달러로 전년 동기(7만734달러) 대비 165.5% 증가했으며, 같은 기간 용선 매출액은 420만5437달러로 44.1% 감소했다고 10월 15일 발표했다.",
+      "title": "AI옥토, 상반기 순이익 19만달러..전년비 165% 증가"
+    },
     "core:974cab22272f32f344bf449b": {
       "first_seen_kst": "2026-10-09T18:34:32+09:00",
       "lanes": {
@@ -40457,6 +40563,34 @@
       "source_title": "인천 쿠팡물류센터 화재 원인 '리튬배터리' 추정",
       "telegram_core_fact": "109시간 만에 진화된 인천 쿠팡 물류센터 화재가 발생한 지 약 3개월이 지난 가운데 '리튬배터리'에서 불이 시작됐을 가능성이 있다는 국립과학수사연구원(국과수)의 감정 결과가 나왔다. 인천경찰청 광역범죄수사대 등에 따르면 국과수는 지난달 1차 감정 결과 리튬배터리 발화 가능성을 제시했다.",
       "title": "인천 쿠팡물류센터 화재 원인 '리튬배터리' 추정"
+    },
+    "core:b636edc53dbf05cb84bc1971": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176039",
+      "source": "매일경제",
+      "source_body_digest": "aad855d1a9f2538a61ece63e75b17017f99080eee9e5cd9bd2a137a964fa79b7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:69b01d2f7d40a245b7cfeaba5c79afb12d4c7c1f3bab47a2163ac1bf06cc189e",
+      "source_fact_keys": [
+        "source_fact:v1:06230645e142bc4ac9dda0c177f413be529903f0d18521a13f69e71e229b8e29",
+        "source_fact:v1:27dd1d96f36de7263c11a83d105cc2f75a5e774a23dd3ace620a4a2aca030ea3",
+        "source_fact:v1:490af6b8358dd6a84bd5c8fe4d5f6476fcc22b1141f3eaa5527fe038ffb9b505",
+        "source_fact:v1:9bd9dc6c60e45aa4268a32f82b7414f07dcafca073f8947a2fbc00b576e9876a",
+        "source_fact:v1:9d0a0065d3c5c09d9257265d402279d5307b8129f3c92c6ce3225c2bb7e25357",
+        "source_fact:v1:a220110366020141b9beb4c8c2534dcfe3c4cca867d077bb81468659973d05e5",
+        "source_fact:v1:a2b99a44c37c3979d9bb4a30a5011c9bdf83a84f965eebefbd0490ec803212dd",
+        "source_fact:v1:b56324d5daa8b5137d754fd61b45eef9798574c1318e4f0d54effb5402214969",
+        "source_fact:v1:d4a13eec5b7f416962fd1b4e493565b2013031366f65d5c25766d2c460224957"
+      ],
+      "source_published_kst": "2026-10-16T19:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "리전스 파이낸셜, 3분기 희석 EPS 0.71달러..전년비 16% 증가",
+      "telegram_core_fact": "리전스 파이낸셜(RF)은 2026년 3분기 보통주 귀속 순이익이 6억1100만 달러, 희석 주당순이익(EPS)이 0.71달러로 전년비 각각 11%, 16% 증가했다고 10월 16일 발표했다.",
+      "title": "리전스 파이낸셜, 3분기 희석 EPS 0.71달러..전년비 16% 증가"
     },
     "core:b641bdbca87d3430366f35b6": {
       "first_seen_kst": "2026-10-09T19:24:17+09:00",
@@ -53877,6 +54011,45 @@
       "telegram_core_fact": "돌봄 수요는 높지만 공급이 부족한 기초자치단체의 비율은 경남 38.9%, 전남 38.4%, 경북 34.7%, 전북 33.9%로 나타났다. 특히 경남과 전남에서는 기초자치단체 3곳 중 1곳 이상이 돌봄 수요는 높지만 공급은 부족한 지역으로 분류됐다.",
       "title": "전남·경남 초고령 어르신 많지만…'통돌' 공급 턱없이 부족"
     },
+    "core:f63e5f429c00fe0f76631536": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.hankyung.com/article/2026101657216",
+      "source": "한국경제",
+      "source_body_digest": "889024c29c7094866f8dbeb3356074c9fa5a7a98404045ea757da05fbe8e9634",
+      "source_event_identity": "source_event:v2:named_supply_order:8a380917b2a98b76473f13793371072967089e9c9bdc80276b1ca4a37677cb9a",
+      "source_fact_identity": "source_facts:v1:671f5ec8848d63e775674cbde319221d6cedcf6530064a8361883d6fa92c06ed",
+      "source_fact_keys": [
+        "source_fact:v1:5064615ba53bf0c17ce8dd412e362a2b38e8a8730d9ec962fa6e5d9cb9f17b04",
+        "source_fact:v1:f065f31fc34bbe55948bce8e9d8768486b18b573682c9c00ab2c2131921b9e66",
+        "source_fact:v1:fd2b4854ea4519419903fe7e667687136513d56c6cf5237046e2bd8c042fbf99"
+      ],
+      "source_published_kst": "2026-10-16T09:35+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "22800000000"
+          ]
+        ],
+        "customer": "228억원",
+        "delivery_period": "",
+        "disclosure_date": "2026-10-16",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "우리로",
+        "product": "데이터센터용광반도체",
+        "quantities": [],
+        "stage": "signed"
+      },
+      "source_title": "우리로, 데이터센터용 광반도체 수주 소식에 '급등'",
+      "telegram_core_fact": "우리로가 228억원 규모 데이터센터용 광반도체 공급 계약을 체결했다는 소식 이후 주가가 16일 장 초반 급등세다.",
+      "title": "우리로, 데이터센터용 광반도체 수주 소식에 '급등'"
+    },
     "core:f66d64f2d3b813cad9ec04ae": {
       "first_seen_kst": "2026-10-13T00:43:08+09:00",
       "lanes": {
@@ -56593,26 +56766,51 @@
     "event:0ed3f5472b0e5ff903b0da35": {
       "first_seen_kst": "2026-10-16T18:07:43+09:00",
       "lanes": {
-        "live": "2026-10-16T18:07:43+09:00"
+        "live": "2026-10-16T21:38:15+09:00"
       },
-      "last_seen_kst": "2026-10-16T18:07:43+09:00",
-      "link": "https://www.fnnews.com/news/202610160536511789",
-      "source": "파이낸셜뉴스",
-      "source_body_digest": "e82afba2767822f320d5846d07244563125f03738554397910068fc565f880d4",
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/16/2026101611567016122",
+      "source": "머니투데이",
+      "source_body_digest": "15584468a4412c988075047afd74dc1956f1cc68af69105eddc15b29576c8a4d",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:09e6709875da5f7ed2ff26a7d8c59311763ba098e0028eb582ce078baf094e43",
+      "source_fact_identity": "source_facts:v1:e188148e51c6b319adf2212665ab2fc863400bb1dfc491104ab15ba0fc72fa0a",
       "source_fact_keys": [
-        "source_fact:v1:008e4ed37a3637ca9cda2fa4ff69517c03b9dc703770d8306af1c849388490ab",
-        "source_fact:v1:011456a9123cbefc618cc90a8d3f895170a5fa89b845b6b7c5c7ab85e127a4d6",
-        "source_fact:v1:38564e77342c22113ae0eca62db011d35398522706e19f5db0b6afe718e663bb",
-        "source_fact:v1:3f214a5abc01321c0cdb89b2f1c4c3923e4ae08b81b518301c8f1b585e94bc57",
-        "source_fact:v1:db67ad4684e70c1da4bc24beb518630649754b510aa71eed97517be9e9a26266"
+        "source_fact:v1:0ec9f26b38b7a82c656ab37c3752f9d41f941184b307b4ee15405dcf4f7c1a6f",
+        "source_fact:v1:4c3d098bd1e2b38ddeb79b9abcd7c33b80b09fe46190aca8acca7fa8dccdf54e",
+        "source_fact:v1:629e73fd4a8dbd4574b4c7a9102db38a56d4a8e984c2128a1e65e8fc2ce2deac",
+        "source_fact:v1:6fc50261e5a06996a96d2b744652bacd566857bf436c804c6c4581136b12a8dd",
+        "source_fact:v1:9880e610b4418acab3b86534d2bf62057b9ea0bd8dc988684e957c63b638f123",
+        "source_fact:v1:a13c9b72c6cf9be4e51e239d69f5542d4d927eca68062dc318ece7a54617e72d",
+        "source_fact:v1:c69d2ec831211ac395b074de6ef82c5a8d502c279b7e107c0ea619b0523175d3",
+        "source_fact:v1:f5c0aaab368951ab9f199ed94090adf20545ce6fffc506d5ecb221ce1ede7b49",
+        "source_fact:v1:f5cf175fa59e4fe647636b134ed685bce25d3b9cce734d31dcbfe93428b7065b"
       ],
-      "source_published_kst": "2026-10-16T05:36+09:00",
+      "source_published_kst": "2026-10-16T12:04+09:00",
       "source_supply_terms": {},
-      "source_title": "美 반도체 지수 0.9% 하락…마이크론 2% 반등, SK하이닉스 0.98%↓",
-      "telegram_core_fact": "SK하이닉스 주식예탁증서(ADR)는 0.98% 하락한 146.11달러를 기록했다. 세계 최대 파운드리 기업 TSMC는 이날 발표한 3분기 실적에서 순이익이 전년 대비 68.7% 증가해 6개 분기 연속 사상 최대를 기록했다.",
-      "title": "美 반도체 지수 0.9% 하락…마이크론 2% 반등, SK하이닉스 0.98%↓"
+      "source_title": "[오늘 이 종목] AI 수요 확인 SK하이닉스 · 실적 기대 삼성바이오로직스 '주목'",
+      "telegram_core_fact": "길 대표가 제시한 삼성바이오로직스의 3분기 실적 전망은 매출 1조3,728억원, 영업이익 6,178억원이다.",
+      "title": "[오늘 이 종목] AI 수요 확인 SK하이닉스 · 실적 기대 삼성바이오로직스 '주목'"
+    },
+    "event:0f8406f8dbbc55ee7728ad08": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.hankyung.com/article/202610166177L",
+      "source": "한국경제",
+      "source_body_digest": "a7f6bfc14a95af8fb90de322e13f1d486541971aac25d4d8588654895fa4980d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:537b4217d2088f8600abc5d70f58d9dd1b5344fb18c2c2444eeb716dc1fd220c",
+      "source_fact_keys": [
+        "source_fact:v1:26803fa5b5220f6d0eac168e8701919423ea9ab811f322ef2197b9515ffd2aec",
+        "source_fact:v1:6f1766f043bec96b5d1d5aefb94f939ca659bc84e5f04cc3a3dd07380257b534"
+      ],
+      "source_published_kst": "2026-10-16T11:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "대우건설 수주공시 - 상도15구역 주택정비형 재개발사업 1.44조 (매출액대비 17.84 %)",
+      "telegram_core_fact": "대우건설(047040)은 상도15구역 주택정비형 재개발사업에 관한 단일판매ㆍ공급계약체결 을 16일에 공시했다.",
+      "title": "대우건설 수주공시 - 상도15구역 주택정비형 재개발사업 1.44조 (매출액대비 17.84 %)"
     },
     "event:0fde6a8ec3810b304d1f5f24": {
       "first_seen_kst": "2026-10-13T04:37:27+09:00",
@@ -66555,6 +66753,45 @@
       "source_title": "윤지호 \"2028년 실적까지 봐야…삼전닉스 전망치 상향 확인\" [한경 넥스트 머니포럼]",
       "telegram_core_fact": "그러면서 \"영업이익 컨센서스(증권사 전망치 평균)를 봐도 반도체 소부장(소재·부품·장비) 등 IT 하드웨어 업종이 내년뿐 아니라 2028년에도 상당히 좋다\"며 \"의료장비 및 서비스 업종도 이익 성장이 좋은데, 여기에 반도체 장비가 많이 들어가 있다\"고 덧붙였다.",
       "title": "윤지호 \"2028년 실적까지 봐야…삼전닉스 전망치 상향 확인\" [한경 넥스트 머니포럼]"
+    },
+    "event:b93e8a058ebdeeedd3341373": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.hankyung.com/article/2026101657216",
+      "source": "한국경제",
+      "source_body_digest": "889024c29c7094866f8dbeb3356074c9fa5a7a98404045ea757da05fbe8e9634",
+      "source_event_identity": "source_event:v2:named_supply_order:8a380917b2a98b76473f13793371072967089e9c9bdc80276b1ca4a37677cb9a",
+      "source_fact_identity": "source_facts:v1:671f5ec8848d63e775674cbde319221d6cedcf6530064a8361883d6fa92c06ed",
+      "source_fact_keys": [
+        "source_fact:v1:5064615ba53bf0c17ce8dd412e362a2b38e8a8730d9ec962fa6e5d9cb9f17b04",
+        "source_fact:v1:f065f31fc34bbe55948bce8e9d8768486b18b573682c9c00ab2c2131921b9e66",
+        "source_fact:v1:fd2b4854ea4519419903fe7e667687136513d56c6cf5237046e2bd8c042fbf99"
+      ],
+      "source_published_kst": "2026-10-16T09:35+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "22800000000"
+          ]
+        ],
+        "customer": "228억원",
+        "delivery_period": "",
+        "disclosure_date": "2026-10-16",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "우리로",
+        "product": "데이터센터용광반도체",
+        "quantities": [],
+        "stage": "signed"
+      },
+      "source_title": "우리로, 데이터센터용 광반도체 수주 소식에 '급등'",
+      "telegram_core_fact": "우리로가 228억원 규모 데이터센터용 광반도체 공급 계약을 체결했다는 소식 이후 주가가 16일 장 초반 급등세다.",
+      "title": "우리로, 데이터센터용 광반도체 수주 소식에 '급등'"
     },
     "event:b951ffa9a7b785398baf2da0": {
       "first_seen_kst": "2026-09-22T10:35:36+09:00",
@@ -101595,6 +101832,34 @@
       "telegram_core_fact": "정 의원은 \"코레일은 지난해 9월 사업계획을 마련하고 올해 1월 투자심의위원회에서 사업을 만장일치로 승인받았지만 심의 과정에서 기술적 우려는 제기되지 않은 것으로 알려졌다\"며 \"공급업체가 당초 서버 증설이 가능하다는 입장을 보였다고 코레일은 해명해 왔다\"고 설명했다.",
       "title": "코레일, 서버 증설 부실 검토 추석 예매 대란…이용객 최대 149분 대기"
     },
+    "fact:74ec27603c5f8422a35d10c7": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/16/2026101611567016122",
+      "source": "머니투데이",
+      "source_body_digest": "15584468a4412c988075047afd74dc1956f1cc68af69105eddc15b29576c8a4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e188148e51c6b319adf2212665ab2fc863400bb1dfc491104ab15ba0fc72fa0a",
+      "source_fact_keys": [
+        "source_fact:v1:0ec9f26b38b7a82c656ab37c3752f9d41f941184b307b4ee15405dcf4f7c1a6f",
+        "source_fact:v1:4c3d098bd1e2b38ddeb79b9abcd7c33b80b09fe46190aca8acca7fa8dccdf54e",
+        "source_fact:v1:629e73fd4a8dbd4574b4c7a9102db38a56d4a8e984c2128a1e65e8fc2ce2deac",
+        "source_fact:v1:6fc50261e5a06996a96d2b744652bacd566857bf436c804c6c4581136b12a8dd",
+        "source_fact:v1:9880e610b4418acab3b86534d2bf62057b9ea0bd8dc988684e957c63b638f123",
+        "source_fact:v1:a13c9b72c6cf9be4e51e239d69f5542d4d927eca68062dc318ece7a54617e72d",
+        "source_fact:v1:c69d2ec831211ac395b074de6ef82c5a8d502c279b7e107c0ea619b0523175d3",
+        "source_fact:v1:f5c0aaab368951ab9f199ed94090adf20545ce6fffc506d5ecb221ce1ede7b49",
+        "source_fact:v1:f5cf175fa59e4fe647636b134ed685bce25d3b9cce734d31dcbfe93428b7065b"
+      ],
+      "source_published_kst": "2026-10-16T12:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘 이 종목] AI 수요 확인 SK하이닉스 · 실적 기대 삼성바이오로직스 '주목'",
+      "telegram_core_fact": "길 대표가 제시한 삼성바이오로직스의 3분기 실적 전망은 매출 1조3,728억원, 영업이익 6,178억원이다.",
+      "title": "[오늘 이 종목] AI 수요 확인 SK하이닉스 · 실적 기대 삼성바이오로직스 '주목'"
+    },
     "fact:7508c9fa70e1f378b0bf617e": {
       "first_seen_kst": "2026-10-13T00:43:08+09:00",
       "lanes": {
@@ -102240,6 +102505,27 @@
       "source_title": "쎄노텍, 129억원 규모 이차전지 양극재 첨가제 공급계약 체결",
       "telegram_core_fact": "첨단 세라믹 소재 전문기업 쎄노텍이 이차전지 양극재 제조기업과 약 129억원 이차전지용 첨가제 공급계약을 체결했다고 16일 밝혔다.",
       "title": "쎄노텍, 129억원 규모 이차전지 양극재 첨가제 공급계약 체결"
+    },
+    "fact:77748518a4a0c5d99d4fa12e": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.hankyung.com/article/202610166177L",
+      "source": "한국경제",
+      "source_body_digest": "a7f6bfc14a95af8fb90de322e13f1d486541971aac25d4d8588654895fa4980d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:537b4217d2088f8600abc5d70f58d9dd1b5344fb18c2c2444eeb716dc1fd220c",
+      "source_fact_keys": [
+        "source_fact:v1:26803fa5b5220f6d0eac168e8701919423ea9ab811f322ef2197b9515ffd2aec",
+        "source_fact:v1:6f1766f043bec96b5d1d5aefb94f939ca659bc84e5f04cc3a3dd07380257b534"
+      ],
+      "source_published_kst": "2026-10-16T11:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "대우건설 수주공시 - 상도15구역 주택정비형 재개발사업 1.44조 (매출액대비 17.84 %)",
+      "telegram_core_fact": "대우건설(047040)은 상도15구역 주택정비형 재개발사업에 관한 단일판매ㆍ공급계약체결 을 16일에 공시했다.",
+      "title": "대우건설 수주공시 - 상도15구역 주택정비형 재개발사업 1.44조 (매출액대비 17.84 %)"
     },
     "fact:77752d3f35cb27235dd83f59": {
       "first_seen_kst": "2026-10-12T10:37:32+09:00",
@@ -115680,6 +115966,34 @@
       "source_title": "트럼프 “日 투자로 美 뉴욕에 반도체 공장 2곳 건설… 한국·대만 약속도 사업화”",
       "telegram_core_fact": "글로벌파운드리도 이날 보도자료를 통해 뉴욕주 몰타에 신설되는 반도체 공장 2곳의 기술 공급·운영 사업자로 선정됐다고 밝혔다.",
       "title": "트럼프 “日 투자로 美 뉴욕에 반도체 공장 2곳 건설… 한국·대만 약속도 사업화”"
+    },
+    "fact:a7fde90c64ea29f885e305da": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176039",
+      "source": "매일경제",
+      "source_body_digest": "aad855d1a9f2538a61ece63e75b17017f99080eee9e5cd9bd2a137a964fa79b7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:69b01d2f7d40a245b7cfeaba5c79afb12d4c7c1f3bab47a2163ac1bf06cc189e",
+      "source_fact_keys": [
+        "source_fact:v1:06230645e142bc4ac9dda0c177f413be529903f0d18521a13f69e71e229b8e29",
+        "source_fact:v1:27dd1d96f36de7263c11a83d105cc2f75a5e774a23dd3ace620a4a2aca030ea3",
+        "source_fact:v1:490af6b8358dd6a84bd5c8fe4d5f6476fcc22b1141f3eaa5527fe038ffb9b505",
+        "source_fact:v1:9bd9dc6c60e45aa4268a32f82b7414f07dcafca073f8947a2fbc00b576e9876a",
+        "source_fact:v1:9d0a0065d3c5c09d9257265d402279d5307b8129f3c92c6ce3225c2bb7e25357",
+        "source_fact:v1:a220110366020141b9beb4c8c2534dcfe3c4cca867d077bb81468659973d05e5",
+        "source_fact:v1:a2b99a44c37c3979d9bb4a30a5011c9bdf83a84f965eebefbd0490ec803212dd",
+        "source_fact:v1:b56324d5daa8b5137d754fd61b45eef9798574c1318e4f0d54effb5402214969",
+        "source_fact:v1:d4a13eec5b7f416962fd1b4e493565b2013031366f65d5c25766d2c460224957"
+      ],
+      "source_published_kst": "2026-10-16T19:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "리전스 파이낸셜, 3분기 희석 EPS 0.71달러..전년비 16% 증가",
+      "telegram_core_fact": "리전스 파이낸셜(RF)은 2026년 3분기 보통주 귀속 순이익이 6억1100만 달러, 희석 주당순이익(EPS)이 0.71달러로 전년비 각각 11%, 16% 증가했다고 10월 16일 발표했다.",
+      "title": "리전스 파이낸셜, 3분기 희석 EPS 0.71달러..전년비 16% 증가"
     },
     "fact:a807eb6e22d832a4608f888f": {
       "first_seen_kst": "2026-10-15T07:08:31+09:00",
@@ -136265,6 +136579,45 @@
       "telegram_core_fact": "반면 야당이 레버리지 ETF 피해 규모로 제시한 54조원은 씨티글로벌마켓증권이 시장 규모 변화와 신규 자금 유입 등을 토대로 추정한 숫자를 기반으로 한다.",
       "title": "2.3조 vs 54조… 레버리지 손실 추정액 23배 차이나는 까닭 [팩트체크]"
     },
+    "fact:f0084c0dedc1d8792f60327b": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.hankyung.com/article/2026101657216",
+      "source": "한국경제",
+      "source_body_digest": "889024c29c7094866f8dbeb3356074c9fa5a7a98404045ea757da05fbe8e9634",
+      "source_event_identity": "source_event:v2:named_supply_order:8a380917b2a98b76473f13793371072967089e9c9bdc80276b1ca4a37677cb9a",
+      "source_fact_identity": "source_facts:v1:671f5ec8848d63e775674cbde319221d6cedcf6530064a8361883d6fa92c06ed",
+      "source_fact_keys": [
+        "source_fact:v1:5064615ba53bf0c17ce8dd412e362a2b38e8a8730d9ec962fa6e5d9cb9f17b04",
+        "source_fact:v1:f065f31fc34bbe55948bce8e9d8768486b18b573682c9c00ab2c2131921b9e66",
+        "source_fact:v1:fd2b4854ea4519419903fe7e667687136513d56c6cf5237046e2bd8c042fbf99"
+      ],
+      "source_published_kst": "2026-10-16T09:35+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "22800000000"
+          ]
+        ],
+        "customer": "228억원",
+        "delivery_period": "",
+        "disclosure_date": "2026-10-16",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "우리로",
+        "product": "데이터센터용광반도체",
+        "quantities": [],
+        "stage": "signed"
+      },
+      "source_title": "우리로, 데이터센터용 광반도체 수주 소식에 '급등'",
+      "telegram_core_fact": "우리로가 228억원 규모 데이터센터용 광반도체 공급 계약을 체결했다는 소식 이후 주가가 16일 장 초반 급등세다.",
+      "title": "우리로, 데이터센터용 광반도체 수주 소식에 '급등'"
+    },
     "fact:f013aff3e1f4698e0f1ccd8b": {
       "first_seen_kst": "2026-10-08T21:47:01+09:00",
       "lanes": {
@@ -139577,6 +139930,27 @@
       ],
       "source_published_kst": "2026-10-07T15:35+09:00",
       "title": "HD건설기계, 북미 AI 데이터센터에 전력 공급…3900억 계약 체결"
+    },
+    "fact:fd4547af46d2611428082ce7": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03801526645613576&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "95040b21d3434271e8885e6f45259af285caaedeb2111f7d162db5a470e81e9a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47815a55c4cf6d44e11dd44b1f581e43ab588019fcb87729fda09d360436f68a",
+      "source_fact_keys": [
+        "source_fact:v1:908a7904d56cdb99d704b82ddc033bd3e84a41720c1a7f73082cb7d906cb5177",
+        "source_fact:v1:a814fff3a495826f562f158ff2e6f607065d70843f6274d8bd42c537af745a8e"
+      ],
+      "source_published_kst": "2026-10-16T14:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "세계 전기차 판매 6개월 만에 감소…북미 44%·중국 18% 급감",
+      "telegram_core_fact": "16일 로이터통신과 영국 시장조사업체 벤치마크미네랄인텔리전스(BMI)에 따르면 지난 9월 전 세계 전기차 판매량은 215만대로 전년비 2% 감소했다.",
+      "title": "세계 전기차 판매 6개월 만에 감소…북미 44%·중국 18% 급감"
     },
     "fact:fd5cd0ae1e682ceb989b9b4e": {
       "first_seen_kst": "2026-10-08T02:57:10+09:00",
@@ -154344,6 +154718,27 @@
       "telegram_core_fact": "레자이 사무총장은 “미국은 이란에 여전히 불분명한 문제들을 명확히 해야 한다”며 “우리는 미국 측에 7가지 조건을 제시했고 이 조건들이 충족될 때까지 호르무즈해협을 미국에 개방하지 않을 것이며 어떠한 협상도 진행되지 않을 것이라고 분명히 밝혔다”고 말했다.",
       "title": "이란 안보수장 “美, 호르무즈 재개방 7개 조건 일부 수용⋯답변 불충분”"
     },
+    "link:267f835a9cbbbdb1d574bc62": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03801526645613576&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "95040b21d3434271e8885e6f45259af285caaedeb2111f7d162db5a470e81e9a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47815a55c4cf6d44e11dd44b1f581e43ab588019fcb87729fda09d360436f68a",
+      "source_fact_keys": [
+        "source_fact:v1:908a7904d56cdb99d704b82ddc033bd3e84a41720c1a7f73082cb7d906cb5177",
+        "source_fact:v1:a814fff3a495826f562f158ff2e6f607065d70843f6274d8bd42c537af745a8e"
+      ],
+      "source_published_kst": "2026-10-16T14:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "세계 전기차 판매 6개월 만에 감소…북미 44%·중국 18% 급감",
+      "telegram_core_fact": "16일 로이터통신과 영국 시장조사업체 벤치마크미네랄인텔리전스(BMI)에 따르면 지난 9월 전 세계 전기차 판매량은 215만대로 전년비 2% 감소했다.",
+      "title": "세계 전기차 판매 6개월 만에 감소…북미 44%·중국 18% 급감"
+    },
     "link:2682cde2457bf292d5fadca1": {
       "first_seen_kst": "2026-10-13T01:09:54+09:00",
       "lanes": {
@@ -168512,6 +168907,27 @@
       "source_published_kst": "2026-10-06T08:25+09:00",
       "title": "\"LG전자, AI 데이터센터 냉각·로보틱스 사업 기대…목표가↑\"-메리츠"
     },
+    "link:4c1d4a68f449a307eaf1fd07": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.hankyung.com/article/202610166177L",
+      "source": "한국경제",
+      "source_body_digest": "a7f6bfc14a95af8fb90de322e13f1d486541971aac25d4d8588654895fa4980d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:537b4217d2088f8600abc5d70f58d9dd1b5344fb18c2c2444eeb716dc1fd220c",
+      "source_fact_keys": [
+        "source_fact:v1:26803fa5b5220f6d0eac168e8701919423ea9ab811f322ef2197b9515ffd2aec",
+        "source_fact:v1:6f1766f043bec96b5d1d5aefb94f939ca659bc84e5f04cc3a3dd07380257b534"
+      ],
+      "source_published_kst": "2026-10-16T11:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "대우건설 수주공시 - 상도15구역 주택정비형 재개발사업 1.44조 (매출액대비 17.84 %)",
+      "telegram_core_fact": "대우건설(047040)은 상도15구역 주택정비형 재개발사업에 관한 단일판매ㆍ공급계약체결 을 16일에 공시했다.",
+      "title": "대우건설 수주공시 - 상도15구역 주택정비형 재개발사업 1.44조 (매출액대비 17.84 %)"
+    },
     "link:4c1dcd152b3d58e2d776a451": {
       "first_seen_kst": "2026-10-12T09:05:29+09:00",
       "lanes": {
@@ -180955,6 +181371,24 @@
       "source": "이데일리",
       "title": "“1000개 블록체인, 서로 연결 안 되면 '무용지물'’일 뿐”"
     },
+    "link:6e13c4b2f49caaee84f939b0": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12177246",
+      "source": "매일경제",
+      "source_body_digest": "0466323dad7dcda8d0644d41d4f351088317a3ddbf86e94b1e8a6862413d8800",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-15T22:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI옥토, 상반기 순이익 19만달러..전년비 165% 증가",
+      "telegram_core_fact": "AI옥토(AIOK)는 6월 30일 종료된 상반기(6개월) 순이익이 18만7798달러로 전년 동기(7만734달러) 대비 165.5% 증가했으며, 같은 기간 용선 매출액은 420만5437달러로 44.1% 감소했다고 10월 15일 발표했다.",
+      "title": "AI옥토, 상반기 순이익 19만달러..전년비 165% 증가"
+    },
     "link:6e31175715cee941421a89d4": {
       "first_seen_kst": "2026-10-15T17:49:30+09:00",
       "lanes": {
@@ -190786,6 +191220,34 @@
       "source": "전자신문",
       "title": "위닉스, 겨울 가전 신제품 2종 출시"
     },
+    "link:8a6f1ba01ef9a4033209b3bd": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176039",
+      "source": "매일경제",
+      "source_body_digest": "aad855d1a9f2538a61ece63e75b17017f99080eee9e5cd9bd2a137a964fa79b7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:69b01d2f7d40a245b7cfeaba5c79afb12d4c7c1f3bab47a2163ac1bf06cc189e",
+      "source_fact_keys": [
+        "source_fact:v1:06230645e142bc4ac9dda0c177f413be529903f0d18521a13f69e71e229b8e29",
+        "source_fact:v1:27dd1d96f36de7263c11a83d105cc2f75a5e774a23dd3ace620a4a2aca030ea3",
+        "source_fact:v1:490af6b8358dd6a84bd5c8fe4d5f6476fcc22b1141f3eaa5527fe038ffb9b505",
+        "source_fact:v1:9bd9dc6c60e45aa4268a32f82b7414f07dcafca073f8947a2fbc00b576e9876a",
+        "source_fact:v1:9d0a0065d3c5c09d9257265d402279d5307b8129f3c92c6ce3225c2bb7e25357",
+        "source_fact:v1:a220110366020141b9beb4c8c2534dcfe3c4cca867d077bb81468659973d05e5",
+        "source_fact:v1:a2b99a44c37c3979d9bb4a30a5011c9bdf83a84f965eebefbd0490ec803212dd",
+        "source_fact:v1:b56324d5daa8b5137d754fd61b45eef9798574c1318e4f0d54effb5402214969",
+        "source_fact:v1:d4a13eec5b7f416962fd1b4e493565b2013031366f65d5c25766d2c460224957"
+      ],
+      "source_published_kst": "2026-10-16T19:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "리전스 파이낸셜, 3분기 희석 EPS 0.71달러..전년비 16% 증가",
+      "telegram_core_fact": "리전스 파이낸셜(RF)은 2026년 3분기 보통주 귀속 순이익이 6억1100만 달러, 희석 주당순이익(EPS)이 0.71달러로 전년비 각각 11%, 16% 증가했다고 10월 16일 발표했다.",
+      "title": "리전스 파이낸셜, 3분기 희석 EPS 0.71달러..전년비 16% 증가"
+    },
     "link:8a8ac4f79b0e44976b14b1f7": {
       "first_seen_kst": "2026-10-11T11:26:05+09:00",
       "lanes": {
@@ -194098,6 +194560,34 @@
       "source_title": "삼성SDS, 우정항공 인수 계약…인천공항 거점 항공물류 강화",
       "telegram_core_fact": "삼성SDS는 12일 우정항공 지분 100%를 인수하는 주식양수도계약을 체결하고 이를 임직원에게 공지했다.",
       "title": "삼성SDS, 우정항공 인수 계약…인천공항 거점 항공물류 강화"
+    },
+    "link:942ed86013c97f018027d22b": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/16/2026101611567016122",
+      "source": "머니투데이",
+      "source_body_digest": "15584468a4412c988075047afd74dc1956f1cc68af69105eddc15b29576c8a4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e188148e51c6b319adf2212665ab2fc863400bb1dfc491104ab15ba0fc72fa0a",
+      "source_fact_keys": [
+        "source_fact:v1:0ec9f26b38b7a82c656ab37c3752f9d41f941184b307b4ee15405dcf4f7c1a6f",
+        "source_fact:v1:4c3d098bd1e2b38ddeb79b9abcd7c33b80b09fe46190aca8acca7fa8dccdf54e",
+        "source_fact:v1:629e73fd4a8dbd4574b4c7a9102db38a56d4a8e984c2128a1e65e8fc2ce2deac",
+        "source_fact:v1:6fc50261e5a06996a96d2b744652bacd566857bf436c804c6c4581136b12a8dd",
+        "source_fact:v1:9880e610b4418acab3b86534d2bf62057b9ea0bd8dc988684e957c63b638f123",
+        "source_fact:v1:a13c9b72c6cf9be4e51e239d69f5542d4d927eca68062dc318ece7a54617e72d",
+        "source_fact:v1:c69d2ec831211ac395b074de6ef82c5a8d502c279b7e107c0ea619b0523175d3",
+        "source_fact:v1:f5c0aaab368951ab9f199ed94090adf20545ce6fffc506d5ecb221ce1ede7b49",
+        "source_fact:v1:f5cf175fa59e4fe647636b134ed685bce25d3b9cce734d31dcbfe93428b7065b"
+      ],
+      "source_published_kst": "2026-10-16T12:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘 이 종목] AI 수요 확인 SK하이닉스 · 실적 기대 삼성바이오로직스 '주목'",
+      "telegram_core_fact": "길 대표가 제시한 삼성바이오로직스의 3분기 실적 전망은 매출 1조3,728억원, 영업이익 6,178억원이다.",
+      "title": "[오늘 이 종목] AI 수요 확인 SK하이닉스 · 실적 기대 삼성바이오로직스 '주목'"
     },
     "link:9435cd6c4da8359c6c45db53": {
       "first_seen_kst": "2026-10-09T21:51:45+09:00",
@@ -199398,6 +199888,45 @@
       ],
       "source_published_kst": "2026-10-07T09:30+09:00",
       "title": "포스코홀딩스, 8년 투자 결실…아르헨티나 리튬 2공장 준공"
+    },
+    "link:a109e9493862de9d108427dc": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.hankyung.com/article/2026101657216",
+      "source": "한국경제",
+      "source_body_digest": "889024c29c7094866f8dbeb3356074c9fa5a7a98404045ea757da05fbe8e9634",
+      "source_event_identity": "source_event:v2:named_supply_order:8a380917b2a98b76473f13793371072967089e9c9bdc80276b1ca4a37677cb9a",
+      "source_fact_identity": "source_facts:v1:671f5ec8848d63e775674cbde319221d6cedcf6530064a8361883d6fa92c06ed",
+      "source_fact_keys": [
+        "source_fact:v1:5064615ba53bf0c17ce8dd412e362a2b38e8a8730d9ec962fa6e5d9cb9f17b04",
+        "source_fact:v1:f065f31fc34bbe55948bce8e9d8768486b18b573682c9c00ab2c2131921b9e66",
+        "source_fact:v1:fd2b4854ea4519419903fe7e667687136513d56c6cf5237046e2bd8c042fbf99"
+      ],
+      "source_published_kst": "2026-10-16T09:35+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "22800000000"
+          ]
+        ],
+        "customer": "228억원",
+        "delivery_period": "",
+        "disclosure_date": "2026-10-16",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "우리로",
+        "product": "데이터센터용광반도체",
+        "quantities": [],
+        "stage": "signed"
+      },
+      "source_title": "우리로, 데이터센터용 광반도체 수주 소식에 '급등'",
+      "telegram_core_fact": "우리로가 228억원 규모 데이터센터용 광반도체 공급 계약을 체결했다는 소식 이후 주가가 16일 장 초반 급등세다.",
+      "title": "우리로, 데이터센터용 광반도체 수주 소식에 '급등'"
     },
     "link:a119032670985f13afea8e9f": {
       "first_seen_kst": "2026-10-02T06:33:23+09:00",
@@ -204969,6 +205498,27 @@
       ],
       "source_published_kst": "2026-10-06T16:30+09:00",
       "title": "고려아연, 故 최창걸 명예회장 1주기 추모…“사람·신뢰 철학으로 미래 50년”"
+    },
+    "link:afeebbcba212dea60417dfcf": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03801526645613576&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "95040b21d3434271e8885e6f45259af285caaedeb2111f7d162db5a470e81e9a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47815a55c4cf6d44e11dd44b1f581e43ab588019fcb87729fda09d360436f68a",
+      "source_fact_keys": [
+        "source_fact:v1:908a7904d56cdb99d704b82ddc033bd3e84a41720c1a7f73082cb7d906cb5177",
+        "source_fact:v1:a814fff3a495826f562f158ff2e6f607065d70843f6274d8bd42c537af745a8e"
+      ],
+      "source_published_kst": "2026-10-16T14:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "세계 전기차 판매 6개월 만에 감소…북미 44%·중국 18% 급감",
+      "telegram_core_fact": "16일 로이터통신과 영국 시장조사업체 벤치마크미네랄인텔리전스(BMI)에 따르면 지난 9월 전 세계 전기차 판매량은 215만대로 전년비 2% 감소했다.",
+      "title": "세계 전기차 판매 6개월 만에 감소…북미 44%·중국 18% 급감"
     },
     "link:b00084fa2f1129b924441f19": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
@@ -226199,6 +226749,24 @@
       "source_title": "美 9월 CPI 전년비 3.7% 상승…에너지 가격 급등이 물가 끌어올려(종합)",
       "telegram_core_fact": "미국 노동부 노동통계국(BLS)은 14일(현지시간) 9월 소비자물가지수(CPI)가 전년 동월 대비 3.7% 상승했다고 밝혔다.",
       "title": "美 9월 CPI 전년비 3.7% 상승…에너지 가격 급등이 물가 끌어올려(종합)"
+    },
+    "link:eb073f7f172ec9831fdd9634": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12177223",
+      "source": "매일경제",
+      "source_body_digest": "192df94a161656e484b4ec89941ee35bf258d0f9f564c7cbce5bacefbe14051d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-15T21:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "아틀라스클리어 홀딩스, 도슨제임스 모회사 인수…최대 2450만 달러",
+      "telegram_core_fact": "아틀라스클리어 홀딩스(ATCH)가 투자은행 도슨제임스 시큐리티즈의 모회사 아크 파이낸셜 서비시스 인수 계약을 체결하고 총 대가 최대 2450만 달러 가운데 지분 24.9%를 우선 매입했다고 10월 15일 발표했다.",
+      "title": "아틀라스클리어 홀딩스, 도슨제임스 모회사 인수…최대 2450만 달러"
     },
     "link:eb09cdcb5c006e8de6e5d262": {
       "first_seen_kst": "2026-10-07T23:10:06+09:00",
@@ -262265,6 +262833,34 @@
       "source": "머니투데이",
       "title": "트럼프 '알래스카 LNG' 콕 찍은 배경에 '폭발 직전' 고유가 민심"
     },
+    "original:4dcabbd356f724cd5d89ece3": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176039",
+      "source": "매일경제",
+      "source_body_digest": "aad855d1a9f2538a61ece63e75b17017f99080eee9e5cd9bd2a137a964fa79b7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:69b01d2f7d40a245b7cfeaba5c79afb12d4c7c1f3bab47a2163ac1bf06cc189e",
+      "source_fact_keys": [
+        "source_fact:v1:06230645e142bc4ac9dda0c177f413be529903f0d18521a13f69e71e229b8e29",
+        "source_fact:v1:27dd1d96f36de7263c11a83d105cc2f75a5e774a23dd3ace620a4a2aca030ea3",
+        "source_fact:v1:490af6b8358dd6a84bd5c8fe4d5f6476fcc22b1141f3eaa5527fe038ffb9b505",
+        "source_fact:v1:9bd9dc6c60e45aa4268a32f82b7414f07dcafca073f8947a2fbc00b576e9876a",
+        "source_fact:v1:9d0a0065d3c5c09d9257265d402279d5307b8129f3c92c6ce3225c2bb7e25357",
+        "source_fact:v1:a220110366020141b9beb4c8c2534dcfe3c4cca867d077bb81468659973d05e5",
+        "source_fact:v1:a2b99a44c37c3979d9bb4a30a5011c9bdf83a84f965eebefbd0490ec803212dd",
+        "source_fact:v1:b56324d5daa8b5137d754fd61b45eef9798574c1318e4f0d54effb5402214969",
+        "source_fact:v1:d4a13eec5b7f416962fd1b4e493565b2013031366f65d5c25766d2c460224957"
+      ],
+      "source_published_kst": "2026-10-16T19:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "리전스 파이낸셜, 3분기 희석 EPS 0.71달러..전년비 16% 증가",
+      "telegram_core_fact": "리전스 파이낸셜(RF)은 2026년 3분기 보통주 귀속 순이익이 6억1100만 달러, 희석 주당순이익(EPS)이 0.71달러로 전년비 각각 11%, 16% 증가했다고 10월 16일 발표했다.",
+      "title": "리전스 파이낸셜, 3분기 희석 EPS 0.71달러..전년비 16% 증가"
+    },
     "original:4dcd9abc52a7b137dc351ffd": {
       "first_seen_kst": "2026-09-24T00:05:53+09:00",
       "lanes": {
@@ -268305,6 +268901,27 @@
       "link": "https://www.etnews.com/20260921000434",
       "source": "전자신문",
       "title": "美 금리 인상?…“금 팔지마라 …내년 말 금리 인하, 더 오른다” 믿는 구석 있는 골드만삭스"
+    },
+    "original:5ef34c0f66aa283b1e460f83": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.hankyung.com/article/202610166177L",
+      "source": "한국경제",
+      "source_body_digest": "a7f6bfc14a95af8fb90de322e13f1d486541971aac25d4d8588654895fa4980d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:537b4217d2088f8600abc5d70f58d9dd1b5344fb18c2c2444eeb716dc1fd220c",
+      "source_fact_keys": [
+        "source_fact:v1:26803fa5b5220f6d0eac168e8701919423ea9ab811f322ef2197b9515ffd2aec",
+        "source_fact:v1:6f1766f043bec96b5d1d5aefb94f939ca659bc84e5f04cc3a3dd07380257b534"
+      ],
+      "source_published_kst": "2026-10-16T11:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "대우건설 수주공시 - 상도15구역 주택정비형 재개발사업 1.44조 (매출액대비 17.84 %)",
+      "telegram_core_fact": "대우건설(047040)은 상도15구역 주택정비형 재개발사업에 관한 단일판매ㆍ공급계약체결 을 16일에 공시했다.",
+      "title": "대우건설 수주공시 - 상도15구역 주택정비형 재개발사업 1.44조 (매출액대비 17.84 %)"
     },
     "original:5efe4ed4b6482dff1e8fd5cf": {
       "first_seen_kst": "2026-10-13T01:09:54+09:00",
@@ -306988,6 +307605,34 @@
       "telegram_core_fact": "KB국민카드, 롯데카드, 웰컴저축은행 등 국내 금융사에 누적 1천만 명 이상 고객 기반으로 검증된 인증·보안 기술을 보유하고 있으며, 이 원천기술을 바탕으로 만든 솔루션이 TrustIn Gateway이다.",
       "title": "[제2서울핀테크랩 스타트업 CEO] 제로트러스트(Zero Trust) 기반 금융 보안·인증·결제 솔루션 개발하는 기업 ‘신영이노베이션’"
     },
+    "original:cdae52659788bbdf1696474a": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/16/2026101611567016122",
+      "source": "머니투데이",
+      "source_body_digest": "15584468a4412c988075047afd74dc1956f1cc68af69105eddc15b29576c8a4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e188148e51c6b319adf2212665ab2fc863400bb1dfc491104ab15ba0fc72fa0a",
+      "source_fact_keys": [
+        "source_fact:v1:0ec9f26b38b7a82c656ab37c3752f9d41f941184b307b4ee15405dcf4f7c1a6f",
+        "source_fact:v1:4c3d098bd1e2b38ddeb79b9abcd7c33b80b09fe46190aca8acca7fa8dccdf54e",
+        "source_fact:v1:629e73fd4a8dbd4574b4c7a9102db38a56d4a8e984c2128a1e65e8fc2ce2deac",
+        "source_fact:v1:6fc50261e5a06996a96d2b744652bacd566857bf436c804c6c4581136b12a8dd",
+        "source_fact:v1:9880e610b4418acab3b86534d2bf62057b9ea0bd8dc988684e957c63b638f123",
+        "source_fact:v1:a13c9b72c6cf9be4e51e239d69f5542d4d927eca68062dc318ece7a54617e72d",
+        "source_fact:v1:c69d2ec831211ac395b074de6ef82c5a8d502c279b7e107c0ea619b0523175d3",
+        "source_fact:v1:f5c0aaab368951ab9f199ed94090adf20545ce6fffc506d5ecb221ce1ede7b49",
+        "source_fact:v1:f5cf175fa59e4fe647636b134ed685bce25d3b9cce734d31dcbfe93428b7065b"
+      ],
+      "source_published_kst": "2026-10-16T12:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘 이 종목] AI 수요 확인 SK하이닉스 · 실적 기대 삼성바이오로직스 '주목'",
+      "telegram_core_fact": "길 대표가 제시한 삼성바이오로직스의 3분기 실적 전망은 매출 1조3,728억원, 영업이익 6,178억원이다.",
+      "title": "[오늘 이 종목] AI 수요 확인 SK하이닉스 · 실적 기대 삼성바이오로직스 '주목'"
+    },
     "original:cdea594ec55eefce77666024": {
       "first_seen_kst": "2026-10-08T02:26:35+09:00",
       "lanes": {
@@ -312430,6 +313075,24 @@
       ],
       "source_published_kst": "2026-10-06T10:12+09:00",
       "title": "충주시, 주덕읍 일원 친환경 쌀 생산·유통 기반 확충 | 연합뉴스"
+    },
+    "original:dc4fcba1926644e28fa7609a": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12177246",
+      "source": "매일경제",
+      "source_body_digest": "0466323dad7dcda8d0644d41d4f351088317a3ddbf86e94b1e8a6862413d8800",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-15T22:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI옥토, 상반기 순이익 19만달러..전년비 165% 증가",
+      "telegram_core_fact": "AI옥토(AIOK)는 6월 30일 종료된 상반기(6개월) 순이익이 18만7798달러로 전년 동기(7만734달러) 대비 165.5% 증가했으며, 같은 기간 용선 매출액은 420만5437달러로 44.1% 감소했다고 10월 15일 발표했다.",
+      "title": "AI옥토, 상반기 순이익 19만달러..전년비 165% 증가"
     },
     "original:dc5b415fa3f2e93f38199b2a": {
       "first_seen_kst": "2026-10-07T18:12:46+09:00",
@@ -318527,6 +319190,27 @@
       "source_published_kst": "2026-10-06T05:00+09:00",
       "title": "유통·식품 수장 줄줄이 국감장…쿠팡·배민·홈플러스 정조준하나"
     },
+    "original:eee7cef33e63b8041e924c8c": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03801526645613576&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "95040b21d3434271e8885e6f45259af285caaedeb2111f7d162db5a470e81e9a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47815a55c4cf6d44e11dd44b1f581e43ab588019fcb87729fda09d360436f68a",
+      "source_fact_keys": [
+        "source_fact:v1:908a7904d56cdb99d704b82ddc033bd3e84a41720c1a7f73082cb7d906cb5177",
+        "source_fact:v1:a814fff3a495826f562f158ff2e6f607065d70843f6274d8bd42c537af745a8e"
+      ],
+      "source_published_kst": "2026-10-16T14:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "세계 전기차 판매 6개월 만에 감소…북미 44%·중국 18% 급감",
+      "telegram_core_fact": "16일 로이터통신과 영국 시장조사업체 벤치마크미네랄인텔리전스(BMI)에 따르면 지난 9월 전 세계 전기차 판매량은 215만대로 전년비 2% 감소했다.",
+      "title": "세계 전기차 판매 6개월 만에 감소…북미 44%·중국 18% 급감"
+    },
     "original:eeecdb79b24a1642fce5018f": {
       "first_seen_kst": "2026-10-12T07:43:12+09:00",
       "lanes": {
@@ -321985,6 +322669,24 @@
       "telegram_core_fact": "비아트리스(VTRS)가 비마취성 진통 치료제 기업 파시라 바이오사이언스(PCRX)의 발행주식 전량을 주당 36.50달러 현금, 총 지분가치 16억5000만 달러에 인수하는 최종 계약을 체결했다고 10월 8일 발표했다.",
       "title": "비아트리스, 파시라 16억5000만 달러 인수…주당 36.50달러"
     },
+    "original:f8164c363206074c9143fc9b": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12177223",
+      "source": "매일경제",
+      "source_body_digest": "192df94a161656e484b4ec89941ee35bf258d0f9f564c7cbce5bacefbe14051d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-15T21:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "아틀라스클리어 홀딩스, 도슨제임스 모회사 인수…최대 2450만 달러",
+      "telegram_core_fact": "아틀라스클리어 홀딩스(ATCH)가 투자은행 도슨제임스 시큐리티즈의 모회사 아크 파이낸셜 서비시스 인수 계약을 체결하고 총 대가 최대 2450만 달러 가운데 지분 24.9%를 우선 매입했다고 10월 15일 발표했다.",
+      "title": "아틀라스클리어 홀딩스, 도슨제임스 모회사 인수…최대 2450만 달러"
+    },
     "original:f81adf330ceb0f05008cb300": {
       "first_seen_kst": "2026-10-09T21:51:45+09:00",
       "lanes": {
@@ -322996,6 +323698,45 @@
       ],
       "source_published_kst": "2026-10-06T13:35+09:00",
       "title": "조준희 KOSA 회장 \"AI 수요·공급기업 한자리에…실제 사업으로 연결\""
+    },
+    "original:fb6cd222c8d91cbc7c52f60c": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.hankyung.com/article/2026101657216",
+      "source": "한국경제",
+      "source_body_digest": "889024c29c7094866f8dbeb3356074c9fa5a7a98404045ea757da05fbe8e9634",
+      "source_event_identity": "source_event:v2:named_supply_order:8a380917b2a98b76473f13793371072967089e9c9bdc80276b1ca4a37677cb9a",
+      "source_fact_identity": "source_facts:v1:671f5ec8848d63e775674cbde319221d6cedcf6530064a8361883d6fa92c06ed",
+      "source_fact_keys": [
+        "source_fact:v1:5064615ba53bf0c17ce8dd412e362a2b38e8a8730d9ec962fa6e5d9cb9f17b04",
+        "source_fact:v1:f065f31fc34bbe55948bce8e9d8768486b18b573682c9c00ab2c2131921b9e66",
+        "source_fact:v1:fd2b4854ea4519419903fe7e667687136513d56c6cf5237046e2bd8c042fbf99"
+      ],
+      "source_published_kst": "2026-10-16T09:35+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "22800000000"
+          ]
+        ],
+        "customer": "228억원",
+        "delivery_period": "",
+        "disclosure_date": "2026-10-16",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "우리로",
+        "product": "데이터센터용광반도체",
+        "quantities": [],
+        "stage": "signed"
+      },
+      "source_title": "우리로, 데이터센터용 광반도체 수주 소식에 '급등'",
+      "telegram_core_fact": "우리로가 228억원 규모 데이터센터용 광반도체 공급 계약을 체결했다는 소식 이후 주가가 16일 장 초반 급등세다.",
+      "title": "우리로, 데이터센터용 광반도체 수주 소식에 '급등'"
     },
     "original:fb71eb0305feccb33b24c15b": {
       "first_seen_kst": "2026-10-13T21:12:07+09:00",
@@ -337898,6 +338639,27 @@
       "source_title": "KT, AI 데이터센터 인프라 혁신… 초고속·초저지연 'AI 전용회선' 선봬 | 연합뉴스",
       "telegram_core_fact": "KT가 AI 데이터센터 확산으로 증가하는 대용량 데이터 전송 수요에 대응하기 위해 최대 800Gbps 대역폭을 지원하는 'AI 전용회선'을 출시하고 AI 인프라 경쟁력을 강화한다고 14일 밝혔다.",
       "title": "KT, AI 데이터센터 인프라 혁신… 초고속·초저지연 'AI 전용회선' 선봬 | 연합뉴스"
+    },
+    "source_fact:09c886815ea3277e6c4b7872": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03801526645613576&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "95040b21d3434271e8885e6f45259af285caaedeb2111f7d162db5a470e81e9a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47815a55c4cf6d44e11dd44b1f581e43ab588019fcb87729fda09d360436f68a",
+      "source_fact_keys": [
+        "source_fact:v1:908a7904d56cdb99d704b82ddc033bd3e84a41720c1a7f73082cb7d906cb5177",
+        "source_fact:v1:a814fff3a495826f562f158ff2e6f607065d70843f6274d8bd42c537af745a8e"
+      ],
+      "source_published_kst": "2026-10-16T14:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "세계 전기차 판매 6개월 만에 감소…북미 44%·중국 18% 급감",
+      "telegram_core_fact": "16일 로이터통신과 영국 시장조사업체 벤치마크미네랄인텔리전스(BMI)에 따르면 지난 9월 전 세계 전기차 판매량은 215만대로 전년비 2% 감소했다.",
+      "title": "세계 전기차 판매 6개월 만에 감소…북미 44%·중국 18% 급감"
     },
     "source_fact:09caa1a3b12493ae449c5463": {
       "first_seen_kst": "2026-10-12T06:42:49+09:00",
@@ -370606,6 +371368,34 @@
       "telegram_core_fact": "SK바이오사이언스가 독일 백신 위탁개발생산(CDMO) 기업 IDT바이오로지카 인수를 발판으로 글로벌 백신 사업을 확대하고 있다.",
       "title": "독일 IDT 품은 SK바이오…글로벌 백신 영토 넓힌다"
     },
+    "source_fact:2103a400f4cf056b391fff74": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176039",
+      "source": "매일경제",
+      "source_body_digest": "aad855d1a9f2538a61ece63e75b17017f99080eee9e5cd9bd2a137a964fa79b7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:69b01d2f7d40a245b7cfeaba5c79afb12d4c7c1f3bab47a2163ac1bf06cc189e",
+      "source_fact_keys": [
+        "source_fact:v1:06230645e142bc4ac9dda0c177f413be529903f0d18521a13f69e71e229b8e29",
+        "source_fact:v1:27dd1d96f36de7263c11a83d105cc2f75a5e774a23dd3ace620a4a2aca030ea3",
+        "source_fact:v1:490af6b8358dd6a84bd5c8fe4d5f6476fcc22b1141f3eaa5527fe038ffb9b505",
+        "source_fact:v1:9bd9dc6c60e45aa4268a32f82b7414f07dcafca073f8947a2fbc00b576e9876a",
+        "source_fact:v1:9d0a0065d3c5c09d9257265d402279d5307b8129f3c92c6ce3225c2bb7e25357",
+        "source_fact:v1:a220110366020141b9beb4c8c2534dcfe3c4cca867d077bb81468659973d05e5",
+        "source_fact:v1:a2b99a44c37c3979d9bb4a30a5011c9bdf83a84f965eebefbd0490ec803212dd",
+        "source_fact:v1:b56324d5daa8b5137d754fd61b45eef9798574c1318e4f0d54effb5402214969",
+        "source_fact:v1:d4a13eec5b7f416962fd1b4e493565b2013031366f65d5c25766d2c460224957"
+      ],
+      "source_published_kst": "2026-10-16T19:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "리전스 파이낸셜, 3분기 희석 EPS 0.71달러..전년비 16% 증가",
+      "telegram_core_fact": "리전스 파이낸셜(RF)은 2026년 3분기 보통주 귀속 순이익이 6억1100만 달러, 희석 주당순이익(EPS)이 0.71달러로 전년비 각각 11%, 16% 증가했다고 10월 16일 발표했다.",
+      "title": "리전스 파이낸셜, 3분기 희석 EPS 0.71달러..전년비 16% 증가"
+    },
     "source_fact:2105068880cd283783633d30": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
       "lanes": {
@@ -379951,6 +380741,34 @@
       "source_title": "삼성, 반도체 성과급 내년 3월 말 지급⋯8천만원 연봉시 최대 7.5억 [종합]",
       "telegram_core_fact": "성과급은 세금과 보험료 등을 공제한 뒤 삼성전자 자사주로 지급한다.",
       "title": "삼성, 반도체 성과급 내년 3월 말 지급⋯8천만원 연봉시 최대 7.5억 [종합]"
+    },
+    "source_fact:27568be6cfb895df2e91836c": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/16/2026101611567016122",
+      "source": "머니투데이",
+      "source_body_digest": "15584468a4412c988075047afd74dc1956f1cc68af69105eddc15b29576c8a4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e188148e51c6b319adf2212665ab2fc863400bb1dfc491104ab15ba0fc72fa0a",
+      "source_fact_keys": [
+        "source_fact:v1:0ec9f26b38b7a82c656ab37c3752f9d41f941184b307b4ee15405dcf4f7c1a6f",
+        "source_fact:v1:4c3d098bd1e2b38ddeb79b9abcd7c33b80b09fe46190aca8acca7fa8dccdf54e",
+        "source_fact:v1:629e73fd4a8dbd4574b4c7a9102db38a56d4a8e984c2128a1e65e8fc2ce2deac",
+        "source_fact:v1:6fc50261e5a06996a96d2b744652bacd566857bf436c804c6c4581136b12a8dd",
+        "source_fact:v1:9880e610b4418acab3b86534d2bf62057b9ea0bd8dc988684e957c63b638f123",
+        "source_fact:v1:a13c9b72c6cf9be4e51e239d69f5542d4d927eca68062dc318ece7a54617e72d",
+        "source_fact:v1:c69d2ec831211ac395b074de6ef82c5a8d502c279b7e107c0ea619b0523175d3",
+        "source_fact:v1:f5c0aaab368951ab9f199ed94090adf20545ce6fffc506d5ecb221ce1ede7b49",
+        "source_fact:v1:f5cf175fa59e4fe647636b134ed685bce25d3b9cce734d31dcbfe93428b7065b"
+      ],
+      "source_published_kst": "2026-10-16T12:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘 이 종목] AI 수요 확인 SK하이닉스 · 실적 기대 삼성바이오로직스 '주목'",
+      "telegram_core_fact": "길 대표가 제시한 삼성바이오로직스의 3분기 실적 전망은 매출 1조3,728억원, 영업이익 6,178억원이다.",
+      "title": "[오늘 이 종목] AI 수요 확인 SK하이닉스 · 실적 기대 삼성바이오로직스 '주목'"
     },
     "source_fact:275717fc3188404a01942795": {
       "first_seen_kst": "2026-10-13T21:34:27+09:00",
@@ -392293,6 +393111,45 @@
       "telegram_core_fact": "잔여 부지가 없는 만큼 삼성전기는 명학산단 내 다른 기업의 부지를 사들이는 방법으로 공장 증설을 추진하고 있다고 시는 설명했다.",
       "title": "삼성전기 8조 투자 이어 SK 반도체 소재기업 세종공장 확장 추진"
     },
+    "source_fact:3062c576d7b31418a71c367a": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.hankyung.com/article/2026101657216",
+      "source": "한국경제",
+      "source_body_digest": "889024c29c7094866f8dbeb3356074c9fa5a7a98404045ea757da05fbe8e9634",
+      "source_event_identity": "source_event:v2:named_supply_order:8a380917b2a98b76473f13793371072967089e9c9bdc80276b1ca4a37677cb9a",
+      "source_fact_identity": "source_facts:v1:671f5ec8848d63e775674cbde319221d6cedcf6530064a8361883d6fa92c06ed",
+      "source_fact_keys": [
+        "source_fact:v1:5064615ba53bf0c17ce8dd412e362a2b38e8a8730d9ec962fa6e5d9cb9f17b04",
+        "source_fact:v1:f065f31fc34bbe55948bce8e9d8768486b18b573682c9c00ab2c2131921b9e66",
+        "source_fact:v1:fd2b4854ea4519419903fe7e667687136513d56c6cf5237046e2bd8c042fbf99"
+      ],
+      "source_published_kst": "2026-10-16T09:35+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "22800000000"
+          ]
+        ],
+        "customer": "228억원",
+        "delivery_period": "",
+        "disclosure_date": "2026-10-16",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "우리로",
+        "product": "데이터센터용광반도체",
+        "quantities": [],
+        "stage": "signed"
+      },
+      "source_title": "우리로, 데이터센터용 광반도체 수주 소식에 '급등'",
+      "telegram_core_fact": "우리로가 228억원 규모 데이터센터용 광반도체 공급 계약을 체결했다는 소식 이후 주가가 16일 장 초반 급등세다.",
+      "title": "우리로, 데이터센터용 광반도체 수주 소식에 '급등'"
+    },
     "source_fact:3069bf6bd43dbaa2a2f3c66f": {
       "first_seen_kst": "2026-10-13T08:14:23+09:00",
       "lanes": {
@@ -399399,6 +400256,34 @@
       ],
       "source_published_kst": "2026-10-06T12:08+09:00",
       "title": "삼성전기, 2856억 MLCC 추가 수주…올해 공급계약 약 4조원 추산(종합)"
+    },
+    "source_fact:35445b7e6f47a57431a05c75": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176039",
+      "source": "매일경제",
+      "source_body_digest": "aad855d1a9f2538a61ece63e75b17017f99080eee9e5cd9bd2a137a964fa79b7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:69b01d2f7d40a245b7cfeaba5c79afb12d4c7c1f3bab47a2163ac1bf06cc189e",
+      "source_fact_keys": [
+        "source_fact:v1:06230645e142bc4ac9dda0c177f413be529903f0d18521a13f69e71e229b8e29",
+        "source_fact:v1:27dd1d96f36de7263c11a83d105cc2f75a5e774a23dd3ace620a4a2aca030ea3",
+        "source_fact:v1:490af6b8358dd6a84bd5c8fe4d5f6476fcc22b1141f3eaa5527fe038ffb9b505",
+        "source_fact:v1:9bd9dc6c60e45aa4268a32f82b7414f07dcafca073f8947a2fbc00b576e9876a",
+        "source_fact:v1:9d0a0065d3c5c09d9257265d402279d5307b8129f3c92c6ce3225c2bb7e25357",
+        "source_fact:v1:a220110366020141b9beb4c8c2534dcfe3c4cca867d077bb81468659973d05e5",
+        "source_fact:v1:a2b99a44c37c3979d9bb4a30a5011c9bdf83a84f965eebefbd0490ec803212dd",
+        "source_fact:v1:b56324d5daa8b5137d754fd61b45eef9798574c1318e4f0d54effb5402214969",
+        "source_fact:v1:d4a13eec5b7f416962fd1b4e493565b2013031366f65d5c25766d2c460224957"
+      ],
+      "source_published_kst": "2026-10-16T19:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "리전스 파이낸셜, 3분기 희석 EPS 0.71달러..전년비 16% 증가",
+      "telegram_core_fact": "리전스 파이낸셜(RF)은 2026년 3분기 보통주 귀속 순이익이 6억1100만 달러, 희석 주당순이익(EPS)이 0.71달러로 전년비 각각 11%, 16% 증가했다고 10월 16일 발표했다.",
+      "title": "리전스 파이낸셜, 3분기 희석 EPS 0.71달러..전년비 16% 증가"
     },
     "source_fact:3544a94168cd33aca4757e2e": {
       "first_seen_kst": "2026-10-11T15:10:51+09:00",
@@ -407064,6 +407949,34 @@
       "source_title": "외국인, 올해 국내 주식 200조 넘게 팔았지만 ETF 계속 샀다(종합)",
       "telegram_core_fact": "기간별로 보면 '불장'이었던 올해 상반기(1∼6월) 금액 기준 외국인 최다 순매수 ETF는 국내 대형·중형 우량주에 투자하는 'TIGER MSCI Korea TR'(1조7천379억원)이었다.",
       "title": "외국인, 올해 국내 주식 200조 넘게 팔았지만 ETF 계속 샀다(종합)"
+    },
+    "source_fact:3ae2d73ee98e99eac4dedb1e": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/16/2026101611567016122",
+      "source": "머니투데이",
+      "source_body_digest": "15584468a4412c988075047afd74dc1956f1cc68af69105eddc15b29576c8a4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e188148e51c6b319adf2212665ab2fc863400bb1dfc491104ab15ba0fc72fa0a",
+      "source_fact_keys": [
+        "source_fact:v1:0ec9f26b38b7a82c656ab37c3752f9d41f941184b307b4ee15405dcf4f7c1a6f",
+        "source_fact:v1:4c3d098bd1e2b38ddeb79b9abcd7c33b80b09fe46190aca8acca7fa8dccdf54e",
+        "source_fact:v1:629e73fd4a8dbd4574b4c7a9102db38a56d4a8e984c2128a1e65e8fc2ce2deac",
+        "source_fact:v1:6fc50261e5a06996a96d2b744652bacd566857bf436c804c6c4581136b12a8dd",
+        "source_fact:v1:9880e610b4418acab3b86534d2bf62057b9ea0bd8dc988684e957c63b638f123",
+        "source_fact:v1:a13c9b72c6cf9be4e51e239d69f5542d4d927eca68062dc318ece7a54617e72d",
+        "source_fact:v1:c69d2ec831211ac395b074de6ef82c5a8d502c279b7e107c0ea619b0523175d3",
+        "source_fact:v1:f5c0aaab368951ab9f199ed94090adf20545ce6fffc506d5ecb221ce1ede7b49",
+        "source_fact:v1:f5cf175fa59e4fe647636b134ed685bce25d3b9cce734d31dcbfe93428b7065b"
+      ],
+      "source_published_kst": "2026-10-16T12:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘 이 종목] AI 수요 확인 SK하이닉스 · 실적 기대 삼성바이오로직스 '주목'",
+      "telegram_core_fact": "길 대표가 제시한 삼성바이오로직스의 3분기 실적 전망은 매출 1조3,728억원, 영업이익 6,178억원이다.",
+      "title": "[오늘 이 종목] AI 수요 확인 SK하이닉스 · 실적 기대 삼성바이오로직스 '주목'"
     },
     "source_fact:3aea33b847ee4a62056bb05b": {
       "first_seen_kst": "2026-10-06T19:46:03+09:00",
@@ -433684,6 +434597,34 @@
       "telegram_core_fact": "김 장관은 그간의 TF 논의 결과를 토대로 기업별 투자 진행 상황과 애로사항, 지방정부의 인허가 추진 상황 등을 종합적으로 점검했다.",
       "title": "김정관, 392조 충청권 투자 점검…\"인허가·전력·용수 확실하게 뒷받침\""
     },
+    "source_fact:4d9fab16078946d84121bf0b": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/16/2026101611567016122",
+      "source": "머니투데이",
+      "source_body_digest": "15584468a4412c988075047afd74dc1956f1cc68af69105eddc15b29576c8a4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e188148e51c6b319adf2212665ab2fc863400bb1dfc491104ab15ba0fc72fa0a",
+      "source_fact_keys": [
+        "source_fact:v1:0ec9f26b38b7a82c656ab37c3752f9d41f941184b307b4ee15405dcf4f7c1a6f",
+        "source_fact:v1:4c3d098bd1e2b38ddeb79b9abcd7c33b80b09fe46190aca8acca7fa8dccdf54e",
+        "source_fact:v1:629e73fd4a8dbd4574b4c7a9102db38a56d4a8e984c2128a1e65e8fc2ce2deac",
+        "source_fact:v1:6fc50261e5a06996a96d2b744652bacd566857bf436c804c6c4581136b12a8dd",
+        "source_fact:v1:9880e610b4418acab3b86534d2bf62057b9ea0bd8dc988684e957c63b638f123",
+        "source_fact:v1:a13c9b72c6cf9be4e51e239d69f5542d4d927eca68062dc318ece7a54617e72d",
+        "source_fact:v1:c69d2ec831211ac395b074de6ef82c5a8d502c279b7e107c0ea619b0523175d3",
+        "source_fact:v1:f5c0aaab368951ab9f199ed94090adf20545ce6fffc506d5ecb221ce1ede7b49",
+        "source_fact:v1:f5cf175fa59e4fe647636b134ed685bce25d3b9cce734d31dcbfe93428b7065b"
+      ],
+      "source_published_kst": "2026-10-16T12:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘 이 종목] AI 수요 확인 SK하이닉스 · 실적 기대 삼성바이오로직스 '주목'",
+      "telegram_core_fact": "길 대표가 제시한 삼성바이오로직스의 3분기 실적 전망은 매출 1조3,728억원, 영업이익 6,178억원이다.",
+      "title": "[오늘 이 종목] AI 수요 확인 SK하이닉스 · 실적 기대 삼성바이오로직스 '주목'"
+    },
     "source_fact:4da19f0b6e512be5091069aa": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
       "lanes": {
@@ -436447,6 +437388,34 @@
       "telegram_core_fact": "일본 니혼게이자이신문(닛케이)에 따르면 TSMC는 올해 3분기 순이익이 전년비 68.7% 증가한 7630억대만달러로 집계됐다고 발표했다.",
       "title": "TSMC, AI 훈풍에 3분기 순익 68.7% 급증…역대 최대"
     },
+    "source_fact:4f70c1577d6e56c09c14fc62": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/16/2026101611567016122",
+      "source": "머니투데이",
+      "source_body_digest": "15584468a4412c988075047afd74dc1956f1cc68af69105eddc15b29576c8a4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e188148e51c6b319adf2212665ab2fc863400bb1dfc491104ab15ba0fc72fa0a",
+      "source_fact_keys": [
+        "source_fact:v1:0ec9f26b38b7a82c656ab37c3752f9d41f941184b307b4ee15405dcf4f7c1a6f",
+        "source_fact:v1:4c3d098bd1e2b38ddeb79b9abcd7c33b80b09fe46190aca8acca7fa8dccdf54e",
+        "source_fact:v1:629e73fd4a8dbd4574b4c7a9102db38a56d4a8e984c2128a1e65e8fc2ce2deac",
+        "source_fact:v1:6fc50261e5a06996a96d2b744652bacd566857bf436c804c6c4581136b12a8dd",
+        "source_fact:v1:9880e610b4418acab3b86534d2bf62057b9ea0bd8dc988684e957c63b638f123",
+        "source_fact:v1:a13c9b72c6cf9be4e51e239d69f5542d4d927eca68062dc318ece7a54617e72d",
+        "source_fact:v1:c69d2ec831211ac395b074de6ef82c5a8d502c279b7e107c0ea619b0523175d3",
+        "source_fact:v1:f5c0aaab368951ab9f199ed94090adf20545ce6fffc506d5ecb221ce1ede7b49",
+        "source_fact:v1:f5cf175fa59e4fe647636b134ed685bce25d3b9cce734d31dcbfe93428b7065b"
+      ],
+      "source_published_kst": "2026-10-16T12:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘 이 종목] AI 수요 확인 SK하이닉스 · 실적 기대 삼성바이오로직스 '주목'",
+      "telegram_core_fact": "길 대표가 제시한 삼성바이오로직스의 3분기 실적 전망은 매출 1조3,728억원, 영업이익 6,178억원이다.",
+      "title": "[오늘 이 종목] AI 수요 확인 SK하이닉스 · 실적 기대 삼성바이오로직스 '주목'"
+    },
     "source_fact:4f7210f7776234464b9993fd": {
       "first_seen_kst": "2026-10-07T18:30:29+09:00",
       "lanes": {
@@ -438807,6 +439776,27 @@
       "source_title": "LH 사장, 고양창릉 점검…\"주택 공급 속도 과감히 높여야\"",
       "telegram_core_fact": "이성훈 한국토지주택공사(LH) 사장이 13일 3기 신도시 고양창릉 공공주택지구를 찾아 주택 공급 추진 현황을 점검하고 속도감 있는 사업 추진을 당부했다. 이번 현장 방문은 전날 국감에서 제기된 국민의 주거 안정과 주택 공급 확대 주문을 현장에서 속도감 있게 실현하겠다는 의지가 담긴 것이라고 LH 측은 설명했다.",
       "title": "LH 사장, 고양창릉 점검…\"주택 공급 속도 과감히 높여야\""
+    },
+    "source_fact:51293d55187965953e8a4c9d": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.hankyung.com/article/202610166177L",
+      "source": "한국경제",
+      "source_body_digest": "a7f6bfc14a95af8fb90de322e13f1d486541971aac25d4d8588654895fa4980d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:537b4217d2088f8600abc5d70f58d9dd1b5344fb18c2c2444eeb716dc1fd220c",
+      "source_fact_keys": [
+        "source_fact:v1:26803fa5b5220f6d0eac168e8701919423ea9ab811f322ef2197b9515ffd2aec",
+        "source_fact:v1:6f1766f043bec96b5d1d5aefb94f939ca659bc84e5f04cc3a3dd07380257b534"
+      ],
+      "source_published_kst": "2026-10-16T11:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "대우건설 수주공시 - 상도15구역 주택정비형 재개발사업 1.44조 (매출액대비 17.84 %)",
+      "telegram_core_fact": "대우건설(047040)은 상도15구역 주택정비형 재개발사업에 관한 단일판매ㆍ공급계약체결 을 16일에 공시했다.",
+      "title": "대우건설 수주공시 - 상도15구역 주택정비형 재개발사업 1.44조 (매출액대비 17.84 %)"
     },
     "source_fact:512b4309d217d2ae0d57ebad": {
       "first_seen_kst": "2026-10-06T22:21:21+09:00",
@@ -442098,6 +443088,34 @@
       "source_title": "\"트럼프 러 경유 수입 합의, 가격 인하 효과 미미\"",
       "telegram_core_fact": "도널드 트럼프 미 대통령이 9일(현지시각) 블라디미르 푸틴 러시아 대통령과 러시아의 경유 미국 수출을 늘리기로 한 합의했음에도 미국의 경유 가격이 의미 있게 내려갈 가능성은 희박하다고 전문가들이 전망하고 있다.",
       "title": "\"트럼프 러 경유 수입 합의, 가격 인하 효과 미미\""
+    },
+    "source_fact:5382b32be17b0051b141171c": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/16/2026101611567016122",
+      "source": "머니투데이",
+      "source_body_digest": "15584468a4412c988075047afd74dc1956f1cc68af69105eddc15b29576c8a4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e188148e51c6b319adf2212665ab2fc863400bb1dfc491104ab15ba0fc72fa0a",
+      "source_fact_keys": [
+        "source_fact:v1:0ec9f26b38b7a82c656ab37c3752f9d41f941184b307b4ee15405dcf4f7c1a6f",
+        "source_fact:v1:4c3d098bd1e2b38ddeb79b9abcd7c33b80b09fe46190aca8acca7fa8dccdf54e",
+        "source_fact:v1:629e73fd4a8dbd4574b4c7a9102db38a56d4a8e984c2128a1e65e8fc2ce2deac",
+        "source_fact:v1:6fc50261e5a06996a96d2b744652bacd566857bf436c804c6c4581136b12a8dd",
+        "source_fact:v1:9880e610b4418acab3b86534d2bf62057b9ea0bd8dc988684e957c63b638f123",
+        "source_fact:v1:a13c9b72c6cf9be4e51e239d69f5542d4d927eca68062dc318ece7a54617e72d",
+        "source_fact:v1:c69d2ec831211ac395b074de6ef82c5a8d502c279b7e107c0ea619b0523175d3",
+        "source_fact:v1:f5c0aaab368951ab9f199ed94090adf20545ce6fffc506d5ecb221ce1ede7b49",
+        "source_fact:v1:f5cf175fa59e4fe647636b134ed685bce25d3b9cce734d31dcbfe93428b7065b"
+      ],
+      "source_published_kst": "2026-10-16T12:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘 이 종목] AI 수요 확인 SK하이닉스 · 실적 기대 삼성바이오로직스 '주목'",
+      "telegram_core_fact": "길 대표가 제시한 삼성바이오로직스의 3분기 실적 전망은 매출 1조3,728억원, 영업이익 6,178억원이다.",
+      "title": "[오늘 이 종목] AI 수요 확인 SK하이닉스 · 실적 기대 삼성바이오로직스 '주목'"
     },
     "source_fact:53855551303845f012235e06": {
       "first_seen_kst": "2026-10-15T10:36:40+09:00",
@@ -463197,6 +464215,34 @@
       "telegram_core_fact": "한국해양과학기술원(KIOST)은 국가데이터처 자료를 분석한 결과, 제주 연근해 해조류 생산량이 2010년 5155t에서 지난해 154t으로 15년 만에 97% 감소했다고 8일 밝혔다. 제주 연안의 바다숲을 이루는 해조류가 빠르게 줄어들면서 연안 생태계가 재편되고 있다는 분석이 나왔다.",
       "title": "제주 연안 해조류 15년 새 97% 감소…\"생태계 재편 중\""
     },
+    "source_fact:627da787386316884bea0fef": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176039",
+      "source": "매일경제",
+      "source_body_digest": "aad855d1a9f2538a61ece63e75b17017f99080eee9e5cd9bd2a137a964fa79b7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:69b01d2f7d40a245b7cfeaba5c79afb12d4c7c1f3bab47a2163ac1bf06cc189e",
+      "source_fact_keys": [
+        "source_fact:v1:06230645e142bc4ac9dda0c177f413be529903f0d18521a13f69e71e229b8e29",
+        "source_fact:v1:27dd1d96f36de7263c11a83d105cc2f75a5e774a23dd3ace620a4a2aca030ea3",
+        "source_fact:v1:490af6b8358dd6a84bd5c8fe4d5f6476fcc22b1141f3eaa5527fe038ffb9b505",
+        "source_fact:v1:9bd9dc6c60e45aa4268a32f82b7414f07dcafca073f8947a2fbc00b576e9876a",
+        "source_fact:v1:9d0a0065d3c5c09d9257265d402279d5307b8129f3c92c6ce3225c2bb7e25357",
+        "source_fact:v1:a220110366020141b9beb4c8c2534dcfe3c4cca867d077bb81468659973d05e5",
+        "source_fact:v1:a2b99a44c37c3979d9bb4a30a5011c9bdf83a84f965eebefbd0490ec803212dd",
+        "source_fact:v1:b56324d5daa8b5137d754fd61b45eef9798574c1318e4f0d54effb5402214969",
+        "source_fact:v1:d4a13eec5b7f416962fd1b4e493565b2013031366f65d5c25766d2c460224957"
+      ],
+      "source_published_kst": "2026-10-16T19:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "리전스 파이낸셜, 3분기 희석 EPS 0.71달러..전년비 16% 증가",
+      "telegram_core_fact": "리전스 파이낸셜(RF)은 2026년 3분기 보통주 귀속 순이익이 6억1100만 달러, 희석 주당순이익(EPS)이 0.71달러로 전년비 각각 11%, 16% 증가했다고 10월 16일 발표했다.",
+      "title": "리전스 파이낸셜, 3분기 희석 EPS 0.71달러..전년비 16% 증가"
+    },
     "source_fact:62823c9f4633912ff7baa49a": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -468430,6 +469476,34 @@
       ],
       "source_published_kst": "2026-10-06T09:10+09:00",
       "title": "호르무즈 셔틀운항 특수…\"1회 왕복 500억에 선원도 3400만원씩\""
+    },
+    "source_fact:66664ea22fb937940bd01f6a": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176039",
+      "source": "매일경제",
+      "source_body_digest": "aad855d1a9f2538a61ece63e75b17017f99080eee9e5cd9bd2a137a964fa79b7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:69b01d2f7d40a245b7cfeaba5c79afb12d4c7c1f3bab47a2163ac1bf06cc189e",
+      "source_fact_keys": [
+        "source_fact:v1:06230645e142bc4ac9dda0c177f413be529903f0d18521a13f69e71e229b8e29",
+        "source_fact:v1:27dd1d96f36de7263c11a83d105cc2f75a5e774a23dd3ace620a4a2aca030ea3",
+        "source_fact:v1:490af6b8358dd6a84bd5c8fe4d5f6476fcc22b1141f3eaa5527fe038ffb9b505",
+        "source_fact:v1:9bd9dc6c60e45aa4268a32f82b7414f07dcafca073f8947a2fbc00b576e9876a",
+        "source_fact:v1:9d0a0065d3c5c09d9257265d402279d5307b8129f3c92c6ce3225c2bb7e25357",
+        "source_fact:v1:a220110366020141b9beb4c8c2534dcfe3c4cca867d077bb81468659973d05e5",
+        "source_fact:v1:a2b99a44c37c3979d9bb4a30a5011c9bdf83a84f965eebefbd0490ec803212dd",
+        "source_fact:v1:b56324d5daa8b5137d754fd61b45eef9798574c1318e4f0d54effb5402214969",
+        "source_fact:v1:d4a13eec5b7f416962fd1b4e493565b2013031366f65d5c25766d2c460224957"
+      ],
+      "source_published_kst": "2026-10-16T19:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "리전스 파이낸셜, 3분기 희석 EPS 0.71달러..전년비 16% 증가",
+      "telegram_core_fact": "리전스 파이낸셜(RF)은 2026년 3분기 보통주 귀속 순이익이 6억1100만 달러, 희석 주당순이익(EPS)이 0.71달러로 전년비 각각 11%, 16% 증가했다고 10월 16일 발표했다.",
+      "title": "리전스 파이낸셜, 3분기 희석 EPS 0.71달러..전년비 16% 증가"
     },
     "source_fact:666be6a4d87fcfee56c425ac": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
@@ -488908,6 +489982,27 @@
       "telegram_core_fact": "아이티센엔텍은 한국교육학술정보원(KERIS)이 발주한 'K-에듀파인 운영환경 고도화 및 재해복구 체계 구축' 사업의 우선협상대상자로 선정됐다고 7일 밝혔다.",
       "title": "아이티센엔텍, 2173억 'K-에듀파인 고도화' 수주"
     },
+    "source_fact:752a45281c17f798bfc8a02a": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.hankyung.com/article/202610166177L",
+      "source": "한국경제",
+      "source_body_digest": "a7f6bfc14a95af8fb90de322e13f1d486541971aac25d4d8588654895fa4980d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:537b4217d2088f8600abc5d70f58d9dd1b5344fb18c2c2444eeb716dc1fd220c",
+      "source_fact_keys": [
+        "source_fact:v1:26803fa5b5220f6d0eac168e8701919423ea9ab811f322ef2197b9515ffd2aec",
+        "source_fact:v1:6f1766f043bec96b5d1d5aefb94f939ca659bc84e5f04cc3a3dd07380257b534"
+      ],
+      "source_published_kst": "2026-10-16T11:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "대우건설 수주공시 - 상도15구역 주택정비형 재개발사업 1.44조 (매출액대비 17.84 %)",
+      "telegram_core_fact": "대우건설(047040)은 상도15구역 주택정비형 재개발사업에 관한 단일판매ㆍ공급계약체결 을 16일에 공시했다.",
+      "title": "대우건설 수주공시 - 상도15구역 주택정비형 재개발사업 1.44조 (매출액대비 17.84 %)"
+    },
     "source_fact:752b5566a5edf4e22e67f4ac": {
       "first_seen_kst": "2026-10-15T10:36:40+09:00",
       "lanes": {
@@ -499886,6 +500981,34 @@
       "source_title": "에스엠벡셀, 저궤도 위성용 배터리 제조 기술 확보…우주환경 시험 통과",
       "telegram_core_fact": "에스엠벡셀은 서울대학교와 수행 중인 ‘2900Wh급 저궤도 인공위성용 리튬이온 셀 및 팩 개발’ 국책과제를 통해 우주환경 시험 기준에 부합하는 소재를 적용한 배터리 셀·팩 제조 기술을 확보했다고 14일 밝혔다.",
       "title": "에스엠벡셀, 저궤도 위성용 배터리 제조 기술 확보…우주환경 시험 통과"
+    },
+    "source_fact:7cc7337d7034be2975bc9082": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/16/2026101611567016122",
+      "source": "머니투데이",
+      "source_body_digest": "15584468a4412c988075047afd74dc1956f1cc68af69105eddc15b29576c8a4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e188148e51c6b319adf2212665ab2fc863400bb1dfc491104ab15ba0fc72fa0a",
+      "source_fact_keys": [
+        "source_fact:v1:0ec9f26b38b7a82c656ab37c3752f9d41f941184b307b4ee15405dcf4f7c1a6f",
+        "source_fact:v1:4c3d098bd1e2b38ddeb79b9abcd7c33b80b09fe46190aca8acca7fa8dccdf54e",
+        "source_fact:v1:629e73fd4a8dbd4574b4c7a9102db38a56d4a8e984c2128a1e65e8fc2ce2deac",
+        "source_fact:v1:6fc50261e5a06996a96d2b744652bacd566857bf436c804c6c4581136b12a8dd",
+        "source_fact:v1:9880e610b4418acab3b86534d2bf62057b9ea0bd8dc988684e957c63b638f123",
+        "source_fact:v1:a13c9b72c6cf9be4e51e239d69f5542d4d927eca68062dc318ece7a54617e72d",
+        "source_fact:v1:c69d2ec831211ac395b074de6ef82c5a8d502c279b7e107c0ea619b0523175d3",
+        "source_fact:v1:f5c0aaab368951ab9f199ed94090adf20545ce6fffc506d5ecb221ce1ede7b49",
+        "source_fact:v1:f5cf175fa59e4fe647636b134ed685bce25d3b9cce734d31dcbfe93428b7065b"
+      ],
+      "source_published_kst": "2026-10-16T12:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘 이 종목] AI 수요 확인 SK하이닉스 · 실적 기대 삼성바이오로직스 '주목'",
+      "telegram_core_fact": "길 대표가 제시한 삼성바이오로직스의 3분기 실적 전망은 매출 1조3,728억원, 영업이익 6,178억원이다.",
+      "title": "[오늘 이 종목] AI 수요 확인 SK하이닉스 · 실적 기대 삼성바이오로직스 '주목'"
     },
     "source_fact:7cd3eaed8d5c049a67304c4a": {
       "first_seen_kst": "2026-10-13T08:59:28+09:00",
@@ -515579,6 +516702,34 @@
       "telegram_core_fact": "어플라이드 머티어리얼즈와 인텔이 인공지능(AI) 반도체용 차세대 공정과 첨단 패키징 기술 개발 협력에 나선다. 어플라이드는 6일(현지시간) 인텔과 차세대 트랜지스터·인터커넥트·첨단 패키징 개발을 위해 협력한다고 밝혔다.",
       "title": "어플라이드, 인텔과 AI 반도체 공정·3D 패키징 개발 협력"
     },
+    "source_fact:88b3ea1096084bc448824d4c": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/16/2026101611567016122",
+      "source": "머니투데이",
+      "source_body_digest": "15584468a4412c988075047afd74dc1956f1cc68af69105eddc15b29576c8a4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e188148e51c6b319adf2212665ab2fc863400bb1dfc491104ab15ba0fc72fa0a",
+      "source_fact_keys": [
+        "source_fact:v1:0ec9f26b38b7a82c656ab37c3752f9d41f941184b307b4ee15405dcf4f7c1a6f",
+        "source_fact:v1:4c3d098bd1e2b38ddeb79b9abcd7c33b80b09fe46190aca8acca7fa8dccdf54e",
+        "source_fact:v1:629e73fd4a8dbd4574b4c7a9102db38a56d4a8e984c2128a1e65e8fc2ce2deac",
+        "source_fact:v1:6fc50261e5a06996a96d2b744652bacd566857bf436c804c6c4581136b12a8dd",
+        "source_fact:v1:9880e610b4418acab3b86534d2bf62057b9ea0bd8dc988684e957c63b638f123",
+        "source_fact:v1:a13c9b72c6cf9be4e51e239d69f5542d4d927eca68062dc318ece7a54617e72d",
+        "source_fact:v1:c69d2ec831211ac395b074de6ef82c5a8d502c279b7e107c0ea619b0523175d3",
+        "source_fact:v1:f5c0aaab368951ab9f199ed94090adf20545ce6fffc506d5ecb221ce1ede7b49",
+        "source_fact:v1:f5cf175fa59e4fe647636b134ed685bce25d3b9cce734d31dcbfe93428b7065b"
+      ],
+      "source_published_kst": "2026-10-16T12:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘 이 종목] AI 수요 확인 SK하이닉스 · 실적 기대 삼성바이오로직스 '주목'",
+      "telegram_core_fact": "길 대표가 제시한 삼성바이오로직스의 3분기 실적 전망은 매출 1조3,728억원, 영업이익 6,178억원이다.",
+      "title": "[오늘 이 종목] AI 수요 확인 SK하이닉스 · 실적 기대 삼성바이오로직스 '주목'"
+    },
     "source_fact:88b5a74e925b34744400d2aa": {
       "first_seen_kst": "2026-10-08T20:39:20+09:00",
       "lanes": {
@@ -526311,6 +527462,45 @@
       "source_title": "올해 200조 넘게 판 외국인…브라질로 갔다",
       "telegram_core_fact": "올해 국내 유가증권시장에서만 200조원어치 넘게 팔아치운 외국인 투자자의 매도 행렬이 끝없이 지속되고 있다. 한국거래소 집계에 따르면 올 들어 지난 13일까지 외국인은 유가증권시장에서 200조8154억원어치를 순매도했다.",
       "title": "올해 200조 넘게 판 외국인…브라질로 갔다"
+    },
+    "source_fact:909215c2345fb017800fad41": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.hankyung.com/article/2026101657216",
+      "source": "한국경제",
+      "source_body_digest": "889024c29c7094866f8dbeb3356074c9fa5a7a98404045ea757da05fbe8e9634",
+      "source_event_identity": "source_event:v2:named_supply_order:8a380917b2a98b76473f13793371072967089e9c9bdc80276b1ca4a37677cb9a",
+      "source_fact_identity": "source_facts:v1:671f5ec8848d63e775674cbde319221d6cedcf6530064a8361883d6fa92c06ed",
+      "source_fact_keys": [
+        "source_fact:v1:5064615ba53bf0c17ce8dd412e362a2b38e8a8730d9ec962fa6e5d9cb9f17b04",
+        "source_fact:v1:f065f31fc34bbe55948bce8e9d8768486b18b573682c9c00ab2c2131921b9e66",
+        "source_fact:v1:fd2b4854ea4519419903fe7e667687136513d56c6cf5237046e2bd8c042fbf99"
+      ],
+      "source_published_kst": "2026-10-16T09:35+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "22800000000"
+          ]
+        ],
+        "customer": "228억원",
+        "delivery_period": "",
+        "disclosure_date": "2026-10-16",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "우리로",
+        "product": "데이터센터용광반도체",
+        "quantities": [],
+        "stage": "signed"
+      },
+      "source_title": "우리로, 데이터센터용 광반도체 수주 소식에 '급등'",
+      "telegram_core_fact": "우리로가 228억원 규모 데이터센터용 광반도체 공급 계약을 체결했다는 소식 이후 주가가 16일 장 초반 급등세다.",
+      "title": "우리로, 데이터센터용 광반도체 수주 소식에 '급등'"
     },
     "source_fact:9092dbdd5b80846fd84be52c": {
       "first_seen_kst": "2026-10-15T15:07:47+09:00",
@@ -538865,6 +540055,34 @@
       "source_title": "패러데이퓨처, 로봇사업 2억 달러 가치 FFR 이전 확정에 주목",
       "telegram_core_fact": "로봇사업을 2억 달러 가치로 상장 자회사 FFR에 이전하는 확정계약을 체결했고, 종결 후에도 FFR 지분 65.7%를 유지합니다. 로봇사업 가치가 시장에서 재평가될 것이라는 기대가 커졌고, 수령 신주에 18개월 락업이 적용돼 지분 구조도 안정적이라는 평가에 매수세가 몰리고 있습니다.",
       "title": "패러데이퓨처, 로봇사업 2억 달러 가치 FFR 이전 확정에 주목"
+    },
+    "source_fact:99b91d4d2c2a5a3c408ea48b": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/16/2026101611567016122",
+      "source": "머니투데이",
+      "source_body_digest": "15584468a4412c988075047afd74dc1956f1cc68af69105eddc15b29576c8a4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e188148e51c6b319adf2212665ab2fc863400bb1dfc491104ab15ba0fc72fa0a",
+      "source_fact_keys": [
+        "source_fact:v1:0ec9f26b38b7a82c656ab37c3752f9d41f941184b307b4ee15405dcf4f7c1a6f",
+        "source_fact:v1:4c3d098bd1e2b38ddeb79b9abcd7c33b80b09fe46190aca8acca7fa8dccdf54e",
+        "source_fact:v1:629e73fd4a8dbd4574b4c7a9102db38a56d4a8e984c2128a1e65e8fc2ce2deac",
+        "source_fact:v1:6fc50261e5a06996a96d2b744652bacd566857bf436c804c6c4581136b12a8dd",
+        "source_fact:v1:9880e610b4418acab3b86534d2bf62057b9ea0bd8dc988684e957c63b638f123",
+        "source_fact:v1:a13c9b72c6cf9be4e51e239d69f5542d4d927eca68062dc318ece7a54617e72d",
+        "source_fact:v1:c69d2ec831211ac395b074de6ef82c5a8d502c279b7e107c0ea619b0523175d3",
+        "source_fact:v1:f5c0aaab368951ab9f199ed94090adf20545ce6fffc506d5ecb221ce1ede7b49",
+        "source_fact:v1:f5cf175fa59e4fe647636b134ed685bce25d3b9cce734d31dcbfe93428b7065b"
+      ],
+      "source_published_kst": "2026-10-16T12:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘 이 종목] AI 수요 확인 SK하이닉스 · 실적 기대 삼성바이오로직스 '주목'",
+      "telegram_core_fact": "길 대표가 제시한 삼성바이오로직스의 3분기 실적 전망은 매출 1조3,728억원, 영업이익 6,178억원이다.",
+      "title": "[오늘 이 종목] AI 수요 확인 SK하이닉스 · 실적 기대 삼성바이오로직스 '주목'"
     },
     "source_fact:99c7a7881ab3ade9a96b51d9": {
       "first_seen_kst": "2026-10-11T23:10:29+09:00",
@@ -557508,6 +558726,34 @@
       "telegram_core_fact": "14일 상승 출발하며 2% 이상 뛰었으나 미국 9월 소비자물가지수(CPI) 발표를 앞두고 관망세가 짙어지며 장중 6000선을 밑돌기도 했다.",
       "title": "코스피, 美 CPI 발표 앞두고 경계심리↑… 물가둔화 확인할까"
     },
+    "source_fact:a6eb6580fe181ea3ebc8d4b9": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176039",
+      "source": "매일경제",
+      "source_body_digest": "aad855d1a9f2538a61ece63e75b17017f99080eee9e5cd9bd2a137a964fa79b7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:69b01d2f7d40a245b7cfeaba5c79afb12d4c7c1f3bab47a2163ac1bf06cc189e",
+      "source_fact_keys": [
+        "source_fact:v1:06230645e142bc4ac9dda0c177f413be529903f0d18521a13f69e71e229b8e29",
+        "source_fact:v1:27dd1d96f36de7263c11a83d105cc2f75a5e774a23dd3ace620a4a2aca030ea3",
+        "source_fact:v1:490af6b8358dd6a84bd5c8fe4d5f6476fcc22b1141f3eaa5527fe038ffb9b505",
+        "source_fact:v1:9bd9dc6c60e45aa4268a32f82b7414f07dcafca073f8947a2fbc00b576e9876a",
+        "source_fact:v1:9d0a0065d3c5c09d9257265d402279d5307b8129f3c92c6ce3225c2bb7e25357",
+        "source_fact:v1:a220110366020141b9beb4c8c2534dcfe3c4cca867d077bb81468659973d05e5",
+        "source_fact:v1:a2b99a44c37c3979d9bb4a30a5011c9bdf83a84f965eebefbd0490ec803212dd",
+        "source_fact:v1:b56324d5daa8b5137d754fd61b45eef9798574c1318e4f0d54effb5402214969",
+        "source_fact:v1:d4a13eec5b7f416962fd1b4e493565b2013031366f65d5c25766d2c460224957"
+      ],
+      "source_published_kst": "2026-10-16T19:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "리전스 파이낸셜, 3분기 희석 EPS 0.71달러..전년비 16% 증가",
+      "telegram_core_fact": "리전스 파이낸셜(RF)은 2026년 3분기 보통주 귀속 순이익이 6억1100만 달러, 희석 주당순이익(EPS)이 0.71달러로 전년비 각각 11%, 16% 증가했다고 10월 16일 발표했다.",
+      "title": "리전스 파이낸셜, 3분기 희석 EPS 0.71달러..전년비 16% 증가"
+    },
     "source_fact:a6f128e5341ae6ccd84fa272": {
       "first_seen_kst": "2026-10-13T20:49:52+09:00",
       "lanes": {
@@ -575250,6 +576496,27 @@
       "telegram_core_fact": "그동안 엔비디아의 그래픽처리장치(GPU)와 고대역폭메모리(HBM) 확보가 AI 인프라 구축의 최대 과제였다면 이제는 확보한 반도체를 실제로 가동할 전력 공급 능력이 관건이 되고 있다.",
       "title": "“GPU는 있는데 전기가 없다”⋯美 AIDC 32GW 전력난, HBM 새 변수 [AI 호황의 역설]"
     },
+    "source_fact:b39e2c0b9d075a857e0898fa": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03801526645613576&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "95040b21d3434271e8885e6f45259af285caaedeb2111f7d162db5a470e81e9a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47815a55c4cf6d44e11dd44b1f581e43ab588019fcb87729fda09d360436f68a",
+      "source_fact_keys": [
+        "source_fact:v1:908a7904d56cdb99d704b82ddc033bd3e84a41720c1a7f73082cb7d906cb5177",
+        "source_fact:v1:a814fff3a495826f562f158ff2e6f607065d70843f6274d8bd42c537af745a8e"
+      ],
+      "source_published_kst": "2026-10-16T14:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "세계 전기차 판매 6개월 만에 감소…북미 44%·중국 18% 급감",
+      "telegram_core_fact": "16일 로이터통신과 영국 시장조사업체 벤치마크미네랄인텔리전스(BMI)에 따르면 지난 9월 전 세계 전기차 판매량은 215만대로 전년비 2% 감소했다.",
+      "title": "세계 전기차 판매 6개월 만에 감소…북미 44%·중국 18% 급감"
+    },
     "source_fact:b3a14621d9a2bda4a737e102": {
       "first_seen_kst": "2026-10-13T22:33:57+09:00",
       "lanes": {
@@ -583322,6 +584589,34 @@
       "telegram_core_fact": "우크라이나 드론들이 15일 아침(현지시간) 러시아 리아잔 지방 소재 한 정유소를 공격했다. 우크라의 이날 아침 드론 공격으로 모스크바 남동쪽 300㎞ 소재의 리아잔 정유소에 불이 났다고 러시아 국방부와 리아잔 주지사가 말했다.",
       "title": "\"우크라, 대 러시아 정유시설 공격 재개해\""
     },
+    "source_fact:b9c65f7ca3518022f640aa7d": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176039",
+      "source": "매일경제",
+      "source_body_digest": "aad855d1a9f2538a61ece63e75b17017f99080eee9e5cd9bd2a137a964fa79b7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:69b01d2f7d40a245b7cfeaba5c79afb12d4c7c1f3bab47a2163ac1bf06cc189e",
+      "source_fact_keys": [
+        "source_fact:v1:06230645e142bc4ac9dda0c177f413be529903f0d18521a13f69e71e229b8e29",
+        "source_fact:v1:27dd1d96f36de7263c11a83d105cc2f75a5e774a23dd3ace620a4a2aca030ea3",
+        "source_fact:v1:490af6b8358dd6a84bd5c8fe4d5f6476fcc22b1141f3eaa5527fe038ffb9b505",
+        "source_fact:v1:9bd9dc6c60e45aa4268a32f82b7414f07dcafca073f8947a2fbc00b576e9876a",
+        "source_fact:v1:9d0a0065d3c5c09d9257265d402279d5307b8129f3c92c6ce3225c2bb7e25357",
+        "source_fact:v1:a220110366020141b9beb4c8c2534dcfe3c4cca867d077bb81468659973d05e5",
+        "source_fact:v1:a2b99a44c37c3979d9bb4a30a5011c9bdf83a84f965eebefbd0490ec803212dd",
+        "source_fact:v1:b56324d5daa8b5137d754fd61b45eef9798574c1318e4f0d54effb5402214969",
+        "source_fact:v1:d4a13eec5b7f416962fd1b4e493565b2013031366f65d5c25766d2c460224957"
+      ],
+      "source_published_kst": "2026-10-16T19:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "리전스 파이낸셜, 3분기 희석 EPS 0.71달러..전년비 16% 증가",
+      "telegram_core_fact": "리전스 파이낸셜(RF)은 2026년 3분기 보통주 귀속 순이익이 6억1100만 달러, 희석 주당순이익(EPS)이 0.71달러로 전년비 각각 11%, 16% 증가했다고 10월 16일 발표했다.",
+      "title": "리전스 파이낸셜, 3분기 희석 EPS 0.71달러..전년비 16% 증가"
+    },
     "source_fact:b9c6e1359d530605edb7de3f": {
       "first_seen_kst": "2026-10-11T14:49:05+09:00",
       "lanes": {
@@ -583805,6 +585100,34 @@
       ],
       "source_published_kst": "2026-10-06T15:51+09:00",
       "title": "이형일 \"119만호 추가 공급…2030년까지 착공 노력\""
+    },
+    "source_fact:ba2b24f8620b0f79e7f08872": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176039",
+      "source": "매일경제",
+      "source_body_digest": "aad855d1a9f2538a61ece63e75b17017f99080eee9e5cd9bd2a137a964fa79b7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:69b01d2f7d40a245b7cfeaba5c79afb12d4c7c1f3bab47a2163ac1bf06cc189e",
+      "source_fact_keys": [
+        "source_fact:v1:06230645e142bc4ac9dda0c177f413be529903f0d18521a13f69e71e229b8e29",
+        "source_fact:v1:27dd1d96f36de7263c11a83d105cc2f75a5e774a23dd3ace620a4a2aca030ea3",
+        "source_fact:v1:490af6b8358dd6a84bd5c8fe4d5f6476fcc22b1141f3eaa5527fe038ffb9b505",
+        "source_fact:v1:9bd9dc6c60e45aa4268a32f82b7414f07dcafca073f8947a2fbc00b576e9876a",
+        "source_fact:v1:9d0a0065d3c5c09d9257265d402279d5307b8129f3c92c6ce3225c2bb7e25357",
+        "source_fact:v1:a220110366020141b9beb4c8c2534dcfe3c4cca867d077bb81468659973d05e5",
+        "source_fact:v1:a2b99a44c37c3979d9bb4a30a5011c9bdf83a84f965eebefbd0490ec803212dd",
+        "source_fact:v1:b56324d5daa8b5137d754fd61b45eef9798574c1318e4f0d54effb5402214969",
+        "source_fact:v1:d4a13eec5b7f416962fd1b4e493565b2013031366f65d5c25766d2c460224957"
+      ],
+      "source_published_kst": "2026-10-16T19:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "리전스 파이낸셜, 3분기 희석 EPS 0.71달러..전년비 16% 증가",
+      "telegram_core_fact": "리전스 파이낸셜(RF)은 2026년 3분기 보통주 귀속 순이익이 6억1100만 달러, 희석 주당순이익(EPS)이 0.71달러로 전년비 각각 11%, 16% 증가했다고 10월 16일 발표했다.",
+      "title": "리전스 파이낸셜, 3분기 희석 EPS 0.71달러..전년비 16% 증가"
     },
     "source_fact:ba2b2926398d41d90ce8ce9f": {
       "first_seen_kst": "2026-10-10T01:47:39+09:00",
@@ -595509,6 +596832,34 @@
       "source_title": "보스턴다이나믹스 신임 CEO에 로히트 프라사드..아틀라스 '상용화' 주력",
       "telegram_core_fact": "프라사드 CEO는 오는 2028년으로 예정된 휴머노이드(인간형) 로봇 아틀라스의 양산과 자동차 공장 실전 배치, 외부 판매 등 로봇의 '상용화 작업'에 주력할 전망이다.",
       "title": "보스턴다이나믹스 신임 CEO에 로히트 프라사드..아틀라스 '상용화' 주력"
+    },
+    "source_fact:c2c881935351235eab82c612": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176039",
+      "source": "매일경제",
+      "source_body_digest": "aad855d1a9f2538a61ece63e75b17017f99080eee9e5cd9bd2a137a964fa79b7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:69b01d2f7d40a245b7cfeaba5c79afb12d4c7c1f3bab47a2163ac1bf06cc189e",
+      "source_fact_keys": [
+        "source_fact:v1:06230645e142bc4ac9dda0c177f413be529903f0d18521a13f69e71e229b8e29",
+        "source_fact:v1:27dd1d96f36de7263c11a83d105cc2f75a5e774a23dd3ace620a4a2aca030ea3",
+        "source_fact:v1:490af6b8358dd6a84bd5c8fe4d5f6476fcc22b1141f3eaa5527fe038ffb9b505",
+        "source_fact:v1:9bd9dc6c60e45aa4268a32f82b7414f07dcafca073f8947a2fbc00b576e9876a",
+        "source_fact:v1:9d0a0065d3c5c09d9257265d402279d5307b8129f3c92c6ce3225c2bb7e25357",
+        "source_fact:v1:a220110366020141b9beb4c8c2534dcfe3c4cca867d077bb81468659973d05e5",
+        "source_fact:v1:a2b99a44c37c3979d9bb4a30a5011c9bdf83a84f965eebefbd0490ec803212dd",
+        "source_fact:v1:b56324d5daa8b5137d754fd61b45eef9798574c1318e4f0d54effb5402214969",
+        "source_fact:v1:d4a13eec5b7f416962fd1b4e493565b2013031366f65d5c25766d2c460224957"
+      ],
+      "source_published_kst": "2026-10-16T19:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "리전스 파이낸셜, 3분기 희석 EPS 0.71달러..전년비 16% 증가",
+      "telegram_core_fact": "리전스 파이낸셜(RF)은 2026년 3분기 보통주 귀속 순이익이 6억1100만 달러, 희석 주당순이익(EPS)이 0.71달러로 전년비 각각 11%, 16% 증가했다고 10월 16일 발표했다.",
+      "title": "리전스 파이낸셜, 3분기 희석 EPS 0.71달러..전년비 16% 증가"
     },
     "source_fact:c2df7106f55ea733aa9f26bb": {
       "first_seen_kst": "2026-10-11T12:11:12+09:00",
@@ -610512,6 +611863,34 @@
       "source_title": "세계 최대 바이오 생산기지 송도의 역설…원부자재 95% 수입 | 연합뉴스",
       "telegram_core_fact": "보고서는 \"바이오 원부자재는 원가, 품질, 공급 안전성을 좌우하는 전략 자산\"이라며 \"의약품 제조 품목 허가에 등록된 원부자재는 교체 시 재검증 비용이 막대해 안정적 매출의 원천이 된다\"고 짚었다.",
       "title": "세계 최대 바이오 생산기지 송도의 역설…원부자재 95% 수입 | 연합뉴스"
+    },
+    "source_fact:cd719ad377cebd020c42b05c": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176039",
+      "source": "매일경제",
+      "source_body_digest": "aad855d1a9f2538a61ece63e75b17017f99080eee9e5cd9bd2a137a964fa79b7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:69b01d2f7d40a245b7cfeaba5c79afb12d4c7c1f3bab47a2163ac1bf06cc189e",
+      "source_fact_keys": [
+        "source_fact:v1:06230645e142bc4ac9dda0c177f413be529903f0d18521a13f69e71e229b8e29",
+        "source_fact:v1:27dd1d96f36de7263c11a83d105cc2f75a5e774a23dd3ace620a4a2aca030ea3",
+        "source_fact:v1:490af6b8358dd6a84bd5c8fe4d5f6476fcc22b1141f3eaa5527fe038ffb9b505",
+        "source_fact:v1:9bd9dc6c60e45aa4268a32f82b7414f07dcafca073f8947a2fbc00b576e9876a",
+        "source_fact:v1:9d0a0065d3c5c09d9257265d402279d5307b8129f3c92c6ce3225c2bb7e25357",
+        "source_fact:v1:a220110366020141b9beb4c8c2534dcfe3c4cca867d077bb81468659973d05e5",
+        "source_fact:v1:a2b99a44c37c3979d9bb4a30a5011c9bdf83a84f965eebefbd0490ec803212dd",
+        "source_fact:v1:b56324d5daa8b5137d754fd61b45eef9798574c1318e4f0d54effb5402214969",
+        "source_fact:v1:d4a13eec5b7f416962fd1b4e493565b2013031366f65d5c25766d2c460224957"
+      ],
+      "source_published_kst": "2026-10-16T19:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "리전스 파이낸셜, 3분기 희석 EPS 0.71달러..전년비 16% 증가",
+      "telegram_core_fact": "리전스 파이낸셜(RF)은 2026년 3분기 보통주 귀속 순이익이 6억1100만 달러, 희석 주당순이익(EPS)이 0.71달러로 전년비 각각 11%, 16% 증가했다고 10월 16일 발표했다.",
+      "title": "리전스 파이낸셜, 3분기 희석 EPS 0.71달러..전년비 16% 증가"
     },
     "source_fact:cd75e67f3a7e8b5a00b254ee": {
       "first_seen_kst": "2026-10-11T11:01:00+09:00",
@@ -655165,6 +656544,34 @@
       "telegram_core_fact": "인도 경기 상황을 물가·가격 측면에서 파악할 수 있는 2026년 9월 도매 물가지수(WPI 속보치)는 전년 동월 대비 11.39% 뛰어오른 112.5를 기록했다고 PTI 통신과 타임스 오브 인디아, 마켓워치, MSN이 14일 보도했다.",
       "title": "인도 9월 도매물가 지수 11.39%↑…\"에너지발 인플레 확대\""
     },
+    "source_fact:ed3309f4e4e85a0513f2e4cc": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/16/2026101611567016122",
+      "source": "머니투데이",
+      "source_body_digest": "15584468a4412c988075047afd74dc1956f1cc68af69105eddc15b29576c8a4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e188148e51c6b319adf2212665ab2fc863400bb1dfc491104ab15ba0fc72fa0a",
+      "source_fact_keys": [
+        "source_fact:v1:0ec9f26b38b7a82c656ab37c3752f9d41f941184b307b4ee15405dcf4f7c1a6f",
+        "source_fact:v1:4c3d098bd1e2b38ddeb79b9abcd7c33b80b09fe46190aca8acca7fa8dccdf54e",
+        "source_fact:v1:629e73fd4a8dbd4574b4c7a9102db38a56d4a8e984c2128a1e65e8fc2ce2deac",
+        "source_fact:v1:6fc50261e5a06996a96d2b744652bacd566857bf436c804c6c4581136b12a8dd",
+        "source_fact:v1:9880e610b4418acab3b86534d2bf62057b9ea0bd8dc988684e957c63b638f123",
+        "source_fact:v1:a13c9b72c6cf9be4e51e239d69f5542d4d927eca68062dc318ece7a54617e72d",
+        "source_fact:v1:c69d2ec831211ac395b074de6ef82c5a8d502c279b7e107c0ea619b0523175d3",
+        "source_fact:v1:f5c0aaab368951ab9f199ed94090adf20545ce6fffc506d5ecb221ce1ede7b49",
+        "source_fact:v1:f5cf175fa59e4fe647636b134ed685bce25d3b9cce734d31dcbfe93428b7065b"
+      ],
+      "source_published_kst": "2026-10-16T12:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘 이 종목] AI 수요 확인 SK하이닉스 · 실적 기대 삼성바이오로직스 '주목'",
+      "telegram_core_fact": "길 대표가 제시한 삼성바이오로직스의 3분기 실적 전망은 매출 1조3,728억원, 영업이익 6,178억원이다.",
+      "title": "[오늘 이 종목] AI 수요 확인 SK하이닉스 · 실적 기대 삼성바이오로직스 '주목'"
+    },
     "source_fact:ed347021d8480fbb0c202f24": {
       "first_seen_kst": "2026-10-07T19:47:02+09:00",
       "lanes": {
@@ -660948,6 +662355,45 @@
       "source_title": "美 9월 CPI 전년비 3.7% 상승…에너지 가격 급등이 물가 끌어올려(종합)",
       "telegram_core_fact": "미국 노동부 노동통계국(BLS)은 14일(현지시간) 9월 소비자물가지수(CPI)가 전년 동월 대비 3.7% 상승했다고 밝혔다.",
       "title": "美 9월 CPI 전년비 3.7% 상승…에너지 가격 급등이 물가 끌어올려(종합)"
+    },
+    "source_fact:f18af7573e8eac0b5fd7b7d1": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.hankyung.com/article/2026101657216",
+      "source": "한국경제",
+      "source_body_digest": "889024c29c7094866f8dbeb3356074c9fa5a7a98404045ea757da05fbe8e9634",
+      "source_event_identity": "source_event:v2:named_supply_order:8a380917b2a98b76473f13793371072967089e9c9bdc80276b1ca4a37677cb9a",
+      "source_fact_identity": "source_facts:v1:671f5ec8848d63e775674cbde319221d6cedcf6530064a8361883d6fa92c06ed",
+      "source_fact_keys": [
+        "source_fact:v1:5064615ba53bf0c17ce8dd412e362a2b38e8a8730d9ec962fa6e5d9cb9f17b04",
+        "source_fact:v1:f065f31fc34bbe55948bce8e9d8768486b18b573682c9c00ab2c2131921b9e66",
+        "source_fact:v1:fd2b4854ea4519419903fe7e667687136513d56c6cf5237046e2bd8c042fbf99"
+      ],
+      "source_published_kst": "2026-10-16T09:35+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "22800000000"
+          ]
+        ],
+        "customer": "228억원",
+        "delivery_period": "",
+        "disclosure_date": "2026-10-16",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "우리로",
+        "product": "데이터센터용광반도체",
+        "quantities": [],
+        "stage": "signed"
+      },
+      "source_title": "우리로, 데이터센터용 광반도체 수주 소식에 '급등'",
+      "telegram_core_fact": "우리로가 228억원 규모 데이터센터용 광반도체 공급 계약을 체결했다는 소식 이후 주가가 16일 장 초반 급등세다.",
+      "title": "우리로, 데이터센터용 광반도체 수주 소식에 '급등'"
     },
     "source_fact:f18b312ec94c3b1797325040": {
       "first_seen_kst": "2026-10-12T18:02:18+09:00",
@@ -708899,6 +710345,34 @@
       "source": "머니투데이",
       "title": "트럼프 '알래스카 LNG' 콕 찍은 배경에 '폭발 직전' 고유가 민심"
     },
+    "title:4dcabbd356f724cd5d89ece3": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176039",
+      "source": "매일경제",
+      "source_body_digest": "aad855d1a9f2538a61ece63e75b17017f99080eee9e5cd9bd2a137a964fa79b7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:69b01d2f7d40a245b7cfeaba5c79afb12d4c7c1f3bab47a2163ac1bf06cc189e",
+      "source_fact_keys": [
+        "source_fact:v1:06230645e142bc4ac9dda0c177f413be529903f0d18521a13f69e71e229b8e29",
+        "source_fact:v1:27dd1d96f36de7263c11a83d105cc2f75a5e774a23dd3ace620a4a2aca030ea3",
+        "source_fact:v1:490af6b8358dd6a84bd5c8fe4d5f6476fcc22b1141f3eaa5527fe038ffb9b505",
+        "source_fact:v1:9bd9dc6c60e45aa4268a32f82b7414f07dcafca073f8947a2fbc00b576e9876a",
+        "source_fact:v1:9d0a0065d3c5c09d9257265d402279d5307b8129f3c92c6ce3225c2bb7e25357",
+        "source_fact:v1:a220110366020141b9beb4c8c2534dcfe3c4cca867d077bb81468659973d05e5",
+        "source_fact:v1:a2b99a44c37c3979d9bb4a30a5011c9bdf83a84f965eebefbd0490ec803212dd",
+        "source_fact:v1:b56324d5daa8b5137d754fd61b45eef9798574c1318e4f0d54effb5402214969",
+        "source_fact:v1:d4a13eec5b7f416962fd1b4e493565b2013031366f65d5c25766d2c460224957"
+      ],
+      "source_published_kst": "2026-10-16T19:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "리전스 파이낸셜, 3분기 희석 EPS 0.71달러..전년비 16% 증가",
+      "telegram_core_fact": "리전스 파이낸셜(RF)은 2026년 3분기 보통주 귀속 순이익이 6억1100만 달러, 희석 주당순이익(EPS)이 0.71달러로 전년비 각각 11%, 16% 증가했다고 10월 16일 발표했다.",
+      "title": "리전스 파이낸셜, 3분기 희석 EPS 0.71달러..전년비 16% 증가"
+    },
     "title:4dcd9abc52a7b137dc351ffd": {
       "first_seen_kst": "2026-09-24T00:05:53+09:00",
       "lanes": {
@@ -715127,6 +716601,27 @@
       "link": "https://www.etnews.com/20260921000434",
       "source": "전자신문",
       "title": "美 금리 인상?…“금 팔지마라 …내년 말 금리 인하, 더 오른다” 믿는 구석 있는 골드만삭스"
+    },
+    "title:5ef34c0f66aa283b1e460f83": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.hankyung.com/article/202610166177L",
+      "source": "한국경제",
+      "source_body_digest": "a7f6bfc14a95af8fb90de322e13f1d486541971aac25d4d8588654895fa4980d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:537b4217d2088f8600abc5d70f58d9dd1b5344fb18c2c2444eeb716dc1fd220c",
+      "source_fact_keys": [
+        "source_fact:v1:26803fa5b5220f6d0eac168e8701919423ea9ab811f322ef2197b9515ffd2aec",
+        "source_fact:v1:6f1766f043bec96b5d1d5aefb94f939ca659bc84e5f04cc3a3dd07380257b534"
+      ],
+      "source_published_kst": "2026-10-16T11:37+09:00",
+      "source_supply_terms": {},
+      "source_title": "대우건설 수주공시 - 상도15구역 주택정비형 재개발사업 1.44조 (매출액대비 17.84 %)",
+      "telegram_core_fact": "대우건설(047040)은 상도15구역 주택정비형 재개발사업에 관한 단일판매ㆍ공급계약체결 을 16일에 공시했다.",
+      "title": "대우건설 수주공시 - 상도15구역 주택정비형 재개발사업 1.44조 (매출액대비 17.84 %)"
     },
     "title:5efe4ed4b6482dff1e8fd5cf": {
       "first_seen_kst": "2026-10-13T01:09:54+09:00",
@@ -754896,6 +756391,34 @@
       "telegram_core_fact": "KB국민카드, 롯데카드, 웰컴저축은행 등 국내 금융사에 누적 1천만 명 이상 고객 기반으로 검증된 인증·보안 기술을 보유하고 있으며, 이 원천기술을 바탕으로 만든 솔루션이 TrustIn Gateway이다.",
       "title": "[제2서울핀테크랩 스타트업 CEO] 제로트러스트(Zero Trust) 기반 금융 보안·인증·결제 솔루션 개발하는 기업 ‘신영이노베이션’"
     },
+    "title:cdae52659788bbdf1696474a": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/16/2026101611567016122",
+      "source": "머니투데이",
+      "source_body_digest": "15584468a4412c988075047afd74dc1956f1cc68af69105eddc15b29576c8a4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e188148e51c6b319adf2212665ab2fc863400bb1dfc491104ab15ba0fc72fa0a",
+      "source_fact_keys": [
+        "source_fact:v1:0ec9f26b38b7a82c656ab37c3752f9d41f941184b307b4ee15405dcf4f7c1a6f",
+        "source_fact:v1:4c3d098bd1e2b38ddeb79b9abcd7c33b80b09fe46190aca8acca7fa8dccdf54e",
+        "source_fact:v1:629e73fd4a8dbd4574b4c7a9102db38a56d4a8e984c2128a1e65e8fc2ce2deac",
+        "source_fact:v1:6fc50261e5a06996a96d2b744652bacd566857bf436c804c6c4581136b12a8dd",
+        "source_fact:v1:9880e610b4418acab3b86534d2bf62057b9ea0bd8dc988684e957c63b638f123",
+        "source_fact:v1:a13c9b72c6cf9be4e51e239d69f5542d4d927eca68062dc318ece7a54617e72d",
+        "source_fact:v1:c69d2ec831211ac395b074de6ef82c5a8d502c279b7e107c0ea619b0523175d3",
+        "source_fact:v1:f5c0aaab368951ab9f199ed94090adf20545ce6fffc506d5ecb221ce1ede7b49",
+        "source_fact:v1:f5cf175fa59e4fe647636b134ed685bce25d3b9cce734d31dcbfe93428b7065b"
+      ],
+      "source_published_kst": "2026-10-16T12:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "[오늘 이 종목] AI 수요 확인 SK하이닉스 · 실적 기대 삼성바이오로직스 '주목'",
+      "telegram_core_fact": "길 대표가 제시한 삼성바이오로직스의 3분기 실적 전망은 매출 1조3,728억원, 영업이익 6,178억원이다.",
+      "title": "[오늘 이 종목] AI 수요 확인 SK하이닉스 · 실적 기대 삼성바이오로직스 '주목'"
+    },
     "title:cdea594ec55eefce77666024": {
       "first_seen_kst": "2026-10-08T02:26:35+09:00",
       "lanes": {
@@ -760367,6 +761890,24 @@
       ],
       "source_published_kst": "2026-10-06T10:12+09:00",
       "title": "충주시, 주덕읍 일원 친환경 쌀 생산·유통 기반 확충 | 연합뉴스"
+    },
+    "title:dc4fcba1926644e28fa7609a": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12177246",
+      "source": "매일경제",
+      "source_body_digest": "0466323dad7dcda8d0644d41d4f351088317a3ddbf86e94b1e8a6862413d8800",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-15T22:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI옥토, 상반기 순이익 19만달러..전년비 165% 증가",
+      "telegram_core_fact": "AI옥토(AIOK)는 6월 30일 종료된 상반기(6개월) 순이익이 18만7798달러로 전년 동기(7만734달러) 대비 165.5% 증가했으며, 같은 기간 용선 매출액은 420만5437달러로 44.1% 감소했다고 10월 15일 발표했다.",
+      "title": "AI옥토, 상반기 순이익 19만달러..전년비 165% 증가"
     },
     "title:dc5b415fa3f2e93f38199b2a": {
       "first_seen_kst": "2026-10-07T18:12:46+09:00",
@@ -766601,6 +768142,27 @@
       "source_published_kst": "2026-10-06T05:00+09:00",
       "title": "유통·식품 수장 줄줄이 국감장…쿠팡·배민·홈플러스 정조준하나"
     },
+    "title:eee7cef33e63b8041e924c8c": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03801526645613576&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "95040b21d3434271e8885e6f45259af285caaedeb2111f7d162db5a470e81e9a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:47815a55c4cf6d44e11dd44b1f581e43ab588019fcb87729fda09d360436f68a",
+      "source_fact_keys": [
+        "source_fact:v1:908a7904d56cdb99d704b82ddc033bd3e84a41720c1a7f73082cb7d906cb5177",
+        "source_fact:v1:a814fff3a495826f562f158ff2e6f607065d70843f6274d8bd42c537af745a8e"
+      ],
+      "source_published_kst": "2026-10-16T14:24+09:00",
+      "source_supply_terms": {},
+      "source_title": "세계 전기차 판매 6개월 만에 감소…북미 44%·중국 18% 급감",
+      "telegram_core_fact": "16일 로이터통신과 영국 시장조사업체 벤치마크미네랄인텔리전스(BMI)에 따르면 지난 9월 전 세계 전기차 판매량은 215만대로 전년비 2% 감소했다.",
+      "title": "세계 전기차 판매 6개월 만에 감소…북미 44%·중국 18% 급감"
+    },
     "title:eeecdb79b24a1642fce5018f": {
       "first_seen_kst": "2026-10-12T07:43:12+09:00",
       "lanes": {
@@ -770176,6 +771738,24 @@
       "telegram_core_fact": "비아트리스(VTRS)가 비마취성 진통 치료제 기업 파시라 바이오사이언스(PCRX)의 발행주식 전량을 주당 36.50달러 현금, 총 지분가치 16억5000만 달러에 인수하는 최종 계약을 체결했다고 10월 8일 발표했다.",
       "title": "비아트리스, 파시라 16억5000만 달러 인수…주당 36.50달러"
     },
+    "title:f8164c363206074c9143fc9b": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12177223",
+      "source": "매일경제",
+      "source_body_digest": "192df94a161656e484b4ec89941ee35bf258d0f9f564c7cbce5bacefbe14051d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-15T21:44+09:00",
+      "source_supply_terms": {},
+      "source_title": "아틀라스클리어 홀딩스, 도슨제임스 모회사 인수…최대 2450만 달러",
+      "telegram_core_fact": "아틀라스클리어 홀딩스(ATCH)가 투자은행 도슨제임스 시큐리티즈의 모회사 아크 파이낸셜 서비시스 인수 계약을 체결하고 총 대가 최대 2450만 달러 가운데 지분 24.9%를 우선 매입했다고 10월 15일 발표했다.",
+      "title": "아틀라스클리어 홀딩스, 도슨제임스 모회사 인수…최대 2450만 달러"
+    },
     "title:f81adf330ceb0f05008cb300": {
       "first_seen_kst": "2026-10-09T21:51:45+09:00",
       "lanes": {
@@ -771187,6 +772767,45 @@
       ],
       "source_published_kst": "2026-10-06T13:35+09:00",
       "title": "조준희 KOSA 회장 \"AI 수요·공급기업 한자리에…실제 사업으로 연결\""
+    },
+    "title:fb6cd222c8d91cbc7c52f60c": {
+      "first_seen_kst": "2026-10-16T21:38:15+09:00",
+      "lanes": {
+        "live": "2026-10-16T21:38:15+09:00"
+      },
+      "last_seen_kst": "2026-10-16T21:38:15+09:00",
+      "link": "https://www.hankyung.com/article/2026101657216",
+      "source": "한국경제",
+      "source_body_digest": "889024c29c7094866f8dbeb3356074c9fa5a7a98404045ea757da05fbe8e9634",
+      "source_event_identity": "source_event:v2:named_supply_order:8a380917b2a98b76473f13793371072967089e9c9bdc80276b1ca4a37677cb9a",
+      "source_fact_identity": "source_facts:v1:671f5ec8848d63e775674cbde319221d6cedcf6530064a8361883d6fa92c06ed",
+      "source_fact_keys": [
+        "source_fact:v1:5064615ba53bf0c17ce8dd412e362a2b38e8a8730d9ec962fa6e5d9cb9f17b04",
+        "source_fact:v1:f065f31fc34bbe55948bce8e9d8768486b18b573682c9c00ab2c2131921b9e66",
+        "source_fact:v1:fd2b4854ea4519419903fe7e667687136513d56c6cf5237046e2bd8c042fbf99"
+      ],
+      "source_published_kst": "2026-10-16T09:35+09:00",
+      "source_supply_terms": {
+        "additional_execution": [],
+        "amounts": [
+          [
+            "원",
+            "22800000000"
+          ]
+        ],
+        "customer": "228억원",
+        "delivery_period": "",
+        "disclosure_date": "2026-10-16",
+        "duration_years": "",
+        "explicit_revision": false,
+        "issuer": "우리로",
+        "product": "데이터센터용광반도체",
+        "quantities": [],
+        "stage": "signed"
+      },
+      "source_title": "우리로, 데이터센터용 광반도체 수주 소식에 '급등'",
+      "telegram_core_fact": "우리로가 228억원 규모 데이터센터용 광반도체 공급 계약을 체결했다는 소식 이후 주가가 16일 장 초반 급등세다.",
+      "title": "우리로, 데이터센터용 광반도체 수주 소식에 '급등'"
     },
     "title:fb71eb0305feccb33b24c15b": {
       "first_seen_kst": "2026-10-13T21:12:07+09:00",
@@ -773042,5 +774661,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-16T21:12:58+09:00"
+  "updated_at_kst": "2026-10-16T21:38:15+09:00"
 }
