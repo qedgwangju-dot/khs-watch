@@ -24,17 +24,21 @@
     {
       "ts": "2026-10-16T18:49:48+09:00",
       "value": 1331.6
+    },
+    {
+      "ts": "2026-10-16T19:43:24+09:00",
+      "value": 1331.1
     }
   ],
   "sent_level": 0,
   "sent_weakening": false,
   "last_signal": null,
   "latest": {
-    "checked_at": "2026-10-16T18:49:48+09:00",
+    "checked_at": "2026-10-16T19:43:24+09:00",
     "market_phase": "장마감 후",
     "fx": {
-      "value": 1331.6,
-      "prev_close": 1350.0,
+      "value": 1331.1,
+      "prev_close": 1344.6,
       "naver_prev_close": 1342.5,
       "date": "2026-10-16",
       "source": "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5",
@@ -43,37 +47,37 @@
       "basis_error": null,
       "basis_reused": false
     },
-    "session_low": 1331.6,
+    "session_low": 1331.1,
     "rebound_krw": 0.0,
     "rebound_pct": 0.0,
-    "daily_krw": -18.40000000000009,
-    "daily_pct": -1.3629629629629658,
+    "daily_krw": -13.5,
+    "daily_pct": -1.0040160642570295,
     "kospi_pct": 2.05,
     "ship": {
-      "avg": 1.2675,
+      "avg": 1.0925,
       "positive": 3,
-      "relative": -0.7824999999999998,
+      "relative": -0.9574999999999998,
       "valid": 4,
       "confirmed": false
     },
     "defense": {
-      "avg": 5.555,
+      "avg": 5.24,
       "positive": 4,
-      "relative": 3.505,
+      "relative": 3.1900000000000004,
       "valid": 4,
       "confirmed": true
     },
     "auto": {
-      "avg": 4.6975,
+      "avg": 4.715,
       "positive": 4,
-      "relative": 2.6475,
+      "relative": 2.665,
       "valid": 4,
       "confirmed": true
     },
     "counter": {
-      "avg": -3.73,
+      "avg": -3.3474999999999997,
       "positive": 1,
-      "relative": -5.779999999999999,
+      "relative": -5.397499999999999,
       "valid": 4,
       "confirmed": false
     }
