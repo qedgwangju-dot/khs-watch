@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-16T16:09:34+09:00",
+  "updated_at_kst": "2026-10-16T21:24:52+09:00",
   "circle": {
     "date": "2026-10-12",
     "circulation_usd_b": 72.7,
@@ -30,11 +30,11 @@
     }
   },
   "sofr": {
-    "date": "2026-10-14",
-    "rate": 3.88,
-    "prev_date": "2026-10-13",
-    "prev_rate": 3.89,
-    "daily_bp": -1.0,
+    "date": "2026-10-15",
+    "rate": 3.89,
+    "prev_date": "2026-10-14",
+    "prev_rate": 3.88,
+    "daily_bp": 1.0,
     "source": "FRED 재게시·원출처 Federal Reserve Bank of New York",
     "source_url": "https://fred.stlouisfed.org/series/SOFR"
   },
@@ -82,5 +82,7 @@
   },
   "crcl_last_alerted_close_date": "2026-10-15",
   "correction_pending": false,
-  "errors": []
+  "errors": [
+    "fx: 2026-10-15 한국은행 ECOS 원/미국달러 매매기준율 조회 실패"
+  ]
 }
