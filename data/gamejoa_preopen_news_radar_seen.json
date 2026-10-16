@@ -1259,6 +1259,30 @@
       "telegram_core_fact": "최 회장은 9일 호남 반도체 클러스터 예정지인 광주 군공항을 방문해 이 같이 밝힌 뒤 \"전력·용수 등 기반시설 공급이 늦어지더라도 반도체 생산공장(팹) 건설을 먼저 시작할 수 있다\"고 강조했다.",
       "title": "최태원 \"전력·용수 늦어도 먼저 착공\"…호남 반도체 속도전"
     },
+    "core:06fbf79c4aaa839bd22e4393": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636302",
+      "source": "이투데이",
+      "source_body_digest": "27c0d85b72aaf99a3a73272b15f312d30db5c9c6f815f8185ab20dcf503fe740",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0b937a130ba18fbd4db57cb96152ca2e0b8b0b95fa7ca1a15a1e41a938f92f48",
+      "source_fact_keys": [
+        "source_fact:v1:2a24bd4c73c37bea86778c75eeb224f124856322d44e965f9c8af0ef86b596d6",
+        "source_fact:v1:325d0fc101338e908cbc5536790e4c71744f5095a80462942f9699101956458a",
+        "source_fact:v1:6cf9e83bac1e12ab146c64349af2f68b0daa7456e4ed06fed2a0d630ee85c191",
+        "source_fact:v1:8dd4c2e56bf89ccd7bff74de0fb0393db80665459b8cf6a58a9c1919292f84c2",
+        "source_fact:v1:d380a8f0de72533d16f88cf8788584891fd91b829d17f47652c03f4192e7e439"
+      ],
+      "source_published_kst": "2026-10-15T17:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "“국장은 틀렸어”···서학개미, 10월 들어 美주식 4조원 순매수 [오천피 쇼크]",
+      "telegram_core_fact": "국내 증시가 급락하는 가운데 해외 주식에 투자하는 개인투자자 ‘서학개미’들이 이달 들어 약 4조원어치를 사들이며 미국 주식 투자 규모를 다시 늘리는 모습이다. 한국예탁결제원 증권정보포털(SEIBro)에 따르면 국내 투자자들은 이달 1~14일(10거래일) 미국 주식을 29억5994만 달러(약 4조원)어치 순매수했다.",
+      "title": "“국장은 틀렸어”···서학개미, 10월 들어 美주식 4조원 순매수 [오천피 쇼크]"
+    },
     "core:070507abbebd47d6b3e212f7": {
       "first_seen_kst": "2026-10-15T05:50:30+09:00",
       "lanes": {
@@ -19387,6 +19411,24 @@
       "telegram_core_fact": "레이언스는 올해 상반기 반도체 자동 X선 검사(AXI)용 CMOS 디텍터 매출이 131억원을 기록하며 최근 3년간 최고 실적을 달성했다고 13일 밝혔다.",
       "title": "레이언스, 상반기 반도체 AXI 디텍터 매출 131억원…\"글로벌 공략 강화\""
     },
+    "core:5909c058e97210a4fb854dd0": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175336",
+      "source": "매일경제",
+      "source_body_digest": "dfa97493f407b899322ceecd97187b9b2359da117209137daa8c0e0d009b80e6",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-15T19:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "에어 글로벌, 첫 배당 0.28달러·자사주 1억 달러 매입",
+      "telegram_core_fact": "에어 글로벌(AIIR)이 2027 회계연도 주당 0.28달러의 현금배당을 처음 도입하고, 2029년 12월까지 최대 1억 달러 자사주 매입을 추진하는 주주환원 프레임워크를 수립했다고 15일 발표했다.",
+      "title": "에어 글로벌, 첫 배당 0.28달러·자사주 1억 달러 매입"
+    },
     "core:59130193873906b69e28d70c": {
       "first_seen_kst": "2026-10-16T15:46:25+09:00",
       "lanes": {
@@ -22400,6 +22442,26 @@
       "source_title": "퀀텀-Si, 프로테우스 아미노산 19종 검출..연내 20종 목표",
       "telegram_core_fact": "단일분자 단백질 시퀀싱 기반 프로테오믹스 기업 퀀텀-Si(QSI)가 차세대 시퀀싱 플랫폼 '프로테우스(Proteus)' 개발 프로그램에서 아미노산 19종 검출에 성공했으며, 2026년 말까지 20종 전체를 검출하겠다는 목표를 재확인했다고 8일 발표했다.",
       "title": "퀀텀-Si, 프로테우스 아미노산 19종 검출..연내 20종 목표"
+    },
+    "core:6700c93066bc4e799dff9570": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261014168151002",
+      "source": "연합뉴스",
+      "source_body_digest": "e5cb4ea6020e60e4b8aa885433fac280e889c609ccef2f211bdc89d3fea20b6d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c18b3b28dbf9b0a9480408f16266a3d4d27c998491faa97a497eeed7c6c1a233",
+      "source_fact_keys": [
+        "source_fact:v1:37d91899f3ca9f916b507bf65c4795cd163d3b2568b0b99f6743a66ffa69a8a2"
+      ],
+      "source_published_kst": "2026-10-15T18:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"관세청이 송치한 1천582건 처리는?\"…공소청 \"순차 처리\"(종합) | 연합뉴스",
+      "telegram_core_fact": "형사소송법 개정으로 이달 2일 검찰청이 폐지되고 공소청이 출범한 뒤 관세청 특별사법경찰(특사경)이 송치한 사건 처리 관련 소통이 제대로 이뤄지지 않고 있다는 지적이 나왔다.",
+      "title": "\"관세청이 송치한 1천582건 처리는?\"…공소청 \"순차 처리\"(종합) | 연합뉴스"
     },
     "core:6716e48f08af0e03bbdbfc26": {
       "first_seen_kst": "2026-10-07T20:05:17+09:00",
@@ -41336,6 +41398,24 @@
       "telegram_core_fact": "13일 기업분석연구소 리더스인덱스가 매출 상위 500대 기업 중 2023년부터 2025년까지 온실가스 배출량을 매년 공시한 267개사를 분석한 결과, 지난해 이들 기업의 온실가스 배출량(직접·간접배출 합산)은 4억1550만t으로 집계됐다.",
       "title": "[ESGX 이슈 5] 대기업 온실가스 배출량 감소…반도체·IT는 증가"
     },
+    "core:bf10808419a6767139fa1a6c": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636826",
+      "source": "이투데이",
+      "source_body_digest": "e9bada595691e742899972b11365151e042df1c3f594e51e64cce4e65c263221",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-16T16:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대엘리베이터, 무벡스 지분 매각·자사주 1700억 소각…주주환원 강화",
+      "telegram_core_fact": "매각이 완료되면 현대엘리베이터의 현대무벡스 지분율은 기존 48.89%에서 43.04%로 낮아진다.",
+      "title": "현대엘리베이터, 무벡스 지분 매각·자사주 1700억 소각…주주환원 강화"
+    },
     "core:bf11a8498515e06f8e75f57d": {
       "first_seen_kst": "2026-10-15T00:34:31+09:00",
       "lanes": {
@@ -42871,6 +42951,35 @@
       "source_title": "삼성전자, 3Q 매출 195조·영업익 107조…대한민국 기업史 신기록 썼다",
       "telegram_core_fact": "삼성전자가 올해 3분기 사상 처음으로 분기 영업이익 100조원을 돌파하며 한국 기업 역사를 새로 썼다.",
       "title": "삼성전자, 3Q 매출 195조·영업익 107조…대한민국 기업史 신기록 썼다"
+    },
+    "core:c619e925481d56a3cff6f30f": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.hankyung.com/article/202610166804i",
+      "source": "한국경제",
+      "source_body_digest": "f536fd13c7b5e7f4c903ba889dfdf70378ef924ea022b51d61fcb359eabfeb2d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7e3cd7a8882ab4da424e92e140b660037cc1443efc60909e93637010da5bf44",
+      "source_fact_keys": [
+        "source_fact:v1:0015a519804154a9a58b9d2ffb93d86cb567f9ae1d98ddc285e725ac52e6c3a3",
+        "source_fact:v1:1c76a4ac2a620c94e6ed88a0a0be5d40ad243871bf4e3f4d7057fc01e37efd56",
+        "source_fact:v1:22057cf499cf2bebbcb57b1725b7e710423efa5c5373f538ea550275bc0b6559",
+        "source_fact:v1:3c89822ead55b9cbfdb6dede2a95dbbf46773d908e696f0b572e81665c011d8a",
+        "source_fact:v1:5b3303d822f015352413b9cd6f4df487c91eca14bf1baea3c7a2aa6f748cc1c9",
+        "source_fact:v1:5d364ea2f3a50a9780ec90f82a46305dfd0fe7dd76a73668481f019bbe6ad2ed",
+        "source_fact:v1:712185b38f1f5394800bd80da0af2fd8b70c7686883f8d8adcea77ba9b9383ae",
+        "source_fact:v1:9ac808c466e604cb7c7f000b043ea12000b54a2db292cd6b57dd2d17ff7b1b90",
+        "source_fact:v1:d7545867f1cd925738fbc8082ca4286587763986aa6983a61d39322ab52edcea",
+        "source_fact:v1:ddc3c68b1ec98226c4cfc9afd61ac143d1662d00e3c455f681e95c3a203118bb"
+      ],
+      "source_published_kst": "2026-10-16T16:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "가트너 \"메모리 공급난, 2028년까지 이어질 것\"",
+      "telegram_core_fact": "가트너는 이 보고서를 통해 D램과 낸드플래시 등 메모리 공급 부족이 2028년까지 이어질 가능성이 높다고 전망했다.",
+      "title": "가트너 \"메모리 공급난, 2028년까지 이어질 것\""
     },
     "core:c62839fc4c0f3530db1676d7": {
       "first_seen_kst": "2026-10-14T03:10:24+09:00",
@@ -53190,6 +53299,39 @@
       "telegram_core_fact": "오시스코 골드 그룹(OGG)은 원자재 트레이딩 대기업 트라피구라의 캐나다 계열사 유리온 인베스트먼츠 홀딩스(Urion)를 상대로 한 약 3000만 달러 규모 전략적 지분투자를 완료하고, 보통주 955만4141주를 주당 3.14달러에 발행했다고 9일 발표했다.",
       "title": "오시스코 골드 그룹, 트라피구라 계열 3000만 달러 투자 유치 완료"
     },
+    "core:fa517d00d42067adfcf3e72a": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.fnnews.com/news/202610160941043476",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "602b9388a10b8e998bc890f84fe44701bb14ef7bea86e07cba29f59689ed7397",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d1d8e63a44aca3586d36894aa20ad3d1495453186216ab805ca15786dced3375",
+      "source_fact_keys": [
+        "source_fact:v1:25ed8b4c4e1a6871687f599967514a9d4613ba257d923c869ddb1d67c5d3226e",
+        "source_fact:v1:2e6760b6205c46a9e13026072a4cbde6f009611fbd71ebccace9f34dd4ff023c",
+        "source_fact:v1:4f524d1b301280e4bd27524446f38740a2494aeb461cb1bc5eb5b6529fae7fa6",
+        "source_fact:v1:6db388be957a20254b262cb728042eafeee83be652e75054748b0351cd3d9cd4",
+        "source_fact:v1:7b162650a547cff68a9edde21fc12193ecb90c42cbbce81e2296e2823aec5548",
+        "source_fact:v1:815ddcc232f3df043db07224d7c43a136949806db5c24745e4dcc16a2803d066",
+        "source_fact:v1:83e0e32d8df1204a47ae5fc86bd5ab250d4c25598b81f1781a8ec821800058e3",
+        "source_fact:v1:91bac351f5d6f475f9ff62f2d90953f7ab325f60192a6630ecf3cc884b3859c9",
+        "source_fact:v1:aa8cf2b0f0ba94b75cb8f01fff59bf57bf113734252d65bc11c6a4c6fc90c734",
+        "source_fact:v1:ac6521a2565434f89c6e888765e4e34831efbf044e530823c92f08bd007963bc",
+        "source_fact:v1:c15dc544bfeb81de6451dfca5abc4adc73772f1bca0f7cc54c04b50d5f67504e",
+        "source_fact:v1:ca532792a52fb57635c9af911de1f0cd4fba3522b9454252dff0b41263643244",
+        "source_fact:v1:e138645dc361f3b3b483fea6450b5c1612fc51975cd1cf65031136f82b0a3116",
+        "source_fact:v1:f7e263b65509ab9fd19365d749f97ec7465bdb796f099b424d67cd2d07890d7b"
+      ],
+      "source_published_kst": "2026-10-16T09:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플",
+      "telegram_core_fact": "[파이낸셜뉴스]애플 최고경영자(CEO)가 글로벌 메모리 반도체 공급난을 '위기'로 규정하고 중국산 반도체 도입을 포함한 모든 선택지를 검토할 필요가 있다는 입장을 밝혔다.",
+      "title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플"
+    },
     "core:fa553429da8de76b6a79e080": {
       "first_seen_kst": "2026-10-09T20:02:39+09:00",
       "lanes": {
@@ -57331,24 +57473,26 @@
     "event:3394a6c18554462729eb04a1": {
       "first_seen_kst": "2026-10-15T10:36:40+09:00",
       "lanes": {
-        "live": "2026-10-15T11:11:30+09:00"
+        "live": "2026-10-16T17:05:45+09:00"
       },
-      "last_seen_kst": "2026-10-15T11:11:30+09:00",
-      "link": "https://www.fnnews.com/news/202610151045039412",
-      "source": "파이낸셜뉴스",
-      "source_body_digest": "079911f10dec35d8cba9b2d2f75d8abe3604d7623ed28ebb793977e3f75cbbbd",
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636302",
+      "source": "이투데이",
+      "source_body_digest": "27c0d85b72aaf99a3a73272b15f312d30db5c9c6f815f8185ab20dcf503fe740",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:4d0e61a2948b1318e4760141b5c074b091d5367518dcc45c6a9e8f181aaad4c3",
+      "source_fact_identity": "source_facts:v1:0b937a130ba18fbd4db57cb96152ca2e0b8b0b95fa7ca1a15a1e41a938f92f48",
       "source_fact_keys": [
-        "source_fact:v1:542f75d9042a2dcf5d9799e60fce3e2fedf0b6189d1bb6f7d599fa23ce414c8c",
-        "source_fact:v1:66ff358edb1fe04ea54daac4a0287784df4a93c6f40ef297891b8fd2f10f9264",
-        "source_fact:v1:d489b424cca2275760c6ea29ceadd5dccc57d9d1b9f344e8601082bc1309546d"
+        "source_fact:v1:2a24bd4c73c37bea86778c75eeb224f124856322d44e965f9c8af0ef86b596d6",
+        "source_fact:v1:325d0fc101338e908cbc5536790e4c71744f5095a80462942f9699101956458a",
+        "source_fact:v1:6cf9e83bac1e12ab146c64349af2f68b0daa7456e4ed06fed2a0d630ee85c191",
+        "source_fact:v1:8dd4c2e56bf89ccd7bff74de0fb0393db80665459b8cf6a58a9c1919292f84c2",
+        "source_fact:v1:d380a8f0de72533d16f88cf8788584891fd91b829d17f47652c03f4192e7e439"
       ],
-      "source_published_kst": "2026-10-15T10:47+09:00",
+      "source_published_kst": "2026-10-15T17:30+09:00",
       "source_supply_terms": {},
-      "source_title": "개인 자금 3.3조 몰렸다…'KODEX 미국나스닥100' 순자산 10조 돌파",
-      "telegram_core_fact": "[파이낸셜뉴스] 삼성자산운용의 'KODEX 미국나스닥100' 상장지수펀드(ETF)가 개인투자자들의 자금 유입에 힘입어 순자산 10조원을 넘어섰다. 올해 개인 투자자의 'KODEX 미국나스닥100' 순매수 금액은 3조2988억원으로, 국내 나스닥100 추종 상품 중 1위를 기록했다.",
-      "title": "개인 자금 3.3조 몰렸다…'KODEX 미국나스닥100' 순자산 10조 돌파"
+      "source_title": "“국장은 틀렸어”···서학개미, 10월 들어 美주식 4조원 순매수 [오천피 쇼크]",
+      "telegram_core_fact": "국내 증시가 급락하는 가운데 해외 주식에 투자하는 개인투자자 ‘서학개미’들이 이달 들어 약 4조원어치를 사들이며 미국 주식 투자 규모를 다시 늘리는 모습이다. 한국예탁결제원 증권정보포털(SEIBro)에 따르면 국내 투자자들은 이달 1~14일(10거래일) 미국 주식을 29억5994만 달러(약 4조원)어치 순매수했다.",
+      "title": "“국장은 틀렸어”···서학개미, 10월 들어 美주식 4조원 순매수 [오천피 쇼크]"
     },
     "event:33f101e589ed6c9817f7a41d": {
       "first_seen_kst": "2026-10-05T17:30:42+09:00",
@@ -59896,6 +60040,39 @@
       "source_title": "리서치 센터장들 긴급진단…\"실적 훼손보다 수급 불안이 낙폭 키워\" | 연합뉴스",
       "telegram_core_fact": "외국인 매도가 둔화하는 가운데 실적과 가이던스(기업의 향후 실적 전망)를 통해 이익 지속성이 확인돼야 한다.",
       "title": "리서치 센터장들 긴급진단…\"실적 훼손보다 수급 불안이 낙폭 키워\" | 연합뉴스"
+    },
+    "event:63aaad521aee775d3335e3e2": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.fnnews.com/news/202610160941043476",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "602b9388a10b8e998bc890f84fe44701bb14ef7bea86e07cba29f59689ed7397",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d1d8e63a44aca3586d36894aa20ad3d1495453186216ab805ca15786dced3375",
+      "source_fact_keys": [
+        "source_fact:v1:25ed8b4c4e1a6871687f599967514a9d4613ba257d923c869ddb1d67c5d3226e",
+        "source_fact:v1:2e6760b6205c46a9e13026072a4cbde6f009611fbd71ebccace9f34dd4ff023c",
+        "source_fact:v1:4f524d1b301280e4bd27524446f38740a2494aeb461cb1bc5eb5b6529fae7fa6",
+        "source_fact:v1:6db388be957a20254b262cb728042eafeee83be652e75054748b0351cd3d9cd4",
+        "source_fact:v1:7b162650a547cff68a9edde21fc12193ecb90c42cbbce81e2296e2823aec5548",
+        "source_fact:v1:815ddcc232f3df043db07224d7c43a136949806db5c24745e4dcc16a2803d066",
+        "source_fact:v1:83e0e32d8df1204a47ae5fc86bd5ab250d4c25598b81f1781a8ec821800058e3",
+        "source_fact:v1:91bac351f5d6f475f9ff62f2d90953f7ab325f60192a6630ecf3cc884b3859c9",
+        "source_fact:v1:aa8cf2b0f0ba94b75cb8f01fff59bf57bf113734252d65bc11c6a4c6fc90c734",
+        "source_fact:v1:ac6521a2565434f89c6e888765e4e34831efbf044e530823c92f08bd007963bc",
+        "source_fact:v1:c15dc544bfeb81de6451dfca5abc4adc73772f1bca0f7cc54c04b50d5f67504e",
+        "source_fact:v1:ca532792a52fb57635c9af911de1f0cd4fba3522b9454252dff0b41263643244",
+        "source_fact:v1:e138645dc361f3b3b483fea6450b5c1612fc51975cd1cf65031136f82b0a3116",
+        "source_fact:v1:f7e263b65509ab9fd19365d749f97ec7465bdb796f099b424d67cd2d07890d7b"
+      ],
+      "source_published_kst": "2026-10-16T09:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플",
+      "telegram_core_fact": "[파이낸셜뉴스]애플 최고경영자(CEO)가 글로벌 메모리 반도체 공급난을 '위기'로 규정하고 중국산 반도체 도입을 포함한 모든 선택지를 검토할 필요가 있다는 입장을 밝혔다.",
+      "title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플"
     },
     "event:63b93bbfb674d0a80724b568": {
       "first_seen_kst": "2026-10-14T20:43:11+09:00",
@@ -65843,6 +66020,35 @@
       ],
       "source_published_kst": "2026-10-06T07:04+09:00",
       "title": "\"AI가 돈 될까 고민은 시대착오…반도체 상승장 2028년까지 간다\""
+    },
+    "event:c71aca1ee922f4da171c826e": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.hankyung.com/article/202610166804i",
+      "source": "한국경제",
+      "source_body_digest": "f536fd13c7b5e7f4c903ba889dfdf70378ef924ea022b51d61fcb359eabfeb2d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7e3cd7a8882ab4da424e92e140b660037cc1443efc60909e93637010da5bf44",
+      "source_fact_keys": [
+        "source_fact:v1:0015a519804154a9a58b9d2ffb93d86cb567f9ae1d98ddc285e725ac52e6c3a3",
+        "source_fact:v1:1c76a4ac2a620c94e6ed88a0a0be5d40ad243871bf4e3f4d7057fc01e37efd56",
+        "source_fact:v1:22057cf499cf2bebbcb57b1725b7e710423efa5c5373f538ea550275bc0b6559",
+        "source_fact:v1:3c89822ead55b9cbfdb6dede2a95dbbf46773d908e696f0b572e81665c011d8a",
+        "source_fact:v1:5b3303d822f015352413b9cd6f4df487c91eca14bf1baea3c7a2aa6f748cc1c9",
+        "source_fact:v1:5d364ea2f3a50a9780ec90f82a46305dfd0fe7dd76a73668481f019bbe6ad2ed",
+        "source_fact:v1:712185b38f1f5394800bd80da0af2fd8b70c7686883f8d8adcea77ba9b9383ae",
+        "source_fact:v1:9ac808c466e604cb7c7f000b043ea12000b54a2db292cd6b57dd2d17ff7b1b90",
+        "source_fact:v1:d7545867f1cd925738fbc8082ca4286587763986aa6983a61d39322ab52edcea",
+        "source_fact:v1:ddc3c68b1ec98226c4cfc9afd61ac143d1662d00e3c455f681e95c3a203118bb"
+      ],
+      "source_published_kst": "2026-10-16T16:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "가트너 \"메모리 공급난, 2028년까지 이어질 것\"",
+      "telegram_core_fact": "가트너는 이 보고서를 통해 D램과 낸드플래시 등 메모리 공급 부족이 2028년까지 이어질 가능성이 높다고 전망했다.",
+      "title": "가트너 \"메모리 공급난, 2028년까지 이어질 것\""
     },
     "event:c738c48ec1ed42e1dff107fa": {
       "first_seen_kst": "2026-10-14T16:26:08+09:00",
@@ -78764,6 +78970,39 @@
       "source_published_kst": "2026-10-07T08:04+09:00",
       "title": "\"AI발 칩 부족 우려, 물가로 번질 수도\"…샌프란 연은 총재의 경고"
     },
+    "fact:239abb194b9ab8738bed591f": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.fnnews.com/news/202610160941043476",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "602b9388a10b8e998bc890f84fe44701bb14ef7bea86e07cba29f59689ed7397",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d1d8e63a44aca3586d36894aa20ad3d1495453186216ab805ca15786dced3375",
+      "source_fact_keys": [
+        "source_fact:v1:25ed8b4c4e1a6871687f599967514a9d4613ba257d923c869ddb1d67c5d3226e",
+        "source_fact:v1:2e6760b6205c46a9e13026072a4cbde6f009611fbd71ebccace9f34dd4ff023c",
+        "source_fact:v1:4f524d1b301280e4bd27524446f38740a2494aeb461cb1bc5eb5b6529fae7fa6",
+        "source_fact:v1:6db388be957a20254b262cb728042eafeee83be652e75054748b0351cd3d9cd4",
+        "source_fact:v1:7b162650a547cff68a9edde21fc12193ecb90c42cbbce81e2296e2823aec5548",
+        "source_fact:v1:815ddcc232f3df043db07224d7c43a136949806db5c24745e4dcc16a2803d066",
+        "source_fact:v1:83e0e32d8df1204a47ae5fc86bd5ab250d4c25598b81f1781a8ec821800058e3",
+        "source_fact:v1:91bac351f5d6f475f9ff62f2d90953f7ab325f60192a6630ecf3cc884b3859c9",
+        "source_fact:v1:aa8cf2b0f0ba94b75cb8f01fff59bf57bf113734252d65bc11c6a4c6fc90c734",
+        "source_fact:v1:ac6521a2565434f89c6e888765e4e34831efbf044e530823c92f08bd007963bc",
+        "source_fact:v1:c15dc544bfeb81de6451dfca5abc4adc73772f1bca0f7cc54c04b50d5f67504e",
+        "source_fact:v1:ca532792a52fb57635c9af911de1f0cd4fba3522b9454252dff0b41263643244",
+        "source_fact:v1:e138645dc361f3b3b483fea6450b5c1612fc51975cd1cf65031136f82b0a3116",
+        "source_fact:v1:f7e263b65509ab9fd19365d749f97ec7465bdb796f099b424d67cd2d07890d7b"
+      ],
+      "source_published_kst": "2026-10-16T09:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플",
+      "telegram_core_fact": "[파이낸셜뉴스]애플 최고경영자(CEO)가 글로벌 메모리 반도체 공급난을 '위기'로 규정하고 중국산 반도체 도입을 포함한 모든 선택지를 검토할 필요가 있다는 입장을 밝혔다.",
+      "title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플"
+    },
     "fact:239b0d7ea3dc12e465ce8eb2": {
       "first_seen_kst": "2026-10-13T13:44:57+09:00",
       "lanes": {
@@ -81315,6 +81554,26 @@
       ],
       "source_published_kst": "2026-10-05T18:17+09:00",
       "title": "'전고체 배터리' 기대감…한주새 ETF 12% 뛰어"
+    },
+    "fact:2e1f392df8b66e62cdd25eeb": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261014168151002",
+      "source": "연합뉴스",
+      "source_body_digest": "e5cb4ea6020e60e4b8aa885433fac280e889c609ccef2f211bdc89d3fea20b6d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c18b3b28dbf9b0a9480408f16266a3d4d27c998491faa97a497eeed7c6c1a233",
+      "source_fact_keys": [
+        "source_fact:v1:37d91899f3ca9f916b507bf65c4795cd163d3b2568b0b99f6743a66ffa69a8a2"
+      ],
+      "source_published_kst": "2026-10-15T18:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"관세청이 송치한 1천582건 처리는?\"…공소청 \"순차 처리\"(종합) | 연합뉴스",
+      "telegram_core_fact": "형사소송법 개정으로 이달 2일 검찰청이 폐지되고 공소청이 출범한 뒤 관세청 특별사법경찰(특사경)이 송치한 사건 처리 관련 소통이 제대로 이뤄지지 않고 있다는 지적이 나왔다.",
+      "title": "\"관세청이 송치한 1천582건 처리는?\"…공소청 \"순차 처리\"(종합) | 연합뉴스"
     },
     "fact:2e2b34136f57d406568522ae": {
       "first_seen_kst": "2026-10-12T06:27:02+09:00",
@@ -107280,6 +107539,30 @@
       "telegram_core_fact": "SK하이닉스의 대관 기능 강화 움직임은 메모리 반도체 수요의 폭발적인 증가와 맞닿아 있다.",
       "title": "메모리 확장 사활 건 SK하이닉스, 美 대관 역량 강화로 영토 확장 정조준"
     },
+    "fact:933f433be7dc74e118f1eb4e": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636302",
+      "source": "이투데이",
+      "source_body_digest": "27c0d85b72aaf99a3a73272b15f312d30db5c9c6f815f8185ab20dcf503fe740",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0b937a130ba18fbd4db57cb96152ca2e0b8b0b95fa7ca1a15a1e41a938f92f48",
+      "source_fact_keys": [
+        "source_fact:v1:2a24bd4c73c37bea86778c75eeb224f124856322d44e965f9c8af0ef86b596d6",
+        "source_fact:v1:325d0fc101338e908cbc5536790e4c71744f5095a80462942f9699101956458a",
+        "source_fact:v1:6cf9e83bac1e12ab146c64349af2f68b0daa7456e4ed06fed2a0d630ee85c191",
+        "source_fact:v1:8dd4c2e56bf89ccd7bff74de0fb0393db80665459b8cf6a58a9c1919292f84c2",
+        "source_fact:v1:d380a8f0de72533d16f88cf8788584891fd91b829d17f47652c03f4192e7e439"
+      ],
+      "source_published_kst": "2026-10-15T17:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "“국장은 틀렸어”···서학개미, 10월 들어 美주식 4조원 순매수 [오천피 쇼크]",
+      "telegram_core_fact": "국내 증시가 급락하는 가운데 해외 주식에 투자하는 개인투자자 ‘서학개미’들이 이달 들어 약 4조원어치를 사들이며 미국 주식 투자 규모를 다시 늘리는 모습이다. 한국예탁결제원 증권정보포털(SEIBro)에 따르면 국내 투자자들은 이달 1~14일(10거래일) 미국 주식을 29억5994만 달러(약 4조원)어치 순매수했다.",
+      "title": "“국장은 틀렸어”···서학개미, 10월 들어 美주식 4조원 순매수 [오천피 쇼크]"
+    },
     "fact:934a50592ff544f45e2415a2": {
       "first_seen_kst": "2026-10-08T15:16:19+09:00",
       "lanes": {
@@ -117865,6 +118148,35 @@
       ],
       "source_published_kst": "2026-10-07T08:29+09:00",
       "title": "SK證 “KB·신한·하나금융, 주주환원 50%대…금리 상승·환율 하락 수혜”"
+    },
+    "fact:b760f7a45875403573de2e5f": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.hankyung.com/article/202610166804i",
+      "source": "한국경제",
+      "source_body_digest": "f536fd13c7b5e7f4c903ba889dfdf70378ef924ea022b51d61fcb359eabfeb2d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7e3cd7a8882ab4da424e92e140b660037cc1443efc60909e93637010da5bf44",
+      "source_fact_keys": [
+        "source_fact:v1:0015a519804154a9a58b9d2ffb93d86cb567f9ae1d98ddc285e725ac52e6c3a3",
+        "source_fact:v1:1c76a4ac2a620c94e6ed88a0a0be5d40ad243871bf4e3f4d7057fc01e37efd56",
+        "source_fact:v1:22057cf499cf2bebbcb57b1725b7e710423efa5c5373f538ea550275bc0b6559",
+        "source_fact:v1:3c89822ead55b9cbfdb6dede2a95dbbf46773d908e696f0b572e81665c011d8a",
+        "source_fact:v1:5b3303d822f015352413b9cd6f4df487c91eca14bf1baea3c7a2aa6f748cc1c9",
+        "source_fact:v1:5d364ea2f3a50a9780ec90f82a46305dfd0fe7dd76a73668481f019bbe6ad2ed",
+        "source_fact:v1:712185b38f1f5394800bd80da0af2fd8b70c7686883f8d8adcea77ba9b9383ae",
+        "source_fact:v1:9ac808c466e604cb7c7f000b043ea12000b54a2db292cd6b57dd2d17ff7b1b90",
+        "source_fact:v1:d7545867f1cd925738fbc8082ca4286587763986aa6983a61d39322ab52edcea",
+        "source_fact:v1:ddc3c68b1ec98226c4cfc9afd61ac143d1662d00e3c455f681e95c3a203118bb"
+      ],
+      "source_published_kst": "2026-10-16T16:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "가트너 \"메모리 공급난, 2028년까지 이어질 것\"",
+      "telegram_core_fact": "가트너는 이 보고서를 통해 D램과 낸드플래시 등 메모리 공급 부족이 2028년까지 이어질 가능성이 높다고 전망했다.",
+      "title": "가트너 \"메모리 공급난, 2028년까지 이어질 것\""
     },
     "fact:b76c4b9377d1e155202af472": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
@@ -147208,6 +147520,26 @@
       "telegram_core_fact": "대만 전력사업을 주도할 합작법인은 LS일렉트릭이 50%, 난야플라스틱 40%, KHI가 10%를 각각 출자해 설립했으며 사명은 ‘남아낙성(南亞樂星)’으로 정했다.",
       "title": "LS일렉트릭, 대만 최대 석화그룹과 합작법인…현지 사업 확대"
     },
+    "link:1b94c2b4b6729f7f713aa13e": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261014168151002",
+      "source": "연합뉴스",
+      "source_body_digest": "e5cb4ea6020e60e4b8aa885433fac280e889c609ccef2f211bdc89d3fea20b6d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c18b3b28dbf9b0a9480408f16266a3d4d27c998491faa97a497eeed7c6c1a233",
+      "source_fact_keys": [
+        "source_fact:v1:37d91899f3ca9f916b507bf65c4795cd163d3b2568b0b99f6743a66ffa69a8a2"
+      ],
+      "source_published_kst": "2026-10-15T18:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"관세청이 송치한 1천582건 처리는?\"…공소청 \"순차 처리\"(종합) | 연합뉴스",
+      "telegram_core_fact": "형사소송법 개정으로 이달 2일 검찰청이 폐지되고 공소청이 출범한 뒤 관세청 특별사법경찰(특사경)이 송치한 사건 처리 관련 소통이 제대로 이뤄지지 않고 있다는 지적이 나왔다.",
+      "title": "\"관세청이 송치한 1천582건 처리는?\"…공소청 \"순차 처리\"(종합) | 연합뉴스"
+    },
     "link:1b97b55e21d567d4385e477b": {
       "first_seen_kst": "2026-10-07T18:58:51+09:00",
       "lanes": {
@@ -149788,6 +150120,24 @@
       "link": "https://www.yna.co.kr/view/AKR20260921105700054",
       "source": "연합뉴스",
       "title": "광주 반도체 클러스터 조성 설비 투자 본격 시동 | 연합뉴스"
+    },
+    "link:24091b7edbbf2fa0ae3e363a": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636826",
+      "source": "이투데이",
+      "source_body_digest": "e9bada595691e742899972b11365151e042df1c3f594e51e64cce4e65c263221",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-16T16:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대엘리베이터, 무벡스 지분 매각·자사주 1700억 소각…주주환원 강화",
+      "telegram_core_fact": "매각이 완료되면 현대엘리베이터의 현대무벡스 지분율은 기존 48.89%에서 43.04%로 낮아진다.",
+      "title": "현대엘리베이터, 무벡스 지분 매각·자사주 1700억 소각…주주환원 강화"
     },
     "link:24104423dc720d1146b2645e": {
       "first_seen_kst": "2026-10-05T08:48:57+09:00",
@@ -179684,6 +180034,30 @@
       "source": "파이낸셜뉴스",
       "title": "한투운용, 한가위 맞아 '홍동백서' ACE ETF 4종 추천"
     },
+    "link:7668691dca24fce6b6562dc6": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636302",
+      "source": "이투데이",
+      "source_body_digest": "27c0d85b72aaf99a3a73272b15f312d30db5c9c6f815f8185ab20dcf503fe740",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0b937a130ba18fbd4db57cb96152ca2e0b8b0b95fa7ca1a15a1e41a938f92f48",
+      "source_fact_keys": [
+        "source_fact:v1:2a24bd4c73c37bea86778c75eeb224f124856322d44e965f9c8af0ef86b596d6",
+        "source_fact:v1:325d0fc101338e908cbc5536790e4c71744f5095a80462942f9699101956458a",
+        "source_fact:v1:6cf9e83bac1e12ab146c64349af2f68b0daa7456e4ed06fed2a0d630ee85c191",
+        "source_fact:v1:8dd4c2e56bf89ccd7bff74de0fb0393db80665459b8cf6a58a9c1919292f84c2",
+        "source_fact:v1:d380a8f0de72533d16f88cf8788584891fd91b829d17f47652c03f4192e7e439"
+      ],
+      "source_published_kst": "2026-10-15T17:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "“국장은 틀렸어”···서학개미, 10월 들어 美주식 4조원 순매수 [오천피 쇼크]",
+      "telegram_core_fact": "국내 증시가 급락하는 가운데 해외 주식에 투자하는 개인투자자 ‘서학개미’들이 이달 들어 약 4조원어치를 사들이며 미국 주식 투자 규모를 다시 늘리는 모습이다. 한국예탁결제원 증권정보포털(SEIBro)에 따르면 국내 투자자들은 이달 1~14일(10거래일) 미국 주식을 29억5994만 달러(약 4조원)어치 순매수했다.",
+      "title": "“국장은 틀렸어”···서학개미, 10월 들어 美주식 4조원 순매수 [오천피 쇼크]"
+    },
     "link:76724f36fb330f1c584b7b8a": {
       "first_seen_kst": "2026-09-21T16:48:31+09:00",
       "lanes": {
@@ -183691,6 +184065,35 @@
       "source_title": "“허가 얻을까” SK하이닉스 美 설득 총력",
       "telegram_core_fact": "SK하이닉스가 미국 내 공장 건설을 검토하는 가운데 중국 다롄 공장에 미국산 반도체 장비를 반입하기 위해 미 정부에 허가를 요청하고 있다고 로이터통신이 보도했다. 미 상무부는 지난해 SK하이닉스와 삼성전자의 중국 공장에 대한 미국산 장비 반입 포괄 허가를 취소했다.",
       "title": "“허가 얻을까” SK하이닉스 美 설득 총력"
+    },
+    "link:811d81f2674df72aadae5213": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.hankyung.com/article/202610166804i",
+      "source": "한국경제",
+      "source_body_digest": "f536fd13c7b5e7f4c903ba889dfdf70378ef924ea022b51d61fcb359eabfeb2d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7e3cd7a8882ab4da424e92e140b660037cc1443efc60909e93637010da5bf44",
+      "source_fact_keys": [
+        "source_fact:v1:0015a519804154a9a58b9d2ffb93d86cb567f9ae1d98ddc285e725ac52e6c3a3",
+        "source_fact:v1:1c76a4ac2a620c94e6ed88a0a0be5d40ad243871bf4e3f4d7057fc01e37efd56",
+        "source_fact:v1:22057cf499cf2bebbcb57b1725b7e710423efa5c5373f538ea550275bc0b6559",
+        "source_fact:v1:3c89822ead55b9cbfdb6dede2a95dbbf46773d908e696f0b572e81665c011d8a",
+        "source_fact:v1:5b3303d822f015352413b9cd6f4df487c91eca14bf1baea3c7a2aa6f748cc1c9",
+        "source_fact:v1:5d364ea2f3a50a9780ec90f82a46305dfd0fe7dd76a73668481f019bbe6ad2ed",
+        "source_fact:v1:712185b38f1f5394800bd80da0af2fd8b70c7686883f8d8adcea77ba9b9383ae",
+        "source_fact:v1:9ac808c466e604cb7c7f000b043ea12000b54a2db292cd6b57dd2d17ff7b1b90",
+        "source_fact:v1:d7545867f1cd925738fbc8082ca4286587763986aa6983a61d39322ab52edcea",
+        "source_fact:v1:ddc3c68b1ec98226c4cfc9afd61ac143d1662d00e3c455f681e95c3a203118bb"
+      ],
+      "source_published_kst": "2026-10-16T16:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "가트너 \"메모리 공급난, 2028년까지 이어질 것\"",
+      "telegram_core_fact": "가트너는 이 보고서를 통해 D램과 낸드플래시 등 메모리 공급 부족이 2028년까지 이어질 가능성이 높다고 전망했다.",
+      "title": "가트너 \"메모리 공급난, 2028년까지 이어질 것\""
     },
     "link:812275016a36863c5018c10f": {
       "first_seen_kst": "2026-10-09T21:11:52+09:00",
@@ -188512,6 +188915,24 @@
       ],
       "source_published_kst": "2026-10-07T11:31+09:00",
       "title": "역외IB, 국내 인가 없인 한국물 영업 제한…당국 의견수렴 | 연합뉴스"
+    },
+    "link:8feefe8e2d1f08fb4263fe19": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175336",
+      "source": "매일경제",
+      "source_body_digest": "dfa97493f407b899322ceecd97187b9b2359da117209137daa8c0e0d009b80e6",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-15T19:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "에어 글로벌, 첫 배당 0.28달러·자사주 1억 달러 매입",
+      "telegram_core_fact": "에어 글로벌(AIIR)이 2027 회계연도 주당 0.28달러의 현금배당을 처음 도입하고, 2029년 12월까지 최대 1억 달러 자사주 매입을 추진하는 주주환원 프레임워크를 수립했다고 15일 발표했다.",
+      "title": "에어 글로벌, 첫 배당 0.28달러·자사주 1억 달러 매입"
     },
     "link:90022374f314404a97bab6db": {
       "first_seen_kst": "2026-10-11T11:48:17+09:00",
@@ -201899,6 +202320,39 @@
       "telegram_core_fact": "개인이 1조4790억원, 기타법인이 6620억원 순매수한 가운데 외국인이 2조120억원, 기관이 1290억원 순매도했다.",
       "title": "외국인 2조 매도에 코스피 6400선 붕괴…39거래일 만"
     },
+    "link:b421daddc61746f849e5508a": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.fnnews.com/news/202610160941043476",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "602b9388a10b8e998bc890f84fe44701bb14ef7bea86e07cba29f59689ed7397",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d1d8e63a44aca3586d36894aa20ad3d1495453186216ab805ca15786dced3375",
+      "source_fact_keys": [
+        "source_fact:v1:25ed8b4c4e1a6871687f599967514a9d4613ba257d923c869ddb1d67c5d3226e",
+        "source_fact:v1:2e6760b6205c46a9e13026072a4cbde6f009611fbd71ebccace9f34dd4ff023c",
+        "source_fact:v1:4f524d1b301280e4bd27524446f38740a2494aeb461cb1bc5eb5b6529fae7fa6",
+        "source_fact:v1:6db388be957a20254b262cb728042eafeee83be652e75054748b0351cd3d9cd4",
+        "source_fact:v1:7b162650a547cff68a9edde21fc12193ecb90c42cbbce81e2296e2823aec5548",
+        "source_fact:v1:815ddcc232f3df043db07224d7c43a136949806db5c24745e4dcc16a2803d066",
+        "source_fact:v1:83e0e32d8df1204a47ae5fc86bd5ab250d4c25598b81f1781a8ec821800058e3",
+        "source_fact:v1:91bac351f5d6f475f9ff62f2d90953f7ab325f60192a6630ecf3cc884b3859c9",
+        "source_fact:v1:aa8cf2b0f0ba94b75cb8f01fff59bf57bf113734252d65bc11c6a4c6fc90c734",
+        "source_fact:v1:ac6521a2565434f89c6e888765e4e34831efbf044e530823c92f08bd007963bc",
+        "source_fact:v1:c15dc544bfeb81de6451dfca5abc4adc73772f1bca0f7cc54c04b50d5f67504e",
+        "source_fact:v1:ca532792a52fb57635c9af911de1f0cd4fba3522b9454252dff0b41263643244",
+        "source_fact:v1:e138645dc361f3b3b483fea6450b5c1612fc51975cd1cf65031136f82b0a3116",
+        "source_fact:v1:f7e263b65509ab9fd19365d749f97ec7465bdb796f099b424d67cd2d07890d7b"
+      ],
+      "source_published_kst": "2026-10-16T09:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플",
+      "telegram_core_fact": "[파이낸셜뉴스]애플 최고경영자(CEO)가 글로벌 메모리 반도체 공급난을 '위기'로 규정하고 중국산 반도체 도입을 포함한 모든 선택지를 검토할 필요가 있다는 입장을 밝혔다.",
+      "title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플"
+    },
     "link:b421f8b163fffdb5fd33741b": {
       "first_seen_kst": "2026-10-08T14:21:54+09:00",
       "lanes": {
@@ -203630,6 +204084,24 @@
       "source_title": "딘딘, 16년 전 아메바 인터폰에 대고 무작정 랩…다듀 반응은?",
       "telegram_core_fact": "아메바컬쳐는 2006년 다이나믹듀오가 설립한 음반 레이블로, 2017년 CJ ENM이 인수했다.",
       "title": "딘딘, 16년 전 아메바 인터폰에 대고 무작정 랩…다듀 반응은?"
+    },
+    "link:b920aad7f7afbacd128949ce": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04470646645613576",
+      "source": "이데일리",
+      "source_body_digest": "d1c88e3d0aad94da677ad17424b8a1062556ba8fca702376cd9fd58245d9cfbf",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-16T16:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대엘리, 무벡스 지분 5.8% 매각·자사주 1700억 소각…주주환원 속도",
+      "telegram_core_fact": "이번에 매각하는 현대무벡스 지분은 5.8%로, 주당 매각 가격은 1만7810원이다.",
+      "title": "현대엘리, 무벡스 지분 5.8% 매각·자사주 1700억 소각…주주환원 속도"
     },
     "link:b92a7103c9dc36e235d25a6f": {
       "first_seen_kst": "2026-10-10T01:24:21+09:00",
@@ -240788,6 +241260,24 @@
       "telegram_core_fact": "이영곤 토스증권 리서치센터장도 \"투자자들은 앞으로도 이러한 높은 이익 성장세가 얼마만큼 더 이어질 수 있는 지 주목하고 있다\"며 \"확정실적을 통해 메모리 수급과 가격, HBM, 내년 실적 전망, 주주환원 등에 대한 회사의 구체적인 설명을 확인하는 것이 필요하다\"고 전했다.",
       "title": "D램값 상승·주주환원 기대감… 삼성전자 주가 끌어올릴까"
     },
+    "original:2292ff1a94bf9de9488a83a8": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636826",
+      "source": "이투데이",
+      "source_body_digest": "e9bada595691e742899972b11365151e042df1c3f594e51e64cce4e65c263221",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-16T16:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대엘리베이터, 무벡스 지분 매각·자사주 1700억 소각…주주환원 강화",
+      "telegram_core_fact": "매각이 완료되면 현대엘리베이터의 현대무벡스 지분율은 기존 48.89%에서 43.04%로 낮아진다.",
+      "title": "현대엘리베이터, 무벡스 지분 매각·자사주 1700억 소각…주주환원 강화"
+    },
     "original:229ac0390202bb751ef11d09": {
       "first_seen_kst": "2026-09-26T15:16:00+09:00",
       "lanes": {
@@ -246175,6 +246665,35 @@
       "source_title": "'K-GX' 산업현장은 뛰어가는데…히트펌프 시험기준은 제자리",
       "telegram_core_fact": "정부가 녹색대전환(K-GX) 핵심 기술로 히트펌프 보급 확대에 나섰지만 산업용 대용량 설비를 뒷받침할 국내 시험·인증 체계는 미비한 것으로 드러났다. 기존 사업장의 계약전력이나 수전설비 등을 다시 검토해야 한다.",
       "title": "'K-GX' 산업현장은 뛰어가는데…히트펌프 시험기준은 제자리"
+    },
+    "original:30ad85b07525c8151c2d3b20": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.hankyung.com/article/202610166804i",
+      "source": "한국경제",
+      "source_body_digest": "f536fd13c7b5e7f4c903ba889dfdf70378ef924ea022b51d61fcb359eabfeb2d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7e3cd7a8882ab4da424e92e140b660037cc1443efc60909e93637010da5bf44",
+      "source_fact_keys": [
+        "source_fact:v1:0015a519804154a9a58b9d2ffb93d86cb567f9ae1d98ddc285e725ac52e6c3a3",
+        "source_fact:v1:1c76a4ac2a620c94e6ed88a0a0be5d40ad243871bf4e3f4d7057fc01e37efd56",
+        "source_fact:v1:22057cf499cf2bebbcb57b1725b7e710423efa5c5373f538ea550275bc0b6559",
+        "source_fact:v1:3c89822ead55b9cbfdb6dede2a95dbbf46773d908e696f0b572e81665c011d8a",
+        "source_fact:v1:5b3303d822f015352413b9cd6f4df487c91eca14bf1baea3c7a2aa6f748cc1c9",
+        "source_fact:v1:5d364ea2f3a50a9780ec90f82a46305dfd0fe7dd76a73668481f019bbe6ad2ed",
+        "source_fact:v1:712185b38f1f5394800bd80da0af2fd8b70c7686883f8d8adcea77ba9b9383ae",
+        "source_fact:v1:9ac808c466e604cb7c7f000b043ea12000b54a2db292cd6b57dd2d17ff7b1b90",
+        "source_fact:v1:d7545867f1cd925738fbc8082ca4286587763986aa6983a61d39322ab52edcea",
+        "source_fact:v1:ddc3c68b1ec98226c4cfc9afd61ac143d1662d00e3c455f681e95c3a203118bb"
+      ],
+      "source_published_kst": "2026-10-16T16:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "가트너 \"메모리 공급난, 2028년까지 이어질 것\"",
+      "telegram_core_fact": "가트너는 이 보고서를 통해 D램과 낸드플래시 등 메모리 공급 부족이 2028년까지 이어질 가능성이 높다고 전망했다.",
+      "title": "가트너 \"메모리 공급난, 2028년까지 이어질 것\""
     },
     "original:30c241516e9ce069f786fef5": {
       "first_seen_kst": "2026-10-07T08:36:47+09:00",
@@ -271062,6 +271581,30 @@
       "source_published_kst": "2026-10-07T14:38+09:00",
       "title": "삼보산업, 중동 전쟁에 알루미늄 판가 상승…장기화 땐 수익성 개선 긍정"
     },
+    "original:77742043a67a07cbff96b161": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636302",
+      "source": "이투데이",
+      "source_body_digest": "27c0d85b72aaf99a3a73272b15f312d30db5c9c6f815f8185ab20dcf503fe740",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0b937a130ba18fbd4db57cb96152ca2e0b8b0b95fa7ca1a15a1e41a938f92f48",
+      "source_fact_keys": [
+        "source_fact:v1:2a24bd4c73c37bea86778c75eeb224f124856322d44e965f9c8af0ef86b596d6",
+        "source_fact:v1:325d0fc101338e908cbc5536790e4c71744f5095a80462942f9699101956458a",
+        "source_fact:v1:6cf9e83bac1e12ab146c64349af2f68b0daa7456e4ed06fed2a0d630ee85c191",
+        "source_fact:v1:8dd4c2e56bf89ccd7bff74de0fb0393db80665459b8cf6a58a9c1919292f84c2",
+        "source_fact:v1:d380a8f0de72533d16f88cf8788584891fd91b829d17f47652c03f4192e7e439"
+      ],
+      "source_published_kst": "2026-10-15T17:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "“국장은 틀렸어”···서학개미, 10월 들어 美주식 4조원 순매수 [오천피 쇼크]",
+      "telegram_core_fact": "국내 증시가 급락하는 가운데 해외 주식에 투자하는 개인투자자 ‘서학개미’들이 이달 들어 약 4조원어치를 사들이며 미국 주식 투자 규모를 다시 늘리는 모습이다. 한국예탁결제원 증권정보포털(SEIBro)에 따르면 국내 투자자들은 이달 1~14일(10거래일) 미국 주식을 29억5994만 달러(약 4조원)어치 순매수했다.",
+      "title": "“국장은 틀렸어”···서학개미, 10월 들어 美주식 4조원 순매수 [오천피 쇼크]"
+    },
     "original:7774bb89de978f74209bbeeb": {
       "first_seen_kst": "2026-10-12T23:37:27+09:00",
       "lanes": {
@@ -289066,6 +289609,26 @@
       "source": "이투데이",
       "title": "컬리, 넥스트키친 100% 자회사로…간편식 기획부터 유통까지 내재화"
     },
+    "original:ab3ce4e955baba48fb48c9f6": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261014168151002",
+      "source": "연합뉴스",
+      "source_body_digest": "e5cb4ea6020e60e4b8aa885433fac280e889c609ccef2f211bdc89d3fea20b6d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c18b3b28dbf9b0a9480408f16266a3d4d27c998491faa97a497eeed7c6c1a233",
+      "source_fact_keys": [
+        "source_fact:v1:37d91899f3ca9f916b507bf65c4795cd163d3b2568b0b99f6743a66ffa69a8a2"
+      ],
+      "source_published_kst": "2026-10-15T18:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"관세청이 송치한 1천582건 처리는?\"…공소청 \"순차 처리\"(종합) | 연합뉴스",
+      "telegram_core_fact": "형사소송법 개정으로 이달 2일 검찰청이 폐지되고 공소청이 출범한 뒤 관세청 특별사법경찰(특사경)이 송치한 사건 처리 관련 소통이 제대로 이뤄지지 않고 있다는 지적이 나왔다.",
+      "title": "\"관세청이 송치한 1천582건 처리는?\"…공소청 \"순차 처리\"(종합) | 연합뉴스"
+    },
     "original:ab5189f0f5662341ea82fdb6": {
       "first_seen_kst": "2026-10-10T19:20:50+09:00",
       "lanes": {
@@ -300100,6 +300663,39 @@
       "telegram_core_fact": "이 기준 코스콤 ETF체크에 따르면 ‘RISE 200고배당커버드콜ATM’의 지난 3개월 수익률은 11.06%로 나타났다. 한국거래소에 따르면 작년 말 15조원 수준이던 국내 커버드콜 ETF 순자산 규모는 최근 30조원에 육박했다.",
       "title": "'횡보장 방어' 커버드콜 ETF 순자산 30조 눈앞"
     },
+    "original:cc2c2aa6bd8ec189b61b5b94": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.fnnews.com/news/202610160941043476",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "602b9388a10b8e998bc890f84fe44701bb14ef7bea86e07cba29f59689ed7397",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d1d8e63a44aca3586d36894aa20ad3d1495453186216ab805ca15786dced3375",
+      "source_fact_keys": [
+        "source_fact:v1:25ed8b4c4e1a6871687f599967514a9d4613ba257d923c869ddb1d67c5d3226e",
+        "source_fact:v1:2e6760b6205c46a9e13026072a4cbde6f009611fbd71ebccace9f34dd4ff023c",
+        "source_fact:v1:4f524d1b301280e4bd27524446f38740a2494aeb461cb1bc5eb5b6529fae7fa6",
+        "source_fact:v1:6db388be957a20254b262cb728042eafeee83be652e75054748b0351cd3d9cd4",
+        "source_fact:v1:7b162650a547cff68a9edde21fc12193ecb90c42cbbce81e2296e2823aec5548",
+        "source_fact:v1:815ddcc232f3df043db07224d7c43a136949806db5c24745e4dcc16a2803d066",
+        "source_fact:v1:83e0e32d8df1204a47ae5fc86bd5ab250d4c25598b81f1781a8ec821800058e3",
+        "source_fact:v1:91bac351f5d6f475f9ff62f2d90953f7ab325f60192a6630ecf3cc884b3859c9",
+        "source_fact:v1:aa8cf2b0f0ba94b75cb8f01fff59bf57bf113734252d65bc11c6a4c6fc90c734",
+        "source_fact:v1:ac6521a2565434f89c6e888765e4e34831efbf044e530823c92f08bd007963bc",
+        "source_fact:v1:c15dc544bfeb81de6451dfca5abc4adc73772f1bca0f7cc54c04b50d5f67504e",
+        "source_fact:v1:ca532792a52fb57635c9af911de1f0cd4fba3522b9454252dff0b41263643244",
+        "source_fact:v1:e138645dc361f3b3b483fea6450b5c1612fc51975cd1cf65031136f82b0a3116",
+        "source_fact:v1:f7e263b65509ab9fd19365d749f97ec7465bdb796f099b424d67cd2d07890d7b"
+      ],
+      "source_published_kst": "2026-10-16T09:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플",
+      "telegram_core_fact": "[파이낸셜뉴스]애플 최고경영자(CEO)가 글로벌 메모리 반도체 공급난을 '위기'로 규정하고 중국산 반도체 도입을 포함한 모든 선택지를 검토할 필요가 있다는 입장을 밝혔다.",
+      "title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플"
+    },
     "original:cc3a89a0ef7a00edccfc4b57": {
       "first_seen_kst": "2026-10-08T02:57:10+09:00",
       "lanes": {
@@ -304183,6 +304779,24 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T16:12+09:00",
       "title": "[단독] 美 블랙리스트 中기업에...‘안보’ 검토 없이 발전사업 허가"
+    },
+    "original:d75c63fa41fc7639e247cda3": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04470646645613576",
+      "source": "이데일리",
+      "source_body_digest": "d1c88e3d0aad94da677ad17424b8a1062556ba8fca702376cd9fd58245d9cfbf",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-16T16:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대엘리, 무벡스 지분 5.8% 매각·자사주 1700억 소각…주주환원 속도",
+      "telegram_core_fact": "이번에 매각하는 현대무벡스 지분은 5.8%로, 주당 매각 가격은 1만7810원이다.",
+      "title": "현대엘리, 무벡스 지분 5.8% 매각·자사주 1700억 소각…주주환원 속도"
     },
     "original:d771b55b31250caf69ee6d2b": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
@@ -316109,6 +316723,24 @@
       "source_title": "中·EU, 하이브리드차 수출 '자율규제' 합의…무역분쟁 피해",
       "telegram_core_fact": "중국이 유럽연합(EU)과의 무역 마찰을 피하기 위해 하이브리드 차량 수출을 자체적으로 제한하기로 합의했다.",
       "title": "中·EU, 하이브리드차 수출 '자율규제' 합의…무역분쟁 피해"
+    },
+    "original:fa40f0b5a8c28885a9585f69": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175336",
+      "source": "매일경제",
+      "source_body_digest": "dfa97493f407b899322ceecd97187b9b2359da117209137daa8c0e0d009b80e6",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-15T19:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "에어 글로벌, 첫 배당 0.28달러·자사주 1억 달러 매입",
+      "telegram_core_fact": "에어 글로벌(AIIR)이 2027 회계연도 주당 0.28달러의 현금배당을 처음 도입하고, 2029년 12월까지 최대 1억 달러 자사주 매입을 추진하는 주주환원 프레임워크를 수립했다고 15일 발표했다.",
+      "title": "에어 글로벌, 첫 배당 0.28달러·자사주 1억 달러 매입"
     },
     "original:fa6419983d4517f901a1eb2d": {
       "first_seen_kst": "2026-09-23T06:51:17+09:00",
@@ -343799,6 +344431,39 @@
       "source_published_kst": "2026-10-07T12:19+09:00",
       "title": "SK에너지·현대오일뱅크 44조 정유 담합 심의…과징금 최대 4.6조 가능(종합)"
     },
+    "source_fact:12e5db456c2ab6e668d0b9ec": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.fnnews.com/news/202610160941043476",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "602b9388a10b8e998bc890f84fe44701bb14ef7bea86e07cba29f59689ed7397",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d1d8e63a44aca3586d36894aa20ad3d1495453186216ab805ca15786dced3375",
+      "source_fact_keys": [
+        "source_fact:v1:25ed8b4c4e1a6871687f599967514a9d4613ba257d923c869ddb1d67c5d3226e",
+        "source_fact:v1:2e6760b6205c46a9e13026072a4cbde6f009611fbd71ebccace9f34dd4ff023c",
+        "source_fact:v1:4f524d1b301280e4bd27524446f38740a2494aeb461cb1bc5eb5b6529fae7fa6",
+        "source_fact:v1:6db388be957a20254b262cb728042eafeee83be652e75054748b0351cd3d9cd4",
+        "source_fact:v1:7b162650a547cff68a9edde21fc12193ecb90c42cbbce81e2296e2823aec5548",
+        "source_fact:v1:815ddcc232f3df043db07224d7c43a136949806db5c24745e4dcc16a2803d066",
+        "source_fact:v1:83e0e32d8df1204a47ae5fc86bd5ab250d4c25598b81f1781a8ec821800058e3",
+        "source_fact:v1:91bac351f5d6f475f9ff62f2d90953f7ab325f60192a6630ecf3cc884b3859c9",
+        "source_fact:v1:aa8cf2b0f0ba94b75cb8f01fff59bf57bf113734252d65bc11c6a4c6fc90c734",
+        "source_fact:v1:ac6521a2565434f89c6e888765e4e34831efbf044e530823c92f08bd007963bc",
+        "source_fact:v1:c15dc544bfeb81de6451dfca5abc4adc73772f1bca0f7cc54c04b50d5f67504e",
+        "source_fact:v1:ca532792a52fb57635c9af911de1f0cd4fba3522b9454252dff0b41263643244",
+        "source_fact:v1:e138645dc361f3b3b483fea6450b5c1612fc51975cd1cf65031136f82b0a3116",
+        "source_fact:v1:f7e263b65509ab9fd19365d749f97ec7465bdb796f099b424d67cd2d07890d7b"
+      ],
+      "source_published_kst": "2026-10-16T09:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플",
+      "telegram_core_fact": "[파이낸셜뉴스]애플 최고경영자(CEO)가 글로벌 메모리 반도체 공급난을 '위기'로 규정하고 중국산 반도체 도입을 포함한 모든 선택지를 검토할 필요가 있다는 입장을 밝혔다.",
+      "title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플"
+    },
     "source_fact:12e8edb9c80205c2e2af972b": {
       "first_seen_kst": "2026-10-14T01:23:44+09:00",
       "lanes": {
@@ -343987,6 +344652,35 @@
       "source_title": "신현송 \"원·달러환율, 예년 대비 여전히 높아⋯추가 하락 여지 있다\" [국감]",
       "telegram_core_fact": "신현송 한국은행 총재는 1300원대 수준인 원·달러 환율에 대해 추가 하락 여지가 있다고 12일 밝혔다.",
       "title": "신현송 \"원·달러환율, 예년 대비 여전히 높아⋯추가 하락 여지 있다\" [국감]"
+    },
+    "source_fact:132275084d4c1bebd65e8283": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.hankyung.com/article/202610166804i",
+      "source": "한국경제",
+      "source_body_digest": "f536fd13c7b5e7f4c903ba889dfdf70378ef924ea022b51d61fcb359eabfeb2d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7e3cd7a8882ab4da424e92e140b660037cc1443efc60909e93637010da5bf44",
+      "source_fact_keys": [
+        "source_fact:v1:0015a519804154a9a58b9d2ffb93d86cb567f9ae1d98ddc285e725ac52e6c3a3",
+        "source_fact:v1:1c76a4ac2a620c94e6ed88a0a0be5d40ad243871bf4e3f4d7057fc01e37efd56",
+        "source_fact:v1:22057cf499cf2bebbcb57b1725b7e710423efa5c5373f538ea550275bc0b6559",
+        "source_fact:v1:3c89822ead55b9cbfdb6dede2a95dbbf46773d908e696f0b572e81665c011d8a",
+        "source_fact:v1:5b3303d822f015352413b9cd6f4df487c91eca14bf1baea3c7a2aa6f748cc1c9",
+        "source_fact:v1:5d364ea2f3a50a9780ec90f82a46305dfd0fe7dd76a73668481f019bbe6ad2ed",
+        "source_fact:v1:712185b38f1f5394800bd80da0af2fd8b70c7686883f8d8adcea77ba9b9383ae",
+        "source_fact:v1:9ac808c466e604cb7c7f000b043ea12000b54a2db292cd6b57dd2d17ff7b1b90",
+        "source_fact:v1:d7545867f1cd925738fbc8082ca4286587763986aa6983a61d39322ab52edcea",
+        "source_fact:v1:ddc3c68b1ec98226c4cfc9afd61ac143d1662d00e3c455f681e95c3a203118bb"
+      ],
+      "source_published_kst": "2026-10-16T16:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "가트너 \"메모리 공급난, 2028년까지 이어질 것\"",
+      "telegram_core_fact": "가트너는 이 보고서를 통해 D램과 낸드플래시 등 메모리 공급 부족이 2028년까지 이어질 가능성이 높다고 전망했다.",
+      "title": "가트너 \"메모리 공급난, 2028년까지 이어질 것\""
     },
     "source_fact:132442d3f3002e1e4c391571": {
       "first_seen_kst": "2026-10-09T17:32:22+09:00",
@@ -361109,6 +361803,35 @@
       "source_published_kst": "2026-10-06T13:24+09:00",
       "title": "통합항공사 뜨자 남은 10.58%…산은, 한진칼 지분 '엑시트 셈법' 관심집중 [fn마켓워치]"
     },
+    "source_fact:1fa2ed736d47f8bad103ee6e": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.hankyung.com/article/202610166804i",
+      "source": "한국경제",
+      "source_body_digest": "f536fd13c7b5e7f4c903ba889dfdf70378ef924ea022b51d61fcb359eabfeb2d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7e3cd7a8882ab4da424e92e140b660037cc1443efc60909e93637010da5bf44",
+      "source_fact_keys": [
+        "source_fact:v1:0015a519804154a9a58b9d2ffb93d86cb567f9ae1d98ddc285e725ac52e6c3a3",
+        "source_fact:v1:1c76a4ac2a620c94e6ed88a0a0be5d40ad243871bf4e3f4d7057fc01e37efd56",
+        "source_fact:v1:22057cf499cf2bebbcb57b1725b7e710423efa5c5373f538ea550275bc0b6559",
+        "source_fact:v1:3c89822ead55b9cbfdb6dede2a95dbbf46773d908e696f0b572e81665c011d8a",
+        "source_fact:v1:5b3303d822f015352413b9cd6f4df487c91eca14bf1baea3c7a2aa6f748cc1c9",
+        "source_fact:v1:5d364ea2f3a50a9780ec90f82a46305dfd0fe7dd76a73668481f019bbe6ad2ed",
+        "source_fact:v1:712185b38f1f5394800bd80da0af2fd8b70c7686883f8d8adcea77ba9b9383ae",
+        "source_fact:v1:9ac808c466e604cb7c7f000b043ea12000b54a2db292cd6b57dd2d17ff7b1b90",
+        "source_fact:v1:d7545867f1cd925738fbc8082ca4286587763986aa6983a61d39322ab52edcea",
+        "source_fact:v1:ddc3c68b1ec98226c4cfc9afd61ac143d1662d00e3c455f681e95c3a203118bb"
+      ],
+      "source_published_kst": "2026-10-16T16:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "가트너 \"메모리 공급난, 2028년까지 이어질 것\"",
+      "telegram_core_fact": "가트너는 이 보고서를 통해 D램과 낸드플래시 등 메모리 공급 부족이 2028년까지 이어질 가능성이 높다고 전망했다.",
+      "title": "가트너 \"메모리 공급난, 2028년까지 이어질 것\""
+    },
     "source_fact:1fa5167f64cd5752ceb10ea1": {
       "first_seen_kst": "2026-10-08T14:55:40+09:00",
       "lanes": {
@@ -361159,6 +361882,26 @@
       "source_title": "후티, 사우디 리야드 공항 대공습…12명 사망·309명 부상(종합)",
       "telegram_core_fact": "후티는 올해 7월 사우디 및 사우디 지원을 받는 예멘 정부군을 상대로 2022년 휴전 이후 4년 만에 공세를 재개한 뒤 홍해 일부 지역을 장악하고 사우디 공격 범위를 확대하고 있다.",
       "title": "후티, 사우디 리야드 공항 대공습…12명 사망·309명 부상(종합)"
+    },
+    "source_fact:1fa844d7a32128c6553df813": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261014168151002",
+      "source": "연합뉴스",
+      "source_body_digest": "e5cb4ea6020e60e4b8aa885433fac280e889c609ccef2f211bdc89d3fea20b6d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c18b3b28dbf9b0a9480408f16266a3d4d27c998491faa97a497eeed7c6c1a233",
+      "source_fact_keys": [
+        "source_fact:v1:37d91899f3ca9f916b507bf65c4795cd163d3b2568b0b99f6743a66ffa69a8a2"
+      ],
+      "source_published_kst": "2026-10-15T18:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"관세청이 송치한 1천582건 처리는?\"…공소청 \"순차 처리\"(종합) | 연합뉴스",
+      "telegram_core_fact": "형사소송법 개정으로 이달 2일 검찰청이 폐지되고 공소청이 출범한 뒤 관세청 특별사법경찰(특사경)이 송치한 사건 처리 관련 소통이 제대로 이뤄지지 않고 있다는 지적이 나왔다.",
+      "title": "\"관세청이 송치한 1천582건 처리는?\"…공소청 \"순차 처리\"(종합) | 연합뉴스"
     },
     "source_fact:1fac88cbbfd5bdf40a35eeef": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
@@ -390287,6 +391030,39 @@
       "source_published_kst": "2026-10-05T21:36+09:00",
       "title": "엑스 컴퓨트, 조지아 AI 클러스터 인수..고객계약 5년 연장"
     },
+    "source_fact:347506932cdbd0aab818e6dc": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.fnnews.com/news/202610160941043476",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "602b9388a10b8e998bc890f84fe44701bb14ef7bea86e07cba29f59689ed7397",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d1d8e63a44aca3586d36894aa20ad3d1495453186216ab805ca15786dced3375",
+      "source_fact_keys": [
+        "source_fact:v1:25ed8b4c4e1a6871687f599967514a9d4613ba257d923c869ddb1d67c5d3226e",
+        "source_fact:v1:2e6760b6205c46a9e13026072a4cbde6f009611fbd71ebccace9f34dd4ff023c",
+        "source_fact:v1:4f524d1b301280e4bd27524446f38740a2494aeb461cb1bc5eb5b6529fae7fa6",
+        "source_fact:v1:6db388be957a20254b262cb728042eafeee83be652e75054748b0351cd3d9cd4",
+        "source_fact:v1:7b162650a547cff68a9edde21fc12193ecb90c42cbbce81e2296e2823aec5548",
+        "source_fact:v1:815ddcc232f3df043db07224d7c43a136949806db5c24745e4dcc16a2803d066",
+        "source_fact:v1:83e0e32d8df1204a47ae5fc86bd5ab250d4c25598b81f1781a8ec821800058e3",
+        "source_fact:v1:91bac351f5d6f475f9ff62f2d90953f7ab325f60192a6630ecf3cc884b3859c9",
+        "source_fact:v1:aa8cf2b0f0ba94b75cb8f01fff59bf57bf113734252d65bc11c6a4c6fc90c734",
+        "source_fact:v1:ac6521a2565434f89c6e888765e4e34831efbf044e530823c92f08bd007963bc",
+        "source_fact:v1:c15dc544bfeb81de6451dfca5abc4adc73772f1bca0f7cc54c04b50d5f67504e",
+        "source_fact:v1:ca532792a52fb57635c9af911de1f0cd4fba3522b9454252dff0b41263643244",
+        "source_fact:v1:e138645dc361f3b3b483fea6450b5c1612fc51975cd1cf65031136f82b0a3116",
+        "source_fact:v1:f7e263b65509ab9fd19365d749f97ec7465bdb796f099b424d67cd2d07890d7b"
+      ],
+      "source_published_kst": "2026-10-16T09:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플",
+      "telegram_core_fact": "[파이낸셜뉴스]애플 최고경영자(CEO)가 글로벌 메모리 반도체 공급난을 '위기'로 규정하고 중국산 반도체 도입을 포함한 모든 선택지를 검토할 필요가 있다는 입장을 밝혔다.",
+      "title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플"
+    },
     "source_fact:347986a8d2ee712261eae528": {
       "first_seen_kst": "2026-10-07T05:33:37+09:00",
       "lanes": {
@@ -399101,6 +399877,39 @@
       ],
       "source_published_kst": "2026-10-06T10:00+09:00",
       "title": "LG전자, 르노 '유럽 첫 상용 SDV'에 통합 콕핏 솔루션 공급"
+    },
+    "source_fact:3b0770894f34197adb211683": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.fnnews.com/news/202610160941043476",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "602b9388a10b8e998bc890f84fe44701bb14ef7bea86e07cba29f59689ed7397",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d1d8e63a44aca3586d36894aa20ad3d1495453186216ab805ca15786dced3375",
+      "source_fact_keys": [
+        "source_fact:v1:25ed8b4c4e1a6871687f599967514a9d4613ba257d923c869ddb1d67c5d3226e",
+        "source_fact:v1:2e6760b6205c46a9e13026072a4cbde6f009611fbd71ebccace9f34dd4ff023c",
+        "source_fact:v1:4f524d1b301280e4bd27524446f38740a2494aeb461cb1bc5eb5b6529fae7fa6",
+        "source_fact:v1:6db388be957a20254b262cb728042eafeee83be652e75054748b0351cd3d9cd4",
+        "source_fact:v1:7b162650a547cff68a9edde21fc12193ecb90c42cbbce81e2296e2823aec5548",
+        "source_fact:v1:815ddcc232f3df043db07224d7c43a136949806db5c24745e4dcc16a2803d066",
+        "source_fact:v1:83e0e32d8df1204a47ae5fc86bd5ab250d4c25598b81f1781a8ec821800058e3",
+        "source_fact:v1:91bac351f5d6f475f9ff62f2d90953f7ab325f60192a6630ecf3cc884b3859c9",
+        "source_fact:v1:aa8cf2b0f0ba94b75cb8f01fff59bf57bf113734252d65bc11c6a4c6fc90c734",
+        "source_fact:v1:ac6521a2565434f89c6e888765e4e34831efbf044e530823c92f08bd007963bc",
+        "source_fact:v1:c15dc544bfeb81de6451dfca5abc4adc73772f1bca0f7cc54c04b50d5f67504e",
+        "source_fact:v1:ca532792a52fb57635c9af911de1f0cd4fba3522b9454252dff0b41263643244",
+        "source_fact:v1:e138645dc361f3b3b483fea6450b5c1612fc51975cd1cf65031136f82b0a3116",
+        "source_fact:v1:f7e263b65509ab9fd19365d749f97ec7465bdb796f099b424d67cd2d07890d7b"
+      ],
+      "source_published_kst": "2026-10-16T09:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플",
+      "telegram_core_fact": "[파이낸셜뉴스]애플 최고경영자(CEO)가 글로벌 메모리 반도체 공급난을 '위기'로 규정하고 중국산 반도체 도입을 포함한 모든 선택지를 검토할 필요가 있다는 입장을 밝혔다.",
+      "title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플"
     },
     "source_fact:3b092dfdcb83744353b541cb": {
       "first_seen_kst": "2026-10-08T07:27:34+09:00",
@@ -423263,6 +424072,35 @@
       "source_published_kst": "2026-10-07T08:51+09:00",
       "title": "트럼프 “한국에 관세 인하 ‘대가’ 요구했다”…대미 투자 거듭 압박"
     },
+    "source_fact:4c4006e4cadb688742192f62": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.hankyung.com/article/202610166804i",
+      "source": "한국경제",
+      "source_body_digest": "f536fd13c7b5e7f4c903ba889dfdf70378ef924ea022b51d61fcb359eabfeb2d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7e3cd7a8882ab4da424e92e140b660037cc1443efc60909e93637010da5bf44",
+      "source_fact_keys": [
+        "source_fact:v1:0015a519804154a9a58b9d2ffb93d86cb567f9ae1d98ddc285e725ac52e6c3a3",
+        "source_fact:v1:1c76a4ac2a620c94e6ed88a0a0be5d40ad243871bf4e3f4d7057fc01e37efd56",
+        "source_fact:v1:22057cf499cf2bebbcb57b1725b7e710423efa5c5373f538ea550275bc0b6559",
+        "source_fact:v1:3c89822ead55b9cbfdb6dede2a95dbbf46773d908e696f0b572e81665c011d8a",
+        "source_fact:v1:5b3303d822f015352413b9cd6f4df487c91eca14bf1baea3c7a2aa6f748cc1c9",
+        "source_fact:v1:5d364ea2f3a50a9780ec90f82a46305dfd0fe7dd76a73668481f019bbe6ad2ed",
+        "source_fact:v1:712185b38f1f5394800bd80da0af2fd8b70c7686883f8d8adcea77ba9b9383ae",
+        "source_fact:v1:9ac808c466e604cb7c7f000b043ea12000b54a2db292cd6b57dd2d17ff7b1b90",
+        "source_fact:v1:d7545867f1cd925738fbc8082ca4286587763986aa6983a61d39322ab52edcea",
+        "source_fact:v1:ddc3c68b1ec98226c4cfc9afd61ac143d1662d00e3c455f681e95c3a203118bb"
+      ],
+      "source_published_kst": "2026-10-16T16:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "가트너 \"메모리 공급난, 2028년까지 이어질 것\"",
+      "telegram_core_fact": "가트너는 이 보고서를 통해 D램과 낸드플래시 등 메모리 공급 부족이 2028년까지 이어질 가능성이 높다고 전망했다.",
+      "title": "가트너 \"메모리 공급난, 2028년까지 이어질 것\""
+    },
     "source_fact:4c41f5502ce7669545260398": {
       "first_seen_kst": "2026-10-07T20:59:13+09:00",
       "lanes": {
@@ -424539,6 +425377,39 @@
       "source_title": "美 AI 공급망도 中 영향권…핵심 부품 5개 분야 점유율 50% 넘어",
       "telegram_core_fact": "희토류와 전력장비, 반도체 등 주요 5개 분야에서 세계 시장 점유율이 각각 50%를 넘는 것으로 나타났다.",
       "title": "美 AI 공급망도 中 영향권…핵심 부품 5개 분야 점유율 50% 넘어"
+    },
+    "source_fact:4d42cebb4b5b254750927e70": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.fnnews.com/news/202610160941043476",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "602b9388a10b8e998bc890f84fe44701bb14ef7bea86e07cba29f59689ed7397",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d1d8e63a44aca3586d36894aa20ad3d1495453186216ab805ca15786dced3375",
+      "source_fact_keys": [
+        "source_fact:v1:25ed8b4c4e1a6871687f599967514a9d4613ba257d923c869ddb1d67c5d3226e",
+        "source_fact:v1:2e6760b6205c46a9e13026072a4cbde6f009611fbd71ebccace9f34dd4ff023c",
+        "source_fact:v1:4f524d1b301280e4bd27524446f38740a2494aeb461cb1bc5eb5b6529fae7fa6",
+        "source_fact:v1:6db388be957a20254b262cb728042eafeee83be652e75054748b0351cd3d9cd4",
+        "source_fact:v1:7b162650a547cff68a9edde21fc12193ecb90c42cbbce81e2296e2823aec5548",
+        "source_fact:v1:815ddcc232f3df043db07224d7c43a136949806db5c24745e4dcc16a2803d066",
+        "source_fact:v1:83e0e32d8df1204a47ae5fc86bd5ab250d4c25598b81f1781a8ec821800058e3",
+        "source_fact:v1:91bac351f5d6f475f9ff62f2d90953f7ab325f60192a6630ecf3cc884b3859c9",
+        "source_fact:v1:aa8cf2b0f0ba94b75cb8f01fff59bf57bf113734252d65bc11c6a4c6fc90c734",
+        "source_fact:v1:ac6521a2565434f89c6e888765e4e34831efbf044e530823c92f08bd007963bc",
+        "source_fact:v1:c15dc544bfeb81de6451dfca5abc4adc73772f1bca0f7cc54c04b50d5f67504e",
+        "source_fact:v1:ca532792a52fb57635c9af911de1f0cd4fba3522b9454252dff0b41263643244",
+        "source_fact:v1:e138645dc361f3b3b483fea6450b5c1612fc51975cd1cf65031136f82b0a3116",
+        "source_fact:v1:f7e263b65509ab9fd19365d749f97ec7465bdb796f099b424d67cd2d07890d7b"
+      ],
+      "source_published_kst": "2026-10-16T09:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플",
+      "telegram_core_fact": "[파이낸셜뉴스]애플 최고경영자(CEO)가 글로벌 메모리 반도체 공급난을 '위기'로 규정하고 중국산 반도체 도입을 포함한 모든 선택지를 검토할 필요가 있다는 입장을 밝혔다.",
+      "title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플"
     },
     "source_fact:4d42ddd917344712506e6a7c": {
       "first_seen_kst": "2026-10-07T08:57:59+09:00",
@@ -426590,6 +427461,39 @@
       ],
       "source_published_kst": "2026-10-05T08:08+09:00",
       "title": "한반도 감시부터 우주의약품 실험까지…K-우주영토 넓힌다[누리호 5차 下]"
+    },
+    "source_fact:4e98f7afff6bf8378e4cc0b5": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.fnnews.com/news/202610160941043476",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "602b9388a10b8e998bc890f84fe44701bb14ef7bea86e07cba29f59689ed7397",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d1d8e63a44aca3586d36894aa20ad3d1495453186216ab805ca15786dced3375",
+      "source_fact_keys": [
+        "source_fact:v1:25ed8b4c4e1a6871687f599967514a9d4613ba257d923c869ddb1d67c5d3226e",
+        "source_fact:v1:2e6760b6205c46a9e13026072a4cbde6f009611fbd71ebccace9f34dd4ff023c",
+        "source_fact:v1:4f524d1b301280e4bd27524446f38740a2494aeb461cb1bc5eb5b6529fae7fa6",
+        "source_fact:v1:6db388be957a20254b262cb728042eafeee83be652e75054748b0351cd3d9cd4",
+        "source_fact:v1:7b162650a547cff68a9edde21fc12193ecb90c42cbbce81e2296e2823aec5548",
+        "source_fact:v1:815ddcc232f3df043db07224d7c43a136949806db5c24745e4dcc16a2803d066",
+        "source_fact:v1:83e0e32d8df1204a47ae5fc86bd5ab250d4c25598b81f1781a8ec821800058e3",
+        "source_fact:v1:91bac351f5d6f475f9ff62f2d90953f7ab325f60192a6630ecf3cc884b3859c9",
+        "source_fact:v1:aa8cf2b0f0ba94b75cb8f01fff59bf57bf113734252d65bc11c6a4c6fc90c734",
+        "source_fact:v1:ac6521a2565434f89c6e888765e4e34831efbf044e530823c92f08bd007963bc",
+        "source_fact:v1:c15dc544bfeb81de6451dfca5abc4adc73772f1bca0f7cc54c04b50d5f67504e",
+        "source_fact:v1:ca532792a52fb57635c9af911de1f0cd4fba3522b9454252dff0b41263643244",
+        "source_fact:v1:e138645dc361f3b3b483fea6450b5c1612fc51975cd1cf65031136f82b0a3116",
+        "source_fact:v1:f7e263b65509ab9fd19365d749f97ec7465bdb796f099b424d67cd2d07890d7b"
+      ],
+      "source_published_kst": "2026-10-16T09:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플",
+      "telegram_core_fact": "[파이낸셜뉴스]애플 최고경영자(CEO)가 글로벌 메모리 반도체 공급난을 '위기'로 규정하고 중국산 반도체 도입을 포함한 모든 선택지를 검토할 필요가 있다는 입장을 밝혔다.",
+      "title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플"
     },
     "source_fact:4e9c93bcb9e1eb72f2328276": {
       "first_seen_kst": "2026-10-08T14:55:40+09:00",
@@ -429853,6 +430757,39 @@
       "source_title": "“수이 비트코인 금융인프라 ‘하시’, 곧 약정액 2배…디파이 키운다”[인터뷰]",
       "telegram_core_fact": "현재 5억달러 참여 약정을 확보한 가운데 국부펀드와 투자은행, 헤지펀드 등 글로벌 기관투자자를 유치해 수이 생태계의 유동성과 금융 인프라를 강화한다는 전략이다.",
       "title": "“수이 비트코인 금융인프라 ‘하시’, 곧 약정액 2배…디파이 키운다”[인터뷰]"
+    },
+    "source_fact:510fef36ba1327a78f36c68b": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.fnnews.com/news/202610160941043476",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "602b9388a10b8e998bc890f84fe44701bb14ef7bea86e07cba29f59689ed7397",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d1d8e63a44aca3586d36894aa20ad3d1495453186216ab805ca15786dced3375",
+      "source_fact_keys": [
+        "source_fact:v1:25ed8b4c4e1a6871687f599967514a9d4613ba257d923c869ddb1d67c5d3226e",
+        "source_fact:v1:2e6760b6205c46a9e13026072a4cbde6f009611fbd71ebccace9f34dd4ff023c",
+        "source_fact:v1:4f524d1b301280e4bd27524446f38740a2494aeb461cb1bc5eb5b6529fae7fa6",
+        "source_fact:v1:6db388be957a20254b262cb728042eafeee83be652e75054748b0351cd3d9cd4",
+        "source_fact:v1:7b162650a547cff68a9edde21fc12193ecb90c42cbbce81e2296e2823aec5548",
+        "source_fact:v1:815ddcc232f3df043db07224d7c43a136949806db5c24745e4dcc16a2803d066",
+        "source_fact:v1:83e0e32d8df1204a47ae5fc86bd5ab250d4c25598b81f1781a8ec821800058e3",
+        "source_fact:v1:91bac351f5d6f475f9ff62f2d90953f7ab325f60192a6630ecf3cc884b3859c9",
+        "source_fact:v1:aa8cf2b0f0ba94b75cb8f01fff59bf57bf113734252d65bc11c6a4c6fc90c734",
+        "source_fact:v1:ac6521a2565434f89c6e888765e4e34831efbf044e530823c92f08bd007963bc",
+        "source_fact:v1:c15dc544bfeb81de6451dfca5abc4adc73772f1bca0f7cc54c04b50d5f67504e",
+        "source_fact:v1:ca532792a52fb57635c9af911de1f0cd4fba3522b9454252dff0b41263643244",
+        "source_fact:v1:e138645dc361f3b3b483fea6450b5c1612fc51975cd1cf65031136f82b0a3116",
+        "source_fact:v1:f7e263b65509ab9fd19365d749f97ec7465bdb796f099b424d67cd2d07890d7b"
+      ],
+      "source_published_kst": "2026-10-16T09:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플",
+      "telegram_core_fact": "[파이낸셜뉴스]애플 최고경영자(CEO)가 글로벌 메모리 반도체 공급난을 '위기'로 규정하고 중국산 반도체 도입을 포함한 모든 선택지를 검토할 필요가 있다는 입장을 밝혔다.",
+      "title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플"
     },
     "source_fact:5112b06f1eedc64b120b5a94": {
       "first_seen_kst": "2026-10-11T09:28:38+09:00",
@@ -440335,6 +441272,35 @@
       "telegram_core_fact": "동아시아 주요국의 연휴가 집중된 이번 10월에도 외국인 관광객의 소비가 백화점과 면세점 매출 증가에 힘을 보탠 것으로 분석된다.",
       "title": "\"작년 역대급 기록 넘었다\" 동아시아 황금연휴에 백화점·면세점 '방긋'"
     },
+    "source_fact:588bd455fb1dcd9e79ebc633": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.hankyung.com/article/202610166804i",
+      "source": "한국경제",
+      "source_body_digest": "f536fd13c7b5e7f4c903ba889dfdf70378ef924ea022b51d61fcb359eabfeb2d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7e3cd7a8882ab4da424e92e140b660037cc1443efc60909e93637010da5bf44",
+      "source_fact_keys": [
+        "source_fact:v1:0015a519804154a9a58b9d2ffb93d86cb567f9ae1d98ddc285e725ac52e6c3a3",
+        "source_fact:v1:1c76a4ac2a620c94e6ed88a0a0be5d40ad243871bf4e3f4d7057fc01e37efd56",
+        "source_fact:v1:22057cf499cf2bebbcb57b1725b7e710423efa5c5373f538ea550275bc0b6559",
+        "source_fact:v1:3c89822ead55b9cbfdb6dede2a95dbbf46773d908e696f0b572e81665c011d8a",
+        "source_fact:v1:5b3303d822f015352413b9cd6f4df487c91eca14bf1baea3c7a2aa6f748cc1c9",
+        "source_fact:v1:5d364ea2f3a50a9780ec90f82a46305dfd0fe7dd76a73668481f019bbe6ad2ed",
+        "source_fact:v1:712185b38f1f5394800bd80da0af2fd8b70c7686883f8d8adcea77ba9b9383ae",
+        "source_fact:v1:9ac808c466e604cb7c7f000b043ea12000b54a2db292cd6b57dd2d17ff7b1b90",
+        "source_fact:v1:d7545867f1cd925738fbc8082ca4286587763986aa6983a61d39322ab52edcea",
+        "source_fact:v1:ddc3c68b1ec98226c4cfc9afd61ac143d1662d00e3c455f681e95c3a203118bb"
+      ],
+      "source_published_kst": "2026-10-16T16:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "가트너 \"메모리 공급난, 2028년까지 이어질 것\"",
+      "telegram_core_fact": "가트너는 이 보고서를 통해 D램과 낸드플래시 등 메모리 공급 부족이 2028년까지 이어질 가능성이 높다고 전망했다.",
+      "title": "가트너 \"메모리 공급난, 2028년까지 이어질 것\""
+    },
     "source_fact:588cb4f08fda23091aeeefb5": {
       "first_seen_kst": "2026-10-08T03:51:03+09:00",
       "lanes": {
@@ -444772,6 +445738,39 @@
       "source_title": "삼성전자, 3분기 호실적에 프리마켓서 1.5% 상승…SK하닉도 1%↑",
       "telegram_core_fact": "삼성전자는 이날 프리마켓 개장 직전 연결 기준 올해 3분기 매출 195조원, 영업이익 107조4000억원의 3분기 잠정 실적을 발표했다.",
       "title": "삼성전자, 3분기 호실적에 프리마켓서 1.5% 상승…SK하닉도 1%↑"
+    },
+    "source_fact:5b9a1ffd3acfb3586ed92123": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.fnnews.com/news/202610160941043476",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "602b9388a10b8e998bc890f84fe44701bb14ef7bea86e07cba29f59689ed7397",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d1d8e63a44aca3586d36894aa20ad3d1495453186216ab805ca15786dced3375",
+      "source_fact_keys": [
+        "source_fact:v1:25ed8b4c4e1a6871687f599967514a9d4613ba257d923c869ddb1d67c5d3226e",
+        "source_fact:v1:2e6760b6205c46a9e13026072a4cbde6f009611fbd71ebccace9f34dd4ff023c",
+        "source_fact:v1:4f524d1b301280e4bd27524446f38740a2494aeb461cb1bc5eb5b6529fae7fa6",
+        "source_fact:v1:6db388be957a20254b262cb728042eafeee83be652e75054748b0351cd3d9cd4",
+        "source_fact:v1:7b162650a547cff68a9edde21fc12193ecb90c42cbbce81e2296e2823aec5548",
+        "source_fact:v1:815ddcc232f3df043db07224d7c43a136949806db5c24745e4dcc16a2803d066",
+        "source_fact:v1:83e0e32d8df1204a47ae5fc86bd5ab250d4c25598b81f1781a8ec821800058e3",
+        "source_fact:v1:91bac351f5d6f475f9ff62f2d90953f7ab325f60192a6630ecf3cc884b3859c9",
+        "source_fact:v1:aa8cf2b0f0ba94b75cb8f01fff59bf57bf113734252d65bc11c6a4c6fc90c734",
+        "source_fact:v1:ac6521a2565434f89c6e888765e4e34831efbf044e530823c92f08bd007963bc",
+        "source_fact:v1:c15dc544bfeb81de6451dfca5abc4adc73772f1bca0f7cc54c04b50d5f67504e",
+        "source_fact:v1:ca532792a52fb57635c9af911de1f0cd4fba3522b9454252dff0b41263643244",
+        "source_fact:v1:e138645dc361f3b3b483fea6450b5c1612fc51975cd1cf65031136f82b0a3116",
+        "source_fact:v1:f7e263b65509ab9fd19365d749f97ec7465bdb796f099b424d67cd2d07890d7b"
+      ],
+      "source_published_kst": "2026-10-16T09:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플",
+      "telegram_core_fact": "[파이낸셜뉴스]애플 최고경영자(CEO)가 글로벌 메모리 반도체 공급난을 '위기'로 규정하고 중국산 반도체 도입을 포함한 모든 선택지를 검토할 필요가 있다는 입장을 밝혔다.",
+      "title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플"
     },
     "source_fact:5b9b26a160aedde338d470a1": {
       "first_seen_kst": "2026-10-07T08:15:28+09:00",
@@ -452874,6 +453873,39 @@
       "source_title": "[제2서울핀테크랩 스타트업 CEO] 제로트러스트(Zero Trust) 기반 금융 보안·인증·결제 솔루션 개발하는 기업 ‘신영이노베이션’",
       "telegram_core_fact": "KB국민카드, 롯데카드, 웰컴저축은행 등 국내 금융사에 누적 1천만 명 이상 고객 기반으로 검증된 인증·보안 기술을 보유하고 있으며, 이 원천기술을 바탕으로 만든 솔루션이 TrustIn Gateway이다.",
       "title": "[제2서울핀테크랩 스타트업 CEO] 제로트러스트(Zero Trust) 기반 금융 보안·인증·결제 솔루션 개발하는 기업 ‘신영이노베이션’"
+    },
+    "source_fact:61bd88208f02cdc759757e53": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.fnnews.com/news/202610160941043476",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "602b9388a10b8e998bc890f84fe44701bb14ef7bea86e07cba29f59689ed7397",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d1d8e63a44aca3586d36894aa20ad3d1495453186216ab805ca15786dced3375",
+      "source_fact_keys": [
+        "source_fact:v1:25ed8b4c4e1a6871687f599967514a9d4613ba257d923c869ddb1d67c5d3226e",
+        "source_fact:v1:2e6760b6205c46a9e13026072a4cbde6f009611fbd71ebccace9f34dd4ff023c",
+        "source_fact:v1:4f524d1b301280e4bd27524446f38740a2494aeb461cb1bc5eb5b6529fae7fa6",
+        "source_fact:v1:6db388be957a20254b262cb728042eafeee83be652e75054748b0351cd3d9cd4",
+        "source_fact:v1:7b162650a547cff68a9edde21fc12193ecb90c42cbbce81e2296e2823aec5548",
+        "source_fact:v1:815ddcc232f3df043db07224d7c43a136949806db5c24745e4dcc16a2803d066",
+        "source_fact:v1:83e0e32d8df1204a47ae5fc86bd5ab250d4c25598b81f1781a8ec821800058e3",
+        "source_fact:v1:91bac351f5d6f475f9ff62f2d90953f7ab325f60192a6630ecf3cc884b3859c9",
+        "source_fact:v1:aa8cf2b0f0ba94b75cb8f01fff59bf57bf113734252d65bc11c6a4c6fc90c734",
+        "source_fact:v1:ac6521a2565434f89c6e888765e4e34831efbf044e530823c92f08bd007963bc",
+        "source_fact:v1:c15dc544bfeb81de6451dfca5abc4adc73772f1bca0f7cc54c04b50d5f67504e",
+        "source_fact:v1:ca532792a52fb57635c9af911de1f0cd4fba3522b9454252dff0b41263643244",
+        "source_fact:v1:e138645dc361f3b3b483fea6450b5c1612fc51975cd1cf65031136f82b0a3116",
+        "source_fact:v1:f7e263b65509ab9fd19365d749f97ec7465bdb796f099b424d67cd2d07890d7b"
+      ],
+      "source_published_kst": "2026-10-16T09:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플",
+      "telegram_core_fact": "[파이낸셜뉴스]애플 최고경영자(CEO)가 글로벌 메모리 반도체 공급난을 '위기'로 규정하고 중국산 반도체 도입을 포함한 모든 선택지를 검토할 필요가 있다는 입장을 밝혔다.",
+      "title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플"
     },
     "source_fact:61be9c261fddf3a536c7f240": {
       "first_seen_kst": "2026-10-11T06:07:21+09:00",
@@ -477253,6 +478285,35 @@
       "source_published_kst": "2026-10-07T08:45+09:00",
       "title": "더 루비콘 프로젝트, MR탱커 3호선 인수..잠재 수주잔고 3억7500만 달러"
     },
+    "source_fact:73fca4b26df975da875e458c": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.hankyung.com/article/202610166804i",
+      "source": "한국경제",
+      "source_body_digest": "f536fd13c7b5e7f4c903ba889dfdf70378ef924ea022b51d61fcb359eabfeb2d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7e3cd7a8882ab4da424e92e140b660037cc1443efc60909e93637010da5bf44",
+      "source_fact_keys": [
+        "source_fact:v1:0015a519804154a9a58b9d2ffb93d86cb567f9ae1d98ddc285e725ac52e6c3a3",
+        "source_fact:v1:1c76a4ac2a620c94e6ed88a0a0be5d40ad243871bf4e3f4d7057fc01e37efd56",
+        "source_fact:v1:22057cf499cf2bebbcb57b1725b7e710423efa5c5373f538ea550275bc0b6559",
+        "source_fact:v1:3c89822ead55b9cbfdb6dede2a95dbbf46773d908e696f0b572e81665c011d8a",
+        "source_fact:v1:5b3303d822f015352413b9cd6f4df487c91eca14bf1baea3c7a2aa6f748cc1c9",
+        "source_fact:v1:5d364ea2f3a50a9780ec90f82a46305dfd0fe7dd76a73668481f019bbe6ad2ed",
+        "source_fact:v1:712185b38f1f5394800bd80da0af2fd8b70c7686883f8d8adcea77ba9b9383ae",
+        "source_fact:v1:9ac808c466e604cb7c7f000b043ea12000b54a2db292cd6b57dd2d17ff7b1b90",
+        "source_fact:v1:d7545867f1cd925738fbc8082ca4286587763986aa6983a61d39322ab52edcea",
+        "source_fact:v1:ddc3c68b1ec98226c4cfc9afd61ac143d1662d00e3c455f681e95c3a203118bb"
+      ],
+      "source_published_kst": "2026-10-16T16:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "가트너 \"메모리 공급난, 2028년까지 이어질 것\"",
+      "telegram_core_fact": "가트너는 이 보고서를 통해 D램과 낸드플래시 등 메모리 공급 부족이 2028년까지 이어질 가능성이 높다고 전망했다.",
+      "title": "가트너 \"메모리 공급난, 2028년까지 이어질 것\""
+    },
     "source_fact:73fcd0c6b47fc70fcb8e0bf5": {
       "first_seen_kst": "2026-10-06T18:16:47+09:00",
       "lanes": {
@@ -484342,6 +485403,39 @@
       "source_title": "트럼프의 뒤끝 \"노벨평화상 내가 받았어야\" ICC 제재",
       "telegram_core_fact": "국제형사재판소(ICC) 초대 재판관과 유엔인권최고대표를 지낸 나비 필라이 ICC 임시 재판관(85)이 올해 노벨 평화상 수상자로 9일(현지시간) 발표되자 도널드 트럼프 미국 행정부가 ICC 추가 제재를 단행하고 이스라엘이 반유대주의적 결정이라고 비난하는 등 후폭풍이 일고 있다.",
       "title": "트럼프의 뒤끝 \"노벨평화상 내가 받았어야\" ICC 제재"
+    },
+    "source_fact:78de1e46fd915bde839d45e9": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.fnnews.com/news/202610160941043476",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "602b9388a10b8e998bc890f84fe44701bb14ef7bea86e07cba29f59689ed7397",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d1d8e63a44aca3586d36894aa20ad3d1495453186216ab805ca15786dced3375",
+      "source_fact_keys": [
+        "source_fact:v1:25ed8b4c4e1a6871687f599967514a9d4613ba257d923c869ddb1d67c5d3226e",
+        "source_fact:v1:2e6760b6205c46a9e13026072a4cbde6f009611fbd71ebccace9f34dd4ff023c",
+        "source_fact:v1:4f524d1b301280e4bd27524446f38740a2494aeb461cb1bc5eb5b6529fae7fa6",
+        "source_fact:v1:6db388be957a20254b262cb728042eafeee83be652e75054748b0351cd3d9cd4",
+        "source_fact:v1:7b162650a547cff68a9edde21fc12193ecb90c42cbbce81e2296e2823aec5548",
+        "source_fact:v1:815ddcc232f3df043db07224d7c43a136949806db5c24745e4dcc16a2803d066",
+        "source_fact:v1:83e0e32d8df1204a47ae5fc86bd5ab250d4c25598b81f1781a8ec821800058e3",
+        "source_fact:v1:91bac351f5d6f475f9ff62f2d90953f7ab325f60192a6630ecf3cc884b3859c9",
+        "source_fact:v1:aa8cf2b0f0ba94b75cb8f01fff59bf57bf113734252d65bc11c6a4c6fc90c734",
+        "source_fact:v1:ac6521a2565434f89c6e888765e4e34831efbf044e530823c92f08bd007963bc",
+        "source_fact:v1:c15dc544bfeb81de6451dfca5abc4adc73772f1bca0f7cc54c04b50d5f67504e",
+        "source_fact:v1:ca532792a52fb57635c9af911de1f0cd4fba3522b9454252dff0b41263643244",
+        "source_fact:v1:e138645dc361f3b3b483fea6450b5c1612fc51975cd1cf65031136f82b0a3116",
+        "source_fact:v1:f7e263b65509ab9fd19365d749f97ec7465bdb796f099b424d67cd2d07890d7b"
+      ],
+      "source_published_kst": "2026-10-16T09:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플",
+      "telegram_core_fact": "[파이낸셜뉴스]애플 최고경영자(CEO)가 글로벌 메모리 반도체 공급난을 '위기'로 규정하고 중국산 반도체 도입을 포함한 모든 선택지를 검토할 필요가 있다는 입장을 밝혔다.",
+      "title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플"
     },
     "source_fact:78e7a2f3d403880efeafab45": {
       "first_seen_kst": "2026-10-13T13:05:30+09:00",
@@ -504751,6 +505845,30 @@
       "telegram_core_fact": "DS자산운용은 12일 인공지능(AI) 반도체 산업 관련 기업에 투자하는 'DS AI반도체액티브 상장지수펀드(ETF)'(종목코드 0243M0)를 오는 13일 유가증권시장에 상장한다고 밝혔다.",
       "title": "DS운용, 'AI 반도체 밸류체인 투자' 액티브 ETF 13일 상장 | 연합뉴스"
     },
+    "source_fact:8876bb1bc207c1a3df65a030": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636302",
+      "source": "이투데이",
+      "source_body_digest": "27c0d85b72aaf99a3a73272b15f312d30db5c9c6f815f8185ab20dcf503fe740",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0b937a130ba18fbd4db57cb96152ca2e0b8b0b95fa7ca1a15a1e41a938f92f48",
+      "source_fact_keys": [
+        "source_fact:v1:2a24bd4c73c37bea86778c75eeb224f124856322d44e965f9c8af0ef86b596d6",
+        "source_fact:v1:325d0fc101338e908cbc5536790e4c71744f5095a80462942f9699101956458a",
+        "source_fact:v1:6cf9e83bac1e12ab146c64349af2f68b0daa7456e4ed06fed2a0d630ee85c191",
+        "source_fact:v1:8dd4c2e56bf89ccd7bff74de0fb0393db80665459b8cf6a58a9c1919292f84c2",
+        "source_fact:v1:d380a8f0de72533d16f88cf8788584891fd91b829d17f47652c03f4192e7e439"
+      ],
+      "source_published_kst": "2026-10-15T17:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "“국장은 틀렸어”···서학개미, 10월 들어 美주식 4조원 순매수 [오천피 쇼크]",
+      "telegram_core_fact": "국내 증시가 급락하는 가운데 해외 주식에 투자하는 개인투자자 ‘서학개미’들이 이달 들어 약 4조원어치를 사들이며 미국 주식 투자 규모를 다시 늘리는 모습이다. 한국예탁결제원 증권정보포털(SEIBro)에 따르면 국내 투자자들은 이달 1~14일(10거래일) 미국 주식을 29억5994만 달러(약 4조원)어치 순매수했다.",
+      "title": "“국장은 틀렸어”···서학개미, 10월 들어 美주식 4조원 순매수 [오천피 쇼크]"
+    },
     "source_fact:887bbe0c6d0b77a2ebe80276": {
       "first_seen_kst": "2026-10-07T16:44:58+09:00",
       "lanes": {
@@ -515402,6 +516520,35 @@
       "source_title": "LX판토스 ‘로봇 물류센터’ 실증 공간 구축",
       "telegram_core_fact": "모바일 로봇과 로봇팔, AI, 디지털 트윈 등 첨단기술을 활용해 사람이 로봇, 일하는 물류센터를 구축하고, 장기적으로는 완전 무인화와 AI 기반 운영 최적화까지 확대한다는 구상이다.",
       "title": "LX판토스 ‘로봇 물류센터’ 실증 공간 구축"
+    },
+    "source_fact:907a62aeaea75a461dae06cf": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.hankyung.com/article/202610166804i",
+      "source": "한국경제",
+      "source_body_digest": "f536fd13c7b5e7f4c903ba889dfdf70378ef924ea022b51d61fcb359eabfeb2d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7e3cd7a8882ab4da424e92e140b660037cc1443efc60909e93637010da5bf44",
+      "source_fact_keys": [
+        "source_fact:v1:0015a519804154a9a58b9d2ffb93d86cb567f9ae1d98ddc285e725ac52e6c3a3",
+        "source_fact:v1:1c76a4ac2a620c94e6ed88a0a0be5d40ad243871bf4e3f4d7057fc01e37efd56",
+        "source_fact:v1:22057cf499cf2bebbcb57b1725b7e710423efa5c5373f538ea550275bc0b6559",
+        "source_fact:v1:3c89822ead55b9cbfdb6dede2a95dbbf46773d908e696f0b572e81665c011d8a",
+        "source_fact:v1:5b3303d822f015352413b9cd6f4df487c91eca14bf1baea3c7a2aa6f748cc1c9",
+        "source_fact:v1:5d364ea2f3a50a9780ec90f82a46305dfd0fe7dd76a73668481f019bbe6ad2ed",
+        "source_fact:v1:712185b38f1f5394800bd80da0af2fd8b70c7686883f8d8adcea77ba9b9383ae",
+        "source_fact:v1:9ac808c466e604cb7c7f000b043ea12000b54a2db292cd6b57dd2d17ff7b1b90",
+        "source_fact:v1:d7545867f1cd925738fbc8082ca4286587763986aa6983a61d39322ab52edcea",
+        "source_fact:v1:ddc3c68b1ec98226c4cfc9afd61ac143d1662d00e3c455f681e95c3a203118bb"
+      ],
+      "source_published_kst": "2026-10-16T16:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "가트너 \"메모리 공급난, 2028년까지 이어질 것\"",
+      "telegram_core_fact": "가트너는 이 보고서를 통해 D램과 낸드플래시 등 메모리 공급 부족이 2028년까지 이어질 가능성이 높다고 전망했다.",
+      "title": "가트너 \"메모리 공급난, 2028년까지 이어질 것\""
     },
     "source_fact:90821c79d38ae90bcb837d5a": {
       "first_seen_kst": "2026-10-08T02:26:35+09:00",
@@ -529444,6 +530591,39 @@
       "telegram_core_fact": "스페이스X가 엔비디아 AI 칩 구매용으로 400억달러(약 55조원)의 자금 조달을 논의중이라는 소식이 전해진 뒤 이 회사의 신용 위험 지표가 사상 최고치로 치솟고 채권 가격이 약세를 보였다. 총 400억달러의 자금 조달이 성사된다면 AI 인프라 구축을 위한 역대 최대 채권 발행 중 하나가 된다.",
       "title": "'400억달러 차입 추진' 보도에 스페이스X 신용위험 급등 | 연합뉴스"
     },
+    "source_fact:9b08d0c5101c64c3a8b76551": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.fnnews.com/news/202610160941043476",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "602b9388a10b8e998bc890f84fe44701bb14ef7bea86e07cba29f59689ed7397",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d1d8e63a44aca3586d36894aa20ad3d1495453186216ab805ca15786dced3375",
+      "source_fact_keys": [
+        "source_fact:v1:25ed8b4c4e1a6871687f599967514a9d4613ba257d923c869ddb1d67c5d3226e",
+        "source_fact:v1:2e6760b6205c46a9e13026072a4cbde6f009611fbd71ebccace9f34dd4ff023c",
+        "source_fact:v1:4f524d1b301280e4bd27524446f38740a2494aeb461cb1bc5eb5b6529fae7fa6",
+        "source_fact:v1:6db388be957a20254b262cb728042eafeee83be652e75054748b0351cd3d9cd4",
+        "source_fact:v1:7b162650a547cff68a9edde21fc12193ecb90c42cbbce81e2296e2823aec5548",
+        "source_fact:v1:815ddcc232f3df043db07224d7c43a136949806db5c24745e4dcc16a2803d066",
+        "source_fact:v1:83e0e32d8df1204a47ae5fc86bd5ab250d4c25598b81f1781a8ec821800058e3",
+        "source_fact:v1:91bac351f5d6f475f9ff62f2d90953f7ab325f60192a6630ecf3cc884b3859c9",
+        "source_fact:v1:aa8cf2b0f0ba94b75cb8f01fff59bf57bf113734252d65bc11c6a4c6fc90c734",
+        "source_fact:v1:ac6521a2565434f89c6e888765e4e34831efbf044e530823c92f08bd007963bc",
+        "source_fact:v1:c15dc544bfeb81de6451dfca5abc4adc73772f1bca0f7cc54c04b50d5f67504e",
+        "source_fact:v1:ca532792a52fb57635c9af911de1f0cd4fba3522b9454252dff0b41263643244",
+        "source_fact:v1:e138645dc361f3b3b483fea6450b5c1612fc51975cd1cf65031136f82b0a3116",
+        "source_fact:v1:f7e263b65509ab9fd19365d749f97ec7465bdb796f099b424d67cd2d07890d7b"
+      ],
+      "source_published_kst": "2026-10-16T09:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플",
+      "telegram_core_fact": "[파이낸셜뉴스]애플 최고경영자(CEO)가 글로벌 메모리 반도체 공급난을 '위기'로 규정하고 중국산 반도체 도입을 포함한 모든 선택지를 검토할 필요가 있다는 입장을 밝혔다.",
+      "title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플"
+    },
     "source_fact:9b1a45a13c2b9bfc5c11984a": {
       "first_seen_kst": "2026-10-07T03:04:14+09:00",
       "lanes": {
@@ -533579,6 +534759,30 @@
       "source_title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나",
       "telegram_core_fact": "특별성과급은 세금과 보험료 등을 공제한 뒤 자사주로 지급된다.",
       "title": "내년 3월 7.5억 지급, 내후년엔 10억대 받는다?…삼성전자 반도체 성과급 더 커지나"
+    },
+    "source_fact:9df9d3fb16c24e980a4ae48c": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636302",
+      "source": "이투데이",
+      "source_body_digest": "27c0d85b72aaf99a3a73272b15f312d30db5c9c6f815f8185ab20dcf503fe740",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0b937a130ba18fbd4db57cb96152ca2e0b8b0b95fa7ca1a15a1e41a938f92f48",
+      "source_fact_keys": [
+        "source_fact:v1:2a24bd4c73c37bea86778c75eeb224f124856322d44e965f9c8af0ef86b596d6",
+        "source_fact:v1:325d0fc101338e908cbc5536790e4c71744f5095a80462942f9699101956458a",
+        "source_fact:v1:6cf9e83bac1e12ab146c64349af2f68b0daa7456e4ed06fed2a0d630ee85c191",
+        "source_fact:v1:8dd4c2e56bf89ccd7bff74de0fb0393db80665459b8cf6a58a9c1919292f84c2",
+        "source_fact:v1:d380a8f0de72533d16f88cf8788584891fd91b829d17f47652c03f4192e7e439"
+      ],
+      "source_published_kst": "2026-10-15T17:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "“국장은 틀렸어”···서학개미, 10월 들어 美주식 4조원 순매수 [오천피 쇼크]",
+      "telegram_core_fact": "국내 증시가 급락하는 가운데 해외 주식에 투자하는 개인투자자 ‘서학개미’들이 이달 들어 약 4조원어치를 사들이며 미국 주식 투자 규모를 다시 늘리는 모습이다. 한국예탁결제원 증권정보포털(SEIBro)에 따르면 국내 투자자들은 이달 1~14일(10거래일) 미국 주식을 29억5994만 달러(약 4조원)어치 순매수했다.",
+      "title": "“국장은 틀렸어”···서학개미, 10월 들어 美주식 4조원 순매수 [오천피 쇼크]"
     },
     "source_fact:9dfc503ea4103df629476f3e": {
       "first_seen_kst": "2026-10-14T02:42:17+09:00",
@@ -559654,6 +560858,39 @@
       ],
       "source_published_kst": "2026-10-06T10:23+09:00",
       "title": "1∼8월 글로벌 전기차 5.9% 증가…현대차그룹은 두 자릿수 성장"
+    },
+    "source_fact:b0e31ca061687915d69f7c4e": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.fnnews.com/news/202610160941043476",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "602b9388a10b8e998bc890f84fe44701bb14ef7bea86e07cba29f59689ed7397",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d1d8e63a44aca3586d36894aa20ad3d1495453186216ab805ca15786dced3375",
+      "source_fact_keys": [
+        "source_fact:v1:25ed8b4c4e1a6871687f599967514a9d4613ba257d923c869ddb1d67c5d3226e",
+        "source_fact:v1:2e6760b6205c46a9e13026072a4cbde6f009611fbd71ebccace9f34dd4ff023c",
+        "source_fact:v1:4f524d1b301280e4bd27524446f38740a2494aeb461cb1bc5eb5b6529fae7fa6",
+        "source_fact:v1:6db388be957a20254b262cb728042eafeee83be652e75054748b0351cd3d9cd4",
+        "source_fact:v1:7b162650a547cff68a9edde21fc12193ecb90c42cbbce81e2296e2823aec5548",
+        "source_fact:v1:815ddcc232f3df043db07224d7c43a136949806db5c24745e4dcc16a2803d066",
+        "source_fact:v1:83e0e32d8df1204a47ae5fc86bd5ab250d4c25598b81f1781a8ec821800058e3",
+        "source_fact:v1:91bac351f5d6f475f9ff62f2d90953f7ab325f60192a6630ecf3cc884b3859c9",
+        "source_fact:v1:aa8cf2b0f0ba94b75cb8f01fff59bf57bf113734252d65bc11c6a4c6fc90c734",
+        "source_fact:v1:ac6521a2565434f89c6e888765e4e34831efbf044e530823c92f08bd007963bc",
+        "source_fact:v1:c15dc544bfeb81de6451dfca5abc4adc73772f1bca0f7cc54c04b50d5f67504e",
+        "source_fact:v1:ca532792a52fb57635c9af911de1f0cd4fba3522b9454252dff0b41263643244",
+        "source_fact:v1:e138645dc361f3b3b483fea6450b5c1612fc51975cd1cf65031136f82b0a3116",
+        "source_fact:v1:f7e263b65509ab9fd19365d749f97ec7465bdb796f099b424d67cd2d07890d7b"
+      ],
+      "source_published_kst": "2026-10-16T09:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플",
+      "telegram_core_fact": "[파이낸셜뉴스]애플 최고경영자(CEO)가 글로벌 메모리 반도체 공급난을 '위기'로 규정하고 중국산 반도체 도입을 포함한 모든 선택지를 검토할 필요가 있다는 입장을 밝혔다.",
+      "title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플"
     },
     "source_fact:b0e6d68b1acbae5d6afa256f": {
       "first_seen_kst": "2026-10-15T02:00:57+09:00",
@@ -590589,6 +591826,35 @@
       "telegram_core_fact": "보고서에 따르면 삼기에너지솔루션즈의 올해 상반기 연결 매출액은 1133억원, 영업이익은 49억원을 기록했다.",
       "title": "스몰인사이트 \"삼기에너지솔루션즈, 북미 사업 성장축 부상\""
     },
+    "source_fact:c7c604d92e109c19a428035c": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.hankyung.com/article/202610166804i",
+      "source": "한국경제",
+      "source_body_digest": "f536fd13c7b5e7f4c903ba889dfdf70378ef924ea022b51d61fcb359eabfeb2d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7e3cd7a8882ab4da424e92e140b660037cc1443efc60909e93637010da5bf44",
+      "source_fact_keys": [
+        "source_fact:v1:0015a519804154a9a58b9d2ffb93d86cb567f9ae1d98ddc285e725ac52e6c3a3",
+        "source_fact:v1:1c76a4ac2a620c94e6ed88a0a0be5d40ad243871bf4e3f4d7057fc01e37efd56",
+        "source_fact:v1:22057cf499cf2bebbcb57b1725b7e710423efa5c5373f538ea550275bc0b6559",
+        "source_fact:v1:3c89822ead55b9cbfdb6dede2a95dbbf46773d908e696f0b572e81665c011d8a",
+        "source_fact:v1:5b3303d822f015352413b9cd6f4df487c91eca14bf1baea3c7a2aa6f748cc1c9",
+        "source_fact:v1:5d364ea2f3a50a9780ec90f82a46305dfd0fe7dd76a73668481f019bbe6ad2ed",
+        "source_fact:v1:712185b38f1f5394800bd80da0af2fd8b70c7686883f8d8adcea77ba9b9383ae",
+        "source_fact:v1:9ac808c466e604cb7c7f000b043ea12000b54a2db292cd6b57dd2d17ff7b1b90",
+        "source_fact:v1:d7545867f1cd925738fbc8082ca4286587763986aa6983a61d39322ab52edcea",
+        "source_fact:v1:ddc3c68b1ec98226c4cfc9afd61ac143d1662d00e3c455f681e95c3a203118bb"
+      ],
+      "source_published_kst": "2026-10-16T16:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "가트너 \"메모리 공급난, 2028년까지 이어질 것\"",
+      "telegram_core_fact": "가트너는 이 보고서를 통해 D램과 낸드플래시 등 메모리 공급 부족이 2028년까지 이어질 가능성이 높다고 전망했다.",
+      "title": "가트너 \"메모리 공급난, 2028년까지 이어질 것\""
+    },
     "source_fact:c7d04398a78b775cfee01cbf": {
       "first_seen_kst": "2026-10-13T08:59:28+09:00",
       "lanes": {
@@ -601362,6 +602628,30 @@
       "source_published_kst": "2026-10-05T17:44+09:00",
       "title": "환율 하락에 영업이익 늘어도 순이익 뚝…외화 자산 평가손익에 영향"
     },
+    "source_fact:cfebd8a67965035e0afdf365": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636302",
+      "source": "이투데이",
+      "source_body_digest": "27c0d85b72aaf99a3a73272b15f312d30db5c9c6f815f8185ab20dcf503fe740",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0b937a130ba18fbd4db57cb96152ca2e0b8b0b95fa7ca1a15a1e41a938f92f48",
+      "source_fact_keys": [
+        "source_fact:v1:2a24bd4c73c37bea86778c75eeb224f124856322d44e965f9c8af0ef86b596d6",
+        "source_fact:v1:325d0fc101338e908cbc5536790e4c71744f5095a80462942f9699101956458a",
+        "source_fact:v1:6cf9e83bac1e12ab146c64349af2f68b0daa7456e4ed06fed2a0d630ee85c191",
+        "source_fact:v1:8dd4c2e56bf89ccd7bff74de0fb0393db80665459b8cf6a58a9c1919292f84c2",
+        "source_fact:v1:d380a8f0de72533d16f88cf8788584891fd91b829d17f47652c03f4192e7e439"
+      ],
+      "source_published_kst": "2026-10-15T17:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "“국장은 틀렸어”···서학개미, 10월 들어 美주식 4조원 순매수 [오천피 쇼크]",
+      "telegram_core_fact": "국내 증시가 급락하는 가운데 해외 주식에 투자하는 개인투자자 ‘서학개미’들이 이달 들어 약 4조원어치를 사들이며 미국 주식 투자 규모를 다시 늘리는 모습이다. 한국예탁결제원 증권정보포털(SEIBro)에 따르면 국내 투자자들은 이달 1~14일(10거래일) 미국 주식을 29억5994만 달러(약 4조원)어치 순매수했다.",
+      "title": "“국장은 틀렸어”···서학개미, 10월 들어 美주식 4조원 순매수 [오천피 쇼크]"
+    },
     "source_fact:cff2a0649d13bb2b1b619741": {
       "first_seen_kst": "2026-10-12T05:35:02+09:00",
       "lanes": {
@@ -609141,6 +610431,30 @@
       "source_published_kst": "2026-10-07T07:35+09:00",
       "title": "KB證 “삼성전자, HBM4 업계 최고가 기대…주주환원도 4배 확대 가능”"
     },
+    "source_fact:d5d6dcec9bf857149ee05d95": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636302",
+      "source": "이투데이",
+      "source_body_digest": "27c0d85b72aaf99a3a73272b15f312d30db5c9c6f815f8185ab20dcf503fe740",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0b937a130ba18fbd4db57cb96152ca2e0b8b0b95fa7ca1a15a1e41a938f92f48",
+      "source_fact_keys": [
+        "source_fact:v1:2a24bd4c73c37bea86778c75eeb224f124856322d44e965f9c8af0ef86b596d6",
+        "source_fact:v1:325d0fc101338e908cbc5536790e4c71744f5095a80462942f9699101956458a",
+        "source_fact:v1:6cf9e83bac1e12ab146c64349af2f68b0daa7456e4ed06fed2a0d630ee85c191",
+        "source_fact:v1:8dd4c2e56bf89ccd7bff74de0fb0393db80665459b8cf6a58a9c1919292f84c2",
+        "source_fact:v1:d380a8f0de72533d16f88cf8788584891fd91b829d17f47652c03f4192e7e439"
+      ],
+      "source_published_kst": "2026-10-15T17:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "“국장은 틀렸어”···서학개미, 10월 들어 美주식 4조원 순매수 [오천피 쇼크]",
+      "telegram_core_fact": "국내 증시가 급락하는 가운데 해외 주식에 투자하는 개인투자자 ‘서학개미’들이 이달 들어 약 4조원어치를 사들이며 미국 주식 투자 규모를 다시 늘리는 모습이다. 한국예탁결제원 증권정보포털(SEIBro)에 따르면 국내 투자자들은 이달 1~14일(10거래일) 미국 주식을 29억5994만 달러(약 4조원)어치 순매수했다.",
+      "title": "“국장은 틀렸어”···서학개미, 10월 들어 美주식 4조원 순매수 [오천피 쇼크]"
+    },
     "source_fact:d5dcfb58b0a8f267254cd0e3": {
       "first_seen_kst": "2026-10-07T08:57:59+09:00",
       "lanes": {
@@ -612060,6 +613374,30 @@
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "외국인·명품 소비에 비용 절감까지…백화점 3사, 3분기 실적 ‘청신호’"
     },
+    "source_fact:d7b84c0eab2558655f22bbd2": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636302",
+      "source": "이투데이",
+      "source_body_digest": "27c0d85b72aaf99a3a73272b15f312d30db5c9c6f815f8185ab20dcf503fe740",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0b937a130ba18fbd4db57cb96152ca2e0b8b0b95fa7ca1a15a1e41a938f92f48",
+      "source_fact_keys": [
+        "source_fact:v1:2a24bd4c73c37bea86778c75eeb224f124856322d44e965f9c8af0ef86b596d6",
+        "source_fact:v1:325d0fc101338e908cbc5536790e4c71744f5095a80462942f9699101956458a",
+        "source_fact:v1:6cf9e83bac1e12ab146c64349af2f68b0daa7456e4ed06fed2a0d630ee85c191",
+        "source_fact:v1:8dd4c2e56bf89ccd7bff74de0fb0393db80665459b8cf6a58a9c1919292f84c2",
+        "source_fact:v1:d380a8f0de72533d16f88cf8788584891fd91b829d17f47652c03f4192e7e439"
+      ],
+      "source_published_kst": "2026-10-15T17:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "“국장은 틀렸어”···서학개미, 10월 들어 美주식 4조원 순매수 [오천피 쇼크]",
+      "telegram_core_fact": "국내 증시가 급락하는 가운데 해외 주식에 투자하는 개인투자자 ‘서학개미’들이 이달 들어 약 4조원어치를 사들이며 미국 주식 투자 규모를 다시 늘리는 모습이다. 한국예탁결제원 증권정보포털(SEIBro)에 따르면 국내 투자자들은 이달 1~14일(10거래일) 미국 주식을 29억5994만 달러(약 4조원)어치 순매수했다.",
+      "title": "“국장은 틀렸어”···서학개미, 10월 들어 美주식 4조원 순매수 [오천피 쇼크]"
+    },
     "source_fact:d7b911a3959d81758245eefb": {
       "first_seen_kst": "2026-10-07T00:38:27+09:00",
       "lanes": {
@@ -612688,6 +614026,35 @@
       "source_title": "한국 반도체 소부장 기업 15곳, 'SEMICON West 2026'서 북미시장 공략",
       "telegram_core_fact": "글로벌 반도체 시장이 인공지능(AI) 수요 확대와 첨단 제조 투자에 힘입어 연간 매출 1조 달러 시대를 향해 성장하는 가운데, 국내 반도체 소재·부품·장비(소부장) 기업들이 북미시장 공략에 나섰다.",
       "title": "한국 반도체 소부장 기업 15곳, 'SEMICON West 2026'서 북미시장 공략"
+    },
+    "source_fact:d8375d0df3ed377bdbca64a2": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.hankyung.com/article/202610166804i",
+      "source": "한국경제",
+      "source_body_digest": "f536fd13c7b5e7f4c903ba889dfdf70378ef924ea022b51d61fcb359eabfeb2d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7e3cd7a8882ab4da424e92e140b660037cc1443efc60909e93637010da5bf44",
+      "source_fact_keys": [
+        "source_fact:v1:0015a519804154a9a58b9d2ffb93d86cb567f9ae1d98ddc285e725ac52e6c3a3",
+        "source_fact:v1:1c76a4ac2a620c94e6ed88a0a0be5d40ad243871bf4e3f4d7057fc01e37efd56",
+        "source_fact:v1:22057cf499cf2bebbcb57b1725b7e710423efa5c5373f538ea550275bc0b6559",
+        "source_fact:v1:3c89822ead55b9cbfdb6dede2a95dbbf46773d908e696f0b572e81665c011d8a",
+        "source_fact:v1:5b3303d822f015352413b9cd6f4df487c91eca14bf1baea3c7a2aa6f748cc1c9",
+        "source_fact:v1:5d364ea2f3a50a9780ec90f82a46305dfd0fe7dd76a73668481f019bbe6ad2ed",
+        "source_fact:v1:712185b38f1f5394800bd80da0af2fd8b70c7686883f8d8adcea77ba9b9383ae",
+        "source_fact:v1:9ac808c466e604cb7c7f000b043ea12000b54a2db292cd6b57dd2d17ff7b1b90",
+        "source_fact:v1:d7545867f1cd925738fbc8082ca4286587763986aa6983a61d39322ab52edcea",
+        "source_fact:v1:ddc3c68b1ec98226c4cfc9afd61ac143d1662d00e3c455f681e95c3a203118bb"
+      ],
+      "source_published_kst": "2026-10-16T16:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "가트너 \"메모리 공급난, 2028년까지 이어질 것\"",
+      "telegram_core_fact": "가트너는 이 보고서를 통해 D램과 낸드플래시 등 메모리 공급 부족이 2028년까지 이어질 가능성이 높다고 전망했다.",
+      "title": "가트너 \"메모리 공급난, 2028년까지 이어질 것\""
     },
     "source_fact:d83a83e4e7738e7e91385289": {
       "first_seen_kst": "2026-10-06T23:05:07+09:00",
@@ -624822,6 +626189,39 @@
       "telegram_core_fact": "[파이낸셜뉴스] 홍라희 리움미술관 명예관장이 이재용 삼성전자 회장에게 삼성전자 지분 0.17%를 증여한다. 삼성전자는 13일 홍 명예관장이 보유한 삼성전자 주식 1115만8000주(0.17%)를 이 회장에게 증여한다고 공시했다.",
       "title": "홍라희 명예관장, 이재용 회장에 삼성전자 지분 0.17% 증여..증여세 1.56조원대 추산"
     },
+    "source_fact:e128b3cf458451cc7220d74c": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.fnnews.com/news/202610160941043476",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "602b9388a10b8e998bc890f84fe44701bb14ef7bea86e07cba29f59689ed7397",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d1d8e63a44aca3586d36894aa20ad3d1495453186216ab805ca15786dced3375",
+      "source_fact_keys": [
+        "source_fact:v1:25ed8b4c4e1a6871687f599967514a9d4613ba257d923c869ddb1d67c5d3226e",
+        "source_fact:v1:2e6760b6205c46a9e13026072a4cbde6f009611fbd71ebccace9f34dd4ff023c",
+        "source_fact:v1:4f524d1b301280e4bd27524446f38740a2494aeb461cb1bc5eb5b6529fae7fa6",
+        "source_fact:v1:6db388be957a20254b262cb728042eafeee83be652e75054748b0351cd3d9cd4",
+        "source_fact:v1:7b162650a547cff68a9edde21fc12193ecb90c42cbbce81e2296e2823aec5548",
+        "source_fact:v1:815ddcc232f3df043db07224d7c43a136949806db5c24745e4dcc16a2803d066",
+        "source_fact:v1:83e0e32d8df1204a47ae5fc86bd5ab250d4c25598b81f1781a8ec821800058e3",
+        "source_fact:v1:91bac351f5d6f475f9ff62f2d90953f7ab325f60192a6630ecf3cc884b3859c9",
+        "source_fact:v1:aa8cf2b0f0ba94b75cb8f01fff59bf57bf113734252d65bc11c6a4c6fc90c734",
+        "source_fact:v1:ac6521a2565434f89c6e888765e4e34831efbf044e530823c92f08bd007963bc",
+        "source_fact:v1:c15dc544bfeb81de6451dfca5abc4adc73772f1bca0f7cc54c04b50d5f67504e",
+        "source_fact:v1:ca532792a52fb57635c9af911de1f0cd4fba3522b9454252dff0b41263643244",
+        "source_fact:v1:e138645dc361f3b3b483fea6450b5c1612fc51975cd1cf65031136f82b0a3116",
+        "source_fact:v1:f7e263b65509ab9fd19365d749f97ec7465bdb796f099b424d67cd2d07890d7b"
+      ],
+      "source_published_kst": "2026-10-16T09:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플",
+      "telegram_core_fact": "[파이낸셜뉴스]애플 최고경영자(CEO)가 글로벌 메모리 반도체 공급난을 '위기'로 규정하고 중국산 반도체 도입을 포함한 모든 선택지를 검토할 필요가 있다는 입장을 밝혔다.",
+      "title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플"
+    },
     "source_fact:e12cc538b0a1c8f6f2cb6a57": {
       "first_seen_kst": "2026-10-07T20:43:18+09:00",
       "lanes": {
@@ -629056,6 +630456,39 @@
       "telegram_core_fact": "특히 미국 금리의 향방을 가늠할 이번 주 소비자물가지수 발표와 AI 투자 지속 여부를 확인할 빅테크 기업들의 실적 발표에 관심이 쏠립니다.",
       "title": "\"수급·中반도체 추격 우려\"…美금리·빅테크 실적 주목 | 연합뉴스"
     },
+    "source_fact:e3f34d45bb3938be1b05d74f": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.fnnews.com/news/202610160941043476",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "602b9388a10b8e998bc890f84fe44701bb14ef7bea86e07cba29f59689ed7397",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d1d8e63a44aca3586d36894aa20ad3d1495453186216ab805ca15786dced3375",
+      "source_fact_keys": [
+        "source_fact:v1:25ed8b4c4e1a6871687f599967514a9d4613ba257d923c869ddb1d67c5d3226e",
+        "source_fact:v1:2e6760b6205c46a9e13026072a4cbde6f009611fbd71ebccace9f34dd4ff023c",
+        "source_fact:v1:4f524d1b301280e4bd27524446f38740a2494aeb461cb1bc5eb5b6529fae7fa6",
+        "source_fact:v1:6db388be957a20254b262cb728042eafeee83be652e75054748b0351cd3d9cd4",
+        "source_fact:v1:7b162650a547cff68a9edde21fc12193ecb90c42cbbce81e2296e2823aec5548",
+        "source_fact:v1:815ddcc232f3df043db07224d7c43a136949806db5c24745e4dcc16a2803d066",
+        "source_fact:v1:83e0e32d8df1204a47ae5fc86bd5ab250d4c25598b81f1781a8ec821800058e3",
+        "source_fact:v1:91bac351f5d6f475f9ff62f2d90953f7ab325f60192a6630ecf3cc884b3859c9",
+        "source_fact:v1:aa8cf2b0f0ba94b75cb8f01fff59bf57bf113734252d65bc11c6a4c6fc90c734",
+        "source_fact:v1:ac6521a2565434f89c6e888765e4e34831efbf044e530823c92f08bd007963bc",
+        "source_fact:v1:c15dc544bfeb81de6451dfca5abc4adc73772f1bca0f7cc54c04b50d5f67504e",
+        "source_fact:v1:ca532792a52fb57635c9af911de1f0cd4fba3522b9454252dff0b41263643244",
+        "source_fact:v1:e138645dc361f3b3b483fea6450b5c1612fc51975cd1cf65031136f82b0a3116",
+        "source_fact:v1:f7e263b65509ab9fd19365d749f97ec7465bdb796f099b424d67cd2d07890d7b"
+      ],
+      "source_published_kst": "2026-10-16T09:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플",
+      "telegram_core_fact": "[파이낸셜뉴스]애플 최고경영자(CEO)가 글로벌 메모리 반도체 공급난을 '위기'로 규정하고 중국산 반도체 도입을 포함한 모든 선택지를 검토할 필요가 있다는 입장을 밝혔다.",
+      "title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플"
+    },
     "source_fact:e3f6714de4b0f76d72d0b6c9": {
       "first_seen_kst": "2026-10-12T02:27:00+09:00",
       "lanes": {
@@ -632927,6 +634360,39 @@
       ],
       "source_published_kst": "2026-10-05T22:06+09:00",
       "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
+    },
+    "source_fact:e6d100fc13b139a8e2d5c3f0": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.fnnews.com/news/202610160941043476",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "602b9388a10b8e998bc890f84fe44701bb14ef7bea86e07cba29f59689ed7397",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d1d8e63a44aca3586d36894aa20ad3d1495453186216ab805ca15786dced3375",
+      "source_fact_keys": [
+        "source_fact:v1:25ed8b4c4e1a6871687f599967514a9d4613ba257d923c869ddb1d67c5d3226e",
+        "source_fact:v1:2e6760b6205c46a9e13026072a4cbde6f009611fbd71ebccace9f34dd4ff023c",
+        "source_fact:v1:4f524d1b301280e4bd27524446f38740a2494aeb461cb1bc5eb5b6529fae7fa6",
+        "source_fact:v1:6db388be957a20254b262cb728042eafeee83be652e75054748b0351cd3d9cd4",
+        "source_fact:v1:7b162650a547cff68a9edde21fc12193ecb90c42cbbce81e2296e2823aec5548",
+        "source_fact:v1:815ddcc232f3df043db07224d7c43a136949806db5c24745e4dcc16a2803d066",
+        "source_fact:v1:83e0e32d8df1204a47ae5fc86bd5ab250d4c25598b81f1781a8ec821800058e3",
+        "source_fact:v1:91bac351f5d6f475f9ff62f2d90953f7ab325f60192a6630ecf3cc884b3859c9",
+        "source_fact:v1:aa8cf2b0f0ba94b75cb8f01fff59bf57bf113734252d65bc11c6a4c6fc90c734",
+        "source_fact:v1:ac6521a2565434f89c6e888765e4e34831efbf044e530823c92f08bd007963bc",
+        "source_fact:v1:c15dc544bfeb81de6451dfca5abc4adc73772f1bca0f7cc54c04b50d5f67504e",
+        "source_fact:v1:ca532792a52fb57635c9af911de1f0cd4fba3522b9454252dff0b41263643244",
+        "source_fact:v1:e138645dc361f3b3b483fea6450b5c1612fc51975cd1cf65031136f82b0a3116",
+        "source_fact:v1:f7e263b65509ab9fd19365d749f97ec7465bdb796f099b424d67cd2d07890d7b"
+      ],
+      "source_published_kst": "2026-10-16T09:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플",
+      "telegram_core_fact": "[파이낸셜뉴스]애플 최고경영자(CEO)가 글로벌 메모리 반도체 공급난을 '위기'로 규정하고 중국산 반도체 도입을 포함한 모든 선택지를 검토할 필요가 있다는 입장을 밝혔다.",
+      "title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플"
     },
     "source_fact:e6d36f83c50f930e618f1432": {
       "first_seen_kst": "2026-10-13T18:11:03+09:00",
@@ -659327,6 +660793,35 @@
       "telegram_core_fact": "이날 서울 외환시장에서 미국 달러화 대비 원화 환율의 오후 3시 30분 기준가는 6.8원 내린 1,338.3원으로 집계됐다.",
       "title": "환율, 6.8원 내린 1,338.3원…달러 약세에 하락 전환"
     },
+    "source_fact:fb253bd5c66b998914de6663": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.hankyung.com/article/202610166804i",
+      "source": "한국경제",
+      "source_body_digest": "f536fd13c7b5e7f4c903ba889dfdf70378ef924ea022b51d61fcb359eabfeb2d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7e3cd7a8882ab4da424e92e140b660037cc1443efc60909e93637010da5bf44",
+      "source_fact_keys": [
+        "source_fact:v1:0015a519804154a9a58b9d2ffb93d86cb567f9ae1d98ddc285e725ac52e6c3a3",
+        "source_fact:v1:1c76a4ac2a620c94e6ed88a0a0be5d40ad243871bf4e3f4d7057fc01e37efd56",
+        "source_fact:v1:22057cf499cf2bebbcb57b1725b7e710423efa5c5373f538ea550275bc0b6559",
+        "source_fact:v1:3c89822ead55b9cbfdb6dede2a95dbbf46773d908e696f0b572e81665c011d8a",
+        "source_fact:v1:5b3303d822f015352413b9cd6f4df487c91eca14bf1baea3c7a2aa6f748cc1c9",
+        "source_fact:v1:5d364ea2f3a50a9780ec90f82a46305dfd0fe7dd76a73668481f019bbe6ad2ed",
+        "source_fact:v1:712185b38f1f5394800bd80da0af2fd8b70c7686883f8d8adcea77ba9b9383ae",
+        "source_fact:v1:9ac808c466e604cb7c7f000b043ea12000b54a2db292cd6b57dd2d17ff7b1b90",
+        "source_fact:v1:d7545867f1cd925738fbc8082ca4286587763986aa6983a61d39322ab52edcea",
+        "source_fact:v1:ddc3c68b1ec98226c4cfc9afd61ac143d1662d00e3c455f681e95c3a203118bb"
+      ],
+      "source_published_kst": "2026-10-16T16:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "가트너 \"메모리 공급난, 2028년까지 이어질 것\"",
+      "telegram_core_fact": "가트너는 이 보고서를 통해 D램과 낸드플래시 등 메모리 공급 부족이 2028년까지 이어질 가능성이 높다고 전망했다.",
+      "title": "가트너 \"메모리 공급난, 2028년까지 이어질 것\""
+    },
     "source_fact:fb25e4b3966ba4dceed27fc1": {
       "first_seen_kst": "2026-10-13T20:01:17+09:00",
       "lanes": {
@@ -659430,6 +660925,35 @@
       "source_title": "코스피 5% 급락…중국발 반도체 공급 우려·외인 순매도에 휘청",
       "telegram_core_fact": "코스피·코스닥은 각각 5.46%·1.43% 하락해 양 시장에 매도 사이드카가 발동됐다. 삼성전자·SK하이닉스는 각각 7.29%·10.09% 하락했다.",
       "title": "코스피 5% 급락…중국발 반도체 공급 우려·외인 순매도에 휘청"
+    },
+    "source_fact:fb35fec742e1a07a7592ae14": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.hankyung.com/article/202610166804i",
+      "source": "한국경제",
+      "source_body_digest": "f536fd13c7b5e7f4c903ba889dfdf70378ef924ea022b51d61fcb359eabfeb2d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7e3cd7a8882ab4da424e92e140b660037cc1443efc60909e93637010da5bf44",
+      "source_fact_keys": [
+        "source_fact:v1:0015a519804154a9a58b9d2ffb93d86cb567f9ae1d98ddc285e725ac52e6c3a3",
+        "source_fact:v1:1c76a4ac2a620c94e6ed88a0a0be5d40ad243871bf4e3f4d7057fc01e37efd56",
+        "source_fact:v1:22057cf499cf2bebbcb57b1725b7e710423efa5c5373f538ea550275bc0b6559",
+        "source_fact:v1:3c89822ead55b9cbfdb6dede2a95dbbf46773d908e696f0b572e81665c011d8a",
+        "source_fact:v1:5b3303d822f015352413b9cd6f4df487c91eca14bf1baea3c7a2aa6f748cc1c9",
+        "source_fact:v1:5d364ea2f3a50a9780ec90f82a46305dfd0fe7dd76a73668481f019bbe6ad2ed",
+        "source_fact:v1:712185b38f1f5394800bd80da0af2fd8b70c7686883f8d8adcea77ba9b9383ae",
+        "source_fact:v1:9ac808c466e604cb7c7f000b043ea12000b54a2db292cd6b57dd2d17ff7b1b90",
+        "source_fact:v1:d7545867f1cd925738fbc8082ca4286587763986aa6983a61d39322ab52edcea",
+        "source_fact:v1:ddc3c68b1ec98226c4cfc9afd61ac143d1662d00e3c455f681e95c3a203118bb"
+      ],
+      "source_published_kst": "2026-10-16T16:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "가트너 \"메모리 공급난, 2028년까지 이어질 것\"",
+      "telegram_core_fact": "가트너는 이 보고서를 통해 D램과 낸드플래시 등 메모리 공급 부족이 2028년까지 이어질 가능성이 높다고 전망했다.",
+      "title": "가트너 \"메모리 공급난, 2028년까지 이어질 것\""
     },
     "source_fact:fb3c2a394f15d75610a99d99": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
@@ -677862,6 +679386,24 @@
       "telegram_core_fact": "이영곤 토스증권 리서치센터장도 \"투자자들은 앞으로도 이러한 높은 이익 성장세가 얼마만큼 더 이어질 수 있는 지 주목하고 있다\"며 \"확정실적을 통해 메모리 수급과 가격, HBM, 내년 실적 전망, 주주환원 등에 대한 회사의 구체적인 설명을 확인하는 것이 필요하다\"고 전했다.",
       "title": "D램값 상승·주주환원 기대감… 삼성전자 주가 끌어올릴까"
     },
+    "title:2292ff1a94bf9de9488a83a8": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636826",
+      "source": "이투데이",
+      "source_body_digest": "e9bada595691e742899972b11365151e042df1c3f594e51e64cce4e65c263221",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-16T16:59+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대엘리베이터, 무벡스 지분 매각·자사주 1700억 소각…주주환원 강화",
+      "telegram_core_fact": "매각이 완료되면 현대엘리베이터의 현대무벡스 지분율은 기존 48.89%에서 43.04%로 낮아진다.",
+      "title": "현대엘리베이터, 무벡스 지분 매각·자사주 1700억 소각…주주환원 강화"
+    },
     "title:229ac0390202bb751ef11d09": {
       "first_seen_kst": "2026-09-26T15:16:00+09:00",
       "lanes": {
@@ -683380,6 +684922,35 @@
       "source_title": "'K-GX' 산업현장은 뛰어가는데…히트펌프 시험기준은 제자리",
       "telegram_core_fact": "정부가 녹색대전환(K-GX) 핵심 기술로 히트펌프 보급 확대에 나섰지만 산업용 대용량 설비를 뒷받침할 국내 시험·인증 체계는 미비한 것으로 드러났다. 기존 사업장의 계약전력이나 수전설비 등을 다시 검토해야 한다.",
       "title": "'K-GX' 산업현장은 뛰어가는데…히트펌프 시험기준은 제자리"
+    },
+    "title:30ad85b07525c8151c2d3b20": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.hankyung.com/article/202610166804i",
+      "source": "한국경제",
+      "source_body_digest": "f536fd13c7b5e7f4c903ba889dfdf70378ef924ea022b51d61fcb359eabfeb2d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7e3cd7a8882ab4da424e92e140b660037cc1443efc60909e93637010da5bf44",
+      "source_fact_keys": [
+        "source_fact:v1:0015a519804154a9a58b9d2ffb93d86cb567f9ae1d98ddc285e725ac52e6c3a3",
+        "source_fact:v1:1c76a4ac2a620c94e6ed88a0a0be5d40ad243871bf4e3f4d7057fc01e37efd56",
+        "source_fact:v1:22057cf499cf2bebbcb57b1725b7e710423efa5c5373f538ea550275bc0b6559",
+        "source_fact:v1:3c89822ead55b9cbfdb6dede2a95dbbf46773d908e696f0b572e81665c011d8a",
+        "source_fact:v1:5b3303d822f015352413b9cd6f4df487c91eca14bf1baea3c7a2aa6f748cc1c9",
+        "source_fact:v1:5d364ea2f3a50a9780ec90f82a46305dfd0fe7dd76a73668481f019bbe6ad2ed",
+        "source_fact:v1:712185b38f1f5394800bd80da0af2fd8b70c7686883f8d8adcea77ba9b9383ae",
+        "source_fact:v1:9ac808c466e604cb7c7f000b043ea12000b54a2db292cd6b57dd2d17ff7b1b90",
+        "source_fact:v1:d7545867f1cd925738fbc8082ca4286587763986aa6983a61d39322ab52edcea",
+        "source_fact:v1:ddc3c68b1ec98226c4cfc9afd61ac143d1662d00e3c455f681e95c3a203118bb"
+      ],
+      "source_published_kst": "2026-10-16T16:43+09:00",
+      "source_supply_terms": {},
+      "source_title": "가트너 \"메모리 공급난, 2028년까지 이어질 것\"",
+      "telegram_core_fact": "가트너는 이 보고서를 통해 D램과 낸드플래시 등 메모리 공급 부족이 2028년까지 이어질 가능성이 높다고 전망했다.",
+      "title": "가트너 \"메모리 공급난, 2028년까지 이어질 것\""
     },
     "title:30c241516e9ce069f786fef5": {
       "first_seen_kst": "2026-10-07T08:36:47+09:00",
@@ -708794,6 +710365,30 @@
       "source_published_kst": "2026-10-07T14:38+09:00",
       "title": "삼보산업, 중동 전쟁에 알루미늄 판가 상승…장기화 땐 수익성 개선 긍정"
     },
+    "title:77742043a67a07cbff96b161": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636302",
+      "source": "이투데이",
+      "source_body_digest": "27c0d85b72aaf99a3a73272b15f312d30db5c9c6f815f8185ab20dcf503fe740",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0b937a130ba18fbd4db57cb96152ca2e0b8b0b95fa7ca1a15a1e41a938f92f48",
+      "source_fact_keys": [
+        "source_fact:v1:2a24bd4c73c37bea86778c75eeb224f124856322d44e965f9c8af0ef86b596d6",
+        "source_fact:v1:325d0fc101338e908cbc5536790e4c71744f5095a80462942f9699101956458a",
+        "source_fact:v1:6cf9e83bac1e12ab146c64349af2f68b0daa7456e4ed06fed2a0d630ee85c191",
+        "source_fact:v1:8dd4c2e56bf89ccd7bff74de0fb0393db80665459b8cf6a58a9c1919292f84c2",
+        "source_fact:v1:d380a8f0de72533d16f88cf8788584891fd91b829d17f47652c03f4192e7e439"
+      ],
+      "source_published_kst": "2026-10-15T17:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "“국장은 틀렸어”···서학개미, 10월 들어 美주식 4조원 순매수 [오천피 쇼크]",
+      "telegram_core_fact": "국내 증시가 급락하는 가운데 해외 주식에 투자하는 개인투자자 ‘서학개미’들이 이달 들어 약 4조원어치를 사들이며 미국 주식 투자 규모를 다시 늘리는 모습이다. 한국예탁결제원 증권정보포털(SEIBro)에 따르면 국내 투자자들은 이달 1~14일(10거래일) 미국 주식을 29억5994만 달러(약 4조원)어치 순매수했다.",
+      "title": "“국장은 틀렸어”···서학개미, 10월 들어 美주식 4조원 순매수 [오천피 쇼크]"
+    },
     "title:7774bb89de978f74209bbeeb": {
       "first_seen_kst": "2026-10-12T23:37:27+09:00",
       "lanes": {
@@ -727299,6 +728894,26 @@
       "source": "이투데이",
       "title": "컬리, 넥스트키친 100% 자회사로…간편식 기획부터 유통까지 내재화"
     },
+    "title:ab3ce4e955baba48fb48c9f6": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261014168151002",
+      "source": "연합뉴스",
+      "source_body_digest": "e5cb4ea6020e60e4b8aa885433fac280e889c609ccef2f211bdc89d3fea20b6d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c18b3b28dbf9b0a9480408f16266a3d4d27c998491faa97a497eeed7c6c1a233",
+      "source_fact_keys": [
+        "source_fact:v1:37d91899f3ca9f916b507bf65c4795cd163d3b2568b0b99f6743a66ffa69a8a2"
+      ],
+      "source_published_kst": "2026-10-15T18:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"관세청이 송치한 1천582건 처리는?\"…공소청 \"순차 처리\"(종합) | 연합뉴스",
+      "telegram_core_fact": "형사소송법 개정으로 이달 2일 검찰청이 폐지되고 공소청이 출범한 뒤 관세청 특별사법경찰(특사경)이 송치한 사건 처리 관련 소통이 제대로 이뤄지지 않고 있다는 지적이 나왔다.",
+      "title": "\"관세청이 송치한 1천582건 처리는?\"…공소청 \"순차 처리\"(종합) | 연합뉴스"
+    },
     "title:ab5189f0f5662341ea82fdb6": {
       "first_seen_kst": "2026-10-10T19:20:50+09:00",
       "lanes": {
@@ -738740,6 +740355,39 @@
       "telegram_core_fact": "이 기준 코스콤 ETF체크에 따르면 ‘RISE 200고배당커버드콜ATM’의 지난 3개월 수익률은 11.06%로 나타났다. 한국거래소에 따르면 작년 말 15조원 수준이던 국내 커버드콜 ETF 순자산 규모는 최근 30조원에 육박했다.",
       "title": "'횡보장 방어' 커버드콜 ETF 순자산 30조 눈앞"
     },
+    "title:cc2c2aa6bd8ec189b61b5b94": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.fnnews.com/news/202610160941043476",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "602b9388a10b8e998bc890f84fe44701bb14ef7bea86e07cba29f59689ed7397",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d1d8e63a44aca3586d36894aa20ad3d1495453186216ab805ca15786dced3375",
+      "source_fact_keys": [
+        "source_fact:v1:25ed8b4c4e1a6871687f599967514a9d4613ba257d923c869ddb1d67c5d3226e",
+        "source_fact:v1:2e6760b6205c46a9e13026072a4cbde6f009611fbd71ebccace9f34dd4ff023c",
+        "source_fact:v1:4f524d1b301280e4bd27524446f38740a2494aeb461cb1bc5eb5b6529fae7fa6",
+        "source_fact:v1:6db388be957a20254b262cb728042eafeee83be652e75054748b0351cd3d9cd4",
+        "source_fact:v1:7b162650a547cff68a9edde21fc12193ecb90c42cbbce81e2296e2823aec5548",
+        "source_fact:v1:815ddcc232f3df043db07224d7c43a136949806db5c24745e4dcc16a2803d066",
+        "source_fact:v1:83e0e32d8df1204a47ae5fc86bd5ab250d4c25598b81f1781a8ec821800058e3",
+        "source_fact:v1:91bac351f5d6f475f9ff62f2d90953f7ab325f60192a6630ecf3cc884b3859c9",
+        "source_fact:v1:aa8cf2b0f0ba94b75cb8f01fff59bf57bf113734252d65bc11c6a4c6fc90c734",
+        "source_fact:v1:ac6521a2565434f89c6e888765e4e34831efbf044e530823c92f08bd007963bc",
+        "source_fact:v1:c15dc544bfeb81de6451dfca5abc4adc73772f1bca0f7cc54c04b50d5f67504e",
+        "source_fact:v1:ca532792a52fb57635c9af911de1f0cd4fba3522b9454252dff0b41263643244",
+        "source_fact:v1:e138645dc361f3b3b483fea6450b5c1612fc51975cd1cf65031136f82b0a3116",
+        "source_fact:v1:f7e263b65509ab9fd19365d749f97ec7465bdb796f099b424d67cd2d07890d7b"
+      ],
+      "source_published_kst": "2026-10-16T09:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플",
+      "telegram_core_fact": "[파이낸셜뉴스]애플 최고경영자(CEO)가 글로벌 메모리 반도체 공급난을 '위기'로 규정하고 중국산 반도체 도입을 포함한 모든 선택지를 검토할 필요가 있다는 입장을 밝혔다.",
+      "title": "중국 CXMT 제품 도입해 메모리 반도체 공급난 돌파하겠다는 애플"
+    },
     "title:cc3a89a0ef7a00edccfc4b57": {
       "first_seen_kst": "2026-10-08T02:57:10+09:00",
       "lanes": {
@@ -742842,6 +744490,24 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T16:12+09:00",
       "title": "[단독] 美 블랙리스트 中기업에...‘안보’ 검토 없이 발전사업 허가"
+    },
+    "title:d75c63fa41fc7639e247cda3": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04470646645613576",
+      "source": "이데일리",
+      "source_body_digest": "d1c88e3d0aad94da677ad17424b8a1062556ba8fca702376cd9fd58245d9cfbf",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-16T16:46+09:00",
+      "source_supply_terms": {},
+      "source_title": "현대엘리, 무벡스 지분 5.8% 매각·자사주 1700억 소각…주주환원 속도",
+      "telegram_core_fact": "이번에 매각하는 현대무벡스 지분은 5.8%로, 주당 매각 가격은 1만7810원이다.",
+      "title": "현대엘리, 무벡스 지분 5.8% 매각·자사주 1700억 소각…주주환원 속도"
     },
     "title:d771b55b31250caf69ee6d2b": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
@@ -755033,6 +756699,24 @@
       "telegram_core_fact": "중국이 유럽연합(EU)과의 무역 마찰을 피하기 위해 하이브리드 차량 수출을 자체적으로 제한하기로 합의했다.",
       "title": "中·EU, 하이브리드차 수출 '자율규제' 합의…무역분쟁 피해"
     },
+    "title:fa40f0b5a8c28885a9585f69": {
+      "first_seen_kst": "2026-10-16T17:05:45+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:05:45+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:05:45+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175336",
+      "source": "매일경제",
+      "source_body_digest": "dfa97493f407b899322ceecd97187b9b2359da117209137daa8c0e0d009b80e6",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-15T19:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "에어 글로벌, 첫 배당 0.28달러·자사주 1억 달러 매입",
+      "telegram_core_fact": "에어 글로벌(AIIR)이 2027 회계연도 주당 0.28달러의 현금배당을 처음 도입하고, 2029년 12월까지 최대 1억 달러 자사주 매입을 추진하는 주주환원 프레임워크를 수립했다고 15일 발표했다.",
+      "title": "에어 글로벌, 첫 배당 0.28달러·자사주 1억 달러 매입"
+    },
     "title:fa6419983d4517f901a1eb2d": {
       "first_seen_kst": "2026-09-23T06:51:17+09:00",
       "lanes": {
@@ -757236,5 +758920,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-16T16:35:36+09:00"
+  "updated_at_kst": "2026-10-16T17:05:45+09:00"
 }
