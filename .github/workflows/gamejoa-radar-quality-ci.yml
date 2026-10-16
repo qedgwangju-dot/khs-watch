@@ -36,6 +36,7 @@ jobs:
     env:
       SEND_TELEGRAM: 'false'
       TELEGRAM_DRY_RUN: 'true'
+      RADAR_RUN_MODE: 'live'
     steps:
       - uses: actions/checkout@v4
         with:
