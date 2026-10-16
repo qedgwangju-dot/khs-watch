@@ -24,7 +24,8 @@ KIND_LABELS = {'sanctions': '제재·압박', 'reaction': '외교반응·개입�
                'attack_pause': '공격 중단·부인 발언', 'mixed_restraint': '자제 발언·상대 공격 주장',
                'military_statement': '군사 대응·보복 발언', 'support_statement': '지원 정책 발언',
                'military_discussion': '공습 재개 논의·이견', 'military_analysis': '군사·안보 해설',
-               'market_effect': '전쟁의 물가 파급 보도', 'ceasefire_position': '휴전·공격 중단 입장'}
+               'market_effect': '전쟁의 물가 파급 보도', 'ceasefire_position': '휴전·공격 중단 입장',
+               'military_report': '공격 조사·보고서 공표'}
 
 
 def _headline(row):
@@ -60,6 +61,7 @@ def _display_headline(row):
 def _headline_group(title):
     """Use actors in the current headline, before background actors or caches."""
     us = bool(re.search(r'미국|트럼프|(?:^|\s)美(?:\s|,)|\b(?:trump|united states)\b|'
+                        r'(?:^|\s)미\s+(?:국방부|정부|행정부|군)|'
                         r'\bu\.s\.(?=\s|$)|^us(?=\s|:|,)', title))
     if re.search(r'후티|\bhouthi', title):
         if us:
@@ -82,7 +84,7 @@ def _primary_topic(row):
     if kind == 'market_effect':
         us_prices = re.search(r'(?:미국|美|united states|u\.s\.).{0,12}(?:물가|cpi|inflation)', title)
         return ('미국·물가' if us_prices else '물가·경제지표') + ' · 전쟁 파급 보도'
-    if kind in ('military_statement', 'military_discussion', 'military_analysis', 'ceasefire_position'):
+    if kind in ('military_statement', 'military_discussion', 'military_analysis', 'ceasefire_position', 'military_report'):
         return _headline_group(title) + ' · ' + KIND_LABELS[kind]
     if kind == 'support_statement':
         label = '정보 지원·종전 의향 발언' if re.search(r'종전|peace|end.{0,8}war', title) else '지원 정책 발언'
@@ -156,7 +158,14 @@ def mixed_restraint_attack(row):
     korean_restraint = r'공격(?:을)?\s*(?:자제|중단|멈|안)'
     english_restraint = r'\b(?:halt(?:ed)?|stopp?ed|paus(?:e|ed))\s+(?:energy\s+)?(?:attacks?|strikes?)\b'
     contrast_clause = r'하지만|했지만|했으나|그러나|반면|에도|…|\.\.\.|\b(?:despite|but|while|although|yet)\b'
-    restraint = bool(re.search(r'휴전|ceasefire|truce|' + korean_restraint + '|' + english_restraint, title))
+    # A failed ceasefire is not evidence that either party is exercising
+    # restraint. Mask only that phrase; an explicit separate restraint clause
+    # still has to retain its subject and the opponent's continuing attack.
+    restraint_title = re.sub(
+        r'''(?:휴전|ceasefire|truce)["'’”\s]*(?:이|가)?\s*(?:(?:has|have|had|is|was)\s+)?'''
+        r'(?:붕괴|결렬|파기|무산|실패|깨졌|끝났|종료|collaps(?:e[ds]?|ing)|fail(?:ed|s)?|broken|ended)',
+        '', title)
+    restraint = bool(re.search(r'휴전|ceasefire|truce|' + korean_restraint + '|' + english_restraint, restraint_title))
     contrast = bool(re.search(contrast_clause, title))
     actor = r'(?:러시아|러는|러\s|이란|이스라엘|후티|우크라이나|미국|russia|iran|israel|houthi|ukraine|u\.s\.)'
     ongoing = bool(re.search(actor + r'.{0,35}(?:공격|공습|타격|attack|strike).{0,12}(?:계속|지속|재개|continu|resum)', title)
@@ -242,6 +251,22 @@ def _military_analysis_headline(title):
     return bool(military and question)
 
 
+def _military_report_headline(title):
+    # In "폭격 조사보고서", bombing is the subject of an investigation. The
+    # noun phrase does not assert a new attack when the report is published or
+    # delayed. Actual action predicates in other clauses are checked first.
+    return bool(re.search(
+        r'(?:폭격|공습|공격|타격)(?:\s*(?:사건|의혹|에\s*대한))?\s*'
+        r'(?:조사\s*(?:보고서|결과)|진상\s*조사)|'
+        r'\b(?:bombing|airstrikes?|attacks?|strikes?)\s+(?:investigation|inquiry)\s+report\b', title))
+
+
+def _report_with_completed_action(title):
+    return bool(_military_report_headline(title) and re.search(
+        r'(?:공습|폭격|공격|타격)(?:했다(?!는)|하고\s*있다)|'
+        r'\b(?:russia|ukraine|iran|israel|houthis?)\s+(?:attacks|strikes|bombs|attacked|bombed)\b', title))
+
+
 def non_military_kind(row):
     title = html.unescape(str(row.get('title_original') or row.get('title') or row.get('title_ko') or '')).lower()
     if mixed_restraint_attack(row):
@@ -255,6 +280,10 @@ def non_military_kind(row):
     if any(not any(span.start() <= action.start() and action.end() <= span.end()
                    for span in discussion + statements + future) for action in actions):
         return None
+    if _report_with_completed_action(title):
+        return None
+    if _military_report_headline(title):
+        return 'military_report'
     if statements or future:
         return 'military_statement'
     if _ceasefire_rejection_headline(title):
@@ -319,7 +348,7 @@ def score_item(row, now):
         score, _ = source_score._original_score(row, now)
         return score, list(row['tags'])
     score, tags = _score(row, now)
-    if kind == 'ceasefire_position' or (kind == 'military_statement' and (
+    if kind in ('ceasefire_position', 'military_report') or (kind == 'military_statement' and (
             _refinery_restart_statement_spans(_headline(row)) or _ceasefire_rejection_headline(_headline(row)))):
         _clear_headline_event_cache(row, kind)
         return score, list(row['tags'])
@@ -339,6 +368,8 @@ def score_item(row, now):
 def final_color(row):
     if non_military_kind(row):
         return 'yellow'
+    if _report_with_completed_action(_headline(row)):
+        return 'red'
     if _headline_refinery_action(row):
         return 'red'
     if _ceasefire_rejection_headline(_headline(row)) and _military_actions(_headline(row)):
@@ -384,6 +415,15 @@ def verdict(items):
                 '- <b>현재 단계:</b> 물가·시장 파급 보도 — 새로운 교전·휴전 이행 여부는 별도 확인 필요\n'
                 '- <b>시장:</b> 기사에 인용된 지표와 에너지 가격의 기간·출처를 각각 확인\n'
                 '- <b>다음:</b> 공식 지표·공표일 → 에너지 가격·기간 → 전쟁 영향의 독립 확인'
+            )
+        if 'military_report' in kinds:
+            core = ' / '.join(dict.fromkeys(KIND_LABELS[kind] for kind in kinds))
+            return (
+                '<b>투자 판정</b>\n'
+                f'- <b>핵심:</b> {core}\n'
+                '- <b>현재 단계:</b> 조사·보고서 공표 단계와 다른 조치·발언을 구분 — 공표·연기 자체는 새 공격 개시를 뜻하지 않음\n'
+                '- <b>시장:</b> 조사 대상 사건·발생시각과 보고서의 공표 일정·내용을 각각 확인\n'
+                '- <b>다음:</b> 원 보고서·공표일 → 조사 대상 사건·책임 주체 → 별도 군사작전의 독립 확인'
             )
         if set(kinds) & {'military_discussion', 'military_analysis'}:
             core = ' / '.join(dict.fromkeys(KIND_LABELS[kind] for kind in kinds))
@@ -540,7 +580,7 @@ def build_alert(items, markets, now):
         kind = non_military_kind(row)
         if kind == 'market_effect':
             _clear_market_event_cache(row)
-        if kind == 'ceasefire_position' or (kind == 'military_statement' and (
+        if kind in ('ceasefire_position', 'military_report') or (kind == 'military_statement' and (
                 _refinery_restart_statement_spans(_headline(row)) or _ceasefire_rejection_headline(_headline(row)))):
             _clear_headline_event_cache(row, kind)
         if kind is None and _headline_refinery_action(row):
@@ -696,7 +736,7 @@ def verify_alert(test_mode=False):
         primary = _primary_topic(row)
         if primary and html.escape(primary) not in lines[start]:
             raise RuntimeError('WAR_INTEGRITY_GATE: rendered topic differs from headline event')
-        if non_military_kind(row) in ('military_statement', 'support_statement', 'military_discussion', 'military_analysis', 'market_effect', 'ceasefire_position') and (
+        if non_military_kind(row) in ('military_statement', 'support_statement', 'military_discussion', 'military_analysis', 'market_effect', 'ceasefire_position', 'military_report') and (
                 row.get('classification_color') != 'yellow' or not lines[start].startswith('🟡')):
             raise RuntimeError('WAR_INTEGRITY_GATE: statement presented as a new attack or implemented peace')
         marker = {'red': '🔴', 'green': '🟢', 'yellow': '🟡'}.get(row.get('classification_color'), '')
@@ -712,7 +752,7 @@ def verify_alert(test_mode=False):
         if primary and (start + 1 >= end or lines[start + 1] != html.escape(_display_headline(row))):
             raise RuntimeError('WAR_INTEGRITY_GATE: rendered headline differs from source headline')
         current_kind = non_military_kind(row)
-        if (current_kind == 'ceasefire_position' or (current_kind == 'military_statement' and (
+        if (current_kind in ('ceasefire_position', 'military_report') or (current_kind == 'military_statement' and (
                 _refinery_restart_statement_spans(_headline(row)) or _ceasefire_rejection_headline(_headline(row))))
                 or (current_kind is None and _headline_refinery_action(row))):
             source_line = next((i for i in range(start + 2, end)
