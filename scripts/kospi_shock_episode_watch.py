@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import asyncio
+import base64
 import datetime as dt
 import hashlib
 import html
@@ -30,6 +31,7 @@ from market_flow_channels import (
     FuturesInvestorQualityError,
     program_current as market_program_current,
 )
+from market_program_close import collect as collect_program_close, render as render_program_close
 
 KST = ZoneInfo("Asia/Seoul")
 BASE = "https://openapi.ls-sec.co.kr:8080"
@@ -305,10 +307,12 @@ def get_token() -> str:
 
 
 def ls_post(token: str, path: str, tr: str, body: dict[str, Any], *,
-            max_attempts: int = 5, request_timeout: float = 20.0) -> dict[str, Any]:
+            max_attempts: int = 5, request_timeout: float = 20.0,
+            capture: dict[str, Any] | None = None) -> dict[str, Any]:
     last_error = ""
     for attempt in range(max_attempts):
         pace(tr)
+        request_started = time.time()
         try:
             r = requests.post(
                 BASE + path,
@@ -323,6 +327,14 @@ def ls_post(token: str, path: str, tr: str, body: dict[str, Any], *,
                 continue
             raise RuntimeError(last_error) from exc
         text = r.text or ""
+        if capture is not None:
+            # Preserve only this public market-data response and non-secret request.
+            # Authorization headers and the bearer token are never retained.
+            capture.update({"endpoint": path, "tr_cd": tr, "request": body,
+                            "http_status": r.status_code, "query_started_ts": request_started,
+                            "received_ts": time.time(),
+                            "raw_base64": base64.b64encode(r.content).decode("ascii"),
+                            "raw_sha256": hashlib.sha256(r.content).hexdigest()})
         # LS 게이트웨이가 임시 장애의 /503.html 경로를 HTTP 404로 반환하는
         # 실전 사례가 있다. 진짜 404와 구분해 해당 경로만 재시도한다.
         gateway_503_as_404 = r.status_code == 404 and "/503.html" in text
@@ -1398,6 +1410,20 @@ class Watch:
         ]
         return "\n".join(lines)
 
+    async def _prepare_program_close(self, close_dt: dt.datetime | None,
+                                     test_seconds: int | None, now: dt.datetime | None = None) -> None:
+        if not should_finalize_market_close(now or dt.datetime.now(KST), close_dt, test_seconds):
+            return
+        active = []
+        if self.episode is not None and self.idx:
+            active.append("KOSPI")
+        if self.kosdaq_episode is not None and self.kosdaq_idx:
+            active.append("KOSDAQ")
+        for market in active:
+            self.raw.setdefault("program_close", {})[market] = await asyncio.to_thread(
+                collect_program_close, self.token, market, close_dt.timestamp(), ls_post
+            )
+
     def build_end(
         self,
         ep: dict[str, Any],
@@ -1432,6 +1458,7 @@ class Watch:
                  "<b>저점까지 실제 매도주체</b>"]
         lines += market_attribution_lines(att, "KOSPI", final=True)
         if session_close:
+            lines += render_program_close((getattr(self, "raw", {}).get("program_close") or {}).get("KOSPI"), "KOSPI")
             lines += ["", "• <b>장 마감으로 사건 추적을 종료합니다. 복원 여부는 확정하지 않습니다.</b>"]
         lines += ["", market_attribution_footer("KOSPI", final=True),
                   "• " + " · ".join([link(KOSPI_URL,"KOSPI"), link(NEWS_URL,"관련 뉴스")])]
@@ -1668,6 +1695,8 @@ class Watch:
             lines.append(f"• 저점 이후 현재 {price:,.2f} · 반등 {rebound:+.2f}%")
         lines += ["", "<b>그 구간에서 누가 팔았나</b>"]
         lines += market_attribution_lines(att, "KOSDAQ", final=is_final)
+        if session_close or stage == "close":
+            lines += render_program_close((getattr(self, "raw", {}).get("program_close") or {}).get("KOSDAQ"), "KOSDAQ")
         lines.extend([
             market_attribution_footer("KOSDAQ", final=is_final),
             "• 코스피200 선물·코스피 프로그램 수급은 코스닥 매도주체로 사용하지 않습니다.",
@@ -2456,20 +2485,28 @@ class Watch:
 
             await asyncio.sleep(0.6)
 
+        # Reuse only existing close messages, after the actual session close.
+        await self._prepare_program_close(close_dt, test_seconds)
+
         if self.episode is not None and self.idx and should_finalize_market_close(
             dt.datetime.now(KST), close_dt, test_seconds
         ):
             ep = self.episode
             end_ts, end_price = self.idx[-1]
             final_att = self.attribution(float(ep["start_ts"]), float(ep["low_ts"]))
+            close_text = self.build_end(ep, end_ts, end_price, session_close=True)
             msg_id = await asyncio.to_thread(
                 telegram_send,
-                self.build_end(ep, end_ts, end_price, session_close=True),
+                close_text,
             )
             self.msg_ids.append(msg_id)
             self.episode = None
             self.last_episode_end_ts = end_ts
-            self._record_delivery("close", msg_id, ep, end_ts)
+            self._record_delivery("close", msg_id, ep, end_ts, evidence={
+                "market_attribution": final_att,
+                "program_close": (self.raw.get("program_close") or {}).get("KOSPI"),
+                "request_body_sha256": hashlib.sha256(close_text.encode("utf-8")).hexdigest(),
+            })
             ep_copy = json.loads(json.dumps(ep))
             task = asyncio.create_task(self._run_enrichment(ep_copy, final_att))
             self.enrichment_tasks.add(task)
@@ -2480,13 +2517,18 @@ class Watch:
                 and should_finalize_market_close(dt.datetime.now(KST),close_dt,test_seconds)):
             ep=self.kosdaq_episode
             end_ts,end_price=self.kosdaq_idx[-1]
+            close_text=self.build_kosdaq_drop_alert("close",ep,end_ts,end_price,session_close=True)
             msg_id=await asyncio.to_thread(
-                telegram_send,self.build_kosdaq_drop_alert("close",ep,end_ts,end_price,session_close=True)
+                telegram_send,close_text
             )
             self.kosdaq_episode=None
             self.kosdaq_last_episode_end_ts=end_ts
             self.msg_ids.append(msg_id)
-            self._record_delivery("kosdaq_shock_close",msg_id,ep,end_ts)
+            self._record_delivery("kosdaq_shock_close",msg_id,ep,end_ts,evidence={
+                **self._kosdaq_render_evidence,
+                "program_close": (self.raw.get("program_close") or {}).get("KOSDAQ"),
+                "request_body_sha256": hashlib.sha256(close_text.encode("utf-8")).hexdigest(),
+            })
             ep_copy=json.loads(json.dumps(ep))
             final_att=self._kosdaq_attribution(float(ep["start_ts"]),float(ep["low_ts"]))
             task=asyncio.create_task(self._run_kosdaq_enrichment(ep_copy,final_att))

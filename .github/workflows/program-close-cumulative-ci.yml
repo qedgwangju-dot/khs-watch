@@ -1,0 +1,44 @@
+name: Program Close Cumulative Offline CI
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/program-close-cumulative-ci.yml"
+      - ".github/workflows/kospi-derivatives-flow-ls-ci.yml"
+      - "scripts/market_program_close.py"
+      - "scripts/kospi_shock_episode_watch.py"
+      - "scripts/test_market_program_close.py"
+      - "scripts/test_fixtures/program_close_readback_20261016.json"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/program-close-cumulative-ci.yml"
+      - ".github/workflows/kospi-derivatives-flow-ls-ci.yml"
+      - "scripts/market_program_close.py"
+      - "scripts/kospi_shock_episode_watch.py"
+      - "scripts/test_market_program_close.py"
+      - "scripts/test_fixtures/program_close_readback_20261016.json"
+
+permissions:
+  contents: read
+
+jobs:
+  offline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install test dependencies
+        run: python -m pip install --disable-pip-version-check --quiet requests exchange_calendars pyyaml
+      - name: Offline source, amount, close, and incident regressions
+        run: |
+          python scripts/test_market_program_close.py
+          python scripts/test_market_flow_channels.py
+          python scripts/test_kospi_shock_episode.py
+          python scripts/test_kospi_shock_enrichment.py
+          python scripts/test_kospi_flow_attribution_strict.py
+          python scripts/test_kosdaq_surge_industries.py

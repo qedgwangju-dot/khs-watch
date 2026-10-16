@@ -31,6 +31,9 @@ on:
       - "scripts/test_kosdaq_surge_industries.py"
       - "scripts/probe_kosdaq_surge_industries.py"
       - "scripts/market_flow_channels.py"
+      - "scripts/market_program_close.py"
+      - "scripts/test_market_program_close.py"
+      - "scripts/test_fixtures/program_close_readback_20261016.json"
       - "scripts/test_market_flow_channels.py"
       - "scripts/probe_market_flow_channels.py"
       - "scripts/krx_session_calendar.py"
@@ -76,6 +79,8 @@ jobs:
 
       - name: Run regression tests
         run: |
+          python -m py_compile scripts/market_program_close.py scripts/test_market_program_close.py
+          python scripts/test_market_program_close.py
           python scripts/test_kospi_shock_episode.py
           python scripts/test_kospi_shock_enrichment.py
           python scripts/test_kospi_flow_attribution_strict.py
