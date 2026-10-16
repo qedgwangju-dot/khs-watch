@@ -61,6 +61,120 @@ class IntegrityTests(unittest.TestCase):
         fixture = json.loads(path.read_text(encoding='utf-8'))
         return fixture, dt.datetime.fromisoformat(fixture['provenance']['queried_at_kst'])
 
+    def report_stage_fixture(self):
+        path = Path(__file__).parent/'test_fixtures/war_report_stage_38836451449.json'
+        fixture = json.loads(path.read_text(encoding='utf-8'))
+        return fixture, dt.datetime.fromisoformat(fixture['provenance']['queried_at_kst'])
+
+    def test_actual_ceasefire_collapse_restart_is_not_restraint(self):
+        fixture, _ = self.report_stage_fixture()
+        row = fixture['articles'][0]
+        self.assertFalse(integrity.mixed_restraint_attack(row))
+        self.assertIsNone(integrity.non_military_kind(row))
+        self.assertEqual(integrity.final_color(row), 'red')
+        self.assertEqual(integrity.topic_label(row), '우크라이나·러시아 · 정유시설 공격 보도')
+
+    def test_actual_bombing_report_delay_is_not_a_new_bombing(self):
+        fixture, _ = self.report_stage_fixture()
+        row = fixture['articles'][1]
+        self.assertEqual(integrity.non_military_kind(row), 'military_report')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+        self.assertEqual(integrity.topic_label(row), '미국·이란 · 공격 조사·보고서 공표')
+
+    def test_collapsed_ceasefire_mentions_do_not_establish_restraint(self):
+        for title in ('트럼프 에너지 휴전 파기…우크라이나 러 정유시설 공습 재개',
+                      '휴전 결렬…러시아 공격 계속',
+                      'Ceasefire has collapsed…Russia continues attacks',
+                      'Truce failed but Russia resumes strikes'):
+            with self.subTest(title=title):
+                self.assertFalse(integrity.mixed_restraint_attack(article(title)))
+
+    def test_explicit_restraint_survives_another_failed_truce_mention(self):
+        row = article('휴전 붕괴…우크라이나 공격 자제했지만 러시아는 계속 공격')
+        self.assertTrue(integrity.mixed_restraint_attack(row))
+        self.assertEqual(integrity.final_color(row), 'yellow')
+
+    def test_bombing_report_keeps_its_stage_despite_body_attack_background(self):
+        row = article('미 국방부, 이란 초등학교 폭격 조사보고서 공개')
+        row['description'] = '배경에는 앞선 미사일 공격과 폭격 피해, 호르무즈 항로 제한이 있다.'
+        row['signals_ko'] = ['새 공격과 호르무즈 봉쇄']
+        row['forced_tags'] = ['확전']
+        with patch.object(integrity.body_parallel, '_safe_enrich'):
+            text = integrity.build_alert([row], [], NOW)
+        self.assertEqual(row['classification_color'], 'yellow')
+        self.assertEqual(row['tags'], ['공격 조사·보고서 공표'])
+        self.assertIn('미국·이란 · 공격 조사·보고서 공표', text)
+        self.assertIn(html.escape(row['title_original']), text)
+        self.assertNotIn('이란·호르무즈', text)
+        self.assertNotIn('새 공격과 호르무즈 봉쇄', text)
+        self.assertIn('조사·보고서 공표 단계', text)
+
+    def test_report_mention_does_not_hide_a_separate_new_attack(self):
+        for title in ('미 국방부, 이란 초등학교 폭격 조사보고서 공개…러시아 공습 개시',
+                      '우크라이나, 러 정유시설 공습 재개…폭격 조사보고서도 공개',
+                      'US releases bombing investigation report; Russia resumes airstrikes',
+                      '미 국방부, 폭격 조사보고서 공개…러시아는 우크라이나를 폭격했다',
+                      '이란 공격 조사보고서 공개…이스라엘이 레바논을 공습하고 있다',
+                      'US releases bombing investigation report; Russia bombs Ukraine'):
+            with self.subTest(title=title):
+                row = article(title)
+                self.assertIsNone(integrity.non_military_kind(row))
+                self.assertEqual(integrity.final_color(row), 'red')
+
+    def test_english_investigation_report_is_not_an_attack(self):
+        row = article('US delays Iran school bombing investigation report until after midterms')
+        self.assertEqual(integrity.non_military_kind(row), 'military_report')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+
+    def test_actual_report_stage_render_preserves_four_titles_without_background_cache(self):
+        fixture, now = self.report_stage_fixture()
+        rows = fixture['articles']
+        before = watch.STATE.read_bytes()
+        with patch.object(integrity.body_parallel, '_safe_enrich'):
+            text = integrity.build_alert(rows, fixture['markets'], now)
+        self.assertEqual([row['classification_color'] for row in rows], ['red', 'yellow', 'red', 'red'])
+        for row in rows:
+            self.assertIn(html.escape(row['title_original']), text)
+        self.assertEqual(rows[0]['tags'], ['정유시설 공격 보도'])
+        self.assertEqual(rows[1]['tags'], ['공격 조사·보고서 공표'])
+        self.assertTrue(all(not row.get('body_verified') for row in rows))
+        self.assertNotIn('자제 발언·상대 공격 주장', text)
+        self.assertEqual(watch.STATE.read_bytes(), before)
+
+    def test_final_gate_rejects_actual_same_hash_report_stage_errors(self):
+        fixture, now = self.report_stage_fixture()
+        receipt = evidence.alert_receipt(fixture['articles'], fixture['markets'], now, fixture['bad_alert'])
+        self.assertEqual(receipt['alert_sha256'], fixture['provenance']['alert_sha256'])
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            root = Path(folder)
+            for attr, name in {'ALERT': 'alert.txt', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                stack.enter_context(patch.object(watch, attr, root/name))
+            watch.ALERT.write_text(fixture['bad_alert'], encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids': [row['id'] for row in fixture['articles']]}), encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+            stack.enter_context(patch.object(integrity, '_verify'))
+            with self.assertRaisesRegex(RuntimeError, 'rendered topic differs'):
+                integrity.verify_alert()
+
+    def test_final_gate_recomputes_report_stage_after_other_items_are_corrected(self):
+        fixture, now = self.report_stage_fixture()
+        rows = fixture['articles']
+        with patch.object(integrity.body_parallel, '_safe_enrich'):
+            text = integrity.build_alert(rows, fixture['markets'], now)
+        text = text.replace('🟡 [속보] <b>2.', '🔴 [속보] <b>2.')
+        rows[1]['classification_color'] = 'red'
+        receipt = evidence.alert_receipt(rows, fixture['markets'], now, text)
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            root = Path(folder)
+            for attr, name in {'ALERT': 'alert.txt', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                stack.enter_context(patch.object(watch, attr, root/name))
+            watch.ALERT.write_text(text, encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids': [row['id'] for row in rows]}), encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+            stack.enter_context(patch.object(integrity, '_verify'))
+            with self.assertRaisesRegex(RuntimeError, 'statement presented as a new attack'):
+                integrity.verify_alert()
+
     def test_rejected_pause_request_is_not_an_observed_attack_pause(self):
         fixture, _ = self.ceasefire_rejection_fixture()
         row = fixture['articles'][0]

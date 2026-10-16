@@ -1,0 +1,290 @@
+{
+  "provenance": {
+    "run_id": "38836451449",
+    "code_sha": "cc1bfa71e817ca99493845ba617545779a632fee",
+    "queried_at_kst": "2026-10-16T10:42:27.360226+09:00",
+    "alert_sha256": "0e1ab25346d68ff5c68117ec900fd1427a77c066711a863ca2b36a17fe309438",
+    "input_kind": "stored actual delivered article evidence; Telegram ID331",
+    "operating_article_text_preserved": false,
+    "origin_body_verified": false,
+    "artifact_id": 12019163265,
+    "artifact_zip_sha256": "0a0c9259ea4f24b48456a9a3da1d4af4851105fc0eff5af6077d1470e7c12ec3"
+  },
+  "articles": [
+    {
+      "id": "f13e90278fb74efac6b7",
+      "title_original": "트럼프 '에너지 휴전' 붕괴…젤렌스키, 러 정유시설 공습 재개 - 연합뉴스",
+      "title_ko": "트럼프 '에너지 휴전' 붕괴…젤렌스키, 러 정유시설 공습 재개 - 연합뉴스",
+      "description": "트럼프 '에너지 휴전' 붕괴…젤렌스키, 러 정유시설 공습 재개 연합뉴스",
+      "source": "연합뉴스",
+      "source_url": "https://www.yna.co.kr",
+      "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9oRG9JMEM2SF9IYVdXQlp1c3VqZXBWZ09yeklzclRxRHhjYUw5QWhKSHZaOUtxMV9GX21QN1J1ZzBvQlNtSGZYZFlUQ2FVMnZ4LXhJTm9OTUhKMTdBblpmTdIBYEFVX3lxTE9oRG9JMEM2SF9IYVdXQlp1c3VqZXBWZ09yeklzclRxRHhjYUw5QWhKSHZaOUtxMV9GX21QN1J1ZzBvQlNtSGZYZFlUQ2FVMnZ4LXhJTm9OTUhKMTdBblpmTQ?oc=5",
+      "published": "Fri, 16 Oct 2026 00:03:59 GMT",
+      "score": 15,
+      "tags": [
+        "종전·협상",
+        "자제 발언·상대 공격 주장"
+      ],
+      "body_checked": true,
+      "signals_ko": [],
+      "classification_color": "yellow",
+      "non_military_kind": "mixed_restraint",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "ba895031a8f1416db4f6",
+      "title_original": "미 국방부, 이란 초등학교 폭격 조사보고서 중간선거 이후로 - 한겨레",
+      "title_ko": "미 국방부, 이란 초등학교 폭격 조사보고서 중간선거 이후로 - 한겨레",
+      "description": "미 국방부, 이란 초등학교 폭격 조사보고서 중간선거 이후로 한겨레",
+      "source": "한겨레",
+      "source_url": "https://www.hani.co.kr",
+      "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE02dFF6djVCNEpjUS1qaU5FUWFSUWI0bkZibmlJT3JmUlRJcVpXQlBXMG55WnI5RXdaazdxNmVDQ0FnV1ZWM251dWE0d2hoRkpwVnRWSTl4dkhEekZNMXF0dHViRmNQZU1paUp4S1FsVQ?oc=5",
+      "published": "Fri, 16 Oct 2026 01:19:00 GMT",
+      "score": 10,
+      "tags": [
+        "정치일정",
+        "확전"
+      ],
+      "body_checked": true,
+      "classification_color": "red",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "b9c04acfaf12de65cc88",
+      "title_original": "우크라이나, 러 정유소 공습 재개···국제 경유 공급 불안 가중 - 스마트비즈",
+      "title_ko": "우크라이나, 러 정유소 공습 재개···국제 경유 공급 불안 가중 - 스마트비즈",
+      "description": "우크라이나, 러 정유소 공습 재개···국제 경유 공급 불안 가중 스마트비즈",
+      "source": "스마트비즈",
+      "source_url": "https://www.smartbizn.com",
+      "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5qQy1rUm9GUHZ1c0hRZ19PRlp1MWRXMjZFcEQwZXBHcjRfY2h2bzY3OFNkZmw2ZzU5TWZ0V0YwNEwxZXhCdWJOOWNYWFV0SkJFaWU2SzZnWk9icTlPNURsM01wZTFqWDlYWnZybw?oc=5",
+      "published": "Fri, 16 Oct 2026 01:01:08 GMT",
+      "score": 10,
+      "tags": [
+        "정유시설 공격 보도"
+      ],
+      "body_checked": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "classification_color": "red",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "f90c0cdb7138466f83a7",
+      "title_original": "젤렌스키, 트럼프에 반기 들었다…러 정유시설 공습 재개 - 한국경제",
+      "title_ko": "젤렌스키, 트럼프에 반기 들었다…러 정유시설 공습 재개 - 한국경제",
+      "description": "젤렌스키, 트럼프에 반기 들었다…러 정유시설 공습 재개 한국경제",
+      "source": "한국경제",
+      "source_url": "https://www.hankyung.com",
+      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBRTlJmM0dKNmY5YkFMZ21tSTNrWXVDU2RQM3JOVnVvVTc4RjR1YTluWjRhTm1jUGpJa3pnaGRlWXM3RVRjbWlBTFl3TGp3dmFIU1NfYTVFWFZjZw?oc=5",
+      "published": "Fri, 16 Oct 2026 00:28:24 GMT",
+      "score": 10,
+      "tags": [
+        "정유시설 공격 보도"
+      ],
+      "body_checked": true,
+      "signals_ko": [],
+      "forced_tags": [],
+      "classification_color": "red",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "markets": [
+    {
+      "name": "나스닥100 선물",
+      "price": 30060.25,
+      "pct": -0.2770060128550744,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "10:32 KST",
+      "observed_at_kst": "2026-10-16T10:32:28+09:00",
+      "symbol": "NQ=F",
+      "previous_close": 30143.75,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "NQ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 30143.75,
+        "chartPreviousClose": 30143.75,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792114348,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792036800,
+            "end": 1792036800,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792036800,
+            "end": 1792123140,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792123140,
+            "end": 1792123140,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/NQ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "WTI",
+      "price": 96.0,
+      "pct": -0.5181347150259086,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "10:32 KST",
+      "observed_at_kst": "2026-10-16T10:32:25+09:00",
+      "symbol": "CL=F",
+      "previous_close": 96.5,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "CL=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 96.5,
+        "chartPreviousClose": 96.5,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792114345,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792036800,
+            "end": 1792036800,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792036800,
+            "end": 1792123140,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792123140,
+            "end": 1792123140,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/CL%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "Brent",
+      "price": 105.55999755859375,
+      "pct": -0.33988145903157685,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "10:32 KST",
+      "observed_at_kst": "2026-10-16T10:32:23+09:00",
+      "symbol": "BZ=F",
+      "previous_close": 105.92,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "BZ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 105.92,
+        "chartPreviousClose": 105.92,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792114343,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792036800,
+            "end": 1792036800,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792036800,
+            "end": 1792123140,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792123140,
+            "end": 1792123140,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/BZ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "달러지수",
+      "price": 102.05799865722656,
+      "pct": 0.002938275661712453,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "10:32 KST",
+      "observed_at_kst": "2026-10-16T10:32:32+09:00",
+      "symbol": "DX-Y.NYB",
+      "previous_close": 102.055,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "DX-Y.NYB",
+        "instrumentType": "INDEX",
+        "previousClose": 102.055,
+        "chartPreviousClose": 102.055,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792114352,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "end": 1792036800,
+            "start": 1792036800,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "end": 1792123140,
+            "start": 1792036800,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "end": 1792123140,
+            "start": 1792123140,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/DX-Y.NYB?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    }
+  ],
+  "bad_alert": "<b>전쟁·종전·재건 웹감시</b>\n🔴 <b>공격·확전</b>  |  🟡 <b>발언·제재·외교반응·협상 제약</b>\n조회 2026-10-16 10:42 KST\n기사 시각 기준 · 실제 사건 발생시각과 구분\n\n<b>핵심 변화</b>\n🟡 [신규] <b>1. 우크라이나·러시아</b>\n트럼프 &#x27;에너지 휴전&#x27; 붕괴…젤렌스키, 러 정유시설 공습 재개 - 연합뉴스\nRSS 보도 10-16 09:03 KST · <b>98분 경과</b> · 종전·협상 · 자제 발언·상대 공격 주장 · <a href=\"https://news.google.com/rss/articles/CBMiYEFVX3lxTE9oRG9JMEM2SF9IYVdXQlp1c3VqZXBWZ09yeklzclRxRHhjYUw5QWhKSHZaOUtxMV9GX21QN1J1ZzBvQlNtSGZYZFlUQ2FVMnZ4LXhJTm9OTUhKMTdBblpmTdIBYEFVX3lxTE9oRG9JMEM2SF9IYVdXQlp1c3VqZXBWZ09yeklzclRxRHhjYUw5QWhKSHZaOUtxMV9GX21QN1J1ZzBvQlNtSGZYZFlUQ2FVMnZ4LXhJTm9OTUhKMTdBblpmTQ?oc=5\">연합뉴스 검색 링크</a> · 제목 기준·본문 미확인\n\n🔴 [속보] <b>2. 이란·호르무즈</b>\n미 국방부, 이란 초등학교 폭격 조사보고서 중간선거 이후로 - 한겨레\nRSS 보도 10-16 10:19 KST · <b>23분 경과</b> · 확전 · <a href=\"https://news.google.com/rss/articles/CBMib0FVX3lxTE02dFF6djVCNEpjUS1qaU5FUWFSUWI0bkZibmlJT3JmUlRJcVpXQlBXMG55WnI5RXdaazdxNmVDQ0FnV1ZWM251dWE0d2hoRkpwVnRWSTl4dkhEekZNMXF0dHViRmNQZU1paUp4S1FsVQ?oc=5\">한겨레 검색 링크</a> · 제목 기준·본문 미확인\n\n🔴 [신규] <b>3. 우크라이나·러시아 · 정유시설 공격 보도</b>\n우크라이나, 러 정유소 공습 재개···국제 경유 공급 불안 가중 - 스마트비즈\nRSS 보도 10-16 10:01 KST · <b>41분 경과</b> · 정유시설 공격 보도 · <a href=\"https://news.google.com/rss/articles/CBMibEFVX3lxTE5qQy1rUm9GUHZ1c0hRZ19PRlp1MWRXMjZFcEQwZXBHcjRfY2h2bzY3OFNkZmw2ZzU5TWZ0V0YwNEwxZXhCdWJOOWNYWFV0SkJFaWU2SzZnWk9icTlPNURsM01wZTFqWDlYWnZybw?oc=5\">스마트비즈 검색 링크</a> · 제목 기준·본문 미확인\n\n🔴 [신규] <b>4. 우크라이나·러시아 · 정유시설 공격 보도</b>\n젤렌스키, 트럼프에 반기 들었다…러 정유시설 공습 재개 - 한국경제\nRSS 보도 10-16 09:28 KST · <b>74분 경과</b> · 정유시설 공격 보도 · <a href=\"https://news.google.com/rss/articles/CBMiWkFVX3lxTFBRTlJmM0dKNmY5YkFMZ21tSTNrWXVDU2RQM3JOVnVvVTc4RjR1YTluWjRhTm1jUGpJa3pnaGRlWXM3RVRjbWlBTFl3TGp3dmFIU1NfYTVFWFZjZw?oc=5\">한국경제 검색 링크</a> · 제목 기준·본문 미확인\n\n<b>시장 반응</b>\n나스닥100 선물  <b>30,060.25</b>  -0.28% · 제공처 비교종가 대비 · 기준 10:32 KST · Yahoo Finance 1분봉 NQ=F\nWTI  <b>96.00</b>  -0.52% · 제공처 비교종가 대비 · 기준 10:32 KST · Yahoo Finance 1분봉 CL=F\nBrent  <b>105.56</b>  -0.34% · 제공처 비교종가 대비 · 기준 10:32 KST · Yahoo Finance 1분봉 BZ=F\n달러지수  <b>102.06</b>  +0.00% · 제공처 비교종가 대비 · 기준 10:32 KST · Yahoo Finance 1분봉 DX-Y.NYB\n\n<b>투자 판정</b>\n- <b>핵심:</b> 신규 변화의 중심은 실제 공격·해상안보·운영 위험\n- <b>현재 단계:</b> 군사·안보 위험 지속 — 상업거래나 조건 제시를 휴전 진전으로 보지 않음\n- <b>조건부 영향:</b> 추가 공격·운영 차질이 확대되면 유가·해운·보험 위험프리미엄 상승 가능\n- <b>다음:</b> 추가 공격 → 시설·선박 피해 → 운항 제한 → 실제 교전 강도\n"
+}
