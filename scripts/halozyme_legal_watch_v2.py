@@ -253,6 +253,9 @@ def main() -> int:
     search_elapsed=round(time.monotonic()-search_started,3)
     fetch_failures=len(errors)
     source_health=search_source_health(len(search_tasks),fetch_failures,completed_by_engine)
+    # Independently verified case events are not contingent on news RSS availability.
+    # Keep these separate from the source-success counters so an RSS outage remains visible.
+    raw_items.extend(getattr(__import__(__name__), "VERIFIED_BACKFILL_ITEMS", []))
     for item in raw_items:
         blob=f"{item['title']} {item['description']} {item['url']}"
         if 'halozyme' not in blob.lower() or not any(x in blob.lower() for x in ('merck','msd','pgr','ipr','ptab','2:25-cv-03179')):

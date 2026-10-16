@@ -4,6 +4,10 @@ import datetime as dt
 import pathlib
 import sys
 import unittest
+import json
+import os
+import tempfile
+from unittest.mock import patch
 from unittest.mock import patch
 import xml.etree.ElementTree as ET
 from unittest.mock import patch
@@ -479,6 +483,57 @@ class BioAlertRegressionTests(unittest.TestCase):
         self.assertIn("• <b>2026년 10월 2일</b> PGR2025-00046", rendered)
         self.assertIn("알테오젠이 9/14를 새 공식 IR로 발표했다는 뜻이 아니라", rendered)
         self.assertIn("30일 내 USPTO 국장 재검토 또는 PTAB 재심", rendered)
+
+    def test_halozyme_oct15_docket_and_correct_portfolio_tally(self):
+        self.assertEqual(len(halo.OCT15_VERIFIED_DECISIONS), 2)
+        for item in halo.OCT15_VERIFIED_DECISIONS:
+            text = " ".join(str(item.get(key) or "") for key in ("title", "description", "url"))
+            case, patent = halo.get_case(text)
+            self.assertIn(case, ("PGR2025-00024", "PGR2025-00030"))
+            self.assertEqual(patent, halo.base.KNOWN_CASES[case])
+            self.assertEqual(halo.classify(text, case), "final_unpatentable")
+            alert = halo.alert(case, patent, "final_unpatentable", item)
+            self.assertIn("<b>2026년 10월 15일</b>", alert)
+            self.assertIn("Paper 100", alert)
+        self.assertEqual(halo.PTAB_OCT15_PORTFOLIO_SCORECARD["score"]["won"], 11)
+        self.assertEqual(halo.PTAB_OCT15_PORTFOLIO_SCORECARD["score"]["pending"], 3)
+        rendered = halo.portfolio_alert(halo.PTAB_OCT15_PORTFOLIO_SCORECARD)
+        self.assertIn("9/14 → 11/14", rendered)
+        self.assertIn("합계 53개", rendered)
+        self.assertIn("• <b>2026년 10월 15일</b>", rendered)
+        self.assertIn("잔여 사건:", rendered)
+        self.assertIn("유럽 8개국 금지명령", rendered)
+        self.assertNotIn("확정 취소됐습니다", rendered)
+        score_9 = halo.PTAB_VERIFIED_PORTFOLIO_SCORECARD["score"]
+        score_11 = halo.PTAB_OCT15_PORTFOLIO_SCORECARD["score"]
+        self.assertNotEqual(halo.portfolio_scorecard_key(score_9), halo.portfolio_scorecard_key(score_11))
+
+    def test_halozyme_oct15_not_lost_if_news_rss_fails_and_never_double_sends(self):
+        # Independent trusted decision items must still be sent, but RSS outage is marked degraded.
+        with tempfile.TemporaryDirectory() as temp:
+            state = pathlib.Path(temp, "state.json")
+            status = pathlib.Path(temp, "status.md")
+            state.write_text(json.dumps({
+                "initialized": True, "seen_events": [], "seen_urls": []
+            }), encoding="utf-8")
+            sends = []
+            with (
+                patch.object(halo.base, "STATE", state),
+                patch.object(halo.base, "STATUS", status),
+                patch.object(halo.base, "SEARCHES", ['"Halozyme" "Merck" PTAB PGR']),
+                patch.object(halo.base, "VERIFIED_BACKFILL_ITEMS", halo.OCT15_VERIFIED_DECISIONS),
+                patch.object(halo.base, "rss", side_effect=RuntimeError("network outage")),
+                patch.object(halo.base, "resolve_chat_id", return_value="test-chat"),
+                patch.object(halo.base, "send", side_effect=lambda token, chat, message: sends.append(message) or 501),
+                patch.dict(os.environ, {"BIO_TELEGRAM_BOT_TOKEN": "offline-test"}, clear=False),
+            ):
+                self.assertEqual(halo.base.main(), 2)
+                self.assertEqual(len(sends), 2)
+                persisted = json.loads(state.read_text(encoding="utf-8"))
+                self.assertEqual(persisted["source_health"], "degraded")
+                self.assertEqual(len(persisted["seen_urls"]), 2)
+                self.assertEqual(halo.base.main(), 2)
+                self.assertEqual(len(sends), 2)
 
     def test_halozyme_portfolio_scorecard_is_separate_event(self):
         sample = (

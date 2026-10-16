@@ -69,6 +69,8 @@ base.SEARCHES = [
 ]
 for case in base.KNOWN_CASES:
     base.SEARCHES.append(f'"{case}" Halozyme Merck')
+for case in ("PGR2025-00042", "PGR2025-00050", "PGR2025-00053"):
+    base.SEARCHES.append(f'"{case}" "Final Written Decision" Halozyme')
 
 base.SEARCHES.extend([
     '"C/09/695432" Halozyme Merck Keytruda SC',
@@ -166,6 +168,50 @@ VERIFIED_EUROPE_DECISIONS = [
         "published": "Wed, 07 Oct 2026 00:00:00 GMT",
     },
 ]
+
+# The 2026-10-15 Paper 100 cover pages were supplied by the user and matched
+# by docket/patent to public USPTO records and the dated secondary report.
+# Do not claim the complete official PDF body was accessed by this collector.
+OCT15_PTACTS_CASES = {
+    "PGR2025-00024": "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557268",
+    "PGR2025-00030": "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557365",
+}
+OCT15_VERIFIED_DECISIONS = [
+    {
+        "engine": "PTAB Paper 100 표지 + 사건기록·보도 교차확인",
+        "title": f"{case} Halozyme Merck Final Written Decision Determining All Challenged Claims Unpatentable",
+        "url": OCT15_PTACTS_CASES[case],
+        "description": (
+            f"Halozyme Merck {case} Patent {patent} Paper 100 October 15 2026 "
+            "JUDGMENT Final Written Decision Determining All Challenged Claims Unpatentable "
+            "35 U.S.C. 328(a)."
+        ),
+        "published": "Thu, 15 Oct 2026 12:00:00 GMT",
+    }
+    for case, patent in (
+        ("PGR2025-00024", "12,060,590"),
+        ("PGR2025-00030", "12,054,758"),
+    )
+]
+# Dated, already-grounded case events survive transient Bing/Google failures.
+base.VERIFIED_BACKFILL_ITEMS = (
+    list(VERIFIED_CURRENT_DECISIONS)
+    + list(VERIFIED_EUROPE_DECISIONS)
+    + list(OCT15_VERIFIED_DECISIONS)
+)
+PTAB_OCT15_PORTFOLIO_SCORECARD = {
+    "url": OCT15_PTACTS_CASES["PGR2025-00024"],
+    "source_urls": list(OCT15_PTACTS_CASES.values()),
+    "source_kind": "ptab_verified_rollup_20261015",
+    "title": "PTAB 10월 15일 최종서면결정 2건 반영 — 누적 11/14",
+    "score": {
+        "total": 14,
+        "won": 11,
+        "pending": 3,
+        "oral_date": "2026-07-23",
+        "patents": ["12,060,590", "12,054,758"],
+    },
+}
 
 
 def _strip_tags(value: str) -> str:
@@ -283,9 +329,23 @@ CURRENT_CONFIRMED_UNPATENTABLE = {
     "PGR2025-00039",
     "PGR2025-00046",
     "PGR2025-00052",
+    "PGR2025-00024",
+    "PGR2025-00030",
 }
 
 CASE_TIMELINES = {
+    "PGR2025-00024": (
+        ("2025-02-21", "PGR 청구"),
+        ("2025-10-16", "심판 개시"),
+        ("2026-07-23", "공동 구술심리"),
+        ("2026-10-15", "Paper 100 최종서면결정 — 심판 대상 청구항 26개 특허성 부정"),
+    ),
+    "PGR2025-00030": (
+        ("2025-02-04", "PGR 청구"),
+        ("2025-10-16", "심판 개시"),
+        ("2026-07-23", "공동 구술심리"),
+        ("2026-10-15", "Paper 100 최종서면결정 — 심판 대상 청구항 27개 특허성 부정"),
+    ),
     "PGR2025-00033": (
         ("2025-03-07", "PGR 청구"),
         ("2025-10-01", "심판 개시"),
@@ -632,6 +692,22 @@ def alert(case: str, patent: str, kind: str, item: dict) -> str:
 
     _pending_timeline_event = _timeline_event(case, kind, item)
 
+    if case in OCT15_PTACTS_CASES and kind == "final_unpatentable":
+        patent = base.KNOWN_CASES[case]
+        count = 26 if case == "PGR2025-00024" else 27
+        url = html.escape(item["url"], quote=True)
+        return (
+            "<b>[바이오 감시] Halozyme 미국 MDASE PGR 최종서면결정</b>\n\n"
+            f"<b>{case} · 미국 특허 {html.escape(patent)}</b>\n"
+            f"- <b>타임라인:</b>\n{timeline_html(case, kind, item)}\n"
+            f"- <b>결과:</b> 2026년 10월 15일 Paper 100, 심판 대상 청구항 {count}개 전부 특허성 부정.\n"
+            "- <b>구분:</b> 미국 PTAB 최종서면결정이며 재검토·항소 가능성이 있습니다. 특허 전체의 확정 취소가 아닙니다.\n"
+            "- <b>알테오젠 의미:</b> 미국 MDASE 특허 장벽을 약화시키는 방향이지만 유럽 EP622 금지명령을 자동 해소하지는 않습니다.\n"
+            "- <b>다음 확인:</b> 30일 내 국장 재검토·PTAB 재심 신청 여부 → 이후 연방순회항소법원 항소.\n"
+            "- <b>출처:</b> 사용자 제공 PTAB 결정문 표지 및 사건번호·특허번호 교차확인\n"
+            f'- <a href="{url}">USPTO P-TACTS 사건 확인</a>'
+        )
+
     if case == DUTCH_VRO_CASE and kind == "nl_injunction":
         source_url = html.escape(item["url"], quote=True)
         reuters_url = html.escape(REUTERS_DUTCH_INJUNCTION_URL, quote=True)
@@ -823,7 +899,11 @@ def portfolio_scorecard_key(score: dict) -> str:
 def portfolio_updates() -> list[dict]:
     # 현재 공식 IR에서 확인된 7/14 판세는 검색색인·HTML 파싱 실패와 무관하게
     # 한 번은 반드시 이벤트로 소비하도록 검증된 기준선을 포함한다.
-    updates: list[dict] = [CURRENT_PORTFOLIO_SCORECARD, PTAB_VERIFIED_PORTFOLIO_SCORECARD]
+    updates: list[dict] = [
+        CURRENT_PORTFOLIO_SCORECARD,
+        PTAB_VERIFIED_PORTFOLIO_SCORECARD,
+        PTAB_OCT15_PORTFOLIO_SCORECARD,
+    ]
     global _official_portfolio_cache
     if _official_portfolio_cache is None:
         _official_portfolio_cache = _alteogen_official_portfolio_items()
@@ -852,6 +932,29 @@ def portfolio_alert(item: dict) -> str:
     patents = " · ".join(s.get("patents") or [])
     patent_line = f"\n- <b>이번 확인 특허:</b> {html.escape(patents)}" if patents else ""
     source_kind = str(item.get("source_kind") or "alteogen_ir")
+
+    if source_kind == "ptab_verified_rollup_20261015":
+        urls = list(item.get("source_urls") or [])
+        links = "\n".join(
+            f'- <a href="{html.escape(url, quote=True)}">USPTO P-TACTS 사건기록 {i}</a>'
+            for i, url in enumerate(urls, 1)
+        )
+        return (
+            "<b>[바이오 감시] Halozyme MDASE 미국 PGR 누적 판세 변화</b>\n\n"
+            f"<b>PTAB 최종서면결정 기준 9/14 → {s['won']}/{s['total']}건 (잔여 {s['pending']}건)</b>\n"
+            "- <b>타임라인:</b>\n"
+            "• <b>2026년 9월 28일</b> 알테오젠 공식 IR 7/14 확인\n"
+            "• <b>2026년 10월 1일</b> PGR2025-00052 최종서면결정\n"
+            "• <b>2026년 10월 2일</b> PGR2025-00046 최종서면결정, 누적 9/14\n"
+            "• <b>2026년 10월 15일</b> PGR2025-00024·00030 Paper 100 최종서면결정, 누적 11/14\n"
+            "- <b>이번 2건:</b> US 12,060,590 심판 대상 26개 청구항, US 12,054,758 심판 대상 27개 청구항에서 전부 특허성 부정(합계 53개).\n"
+            "- <b>정확한 법적 성격:</b> PGR 심판 대상 청구항의 PTAB 최종서면결정으로, 확정 취소·특허 소멸이나 항소 종료를 의미하지 않습니다.\n"
+            "- <b>잔여 사건:</b> PGR2025-00042·00050·00053. 11월 19일까지 모두 MSD 승소한다는 전망은 확정 사실이 아닙니다.\n"
+            "- <b>국가별 차이:</b> 미국 PTAB 결과와 네덜란드 EP622 유효·침해 인정 및 유럽 8개국 금지명령은 별개입니다.\n"
+            "- <b>다음 확인:</b> 3개 잔여 최종서면결정 → 국장 재검토·재심 → 연방순회항소법원 항소·결과.\n"
+            "- <b>확인 근거:</b> 사용자 제공 PTAB Paper 100 표지(2026-10-15), USPTO 사건번호·특허번호 대조, 관련 보도. 전체 결정문 본문 직접 열람 여부는 별도입니다.\n"
+            + links
+        )
 
     if source_kind == "ptab_verified_rollup":
         source_urls = list(item.get("source_urls") or [])
