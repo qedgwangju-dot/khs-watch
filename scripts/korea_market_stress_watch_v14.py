@@ -20,18 +20,44 @@ _original_fetch_usdkrw = watch.fetch_usdkrw
 
 
 def _extract_krw_rate(text: str) -> float | None:
-    vals = re.findall(r"(?<!\d)([12],\d{3}(?:\.\d+)?)\s*원", text)
-    if vals:
-        try:
-            return float(vals[-1].replace(",", ""))
-        except Exception:
-            pass
-    m = re.search(r"미국\s*달러\*?.{0,80}?([12],\d{3}(?:\.\d+)?)", text, re.S)
-    if m:
-        try:
-            return float(m.group(1).replace(",", ""))
-        except Exception:
-            pass
+    """Extract only the USD/KRW Seoul 15:30 quote; never take the last price on a page.
+
+    FX sheets list 20+ currency prices and other articles may quote 1,350 won
+    or intraday highs. The previous generic 'last N,NNN won' fallback silently
+    misread unrelated figures as the prior official close.
+    """
+    clean = re.sub(r"\s+", " ", text or "").strip()
+    if not clean or "15:30" not in clean and "15.30" not in clean:
+        return None
+
+    # Explicit USD/KRW market-close headline, e.g. ... 1,344.6원(15:30 기준가).
+    for pattern in (
+        r"(?:원\s*[/·-]\s*달러|달러\s*[/·-]\s*원)(?:\s*환율)?[^\n]{0,150}?(?<![\d,])([12],\d{3}(?:\.\d{1,4})?)\s*원",
+        r"\[외환\][^\n]{0,150}?(?<![\d,])([12],\d{3}(?:\.\d{1,4})?)\s*원\s*\(15:30",
+    ):
+        match = re.search(pattern, clean, re.I)
+        if match:
+            value = float(match.group(1).replace(",", ""))
+            if 900.0 <= value <= 2500.0:
+                return value
+
+    # Seoul 15:30 FX rates table: USD is the first entry following '미국 달러*'.
+    # Tables may display bare "1,344.60" without a trailing "원".
+    if "외국환시세" in clean and "미국" in clean and "달러" in clean:
+        match = re.search(
+            r"미국\s*달러\s*\*?(.{0,500})",
+            clean,
+            flags=re.I,
+        )
+        if match:
+            quote = re.search(r"(?<![\d,])([12],\d{3}\.\d{1,4})(?!\d)", match.group(1))
+            if quote:
+                value = float(quote.group(1).replace(",", ""))
+                if 900.0 <= value <= 2500.0:
+                    return value
+
+    # Without an unambiguous USD/15:30 quote, fail closed rather than
+    # potentially issuing a false daily threshold alert.
     return None
 
 
