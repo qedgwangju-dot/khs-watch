@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "initial_alert_sent": false,
+  "seen_ids": [],
+  "seen_fact_keys": [],
+  "baseline": {
+    "2026-10-16_initial_stock_out": {
+      "status": "초기 배송 물량 제한 보도, 전체 예약 종료 아님",
+      "source": "https://appleinsider.com/articles/26/10/16/iphone-duo-sells-out-moments-after-pre-orders-begin"
+    },
+    "US": {
+      "latest_reported_delivery": "2027-01",
+      "precision": "2027년 1월 말·정확한 일자 미확인",
+      "source": "https://www.theverge.com/tech/1012805/apple-iphone-duo-preorder-delay",
+      "source_quality": "언론 보도, Apple 동적 주문견적 직접 미확인"
+    },
+    "KR": {
+      "latest_reported_delivery": null,
+      "precision": "확인 불가"
+    }
+  },
+  "market_latest": {
+    "미국": "2027-01"
+  },
+  "last_scan_items": 0,
+  "last_signal_count": 0,
+  "last_alert": null
+}
