@@ -39,6 +39,7 @@ jobs:
           python -m py_compile scripts/space_capital_policy_watch.py
           SPACE_CAPITAL_SELF_TEST=1 python scripts/space_capital_policy_watch.py
           python scripts/space_launch_telegram_send.py --self-test
+          python scripts/space_launch_telegram_send.py --inline-self-test
           python scripts/merge_space_launch_state.py --self-test
 
       - name: Verify FAA original and scan developments
@@ -56,7 +57,7 @@ jobs:
         env:
           SPACE_LAUNCH_TELEGRAM_BOT_TOKEN: ${{ secrets.SPACE_LAUNCH_TELEGRAM_BOT_TOKEN }}
           SPACE_LAUNCH_TELEGRAM_CHAT_ID: ${{ secrets.SPACE_LAUNCH_TELEGRAM_CHAT_ID }}
-        run: python scripts/space_launch_telegram_send.py out/space_capital_policy_telegram.txt
+        run: python scripts/space_launch_telegram_send.py --inline out/space_capital_policy_telegram.txt
 
       - name: Commit state after confirmed send
         if: success() && hashFiles('out/space_capital_policy_pending.json') != ''
