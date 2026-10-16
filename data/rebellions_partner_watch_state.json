@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-08-24T21:32:19+09:00",
-  "last_checked_kst": "2026-10-17T03:16:37+09:00",
+  "last_checked_kst": "2026-10-17T04:24:22+09:00",
   "seen": {
     "74fd33cf93fb250c6b18ecd7": {
       "title": "리벨리온, 공공 CCTV 관제에 서버형 NPU 대규모 인프라 공급… 국산 AI 인프라 상용화로 기술 자립 가속",
@@ -3361,6 +3361,57 @@
       "title": "[단독] ‘AI 반도체’ 리벨리온 2000억 펀딩 흥행 성공… 국내외 투자자 줄 섰다 - Chosunbiz",
       "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOc2kyUXpDVjZJb3dUdmZxUnVMY2pjdHBsclA0SHJGZ3V2ZDN2VXdwYWd6NlhibTViM1lrRWZZcThwLWF5X0lBMUhGYWhsel82WmlrZWNMVmlxUGZmV3ItWEZ3ZWNHYmU2d3RoNXRrdWRiWGVyVVh5Mzd4dVpydm93YXJqY3l5ZUk?oc=5",
       "first_seen_kst": "2026-10-16T02:59:30+09:00",
+      "suppressed_stale": true
+    },
+    "6840deac95143bddc23fe77e": {
+      "title": "KT클라우드, 공공 클라우드에 리벨리온 NPU 도입 - 서울경제",
+      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBhUWxQaGNlTmFvUmF6MFpMaXoxTFJtN3VSRjZQdExJS3VsZmg5blB0UzNYdmdpcFJOdjZVMk1aMk9pRXEtV1RrbENjWU5qMXFramfSAVNBVV95cUxNWnRzRVdzdm83NUlZWlBDUW5MUnRXdEl0aWt0TzdpNWttUmJPTzRpNXdVTmhmcy12eDlFRXJfeF81MmtPYW9IVmxsU01WMHQ5azJoRQ?oc=5",
+      "summary": "KT클라우드, 공공 클라우드에 리벨리온 NPU 도입 서울경제",
+      "event_signature": "ktcloud|npu|cloud",
+      "material_stage": 0,
+      "first_seen_kst": "2026-10-17T04:24:22+09:00",
+      "suppressed_duplicate": "same_title"
+    },
+    "d9e42f90d72e0731e4916aac": {
+      "title": "가비아, 리벨리온 ‘NPU 구독 서비스’ 출시 - 서울경제",
+      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFAwYk5fM1dhSE1kaHNCZWF0U24yNzdGV2I5ZEJTeXgwNW5MSnlfY08wOVlzUTlQZmRBRG5aUUlwRzhVN09nNmtYdGttRXR6eDg1ZmfSAVNBVV95cUxOc1pQZTFoc0NTekN1WGJFbVlnWFRzMnhfdUxGRWtFMmRGMHFUbzc1T2d0Rk5kbGg5R3FoRHJaZFpkU2g2Rmc1NmdGYjAyZ21HZDZWdw?oc=5",
+      "summary": "가비아, 리벨리온 ‘NPU 구독 서비스’ 출시 서울경제",
+      "event_signature": "gabia|npu|general",
+      "material_stage": 0,
+      "first_seen_kst": "2026-10-17T04:24:22+09:00",
+      "suppressed_duplicate": "same_title"
+    },
+    "c29351fb638bf9d8886491bd": {
+      "title": "리벨리온, 'HBM 탑재 NPU서버'로 SKT AI모델 구동 성공 - 유니콘팩토리",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE13TXNYYjQ0VjF2eUtEdzFCWDNCY2FJbDV6NjBXQzlka3BnU2h5TTExOFdvVzB3UWRYZ0h1ZmV2eFhwSlZ4ekMxbEpzRVpGcG5hcTFKcTZwOWwzTGxEQ2pBYWtGY3Z1ZWJCc2VZdQ?oc=5",
+      "summary": "리벨리온, 'HBM 탑재 NPU서버'로 SKT AI모델 구동 성공 유니콘팩토리",
+      "event_signature": "skt|npu|general",
+      "material_stage": 0,
+      "first_seen_kst": "2026-10-17T04:24:22+09:00",
+      "suppressed_duplicate": "same_url"
+    },
+    "dce168479dfc9f8105bbefb3": {
+      "title": "KT클라우드, 공공 전용 ‘NPU Server’ 출시…리벨리온 NPU 적용 - 아이티데일리",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE14VjJOR1lQQkdPa0I5M25PS2M0cDdxbE9nbERvTG5jZjkzVlpLbDVjVTM0Z2lDdDM1dHI1a1FGSEhXREJfRFFHRXJjcDNWc2NRbzFYajBIb2pGYlNtWEpLTzRSd3JlM1VR?oc=5",
+      "summary": "KT클라우드, 공공 전용 ‘NPU Server’ 출시…리벨리온 NPU 적용 아이티데일리",
+      "event_signature": "ktcloud|npu|cloud",
+      "material_stage": 0,
+      "first_seen_kst": "2026-10-17T04:24:22+09:00",
+      "suppressed_duplicate": "same_url"
+    },
+    "429c7cd5f8cfd301c1aaabec": {
+      "title": "리벨리온 NPU, SKT 데이터센터에 들어간다… \"AI 추론 기능 검증\" - 한국일보",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9ZS1NCMmtBaWtJQ3p6aDFGVjhiR0dEVTZjRzhwV0xNc3JzN2RCNWRyMWw2NXEtdF9YZE5EYXR0bzVUallRbUFFNlFZWk1FaEkzSGRxR3pEYU5fUzF6c3ZmVDI0ZlhEMjItWF9pd2Jn0gFzQVVfeXFMT2J6ajBzSUt6MmRlU3VtWU1KXzUzMHZ0NXVBOFZiZUhETVM0eEgwZlFETWg1aHhjV29DQjllSUU1UjlvT1oyRV9NVDdURmpnZk9OdEVXdEFTQ2lyTUNHMnlTdU55Z245MUFaNGw4eDFFdnE1Yw?oc=5",
+      "summary": "리벨리온 NPU, SKT 데이터센터에 들어간다… \"AI 추론 기능 검증\" 한국일보",
+      "event_signature": "skt|npu|datacenter",
+      "material_stage": 2,
+      "first_seen_kst": "2026-10-17T04:24:22+09:00",
+      "suppressed_duplicate": "same_url"
+    },
+    "225cc864c0eab686e3338b8c": {
+      "title": "kt cloud, 국내 첫 클라우드 기반 NPU 인프라, 리벨리온 고성능 NPU ‘아톰’ 탑재 - 인공지능신문",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE91ek5ncldnNDliSjA2WXN6dVFNRTlUZE9Qa0FIZTRYeURVRXNMYWRkOUt0UHF6MVllT0JhOWpObHdUY3NPM1JXSXNsT3dmOFR4RXdkb0tOX0R0MTRodGVKdjE3eUFSVnM?oc=5",
+      "first_seen_kst": "2026-10-17T04:24:22+09:00",
       "suppressed_stale": true
     }
   }
