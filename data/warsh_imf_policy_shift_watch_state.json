@@ -1,7 +1,7 @@
 {
   "pending_key": null,
   "delivery_status": "confirmed",
-  "updated_at_utc": "2026-10-16T06:21:35.382165+00:00",
+  "updated_at_utc": "2026-10-16T06:26:36.269401+00:00",
   "last_sent_key": "2026-10-16|Warsh|IMF-Bangkok",
   "message_id": 89,
   "sources": [
@@ -9,9 +9,14 @@
     "https://www.imfconnect.org/content/imf/en/annual-meetings/calendar/open/2026/10/16/213398.html",
     "https://www.reuters.com/markets/asia/feds-warsh-gives-no-hint-october-policy-decision-2026-10-16/"
   ],
-  "citi_reported": false,
+  "citi_reported": true,
   "coverage_publishers": [
     "Reuters(재공표)"
   ],
-  "sent_at_utc": "2026-10-16T06:21:35.382086+00:00"
+  "sent_at_utc": "2026-10-16T06:21:35.382086+00:00",
+  "citi_pending_key": null,
+  "citi_delivery_status": "confirmed",
+  "citi_source": "https://www.kitco.com/news/off-the-wire/2026-10-14/citi-turns-hawkish-fed-after-inflation-surprise-expects-december-rate",
+  "citi_message_id": 90,
+  "citi_sent_key": "2026-10-14|Citi|December-25bp"
 }
