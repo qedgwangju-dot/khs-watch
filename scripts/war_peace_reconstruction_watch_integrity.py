@@ -25,7 +25,7 @@ KIND_LABELS = {'sanctions': '제재·압박', 'reaction': '외교반응·개입�
                'military_statement': '군사 대응·보복 발언', 'support_statement': '지원 정책 발언',
                'military_discussion': '공습 재개 논의·이견', 'military_analysis': '군사·안보 해설',
                'market_effect': '전쟁의 물가 파급 보도', 'ceasefire_position': '휴전·공격 중단 입장',
-               'military_report': '공격 조사·보고서 공표'}
+               'military_report': '공격 조사·보고서 공표', 'fuel_shipping': '봉쇄·연료 선적 보도'}
 
 
 def _headline(row):
@@ -105,7 +105,12 @@ def _primary_topic(row):
     if kind == 'market_effect':
         us_prices = re.search(r'(?:미국|美|united states|u\.s\.).{0,12}(?:물가|cpi|inflation)', title)
         return ('미국·물가' if us_prices else '물가·경제지표') + ' · 전쟁 파급 보도'
-    if kind in ('military_statement', 'military_discussion', 'military_analysis', 'ceasefire_position', 'military_report'):
+    if kind == 'reaction':
+        group = _headline_group(title)
+        if group == '우크라이나·러시아' and re.search(r'트럼프|미국|\btrump\b|\bu\.s\.', title):
+            group = '미국·우크라이나·러시아'
+        return group + ' · ' + KIND_LABELS[kind]
+    if kind in ('military_statement', 'military_discussion', 'military_analysis', 'ceasefire_position', 'military_report', 'fuel_shipping'):
         return _headline_group(title) + ' · ' + KIND_LABELS[kind]
     if kind == 'support_statement':
         label = '정보 지원·종전 의향 발언' if re.search(r'종전|peace|end.{0,8}war', title) else '지원 정책 발언'
@@ -150,6 +155,20 @@ def _military_actions(title):
         r'보복\s*(?:공습|공격)\s*(?:개시|실시)|'
         r'\band\s+(?:attacks?|strikes?|bombs?)\b|'
         r'\b(?:launches?|launched|conducts?|conducted|resumes?|resumed)\s+(?:new\s+)?(?:attacks?|strikes?|airstrikes?)', title))
+
+
+def _condemnation_object_spans(title):
+    """A nominal action condemned by a speaker is not a new action predicate."""
+    return list(re.finditer(
+        r'(?:(?:공습|공격|폭격)\s*(?:개시|재개|감행)|미사일\s*발사)(?:를|을)\s*'
+        r'(?:(?!…|\.{3}|[,，;；]|발표|선언).){0,70}?(?:규탄|비난|비판)', title))
+
+
+def _fuel_shipping_headline(title):
+    return bool(re.search(r'이란|\biran(?:ian)?\b', title)
+                and re.search(r'봉쇄|\bblockade\b', title)
+                and re.search(r'연료|lpg|\b(?:fuel|crude)\b', title)
+                and re.search(r'선적|운송|수출|\b(?:shipments?|cargo(?:es)?|export(?:s|ed)?)\b', title))
 
 
 def _rejection_future_action_spans(title):
@@ -299,14 +318,19 @@ def non_military_kind(row):
     discussion = _military_discussion_spans(title)
     statements = _refinery_restart_statement_spans(title) + _energy_facility_statement_spans(title)
     future = _rejection_future_action_spans(title)
+    condemnation = _condemnation_object_spans(title)
     actions = _military_actions(title)
     if any(not any(span.start() <= action.start() and action.end() <= span.end()
-                   for span in discussion + statements + future) for action in actions):
+                   for span in discussion + statements + future + condemnation) for action in actions):
         return None
     if _report_with_completed_action(title):
         return None
     if _military_report_headline(title):
         return 'military_report'
+    if condemnation:
+        return 'reaction'
+    if _fuel_shipping_headline(title):
+        return 'fuel_shipping'
     if statements or future:
         return 'military_statement'
     if _ceasefire_rejection_headline(title):
@@ -320,7 +344,7 @@ def non_military_kind(row):
     if re.search(r'제재|\bsanctions?\b|restrictive measures', title):
         if not re.search(r'공항.*피격|드론.*공격|\b(?:attacked|struck|bombed)\b', title):
             return 'sanctions'
-    if re.search(r'규탄|비난|\bcondemns?\b|\bdenounces?\b', title):
+    if re.search(r'규탄|비난|\bcondemn(?:s|ed|ing)?\b|\bdenounc(?:e[sd]?|ing)\b', title):
         return 'reaction'
     # The new event can be a statement even when its background describes real
     # or historical attacks. An explicit newly launched attack above wins.
@@ -351,7 +375,7 @@ def _clear_market_event_cache(row):
 
 
 def _headline_event_cache_required(row, kind):
-    return (kind in ('ceasefire_position', 'military_report')
+    return (kind in ('ceasefire_position', 'military_report', 'reaction', 'fuel_shipping')
             or (kind == 'military_statement' and (
                 _refinery_restart_statement_spans(_headline(row)) or _ceasefire_rejection_headline(_headline(row))))
             or _energy_facility_headline(row)
@@ -429,6 +453,15 @@ def verdict(items):
         )
     kinds = [non_military_kind(row) for row in items]
     if kinds and all(kinds):
+        if 'fuel_shipping' in kinds:
+            core = ' / '.join(dict.fromkeys(KIND_LABELS[kind] for kind in kinds))
+            return (
+                '<b>투자 판정</b>\n'
+                f'- <b>핵심:</b> {core}\n'
+                '- <b>현재 단계:</b> 비난·선적 보도와 별도의 군사작전을 구분 — 기사 공표시각에 새 공격이 발생했다는 뜻은 아님\n'
+                '- <b>시장:</b> 선적의 집계 기간·수량·추정 목적지와 실제 운항·공급 차질은 각각 확인 필요\n'
+                '- <b>다음:</b> 발언·선적 원자료 → 봉쇄 집행·개별 운항 → 별도 공격·피해의 독립 확인'
+            )
         if 'ceasefire_position' in kinds:
             return (
                 '<b>투자 판정</b>\n'
@@ -660,6 +693,8 @@ def build_alert(items, markets, now):
             if not row.get('body_verified') and 'news.google.com/' in str(row.get('link')):
                 lines[i] = lines[i].replace(' 원문</a>', ' 검색 링크</a>')
                 lines[i] += ' · 제목 기준·본문 미확인'
+            elif not row.get('body_verified'):
+                lines[i] += ' · RSS 입력 기준·본문 미확인'
     # The final header must describe the rendered event kinds, including after
     # the older text-level color guard has scanned background attack words.
     before_items = positions[0] if positions else len(lines)
@@ -762,7 +797,7 @@ def verify_alert(test_mode=False):
         primary = _primary_topic(row)
         if primary and html.escape(primary) not in lines[start]:
             raise RuntimeError('WAR_INTEGRITY_GATE: rendered topic differs from headline event')
-        if non_military_kind(row) in ('military_statement', 'support_statement', 'military_discussion', 'military_analysis', 'market_effect', 'ceasefire_position', 'military_report') and (
+        if non_military_kind(row) in ('military_statement', 'support_statement', 'military_discussion', 'military_analysis', 'market_effect', 'ceasefire_position', 'military_report', 'reaction', 'fuel_shipping') and (
                 row.get('classification_color') != 'yellow' or not lines[start].startswith('🟡')):
             raise RuntimeError('WAR_INTEGRITY_GATE: statement presented as a new attack or implemented peace')
         marker = {'red': '🔴', 'green': '🟢', 'yellow': '🟡'}.get(row.get('classification_color'), '')
@@ -796,6 +831,8 @@ def verify_alert(test_mode=False):
         if current_kind is None and _energy_facility_headline(row) and _military_actions(_headline(row)) and (
                 row.get('classification_color') != 'red' or not lines[start].startswith('🔴')):
             raise RuntimeError('WAR_INTEGRITY_GATE: separate actual action hidden by energy facility plan')
+        if not row.get('body_verified') and '본문 미확인' not in block:
+            raise RuntimeError('WAR_INTEGRITY_GATE: unverified source body lacks visible limitation')
     if set(matched) != set(ids):
         raise RuntimeError('WAR_INTEGRITY_GATE: duplicated or omitted rendered source')
     for row in receipt['markets']:

@@ -66,6 +66,106 @@ class IntegrityTests(unittest.TestCase):
         fixture = json.loads(path.read_text(encoding='utf-8'))
         return fixture, dt.datetime.fromisoformat(fixture['provenance']['queried_at_kst'])
 
+    def condemnation_shipping_fixture(self):
+        path = Path(__file__).parent/'test_fixtures/war_condemnation_shipping_38896365398.json'
+        fixture = json.loads(path.read_text(encoding='utf-8'))
+        return fixture, dt.datetime.fromisoformat(fixture['provenance']['queried_at_kst'])
+
+    def test_actual_refinery_restart_condemnation_is_diplomatic_reaction(self):
+        fixture, _ = self.condemnation_shipping_fixture()
+        row = fixture['articles'][0]
+        self.assertEqual(integrity.non_military_kind(row), 'reaction')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+        self.assertEqual(integrity.topic_label(row), '미국·우크라이나·러시아 · 외교반응·개입검토')
+
+    def test_condemnation_object_scope_does_not_hide_separate_actual_action(self):
+        for title in ('트럼프, 우크라이나의 러시아 정유 시설 공격 재개를 비난했다',
+                      '미국, 이란의 미사일 발사를 규탄했다',
+                      'Trump condemned the resumption of Ukrainian refinery attacks',
+                      'Trump denounced the resumption of Ukrainian refinery attacks'):
+            with self.subTest(title=title):
+                self.assertEqual(integrity.non_military_kind(article(title)), 'reaction')
+                self.assertEqual(integrity.final_color(article(title)), 'yellow')
+        for title in ('트럼프, 정유시설 공격 재개를 비난…이스라엘 공습 개시',
+                      '우크라이나 러 정유시설 공격 재개했다…트럼프 비난',
+                      '트럼프 비난에도 우크라이나 러 정유시설 공격 재개',
+                      'Trump condemns Ukraine and launches airstrikes'):
+            with self.subTest(title=title):
+                self.assertIsNone(integrity.non_military_kind(article(title)))
+                self.assertEqual(integrity.final_color(article(title)), 'red')
+        row = article('우크라이나 러시아 에너지 시설 공격 재개를 발표했고 모스크바는 비난했다')
+        self.assertEqual(integrity.non_military_kind(row), 'military_statement')
+
+    def test_actual_blockade_fuel_shipments_are_not_a_new_military_attack(self):
+        fixture, _ = self.condemnation_shipping_fixture()
+        row = fixture['articles'][1]
+        self.assertEqual(integrity.non_military_kind(row), 'fuel_shipping')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+        self.assertEqual(integrity.topic_label(row), '미국·이란 · 봉쇄·연료 선적 보도')
+
+    def test_fuel_shipments_preserve_a_separate_actual_military_action(self):
+        row = article('이란 연료 선적, 미국 해군 봉쇄 위반…미국 공습 개시')
+        self.assertIsNone(integrity.non_military_kind(row))
+        self.assertEqual(integrity.final_color(row), 'red')
+        self.assertNotEqual(integrity.non_military_kind(article('Iran launches attacks on fuel tankers despite blockade')), 'fuel_shipping')
+        self.assertNotEqual(integrity.non_military_kind(article('이란 연료 가격 상승 전망')), 'fuel_shipping')
+
+    def test_actual_condemnation_and_shipping_render_and_final_gate(self):
+        fixture, now = self.condemnation_shipping_fixture()
+        rows = fixture['articles']
+        before = watch.STATE.read_bytes()
+        with patch.object(integrity.body_parallel, '_safe_enrich'):
+            text = integrity.build_alert(rows, fixture['markets'], now)
+        self.assertEqual([r['classification_color'] for r in rows], ['yellow', 'yellow'])
+        self.assertIn(html.escape(rows[0]['title_original']), text)
+        for phrase in ('7월 이후', '최소 8척', '410만 배럴', '알려졌습니다', '가능성이 높습니다'):
+            self.assertIn(phrase, text)
+        self.assertNotIn(' · 확전 · ', text)
+        self.assertNotIn('신규 변화의 중심은 실제 공격', text)
+        self.assertEqual(text.count('본문 미확인'), 2)
+        self.assertTrue(all(not r.get('signals_ko') and not r.get('forced_tags') for r in rows))
+        receipt = evidence.alert_receipt(rows, fixture['markets'], now, text)
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            root = Path(folder)
+            for attr, name in {'ALERT': 'alert.txt', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                stack.enter_context(patch.object(watch, attr, root/name))
+            watch.ALERT.write_text(text, encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids': [r['id'] for r in rows]}), encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+            integrity.verify_alert()
+        self.assertEqual(watch.STATE.read_bytes(), before)
+
+    def test_final_gate_rejects_actual_same_hash_condemnation_shipping_body(self):
+        fixture, now = self.condemnation_shipping_fixture()
+        rows = fixture['articles']; text = fixture['actual_alert'].strip()
+        receipt = evidence.alert_receipt(rows, fixture['markets'], now, text)
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            root = Path(folder)
+            for attr, name in {'ALERT': 'alert.txt', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                stack.enter_context(patch.object(watch, attr, root/name))
+            watch.ALERT.write_text(text, encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids': [r['id'] for r in rows]}), encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+            with self.assertRaisesRegex(RuntimeError, 'WAR_INTEGRITY_GATE'):
+                integrity.verify_alert()
+
+    def test_final_gate_requires_visible_unverified_body_for_direct_feed_link(self):
+        fixture, now = self.condemnation_shipping_fixture()
+        rows = fixture['articles']
+        with patch.object(integrity.body_parallel, '_safe_enrich'):
+            text = integrity.build_alert(rows, fixture['markets'], now)
+        text = text.replace(' · RSS 입력 기준·본문 미확인', '')
+        receipt = evidence.alert_receipt(rows, fixture['markets'], now, text)
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            root = Path(folder)
+            for attr, name in {'ALERT': 'alert.txt', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                stack.enter_context(patch.object(watch, attr, root/name))
+            watch.ALERT.write_text(text, encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids': [r['id'] for r in rows]}), encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+            with self.assertRaisesRegex(RuntimeError, 'unverified source body'):
+                integrity.verify_alert()
+
     def energy_facility_fixture(self):
         path = Path(__file__).parent/'test_fixtures/war_energy_facility_38861224312.json'
         fixture = json.loads(path.read_text(encoding='utf-8'))
