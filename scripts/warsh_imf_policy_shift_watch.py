@@ -20,6 +20,16 @@ IMF='https://www.imfconnect.org/content/imf/en/annual-meetings/calendar/open/202
 REUTERS='https://www.reuters.com/markets/asia/feds-warsh-gives-no-hint-october-policy-decision-2026-10-16/'
 REUTERS_CITI='https://www.reuters.com/business/citi-turns-hawkish-fed-after-inflation-surprise-expects-december-rate-hike-2026-10-14/'
 WSJ='https://www.wsj.com/economy/central-banking/warsh-avoids-signal-on-october-rate-move-a176b0d5'
+# Reuters 기사가 차단된 환경에서는 Reuters 저작권 표기·동일 행사와
+# 발표일을 확인한 정식 재공표 페이지를 2차 접근경로로 쓴다.
+REUTERS_MIRRORS=[
+    'https://www.investing.com/news/economy-news/feds-warsh-gives-no-hint-on-october-policy-decision-4953046',
+    'https://finance.yahoo.com/economy/policy/articles/feds-warsh-gives-no-hint-040051405.html',
+    'https://kfgo.com/2026/10/15/feds-warsh-gives-no-hint-on-october-policy-decision/',
+]
+CITI_REUTERS_MIRRORS=[
+    'https://www.investing.com/news/economy-news/citi-turns-hawkish-on-fed-after-inflation-surprise-expects-december-rate-hike-4949657',
+]
 TOKEN=(os.getenv('TELEGRAM_BOT_TOKEN') or '').strip()
 CHAT=(os.getenv('TELEGRAM_CHAT_ID') or '').strip()
 BOT=(os.getenv('EXPECTED_BOT_USERNAME') or '').strip().lstrip('@')
@@ -76,56 +86,58 @@ def official_event():
     return '연준·IMF 행사 일정 교차확인'
 
 
+def _reuters_article_proof(text):
+    """검증한 Reuters 기사·대담·날짜를 모두 식별해야만 보도 확인."""
+    low=plain(text).lower()
+    return (
+        'reuters' in low
+        and 'warsh' in low
+        and ('imf' in low or 'bangkok' in low)
+        and ('rate' in low or 'monetary policy' in low)
+        and ('oct 16' in low or 'october 16' in low or '2026-10-16' in low)
+    )
+
+
 def dated_coverage():
-    # Google News RSS는 Reuters 원문 접속 실패 시 신뢰 보도 게이트에만 사용.
-    q=urllib.parse.quote('Kevin Warsh IMF Bangkok October 16 2026 Reuters')
-    url='https://news.google.com/rss/search?q='+q+'&hl=en-US&gl=US&ceid=US:en'
+    # 직접 Reuters 원문이 차단된 GitHub runner에 대응해 검증된 Reuters 재공표를 조회한다.
+    # 동일 원기사는 재공표 매체가 여럿이어도 '독립 보도 다수'로 계산하지 않는다.
     rows=[]
     try:
-        rss=get(url)
-        root=ET.fromstring(rss)
-        for item in root.findall('./channel/item')[:80]:
-            sn=item.find('source')
-            pub=plain(sn.text or '') if sn is not None else ''
-            if pub not in ('Reuters','The Wall Street Journal','WSJ','Financial Times'):
-                continue
-            title=plain(item.findtext('title') or '')
-            description=plain(item.findtext('description') or '')
-            blob=(title+' '+description).lower()
-            if not ('warsh' in blob and ('imf' in blob or 'bangkok' in blob)):
-                continue
-            t=item.findtext('pubDate') or ''
-            try:
-                date=email.utils.parsedate_to_datetime(t).astimezone(timezone.utc).date()
-            except Exception:
-                continue
-            if not (datetime(2026,10,15,tzinfo=timezone.utc).date()<=date<=
-                    datetime.now(timezone.utc).date()):
-                continue
-            rows.append({'publisher':pub,'title':title,'url':(item.findtext('link') or '').strip()})
-    except Exception:
-        pass
-    # 직접 Reuters 기사를 조회할 수 있는 경우에는 RSS 접근과 무관하게 확인한다.
-    try:
-        content=plain(get(REUTERS))
-        lower=content.lower()
-        if 'warsh' in lower and ('imf' in lower or 'bangkok' in lower) and (
-                'rate' in lower or 'monetary policy' in lower):
-            rows.append({'publisher':'Reuters','title':'의장, 차기 금리결정을 미리 확정하지 않음',
+        if _reuters_article_proof(get(REUTERS,timeout=8)):
+            rows.append({'publisher':'Reuters','title':'Warsh IMF Bangkok',
                          'url':REUTERS})
     except Exception:
         pass
-    if not rows:raise RuntimeError('Reuters 등 신뢰 보도의 실제 공개 확인 실패 — 자동 알림 보류')
+
+    if not rows:
+        for url in REUTERS_MIRRORS:
+            try:
+                raw=get(url,timeout=7)
+                if _reuters_article_proof(raw):
+                    rows.append({'publisher':'Reuters(재공표)','title':'Warsh IMF Bangkok',
+                                 'url':url})
+                    break
+            except Exception:
+                continue
+
+    if not rows:
+        # 단순 검색결과 제목, 사용자 제공 요약, 출처 없는 복제 기사는 인증하지 않는다.
+        raise RuntimeError('신뢰 보도 Reuters 원문·재공표 모두 검증 실패 — 알림 보류')
     return rows
 
-
 def citi_reported():
-    # 공식 시장확률과 IB 전망을 혼동하지 않는다.
-    try:
-        text=plain(get(REUTERS_CITI)).lower()
-    except Exception:
-        return False
-    return ('citi' in text and 'december' in text and 'hike' in text)
+    # 공식 시장확률과 IB 전망을 혼동하지 않는다. Reuters 원문 또는 Reuters 저작권
+    # 표시가 있는 재공표에서 확인한 단일 보도이며 Citi 공식 전망으로 단정하지 않는다.
+    for url in [REUTERS_CITI]+CITI_REUTERS_MIRRORS:
+        try:
+            text=plain(get(url,timeout=7)).lower()
+            if ('reuters' in text and 'citi' in text and
+                    'december' in text and 'hike' in text and
+                    ('oct 14' in text or 'october 14' in text or '2026-10-14' in text)):
+                return True
+        except Exception:
+            continue
+    return False
 
 
 def link(label,url):
@@ -160,7 +172,8 @@ def compose(official,coverage,has_citi):
         '',
         '<b>원천</b>',
         link('연준 공식 일정',FED_CAL)+' · '+link('IMF 공식 행사',IMF),
-        link('Reuters 대담 보도',REUTERS)+' · '+link('WSJ 대담 보도',WSJ),
+        link('Reuters 대담 보도(실제 확인 경로)',coverage[0]['url'])
+            +' · '+link('연준 행사 일정',FED_CAL),
     ]
     if has_citi:
         parts.append(link('Citi 전망 Reuters 보도',REUTERS_CITI))
