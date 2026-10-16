@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-16T21:24:52+09:00",
+  "updated_at_kst": "2026-10-17T02:24:29+09:00",
   "circle": {
     "date": "2026-10-12",
     "circulation_usd_b": 72.7,
@@ -50,26 +50,26 @@
     "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
   },
   "crcl": {
-    "date": "2026-10-15",
-    "close": 86.97,
-    "prev_date": "2026-10-14",
-    "prev_close": 79.55,
-    "daily_pct": 9.33,
+    "date": "2026-10-16",
+    "close": 82.19,
+    "prev_date": "2026-10-15",
+    "prev_close": 86.97,
+    "daily_pct": -5.5,
     "source": "ChartExchange historical",
     "source_url": "https://chartexchange.com/symbol/nyse-crcl/historical/",
     "crosscheck_source": "Yahoo Finance chart",
-    "crosscheck_date": "2026-10-15",
-    "crosscheck_close": 86.97000122070312,
-    "crosscheck_daily_pct": 9.33,
-    "crosscheck_gap_pct": 0.0,
+    "crosscheck_date": "2026-10-16",
+    "crosscheck_close": 82.17250061035156,
+    "crosscheck_daily_pct": -5.52,
+    "crosscheck_gap_pct": 0.021,
     "crosscheck_status": "confirmed"
   },
   "tbx": {
-    "date": "2026-10-15",
-    "close": 29.530000686645508,
-    "prev_date": "2026-10-14",
-    "prev_close": 29.719999313354492,
-    "daily_pct": -0.64
+    "date": "2026-10-16",
+    "close": 29.60569953918457,
+    "prev_date": "2026-10-15",
+    "prev_close": 29.530000686645508,
+    "daily_pct": 0.26
   },
   "fx": {
     "rate": 1338.6,
@@ -82,7 +82,5 @@
   },
   "crcl_last_alerted_close_date": "2026-10-15",
   "correction_pending": false,
-  "errors": [
-    "fx: 2026-10-15 한국은행 ECOS 원/미국달러 매매기준율 조회 실패"
-  ]
+  "errors": []
 }
