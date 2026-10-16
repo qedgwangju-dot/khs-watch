@@ -605,6 +605,41 @@ class BioAlertRegressionTests(unittest.TestCase):
         self.assertIn("7/14건", rendered)
         self.assertIn("잔여:</b> 7건", rendered)
 
+    def test_halozyme_portfolio_key_ignores_hearing_date_and_keeps_legacy_dedup(self):
+        score = {"total": 14, "won": 11, "pending": 3, "oral_date": "2026-07-23"}
+        repeat = {**score, "oral_date": ""}
+        self.assertEqual(halo.portfolio_scorecard_key(score), halo.portfolio_scorecard_key(repeat))
+        previous_key = halo.base.digest("portfolio|14|11|3|2026-07-23")
+        self.assertIn(previous_key, halo._legacy_portfolio_scorecard_keys(repeat))
+        item = {"score": repeat, "url": "https://example.org/verified", "title": "same 11/14"}
+
+        with tempfile.TemporaryDirectory() as directory:
+            path = pathlib.Path(directory, "state.json")
+            path.write_text(json.dumps({
+                "seen_portfolio_updates": [previous_key],
+                "last_portfolio_message_ids": [186],
+            }), encoding="utf-8")
+            delivered = []
+            with (
+                patch.object(halo.base, "STATE", path),
+                patch.object(halo, "portfolio_updates", return_value=[item]),
+                patch.object(halo.base, "resolve_chat_id", return_value="test-chat"),
+                patch.object(halo.base, "send", side_effect=lambda *_: delivered.append(777) or 777),
+                patch.dict(os.environ, {"BIO_TELEGRAM_BOT_TOKEN": "offline-test"}, clear=False),
+            ):
+                self.assertEqual(halo.send_portfolio_updates(), [])
+                self.assertEqual(delivered, [])
+                saved = json.loads(path.read_text(encoding="utf-8"))
+                self.assertEqual(saved["last_portfolio_message_ids"], [186])
+                self.assertIn(halo.portfolio_scorecard_key(repeat), saved["seen_portfolio_updates"])
+
+                next_item = {"score": {"total": 14, "won": 12, "pending": 2, "oral_date": ""},
+                             "url": "https://example.org/new", "title": "new 12/14"}
+                with patch.object(halo, "portfolio_updates", return_value=[next_item]):
+                    self.assertEqual(halo.send_portfolio_updates(), [777])
+                    self.assertEqual(halo.send_portfolio_updates(), [])
+                self.assertEqual(delivered, [777])
+
     def test_halozyme_portfolio_scorecard_key_changes_only_with_real_score_change(self):
         score_7 = {"total": 14, "won": 7, "pending": 7, "oral_date": "2026-07-23"}
         score_7_repeat = {"total": 14, "won": 7, "pending": 7, "oral_date": "2026-07-23"}

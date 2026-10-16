@@ -895,9 +895,23 @@ def _portfolio_ir_urls() -> list[str]:
 
 
 def portfolio_scorecard_key(score: dict) -> str:
+    # 동일 11/14 판세를 다른 기사·IR에서 재확인하더라도 중복 송출하지 않는다.
+    # 심리일 표기의 누락·변경은 승패 건수 변화가 아니다.
     return base.digest(
-        f"portfolio|{score['total']}|{score['won']}|{score['pending']}|{score.get('oral_date') or ''}"
+        f"portfolio-v2|{score['total']}|{score['won']}|{score['pending']}"
     )
+
+
+def _legacy_portfolio_scorecard_keys(score: dict) -> set[str]:
+    # 기존 송출 완료 키를 유지하며, 새 기준 도입으로 7/14·9/14·11/14
+    # 과거 알림을 다시 보내는 일을 방지한다.
+    dates = {str(score.get("oral_date") or ""), "", "2026-07-23"}
+    return {
+        base.digest(
+            f"portfolio|{score['total']}|{score['won']}|{score['pending']}|{oral}"
+        )
+        for oral in dates
+    }
 
 
 def portfolio_updates() -> list[dict]:
@@ -1016,7 +1030,8 @@ def send_portfolio_updates() -> list[int]:
     for item in portfolio_updates():
         s = item["score"]
         key = portfolio_scorecard_key(s)
-        if key in seen:
+        if key in seen or seen.intersection(_legacy_portfolio_scorecard_keys(s)):
+            seen.add(key)
             continue
         mid = base.send(token, chat, portfolio_alert(item))
         sent.append(mid)
