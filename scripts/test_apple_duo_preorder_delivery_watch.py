@@ -60,6 +60,25 @@ class DuoPreorderTests(unittest.TestCase):
         self.assertEqual(len(changes),1)
         self.assertEqual(st["market_latest"]["미국"],"2027-02")
 
+    def test_single_sku_attribution_and_multiple_sku_unknown(self):
+        solo=m._shipping_event(
+            "iPhone Duo U.S. Star White 256GB delivery February 14, 2027.",self.pub()
+        )
+        self.assertEqual(solo["capacity"],"256GB")
+        self.assertEqual(solo["colour"],"star white")
+        mixed=m._shipping_event(
+            "iPhone Duo U.S. 256GB and 512GB delivery February 14, 2027.",self.pub()
+        )
+        self.assertEqual(mixed["capacity"],"구성 미확인")
+
+    def test_direct_article_reading_never_uses_google_redirect(self):
+        from unittest.mock import patch
+        with patch.object(m,"_request") as fake:
+            self.assertEqual(m._publisher_article_text(
+                "https://news.google.com/rss/articles/example","MacRumors"
+            ),"")
+            fake.assert_not_called()
+
     def test_korea_and_us_dates_not_mixed(self):
         row={"title":"아이폰 듀오 한국 배송 11월 20일","description":"아이폰 듀오 국내 신규 주문 배송은 11월 20일 예정","source":"연합뉴스","link":"https://example.com","published_at_kst":self.pub().isoformat()}
         st={"market_latest":{"미국":"2027-01"},"seen_ids":[],"seen_fact_keys":[]}

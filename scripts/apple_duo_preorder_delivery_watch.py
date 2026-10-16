@@ -19,6 +19,7 @@ import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 from email.utils import parsedate_to_datetime
+from urllib.parse import urlparse
 from zoneinfo import ZoneInfo
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -158,7 +159,12 @@ def _shipping_event(blob: str, published: dt.datetime) -> dict | None:
     has_us=bool(re.search(r"\b(?:u\.s\.?|united states|usa|us apple store)\b",low))
     has_kr=bool(re.search(r"\b(?:south korea|korea|한국|국내|대한민국)\b",low))
     market="미국" if has_us and not has_kr else ("한국" if has_kr and not has_us else "지역 미확인")
-    return {"market":market,"month":info[0],"label":info[1]}
+    capacities=set(re.findall(r"\b(?:256|512)\s*gb\b|\b(?:1|2)\s*tb\b",low))
+    colours={x for x in ("star white","night sky","스타 화이트","나이트 스카이") if x in low}
+    storage=next(iter(capacities)).replace(" ","").upper() if len(capacities)==1 else "구성 미확인"
+    colour=next(iter(colours)) if len(colours)==1 else "색상 미확인"
+    return {"market":market,"month":info[0],"label":info[1],
+            "capacity":storage,"colour":colour}
 
 def _initial_alert() -> str:
     return "\n".join([
@@ -194,6 +200,30 @@ def _request(url: str) -> bytes:
     with urllib.request.urlopen(req,timeout=12) as r:
         return r.read(500000)
 
+def _publisher_article_text(link: str, source: str) -> str:
+    """Read a direct publisher's main article, never a Google redirect."""
+    host=(urlparse(link).hostname or "").lower()
+    permitted={
+        "macrumors.com":("macrumors.com","www.macrumors.com"),
+        "appleinsider":("appleinsider.com","www.appleinsider.com"),
+        "the verge":("theverge.com","www.theverge.com"),
+    }
+    prefix=next((name for name in permitted if name in source.lower()),None)
+    if not prefix or host not in permitted[prefix]:
+        return ""
+    try:
+        raw=_request(link).decode("utf-8",errors="replace")
+    except Exception:
+        return ""
+    # Some sites use multiple article tags; read the main one only. Do not
+    # mistake "related articles" and footer dates for current availability.
+    block=re.search(r"<article\b[^>]*>(.*?)</article\s*>",raw,re.I|re.S)
+    if not block:
+        return ""
+    value=re.sub(r"<(?:script|style|nav)[^>]*>.*?</(?:script|style|nav)>"," ",block.group(1),flags=re.I|re.S)
+    return _clean(value)[:16000]
+
+
 def _collect() -> tuple[list[dict],list[str]]:
     now=dt.datetime.now(KST)
     results:dict[str,dict]={}
@@ -206,6 +236,7 @@ def _collect() -> tuple[list[dict],list[str]]:
            "gl":"KR" if lang=="ko" else "US",
            "ceid":"KR:ko" if lang=="ko" else "US:en"}
         sources.append(("", "https://news.google.com/rss/search?"+urllib.parse.urlencode(p)))
+    article_fetches=0
     for source_name,url in sources:
         try:
             root=ET.fromstring(_request(url))
@@ -244,6 +275,12 @@ def _collect() -> tuple[list[dict],list[str]]:
                 continue
             if _rank(source)<2 or not any(k in blob for k in ("preorder","pre-order","shipping","delivery","ship","sold out","backorder","배송","예약","품절","출고")):
                 continue
+            if (source_name and article_fetches < 5 and
+                    _month_and_day(title+" "+desc,pub) is None):
+                article_fetches+=1
+                full=_publisher_article_text(link,source_name)
+                if full and ("iphone duo" in full.lower() or "아이폰 듀오" in full.lower()):
+                    desc=full
             row={"title":title,"description":desc,"source":source,"link":link,
                  "published_at_kst":pub.isoformat(timespec="seconds")}
             results[_fingerprint(row)]=row
@@ -269,6 +306,7 @@ def _new_delivery_signals(rows: list[dict], state: dict) -> tuple[list[dict],set
     seen=set(state.get("seen_ids") or [])
     known=set(state.get("seen_fact_keys") or [])
     latest=dict(state.get("market_latest") or {})
+    sku_latest=dict(state.get("market_sku_latest") or {})
     new=[]
     for row in rows:
         fp=_fingerprint(row)
@@ -284,10 +322,13 @@ def _new_delivery_signals(rows: list[dict], state: dict) -> tuple[list[dict],set
         # Unspecified region cannot be used to upgrade a US or KR delivery ETA.
         if market=="지역 미확인":
             continue
-        fingerprint=f"{market}:{info['month']}"
+        scope=f"{market}|{info['capacity']}|{info['colour']}"
+        fingerprint=f"{scope}:{info['month']}"
         if fingerprint in known:
             continue
-        prior=latest.get(market)
+        prior=sku_latest.get(scope) if info["capacity"]!="구성 미확인" else latest.get(market)
+        if prior is None and info["capacity"]!="구성 미확인":
+            prior=latest.get(market)
         if prior is not None and info["month"]<=prior:
             continue
         if _rank(row.get("source") or "")<2:
@@ -295,8 +336,12 @@ def _new_delivery_signals(rows: list[dict], state: dict) -> tuple[list[dict],set
         info.update({"item":row,"previous_month":prior,"fact_key":fingerprint})
         new.append(info)
         known.add(fingerprint)
-        latest[market]=info["month"]
+        if latest.get(market) is None or info["month"]>latest[market]:
+            latest[market]=info["month"]
+        if info["capacity"]!="구성 미확인":
+            sku_latest[scope]=info["month"]
     state["market_latest"]=latest
+    state["market_sku_latest"]=sku_latest
     state["seen_fact_keys"]=sorted(known)[-400:]
     return new,seen
 
@@ -306,7 +351,8 @@ def _update_alert(changes: list[dict]) -> str:
     for ch in changes[:3]:
         row=ch["item"]
         lines += [
-            f"• {html.escape(ch['market'])}: {html.escape(ch.get('previous_month') or '이전 수치 없음')} → {html.escape(ch['label'])}",
+            f"• {html.escape(ch['market'])} / {html.escape(ch['capacity'])} / {html.escape(ch['colour'])}: "
+            f"{html.escape(ch.get('previous_month') or '이전 수치 없음')} → {html.escape(ch['label'])}",
             f"  └ {html.escape(row['source'])} · {html.escape(row['published_at_kst'])}",
             f'<a href="{html.escape(row.get("link") or "",quote=True)}">배송 전망 원문</a>',
         ]
@@ -329,6 +375,7 @@ def main() -> None:
         alerts.append(_initial_alert())
         state["initial_alert_sent"]=True
         state["market_latest"]={"미국":"2027-01"}
+        state["market_sku_latest"]={}
         state["baseline"]=BASELINE
         state["seen_ids"]=sorted(set(state.get("seen_ids") or []) | {_fingerprint(x) for x in rows})[-800:]
         state["seen_fact_keys"]=sorted(set(state.get("seen_fact_keys") or []) | {"미국:2026-11","미국:2026-12","미국:2027-01","initial_launch_allocation"})[-400:]
