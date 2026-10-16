@@ -286,6 +286,9 @@ def _sales_pct_for_entity(
             continue
         if not _entity_is_closest(low, m.start(), target_markers, other_markers):
             continue
+        left = low[max(0,m.start()-65):m.start()]
+        if any(x in left for x in ("production","output","assembly yield","hinge yield","factory","생산량","생산 수율","조립 수율","전망치","forecast")):
+            continue
         value = abs(float(m.group(1)))
         direction = _nearest_direction(low, m.start())
         if m.group(1).startswith("-"):
@@ -327,6 +330,11 @@ def _unit_millions_for_entity(
         for m in re.finditer(pattern, low):
             if not _entity_is_closest(low, m.start(), target_markers, other_markers):
                 continue
+            context = low[max(0,m.start()-95):min(len(low),m.end()+70)]
+            if any(x in context for x in ("forecast","projected","estimate","production","capacity","target","shipments","전망","예상","생산","출하 목표")):
+                continue
+            if not any(x in context for x in ("preorders","pre-orders","orders placed","actual orders","sold","sell-through","activations","예약 건수","실제 판매","판매량","개통량")):
+                continue
             value = float(m.group(1)) * mult
             if 0.01 <= value <= 100:
                 vals.append(value)
@@ -341,8 +349,8 @@ def _load_state() -> dict:
                 data.setdefault("seen", [])
                 data.setdefault("metrics", {})
                 return data
-        except Exception:
-            pass
+        except Exception as exc:
+            raise RuntimeError("Duo direct-demand state unreadable: stop rather than replay") from exc
     return {
         "schema_version": 1,
         "baseline_at_kst": BASELINE_AT_KST.isoformat(timespec="seconds"),
@@ -395,7 +403,7 @@ def _signal(item: dict, state: dict) -> dict | None:
     blob = f"{item['title']} {item.get('description','')} {item.get('source','')}"
     low = blob.lower()
     rank = _source_rank(item.get("source", ""))
-    if rank == 0:
+    if rank < 2:
         return None
     direct = any(x in low for x in DIRECT_DEMAND_MARKERS)
     competitor = any(x in low for x in COMPETITOR_MARKERS)
@@ -412,13 +420,12 @@ def _signal(item: dict, state: dict) -> dict | None:
     # Before official preorder opens, sales/preorders/activations cannot be a
     # direct iPhone Duo commercial-demand datapoint. Competitor reaction can
     # still be monitored during this period.
-    wait_days = _wait_days(blob) if direct_commercial_open else None
+    # Lead times and initial sold-out reports belong to the separate supply-backlog watcher.
     units_m = (
         _unit_millions_for_entity(blob, APPLE_MARKERS, COMPETITOR_MARKERS)
         if direct_commercial_open
         else None
     )
-    sold_out = direct_commercial_open and any(x in low for x in ("sold out", "sellout", "품절"))
     if not direct_commercial_open:
         direct_pct = None
     geo = _geo(blob)
@@ -456,16 +463,6 @@ def _signal(item: dict, state: dict) -> dict | None:
     if direct and units_m is not None:
         reasons.append(f"iPhone Duo 주문·판매 물량 {units_m:g}백만대 수준")
         stage = max(stage, 2 if rank >= 3 else 1)
-
-    if direct and wait_days is not None and wait_days >= 7:
-        direction = 1
-        reasons.append(f"배송·대기기간 약 {wait_days}일")
-        stage = max(stage, 2 if rank >= 2 else 1)
-
-    if direct and sold_out:
-        direction = 1
-        reasons.append("품절·백오더 신호")
-        stage = max(stage, 2 if rank >= 2 else 1)
 
     if direct_commercial_open and direct and any(x in low for x in ("cancellation", "cancellations", "returns", "return rate", "취소", "반품")):
         if direct_pct is not None or units_m is not None or rank >= 3:

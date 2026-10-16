@@ -9,6 +9,8 @@ on:
       - "scripts/test_apple_duo_supply_watch.py"
       - "scripts/apple_duo_panel_leading_watch.py"
       - "scripts/apple_duo_demand_competition_watch.py"
+      - "scripts/apple_duo_preorder_delivery_watch.py"
+      - "scripts/test_apple_duo_preorder_delivery_watch.py"
       - "scripts/test_apple_duo_demand_competition_watch.py"
       - "scripts/apple_kparts_margin_watch.py"
       - "scripts/test_apple_kparts_margin_watch.py"
@@ -61,6 +63,9 @@ jobs:
           python -m py_compile scripts/apple_duo_demand_competition_watch.py
           python -m py_compile scripts/test_apple_duo_demand_competition_watch.py
           python scripts/test_apple_duo_demand_competition_watch.py
+          python -m py_compile scripts/apple_duo_preorder_delivery_watch.py
+          python -m py_compile scripts/test_apple_duo_preorder_delivery_watch.py
+          python scripts/test_apple_duo_preorder_delivery_watch.py
           python -m py_compile scripts/apple_kparts_margin_watch.py
           python -m py_compile scripts/test_apple_kparts_margin_watch.py
           python scripts/test_apple_kparts_margin_watch.py
@@ -120,6 +125,9 @@ jobs:
       - name: Scan demand and competitor leading indicators
         run: python scripts/apple_duo_demand_competition_watch.py
 
+      - name: Scan Duo preorder allocation and delivery estimates
+        run: python scripts/apple_duo_preorder_delivery_watch.py
+
       - name: Scan Apple K-parts margin pressure
         run: python scripts/apple_kparts_margin_watch.py
 
@@ -144,6 +152,10 @@ jobs:
           if [ -f out/apple_duo_demand_competition_status.md ]; then
             printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"
             cat out/apple_duo_demand_competition_status.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/apple_duo_preorder_delivery_status.md ]; then
+            printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"
+            cat out/apple_duo_preorder_delivery_status.md >> "$GITHUB_STEP_SUMMARY"
           fi
           if [ -f out/apple_kparts_margin_watch_status.md ]; then
             printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"
@@ -253,6 +265,10 @@ jobs:
         if: success() && hashFiles('out/apple_duo_supply_watch_telegram.txt') == '' && hashFiles('out/apple_duo_demand_competition_pending_state.json') != ''
         run: cp out/apple_duo_demand_competition_pending_state.json data/apple_duo_demand_competition_state.json
 
+      - name: Persist no-alert Duo delivery state
+        if: success() && hashFiles('out/apple_duo_supply_watch_telegram.txt') == '' && hashFiles('out/apple_duo_preorder_delivery_pending_state.json') != ''
+        run: cp out/apple_duo_preorder_delivery_pending_state.json data/apple_duo_preorder_delivery_state.json
+
       - name: Persist no-alert K-parts margin state
         if: success() && hashFiles('out/apple_duo_supply_watch_telegram.txt') == '' && hashFiles('out/apple_kparts_margin_watch_pending_state.json') != ''
         run: cp out/apple_kparts_margin_watch_pending_state.json data/apple_kparts_margin_watch_state.json
@@ -276,6 +292,10 @@ jobs:
       - name: Persist demand-competition state only after confirmed Telegram delivery
         if: success() && hashFiles('out/apple_duo_supply_watch_telegram.txt') != '' && hashFiles('out/apple_duo_supply_watch_telegram_confirmed.json') != '' && hashFiles('out/apple_duo_demand_competition_pending_state.json') != ''
         run: cp out/apple_duo_demand_competition_pending_state.json data/apple_duo_demand_competition_state.json
+
+      - name: Persist Duo delivery state only after confirmed Telegram delivery
+        if: success() && hashFiles('out/apple_duo_supply_watch_telegram.txt') != '' && hashFiles('out/apple_duo_supply_watch_telegram_confirmed.json') != '' && hashFiles('out/apple_duo_preorder_delivery_pending_state.json') != ''
+        run: cp out/apple_duo_preorder_delivery_pending_state.json data/apple_duo_preorder_delivery_state.json
 
       - name: Persist K-parts margin state only after confirmed Telegram delivery
         if: success() && hashFiles('out/apple_duo_supply_watch_telegram.txt') != '' && hashFiles('out/apple_duo_supply_watch_telegram_confirmed.json') != '' && hashFiles('out/apple_kparts_margin_watch_pending_state.json') != ''
@@ -303,6 +323,7 @@ jobs:
               "apple_duo_supply_watch_state.json",
               "apple_duo_panel_leading_state.json",
               "apple_duo_demand_competition_state.json",
+              "apple_duo_preorder_delivery_state.json",
               "apple_kparts_margin_watch_state.json",
               "apple_premium_demand_duo_forecast_state.json",
               "apple_iphone18_pro_orders_state.json",
@@ -358,7 +379,7 @@ jobs:
                       merged.setdefault("metrics",{})[field]=official
               path.write_text(json.dumps(merged,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
           PY
-            git add data/apple_duo_supply_watch_state.json data/apple_duo_panel_leading_state.json data/apple_duo_demand_competition_state.json data/apple_kparts_margin_watch_state.json data/apple_premium_demand_duo_forecast_state.json data/apple_iphone18_pro_orders_state.json
+            git add data/apple_duo_supply_watch_state.json data/apple_duo_panel_leading_state.json data/apple_duo_demand_competition_state.json data/apple_duo_preorder_delivery_state.json data/apple_kparts_margin_watch_state.json data/apple_premium_demand_duo_forecast_state.json data/apple_iphone18_pro_orders_state.json
             if git diff --cached --quiet; then
               echo "apple_duo_state_checkpoint=unchanged_or_already_merged"
               exit 0
@@ -383,6 +404,9 @@ jobs:
             out/apple_duo_panel_leading_status.md
             out/apple_duo_demand_competition_status.md
             out/apple_duo_demand_competition_alert.html
+            out/apple_duo_preorder_delivery_status.md
+            out/apple_duo_preorder_delivery_alert.html
+            out/apple_duo_preorder_delivery_pending_state.json
             out/apple_kparts_margin_watch_status.md
             out/apple_kparts_margin_watch_alert.html
             out/apple_kparts_margin_watch_pending_state.json

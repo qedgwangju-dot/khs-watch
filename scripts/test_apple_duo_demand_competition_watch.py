@@ -65,6 +65,30 @@ class AppleDuoDemandRegressionTests(unittest.TestCase):
         self.assertEqual(comp, 10.0)
         self.assertEqual(duo, -15.0)
 
+    def test_initial_stockout_is_not_actual_sales(self):
+        item = {"title": "iPhone Duo preorders sell out in minutes; shipping slips to November 23", "description": "Apple iPhone Duo production and delivery plans",
+                "source": "Reuters", "link": "https://example.com",
+                "published_at_kst": "2026-10-16T21:10:00+09:00"}
+        self.assertIsNone(m._signal(item, self.base_state()))
+
+    def test_shipping_backorder_is_not_actual_sales(self):
+        item = {"title": "iPhone Duo shipping estimates slip to 2027; first allocation sold out", "description": "Apple iPhone Duo production and delivery plans",
+                "source": "Reuters", "link": "https://example.com",
+                "published_at_kst": "2026-10-16T21:10:00+09:00"}
+        self.assertIsNone(m._signal(item, self.base_state()))
+
+    def test_production_growth_not_duo_preorder_growth(self):
+        item = {"title": "iPhone Duo preorders start; production up 30% following ramp", "description": "Apple iPhone Duo production and delivery plans",
+                "source": "Reuters", "link": "https://example.com",
+                "published_at_kst": "2026-10-16T21:10:00+09:00"}
+        self.assertIsNone(m._signal(item, self.base_state()))
+
+    def test_forecast_millions_not_actual_orders(self):
+        item = {"title": "iPhone Duo preorders open; production target forecast 10 million units", "description": "Apple iPhone Duo production and delivery plans",
+                "source": "Reuters", "link": "https://example.com",
+                "published_at_kst": "2026-10-16T21:10:00+09:00"}
+        self.assertIsNone(m._signal(item, self.base_state()))
+
     def test_notebookcheck_cannot_trigger_demand_alert_alone(self):
         item = {
             "title": "Surprise! Galaxy Z Fold 8 sees 10% sales jump after Apple's iPhone Duo launch",
