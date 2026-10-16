@@ -22540,6 +22540,26 @@
       "telegram_core_fact": "기존 로봇을 해체해 활용할 수 있는 부품에 추가 설계를 적용하는 방안을 검토하고 있으며, 향후 공급 과정에서 규제가 걸림돌이 되지 않도록 선제적으로 승인 절차를 준비하고 있다.",
       "title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진"
     },
+    "core:6173a1b01230ebff850c20cd": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.etnews.com/20261016000166",
+      "source": "전자신문",
+      "source_body_digest": "0a0cc8da86e9610d05fc5adf37f4f1ed8d26878a350212f34b881abd5c82c456",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c491b9440a052e0c5b87d872ed7a181b3bcc26db36a8d527baa65f9d47e6ca77",
+      "source_fact_keys": [
+        "source_fact:v1:eeb93b70e3c420b0177d39cb6b151b0c683260e1589c18b7a0719a4a1db11fcf"
+      ],
+      "source_published_kst": "2026-10-16T22:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "KFC마저 펩시 손절…코카콜라 택한 이유는",
+      "telegram_core_fact": "미국 치킨 프랜차이즈 KFC가 40년 가까이 유지해 온 펩시코와의 음료 공급 계약을 종료하고 코카콜라 제품을 도입한다. 매출 하락과 점포 정리 등이 이어지는 가운데, 시장조사업체 테크노믹에 따르면 한때 미국 치킨 프랜차이즈 시장을 선도했던 KFC는 매출 순위에서 현재 5위로 내려앉았다.",
+      "title": "KFC마저 펩시 손절…코카콜라 택한 이유는"
+    },
     "core:617f9e80abb32d8c405523d3": {
       "first_seen_kst": "2026-10-08T03:51:03+09:00",
       "lanes": {
@@ -29208,6 +29228,36 @@
       "telegram_core_fact": "피지컬 AI 전문기업 마음AI가 4족보행 로봇의 보행자 도로 순찰을 위한 규제특례를 추진하며 공공안전 분야에서 피지컬 AI 기술의 실증 기반 마련에 나섰다.",
       "title": "[더벨]마음AI, '4족보행 순찰로봇' 규제특례 추진"
     },
+    "core:7d1eef3a111c0c748b6c33ef": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12177777",
+      "source": "매일경제",
+      "source_body_digest": "cefccfa65cfb73bc09d0f6c8b051dc41c5cb90da26b1ea5dd840accdd117e797",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:925192993b2fae95a057f50e24c18c470053f2b0306b4abffa3991d49e9fbdc9",
+      "source_fact_keys": [
+        "source_fact:v1:00338c65bfec786a391170f290d4d0db14b2c6a61978d87818c3bc11f952e97d",
+        "source_fact:v1:03ad2ac081d50c7557af4d9359b5f3ea78c3343d70e0f75d8c3e8226fe538fad",
+        "source_fact:v1:05794bba69142b68cfdf3b13352f3a46e7bf1c641fea17e41859d0d374ec4b32",
+        "source_fact:v1:0eaec7d5eb6232941ef6434b0e24b026c6b5503722493fb811acb6caefc8d2b1",
+        "source_fact:v1:0f35a0aaba2dbb4fd4666664c180cbe285a388d3385f84e7a7664add7e4c3541",
+        "source_fact:v1:65dee888c96b9d66890d5ccb3a4cf8edd60941032818d9f7e4b571b0c8799937",
+        "source_fact:v1:9c957104a6834b72d94038ed0e4d5aeaeac37c748a45bd401326b65939782182",
+        "source_fact:v1:9dbd7659e0d4cbef41bb0ec5b3f0445963b4b1933599f67853b87865a14b275e",
+        "source_fact:v1:aab01348e470a096b50a3f4c0bc901807cf1f20bd59dae6767b4f25e7fbeca96",
+        "source_fact:v1:be6b0dcd5f65a72935621c158d22f203b4a1c4edb0ed14c7738090da215680e0",
+        "source_fact:v1:ecafa36df817ba9285592cd43b3ced8ef480cf5273a02425aedac10790bdfb60"
+      ],
+      "source_published_kst": "2026-10-16T14:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY",
+      "telegram_core_fact": "박상현 iM증권 이코노미스트는 “프랑스 국채금리가 높은 수준이지만 2010년 초반 유럽 재정위기 당시 7%선을 웃돌던 이탈리아 국채금리 수준과 비교하면 상대적으로 낮다”며 “최악의 경우 ECB가 최종 소방수 역할을 할 가능성도 있다”고 내다봤다.",
+      "title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY"
+    },
     "core:7d2afb78d3025e2fe907763e": {
       "first_seen_kst": "2026-10-13T20:25:44+09:00",
       "lanes": {
@@ -32418,6 +32468,29 @@
       "source_title": "수십조 빌려 AI칩 쟁탈전…브로드컴·스페이스X·오라클 자금 조달 총력",
       "telegram_core_fact": "AI 데이터센터 투자 경쟁이 가속화하면서 기존 회사채 시장을 넘어 사모대출과 구조화금융까지 조달 범위가 확대되고 있다.",
       "title": "수십조 빌려 AI칩 쟁탈전…브로드컴·스페이스X·오라클 자금 조달 총력"
+    },
+    "core:8978deaeb4495cddacab03dd": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.etnews.com/20261016000161",
+      "source": "전자신문",
+      "source_body_digest": "a0fc2dd91e75d8ebea31b0593f9958ac52cfe1d7f5319e1ad54a602a90deae9a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:335af75d0789ed2d3dc9c69feafbf4912dc7edf94ebf97562d94d936efe48bdd",
+      "source_fact_keys": [
+        "source_fact:v1:5150b450f687b9eee3afef7f066bfefab101584ca5dcc6fbe6b38ac09316a5dd",
+        "source_fact:v1:8d7079035b541325890e2892c253639e3f5a8d3d53b4377210026b5d6f06f78b",
+        "source_fact:v1:9277252e83a9407ca460308ba419e420b3c854c97128541392f3bcf3bed83e05",
+        "source_fact:v1:9375b56bcf4b88c7572d4d00fbc593088878cc99bf0e368f78f4241f8ea25617"
+      ],
+      "source_published_kst": "2026-10-16T13:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "에티포스·넥스윌, 드론·무인체계 방산 통신기술 공동개발",
+      "telegram_core_fact": "통신반도체 전문기업 에티포스가 방산전자 기업 넥스윌과 손잡고 드론·무인체계용 통신기술 개발에 나선다. 서원기 넥스윌 대표는 “디지털 RF·방산장비 개발 및 양산 경험에 에티포스의 통신반도체 기술을 더해 미래 전장에 필요한 통신 솔루션을 개발하고 실질적인 사업 성과로 연결하겠다”고 밝혔다.",
+      "title": "에티포스·넥스윌, 드론·무인체계 방산 통신기술 공동개발"
     },
     "core:899e680de88193b4137b1853": {
       "first_seen_kst": "2026-10-15T08:21:08+09:00",
@@ -40612,6 +40685,32 @@
       "source_title": "삼성물산, 반포푸르지오에 ‘넥스트 리모델링’ 첫 적용 제안",
       "telegram_core_fact": "삼성물산이 노후 아파트의 기존 골조를 활용해 인허가와 공사기간을 줄이는 리모델링 방식을 서울 서초구 반포푸르지오에 처음 제안했다.",
       "title": "삼성물산, 반포푸르지오에 ‘넥스트 리모델링’ 첫 적용 제안"
+    },
+    "core:ad3e93e05f702d972909b3f4": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176123",
+      "source": "매일경제",
+      "source_body_digest": "70e78c6735bc945aa08bc9ee9d5163bf48bcbfcfc6a4eef291b03f8c5fbffbcd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1f94e0f8c099799c9153dd918ceac3a963e153d56977f1357e931a0f59c66004",
+      "source_fact_keys": [
+        "source_fact:v1:37135054e84352d3a86352dc0f8d079717ec9096feef16c50c00eb96ddb623ef",
+        "source_fact:v1:3991addf5667d8999e1e58c3c8f7ff8da354dbd581971db61581a1ac65b3d798",
+        "source_fact:v1:56c8e94a0a7235f961ebcbe6168d43507e9585b614d07a706f50037a63471948",
+        "source_fact:v1:8e2d22c75d1003d6fd39d75095d099582750fd2b63eb828ced38d5b7eea6bbdf",
+        "source_fact:v1:c503c9b15ee80bde2aabbcc5136d1e7a2e8fc3bdc416ee93c2dc0358a0ff8813",
+        "source_fact:v1:d0e65276ae8e8f433a3f48cc7f5aab14027ba2f0fcb2625916c4fc104b8eb541",
+        "source_fact:v1:d8d159b86523ee4b4b3123e2d7aa0293359d85529522058180616c75ec8d3b1a"
+      ],
+      "source_published_kst": "2026-10-17T05:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "포트 테크놀로지, 나스닥 최소호가 1달러 미달 통보..180일 유예",
+      "telegram_core_fact": "포트 테크놀로지(FRTT)가 지난 13일 미국 나스닥 상장심사부로부터 최소 매수호가(Bid Price) 요건인 주당 1달러를 충족하지 못했다는 서면 통보를 받았으며, 2027년 4월 12일까지 180일의 준수 기간을 부여받았다고 16일 발표했다.",
+      "title": "포트 테크놀로지, 나스닥 최소호가 1달러 미달 통보..180일 유예"
     },
     "core:ad88ac59407b44764ddbd416": {
       "first_seen_kst": "2026-10-08T12:13:24+09:00",
@@ -50901,6 +51000,28 @@
       "telegram_core_fact": "미 재무부는 같은 날 러시아산 경유 거래를 내년 4월 7일까지 허용하는 한시적 제재 완화 조치를 내놨다.",
       "title": "미, 러시아산 경유 제재 해제…푸틴과 통화 뒤 발표"
     },
+    "core:dc17c7d4336b0da2a99aeb1c": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829054",
+      "source": "뉴시스",
+      "source_body_digest": "dda734c78697822eb6b149debe6a88d2d766aa7baae2609ec04a2c832ae9f2fb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dcc34c35f597effe249b9b66cdaca38fdc3ddf01f049eebc2cf950d06e1dfced",
+      "source_fact_keys": [
+        "source_fact:v1:40ef0cb9eec271b4621bea8f9954ca986c3be981b5f05e4e9a6d2e006677ca04",
+        "source_fact:v1:9aa0e2d258a222c7ac363058217a1a7850b3fe2e13dcf09e9829ad60ee8c0aa8",
+        "source_fact:v1:fbe5cf2333bf4ea49ca807cb64fc16f0328f570ace9f0645731a10dd563cff80"
+      ],
+      "source_published_kst": "2026-10-16T14:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "곽노정 대표 \"협력사와 함께 흘린 땀이 SK하이닉스 성과로\"…감사 행사",
+      "telegram_core_fact": "SK하이닉스는 메모리 반도체 호황에 따른 성과를 협력사와 함께 나누기 위해 구성원과 가족을 초청해 '땡스풀 데이(ThanksFULL Day)'를 열었다고 16일 밝혔다. SK하이닉스에 따르면 전날 경기 과천 서울랜드에서 열린 행사에는 협력사 구성원과 해외 법인 우수 구성원, 가족 등 총 3만여명이 참석했다.",
+      "title": "곽노정 대표 \"협력사와 함께 흘린 땀이 SK하이닉스 성과로\"…감사 행사"
+    },
     "core:dc44abc65ebf4cd462f9616f": {
       "first_seen_kst": "2026-10-13T00:43:08+09:00",
       "lanes": {
@@ -52052,6 +52173,26 @@
       "source_title": "포스코, 한화오션과 고망간강 LNG화물창 상용화…\"장인화 회장, 기술 리더십 결실\"",
       "telegram_core_fact": "특히 고망간강의 상용화 추진에는 장인화 포스코그룹 회장의 선제적인 기술 리더십이 있었던 것으로 전해진다. 포스코가 한화오션과 협력해 고망간강을 액화천연가스(LNG) 운반선 핵심 설비인 LNG 화물창 적용하며 상용화를 본격화한다.",
       "title": "포스코, 한화오션과 고망간강 LNG화물창 상용화…\"장인화 회장, 기술 리더십 결실\""
+    },
+    "core:e1526d5e03163801d7f8f1cf": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06317286645613576",
+      "source": "이데일리",
+      "source_body_digest": "b865abbb65d4877b65b9759995f578f65fad7fef6ba4078631b3fdad5f942ebc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d39555da7a797d31023f2eeb72f12cc37dbf95145209217b3bc2c84bc71fd69c",
+      "source_fact_keys": [
+        "source_fact:v1:49e273e947d56ed8df547c8b047a0b24dcc38d389579f0d44bd5b7322f043b86"
+      ],
+      "source_published_kst": "2026-10-16T21:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]마이크로소프트, 英서 기업용 SW 지배력 조사…주가 영향은 ‘미미’",
+      "telegram_core_fact": "영국 경쟁당국이 마이크로소프트(MSFT)의 기업용 소프트웨어 시장 지배력에 대한 규제 강화에 나섰다.",
+      "title": "[美특징주]마이크로소프트, 英서 기업용 SW 지배력 조사…주가 영향은 ‘미미’"
     },
     "core:e177625ad1fd2a5e8acdeef6": {
       "first_seen_kst": "2026-10-13T10:27:50+09:00",
@@ -57665,6 +57806,26 @@
       "source_title": "최태원 “호남 반도체, 전력·용수 늦어도 공사 먼저…용인 3분의 2 규모로”(종합)",
       "telegram_core_fact": "최태원 SK그룹 회장이 호남권 반도체 생산거점을 용인 반도체 클러스터의 3분의 2 규모로 계획하고 있다고 밝혔다. 빠르게 늘어나는 반도체 수요에 대응하기 위해 용인과 광주에서 공장을 병행 건설할 가능성도 열어뒀다.",
       "title": "최태원 “호남 반도체, 전력·용수 늦어도 공사 먼저…용인 3분의 2 규모로”(종합)"
+    },
+    "core:fdc38e17c585680a396c7014": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03670326645613576",
+      "source": "이데일리",
+      "source_body_digest": "bf6c8d10deaed7ebf6e8fc2b851d37093b021c3b72cdedb7d5736a525b07dc0d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca2f3bbeebc9cb36fbcaf820864b5cd4ca226eab39d18041dcbf154e412a01d5",
+      "source_fact_keys": [
+        "source_fact:v1:f601931c8e480c5237051febfafc017f6445e497e24b36735c886f6840344df1"
+      ],
+      "source_published_kst": "2026-10-16T13:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "“주가 60% 폭락했는데”…코어위브 창업자 3명은 4.5조 팔았다",
+      "telegram_core_fact": "코어위브 측은 블룸버그통신에 “3명의 공동 창업자는 여전히 상위 6대 주주에 속하며 합산 지분 약 20%를 보유하고 있다”며 “이번 매각은 사전에 계획되고 투명하게 공시된 정당한 개인 자산 관리 차원의 결정”이라고 해명했다.",
+      "title": "“주가 60% 폭락했는데”…코어위브 창업자 3명은 4.5조 팔았다"
     },
     "core:fdd30d6e42c2dfc826416804": {
       "first_seen_kst": "2026-10-15T10:36:40+09:00",
@@ -68346,6 +68507,36 @@
       "source": "뉴시스",
       "title": "AI 메모리 호황에 삼전·닉스 올 3Q도 '최대 실적' 전망…\"환율 하락이 변수\""
     },
+    "event:aa0c55f0c67b8444cc3ff730": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12177777",
+      "source": "매일경제",
+      "source_body_digest": "cefccfa65cfb73bc09d0f6c8b051dc41c5cb90da26b1ea5dd840accdd117e797",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:925192993b2fae95a057f50e24c18c470053f2b0306b4abffa3991d49e9fbdc9",
+      "source_fact_keys": [
+        "source_fact:v1:00338c65bfec786a391170f290d4d0db14b2c6a61978d87818c3bc11f952e97d",
+        "source_fact:v1:03ad2ac081d50c7557af4d9359b5f3ea78c3343d70e0f75d8c3e8226fe538fad",
+        "source_fact:v1:05794bba69142b68cfdf3b13352f3a46e7bf1c641fea17e41859d0d374ec4b32",
+        "source_fact:v1:0eaec7d5eb6232941ef6434b0e24b026c6b5503722493fb811acb6caefc8d2b1",
+        "source_fact:v1:0f35a0aaba2dbb4fd4666664c180cbe285a388d3385f84e7a7664add7e4c3541",
+        "source_fact:v1:65dee888c96b9d66890d5ccb3a4cf8edd60941032818d9f7e4b571b0c8799937",
+        "source_fact:v1:9c957104a6834b72d94038ed0e4d5aeaeac37c748a45bd401326b65939782182",
+        "source_fact:v1:9dbd7659e0d4cbef41bb0ec5b3f0445963b4b1933599f67853b87865a14b275e",
+        "source_fact:v1:aab01348e470a096b50a3f4c0bc901807cf1f20bd59dae6767b4f25e7fbeca96",
+        "source_fact:v1:be6b0dcd5f65a72935621c158d22f203b4a1c4edb0ed14c7738090da215680e0",
+        "source_fact:v1:ecafa36df817ba9285592cd43b3ced8ef480cf5273a02425aedac10790bdfb60"
+      ],
+      "source_published_kst": "2026-10-16T14:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY",
+      "telegram_core_fact": "박상현 iM증권 이코노미스트는 “프랑스 국채금리가 높은 수준이지만 2010년 초반 유럽 재정위기 당시 7%선을 웃돌던 이탈리아 국채금리 수준과 비교하면 상대적으로 낮다”며 “최악의 경우 ECB가 최종 소방수 역할을 할 가능성도 있다”고 내다봤다.",
+      "title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY"
+    },
     "event:aa4d917b69b7f464faf852e8": {
       "first_seen_kst": "2026-10-09T16:29:31+09:00",
       "lanes": {
@@ -70888,22 +71079,24 @@
     "event:ce42d6c48bfc842f120cfeaa": {
       "first_seen_kst": "2026-10-17T04:33:11+09:00",
       "lanes": {
-        "live": "2026-10-17T04:33:11+09:00"
+        "live": "2026-10-17T05:57:10+09:00"
       },
-      "last_seen_kst": "2026-10-17T04:33:11+09:00",
-      "link": "https://www.etnews.com/20261016000209",
-      "source": "전자신문",
-      "source_body_digest": "6744dbfb98887ea90c3cb7441b361223388d56022c669eb61ed456680f19cd71",
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829054",
+      "source": "뉴시스",
+      "source_body_digest": "dda734c78697822eb6b149debe6a88d2d766aa7baae2609ec04a2c832ae9f2fb",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:1f45fecd05d858361c5303b3ba804a36a52b4bd706453d142b892c901c173547",
+      "source_fact_identity": "source_facts:v1:dcc34c35f597effe249b9b66cdaca38fdc3ddf01f049eebc2cf950d06e1dfced",
       "source_fact_keys": [
-        "source_fact:v1:1222cf433e85ef962666303cbe1fce9638fe1b9e3abeca6e16c26623cc8f83fa"
+        "source_fact:v1:40ef0cb9eec271b4621bea8f9954ca986c3be981b5f05e4e9a6d2e006677ca04",
+        "source_fact:v1:9aa0e2d258a222c7ac363058217a1a7850b3fe2e13dcf09e9829ad60ee8c0aa8",
+        "source_fact:v1:fbe5cf2333bf4ea49ca807cb64fc16f0328f570ace9f0645731a10dd563cff80"
       ],
       "source_published_kst": "2026-10-16T14:16+09:00",
       "source_supply_terms": {},
-      "source_title": "SK하이닉스, 협력사 구성원·가족 초청 행사 'ThanksFULL Day' 개최",
-      "telegram_core_fact": "행사에서, 차선용 미래기술연구원장(CTO)과 이병기 양산총괄(CPO), 진보건 부사장(기업문화 부문장) 등 주요 경영진이 행사장 입구에서 참석자들과 인사를 나누며 환영과 감사 메시지를 전했다.",
-      "title": "SK하이닉스, 협력사 구성원·가족 초청 행사 'ThanksFULL Day' 개최"
+      "source_title": "곽노정 대표 \"협력사와 함께 흘린 땀이 SK하이닉스 성과로\"…감사 행사",
+      "telegram_core_fact": "SK하이닉스는 메모리 반도체 호황에 따른 성과를 협력사와 함께 나누기 위해 구성원과 가족을 초청해 '땡스풀 데이(ThanksFULL Day)'를 열었다고 16일 밝혔다. SK하이닉스에 따르면 전날 경기 과천 서울랜드에서 열린 행사에는 협력사 구성원과 해외 법인 우수 구성원, 가족 등 총 3만여명이 참석했다.",
+      "title": "곽노정 대표 \"협력사와 함께 흘린 땀이 SK하이닉스 성과로\"…감사 행사"
     },
     "event:ce7e109095d35d8d8bbd679f": {
       "first_seen_kst": "2026-10-09T17:32:22+09:00",
@@ -92373,6 +92566,26 @@
       ],
       "source_published_kst": "2026-10-06T16:45+09:00",
       "title": "알테오젠, 2000억 투자 유치…연구부터 판매까지 한 회사로"
+    },
+    "fact:433334a6c6f1ec4c27fc89a9": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.etnews.com/20261016000166",
+      "source": "전자신문",
+      "source_body_digest": "0a0cc8da86e9610d05fc5adf37f4f1ed8d26878a350212f34b881abd5c82c456",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c491b9440a052e0c5b87d872ed7a181b3bcc26db36a8d527baa65f9d47e6ca77",
+      "source_fact_keys": [
+        "source_fact:v1:eeb93b70e3c420b0177d39cb6b151b0c683260e1589c18b7a0719a4a1db11fcf"
+      ],
+      "source_published_kst": "2026-10-16T22:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "KFC마저 펩시 손절…코카콜라 택한 이유는",
+      "telegram_core_fact": "미국 치킨 프랜차이즈 KFC가 40년 가까이 유지해 온 펩시코와의 음료 공급 계약을 종료하고 코카콜라 제품을 도입한다. 매출 하락과 점포 정리 등이 이어지는 가운데, 시장조사업체 테크노믹에 따르면 한때 미국 치킨 프랜차이즈 시장을 선도했던 KFC는 매출 순위에서 현재 5위로 내려앉았다.",
+      "title": "KFC마저 펩시 손절…코카콜라 택한 이유는"
     },
     "fact:439b9a3b463761e063d5a919": {
       "first_seen_kst": "2026-10-08T03:26:42+09:00",
@@ -114527,6 +114740,32 @@
       "telegram_core_fact": "오린아 LS증권 연구원은 \"한국콜마의 2026년 3분기 연결 기준 매출액은 8316억원으로 전년비 21.8% 증가하고 영업이익은 909억원으로 55.8% 늘어날 것으로 예상된다\"며 \"기존 추정치 수준의 견조한 실적을 달성할 전망\"이라고 말했다.",
       "title": "LS證 \"한국콜마, 견조한 수요로 실적 개선\""
     },
+    "fact:943d45563811ecc353aa403e": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176123",
+      "source": "매일경제",
+      "source_body_digest": "70e78c6735bc945aa08bc9ee9d5163bf48bcbfcfc6a4eef291b03f8c5fbffbcd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1f94e0f8c099799c9153dd918ceac3a963e153d56977f1357e931a0f59c66004",
+      "source_fact_keys": [
+        "source_fact:v1:37135054e84352d3a86352dc0f8d079717ec9096feef16c50c00eb96ddb623ef",
+        "source_fact:v1:3991addf5667d8999e1e58c3c8f7ff8da354dbd581971db61581a1ac65b3d798",
+        "source_fact:v1:56c8e94a0a7235f961ebcbe6168d43507e9585b614d07a706f50037a63471948",
+        "source_fact:v1:8e2d22c75d1003d6fd39d75095d099582750fd2b63eb828ced38d5b7eea6bbdf",
+        "source_fact:v1:c503c9b15ee80bde2aabbcc5136d1e7a2e8fc3bdc416ee93c2dc0358a0ff8813",
+        "source_fact:v1:d0e65276ae8e8f433a3f48cc7f5aab14027ba2f0fcb2625916c4fc104b8eb541",
+        "source_fact:v1:d8d159b86523ee4b4b3123e2d7aa0293359d85529522058180616c75ec8d3b1a"
+      ],
+      "source_published_kst": "2026-10-17T05:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "포트 테크놀로지, 나스닥 최소호가 1달러 미달 통보..180일 유예",
+      "telegram_core_fact": "포트 테크놀로지(FRTT)가 지난 13일 미국 나스닥 상장심사부로부터 최소 매수호가(Bid Price) 요건인 주당 1달러를 충족하지 못했다는 서면 통보를 받았으며, 2027년 4월 12일까지 180일의 준수 기간을 부여받았다고 16일 발표했다.",
+      "title": "포트 테크놀로지, 나스닥 최소호가 1달러 미달 통보..180일 유예"
+    },
     "fact:944ccd47451559315fe0b53f": {
       "first_seen_kst": "2026-10-06T18:46:35+09:00",
       "lanes": {
@@ -118571,6 +118810,28 @@
       "source_published_kst": "2026-10-06T10:09+09:00",
       "title": "씨피시스템 \"글로벌 MLCC 제조사사 장비에 '로보킷' 채택\""
     },
+    "fact:a2d6b8043c81f24f833f335b": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829054",
+      "source": "뉴시스",
+      "source_body_digest": "dda734c78697822eb6b149debe6a88d2d766aa7baae2609ec04a2c832ae9f2fb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dcc34c35f597effe249b9b66cdaca38fdc3ddf01f049eebc2cf950d06e1dfced",
+      "source_fact_keys": [
+        "source_fact:v1:40ef0cb9eec271b4621bea8f9954ca986c3be981b5f05e4e9a6d2e006677ca04",
+        "source_fact:v1:9aa0e2d258a222c7ac363058217a1a7850b3fe2e13dcf09e9829ad60ee8c0aa8",
+        "source_fact:v1:fbe5cf2333bf4ea49ca807cb64fc16f0328f570ace9f0645731a10dd563cff80"
+      ],
+      "source_published_kst": "2026-10-16T14:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "곽노정 대표 \"협력사와 함께 흘린 땀이 SK하이닉스 성과로\"…감사 행사",
+      "telegram_core_fact": "SK하이닉스는 메모리 반도체 호황에 따른 성과를 협력사와 함께 나누기 위해 구성원과 가족을 초청해 '땡스풀 데이(ThanksFULL Day)'를 열었다고 16일 밝혔다. SK하이닉스에 따르면 전날 경기 과천 서울랜드에서 열린 행사에는 협력사 구성원과 해외 법인 우수 구성원, 가족 등 총 3만여명이 참석했다.",
+      "title": "곽노정 대표 \"협력사와 함께 흘린 땀이 SK하이닉스 성과로\"…감사 행사"
+    },
     "fact:a2e2b82893d936c0f081e188": {
       "first_seen_kst": "2026-10-13T09:21:17+09:00",
       "lanes": {
@@ -120705,6 +120966,36 @@
       "source_published_kst": "2026-10-07T12:57+09:00",
       "title": "“청라에 50MW급 AI 데이터센터 들어선다…kt cloud, 설계·운영 맡는다”"
     },
+    "fact:aa3fa18f0f0e02698ece550c": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12177777",
+      "source": "매일경제",
+      "source_body_digest": "cefccfa65cfb73bc09d0f6c8b051dc41c5cb90da26b1ea5dd840accdd117e797",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:925192993b2fae95a057f50e24c18c470053f2b0306b4abffa3991d49e9fbdc9",
+      "source_fact_keys": [
+        "source_fact:v1:00338c65bfec786a391170f290d4d0db14b2c6a61978d87818c3bc11f952e97d",
+        "source_fact:v1:03ad2ac081d50c7557af4d9359b5f3ea78c3343d70e0f75d8c3e8226fe538fad",
+        "source_fact:v1:05794bba69142b68cfdf3b13352f3a46e7bf1c641fea17e41859d0d374ec4b32",
+        "source_fact:v1:0eaec7d5eb6232941ef6434b0e24b026c6b5503722493fb811acb6caefc8d2b1",
+        "source_fact:v1:0f35a0aaba2dbb4fd4666664c180cbe285a388d3385f84e7a7664add7e4c3541",
+        "source_fact:v1:65dee888c96b9d66890d5ccb3a4cf8edd60941032818d9f7e4b571b0c8799937",
+        "source_fact:v1:9c957104a6834b72d94038ed0e4d5aeaeac37c748a45bd401326b65939782182",
+        "source_fact:v1:9dbd7659e0d4cbef41bb0ec5b3f0445963b4b1933599f67853b87865a14b275e",
+        "source_fact:v1:aab01348e470a096b50a3f4c0bc901807cf1f20bd59dae6767b4f25e7fbeca96",
+        "source_fact:v1:be6b0dcd5f65a72935621c158d22f203b4a1c4edb0ed14c7738090da215680e0",
+        "source_fact:v1:ecafa36df817ba9285592cd43b3ced8ef480cf5273a02425aedac10790bdfb60"
+      ],
+      "source_published_kst": "2026-10-16T14:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY",
+      "telegram_core_fact": "박상현 iM증권 이코노미스트는 “프랑스 국채금리가 높은 수준이지만 2010년 초반 유럽 재정위기 당시 7%선을 웃돌던 이탈리아 국채금리 수준과 비교하면 상대적으로 낮다”며 “최악의 경우 ECB가 최종 소방수 역할을 할 가능성도 있다”고 내다봤다.",
+      "title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY"
+    },
     "fact:aa40f80958884202ee869dec": {
       "first_seen_kst": "2026-10-11T12:11:12+09:00",
       "lanes": {
@@ -121363,6 +121654,29 @@
       "source_title": "브레마 호텔&리조트, 스코츠데일 3억7200만 달러 매각..자문사 분리 가속",
       "telegram_core_fact": "브레마 호텔&리조트(BHR)가 포시즌스 리조트 스코츠데일을 3억7200만 달러에 매각하는 확정 계약을 체결하고, 2027년 연간 총매출액 가이던스를 4억700만~4억1200만 달러(중간값 4억900만 달러)로 제시했다고 8일(현지시간) 발표했다.",
       "title": "브레마 호텔&리조트, 스코츠데일 3억7200만 달러 매각..자문사 분리 가속"
+    },
+    "fact:abcf680bae0cee1980fb2f9c": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.etnews.com/20261016000161",
+      "source": "전자신문",
+      "source_body_digest": "a0fc2dd91e75d8ebea31b0593f9958ac52cfe1d7f5319e1ad54a602a90deae9a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:335af75d0789ed2d3dc9c69feafbf4912dc7edf94ebf97562d94d936efe48bdd",
+      "source_fact_keys": [
+        "source_fact:v1:5150b450f687b9eee3afef7f066bfefab101584ca5dcc6fbe6b38ac09316a5dd",
+        "source_fact:v1:8d7079035b541325890e2892c253639e3f5a8d3d53b4377210026b5d6f06f78b",
+        "source_fact:v1:9277252e83a9407ca460308ba419e420b3c854c97128541392f3bcf3bed83e05",
+        "source_fact:v1:9375b56bcf4b88c7572d4d00fbc593088878cc99bf0e368f78f4241f8ea25617"
+      ],
+      "source_published_kst": "2026-10-16T13:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "에티포스·넥스윌, 드론·무인체계 방산 통신기술 공동개발",
+      "telegram_core_fact": "통신반도체 전문기업 에티포스가 방산전자 기업 넥스윌과 손잡고 드론·무인체계용 통신기술 개발에 나선다. 서원기 넥스윌 대표는 “디지털 RF·방산장비 개발 및 양산 경험에 에티포스의 통신반도체 기술을 더해 미래 전장에 필요한 통신 솔루션을 개발하고 실질적인 사업 성과로 연결하겠다”고 밝혔다.",
+      "title": "에티포스·넥스윌, 드론·무인체계 방산 통신기술 공동개발"
     },
     "fact:abde1b7f4f5851906e50c451": {
       "first_seen_kst": "2026-10-07T10:04:59+09:00",
@@ -125079,6 +125393,26 @@
       ],
       "source_published_kst": "2026-10-06T09:41+09:00",
       "title": "[美공시]테라울프, 증가하는 고객 수요에 대응해 머스키 데이터 캠퍼스의 발전 용량을 1GW로 확대"
+    },
+    "fact:b7794f4b94edfe4d05f14432": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03670326645613576",
+      "source": "이데일리",
+      "source_body_digest": "bf6c8d10deaed7ebf6e8fc2b851d37093b021c3b72cdedb7d5736a525b07dc0d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca2f3bbeebc9cb36fbcaf820864b5cd4ca226eab39d18041dcbf154e412a01d5",
+      "source_fact_keys": [
+        "source_fact:v1:f601931c8e480c5237051febfafc017f6445e497e24b36735c886f6840344df1"
+      ],
+      "source_published_kst": "2026-10-16T13:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "“주가 60% 폭락했는데”…코어위브 창업자 3명은 4.5조 팔았다",
+      "telegram_core_fact": "코어위브 측은 블룸버그통신에 “3명의 공동 창업자는 여전히 상위 6대 주주에 속하며 합산 지분 약 20%를 보유하고 있다”며 “이번 매각은 사전에 계획되고 투명하게 공시된 정당한 개인 자산 관리 차원의 결정”이라고 해명했다.",
+      "title": "“주가 60% 폭락했는데”…코어위브 창업자 3명은 4.5조 팔았다"
     },
     "fact:b78b20fcc84f46837df3d62c": {
       "first_seen_kst": "2026-10-07T03:04:14+09:00",
@@ -130585,6 +130919,26 @@
       "source_title": "“삼전닉스 또 돈 벌 곳 생겼다”…로봇 D램 수요 4년 뒤 20배 폭증 전망",
       "telegram_core_fact": "휴머노이드 로봇 시장이 성장하면서 메모리 반도체 업계에 새로운 수요처가 열릴 전망이다.",
       "title": "“삼전닉스 또 돈 벌 곳 생겼다”…로봇 D램 수요 4년 뒤 20배 폭증 전망"
+    },
+    "fact:cbcd56c52ee3f66bf62a7d71": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06317286645613576",
+      "source": "이데일리",
+      "source_body_digest": "b865abbb65d4877b65b9759995f578f65fad7fef6ba4078631b3fdad5f942ebc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d39555da7a797d31023f2eeb72f12cc37dbf95145209217b3bc2c84bc71fd69c",
+      "source_fact_keys": [
+        "source_fact:v1:49e273e947d56ed8df547c8b047a0b24dcc38d389579f0d44bd5b7322f043b86"
+      ],
+      "source_published_kst": "2026-10-16T21:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]마이크로소프트, 英서 기업용 SW 지배력 조사…주가 영향은 ‘미미’",
+      "telegram_core_fact": "영국 경쟁당국이 마이크로소프트(MSFT)의 기업용 소프트웨어 시장 지배력에 대한 규제 강화에 나섰다.",
+      "title": "[美특징주]마이크로소프트, 英서 기업용 SW 지배력 조사…주가 영향은 ‘미미’"
     },
     "fact:cbe222b0b6ea9c9636f5696f": {
       "first_seen_kst": "2026-10-08T03:13:06+09:00",
@@ -153254,6 +153608,28 @@
       "telegram_core_fact": "시장금리 상승 속에 은행 정기예금 금리도 연 3%대 후반으로 향하고 있다.",
       "title": "은행권 금리 경쟁…1년만기 예금 3%대 후반으로 속속 인상"
     },
+    "link:1462cfcd40baebc80b283aae": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829054",
+      "source": "뉴시스",
+      "source_body_digest": "dda734c78697822eb6b149debe6a88d2d766aa7baae2609ec04a2c832ae9f2fb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dcc34c35f597effe249b9b66cdaca38fdc3ddf01f049eebc2cf950d06e1dfced",
+      "source_fact_keys": [
+        "source_fact:v1:40ef0cb9eec271b4621bea8f9954ca986c3be981b5f05e4e9a6d2e006677ca04",
+        "source_fact:v1:9aa0e2d258a222c7ac363058217a1a7850b3fe2e13dcf09e9829ad60ee8c0aa8",
+        "source_fact:v1:fbe5cf2333bf4ea49ca807cb64fc16f0328f570ace9f0645731a10dd563cff80"
+      ],
+      "source_published_kst": "2026-10-16T14:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "곽노정 대표 \"협력사와 함께 흘린 땀이 SK하이닉스 성과로\"…감사 행사",
+      "telegram_core_fact": "SK하이닉스는 메모리 반도체 호황에 따른 성과를 협력사와 함께 나누기 위해 구성원과 가족을 초청해 '땡스풀 데이(ThanksFULL Day)'를 열었다고 16일 밝혔다. SK하이닉스에 따르면 전날 경기 과천 서울랜드에서 열린 행사에는 협력사 구성원과 해외 법인 우수 구성원, 가족 등 총 3만여명이 참석했다.",
+      "title": "곽노정 대표 \"협력사와 함께 흘린 땀이 SK하이닉스 성과로\"…감사 행사"
+    },
     "link:14aeb8976dbc9e89da2dffc6": {
       "first_seen_kst": "2026-10-05T08:24:29+09:00",
       "lanes": {
@@ -154452,6 +154828,26 @@
       "link": "https://www.yna.co.kr/view/AKR20261002119100054",
       "source": "연합뉴스",
       "title": "광주도시철도 2호선 양산-신가구간 2034년 우선 개통 | 연합뉴스"
+    },
+    "link:1768db9fed38facc70f67f32": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.etnews.com/20261016000166",
+      "source": "전자신문",
+      "source_body_digest": "0a0cc8da86e9610d05fc5adf37f4f1ed8d26878a350212f34b881abd5c82c456",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c491b9440a052e0c5b87d872ed7a181b3bcc26db36a8d527baa65f9d47e6ca77",
+      "source_fact_keys": [
+        "source_fact:v1:eeb93b70e3c420b0177d39cb6b151b0c683260e1589c18b7a0719a4a1db11fcf"
+      ],
+      "source_published_kst": "2026-10-16T22:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "KFC마저 펩시 손절…코카콜라 택한 이유는",
+      "telegram_core_fact": "미국 치킨 프랜차이즈 KFC가 40년 가까이 유지해 온 펩시코와의 음료 공급 계약을 종료하고 코카콜라 제품을 도입한다. 매출 하락과 점포 정리 등이 이어지는 가운데, 시장조사업체 테크노믹에 따르면 한때 미국 치킨 프랜차이즈 시장을 선도했던 KFC는 매출 순위에서 현재 5위로 내려앉았다.",
+      "title": "KFC마저 펩시 손절…코카콜라 택한 이유는"
     },
     "link:176a66f01e85730ec9c4b386": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
@@ -156151,6 +156547,32 @@
       "source_title": "'삼전닉스 25조 선납' 논란... 野 \"기업 부담 전가\" vs 與\" 이집트 원전은?\"",
       "telegram_core_fact": "윤한홍 국민의힘 의원은 12일 국회 산업통상자원중소벤처기업위원회의 산업통상부 산하기관 국정감사에서 \"삼성전자나 SK하이닉스가 왜 선납을 거절했겠느냐\"며 \"반도체 산업은 일시적인 호황일 수 있고 앞으로 불확실성이 큰데 돈을 미리 내라고 하니 부담되는 것\"이라고 주장했다.",
       "title": "'삼전닉스 25조 선납' 논란... 野 \"기업 부담 전가\" vs 與\" 이집트 원전은?\""
+    },
+    "link:1c2e05da0cb678cc3253bfd0": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176123",
+      "source": "매일경제",
+      "source_body_digest": "70e78c6735bc945aa08bc9ee9d5163bf48bcbfcfc6a4eef291b03f8c5fbffbcd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1f94e0f8c099799c9153dd918ceac3a963e153d56977f1357e931a0f59c66004",
+      "source_fact_keys": [
+        "source_fact:v1:37135054e84352d3a86352dc0f8d079717ec9096feef16c50c00eb96ddb623ef",
+        "source_fact:v1:3991addf5667d8999e1e58c3c8f7ff8da354dbd581971db61581a1ac65b3d798",
+        "source_fact:v1:56c8e94a0a7235f961ebcbe6168d43507e9585b614d07a706f50037a63471948",
+        "source_fact:v1:8e2d22c75d1003d6fd39d75095d099582750fd2b63eb828ced38d5b7eea6bbdf",
+        "source_fact:v1:c503c9b15ee80bde2aabbcc5136d1e7a2e8fc3bdc416ee93c2dc0358a0ff8813",
+        "source_fact:v1:d0e65276ae8e8f433a3f48cc7f5aab14027ba2f0fcb2625916c4fc104b8eb541",
+        "source_fact:v1:d8d159b86523ee4b4b3123e2d7aa0293359d85529522058180616c75ec8d3b1a"
+      ],
+      "source_published_kst": "2026-10-17T05:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "포트 테크놀로지, 나스닥 최소호가 1달러 미달 통보..180일 유예",
+      "telegram_core_fact": "포트 테크놀로지(FRTT)가 지난 13일 미국 나스닥 상장심사부로부터 최소 매수호가(Bid Price) 요건인 주당 1달러를 충족하지 못했다는 서면 통보를 받았으며, 2027년 4월 12일까지 180일의 준수 기간을 부여받았다고 16일 발표했다.",
+      "title": "포트 테크놀로지, 나스닥 최소호가 1달러 미달 통보..180일 유예"
     },
     "link:1c3fec1084861253b43b6d31": {
       "first_seen_kst": "2026-10-14T19:15:46+09:00",
@@ -157873,6 +158295,36 @@
       "link": "https://www.mk.co.kr/news/world/12164869",
       "source": "매일경제",
       "title": "“미·중 반도체 전쟁 잠시 숨 고르기” … 지금 ‘삼전닉스’ 봐야 하는 이유"
+    },
+    "link:217062fbfb29a2bfa1d8ba18": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12177777",
+      "source": "매일경제",
+      "source_body_digest": "cefccfa65cfb73bc09d0f6c8b051dc41c5cb90da26b1ea5dd840accdd117e797",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:925192993b2fae95a057f50e24c18c470053f2b0306b4abffa3991d49e9fbdc9",
+      "source_fact_keys": [
+        "source_fact:v1:00338c65bfec786a391170f290d4d0db14b2c6a61978d87818c3bc11f952e97d",
+        "source_fact:v1:03ad2ac081d50c7557af4d9359b5f3ea78c3343d70e0f75d8c3e8226fe538fad",
+        "source_fact:v1:05794bba69142b68cfdf3b13352f3a46e7bf1c641fea17e41859d0d374ec4b32",
+        "source_fact:v1:0eaec7d5eb6232941ef6434b0e24b026c6b5503722493fb811acb6caefc8d2b1",
+        "source_fact:v1:0f35a0aaba2dbb4fd4666664c180cbe285a388d3385f84e7a7664add7e4c3541",
+        "source_fact:v1:65dee888c96b9d66890d5ccb3a4cf8edd60941032818d9f7e4b571b0c8799937",
+        "source_fact:v1:9c957104a6834b72d94038ed0e4d5aeaeac37c748a45bd401326b65939782182",
+        "source_fact:v1:9dbd7659e0d4cbef41bb0ec5b3f0445963b4b1933599f67853b87865a14b275e",
+        "source_fact:v1:aab01348e470a096b50a3f4c0bc901807cf1f20bd59dae6767b4f25e7fbeca96",
+        "source_fact:v1:be6b0dcd5f65a72935621c158d22f203b4a1c4edb0ed14c7738090da215680e0",
+        "source_fact:v1:ecafa36df817ba9285592cd43b3ced8ef480cf5273a02425aedac10790bdfb60"
+      ],
+      "source_published_kst": "2026-10-16T14:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY",
+      "telegram_core_fact": "박상현 iM증권 이코노미스트는 “프랑스 국채금리가 높은 수준이지만 2010년 초반 유럽 재정위기 당시 7%선을 웃돌던 이탈리아 국채금리 수준과 비교하면 상대적으로 낮다”며 “최악의 경우 ECB가 최종 소방수 역할을 할 가능성도 있다”고 내다봤다.",
+      "title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY"
     },
     "link:2179d0d7bd0d11d57ac50a4f": {
       "first_seen_kst": "2026-10-02T21:37:28+09:00",
@@ -161257,6 +161709,26 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-05T20:20+09:00",
       "title": "이카엑스 홀딩스, 플라이미 인수 완료로 차량용 OS 풀스택 경쟁력 부각"
+    },
+    "link:2a818331efcbbf1625a7324c": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06317286645613576",
+      "source": "이데일리",
+      "source_body_digest": "b865abbb65d4877b65b9759995f578f65fad7fef6ba4078631b3fdad5f942ebc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d39555da7a797d31023f2eeb72f12cc37dbf95145209217b3bc2c84bc71fd69c",
+      "source_fact_keys": [
+        "source_fact:v1:49e273e947d56ed8df547c8b047a0b24dcc38d389579f0d44bd5b7322f043b86"
+      ],
+      "source_published_kst": "2026-10-16T21:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]마이크로소프트, 英서 기업용 SW 지배력 조사…주가 영향은 ‘미미’",
+      "telegram_core_fact": "영국 경쟁당국이 마이크로소프트(MSFT)의 기업용 소프트웨어 시장 지배력에 대한 규제 강화에 나섰다.",
+      "title": "[美특징주]마이크로소프트, 英서 기업용 SW 지배력 조사…주가 영향은 ‘미미’"
     },
     "link:2a848698ae910d2515b410a0": {
       "first_seen_kst": "2026-10-02T17:34:05+09:00",
@@ -175344,6 +175816,26 @@
       "source_title": "스페이스베이, 글로벌 위성 발사 서비스 계약 체결",
       "telegram_core_fact": "국내 우주기업 스페이스베이(SpaceBey Inc.)가 국내외 주요 고객사들과 총 약 1400만달러(약 200억 원) 발사 계약을 체결하며 글로벌 상업 발사 서비스 시장에서 본격적인 사업 확장에 나선다.",
       "title": "스페이스베이, 글로벌 위성 발사 서비스 계약 체결"
+    },
+    "link:4f1df49c0abb88a4b9a51cf7": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03670326645613576",
+      "source": "이데일리",
+      "source_body_digest": "bf6c8d10deaed7ebf6e8fc2b851d37093b021c3b72cdedb7d5736a525b07dc0d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca2f3bbeebc9cb36fbcaf820864b5cd4ca226eab39d18041dcbf154e412a01d5",
+      "source_fact_keys": [
+        "source_fact:v1:f601931c8e480c5237051febfafc017f6445e497e24b36735c886f6840344df1"
+      ],
+      "source_published_kst": "2026-10-16T13:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "“주가 60% 폭락했는데”…코어위브 창업자 3명은 4.5조 팔았다",
+      "telegram_core_fact": "코어위브 측은 블룸버그통신에 “3명의 공동 창업자는 여전히 상위 6대 주주에 속하며 합산 지분 약 20%를 보유하고 있다”며 “이번 매각은 사전에 계획되고 투명하게 공시된 정당한 개인 자산 관리 차원의 결정”이라고 해명했다.",
+      "title": "“주가 60% 폭락했는데”…코어위브 창업자 3명은 4.5조 팔았다"
     },
     "link:4f20e23b5bfadb8c97e97846": {
       "first_seen_kst": "2026-10-03T02:43:55+09:00",
@@ -218781,6 +219273,29 @@
       "link": "https://biz.heraldcorp.com/article/10892265",
       "source": "헤럴드경제",
       "title": "K-뷰티 수출 1위, 중국 아닌 ‘이 나라’였다"
+    },
+    "link:c105634e50c8be770b5e1657": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.etnews.com/20261016000161",
+      "source": "전자신문",
+      "source_body_digest": "a0fc2dd91e75d8ebea31b0593f9958ac52cfe1d7f5319e1ad54a602a90deae9a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:335af75d0789ed2d3dc9c69feafbf4912dc7edf94ebf97562d94d936efe48bdd",
+      "source_fact_keys": [
+        "source_fact:v1:5150b450f687b9eee3afef7f066bfefab101584ca5dcc6fbe6b38ac09316a5dd",
+        "source_fact:v1:8d7079035b541325890e2892c253639e3f5a8d3d53b4377210026b5d6f06f78b",
+        "source_fact:v1:9277252e83a9407ca460308ba419e420b3c854c97128541392f3bcf3bed83e05",
+        "source_fact:v1:9375b56bcf4b88c7572d4d00fbc593088878cc99bf0e368f78f4241f8ea25617"
+      ],
+      "source_published_kst": "2026-10-16T13:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "에티포스·넥스윌, 드론·무인체계 방산 통신기술 공동개발",
+      "telegram_core_fact": "통신반도체 전문기업 에티포스가 방산전자 기업 넥스윌과 손잡고 드론·무인체계용 통신기술 개발에 나선다. 서원기 넥스윌 대표는 “디지털 RF·방산장비 개발 및 양산 경험에 에티포스의 통신반도체 기술을 더해 미래 전장에 필요한 통신 솔루션을 개발하고 실질적인 사업 성과로 연결하겠다”고 밝혔다.",
+      "title": "에티포스·넥스윌, 드론·무인체계 방산 통신기술 공동개발"
     },
     "link:c10f47f4cfa7635b551b0c87": {
       "first_seen_kst": "2026-09-30T14:40:35+09:00",
@@ -263363,6 +263878,36 @@
       "telegram_core_fact": "수억, 많게는 수십억의 성과급 지급이 예정돼있음에도 불구하고 전년 대비 민간소비 증가율이 올해(2.3%)보다 0.3%포인트 줄어들 것으로 내다본 것이다.",
       "title": "내년 삼전닉스 성과급 풀려도…\"특정 계층에만 집중, 소비 증가 제한적\""
     },
+    "original:3a8652643e792d82c15c2127": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12177777",
+      "source": "매일경제",
+      "source_body_digest": "cefccfa65cfb73bc09d0f6c8b051dc41c5cb90da26b1ea5dd840accdd117e797",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:925192993b2fae95a057f50e24c18c470053f2b0306b4abffa3991d49e9fbdc9",
+      "source_fact_keys": [
+        "source_fact:v1:00338c65bfec786a391170f290d4d0db14b2c6a61978d87818c3bc11f952e97d",
+        "source_fact:v1:03ad2ac081d50c7557af4d9359b5f3ea78c3343d70e0f75d8c3e8226fe538fad",
+        "source_fact:v1:05794bba69142b68cfdf3b13352f3a46e7bf1c641fea17e41859d0d374ec4b32",
+        "source_fact:v1:0eaec7d5eb6232941ef6434b0e24b026c6b5503722493fb811acb6caefc8d2b1",
+        "source_fact:v1:0f35a0aaba2dbb4fd4666664c180cbe285a388d3385f84e7a7664add7e4c3541",
+        "source_fact:v1:65dee888c96b9d66890d5ccb3a4cf8edd60941032818d9f7e4b571b0c8799937",
+        "source_fact:v1:9c957104a6834b72d94038ed0e4d5aeaeac37c748a45bd401326b65939782182",
+        "source_fact:v1:9dbd7659e0d4cbef41bb0ec5b3f0445963b4b1933599f67853b87865a14b275e",
+        "source_fact:v1:aab01348e470a096b50a3f4c0bc901807cf1f20bd59dae6767b4f25e7fbeca96",
+        "source_fact:v1:be6b0dcd5f65a72935621c158d22f203b4a1c4edb0ed14c7738090da215680e0",
+        "source_fact:v1:ecafa36df817ba9285592cd43b3ced8ef480cf5273a02425aedac10790bdfb60"
+      ],
+      "source_published_kst": "2026-10-16T14:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY",
+      "telegram_core_fact": "박상현 iM증권 이코노미스트는 “프랑스 국채금리가 높은 수준이지만 2010년 초반 유럽 재정위기 당시 7%선을 웃돌던 이탈리아 국채금리 수준과 비교하면 상대적으로 낮다”며 “최악의 경우 ECB가 최종 소방수 역할을 할 가능성도 있다”고 내다봤다.",
+      "title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY"
+    },
     "original:3a902de2df5d4c3119410b5c": {
       "first_seen_kst": "2026-10-04T09:16:34+09:00",
       "lanes": {
@@ -268658,6 +269203,29 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-07T17:54+09:00",
       "title": "두나무·네이버파이낸셜 주식교환 3개월 연기…\"거래 방향 변함없어\"(종합)"
+    },
+    "original:472bb9da72b0df7d1ce29fb9": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.etnews.com/20261016000161",
+      "source": "전자신문",
+      "source_body_digest": "a0fc2dd91e75d8ebea31b0593f9958ac52cfe1d7f5319e1ad54a602a90deae9a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:335af75d0789ed2d3dc9c69feafbf4912dc7edf94ebf97562d94d936efe48bdd",
+      "source_fact_keys": [
+        "source_fact:v1:5150b450f687b9eee3afef7f066bfefab101584ca5dcc6fbe6b38ac09316a5dd",
+        "source_fact:v1:8d7079035b541325890e2892c253639e3f5a8d3d53b4377210026b5d6f06f78b",
+        "source_fact:v1:9277252e83a9407ca460308ba419e420b3c854c97128541392f3bcf3bed83e05",
+        "source_fact:v1:9375b56bcf4b88c7572d4d00fbc593088878cc99bf0e368f78f4241f8ea25617"
+      ],
+      "source_published_kst": "2026-10-16T13:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "에티포스·넥스윌, 드론·무인체계 방산 통신기술 공동개발",
+      "telegram_core_fact": "통신반도체 전문기업 에티포스가 방산전자 기업 넥스윌과 손잡고 드론·무인체계용 통신기술 개발에 나선다. 서원기 넥스윌 대표는 “디지털 RF·방산장비 개발 및 양산 경험에 에티포스의 통신반도체 기술을 더해 미래 전장에 필요한 통신 솔루션을 개발하고 실질적인 사업 성과로 연결하겠다”고 밝혔다.",
+      "title": "에티포스·넥스윌, 드론·무인체계 방산 통신기술 공동개발"
     },
     "original:47354c4f75d35fe4b046d8be": {
       "first_seen_kst": "2026-10-15T16:25:35+09:00",
@@ -287753,6 +288321,32 @@
       "telegram_core_fact": "KKR은 기술 업종이 올해 코스피 전체 주당순이익(EPS) 증가분의 71%를 차지할 것으로 예상했고, 내년에는 이 비중이 75%로 높아질 것으로 전망했다.",
       "title": "KKR \"韓기업개혁, 투자 매력 커져…AI·반도체가 실적 견인\" | 연합뉴스"
     },
+    "original:7cee3b85c7414c21baef14ed": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176123",
+      "source": "매일경제",
+      "source_body_digest": "70e78c6735bc945aa08bc9ee9d5163bf48bcbfcfc6a4eef291b03f8c5fbffbcd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1f94e0f8c099799c9153dd918ceac3a963e153d56977f1357e931a0f59c66004",
+      "source_fact_keys": [
+        "source_fact:v1:37135054e84352d3a86352dc0f8d079717ec9096feef16c50c00eb96ddb623ef",
+        "source_fact:v1:3991addf5667d8999e1e58c3c8f7ff8da354dbd581971db61581a1ac65b3d798",
+        "source_fact:v1:56c8e94a0a7235f961ebcbe6168d43507e9585b614d07a706f50037a63471948",
+        "source_fact:v1:8e2d22c75d1003d6fd39d75095d099582750fd2b63eb828ced38d5b7eea6bbdf",
+        "source_fact:v1:c503c9b15ee80bde2aabbcc5136d1e7a2e8fc3bdc416ee93c2dc0358a0ff8813",
+        "source_fact:v1:d0e65276ae8e8f433a3f48cc7f5aab14027ba2f0fcb2625916c4fc104b8eb541",
+        "source_fact:v1:d8d159b86523ee4b4b3123e2d7aa0293359d85529522058180616c75ec8d3b1a"
+      ],
+      "source_published_kst": "2026-10-17T05:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "포트 테크놀로지, 나스닥 최소호가 1달러 미달 통보..180일 유예",
+      "telegram_core_fact": "포트 테크놀로지(FRTT)가 지난 13일 미국 나스닥 상장심사부로부터 최소 매수호가(Bid Price) 요건인 주당 1달러를 충족하지 못했다는 서면 통보를 받았으며, 2027년 4월 12일까지 180일의 준수 기간을 부여받았다고 16일 발표했다.",
+      "title": "포트 테크놀로지, 나스닥 최소호가 1달러 미달 통보..180일 유예"
+    },
     "original:7cfca41d5e7ad4ecda34f017": {
       "first_seen_kst": "2026-10-08T21:21:36+09:00",
       "lanes": {
@@ -296688,6 +297282,28 @@
       "source_published_kst": "2026-10-05T10:52+09:00",
       "title": "\"연어 30톤 풀었다\"…쿠팡, 항공 직송 생연어 최대 10% 할인"
     },
+    "original:950994f99cb588245b8a4db1": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829054",
+      "source": "뉴시스",
+      "source_body_digest": "dda734c78697822eb6b149debe6a88d2d766aa7baae2609ec04a2c832ae9f2fb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dcc34c35f597effe249b9b66cdaca38fdc3ddf01f049eebc2cf950d06e1dfced",
+      "source_fact_keys": [
+        "source_fact:v1:40ef0cb9eec271b4621bea8f9954ca986c3be981b5f05e4e9a6d2e006677ca04",
+        "source_fact:v1:9aa0e2d258a222c7ac363058217a1a7850b3fe2e13dcf09e9829ad60ee8c0aa8",
+        "source_fact:v1:fbe5cf2333bf4ea49ca807cb64fc16f0328f570ace9f0645731a10dd563cff80"
+      ],
+      "source_published_kst": "2026-10-16T14:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "곽노정 대표 \"협력사와 함께 흘린 땀이 SK하이닉스 성과로\"…감사 행사",
+      "telegram_core_fact": "SK하이닉스는 메모리 반도체 호황에 따른 성과를 협력사와 함께 나누기 위해 구성원과 가족을 초청해 '땡스풀 데이(ThanksFULL Day)'를 열었다고 16일 밝혔다. SK하이닉스에 따르면 전날 경기 과천 서울랜드에서 열린 행사에는 협력사 구성원과 해외 법인 우수 구성원, 가족 등 총 3만여명이 참석했다.",
+      "title": "곽노정 대표 \"협력사와 함께 흘린 땀이 SK하이닉스 성과로\"…감사 행사"
+    },
     "original:95151c1e11d8a0dc9f815734": {
       "first_seen_kst": "2026-10-15T13:08:36+09:00",
       "lanes": {
@@ -301108,6 +301724,26 @@
       "source_title": "누리호 5차 발사…대전 기업 개발 '대전샛' 교신 성공할까",
       "telegram_core_fact": "대전지역 업체들이 개발한 초소형 위성 '대전샛'이 한국형 발사체 누리호에 실려 우주로 향한 가운데 위성의 교신 성공 여부에 관심이 높아지고 있다.",
       "title": "누리호 5차 발사…대전 기업 개발 '대전샛' 교신 성공할까"
+    },
+    "original:a15acd546f9fff4a7401a357": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06317286645613576",
+      "source": "이데일리",
+      "source_body_digest": "b865abbb65d4877b65b9759995f578f65fad7fef6ba4078631b3fdad5f942ebc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d39555da7a797d31023f2eeb72f12cc37dbf95145209217b3bc2c84bc71fd69c",
+      "source_fact_keys": [
+        "source_fact:v1:49e273e947d56ed8df547c8b047a0b24dcc38d389579f0d44bd5b7322f043b86"
+      ],
+      "source_published_kst": "2026-10-16T21:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]마이크로소프트, 英서 기업용 SW 지배력 조사…주가 영향은 ‘미미’",
+      "telegram_core_fact": "영국 경쟁당국이 마이크로소프트(MSFT)의 기업용 소프트웨어 시장 지배력에 대한 규제 강화에 나섰다.",
+      "title": "[美특징주]마이크로소프트, 英서 기업용 SW 지배력 조사…주가 영향은 ‘미미’"
     },
     "original:a15c45d91c2cd4c4da322358": {
       "first_seen_kst": "2026-10-16T16:35:36+09:00",
@@ -312064,6 +312700,26 @@
       "source_title": "트럼프, 우·러 에너지 휴전 깜짝 발표…젤렌스키 \"처음 듣는 이야기\"",
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아와 우크라이나가 정유시설을 서로 공격하지 않기로 합의했다고 11일(현지시간) 발표했다.",
       "title": "트럼프, 우·러 에너지 휴전 깜짝 발표…젤렌스키 \"처음 듣는 이야기\""
+    },
+    "original:c047291c43463a90d55c411d": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.etnews.com/20261016000166",
+      "source": "전자신문",
+      "source_body_digest": "0a0cc8da86e9610d05fc5adf37f4f1ed8d26878a350212f34b881abd5c82c456",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c491b9440a052e0c5b87d872ed7a181b3bcc26db36a8d527baa65f9d47e6ca77",
+      "source_fact_keys": [
+        "source_fact:v1:eeb93b70e3c420b0177d39cb6b151b0c683260e1589c18b7a0719a4a1db11fcf"
+      ],
+      "source_published_kst": "2026-10-16T22:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "KFC마저 펩시 손절…코카콜라 택한 이유는",
+      "telegram_core_fact": "미국 치킨 프랜차이즈 KFC가 40년 가까이 유지해 온 펩시코와의 음료 공급 계약을 종료하고 코카콜라 제품을 도입한다. 매출 하락과 점포 정리 등이 이어지는 가운데, 시장조사업체 테크노믹에 따르면 한때 미국 치킨 프랜차이즈 시장을 선도했던 KFC는 매출 순위에서 현재 5위로 내려앉았다.",
+      "title": "KFC마저 펩시 손절…코카콜라 택한 이유는"
     },
     "original:c0486b4127f3f544c194b9d7": {
       "first_seen_kst": "2026-10-15T04:22:43+09:00",
@@ -330591,6 +331247,26 @@
       "telegram_core_fact": "9월 중순께 홈플러스는 당초 목표로 세웠던 매출의 40%만 달성했는데, 여기서 더 떨어진 것이다.",
       "title": "홈플러스, 목표 대비 매출 30%…통매각 불발 시 분리매각 수순 | 연합뉴스"
     },
+    "original:f3305df58e6d861dff5374d0": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03670326645613576",
+      "source": "이데일리",
+      "source_body_digest": "bf6c8d10deaed7ebf6e8fc2b851d37093b021c3b72cdedb7d5736a525b07dc0d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca2f3bbeebc9cb36fbcaf820864b5cd4ca226eab39d18041dcbf154e412a01d5",
+      "source_fact_keys": [
+        "source_fact:v1:f601931c8e480c5237051febfafc017f6445e497e24b36735c886f6840344df1"
+      ],
+      "source_published_kst": "2026-10-16T13:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "“주가 60% 폭락했는데”…코어위브 창업자 3명은 4.5조 팔았다",
+      "telegram_core_fact": "코어위브 측은 블룸버그통신에 “3명의 공동 창업자는 여전히 상위 6대 주주에 속하며 합산 지분 약 20%를 보유하고 있다”며 “이번 매각은 사전에 계획되고 투명하게 공시된 정당한 개인 자산 관리 차원의 결정”이라고 해명했다.",
+      "title": "“주가 60% 폭락했는데”…코어위브 창업자 3명은 4.5조 팔았다"
+    },
     "original:f345aca3e734a9b0a5bb416f": {
       "first_seen_kst": "2026-10-10T07:01:20+09:00",
       "lanes": {
@@ -342870,6 +343546,36 @@
       "telegram_core_fact": "NH투자증권 자료에 따르면 LS전선과 국내·해외 종속회사를 합산한 수주잔고는 2022년 1분기 3조원대에서 올해 2분기 9조원대까지 확대됐다.",
       "title": "NH證 “LS, NAV 대비 66% 할인⋯과도한 저평가 구간”"
     },
+    "source_fact:057a0e55f5adeb96c0297921": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12177777",
+      "source": "매일경제",
+      "source_body_digest": "cefccfa65cfb73bc09d0f6c8b051dc41c5cb90da26b1ea5dd840accdd117e797",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:925192993b2fae95a057f50e24c18c470053f2b0306b4abffa3991d49e9fbdc9",
+      "source_fact_keys": [
+        "source_fact:v1:00338c65bfec786a391170f290d4d0db14b2c6a61978d87818c3bc11f952e97d",
+        "source_fact:v1:03ad2ac081d50c7557af4d9359b5f3ea78c3343d70e0f75d8c3e8226fe538fad",
+        "source_fact:v1:05794bba69142b68cfdf3b13352f3a46e7bf1c641fea17e41859d0d374ec4b32",
+        "source_fact:v1:0eaec7d5eb6232941ef6434b0e24b026c6b5503722493fb811acb6caefc8d2b1",
+        "source_fact:v1:0f35a0aaba2dbb4fd4666664c180cbe285a388d3385f84e7a7664add7e4c3541",
+        "source_fact:v1:65dee888c96b9d66890d5ccb3a4cf8edd60941032818d9f7e4b571b0c8799937",
+        "source_fact:v1:9c957104a6834b72d94038ed0e4d5aeaeac37c748a45bd401326b65939782182",
+        "source_fact:v1:9dbd7659e0d4cbef41bb0ec5b3f0445963b4b1933599f67853b87865a14b275e",
+        "source_fact:v1:aab01348e470a096b50a3f4c0bc901807cf1f20bd59dae6767b4f25e7fbeca96",
+        "source_fact:v1:be6b0dcd5f65a72935621c158d22f203b4a1c4edb0ed14c7738090da215680e0",
+        "source_fact:v1:ecafa36df817ba9285592cd43b3ced8ef480cf5273a02425aedac10790bdfb60"
+      ],
+      "source_published_kst": "2026-10-16T14:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY",
+      "telegram_core_fact": "박상현 iM증권 이코노미스트는 “프랑스 국채금리가 높은 수준이지만 2010년 초반 유럽 재정위기 당시 7%선을 웃돌던 이탈리아 국채금리 수준과 비교하면 상대적으로 낮다”며 “최악의 경우 ECB가 최종 소방수 역할을 할 가능성도 있다”고 내다봤다.",
+      "title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY"
+    },
     "source_fact:057c6e05e104977391991e11": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
       "lanes": {
@@ -350037,6 +350743,29 @@
       "source_title": "美국방부, 이란 대규모 공습 준비 지시⋯중간선거 전 공격 가능성",
       "telegram_core_fact": "로이터 통신은 이란이 호르무즈 해협을 항해하는 유조선에 대한 공격을 늘려 주간 공격 건수가 2월 미·이란 군사 충돌 이후 가장 많아졌다고 보도했다.",
       "title": "美국방부, 이란 대규모 공습 준비 지시⋯중간선거 전 공격 가능성"
+    },
+    "source_fact:0ad1fec4d6dea5b14c1cda8f": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.etnews.com/20261016000161",
+      "source": "전자신문",
+      "source_body_digest": "a0fc2dd91e75d8ebea31b0593f9958ac52cfe1d7f5319e1ad54a602a90deae9a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:335af75d0789ed2d3dc9c69feafbf4912dc7edf94ebf97562d94d936efe48bdd",
+      "source_fact_keys": [
+        "source_fact:v1:5150b450f687b9eee3afef7f066bfefab101584ca5dcc6fbe6b38ac09316a5dd",
+        "source_fact:v1:8d7079035b541325890e2892c253639e3f5a8d3d53b4377210026b5d6f06f78b",
+        "source_fact:v1:9277252e83a9407ca460308ba419e420b3c854c97128541392f3bcf3bed83e05",
+        "source_fact:v1:9375b56bcf4b88c7572d4d00fbc593088878cc99bf0e368f78f4241f8ea25617"
+      ],
+      "source_published_kst": "2026-10-16T13:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "에티포스·넥스윌, 드론·무인체계 방산 통신기술 공동개발",
+      "telegram_core_fact": "통신반도체 전문기업 에티포스가 방산전자 기업 넥스윌과 손잡고 드론·무인체계용 통신기술 개발에 나선다. 서원기 넥스윌 대표는 “디지털 RF·방산장비 개발 및 양산 경험에 에티포스의 통신반도체 기술을 더해 미래 전장에 필요한 통신 솔루션을 개발하고 실질적인 사업 성과로 연결하겠다”고 밝혔다.",
+      "title": "에티포스·넥스윌, 드론·무인체계 방산 통신기술 공동개발"
     },
     "source_fact:0ad869b028537233a161f661": {
       "first_seen_kst": "2026-10-06T14:52:12+09:00",
@@ -381975,6 +382704,28 @@
       "telegram_core_fact": "한글날 연휴 이후 첫 거래일인 12일 코스피가 외국인 매도와 반도체주 약세에 2% 넘게 하락하고 있다. 미국 뉴욕증시에서 인공지능(AI) 산업의 성장성에 대한 우려로 반도체주에 가해진 매도 압력이 국내 증시로 이어진 것으로 보인다.",
       "title": "또 'AI 거품론'...반도체 매도 압력, 삼전닉스 약세"
     },
+    "source_fact:2073cc10488c5bb96448c22e": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829054",
+      "source": "뉴시스",
+      "source_body_digest": "dda734c78697822eb6b149debe6a88d2d766aa7baae2609ec04a2c832ae9f2fb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dcc34c35f597effe249b9b66cdaca38fdc3ddf01f049eebc2cf950d06e1dfced",
+      "source_fact_keys": [
+        "source_fact:v1:40ef0cb9eec271b4621bea8f9954ca986c3be981b5f05e4e9a6d2e006677ca04",
+        "source_fact:v1:9aa0e2d258a222c7ac363058217a1a7850b3fe2e13dcf09e9829ad60ee8c0aa8",
+        "source_fact:v1:fbe5cf2333bf4ea49ca807cb64fc16f0328f570ace9f0645731a10dd563cff80"
+      ],
+      "source_published_kst": "2026-10-16T14:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "곽노정 대표 \"협력사와 함께 흘린 땀이 SK하이닉스 성과로\"…감사 행사",
+      "telegram_core_fact": "SK하이닉스는 메모리 반도체 호황에 따른 성과를 협력사와 함께 나누기 위해 구성원과 가족을 초청해 '땡스풀 데이(ThanksFULL Day)'를 열었다고 16일 밝혔다. SK하이닉스에 따르면 전날 경기 과천 서울랜드에서 열린 행사에는 협력사 구성원과 해외 법인 우수 구성원, 가족 등 총 3만여명이 참석했다.",
+      "title": "곽노정 대표 \"협력사와 함께 흘린 땀이 SK하이닉스 성과로\"…감사 행사"
+    },
     "source_fact:207788a17f8b7f34628ff619": {
       "first_seen_kst": "2026-10-08T01:26:16+09:00",
       "lanes": {
@@ -393855,6 +394606,29 @@
       "source_title": "삼립, 피그인더가든 치폴레·갈릭 디핑 저당 소스 출시",
       "telegram_core_fact": "삼립의 웰니스 브랜드 '피그인더가든'이 저당 치폴레·갈릭 디핑 소스 신제품을 출시하며 소비자의 선택폭을 넓힌다고 12일 밝혔다. '헬시플레저' 트렌드에 저당 소스 수요가 증가하는 가운데 피그인더가든 저당 소스 및 드레싱 시리즈는 지난 3월 출시 후 7개월 만에 누적 판매량 30만 개를 돌파했다.",
       "title": "삼립, 피그인더가든 치폴레·갈릭 디핑 저당 소스 출시"
+    },
+    "source_fact:28393614f27b62760eab77c5": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.etnews.com/20261016000161",
+      "source": "전자신문",
+      "source_body_digest": "a0fc2dd91e75d8ebea31b0593f9958ac52cfe1d7f5319e1ad54a602a90deae9a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:335af75d0789ed2d3dc9c69feafbf4912dc7edf94ebf97562d94d936efe48bdd",
+      "source_fact_keys": [
+        "source_fact:v1:5150b450f687b9eee3afef7f066bfefab101584ca5dcc6fbe6b38ac09316a5dd",
+        "source_fact:v1:8d7079035b541325890e2892c253639e3f5a8d3d53b4377210026b5d6f06f78b",
+        "source_fact:v1:9277252e83a9407ca460308ba419e420b3c854c97128541392f3bcf3bed83e05",
+        "source_fact:v1:9375b56bcf4b88c7572d4d00fbc593088878cc99bf0e368f78f4241f8ea25617"
+      ],
+      "source_published_kst": "2026-10-16T13:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "에티포스·넥스윌, 드론·무인체계 방산 통신기술 공동개발",
+      "telegram_core_fact": "통신반도체 전문기업 에티포스가 방산전자 기업 넥스윌과 손잡고 드론·무인체계용 통신기술 개발에 나선다. 서원기 넥스윌 대표는 “디지털 RF·방산장비 개발 및 양산 경험에 에티포스의 통신반도체 기술을 더해 미래 전장에 필요한 통신 솔루션을 개발하고 실질적인 사업 성과로 연결하겠다”고 밝혔다.",
+      "title": "에티포스·넥스윌, 드론·무인체계 방산 통신기술 공동개발"
     },
     "source_fact:2839803a1951fe03e05a9dce": {
       "first_seen_kst": "2026-10-09T21:27:46+09:00",
@@ -412303,6 +413077,36 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아와 우크라이나가 정유시설을 서로 공격하지 않기로 합의했다고 11일(현지시간) 발표했다.",
       "title": "트럼프, 우·러 에너지 휴전 깜짝 발표…젤렌스키 \"처음 듣는 이야기\""
     },
+    "source_fact:350579fc2aa5077e5d9f0540": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12177777",
+      "source": "매일경제",
+      "source_body_digest": "cefccfa65cfb73bc09d0f6c8b051dc41c5cb90da26b1ea5dd840accdd117e797",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:925192993b2fae95a057f50e24c18c470053f2b0306b4abffa3991d49e9fbdc9",
+      "source_fact_keys": [
+        "source_fact:v1:00338c65bfec786a391170f290d4d0db14b2c6a61978d87818c3bc11f952e97d",
+        "source_fact:v1:03ad2ac081d50c7557af4d9359b5f3ea78c3343d70e0f75d8c3e8226fe538fad",
+        "source_fact:v1:05794bba69142b68cfdf3b13352f3a46e7bf1c641fea17e41859d0d374ec4b32",
+        "source_fact:v1:0eaec7d5eb6232941ef6434b0e24b026c6b5503722493fb811acb6caefc8d2b1",
+        "source_fact:v1:0f35a0aaba2dbb4fd4666664c180cbe285a388d3385f84e7a7664add7e4c3541",
+        "source_fact:v1:65dee888c96b9d66890d5ccb3a4cf8edd60941032818d9f7e4b571b0c8799937",
+        "source_fact:v1:9c957104a6834b72d94038ed0e4d5aeaeac37c748a45bd401326b65939782182",
+        "source_fact:v1:9dbd7659e0d4cbef41bb0ec5b3f0445963b4b1933599f67853b87865a14b275e",
+        "source_fact:v1:aab01348e470a096b50a3f4c0bc901807cf1f20bd59dae6767b4f25e7fbeca96",
+        "source_fact:v1:be6b0dcd5f65a72935621c158d22f203b4a1c4edb0ed14c7738090da215680e0",
+        "source_fact:v1:ecafa36df817ba9285592cd43b3ced8ef480cf5273a02425aedac10790bdfb60"
+      ],
+      "source_published_kst": "2026-10-16T14:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY",
+      "telegram_core_fact": "박상현 iM증권 이코노미스트는 “프랑스 국채금리가 높은 수준이지만 2010년 초반 유럽 재정위기 당시 7%선을 웃돌던 이탈리아 국채금리 수준과 비교하면 상대적으로 낮다”며 “최악의 경우 ECB가 최종 소방수 역할을 할 가능성도 있다”고 내다봤다.",
+      "title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY"
+    },
     "source_fact:3507ba901f07a14732af3758": {
       "first_seen_kst": "2026-10-07T10:04:59+09:00",
       "lanes": {
@@ -412405,6 +413209,32 @@
       ],
       "source_published_kst": "2026-10-07T10:14+09:00",
       "title": "한국재료硏 \"초박막 코팅으로 수전해 촉매 성능 향상 성공\""
+    },
+    "source_fact:35157c7604c692a01e803e9b": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176123",
+      "source": "매일경제",
+      "source_body_digest": "70e78c6735bc945aa08bc9ee9d5163bf48bcbfcfc6a4eef291b03f8c5fbffbcd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1f94e0f8c099799c9153dd918ceac3a963e153d56977f1357e931a0f59c66004",
+      "source_fact_keys": [
+        "source_fact:v1:37135054e84352d3a86352dc0f8d079717ec9096feef16c50c00eb96ddb623ef",
+        "source_fact:v1:3991addf5667d8999e1e58c3c8f7ff8da354dbd581971db61581a1ac65b3d798",
+        "source_fact:v1:56c8e94a0a7235f961ebcbe6168d43507e9585b614d07a706f50037a63471948",
+        "source_fact:v1:8e2d22c75d1003d6fd39d75095d099582750fd2b63eb828ced38d5b7eea6bbdf",
+        "source_fact:v1:c503c9b15ee80bde2aabbcc5136d1e7a2e8fc3bdc416ee93c2dc0358a0ff8813",
+        "source_fact:v1:d0e65276ae8e8f433a3f48cc7f5aab14027ba2f0fcb2625916c4fc104b8eb541",
+        "source_fact:v1:d8d159b86523ee4b4b3123e2d7aa0293359d85529522058180616c75ec8d3b1a"
+      ],
+      "source_published_kst": "2026-10-17T05:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "포트 테크놀로지, 나스닥 최소호가 1달러 미달 통보..180일 유예",
+      "telegram_core_fact": "포트 테크놀로지(FRTT)가 지난 13일 미국 나스닥 상장심사부로부터 최소 매수호가(Bid Price) 요건인 주당 1달러를 충족하지 못했다는 서면 통보를 받았으며, 2027년 4월 12일까지 180일의 준수 기간을 부여받았다고 16일 발표했다.",
+      "title": "포트 테크놀로지, 나스닥 최소호가 1달러 미달 통보..180일 유예"
     },
     "source_fact:351fdc55055ab5d7b78f09ed": {
       "first_seen_kst": "2026-10-08T20:58:15+09:00",
@@ -432940,6 +433770,36 @@
       "telegram_core_fact": "정부와 국회는 반복되는 이상동기 강력범죄를 예방하겠다는 목표로 지난해 공공장소 흉기소지죄를 신설했지만, 이번 참극을 막지 못했다.",
       "title": "'묻지마 범죄' 막겠다며 신설됐지만…흉기소지 '전조증상'에도 구멍"
     },
+    "source_fact:435957a4db195863086673e6": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12177777",
+      "source": "매일경제",
+      "source_body_digest": "cefccfa65cfb73bc09d0f6c8b051dc41c5cb90da26b1ea5dd840accdd117e797",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:925192993b2fae95a057f50e24c18c470053f2b0306b4abffa3991d49e9fbdc9",
+      "source_fact_keys": [
+        "source_fact:v1:00338c65bfec786a391170f290d4d0db14b2c6a61978d87818c3bc11f952e97d",
+        "source_fact:v1:03ad2ac081d50c7557af4d9359b5f3ea78c3343d70e0f75d8c3e8226fe538fad",
+        "source_fact:v1:05794bba69142b68cfdf3b13352f3a46e7bf1c641fea17e41859d0d374ec4b32",
+        "source_fact:v1:0eaec7d5eb6232941ef6434b0e24b026c6b5503722493fb811acb6caefc8d2b1",
+        "source_fact:v1:0f35a0aaba2dbb4fd4666664c180cbe285a388d3385f84e7a7664add7e4c3541",
+        "source_fact:v1:65dee888c96b9d66890d5ccb3a4cf8edd60941032818d9f7e4b571b0c8799937",
+        "source_fact:v1:9c957104a6834b72d94038ed0e4d5aeaeac37c748a45bd401326b65939782182",
+        "source_fact:v1:9dbd7659e0d4cbef41bb0ec5b3f0445963b4b1933599f67853b87865a14b275e",
+        "source_fact:v1:aab01348e470a096b50a3f4c0bc901807cf1f20bd59dae6767b4f25e7fbeca96",
+        "source_fact:v1:be6b0dcd5f65a72935621c158d22f203b4a1c4edb0ed14c7738090da215680e0",
+        "source_fact:v1:ecafa36df817ba9285592cd43b3ced8ef480cf5273a02425aedac10790bdfb60"
+      ],
+      "source_published_kst": "2026-10-16T14:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY",
+      "telegram_core_fact": "박상현 iM증권 이코노미스트는 “프랑스 국채금리가 높은 수준이지만 2010년 초반 유럽 재정위기 당시 7%선을 웃돌던 이탈리아 국채금리 수준과 비교하면 상대적으로 낮다”며 “최악의 경우 ECB가 최종 소방수 역할을 할 가능성도 있다”고 내다봤다.",
+      "title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY"
+    },
     "source_fact:435c9be717b382219016f14b": {
       "first_seen_kst": "2026-10-13T13:05:30+09:00",
       "lanes": {
@@ -435109,6 +435969,36 @@
       "source_title": "한은 국감 본 채권 전문가들 “11월·내년 1분기 추가 인상”",
       "telegram_core_fact": "11월과 내년 1분기 추가 인상을 거쳐 기준금리가 현 3.0%에서 3.5%까지 오를 것이라는 전망을 유지했다. 우 연구원은 “11월 금통위에서 내년 상반기 기준금리 경로가 확인되고 추가 인상이 한 차례 정도라는 인식이 자리 잡으면 시장이 안도할 수 있다”며 “국채 공급 감소도 금리 안정에 힘을 보탤 것”이라고 예상했다.",
       "title": "한은 국감 본 채권 전문가들 “11월·내년 1분기 추가 인상”"
+    },
+    "source_fact:4510b4b75584a13012948ecf": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12177777",
+      "source": "매일경제",
+      "source_body_digest": "cefccfa65cfb73bc09d0f6c8b051dc41c5cb90da26b1ea5dd840accdd117e797",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:925192993b2fae95a057f50e24c18c470053f2b0306b4abffa3991d49e9fbdc9",
+      "source_fact_keys": [
+        "source_fact:v1:00338c65bfec786a391170f290d4d0db14b2c6a61978d87818c3bc11f952e97d",
+        "source_fact:v1:03ad2ac081d50c7557af4d9359b5f3ea78c3343d70e0f75d8c3e8226fe538fad",
+        "source_fact:v1:05794bba69142b68cfdf3b13352f3a46e7bf1c641fea17e41859d0d374ec4b32",
+        "source_fact:v1:0eaec7d5eb6232941ef6434b0e24b026c6b5503722493fb811acb6caefc8d2b1",
+        "source_fact:v1:0f35a0aaba2dbb4fd4666664c180cbe285a388d3385f84e7a7664add7e4c3541",
+        "source_fact:v1:65dee888c96b9d66890d5ccb3a4cf8edd60941032818d9f7e4b571b0c8799937",
+        "source_fact:v1:9c957104a6834b72d94038ed0e4d5aeaeac37c748a45bd401326b65939782182",
+        "source_fact:v1:9dbd7659e0d4cbef41bb0ec5b3f0445963b4b1933599f67853b87865a14b275e",
+        "source_fact:v1:aab01348e470a096b50a3f4c0bc901807cf1f20bd59dae6767b4f25e7fbeca96",
+        "source_fact:v1:be6b0dcd5f65a72935621c158d22f203b4a1c4edb0ed14c7738090da215680e0",
+        "source_fact:v1:ecafa36df817ba9285592cd43b3ced8ef480cf5273a02425aedac10790bdfb60"
+      ],
+      "source_published_kst": "2026-10-16T14:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY",
+      "telegram_core_fact": "박상현 iM증권 이코노미스트는 “프랑스 국채금리가 높은 수준이지만 2010년 초반 유럽 재정위기 당시 7%선을 웃돌던 이탈리아 국채금리 수준과 비교하면 상대적으로 낮다”며 “최악의 경우 ECB가 최종 소방수 역할을 할 가능성도 있다”고 내다봤다.",
+      "title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY"
     },
     "source_fact:4512e17149dfb9de83462c3b": {
       "first_seen_kst": "2026-10-16T14:45:17+09:00",
@@ -440917,6 +441807,32 @@
       "source_title": "에볼루션 메탈스 앤 테크, 2027 매출 가이던스 4억~4억6000만달러 재확인",
       "telegram_core_fact": "2027년 예상 매출은 전년 대비 1102.5% 증가한 수준이나 회사 가이던스 하단인 4억 달러에는 크게 못 미친다.",
       "title": "에볼루션 메탈스 앤 테크, 2027 매출 가이던스 4억~4억6000만달러 재확인"
+    },
+    "source_fact:4892999a8a460abf20c2c1a5": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176123",
+      "source": "매일경제",
+      "source_body_digest": "70e78c6735bc945aa08bc9ee9d5163bf48bcbfcfc6a4eef291b03f8c5fbffbcd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1f94e0f8c099799c9153dd918ceac3a963e153d56977f1357e931a0f59c66004",
+      "source_fact_keys": [
+        "source_fact:v1:37135054e84352d3a86352dc0f8d079717ec9096feef16c50c00eb96ddb623ef",
+        "source_fact:v1:3991addf5667d8999e1e58c3c8f7ff8da354dbd581971db61581a1ac65b3d798",
+        "source_fact:v1:56c8e94a0a7235f961ebcbe6168d43507e9585b614d07a706f50037a63471948",
+        "source_fact:v1:8e2d22c75d1003d6fd39d75095d099582750fd2b63eb828ced38d5b7eea6bbdf",
+        "source_fact:v1:c503c9b15ee80bde2aabbcc5136d1e7a2e8fc3bdc416ee93c2dc0358a0ff8813",
+        "source_fact:v1:d0e65276ae8e8f433a3f48cc7f5aab14027ba2f0fcb2625916c4fc104b8eb541",
+        "source_fact:v1:d8d159b86523ee4b4b3123e2d7aa0293359d85529522058180616c75ec8d3b1a"
+      ],
+      "source_published_kst": "2026-10-17T05:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "포트 테크놀로지, 나스닥 최소호가 1달러 미달 통보..180일 유예",
+      "telegram_core_fact": "포트 테크놀로지(FRTT)가 지난 13일 미국 나스닥 상장심사부로부터 최소 매수호가(Bid Price) 요건인 주당 1달러를 충족하지 못했다는 서면 통보를 받았으며, 2027년 4월 12일까지 180일의 준수 기간을 부여받았다고 16일 발표했다.",
+      "title": "포트 테크놀로지, 나스닥 최소호가 1달러 미달 통보..180일 유예"
     },
     "source_fact:48955aadb52a0e45287124a4": {
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
@@ -465509,6 +466425,36 @@
       "source_published_kst": "2026-10-07T15:16+09:00",
       "title": "외국인 투자 늘었지만…제조업 '새 투자' 줄고 M&A에 몰렸다"
     },
+    "source_fact:5906726c44d518413c9eaa87": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12177777",
+      "source": "매일경제",
+      "source_body_digest": "cefccfa65cfb73bc09d0f6c8b051dc41c5cb90da26b1ea5dd840accdd117e797",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:925192993b2fae95a057f50e24c18c470053f2b0306b4abffa3991d49e9fbdc9",
+      "source_fact_keys": [
+        "source_fact:v1:00338c65bfec786a391170f290d4d0db14b2c6a61978d87818c3bc11f952e97d",
+        "source_fact:v1:03ad2ac081d50c7557af4d9359b5f3ea78c3343d70e0f75d8c3e8226fe538fad",
+        "source_fact:v1:05794bba69142b68cfdf3b13352f3a46e7bf1c641fea17e41859d0d374ec4b32",
+        "source_fact:v1:0eaec7d5eb6232941ef6434b0e24b026c6b5503722493fb811acb6caefc8d2b1",
+        "source_fact:v1:0f35a0aaba2dbb4fd4666664c180cbe285a388d3385f84e7a7664add7e4c3541",
+        "source_fact:v1:65dee888c96b9d66890d5ccb3a4cf8edd60941032818d9f7e4b571b0c8799937",
+        "source_fact:v1:9c957104a6834b72d94038ed0e4d5aeaeac37c748a45bd401326b65939782182",
+        "source_fact:v1:9dbd7659e0d4cbef41bb0ec5b3f0445963b4b1933599f67853b87865a14b275e",
+        "source_fact:v1:aab01348e470a096b50a3f4c0bc901807cf1f20bd59dae6767b4f25e7fbeca96",
+        "source_fact:v1:be6b0dcd5f65a72935621c158d22f203b4a1c4edb0ed14c7738090da215680e0",
+        "source_fact:v1:ecafa36df817ba9285592cd43b3ced8ef480cf5273a02425aedac10790bdfb60"
+      ],
+      "source_published_kst": "2026-10-16T14:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY",
+      "telegram_core_fact": "박상현 iM증권 이코노미스트는 “프랑스 국채금리가 높은 수준이지만 2010년 초반 유럽 재정위기 당시 7%선을 웃돌던 이탈리아 국채금리 수준과 비교하면 상대적으로 낮다”며 “최악의 경우 ECB가 최종 소방수 역할을 할 가능성도 있다”고 내다봤다.",
+      "title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY"
+    },
     "source_fact:590a21bbb42b277c576b40dc": {
       "first_seen_kst": "2026-10-15T09:43:41+09:00",
       "lanes": {
@@ -466460,6 +467406,32 @@
       "source_title": "아비언트, 신임 대표에 마이크 프랭크 선임..가이던스 유지",
       "telegram_core_fact": "증권가는 아비언트의 2026년 매출액을 약 34억2,167만 달러로 전년 대비 4.95% 증가할 것으로 예상한다.",
       "title": "아비언트, 신임 대표에 마이크 프랭크 선임..가이던스 유지"
+    },
+    "source_fact:59a6b124262fd0bfabe65ee6": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176123",
+      "source": "매일경제",
+      "source_body_digest": "70e78c6735bc945aa08bc9ee9d5163bf48bcbfcfc6a4eef291b03f8c5fbffbcd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1f94e0f8c099799c9153dd918ceac3a963e153d56977f1357e931a0f59c66004",
+      "source_fact_keys": [
+        "source_fact:v1:37135054e84352d3a86352dc0f8d079717ec9096feef16c50c00eb96ddb623ef",
+        "source_fact:v1:3991addf5667d8999e1e58c3c8f7ff8da354dbd581971db61581a1ac65b3d798",
+        "source_fact:v1:56c8e94a0a7235f961ebcbe6168d43507e9585b614d07a706f50037a63471948",
+        "source_fact:v1:8e2d22c75d1003d6fd39d75095d099582750fd2b63eb828ced38d5b7eea6bbdf",
+        "source_fact:v1:c503c9b15ee80bde2aabbcc5136d1e7a2e8fc3bdc416ee93c2dc0358a0ff8813",
+        "source_fact:v1:d0e65276ae8e8f433a3f48cc7f5aab14027ba2f0fcb2625916c4fc104b8eb541",
+        "source_fact:v1:d8d159b86523ee4b4b3123e2d7aa0293359d85529522058180616c75ec8d3b1a"
+      ],
+      "source_published_kst": "2026-10-17T05:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "포트 테크놀로지, 나스닥 최소호가 1달러 미달 통보..180일 유예",
+      "telegram_core_fact": "포트 테크놀로지(FRTT)가 지난 13일 미국 나스닥 상장심사부로부터 최소 매수호가(Bid Price) 요건인 주당 1달러를 충족하지 못했다는 서면 통보를 받았으며, 2027년 4월 12일까지 180일의 준수 기간을 부여받았다고 16일 발표했다.",
+      "title": "포트 테크놀로지, 나스닥 최소호가 1달러 미달 통보..180일 유예"
     },
     "source_fact:59ad6f96de77aae6f5d51f79": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -491467,6 +492439,36 @@
       "telegram_core_fact": "은행이 중앙은행에 초과 유동성을 예치할 때 적용하는 상설예금제도(SDF) 금리는 5.25%, 긴급 유동성 지원 창구인 한계대출제도(MSF) 금리는 5.75%로 각각 0.25% 포인트 인상했다.",
       "title": "인도, 기준금리 5.5%로 0.25%P↑…\"인플레 대응 3년8개월 만에 인상\""
     },
+    "source_fact:6b515fd0935355af6931f7a1": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12177777",
+      "source": "매일경제",
+      "source_body_digest": "cefccfa65cfb73bc09d0f6c8b051dc41c5cb90da26b1ea5dd840accdd117e797",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:925192993b2fae95a057f50e24c18c470053f2b0306b4abffa3991d49e9fbdc9",
+      "source_fact_keys": [
+        "source_fact:v1:00338c65bfec786a391170f290d4d0db14b2c6a61978d87818c3bc11f952e97d",
+        "source_fact:v1:03ad2ac081d50c7557af4d9359b5f3ea78c3343d70e0f75d8c3e8226fe538fad",
+        "source_fact:v1:05794bba69142b68cfdf3b13352f3a46e7bf1c641fea17e41859d0d374ec4b32",
+        "source_fact:v1:0eaec7d5eb6232941ef6434b0e24b026c6b5503722493fb811acb6caefc8d2b1",
+        "source_fact:v1:0f35a0aaba2dbb4fd4666664c180cbe285a388d3385f84e7a7664add7e4c3541",
+        "source_fact:v1:65dee888c96b9d66890d5ccb3a4cf8edd60941032818d9f7e4b571b0c8799937",
+        "source_fact:v1:9c957104a6834b72d94038ed0e4d5aeaeac37c748a45bd401326b65939782182",
+        "source_fact:v1:9dbd7659e0d4cbef41bb0ec5b3f0445963b4b1933599f67853b87865a14b275e",
+        "source_fact:v1:aab01348e470a096b50a3f4c0bc901807cf1f20bd59dae6767b4f25e7fbeca96",
+        "source_fact:v1:be6b0dcd5f65a72935621c158d22f203b4a1c4edb0ed14c7738090da215680e0",
+        "source_fact:v1:ecafa36df817ba9285592cd43b3ced8ef480cf5273a02425aedac10790bdfb60"
+      ],
+      "source_published_kst": "2026-10-16T14:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY",
+      "telegram_core_fact": "박상현 iM증권 이코노미스트는 “프랑스 국채금리가 높은 수준이지만 2010년 초반 유럽 재정위기 당시 7%선을 웃돌던 이탈리아 국채금리 수준과 비교하면 상대적으로 낮다”며 “최악의 경우 ECB가 최종 소방수 역할을 할 가능성도 있다”고 내다봤다.",
+      "title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY"
+    },
     "source_fact:6b53562a9d76225aa7591b10": {
       "first_seen_kst": "2026-10-12T10:17:45+09:00",
       "lanes": {
@@ -495002,6 +496004,28 @@
       ],
       "source_published_kst": "2026-10-07T10:06+09:00",
       "title": "골드만삭스 “삼성전자 8일 요동친다”…매도 요인 3개나 겹쳤다는데"
+    },
+    "source_fact:6dabb612e2d865eca4747e13": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829054",
+      "source": "뉴시스",
+      "source_body_digest": "dda734c78697822eb6b149debe6a88d2d766aa7baae2609ec04a2c832ae9f2fb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dcc34c35f597effe249b9b66cdaca38fdc3ddf01f049eebc2cf950d06e1dfced",
+      "source_fact_keys": [
+        "source_fact:v1:40ef0cb9eec271b4621bea8f9954ca986c3be981b5f05e4e9a6d2e006677ca04",
+        "source_fact:v1:9aa0e2d258a222c7ac363058217a1a7850b3fe2e13dcf09e9829ad60ee8c0aa8",
+        "source_fact:v1:fbe5cf2333bf4ea49ca807cb64fc16f0328f570ace9f0645731a10dd563cff80"
+      ],
+      "source_published_kst": "2026-10-16T14:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "곽노정 대표 \"협력사와 함께 흘린 땀이 SK하이닉스 성과로\"…감사 행사",
+      "telegram_core_fact": "SK하이닉스는 메모리 반도체 호황에 따른 성과를 협력사와 함께 나누기 위해 구성원과 가족을 초청해 '땡스풀 데이(ThanksFULL Day)'를 열었다고 16일 밝혔다. SK하이닉스에 따르면 전날 경기 과천 서울랜드에서 열린 행사에는 협력사 구성원과 해외 법인 우수 구성원, 가족 등 총 3만여명이 참석했다.",
+      "title": "곽노정 대표 \"협력사와 함께 흘린 땀이 SK하이닉스 성과로\"…감사 행사"
     },
     "source_fact:6daf2a5335115b3559f03040": {
       "first_seen_kst": "2026-10-07T17:47:45+09:00",
@@ -518471,6 +519495,32 @@
       "telegram_core_fact": "러시아와 에너지 시설 공격을 서로 중단하는 방안을 논의하러 미국을 찾은 우크라이나 대표단이 협상장에서 러시아산 경유 수출 제재 완화 방침을 전달받고 “함정처럼 느껴졌다”고 반발한 것으로 전해졌다.",
       "title": "에너지 휴전 논의하러 갔는데 美는 러 경유 제재 완화…우크라 \"함정 같았다\""
     },
+    "source_fact:7e0778cbcb3e73f0ef245dd1": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176123",
+      "source": "매일경제",
+      "source_body_digest": "70e78c6735bc945aa08bc9ee9d5163bf48bcbfcfc6a4eef291b03f8c5fbffbcd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1f94e0f8c099799c9153dd918ceac3a963e153d56977f1357e931a0f59c66004",
+      "source_fact_keys": [
+        "source_fact:v1:37135054e84352d3a86352dc0f8d079717ec9096feef16c50c00eb96ddb623ef",
+        "source_fact:v1:3991addf5667d8999e1e58c3c8f7ff8da354dbd581971db61581a1ac65b3d798",
+        "source_fact:v1:56c8e94a0a7235f961ebcbe6168d43507e9585b614d07a706f50037a63471948",
+        "source_fact:v1:8e2d22c75d1003d6fd39d75095d099582750fd2b63eb828ced38d5b7eea6bbdf",
+        "source_fact:v1:c503c9b15ee80bde2aabbcc5136d1e7a2e8fc3bdc416ee93c2dc0358a0ff8813",
+        "source_fact:v1:d0e65276ae8e8f433a3f48cc7f5aab14027ba2f0fcb2625916c4fc104b8eb541",
+        "source_fact:v1:d8d159b86523ee4b4b3123e2d7aa0293359d85529522058180616c75ec8d3b1a"
+      ],
+      "source_published_kst": "2026-10-17T05:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "포트 테크놀로지, 나스닥 최소호가 1달러 미달 통보..180일 유예",
+      "telegram_core_fact": "포트 테크놀로지(FRTT)가 지난 13일 미국 나스닥 상장심사부로부터 최소 매수호가(Bid Price) 요건인 주당 1달러를 충족하지 못했다는 서면 통보를 받았으며, 2027년 4월 12일까지 180일의 준수 기간을 부여받았다고 16일 발표했다.",
+      "title": "포트 테크놀로지, 나스닥 최소호가 1달러 미달 통보..180일 유예"
+    },
     "source_fact:7e14c62658b17d6e4a49195d": {
       "first_seen_kst": "2026-10-16T22:57:47+09:00",
       "lanes": {
@@ -522440,6 +523490,36 @@
       "source_title": "폼팩터, 테라다인 3억 달러 지분투자 유치..테스트 협력",
       "telegram_core_fact": "반도체 테스트·측정 기술 업체 폼팩터(FORM)가 자동화 테스트 장비 업체 테라다인(TER)으로부터 3억 달러 전략적 지분 투자를 유치하고, 차세대 반도체 테스트 분야에서 포괄적 기술 협력에 나선다고 13일 발표했다.",
       "title": "폼팩터, 테라다인 3억 달러 지분투자 유치..테스트 협력"
+    },
+    "source_fact:812f6e3e51a3b79f89307948": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12177777",
+      "source": "매일경제",
+      "source_body_digest": "cefccfa65cfb73bc09d0f6c8b051dc41c5cb90da26b1ea5dd840accdd117e797",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:925192993b2fae95a057f50e24c18c470053f2b0306b4abffa3991d49e9fbdc9",
+      "source_fact_keys": [
+        "source_fact:v1:00338c65bfec786a391170f290d4d0db14b2c6a61978d87818c3bc11f952e97d",
+        "source_fact:v1:03ad2ac081d50c7557af4d9359b5f3ea78c3343d70e0f75d8c3e8226fe538fad",
+        "source_fact:v1:05794bba69142b68cfdf3b13352f3a46e7bf1c641fea17e41859d0d374ec4b32",
+        "source_fact:v1:0eaec7d5eb6232941ef6434b0e24b026c6b5503722493fb811acb6caefc8d2b1",
+        "source_fact:v1:0f35a0aaba2dbb4fd4666664c180cbe285a388d3385f84e7a7664add7e4c3541",
+        "source_fact:v1:65dee888c96b9d66890d5ccb3a4cf8edd60941032818d9f7e4b571b0c8799937",
+        "source_fact:v1:9c957104a6834b72d94038ed0e4d5aeaeac37c748a45bd401326b65939782182",
+        "source_fact:v1:9dbd7659e0d4cbef41bb0ec5b3f0445963b4b1933599f67853b87865a14b275e",
+        "source_fact:v1:aab01348e470a096b50a3f4c0bc901807cf1f20bd59dae6767b4f25e7fbeca96",
+        "source_fact:v1:be6b0dcd5f65a72935621c158d22f203b4a1c4edb0ed14c7738090da215680e0",
+        "source_fact:v1:ecafa36df817ba9285592cd43b3ced8ef480cf5273a02425aedac10790bdfb60"
+      ],
+      "source_published_kst": "2026-10-16T14:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY",
+      "telegram_core_fact": "박상현 iM증권 이코노미스트는 “프랑스 국채금리가 높은 수준이지만 2010년 초반 유럽 재정위기 당시 7%선을 웃돌던 이탈리아 국채금리 수준과 비교하면 상대적으로 낮다”며 “최악의 경우 ECB가 최종 소방수 역할을 할 가능성도 있다”고 내다봤다.",
+      "title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY"
     },
     "source_fact:8138989aa237e9b8cd218228": {
       "first_seen_kst": "2026-10-16T19:48:28+09:00",
@@ -558636,6 +559716,26 @@
       "source_published_kst": "2026-10-05T23:08+09:00",
       "title": "JP모간 \"美 증시 최악의 상황 지났을 수도\"…단기 전망 낙관"
     },
+    "source_fact:9b2f261aa5a04e688d9a7bb1": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06317286645613576",
+      "source": "이데일리",
+      "source_body_digest": "b865abbb65d4877b65b9759995f578f65fad7fef6ba4078631b3fdad5f942ebc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d39555da7a797d31023f2eeb72f12cc37dbf95145209217b3bc2c84bc71fd69c",
+      "source_fact_keys": [
+        "source_fact:v1:49e273e947d56ed8df547c8b047a0b24dcc38d389579f0d44bd5b7322f043b86"
+      ],
+      "source_published_kst": "2026-10-16T21:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]마이크로소프트, 英서 기업용 SW 지배력 조사…주가 영향은 ‘미미’",
+      "telegram_core_fact": "영국 경쟁당국이 마이크로소프트(MSFT)의 기업용 소프트웨어 시장 지배력에 대한 규제 강화에 나섰다.",
+      "title": "[美특징주]마이크로소프트, 英서 기업용 SW 지배력 조사…주가 영향은 ‘미미’"
+    },
     "source_fact:9b334e9200ed859b5fc18e0d": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
       "lanes": {
@@ -558882,6 +559982,28 @@
       "source_title": "하이닉스 목표가 320만원 등장…“3분기 영업익 80조 간다” [오늘 나온 보고서]",
       "telegram_core_fact": "메리츠증권은 12일 보고서를 통해 SK하이닉스 목표주가를 기존 310만원에서 320만원으로 상향 조정했다.",
       "title": "하이닉스 목표가 320만원 등장…“3분기 영업익 80조 간다” [오늘 나온 보고서]"
+    },
+    "source_fact:9b537f49bfcfa0fb71e0f96c": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829054",
+      "source": "뉴시스",
+      "source_body_digest": "dda734c78697822eb6b149debe6a88d2d766aa7baae2609ec04a2c832ae9f2fb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dcc34c35f597effe249b9b66cdaca38fdc3ddf01f049eebc2cf950d06e1dfced",
+      "source_fact_keys": [
+        "source_fact:v1:40ef0cb9eec271b4621bea8f9954ca986c3be981b5f05e4e9a6d2e006677ca04",
+        "source_fact:v1:9aa0e2d258a222c7ac363058217a1a7850b3fe2e13dcf09e9829ad60ee8c0aa8",
+        "source_fact:v1:fbe5cf2333bf4ea49ca807cb64fc16f0328f570ace9f0645731a10dd563cff80"
+      ],
+      "source_published_kst": "2026-10-16T14:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "곽노정 대표 \"협력사와 함께 흘린 땀이 SK하이닉스 성과로\"…감사 행사",
+      "telegram_core_fact": "SK하이닉스는 메모리 반도체 호황에 따른 성과를 협력사와 함께 나누기 위해 구성원과 가족을 초청해 '땡스풀 데이(ThanksFULL Day)'를 열었다고 16일 밝혔다. SK하이닉스에 따르면 전날 경기 과천 서울랜드에서 열린 행사에는 협력사 구성원과 해외 법인 우수 구성원, 가족 등 총 3만여명이 참석했다.",
+      "title": "곽노정 대표 \"협력사와 함께 흘린 땀이 SK하이닉스 성과로\"…감사 행사"
     },
     "source_fact:9b5561469e60b87e8a739a1e": {
       "first_seen_kst": "2026-10-07T06:41:04+09:00",
@@ -576220,6 +577342,32 @@
       "source_published_kst": "2026-10-05T21:54+09:00",
       "title": "비트마인 이머전 테크놀로, ETH 602만개 보유..총자산 174억 달러"
     },
+    "source_fact:a7213d9b3089de8bc8806d33": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176123",
+      "source": "매일경제",
+      "source_body_digest": "70e78c6735bc945aa08bc9ee9d5163bf48bcbfcfc6a4eef291b03f8c5fbffbcd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1f94e0f8c099799c9153dd918ceac3a963e153d56977f1357e931a0f59c66004",
+      "source_fact_keys": [
+        "source_fact:v1:37135054e84352d3a86352dc0f8d079717ec9096feef16c50c00eb96ddb623ef",
+        "source_fact:v1:3991addf5667d8999e1e58c3c8f7ff8da354dbd581971db61581a1ac65b3d798",
+        "source_fact:v1:56c8e94a0a7235f961ebcbe6168d43507e9585b614d07a706f50037a63471948",
+        "source_fact:v1:8e2d22c75d1003d6fd39d75095d099582750fd2b63eb828ced38d5b7eea6bbdf",
+        "source_fact:v1:c503c9b15ee80bde2aabbcc5136d1e7a2e8fc3bdc416ee93c2dc0358a0ff8813",
+        "source_fact:v1:d0e65276ae8e8f433a3f48cc7f5aab14027ba2f0fcb2625916c4fc104b8eb541",
+        "source_fact:v1:d8d159b86523ee4b4b3123e2d7aa0293359d85529522058180616c75ec8d3b1a"
+      ],
+      "source_published_kst": "2026-10-17T05:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "포트 테크놀로지, 나스닥 최소호가 1달러 미달 통보..180일 유예",
+      "telegram_core_fact": "포트 테크놀로지(FRTT)가 지난 13일 미국 나스닥 상장심사부로부터 최소 매수호가(Bid Price) 요건인 주당 1달러를 충족하지 못했다는 서면 통보를 받았으며, 2027년 4월 12일까지 180일의 준수 기간을 부여받았다고 16일 발표했다.",
+      "title": "포트 테크놀로지, 나스닥 최소호가 1달러 미달 통보..180일 유예"
+    },
     "source_fact:a726ddfbcafd67e41236534b": {
       "first_seen_kst": "2026-10-13T21:34:27+09:00",
       "lanes": {
@@ -581516,6 +582664,32 @@
       "telegram_core_fact": "대만은 마이크론의 주요 D램 및 고대역폭메모리(HBM) 생산거점인 만큼 실제 파업이 발생할 경우 생산 운영에 영향을 미칠 가능성이 있어 향후 협상 결과에 업계의 관심이 쏠린다.",
       "title": "삼전닉스 성과급이 불붙였나…마이크론 대만노조 파업 찬성 99%"
     },
+    "source_fact:ab14ba2f337c59778b8152ed": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176123",
+      "source": "매일경제",
+      "source_body_digest": "70e78c6735bc945aa08bc9ee9d5163bf48bcbfcfc6a4eef291b03f8c5fbffbcd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1f94e0f8c099799c9153dd918ceac3a963e153d56977f1357e931a0f59c66004",
+      "source_fact_keys": [
+        "source_fact:v1:37135054e84352d3a86352dc0f8d079717ec9096feef16c50c00eb96ddb623ef",
+        "source_fact:v1:3991addf5667d8999e1e58c3c8f7ff8da354dbd581971db61581a1ac65b3d798",
+        "source_fact:v1:56c8e94a0a7235f961ebcbe6168d43507e9585b614d07a706f50037a63471948",
+        "source_fact:v1:8e2d22c75d1003d6fd39d75095d099582750fd2b63eb828ced38d5b7eea6bbdf",
+        "source_fact:v1:c503c9b15ee80bde2aabbcc5136d1e7a2e8fc3bdc416ee93c2dc0358a0ff8813",
+        "source_fact:v1:d0e65276ae8e8f433a3f48cc7f5aab14027ba2f0fcb2625916c4fc104b8eb541",
+        "source_fact:v1:d8d159b86523ee4b4b3123e2d7aa0293359d85529522058180616c75ec8d3b1a"
+      ],
+      "source_published_kst": "2026-10-17T05:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "포트 테크놀로지, 나스닥 최소호가 1달러 미달 통보..180일 유예",
+      "telegram_core_fact": "포트 테크놀로지(FRTT)가 지난 13일 미국 나스닥 상장심사부로부터 최소 매수호가(Bid Price) 요건인 주당 1달러를 충족하지 못했다는 서면 통보를 받았으며, 2027년 4월 12일까지 180일의 준수 기간을 부여받았다고 16일 발표했다.",
+      "title": "포트 테크놀로지, 나스닥 최소호가 1달러 미달 통보..180일 유예"
+    },
     "source_fact:ab1594df363b55d5f37ff4b8": {
       "first_seen_kst": "2026-10-15T19:53:29+09:00",
       "lanes": {
@@ -583898,6 +585072,26 @@
       "source_title": "포스코, 한화오션과 고망간강 LNG화물창 상용화…\"장인화 회장, 기술 리더십 결실\"",
       "telegram_core_fact": "특히 고망간강의 상용화 추진에는 장인화 포스코그룹 회장의 선제적인 기술 리더십이 있었던 것으로 전해진다. 포스코가 한화오션과 협력해 고망간강을 액화천연가스(LNG) 운반선 핵심 설비인 LNG 화물창 적용하며 상용화를 본격화한다.",
       "title": "포스코, 한화오션과 고망간강 LNG화물창 상용화…\"장인화 회장, 기술 리더십 결실\""
+    },
+    "source_fact:ac91357f3e8a9b6646b18500": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03670326645613576",
+      "source": "이데일리",
+      "source_body_digest": "bf6c8d10deaed7ebf6e8fc2b851d37093b021c3b72cdedb7d5736a525b07dc0d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca2f3bbeebc9cb36fbcaf820864b5cd4ca226eab39d18041dcbf154e412a01d5",
+      "source_fact_keys": [
+        "source_fact:v1:f601931c8e480c5237051febfafc017f6445e497e24b36735c886f6840344df1"
+      ],
+      "source_published_kst": "2026-10-16T13:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "“주가 60% 폭락했는데”…코어위브 창업자 3명은 4.5조 팔았다",
+      "telegram_core_fact": "코어위브 측은 블룸버그통신에 “3명의 공동 창업자는 여전히 상위 6대 주주에 속하며 합산 지분 약 20%를 보유하고 있다”며 “이번 매각은 사전에 계획되고 투명하게 공시된 정당한 개인 자산 관리 차원의 결정”이라고 해명했다.",
+      "title": "“주가 60% 폭락했는데”…코어위브 창업자 3명은 4.5조 팔았다"
     },
     "source_fact:ac94b5095acc9b1e3be19b7c": {
       "first_seen_kst": "2026-10-10T07:44:19+09:00",
@@ -587960,6 +589154,36 @@
       "source_title": "계속되는 'AI 거품론'…TSMC가 답을 할까 [다음주 주요변수 미리보기]",
       "telegram_core_fact": "지난주 후반 오픈AI의 매출을 둘러싼 논란으로 AI·반도체주가 급락한 만큼 TSMC의 실적과 가이던스는 최근 불거진 ‘AI 거품론’의 시험대가 될 전망이다. 다음주 국내외 증시는 미국 물가와 소비, 반도체 실적이 동시에 시장을 시험하는 한 주가 될 전망이다.",
       "title": "계속되는 'AI 거품론'…TSMC가 답을 할까 [다음주 주요변수 미리보기]"
+    },
+    "source_fact:af501a3a3ac6b3cff8281cc4": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12177777",
+      "source": "매일경제",
+      "source_body_digest": "cefccfa65cfb73bc09d0f6c8b051dc41c5cb90da26b1ea5dd840accdd117e797",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:925192993b2fae95a057f50e24c18c470053f2b0306b4abffa3991d49e9fbdc9",
+      "source_fact_keys": [
+        "source_fact:v1:00338c65bfec786a391170f290d4d0db14b2c6a61978d87818c3bc11f952e97d",
+        "source_fact:v1:03ad2ac081d50c7557af4d9359b5f3ea78c3343d70e0f75d8c3e8226fe538fad",
+        "source_fact:v1:05794bba69142b68cfdf3b13352f3a46e7bf1c641fea17e41859d0d374ec4b32",
+        "source_fact:v1:0eaec7d5eb6232941ef6434b0e24b026c6b5503722493fb811acb6caefc8d2b1",
+        "source_fact:v1:0f35a0aaba2dbb4fd4666664c180cbe285a388d3385f84e7a7664add7e4c3541",
+        "source_fact:v1:65dee888c96b9d66890d5ccb3a4cf8edd60941032818d9f7e4b571b0c8799937",
+        "source_fact:v1:9c957104a6834b72d94038ed0e4d5aeaeac37c748a45bd401326b65939782182",
+        "source_fact:v1:9dbd7659e0d4cbef41bb0ec5b3f0445963b4b1933599f67853b87865a14b275e",
+        "source_fact:v1:aab01348e470a096b50a3f4c0bc901807cf1f20bd59dae6767b4f25e7fbeca96",
+        "source_fact:v1:be6b0dcd5f65a72935621c158d22f203b4a1c4edb0ed14c7738090da215680e0",
+        "source_fact:v1:ecafa36df817ba9285592cd43b3ced8ef480cf5273a02425aedac10790bdfb60"
+      ],
+      "source_published_kst": "2026-10-16T14:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY",
+      "telegram_core_fact": "박상현 iM증권 이코노미스트는 “프랑스 국채금리가 높은 수준이지만 2010년 초반 유럽 재정위기 당시 7%선을 웃돌던 이탈리아 국채금리 수준과 비교하면 상대적으로 낮다”며 “최악의 경우 ECB가 최종 소방수 역할을 할 가능성도 있다”고 내다봤다.",
+      "title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY"
     },
     "source_fact:af5d90fcb52bf5429ee76576": {
       "first_seen_kst": "2026-10-06T00:57:01+09:00",
@@ -610887,6 +612111,32 @@
       "telegram_core_fact": "인공지능(AI) 기업 앤트로픽이 올해 3분기 매출 168억달러를 기록하고 조정 영업이익률 11% 이상을 달성했다.",
       "title": "앤트로픽 3분기 매출 168억달러…영업이익률 11% 넘어"
     },
+    "source_fact:bfd942015cfe3062909ef96f": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176123",
+      "source": "매일경제",
+      "source_body_digest": "70e78c6735bc945aa08bc9ee9d5163bf48bcbfcfc6a4eef291b03f8c5fbffbcd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1f94e0f8c099799c9153dd918ceac3a963e153d56977f1357e931a0f59c66004",
+      "source_fact_keys": [
+        "source_fact:v1:37135054e84352d3a86352dc0f8d079717ec9096feef16c50c00eb96ddb623ef",
+        "source_fact:v1:3991addf5667d8999e1e58c3c8f7ff8da354dbd581971db61581a1ac65b3d798",
+        "source_fact:v1:56c8e94a0a7235f961ebcbe6168d43507e9585b614d07a706f50037a63471948",
+        "source_fact:v1:8e2d22c75d1003d6fd39d75095d099582750fd2b63eb828ced38d5b7eea6bbdf",
+        "source_fact:v1:c503c9b15ee80bde2aabbcc5136d1e7a2e8fc3bdc416ee93c2dc0358a0ff8813",
+        "source_fact:v1:d0e65276ae8e8f433a3f48cc7f5aab14027ba2f0fcb2625916c4fc104b8eb541",
+        "source_fact:v1:d8d159b86523ee4b4b3123e2d7aa0293359d85529522058180616c75ec8d3b1a"
+      ],
+      "source_published_kst": "2026-10-17T05:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "포트 테크놀로지, 나스닥 최소호가 1달러 미달 통보..180일 유예",
+      "telegram_core_fact": "포트 테크놀로지(FRTT)가 지난 13일 미국 나스닥 상장심사부로부터 최소 매수호가(Bid Price) 요건인 주당 1달러를 충족하지 못했다는 서면 통보를 받았으며, 2027년 4월 12일까지 180일의 준수 기간을 부여받았다고 16일 발표했다.",
+      "title": "포트 테크놀로지, 나스닥 최소호가 1달러 미달 통보..180일 유예"
+    },
     "source_fact:bfdfaa21895db7582ab570ed": {
       "first_seen_kst": "2026-10-06T21:28:22+09:00",
       "lanes": {
@@ -628290,6 +629540,29 @@
       "telegram_core_fact": "삼성전자 주가가 지난 15일 하루 만에 9% 이상 내린 가운데 일부 직원으로 추정되는 이들이 주가가 떨어져야 이득이라는 글을 올려 갑론을박이 벌어졌다. 삼성전자 노사는 올해 DS부문 영업이익의 10.5%를 재원으로 내년 3월 말에서 4월 초 사이 성과급을 추가 지급할 예정이다.",
       "title": "“주가 떨어져야 더 받는다?”…삼성 직원 글에 주주들 ‘부글부글’- 매경ECONOMY"
     },
+    "source_fact:cbb5ff74ac8d0f7f204ee348": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.etnews.com/20261016000161",
+      "source": "전자신문",
+      "source_body_digest": "a0fc2dd91e75d8ebea31b0593f9958ac52cfe1d7f5319e1ad54a602a90deae9a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:335af75d0789ed2d3dc9c69feafbf4912dc7edf94ebf97562d94d936efe48bdd",
+      "source_fact_keys": [
+        "source_fact:v1:5150b450f687b9eee3afef7f066bfefab101584ca5dcc6fbe6b38ac09316a5dd",
+        "source_fact:v1:8d7079035b541325890e2892c253639e3f5a8d3d53b4377210026b5d6f06f78b",
+        "source_fact:v1:9277252e83a9407ca460308ba419e420b3c854c97128541392f3bcf3bed83e05",
+        "source_fact:v1:9375b56bcf4b88c7572d4d00fbc593088878cc99bf0e368f78f4241f8ea25617"
+      ],
+      "source_published_kst": "2026-10-16T13:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "에티포스·넥스윌, 드론·무인체계 방산 통신기술 공동개발",
+      "telegram_core_fact": "통신반도체 전문기업 에티포스가 방산전자 기업 넥스윌과 손잡고 드론·무인체계용 통신기술 개발에 나선다. 서원기 넥스윌 대표는 “디지털 RF·방산장비 개발 및 양산 경험에 에티포스의 통신반도체 기술을 더해 미래 전장에 필요한 통신 솔루션을 개발하고 실질적인 사업 성과로 연결하겠다”고 밝혔다.",
+      "title": "에티포스·넥스윌, 드론·무인체계 방산 통신기술 공동개발"
+    },
     "source_fact:cbbb45b6d4ae89fde61bb5aa": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
       "lanes": {
@@ -636574,6 +637847,36 @@
       ],
       "source_published_kst": "2026-10-07T11:41+09:00",
       "title": "“강남 빠져도 서울 집값 상승…내년 ‘덜 똘똘한 한채’ 대세” [헤럴드머니페스타 2026]"
+    },
+    "source_fact:d19f43d6bbf5d72db3133920": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12177777",
+      "source": "매일경제",
+      "source_body_digest": "cefccfa65cfb73bc09d0f6c8b051dc41c5cb90da26b1ea5dd840accdd117e797",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:925192993b2fae95a057f50e24c18c470053f2b0306b4abffa3991d49e9fbdc9",
+      "source_fact_keys": [
+        "source_fact:v1:00338c65bfec786a391170f290d4d0db14b2c6a61978d87818c3bc11f952e97d",
+        "source_fact:v1:03ad2ac081d50c7557af4d9359b5f3ea78c3343d70e0f75d8c3e8226fe538fad",
+        "source_fact:v1:05794bba69142b68cfdf3b13352f3a46e7bf1c641fea17e41859d0d374ec4b32",
+        "source_fact:v1:0eaec7d5eb6232941ef6434b0e24b026c6b5503722493fb811acb6caefc8d2b1",
+        "source_fact:v1:0f35a0aaba2dbb4fd4666664c180cbe285a388d3385f84e7a7664add7e4c3541",
+        "source_fact:v1:65dee888c96b9d66890d5ccb3a4cf8edd60941032818d9f7e4b571b0c8799937",
+        "source_fact:v1:9c957104a6834b72d94038ed0e4d5aeaeac37c748a45bd401326b65939782182",
+        "source_fact:v1:9dbd7659e0d4cbef41bb0ec5b3f0445963b4b1933599f67853b87865a14b275e",
+        "source_fact:v1:aab01348e470a096b50a3f4c0bc901807cf1f20bd59dae6767b4f25e7fbeca96",
+        "source_fact:v1:be6b0dcd5f65a72935621c158d22f203b4a1c4edb0ed14c7738090da215680e0",
+        "source_fact:v1:ecafa36df817ba9285592cd43b3ced8ef480cf5273a02425aedac10790bdfb60"
+      ],
+      "source_published_kst": "2026-10-16T14:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY",
+      "telegram_core_fact": "박상현 iM증권 이코노미스트는 “프랑스 국채금리가 높은 수준이지만 2010년 초반 유럽 재정위기 당시 7%선을 웃돌던 이탈리아 국채금리 수준과 비교하면 상대적으로 낮다”며 “최악의 경우 ECB가 최종 소방수 역할을 할 가능성도 있다”고 내다봤다.",
+      "title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY"
     },
     "source_fact:d1a40c7d12c2cb203e6943a3": {
       "first_seen_kst": "2026-10-11T13:18:03+09:00",
@@ -647696,6 +648999,36 @@
       "telegram_core_fact": "지난 2일까지 한 주간 미국의 30년 만기 고정 주택담보대출 평균 금리는 연 7.49%까지 뛰어 약 3년 만에 최고치를 기록했다.",
       "title": "美, 2연속 금리 인상? 연준 인사들은 신중론"
     },
+    "source_fact:d8edf3cc9a3372d182684222": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12177777",
+      "source": "매일경제",
+      "source_body_digest": "cefccfa65cfb73bc09d0f6c8b051dc41c5cb90da26b1ea5dd840accdd117e797",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:925192993b2fae95a057f50e24c18c470053f2b0306b4abffa3991d49e9fbdc9",
+      "source_fact_keys": [
+        "source_fact:v1:00338c65bfec786a391170f290d4d0db14b2c6a61978d87818c3bc11f952e97d",
+        "source_fact:v1:03ad2ac081d50c7557af4d9359b5f3ea78c3343d70e0f75d8c3e8226fe538fad",
+        "source_fact:v1:05794bba69142b68cfdf3b13352f3a46e7bf1c641fea17e41859d0d374ec4b32",
+        "source_fact:v1:0eaec7d5eb6232941ef6434b0e24b026c6b5503722493fb811acb6caefc8d2b1",
+        "source_fact:v1:0f35a0aaba2dbb4fd4666664c180cbe285a388d3385f84e7a7664add7e4c3541",
+        "source_fact:v1:65dee888c96b9d66890d5ccb3a4cf8edd60941032818d9f7e4b571b0c8799937",
+        "source_fact:v1:9c957104a6834b72d94038ed0e4d5aeaeac37c748a45bd401326b65939782182",
+        "source_fact:v1:9dbd7659e0d4cbef41bb0ec5b3f0445963b4b1933599f67853b87865a14b275e",
+        "source_fact:v1:aab01348e470a096b50a3f4c0bc901807cf1f20bd59dae6767b4f25e7fbeca96",
+        "source_fact:v1:be6b0dcd5f65a72935621c158d22f203b4a1c4edb0ed14c7738090da215680e0",
+        "source_fact:v1:ecafa36df817ba9285592cd43b3ced8ef480cf5273a02425aedac10790bdfb60"
+      ],
+      "source_published_kst": "2026-10-16T14:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY",
+      "telegram_core_fact": "박상현 iM증권 이코노미스트는 “프랑스 국채금리가 높은 수준이지만 2010년 초반 유럽 재정위기 당시 7%선을 웃돌던 이탈리아 국채금리 수준과 비교하면 상대적으로 낮다”며 “최악의 경우 ECB가 최종 소방수 역할을 할 가능성도 있다”고 내다봤다.",
+      "title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY"
+    },
     "source_fact:d8f346cd66ac30eb65ca7750": {
       "first_seen_kst": "2026-10-13T20:01:17+09:00",
       "lanes": {
@@ -657111,6 +658444,26 @@
       "source_title": "인튜이트, AI 재무 자동화 스타트업 시퀀스 인수…6% 급등",
       "telegram_core_fact": "이 소식에 인튜이트의 주가는 나스닥 정규장에서 6.36% 급등한 330.17달러에 거래를 마쳤다. 미국의 회계관리 소프트웨어 기업 인튜이트가 15일(현지시간) 영국의 인공지능(AI) 재무 자동화 스타트업 시퀀스를 인수한다고 발표했다.",
       "title": "인튜이트, AI 재무 자동화 스타트업 시퀀스 인수…6% 급등"
+    },
+    "source_fact:dfb0e24b9dc83ac48da7860e": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.etnews.com/20261016000166",
+      "source": "전자신문",
+      "source_body_digest": "0a0cc8da86e9610d05fc5adf37f4f1ed8d26878a350212f34b881abd5c82c456",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c491b9440a052e0c5b87d872ed7a181b3bcc26db36a8d527baa65f9d47e6ca77",
+      "source_fact_keys": [
+        "source_fact:v1:eeb93b70e3c420b0177d39cb6b151b0c683260e1589c18b7a0719a4a1db11fcf"
+      ],
+      "source_published_kst": "2026-10-16T22:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "KFC마저 펩시 손절…코카콜라 택한 이유는",
+      "telegram_core_fact": "미국 치킨 프랜차이즈 KFC가 40년 가까이 유지해 온 펩시코와의 음료 공급 계약을 종료하고 코카콜라 제품을 도입한다. 매출 하락과 점포 정리 등이 이어지는 가운데, 시장조사업체 테크노믹에 따르면 한때 미국 치킨 프랜차이즈 시장을 선도했던 KFC는 매출 순위에서 현재 5위로 내려앉았다.",
+      "title": "KFC마저 펩시 손절…코카콜라 택한 이유는"
     },
     "source_fact:dfb27bb7404a7fca45c6439a": {
       "first_seen_kst": "2026-10-07T09:44:16+09:00",
@@ -681621,6 +682974,29 @@
       "telegram_core_fact": "실적 반등, 한 단계 높은 성장을 기대하고 있다. 이런 배경에서 여의도 증권가에서는 내년 소캠2 매출이 2배 이상 증가할 것이란 전망을 내놓기도 했다.",
       "title": "[데스크시각] 심텍의 ‘성장 변곡점’"
     },
+    "source_fact:f0aa29959e27b270f2669f97": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.etnews.com/20261016000161",
+      "source": "전자신문",
+      "source_body_digest": "a0fc2dd91e75d8ebea31b0593f9958ac52cfe1d7f5319e1ad54a602a90deae9a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:335af75d0789ed2d3dc9c69feafbf4912dc7edf94ebf97562d94d936efe48bdd",
+      "source_fact_keys": [
+        "source_fact:v1:5150b450f687b9eee3afef7f066bfefab101584ca5dcc6fbe6b38ac09316a5dd",
+        "source_fact:v1:8d7079035b541325890e2892c253639e3f5a8d3d53b4377210026b5d6f06f78b",
+        "source_fact:v1:9277252e83a9407ca460308ba419e420b3c854c97128541392f3bcf3bed83e05",
+        "source_fact:v1:9375b56bcf4b88c7572d4d00fbc593088878cc99bf0e368f78f4241f8ea25617"
+      ],
+      "source_published_kst": "2026-10-16T13:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "에티포스·넥스윌, 드론·무인체계 방산 통신기술 공동개발",
+      "telegram_core_fact": "통신반도체 전문기업 에티포스가 방산전자 기업 넥스윌과 손잡고 드론·무인체계용 통신기술 개발에 나선다. 서원기 넥스윌 대표는 “디지털 RF·방산장비 개발 및 양산 경험에 에티포스의 통신반도체 기술을 더해 미래 전장에 필요한 통신 솔루션을 개발하고 실질적인 사업 성과로 연결하겠다”고 밝혔다.",
+      "title": "에티포스·넥스윌, 드론·무인체계 방산 통신기술 공동개발"
+    },
     "source_fact:f0b3dbe53cb417385656719d": {
       "first_seen_kst": "2026-10-05T22:49:24+09:00",
       "lanes": {
@@ -698986,6 +700362,36 @@
       "source_title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나",
       "telegram_core_fact": "인공지능(AI) 투자 확대에 따른 메모리 호황이 실적을 밀어 올렸지만 주가까지 상승할지는 별개다.",
       "title": "삼전 첫 ‘분기 이익 100조원’ …과거 신기록때는 주가 어땠나"
+    },
+    "source_fact:fd6f2848dcfccbdf9d492aab": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12177777",
+      "source": "매일경제",
+      "source_body_digest": "cefccfa65cfb73bc09d0f6c8b051dc41c5cb90da26b1ea5dd840accdd117e797",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:925192993b2fae95a057f50e24c18c470053f2b0306b4abffa3991d49e9fbdc9",
+      "source_fact_keys": [
+        "source_fact:v1:00338c65bfec786a391170f290d4d0db14b2c6a61978d87818c3bc11f952e97d",
+        "source_fact:v1:03ad2ac081d50c7557af4d9359b5f3ea78c3343d70e0f75d8c3e8226fe538fad",
+        "source_fact:v1:05794bba69142b68cfdf3b13352f3a46e7bf1c641fea17e41859d0d374ec4b32",
+        "source_fact:v1:0eaec7d5eb6232941ef6434b0e24b026c6b5503722493fb811acb6caefc8d2b1",
+        "source_fact:v1:0f35a0aaba2dbb4fd4666664c180cbe285a388d3385f84e7a7664add7e4c3541",
+        "source_fact:v1:65dee888c96b9d66890d5ccb3a4cf8edd60941032818d9f7e4b571b0c8799937",
+        "source_fact:v1:9c957104a6834b72d94038ed0e4d5aeaeac37c748a45bd401326b65939782182",
+        "source_fact:v1:9dbd7659e0d4cbef41bb0ec5b3f0445963b4b1933599f67853b87865a14b275e",
+        "source_fact:v1:aab01348e470a096b50a3f4c0bc901807cf1f20bd59dae6767b4f25e7fbeca96",
+        "source_fact:v1:be6b0dcd5f65a72935621c158d22f203b4a1c4edb0ed14c7738090da215680e0",
+        "source_fact:v1:ecafa36df817ba9285592cd43b3ced8ef480cf5273a02425aedac10790bdfb60"
+      ],
+      "source_published_kst": "2026-10-16T14:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY",
+      "telegram_core_fact": "박상현 iM증권 이코노미스트는 “프랑스 국채금리가 높은 수준이지만 2010년 초반 유럽 재정위기 당시 7%선을 웃돌던 이탈리아 국채금리 수준과 비교하면 상대적으로 낮다”며 “최악의 경우 ECB가 최종 소방수 역할을 할 가능성도 있다”고 내다봤다.",
+      "title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY"
     },
     "source_fact:fd716e04e5bba865726aa1a7": {
       "first_seen_kst": "2026-10-15T18:47:56+09:00",
@@ -724497,6 +725903,36 @@
       "telegram_core_fact": "수억, 많게는 수십억의 성과급 지급이 예정돼있음에도 불구하고 전년 대비 민간소비 증가율이 올해(2.3%)보다 0.3%포인트 줄어들 것으로 내다본 것이다.",
       "title": "내년 삼전닉스 성과급 풀려도…\"특정 계층에만 집중, 소비 증가 제한적\""
     },
+    "title:3a8652643e792d82c15c2127": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12177777",
+      "source": "매일경제",
+      "source_body_digest": "cefccfa65cfb73bc09d0f6c8b051dc41c5cb90da26b1ea5dd840accdd117e797",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:925192993b2fae95a057f50e24c18c470053f2b0306b4abffa3991d49e9fbdc9",
+      "source_fact_keys": [
+        "source_fact:v1:00338c65bfec786a391170f290d4d0db14b2c6a61978d87818c3bc11f952e97d",
+        "source_fact:v1:03ad2ac081d50c7557af4d9359b5f3ea78c3343d70e0f75d8c3e8226fe538fad",
+        "source_fact:v1:05794bba69142b68cfdf3b13352f3a46e7bf1c641fea17e41859d0d374ec4b32",
+        "source_fact:v1:0eaec7d5eb6232941ef6434b0e24b026c6b5503722493fb811acb6caefc8d2b1",
+        "source_fact:v1:0f35a0aaba2dbb4fd4666664c180cbe285a388d3385f84e7a7664add7e4c3541",
+        "source_fact:v1:65dee888c96b9d66890d5ccb3a4cf8edd60941032818d9f7e4b571b0c8799937",
+        "source_fact:v1:9c957104a6834b72d94038ed0e4d5aeaeac37c748a45bd401326b65939782182",
+        "source_fact:v1:9dbd7659e0d4cbef41bb0ec5b3f0445963b4b1933599f67853b87865a14b275e",
+        "source_fact:v1:aab01348e470a096b50a3f4c0bc901807cf1f20bd59dae6767b4f25e7fbeca96",
+        "source_fact:v1:be6b0dcd5f65a72935621c158d22f203b4a1c4edb0ed14c7738090da215680e0",
+        "source_fact:v1:ecafa36df817ba9285592cd43b3ced8ef480cf5273a02425aedac10790bdfb60"
+      ],
+      "source_published_kst": "2026-10-16T14:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY",
+      "telegram_core_fact": "박상현 iM증권 이코노미스트는 “프랑스 국채금리가 높은 수준이지만 2010년 초반 유럽 재정위기 당시 7%선을 웃돌던 이탈리아 국채금리 수준과 비교하면 상대적으로 낮다”며 “최악의 경우 ECB가 최종 소방수 역할을 할 가능성도 있다”고 내다봤다.",
+      "title": "프랑스發 ‘유럽 재정위기’ 재현될까- 매경ECONOMY"
+    },
     "title:3a902de2df5d4c3119410b5c": {
       "first_seen_kst": "2026-10-04T09:16:34+09:00",
       "lanes": {
@@ -729839,6 +731275,29 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-07T17:54+09:00",
       "title": "두나무·네이버파이낸셜 주식교환 3개월 연기…\"거래 방향 변함없어\"(종합)"
+    },
+    "title:472bb9da72b0df7d1ce29fb9": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.etnews.com/20261016000161",
+      "source": "전자신문",
+      "source_body_digest": "a0fc2dd91e75d8ebea31b0593f9958ac52cfe1d7f5319e1ad54a602a90deae9a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:335af75d0789ed2d3dc9c69feafbf4912dc7edf94ebf97562d94d936efe48bdd",
+      "source_fact_keys": [
+        "source_fact:v1:5150b450f687b9eee3afef7f066bfefab101584ca5dcc6fbe6b38ac09316a5dd",
+        "source_fact:v1:8d7079035b541325890e2892c253639e3f5a8d3d53b4377210026b5d6f06f78b",
+        "source_fact:v1:9277252e83a9407ca460308ba419e420b3c854c97128541392f3bcf3bed83e05",
+        "source_fact:v1:9375b56bcf4b88c7572d4d00fbc593088878cc99bf0e368f78f4241f8ea25617"
+      ],
+      "source_published_kst": "2026-10-16T13:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "에티포스·넥스윌, 드론·무인체계 방산 통신기술 공동개발",
+      "telegram_core_fact": "통신반도체 전문기업 에티포스가 방산전자 기업 넥스윌과 손잡고 드론·무인체계용 통신기술 개발에 나선다. 서원기 넥스윌 대표는 “디지털 RF·방산장비 개발 및 양산 경험에 에티포스의 통신반도체 기술을 더해 미래 전장에 필요한 통신 솔루션을 개발하고 실질적인 사업 성과로 연결하겠다”고 밝혔다.",
+      "title": "에티포스·넥스윌, 드론·무인체계 방산 통신기술 공동개발"
     },
     "title:47354c4f75d35fe4b046d8be": {
       "first_seen_kst": "2026-10-15T16:25:35+09:00",
@@ -749390,6 +750849,32 @@
       "telegram_core_fact": "KKR은 기술 업종이 올해 코스피 전체 주당순이익(EPS) 증가분의 71%를 차지할 것으로 예상했고, 내년에는 이 비중이 75%로 높아질 것으로 전망했다.",
       "title": "KKR \"韓기업개혁, 투자 매력 커져…AI·반도체가 실적 견인\" | 연합뉴스"
     },
+    "title:7cee3b85c7414c21baef14ed": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176123",
+      "source": "매일경제",
+      "source_body_digest": "70e78c6735bc945aa08bc9ee9d5163bf48bcbfcfc6a4eef291b03f8c5fbffbcd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1f94e0f8c099799c9153dd918ceac3a963e153d56977f1357e931a0f59c66004",
+      "source_fact_keys": [
+        "source_fact:v1:37135054e84352d3a86352dc0f8d079717ec9096feef16c50c00eb96ddb623ef",
+        "source_fact:v1:3991addf5667d8999e1e58c3c8f7ff8da354dbd581971db61581a1ac65b3d798",
+        "source_fact:v1:56c8e94a0a7235f961ebcbe6168d43507e9585b614d07a706f50037a63471948",
+        "source_fact:v1:8e2d22c75d1003d6fd39d75095d099582750fd2b63eb828ced38d5b7eea6bbdf",
+        "source_fact:v1:c503c9b15ee80bde2aabbcc5136d1e7a2e8fc3bdc416ee93c2dc0358a0ff8813",
+        "source_fact:v1:d0e65276ae8e8f433a3f48cc7f5aab14027ba2f0fcb2625916c4fc104b8eb541",
+        "source_fact:v1:d8d159b86523ee4b4b3123e2d7aa0293359d85529522058180616c75ec8d3b1a"
+      ],
+      "source_published_kst": "2026-10-17T05:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "포트 테크놀로지, 나스닥 최소호가 1달러 미달 통보..180일 유예",
+      "telegram_core_fact": "포트 테크놀로지(FRTT)가 지난 13일 미국 나스닥 상장심사부로부터 최소 매수호가(Bid Price) 요건인 주당 1달러를 충족하지 못했다는 서면 통보를 받았으며, 2027년 4월 12일까지 180일의 준수 기간을 부여받았다고 16일 발표했다.",
+      "title": "포트 테크놀로지, 나스닥 최소호가 1달러 미달 통보..180일 유예"
+    },
     "title:7cfca41d5e7ad4ecda34f017": {
       "first_seen_kst": "2026-10-08T21:21:36+09:00",
       "lanes": {
@@ -758458,6 +759943,28 @@
       "source_published_kst": "2026-10-05T10:52+09:00",
       "title": "\"연어 30톤 풀었다\"…쿠팡, 항공 직송 생연어 최대 10% 할인"
     },
+    "title:950994f99cb588245b8a4db1": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829054",
+      "source": "뉴시스",
+      "source_body_digest": "dda734c78697822eb6b149debe6a88d2d766aa7baae2609ec04a2c832ae9f2fb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dcc34c35f597effe249b9b66cdaca38fdc3ddf01f049eebc2cf950d06e1dfced",
+      "source_fact_keys": [
+        "source_fact:v1:40ef0cb9eec271b4621bea8f9954ca986c3be981b5f05e4e9a6d2e006677ca04",
+        "source_fact:v1:9aa0e2d258a222c7ac363058217a1a7850b3fe2e13dcf09e9829ad60ee8c0aa8",
+        "source_fact:v1:fbe5cf2333bf4ea49ca807cb64fc16f0328f570ace9f0645731a10dd563cff80"
+      ],
+      "source_published_kst": "2026-10-16T14:16+09:00",
+      "source_supply_terms": {},
+      "source_title": "곽노정 대표 \"협력사와 함께 흘린 땀이 SK하이닉스 성과로\"…감사 행사",
+      "telegram_core_fact": "SK하이닉스는 메모리 반도체 호황에 따른 성과를 협력사와 함께 나누기 위해 구성원과 가족을 초청해 '땡스풀 데이(ThanksFULL Day)'를 열었다고 16일 밝혔다. SK하이닉스에 따르면 전날 경기 과천 서울랜드에서 열린 행사에는 협력사 구성원과 해외 법인 우수 구성원, 가족 등 총 3만여명이 참석했다.",
+      "title": "곽노정 대표 \"협력사와 함께 흘린 땀이 SK하이닉스 성과로\"…감사 행사"
+    },
     "title:95151c1e11d8a0dc9f815734": {
       "first_seen_kst": "2026-10-15T13:08:36+09:00",
       "lanes": {
@@ -763060,6 +764567,26 @@
       "source_title": "누리호 5차 발사…대전 기업 개발 '대전샛' 교신 성공할까",
       "telegram_core_fact": "대전지역 업체들이 개발한 초소형 위성 '대전샛'이 한국형 발사체 누리호에 실려 우주로 향한 가운데 위성의 교신 성공 여부에 관심이 높아지고 있다.",
       "title": "누리호 5차 발사…대전 기업 개발 '대전샛' 교신 성공할까"
+    },
+    "title:a15acd546f9fff4a7401a357": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06317286645613576",
+      "source": "이데일리",
+      "source_body_digest": "b865abbb65d4877b65b9759995f578f65fad7fef6ba4078631b3fdad5f942ebc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d39555da7a797d31023f2eeb72f12cc37dbf95145209217b3bc2c84bc71fd69c",
+      "source_fact_keys": [
+        "source_fact:v1:49e273e947d56ed8df547c8b047a0b24dcc38d389579f0d44bd5b7322f043b86"
+      ],
+      "source_published_kst": "2026-10-16T21:23+09:00",
+      "source_supply_terms": {},
+      "source_title": "[美특징주]마이크로소프트, 英서 기업용 SW 지배력 조사…주가 영향은 ‘미미’",
+      "telegram_core_fact": "영국 경쟁당국이 마이크로소프트(MSFT)의 기업용 소프트웨어 시장 지배력에 대한 규제 강화에 나섰다.",
+      "title": "[美특징주]마이크로소프트, 英서 기업용 SW 지배력 조사…주가 영향은 ‘미미’"
     },
     "title:a15c45d91c2cd4c4da322358": {
       "first_seen_kst": "2026-10-16T16:35:36+09:00",
@@ -774401,6 +775928,26 @@
       "source_title": "트럼프, 우·러 에너지 휴전 깜짝 발표…젤렌스키 \"처음 듣는 이야기\"",
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아와 우크라이나가 정유시설을 서로 공격하지 않기로 합의했다고 11일(현지시간) 발표했다.",
       "title": "트럼프, 우·러 에너지 휴전 깜짝 발표…젤렌스키 \"처음 듣는 이야기\""
+    },
+    "title:c047291c43463a90d55c411d": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.etnews.com/20261016000166",
+      "source": "전자신문",
+      "source_body_digest": "0a0cc8da86e9610d05fc5adf37f4f1ed8d26878a350212f34b881abd5c82c456",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c491b9440a052e0c5b87d872ed7a181b3bcc26db36a8d527baa65f9d47e6ca77",
+      "source_fact_keys": [
+        "source_fact:v1:eeb93b70e3c420b0177d39cb6b151b0c683260e1589c18b7a0719a4a1db11fcf"
+      ],
+      "source_published_kst": "2026-10-16T22:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "KFC마저 펩시 손절…코카콜라 택한 이유는",
+      "telegram_core_fact": "미국 치킨 프랜차이즈 KFC가 40년 가까이 유지해 온 펩시코와의 음료 공급 계약을 종료하고 코카콜라 제품을 도입한다. 매출 하락과 점포 정리 등이 이어지는 가운데, 시장조사업체 테크노믹에 따르면 한때 미국 치킨 프랜차이즈 시장을 선도했던 KFC는 매출 순위에서 현재 5위로 내려앉았다.",
+      "title": "KFC마저 펩시 손절…코카콜라 택한 이유는"
     },
     "title:c0486b4127f3f544c194b9d7": {
       "first_seen_kst": "2026-10-15T04:22:43+09:00",
@@ -793291,6 +794838,26 @@
       "telegram_core_fact": "9월 중순께 홈플러스는 당초 목표로 세웠던 매출의 40%만 달성했는데, 여기서 더 떨어진 것이다.",
       "title": "홈플러스, 목표 대비 매출 30%…통매각 불발 시 분리매각 수순 | 연합뉴스"
     },
+    "title:f3305df58e6d861dff5374d0": {
+      "first_seen_kst": "2026-10-17T05:57:10+09:00",
+      "lanes": {
+        "live": "2026-10-17T05:57:10+09:00"
+      },
+      "last_seen_kst": "2026-10-17T05:57:10+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03670326645613576",
+      "source": "이데일리",
+      "source_body_digest": "bf6c8d10deaed7ebf6e8fc2b851d37093b021c3b72cdedb7d5736a525b07dc0d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ca2f3bbeebc9cb36fbcaf820864b5cd4ca226eab39d18041dcbf154e412a01d5",
+      "source_fact_keys": [
+        "source_fact:v1:f601931c8e480c5237051febfafc017f6445e497e24b36735c886f6840344df1"
+      ],
+      "source_published_kst": "2026-10-16T13:42+09:00",
+      "source_supply_terms": {},
+      "source_title": "“주가 60% 폭락했는데”…코어위브 창업자 3명은 4.5조 팔았다",
+      "telegram_core_fact": "코어위브 측은 블룸버그통신에 “3명의 공동 창업자는 여전히 상위 6대 주주에 속하며 합산 지분 약 20%를 보유하고 있다”며 “이번 매각은 사전에 계획되고 투명하게 공시된 정당한 개인 자산 관리 차원의 결정”이라고 해명했다.",
+      "title": "“주가 60% 폭락했는데”…코어위브 창업자 3명은 4.5조 팔았다"
+    },
     "title:f345aca3e734a9b0a5bb416f": {
       "first_seen_kst": "2026-10-10T07:01:20+09:00",
       "lanes": {
@@ -798242,5 +799809,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-17T05:25:35+09:00"
+  "updated_at_kst": "2026-10-17T05:57:10+09:00"
 }
