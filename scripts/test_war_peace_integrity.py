@@ -56,6 +56,101 @@ class IntegrityTests(unittest.TestCase):
         fixture = json.loads(path.read_text(encoding='utf-8'))
         return fixture, dt.datetime.fromisoformat(fixture['provenance']['queried_at_kst'])
 
+    def ceasefire_rejection_fixture(self):
+        path = Path(__file__).parent/'test_fixtures/war_ceasefire_rejection_38830288661.json'
+        fixture = json.loads(path.read_text(encoding='utf-8'))
+        return fixture, dt.datetime.fromisoformat(fixture['provenance']['queried_at_kst'])
+
+    def test_rejected_pause_request_is_not_an_observed_attack_pause(self):
+        fixture, _ = self.ceasefire_rejection_fixture()
+        row = fixture['articles'][0]
+        self.assertFalse(integrity.mixed_restraint_attack(row))
+        self.assertEqual(integrity.non_military_kind(row), 'military_statement')
+        self.assertEqual(integrity.topic_label(row), '우크라이나·러시아 · 군사 대응·보복 발언')
+
+    def test_ceasefire_rejection_is_not_a_new_ceasefire_announcement(self):
+        fixture, _ = self.ceasefire_rejection_fixture()
+        row = fixture['articles'][1]
+        self.assertEqual(integrity.non_military_kind(row), 'ceasefire_position')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+        self.assertEqual(integrity.topic_label(row), '우크라이나·러시아 · 휴전·공격 중단 입장')
+
+    def test_rejection_title_with_separate_actual_attack_stays_red(self):
+        for title in ('젤렌스키, 휴전 구상 거부…러 정유시설 공격 재개했다',
+                      '젤렌스키, 트럼프 휴전 구상에 반기…러 정유시설 폭격 재개 - 데일리안',
+                      '젤렌스키, 공격 중단 요구 거부…러시아 미사일 발사',
+                      '러시아 공습 개시…젤렌스키, 에너지 휴전 걷어찼다'):
+            with self.subTest(title=title):
+                row = article(title)
+                self.assertIsNone(integrity.non_military_kind(row))
+                self.assertEqual(integrity.final_color(row), 'red')
+
+    def test_rejected_pause_is_detected_from_the_current_title_only(self):
+        row = article('트럼프, 에너지 휴전 발표…우크라이나 조건부 동참')
+        row['description'] = '그보다 앞선 공격 중단 요구 거부와 휴전 철회 발언을 배경으로 소개했다.'
+        self.assertNotEqual(integrity.non_military_kind(row), 'ceasefire_position')
+
+    def test_explicit_future_after_rejection_is_not_completed_action(self):
+        for title in ('젤렌스키, 공격 중단 요구 거부…“공격 재개하겠다”',
+                      '우크라이나, 휴전 요구 거부…미사일 발사할 계획',
+                      '젤렌스키, 휴전 거부…공습 재개할 수 있다'):
+            with self.subTest(title=title):
+                row = article(title)
+                self.assertEqual(integrity.non_military_kind(row), 'military_statement')
+                self.assertEqual(integrity.final_color(row), 'yellow')
+
+    def test_refinery_action_title_overrides_old_ceasefire_topic(self):
+        row = article('젤렌스키, 트럼프에 반기 들었다…러 정유시설 공습 재개')
+        row['description'] = '과거 트럼프의 에너지 휴전 발표와 양측 검증을 배경으로 설명했다.'
+        row['signals_ko'] = ['에너지 인프라 상호 공격 자제·중단']
+        row['classification_color'] = 'yellow'
+        with patch.object(integrity.body_parallel, '_safe_enrich'):
+            text = integrity.build_alert([row], [], NOW)
+        self.assertEqual(row['classification_color'], 'red')
+        self.assertIn('우크라이나·러시아 · 정유시설 공격 보도', text)
+        self.assertIn(html.escape(row['title_original']), text)
+        self.assertNotIn('에너지 인프라 상호 공격 자제·중단', text)
+        self.assertEqual(row['tags'], ['정유시설 공격 보도'])
+
+    def test_refinery_future_and_negation_are_not_forced_actual_attacks(self):
+        for title in ('젤렌스키, 러 정유시설 공격 재개하겠다',
+                      '우크라이나, 러 정유시설 공습 재개하지 않았다',
+                      '젤렌스키, 러 정유소 공격 재개 여부 검토'):
+            with self.subTest(title=title):
+                self.assertFalse(integrity._headline_refinery_action(article(title)))
+
+    def test_actual_rejection_render_preserves_negation_request_and_future(self):
+        fixture, now = self.ceasefire_rejection_fixture()
+        rows = fixture['articles']
+        before = watch.STATE.read_bytes()
+        with patch.object(integrity.body_parallel, '_safe_enrich'):
+            text = integrity.build_alert(rows, fixture['markets'], now)
+        self.assertEqual([row['classification_color'] for row in rows], ['yellow', 'yellow'])
+        for row in rows:
+            self.assertIn(html.escape(row['title_original']), text)
+        self.assertNotIn('에너지 휴전 발표·양측 검증 대기', text)
+        self.assertNotIn('자제 발언·상대 공격 주장', text)
+        self.assertNotIn('조건부 동참 의사', text)
+        self.assertIn('거부·철회·재개 방침', text)
+        self.assertEqual([row['body_verified'] for row in rows], [False, True])
+        self.assertEqual(watch.STATE.read_bytes(), before)
+
+    def test_final_gate_rejects_actual_same_hash_rejection_wrong_topics(self):
+        fixture, now = self.ceasefire_rejection_fixture()
+        text = fixture['bad_alert']
+        receipt = evidence.alert_receipt(fixture['articles'], fixture['markets'], now, text)
+        self.assertEqual(receipt['alert_sha256'], fixture['provenance']['alert_sha256'])
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            root = Path(folder)
+            for attr, name in {'ALERT': 'alert.txt', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                stack.enter_context(patch.object(watch, attr, root/name))
+            watch.ALERT.write_text(text, encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids': [row['id'] for row in fixture['articles']]}), encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+            stack.enter_context(patch.object(integrity, '_verify'))
+            with self.assertRaisesRegex(RuntimeError, 'rendered topic differs'):
+                integrity.verify_alert()
+
     def test_actual_unquoted_restart_declaration_is_a_statement(self):
         fixture, _ = self.restart_declaration_fixture()
         row = fixture['articles'][0]

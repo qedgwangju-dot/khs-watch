@@ -1,0 +1,288 @@
+{
+  "provenance": {
+    "run_id": "38830288661",
+    "code_sha": "ea570ab8ce51f704d348860ab39072ed18940af4",
+    "queried_at_kst": "2026-10-16T09:36:12.463101+09:00",
+    "alert_sha256": "9f43ab64fd53693ae11b9e9c6a11c0a4f646513805fcfdc17e0d1b896c6ef9cc",
+    "input_kind": "stored actual dry-run article evidence; body never sent",
+    "operating_article_text_preserved": false
+  },
+  "articles": [
+    {
+      "id": "1719b62c900986771233",
+      "title_original": "젤렌스키, 트럼프의 러시아 정유시설 공격 중단 요구 거부…“공격 재개하겠다” - 파이낸스투데이",
+      "title_ko": "젤렌스키, 트럼프의 러시아 정유시설 공격 중단 요구 거부…“공격 재개하겠다” - 파이낸스투데이",
+      "description": "젤렌스키, 트럼프의 러시아 정유시설 공격 중단 요구 거부…“공격 재개하겠다” 파이낸스투데이",
+      "source": "파이낸스투데이",
+      "source_url": "https://www.fntoday.co.kr",
+      "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBQX21fSGZPWGtxSzNua0J0d3pobnNTTzVnM0c2YnZrRU8tckZjVGxrczdncjVJYko5YlZOQUs2emFQZ3JGRnFfYnU0Mm9xNUJpMlZXRThsTDJVRDZxYklpZ0M5dVE2T0t5bWNLcg?oc=5",
+      "published": "Thu, 15 Oct 2026 22:37:06 GMT",
+      "score": 74,
+      "tags": [
+        "반대신호",
+        "에너지위험",
+        "자제 발언·상대 공격 주장"
+      ],
+      "body_checked": true,
+      "signals_ko": [],
+      "forced_tags": [
+        "확전",
+        "에너지위험",
+        "반대신호"
+      ],
+      "classification_color": "yellow",
+      "non_military_kind": "mixed_restraint",
+      "body_verified": false,
+      "publication_basis": "discovery_feed",
+      "rendered": true,
+      "article_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "f90c0cdb7138466f83a7",
+      "title_original": "\"우리 인내심 끝났다\"…젤렌스키, 트럼프 '에너지 휴전' 걷어찼다 - 한국경제",
+      "title_ko": "\"우리 인내심 끝났다\"…젤렌스키, 트럼프 '에너지 휴전' 걷어찼다 - 한국경제",
+      "description": "\"우리 인내심 끝났다\"…젤렌스키, 트럼프 '에너지 휴전' 걷어찼다 한국경제",
+      "source": "한국경제",
+      "source_url": "https://www.hankyung.com",
+      "link": "https://www.hankyung.com/article/2026101656707",
+      "discovery_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBRTlJmM0dKNmY5YkFMZ21tSTNrWXVDU2RQM3JOVnVvVTc4RjR1YTluWjRhTm1jUGpJa3pnaGRlWXM3RVRjbWlBTFl3TGp3dmFIU1NfYTVFWFZjZw?oc=5",
+      "resolved_url": "https://www.hankyung.com/article/2026101656707",
+      "published": "Fri, 16 Oct 2026 09:28:24 +0900",
+      "rss_published": "Fri, 16 Oct 2026 00:28:24 GMT",
+      "source_metadata": {
+        "title": "\"우리 인내심 끝났다\"…젤렌스키, 트럼프 '에너지 휴전' 걷어찼다",
+        "publication_status": "verified",
+        "published_at_kst": "2026-10-16T09:28:24+09:00",
+        "publication_candidates": [
+          {
+            "field": "article:published_time",
+            "at_kst": "2026-10-16T09:28:24+09:00"
+          },
+          {
+            "field": "jsonld:datePublished",
+            "at_kst": "2026-10-16T09:28:24+09:00"
+          }
+        ]
+      },
+      "score": 11,
+      "tags": [
+        "종전·협상"
+      ],
+      "body_checked": true,
+      "body_verified": true,
+      "classification_color": "yellow",
+      "publication_basis": "publisher",
+      "rendered": true,
+      "article_text_sha256": "86013683a42e37172608d540f38dfe3df812153012145e0da29a09e682be9248"
+    }
+  ],
+  "markets": [
+    {
+      "name": "나스닥100 선물",
+      "price": 29991.75,
+      "pct": -0.5042504665146219,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "09:26 KST",
+      "observed_at_kst": "2026-10-16T09:26:10+09:00",
+      "symbol": "NQ=F",
+      "previous_close": 30143.75,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "NQ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 30143.75,
+        "chartPreviousClose": 30143.75,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792110370,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "end": 1792036800,
+            "start": 1792036800,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "end": 1792123140,
+            "start": 1792036800,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "end": 1792123140,
+            "start": 1792123140,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/NQ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "WTI",
+      "price": 95.9800033569336,
+      "pct": -0.5388566249392768,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "09:25 KST",
+      "observed_at_kst": "2026-10-16T09:25:41+09:00",
+      "symbol": "CL=F",
+      "previous_close": 96.5,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "CL=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 96.5,
+        "chartPreviousClose": 96.5,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792110341,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "end": 1792036800,
+            "start": 1792036800,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "end": 1792123140,
+            "start": 1792036800,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "end": 1792123140,
+            "start": 1792123140,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/CL%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "Brent",
+      "price": 105.5,
+      "pct": -0.3965256797583083,
+      "arrow": "▼",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "09:24 KST",
+      "observed_at_kst": "2026-10-16T09:24:33+09:00",
+      "symbol": "BZ=F",
+      "previous_close": 105.92,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "BZ=F",
+        "instrumentType": "FUTURE",
+        "previousClose": 105.92,
+        "chartPreviousClose": 105.92,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792110273,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "end": 1792036800,
+            "start": 1792036800,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "end": 1792123140,
+            "start": 1792036800,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "end": 1792123140,
+            "start": 1792123140,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/BZ%3DF?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    },
+    {
+      "name": "달러지수",
+      "price": 102.0770034790039,
+      "pct": 0.02156041252647789,
+      "arrow": "▲",
+      "basis": "제공처 비교종가 대비",
+      "source": "Yahoo Finance 1분봉",
+      "asof": "09:26 KST",
+      "observed_at_kst": "2026-10-16T09:26:16+09:00",
+      "symbol": "DX-Y.NYB",
+      "previous_close": 102.055,
+      "previous_close_field": "chartPreviousClose",
+      "previous_close_date_verified": false,
+      "quote_metadata": {
+        "symbol": "DX-Y.NYB",
+        "instrumentType": "INDEX",
+        "previousClose": 102.055,
+        "chartPreviousClose": 102.055,
+        "exchangeTimezoneName": "America/New_York",
+        "regularMarketTime": 1792110376,
+        "currentTradingPeriod": {
+          "pre": {
+            "timezone": "EDT",
+            "start": 1792036800,
+            "end": 1792036800,
+            "gmtoffset": -14400
+          },
+          "regular": {
+            "timezone": "EDT",
+            "start": 1792036800,
+            "end": 1792123140,
+            "gmtoffset": -14400
+          },
+          "post": {
+            "timezone": "EDT",
+            "start": 1792123140,
+            "end": 1792123140,
+            "gmtoffset": -14400
+          }
+        }
+      },
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/DX-Y.NYB?range=1d&interval=1m",
+      "comparison": null,
+      "verified": false,
+      "verify_note": ""
+    }
+  ],
+  "market_source_status": {
+    "NQ=F": {
+      "name": "나스닥100 선물",
+      "status": "available",
+      "reason": null
+    },
+    "CL=F": {
+      "name": "WTI",
+      "status": "available",
+      "reason": null
+    },
+    "BZ=F": {
+      "name": "Brent",
+      "status": "available",
+      "reason": null
+    },
+    "DX-Y.NYB": {
+      "name": "달러지수",
+      "status": "available",
+      "reason": null
+    }
+  },
+  "bad_alert": "<b>전쟁·종전·재건 웹감시</b>\n🟡 <b>군사위협·협상 제약</b>  |  🟡 <b>제재·외교반응</b>\n조회 2026-10-16 09:36 KST\n기사 시각 기준 · 실제 사건 발생시각과 구분\n\n<b>핵심 변화</b>\n🟡 [신규] <b>1. 러시아·우크라이나 · 에너지 인프라 공격</b>\n젤렌스키, 트럼프의 러시아 정유시설 공격 중단 요구 거부…“공격 재개하겠다” - 파이낸스투데이\nRSS 보도 10-16 07:37 KST · <b>119분 경과</b> · 반대신호 · 에너지위험 · 자제 발언·상대 공격 주장 · <a href=\"https://news.google.com/rss/articles/CBMibEFVX3lxTFBQX21fSGZPWGtxSzNua0J0d3pobnNTTzVnM0c2YnZrRU8tckZjVGxrczdncjVJYko5YlZOQUs2emFQZ3JGRnFfYnU0Mm9xNUJpMlZXRThsTDJVRDZxYklpZ0M5dVE2T0t5bWNLcg?oc=5\">파이낸스투데이 검색 링크</a> · 제목 기준·본문 미확인\n\n🟡 [속보] <b>2. 우크라이나·러시아 · 에너지 휴전 발표·양측 검증 대기</b>\n&quot;우리 인내심 끝났다&quot;…젤렌스키, 트럼프 &#x27;에너지 휴전&#x27; 걷어찼다 - 한국경제\n보도 10-16 09:28 KST · <b>7분 경과</b> · 종전·협상 · <a href=\"https://www.hankyung.com/article/2026101656707\">한국경제 원문</a>\n\n<b>시장 반응</b>\n나스닥100 선물  <b>29,991.75</b>  -0.50% · 제공처 비교종가 대비 · 기준 09:26 KST · Yahoo Finance 1분봉 NQ=F\nWTI  <b>95.98</b>  -0.54% · 제공처 비교종가 대비 · 기준 09:25 KST · Yahoo Finance 1분봉 CL=F\nBrent  <b>105.50</b>  -0.40% · 제공처 비교종가 대비 · 기준 09:24 KST · Yahoo Finance 1분봉 BZ=F\n달러지수  <b>102.08</b>  +0.02% · 제공처 비교종가 대비 · 기준 09:26 KST · Yahoo Finance 1분봉 DX-Y.NYB\n\n<b>투자 판정</b>\n- <b>핵심:</b> 트럼프의 에너지 휴전 발표는 외교적 제안·발표 단계로, 실제 휴전 성립이 아님\n- <b>현재 단계:</b> 우크라이나의 조건부 동참 의사·러시아 공식 확인·실제 공격 중단을 각각 검증해야 함\n- <b>시장:</b> 정유시설·전력망 공격과 경유·전력 위험프리미엄 완화를 확정할 수 없음\n- <b>다음:</b> 양측 공식 합의 → 발효 시각 → 공격 중단 24·72시간 → 위반·피해 확인\n"
+}
