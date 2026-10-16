@@ -39,6 +39,9 @@ FORCE=os.getenv('FORCE_NOTIFY','0')=='1'
 ET=ZoneInfo('America/New_York')
 UA='Mozilla/5.0 (compatible; khs-watch/imf-warsh-1.0)'
 EVENT_ID='2026-10-16|Warsh|IMF-Bangkok'
+AI_POLICY_KEY='2026-10-16|Warsh|AI-Data-Policy-Verified'
+FED_TASKFORCES='https://www.federalreserve.gov/monetarypolicy/task-forces.htm'
+AFP_RTHK='https://news.rthk.hk/rthk/en/component/k2/1874182-20261016.htm'
 
 
 def get(url,timeout=12):
@@ -126,6 +129,49 @@ def dated_coverage():
         # 단순 검색결과 제목, 사용자 제공 요약, 출처 없는 복제 기사는 인증하지 않는다.
         raise RuntimeError('신뢰 보도 Reuters 원문·재공표 모두 검증 실패 — 알림 보류')
     return rows
+
+def ai_policy_sources():
+    """기존 대담에서 빠진 데이터·정책 축을 독립 보도와 연준 공식 과제로 검증."""
+    official=plain(get(FED_TASKFORCES, timeout=8)).lower()
+    if not all(x in official for x in (
+        'data', 'productivity and jobs', 'artificial intelligence',
+        'federal reserve'
+    )):
+        raise RuntimeError('연준 공식 데이터·생산성 태스크포스 범위 검증 실패')
+    report=plain(get(AFP_RTHK, timeout=8)).lower()
+    # Reuters 재공표 중복은 독립 근거로 세지 않는다. RTHK의 AFP 보도를 활용.
+    if not all(x in report for x in (
+        'warsh', '2026-10-16', 'imf', 'monetary policy', 'ai',
+        'data', 'supply'
+    )):
+        raise RuntimeError('AFP 대담 보도·발언 범위 검증 실패')
+    return {'federal':FED_TASKFORCES,'press':AFP_RTHK}
+
+
+def ai_policy_followup_message(sources):
+    return '\n'.join([
+        '<b>[Warsh | AI·통화정책 데이터 변화]</b>',
+        '2026년 10월 16일 IMF 대담 · 이미 발송한 행사 요약의 추가 검증 내용',
+        '',
+        '<b>핵심 신규 변화</b>',
+        '• <b>데이터·정책</b>: AI를 물가·경제지표 분석과 정책 판단에 활용할 가능성 제시. 실제 정책 운영의 변경·도입 확정은 아님',
+        '• <b>효과의 시차</b>: 단기 AI 설비투자·총수요 확대 ↔ 중기 생산성 향상·공급능력 확대',
+        '• <b>미확정 위험</b>: 직무·고용 영향, AI 기업의 수익배분과 시장구조, 금융안정 부담은 추가 검증 대상',
+        '• <b>금리</b>: 10월·12월 결정은 미리 약속하지 않음. AI 낙관론을 금리인하·인상 확정으로 해석하지 않음',
+        '',
+        '<b>앞으로 확인할 공식 지표</b>',
+        '• 연준 데이터·생산성/고용 태스크포스 결과의 실제 공개 여부와 시행 단계',
+        '• 근원 PCE 3·6개월 연율, 고용·단위노동비용, AI 설비투자 대비 현금창출·자금조달 부담',
+        '',
+        '<b>근거 구분</b>',
+        '• IMF 발언은 AFP 보도 내용이며, 태스크포스 존재·목표는 연준 공식자료로 별도 확인했습니다.',
+        '• 새로운 FOMC 의결·시장 인상확률·연준의 확정 투자계약은 발표된 사실이 아닙니다.',
+        '',
+        '<b>원천</b>',
+        link('IMF 공식 행사',IMF)+' · '+link('AFP 대담 보도',sources['press']),
+        link('연준 공식 태스크포스',sources['federal'])
+    ])
+
 
 def citi_reported():
     # 공식 시장확률과 IB 전망을 혼동하지 않는다. Reuters 원문 또는 Reuters 저작권
@@ -242,6 +288,31 @@ def main():
                 print(json.dumps({'status':'citi_followup_sent','message_id':mid,
                                   'citi_source':citi_url,'imf_message_id':old.get('message_id')},ensure_ascii=False))
                 return
+        # 기존 행사·Citi 알림은 재전송하지 않고, 이번에 추가 확인된 AI
+        # 통화정책 데이터 활용 축만 공식 + 독립 언론 근거가 있을 때 1회 보충.
+        if old.get('ai_policy_sent_key')!=AI_POLICY_KEY and 0 <= event_age <= 3:
+            if old.get('ai_policy_pending_key')==AI_POLICY_KEY and old.get('ai_policy_delivery_status')=='sending':
+                raise RuntimeError('AI 통화정책 추가 알림 전송 결과 불명확 — 중복 전송 보류')
+            try:
+                sources=ai_policy_sources()
+            except Exception as exc:
+                print(json.dumps({'status':'ai_policy_source_pending','sent':False,
+                                  'reason':f'{type(exc).__name__}: {exc}'},ensure_ascii=False))
+                return
+            old.update({'ai_policy_pending_key':AI_POLICY_KEY,
+                        'ai_policy_delivery_status':'sending'})
+            save(old)
+            receipt=send(ai_policy_followup_message(sources))
+            old.update({'ai_policy_sent_key':AI_POLICY_KEY,
+                        'ai_policy_message_id':receipt,
+                        'ai_policy_pending_key':None,
+                        'ai_policy_delivery_status':'confirmed',
+                        'ai_policy_sources':sources})
+            save(old)
+            print(json.dumps({'status':'ai_policy_followup_sent','message_id':receipt,
+                              'imf_message_id':old.get('message_id'),
+                              'citi_message_id':old.get('citi_message_id')},ensure_ascii=False))
+            return
         print(json.dumps({'status':'already_sent','message_id':old.get('message_id')},ensure_ascii=False))
         return
     if old.get('pending_key')==EVENT_ID and old.get('delivery_status')=='sending':

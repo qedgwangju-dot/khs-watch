@@ -89,6 +89,7 @@ class TestIMF(unittest.TestCase):
              patch.object(imf,'dated_coverage',return_value=[
                  {'publisher':'Reuters','url':imf.REUTERS,'title':'Warsh IMF Bangkok'}]),\
              patch.object(imf,'citi_reported',return_value=False),\
+             patch.object(imf,'ai_policy_sources',side_effect=RuntimeError('not yet verified')),\
              patch.object(imf,'send',return_value=76) as sender:
             imf.main()
             imf.main()
@@ -107,6 +108,7 @@ class TestIMF(unittest.TestCase):
         with patch.object(imf,'read_state',side_effect=lambda: memory.copy()),\
              patch.object(imf,'save',side_effect=save),\
              patch.object(imf,'citi_reported',return_value=imf.CITI_REUTERS_MIRRORS[0]),\
+             patch.object(imf,'ai_policy_sources',side_effect=RuntimeError('not yet verified')),\
              patch.object(imf,'send',return_value=90) as sender:
             imf.main()
             imf.main()
@@ -115,6 +117,48 @@ class TestIMF(unittest.TestCase):
             self.assertEqual(memory['citi_message_id'],90)
             self.assertTrue(memory['citi_reported'])
             self.assertEqual(memory['citi_delivery_status'],'confirmed')
+
+    def test_ai_policy_followup_source_validation(self):
+        official='Federal Reserve Data Improve quality, Productivity and Jobs assess artificial intelligence'
+        press='2026-10-16 RTHK AFP Kevin Warsh IMF Bangkok AI supply data monetary policy'
+        def fetch_stub(url,timeout=8):
+            if url==imf.FED_TASKFORCES:return official
+            if url==imf.AFP_RTHK:return press
+            raise AssertionError(url)
+        with patch.object(imf,'get',side_effect=fetch_stub):
+            sources=imf.ai_policy_sources()
+        self.assertEqual(sources['press'],imf.AFP_RTHK)
+
+    def test_ai_policy_followup_does_not_prejudge_rates(self):
+        msg=imf.ai_policy_followup_message({
+            'federal':imf.FED_TASKFORCES,'press':imf.AFP_RTHK})
+        self.assertIn('정책 운영의 변경·도입 확정은 아님',msg)
+        self.assertIn('단기 AI 설비투자·총수요 확대',msg)
+        self.assertIn('금리인하·인상 확정으로 해석하지 않음',msg)
+        self.assertIn('연준 공식 태스크포스',msg)
+
+    def test_ai_policy_followup_once_preserves_prior_receipts(self):
+        memory={'last_sent_key':imf.EVENT_ID,'message_id':89,
+                'citi_reported':True,'citi_message_id':90,
+                'delivery_status':'confirmed'}
+        def save(state):memory.clear();memory.update(state)
+        with patch.object(imf,'read_state',side_effect=lambda:memory.copy()),\
+             patch.object(imf,'save',side_effect=save),\
+             patch.object(imf,'ai_policy_sources',return_value={
+                 'federal':imf.FED_TASKFORCES,'press':imf.AFP_RTHK}),\
+             patch.object(imf,'send',return_value=91) as sender:
+            imf.main()
+            imf.main()
+        self.assertEqual(sender.call_count,1)
+        self.assertEqual(memory['message_id'],89)
+        self.assertEqual(memory['citi_message_id'],90)
+        self.assertEqual(memory['ai_policy_message_id'],91)
+        self.assertEqual(memory['ai_policy_delivery_status'],'confirmed')
+
+    def test_ai_policy_sources_fail_closed(self):
+        with patch.object(imf,'get',return_value='uncorroborated headlines'):
+            with self.assertRaisesRegex(RuntimeError,'검증 실패'):
+                imf.ai_policy_sources()
 
     def test_citi_update_does_not_claim_fomc_action(self):
         msg=imf.citi_followup_message(imf.CITI_REUTERS_MIRRORS[0])
