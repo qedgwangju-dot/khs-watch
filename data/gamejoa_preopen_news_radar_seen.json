@@ -21452,6 +21452,32 @@
       "telegram_core_fact": "윤 실장은 거래량 증가 시 중앙은행이 시장에 유동성을 공급하는 개입 체계를 갖춰야 한다고 강조했다.",
       "title": "한은 \"토큰화 확산 따른 유동성 분절 우려⋯중앙은행 공급체계 설계해야\""
     },
+    "core:5cc14f6f6743556e15f61a3a": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176138",
+      "source": "매일경제",
+      "source_body_digest": "69e5c62190b8a90162332c68e149df3a2e7cd544db25cfd3a31544bfcc1223d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:17e777cc410635e1996dd0a8d43dc1274555bf4fe84616003372769ce4464b2d",
+      "source_fact_keys": [
+        "source_fact:v1:1213fcf5e8eec22c83d614e0e354afd645021fe7f483ca28d6923227cc456904",
+        "source_fact:v1:af12aba1a704e72fe2684c890a16a8e26401cb2bc3c19e91c0f0d80ebf1f0a2f",
+        "source_fact:v1:b456a36716472e16a5987da0c4cb0acc6e12a0077b6c68e40e0db9a65ea85481",
+        "source_fact:v1:bf02fde02edde5e53ac320bcea50610ff447a502f0c4970a6aea188f10109c51",
+        "source_fact:v1:c7b4cf1a6d60aed783bd109c45671a7604ad5dd14359589434d80b685fb1833b",
+        "source_fact:v1:cc5c38b3ac0a72f6680f24045d7470386609851df679a106a79179c7eea50bf3",
+        "source_fact:v1:eff15af559067a04cef36adf1b7e0eca2f91b21a689b137b112da431cdfd605f"
+      ],
+      "source_published_kst": "2026-10-17T06:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "어드바사, 배당성향 50% 목표 배당정책 채택",
+      "telegram_core_fact": "핀테크 결제 지주회사 어드바사(ADBT)가 2027년 3월 31일 종료되는 회계연도부터 보통주 연간 현금배당성향 50%를 목표로 하는 배당정책을 이사회에서 채택했다고 16일 발표했다.",
+      "title": "어드바사, 배당성향 50% 목표 배당정책 채택"
+    },
     "core:5cc931d1ff4919aa3c4e1dbd": {
       "first_seen_kst": "2026-10-13T14:54:18+09:00",
       "lanes": {
@@ -25415,6 +25441,31 @@
       "source_title": "삼성바이오 \"폴리펩타이드 공개매수 조건 충족\"",
       "telegram_core_fact": "공개매수는 폴리펩타이드그룹 인수를 위해 설립한 특수목적법인(SPC) 자회사 삼성펩타이드(Samsung Peptide)를 통해 이뤄졌으며, 자사주를 제외한 발행주식 전량(3301만6411주)을 대상으로 주당 가격 44.31스위스프랑에 진행됐다.",
       "title": "삼성바이오 \"폴리펩타이드 공개매수 조건 충족\""
+    },
+    "core:6bdf38bacc027dbebb3c04fd": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261017000200098",
+      "source": "연합뉴스",
+      "source_body_digest": "c771bf8e1526a28796a6350aeac10dcab0edc6d5f3169918f10e823a0132716b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7696cdc08019876f3e76c41b38afaf5a02ec6af30723058ec6c19697a7fe39c4",
+      "source_fact_keys": [
+        "source_fact:v1:63a694f76f00746c921444856beebd9a97e9e48fe10e88517a4751c1001ed926",
+        "source_fact:v1:7181614244ea975d9033215da6860a1b66e025c2c0526d0376f2454b31537a53",
+        "source_fact:v1:7ed17839f2fbcf5ad7175d83d3c0386085a68749458d60aebc52ad2abff78e87",
+        "source_fact:v1:b23b0483aea868cfd164984c1fd5a9ba967b49ba8bed7cca4516eacab4f79dff",
+        "source_fact:v1:dd06d5fc10cfa10ef823f5f60970287a3c87d555c2af196f0da92e453589594e",
+        "source_fact:v1:eec6ba69dcb9aa0df715887e91998f988fde93b5c0ed65b973198457ba889a94"
+      ],
+      "source_published_kst": "2026-10-17T00:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "젤렌스키 \"러와 '경유딜' 부적절\"…트럼프 또 겨눠 | 연합뉴스",
+      "telegram_core_fact": "다음달 중간선거를 앞두고 유가 상승으로 인한 민심 악화에 고심하고 있는 트럼프 대통령은 최근 대러 제재를 일부 해제해 러시아산 경유를 시장에 풀겠다는 깜짝 발표를 한 뒤 일방적으로 '에너지 휴전'을 선포했고, 젤렌스키 대통령은 이에 공개적으로 반발하면서 양측의 갈등이 고조됐다.",
+      "title": "젤렌스키 \"러와 '경유딜' 부적절\"…트럼프 또 겨눠 | 연합뉴스"
     },
     "core:6be5505cfa7c829dc609ad87": {
       "first_seen_kst": "2026-10-08T19:49:39+09:00",
@@ -40280,6 +40331,40 @@
       "telegram_core_fact": "반도체 산업 호황에 따른 추가 세수를 미래 세대를 위한 투자 재원으로 활용하는 정부의 미래대응기금의 사용 계획에 한국전력[015760] 지원 등의 내용이 포함돼 있다고 국회 재정경제기획위원회 소속 국민의힘 박수영 의원이 7일 밝혔다.",
       "title": "\"미래기금으로 한전·관사·공연관람·농어촌 기본소득 지원\"(종합)"
     },
+    "core:ab8ae989d96c2dfd0011a80d": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/16/LFWMOBIUDJDQNAYSQMOZ6Q57BI/",
+      "source": "조선비즈",
+      "source_body_digest": "298e657c9f216506712d43fcdb0cba99f91385343ea8229d9447df48209792d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90ea017105ea486db6bb14e03d447d81c6b900412731bbd674d24b136cd54400",
+      "source_fact_keys": [
+        "source_fact:v1:113c98b5843e797f5371fa48802c16f7b9114c505f007c17ff614f28664e2711",
+        "source_fact:v1:200b6ef83950eccc64f3293e8a1ae3acfa52ce89681a52fc91085507f70262d0",
+        "source_fact:v1:32de7bbb69f531684a8f3d8057e9022078f1c1c01decf1abe063b6850a1811fe",
+        "source_fact:v1:374439c7c8e0021affecd914e7783b508d4b5eac20181ea98a9f70fc23f7e7e5",
+        "source_fact:v1:38272d1c1a0dbb91422501ab70c25702555e5546c98bdb53be6f62f3d5ad8d67",
+        "source_fact:v1:4499adb5ee8c044e4aa70d4aed19579566bf1c0ec374ea632ac997659088a3ef",
+        "source_fact:v1:5375a82b913efebb9cdabb52c9dd7588df7292fe6ec0d41583f894d584bf7e4e",
+        "source_fact:v1:5a997021b3ff0da31741ddeeefd00a118e6392bd4acb89c8c628b097d8cc022a",
+        "source_fact:v1:90ddf5467b8f18b1290ea39c4bf974dda6f1eda1e574f0c0bb70b2fe5b3c417c",
+        "source_fact:v1:9138501dcffb241b7e86b3fc663862162ba8e731c659e8f0f815d019faf442d1",
+        "source_fact:v1:a4232c0a0e3ab823d2316fdff3ee92cce567234035429a1742f24dc2abc9ec03",
+        "source_fact:v1:b6612a7d5d7f598eac00d16a01e5d592a8ef30c858cd76243d18e3b3eb8c317c",
+        "source_fact:v1:b8b8d846d11ff775aa89bbfae889636d78567b66b6ec5b2b2946c2bcb793ede8",
+        "source_fact:v1:db22efe5350ceb4088df8afed1bcb37576b962c79064f090a81ee880f6a30e53",
+        "source_fact:v1:e8c9e7087ea8e41b8b8bde401facd6cbff965a66567cef4d4e1c61cf0d1bd610"
+      ],
+      "source_published_kst": "2026-10-16T15:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력",
+      "telegram_core_fact": "양 기관은 네오디뮴(Nd) 사용량을 30% 줄이고 세륨(Ce)으로 대체하며, 중희토류인 디스프로슘(Dy)과 터븀(Tb)을 완전히 배제하는 Dy/Tb Free 기술을 적용해 MH HIMAG 상용화를 본격 추진한다.",
+      "title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력"
+    },
     "core:ab966c941404c8d0c1fcad4c": {
       "first_seen_kst": "2026-10-09T22:25:54+09:00",
       "lanes": {
@@ -45236,6 +45321,24 @@
       ],
       "source_published_kst": "2026-10-07T12:00+09:00",
       "title": "전쟁 틈타 44조원대 유가담합…SK에너지·현대오일뱅크 심판대에 | 연합뉴스"
+    },
+    "core:c1758536933b166f7e8ee027": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016046600002",
+      "source": "연합뉴스",
+      "source_body_digest": "0ddc5289b8c20ee21bfb144c5e74fabe08c675ed0a4191a26dcd354638651efd",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-16T10:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "정부·당국 \"증시 변동성 감시 강화…교란 행위 엄정 대응\" | 연합뉴스",
+      "telegram_core_fact": "이들은 최근 국내외 주식시장이 글로벌 금리 상승 전망, AI 반도체 업종의 투자 및 수익 전망에 대한 불확실성, 국제유가 상승에 따른 위험회피 심리 등으로 조정 국면을 맞고 있으며, 국내 증시는 다른 시장에 비해 업종 비중의 차이 등으로 변동성이 상대적으로 크게 나타나고 있다고 판단했다.",
+      "title": "정부·당국 \"증시 변동성 감시 강화…교란 행위 엄정 대응\" | 연합뉴스"
     },
     "core:c1a6afa9967667ccf4649f8a": {
       "first_seen_kst": "2026-10-08T08:56:19+09:00",
@@ -50375,6 +50478,27 @@
       "telegram_core_fact": "독일 정부가 중국 국영 해운 대기업 코스코(中遠海運集團 COSCO)의 자국 물류업체 치펠(Zippel) 인수를 국가안보상 우려를 이유로 저지했다. dpa와 AFP 통신, rfi에 따르면 독일 경제에너지부는 7일(현지시간) 코스코가 함부르크 소재 물류업체 치펠 지분 80%를 인수하는 거래를 막았다고 발표했다.",
       "title": "[올댓차이나] 독일, 中 코스코 물류업체 치펠 인수 저지…\"안보 우려\""
     },
+    "core:d97356979b1b938272513b6d": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636687",
+      "source": "이투데이",
+      "source_body_digest": "17adce6c5d75285c011a249db24c1abbdc4481ef2aed05002d0df38414adf03c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6c8cbe1456385f2fd20d3ac319f714e4ca8550d8edc9641ec75b7ecd12f88bf9",
+      "source_fact_keys": [
+        "source_fact:v1:3e889c9822ced953b0e8d8f8ece57a8aa5312b933d28cc20ad0c28751572482b",
+        "source_fact:v1:43accefd9dbe4a79f2b447b7517e0c222ba3e1c9eebd577e5ced1b81a3311524"
+      ],
+      "source_published_kst": "2026-10-16T14:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "日, 안보백서에 트럼프 요구 'GDP 3.5% 방위비' 명시 보류 검토",
+      "telegram_core_fact": "일본 정부가 올 연말 개정될 안보 문서에서 도널드 트럼프 2기 행정부 출범 이후 미국이 꾸준히 요구했던 '국내총생산(GDP) 3.5% 수준 방위비' 목표를 명시하지 않는 것을 검토 중이다.",
+      "title": "日, 안보백서에 트럼프 요구 'GDP 3.5% 방위비' 명시 보류 검토"
+    },
     "core:d9ee72d5a903d2ad3319aee5": {
       "first_seen_kst": "2026-10-08T03:26:42+09:00",
       "lanes": {
@@ -52048,6 +52172,28 @@
       "source_title": "트럼프의 '노벨평화상 뒤끝'…美, ICC 제재로 불만 표출",
       "telegram_core_fact": "올해 노벨평화상이 국제법 수호에 평생을 바친 인물에게 돌아간 가운데 ‘힘에 의한 평화’를 앞세운 도널드 트럼프 미 행정부는 국제형사재판소(ICC)에 대한 고강도 제재를 발표했다.",
       "title": "트럼프의 '노벨평화상 뒤끝'…美, ICC 제재로 불만 표출"
+    },
+    "core:e0b60b4fbf9cb0d46d7d1286": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003828849",
+      "source": "뉴시스",
+      "source_body_digest": "4c89a0e532c615e2c21243379e74dc94301282f0c248d286212031ded25bc846",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:56d21a5735b37c916fd6bd70c2a6954fc3cf501a828e747a0891857c8d2f9264",
+      "source_fact_keys": [
+        "source_fact:v1:5443a768747b0cea936f8f193da62fbd3ce2195446e1bce1a446dfedbb49cec7",
+        "source_fact:v1:906bd7eb128da3dfdf8752d9ed593683cba67b08974c1074c9d806a411ee6ce1",
+        "source_fact:v1:b817eab8055f258014df92a56b8b044a388d19fd36e60fa4dabc3f9c93699257"
+      ],
+      "source_published_kst": "2026-10-17T00:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"200만원으로 시작해 10억 눈앞\"…40대 투자자의 자산 증식 비결",
+      "telegram_core_fact": "200만원으로 주식 투자를 시작해 약 10억원의 자산을 모은 40대 남성이 투자금 확대와 꾸준한 투자 습관의 중요성을 강조했다.",
+      "title": "\"200만원으로 시작해 10억 눈앞\"…40대 투자자의 자산 증식 비결"
     },
     "core:e0d210dee000d3ae7c359583": {
       "first_seen_kst": "2026-10-14T01:23:44+09:00",
@@ -57545,6 +57691,24 @@
       "telegram_core_fact": "9일(현지시간) 파이낸셜타임즈(FT)는 스페이스X가 그레인 매니지먼트로부터 전국 단위의 저대역 무선 주파수를 인수하기로 한 다음 미국 주요 통신사들의 시가총액이 약 620억달러(약83조원)가량 감소했다고 보도했다.",
       "title": "스페이스X, 저대역 주파수 인수 후 美 통신사 시총 80조 증발"
     },
+    "core:fbbf6669c9875c0aaa0d7144": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829791",
+      "source": "뉴시스",
+      "source_body_digest": "fe2ec7b88fc8a2acc2fef4a9ef0d38877154b6fff594d1223cf0e7020e05091b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-16T23:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "국힘 과방위원, 이진숙 국감 배제에 \"민주당 명백한 국정감사 방해\"",
+      "telegram_core_fact": "이 의원은 YTN 지분 매각 결정과 아무런 관련도 없었던 것으로 확인됐다\"라며 \"그럼에도 야당 의원의 입을 틀어막는 본질적 이유는 공영방송 국정감사 전체를 방해하고, 이재명 정부의 실정을 덮고자 함이다\"라고 했다.",
+      "title": "국힘 과방위원, 이진숙 국감 배제에 \"민주당 명백한 국정감사 방해\""
+    },
     "core:fbc7b9cee02dd4f558893bbc": {
       "first_seen_kst": "2026-10-08T10:20:20+09:00",
       "lanes": {
@@ -59819,22 +59983,27 @@
     "event:173faf5d618f27b01977621f": {
       "first_seen_kst": "2026-10-17T05:02:37+09:00",
       "lanes": {
-        "live": "2026-10-17T05:25:35+09:00"
+        "live": "2026-10-17T06:31:57+09:00"
       },
-      "last_seen_kst": "2026-10-17T05:25:35+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261017004900072",
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261017000200098",
       "source": "연합뉴스",
-      "source_body_digest": "bf4e612a8d8e7ea7964d8100ff6b405d972ced3fd6ab5a084ccd0f4073ade310",
+      "source_body_digest": "c771bf8e1526a28796a6350aeac10dcab0edc6d5f3169918f10e823a0132716b",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:f88a6bceeaf7d3de204049aa335f6e665edd8c5d9223cd5e7e2eaff648adda86",
+      "source_fact_identity": "source_facts:v1:7696cdc08019876f3e76c41b38afaf5a02ec6af30723058ec6c19697a7fe39c4",
       "source_fact_keys": [
-        "source_fact:v1:efd64082cd829e08d897ee3dd689c7d6b3cf2d21f0629ae3d1e0334d52dffc15"
+        "source_fact:v1:63a694f76f00746c921444856beebd9a97e9e48fe10e88517a4751c1001ed926",
+        "source_fact:v1:7181614244ea975d9033215da6860a1b66e025c2c0526d0376f2454b31537a53",
+        "source_fact:v1:7ed17839f2fbcf5ad7175d83d3c0386085a68749458d60aebc52ad2abff78e87",
+        "source_fact:v1:b23b0483aea868cfd164984c1fd5a9ba967b49ba8bed7cca4516eacab4f79dff",
+        "source_fact:v1:dd06d5fc10cfa10ef823f5f60970287a3c87d555c2af196f0da92e453589594e",
+        "source_fact:v1:eec6ba69dcb9aa0df715887e91998f988fde93b5c0ed65b973198457ba889a94"
       ],
-      "source_published_kst": "2026-10-17T05:04+09:00",
+      "source_published_kst": "2026-10-17T00:09+09:00",
       "source_supply_terms": {},
-      "source_title": "중동도 우크라도 불안…브렌트유 109달러대, 5개월만에 최고 | 연합뉴스",
-      "telegram_core_fact": "런던 ICE 선물거래소에서 12월 인도분 브렌트유는 전장보다 3.72% 오른 배럴당 109.86달러에 거래를 마쳤다.",
-      "title": "중동도 우크라도 불안…브렌트유 109달러대, 5개월만에 최고 | 연합뉴스"
+      "source_title": "젤렌스키 \"러와 '경유딜' 부적절\"…트럼프 또 겨눠 | 연합뉴스",
+      "telegram_core_fact": "다음달 중간선거를 앞두고 유가 상승으로 인한 민심 악화에 고심하고 있는 트럼프 대통령은 최근 대러 제재를 일부 해제해 러시아산 경유를 시장에 풀겠다는 깜짝 발표를 한 뒤 일방적으로 '에너지 휴전'을 선포했고, 젤렌스키 대통령은 이에 공개적으로 반발하면서 양측의 갈등이 고조됐다.",
+      "title": "젤렌스키 \"러와 '경유딜' 부적절\"…트럼프 또 겨눠 | 연합뉴스"
     },
     "event:17defdecf40efbd28e528c5a": {
       "first_seen_kst": "2026-09-20T19:20:28+09:00",
@@ -97119,6 +97288,31 @@
       "source_published_kst": "2026-10-07T06:40+09:00",
       "title": "[시선강탈] 엘앤에프 vs 이수페타시스 vs 파미셀, 공략법은?"
     },
+    "fact:55a1a3b3d44175fe34859367": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261017000200098",
+      "source": "연합뉴스",
+      "source_body_digest": "c771bf8e1526a28796a6350aeac10dcab0edc6d5f3169918f10e823a0132716b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7696cdc08019876f3e76c41b38afaf5a02ec6af30723058ec6c19697a7fe39c4",
+      "source_fact_keys": [
+        "source_fact:v1:63a694f76f00746c921444856beebd9a97e9e48fe10e88517a4751c1001ed926",
+        "source_fact:v1:7181614244ea975d9033215da6860a1b66e025c2c0526d0376f2454b31537a53",
+        "source_fact:v1:7ed17839f2fbcf5ad7175d83d3c0386085a68749458d60aebc52ad2abff78e87",
+        "source_fact:v1:b23b0483aea868cfd164984c1fd5a9ba967b49ba8bed7cca4516eacab4f79dff",
+        "source_fact:v1:dd06d5fc10cfa10ef823f5f60970287a3c87d555c2af196f0da92e453589594e",
+        "source_fact:v1:eec6ba69dcb9aa0df715887e91998f988fde93b5c0ed65b973198457ba889a94"
+      ],
+      "source_published_kst": "2026-10-17T00:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "젤렌스키 \"러와 '경유딜' 부적절\"…트럼프 또 겨눠 | 연합뉴스",
+      "telegram_core_fact": "다음달 중간선거를 앞두고 유가 상승으로 인한 민심 악화에 고심하고 있는 트럼프 대통령은 최근 대러 제재를 일부 해제해 러시아산 경유를 시장에 풀겠다는 깜짝 발표를 한 뒤 일방적으로 '에너지 휴전'을 선포했고, 젤렌스키 대통령은 이에 공개적으로 반발하면서 양측의 갈등이 고조됐다.",
+      "title": "젤렌스키 \"러와 '경유딜' 부적절\"…트럼프 또 겨눠 | 연합뉴스"
+    },
     "fact:55ade6153dafc807444b062e": {
       "first_seen_kst": "2026-10-09T21:27:46+09:00",
       "lanes": {
@@ -101225,6 +101419,40 @@
       "source_title": "2조 규모 공공수요·표준화 추진…\"중국산 가성비 장벽 넘는다\"[K드론 경고등③]",
       "telegram_core_fact": "우리 정부도 지난 6월 발표한 '드론·대(對)드론 대전환 추진전략(K드론 도미넌스)'을 통해 오는 2030년까지 약 2조원 공공수요를 창출하기로 했다. 실제로 정부가 진행 중인 농지 전수조사에 투입된 드론의 90% 이상이 중국산인 것으로 알려졌다.",
       "title": "2조 규모 공공수요·표준화 추진…\"중국산 가성비 장벽 넘는다\"[K드론 경고등③]"
+    },
+    "fact:654731b593a043e5830185bd": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/16/LFWMOBIUDJDQNAYSQMOZ6Q57BI/",
+      "source": "조선비즈",
+      "source_body_digest": "298e657c9f216506712d43fcdb0cba99f91385343ea8229d9447df48209792d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90ea017105ea486db6bb14e03d447d81c6b900412731bbd674d24b136cd54400",
+      "source_fact_keys": [
+        "source_fact:v1:113c98b5843e797f5371fa48802c16f7b9114c505f007c17ff614f28664e2711",
+        "source_fact:v1:200b6ef83950eccc64f3293e8a1ae3acfa52ce89681a52fc91085507f70262d0",
+        "source_fact:v1:32de7bbb69f531684a8f3d8057e9022078f1c1c01decf1abe063b6850a1811fe",
+        "source_fact:v1:374439c7c8e0021affecd914e7783b508d4b5eac20181ea98a9f70fc23f7e7e5",
+        "source_fact:v1:38272d1c1a0dbb91422501ab70c25702555e5546c98bdb53be6f62f3d5ad8d67",
+        "source_fact:v1:4499adb5ee8c044e4aa70d4aed19579566bf1c0ec374ea632ac997659088a3ef",
+        "source_fact:v1:5375a82b913efebb9cdabb52c9dd7588df7292fe6ec0d41583f894d584bf7e4e",
+        "source_fact:v1:5a997021b3ff0da31741ddeeefd00a118e6392bd4acb89c8c628b097d8cc022a",
+        "source_fact:v1:90ddf5467b8f18b1290ea39c4bf974dda6f1eda1e574f0c0bb70b2fe5b3c417c",
+        "source_fact:v1:9138501dcffb241b7e86b3fc663862162ba8e731c659e8f0f815d019faf442d1",
+        "source_fact:v1:a4232c0a0e3ab823d2316fdff3ee92cce567234035429a1742f24dc2abc9ec03",
+        "source_fact:v1:b6612a7d5d7f598eac00d16a01e5d592a8ef30c858cd76243d18e3b3eb8c317c",
+        "source_fact:v1:b8b8d846d11ff775aa89bbfae889636d78567b66b6ec5b2b2946c2bcb793ede8",
+        "source_fact:v1:db22efe5350ceb4088df8afed1bcb37576b962c79064f090a81ee880f6a30e53",
+        "source_fact:v1:e8c9e7087ea8e41b8b8bde401facd6cbff965a66567cef4d4e1c61cf0d1bd610"
+      ],
+      "source_published_kst": "2026-10-16T15:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력",
+      "telegram_core_fact": "양 기관은 네오디뮴(Nd) 사용량을 30% 줄이고 세륨(Ce)으로 대체하며, 중희토류인 디스프로슘(Dy)과 터븀(Tb)을 완전히 배제하는 Dy/Tb Free 기술을 적용해 MH HIMAG 상용화를 본격 추진한다.",
+      "title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력"
     },
     "fact:6564f047bf65ed8e2e6dfe6b": {
       "first_seen_kst": "2026-10-09T18:57:38+09:00",
@@ -131398,6 +131626,27 @@
       "telegram_core_fact": "대책 시행 1년간 가격·거래량·수요 이동과 임대차 시장 변화를 분석하고 규제 효과와 한계, 향후 시장 변수를 짚는다.",
       "title": "\"규제해도 집값 상승 압력 여전\"…10·15 대책 규제 1년, 남은 변수는?"
     },
+    "fact:cd60be7b8407e493e0ffca2f": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636687",
+      "source": "이투데이",
+      "source_body_digest": "17adce6c5d75285c011a249db24c1abbdc4481ef2aed05002d0df38414adf03c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6c8cbe1456385f2fd20d3ac319f714e4ca8550d8edc9641ec75b7ecd12f88bf9",
+      "source_fact_keys": [
+        "source_fact:v1:3e889c9822ced953b0e8d8f8ece57a8aa5312b933d28cc20ad0c28751572482b",
+        "source_fact:v1:43accefd9dbe4a79f2b447b7517e0c222ba3e1c9eebd577e5ced1b81a3311524"
+      ],
+      "source_published_kst": "2026-10-16T14:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "日, 안보백서에 트럼프 요구 'GDP 3.5% 방위비' 명시 보류 검토",
+      "telegram_core_fact": "일본 정부가 올 연말 개정될 안보 문서에서 도널드 트럼프 2기 행정부 출범 이후 미국이 꾸준히 요구했던 '국내총생산(GDP) 3.5% 수준 방위비' 목표를 명시하지 않는 것을 검토 중이다.",
+      "title": "日, 안보백서에 트럼프 요구 'GDP 3.5% 방위비' 명시 보류 검토"
+    },
     "fact:cd91baa6168d4315827cf6ca": {
       "first_seen_kst": "2026-10-07T09:44:16+09:00",
       "lanes": {
@@ -142590,6 +142839,28 @@
       "telegram_core_fact": "글로벌 핵심 산업 공급망 관리(SCM) 전문 기업 스피어가 인도네시아 제련소 가동을 통해 핵심 원소재 확보부터 글로벌 수출로 이어지는 밸류체인 수직계열화를 본격화한다.",
       "title": "스피어, 인니서 고순도 니켈 본격 양산…우주항공ㆍ방산 공급망 수직계열화 완성"
     },
+    "fact:f3a6845d9edcaf8eb4badf5d": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003828849",
+      "source": "뉴시스",
+      "source_body_digest": "4c89a0e532c615e2c21243379e74dc94301282f0c248d286212031ded25bc846",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:56d21a5735b37c916fd6bd70c2a6954fc3cf501a828e747a0891857c8d2f9264",
+      "source_fact_keys": [
+        "source_fact:v1:5443a768747b0cea936f8f193da62fbd3ce2195446e1bce1a446dfedbb49cec7",
+        "source_fact:v1:906bd7eb128da3dfdf8752d9ed593683cba67b08974c1074c9d806a411ee6ce1",
+        "source_fact:v1:b817eab8055f258014df92a56b8b044a388d19fd36e60fa4dabc3f9c93699257"
+      ],
+      "source_published_kst": "2026-10-17T00:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"200만원으로 시작해 10억 눈앞\"…40대 투자자의 자산 증식 비결",
+      "telegram_core_fact": "200만원으로 주식 투자를 시작해 약 10억원의 자산을 모은 40대 남성이 투자금 확대와 꾸준한 투자 습관의 중요성을 강조했다.",
+      "title": "\"200만원으로 시작해 10억 눈앞\"…40대 투자자의 자산 증식 비결"
+    },
     "fact:f3dae6b1432c3faa419c1a41": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
       "lanes": {
@@ -143528,6 +143799,32 @@
       "source_title": "올해 쌀 생산량 0.6% 감소 전망…재배면적 축소 영향",
       "telegram_core_fact": "올해 쌀 생산량이 지난해보다 0.6%, 벼 재배면적은 1.1% 가량 감소할 것으로 전망됐다. 8일 국가데이터가 발표한 '2026년 쌀 예상생산량조사 결과'를 보면 올해 쌀 생산량은 351만8000t으로 전년(353만9000t)보다 2만1000t(0.6%) 감소할 것으로 전망됐다.",
       "title": "올해 쌀 생산량 0.6% 감소 전망…재배면적 축소 영향"
+    },
+    "fact:f7d952c2a73fae200955d25a": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176138",
+      "source": "매일경제",
+      "source_body_digest": "69e5c62190b8a90162332c68e149df3a2e7cd544db25cfd3a31544bfcc1223d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:17e777cc410635e1996dd0a8d43dc1274555bf4fe84616003372769ce4464b2d",
+      "source_fact_keys": [
+        "source_fact:v1:1213fcf5e8eec22c83d614e0e354afd645021fe7f483ca28d6923227cc456904",
+        "source_fact:v1:af12aba1a704e72fe2684c890a16a8e26401cb2bc3c19e91c0f0d80ebf1f0a2f",
+        "source_fact:v1:b456a36716472e16a5987da0c4cb0acc6e12a0077b6c68e40e0db9a65ea85481",
+        "source_fact:v1:bf02fde02edde5e53ac320bcea50610ff447a502f0c4970a6aea188f10109c51",
+        "source_fact:v1:c7b4cf1a6d60aed783bd109c45671a7604ad5dd14359589434d80b685fb1833b",
+        "source_fact:v1:cc5c38b3ac0a72f6680f24045d7470386609851df679a106a79179c7eea50bf3",
+        "source_fact:v1:eff15af559067a04cef36adf1b7e0eca2f91b21a689b137b112da431cdfd605f"
+      ],
+      "source_published_kst": "2026-10-17T06:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "어드바사, 배당성향 50% 목표 배당정책 채택",
+      "telegram_core_fact": "핀테크 결제 지주회사 어드바사(ADBT)가 2027년 3월 31일 종료되는 회계연도부터 보통주 연간 현금배당성향 50%를 목표로 하는 배당정책을 이사회에서 채택했다고 16일 발표했다.",
+      "title": "어드바사, 배당성향 50% 목표 배당정책 채택"
     },
     "fact:f7e5651297221e31f82b7d6a": {
       "first_seen_kst": "2026-10-07T02:49:10+09:00",
@@ -186918,6 +187215,24 @@
       "source_published_kst": "2026-10-06T06:38+09:00",
       "title": "美 재무부 \"'이란 거래' 외국 금융기관, 사전 통보 없이 제재 부과\""
     },
+    "link:6c7368465573e5aa89088c27": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016046600002",
+      "source": "연합뉴스",
+      "source_body_digest": "0ddc5289b8c20ee21bfb144c5e74fabe08c675ed0a4191a26dcd354638651efd",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-16T10:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "정부·당국 \"증시 변동성 감시 강화…교란 행위 엄정 대응\" | 연합뉴스",
+      "telegram_core_fact": "이들은 최근 국내외 주식시장이 글로벌 금리 상승 전망, AI 반도체 업종의 투자 및 수익 전망에 대한 불확실성, 국제유가 상승에 따른 위험회피 심리 등으로 조정 국면을 맞고 있으며, 국내 증시는 다른 시장에 비해 업종 비중의 차이 등으로 변동성이 상대적으로 크게 나타나고 있다고 판단했다.",
+      "title": "정부·당국 \"증시 변동성 감시 강화…교란 행위 엄정 대응\" | 연합뉴스"
+    },
     "link:6c7b222b3baf3bcce5ad8570": {
       "first_seen_kst": "2026-10-01T22:33:20+09:00",
       "lanes": {
@@ -204985,6 +205300,32 @@
       "telegram_core_fact": "미국 수탁은행이자 자산운용사인 스테이트 스트리트(STT)는 지난 3분기 시장 예상치를 웃도는 주당순이익을 발표했지만, 매출이 기대에 미치지 못한 데다 대규모 현금 유출로 전체 순유입 규모가 급감하면서 14일(현지시간) 주가가 하락하고 있다.",
       "title": "[美특징주]스테이트 스트리트, 아쉬운 3Q 매출·대규모 현금 유출에 주가 '뚝'"
     },
+    "link:9c6a31f70f65e8309559bf42": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176138",
+      "source": "매일경제",
+      "source_body_digest": "69e5c62190b8a90162332c68e149df3a2e7cd544db25cfd3a31544bfcc1223d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:17e777cc410635e1996dd0a8d43dc1274555bf4fe84616003372769ce4464b2d",
+      "source_fact_keys": [
+        "source_fact:v1:1213fcf5e8eec22c83d614e0e354afd645021fe7f483ca28d6923227cc456904",
+        "source_fact:v1:af12aba1a704e72fe2684c890a16a8e26401cb2bc3c19e91c0f0d80ebf1f0a2f",
+        "source_fact:v1:b456a36716472e16a5987da0c4cb0acc6e12a0077b6c68e40e0db9a65ea85481",
+        "source_fact:v1:bf02fde02edde5e53ac320bcea50610ff447a502f0c4970a6aea188f10109c51",
+        "source_fact:v1:c7b4cf1a6d60aed783bd109c45671a7604ad5dd14359589434d80b685fb1833b",
+        "source_fact:v1:cc5c38b3ac0a72f6680f24045d7470386609851df679a106a79179c7eea50bf3",
+        "source_fact:v1:eff15af559067a04cef36adf1b7e0eca2f91b21a689b137b112da431cdfd605f"
+      ],
+      "source_published_kst": "2026-10-17T06:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "어드바사, 배당성향 50% 목표 배당정책 채택",
+      "telegram_core_fact": "핀테크 결제 지주회사 어드바사(ADBT)가 2027년 3월 31일 종료되는 회계연도부터 보통주 연간 현금배당성향 50%를 목표로 하는 배당정책을 이사회에서 채택했다고 16일 발표했다.",
+      "title": "어드바사, 배당성향 50% 목표 배당정책 채택"
+    },
     "link:9c6f377e450d2193183b2a39": {
       "first_seen_kst": "2026-10-16T22:57:47+09:00",
       "lanes": {
@@ -213312,6 +213653,40 @@
       "telegram_core_fact": "LG전자가 GS건설, 미국 액침냉각 전문기업 GRC와 손잡고 인공지능(AI) 데이터센터용 액침 냉각 기술 고도화와 표준설계 개발에 나선다. LG전자에 따르면 , 이들 3사는 서울 종로구 GS건설 본사에서 ‘데이터센터 액침냉각 기술과 설비 기술 개발 및 협력을 위한 업무협약(MOU)’을 체결했다.",
       "title": "LG전자, GS건설·美 GRC와 AI 데이터센터 액침냉각 기술 개발…차세대 냉각시장 공략 가속"
     },
+    "link:b22a0c9d94e842ae07c86ef6": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/16/LFWMOBIUDJDQNAYSQMOZ6Q57BI/",
+      "source": "조선비즈",
+      "source_body_digest": "298e657c9f216506712d43fcdb0cba99f91385343ea8229d9447df48209792d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90ea017105ea486db6bb14e03d447d81c6b900412731bbd674d24b136cd54400",
+      "source_fact_keys": [
+        "source_fact:v1:113c98b5843e797f5371fa48802c16f7b9114c505f007c17ff614f28664e2711",
+        "source_fact:v1:200b6ef83950eccc64f3293e8a1ae3acfa52ce89681a52fc91085507f70262d0",
+        "source_fact:v1:32de7bbb69f531684a8f3d8057e9022078f1c1c01decf1abe063b6850a1811fe",
+        "source_fact:v1:374439c7c8e0021affecd914e7783b508d4b5eac20181ea98a9f70fc23f7e7e5",
+        "source_fact:v1:38272d1c1a0dbb91422501ab70c25702555e5546c98bdb53be6f62f3d5ad8d67",
+        "source_fact:v1:4499adb5ee8c044e4aa70d4aed19579566bf1c0ec374ea632ac997659088a3ef",
+        "source_fact:v1:5375a82b913efebb9cdabb52c9dd7588df7292fe6ec0d41583f894d584bf7e4e",
+        "source_fact:v1:5a997021b3ff0da31741ddeeefd00a118e6392bd4acb89c8c628b097d8cc022a",
+        "source_fact:v1:90ddf5467b8f18b1290ea39c4bf974dda6f1eda1e574f0c0bb70b2fe5b3c417c",
+        "source_fact:v1:9138501dcffb241b7e86b3fc663862162ba8e731c659e8f0f815d019faf442d1",
+        "source_fact:v1:a4232c0a0e3ab823d2316fdff3ee92cce567234035429a1742f24dc2abc9ec03",
+        "source_fact:v1:b6612a7d5d7f598eac00d16a01e5d592a8ef30c858cd76243d18e3b3eb8c317c",
+        "source_fact:v1:b8b8d846d11ff775aa89bbfae889636d78567b66b6ec5b2b2946c2bcb793ede8",
+        "source_fact:v1:db22efe5350ceb4088df8afed1bcb37576b962c79064f090a81ee880f6a30e53",
+        "source_fact:v1:e8c9e7087ea8e41b8b8bde401facd6cbff965a66567cef4d4e1c61cf0d1bd610"
+      ],
+      "source_published_kst": "2026-10-16T15:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력",
+      "telegram_core_fact": "양 기관은 네오디뮴(Nd) 사용량을 30% 줄이고 세륨(Ce)으로 대체하며, 중희토류인 디스프로슘(Dy)과 터븀(Tb)을 완전히 배제하는 Dy/Tb Free 기술을 적용해 MH HIMAG 상용화를 본격 추진한다.",
+      "title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력"
+    },
     "link:b22ec1b117c3ee5ce41f7ce5": {
       "first_seen_kst": "2026-10-14T15:12:25+09:00",
       "lanes": {
@@ -214315,6 +214690,28 @@
       "source": "이투데이",
       "title": "[단독] ‘웨이팅 지옥’ 끝난다…CU, SNS서 뜬 ‘피자절편’ 전국 출시"
     },
+    "link:b4acb87ce458767b82b92fa4": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003828849",
+      "source": "뉴시스",
+      "source_body_digest": "4c89a0e532c615e2c21243379e74dc94301282f0c248d286212031ded25bc846",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:56d21a5735b37c916fd6bd70c2a6954fc3cf501a828e747a0891857c8d2f9264",
+      "source_fact_keys": [
+        "source_fact:v1:5443a768747b0cea936f8f193da62fbd3ce2195446e1bce1a446dfedbb49cec7",
+        "source_fact:v1:906bd7eb128da3dfdf8752d9ed593683cba67b08974c1074c9d806a411ee6ce1",
+        "source_fact:v1:b817eab8055f258014df92a56b8b044a388d19fd36e60fa4dabc3f9c93699257"
+      ],
+      "source_published_kst": "2026-10-17T00:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"200만원으로 시작해 10억 눈앞\"…40대 투자자의 자산 증식 비결",
+      "telegram_core_fact": "200만원으로 주식 투자를 시작해 약 10억원의 자산을 모은 40대 남성이 투자금 확대와 꾸준한 투자 습관의 중요성을 강조했다.",
+      "title": "\"200만원으로 시작해 10억 눈앞\"…40대 투자자의 자산 증식 비결"
+    },
     "link:b4b1f4faf1f4d0ada6d8568b": {
       "first_seen_kst": "2026-10-09T15:48:54+09:00",
       "lanes": {
@@ -214614,6 +215011,24 @@
       "link": "https://www.yna.co.kr/view/AKR20261001164851008",
       "source": "연합뉴스",
       "title": "국고채, 주요국 금리상승에 장기물 중심 약세(종합) | 연합뉴스"
+    },
+    "link:b55a01191d63284c96993b86": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829791",
+      "source": "뉴시스",
+      "source_body_digest": "fe2ec7b88fc8a2acc2fef4a9ef0d38877154b6fff594d1223cf0e7020e05091b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-16T23:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "국힘 과방위원, 이진숙 국감 배제에 \"민주당 명백한 국정감사 방해\"",
+      "telegram_core_fact": "이 의원은 YTN 지분 매각 결정과 아무런 관련도 없었던 것으로 확인됐다\"라며 \"그럼에도 야당 의원의 입을 틀어막는 본질적 이유는 공영방송 국정감사 전체를 방해하고, 이재명 정부의 실정을 덮고자 함이다\"라고 했다.",
+      "title": "국힘 과방위원, 이진숙 국감 배제에 \"민주당 명백한 국정감사 방해\""
     },
     "link:b55fd9d0f1f8a4a5f8a4d2dc": {
       "first_seen_kst": "2026-10-06T19:58:43+09:00",
@@ -216356,6 +216771,31 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T09:46+09:00",
       "title": "경영 파행에 먹튀·단기주의까지…‘밸류업 명분’ 소액주주 운동의 그림자 [재무제표 AI 독해]"
+    },
+    "link:b9f8949f28a1c941953dc04b": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261017000200098",
+      "source": "연합뉴스",
+      "source_body_digest": "c771bf8e1526a28796a6350aeac10dcab0edc6d5f3169918f10e823a0132716b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7696cdc08019876f3e76c41b38afaf5a02ec6af30723058ec6c19697a7fe39c4",
+      "source_fact_keys": [
+        "source_fact:v1:63a694f76f00746c921444856beebd9a97e9e48fe10e88517a4751c1001ed926",
+        "source_fact:v1:7181614244ea975d9033215da6860a1b66e025c2c0526d0376f2454b31537a53",
+        "source_fact:v1:7ed17839f2fbcf5ad7175d83d3c0386085a68749458d60aebc52ad2abff78e87",
+        "source_fact:v1:b23b0483aea868cfd164984c1fd5a9ba967b49ba8bed7cca4516eacab4f79dff",
+        "source_fact:v1:dd06d5fc10cfa10ef823f5f60970287a3c87d555c2af196f0da92e453589594e",
+        "source_fact:v1:eec6ba69dcb9aa0df715887e91998f988fde93b5c0ed65b973198457ba889a94"
+      ],
+      "source_published_kst": "2026-10-17T00:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "젤렌스키 \"러와 '경유딜' 부적절\"…트럼프 또 겨눠 | 연합뉴스",
+      "telegram_core_fact": "다음달 중간선거를 앞두고 유가 상승으로 인한 민심 악화에 고심하고 있는 트럼프 대통령은 최근 대러 제재를 일부 해제해 러시아산 경유를 시장에 풀겠다는 깜짝 발표를 한 뒤 일방적으로 '에너지 휴전'을 선포했고, 젤렌스키 대통령은 이에 공개적으로 반발하면서 양측의 갈등이 고조됐다.",
+      "title": "젤렌스키 \"러와 '경유딜' 부적절\"…트럼프 또 겨눠 | 연합뉴스"
     },
     "link:b9fa3acd255061fbf1bfffe7": {
       "first_seen_kst": "2026-10-12T07:27:08+09:00",
@@ -234361,6 +234801,27 @@
       "source_published_kst": "2026-10-05T12:37+09:00",
       "title": "\"메가·컴포즈 점주들 돈 많이 벌었겠네\"…실상은 달랐다"
     },
+    "link:ead6271f1029f85a55a22331": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636687",
+      "source": "이투데이",
+      "source_body_digest": "17adce6c5d75285c011a249db24c1abbdc4481ef2aed05002d0df38414adf03c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6c8cbe1456385f2fd20d3ac319f714e4ca8550d8edc9641ec75b7ecd12f88bf9",
+      "source_fact_keys": [
+        "source_fact:v1:3e889c9822ced953b0e8d8f8ece57a8aa5312b933d28cc20ad0c28751572482b",
+        "source_fact:v1:43accefd9dbe4a79f2b447b7517e0c222ba3e1c9eebd577e5ced1b81a3311524"
+      ],
+      "source_published_kst": "2026-10-16T14:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "日, 안보백서에 트럼프 요구 'GDP 3.5% 방위비' 명시 보류 검토",
+      "telegram_core_fact": "일본 정부가 올 연말 개정될 안보 문서에서 도널드 트럼프 2기 행정부 출범 이후 미국이 꾸준히 요구했던 '국내총생산(GDP) 3.5% 수준 방위비' 목표를 명시하지 않는 것을 검토 중이다.",
+      "title": "日, 안보백서에 트럼프 요구 'GDP 3.5% 방위비' 명시 보류 검토"
+    },
     "link:eadd2d5db17d9e926e994e77": {
       "first_seen_kst": "2026-10-11T14:49:05+09:00",
       "lanes": {
@@ -249427,6 +249888,28 @@
       "telegram_core_fact": "특히 개량신약과 약물재창출 분야에서는 이미 검증된 약물을 기반으로 해 개발 위험은 낮고 시장성은 높다는 점에 주목해 제약사가 곧바로 개발에 착수할 수 있는 후보물질을 공급한다는 방침이다.",
       "title": "신데카바이오 \"후보물질 공급\"…사업 방향 제시"
     },
+    "original:1398f7d33b3b7c2ef665c952": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003828849",
+      "source": "뉴시스",
+      "source_body_digest": "4c89a0e532c615e2c21243379e74dc94301282f0c248d286212031ded25bc846",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:56d21a5735b37c916fd6bd70c2a6954fc3cf501a828e747a0891857c8d2f9264",
+      "source_fact_keys": [
+        "source_fact:v1:5443a768747b0cea936f8f193da62fbd3ce2195446e1bce1a446dfedbb49cec7",
+        "source_fact:v1:906bd7eb128da3dfdf8752d9ed593683cba67b08974c1074c9d806a411ee6ce1",
+        "source_fact:v1:b817eab8055f258014df92a56b8b044a388d19fd36e60fa4dabc3f9c93699257"
+      ],
+      "source_published_kst": "2026-10-17T00:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"200만원으로 시작해 10억 눈앞\"…40대 투자자의 자산 증식 비결",
+      "telegram_core_fact": "200만원으로 주식 투자를 시작해 약 10억원의 자산을 모은 40대 남성이 투자금 확대와 꾸준한 투자 습관의 중요성을 강조했다.",
+      "title": "\"200만원으로 시작해 10억 눈앞\"…40대 투자자의 자산 증식 비결"
+    },
     "original:13c39f668f490e7ae8044cdb": {
       "first_seen_kst": "2026-10-05T14:44:39+09:00",
       "lanes": {
@@ -256811,6 +257294,40 @@
       "telegram_core_fact": "이란은 또 미군의 해상 봉쇄로 원유 수출이 막히면서 경제적 파탄 직전에 놓여 있다.",
       "title": "이란 공격 피해 허둥지둥 철수하는 미군"
     },
+    "original:27acb9b740eea6a830e3e6bc": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/16/LFWMOBIUDJDQNAYSQMOZ6Q57BI/",
+      "source": "조선비즈",
+      "source_body_digest": "298e657c9f216506712d43fcdb0cba99f91385343ea8229d9447df48209792d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90ea017105ea486db6bb14e03d447d81c6b900412731bbd674d24b136cd54400",
+      "source_fact_keys": [
+        "source_fact:v1:113c98b5843e797f5371fa48802c16f7b9114c505f007c17ff614f28664e2711",
+        "source_fact:v1:200b6ef83950eccc64f3293e8a1ae3acfa52ce89681a52fc91085507f70262d0",
+        "source_fact:v1:32de7bbb69f531684a8f3d8057e9022078f1c1c01decf1abe063b6850a1811fe",
+        "source_fact:v1:374439c7c8e0021affecd914e7783b508d4b5eac20181ea98a9f70fc23f7e7e5",
+        "source_fact:v1:38272d1c1a0dbb91422501ab70c25702555e5546c98bdb53be6f62f3d5ad8d67",
+        "source_fact:v1:4499adb5ee8c044e4aa70d4aed19579566bf1c0ec374ea632ac997659088a3ef",
+        "source_fact:v1:5375a82b913efebb9cdabb52c9dd7588df7292fe6ec0d41583f894d584bf7e4e",
+        "source_fact:v1:5a997021b3ff0da31741ddeeefd00a118e6392bd4acb89c8c628b097d8cc022a",
+        "source_fact:v1:90ddf5467b8f18b1290ea39c4bf974dda6f1eda1e574f0c0bb70b2fe5b3c417c",
+        "source_fact:v1:9138501dcffb241b7e86b3fc663862162ba8e731c659e8f0f815d019faf442d1",
+        "source_fact:v1:a4232c0a0e3ab823d2316fdff3ee92cce567234035429a1742f24dc2abc9ec03",
+        "source_fact:v1:b6612a7d5d7f598eac00d16a01e5d592a8ef30c858cd76243d18e3b3eb8c317c",
+        "source_fact:v1:b8b8d846d11ff775aa89bbfae889636d78567b66b6ec5b2b2946c2bcb793ede8",
+        "source_fact:v1:db22efe5350ceb4088df8afed1bcb37576b962c79064f090a81ee880f6a30e53",
+        "source_fact:v1:e8c9e7087ea8e41b8b8bde401facd6cbff965a66567cef4d4e1c61cf0d1bd610"
+      ],
+      "source_published_kst": "2026-10-16T15:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력",
+      "telegram_core_fact": "양 기관은 네오디뮴(Nd) 사용량을 30% 줄이고 세륨(Ce)으로 대체하며, 중희토류인 디스프로슘(Dy)과 터븀(Tb)을 완전히 배제하는 Dy/Tb Free 기술을 적용해 MH HIMAG 상용화를 본격 추진한다.",
+      "title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력"
+    },
     "original:27bea0bf48e88eec467aa3a7": {
       "first_seen_kst": "2026-09-23T05:55:25+09:00",
       "lanes": {
@@ -260582,6 +261099,24 @@
       "source": "이데일리",
       "source_event_identity": "",
       "title": "경영권 내려놓은 차상훈 대표 'APB-R3'로 'SAFA' 가치 증명할까[화제의 바이오人]"
+    },
+    "original:313cbdc9be38f5fd71005e7c": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829791",
+      "source": "뉴시스",
+      "source_body_digest": "fe2ec7b88fc8a2acc2fef4a9ef0d38877154b6fff594d1223cf0e7020e05091b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-16T23:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "국힘 과방위원, 이진숙 국감 배제에 \"민주당 명백한 국정감사 방해\"",
+      "telegram_core_fact": "이 의원은 YTN 지분 매각 결정과 아무런 관련도 없었던 것으로 확인됐다\"라며 \"그럼에도 야당 의원의 입을 틀어막는 본질적 이유는 공영방송 국정감사 전체를 방해하고, 이재명 정부의 실정을 덮고자 함이다\"라고 했다.",
+      "title": "국힘 과방위원, 이진숙 국감 배제에 \"민주당 명백한 국정감사 방해\""
     },
     "original:314161454b8b62071b8902ca": {
       "first_seen_kst": "2026-10-02T02:03:30+09:00",
@@ -285046,6 +285581,32 @@
       "source_published_kst": "2026-10-07T08:44+09:00",
       "title": "에메라, 캐나디언유틸리티스 143억 달러 인수 합의"
     },
+    "original:73662616f642e27d31ff7ef9": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176138",
+      "source": "매일경제",
+      "source_body_digest": "69e5c62190b8a90162332c68e149df3a2e7cd544db25cfd3a31544bfcc1223d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:17e777cc410635e1996dd0a8d43dc1274555bf4fe84616003372769ce4464b2d",
+      "source_fact_keys": [
+        "source_fact:v1:1213fcf5e8eec22c83d614e0e354afd645021fe7f483ca28d6923227cc456904",
+        "source_fact:v1:af12aba1a704e72fe2684c890a16a8e26401cb2bc3c19e91c0f0d80ebf1f0a2f",
+        "source_fact:v1:b456a36716472e16a5987da0c4cb0acc6e12a0077b6c68e40e0db9a65ea85481",
+        "source_fact:v1:bf02fde02edde5e53ac320bcea50610ff447a502f0c4970a6aea188f10109c51",
+        "source_fact:v1:c7b4cf1a6d60aed783bd109c45671a7604ad5dd14359589434d80b685fb1833b",
+        "source_fact:v1:cc5c38b3ac0a72f6680f24045d7470386609851df679a106a79179c7eea50bf3",
+        "source_fact:v1:eff15af559067a04cef36adf1b7e0eca2f91b21a689b137b112da431cdfd605f"
+      ],
+      "source_published_kst": "2026-10-17T06:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "어드바사, 배당성향 50% 목표 배당정책 채택",
+      "telegram_core_fact": "핀테크 결제 지주회사 어드바사(ADBT)가 2027년 3월 31일 종료되는 회계연도부터 보통주 연간 현금배당성향 50%를 목표로 하는 배당정책을 이사회에서 채택했다고 16일 발표했다.",
+      "title": "어드바사, 배당성향 50% 목표 배당정책 채택"
+    },
     "original:7377aae93fb782c63d2ad000": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
       "lanes": {
@@ -289046,6 +289607,27 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-03T10:31+09:00",
       "title": "JYP, 중대 결정...파격 '보이콧' 선언"
+    },
+    "original:7edadbfb01968d21f5c243a9": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636687",
+      "source": "이투데이",
+      "source_body_digest": "17adce6c5d75285c011a249db24c1abbdc4481ef2aed05002d0df38414adf03c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6c8cbe1456385f2fd20d3ac319f714e4ca8550d8edc9641ec75b7ecd12f88bf9",
+      "source_fact_keys": [
+        "source_fact:v1:3e889c9822ced953b0e8d8f8ece57a8aa5312b933d28cc20ad0c28751572482b",
+        "source_fact:v1:43accefd9dbe4a79f2b447b7517e0c222ba3e1c9eebd577e5ced1b81a3311524"
+      ],
+      "source_published_kst": "2026-10-16T14:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "日, 안보백서에 트럼프 요구 'GDP 3.5% 방위비' 명시 보류 검토",
+      "telegram_core_fact": "일본 정부가 올 연말 개정될 안보 문서에서 도널드 트럼프 2기 행정부 출범 이후 미국이 꾸준히 요구했던 '국내총생산(GDP) 3.5% 수준 방위비' 목표를 명시하지 않는 것을 검토 중이다.",
+      "title": "日, 안보백서에 트럼프 요구 'GDP 3.5% 방위비' 명시 보류 검토"
     },
     "original:7efc7856348fb5f20f16772e": {
       "first_seen_kst": "2026-10-12T11:51:53+09:00",
@@ -319657,6 +320239,24 @@
       "telegram_core_fact": "코스닥 상장을 추진 중인 1조원 IPO 대어, 엘리스그룹 또한 기대주로 꼽힌다.",
       "title": "얼어붙은 3분기 IPO 시장…무신사·소노, 구원투수될까"
     },
+    "original:d34534e798acae490dda8406": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016046600002",
+      "source": "연합뉴스",
+      "source_body_digest": "0ddc5289b8c20ee21bfb144c5e74fabe08c675ed0a4191a26dcd354638651efd",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-16T10:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "정부·당국 \"증시 변동성 감시 강화…교란 행위 엄정 대응\" | 연합뉴스",
+      "telegram_core_fact": "이들은 최근 국내외 주식시장이 글로벌 금리 상승 전망, AI 반도체 업종의 투자 및 수익 전망에 대한 불확실성, 국제유가 상승에 따른 위험회피 심리 등으로 조정 국면을 맞고 있으며, 국내 증시는 다른 시장에 비해 업종 비중의 차이 등으로 변동성이 상대적으로 크게 나타나고 있다고 판단했다.",
+      "title": "정부·당국 \"증시 변동성 감시 강화…교란 행위 엄정 대응\" | 연합뉴스"
+    },
     "original:d34711fa198e989bee621bfc": {
       "first_seen_kst": "2026-10-02T12:38:28+09:00",
       "lanes": {
@@ -329917,6 +330517,31 @@
       "link": "https://www.yna.co.kr/view/AKR20260928104700003",
       "source": "연합뉴스",
       "title": "SK하이닉스, TSMC 행사서 AI 메모리 공개…2년 연속 파트너상 | 연합뉴스"
+    },
+    "original:eff324d4f701f58fcacbc825": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261017000200098",
+      "source": "연합뉴스",
+      "source_body_digest": "c771bf8e1526a28796a6350aeac10dcab0edc6d5f3169918f10e823a0132716b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7696cdc08019876f3e76c41b38afaf5a02ec6af30723058ec6c19697a7fe39c4",
+      "source_fact_keys": [
+        "source_fact:v1:63a694f76f00746c921444856beebd9a97e9e48fe10e88517a4751c1001ed926",
+        "source_fact:v1:7181614244ea975d9033215da6860a1b66e025c2c0526d0376f2454b31537a53",
+        "source_fact:v1:7ed17839f2fbcf5ad7175d83d3c0386085a68749458d60aebc52ad2abff78e87",
+        "source_fact:v1:b23b0483aea868cfd164984c1fd5a9ba967b49ba8bed7cca4516eacab4f79dff",
+        "source_fact:v1:dd06d5fc10cfa10ef823f5f60970287a3c87d555c2af196f0da92e453589594e",
+        "source_fact:v1:eec6ba69dcb9aa0df715887e91998f988fde93b5c0ed65b973198457ba889a94"
+      ],
+      "source_published_kst": "2026-10-17T00:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "젤렌스키 \"러와 '경유딜' 부적절\"…트럼프 또 겨눠 | 연합뉴스",
+      "telegram_core_fact": "다음달 중간선거를 앞두고 유가 상승으로 인한 민심 악화에 고심하고 있는 트럼프 대통령은 최근 대러 제재를 일부 해제해 러시아산 경유를 시장에 풀겠다는 깜짝 발표를 한 뒤 일방적으로 '에너지 휴전'을 선포했고, 젤렌스키 대통령은 이에 공개적으로 반발하면서 양측의 갈등이 고조됐다.",
+      "title": "젤렌스키 \"러와 '경유딜' 부적절\"…트럼프 또 겨눠 | 연합뉴스"
     },
     "original:f01ff81dfb64a02bb1e11b36": {
       "first_seen_kst": "2026-10-15T02:27:03+09:00",
@@ -340501,6 +341126,32 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 치솟는 경유 가격을 잡기 위해 러시아산 경유의 미국 수입 등을 허용하는 한시적인 대러 제재 완화 조치를 발표했다.",
       "title": "중간선거 앞 기름값 급등에…트럼프, 대러 제재 풀고 경유 수입"
     },
+    "source_fact:0347a0199aa97936c9952304": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176138",
+      "source": "매일경제",
+      "source_body_digest": "69e5c62190b8a90162332c68e149df3a2e7cd544db25cfd3a31544bfcc1223d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:17e777cc410635e1996dd0a8d43dc1274555bf4fe84616003372769ce4464b2d",
+      "source_fact_keys": [
+        "source_fact:v1:1213fcf5e8eec22c83d614e0e354afd645021fe7f483ca28d6923227cc456904",
+        "source_fact:v1:af12aba1a704e72fe2684c890a16a8e26401cb2bc3c19e91c0f0d80ebf1f0a2f",
+        "source_fact:v1:b456a36716472e16a5987da0c4cb0acc6e12a0077b6c68e40e0db9a65ea85481",
+        "source_fact:v1:bf02fde02edde5e53ac320bcea50610ff447a502f0c4970a6aea188f10109c51",
+        "source_fact:v1:c7b4cf1a6d60aed783bd109c45671a7604ad5dd14359589434d80b685fb1833b",
+        "source_fact:v1:cc5c38b3ac0a72f6680f24045d7470386609851df679a106a79179c7eea50bf3",
+        "source_fact:v1:eff15af559067a04cef36adf1b7e0eca2f91b21a689b137b112da431cdfd605f"
+      ],
+      "source_published_kst": "2026-10-17T06:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "어드바사, 배당성향 50% 목표 배당정책 채택",
+      "telegram_core_fact": "핀테크 결제 지주회사 어드바사(ADBT)가 2027년 3월 31일 종료되는 회계연도부터 보통주 연간 현금배당성향 50%를 목표로 하는 배당정책을 이사회에서 채택했다고 16일 발표했다.",
+      "title": "어드바사, 배당성향 50% 목표 배당정책 채택"
+    },
     "source_fact:034faa19e3c9f53ba7c63556": {
       "first_seen_kst": "2026-10-08T08:31:37+09:00",
       "lanes": {
@@ -343464,6 +344115,40 @@
       "source_title": "키움운용, '삼성전자·SK하이닉스 채권혼합 ETF' 10월 주당 146원 지급",
       "telegram_core_fact": "이 상품은 주식 편입 비중이 50%인 채권혼합형 ETF로, 퇴직연금 확정기여형(DC)과 개인형퇴직연금(IRP) 계좌에서 투자금의 최대 100%까지 편입할 수 있다.",
       "title": "키움운용, '삼성전자·SK하이닉스 채권혼합 ETF' 10월 주당 146원 지급"
+    },
+    "source_fact:056bec34a4174f4a6d832c7a": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/16/LFWMOBIUDJDQNAYSQMOZ6Q57BI/",
+      "source": "조선비즈",
+      "source_body_digest": "298e657c9f216506712d43fcdb0cba99f91385343ea8229d9447df48209792d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90ea017105ea486db6bb14e03d447d81c6b900412731bbd674d24b136cd54400",
+      "source_fact_keys": [
+        "source_fact:v1:113c98b5843e797f5371fa48802c16f7b9114c505f007c17ff614f28664e2711",
+        "source_fact:v1:200b6ef83950eccc64f3293e8a1ae3acfa52ce89681a52fc91085507f70262d0",
+        "source_fact:v1:32de7bbb69f531684a8f3d8057e9022078f1c1c01decf1abe063b6850a1811fe",
+        "source_fact:v1:374439c7c8e0021affecd914e7783b508d4b5eac20181ea98a9f70fc23f7e7e5",
+        "source_fact:v1:38272d1c1a0dbb91422501ab70c25702555e5546c98bdb53be6f62f3d5ad8d67",
+        "source_fact:v1:4499adb5ee8c044e4aa70d4aed19579566bf1c0ec374ea632ac997659088a3ef",
+        "source_fact:v1:5375a82b913efebb9cdabb52c9dd7588df7292fe6ec0d41583f894d584bf7e4e",
+        "source_fact:v1:5a997021b3ff0da31741ddeeefd00a118e6392bd4acb89c8c628b097d8cc022a",
+        "source_fact:v1:90ddf5467b8f18b1290ea39c4bf974dda6f1eda1e574f0c0bb70b2fe5b3c417c",
+        "source_fact:v1:9138501dcffb241b7e86b3fc663862162ba8e731c659e8f0f815d019faf442d1",
+        "source_fact:v1:a4232c0a0e3ab823d2316fdff3ee92cce567234035429a1742f24dc2abc9ec03",
+        "source_fact:v1:b6612a7d5d7f598eac00d16a01e5d592a8ef30c858cd76243d18e3b3eb8c317c",
+        "source_fact:v1:b8b8d846d11ff775aa89bbfae889636d78567b66b6ec5b2b2946c2bcb793ede8",
+        "source_fact:v1:db22efe5350ceb4088df8afed1bcb37576b962c79064f090a81ee880f6a30e53",
+        "source_fact:v1:e8c9e7087ea8e41b8b8bde401facd6cbff965a66567cef4d4e1c61cf0d1bd610"
+      ],
+      "source_published_kst": "2026-10-16T15:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력",
+      "telegram_core_fact": "양 기관은 네오디뮴(Nd) 사용량을 30% 줄이고 세륨(Ce)으로 대체하며, 중희토류인 디스프로슘(Dy)과 터븀(Tb)을 완전히 배제하는 Dy/Tb Free 기술을 적용해 MH HIMAG 상용화를 본격 추진한다.",
+      "title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력"
     },
     "source_fact:056ffe5c8af29ed02e8c899e": {
       "first_seen_kst": "2026-10-07T18:12:46+09:00",
@@ -362201,6 +362886,31 @@
       "telegram_core_fact": "최근 일주일 동안 개인들이 주가 상승에 베팅하는 레버리지 ETF를 5000억원 가까이 사들인 반면, 기관은 주가 하락 시 수익을 내는 인버스 ETF를 집중 매수한 것으로 나타났다.",
       "title": "‘진짜 강심장’ 이 와중에 ‘레버리지’ 투자라니 …정작 기관은 ‘곱버스’ 베팅 [투자360]"
     },
+    "source_fact:126423d2fca07fb48377dec6": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261017000200098",
+      "source": "연합뉴스",
+      "source_body_digest": "c771bf8e1526a28796a6350aeac10dcab0edc6d5f3169918f10e823a0132716b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7696cdc08019876f3e76c41b38afaf5a02ec6af30723058ec6c19697a7fe39c4",
+      "source_fact_keys": [
+        "source_fact:v1:63a694f76f00746c921444856beebd9a97e9e48fe10e88517a4751c1001ed926",
+        "source_fact:v1:7181614244ea975d9033215da6860a1b66e025c2c0526d0376f2454b31537a53",
+        "source_fact:v1:7ed17839f2fbcf5ad7175d83d3c0386085a68749458d60aebc52ad2abff78e87",
+        "source_fact:v1:b23b0483aea868cfd164984c1fd5a9ba967b49ba8bed7cca4516eacab4f79dff",
+        "source_fact:v1:dd06d5fc10cfa10ef823f5f60970287a3c87d555c2af196f0da92e453589594e",
+        "source_fact:v1:eec6ba69dcb9aa0df715887e91998f988fde93b5c0ed65b973198457ba889a94"
+      ],
+      "source_published_kst": "2026-10-17T00:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "젤렌스키 \"러와 '경유딜' 부적절\"…트럼프 또 겨눠 | 연합뉴스",
+      "telegram_core_fact": "다음달 중간선거를 앞두고 유가 상승으로 인한 민심 악화에 고심하고 있는 트럼프 대통령은 최근 대러 제재를 일부 해제해 러시아산 경유를 시장에 풀겠다는 깜짝 발표를 한 뒤 일방적으로 '에너지 휴전'을 선포했고, 젤렌스키 대통령은 이에 공개적으로 반발하면서 양측의 갈등이 고조됐다.",
+      "title": "젤렌스키 \"러와 '경유딜' 부적절\"…트럼프 또 겨눠 | 연합뉴스"
+    },
     "source_fact:126ecab4dc64c020ae081799": {
       "first_seen_kst": "2026-10-09T20:48:52+09:00",
       "lanes": {
@@ -374430,6 +375140,32 @@
       "source_published_kst": "2026-10-07T09:16+09:00",
       "title": "덕산넵코어스, 누리호 5차 발사 위성항법수신기·안테나 공급"
     },
+    "source_fact:1afee06803caa40a7b6fc86c": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176138",
+      "source": "매일경제",
+      "source_body_digest": "69e5c62190b8a90162332c68e149df3a2e7cd544db25cfd3a31544bfcc1223d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:17e777cc410635e1996dd0a8d43dc1274555bf4fe84616003372769ce4464b2d",
+      "source_fact_keys": [
+        "source_fact:v1:1213fcf5e8eec22c83d614e0e354afd645021fe7f483ca28d6923227cc456904",
+        "source_fact:v1:af12aba1a704e72fe2684c890a16a8e26401cb2bc3c19e91c0f0d80ebf1f0a2f",
+        "source_fact:v1:b456a36716472e16a5987da0c4cb0acc6e12a0077b6c68e40e0db9a65ea85481",
+        "source_fact:v1:bf02fde02edde5e53ac320bcea50610ff447a502f0c4970a6aea188f10109c51",
+        "source_fact:v1:c7b4cf1a6d60aed783bd109c45671a7604ad5dd14359589434d80b685fb1833b",
+        "source_fact:v1:cc5c38b3ac0a72f6680f24045d7470386609851df679a106a79179c7eea50bf3",
+        "source_fact:v1:eff15af559067a04cef36adf1b7e0eca2f91b21a689b137b112da431cdfd605f"
+      ],
+      "source_published_kst": "2026-10-17T06:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "어드바사, 배당성향 50% 목표 배당정책 채택",
+      "telegram_core_fact": "핀테크 결제 지주회사 어드바사(ADBT)가 2027년 3월 31일 종료되는 회계연도부터 보통주 연간 현금배당성향 50%를 목표로 하는 배당정책을 이사회에서 채택했다고 16일 발표했다.",
+      "title": "어드바사, 배당성향 50% 목표 배당정책 채택"
+    },
     "source_fact:1b09b4fe411f2826272fa99e": {
       "first_seen_kst": "2026-10-06T10:04:04+09:00",
       "lanes": {
@@ -377251,6 +377987,40 @@
       "source_title": "이성훈 LH 사장 “수도권 8만6000가구 착공”⋯분사·인력난 해소 과제 [국감] [종합]",
       "telegram_core_fact": "이 사장은 \"올해 수도권 8만6000가구, 전국 9만6000가구의 주택을 착공하겠다\"며 \"조성한 택지의 민간 매각을 중단하고 직접 시행으로 전환하면서 내부 조직 개편과 인력 재배치를 통해 공급 물량과 속도를 높여가고 있다\"고 말했다.",
       "title": "이성훈 LH 사장 “수도권 8만6000가구 착공”⋯분사·인력난 해소 과제 [국감] [종합]"
+    },
+    "source_fact:1ca69eb88c8adaa26b815321": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/16/LFWMOBIUDJDQNAYSQMOZ6Q57BI/",
+      "source": "조선비즈",
+      "source_body_digest": "298e657c9f216506712d43fcdb0cba99f91385343ea8229d9447df48209792d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90ea017105ea486db6bb14e03d447d81c6b900412731bbd674d24b136cd54400",
+      "source_fact_keys": [
+        "source_fact:v1:113c98b5843e797f5371fa48802c16f7b9114c505f007c17ff614f28664e2711",
+        "source_fact:v1:200b6ef83950eccc64f3293e8a1ae3acfa52ce89681a52fc91085507f70262d0",
+        "source_fact:v1:32de7bbb69f531684a8f3d8057e9022078f1c1c01decf1abe063b6850a1811fe",
+        "source_fact:v1:374439c7c8e0021affecd914e7783b508d4b5eac20181ea98a9f70fc23f7e7e5",
+        "source_fact:v1:38272d1c1a0dbb91422501ab70c25702555e5546c98bdb53be6f62f3d5ad8d67",
+        "source_fact:v1:4499adb5ee8c044e4aa70d4aed19579566bf1c0ec374ea632ac997659088a3ef",
+        "source_fact:v1:5375a82b913efebb9cdabb52c9dd7588df7292fe6ec0d41583f894d584bf7e4e",
+        "source_fact:v1:5a997021b3ff0da31741ddeeefd00a118e6392bd4acb89c8c628b097d8cc022a",
+        "source_fact:v1:90ddf5467b8f18b1290ea39c4bf974dda6f1eda1e574f0c0bb70b2fe5b3c417c",
+        "source_fact:v1:9138501dcffb241b7e86b3fc663862162ba8e731c659e8f0f815d019faf442d1",
+        "source_fact:v1:a4232c0a0e3ab823d2316fdff3ee92cce567234035429a1742f24dc2abc9ec03",
+        "source_fact:v1:b6612a7d5d7f598eac00d16a01e5d592a8ef30c858cd76243d18e3b3eb8c317c",
+        "source_fact:v1:b8b8d846d11ff775aa89bbfae889636d78567b66b6ec5b2b2946c2bcb793ede8",
+        "source_fact:v1:db22efe5350ceb4088df8afed1bcb37576b962c79064f090a81ee880f6a30e53",
+        "source_fact:v1:e8c9e7087ea8e41b8b8bde401facd6cbff965a66567cef4d4e1c61cf0d1bd610"
+      ],
+      "source_published_kst": "2026-10-16T15:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력",
+      "telegram_core_fact": "양 기관은 네오디뮴(Nd) 사용량을 30% 줄이고 세륨(Ce)으로 대체하며, 중희토류인 디스프로슘(Dy)과 터븀(Tb)을 완전히 배제하는 Dy/Tb Free 기술을 적용해 MH HIMAG 상용화를 본격 추진한다.",
+      "title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력"
     },
     "source_fact:1ca6b9e0d58611eab68aa25f": {
       "first_seen_kst": "2026-10-12T02:51:54+09:00",
@@ -386615,6 +387385,40 @@
       "source_title": "국제유가 하락…글로벌 비축유 방출 가속에 WTI 1.3%↓",
       "telegram_core_fact": "IEA는 앞서 발표한 비축유 방출을 최대한 신속하게 완료하면 약 1억배럴의 원유와 석유제품이 시장에 공급될 수 있다고 밝혔다.",
       "title": "국제유가 하락…글로벌 비축유 방출 가속에 WTI 1.3%↓"
+    },
+    "source_fact:22e32c5b9b9da9ae1e832408": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/16/LFWMOBIUDJDQNAYSQMOZ6Q57BI/",
+      "source": "조선비즈",
+      "source_body_digest": "298e657c9f216506712d43fcdb0cba99f91385343ea8229d9447df48209792d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90ea017105ea486db6bb14e03d447d81c6b900412731bbd674d24b136cd54400",
+      "source_fact_keys": [
+        "source_fact:v1:113c98b5843e797f5371fa48802c16f7b9114c505f007c17ff614f28664e2711",
+        "source_fact:v1:200b6ef83950eccc64f3293e8a1ae3acfa52ce89681a52fc91085507f70262d0",
+        "source_fact:v1:32de7bbb69f531684a8f3d8057e9022078f1c1c01decf1abe063b6850a1811fe",
+        "source_fact:v1:374439c7c8e0021affecd914e7783b508d4b5eac20181ea98a9f70fc23f7e7e5",
+        "source_fact:v1:38272d1c1a0dbb91422501ab70c25702555e5546c98bdb53be6f62f3d5ad8d67",
+        "source_fact:v1:4499adb5ee8c044e4aa70d4aed19579566bf1c0ec374ea632ac997659088a3ef",
+        "source_fact:v1:5375a82b913efebb9cdabb52c9dd7588df7292fe6ec0d41583f894d584bf7e4e",
+        "source_fact:v1:5a997021b3ff0da31741ddeeefd00a118e6392bd4acb89c8c628b097d8cc022a",
+        "source_fact:v1:90ddf5467b8f18b1290ea39c4bf974dda6f1eda1e574f0c0bb70b2fe5b3c417c",
+        "source_fact:v1:9138501dcffb241b7e86b3fc663862162ba8e731c659e8f0f815d019faf442d1",
+        "source_fact:v1:a4232c0a0e3ab823d2316fdff3ee92cce567234035429a1742f24dc2abc9ec03",
+        "source_fact:v1:b6612a7d5d7f598eac00d16a01e5d592a8ef30c858cd76243d18e3b3eb8c317c",
+        "source_fact:v1:b8b8d846d11ff775aa89bbfae889636d78567b66b6ec5b2b2946c2bcb793ede8",
+        "source_fact:v1:db22efe5350ceb4088df8afed1bcb37576b962c79064f090a81ee880f6a30e53",
+        "source_fact:v1:e8c9e7087ea8e41b8b8bde401facd6cbff965a66567cef4d4e1c61cf0d1bd610"
+      ],
+      "source_published_kst": "2026-10-16T15:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력",
+      "telegram_core_fact": "양 기관은 네오디뮴(Nd) 사용량을 30% 줄이고 세륨(Ce)으로 대체하며, 중희토류인 디스프로슘(Dy)과 터븀(Tb)을 완전히 배제하는 Dy/Tb Free 기술을 적용해 MH HIMAG 상용화를 본격 추진한다.",
+      "title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력"
     },
     "source_fact:22e834b152665a370f8b743b": {
       "first_seen_kst": "2026-10-07T00:38:27+09:00",
@@ -422691,6 +423495,40 @@
       "telegram_core_fact": "이날 삼성그룹 초기업노동조합 삼성지부(이하 초기업노조)는 올해 영업이익 컨센서스(시장 평균 전망치) 370조원을 전제로, 연봉 8천만원대 초반 직원 1인당 세전 기준 ▲ 메모리사업부 약 7억5천만원 ▲ 공통 조직 약 5억3천만원 ▲ 시스템LSI·파운드리사업부 약 2억4천만원의 성과급이 예상된다고 밝혔다.",
       "title": "삼성전자 성과급 내년 3월말 지급…8천만원 연봉시 최대 7.5억원(종합)"
     },
+    "source_fact:3bc01224ff237ff39b9d1e4b": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/16/LFWMOBIUDJDQNAYSQMOZ6Q57BI/",
+      "source": "조선비즈",
+      "source_body_digest": "298e657c9f216506712d43fcdb0cba99f91385343ea8229d9447df48209792d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90ea017105ea486db6bb14e03d447d81c6b900412731bbd674d24b136cd54400",
+      "source_fact_keys": [
+        "source_fact:v1:113c98b5843e797f5371fa48802c16f7b9114c505f007c17ff614f28664e2711",
+        "source_fact:v1:200b6ef83950eccc64f3293e8a1ae3acfa52ce89681a52fc91085507f70262d0",
+        "source_fact:v1:32de7bbb69f531684a8f3d8057e9022078f1c1c01decf1abe063b6850a1811fe",
+        "source_fact:v1:374439c7c8e0021affecd914e7783b508d4b5eac20181ea98a9f70fc23f7e7e5",
+        "source_fact:v1:38272d1c1a0dbb91422501ab70c25702555e5546c98bdb53be6f62f3d5ad8d67",
+        "source_fact:v1:4499adb5ee8c044e4aa70d4aed19579566bf1c0ec374ea632ac997659088a3ef",
+        "source_fact:v1:5375a82b913efebb9cdabb52c9dd7588df7292fe6ec0d41583f894d584bf7e4e",
+        "source_fact:v1:5a997021b3ff0da31741ddeeefd00a118e6392bd4acb89c8c628b097d8cc022a",
+        "source_fact:v1:90ddf5467b8f18b1290ea39c4bf974dda6f1eda1e574f0c0bb70b2fe5b3c417c",
+        "source_fact:v1:9138501dcffb241b7e86b3fc663862162ba8e731c659e8f0f815d019faf442d1",
+        "source_fact:v1:a4232c0a0e3ab823d2316fdff3ee92cce567234035429a1742f24dc2abc9ec03",
+        "source_fact:v1:b6612a7d5d7f598eac00d16a01e5d592a8ef30c858cd76243d18e3b3eb8c317c",
+        "source_fact:v1:b8b8d846d11ff775aa89bbfae889636d78567b66b6ec5b2b2946c2bcb793ede8",
+        "source_fact:v1:db22efe5350ceb4088df8afed1bcb37576b962c79064f090a81ee880f6a30e53",
+        "source_fact:v1:e8c9e7087ea8e41b8b8bde401facd6cbff965a66567cef4d4e1c61cf0d1bd610"
+      ],
+      "source_published_kst": "2026-10-16T15:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력",
+      "telegram_core_fact": "양 기관은 네오디뮴(Nd) 사용량을 30% 줄이고 세륨(Ce)으로 대체하며, 중희토류인 디스프로슘(Dy)과 터븀(Tb)을 완전히 배제하는 Dy/Tb Free 기술을 적용해 MH HIMAG 상용화를 본격 추진한다.",
+      "title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력"
+    },
     "source_fact:3bc7b50c3848fe9e37414a5a": {
       "first_seen_kst": "2026-10-11T20:44:48+09:00",
       "lanes": {
@@ -428660,6 +429498,28 @@
       "source_title": "美 주담대 금리 폭등에…트럼프 \"연준, 나라 경제 망치려는 듯\"",
       "telegram_core_fact": "미 모기지은행협회(MBA)에 따르면 지난 2일 기준 30년물 고정 모기지 평균 금리는 전주 대비 19bp 오른 7.49%를 기록했다.",
       "title": "美 주담대 금리 폭등에…트럼프 \"연준, 나라 경제 망치려는 듯\""
+    },
+    "source_fact:400f4d491c10ccb01da2c4b9": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003828849",
+      "source": "뉴시스",
+      "source_body_digest": "4c89a0e532c615e2c21243379e74dc94301282f0c248d286212031ded25bc846",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:56d21a5735b37c916fd6bd70c2a6954fc3cf501a828e747a0891857c8d2f9264",
+      "source_fact_keys": [
+        "source_fact:v1:5443a768747b0cea936f8f193da62fbd3ce2195446e1bce1a446dfedbb49cec7",
+        "source_fact:v1:906bd7eb128da3dfdf8752d9ed593683cba67b08974c1074c9d806a411ee6ce1",
+        "source_fact:v1:b817eab8055f258014df92a56b8b044a388d19fd36e60fa4dabc3f9c93699257"
+      ],
+      "source_published_kst": "2026-10-17T00:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"200만원으로 시작해 10억 눈앞\"…40대 투자자의 자산 증식 비결",
+      "telegram_core_fact": "200만원으로 주식 투자를 시작해 약 10억원의 자산을 모은 40대 남성이 투자금 확대와 꾸준한 투자 습관의 중요성을 강조했다.",
+      "title": "\"200만원으로 시작해 10억 눈앞\"…40대 투자자의 자산 증식 비결"
     },
     "source_fact:4024f06e87a8014e5b6a9d48": {
       "first_seen_kst": "2026-10-14T12:59:52+09:00",
@@ -441112,6 +441972,28 @@
       "source_published_kst": "2026-10-06T13:52+09:00",
       "title": "'KIWOOM 미국AI테크하이베타 ETF', 마이크론·스페이스X 편입"
     },
+    "source_fact:481a23590a618906fffa2e6e": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003828849",
+      "source": "뉴시스",
+      "source_body_digest": "4c89a0e532c615e2c21243379e74dc94301282f0c248d286212031ded25bc846",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:56d21a5735b37c916fd6bd70c2a6954fc3cf501a828e747a0891857c8d2f9264",
+      "source_fact_keys": [
+        "source_fact:v1:5443a768747b0cea936f8f193da62fbd3ce2195446e1bce1a446dfedbb49cec7",
+        "source_fact:v1:906bd7eb128da3dfdf8752d9ed593683cba67b08974c1074c9d806a411ee6ce1",
+        "source_fact:v1:b817eab8055f258014df92a56b8b044a388d19fd36e60fa4dabc3f9c93699257"
+      ],
+      "source_published_kst": "2026-10-17T00:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"200만원으로 시작해 10억 눈앞\"…40대 투자자의 자산 증식 비결",
+      "telegram_core_fact": "200만원으로 주식 투자를 시작해 약 10억원의 자산을 모은 40대 남성이 투자금 확대와 꾸준한 투자 습관의 중요성을 강조했다.",
+      "title": "\"200만원으로 시작해 10억 눈앞\"…40대 투자자의 자산 증식 비결"
+    },
     "source_fact:481e530be6617fcbb1752660": {
       "first_seen_kst": "2026-10-10T04:46:38+09:00",
       "lanes": {
@@ -443737,6 +444619,40 @@
       ],
       "source_published_kst": "2026-10-06T15:55+09:00",
       "title": "디앤디파마텍, '지방간 신약' 2상 결과 내달 발표…\"기술이전에 총력\""
+    },
+    "source_fact:49a3a43df352486299b41ee4": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/16/LFWMOBIUDJDQNAYSQMOZ6Q57BI/",
+      "source": "조선비즈",
+      "source_body_digest": "298e657c9f216506712d43fcdb0cba99f91385343ea8229d9447df48209792d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90ea017105ea486db6bb14e03d447d81c6b900412731bbd674d24b136cd54400",
+      "source_fact_keys": [
+        "source_fact:v1:113c98b5843e797f5371fa48802c16f7b9114c505f007c17ff614f28664e2711",
+        "source_fact:v1:200b6ef83950eccc64f3293e8a1ae3acfa52ce89681a52fc91085507f70262d0",
+        "source_fact:v1:32de7bbb69f531684a8f3d8057e9022078f1c1c01decf1abe063b6850a1811fe",
+        "source_fact:v1:374439c7c8e0021affecd914e7783b508d4b5eac20181ea98a9f70fc23f7e7e5",
+        "source_fact:v1:38272d1c1a0dbb91422501ab70c25702555e5546c98bdb53be6f62f3d5ad8d67",
+        "source_fact:v1:4499adb5ee8c044e4aa70d4aed19579566bf1c0ec374ea632ac997659088a3ef",
+        "source_fact:v1:5375a82b913efebb9cdabb52c9dd7588df7292fe6ec0d41583f894d584bf7e4e",
+        "source_fact:v1:5a997021b3ff0da31741ddeeefd00a118e6392bd4acb89c8c628b097d8cc022a",
+        "source_fact:v1:90ddf5467b8f18b1290ea39c4bf974dda6f1eda1e574f0c0bb70b2fe5b3c417c",
+        "source_fact:v1:9138501dcffb241b7e86b3fc663862162ba8e731c659e8f0f815d019faf442d1",
+        "source_fact:v1:a4232c0a0e3ab823d2316fdff3ee92cce567234035429a1742f24dc2abc9ec03",
+        "source_fact:v1:b6612a7d5d7f598eac00d16a01e5d592a8ef30c858cd76243d18e3b3eb8c317c",
+        "source_fact:v1:b8b8d846d11ff775aa89bbfae889636d78567b66b6ec5b2b2946c2bcb793ede8",
+        "source_fact:v1:db22efe5350ceb4088df8afed1bcb37576b962c79064f090a81ee880f6a30e53",
+        "source_fact:v1:e8c9e7087ea8e41b8b8bde401facd6cbff965a66567cef4d4e1c61cf0d1bd610"
+      ],
+      "source_published_kst": "2026-10-16T15:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력",
+      "telegram_core_fact": "양 기관은 네오디뮴(Nd) 사용량을 30% 줄이고 세륨(Ce)으로 대체하며, 중희토류인 디스프로슘(Dy)과 터븀(Tb)을 완전히 배제하는 Dy/Tb Free 기술을 적용해 MH HIMAG 상용화를 본격 추진한다.",
+      "title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력"
     },
     "source_fact:49a4aee33fe24804c2560e3b": {
       "first_seen_kst": "2026-10-09T20:48:52+09:00",
@@ -487333,6 +488249,31 @@
       "telegram_core_fact": "현대차는 14일(현지시간) 인도 마하라슈트라주 탈레가온에서 열린 푸네 신공장 준공식에서 이 같은 내용의 중장기 투자계획을 발표했다. 현대차는 이날 준공한 푸네 신공장의 연간 생산능력을 현재 17만대에서 2028년 25만대, 2030년 32만대까지 확대할 계획이다.",
       "title": "\"인도에 약 21조원 베팅\"…현대차그룹, 미래차 성장거점으로 키운다 [푸네 新공장 준공]"
     },
+    "source_fact:67e03a71ae32058955ed7a6d": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261017000200098",
+      "source": "연합뉴스",
+      "source_body_digest": "c771bf8e1526a28796a6350aeac10dcab0edc6d5f3169918f10e823a0132716b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7696cdc08019876f3e76c41b38afaf5a02ec6af30723058ec6c19697a7fe39c4",
+      "source_fact_keys": [
+        "source_fact:v1:63a694f76f00746c921444856beebd9a97e9e48fe10e88517a4751c1001ed926",
+        "source_fact:v1:7181614244ea975d9033215da6860a1b66e025c2c0526d0376f2454b31537a53",
+        "source_fact:v1:7ed17839f2fbcf5ad7175d83d3c0386085a68749458d60aebc52ad2abff78e87",
+        "source_fact:v1:b23b0483aea868cfd164984c1fd5a9ba967b49ba8bed7cca4516eacab4f79dff",
+        "source_fact:v1:dd06d5fc10cfa10ef823f5f60970287a3c87d555c2af196f0da92e453589594e",
+        "source_fact:v1:eec6ba69dcb9aa0df715887e91998f988fde93b5c0ed65b973198457ba889a94"
+      ],
+      "source_published_kst": "2026-10-17T00:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "젤렌스키 \"러와 '경유딜' 부적절\"…트럼프 또 겨눠 | 연합뉴스",
+      "telegram_core_fact": "다음달 중간선거를 앞두고 유가 상승으로 인한 민심 악화에 고심하고 있는 트럼프 대통령은 최근 대러 제재를 일부 해제해 러시아산 경유를 시장에 풀겠다는 깜짝 발표를 한 뒤 일방적으로 '에너지 휴전'을 선포했고, 젤렌스키 대통령은 이에 공개적으로 반발하면서 양측의 갈등이 고조됐다.",
+      "title": "젤렌스키 \"러와 '경유딜' 부적절\"…트럼프 또 겨눠 | 연합뉴스"
+    },
     "source_fact:67e2ac4a7febec9c8cec7d07": {
       "first_seen_kst": "2026-10-13T08:59:28+09:00",
       "lanes": {
@@ -502756,6 +503697,40 @@
       "telegram_core_fact": "문혁수 LG이노텍 사장이 플립칩 볼그리드어레이(FC-BGA) 사업과 관련해 13일 “장기공급계약(LTA)을 계속 추진하고 있고 내년부터 좋아질 것”이라고 밝혔다.",
       "title": "문혁수 LG이노텍 사장 “FC-BGA 내년부터 좋아질 것”…유리기판 2028년 공급"
     },
+    "source_fact:72c535e042a680df52d35937": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/16/LFWMOBIUDJDQNAYSQMOZ6Q57BI/",
+      "source": "조선비즈",
+      "source_body_digest": "298e657c9f216506712d43fcdb0cba99f91385343ea8229d9447df48209792d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90ea017105ea486db6bb14e03d447d81c6b900412731bbd674d24b136cd54400",
+      "source_fact_keys": [
+        "source_fact:v1:113c98b5843e797f5371fa48802c16f7b9114c505f007c17ff614f28664e2711",
+        "source_fact:v1:200b6ef83950eccc64f3293e8a1ae3acfa52ce89681a52fc91085507f70262d0",
+        "source_fact:v1:32de7bbb69f531684a8f3d8057e9022078f1c1c01decf1abe063b6850a1811fe",
+        "source_fact:v1:374439c7c8e0021affecd914e7783b508d4b5eac20181ea98a9f70fc23f7e7e5",
+        "source_fact:v1:38272d1c1a0dbb91422501ab70c25702555e5546c98bdb53be6f62f3d5ad8d67",
+        "source_fact:v1:4499adb5ee8c044e4aa70d4aed19579566bf1c0ec374ea632ac997659088a3ef",
+        "source_fact:v1:5375a82b913efebb9cdabb52c9dd7588df7292fe6ec0d41583f894d584bf7e4e",
+        "source_fact:v1:5a997021b3ff0da31741ddeeefd00a118e6392bd4acb89c8c628b097d8cc022a",
+        "source_fact:v1:90ddf5467b8f18b1290ea39c4bf974dda6f1eda1e574f0c0bb70b2fe5b3c417c",
+        "source_fact:v1:9138501dcffb241b7e86b3fc663862162ba8e731c659e8f0f815d019faf442d1",
+        "source_fact:v1:a4232c0a0e3ab823d2316fdff3ee92cce567234035429a1742f24dc2abc9ec03",
+        "source_fact:v1:b6612a7d5d7f598eac00d16a01e5d592a8ef30c858cd76243d18e3b3eb8c317c",
+        "source_fact:v1:b8b8d846d11ff775aa89bbfae889636d78567b66b6ec5b2b2946c2bcb793ede8",
+        "source_fact:v1:db22efe5350ceb4088df8afed1bcb37576b962c79064f090a81ee880f6a30e53",
+        "source_fact:v1:e8c9e7087ea8e41b8b8bde401facd6cbff965a66567cef4d4e1c61cf0d1bd610"
+      ],
+      "source_published_kst": "2026-10-16T15:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력",
+      "telegram_core_fact": "양 기관은 네오디뮴(Nd) 사용량을 30% 줄이고 세륨(Ce)으로 대체하며, 중희토류인 디스프로슘(Dy)과 터븀(Tb)을 완전히 배제하는 Dy/Tb Free 기술을 적용해 MH HIMAG 상용화를 본격 추진한다.",
+      "title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력"
+    },
     "source_fact:72ce8fb13770b27bceb2d51c": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
       "lanes": {
@@ -508621,6 +509596,31 @@
       ],
       "source_published_kst": "2026-10-07T03:50+09:00",
       "title": "美국채 금리 급등하자…핌코 \"투자매력 매우 높아졌다\""
+    },
+    "source_fact:769a96b39589eef0f8ab185b": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261017000200098",
+      "source": "연합뉴스",
+      "source_body_digest": "c771bf8e1526a28796a6350aeac10dcab0edc6d5f3169918f10e823a0132716b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7696cdc08019876f3e76c41b38afaf5a02ec6af30723058ec6c19697a7fe39c4",
+      "source_fact_keys": [
+        "source_fact:v1:63a694f76f00746c921444856beebd9a97e9e48fe10e88517a4751c1001ed926",
+        "source_fact:v1:7181614244ea975d9033215da6860a1b66e025c2c0526d0376f2454b31537a53",
+        "source_fact:v1:7ed17839f2fbcf5ad7175d83d3c0386085a68749458d60aebc52ad2abff78e87",
+        "source_fact:v1:b23b0483aea868cfd164984c1fd5a9ba967b49ba8bed7cca4516eacab4f79dff",
+        "source_fact:v1:dd06d5fc10cfa10ef823f5f60970287a3c87d555c2af196f0da92e453589594e",
+        "source_fact:v1:eec6ba69dcb9aa0df715887e91998f988fde93b5c0ed65b973198457ba889a94"
+      ],
+      "source_published_kst": "2026-10-17T00:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "젤렌스키 \"러와 '경유딜' 부적절\"…트럼프 또 겨눠 | 연합뉴스",
+      "telegram_core_fact": "다음달 중간선거를 앞두고 유가 상승으로 인한 민심 악화에 고심하고 있는 트럼프 대통령은 최근 대러 제재를 일부 해제해 러시아산 경유를 시장에 풀겠다는 깜짝 발표를 한 뒤 일방적으로 '에너지 휴전'을 선포했고, 젤렌스키 대통령은 이에 공개적으로 반발하면서 양측의 갈등이 고조됐다.",
+      "title": "젤렌스키 \"러와 '경유딜' 부적절\"…트럼프 또 겨눠 | 연합뉴스"
     },
     "source_fact:769c4b487ff90f4598a23026": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
@@ -518409,6 +519409,31 @@
       "telegram_core_fact": "브릴스가 미국의 외국산 첨단 로봇 규제 강화에 대응해 미시간 현지에서 자율이동로봇(AMR) 생산을 추진한다.",
       "title": "브릴스, 美 미시간서 로봇 생산 추진…FCC 규제 대응"
     },
+    "source_fact:7d5304de9f3d8c9b9e0222d9": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261017000200098",
+      "source": "연합뉴스",
+      "source_body_digest": "c771bf8e1526a28796a6350aeac10dcab0edc6d5f3169918f10e823a0132716b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7696cdc08019876f3e76c41b38afaf5a02ec6af30723058ec6c19697a7fe39c4",
+      "source_fact_keys": [
+        "source_fact:v1:63a694f76f00746c921444856beebd9a97e9e48fe10e88517a4751c1001ed926",
+        "source_fact:v1:7181614244ea975d9033215da6860a1b66e025c2c0526d0376f2454b31537a53",
+        "source_fact:v1:7ed17839f2fbcf5ad7175d83d3c0386085a68749458d60aebc52ad2abff78e87",
+        "source_fact:v1:b23b0483aea868cfd164984c1fd5a9ba967b49ba8bed7cca4516eacab4f79dff",
+        "source_fact:v1:dd06d5fc10cfa10ef823f5f60970287a3c87d555c2af196f0da92e453589594e",
+        "source_fact:v1:eec6ba69dcb9aa0df715887e91998f988fde93b5c0ed65b973198457ba889a94"
+      ],
+      "source_published_kst": "2026-10-17T00:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "젤렌스키 \"러와 '경유딜' 부적절\"…트럼프 또 겨눠 | 연합뉴스",
+      "telegram_core_fact": "다음달 중간선거를 앞두고 유가 상승으로 인한 민심 악화에 고심하고 있는 트럼프 대통령은 최근 대러 제재를 일부 해제해 러시아산 경유를 시장에 풀겠다는 깜짝 발표를 한 뒤 일방적으로 '에너지 휴전'을 선포했고, 젤렌스키 대통령은 이에 공개적으로 반발하면서 양측의 갈등이 고조됐다.",
+      "title": "젤렌스키 \"러와 '경유딜' 부적절\"…트럼프 또 겨눠 | 연합뉴스"
+    },
     "source_fact:7d55b564eb13e13788f3118e": {
       "first_seen_kst": "2026-10-07T16:15:21+09:00",
       "lanes": {
@@ -523813,6 +524838,40 @@
       "source_title": "삼성자산운용, 하루 만에 '주성엔지니어링' 2000억 쓸어담았다… 왜?",
       "telegram_core_fact": "실제로 주성엔지니어링의 수주 잔고는 올해 1분기 말 약 746억원에서 2분기 말 2336억원으로 한 분기 만에 3배 넘게 급증했다.",
       "title": "삼성자산운용, 하루 만에 '주성엔지니어링' 2000억 쓸어담았다… 왜?"
+    },
+    "source_fact:815fb74bd43af67ceef5f0eb": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/16/LFWMOBIUDJDQNAYSQMOZ6Q57BI/",
+      "source": "조선비즈",
+      "source_body_digest": "298e657c9f216506712d43fcdb0cba99f91385343ea8229d9447df48209792d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90ea017105ea486db6bb14e03d447d81c6b900412731bbd674d24b136cd54400",
+      "source_fact_keys": [
+        "source_fact:v1:113c98b5843e797f5371fa48802c16f7b9114c505f007c17ff614f28664e2711",
+        "source_fact:v1:200b6ef83950eccc64f3293e8a1ae3acfa52ce89681a52fc91085507f70262d0",
+        "source_fact:v1:32de7bbb69f531684a8f3d8057e9022078f1c1c01decf1abe063b6850a1811fe",
+        "source_fact:v1:374439c7c8e0021affecd914e7783b508d4b5eac20181ea98a9f70fc23f7e7e5",
+        "source_fact:v1:38272d1c1a0dbb91422501ab70c25702555e5546c98bdb53be6f62f3d5ad8d67",
+        "source_fact:v1:4499adb5ee8c044e4aa70d4aed19579566bf1c0ec374ea632ac997659088a3ef",
+        "source_fact:v1:5375a82b913efebb9cdabb52c9dd7588df7292fe6ec0d41583f894d584bf7e4e",
+        "source_fact:v1:5a997021b3ff0da31741ddeeefd00a118e6392bd4acb89c8c628b097d8cc022a",
+        "source_fact:v1:90ddf5467b8f18b1290ea39c4bf974dda6f1eda1e574f0c0bb70b2fe5b3c417c",
+        "source_fact:v1:9138501dcffb241b7e86b3fc663862162ba8e731c659e8f0f815d019faf442d1",
+        "source_fact:v1:a4232c0a0e3ab823d2316fdff3ee92cce567234035429a1742f24dc2abc9ec03",
+        "source_fact:v1:b6612a7d5d7f598eac00d16a01e5d592a8ef30c858cd76243d18e3b3eb8c317c",
+        "source_fact:v1:b8b8d846d11ff775aa89bbfae889636d78567b66b6ec5b2b2946c2bcb793ede8",
+        "source_fact:v1:db22efe5350ceb4088df8afed1bcb37576b962c79064f090a81ee880f6a30e53",
+        "source_fact:v1:e8c9e7087ea8e41b8b8bde401facd6cbff965a66567cef4d4e1c61cf0d1bd610"
+      ],
+      "source_published_kst": "2026-10-16T15:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력",
+      "telegram_core_fact": "양 기관은 네오디뮴(Nd) 사용량을 30% 줄이고 세륨(Ce)으로 대체하며, 중희토류인 디스프로슘(Dy)과 터븀(Tb)을 완전히 배제하는 Dy/Tb Free 기술을 적용해 MH HIMAG 상용화를 본격 추진한다.",
+      "title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력"
     },
     "source_fact:81645b0454ccabb83e4882f2": {
       "first_seen_kst": "2026-10-11T21:07:10+09:00",
@@ -537441,6 +538500,31 @@
       "telegram_core_fact": "휴전 합의 발표에 앞서 트럼프 대통령은 러시아가 미국과 세계 시장에 경유 480만톤을 공급키로 했다고 밝혔다. 도널드 트럼프 대통령의 '러시아-우크라이나 에너지 휴전' 발표에도 러시아·우크라이나간 충돌이 계속되고 있다.",
       "title": "트럼프, 선거용 \"에너지 휴전\" 일방발표…꿈쩍않는 러·우 공방 지속"
     },
+    "source_fact:8b62fad467a8b91beefb759d": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261017000200098",
+      "source": "연합뉴스",
+      "source_body_digest": "c771bf8e1526a28796a6350aeac10dcab0edc6d5f3169918f10e823a0132716b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7696cdc08019876f3e76c41b38afaf5a02ec6af30723058ec6c19697a7fe39c4",
+      "source_fact_keys": [
+        "source_fact:v1:63a694f76f00746c921444856beebd9a97e9e48fe10e88517a4751c1001ed926",
+        "source_fact:v1:7181614244ea975d9033215da6860a1b66e025c2c0526d0376f2454b31537a53",
+        "source_fact:v1:7ed17839f2fbcf5ad7175d83d3c0386085a68749458d60aebc52ad2abff78e87",
+        "source_fact:v1:b23b0483aea868cfd164984c1fd5a9ba967b49ba8bed7cca4516eacab4f79dff",
+        "source_fact:v1:dd06d5fc10cfa10ef823f5f60970287a3c87d555c2af196f0da92e453589594e",
+        "source_fact:v1:eec6ba69dcb9aa0df715887e91998f988fde93b5c0ed65b973198457ba889a94"
+      ],
+      "source_published_kst": "2026-10-17T00:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "젤렌스키 \"러와 '경유딜' 부적절\"…트럼프 또 겨눠 | 연합뉴스",
+      "telegram_core_fact": "다음달 중간선거를 앞두고 유가 상승으로 인한 민심 악화에 고심하고 있는 트럼프 대통령은 최근 대러 제재를 일부 해제해 러시아산 경유를 시장에 풀겠다는 깜짝 발표를 한 뒤 일방적으로 '에너지 휴전'을 선포했고, 젤렌스키 대통령은 이에 공개적으로 반발하면서 양측의 갈등이 고조됐다.",
+      "title": "젤렌스키 \"러와 '경유딜' 부적절\"…트럼프 또 겨눠 | 연합뉴스"
+    },
     "source_fact:8b648c116b06d963763181d5": {
       "first_seen_kst": "2026-10-13T10:27:50+09:00",
       "lanes": {
@@ -547044,6 +548128,31 @@
       "source_title": "중국 첨단기술 이유 있었네…작년 R&D에만 800조원 가까이 썼다",
       "telegram_core_fact": "[베이징=이데일리 이명철 특파원] 중국이 지난해 연구개발(R&D)에 800조원 가까운 비용을 지출한 것으로 집계됐다.",
       "title": "중국 첨단기술 이유 있었네…작년 R&D에만 800조원 가까이 썼다"
+    },
+    "source_fact:92025d835334595d65a4cf76": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261017000200098",
+      "source": "연합뉴스",
+      "source_body_digest": "c771bf8e1526a28796a6350aeac10dcab0edc6d5f3169918f10e823a0132716b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7696cdc08019876f3e76c41b38afaf5a02ec6af30723058ec6c19697a7fe39c4",
+      "source_fact_keys": [
+        "source_fact:v1:63a694f76f00746c921444856beebd9a97e9e48fe10e88517a4751c1001ed926",
+        "source_fact:v1:7181614244ea975d9033215da6860a1b66e025c2c0526d0376f2454b31537a53",
+        "source_fact:v1:7ed17839f2fbcf5ad7175d83d3c0386085a68749458d60aebc52ad2abff78e87",
+        "source_fact:v1:b23b0483aea868cfd164984c1fd5a9ba967b49ba8bed7cca4516eacab4f79dff",
+        "source_fact:v1:dd06d5fc10cfa10ef823f5f60970287a3c87d555c2af196f0da92e453589594e",
+        "source_fact:v1:eec6ba69dcb9aa0df715887e91998f988fde93b5c0ed65b973198457ba889a94"
+      ],
+      "source_published_kst": "2026-10-17T00:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "젤렌스키 \"러와 '경유딜' 부적절\"…트럼프 또 겨눠 | 연합뉴스",
+      "telegram_core_fact": "다음달 중간선거를 앞두고 유가 상승으로 인한 민심 악화에 고심하고 있는 트럼프 대통령은 최근 대러 제재를 일부 해제해 러시아산 경유를 시장에 풀겠다는 깜짝 발표를 한 뒤 일방적으로 '에너지 휴전'을 선포했고, 젤렌스키 대통령은 이에 공개적으로 반발하면서 양측의 갈등이 고조됐다.",
+      "title": "젤렌스키 \"러와 '경유딜' 부적절\"…트럼프 또 겨눠 | 연합뉴스"
     },
     "source_fact:9205f137fa7319ef527b6522": {
       "first_seen_kst": "2026-10-08T13:46:05+09:00",
@@ -559047,6 +560156,40 @@
       "source_title": "“삼전 쓸어담던 큰손 빠지니 폭락?”…‘자사주 매입 끝’ 증시, 누가 받치나",
       "telegram_core_fact": "금융감독원 전자공시시스템에 따르면 삼성전자는 전날 자기주식취득결과보고서를 제출하고 총 15조원 자사주 매입을 완료했다고 밝혔다.",
       "title": "“삼전 쓸어담던 큰손 빠지니 폭락?”…‘자사주 매입 끝’ 증시, 누가 받치나"
+    },
+    "source_fact:9ab5bc9b8f91e71d3d15ee35": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/16/LFWMOBIUDJDQNAYSQMOZ6Q57BI/",
+      "source": "조선비즈",
+      "source_body_digest": "298e657c9f216506712d43fcdb0cba99f91385343ea8229d9447df48209792d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90ea017105ea486db6bb14e03d447d81c6b900412731bbd674d24b136cd54400",
+      "source_fact_keys": [
+        "source_fact:v1:113c98b5843e797f5371fa48802c16f7b9114c505f007c17ff614f28664e2711",
+        "source_fact:v1:200b6ef83950eccc64f3293e8a1ae3acfa52ce89681a52fc91085507f70262d0",
+        "source_fact:v1:32de7bbb69f531684a8f3d8057e9022078f1c1c01decf1abe063b6850a1811fe",
+        "source_fact:v1:374439c7c8e0021affecd914e7783b508d4b5eac20181ea98a9f70fc23f7e7e5",
+        "source_fact:v1:38272d1c1a0dbb91422501ab70c25702555e5546c98bdb53be6f62f3d5ad8d67",
+        "source_fact:v1:4499adb5ee8c044e4aa70d4aed19579566bf1c0ec374ea632ac997659088a3ef",
+        "source_fact:v1:5375a82b913efebb9cdabb52c9dd7588df7292fe6ec0d41583f894d584bf7e4e",
+        "source_fact:v1:5a997021b3ff0da31741ddeeefd00a118e6392bd4acb89c8c628b097d8cc022a",
+        "source_fact:v1:90ddf5467b8f18b1290ea39c4bf974dda6f1eda1e574f0c0bb70b2fe5b3c417c",
+        "source_fact:v1:9138501dcffb241b7e86b3fc663862162ba8e731c659e8f0f815d019faf442d1",
+        "source_fact:v1:a4232c0a0e3ab823d2316fdff3ee92cce567234035429a1742f24dc2abc9ec03",
+        "source_fact:v1:b6612a7d5d7f598eac00d16a01e5d592a8ef30c858cd76243d18e3b3eb8c317c",
+        "source_fact:v1:b8b8d846d11ff775aa89bbfae889636d78567b66b6ec5b2b2946c2bcb793ede8",
+        "source_fact:v1:db22efe5350ceb4088df8afed1bcb37576b962c79064f090a81ee880f6a30e53",
+        "source_fact:v1:e8c9e7087ea8e41b8b8bde401facd6cbff965a66567cef4d4e1c61cf0d1bd610"
+      ],
+      "source_published_kst": "2026-10-16T15:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력",
+      "telegram_core_fact": "양 기관은 네오디뮴(Nd) 사용량을 30% 줄이고 세륨(Ce)으로 대체하며, 중희토류인 디스프로슘(Dy)과 터븀(Tb)을 완전히 배제하는 Dy/Tb Free 기술을 적용해 MH HIMAG 상용화를 본격 추진한다.",
+      "title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력"
     },
     "source_fact:9ab689156afe59cc207d7f99": {
       "first_seen_kst": "2026-10-06T17:35:32+09:00",
@@ -576853,6 +577996,40 @@
       "telegram_core_fact": "한국관광공사가 발간한 ‘엔화 약세가 방일시장과 소비에 미치는 영향’ 보고서에 따르면, 환율 변동에 따른 일본 여행 결정 영향도를 조사한 결과 응답자의 25.5%는 ‘엔화 강세 시 일본 여행을 망설일 가능성이 있다’고 답했다.",
       "title": "역대급 엔저에 “일단 환전”…일본 여행 예약 ‘폭증’"
     },
+    "source_fact:a6c614b9cb2adf388ae13008": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/16/LFWMOBIUDJDQNAYSQMOZ6Q57BI/",
+      "source": "조선비즈",
+      "source_body_digest": "298e657c9f216506712d43fcdb0cba99f91385343ea8229d9447df48209792d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90ea017105ea486db6bb14e03d447d81c6b900412731bbd674d24b136cd54400",
+      "source_fact_keys": [
+        "source_fact:v1:113c98b5843e797f5371fa48802c16f7b9114c505f007c17ff614f28664e2711",
+        "source_fact:v1:200b6ef83950eccc64f3293e8a1ae3acfa52ce89681a52fc91085507f70262d0",
+        "source_fact:v1:32de7bbb69f531684a8f3d8057e9022078f1c1c01decf1abe063b6850a1811fe",
+        "source_fact:v1:374439c7c8e0021affecd914e7783b508d4b5eac20181ea98a9f70fc23f7e7e5",
+        "source_fact:v1:38272d1c1a0dbb91422501ab70c25702555e5546c98bdb53be6f62f3d5ad8d67",
+        "source_fact:v1:4499adb5ee8c044e4aa70d4aed19579566bf1c0ec374ea632ac997659088a3ef",
+        "source_fact:v1:5375a82b913efebb9cdabb52c9dd7588df7292fe6ec0d41583f894d584bf7e4e",
+        "source_fact:v1:5a997021b3ff0da31741ddeeefd00a118e6392bd4acb89c8c628b097d8cc022a",
+        "source_fact:v1:90ddf5467b8f18b1290ea39c4bf974dda6f1eda1e574f0c0bb70b2fe5b3c417c",
+        "source_fact:v1:9138501dcffb241b7e86b3fc663862162ba8e731c659e8f0f815d019faf442d1",
+        "source_fact:v1:a4232c0a0e3ab823d2316fdff3ee92cce567234035429a1742f24dc2abc9ec03",
+        "source_fact:v1:b6612a7d5d7f598eac00d16a01e5d592a8ef30c858cd76243d18e3b3eb8c317c",
+        "source_fact:v1:b8b8d846d11ff775aa89bbfae889636d78567b66b6ec5b2b2946c2bcb793ede8",
+        "source_fact:v1:db22efe5350ceb4088df8afed1bcb37576b962c79064f090a81ee880f6a30e53",
+        "source_fact:v1:e8c9e7087ea8e41b8b8bde401facd6cbff965a66567cef4d4e1c61cf0d1bd610"
+      ],
+      "source_published_kst": "2026-10-16T15:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력",
+      "telegram_core_fact": "양 기관은 네오디뮴(Nd) 사용량을 30% 줄이고 세륨(Ce)으로 대체하며, 중희토류인 디스프로슘(Dy)과 터븀(Tb)을 완전히 배제하는 Dy/Tb Free 기술을 적용해 MH HIMAG 상용화를 본격 추진한다.",
+      "title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력"
+    },
     "source_fact:a6c6e4acb4228d6bd34a244f": {
       "first_seen_kst": "2026-10-06T00:49:05+09:00",
       "lanes": {
@@ -578262,6 +579439,32 @@
       "source_title": "8월 유로존 산업생산 2.0%↑…\"건설 호조에 17개월 만에 최대폭\"",
       "telegram_core_fact": "RTT 뉴스와 마켓워치, dpa 통신에 따르면 독일 연방통계청은 7일 2026년 8월 산업생산이 계절 조정치로 전월 대비 2.0% 증대했다고 발표했다. 유럽 최대 경제국 독일의 8월 산업생산은 건설과 기계·설비 생산 호조에 힘입어 17개월 만에 가장 큰 폭으로 증가했다.",
       "title": "8월 유로존 산업생산 2.0%↑…\"건설 호조에 17개월 만에 최대폭\""
+    },
+    "source_fact:a7c7aeb39ab1e69e5ea01458": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176138",
+      "source": "매일경제",
+      "source_body_digest": "69e5c62190b8a90162332c68e149df3a2e7cd544db25cfd3a31544bfcc1223d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:17e777cc410635e1996dd0a8d43dc1274555bf4fe84616003372769ce4464b2d",
+      "source_fact_keys": [
+        "source_fact:v1:1213fcf5e8eec22c83d614e0e354afd645021fe7f483ca28d6923227cc456904",
+        "source_fact:v1:af12aba1a704e72fe2684c890a16a8e26401cb2bc3c19e91c0f0d80ebf1f0a2f",
+        "source_fact:v1:b456a36716472e16a5987da0c4cb0acc6e12a0077b6c68e40e0db9a65ea85481",
+        "source_fact:v1:bf02fde02edde5e53ac320bcea50610ff447a502f0c4970a6aea188f10109c51",
+        "source_fact:v1:c7b4cf1a6d60aed783bd109c45671a7604ad5dd14359589434d80b685fb1833b",
+        "source_fact:v1:cc5c38b3ac0a72f6680f24045d7470386609851df679a106a79179c7eea50bf3",
+        "source_fact:v1:eff15af559067a04cef36adf1b7e0eca2f91b21a689b137b112da431cdfd605f"
+      ],
+      "source_published_kst": "2026-10-17T06:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "어드바사, 배당성향 50% 목표 배당정책 채택",
+      "telegram_core_fact": "핀테크 결제 지주회사 어드바사(ADBT)가 2027년 3월 31일 종료되는 회계연도부터 보통주 연간 현금배당성향 50%를 목표로 하는 배당정책을 이사회에서 채택했다고 16일 발표했다.",
+      "title": "어드바사, 배당성향 50% 목표 배당정책 채택"
     },
     "source_fact:a7c7b2e49f48bc42deeae420": {
       "first_seen_kst": "2026-10-08T19:49:39+09:00",
@@ -587450,6 +588653,27 @@
       "telegram_core_fact": "제재 대상의 EU 내 자산은 동결되며, 이들에게 직간접적으로 자금이나 경제적 자원을 제공하는 행위가 금지된다.",
       "title": "EU, 북러 군사·경제 협력 관련 3명·4개 단체 추가 제재"
     },
+    "source_fact:adf0edf7903c1dbb952497bc": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636687",
+      "source": "이투데이",
+      "source_body_digest": "17adce6c5d75285c011a249db24c1abbdc4481ef2aed05002d0df38414adf03c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6c8cbe1456385f2fd20d3ac319f714e4ca8550d8edc9641ec75b7ecd12f88bf9",
+      "source_fact_keys": [
+        "source_fact:v1:3e889c9822ced953b0e8d8f8ece57a8aa5312b933d28cc20ad0c28751572482b",
+        "source_fact:v1:43accefd9dbe4a79f2b447b7517e0c222ba3e1c9eebd577e5ced1b81a3311524"
+      ],
+      "source_published_kst": "2026-10-16T14:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "日, 안보백서에 트럼프 요구 'GDP 3.5% 방위비' 명시 보류 검토",
+      "telegram_core_fact": "일본 정부가 올 연말 개정될 안보 문서에서 도널드 트럼프 2기 행정부 출범 이후 미국이 꾸준히 요구했던 '국내총생산(GDP) 3.5% 수준 방위비' 목표를 명시하지 않는 것을 검토 중이다.",
+      "title": "日, 안보백서에 트럼프 요구 'GDP 3.5% 방위비' 명시 보류 검토"
+    },
     "source_fact:adf2fa5b0acd61c420a372ef": {
       "first_seen_kst": "2026-10-07T07:54:25+09:00",
       "lanes": {
@@ -596402,6 +597626,27 @@
       "source_title": "AI칩 기업 세레브라스 CEO \"데이터센터 반대는 공포 마케팅 탓\"",
       "telegram_core_fact": "엔비디아의 대항마로 꼽히는 미국 인공지능(AI) 칩 개발사 세레브라스의 앤드루 펠드먼 최고경영자(CEO)가 데이터센터 건설을 둘러싼 반대가 일부 AI 업계의 공포 마케팅 탓이라고 비판했다.",
       "title": "AI칩 기업 세레브라스 CEO \"데이터센터 반대는 공포 마케팅 탓\""
+    },
+    "source_fact:b43126a10bde17633ebcd4bf": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636687",
+      "source": "이투데이",
+      "source_body_digest": "17adce6c5d75285c011a249db24c1abbdc4481ef2aed05002d0df38414adf03c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6c8cbe1456385f2fd20d3ac319f714e4ca8550d8edc9641ec75b7ecd12f88bf9",
+      "source_fact_keys": [
+        "source_fact:v1:3e889c9822ced953b0e8d8f8ece57a8aa5312b933d28cc20ad0c28751572482b",
+        "source_fact:v1:43accefd9dbe4a79f2b447b7517e0c222ba3e1c9eebd577e5ced1b81a3311524"
+      ],
+      "source_published_kst": "2026-10-16T14:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "日, 안보백서에 트럼프 요구 'GDP 3.5% 방위비' 명시 보류 검토",
+      "telegram_core_fact": "일본 정부가 올 연말 개정될 안보 문서에서 도널드 트럼프 2기 행정부 출범 이후 미국이 꾸준히 요구했던 '국내총생산(GDP) 3.5% 수준 방위비' 목표를 명시하지 않는 것을 검토 중이다.",
+      "title": "日, 안보백서에 트럼프 요구 'GDP 3.5% 방위비' 명시 보류 검토"
     },
     "source_fact:b436a9c5f520d87f8580f379": {
       "first_seen_kst": "2026-10-14T03:10:24+09:00",
@@ -614021,6 +615266,40 @@
       "telegram_core_fact": "웨스트아메리카 뱅코프(WABC)는 2026년 3분기(7~9월) 희석 주당순이익(EPS)이 1.22달러로 전년 동기(1.12달러) 대비 8.9% 증가했으며, 순이익은 2815만 달러로 전년 동기(2826만 달러)보다 0.4% 감소했다고 10월 15일 발표했다.",
       "title": "웨스트아메리카 뱅코프, 3분기 희석 EPS 1.22달러..전년비 8.9% 증가"
     },
+    "source_fact:c116cd24ff8af94dfd9928d5": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/16/LFWMOBIUDJDQNAYSQMOZ6Q57BI/",
+      "source": "조선비즈",
+      "source_body_digest": "298e657c9f216506712d43fcdb0cba99f91385343ea8229d9447df48209792d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90ea017105ea486db6bb14e03d447d81c6b900412731bbd674d24b136cd54400",
+      "source_fact_keys": [
+        "source_fact:v1:113c98b5843e797f5371fa48802c16f7b9114c505f007c17ff614f28664e2711",
+        "source_fact:v1:200b6ef83950eccc64f3293e8a1ae3acfa52ce89681a52fc91085507f70262d0",
+        "source_fact:v1:32de7bbb69f531684a8f3d8057e9022078f1c1c01decf1abe063b6850a1811fe",
+        "source_fact:v1:374439c7c8e0021affecd914e7783b508d4b5eac20181ea98a9f70fc23f7e7e5",
+        "source_fact:v1:38272d1c1a0dbb91422501ab70c25702555e5546c98bdb53be6f62f3d5ad8d67",
+        "source_fact:v1:4499adb5ee8c044e4aa70d4aed19579566bf1c0ec374ea632ac997659088a3ef",
+        "source_fact:v1:5375a82b913efebb9cdabb52c9dd7588df7292fe6ec0d41583f894d584bf7e4e",
+        "source_fact:v1:5a997021b3ff0da31741ddeeefd00a118e6392bd4acb89c8c628b097d8cc022a",
+        "source_fact:v1:90ddf5467b8f18b1290ea39c4bf974dda6f1eda1e574f0c0bb70b2fe5b3c417c",
+        "source_fact:v1:9138501dcffb241b7e86b3fc663862162ba8e731c659e8f0f815d019faf442d1",
+        "source_fact:v1:a4232c0a0e3ab823d2316fdff3ee92cce567234035429a1742f24dc2abc9ec03",
+        "source_fact:v1:b6612a7d5d7f598eac00d16a01e5d592a8ef30c858cd76243d18e3b3eb8c317c",
+        "source_fact:v1:b8b8d846d11ff775aa89bbfae889636d78567b66b6ec5b2b2946c2bcb793ede8",
+        "source_fact:v1:db22efe5350ceb4088df8afed1bcb37576b962c79064f090a81ee880f6a30e53",
+        "source_fact:v1:e8c9e7087ea8e41b8b8bde401facd6cbff965a66567cef4d4e1c61cf0d1bd610"
+      ],
+      "source_published_kst": "2026-10-16T15:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력",
+      "telegram_core_fact": "양 기관은 네오디뮴(Nd) 사용량을 30% 줄이고 세륨(Ce)으로 대체하며, 중희토류인 디스프로슘(Dy)과 터븀(Tb)을 완전히 배제하는 Dy/Tb Free 기술을 적용해 MH HIMAG 상용화를 본격 추진한다.",
+      "title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력"
+    },
     "source_fact:c11b8119dd35114a93d8addf": {
       "first_seen_kst": "2026-10-09T19:24:17+09:00",
       "lanes": {
@@ -623230,6 +624509,40 @@
       "source_title": "LH “수도권 미분양 저희가 사드립니다”…민간건설사 1만8000가구",
       "telegram_core_fact": "LH의 매입확약에 따라 건설사의 착공 의사결정 부담이 줄어들며 민간 주택 공급의 조기화 효과가 있을 것으로 예상된다.",
       "title": "LH “수도권 미분양 저희가 사드립니다”…민간건설사 1만8000가구"
+    },
+    "source_fact:c7307a4a514032c6ecc2bbaf": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/16/LFWMOBIUDJDQNAYSQMOZ6Q57BI/",
+      "source": "조선비즈",
+      "source_body_digest": "298e657c9f216506712d43fcdb0cba99f91385343ea8229d9447df48209792d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90ea017105ea486db6bb14e03d447d81c6b900412731bbd674d24b136cd54400",
+      "source_fact_keys": [
+        "source_fact:v1:113c98b5843e797f5371fa48802c16f7b9114c505f007c17ff614f28664e2711",
+        "source_fact:v1:200b6ef83950eccc64f3293e8a1ae3acfa52ce89681a52fc91085507f70262d0",
+        "source_fact:v1:32de7bbb69f531684a8f3d8057e9022078f1c1c01decf1abe063b6850a1811fe",
+        "source_fact:v1:374439c7c8e0021affecd914e7783b508d4b5eac20181ea98a9f70fc23f7e7e5",
+        "source_fact:v1:38272d1c1a0dbb91422501ab70c25702555e5546c98bdb53be6f62f3d5ad8d67",
+        "source_fact:v1:4499adb5ee8c044e4aa70d4aed19579566bf1c0ec374ea632ac997659088a3ef",
+        "source_fact:v1:5375a82b913efebb9cdabb52c9dd7588df7292fe6ec0d41583f894d584bf7e4e",
+        "source_fact:v1:5a997021b3ff0da31741ddeeefd00a118e6392bd4acb89c8c628b097d8cc022a",
+        "source_fact:v1:90ddf5467b8f18b1290ea39c4bf974dda6f1eda1e574f0c0bb70b2fe5b3c417c",
+        "source_fact:v1:9138501dcffb241b7e86b3fc663862162ba8e731c659e8f0f815d019faf442d1",
+        "source_fact:v1:a4232c0a0e3ab823d2316fdff3ee92cce567234035429a1742f24dc2abc9ec03",
+        "source_fact:v1:b6612a7d5d7f598eac00d16a01e5d592a8ef30c858cd76243d18e3b3eb8c317c",
+        "source_fact:v1:b8b8d846d11ff775aa89bbfae889636d78567b66b6ec5b2b2946c2bcb793ede8",
+        "source_fact:v1:db22efe5350ceb4088df8afed1bcb37576b962c79064f090a81ee880f6a30e53",
+        "source_fact:v1:e8c9e7087ea8e41b8b8bde401facd6cbff965a66567cef4d4e1c61cf0d1bd610"
+      ],
+      "source_published_kst": "2026-10-16T15:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력",
+      "telegram_core_fact": "양 기관은 네오디뮴(Nd) 사용량을 30% 줄이고 세륨(Ce)으로 대체하며, 중희토류인 디스프로슘(Dy)과 터븀(Tb)을 완전히 배제하는 Dy/Tb Free 기술을 적용해 MH HIMAG 상용화를 본격 추진한다.",
+      "title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력"
     },
     "source_fact:c7312749f9981f7d83870e4b": {
       "first_seen_kst": "2026-10-07T12:06:36+09:00",
@@ -640259,6 +641572,40 @@
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
     },
+    "source_fact:d3700a6ea2886e756fb62bbc": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/16/LFWMOBIUDJDQNAYSQMOZ6Q57BI/",
+      "source": "조선비즈",
+      "source_body_digest": "298e657c9f216506712d43fcdb0cba99f91385343ea8229d9447df48209792d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90ea017105ea486db6bb14e03d447d81c6b900412731bbd674d24b136cd54400",
+      "source_fact_keys": [
+        "source_fact:v1:113c98b5843e797f5371fa48802c16f7b9114c505f007c17ff614f28664e2711",
+        "source_fact:v1:200b6ef83950eccc64f3293e8a1ae3acfa52ce89681a52fc91085507f70262d0",
+        "source_fact:v1:32de7bbb69f531684a8f3d8057e9022078f1c1c01decf1abe063b6850a1811fe",
+        "source_fact:v1:374439c7c8e0021affecd914e7783b508d4b5eac20181ea98a9f70fc23f7e7e5",
+        "source_fact:v1:38272d1c1a0dbb91422501ab70c25702555e5546c98bdb53be6f62f3d5ad8d67",
+        "source_fact:v1:4499adb5ee8c044e4aa70d4aed19579566bf1c0ec374ea632ac997659088a3ef",
+        "source_fact:v1:5375a82b913efebb9cdabb52c9dd7588df7292fe6ec0d41583f894d584bf7e4e",
+        "source_fact:v1:5a997021b3ff0da31741ddeeefd00a118e6392bd4acb89c8c628b097d8cc022a",
+        "source_fact:v1:90ddf5467b8f18b1290ea39c4bf974dda6f1eda1e574f0c0bb70b2fe5b3c417c",
+        "source_fact:v1:9138501dcffb241b7e86b3fc663862162ba8e731c659e8f0f815d019faf442d1",
+        "source_fact:v1:a4232c0a0e3ab823d2316fdff3ee92cce567234035429a1742f24dc2abc9ec03",
+        "source_fact:v1:b6612a7d5d7f598eac00d16a01e5d592a8ef30c858cd76243d18e3b3eb8c317c",
+        "source_fact:v1:b8b8d846d11ff775aa89bbfae889636d78567b66b6ec5b2b2946c2bcb793ede8",
+        "source_fact:v1:db22efe5350ceb4088df8afed1bcb37576b962c79064f090a81ee880f6a30e53",
+        "source_fact:v1:e8c9e7087ea8e41b8b8bde401facd6cbff965a66567cef4d4e1c61cf0d1bd610"
+      ],
+      "source_published_kst": "2026-10-16T15:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력",
+      "telegram_core_fact": "양 기관은 네오디뮴(Nd) 사용량을 30% 줄이고 세륨(Ce)으로 대체하며, 중희토류인 디스프로슘(Dy)과 터븀(Tb)을 완전히 배제하는 Dy/Tb Free 기술을 적용해 MH HIMAG 상용화를 본격 추진한다.",
+      "title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력"
+    },
     "source_fact:d373500f796a14eb7a0acbe6": {
       "first_seen_kst": "2026-10-08T08:31:37+09:00",
       "lanes": {
@@ -641980,6 +643327,28 @@
       "source_title": "횡성한우축제 40만명 찾았다…매출 44억원 역대 최고",
       "telegram_core_fact": "강원 횡성군의 제22회 횡성한우축제가 방문객 40만명과 매출 44억원을 기록하며 역대 최고 흥행 성적을 거뒀다.",
       "title": "횡성한우축제 40만명 찾았다…매출 44억원 역대 최고"
+    },
+    "source_fact:d4adc5a9dc847ea6da3d327d": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003828849",
+      "source": "뉴시스",
+      "source_body_digest": "4c89a0e532c615e2c21243379e74dc94301282f0c248d286212031ded25bc846",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:56d21a5735b37c916fd6bd70c2a6954fc3cf501a828e747a0891857c8d2f9264",
+      "source_fact_keys": [
+        "source_fact:v1:5443a768747b0cea936f8f193da62fbd3ce2195446e1bce1a446dfedbb49cec7",
+        "source_fact:v1:906bd7eb128da3dfdf8752d9ed593683cba67b08974c1074c9d806a411ee6ce1",
+        "source_fact:v1:b817eab8055f258014df92a56b8b044a388d19fd36e60fa4dabc3f9c93699257"
+      ],
+      "source_published_kst": "2026-10-17T00:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"200만원으로 시작해 10억 눈앞\"…40대 투자자의 자산 증식 비결",
+      "telegram_core_fact": "200만원으로 주식 투자를 시작해 약 10억원의 자산을 모은 40대 남성이 투자금 확대와 꾸준한 투자 습관의 중요성을 강조했다.",
+      "title": "\"200만원으로 시작해 10억 눈앞\"…40대 투자자의 자산 증식 비결"
     },
     "source_fact:d4af5d4a4b4042e4b1d25ab4": {
       "first_seen_kst": "2026-10-16T17:33:02+09:00",
@@ -649549,6 +650918,32 @@
       "telegram_core_fact": "현재 경기도 화성에 50MW급 태양광 모듈 생산라인을 구축하고, 초경량·고출력 태양광 모듈과 건물일체형 태양광 모듈을 개발·생산하고 있다. 에이스인벤터는 아이템을 인정받아 한국건설기술연구원 스마트건설지원센터 보육기업으로 선정됐다.",
       "title": "[한국건설기술연구원 스마트건설지원센터 보육기업 CEO] 초경량·고출력 태양광 모듈을 개발하는 기업 ‘에이스인벤터’"
     },
+    "source_fact:d94facdb5a1ac113f0d0d826": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176138",
+      "source": "매일경제",
+      "source_body_digest": "69e5c62190b8a90162332c68e149df3a2e7cd544db25cfd3a31544bfcc1223d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:17e777cc410635e1996dd0a8d43dc1274555bf4fe84616003372769ce4464b2d",
+      "source_fact_keys": [
+        "source_fact:v1:1213fcf5e8eec22c83d614e0e354afd645021fe7f483ca28d6923227cc456904",
+        "source_fact:v1:af12aba1a704e72fe2684c890a16a8e26401cb2bc3c19e91c0f0d80ebf1f0a2f",
+        "source_fact:v1:b456a36716472e16a5987da0c4cb0acc6e12a0077b6c68e40e0db9a65ea85481",
+        "source_fact:v1:bf02fde02edde5e53ac320bcea50610ff447a502f0c4970a6aea188f10109c51",
+        "source_fact:v1:c7b4cf1a6d60aed783bd109c45671a7604ad5dd14359589434d80b685fb1833b",
+        "source_fact:v1:cc5c38b3ac0a72f6680f24045d7470386609851df679a106a79179c7eea50bf3",
+        "source_fact:v1:eff15af559067a04cef36adf1b7e0eca2f91b21a689b137b112da431cdfd605f"
+      ],
+      "source_published_kst": "2026-10-17T06:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "어드바사, 배당성향 50% 목표 배당정책 채택",
+      "telegram_core_fact": "핀테크 결제 지주회사 어드바사(ADBT)가 2027년 3월 31일 종료되는 회계연도부터 보통주 연간 현금배당성향 50%를 목표로 하는 배당정책을 이사회에서 채택했다고 16일 발표했다.",
+      "title": "어드바사, 배당성향 50% 목표 배당정책 채택"
+    },
     "source_fact:d953960fbf46631ad4a61dad": {
       "first_seen_kst": "2026-10-13T18:11:03+09:00",
       "lanes": {
@@ -655350,6 +656745,32 @@
       "source_title": "삼성전자 '분기 영업이익 100조' 시대 열었다… 세계 테크기업 '최초'",
       "telegram_core_fact": "[파이낸셜뉴스]삼성전자가 올해 3·4분기 영업이익 107조4000억원을 기록하며 '분기 영업이익 100조 시대'를 열었다.",
       "title": "삼성전자 '분기 영업이익 100조' 시대 열었다… 세계 테크기업 '최초'"
+    },
+    "source_fact:dd9011bd89ec591f2931a103": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176138",
+      "source": "매일경제",
+      "source_body_digest": "69e5c62190b8a90162332c68e149df3a2e7cd544db25cfd3a31544bfcc1223d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:17e777cc410635e1996dd0a8d43dc1274555bf4fe84616003372769ce4464b2d",
+      "source_fact_keys": [
+        "source_fact:v1:1213fcf5e8eec22c83d614e0e354afd645021fe7f483ca28d6923227cc456904",
+        "source_fact:v1:af12aba1a704e72fe2684c890a16a8e26401cb2bc3c19e91c0f0d80ebf1f0a2f",
+        "source_fact:v1:b456a36716472e16a5987da0c4cb0acc6e12a0077b6c68e40e0db9a65ea85481",
+        "source_fact:v1:bf02fde02edde5e53ac320bcea50610ff447a502f0c4970a6aea188f10109c51",
+        "source_fact:v1:c7b4cf1a6d60aed783bd109c45671a7604ad5dd14359589434d80b685fb1833b",
+        "source_fact:v1:cc5c38b3ac0a72f6680f24045d7470386609851df679a106a79179c7eea50bf3",
+        "source_fact:v1:eff15af559067a04cef36adf1b7e0eca2f91b21a689b137b112da431cdfd605f"
+      ],
+      "source_published_kst": "2026-10-17T06:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "어드바사, 배당성향 50% 목표 배당정책 채택",
+      "telegram_core_fact": "핀테크 결제 지주회사 어드바사(ADBT)가 2027년 3월 31일 종료되는 회계연도부터 보통주 연간 현금배당성향 50%를 목표로 하는 배당정책을 이사회에서 채택했다고 16일 발표했다.",
+      "title": "어드바사, 배당성향 50% 목표 배당정책 채택"
     },
     "source_fact:dd92e9d268a1f52f2dd144d2": {
       "first_seen_kst": "2026-10-07T17:34:38+09:00",
@@ -661404,6 +662825,40 @@
       "source_title": "공정위 처분 '고법 직행' 2심제 논란…\"시장 경쟁 회복에 신속함 필요\"",
       "telegram_core_fact": "공정위 처분에 대한 고등법원 전속관할 규정은 1980년 12월 공정거래법(독점규제 및 공정거래에 관한 법률) 제정 당시 도입됐다.",
       "title": "공정위 처분 '고법 직행' 2심제 논란…\"시장 경쟁 회복에 신속함 필요\""
+    },
+    "source_fact:e19c45c35e9fcb031eb4aa2c": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/16/LFWMOBIUDJDQNAYSQMOZ6Q57BI/",
+      "source": "조선비즈",
+      "source_body_digest": "298e657c9f216506712d43fcdb0cba99f91385343ea8229d9447df48209792d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90ea017105ea486db6bb14e03d447d81c6b900412731bbd674d24b136cd54400",
+      "source_fact_keys": [
+        "source_fact:v1:113c98b5843e797f5371fa48802c16f7b9114c505f007c17ff614f28664e2711",
+        "source_fact:v1:200b6ef83950eccc64f3293e8a1ae3acfa52ce89681a52fc91085507f70262d0",
+        "source_fact:v1:32de7bbb69f531684a8f3d8057e9022078f1c1c01decf1abe063b6850a1811fe",
+        "source_fact:v1:374439c7c8e0021affecd914e7783b508d4b5eac20181ea98a9f70fc23f7e7e5",
+        "source_fact:v1:38272d1c1a0dbb91422501ab70c25702555e5546c98bdb53be6f62f3d5ad8d67",
+        "source_fact:v1:4499adb5ee8c044e4aa70d4aed19579566bf1c0ec374ea632ac997659088a3ef",
+        "source_fact:v1:5375a82b913efebb9cdabb52c9dd7588df7292fe6ec0d41583f894d584bf7e4e",
+        "source_fact:v1:5a997021b3ff0da31741ddeeefd00a118e6392bd4acb89c8c628b097d8cc022a",
+        "source_fact:v1:90ddf5467b8f18b1290ea39c4bf974dda6f1eda1e574f0c0bb70b2fe5b3c417c",
+        "source_fact:v1:9138501dcffb241b7e86b3fc663862162ba8e731c659e8f0f815d019faf442d1",
+        "source_fact:v1:a4232c0a0e3ab823d2316fdff3ee92cce567234035429a1742f24dc2abc9ec03",
+        "source_fact:v1:b6612a7d5d7f598eac00d16a01e5d592a8ef30c858cd76243d18e3b3eb8c317c",
+        "source_fact:v1:b8b8d846d11ff775aa89bbfae889636d78567b66b6ec5b2b2946c2bcb793ede8",
+        "source_fact:v1:db22efe5350ceb4088df8afed1bcb37576b962c79064f090a81ee880f6a30e53",
+        "source_fact:v1:e8c9e7087ea8e41b8b8bde401facd6cbff965a66567cef4d4e1c61cf0d1bd610"
+      ],
+      "source_published_kst": "2026-10-16T15:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력",
+      "telegram_core_fact": "양 기관은 네오디뮴(Nd) 사용량을 30% 줄이고 세륨(Ce)으로 대체하며, 중희토류인 디스프로슘(Dy)과 터븀(Tb)을 완전히 배제하는 Dy/Tb Free 기술을 적용해 MH HIMAG 상용화를 본격 추진한다.",
+      "title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력"
     },
     "source_fact:e19f44d39a815570a3852c9f": {
       "first_seen_kst": "2026-10-12T15:43:01+09:00",
@@ -680215,6 +681670,32 @@
       "telegram_core_fact": "유진투자증권은 13일 미국이 디젤 가격 안정을 위해 러시아산 경유에 대한 제재를 한시적으로 완화했지만 글로벌 공급 부족을 해소하기는 어려울 것으로 전망했다.",
       "title": "유진투자증권 “러시아 제재 완화에도 디젤 공급난 지속…정제마진 강세 전망”"
     },
+    "source_fact:eebda9ce331fb1252b0b9443": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176138",
+      "source": "매일경제",
+      "source_body_digest": "69e5c62190b8a90162332c68e149df3a2e7cd544db25cfd3a31544bfcc1223d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:17e777cc410635e1996dd0a8d43dc1274555bf4fe84616003372769ce4464b2d",
+      "source_fact_keys": [
+        "source_fact:v1:1213fcf5e8eec22c83d614e0e354afd645021fe7f483ca28d6923227cc456904",
+        "source_fact:v1:af12aba1a704e72fe2684c890a16a8e26401cb2bc3c19e91c0f0d80ebf1f0a2f",
+        "source_fact:v1:b456a36716472e16a5987da0c4cb0acc6e12a0077b6c68e40e0db9a65ea85481",
+        "source_fact:v1:bf02fde02edde5e53ac320bcea50610ff447a502f0c4970a6aea188f10109c51",
+        "source_fact:v1:c7b4cf1a6d60aed783bd109c45671a7604ad5dd14359589434d80b685fb1833b",
+        "source_fact:v1:cc5c38b3ac0a72f6680f24045d7470386609851df679a106a79179c7eea50bf3",
+        "source_fact:v1:eff15af559067a04cef36adf1b7e0eca2f91b21a689b137b112da431cdfd605f"
+      ],
+      "source_published_kst": "2026-10-17T06:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "어드바사, 배당성향 50% 목표 배당정책 채택",
+      "telegram_core_fact": "핀테크 결제 지주회사 어드바사(ADBT)가 2027년 3월 31일 종료되는 회계연도부터 보통주 연간 현금배당성향 50%를 목표로 하는 배당정책을 이사회에서 채택했다고 16일 발표했다.",
+      "title": "어드바사, 배당성향 50% 목표 배당정책 채택"
+    },
     "source_fact:eebe9b810cfdf1c6116fea40": {
       "first_seen_kst": "2026-10-07T18:00:43+09:00",
       "lanes": {
@@ -695562,6 +697043,40 @@
       "telegram_core_fact": "실제로 지난 12일 코스피가 3.65% 떨어졌을 때 개인투자자들은 유가증권시장에서 1조4674억원어치를 순매수했다. 코스피가 5.46% 급락한 이날 개인투자자들은 5413억원을 순매수했다.",
       "title": "\"떨어졌을 때 사자더니\"…개미들 저가 매수 속 반대매매 593억원"
     },
+    "source_fact:fa584e7d4704de18996ddbeb": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/16/LFWMOBIUDJDQNAYSQMOZ6Q57BI/",
+      "source": "조선비즈",
+      "source_body_digest": "298e657c9f216506712d43fcdb0cba99f91385343ea8229d9447df48209792d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90ea017105ea486db6bb14e03d447d81c6b900412731bbd674d24b136cd54400",
+      "source_fact_keys": [
+        "source_fact:v1:113c98b5843e797f5371fa48802c16f7b9114c505f007c17ff614f28664e2711",
+        "source_fact:v1:200b6ef83950eccc64f3293e8a1ae3acfa52ce89681a52fc91085507f70262d0",
+        "source_fact:v1:32de7bbb69f531684a8f3d8057e9022078f1c1c01decf1abe063b6850a1811fe",
+        "source_fact:v1:374439c7c8e0021affecd914e7783b508d4b5eac20181ea98a9f70fc23f7e7e5",
+        "source_fact:v1:38272d1c1a0dbb91422501ab70c25702555e5546c98bdb53be6f62f3d5ad8d67",
+        "source_fact:v1:4499adb5ee8c044e4aa70d4aed19579566bf1c0ec374ea632ac997659088a3ef",
+        "source_fact:v1:5375a82b913efebb9cdabb52c9dd7588df7292fe6ec0d41583f894d584bf7e4e",
+        "source_fact:v1:5a997021b3ff0da31741ddeeefd00a118e6392bd4acb89c8c628b097d8cc022a",
+        "source_fact:v1:90ddf5467b8f18b1290ea39c4bf974dda6f1eda1e574f0c0bb70b2fe5b3c417c",
+        "source_fact:v1:9138501dcffb241b7e86b3fc663862162ba8e731c659e8f0f815d019faf442d1",
+        "source_fact:v1:a4232c0a0e3ab823d2316fdff3ee92cce567234035429a1742f24dc2abc9ec03",
+        "source_fact:v1:b6612a7d5d7f598eac00d16a01e5d592a8ef30c858cd76243d18e3b3eb8c317c",
+        "source_fact:v1:b8b8d846d11ff775aa89bbfae889636d78567b66b6ec5b2b2946c2bcb793ede8",
+        "source_fact:v1:db22efe5350ceb4088df8afed1bcb37576b962c79064f090a81ee880f6a30e53",
+        "source_fact:v1:e8c9e7087ea8e41b8b8bde401facd6cbff965a66567cef4d4e1c61cf0d1bd610"
+      ],
+      "source_published_kst": "2026-10-16T15:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력",
+      "telegram_core_fact": "양 기관은 네오디뮴(Nd) 사용량을 30% 줄이고 세륨(Ce)으로 대체하며, 중희토류인 디스프로슘(Dy)과 터븀(Tb)을 완전히 배제하는 Dy/Tb Free 기술을 적용해 MH HIMAG 상용화를 본격 추진한다.",
+      "title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력"
+    },
     "source_fact:fa5a79c292035a14f0a79bfa": {
       "first_seen_kst": "2026-10-06T01:16:46+09:00",
       "lanes": {
@@ -699215,6 +700730,40 @@
       "telegram_core_fact": "오므론은 지난 10일 미국 버몬트 주 소재 산업용 PC 제조사인 온로직과 모회사인 인터로직을 6억 7500만 달러(약 9032억 1750만원)에 인수하는 데 합의했다. 일본 공장자동화·산업용 계측기 업체 오므론이 13일 미국 산업용 PC 제조사를 인수한다고 밝혔다.",
       "title": "日 오므론, 미국 산업용 PC 제조사 온로직 인수"
     },
+    "source_fact:fcd8a6644d2ae44eb7b756f1": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/16/LFWMOBIUDJDQNAYSQMOZ6Q57BI/",
+      "source": "조선비즈",
+      "source_body_digest": "298e657c9f216506712d43fcdb0cba99f91385343ea8229d9447df48209792d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90ea017105ea486db6bb14e03d447d81c6b900412731bbd674d24b136cd54400",
+      "source_fact_keys": [
+        "source_fact:v1:113c98b5843e797f5371fa48802c16f7b9114c505f007c17ff614f28664e2711",
+        "source_fact:v1:200b6ef83950eccc64f3293e8a1ae3acfa52ce89681a52fc91085507f70262d0",
+        "source_fact:v1:32de7bbb69f531684a8f3d8057e9022078f1c1c01decf1abe063b6850a1811fe",
+        "source_fact:v1:374439c7c8e0021affecd914e7783b508d4b5eac20181ea98a9f70fc23f7e7e5",
+        "source_fact:v1:38272d1c1a0dbb91422501ab70c25702555e5546c98bdb53be6f62f3d5ad8d67",
+        "source_fact:v1:4499adb5ee8c044e4aa70d4aed19579566bf1c0ec374ea632ac997659088a3ef",
+        "source_fact:v1:5375a82b913efebb9cdabb52c9dd7588df7292fe6ec0d41583f894d584bf7e4e",
+        "source_fact:v1:5a997021b3ff0da31741ddeeefd00a118e6392bd4acb89c8c628b097d8cc022a",
+        "source_fact:v1:90ddf5467b8f18b1290ea39c4bf974dda6f1eda1e574f0c0bb70b2fe5b3c417c",
+        "source_fact:v1:9138501dcffb241b7e86b3fc663862162ba8e731c659e8f0f815d019faf442d1",
+        "source_fact:v1:a4232c0a0e3ab823d2316fdff3ee92cce567234035429a1742f24dc2abc9ec03",
+        "source_fact:v1:b6612a7d5d7f598eac00d16a01e5d592a8ef30c858cd76243d18e3b3eb8c317c",
+        "source_fact:v1:b8b8d846d11ff775aa89bbfae889636d78567b66b6ec5b2b2946c2bcb793ede8",
+        "source_fact:v1:db22efe5350ceb4088df8afed1bcb37576b962c79064f090a81ee880f6a30e53",
+        "source_fact:v1:e8c9e7087ea8e41b8b8bde401facd6cbff965a66567cef4d4e1c61cf0d1bd610"
+      ],
+      "source_published_kst": "2026-10-16T15:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력",
+      "telegram_core_fact": "양 기관은 네오디뮴(Nd) 사용량을 30% 줄이고 세륨(Ce)으로 대체하며, 중희토류인 디스프로슘(Dy)과 터븀(Tb)을 완전히 배제하는 Dy/Tb Free 기술을 적용해 MH HIMAG 상용화를 본격 추진한다.",
+      "title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력"
+    },
     "source_fact:fcd9a09b91d3e39eab9d96e7": {
       "first_seen_kst": "2026-10-14T16:58:19+09:00",
       "lanes": {
@@ -701602,6 +703151,32 @@
       ],
       "source_published_kst": "2026-10-06T15:06+09:00",
       "title": "엠키스코어, AI Festa 26서 검증된 AI Factory 역량 공개… 대규모 구축부터 AI 활용까지"
+    },
+    "source_fact:fe6263079b4e677fb99d945f": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176138",
+      "source": "매일경제",
+      "source_body_digest": "69e5c62190b8a90162332c68e149df3a2e7cd544db25cfd3a31544bfcc1223d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:17e777cc410635e1996dd0a8d43dc1274555bf4fe84616003372769ce4464b2d",
+      "source_fact_keys": [
+        "source_fact:v1:1213fcf5e8eec22c83d614e0e354afd645021fe7f483ca28d6923227cc456904",
+        "source_fact:v1:af12aba1a704e72fe2684c890a16a8e26401cb2bc3c19e91c0f0d80ebf1f0a2f",
+        "source_fact:v1:b456a36716472e16a5987da0c4cb0acc6e12a0077b6c68e40e0db9a65ea85481",
+        "source_fact:v1:bf02fde02edde5e53ac320bcea50610ff447a502f0c4970a6aea188f10109c51",
+        "source_fact:v1:c7b4cf1a6d60aed783bd109c45671a7604ad5dd14359589434d80b685fb1833b",
+        "source_fact:v1:cc5c38b3ac0a72f6680f24045d7470386609851df679a106a79179c7eea50bf3",
+        "source_fact:v1:eff15af559067a04cef36adf1b7e0eca2f91b21a689b137b112da431cdfd605f"
+      ],
+      "source_published_kst": "2026-10-17T06:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "어드바사, 배당성향 50% 목표 배당정책 채택",
+      "telegram_core_fact": "핀테크 결제 지주회사 어드바사(ADBT)가 2027년 3월 31일 종료되는 회계연도부터 보통주 연간 현금배당성향 50%를 목표로 하는 배당정책을 이사회에서 채택했다고 16일 발표했다.",
+      "title": "어드바사, 배당성향 50% 목표 배당정책 채택"
     },
     "source_fact:fe6cd3542bdb4d178fbcfb79": {
       "first_seen_kst": "2026-10-13T19:34:14+09:00",
@@ -711081,6 +712656,28 @@
       "telegram_core_fact": "특히 개량신약과 약물재창출 분야에서는 이미 검증된 약물을 기반으로 해 개발 위험은 낮고 시장성은 높다는 점에 주목해 제약사가 곧바로 개발에 착수할 수 있는 후보물질을 공급한다는 방침이다.",
       "title": "신데카바이오 \"후보물질 공급\"…사업 방향 제시"
     },
+    "title:1398f7d33b3b7c2ef665c952": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003828849",
+      "source": "뉴시스",
+      "source_body_digest": "4c89a0e532c615e2c21243379e74dc94301282f0c248d286212031ded25bc846",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:56d21a5735b37c916fd6bd70c2a6954fc3cf501a828e747a0891857c8d2f9264",
+      "source_fact_keys": [
+        "source_fact:v1:5443a768747b0cea936f8f193da62fbd3ce2195446e1bce1a446dfedbb49cec7",
+        "source_fact:v1:906bd7eb128da3dfdf8752d9ed593683cba67b08974c1074c9d806a411ee6ce1",
+        "source_fact:v1:b817eab8055f258014df92a56b8b044a388d19fd36e60fa4dabc3f9c93699257"
+      ],
+      "source_published_kst": "2026-10-17T00:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"200만원으로 시작해 10억 눈앞\"…40대 투자자의 자산 증식 비결",
+      "telegram_core_fact": "200만원으로 주식 투자를 시작해 약 10억원의 자산을 모은 40대 남성이 투자금 확대와 꾸준한 투자 습관의 중요성을 강조했다.",
+      "title": "\"200만원으로 시작해 10억 눈앞\"…40대 투자자의 자산 증식 비결"
+    },
     "title:13c39f668f490e7ae8044cdb": {
       "first_seen_kst": "2026-10-05T14:44:39+09:00",
       "lanes": {
@@ -718675,6 +720272,40 @@
       "telegram_core_fact": "이란은 또 미군의 해상 봉쇄로 원유 수출이 막히면서 경제적 파탄 직전에 놓여 있다.",
       "title": "이란 공격 피해 허둥지둥 철수하는 미군"
     },
+    "title:27acb9b740eea6a830e3e6bc": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://biz.chosun.com/stock/stock_general/2026/10/16/LFWMOBIUDJDQNAYSQMOZ6Q57BI/",
+      "source": "조선비즈",
+      "source_body_digest": "298e657c9f216506712d43fcdb0cba99f91385343ea8229d9447df48209792d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90ea017105ea486db6bb14e03d447d81c6b900412731bbd674d24b136cd54400",
+      "source_fact_keys": [
+        "source_fact:v1:113c98b5843e797f5371fa48802c16f7b9114c505f007c17ff614f28664e2711",
+        "source_fact:v1:200b6ef83950eccc64f3293e8a1ae3acfa52ce89681a52fc91085507f70262d0",
+        "source_fact:v1:32de7bbb69f531684a8f3d8057e9022078f1c1c01decf1abe063b6850a1811fe",
+        "source_fact:v1:374439c7c8e0021affecd914e7783b508d4b5eac20181ea98a9f70fc23f7e7e5",
+        "source_fact:v1:38272d1c1a0dbb91422501ab70c25702555e5546c98bdb53be6f62f3d5ad8d67",
+        "source_fact:v1:4499adb5ee8c044e4aa70d4aed19579566bf1c0ec374ea632ac997659088a3ef",
+        "source_fact:v1:5375a82b913efebb9cdabb52c9dd7588df7292fe6ec0d41583f894d584bf7e4e",
+        "source_fact:v1:5a997021b3ff0da31741ddeeefd00a118e6392bd4acb89c8c628b097d8cc022a",
+        "source_fact:v1:90ddf5467b8f18b1290ea39c4bf974dda6f1eda1e574f0c0bb70b2fe5b3c417c",
+        "source_fact:v1:9138501dcffb241b7e86b3fc663862162ba8e731c659e8f0f815d019faf442d1",
+        "source_fact:v1:a4232c0a0e3ab823d2316fdff3ee92cce567234035429a1742f24dc2abc9ec03",
+        "source_fact:v1:b6612a7d5d7f598eac00d16a01e5d592a8ef30c858cd76243d18e3b3eb8c317c",
+        "source_fact:v1:b8b8d846d11ff775aa89bbfae889636d78567b66b6ec5b2b2946c2bcb793ede8",
+        "source_fact:v1:db22efe5350ceb4088df8afed1bcb37576b962c79064f090a81ee880f6a30e53",
+        "source_fact:v1:e8c9e7087ea8e41b8b8bde401facd6cbff965a66567cef4d4e1c61cf0d1bd610"
+      ],
+      "source_published_kst": "2026-10-16T15:14+09:00",
+      "source_supply_terms": {},
+      "source_title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력",
+      "telegram_core_fact": "양 기관은 네오디뮴(Nd) 사용량을 30% 줄이고 세륨(Ce)으로 대체하며, 중희토류인 디스프로슘(Dy)과 터븀(Tb)을 완전히 배제하는 Dy/Tb Free 기술을 적용해 MH HIMAG 상용화를 본격 추진한다.",
+      "title": "MH머트리얼즈, 재료연과 영구자석 ‘MH HIMAG’ 개발 협력"
+    },
     "title:27bea0bf48e88eec467aa3a7": {
       "first_seen_kst": "2026-09-23T05:55:25+09:00",
       "lanes": {
@@ -722490,6 +724121,24 @@
       "source": "이데일리",
       "source_event_identity": "",
       "title": "경영권 내려놓은 차상훈 대표 'APB-R3'로 'SAFA' 가치 증명할까[화제의 바이오人]"
+    },
+    "title:313cbdc9be38f5fd71005e7c": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829791",
+      "source": "뉴시스",
+      "source_body_digest": "fe2ec7b88fc8a2acc2fef4a9ef0d38877154b6fff594d1223cf0e7020e05091b",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-16T23:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "국힘 과방위원, 이진숙 국감 배제에 \"민주당 명백한 국정감사 방해\"",
+      "telegram_core_fact": "이 의원은 YTN 지분 매각 결정과 아무런 관련도 없었던 것으로 확인됐다\"라며 \"그럼에도 야당 의원의 입을 틀어막는 본질적 이유는 공영방송 국정감사 전체를 방해하고, 이재명 정부의 실정을 덮고자 함이다\"라고 했다.",
+      "title": "국힘 과방위원, 이진숙 국감 배제에 \"민주당 명백한 국정감사 방해\""
     },
     "title:314161454b8b62071b8902ca": {
       "first_seen_kst": "2026-10-02T02:03:30+09:00",
@@ -747478,6 +749127,32 @@
       "source_published_kst": "2026-10-07T08:44+09:00",
       "title": "에메라, 캐나디언유틸리티스 143억 달러 인수 합의"
     },
+    "title:73662616f642e27d31ff7ef9": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176138",
+      "source": "매일경제",
+      "source_body_digest": "69e5c62190b8a90162332c68e149df3a2e7cd544db25cfd3a31544bfcc1223d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:17e777cc410635e1996dd0a8d43dc1274555bf4fe84616003372769ce4464b2d",
+      "source_fact_keys": [
+        "source_fact:v1:1213fcf5e8eec22c83d614e0e354afd645021fe7f483ca28d6923227cc456904",
+        "source_fact:v1:af12aba1a704e72fe2684c890a16a8e26401cb2bc3c19e91c0f0d80ebf1f0a2f",
+        "source_fact:v1:b456a36716472e16a5987da0c4cb0acc6e12a0077b6c68e40e0db9a65ea85481",
+        "source_fact:v1:bf02fde02edde5e53ac320bcea50610ff447a502f0c4970a6aea188f10109c51",
+        "source_fact:v1:c7b4cf1a6d60aed783bd109c45671a7604ad5dd14359589434d80b685fb1833b",
+        "source_fact:v1:cc5c38b3ac0a72f6680f24045d7470386609851df679a106a79179c7eea50bf3",
+        "source_fact:v1:eff15af559067a04cef36adf1b7e0eca2f91b21a689b137b112da431cdfd605f"
+      ],
+      "source_published_kst": "2026-10-17T06:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "어드바사, 배당성향 50% 목표 배당정책 채택",
+      "telegram_core_fact": "핀테크 결제 지주회사 어드바사(ADBT)가 2027년 3월 31일 종료되는 회계연도부터 보통주 연간 현금배당성향 50%를 목표로 하는 배당정책을 이사회에서 채택했다고 16일 발표했다.",
+      "title": "어드바사, 배당성향 50% 목표 배당정책 채택"
+    },
     "title:7377aae93fb782c63d2ad000": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
       "lanes": {
@@ -751574,6 +753249,27 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-03T10:31+09:00",
       "title": "JYP, 중대 결정...파격 '보이콧' 선언"
+    },
+    "title:7edadbfb01968d21f5c243a9": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636687",
+      "source": "이투데이",
+      "source_body_digest": "17adce6c5d75285c011a249db24c1abbdc4481ef2aed05002d0df38414adf03c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6c8cbe1456385f2fd20d3ac319f714e4ca8550d8edc9641ec75b7ecd12f88bf9",
+      "source_fact_keys": [
+        "source_fact:v1:3e889c9822ced953b0e8d8f8ece57a8aa5312b933d28cc20ad0c28751572482b",
+        "source_fact:v1:43accefd9dbe4a79f2b447b7517e0c222ba3e1c9eebd577e5ced1b81a3311524"
+      ],
+      "source_published_kst": "2026-10-16T14:07+09:00",
+      "source_supply_terms": {},
+      "source_title": "日, 안보백서에 트럼프 요구 'GDP 3.5% 방위비' 명시 보류 검토",
+      "telegram_core_fact": "일본 정부가 올 연말 개정될 안보 문서에서 도널드 트럼프 2기 행정부 출범 이후 미국이 꾸준히 요구했던 '국내총생산(GDP) 3.5% 수준 방위비' 목표를 명시하지 않는 것을 검토 중이다.",
+      "title": "日, 안보백서에 트럼프 요구 'GDP 3.5% 방위비' 명시 보류 검토"
     },
     "title:7efc7856348fb5f20f16772e": {
       "first_seen_kst": "2026-10-12T11:51:53+09:00",
@@ -783051,6 +784747,24 @@
       "telegram_core_fact": "코스닥 상장을 추진 중인 1조원 IPO 대어, 엘리스그룹 또한 기대주로 꼽힌다.",
       "title": "얼어붙은 3분기 IPO 시장…무신사·소노, 구원투수될까"
     },
+    "title:d34534e798acae490dda8406": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016046600002",
+      "source": "연합뉴스",
+      "source_body_digest": "0ddc5289b8c20ee21bfb144c5e74fabe08c675ed0a4191a26dcd354638651efd",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-16T10:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "정부·당국 \"증시 변동성 감시 강화…교란 행위 엄정 대응\" | 연합뉴스",
+      "telegram_core_fact": "이들은 최근 국내외 주식시장이 글로벌 금리 상승 전망, AI 반도체 업종의 투자 및 수익 전망에 대한 불확실성, 국제유가 상승에 따른 위험회피 심리 등으로 조정 국면을 맞고 있으며, 국내 증시는 다른 시장에 비해 업종 비중의 차이 등으로 변동성이 상대적으로 크게 나타나고 있다고 판단했다.",
+      "title": "정부·당국 \"증시 변동성 감시 강화…교란 행위 엄정 대응\" | 연합뉴스"
+    },
     "title:d34711fa198e989bee621bfc": {
       "first_seen_kst": "2026-10-02T12:38:28+09:00",
       "lanes": {
@@ -793478,6 +795192,31 @@
       "source": "연합뉴스",
       "title": "SK하이닉스, TSMC 행사서 AI 메모리 공개…2년 연속 파트너상 | 연합뉴스"
     },
+    "title:eff324d4f701f58fcacbc825": {
+      "first_seen_kst": "2026-10-17T06:31:57+09:00",
+      "lanes": {
+        "live": "2026-10-17T06:31:57+09:00"
+      },
+      "last_seen_kst": "2026-10-17T06:31:57+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261017000200098",
+      "source": "연합뉴스",
+      "source_body_digest": "c771bf8e1526a28796a6350aeac10dcab0edc6d5f3169918f10e823a0132716b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7696cdc08019876f3e76c41b38afaf5a02ec6af30723058ec6c19697a7fe39c4",
+      "source_fact_keys": [
+        "source_fact:v1:63a694f76f00746c921444856beebd9a97e9e48fe10e88517a4751c1001ed926",
+        "source_fact:v1:7181614244ea975d9033215da6860a1b66e025c2c0526d0376f2454b31537a53",
+        "source_fact:v1:7ed17839f2fbcf5ad7175d83d3c0386085a68749458d60aebc52ad2abff78e87",
+        "source_fact:v1:b23b0483aea868cfd164984c1fd5a9ba967b49ba8bed7cca4516eacab4f79dff",
+        "source_fact:v1:dd06d5fc10cfa10ef823f5f60970287a3c87d555c2af196f0da92e453589594e",
+        "source_fact:v1:eec6ba69dcb9aa0df715887e91998f988fde93b5c0ed65b973198457ba889a94"
+      ],
+      "source_published_kst": "2026-10-17T00:09+09:00",
+      "source_supply_terms": {},
+      "source_title": "젤렌스키 \"러와 '경유딜' 부적절\"…트럼프 또 겨눠 | 연합뉴스",
+      "telegram_core_fact": "다음달 중간선거를 앞두고 유가 상승으로 인한 민심 악화에 고심하고 있는 트럼프 대통령은 최근 대러 제재를 일부 해제해 러시아산 경유를 시장에 풀겠다는 깜짝 발표를 한 뒤 일방적으로 '에너지 휴전'을 선포했고, 젤렌스키 대통령은 이에 공개적으로 반발하면서 양측의 갈등이 고조됐다.",
+      "title": "젤렌스키 \"러와 '경유딜' 부적절\"…트럼프 또 겨눠 | 연합뉴스"
+    },
     "title:f01ff81dfb64a02bb1e11b36": {
       "first_seen_kst": "2026-10-15T02:27:03+09:00",
       "lanes": {
@@ -799809,5 +801548,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-17T05:57:10+09:00"
+  "updated_at_kst": "2026-10-17T06:31:57+09:00"
 }
