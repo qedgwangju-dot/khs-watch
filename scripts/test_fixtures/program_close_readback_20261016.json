@@ -1,0 +1,294 @@
+{
+  "description": "Selected rows from normal later HTTP readbacks on 2026-10-16; not the 15:32 production responses; no transmissions",
+  "original_production_response": false,
+  "readback_date": "2026-10-16",
+  "close_ts": 1792132200.0,
+  "markets": {
+    "KOSPI": {
+      "ls": {
+        "request": {
+          "t1662InBlock": {
+            "gubun": "0",
+            "gubun1": "0",
+            "gubun3": "0",
+            "exchgubun": "U"
+          }
+        },
+        "response": {
+          "t1662OutBlock": [
+            {
+              "time": "153000",
+              "k200jisu": "878.16",
+              "sign": "2",
+              "change": "17.46",
+              "k200basis": "3.59",
+              "tot3": -21021,
+              "tot1": 8390594,
+              "tot2": 8411615,
+              "cha3": -141956,
+              "cha1": 107256,
+              "cha2": 249212,
+              "bcha3": 120934,
+              "bcha1": 8283338,
+              "bcha2": 8162404,
+              "volume": 7531
+            },
+            {
+              "time": "152600",
+              "k200jisu": "876.42",
+              "sign": "2",
+              "change": "15.72",
+              "k200basis": "4.83",
+              "tot3": -21021,
+              "tot1": 8390594,
+              "tot2": 8411615,
+              "cha3": -141956,
+              "cha1": 107256,
+              "cha2": 249212,
+              "bcha3": 120934,
+              "bcha1": 8283338,
+              "bcha2": 8162404,
+              "volume": 0
+            }
+          ],
+          "rsp_cd": "00000",
+          "rsp_msg": "정상적으로 조회가 완료되었습니다."
+        }
+      },
+      "references": {
+        "KRX": {
+          "request": {
+            "tradeType": "KRX",
+            "krxMarketType": "KOSPI",
+            "bizdate": "20261016",
+            "startIdx": 0,
+            "pageSize": 100,
+            "periodType": "TIME"
+          },
+          "response": {
+            "content": [
+              {
+                "bizdate": "20261016",
+                "time": "152600",
+                "diffBuyAmt": "106497138825",
+                "diffSellAmt": "237998305620",
+                "diffPureBuyAmt": "-131501166795",
+                "biDiffBuyAmt": "6714378520124",
+                "biDiffSellAmt": "6437161890490",
+                "biDiffPureBuyAmt": "277216629634",
+                "totalDiffBuyAmt": "6820875658949",
+                "totalDiffSellAmt": "6675160196110",
+                "totalDiffPureBuyAmt": "145715462839"
+              }
+            ]
+          }
+        },
+        "NXT": {
+          "request": {
+            "tradeType": "NXT",
+            "krxMarketType": "KOSPI",
+            "bizdate": "20261016",
+            "startIdx": 0,
+            "pageSize": 100,
+            "periodType": "TIME"
+          },
+          "response": {
+            "content": [
+              {
+                "bizdate": "20261016",
+                "time": "153000",
+                "diffBuyAmt": "759024200",
+                "diffSellAmt": "11213483060",
+                "diffPureBuyAmt": "-10454458860",
+                "biDiffBuyAmt": "1568959568700",
+                "biDiffSellAmt": "1725241814570",
+                "biDiffPureBuyAmt": "-156282245870",
+                "totalDiffBuyAmt": "1569718592900",
+                "totalDiffSellAmt": "1736455297630",
+                "totalDiffPureBuyAmt": "-166736704730"
+              },
+              {
+                "bizdate": "20261016",
+                "time": "152600",
+                "diffBuyAmt": "759024200",
+                "diffSellAmt": "11213483060",
+                "diffPureBuyAmt": "-10454458860",
+                "biDiffBuyAmt": "1568959568700",
+                "biDiffSellAmt": "1725241814570",
+                "biDiffPureBuyAmt": "-156282245870",
+                "totalDiffBuyAmt": "1569718592900",
+                "totalDiffSellAmt": "1736455297630",
+                "totalDiffPureBuyAmt": "-166736704730"
+              }
+            ]
+          }
+        }
+      },
+      "expected": {
+        "market": "KOSPI",
+        "date": "20261016",
+        "source_time": "153000",
+        "source_tr": "t1662",
+        "exchange": "U",
+        "scope": "KRX+NXT",
+        "metric": "당일 누적 순매수",
+        "unit_verified": true,
+        "raw_unit": "백만원",
+        "raw_to_won": 1000000,
+        "amounts_won": {
+          "전체": -21021000000,
+          "차익": -141956000000,
+          "비차익": 120934000000
+        },
+        "raw_close_row": {
+          "tot3": -21021,
+          "tot1": 8390594,
+          "tot2": 8411615,
+          "cha3": -141956,
+          "cha1": 107256,
+          "cha2": 249212,
+          "bcha3": 120934,
+          "bcha1": 8283338,
+          "bcha2": 8162404
+        },
+        "unit_calibration_clocks": [
+          "152600"
+        ],
+        "close_amount_independently_checked": false,
+        "net_component_residual_won": 1000000,
+        "source_date_basis": "당일 요청 및 같은 거래일의 시각별 원화 원표 대조; LS 날짜 echo 없음",
+        "precision_note": "백만원 원표 환산액; 원 단위 실측값 아님",
+        "revisable": true,
+        "nxt_daily_close": false
+      }
+    },
+    "KOSDAQ": {
+      "ls": {
+        "request": {
+          "t1662InBlock": {
+            "gubun": "1",
+            "gubun1": "0",
+            "gubun3": "0",
+            "exchgubun": "U"
+          }
+        },
+        "response": {
+          "t1662OutBlock": [
+            {
+              "time": "153000",
+              "k200jisu": "1346.76",
+              "sign": "2",
+              "change": "63.87",
+              "k200basis": "5.74",
+              "tot3": -95360,
+              "tot1": 2058765,
+              "tot2": 2154125,
+              "cha3": -2549,
+              "cha1": 378,
+              "cha2": 2927,
+              "bcha3": -92810,
+              "bcha1": 2058387,
+              "bcha2": 2151197,
+              "volume": 1083
+            }
+          ],
+          "rsp_cd": "00000",
+          "rsp_msg": "정상적으로 조회가 완료되었습니다."
+        }
+      },
+      "references": {
+        "KRX": {
+          "request": {
+            "tradeType": "KRX",
+            "krxMarketType": "KOSDAQ",
+            "bizdate": "20261016",
+            "startIdx": 0,
+            "pageSize": 100,
+            "periodType": "TIME"
+          },
+          "response": {
+            "content": [
+              {
+                "bizdate": "20261016",
+                "time": "153000",
+                "diffBuyAmt": "375632450",
+                "diffSellAmt": "913565850",
+                "diffPureBuyAmt": "-537933400",
+                "biDiffBuyAmt": "1727822100550",
+                "biDiffSellAmt": "1836456611435",
+                "biDiffPureBuyAmt": "-108634510885",
+                "totalDiffBuyAmt": "1728197733000",
+                "totalDiffSellAmt": "1837370177285",
+                "totalDiffPureBuyAmt": "-109172444285"
+              }
+            ]
+          }
+        },
+        "NXT": {
+          "request": {
+            "tradeType": "NXT",
+            "krxMarketType": "KOSDAQ",
+            "bizdate": "20261016",
+            "startIdx": 0,
+            "pageSize": 100,
+            "periodType": "TIME"
+          },
+          "response": {
+            "content": [
+              {
+                "bizdate": "20261016",
+                "time": "153000",
+                "diffBuyAmt": "2564700",
+                "diffSellAmt": "2013841485",
+                "diffPureBuyAmt": "-2011276785",
+                "biDiffBuyAmt": "330564673794",
+                "biDiffSellAmt": "314740554432",
+                "biDiffPureBuyAmt": "15824119362",
+                "totalDiffBuyAmt": "330567238494",
+                "totalDiffSellAmt": "316754395917",
+                "totalDiffPureBuyAmt": "13812842577"
+              }
+            ]
+          }
+        }
+      },
+      "expected": {
+        "market": "KOSDAQ",
+        "date": "20261016",
+        "source_time": "153000",
+        "source_tr": "t1662",
+        "exchange": "U",
+        "scope": "KRX+NXT",
+        "metric": "당일 누적 순매수",
+        "unit_verified": true,
+        "raw_unit": "백만원",
+        "raw_to_won": 1000000,
+        "amounts_won": {
+          "전체": -95360000000,
+          "차익": -2549000000,
+          "비차익": -92810000000
+        },
+        "raw_close_row": {
+          "tot3": -95360,
+          "tot1": 2058765,
+          "tot2": 2154125,
+          "cha3": -2549,
+          "cha1": 378,
+          "cha2": 2927,
+          "bcha3": -92810,
+          "bcha1": 2058387,
+          "bcha2": 2151197
+        },
+        "unit_calibration_clocks": [
+          "153000"
+        ],
+        "close_amount_independently_checked": true,
+        "net_component_residual_won": -1000000,
+        "source_date_basis": "당일 요청 및 같은 거래일의 시각별 원화 원표 대조; LS 날짜 echo 없음",
+        "precision_note": "백만원 원표 환산액; 원 단위 실측값 아님",
+        "revisable": true,
+        "nxt_daily_close": false
+      }
+    }
+  }
+}
