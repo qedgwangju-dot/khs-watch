@@ -1,7 +1,7 @@
 {
   "pending_key": null,
   "delivery_status": "confirmed",
-  "updated_at_utc": "2026-10-16T06:26:36.269401+00:00",
+  "updated_at_utc": "2026-10-16T07:55:37.015232+00:00",
   "last_sent_key": "2026-10-16|Warsh|IMF-Bangkok",
   "message_id": 89,
   "sources": [
@@ -18,5 +18,13 @@
   "citi_delivery_status": "confirmed",
   "citi_source": "https://www.kitco.com/news/off-the-wire/2026-10-14/citi-turns-hawkish-fed-after-inflation-surprise-expects-december-rate",
   "citi_message_id": 90,
-  "citi_sent_key": "2026-10-14|Citi|December-25bp"
+  "citi_sent_key": "2026-10-14|Citi|December-25bp",
+  "ai_policy_pending_key": null,
+  "ai_policy_delivery_status": "confirmed",
+  "ai_policy_sent_key": "2026-10-16|Warsh|AI-Data-Policy-Verified",
+  "ai_policy_message_id": 91,
+  "ai_policy_sources": {
+    "federal": "https://www.federalreserve.gov/monetarypolicy/task-forces.htm",
+    "press": "https://news.rthk.hk/rthk/en/component/k2/1874182-20261016.htm"
+  }
 }
