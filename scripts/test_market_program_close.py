@@ -172,11 +172,20 @@ class ProgramClose(unittest.TestCase):
         self.assertEqual(result["net_component_residual_won"], 1_000_000)
         self.assertNotEqual(result["amounts_won"]["전체"], result["amounts_won"]["차익"] + result["amounts_won"]["비차익"])
 
-    def test_render_won_eok_scope_and_precision(self):
-        text = "\n".join(program.render(sealed(), "KOSPI", NOW))
-        for required in ("-210.21억원", "-21,021,000,000원", "KRX+NXT", "15:30:00", "백만원", "원화 원표", "NXT 하루 최종값은 아닙니다", "마감 금액의 독립 대조"):
-            self.assertIn(required, text)
-        self.assertNotIn("최종 확정", text)
+    def test_render_only_eok_keeps_close_scope_and_precision(self):
+        for market, total, residual in (("KOSPI", "-210.21억원", "+0.01억원"),
+                                        ("KOSDAQ", "-953.60억원", "-0.01억원")):
+            with self.subTest(market=market):
+                case = sealed(market)
+                text = "\n".join(program.render(case, market, NOW))
+                for required in (total, residual, "KRX 마감 기준", "KRX+NXT", "15:30:00", "백만원", "단위: 억원", "NXT 하루 최종값은 아닙니다"):
+                    self.assertIn(required, text)
+                for value in case["derived"]["amounts_won"].values():
+                    self.assertNotIn(f"{value:+,}원", text)
+                self.assertNotRegex(text, r"[+-][\d,]+(?:\.\d+)?원")
+                self.assertNotIn("단위: 원·억원", text)
+                self.assertNotIn("최종 확정", text)
+        self.assertIn("마감 금액의 독립 대조", "\n".join(program.render(sealed(), "KOSPI", NOW)))
 
     def test_held_has_reason_and_no_fake_zero_amount(self):
         text = "\n".join(program.render({"status": "held", "reason": "원화 원표 날짜 불일치"}, "KOSPI", NOW))

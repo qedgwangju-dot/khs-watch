@@ -259,7 +259,7 @@ def collect(token: str, market: str, close_ts: float, post, get=None) -> dict:
 
 
 def render(result: dict | None, market: str, now_ts: float | None = None) -> list[str]:
-    lines = ["", "<b>장마감 시점 당일 누적 프로그램 수급</b>"]
+    lines = ["", "<b>KRX 마감 기준 당일 누적 프로그램 수급</b>"]
     reason = "마감 원표·원화 환산 단위 미확인"
     if isinstance(result, dict):
         reason = str(result.get("reason") or reason)
@@ -283,14 +283,15 @@ def render(result: dict | None, market: str, now_ts: float | None = None) -> lis
             lines += [f"• <b>{close:%Y-%m-%d %H:%M:%S} KST</b> 원표 · KRX+NXT 통합 · 당일 매수−매도 누적"]
             for label, value in derived["amounts_won"].items():
                 eok = Decimal(value) / Decimal(100_000_000)
-                lines.append(f"• {label} <b>{eok:+,.2f}억원</b> ({value:+,}원)")
-            lines += ["• 단위: 원·억원 (백만원 단위 원표의 환산액; 환산 단위 검증).",
+                lines.append(f"• {label} <b>{eok:+,.2f}억원</b>")
+            lines += ["• 단위: 억원 (백만원 단위 원표를 환산; 환산 단위 검증).",
                       "• KRX 마감 시각 누적이며 NXT 하루 최종값은 아닙니다. 이후 원자료 수정 가능."]
             if not derived["close_amount_independently_checked"]:
                 lines.append("• 마감 금액의 독립 대조: 일부 원화 원표 미공표로 미완료.")
             residual = derived["net_component_residual_won"]
             if residual:
-                lines.append(f"• 전체 직접값−차익·비차익 합계 차이 {residual:+,}원 (원표 표시 정밀도 내; 직접값 보존)")
+                residual_eok = Decimal(residual) / Decimal(100_000_000)
+                lines.append(f"• 전체 직접값−차익·비차익 합계 차이 {residual_eok:+,.2f}억원 (원표 표시 정밀도 내; 직접값 보존)")
             return lines
         except Exception as exc:
             reason = str(exc)
