@@ -1,0 +1,80 @@
+name: Space Capital FAA and Korea Orbital AI Telegram Watch
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/space-capital-faa-korea-ai-telegram-watch.yml"
+      - "scripts/space_capital_policy_watch.py"
+  schedule:
+    - cron: "26 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: space-capital-faa-korea-ai-telegram-watch
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs887988798879887988798879_bot"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Regression tests
+        run: |
+          python -m py_compile scripts/space_capital_policy_watch.py
+          SPACE_CAPITAL_SELF_TEST=1 python scripts/space_capital_policy_watch.py
+          python scripts/space_launch_telegram_send.py --self-test
+          python scripts/merge_space_launch_state.py --self-test
+
+      - name: Verify FAA original and scan developments
+        run: python scripts/space_capital_policy_watch.py
+
+      - name: Run status
+        if: always()
+        run: |
+          if [ -f out/space_capital_policy_status.md ]; then
+            cat out/space_capital_policy_status.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Deliver in Korean using only the verified dedicated bot
+        if: hashFiles('out/space_capital_policy_telegram.txt') != ''
+        env:
+          SPACE_LAUNCH_TELEGRAM_BOT_TOKEN: ${{ secrets.SPACE_LAUNCH_TELEGRAM_BOT_TOKEN }}
+          SPACE_LAUNCH_TELEGRAM_CHAT_ID: ${{ secrets.SPACE_LAUNCH_TELEGRAM_CHAT_ID }}
+        run: python scripts/space_launch_telegram_send.py out/space_capital_policy_telegram.txt
+
+      - name: Commit state after confirmed send
+        if: success() && hashFiles('out/space_capital_policy_pending.json') != ''
+        run: |
+          cp out/space_capital_policy_pending.json /tmp/space_capital_policy_pending.json
+          git config user.name "space-capital-policy-watch[bot]"
+          git config user.email "space-capital-policy-watch[bot]@users.noreply.github.com"
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git reset --hard origin/main
+            python scripts/merge_space_launch_state.py \
+              data/space_capital_policy_watch_state.json \
+              /tmp/space_capital_policy_pending.json \
+              data/space_capital_policy_watch_state.json
+            git add data/space_capital_policy_watch_state.json
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -m "chore: update space capital policy watch state"
+            if git push origin HEAD:main; then exit 0; fi
+            sleep $((attempt * 3))
+          done
+          exit 1
