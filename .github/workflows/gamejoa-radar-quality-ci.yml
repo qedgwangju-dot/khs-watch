@@ -10,6 +10,7 @@ on:
       - 'data/gamejoa_*fixtures*.json'
       - 'data/gamejoa_verified_event_aliases.json'
       - 'docs/gamejoa_maintenance_contract.md'
+      - '.github/workflows/gamejoa-preopen-news-radar.yml'
       - '.github/workflows/gamejoa-radar-quality-ci.yml'
   push:
     branches: [main]
@@ -20,6 +21,7 @@ on:
       - 'data/gamejoa_*fixtures*.json'
       - 'data/gamejoa_verified_event_aliases.json'
       - 'docs/gamejoa_maintenance_contract.md'
+      - '.github/workflows/gamejoa-preopen-news-radar.yml'
       - '.github/workflows/gamejoa-radar-quality-ci.yml'
 
 permissions:
