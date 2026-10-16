@@ -22707,6 +22707,32 @@
       "telegram_core_fact": "관세청이 발표한 ‘10월 1~10일 수출입 현황’에 따르면 이 기간 수출액은 261억 400만달러로 전년비 102.0% 증가했다.",
       "title": "10월 초 수출 261억달러 신기록…반도체는 170% 뛰며 '역대 최대'"
     },
+    "core:67d933c9a257f3685056e594": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02499366645613576",
+      "source": "이데일리",
+      "source_body_digest": "1ee073c23e1e867472306e9cf1bfac5436113e3d0986fb72b567341c35940a4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:76857d0e48f55e65358f04f85b37d870f280db6e79b359880a240a39059e26a5",
+      "source_fact_keys": [
+        "source_fact:v1:5d2f13ca6f6bb776b39c9f4ec0b9cc50dc3b85a0bfe474c4d757bce3494e91b5",
+        "source_fact:v1:8eba7e7994172e910e17d39383fd52285514c737aeca899fd80c6cfb9726640a",
+        "source_fact:v1:90df828f620db3a6a3763a36e0491a326c7b159527c81bd8c871bba288012659",
+        "source_fact:v1:c17b179ed8fafe707027fcffa53cdb37e8abb6e5eca921a50d5dd24bbce925bb",
+        "source_fact:v1:c191af7e3b0c3ea0bd519c702bba0821f57d038112388333b9beb9d7dbedbe2e",
+        "source_fact:v1:df98bad6ff5671fb1fbb10cacaf15318da6c8ac5c8234b53b6c8396068aac104",
+        "source_fact:v1:ea29d6ffa820938ea2cd7ef4e904a7d0b36e212acb1078e5546c1ce4fa4d5e3c"
+      ],
+      "source_published_kst": "2026-10-16T07:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "코어위브 주가 롤러코스터…고금리에 AI 기업 양극화",
+      "telegram_core_fact": "트라얀웰스의 데이비드 부시 최고투자책임자(CIO)는 “채권시장이 보내는 메시지는 코어위브의 채무불이행 위험이 커졌다는 것”이라며 “반드시 AI 컴퓨팅 수요가 약해졌다는 뜻은 아니지만 막대한 차입 수요가 현금 창출 능력을 압도하고 합리적인 금리로 기존 부채를 차환하는 능력까지 위협할 수 있다는 점이 우려스럽다”고 말했다.",
+      "title": "코어위브 주가 롤러코스터…고금리에 AI 기업 양극화"
+    },
     "core:67f055658976b3f107887126": {
       "first_seen_kst": "2026-10-13T00:22:20+09:00",
       "lanes": {
@@ -29280,6 +29306,29 @@
       "telegram_core_fact": "배달대행사 응답 지연이나 장애가 발생해도 고객의 취소 처리가 외부 시스템에 종속되지 않도록 후속 작업을 분리하는 등 물류·주문·결제 시스템의 정합성도 강화한 것으로 알려졌다.",
       "title": "올리브영, '배송준비중 취소 불가' 물류 관행 깼다…고객 문의 90% 감소"
     },
+    "core:85c1c3af3f1f447a971d52a6": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003828069",
+      "source": "뉴시스",
+      "source_body_digest": "6e4b5f082a05ae50f26a29845b3adbeb70192dc67ebfbb7e2fa0bd022df85b3f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1ef670d99f0e880ab6482d8de55e4f8b68b58eb777cfeed474d82a169072683b",
+      "source_fact_keys": [
+        "source_fact:v1:1321aafa366d1b9be028235b865eab268ee95bb35239ee820cf3a21056631957",
+        "source_fact:v1:6454031eebb1f156409e0668612cb80d7e0c72f1b1baffbee73f2636921e60bd",
+        "source_fact:v1:9e34ddfdd7e322c3a433e82fd8f2600bd5d76d51e3644d9b69ed0cc1134c118d",
+        "source_fact:v1:d99808da84a7e65ac847b00ad9aec3a5e2329bddcadc8ce9d1f462257cda2606"
+      ],
+      "source_published_kst": "2026-10-15T21:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"우크라, 대 러시아 정유시설 공격 재개해\"",
+      "telegram_core_fact": "우크라이나 드론들이 15일 아침(현지시간) 러시아 리아잔 지방 소재 한 정유소를 공격했다. 우크라의 이날 아침 드론 공격으로 모스크바 남동쪽 300㎞ 소재의 리아잔 정유소에 불이 났다고 러시아 국방부와 리아잔 주지사가 말했다.",
+      "title": "\"우크라, 대 러시아 정유시설 공격 재개해\""
+    },
     "core:85d3d97e8e15d967182a6772": {
       "first_seen_kst": "2026-10-15T05:17:25+09:00",
       "lanes": {
@@ -30586,6 +30635,32 @@
       "source_title": "개인 자금 3.3조 몰렸다…'KODEX 미국나스닥100' 순자산 10조 돌파",
       "telegram_core_fact": "[파이낸셜뉴스] 삼성자산운용의 'KODEX 미국나스닥100' 상장지수펀드(ETF)가 개인투자자들의 자금 유입에 힘입어 순자산 10조원을 넘어섰다. 올해 개인 투자자의 'KODEX 미국나스닥100' 순매수 금액은 3조2988억원으로, 국내 나스닥100 추종 상품 중 1위를 기록했다.",
       "title": "개인 자금 3.3조 몰렸다…'KODEX 미국나스닥100' 순자산 10조 돌파"
+    },
+    "core:8ae3826c1b8f6517e8cb9d1a": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.mk.co.kr/news/business/12177796",
+      "source": "매일경제",
+      "source_body_digest": "639a2857800386882f124154d294d4cdcf9afe8c352fc95ede0950e148ecf5ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a62a6d113f62ecbcf6d1009aa827b24c984d25fffc9e72d584132e44108a444",
+      "source_fact_keys": [
+        "source_fact:v1:06131df77eb59992316644927f61cb4e61c38e18f47841d20f766547cccd9354",
+        "source_fact:v1:29225e3476de7596c3b8814f09e4b6022da9dec5a305788e2a5105099566744f",
+        "source_fact:v1:75c7296435c865a02c2b54cbdd4307ad461921db39146720ef209560ae606999",
+        "source_fact:v1:a4789d5ab3574f9e39a67b7f4f875ddffa2c87f31b81a82e0727ef449f7d7a2b",
+        "source_fact:v1:dcab95ed262fbe7c446e49bceac529e82a21859ae0f07ade07e8f5706289e033",
+        "source_fact:v1:e2943b354407c348fe6691872e922cc23f1988cd0fc447ad0df65a5f796a0e46",
+        "source_fact:v1:fc83da6690dce7dad36408e4c2676083805996aa433b2d6ad0ab2873eb53e3a1"
+      ],
+      "source_published_kst": "2026-10-16T14:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "솔리다임 IPO 딜레마 빠진 SK하이닉스- 매경ECONOMY",
+      "telegram_core_fact": "SK하이닉스가 미국 낸드플래시 자회사 솔리다임 기업공개(IPO)를 추진하며 재계가 시끌시끌하다.",
+      "title": "솔리다임 IPO 딜레마 빠진 SK하이닉스- 매경ECONOMY"
     },
     "core:8aeccec268293a445e13076a": {
       "first_seen_kst": "2026-10-14T19:42:07+09:00",
@@ -34762,6 +34837,24 @@
       "telegram_core_fact": "삼성SDS는 오픈AI, 앤트로픽 등 글로벌 프론티어 AI 기업들과 전략적 협력을 확대하며 고객사의 인공지능(AI) 전환을 이끌고 있다. 삼성SDS는 오픈AI, 앤트로픽, 구글클라우드, 엔비디아, 액센츄어 등과 협력해 AI 모델·인프라·솔루션·보안에 걸친 글로벌 AI 생태계를 구축하고 있다.",
       "title": "삼성SDS, AI 동맹 늘리고 제조로봇 전환 이끌어"
     },
+    "core:9fd25c0536c15cc8feb1ad13": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636389",
+      "source": "이투데이",
+      "source_body_digest": "a6bad67745ea6756cadcda023f3ef6a269fc29a31608b96507d27da24123000e",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-15T18:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "반도체 호황에 갈린 금리 전망⋯“내년 1분기까지 인상” vs “11월 마무리”",
+      "telegram_core_fact": "권효성 블룸버그 이코노미스트는 “반도체 호황에 힘입어 한국 경제가 올해 3.7%, 내년 3.0% 성장할 것으로 예상한다”며 “기조적인 물가 상승 압력이 이어져 한국은행이 내년 1분기까지 기준금리를 3.50%로 인상할 것으로 본다”고 전했다.",
+      "title": "반도체 호황에 갈린 금리 전망⋯“내년 1분기까지 인상” vs “11월 마무리”"
+    },
     "core:a00a128a0ed9c726e4287471": {
       "first_seen_kst": "2026-10-13T07:27:37+09:00",
       "lanes": {
@@ -35715,6 +35808,33 @@
       "source_title": "[AI 리더스] 한진정보통신 \"대외 AX 시장으로 도약…기업 비즈니스 혁신 이끌 것\"",
       "telegram_core_fact": "한진정보통신은 기존 'H 솔루션'과 'HAI 솔루션', 인더스트리 솔루션 등 자체 제품군을 확대하면서 실제 고객 프로젝트에서 검증된 기능과 기술을 솔루션화하는 접근 방식을 취하고 있다.",
       "title": "[AI 리더스] 한진정보통신 \"대외 AX 시장으로 도약…기업 비즈니스 혁신 이끌 것\""
+    },
+    "core:a421b26bef6a8f137fda6287": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.news1.kr/it-science/mobile/6321591",
+      "source": "뉴스1",
+      "source_body_digest": "d4d9a2f2c5cf92d667d74dca284129e1c5c6b0c84350e7b24b4110b045a8d3b5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a25416708c82e0b1a785a1b56e66b3e42ffacee03f1ca4dc07081a3bf9f29ea",
+      "source_fact_keys": [
+        "source_fact:v1:005ee4ba9379c40411d743aefd68648279505e6cfaabfaecc9f67d5f220b314b",
+        "source_fact:v1:1600abd92c92e1bc65773003a75067d1fdc050778204a759f63e8ef824cbdcac",
+        "source_fact:v1:91a2d05cb223ae6e3878245f932f9281f2d6577e015cc9c2d104d94768b70cbf",
+        "source_fact:v1:997ed4e0e9f28b6440043882b51bab27c5fd4ccd1fec0067d85ed125b30eff9f",
+        "source_fact:v1:a58fbb9d3979d15c22c1fc763611d1d66dd749aff17cd80c06d8e430ec88bd56",
+        "source_fact:v1:c8e277dbf6e27a66506e8a975847f4d88b251d1492d17f2b9cdd288d14a1dc22",
+        "source_fact:v1:cbcfe9c3f113fc0905f3b51855185f28c4d78d2e7a27b17e8da9796e8d60bfba",
+        "source_fact:v1:d0a1ec00891aa750ba8eb1953c01f6f2ab74d2c2a410cba73fd48eb315d03359"
+      ],
+      "source_published_kst": "2026-10-16T05:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\"",
+      "telegram_core_fact": "인공지능(AI) 수요 증가에 따른 메모리 반도체 공급 부족과 서버·스토리지 가격 상승이 2028년까지 이어질 것이라는 전망이 나왔다.",
+      "title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\""
     },
     "core:a422a0963c7e8cb0f12b32e9": {
       "first_seen_kst": "2026-10-13T04:37:27+09:00",
@@ -38071,6 +38191,26 @@
       "source_title": "제논, 증권신고서 제출…“상장 통해 글로벌 AX 기업 도약”",
       "telegram_core_fact": "제논이 금융위원회에 증권신고서를 제출하고 코스닥 상장을 위한 공모 절차에 착수했다. 올해 상반기 별도 기준 매출은 117억6000만원으로 전년 동기 27억3000만원 대비 4.3배 증가했다.",
       "title": "제논, 증권신고서 제출…“상장 통해 글로벌 AX 기업 도약”"
+    },
+    "core:af0b328f94ace1f04dd45e40": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175509",
+      "source": "매일경제",
+      "source_body_digest": "a875c8cb121ce9172f83d6e3864259d95eec88de7393f81537ff29575854ac14",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:be8fbbd063288fb105c6921a30fe4e4f35f5ccf85b39aa562a6d16e93d2b13fe",
+      "source_fact_keys": [
+        "source_fact:v1:e3efb27e7173af19363070e1fc34cec250b0b0b4a7693fbd54abc473572e4544"
+      ],
+      "source_published_kst": "2026-10-16T05:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "국제유가 혼조…WTI 6거래일째 상승·브렌트유는 약보합",
+      "telegram_core_fact": "반면 글로벌 벤치마크인 브렌트유 12월물은 0.14달러(0.13%) 하락한 배럴당 105.92달러에 마감했다.",
+      "title": "국제유가 혼조…WTI 6거래일째 상승·브렌트유는 약보합"
     },
     "core:af0e4a66bb35055f711abb8a": {
       "first_seen_kst": "2026-10-14T22:47:26+09:00",
@@ -46525,6 +46665,29 @@
       "source_title": "美 10월 소비자심리 5개월 만에 최저…생활비 불만 커져",
       "telegram_core_fact": "9일(현지시간) 미국 월스트리트저널(WSJ) 등 외신에 따르면 미시간대가 발표한 10월 소비자심리지수 잠정치는 46.3으로, 전월 확정치(48.1)보다 1.8포인트 하락했다. 미국 소비자심리가 생활비 부담 속에 5개월 만에 가장 낮은 수준으로 떨어졌다.",
       "title": "美 10월 소비자심리 5개월 만에 최저…생활비 불만 커져"
+    },
+    "core:d79107b68dbd47c89b78b77e": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175589",
+      "source": "매일경제",
+      "source_body_digest": "8fd3b556cdd9b555f32464cd6195f4d6e032b9effe28cf50ed8b98d8a080cfb3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8e6823e1215c0c76fd63cfcdd8315aa17f291703c9a3a6faf37af4768d3785e",
+      "source_fact_keys": [
+        "source_fact:v1:14c13d231e4e2e933f944fa0390b73e1620e160f55b4c90697ea7bae32c1c59a",
+        "source_fact:v1:5826d31d775b14ccc7f1933d0d183070d3d6ee918a26cdcfc453fd799321de7f",
+        "source_fact:v1:7e1804e4228cb26abc789a1e44ee195c4a38b0bbad3dcbcac08256ce23599bd4",
+        "source_fact:v1:9fb6ca68c047478f1271e51bbb807d29600f9b5c564b39d7a72536fedae34926"
+      ],
+      "source_published_kst": "2026-10-16T08:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"앤트로픽 성장세 둔화?…기업가치 기대감 낮아져\"",
+      "telegram_core_fact": "올해 1분기 47억달러에서 2분기 116억달러로 매출이 두 배 이상 증가한 것과 비교하면 상승세가 둔화했다고 본 것이다. 발표된 실적은 인공지능(AI) 개발 비용에 대한 우려를 일부 완화해줬지만, 일각에서는 매출 성장세가 둔화했다는 점에 실망감도 드러난 것으로 전해졌다.",
+      "title": "\"앤트로픽 성장세 둔화?…기업가치 기대감 낮아져\""
     },
     "core:d7a559b54023656e5a03d857": {
       "first_seen_kst": "2026-10-08T02:26:35+09:00",
@@ -56844,6 +57007,24 @@
       "telegram_core_fact": "마이크론은 지난달 30일 2026년 회계연도 4분기 실적발표 컨퍼런스콜에서 \"성과급 보상을 위해 다음 분기 약 10억달러(약 1조3353억원) 상당의 추가 비용이 발생할 것\"이라며 \"(성과급 등에 대한 부담으로) 2027년 회계연도 1분기는 매출총이익의 저점이 될 것\"이라고 발표했다.",
       "title": "삼성전자 반도체 성과급 충당금만 30조 육박…커지는 '호황의 비용'"
     },
+    "event:25ca2a743e6c68a9a1919301": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636389",
+      "source": "이투데이",
+      "source_body_digest": "a6bad67745ea6756cadcda023f3ef6a269fc29a31608b96507d27da24123000e",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-15T18:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "반도체 호황에 갈린 금리 전망⋯“내년 1분기까지 인상” vs “11월 마무리”",
+      "telegram_core_fact": "권효성 블룸버그 이코노미스트는 “반도체 호황에 힘입어 한국 경제가 올해 3.7%, 내년 3.0% 성장할 것으로 예상한다”며 “기조적인 물가 상승 압력이 이어져 한국은행이 내년 1분기까지 기준금리를 3.50%로 인상할 것으로 본다”고 전했다.",
+      "title": "반도체 호황에 갈린 금리 전망⋯“내년 1분기까지 인상” vs “11월 마무리”"
+    },
     "event:26218d2748a640a75cd23443": {
       "first_seen_kst": "2026-10-01T22:45:00+09:00",
       "lanes": {
@@ -62449,6 +62630,29 @@
       "source": "연합뉴스",
       "title": "\"집사겠단 사람 없다\"…美주담대 7.28%로 주간상승폭 4년만 최대 | 연합뉴스"
     },
+    "event:8cd0e5121cb0211ff3224f37": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175589",
+      "source": "매일경제",
+      "source_body_digest": "8fd3b556cdd9b555f32464cd6195f4d6e032b9effe28cf50ed8b98d8a080cfb3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8e6823e1215c0c76fd63cfcdd8315aa17f291703c9a3a6faf37af4768d3785e",
+      "source_fact_keys": [
+        "source_fact:v1:14c13d231e4e2e933f944fa0390b73e1620e160f55b4c90697ea7bae32c1c59a",
+        "source_fact:v1:5826d31d775b14ccc7f1933d0d183070d3d6ee918a26cdcfc453fd799321de7f",
+        "source_fact:v1:7e1804e4228cb26abc789a1e44ee195c4a38b0bbad3dcbcac08256ce23599bd4",
+        "source_fact:v1:9fb6ca68c047478f1271e51bbb807d29600f9b5c564b39d7a72536fedae34926"
+      ],
+      "source_published_kst": "2026-10-16T08:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"앤트로픽 성장세 둔화?…기업가치 기대감 낮아져\"",
+      "telegram_core_fact": "올해 1분기 47억달러에서 2분기 116억달러로 매출이 두 배 이상 증가한 것과 비교하면 상승세가 둔화했다고 본 것이다. 발표된 실적은 인공지능(AI) 개발 비용에 대한 우려를 일부 완화해줬지만, 일각에서는 매출 성장세가 둔화했다는 점에 실망감도 드러난 것으로 전해졌다.",
+      "title": "\"앤트로픽 성장세 둔화?…기업가치 기대감 낮아져\""
+    },
     "event:8cd7f11d4f560457c41b7453": {
       "first_seen_kst": "2026-10-08T04:14:15+09:00",
       "lanes": {
@@ -65844,6 +66048,32 @@
       "source": "머니투데이",
       "title": "ETF 쏠림의 그늘…'자투리 펀드' 올해만 50개 늘었다"
     },
+    "event:c4b21f4bc55d8f3520e5ba5b": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02499366645613576",
+      "source": "이데일리",
+      "source_body_digest": "1ee073c23e1e867472306e9cf1bfac5436113e3d0986fb72b567341c35940a4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:76857d0e48f55e65358f04f85b37d870f280db6e79b359880a240a39059e26a5",
+      "source_fact_keys": [
+        "source_fact:v1:5d2f13ca6f6bb776b39c9f4ec0b9cc50dc3b85a0bfe474c4d757bce3494e91b5",
+        "source_fact:v1:8eba7e7994172e910e17d39383fd52285514c737aeca899fd80c6cfb9726640a",
+        "source_fact:v1:90df828f620db3a6a3763a36e0491a326c7b159527c81bd8c871bba288012659",
+        "source_fact:v1:c17b179ed8fafe707027fcffa53cdb37e8abb6e5eca921a50d5dd24bbce925bb",
+        "source_fact:v1:c191af7e3b0c3ea0bd519c702bba0821f57d038112388333b9beb9d7dbedbe2e",
+        "source_fact:v1:df98bad6ff5671fb1fbb10cacaf15318da6c8ac5c8234b53b6c8396068aac104",
+        "source_fact:v1:ea29d6ffa820938ea2cd7ef4e904a7d0b36e212acb1078e5546c1ce4fa4d5e3c"
+      ],
+      "source_published_kst": "2026-10-16T07:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "코어위브 주가 롤러코스터…고금리에 AI 기업 양극화",
+      "telegram_core_fact": "트라얀웰스의 데이비드 부시 최고투자책임자(CIO)는 “채권시장이 보내는 메시지는 코어위브의 채무불이행 위험이 커졌다는 것”이라며 “반드시 AI 컴퓨팅 수요가 약해졌다는 뜻은 아니지만 막대한 차입 수요가 현금 창출 능력을 압도하고 합리적인 금리로 기존 부채를 차환하는 능력까지 위협할 수 있다는 점이 우려스럽다”고 말했다.",
+      "title": "코어위브 주가 롤러코스터…고금리에 AI 기업 양극화"
+    },
     "event:c4d2b68c3de2ec875acda5f7": {
       "first_seen_kst": "2026-10-14T21:45:21+09:00",
       "lanes": {
@@ -66879,6 +67109,32 @@
       "source": "이데일리",
       "title": "ETF 성장세 주춤하자 다시 ‘쩐의 전쟁’…보수 0%대 승부수"
     },
+    "event:d371cd0f85534e8e1a90bcf8": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.mk.co.kr/news/business/12177796",
+      "source": "매일경제",
+      "source_body_digest": "639a2857800386882f124154d294d4cdcf9afe8c352fc95ede0950e148ecf5ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a62a6d113f62ecbcf6d1009aa827b24c984d25fffc9e72d584132e44108a444",
+      "source_fact_keys": [
+        "source_fact:v1:06131df77eb59992316644927f61cb4e61c38e18f47841d20f766547cccd9354",
+        "source_fact:v1:29225e3476de7596c3b8814f09e4b6022da9dec5a305788e2a5105099566744f",
+        "source_fact:v1:75c7296435c865a02c2b54cbdd4307ad461921db39146720ef209560ae606999",
+        "source_fact:v1:a4789d5ab3574f9e39a67b7f4f875ddffa2c87f31b81a82e0727ef449f7d7a2b",
+        "source_fact:v1:dcab95ed262fbe7c446e49bceac529e82a21859ae0f07ade07e8f5706289e033",
+        "source_fact:v1:e2943b354407c348fe6691872e922cc23f1988cd0fc447ad0df65a5f796a0e46",
+        "source_fact:v1:fc83da6690dce7dad36408e4c2676083805996aa433b2d6ad0ab2873eb53e3a1"
+      ],
+      "source_published_kst": "2026-10-16T14:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "솔리다임 IPO 딜레마 빠진 SK하이닉스- 매경ECONOMY",
+      "telegram_core_fact": "SK하이닉스가 미국 낸드플래시 자회사 솔리다임 기업공개(IPO)를 추진하며 재계가 시끌시끌하다.",
+      "title": "솔리다임 IPO 딜레마 빠진 SK하이닉스- 매경ECONOMY"
+    },
     "event:d3ca22107781d9078e963f4a": {
       "first_seen_kst": "2026-10-07T01:07:29+09:00",
       "lanes": {
@@ -67388,6 +67644,26 @@
       "link": "https://www.yna.co.kr/view/AKR20261001163900003",
       "source": "연합뉴스",
       "title": "한전·SK하이닉스, 반도체 산단 안정적 전력공급 위해 맞손 | 연합뉴스"
+    },
+    "event:dcc3fb672995a2775cfdbbf9": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175509",
+      "source": "매일경제",
+      "source_body_digest": "a875c8cb121ce9172f83d6e3864259d95eec88de7393f81537ff29575854ac14",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:be8fbbd063288fb105c6921a30fe4e4f35f5ccf85b39aa562a6d16e93d2b13fe",
+      "source_fact_keys": [
+        "source_fact:v1:e3efb27e7173af19363070e1fc34cec250b0b0b4a7693fbd54abc473572e4544"
+      ],
+      "source_published_kst": "2026-10-16T05:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "국제유가 혼조…WTI 6거래일째 상승·브렌트유는 약보합",
+      "telegram_core_fact": "반면 글로벌 벤치마크인 브렌트유 12월물은 0.14달러(0.13%) 하락한 배럴당 105.92달러에 마감했다.",
+      "title": "국제유가 혼조…WTI 6거래일째 상승·브렌트유는 약보합"
     },
     "event:dcfff58e3416efb78940561b": {
       "first_seen_kst": "2026-10-02T13:38:43+09:00",
@@ -68420,6 +68696,33 @@
       ],
       "source_published_kst": "2026-10-06T16:30+09:00",
       "title": "고려아연, 故 최창걸 명예회장 1주기 추모…“사람·신뢰 철학으로 미래 50년”"
+    },
+    "event:ec5bd5b4b19c9166fc9e9747": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.news1.kr/it-science/mobile/6321591",
+      "source": "뉴스1",
+      "source_body_digest": "d4d9a2f2c5cf92d667d74dca284129e1c5c6b0c84350e7b24b4110b045a8d3b5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a25416708c82e0b1a785a1b56e66b3e42ffacee03f1ca4dc07081a3bf9f29ea",
+      "source_fact_keys": [
+        "source_fact:v1:005ee4ba9379c40411d743aefd68648279505e6cfaabfaecc9f67d5f220b314b",
+        "source_fact:v1:1600abd92c92e1bc65773003a75067d1fdc050778204a759f63e8ef824cbdcac",
+        "source_fact:v1:91a2d05cb223ae6e3878245f932f9281f2d6577e015cc9c2d104d94768b70cbf",
+        "source_fact:v1:997ed4e0e9f28b6440043882b51bab27c5fd4ccd1fec0067d85ed125b30eff9f",
+        "source_fact:v1:a58fbb9d3979d15c22c1fc763611d1d66dd749aff17cd80c06d8e430ec88bd56",
+        "source_fact:v1:c8e277dbf6e27a66506e8a975847f4d88b251d1492d17f2b9cdd288d14a1dc22",
+        "source_fact:v1:cbcfe9c3f113fc0905f3b51855185f28c4d78d2e7a27b17e8da9796e8d60bfba",
+        "source_fact:v1:d0a1ec00891aa750ba8eb1953c01f6f2ab74d2c2a410cba73fd48eb315d03359"
+      ],
+      "source_published_kst": "2026-10-16T05:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\"",
+      "telegram_core_fact": "인공지능(AI) 수요 증가에 따른 메모리 반도체 공급 부족과 서버·스토리지 가격 상승이 2028년까지 이어질 것이라는 전망이 나왔다.",
+      "title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\""
     },
     "event:ecc106662168368bdcad2f92": {
       "first_seen_kst": "2026-10-10T03:00:37+09:00",
@@ -70335,6 +70638,33 @@
       "source_title": "LS일렉트릭, 대만 최대 석화그룹과 합작법인…현지 사업 확대",
       "telegram_core_fact": "대만 전력사업을 주도할 합작법인은 LS일렉트릭이 50%, 난야플라스틱 40%, KHI가 10%를 각각 출자해 설립했으며 사명은 ‘남아낙성(南亞樂星)’으로 정했다.",
       "title": "LS일렉트릭, 대만 최대 석화그룹과 합작법인…현지 사업 확대"
+    },
+    "fact:023834a677528eef0070d765": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.news1.kr/it-science/mobile/6321591",
+      "source": "뉴스1",
+      "source_body_digest": "d4d9a2f2c5cf92d667d74dca284129e1c5c6b0c84350e7b24b4110b045a8d3b5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a25416708c82e0b1a785a1b56e66b3e42ffacee03f1ca4dc07081a3bf9f29ea",
+      "source_fact_keys": [
+        "source_fact:v1:005ee4ba9379c40411d743aefd68648279505e6cfaabfaecc9f67d5f220b314b",
+        "source_fact:v1:1600abd92c92e1bc65773003a75067d1fdc050778204a759f63e8ef824cbdcac",
+        "source_fact:v1:91a2d05cb223ae6e3878245f932f9281f2d6577e015cc9c2d104d94768b70cbf",
+        "source_fact:v1:997ed4e0e9f28b6440043882b51bab27c5fd4ccd1fec0067d85ed125b30eff9f",
+        "source_fact:v1:a58fbb9d3979d15c22c1fc763611d1d66dd749aff17cd80c06d8e430ec88bd56",
+        "source_fact:v1:c8e277dbf6e27a66506e8a975847f4d88b251d1492d17f2b9cdd288d14a1dc22",
+        "source_fact:v1:cbcfe9c3f113fc0905f3b51855185f28c4d78d2e7a27b17e8da9796e8d60bfba",
+        "source_fact:v1:d0a1ec00891aa750ba8eb1953c01f6f2ab74d2c2a410cba73fd48eb315d03359"
+      ],
+      "source_published_kst": "2026-10-16T05:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\"",
+      "telegram_core_fact": "인공지능(AI) 수요 증가에 따른 메모리 반도체 공급 부족과 서버·스토리지 가격 상승이 2028년까지 이어질 것이라는 전망이 나왔다.",
+      "title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\""
     },
     "fact:0240137516a26962b80b1f2e": {
       "first_seen_kst": "2026-10-07T15:30:27+09:00",
@@ -98383,6 +98713,29 @@
       "telegram_core_fact": "김성주 국민연금공단 이사장은 14일 국내 주식 리밸런싱(자산 비중 재조정) 유예 결정과 관련해 \"유예하지 않았다면 하루 약 8000억 원을 매도해야 했을 것\"이라며 시장 충격을 막고 기금 수익을 높이기 위한 판단이었다고 밝혔다.",
       "title": "김성주 \"리밸런싱 유예 안 했다면 하루 8000억 매도…주주가치 제고\"(종합)"
     },
+    "fact:709d8f555e65a48a6d8854d5": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175589",
+      "source": "매일경제",
+      "source_body_digest": "8fd3b556cdd9b555f32464cd6195f4d6e032b9effe28cf50ed8b98d8a080cfb3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8e6823e1215c0c76fd63cfcdd8315aa17f291703c9a3a6faf37af4768d3785e",
+      "source_fact_keys": [
+        "source_fact:v1:14c13d231e4e2e933f944fa0390b73e1620e160f55b4c90697ea7bae32c1c59a",
+        "source_fact:v1:5826d31d775b14ccc7f1933d0d183070d3d6ee918a26cdcfc453fd799321de7f",
+        "source_fact:v1:7e1804e4228cb26abc789a1e44ee195c4a38b0bbad3dcbcac08256ce23599bd4",
+        "source_fact:v1:9fb6ca68c047478f1271e51bbb807d29600f9b5c564b39d7a72536fedae34926"
+      ],
+      "source_published_kst": "2026-10-16T08:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"앤트로픽 성장세 둔화?…기업가치 기대감 낮아져\"",
+      "telegram_core_fact": "올해 1분기 47억달러에서 2분기 116억달러로 매출이 두 배 이상 증가한 것과 비교하면 상승세가 둔화했다고 본 것이다. 발표된 실적은 인공지능(AI) 개발 비용에 대한 우려를 일부 완화해줬지만, 일각에서는 매출 성장세가 둔화했다는 점에 실망감도 드러난 것으로 전해졌다.",
+      "title": "\"앤트로픽 성장세 둔화?…기업가치 기대감 낮아져\""
+    },
     "fact:70ac1a48c590044320e7d1f9": {
       "first_seen_kst": "2026-10-08T18:02:43+09:00",
       "lanes": {
@@ -124859,6 +125212,32 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 치솟는 경유 가격을 잡기 위해 러시아산 경유의 미국 수입 등을 허용하는 한시적인 대러 제재 완화 조치를 발표했다.",
       "title": "중간선거 앞 기름값 급등에…트럼프, 대러 제재 풀고 경유 수입"
     },
+    "fact:d087efea742434775b81e75a": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02499366645613576",
+      "source": "이데일리",
+      "source_body_digest": "1ee073c23e1e867472306e9cf1bfac5436113e3d0986fb72b567341c35940a4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:76857d0e48f55e65358f04f85b37d870f280db6e79b359880a240a39059e26a5",
+      "source_fact_keys": [
+        "source_fact:v1:5d2f13ca6f6bb776b39c9f4ec0b9cc50dc3b85a0bfe474c4d757bce3494e91b5",
+        "source_fact:v1:8eba7e7994172e910e17d39383fd52285514c737aeca899fd80c6cfb9726640a",
+        "source_fact:v1:90df828f620db3a6a3763a36e0491a326c7b159527c81bd8c871bba288012659",
+        "source_fact:v1:c17b179ed8fafe707027fcffa53cdb37e8abb6e5eca921a50d5dd24bbce925bb",
+        "source_fact:v1:c191af7e3b0c3ea0bd519c702bba0821f57d038112388333b9beb9d7dbedbe2e",
+        "source_fact:v1:df98bad6ff5671fb1fbb10cacaf15318da6c8ac5c8234b53b6c8396068aac104",
+        "source_fact:v1:ea29d6ffa820938ea2cd7ef4e904a7d0b36e212acb1078e5546c1ce4fa4d5e3c"
+      ],
+      "source_published_kst": "2026-10-16T07:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "코어위브 주가 롤러코스터…고금리에 AI 기업 양극화",
+      "telegram_core_fact": "트라얀웰스의 데이비드 부시 최고투자책임자(CIO)는 “채권시장이 보내는 메시지는 코어위브의 채무불이행 위험이 커졌다는 것”이라며 “반드시 AI 컴퓨팅 수요가 약해졌다는 뜻은 아니지만 막대한 차입 수요가 현금 창출 능력을 압도하고 합리적인 금리로 기존 부채를 차환하는 능력까지 위협할 수 있다는 점이 우려스럽다”고 말했다.",
+      "title": "코어위브 주가 롤러코스터…고금리에 AI 기업 양극화"
+    },
     "fact:d08c39b5ee4442721896726f": {
       "first_seen_kst": "2026-10-08T01:43:44+09:00",
       "lanes": {
@@ -126571,6 +126950,29 @@
       "source_title": "브로드컴·스페이스X·오라클, AI칩 위해 수십조 빚낸다…신용지표 '경고등'",
       "telegram_core_fact": "브로드컴은 오픈AI AI칩용 500억달러(약 67조원) 조달을 논의하고, 스페이스X는 400억달러(약 53조6000억원) 조달을 추진 중입니다. CDS는 스페이스X가 194bp에서 1bp로, 오라클은 40bp 오른 81bp로 상승했습니다.",
       "title": "브로드컴·스페이스X·오라클, AI칩 위해 수십조 빚낸다…신용지표 '경고등'"
+    },
+    "fact:d5b0f98da44d47e624e9e676": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003828069",
+      "source": "뉴시스",
+      "source_body_digest": "6e4b5f082a05ae50f26a29845b3adbeb70192dc67ebfbb7e2fa0bd022df85b3f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1ef670d99f0e880ab6482d8de55e4f8b68b58eb777cfeed474d82a169072683b",
+      "source_fact_keys": [
+        "source_fact:v1:1321aafa366d1b9be028235b865eab268ee95bb35239ee820cf3a21056631957",
+        "source_fact:v1:6454031eebb1f156409e0668612cb80d7e0c72f1b1baffbee73f2636921e60bd",
+        "source_fact:v1:9e34ddfdd7e322c3a433e82fd8f2600bd5d76d51e3644d9b69ed0cc1134c118d",
+        "source_fact:v1:d99808da84a7e65ac847b00ad9aec3a5e2329bddcadc8ce9d1f462257cda2606"
+      ],
+      "source_published_kst": "2026-10-15T21:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"우크라, 대 러시아 정유시설 공격 재개해\"",
+      "telegram_core_fact": "우크라이나 드론들이 15일 아침(현지시간) 러시아 리아잔 지방 소재 한 정유소를 공격했다. 우크라의 이날 아침 드론 공격으로 모스크바 남동쪽 300㎞ 소재의 리아잔 정유소에 불이 났다고 러시아 국방부와 리아잔 주지사가 말했다.",
+      "title": "\"우크라, 대 러시아 정유시설 공격 재개해\""
     },
     "fact:d5b78da6f2fa889f1cfeb103": {
       "first_seen_kst": "2026-10-12T01:34:33+09:00",
@@ -135480,6 +135882,32 @@
       "telegram_core_fact": "신공장이 완공되면 케이엔에스의 연간 생산능력(CAPA)은 기존 대비 약 100% 확대될 전망이다.",
       "title": "케이엔에스, 안성 신공장 증설 결정"
     },
+    "fact:f879f1d863162e9aa0c27dd5": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.mk.co.kr/news/business/12177796",
+      "source": "매일경제",
+      "source_body_digest": "639a2857800386882f124154d294d4cdcf9afe8c352fc95ede0950e148ecf5ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a62a6d113f62ecbcf6d1009aa827b24c984d25fffc9e72d584132e44108a444",
+      "source_fact_keys": [
+        "source_fact:v1:06131df77eb59992316644927f61cb4e61c38e18f47841d20f766547cccd9354",
+        "source_fact:v1:29225e3476de7596c3b8814f09e4b6022da9dec5a305788e2a5105099566744f",
+        "source_fact:v1:75c7296435c865a02c2b54cbdd4307ad461921db39146720ef209560ae606999",
+        "source_fact:v1:a4789d5ab3574f9e39a67b7f4f875ddffa2c87f31b81a82e0727ef449f7d7a2b",
+        "source_fact:v1:dcab95ed262fbe7c446e49bceac529e82a21859ae0f07ade07e8f5706289e033",
+        "source_fact:v1:e2943b354407c348fe6691872e922cc23f1988cd0fc447ad0df65a5f796a0e46",
+        "source_fact:v1:fc83da6690dce7dad36408e4c2676083805996aa433b2d6ad0ab2873eb53e3a1"
+      ],
+      "source_published_kst": "2026-10-16T14:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "솔리다임 IPO 딜레마 빠진 SK하이닉스- 매경ECONOMY",
+      "telegram_core_fact": "SK하이닉스가 미국 낸드플래시 자회사 솔리다임 기업공개(IPO)를 추진하며 재계가 시끌시끌하다.",
+      "title": "솔리다임 IPO 딜레마 빠진 SK하이닉스- 매경ECONOMY"
+    },
     "fact:f8886d8c9ebef6a68973d4b7": {
       "first_seen_kst": "2026-10-07T10:49:23+09:00",
       "lanes": {
@@ -135684,6 +136112,26 @@
       "source_title": "[중화학ON]LG엔솔 3분기 영업익 7560억 '깜짝실적'…삼성SDI 흑자·SK온 적자 전망",
       "telegram_core_fact": "LG에너지솔루션이 8일 공시한 3분기 잠정실적에 따르면 매출은 9조6434억원, 영업이익은 7560억원이다.",
       "title": "[중화학ON]LG엔솔 3분기 영업익 7560억 '깜짝실적'…삼성SDI 흑자·SK온 적자 전망"
+    },
+    "fact:f8f02a97224d00639fd5ce98": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175509",
+      "source": "매일경제",
+      "source_body_digest": "a875c8cb121ce9172f83d6e3864259d95eec88de7393f81537ff29575854ac14",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:be8fbbd063288fb105c6921a30fe4e4f35f5ccf85b39aa562a6d16e93d2b13fe",
+      "source_fact_keys": [
+        "source_fact:v1:e3efb27e7173af19363070e1fc34cec250b0b0b4a7693fbd54abc473572e4544"
+      ],
+      "source_published_kst": "2026-10-16T05:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "국제유가 혼조…WTI 6거래일째 상승·브렌트유는 약보합",
+      "telegram_core_fact": "반면 글로벌 벤치마크인 브렌트유 12월물은 0.14달러(0.13%) 하락한 배럴당 105.92달러에 마감했다.",
+      "title": "국제유가 혼조…WTI 6거래일째 상승·브렌트유는 약보합"
     },
     "fact:f8fd49f7c98cd7d8eb8dee2b": {
       "first_seen_kst": "2026-10-11T20:44:48+09:00",
@@ -148189,6 +148637,29 @@
       "source_published_kst": "2026-10-06T08:25+09:00",
       "title": "한미반도체, 삼성전기와 245억 규모 공급계약"
     },
+    "link:1dcc834cb593a4bd3787203e": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175589",
+      "source": "매일경제",
+      "source_body_digest": "8fd3b556cdd9b555f32464cd6195f4d6e032b9effe28cf50ed8b98d8a080cfb3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8e6823e1215c0c76fd63cfcdd8315aa17f291703c9a3a6faf37af4768d3785e",
+      "source_fact_keys": [
+        "source_fact:v1:14c13d231e4e2e933f944fa0390b73e1620e160f55b4c90697ea7bae32c1c59a",
+        "source_fact:v1:5826d31d775b14ccc7f1933d0d183070d3d6ee918a26cdcfc453fd799321de7f",
+        "source_fact:v1:7e1804e4228cb26abc789a1e44ee195c4a38b0bbad3dcbcac08256ce23599bd4",
+        "source_fact:v1:9fb6ca68c047478f1271e51bbb807d29600f9b5c564b39d7a72536fedae34926"
+      ],
+      "source_published_kst": "2026-10-16T08:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"앤트로픽 성장세 둔화?…기업가치 기대감 낮아져\"",
+      "telegram_core_fact": "올해 1분기 47억달러에서 2분기 116억달러로 매출이 두 배 이상 증가한 것과 비교하면 상승세가 둔화했다고 본 것이다. 발표된 실적은 인공지능(AI) 개발 비용에 대한 우려를 일부 완화해줬지만, 일각에서는 매출 성장세가 둔화했다는 점에 실망감도 드러난 것으로 전해졌다.",
+      "title": "\"앤트로픽 성장세 둔화?…기업가치 기대감 낮아져\""
+    },
     "link:1dd1da8d35e772338eaa6497": {
       "first_seen_kst": "2026-10-03T22:55:30+09:00",
       "lanes": {
@@ -153257,6 +153728,32 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-07T11:19+09:00",
       "title": "엔키AX, '탑툰챗' 이용 확대…플랫폼 전체 ARPPU 약 18% 상승"
+    },
+    "link:2c3fa3028835207ed9baefcc": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.mk.co.kr/news/business/12177796",
+      "source": "매일경제",
+      "source_body_digest": "639a2857800386882f124154d294d4cdcf9afe8c352fc95ede0950e148ecf5ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a62a6d113f62ecbcf6d1009aa827b24c984d25fffc9e72d584132e44108a444",
+      "source_fact_keys": [
+        "source_fact:v1:06131df77eb59992316644927f61cb4e61c38e18f47841d20f766547cccd9354",
+        "source_fact:v1:29225e3476de7596c3b8814f09e4b6022da9dec5a305788e2a5105099566744f",
+        "source_fact:v1:75c7296435c865a02c2b54cbdd4307ad461921db39146720ef209560ae606999",
+        "source_fact:v1:a4789d5ab3574f9e39a67b7f4f875ddffa2c87f31b81a82e0727ef449f7d7a2b",
+        "source_fact:v1:dcab95ed262fbe7c446e49bceac529e82a21859ae0f07ade07e8f5706289e033",
+        "source_fact:v1:e2943b354407c348fe6691872e922cc23f1988cd0fc447ad0df65a5f796a0e46",
+        "source_fact:v1:fc83da6690dce7dad36408e4c2676083805996aa433b2d6ad0ab2873eb53e3a1"
+      ],
+      "source_published_kst": "2026-10-16T14:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "솔리다임 IPO 딜레마 빠진 SK하이닉스- 매경ECONOMY",
+      "telegram_core_fact": "SK하이닉스가 미국 낸드플래시 자회사 솔리다임 기업공개(IPO)를 추진하며 재계가 시끌시끌하다.",
+      "title": "솔리다임 IPO 딜레마 빠진 SK하이닉스- 매경ECONOMY"
     },
     "link:2c41cb5d58b45049c18c68cb": {
       "first_seen_kst": "2026-10-12T05:09:39+09:00",
@@ -162112,6 +162609,32 @@
       "source_title": "\"참치캔만 만드는 회사가 아니다\" 동원, 배터리·항만 이어 뷰티까지",
       "telegram_core_fact": "동원시스템즈는 2021년 원통형 배터리캔 제조업체 엠케이씨(MKC)를 인수했다.",
       "title": "\"참치캔만 만드는 회사가 아니다\" 동원, 배터리·항만 이어 뷰티까지"
+    },
+    "link:43e79a5eba9b597cd38a047e": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02499366645613576",
+      "source": "이데일리",
+      "source_body_digest": "1ee073c23e1e867472306e9cf1bfac5436113e3d0986fb72b567341c35940a4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:76857d0e48f55e65358f04f85b37d870f280db6e79b359880a240a39059e26a5",
+      "source_fact_keys": [
+        "source_fact:v1:5d2f13ca6f6bb776b39c9f4ec0b9cc50dc3b85a0bfe474c4d757bce3494e91b5",
+        "source_fact:v1:8eba7e7994172e910e17d39383fd52285514c737aeca899fd80c6cfb9726640a",
+        "source_fact:v1:90df828f620db3a6a3763a36e0491a326c7b159527c81bd8c871bba288012659",
+        "source_fact:v1:c17b179ed8fafe707027fcffa53cdb37e8abb6e5eca921a50d5dd24bbce925bb",
+        "source_fact:v1:c191af7e3b0c3ea0bd519c702bba0821f57d038112388333b9beb9d7dbedbe2e",
+        "source_fact:v1:df98bad6ff5671fb1fbb10cacaf15318da6c8ac5c8234b53b6c8396068aac104",
+        "source_fact:v1:ea29d6ffa820938ea2cd7ef4e904a7d0b36e212acb1078e5546c1ce4fa4d5e3c"
+      ],
+      "source_published_kst": "2026-10-16T07:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "코어위브 주가 롤러코스터…고금리에 AI 기업 양극화",
+      "telegram_core_fact": "트라얀웰스의 데이비드 부시 최고투자책임자(CIO)는 “채권시장이 보내는 메시지는 코어위브의 채무불이행 위험이 커졌다는 것”이라며 “반드시 AI 컴퓨팅 수요가 약해졌다는 뜻은 아니지만 막대한 차입 수요가 현금 창출 능력을 압도하고 합리적인 금리로 기존 부채를 차환하는 능력까지 위협할 수 있다는 점이 우려스럽다”고 말했다.",
+      "title": "코어위브 주가 롤러코스터…고금리에 AI 기업 양극화"
     },
     "link:43fa4c22ecf741921606e3c3": {
       "first_seen_kst": "2026-10-08T16:54:07+09:00",
@@ -192270,6 +192793,24 @@
       "source_event_identity": "",
       "title": "英 총리 다시 꺼낸 EU 재가입론…찬성 49%·반대 28.5%"
     },
+    "link:986d576129da004afd6991ed": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636389",
+      "source": "이투데이",
+      "source_body_digest": "a6bad67745ea6756cadcda023f3ef6a269fc29a31608b96507d27da24123000e",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-15T18:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "반도체 호황에 갈린 금리 전망⋯“내년 1분기까지 인상” vs “11월 마무리”",
+      "telegram_core_fact": "권효성 블룸버그 이코노미스트는 “반도체 호황에 힘입어 한국 경제가 올해 3.7%, 내년 3.0% 성장할 것으로 예상한다”며 “기조적인 물가 상승 압력이 이어져 한국은행이 내년 1분기까지 기준금리를 3.50%로 인상할 것으로 본다”고 전했다.",
+      "title": "반도체 호황에 갈린 금리 전망⋯“내년 1분기까지 인상” vs “11월 마무리”"
+    },
     "link:986f9118e3156376e9d29e49": {
       "first_seen_kst": "2026-10-08T00:39:44+09:00",
       "lanes": {
@@ -205609,6 +206150,33 @@
       "source_published_kst": "2026-10-05T14:00+09:00",
       "title": "[단독]캐피탈-렌터카업계, 갈등 격화...SK렌터카 '규제 완화 반대 연합회'등록"
     },
+    "link:bd153fe694101ed9335b6165": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.news1.kr/it-science/mobile/6321591",
+      "source": "뉴스1",
+      "source_body_digest": "d4d9a2f2c5cf92d667d74dca284129e1c5c6b0c84350e7b24b4110b045a8d3b5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a25416708c82e0b1a785a1b56e66b3e42ffacee03f1ca4dc07081a3bf9f29ea",
+      "source_fact_keys": [
+        "source_fact:v1:005ee4ba9379c40411d743aefd68648279505e6cfaabfaecc9f67d5f220b314b",
+        "source_fact:v1:1600abd92c92e1bc65773003a75067d1fdc050778204a759f63e8ef824cbdcac",
+        "source_fact:v1:91a2d05cb223ae6e3878245f932f9281f2d6577e015cc9c2d104d94768b70cbf",
+        "source_fact:v1:997ed4e0e9f28b6440043882b51bab27c5fd4ccd1fec0067d85ed125b30eff9f",
+        "source_fact:v1:a58fbb9d3979d15c22c1fc763611d1d66dd749aff17cd80c06d8e430ec88bd56",
+        "source_fact:v1:c8e277dbf6e27a66506e8a975847f4d88b251d1492d17f2b9cdd288d14a1dc22",
+        "source_fact:v1:cbcfe9c3f113fc0905f3b51855185f28c4d78d2e7a27b17e8da9796e8d60bfba",
+        "source_fact:v1:d0a1ec00891aa750ba8eb1953c01f6f2ab74d2c2a410cba73fd48eb315d03359"
+      ],
+      "source_published_kst": "2026-10-16T05:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\"",
+      "telegram_core_fact": "인공지능(AI) 수요 증가에 따른 메모리 반도체 공급 부족과 서버·스토리지 가격 상승이 2028년까지 이어질 것이라는 전망이 나왔다.",
+      "title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\""
+    },
     "link:bd1944b4124dc0fcd8a8df1b": {
       "first_seen_kst": "2026-10-14T21:45:21+09:00",
       "lanes": {
@@ -205959,6 +206527,29 @@
       "link": "https://www.dailian.co.kr/news/view/1694060/",
       "source": "데일리안",
       "title": "AI가 공장을 움직인다…피지컬 AI, '로봇 두뇌' 경쟁 본격화"
+    },
+    "link:be312b8722c506ffd2daaea4": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003828069",
+      "source": "뉴시스",
+      "source_body_digest": "6e4b5f082a05ae50f26a29845b3adbeb70192dc67ebfbb7e2fa0bd022df85b3f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1ef670d99f0e880ab6482d8de55e4f8b68b58eb777cfeed474d82a169072683b",
+      "source_fact_keys": [
+        "source_fact:v1:1321aafa366d1b9be028235b865eab268ee95bb35239ee820cf3a21056631957",
+        "source_fact:v1:6454031eebb1f156409e0668612cb80d7e0c72f1b1baffbee73f2636921e60bd",
+        "source_fact:v1:9e34ddfdd7e322c3a433e82fd8f2600bd5d76d51e3644d9b69ed0cc1134c118d",
+        "source_fact:v1:d99808da84a7e65ac847b00ad9aec3a5e2329bddcadc8ce9d1f462257cda2606"
+      ],
+      "source_published_kst": "2026-10-15T21:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"우크라, 대 러시아 정유시설 공격 재개해\"",
+      "telegram_core_fact": "우크라이나 드론들이 15일 아침(현지시간) 러시아 리아잔 지방 소재 한 정유소를 공격했다. 우크라의 이날 아침 드론 공격으로 모스크바 남동쪽 300㎞ 소재의 리아잔 정유소에 불이 났다고 러시아 국방부와 리아잔 주지사가 말했다.",
+      "title": "\"우크라, 대 러시아 정유시설 공격 재개해\""
     },
     "link:be330d423ab06db15a63b32c": {
       "first_seen_kst": "2026-10-15T16:50:59+09:00",
@@ -223015,6 +223606,26 @@
       "telegram_core_fact": "이재명 대통령이 11일 서울·수도권의 주택건설 인허가와 착공이 회복되고 있다며 주택 공급이 조만간 정상화될 것으로 전망했다.",
       "title": "李대통령 “주택 공급 조만간 정상화…서울·수도권 인허가와 착공 회복”"
     },
+    "link:ee7fbee9eed33954983f8bba": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175509",
+      "source": "매일경제",
+      "source_body_digest": "a875c8cb121ce9172f83d6e3864259d95eec88de7393f81537ff29575854ac14",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:be8fbbd063288fb105c6921a30fe4e4f35f5ccf85b39aa562a6d16e93d2b13fe",
+      "source_fact_keys": [
+        "source_fact:v1:e3efb27e7173af19363070e1fc34cec250b0b0b4a7693fbd54abc473572e4544"
+      ],
+      "source_published_kst": "2026-10-16T05:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "국제유가 혼조…WTI 6거래일째 상승·브렌트유는 약보합",
+      "telegram_core_fact": "반면 글로벌 벤치마크인 브렌트유 12월물은 0.14달러(0.13%) 하락한 배럴당 105.92달러에 마감했다.",
+      "title": "국제유가 혼조…WTI 6거래일째 상승·브렌트유는 약보합"
+    },
     "link:eea7c7f2eec26ea655db1dbd": {
       "first_seen_kst": "2026-10-12T08:46:35+09:00",
       "lanes": {
@@ -230212,6 +230823,29 @@
       "source": "한국경제",
       "title": "두산, 다음 도약 위한 준비 끝"
     },
+    "original:02459e3aa3645bb5319edf30": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175589",
+      "source": "매일경제",
+      "source_body_digest": "8fd3b556cdd9b555f32464cd6195f4d6e032b9effe28cf50ed8b98d8a080cfb3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8e6823e1215c0c76fd63cfcdd8315aa17f291703c9a3a6faf37af4768d3785e",
+      "source_fact_keys": [
+        "source_fact:v1:14c13d231e4e2e933f944fa0390b73e1620e160f55b4c90697ea7bae32c1c59a",
+        "source_fact:v1:5826d31d775b14ccc7f1933d0d183070d3d6ee918a26cdcfc453fd799321de7f",
+        "source_fact:v1:7e1804e4228cb26abc789a1e44ee195c4a38b0bbad3dcbcac08256ce23599bd4",
+        "source_fact:v1:9fb6ca68c047478f1271e51bbb807d29600f9b5c564b39d7a72536fedae34926"
+      ],
+      "source_published_kst": "2026-10-16T08:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"앤트로픽 성장세 둔화?…기업가치 기대감 낮아져\"",
+      "telegram_core_fact": "올해 1분기 47억달러에서 2분기 116억달러로 매출이 두 배 이상 증가한 것과 비교하면 상승세가 둔화했다고 본 것이다. 발표된 실적은 인공지능(AI) 개발 비용에 대한 우려를 일부 완화해줬지만, 일각에서는 매출 성장세가 둔화했다는 점에 실망감도 드러난 것으로 전해졌다.",
+      "title": "\"앤트로픽 성장세 둔화?…기업가치 기대감 낮아져\""
+    },
     "original:025d5f5b47ea2e9c157bab50": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -234575,6 +235209,32 @@
       "source_title": "해수부, 런던협약 총회서 해양지구공학 규제·방사성폐기물 논의",
       "telegram_core_fact": "정부가 영국 런던에서 열린 런던협약·의정서 당사국총회에서 해양지구공학 규제와 방사성폐기물 관리 등 해양환경 현안을 논의하고, 개발도상국의 해양환경 관리 역량 강화를 위한 국제협력 성과를 공유했다.",
       "title": "해수부, 런던협약 총회서 해양지구공학 규제·방사성폐기물 논의"
+    },
+    "original:0ef00b045c8e1b67bbab5ea6": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.mk.co.kr/news/business/12177796",
+      "source": "매일경제",
+      "source_body_digest": "639a2857800386882f124154d294d4cdcf9afe8c352fc95ede0950e148ecf5ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a62a6d113f62ecbcf6d1009aa827b24c984d25fffc9e72d584132e44108a444",
+      "source_fact_keys": [
+        "source_fact:v1:06131df77eb59992316644927f61cb4e61c38e18f47841d20f766547cccd9354",
+        "source_fact:v1:29225e3476de7596c3b8814f09e4b6022da9dec5a305788e2a5105099566744f",
+        "source_fact:v1:75c7296435c865a02c2b54cbdd4307ad461921db39146720ef209560ae606999",
+        "source_fact:v1:a4789d5ab3574f9e39a67b7f4f875ddffa2c87f31b81a82e0727ef449f7d7a2b",
+        "source_fact:v1:dcab95ed262fbe7c446e49bceac529e82a21859ae0f07ade07e8f5706289e033",
+        "source_fact:v1:e2943b354407c348fe6691872e922cc23f1988cd0fc447ad0df65a5f796a0e46",
+        "source_fact:v1:fc83da6690dce7dad36408e4c2676083805996aa433b2d6ad0ab2873eb53e3a1"
+      ],
+      "source_published_kst": "2026-10-16T14:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "솔리다임 IPO 딜레마 빠진 SK하이닉스- 매경ECONOMY",
+      "telegram_core_fact": "SK하이닉스가 미국 낸드플래시 자회사 솔리다임 기업공개(IPO)를 추진하며 재계가 시끌시끌하다.",
+      "title": "솔리다임 IPO 딜레마 빠진 SK하이닉스- 매경ECONOMY"
     },
     "original:0ef511358378b46a4aaec822": {
       "first_seen_kst": "2026-10-08T09:58:56+09:00",
@@ -247189,6 +247849,29 @@
       "source": "연합뉴스",
       "title": "\"억대 성과급 놓칠라\"…삼전닉스 육아휴직률 첫 동반 하락 | 연합뉴스"
     },
+    "original:324c6380946b892e4518fbfd": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003828069",
+      "source": "뉴시스",
+      "source_body_digest": "6e4b5f082a05ae50f26a29845b3adbeb70192dc67ebfbb7e2fa0bd022df85b3f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1ef670d99f0e880ab6482d8de55e4f8b68b58eb777cfeed474d82a169072683b",
+      "source_fact_keys": [
+        "source_fact:v1:1321aafa366d1b9be028235b865eab268ee95bb35239ee820cf3a21056631957",
+        "source_fact:v1:6454031eebb1f156409e0668612cb80d7e0c72f1b1baffbee73f2636921e60bd",
+        "source_fact:v1:9e34ddfdd7e322c3a433e82fd8f2600bd5d76d51e3644d9b69ed0cc1134c118d",
+        "source_fact:v1:d99808da84a7e65ac847b00ad9aec3a5e2329bddcadc8ce9d1f462257cda2606"
+      ],
+      "source_published_kst": "2026-10-15T21:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"우크라, 대 러시아 정유시설 공격 재개해\"",
+      "telegram_core_fact": "우크라이나 드론들이 15일 아침(현지시간) 러시아 리아잔 지방 소재 한 정유소를 공격했다. 우크라의 이날 아침 드론 공격으로 모스크바 남동쪽 300㎞ 소재의 리아잔 정유소에 불이 났다고 러시아 국방부와 리아잔 주지사가 말했다.",
+      "title": "\"우크라, 대 러시아 정유시설 공격 재개해\""
+    },
     "original:32749d7d3cf27d831a36fe9e": {
       "first_seen_kst": "2026-10-11T10:42:03+09:00",
       "lanes": {
@@ -251696,6 +252379,26 @@
       "link": "https://www.etnews.com/20260918000350",
       "source": "전자신문",
       "title": "96세 워런 버핏, 56년 만에 버크셔 해서웨이 회장직 물러나"
+    },
+    "original:3f2f3fa16c419aa6d4161c63": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175509",
+      "source": "매일경제",
+      "source_body_digest": "a875c8cb121ce9172f83d6e3864259d95eec88de7393f81537ff29575854ac14",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:be8fbbd063288fb105c6921a30fe4e4f35f5ccf85b39aa562a6d16e93d2b13fe",
+      "source_fact_keys": [
+        "source_fact:v1:e3efb27e7173af19363070e1fc34cec250b0b0b4a7693fbd54abc473572e4544"
+      ],
+      "source_published_kst": "2026-10-16T05:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "국제유가 혼조…WTI 6거래일째 상승·브렌트유는 약보합",
+      "telegram_core_fact": "반면 글로벌 벤치마크인 브렌트유 12월물은 0.14달러(0.13%) 하락한 배럴당 105.92달러에 마감했다.",
+      "title": "국제유가 혼조…WTI 6거래일째 상승·브렌트유는 약보합"
     },
     "original:3f3a4e31a95e5a14ad0e2178": {
       "first_seen_kst": "2026-09-22T06:33:14+09:00",
@@ -264311,6 +265014,32 @@
       "link": "https://www.newsis.com/view/NISX20261003_0003813474",
       "source": "뉴시스",
       "title": "韓총리 \"지금 필요한 건 '연대와 통합'…홍익인간을 나침반 삼아 온 힘 쏟을 것\""
+    },
+    "original:6256839da3fae7ab27e253bd": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02499366645613576",
+      "source": "이데일리",
+      "source_body_digest": "1ee073c23e1e867472306e9cf1bfac5436113e3d0986fb72b567341c35940a4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:76857d0e48f55e65358f04f85b37d870f280db6e79b359880a240a39059e26a5",
+      "source_fact_keys": [
+        "source_fact:v1:5d2f13ca6f6bb776b39c9f4ec0b9cc50dc3b85a0bfe474c4d757bce3494e91b5",
+        "source_fact:v1:8eba7e7994172e910e17d39383fd52285514c737aeca899fd80c6cfb9726640a",
+        "source_fact:v1:90df828f620db3a6a3763a36e0491a326c7b159527c81bd8c871bba288012659",
+        "source_fact:v1:c17b179ed8fafe707027fcffa53cdb37e8abb6e5eca921a50d5dd24bbce925bb",
+        "source_fact:v1:c191af7e3b0c3ea0bd519c702bba0821f57d038112388333b9beb9d7dbedbe2e",
+        "source_fact:v1:df98bad6ff5671fb1fbb10cacaf15318da6c8ac5c8234b53b6c8396068aac104",
+        "source_fact:v1:ea29d6ffa820938ea2cd7ef4e904a7d0b36e212acb1078e5546c1ce4fa4d5e3c"
+      ],
+      "source_published_kst": "2026-10-16T07:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "코어위브 주가 롤러코스터…고금리에 AI 기업 양극화",
+      "telegram_core_fact": "트라얀웰스의 데이비드 부시 최고투자책임자(CIO)는 “채권시장이 보내는 메시지는 코어위브의 채무불이행 위험이 커졌다는 것”이라며 “반드시 AI 컴퓨팅 수요가 약해졌다는 뜻은 아니지만 막대한 차입 수요가 현금 창출 능력을 압도하고 합리적인 금리로 기존 부채를 차환하는 능력까지 위협할 수 있다는 점이 우려스럽다”고 말했다.",
+      "title": "코어위브 주가 롤러코스터…고금리에 AI 기업 양극화"
     },
     "original:625c94ade03e7eab671bd404": {
       "first_seen_kst": "2026-10-04T17:23:49+09:00",
@@ -286289,6 +287018,33 @@
       "source_published_kst": "2026-10-05T09:51+09:00",
       "title": "아이폰 듀오, 초기 물량 부족…한국도 '공급 지연' 우려"
     },
+    "original:a23a9221941853171bf01d70": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.news1.kr/it-science/mobile/6321591",
+      "source": "뉴스1",
+      "source_body_digest": "d4d9a2f2c5cf92d667d74dca284129e1c5c6b0c84350e7b24b4110b045a8d3b5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a25416708c82e0b1a785a1b56e66b3e42ffacee03f1ca4dc07081a3bf9f29ea",
+      "source_fact_keys": [
+        "source_fact:v1:005ee4ba9379c40411d743aefd68648279505e6cfaabfaecc9f67d5f220b314b",
+        "source_fact:v1:1600abd92c92e1bc65773003a75067d1fdc050778204a759f63e8ef824cbdcac",
+        "source_fact:v1:91a2d05cb223ae6e3878245f932f9281f2d6577e015cc9c2d104d94768b70cbf",
+        "source_fact:v1:997ed4e0e9f28b6440043882b51bab27c5fd4ccd1fec0067d85ed125b30eff9f",
+        "source_fact:v1:a58fbb9d3979d15c22c1fc763611d1d66dd749aff17cd80c06d8e430ec88bd56",
+        "source_fact:v1:c8e277dbf6e27a66506e8a975847f4d88b251d1492d17f2b9cdd288d14a1dc22",
+        "source_fact:v1:cbcfe9c3f113fc0905f3b51855185f28c4d78d2e7a27b17e8da9796e8d60bfba",
+        "source_fact:v1:d0a1ec00891aa750ba8eb1953c01f6f2ab74d2c2a410cba73fd48eb315d03359"
+      ],
+      "source_published_kst": "2026-10-16T05:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\"",
+      "telegram_core_fact": "인공지능(AI) 수요 증가에 따른 메모리 반도체 공급 부족과 서버·스토리지 가격 상승이 2028년까지 이어질 것이라는 전망이 나왔다.",
+      "title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\""
+    },
     "original:a245f3c2aa6d4fef831b42e0": {
       "first_seen_kst": "2026-10-04T01:08:35+09:00",
       "lanes": {
@@ -300750,6 +301506,24 @@
       ],
       "source_published_kst": "2026-10-06T10:16+09:00",
       "title": "李부총리 \"민생경제 안정·양극화 완화 총력…주택공급 확대 최우선\"[국감]"
+    },
+    "original:cc573fc796678f1f51a0c3ac": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636389",
+      "source": "이투데이",
+      "source_body_digest": "a6bad67745ea6756cadcda023f3ef6a269fc29a31608b96507d27da24123000e",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-15T18:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "반도체 호황에 갈린 금리 전망⋯“내년 1분기까지 인상” vs “11월 마무리”",
+      "telegram_core_fact": "권효성 블룸버그 이코노미스트는 “반도체 호황에 힘입어 한국 경제가 올해 3.7%, 내년 3.0% 성장할 것으로 예상한다”며 “기조적인 물가 상승 압력이 이어져 한국은행이 내년 1분기까지 기준금리를 3.50%로 인상할 것으로 본다”고 전했다.",
+      "title": "반도체 호황에 갈린 금리 전망⋯“내년 1분기까지 인상” vs “11월 마무리”"
     },
     "original:cc6174d2a1fb6a06b1db627b": {
       "first_seen_kst": "2026-10-15T05:17:25+09:00",
@@ -336131,6 +336905,32 @@
       "telegram_core_fact": "박광래 신한투자증권 연구위원은 \"현대모비스의 2026년 3분기 연결 기준 매출액은 15조5332억원으로 전년비 3.3% 증가하고 영업이익은 9041억원으로 15.9% 늘어날 것으로 추정된다\"며 \"완성차 생산과 판매 부진, 환율 하락에도 불구하고 양호한 수익성을 기록할 것\"이라고 말했다.",
       "title": "신한투자證 \"현대모비스, 제조부문 수익성 개선\""
     },
+    "source_fact:0d2d82dd0afbb59e5fda4b21": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.mk.co.kr/news/business/12177796",
+      "source": "매일경제",
+      "source_body_digest": "639a2857800386882f124154d294d4cdcf9afe8c352fc95ede0950e148ecf5ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a62a6d113f62ecbcf6d1009aa827b24c984d25fffc9e72d584132e44108a444",
+      "source_fact_keys": [
+        "source_fact:v1:06131df77eb59992316644927f61cb4e61c38e18f47841d20f766547cccd9354",
+        "source_fact:v1:29225e3476de7596c3b8814f09e4b6022da9dec5a305788e2a5105099566744f",
+        "source_fact:v1:75c7296435c865a02c2b54cbdd4307ad461921db39146720ef209560ae606999",
+        "source_fact:v1:a4789d5ab3574f9e39a67b7f4f875ddffa2c87f31b81a82e0727ef449f7d7a2b",
+        "source_fact:v1:dcab95ed262fbe7c446e49bceac529e82a21859ae0f07ade07e8f5706289e033",
+        "source_fact:v1:e2943b354407c348fe6691872e922cc23f1988cd0fc447ad0df65a5f796a0e46",
+        "source_fact:v1:fc83da6690dce7dad36408e4c2676083805996aa433b2d6ad0ab2873eb53e3a1"
+      ],
+      "source_published_kst": "2026-10-16T14:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "솔리다임 IPO 딜레마 빠진 SK하이닉스- 매경ECONOMY",
+      "telegram_core_fact": "SK하이닉스가 미국 낸드플래시 자회사 솔리다임 기업공개(IPO)를 추진하며 재계가 시끌시끌하다.",
+      "title": "솔리다임 IPO 딜레마 빠진 SK하이닉스- 매경ECONOMY"
+    },
     "source_fact:0d307f4cccd9b7c910b08476": {
       "first_seen_kst": "2026-10-15T02:00:57+09:00",
       "lanes": {
@@ -363470,6 +364270,33 @@
       "source_title": "에이피알, 수익성 둔화에도 성장세 견고…“주가 조정은 매수 기회”",
       "telegram_core_fact": "에이피알 3분기 영업이익은 1678억원으로 전년비 101% 증가할 전망입니다.",
       "title": "에이피알, 수익성 둔화에도 성장세 견고…“주가 조정은 매수 기회”"
+    },
+    "source_fact:20a169ff51dadf760bc315e2": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.news1.kr/it-science/mobile/6321591",
+      "source": "뉴스1",
+      "source_body_digest": "d4d9a2f2c5cf92d667d74dca284129e1c5c6b0c84350e7b24b4110b045a8d3b5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a25416708c82e0b1a785a1b56e66b3e42ffacee03f1ca4dc07081a3bf9f29ea",
+      "source_fact_keys": [
+        "source_fact:v1:005ee4ba9379c40411d743aefd68648279505e6cfaabfaecc9f67d5f220b314b",
+        "source_fact:v1:1600abd92c92e1bc65773003a75067d1fdc050778204a759f63e8ef824cbdcac",
+        "source_fact:v1:91a2d05cb223ae6e3878245f932f9281f2d6577e015cc9c2d104d94768b70cbf",
+        "source_fact:v1:997ed4e0e9f28b6440043882b51bab27c5fd4ccd1fec0067d85ed125b30eff9f",
+        "source_fact:v1:a58fbb9d3979d15c22c1fc763611d1d66dd749aff17cd80c06d8e430ec88bd56",
+        "source_fact:v1:c8e277dbf6e27a66506e8a975847f4d88b251d1492d17f2b9cdd288d14a1dc22",
+        "source_fact:v1:cbcfe9c3f113fc0905f3b51855185f28c4d78d2e7a27b17e8da9796e8d60bfba",
+        "source_fact:v1:d0a1ec00891aa750ba8eb1953c01f6f2ab74d2c2a410cba73fd48eb315d03359"
+      ],
+      "source_published_kst": "2026-10-16T05:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\"",
+      "telegram_core_fact": "인공지능(AI) 수요 증가에 따른 메모리 반도체 공급 부족과 서버·스토리지 가격 상승이 2028년까지 이어질 것이라는 전망이 나왔다.",
+      "title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\""
     },
     "source_fact:20a67fa8cbd47b100a559e9f": {
       "first_seen_kst": "2026-10-07T04:49:54+09:00",
@@ -394430,6 +395257,32 @@
       "source_published_kst": "2026-10-07T05:09+09:00",
       "title": "[속보]美국채금리 숨고르자 S&P·나스닥 '사상 최고'"
     },
+    "source_fact:370cc7cf51fbd2db24b05f05": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02499366645613576",
+      "source": "이데일리",
+      "source_body_digest": "1ee073c23e1e867472306e9cf1bfac5436113e3d0986fb72b567341c35940a4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:76857d0e48f55e65358f04f85b37d870f280db6e79b359880a240a39059e26a5",
+      "source_fact_keys": [
+        "source_fact:v1:5d2f13ca6f6bb776b39c9f4ec0b9cc50dc3b85a0bfe474c4d757bce3494e91b5",
+        "source_fact:v1:8eba7e7994172e910e17d39383fd52285514c737aeca899fd80c6cfb9726640a",
+        "source_fact:v1:90df828f620db3a6a3763a36e0491a326c7b159527c81bd8c871bba288012659",
+        "source_fact:v1:c17b179ed8fafe707027fcffa53cdb37e8abb6e5eca921a50d5dd24bbce925bb",
+        "source_fact:v1:c191af7e3b0c3ea0bd519c702bba0821f57d038112388333b9beb9d7dbedbe2e",
+        "source_fact:v1:df98bad6ff5671fb1fbb10cacaf15318da6c8ac5c8234b53b6c8396068aac104",
+        "source_fact:v1:ea29d6ffa820938ea2cd7ef4e904a7d0b36e212acb1078e5546c1ce4fa4d5e3c"
+      ],
+      "source_published_kst": "2026-10-16T07:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "코어위브 주가 롤러코스터…고금리에 AI 기업 양극화",
+      "telegram_core_fact": "트라얀웰스의 데이비드 부시 최고투자책임자(CIO)는 “채권시장이 보내는 메시지는 코어위브의 채무불이행 위험이 커졌다는 것”이라며 “반드시 AI 컴퓨팅 수요가 약해졌다는 뜻은 아니지만 막대한 차입 수요가 현금 창출 능력을 압도하고 합리적인 금리로 기존 부채를 차환하는 능력까지 위협할 수 있다는 점이 우려스럽다”고 말했다.",
+      "title": "코어위브 주가 롤러코스터…고금리에 AI 기업 양극화"
+    },
     "source_fact:370dc13ff39094b97ce7216d": {
       "first_seen_kst": "2026-10-13T20:25:44+09:00",
       "lanes": {
@@ -406495,6 +407348,32 @@
       "telegram_core_fact": "IRGC 해군은 해당 유조선이 위치 추적 시스템을 끄고 이동 중이었다며 \"호르무즈 해협의 안전과 규정을 무시하는 모든 위반 유조선의 최후는 끔찍한 화재일 것\"이라고 경고했다.",
       "title": "이란 \"호르무즈 미지정 항로 지나던 대형 유조선 기뢰 충돌 폭발\""
     },
+    "source_fact:402a0201b595c23d57d1017c": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.mk.co.kr/news/business/12177796",
+      "source": "매일경제",
+      "source_body_digest": "639a2857800386882f124154d294d4cdcf9afe8c352fc95ede0950e148ecf5ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a62a6d113f62ecbcf6d1009aa827b24c984d25fffc9e72d584132e44108a444",
+      "source_fact_keys": [
+        "source_fact:v1:06131df77eb59992316644927f61cb4e61c38e18f47841d20f766547cccd9354",
+        "source_fact:v1:29225e3476de7596c3b8814f09e4b6022da9dec5a305788e2a5105099566744f",
+        "source_fact:v1:75c7296435c865a02c2b54cbdd4307ad461921db39146720ef209560ae606999",
+        "source_fact:v1:a4789d5ab3574f9e39a67b7f4f875ddffa2c87f31b81a82e0727ef449f7d7a2b",
+        "source_fact:v1:dcab95ed262fbe7c446e49bceac529e82a21859ae0f07ade07e8f5706289e033",
+        "source_fact:v1:e2943b354407c348fe6691872e922cc23f1988cd0fc447ad0df65a5f796a0e46",
+        "source_fact:v1:fc83da6690dce7dad36408e4c2676083805996aa433b2d6ad0ab2873eb53e3a1"
+      ],
+      "source_published_kst": "2026-10-16T14:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "솔리다임 IPO 딜레마 빠진 SK하이닉스- 매경ECONOMY",
+      "telegram_core_fact": "SK하이닉스가 미국 낸드플래시 자회사 솔리다임 기업공개(IPO)를 추진하며 재계가 시끌시끌하다.",
+      "title": "솔리다임 IPO 딜레마 빠진 SK하이닉스- 매경ECONOMY"
+    },
     "source_fact:402b1bfe2c24184fd6b9d651": {
       "first_seen_kst": "2026-10-08T07:12:10+09:00",
       "lanes": {
@@ -413542,6 +414421,29 @@
       "source_title": "에이트코 홀딩스, 나스닥 최소입찰가 요건 회복..상장 리스크 해소",
       "telegram_core_fact": "에이트코 홀딩스(ORBS)가 나스닥 상장 규정상 최소 입찰가 요건(주당 1달러)을 다시 충족해 관련 사안이 종결됐다는 나스닥 상장심사팀의 통보를 받았다고 10월 13일 발표했다. 나스닥 최소 입찰가 요건을 회복해 상장폐지 우려가 해소된 점은 투자심리에 긍정적이에요.",
       "title": "에이트코 홀딩스, 나스닥 최소입찰가 요건 회복..상장 리스크 해소"
+    },
+    "source_fact:453c730485a9aa01c5dd0ab5": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175589",
+      "source": "매일경제",
+      "source_body_digest": "8fd3b556cdd9b555f32464cd6195f4d6e032b9effe28cf50ed8b98d8a080cfb3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8e6823e1215c0c76fd63cfcdd8315aa17f291703c9a3a6faf37af4768d3785e",
+      "source_fact_keys": [
+        "source_fact:v1:14c13d231e4e2e933f944fa0390b73e1620e160f55b4c90697ea7bae32c1c59a",
+        "source_fact:v1:5826d31d775b14ccc7f1933d0d183070d3d6ee918a26cdcfc453fd799321de7f",
+        "source_fact:v1:7e1804e4228cb26abc789a1e44ee195c4a38b0bbad3dcbcac08256ce23599bd4",
+        "source_fact:v1:9fb6ca68c047478f1271e51bbb807d29600f9b5c564b39d7a72536fedae34926"
+      ],
+      "source_published_kst": "2026-10-16T08:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"앤트로픽 성장세 둔화?…기업가치 기대감 낮아져\"",
+      "telegram_core_fact": "올해 1분기 47억달러에서 2분기 116억달러로 매출이 두 배 이상 증가한 것과 비교하면 상승세가 둔화했다고 본 것이다. 발표된 실적은 인공지능(AI) 개발 비용에 대한 우려를 일부 완화해줬지만, 일각에서는 매출 성장세가 둔화했다는 점에 실망감도 드러난 것으로 전해졌다.",
+      "title": "\"앤트로픽 성장세 둔화?…기업가치 기대감 낮아져\""
     },
     "source_fact:453cb9d50f2651599c1af626": {
       "first_seen_kst": "2026-10-16T06:50:52+09:00",
@@ -435834,6 +436736,32 @@
       "telegram_core_fact": "홍콩 증시 상장 중국기업주 중심의 H주 지수는 전일보다 46.57 포인트, 0.57% 떨어진 8082.40으로 장을 끝냈다. 홍콩 증시는 7일 중국 증시가 국경절 연휴를 끝내고거래 재개를 하루 앞둔 가운데 지분조정 매물이 선행하면서 3거래일 만에 반락 마감했다.",
       "title": "[올댓차이나] 홍콩 증시, 지분조정 매도로 사흘 만에 반락 마감… H주 0.57%↓"
     },
+    "source_fact:54b0a5eb0857bc0352964f4d": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.mk.co.kr/news/business/12177796",
+      "source": "매일경제",
+      "source_body_digest": "639a2857800386882f124154d294d4cdcf9afe8c352fc95ede0950e148ecf5ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a62a6d113f62ecbcf6d1009aa827b24c984d25fffc9e72d584132e44108a444",
+      "source_fact_keys": [
+        "source_fact:v1:06131df77eb59992316644927f61cb4e61c38e18f47841d20f766547cccd9354",
+        "source_fact:v1:29225e3476de7596c3b8814f09e4b6022da9dec5a305788e2a5105099566744f",
+        "source_fact:v1:75c7296435c865a02c2b54cbdd4307ad461921db39146720ef209560ae606999",
+        "source_fact:v1:a4789d5ab3574f9e39a67b7f4f875ddffa2c87f31b81a82e0727ef449f7d7a2b",
+        "source_fact:v1:dcab95ed262fbe7c446e49bceac529e82a21859ae0f07ade07e8f5706289e033",
+        "source_fact:v1:e2943b354407c348fe6691872e922cc23f1988cd0fc447ad0df65a5f796a0e46",
+        "source_fact:v1:fc83da6690dce7dad36408e4c2676083805996aa433b2d6ad0ab2873eb53e3a1"
+      ],
+      "source_published_kst": "2026-10-16T14:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "솔리다임 IPO 딜레마 빠진 SK하이닉스- 매경ECONOMY",
+      "telegram_core_fact": "SK하이닉스가 미국 낸드플래시 자회사 솔리다임 기업공개(IPO)를 추진하며 재계가 시끌시끌하다.",
+      "title": "솔리다임 IPO 딜레마 빠진 SK하이닉스- 매경ECONOMY"
+    },
     "source_fact:54b92e7164ec56c12f68d6c7": {
       "first_seen_kst": "2026-10-15T00:34:31+09:00",
       "lanes": {
@@ -436293,6 +437221,32 @@
       "source_title": "“용인만으론 안 된다”…최태원, 광주 반도체 승부수",
       "telegram_core_fact": "최태원 SK그룹 회장이 전남광주통합특별시 반도체 생산기지 구축에 속도를 내겠다는 의지를 밝혔다. SK하이닉스는 지난 6월 호남권에 400조원 신규 클러스터를 조성하겠다는 구상을 밝힌 뒤 경영진의 광주 방문과 지자체 협의를 이어왔다.",
       "title": "“용인만으론 안 된다”…최태원, 광주 반도체 승부수"
+    },
+    "source_fact:55051005e191c1461b147018": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02499366645613576",
+      "source": "이데일리",
+      "source_body_digest": "1ee073c23e1e867472306e9cf1bfac5436113e3d0986fb72b567341c35940a4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:76857d0e48f55e65358f04f85b37d870f280db6e79b359880a240a39059e26a5",
+      "source_fact_keys": [
+        "source_fact:v1:5d2f13ca6f6bb776b39c9f4ec0b9cc50dc3b85a0bfe474c4d757bce3494e91b5",
+        "source_fact:v1:8eba7e7994172e910e17d39383fd52285514c737aeca899fd80c6cfb9726640a",
+        "source_fact:v1:90df828f620db3a6a3763a36e0491a326c7b159527c81bd8c871bba288012659",
+        "source_fact:v1:c17b179ed8fafe707027fcffa53cdb37e8abb6e5eca921a50d5dd24bbce925bb",
+        "source_fact:v1:c191af7e3b0c3ea0bd519c702bba0821f57d038112388333b9beb9d7dbedbe2e",
+        "source_fact:v1:df98bad6ff5671fb1fbb10cacaf15318da6c8ac5c8234b53b6c8396068aac104",
+        "source_fact:v1:ea29d6ffa820938ea2cd7ef4e904a7d0b36e212acb1078e5546c1ce4fa4d5e3c"
+      ],
+      "source_published_kst": "2026-10-16T07:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "코어위브 주가 롤러코스터…고금리에 AI 기업 양극화",
+      "telegram_core_fact": "트라얀웰스의 데이비드 부시 최고투자책임자(CIO)는 “채권시장이 보내는 메시지는 코어위브의 채무불이행 위험이 커졌다는 것”이라며 “반드시 AI 컴퓨팅 수요가 약해졌다는 뜻은 아니지만 막대한 차입 수요가 현금 창출 능력을 압도하고 합리적인 금리로 기존 부채를 차환하는 능력까지 위협할 수 있다는 점이 우려스럽다”고 말했다.",
+      "title": "코어위브 주가 롤러코스터…고금리에 AI 기업 양극화"
     },
     "source_fact:550ebbba21d316d75c1cc279": {
       "first_seen_kst": "2026-10-07T01:59:08+09:00",
@@ -441459,6 +442413,33 @@
       "source_title": "삼성전자, 올인원 히트펌프로 아파트 냉난방 전기화 추진...탄소 저감 동참",
       "telegram_core_fact": "2027년까지 EHS 올인원의 국내 공급 기반을 구축한 뒤 전국 단위로 보급을 확대한다는 계획이다.",
       "title": "삼성전자, 올인원 히트펌프로 아파트 냉난방 전기화 추진...탄소 저감 동참"
+    },
+    "source_fact:58a86511bfae406354a6d08f": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.news1.kr/it-science/mobile/6321591",
+      "source": "뉴스1",
+      "source_body_digest": "d4d9a2f2c5cf92d667d74dca284129e1c5c6b0c84350e7b24b4110b045a8d3b5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a25416708c82e0b1a785a1b56e66b3e42ffacee03f1ca4dc07081a3bf9f29ea",
+      "source_fact_keys": [
+        "source_fact:v1:005ee4ba9379c40411d743aefd68648279505e6cfaabfaecc9f67d5f220b314b",
+        "source_fact:v1:1600abd92c92e1bc65773003a75067d1fdc050778204a759f63e8ef824cbdcac",
+        "source_fact:v1:91a2d05cb223ae6e3878245f932f9281f2d6577e015cc9c2d104d94768b70cbf",
+        "source_fact:v1:997ed4e0e9f28b6440043882b51bab27c5fd4ccd1fec0067d85ed125b30eff9f",
+        "source_fact:v1:a58fbb9d3979d15c22c1fc763611d1d66dd749aff17cd80c06d8e430ec88bd56",
+        "source_fact:v1:c8e277dbf6e27a66506e8a975847f4d88b251d1492d17f2b9cdd288d14a1dc22",
+        "source_fact:v1:cbcfe9c3f113fc0905f3b51855185f28c4d78d2e7a27b17e8da9796e8d60bfba",
+        "source_fact:v1:d0a1ec00891aa750ba8eb1953c01f6f2ab74d2c2a410cba73fd48eb315d03359"
+      ],
+      "source_published_kst": "2026-10-16T05:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\"",
+      "telegram_core_fact": "인공지능(AI) 수요 증가에 따른 메모리 반도체 공급 부족과 서버·스토리지 가격 상승이 2028년까지 이어질 것이라는 전망이 나왔다.",
+      "title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\""
     },
     "source_fact:58a88d815647f2d45f6b16f1": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
@@ -453267,6 +454248,32 @@
       "source_title": "올해 크레딧물 발행 24%↑…은행채 늘고 회사채는 줄고",
       "telegram_core_fact": "신한투자증권 김상인 연구원은 \"올해 은행채 발행은 시중은행채보다 특수은행채를 중심으로 늘어난 흐름\"이라며 \"정책 금융 확대와 기업 대출 수요 등에 따라 산업은행과 기업은행 등의 자금 조달 수요가 커진 영향이 반영된 것으로 보인다\"고 말했다.",
       "title": "올해 크레딧물 발행 24%↑…은행채 늘고 회사채는 줄고"
+    },
+    "source_fact:612bb22cc0cfc34e579ae6d5": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.mk.co.kr/news/business/12177796",
+      "source": "매일경제",
+      "source_body_digest": "639a2857800386882f124154d294d4cdcf9afe8c352fc95ede0950e148ecf5ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a62a6d113f62ecbcf6d1009aa827b24c984d25fffc9e72d584132e44108a444",
+      "source_fact_keys": [
+        "source_fact:v1:06131df77eb59992316644927f61cb4e61c38e18f47841d20f766547cccd9354",
+        "source_fact:v1:29225e3476de7596c3b8814f09e4b6022da9dec5a305788e2a5105099566744f",
+        "source_fact:v1:75c7296435c865a02c2b54cbdd4307ad461921db39146720ef209560ae606999",
+        "source_fact:v1:a4789d5ab3574f9e39a67b7f4f875ddffa2c87f31b81a82e0727ef449f7d7a2b",
+        "source_fact:v1:dcab95ed262fbe7c446e49bceac529e82a21859ae0f07ade07e8f5706289e033",
+        "source_fact:v1:e2943b354407c348fe6691872e922cc23f1988cd0fc447ad0df65a5f796a0e46",
+        "source_fact:v1:fc83da6690dce7dad36408e4c2676083805996aa433b2d6ad0ab2873eb53e3a1"
+      ],
+      "source_published_kst": "2026-10-16T14:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "솔리다임 IPO 딜레마 빠진 SK하이닉스- 매경ECONOMY",
+      "telegram_core_fact": "SK하이닉스가 미국 낸드플래시 자회사 솔리다임 기업공개(IPO)를 추진하며 재계가 시끌시끌하다.",
+      "title": "솔리다임 IPO 딜레마 빠진 SK하이닉스- 매경ECONOMY"
     },
     "source_fact:612e67a6244cad885abf8976": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
@@ -469967,6 +470974,32 @@
       "source_title": "[부동산 손품노트] 서울 핵심지역 공공 재개발 '도공복' 투자 100가지 사실",
       "telegram_core_fact": "도공복 투자를 검토한다면 △철회 가능성·동의율 △승계요건 △가격(사업성) 등 여러 변수를 꼼꼼히 살펴봐야 한다.",
       "title": "[부동산 손품노트] 서울 핵심지역 공공 재개발 '도공복' 투자 100가지 사실"
+    },
+    "source_fact:6d8b10a971597690825b715f": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02499366645613576",
+      "source": "이데일리",
+      "source_body_digest": "1ee073c23e1e867472306e9cf1bfac5436113e3d0986fb72b567341c35940a4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:76857d0e48f55e65358f04f85b37d870f280db6e79b359880a240a39059e26a5",
+      "source_fact_keys": [
+        "source_fact:v1:5d2f13ca6f6bb776b39c9f4ec0b9cc50dc3b85a0bfe474c4d757bce3494e91b5",
+        "source_fact:v1:8eba7e7994172e910e17d39383fd52285514c737aeca899fd80c6cfb9726640a",
+        "source_fact:v1:90df828f620db3a6a3763a36e0491a326c7b159527c81bd8c871bba288012659",
+        "source_fact:v1:c17b179ed8fafe707027fcffa53cdb37e8abb6e5eca921a50d5dd24bbce925bb",
+        "source_fact:v1:c191af7e3b0c3ea0bd519c702bba0821f57d038112388333b9beb9d7dbedbe2e",
+        "source_fact:v1:df98bad6ff5671fb1fbb10cacaf15318da6c8ac5c8234b53b6c8396068aac104",
+        "source_fact:v1:ea29d6ffa820938ea2cd7ef4e904a7d0b36e212acb1078e5546c1ce4fa4d5e3c"
+      ],
+      "source_published_kst": "2026-10-16T07:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "코어위브 주가 롤러코스터…고금리에 AI 기업 양극화",
+      "telegram_core_fact": "트라얀웰스의 데이비드 부시 최고투자책임자(CIO)는 “채권시장이 보내는 메시지는 코어위브의 채무불이행 위험이 커졌다는 것”이라며 “반드시 AI 컴퓨팅 수요가 약해졌다는 뜻은 아니지만 막대한 차입 수요가 현금 창출 능력을 압도하고 합리적인 금리로 기존 부채를 차환하는 능력까지 위협할 수 있다는 점이 우려스럽다”고 말했다.",
+      "title": "코어위브 주가 롤러코스터…고금리에 AI 기업 양극화"
     },
     "source_fact:6d8dd4765ce215fa4bacc41f": {
       "first_seen_kst": "2026-10-13T23:03:15+09:00",
@@ -494616,6 +495649,29 @@
       "telegram_core_fact": "증권가에서는 컨센서스 대비 실적이 하회한 배경에 대해 연결 자회사 LG이노텍의 수익성 부진을 꼽고 있다.",
       "title": "LG전자, 자회사 부진에 3Q 성적표 '예상치 하회'…가전·TV 등 주력사업은 '선방'"
     },
+    "source_fact:7fc9c2b16681673dfae749aa": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003828069",
+      "source": "뉴시스",
+      "source_body_digest": "6e4b5f082a05ae50f26a29845b3adbeb70192dc67ebfbb7e2fa0bd022df85b3f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1ef670d99f0e880ab6482d8de55e4f8b68b58eb777cfeed474d82a169072683b",
+      "source_fact_keys": [
+        "source_fact:v1:1321aafa366d1b9be028235b865eab268ee95bb35239ee820cf3a21056631957",
+        "source_fact:v1:6454031eebb1f156409e0668612cb80d7e0c72f1b1baffbee73f2636921e60bd",
+        "source_fact:v1:9e34ddfdd7e322c3a433e82fd8f2600bd5d76d51e3644d9b69ed0cc1134c118d",
+        "source_fact:v1:d99808da84a7e65ac847b00ad9aec3a5e2329bddcadc8ce9d1f462257cda2606"
+      ],
+      "source_published_kst": "2026-10-15T21:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"우크라, 대 러시아 정유시설 공격 재개해\"",
+      "telegram_core_fact": "우크라이나 드론들이 15일 아침(현지시간) 러시아 리아잔 지방 소재 한 정유소를 공격했다. 우크라의 이날 아침 드론 공격으로 모스크바 남동쪽 300㎞ 소재의 리아잔 정유소에 불이 났다고 러시아 국방부와 리아잔 주지사가 말했다.",
+      "title": "\"우크라, 대 러시아 정유시설 공격 재개해\""
+    },
     "source_fact:7fca693cf5ba4aa40d46fcfb": {
       "first_seen_kst": "2026-10-15T00:12:18+09:00",
       "lanes": {
@@ -495065,6 +496121,26 @@
       "source_title": "코스피 매도 사이드카…지수 6100 반납",
       "telegram_core_fact": "코스피·코스닥은 각각 5.08%·3.05% 하락해 양 시장에 매도 사이드카가 발동됐다.",
       "title": "코스피 매도 사이드카…지수 6100 반납"
+    },
+    "source_fact:80226e280d5e201786fcb921": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175509",
+      "source": "매일경제",
+      "source_body_digest": "a875c8cb121ce9172f83d6e3864259d95eec88de7393f81537ff29575854ac14",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:be8fbbd063288fb105c6921a30fe4e4f35f5ccf85b39aa562a6d16e93d2b13fe",
+      "source_fact_keys": [
+        "source_fact:v1:e3efb27e7173af19363070e1fc34cec250b0b0b4a7693fbd54abc473572e4544"
+      ],
+      "source_published_kst": "2026-10-16T05:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "국제유가 혼조…WTI 6거래일째 상승·브렌트유는 약보합",
+      "telegram_core_fact": "반면 글로벌 벤치마크인 브렌트유 12월물은 0.14달러(0.13%) 하락한 배럴당 105.92달러에 마감했다.",
+      "title": "국제유가 혼조…WTI 6거래일째 상승·브렌트유는 약보합"
     },
     "source_fact:802d8812204216e51042d9c4": {
       "first_seen_kst": "2026-10-08T16:54:07+09:00",
@@ -505585,6 +506661,33 @@
       "source_title": "호르무즈 해협서 이란 추정 공격에 선박 2척 침몰",
       "telegram_core_fact": "이란이 미국의 항구 봉쇄와 제재 강화에 대응해 상선 공격을 확대하면서 글로벌 해상 물류에 대한 우려가 커지고 있다.14일(현지시간) 로이터통신에 따르면 해운 당국 관계자들은 지난 24시간 동안 호르무즈 해협 인근에서 컨테이너선과 벌크선이 각각 발사체 공격에 따른 피해로 침몰했다고 밝혔다.",
       "title": "호르무즈 해협서 이란 추정 공격에 선박 2척 침몰"
+    },
+    "source_fact:885ae76345f2144eb6b0758d": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.news1.kr/it-science/mobile/6321591",
+      "source": "뉴스1",
+      "source_body_digest": "d4d9a2f2c5cf92d667d74dca284129e1c5c6b0c84350e7b24b4110b045a8d3b5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a25416708c82e0b1a785a1b56e66b3e42ffacee03f1ca4dc07081a3bf9f29ea",
+      "source_fact_keys": [
+        "source_fact:v1:005ee4ba9379c40411d743aefd68648279505e6cfaabfaecc9f67d5f220b314b",
+        "source_fact:v1:1600abd92c92e1bc65773003a75067d1fdc050778204a759f63e8ef824cbdcac",
+        "source_fact:v1:91a2d05cb223ae6e3878245f932f9281f2d6577e015cc9c2d104d94768b70cbf",
+        "source_fact:v1:997ed4e0e9f28b6440043882b51bab27c5fd4ccd1fec0067d85ed125b30eff9f",
+        "source_fact:v1:a58fbb9d3979d15c22c1fc763611d1d66dd749aff17cd80c06d8e430ec88bd56",
+        "source_fact:v1:c8e277dbf6e27a66506e8a975847f4d88b251d1492d17f2b9cdd288d14a1dc22",
+        "source_fact:v1:cbcfe9c3f113fc0905f3b51855185f28c4d78d2e7a27b17e8da9796e8d60bfba",
+        "source_fact:v1:d0a1ec00891aa750ba8eb1953c01f6f2ab74d2c2a410cba73fd48eb315d03359"
+      ],
+      "source_published_kst": "2026-10-16T05:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\"",
+      "telegram_core_fact": "인공지능(AI) 수요 증가에 따른 메모리 반도체 공급 부족과 서버·스토리지 가격 상승이 2028년까지 이어질 것이라는 전망이 나왔다.",
+      "title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\""
     },
     "source_fact:885d6de70da672c5bec4747f": {
       "first_seen_kst": "2026-10-09T17:13:50+09:00",
@@ -516318,6 +517421,32 @@
       "source_published_kst": "2026-10-07T09:48+09:00",
       "title": "러 북한에 제트 드론 기술 대거 이전 가능성"
     },
+    "source_fact:904d59c7e9ec156f77d8f0ff": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02499366645613576",
+      "source": "이데일리",
+      "source_body_digest": "1ee073c23e1e867472306e9cf1bfac5436113e3d0986fb72b567341c35940a4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:76857d0e48f55e65358f04f85b37d870f280db6e79b359880a240a39059e26a5",
+      "source_fact_keys": [
+        "source_fact:v1:5d2f13ca6f6bb776b39c9f4ec0b9cc50dc3b85a0bfe474c4d757bce3494e91b5",
+        "source_fact:v1:8eba7e7994172e910e17d39383fd52285514c737aeca899fd80c6cfb9726640a",
+        "source_fact:v1:90df828f620db3a6a3763a36e0491a326c7b159527c81bd8c871bba288012659",
+        "source_fact:v1:c17b179ed8fafe707027fcffa53cdb37e8abb6e5eca921a50d5dd24bbce925bb",
+        "source_fact:v1:c191af7e3b0c3ea0bd519c702bba0821f57d038112388333b9beb9d7dbedbe2e",
+        "source_fact:v1:df98bad6ff5671fb1fbb10cacaf15318da6c8ac5c8234b53b6c8396068aac104",
+        "source_fact:v1:ea29d6ffa820938ea2cd7ef4e904a7d0b36e212acb1078e5546c1ce4fa4d5e3c"
+      ],
+      "source_published_kst": "2026-10-16T07:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "코어위브 주가 롤러코스터…고금리에 AI 기업 양극화",
+      "telegram_core_fact": "트라얀웰스의 데이비드 부시 최고투자책임자(CIO)는 “채권시장이 보내는 메시지는 코어위브의 채무불이행 위험이 커졌다는 것”이라며 “반드시 AI 컴퓨팅 수요가 약해졌다는 뜻은 아니지만 막대한 차입 수요가 현금 창출 능력을 압도하고 합리적인 금리로 기존 부채를 차환하는 능력까지 위협할 수 있다는 점이 우려스럽다”고 말했다.",
+      "title": "코어위브 주가 롤러코스터…고금리에 AI 기업 양극화"
+    },
     "source_fact:905102c75444620d8bff1471": {
       "first_seen_kst": "2026-10-10T20:30:39+09:00",
       "lanes": {
@@ -519454,6 +520583,33 @@
       "source_title": "예산군, 국토부 공간정보 품질관리 수준 평가서 '만점'",
       "telegram_core_fact": "이 평가는 중앙행정, 지방정부, 공공기관을 대상으로 국가 공간정보(토지이용규제정보 등) 품질 수준을 진단 평가해 오류 수준 개선을 위해 이뤄진다.",
       "title": "예산군, 국토부 공간정보 품질관리 수준 평가서 '만점'"
+    },
+    "source_fact:92ef54787a5d7f10d9cc560a": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.news1.kr/it-science/mobile/6321591",
+      "source": "뉴스1",
+      "source_body_digest": "d4d9a2f2c5cf92d667d74dca284129e1c5c6b0c84350e7b24b4110b045a8d3b5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a25416708c82e0b1a785a1b56e66b3e42ffacee03f1ca4dc07081a3bf9f29ea",
+      "source_fact_keys": [
+        "source_fact:v1:005ee4ba9379c40411d743aefd68648279505e6cfaabfaecc9f67d5f220b314b",
+        "source_fact:v1:1600abd92c92e1bc65773003a75067d1fdc050778204a759f63e8ef824cbdcac",
+        "source_fact:v1:91a2d05cb223ae6e3878245f932f9281f2d6577e015cc9c2d104d94768b70cbf",
+        "source_fact:v1:997ed4e0e9f28b6440043882b51bab27c5fd4ccd1fec0067d85ed125b30eff9f",
+        "source_fact:v1:a58fbb9d3979d15c22c1fc763611d1d66dd749aff17cd80c06d8e430ec88bd56",
+        "source_fact:v1:c8e277dbf6e27a66506e8a975847f4d88b251d1492d17f2b9cdd288d14a1dc22",
+        "source_fact:v1:cbcfe9c3f113fc0905f3b51855185f28c4d78d2e7a27b17e8da9796e8d60bfba",
+        "source_fact:v1:d0a1ec00891aa750ba8eb1953c01f6f2ab74d2c2a410cba73fd48eb315d03359"
+      ],
+      "source_published_kst": "2026-10-16T05:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\"",
+      "telegram_core_fact": "인공지능(AI) 수요 증가에 따른 메모리 반도체 공급 부족과 서버·스토리지 가격 상승이 2028년까지 이어질 것이라는 전망이 나왔다.",
+      "title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\""
     },
     "source_fact:92fe88b38f79f0d4527ee34c": {
       "first_seen_kst": "2026-10-15T06:12:33+09:00",
@@ -528081,6 +529237,33 @@
       "source_title": "한미반도체, 美 세미콘 웨스트 참가…패키징 장비 공개",
       "telegram_core_fact": "한미반도체는 현지시간으로 지난 13일부터 오는 15일까지 미국 샌프란시스코 모스코니센터에서 열리는 '2026 세미콘 웨스트(SEMICON West)'에 참가한다고 14일 밝혔다. 한미반도체는 세미콘 웨스트 참가로 미국 반도체 시장 수요 확대에 대응하고, 첨단 패키징 기술 경쟁력을 알릴 계획이다.",
       "title": "한미반도체, 美 세미콘 웨스트 참가…패키징 장비 공개"
+    },
+    "source_fact:99225e1145e11afd1ebaadc2": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.news1.kr/it-science/mobile/6321591",
+      "source": "뉴스1",
+      "source_body_digest": "d4d9a2f2c5cf92d667d74dca284129e1c5c6b0c84350e7b24b4110b045a8d3b5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a25416708c82e0b1a785a1b56e66b3e42ffacee03f1ca4dc07081a3bf9f29ea",
+      "source_fact_keys": [
+        "source_fact:v1:005ee4ba9379c40411d743aefd68648279505e6cfaabfaecc9f67d5f220b314b",
+        "source_fact:v1:1600abd92c92e1bc65773003a75067d1fdc050778204a759f63e8ef824cbdcac",
+        "source_fact:v1:91a2d05cb223ae6e3878245f932f9281f2d6577e015cc9c2d104d94768b70cbf",
+        "source_fact:v1:997ed4e0e9f28b6440043882b51bab27c5fd4ccd1fec0067d85ed125b30eff9f",
+        "source_fact:v1:a58fbb9d3979d15c22c1fc763611d1d66dd749aff17cd80c06d8e430ec88bd56",
+        "source_fact:v1:c8e277dbf6e27a66506e8a975847f4d88b251d1492d17f2b9cdd288d14a1dc22",
+        "source_fact:v1:cbcfe9c3f113fc0905f3b51855185f28c4d78d2e7a27b17e8da9796e8d60bfba",
+        "source_fact:v1:d0a1ec00891aa750ba8eb1953c01f6f2ab74d2c2a410cba73fd48eb315d03359"
+      ],
+      "source_published_kst": "2026-10-16T05:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\"",
+      "telegram_core_fact": "인공지능(AI) 수요 증가에 따른 메모리 반도체 공급 부족과 서버·스토리지 가격 상승이 2028년까지 이어질 것이라는 전망이 나왔다.",
+      "title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\""
     },
     "source_fact:9929077393f8df8267164d5f": {
       "first_seen_kst": "2026-10-13T08:14:23+09:00",
@@ -549389,6 +550572,33 @@
       "source_published_kst": "2026-10-05T13:09+09:00",
       "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
     },
+    "source_fact:a8b23cf43b5b24ddbdbffb2e": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.news1.kr/it-science/mobile/6321591",
+      "source": "뉴스1",
+      "source_body_digest": "d4d9a2f2c5cf92d667d74dca284129e1c5c6b0c84350e7b24b4110b045a8d3b5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a25416708c82e0b1a785a1b56e66b3e42ffacee03f1ca4dc07081a3bf9f29ea",
+      "source_fact_keys": [
+        "source_fact:v1:005ee4ba9379c40411d743aefd68648279505e6cfaabfaecc9f67d5f220b314b",
+        "source_fact:v1:1600abd92c92e1bc65773003a75067d1fdc050778204a759f63e8ef824cbdcac",
+        "source_fact:v1:91a2d05cb223ae6e3878245f932f9281f2d6577e015cc9c2d104d94768b70cbf",
+        "source_fact:v1:997ed4e0e9f28b6440043882b51bab27c5fd4ccd1fec0067d85ed125b30eff9f",
+        "source_fact:v1:a58fbb9d3979d15c22c1fc763611d1d66dd749aff17cd80c06d8e430ec88bd56",
+        "source_fact:v1:c8e277dbf6e27a66506e8a975847f4d88b251d1492d17f2b9cdd288d14a1dc22",
+        "source_fact:v1:cbcfe9c3f113fc0905f3b51855185f28c4d78d2e7a27b17e8da9796e8d60bfba",
+        "source_fact:v1:d0a1ec00891aa750ba8eb1953c01f6f2ab74d2c2a410cba73fd48eb315d03359"
+      ],
+      "source_published_kst": "2026-10-16T05:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\"",
+      "telegram_core_fact": "인공지능(AI) 수요 증가에 따른 메모리 반도체 공급 부족과 서버·스토리지 가격 상승이 2028년까지 이어질 것이라는 전망이 나왔다.",
+      "title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\""
+    },
     "source_fact:a8b524fb146016a4cbc3a934": {
       "first_seen_kst": "2026-10-06T19:58:43+09:00",
       "lanes": {
@@ -550313,6 +551523,29 @@
       "source_title": "LG엔솔, 전기차 70만대분 캐나다 리튬 확보",
       "telegram_core_fact": "LG에너지솔루션은 8일 북미 리튬 생산기업 엘레브라 리튬과 리튬 정광 장기 공급계약을 체결했다고 밝혔다.",
       "title": "LG엔솔, 전기차 70만대분 캐나다 리튬 확보"
+    },
+    "source_fact:a98ba5530516fe1fcc453f5c": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175589",
+      "source": "매일경제",
+      "source_body_digest": "8fd3b556cdd9b555f32464cd6195f4d6e032b9effe28cf50ed8b98d8a080cfb3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8e6823e1215c0c76fd63cfcdd8315aa17f291703c9a3a6faf37af4768d3785e",
+      "source_fact_keys": [
+        "source_fact:v1:14c13d231e4e2e933f944fa0390b73e1620e160f55b4c90697ea7bae32c1c59a",
+        "source_fact:v1:5826d31d775b14ccc7f1933d0d183070d3d6ee918a26cdcfc453fd799321de7f",
+        "source_fact:v1:7e1804e4228cb26abc789a1e44ee195c4a38b0bbad3dcbcac08256ce23599bd4",
+        "source_fact:v1:9fb6ca68c047478f1271e51bbb807d29600f9b5c564b39d7a72536fedae34926"
+      ],
+      "source_published_kst": "2026-10-16T08:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"앤트로픽 성장세 둔화?…기업가치 기대감 낮아져\"",
+      "telegram_core_fact": "올해 1분기 47억달러에서 2분기 116억달러로 매출이 두 배 이상 증가한 것과 비교하면 상승세가 둔화했다고 본 것이다. 발표된 실적은 인공지능(AI) 개발 비용에 대한 우려를 일부 완화해줬지만, 일각에서는 매출 성장세가 둔화했다는 점에 실망감도 드러난 것으로 전해졌다.",
+      "title": "\"앤트로픽 성장세 둔화?…기업가치 기대감 낮아져\""
     },
     "source_fact:a997d4c96c3d81ea4c48ea2c": {
       "first_seen_kst": "2026-10-07T06:12:17+09:00",
@@ -559218,6 +560451,32 @@
       "source_title": "\"사우디 수도 리야드 공항 또 공격받아…수십 명 부상·항공편 차질\"",
       "telegram_core_fact": "지난 5일 후티 반군이 사우디의 공항·정유 시설 등을 겨냥한 대대적인 공격 계획을 발표한 이후 킹칼리드 공항이 공격받은 것은 이날이 최소 세 번째다.",
       "title": "\"사우디 수도 리야드 공항 또 공격받아…수십 명 부상·항공편 차질\""
+    },
+    "source_fact:afb5057e784d6ddb74a99826": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.mk.co.kr/news/business/12177796",
+      "source": "매일경제",
+      "source_body_digest": "639a2857800386882f124154d294d4cdcf9afe8c352fc95ede0950e148ecf5ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a62a6d113f62ecbcf6d1009aa827b24c984d25fffc9e72d584132e44108a444",
+      "source_fact_keys": [
+        "source_fact:v1:06131df77eb59992316644927f61cb4e61c38e18f47841d20f766547cccd9354",
+        "source_fact:v1:29225e3476de7596c3b8814f09e4b6022da9dec5a305788e2a5105099566744f",
+        "source_fact:v1:75c7296435c865a02c2b54cbdd4307ad461921db39146720ef209560ae606999",
+        "source_fact:v1:a4789d5ab3574f9e39a67b7f4f875ddffa2c87f31b81a82e0727ef449f7d7a2b",
+        "source_fact:v1:dcab95ed262fbe7c446e49bceac529e82a21859ae0f07ade07e8f5706289e033",
+        "source_fact:v1:e2943b354407c348fe6691872e922cc23f1988cd0fc447ad0df65a5f796a0e46",
+        "source_fact:v1:fc83da6690dce7dad36408e4c2676083805996aa433b2d6ad0ab2873eb53e3a1"
+      ],
+      "source_published_kst": "2026-10-16T14:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "솔리다임 IPO 딜레마 빠진 SK하이닉스- 매경ECONOMY",
+      "telegram_core_fact": "SK하이닉스가 미국 낸드플래시 자회사 솔리다임 기업공개(IPO)를 추진하며 재계가 시끌시끌하다.",
+      "title": "솔리다임 IPO 딜레마 빠진 SK하이닉스- 매경ECONOMY"
     },
     "source_fact:afc6f5d2b1f2daf88302667d": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
@@ -572585,6 +573844,29 @@
       "telegram_core_fact": "코스피200 야간선물은 1.7% 상승했다. 코스피가 '검은화요일'의 충격을 딛고 14일 반등을 시도할 전망이다.",
       "title": "[오늘의 증시]코스피 야간선물 1.7%↑…'검은 화요일' 딛고 반등할까"
     },
+    "source_fact:b9c0f1bf2d981060eba9e678": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003828069",
+      "source": "뉴시스",
+      "source_body_digest": "6e4b5f082a05ae50f26a29845b3adbeb70192dc67ebfbb7e2fa0bd022df85b3f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1ef670d99f0e880ab6482d8de55e4f8b68b58eb777cfeed474d82a169072683b",
+      "source_fact_keys": [
+        "source_fact:v1:1321aafa366d1b9be028235b865eab268ee95bb35239ee820cf3a21056631957",
+        "source_fact:v1:6454031eebb1f156409e0668612cb80d7e0c72f1b1baffbee73f2636921e60bd",
+        "source_fact:v1:9e34ddfdd7e322c3a433e82fd8f2600bd5d76d51e3644d9b69ed0cc1134c118d",
+        "source_fact:v1:d99808da84a7e65ac847b00ad9aec3a5e2329bddcadc8ce9d1f462257cda2606"
+      ],
+      "source_published_kst": "2026-10-15T21:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"우크라, 대 러시아 정유시설 공격 재개해\"",
+      "telegram_core_fact": "우크라이나 드론들이 15일 아침(현지시간) 러시아 리아잔 지방 소재 한 정유소를 공격했다. 우크라의 이날 아침 드론 공격으로 모스크바 남동쪽 300㎞ 소재의 리아잔 정유소에 불이 났다고 러시아 국방부와 리아잔 주지사가 말했다.",
+      "title": "\"우크라, 대 러시아 정유시설 공격 재개해\""
+    },
     "source_fact:b9c6e1359d530605edb7de3f": {
       "first_seen_kst": "2026-10-11T14:49:05+09:00",
       "lanes": {
@@ -578136,6 +579418,32 @@
       ],
       "source_published_kst": "2026-10-06T17:12+09:00",
       "title": "유로화 17개월 최저…프랑스 재정불안에 스페인 조기총선까지(종합)"
+    },
+    "source_fact:bdfbc32804bac79ddf097336": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.mk.co.kr/news/business/12177796",
+      "source": "매일경제",
+      "source_body_digest": "639a2857800386882f124154d294d4cdcf9afe8c352fc95ede0950e148ecf5ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a62a6d113f62ecbcf6d1009aa827b24c984d25fffc9e72d584132e44108a444",
+      "source_fact_keys": [
+        "source_fact:v1:06131df77eb59992316644927f61cb4e61c38e18f47841d20f766547cccd9354",
+        "source_fact:v1:29225e3476de7596c3b8814f09e4b6022da9dec5a305788e2a5105099566744f",
+        "source_fact:v1:75c7296435c865a02c2b54cbdd4307ad461921db39146720ef209560ae606999",
+        "source_fact:v1:a4789d5ab3574f9e39a67b7f4f875ddffa2c87f31b81a82e0727ef449f7d7a2b",
+        "source_fact:v1:dcab95ed262fbe7c446e49bceac529e82a21859ae0f07ade07e8f5706289e033",
+        "source_fact:v1:e2943b354407c348fe6691872e922cc23f1988cd0fc447ad0df65a5f796a0e46",
+        "source_fact:v1:fc83da6690dce7dad36408e4c2676083805996aa433b2d6ad0ab2873eb53e3a1"
+      ],
+      "source_published_kst": "2026-10-16T14:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "솔리다임 IPO 딜레마 빠진 SK하이닉스- 매경ECONOMY",
+      "telegram_core_fact": "SK하이닉스가 미국 낸드플래시 자회사 솔리다임 기업공개(IPO)를 추진하며 재계가 시끌시끌하다.",
+      "title": "솔리다임 IPO 딜레마 빠진 SK하이닉스- 매경ECONOMY"
     },
     "source_fact:bdffb4b64c2cebfb8a5d82a9": {
       "first_seen_kst": "2026-10-12T18:02:18+09:00",
@@ -595283,6 +596591,29 @@
       "source_published_kst": "2026-10-06T18:00+09:00",
       "title": "박스피 갇힌 코스피, 11월 연말 랠리 올까?"
     },
+    "source_fact:ca311a3bffd248e7aeb7946e": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003828069",
+      "source": "뉴시스",
+      "source_body_digest": "6e4b5f082a05ae50f26a29845b3adbeb70192dc67ebfbb7e2fa0bd022df85b3f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1ef670d99f0e880ab6482d8de55e4f8b68b58eb777cfeed474d82a169072683b",
+      "source_fact_keys": [
+        "source_fact:v1:1321aafa366d1b9be028235b865eab268ee95bb35239ee820cf3a21056631957",
+        "source_fact:v1:6454031eebb1f156409e0668612cb80d7e0c72f1b1baffbee73f2636921e60bd",
+        "source_fact:v1:9e34ddfdd7e322c3a433e82fd8f2600bd5d76d51e3644d9b69ed0cc1134c118d",
+        "source_fact:v1:d99808da84a7e65ac847b00ad9aec3a5e2329bddcadc8ce9d1f462257cda2606"
+      ],
+      "source_published_kst": "2026-10-15T21:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"우크라, 대 러시아 정유시설 공격 재개해\"",
+      "telegram_core_fact": "우크라이나 드론들이 15일 아침(현지시간) 러시아 리아잔 지방 소재 한 정유소를 공격했다. 우크라의 이날 아침 드론 공격으로 모스크바 남동쪽 300㎞ 소재의 리아잔 정유소에 불이 났다고 러시아 국방부와 리아잔 주지사가 말했다.",
+      "title": "\"우크라, 대 러시아 정유시설 공격 재개해\""
+    },
     "source_fact:ca311a8c3c73ad54e0ac6384": {
       "first_seen_kst": "2026-10-11T07:07:11+09:00",
       "lanes": {
@@ -601868,6 +603199,29 @@
       "source_title": "IMF, 올해 한국 성장률 3.3%로 석 달 만에 0.7%포인트 상향",
       "telegram_core_fact": "한국 경제성장률 전망치를 높인 것은 반도체 호황이 중동전쟁의 부정적 영향을 압도했기 때문이다.",
       "title": "IMF, 올해 한국 성장률 3.3%로 석 달 만에 0.7%포인트 상향"
+    },
+    "source_fact:cf5122e9011250d1ac07a864": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175589",
+      "source": "매일경제",
+      "source_body_digest": "8fd3b556cdd9b555f32464cd6195f4d6e032b9effe28cf50ed8b98d8a080cfb3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8e6823e1215c0c76fd63cfcdd8315aa17f291703c9a3a6faf37af4768d3785e",
+      "source_fact_keys": [
+        "source_fact:v1:14c13d231e4e2e933f944fa0390b73e1620e160f55b4c90697ea7bae32c1c59a",
+        "source_fact:v1:5826d31d775b14ccc7f1933d0d183070d3d6ee918a26cdcfc453fd799321de7f",
+        "source_fact:v1:7e1804e4228cb26abc789a1e44ee195c4a38b0bbad3dcbcac08256ce23599bd4",
+        "source_fact:v1:9fb6ca68c047478f1271e51bbb807d29600f9b5c564b39d7a72536fedae34926"
+      ],
+      "source_published_kst": "2026-10-16T08:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"앤트로픽 성장세 둔화?…기업가치 기대감 낮아져\"",
+      "telegram_core_fact": "올해 1분기 47억달러에서 2분기 116억달러로 매출이 두 배 이상 증가한 것과 비교하면 상승세가 둔화했다고 본 것이다. 발표된 실적은 인공지능(AI) 개발 비용에 대한 우려를 일부 완화해줬지만, 일각에서는 매출 성장세가 둔화했다는 점에 실망감도 드러난 것으로 전해졌다.",
+      "title": "\"앤트로픽 성장세 둔화?…기업가치 기대감 낮아져\""
     },
     "source_fact:cf535436fcaf3020ef5eea89": {
       "first_seen_kst": "2026-10-07T08:57:59+09:00",
@@ -608673,6 +610027,32 @@
       "source_title": "횡성한우축제 40만명 찾았다…매출 44억원 역대 최고",
       "telegram_core_fact": "강원 횡성군의 제22회 횡성한우축제가 방문객 40만명과 매출 44억원을 기록하며 역대 최고 흥행 성적을 거뒀다.",
       "title": "횡성한우축제 40만명 찾았다…매출 44억원 역대 최고"
+    },
+    "source_fact:d4af5d4a4b4042e4b1d25ab4": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.mk.co.kr/news/business/12177796",
+      "source": "매일경제",
+      "source_body_digest": "639a2857800386882f124154d294d4cdcf9afe8c352fc95ede0950e148ecf5ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a62a6d113f62ecbcf6d1009aa827b24c984d25fffc9e72d584132e44108a444",
+      "source_fact_keys": [
+        "source_fact:v1:06131df77eb59992316644927f61cb4e61c38e18f47841d20f766547cccd9354",
+        "source_fact:v1:29225e3476de7596c3b8814f09e4b6022da9dec5a305788e2a5105099566744f",
+        "source_fact:v1:75c7296435c865a02c2b54cbdd4307ad461921db39146720ef209560ae606999",
+        "source_fact:v1:a4789d5ab3574f9e39a67b7f4f875ddffa2c87f31b81a82e0727ef449f7d7a2b",
+        "source_fact:v1:dcab95ed262fbe7c446e49bceac529e82a21859ae0f07ade07e8f5706289e033",
+        "source_fact:v1:e2943b354407c348fe6691872e922cc23f1988cd0fc447ad0df65a5f796a0e46",
+        "source_fact:v1:fc83da6690dce7dad36408e4c2676083805996aa433b2d6ad0ab2873eb53e3a1"
+      ],
+      "source_published_kst": "2026-10-16T14:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "솔리다임 IPO 딜레마 빠진 SK하이닉스- 매경ECONOMY",
+      "telegram_core_fact": "SK하이닉스가 미국 낸드플래시 자회사 솔리다임 기업공개(IPO)를 추진하며 재계가 시끌시끌하다.",
+      "title": "솔리다임 IPO 딜레마 빠진 SK하이닉스- 매경ECONOMY"
     },
     "source_fact:d4b1ecb76c40c0a295a94f12": {
       "first_seen_kst": "2026-10-06T21:54:00+09:00",
@@ -620155,6 +621535,29 @@
       "telegram_core_fact": "배준형 산업부 통상협력국장은 \"한중 공급망은 우리 기업의 생산과 수출에 직결되는 만큼 평소 안정적으로 관리하는 것이 중요하다\"며 \"공급망 현안은 핫라인을 통해 수시로 소통해 나가는 한편, 새만금을 중심으로 한 산단 협력도 기업이 체감하는 성과로 이어지도록 후속 협의를 이어가겠다\"고 말했다.",
       "title": "한중 통상당국, 공급망 핫라인 유지…새만금 산단 협력도 속도 | 연합뉴스"
     },
+    "source_fact:dcd2e149b4a924aaf44626ae": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175589",
+      "source": "매일경제",
+      "source_body_digest": "8fd3b556cdd9b555f32464cd6195f4d6e032b9effe28cf50ed8b98d8a080cfb3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8e6823e1215c0c76fd63cfcdd8315aa17f291703c9a3a6faf37af4768d3785e",
+      "source_fact_keys": [
+        "source_fact:v1:14c13d231e4e2e933f944fa0390b73e1620e160f55b4c90697ea7bae32c1c59a",
+        "source_fact:v1:5826d31d775b14ccc7f1933d0d183070d3d6ee918a26cdcfc453fd799321de7f",
+        "source_fact:v1:7e1804e4228cb26abc789a1e44ee195c4a38b0bbad3dcbcac08256ce23599bd4",
+        "source_fact:v1:9fb6ca68c047478f1271e51bbb807d29600f9b5c564b39d7a72536fedae34926"
+      ],
+      "source_published_kst": "2026-10-16T08:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"앤트로픽 성장세 둔화?…기업가치 기대감 낮아져\"",
+      "telegram_core_fact": "올해 1분기 47억달러에서 2분기 116억달러로 매출이 두 배 이상 증가한 것과 비교하면 상승세가 둔화했다고 본 것이다. 발표된 실적은 인공지능(AI) 개발 비용에 대한 우려를 일부 완화해줬지만, 일각에서는 매출 성장세가 둔화했다는 점에 실망감도 드러난 것으로 전해졌다.",
+      "title": "\"앤트로픽 성장세 둔화?…기업가치 기대감 낮아져\""
+    },
     "source_fact:dcd9095d2de4c2a74b42251f": {
       "first_seen_kst": "2026-10-15T04:50:33+09:00",
       "lanes": {
@@ -624580,6 +625983,32 @@
       "source_title": "[정선소식]친환경 미생물 자동분주 시스템 구축 추진 등",
       "telegram_core_fact": "이경천 농업기술센터 소장은 \"자동분주 시스템 구축으로 농업인이 보다 쉽고 편리하게 미생물을 공급받을 수 있는 환경을 조성하고, 농업인이 체감할 수 있는 친환경 농업 지원을 지속적으로 확대해 나가겠다\"고 전했다.",
       "title": "[정선소식]친환경 미생물 자동분주 시스템 구축 추진 등"
+    },
+    "source_fact:e004bb2934469f36f1cebf50": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02499366645613576",
+      "source": "이데일리",
+      "source_body_digest": "1ee073c23e1e867472306e9cf1bfac5436113e3d0986fb72b567341c35940a4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:76857d0e48f55e65358f04f85b37d870f280db6e79b359880a240a39059e26a5",
+      "source_fact_keys": [
+        "source_fact:v1:5d2f13ca6f6bb776b39c9f4ec0b9cc50dc3b85a0bfe474c4d757bce3494e91b5",
+        "source_fact:v1:8eba7e7994172e910e17d39383fd52285514c737aeca899fd80c6cfb9726640a",
+        "source_fact:v1:90df828f620db3a6a3763a36e0491a326c7b159527c81bd8c871bba288012659",
+        "source_fact:v1:c17b179ed8fafe707027fcffa53cdb37e8abb6e5eca921a50d5dd24bbce925bb",
+        "source_fact:v1:c191af7e3b0c3ea0bd519c702bba0821f57d038112388333b9beb9d7dbedbe2e",
+        "source_fact:v1:df98bad6ff5671fb1fbb10cacaf15318da6c8ac5c8234b53b6c8396068aac104",
+        "source_fact:v1:ea29d6ffa820938ea2cd7ef4e904a7d0b36e212acb1078e5546c1ce4fa4d5e3c"
+      ],
+      "source_published_kst": "2026-10-16T07:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "코어위브 주가 롤러코스터…고금리에 AI 기업 양극화",
+      "telegram_core_fact": "트라얀웰스의 데이비드 부시 최고투자책임자(CIO)는 “채권시장이 보내는 메시지는 코어위브의 채무불이행 위험이 커졌다는 것”이라며 “반드시 AI 컴퓨팅 수요가 약해졌다는 뜻은 아니지만 막대한 차입 수요가 현금 창출 능력을 압도하고 합리적인 금리로 기존 부채를 차환하는 능력까지 위협할 수 있다는 점이 우려스럽다”고 말했다.",
+      "title": "코어위브 주가 롤러코스터…고금리에 AI 기업 양극화"
     },
     "source_fact:e005d9eee13854de67e9f9e1": {
       "first_seen_kst": "2026-10-07T17:34:38+09:00",
@@ -635944,6 +637373,32 @@
       "telegram_core_fact": "고대역폭메모리(HBM)가 인공지능(AI) 데이터센터 수요로 급성장한데 이어 로봇이 삼성전자와 SK하이닉스에 새로운 메모리 수요처로 떠오르고 있다는 분석이다.",
       "title": "“로봇 D램 수요, 2030년까지 20배 증가”"
     },
+    "source_fact:e80ab4d23b208166d30f3f3b": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02499366645613576",
+      "source": "이데일리",
+      "source_body_digest": "1ee073c23e1e867472306e9cf1bfac5436113e3d0986fb72b567341c35940a4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:76857d0e48f55e65358f04f85b37d870f280db6e79b359880a240a39059e26a5",
+      "source_fact_keys": [
+        "source_fact:v1:5d2f13ca6f6bb776b39c9f4ec0b9cc50dc3b85a0bfe474c4d757bce3494e91b5",
+        "source_fact:v1:8eba7e7994172e910e17d39383fd52285514c737aeca899fd80c6cfb9726640a",
+        "source_fact:v1:90df828f620db3a6a3763a36e0491a326c7b159527c81bd8c871bba288012659",
+        "source_fact:v1:c17b179ed8fafe707027fcffa53cdb37e8abb6e5eca921a50d5dd24bbce925bb",
+        "source_fact:v1:c191af7e3b0c3ea0bd519c702bba0821f57d038112388333b9beb9d7dbedbe2e",
+        "source_fact:v1:df98bad6ff5671fb1fbb10cacaf15318da6c8ac5c8234b53b6c8396068aac104",
+        "source_fact:v1:ea29d6ffa820938ea2cd7ef4e904a7d0b36e212acb1078e5546c1ce4fa4d5e3c"
+      ],
+      "source_published_kst": "2026-10-16T07:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "코어위브 주가 롤러코스터…고금리에 AI 기업 양극화",
+      "telegram_core_fact": "트라얀웰스의 데이비드 부시 최고투자책임자(CIO)는 “채권시장이 보내는 메시지는 코어위브의 채무불이행 위험이 커졌다는 것”이라며 “반드시 AI 컴퓨팅 수요가 약해졌다는 뜻은 아니지만 막대한 차입 수요가 현금 창출 능력을 압도하고 합리적인 금리로 기존 부채를 차환하는 능력까지 위협할 수 있다는 점이 우려스럽다”고 말했다.",
+      "title": "코어위브 주가 롤러코스터…고금리에 AI 기업 양극화"
+    },
     "source_fact:e812efdb11a27d0b95faca1e": {
       "first_seen_kst": "2026-10-15T10:14:14+09:00",
       "lanes": {
@@ -639848,6 +641303,29 @@
       "telegram_core_fact": "삼성전자가 107조원대 3분기 영업이익으로 어닝 서프라이즈를 기록했지만 채권 금리와 국제 유가 부담을 이겨내지 못하며 7000선 안착에 실패했다.",
       "title": "금리 vs 실적…코스피, 7000선 재도전 나설까[주간증시전망]"
     },
+    "source_fact:eab542af8ace967025d07931": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003828069",
+      "source": "뉴시스",
+      "source_body_digest": "6e4b5f082a05ae50f26a29845b3adbeb70192dc67ebfbb7e2fa0bd022df85b3f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1ef670d99f0e880ab6482d8de55e4f8b68b58eb777cfeed474d82a169072683b",
+      "source_fact_keys": [
+        "source_fact:v1:1321aafa366d1b9be028235b865eab268ee95bb35239ee820cf3a21056631957",
+        "source_fact:v1:6454031eebb1f156409e0668612cb80d7e0c72f1b1baffbee73f2636921e60bd",
+        "source_fact:v1:9e34ddfdd7e322c3a433e82fd8f2600bd5d76d51e3644d9b69ed0cc1134c118d",
+        "source_fact:v1:d99808da84a7e65ac847b00ad9aec3a5e2329bddcadc8ce9d1f462257cda2606"
+      ],
+      "source_published_kst": "2026-10-15T21:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"우크라, 대 러시아 정유시설 공격 재개해\"",
+      "telegram_core_fact": "우크라이나 드론들이 15일 아침(현지시간) 러시아 리아잔 지방 소재 한 정유소를 공격했다. 우크라의 이날 아침 드론 공격으로 모스크바 남동쪽 300㎞ 소재의 리아잔 정유소에 불이 났다고 러시아 국방부와 리아잔 주지사가 말했다.",
+      "title": "\"우크라, 대 러시아 정유시설 공격 재개해\""
+    },
     "source_fact:eab921551f5dec90503daf56": {
       "first_seen_kst": "2026-10-15T01:00:58+09:00",
       "lanes": {
@@ -640022,6 +641500,33 @@
       "source_title": "중기부, 전국서 '모두의 창업' 오디션…3라운드 진출 200명 선발 | 연합뉴스",
       "telegram_core_fact": "오디션 현장을 진출자뿐만 아니라 지역 창업 생태계 구성원이 함께 참여할 수 있는 개방형 교류 공간으로 운영한다.",
       "title": "중기부, 전국서 '모두의 창업' 오디션…3라운드 진출 200명 선발 | 연합뉴스"
+    },
+    "source_fact:eae97a743631e6bebe0ac81f": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.news1.kr/it-science/mobile/6321591",
+      "source": "뉴스1",
+      "source_body_digest": "d4d9a2f2c5cf92d667d74dca284129e1c5c6b0c84350e7b24b4110b045a8d3b5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a25416708c82e0b1a785a1b56e66b3e42ffacee03f1ca4dc07081a3bf9f29ea",
+      "source_fact_keys": [
+        "source_fact:v1:005ee4ba9379c40411d743aefd68648279505e6cfaabfaecc9f67d5f220b314b",
+        "source_fact:v1:1600abd92c92e1bc65773003a75067d1fdc050778204a759f63e8ef824cbdcac",
+        "source_fact:v1:91a2d05cb223ae6e3878245f932f9281f2d6577e015cc9c2d104d94768b70cbf",
+        "source_fact:v1:997ed4e0e9f28b6440043882b51bab27c5fd4ccd1fec0067d85ed125b30eff9f",
+        "source_fact:v1:a58fbb9d3979d15c22c1fc763611d1d66dd749aff17cd80c06d8e430ec88bd56",
+        "source_fact:v1:c8e277dbf6e27a66506e8a975847f4d88b251d1492d17f2b9cdd288d14a1dc22",
+        "source_fact:v1:cbcfe9c3f113fc0905f3b51855185f28c4d78d2e7a27b17e8da9796e8d60bfba",
+        "source_fact:v1:d0a1ec00891aa750ba8eb1953c01f6f2ab74d2c2a410cba73fd48eb315d03359"
+      ],
+      "source_published_kst": "2026-10-16T05:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\"",
+      "telegram_core_fact": "인공지능(AI) 수요 증가에 따른 메모리 반도체 공급 부족과 서버·스토리지 가격 상승이 2028년까지 이어질 것이라는 전망이 나왔다.",
+      "title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\""
     },
     "source_fact:eaea8545c1b0faa0c87c0a17": {
       "first_seen_kst": "2026-10-15T08:21:08+09:00",
@@ -656492,6 +657997,33 @@
       "telegram_core_fact": "한국은행이 지난 7월과 8월 두 차례 연속 금리를 인상하면서 기준금리는 5월 2.50%에서 7월 2.75%, 8월 3.00%로 상승했다.",
       "title": "금리 상승에 떨어진 채권 평가액…보험사 3분기 실적 '먹구름'"
     },
+    "source_fact:f7a1e0dbe7619ec4500ae10f": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.news1.kr/it-science/mobile/6321591",
+      "source": "뉴스1",
+      "source_body_digest": "d4d9a2f2c5cf92d667d74dca284129e1c5c6b0c84350e7b24b4110b045a8d3b5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a25416708c82e0b1a785a1b56e66b3e42ffacee03f1ca4dc07081a3bf9f29ea",
+      "source_fact_keys": [
+        "source_fact:v1:005ee4ba9379c40411d743aefd68648279505e6cfaabfaecc9f67d5f220b314b",
+        "source_fact:v1:1600abd92c92e1bc65773003a75067d1fdc050778204a759f63e8ef824cbdcac",
+        "source_fact:v1:91a2d05cb223ae6e3878245f932f9281f2d6577e015cc9c2d104d94768b70cbf",
+        "source_fact:v1:997ed4e0e9f28b6440043882b51bab27c5fd4ccd1fec0067d85ed125b30eff9f",
+        "source_fact:v1:a58fbb9d3979d15c22c1fc763611d1d66dd749aff17cd80c06d8e430ec88bd56",
+        "source_fact:v1:c8e277dbf6e27a66506e8a975847f4d88b251d1492d17f2b9cdd288d14a1dc22",
+        "source_fact:v1:cbcfe9c3f113fc0905f3b51855185f28c4d78d2e7a27b17e8da9796e8d60bfba",
+        "source_fact:v1:d0a1ec00891aa750ba8eb1953c01f6f2ab74d2c2a410cba73fd48eb315d03359"
+      ],
+      "source_published_kst": "2026-10-16T05:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\"",
+      "telegram_core_fact": "인공지능(AI) 수요 증가에 따른 메모리 반도체 공급 부족과 서버·스토리지 가격 상승이 2028년까지 이어질 것이라는 전망이 나왔다.",
+      "title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\""
+    },
     "source_fact:f7a327b19ebae655ac59123f": {
       "first_seen_kst": "2026-10-11T20:44:48+09:00",
       "lanes": {
@@ -656657,6 +658189,32 @@
       "source_title": "투자 고수들, '삼전닉스' 매수 줄였다…반도체 장비·배터리로 확산 [1% 고수의 선택]",
       "telegram_core_fact": "■반도체 온기, 부품·장비주로 확산 11일 키움증권이 제공하는 '수익률 상위 고객(직전 3개월 수익률 상위 2만5000명) 매매 상세 현황'에 따르면 수익률 상위 투자자들이 지난 6~8일 가장 많이 순매수한 종목은 SK하이닉스로, 순매수액은 572억원이었다.",
       "title": "투자 고수들, '삼전닉스' 매수 줄였다…반도체 장비·배터리로 확산 [1% 고수의 선택]"
+    },
+    "source_fact:f7c51b064da2ce8c8b006da5": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02499366645613576",
+      "source": "이데일리",
+      "source_body_digest": "1ee073c23e1e867472306e9cf1bfac5436113e3d0986fb72b567341c35940a4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:76857d0e48f55e65358f04f85b37d870f280db6e79b359880a240a39059e26a5",
+      "source_fact_keys": [
+        "source_fact:v1:5d2f13ca6f6bb776b39c9f4ec0b9cc50dc3b85a0bfe474c4d757bce3494e91b5",
+        "source_fact:v1:8eba7e7994172e910e17d39383fd52285514c737aeca899fd80c6cfb9726640a",
+        "source_fact:v1:90df828f620db3a6a3763a36e0491a326c7b159527c81bd8c871bba288012659",
+        "source_fact:v1:c17b179ed8fafe707027fcffa53cdb37e8abb6e5eca921a50d5dd24bbce925bb",
+        "source_fact:v1:c191af7e3b0c3ea0bd519c702bba0821f57d038112388333b9beb9d7dbedbe2e",
+        "source_fact:v1:df98bad6ff5671fb1fbb10cacaf15318da6c8ac5c8234b53b6c8396068aac104",
+        "source_fact:v1:ea29d6ffa820938ea2cd7ef4e904a7d0b36e212acb1078e5546c1ce4fa4d5e3c"
+      ],
+      "source_published_kst": "2026-10-16T07:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "코어위브 주가 롤러코스터…고금리에 AI 기업 양극화",
+      "telegram_core_fact": "트라얀웰스의 데이비드 부시 최고투자책임자(CIO)는 “채권시장이 보내는 메시지는 코어위브의 채무불이행 위험이 커졌다는 것”이라며 “반드시 AI 컴퓨팅 수요가 약해졌다는 뜻은 아니지만 막대한 차입 수요가 현금 창출 능력을 압도하고 합리적인 금리로 기존 부채를 차환하는 능력까지 위협할 수 있다는 점이 우려스럽다”고 말했다.",
+      "title": "코어위브 주가 롤러코스터…고금리에 AI 기업 양극화"
     },
     "source_fact:f7d7073a4f139be4d9ebc046": {
       "first_seen_kst": "2026-10-11T22:09:39+09:00",
@@ -668143,6 +669701,29 @@
       "source": "한국경제",
       "title": "두산, 다음 도약 위한 준비 끝"
     },
+    "title:02459e3aa3645bb5319edf30": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175589",
+      "source": "매일경제",
+      "source_body_digest": "8fd3b556cdd9b555f32464cd6195f4d6e032b9effe28cf50ed8b98d8a080cfb3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a8e6823e1215c0c76fd63cfcdd8315aa17f291703c9a3a6faf37af4768d3785e",
+      "source_fact_keys": [
+        "source_fact:v1:14c13d231e4e2e933f944fa0390b73e1620e160f55b4c90697ea7bae32c1c59a",
+        "source_fact:v1:5826d31d775b14ccc7f1933d0d183070d3d6ee918a26cdcfc453fd799321de7f",
+        "source_fact:v1:7e1804e4228cb26abc789a1e44ee195c4a38b0bbad3dcbcac08256ce23599bd4",
+        "source_fact:v1:9fb6ca68c047478f1271e51bbb807d29600f9b5c564b39d7a72536fedae34926"
+      ],
+      "source_published_kst": "2026-10-16T08:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"앤트로픽 성장세 둔화?…기업가치 기대감 낮아져\"",
+      "telegram_core_fact": "올해 1분기 47억달러에서 2분기 116억달러로 매출이 두 배 이상 증가한 것과 비교하면 상승세가 둔화했다고 본 것이다. 발표된 실적은 인공지능(AI) 개발 비용에 대한 우려를 일부 완화해줬지만, 일각에서는 매출 성장세가 둔화했다는 점에 실망감도 드러난 것으로 전해졌다.",
+      "title": "\"앤트로픽 성장세 둔화?…기업가치 기대감 낮아져\""
+    },
     "title:025d5f5b47ea2e9c157bab50": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -672578,6 +674159,32 @@
       "source_title": "해수부, 런던협약 총회서 해양지구공학 규제·방사성폐기물 논의",
       "telegram_core_fact": "정부가 영국 런던에서 열린 런던협약·의정서 당사국총회에서 해양지구공학 규제와 방사성폐기물 관리 등 해양환경 현안을 논의하고, 개발도상국의 해양환경 관리 역량 강화를 위한 국제협력 성과를 공유했다.",
       "title": "해수부, 런던협약 총회서 해양지구공학 규제·방사성폐기물 논의"
+    },
+    "title:0ef00b045c8e1b67bbab5ea6": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.mk.co.kr/news/business/12177796",
+      "source": "매일경제",
+      "source_body_digest": "639a2857800386882f124154d294d4cdcf9afe8c352fc95ede0950e148ecf5ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6a62a6d113f62ecbcf6d1009aa827b24c984d25fffc9e72d584132e44108a444",
+      "source_fact_keys": [
+        "source_fact:v1:06131df77eb59992316644927f61cb4e61c38e18f47841d20f766547cccd9354",
+        "source_fact:v1:29225e3476de7596c3b8814f09e4b6022da9dec5a305788e2a5105099566744f",
+        "source_fact:v1:75c7296435c865a02c2b54cbdd4307ad461921db39146720ef209560ae606999",
+        "source_fact:v1:a4789d5ab3574f9e39a67b7f4f875ddffa2c87f31b81a82e0727ef449f7d7a2b",
+        "source_fact:v1:dcab95ed262fbe7c446e49bceac529e82a21859ae0f07ade07e8f5706289e033",
+        "source_fact:v1:e2943b354407c348fe6691872e922cc23f1988cd0fc447ad0df65a5f796a0e46",
+        "source_fact:v1:fc83da6690dce7dad36408e4c2676083805996aa433b2d6ad0ab2873eb53e3a1"
+      ],
+      "source_published_kst": "2026-10-16T14:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "솔리다임 IPO 딜레마 빠진 SK하이닉스- 매경ECONOMY",
+      "telegram_core_fact": "SK하이닉스가 미국 낸드플래시 자회사 솔리다임 기업공개(IPO)를 추진하며 재계가 시끌시끌하다.",
+      "title": "솔리다임 IPO 딜레마 빠진 SK하이닉스- 매경ECONOMY"
     },
     "title:0ef511358378b46a4aaec822": {
       "first_seen_kst": "2026-10-08T09:58:56+09:00",
@@ -685478,6 +687085,29 @@
       "source": "연합뉴스",
       "title": "\"억대 성과급 놓칠라\"…삼전닉스 육아휴직률 첫 동반 하락 | 연합뉴스"
     },
+    "title:324c6380946b892e4518fbfd": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261015_0003828069",
+      "source": "뉴시스",
+      "source_body_digest": "6e4b5f082a05ae50f26a29845b3adbeb70192dc67ebfbb7e2fa0bd022df85b3f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1ef670d99f0e880ab6482d8de55e4f8b68b58eb777cfeed474d82a169072683b",
+      "source_fact_keys": [
+        "source_fact:v1:1321aafa366d1b9be028235b865eab268ee95bb35239ee820cf3a21056631957",
+        "source_fact:v1:6454031eebb1f156409e0668612cb80d7e0c72f1b1baffbee73f2636921e60bd",
+        "source_fact:v1:9e34ddfdd7e322c3a433e82fd8f2600bd5d76d51e3644d9b69ed0cc1134c118d",
+        "source_fact:v1:d99808da84a7e65ac847b00ad9aec3a5e2329bddcadc8ce9d1f462257cda2606"
+      ],
+      "source_published_kst": "2026-10-15T21:04+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"우크라, 대 러시아 정유시설 공격 재개해\"",
+      "telegram_core_fact": "우크라이나 드론들이 15일 아침(현지시간) 러시아 리아잔 지방 소재 한 정유소를 공격했다. 우크라의 이날 아침 드론 공격으로 모스크바 남동쪽 300㎞ 소재의 리아잔 정유소에 불이 났다고 러시아 국방부와 리아잔 주지사가 말했다.",
+      "title": "\"우크라, 대 러시아 정유시설 공격 재개해\""
+    },
     "title:32749d7d3cf27d831a36fe9e": {
       "first_seen_kst": "2026-10-11T10:42:03+09:00",
       "lanes": {
@@ -690080,6 +691710,26 @@
       "link": "https://www.etnews.com/20260918000350",
       "source": "전자신문",
       "title": "96세 워런 버핏, 56년 만에 버크셔 해서웨이 회장직 물러나"
+    },
+    "title:3f2f3fa16c419aa6d4161c63": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1175509",
+      "source": "매일경제",
+      "source_body_digest": "a875c8cb121ce9172f83d6e3864259d95eec88de7393f81537ff29575854ac14",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:be8fbbd063288fb105c6921a30fe4e4f35f5ccf85b39aa562a6d16e93d2b13fe",
+      "source_fact_keys": [
+        "source_fact:v1:e3efb27e7173af19363070e1fc34cec250b0b0b4a7693fbd54abc473572e4544"
+      ],
+      "source_published_kst": "2026-10-16T05:15+09:00",
+      "source_supply_terms": {},
+      "source_title": "국제유가 혼조…WTI 6거래일째 상승·브렌트유는 약보합",
+      "telegram_core_fact": "반면 글로벌 벤치마크인 브렌트유 12월물은 0.14달러(0.13%) 하락한 배럴당 105.92달러에 마감했다.",
+      "title": "국제유가 혼조…WTI 6거래일째 상승·브렌트유는 약보합"
     },
     "title:3f3a4e31a95e5a14ad0e2178": {
       "first_seen_kst": "2026-09-22T06:33:14+09:00",
@@ -702942,6 +704592,32 @@
       "link": "https://www.newsis.com/view/NISX20261003_0003813474",
       "source": "뉴시스",
       "title": "韓총리 \"지금 필요한 건 '연대와 통합'…홍익인간을 나침반 삼아 온 힘 쏟을 것\""
+    },
+    "title:6256839da3fae7ab27e253bd": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02499366645613576",
+      "source": "이데일리",
+      "source_body_digest": "1ee073c23e1e867472306e9cf1bfac5436113e3d0986fb72b567341c35940a4d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:76857d0e48f55e65358f04f85b37d870f280db6e79b359880a240a39059e26a5",
+      "source_fact_keys": [
+        "source_fact:v1:5d2f13ca6f6bb776b39c9f4ec0b9cc50dc3b85a0bfe474c4d757bce3494e91b5",
+        "source_fact:v1:8eba7e7994172e910e17d39383fd52285514c737aeca899fd80c6cfb9726640a",
+        "source_fact:v1:90df828f620db3a6a3763a36e0491a326c7b159527c81bd8c871bba288012659",
+        "source_fact:v1:c17b179ed8fafe707027fcffa53cdb37e8abb6e5eca921a50d5dd24bbce925bb",
+        "source_fact:v1:c191af7e3b0c3ea0bd519c702bba0821f57d038112388333b9beb9d7dbedbe2e",
+        "source_fact:v1:df98bad6ff5671fb1fbb10cacaf15318da6c8ac5c8234b53b6c8396068aac104",
+        "source_fact:v1:ea29d6ffa820938ea2cd7ef4e904a7d0b36e212acb1078e5546c1ce4fa4d5e3c"
+      ],
+      "source_published_kst": "2026-10-16T07:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "코어위브 주가 롤러코스터…고금리에 AI 기업 양극화",
+      "telegram_core_fact": "트라얀웰스의 데이비드 부시 최고투자책임자(CIO)는 “채권시장이 보내는 메시지는 코어위브의 채무불이행 위험이 커졌다는 것”이라며 “반드시 AI 컴퓨팅 수요가 약해졌다는 뜻은 아니지만 막대한 차입 수요가 현금 창출 능력을 압도하고 합리적인 금리로 기존 부채를 차환하는 능력까지 위협할 수 있다는 점이 우려스럽다”고 말했다.",
+      "title": "코어위브 주가 롤러코스터…고금리에 AI 기업 양극화"
     },
     "title:625c94ade03e7eab671bd404": {
       "first_seen_kst": "2026-10-04T17:23:49+09:00",
@@ -725430,6 +727106,33 @@
       "source_published_kst": "2026-10-05T09:51+09:00",
       "title": "아이폰 듀오, 초기 물량 부족…한국도 '공급 지연' 우려"
     },
+    "title:a23a9221941853171bf01d70": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.news1.kr/it-science/mobile/6321591",
+      "source": "뉴스1",
+      "source_body_digest": "d4d9a2f2c5cf92d667d74dca284129e1c5c6b0c84350e7b24b4110b045a8d3b5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a25416708c82e0b1a785a1b56e66b3e42ffacee03f1ca4dc07081a3bf9f29ea",
+      "source_fact_keys": [
+        "source_fact:v1:005ee4ba9379c40411d743aefd68648279505e6cfaabfaecc9f67d5f220b314b",
+        "source_fact:v1:1600abd92c92e1bc65773003a75067d1fdc050778204a759f63e8ef824cbdcac",
+        "source_fact:v1:91a2d05cb223ae6e3878245f932f9281f2d6577e015cc9c2d104d94768b70cbf",
+        "source_fact:v1:997ed4e0e9f28b6440043882b51bab27c5fd4ccd1fec0067d85ed125b30eff9f",
+        "source_fact:v1:a58fbb9d3979d15c22c1fc763611d1d66dd749aff17cd80c06d8e430ec88bd56",
+        "source_fact:v1:c8e277dbf6e27a66506e8a975847f4d88b251d1492d17f2b9cdd288d14a1dc22",
+        "source_fact:v1:cbcfe9c3f113fc0905f3b51855185f28c4d78d2e7a27b17e8da9796e8d60bfba",
+        "source_fact:v1:d0a1ec00891aa750ba8eb1953c01f6f2ab74d2c2a410cba73fd48eb315d03359"
+      ],
+      "source_published_kst": "2026-10-16T05:55+09:00",
+      "source_supply_terms": {},
+      "source_title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\"",
+      "telegram_core_fact": "인공지능(AI) 수요 증가에 따른 메모리 반도체 공급 부족과 서버·스토리지 가격 상승이 2028년까지 이어질 것이라는 전망이 나왔다.",
+      "title": "가트너 \"메모리 공급난 2028년까지…서버값 최대 4배\""
+    },
     "title:a245f3c2aa6d4fef831b42e0": {
       "first_seen_kst": "2026-10-04T01:08:35+09:00",
       "lanes": {
@@ -740442,6 +742145,24 @@
       ],
       "source_published_kst": "2026-10-06T10:16+09:00",
       "title": "李부총리 \"민생경제 안정·양극화 완화 총력…주택공급 확대 최우선\"[국감]"
+    },
+    "title:cc573fc796678f1f51a0c3ac": {
+      "first_seen_kst": "2026-10-16T17:33:02+09:00",
+      "lanes": {
+        "live": "2026-10-16T17:33:02+09:00"
+      },
+      "last_seen_kst": "2026-10-16T17:33:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636389",
+      "source": "이투데이",
+      "source_body_digest": "a6bad67745ea6756cadcda023f3ef6a269fc29a31608b96507d27da24123000e",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-15T18:21+09:00",
+      "source_supply_terms": {},
+      "source_title": "반도체 호황에 갈린 금리 전망⋯“내년 1분기까지 인상” vs “11월 마무리”",
+      "telegram_core_fact": "권효성 블룸버그 이코노미스트는 “반도체 호황에 힘입어 한국 경제가 올해 3.7%, 내년 3.0% 성장할 것으로 예상한다”며 “기조적인 물가 상승 압력이 이어져 한국은행이 내년 1분기까지 기준금리를 3.50%로 인상할 것으로 본다”고 전했다.",
+      "title": "반도체 호황에 갈린 금리 전망⋯“내년 1분기까지 인상” vs “11월 마무리”"
     },
     "title:cc6174d2a1fb6a06b1db627b": {
       "first_seen_kst": "2026-10-15T05:17:25+09:00",
@@ -758920,5 +760641,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-16T17:05:45+09:00"
+  "updated_at_kst": "2026-10-16T17:33:02+09:00"
 }
