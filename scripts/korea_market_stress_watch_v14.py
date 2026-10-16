@@ -100,14 +100,27 @@ def fetch_seoul_prev_close(now: dt.datetime | None = None) -> dict[str, Any]:
     if not candidates:
         raise RuntimeError("KSURE에서 전일 서울 15:30 달러-원 종가를 찾지 못함")
 
-    for day, hhmm, item_id, title in sorted(candidates, reverse=True):
+    # If several same-day official 15:30 reports are present, prefer the
+    # explicit USD/KRW close headline. A generic FX table may have 20+ prices,
+    # and its detail page may time out; one unavailable page must not discard
+    # a valid, unambiguous close headline published minutes earlier.
+    ordered = sorted(
+        candidates,
+        key=lambda x: (_extract_krw_rate(x[3]) is not None, x[0], x[1]),
+        reverse=True,
+    )
+    for day, hhmm, item_id, title in ordered:
         rate = _extract_krw_rate(title)
         detail_url = KSURE_FX_VIEW.format(id=item_id)
         if rate is None:
-            rr = requests.get(detail_url, headers=watch.HEADERS, timeout=25)
-            rr.raise_for_status()
-            detail_text = BeautifulSoup(rr.text, "html.parser").get_text(" ", strip=True)
-            rate = _extract_krw_rate(detail_text)
+            try:
+                rr = requests.get(detail_url, headers=watch.HEADERS, timeout=15)
+                rr.raise_for_status()
+                detail_text = BeautifulSoup(rr.text, "html.parser").get_text(" ", strip=True)
+                rate = _extract_krw_rate(detail_text)
+            except requests.RequestException:
+                # Continue to independent close notices for the same session.
+                continue
         if rate is not None and 900.0 <= rate <= 2500.0:
             return {
                 "date": day.isoformat(),
