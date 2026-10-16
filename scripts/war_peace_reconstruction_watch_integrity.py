@@ -58,6 +58,27 @@ def _display_headline(row):
     return original if _riyadh_missile_headline(row) or re.search(r'[가-힣]', original) else str(row.get('title_ko') or original)
 
 
+def _energy_facility_headline(row):
+    title = _headline(row)
+    return bool(re.search(r'(?:에너지|핵(?:\s*및\s*에너지)?)\s*시설', title)
+                and re.search(r'공격|공습|폭격|타격', title))
+
+
+def _energy_facility_statement_spans(title):
+    """A nominal restart announcement or attack plan does not prove execution."""
+    spans = re.finditer(
+        r'(?:공격|공습|폭격|타격)(?:을|를)?\s*'
+        r'(?:(?:재개|개시)(?:를|을)?\s*(?:발표|선언|방침|계획|하겠다|할\s*(?:것|계획)|하지\s*않|부인)|'
+        r'계획|검토|추진|하겠다|할\s*(?:것|계획)|하지\s*않)', title)
+    return [span for span in spans if re.search(
+        r'(?:에너지|핵(?:\s*및\s*에너지)?)\s*시설',
+        re.split(r'…|\.{3}|[;；]', title[max(0, span.start()-80):span.start()])[-1])]
+
+
+def _headline_action_label(row):
+    return '에너지 시설 공격 보도' if _energy_facility_headline(row) else '정유시설 공격 보도'
+
+
 def _headline_group(title):
     """Use actors in the current headline, before background actors or caches."""
     us = bool(re.search(r'미국|트럼프|(?:^|\s)美(?:\s|,)|\b(?:trump|united states)\b|'
@@ -91,6 +112,8 @@ def _primary_topic(row):
         return _headline_group(title) + ' · ' + label
     if kind is None and _headline_refinery_action(row):
         return '우크라이나·러시아 · 정유시설 공격 보도'
+    if _energy_facility_headline(row):
+        return _headline_group(title) + ' · ' + (KIND_LABELS[kind] if kind else _headline_action_label(row))
     if kind is None and _riyadh_missile_headline(row):
         # Do not turn an attack claim into an interception confirmation, or
         # distinct publishers' headlines into one shared emergency template.
@@ -163,7 +186,7 @@ def mixed_restraint_attack(row):
     # still has to retain its subject and the opponent's continuing attack.
     restraint_title = re.sub(
         r'''(?:휴전|ceasefire|truce)["'’”\s]*(?:이|가)?\s*(?:(?:has|have|had|is|was)\s+)?'''
-        r'(?:붕괴|결렬|파기|무산|실패|깨졌|끝났|종료|collaps(?:e[ds]?|ing)|fail(?:ed|s)?|broken|ended)',
+        r'(?:붕괴|결렬|파기|무산|실패|깨졌|무너(?:졌|진|지)|끝났|종료|collaps(?:e[ds]?|ing)|fail(?:ed|s)?|broken|ended)',
         '', title)
     restraint = bool(re.search(r'휴전|ceasefire|truce|' + korean_restraint + '|' + english_restraint, restraint_title))
     contrast = bool(re.search(contrast_clause, title))
@@ -274,7 +297,7 @@ def non_military_kind(row):
     # Require an explicit new-action predicate before background weapon nouns
     # can turn a sanctions listing or a condemnation into a military event.
     discussion = _military_discussion_spans(title)
-    statements = _refinery_restart_statement_spans(title)
+    statements = _refinery_restart_statement_spans(title) + _energy_facility_statement_spans(title)
     future = _rejection_future_action_spans(title)
     actions = _military_actions(title)
     if any(not any(span.start() <= action.start() and action.end() <= span.end()
@@ -327,6 +350,14 @@ def _clear_market_event_cache(row):
     row.pop('deep_signal', None)
 
 
+def _headline_event_cache_required(row, kind):
+    return (kind in ('ceasefire_position', 'military_report')
+            or (kind == 'military_statement' and (
+                _refinery_restart_statement_spans(_headline(row)) or _ceasefire_rejection_headline(_headline(row))))
+            or _energy_facility_headline(row)
+            or (kind is None and _headline_refinery_action(row)))
+
+
 def _clear_headline_event_cache(row, kind):
     # These tags and signals can come from the article's earlier ceasefire
     # background. They do not describe the current restart declaration.
@@ -334,7 +365,7 @@ def _clear_headline_event_cache(row, kind):
         row['non_military_kind'] = kind
     else:
         row.pop('non_military_kind', None)
-    row['tags'] = [KIND_LABELS[kind] if kind else '정유시설 공격 보도']
+    row['tags'] = [KIND_LABELS[kind] if kind else _headline_action_label(row)]
     row['forced_tags'] = []
     row['signals_ko'] = []
     row.pop('newidea_marks', None)
@@ -348,12 +379,8 @@ def score_item(row, now):
         score, _ = source_score._original_score(row, now)
         return score, list(row['tags'])
     score, tags = _score(row, now)
-    if kind in ('ceasefire_position', 'military_report') or (kind == 'military_statement' and (
-            _refinery_restart_statement_spans(_headline(row)) or _ceasefire_rejection_headline(_headline(row)))):
+    if _headline_event_cache_required(row, kind):
         _clear_headline_event_cache(row, kind)
-        return score, list(row['tags'])
-    if kind is None and _headline_refinery_action(row):
-        _clear_headline_event_cache(row, None)
         return score, list(row['tags'])
     if kind and score > 0:
         row['non_military_kind'] = kind
@@ -371,6 +398,8 @@ def final_color(row):
     if _report_with_completed_action(_headline(row)):
         return 'red'
     if _headline_refinery_action(row):
+        return 'red'
+    if _energy_facility_headline(row) and _military_actions(_headline(row)):
         return 'red'
     if _ceasefire_rejection_headline(_headline(row)) and _military_actions(_headline(row)):
         return 'red'
@@ -580,11 +609,8 @@ def build_alert(items, markets, now):
         kind = non_military_kind(row)
         if kind == 'market_effect':
             _clear_market_event_cache(row)
-        if kind in ('ceasefire_position', 'military_report') or (kind == 'military_statement' and (
-                _refinery_restart_statement_spans(_headline(row)) or _ceasefire_rejection_headline(_headline(row)))):
+        if _headline_event_cache_required(row, kind):
             _clear_headline_event_cache(row, kind)
-        if kind is None and _headline_refinery_action(row):
-            _clear_headline_event_cache(row, None)
         if maritime_attack_tally(row):
             # Older maritime templates describe one specific projectile cluster.
             # The current headline instead reports a population over a period.
@@ -752,14 +778,12 @@ def verify_alert(test_mode=False):
         if primary and (start + 1 >= end or lines[start + 1] != html.escape(_display_headline(row))):
             raise RuntimeError('WAR_INTEGRITY_GATE: rendered headline differs from source headline')
         current_kind = non_military_kind(row)
-        if (current_kind in ('ceasefire_position', 'military_report') or (current_kind == 'military_statement' and (
-                _refinery_restart_statement_spans(_headline(row)) or _ceasefire_rejection_headline(_headline(row))))
-                or (current_kind is None and _headline_refinery_action(row))):
+        if _headline_event_cache_required(row, current_kind):
             source_line = next((i for i in range(start + 2, end)
                                 if any(url in lines[i] for url in urls) and ' KST' in lines[i]), None)
             if source_line is not None and any(line.strip() for line in lines[start + 2:source_line]):
                 raise RuntimeError('WAR_INTEGRITY_GATE: headline event contains background summary')
-            if (row.get('tags') != [KIND_LABELS[current_kind] if current_kind else '정유시설 공격 보도']
+            if (row.get('tags') != [KIND_LABELS[current_kind] if current_kind else _headline_action_label(row)]
                     or row.get('signals_ko') or row.get('forced_tags')):
                 raise RuntimeError('WAR_INTEGRITY_GATE: headline event retains background event cache')
         if (current_kind is None and _ceasefire_rejection_headline(_headline(row))
@@ -769,6 +793,9 @@ def verify_alert(test_mode=False):
         if current_kind is None and _headline_refinery_action(row) and (
                 row.get('classification_color') != 'red' or not lines[start].startswith('🔴')):
             raise RuntimeError('WAR_INTEGRITY_GATE: refinery attack headline hidden by background stage')
+        if current_kind is None and _energy_facility_headline(row) and _military_actions(_headline(row)) and (
+                row.get('classification_color') != 'red' or not lines[start].startswith('🔴')):
+            raise RuntimeError('WAR_INTEGRITY_GATE: separate actual action hidden by energy facility plan')
     if set(matched) != set(ids):
         raise RuntimeError('WAR_INTEGRITY_GATE: duplicated or omitted rendered source')
     for row in receipt['markets']:
