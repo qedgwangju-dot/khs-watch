@@ -29,6 +29,8 @@ REUTERS_MIRRORS=[
 ]
 CITI_REUTERS_MIRRORS=[
     'https://www.investing.com/news/economy-news/citi-turns-hawkish-on-fed-after-inflation-surprise-expects-december-rate-hike-4949657',
+    'https://www.kitco.com/news/off-the-wire/2026-10-14/citi-turns-hawkish-fed-after-inflation-surprise-expects-december-rate',
+    'https://www.marketscreener.com/news/citi-turns-hawkish-on-fed-after-inflation-surprise-expects-december-rate-hike-ce785dd2de8af72c',
 ]
 TOKEN=(os.getenv('TELEGRAM_BOT_TOKEN') or '').strip()
 CHAT=(os.getenv('TELEGRAM_CHAT_ID') or '').strip()
@@ -131,13 +133,28 @@ def citi_reported():
     for url in [REUTERS_CITI]+CITI_REUTERS_MIRRORS:
         try:
             text=plain(get(url,timeout=7)).lower()
-            if ('reuters' in text and 'citi' in text and
-                    'december' in text and 'hike' in text and
-                    ('oct 14' in text or 'october 14' in text or '2026-10-14' in text)):
-                return True
+            if ('reuters' in text and ('citi' in text or 'citigroup' in text)
+                    and 'december' in text and 'hike' in text and
+                    ('oct 14' in text or 'october 14' in text or '2026-10-14' in text
+                     or '10/14/2026' in text)):
+                return url
         except Exception:
             continue
-    return False
+    return None
+
+
+def citi_followup_message(url):
+    return '\n'.join([
+        '<b>[Warsh | Citi 12월 인상 전망 변경]</b>',
+        'Reuters 2026년 10월 14일 보도 · 금융기관 전망',
+        '',
+        '• <b>이전</b>: 2026년 추가 금리인상 0회 전망',
+        '• <b>변경</b>: 10월 동결 후 12월 0.25%포인트 인상 전망',
+        '• <b>2027년</b>: 6월부터 금리인하 가능성 전망',
+        '• 이는 Citi 전망에 관한 단일 Reuters 보도입니다. 연준 결정이나 확인된 CME 시장확률이 아닙니다.',
+        '',
+        link('Reuters 원문·재공표 확인 경로',url),
+    ])
 
 
 def link(label,url):
@@ -205,6 +222,26 @@ def send(msg):
 def main():
     old=read_state()
     if old.get('last_sent_key')==EVENT_ID and not FORCE:
+        # 원 행사 알림의 중복은 차단하되, 사후 독립 검증된 Citi 전망은 별도 1회 보충.
+        event_age=(datetime.now(ET).date()-datetime(2026,10,15).date()).days
+        if not old.get('citi_reported') and 0 <= event_age <= 7:
+            citi_key='2026-10-14|Citi|December-25bp'
+            if old.get('citi_pending_key')==citi_key and old.get('citi_delivery_status')=='sending':
+                raise RuntimeError('Citi 후속 알림 전송 결과 불명확 — 중복 발송 중단')
+            citi_url=citi_reported()
+            if citi_url:
+                old.update({'citi_pending_key':citi_key,'citi_delivery_status':'sending'})
+                save(old)
+                mid=send(citi_followup_message(citi_url))
+                old.update({
+                    'citi_reported':True,'citi_source':citi_url,'citi_message_id':mid,
+                    'citi_sent_key':citi_key,'citi_pending_key':None,
+                    'citi_delivery_status':'confirmed',
+                })
+                save(old)
+                print(json.dumps({'status':'citi_followup_sent','message_id':mid,
+                                  'citi_source':citi_url,'imf_message_id':old.get('message_id')},ensure_ascii=False))
+                return
         print(json.dumps({'status':'already_sent','message_id':old.get('message_id')},ensure_ascii=False))
         return
     if old.get('pending_key')==EVENT_ID and old.get('delivery_status')=='sending':
@@ -218,7 +255,8 @@ def main():
         print(json.dumps({'status':'scheduled_not_started','sent':False},ensure_ascii=False))
         return
     coverage=dated_coverage()
-    has_citi=citi_reported()
+    citi_source=citi_reported()
+    has_citi=bool(citi_source)
     msg=compose(official,coverage,has_citi)
     old.update({'pending_key':EVENT_ID,'delivery_status':'sending'})
     save(old)
@@ -226,7 +264,9 @@ def main():
     old.update({
         'last_sent_key':EVENT_ID,'message_id':mid,'pending_key':None,
         'delivery_status':'confirmed','sources':[FED_CAL,IMF,REUTERS],
-        'citi_reported':has_citi,'coverage_publishers':sorted(set(x['publisher'] for x in coverage)),
+        'citi_reported':has_citi,'citi_source':citi_source,
+        'coverage_sources':[x['url'] for x in coverage],
+        'coverage_publishers':sorted(set(x['publisher'] for x in coverage)),
         'sent_at_utc':datetime.now(timezone.utc).isoformat()
     })
     save(old)
