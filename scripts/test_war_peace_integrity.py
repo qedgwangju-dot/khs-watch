@@ -51,6 +51,118 @@ class IntegrityTests(unittest.TestCase):
         fixture = json.loads(path.read_text(encoding='utf-8'))
         return fixture, dt.datetime.fromisoformat(fixture['provenance']['queried_at_kst'])
 
+    def restart_declaration_fixture(self):
+        path = Path(__file__).parent/'test_fixtures/war_restart_declaration_38824896981.json'
+        fixture = json.loads(path.read_text(encoding='utf-8'))
+        return fixture, dt.datetime.fromisoformat(fixture['provenance']['queried_at_kst'])
+
+    def test_actual_unquoted_restart_declaration_is_a_statement(self):
+        fixture, _ = self.restart_declaration_fixture()
+        row = fixture['articles'][0]
+        self.assertEqual(integrity.non_military_kind(row), 'military_statement')
+        self.assertEqual(integrity.final_color(row), 'yellow')
+        self.assertEqual(integrity.topic_label(row), '우크라이나·러시아 · 군사 대응·보복 발언')
+
+    def test_unquoted_refinery_declaration_forms_are_scoped_statements(self):
+        for title in ('젤렌스키 "美 요구 거부"… 러시아 정유시설 공격 재개 선언',
+                      '젤렌스키, 러 정유시설 공격 재개 방침',
+                      '우크라이나, 러시아 정유소 공습 재개 계획',
+                      '젤렌스키, 러시아 정유공장 타격을 재개하기로 선언'):
+            with self.subTest(title=title):
+                row = article(title)
+                self.assertEqual(integrity.non_military_kind(row), 'military_statement')
+                self.assertEqual(integrity.final_color(row), 'yellow')
+
+    def test_declaration_keeps_independent_and_completed_actions(self):
+        for title in ('젤렌스키, 러 정유시설 공격 재개 선언…러시아 미사일 발사',
+                      '러시아 공습 개시…젤렌스키, 러 정유시설 공격 재개 선언',
+                      '젤렌스키, 러 정유시설 공격 재개했다…추가 방침 선언',
+                      '우크라이나, 러 정유시설 공격 재개하고 있다…추가 대응 선언'):
+            with self.subTest(title=title):
+                row = article(title)
+                self.assertIsNone(integrity.non_military_kind(row))
+                self.assertEqual(integrity.final_color(row), 'red')
+
+    def test_restart_declaration_is_not_inferred_from_body_background(self):
+        row = article('우크라이나, 러시아 정유시설 공격 재개')
+        row['description'] = '앞선 인터뷰에서 공격 재개 선언과 방침을 설명했다.'
+        self.assertIsNone(integrity.non_military_kind(row))
+
+    def test_actual_declaration_render_preserves_headline_and_other_rows(self):
+        fixture, now = self.restart_declaration_fixture()
+        rows = fixture['articles']
+        metadata = copy.deepcopy(rows[0]['source_metadata'])
+        before = watch.STATE.read_bytes()
+        with patch.object(integrity.body_parallel, '_safe_enrich'), patch.object(watch, 'market_source_status', fixture['market_source_status'], create=True):
+            text = integrity.build_alert(rows, fixture['markets'], now)
+        self.assertEqual([row['classification_color'] for row in rows], ['yellow', '', 'red'])
+        first = text.split('[신규] <b>2.')[0]
+        self.assertIn(html.escape(rows[0]['title_original']), first)
+        self.assertIn('우크라이나·러시아 · 군사 대응·보복 발언', first)
+        self.assertNotIn('에너지 휴전 발표', first)
+        self.assertNotIn('랴잔 정유공장 공격·피격 신호', first)
+        self.assertNotIn('우크라이나 에너지 인프라 공격 신호', first)
+        self.assertNotIn('휴전·평화', first)
+        self.assertEqual(rows[0]['source_metadata'], metadata)
+        self.assertTrue(rows[0]['body_verified'])
+        self.assertEqual(watch.STATE.read_bytes(), before)
+        receipt = evidence.alert_receipt(rows, fixture['markets'], now, text)
+        self.assertEqual([r['id'] for r in receipt['articles'] if r['rendered']], [r['id'] for r in rows])
+        for row in rows[1:]:
+            self.assertIn(html.escape(row['title_original']), text)
+
+    def test_final_gate_rejects_actual_same_hash_declaration_wrong_topic(self):
+        fixture, now = self.restart_declaration_fixture()
+        text = fixture['bad_alert']
+        receipt = evidence.alert_receipt(fixture['articles'], fixture['markets'], now, text)
+        self.assertEqual(receipt['alert_sha256'], fixture['provenance']['alert_sha256'])
+        with tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+            root = Path(folder)
+            for attr, name in {'ALERT': 'alert.txt', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                stack.enter_context(patch.object(watch, attr, root/name))
+            watch.ALERT.write_text(text, encoding='utf-8')
+            watch.PENDING.write_text(json.dumps({'ids': [row['id'] for row in fixture['articles']]}), encoding='utf-8')
+            watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+            stack.enter_context(patch.object(integrity, '_verify'))
+            with self.assertRaisesRegex(RuntimeError, 'rendered topic differs'):
+                integrity.verify_alert()
+
+    def test_declaration_score_clears_prior_peace_tags_without_new_sources(self):
+        fixture, now = self.restart_declaration_fixture()
+        row = fixture['articles'][0]
+        score, tags = integrity.score_item(row, now)
+        self.assertGreater(score, 0)
+        self.assertEqual(tags, ['군사 대응·보복 발언'])
+        self.assertEqual(row['tags'], tags)
+        self.assertEqual(row['signals_ko'], [])
+        self.assertEqual(row['forced_tags'], [])
+        self.assertTrue(row['body_verified'])
+
+    def test_declaration_final_gate_rechecks_extra_summary_and_cache(self):
+        fixture, now = self.restart_declaration_fixture()
+        rows = fixture['articles']
+        with patch.object(integrity.body_parallel, '_safe_enrich'):
+            clean = integrity.build_alert(rows, fixture['markets'], now)
+        title = html.escape(rows[0]['title_original'])
+        for mutate_text, mutate_cache, expected in (
+                (True, False, 'background summary'),
+                (False, True, 'background event cache')):
+            with self.subTest(summary=mutate_text, cache=mutate_cache), tempfile.TemporaryDirectory() as folder, ExitStack() as stack:
+                text = clean.replace(title, title + '\n- 에너지 인프라 상호 공격 자제·중단이 부상') if mutate_text else clean
+                current = copy.deepcopy(rows)
+                if mutate_cache:
+                    current[0]['forced_tags'] = ['휴전·평화']
+                receipt = evidence.alert_receipt(current, fixture['markets'], now, text)
+                root = Path(folder)
+                for attr, name in {'ALERT': 'alert.txt', 'PENDING': 'pending.json', 'AUDIT': 'evidence.json'}.items():
+                    stack.enter_context(patch.object(watch, attr, root/name))
+                watch.ALERT.write_text(text, encoding='utf-8')
+                watch.PENDING.write_text(json.dumps({'ids': [row['id'] for row in current]}), encoding='utf-8')
+                watch.AUDIT.write_text(json.dumps(receipt, ensure_ascii=False), encoding='utf-8')
+                stack.enter_context(patch.object(integrity, '_verify'))
+                with self.assertRaisesRegex(RuntimeError, expected):
+                    integrity.verify_alert()
+
     def test_declared_article_body_precedes_unrelated_global_paragraphs(self):
         # 38709332236's later exact-source HTML has nested div#font nodes;
         # the unrelated navigation/footer are p elements. Text is synthetic.

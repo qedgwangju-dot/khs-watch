@@ -166,7 +166,8 @@ def _military_discussion_spans(title):
 def _refinery_restart_statement_spans(title):
     """Scope a leader's quoted restart policy without hiding other action clauses."""
     statements = []
-    for quote in re.finditer(r'"([^"\n]+)"|“([^”\n]+)”', title):
+    quotes = list(re.finditer(r'"([^"\n]+)"|“([^”\n]+)”', title))
+    for quote in quotes:
         prefix = re.split(r'…|\.{3}|[;；]', title[:quote.start()])[-1]
         if not re.search(r'젤렌스키|우크라이나', prefix):
             continue
@@ -181,6 +182,17 @@ def _refinery_restart_statement_spans(title):
         tail = title[quote.end():quote.end() + 65]
         if restart and (restart.group('future') or re.search(r'시사|방침|예고|계획|선언', tail)):
             statements.append(restart)
+    # A declaration may be outside the quote: the quoted words can instead be
+    # the leader's refusal of another government's request. Only the explicit
+    # restart-policy span is non-action; a separate launch or completed restart
+    # still wins in non_military_kind. Body background is not consulted here.
+    for declaration in re.finditer(
+            r'(?:러시아|러)\s*(?:정유\s*시설|정유소|정유\s*공장)(?:에\s*대한)?\s*'
+            r'(?:공격|공습|타격)(?:을|를)?\s*재개(?:하기로|하겠다고|할\s*것이라고)?\s*'
+            r'(?:선언|방침|계획|예고|시사)', title):
+        if (re.search(r'젤렌스키|우크라이나', title[:declaration.start()])
+                and not any(q.start() <= declaration.start() < q.end() for q in quotes)):
+            statements.append(declaration)
     return statements
 
 
@@ -248,6 +260,17 @@ def _clear_market_event_cache(row):
     row.pop('deep_signal', None)
 
 
+def _clear_restart_declaration_cache(row):
+    # These tags and signals can come from the article's earlier ceasefire
+    # background. They do not describe the current restart declaration.
+    row['non_military_kind'] = 'military_statement'
+    row['tags'] = [KIND_LABELS['military_statement']]
+    row['forced_tags'] = []
+    row['signals_ko'] = []
+    row.pop('newidea_marks', None)
+    row.pop('deep_signal', None)
+
+
 def score_item(row, now):
     kind = non_military_kind(row)
     if kind == 'market_effect':
@@ -255,6 +278,9 @@ def score_item(row, now):
         score, _ = source_score._original_score(row, now)
         return score, list(row['tags'])
     score, tags = _score(row, now)
+    if kind == 'military_statement' and _refinery_restart_statement_spans(_headline(row)):
+        _clear_restart_declaration_cache(row)
+        return score, list(row['tags'])
     if kind and score > 0:
         row['non_military_kind'] = kind
         row['signals_ko'] = []
@@ -457,6 +483,8 @@ def build_alert(items, markets, now):
         kind = non_military_kind(row)
         if kind == 'market_effect':
             _clear_market_event_cache(row)
+        if kind == 'military_statement' and _refinery_restart_statement_spans(_headline(row)):
+            _clear_restart_declaration_cache(row)
         if maritime_attack_tally(row):
             # Older maritime templates describe one specific projectile cluster.
             # The current headline instead reports a population over a period.
@@ -623,6 +651,14 @@ def verify_alert(test_mode=False):
             raise RuntimeError('WAR_INTEGRITY_GATE: unilateral restraint shown as bilateral peace')
         if primary and (start + 1 >= end or lines[start + 1] != html.escape(_display_headline(row))):
             raise RuntimeError('WAR_INTEGRITY_GATE: rendered headline differs from source headline')
+        if non_military_kind(row) == 'military_statement' and _refinery_restart_statement_spans(_headline(row)):
+            source_line = next((i for i in range(start + 2, end)
+                                if any(url in lines[i] for url in urls) and ' KST' in lines[i]), None)
+            if source_line is not None and any(line.strip() for line in lines[start + 2:source_line]):
+                raise RuntimeError('WAR_INTEGRITY_GATE: restart declaration contains background summary')
+            if (row.get('tags') != [KIND_LABELS['military_statement']]
+                    or row.get('signals_ko') or row.get('forced_tags')):
+                raise RuntimeError('WAR_INTEGRITY_GATE: restart declaration retains background event cache')
     if set(matched) != set(ids):
         raise RuntimeError('WAR_INTEGRITY_GATE: duplicated or omitted rendered source')
     for row in receipt['markets']:
