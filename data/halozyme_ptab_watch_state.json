@@ -8,8 +8,10 @@
     "397fd23021765b9ec6fe83a7",
     "45b9cab6011a827c780922af",
     "4fee83ae2ca90b01db9bb45b",
+    "91db3265d08e14299db49ab6",
     "96bda5ef87c6602628dfaca6",
     "9d8f26ec4a37c98bb9d7275e",
+    "bd25574d0cdfab6fecacba7c",
     "c2c4fb7ed2c04ac4f11c1e4f",
     "e31d5765026f8260f0f76578",
     "ec2b004cd91a18e18feeeb55",
@@ -21,10 +23,12 @@
     "http://the-biz.co.kr/news/articleView.html?idxno=728392",
     "http://the-biz.co.kr/news/articleView.html?idxno=728392#pgr2025-00039",
     "https://ir.halozyme.com/news/news-details/2026/Halozyme-Wins-Injunction-Stopping-Manufacture-and-Sale-of-Mercks-Keytruda-SC-in-Multiple-European-Markets/default.aspx",
+    "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557268",
+    "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557365",
     "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557766",
     "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557959"
   ],
-  "last_check_kst": "2026-10-16T10:15:50+09:00",
+  "last_check_kst": "2026-10-16T11:11:14+09:00",
   "tracked_cases": {
     "PGR2025-00003": "11,952,600",
     "PGR2025-00004": "12,018,298",
@@ -71,7 +75,9 @@
     "PGR2025-00033": "12,049,652",
     "PGR2025-00039": "12,104,185",
     "PGR2025-00052": "12,264,345",
-    "PGR2025-00046": "12,091,692"
+    "PGR2025-00046": "12,091,692",
+    "PGR2025-00024": "12,060,590",
+    "PGR2025-00030": "12,054,758"
   },
   "district_case": "2:25-cv-03179",
   "legal_v3_initialized": true,
@@ -82,15 +88,20 @@
   ],
   "legal_v4_initialized": true,
   "search_mode": "개별 사건번호 + 미국/한국 뉴스 + Bing 웹",
-  "last_sent_message_ids": [],
+  "last_sent_message_ids": [
+    184,
+    185,
+    186
+  ],
   "final_decision_classification_version": 2,
   "seen_portfolio_updates": [
     "38543e8786807a5007ba4efd",
     "43ef08da585744f361858416",
+    "59b126deb6f074e59bff83e7",
     "8a5bb96672d580e8ab93df46"
   ],
   "last_portfolio_message_ids": [
-    119
+    186
   ],
   "case_event_timelines": {
     "PGR2025-00033": [
@@ -221,17 +232,71 @@
         "kind": "",
         "label": "영국 EP347 본안 심리 시작 예정"
       }
+    ],
+    "PGR2025-00024": [
+      {
+        "date": "2025-02-21",
+        "kind": "",
+        "label": "PGR 청구"
+      },
+      {
+        "date": "2025-10-16",
+        "kind": "",
+        "label": "심판 개시"
+      },
+      {
+        "date": "2026-07-23",
+        "kind": "",
+        "label": "공동 구술심리"
+      },
+      {
+        "date": "2026-10-15",
+        "kind": "",
+        "label": "Paper 100 최종서면결정 — 심판 대상 청구항 26개 특허성 부정"
+      },
+      {
+        "date": "2026-10-15",
+        "kind": "final_unpatentable",
+        "label": "최종서면결정"
+      }
+    ],
+    "PGR2025-00030": [
+      {
+        "date": "2025-02-04",
+        "kind": "",
+        "label": "PGR 청구"
+      },
+      {
+        "date": "2025-10-16",
+        "kind": "",
+        "label": "심판 개시"
+      },
+      {
+        "date": "2026-07-23",
+        "kind": "",
+        "label": "공동 구술심리"
+      },
+      {
+        "date": "2026-10-15",
+        "kind": "",
+        "label": "Paper 100 최종서면결정 — 심판 대상 청구항 27개 특허성 부정"
+      },
+      {
+        "date": "2026-10-15",
+        "kind": "final_unpatentable",
+        "label": "최종서면결정"
+      }
     ]
   },
-  "search_query_count": 36,
-  "search_task_count": 72,
+  "search_query_count": 39,
+  "search_task_count": 78,
   "search_workers": 8,
-  "search_elapsed_seconds": 1.883,
-  "search_completed_tasks": 72,
+  "search_elapsed_seconds": 2.234,
+  "search_completed_tasks": 78,
   "search_failed_tasks": 0,
   "search_completed_by_engine": {
-    "Bing 웹": 36,
-    "Google 뉴스": 36
+    "Bing 웹": 39,
+    "Google 뉴스": 39
   },
   "source_health": "ok"
 }
