@@ -1021,7 +1021,17 @@ def cluster_events(items: list[dict]) -> list[list[dict]]:
         for cluster in clusters:
             rep = cluster[0]
             if rep.get("entity") == item.get("entity") and rep.get("category") == item.get("category"):
-                if similarity(rep.get("title",""), item.get("title","")) >= 0.18:
+                item_milestone = tracked_policy_event_key(item)
+                existing_milestone = tracked_policy_event_key(rep)
+                if item_milestone or existing_milestone:
+                    # Never merge a signed/closed/withdrawn legal milestone into
+                    # the headline of a different stage, then checkpoint both.
+                    # Articles for the SAME stage are one event regardless
+                    # of different newspaper headlines.
+                    match = bool(item_milestone and item_milestone == existing_milestone)
+                else:
+                    match = similarity(rep.get("title",""), item.get("title","")) >= 0.18
+                if match:
                     cluster.append(item)
                     placed = True
                     break
