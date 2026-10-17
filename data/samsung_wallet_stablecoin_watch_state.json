@@ -24,18 +24,6 @@
       "published_utc": "2026-10-15T08:04:35+00:00",
       "source": "Google News RSS",
       "title": "Samsung Wallet Adds USDC: How 82 Million Galaxy Users Can Now Pay with Stablecoins - MEXC"
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5pYVhMejdFdHpISG9WOXZPbU1DdjQ4akZQaEhYMlFiSkF1WkF3TURPMzI2TW5VOVZneGRyc21Ea1NxeUxzWlZ0Y0ppQ08ta3ktcHlHd2x0WDFlZm5zYkV6R3ZiVFg5R3hwUWc?oc=5",
-      "published_utc": "2026-10-12T07:45:03+00:00",
-      "source": "Google News RSS",
-      "title": "삼성월렛 손잡은 수이…스테이블코인 송금 넘어 탈중앙화 확장 - 비즈워치"
-    },
-    {
-      "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE11cG5OdHV1ZnBBN1VyNy1XeE5aZS1icXJHeFZoUnAzazdGSndxa2dBVGpIZU9XUHVrd2dSamdiMUoyM3Q2NVo2ZHpxTjFQQTItaVJsVnBDLTcyLUx1TDdYeEZHd20?oc=5",
-      "published_utc": "2026-10-12T06:47:27+00:00",
-      "source": "Google News RSS",
-      "title": "수이, 삼성월렛과 스테이블코인 송금 협업…\"한국 시장 성장 기대\" - 매일일보"
     }
   ],
   "official": {
@@ -47,7 +35,7 @@
     ],
     "explicit_reversal_confirmed": false,
     "job_fetch_ok": true,
-    "job_stablecoin_confirmed": false,
+    "job_stablecoin_confirmed": true,
     "kbw_executive_crosscheck_confirmed": true,
     "kbw_executive_primary_confirmed": true,
     "pilot_live_confirmed": false,
@@ -64,7 +52,7 @@
     "executive_default_feature_confirmation": true,
     "explicit_reversal_confirmed": false,
     "job_exists": true,
-    "official_job_scope_now": false,
+    "official_job_scope_now": true,
     "partner_primary_confirmed": true,
     "partner_primary_sources": [
       "Solana",
@@ -86,5 +74,5 @@
     "wallet_patent_publication": "US20260212355A1",
     "wallet_patent_publication_date": "2026-07-23"
   },
-  "updated_at_kst": "2026-10-17T15:09:48+09:00"
+  "updated_at_kst": "2026-10-17T19:56:17+09:00"
 }
