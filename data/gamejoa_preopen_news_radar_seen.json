@@ -50998,6 +50998,27 @@
       "telegram_core_fact": "월가 증권사 컨센서스에 따르면 SSR 마이닝의 2026년 예상 매출액은 23억957만 달러로 전년 대비 41.72% 증가할 전망이다. 매장량 산정에는 온스당 2,200달러의 금 가격 가정이 적용됐으며, 가정 상향 등에 따라 기존 추정치 대비 함유 금량이 73% 증가했다.",
       "title": "SSR 마이닝, 마리골드 매장량 396만 온스..세후 NPV 33억 달러"
     },
+    "core:d64c2378414692adc4c388a4": {
+      "first_seen_kst": "2026-10-17T12:40:29+09:00",
+      "lanes": {
+        "live": "2026-10-17T12:40:29+09:00"
+      },
+      "last_seen_kst": "2026-10-17T12:40:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003829934",
+      "source": "뉴시스",
+      "source_body_digest": "4920d3ddf086907def57c560b78cd57a3bff6a081c5d3370518e25e66660abf3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:82b77e50b6480f3b700d14ab48b2d6f4ad9e970ba41a6a57d6281e4b485b606b",
+      "source_fact_keys": [
+        "source_fact:v1:0a1a19ee77dad793cadd8c98438277ed8f3895ab67b22296179bf2a9fd7d52d7",
+        "source_fact:v1:3c3811b5392f0ee853964a29ed73805663ae4801835a767b45d121fea7e85e01"
+      ],
+      "source_published_kst": "2026-10-17T12:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "후티 반군, 예멘 제3도시 타이즈 포위 항복 압박…내전 중대 기로",
+      "telegram_core_fact": "후티 반군은 지난달 모카 등 홍해 연안을 장악해 사우디아라비아 석유 수송선 공격 능력을 강화하고 세계 에너지 가격을 더욱 혼란에 빠뜨린 바 있다.",
+      "title": "후티 반군, 예멘 제3도시 타이즈 포위 항복 압박…내전 중대 기로"
+    },
     "core:d656d9306a9ca86dabc2e059": {
       "first_seen_kst": "2026-10-16T23:57:27+09:00",
       "lanes": {
@@ -51567,6 +51588,28 @@
       "source_title": "AI 차입 우려에 코어위브 주가 15%↓…채권 수익률 15% 육박 | 연합뉴스",
       "telegram_core_fact": "대규모 차입으로 데이터센터를 늘려온 오라클은 8.8% 하락했고, 코어위브와 비슷한 네오클라우드 업체 네비우스는 10.1% 내렸다.",
       "title": "AI 차입 우려에 코어위브 주가 15%↓…채권 수익률 15% 육박 | 연합뉴스"
+    },
+    "core:d87ebf4eaa37586df189a56b": {
+      "first_seen_kst": "2026-10-17T12:40:29+09:00",
+      "lanes": {
+        "live": "2026-10-17T12:40:29+09:00"
+      },
+      "last_seen_kst": "2026-10-17T12:40:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02132006645613904",
+      "source": "이데일리",
+      "source_body_digest": "126ce96ad9dc7c7b695ff59bc9d92531b7126b70517be4cb7f6bf3724687116e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8c05e38c8b7714b9ba4c3a108f1a5cb55470da008b90d7537653573dcc1ca8b9",
+      "source_fact_keys": [
+        "source_fact:v1:1014516b277b8e380a7f83d32400053daec0efc7a117bba55067edb71742642a",
+        "source_fact:v1:1e772aa9658936d5e25def6bb671a25d475c542953f4a97ff395d103cf065deb",
+        "source_fact:v1:56cf749f81448db923213aa1097924dacdd7492324973580f880b45d4fced2ff"
+      ],
+      "source_published_kst": "2026-10-17T12:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "선거 코앞인데 유가 잡아야지…트럼프, 러시아산 에너지 제재 면제",
+      "telegram_core_fact": "이 법률에 담긴 핵심 제재 조항은 러시아산 원유·천연가스의 상위 5개 수입국에서 미국으로 들어오는 모든 상품에 최고 100%의 높은 관세를 부과하는 것이다.",
+      "title": "선거 코앞인데 유가 잡아야지…트럼프, 러시아산 에너지 제재 면제"
     },
     "core:d8c52626673dbe5e068156df": {
       "first_seen_kst": "2026-10-15T10:14:14+09:00",
@@ -61563,22 +61606,23 @@
     "event:173faf5d618f27b01977621f": {
       "first_seen_kst": "2026-10-17T05:02:37+09:00",
       "lanes": {
-        "live": "2026-10-17T11:11:58+09:00"
+        "live": "2026-10-17T12:40:29+09:00"
       },
-      "last_seen_kst": "2026-10-17T11:11:58+09:00",
-      "link": "https://www.yna.co.kr/view/MYH20261017001300038",
-      "source": "연합뉴스",
-      "source_body_digest": "105e619b79df7fdb40fc88e81b8550bb700cc3fba060dfd7e4d095a65626ee68",
+      "last_seen_kst": "2026-10-17T12:40:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003829934",
+      "source": "뉴시스",
+      "source_body_digest": "4920d3ddf086907def57c560b78cd57a3bff6a081c5d3370518e25e66660abf3",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:6451cab47d2415a39c07c91e21e3cea65d0ce38ce506979b7fc3d9f6611adaaa",
+      "source_fact_identity": "source_facts:v1:82b77e50b6480f3b700d14ab48b2d6f4ad9e970ba41a6a57d6281e4b485b606b",
       "source_fact_keys": [
-        "source_fact:v1:de6196d5f1eea75ee0635f5738b992e39f7276a7bc8d0595e927b07a880e612f"
+        "source_fact:v1:0a1a19ee77dad793cadd8c98438277ed8f3895ab67b22296179bf2a9fd7d52d7",
+        "source_fact:v1:3c3811b5392f0ee853964a29ed73805663ae4801835a767b45d121fea7e85e01"
       ],
-      "source_published_kst": "2026-10-17T09:07+09:00",
+      "source_published_kst": "2026-10-17T12:13+09:00",
       "source_supply_terms": {},
-      "source_title": "중동·우크라 불안에…브렌트유 5개월만에 최고 | 연합뉴스",
-      "telegram_core_fact": "현지시각 16일 12월물 브렌트유는 전장보다 3.72% 오른 배럴당 109.86달러에 마감해 5개월 만에 최고치를 기록했습니다.",
-      "title": "중동·우크라 불안에…브렌트유 5개월만에 최고 | 연합뉴스"
+      "source_title": "후티 반군, 예멘 제3도시 타이즈 포위 항복 압박…내전 중대 기로",
+      "telegram_core_fact": "후티 반군은 지난달 모카 등 홍해 연안을 장악해 사우디아라비아 석유 수송선 공격 능력을 강화하고 세계 에너지 가격을 더욱 혼란에 빠뜨린 바 있다.",
+      "title": "후티 반군, 예멘 제3도시 타이즈 포위 항복 압박…내전 중대 기로"
     },
     "event:17defdecf40efbd28e528c5a": {
       "first_seen_kst": "2026-09-20T19:20:28+09:00",
@@ -99037,6 +99081,27 @@
       "source_published_kst": "2026-10-05T09:45+09:00",
       "title": "LG유플러스, 해외 AI 서비스 ‘유독’에 들여온다…11월 첫 상품 출시"
     },
+    "fact:53ff6a221996dacb0edec633": {
+      "first_seen_kst": "2026-10-17T12:40:29+09:00",
+      "lanes": {
+        "live": "2026-10-17T12:40:29+09:00"
+      },
+      "last_seen_kst": "2026-10-17T12:40:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003829934",
+      "source": "뉴시스",
+      "source_body_digest": "4920d3ddf086907def57c560b78cd57a3bff6a081c5d3370518e25e66660abf3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:82b77e50b6480f3b700d14ab48b2d6f4ad9e970ba41a6a57d6281e4b485b606b",
+      "source_fact_keys": [
+        "source_fact:v1:0a1a19ee77dad793cadd8c98438277ed8f3895ab67b22296179bf2a9fd7d52d7",
+        "source_fact:v1:3c3811b5392f0ee853964a29ed73805663ae4801835a767b45d121fea7e85e01"
+      ],
+      "source_published_kst": "2026-10-17T12:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "후티 반군, 예멘 제3도시 타이즈 포위 항복 압박…내전 중대 기로",
+      "telegram_core_fact": "후티 반군은 지난달 모카 등 홍해 연안을 장악해 사우디아라비아 석유 수송선 공격 능력을 강화하고 세계 에너지 가격을 더욱 혼란에 빠뜨린 바 있다.",
+      "title": "후티 반군, 예멘 제3도시 타이즈 포위 항복 압박…내전 중대 기로"
+    },
     "fact:5414574e852ee30552fa1285": {
       "first_seen_kst": "2026-10-11T09:28:38+09:00",
       "lanes": {
@@ -127611,6 +127676,28 @@
       "source_title": "전고체 배터리 경쟁 본격화…LG엔솔·삼성SDI 전략 차이는?",
       "telegram_core_fact": "삼성SDI가 내년 양산을 목표로 소재 공급망 구축까지 속도를 내는 반면 LG에너지솔루션(LG엔솔)은 상용화 시점보다는 기술 차별화와 원가 경쟁력 확보에 무게를 두고 있다. 이와 비교해 삼성SDI는 이보다 빠른 내년께 황화물계 전고체 배터리 상용화를 목표로 공급망 구축에 나서고 있다.",
       "title": "전고체 배터리 경쟁 본격화…LG엔솔·삼성SDI 전략 차이는?"
+    },
+    "fact:b3dc993f1ce6f0ad5674220c": {
+      "first_seen_kst": "2026-10-17T12:40:29+09:00",
+      "lanes": {
+        "live": "2026-10-17T12:40:29+09:00"
+      },
+      "last_seen_kst": "2026-10-17T12:40:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02132006645613904",
+      "source": "이데일리",
+      "source_body_digest": "126ce96ad9dc7c7b695ff59bc9d92531b7126b70517be4cb7f6bf3724687116e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8c05e38c8b7714b9ba4c3a108f1a5cb55470da008b90d7537653573dcc1ca8b9",
+      "source_fact_keys": [
+        "source_fact:v1:1014516b277b8e380a7f83d32400053daec0efc7a117bba55067edb71742642a",
+        "source_fact:v1:1e772aa9658936d5e25def6bb671a25d475c542953f4a97ff395d103cf065deb",
+        "source_fact:v1:56cf749f81448db923213aa1097924dacdd7492324973580f880b45d4fced2ff"
+      ],
+      "source_published_kst": "2026-10-17T12:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "선거 코앞인데 유가 잡아야지…트럼프, 러시아산 에너지 제재 면제",
+      "telegram_core_fact": "이 법률에 담긴 핵심 제재 조항은 러시아산 원유·천연가스의 상위 5개 수입국에서 미국으로 들어오는 모든 상품에 최고 100%의 높은 관세를 부과하는 것이다.",
+      "title": "선거 코앞인데 유가 잡아야지…트럼프, 러시아산 에너지 제재 면제"
     },
     "fact:b3e092a33ac9d21b4399a9bd": {
       "first_seen_kst": "2026-10-06T18:58:43+09:00",
@@ -183359,6 +183446,27 @@
       ],
       "source_published_kst": "2026-10-06T17:24+09:00",
       "title": "포스코퓨처엠, 삼성SDI에 LFP 양극재 6조원어치 공급"
+    },
+    "link:57d33b72cc200149b4442e06": {
+      "first_seen_kst": "2026-10-17T12:40:29+09:00",
+      "lanes": {
+        "live": "2026-10-17T12:40:29+09:00"
+      },
+      "last_seen_kst": "2026-10-17T12:40:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003829934",
+      "source": "뉴시스",
+      "source_body_digest": "4920d3ddf086907def57c560b78cd57a3bff6a081c5d3370518e25e66660abf3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:82b77e50b6480f3b700d14ab48b2d6f4ad9e970ba41a6a57d6281e4b485b606b",
+      "source_fact_keys": [
+        "source_fact:v1:0a1a19ee77dad793cadd8c98438277ed8f3895ab67b22296179bf2a9fd7d52d7",
+        "source_fact:v1:3c3811b5392f0ee853964a29ed73805663ae4801835a767b45d121fea7e85e01"
+      ],
+      "source_published_kst": "2026-10-17T12:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "후티 반군, 예멘 제3도시 타이즈 포위 항복 압박…내전 중대 기로",
+      "telegram_core_fact": "후티 반군은 지난달 모카 등 홍해 연안을 장악해 사우디아라비아 석유 수송선 공격 능력을 강화하고 세계 에너지 가격을 더욱 혼란에 빠뜨린 바 있다.",
+      "title": "후티 반군, 예멘 제3도시 타이즈 포위 항복 압박…내전 중대 기로"
     },
     "link:57ddf53307bdc95279135083": {
       "first_seen_kst": "2026-10-10T06:23:09+09:00",
@@ -241418,6 +241526,28 @@
       "source_published_kst": "2026-10-06T18:06+09:00",
       "title": "[단독]서울 지하철 인력충원 둘러싸고 노사갈등…파업 신호탄 되나"
     },
+    "link:efcdcb9a373c3f3f329306ed": {
+      "first_seen_kst": "2026-10-17T12:40:29+09:00",
+      "lanes": {
+        "live": "2026-10-17T12:40:29+09:00"
+      },
+      "last_seen_kst": "2026-10-17T12:40:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02132006645613904",
+      "source": "이데일리",
+      "source_body_digest": "126ce96ad9dc7c7b695ff59bc9d92531b7126b70517be4cb7f6bf3724687116e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8c05e38c8b7714b9ba4c3a108f1a5cb55470da008b90d7537653573dcc1ca8b9",
+      "source_fact_keys": [
+        "source_fact:v1:1014516b277b8e380a7f83d32400053daec0efc7a117bba55067edb71742642a",
+        "source_fact:v1:1e772aa9658936d5e25def6bb671a25d475c542953f4a97ff395d103cf065deb",
+        "source_fact:v1:56cf749f81448db923213aa1097924dacdd7492324973580f880b45d4fced2ff"
+      ],
+      "source_published_kst": "2026-10-17T12:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "선거 코앞인데 유가 잡아야지…트럼프, 러시아산 에너지 제재 면제",
+      "telegram_core_fact": "이 법률에 담긴 핵심 제재 조항은 러시아산 원유·천연가스의 상위 5개 수입국에서 미국으로 들어오는 모든 상품에 최고 100%의 높은 관세를 부과하는 것이다.",
+      "title": "선거 코앞인데 유가 잡아야지…트럼프, 러시아산 에너지 제재 면제"
+    },
     "link:efcf111826b84a981d3a2bd2": {
       "first_seen_kst": "2026-10-02T00:13:20+09:00",
       "lanes": {
@@ -288564,6 +288694,27 @@
       "source_published_kst": "2026-10-06T10:04+09:00",
       "title": "옵티팜, cGMP 시설 인수로 이종이식 사업화 속도"
     },
+    "original:6c94e9e7f0cfbd840d5e677b": {
+      "first_seen_kst": "2026-10-17T12:40:29+09:00",
+      "lanes": {
+        "live": "2026-10-17T12:40:29+09:00"
+      },
+      "last_seen_kst": "2026-10-17T12:40:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003829934",
+      "source": "뉴시스",
+      "source_body_digest": "4920d3ddf086907def57c560b78cd57a3bff6a081c5d3370518e25e66660abf3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:82b77e50b6480f3b700d14ab48b2d6f4ad9e970ba41a6a57d6281e4b485b606b",
+      "source_fact_keys": [
+        "source_fact:v1:0a1a19ee77dad793cadd8c98438277ed8f3895ab67b22296179bf2a9fd7d52d7",
+        "source_fact:v1:3c3811b5392f0ee853964a29ed73805663ae4801835a767b45d121fea7e85e01"
+      ],
+      "source_published_kst": "2026-10-17T12:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "후티 반군, 예멘 제3도시 타이즈 포위 항복 압박…내전 중대 기로",
+      "telegram_core_fact": "후티 반군은 지난달 모카 등 홍해 연안을 장악해 사우디아라비아 석유 수송선 공격 능력을 강화하고 세계 에너지 가격을 더욱 혼란에 빠뜨린 바 있다.",
+      "title": "후티 반군, 예멘 제3도시 타이즈 포위 항복 압박…내전 중대 기로"
+    },
     "original:6cb57c2b9562147a1ea42668": {
       "first_seen_kst": "2026-10-10T16:15:55+09:00",
       "lanes": {
@@ -313992,6 +314143,28 @@
       "source_title": "스테이트스트리트, 3분기 EPS 3.69달러..전년비 33% 증가",
       "telegram_core_fact": "스테이트스트리트(STT)는 3분기 희석 주당순이익(EPS)이 3.69달러로 전년비 33% 증가했고, 총수익(Total revenue)은 40억400만 달러로 13%, 순이익은 10억9000만 달러로 27% 각각 늘었다고 10월 14일 발표했다.",
       "title": "스테이트스트리트, 3분기 EPS 3.69달러..전년비 33% 증가"
+    },
+    "original:af57e3618ab1ceac75f25039": {
+      "first_seen_kst": "2026-10-17T12:40:29+09:00",
+      "lanes": {
+        "live": "2026-10-17T12:40:29+09:00"
+      },
+      "last_seen_kst": "2026-10-17T12:40:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02132006645613904",
+      "source": "이데일리",
+      "source_body_digest": "126ce96ad9dc7c7b695ff59bc9d92531b7126b70517be4cb7f6bf3724687116e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8c05e38c8b7714b9ba4c3a108f1a5cb55470da008b90d7537653573dcc1ca8b9",
+      "source_fact_keys": [
+        "source_fact:v1:1014516b277b8e380a7f83d32400053daec0efc7a117bba55067edb71742642a",
+        "source_fact:v1:1e772aa9658936d5e25def6bb671a25d475c542953f4a97ff395d103cf065deb",
+        "source_fact:v1:56cf749f81448db923213aa1097924dacdd7492324973580f880b45d4fced2ff"
+      ],
+      "source_published_kst": "2026-10-17T12:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "선거 코앞인데 유가 잡아야지…트럼프, 러시아산 에너지 제재 면제",
+      "telegram_core_fact": "이 법률에 담긴 핵심 제재 조항은 러시아산 원유·천연가스의 상위 5개 수입국에서 미국으로 들어오는 모든 상품에 최고 100%의 높은 관세를 부과하는 것이다.",
+      "title": "선거 코앞인데 유가 잡아야지…트럼프, 러시아산 에너지 제재 면제"
     },
     "original:af7532ed6fb349a64b4e2e99": {
       "first_seen_kst": "2026-10-03T07:28:32+09:00",
@@ -359476,6 +359649,28 @@
       "source_title": "국장에 지친 개미들, 한 달 새 4조 '파킹'…MMF도 260조 돌파",
       "telegram_core_fact": "한 달 새 파킹형·단기채 ETF에 4조원이 넘는 자금이 유입됐고 MMF(머니마켓펀드) 잔고도 260조원을 다시 돌파했다. 코스피지수가 두 달째 6000~7000 사이 박스권에서 움직이면서 국장(국내 증시)에 지친 투자자들이 파킹형 ETF(상장지수펀드)나 단기채 ETF로 몰리고 있다.",
       "title": "국장에 지친 개미들, 한 달 새 4조 '파킹'…MMF도 260조 돌파"
+    },
+    "source_fact:0ba3bc917be93be701c04ea6": {
+      "first_seen_kst": "2026-10-17T12:40:29+09:00",
+      "lanes": {
+        "live": "2026-10-17T12:40:29+09:00"
+      },
+      "last_seen_kst": "2026-10-17T12:40:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02132006645613904",
+      "source": "이데일리",
+      "source_body_digest": "126ce96ad9dc7c7b695ff59bc9d92531b7126b70517be4cb7f6bf3724687116e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8c05e38c8b7714b9ba4c3a108f1a5cb55470da008b90d7537653573dcc1ca8b9",
+      "source_fact_keys": [
+        "source_fact:v1:1014516b277b8e380a7f83d32400053daec0efc7a117bba55067edb71742642a",
+        "source_fact:v1:1e772aa9658936d5e25def6bb671a25d475c542953f4a97ff395d103cf065deb",
+        "source_fact:v1:56cf749f81448db923213aa1097924dacdd7492324973580f880b45d4fced2ff"
+      ],
+      "source_published_kst": "2026-10-17T12:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "선거 코앞인데 유가 잡아야지…트럼프, 러시아산 에너지 제재 면제",
+      "telegram_core_fact": "이 법률에 담긴 핵심 제재 조항은 러시아산 원유·천연가스의 상위 5개 수입국에서 미국으로 들어오는 모든 상품에 최고 100%의 높은 관세를 부과하는 것이다.",
+      "title": "선거 코앞인데 유가 잡아야지…트럼프, 러시아산 에너지 제재 면제"
     },
     "source_fact:0ba9c43f191c36564469c62a": {
       "first_seen_kst": "2026-10-08T09:58:56+09:00",
@@ -574891,6 +575086,28 @@
       "telegram_core_fact": "산업통상부가 이번에 주도한 산업융합 관련 규제특례 승인은 그동안 소프트웨어에 머물던 AI가 '이동형 휴머노이드 로봇'이라는 실체를 통해 제조업 현장의 AI 대전환을 이룰 신호탄이란 점에서 의미가 있다.",
       "title": "‘안전펜스’ 갇혔던 로봇, 족쇄 풀려…반복 자동화 넘어 ‘M.AX 혁신’ 신호탄[규제 풀린 휴머노이드]"
     },
+    "source_fact:9da3c7251b43b825bfa0723e": {
+      "first_seen_kst": "2026-10-17T12:40:29+09:00",
+      "lanes": {
+        "live": "2026-10-17T12:40:29+09:00"
+      },
+      "last_seen_kst": "2026-10-17T12:40:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02132006645613904",
+      "source": "이데일리",
+      "source_body_digest": "126ce96ad9dc7c7b695ff59bc9d92531b7126b70517be4cb7f6bf3724687116e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8c05e38c8b7714b9ba4c3a108f1a5cb55470da008b90d7537653573dcc1ca8b9",
+      "source_fact_keys": [
+        "source_fact:v1:1014516b277b8e380a7f83d32400053daec0efc7a117bba55067edb71742642a",
+        "source_fact:v1:1e772aa9658936d5e25def6bb671a25d475c542953f4a97ff395d103cf065deb",
+        "source_fact:v1:56cf749f81448db923213aa1097924dacdd7492324973580f880b45d4fced2ff"
+      ],
+      "source_published_kst": "2026-10-17T12:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "선거 코앞인데 유가 잡아야지…트럼프, 러시아산 에너지 제재 면제",
+      "telegram_core_fact": "이 법률에 담긴 핵심 제재 조항은 러시아산 원유·천연가스의 상위 5개 수입국에서 미국으로 들어오는 모든 상품에 최고 100%의 높은 관세를 부과하는 것이다.",
+      "title": "선거 코앞인데 유가 잡아야지…트럼프, 러시아산 에너지 제재 면제"
+    },
     "source_fact:9db004f65b234a26a3157194": {
       "first_seen_kst": "2026-10-10T06:02:39+09:00",
       "lanes": {
@@ -638279,6 +638496,27 @@
       "telegram_core_fact": "12일 시에 따르면 국가데이터처의 지역별고용조사 자료를 조사한 결과 올해 상반기 속초시의 상용직 비중은 68.5%로 지난해 같은 기간(65.6%)보다 2.9%포인트 상승했다.",
       "title": "속초 고용 지표 개선…상용직 늘고 청년고용률 강원 최고 유지 | 연합뉴스"
     },
+    "source_fact:c8b816be0b2517a580564441": {
+      "first_seen_kst": "2026-10-17T12:40:29+09:00",
+      "lanes": {
+        "live": "2026-10-17T12:40:29+09:00"
+      },
+      "last_seen_kst": "2026-10-17T12:40:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003829934",
+      "source": "뉴시스",
+      "source_body_digest": "4920d3ddf086907def57c560b78cd57a3bff6a081c5d3370518e25e66660abf3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:82b77e50b6480f3b700d14ab48b2d6f4ad9e970ba41a6a57d6281e4b485b606b",
+      "source_fact_keys": [
+        "source_fact:v1:0a1a19ee77dad793cadd8c98438277ed8f3895ab67b22296179bf2a9fd7d52d7",
+        "source_fact:v1:3c3811b5392f0ee853964a29ed73805663ae4801835a767b45d121fea7e85e01"
+      ],
+      "source_published_kst": "2026-10-17T12:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "후티 반군, 예멘 제3도시 타이즈 포위 항복 압박…내전 중대 기로",
+      "telegram_core_fact": "후티 반군은 지난달 모카 등 홍해 연안을 장악해 사우디아라비아 석유 수송선 공격 능력을 강화하고 세계 에너지 가격을 더욱 혼란에 빠뜨린 바 있다.",
+      "title": "후티 반군, 예멘 제3도시 타이즈 포위 항복 압박…내전 중대 기로"
+    },
     "source_fact:c8b8f720d8fbefeba288bcad": {
       "first_seen_kst": "2026-10-08T08:12:34+09:00",
       "lanes": {
@@ -642535,6 +642773,28 @@
       ],
       "source_published_kst": "2026-10-06T23:43+09:00",
       "title": "에이로봇, 방산혁신기업 선정…휴머노이드 군 시범운용 추진"
+    },
+    "source_fact:cbdebc1eca183510c9ec170f": {
+      "first_seen_kst": "2026-10-17T12:40:29+09:00",
+      "lanes": {
+        "live": "2026-10-17T12:40:29+09:00"
+      },
+      "last_seen_kst": "2026-10-17T12:40:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02132006645613904",
+      "source": "이데일리",
+      "source_body_digest": "126ce96ad9dc7c7b695ff59bc9d92531b7126b70517be4cb7f6bf3724687116e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8c05e38c8b7714b9ba4c3a108f1a5cb55470da008b90d7537653573dcc1ca8b9",
+      "source_fact_keys": [
+        "source_fact:v1:1014516b277b8e380a7f83d32400053daec0efc7a117bba55067edb71742642a",
+        "source_fact:v1:1e772aa9658936d5e25def6bb671a25d475c542953f4a97ff395d103cf065deb",
+        "source_fact:v1:56cf749f81448db923213aa1097924dacdd7492324973580f880b45d4fced2ff"
+      ],
+      "source_published_kst": "2026-10-17T12:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "선거 코앞인데 유가 잡아야지…트럼프, 러시아산 에너지 제재 면제",
+      "telegram_core_fact": "이 법률에 담긴 핵심 제재 조항은 러시아산 원유·천연가스의 상위 5개 수입국에서 미국으로 들어오는 모든 상품에 최고 100%의 높은 관세를 부과하는 것이다.",
+      "title": "선거 코앞인데 유가 잡아야지…트럼프, 러시아산 에너지 제재 면제"
     },
     "source_fact:cbe21c45393ac64402c5b7c8": {
       "first_seen_kst": "2026-10-12T13:36:34+09:00",
@@ -652108,6 +652368,27 @@
       "source_title": "[속보] 국제유가 하락⋯WTI 1.3%↓",
       "telegram_core_fact": "이날 뉴욕상업거래소에서 11월 인도분 서부텍사스산원유(WTI)는 전장보다 1.16달러(1.3%) 내린 배럴당 88.28달러에 장을 마감했다.",
       "title": "[속보] 국제유가 하락⋯WTI 1.3%↓"
+    },
+    "source_fact:d2838dfe2ed65e09a9f9c972": {
+      "first_seen_kst": "2026-10-17T12:40:29+09:00",
+      "lanes": {
+        "live": "2026-10-17T12:40:29+09:00"
+      },
+      "last_seen_kst": "2026-10-17T12:40:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003829934",
+      "source": "뉴시스",
+      "source_body_digest": "4920d3ddf086907def57c560b78cd57a3bff6a081c5d3370518e25e66660abf3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:82b77e50b6480f3b700d14ab48b2d6f4ad9e970ba41a6a57d6281e4b485b606b",
+      "source_fact_keys": [
+        "source_fact:v1:0a1a19ee77dad793cadd8c98438277ed8f3895ab67b22296179bf2a9fd7d52d7",
+        "source_fact:v1:3c3811b5392f0ee853964a29ed73805663ae4801835a767b45d121fea7e85e01"
+      ],
+      "source_published_kst": "2026-10-17T12:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "후티 반군, 예멘 제3도시 타이즈 포위 항복 압박…내전 중대 기로",
+      "telegram_core_fact": "후티 반군은 지난달 모카 등 홍해 연안을 장악해 사우디아라비아 석유 수송선 공격 능력을 강화하고 세계 에너지 가격을 더욱 혼란에 빠뜨린 바 있다.",
+      "title": "후티 반군, 예멘 제3도시 타이즈 포위 항복 압박…내전 중대 기로"
     },
     "source_fact:d2911c9c04d32922b7590c37": {
       "first_seen_kst": "2026-10-10T06:41:01+09:00",
@@ -759902,6 +760183,27 @@
       "source_published_kst": "2026-10-06T10:04+09:00",
       "title": "옵티팜, cGMP 시설 인수로 이종이식 사업화 속도"
     },
+    "title:6c94e9e7f0cfbd840d5e677b": {
+      "first_seen_kst": "2026-10-17T12:40:29+09:00",
+      "lanes": {
+        "live": "2026-10-17T12:40:29+09:00"
+      },
+      "last_seen_kst": "2026-10-17T12:40:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003829934",
+      "source": "뉴시스",
+      "source_body_digest": "4920d3ddf086907def57c560b78cd57a3bff6a081c5d3370518e25e66660abf3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:82b77e50b6480f3b700d14ab48b2d6f4ad9e970ba41a6a57d6281e4b485b606b",
+      "source_fact_keys": [
+        "source_fact:v1:0a1a19ee77dad793cadd8c98438277ed8f3895ab67b22296179bf2a9fd7d52d7",
+        "source_fact:v1:3c3811b5392f0ee853964a29ed73805663ae4801835a767b45d121fea7e85e01"
+      ],
+      "source_published_kst": "2026-10-17T12:13+09:00",
+      "source_supply_terms": {},
+      "source_title": "후티 반군, 예멘 제3도시 타이즈 포위 항복 압박…내전 중대 기로",
+      "telegram_core_fact": "후티 반군은 지난달 모카 등 홍해 연안을 장악해 사우디아라비아 석유 수송선 공격 능력을 강화하고 세계 에너지 가격을 더욱 혼란에 빠뜨린 바 있다.",
+      "title": "후티 반군, 예멘 제3도시 타이즈 포위 항복 압박…내전 중대 기로"
+    },
     "title:6cb57c2b9562147a1ea42668": {
       "first_seen_kst": "2026-10-10T16:15:55+09:00",
       "lanes": {
@@ -785983,6 +786285,28 @@
       "source_title": "스테이트스트리트, 3분기 EPS 3.69달러..전년비 33% 증가",
       "telegram_core_fact": "스테이트스트리트(STT)는 3분기 희석 주당순이익(EPS)이 3.69달러로 전년비 33% 증가했고, 총수익(Total revenue)은 40억400만 달러로 13%, 순이익은 10억9000만 달러로 27% 각각 늘었다고 10월 14일 발표했다.",
       "title": "스테이트스트리트, 3분기 EPS 3.69달러..전년비 33% 증가"
+    },
+    "title:af57e3618ab1ceac75f25039": {
+      "first_seen_kst": "2026-10-17T12:40:29+09:00",
+      "lanes": {
+        "live": "2026-10-17T12:40:29+09:00"
+      },
+      "last_seen_kst": "2026-10-17T12:40:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02132006645613904",
+      "source": "이데일리",
+      "source_body_digest": "126ce96ad9dc7c7b695ff59bc9d92531b7126b70517be4cb7f6bf3724687116e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8c05e38c8b7714b9ba4c3a108f1a5cb55470da008b90d7537653573dcc1ca8b9",
+      "source_fact_keys": [
+        "source_fact:v1:1014516b277b8e380a7f83d32400053daec0efc7a117bba55067edb71742642a",
+        "source_fact:v1:1e772aa9658936d5e25def6bb671a25d475c542953f4a97ff395d103cf065deb",
+        "source_fact:v1:56cf749f81448db923213aa1097924dacdd7492324973580f880b45d4fced2ff"
+      ],
+      "source_published_kst": "2026-10-17T12:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "선거 코앞인데 유가 잡아야지…트럼프, 러시아산 에너지 제재 면제",
+      "telegram_core_fact": "이 법률에 담긴 핵심 제재 조항은 러시아산 원유·천연가스의 상위 5개 수입국에서 미국으로 들어오는 모든 상품에 최고 100%의 높은 관세를 부과하는 것이다.",
+      "title": "선거 코앞인데 유가 잡아야지…트럼프, 러시아산 에너지 제재 면제"
     },
     "title:af7532ed6fb349a64b4e2e99": {
       "first_seen_kst": "2026-10-03T07:28:32+09:00",
@@ -815967,5 +816291,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-17T12:11:32+09:00"
+  "updated_at_kst": "2026-10-17T12:40:29+09:00"
 }
