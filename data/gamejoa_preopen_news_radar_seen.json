@@ -15056,6 +15056,28 @@
       "telegram_core_fact": "오키드 아일랜드 캐피탈(ORC)은 9월 30일 종료된 3분기 추정 GAAP(일반회계기준) 주당순손실이 0.90달러(적자)를 기록했으며, 9월 30일 기준 추정 주당장부가치는 6.02달러로 직전 분기 말 대비 16.6% 하락했다고 14일 발표했다.",
       "title": "오키드 아일랜드 캐피탈, 3분기 주당순손실 0.90달러…장부가 6.02달러"
     },
+    "core:3bddc4b0c792234d66352d4b": {
+      "first_seen_kst": "2026-10-17T18:59:01+09:00",
+      "lanes": {
+        "live": "2026-10-17T18:59:01+09:00"
+      },
+      "last_seen_kst": "2026-10-17T18:59:01+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12178557",
+      "source": "매일경제",
+      "source_body_digest": "b058417399f14e8c7d9dfb2a639303a4d89bbecc57b3ec8a01a2bc26c303fc82",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3fd315c4add5a801809bf679de37daa31e8abe570602b90a3d7283b3717508ab",
+      "source_fact_keys": [
+        "source_fact:v1:09a06a5e138513f7f2040152da5f00ef3fe950ef055e087e5662232185a2e632",
+        "source_fact:v1:c6c01e5de5ac3bc15bca7b1a7520580c736173597e4eacd9bbb3172abde7e2ef",
+        "source_fact:v1:fb4e127d9c9d09400dab73e32e775e12d2a631ed0565587533e182f4c5a964c0"
+      ],
+      "source_published_kst": "2026-10-17T18:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프에 뺨 맞은 하버드…‘여기’ 투자 성공해 자산 90조원 돌파",
+      "telegram_core_fact": "리투 칼라 하버드 최고재무책임자(CFO)가 작성한 보고서에 따르면 하버드 기금 투자 소득에 대한 연방 세율은 올해 7월 1일 1.4%에서 8%로 인상됐다.",
+      "title": "트럼프에 뺨 맞은 하버드…‘여기’ 투자 성공해 자산 90조원 돌파"
+    },
     "core:3c02383ef2e5aff18ab2e23c": {
       "first_seen_kst": "2026-10-08T21:21:36+09:00",
       "lanes": {
@@ -37358,6 +37380,36 @@
       "source_title": "김종철 방미통위 위원장 “불법스팸 부당이익 환수·통신시장 과징금 상향”",
       "telegram_core_fact": "통신시장 금지행위를 위반한 사업자에 대한 과징금도 높여 불공정행위 제재를 강화할 방침이다.",
       "title": "김종철 방미통위 위원장 “불법스팸 부당이익 환수·통신시장 과징금 상향”"
+    },
+    "core:991954ec3c907465a563f523": {
+      "first_seen_kst": "2026-10-17T18:59:01+09:00",
+      "lanes": {
+        "live": "2026-10-17T18:59:01+09:00"
+      },
+      "last_seen_kst": "2026-10-17T18:59:01+09:00",
+      "link": "https://www.mk.co.kr/news/world/12178451",
+      "source": "매일경제",
+      "source_body_digest": "5202fafa26e296ff0c97dbb5b8dcc1c7c831cdf01fd58f5cd4fe012f1daa8b92",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0054512eddc28a44080557fc14c730c894dcd7fa22d5c7e32e8edc597d262af2",
+      "source_fact_keys": [
+        "source_fact:v1:009ba4a826f90fc111f28caeadec7b5d7ca7a6c9a2595ccc180f513f92da0c12",
+        "source_fact:v1:08f60e20aa9faaa802ce0916d0bdceded040af2f4ad5d63d3356eb328828a58d",
+        "source_fact:v1:1e312ceca0fffdb58825e6c5a92c8eaa6d025d806f9fe19be5b9b128b59a2684",
+        "source_fact:v1:277ad2273ec5be4bee75dc5706662021a0662900c45b4da7b0a1e96d7831657e",
+        "source_fact:v1:525f66b79a2066d45b609c9eab433a7338e23cda6ef012967a42daa1346d6d25",
+        "source_fact:v1:5af794005ff76f10500c4909317bdbbbcd4cf5e20dfe694015e949ccd61080c0",
+        "source_fact:v1:70967b04306e442d9e430ac295bd89c341965e9d84756569d8a49a02c5b01204",
+        "source_fact:v1:7a0cb3e836fb24192bf228b1ba016acf65865456c1b79470e6aa3744380d2540",
+        "source_fact:v1:8426999fbd98af69862eb5ac4bbe6ac15526b42067c8d087ef7b25b43601f380",
+        "source_fact:v1:9b68abe03907497423232ab53972f30fd95bb945a786a315e470e894e2cb042e",
+        "source_fact:v1:db28f03430be6a46902de47947bb82f39e63457d1083d571faff2037e0d227ea"
+      ],
+      "source_published_kst": "2026-10-17T14:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아산 에너지 구매국에 고율 관세를 부과하는 등 대(對)러시아 제재 조항 상당수의 시행을 유보하기로 했다.",
+      "title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보"
     },
     "core:99214e0f78d65bd43ac9f8ae": {
       "first_seen_kst": "2026-10-13T06:17:31+09:00",
@@ -68572,20 +68624,32 @@
     "event:7ba780646150a7905ddcdadb": {
       "first_seen_kst": "2026-10-17T13:10:08+09:00",
       "lanes": {
-        "live": "2026-10-17T13:10:08+09:00"
+        "live": "2026-10-17T18:59:01+09:00"
       },
-      "last_seen_kst": "2026-10-17T13:10:08+09:00",
-      "link": "https://www.newsis.com/view/NISX20261016_0003828829",
-      "source": "뉴시스",
-      "source_body_digest": "4f91a0280f01f3c2b9394a6854d9ddae96bba5d5259d981d8e31c05a0f501cf9",
+      "last_seen_kst": "2026-10-17T18:59:01+09:00",
+      "link": "https://www.mk.co.kr/news/world/12178451",
+      "source": "매일경제",
+      "source_body_digest": "5202fafa26e296ff0c97dbb5b8dcc1c7c831cdf01fd58f5cd4fe012f1daa8b92",
       "source_event_identity": "",
-      "source_fact_identity": "",
-      "source_fact_keys": [],
-      "source_published_kst": "2026-10-17T10:38+09:00",
+      "source_fact_identity": "source_facts:v1:0054512eddc28a44080557fc14c730c894dcd7fa22d5c7e32e8edc597d262af2",
+      "source_fact_keys": [
+        "source_fact:v1:009ba4a826f90fc111f28caeadec7b5d7ca7a6c9a2595ccc180f513f92da0c12",
+        "source_fact:v1:08f60e20aa9faaa802ce0916d0bdceded040af2f4ad5d63d3356eb328828a58d",
+        "source_fact:v1:1e312ceca0fffdb58825e6c5a92c8eaa6d025d806f9fe19be5b9b128b59a2684",
+        "source_fact:v1:277ad2273ec5be4bee75dc5706662021a0662900c45b4da7b0a1e96d7831657e",
+        "source_fact:v1:525f66b79a2066d45b609c9eab433a7338e23cda6ef012967a42daa1346d6d25",
+        "source_fact:v1:5af794005ff76f10500c4909317bdbbbcd4cf5e20dfe694015e949ccd61080c0",
+        "source_fact:v1:70967b04306e442d9e430ac295bd89c341965e9d84756569d8a49a02c5b01204",
+        "source_fact:v1:7a0cb3e836fb24192bf228b1ba016acf65865456c1b79470e6aa3744380d2540",
+        "source_fact:v1:8426999fbd98af69862eb5ac4bbe6ac15526b42067c8d087ef7b25b43601f380",
+        "source_fact:v1:9b68abe03907497423232ab53972f30fd95bb945a786a315e470e894e2cb042e",
+        "source_fact:v1:db28f03430be6a46902de47947bb82f39e63457d1083d571faff2037e0d227ea"
+      ],
+      "source_published_kst": "2026-10-17T14:33+09:00",
       "source_supply_terms": {},
-      "source_title": "\"금리 올려도 못 잡는다\"…美 물가 밀어올린 두 가지 변수",
-      "telegram_core_fact": "시카고상품거래소(CME) 선물시장에 반영된 10월 금리 인상 확률은 물가 발표 전 약 22%에서 54%까지 뛰었다.",
-      "title": "\"금리 올려도 못 잡는다\"…美 물가 밀어올린 두 가지 변수"
+      "source_title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아산 에너지 구매국에 고율 관세를 부과하는 등 대(對)러시아 제재 조항 상당수의 시행을 유보하기로 했다.",
+      "title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보"
     },
     "event:7c2bd713b7c96a8d06a9fd4b": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
@@ -110119,6 +110183,28 @@
       "telegram_core_fact": "특히 고객 방문 증가와 수익성 개선을 통해 확보한 자금을 재투자하면서 지속적인 매출 성장과 시장점유율 확대를 이끄는 선순환 구조가 형성되고 있다고 설명했다.",
       "title": "브링커 인터내셔널, 칠리스 실적 개선 기대...투자의견 상향-제프리스"
     },
+    "fact:7636b28617eec69f6aca208e": {
+      "first_seen_kst": "2026-10-17T18:59:01+09:00",
+      "lanes": {
+        "live": "2026-10-17T18:59:01+09:00"
+      },
+      "last_seen_kst": "2026-10-17T18:59:01+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12178557",
+      "source": "매일경제",
+      "source_body_digest": "b058417399f14e8c7d9dfb2a639303a4d89bbecc57b3ec8a01a2bc26c303fc82",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3fd315c4add5a801809bf679de37daa31e8abe570602b90a3d7283b3717508ab",
+      "source_fact_keys": [
+        "source_fact:v1:09a06a5e138513f7f2040152da5f00ef3fe950ef055e087e5662232185a2e632",
+        "source_fact:v1:c6c01e5de5ac3bc15bca7b1a7520580c736173597e4eacd9bbb3172abde7e2ef",
+        "source_fact:v1:fb4e127d9c9d09400dab73e32e775e12d2a631ed0565587533e182f4c5a964c0"
+      ],
+      "source_published_kst": "2026-10-17T18:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프에 뺨 맞은 하버드…‘여기’ 투자 성공해 자산 90조원 돌파",
+      "telegram_core_fact": "리투 칼라 하버드 최고재무책임자(CFO)가 작성한 보고서에 따르면 하버드 기금 투자 소득에 대한 연방 세율은 올해 7월 1일 1.4%에서 8%로 인상됐다.",
+      "title": "트럼프에 뺨 맞은 하버드…‘여기’ 투자 성공해 자산 90조원 돌파"
+    },
     "fact:764ac8ee4597567da059d69a": {
       "first_seen_kst": "2026-10-14T22:47:26+09:00",
       "lanes": {
@@ -118112,6 +118198,36 @@
       ],
       "source_published_kst": "2026-10-07T05:31+09:00",
       "title": "LG전자, AI 냉각사업 공략 가속…북미 대형 계약에 버지니아 공장 신설까지"
+    },
+    "fact:91f06455035f2cffc689112d": {
+      "first_seen_kst": "2026-10-17T18:59:01+09:00",
+      "lanes": {
+        "live": "2026-10-17T18:59:01+09:00"
+      },
+      "last_seen_kst": "2026-10-17T18:59:01+09:00",
+      "link": "https://www.mk.co.kr/news/world/12178451",
+      "source": "매일경제",
+      "source_body_digest": "5202fafa26e296ff0c97dbb5b8dcc1c7c831cdf01fd58f5cd4fe012f1daa8b92",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0054512eddc28a44080557fc14c730c894dcd7fa22d5c7e32e8edc597d262af2",
+      "source_fact_keys": [
+        "source_fact:v1:009ba4a826f90fc111f28caeadec7b5d7ca7a6c9a2595ccc180f513f92da0c12",
+        "source_fact:v1:08f60e20aa9faaa802ce0916d0bdceded040af2f4ad5d63d3356eb328828a58d",
+        "source_fact:v1:1e312ceca0fffdb58825e6c5a92c8eaa6d025d806f9fe19be5b9b128b59a2684",
+        "source_fact:v1:277ad2273ec5be4bee75dc5706662021a0662900c45b4da7b0a1e96d7831657e",
+        "source_fact:v1:525f66b79a2066d45b609c9eab433a7338e23cda6ef012967a42daa1346d6d25",
+        "source_fact:v1:5af794005ff76f10500c4909317bdbbbcd4cf5e20dfe694015e949ccd61080c0",
+        "source_fact:v1:70967b04306e442d9e430ac295bd89c341965e9d84756569d8a49a02c5b01204",
+        "source_fact:v1:7a0cb3e836fb24192bf228b1ba016acf65865456c1b79470e6aa3744380d2540",
+        "source_fact:v1:8426999fbd98af69862eb5ac4bbe6ac15526b42067c8d087ef7b25b43601f380",
+        "source_fact:v1:9b68abe03907497423232ab53972f30fd95bb945a786a315e470e894e2cb042e",
+        "source_fact:v1:db28f03430be6a46902de47947bb82f39e63457d1083d571faff2037e0d227ea"
+      ],
+      "source_published_kst": "2026-10-17T14:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아산 에너지 구매국에 고율 관세를 부과하는 등 대(對)러시아 제재 조항 상당수의 시행을 유보하기로 했다.",
+      "title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보"
     },
     "fact:91f4f69f92a795de6e5ae3fb": {
       "first_seen_kst": "2026-10-08T00:39:44+09:00",
@@ -151689,6 +151805,28 @@
       "link": "https://www.mk.co.kr/news/business/12156185",
       "source": "매일경제",
       "title": "큐피에스브레인, 제조업 경영진을 위한 현장 중심 솔루션 북 ‘AX 피지컬 AI 도입 전략’ 출간"
+    },
+    "link:015ea0374c59af88da3d2b01": {
+      "first_seen_kst": "2026-10-17T18:59:01+09:00",
+      "lanes": {
+        "live": "2026-10-17T18:59:01+09:00"
+      },
+      "last_seen_kst": "2026-10-17T18:59:01+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12178557",
+      "source": "매일경제",
+      "source_body_digest": "b058417399f14e8c7d9dfb2a639303a4d89bbecc57b3ec8a01a2bc26c303fc82",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3fd315c4add5a801809bf679de37daa31e8abe570602b90a3d7283b3717508ab",
+      "source_fact_keys": [
+        "source_fact:v1:09a06a5e138513f7f2040152da5f00ef3fe950ef055e087e5662232185a2e632",
+        "source_fact:v1:c6c01e5de5ac3bc15bca7b1a7520580c736173597e4eacd9bbb3172abde7e2ef",
+        "source_fact:v1:fb4e127d9c9d09400dab73e32e775e12d2a631ed0565587533e182f4c5a964c0"
+      ],
+      "source_published_kst": "2026-10-17T18:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프에 뺨 맞은 하버드…‘여기’ 투자 성공해 자산 90조원 돌파",
+      "telegram_core_fact": "리투 칼라 하버드 최고재무책임자(CFO)가 작성한 보고서에 따르면 하버드 기금 투자 소득에 대한 연방 세율은 올해 7월 1일 1.4%에서 8%로 인상됐다.",
+      "title": "트럼프에 뺨 맞은 하버드…‘여기’ 투자 성공해 자산 90조원 돌파"
     },
     "link:016cc868ae327a60bcc5f03c": {
       "first_seen_kst": "2026-10-15T11:36:50+09:00",
@@ -239637,6 +239775,36 @@
       "telegram_core_fact": "아이폰 듀오의 국내 출고가는 256GB 329만원, 512GB 359만원, 1TB 419만원, 2TB 509만원이다. UBS는 아이폰 듀오의 미국 시작 가격인 1999달러가 판매량 증가를 제한할 수 있다고 분석했다.",
       "title": "\"비싸도 애플이니까?\"…329만원 아이폰 듀오 통할까"
     },
+    "link:e4199d7d5f5ad9a8e79536bb": {
+      "first_seen_kst": "2026-10-17T18:59:01+09:00",
+      "lanes": {
+        "live": "2026-10-17T18:59:01+09:00"
+      },
+      "last_seen_kst": "2026-10-17T18:59:01+09:00",
+      "link": "https://www.mk.co.kr/news/world/12178451",
+      "source": "매일경제",
+      "source_body_digest": "5202fafa26e296ff0c97dbb5b8dcc1c7c831cdf01fd58f5cd4fe012f1daa8b92",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0054512eddc28a44080557fc14c730c894dcd7fa22d5c7e32e8edc597d262af2",
+      "source_fact_keys": [
+        "source_fact:v1:009ba4a826f90fc111f28caeadec7b5d7ca7a6c9a2595ccc180f513f92da0c12",
+        "source_fact:v1:08f60e20aa9faaa802ce0916d0bdceded040af2f4ad5d63d3356eb328828a58d",
+        "source_fact:v1:1e312ceca0fffdb58825e6c5a92c8eaa6d025d806f9fe19be5b9b128b59a2684",
+        "source_fact:v1:277ad2273ec5be4bee75dc5706662021a0662900c45b4da7b0a1e96d7831657e",
+        "source_fact:v1:525f66b79a2066d45b609c9eab433a7338e23cda6ef012967a42daa1346d6d25",
+        "source_fact:v1:5af794005ff76f10500c4909317bdbbbcd4cf5e20dfe694015e949ccd61080c0",
+        "source_fact:v1:70967b04306e442d9e430ac295bd89c341965e9d84756569d8a49a02c5b01204",
+        "source_fact:v1:7a0cb3e836fb24192bf228b1ba016acf65865456c1b79470e6aa3744380d2540",
+        "source_fact:v1:8426999fbd98af69862eb5ac4bbe6ac15526b42067c8d087ef7b25b43601f380",
+        "source_fact:v1:9b68abe03907497423232ab53972f30fd95bb945a786a315e470e894e2cb042e",
+        "source_fact:v1:db28f03430be6a46902de47947bb82f39e63457d1083d571faff2037e0d227ea"
+      ],
+      "source_published_kst": "2026-10-17T14:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아산 에너지 구매국에 고율 관세를 부과하는 등 대(對)러시아 제재 조항 상당수의 시행을 유보하기로 했다.",
+      "title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보"
+    },
     "link:e427eb8fc45974679089951a": {
       "first_seen_kst": "2026-10-07T04:29:18+09:00",
       "lanes": {
@@ -304721,6 +304889,28 @@
       "telegram_core_fact": "식약처 소속 식품의약품안전평가원은 국제인증표준품(CRM) 및 NDMA 등 니트로사민류 표준품을 포함한 '2026 식품의약품안전처 표준품 종합안내서'를 발간하고 이날부터 표준품 분양을 시작한다고 12일 밝혔다.",
       "title": "식약처 \"국제인증표준품 관련 종합안내서 발간\""
     },
+    "original:8e8cc41eff7274ce285a7be3": {
+      "first_seen_kst": "2026-10-17T18:59:01+09:00",
+      "lanes": {
+        "live": "2026-10-17T18:59:01+09:00"
+      },
+      "last_seen_kst": "2026-10-17T18:59:01+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12178557",
+      "source": "매일경제",
+      "source_body_digest": "b058417399f14e8c7d9dfb2a639303a4d89bbecc57b3ec8a01a2bc26c303fc82",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3fd315c4add5a801809bf679de37daa31e8abe570602b90a3d7283b3717508ab",
+      "source_fact_keys": [
+        "source_fact:v1:09a06a5e138513f7f2040152da5f00ef3fe950ef055e087e5662232185a2e632",
+        "source_fact:v1:c6c01e5de5ac3bc15bca7b1a7520580c736173597e4eacd9bbb3172abde7e2ef",
+        "source_fact:v1:fb4e127d9c9d09400dab73e32e775e12d2a631ed0565587533e182f4c5a964c0"
+      ],
+      "source_published_kst": "2026-10-17T18:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프에 뺨 맞은 하버드…‘여기’ 투자 성공해 자산 90조원 돌파",
+      "telegram_core_fact": "리투 칼라 하버드 최고재무책임자(CFO)가 작성한 보고서에 따르면 하버드 기금 투자 소득에 대한 연방 세율은 올해 7월 1일 1.4%에서 8%로 인상됐다.",
+      "title": "트럼프에 뺨 맞은 하버드…‘여기’ 투자 성공해 자산 90조원 돌파"
+    },
     "original:8e8ff8907954d95bc62df7fb": {
       "first_seen_kst": "2026-10-15T05:50:30+09:00",
       "lanes": {
@@ -334400,6 +334590,36 @@
       "source_title": "대웅제약, 마이크로니들 무균 제조소 구축한다 | 연합뉴스",
       "telegram_core_fact": "대웅제약[069620]은 경기 화성시 향남 대웅바이오 3공장에 마이크로니들(Microneedle) 제조 인프라를 구축한다고 14일 밝혔다. 대웅제약은 이번 생산 인프라 구축의 핵심은 마이크로니들 패치형 의약품의 특성을 반영한 무균 제조공정과 자동화 생산체계를 확립하는 것이라고 설명했다.",
       "title": "대웅제약, 마이크로니들 무균 제조소 구축한다 | 연합뉴스"
+    },
+    "original:dddda6250190a58d08b49afa": {
+      "first_seen_kst": "2026-10-17T18:59:01+09:00",
+      "lanes": {
+        "live": "2026-10-17T18:59:01+09:00"
+      },
+      "last_seen_kst": "2026-10-17T18:59:01+09:00",
+      "link": "https://www.mk.co.kr/news/world/12178451",
+      "source": "매일경제",
+      "source_body_digest": "5202fafa26e296ff0c97dbb5b8dcc1c7c831cdf01fd58f5cd4fe012f1daa8b92",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0054512eddc28a44080557fc14c730c894dcd7fa22d5c7e32e8edc597d262af2",
+      "source_fact_keys": [
+        "source_fact:v1:009ba4a826f90fc111f28caeadec7b5d7ca7a6c9a2595ccc180f513f92da0c12",
+        "source_fact:v1:08f60e20aa9faaa802ce0916d0bdceded040af2f4ad5d63d3356eb328828a58d",
+        "source_fact:v1:1e312ceca0fffdb58825e6c5a92c8eaa6d025d806f9fe19be5b9b128b59a2684",
+        "source_fact:v1:277ad2273ec5be4bee75dc5706662021a0662900c45b4da7b0a1e96d7831657e",
+        "source_fact:v1:525f66b79a2066d45b609c9eab433a7338e23cda6ef012967a42daa1346d6d25",
+        "source_fact:v1:5af794005ff76f10500c4909317bdbbbcd4cf5e20dfe694015e949ccd61080c0",
+        "source_fact:v1:70967b04306e442d9e430ac295bd89c341965e9d84756569d8a49a02c5b01204",
+        "source_fact:v1:7a0cb3e836fb24192bf228b1ba016acf65865456c1b79470e6aa3744380d2540",
+        "source_fact:v1:8426999fbd98af69862eb5ac4bbe6ac15526b42067c8d087ef7b25b43601f380",
+        "source_fact:v1:9b68abe03907497423232ab53972f30fd95bb945a786a315e470e894e2cb042e",
+        "source_fact:v1:db28f03430be6a46902de47947bb82f39e63457d1083d571faff2037e0d227ea"
+      ],
+      "source_published_kst": "2026-10-17T14:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아산 에너지 구매국에 고율 관세를 부과하는 등 대(對)러시아 제재 조항 상당수의 시행을 유보하기로 했다.",
+      "title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보"
     },
     "original:dddfe532f1388478fd24d3c1": {
       "first_seen_kst": "2026-10-02T18:30:04+09:00",
@@ -365728,6 +365948,36 @@
       "source_published_kst": "2026-10-06T10:11+09:00",
       "title": "세아베스틸, 로봇 감속기용 특수강 국산화…양산 본격화"
     },
+    "source_fact:0d12ec7e11c692b42fc9239b": {
+      "first_seen_kst": "2026-10-17T18:59:01+09:00",
+      "lanes": {
+        "live": "2026-10-17T18:59:01+09:00"
+      },
+      "last_seen_kst": "2026-10-17T18:59:01+09:00",
+      "link": "https://www.mk.co.kr/news/world/12178451",
+      "source": "매일경제",
+      "source_body_digest": "5202fafa26e296ff0c97dbb5b8dcc1c7c831cdf01fd58f5cd4fe012f1daa8b92",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0054512eddc28a44080557fc14c730c894dcd7fa22d5c7e32e8edc597d262af2",
+      "source_fact_keys": [
+        "source_fact:v1:009ba4a826f90fc111f28caeadec7b5d7ca7a6c9a2595ccc180f513f92da0c12",
+        "source_fact:v1:08f60e20aa9faaa802ce0916d0bdceded040af2f4ad5d63d3356eb328828a58d",
+        "source_fact:v1:1e312ceca0fffdb58825e6c5a92c8eaa6d025d806f9fe19be5b9b128b59a2684",
+        "source_fact:v1:277ad2273ec5be4bee75dc5706662021a0662900c45b4da7b0a1e96d7831657e",
+        "source_fact:v1:525f66b79a2066d45b609c9eab433a7338e23cda6ef012967a42daa1346d6d25",
+        "source_fact:v1:5af794005ff76f10500c4909317bdbbbcd4cf5e20dfe694015e949ccd61080c0",
+        "source_fact:v1:70967b04306e442d9e430ac295bd89c341965e9d84756569d8a49a02c5b01204",
+        "source_fact:v1:7a0cb3e836fb24192bf228b1ba016acf65865456c1b79470e6aa3744380d2540",
+        "source_fact:v1:8426999fbd98af69862eb5ac4bbe6ac15526b42067c8d087ef7b25b43601f380",
+        "source_fact:v1:9b68abe03907497423232ab53972f30fd95bb945a786a315e470e894e2cb042e",
+        "source_fact:v1:db28f03430be6a46902de47947bb82f39e63457d1083d571faff2037e0d227ea"
+      ],
+      "source_published_kst": "2026-10-17T14:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아산 에너지 구매국에 고율 관세를 부과하는 등 대(對)러시아 제재 조항 상당수의 시행을 유보하기로 했다.",
+      "title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보"
+    },
     "source_fact:0d131db65b418c6d9ed87ccd": {
       "first_seen_kst": "2026-10-08T18:46:25+09:00",
       "lanes": {
@@ -374620,6 +374870,28 @@
       "source_title": "한투운용, 미국 빅테크 집중 ETF 순자산 1조2000억 돌파",
       "telegram_core_fact": "한국투자신탁운용은 7일 ACE 미국빅테크TOP7Plus 상장지수펀드(ETF)의 순자산액이 1조2000억원을 돌파했다고 밝혔다. ACE 미국빅테크TOP7Plus ETF는 미국 나스닥 시장에 상장된 빅테크 기업에 집중적으로 투자하는 상품으로 2023년 9월 상장했다.",
       "title": "한투운용, 미국 빅테크 집중 ETF 순자산 1조2000억 돌파"
+    },
+    "source_fact:12bdc34ff053561635cd2be8": {
+      "first_seen_kst": "2026-10-17T18:59:01+09:00",
+      "lanes": {
+        "live": "2026-10-17T18:59:01+09:00"
+      },
+      "last_seen_kst": "2026-10-17T18:59:01+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12178557",
+      "source": "매일경제",
+      "source_body_digest": "b058417399f14e8c7d9dfb2a639303a4d89bbecc57b3ec8a01a2bc26c303fc82",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3fd315c4add5a801809bf679de37daa31e8abe570602b90a3d7283b3717508ab",
+      "source_fact_keys": [
+        "source_fact:v1:09a06a5e138513f7f2040152da5f00ef3fe950ef055e087e5662232185a2e632",
+        "source_fact:v1:c6c01e5de5ac3bc15bca7b1a7520580c736173597e4eacd9bbb3172abde7e2ef",
+        "source_fact:v1:fb4e127d9c9d09400dab73e32e775e12d2a631ed0565587533e182f4c5a964c0"
+      ],
+      "source_published_kst": "2026-10-17T18:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프에 뺨 맞은 하버드…‘여기’ 투자 성공해 자산 90조원 돌파",
+      "telegram_core_fact": "리투 칼라 하버드 최고재무책임자(CFO)가 작성한 보고서에 따르면 하버드 기금 투자 소득에 대한 연방 세율은 올해 7월 1일 1.4%에서 8%로 인상됐다.",
+      "title": "트럼프에 뺨 맞은 하버드…‘여기’ 투자 성공해 자산 90조원 돌파"
     },
     "source_fact:12be060665ba3c1bc8834daa": {
       "first_seen_kst": "2026-10-12T00:21:39+09:00",
@@ -427021,6 +427293,36 @@
       "telegram_core_fact": "LG에너지솔루션이 8일 공시한 3분기 잠정실적에 따르면 매출은 9조6434억원, 영업이익은 7560억원이다.",
       "title": "[중화학ON]LG엔솔 3분기 영업익 7560억 '깜짝실적'…삼성SDI 흑자·SK온 적자 전망"
     },
+    "source_fact:355deb65192b17d89b6e12f2": {
+      "first_seen_kst": "2026-10-17T18:59:01+09:00",
+      "lanes": {
+        "live": "2026-10-17T18:59:01+09:00"
+      },
+      "last_seen_kst": "2026-10-17T18:59:01+09:00",
+      "link": "https://www.mk.co.kr/news/world/12178451",
+      "source": "매일경제",
+      "source_body_digest": "5202fafa26e296ff0c97dbb5b8dcc1c7c831cdf01fd58f5cd4fe012f1daa8b92",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0054512eddc28a44080557fc14c730c894dcd7fa22d5c7e32e8edc597d262af2",
+      "source_fact_keys": [
+        "source_fact:v1:009ba4a826f90fc111f28caeadec7b5d7ca7a6c9a2595ccc180f513f92da0c12",
+        "source_fact:v1:08f60e20aa9faaa802ce0916d0bdceded040af2f4ad5d63d3356eb328828a58d",
+        "source_fact:v1:1e312ceca0fffdb58825e6c5a92c8eaa6d025d806f9fe19be5b9b128b59a2684",
+        "source_fact:v1:277ad2273ec5be4bee75dc5706662021a0662900c45b4da7b0a1e96d7831657e",
+        "source_fact:v1:525f66b79a2066d45b609c9eab433a7338e23cda6ef012967a42daa1346d6d25",
+        "source_fact:v1:5af794005ff76f10500c4909317bdbbbcd4cf5e20dfe694015e949ccd61080c0",
+        "source_fact:v1:70967b04306e442d9e430ac295bd89c341965e9d84756569d8a49a02c5b01204",
+        "source_fact:v1:7a0cb3e836fb24192bf228b1ba016acf65865456c1b79470e6aa3744380d2540",
+        "source_fact:v1:8426999fbd98af69862eb5ac4bbe6ac15526b42067c8d087ef7b25b43601f380",
+        "source_fact:v1:9b68abe03907497423232ab53972f30fd95bb945a786a315e470e894e2cb042e",
+        "source_fact:v1:db28f03430be6a46902de47947bb82f39e63457d1083d571faff2037e0d227ea"
+      ],
+      "source_published_kst": "2026-10-17T14:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아산 에너지 구매국에 고율 관세를 부과하는 등 대(對)러시아 제재 조항 상당수의 시행을 유보하기로 했다.",
+      "title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보"
+    },
     "source_fact:357649c350460723f7cad9c3": {
       "first_seen_kst": "2026-10-08T21:47:01+09:00",
       "lanes": {
@@ -450725,6 +451027,36 @@
       "source_title": "코스피 14% 폭락 속 13% 솟구쳤다…불기둥 세운 종목[김근희의 증시 랩업]",
       "telegram_core_fact": "10월 셋째 주(12~16일) 코스피가 14% 넘게 급락하며 5600선까지 밀렸다. '김근희의 증시 랩업'은 한 주간 상승·하락한 종목들과 증시 주요 이벤트 등을 살펴보며 시장의 흐름을 짚고, 투자자들이 현명한 투자 전략을 짤 수 있도록 돕겠습니다.",
       "title": "코스피 14% 폭락 속 13% 솟구쳤다…불기둥 세운 종목[김근희의 증시 랩업]"
+    },
+    "source_fact:45b8eb29520c28a95b3910d8": {
+      "first_seen_kst": "2026-10-17T18:59:01+09:00",
+      "lanes": {
+        "live": "2026-10-17T18:59:01+09:00"
+      },
+      "last_seen_kst": "2026-10-17T18:59:01+09:00",
+      "link": "https://www.mk.co.kr/news/world/12178451",
+      "source": "매일경제",
+      "source_body_digest": "5202fafa26e296ff0c97dbb5b8dcc1c7c831cdf01fd58f5cd4fe012f1daa8b92",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0054512eddc28a44080557fc14c730c894dcd7fa22d5c7e32e8edc597d262af2",
+      "source_fact_keys": [
+        "source_fact:v1:009ba4a826f90fc111f28caeadec7b5d7ca7a6c9a2595ccc180f513f92da0c12",
+        "source_fact:v1:08f60e20aa9faaa802ce0916d0bdceded040af2f4ad5d63d3356eb328828a58d",
+        "source_fact:v1:1e312ceca0fffdb58825e6c5a92c8eaa6d025d806f9fe19be5b9b128b59a2684",
+        "source_fact:v1:277ad2273ec5be4bee75dc5706662021a0662900c45b4da7b0a1e96d7831657e",
+        "source_fact:v1:525f66b79a2066d45b609c9eab433a7338e23cda6ef012967a42daa1346d6d25",
+        "source_fact:v1:5af794005ff76f10500c4909317bdbbbcd4cf5e20dfe694015e949ccd61080c0",
+        "source_fact:v1:70967b04306e442d9e430ac295bd89c341965e9d84756569d8a49a02c5b01204",
+        "source_fact:v1:7a0cb3e836fb24192bf228b1ba016acf65865456c1b79470e6aa3744380d2540",
+        "source_fact:v1:8426999fbd98af69862eb5ac4bbe6ac15526b42067c8d087ef7b25b43601f380",
+        "source_fact:v1:9b68abe03907497423232ab53972f30fd95bb945a786a315e470e894e2cb042e",
+        "source_fact:v1:db28f03430be6a46902de47947bb82f39e63457d1083d571faff2037e0d227ea"
+      ],
+      "source_published_kst": "2026-10-17T14:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아산 에너지 구매국에 고율 관세를 부과하는 등 대(對)러시아 제재 조항 상당수의 시행을 유보하기로 했다.",
+      "title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보"
     },
     "source_fact:45c7b7fe897f2b4b939291da": {
       "first_seen_kst": "2026-10-14T04:09:16+09:00",
@@ -481906,6 +482238,36 @@
       "source_title": "루닛, 美 디스커버리와 협력…글로벌 제약사에 AI 병리 분석 공급",
       "telegram_core_fact": "루닛이 미국 디스커버리 라이프 사이언스와 손잡고 글로벌 제약사의 신약 개발 과정에 인공지능(AI) 병리 분석 기술 공급을 확대한다.",
       "title": "루닛, 美 디스커버리와 협력…글로벌 제약사에 AI 병리 분석 공급"
+    },
+    "source_fact:5994c5f16a9e225cecb0ac59": {
+      "first_seen_kst": "2026-10-17T18:59:01+09:00",
+      "lanes": {
+        "live": "2026-10-17T18:59:01+09:00"
+      },
+      "last_seen_kst": "2026-10-17T18:59:01+09:00",
+      "link": "https://www.mk.co.kr/news/world/12178451",
+      "source": "매일경제",
+      "source_body_digest": "5202fafa26e296ff0c97dbb5b8dcc1c7c831cdf01fd58f5cd4fe012f1daa8b92",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0054512eddc28a44080557fc14c730c894dcd7fa22d5c7e32e8edc597d262af2",
+      "source_fact_keys": [
+        "source_fact:v1:009ba4a826f90fc111f28caeadec7b5d7ca7a6c9a2595ccc180f513f92da0c12",
+        "source_fact:v1:08f60e20aa9faaa802ce0916d0bdceded040af2f4ad5d63d3356eb328828a58d",
+        "source_fact:v1:1e312ceca0fffdb58825e6c5a92c8eaa6d025d806f9fe19be5b9b128b59a2684",
+        "source_fact:v1:277ad2273ec5be4bee75dc5706662021a0662900c45b4da7b0a1e96d7831657e",
+        "source_fact:v1:525f66b79a2066d45b609c9eab433a7338e23cda6ef012967a42daa1346d6d25",
+        "source_fact:v1:5af794005ff76f10500c4909317bdbbbcd4cf5e20dfe694015e949ccd61080c0",
+        "source_fact:v1:70967b04306e442d9e430ac295bd89c341965e9d84756569d8a49a02c5b01204",
+        "source_fact:v1:7a0cb3e836fb24192bf228b1ba016acf65865456c1b79470e6aa3744380d2540",
+        "source_fact:v1:8426999fbd98af69862eb5ac4bbe6ac15526b42067c8d087ef7b25b43601f380",
+        "source_fact:v1:9b68abe03907497423232ab53972f30fd95bb945a786a315e470e894e2cb042e",
+        "source_fact:v1:db28f03430be6a46902de47947bb82f39e63457d1083d571faff2037e0d227ea"
+      ],
+      "source_published_kst": "2026-10-17T14:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아산 에너지 구매국에 고율 관세를 부과하는 등 대(對)러시아 제재 조항 상당수의 시행을 유보하기로 했다.",
+      "title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보"
     },
     "source_fact:5994e087cb82973f9891f271": {
       "first_seen_kst": "2026-10-15T14:04:10+09:00",
@@ -513275,6 +513637,36 @@
       "source_title": "'아픈손가락' 솔리다임, SK하이닉스 美전략 핵심될까",
       "telegram_core_fact": "AI 컴퍼니의 현지 투자·협력 전략에 솔리다임의 자금 조달 역량이 더해져 SK하이닉스의 미국 사업 확대에도 힘이 실릴 수 있다는 분석이다. 솔리다임은 SK하이닉스가 인텔의 낸드·SSD 사업을 인수해 2021년 출범한 회사다.",
       "title": "'아픈손가락' 솔리다임, SK하이닉스 美전략 핵심될까"
+    },
+    "source_fact:6eed1551a0364053d0f6ed2c": {
+      "first_seen_kst": "2026-10-17T18:59:01+09:00",
+      "lanes": {
+        "live": "2026-10-17T18:59:01+09:00"
+      },
+      "last_seen_kst": "2026-10-17T18:59:01+09:00",
+      "link": "https://www.mk.co.kr/news/world/12178451",
+      "source": "매일경제",
+      "source_body_digest": "5202fafa26e296ff0c97dbb5b8dcc1c7c831cdf01fd58f5cd4fe012f1daa8b92",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0054512eddc28a44080557fc14c730c894dcd7fa22d5c7e32e8edc597d262af2",
+      "source_fact_keys": [
+        "source_fact:v1:009ba4a826f90fc111f28caeadec7b5d7ca7a6c9a2595ccc180f513f92da0c12",
+        "source_fact:v1:08f60e20aa9faaa802ce0916d0bdceded040af2f4ad5d63d3356eb328828a58d",
+        "source_fact:v1:1e312ceca0fffdb58825e6c5a92c8eaa6d025d806f9fe19be5b9b128b59a2684",
+        "source_fact:v1:277ad2273ec5be4bee75dc5706662021a0662900c45b4da7b0a1e96d7831657e",
+        "source_fact:v1:525f66b79a2066d45b609c9eab433a7338e23cda6ef012967a42daa1346d6d25",
+        "source_fact:v1:5af794005ff76f10500c4909317bdbbbcd4cf5e20dfe694015e949ccd61080c0",
+        "source_fact:v1:70967b04306e442d9e430ac295bd89c341965e9d84756569d8a49a02c5b01204",
+        "source_fact:v1:7a0cb3e836fb24192bf228b1ba016acf65865456c1b79470e6aa3744380d2540",
+        "source_fact:v1:8426999fbd98af69862eb5ac4bbe6ac15526b42067c8d087ef7b25b43601f380",
+        "source_fact:v1:9b68abe03907497423232ab53972f30fd95bb945a786a315e470e894e2cb042e",
+        "source_fact:v1:db28f03430be6a46902de47947bb82f39e63457d1083d571faff2037e0d227ea"
+      ],
+      "source_published_kst": "2026-10-17T14:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아산 에너지 구매국에 고율 관세를 부과하는 등 대(對)러시아 제재 조항 상당수의 시행을 유보하기로 했다.",
+      "title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보"
     },
     "source_fact:6ef2a57a8e1df0a8a1ede2de": {
       "first_seen_kst": "2026-10-14T07:18:46+09:00",
@@ -571405,6 +571797,36 @@
       "telegram_core_fact": "11일 금융감독원 OpenDART 공시자료 집계 결과 올해 1월 1일부터 9월 28일까지 코스피 상장사의 자기주식 직접취득 결정액은 74조629억원으로 집계됐다.",
       "title": "“역시 주주환원은 뒷전입니까”…코스피 자사주 매입, 삼전닉스 뺐더니 줄었다"
     },
+    "source_fact:971f0123d1b848f045a13cd2": {
+      "first_seen_kst": "2026-10-17T18:59:01+09:00",
+      "lanes": {
+        "live": "2026-10-17T18:59:01+09:00"
+      },
+      "last_seen_kst": "2026-10-17T18:59:01+09:00",
+      "link": "https://www.mk.co.kr/news/world/12178451",
+      "source": "매일경제",
+      "source_body_digest": "5202fafa26e296ff0c97dbb5b8dcc1c7c831cdf01fd58f5cd4fe012f1daa8b92",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0054512eddc28a44080557fc14c730c894dcd7fa22d5c7e32e8edc597d262af2",
+      "source_fact_keys": [
+        "source_fact:v1:009ba4a826f90fc111f28caeadec7b5d7ca7a6c9a2595ccc180f513f92da0c12",
+        "source_fact:v1:08f60e20aa9faaa802ce0916d0bdceded040af2f4ad5d63d3356eb328828a58d",
+        "source_fact:v1:1e312ceca0fffdb58825e6c5a92c8eaa6d025d806f9fe19be5b9b128b59a2684",
+        "source_fact:v1:277ad2273ec5be4bee75dc5706662021a0662900c45b4da7b0a1e96d7831657e",
+        "source_fact:v1:525f66b79a2066d45b609c9eab433a7338e23cda6ef012967a42daa1346d6d25",
+        "source_fact:v1:5af794005ff76f10500c4909317bdbbbcd4cf5e20dfe694015e949ccd61080c0",
+        "source_fact:v1:70967b04306e442d9e430ac295bd89c341965e9d84756569d8a49a02c5b01204",
+        "source_fact:v1:7a0cb3e836fb24192bf228b1ba016acf65865456c1b79470e6aa3744380d2540",
+        "source_fact:v1:8426999fbd98af69862eb5ac4bbe6ac15526b42067c8d087ef7b25b43601f380",
+        "source_fact:v1:9b68abe03907497423232ab53972f30fd95bb945a786a315e470e894e2cb042e",
+        "source_fact:v1:db28f03430be6a46902de47947bb82f39e63457d1083d571faff2037e0d227ea"
+      ],
+      "source_published_kst": "2026-10-17T14:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아산 에너지 구매국에 고율 관세를 부과하는 등 대(對)러시아 제재 조항 상당수의 시행을 유보하기로 했다.",
+      "title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보"
+    },
     "source_fact:97235569cd2cf96abdf4a915": {
       "first_seen_kst": "2026-10-06T17:35:32+09:00",
       "lanes": {
@@ -572521,6 +572943,28 @@
       "source_title": "[인터뷰] 장재훈 현대차그룹 부회장 \"인도에 21조원 투자…60%는 생산시설, 20%는 AI 등 신사업\"",
       "telegram_core_fact": "장재훈 현대차그룹 부회장은 14일(현지시간) 인도 마하라슈트라주 푸네 신공장 준공식 이후 열린 기자간담회에서 \"노후 시설 등 생산과 관련된 시설들을 업그레이드하고 증설하는 부분이 전체 투자의 60% 정도 될 것\"이라고 밝혔다.",
       "title": "[인터뷰] 장재훈 현대차그룹 부회장 \"인도에 21조원 투자…60%는 생산시설, 20%는 AI 등 신사업\""
+    },
+    "source_fact:97ee24c69bdf5b67d066b06a": {
+      "first_seen_kst": "2026-10-17T18:59:01+09:00",
+      "lanes": {
+        "live": "2026-10-17T18:59:01+09:00"
+      },
+      "last_seen_kst": "2026-10-17T18:59:01+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12178557",
+      "source": "매일경제",
+      "source_body_digest": "b058417399f14e8c7d9dfb2a639303a4d89bbecc57b3ec8a01a2bc26c303fc82",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3fd315c4add5a801809bf679de37daa31e8abe570602b90a3d7283b3717508ab",
+      "source_fact_keys": [
+        "source_fact:v1:09a06a5e138513f7f2040152da5f00ef3fe950ef055e087e5662232185a2e632",
+        "source_fact:v1:c6c01e5de5ac3bc15bca7b1a7520580c736173597e4eacd9bbb3172abde7e2ef",
+        "source_fact:v1:fb4e127d9c9d09400dab73e32e775e12d2a631ed0565587533e182f4c5a964c0"
+      ],
+      "source_published_kst": "2026-10-17T18:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프에 뺨 맞은 하버드…‘여기’ 투자 성공해 자산 90조원 돌파",
+      "telegram_core_fact": "리투 칼라 하버드 최고재무책임자(CFO)가 작성한 보고서에 따르면 하버드 기금 투자 소득에 대한 연방 세율은 올해 7월 1일 1.4%에서 8%로 인상됐다.",
+      "title": "트럼프에 뺨 맞은 하버드…‘여기’ 투자 성공해 자산 90조원 돌파"
     },
     "source_fact:97f283ee676ccf3f9e54bf65": {
       "first_seen_kst": "2026-10-08T14:55:40+09:00",
@@ -593765,6 +594209,36 @@
       "source_published_kst": "2026-10-05T20:58+09:00",
       "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
     },
+    "source_fact:a627615a5da0229229851a18": {
+      "first_seen_kst": "2026-10-17T18:59:01+09:00",
+      "lanes": {
+        "live": "2026-10-17T18:59:01+09:00"
+      },
+      "last_seen_kst": "2026-10-17T18:59:01+09:00",
+      "link": "https://www.mk.co.kr/news/world/12178451",
+      "source": "매일경제",
+      "source_body_digest": "5202fafa26e296ff0c97dbb5b8dcc1c7c831cdf01fd58f5cd4fe012f1daa8b92",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0054512eddc28a44080557fc14c730c894dcd7fa22d5c7e32e8edc597d262af2",
+      "source_fact_keys": [
+        "source_fact:v1:009ba4a826f90fc111f28caeadec7b5d7ca7a6c9a2595ccc180f513f92da0c12",
+        "source_fact:v1:08f60e20aa9faaa802ce0916d0bdceded040af2f4ad5d63d3356eb328828a58d",
+        "source_fact:v1:1e312ceca0fffdb58825e6c5a92c8eaa6d025d806f9fe19be5b9b128b59a2684",
+        "source_fact:v1:277ad2273ec5be4bee75dc5706662021a0662900c45b4da7b0a1e96d7831657e",
+        "source_fact:v1:525f66b79a2066d45b609c9eab433a7338e23cda6ef012967a42daa1346d6d25",
+        "source_fact:v1:5af794005ff76f10500c4909317bdbbbcd4cf5e20dfe694015e949ccd61080c0",
+        "source_fact:v1:70967b04306e442d9e430ac295bd89c341965e9d84756569d8a49a02c5b01204",
+        "source_fact:v1:7a0cb3e836fb24192bf228b1ba016acf65865456c1b79470e6aa3744380d2540",
+        "source_fact:v1:8426999fbd98af69862eb5ac4bbe6ac15526b42067c8d087ef7b25b43601f380",
+        "source_fact:v1:9b68abe03907497423232ab53972f30fd95bb945a786a315e470e894e2cb042e",
+        "source_fact:v1:db28f03430be6a46902de47947bb82f39e63457d1083d571faff2037e0d227ea"
+      ],
+      "source_published_kst": "2026-10-17T14:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아산 에너지 구매국에 고율 관세를 부과하는 등 대(對)러시아 제재 조항 상당수의 시행을 유보하기로 했다.",
+      "title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보"
+    },
     "source_fact:a627d2ba0286c4580a19af77": {
       "first_seen_kst": "2026-10-06T14:52:12+09:00",
       "lanes": {
@@ -604126,6 +604600,28 @@
       "source_published_kst": "2026-10-06T16:57+09:00",
       "title": "[BioS]알테오젠, 국민성장펀드 등 2000억 유치..\"新동력 확보\""
     },
+    "source_fact:ad0d01f027c644151bc7e706": {
+      "first_seen_kst": "2026-10-17T18:59:01+09:00",
+      "lanes": {
+        "live": "2026-10-17T18:59:01+09:00"
+      },
+      "last_seen_kst": "2026-10-17T18:59:01+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12178557",
+      "source": "매일경제",
+      "source_body_digest": "b058417399f14e8c7d9dfb2a639303a4d89bbecc57b3ec8a01a2bc26c303fc82",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3fd315c4add5a801809bf679de37daa31e8abe570602b90a3d7283b3717508ab",
+      "source_fact_keys": [
+        "source_fact:v1:09a06a5e138513f7f2040152da5f00ef3fe950ef055e087e5662232185a2e632",
+        "source_fact:v1:c6c01e5de5ac3bc15bca7b1a7520580c736173597e4eacd9bbb3172abde7e2ef",
+        "source_fact:v1:fb4e127d9c9d09400dab73e32e775e12d2a631ed0565587533e182f4c5a964c0"
+      ],
+      "source_published_kst": "2026-10-17T18:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프에 뺨 맞은 하버드…‘여기’ 투자 성공해 자산 90조원 돌파",
+      "telegram_core_fact": "리투 칼라 하버드 최고재무책임자(CFO)가 작성한 보고서에 따르면 하버드 기금 투자 소득에 대한 연방 세율은 올해 7월 1일 1.4%에서 8%로 인상됐다.",
+      "title": "트럼프에 뺨 맞은 하버드…‘여기’ 투자 성공해 자산 90조원 돌파"
+    },
     "source_fact:ad12ae9eab6e19b4530c6740": {
       "first_seen_kst": "2026-10-07T16:44:58+09:00",
       "lanes": {
@@ -606367,6 +606863,36 @@
       "source_title": "GS건설, 연간 1만7000세대 분양 예상...일주일 새 영업익 전망 29% 올라가",
       "telegram_core_fact": "인공지능(AI) 기반 투자정보 플랫폼 에픽AI에 따르면 GS건설의 올해 영업이익 컨센서스(증권사 전망치 평균)는 5321억원으로 집계됐다.",
       "title": "GS건설, 연간 1만7000세대 분양 예상...일주일 새 영업익 전망 29% 올라가"
+    },
+    "source_fact:ae851b840e494cd28869c15b": {
+      "first_seen_kst": "2026-10-17T18:59:01+09:00",
+      "lanes": {
+        "live": "2026-10-17T18:59:01+09:00"
+      },
+      "last_seen_kst": "2026-10-17T18:59:01+09:00",
+      "link": "https://www.mk.co.kr/news/world/12178451",
+      "source": "매일경제",
+      "source_body_digest": "5202fafa26e296ff0c97dbb5b8dcc1c7c831cdf01fd58f5cd4fe012f1daa8b92",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0054512eddc28a44080557fc14c730c894dcd7fa22d5c7e32e8edc597d262af2",
+      "source_fact_keys": [
+        "source_fact:v1:009ba4a826f90fc111f28caeadec7b5d7ca7a6c9a2595ccc180f513f92da0c12",
+        "source_fact:v1:08f60e20aa9faaa802ce0916d0bdceded040af2f4ad5d63d3356eb328828a58d",
+        "source_fact:v1:1e312ceca0fffdb58825e6c5a92c8eaa6d025d806f9fe19be5b9b128b59a2684",
+        "source_fact:v1:277ad2273ec5be4bee75dc5706662021a0662900c45b4da7b0a1e96d7831657e",
+        "source_fact:v1:525f66b79a2066d45b609c9eab433a7338e23cda6ef012967a42daa1346d6d25",
+        "source_fact:v1:5af794005ff76f10500c4909317bdbbbcd4cf5e20dfe694015e949ccd61080c0",
+        "source_fact:v1:70967b04306e442d9e430ac295bd89c341965e9d84756569d8a49a02c5b01204",
+        "source_fact:v1:7a0cb3e836fb24192bf228b1ba016acf65865456c1b79470e6aa3744380d2540",
+        "source_fact:v1:8426999fbd98af69862eb5ac4bbe6ac15526b42067c8d087ef7b25b43601f380",
+        "source_fact:v1:9b68abe03907497423232ab53972f30fd95bb945a786a315e470e894e2cb042e",
+        "source_fact:v1:db28f03430be6a46902de47947bb82f39e63457d1083d571faff2037e0d227ea"
+      ],
+      "source_published_kst": "2026-10-17T14:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아산 에너지 구매국에 고율 관세를 부과하는 등 대(對)러시아 제재 조항 상당수의 시행을 유보하기로 했다.",
+      "title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보"
     },
     "source_fact:ae87e695c1d7a27771aacf40": {
       "first_seen_kst": "2026-10-11T16:16:50+09:00",
@@ -673462,6 +673988,36 @@
       "source_published_kst": "2026-10-07T10:21+09:00",
       "title": "MBK, 2조5000억 규모 홈플러스 보통주 전량 무상소각"
     },
+    "source_fact:dc03f613ca454555dfc0bcb6": {
+      "first_seen_kst": "2026-10-17T18:59:01+09:00",
+      "lanes": {
+        "live": "2026-10-17T18:59:01+09:00"
+      },
+      "last_seen_kst": "2026-10-17T18:59:01+09:00",
+      "link": "https://www.mk.co.kr/news/world/12178451",
+      "source": "매일경제",
+      "source_body_digest": "5202fafa26e296ff0c97dbb5b8dcc1c7c831cdf01fd58f5cd4fe012f1daa8b92",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0054512eddc28a44080557fc14c730c894dcd7fa22d5c7e32e8edc597d262af2",
+      "source_fact_keys": [
+        "source_fact:v1:009ba4a826f90fc111f28caeadec7b5d7ca7a6c9a2595ccc180f513f92da0c12",
+        "source_fact:v1:08f60e20aa9faaa802ce0916d0bdceded040af2f4ad5d63d3356eb328828a58d",
+        "source_fact:v1:1e312ceca0fffdb58825e6c5a92c8eaa6d025d806f9fe19be5b9b128b59a2684",
+        "source_fact:v1:277ad2273ec5be4bee75dc5706662021a0662900c45b4da7b0a1e96d7831657e",
+        "source_fact:v1:525f66b79a2066d45b609c9eab433a7338e23cda6ef012967a42daa1346d6d25",
+        "source_fact:v1:5af794005ff76f10500c4909317bdbbbcd4cf5e20dfe694015e949ccd61080c0",
+        "source_fact:v1:70967b04306e442d9e430ac295bd89c341965e9d84756569d8a49a02c5b01204",
+        "source_fact:v1:7a0cb3e836fb24192bf228b1ba016acf65865456c1b79470e6aa3744380d2540",
+        "source_fact:v1:8426999fbd98af69862eb5ac4bbe6ac15526b42067c8d087ef7b25b43601f380",
+        "source_fact:v1:9b68abe03907497423232ab53972f30fd95bb945a786a315e470e894e2cb042e",
+        "source_fact:v1:db28f03430be6a46902de47947bb82f39e63457d1083d571faff2037e0d227ea"
+      ],
+      "source_published_kst": "2026-10-17T14:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아산 에너지 구매국에 고율 관세를 부과하는 등 대(對)러시아 제재 조항 상당수의 시행을 유보하기로 했다.",
+      "title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보"
+    },
     "source_fact:dc0a4138e09e60913b9cc815": {
       "first_seen_kst": "2026-10-12T00:21:39+09:00",
       "lanes": {
@@ -691015,6 +691571,36 @@
       "telegram_core_fact": "10년 만기 미국 국채금리는 장중 연 5.36%까지 상승해 2002년 이후 최고치를 기록했다.",
       "title": "뉴욕증시, 국채금리 24년래 최고에 휘청⋯3대 지수 동반 하락[종합]"
     },
+    "source_fact:e77b2169ca06ecc5b453b8ed": {
+      "first_seen_kst": "2026-10-17T18:59:01+09:00",
+      "lanes": {
+        "live": "2026-10-17T18:59:01+09:00"
+      },
+      "last_seen_kst": "2026-10-17T18:59:01+09:00",
+      "link": "https://www.mk.co.kr/news/world/12178451",
+      "source": "매일경제",
+      "source_body_digest": "5202fafa26e296ff0c97dbb5b8dcc1c7c831cdf01fd58f5cd4fe012f1daa8b92",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0054512eddc28a44080557fc14c730c894dcd7fa22d5c7e32e8edc597d262af2",
+      "source_fact_keys": [
+        "source_fact:v1:009ba4a826f90fc111f28caeadec7b5d7ca7a6c9a2595ccc180f513f92da0c12",
+        "source_fact:v1:08f60e20aa9faaa802ce0916d0bdceded040af2f4ad5d63d3356eb328828a58d",
+        "source_fact:v1:1e312ceca0fffdb58825e6c5a92c8eaa6d025d806f9fe19be5b9b128b59a2684",
+        "source_fact:v1:277ad2273ec5be4bee75dc5706662021a0662900c45b4da7b0a1e96d7831657e",
+        "source_fact:v1:525f66b79a2066d45b609c9eab433a7338e23cda6ef012967a42daa1346d6d25",
+        "source_fact:v1:5af794005ff76f10500c4909317bdbbbcd4cf5e20dfe694015e949ccd61080c0",
+        "source_fact:v1:70967b04306e442d9e430ac295bd89c341965e9d84756569d8a49a02c5b01204",
+        "source_fact:v1:7a0cb3e836fb24192bf228b1ba016acf65865456c1b79470e6aa3744380d2540",
+        "source_fact:v1:8426999fbd98af69862eb5ac4bbe6ac15526b42067c8d087ef7b25b43601f380",
+        "source_fact:v1:9b68abe03907497423232ab53972f30fd95bb945a786a315e470e894e2cb042e",
+        "source_fact:v1:db28f03430be6a46902de47947bb82f39e63457d1083d571faff2037e0d227ea"
+      ],
+      "source_published_kst": "2026-10-17T14:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아산 에너지 구매국에 고율 관세를 부과하는 등 대(對)러시아 제재 조항 상당수의 시행을 유보하기로 했다.",
+      "title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보"
+    },
     "source_fact:e77e1c1e7f177177155cc096": {
       "first_seen_kst": "2026-10-08T17:42:30+09:00",
       "lanes": {
@@ -700676,6 +701262,36 @@
       ],
       "source_published_kst": "2026-10-07T10:08+09:00",
       "title": "365mc·GC녹십자웰빙, 국소지방 신약·GLP-1 건기식 공동개발"
+    },
+    "source_fact:ee367a15639fa2f7574a1f7c": {
+      "first_seen_kst": "2026-10-17T18:59:01+09:00",
+      "lanes": {
+        "live": "2026-10-17T18:59:01+09:00"
+      },
+      "last_seen_kst": "2026-10-17T18:59:01+09:00",
+      "link": "https://www.mk.co.kr/news/world/12178451",
+      "source": "매일경제",
+      "source_body_digest": "5202fafa26e296ff0c97dbb5b8dcc1c7c831cdf01fd58f5cd4fe012f1daa8b92",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0054512eddc28a44080557fc14c730c894dcd7fa22d5c7e32e8edc597d262af2",
+      "source_fact_keys": [
+        "source_fact:v1:009ba4a826f90fc111f28caeadec7b5d7ca7a6c9a2595ccc180f513f92da0c12",
+        "source_fact:v1:08f60e20aa9faaa802ce0916d0bdceded040af2f4ad5d63d3356eb328828a58d",
+        "source_fact:v1:1e312ceca0fffdb58825e6c5a92c8eaa6d025d806f9fe19be5b9b128b59a2684",
+        "source_fact:v1:277ad2273ec5be4bee75dc5706662021a0662900c45b4da7b0a1e96d7831657e",
+        "source_fact:v1:525f66b79a2066d45b609c9eab433a7338e23cda6ef012967a42daa1346d6d25",
+        "source_fact:v1:5af794005ff76f10500c4909317bdbbbcd4cf5e20dfe694015e949ccd61080c0",
+        "source_fact:v1:70967b04306e442d9e430ac295bd89c341965e9d84756569d8a49a02c5b01204",
+        "source_fact:v1:7a0cb3e836fb24192bf228b1ba016acf65865456c1b79470e6aa3744380d2540",
+        "source_fact:v1:8426999fbd98af69862eb5ac4bbe6ac15526b42067c8d087ef7b25b43601f380",
+        "source_fact:v1:9b68abe03907497423232ab53972f30fd95bb945a786a315e470e894e2cb042e",
+        "source_fact:v1:db28f03430be6a46902de47947bb82f39e63457d1083d571faff2037e0d227ea"
+      ],
+      "source_published_kst": "2026-10-17T14:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아산 에너지 구매국에 고율 관세를 부과하는 등 대(對)러시아 제재 조항 상당수의 시행을 유보하기로 했다.",
+      "title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보"
     },
     "source_fact:ee3b4e2059f881a911577fee": {
       "first_seen_kst": "2026-10-16T19:25:42+09:00",
@@ -780814,6 +781430,28 @@
       "telegram_core_fact": "식약처 소속 식품의약품안전평가원은 국제인증표준품(CRM) 및 NDMA 등 니트로사민류 표준품을 포함한 '2026 식품의약품안전처 표준품 종합안내서'를 발간하고 이날부터 표준품 분양을 시작한다고 12일 밝혔다.",
       "title": "식약처 \"국제인증표준품 관련 종합안내서 발간\""
     },
+    "title:8e8cc41eff7274ce285a7be3": {
+      "first_seen_kst": "2026-10-17T18:59:01+09:00",
+      "lanes": {
+        "live": "2026-10-17T18:59:01+09:00"
+      },
+      "last_seen_kst": "2026-10-17T18:59:01+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12178557",
+      "source": "매일경제",
+      "source_body_digest": "b058417399f14e8c7d9dfb2a639303a4d89bbecc57b3ec8a01a2bc26c303fc82",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3fd315c4add5a801809bf679de37daa31e8abe570602b90a3d7283b3717508ab",
+      "source_fact_keys": [
+        "source_fact:v1:09a06a5e138513f7f2040152da5f00ef3fe950ef055e087e5662232185a2e632",
+        "source_fact:v1:c6c01e5de5ac3bc15bca7b1a7520580c736173597e4eacd9bbb3172abde7e2ef",
+        "source_fact:v1:fb4e127d9c9d09400dab73e32e775e12d2a631ed0565587533e182f4c5a964c0"
+      ],
+      "source_published_kst": "2026-10-17T18:25+09:00",
+      "source_supply_terms": {},
+      "source_title": "트럼프에 뺨 맞은 하버드…‘여기’ 투자 성공해 자산 90조원 돌파",
+      "telegram_core_fact": "리투 칼라 하버드 최고재무책임자(CFO)가 작성한 보고서에 따르면 하버드 기금 투자 소득에 대한 연방 세율은 올해 7월 1일 1.4%에서 8%로 인상됐다.",
+      "title": "트럼프에 뺨 맞은 하버드…‘여기’ 투자 성공해 자산 90조원 돌파"
+    },
     "title:8e8ff8907954d95bc62df7fb": {
       "first_seen_kst": "2026-10-15T05:50:30+09:00",
       "lanes": {
@@ -811303,6 +811941,36 @@
       "telegram_core_fact": "대웅제약[069620]은 경기 화성시 향남 대웅바이오 3공장에 마이크로니들(Microneedle) 제조 인프라를 구축한다고 14일 밝혔다. 대웅제약은 이번 생산 인프라 구축의 핵심은 마이크로니들 패치형 의약품의 특성을 반영한 무균 제조공정과 자동화 생산체계를 확립하는 것이라고 설명했다.",
       "title": "대웅제약, 마이크로니들 무균 제조소 구축한다 | 연합뉴스"
     },
+    "title:dddda6250190a58d08b49afa": {
+      "first_seen_kst": "2026-10-17T18:59:01+09:00",
+      "lanes": {
+        "live": "2026-10-17T18:59:01+09:00"
+      },
+      "last_seen_kst": "2026-10-17T18:59:01+09:00",
+      "link": "https://www.mk.co.kr/news/world/12178451",
+      "source": "매일경제",
+      "source_body_digest": "5202fafa26e296ff0c97dbb5b8dcc1c7c831cdf01fd58f5cd4fe012f1daa8b92",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0054512eddc28a44080557fc14c730c894dcd7fa22d5c7e32e8edc597d262af2",
+      "source_fact_keys": [
+        "source_fact:v1:009ba4a826f90fc111f28caeadec7b5d7ca7a6c9a2595ccc180f513f92da0c12",
+        "source_fact:v1:08f60e20aa9faaa802ce0916d0bdceded040af2f4ad5d63d3356eb328828a58d",
+        "source_fact:v1:1e312ceca0fffdb58825e6c5a92c8eaa6d025d806f9fe19be5b9b128b59a2684",
+        "source_fact:v1:277ad2273ec5be4bee75dc5706662021a0662900c45b4da7b0a1e96d7831657e",
+        "source_fact:v1:525f66b79a2066d45b609c9eab433a7338e23cda6ef012967a42daa1346d6d25",
+        "source_fact:v1:5af794005ff76f10500c4909317bdbbbcd4cf5e20dfe694015e949ccd61080c0",
+        "source_fact:v1:70967b04306e442d9e430ac295bd89c341965e9d84756569d8a49a02c5b01204",
+        "source_fact:v1:7a0cb3e836fb24192bf228b1ba016acf65865456c1b79470e6aa3744380d2540",
+        "source_fact:v1:8426999fbd98af69862eb5ac4bbe6ac15526b42067c8d087ef7b25b43601f380",
+        "source_fact:v1:9b68abe03907497423232ab53972f30fd95bb945a786a315e470e894e2cb042e",
+        "source_fact:v1:db28f03430be6a46902de47947bb82f39e63457d1083d571faff2037e0d227ea"
+      ],
+      "source_published_kst": "2026-10-17T14:33+09:00",
+      "source_supply_terms": {},
+      "source_title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보",
+      "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아산 에너지 구매국에 고율 관세를 부과하는 등 대(對)러시아 제재 조항 상당수의 시행을 유보하기로 했다.",
+      "title": "“기름값 110달러에 트럼프도 겁먹었나?”…러시아 제재 돌연 유보"
+    },
     "title:dddfe532f1388478fd24d3c1": {
       "first_seen_kst": "2026-10-02T18:30:04+09:00",
       "lanes": {
@@ -824304,5 +824972,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-17T18:37:43+09:00"
+  "updated_at_kst": "2026-10-17T18:59:01+09:00"
 }
