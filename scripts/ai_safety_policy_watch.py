@@ -694,14 +694,18 @@ def tracked_policy_event_stage(item: dict) -> tuple[str, str] | None:
             "인수 완료", "인수 종결",
         )):
             return ("softbank_allied", "closed_reported")
-        if ("regulatory" in title or "antitrust" in title) and any(
-            x in title for x in ("approval", "clearance", "approved", "cleared")
-        ):
+        if any(x in title for x in (
+            "regulatory", "antitrust", "ftc ", "justice department",
+        )) and any(x in title for x in (
+            "approval", "clearance", "approved", "cleared", "clears",
+        )):
             return ("softbank_allied", "regulatory_clearance_reported")
         if any(x in title for x in (
             "signs definitive", "signed definitive", "definitive agreement",
             "agrees to buy", "agreed to buy", "agrees to acquire",
             "agreed to acquire", "signed acquisition agreement",
+            "signs deal to buy", "signs deal to acquire",
+            "reaches deal to buy", "reaches agreement to buy",
             "인수 본계약", "인수 계약 체결",
         )) and not any(x in title for x in (
             "could sign", "may sign", "expected to sign", "talks to sign",
@@ -1024,6 +1028,19 @@ def cluster_events(items: list[dict]) -> list[list[dict]]:
         if not placed:
             clusters.append([item])
     return clusters
+
+
+
+def select_policy_alert_events(items: list[dict]) -> tuple[list[list[dict]], set[str], int]:
+    """Select a bounded alert batch and preserve unreported events for retry."""
+    all_events = cluster_events(items)
+    selected = all_events[:MAX_ALERT_EVENTS]
+    deferred_fingerprints = {
+        item["fingerprint"]
+        for cluster in all_events[MAX_ALERT_EVENTS:]
+        for item in cluster
+    }
+    return selected, deferred_fingerprints, len(all_events) - len(selected)
 
 
 def source_label(source: str) -> str:
@@ -1548,13 +1565,7 @@ def main() -> int:
     if baseline:
         new_items = []
 
-    all_events = cluster_events(new_items)
-    events = all_events[:MAX_ALERT_EVENTS]
-    deferred_fingerprints = {
-        item["fingerprint"]
-        for cluster in all_events[MAX_ALERT_EVENTS:]
-        for item in cluster
-    }
+    events, deferred_fingerprints, deferred_event_count = select_policy_alert_events(new_items)
     # Only a selected event becomes an acknowledged milestone. Deferred
     # milestones are retried on the next run, without losing state.
     for cluster in events:
@@ -1591,7 +1602,7 @@ def main() -> int:
             "material_items":len(current),
             "new_articles":len(new_items),
             "new_events":len(events),
-            "deferred_events":len(all_events) - len(events),
+            "deferred_events":deferred_event_count,
             "official_page_skips":official_page_skips,
             "errors":errors,
         },
@@ -1612,7 +1623,7 @@ def main() -> int:
         f"- 중요 필터 통과: {len(current)}건",
         f"- OpenShell 텔레메트리 최신: {openshell_telemetry.get('name') or '확인 불가'}",
         f"- 신규 중요 사건: {len(events)}건",
-        f"- 한도 초과 다음 회차 이월 사건: {len(all_events) - len(events)}건",
+        f"- 한도 초과 다음 회차 이월 사건: {deferred_event_count}건",
         f"- 공식문서 접근 누락: {len(official_page_skips)}건",
         f"- 오류: {len(errors)}건",
     ]

@@ -437,7 +437,7 @@ jobs:
           from scripts.ai_safety_policy_watch import (
               MAX_ALERT_EVENTS, POLICY_EVENT_BASELINES, cluster_events,
               detect_category, detect_entity, google_news_url, material, source_trusted,
-              tracked_policy_event_key, tracked_policy_event_stage,
+              select_policy_alert_events, tracked_policy_event_key, tracked_policy_event_stage,
           )
           def item(title, source="Reuters"):
               return {
@@ -456,6 +456,12 @@ jobs:
           assert tracked_policy_event_stage(item(
               "SoftBank closes acquisition of Allied Universal"
           )) == ("softbank_allied", "closed_reported")
+          assert tracked_policy_event_stage(item(
+              "SoftBank signs deal to buy Allied Universal"
+          )) == ("softbank_allied", "signed_reported")
+          assert tracked_policy_event_stage(item(
+              "FTC clears SoftBank Allied Universal takeover"
+          )) == ("softbank_allied", "regulatory_clearance_reported")
           assert tracked_policy_event_stage(item(
               "SoftBank and Allied Universal acquisition talks collapse"
           )) == ("softbank_allied", "talks_ended_reported")
@@ -490,6 +496,17 @@ jobs:
               for i in range(MAX_ALERT_EVENTS + 2)
           ]
           assert len(cluster_events(items)) == MAX_ALERT_EVENTS + 2
+          selected, deferred, deferred_count = select_policy_alert_events(items)
+          assert len(selected) == MAX_ALERT_EVENTS
+          assert deferred_count == 2
+          assert deferred == {str(MAX_ALERT_EVENTS), str(MAX_ALERT_EVENTS + 1)}
+          checkpoint_fingerprints = {
+              i["fingerprint"] for i in items if i["fingerprint"] not in deferred
+          }
+          assert not checkpoint_fingerprints.intersection(deferred)
+          replay_items = [i for i in items if i["fingerprint"] in deferred]
+          selected_next, deferred_next, count_next = select_policy_alert_events(replay_items)
+          assert len(selected_next) == 2 and not deferred_next and count_next == 0
           print("ai_policy_softbank_anthropic_stage_regression=PASS")
           print("ai_policy_event_backlog_preservation=PASS")
           PY
