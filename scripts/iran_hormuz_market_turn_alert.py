@@ -81,6 +81,16 @@ EIA_REFINING_WEEKLY_URL = "https://www.eia.gov/dnav/pet/pet_pri_spt_s1_w.htm"
 EIA_REFINING_SOURCE = "미국 에너지정보청(EIA)"
 EIA_STOCKS_URL = "https://www.eia.gov/dnav/pet/pet_stoc_wstk_dcu_NUS_W.htm"
 IEA_OCT15_URL = "https://www.iea.org/news/iea-governing-board-statement-on-energy-markets-and-security"
+# Official IEA page returns HTTP 403 to GitHub Actions. These independent news
+# republications are cross-checked and always labeled as secondary reports.
+IEA_OCT15_REPORT_URLS = (
+    ("로이터(IEA 성명 인용)",
+     "https://live.euronext.com/en/financial-news/iea-speed-oil-stocks-release-including-over-20-million-barrels-diesel"),
+    ("로이터(IEA 성명 인용)",
+     "https://www.miningweekly.com/article/iea-to-speed-up-oil-stocks-release-including-over-20m-barrels-of-diesel-2026-10-16"),
+    ("더내셔널(IEA 성명 인용)",
+     "https://www.thenationalnews.com/business/energy/2026/10/15/iea-oil-supply-pledge-to-exceed-target-as-it-boosts-release-of-remaining-stocks/"),
+)
 DELEK_TYLER_TRANSCRIPT_URL = "https://rollcall.com/factbase/trump/transcript/donald-trump-speech-jd-vance-midterm-political-rally-tyler-texas-october-13-2026/"
 DELEK_DPA_MEMO_URL = "https://www.whitehouse.gov/presidential-actions/2026/04/presidential-determination-pursuant-to-section-303-of-the-defense-production-act-of-1950-as-amended-on-domestic-petroleum-production-refining-and-logistics-capacity/"
 EIA_STOCKS_SOURCE = "미국 에너지정보청(EIA) 주간재고"
@@ -1959,6 +1969,60 @@ def parse_iea_oct15_statement(raw_html: str, current: dt.datetime) -> NewsItem:
     )
 
 
+def parse_iea_oct15_secondary_report(
+    raw_html: str, current: dt.datetime, source: str, source_url: str
+) -> NewsItem:
+    """Secondary evidence of a dated IEA statement when official site blocks bots.
+
+    Do not claim direct official-site retrieval. A Reuters report plus an
+    independently authored The National report are necessary for confirmation.
+    """
+    allowed = dict(IEA_OCT15_REPORT_URLS)
+    if source not in allowed and source not in ("로이터(IEA 성명 인용)",):
+        raise RuntimeError("IEA 대체 출처가 허용되지 않음")
+    if (source, source_url) not in IEA_OCT15_REPORT_URLS:
+        raise RuntimeError("IEA 대체 URL·발행자 불일치")
+    text = normalize_text(_visible_text(raw_html))
+    markers = (
+        ("international energy agency" in text or "iea" in text),
+        ("oct 15" in text or "october 15" in text or "15 october" in text
+         or "thursday" in text),
+        ("330 million" in text or "330-million" in text),
+        ("20 million" in text or "20-million" in text),
+        ("diesel" in text),
+        ("march" in text),
+        ("release" in text),
+    )
+    if not all(markers):
+        raise RuntimeError("IEA 대체 기사에서 날짜·3.3억·경유 2천만·3월 약정 검증 실패")
+    # National confirms the extra crucial remaining amount explicitly.
+    if source.startswith("더내셔널") and not (
+        "100 million" in text or "100-million" in text
+    ):
+        raise RuntimeError("IEA 잔여 1억 배럴 수치가 독립 기사에 없음")
+    if current < dt.datetime(2026, 10, 15, 15, tzinfo=UTC):
+        raise RuntimeError("IEA 발표 이전 데이터로 알림 생성 금지")
+    stamp = dt.datetime(2026, 10, 15, 15, tzinfo=UTC)
+    return NewsItem(
+        "IEA 15 October 2026 Reuters and The National corroborate: "
+        "330 million barrels released; around 100 million barrels outstanding "
+        "from March action; over 20 million barrels diesel priority; not an extra 100 million",
+        source, source_url, stamp.isoformat(), stamp.timestamp(),
+        "iea_oct15_reserve_execution",
+    )
+
+
+def _iea_reprints_cross_checked(rows: list[NewsItem]) -> bool:
+    accepted = {
+        row.source
+        for row in rows
+        if (row.source, row.link) in IEA_OCT15_REPORT_URLS
+        and row.event_kind == "iea_oct15_reserve_execution"
+        and row.title.startswith("IEA 15 October 2026 Reuters and The National corroborate:")
+    }
+    return "로이터(IEA 성명 인용)" in accepted and "더내셔널(IEA 성명 인용)" in accepted
+
+
 def _eia_stock_row(text: str, label: str, n: int=6) -> list[int]:
     token=r"\d{1,3}(?:,\d{3})+"
     pattern=rf"(?<![A-Za-z]){re.escape(label)}\s+((?:{token}\s+){{{n}}})"
@@ -2061,6 +2125,14 @@ def _build_iea_reserve_body(rows: list[NewsItem], oil: Quote | None,
         "역풍               방출지연·연료규격·보험·운송 병목",
         "","[근거]",f"IEA 이사회 공식 성명 · 원문: {IEA_OCT15_URL}"
     ]
+    if not any(r.source == IEA_OCT15_SOURCE and r.link == IEA_OCT15_URL for r in rows):
+        lines.extend([
+            "조회 구분       IEA 공식 사이트 자동접근 제한(403) · 로이터와 더내셔널 보도로 수치 교차확인",
+            "주의             공식문서를 직접 수집한 실행으로 표기하지 않음",
+        ])
+        for row in rows:
+            if (row.source, row.link) in IEA_OCT15_REPORT_URLS:
+                lines.extend([f"{row.source} · 2026-10-15", f"원문: {row.link}"])
     return "\n".join(lines)+"\n"
 
 
@@ -2300,6 +2372,38 @@ def fetch_news(current: dt.datetime) -> tuple[list[NewsItem], list[str]]:
         else:
             errors.append(f"{description}: {error}")
 
+    # Only attempt secondary corroboration while the dated IEA action remains
+    # unreported and the first-party IEA website is inaccessible.
+    iea_event_id = "iea_oct15_reserve_execution:2026-10-15-330-100-20plus"
+    if (iea_event_id not in already
+        and not any(row.source == IEA_OCT15_SOURCE for row in items)):
+        secondaries = {}
+        def iea_mirror_worker(source, url):
+            try:
+                raw = fetch_bytes(url, timeout=7, attempts=1).decode("utf-8", "replace")
+                secondaries[url] = (parse_iea_oct15_secondary_report(
+                    raw, current, source, url), None)
+            except Exception as exc:
+                secondaries[url] = (None, f"{type(exc).__name__}: {exc}")
+        mirror_threads = []
+        for source, url in IEA_OCT15_REPORT_URLS:
+            thread = threading.Thread(
+                target=iea_mirror_worker, args=(source, url), daemon=True
+            )
+            thread.start()
+            mirror_threads.append((source, url, thread))
+        mirror_deadline = time.monotonic() + 11.0
+        for source, url, thread in mirror_threads:
+            thread.join(max(0.0, mirror_deadline - time.monotonic()))
+            if thread.is_alive():
+                errors.append(f"IEA 대체 기사 {source}: 11초 제한 초과")
+                continue
+            row, issue = secondaries.get(url, (None, "기사 응답 결과 없음"))
+            if row is not None:
+                items.append(row)
+            elif issue:
+                errors.append(f"IEA 대체 기사 {source}: {issue}")
+
     try:
         tanker_html = fetch_bytes(TANKERTRACKERS_PUBLIC_TELEGRAM_URL,timeout=12,attempts=1).decode("utf-8",errors="replace")
         items.append(parse_tankertrackers_seven_country_mtd(tanker_html,current))
@@ -2491,6 +2595,10 @@ def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tupl
                 ("delek_tyler_dpa",DELEK_VANCE_SOURCE,DELEK_TYLER_TRANSCRIPT_URL),
             )
         )
+        iea_secondary_cross_checked = (
+            kind == "iea_oct15_reserve_execution"
+            and _iea_reprints_cross_checked(selected)
+        )
         eia_primary = kind == "eia_refining_crack_watch" and any(
             row.source == EIA_REFINING_SOURCE
             and row.link == EIA_REFINING_WEEKLY_URL
@@ -2503,7 +2611,7 @@ def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tupl
             for row in selected
         )
 
-        if len(selected) >= minimum_sources or has_primary_data or regional_primary or tanker_primary or broker_snapshot or eu_primary_interview or pipeline_cross_checked or pipeline_bloomberg_material or osp_cross_checked or eia_primary or china_report or hormuz_primary or mma_primary or russian_ofac_primary or saudi_minister_direct or saudi_minister_report or saudi_official_advanced or new_official_primary:
+        if len(selected) >= minimum_sources or has_primary_data or regional_primary or tanker_primary or broker_snapshot or eu_primary_interview or pipeline_cross_checked or pipeline_bloomberg_material or osp_cross_checked or eia_primary or china_report or hormuz_primary or mma_primary or russian_ofac_primary or saudi_minister_direct or saudi_minister_report or saudi_official_advanced or new_official_primary or iea_secondary_cross_checked:
             candidates.append((max(row.published_epoch for row in selected), kind, selected))
 
     candidates.sort(key=lambda value: value[0], reverse=True)
@@ -2637,8 +2745,10 @@ def event_id(kind: str, rows: list[NewsItem]) -> str:
             "delek_tyler_dpa": (DELEK_VANCE_SOURCE,DELEK_TYLER_TRANSCRIPT_URL),
         }
         source, url = approved[kind]
-        if not any(r.source==source and r.link==url for r in rows):
-            raise ValueError("공식 확인 출처가 없는 사건 ID 생성 거부")
+        direct_verified = any(r.source==source and r.link==url for r in rows)
+        if not direct_verified:
+            if kind != "iea_oct15_reserve_execution" or not _iea_reprints_cross_checked(rows):
+                raise ValueError("공식 직접조회 또는 독립 보도 2곳 확인 없는 사건 ID 생성 거부")
         if kind=="eia_weekly_stock_balance":
             m=_eia_stock_metrics(rows)
             if not m: raise ValueError("주간 원자료 누락")

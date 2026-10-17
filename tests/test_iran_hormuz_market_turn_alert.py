@@ -1499,6 +1499,40 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         self.assertEqual(selected[0], "east_west_pipeline_recovery")
         self.assertIn("걸프오브오만 STS 우회 물류 급증·병목", duplicates)
 
+    def test_iea_secondary_evidence_requires_two_publishers(self):
+        now = dt.datetime(2026, 10, 17, 8, tzinfo=dt.timezone.utc)
+        report = (
+            "<html><body>PARIS, Oct 15 (Reuters) - The International Energy Agency "
+            "(IEA) agreed on Thursday to accelerate release of remaining March "
+            "stocks including over 20 million barrels of diesel; approximately "
+            "330 million barrels released and 100 million barrels still expected. "
+            "</body></html>"
+        )
+        a_source, a_url = MODULE.IEA_OCT15_REPORT_URLS[0]
+        b_source, b_url = MODULE.IEA_OCT15_REPORT_URLS[2]
+        a = MODULE.parse_iea_oct15_secondary_report(report, now, a_source, a_url)
+        b = MODULE.parse_iea_oct15_secondary_report(report, now, b_source, b_url)
+        kind = "iea_oct15_reserve_execution"
+        self.assertIsNone(MODULE.confirm_event([a]))
+        self.assertIsNotNone(MODULE.confirm_event([a, b]))
+        self.assertTrue(MODULE.event_id(kind, [a,b]).startswith(kind+":"))
+        self.assertIn("더내셔널", MODULE._build_iea_reserve_body([a,b],None,now,None))
+        bad = MODULE.NewsItem(b.title,"개인 블로그","https://example.com",
+                             b.published_utc,b.published_epoch,b.event_kind)
+        self.assertIsNone(MODULE.confirm_event([a,bad]))
+        with self.assertRaises(ValueError):
+            MODULE.event_id(kind,[a,bad])
+
+    def test_iea_secondary_rejects_missing_figures_and_unauthorized_url(self):
+        now = dt.datetime(2026, 10, 17, 8, tzinfo=dt.timezone.utc)
+        source, url = MODULE.IEA_OCT15_REPORT_URLS[2]
+        with self.assertRaises(RuntimeError):
+            MODULE.parse_iea_oct15_secondary_report("IEA diesel release",now,source,url)
+        with self.assertRaises(RuntimeError):
+            MODULE.parse_iea_oct15_secondary_report(
+                "IEA October 15 March 2026 330 million 20 million diesel release",
+                now,source,"https://example.com/blog")
+
     def test_historical_static_reports_stay_deduped_after_90_days(self):
         early = dt.datetime(2026, 10, 4, 1, tzinfo=dt.timezone.utc)
         later = early + dt.timedelta(days=90)
