@@ -343,7 +343,8 @@
     "stateevt_f2c26bf9f31501b59b15": "2026-10-14T01:13:57.413978+00:00",
     "stateevt_90b6a05593e2e71dc434": "2026-10-14T01:14:49.498979+00:00",
     "stateevt_95f14d5c2d3931140281": "2026-10-14T01:19:04.298789+00:00",
-    "stateevt_0e79c14e0010e5a9f4aa": "2026-10-14T02:58:28.478258+00:00"
+    "stateevt_0e79c14e0010e5a9f4aa": "2026-10-14T02:58:28.478258+00:00",
+    "stateevt_6c723d274b826022f8f1": "2026-10-17T04:40:10.903987+00:00"
   },
   "semantic_seen": {
     "alaska_participation_pressure": "2026-09-09T06:46:11.750941+00:00",
@@ -378,7 +379,8 @@
     "eventstate_alaska_lng_f2c26bf9f31501b59b15": "2026-10-14T01:13:57.413978+00:00",
     "eventstate_alaska_lng_90b6a05593e2e71dc434": "2026-10-14T01:14:49.498979+00:00",
     "eventstate_alaska_lng_95f14d5c2d3931140281": "2026-10-14T01:19:04.298789+00:00",
-    "eventstate_alaska_lng_0e79c14e0010e5a9f4aa": "2026-10-14T02:58:28.478258+00:00"
+    "eventstate_alaska_lng_0e79c14e0010e5a9f4aa": "2026-10-14T02:58:28.478258+00:00",
+    "eventstate_alaska_lng_6c723d274b826022f8f1": "2026-10-17T04:40:10.903987+00:00"
   },
   "official_status": {
     "status": "official_seen",
@@ -677,7 +679,7 @@
       "facts": [
         "alaska_bilateral_status:review_started",
         "alaska_fid_after_commercial_review:reported",
-        "alaska_reported_amount_usd_b:54",
+        "alaska_reported_amount_usd_b:50",
         "alaska_taiwan_project_share_reported:30",
         "alaska_taiwan_term_reported_years:20",
         "alaska_taiwan_us_investment_claim_usd_b:4.4",
@@ -687,7 +689,7 @@
       "slots": {
         "alaska_lng|alaska_bilateral_status": "alaska_bilateral_status:review_started",
         "alaska_lng|alaska_fid_after_commercial_review:reported": "alaska_fid_after_commercial_review:reported",
-        "alaska_lng|alaska_reported_amount_usd_b": "alaska_reported_amount_usd_b:54",
+        "alaska_lng|alaska_reported_amount_usd_b": "alaska_reported_amount_usd_b:50",
         "alaska_lng|alaska_taiwan_project_share_reported": "alaska_taiwan_project_share_reported:30",
         "alaska_lng|alaska_taiwan_term_reported_years": "alaska_taiwan_term_reported_years:20",
         "alaska_lng|alaska_taiwan_us_investment_claim_usd_b": "alaska_taiwan_us_investment_claim_usd_b:4.4",
@@ -695,27 +697,39 @@
         "alaska_lng|alaska_us_reiteration": "alaska_us_reiteration:2026-10-13"
       },
       "initialized_at": "2026-09-29T23:10:16.076895+00:00",
-      "updated_at": "2026-10-14T02:58:31.958357+00:00",
+      "updated_at": "2026-10-17T04:40:13.882275+00:00",
       "last_title": "백악관 공식 2026-10-13 한국 에너지투자 패키지 중 알래스카 LNG 540억달러 포함 주장 재확인",
       "last_source": "White House",
       "evidence": [
         {
-          "source": "Bloomberg",
-          "title": "Trump says Taiwan will purchase 30% of Alaska LNG pipeline gas over 20 years and Taiwan will invest additional $4.4 billion; Taiwan not yet confirmed",
-          "link": "https://news.bloomberglaw.com/health-law-and-business/trump-says-taiwan-to-buy-gas-from-alaska-lng-pipeline-project",
-          "published": "2026-10-14"
+          "source": "연합뉴스 한민족센터",
+          "title": "트럼프 \"韓 약속 500억불에 더해 대만도 알래스카 가스 투자\"(종합2보) - 연합뉴스 한민족센터",
+          "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBfUkF1MEdlcm5Fd2R6VjVQTlZMaEtDVEJ6U3BqWWh0Q010UWw2c25UZjVRRWJmSHh1aXYzWlpHZDJiMUcta005R2x1Z29ndUxSdk8xTXJkcURlQlFPS0hZR1lpYWtVU3c4OUhqOFhYc1NBMGNN?oc=5",
+          "published": "2026-10-14T05:36:13+00:00"
         },
         {
-          "source": "Associated Press",
-          "title": "Trump claims Taiwan has a 20-year Alaska LNG gas purchase agreement at Wasilla rally, actual binding contract not yet verified",
-          "link": "https://apnews.com/article/aa4ec095692c57a851a942c0f21624f7",
-          "published": "2026-10-14"
+          "source": "매일경제TV",
+          "title": "트럼프 \"대만, 알래스카 LNG에 44억달러 투자\"…한국 500억달러 주장 반복 - 매일경제TV",
+          "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE42M1RWRzlINlhlclktNXg2RUxhcGtTa2UyaGtGbjhsN3h0X29DUWYwRlVGcmVPNG5RVEc2MFl5YmFrSEVXRkpaU2FhQmZBdmgyaWd6bEs5ZFJSSmNxckVNX0wzeFhXcmJa?oc=5",
+          "published": "2026-10-14T05:31:00+00:00"
         },
         {
-          "source": "Reuters",
-          "title": "Trump says Taiwan agrees to buy 30% of Alaska LNG pipeline gas; US Commerce Secretary says Taiwan commits $4.4 billion investment, Taiwan ministry not yet confirmed",
-          "link": "https://www.reuters.com/business/energy/trump-says-taiwan-agrees-buy-30-gas-alaska-pipeline-2026-10-14/",
-          "published": "2026-10-14"
+          "source": "Chosunbiz",
+          "title": "트럼프 “韓, 알래스카 LNG에 500억달러 투자” 거듭 주장 - 조선비즈 - Chosunbiz",
+          "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQTG9fcVhVZU1iOWdIQkhZd09zYUJDdF9oWWNxT25LZHJDbWY1OHEwUXg2RDZUcnF0UzcxTXpEbTRxRGNpZ2FVRDRxZHI2Z29BS3JWanRUU2gtQWgwWDVtbEJaSnhEeU5VRHJYTlRJRG9nb1duNmlfOXZ5eU5oZmJPTnMwdndQb0VfRkR5UUpuc2NBVG1NVGNGakdCTElUQdIBsgFBVV95cUxPcnF5OERZMUFKUjEwcEVkMGhibzkzV1NpRExTUm1Kb0E3aWNIcUtreHNPU3AyMW9icS13QzRUcGgtb1JoY0JIbGItZE1ldG93S1JfTlNyVXBLQ0ZhT0wya1RxZFRZNnR6TUtfT2dMVmNnTmZkeUhVUVlHOEZRcjFwY0liMFpGam5FM243bXZfMThsM09MbWNXeFAzVVpQTWg2d1luNlZKSk9NbGM5NGI2OUJ3?oc=5",
+          "published": "2026-10-14T17:26:00+00:00"
+        },
+        {
+          "source": "뉴스핌",
+          "title": "트럼프 \"韓 500억 달러 알래스카 LNG 투자는 무역합의의 일부\" - 뉴스핌",
+          "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBkTWRNYUNPTkp1SEpiQnc5Mk1GRElZYmZ1WGZ5MTFEY3FSZDhXQmVwaTZUQ1A5Uk1EUHQ5SDg3VWM0LWFaV0l3NWZxRjJwYkVmZE40SHU5ekpjYl9Y?oc=5",
+          "published": "2026-10-14T18:12:00+00:00"
+        },
+        {
+          "source": "VOA 한국어 홈페이지",
+          "title": "트럼프 대통령 “한국, 알래스카에 500억 달러 투자”…백악관도 ‘한국 투자’ 강조 - VOA 한국어 홈페이지",
+          "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQMkxhc2c4X2ZHa3N3OVRMVVZxVHhyUGNINmNiUzdUZ19hMy15a0N5WGxfYjFuNHJvTG9XOFRHRjJtNlpCRFNXVnkwTVNTM2Ytd1hFeVlLX3pfSTdlbnZtRjBfMjI5Rm41YUt1RjNrelBaaW5xcnZia3B4cVZ3UU1Yb3pfQi3SAYcBQVVfeXFMUEJTd0JMY2RNQzU0Z0ZXQnprdUZkSnpRWkpua0RKX3ZjSUVTamdERjg2aERnWDJyTm5lWHpjUDRDMGpsZEIybkEyQWFldjBEc1k2NWlmMDBnQzFmUUJRT0s3Snh6ekdzcUxTeXVIVnFacVN4c1ZXU3N2WUgxZVlLWlhjb2Jibnlj?oc=5",
+          "published": "2026-10-14T17:53:41+00:00"
         }
       ]
     },
