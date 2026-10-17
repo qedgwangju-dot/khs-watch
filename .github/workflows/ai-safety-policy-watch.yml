@@ -625,7 +625,9 @@ jobs:
           import pathlib
           import re
           import urllib.parse
+          import urllib.error
           import urllib.request
+          import time
           import xml.etree.ElementTree as ET
           from zoneinfo import ZoneInfo
           from scripts.ai_sif_regulatory_validation import verify_formal_instrument
@@ -662,8 +664,52 @@ jobs:
               "q":query+" when:7d","hl":"en-US","gl":"US","ceid":"US:en"
           })
           req=urllib.request.Request(rss,headers={"User-Agent":"Mozilla/5.0 khs-ai-policy-sif-watch/1.0"})
-          with urllib.request.urlopen(req,timeout=25) as r:
-              root=ET.fromstring(r.read())
+
+          # Retry transient feed outages; persistent failures still stop the job
+          # so an unobserved policy change is never checkpointed as "no news".
+          def fetch_sif_feed(request, *, opener=urllib.request.urlopen, sleep=time.sleep):
+              for attempt in range(3):
+                  try:
+                      with opener(request, timeout=25) as response:
+                          return ET.fromstring(response.read())
+                  except urllib.error.HTTPError as exc:
+                      if exc.code not in {429, 500, 502, 503, 504} or attempt == 2:
+                          raise
+                      reason=f"HTTP {exc.code}"
+                  except (urllib.error.URLError, TimeoutError, OSError) as exc:
+                      if attempt == 2:
+                          raise
+                      reason=type(exc).__name__
+                  delay=2**attempt
+                  print(f"ai_policy_sif_feed_transient_retry attempt={attempt+1} cause={reason} delay_seconds={delay}")
+                  sleep(delay)
+              raise RuntimeError("SIF feed retry exhausted")
+
+          class _TestRSSResponse:
+              def __enter__(self): return self
+              def __exit__(self, *args): return False
+              def read(self): return b"<rss><channel/></rss>"
+          _tries=[0]
+          def _temporary_503(request,timeout=25):
+              _tries[0]+=1
+              if _tries[0]<=2:
+                  raise urllib.error.HTTPError(request.full_url,503,"synthetic temporary failure",None,None)
+              return _TestRSSResponse()
+          assert fetch_sif_feed(req,opener=_temporary_503,sleep=lambda _:None).tag=="rss"
+          assert _tries[0]==3
+          _denied=[0]
+          def _always_403(request,timeout=25):
+              _denied[0]+=1
+              raise urllib.error.HTTPError(request.full_url,403,"synthetic denied",None,None)
+          try:
+              fetch_sif_feed(req,opener=_always_403,sleep=lambda _:None)
+          except urllib.error.HTTPError as exc:
+              assert exc.code==403 and _denied[0]==1
+          else:
+              raise AssertionError("403 must not be silently retried")
+          print("ai_policy_sif_feed_retry_regression=PASS")
+
+          root=fetch_sif_feed(req)
 
           trusted={
               "Reuters","AP News","Associated Press","The Associated Press","Axios",
@@ -1229,8 +1275,11 @@ jobs:
               alert_ids=[x for x in ids if x["kind"]=="alert"]
               if not alert_ids:
                   raise RuntimeError("Alert existed but delivery unconfirmed")
+          # Preserve the API's actual message_id for both real alerts and
+          # user-requested send_test runs in the existing uploaded artifact.
+          if ids:
               pathlib.Path("out/ai_safety_policy_watch_telegram_confirmed.json").write_text(
-                  json.dumps({"status":"confirmed","bot_username":"${{ steps.telegram.outputs.bot_username }}","messages":alert_ids},ensure_ascii=False,indent=2)+"\n",
+                  json.dumps({"status":"confirmed","bot_username":"${{ steps.telegram.outputs.bot_username }}","messages":ids},ensure_ascii=False,indent=2)+"\n",
                   encoding="utf-8"
               )
           print(f"ai_policy_telegram_messages_sent={len(ids)}")
