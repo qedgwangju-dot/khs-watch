@@ -4715,6 +4715,27 @@
       "telegram_core_fact": "브룩필드(BN)가 시리즈 56 클래스A 우선주 600만 주를 주당 25캐나다달러에 발행해 총 1억5000만 캐나다달러를 조달하기로 하고, 연 5.65%의 누적 분기 고정배당을 제시했다고 10월 15일 발표했다.",
       "title": "브룩필드, 우선주 1억5000만 캐나다달러 발행..연 5.65% 배당"
     },
+    "core:12dc84fad326b589a683a1e2": {
+      "first_seen_kst": "2026-10-18T08:31:39+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:31:39+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:31:39+09:00",
+      "link": "https://www.newsis.com/view/NISX20261018_0003830203",
+      "source": "뉴시스",
+      "source_body_digest": "973bc3d7ace62f7ee7c2226ce1de10e0563fbcd11fe50cf54784434249d1b548",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:013d4cabea716b66fe486713ae5cfaaa712782b06bdc785670b7ef00970d2c2b",
+      "source_fact_keys": [
+        "source_fact:v1:359f12c05e2d6f28dfc663805983b53a0b861db3190c3950a177dd4022985bf3",
+        "source_fact:v1:b90df18359c3ac7f06c3293d942bf936e2448fc565ed6c9e1427019939ab9494"
+      ],
+      "source_published_kst": "2026-10-18T08:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"10년 만에 돌아온 캪틴큐\" 세븐일레븐, 21일 정식 출시",
+      "telegram_core_fact": "캪틴큐는 롯데칠성음료가 1980년 출시한 양주 브랜드로, 출시 1년 만에 판매량 1000만병을 돌파한 인기 상품이다.",
+      "title": "\"10년 만에 돌아온 캪틴큐\" 세븐일레븐, 21일 정식 출시"
+    },
     "core:12fbc53a264c9d9c7db2bdfc": {
       "first_seen_kst": "2026-10-11T06:36:16+09:00",
       "lanes": {
@@ -46395,6 +46416,26 @@
       "source_title": "우진아이엔에스, 143억 평촌터미널 복합개발 기계설비 수주",
       "telegram_core_fact": "우진아이엔에스는 롯데건설로부터 143억원 안양 평촌터미널부지 복합개발 사업 기계설비공사를 수주했다고 14일 공시했다.",
       "title": "우진아이엔에스, 143억 평촌터미널 복합개발 기계설비 수주"
+    },
+    "core:bb96bb98c282e046cff88c4e": {
+      "first_seen_kst": "2026-10-18T08:31:39+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:31:39+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:31:39+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016130200054",
+      "source": "연합뉴스",
+      "source_body_digest": "ee2380ecf3526f5bbef6712b67c1dcd2b94e67f0baea7f806e3d32d93f928cb2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4281bb50df5085ea64471094299cd5ac17541341bd2e69c94a7de48a32287759",
+      "source_fact_keys": [
+        "source_fact:v1:cea4f604f59a50c86c07188da3a87f8031a458c6b6021c13386dc094b29857ed"
+      ],
+      "source_published_kst": "2026-10-18T08:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "임대 만료 광주월드컵경기장 판매시설 활용, 공론화로 찾는다 | 연합뉴스",
+      "telegram_core_fact": "시는 임대 수입 등을 감안해 기존과 유사한 판매시설로 활용하기로 하고, 새 임대 사업자 선정을 위한 공개 입찰을 준비했다.",
+      "title": "임대 만료 광주월드컵경기장 판매시설 활용, 공론화로 찾는다 | 연합뉴스"
     },
     "core:bb9c1a3f4b72bb11f296b3ba": {
       "first_seen_kst": "2026-10-07T22:13:12+09:00",
@@ -114148,6 +114189,27 @@
       "telegram_core_fact": "CXMT가 소비자용 전자기기 중심이던 사업 영역을 고성능 서버 메모리로 확대해 삼성전자와 SK하이닉스, 미국 마이크론이 주도하는 고부가가치 시장에 도전함에 따라 주목된다.",
       "title": "中 CXMT, 차세대 서버 D램 연내 공개 예고⋯삼전닉스보다 먼저?"
     },
+    "fact:7dd3f3a332b9a7e05ea1e111": {
+      "first_seen_kst": "2026-10-18T08:31:39+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:31:39+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:31:39+09:00",
+      "link": "https://www.newsis.com/view/NISX20261018_0003830203",
+      "source": "뉴시스",
+      "source_body_digest": "973bc3d7ace62f7ee7c2226ce1de10e0563fbcd11fe50cf54784434249d1b548",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:013d4cabea716b66fe486713ae5cfaaa712782b06bdc785670b7ef00970d2c2b",
+      "source_fact_keys": [
+        "source_fact:v1:359f12c05e2d6f28dfc663805983b53a0b861db3190c3950a177dd4022985bf3",
+        "source_fact:v1:b90df18359c3ac7f06c3293d942bf936e2448fc565ed6c9e1427019939ab9494"
+      ],
+      "source_published_kst": "2026-10-18T08:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"10년 만에 돌아온 캪틴큐\" 세븐일레븐, 21일 정식 출시",
+      "telegram_core_fact": "캪틴큐는 롯데칠성음료가 1980년 출시한 양주 브랜드로, 출시 1년 만에 판매량 1000만병을 돌파한 인기 상품이다.",
+      "title": "\"10년 만에 돌아온 캪틴큐\" 세븐일레븐, 21일 정식 출시"
+    },
     "fact:7df0be636d3d6e9db76beac6": {
       "first_seen_kst": "2026-10-15T08:51:43+09:00",
       "lanes": {
@@ -130844,6 +130906,26 @@
       "source_title": "韓中, 공급망 핫라인 가동…새만금 투자 협력 확대 논의",
       "telegram_core_fact": "한국과 중국 통상당국이 주요 산업 품목의 안정적인 공급망 관리와 새만금 산업단지 투자 확대를 위한 협력 방안을 논의했다. 이번 회의에서 양측은 새만금과 후이저우 산업단지의 지원제도와 투자 인센티브를 공유하고 상대국 산업단지에 진출하는 기업의 편의를 확대하는 방안을 논의했다.",
       "title": "韓中, 공급망 핫라인 가동…새만금 투자 협력 확대 논의"
+    },
+    "fact:b373016a3fcfbc4bba9c9308": {
+      "first_seen_kst": "2026-10-18T08:31:39+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:31:39+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:31:39+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016130200054",
+      "source": "연합뉴스",
+      "source_body_digest": "ee2380ecf3526f5bbef6712b67c1dcd2b94e67f0baea7f806e3d32d93f928cb2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4281bb50df5085ea64471094299cd5ac17541341bd2e69c94a7de48a32287759",
+      "source_fact_keys": [
+        "source_fact:v1:cea4f604f59a50c86c07188da3a87f8031a458c6b6021c13386dc094b29857ed"
+      ],
+      "source_published_kst": "2026-10-18T08:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "임대 만료 광주월드컵경기장 판매시설 활용, 공론화로 찾는다 | 연합뉴스",
+      "telegram_core_fact": "시는 임대 수입 등을 감안해 기존과 유사한 판매시설로 활용하기로 하고, 새 임대 사업자 선정을 위한 공개 입찰을 준비했다.",
+      "title": "임대 만료 광주월드컵경기장 판매시설 활용, 공론화로 찾는다 | 연합뉴스"
     },
     "fact:b3736e2f874c4cb1d795bd0e": {
       "first_seen_kst": "2026-10-06T20:12:00+09:00",
@@ -173056,6 +173138,27 @@
       "source": "뉴시스",
       "title": "재경부, 세수추계 손본다…국감 반복 지적 5건 개선"
     },
+    "link:3129fca71836c064bd098109": {
+      "first_seen_kst": "2026-10-18T08:31:39+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:31:39+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:31:39+09:00",
+      "link": "https://www.newsis.com/view/NISX20261018_0003830203",
+      "source": "뉴시스",
+      "source_body_digest": "973bc3d7ace62f7ee7c2226ce1de10e0563fbcd11fe50cf54784434249d1b548",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:013d4cabea716b66fe486713ae5cfaaa712782b06bdc785670b7ef00970d2c2b",
+      "source_fact_keys": [
+        "source_fact:v1:359f12c05e2d6f28dfc663805983b53a0b861db3190c3950a177dd4022985bf3",
+        "source_fact:v1:b90df18359c3ac7f06c3293d942bf936e2448fc565ed6c9e1427019939ab9494"
+      ],
+      "source_published_kst": "2026-10-18T08:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"10년 만에 돌아온 캪틴큐\" 세븐일레븐, 21일 정식 출시",
+      "telegram_core_fact": "캪틴큐는 롯데칠성음료가 1980년 출시한 양주 브랜드로, 출시 1년 만에 판매량 1000만병을 돌파한 인기 상품이다.",
+      "title": "\"10년 만에 돌아온 캪틴큐\" 세븐일레븐, 21일 정식 출시"
+    },
     "link:313c57ea0457c1e73a5aff53": {
       "first_seen_kst": "2026-10-14T00:12:03+09:00",
       "lanes": {
@@ -212420,6 +212523,26 @@
       "source_title": "STX그린로지스, 8% 급등…중동 불안에 운임 뛰자 해운株 줄줄이 상승",
       "telegram_core_fact": "중동 지역의 지정학적 불안이 장기화하면서 해운 운임이 급등하자 해운 관련주가 일제히 강세를 보이고 있다.",
       "title": "STX그린로지스, 8% 급등…중동 불안에 운임 뛰자 해운株 줄줄이 상승"
+    },
+    "link:95de071ff4186ad09a6f70ff": {
+      "first_seen_kst": "2026-10-18T08:31:39+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:31:39+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:31:39+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016130200054",
+      "source": "연합뉴스",
+      "source_body_digest": "ee2380ecf3526f5bbef6712b67c1dcd2b94e67f0baea7f806e3d32d93f928cb2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4281bb50df5085ea64471094299cd5ac17541341bd2e69c94a7de48a32287759",
+      "source_fact_keys": [
+        "source_fact:v1:cea4f604f59a50c86c07188da3a87f8031a458c6b6021c13386dc094b29857ed"
+      ],
+      "source_published_kst": "2026-10-18T08:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "임대 만료 광주월드컵경기장 판매시설 활용, 공론화로 찾는다 | 연합뉴스",
+      "telegram_core_fact": "시는 임대 수입 등을 감안해 기존과 유사한 판매시설로 활용하기로 하고, 새 임대 사업자 선정을 위한 공개 입찰을 준비했다.",
+      "title": "임대 만료 광주월드컵경기장 판매시설 활용, 공론화로 찾는다 | 연합뉴스"
     },
     "link:95e3da3438cf72b4bc2b86cd": {
       "first_seen_kst": "2026-10-11T12:11:12+09:00",
@@ -289517,6 +289640,27 @@
       "telegram_core_fact": "이즈베스티야는 \"분쟁이 종식되고 제재가 완화되더라도 한국 자동차 제조업체들이 러시아 시장의 구조적 변화에 따른 많은 도전을 마주하게 될 것\"이라고 덧붙였다.",
       "title": "주러대사 \"현대차·기아, 러시아 시장 재진출 모색\" | 연합뉴스"
     },
+    "original:5c311b2b79e722962bc04d5e": {
+      "first_seen_kst": "2026-10-18T08:31:39+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:31:39+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:31:39+09:00",
+      "link": "https://www.newsis.com/view/NISX20261018_0003830203",
+      "source": "뉴시스",
+      "source_body_digest": "973bc3d7ace62f7ee7c2226ce1de10e0563fbcd11fe50cf54784434249d1b548",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:013d4cabea716b66fe486713ae5cfaaa712782b06bdc785670b7ef00970d2c2b",
+      "source_fact_keys": [
+        "source_fact:v1:359f12c05e2d6f28dfc663805983b53a0b861db3190c3950a177dd4022985bf3",
+        "source_fact:v1:b90df18359c3ac7f06c3293d942bf936e2448fc565ed6c9e1427019939ab9494"
+      ],
+      "source_published_kst": "2026-10-18T08:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"10년 만에 돌아온 캪틴큐\" 세븐일레븐, 21일 정식 출시",
+      "telegram_core_fact": "캪틴큐는 롯데칠성음료가 1980년 출시한 양주 브랜드로, 출시 1년 만에 판매량 1000만병을 돌파한 인기 상품이다.",
+      "title": "\"10년 만에 돌아온 캪틴큐\" 세븐일레븐, 21일 정식 출시"
+    },
     "original:5c327acd6e7b26078dcc5d7d": {
       "first_seen_kst": "2026-10-13T01:09:54+09:00",
       "lanes": {
@@ -300081,6 +300225,26 @@
       "source_title": "국내 기름값 22주 연속 하락…휘발유·경유 1800원대 이어가",
       "telegram_core_fact": "전국 주유소 휘발유와 경유 판매 가격이 지난주보다 소폭 내리며 22주 연속 하락세를 기록했다. 국제 휘발유 가격은 7.8달러 내린 138.5달러, 국제 자동차용 경유는 1.1달러 오른 171.2달러로 나타났다.",
       "title": "국내 기름값 22주 연속 하락…휘발유·경유 1800원대 이어가"
+    },
+    "original:7817f35b8e1bbcaa7e657afa": {
+      "first_seen_kst": "2026-10-18T08:31:39+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:31:39+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:31:39+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016130200054",
+      "source": "연합뉴스",
+      "source_body_digest": "ee2380ecf3526f5bbef6712b67c1dcd2b94e67f0baea7f806e3d32d93f928cb2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4281bb50df5085ea64471094299cd5ac17541341bd2e69c94a7de48a32287759",
+      "source_fact_keys": [
+        "source_fact:v1:cea4f604f59a50c86c07188da3a87f8031a458c6b6021c13386dc094b29857ed"
+      ],
+      "source_published_kst": "2026-10-18T08:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "임대 만료 광주월드컵경기장 판매시설 활용, 공론화로 찾는다 | 연합뉴스",
+      "telegram_core_fact": "시는 임대 수입 등을 감안해 기존과 유사한 판매시설로 활용하기로 하고, 새 임대 사업자 선정을 위한 공개 입찰을 준비했다.",
+      "title": "임대 만료 광주월드컵경기장 판매시설 활용, 공론화로 찾는다 | 연합뉴스"
     },
     "original:78273e25fd5f928b24257ce9": {
       "first_seen_kst": "2026-10-07T00:54:50+09:00",
@@ -500856,6 +501020,27 @@
       "telegram_core_fact": "기반시설 조성과 반도체 팹 건설을 병행해 생산능력 확충 시점을 최대한 앞당기겠다는 뜻이다.",
       "title": "최태원 \"전력·용수 늦어도 먼저 짓겠다\"…호남 반도체 팹 '속도전'"
     },
+    "source_fact:61f5120fb7d734fa26c4f77b": {
+      "first_seen_kst": "2026-10-18T08:31:39+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:31:39+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:31:39+09:00",
+      "link": "https://www.newsis.com/view/NISX20261018_0003830203",
+      "source": "뉴시스",
+      "source_body_digest": "973bc3d7ace62f7ee7c2226ce1de10e0563fbcd11fe50cf54784434249d1b548",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:013d4cabea716b66fe486713ae5cfaaa712782b06bdc785670b7ef00970d2c2b",
+      "source_fact_keys": [
+        "source_fact:v1:359f12c05e2d6f28dfc663805983b53a0b861db3190c3950a177dd4022985bf3",
+        "source_fact:v1:b90df18359c3ac7f06c3293d942bf936e2448fc565ed6c9e1427019939ab9494"
+      ],
+      "source_published_kst": "2026-10-18T08:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"10년 만에 돌아온 캪틴큐\" 세븐일레븐, 21일 정식 출시",
+      "telegram_core_fact": "캪틴큐는 롯데칠성음료가 1980년 출시한 양주 브랜드로, 출시 1년 만에 판매량 1000만병을 돌파한 인기 상품이다.",
+      "title": "\"10년 만에 돌아온 캪틴큐\" 세븐일레븐, 21일 정식 출시"
+    },
     "source_fact:61f6af09b11942c73ada952d": {
       "first_seen_kst": "2026-10-09T21:51:45+09:00",
       "lanes": {
@@ -508378,6 +508563,27 @@
       "source_title": "“韓 장금상선 관련 유조선 또 피격”…호르무즈서 2주간 24척이 당했다 [배틀라인]",
       "telegram_core_fact": "● 장금상선과 연관된 초대형 원유운반선 ‘앙골라 프로스페리티호’가 호르무즈 해협에서 공격받아 좌현이 손상됐지만, 선원은 모두 안전한 것으로 전해졌다.",
       "title": "“韓 장금상선 관련 유조선 또 피격”…호르무즈서 2주간 24척이 당했다 [배틀라인]"
+    },
+    "source_fact:672cee0def93c9e9b346255a": {
+      "first_seen_kst": "2026-10-18T08:31:39+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:31:39+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:31:39+09:00",
+      "link": "https://www.newsis.com/view/NISX20261018_0003830203",
+      "source": "뉴시스",
+      "source_body_digest": "973bc3d7ace62f7ee7c2226ce1de10e0563fbcd11fe50cf54784434249d1b548",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:013d4cabea716b66fe486713ae5cfaaa712782b06bdc785670b7ef00970d2c2b",
+      "source_fact_keys": [
+        "source_fact:v1:359f12c05e2d6f28dfc663805983b53a0b861db3190c3950a177dd4022985bf3",
+        "source_fact:v1:b90df18359c3ac7f06c3293d942bf936e2448fc565ed6c9e1427019939ab9494"
+      ],
+      "source_published_kst": "2026-10-18T08:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"10년 만에 돌아온 캪틴큐\" 세븐일레븐, 21일 정식 출시",
+      "telegram_core_fact": "캪틴큐는 롯데칠성음료가 1980년 출시한 양주 브랜드로, 출시 1년 만에 판매량 1000만병을 돌파한 인기 상품이다.",
+      "title": "\"10년 만에 돌아온 캪틴큐\" 세븐일레븐, 21일 정식 출시"
     },
     "source_fact:67330f47e3cc6c9df0bfd2c4": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
@@ -706904,6 +707110,26 @@
       "telegram_core_fact": "통신시장 금지행위를 위반한 사업자에 대한 과징금도 높여 불공정행위 제재를 강화할 방침이다.",
       "title": "김종철 방미통위 위원장 “불법스팸 부당이익 환수·통신시장 과징금 상향”"
     },
+    "source_fact:eb8a425c34c93e33906aca9a": {
+      "first_seen_kst": "2026-10-18T08:31:39+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:31:39+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:31:39+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016130200054",
+      "source": "연합뉴스",
+      "source_body_digest": "ee2380ecf3526f5bbef6712b67c1dcd2b94e67f0baea7f806e3d32d93f928cb2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4281bb50df5085ea64471094299cd5ac17541341bd2e69c94a7de48a32287759",
+      "source_fact_keys": [
+        "source_fact:v1:cea4f604f59a50c86c07188da3a87f8031a458c6b6021c13386dc094b29857ed"
+      ],
+      "source_published_kst": "2026-10-18T08:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "임대 만료 광주월드컵경기장 판매시설 활용, 공론화로 찾는다 | 연합뉴스",
+      "telegram_core_fact": "시는 임대 수입 등을 감안해 기존과 유사한 판매시설로 활용하기로 하고, 새 임대 사업자 선정을 위한 공개 입찰을 준비했다.",
+      "title": "임대 만료 광주월드컵경기장 판매시설 활용, 공론화로 찾는다 | 연합뉴스"
+    },
     "source_fact:eb906ac772b9a670b1298bc2": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
       "lanes": {
@@ -772444,6 +772670,27 @@
       "telegram_core_fact": "이즈베스티야는 \"분쟁이 종식되고 제재가 완화되더라도 한국 자동차 제조업체들이 러시아 시장의 구조적 변화에 따른 많은 도전을 마주하게 될 것\"이라고 덧붙였다.",
       "title": "주러대사 \"현대차·기아, 러시아 시장 재진출 모색\" | 연합뉴스"
     },
+    "title:5c311b2b79e722962bc04d5e": {
+      "first_seen_kst": "2026-10-18T08:31:39+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:31:39+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:31:39+09:00",
+      "link": "https://www.newsis.com/view/NISX20261018_0003830203",
+      "source": "뉴시스",
+      "source_body_digest": "973bc3d7ace62f7ee7c2226ce1de10e0563fbcd11fe50cf54784434249d1b548",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:013d4cabea716b66fe486713ae5cfaaa712782b06bdc785670b7ef00970d2c2b",
+      "source_fact_keys": [
+        "source_fact:v1:359f12c05e2d6f28dfc663805983b53a0b861db3190c3950a177dd4022985bf3",
+        "source_fact:v1:b90df18359c3ac7f06c3293d942bf936e2448fc565ed6c9e1427019939ab9494"
+      ],
+      "source_published_kst": "2026-10-18T08:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"10년 만에 돌아온 캪틴큐\" 세븐일레븐, 21일 정식 출시",
+      "telegram_core_fact": "캪틴큐는 롯데칠성음료가 1980년 출시한 양주 브랜드로, 출시 1년 만에 판매량 1000만병을 돌파한 인기 상품이다.",
+      "title": "\"10년 만에 돌아온 캪틴큐\" 세븐일레븐, 21일 정식 출시"
+    },
     "title:5c327acd6e7b26078dcc5d7d": {
       "first_seen_kst": "2026-10-13T01:09:54+09:00",
       "lanes": {
@@ -783253,6 +783500,26 @@
       "source_title": "국내 기름값 22주 연속 하락…휘발유·경유 1800원대 이어가",
       "telegram_core_fact": "전국 주유소 휘발유와 경유 판매 가격이 지난주보다 소폭 내리며 22주 연속 하락세를 기록했다. 국제 휘발유 가격은 7.8달러 내린 138.5달러, 국제 자동차용 경유는 1.1달러 오른 171.2달러로 나타났다.",
       "title": "국내 기름값 22주 연속 하락…휘발유·경유 1800원대 이어가"
+    },
+    "title:7817f35b8e1bbcaa7e657afa": {
+      "first_seen_kst": "2026-10-18T08:31:39+09:00",
+      "lanes": {
+        "live": "2026-10-18T08:31:39+09:00"
+      },
+      "last_seen_kst": "2026-10-18T08:31:39+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016130200054",
+      "source": "연합뉴스",
+      "source_body_digest": "ee2380ecf3526f5bbef6712b67c1dcd2b94e67f0baea7f806e3d32d93f928cb2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4281bb50df5085ea64471094299cd5ac17541341bd2e69c94a7de48a32287759",
+      "source_fact_keys": [
+        "source_fact:v1:cea4f604f59a50c86c07188da3a87f8031a458c6b6021c13386dc094b29857ed"
+      ],
+      "source_published_kst": "2026-10-18T08:10+09:00",
+      "source_supply_terms": {},
+      "source_title": "임대 만료 광주월드컵경기장 판매시설 활용, 공론화로 찾는다 | 연합뉴스",
+      "telegram_core_fact": "시는 임대 수입 등을 감안해 기존과 유사한 판매시설로 활용하기로 하고, 새 임대 사업자 선정을 위한 공개 입찰을 준비했다.",
+      "title": "임대 만료 광주월드컵경기장 판매시설 활용, 공론화로 찾는다 | 연합뉴스"
     },
     "title:78273e25fd5f928b24257ce9": {
       "first_seen_kst": "2026-10-07T00:54:50+09:00",
@@ -835930,5 +836197,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-18T08:07:27+09:00"
+  "updated_at_kst": "2026-10-18T08:31:39+09:00"
 }
