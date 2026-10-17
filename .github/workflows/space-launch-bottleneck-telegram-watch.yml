@@ -10,6 +10,8 @@ on:
       - "scripts/merge_space_launch_state.py"
       - "scripts/validate_space_launch_korean.py"
       - "scripts/space_launch_translate_local.py"
+      - "scripts/space_launch_event_guard.py"
+      - "scripts/space_launch_alert_filter.py"
   schedule:
     - cron: "6,21,36,51 * * * *"
   workflow_dispatch:
@@ -36,12 +38,12 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
@@ -54,14 +56,21 @@ jobs:
           python -m py_compile scripts/validate_space_launch_korean.py
           python -m py_compile scripts/space_launch_translate_local.py
           python scripts/space_launch_telegram_send.py --self-test
+          python scripts/space_launch_telegram_send.py --inline-self-test
           python scripts/merge_space_launch_state.py --self-test
           python scripts/validate_space_launch_korean.py --self-test
           python scripts/space_launch_translate_local.py --self-test
+          python -m py_compile scripts/space_launch_event_guard.py scripts/space_launch_alert_filter.py
+          python scripts/space_launch_event_guard.py
+          python -c "import sys; sys.path.insert(0,'scripts'); import space_launch_alert_filter as f; f.self_test()"
 
       - name: Run space launch bottleneck watch
         env:
           FORCE_NOTIFY: ${{ inputs.force_notify }}
         run: python scripts/space_launch_bottleneck_watch.py
+
+      - name: Block misclassified and outdated article alerts
+        run: python scripts/space_launch_alert_filter.py out/space_launch_bottleneck_watch_telegram.txt
 
       - name: Translate English alert text to Korean
         if: hashFiles('out/space_launch_bottleneck_watch_telegram.txt') != ''
@@ -91,7 +100,7 @@ jobs:
         env:
           SPACE_LAUNCH_TELEGRAM_BOT_TOKEN: ${{ secrets.SPACE_LAUNCH_TELEGRAM_BOT_TOKEN }}
           SPACE_LAUNCH_TELEGRAM_CHAT_ID: ${{ secrets.SPACE_LAUNCH_TELEGRAM_CHAT_ID }}
-        run: python scripts/space_launch_telegram_send.py out/space_launch_bottleneck_watch_telegram.txt
+        run: python scripts/space_launch_telegram_send.py --inline out/space_launch_bottleneck_watch_telegram.txt
 
       - name: Persist deduplication state
         if: success() && hashFiles('out/space_launch_bottleneck_dedicated_pending_state.json') != ''
