@@ -478,11 +478,19 @@ def parse_pubdate(value: str | None) -> dt.datetime | None:
 
 
 def google_news_url(query: str) -> str:
+    # Keep existing Korean feeds unchanged. Search the two newly added US
+    # company/legislative storylines in the edition where they originate.
+    global_story = (
+        ("SoftBank" in query and "Allied Universal" in query)
+        or ("Anthropic" in query and (
+            "AI safety bill" in query or "frontier AI" in query and "bill" in query
+        ))
+    )
     return GOOGLE_NEWS + "?" + urllib.parse.urlencode({
         "q": query,
-        "hl": "ko",
-        "gl": "KR",
-        "ceid": "KR:ko",
+        "hl": "en-US" if global_story else "ko",
+        "gl": "US" if global_story else "KR",
+        "ceid": "US:en" if global_story else "KR:ko",
     })
 
 
@@ -1402,7 +1410,13 @@ def main() -> int:
 
     for query in NEWS_QUERIES:
         try:
-            raw.extend(parse_google_news(query, now))
+            fetched = parse_google_news(query, now)
+            raw.extend(fetched)
+            if ("SoftBank" in query and "Allied Universal" in query) or (
+                "Anthropic" in query and ("AI safety bill" in query or ("frontier AI" in query and "bill" in query))
+            ):
+                relevant = sum(bool(tracked_policy_event_stage(item)) for item in fetched)
+                print(f"ai_policy_new_topic_feed total={len(fetched)} relevant={relevant}")
         except Exception as exc:
             errors.append(f"Google News 실패: {query[:55]} / {type(exc).__name__}: {exc}")
 

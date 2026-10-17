@@ -436,7 +436,7 @@ jobs:
           python - <<'PY'
           from scripts.ai_safety_policy_watch import (
               MAX_ALERT_EVENTS, POLICY_EVENT_BASELINES, cluster_events,
-              detect_category, detect_entity, material, source_trusted,
+              detect_category, detect_entity, google_news_url, material, source_trusted,
               tracked_policy_event_key, tracked_policy_event_stage,
           )
           def item(title, source="Reuters"):
@@ -467,6 +467,9 @@ jobs:
           )) is None
           draft = item("Anthropic quietly pitches its own AI safety bill to lawmakers", "Politico")
           assert source_trusted("Politico") and material(draft)
+          assert "ceid=US%3Aen" in google_news_url('"SoftBank" "Allied Universal" takeover')
+          assert "ceid=US%3Aen" in google_news_url('"Anthropic" "AI safety bill" Congress')
+          assert "ceid=KR%3Ako" in google_news_url("네이버클라우드 사이버 보안 사업")
           assert tracked_policy_event_key(draft) in POLICY_EVENT_BASELINES
           assert tracked_policy_event_stage(item(
               "Anthropic AI safety bill formally introduced in Congress"
