@@ -1499,6 +1499,25 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         self.assertEqual(selected[0], "east_west_pipeline_recovery")
         self.assertIn("걸프오브오만 STS 우회 물류 급증·병목", duplicates)
 
+    def test_historical_static_reports_stay_deduped_after_90_days(self):
+        early = dt.datetime(2026, 10, 4, 1, tzinfo=dt.timezone.utc)
+        later = early + dt.timedelta(days=90)
+        for kind, event_id in (
+            ("ex_iran_crude_prewar_recovery", "ex_iran_crude_prewar_recovery:unchanged"),
+            ("saudi_asia_osp_change", "saudi_asia_osp_change:november2026"),
+            ("eia_refining_crack_watch", "eia_refining_crack_watch:week20261009"),
+            ("iea_oct15_reserve_execution", "iea_oct15_reserve_execution:2026-10-15-330-100-20plus"),
+        ):
+            state = {"alerted_events": {event_id: early.astimezone(MODULE.KST).isoformat()}}
+            self.assertTrue(MODULE.event_recently_alerted(state, event_id, later))
+            updated = MODULE.build_pending_state(state, "unrelated:new",
+                                                "oil_flow_recovery", later, {})
+            self.assertIn(event_id, updated["alerted_events"])
+        changed = "saudi_asia_osp_change:december2026"
+        state = {"alerted_events": {"saudi_asia_osp_change:november2026":
+                                   early.astimezone(MODULE.KST).isoformat()}}
+        self.assertFalse(MODULE.event_recently_alerted(state, changed, later))
+
     def test_same_event_is_suppressed_but_new_stage_passes(self):
         current = dt.datetime(2026, 9, 29, 6, 0, tzinfo=dt.timezone.utc)
         rate35 = [MODULE.NewsItem(

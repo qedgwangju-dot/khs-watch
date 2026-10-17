@@ -2919,6 +2919,25 @@ def _parse_kst_timestamp(raw: object) -> dt.datetime | None:
     return value.astimezone(KST)
 
 
+IMMUTABLE_EVENT_PREFIXES = (
+    # Published measurements: a repeated copy is not a new observation.
+    "ex_iran_crude_prewar_recovery:",
+    "tankertrackers_7country_crude_mtd:",
+    "saudi_asia_osp_change:",
+    "eia_refining_crack_watch:",
+    "eia_weekly_stock_balance:",
+    "iea_oct15_reserve_execution:",
+    "delek_tyler_dpa:",
+    "g7_reserve_release_agreement:",
+    "eu_diesel_reserve_policy:",
+    "crude_product_divergence:",
+    "regional_export_recovery:",
+    "sts_reroute_expansion:",
+    "saudi_bypass_investment:",
+    "russia_diesel_supply_transition:",
+)
+
+
 def event_recently_alerted(
     state: dict,
     current_event_id: str,
@@ -2929,13 +2948,7 @@ def event_recently_alerted(
     # OFAC license and dated cargoes are factual one-time occurrences.
     # The generic 14-day news cooldown must not resend them after expiry.
     if (
-        current_event_id.startswith((
-            "russia_diesel_supply_transition:",
-            "saudi_bypass_investment:",
-            "delek_tyler_dpa:",
-            "iea_oct15_reserve_execution:",
-            "eia_weekly_stock_balance:",
-        ))
+        current_event_id.startswith(IMMUTABLE_EVENT_PREFIXES)
         and isinstance(alerted, dict)
         and current_event_id in alerted
     ):
@@ -2984,13 +2997,7 @@ def build_pending_state(
     for key, raw in alerted.items():
         stamp = _parse_kst_timestamp(raw)
         if stamp is not None and (
-            stamp >= cutoff or str(key).startswith((
-                "russia_diesel_supply_transition:",
-                "saudi_bypass_investment:",
-                "delek_tyler_dpa:",
-                "iea_oct15_reserve_execution:",
-                "eia_weekly_stock_balance:",
-            ))
+            stamp >= cutoff or str(key).startswith(IMMUTABLE_EVENT_PREFIXES)
         ):
             cleaned[str(key)] = stamp.isoformat(timespec="seconds")
     cleaned[current_event_id] = now_kst.isoformat(timespec="seconds")
@@ -4980,7 +4987,12 @@ def run_monitor(current: dt.datetime) -> int:
     # Audit event selection and public-source failures without Telegram secrets or token logs.
     print(f"monitor_news_count={len(news_items)} candidate_kinds={[kind for kind, _ in confirmed_candidates]}")
     for issue in news_errors:
-        if any(v in issue for v in ("중국 Reuters", "호르무즈 신화통신", "허리케인 공식 MMA", "사우디 Aramco 공식 RSS", "TankerTrackers 월중 7개국")):
+        if any(v in issue for v in (
+            "중국 Reuters", "호르무즈 신화통신", "허리케인 공식 MMA",
+            "사우디 Aramco 공식 RSS", "TankerTrackers 월중 7개국",
+            "IEA 10월 15일 비축유 집행", "Delek 부통령 증설 발표",
+            "EIA 주간 원유·정제품 재고",
+        )):
             print(f"public_source_diagnostic={issue[:300]}")
     if not confirmed_candidates:
         lines = [
