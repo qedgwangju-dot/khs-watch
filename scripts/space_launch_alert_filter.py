@@ -47,3 +47,14 @@ def process(alert_path,pending_path,now,fetch,rate):
     state=json.loads(pending_path.read_text(encoding='utf-8'))
     if not isinstance(state.get('seen'),dict):raise RuntimeError('State schema invalid')
     notices,errors=correction_notices(state['seen'],fetch,rate)
+
+def main():
+    if len(sys.argv)!=2:
+        raise SystemExit("Expected alert file path")
+    target=pathlib.Path(sys.argv[1])
+    original=target.read_text(encoding="utf-8") if target.exists() else ""
+    changed=clean_blocks(original,datetime.now(timezone.utc)) if original else ""
+    if changed:target.write_text(changed,encoding="utf-8")
+    else:target.unlink(missing_ok=True)
+    print("space_launch_alert_filter=ok alert="+str(bool(changed)))
+if __name__=="__main__":main()
