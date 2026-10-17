@@ -97,6 +97,34 @@ class TreasuryLongEndQraTests(unittest.TestCase):
         self.assertIn("장기국채",title)
         self.assertEqual(detail["official_url"],"https://home.treasury.gov/survey.pdf")
 
+    def test_clickable_dealer_sources_without_bare_urls(self):
+        agenda=qra.ReleaseSection(
+            heading="DOCUMENTS RELEASED at 12:00 PM Friday, October 16, 2026",
+            links=[qra.LinkItem("Primary Dealer Meeting Agenda",
+                                "https://home.treasury.gov/system/files/221/Dealer-Agenda-November-2026.pdf")],
+        )
+        with patch.object(qra,"official_dealer_document_text",
+                          return_value="20-year bond auction sizes and 30-year auction investor demand"):
+            title,body,detail=qra.build_dealer_survey_alert(agenda,fx=1332.1)
+        output=qra.dealer_telegram_html(title,body,detail)
+        self.assertIn('<a href="https://home.treasury.gov/system/files/221/Dealer-Agenda-November-2026.pdf">미 재무부 공식 딜러 의제</a>', output)
+        self.assertIn('<a href="' + issuance.CITI_20261009 + '">Citi 시장 예상</a>', output)
+        self.assertNotIn("공식 문서: https://",output)
+        self.assertNotIn("시장 예상: https://",output)
+        self.assertEqual(output.count("<a href="),2)
+        self.assertIn("결정이 아닙니다",output)
+        self.assertLess(len(output),4096)
+
+    def test_dealer_source_links_refuse_untrusted_hosts(self):
+        with self.assertRaises(ValueError):
+            qra.dealer_telegram_html(
+                "딜러 의제",
+                "공식 문서: https://not-treasury.example/a.pdf\n시장 예상: " +
+                issuance.CITI_20261009,
+                {"type":"dealer_long_end_survey_official_document",
+                 "official_url":"https://not-treasury.example/a.pdf"},
+            )
+
     def test_scenario_is_not_a_government_announcement(self):
         compared=issuance.summarize_long_end_supply(
             issuance.nominal_long_end_table(sample_table()))
