@@ -1143,6 +1143,27 @@
       "telegram_core_fact": "SK바이오사이언스가 독일 백신 위탁개발생산(CDMO) 기업 IDT바이오로지카 인수를 발판으로 글로벌 백신 사업을 확대하고 있다.",
       "title": "독일 IDT 품은 SK바이오…글로벌 백신 영토 넓힌다"
     },
+    "core:058b503c6c84eec16f725e00": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829556",
+      "source": "뉴시스",
+      "source_body_digest": "a9f3be6ea25efd2ba5a3a36241f65e5de4f657eb72f4f30b7d3f7801dedd6019",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f58655eefcd9c83bcc2d56af784f656342907e912e25f83a22b0ad5e57b13769",
+      "source_fact_keys": [
+        "source_fact:v1:2530b9635144f8b7b09361d3195dad6faef9466db97becf8dc691bc876628c1c",
+        "source_fact:v1:d195bc4bc5f008ab71a79d4f76847f103fde7d0e6c1fe6d82fb4317a4ab49697"
+      ],
+      "source_published_kst": "2026-10-18T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"집값 따라가기 벅차\"…10명 중 3명, 주담대 2억 이상 빌렸다 '역대 최고'",
+      "telegram_core_fact": "우리은행의 변동형 주담대 금리는 5.00~6.20%, KB국민은행의 변동형 주담대 금리는 4.64~6.05%로 올랐다.",
+      "title": "\"집값 따라가기 벅차\"…10명 중 3명, 주담대 2억 이상 빌렸다 '역대 최고'"
+    },
     "core:058c98482aff0702327fdbe1": {
       "first_seen_kst": "2026-10-08T00:24:24+09:00",
       "lanes": {
@@ -9668,6 +9689,35 @@
       "telegram_core_fact": "신현송 한국은행 총재는 향후 통화정책에 대해 “물가와 경기 흐름, 금융안정 상황을 면밀히 점검하면서 추가 인상의 시기와 속도 등을 결정해 나갈 계획”이라며 금리 인상 기조를 재차 확인했다.",
       "title": "신현송 총재 “기준금리 추가 인상 시기, 물가·경기 흐름 보고 결정”"
     },
+    "core:25ec48e35616155e00f2f5db": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/18/2026101611034719000",
+      "source": "머니투데이",
+      "source_body_digest": "694158c5d2472a8e34215155a3a90cb280be9057dccf80c206cabe4a6df9c098",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-18",
+      "source_fact_identity": "source_facts:v1:3f1d3662c23cfdcd99c63514db7e301a5288070b3088eec3a0c167ed9caab053",
+      "source_fact_keys": [
+        "source_fact:v1:055762ea59a90436e18914d46301b990b8803fc29999102f0e32870624cfea96",
+        "source_fact:v1:07f21c6862c2252ce9e0c08a79ae615c40e2b9a57d969a8ffb335f8af28453fb",
+        "source_fact:v1:0826ce9b91b2fa89ccb0e8c0ef3f9830c804e6a2f341847bc0eea7ac92ff4af4",
+        "source_fact:v1:342b56d274f8f3526e766da8bbdeda70927e822572b1cce7bdace1cd3d7a9f79",
+        "source_fact:v1:38fe3993b3176db115e460713943d8c3b841e7eba796106c62298ef774168e31",
+        "source_fact:v1:4ce5d2642dce00fc9fc79f6cfb5c12489a847db721a0911b2780596f92c623d0",
+        "source_fact:v1:7afd133ca4b9efd0efe5cf89de20009d57a463fd9a401df23174201695158bca",
+        "source_fact:v1:948e68c7101e51b032ab155b689068253bef503b0736a62b0a18444d0b37d32f",
+        "source_fact:v1:c634f72bda45f570ed463a9e3d5da02dcf80275b4a232fcab80d08b6f76ac8d1",
+        "source_fact:v1:c669385b1f7a66473990d532f4c74b876cf26f7da2128646077af125a1d7c725"
+      ],
+      "source_published_kst": "2026-10-18T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "고용 쇼크에도 안 내린 장기금리…'가격 묻지 않던 큰손'이 떠났다",
+      "telegram_core_fact": "브렌트유가 배럴당 100달러 안팎에서 움직이는 가운데(8월 중순에는 87달러대였다) 휘발유 가격이 한 달 새 9.1% 뛰면서 전년 대비 상승률은 3.7%로 예상(3.6%)을 웃돌았고, 식품·에너지를 뺀 근원 물가도 2.6%로 예상(2.5%)보다 높았다.",
+      "title": "고용 쇼크에도 안 내린 장기금리…'가격 묻지 않던 큰손'이 떠났다"
+    },
     "core:25f0c84d28d97b3eb614dd3b": {
       "first_seen_kst": "2026-10-08T15:16:19+09:00",
       "lanes": {
@@ -12610,6 +12660,27 @@
       "source_title": "젤렌스키 “트럼프 ’에너지 휴전’ 언급에도 러 공격 계속“",
       "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령은 도널드 트럼프 미국 대통령이 '에너지 휴전'을 언급한 이후 우크라이나가 공격을 자제했지만, 러시아는 그렇지 않았다고 주장했습니다.",
       "title": "젤렌스키 “트럼프 ’에너지 휴전’ 언급에도 러 공격 계속“"
+    },
+    "core:31a62bdf81e60e667e368955": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016164900530",
+      "source": "연합뉴스",
+      "source_body_digest": "ce1364fde0c78f9212b9abad97ba8dd35e0bb6c6ddbd31975bdb9a3c58b2fb6c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4324f70474ed11da02d749d78446b3baa540e882dc1574cab2b7b13dbe3c322f",
+      "source_fact_keys": [
+        "source_fact:v1:b1d1533ab0e62977be9b0c6bcc595422313a6190aa11314960f923c6a6645052",
+        "source_fact:v1:b89f248b9204085b064f095d91f824cbe2e7d1fe03396c7aa085c92235c3f033"
+      ],
+      "source_published_kst": "2026-10-18T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "개인정보위, 과징금 부과 사건 10건 중 9건에 '재량감경' | 연합뉴스",
+      "telegram_core_fact": "지난 5월 19일부터 시행된 개정 개인정보 보호법 시행령과 과징금 부과기준 고시를 통해 '매우 중대한 위반행위'에 대해서는 과징금 감경의 전부 또는 일부를 적용하지 않을 수 있도록 했다.",
+      "title": "개인정보위, 과징금 부과 사건 10건 중 9건에 '재량감경' | 연합뉴스"
     },
     "core:320167d70817b68463152ae9": {
       "first_seen_kst": "2026-10-15T16:50:59+09:00",
@@ -28841,6 +28912,24 @@
       "source_published_kst": "2026-10-07T09:44+09:00",
       "title": "장인화 회장 '자원 승부수' 결실…포스코홀딩스, 아르헨 리튬 2공장 준공"
     },
+    "core:7542c2b81c01c93d947de0df": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.mt.co.kr/future/2026/10/18/2026101400322970932",
+      "source": "머니투데이",
+      "source_body_digest": "f701800f549b3929bb250bd059851e08061431c20764282c67410a250c82031f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-18T05:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "전기먹는 하마 AI 반도체 열·손실 잡는다…'특수유리 기판' 뭐길래",
+      "telegram_core_fact": "\"현재 개발 중인 기술은 기존 반도체의 유기 소재 기판을 특수유리 기판으로 바꾸는 데 필요한 핵심 소재 기술\"이라며 \"AI 반도체를 고성능화하고 전력 효율을 높이기 위한 차세대 기판이라고 보면 된다\"고 했다.",
+      "title": "전기먹는 하마 AI 반도체 열·손실 잡는다…'특수유리 기판' 뭐길래"
+    },
     "core:7545fc548097523faa06d6b8": {
       "first_seen_kst": "2026-10-15T16:25:35+09:00",
       "lanes": {
@@ -36394,6 +36483,26 @@
       "telegram_core_fact": "트럼프 대통령은 소셜미디어 트루스소셜에서 \"방금 푸틴 대통령과 매우 성공적인 협의를 마쳤다\"며 \"러시아가 미국 및 세계 시장에 즉시 30만t 이상의 경유 연료를 공급하고, 11월 중 추가 50만t을, 그 직후엔 100만t을 공급하기로 합의했다\"고 말했다.",
       "title": "뉴욕증시, 기술주 반등·러시아 경유 공급 합의에 상승(종합) | 연합뉴스"
     },
+    "core:925c58b1861621a243d71b27": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016157300017",
+      "source": "연합뉴스",
+      "source_body_digest": "c84433b788e1dc807831e7d13917a87015cca36fdc21c3e963dc84af2b97ac29",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2774d02e9e98946e3cf4b956a545b38518f8eb7a475c9edcef90cc05e8cea5ee",
+      "source_fact_keys": [
+        "source_fact:v1:a2f2253d49448f965995b9136276025d80d7831ad742d24f4d38f4a1cb33101f"
+      ],
+      "source_published_kst": "2026-10-18T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "[만나보니] 딥엑스 김녹원 \"인텔과 기술협력 본격화…AMD와도 논의\" | 연합뉴스",
+      "telegram_core_fact": "국내 인공지능(AI) 반도체 기업 딥엑스가 인텔의 AI 소프트웨어 생태계에 자사 신경망처리장치(NPU)를 연동하는 기술 협력을 본격화하고, AMD와도 협력 가능성을 논의하며 글로벌 피지컬 AI 시장 공략에 속도를 내고 있다.",
+      "title": "[만나보니] 딥엑스 김녹원 \"인텔과 기술협력 본격화…AMD와도 논의\" | 연합뉴스"
+    },
     "core:92737e25549d89de658d60e8": {
       "first_seen_kst": "2026-10-07T19:47:02+09:00",
       "lanes": {
@@ -37710,6 +37819,26 @@
       "source_title": "김종철 방미통위 위원장 “불법스팸 부당이익 환수·통신시장 과징금 상향”",
       "telegram_core_fact": "통신시장 금지행위를 위반한 사업자에 대한 과징금도 높여 불공정행위 제재를 강화할 방침이다.",
       "title": "김종철 방미통위 위원장 “불법스팸 부당이익 환수·통신시장 과징금 상향”"
+    },
+    "core:9917980ad3f0cb7a87702cfd": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829328",
+      "source": "뉴시스",
+      "source_body_digest": "fc6d22edb363857a568d3fae8d87634b7e04e29ef97bcb6e4b644864e0f78362",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9218a1ebbafb88e3fcca7edd47fb815f0a82626759f414561d47d51365629204",
+      "source_fact_keys": [
+        "source_fact:v1:6f794dc79394df0bb4a372fe59c8e2bdc5921cf71f607e9c19d021aa46b80b59"
+      ],
+      "source_published_kst": "2026-10-18T07:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "약국 종업원이 연고 판매…법원, 약사에 벌금 50만원",
+      "telegram_core_fact": "법조계에 따르면 의정부지법 형사3단독 김희동 판사는 약사법 위반 혐의로 기소된 약사 A씨에게 벌금 50만원을 선고했다. 약사 면허가 없는 종업원이 의약품을 판매해 해당 약국을 운영하는 약사가 벌금형을 선고 받았다.",
+      "title": "약국 종업원이 연고 판매…법원, 약사에 벌금 50만원"
     },
     "core:991954ec3c907465a563f523": {
       "first_seen_kst": "2026-10-17T18:59:01+09:00",
@@ -48583,6 +48712,33 @@
       "source_title": "中 차세대 D램 실체 있나 \"임박한 위협 아냐\"…\"1년후 다를수도\"",
       "telegram_core_fact": "링스에쿼티스트래터지스의 KC 라즈쿠마르 애널리스트는 지난 8월 보고서에서 \"공급 한계와 고객사 인증 요건 때문에 최근 언론보도만큼 위협이 임박하지는 않다\"며 \"애플이 직면한 D램 수급 부족 사태를 눈에 띄게 줄이지 못할 것\"이라고 지적했다.",
       "title": "中 차세대 D램 실체 있나 \"임박한 위협 아냐\"…\"1년후 다를수도\""
+    },
+    "core:c5c5960a7479f878598b88e6": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018004300009",
+      "source": "연합뉴스",
+      "source_body_digest": "ecc909c2300ab38a3147ae48ed2c9440d72b9e46518d24944d7d0b13c7febb22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1ca2ecef1bb427dd1f83241140f28a12cd522984199319aaa13a5d8a581d3fa3",
+      "source_fact_keys": [
+        "source_fact:v1:1bd451a219ab3fdde67ed55ca351ef39bf537abd004c7dcd901e42632a6be88d",
+        "source_fact:v1:2107fbfc898b04aa89906fad813f5b6705795ed76271a565f4312fe7390cc955",
+        "source_fact:v1:304799af31ccf73d993b4b074e5e661cf35a9d5c677b318f1ac569d2595ec763",
+        "source_fact:v1:4fe528368f0b5769ae955dd2e83c4adf289eec20aab20c07e9d5bf6f9940135e",
+        "source_fact:v1:be26e09dc8468e5a8ae8ca70f4e698f6ba0a07b524cd8ce83bbaf44d2cada724",
+        "source_fact:v1:c3e45640b09fee7e42f6e2d8c5daa26f9db143a68395003bbeff5b5a62913053",
+        "source_fact:v1:c58c4d889fa0709401321bf53a46d5b6ec8ca7ebfe536e539010b77fc2d66cef",
+        "source_fact:v1:f31548ee2e009980f1373beec3c8072b1e972220fcd45da68200847cfcbc7fcf"
+      ],
+      "source_published_kst": "2026-10-18T06:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "젤렌스키, 트럼프 대러제재 유예에 \"푸틴만 돕는 오판\" | 연합뉴스",
+      "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령은 도널드 트럼프 미 대통령이 대러시아 신규 제재의 시행을 유예하기로 결정한 것에 대해 러시아를 더 대담하게 만들고 전쟁을 격화시킬 것이라고 17일(현지시간) 비판했다.",
+      "title": "젤렌스키, 트럼프 대러제재 유예에 \"푸틴만 돕는 오판\" | 연합뉴스"
     },
     "core:c5f96e5d662a48817a6353d7": {
       "first_seen_kst": "2026-10-14T16:58:19+09:00",
@@ -61821,6 +61977,35 @@
       "source_published_kst": "2026-10-05T13:29+09:00",
       "title": "JP모간, 10월 '콕' 집은 종목은…아멕스·써모피셔·리버티"
     },
+    "event:012593bb8f4a1448a2f45359": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/18/2026101611034719000",
+      "source": "머니투데이",
+      "source_body_digest": "694158c5d2472a8e34215155a3a90cb280be9057dccf80c206cabe4a6df9c098",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-18",
+      "source_fact_identity": "source_facts:v1:3f1d3662c23cfdcd99c63514db7e301a5288070b3088eec3a0c167ed9caab053",
+      "source_fact_keys": [
+        "source_fact:v1:055762ea59a90436e18914d46301b990b8803fc29999102f0e32870624cfea96",
+        "source_fact:v1:07f21c6862c2252ce9e0c08a79ae615c40e2b9a57d969a8ffb335f8af28453fb",
+        "source_fact:v1:0826ce9b91b2fa89ccb0e8c0ef3f9830c804e6a2f341847bc0eea7ac92ff4af4",
+        "source_fact:v1:342b56d274f8f3526e766da8bbdeda70927e822572b1cce7bdace1cd3d7a9f79",
+        "source_fact:v1:38fe3993b3176db115e460713943d8c3b841e7eba796106c62298ef774168e31",
+        "source_fact:v1:4ce5d2642dce00fc9fc79f6cfb5c12489a847db721a0911b2780596f92c623d0",
+        "source_fact:v1:7afd133ca4b9efd0efe5cf89de20009d57a463fd9a401df23174201695158bca",
+        "source_fact:v1:948e68c7101e51b032ab155b689068253bef503b0736a62b0a18444d0b37d32f",
+        "source_fact:v1:c634f72bda45f570ed463a9e3d5da02dcf80275b4a232fcab80d08b6f76ac8d1",
+        "source_fact:v1:c669385b1f7a66473990d532f4c74b876cf26f7da2128646077af125a1d7c725"
+      ],
+      "source_published_kst": "2026-10-18T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "고용 쇼크에도 안 내린 장기금리…'가격 묻지 않던 큰손'이 떠났다",
+      "telegram_core_fact": "브렌트유가 배럴당 100달러 안팎에서 움직이는 가운데(8월 중순에는 87달러대였다) 휘발유 가격이 한 달 새 9.1% 뛰면서 전년 대비 상승률은 3.7%로 예상(3.6%)을 웃돌았고, 식품·에너지를 뺀 근원 물가도 2.6%로 예상(2.5%)보다 높았다.",
+      "title": "고용 쇼크에도 안 내린 장기금리…'가격 묻지 않던 큰손'이 떠났다"
+    },
     "event:0214c45f4cf3a894a1e3ff7f": {
       "first_seen_kst": "2026-10-08T09:17:31+09:00",
       "lanes": {
@@ -65552,6 +65737,24 @@
       "link": "https://biz.heraldcorp.com/article/10883675",
       "source": "헤럴드경제",
       "title": "“기억도 하고 연산도 한다”…삼성·SK, 다음달 글로벌 반도체 학회서 차세대 메모리 기술 소개"
+    },
+    "event:3a82498dfc9326e96e8a4c6a": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.mt.co.kr/future/2026/10/18/2026101400322970932",
+      "source": "머니투데이",
+      "source_body_digest": "f701800f549b3929bb250bd059851e08061431c20764282c67410a250c82031f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-18T05:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "전기먹는 하마 AI 반도체 열·손실 잡는다…'특수유리 기판' 뭐길래",
+      "telegram_core_fact": "\"현재 개발 중인 기술은 기존 반도체의 유기 소재 기판을 특수유리 기판으로 바꾸는 데 필요한 핵심 소재 기술\"이라며 \"AI 반도체를 고성능화하고 전력 효율을 높이기 위한 차세대 기판이라고 보면 된다\"고 했다.",
+      "title": "전기먹는 하마 AI 반도체 열·손실 잡는다…'특수유리 기판' 뭐길래"
     },
     "event:3aaba338a560b0a1084612c6": {
       "first_seen_kst": "2026-09-18T06:33:53+09:00",
@@ -73101,36 +73304,24 @@
     "event:b6f8b9e0aa9094185f2278b7": {
       "first_seen_kst": "2026-10-18T06:15:10+09:00",
       "lanes": {
-        "live": "2026-10-18T06:15:10+09:00"
+        "live": "2026-10-18T06:15:10+09:00",
+        "preopen": "2026-10-18T07:09:00+09:00"
       },
-      "last_seen_kst": "2026-10-18T06:15:10+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261017023400002",
-      "source": "연합뉴스",
-      "source_body_digest": "7d92f5986d0c9a9a6d009a25e65083feea6a4bab1180db5ddbf80de6282d0ed1",
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829556",
+      "source": "뉴시스",
+      "source_body_digest": "a9f3be6ea25efd2ba5a3a36241f65e5de4f657eb72f4f30b7d3f7801dedd6019",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:be939b26b263376f4de726d9d7f582c82773a24128ba69ac4977f6bded7faab3",
+      "source_fact_identity": "source_facts:v1:f58655eefcd9c83bcc2d56af784f656342907e912e25f83a22b0ad5e57b13769",
       "source_fact_keys": [
-        "source_fact:v1:01d13d2cccbe9c3eac5e2aa24d792a571c0efef0b7ab8ffc1b9436dd6a2a8f6d",
-        "source_fact:v1:13ee1c755c94688019a22c29ed9dbf6b54d6c50e2c7d3ebe08ca4f62de2136fe",
-        "source_fact:v1:27f4dd7faf470a0b37f6a8c0c348bc25d250c0568278b211fda1e205a883a966",
-        "source_fact:v1:32046c087acfb77a2e3713954c05d5310041cb37efb0257c922a9cf9e0654a98",
-        "source_fact:v1:505ada9f75744405fd6377952f83d443fa49e40c1b058795e2525a10c313475c",
-        "source_fact:v1:56f9364d97ecf222c7f551649fb538f47f60754d99d93eca07ca185e29e03d5b",
-        "source_fact:v1:620b1914b1182007c8edddc7a3c3e6ae16a661d89b68820aec6be3c3442c0c19",
-        "source_fact:v1:7457652d008638e9f2facab560b91475781d172a2bb37a0cb64a261be8d8a704",
-        "source_fact:v1:7471d815c4e3276af835dfa84c8ddd20b8a18afd89af32887579eaeffae95f65",
-        "source_fact:v1:83e4e61005a6befaadd8bc7a653c63d6e6ccda5309b45d0de17c4e7b37edf6be",
-        "source_fact:v1:ac4c73502be666866e7117b5ca34e97f9889a7a9499c325e6650306637065718",
-        "source_fact:v1:cc8d782b9f7e22ddf369ed7e821d1cbe17b1a27c80f287b0bfd787c0efca4cb4",
-        "source_fact:v1:d999050257a6a8ae54db9b9808c21bce97dd9f3b8671888a48c617cf07ea122b",
-        "source_fact:v1:f0b634fe86c5eefb69ac7f5b2b83e8ce9afaa877c3d854a97aa4c6c6c2d85e85",
-        "source_fact:v1:fe11804d889569afdc507bf510186fc1b397bdedf442eca39dde388e702e5742"
+        "source_fact:v1:2530b9635144f8b7b09361d3195dad6faef9466db97becf8dc691bc876628c1c",
+        "source_fact:v1:d195bc4bc5f008ab71a79d4f76847f103fde7d0e6c1fe6d82fb4317a4ab49697"
       ],
-      "source_published_kst": "2026-10-18T05:54+09:00",
+      "source_published_kst": "2026-10-18T07:00+09:00",
       "source_supply_terms": {},
-      "source_title": "이달 환율 2년1개월만에 최저…원/엔 19년만에 가장 낮아 | 연합뉴스",
-      "telegram_core_fact": "NH농협은행 이낙원 FX파생전문위원은 \"반도체 중심의 달러공급이 대외재료와 수급을 압도했다\"며 \"9월 이후 미 금리상승, 달러인덱스도 4% 넘게 올랐지만, 환율 반등 압력이 있을 때마다 매도물량이 대량 나왔고, 반도체기업의 국내투자 확대 계획도 영향을 줬다\"고 설명했다.",
-      "title": "이달 환율 2년1개월만에 최저…원/엔 19년만에 가장 낮아 | 연합뉴스"
+      "source_title": "\"집값 따라가기 벅차\"…10명 중 3명, 주담대 2억 이상 빌렸다 '역대 최고'",
+      "telegram_core_fact": "우리은행의 변동형 주담대 금리는 5.00~6.20%, KB국민은행의 변동형 주담대 금리는 4.64~6.05%로 올랐다.",
+      "title": "\"집값 따라가기 벅차\"…10명 중 3명, 주담대 2억 이상 빌렸다 '역대 최고'"
     },
     "event:b72d72ed5e3181f982f96268": {
       "first_seen_kst": "2026-09-28T11:53:01+09:00",
@@ -79450,6 +79641,33 @@
       "source_title": "청주 가경에 아이파크 들어선다…7·8단지 1671세대 분양",
       "telegram_core_fact": "IPARK현대산업개발이 청주 가경에 아이파크 7·8단지 총 1671세대를 공급한다.",
       "title": "청주 가경에 아이파크 들어선다…7·8단지 1671세대 분양"
+    },
+    "fact:0323cb9da238564459c6973b": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018004300009",
+      "source": "연합뉴스",
+      "source_body_digest": "ecc909c2300ab38a3147ae48ed2c9440d72b9e46518d24944d7d0b13c7febb22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1ca2ecef1bb427dd1f83241140f28a12cd522984199319aaa13a5d8a581d3fa3",
+      "source_fact_keys": [
+        "source_fact:v1:1bd451a219ab3fdde67ed55ca351ef39bf537abd004c7dcd901e42632a6be88d",
+        "source_fact:v1:2107fbfc898b04aa89906fad813f5b6705795ed76271a565f4312fe7390cc955",
+        "source_fact:v1:304799af31ccf73d993b4b074e5e661cf35a9d5c677b318f1ac569d2595ec763",
+        "source_fact:v1:4fe528368f0b5769ae955dd2e83c4adf289eec20aab20c07e9d5bf6f9940135e",
+        "source_fact:v1:be26e09dc8468e5a8ae8ca70f4e698f6ba0a07b524cd8ce83bbaf44d2cada724",
+        "source_fact:v1:c3e45640b09fee7e42f6e2d8c5daa26f9db143a68395003bbeff5b5a62913053",
+        "source_fact:v1:c58c4d889fa0709401321bf53a46d5b6ec8ca7ebfe536e539010b77fc2d66cef",
+        "source_fact:v1:f31548ee2e009980f1373beec3c8072b1e972220fcd45da68200847cfcbc7fcf"
+      ],
+      "source_published_kst": "2026-10-18T06:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "젤렌스키, 트럼프 대러제재 유예에 \"푸틴만 돕는 오판\" | 연합뉴스",
+      "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령은 도널드 트럼프 미 대통령이 대러시아 신규 제재의 시행을 유예하기로 결정한 것에 대해 러시아를 더 대담하게 만들고 전쟁을 격화시킬 것이라고 17일(현지시간) 비판했다.",
+      "title": "젤렌스키, 트럼프 대러제재 유예에 \"푸틴만 돕는 오판\" | 연합뉴스"
     },
     "fact:035ecc7b0da50bd109944cc5": {
       "first_seen_kst": "2026-10-13T06:41:52+09:00",
@@ -91182,6 +91400,27 @@
       "telegram_core_fact": "'넷앱 콘솔'에 AI 기반 자율 운영과 대화형 관리 기능을 도입해 데이터센터와 클라우드의 스토리지를 통합 관리한다.",
       "title": "넷앱, AI 스토리지 '노버스' 공개…GPU 데이터 병목 해소 나서"
     },
+    "fact:2c676c20706e8655f7c97123": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016164900530",
+      "source": "연합뉴스",
+      "source_body_digest": "ce1364fde0c78f9212b9abad97ba8dd35e0bb6c6ddbd31975bdb9a3c58b2fb6c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4324f70474ed11da02d749d78446b3baa540e882dc1574cab2b7b13dbe3c322f",
+      "source_fact_keys": [
+        "source_fact:v1:b1d1533ab0e62977be9b0c6bcc595422313a6190aa11314960f923c6a6645052",
+        "source_fact:v1:b89f248b9204085b064f095d91f824cbe2e7d1fe03396c7aa085c92235c3f033"
+      ],
+      "source_published_kst": "2026-10-18T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "개인정보위, 과징금 부과 사건 10건 중 9건에 '재량감경' | 연합뉴스",
+      "telegram_core_fact": "지난 5월 19일부터 시행된 개정 개인정보 보호법 시행령과 과징금 부과기준 고시를 통해 '매우 중대한 위반행위'에 대해서는 과징금 감경의 전부 또는 일부를 적용하지 않을 수 있도록 했다.",
+      "title": "개인정보위, 과징금 부과 사건 10건 중 9건에 '재량감경' | 연합뉴스"
+    },
     "fact:2c73b4d0df0ebe181afb2e28": {
       "first_seen_kst": "2026-10-08T05:44:23+09:00",
       "lanes": {
@@ -98099,6 +98338,26 @@
       "source_published_kst": "2026-10-07T14:22+09:00",
       "title": "AI 전력난에 엔진도 뜬다…HD건설기계, 북미서 3900억원 수주"
     },
+    "fact:46c1c9036fc2e59dbf660fde": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016157300017",
+      "source": "연합뉴스",
+      "source_body_digest": "c84433b788e1dc807831e7d13917a87015cca36fdc21c3e963dc84af2b97ac29",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2774d02e9e98946e3cf4b956a545b38518f8eb7a475c9edcef90cc05e8cea5ee",
+      "source_fact_keys": [
+        "source_fact:v1:a2f2253d49448f965995b9136276025d80d7831ad742d24f4d38f4a1cb33101f"
+      ],
+      "source_published_kst": "2026-10-18T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "[만나보니] 딥엑스 김녹원 \"인텔과 기술협력 본격화…AMD와도 논의\" | 연합뉴스",
+      "telegram_core_fact": "국내 인공지능(AI) 반도체 기업 딥엑스가 인텔의 AI 소프트웨어 생태계에 자사 신경망처리장치(NPU)를 연동하는 기술 협력을 본격화하고, AMD와도 협력 가능성을 논의하며 글로벌 피지컬 AI 시장 공략에 속도를 내고 있다.",
+      "title": "[만나보니] 딥엑스 김녹원 \"인텔과 기술협력 본격화…AMD와도 논의\" | 연합뉴스"
+    },
     "fact:46dbb36d7019fe75b2b3cbc5": {
       "first_seen_kst": "2026-10-12T14:44:13+09:00",
       "lanes": {
@@ -101079,6 +101338,35 @@
       ],
       "source_published_kst": "2026-10-07T09:51+09:00",
       "title": "삼미금속, 한화파워에 ‘가스터빈 블레이드’ 납품 개시…후속 수주 논의"
+    },
+    "fact:5130a227c5b65a2132b4aa31": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/18/2026101611034719000",
+      "source": "머니투데이",
+      "source_body_digest": "694158c5d2472a8e34215155a3a90cb280be9057dccf80c206cabe4a6df9c098",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-18",
+      "source_fact_identity": "source_facts:v1:3f1d3662c23cfdcd99c63514db7e301a5288070b3088eec3a0c167ed9caab053",
+      "source_fact_keys": [
+        "source_fact:v1:055762ea59a90436e18914d46301b990b8803fc29999102f0e32870624cfea96",
+        "source_fact:v1:07f21c6862c2252ce9e0c08a79ae615c40e2b9a57d969a8ffb335f8af28453fb",
+        "source_fact:v1:0826ce9b91b2fa89ccb0e8c0ef3f9830c804e6a2f341847bc0eea7ac92ff4af4",
+        "source_fact:v1:342b56d274f8f3526e766da8bbdeda70927e822572b1cce7bdace1cd3d7a9f79",
+        "source_fact:v1:38fe3993b3176db115e460713943d8c3b841e7eba796106c62298ef774168e31",
+        "source_fact:v1:4ce5d2642dce00fc9fc79f6cfb5c12489a847db721a0911b2780596f92c623d0",
+        "source_fact:v1:7afd133ca4b9efd0efe5cf89de20009d57a463fd9a401df23174201695158bca",
+        "source_fact:v1:948e68c7101e51b032ab155b689068253bef503b0736a62b0a18444d0b37d32f",
+        "source_fact:v1:c634f72bda45f570ed463a9e3d5da02dcf80275b4a232fcab80d08b6f76ac8d1",
+        "source_fact:v1:c669385b1f7a66473990d532f4c74b876cf26f7da2128646077af125a1d7c725"
+      ],
+      "source_published_kst": "2026-10-18T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "고용 쇼크에도 안 내린 장기금리…'가격 묻지 않던 큰손'이 떠났다",
+      "telegram_core_fact": "브렌트유가 배럴당 100달러 안팎에서 움직이는 가운데(8월 중순에는 87달러대였다) 휘발유 가격이 한 달 새 9.1% 뛰면서 전년 대비 상승률은 3.7%로 예상(3.6%)을 웃돌았고, 식품·에너지를 뺀 근원 물가도 2.6%로 예상(2.5%)보다 높았다.",
+      "title": "고용 쇼크에도 안 내린 장기금리…'가격 묻지 않던 큰손'이 떠났다"
     },
     "fact:514678288f05dbad83f61a6d": {
       "first_seen_kst": "2026-10-14T07:46:13+09:00",
@@ -110531,6 +110819,26 @@
       ],
       "source_published_kst": "2026-10-06T04:53+09:00",
       "title": "트럼프 \"휘발윳값 상승, 호르무즈 때문 아냐\"…우크라전쟁·야당 탓"
+    },
+    "fact:7255ef3c44d11f187721e2cf": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829328",
+      "source": "뉴시스",
+      "source_body_digest": "fc6d22edb363857a568d3fae8d87634b7e04e29ef97bcb6e4b644864e0f78362",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9218a1ebbafb88e3fcca7edd47fb815f0a82626759f414561d47d51365629204",
+      "source_fact_keys": [
+        "source_fact:v1:6f794dc79394df0bb4a372fe59c8e2bdc5921cf71f607e9c19d021aa46b80b59"
+      ],
+      "source_published_kst": "2026-10-18T07:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "약국 종업원이 연고 판매…법원, 약사에 벌금 50만원",
+      "telegram_core_fact": "법조계에 따르면 의정부지법 형사3단독 김희동 판사는 약사법 위반 혐의로 기소된 약사 A씨에게 벌금 50만원을 선고했다. 약사 면허가 없는 종업원이 의약품을 판매해 해당 약국을 운영하는 약사가 벌금형을 선고 받았다.",
+      "title": "약국 종업원이 연고 판매…법원, 약사에 벌금 50만원"
     },
     "fact:725db9c218e92c7c7ae57912": {
       "first_seen_kst": "2026-10-08T18:02:43+09:00",
@@ -134345,6 +134653,27 @@
       ],
       "source_published_kst": "2026-10-06T10:28+09:00",
       "title": "에이프릴바이오 “APB-R3 임상결과 매우 고무적…다음 임상서 효능 확대 기대”"
+    },
+    "fact:c11d09409109f4a1063ca6dd": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829556",
+      "source": "뉴시스",
+      "source_body_digest": "a9f3be6ea25efd2ba5a3a36241f65e5de4f657eb72f4f30b7d3f7801dedd6019",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f58655eefcd9c83bcc2d56af784f656342907e912e25f83a22b0ad5e57b13769",
+      "source_fact_keys": [
+        "source_fact:v1:2530b9635144f8b7b09361d3195dad6faef9466db97becf8dc691bc876628c1c",
+        "source_fact:v1:d195bc4bc5f008ab71a79d4f76847f103fde7d0e6c1fe6d82fb4317a4ab49697"
+      ],
+      "source_published_kst": "2026-10-18T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"집값 따라가기 벅차\"…10명 중 3명, 주담대 2억 이상 빌렸다 '역대 최고'",
+      "telegram_core_fact": "우리은행의 변동형 주담대 금리는 5.00~6.20%, KB국민은행의 변동형 주담대 금리는 4.64~6.05%로 올랐다.",
+      "title": "\"집값 따라가기 벅차\"…10명 중 3명, 주담대 2억 이상 빌렸다 '역대 최고'"
     },
     "fact:c12f95cba75b0dac1d38ee0a": {
       "first_seen_kst": "2026-10-07T23:23:06+09:00",
@@ -168868,6 +169197,24 @@
       "telegram_core_fact": "후티의 사우디 공격은 국제유가를 자극함으로써 미 공화당의 중간선거 패배를 노리는 이란의 지시에 의한 것이며, 중간선거 승패와 무관하게 대통령직에 있는 자신이 후티를 향한 보복 공격을 명령할 수 있다는 의미로 풀이된다.",
       "title": "트럼프 \"후티 악랄한 공격…중간선거 끝나도 절대 잊지 않겠다\" | 연합뉴스"
     },
+    "link:29a8d6320bf249b7b186f505": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.mt.co.kr/future/2026/10/18/2026101400322970932",
+      "source": "머니투데이",
+      "source_body_digest": "f701800f549b3929bb250bd059851e08061431c20764282c67410a250c82031f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-18T05:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "전기먹는 하마 AI 반도체 열·손실 잡는다…'특수유리 기판' 뭐길래",
+      "telegram_core_fact": "\"현재 개발 중인 기술은 기존 반도체의 유기 소재 기판을 특수유리 기판으로 바꾸는 데 필요한 핵심 소재 기술\"이라며 \"AI 반도체를 고성능화하고 전력 효율을 높이기 위한 차세대 기판이라고 보면 된다\"고 했다.",
+      "title": "전기먹는 하마 AI 반도체 열·손실 잡는다…'특수유리 기판' 뭐길래"
+    },
     "link:29ac7b5c8be7c92a4d74202d": {
       "first_seen_kst": "2026-10-15T04:22:43+09:00",
       "lanes": {
@@ -183371,6 +183718,35 @@
       "telegram_core_fact": "삼성전자가 3분기 100조원이 넘는 영업이익을 기록하며 깜짝 실적을 냈으나 외국인 투자자들의 매도세와 옵션 만기일 영향이 겹쳐 주가는 지루한 움직임을 보였다.",
       "title": "삼성전자, 영업이익 107조원 돌파에도 무덤덤… K-반도체 저평가 흐름 이어지나"
     },
+    "link:4df5632ca9aceeb098f5bfb5": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/18/2026101611034719000",
+      "source": "머니투데이",
+      "source_body_digest": "694158c5d2472a8e34215155a3a90cb280be9057dccf80c206cabe4a6df9c098",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-18",
+      "source_fact_identity": "source_facts:v1:3f1d3662c23cfdcd99c63514db7e301a5288070b3088eec3a0c167ed9caab053",
+      "source_fact_keys": [
+        "source_fact:v1:055762ea59a90436e18914d46301b990b8803fc29999102f0e32870624cfea96",
+        "source_fact:v1:07f21c6862c2252ce9e0c08a79ae615c40e2b9a57d969a8ffb335f8af28453fb",
+        "source_fact:v1:0826ce9b91b2fa89ccb0e8c0ef3f9830c804e6a2f341847bc0eea7ac92ff4af4",
+        "source_fact:v1:342b56d274f8f3526e766da8bbdeda70927e822572b1cce7bdace1cd3d7a9f79",
+        "source_fact:v1:38fe3993b3176db115e460713943d8c3b841e7eba796106c62298ef774168e31",
+        "source_fact:v1:4ce5d2642dce00fc9fc79f6cfb5c12489a847db721a0911b2780596f92c623d0",
+        "source_fact:v1:7afd133ca4b9efd0efe5cf89de20009d57a463fd9a401df23174201695158bca",
+        "source_fact:v1:948e68c7101e51b032ab155b689068253bef503b0736a62b0a18444d0b37d32f",
+        "source_fact:v1:c634f72bda45f570ed463a9e3d5da02dcf80275b4a232fcab80d08b6f76ac8d1",
+        "source_fact:v1:c669385b1f7a66473990d532f4c74b876cf26f7da2128646077af125a1d7c725"
+      ],
+      "source_published_kst": "2026-10-18T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "고용 쇼크에도 안 내린 장기금리…'가격 묻지 않던 큰손'이 떠났다",
+      "telegram_core_fact": "브렌트유가 배럴당 100달러 안팎에서 움직이는 가운데(8월 중순에는 87달러대였다) 휘발유 가격이 한 달 새 9.1% 뛰면서 전년 대비 상승률은 3.7%로 예상(3.6%)을 웃돌았고, 식품·에너지를 뺀 근원 물가도 2.6%로 예상(2.5%)보다 높았다.",
+      "title": "고용 쇼크에도 안 내린 장기금리…'가격 묻지 않던 큰손'이 떠났다"
+    },
     "link:4e15765a151c059187d86c1c": {
       "first_seen_kst": "2026-10-02T16:20:30+09:00",
       "lanes": {
@@ -188297,6 +188673,26 @@
       "source_published_kst": "2026-10-06T09:47+09:00",
       "title": "중간선거 앞두고 전전긍긍…트럼프 \"농업용 면세유 車사용 한시 유예\""
     },
+    "link:59d6969e91d15687b60b2b0e": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016157300017",
+      "source": "연합뉴스",
+      "source_body_digest": "c84433b788e1dc807831e7d13917a87015cca36fdc21c3e963dc84af2b97ac29",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2774d02e9e98946e3cf4b956a545b38518f8eb7a475c9edcef90cc05e8cea5ee",
+      "source_fact_keys": [
+        "source_fact:v1:a2f2253d49448f965995b9136276025d80d7831ad742d24f4d38f4a1cb33101f"
+      ],
+      "source_published_kst": "2026-10-18T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "[만나보니] 딥엑스 김녹원 \"인텔과 기술협력 본격화…AMD와도 논의\" | 연합뉴스",
+      "telegram_core_fact": "국내 인공지능(AI) 반도체 기업 딥엑스가 인텔의 AI 소프트웨어 생태계에 자사 신경망처리장치(NPU)를 연동하는 기술 협력을 본격화하고, AMD와도 협력 가능성을 논의하며 글로벌 피지컬 AI 시장 공략에 속도를 내고 있다.",
+      "title": "[만나보니] 딥엑스 김녹원 \"인텔과 기술협력 본격화…AMD와도 논의\" | 연합뉴스"
+    },
     "link:59d978cc75fad4e431b73989": {
       "first_seen_kst": "2026-10-01T21:17:39+09:00",
       "lanes": {
@@ -189551,6 +189947,27 @@
       "source_title": "워딩턴 스틸, 1분기 매출 27억 달러 212%↑..적자전환",
       "telegram_core_fact": "워딩턴 스틸(WS)은 2027 회계연도 1분기(2026년 6~8월) 계속사업 기준 매출액이 27억2660만 달러로 전년비 212% 증가했으며, 계속사업 기준 GAAP 희석 주당순손실은 0.14달러로 전년 동기 0.73달러 순이익에서 적자 전환했다고 10월 7일 발표했다.",
       "title": "워딩턴 스틸, 1분기 매출 27억 달러 212%↑..적자전환"
+    },
+    "link:5cc45fc405ddb31c63902e34": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829556",
+      "source": "뉴시스",
+      "source_body_digest": "a9f3be6ea25efd2ba5a3a36241f65e5de4f657eb72f4f30b7d3f7801dedd6019",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f58655eefcd9c83bcc2d56af784f656342907e912e25f83a22b0ad5e57b13769",
+      "source_fact_keys": [
+        "source_fact:v1:2530b9635144f8b7b09361d3195dad6faef9466db97becf8dc691bc876628c1c",
+        "source_fact:v1:d195bc4bc5f008ab71a79d4f76847f103fde7d0e6c1fe6d82fb4317a4ab49697"
+      ],
+      "source_published_kst": "2026-10-18T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"집값 따라가기 벅차\"…10명 중 3명, 주담대 2억 이상 빌렸다 '역대 최고'",
+      "telegram_core_fact": "우리은행의 변동형 주담대 금리는 5.00~6.20%, KB국민은행의 변동형 주담대 금리는 4.64~6.05%로 올랐다.",
+      "title": "\"집값 따라가기 벅차\"…10명 중 3명, 주담대 2억 이상 빌렸다 '역대 최고'"
     },
     "link:5cc4edc8f3c51491fdba4aa7": {
       "first_seen_kst": "2026-10-13T19:06:12+09:00",
@@ -194718,6 +195135,26 @@
       "source_title": "중국 당정, 신질 생산력 본격 추진…금융·세제 지원 늘린다",
       "telegram_core_fact": "기술 혁신 채권 제품 시스템을 늘리고 고품질 기술 기반 기업의 상장 및 금융 지원을 강화하며 인수합병, 구조조정, 기술 기반 기업에 대한 지분 인센티브 시스템을 최적화하도록 했다.",
       "title": "중국 당정, 신질 생산력 본격 추진…금융·세제 지원 늘린다"
+    },
+    "link:6a976ec9248733eef3049b97": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829328",
+      "source": "뉴시스",
+      "source_body_digest": "fc6d22edb363857a568d3fae8d87634b7e04e29ef97bcb6e4b644864e0f78362",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9218a1ebbafb88e3fcca7edd47fb815f0a82626759f414561d47d51365629204",
+      "source_fact_keys": [
+        "source_fact:v1:6f794dc79394df0bb4a372fe59c8e2bdc5921cf71f607e9c19d021aa46b80b59"
+      ],
+      "source_published_kst": "2026-10-18T07:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "약국 종업원이 연고 판매…법원, 약사에 벌금 50만원",
+      "telegram_core_fact": "법조계에 따르면 의정부지법 형사3단독 김희동 판사는 약사법 위반 혐의로 기소된 약사 A씨에게 벌금 50만원을 선고했다. 약사 면허가 없는 종업원이 의약품을 판매해 해당 약국을 운영하는 약사가 벌금형을 선고 받았다.",
+      "title": "약국 종업원이 연고 판매…법원, 약사에 벌금 50만원"
     },
     "link:6aa13c9dbdb7a432754b7f1c": {
       "first_seen_kst": "2026-10-15T14:35:05+09:00",
@@ -228470,6 +228907,33 @@
       "telegram_core_fact": "추석 연휴 이후 회사채 수요예측 흥행을 이끌었던 발행사들은 모두 증액 발행을 결정했다.",
       "title": "이번주 크레딧 2.3조 발행…LG유플러스·GS 등 수요예측 | 연합뉴스"
     },
+    "link:bf20edf820f54f2abcab7830": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018004300009",
+      "source": "연합뉴스",
+      "source_body_digest": "ecc909c2300ab38a3147ae48ed2c9440d72b9e46518d24944d7d0b13c7febb22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1ca2ecef1bb427dd1f83241140f28a12cd522984199319aaa13a5d8a581d3fa3",
+      "source_fact_keys": [
+        "source_fact:v1:1bd451a219ab3fdde67ed55ca351ef39bf537abd004c7dcd901e42632a6be88d",
+        "source_fact:v1:2107fbfc898b04aa89906fad813f5b6705795ed76271a565f4312fe7390cc955",
+        "source_fact:v1:304799af31ccf73d993b4b074e5e661cf35a9d5c677b318f1ac569d2595ec763",
+        "source_fact:v1:4fe528368f0b5769ae955dd2e83c4adf289eec20aab20c07e9d5bf6f9940135e",
+        "source_fact:v1:be26e09dc8468e5a8ae8ca70f4e698f6ba0a07b524cd8ce83bbaf44d2cada724",
+        "source_fact:v1:c3e45640b09fee7e42f6e2d8c5daa26f9db143a68395003bbeff5b5a62913053",
+        "source_fact:v1:c58c4d889fa0709401321bf53a46d5b6ec8ca7ebfe536e539010b77fc2d66cef",
+        "source_fact:v1:f31548ee2e009980f1373beec3c8072b1e972220fcd45da68200847cfcbc7fcf"
+      ],
+      "source_published_kst": "2026-10-18T06:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "젤렌스키, 트럼프 대러제재 유예에 \"푸틴만 돕는 오판\" | 연합뉴스",
+      "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령은 도널드 트럼프 미 대통령이 대러시아 신규 제재의 시행을 유예하기로 결정한 것에 대해 러시아를 더 대담하게 만들고 전쟁을 격화시킬 것이라고 17일(현지시간) 비판했다.",
+      "title": "젤렌스키, 트럼프 대러제재 유예에 \"푸틴만 돕는 오판\" | 연합뉴스"
+    },
     "link:bf26ab1a5b1ffe9c2480ab63": {
       "first_seen_kst": "2026-10-07T20:28:48+09:00",
       "lanes": {
@@ -228871,6 +229335,27 @@
       "source_title": "경동나비엔, 美 동·서부 HVAC 거점 구축…현지 생산기지 추진",
       "telegram_core_fact": "경동나비엔이 미국 뉴저지와 캘리포니아 어바인에 기술개발과 전문 교육을 담당하는 거점을 열고 북미 냉난방공조(HVAC) 시장 공략을 확대한다. 미국 현지 생산기지 구축도 추진한다.",
       "title": "경동나비엔, 美 동·서부 HVAC 거점 구축…현지 생산기지 추진"
+    },
+    "link:c051140b252488bf3a346e68": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016164900530",
+      "source": "연합뉴스",
+      "source_body_digest": "ce1364fde0c78f9212b9abad97ba8dd35e0bb6c6ddbd31975bdb9a3c58b2fb6c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4324f70474ed11da02d749d78446b3baa540e882dc1574cab2b7b13dbe3c322f",
+      "source_fact_keys": [
+        "source_fact:v1:b1d1533ab0e62977be9b0c6bcc595422313a6190aa11314960f923c6a6645052",
+        "source_fact:v1:b89f248b9204085b064f095d91f824cbe2e7d1fe03396c7aa085c92235c3f033"
+      ],
+      "source_published_kst": "2026-10-18T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "개인정보위, 과징금 부과 사건 10건 중 9건에 '재량감경' | 연합뉴스",
+      "telegram_core_fact": "지난 5월 19일부터 시행된 개정 개인정보 보호법 시행령과 과징금 부과기준 고시를 통해 '매우 중대한 위반행위'에 대해서는 과징금 감경의 전부 또는 일부를 적용하지 않을 수 있도록 했다.",
+      "title": "개인정보위, 과징금 부과 사건 10건 중 9건에 '재량감경' | 연합뉴스"
     },
     "link:c0520142b8109061d597ad5a": {
       "first_seen_kst": "2026-10-12T09:53:29+09:00",
@@ -255305,6 +255790,33 @@
       "telegram_core_fact": "두 대리점은 학교별로 앞선 입찰에서 떨어진 업체가 다음에는 납품업체로 선정되도록 순서를 정했다.",
       "title": "교복 입찰 51건 '짬짜미'…대리점 8곳에 과징금 1억"
     },
+    "original:05e4e01b5aee68bc2daef0d4": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018004300009",
+      "source": "연합뉴스",
+      "source_body_digest": "ecc909c2300ab38a3147ae48ed2c9440d72b9e46518d24944d7d0b13c7febb22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1ca2ecef1bb427dd1f83241140f28a12cd522984199319aaa13a5d8a581d3fa3",
+      "source_fact_keys": [
+        "source_fact:v1:1bd451a219ab3fdde67ed55ca351ef39bf537abd004c7dcd901e42632a6be88d",
+        "source_fact:v1:2107fbfc898b04aa89906fad813f5b6705795ed76271a565f4312fe7390cc955",
+        "source_fact:v1:304799af31ccf73d993b4b074e5e661cf35a9d5c677b318f1ac569d2595ec763",
+        "source_fact:v1:4fe528368f0b5769ae955dd2e83c4adf289eec20aab20c07e9d5bf6f9940135e",
+        "source_fact:v1:be26e09dc8468e5a8ae8ca70f4e698f6ba0a07b524cd8ce83bbaf44d2cada724",
+        "source_fact:v1:c3e45640b09fee7e42f6e2d8c5daa26f9db143a68395003bbeff5b5a62913053",
+        "source_fact:v1:c58c4d889fa0709401321bf53a46d5b6ec8ca7ebfe536e539010b77fc2d66cef",
+        "source_fact:v1:f31548ee2e009980f1373beec3c8072b1e972220fcd45da68200847cfcbc7fcf"
+      ],
+      "source_published_kst": "2026-10-18T06:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "젤렌스키, 트럼프 대러제재 유예에 \"푸틴만 돕는 오판\" | 연합뉴스",
+      "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령은 도널드 트럼프 미 대통령이 대러시아 신규 제재의 시행을 유예하기로 결정한 것에 대해 러시아를 더 대담하게 만들고 전쟁을 격화시킬 것이라고 17일(현지시간) 비판했다.",
+      "title": "젤렌스키, 트럼프 대러제재 유예에 \"푸틴만 돕는 오판\" | 연합뉴스"
+    },
     "original:05ed5ec455d34522ccc1570e": {
       "first_seen_kst": "2026-10-07T23:10:06+09:00",
       "lanes": {
@@ -255918,6 +256430,26 @@
       "source_title": "4대 신항만 장비 38%가 '메이드 인 차이나'",
       "telegram_core_fact": "중국산 장비가 전체에서 38%를 차지하는 등 수입 의존도가 높은 가운데 항만 자동화가 확대되면서 정보보안과 유지관리 체계를 강화해야 한다는 지적이 나온다. 국내 주요 신항만에 설치된 항만장비의 국산 비중이 35%에 그치는 것으로 나타났다.",
       "title": "4대 신항만 장비 38%가 '메이드 인 차이나'"
+    },
+    "original:07ffaecb3f883fe44c4a996b": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829328",
+      "source": "뉴시스",
+      "source_body_digest": "fc6d22edb363857a568d3fae8d87634b7e04e29ef97bcb6e4b644864e0f78362",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9218a1ebbafb88e3fcca7edd47fb815f0a82626759f414561d47d51365629204",
+      "source_fact_keys": [
+        "source_fact:v1:6f794dc79394df0bb4a372fe59c8e2bdc5921cf71f607e9c19d021aa46b80b59"
+      ],
+      "source_published_kst": "2026-10-18T07:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "약국 종업원이 연고 판매…법원, 약사에 벌금 50만원",
+      "telegram_core_fact": "법조계에 따르면 의정부지법 형사3단독 김희동 판사는 약사법 위반 혐의로 기소된 약사 A씨에게 벌금 50만원을 선고했다. 약사 면허가 없는 종업원이 의약품을 판매해 해당 약국을 운영하는 약사가 벌금형을 선고 받았다.",
+      "title": "약국 종업원이 연고 판매…법원, 약사에 벌금 50만원"
     },
     "original:0806d412dfc8c34cd81d69b7": {
       "first_seen_kst": "2026-09-30T15:16:38+09:00",
@@ -282681,6 +283213,24 @@
       "telegram_core_fact": "외국인은 이날 삼성전자 주식 1819억원어치를 순매수하며 지난달 23일 이후 13거래일 만에 매수 우위로 돌아섰다. 외국인은 이날 SK하이닉스 주식 730억원어치를 순매도하며 지난달 21일부터 16거래일 연속 매도 우위를 기록했다.",
       "title": "삼성전자 13거래일 만에 外人 돌아왔다…SK하이닉스는 16일째 '팔자'[핫스탁](종합)"
     },
+    "original:4ca387b0c4d3ff909923ec16": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.mt.co.kr/future/2026/10/18/2026101400322970932",
+      "source": "머니투데이",
+      "source_body_digest": "f701800f549b3929bb250bd059851e08061431c20764282c67410a250c82031f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-18T05:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "전기먹는 하마 AI 반도체 열·손실 잡는다…'특수유리 기판' 뭐길래",
+      "telegram_core_fact": "\"현재 개발 중인 기술은 기존 반도체의 유기 소재 기판을 특수유리 기판으로 바꾸는 데 필요한 핵심 소재 기술\"이라며 \"AI 반도체를 고성능화하고 전력 효율을 높이기 위한 차세대 기판이라고 보면 된다\"고 했다.",
+      "title": "전기먹는 하마 AI 반도체 열·손실 잡는다…'특수유리 기판' 뭐길래"
+    },
     "original:4caf3493c0970007ca18931e": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
       "lanes": {
@@ -292422,6 +292972,26 @@
       "source_title": "韓증시 때린 美 '물가 쇼크'…증권가 \"금리 추가 인상·AI 신용 비상\"",
       "telegram_core_fact": "박상현 iM증권 연구원은 \"금융시장은 코어 CPI 0.1%p 상회를 유가 상승발 물가 압력의 전방위 확산으로 받아들였다\"며 \"10월 동결 가능성은 높지만 12월에 이어 내년 1월 FOMC 회의에서 추가 인상이 단행될 확률이 50%를 웃돌고 있다. 결국 긴축 지속 여부는 유가 불안 장기화에 달렸다\"고 짚었다.",
       "title": "韓증시 때린 美 '물가 쇼크'…증권가 \"금리 추가 인상·AI 신용 비상\""
+    },
+    "original:66aa9b202fc46c176ef38988": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016157300017",
+      "source": "연합뉴스",
+      "source_body_digest": "c84433b788e1dc807831e7d13917a87015cca36fdc21c3e963dc84af2b97ac29",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2774d02e9e98946e3cf4b956a545b38518f8eb7a475c9edcef90cc05e8cea5ee",
+      "source_fact_keys": [
+        "source_fact:v1:a2f2253d49448f965995b9136276025d80d7831ad742d24f4d38f4a1cb33101f"
+      ],
+      "source_published_kst": "2026-10-18T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "[만나보니] 딥엑스 김녹원 \"인텔과 기술협력 본격화…AMD와도 논의\" | 연합뉴스",
+      "telegram_core_fact": "국내 인공지능(AI) 반도체 기업 딥엑스가 인텔의 AI 소프트웨어 생태계에 자사 신경망처리장치(NPU)를 연동하는 기술 협력을 본격화하고, AMD와도 협력 가능성을 논의하며 글로벌 피지컬 AI 시장 공략에 속도를 내고 있다.",
+      "title": "[만나보니] 딥엑스 김녹원 \"인텔과 기술협력 본격화…AMD와도 논의\" | 연합뉴스"
     },
     "original:66b026dc89e600c980a8b519": {
       "first_seen_kst": "2026-09-29T09:41:07+09:00",
@@ -325482,6 +326052,35 @@
       "source_published_kst": "2026-10-06T19:11+09:00",
       "title": "\"일본·중국 美국채 큰 손 사라진다\"…레이 달리오 경고 배경은"
     },
+    "original:bee9b873c46fc050054eb352": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/18/2026101611034719000",
+      "source": "머니투데이",
+      "source_body_digest": "694158c5d2472a8e34215155a3a90cb280be9057dccf80c206cabe4a6df9c098",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-18",
+      "source_fact_identity": "source_facts:v1:3f1d3662c23cfdcd99c63514db7e301a5288070b3088eec3a0c167ed9caab053",
+      "source_fact_keys": [
+        "source_fact:v1:055762ea59a90436e18914d46301b990b8803fc29999102f0e32870624cfea96",
+        "source_fact:v1:07f21c6862c2252ce9e0c08a79ae615c40e2b9a57d969a8ffb335f8af28453fb",
+        "source_fact:v1:0826ce9b91b2fa89ccb0e8c0ef3f9830c804e6a2f341847bc0eea7ac92ff4af4",
+        "source_fact:v1:342b56d274f8f3526e766da8bbdeda70927e822572b1cce7bdace1cd3d7a9f79",
+        "source_fact:v1:38fe3993b3176db115e460713943d8c3b841e7eba796106c62298ef774168e31",
+        "source_fact:v1:4ce5d2642dce00fc9fc79f6cfb5c12489a847db721a0911b2780596f92c623d0",
+        "source_fact:v1:7afd133ca4b9efd0efe5cf89de20009d57a463fd9a401df23174201695158bca",
+        "source_fact:v1:948e68c7101e51b032ab155b689068253bef503b0736a62b0a18444d0b37d32f",
+        "source_fact:v1:c634f72bda45f570ed463a9e3d5da02dcf80275b4a232fcab80d08b6f76ac8d1",
+        "source_fact:v1:c669385b1f7a66473990d532f4c74b876cf26f7da2128646077af125a1d7c725"
+      ],
+      "source_published_kst": "2026-10-18T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "고용 쇼크에도 안 내린 장기금리…'가격 묻지 않던 큰손'이 떠났다",
+      "telegram_core_fact": "브렌트유가 배럴당 100달러 안팎에서 움직이는 가운데(8월 중순에는 87달러대였다) 휘발유 가격이 한 달 새 9.1% 뛰면서 전년 대비 상승률은 3.7%로 예상(3.6%)을 웃돌았고, 식품·에너지를 뺀 근원 물가도 2.6%로 예상(2.5%)보다 높았다.",
+      "title": "고용 쇼크에도 안 내린 장기금리…'가격 묻지 않던 큰손'이 떠났다"
+    },
     "original:bef16bc1c22fd0ffba3f9a00": {
       "first_seen_kst": "2026-10-11T18:34:27+09:00",
       "lanes": {
@@ -329070,6 +329669,27 @@
       "source_title": "[美특징주]캐터필러, AI 데이터센터·인프라 투자 수혜 기대...개장 전↑",
       "telegram_core_fact": "특히 캐터필러는 데이터센터 건설 장비뿐 아니라 전력 공급에 필요한 가스터빈 등도 공급하고 있어 AI 인프라 투자 확대의 수혜 기업으로 평가받고 있다. 미국 중장비 제조업체 캐터필러(CAT)가 인공지능(AI) 데이터센터 투자 확대와 글로벌 인프라 건설 수요에 힘입어 추가 상승할 가능성이 있다는 분석이 나왔다.",
       "title": "[美특징주]캐터필러, AI 데이터센터·인프라 투자 수혜 기대...개장 전↑"
+    },
+    "original:c8b0266f8a3b7c07568cac39": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016164900530",
+      "source": "연합뉴스",
+      "source_body_digest": "ce1364fde0c78f9212b9abad97ba8dd35e0bb6c6ddbd31975bdb9a3c58b2fb6c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4324f70474ed11da02d749d78446b3baa540e882dc1574cab2b7b13dbe3c322f",
+      "source_fact_keys": [
+        "source_fact:v1:b1d1533ab0e62977be9b0c6bcc595422313a6190aa11314960f923c6a6645052",
+        "source_fact:v1:b89f248b9204085b064f095d91f824cbe2e7d1fe03396c7aa085c92235c3f033"
+      ],
+      "source_published_kst": "2026-10-18T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "개인정보위, 과징금 부과 사건 10건 중 9건에 '재량감경' | 연합뉴스",
+      "telegram_core_fact": "지난 5월 19일부터 시행된 개정 개인정보 보호법 시행령과 과징금 부과기준 고시를 통해 '매우 중대한 위반행위'에 대해서는 과징금 감경의 전부 또는 일부를 적용하지 않을 수 있도록 했다.",
+      "title": "개인정보위, 과징금 부과 사건 10건 중 9건에 '재량감경' | 연합뉴스"
     },
     "original:c8b91c9f4867e240c151d224": {
       "first_seen_kst": "2026-10-02T16:20:30+09:00",
@@ -338329,6 +338949,27 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-07T15:46+09:00",
       "title": "대성산업 \"자회사 대성쎌틱에너시스 주식 380억원에 추가취득\" | 연합뉴스"
+    },
+    "original:dfba9bd830d6611095536bc9": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829556",
+      "source": "뉴시스",
+      "source_body_digest": "a9f3be6ea25efd2ba5a3a36241f65e5de4f657eb72f4f30b7d3f7801dedd6019",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f58655eefcd9c83bcc2d56af784f656342907e912e25f83a22b0ad5e57b13769",
+      "source_fact_keys": [
+        "source_fact:v1:2530b9635144f8b7b09361d3195dad6faef9466db97becf8dc691bc876628c1c",
+        "source_fact:v1:d195bc4bc5f008ab71a79d4f76847f103fde7d0e6c1fe6d82fb4317a4ab49697"
+      ],
+      "source_published_kst": "2026-10-18T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"집값 따라가기 벅차\"…10명 중 3명, 주담대 2억 이상 빌렸다 '역대 최고'",
+      "telegram_core_fact": "우리은행의 변동형 주담대 금리는 5.00~6.20%, KB국민은행의 변동형 주담대 금리는 4.64~6.05%로 올랐다.",
+      "title": "\"집값 따라가기 벅차\"…10명 중 3명, 주담대 2억 이상 빌렸다 '역대 최고'"
     },
     "original:dfcce54f25efd566adf27276": {
       "first_seen_kst": "2026-10-01T21:06:52+09:00",
@@ -365980,6 +366621,33 @@
       "source_published_kst": "2026-10-06T04:53+09:00",
       "title": "트럼프 \"휘발윳값 상승, 호르무즈 때문 아냐\"…우크라전쟁·야당 탓"
     },
+    "source_fact:0afb593bd797198f44a79ac5": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018004300009",
+      "source": "연합뉴스",
+      "source_body_digest": "ecc909c2300ab38a3147ae48ed2c9440d72b9e46518d24944d7d0b13c7febb22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1ca2ecef1bb427dd1f83241140f28a12cd522984199319aaa13a5d8a581d3fa3",
+      "source_fact_keys": [
+        "source_fact:v1:1bd451a219ab3fdde67ed55ca351ef39bf537abd004c7dcd901e42632a6be88d",
+        "source_fact:v1:2107fbfc898b04aa89906fad813f5b6705795ed76271a565f4312fe7390cc955",
+        "source_fact:v1:304799af31ccf73d993b4b074e5e661cf35a9d5c677b318f1ac569d2595ec763",
+        "source_fact:v1:4fe528368f0b5769ae955dd2e83c4adf289eec20aab20c07e9d5bf6f9940135e",
+        "source_fact:v1:be26e09dc8468e5a8ae8ca70f4e698f6ba0a07b524cd8ce83bbaf44d2cada724",
+        "source_fact:v1:c3e45640b09fee7e42f6e2d8c5daa26f9db143a68395003bbeff5b5a62913053",
+        "source_fact:v1:c58c4d889fa0709401321bf53a46d5b6ec8ca7ebfe536e539010b77fc2d66cef",
+        "source_fact:v1:f31548ee2e009980f1373beec3c8072b1e972220fcd45da68200847cfcbc7fcf"
+      ],
+      "source_published_kst": "2026-10-18T06:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "젤렌스키, 트럼프 대러제재 유예에 \"푸틴만 돕는 오판\" | 연합뉴스",
+      "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령은 도널드 트럼프 미 대통령이 대러시아 신규 제재의 시행을 유예하기로 결정한 것에 대해 러시아를 더 대담하게 만들고 전쟁을 격화시킬 것이라고 17일(현지시간) 비판했다.",
+      "title": "젤렌스키, 트럼프 대러제재 유예에 \"푸틴만 돕는 오판\" | 연합뉴스"
+    },
     "source_fact:0afdc805aa6c2a758de5db21": {
       "first_seen_kst": "2026-10-09T20:02:39+09:00",
       "lanes": {
@@ -393361,6 +394029,27 @@
       "source_title": "D램 가격 둔화에 중국 추격까지…K-반도체 다가오는 경고음",
       "telegram_core_fact": "AI 데이터센터 투자 확대로 반도체 수요가 이어지는 가운데 D램 가격 상승세와 중국 메모리 업체의 공급 확대가 향후 시장의 주요 변수로 작용할 것이라는 전망이 나왔다.",
       "title": "D램 가격 둔화에 중국 추격까지…K-반도체 다가오는 경고음"
+    },
+    "source_fact:1cafd87304edb7827956d590": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829556",
+      "source": "뉴시스",
+      "source_body_digest": "a9f3be6ea25efd2ba5a3a36241f65e5de4f657eb72f4f30b7d3f7801dedd6019",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f58655eefcd9c83bcc2d56af784f656342907e912e25f83a22b0ad5e57b13769",
+      "source_fact_keys": [
+        "source_fact:v1:2530b9635144f8b7b09361d3195dad6faef9466db97becf8dc691bc876628c1c",
+        "source_fact:v1:d195bc4bc5f008ab71a79d4f76847f103fde7d0e6c1fe6d82fb4317a4ab49697"
+      ],
+      "source_published_kst": "2026-10-18T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"집값 따라가기 벅차\"…10명 중 3명, 주담대 2억 이상 빌렸다 '역대 최고'",
+      "telegram_core_fact": "우리은행의 변동형 주담대 금리는 5.00~6.20%, KB국민은행의 변동형 주담대 금리는 4.64~6.05%로 올랐다.",
+      "title": "\"집값 따라가기 벅차\"…10명 중 3명, 주담대 2억 이상 빌렸다 '역대 최고'"
     },
     "source_fact:1cba5c851a5af6c41796af17": {
       "first_seen_kst": "2026-10-16T19:25:42+09:00",
@@ -451484,6 +452173,35 @@
       "telegram_core_fact": "이 대통령은 보고회에서 “생산세액공제는 이익이 발생하지 않으면 의미가 없다”며 “보조금을 일부 지급한 다음 나중에 이익이 나면 세액공제에서 차감하는 방법을 검토해보라”고 했다.",
       "title": "李대통령 \"적자기업에 先보조금 검토하라\""
     },
+    "source_fact:430848568c15ca8797ce409c": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/18/2026101611034719000",
+      "source": "머니투데이",
+      "source_body_digest": "694158c5d2472a8e34215155a3a90cb280be9057dccf80c206cabe4a6df9c098",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-18",
+      "source_fact_identity": "source_facts:v1:3f1d3662c23cfdcd99c63514db7e301a5288070b3088eec3a0c167ed9caab053",
+      "source_fact_keys": [
+        "source_fact:v1:055762ea59a90436e18914d46301b990b8803fc29999102f0e32870624cfea96",
+        "source_fact:v1:07f21c6862c2252ce9e0c08a79ae615c40e2b9a57d969a8ffb335f8af28453fb",
+        "source_fact:v1:0826ce9b91b2fa89ccb0e8c0ef3f9830c804e6a2f341847bc0eea7ac92ff4af4",
+        "source_fact:v1:342b56d274f8f3526e766da8bbdeda70927e822572b1cce7bdace1cd3d7a9f79",
+        "source_fact:v1:38fe3993b3176db115e460713943d8c3b841e7eba796106c62298ef774168e31",
+        "source_fact:v1:4ce5d2642dce00fc9fc79f6cfb5c12489a847db721a0911b2780596f92c623d0",
+        "source_fact:v1:7afd133ca4b9efd0efe5cf89de20009d57a463fd9a401df23174201695158bca",
+        "source_fact:v1:948e68c7101e51b032ab155b689068253bef503b0736a62b0a18444d0b37d32f",
+        "source_fact:v1:c634f72bda45f570ed463a9e3d5da02dcf80275b4a232fcab80d08b6f76ac8d1",
+        "source_fact:v1:c669385b1f7a66473990d532f4c74b876cf26f7da2128646077af125a1d7c725"
+      ],
+      "source_published_kst": "2026-10-18T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "고용 쇼크에도 안 내린 장기금리…'가격 묻지 않던 큰손'이 떠났다",
+      "telegram_core_fact": "브렌트유가 배럴당 100달러 안팎에서 움직이는 가운데(8월 중순에는 87달러대였다) 휘발유 가격이 한 달 새 9.1% 뛰면서 전년 대비 상승률은 3.7%로 예상(3.6%)을 웃돌았고, 식품·에너지를 뺀 근원 물가도 2.6%로 예상(2.5%)보다 높았다.",
+      "title": "고용 쇼크에도 안 내린 장기금리…'가격 묻지 않던 큰손'이 떠났다"
+    },
     "source_fact:430d94efd14d3c06ceddf101": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
       "lanes": {
@@ -500441,6 +501159,33 @@
       "telegram_core_fact": "15일(현지시간) 로이터통신에 따르면 미국 노동부가 발표한 9월 생산자물가지수(PPI)에서 경유 가격 급등에 따른 비용 상승이 산업 전반으로 번지고 있는 것으로 나타났다.",
       "title": "美경유 2배 폭등에 물류비 19%↑…식료품·장난감까지 물가 충격"
     },
+    "source_fact:62bf5b39b014369b889c980b": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018004300009",
+      "source": "연합뉴스",
+      "source_body_digest": "ecc909c2300ab38a3147ae48ed2c9440d72b9e46518d24944d7d0b13c7febb22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1ca2ecef1bb427dd1f83241140f28a12cd522984199319aaa13a5d8a581d3fa3",
+      "source_fact_keys": [
+        "source_fact:v1:1bd451a219ab3fdde67ed55ca351ef39bf537abd004c7dcd901e42632a6be88d",
+        "source_fact:v1:2107fbfc898b04aa89906fad813f5b6705795ed76271a565f4312fe7390cc955",
+        "source_fact:v1:304799af31ccf73d993b4b074e5e661cf35a9d5c677b318f1ac569d2595ec763",
+        "source_fact:v1:4fe528368f0b5769ae955dd2e83c4adf289eec20aab20c07e9d5bf6f9940135e",
+        "source_fact:v1:be26e09dc8468e5a8ae8ca70f4e698f6ba0a07b524cd8ce83bbaf44d2cada724",
+        "source_fact:v1:c3e45640b09fee7e42f6e2d8c5daa26f9db143a68395003bbeff5b5a62913053",
+        "source_fact:v1:c58c4d889fa0709401321bf53a46d5b6ec8ca7ebfe536e539010b77fc2d66cef",
+        "source_fact:v1:f31548ee2e009980f1373beec3c8072b1e972220fcd45da68200847cfcbc7fcf"
+      ],
+      "source_published_kst": "2026-10-18T06:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "젤렌스키, 트럼프 대러제재 유예에 \"푸틴만 돕는 오판\" | 연합뉴스",
+      "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령은 도널드 트럼프 미 대통령이 대러시아 신규 제재의 시행을 유예하기로 결정한 것에 대해 러시아를 더 대담하게 만들고 전쟁을 격화시킬 것이라고 17일(현지시간) 비판했다.",
+      "title": "젤렌스키, 트럼프 대러제재 유예에 \"푸틴만 돕는 오판\" | 연합뉴스"
+    },
     "source_fact:62c73b7345958b5ba438daf0": {
       "first_seen_kst": "2026-10-15T02:27:03+09:00",
       "lanes": {
@@ -509437,6 +510182,35 @@
       "telegram_core_fact": "지난 7월 OK금융그룹이 예별손보 공개매각 우선협상대상자로 선정된 지 약 3개월 만이다.",
       "title": "예보, OK금융그룹과 예별손보 주식매매계약서 체결"
     },
+    "source_fact:68ef5820f54b14ddc99f27c6": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/18/2026101611034719000",
+      "source": "머니투데이",
+      "source_body_digest": "694158c5d2472a8e34215155a3a90cb280be9057dccf80c206cabe4a6df9c098",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-18",
+      "source_fact_identity": "source_facts:v1:3f1d3662c23cfdcd99c63514db7e301a5288070b3088eec3a0c167ed9caab053",
+      "source_fact_keys": [
+        "source_fact:v1:055762ea59a90436e18914d46301b990b8803fc29999102f0e32870624cfea96",
+        "source_fact:v1:07f21c6862c2252ce9e0c08a79ae615c40e2b9a57d969a8ffb335f8af28453fb",
+        "source_fact:v1:0826ce9b91b2fa89ccb0e8c0ef3f9830c804e6a2f341847bc0eea7ac92ff4af4",
+        "source_fact:v1:342b56d274f8f3526e766da8bbdeda70927e822572b1cce7bdace1cd3d7a9f79",
+        "source_fact:v1:38fe3993b3176db115e460713943d8c3b841e7eba796106c62298ef774168e31",
+        "source_fact:v1:4ce5d2642dce00fc9fc79f6cfb5c12489a847db721a0911b2780596f92c623d0",
+        "source_fact:v1:7afd133ca4b9efd0efe5cf89de20009d57a463fd9a401df23174201695158bca",
+        "source_fact:v1:948e68c7101e51b032ab155b689068253bef503b0736a62b0a18444d0b37d32f",
+        "source_fact:v1:c634f72bda45f570ed463a9e3d5da02dcf80275b4a232fcab80d08b6f76ac8d1",
+        "source_fact:v1:c669385b1f7a66473990d532f4c74b876cf26f7da2128646077af125a1d7c725"
+      ],
+      "source_published_kst": "2026-10-18T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "고용 쇼크에도 안 내린 장기금리…'가격 묻지 않던 큰손'이 떠났다",
+      "telegram_core_fact": "브렌트유가 배럴당 100달러 안팎에서 움직이는 가운데(8월 중순에는 87달러대였다) 휘발유 가격이 한 달 새 9.1% 뛰면서 전년 대비 상승률은 3.7%로 예상(3.6%)을 웃돌았고, 식품·에너지를 뺀 근원 물가도 2.6%로 예상(2.5%)보다 높았다.",
+      "title": "고용 쇼크에도 안 내린 장기금리…'가격 묻지 않던 큰손'이 떠났다"
+    },
     "source_fact:68ef61bad34c59efd9ee74a9": {
       "first_seen_kst": "2026-10-15T10:36:40+09:00",
       "lanes": {
@@ -511626,6 +512400,26 @@
       "source_title": "노타 채명수 \"고사양 GPU 추가보다 기존 인프라 활용 대세\" [K-챌린저]",
       "telegram_core_fact": "채명수 노타(Nota AI) 대표는 뉴스1과 인터뷰에서 인공지능(AI) 모델 경량화나 개별 칩 최적화를 넘어 고객의 AI 도입 전 과정을 지원하는 기업으로 성장하겠다며 이같이 말했다.",
       "title": "노타 채명수 \"고사양 GPU 추가보다 기존 인프라 활용 대세\" [K-챌린저]"
+    },
+    "source_fact:6a3dd8582aa3c6e1ac93b936": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829328",
+      "source": "뉴시스",
+      "source_body_digest": "fc6d22edb363857a568d3fae8d87634b7e04e29ef97bcb6e4b644864e0f78362",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9218a1ebbafb88e3fcca7edd47fb815f0a82626759f414561d47d51365629204",
+      "source_fact_keys": [
+        "source_fact:v1:6f794dc79394df0bb4a372fe59c8e2bdc5921cf71f607e9c19d021aa46b80b59"
+      ],
+      "source_published_kst": "2026-10-18T07:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "약국 종업원이 연고 판매…법원, 약사에 벌금 50만원",
+      "telegram_core_fact": "법조계에 따르면 의정부지법 형사3단독 김희동 판사는 약사법 위반 혐의로 기소된 약사 A씨에게 벌금 50만원을 선고했다. 약사 면허가 없는 종업원이 의약품을 판매해 해당 약국을 운영하는 약사가 벌금형을 선고 받았다.",
+      "title": "약국 종업원이 연고 판매…법원, 약사에 벌금 50만원"
     },
     "source_fact:6a40053c35c6dcbdeee0d711": {
       "first_seen_kst": "2026-10-08T00:39:44+09:00",
@@ -523548,6 +524342,33 @@
       "source_title": "‘푸틴과 경유거래’에 분노한 젤렌스키, ‘트럼프 직격’에 유럽 난감…“자제해달라”",
       "telegram_core_fact": "트럼프 정부 출범 이후 미국은 우크라이나에 재정 지원을 더 이상 하지 않고, 우크라이나와 유럽 동맹국들이 비용을 부담하는 무기만 공급하고 있지만, 미국의 정보와 무기는 우크라이나의 전쟁 수행 역량의 핵심 역할을 하고 있기에 자칫 우크라이나와 미국의 안보 협력 관계가 중단된다면 유럽으로서는 대체할 수 있는 수단이 없다.",
       "title": "‘푸틴과 경유거래’에 분노한 젤렌스키, ‘트럼프 직격’에 유럽 난감…“자제해달라”"
+    },
+    "source_fact:72777665745145c7179b2641": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018004300009",
+      "source": "연합뉴스",
+      "source_body_digest": "ecc909c2300ab38a3147ae48ed2c9440d72b9e46518d24944d7d0b13c7febb22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1ca2ecef1bb427dd1f83241140f28a12cd522984199319aaa13a5d8a581d3fa3",
+      "source_fact_keys": [
+        "source_fact:v1:1bd451a219ab3fdde67ed55ca351ef39bf537abd004c7dcd901e42632a6be88d",
+        "source_fact:v1:2107fbfc898b04aa89906fad813f5b6705795ed76271a565f4312fe7390cc955",
+        "source_fact:v1:304799af31ccf73d993b4b074e5e661cf35a9d5c677b318f1ac569d2595ec763",
+        "source_fact:v1:4fe528368f0b5769ae955dd2e83c4adf289eec20aab20c07e9d5bf6f9940135e",
+        "source_fact:v1:be26e09dc8468e5a8ae8ca70f4e698f6ba0a07b524cd8ce83bbaf44d2cada724",
+        "source_fact:v1:c3e45640b09fee7e42f6e2d8c5daa26f9db143a68395003bbeff5b5a62913053",
+        "source_fact:v1:c58c4d889fa0709401321bf53a46d5b6ec8ca7ebfe536e539010b77fc2d66cef",
+        "source_fact:v1:f31548ee2e009980f1373beec3c8072b1e972220fcd45da68200847cfcbc7fcf"
+      ],
+      "source_published_kst": "2026-10-18T06:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "젤렌스키, 트럼프 대러제재 유예에 \"푸틴만 돕는 오판\" | 연합뉴스",
+      "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령은 도널드 트럼프 미 대통령이 대러시아 신규 제재의 시행을 유예하기로 결정한 것에 대해 러시아를 더 대담하게 만들고 전쟁을 격화시킬 것이라고 17일(현지시간) 비판했다.",
+      "title": "젤렌스키, 트럼프 대러제재 유예에 \"푸틴만 돕는 오판\" | 연합뉴스"
     },
     "source_fact:727a021e6253e4a6dd17e0c0": {
       "first_seen_kst": "2026-10-16T23:57:27+09:00",
@@ -536178,6 +536999,35 @@
       "telegram_core_fact": "이날 밸류파인더 ‘한성크린텍-삼성전자에 이어 삼성전기까지 레퍼런스 확대, 수요 급증 AI 메모리 증설 출발점은 초순수’ 보고서에 따르면 한성크린텍은 6일 삼성E&A와 230억원 베트남 삼성전기 초순수 설비 기자재 공급계약을 공시했다.",
       "title": "밸류파인더 “한성크린텍, 삼성전기 베트남서 지난해 수출액 5배 규모 수주…후속 계약 가능”"
     },
+    "source_fact:7a8ff08ac0ceef23dfd154fc": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/18/2026101611034719000",
+      "source": "머니투데이",
+      "source_body_digest": "694158c5d2472a8e34215155a3a90cb280be9057dccf80c206cabe4a6df9c098",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-18",
+      "source_fact_identity": "source_facts:v1:3f1d3662c23cfdcd99c63514db7e301a5288070b3088eec3a0c167ed9caab053",
+      "source_fact_keys": [
+        "source_fact:v1:055762ea59a90436e18914d46301b990b8803fc29999102f0e32870624cfea96",
+        "source_fact:v1:07f21c6862c2252ce9e0c08a79ae615c40e2b9a57d969a8ffb335f8af28453fb",
+        "source_fact:v1:0826ce9b91b2fa89ccb0e8c0ef3f9830c804e6a2f341847bc0eea7ac92ff4af4",
+        "source_fact:v1:342b56d274f8f3526e766da8bbdeda70927e822572b1cce7bdace1cd3d7a9f79",
+        "source_fact:v1:38fe3993b3176db115e460713943d8c3b841e7eba796106c62298ef774168e31",
+        "source_fact:v1:4ce5d2642dce00fc9fc79f6cfb5c12489a847db721a0911b2780596f92c623d0",
+        "source_fact:v1:7afd133ca4b9efd0efe5cf89de20009d57a463fd9a401df23174201695158bca",
+        "source_fact:v1:948e68c7101e51b032ab155b689068253bef503b0736a62b0a18444d0b37d32f",
+        "source_fact:v1:c634f72bda45f570ed463a9e3d5da02dcf80275b4a232fcab80d08b6f76ac8d1",
+        "source_fact:v1:c669385b1f7a66473990d532f4c74b876cf26f7da2128646077af125a1d7c725"
+      ],
+      "source_published_kst": "2026-10-18T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "고용 쇼크에도 안 내린 장기금리…'가격 묻지 않던 큰손'이 떠났다",
+      "telegram_core_fact": "브렌트유가 배럴당 100달러 안팎에서 움직이는 가운데(8월 중순에는 87달러대였다) 휘발유 가격이 한 달 새 9.1% 뛰면서 전년 대비 상승률은 3.7%로 예상(3.6%)을 웃돌았고, 식품·에너지를 뺀 근원 물가도 2.6%로 예상(2.5%)보다 높았다.",
+      "title": "고용 쇼크에도 안 내린 장기금리…'가격 묻지 않던 큰손'이 떠났다"
+    },
     "source_fact:7a902e1c0991e863ce8ad4a9": {
       "first_seen_kst": "2026-10-16T19:48:28+09:00",
       "lanes": {
@@ -540604,6 +541454,35 @@
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 러시아 정유시설 공격을 계속하는 우크라이나에 정보 공유 중단을 경고하고 볼로디미르 젤렌스키 대통령의 교체 필요성까지 언급했다.",
       "title": "美, 우크라에 러 정유시설 공격 중단 압박…정보 공유 중단 경고"
     },
+    "source_fact:7d9cf5fd5ca0ae2ef4e00d5c": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/18/2026101611034719000",
+      "source": "머니투데이",
+      "source_body_digest": "694158c5d2472a8e34215155a3a90cb280be9057dccf80c206cabe4a6df9c098",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-18",
+      "source_fact_identity": "source_facts:v1:3f1d3662c23cfdcd99c63514db7e301a5288070b3088eec3a0c167ed9caab053",
+      "source_fact_keys": [
+        "source_fact:v1:055762ea59a90436e18914d46301b990b8803fc29999102f0e32870624cfea96",
+        "source_fact:v1:07f21c6862c2252ce9e0c08a79ae615c40e2b9a57d969a8ffb335f8af28453fb",
+        "source_fact:v1:0826ce9b91b2fa89ccb0e8c0ef3f9830c804e6a2f341847bc0eea7ac92ff4af4",
+        "source_fact:v1:342b56d274f8f3526e766da8bbdeda70927e822572b1cce7bdace1cd3d7a9f79",
+        "source_fact:v1:38fe3993b3176db115e460713943d8c3b841e7eba796106c62298ef774168e31",
+        "source_fact:v1:4ce5d2642dce00fc9fc79f6cfb5c12489a847db721a0911b2780596f92c623d0",
+        "source_fact:v1:7afd133ca4b9efd0efe5cf89de20009d57a463fd9a401df23174201695158bca",
+        "source_fact:v1:948e68c7101e51b032ab155b689068253bef503b0736a62b0a18444d0b37d32f",
+        "source_fact:v1:c634f72bda45f570ed463a9e3d5da02dcf80275b4a232fcab80d08b6f76ac8d1",
+        "source_fact:v1:c669385b1f7a66473990d532f4c74b876cf26f7da2128646077af125a1d7c725"
+      ],
+      "source_published_kst": "2026-10-18T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "고용 쇼크에도 안 내린 장기금리…'가격 묻지 않던 큰손'이 떠났다",
+      "telegram_core_fact": "브렌트유가 배럴당 100달러 안팎에서 움직이는 가운데(8월 중순에는 87달러대였다) 휘발유 가격이 한 달 새 9.1% 뛰면서 전년 대비 상승률은 3.7%로 예상(3.6%)을 웃돌았고, 식품·에너지를 뺀 근원 물가도 2.6%로 예상(2.5%)보다 높았다.",
+      "title": "고용 쇼크에도 안 내린 장기금리…'가격 묻지 않던 큰손'이 떠났다"
+    },
     "source_fact:7da0bac19882660123da58f5": {
       "first_seen_kst": "2026-10-11T20:44:48+09:00",
       "lanes": {
@@ -543123,6 +544002,33 @@
       ],
       "source_published_kst": "2026-10-06T14:14+09:00",
       "title": "경상수지 흑자 너무 많아도 문제? IMF 내년 한국에 ‘과잉 평가’ 전망 [머니뭐니]"
+    },
+    "source_fact:7f78b66203be652154f7d746": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018004300009",
+      "source": "연합뉴스",
+      "source_body_digest": "ecc909c2300ab38a3147ae48ed2c9440d72b9e46518d24944d7d0b13c7febb22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1ca2ecef1bb427dd1f83241140f28a12cd522984199319aaa13a5d8a581d3fa3",
+      "source_fact_keys": [
+        "source_fact:v1:1bd451a219ab3fdde67ed55ca351ef39bf537abd004c7dcd901e42632a6be88d",
+        "source_fact:v1:2107fbfc898b04aa89906fad813f5b6705795ed76271a565f4312fe7390cc955",
+        "source_fact:v1:304799af31ccf73d993b4b074e5e661cf35a9d5c677b318f1ac569d2595ec763",
+        "source_fact:v1:4fe528368f0b5769ae955dd2e83c4adf289eec20aab20c07e9d5bf6f9940135e",
+        "source_fact:v1:be26e09dc8468e5a8ae8ca70f4e698f6ba0a07b524cd8ce83bbaf44d2cada724",
+        "source_fact:v1:c3e45640b09fee7e42f6e2d8c5daa26f9db143a68395003bbeff5b5a62913053",
+        "source_fact:v1:c58c4d889fa0709401321bf53a46d5b6ec8ca7ebfe536e539010b77fc2d66cef",
+        "source_fact:v1:f31548ee2e009980f1373beec3c8072b1e972220fcd45da68200847cfcbc7fcf"
+      ],
+      "source_published_kst": "2026-10-18T06:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "젤렌스키, 트럼프 대러제재 유예에 \"푸틴만 돕는 오판\" | 연합뉴스",
+      "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령은 도널드 트럼프 미 대통령이 대러시아 신규 제재의 시행을 유예하기로 결정한 것에 대해 러시아를 더 대담하게 만들고 전쟁을 격화시킬 것이라고 17일(현지시간) 비판했다.",
+      "title": "젤렌스키, 트럼프 대러제재 유예에 \"푸틴만 돕는 오판\" | 연합뉴스"
     },
     "source_fact:7f83663961d5823f2c0b4d4a": {
       "first_seen_kst": "2026-10-12T13:36:34+09:00",
@@ -557872,6 +558778,35 @@
       "telegram_core_fact": "재정경제부는 13일 외환규제 완화를 구체화하는 내용이 담긴 '외국환거래규정' 개정안을 행정예고한다고 밝혔다.",
       "title": "'원화국제화' 계획에 따라 외환규제 완화…개정안 행정예고 | 연합뉴스"
     },
+    "source_fact:89dbf23ba6da0eacb7f63486": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/18/2026101611034719000",
+      "source": "머니투데이",
+      "source_body_digest": "694158c5d2472a8e34215155a3a90cb280be9057dccf80c206cabe4a6df9c098",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-18",
+      "source_fact_identity": "source_facts:v1:3f1d3662c23cfdcd99c63514db7e301a5288070b3088eec3a0c167ed9caab053",
+      "source_fact_keys": [
+        "source_fact:v1:055762ea59a90436e18914d46301b990b8803fc29999102f0e32870624cfea96",
+        "source_fact:v1:07f21c6862c2252ce9e0c08a79ae615c40e2b9a57d969a8ffb335f8af28453fb",
+        "source_fact:v1:0826ce9b91b2fa89ccb0e8c0ef3f9830c804e6a2f341847bc0eea7ac92ff4af4",
+        "source_fact:v1:342b56d274f8f3526e766da8bbdeda70927e822572b1cce7bdace1cd3d7a9f79",
+        "source_fact:v1:38fe3993b3176db115e460713943d8c3b841e7eba796106c62298ef774168e31",
+        "source_fact:v1:4ce5d2642dce00fc9fc79f6cfb5c12489a847db721a0911b2780596f92c623d0",
+        "source_fact:v1:7afd133ca4b9efd0efe5cf89de20009d57a463fd9a401df23174201695158bca",
+        "source_fact:v1:948e68c7101e51b032ab155b689068253bef503b0736a62b0a18444d0b37d32f",
+        "source_fact:v1:c634f72bda45f570ed463a9e3d5da02dcf80275b4a232fcab80d08b6f76ac8d1",
+        "source_fact:v1:c669385b1f7a66473990d532f4c74b876cf26f7da2128646077af125a1d7c725"
+      ],
+      "source_published_kst": "2026-10-18T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "고용 쇼크에도 안 내린 장기금리…'가격 묻지 않던 큰손'이 떠났다",
+      "telegram_core_fact": "브렌트유가 배럴당 100달러 안팎에서 움직이는 가운데(8월 중순에는 87달러대였다) 휘발유 가격이 한 달 새 9.1% 뛰면서 전년 대비 상승률은 3.7%로 예상(3.6%)을 웃돌았고, 식품·에너지를 뺀 근원 물가도 2.6%로 예상(2.5%)보다 높았다.",
+      "title": "고용 쇼크에도 안 내린 장기금리…'가격 묻지 않던 큰손'이 떠났다"
+    },
     "source_fact:89dcd2c0199c52bbd7edeb55": {
       "first_seen_kst": "2026-10-07T23:10:06+09:00",
       "lanes": {
@@ -557960,6 +558895,26 @@
       "source_title": "코스피, 美 CPI 발표 앞두고 경계심리↑… 물가둔화 확인할까",
       "telegram_core_fact": "14일 상승 출발하며 2% 이상 뛰었으나 미국 9월 소비자물가지수(CPI) 발표를 앞두고 관망세가 짙어지며 장중 6000선을 밑돌기도 했다.",
       "title": "코스피, 美 CPI 발표 앞두고 경계심리↑… 물가둔화 확인할까"
+    },
+    "source_fact:89fa7886454ee482314f5b02": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016157300017",
+      "source": "연합뉴스",
+      "source_body_digest": "c84433b788e1dc807831e7d13917a87015cca36fdc21c3e963dc84af2b97ac29",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2774d02e9e98946e3cf4b956a545b38518f8eb7a475c9edcef90cc05e8cea5ee",
+      "source_fact_keys": [
+        "source_fact:v1:a2f2253d49448f965995b9136276025d80d7831ad742d24f4d38f4a1cb33101f"
+      ],
+      "source_published_kst": "2026-10-18T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "[만나보니] 딥엑스 김녹원 \"인텔과 기술협력 본격화…AMD와도 논의\" | 연합뉴스",
+      "telegram_core_fact": "국내 인공지능(AI) 반도체 기업 딥엑스가 인텔의 AI 소프트웨어 생태계에 자사 신경망처리장치(NPU)를 연동하는 기술 협력을 본격화하고, AMD와도 협력 가능성을 논의하며 글로벌 피지컬 AI 시장 공략에 속도를 내고 있다.",
+      "title": "[만나보니] 딥엑스 김녹원 \"인텔과 기술협력 본격화…AMD와도 논의\" | 연합뉴스"
     },
     "source_fact:8a00aca8bdb3c6fcd4b388bd": {
       "first_seen_kst": "2026-10-13T12:19:43+09:00",
@@ -566892,6 +567847,33 @@
       "telegram_core_fact": "9월 무역수지가 예상을 뛰어넘는 큰 폭의 흑자를 기록한 데다, 연말로 갈수록 수출이 집중되는 효과까지 더해지면서 올해 연간 경상수지 흑자 전망치인 4500억달러도 달성 가능할 것이란 전망이다. 한은은 지난 8월 올해 연간 경상수지 흑자 전망치를 기존 2500억달러에서 4500억달러로 대폭 상향한 바 있다.",
       "title": "“9월 경상수지, 8월보다 좋을 것…연간 4500억달러 달성 가능”[일문일답]"
     },
+    "source_fact:90070ad1d06d30a382529c4e": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018004300009",
+      "source": "연합뉴스",
+      "source_body_digest": "ecc909c2300ab38a3147ae48ed2c9440d72b9e46518d24944d7d0b13c7febb22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1ca2ecef1bb427dd1f83241140f28a12cd522984199319aaa13a5d8a581d3fa3",
+      "source_fact_keys": [
+        "source_fact:v1:1bd451a219ab3fdde67ed55ca351ef39bf537abd004c7dcd901e42632a6be88d",
+        "source_fact:v1:2107fbfc898b04aa89906fad813f5b6705795ed76271a565f4312fe7390cc955",
+        "source_fact:v1:304799af31ccf73d993b4b074e5e661cf35a9d5c677b318f1ac569d2595ec763",
+        "source_fact:v1:4fe528368f0b5769ae955dd2e83c4adf289eec20aab20c07e9d5bf6f9940135e",
+        "source_fact:v1:be26e09dc8468e5a8ae8ca70f4e698f6ba0a07b524cd8ce83bbaf44d2cada724",
+        "source_fact:v1:c3e45640b09fee7e42f6e2d8c5daa26f9db143a68395003bbeff5b5a62913053",
+        "source_fact:v1:c58c4d889fa0709401321bf53a46d5b6ec8ca7ebfe536e539010b77fc2d66cef",
+        "source_fact:v1:f31548ee2e009980f1373beec3c8072b1e972220fcd45da68200847cfcbc7fcf"
+      ],
+      "source_published_kst": "2026-10-18T06:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "젤렌스키, 트럼프 대러제재 유예에 \"푸틴만 돕는 오판\" | 연합뉴스",
+      "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령은 도널드 트럼프 미 대통령이 대러시아 신규 제재의 시행을 유예하기로 결정한 것에 대해 러시아를 더 대담하게 만들고 전쟁을 격화시킬 것이라고 17일(현지시간) 비판했다.",
+      "title": "젤렌스키, 트럼프 대러제재 유예에 \"푸틴만 돕는 오판\" | 연합뉴스"
+    },
     "source_fact:900e0da4b9e1184a1ea93bd5": {
       "first_seen_kst": "2026-10-13T22:33:57+09:00",
       "lanes": {
@@ -573640,6 +574622,33 @@
       "source_title": "[한국건설기술연구원 스마트건설지원센터 보육기업 CEO] 초경량·고출력 태양광 모듈을 개발하는 기업 ‘에이스인벤터’",
       "telegram_core_fact": "현재 경기도 화성에 50MW급 태양광 모듈 생산라인을 구축하고, 초경량·고출력 태양광 모듈과 건물일체형 태양광 모듈을 개발·생산하고 있다. 에이스인벤터는 아이템을 인정받아 한국건설기술연구원 스마트건설지원센터 보육기업으로 선정됐다.",
       "title": "[한국건설기술연구원 스마트건설지원센터 보육기업 CEO] 초경량·고출력 태양광 모듈을 개발하는 기업 ‘에이스인벤터’"
+    },
+    "source_fact:94db985db080b2751386d3b9": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018004300009",
+      "source": "연합뉴스",
+      "source_body_digest": "ecc909c2300ab38a3147ae48ed2c9440d72b9e46518d24944d7d0b13c7febb22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1ca2ecef1bb427dd1f83241140f28a12cd522984199319aaa13a5d8a581d3fa3",
+      "source_fact_keys": [
+        "source_fact:v1:1bd451a219ab3fdde67ed55ca351ef39bf537abd004c7dcd901e42632a6be88d",
+        "source_fact:v1:2107fbfc898b04aa89906fad813f5b6705795ed76271a565f4312fe7390cc955",
+        "source_fact:v1:304799af31ccf73d993b4b074e5e661cf35a9d5c677b318f1ac569d2595ec763",
+        "source_fact:v1:4fe528368f0b5769ae955dd2e83c4adf289eec20aab20c07e9d5bf6f9940135e",
+        "source_fact:v1:be26e09dc8468e5a8ae8ca70f4e698f6ba0a07b524cd8ce83bbaf44d2cada724",
+        "source_fact:v1:c3e45640b09fee7e42f6e2d8c5daa26f9db143a68395003bbeff5b5a62913053",
+        "source_fact:v1:c58c4d889fa0709401321bf53a46d5b6ec8ca7ebfe536e539010b77fc2d66cef",
+        "source_fact:v1:f31548ee2e009980f1373beec3c8072b1e972220fcd45da68200847cfcbc7fcf"
+      ],
+      "source_published_kst": "2026-10-18T06:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "젤렌스키, 트럼프 대러제재 유예에 \"푸틴만 돕는 오판\" | 연합뉴스",
+      "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령은 도널드 트럼프 미 대통령이 대러시아 신규 제재의 시행을 유예하기로 결정한 것에 대해 러시아를 더 대담하게 만들고 전쟁을 격화시킬 것이라고 17일(현지시간) 비판했다.",
+      "title": "젤렌스키, 트럼프 대러제재 유예에 \"푸틴만 돕는 오판\" | 연합뉴스"
     },
     "source_fact:94dbb88157960958048047d7": {
       "first_seen_kst": "2026-10-13T13:44:57+09:00",
@@ -581321,6 +582330,35 @@
       "source_title": "\"탈탄소 위해 대규모 전력 필요\"…포스코, 원전 사업 추진 주목 [에너지 발전 각자도생①]",
       "telegram_core_fact": "포스코그룹이 철강 생산 체제 전반에서 탈(脫)탄소 생산 체제 구축을 위해 수소 환원 제철 기술 도입을 본격화하고 있다.",
       "title": "\"탈탄소 위해 대규모 전력 필요\"…포스코, 원전 사업 추진 주목 [에너지 발전 각자도생①]"
+    },
+    "source_fact:9a11143a70d0ea2612e33b6d": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/18/2026101611034719000",
+      "source": "머니투데이",
+      "source_body_digest": "694158c5d2472a8e34215155a3a90cb280be9057dccf80c206cabe4a6df9c098",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-18",
+      "source_fact_identity": "source_facts:v1:3f1d3662c23cfdcd99c63514db7e301a5288070b3088eec3a0c167ed9caab053",
+      "source_fact_keys": [
+        "source_fact:v1:055762ea59a90436e18914d46301b990b8803fc29999102f0e32870624cfea96",
+        "source_fact:v1:07f21c6862c2252ce9e0c08a79ae615c40e2b9a57d969a8ffb335f8af28453fb",
+        "source_fact:v1:0826ce9b91b2fa89ccb0e8c0ef3f9830c804e6a2f341847bc0eea7ac92ff4af4",
+        "source_fact:v1:342b56d274f8f3526e766da8bbdeda70927e822572b1cce7bdace1cd3d7a9f79",
+        "source_fact:v1:38fe3993b3176db115e460713943d8c3b841e7eba796106c62298ef774168e31",
+        "source_fact:v1:4ce5d2642dce00fc9fc79f6cfb5c12489a847db721a0911b2780596f92c623d0",
+        "source_fact:v1:7afd133ca4b9efd0efe5cf89de20009d57a463fd9a401df23174201695158bca",
+        "source_fact:v1:948e68c7101e51b032ab155b689068253bef503b0736a62b0a18444d0b37d32f",
+        "source_fact:v1:c634f72bda45f570ed463a9e3d5da02dcf80275b4a232fcab80d08b6f76ac8d1",
+        "source_fact:v1:c669385b1f7a66473990d532f4c74b876cf26f7da2128646077af125a1d7c725"
+      ],
+      "source_published_kst": "2026-10-18T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "고용 쇼크에도 안 내린 장기금리…'가격 묻지 않던 큰손'이 떠났다",
+      "telegram_core_fact": "브렌트유가 배럴당 100달러 안팎에서 움직이는 가운데(8월 중순에는 87달러대였다) 휘발유 가격이 한 달 새 9.1% 뛰면서 전년 대비 상승률은 3.7%로 예상(3.6%)을 웃돌았고, 식품·에너지를 뺀 근원 물가도 2.6%로 예상(2.5%)보다 높았다.",
+      "title": "고용 쇼크에도 안 내린 장기금리…'가격 묻지 않던 큰손'이 떠났다"
     },
     "source_fact:9a137ee462db08ea6aa4e8d1": {
       "first_seen_kst": "2026-10-11T21:07:10+09:00",
@@ -593268,6 +594306,27 @@
       "source_published_kst": "2026-10-06T11:27+09:00",
       "title": "스페이스X, AI 사업 기대감에 날아 올랐다"
     },
+    "source_fact:a1eac2d4c26d74a0e86e79ea": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829556",
+      "source": "뉴시스",
+      "source_body_digest": "a9f3be6ea25efd2ba5a3a36241f65e5de4f657eb72f4f30b7d3f7801dedd6019",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f58655eefcd9c83bcc2d56af784f656342907e912e25f83a22b0ad5e57b13769",
+      "source_fact_keys": [
+        "source_fact:v1:2530b9635144f8b7b09361d3195dad6faef9466db97becf8dc691bc876628c1c",
+        "source_fact:v1:d195bc4bc5f008ab71a79d4f76847f103fde7d0e6c1fe6d82fb4317a4ab49697"
+      ],
+      "source_published_kst": "2026-10-18T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"집값 따라가기 벅차\"…10명 중 3명, 주담대 2억 이상 빌렸다 '역대 최고'",
+      "telegram_core_fact": "우리은행의 변동형 주담대 금리는 5.00~6.20%, KB국민은행의 변동형 주담대 금리는 4.64~6.05%로 올랐다.",
+      "title": "\"집값 따라가기 벅차\"…10명 중 3명, 주담대 2억 이상 빌렸다 '역대 최고'"
+    },
     "source_fact:a1eca2f372cc7da22fb06c65": {
       "first_seen_kst": "2026-10-10T01:24:21+09:00",
       "lanes": {
@@ -596422,6 +597481,35 @@
       "source_title": "中 CXMT, 서버용 차세대 D램 출시 예고…韓 반도체 추격",
       "telegram_core_fact": "트렌드포스에 따르면 올해 2분기 매출 기준 CXMT의 D램 시장점유율은 전 분기 7.6%에서 9.5%로 상승했다.",
       "title": "中 CXMT, 서버용 차세대 D램 출시 예고…韓 반도체 추격"
+    },
+    "source_fact:a4048b68f95e12fba6f02cf0": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/18/2026101611034719000",
+      "source": "머니투데이",
+      "source_body_digest": "694158c5d2472a8e34215155a3a90cb280be9057dccf80c206cabe4a6df9c098",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-18",
+      "source_fact_identity": "source_facts:v1:3f1d3662c23cfdcd99c63514db7e301a5288070b3088eec3a0c167ed9caab053",
+      "source_fact_keys": [
+        "source_fact:v1:055762ea59a90436e18914d46301b990b8803fc29999102f0e32870624cfea96",
+        "source_fact:v1:07f21c6862c2252ce9e0c08a79ae615c40e2b9a57d969a8ffb335f8af28453fb",
+        "source_fact:v1:0826ce9b91b2fa89ccb0e8c0ef3f9830c804e6a2f341847bc0eea7ac92ff4af4",
+        "source_fact:v1:342b56d274f8f3526e766da8bbdeda70927e822572b1cce7bdace1cd3d7a9f79",
+        "source_fact:v1:38fe3993b3176db115e460713943d8c3b841e7eba796106c62298ef774168e31",
+        "source_fact:v1:4ce5d2642dce00fc9fc79f6cfb5c12489a847db721a0911b2780596f92c623d0",
+        "source_fact:v1:7afd133ca4b9efd0efe5cf89de20009d57a463fd9a401df23174201695158bca",
+        "source_fact:v1:948e68c7101e51b032ab155b689068253bef503b0736a62b0a18444d0b37d32f",
+        "source_fact:v1:c634f72bda45f570ed463a9e3d5da02dcf80275b4a232fcab80d08b6f76ac8d1",
+        "source_fact:v1:c669385b1f7a66473990d532f4c74b876cf26f7da2128646077af125a1d7c725"
+      ],
+      "source_published_kst": "2026-10-18T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "고용 쇼크에도 안 내린 장기금리…'가격 묻지 않던 큰손'이 떠났다",
+      "telegram_core_fact": "브렌트유가 배럴당 100달러 안팎에서 움직이는 가운데(8월 중순에는 87달러대였다) 휘발유 가격이 한 달 새 9.1% 뛰면서 전년 대비 상승률은 3.7%로 예상(3.6%)을 웃돌았고, 식품·에너지를 뺀 근원 물가도 2.6%로 예상(2.5%)보다 높았다.",
+      "title": "고용 쇼크에도 안 내린 장기금리…'가격 묻지 않던 큰손'이 떠났다"
     },
     "source_fact:a40678e48505790618a91a37": {
       "first_seen_kst": "2026-10-09T23:49:51+09:00",
@@ -599670,6 +600758,35 @@
       ],
       "source_published_kst": "2026-10-06T07:45+09:00",
       "title": "\"지금이 매수 기회\" 화장품株 급락했는데, 수출 29% 급증"
+    },
+    "source_fact:a61fdace8e42685dcd90e8b0": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/18/2026101611034719000",
+      "source": "머니투데이",
+      "source_body_digest": "694158c5d2472a8e34215155a3a90cb280be9057dccf80c206cabe4a6df9c098",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-18",
+      "source_fact_identity": "source_facts:v1:3f1d3662c23cfdcd99c63514db7e301a5288070b3088eec3a0c167ed9caab053",
+      "source_fact_keys": [
+        "source_fact:v1:055762ea59a90436e18914d46301b990b8803fc29999102f0e32870624cfea96",
+        "source_fact:v1:07f21c6862c2252ce9e0c08a79ae615c40e2b9a57d969a8ffb335f8af28453fb",
+        "source_fact:v1:0826ce9b91b2fa89ccb0e8c0ef3f9830c804e6a2f341847bc0eea7ac92ff4af4",
+        "source_fact:v1:342b56d274f8f3526e766da8bbdeda70927e822572b1cce7bdace1cd3d7a9f79",
+        "source_fact:v1:38fe3993b3176db115e460713943d8c3b841e7eba796106c62298ef774168e31",
+        "source_fact:v1:4ce5d2642dce00fc9fc79f6cfb5c12489a847db721a0911b2780596f92c623d0",
+        "source_fact:v1:7afd133ca4b9efd0efe5cf89de20009d57a463fd9a401df23174201695158bca",
+        "source_fact:v1:948e68c7101e51b032ab155b689068253bef503b0736a62b0a18444d0b37d32f",
+        "source_fact:v1:c634f72bda45f570ed463a9e3d5da02dcf80275b4a232fcab80d08b6f76ac8d1",
+        "source_fact:v1:c669385b1f7a66473990d532f4c74b876cf26f7da2128646077af125a1d7c725"
+      ],
+      "source_published_kst": "2026-10-18T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "고용 쇼크에도 안 내린 장기금리…'가격 묻지 않던 큰손'이 떠났다",
+      "telegram_core_fact": "브렌트유가 배럴당 100달러 안팎에서 움직이는 가운데(8월 중순에는 87달러대였다) 휘발유 가격이 한 달 새 9.1% 뛰면서 전년 대비 상승률은 3.7%로 예상(3.6%)을 웃돌았고, 식품·에너지를 뺀 근원 물가도 2.6%로 예상(2.5%)보다 높았다.",
+      "title": "고용 쇼크에도 안 내린 장기금리…'가격 묻지 않던 큰손'이 떠났다"
     },
     "source_fact:a6246fdc73b46fdb0fd25c54": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
@@ -603896,6 +605013,33 @@
       "source_title": "메리츠證 \"삼성전자 3분기 메모리 실적 예상 웃돌아…D램·낸드 가격 경쟁력 지속\"",
       "telegram_core_fact": "김선우 연구원은 \"당사의 최근 전망치 대비 메모리에서 2조2000억원 기대 이상의 성과를 기록한 것으로 추정된다\"며 \"급격한 원화 강세로 비우호적인 사업 환경이 조성됐음에도 업계 평균을 웃도는 견조한 판매가격 정책이 실적 개선을 이끈 것으로 판단한다\"고 설명했다.",
       "title": "메리츠證 \"삼성전자 3분기 메모리 실적 예상 웃돌아…D램·낸드 가격 경쟁력 지속\""
+    },
+    "source_fact:a93cb07df1ba18e58c606995": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018004300009",
+      "source": "연합뉴스",
+      "source_body_digest": "ecc909c2300ab38a3147ae48ed2c9440d72b9e46518d24944d7d0b13c7febb22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1ca2ecef1bb427dd1f83241140f28a12cd522984199319aaa13a5d8a581d3fa3",
+      "source_fact_keys": [
+        "source_fact:v1:1bd451a219ab3fdde67ed55ca351ef39bf537abd004c7dcd901e42632a6be88d",
+        "source_fact:v1:2107fbfc898b04aa89906fad813f5b6705795ed76271a565f4312fe7390cc955",
+        "source_fact:v1:304799af31ccf73d993b4b074e5e661cf35a9d5c677b318f1ac569d2595ec763",
+        "source_fact:v1:4fe528368f0b5769ae955dd2e83c4adf289eec20aab20c07e9d5bf6f9940135e",
+        "source_fact:v1:be26e09dc8468e5a8ae8ca70f4e698f6ba0a07b524cd8ce83bbaf44d2cada724",
+        "source_fact:v1:c3e45640b09fee7e42f6e2d8c5daa26f9db143a68395003bbeff5b5a62913053",
+        "source_fact:v1:c58c4d889fa0709401321bf53a46d5b6ec8ca7ebfe536e539010b77fc2d66cef",
+        "source_fact:v1:f31548ee2e009980f1373beec3c8072b1e972220fcd45da68200847cfcbc7fcf"
+      ],
+      "source_published_kst": "2026-10-18T06:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "젤렌스키, 트럼프 대러제재 유예에 \"푸틴만 돕는 오판\" | 연합뉴스",
+      "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령은 도널드 트럼프 미 대통령이 대러시아 신규 제재의 시행을 유예하기로 결정한 것에 대해 러시아를 더 대담하게 만들고 전쟁을 격화시킬 것이라고 17일(현지시간) 비판했다.",
+      "title": "젤렌스키, 트럼프 대러제재 유예에 \"푸틴만 돕는 오판\" | 연합뉴스"
     },
     "source_fact:a94a438ac21747a51c12ba1d": {
       "first_seen_kst": "2026-10-15T15:55:49+09:00",
@@ -634842,6 +635986,27 @@
       "telegram_core_fact": "진옥동 신한금융 회장은 \"금융지주회사 출범을 통해 인도네시아 현지 사업을 하나의 체계로 운영할 기반을 갖춘 만큼 이번 업무협약은 현지 비즈니스 확장을 위한 새로운 시도\"라며 \"이를 계기로 시나르마스 그룹, 현지 고객들에게 차별화된 금융 가치를 제공하고 양국 경제 발전에도 기여하겠다\"고 말했다.",
       "title": "신한금융, 국내 금융그룹 첫 인도네시아 금융지주사 출범"
     },
+    "source_fact:bdeac0c953dda10a965fa139": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016164900530",
+      "source": "연합뉴스",
+      "source_body_digest": "ce1364fde0c78f9212b9abad97ba8dd35e0bb6c6ddbd31975bdb9a3c58b2fb6c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4324f70474ed11da02d749d78446b3baa540e882dc1574cab2b7b13dbe3c322f",
+      "source_fact_keys": [
+        "source_fact:v1:b1d1533ab0e62977be9b0c6bcc595422313a6190aa11314960f923c6a6645052",
+        "source_fact:v1:b89f248b9204085b064f095d91f824cbe2e7d1fe03396c7aa085c92235c3f033"
+      ],
+      "source_published_kst": "2026-10-18T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "개인정보위, 과징금 부과 사건 10건 중 9건에 '재량감경' | 연합뉴스",
+      "telegram_core_fact": "지난 5월 19일부터 시행된 개정 개인정보 보호법 시행령과 과징금 부과기준 고시를 통해 '매우 중대한 위반행위'에 대해서는 과징금 감경의 전부 또는 일부를 적용하지 않을 수 있도록 했다.",
+      "title": "개인정보위, 과징금 부과 사건 10건 중 9건에 '재량감경' | 연합뉴스"
+    },
     "source_fact:bdebc3e71b07b68b5ae49aba": {
       "first_seen_kst": "2026-10-15T13:40:20+09:00",
       "lanes": {
@@ -638866,6 +640031,35 @@
       "source_title": "“현대지에프홀딩스, 자사주 소각‧배당수익 확대로 주주환원 강화”",
       "telegram_core_fact": "현대지에프홀딩스는 이달 중 자사주 잔여 물량을 집중적으로 매입한 뒤 1000억원 규모, 발행주식의 약 4.0%에 해당하는 자사주를 11~12월 중 전량 소각다.",
       "title": "“현대지에프홀딩스, 자사주 소각‧배당수익 확대로 주주환원 강화”"
+    },
+    "source_fact:c0d12aefb5c38ca0ae1a2952": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/18/2026101611034719000",
+      "source": "머니투데이",
+      "source_body_digest": "694158c5d2472a8e34215155a3a90cb280be9057dccf80c206cabe4a6df9c098",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-18",
+      "source_fact_identity": "source_facts:v1:3f1d3662c23cfdcd99c63514db7e301a5288070b3088eec3a0c167ed9caab053",
+      "source_fact_keys": [
+        "source_fact:v1:055762ea59a90436e18914d46301b990b8803fc29999102f0e32870624cfea96",
+        "source_fact:v1:07f21c6862c2252ce9e0c08a79ae615c40e2b9a57d969a8ffb335f8af28453fb",
+        "source_fact:v1:0826ce9b91b2fa89ccb0e8c0ef3f9830c804e6a2f341847bc0eea7ac92ff4af4",
+        "source_fact:v1:342b56d274f8f3526e766da8bbdeda70927e822572b1cce7bdace1cd3d7a9f79",
+        "source_fact:v1:38fe3993b3176db115e460713943d8c3b841e7eba796106c62298ef774168e31",
+        "source_fact:v1:4ce5d2642dce00fc9fc79f6cfb5c12489a847db721a0911b2780596f92c623d0",
+        "source_fact:v1:7afd133ca4b9efd0efe5cf89de20009d57a463fd9a401df23174201695158bca",
+        "source_fact:v1:948e68c7101e51b032ab155b689068253bef503b0736a62b0a18444d0b37d32f",
+        "source_fact:v1:c634f72bda45f570ed463a9e3d5da02dcf80275b4a232fcab80d08b6f76ac8d1",
+        "source_fact:v1:c669385b1f7a66473990d532f4c74b876cf26f7da2128646077af125a1d7c725"
+      ],
+      "source_published_kst": "2026-10-18T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "고용 쇼크에도 안 내린 장기금리…'가격 묻지 않던 큰손'이 떠났다",
+      "telegram_core_fact": "브렌트유가 배럴당 100달러 안팎에서 움직이는 가운데(8월 중순에는 87달러대였다) 휘발유 가격이 한 달 새 9.1% 뛰면서 전년 대비 상승률은 3.7%로 예상(3.6%)을 웃돌았고, 식품·에너지를 뺀 근원 물가도 2.6%로 예상(2.5%)보다 높았다.",
+      "title": "고용 쇼크에도 안 내린 장기금리…'가격 묻지 않던 큰손'이 떠났다"
     },
     "source_fact:c0d23ecada2df7764ec4dc25": {
       "first_seen_kst": "2026-10-16T15:46:25+09:00",
@@ -667046,6 +668240,27 @@
       ],
       "source_published_kst": "2026-10-07T06:15+09:00",
       "title": "AI 에이전트 뜨자 CPU도 부활…AMD 시총 1조달러 돌파"
+    },
+    "source_fact:d39010a80d5fd8c1ab3784a7": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016164900530",
+      "source": "연합뉴스",
+      "source_body_digest": "ce1364fde0c78f9212b9abad97ba8dd35e0bb6c6ddbd31975bdb9a3c58b2fb6c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4324f70474ed11da02d749d78446b3baa540e882dc1574cab2b7b13dbe3c322f",
+      "source_fact_keys": [
+        "source_fact:v1:b1d1533ab0e62977be9b0c6bcc595422313a6190aa11314960f923c6a6645052",
+        "source_fact:v1:b89f248b9204085b064f095d91f824cbe2e7d1fe03396c7aa085c92235c3f033"
+      ],
+      "source_published_kst": "2026-10-18T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "개인정보위, 과징금 부과 사건 10건 중 9건에 '재량감경' | 연합뉴스",
+      "telegram_core_fact": "지난 5월 19일부터 시행된 개정 개인정보 보호법 시행령과 과징금 부과기준 고시를 통해 '매우 중대한 위반행위'에 대해서는 과징금 감경의 전부 또는 일부를 적용하지 않을 수 있도록 했다.",
+      "title": "개인정보위, 과징금 부과 사건 10건 중 9건에 '재량감경' | 연합뉴스"
     },
     "source_fact:d391cdabf5638f31697af081": {
       "first_seen_kst": "2026-10-10T04:17:09+09:00",
@@ -710998,6 +712213,35 @@
       "telegram_core_fact": "하지만 이는 실제 매출 감소가 아닌 회계상 매출 집계 방식의 차이에서 발생한 것으로 파악됐고, 이튿날인 9일 나스닥 지수가 0.64% 반등한 점을 고려하면 코스피의 부진을 오픈AI발 거품론으로만 설명하기는 어려운 듯 보인다.",
       "title": "반등 활로 못 찾는 코스피…역대급 삼전 실적에도 오히려 낙폭 확대 | 연합뉴스"
     },
+    "source_fact:f0576d431f886203e2af48be": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/18/2026101611034719000",
+      "source": "머니투데이",
+      "source_body_digest": "694158c5d2472a8e34215155a3a90cb280be9057dccf80c206cabe4a6df9c098",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-18",
+      "source_fact_identity": "source_facts:v1:3f1d3662c23cfdcd99c63514db7e301a5288070b3088eec3a0c167ed9caab053",
+      "source_fact_keys": [
+        "source_fact:v1:055762ea59a90436e18914d46301b990b8803fc29999102f0e32870624cfea96",
+        "source_fact:v1:07f21c6862c2252ce9e0c08a79ae615c40e2b9a57d969a8ffb335f8af28453fb",
+        "source_fact:v1:0826ce9b91b2fa89ccb0e8c0ef3f9830c804e6a2f341847bc0eea7ac92ff4af4",
+        "source_fact:v1:342b56d274f8f3526e766da8bbdeda70927e822572b1cce7bdace1cd3d7a9f79",
+        "source_fact:v1:38fe3993b3176db115e460713943d8c3b841e7eba796106c62298ef774168e31",
+        "source_fact:v1:4ce5d2642dce00fc9fc79f6cfb5c12489a847db721a0911b2780596f92c623d0",
+        "source_fact:v1:7afd133ca4b9efd0efe5cf89de20009d57a463fd9a401df23174201695158bca",
+        "source_fact:v1:948e68c7101e51b032ab155b689068253bef503b0736a62b0a18444d0b37d32f",
+        "source_fact:v1:c634f72bda45f570ed463a9e3d5da02dcf80275b4a232fcab80d08b6f76ac8d1",
+        "source_fact:v1:c669385b1f7a66473990d532f4c74b876cf26f7da2128646077af125a1d7c725"
+      ],
+      "source_published_kst": "2026-10-18T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "고용 쇼크에도 안 내린 장기금리…'가격 묻지 않던 큰손'이 떠났다",
+      "telegram_core_fact": "브렌트유가 배럴당 100달러 안팎에서 움직이는 가운데(8월 중순에는 87달러대였다) 휘발유 가격이 한 달 새 9.1% 뛰면서 전년 대비 상승률은 3.7%로 예상(3.6%)을 웃돌았고, 식품·에너지를 뺀 근원 물가도 2.6%로 예상(2.5%)보다 높았다.",
+      "title": "고용 쇼크에도 안 내린 장기금리…'가격 묻지 않던 큰손'이 떠났다"
+    },
     "source_fact:f05ded963ac11da7eb48dc6d": {
       "first_seen_kst": "2026-10-14T22:47:26+09:00",
       "lanes": {
@@ -719753,6 +720997,33 @@
       "source_title": "리서치 센터장들 긴급진단…\"실적 훼손보다 수급 불안이 낙폭 키워\" | 연합뉴스",
       "telegram_core_fact": "외국인 매도가 둔화하는 가운데 실적과 가이던스(기업의 향후 실적 전망)를 통해 이익 지속성이 확인돼야 한다.",
       "title": "리서치 센터장들 긴급진단…\"실적 훼손보다 수급 불안이 낙폭 키워\" | 연합뉴스"
+    },
+    "source_fact:f67efc5454c0aacf93fb9668": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018004300009",
+      "source": "연합뉴스",
+      "source_body_digest": "ecc909c2300ab38a3147ae48ed2c9440d72b9e46518d24944d7d0b13c7febb22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1ca2ecef1bb427dd1f83241140f28a12cd522984199319aaa13a5d8a581d3fa3",
+      "source_fact_keys": [
+        "source_fact:v1:1bd451a219ab3fdde67ed55ca351ef39bf537abd004c7dcd901e42632a6be88d",
+        "source_fact:v1:2107fbfc898b04aa89906fad813f5b6705795ed76271a565f4312fe7390cc955",
+        "source_fact:v1:304799af31ccf73d993b4b074e5e661cf35a9d5c677b318f1ac569d2595ec763",
+        "source_fact:v1:4fe528368f0b5769ae955dd2e83c4adf289eec20aab20c07e9d5bf6f9940135e",
+        "source_fact:v1:be26e09dc8468e5a8ae8ca70f4e698f6ba0a07b524cd8ce83bbaf44d2cada724",
+        "source_fact:v1:c3e45640b09fee7e42f6e2d8c5daa26f9db143a68395003bbeff5b5a62913053",
+        "source_fact:v1:c58c4d889fa0709401321bf53a46d5b6ec8ca7ebfe536e539010b77fc2d66cef",
+        "source_fact:v1:f31548ee2e009980f1373beec3c8072b1e972220fcd45da68200847cfcbc7fcf"
+      ],
+      "source_published_kst": "2026-10-18T06:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "젤렌스키, 트럼프 대러제재 유예에 \"푸틴만 돕는 오판\" | 연합뉴스",
+      "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령은 도널드 트럼프 미 대통령이 대러시아 신규 제재의 시행을 유예하기로 결정한 것에 대해 러시아를 더 대담하게 만들고 전쟁을 격화시킬 것이라고 17일(현지시간) 비판했다.",
+      "title": "젤렌스키, 트럼프 대러제재 유예에 \"푸틴만 돕는 오판\" | 연합뉴스"
     },
     "source_fact:f67f8a668c908a4a04bd7aac": {
       "first_seen_kst": "2026-10-12T12:09:58+09:00",
@@ -735418,6 +736689,33 @@
       "telegram_core_fact": "두 대리점은 학교별로 앞선 입찰에서 떨어진 업체가 다음에는 납품업체로 선정되도록 순서를 정했다.",
       "title": "교복 입찰 51건 '짬짜미'…대리점 8곳에 과징금 1억"
     },
+    "title:05e4e01b5aee68bc2daef0d4": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261018004300009",
+      "source": "연합뉴스",
+      "source_body_digest": "ecc909c2300ab38a3147ae48ed2c9440d72b9e46518d24944d7d0b13c7febb22",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1ca2ecef1bb427dd1f83241140f28a12cd522984199319aaa13a5d8a581d3fa3",
+      "source_fact_keys": [
+        "source_fact:v1:1bd451a219ab3fdde67ed55ca351ef39bf537abd004c7dcd901e42632a6be88d",
+        "source_fact:v1:2107fbfc898b04aa89906fad813f5b6705795ed76271a565f4312fe7390cc955",
+        "source_fact:v1:304799af31ccf73d993b4b074e5e661cf35a9d5c677b318f1ac569d2595ec763",
+        "source_fact:v1:4fe528368f0b5769ae955dd2e83c4adf289eec20aab20c07e9d5bf6f9940135e",
+        "source_fact:v1:be26e09dc8468e5a8ae8ca70f4e698f6ba0a07b524cd8ce83bbaf44d2cada724",
+        "source_fact:v1:c3e45640b09fee7e42f6e2d8c5daa26f9db143a68395003bbeff5b5a62913053",
+        "source_fact:v1:c58c4d889fa0709401321bf53a46d5b6ec8ca7ebfe536e539010b77fc2d66cef",
+        "source_fact:v1:f31548ee2e009980f1373beec3c8072b1e972220fcd45da68200847cfcbc7fcf"
+      ],
+      "source_published_kst": "2026-10-18T06:49+09:00",
+      "source_supply_terms": {},
+      "source_title": "젤렌스키, 트럼프 대러제재 유예에 \"푸틴만 돕는 오판\" | 연합뉴스",
+      "telegram_core_fact": "볼로디미르 젤렌스키 우크라이나 대통령은 도널드 트럼프 미 대통령이 대러시아 신규 제재의 시행을 유예하기로 결정한 것에 대해 러시아를 더 대담하게 만들고 전쟁을 격화시킬 것이라고 17일(현지시간) 비판했다.",
+      "title": "젤렌스키, 트럼프 대러제재 유예에 \"푸틴만 돕는 오판\" | 연합뉴스"
+    },
     "title:05ed5ec455d34522ccc1570e": {
       "first_seen_kst": "2026-10-07T23:10:06+09:00",
       "lanes": {
@@ -736031,6 +737329,26 @@
       "source_title": "4대 신항만 장비 38%가 '메이드 인 차이나'",
       "telegram_core_fact": "중국산 장비가 전체에서 38%를 차지하는 등 수입 의존도가 높은 가운데 항만 자동화가 확대되면서 정보보안과 유지관리 체계를 강화해야 한다는 지적이 나온다. 국내 주요 신항만에 설치된 항만장비의 국산 비중이 35%에 그치는 것으로 나타났다.",
       "title": "4대 신항만 장비 38%가 '메이드 인 차이나'"
+    },
+    "title:07ffaecb3f883fe44c4a996b": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829328",
+      "source": "뉴시스",
+      "source_body_digest": "fc6d22edb363857a568d3fae8d87634b7e04e29ef97bcb6e4b644864e0f78362",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9218a1ebbafb88e3fcca7edd47fb815f0a82626759f414561d47d51365629204",
+      "source_fact_keys": [
+        "source_fact:v1:6f794dc79394df0bb4a372fe59c8e2bdc5921cf71f607e9c19d021aa46b80b59"
+      ],
+      "source_published_kst": "2026-10-18T07:08+09:00",
+      "source_supply_terms": {},
+      "source_title": "약국 종업원이 연고 판매…법원, 약사에 벌금 50만원",
+      "telegram_core_fact": "법조계에 따르면 의정부지법 형사3단독 김희동 판사는 약사법 위반 혐의로 기소된 약사 A씨에게 벌금 50만원을 선고했다. 약사 면허가 없는 종업원이 의약품을 판매해 해당 약국을 운영하는 약사가 벌금형을 선고 받았다.",
+      "title": "약국 종업원이 연고 판매…법원, 약사에 벌금 50만원"
     },
     "title:0806d412dfc8c34cd81d69b7": {
       "first_seen_kst": "2026-09-30T15:16:38+09:00",
@@ -763306,6 +764624,24 @@
       "telegram_core_fact": "외국인은 이날 삼성전자 주식 1819억원어치를 순매수하며 지난달 23일 이후 13거래일 만에 매수 우위로 돌아섰다. 외국인은 이날 SK하이닉스 주식 730억원어치를 순매도하며 지난달 21일부터 16거래일 연속 매도 우위를 기록했다.",
       "title": "삼성전자 13거래일 만에 外人 돌아왔다…SK하이닉스는 16일째 '팔자'[핫스탁](종합)"
     },
+    "title:4ca387b0c4d3ff909923ec16": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.mt.co.kr/future/2026/10/18/2026101400322970932",
+      "source": "머니투데이",
+      "source_body_digest": "f701800f549b3929bb250bd059851e08061431c20764282c67410a250c82031f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-18T05:30+09:00",
+      "source_supply_terms": {},
+      "source_title": "전기먹는 하마 AI 반도체 열·손실 잡는다…'특수유리 기판' 뭐길래",
+      "telegram_core_fact": "\"현재 개발 중인 기술은 기존 반도체의 유기 소재 기판을 특수유리 기판으로 바꾸는 데 필요한 핵심 소재 기술\"이라며 \"AI 반도체를 고성능화하고 전력 효율을 높이기 위한 차세대 기판이라고 보면 된다\"고 했다.",
+      "title": "전기먹는 하마 AI 반도체 열·손실 잡는다…'특수유리 기판' 뭐길래"
+    },
     "title:4caf3493c0970007ca18931e": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
       "lanes": {
@@ -773331,6 +774667,26 @@
       "source_title": "韓증시 때린 美 '물가 쇼크'…증권가 \"금리 추가 인상·AI 신용 비상\"",
       "telegram_core_fact": "박상현 iM증권 연구원은 \"금융시장은 코어 CPI 0.1%p 상회를 유가 상승발 물가 압력의 전방위 확산으로 받아들였다\"며 \"10월 동결 가능성은 높지만 12월에 이어 내년 1월 FOMC 회의에서 추가 인상이 단행될 확률이 50%를 웃돌고 있다. 결국 긴축 지속 여부는 유가 불안 장기화에 달렸다\"고 짚었다.",
       "title": "韓증시 때린 美 '물가 쇼크'…증권가 \"금리 추가 인상·AI 신용 비상\""
+    },
+    "title:66aa9b202fc46c176ef38988": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016157300017",
+      "source": "연합뉴스",
+      "source_body_digest": "c84433b788e1dc807831e7d13917a87015cca36fdc21c3e963dc84af2b97ac29",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2774d02e9e98946e3cf4b956a545b38518f8eb7a475c9edcef90cc05e8cea5ee",
+      "source_fact_keys": [
+        "source_fact:v1:a2f2253d49448f965995b9136276025d80d7831ad742d24f4d38f4a1cb33101f"
+      ],
+      "source_published_kst": "2026-10-18T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "[만나보니] 딥엑스 김녹원 \"인텔과 기술협력 본격화…AMD와도 논의\" | 연합뉴스",
+      "telegram_core_fact": "국내 인공지능(AI) 반도체 기업 딥엑스가 인텔의 AI 소프트웨어 생태계에 자사 신경망처리장치(NPU)를 연동하는 기술 협력을 본격화하고, AMD와도 협력 가능성을 논의하며 글로벌 피지컬 AI 시장 공략에 속도를 내고 있다.",
+      "title": "[만나보니] 딥엑스 김녹원 \"인텔과 기술협력 본격화…AMD와도 논의\" | 연합뉴스"
     },
     "title:66b026dc89e600c980a8b519": {
       "first_seen_kst": "2026-09-29T09:41:07+09:00",
@@ -807280,6 +808636,35 @@
       "telegram_core_fact": "서울시는 9호선 4단계 연장으로 구간이 늘며 혼잡도가 계속 오르는 상황에서 차량 제작사 다원시스와의 발주 계약을 올해 4월 해지했다.",
       "title": "서울시, 출근길 ‘지옥철’ 9호선 8회 증차⋯도봉·강동 등 급행버스 도입 [종합]"
     },
+    "title:bee9b873c46fc050054eb352": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/18/2026101611034719000",
+      "source": "머니투데이",
+      "source_body_digest": "694158c5d2472a8e34215155a3a90cb280be9057dccf80c206cabe4a6df9c098",
+      "source_event_identity": "source_event:v2:korea_equity_selloff_episode:2026-10-18",
+      "source_fact_identity": "source_facts:v1:3f1d3662c23cfdcd99c63514db7e301a5288070b3088eec3a0c167ed9caab053",
+      "source_fact_keys": [
+        "source_fact:v1:055762ea59a90436e18914d46301b990b8803fc29999102f0e32870624cfea96",
+        "source_fact:v1:07f21c6862c2252ce9e0c08a79ae615c40e2b9a57d969a8ffb335f8af28453fb",
+        "source_fact:v1:0826ce9b91b2fa89ccb0e8c0ef3f9830c804e6a2f341847bc0eea7ac92ff4af4",
+        "source_fact:v1:342b56d274f8f3526e766da8bbdeda70927e822572b1cce7bdace1cd3d7a9f79",
+        "source_fact:v1:38fe3993b3176db115e460713943d8c3b841e7eba796106c62298ef774168e31",
+        "source_fact:v1:4ce5d2642dce00fc9fc79f6cfb5c12489a847db721a0911b2780596f92c623d0",
+        "source_fact:v1:7afd133ca4b9efd0efe5cf89de20009d57a463fd9a401df23174201695158bca",
+        "source_fact:v1:948e68c7101e51b032ab155b689068253bef503b0736a62b0a18444d0b37d32f",
+        "source_fact:v1:c634f72bda45f570ed463a9e3d5da02dcf80275b4a232fcab80d08b6f76ac8d1",
+        "source_fact:v1:c669385b1f7a66473990d532f4c74b876cf26f7da2128646077af125a1d7c725"
+      ],
+      "source_published_kst": "2026-10-18T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "고용 쇼크에도 안 내린 장기금리…'가격 묻지 않던 큰손'이 떠났다",
+      "telegram_core_fact": "브렌트유가 배럴당 100달러 안팎에서 움직이는 가운데(8월 중순에는 87달러대였다) 휘발유 가격이 한 달 새 9.1% 뛰면서 전년 대비 상승률은 3.7%로 예상(3.6%)을 웃돌았고, 식품·에너지를 뺀 근원 물가도 2.6%로 예상(2.5%)보다 높았다.",
+      "title": "고용 쇼크에도 안 내린 장기금리…'가격 묻지 않던 큰손'이 떠났다"
+    },
     "title:bef16bc1c22fd0ffba3f9a00": {
       "first_seen_kst": "2026-10-11T18:34:27+09:00",
       "lanes": {
@@ -810992,6 +812377,27 @@
       "source_title": "[美특징주]캐터필러, AI 데이터센터·인프라 투자 수혜 기대...개장 전↑",
       "telegram_core_fact": "특히 캐터필러는 데이터센터 건설 장비뿐 아니라 전력 공급에 필요한 가스터빈 등도 공급하고 있어 AI 인프라 투자 확대의 수혜 기업으로 평가받고 있다. 미국 중장비 제조업체 캐터필러(CAT)가 인공지능(AI) 데이터센터 투자 확대와 글로벌 인프라 건설 수요에 힘입어 추가 상승할 가능성이 있다는 분석이 나왔다.",
       "title": "[美특징주]캐터필러, AI 데이터센터·인프라 투자 수혜 기대...개장 전↑"
+    },
+    "title:c8b0266f8a3b7c07568cac39": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261016164900530",
+      "source": "연합뉴스",
+      "source_body_digest": "ce1364fde0c78f9212b9abad97ba8dd35e0bb6c6ddbd31975bdb9a3c58b2fb6c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4324f70474ed11da02d749d78446b3baa540e882dc1574cab2b7b13dbe3c322f",
+      "source_fact_keys": [
+        "source_fact:v1:b1d1533ab0e62977be9b0c6bcc595422313a6190aa11314960f923c6a6645052",
+        "source_fact:v1:b89f248b9204085b064f095d91f824cbe2e7d1fe03396c7aa085c92235c3f033"
+      ],
+      "source_published_kst": "2026-10-18T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "개인정보위, 과징금 부과 사건 10건 중 9건에 '재량감경' | 연합뉴스",
+      "telegram_core_fact": "지난 5월 19일부터 시행된 개정 개인정보 보호법 시행령과 과징금 부과기준 고시를 통해 '매우 중대한 위반행위'에 대해서는 과징금 감경의 전부 또는 일부를 적용하지 않을 수 있도록 했다.",
+      "title": "개인정보위, 과징금 부과 사건 10건 중 9건에 '재량감경' | 연합뉴스"
     },
     "title:c8b91c9f4867e240c151d224": {
       "first_seen_kst": "2026-10-02T16:20:30+09:00",
@@ -820348,6 +821754,27 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-07T15:46+09:00",
       "title": "대성산업 \"자회사 대성쎌틱에너시스 주식 380억원에 추가취득\" | 연합뉴스"
+    },
+    "title:dfba9bd830d6611095536bc9": {
+      "first_seen_kst": "2026-10-18T07:09:00+09:00",
+      "lanes": {
+        "preopen": "2026-10-18T07:09:00+09:00"
+      },
+      "last_seen_kst": "2026-10-18T07:09:00+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829556",
+      "source": "뉴시스",
+      "source_body_digest": "a9f3be6ea25efd2ba5a3a36241f65e5de4f657eb72f4f30b7d3f7801dedd6019",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f58655eefcd9c83bcc2d56af784f656342907e912e25f83a22b0ad5e57b13769",
+      "source_fact_keys": [
+        "source_fact:v1:2530b9635144f8b7b09361d3195dad6faef9466db97becf8dc691bc876628c1c",
+        "source_fact:v1:d195bc4bc5f008ab71a79d4f76847f103fde7d0e6c1fe6d82fb4317a4ab49697"
+      ],
+      "source_published_kst": "2026-10-18T07:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"집값 따라가기 벅차\"…10명 중 3명, 주담대 2억 이상 빌렸다 '역대 최고'",
+      "telegram_core_fact": "우리은행의 변동형 주담대 금리는 5.00~6.20%, KB국민은행의 변동형 주담대 금리는 4.64~6.05%로 올랐다.",
+      "title": "\"집값 따라가기 벅차\"…10명 중 3명, 주담대 2억 이상 빌렸다 '역대 최고'"
     },
     "title:dfcce54f25efd566adf27276": {
       "first_seen_kst": "2026-10-01T21:06:52+09:00",
@@ -832625,5 +834052,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-18T06:42:56+09:00"
+  "updated_at_kst": "2026-10-18T07:09:00+09:00"
 }
