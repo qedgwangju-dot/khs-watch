@@ -1,0 +1,152 @@
+name: Google Quantum AI Magic State Stage Watch
+on:
+  schedule:
+    - cron: '37 * * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Check sources without Telegram or state commit'
+        type: boolean
+        default: true
+      send_test:
+        description: 'Send a clearly labelled Telegram route test'
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/google-quantum-magic-watch.yml'
+      - 'scripts/google_quantum_magic_watch.py'
+      - 'tests/test_google_quantum_magic_watch.py'
+permissions:
+  contents: write
+  actions: write
+concurrency:
+  group: google-quantum-magic-watch-${{ github.event_name }}
+  cancel-in-progress: ${{ github.event_name == 'push' }}
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate source and regression checks
+        run: |
+          python -m py_compile scripts/google_quantum_magic_watch.py
+          PYTHONPATH=scripts python -m unittest discover -s tests -p 'test_google_quantum_magic_watch.py' -v
+      - name: Ensure new schedule is enabled
+        if: github.event_name == 'push'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api -X PUT "/repos/$GITHUB_REPOSITORY/actions/workflows/google-quantum-magic-watch.yml/enable"
+          echo 'google_qec_schedule_enable=confirmed'
+      - name: Read Google official feeds and detect new milestones
+        run: python scripts/google_quantum_magic_watch.py
+      - name: Summarize source status
+        if: always()
+        run: |
+          if [ -f out/google_quantum_magic_status.md ]; then
+            cat out/google_quantum_magic_status.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Send only approved route test or newly verified milestone
+        if: >-
+          (github.event_name == 'push' && github.run_attempt == 1 && contains(github.event.head_commit.message, '[google-qec-route-test]')) ||
+          (github.event_name == 'workflow_dispatch' && inputs.send_test == true) ||
+          ((github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.dry_run != true && inputs.send_test != true)) &&
+           hashFiles('out/google_quantum_magic_alert.html') != '')
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_AI_POLICY_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+          IS_MANUAL_TEST: ${{ inputs.send_test }}
+        run: |
+          python - <<'PY'
+          import datetime as dt, json, os, pathlib, urllib.request
+          from zoneinfo import ZoneInfo
+          token=(os.environ.get('TELEGRAM_BOT_TOKEN') or '').strip()
+          chat=(os.environ.get('TELEGRAM_CHAT_ID') or '').strip()
+          if not token or not chat:
+              raise RuntimeError('Existing quantum Telegram route secrets missing')
+          endpoint='https://api.telegram.org/bot'+token
+          with urllib.request.urlopen(endpoint+'/getMe',timeout=25) as r:
+              identity=json.load(r)
+          username=str((identity.get('result') or {}).get('username') or '').lower()
+          if not identity.get('ok') or username!='khs88798879_bot':
+              raise RuntimeError('Wrong quantum policy Telegram bot')
+          is_test=os.environ.get('GITHUB_EVENT_NAME')=='push' or os.environ.get('IS_MANUAL_TEST','').lower()=='true'
+          if is_test:
+              body=('[Google Quantum AI 기술 감시] 경로 검증 테스트\n'
+                    '기존 양자기술 Telegram 경로를 재사용합니다.\n'
+                    '이 메시지는 신규 뉴스 알림이 아닙니다.\n'
+                    '공식자료 조회·중복 차단·실제 전송 결과 확인용')
+          else:
+              body=pathlib.Path('out/google_quantum_magic_alert.html').read_text(encoding='utf-8')
+          payload={'chat_id':chat,'text':body,'disable_web_page_preview':True}
+          if not is_test:
+              payload['parse_mode']='HTML'
+          request=urllib.request.Request(endpoint+'/sendMessage',
+              data=json.dumps(payload).encode('utf-8'),
+              headers={'Content-Type':'application/json'},method='POST')
+          with urllib.request.urlopen(request,timeout=30) as r:
+              result=json.load(r)
+          message_id=(result.get('result') or {}).get('message_id')
+          if not result.get('ok') or type(message_id) is not int or message_id<=0:
+              raise RuntimeError('Telegram did not return a confirmed message_id')
+          receipt={'status':'confirmed','bot':username,'message_id':message_id,
+              'at_kst':dt.datetime.now(ZoneInfo('Asia/Seoul')).isoformat(timespec='seconds')}
+          path='out/google_quantum_magic_route_test_receipt.json' if is_test else 'out/google_quantum_magic_delivery.json'
+          pathlib.Path(path).write_text(json.dumps(receipt,ensure_ascii=False)+'\n',encoding='utf-8')
+          print(('google_qec_test_delivery' if is_test else 'google_qec_real_delivery')+'=confirmed message_id='+str(message_id))
+          PY
+      - name: Commit only acknowledged or no-alert state
+        if: >-
+          (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.dry_run != true && inputs.send_test != true)) &&
+          hashFiles('out/google_quantum_magic_pending.json') != '' &&
+          (hashFiles('out/google_quantum_magic_alert.html') == '' || hashFiles('out/google_quantum_magic_delivery.json') != '')
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          pending=pathlib.Path('out/google_quantum_magic_pending.json')
+          payload=json.loads(pending.read_text(encoding='utf-8'))
+          receipt=pathlib.Path('out/google_quantum_magic_delivery.json')
+          if receipt.exists():
+              evidence=json.loads(receipt.read_text(encoding='utf-8'))
+              assert evidence.get('status')=='confirmed' and type(evidence.get('message_id')) is int
+              payload['last_successful_delivery']=evidence
+          target=pathlib.Path('data/google_quantum_magic_watch_state.json')
+          target.write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+          git config user.name 'google-quantum-qec-watch[bot]'
+          git config user.email 'google-quantum-qec-watch[bot]@users.noreply.github.com'
+          git add data/google_quantum_magic_watch_state.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Update Google quantum magic state lifecycle'
+            for attempt in 1 2 3 4 5; do
+              if git pull --rebase origin main && git push; then
+                echo 'google_qec_state_push=confirmed'
+                exit 0
+              fi
+              git rebase --abort 2>/dev/null || true
+              sleep $((attempt * 3))
+            done
+            echo 'Git state push failed after send; do not claim exactly-once delivery' >&2
+            exit 1
+          fi
+      - name: Preserve original-source and Telegram evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: google-quantum-qec-${{ github.run_id }}
+          path: |
+            out/google_quantum_magic_status.md
+            out/google_quantum_magic_pending.json
+            out/google_quantum_magic_alert.html
+            out/google_quantum_magic_delivery.json
+            out/google_quantum_magic_route_test_receipt.json
+          if-no-files-found: ignore
+          retention-days: 14
