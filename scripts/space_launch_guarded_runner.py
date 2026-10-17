@@ -36,3 +36,11 @@ def compact_report(cat,item,rate):
         tag='[계약]' if guard.kind(cat.key,item['title'])=='contract' else '[개발]'
     value=_RENDER(replace(cat,tag=tag),item,rate)
     return '\n'.join(x for x in value.splitlines() if '제목·공개요약에서 핵심 수치 미추출' not in x)
+
+def main():
+    import os
+    import json
+    if os.getenv('SPACE_LAUNCH_GUARD_SELF_TEST')=='1':
+        guard.self_test()
+        guard.correction_self_test()
+        return 0
