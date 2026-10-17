@@ -2599,6 +2599,11 @@ def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tupl
             kind == "iea_oct15_reserve_execution"
             and _iea_reprints_cross_checked(selected)
         )
+        if kind == "iea_oct15_reserve_execution" and not (
+            new_official_primary or iea_secondary_cross_checked
+        ):
+            # Two arbitrary article names must never be treated as confirmation.
+            continue
         eia_primary = kind == "eia_refining_crack_watch" and any(
             row.source == EIA_REFINING_SOURCE
             and row.link == EIA_REFINING_WEEKLY_URL
