@@ -570,6 +570,44 @@ def build_dealer_survey_alert(section: ReleaseSection, fx: float | None = None) 
     }
 
 
+
+def dealer_telegram_html(title: str, body: str, detail: dict) -> str:
+    """Render only the dealer-event QRA message with short clickable source links.
+
+    Do not change the other QRA alerts' plain-text formatting.
+    Treat the source URLs as data, never trust the body to supply HTML tags.
+    """
+    if detail.get("type") != "dealer_long_end_survey_official_document":
+        raise ValueError("HTML link rendering is reserved for the dealer agenda event")
+    official = str(detail.get("official_url") or "").strip()
+    parsed = urllib.parse.urlparse(official)
+    if parsed.scheme != "https" or parsed.netloc.lower() != "home.treasury.gov":
+        raise ValueError("Dealer agenda link is not a validated official Treasury HTTPS URL")
+    analyst = CITI_20261009
+    if not analyst.startswith("https://www.bloomberg.com/news/articles/"):
+        raise ValueError("Unexpected Citi comparison URL")
+    original_lines = body.splitlines()
+    official_label = "공식 문서: " + official
+    analyst_label = "시장 예상: " + analyst
+    if original_lines.count(official_label) != 1 or original_lines.count(analyst_label) != 1:
+        raise ValueError("Expected original official and analyst source lines are missing")
+    kept_lines = [
+        line for line in original_lines if line not in (official_label, analyst_label)
+    ]
+    base = html.escape(title, quote=False) + "\n\n" + html.escape(
+        "\n".join(kept_lines), quote=False
+    )
+    links = (
+        '\n원문: <a href="' + html.escape(official, quote=True) +
+        '">미 재무부 공식 딜러 의제</a> · <a href="' +
+        html.escape(analyst, quote=True) + '">Citi 시장 예상</a>'
+    )
+    output = base + links
+    if len(title) + 2 + len("\n".join(kept_lines)) + 80 > 4096:
+        raise ValueError("Rendered dealer message exceeds Telegram text limit")
+    return output
+
+
 def write_watch(status: str, detail: str = "") -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     text = (
