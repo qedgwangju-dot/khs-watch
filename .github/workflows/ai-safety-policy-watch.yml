@@ -532,6 +532,56 @@ jobs:
           print("ai_policy_event_backlog_preservation=PASS")
           PY
 
+      - name: Verify OpenShell telemetry index and API rate-limit fallback
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from unittest.mock import patch
+          from scripts.ai_safety_policy_watch import fetch_openshell_telemetry
+
+          readme = b"| Report | Link |\n|---|---|\n| Old | [View report](2026-07-08.md) |\n| New | [View report](2026-08-10.md) |"
+          report = b"| Sandboxes created | 10 | 100 | +10% |\n| Sandbox creation failures | 1 | 2 | +10% |\n| Actions denied | 6 | 8 | +10% |"
+          accessed = []
+          def primary(url, timeout=25):
+              accessed.append(url)
+              if url.endswith("telemetry/README.md"):
+                  return readme
+              if url.endswith("2026-08-10.md"):
+                  return report
+              raise AssertionError("Primary path used an unwanted GitHub API request")
+          with patch("scripts.ai_safety_policy_watch.fetch_bytes", side_effect=primary):
+              result = fetch_openshell_telemetry()
+          assert result["name"] == "2026-08-10.md"
+          assert result["url"].endswith("/2026-08-10.md")
+          assert "샌드박스 생성 10건" in result["title"]
+          assert not any("api.github.com" in url for url in accessed)
+
+          def fallback(url, timeout=25):
+              if url.endswith("telemetry/README.md"):
+                  raise OSError("synthetic unavailable raw index")
+              if "api.github.com/repos/NVIDIA/OpenShell/contents/telemetry" in url:
+                  return json.dumps([{
+                      "name": "2026-08-10.md",
+                      "download_url": "https://raw.githubusercontent.com/NVIDIA/OpenShell/main/telemetry/2026-08-10.md",
+                      "html_url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md",
+                  }]).encode()
+              if url.endswith("2026-08-10.md"):
+                  return report
+              raise AssertionError("Unexpected source URL")
+          with patch("scripts.ai_safety_policy_watch.fetch_bytes", side_effect=fallback):
+              assert fetch_openshell_telemetry()["name"] == "2026-08-10.md"
+
+          with patch("scripts.ai_safety_policy_watch.fetch_bytes", side_effect=OSError("all sources unavailable")):
+              try:
+                  fetch_openshell_telemetry()
+              except RuntimeError as exc:
+                  assert "discovery failed" in str(exc)
+              else:
+                  raise AssertionError("Total source failure was silently marked as success")
+          print("ai_policy_openshell_telemetry_fallback_regression=PASS")
+          PY
+
       - name: Run live policy watch
         run: |
           rm -f out/ai_safety_policy_watch_alert_title.txt out/ai_safety_policy_watch_alert.html out/ai_safety_policy_watch_telegram_confirmed.json
