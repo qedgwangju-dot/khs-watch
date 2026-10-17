@@ -3,13 +3,13 @@
   "last_collection": {
     "deferred_events": 0,
     "errors": [],
-    "material_items": 0,
+    "material_items": 5,
     "new_articles": 0,
     "new_events": 0,
     "official_page_skips": [
       "OpenAI 프런티어 학습 Safety Case: HTTPError: HTTP Error 403: Forbidden"
     ],
-    "raw_items": 10,
+    "raw_items": 72,
     "sif_new_stages": 0,
     "si_portal_health": "정상",
     "si_portal_known_links": 2,
@@ -96,7 +96,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-10-17T11:00:57.420498+00:00",
+    "updated_at": "2026-10-17T11:03:35.716495+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -108,6 +108,24 @@
       "source": "머니투데이",
       "title": "유엔 연설 앞둔 오픈AI \"美 주도 AI 표준 수립, 한국도 참여\" 제안 - 머니투데이 - 머니투데이",
       "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1ucThaWjVXT1Z3a0lHbEI3ZHl5SURjZTJKYU13ZWFJSE1keGJNQjBOS2FDNkxEZmlQWks1Y3ViNlVaQ3U0U0o3aU96RnB6Nms2LU1SdXdrQTkzN0V2bnZ6ZWFuXzFLWWhHenRMOEtPMmpRUmFTb1HSAXtBVV95cUxOdVFxeURxWUF1QUc4UTVxMlRyVWhIeVk1QjVGeHBxcF81YV9lWlBWUXpkTS1EV2hFdFFCV1FheHo2VmFuNG5maUtSd1ZBZUZvV3lkVGJjQUo0azhORlRZNG1RVHBzTFluTFJ6Z2x0ZW54SjJEX2hNazZ4eUU?oc=5"
+    },
+    "29c89e9a14ade63669fcd2bb": {
+      "category": "Anthropic 프런티어 AI 안전법안 입법 단계",
+      "entity": "Anthropic AI 안전법안",
+      "first_seen_at": "2026-10-17T11:03:35.716495+00:00",
+      "published_at": "2026-10-16T21:45:00+00:00",
+      "source": "Politico",
+      "title": "Anthropic quietly pitches its own AI safety bill to lawmakers - Politico",
+      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE0ydWVrbHdHeGNraEdTSHQ5eExwZ2lLRUU1U1BoVFJUTWNLenpWTXJOMHNnWnhaa0thQXlRbk1KdEliVVVGUEJXZWwtcWtUZE9Ielo2X05DaHJKSmJpd05rRl9vMWdQQUE4ZnVRRFBLQ3hlcm9FNG12bg?oc=5"
+    },
+    "2ba42fa90d7b44dd47a3e27c": {
+      "category": "SoftBank–Allied Universal 물리보안·로봇 인수 단계",
+      "entity": "SoftBank–Allied Universal",
+      "first_seen_at": "2026-10-17T11:03:35.716495+00:00",
+      "published_at": "2026-10-16T21:22:20+00:00",
+      "source": "Reuters",
+      "title": "SoftBank weighs $18 billion acquisition of Allied Universal, source says - Reuters",
+      "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxQWXdNdHpBa2pKc200dGJ6aDlPYUNpNTlla3ZxM2ZWQzdXNDBxclZxc3pSRlZNelgwSnIzSzdmRVFhdzRVNVhJckNMTjhFOTNsdWlkMWxJSkJRa3huaXd6d3R6cktEODVnUE5aMGMwWEw0ZzRwTTJnX1ZoQ2F5UVhpMUZNNzNLNGNDT2RhdGZnMHZtTHZjcm9PNFk4bldiTjZ4TnJ6SF9zV0owWERWXzgyYmpYLVpFOE9ITG1kanhfOWdfME40Tmh0eTF5cjNfa3AxdFJV?oc=5"
     },
     "3a527c295589b48d3fa697ae": {
       "category": "미국 Super Intelligence Force 정책지휘체계",
@@ -156,6 +174,24 @@
       "title": "백악관 SI Force, AI 모델 사고 즉시 신고·시정 요구",
       "url": "https://www.axios.com/2026/10/09/anthropic-ai-security-white-house"
     },
+    "e8fd84957f3bd0c1872f97e0": {
+      "category": "Anthropic 프런티어 AI 안전법안 입법 단계",
+      "entity": "Anthropic AI 안전법안",
+      "first_seen_at": "2026-10-17T11:03:35.716495+00:00",
+      "published_at": "2026-10-16T22:25:33+00:00",
+      "source": "Bloomberg.com",
+      "title": "Anthropic Pitches AI Safety Bill to Lawmakers, Politico Says - Bloomberg.com",
+      "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQak82b0VucUh6RkVJMnY3bURRNjM5aFBBc2JIbzJWR0ViRnY0NE53UXdPZm1rYkhBX2hEZDlHOThiRUcwU01rbVg0SnpRLTVLUEc2Ti1KUHFPT0h1MDVJREl6OWZnOFhzOEdvQ2VnNHNlWmdqMUJheVVrOWlncEZFZHpxWHlJeTNrdXFpbXB4Nmx6em9NOF9nRlJrYmZDRUFEd2Z5R0NZdjREbHp5OHlUWGVtazlHRm5McmhWTDZORGZBRDUzYWhnaDlB?oc=5"
+    },
+    "eab6e782795efe558b449d40": {
+      "category": "Anthropic 프런티어 AI 안전법안 입법 단계",
+      "entity": "Anthropic AI 안전법안",
+      "first_seen_at": "2026-10-17T11:03:35.716495+00:00",
+      "published_at": "2026-10-16T23:16:18+00:00",
+      "source": "Bloomberg.com",
+      "title": "Anthropic Pitches AI Safety Bill to Lawmakers, Politico Says - Bloomberg.com",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQcENENWdpRlloLVpNclIyQWpIM3JSV3VHZklqOWZlQ0NJYnB2TWg2ZlhPMndNbS1qM2pWM0dTTVFZQ2l1SmxTT1h3VjZJNVpXTWhZTHRnLThqYm9UeFJ4ZEp0U3JROG1sUFJrN3Z6SEFKN2tPcU5teHZ6cU9JUDh4X1laZVZJMkZNNXNSZnJlZDdOX0dFMlM5REZCSGRHR3AydkdCbUY3RU9zYTRoNzdz?oc=5"
+    },
     "ef69717d7372f63293bcdad3": {
       "category": "법규·의무 보고·감사",
       "entity": "AI 안전·보안 생태계",
@@ -164,6 +200,15 @@
       "source": "매일경제",
       "title": "AI속도조절론 거리두는 트럼프…“규제 만드는 대신 기업에 맡길것” - 매일경제",
       "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE1nUGFNdklnZVhSemdadTI5cXB6R0NocDk1SjBUbEVfZk51YlVrOEhoc2hyeWJwSXZ5OE9UbU1pcGRpRER3RVF5cVk2SDhWUQ?oc=5"
+    },
+    "f1b5321de28c5dc9c7ad6ac6": {
+      "category": "Anthropic 프런티어 AI 안전법안 입법 단계",
+      "entity": "Anthropic AI 안전법안",
+      "first_seen_at": "2026-10-17T11:03:35.716495+00:00",
+      "published_at": "2026-10-16T23:23:52+00:00",
+      "source": "Reuters",
+      "title": "Anthropic quietly pitches its own AI safety bill to lawmakers, Politico reports - Reuters",
+      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPOGgzckNkaE5BdjZxdVMta2hsdVczMHFrZ2U4aFgzY2VsLVF5VEFpd1FMQVc1V084YTZQU0IyMkdWbXZTbEtpdlhFWHR2SUI1SDdsczFmeERfNHhfOXRpR2NLTVhjRWF4YWNYaDBPWXJDSXpqLUgtSERBY1lHejU3MTl0T2pPMzlKRDlsdmFNM3kwQk1YSFlyMnpDN1FSVG0xM2xqNTZrbnNxQTVkT3drcVJSVm0zNFlYOUstZzlDYldrc1p5OWJR?oc=5"
     }
   },
   "tracked_policy_event_stages": {
@@ -186,11 +231,11 @@
       "status": "The Information 2026-10-13 reported early talks; unconfirmed"
     }
   },
-  "updated_at_kst": "2026-10-17T20:00:57+09:00",
+  "updated_at_kst": "2026-10-17T20:03:35+09:00",
   "si_portal": {
     "initialized": true,
     "version": 1,
-    "last_success_at": "2026-10-17T11:01:25.407758+00:00",
+    "last_success_at": "2026-10-17T11:04:12.755339+00:00",
     "known_links": {
       "https://www.si.gov/initiatives/education": "White House Task Force SI Education Bringing SI literacy and training to K-12 students and the teachers who guide them. Explore →",
       "https://www.si.gov/initiatives/presidential-challenge": "Presidential SI Challenge"
