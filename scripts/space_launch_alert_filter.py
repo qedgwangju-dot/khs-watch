@@ -69,6 +69,9 @@ def main():
     from space_launch_bottleneck_watch import PENDING_STATE_PATH,request_bytes,fetch_usdkrw,NOW,KST
     pending=json.loads(PENDING_STATE_PATH.read_text(encoding='utf-8'))
     notes,errors=correction_notices(pending['seen'],request_bytes,fetch_usdkrw())
+    if notes:
+        header="🚀 우주 발사 병목 웹감시\n기준: "+NOW.astimezone(KST).strftime("%Y-%m-%d %H:%M KST")
+        changed=(changed.rstrip() if changed else header)+"\n\n"+"\n\n".join(text for _,text in notes)+"\n"
     if changed:target.write_text(changed,encoding="utf-8")
     else:target.unlink(missing_ok=True)
     print("space_launch_alert_filter=ok alert="+str(bool(changed)))
