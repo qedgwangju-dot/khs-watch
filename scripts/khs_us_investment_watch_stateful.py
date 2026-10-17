@@ -119,6 +119,32 @@ def _is_alaska_project_developer_source(row: dict) -> bool:
     }
 
 
+def _is_alaska_tax_primary(row: dict) -> bool:
+    # 세금 법률의 최종 성립·발효는 알래스카 주정부/주의회 공식 문서만 근거로 승격한다.
+    host = urllib_parse_host(str(row.get("link") or ""))
+    source = _norm(str(row.get("source") or ""))
+    return (
+        host in {
+            "gov.alaska.gov", "www.gov.alaska.gov", "akleg.gov", "www.akleg.gov",
+            "tax.alaska.gov", "www.tax.alaska.gov", "revenue.alaska.gov",
+            "www.revenue.alaska.gov",
+        }
+        or source in {
+            "alaska state legislature", "alaska governor",
+            "office of governor mike dunleavy", "alaska department of revenue",
+        }
+    )
+
+
+def _is_alaska_tax_original_report(row: dict) -> bool:
+    return (
+        _norm(str(row.get("source") or "")) == "매일경제"
+        and urllib_parse_host(str(row.get("link") or "")) in
+        {"www.mk.co.kr", "mk.co.kr", "m.mk.co.kr"}
+        and str(row.get("published") or "")[:10] >= "2026-10-15"
+    )
+
+
 def urllib_parse_host(value: str) -> str:
     import urllib.parse
     return (urllib.parse.urlsplit(value).hostname or "").lower()
@@ -887,6 +913,55 @@ def _candidate_facts(row: dict, family: str) -> set[str]:
         return facts | parties
 
     if family == "alaska_lng":
+        project_tax = any(x in low for x in ("알래스카", "alaska lng", "alaska pipeline", "project north"))
+        tax_reference = any(x in low for x in ("재산세", "property tax", "property-tax"))
+        korea_reference_for_tax = any(x in low for x in ("한국", "korean", "south korea"))
+        tax_request = any(x in low for x in (
+            "감면 요청", "면제 요청", "감면을 요청", "면제를 요청",
+            "재산세 감면 요구", "property tax relief request", "asked for property tax relief",
+            "asks for property tax relief", "requested a property tax break",
+        ))
+        request_negated = any(x in low for x in (
+            "감면 요청하지", "면제 요청하지", "요청한 사실 없다", "요청할 계획",
+            "요청 예정", "요청 검토", "요청을 부인",
+            "did not ask", "has not requested", "may ask", "plans to ask",
+        ))
+        if project_tax and tax_reference and korea_reference_for_tax and tax_request and not request_negated:
+            if _is_korean_government(row):
+                facts.add("alaska_tax_relief_request_status:official_confirmed")
+            else:
+                # 언론 확인 단계. 계약·미국측 감면 승인·법률 제정과 구분한다.
+                facts.add("alaska_tax_relief_request_status:reported")
+
+        if (
+            project_tax and tax_reference and "2033" in low
+            and any(x in low for x in (
+                "7억4000만달러", "7억 4000만 달러",
+                "$740 million", "740 million", "740m",
+            ))
+        ):
+            facts.add("alaska_tax_2033_liability_estimate_usd_m:740")
+
+        if project_tax and tax_reference and _is_alaska_tax_primary(row):
+            no_enactment = any(x in low for x in (
+                "failed", "not enacted", "not signed", "rejected",
+                "부결", "미통과", "법안 상정", "제안", "추진",
+                "proposed", "proposal", "would", "could", "seeks",
+            ))
+            if not no_enactment and any(x in low for x in (
+                "signed into law", "signed the alaska lng tax law",
+                "alaska lng tax reform enacted", "alaska lng property tax law enacted",
+                "재산세 감면법 주지사 서명 완료", "알래스카 lng 재산세 감면법 공포",
+            )):
+                facts.add("alaska_tax_law_status:enacted")
+            if not no_enactment and any(x in low for x in (
+                "alaska lng property tax relief is now effective",
+                "alaska lng property tax exemption took effect",
+                "alaska lng tax relief entered into force",
+                "알래스카 lng 재산세 감면 시행 확정",
+            )):
+                facts.add("alaska_tax_relief_status:effective")
+
         # 현지 의원이 전한 투자 선행조건은 정부 FID/투자 승인과 다른 보도 사실.
         host = (urllib_parse_host(str(row.get("link") or "")))
         summary = _norm(str(row.get("summary") or ""))
@@ -1084,6 +1159,8 @@ def _fact_slot(family: str, fact: str) -> str:
         "alaska_us_claim_usd_b:", "alaska_us_reiteration:", "alaska_taiwan_project_share_reported:", "alaska_taiwan_offtake_status:",
         "alaska_taiwan_term_reported_years:", "alaska_taiwan_us_investment_claim_usd_b:",
         "alaska_us_permits_reiteration:", "alaska_us_construction_start_claim:",
+        "alaska_tax_relief_request_status:", "alaska_tax_2033_liability_estimate_usd_m:",
+        "alaska_tax_law_status:", "alaska_tax_relief_status:",
         "alaska_glenfarne_fid_status:", "alaska_project_financing_status:",
         "alaska_physical_construction_status:",
         "alaska_phase1_pipeline_fid_status:", "alaska_phase2_export_fid_status:",
@@ -1121,6 +1198,11 @@ def _accepted_facts_for_group(family: str, rows: list[dict]) -> tuple[set[str], 
             "alaska_phase1_pipeline_fid_status:", "alaska_phase2_export_fid_status:",
         )):
             official = official or any(_is_alaska_project_developer_source(r) for r in evidence)
+        # 의회·정부의 법률 제정/발효 단계는 기사 2건으로 대체할 수 없다.
+        if family == "alaska_lng" and fact in {
+            "alaska_tax_law_status:enacted", "alaska_tax_relief_status:effective",
+        } and not any(_is_alaska_tax_primary(r) for r in evidence):
+            continue
         # 공식자료 1건 또는 서로 다른 출처 2곳 이상이 같은 상태값을 지지해야 승격한다.
         firsthand_report = (
             family == "alaska_lng"
@@ -1132,7 +1214,15 @@ def _accepted_facts_for_group(family: str, rows: list[dict]) -> tuple[set[str], 
                 for x in evidence
             )
         )
-        if official or len(sources) >= 2 or firsthand_report:
+        firsthand_tax_report = (
+            family == "alaska_lng"
+            and fact in {
+                "alaska_tax_relief_request_status:reported",
+                "alaska_tax_2033_liability_estimate_usd_m:740",
+            }
+            and any(_is_alaska_tax_original_report(r) for r in evidence)
+        )
+        if official or len(sources) >= 2 or firsthand_report or firsthand_tax_report:
             eligible[fact] = evidence
 
     # 한 슬롯에 상충하는 값이 여럿이면 공식성→독립 출처 수→최신성 순으로 하나만 채택한다.
@@ -1256,6 +1346,11 @@ def _human_fact(value: str) -> str:
         "encinal_status:confirmed_first": "대미투자 1호 공식 확정",
         "alaska_bilateral_status:review_started": "한미 공식상태 검토 착수",
         "alaska_fid_after_commercial_review:reported": "현지 주의원 발언 보도: Glenfarne FID 이후 한국 별도 상업성 심사, 아직 투자결정 없음",
+        "alaska_tax_relief_request_status:reported": "한국이 알래스카 LNG 재산세 감면을 요청했다는 10월15일 단독보도·미국 승인 아님",
+        "alaska_tax_relief_request_status:official_confirmed": "한국 정부 원문에서 재산세 감면 요청 확인·미국 승인 아님",
+        "alaska_tax_2033_liability_estimate_usd_m:740": "2033년 연간 재산세 약 1조원 부담 추산·확정 절감액 아님",
+        "alaska_tax_law_status:enacted": "알래스카 재산세 감면 법률 성립·실제 시행일 별도 확인",
+        "alaska_tax_relief_status:effective": "알래스카 재산세 감면 법적 발효 확인·실제 적용금액 별도 계산",
         "alaska_us_reiteration:2026-10-13": "백악관 10월13일 알래스카 540억달러 투자 주장 재확인·한국 승인과 별개",
         "alaska_taiwan_project_share_reported:30": "대만의 알래스카 LNG 30% 구매 주장 보도·구속력 있는 구매계약 미확인",
         "alaska_taiwan_term_reported_years:20": "미국 발표: 대만 알래스카 LNG 30% 구매 기간 20년·대만 확정 본계약 미확인",
@@ -2297,6 +2392,66 @@ def _self_test() -> int:
     if "alaska_phase2_export_fid_status:completed" not in phase_two_facts:
         raise RuntimeError(f"Alaska Phase Two export FID not recorded: {phase_two_facts}")
 
+    # 재산세 언론보도와 정부 확정·법률 성립·실제 시행을 단계별로 독립 검증한다.
+    tax_report, _ = _accepted_facts_for_group("alaska_lng", _verified_alaska_tax_report_rows())
+    if not {
+        "alaska_tax_relief_request_status:reported",
+        "alaska_tax_2033_liability_estimate_usd_m:740",
+    }.issubset(tax_report):
+        raise RuntimeError(f"Alaska tax report omitted: {tax_report}")
+    if any(x in tax_report for x in (
+        "alaska_tax_relief_request_status:official_confirmed",
+        "alaska_tax_law_status:enacted", "alaska_tax_relief_status:effective",
+    )):
+        raise RuntimeError(f"Alaska tax request promoted into approved relief: {tax_report}")
+
+    official_tax_request = [{
+        "title": "산업통상부 공식 한국 정부 알래스카 LNG 재산세 감면 요청 사실 확인",
+        "source": "산업통상부",
+        "link": "https://www.motir.go.kr/official-test",
+    }]
+    confirmed_tax_request, _ = _accepted_facts_for_group("alaska_lng", official_tax_request)
+    if "alaska_tax_relief_request_status:official_confirmed" not in confirmed_tax_request:
+        raise RuntimeError(f"Korean official tax request not recognized: {confirmed_tax_request}")
+    if any(x.endswith(":enacted") or x.endswith(":effective") for x in confirmed_tax_request):
+        raise RuntimeError(f"Korean tax request became US law: {confirmed_tax_request}")
+
+    house_passed = [{
+        "title": "Alaska LNG property tax bill HB 381 passed House, not signed into law",
+        "source": "Alaska State Legislature",
+        "link": "https://www.akleg.gov/test",
+    }]
+    house_facts, _ = _accepted_facts_for_group("alaska_lng", house_passed)
+    if any(x.startswith(("alaska_tax_law_status:", "alaska_tax_relief_status:")) for x in house_facts):
+        raise RuntimeError(f"House-only vote promoted into enacted law: {house_facts}")
+
+    media_enacted = [
+        {"title": "Alaska LNG property tax reform enacted", "source": "Reuters", "link": "https://www.reuters.com/test"},
+        {"title": "Alaska LNG property tax reform enacted", "source": "Bloomberg", "link": "https://www.bloomberg.com/test"},
+    ]
+    media_facts, _ = _accepted_facts_for_group("alaska_lng", media_enacted)
+    if "alaska_tax_law_status:enacted" in media_facts:
+        raise RuntimeError(f"media repetition promoted tax law: {media_facts}")
+
+    primary_enacted = [{
+        "title": "Alaska LNG property tax reform enacted and signed into law",
+        "source": "Alaska State Legislature",
+        "link": "https://www.akleg.gov/test-law",
+    }]
+    law_facts, _ = _accepted_facts_for_group("alaska_lng", primary_enacted)
+    if "alaska_tax_law_status:enacted" not in law_facts or "alaska_tax_relief_status:effective" in law_facts:
+        raise RuntimeError(f"legislative passage vs effectiveness regression: {law_facts}")
+
+    primary_effective = [{
+        "title": "Alaska LNG property tax exemption took effect",
+        "source": "Alaska Department of Revenue",
+        "link": "https://revenue.alaska.gov/test-effective",
+    }]
+    effect_facts, _ = _accepted_facts_for_group("alaska_lng", primary_effective)
+    if "alaska_tax_relief_status:effective" not in effect_facts:
+        raise RuntimeError(f"actual tax relief effective status missed: {effect_facts}")
+
+    print("alaska_property_tax_stage_self_test=passed")
     print("state_event_guard_self_test=passed")
     return 0
 
@@ -2316,6 +2471,17 @@ def _verified_funding_baseline_rows() -> list[dict]:
             "published": "2026-10-01T05:30:00+00:00",
         },
     ]
+
+
+def _verified_alaska_tax_report_rows() -> list[dict]:
+    # 10월15일 매일경제 단독기사(재산세 '요청')를 한 번만 사건으로 채택한다.
+    # 동일 기사의 전재·재인용은 독립적인 정부 확인으로 세지 않는다.
+    return [{
+        "title": "한국 정부 알래스카 LNG 재산세 감면 요청 보도: 2033년 연간 7억4000만달러 부담 추산",
+        "source": "매일경제",
+        "link": "https://m.mk.co.kr/news/economy/12177076",
+        "published": "2026-10-15T08:45:00+00:00",
+    }]
 
 
 def _verified_alaska_fid_report_rows() -> list[dict]:
@@ -2469,6 +2635,7 @@ def _rss(query: str) -> list[dict]:
     _RSS_BUFFER.extend(_official_project_baseline_rows())
     _RSS_BUFFER.extend(_verified_funding_baseline_rows())
     _RSS_BUFFER.extend(_verified_alaska_fid_report_rows())
+    _RSS_BUFFER.extend(_verified_alaska_tax_report_rows())
     _RSS_BUFFER.extend(_verified_alaska_us_reiteration_rows())
     _RSS_BUFFER.extend(_verified_alaska_taiwan_rally_rows())
     flushed = _collapse_rows(_RSS_BUFFER)
@@ -2519,6 +2686,24 @@ for _term in [
     "건설허가", "복합허가", "부지 선정", "공급계약", "벤더 승인",
     "두산에너빌리티", "현대건설", "비에이치아이", "범한메카텍",
 ]:
+    if _term not in core.MATERIAL:
+        core.MATERIAL.append(_term)
+
+# 기존 Google News 검색면만 보강한다. 별도 워크플로·전송경로는 만들지 않는다.
+for _query in [
+    '"알래스카 LNG" "재산세" "감면" when:14d',
+    '"알래스카 LNG" 재산세 면제 한국 정부 when:14d',
+    '"Alaska LNG" "property tax" "Korea" tax relief when:14d',
+    '"Alaska LNG" "HB 381" OR "HB 4001" tax bill when:45d',
+    '"Alaska LNG" property tax reform signed into law when:45d',
+]:
+    if _query not in core.QUERIES:
+        core.QUERIES.append(_query)
+
+for _source in ["매일경제", "Alaska Public Media", "Alaska Beacon", "Alaska State Legislature", "Alaska Governor"]:
+    if _source not in core.TRUSTED:
+        core.TRUSTED.append(_source)
+for _term in ["감면 요청", "면제 요청", "property tax relief", "tax relief", "tax reform", "HB 381", "HB 4001", "재산세 감면"]:
     if _term not in core.MATERIAL:
         core.MATERIAL.append(_term)
 
