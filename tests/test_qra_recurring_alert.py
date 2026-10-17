@@ -67,6 +67,11 @@ class QRARecurringAlertTests(unittest.TestCase):
         self.assertEqual(value, "1.45")
         self.assertIsNotNone(years)
 
+    def test_citi_forecast_not_a_confirmed_treasury_decision(self):
+        source = (Path(__file__).resolve().parents[1] / "scripts" / "qra_recurring_alert.py").read_text(encoding="utf-8")
+        self.assertIn("시장 예상 — 공식 결정과 분리", source)
+        self.assertIn("citi_scenario_line,", source)
+
 
 if __name__ == "__main__":
     unittest.main()
