@@ -16,8 +16,25 @@ def git(*args, check=True):
 
 def choose_newer(remote: dict, local: dict) -> dict:
     if str(remote.get("last_sent_at_kst") or "") >= str(local.get("last_sent_at_kst") or ""):
-        return remote
-    return local
+        selected = dict(remote)
+    else:
+        selected = dict(local)
+    # Link-format repair edits the already confirmed message, not a new event.
+    # Preserve this acknowledgment even if both records share the same send time.
+    if (
+        remote.get("last_heading") == local.get("last_heading")
+        and remote.get("telegram_message_id") == local.get("telegram_message_id")
+    ):
+        message_id = selected.get("telegram_message_id")
+        for candidate in (remote, local):
+            if candidate.get("dealer_links_edited_message_id") == message_id:
+                selected["dealer_links_edited_message_id"] = message_id
+                selected["dealer_links_format"] = "html_v1"
+                selected["dealer_links_edited_at_kst"] = max(
+                    str(remote.get("dealer_links_edited_at_kst") or ""),
+                    str(local.get("dealer_links_edited_at_kst") or ""),
+                )
+    return selected
 
 
 def persist():
