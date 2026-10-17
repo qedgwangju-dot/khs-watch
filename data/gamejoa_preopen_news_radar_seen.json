@@ -573,6 +573,27 @@
       "source_published_kst": "2026-10-07T11:07+09:00",
       "title": "[2보] LG전자 3분기 영업익 7천818억…작년비 13.5% 증가 | 연합뉴스"
     },
+    "core:0273ae11c4468de2ee49b036": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.mk.co.kr/news/business/12177635",
+      "source": "매일경제",
+      "source_body_digest": "60390dab22576e8993647286eb442789adb9c400084288ebd31b0cb9fc833d23",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b0743ee72244d7c1733f33112c7745e69fe042a02b18a8191360c28a3c0248cc",
+      "source_fact_keys": [
+        "source_fact:v1:03af4e3394b3cf66ffde6cff793e98fc7dfb422a1db3390aab67a9101ccf6aa5",
+        "source_fact:v1:77da320119cc66de645477c9eb091c966a0fad8517c576b4a43c1bc977c17aac"
+      ],
+      "source_published_kst": "2026-10-16T11:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "“전기버스 사용후 배터리 활용”…남부발전, ‘화재방지형 R-ESS’ 기술 시장 선도",
+      "telegram_core_fact": "정굳건 남부발전 기후환경처장은 “이번 실증사업은 전기버스 사용 후 배터리의 잔존 가치를 재창출하고 안전기술을 접목해 자원순환의 실효성을 높였다는 데 의미가 있다”며, “앞으로도 실증설비의 안전한 운영과 사용후 배터리의 활용 확대를 통해 자원순환 경제 활성화 및 친환경 에너지 인프라 구축에 기여하겠다”고 말했다.",
+      "title": "“전기버스 사용후 배터리 활용”…남부발전, ‘화재방지형 R-ESS’ 기술 시장 선도"
+    },
     "core:02ddc2b5f5c4ea96599d1900": {
       "first_seen_kst": "2026-10-10T01:47:39+09:00",
       "lanes": {
@@ -10053,6 +10074,30 @@
       "telegram_core_fact": "2027년 예상 매출은 전년 대비 1102.5% 증가한 수준이나 회사 가이던스 하단인 4억 달러에는 크게 못 미친다.",
       "title": "에볼루션 메탈스 앤 테크, 2027 매출 가이던스 4억~4억6000만달러 재확인"
     },
+    "core:29d1be029fa9aa5a0b500ba6": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636702",
+      "source": "이투데이",
+      "source_body_digest": "8df7c692033fe2f2037a5f1d73264c1a7b801c3836c7a7542a2b6d6994748943",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3733d67ed93ed3725a397ba1f6803cca698113716764130af9cc3f11589b46f",
+      "source_fact_keys": [
+        "source_fact:v1:0805cd4c4ab47896c73869a1683e52e33aaf9f7c9b3bf55ec14c8723dbbffa96",
+        "source_fact:v1:14ee313a37c3bc380a40da262797432276e098226d712ccf7ecb5519901e968a",
+        "source_fact:v1:5d6c29a617451ccb867ae6c0242ecccd28b3502c1ff2b96f3dabaf62edc1dce7",
+        "source_fact:v1:73c5a8c96010c7d0c2ce86af7e7ee9a746ad400f9febdfcbdc823e6d6974f0eb",
+        "source_fact:v1:9c5ae178d21bccf329b15f7ffb9154690f12201e86cacf9be8099b4d2c714b75"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "9월 미 서부 수출 운송비 12.3% 상승…중동행 항공수입 53.6% 급등",
+      "telegram_core_fact": "관세청이 15일 발표한 ‘2026년 9월 수출입 운송비용 현황’에 따르면 해상 수출 컨테이너 운송비는 미국 서부행이 2TEU당 951만1000원으로 전월보다 12.3% 상승했다.",
+      "title": "9월 미 서부 수출 운송비 12.3% 상승…중동행 항공수입 53.6% 급등"
+    },
     "core:29d6244ae768584cf39d6c3a": {
       "first_seen_kst": "2026-10-12T11:11:48+09:00",
       "lanes": {
@@ -16409,6 +16454,32 @@
       "source_title": "망고부스트, ‘AI 팩토리’ 사업 본격화…AI 추론 플랫폼 ‘망고 인퍼런스’ 공개",
       "telegram_core_fact": "‘망고 인퍼런스’라는 서버리스 AI 추론 플랫폼을 출시한 망고부스트는 내년 서울에 1메가와트(MW) AI 데이터센터(AIDC)를 구축한다.",
       "title": "망고부스트, ‘AI 팩토리’ 사업 본격화…AI 추론 플랫폼 ‘망고 인퍼런스’ 공개"
+    },
+    "core:42ee61c98caaa96f9e8c7a44": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829650",
+      "source": "뉴시스",
+      "source_body_digest": "0b874bfcafcd837e8df452f7696738837f36772bde776b7ff17c49cebef044af",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60fed9352d3b27a983291d781850aa06d3162254ffe12e4acfc3424745355c11",
+      "source_fact_keys": [
+        "source_fact:v1:171741aa118b084a064291eea64920c02d237d8f21199306b47db1d3f8f43452",
+        "source_fact:v1:6f60e028c6754096aa083636b1e6cafafb84560dd54d5ec162d92f369bc3060b",
+        "source_fact:v1:851a2b534e4fd752989fdba3e8018c6bfbc08f0c605fd75a5ab773950cf7f8d7",
+        "source_fact:v1:898a1223e4b80ac16eb02194ce840cd9ef0a82f31fc58f3bffe529e77a86b786",
+        "source_fact:v1:d28d139fa463c793e2c2c7467c9500af12d4f335c07e124ff20340ecf48aacc3",
+        "source_fact:v1:d6f2710c43f2e0a2e9b3cab025254a14117fc7e14d1d1d79bff4252edd9ed150",
+        "source_fact:v1:e612604dec0f37c9ffb767e87805f5ab867b299c66663dcbd3be7e88707ce7ec"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"탈탄소 위해 대규모 전력 필요\"…포스코, 원전 사업 추진 주목 [에너지 발전 각자도생①]",
+      "telegram_core_fact": "포스코그룹이 철강 생산 체제 전반에서 탈(脫)탄소 생산 체제 구축을 위해 수소 환원 제철 기술 도입을 본격화하고 있다.",
+      "title": "\"탈탄소 위해 대규모 전력 필요\"…포스코, 원전 사업 추진 주목 [에너지 발전 각자도생①]"
     },
     "core:42f8edc6e006dcbcf8e875c2": {
       "first_seen_kst": "2026-10-12T17:17:29+09:00",
@@ -26003,6 +26074,24 @@
       "telegram_core_fact": "중국은 리튬 공급망 리스크를 덜어낼 차세대 보급형 '나트륨 배터리'를 2026년 하반기 세계 최초로 양산하고, 2027년에는 '전고체 배터리' 제품까지 출시하겠다는 계획을 밝히며 미래 핵심 기술 패권마저 위협하고 있다.",
       "title": "전기차 수요 둔화ㆍ중국 공세⋯韓배터리 경쟁력 ‘체질개선 시험대’[K배터리 주도권 탈환]"
     },
+    "core:6d523a4dc5b8afe9d732876e": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261017005151072",
+      "source": "연합뉴스",
+      "source_body_digest": "a9228ab439f56b5cc9fbe1abcc7ad9396f34b3732e3fcea7dbf3961fbc11dd11",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-17T06:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 경고등에 유가 급등까지…반도체 급락, 나스닥 2.2%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "인공지능(AI) 인프라 투자 기업의 부채 우려와 유가 급등의 여파로 AI·반도체 관련주가 급락하며 나스닥 종합지수는 2% 넘게 떨어졌다.",
+      "title": "AI 경고등에 유가 급등까지…반도체 급락, 나스닥 2.2%↓(종합) | 연합뉴스"
+    },
     "core:6d5dfb29f164d4203f932990": {
       "first_seen_kst": "2026-10-11T08:42:16+09:00",
       "lanes": {
@@ -27756,6 +27845,32 @@
       "source_title": "‘스마트공장 솔루션 한곳에서’ 네이버클라우드, 매칭 상담회 개최",
       "telegram_core_fact": "이번 매칭 상담회는 스마트공장 구축을 검토 중이거나 제조 AX(AI 전환) 솔루션에 관심 있는 중소·중견 제조사를 대상으로 진행된다.",
       "title": "‘스마트공장 솔루션 한곳에서’ 네이버클라우드, 매칭 상담회 개최"
+    },
+    "core:75b75f5b3c3f4c98c6eaa31d": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636854",
+      "source": "이투데이",
+      "source_body_digest": "a263ff8793eb88bd60a9af25ac6a3353f61aa77f3c120c7c9a50e83c8d94ec90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2cbbc47ea1b02af7683b1fb2be0b1236b29674b7867f859083076dd333e7e1e",
+      "source_fact_keys": [
+        "source_fact:v1:0974c4c564a2dbed2cd5a872cadbc6549a77408a10eb8ef14a9eb838c70fd126",
+        "source_fact:v1:43a4efc9dc4f2c37abc5004214c391054f2086c7a532ab5d2931cf74afec9e0d",
+        "source_fact:v1:69610e726c16a213925c9ba625996415d77b44fa63f33bddfc8a73480de567cb",
+        "source_fact:v1:a87056b3e505cf7890abfb49e79ea5d879d28ccebaef20a22294277c8204659d",
+        "source_fact:v1:b5c86eaf3c2fdb1f17bda9e1ccf23ea43c0dc87da9c424b4f551a136dab1c68e",
+        "source_fact:v1:f94611a9f08383c58f37c36563f8c4703ad0c5dd71d2d4c7cdcb3fb3fe4599aa",
+        "source_fact:v1:fe34987189fdf6b411f348f2cc3487579b33db397ec4cfd97a4cf6f70b032d12"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "[베스트&워스트] 코스닥, 상폐 유예에 급등주 속출…투심 위축에 로봇 및 기술주는 추락",
+      "telegram_core_fact": "이번 주 코스닥 시장은 상장폐지 유예 등으로 퇴출 위기를 넘긴 종목들이 상승세를 주도한 반면, 증시 급락 여파로 신저가가 속출하며 로봇과 반도체 등 기술 관련 종목들은 큰 폭으로 하락해 희비가 엇갈렸다. 반면 국내 증시 급락으로 코스닥 52주 신저가 종목이 대거 쏟아진 가운데 로봇과 기술주 전반은 큰 폭으로 밀렸다.",
+      "title": "[베스트&워스트] 코스닥, 상폐 유예에 급등주 속출…투심 위축에 로봇 및 기술주는 추락"
     },
     "core:75ba870bdbc091b0377dc167": {
       "first_seen_kst": "2026-10-08T20:39:20+09:00",
@@ -43117,6 +43232,28 @@
       "telegram_core_fact": "회사는 올리브 세포 관련 라이선싱, 파트너십, 공급, 로열티, 지분 참여 계약이 체결된다는 보장이 없고 상업 생산이 특정 일정에 시작된다는 보장도 없다고 밝혔다.",
       "title": "바이오하베스트 사이언스, 올리브 세포 상업화 준비 완료..라이선싱 추진"
     },
+    "core:b680f38c69444763b35338dd": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176148",
+      "source": "매일경제",
+      "source_body_digest": "7b8d6887e2446bce30cabde5118a68d3140f517f1b4d6715c8c3bb22f0f9f595",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7974ac11404f1166f5eb56de6d01e89de93a62d350cdaf99786d6364020c7dd2",
+      "source_fact_keys": [
+        "source_fact:v1:62c5f70636c7fce628fb00d3299fd03400a948041272223d27d6bfd92d7510d7",
+        "source_fact:v1:a4ee2f2b618110a1223d4996b0fe24eaf30cd49d5b06ba32f02ef20b5976bf0b",
+        "source_fact:v1:cb64bc26a9b9c9ceecda6efa4246a5914c9106503af6661317160434e3cf79b6"
+      ],
+      "source_published_kst": "2026-10-17T06:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "니오코프 디벨롭먼츠, 분기 순이익 370만 달러 흑자전환..평가이익 덕",
+      "telegram_core_fact": "니오코프 디벨롭먼츠(NB)는 9월 30일 종료된 3개월간 모회사 귀속 순이익이 370만 달러, 기본 주당순이익이 0.03달러로 집계됐다는 미감사 잠정 실적을 16일 발표했다.",
+      "title": "니오코프 디벨롭먼츠, 분기 순이익 370만 달러 흑자전환..평가이익 덕"
+    },
     "core:b68e3491606000c1f6898d12": {
       "first_seen_kst": "2026-10-13T22:33:57+09:00",
       "lanes": {
@@ -54914,6 +55051,26 @@
       "telegram_core_fact": "삼성전기가 최근 글로벌 대형 기업과 인공지능(AI) 서버용 적층세라믹캐패시터(MLCC) 공급 계약을 체결하며 올해 누적 수주액이 약 3조 9000억원으로 급증했다.",
       "title": "“241층 구조대 오나요?”…고점서 36% 빠진 삼성전기, 증권가 전망은"
     },
+    "core:eb2c9b67fe334bec7a2bc16f": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636669",
+      "source": "이투데이",
+      "source_body_digest": "fb6f9805bfcde43717628a731765c37dcb78d61c4673d067f6cf64f18cdbf5ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5693dc9a38493f0a4f484abd2c617ac178d4f216a95a812d75655e453585f08",
+      "source_fact_keys": [
+        "source_fact:v1:4f23880561d889fa3c3ac74130d1791d7f0bdcb9fc8ff6733cfb7ee7b9176664"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "[국내 5대 거래소] 유동성 격차∙보안 부담 속 금융 접점 넓힌다",
+      "telegram_core_fact": "다만, 금융당국 조사에서는 올해 상반기 국내 거래소 일평균 거래규모가 3조 1000억 원으로 지난해 하반기 5조 4000억 원보다 44% 감소했고, 거래소 매출은 41%, 영업손익은 78% 줄었다. 같은 시각 국내 거래소에서는 1억 1100만 원 안팎에서 거래됐다.",
+      "title": "[국내 5대 거래소] 유동성 격차∙보안 부담 속 금융 접점 넓힌다"
+    },
     "core:eb35840b986026adc648ff7a": {
       "first_seen_kst": "2026-10-07T22:24:07+09:00",
       "lanes": {
@@ -64774,6 +64931,24 @@
       "source_title": "삼성전기·테스·심텍 골라 담는다…반도체 소부장 ETF 출격",
       "telegram_core_fact": "KB자산운용이 국내 반도체 소재·부품·장비 기업에 투자하는 ‘RISE 반도체소부장액티브’ 상장지수펀드(ETF)를 오는 20일 상장한다.",
       "title": "삼성전기·테스·심텍 골라 담는다…반도체 소부장 ETF 출격"
+    },
+    "event:5ab87155ac8d244c19bd3f5f": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261017005151072",
+      "source": "연합뉴스",
+      "source_body_digest": "a9228ab439f56b5cc9fbe1abcc7ad9396f34b3732e3fcea7dbf3961fbc11dd11",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-17T06:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 경고등에 유가 급등까지…반도체 급락, 나스닥 2.2%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "인공지능(AI) 인프라 투자 기업의 부채 우려와 유가 급등의 여파로 AI·반도체 관련주가 급락하며 나스닥 종합지수는 2% 넘게 떨어졌다.",
+      "title": "AI 경고등에 유가 급등까지…반도체 급락, 나스닥 2.2%↓(종합) | 연합뉴스"
     },
     "event:5adf24a879e79c201907ca75": {
       "first_seen_kst": "2026-10-12T09:53:29+09:00",
@@ -76485,6 +76660,32 @@
       "telegram_core_fact": "간밤 미국 9월 소비자물가지수(CPI) 발표를 앞두고 관망 심리가 확산한 영향으로 풀이된다.",
       "title": "아슬아슬하게 지킨 '육천피'… 美 CPI 발표 앞두고 관망세 짙어져"
     },
+    "fact:046c4aebfabe4eb6296b7f9d": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829650",
+      "source": "뉴시스",
+      "source_body_digest": "0b874bfcafcd837e8df452f7696738837f36772bde776b7ff17c49cebef044af",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60fed9352d3b27a983291d781850aa06d3162254ffe12e4acfc3424745355c11",
+      "source_fact_keys": [
+        "source_fact:v1:171741aa118b084a064291eea64920c02d237d8f21199306b47db1d3f8f43452",
+        "source_fact:v1:6f60e028c6754096aa083636b1e6cafafb84560dd54d5ec162d92f369bc3060b",
+        "source_fact:v1:851a2b534e4fd752989fdba3e8018c6bfbc08f0c605fd75a5ab773950cf7f8d7",
+        "source_fact:v1:898a1223e4b80ac16eb02194ce840cd9ef0a82f31fc58f3bffe529e77a86b786",
+        "source_fact:v1:d28d139fa463c793e2c2c7467c9500af12d4f335c07e124ff20340ecf48aacc3",
+        "source_fact:v1:d6f2710c43f2e0a2e9b3cab025254a14117fc7e14d1d1d79bff4252edd9ed150",
+        "source_fact:v1:e612604dec0f37c9ffb767e87805f5ab867b299c66663dcbd3be7e88707ce7ec"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"탈탄소 위해 대규모 전력 필요\"…포스코, 원전 사업 추진 주목 [에너지 발전 각자도생①]",
+      "telegram_core_fact": "포스코그룹이 철강 생산 체제 전반에서 탈(脫)탄소 생산 체제 구축을 위해 수소 환원 제철 기술 도입을 본격화하고 있다.",
+      "title": "\"탈탄소 위해 대규모 전력 필요\"…포스코, 원전 사업 추진 주목 [에너지 발전 각자도생①]"
+    },
     "fact:047b0a5baf23c8c44d6dfab7": {
       "first_seen_kst": "2026-10-17T01:17:18+09:00",
       "lanes": {
@@ -77186,6 +77387,26 @@
       "source_title": "\"오픈AI 매출 기대이하\" 전망에…반도체 주 충격파",
       "telegram_core_fact": "8일(현지시간) 파이낸셜타임스를 비롯한 주요 외신들에 따르면 개발사인 오픈AI는 투자자들에게 연간 환산 매출이 500억 달러 수준으로 예상된다고 말했다.",
       "title": "\"오픈AI 매출 기대이하\" 전망에…반도체 주 충격파"
+    },
+    "fact:070b889edf6d15e67bc9cd46": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636669",
+      "source": "이투데이",
+      "source_body_digest": "fb6f9805bfcde43717628a731765c37dcb78d61c4673d067f6cf64f18cdbf5ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5693dc9a38493f0a4f484abd2c617ac178d4f216a95a812d75655e453585f08",
+      "source_fact_keys": [
+        "source_fact:v1:4f23880561d889fa3c3ac74130d1791d7f0bdcb9fc8ff6733cfb7ee7b9176664"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "[국내 5대 거래소] 유동성 격차∙보안 부담 속 금융 접점 넓힌다",
+      "telegram_core_fact": "다만, 금융당국 조사에서는 올해 상반기 국내 거래소 일평균 거래규모가 3조 1000억 원으로 지난해 하반기 5조 4000억 원보다 44% 감소했고, 거래소 매출은 41%, 영업손익은 78% 줄었다. 같은 시각 국내 거래소에서는 1억 1100만 원 안팎에서 거래됐다.",
+      "title": "[국내 5대 거래소] 유동성 격차∙보안 부담 속 금융 접점 넓힌다"
     },
     "fact:07386dd4e8aa20b8b5c10dc1": {
       "first_seen_kst": "2026-10-17T00:21:55+09:00",
@@ -80434,6 +80655,32 @@
       "source_title": "\"비싸도 애플이니까?\"…329만원 아이폰 듀오 통할까",
       "telegram_core_fact": "아이폰 듀오의 국내 출고가는 256GB 329만원, 512GB 359만원, 1TB 419만원, 2TB 509만원이다. UBS는 아이폰 듀오의 미국 시작 가격인 1999달러가 판매량 증가를 제한할 수 있다고 분석했다.",
       "title": "\"비싸도 애플이니까?\"…329만원 아이폰 듀오 통할까"
+    },
+    "fact:116da526877db7e5101729ed": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636854",
+      "source": "이투데이",
+      "source_body_digest": "a263ff8793eb88bd60a9af25ac6a3353f61aa77f3c120c7c9a50e83c8d94ec90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2cbbc47ea1b02af7683b1fb2be0b1236b29674b7867f859083076dd333e7e1e",
+      "source_fact_keys": [
+        "source_fact:v1:0974c4c564a2dbed2cd5a872cadbc6549a77408a10eb8ef14a9eb838c70fd126",
+        "source_fact:v1:43a4efc9dc4f2c37abc5004214c391054f2086c7a532ab5d2931cf74afec9e0d",
+        "source_fact:v1:69610e726c16a213925c9ba625996415d77b44fa63f33bddfc8a73480de567cb",
+        "source_fact:v1:a87056b3e505cf7890abfb49e79ea5d879d28ccebaef20a22294277c8204659d",
+        "source_fact:v1:b5c86eaf3c2fdb1f17bda9e1ccf23ea43c0dc87da9c424b4f551a136dab1c68e",
+        "source_fact:v1:f94611a9f08383c58f37c36563f8c4703ad0c5dd71d2d4c7cdcb3fb3fe4599aa",
+        "source_fact:v1:fe34987189fdf6b411f348f2cc3487579b33db397ec4cfd97a4cf6f70b032d12"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "[베스트&워스트] 코스닥, 상폐 유예에 급등주 속출…투심 위축에 로봇 및 기술주는 추락",
+      "telegram_core_fact": "이번 주 코스닥 시장은 상장폐지 유예 등으로 퇴출 위기를 넘긴 종목들이 상승세를 주도한 반면, 증시 급락 여파로 신저가가 속출하며 로봇과 반도체 등 기술 관련 종목들은 큰 폭으로 하락해 희비가 엇갈렸다. 반면 국내 증시 급락으로 코스닥 52주 신저가 종목이 대거 쏟아진 가운데 로봇과 기술주 전반은 큰 폭으로 밀렸다.",
+      "title": "[베스트&워스트] 코스닥, 상폐 유예에 급등주 속출…투심 위축에 로봇 및 기술주는 추락"
     },
     "fact:11964b9140a1b7f44a70f457": {
       "first_seen_kst": "2026-10-13T01:37:36+09:00",
@@ -99145,6 +99392,30 @@
       "telegram_core_fact": "ASML 매출은 440억 유로 전망입니다.",
       "title": "ASML \"30% 증산해도 부족\"…2030년까지 AI칩 장비 주문"
     },
+    "fact:58571045682e82ee583eb320": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636702",
+      "source": "이투데이",
+      "source_body_digest": "8df7c692033fe2f2037a5f1d73264c1a7b801c3836c7a7542a2b6d6994748943",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3733d67ed93ed3725a397ba1f6803cca698113716764130af9cc3f11589b46f",
+      "source_fact_keys": [
+        "source_fact:v1:0805cd4c4ab47896c73869a1683e52e33aaf9f7c9b3bf55ec14c8723dbbffa96",
+        "source_fact:v1:14ee313a37c3bc380a40da262797432276e098226d712ccf7ecb5519901e968a",
+        "source_fact:v1:5d6c29a617451ccb867ae6c0242ecccd28b3502c1ff2b96f3dabaf62edc1dce7",
+        "source_fact:v1:73c5a8c96010c7d0c2ce86af7e7ee9a746ad400f9febdfcbdc823e6d6974f0eb",
+        "source_fact:v1:9c5ae178d21bccf329b15f7ffb9154690f12201e86cacf9be8099b4d2c714b75"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "9월 미 서부 수출 운송비 12.3% 상승…중동행 항공수입 53.6% 급등",
+      "telegram_core_fact": "관세청이 15일 발표한 ‘2026년 9월 수출입 운송비용 현황’에 따르면 해상 수출 컨테이너 운송비는 미국 서부행이 2TEU당 951만1000원으로 전월보다 12.3% 상승했다.",
+      "title": "9월 미 서부 수출 운송비 12.3% 상승…중동행 항공수입 53.6% 급등"
+    },
     "fact:5861a7bd00e97a76dbde1dd3": {
       "first_seen_kst": "2026-10-09T17:32:22+09:00",
       "lanes": {
@@ -99835,6 +100106,28 @@
       "source_title": "삼성바이오 '2.7조 투입 M&A' 순항…최종 인수만 남았다",
       "telegram_core_fact": "삼성바이오로직스가 \"폴리펩타이드그룹 지분 공개매수에 응한 물량이 지난 12일을 기준으로 매수 대상 주식의 87.9%에 달했다\"며 \"거래 수락 최소 조건인 66.7%를 이미 넘어섰다\"고 13일 밝혔다.",
       "title": "삼성바이오 '2.7조 투입 M&A' 순항…최종 인수만 남았다"
+    },
+    "fact:5afc8de31fa897684f49d2d5": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176148",
+      "source": "매일경제",
+      "source_body_digest": "7b8d6887e2446bce30cabde5118a68d3140f517f1b4d6715c8c3bb22f0f9f595",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7974ac11404f1166f5eb56de6d01e89de93a62d350cdaf99786d6364020c7dd2",
+      "source_fact_keys": [
+        "source_fact:v1:62c5f70636c7fce628fb00d3299fd03400a948041272223d27d6bfd92d7510d7",
+        "source_fact:v1:a4ee2f2b618110a1223d4996b0fe24eaf30cd49d5b06ba32f02ef20b5976bf0b",
+        "source_fact:v1:cb64bc26a9b9c9ceecda6efa4246a5914c9106503af6661317160434e3cf79b6"
+      ],
+      "source_published_kst": "2026-10-17T06:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "니오코프 디벨롭먼츠, 분기 순이익 370만 달러 흑자전환..평가이익 덕",
+      "telegram_core_fact": "니오코프 디벨롭먼츠(NB)는 9월 30일 종료된 3개월간 모회사 귀속 순이익이 370만 달러, 기본 주당순이익이 0.03달러로 집계됐다는 미감사 잠정 실적을 16일 발표했다.",
+      "title": "니오코프 디벨롭먼츠, 분기 순이익 370만 달러 흑자전환..평가이익 덕"
     },
     "fact:5b06c11a65e5d54eaa258e7d": {
       "first_seen_kst": "2026-10-08T16:34:42+09:00",
@@ -121766,6 +122059,27 @@
       "source_title": "\"트럼프 러 경유 수입, 가격 인하엔 턱없이 부족\"-WSJ",
       "telegram_core_fact": "도널드 트럼프 미 대통령이 다음 달 중간 선거를 앞두고 치솟은 경유가 인하를 위해 러시아와 경유 공급 계약을 체결했다고 밝혔으나 경유 가격을 내리는 데는 큰 도움이 되지 않을 것이라고 미 월스트리트저널(WSJ)이 12일(현지시각) 보도했다.",
       "title": "\"트럼프 러 경유 수입, 가격 인하엔 턱없이 부족\"-WSJ"
+    },
+    "fact:a8ac2096942053ad5766eb57": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.mk.co.kr/news/business/12177635",
+      "source": "매일경제",
+      "source_body_digest": "60390dab22576e8993647286eb442789adb9c400084288ebd31b0cb9fc833d23",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b0743ee72244d7c1733f33112c7745e69fe042a02b18a8191360c28a3c0248cc",
+      "source_fact_keys": [
+        "source_fact:v1:03af4e3394b3cf66ffde6cff793e98fc7dfb422a1db3390aab67a9101ccf6aa5",
+        "source_fact:v1:77da320119cc66de645477c9eb091c966a0fad8517c576b4a43c1bc977c17aac"
+      ],
+      "source_published_kst": "2026-10-16T11:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "“전기버스 사용후 배터리 활용”…남부발전, ‘화재방지형 R-ESS’ 기술 시장 선도",
+      "telegram_core_fact": "정굳건 남부발전 기후환경처장은 “이번 실증사업은 전기버스 사용 후 배터리의 잔존 가치를 재창출하고 안전기술을 접목해 자원순환의 실효성을 높였다는 데 의미가 있다”며, “앞으로도 실증설비의 안전한 운영과 사용후 배터리의 활용 확대를 통해 자원순환 경제 활성화 및 친환경 에너지 인프라 구축에 기여하겠다”고 말했다.",
+      "title": "“전기버스 사용후 배터리 활용”…남부발전, ‘화재방지형 R-ESS’ 기술 시장 선도"
     },
     "fact:a8d544b2b8e69e211ef882e1": {
       "first_seen_kst": "2026-10-11T01:31:17+09:00",
@@ -150750,6 +151064,30 @@
       "source_published_kst": "2026-10-06T15:11+09:00",
       "title": "\"중국 문샷, 내년 1분기 홍콩 상장 추진\" | 연합뉴스"
     },
+    "link:0894510554881dd5790a35ac": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636702",
+      "source": "이투데이",
+      "source_body_digest": "8df7c692033fe2f2037a5f1d73264c1a7b801c3836c7a7542a2b6d6994748943",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3733d67ed93ed3725a397ba1f6803cca698113716764130af9cc3f11589b46f",
+      "source_fact_keys": [
+        "source_fact:v1:0805cd4c4ab47896c73869a1683e52e33aaf9f7c9b3bf55ec14c8723dbbffa96",
+        "source_fact:v1:14ee313a37c3bc380a40da262797432276e098226d712ccf7ecb5519901e968a",
+        "source_fact:v1:5d6c29a617451ccb867ae6c0242ecccd28b3502c1ff2b96f3dabaf62edc1dce7",
+        "source_fact:v1:73c5a8c96010c7d0c2ce86af7e7ee9a746ad400f9febdfcbdc823e6d6974f0eb",
+        "source_fact:v1:9c5ae178d21bccf329b15f7ffb9154690f12201e86cacf9be8099b4d2c714b75"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "9월 미 서부 수출 운송비 12.3% 상승…중동행 항공수입 53.6% 급등",
+      "telegram_core_fact": "관세청이 15일 발표한 ‘2026년 9월 수출입 운송비용 현황’에 따르면 해상 수출 컨테이너 운송비는 미국 서부행이 2TEU당 951만1000원으로 전월보다 12.3% 상승했다.",
+      "title": "9월 미 서부 수출 운송비 12.3% 상승…중동행 항공수입 53.6% 급등"
+    },
     "link:08a4741577663746fd216ae0": {
       "first_seen_kst": "2026-10-07T07:12:15+09:00",
       "lanes": {
@@ -155239,6 +155577,32 @@
       "link": "https://www.etnews.com/20261002000207",
       "source": "전자신문",
       "title": "최태원 SK 회장, 9440억원 규모 그룹 지분 매각 추진"
+    },
+    "link:140d18a25410dce55edf796d": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829650",
+      "source": "뉴시스",
+      "source_body_digest": "0b874bfcafcd837e8df452f7696738837f36772bde776b7ff17c49cebef044af",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60fed9352d3b27a983291d781850aa06d3162254ffe12e4acfc3424745355c11",
+      "source_fact_keys": [
+        "source_fact:v1:171741aa118b084a064291eea64920c02d237d8f21199306b47db1d3f8f43452",
+        "source_fact:v1:6f60e028c6754096aa083636b1e6cafafb84560dd54d5ec162d92f369bc3060b",
+        "source_fact:v1:851a2b534e4fd752989fdba3e8018c6bfbc08f0c605fd75a5ab773950cf7f8d7",
+        "source_fact:v1:898a1223e4b80ac16eb02194ce840cd9ef0a82f31fc58f3bffe529e77a86b786",
+        "source_fact:v1:d28d139fa463c793e2c2c7467c9500af12d4f335c07e124ff20340ecf48aacc3",
+        "source_fact:v1:d6f2710c43f2e0a2e9b3cab025254a14117fc7e14d1d1d79bff4252edd9ed150",
+        "source_fact:v1:e612604dec0f37c9ffb767e87805f5ab867b299c66663dcbd3be7e88707ce7ec"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"탈탄소 위해 대규모 전력 필요\"…포스코, 원전 사업 추진 주목 [에너지 발전 각자도생①]",
+      "telegram_core_fact": "포스코그룹이 철강 생산 체제 전반에서 탈(脫)탄소 생산 체제 구축을 위해 수소 환원 제철 기술 도입을 본격화하고 있다.",
+      "title": "\"탈탄소 위해 대규모 전력 필요\"…포스코, 원전 사업 추진 주목 [에너지 발전 각자도생①]"
     },
     "link:1414a0f0f1850b66c7a8eec2": {
       "first_seen_kst": "2026-09-18T06:33:53+09:00",
@@ -180383,6 +180747,26 @@
       "telegram_core_fact": "트루이스트 파이낸셜(TFC)이 3분기 비일반회계기준(Non-GAAP) 조정 희석 주당순이익(EPS) 1.16달러로 전년 동기(1.04달러) 대비 12% 증가했으며, 일반회계기준(GAAP) 희석 EPS는 0.56달러로 전년비 46.2% 감소했다고 16일 발표했다.",
       "title": "트루이스트 파이낸셜, 3분기 조정 EPS 1.16달러..전년비 12% 증가"
     },
+    "link:55a8dfb16f2ddc7b709cbfb9": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636669",
+      "source": "이투데이",
+      "source_body_digest": "fb6f9805bfcde43717628a731765c37dcb78d61c4673d067f6cf64f18cdbf5ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5693dc9a38493f0a4f484abd2c617ac178d4f216a95a812d75655e453585f08",
+      "source_fact_keys": [
+        "source_fact:v1:4f23880561d889fa3c3ac74130d1791d7f0bdcb9fc8ff6733cfb7ee7b9176664"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "[국내 5대 거래소] 유동성 격차∙보안 부담 속 금융 접점 넓힌다",
+      "telegram_core_fact": "다만, 금융당국 조사에서는 올해 상반기 국내 거래소 일평균 거래규모가 3조 1000억 원으로 지난해 하반기 5조 4000억 원보다 44% 감소했고, 거래소 매출은 41%, 영업손익은 78% 줄었다. 같은 시각 국내 거래소에서는 1억 1100만 원 안팎에서 거래됐다.",
+      "title": "[국내 5대 거래소] 유동성 격차∙보안 부담 속 금융 접점 넓힌다"
+    },
     "link:55b01ae74329d4c20799e4a7": {
       "first_seen_kst": "2026-10-08T21:21:36+09:00",
       "lanes": {
@@ -186771,6 +187155,32 @@
       "source_title": "MS, 자체 AI칩 '마이아 300' 공개…\"내년 100만개 이상 배치\" | 연합뉴스",
       "telegram_core_fact": "로이터 통신에 따르면 MS는 내년에 마이아 300을 100만 개 이상 배치할 수 있다고 밝혔다. 마이크로소프트(MS)가 3세대 자체 인공지능(AI) 칩 '마이아 300'을 공개하고 내년부터 대규모로 배치해 엔비디아 의존도를 낮추기로 했다.",
       "title": "MS, 자체 AI칩 '마이아 300' 공개…\"내년 100만개 이상 배치\" | 연합뉴스"
+    },
+    "link:669d73f4e13a23c04b273a1e": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636854",
+      "source": "이투데이",
+      "source_body_digest": "a263ff8793eb88bd60a9af25ac6a3353f61aa77f3c120c7c9a50e83c8d94ec90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2cbbc47ea1b02af7683b1fb2be0b1236b29674b7867f859083076dd333e7e1e",
+      "source_fact_keys": [
+        "source_fact:v1:0974c4c564a2dbed2cd5a872cadbc6549a77408a10eb8ef14a9eb838c70fd126",
+        "source_fact:v1:43a4efc9dc4f2c37abc5004214c391054f2086c7a532ab5d2931cf74afec9e0d",
+        "source_fact:v1:69610e726c16a213925c9ba625996415d77b44fa63f33bddfc8a73480de567cb",
+        "source_fact:v1:a87056b3e505cf7890abfb49e79ea5d879d28ccebaef20a22294277c8204659d",
+        "source_fact:v1:b5c86eaf3c2fdb1f17bda9e1ccf23ea43c0dc87da9c424b4f551a136dab1c68e",
+        "source_fact:v1:f94611a9f08383c58f37c36563f8c4703ad0c5dd71d2d4c7cdcb3fb3fe4599aa",
+        "source_fact:v1:fe34987189fdf6b411f348f2cc3487579b33db397ec4cfd97a4cf6f70b032d12"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "[베스트&워스트] 코스닥, 상폐 유예에 급등주 속출…투심 위축에 로봇 및 기술주는 추락",
+      "telegram_core_fact": "이번 주 코스닥 시장은 상장폐지 유예 등으로 퇴출 위기를 넘긴 종목들이 상승세를 주도한 반면, 증시 급락 여파로 신저가가 속출하며 로봇과 반도체 등 기술 관련 종목들은 큰 폭으로 하락해 희비가 엇갈렸다. 반면 국내 증시 급락으로 코스닥 52주 신저가 종목이 대거 쏟아진 가운데 로봇과 기술주 전반은 큰 폭으로 밀렸다.",
+      "title": "[베스트&워스트] 코스닥, 상폐 유예에 급등주 속출…투심 위축에 로봇 및 기술주는 추락"
     },
     "link:66af8686130b7b0191c96f2a": {
       "first_seen_kst": "2026-10-05T14:04:17+09:00",
@@ -195216,6 +195626,24 @@
       ],
       "source_published_kst": "2026-10-07T07:20+09:00",
       "title": "리사 수 “반도체 수요가 공급보다 많아”…AMD 주가 사상 최고"
+    },
+    "link:7ca1051dd67dfd0cd2010330": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261017005151072",
+      "source": "연합뉴스",
+      "source_body_digest": "a9228ab439f56b5cc9fbe1abcc7ad9396f34b3732e3fcea7dbf3961fbc11dd11",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-17T06:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 경고등에 유가 급등까지…반도체 급락, 나스닥 2.2%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "인공지능(AI) 인프라 투자 기업의 부채 우려와 유가 급등의 여파로 AI·반도체 관련주가 급락하며 나스닥 종합지수는 2% 넘게 떨어졌다.",
+      "title": "AI 경고등에 유가 급등까지…반도체 급락, 나스닥 2.2%↓(종합) | 연합뉴스"
     },
     "link:7caa818f3aa7ff4cc7f9b861": {
       "first_seen_kst": "2026-10-12T16:29:45+09:00",
@@ -206304,6 +206732,28 @@
       "link": "https://biz.heraldcorp.com/article/10884809",
       "source": "헤럴드경제",
       "title": "최수종, 추석 당일 ‘모친상’…하희라 ‘시모상’"
+    },
+    "link:9a804c733602befa283ff2e5": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176148",
+      "source": "매일경제",
+      "source_body_digest": "7b8d6887e2446bce30cabde5118a68d3140f517f1b4d6715c8c3bb22f0f9f595",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7974ac11404f1166f5eb56de6d01e89de93a62d350cdaf99786d6364020c7dd2",
+      "source_fact_keys": [
+        "source_fact:v1:62c5f70636c7fce628fb00d3299fd03400a948041272223d27d6bfd92d7510d7",
+        "source_fact:v1:a4ee2f2b618110a1223d4996b0fe24eaf30cd49d5b06ba32f02ef20b5976bf0b",
+        "source_fact:v1:cb64bc26a9b9c9ceecda6efa4246a5914c9106503af6661317160434e3cf79b6"
+      ],
+      "source_published_kst": "2026-10-17T06:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "니오코프 디벨롭먼츠, 분기 순이익 370만 달러 흑자전환..평가이익 덕",
+      "telegram_core_fact": "니오코프 디벨롭먼츠(NB)는 9월 30일 종료된 3개월간 모회사 귀속 순이익이 370만 달러, 기본 주당순이익이 0.03달러로 집계됐다는 미감사 잠정 실적을 16일 발표했다.",
+      "title": "니오코프 디벨롭먼츠, 분기 순이익 370만 달러 흑자전환..평가이익 덕"
     },
     "link:9a81290b49f0c65ba34db9df": {
       "first_seen_kst": "2026-10-08T21:47:01+09:00",
@@ -233195,6 +233645,27 @@
       "telegram_core_fact": "11일 국회 정무위원회 소속 더불어민주당 박홍배 의원이 공정위에서 제출받은 기업집단 제재자료에 따르면 이 기간 누적 과징금이 가장 많은 기업은 삼양사로, 부과액은 4353억7800만원이었다.",
       "title": "‘먹거리 담합’ 4곳에 과징금 1조1916억…삼양사 1위"
     },
+    "link:e158e34682340887062dcd19": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.mk.co.kr/news/business/12177635",
+      "source": "매일경제",
+      "source_body_digest": "60390dab22576e8993647286eb442789adb9c400084288ebd31b0cb9fc833d23",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b0743ee72244d7c1733f33112c7745e69fe042a02b18a8191360c28a3c0248cc",
+      "source_fact_keys": [
+        "source_fact:v1:03af4e3394b3cf66ffde6cff793e98fc7dfb422a1db3390aab67a9101ccf6aa5",
+        "source_fact:v1:77da320119cc66de645477c9eb091c966a0fad8517c576b4a43c1bc977c17aac"
+      ],
+      "source_published_kst": "2026-10-16T11:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "“전기버스 사용후 배터리 활용”…남부발전, ‘화재방지형 R-ESS’ 기술 시장 선도",
+      "telegram_core_fact": "정굳건 남부발전 기후환경처장은 “이번 실증사업은 전기버스 사용 후 배터리의 잔존 가치를 재창출하고 안전기술을 접목해 자원순환의 실효성을 높였다는 데 의미가 있다”며, “앞으로도 실증설비의 안전한 운영과 사용후 배터리의 활용 확대를 통해 자원순환 경제 활성화 및 친환경 에너지 인프라 구축에 기여하겠다”고 말했다.",
+      "title": "“전기버스 사용후 배터리 활용”…남부발전, ‘화재방지형 R-ESS’ 기술 시장 선도"
+    },
     "link:e16218ecf5b69f29a3b60b84": {
       "first_seen_kst": "2026-10-14T01:52:11+09:00",
       "lanes": {
@@ -247099,6 +247570,28 @@
       "source_title": "삼성전자, 3Q 매출 195조·영업익 107조…대한민국 기업史 신기록 썼다",
       "telegram_core_fact": "삼성전자가 올해 3분기 사상 처음으로 분기 영업이익 100조원을 돌파하며 한국 기업 역사를 새로 썼다.",
       "title": "삼성전자, 3Q 매출 195조·영업익 107조…대한민국 기업史 신기록 썼다"
+    },
+    "original:05a2d1af65d2b9149d777f7c": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176148",
+      "source": "매일경제",
+      "source_body_digest": "7b8d6887e2446bce30cabde5118a68d3140f517f1b4d6715c8c3bb22f0f9f595",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7974ac11404f1166f5eb56de6d01e89de93a62d350cdaf99786d6364020c7dd2",
+      "source_fact_keys": [
+        "source_fact:v1:62c5f70636c7fce628fb00d3299fd03400a948041272223d27d6bfd92d7510d7",
+        "source_fact:v1:a4ee2f2b618110a1223d4996b0fe24eaf30cd49d5b06ba32f02ef20b5976bf0b",
+        "source_fact:v1:cb64bc26a9b9c9ceecda6efa4246a5914c9106503af6661317160434e3cf79b6"
+      ],
+      "source_published_kst": "2026-10-17T06:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "니오코프 디벨롭먼츠, 분기 순이익 370만 달러 흑자전환..평가이익 덕",
+      "telegram_core_fact": "니오코프 디벨롭먼츠(NB)는 9월 30일 종료된 3개월간 모회사 귀속 순이익이 370만 달러, 기본 주당순이익이 0.03달러로 집계됐다는 미감사 잠정 실적을 16일 발표했다.",
+      "title": "니오코프 디벨롭먼츠, 분기 순이익 370만 달러 흑자전환..평가이익 덕"
     },
     "original:05be7cbe6e3a2bb7c9fb054b": {
       "first_seen_kst": "2026-09-18T16:49:31+09:00",
@@ -281799,6 +282292,32 @@
       "telegram_core_fact": "금융투자협회가 발표한 '9월 장외채권시장 동향'에 따르면 지난달 말 국고채 3년물 금리는 연 4.011%로 전월 말 대비 17.3bp(1bp=0.01%포인트) 상승했다.",
       "title": "9월 국고채 금리 일제히 상승…외국인 채권 보유잔고 7.8조 감소"
     },
+    "original:61b5af47fb04dac02d860c8d": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636854",
+      "source": "이투데이",
+      "source_body_digest": "a263ff8793eb88bd60a9af25ac6a3353f61aa77f3c120c7c9a50e83c8d94ec90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2cbbc47ea1b02af7683b1fb2be0b1236b29674b7867f859083076dd333e7e1e",
+      "source_fact_keys": [
+        "source_fact:v1:0974c4c564a2dbed2cd5a872cadbc6549a77408a10eb8ef14a9eb838c70fd126",
+        "source_fact:v1:43a4efc9dc4f2c37abc5004214c391054f2086c7a532ab5d2931cf74afec9e0d",
+        "source_fact:v1:69610e726c16a213925c9ba625996415d77b44fa63f33bddfc8a73480de567cb",
+        "source_fact:v1:a87056b3e505cf7890abfb49e79ea5d879d28ccebaef20a22294277c8204659d",
+        "source_fact:v1:b5c86eaf3c2fdb1f17bda9e1ccf23ea43c0dc87da9c424b4f551a136dab1c68e",
+        "source_fact:v1:f94611a9f08383c58f37c36563f8c4703ad0c5dd71d2d4c7cdcb3fb3fe4599aa",
+        "source_fact:v1:fe34987189fdf6b411f348f2cc3487579b33db397ec4cfd97a4cf6f70b032d12"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "[베스트&워스트] 코스닥, 상폐 유예에 급등주 속출…투심 위축에 로봇 및 기술주는 추락",
+      "telegram_core_fact": "이번 주 코스닥 시장은 상장폐지 유예 등으로 퇴출 위기를 넘긴 종목들이 상승세를 주도한 반면, 증시 급락 여파로 신저가가 속출하며 로봇과 반도체 등 기술 관련 종목들은 큰 폭으로 하락해 희비가 엇갈렸다. 반면 국내 증시 급락으로 코스닥 52주 신저가 종목이 대거 쏟아진 가운데 로봇과 기술주 전반은 큰 폭으로 밀렸다.",
+      "title": "[베스트&워스트] 코스닥, 상폐 유예에 급등주 속출…투심 위축에 로봇 및 기술주는 추락"
+    },
     "original:61c5e06a73af0a6cf4e5e7f4": {
       "first_seen_kst": "2026-10-17T08:00:41+09:00",
       "lanes": {
@@ -282440,6 +282959,24 @@
       "source_title": "KDI, 경기 개선 진단 유지…소비 회복은 \"완만\" | 연합뉴스",
       "telegram_core_fact": "KDI는 12일 발표한 '경제동향 10월호'에서 \"우리 경제는 AI 관련 수출과 설비투자의 호조에 힘입어 개선세를 이어가는 모습\"이라며 \"그러나 경기 개선의 효과가 가계 전반으로 확산하지 못하면서 소비 개선세는 완만한 모습\"이라고 밝혔다. KDI는 '소비 개선세 완만'이라는 진단도 이어갔다.",
       "title": "KDI, 경기 개선 진단 유지…소비 회복은 \"완만\" | 연합뉴스"
+    },
+    "original:63aafa80fbfbfcfdd9a2cb0b": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261017005151072",
+      "source": "연합뉴스",
+      "source_body_digest": "a9228ab439f56b5cc9fbe1abcc7ad9396f34b3732e3fcea7dbf3961fbc11dd11",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-17T06:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 경고등에 유가 급등까지…반도체 급락, 나스닥 2.2%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "인공지능(AI) 인프라 투자 기업의 부채 우려와 유가 급등의 여파로 AI·반도체 관련주가 급락하며 나스닥 종합지수는 2% 넘게 떨어졌다.",
+      "title": "AI 경고등에 유가 급등까지…반도체 급락, 나스닥 2.2%↓(종합) | 연합뉴스"
     },
     "original:63b334eeb0f17023a3fe69b6": {
       "first_seen_kst": "2026-10-09T21:11:52+09:00",
@@ -297434,6 +297971,32 @@
       "source_title": "태평양, 9년 연속 ‘글로벌 200대 로펌’ 선정…세계 193위",
       "telegram_core_fact": "태평양은 지난해 대형·고난도 사건과 크로스보더 거래를 수행하며 전년 대비 약 12% 증가한 4702억원의 매출을 기록했다. 법무법인 태평양은 미국 법률전문매체 아메리칸 로이어가 발표한 ‘2026 글로벌 200대 로펌(The Global 200)’에서 세계 193위에 올랐다고 7일 밝혔다.",
       "title": "태평양, 9년 연속 ‘글로벌 200대 로펌’ 선정…세계 193위"
+    },
+    "original:8c95050c1dfa57b8186c7b12": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829650",
+      "source": "뉴시스",
+      "source_body_digest": "0b874bfcafcd837e8df452f7696738837f36772bde776b7ff17c49cebef044af",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60fed9352d3b27a983291d781850aa06d3162254ffe12e4acfc3424745355c11",
+      "source_fact_keys": [
+        "source_fact:v1:171741aa118b084a064291eea64920c02d237d8f21199306b47db1d3f8f43452",
+        "source_fact:v1:6f60e028c6754096aa083636b1e6cafafb84560dd54d5ec162d92f369bc3060b",
+        "source_fact:v1:851a2b534e4fd752989fdba3e8018c6bfbc08f0c605fd75a5ab773950cf7f8d7",
+        "source_fact:v1:898a1223e4b80ac16eb02194ce840cd9ef0a82f31fc58f3bffe529e77a86b786",
+        "source_fact:v1:d28d139fa463c793e2c2c7467c9500af12d4f335c07e124ff20340ecf48aacc3",
+        "source_fact:v1:d6f2710c43f2e0a2e9b3cab025254a14117fc7e14d1d1d79bff4252edd9ed150",
+        "source_fact:v1:e612604dec0f37c9ffb767e87805f5ab867b299c66663dcbd3be7e88707ce7ec"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"탈탄소 위해 대규모 전력 필요\"…포스코, 원전 사업 추진 주목 [에너지 발전 각자도생①]",
+      "telegram_core_fact": "포스코그룹이 철강 생산 체제 전반에서 탈(脫)탄소 생산 체제 구축을 위해 수소 환원 제철 기술 도입을 본격화하고 있다.",
+      "title": "\"탈탄소 위해 대규모 전력 필요\"…포스코, 원전 사업 추진 주목 [에너지 발전 각자도생①]"
     },
     "original:8ca80ee6f3c90723e3a4fb7d": {
       "first_seen_kst": "2026-09-30T01:58:47+09:00",
@@ -324464,6 +325027,27 @@
       "source_published_kst": "2026-10-06T05:00+09:00",
       "title": "납품단가 다음은 ‘데이터’⋯AI 시대 대기업·中企 ‘新 갑을관계’ 탄생하나 [AI 신계급사회]"
     },
+    "original:d6e58f321b14bf5541a6e945": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.mk.co.kr/news/business/12177635",
+      "source": "매일경제",
+      "source_body_digest": "60390dab22576e8993647286eb442789adb9c400084288ebd31b0cb9fc833d23",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b0743ee72244d7c1733f33112c7745e69fe042a02b18a8191360c28a3c0248cc",
+      "source_fact_keys": [
+        "source_fact:v1:03af4e3394b3cf66ffde6cff793e98fc7dfb422a1db3390aab67a9101ccf6aa5",
+        "source_fact:v1:77da320119cc66de645477c9eb091c966a0fad8517c576b4a43c1bc977c17aac"
+      ],
+      "source_published_kst": "2026-10-16T11:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "“전기버스 사용후 배터리 활용”…남부발전, ‘화재방지형 R-ESS’ 기술 시장 선도",
+      "telegram_core_fact": "정굳건 남부발전 기후환경처장은 “이번 실증사업은 전기버스 사용 후 배터리의 잔존 가치를 재창출하고 안전기술을 접목해 자원순환의 실효성을 높였다는 데 의미가 있다”며, “앞으로도 실증설비의 안전한 운영과 사용후 배터리의 활용 확대를 통해 자원순환 경제 활성화 및 친환경 에너지 인프라 구축에 기여하겠다”고 말했다.",
+      "title": "“전기버스 사용후 배터리 활용”…남부발전, ‘화재방지형 R-ESS’ 기술 시장 선도"
+    },
     "original:d6eefff34cbcac614be2790b": {
       "first_seen_kst": "2026-10-07T23:36:14+09:00",
       "lanes": {
@@ -327409,6 +327993,30 @@
       "source_title": "루닛, 美 디스커버리와 협력…글로벌 제약사에 AI 병리 분석 공급",
       "telegram_core_fact": "루닛이 미국 디스커버리 라이프 사이언스와 손잡고 글로벌 제약사의 신약 개발 과정에 인공지능(AI) 병리 분석 기술 공급을 확대한다.",
       "title": "루닛, 美 디스커버리와 협력…글로벌 제약사에 AI 병리 분석 공급"
+    },
+    "original:de9ce93fefb2e8d0a68f1aab": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636702",
+      "source": "이투데이",
+      "source_body_digest": "8df7c692033fe2f2037a5f1d73264c1a7b801c3836c7a7542a2b6d6994748943",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3733d67ed93ed3725a397ba1f6803cca698113716764130af9cc3f11589b46f",
+      "source_fact_keys": [
+        "source_fact:v1:0805cd4c4ab47896c73869a1683e52e33aaf9f7c9b3bf55ec14c8723dbbffa96",
+        "source_fact:v1:14ee313a37c3bc380a40da262797432276e098226d712ccf7ecb5519901e968a",
+        "source_fact:v1:5d6c29a617451ccb867ae6c0242ecccd28b3502c1ff2b96f3dabaf62edc1dce7",
+        "source_fact:v1:73c5a8c96010c7d0c2ce86af7e7ee9a746ad400f9febdfcbdc823e6d6974f0eb",
+        "source_fact:v1:9c5ae178d21bccf329b15f7ffb9154690f12201e86cacf9be8099b4d2c714b75"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "9월 미 서부 수출 운송비 12.3% 상승…중동행 항공수입 53.6% 급등",
+      "telegram_core_fact": "관세청이 15일 발표한 ‘2026년 9월 수출입 운송비용 현황’에 따르면 해상 수출 컨테이너 운송비는 미국 서부행이 2TEU당 951만1000원으로 전월보다 12.3% 상승했다.",
+      "title": "9월 미 서부 수출 운송비 12.3% 상승…중동행 항공수입 53.6% 급등"
     },
     "original:deb288ec30dcb69dece74fc7": {
       "first_seen_kst": "2026-10-05T23:14:24+09:00",
@@ -331419,6 +332027,26 @@
       "link": "https://www.yna.co.kr/view/AKR20261001036200030",
       "source": "연합뉴스",
       "title": "CJ제일제당, 미국서 '비비고 김밥' 1∼7월 매출 59% 증가 | 연합뉴스"
+    },
+    "original:e9e0b2b2a3dd1f3c647ad833": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636669",
+      "source": "이투데이",
+      "source_body_digest": "fb6f9805bfcde43717628a731765c37dcb78d61c4673d067f6cf64f18cdbf5ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5693dc9a38493f0a4f484abd2c617ac178d4f216a95a812d75655e453585f08",
+      "source_fact_keys": [
+        "source_fact:v1:4f23880561d889fa3c3ac74130d1791d7f0bdcb9fc8ff6733cfb7ee7b9176664"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "[국내 5대 거래소] 유동성 격차∙보안 부담 속 금융 접점 넓힌다",
+      "telegram_core_fact": "다만, 금융당국 조사에서는 올해 상반기 국내 거래소 일평균 거래규모가 3조 1000억 원으로 지난해 하반기 5조 4000억 원보다 44% 감소했고, 거래소 매출은 41%, 영업손익은 78% 줄었다. 같은 시각 국내 거래소에서는 1억 1100만 원 안팎에서 거래됐다.",
+      "title": "[국내 5대 거래소] 유동성 격차∙보안 부담 속 금융 접점 넓힌다"
     },
     "original:e9e75f75d9a39574516e66bd": {
       "first_seen_kst": "2026-10-08T08:12:34+09:00",
@@ -358384,6 +359012,32 @@
       "telegram_core_fact": "기존 로봇을 해체해 활용할 수 있는 부품에 추가 설계를 적용하는 방안을 검토하고 있으며, 향후 공급 과정에서 규제가 걸림돌이 되지 않도록 선제적으로 승인 절차를 준비하고 있다.",
       "title": "韓 로봇 업계, FCC 규제 선제 대응…조건부 승인 추진"
     },
+    "source_fact:0d4540827b101534e3ca97a7": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636854",
+      "source": "이투데이",
+      "source_body_digest": "a263ff8793eb88bd60a9af25ac6a3353f61aa77f3c120c7c9a50e83c8d94ec90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2cbbc47ea1b02af7683b1fb2be0b1236b29674b7867f859083076dd333e7e1e",
+      "source_fact_keys": [
+        "source_fact:v1:0974c4c564a2dbed2cd5a872cadbc6549a77408a10eb8ef14a9eb838c70fd126",
+        "source_fact:v1:43a4efc9dc4f2c37abc5004214c391054f2086c7a532ab5d2931cf74afec9e0d",
+        "source_fact:v1:69610e726c16a213925c9ba625996415d77b44fa63f33bddfc8a73480de567cb",
+        "source_fact:v1:a87056b3e505cf7890abfb49e79ea5d879d28ccebaef20a22294277c8204659d",
+        "source_fact:v1:b5c86eaf3c2fdb1f17bda9e1ccf23ea43c0dc87da9c424b4f551a136dab1c68e",
+        "source_fact:v1:f94611a9f08383c58f37c36563f8c4703ad0c5dd71d2d4c7cdcb3fb3fe4599aa",
+        "source_fact:v1:fe34987189fdf6b411f348f2cc3487579b33db397ec4cfd97a4cf6f70b032d12"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "[베스트&워스트] 코스닥, 상폐 유예에 급등주 속출…투심 위축에 로봇 및 기술주는 추락",
+      "telegram_core_fact": "이번 주 코스닥 시장은 상장폐지 유예 등으로 퇴출 위기를 넘긴 종목들이 상승세를 주도한 반면, 증시 급락 여파로 신저가가 속출하며 로봇과 반도체 등 기술 관련 종목들은 큰 폭으로 하락해 희비가 엇갈렸다. 반면 국내 증시 급락으로 코스닥 52주 신저가 종목이 대거 쏟아진 가운데 로봇과 기술주 전반은 큰 폭으로 밀렸다.",
+      "title": "[베스트&워스트] 코스닥, 상폐 유예에 급등주 속출…투심 위축에 로봇 및 기술주는 추락"
+    },
     "source_fact:0d487f48c375c14cffe14f2e": {
       "first_seen_kst": "2026-10-10T06:23:09+09:00",
       "lanes": {
@@ -385027,6 +385681,32 @@
       "source_published_kst": "2026-10-06T08:02+09:00",
       "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
     },
+    "source_fact:1f682106b82fb8a3e4b144cf": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636854",
+      "source": "이투데이",
+      "source_body_digest": "a263ff8793eb88bd60a9af25ac6a3353f61aa77f3c120c7c9a50e83c8d94ec90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2cbbc47ea1b02af7683b1fb2be0b1236b29674b7867f859083076dd333e7e1e",
+      "source_fact_keys": [
+        "source_fact:v1:0974c4c564a2dbed2cd5a872cadbc6549a77408a10eb8ef14a9eb838c70fd126",
+        "source_fact:v1:43a4efc9dc4f2c37abc5004214c391054f2086c7a532ab5d2931cf74afec9e0d",
+        "source_fact:v1:69610e726c16a213925c9ba625996415d77b44fa63f33bddfc8a73480de567cb",
+        "source_fact:v1:a87056b3e505cf7890abfb49e79ea5d879d28ccebaef20a22294277c8204659d",
+        "source_fact:v1:b5c86eaf3c2fdb1f17bda9e1ccf23ea43c0dc87da9c424b4f551a136dab1c68e",
+        "source_fact:v1:f94611a9f08383c58f37c36563f8c4703ad0c5dd71d2d4c7cdcb3fb3fe4599aa",
+        "source_fact:v1:fe34987189fdf6b411f348f2cc3487579b33db397ec4cfd97a4cf6f70b032d12"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "[베스트&워스트] 코스닥, 상폐 유예에 급등주 속출…투심 위축에 로봇 및 기술주는 추락",
+      "telegram_core_fact": "이번 주 코스닥 시장은 상장폐지 유예 등으로 퇴출 위기를 넘긴 종목들이 상승세를 주도한 반면, 증시 급락 여파로 신저가가 속출하며 로봇과 반도체 등 기술 관련 종목들은 큰 폭으로 하락해 희비가 엇갈렸다. 반면 국내 증시 급락으로 코스닥 52주 신저가 종목이 대거 쏟아진 가운데 로봇과 기술주 전반은 큰 폭으로 밀렸다.",
+      "title": "[베스트&워스트] 코스닥, 상폐 유예에 급등주 속출…투심 위축에 로봇 및 기술주는 추락"
+    },
     "source_fact:1f730c8a20fdfecc64f9c97c": {
       "first_seen_kst": "2026-10-09T19:24:17+09:00",
       "lanes": {
@@ -391192,6 +391872,32 @@
       "source_title": "삼성전자, 3Q 매출 195조·영업익 107조…대한민국 기업史 신기록 썼다",
       "telegram_core_fact": "삼성전자가 올해 3분기 사상 처음으로 분기 영업이익 100조원을 돌파하며 한국 기업 역사를 새로 썼다.",
       "title": "삼성전자, 3Q 매출 195조·영업익 107조…대한민국 기업史 신기록 썼다"
+    },
+    "source_fact:2336218e8823deb9f9958612": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829650",
+      "source": "뉴시스",
+      "source_body_digest": "0b874bfcafcd837e8df452f7696738837f36772bde776b7ff17c49cebef044af",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60fed9352d3b27a983291d781850aa06d3162254ffe12e4acfc3424745355c11",
+      "source_fact_keys": [
+        "source_fact:v1:171741aa118b084a064291eea64920c02d237d8f21199306b47db1d3f8f43452",
+        "source_fact:v1:6f60e028c6754096aa083636b1e6cafafb84560dd54d5ec162d92f369bc3060b",
+        "source_fact:v1:851a2b534e4fd752989fdba3e8018c6bfbc08f0c605fd75a5ab773950cf7f8d7",
+        "source_fact:v1:898a1223e4b80ac16eb02194ce840cd9ef0a82f31fc58f3bffe529e77a86b786",
+        "source_fact:v1:d28d139fa463c793e2c2c7467c9500af12d4f335c07e124ff20340ecf48aacc3",
+        "source_fact:v1:d6f2710c43f2e0a2e9b3cab025254a14117fc7e14d1d1d79bff4252edd9ed150",
+        "source_fact:v1:e612604dec0f37c9ffb767e87805f5ab867b299c66663dcbd3be7e88707ce7ec"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"탈탄소 위해 대규모 전력 필요\"…포스코, 원전 사업 추진 주목 [에너지 발전 각자도생①]",
+      "telegram_core_fact": "포스코그룹이 철강 생산 체제 전반에서 탈(脫)탄소 생산 체제 구축을 위해 수소 환원 제철 기술 도입을 본격화하고 있다.",
+      "title": "\"탈탄소 위해 대규모 전력 필요\"…포스코, 원전 사업 추진 주목 [에너지 발전 각자도생①]"
     },
     "source_fact:2336e7908525561fe176c2b5": {
       "first_seen_kst": "2026-10-13T06:17:31+09:00",
@@ -426535,6 +427241,32 @@
       "telegram_core_fact": "삼성전자가 올해 3분기 107조4000억원에 달하는 영업이익을 잠정 기록한 가운데 반도체 부문에서만 110조원에 달하는 이익을 거뒀을 것으로 추정된다.",
       "title": "삼성전자 반도체서만 영업익 110조…HBM4로 내년도 질주"
     },
+    "source_fact:3b557d08f1e6f3262b038e37": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636854",
+      "source": "이투데이",
+      "source_body_digest": "a263ff8793eb88bd60a9af25ac6a3353f61aa77f3c120c7c9a50e83c8d94ec90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2cbbc47ea1b02af7683b1fb2be0b1236b29674b7867f859083076dd333e7e1e",
+      "source_fact_keys": [
+        "source_fact:v1:0974c4c564a2dbed2cd5a872cadbc6549a77408a10eb8ef14a9eb838c70fd126",
+        "source_fact:v1:43a4efc9dc4f2c37abc5004214c391054f2086c7a532ab5d2931cf74afec9e0d",
+        "source_fact:v1:69610e726c16a213925c9ba625996415d77b44fa63f33bddfc8a73480de567cb",
+        "source_fact:v1:a87056b3e505cf7890abfb49e79ea5d879d28ccebaef20a22294277c8204659d",
+        "source_fact:v1:b5c86eaf3c2fdb1f17bda9e1ccf23ea43c0dc87da9c424b4f551a136dab1c68e",
+        "source_fact:v1:f94611a9f08383c58f37c36563f8c4703ad0c5dd71d2d4c7cdcb3fb3fe4599aa",
+        "source_fact:v1:fe34987189fdf6b411f348f2cc3487579b33db397ec4cfd97a4cf6f70b032d12"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "[베스트&워스트] 코스닥, 상폐 유예에 급등주 속출…투심 위축에 로봇 및 기술주는 추락",
+      "telegram_core_fact": "이번 주 코스닥 시장은 상장폐지 유예 등으로 퇴출 위기를 넘긴 종목들이 상승세를 주도한 반면, 증시 급락 여파로 신저가가 속출하며 로봇과 반도체 등 기술 관련 종목들은 큰 폭으로 하락해 희비가 엇갈렸다. 반면 국내 증시 급락으로 코스닥 52주 신저가 종목이 대거 쏟아진 가운데 로봇과 기술주 전반은 큰 폭으로 밀렸다.",
+      "title": "[베스트&워스트] 코스닥, 상폐 유예에 급등주 속출…투심 위축에 로봇 및 기술주는 추락"
+    },
     "source_fact:3b629ea85e2af1aad0ddda2c": {
       "first_seen_kst": "2026-10-09T16:29:31+09:00",
       "lanes": {
@@ -427806,6 +428538,27 @@
       "source_title": "넷앱, AI 스토리지 '노버스' 공개…GPU 데이터 병목 해소 나서",
       "telegram_core_fact": "'넷앱 콘솔'에 AI 기반 자율 운영과 대화형 관리 기능을 도입해 데이터센터와 클라우드의 스토리지를 통합 관리한다.",
       "title": "넷앱, AI 스토리지 '노버스' 공개…GPU 데이터 병목 해소 나서"
+    },
+    "source_fact:3c4ca0c0ab4283d7807f5d12": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.mk.co.kr/news/business/12177635",
+      "source": "매일경제",
+      "source_body_digest": "60390dab22576e8993647286eb442789adb9c400084288ebd31b0cb9fc833d23",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b0743ee72244d7c1733f33112c7745e69fe042a02b18a8191360c28a3c0248cc",
+      "source_fact_keys": [
+        "source_fact:v1:03af4e3394b3cf66ffde6cff793e98fc7dfb422a1db3390aab67a9101ccf6aa5",
+        "source_fact:v1:77da320119cc66de645477c9eb091c966a0fad8517c576b4a43c1bc977c17aac"
+      ],
+      "source_published_kst": "2026-10-16T11:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "“전기버스 사용후 배터리 활용”…남부발전, ‘화재방지형 R-ESS’ 기술 시장 선도",
+      "telegram_core_fact": "정굳건 남부발전 기후환경처장은 “이번 실증사업은 전기버스 사용 후 배터리의 잔존 가치를 재창출하고 안전기술을 접목해 자원순환의 실효성을 높였다는 데 의미가 있다”며, “앞으로도 실증설비의 안전한 운영과 사용후 배터리의 활용 확대를 통해 자원순환 경제 활성화 및 친환경 에너지 인프라 구축에 기여하겠다”고 말했다.",
+      "title": "“전기버스 사용후 배터리 활용”…남부발전, ‘화재방지형 R-ESS’ 기술 시장 선도"
     },
     "source_fact:3c56d9dda6ca7241ccc8ee10": {
       "first_seen_kst": "2026-10-09T18:14:26+09:00",
@@ -438629,6 +439382,32 @@
       "source_title": "대형 GA 위법행위 반복…3년간 42건 제재·과태료 18억",
       "telegram_core_fact": "금융당국의 제재를 받은 대형 GA는 32개사로, 법인에 부과된 과태료만 17억6540만원에 달했다.",
       "title": "대형 GA 위법행위 반복…3년간 42건 제재·과태료 18억"
+    },
+    "source_fact:438aedef6d3bc297dbe77c6f": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829650",
+      "source": "뉴시스",
+      "source_body_digest": "0b874bfcafcd837e8df452f7696738837f36772bde776b7ff17c49cebef044af",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60fed9352d3b27a983291d781850aa06d3162254ffe12e4acfc3424745355c11",
+      "source_fact_keys": [
+        "source_fact:v1:171741aa118b084a064291eea64920c02d237d8f21199306b47db1d3f8f43452",
+        "source_fact:v1:6f60e028c6754096aa083636b1e6cafafb84560dd54d5ec162d92f369bc3060b",
+        "source_fact:v1:851a2b534e4fd752989fdba3e8018c6bfbc08f0c605fd75a5ab773950cf7f8d7",
+        "source_fact:v1:898a1223e4b80ac16eb02194ce840cd9ef0a82f31fc58f3bffe529e77a86b786",
+        "source_fact:v1:d28d139fa463c793e2c2c7467c9500af12d4f335c07e124ff20340ecf48aacc3",
+        "source_fact:v1:d6f2710c43f2e0a2e9b3cab025254a14117fc7e14d1d1d79bff4252edd9ed150",
+        "source_fact:v1:e612604dec0f37c9ffb767e87805f5ab867b299c66663dcbd3be7e88707ce7ec"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"탈탄소 위해 대규모 전력 필요\"…포스코, 원전 사업 추진 주목 [에너지 발전 각자도생①]",
+      "telegram_core_fact": "포스코그룹이 철강 생산 체제 전반에서 탈(脫)탄소 생산 체제 구축을 위해 수소 환원 제철 기술 도입을 본격화하고 있다.",
+      "title": "\"탈탄소 위해 대규모 전력 필요\"…포스코, 원전 사업 추진 주목 [에너지 발전 각자도생①]"
     },
     "source_fact:43905302dd83672aafe43658": {
       "first_seen_kst": "2026-10-08T04:14:15+09:00",
@@ -461297,6 +462076,30 @@
       "telegram_core_fact": "신현송 한국은행 총재가 지난 7·8월 두 차례 연속 기준금리 인상으로 미국보다 선제적으로 대응해 경제적 비용을 줄였다고 평가했다.",
       "title": "신현송 \"선제 금리인상 적절…정부 예산안, 성장률 0.5%p 높여\""
     },
+    "source_fact:52a27b89696fcfb60d7cc32e": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636702",
+      "source": "이투데이",
+      "source_body_digest": "8df7c692033fe2f2037a5f1d73264c1a7b801c3836c7a7542a2b6d6994748943",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3733d67ed93ed3725a397ba1f6803cca698113716764130af9cc3f11589b46f",
+      "source_fact_keys": [
+        "source_fact:v1:0805cd4c4ab47896c73869a1683e52e33aaf9f7c9b3bf55ec14c8723dbbffa96",
+        "source_fact:v1:14ee313a37c3bc380a40da262797432276e098226d712ccf7ecb5519901e968a",
+        "source_fact:v1:5d6c29a617451ccb867ae6c0242ecccd28b3502c1ff2b96f3dabaf62edc1dce7",
+        "source_fact:v1:73c5a8c96010c7d0c2ce86af7e7ee9a746ad400f9febdfcbdc823e6d6974f0eb",
+        "source_fact:v1:9c5ae178d21bccf329b15f7ffb9154690f12201e86cacf9be8099b4d2c714b75"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "9월 미 서부 수출 운송비 12.3% 상승…중동행 항공수입 53.6% 급등",
+      "telegram_core_fact": "관세청이 15일 발표한 ‘2026년 9월 수출입 운송비용 현황’에 따르면 해상 수출 컨테이너 운송비는 미국 서부행이 2TEU당 951만1000원으로 전월보다 12.3% 상승했다.",
+      "title": "9월 미 서부 수출 운송비 12.3% 상승…중동행 항공수입 53.6% 급등"
+    },
     "source_fact:52a3649179bfddb84f50af62": {
       "first_seen_kst": "2026-10-06T04:08:54+09:00",
       "lanes": {
@@ -468165,6 +468968,30 @@
       "source_title": "\"약가 우대 인센티브 안돼\"…억울한 한국산 원료",
       "telegram_core_fact": "관련 업계에 따르면 , 정부는 최근 약가제도 개편을 통해 원료를 자사에서 직접 생산하거나 국산 원료를 사용한 국가필수의약품에 대해 약가를 68% 수준으로 우대하고, 원료 직접생산 의약품의 우대기간도 기존 1년에서 5+5년으로 확대했다.",
       "title": "\"약가 우대 인센티브 안돼\"…억울한 한국산 원료"
+    },
+    "source_fact:57346b5c6ecda846bd07483e": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636702",
+      "source": "이투데이",
+      "source_body_digest": "8df7c692033fe2f2037a5f1d73264c1a7b801c3836c7a7542a2b6d6994748943",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3733d67ed93ed3725a397ba1f6803cca698113716764130af9cc3f11589b46f",
+      "source_fact_keys": [
+        "source_fact:v1:0805cd4c4ab47896c73869a1683e52e33aaf9f7c9b3bf55ec14c8723dbbffa96",
+        "source_fact:v1:14ee313a37c3bc380a40da262797432276e098226d712ccf7ecb5519901e968a",
+        "source_fact:v1:5d6c29a617451ccb867ae6c0242ecccd28b3502c1ff2b96f3dabaf62edc1dce7",
+        "source_fact:v1:73c5a8c96010c7d0c2ce86af7e7ee9a746ad400f9febdfcbdc823e6d6974f0eb",
+        "source_fact:v1:9c5ae178d21bccf329b15f7ffb9154690f12201e86cacf9be8099b4d2c714b75"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "9월 미 서부 수출 운송비 12.3% 상승…중동행 항공수입 53.6% 급등",
+      "telegram_core_fact": "관세청이 15일 발표한 ‘2026년 9월 수출입 운송비용 현황’에 따르면 해상 수출 컨테이너 운송비는 미국 서부행이 2TEU당 951만1000원으로 전월보다 12.3% 상승했다.",
+      "title": "9월 미 서부 수출 운송비 12.3% 상승…중동행 항공수입 53.6% 급등"
     },
     "source_fact:5737e7706a56d111d7555b0d": {
       "first_seen_kst": "2026-10-06T21:28:22+09:00",
@@ -494101,6 +494928,32 @@
       "source_published_kst": "2026-10-06T17:29+09:00",
       "title": "\"AI 병목 구간은 메모리\"… 삼전닉스 담는 새 글로벌ETF"
     },
+    "source_fact:690aba01e1abf7c2b5a099f6": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829650",
+      "source": "뉴시스",
+      "source_body_digest": "0b874bfcafcd837e8df452f7696738837f36772bde776b7ff17c49cebef044af",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60fed9352d3b27a983291d781850aa06d3162254ffe12e4acfc3424745355c11",
+      "source_fact_keys": [
+        "source_fact:v1:171741aa118b084a064291eea64920c02d237d8f21199306b47db1d3f8f43452",
+        "source_fact:v1:6f60e028c6754096aa083636b1e6cafafb84560dd54d5ec162d92f369bc3060b",
+        "source_fact:v1:851a2b534e4fd752989fdba3e8018c6bfbc08f0c605fd75a5ab773950cf7f8d7",
+        "source_fact:v1:898a1223e4b80ac16eb02194ce840cd9ef0a82f31fc58f3bffe529e77a86b786",
+        "source_fact:v1:d28d139fa463c793e2c2c7467c9500af12d4f335c07e124ff20340ecf48aacc3",
+        "source_fact:v1:d6f2710c43f2e0a2e9b3cab025254a14117fc7e14d1d1d79bff4252edd9ed150",
+        "source_fact:v1:e612604dec0f37c9ffb767e87805f5ab867b299c66663dcbd3be7e88707ce7ec"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"탈탄소 위해 대규모 전력 필요\"…포스코, 원전 사업 추진 주목 [에너지 발전 각자도생①]",
+      "telegram_core_fact": "포스코그룹이 철강 생산 체제 전반에서 탈(脫)탄소 생산 체제 구축을 위해 수소 환원 제철 기술 도입을 본격화하고 있다.",
+      "title": "\"탈탄소 위해 대규모 전력 필요\"…포스코, 원전 사업 추진 주목 [에너지 발전 각자도생①]"
+    },
     "source_fact:690c0ef3436b113cf04702d5": {
       "first_seen_kst": "2026-10-13T12:38:24+09:00",
       "lanes": {
@@ -498904,6 +499757,28 @@
       "source_title": "제조업 고용 회복…청년은 여전히 '찬바람'",
       "telegram_core_fact": "고용노동부가 14일 발표한 ‘9월 고용행정통계로 본 노동시장 동향’에 따르면 지난달 제조업 고용보험 상시가입자는 385만 3000명으로 전년 동월 대비 8000명(0.2%) 증가했다.",
       "title": "제조업 고용 회복…청년은 여전히 '찬바람'"
+    },
+    "source_fact:6c49e72016a61797aa540bad": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176148",
+      "source": "매일경제",
+      "source_body_digest": "7b8d6887e2446bce30cabde5118a68d3140f517f1b4d6715c8c3bb22f0f9f595",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7974ac11404f1166f5eb56de6d01e89de93a62d350cdaf99786d6364020c7dd2",
+      "source_fact_keys": [
+        "source_fact:v1:62c5f70636c7fce628fb00d3299fd03400a948041272223d27d6bfd92d7510d7",
+        "source_fact:v1:a4ee2f2b618110a1223d4996b0fe24eaf30cd49d5b06ba32f02ef20b5976bf0b",
+        "source_fact:v1:cb64bc26a9b9c9ceecda6efa4246a5914c9106503af6661317160434e3cf79b6"
+      ],
+      "source_published_kst": "2026-10-17T06:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "니오코프 디벨롭먼츠, 분기 순이익 370만 달러 흑자전환..평가이익 덕",
+      "telegram_core_fact": "니오코프 디벨롭먼츠(NB)는 9월 30일 종료된 3개월간 모회사 귀속 순이익이 370만 달러, 기본 주당순이익이 0.03달러로 집계됐다는 미감사 잠정 실적을 16일 발표했다.",
+      "title": "니오코프 디벨롭먼츠, 분기 순이익 370만 달러 흑자전환..평가이익 덕"
     },
     "source_fact:6c4c35aff3d131e96e539884": {
       "first_seen_kst": "2026-10-12T08:46:35+09:00",
@@ -505958,6 +506833,30 @@
       "telegram_core_fact": "이날 밸류파인더 ‘한성크린텍-삼성전자에 이어 삼성전기까지 레퍼런스 확대, 수요 급증 AI 메모리 증설 출발점은 초순수’ 보고서에 따르면 한성크린텍은 6일 삼성E&A와 230억원 베트남 삼성전기 초순수 설비 기자재 공급계약을 공시했다.",
       "title": "밸류파인더 “한성크린텍, 삼성전기 베트남서 지난해 수출액 5배 규모 수주…후속 계약 가능”"
     },
+    "source_fact:71690f4cf7540600eff91009": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636702",
+      "source": "이투데이",
+      "source_body_digest": "8df7c692033fe2f2037a5f1d73264c1a7b801c3836c7a7542a2b6d6994748943",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3733d67ed93ed3725a397ba1f6803cca698113716764130af9cc3f11589b46f",
+      "source_fact_keys": [
+        "source_fact:v1:0805cd4c4ab47896c73869a1683e52e33aaf9f7c9b3bf55ec14c8723dbbffa96",
+        "source_fact:v1:14ee313a37c3bc380a40da262797432276e098226d712ccf7ecb5519901e968a",
+        "source_fact:v1:5d6c29a617451ccb867ae6c0242ecccd28b3502c1ff2b96f3dabaf62edc1dce7",
+        "source_fact:v1:73c5a8c96010c7d0c2ce86af7e7ee9a746ad400f9febdfcbdc823e6d6974f0eb",
+        "source_fact:v1:9c5ae178d21bccf329b15f7ffb9154690f12201e86cacf9be8099b4d2c714b75"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "9월 미 서부 수출 운송비 12.3% 상승…중동행 항공수입 53.6% 급등",
+      "telegram_core_fact": "관세청이 15일 발표한 ‘2026년 9월 수출입 운송비용 현황’에 따르면 해상 수출 컨테이너 운송비는 미국 서부행이 2TEU당 951만1000원으로 전월보다 12.3% 상승했다.",
+      "title": "9월 미 서부 수출 운송비 12.3% 상승…중동행 항공수입 53.6% 급등"
+    },
     "source_fact:717705a8ddce24779b9ef992": {
       "first_seen_kst": "2026-10-06T22:08:07+09:00",
       "lanes": {
@@ -511235,6 +512134,32 @@
       "source_published_kst": "2026-10-07T14:18+09:00",
       "title": "日 반도체 소부장, 자국 내 생산 강화…경제안보·엔저 영향"
     },
+    "source_fact:74ece1959fce6dbfcb380de6": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829650",
+      "source": "뉴시스",
+      "source_body_digest": "0b874bfcafcd837e8df452f7696738837f36772bde776b7ff17c49cebef044af",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60fed9352d3b27a983291d781850aa06d3162254ffe12e4acfc3424745355c11",
+      "source_fact_keys": [
+        "source_fact:v1:171741aa118b084a064291eea64920c02d237d8f21199306b47db1d3f8f43452",
+        "source_fact:v1:6f60e028c6754096aa083636b1e6cafafb84560dd54d5ec162d92f369bc3060b",
+        "source_fact:v1:851a2b534e4fd752989fdba3e8018c6bfbc08f0c605fd75a5ab773950cf7f8d7",
+        "source_fact:v1:898a1223e4b80ac16eb02194ce840cd9ef0a82f31fc58f3bffe529e77a86b786",
+        "source_fact:v1:d28d139fa463c793e2c2c7467c9500af12d4f335c07e124ff20340ecf48aacc3",
+        "source_fact:v1:d6f2710c43f2e0a2e9b3cab025254a14117fc7e14d1d1d79bff4252edd9ed150",
+        "source_fact:v1:e612604dec0f37c9ffb767e87805f5ab867b299c66663dcbd3be7e88707ce7ec"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"탈탄소 위해 대규모 전력 필요\"…포스코, 원전 사업 추진 주목 [에너지 발전 각자도생①]",
+      "telegram_core_fact": "포스코그룹이 철강 생산 체제 전반에서 탈(脫)탄소 생산 체제 구축을 위해 수소 환원 제철 기술 도입을 본격화하고 있다.",
+      "title": "\"탈탄소 위해 대규모 전력 필요\"…포스코, 원전 사업 추진 주목 [에너지 발전 각자도생①]"
+    },
     "source_fact:74ed7848a5fe33c904fddbcb": {
       "first_seen_kst": "2026-10-15T12:05:16+09:00",
       "lanes": {
@@ -511296,6 +512221,30 @@
       ],
       "source_published_kst": "2026-10-05T12:55+09:00",
       "title": "예멘군, 미국·사우디 지원받아 친이란 후티에 총반격 돌입(종합) | 연합뉴스"
+    },
+    "source_fact:75127950eacfea034a716352": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636702",
+      "source": "이투데이",
+      "source_body_digest": "8df7c692033fe2f2037a5f1d73264c1a7b801c3836c7a7542a2b6d6994748943",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3733d67ed93ed3725a397ba1f6803cca698113716764130af9cc3f11589b46f",
+      "source_fact_keys": [
+        "source_fact:v1:0805cd4c4ab47896c73869a1683e52e33aaf9f7c9b3bf55ec14c8723dbbffa96",
+        "source_fact:v1:14ee313a37c3bc380a40da262797432276e098226d712ccf7ecb5519901e968a",
+        "source_fact:v1:5d6c29a617451ccb867ae6c0242ecccd28b3502c1ff2b96f3dabaf62edc1dce7",
+        "source_fact:v1:73c5a8c96010c7d0c2ce86af7e7ee9a746ad400f9febdfcbdc823e6d6974f0eb",
+        "source_fact:v1:9c5ae178d21bccf329b15f7ffb9154690f12201e86cacf9be8099b4d2c714b75"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "9월 미 서부 수출 운송비 12.3% 상승…중동행 항공수입 53.6% 급등",
+      "telegram_core_fact": "관세청이 15일 발표한 ‘2026년 9월 수출입 운송비용 현황’에 따르면 해상 수출 컨테이너 운송비는 미국 서부행이 2TEU당 951만1000원으로 전월보다 12.3% 상승했다.",
+      "title": "9월 미 서부 수출 운송비 12.3% 상승…중동행 항공수입 53.6% 급등"
     },
     "source_fact:751a07625c4d847436cd1394": {
       "first_seen_kst": "2026-10-13T19:06:12+09:00",
@@ -539340,6 +540289,32 @@
       "telegram_core_fact": "후티가 지난달 바브엘만데브 핵심 거점 모카를 공격할 때도 확전을 우려해 직접 개입하지 않았고, 지난 4일 정부군이 대규모 반격을 시작했을 때도 사우디 주도 연합군을 통해 전투기 약 100대를 보내 공중 지원하는 식이었다.",
       "title": "\"사우디, 후티 막을 요격미사일 바닥…빈살만도 벙커로 이동\"(종합)"
     },
+    "source_fact:8900e247ab06e60e3870c59e": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829650",
+      "source": "뉴시스",
+      "source_body_digest": "0b874bfcafcd837e8df452f7696738837f36772bde776b7ff17c49cebef044af",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60fed9352d3b27a983291d781850aa06d3162254ffe12e4acfc3424745355c11",
+      "source_fact_keys": [
+        "source_fact:v1:171741aa118b084a064291eea64920c02d237d8f21199306b47db1d3f8f43452",
+        "source_fact:v1:6f60e028c6754096aa083636b1e6cafafb84560dd54d5ec162d92f369bc3060b",
+        "source_fact:v1:851a2b534e4fd752989fdba3e8018c6bfbc08f0c605fd75a5ab773950cf7f8d7",
+        "source_fact:v1:898a1223e4b80ac16eb02194ce840cd9ef0a82f31fc58f3bffe529e77a86b786",
+        "source_fact:v1:d28d139fa463c793e2c2c7467c9500af12d4f335c07e124ff20340ecf48aacc3",
+        "source_fact:v1:d6f2710c43f2e0a2e9b3cab025254a14117fc7e14d1d1d79bff4252edd9ed150",
+        "source_fact:v1:e612604dec0f37c9ffb767e87805f5ab867b299c66663dcbd3be7e88707ce7ec"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"탈탄소 위해 대규모 전력 필요\"…포스코, 원전 사업 추진 주목 [에너지 발전 각자도생①]",
+      "telegram_core_fact": "포스코그룹이 철강 생산 체제 전반에서 탈(脫)탄소 생산 체제 구축을 위해 수소 환원 제철 기술 도입을 본격화하고 있다.",
+      "title": "\"탈탄소 위해 대규모 전력 필요\"…포스코, 원전 사업 추진 주목 [에너지 발전 각자도생①]"
+    },
     "source_fact:8904329f6aa43ea8b7acd618": {
       "first_seen_kst": "2026-10-13T04:37:27+09:00",
       "lanes": {
@@ -563515,6 +564490,32 @@
       "source_title": "나신평 \"HD현대마린 '골텐스' 인수, 단기 수익성 희석 가능성\"",
       "telegram_core_fact": "HD현대마린솔루션은 지난 8일 글로벌 선박·육상 발전용 엔진 서비스 전문 기업 골텐스 지분 100%를 인수하는 주식 매매 계약을 체결했다고 밝혔다.",
       "title": "나신평 \"HD현대마린 '골텐스' 인수, 단기 수익성 희석 가능성\""
+    },
+    "source_fact:9a00c02ef3895fac508dc106": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829650",
+      "source": "뉴시스",
+      "source_body_digest": "0b874bfcafcd837e8df452f7696738837f36772bde776b7ff17c49cebef044af",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60fed9352d3b27a983291d781850aa06d3162254ffe12e4acfc3424745355c11",
+      "source_fact_keys": [
+        "source_fact:v1:171741aa118b084a064291eea64920c02d237d8f21199306b47db1d3f8f43452",
+        "source_fact:v1:6f60e028c6754096aa083636b1e6cafafb84560dd54d5ec162d92f369bc3060b",
+        "source_fact:v1:851a2b534e4fd752989fdba3e8018c6bfbc08f0c605fd75a5ab773950cf7f8d7",
+        "source_fact:v1:898a1223e4b80ac16eb02194ce840cd9ef0a82f31fc58f3bffe529e77a86b786",
+        "source_fact:v1:d28d139fa463c793e2c2c7467c9500af12d4f335c07e124ff20340ecf48aacc3",
+        "source_fact:v1:d6f2710c43f2e0a2e9b3cab025254a14117fc7e14d1d1d79bff4252edd9ed150",
+        "source_fact:v1:e612604dec0f37c9ffb767e87805f5ab867b299c66663dcbd3be7e88707ce7ec"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"탈탄소 위해 대규모 전력 필요\"…포스코, 원전 사업 추진 주목 [에너지 발전 각자도생①]",
+      "telegram_core_fact": "포스코그룹이 철강 생산 체제 전반에서 탈(脫)탄소 생산 체제 구축을 위해 수소 환원 제철 기술 도입을 본격화하고 있다.",
+      "title": "\"탈탄소 위해 대규모 전력 필요\"…포스코, 원전 사업 추진 주목 [에너지 발전 각자도생①]"
     },
     "source_fact:9a137ee462db08ea6aa4e8d1": {
       "first_seen_kst": "2026-10-11T21:07:10+09:00",
@@ -588140,6 +589141,28 @@
       "source_title": "인베스코, 9월말 운용자산 2조5400억 달러..전월비 0.9% 감소",
       "telegram_core_fact": "시장 수익률은 운용자산을 160억 달러 줄였고, 환율 변동도 27억 달러의 감소 요인이 됐다.",
       "title": "인베스코, 9월말 운용자산 2조5400억 달러..전월비 0.9% 감소"
+    },
+    "source_fact:aaf596e2bc0cf5b0054568e1": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176148",
+      "source": "매일경제",
+      "source_body_digest": "7b8d6887e2446bce30cabde5118a68d3140f517f1b4d6715c8c3bb22f0f9f595",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7974ac11404f1166f5eb56de6d01e89de93a62d350cdaf99786d6364020c7dd2",
+      "source_fact_keys": [
+        "source_fact:v1:62c5f70636c7fce628fb00d3299fd03400a948041272223d27d6bfd92d7510d7",
+        "source_fact:v1:a4ee2f2b618110a1223d4996b0fe24eaf30cd49d5b06ba32f02ef20b5976bf0b",
+        "source_fact:v1:cb64bc26a9b9c9ceecda6efa4246a5914c9106503af6661317160434e3cf79b6"
+      ],
+      "source_published_kst": "2026-10-17T06:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "니오코프 디벨롭먼츠, 분기 순이익 370만 달러 흑자전환..평가이익 덕",
+      "telegram_core_fact": "니오코프 디벨롭먼츠(NB)는 9월 30일 종료된 3개월간 모회사 귀속 순이익이 370만 달러, 기본 주당순이익이 0.03달러로 집계됐다는 미감사 잠정 실적을 16일 발표했다.",
+      "title": "니오코프 디벨롭먼츠, 분기 순이익 370만 달러 흑자전환..평가이익 덕"
     },
     "source_fact:aaf64399499fea5ebfdc8565": {
       "first_seen_kst": "2026-10-06T22:51:44+09:00",
@@ -617442,6 +618465,32 @@
       "telegram_core_fact": "서 연구원은 \"AI 관련 콘퍼런스와 미국 소비자물가지수 발표, 본격적인 실적 시즌 등을 고려하면 추세적인 상승보다는 낙폭 과대에 따른 반등과 종목별 차별화가 진행될 것\"이라며 \"특히 반도체 업종의 변화와 외국인 수급이 중요하다\"고 짚었다.",
       "title": "[오늘의 증시]코스피, 낙폭 과대에 반등 시도 전망…6800선 회복 주목"
     },
+    "source_fact:bf0f472226decba9ffd7a408": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636854",
+      "source": "이투데이",
+      "source_body_digest": "a263ff8793eb88bd60a9af25ac6a3353f61aa77f3c120c7c9a50e83c8d94ec90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2cbbc47ea1b02af7683b1fb2be0b1236b29674b7867f859083076dd333e7e1e",
+      "source_fact_keys": [
+        "source_fact:v1:0974c4c564a2dbed2cd5a872cadbc6549a77408a10eb8ef14a9eb838c70fd126",
+        "source_fact:v1:43a4efc9dc4f2c37abc5004214c391054f2086c7a532ab5d2931cf74afec9e0d",
+        "source_fact:v1:69610e726c16a213925c9ba625996415d77b44fa63f33bddfc8a73480de567cb",
+        "source_fact:v1:a87056b3e505cf7890abfb49e79ea5d879d28ccebaef20a22294277c8204659d",
+        "source_fact:v1:b5c86eaf3c2fdb1f17bda9e1ccf23ea43c0dc87da9c424b4f551a136dab1c68e",
+        "source_fact:v1:f94611a9f08383c58f37c36563f8c4703ad0c5dd71d2d4c7cdcb3fb3fe4599aa",
+        "source_fact:v1:fe34987189fdf6b411f348f2cc3487579b33db397ec4cfd97a4cf6f70b032d12"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "[베스트&워스트] 코스닥, 상폐 유예에 급등주 속출…투심 위축에 로봇 및 기술주는 추락",
+      "telegram_core_fact": "이번 주 코스닥 시장은 상장폐지 유예 등으로 퇴출 위기를 넘긴 종목들이 상승세를 주도한 반면, 증시 급락 여파로 신저가가 속출하며 로봇과 반도체 등 기술 관련 종목들은 큰 폭으로 하락해 희비가 엇갈렸다. 반면 국내 증시 급락으로 코스닥 52주 신저가 종목이 대거 쏟아진 가운데 로봇과 기술주 전반은 큰 폭으로 밀렸다.",
+      "title": "[베스트&워스트] 코스닥, 상폐 유예에 급등주 속출…투심 위축에 로봇 및 기술주는 추락"
+    },
     "source_fact:bf1819118fa2b26276d2ee55": {
       "first_seen_kst": "2026-10-13T14:32:55+09:00",
       "lanes": {
@@ -620494,6 +621543,32 @@
       "source_title": "李대통령 \"적자기업에 先보조금 검토하라\"",
       "telegram_core_fact": "이 대통령은 보고회에서 “생산세액공제는 이익이 발생하지 않으면 의미가 없다”며 “보조금을 일부 지급한 다음 나중에 이익이 나면 세액공제에서 차감하는 방법을 검토해보라”고 했다.",
       "title": "李대통령 \"적자기업에 先보조금 검토하라\""
+    },
+    "source_fact:c141cb3fc2c8b3643ddb44ae": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636854",
+      "source": "이투데이",
+      "source_body_digest": "a263ff8793eb88bd60a9af25ac6a3353f61aa77f3c120c7c9a50e83c8d94ec90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2cbbc47ea1b02af7683b1fb2be0b1236b29674b7867f859083076dd333e7e1e",
+      "source_fact_keys": [
+        "source_fact:v1:0974c4c564a2dbed2cd5a872cadbc6549a77408a10eb8ef14a9eb838c70fd126",
+        "source_fact:v1:43a4efc9dc4f2c37abc5004214c391054f2086c7a532ab5d2931cf74afec9e0d",
+        "source_fact:v1:69610e726c16a213925c9ba625996415d77b44fa63f33bddfc8a73480de567cb",
+        "source_fact:v1:a87056b3e505cf7890abfb49e79ea5d879d28ccebaef20a22294277c8204659d",
+        "source_fact:v1:b5c86eaf3c2fdb1f17bda9e1ccf23ea43c0dc87da9c424b4f551a136dab1c68e",
+        "source_fact:v1:f94611a9f08383c58f37c36563f8c4703ad0c5dd71d2d4c7cdcb3fb3fe4599aa",
+        "source_fact:v1:fe34987189fdf6b411f348f2cc3487579b33db397ec4cfd97a4cf6f70b032d12"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "[베스트&워스트] 코스닥, 상폐 유예에 급등주 속출…투심 위축에 로봇 및 기술주는 추락",
+      "telegram_core_fact": "이번 주 코스닥 시장은 상장폐지 유예 등으로 퇴출 위기를 넘긴 종목들이 상승세를 주도한 반면, 증시 급락 여파로 신저가가 속출하며 로봇과 반도체 등 기술 관련 종목들은 큰 폭으로 하락해 희비가 엇갈렸다. 반면 국내 증시 급락으로 코스닥 52주 신저가 종목이 대거 쏟아진 가운데 로봇과 기술주 전반은 큰 폭으로 밀렸다.",
+      "title": "[베스트&워스트] 코스닥, 상폐 유예에 급등주 속출…투심 위축에 로봇 및 기술주는 추락"
     },
     "source_fact:c144498327af82020766916b": {
       "first_seen_kst": "2026-10-12T05:09:39+09:00",
@@ -625261,6 +626336,28 @@
       "telegram_core_fact": "미국의 30년 고정 주택담보대출(모기지) 금리가 7.28%로 2023년 11월 말 이후 최고 수준까지 치솟으면서, 불과 몇 주 남은 중간선거에서 도널드 트럼프 대통령과 공화당의 부담이 커지고 있다.",
       "title": "트럼프는 주담대 3% 내다봤는데…7.28%로 급등, 중간선거 부담"
     },
+    "source_fact:c43b51e2e18e0e338e257320": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176148",
+      "source": "매일경제",
+      "source_body_digest": "7b8d6887e2446bce30cabde5118a68d3140f517f1b4d6715c8c3bb22f0f9f595",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7974ac11404f1166f5eb56de6d01e89de93a62d350cdaf99786d6364020c7dd2",
+      "source_fact_keys": [
+        "source_fact:v1:62c5f70636c7fce628fb00d3299fd03400a948041272223d27d6bfd92d7510d7",
+        "source_fact:v1:a4ee2f2b618110a1223d4996b0fe24eaf30cd49d5b06ba32f02ef20b5976bf0b",
+        "source_fact:v1:cb64bc26a9b9c9ceecda6efa4246a5914c9106503af6661317160434e3cf79b6"
+      ],
+      "source_published_kst": "2026-10-17T06:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "니오코프 디벨롭먼츠, 분기 순이익 370만 달러 흑자전환..평가이익 덕",
+      "telegram_core_fact": "니오코프 디벨롭먼츠(NB)는 9월 30일 종료된 3개월간 모회사 귀속 순이익이 370만 달러, 기본 주당순이익이 0.03달러로 집계됐다는 미감사 잠정 실적을 16일 발표했다.",
+      "title": "니오코프 디벨롭먼츠, 분기 순이익 370만 달러 흑자전환..평가이익 덕"
+    },
     "source_fact:c43e10a47e5ba82eea0ef0c3": {
       "first_seen_kst": "2026-10-07T11:25:20+09:00",
       "lanes": {
@@ -625423,6 +626520,27 @@
       "source_title": "[속보]코스피, 中 반도체 쇼크에 6000선 턱걸이…외국인 4.5조 팔자",
       "telegram_core_fact": "코스피·코스닥은 각각 5.46%·1.43% 하락해 양 시장에 매도 사이드카가 발동됐다.",
       "title": "[속보]코스피, 中 반도체 쇼크에 6000선 턱걸이…외국인 4.5조 팔자"
+    },
+    "source_fact:c451227c704ab78f2e61961a": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.mk.co.kr/news/business/12177635",
+      "source": "매일경제",
+      "source_body_digest": "60390dab22576e8993647286eb442789adb9c400084288ebd31b0cb9fc833d23",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b0743ee72244d7c1733f33112c7745e69fe042a02b18a8191360c28a3c0248cc",
+      "source_fact_keys": [
+        "source_fact:v1:03af4e3394b3cf66ffde6cff793e98fc7dfb422a1db3390aab67a9101ccf6aa5",
+        "source_fact:v1:77da320119cc66de645477c9eb091c966a0fad8517c576b4a43c1bc977c17aac"
+      ],
+      "source_published_kst": "2026-10-16T11:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "“전기버스 사용후 배터리 활용”…남부발전, ‘화재방지형 R-ESS’ 기술 시장 선도",
+      "telegram_core_fact": "정굳건 남부발전 기후환경처장은 “이번 실증사업은 전기버스 사용 후 배터리의 잔존 가치를 재창출하고 안전기술을 접목해 자원순환의 실효성을 높였다는 데 의미가 있다”며, “앞으로도 실증설비의 안전한 운영과 사용후 배터리의 활용 확대를 통해 자원순환 경제 활성화 및 친환경 에너지 인프라 구축에 기여하겠다”고 말했다.",
+      "title": "“전기버스 사용후 배터리 활용”…남부발전, ‘화재방지형 R-ESS’ 기술 시장 선도"
     },
     "source_fact:c4548efdd20c647ac2a36dbf": {
       "first_seen_kst": "2026-10-07T20:05:17+09:00",
@@ -632645,6 +633763,32 @@
       "source_title": "중간선거 앞 기름값 급등에…트럼프, 대러 제재 풀고 경유 수입",
       "telegram_core_fact": "도널드 트럼프 미국 대통령이 치솟는 경유 가격을 잡기 위해 러시아산 경유의 미국 수입 등을 허용하는 한시적인 대러 제재 완화 조치를 발표했다.",
       "title": "중간선거 앞 기름값 급등에…트럼프, 대러 제재 풀고 경유 수입"
+    },
+    "source_fact:c92ee05aef5b0c0cab82b7b7": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636854",
+      "source": "이투데이",
+      "source_body_digest": "a263ff8793eb88bd60a9af25ac6a3353f61aa77f3c120c7c9a50e83c8d94ec90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2cbbc47ea1b02af7683b1fb2be0b1236b29674b7867f859083076dd333e7e1e",
+      "source_fact_keys": [
+        "source_fact:v1:0974c4c564a2dbed2cd5a872cadbc6549a77408a10eb8ef14a9eb838c70fd126",
+        "source_fact:v1:43a4efc9dc4f2c37abc5004214c391054f2086c7a532ab5d2931cf74afec9e0d",
+        "source_fact:v1:69610e726c16a213925c9ba625996415d77b44fa63f33bddfc8a73480de567cb",
+        "source_fact:v1:a87056b3e505cf7890abfb49e79ea5d879d28ccebaef20a22294277c8204659d",
+        "source_fact:v1:b5c86eaf3c2fdb1f17bda9e1ccf23ea43c0dc87da9c424b4f551a136dab1c68e",
+        "source_fact:v1:f94611a9f08383c58f37c36563f8c4703ad0c5dd71d2d4c7cdcb3fb3fe4599aa",
+        "source_fact:v1:fe34987189fdf6b411f348f2cc3487579b33db397ec4cfd97a4cf6f70b032d12"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "[베스트&워스트] 코스닥, 상폐 유예에 급등주 속출…투심 위축에 로봇 및 기술주는 추락",
+      "telegram_core_fact": "이번 주 코스닥 시장은 상장폐지 유예 등으로 퇴출 위기를 넘긴 종목들이 상승세를 주도한 반면, 증시 급락 여파로 신저가가 속출하며 로봇과 반도체 등 기술 관련 종목들은 큰 폭으로 하락해 희비가 엇갈렸다. 반면 국내 증시 급락으로 코스닥 52주 신저가 종목이 대거 쏟아진 가운데 로봇과 기술주 전반은 큰 폭으로 밀렸다.",
+      "title": "[베스트&워스트] 코스닥, 상폐 유예에 급등주 속출…투심 위축에 로봇 및 기술주는 추락"
     },
     "source_fact:c92f884de1e351675285b9d1": {
       "first_seen_kst": "2026-10-14T17:44:16+09:00",
@@ -643384,6 +644528,26 @@
       "source_published_kst": "2026-10-07T07:15+09:00",
       "title": "'알렉사 주역' 보스턴다이나믹스 지휘한다 …현대차 피지컬 AI 속도"
     },
+    "source_fact:d0fb21aaa13fcf901857c106": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636669",
+      "source": "이투데이",
+      "source_body_digest": "fb6f9805bfcde43717628a731765c37dcb78d61c4673d067f6cf64f18cdbf5ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5693dc9a38493f0a4f484abd2c617ac178d4f216a95a812d75655e453585f08",
+      "source_fact_keys": [
+        "source_fact:v1:4f23880561d889fa3c3ac74130d1791d7f0bdcb9fc8ff6733cfb7ee7b9176664"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "[국내 5대 거래소] 유동성 격차∙보안 부담 속 금융 접점 넓힌다",
+      "telegram_core_fact": "다만, 금융당국 조사에서는 올해 상반기 국내 거래소 일평균 거래규모가 3조 1000억 원으로 지난해 하반기 5조 4000억 원보다 44% 감소했고, 거래소 매출은 41%, 영업손익은 78% 줄었다. 같은 시각 국내 거래소에서는 1억 1100만 원 안팎에서 거래됐다.",
+      "title": "[국내 5대 거래소] 유동성 격차∙보안 부담 속 금융 접점 넓힌다"
+    },
     "source_fact:d0fd6d96e2e8c046f83e4a9a": {
       "first_seen_kst": "2026-10-12T19:07:06+09:00",
       "lanes": {
@@ -645366,6 +646530,30 @@
       "source_title": "SK하이닉스 안현 사장 '전체 메모리 계층 최적화로 AI 생태계 지속 성장 견인'",
       "telegram_core_fact": "안 사장은 'AI 시대, 메모리 기술의 진화 방향'을 주제로 진행한 기조연설에서 AI 추론 수요 확대에 따라 기존 메모리 계층의 성능과 용량 측면에서 새로운 병목이 발생하고 있다고 설명함.",
       "title": "SK하이닉스 안현 사장 '전체 메모리 계층 최적화로 AI 생태계 지속 성장 견인'"
+    },
+    "source_fact:d2751dcdaabdc08af62d2cc2": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636702",
+      "source": "이투데이",
+      "source_body_digest": "8df7c692033fe2f2037a5f1d73264c1a7b801c3836c7a7542a2b6d6994748943",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3733d67ed93ed3725a397ba1f6803cca698113716764130af9cc3f11589b46f",
+      "source_fact_keys": [
+        "source_fact:v1:0805cd4c4ab47896c73869a1683e52e33aaf9f7c9b3bf55ec14c8723dbbffa96",
+        "source_fact:v1:14ee313a37c3bc380a40da262797432276e098226d712ccf7ecb5519901e968a",
+        "source_fact:v1:5d6c29a617451ccb867ae6c0242ecccd28b3502c1ff2b96f3dabaf62edc1dce7",
+        "source_fact:v1:73c5a8c96010c7d0c2ce86af7e7ee9a746ad400f9febdfcbdc823e6d6974f0eb",
+        "source_fact:v1:9c5ae178d21bccf329b15f7ffb9154690f12201e86cacf9be8099b4d2c714b75"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "9월 미 서부 수출 운송비 12.3% 상승…중동행 항공수입 53.6% 급등",
+      "telegram_core_fact": "관세청이 15일 발표한 ‘2026년 9월 수출입 운송비용 현황’에 따르면 해상 수출 컨테이너 운송비는 미국 서부행이 2TEU당 951만1000원으로 전월보다 12.3% 상승했다.",
+      "title": "9월 미 서부 수출 운송비 12.3% 상승…중동행 항공수입 53.6% 급등"
     },
     "source_fact:d2769a2d1310792cfd8dfd3b": {
       "first_seen_kst": "2026-10-08T01:26:16+09:00",
@@ -649748,6 +650936,32 @@
       "source_title": "한섬, 해외 브랜드 15개로 확대…내년 매장 90개 목표",
       "telegram_core_fact": "한섬이 새롭게 들여온 해외 패션 브랜드들의 올해 1~8월 누적 매출은 전년비 약 50% 증가했다. 계약이 마무리되면 한섬이 2022년 이후 국내에 들여온 해외 브랜드는 총 15개로 늘어난다.",
       "title": "한섬, 해외 브랜드 15개로 확대…내년 매장 90개 목표"
+    },
+    "source_fact:d58e1700b891e1561b4a7bef": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829650",
+      "source": "뉴시스",
+      "source_body_digest": "0b874bfcafcd837e8df452f7696738837f36772bde776b7ff17c49cebef044af",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60fed9352d3b27a983291d781850aa06d3162254ffe12e4acfc3424745355c11",
+      "source_fact_keys": [
+        "source_fact:v1:171741aa118b084a064291eea64920c02d237d8f21199306b47db1d3f8f43452",
+        "source_fact:v1:6f60e028c6754096aa083636b1e6cafafb84560dd54d5ec162d92f369bc3060b",
+        "source_fact:v1:851a2b534e4fd752989fdba3e8018c6bfbc08f0c605fd75a5ab773950cf7f8d7",
+        "source_fact:v1:898a1223e4b80ac16eb02194ce840cd9ef0a82f31fc58f3bffe529e77a86b786",
+        "source_fact:v1:d28d139fa463c793e2c2c7467c9500af12d4f335c07e124ff20340ecf48aacc3",
+        "source_fact:v1:d6f2710c43f2e0a2e9b3cab025254a14117fc7e14d1d1d79bff4252edd9ed150",
+        "source_fact:v1:e612604dec0f37c9ffb767e87805f5ab867b299c66663dcbd3be7e88707ce7ec"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"탈탄소 위해 대규모 전력 필요\"…포스코, 원전 사업 추진 주목 [에너지 발전 각자도생①]",
+      "telegram_core_fact": "포스코그룹이 철강 생산 체제 전반에서 탈(脫)탄소 생산 체제 구축을 위해 수소 환원 제철 기술 도입을 본격화하고 있다.",
+      "title": "\"탈탄소 위해 대규모 전력 필요\"…포스코, 원전 사업 추진 주목 [에너지 발전 각자도생①]"
     },
     "source_fact:d58f9b898e8817b9e202ee81": {
       "first_seen_kst": "2026-10-13T02:27:34+09:00",
@@ -676344,6 +677558,32 @@
       "source_title": "시지메드텍, 코오롱제약과 hECM 사업 첫 상업생산 돌입…10~11월 첫 납품",
       "telegram_core_fact": "양사 계약에 따른 첫 납품은 10~11월이 목표다.",
       "title": "시지메드텍, 코오롱제약과 hECM 사업 첫 상업생산 돌입…10~11월 첫 납품"
+    },
+    "source_fact:e7144d5868beeacc79570edc": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636854",
+      "source": "이투데이",
+      "source_body_digest": "a263ff8793eb88bd60a9af25ac6a3353f61aa77f3c120c7c9a50e83c8d94ec90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2cbbc47ea1b02af7683b1fb2be0b1236b29674b7867f859083076dd333e7e1e",
+      "source_fact_keys": [
+        "source_fact:v1:0974c4c564a2dbed2cd5a872cadbc6549a77408a10eb8ef14a9eb838c70fd126",
+        "source_fact:v1:43a4efc9dc4f2c37abc5004214c391054f2086c7a532ab5d2931cf74afec9e0d",
+        "source_fact:v1:69610e726c16a213925c9ba625996415d77b44fa63f33bddfc8a73480de567cb",
+        "source_fact:v1:a87056b3e505cf7890abfb49e79ea5d879d28ccebaef20a22294277c8204659d",
+        "source_fact:v1:b5c86eaf3c2fdb1f17bda9e1ccf23ea43c0dc87da9c424b4f551a136dab1c68e",
+        "source_fact:v1:f94611a9f08383c58f37c36563f8c4703ad0c5dd71d2d4c7cdcb3fb3fe4599aa",
+        "source_fact:v1:fe34987189fdf6b411f348f2cc3487579b33db397ec4cfd97a4cf6f70b032d12"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "[베스트&워스트] 코스닥, 상폐 유예에 급등주 속출…투심 위축에 로봇 및 기술주는 추락",
+      "telegram_core_fact": "이번 주 코스닥 시장은 상장폐지 유예 등으로 퇴출 위기를 넘긴 종목들이 상승세를 주도한 반면, 증시 급락 여파로 신저가가 속출하며 로봇과 반도체 등 기술 관련 종목들은 큰 폭으로 하락해 희비가 엇갈렸다. 반면 국내 증시 급락으로 코스닥 52주 신저가 종목이 대거 쏟아진 가운데 로봇과 기술주 전반은 큰 폭으로 밀렸다.",
+      "title": "[베스트&워스트] 코스닥, 상폐 유예에 급등주 속출…투심 위축에 로봇 및 기술주는 추락"
     },
     "source_fact:e71a546e811e017c5e7e9e8c": {
       "first_seen_kst": "2026-10-08T09:17:31+09:00",
@@ -713212,6 +714452,28 @@
       "telegram_core_fact": "삼성전자가 올해 3분기 사상 처음으로 분기 영업이익 100조원을 돌파하며 한국 기업 역사를 새로 썼다.",
       "title": "삼성전자, 3Q 매출 195조·영업익 107조…대한민국 기업史 신기록 썼다"
     },
+    "title:05a2d1af65d2b9149d777f7c": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1176148",
+      "source": "매일경제",
+      "source_body_digest": "7b8d6887e2446bce30cabde5118a68d3140f517f1b4d6715c8c3bb22f0f9f595",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7974ac11404f1166f5eb56de6d01e89de93a62d350cdaf99786d6364020c7dd2",
+      "source_fact_keys": [
+        "source_fact:v1:62c5f70636c7fce628fb00d3299fd03400a948041272223d27d6bfd92d7510d7",
+        "source_fact:v1:a4ee2f2b618110a1223d4996b0fe24eaf30cd49d5b06ba32f02ef20b5976bf0b",
+        "source_fact:v1:cb64bc26a9b9c9ceecda6efa4246a5914c9106503af6661317160434e3cf79b6"
+      ],
+      "source_published_kst": "2026-10-17T06:18+09:00",
+      "source_supply_terms": {},
+      "source_title": "니오코프 디벨롭먼츠, 분기 순이익 370만 달러 흑자전환..평가이익 덕",
+      "telegram_core_fact": "니오코프 디벨롭먼츠(NB)는 9월 30일 종료된 3개월간 모회사 귀속 순이익이 370만 달러, 기본 주당순이익이 0.03달러로 집계됐다는 미감사 잠정 실적을 16일 발표했다.",
+      "title": "니오코프 디벨롭먼츠, 분기 순이익 370만 달러 흑자전환..평가이익 덕"
+    },
     "title:05be7cbe6e3a2bb7c9fb054b": {
       "first_seen_kst": "2026-09-18T16:49:31+09:00",
       "lanes": {
@@ -748637,6 +749899,32 @@
       "telegram_core_fact": "금융투자협회가 발표한 '9월 장외채권시장 동향'에 따르면 지난달 말 국고채 3년물 금리는 연 4.011%로 전월 말 대비 17.3bp(1bp=0.01%포인트) 상승했다.",
       "title": "9월 국고채 금리 일제히 상승…외국인 채권 보유잔고 7.8조 감소"
     },
+    "title:61b5af47fb04dac02d860c8d": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636854",
+      "source": "이투데이",
+      "source_body_digest": "a263ff8793eb88bd60a9af25ac6a3353f61aa77f3c120c7c9a50e83c8d94ec90",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2cbbc47ea1b02af7683b1fb2be0b1236b29674b7867f859083076dd333e7e1e",
+      "source_fact_keys": [
+        "source_fact:v1:0974c4c564a2dbed2cd5a872cadbc6549a77408a10eb8ef14a9eb838c70fd126",
+        "source_fact:v1:43a4efc9dc4f2c37abc5004214c391054f2086c7a532ab5d2931cf74afec9e0d",
+        "source_fact:v1:69610e726c16a213925c9ba625996415d77b44fa63f33bddfc8a73480de567cb",
+        "source_fact:v1:a87056b3e505cf7890abfb49e79ea5d879d28ccebaef20a22294277c8204659d",
+        "source_fact:v1:b5c86eaf3c2fdb1f17bda9e1ccf23ea43c0dc87da9c424b4f551a136dab1c68e",
+        "source_fact:v1:f94611a9f08383c58f37c36563f8c4703ad0c5dd71d2d4c7cdcb3fb3fe4599aa",
+        "source_fact:v1:fe34987189fdf6b411f348f2cc3487579b33db397ec4cfd97a4cf6f70b032d12"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "[베스트&워스트] 코스닥, 상폐 유예에 급등주 속출…투심 위축에 로봇 및 기술주는 추락",
+      "telegram_core_fact": "이번 주 코스닥 시장은 상장폐지 유예 등으로 퇴출 위기를 넘긴 종목들이 상승세를 주도한 반면, 증시 급락 여파로 신저가가 속출하며 로봇과 반도체 등 기술 관련 종목들은 큰 폭으로 하락해 희비가 엇갈렸다. 반면 국내 증시 급락으로 코스닥 52주 신저가 종목이 대거 쏟아진 가운데 로봇과 기술주 전반은 큰 폭으로 밀렸다.",
+      "title": "[베스트&워스트] 코스닥, 상폐 유예에 급등주 속출…투심 위축에 로봇 및 기술주는 추락"
+    },
     "title:61c5e06a73af0a6cf4e5e7f4": {
       "first_seen_kst": "2026-10-17T08:00:41+09:00",
       "lanes": {
@@ -749322,6 +750610,24 @@
       "source_title": "KDI, 경기 개선 진단 유지…소비 회복은 \"완만\" | 연합뉴스",
       "telegram_core_fact": "KDI는 12일 발표한 '경제동향 10월호'에서 \"우리 경제는 AI 관련 수출과 설비투자의 호조에 힘입어 개선세를 이어가는 모습\"이라며 \"그러나 경기 개선의 효과가 가계 전반으로 확산하지 못하면서 소비 개선세는 완만한 모습\"이라고 밝혔다. KDI는 '소비 개선세 완만'이라는 진단도 이어갔다.",
       "title": "KDI, 경기 개선 진단 유지…소비 회복은 \"완만\" | 연합뉴스"
+    },
+    "title:63aafa80fbfbfcfdd9a2cb0b": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261017005151072",
+      "source": "연합뉴스",
+      "source_body_digest": "a9228ab439f56b5cc9fbe1abcc7ad9396f34b3732e3fcea7dbf3961fbc11dd11",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-17T06:26+09:00",
+      "source_supply_terms": {},
+      "source_title": "AI 경고등에 유가 급등까지…반도체 급락, 나스닥 2.2%↓(종합) | 연합뉴스",
+      "telegram_core_fact": "인공지능(AI) 인프라 투자 기업의 부채 우려와 유가 급등의 여파로 AI·반도체 관련주가 급락하며 나스닥 종합지수는 2% 넘게 떨어졌다.",
+      "title": "AI 경고등에 유가 급등까지…반도체 급락, 나스닥 2.2%↓(종합) | 연합뉴스"
     },
     "title:63b334eeb0f17023a3fe69b6": {
       "first_seen_kst": "2026-10-09T21:11:52+09:00",
@@ -764579,6 +765885,32 @@
       "source_title": "태평양, 9년 연속 ‘글로벌 200대 로펌’ 선정…세계 193위",
       "telegram_core_fact": "태평양은 지난해 대형·고난도 사건과 크로스보더 거래를 수행하며 전년 대비 약 12% 증가한 4702억원의 매출을 기록했다. 법무법인 태평양은 미국 법률전문매체 아메리칸 로이어가 발표한 ‘2026 글로벌 200대 로펌(The Global 200)’에서 세계 193위에 올랐다고 7일 밝혔다.",
       "title": "태평양, 9년 연속 ‘글로벌 200대 로펌’ 선정…세계 193위"
+    },
+    "title:8c95050c1dfa57b8186c7b12": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.newsis.com/view/NISX20261016_0003829650",
+      "source": "뉴시스",
+      "source_body_digest": "0b874bfcafcd837e8df452f7696738837f36772bde776b7ff17c49cebef044af",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60fed9352d3b27a983291d781850aa06d3162254ffe12e4acfc3424745355c11",
+      "source_fact_keys": [
+        "source_fact:v1:171741aa118b084a064291eea64920c02d237d8f21199306b47db1d3f8f43452",
+        "source_fact:v1:6f60e028c6754096aa083636b1e6cafafb84560dd54d5ec162d92f369bc3060b",
+        "source_fact:v1:851a2b534e4fd752989fdba3e8018c6bfbc08f0c605fd75a5ab773950cf7f8d7",
+        "source_fact:v1:898a1223e4b80ac16eb02194ce840cd9ef0a82f31fc58f3bffe529e77a86b786",
+        "source_fact:v1:d28d139fa463c793e2c2c7467c9500af12d4f335c07e124ff20340ecf48aacc3",
+        "source_fact:v1:d6f2710c43f2e0a2e9b3cab025254a14117fc7e14d1d1d79bff4252edd9ed150",
+        "source_fact:v1:e612604dec0f37c9ffb767e87805f5ab867b299c66663dcbd3be7e88707ce7ec"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"탈탄소 위해 대규모 전력 필요\"…포스코, 원전 사업 추진 주목 [에너지 발전 각자도생①]",
+      "telegram_core_fact": "포스코그룹이 철강 생산 체제 전반에서 탈(脫)탄소 생산 체제 구축을 위해 수소 환원 제철 기술 도입을 본격화하고 있다.",
+      "title": "\"탈탄소 위해 대규모 전력 필요\"…포스코, 원전 사업 추진 주목 [에너지 발전 각자도생①]"
     },
     "title:8ca80ee6f3c90723e3a4fb7d": {
       "first_seen_kst": "2026-09-30T01:58:47+09:00",
@@ -792407,6 +793739,27 @@
       "source_published_kst": "2026-10-06T05:00+09:00",
       "title": "납품단가 다음은 ‘데이터’⋯AI 시대 대기업·中企 ‘新 갑을관계’ 탄생하나 [AI 신계급사회]"
     },
+    "title:d6e58f321b14bf5541a6e945": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.mk.co.kr/news/business/12177635",
+      "source": "매일경제",
+      "source_body_digest": "60390dab22576e8993647286eb442789adb9c400084288ebd31b0cb9fc833d23",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b0743ee72244d7c1733f33112c7745e69fe042a02b18a8191360c28a3c0248cc",
+      "source_fact_keys": [
+        "source_fact:v1:03af4e3394b3cf66ffde6cff793e98fc7dfb422a1db3390aab67a9101ccf6aa5",
+        "source_fact:v1:77da320119cc66de645477c9eb091c966a0fad8517c576b4a43c1bc977c17aac"
+      ],
+      "source_published_kst": "2026-10-16T11:01+09:00",
+      "source_supply_terms": {},
+      "source_title": "“전기버스 사용후 배터리 활용”…남부발전, ‘화재방지형 R-ESS’ 기술 시장 선도",
+      "telegram_core_fact": "정굳건 남부발전 기후환경처장은 “이번 실증사업은 전기버스 사용 후 배터리의 잔존 가치를 재창출하고 안전기술을 접목해 자원순환의 실효성을 높였다는 데 의미가 있다”며, “앞으로도 실증설비의 안전한 운영과 사용후 배터리의 활용 확대를 통해 자원순환 경제 활성화 및 친환경 에너지 인프라 구축에 기여하겠다”고 말했다.",
+      "title": "“전기버스 사용후 배터리 활용”…남부발전, ‘화재방지형 R-ESS’ 기술 시장 선도"
+    },
     "title:d6eefff34cbcac614be2790b": {
       "first_seen_kst": "2026-10-07T23:36:14+09:00",
       "lanes": {
@@ -795362,6 +796715,30 @@
       "source_title": "루닛, 美 디스커버리와 협력…글로벌 제약사에 AI 병리 분석 공급",
       "telegram_core_fact": "루닛이 미국 디스커버리 라이프 사이언스와 손잡고 글로벌 제약사의 신약 개발 과정에 인공지능(AI) 병리 분석 기술 공급을 확대한다.",
       "title": "루닛, 美 디스커버리와 협력…글로벌 제약사에 AI 병리 분석 공급"
+    },
+    "title:de9ce93fefb2e8d0a68f1aab": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636702",
+      "source": "이투데이",
+      "source_body_digest": "8df7c692033fe2f2037a5f1d73264c1a7b801c3836c7a7542a2b6d6994748943",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a3733d67ed93ed3725a397ba1f6803cca698113716764130af9cc3f11589b46f",
+      "source_fact_keys": [
+        "source_fact:v1:0805cd4c4ab47896c73869a1683e52e33aaf9f7c9b3bf55ec14c8723dbbffa96",
+        "source_fact:v1:14ee313a37c3bc380a40da262797432276e098226d712ccf7ecb5519901e968a",
+        "source_fact:v1:5d6c29a617451ccb867ae6c0242ecccd28b3502c1ff2b96f3dabaf62edc1dce7",
+        "source_fact:v1:73c5a8c96010c7d0c2ce86af7e7ee9a746ad400f9febdfcbdc823e6d6974f0eb",
+        "source_fact:v1:9c5ae178d21bccf329b15f7ffb9154690f12201e86cacf9be8099b4d2c714b75"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "9월 미 서부 수출 운송비 12.3% 상승…중동행 항공수입 53.6% 급등",
+      "telegram_core_fact": "관세청이 15일 발표한 ‘2026년 9월 수출입 운송비용 현황’에 따르면 해상 수출 컨테이너 운송비는 미국 서부행이 2TEU당 951만1000원으로 전월보다 12.3% 상승했다.",
+      "title": "9월 미 서부 수출 운송비 12.3% 상승…중동행 항공수입 53.6% 급등"
     },
     "title:deb288ec30dcb69dece74fc7": {
       "first_seen_kst": "2026-10-05T23:14:24+09:00",
@@ -799466,6 +800843,26 @@
       "link": "https://www.yna.co.kr/view/AKR20261001036200030",
       "source": "연합뉴스",
       "title": "CJ제일제당, 미국서 '비비고 김밥' 1∼7월 매출 59% 증가 | 연합뉴스"
+    },
+    "title:e9e0b2b2a3dd1f3c647ad833": {
+      "first_seen_kst": "2026-10-17T09:15:26+09:00",
+      "lanes": {
+        "live": "2026-10-17T09:15:26+09:00"
+      },
+      "last_seen_kst": "2026-10-17T09:15:26+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2636669",
+      "source": "이투데이",
+      "source_body_digest": "fb6f9805bfcde43717628a731765c37dcb78d61c4673d067f6cf64f18cdbf5ca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5693dc9a38493f0a4f484abd2c617ac178d4f216a95a812d75655e453585f08",
+      "source_fact_keys": [
+        "source_fact:v1:4f23880561d889fa3c3ac74130d1791d7f0bdcb9fc8ff6733cfb7ee7b9176664"
+      ],
+      "source_published_kst": "2026-10-17T06:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "[국내 5대 거래소] 유동성 격차∙보안 부담 속 금융 접점 넓힌다",
+      "telegram_core_fact": "다만, 금융당국 조사에서는 올해 상반기 국내 거래소 일평균 거래규모가 3조 1000억 원으로 지난해 하반기 5조 4000억 원보다 44% 감소했고, 거래소 매출은 41%, 영업손익은 78% 줄었다. 같은 시각 국내 거래소에서는 1억 1100만 원 안팎에서 거래됐다.",
+      "title": "[국내 5대 거래소] 유동성 격차∙보안 부담 속 금융 접점 넓힌다"
     },
     "title:e9e75f75d9a39574516e66bd": {
       "first_seen_kst": "2026-10-08T08:12:34+09:00",
@@ -807901,5 +809298,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-17T08:46:34+09:00"
+  "updated_at_kst": "2026-10-17T09:15:26+09:00"
 }
