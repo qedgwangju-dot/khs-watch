@@ -1,7 +1,7 @@
 {
-  "last_alert_at_kst": "2026-10-17T20:39:37+09:00",
-  "last_event_kind": "eia_weekly_stock_balance",
-  "last_event_id": "eia_weekly_stock_balance:2026-10-09",
+  "last_alert_at_kst": "2026-10-17T23:25:43+09:00",
+  "last_event_kind": "delek_tyler_dpa",
+  "last_event_id": "delek_tyler_dpa:2026-10-13-announcement",
   "alerted_events": {
     "regional_export_recovery:66183575fab99015": "2026-10-13T21:23:53+09:00",
     "sts_reroute_expansion:a5a5b34c0694d3fd": "2026-10-13T21:11:24+09:00",
@@ -34,7 +34,8 @@
     "eu_diesel_reserve_policy:54f8a60d9eb812bf": "2026-10-14T23:03:10+09:00",
     "us_gulf_isaias_shutin:59e04145a9693f41": "2026-10-15T03:54:32+09:00",
     "eia_refining_crack_watch:8930fae216868471": "2026-10-16T05:32:44+09:00",
-    "eia_weekly_stock_balance:2026-10-09": "2026-10-17T20:39:37+09:00"
+    "eia_weekly_stock_balance:2026-10-09": "2026-10-17T20:39:37+09:00",
+    "delek_tyler_dpa:2026-10-13-announcement": "2026-10-17T23:25:43+09:00"
   },
   "last_market": {
     "oil": null,
