@@ -570,6 +570,20 @@ jobs:
               if event.get("semantic_key")=="us-sif-ai-incident-statement-2026-10-09":
                   event["url"]=canonical_axios
           now=dt.datetime.now(KST)
+          # 2026-10-15 charter adoption: preserve an already-known reported
+          # milestone. Do not replay it as a law or fresh Telegram alert.
+          charter_key="us-sif-charter-adopted-2026-10-15"
+          charter_digest=hashlib.sha256(("sif-semantic-v1:"+charter_key).encode()).hexdigest()[:24]
+          seen.setdefault(charter_digest,{
+              "title":"SIF 첫 회의·헌장 채택(보도 단계)",
+              "source":"Semafor",
+              "url":"https://www.semafor.com/article/10/15/2026/white-houses-ai-task-force-gets-to-work",
+              "entity":"미국 Super Intelligence Force",
+              "category":"미국 Super Intelligence Force 정책지휘체계",
+              "published_at":"2026-10-15T00:00:00+00:00",
+              "first_seen_at":"2026-10-15T00:00:00+00:00",
+              "semantic_key":charter_key,
+          })
           query='("Super Intelligence Force" OR "Anthropic breaches spark White House AI reporting mandate" OR "AI model incident reporting")'
           rss="https://news.google.com/rss/search?"+urllib.parse.urlencode({
               "q":query+" when:7d","hl":"en-US","gl":"US","ceid":"US:en"
@@ -587,7 +601,7 @@ jobs:
               "Federal Trade Commission",
               "U.S. Department of Defense","Department of Defense",
               "U.S. Department of War","Department of War",
-              "Office of Personnel Management",
+              "Office of Personnel Management", "Semafor",
           }
           rows=[]
           for node in root.findall("./channel/item"):
@@ -643,6 +657,17 @@ jobs:
               )
               if statement_headline and source=="Axios":
                   return "statement", "us-sif-ai-incident-statement-2026-10-09"
+
+              # An adopted charter or commissioned PCAST assessment is
+              # reported governance activity, not a legally binding regulation.
+              charter_meeting=(
+                  "adopts charter" in text
+                  or "adopted its charter" in text
+                  or "charter adopted" in text
+                  or ("first official meeting" in text and "pcast" in text)
+              )
+              if charter_meeting:
+                  return "charter_adopted_reported","us-sif-charter-adopted-2026-10-15"
 
               # A promised/due report is not a released report.
               if any(x in text for x in (
@@ -761,6 +786,12 @@ jobs:
               # authority are not state changes and must not generate a Telegram alert.
               return "ignore",""
 
+          assert charter_digest in seen and seen[charter_digest]["semantic_key"]==charter_key
+          assert stage({
+              "title":"White House Super Intelligence Force adopts charter at first meeting",
+              "text":"white house super intelligence force adopts charter at first official meeting and commissions pcast risk study",
+              "source":"Semafor",
+          })==("charter_adopted_reported","us-sif-charter-adopted-2026-10-15")
           assert stage({
               "title":"Exclusive: Anthropic breaches spark White House AI reporting mandate",
               "text":"the white house super intelligence force mandates incident notification and remediation without published penalties",
@@ -852,7 +883,7 @@ jobs:
               rank={
                   "procurement":8,"funding":7,"rule_final":8,"executive_instrument":7,
                   "rule_proposal":6,"statement":6,"report":6,
-                  "authority":5,"funding_request":4,"membership":2,"formation":1,
+                  "authority":5,"funding_request":4,"membership":2,"charter_adopted_reported":2,"formation":1,
               }
               st,key,digest,row=sorted(candidates,key=lambda x:rank.get(x[0],0),reverse=True)[0]
               if st=="statement" and row.get("source")=="Axios":
@@ -867,6 +898,13 @@ jobs:
                       "• <b>보도 범위</b>: Reuters는 SIF가 AI 위험·기회와 연방정부 역할을 검토해 120일 안에 보고하도록 했다고 보도. 120일 기한은 Truth Social 게시문 자체 문구와 분리",
                       "• <b>미확정</b>: SIF 별도 예산·신규 법적 권한·정부 조달금액·의무 사고보고 규정",
                       "• <b>다음 확인</b>: SIF 헌장·120일 보고서·예산·인원·FTC/국방부/OPM 후속 규칙·조달, EO 14434의 60일 SI 정의 제안",
+                  ]
+              elif st=="charter_adopted_reported":
+                  heading="SIF 첫 회의·헌장 채택(보도 단계)"
+                  detail=[
+                      "• <b>현재 단계</b>: 첫 회의에서 헌장 채택·PCAST 위험 검토 과제 배정 보도",
+                      "• <b>법적 효력</b>: 회의 진행은 신규 의무 규정·출시 중단 권한과 별개",
+                      "• <b>다음 확인</b>: 헌장 공식 원문·PCAST 보고서·위원회 실제 권고",
                   ]
               elif st=="report":
                   heading="SIF 120일 검토 후속 보고서·권고 공개"
