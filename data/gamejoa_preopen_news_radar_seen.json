@@ -49547,6 +49547,34 @@
       "telegram_core_fact": "록스모어를 약 4억6000만 달러 전액 현금으로 인수하기로 하면서 현금 유출 부담이 커졌습니다. 인수 대상 프로젝트는 첫 생산이 2033년으로 예상돼 단기 실적 기여가 제한적이고, 인허가와 자금조달도 남아 있습니다.",
       "title": "SSR마이닝, 록스모어 전액 현금 인수 부담에 약세 흐름"
     },
+    "core:caa5426a8ac296d8b15b919d": {
+      "first_seen_kst": "2026-10-18T03:10:20+09:00",
+      "lanes": {
+        "live": "2026-10-18T03:10:20+09:00"
+      },
+      "last_seen_kst": "2026-10-18T03:10:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003829986",
+      "source": "뉴시스",
+      "source_body_digest": "5b544e112247868d23762959c61aa356b262995066c9877219b713e289d1079b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2d27dfc3e0440df75bf663c30c317e54811a6bf49d697068160aa6bfdc46b564",
+      "source_fact_keys": [
+        "source_fact:v1:106d5cdc673b1ed1408c91bfba4ccc8acf641658e3dbb92e1b7be8dc3b4ddc96",
+        "source_fact:v1:42ab367a9dc0e197bbbaaa193eff82bdfd2ff7f36dd9773a0851e3c929eae513",
+        "source_fact:v1:5585edec2a3fc065d0c49f94d36ffc69a6df90e08a0439e78dd6c64d1e10d93d",
+        "source_fact:v1:569551bcb0a9b7b582be81d14dcdde57ec32b2a23e397fb97001aa78fd13f540",
+        "source_fact:v1:6701a5a410709d7f69a40eec767bee0ee0e164a387e041620d1ecdf9ce314e5d",
+        "source_fact:v1:74da4a294a11d29bd92ccbd48b61d5a167d81332743f4e6eca7dcd3fd80abb26",
+        "source_fact:v1:be336be6c56c9d7736605d884adbcaa4db5096ee396a4ee8fe29686e41f9c5f9",
+        "source_fact:v1:e916dea10a60bf59e68ced672f8a6d99916682907b4b049c32b3c9254b987dc1",
+        "source_fact:v1:edd7d8f8fa32d880d6c2346ac5d40b6c441810ad8ef327a1feb5da28e6408e41"
+      ],
+      "source_published_kst": "2026-10-18T03:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"7만전자·20만닉스\" 경고했던 전문가…이번엔 \"메모리 가격 하락 임박\"",
+      "telegram_core_fact": "삼성전자와 SK하이닉스 주가가 여전히 고평가 구간에 있으며, 메모리 가격이 이르면 올해 4분기 하락세로 돌아설 수 있다는 전문가의 전망이 나왔다.",
+      "title": "\"7만전자·20만닉스\" 경고했던 전문가…이번엔 \"메모리 가격 하락 임박\""
+    },
     "core:caa9814efc3e0ae27868da66": {
       "first_seen_kst": "2026-10-09T15:48:54+09:00",
       "lanes": {
@@ -76719,6 +76747,34 @@
       "link": "https://biz.heraldcorp.com/article/10885877",
       "source": "헤럴드경제",
       "title": "삼성전자, B2B AI 구독 서비스 론칭…“최소한의 운영비용로 최대한의 혜택”"
+    },
+    "event:f0cf9ce17f03a774a412989c": {
+      "first_seen_kst": "2026-10-18T03:10:20+09:00",
+      "lanes": {
+        "live": "2026-10-18T03:10:20+09:00"
+      },
+      "last_seen_kst": "2026-10-18T03:10:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003829986",
+      "source": "뉴시스",
+      "source_body_digest": "5b544e112247868d23762959c61aa356b262995066c9877219b713e289d1079b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2d27dfc3e0440df75bf663c30c317e54811a6bf49d697068160aa6bfdc46b564",
+      "source_fact_keys": [
+        "source_fact:v1:106d5cdc673b1ed1408c91bfba4ccc8acf641658e3dbb92e1b7be8dc3b4ddc96",
+        "source_fact:v1:42ab367a9dc0e197bbbaaa193eff82bdfd2ff7f36dd9773a0851e3c929eae513",
+        "source_fact:v1:5585edec2a3fc065d0c49f94d36ffc69a6df90e08a0439e78dd6c64d1e10d93d",
+        "source_fact:v1:569551bcb0a9b7b582be81d14dcdde57ec32b2a23e397fb97001aa78fd13f540",
+        "source_fact:v1:6701a5a410709d7f69a40eec767bee0ee0e164a387e041620d1ecdf9ce314e5d",
+        "source_fact:v1:74da4a294a11d29bd92ccbd48b61d5a167d81332743f4e6eca7dcd3fd80abb26",
+        "source_fact:v1:be336be6c56c9d7736605d884adbcaa4db5096ee396a4ee8fe29686e41f9c5f9",
+        "source_fact:v1:e916dea10a60bf59e68ced672f8a6d99916682907b4b049c32b3c9254b987dc1",
+        "source_fact:v1:edd7d8f8fa32d880d6c2346ac5d40b6c441810ad8ef327a1feb5da28e6408e41"
+      ],
+      "source_published_kst": "2026-10-18T03:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"7만전자·20만닉스\" 경고했던 전문가…이번엔 \"메모리 가격 하락 임박\"",
+      "telegram_core_fact": "삼성전자와 SK하이닉스 주가가 여전히 고평가 구간에 있으며, 메모리 가격이 이르면 올해 4분기 하락세로 돌아설 수 있다는 전문가의 전망이 나왔다.",
+      "title": "\"7만전자·20만닉스\" 경고했던 전문가…이번엔 \"메모리 가격 하락 임박\""
     },
     "event:f10f698cf4e062e133597b4b": {
       "first_seen_kst": "2026-10-08T04:26:05+09:00",
@@ -136434,6 +136490,34 @@
       ],
       "source_published_kst": "2026-10-07T08:45+09:00",
       "title": "더 루비콘 프로젝트, MR탱커 3호선 인수..잠재 수주잔고 3억7500만 달러"
+    },
+    "fact:cb2188639329463e85a9e82b": {
+      "first_seen_kst": "2026-10-18T03:10:20+09:00",
+      "lanes": {
+        "live": "2026-10-18T03:10:20+09:00"
+      },
+      "last_seen_kst": "2026-10-18T03:10:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003829986",
+      "source": "뉴시스",
+      "source_body_digest": "5b544e112247868d23762959c61aa356b262995066c9877219b713e289d1079b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2d27dfc3e0440df75bf663c30c317e54811a6bf49d697068160aa6bfdc46b564",
+      "source_fact_keys": [
+        "source_fact:v1:106d5cdc673b1ed1408c91bfba4ccc8acf641658e3dbb92e1b7be8dc3b4ddc96",
+        "source_fact:v1:42ab367a9dc0e197bbbaaa193eff82bdfd2ff7f36dd9773a0851e3c929eae513",
+        "source_fact:v1:5585edec2a3fc065d0c49f94d36ffc69a6df90e08a0439e78dd6c64d1e10d93d",
+        "source_fact:v1:569551bcb0a9b7b582be81d14dcdde57ec32b2a23e397fb97001aa78fd13f540",
+        "source_fact:v1:6701a5a410709d7f69a40eec767bee0ee0e164a387e041620d1ecdf9ce314e5d",
+        "source_fact:v1:74da4a294a11d29bd92ccbd48b61d5a167d81332743f4e6eca7dcd3fd80abb26",
+        "source_fact:v1:be336be6c56c9d7736605d884adbcaa4db5096ee396a4ee8fe29686e41f9c5f9",
+        "source_fact:v1:e916dea10a60bf59e68ced672f8a6d99916682907b4b049c32b3c9254b987dc1",
+        "source_fact:v1:edd7d8f8fa32d880d6c2346ac5d40b6c441810ad8ef327a1feb5da28e6408e41"
+      ],
+      "source_published_kst": "2026-10-18T03:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"7만전자·20만닉스\" 경고했던 전문가…이번엔 \"메모리 가격 하락 임박\"",
+      "telegram_core_fact": "삼성전자와 SK하이닉스 주가가 여전히 고평가 구간에 있으며, 메모리 가격이 이르면 올해 4분기 하락세로 돌아설 수 있다는 전문가의 전망이 나왔다.",
+      "title": "\"7만전자·20만닉스\" 경고했던 전문가…이번엔 \"메모리 가격 하락 임박\""
     },
     "fact:cb59d0741bc76e5bceedb9ce": {
       "first_seen_kst": "2026-10-07T08:15:28+09:00",
@@ -219848,6 +219932,34 @@
       "telegram_core_fact": "증권가 컨센서스에 따르면 3월 결산법인인 OKYO 파마는 아직 본격적인 매출이 발생하지 않는 단계다.",
       "title": "OKYO 파마, 각막통증 3상 첫 환자 등록 완료"
     },
+    "link:ac2bdfa9d3cbf6ba68b318a6": {
+      "first_seen_kst": "2026-10-18T03:10:20+09:00",
+      "lanes": {
+        "live": "2026-10-18T03:10:20+09:00"
+      },
+      "last_seen_kst": "2026-10-18T03:10:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003829986",
+      "source": "뉴시스",
+      "source_body_digest": "5b544e112247868d23762959c61aa356b262995066c9877219b713e289d1079b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2d27dfc3e0440df75bf663c30c317e54811a6bf49d697068160aa6bfdc46b564",
+      "source_fact_keys": [
+        "source_fact:v1:106d5cdc673b1ed1408c91bfba4ccc8acf641658e3dbb92e1b7be8dc3b4ddc96",
+        "source_fact:v1:42ab367a9dc0e197bbbaaa193eff82bdfd2ff7f36dd9773a0851e3c929eae513",
+        "source_fact:v1:5585edec2a3fc065d0c49f94d36ffc69a6df90e08a0439e78dd6c64d1e10d93d",
+        "source_fact:v1:569551bcb0a9b7b582be81d14dcdde57ec32b2a23e397fb97001aa78fd13f540",
+        "source_fact:v1:6701a5a410709d7f69a40eec767bee0ee0e164a387e041620d1ecdf9ce314e5d",
+        "source_fact:v1:74da4a294a11d29bd92ccbd48b61d5a167d81332743f4e6eca7dcd3fd80abb26",
+        "source_fact:v1:be336be6c56c9d7736605d884adbcaa4db5096ee396a4ee8fe29686e41f9c5f9",
+        "source_fact:v1:e916dea10a60bf59e68ced672f8a6d99916682907b4b049c32b3c9254b987dc1",
+        "source_fact:v1:edd7d8f8fa32d880d6c2346ac5d40b6c441810ad8ef327a1feb5da28e6408e41"
+      ],
+      "source_published_kst": "2026-10-18T03:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"7만전자·20만닉스\" 경고했던 전문가…이번엔 \"메모리 가격 하락 임박\"",
+      "telegram_core_fact": "삼성전자와 SK하이닉스 주가가 여전히 고평가 구간에 있으며, 메모리 가격이 이르면 올해 4분기 하락세로 돌아설 수 있다는 전문가의 전망이 나왔다.",
+      "title": "\"7만전자·20만닉스\" 경고했던 전문가…이번엔 \"메모리 가격 하락 임박\""
+    },
     "link:ac3be17faffed6521e311a9e": {
       "first_seen_kst": "2026-10-08T04:45:20+09:00",
       "lanes": {
@@ -285467,6 +285579,34 @@
       ],
       "source_published_kst": "2026-10-05T12:55+09:00",
       "title": "예멘군, 미국·사우디 지원받아 친이란 후티에 총반격 돌입(종합) | 연합뉴스"
+    },
+    "original:5754e88cd90f7a33040328e9": {
+      "first_seen_kst": "2026-10-18T03:10:20+09:00",
+      "lanes": {
+        "live": "2026-10-18T03:10:20+09:00"
+      },
+      "last_seen_kst": "2026-10-18T03:10:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003829986",
+      "source": "뉴시스",
+      "source_body_digest": "5b544e112247868d23762959c61aa356b262995066c9877219b713e289d1079b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2d27dfc3e0440df75bf663c30c317e54811a6bf49d697068160aa6bfdc46b564",
+      "source_fact_keys": [
+        "source_fact:v1:106d5cdc673b1ed1408c91bfba4ccc8acf641658e3dbb92e1b7be8dc3b4ddc96",
+        "source_fact:v1:42ab367a9dc0e197bbbaaa193eff82bdfd2ff7f36dd9773a0851e3c929eae513",
+        "source_fact:v1:5585edec2a3fc065d0c49f94d36ffc69a6df90e08a0439e78dd6c64d1e10d93d",
+        "source_fact:v1:569551bcb0a9b7b582be81d14dcdde57ec32b2a23e397fb97001aa78fd13f540",
+        "source_fact:v1:6701a5a410709d7f69a40eec767bee0ee0e164a387e041620d1ecdf9ce314e5d",
+        "source_fact:v1:74da4a294a11d29bd92ccbd48b61d5a167d81332743f4e6eca7dcd3fd80abb26",
+        "source_fact:v1:be336be6c56c9d7736605d884adbcaa4db5096ee396a4ee8fe29686e41f9c5f9",
+        "source_fact:v1:e916dea10a60bf59e68ced672f8a6d99916682907b4b049c32b3c9254b987dc1",
+        "source_fact:v1:edd7d8f8fa32d880d6c2346ac5d40b6c441810ad8ef327a1feb5da28e6408e41"
+      ],
+      "source_published_kst": "2026-10-18T03:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"7만전자·20만닉스\" 경고했던 전문가…이번엔 \"메모리 가격 하락 임박\"",
+      "telegram_core_fact": "삼성전자와 SK하이닉스 주가가 여전히 고평가 구간에 있으며, 메모리 가격이 이르면 올해 4분기 하락세로 돌아설 수 있다는 전문가의 전망이 나왔다.",
+      "title": "\"7만전자·20만닉스\" 경고했던 전문가…이번엔 \"메모리 가격 하락 임박\""
     },
     "original:576d345d46113fa272d65495": {
       "first_seen_kst": "2026-10-02T12:58:52+09:00",
@@ -405006,6 +405146,34 @@
       "telegram_core_fact": "한지영 키움증권 연구원은 “중국 CXMT발 미국 반도체주 약세 여파가 장 초반 변동성을 유발하겠지만 미국 10년물 금리 상승세 진정과 최근 연쇄 급락에 따른 기술적·저가 매수세 유입 등에 힘입어 장중 반등을 시도할 것으로 전망한다”고 말했다.",
       "title": "中 CXMT 충격에 삼전·SK하닉 급락…프리마켓 반도체 ‘휘청’"
     },
+    "source_fact:254657c3116cddb4206184fc": {
+      "first_seen_kst": "2026-10-18T03:10:20+09:00",
+      "lanes": {
+        "live": "2026-10-18T03:10:20+09:00"
+      },
+      "last_seen_kst": "2026-10-18T03:10:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003829986",
+      "source": "뉴시스",
+      "source_body_digest": "5b544e112247868d23762959c61aa356b262995066c9877219b713e289d1079b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2d27dfc3e0440df75bf663c30c317e54811a6bf49d697068160aa6bfdc46b564",
+      "source_fact_keys": [
+        "source_fact:v1:106d5cdc673b1ed1408c91bfba4ccc8acf641658e3dbb92e1b7be8dc3b4ddc96",
+        "source_fact:v1:42ab367a9dc0e197bbbaaa193eff82bdfd2ff7f36dd9773a0851e3c929eae513",
+        "source_fact:v1:5585edec2a3fc065d0c49f94d36ffc69a6df90e08a0439e78dd6c64d1e10d93d",
+        "source_fact:v1:569551bcb0a9b7b582be81d14dcdde57ec32b2a23e397fb97001aa78fd13f540",
+        "source_fact:v1:6701a5a410709d7f69a40eec767bee0ee0e164a387e041620d1ecdf9ce314e5d",
+        "source_fact:v1:74da4a294a11d29bd92ccbd48b61d5a167d81332743f4e6eca7dcd3fd80abb26",
+        "source_fact:v1:be336be6c56c9d7736605d884adbcaa4db5096ee396a4ee8fe29686e41f9c5f9",
+        "source_fact:v1:e916dea10a60bf59e68ced672f8a6d99916682907b4b049c32b3c9254b987dc1",
+        "source_fact:v1:edd7d8f8fa32d880d6c2346ac5d40b6c441810ad8ef327a1feb5da28e6408e41"
+      ],
+      "source_published_kst": "2026-10-18T03:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"7만전자·20만닉스\" 경고했던 전문가…이번엔 \"메모리 가격 하락 임박\"",
+      "telegram_core_fact": "삼성전자와 SK하이닉스 주가가 여전히 고평가 구간에 있으며, 메모리 가격이 이르면 올해 4분기 하락세로 돌아설 수 있다는 전문가의 전망이 나왔다.",
+      "title": "\"7만전자·20만닉스\" 경고했던 전문가…이번엔 \"메모리 가격 하락 임박\""
+    },
     "source_fact:25474b05fa9239f0b9399b3b": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
       "lanes": {
@@ -405920,6 +406088,34 @@
       "source_title": "스택, 클래스B 의결권 100표로 상향..수권주식 1만배",
       "telegram_core_fact": "유전 특화 생산·유지보수 장비 업체 스택(STAK)이 클래스B 보통주 1주당 의결권을 30표에서 100표로 상향하는 안건과 액면가 감액·수권주식 1만 배 확대 안건이 클래스A 주주총회와 임시주주총회(EGM)에서 모두 가결됐다고 10월 9일 발표했다.",
       "title": "스택, 클래스B 의결권 100표로 상향..수권주식 1만배"
+    },
+    "source_fact:25eac7dbd42c9c8a0977ef57": {
+      "first_seen_kst": "2026-10-18T03:10:20+09:00",
+      "lanes": {
+        "live": "2026-10-18T03:10:20+09:00"
+      },
+      "last_seen_kst": "2026-10-18T03:10:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003829986",
+      "source": "뉴시스",
+      "source_body_digest": "5b544e112247868d23762959c61aa356b262995066c9877219b713e289d1079b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2d27dfc3e0440df75bf663c30c317e54811a6bf49d697068160aa6bfdc46b564",
+      "source_fact_keys": [
+        "source_fact:v1:106d5cdc673b1ed1408c91bfba4ccc8acf641658e3dbb92e1b7be8dc3b4ddc96",
+        "source_fact:v1:42ab367a9dc0e197bbbaaa193eff82bdfd2ff7f36dd9773a0851e3c929eae513",
+        "source_fact:v1:5585edec2a3fc065d0c49f94d36ffc69a6df90e08a0439e78dd6c64d1e10d93d",
+        "source_fact:v1:569551bcb0a9b7b582be81d14dcdde57ec32b2a23e397fb97001aa78fd13f540",
+        "source_fact:v1:6701a5a410709d7f69a40eec767bee0ee0e164a387e041620d1ecdf9ce314e5d",
+        "source_fact:v1:74da4a294a11d29bd92ccbd48b61d5a167d81332743f4e6eca7dcd3fd80abb26",
+        "source_fact:v1:be336be6c56c9d7736605d884adbcaa4db5096ee396a4ee8fe29686e41f9c5f9",
+        "source_fact:v1:e916dea10a60bf59e68ced672f8a6d99916682907b4b049c32b3c9254b987dc1",
+        "source_fact:v1:edd7d8f8fa32d880d6c2346ac5d40b6c441810ad8ef327a1feb5da28e6408e41"
+      ],
+      "source_published_kst": "2026-10-18T03:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"7만전자·20만닉스\" 경고했던 전문가…이번엔 \"메모리 가격 하락 임박\"",
+      "telegram_core_fact": "삼성전자와 SK하이닉스 주가가 여전히 고평가 구간에 있으며, 메모리 가격이 이르면 올해 4분기 하락세로 돌아설 수 있다는 전문가의 전망이 나왔다.",
+      "title": "\"7만전자·20만닉스\" 경고했던 전문가…이번엔 \"메모리 가격 하락 임박\""
     },
     "source_fact:25eba6311ca387020aca8df7": {
       "first_seen_kst": "2026-10-12T05:09:39+09:00",
@@ -435963,6 +436159,34 @@
       "telegram_core_fact": "존슨앤존슨(JNJ)이 3분기 매출액이 253억9900만 달러로 전년비 5.9% 증가했으며, 탤크(활석) 소송 합의 추진 관련 일회성 비용이 반영돼 GAAP 기준 희석 주당순이익은 0.09달러로 전년비 95.8% 감소했다고 13일 발표했다.",
       "title": "존슨앤존슨, 3분기 매출 254억달러 5.9%↑..연간 가이던스 상향"
     },
+    "source_fact:3a51df63fab55106a6d994ff": {
+      "first_seen_kst": "2026-10-18T03:10:20+09:00",
+      "lanes": {
+        "live": "2026-10-18T03:10:20+09:00"
+      },
+      "last_seen_kst": "2026-10-18T03:10:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003829986",
+      "source": "뉴시스",
+      "source_body_digest": "5b544e112247868d23762959c61aa356b262995066c9877219b713e289d1079b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2d27dfc3e0440df75bf663c30c317e54811a6bf49d697068160aa6bfdc46b564",
+      "source_fact_keys": [
+        "source_fact:v1:106d5cdc673b1ed1408c91bfba4ccc8acf641658e3dbb92e1b7be8dc3b4ddc96",
+        "source_fact:v1:42ab367a9dc0e197bbbaaa193eff82bdfd2ff7f36dd9773a0851e3c929eae513",
+        "source_fact:v1:5585edec2a3fc065d0c49f94d36ffc69a6df90e08a0439e78dd6c64d1e10d93d",
+        "source_fact:v1:569551bcb0a9b7b582be81d14dcdde57ec32b2a23e397fb97001aa78fd13f540",
+        "source_fact:v1:6701a5a410709d7f69a40eec767bee0ee0e164a387e041620d1ecdf9ce314e5d",
+        "source_fact:v1:74da4a294a11d29bd92ccbd48b61d5a167d81332743f4e6eca7dcd3fd80abb26",
+        "source_fact:v1:be336be6c56c9d7736605d884adbcaa4db5096ee396a4ee8fe29686e41f9c5f9",
+        "source_fact:v1:e916dea10a60bf59e68ced672f8a6d99916682907b4b049c32b3c9254b987dc1",
+        "source_fact:v1:edd7d8f8fa32d880d6c2346ac5d40b6c441810ad8ef327a1feb5da28e6408e41"
+      ],
+      "source_published_kst": "2026-10-18T03:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"7만전자·20만닉스\" 경고했던 전문가…이번엔 \"메모리 가격 하락 임박\"",
+      "telegram_core_fact": "삼성전자와 SK하이닉스 주가가 여전히 고평가 구간에 있으며, 메모리 가격이 이르면 올해 4분기 하락세로 돌아설 수 있다는 전문가의 전망이 나왔다.",
+      "title": "\"7만전자·20만닉스\" 경고했던 전문가…이번엔 \"메모리 가격 하락 임박\""
+    },
     "source_fact:3a53bab8a5869a97a8e39094": {
       "first_seen_kst": "2026-10-14T00:59:56+09:00",
       "lanes": {
@@ -461091,6 +461315,34 @@
       ],
       "source_published_kst": "2026-10-05T21:08+09:00",
       "title": "포럼 마켓츠, AI 합작사 설립..2027년 매출 최대 1억7500만달러"
+    },
+    "source_fact:4a8d5f080f0271ac350f3bf4": {
+      "first_seen_kst": "2026-10-18T03:10:20+09:00",
+      "lanes": {
+        "live": "2026-10-18T03:10:20+09:00"
+      },
+      "last_seen_kst": "2026-10-18T03:10:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003829986",
+      "source": "뉴시스",
+      "source_body_digest": "5b544e112247868d23762959c61aa356b262995066c9877219b713e289d1079b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2d27dfc3e0440df75bf663c30c317e54811a6bf49d697068160aa6bfdc46b564",
+      "source_fact_keys": [
+        "source_fact:v1:106d5cdc673b1ed1408c91bfba4ccc8acf641658e3dbb92e1b7be8dc3b4ddc96",
+        "source_fact:v1:42ab367a9dc0e197bbbaaa193eff82bdfd2ff7f36dd9773a0851e3c929eae513",
+        "source_fact:v1:5585edec2a3fc065d0c49f94d36ffc69a6df90e08a0439e78dd6c64d1e10d93d",
+        "source_fact:v1:569551bcb0a9b7b582be81d14dcdde57ec32b2a23e397fb97001aa78fd13f540",
+        "source_fact:v1:6701a5a410709d7f69a40eec767bee0ee0e164a387e041620d1ecdf9ce314e5d",
+        "source_fact:v1:74da4a294a11d29bd92ccbd48b61d5a167d81332743f4e6eca7dcd3fd80abb26",
+        "source_fact:v1:be336be6c56c9d7736605d884adbcaa4db5096ee396a4ee8fe29686e41f9c5f9",
+        "source_fact:v1:e916dea10a60bf59e68ced672f8a6d99916682907b4b049c32b3c9254b987dc1",
+        "source_fact:v1:edd7d8f8fa32d880d6c2346ac5d40b6c441810ad8ef327a1feb5da28e6408e41"
+      ],
+      "source_published_kst": "2026-10-18T03:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"7만전자·20만닉스\" 경고했던 전문가…이번엔 \"메모리 가격 하락 임박\"",
+      "telegram_core_fact": "삼성전자와 SK하이닉스 주가가 여전히 고평가 구간에 있으며, 메모리 가격이 이르면 올해 4분기 하락세로 돌아설 수 있다는 전문가의 전망이 나왔다.",
+      "title": "\"7만전자·20만닉스\" 경고했던 전문가…이번엔 \"메모리 가격 하락 임박\""
     },
     "source_fact:4a919c3b7288d33a11ac6877": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
@@ -490816,6 +491068,34 @@
       "telegram_core_fact": "매년 성장을 거듭해온 국내 하이브리드차 판매가 올해 처음 감소세로 돌아섰다. 한국자동차모빌리티산업협회(KAMA)에 따르면 올해 3분기 누적(1∼9월) 국내 하이브리드차(마일드하이브리드 포함) 신규 등록은 42만1천199대로 작년 동기보다 3.9％ 줄었다.",
       "title": "국내 자동차 시장 지각변동…하이브리드차 판매 처음 감소 | 연합뉴스"
     },
+    "source_fact:5d79694cdeb13c8a7b8d13cb": {
+      "first_seen_kst": "2026-10-18T03:10:20+09:00",
+      "lanes": {
+        "live": "2026-10-18T03:10:20+09:00"
+      },
+      "last_seen_kst": "2026-10-18T03:10:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003829986",
+      "source": "뉴시스",
+      "source_body_digest": "5b544e112247868d23762959c61aa356b262995066c9877219b713e289d1079b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2d27dfc3e0440df75bf663c30c317e54811a6bf49d697068160aa6bfdc46b564",
+      "source_fact_keys": [
+        "source_fact:v1:106d5cdc673b1ed1408c91bfba4ccc8acf641658e3dbb92e1b7be8dc3b4ddc96",
+        "source_fact:v1:42ab367a9dc0e197bbbaaa193eff82bdfd2ff7f36dd9773a0851e3c929eae513",
+        "source_fact:v1:5585edec2a3fc065d0c49f94d36ffc69a6df90e08a0439e78dd6c64d1e10d93d",
+        "source_fact:v1:569551bcb0a9b7b582be81d14dcdde57ec32b2a23e397fb97001aa78fd13f540",
+        "source_fact:v1:6701a5a410709d7f69a40eec767bee0ee0e164a387e041620d1ecdf9ce314e5d",
+        "source_fact:v1:74da4a294a11d29bd92ccbd48b61d5a167d81332743f4e6eca7dcd3fd80abb26",
+        "source_fact:v1:be336be6c56c9d7736605d884adbcaa4db5096ee396a4ee8fe29686e41f9c5f9",
+        "source_fact:v1:e916dea10a60bf59e68ced672f8a6d99916682907b4b049c32b3c9254b987dc1",
+        "source_fact:v1:edd7d8f8fa32d880d6c2346ac5d40b6c441810ad8ef327a1feb5da28e6408e41"
+      ],
+      "source_published_kst": "2026-10-18T03:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"7만전자·20만닉스\" 경고했던 전문가…이번엔 \"메모리 가격 하락 임박\"",
+      "telegram_core_fact": "삼성전자와 SK하이닉스 주가가 여전히 고평가 구간에 있으며, 메모리 가격이 이르면 올해 4분기 하락세로 돌아설 수 있다는 전문가의 전망이 나왔다.",
+      "title": "\"7만전자·20만닉스\" 경고했던 전문가…이번엔 \"메모리 가격 하락 임박\""
+    },
     "source_fact:5d7b52d296e3aa101fbf651b": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
       "lanes": {
@@ -497278,6 +497558,34 @@
       ],
       "source_published_kst": "2026-10-05T20:58+09:00",
       "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
+    },
+    "source_fact:6287aca4167f00be04c59dbf": {
+      "first_seen_kst": "2026-10-18T03:10:20+09:00",
+      "lanes": {
+        "live": "2026-10-18T03:10:20+09:00"
+      },
+      "last_seen_kst": "2026-10-18T03:10:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003829986",
+      "source": "뉴시스",
+      "source_body_digest": "5b544e112247868d23762959c61aa356b262995066c9877219b713e289d1079b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2d27dfc3e0440df75bf663c30c317e54811a6bf49d697068160aa6bfdc46b564",
+      "source_fact_keys": [
+        "source_fact:v1:106d5cdc673b1ed1408c91bfba4ccc8acf641658e3dbb92e1b7be8dc3b4ddc96",
+        "source_fact:v1:42ab367a9dc0e197bbbaaa193eff82bdfd2ff7f36dd9773a0851e3c929eae513",
+        "source_fact:v1:5585edec2a3fc065d0c49f94d36ffc69a6df90e08a0439e78dd6c64d1e10d93d",
+        "source_fact:v1:569551bcb0a9b7b582be81d14dcdde57ec32b2a23e397fb97001aa78fd13f540",
+        "source_fact:v1:6701a5a410709d7f69a40eec767bee0ee0e164a387e041620d1ecdf9ce314e5d",
+        "source_fact:v1:74da4a294a11d29bd92ccbd48b61d5a167d81332743f4e6eca7dcd3fd80abb26",
+        "source_fact:v1:be336be6c56c9d7736605d884adbcaa4db5096ee396a4ee8fe29686e41f9c5f9",
+        "source_fact:v1:e916dea10a60bf59e68ced672f8a6d99916682907b4b049c32b3c9254b987dc1",
+        "source_fact:v1:edd7d8f8fa32d880d6c2346ac5d40b6c441810ad8ef327a1feb5da28e6408e41"
+      ],
+      "source_published_kst": "2026-10-18T03:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"7만전자·20만닉스\" 경고했던 전문가…이번엔 \"메모리 가격 하락 임박\"",
+      "telegram_core_fact": "삼성전자와 SK하이닉스 주가가 여전히 고평가 구간에 있으며, 메모리 가격이 이르면 올해 4분기 하락세로 돌아설 수 있다는 전문가의 전망이 나왔다.",
+      "title": "\"7만전자·20만닉스\" 경고했던 전문가…이번엔 \"메모리 가격 하락 임박\""
     },
     "source_fact:6287b78fc47e8bca7e3a11b2": {
       "first_seen_kst": "2026-10-15T16:50:59+09:00",
@@ -564824,6 +565132,34 @@
       "telegram_core_fact": "실제로 국민연금의 국내주식 평가액은 4월 말 419조5000억원에서 6월 말 543조2000억원으로 약 123조7000억원 증가했다. 국민연금 국내 주식 평가액은 7월 말 418조6000억원으로 한 달 전보다 약 124조6천억원 감소했다.",
       "title": "‘고점’서 족쇄 채운 국민연금, 급락장 속수무책…“국민 노후자금 날려” 비판"
     },
+    "source_fact:90bf03b169153776c970aab0": {
+      "first_seen_kst": "2026-10-18T03:10:20+09:00",
+      "lanes": {
+        "live": "2026-10-18T03:10:20+09:00"
+      },
+      "last_seen_kst": "2026-10-18T03:10:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003829986",
+      "source": "뉴시스",
+      "source_body_digest": "5b544e112247868d23762959c61aa356b262995066c9877219b713e289d1079b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2d27dfc3e0440df75bf663c30c317e54811a6bf49d697068160aa6bfdc46b564",
+      "source_fact_keys": [
+        "source_fact:v1:106d5cdc673b1ed1408c91bfba4ccc8acf641658e3dbb92e1b7be8dc3b4ddc96",
+        "source_fact:v1:42ab367a9dc0e197bbbaaa193eff82bdfd2ff7f36dd9773a0851e3c929eae513",
+        "source_fact:v1:5585edec2a3fc065d0c49f94d36ffc69a6df90e08a0439e78dd6c64d1e10d93d",
+        "source_fact:v1:569551bcb0a9b7b582be81d14dcdde57ec32b2a23e397fb97001aa78fd13f540",
+        "source_fact:v1:6701a5a410709d7f69a40eec767bee0ee0e164a387e041620d1ecdf9ce314e5d",
+        "source_fact:v1:74da4a294a11d29bd92ccbd48b61d5a167d81332743f4e6eca7dcd3fd80abb26",
+        "source_fact:v1:be336be6c56c9d7736605d884adbcaa4db5096ee396a4ee8fe29686e41f9c5f9",
+        "source_fact:v1:e916dea10a60bf59e68ced672f8a6d99916682907b4b049c32b3c9254b987dc1",
+        "source_fact:v1:edd7d8f8fa32d880d6c2346ac5d40b6c441810ad8ef327a1feb5da28e6408e41"
+      ],
+      "source_published_kst": "2026-10-18T03:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"7만전자·20만닉스\" 경고했던 전문가…이번엔 \"메모리 가격 하락 임박\"",
+      "telegram_core_fact": "삼성전자와 SK하이닉스 주가가 여전히 고평가 구간에 있으며, 메모리 가격이 이르면 올해 4분기 하락세로 돌아설 수 있다는 전문가의 전망이 나왔다.",
+      "title": "\"7만전자·20만닉스\" 경고했던 전문가…이번엔 \"메모리 가격 하락 임박\""
+    },
     "source_fact:90c1dfeda70ed8317edc7954": {
       "first_seen_kst": "2026-10-14T16:26:08+09:00",
       "lanes": {
@@ -582966,6 +583302,34 @@
       "source_title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도",
       "telegram_core_fact": "젤렌스키 대통령은 “러시아가 에너지 수출로 벌어들인 돈을 무기와 공격용 드론 생산에 쓸 것”이라며 미국의 경유 제재 완화 합의를 비판했다.",
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
+    },
+    "source_fact:9d2698dd430cc082b6c9b712": {
+      "first_seen_kst": "2026-10-18T03:10:20+09:00",
+      "lanes": {
+        "live": "2026-10-18T03:10:20+09:00"
+      },
+      "last_seen_kst": "2026-10-18T03:10:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003829986",
+      "source": "뉴시스",
+      "source_body_digest": "5b544e112247868d23762959c61aa356b262995066c9877219b713e289d1079b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2d27dfc3e0440df75bf663c30c317e54811a6bf49d697068160aa6bfdc46b564",
+      "source_fact_keys": [
+        "source_fact:v1:106d5cdc673b1ed1408c91bfba4ccc8acf641658e3dbb92e1b7be8dc3b4ddc96",
+        "source_fact:v1:42ab367a9dc0e197bbbaaa193eff82bdfd2ff7f36dd9773a0851e3c929eae513",
+        "source_fact:v1:5585edec2a3fc065d0c49f94d36ffc69a6df90e08a0439e78dd6c64d1e10d93d",
+        "source_fact:v1:569551bcb0a9b7b582be81d14dcdde57ec32b2a23e397fb97001aa78fd13f540",
+        "source_fact:v1:6701a5a410709d7f69a40eec767bee0ee0e164a387e041620d1ecdf9ce314e5d",
+        "source_fact:v1:74da4a294a11d29bd92ccbd48b61d5a167d81332743f4e6eca7dcd3fd80abb26",
+        "source_fact:v1:be336be6c56c9d7736605d884adbcaa4db5096ee396a4ee8fe29686e41f9c5f9",
+        "source_fact:v1:e916dea10a60bf59e68ced672f8a6d99916682907b4b049c32b3c9254b987dc1",
+        "source_fact:v1:edd7d8f8fa32d880d6c2346ac5d40b6c441810ad8ef327a1feb5da28e6408e41"
+      ],
+      "source_published_kst": "2026-10-18T03:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"7만전자·20만닉스\" 경고했던 전문가…이번엔 \"메모리 가격 하락 임박\"",
+      "telegram_core_fact": "삼성전자와 SK하이닉스 주가가 여전히 고평가 구간에 있으며, 메모리 가격이 이르면 올해 4분기 하락세로 돌아설 수 있다는 전문가의 전망이 나왔다.",
+      "title": "\"7만전자·20만닉스\" 경고했던 전문가…이번엔 \"메모리 가격 하락 임박\""
     },
     "source_fact:9d27c551a8760d27a21284ed": {
       "first_seen_kst": "2026-10-11T16:47:25+09:00",
@@ -610073,6 +610437,34 @@
       "source_title": "계속되는 'AI 거품론'…TSMC가 답을 할까 [다음주 주요변수 미리보기]",
       "telegram_core_fact": "지난주 후반 오픈AI의 매출을 둘러싼 논란으로 AI·반도체주가 급락한 만큼 TSMC의 실적과 가이던스는 최근 불거진 ‘AI 거품론’의 시험대가 될 전망이다. 다음주 국내외 증시는 미국 물가와 소비, 반도체 실적이 동시에 시장을 시험하는 한 주가 될 전망이다.",
       "title": "계속되는 'AI 거품론'…TSMC가 답을 할까 [다음주 주요변수 미리보기]"
+    },
+    "source_fact:af48d201d68ab2877f6d6e64": {
+      "first_seen_kst": "2026-10-18T03:10:20+09:00",
+      "lanes": {
+        "live": "2026-10-18T03:10:20+09:00"
+      },
+      "last_seen_kst": "2026-10-18T03:10:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003829986",
+      "source": "뉴시스",
+      "source_body_digest": "5b544e112247868d23762959c61aa356b262995066c9877219b713e289d1079b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2d27dfc3e0440df75bf663c30c317e54811a6bf49d697068160aa6bfdc46b564",
+      "source_fact_keys": [
+        "source_fact:v1:106d5cdc673b1ed1408c91bfba4ccc8acf641658e3dbb92e1b7be8dc3b4ddc96",
+        "source_fact:v1:42ab367a9dc0e197bbbaaa193eff82bdfd2ff7f36dd9773a0851e3c929eae513",
+        "source_fact:v1:5585edec2a3fc065d0c49f94d36ffc69a6df90e08a0439e78dd6c64d1e10d93d",
+        "source_fact:v1:569551bcb0a9b7b582be81d14dcdde57ec32b2a23e397fb97001aa78fd13f540",
+        "source_fact:v1:6701a5a410709d7f69a40eec767bee0ee0e164a387e041620d1ecdf9ce314e5d",
+        "source_fact:v1:74da4a294a11d29bd92ccbd48b61d5a167d81332743f4e6eca7dcd3fd80abb26",
+        "source_fact:v1:be336be6c56c9d7736605d884adbcaa4db5096ee396a4ee8fe29686e41f9c5f9",
+        "source_fact:v1:e916dea10a60bf59e68ced672f8a6d99916682907b4b049c32b3c9254b987dc1",
+        "source_fact:v1:edd7d8f8fa32d880d6c2346ac5d40b6c441810ad8ef327a1feb5da28e6408e41"
+      ],
+      "source_published_kst": "2026-10-18T03:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"7만전자·20만닉스\" 경고했던 전문가…이번엔 \"메모리 가격 하락 임박\"",
+      "telegram_core_fact": "삼성전자와 SK하이닉스 주가가 여전히 고평가 구간에 있으며, 메모리 가격이 이르면 올해 4분기 하락세로 돌아설 수 있다는 전문가의 전망이 나왔다.",
+      "title": "\"7만전자·20만닉스\" 경고했던 전문가…이번엔 \"메모리 가격 하락 임박\""
     },
     "source_fact:af501a3a3ac6b3cff8281cc4": {
       "first_seen_kst": "2026-10-17T05:57:10+09:00",
@@ -763198,6 +763590,34 @@
       "source_published_kst": "2026-10-05T12:55+09:00",
       "title": "예멘군, 미국·사우디 지원받아 친이란 후티에 총반격 돌입(종합) | 연합뉴스"
     },
+    "title:5754e88cd90f7a33040328e9": {
+      "first_seen_kst": "2026-10-18T03:10:20+09:00",
+      "lanes": {
+        "live": "2026-10-18T03:10:20+09:00"
+      },
+      "last_seen_kst": "2026-10-18T03:10:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261017_0003829986",
+      "source": "뉴시스",
+      "source_body_digest": "5b544e112247868d23762959c61aa356b262995066c9877219b713e289d1079b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2d27dfc3e0440df75bf663c30c317e54811a6bf49d697068160aa6bfdc46b564",
+      "source_fact_keys": [
+        "source_fact:v1:106d5cdc673b1ed1408c91bfba4ccc8acf641658e3dbb92e1b7be8dc3b4ddc96",
+        "source_fact:v1:42ab367a9dc0e197bbbaaa193eff82bdfd2ff7f36dd9773a0851e3c929eae513",
+        "source_fact:v1:5585edec2a3fc065d0c49f94d36ffc69a6df90e08a0439e78dd6c64d1e10d93d",
+        "source_fact:v1:569551bcb0a9b7b582be81d14dcdde57ec32b2a23e397fb97001aa78fd13f540",
+        "source_fact:v1:6701a5a410709d7f69a40eec767bee0ee0e164a387e041620d1ecdf9ce314e5d",
+        "source_fact:v1:74da4a294a11d29bd92ccbd48b61d5a167d81332743f4e6eca7dcd3fd80abb26",
+        "source_fact:v1:be336be6c56c9d7736605d884adbcaa4db5096ee396a4ee8fe29686e41f9c5f9",
+        "source_fact:v1:e916dea10a60bf59e68ced672f8a6d99916682907b4b049c32b3c9254b987dc1",
+        "source_fact:v1:edd7d8f8fa32d880d6c2346ac5d40b6c441810ad8ef327a1feb5da28e6408e41"
+      ],
+      "source_published_kst": "2026-10-18T03:00+09:00",
+      "source_supply_terms": {},
+      "source_title": "\"7만전자·20만닉스\" 경고했던 전문가…이번엔 \"메모리 가격 하락 임박\"",
+      "telegram_core_fact": "삼성전자와 SK하이닉스 주가가 여전히 고평가 구간에 있으며, 메모리 가격이 이르면 올해 4분기 하락세로 돌아설 수 있다는 전문가의 전망이 나왔다.",
+      "title": "\"7만전자·20만닉스\" 경고했던 전문가…이번엔 \"메모리 가격 하락 임박\""
+    },
     "title:576d345d46113fa272d65495": {
       "first_seen_kst": "2026-10-02T12:58:52+09:00",
       "lanes": {
@@ -827946,5 +828366,5 @@
       "title": "‘사면초가’ 젤렌스키…미국, 정보공유 중단 위협도"
     }
   },
-  "updated_at_kst": "2026-10-18T02:44:04+09:00"
+  "updated_at_kst": "2026-10-18T03:10:20+09:00"
 }
