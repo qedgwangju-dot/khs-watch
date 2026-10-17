@@ -2,14 +2,16 @@
   "initialized": true,
   "last_collection": {
     "deferred_events": 0,
-    "errors": [],
+    "errors": [
+      "OpenShell 텔레메트리 감시 실패: HTTPError: HTTP Error 403: rate limit exceeded"
+    ],
     "material_items": 5,
     "new_articles": 0,
     "new_events": 0,
     "official_page_skips": [
       "OpenAI 프런티어 학습 Safety Case: HTTPError: HTTP Error 403: Forbidden"
     ],
-    "raw_items": 74,
+    "raw_items": 76,
     "sif_new_stages": 0,
     "si_portal_health": "정상",
     "si_portal_known_links": 2,
@@ -241,11 +243,11 @@
       "status": "The Information 2026-10-13 reported early talks; unconfirmed"
     }
   },
-  "updated_at_kst": "2026-10-17T20:55:31+09:00",
+  "updated_at_kst": "2026-10-17T20:58:04+09:00",
   "si_portal": {
     "initialized": true,
     "version": 1,
-    "last_success_at": "2026-10-17T11:56:01.678043+00:00",
+    "last_success_at": "2026-10-17T11:58:41.640390+00:00",
     "known_links": {
       "https://www.si.gov/initiatives/education": "White House Task Force SI Education Bringing SI literacy and training to K-12 students and the teachers who guide them. Explore →",
       "https://www.si.gov/initiatives/presidential-challenge": "Presidential SI Challenge"
