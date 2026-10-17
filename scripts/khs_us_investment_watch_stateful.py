@@ -1778,11 +1778,13 @@ def _apply_state(family: str, evidence_row: dict, facts: set[str], evidence_map:
         changed.add(fact)
 
     if changed:
+        # 이미 저장된 다른 사실을 뒷받침한 과거 공식자료를 이번 변화의 대표 출처로 표시하지 않는다.
+        change_evidence_row = _pick_evidence_row(changed, evidence_map, [evidence_row])
         bucket["slots"] = dict(sorted(slots.items()))
         bucket["facts"] = sorted(set(slots.values()))
         bucket["updated_at"] = now
-        bucket["last_title"] = str(evidence_row.get("title") or "")
-        bucket["last_source"] = str(evidence_row.get("source") or "")
+        bucket["last_title"] = str(change_evidence_row.get("title") or "")
+        bucket["last_source"] = str(change_evidence_row.get("source") or "")
         refs = []
         seen_refs = set()
         for fact in sorted(changed):
@@ -1921,6 +1923,9 @@ def _collapse_rows(rows: list[dict]) -> list[dict]:
         changed = _apply_state(family, evidence_row, accepted, evidence_map)
         if not changed:
             continue
+        # 발송 출처도 변경된 사실의 증거만 사용하여 백악관 과거 자료가
+        # 이번 매일경제 재산세 요청 보도의 출처인 것처럼 보이지 않게 한다.
+        evidence_row = _pick_evidence_row(changed, evidence_map, family_rows)
 
         current = set(str(x) for x in _bucket(family).get("facts") or [])
         state_key = _event_key(family, current)
@@ -2453,7 +2458,23 @@ def _self_test() -> int:
     if "alaska_tax_relief_status:effective" not in effect_facts:
         raise RuntimeError(f"actual tax relief effective status missed: {effect_facts}")
 
+    # 단일 사건축의 과거 공식기준이 이번 신규 보도의 대표 출처를 가리지 않아야 한다.
+    old_white_house = {"title": "백악관 과거 알래스카 LNG 투자 주장", "source": "White House", "link": "https://www.whitehouse.gov/old"}
+    new_tax_report = _verified_alaska_tax_report_rows()[0]
+    evidence_by_fact = {
+        "alaska_us_claim_usd_b:54": [old_white_house],
+        "alaska_tax_relief_request_status:reported": [new_tax_report],
+    }
+    selected = _pick_evidence_row(
+        {"alaska_tax_relief_request_status:reported"},
+        evidence_by_fact,
+        [old_white_house],
+    )
+    if selected.get("source") != "매일경제":
+        raise RuntimeError(f"stale official story replaced new tax-report evidence: {selected}")
+
     print("alaska_property_tax_stage_self_test=passed")
+    print("alaska_delta_evidence_self_test=passed")
     print("state_event_guard_self_test=passed")
     return 0
 
